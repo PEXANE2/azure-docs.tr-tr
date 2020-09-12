@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 8/11/2020
 ms.author: b-juche
-ms.openlocfilehash: f4cc253de0de9d099cfc4881f48182cf9b2a1616
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: dcdb3e8ce545227bc11cc60e3885c1a985ed34f4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134590"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460006"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için bir çift protokol (NFSv3 ve SMB) birimi oluşturun
 
@@ -76,7 +76,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
     
         ![Alt ağ oluşturma](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Birime var olan bir anlık görüntü ilkesi uygulamak istiyorsanız, genişletmek için **Gelişmiş bölümünü göster** ' e tıklayın ve açılır menüden bir anlık görüntü ilkesi seçin. 
+    * Birime var olan bir anlık görüntü ilkesi uygulamak istiyorsanız, genişletmek için **Gelişmiş bölümü göster** ' e tıklayın, anlık görüntü yolunu gizlemek isteyip istemediğinizi belirtin ve açılır menüden bir anlık görüntü ilkesi seçin. 
 
         Anlık görüntü ilkesi oluşturma hakkında daha fazla bilgi için bkz. [anlık görüntü Ilkelerini yönetme](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 

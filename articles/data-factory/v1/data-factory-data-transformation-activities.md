@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 74cf34438ca142302a6853e8e488b0c7188b162b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb320cb71de43c40522bf93213fd98247a0d5b59
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522372"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436306"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Azure Data Factory sürüm 1 ' deki verileri dönüştürme
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Zaman içinde, Machine Learning Puanlama denemeleri 'un tahmine dayalı modeller
 Bu Machine Learning etkinlikleri hakkında daha fazla bilgi için bkz. [Machine Learning etkinlikleri kullanma](data-factory-azure-ml-batch-execution-activity.md) . 
 
 ## <a name="stored-procedure-activity"></a>Saklı yordam etkinliği
-Aşağıdaki veri depolarından birinde saklı bir yordam çağırmak için bir Data Factory Işlem hattındaki SQL Server saklı yordam etkinliğini kullanabilirsiniz: Azure SQL veritabanı, Azure SQL veri ambarı, kuruluşunuzda SQL Server veritabanı veya bir Azure VM. Ayrıntılar için bkz. [saklı yordam etkinliği](data-factory-stored-proc-activity.md) makalesi.  
+Aşağıdaki veri depolarından birinde saklı yordam çağırmak için bir Data Factory Işlem hattındaki SQL Server saklı yordam etkinliğini kullanabilirsiniz: Azure SQL veritabanı, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı), kuruluşunuzda veya bir Azure VM 'de SQL Server veritabanı. Ayrıntılar için bkz. [saklı yordam etkinliği](data-factory-stored-proc-activity.md) makalesi.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL etkinliği
 Data Lake Analytics U-SQL etkinliği Azure Data Lake Analytics kümesinde bir U-SQL betiği çalıştırır. Ayrıntılar için bkz. [Data Analytics U-SQL etkinliği](data-factory-usql-activity.md) makalesi. 
@@ -93,7 +93,7 @@ Azure Data Factory, etkinlikler için aşağıdaki veri dönüştürme etkinlikl
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop Akışı](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
 | [Machine Learning etkinlikleri: Toplu Yürütme ve Kaynak Güncelleştirme](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
-| [Saklı yordam](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Veri Ambarı veya SQL Server |
+| [Saklı yordam](data-factory-stored-proc-activity.md) |Azure SQL, Azure SYNAPSE Analytics veya SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [Olmalı](data-factory-use-custom-activities.md) |HDInsight [Hadoop] veya Azure Batch |
 

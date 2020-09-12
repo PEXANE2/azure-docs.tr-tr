@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: Noktadan siteye bağlantılar sorunlarını giderme: Mac OS X istemcileri'
 description: Yerel VPN istemcisi ve IKEv2 kullanarak Mac OS X Noktadan siteye bağlantı sorunlarını giderme hakkında bilgi edinin.
 services: vpn-gateway
-author: kumudD
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 58250980081388b78ebb32fb01b84beb8d86c1c2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 33e67df5ad68a78cc35f7168813716d1d794d527
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030677"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442811"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Mac OS X VPN istemcilerinden Noktadan siteye VPN bağlantıları sorunlarını giderme
 
@@ -25,7 +25,7 @@ Bu makale, yerel VPN istemcisi ve IKEv2 kullanarak Mac OS X Noktadan siteye bağ
 * İşletim sistemi sürümü (10,11 veya üzeri)
 
 
-## <a name="troubleshoot-certificate-based-authentication"></a><a name="VPNClient"></a>Sertifika tabanlı kimlik doğrulaması sorunlarını giderme
+## <a name="troubleshoot-certificate-based-authentication"></a><a name="VPNClient"></a> Sertifika tabanlı kimlik doğrulaması sorunlarını giderme
 1. VPN istemci ayarlarını kontrol edin. Komut + SHIFT tuşlarına basarak **ağ ayarına** gidin ve ardından VPN istemci ayarlarını denetlemek IÇIN "VPN" yazın. Listeden Araştırılması gereken VPN girdisine tıklayın.
 
    ![Ikev2 sertifika tabanlı kimlik doğrulaması](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2cert1.jpg)

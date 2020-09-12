@@ -3,15 +3,15 @@ title: PowerShell-Azure ile RDP özelliklerini özelleştirme
 description: PowerShell cmdlet 'leriyle Windows sanal masaüstü için RDP özelliklerini özelleştirme.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 439f009d70775428a00f627160bf4d6b8ab9b089
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009112"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462233"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü (RDP) özelliklerini özelleştirme
 
@@ -22,7 +22,17 @@ ms.locfileid: "88009112"
 
 Desteklenen özelliklerin tam listesi ve bunların varsayılan değerleri için bkz. [desteklenen RDP dosyası ayarları](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="default-rdp-file-properties"></a>Varsayılan RDP dosyası özellikleri
+
+RDP dosyaları varsayılan olarak aşağıdaki özelliklere sahiptir:
+
+|RDP özelliği|Masaüstünde|RemoteApp olarak|
+|---|---|---|
+|Çoklu monitör modu|Etkin|Yok|
+|Sürücü yeniden yönlendirmeleri etkin|Sürücüler, pano, yazıcılar, COM bağlantı noktaları, USB cihazları ve akıllı kartlar|Sürücüler, pano ve Yazıcılar|
+|Uzak ses modu|Yerel olarak oynat|Yerel olarak oynat|
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, PowerShell modülünüzü ayarlamak ve Azure 'da oturum açmak için [Windows sanal masaüstü PowerShell modülünü ayarlama](powershell-module.md) bölümündeki yönergeleri izleyin.
 

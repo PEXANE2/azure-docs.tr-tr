@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 81e138e7149327c7b792df58180419b93417d263
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510982"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434648"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Cloud-init ile VM sağlama sorunlarını giderme
 
@@ -21,7 +21,7 @@ Sağlama yapmak için Cloud-init ' i kullanarak genelleştirilmiş özel görün
 
 Bazı örnekler, sağlama sorunları:
 - VM, 40 dakika boyunca ' oluşturma ' ile takılmış ve VM oluşturma işlemi başarısız olarak işaretlendi
-- `CustomData`işlenmiyor
+- `CustomData` işlenmiyor
 - Kısa ömürlü disk takılamaz
 - Kullanıcılar oluşturulmaz veya Kullanıcı erişimi sorunları vardır
 - Ağ iletişimi doğru ayarlanmadı
@@ -29,7 +29,7 @@ Bazı örnekler, sağlama sorunları:
 
 Bu makalede, Cloud-init sorunlarını giderme adımları anlatılmaktadır. Daha ayrıntılı bilgi için bkz. [Cloud-init derin DIVE](./cloud-init-deep-dive.md).
 
-## <a name="step-1-test-the-deployment-without-customdata"></a>1. Adım: dağıtımı olmadan test etme`customData`
+## <a name="step-1-test-the-deployment-without-customdata"></a>1. Adım: dağıtımı olmadan test etme `customData`
 
 Cloud-init kabul edebilir `customData` , sanal makine oluşturulduğunda buna geçirilir. Öncelikle bu, dağıtımlarla ilgili herhangi bir soruna neden olmadığından emin olmalısınız. Herhangi bir yapılandırmaya geçmeden VM 'yi sağlamayı deneyin. VM 'yi sağlayamazsa, geçirdiğiniz yapılandırmanın uygulanamamakta olduğunu fark ederseniz, [Adım 4]()' e geçin. 
 
@@ -56,7 +56,7 @@ VM sağlamadığında, Azure, 20 dakika boyunca ' oluşturma ' durumu gösterir 
 
 VM çalışırken, sağlanmasının neden başarısız olduğunu anlamak için VM 'deki günlüklere ihtiyacınız olacak.  VM sağlamasının neden başarısız olduğunu anlamak için VM 'yi durdurmayın. VM 'yi çalışır durumda tutun. Günlükleri toplamak için, başarısız VM 'yi çalışır durumda tutmanız gerekir. Günlükleri toplamak için aşağıdaki yöntemlerden birini kullanın:
 
-- [Seri Konsol](./serial-console-grub-single-user-mode.md)
+- [Seri Konsol](../troubleshooting/serial-console-grub-single-user-mode.md)
 
 - VM oluşturmadan önce [önyükleme tanılamayı etkinleştirin](./tutorial-monitor.md#enable-boot-diagnostics) ve önyükleme sırasında bunları [görüntüleyin](./tutorial-monitor.md#view-boot-diagnostics) .
 
@@ -108,7 +108,7 @@ Bir hata veya uyarı bulduktan sonra, Cloud-init ' in hata veya uyarı vermeden 
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-[Seri konsoluna](./serial-console-grub-single-user-mode.md)erişiminiz varsa, Cloud-init ' nin çalıştırmaya çalıştığı komutu yeniden çalıştırmayı deneyebilirsiniz.
+[Seri konsoluna](../troubleshooting/serial-console-grub-single-user-mode.md)erişiminiz varsa, Cloud-init ' nin çalıştırmaya çalıştığı komutu yeniden çalıştırmayı deneyebilirsiniz.
 
 Günlüğe kaydetme, `/var/log/cloud-init.log` /etc/Cloud/Cloud.exe içinde de yeniden yapılandırılabilir ve 05_logging. cfg. Cloud-init günlüğü hakkında daha fazla bilgi için [Cloud-init belgelerine](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)bakın. 
 
@@ -126,7 +126,7 @@ Hala Cloud-init 'in sağlayamamasının nedenini yalıtadıysanız, hangi Cloud-
 ## <a name="step-4-investigate-why-the-configuration-isnt-being-applied"></a>4. Adım: yapılandırmanın neden uygulanamadığını araştırın
 Cloud-init ' teki tüm hatalar önemli bir sağlama hatasına neden olmaz. Örneğin, `runcmd` modülünü bir Cloud-init yapılandırmasında kullanıyorsanız, çalıştığı komuttan sıfır olmayan bir çıkış kodu, VM sağlamasının başarısız olmasına neden olur. Bunun nedeni, Cloud-init ' in ilk 3 aşamasında gerçekleşen çekirdek sağlama işlevlerinden sonra çalışır. Yapılandırmanın neden uygulanmadığından ilgili sorunları gidermek için, adım 3 ' teki günlükleri ve Cloud-init modüllerini el ile inceleyin. Örneğin:
 
-- `runcmd`-betikler hatasız çalışıyor mu? Yapılandırmayı, beklendiği gibi çalıştırıldıklarından emin olmak için terminalden el ile çalıştırın.
+- `runcmd` -betikler hatasız çalışıyor mu? Yapılandırmayı, beklendiği gibi çalıştırıldıklarından emin olmak için terminalden el ile çalıştırın.
 - Paket yükleme-VM 'nin paket depolarına erişimi var mı?
 - Ayrıca `customData` , VM 'ye sunulan veri yapılandırmasını da denetlemeniz gerekir, bu, ' de bulunur `/var/lib/cloud/instances/<unique-instance-identifier>/user-data.txt` .
 

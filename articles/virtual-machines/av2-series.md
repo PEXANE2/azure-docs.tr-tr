@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ac3f31fecd53ddf1dd8bb81229c67cb4bb60c34e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 33d481d546d94bb1279cafbd85ae23c8ac4d00b8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650647"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437276"
 ---
 # <a name="av2-series"></a>Av2 Serisi
 
@@ -29,7 +29,7 @@ Dinamik Geçiş: destekleniyor
 Güncelleştirmeleri koruyan bellek: desteklenir
 
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla geçici depolama aktarım hızı: ıOPS/okuma MBps/yazma MBps | Maksimum veri diski/aktarım hızı: ıOPS | En fazla NIC | Beklenen ağ bant genişliği (MB/sn)
+| Boyut | Sanal Çekirdek | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla geçici depolama aktarım hızı: ıOPS/okuma MBps/yazma MBps | Maksimum veri diski/aktarım hızı: ıOPS | En fazla NIC | Beklenen ağ bant genişliği (MB/sn)
 |---|---|---|---|---|---|---|---|
 | Standard_A1_v2  | 1 | 2  | 10 | 1000/20/10  | 2/2x500   | 2 | 250  |
 | Standard_A2_v2  | 2 | 4  | 20 | 2000/40/20  | 4/4x500   | 2 | 500  |

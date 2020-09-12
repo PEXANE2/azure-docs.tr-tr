@@ -4,12 +4,12 @@ description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izl
 ms.date: 08/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 035b68afed7383956beb13e367aa7a1f6dfcd070
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258431"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595572"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -137,13 +137,15 @@ Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler iç
 
 | Hizmet | Genel Azure | Kamu | Çin |
 |:--------|:--------|:--------|:--------|
-| Sanal makineler  | **Evet** | Hayır | Hayır |
+| Sanal makineler<sup>1</sup>  | **Evet** | Hayır | Hayır |
 | SQL Server veritabanları | **Evet** | **Evet** | **Evet** |
 | SQL Server elastik havuzlar | **Evet** | **Evet** | **Evet** |
 | NetApp dosyaları kapasite havuzları | **Evet** | **Evet** | **Evet** |
 | NetApp dosyaları birimleri | **Evet** | **Evet** | **Evet** |
 | Anahtar kasaları | **Evet** | **Evet** | **Evet** |
 | Veri kutusu uç cihazları | **Evet** | **Evet** | **Evet** |
+
+<sup>1</sup> sanal makine ağ ölçümleri için desteklenmez (Toplam ağ, ağ çıkış toplamı, gelen akış, giden akış, gelen akış sayısı en fazla oluşturma oranı, çıkış akışı en yüksek oluşturma oranı).
 
 Tek bir ölçüm uyarısı kuralına göre izlemenin kapsamını üç şekilde belirtebilirsiniz. Örneğin, sanal makineler ile kapsamı şu şekilde belirtebilirsiniz:  
 

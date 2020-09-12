@@ -6,21 +6,23 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/01/2020
+ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 8870c83506b1d962b94cd4d671bd3acd3e96c17c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 2a06c182f1f37942ac0921db254bf63bf177fec2
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905372"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595742"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Yüksek performanslı bilgi işlem VM boyutları
 
 Azure H serisi sanal makineler (VM 'Ler), çeşitli gerçek dünyada HPC iş yükleri için liderlik sınıfı performans, MPı ölçeklenebilirliği ve maliyet verimliliği sunmak üzere tasarlanmıştır.
 
-[HBv2 serisi](hbv2-series.md) VM 'Ler özelliği 200 GB/sn Mellanox HDR InfiniBand, her ikisi de HB ve HC Serisi VM 'Ler özelliği 100 GB/sn Mellanox EDR InfiniBand. Bu sanal makine türlerinin her biri, iyileştirilmiş ve tutarlı RDMA performansı için engelleyici olmayan bir FAT ağacına bağlanır. HBv2 VM 'Leri, uyarlamalı yönlendirmeyi ve dinamik bağlı taşımayı (Standart RC ve UD aktarımlarında ek olarak) destekler. Bu özellikler uygulama performansı, ölçeklenebilirliği ve tutarlılığı geliştirir ve bunların kullanımı kesinlikle önerilir.
+[HBv2 serisi](hbv2-series.md) Sanal makineler, akıcı Dynamics, sınırlı öğe analizi ve rezervoır benzetimi gibi bellek bant genişliğine göre çalışan uygulamalar için iyileştirilmiştir. HBv2 VM 'Ler özelliği 120 AMD EPIC 7742 işlemci çekirdekleri, CPU çekirdeği başına 4 GB RAM ve eşzamanlı çoklu iş parçacığı yok. Her HBv2 VM, en fazla 340 GB/sn bellek bant genişliği ve en fazla 4 işlem FP64 işlem sağlar.
+
+HBv2 VM 'Ler özelliği 200 GB/sn Mellanox HDR InfiniBand, her ikisi de HB ve HC Serisi VM 'Ler özelliği 100 GB/sn Mellanox EDR InfiniBand. Bu sanal makine türlerinin her biri, iyileştirilmiş ve tutarlı RDMA performansı için engelleyici olmayan bir FAT ağacına bağlanır. HBv2 VM 'Leri, uyarlamalı yönlendirmeyi ve dinamik bağlı taşımayı (Standart RC ve UD aktarımlarında ek olarak) destekler. Bu özellikler uygulama performansı, ölçeklenebilirliği ve tutarlılığı geliştirir ve bunların kullanımı kesinlikle önerilir.
 
 [HB Serisi](hb-series.md) Sanal makineler, akıcı Dynamics, açık sınırlı öğe analizi ve hava durumu modelleme gibi bellek bant genişliğine göre çalışan uygulamalar için iyileştirilmiştir. HB VM 'Ler özelliği 60 AMD EPIC 7551 işlemci çekirdekleri, CPU çekirdeği başına 4 GB RAM ve hiper iş parçacığı yok. AMD EPYıC platformu 260 GB/sn 'den fazla bellek bant genişliği sağlar.
 
@@ -35,7 +37,7 @@ Azure H serisi sanal makineler (VM 'Ler), çeşitli gerçek dünyada HPC iş yü
 
 HPC VM boyutlarının çoğu (HBv2, HB, HC, H16r, H16mr, A8 ve A9), uzak doğrudan bellek erişimi (RDMA) bağlantısı için bir ağ arabirimi özelliğidir. Seçili [N serisi](./nc-series.md) Boyutlar ' r ' (ND40rs_v2, ND24rs, NC24rs_v3, NC24rs_v2 ve NC24r) ile ayrılmış olarak da RDMA özellikli. Bu arabirim, diğer VM boyutlarında bulunan standart Azure ağ arabirimine ek niteliğindedir.
 
-Bu arabirim, RDMA özellikli örneklerin bir InfiniBand (ıB) ağı üzerinden iletişim kurmasını, HBv2 için HDR ücretine, HB, HC, NDv2, FDR tarifelerinin H16r, H16mr ve diğer RDMA özellikli N serisi sanal makinelere ve A8 ve A9 VM 'Ler için QDR ücretlerden çalışmasına izin verir. Bu RDMA özellikleri, bazı Ileti geçirme arabirimi (MPı) uygulamalarının ölçeklenebilirliğini ve performansını artırabilir. Hız hakkında daha fazla bilgi için bu sayfadaki tablolardaki ayrıntılara bakın.
+Bu arabirim, RDMA özellikli örneklerin bir InfiniBand (ıB) ağı üzerinden iletişim kurmasını, HBv2 için HDR ücretine, HB, HC, NDv2, FDR tarifelerinin H16r, H16mr ve diğer RDMA özellikli N serisi sanal makinelere ve A8 ve A9 VM 'Ler için QDR ücretlerden çalışmasına izin verir. Bu RDMA özellikleri, bazı Ileti geçirme arabirimi (MPı) uygulamalarının ölçeklenebilirliğini ve performansını artırabilir.
 
 > [!NOTE]
 > Azure HPC 'de, InfiniBand için SR-ıOV etkinleştirilmiş olmasına bağlı olarak iki VM sınıfı vardır. Şu anda, InfiniBand özellikli VM 'Ler için SR-ıOV: HBv2, HB, HC, NCv3 ve NDv2. InfiniBand etkin VM 'lerin geri kalanı şu anda SR-ıOV ' n i n etkin değil.
@@ -60,7 +62,7 @@ Bu arabirim, RDMA özellikli örneklerin bir InfiniBand (ıB) ağı üzerinden i
 
 Azure, RDMA ağını kullanarak iletişim kurabilen Windows HPC VM kümeleri oluşturmak için çeşitli seçenekler sunar; örneğin: 
 
-- **Sanal makineler** -RDMA özellikli HPC VM 'lerini aynı ölçek kümesine veya kullanılabilirlik kümesine dağıtın (Azure Resource Manager dağıtım modelini kullandığınızda). Klasik dağıtım modelini kullanıyorsanız, VM 'Leri aynı bulut hizmetinde dağıtın.
+- **Sanal makineler**  -RDMA özellikli HPC VM 'lerini aynı ölçek kümesine veya kullanılabilirlik kümesine dağıtın (Azure Resource Manager dağıtım modelini kullandığınızda). Klasik dağıtım modelini kullanıyorsanız, VM 'Leri aynı bulut hizmetinde dağıtın.
 
 - **Sanal Makine Ölçek Kümeleri** -bir sanal makine ölçek kümesinde dağıtımı, ölçek kümesi içindeki InfiniBand iletişimi için tek bir yerleştirme grubuyla sınırlandırtığınızdan emin olun. Örneğin, bir Kaynak Yöneticisi şablonunda, `singlePlacementGroup` özelliğini olarak ayarlayın `true` . Özelliği ile birlikte kullanılabilecek maksimum ölçek kümesi boyutunun, `singlePlacementGroup` `true` varsayılan olarak 100 sanal makinelerde olduğunu unutmayın. HPC iş ölçeği, tek bir Kiracıdaki 100 sanal makinelerinden daha yüksekse, bir artış isteyebilir, [çevrimiçi müşteri destek talebi](../azure-portal/supportability/how-to-create-azure-support-request.md) ücretsiz olarak açabilirsiniz. Tek bir ölçek kümesindeki sanal makine sayısı sınırı 300 'e artırılabilir. Kullanılabilirlik kümeleri kullanarak VM 'Leri dağıttığınızda, en fazla sınır kullanılabilirlik kümesi başına 200 VM 'dir.
 

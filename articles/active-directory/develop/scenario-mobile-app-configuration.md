@@ -1,7 +1,7 @@
 ---
 title: Web API 'Lerini çağıran mobil uygulamaları yapılandırma | Mavisi
 titleSuffix: Microsoft identity platform
-description: Web API 'Lerini (uygulamanın kod yapılandırması) çağıran bir mobil uygulama oluşturmayı öğrenin
+description: Mobil uygulamanızın kodunu bir Web API 'SI çağırmak üzere nasıl yapılandıracağınızı öğrenin
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 717b6ed7e711b4db4cb15e55282cfcdea4659178
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 52bfd76a12f431576d4fc3cc7a51c6e58c7551ff
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051347"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442760"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama yapılandırma
 
@@ -27,7 +27,7 @@ Uygulamanızı oluşturduktan sonra, uygulama kayıt parametrelerini kullanarak 
 
 Aşağıdaki Microsoft kimlik doğrulama kitaplığı (MSAL) türleri mobil uygulamaları destekler.
 
-MSAL | Açıklama
+MSAL | Description
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Taşınabilir uygulamalar geliştirmek için kullanılır. MSAL.NET, mobil uygulama oluşturmak için aşağıdaki platformları destekler: Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Hedef-C veya Swift kullanarak Yerel iOS uygulamaları geliştirmek için kullanılır.

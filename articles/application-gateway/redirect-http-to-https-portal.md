@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07689f7d16cd1df451fdab28f188e5c4a324486e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804344"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594824"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal kullanarak HTTP ile HTTPS yönlendirmesi arasında bir uygulama ağ geçidi oluşturma
 
@@ -20,12 +20,11 @@ TLS sonlandırma sertifikası ile bir [uygulama ağ geçidi](overview.md) oluşt
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Otomatik olarak imzalanan sertifika oluşturma
-> * Ağ ayarlama
-> * Sertifikalı bir uygulama ağ geçidi oluşturma
-> * Dinleyici ve yeniden yönlendirme kuralı ekleme
-> * Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
+* Otomatik olarak imzalanan sertifika oluşturma
+* Ağ ayarlama
+* Sertifikalı bir uygulama ağ geçidi oluşturma
+* Dinleyici ve yeniden yönlendirme kuralı ekleme
+* Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -126,7 +125,7 @@ Oluşturduğunuz kaynaklar arasında iletişim için bir sanal ağ gerekir. Bu �
 6. **Yeniden yönlendirme hedefi**için **dinleyici**' i seçin.
 7. **Hedef dinleyicinin** **Appgatewayhttplistener**olarak ayarlandığından emin olun.
 8. **İçerme sorgu dizesi** ve **Içerme yolu** için *Evet*' i seçin.
-9. **Ekle**'yi seçin.
+9. **Ekle**’yi seçin.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Sanal makine ölçek kümesi oluşturma
 
@@ -146,7 +145,7 @@ Bu örnekte uygulama ağ geçidinde arka uç havuzu için sunucu sağlayan bir s
 12. **Ağ**altında, **Yük Dengeleme seçeneklerini seçme** seçeneğinin **Application Gateway**olarak ayarlandığından emin olun.
 13. **Application Gateway** 'In **myappgateway**olarak ayarlandığından emin olun.
 14. **Alt ağın** **mybackendsubnet**olarak ayarlandığından emin olun.
-15. **Oluştur**'u seçin.
+15. **Oluştur**’u seçin.
 
 ### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>Ölçek kümesini uygun arka uç havuzuyla ilişkilendir
 
@@ -157,23 +156,23 @@ Sanal makine ölçek kümesi portalı Kullanıcı arabirimi, ölçek kümesi iç
 3. **Arka uç havuzlarını**seçin.
 4. **Myappgatewaymyvmss**öğesini seçin.
 5. **Arka uç havuzundan tüm hedefleri kaldır**' ı seçin.
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 7. Bu işlem tamamlandıktan sonra, **Myappgatewaymyvmss** arka uç havuzunu seçin, **Sil** ' i seçin ve ardından onaylamak için **Tamam** ' ı seçin.
 8. **Appgatewaybackendpool**öğesini seçin.
 9. **Hedefler**altında **VMSS**' yi seçin.
 10. **VMSS**altında **myvmss**' yi seçin.
 11. **Ağ arabirimi yapılandırması**altında, **Myvmssnıc**' i seçin.
-12. **Kaydet**'i seçin.
+12. **Kaydet**’i seçin.
 
 ### <a name="upgrade-the-scale-set"></a>Ölçek kümesini yükseltme
 
 Son olarak, ölçek kümesini bu değişikliklerle yükseltmeniz gerekir.
 
 1. **Myvmss** ölçek kümesini seçin.
-2. **Ayarlar**'ın altında **Örnekler**’i seçin.
+2. **Ayarlar**’ın altında **Örnekler**’i seçin.
 3. Her iki örneği de seçip **Yükselt**' i seçin.
-4. Onaylamak için **Evet**'i seçin.
-5. Bu işlem tamamlandıktan sonra, **Myappgateway** 'e dönün ve **arka uç havuzları**' nı seçin. Şimdi **Appgatewaybackendpool** 'un iki hedefi olduğunu ve **Myappgatewaymyvmss** 'nin sıfır hedefi olduğunu görmeniz gerekir.
+4. Onaylamak için **Evet**’i seçin.
+5. Bu işlem tamamlandıktan sonra, **Myappgateway** 'e dönün ve **arka uç havuzları**' nı seçin. Şimdi **Appgatewaybackendpool** 'un iki hedefi olduğunu ve  **Myappgatewaymyvmss** 'nin sıfır hedefi olduğunu görmeniz gerekir.
 6. **Myappgatewaymyvmss**' yi seçin ve **Sil**' i seçin.
 7. Onaylamak için **Tamam**’ı seçin.
 
@@ -204,9 +203,9 @@ Update-AzVmss `
 Örnekleri IIS ile değiştirdikten sonra ölçek kümesini bu değişiklik ile yeniden yükseltmeniz gerekir.
 
 1. **Myvmss** ölçek kümesini seçin.
-2. **Ayarlar**'ın altında **Örnekler**’i seçin.
+2. **Ayarlar**’ın altında **Örnekler**’i seçin.
 3. Her iki örneği de seçip **Yükselt**' i seçin.
-4. Onaylamak için **Evet**'i seçin.
+4. Onaylamak için **Evet**’i seçin.
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 

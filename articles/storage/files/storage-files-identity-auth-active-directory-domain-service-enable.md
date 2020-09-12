@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d4aad485741abc1c0f54e14e00cd8654a8addbca
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: contperfq1
+ms.openlocfilehash: f64e3459863cc7b7ffddfae824f9c4012802a457
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930816"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500326"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme
 
@@ -24,7 +25,7 @@ Azure dosya paylaşımlarından yeni bir deneyiminiz varsa, aşağıdaki makale 
 > Azure dosyaları, RC4-HMAC şifrelemesi ile Azure AD DS Kerberos kimlik doğrulamasını destekler. AES Kerberos şifrelemesi henüz desteklenmiyor.
 > Azure dosyaları Azure AD ile tam eşitlemeyle Azure AD DS kimlik doğrulamasını destekler. Azure AD 'de yalnızca sınırlı bir kimlik kümesini eşitleyen Azure AD DS kapsamlı eşitlemeyi etkinleştirdiyseniz, kimlik doğrulama ve yetkilendirme desteklenmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure dosya paylaşımları için SMB üzerinden Azure AD 'yi etkinleştirmeden önce, aşağıdaki önkoşulları tamamladığınızdan emin olun:
 
@@ -58,7 +59,7 @@ Azure dosya paylaşımları için SMB üzerinden Azure AD 'yi etkinleştirmeden 
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Azure AD DS ile Azure dosyaları kimlik doğrulaması, [tüm Azure genel bölgelerinde](https://azure.microsoft.com/global-infrastructure/locations/)kullanılabilir.
+Azure AD DS ile Azure dosyaları kimlik doğrulaması, [tüm Azure ortak ve gov bölgelerinde](https://azure.microsoft.com/global-infrastructure/locations/)kullanılabilir.
 
 ## <a name="overview-of-the-workflow"></a>İş akışına genel bakış
 

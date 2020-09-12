@@ -3,12 +3,12 @@ title: Medya grafiği kavramı-Azure
 description: Medya grafiği, medyanın nerede yakalanabileceğini, nasıl işleneceğini ve sonuçların nereye teslim edileceğini tanımlamanızı sağlar. Bu makale, medya grafiği kavramının ayrıntılı bir açıklamasını vermektedir.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048440"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567953"
 ---
 # <a name="media-graph"></a>Medya grafiği
 
@@ -21,7 +21,8 @@ ms.locfileid: "89048440"
 
 Medya grafiği, medyanın nerede yakalanabileceğini, nasıl işleneceğini ve sonuçların nereye teslim edileceğini tanımlamanızı sağlar. Bunu, bileşenleri veya düğümleri istenen şekilde bağlayarak gerçekleştirirsiniz. Aşağıdaki diyagramda bir medya grafiğinin grafik temsili verilmiştir.  
 
-![Medya grafiğinin grafik gösterimi](./media/media-graph/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/media-graph.svg" alt-text="Medya grafiği":::
 
 IoT Edge üzerindeki canlı video analizi, farklı kaynak, işlemci ve havuz türlerini destekler.
 
@@ -39,7 +40,8 @@ Topolojideki parametrelerin değerleri, topolojiye başvuran grafik örnekleri o
 
 Grafik topolojileri ve grafik örneklerinin yaşam döngüsü aşağıdaki durum diyagramında gösterilmiştir.
 
-![Graph topolojisi ve grafik örneği yaşam döngüsü](./media/media-graph/graph-topology-lifecycle.svg)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Graph topolojisi ve grafik örneği yaşam döngüsü":::
 
 [Graph topolojisi oluşturmaya](direct-methods.md#graphtopologyset)başlayabilirsiniz. Ardından, Bu topolojiyle işlemek istediğiniz her canlı video akışı için [bir grafik örneği oluşturursunuz](direct-methods.md#graphinstanceset). 
 
@@ -88,11 +90,11 @@ Hareket algılama işlemcisi düğümü, canlı video 'daki hareketi algılaman�
 
 #### <a name="http-extension-processor"></a>HTTP uzantısı işlemcisi
 
-HTTP uzantısı işlemci düğümü, kendi IoT Edge modülünüzü bir medya grafiğine bağlamanıza olanak sağlar. Bu düğüm, giriş olarak kodu çözülmüş video çerçevelerini alır ve bu çerçeveleri modülünüzün açığa çıkarılan bir HTTP REST uç noktasına geçirir. Bu düğüm, gerekirse REST uç noktasıyla kimlik doğrulaması yapabilir. Ayrıca, düğümün REST uç noktasına geçmeden önce video çerçevelerini ölçeklendirmeye ve kodlamaya yönelik yerleşik bir görüntü biçimlendirici vardır. Scaler, görüntü en boy oranının korunmasıyla, doldurulmuş veya esneme yönelik seçeneklere sahiptir. Görüntü Kodlayıcısı JPEG, PNG veya BMP biçimlerini destekler.
+HTTP uzantısı işlemci düğümü, kendi IoT Edge modülünüzü bir medya grafiğine bağlamanıza olanak sağlar. Bu düğüm, giriş olarak kodu çözülmüş video çerçevelerini alır ve bu çerçeveleri modülünüzün açığa çıkarılan bir HTTP REST uç noktasına geçirir. Bu düğüm, gerekirse REST uç noktasıyla kimlik doğrulaması yapabilir. Ayrıca, düğümün REST uç noktasına geçmeden önce video çerçevelerini ölçeklendirmeye ve kodlamaya yönelik yerleşik bir görüntü biçimlendirici vardır. Scaler, görüntü en boy oranının korunmasıyla, doldurulmuş veya esneme yönelik seçeneklere sahiptir. Görüntü Kodlayıcısı JPEG, PNG veya BMP biçimlerini destekler. [İşlemci hakkında](media-graph-extension-concept.md#http-extension-processor)daha fazla bilgi edinin.
 
 #### <a name="grpc-extension-processor"></a>gRPC uzantı işlemcisi
 
-GRPC uzantısı işlemci düğümü, kodu çözülmüş video çerçevelerini giriş olarak alır ve bu çerçeveleri modülünüzün açığa çıkarılan bir [GRPC](terminology.md#grpc) uç noktasına geçirir. Ayrıca, düğüm, gRPC uç noktasına geçmeden önce video çerçevelerini ölçeklendirmeye ve kodlamaya yönelik yerleşik bir görüntü biçimlendirici içerir. Scaler, görüntü en boy oranının korunmasıyla, doldurulmuş veya esneme yönelik seçeneklere sahiptir. Görüntü Kodlayıcısı JPEG, PNG veya BMP biçimlerini destekler.
+GRPC uzantısı işlemci düğümü, kodu çözülmüş video çerçevelerini giriş olarak alır ve bu çerçeveleri modülünüzün açığa çıkarılan bir [GRPC](terminology.md#grpc) uç noktasına geçirir. Düğüm, [paylaşılan bellek](https://en.wikipedia.org/wiki/Shared_memory) kullanarak verilerin aktarımını veya doğrudan GRPC iletilerinin gövdesine içerik katıştırmayı destekler. Ayrıca, düğüm, gRPC uç noktasına geçmeden önce video çerçevelerini ölçeklendirmeye ve kodlamaya yönelik yerleşik bir görüntü biçimlendirici içerir. Scaler, görüntü en boy oranının korunmasıyla, doldurulmuş veya esneme yönelik seçeneklere sahiptir. Görüntü Kodlayıcısı JPEG, PNG veya BMP biçimlerini destekler. [İşlemci hakkında](media-graph-extension-concept.md#grpc-extension-processor)daha fazla bilgi edinin.
 
 #### <a name="signal-gate-processor"></a>Sinyal kapısı işlemcisi  
 

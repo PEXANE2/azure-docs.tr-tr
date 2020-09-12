@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/01/2020
+ms.date: 09/02/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a15024362b31d49e51b291c10401bbf2965f1d82
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229880"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469873"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
 
@@ -99,7 +99,7 @@ Varsayılan görünümde, aşağıdaki filtreleri seçebilirsiniz:
 - Eylem
 
 
-![Filtrele](./media/concept-provisioning-logs/default-filter.png "Filtre")
+![Filtre ekleme](./media/concept-provisioning-logs/default-filter.png "Filtre")
 
 **Kimlik** filtresi, ilgilendiğiniz adı veya kimliği belirtmenize olanak sağlar. Bu kimlik bir Kullanıcı, Grup, rol ya da başka bir nesne olabilir. Nesnenin adına veya KIMLIğINE göre arama yapabilirsiniz. KIMLIK senaryoya göre farklılık gösterir. Örneğin, Azure AD 'den SalesForce 'a bir nesne sağlarken, kaynak KIMLIĞI Azure AD 'deki kullanıcının nesne KIMLIĞIDIR, ancak targetID, Salesforce 'daki kullanıcının KIMLIĞIDIR. Workday 'den Active Directory 'e sağlanırken kaynak KIMLIĞI iş günü çalışan çalışan KIMLIĞIDIR. Kullanıcı adının Kimlik sütununda her zaman mevcut olamayacağını unutmayın. Her zaman bir KIMLIK olur. 
 
@@ -175,7 +175,7 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 - Özet
 
 
-![Filtrele](./media/concept-provisioning-logs/provisioning-tabs.png "Sekmeler")
+![Sağlama ayrıntıları](./media/concept-provisioning-logs/provisioning-tabs.png "Sekmeler")
 
 
 
@@ -190,7 +190,7 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 
 
-![Filtrele](./media/concept-provisioning-logs/steps.png "Filtre")
+![Adımlar](./media/concept-provisioning-logs/steps.png "Filtre")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Sorun giderme ve öneriler
@@ -214,11 +214,13 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 - Değişiklik KIMLIĞI özniteliğini benzersiz tanımlayıcı olarak kullanabilirsiniz. Bu örneğin, ürün desteğiyle etkileşim kurarken faydalı olur.
 
-- Şu anda sağlama verilerini indirme seçeneği yoktur.
+- Şu anda bir CSV dosyası olarak sağlama verileri indirme seçeneği yoktur, ancak [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)kullanarak verileri dışarı aktarabilirsiniz.
 
 - Şu anda Log Analytics desteği yoktur.
 
 - Kapsamda olmayan kullanıcılar için Atlanan olayları görebilirsiniz. Özellikle eşitleme kapsamı tüm kullanıcılar ve gruplar olarak ayarlandığında bu beklenmektedir. Hizmetimiz, Kiracıdaki tüm nesneleri, kapsam dışı olsalar da değerlendirmeyecektir. 
+
+- Sağlama günlükleri Şu anda kamu bulutu 'nda kullanılamıyor. Sağlama günlüklerine erişemedik, lütfen geçici bir geçici çözüm olarak denetim günlüklerini kullanın.  
 
 ## <a name="error-codes"></a>Hata Kodları
 
@@ -244,6 +246,7 @@ Sağlama günlüklerinde bulabileceğiniz hataların nasıl çözümleneceğini 
 |DuplicateSourceEntries | Yapılandırılmış eşleşen özniteliklerle birden fazla kullanıcı bulunduğundan işlem tamamlanamadı. Yinelenen kullanıcıyı kaldırın ya da öznitelik eşlemelerinizi [burada](../app-provisioning/customize-application-attributes.md)açıklandığı gibi yeniden yapılandırın.|
 |Importatlandı | Her kullanıcı değerlendirildiğinde, kullanıcıyı kaynak sistemden içeri aktarmayı deneiyoruz. Bu hata genellikle, içeri aktarılan Kullanıcı öznitelik eşlemelerinizde tanımlanan eşleşen özellik eksikse oluşur. Eşleşen öznitelik için Kullanıcı nesnesinde bir değer olmadan kapsam, eşleme veya dışarı aktarma değişikliklerini değerlendiremedik. Not, bu hatanın varlığı kullanıcının kapsam içinde olduğunu göstermez, ancak kullanıcı için kapsamları henüz değerlendirdik.|
 |Entrysynchronizationatlandı | Sağlama Hizmeti, kaynak sistemi başarıyla sorguladı ve kullanıcıyı tanımladı. Kullanıcı üzerinde başka bir eylem yapılmadı ve bunlar atlandı. Atlama, kullanıcının kapsam dışına çıkmasına veya daha fazla değişiklik gerekmeden hedef sistemde zaten mevcut olan kullanıcıdan kaynaklanıyor olabilir.|
+|Systemforcrossdomainıdentitymanagementmultipleentriesınresponse| Kullanıcı veya Grup almak için bir GET isteği gerçekleştirirken, yanıtta birden çok kullanıcı veya grup aldık. Yanıtta yalnızca bir kullanıcı veya grup almayı bekliyorduk. [Örneğin](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group), bir grubu almak ve üyeleri hariç tutmak için bir filtre sağlamak üzere bir get ISTEğI ve SCIM uç noktanız üyeleri döndürürse, bu hatayı oluşturacağız.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

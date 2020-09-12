@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: Önkoşullar'
 description: Bu sayfada bir Azure ExpressRoute bağlantı hattı sipariş etmeden önce karşılanması gereken gereksinimlerin listesi bulunmaktadır. Bir denetim listesi içerir.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: cherylmc
-ms.openlocfilehash: a72eba9bde0745e66bdf8e7efd8eaec7d6a0b186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 87c8a7523222afd3ae4daeb8fb5824025e693cd1
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74083365"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569637"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute önkoşulları ve denetim listesi
 ExpressRoute kullanarak Microsoft bulut hizmetlerine bağlanmak için, aşağıdaki bölümlerde listelenen gereksinimlerin karşılanmış olduğunu doğrulamanız gerekir.
@@ -20,8 +20,8 @@ ExpressRoute kullanarak Microsoft bulut hizmetlerine bağlanmak için, aşağıd
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 ## <a name="azure-account"></a>Azure hesabı
-* Geçerli ve etkin bir Microsoft Azure hesabı. ExpressRoute bağlantı hattı kurmak için bu hesap gereklidir. ExpressRoute bağlantı hatları Azure aboneliklerinin içindeki kaynaklardır. Bağlantı, Office 365 gibi Azure olmayan Microsoft bulut hizmetleriyle sınırlı olsa bile bir Azure aboneliği gereksinimidir.
-* Etkin bir Office 365 aboneliği (Office 365 hizmetlerini kullanıyorsanız) Daha fazla bilgi için bu makalenin Office 365'e özel gereksinimler bölümünü okuyun.
+* Geçerli ve etkin bir Microsoft Azure hesabı. ExpressRoute bağlantı hattı kurmak için bu hesap gereklidir. ExpressRoute bağlantı hatları Azure aboneliklerinin içindeki kaynaklardır. Bağlantı, Microsoft 365 gibi Azure olmayan Microsoft bulut hizmetleriyle sınırlı olsa bile bir Azure aboneliği gereksinimidir.
+* Etkin bir Microsoft 365 aboneliği (Microsoft 365 hizmetleri kullanılıyorsa). Daha fazla bilgi için bu makalenin Microsoft 365 belirli gereksinimler bölümüne bakın.
 
 ## <a name="connectivity-provider"></a>Bağlantı sağlayıcısı
 
@@ -36,16 +36,16 @@ ExpressRoute kullanarak Microsoft bulut hizmetlerine bağlanmak için, aşağıd
 * **QoS**: Skype Kurumsal’da farklı QoS davranışları gerektiren çeşitli hizmetler (ör. ses, video, mesaj) vardır. [Qos gereksinimleri](expressroute-qos.md)ne siz ve sağlayıcınız tarafından uyulmalıdır.
 * **Ağ Güvenliği**: ExpressRoute ile Microsoft Bulut'a bağlanırken [ağ güvenliğine](../best-practices-network-security.md) dikkat edin.
 
-## <a name="office-365"></a>Office 365
-ExpressRoute'ta Office 365'i etkinleştirmeyi planlıyorsanız, Office 365 gereksinimleri hakkında daha fazla bilgi içeren aşağıdaki belgelere göz atın.
+## <a name="microsoft-365"></a>Microsoft 365
+ExpressRoute üzerinde Microsoft 365 etkinleştirmeyi planlıyorsanız, Microsoft 365 gereksinimler hakkında daha fazla bilgi için aşağıdaki belgeleri gözden geçirin.
 
-* [Office 365 için ExpressRoute’a Genel Bakış](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
-* [Office 365 için ExpressRoute ile yönlendirme](https://support.office.com/article/Routing-with-ExpressRoute-for-Office-365-e1da26c6-2d39-4379-af6f-4da213218408)
+* [Microsoft 365 için Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)
+* [Microsoft 365 için ExpressRoute ile yönlendirme](/microsoft-365/enterprise/routing-with-expressroute)
 * [ExpressRoute ile yüksek kullanılabilirlik ve yük devretme](https://aka.ms/erhighavailability)
-* [Office 365 URL’leri ve IP adres aralıkları](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
-* [Office 365 için ağ planlama ve performans ayarlama](https://support.office.com/article/Network-planning-and-performance-tuning-for-Office-365-e5f1228c-da3c-4654-bf16-d163daee8848)
-* [Ağ bant genişliği hesaplayıcıları ve araçları](https://support.office.com/article/Network-and-migration-planning-for-Office-365-f5ee6c33-bcd7-4b0b-b0f8-dc1d9fb8d132)
-* [Office 365’i şirket içi ortamlarla tümleştirme](https://support.office.com/article/Office-365-integration-with-on-premises-environments-263faf8d-aa21-428b-aed3-2021837a4b65)
+* [Microsoft 365 URL 'Leri ve IP adresi aralıkları](/microsoft-365/enterprise/urls-and-ip-address-ranges)
+* [Microsoft 365 için ağ planlama ve performans ayarlaması](/microsoft-365/enterprise/network-planning-and-performance)
+* [Microsoft 365 için ağ ve geçiş planlaması](/microsoft-365/enterprise/network-and-migration-planning)
+* [Şirket içi ortamlarla Microsoft 365 tümleştirme](/microsoft-365/enterprise/microsoft-365-integration)
 * [Office 365'te ExpressRoute ileri düzey eğitim videoları](https://channel9.msdn.com/series/aer/)
 
 ## <a name="next-steps"></a>Sonraki adımlar

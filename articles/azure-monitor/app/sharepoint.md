@@ -2,20 +2,20 @@
 title: Bir SharePoint sitesini Application Insights ile izleme
 description: Yeni bir izleme anahtarı ile yeni bir uygulamayı izlemeye başlama
 ms.topic: conceptual
-ms.date: 07/11/2018
-ms.openlocfilehash: 392c0e0ee46e8acd540d498cbda1d240611d182e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/08/2020
+ms.openlocfilehash: 0d365e1fbcc52e14cfc727dd1de3e31a7d3e5d68
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326537"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536506"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Bir SharePoint sitesini Application Insights ile izleme
 
 Azure Application Insights, uygulamalarınızın kullanılabilirliğini, performansını ve kullanımını izler. Burada, bir SharePoint sitesi için nasıl ayarlayacağınızı öğreneceksiniz.
 
 > [!NOTE]
-> Güvenlik sorunları nedeniyle, bu makalede açıklanan betiği SharePoint modern UX içindeki Web sayfalarına doğrudan ekleyemezsiniz. Alternatif olarak, SharePoint sitelerinize Application Insights yüklemek için kullanabileceğiniz özel bir uzantı oluşturmak üzere [SharePoint Framework 'ü (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. [Appınsights 'ın sıfırdan yüklenmiş bir SPFx uzantı çözümü oluşturma](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) veya [örneği görüntüleme](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample). 
+> Güvenlik sorunları nedeniyle, bu makalede açıklanan betiği SharePoint modern UX içindeki Web sayfalarına doğrudan ekleyemezsiniz. Alternatif olarak, SharePoint sitelerinize Application Insights yüklemek için kullanabileceğiniz özel bir uzantı oluşturmak üzere [SharePoint Framework 'ü (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. [Appınsights 'ın sıfırdan yüklenmiş bir SPFx uzantı çözümü oluşturma](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) veya [örneği görüntüleme](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample-NPM). 
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 [Azure portalında](https://portal.azure.com) yeni bir Application Insights kaynağı oluşturun. Uygulama türü olarak ASP.NET’i seçin.

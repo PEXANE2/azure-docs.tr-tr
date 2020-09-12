@@ -2,13 +2,13 @@
 title: Azure Lab Services 'de laboratuvara ek sahipler ekleme
 description: Bu makalede, bir yöneticinin Azure Lab Services bir laboratuvara sahip olarak Kullanıcı nasıl ekleyebileceğiniz gösterilmektedir.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 6671a3070dae672769eecf59d614d3b75455ef5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/04/2020
+ms.openlocfilehash: 4b46dd08a3b9527cdfc7bdf766ee4976e67656d0
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445874"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482678"
 ---
 # <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Azure Lab Services ' de var olan laboratuvara ek sahipler ekleme
 Bu makalede, yönetici olarak, var olan laboratuvara nasıl ek sahipler ekleyebileceğiniz gösterilmektedir.
@@ -26,11 +26,14 @@ Bir kullanıcıyı mevcut bir laboratuvara ek bir sahip olarak eklemek için, ö
 3. **Rol ataması Ekle** sayfasında, aşağıdaki adımları uygulayın: 
     1. **Rol**için **okuyucu** ' yı seçin. 
     2. Kullanıcıyı seçin. 
-    3. **Kaydet**'i seçin. 
+    3. **Kaydet**’i seçin. 
 
         ![Laboratuvar hesabı için okuyucu rolüne kullanıcı ekleme ](./media/how-to-add-user-lab-owner/reader-lab-account.png)
 
 ## <a name="add-user-to-the-owner-role-for-the-lab"></a>Laboratuvar için Kullanıcı sahibi rolüne kullanıcı ekleme
+
+> [!NOTE]
+> Kullanıcının laboratuvara yalnızca okuyucu erişimi varsa, laboratuvar labs.azure.com içinde gösterilmez.
 
 1. **Laboratuvar hesabı** sayfasında, sol taraftaki menüden **Tüm Labs** ' i seçin.
 2. Sahip olarak Kullanıcı eklemek istediğiniz **Laboratuvarı** seçin. 
@@ -41,7 +44,7 @@ Bir kullanıcıyı mevcut bir laboratuvara ek bir sahip olarak eklemek için, ö
 5. **Rol ataması Ekle** sayfasında, aşağıdaki adımları uygulayın: 
     1. Rolün **sahibini** seçin. **role** 
     2. Kullanıcıyı seçin. 
-    3. **Kaydet**'i seçin. 
+    3. **Kaydet**’i seçin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Kullanıcının [Laboratuvar Hizmetleri portalında](https://labs.azure.com)oturum açarken Laboratuvarı görtiğini onaylayın.

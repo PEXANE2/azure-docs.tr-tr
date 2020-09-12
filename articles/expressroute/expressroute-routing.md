@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: yönlendirme gereksinimleri'
 description: Bu sayfada, ExpressRoute devreleri için yönlendirmeyi yapılandırma ve yönetmeye yönelik ayrıntılı gereksinimler verilmektedir.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.author: cherylmc
-ms.openlocfilehash: 7e70348ba1638057fdab579c1f2799a0f5aa77a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341359"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569620"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute yönlendirme gereksinimleri
 Microsoft bulut hizmetlerine ExpressRoute kullanarak bağlanmak için yönlendirmeyi ayarlamanız ve yönetmeniz gerekir. Bazı bağlantı sağlayıcıları yönlendirme ayarlama ve yönetimini yönetilen bir hizmet olarak sunar. Bu hizmetin sunulup sunulmadığını öğrenmek için bağlantı sağlayıcınıza başvurun. Bu hizmet sağlanmıyorsa aşağıdaki gereksinimlere uymalısınız:
@@ -83,7 +83,7 @@ BGP oturumlarını ayarlamak için sahip olduğunuz ortak IP adreslerini kullanm
 Özel eşleme için genel veya özel IPv4 adresleri kullanmayı tercih edebilirsiniz. Özel eşleme sırasında adreslerin diğer müşterilerle çakışmasını önlemek için trafiğinizin uçtan uca yalıtılmasını sağlarız. Bu adresler İnternet’e tanıtılmaz. 
 
 ### <a name="microsoft-peering"></a>Microsoft eşlemesi
-Microsoft eşleme yolu, Microsoft bulut hizmetlerine bağlanmanızı sağlar. Hizmet listesi, Exchange Online, SharePoint Online, Skype Kurumsal ve Microsoft ekipleri gibi Office 365 hizmetlerini içerir. Microsoft, Microsoft eşlemesi üzerinde çift yönlü bağlantıyı destekler. Microsoft bulut hizmetlerini hedefleyen trafik, Microsoft ağına girmeden önce geçerli genel IPv4 adresleri kullanmalıdır.
+Microsoft eşleme yolu, Microsoft bulut hizmetlerine bağlanmanızı sağlar. Hizmet listesi, Exchange Online, SharePoint Online, Skype Kurumsal ve Microsoft ekipleri gibi Microsoft 365 hizmetleri içerir. Microsoft, Microsoft eşlemesi üzerinde çift yönlü bağlantıyı destekler. Microsoft bulut hizmetlerini hedefleyen trafik, Microsoft ağına girmeden önce geçerli genel IPv4 adresleri kullanmalıdır.
 
 IP adresi ve AS numarasının aşağıdaki kayıt defterlerinden birinde size kayıtlı olduğundan emin olun:
 
@@ -100,7 +100,7 @@ IP adresi ve AS numarasının aşağıdaki kayıt defterlerinden birinde size ka
 Özel AS Numarası, Microsoft Eşlemesi ile birlikte kullanılabilir ancak bunun için de el ile doğrulama yapılması gerekecektir. Ayrıca, alınan ön ekler için AS YOLU’ndaki özel AS numaralarını kaldırırız. Bunun sonucu olarak, [Microsoft Eşlemesi için yönlendirmeyi etkilemek](expressroute-optimize-routing.md) amacıyla AS YOLU’nda özel AS numaraları ekleyemezsiniz. 
 
 > [!IMPORTANT]
-> Genel Internet ve ExpressRoute üzerinden aynı genel IP yolunu duyurmayın. Asimetrik yönlendirmeye neden olan hatalı yapılandırmanın riskini azaltmak için, ExpressRoute üzerinden Microsoft 'a tanıtılan [NAT IP adreslerinin](expressroute-nat.md) , internet 'e tanıtılmayan bir aralıktan olması önemle önerilir. Bu ulaşmak mümkün değilse, ExpressRoute üzerinde Internet bağlantından daha belirli bir Aralık tanıttığınızdan emin olmak önemlidir. NAT için ortak yolun yanı sıra, Microsoft içindeki Office 365 uç noktaları ile iletişim kuran şirket içi ağınızda bulunan sunucular tarafından kullanılan genel IP adreslerini ExpressRoute üzerinden de tanıtabilirsiniz. 
+> Genel Internet ve ExpressRoute üzerinden aynı genel IP yolunu duyurmayın. Asimetrik yönlendirmeye neden olan hatalı yapılandırmanın riskini azaltmak için, ExpressRoute üzerinden Microsoft 'a tanıtılan [NAT IP adreslerinin](expressroute-nat.md) , internet 'e tanıtılmayan bir aralıktan olması önemle önerilir. Bu ulaşmak mümkün değilse, ExpressRoute üzerinde Internet bağlantından daha belirli bir Aralık tanıttığınızdan emin olmak önemlidir. NAT için ortak yolun yanı sıra, Microsoft içindeki Microsoft 365 uç noktalarıyla iletişim kuran şirket içi ağınızda bulunan sunucular tarafından kullanılan genel IP adreslerini ExpressRoute üzerinden de tanıtabilirsiniz. 
 > 
 > 
 
@@ -138,7 +138,7 @@ Varsayılan yollar yalnızca Azure özel eşleme oturumlarında kullanılabilir.
 * İnternet bağlantısı gerektiren her alt ağ için İnternet bağlantısına izin vermek üzere kullanıcı tanımlı yönlendirmeyi kullanırsınız.
 
 > [!NOTE]
-> Varsayılan yolların tanıtılması, Windows ve diğer VM lisans etkinleştirmelerini bozar. Bu sorunu çözmek için [buradaki](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) yönergeleri izleyin.
+> Varsayılan yolların tanıtılması, Windows ve diğer VM lisans etkinleştirmelerini bozar. Bu sorunu çözmek için [buradaki](https://docs.microsoft.com/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) yönergeleri izleyin.
 > 
 > 
 
@@ -163,14 +163,14 @@ Bir jeopolitik bölge için birden fazla ExpressRoute devresi satın alabilirsin
 | Orta Batı ABD | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 | 12076:55027 |
 | Orta Kuzey ABD | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 | 12076:55007 |
 | Orta Güney ABD | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 | 12076:55008 |
-| Orta ABD | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
+| Central US | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
 | Orta Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 | 12076:55020 |
 | Doğu Kanada | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 | 12076:55021 |
 | **Güney Amerika** | |
-| Güney Brezilya | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 | 12076:55014 |
+| Brezilya Güney | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 | 12076:55014 |
 | **Avrupa** | |
 | Kuzey Avrupa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 | 12076:55003 |
-| Batı Avrupa | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 | 12076:55002 |
+| West Europe | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 | 12076:55002 |
 | Güney Birleşik Krallık | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 | 12076:55024 |
 | Batı Birleşik Krallık | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 | 12076:55025 |
 | Orta Fransa | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 | 12076:55030 |
@@ -189,7 +189,7 @@ Bir jeopolitik bölge için birden fazla ExpressRoute devresi satın alabilirsin
 | Batı Japonya | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 | 12076:55013 |
 | **Avustralya** | |
 | Doğu Avustralya | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 | 12076:55015 |
-| Güneydoğu Avustralya | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
+| Avustralya Güneydoğu | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
 | **Australia Government** | |
 | Orta Avustralya | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 | 12076:55032 |
 | Orta Avustralya 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 | 12076:55033 |
@@ -229,10 +229,10 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 | Azure Resource Manager |12076:5070 |
 | Diğer Office 365 çevrimiçi hizmetleri * * | 12076:5100 |
 
-\*Azure küresel hizmetler şu anda yalnızca Azure DevOps içerir. \
+\* Azure küresel hizmetler şu anda yalnızca Azure DevOps içerir. \
 \*\*Microsoft 'un yetkilendirmesi gereken yetkilendirme, [Microsoft eşlemesi için rota filtrelerini yapılandırma](how-to-routefilter-portal.md) konusuna bakın\
-\*\*\*Bu topluluk, Microsoft ekipleri Hizmetleri için gerekli yolları da yayımlar. \
-\*\*\*\*CRM Online, Dynamics v 8.2 ve daha fazlasını destekler. Daha yüksek sürümler için, Dynamics dağıtımlarınız için bölgesel topluluğu seçin.
+\*\*\* Bu topluluk, Microsoft ekipleri Hizmetleri için gerekli yolları da yayımlar. \
+\*\*\*\* CRM Online, Dynamics v 8.2 ve daha fazlasını destekler. Daha yüksek sürümler için, Dynamics dağıtımlarınız için bölgesel topluluğu seçin.
 
 > [!NOTE]
 > Microsoft, Microsoft'a tanıtılan yollar üzerinde ayarladığınız hiçbir BGP topluluk değerini dikkate almaz.

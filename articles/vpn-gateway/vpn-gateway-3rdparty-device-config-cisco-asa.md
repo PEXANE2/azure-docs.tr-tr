@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/19/2018
+ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: f693f6a40b87d024430c7626736fab0d0a032238
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 82e00e0b519040c57fdfd798d8992086c61e5481
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082010"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426189"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Örnek yapılandırma: Cisco ASA cihazı (Ikev2/BGP yok)
 Bu makalede Cisco Uyarlamalı güvenlik gereci (ASA) cihazlarını Azure VPN ağ geçitlerine bağlamak için örnek yapılandırma sağlanmaktadır. Örnek, Sınır Ağ Geçidi Protokolü (BGP) olmadan Ikev2 çalıştıran Cisco ASA cihazları için geçerlidir. 
@@ -62,7 +62,7 @@ Bu bölümde örnek için parametreler listelenir.
 | * Şirket içi BGP eşi IP 'si     | 10.52.255.254                |
 |                              |                              |
 
-\*Yalnızca BGP için isteğe bağlı parametre.
+\* Yalnızca BGP için isteğe bağlı parametre.
 
 ### <a name="ipsecike-policy-and-parameters"></a>IPSec/ıKE ilkesi ve parametreleri
 Aşağıdaki tabloda, örnekte kullanılan IPSec/ıKE algoritmaları ve parametreleri listelenmektedir. VPN cihaz modelleriniz ve bellenim sürümleriniz için desteklenen algoritmaların doğrulanması için VPN cihazı belirtimlerine başvurun.
@@ -80,7 +80,7 @@ Aşağıdaki tabloda, örnekte kullanılan IPSec/ıKE algoritmaları ve parametr
 | Önceden Paylaşılan Anahtar   | PreSharedKey                         |
 |                  |                                      |
 
-\*IPSec şifreleme algoritması AES-GCM olduğunda, bazı cihazlarda IPSec bütünlüğü null bir değer olmalıdır.
+\* IPSec şifreleme algoritması AES-GCM olduğunda, bazı cihazlarda IPSec bütünlüğü null bir değer olmalıdır.
 
 ### <a name="asa-device-support"></a>ASA cihaz desteği
 

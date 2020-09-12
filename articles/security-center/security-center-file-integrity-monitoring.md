@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 68d3646b4ebc3fc5dd5943186afdb75307dfd5ed
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 910d98558e5b949a76202cce48c2a210531d5c35
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042675"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459802"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde Dosya Bütünlüğü İzleme
 Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü Izleme (FIM) yapılandırma hakkında bilgi edinin.
@@ -199,7 +199,7 @@ Değişiklik **ayrıntıları** , arama alanına bir değişiklik girdiğinizde 
 
    ![İzlenecek yeni bir öğe ekleyin][14]
 
-3. **Add (Ekle)** seçeneğini belirleyin. **Değişiklik izleme Için Ekle** açılır.
+3. **Ekle**’yi seçin. **Değişiklik izleme Için Ekle** açılır.
 
    ![İstenen bilgileri girin][15]
 
@@ -249,7 +249,7 @@ Bu makalede, güvenlik merkezi 'nde dosya bütünlüğü Izleme (FIM) kullanmay�
 
 * [Güvenlik Ilkelerini ayarlama](tutorial-security-policy.md) --Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
 * [Güvenlik önerilerini yönetme](security-center-recommendations.md) --önerilerin Azure kaynaklarınızı korumanıza nasıl yardımcı olduğunu öğrenin.
-* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) - En son Azure güvenlik haberlerini ve bilgilerini edinin.
+* [Azure Güvenlik blogu](https://docs.microsoft.com/archive/blogs/azuresecurity/) - En son Azure güvenlik haberlerini ve bilgilerini edinin.
 
 <!--Image references-->
 [1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png

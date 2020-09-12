@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688104"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469924"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Inkapılı haritalar oluşturmak için Oluşturucu kullanma
 
@@ -117,10 +117,10 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
 
     :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Konum anahtarının değerini kopyalayın":::
 
-4. Oluşturucu sekmesinde yeni bir http **Al** yöntemi başlatın. Azure Maps birincil abonelik anahtarınızı öğesine ekleyin `status URL` . **GET** `status URL` Adım 3 ' te kopyaladığınız bir get isteği yapın. `status URL`AŞAĞıDAKI URL gibi görünür:
+4. Oluşturucu sekmesinde yeni bir **Get** http yöntemi başlatın. Azure Maps birincil abonelik anahtarınızı öğesine ekleyin `status URL` . **GET** `status URL` Adım 3 ' te kopyaladığınız bir get isteği yapın. `status URL`AŞAĞıDAKI URL gibi görünür:
 
     ```http
-    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
     Dönüştürme işlemi henüz tamamlanmadıysa, aşağıdaki JSON yanıtına benzer bir şey görebilirsiniz:
@@ -208,7 +208,7 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
 3. Tileset için üzerinde bir **Get** isteği yapın `statusURL` . Kimlik doğrulaması için Azure Maps birincil abonelik anahtarınızı ekleyin. İstek aşağıdaki URL gibi görünmelidir:
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 4. HTTP isteği **Al** işlemi başarıyla tamamlandığında, yanıt üst bilgisi `tilesetId` oluşturulan tileset için öğesini içerir. Öğesini kopyalayın `tilesetId` .

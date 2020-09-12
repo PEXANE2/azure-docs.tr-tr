@@ -1,19 +1,19 @@
 ---
 title: Apache Hadoop mimarisi-Azure HDInsight
 description: Azure HDInsight kümelerinde Apache Hadoop depolamayı ve işlemeyi açıklar.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbd1303417f008da476356a274dde30d7d02d36f
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77162217"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505514"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight’ta Apache Hadoop mimarisi
 
@@ -56,7 +56,7 @@ Depolama hesabınızdan bir dosyayı geri almak için, bkz.:
 * [Azure Depolama blobları için geçici silme](../storage/blobs/storage-blob-soft-delete.md)
 * [Blobu geri al](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
 
-### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage 1. Nesil
 
 [Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 

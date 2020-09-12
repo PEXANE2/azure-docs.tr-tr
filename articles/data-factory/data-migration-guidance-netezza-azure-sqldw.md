@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416451"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442846"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Şirket içi Netezza sunucusundan Azure 'a veri geçirmek için Azure Data Factory kullanma 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory, verileri şirket içi Netezza sunucusundan Azure depolama hesabınıza veya Azure SQL veri ambarı veritabanına geçirmek için performanslı, sağlam ve ekonomik bir mekanizma sağlar. 
+Azure Data Factory, verileri şirket içi Netezza sunucusundan Azure depolama hesabınıza veya Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) veritabanına geçirmek için bir performans, sağlam ve ekonomik bir mekanizma sağlar. 
 
 Bu makalede veri mühendisleri ve geliştiriciler için aşağıdaki bilgiler sağlanmaktadır:
 
@@ -57,7 +57,7 @@ Azure Data Factory kopyalama etkinliği ile kaynak ve havuz veri depoları aras�
 
 ## <a name="network-security"></a>Ağ güvenliği 
 
-Azure Data Factory, varsayılan olarak, şirket içi Netezza sunucusundan verileri bir Azure depolama hesabına veya Azure SQL veri ambarı veritabanına aktarır. Köprü Metni Aktarım Protokolü güvenli (HTTPS) üzerinden şifreli bir bağlantı kullanarak. HTTPS, aktarım sırasında veri şifrelemesi sağlar ve gizlice dinleme ve ortadaki adam saldırıları önler.
+Azure Data Factory, varsayılan olarak, şirket içi Netezza sunucusundan verileri bir Azure depolama hesabına veya Azure SYNAPSE Analytics veritabanına aktarır ve Köprü Metni Aktarım Protokolü güvenli (HTTPS) üzerinden şifreli bir bağlantı kullanın. HTTPS, aktarım sırasında veri şifrelemesi sağlar ve gizlice dinleme ve ortadaki adam saldırıları önler.
 
 Alternatif olarak, verilerin genel İnternet üzerinden aktarılmasını istemiyorsanız, verileri Azure Express Route aracılığıyla özel bir eşleme bağlantısı üzerinden aktararak daha yüksek güvenlik elde etmenize yardımcı olabilirsiniz. 
 
@@ -109,7 +109,7 @@ Yukarıdaki diyagram aşağıdaki gibi yorumlanabilir:
    
    - [Hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) veya bir [depolama hesabı anahtarı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)da kullanabilirsiniz. 
 
-- Azure SQL veri ambarı 'nda kimlik doğrulaması yapmak için:
+- Azure SYNAPSE Analytics 'te kimlik doğrulaması yapmak için:
 
    - [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity)kullanılması önemle önerilir.
    
@@ -131,7 +131,7 @@ Daha büyük tablolar (yani, 100 GB veya daha büyük bir birimi olan veya iki s
 
 Bir ağ veya veri deposu geçici sorunu nedeniyle herhangi bir kopyalama işi başarısız olursa, tablodaki belirli bir bölümü yeniden yüklemek için başarısız kopyalama işini yeniden çalıştırabilirsiniz. Diğer bölümleri yükleyen diğer kopyalama işleri etkilenmez.
 
-Verileri bir Azure SQL veri ambarı veritabanına yüklediğinizde, hazırlama sırasında Azure Blob depolama ile bağlantılı iş içinde PolyBase 'i etkinleştirmenizi öneririz.
+Verileri bir Azure SYNAPSE Analytics veritabanına yüklediğinizde, hazırlama sırasında Azure Blob depolama ile kopyalama işi içinde PolyBase 'i etkinleştirmenizi öneririz.
 
 ### <a name="migrate-delta-data"></a>Delta verilerini geçirme 
 
@@ -162,7 +162,7 @@ Azure Data Factory kopyalama etkinliği tarafından bildirilen azaltma hataları
 
 ### <a name="estimate-your-pricing"></a>Fiyatlandırmanızı tahmin etme 
 
-Şirket içi Netezza sunucusundan bir Azure SQL veri ambarı veritabanına veri geçirmek için oluşturulan aşağıdaki işlem hattını göz önünde bulundurun:
+Şirket içi Netezza sunucusundan bir Azure SYNAPSE Analytics veritabanına veri geçirmek için oluşturulan aşağıdaki işlem hattını göz önünde bulundurun:
 
 ![Fiyatlandırma işlem hattı](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
@@ -196,7 +196,7 @@ Daha fazla bilgi için aşağıdaki makalelere ve kılavuzlara bakın:
 - [ODBC bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure Blob depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage 2. Nesil bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure SQL Veri Ambarı bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
+- [Azure SYNAPSE Analytics Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
 - [Kopyalama etkinliği performans ayarlama Kılavuzu](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [Şirket içinde barındırılan tümleştirme çalışma zamanı HA ve ölçeklenebilirliği](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)

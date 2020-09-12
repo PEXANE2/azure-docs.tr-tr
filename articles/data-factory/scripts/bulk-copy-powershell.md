@@ -10,16 +10,16 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: e0fedd2a304c73347b7ec72818b5289c1df2e561
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecfc9930c3387e19fd74d7cc52d11864ef25259a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248635"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439053"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell betiği-Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
-Bu örnek PowerShell betiği, verileri Azure SQL veritabanı 'ndaki birden çok tablodan Azure SQL veri ambarı 'na kopyalar.
+Bu örnek PowerShell betiği, Azure SQL veritabanı 'ndaki birden çok tablodan verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalar.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -32,7 +32,7 @@ Bu örneği çalıştırmaya yönelik önkoşullar için bkz. [öğretici: toplu
 > [!IMPORTANT]
 > Bu betik, c:\ ' daki sabit sürücünüzde Data Factory varlıkları (bağlı hizmet, veri kümesi ve işlem hattı) tanımlayan JSON dosyaları oluşturur. klasörde.
 
-[!code-powershell[main](../../../powershell_scripts/data-factory/bulk-copy-from-sql-databse-to-sql-data-warehouse/bulk-copy-from-sql-database-to-sql-data-warehouse.ps1 "Bulk copy from Azure SQL Database => Azure SQL Data Warehouse")]
+[!code-powershell[main](../../../powershell_scripts/data-factory/bulk-copy-from-sql-databse-to-sql-data-warehouse/bulk-copy-from-sql-database-to-sql-data-warehouse.ps1 "Bulk copy from Azure SQL Database => Azure Synapse Analytics")]
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 35b91aab8c228fc7dced5dfe06e33f939f4634f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec3fb8609612f3920e330da7922fdd1eb8883305
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080803"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459785"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Azure App Service web uygulamalarınızı ve API'lerinizi koruma
 
@@ -32,7 +32,7 @@ App Service planı etkinken, Güvenlik Merkezi, App Service planınız kapsamın
 Güvenlik Merkezi, bulut ölçeğinden yararlanır ve Azure 'un ortak Web uygulaması saldırılarını izlemek için bir bulut sağlayıcısı olarak sahip olduğu görünürlüğe sahiptir. Güvenlik Merkezi, uygulamalarınızda saldırıları bulabilir ve gelişen saldırıları tanımlayabilir. saldırganlar keşif aşamasında olsa bile, Azure 'da barındırılan birden çok uygulama üzerinde güvenlik açıklarını belirlemek için tarama yapın. Azure-Native hizmeti olarak Güvenlik Merkezi, bu PaaS için temeldeki işlem düğümlerini kapsayan ana bilgisayar tabanlı güvenlik analizlerini sunmaya yönelik benzersiz bir konumda de bulunur ve Güvenlik Merkezi 'nin önceden kullanılmış olan Web uygulamalarına yönelik saldırıları algılamasını sağlar. Daha ayrıntılı bilgi için bkz. [Azure App Service Için tehdit koruması](threat-protection.md#app-services).
 
 
-## <a name="enabling-monitoring-and-protection-of-app-service"></a>App Service izlemeyi ve korumayı etkinleştirme
+## <a name="enable-monitoring-and-protection-of-app-service"></a>App Service izlemeyi ve korumayı etkinleştirme
 
 1. Azure portal, Güvenlik Merkezi ' ni seçin.
 2. **Fiyatlandırma & ayarları** ' na gidin ve bir abonelik seçin.
@@ -64,4 +64,4 @@ Bu makalede, Azure Güvenlik Merkezi'nde izleme işlevlerini nasıl kullanacağ�
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md): Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
 * [Uygulama hizmetleri](security-center-virtual-machine-protection.md#app-services): sistem durumu özetleri ile App Service ortamlarınızın listesini görüntüleyin.
 * [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md): İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
-* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/): Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini bulun.
+* [Azure Güvenlik blogu](https://docs.microsoft.com/archive/blogs/azuresecurity/): Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini bulun.

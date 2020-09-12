@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 0553cb47ba0119cf1bc5e744b689b6c510ba8396
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225691"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594365"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory yönetilen sanal ağ (Önizleme)
 
@@ -59,7 +59,7 @@ Azure Data Factory özel bağlantıları destekler. Özel bağlantı, Azure (Paa
 > Tüm Azure veri kaynaklarınıza bağlanmak için yönetilen özel uç noktalar oluşturmanız önerilir. 
  
 > [!WARNING]
-> Bir PaaS veri deposu (blob, ADLS 2., SQL DW) üzerinde önceden oluşturulmuş bir özel uç nokta varsa ve tüm ağlardan erişime izin veriyorsa bile, ADF yalnızca yönetilen özel uç nokta kullanarak erişebilir. Bu senaryolarda özel bir uç nokta oluşturduğunuzdan emin olun. 
+> PaaS veri deposu (blob, ADLS 2., Azure SYNAPSE Analytics) üzerinde zaten oluşturulmuş bir özel uç nokta varsa ve tüm ağlardan erişime izin veriyorsa bile, ADF yalnızca yönetilen özel uç nokta kullanarak erişebilir. Bu senaryolarda özel bir uç nokta oluşturduğunuzdan emin olun. 
 
 Azure Data Factory içinde yönetilen bir özel uç nokta oluşturduğunuzda bir "bekleyen" durumunda özel bir uç nokta bağlantısı oluşturulur. Bir onay iş akışı başlatılır. Özel bağlantı kaynağı sahibi bağlantıyı onaylaması veya reddetmekten sorumludur.
 
@@ -83,6 +83,23 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure özel bağlantı hizmeti
+- Azure Search
+- MySQL için Azure Veritabanı
+- PostgreSQL için Azure Veritabanı
+- MariaDB için Azure Veritabanı
+
+### <a name="supported-regions"></a>Desteklenen bölgeler
+- Doğu ABD
+- Doğu ABD 2
+- Orta Batı ABD
+- Batı ABD 2
+- Orta Güney ABD
+- Central US
+- Kuzey Avrupa
+- West Europe
+- Güney Birleşik Krallık
+- Güneydoğu Asya
+- Doğu Avustralya
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>ADF tarafından yönetilen sanal ağdan gelen genel uç nokta aracılığıyla giden iletişimler
 - Giden iletişimler için yalnızca bağlantı noktası 443 açılır.

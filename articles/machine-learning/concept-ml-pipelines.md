@@ -9,12 +9,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/17/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a62d12aa92e41d4a91f963d962616af11d917195
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 2232aa46b0586ca62e80c8b9002271a67e4021c1
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604453"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651128"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları nelerdir?
 
@@ -89,7 +89,7 @@ Bir nesne oluşturup çalıştırdığınızda `Pipeline` , aşağıdaki üst d�
 
 ## <a name="building-pipelines-with-the-python-sdk"></a>Python SDK ile işlem hatları oluşturma
 
-[Azure Machine Learning Python SDK 'sında](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), işlem hattı modülünde tanımlanan bir Python nesnesidir `azureml.pipeline.core` . İşlem [hattı](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) nesnesi bir veya daha fazla [ardışık düzen inestep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) nesnesinin sıralı dizisini içerir. `PipelineStep`Sınıf soyuttur ve gerçek adımlar, [Estimatorstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)veya [datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)gibi alt sınıflar olacaktır. [Modulestep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) sınıfı, işlem hatları arasında paylaşılabilen, yeniden kullanılabilir bir adım dizisi içerir. Bir `Pipeline` parçası olarak çalışır `Experiment` .
+[Azure Machine Learning Python SDK 'sında](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), işlem hattı modülünde tanımlanan bir Python nesnesidir `azureml.pipeline.core` . İşlem [hattı](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py&preserve-view=true) nesnesi bir veya daha fazla [ardışık düzen inestep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py&preserve-view=true) nesnesinin sıralı dizisini içerir. `PipelineStep`Sınıf soyuttur ve gerçek adımlar, [Estimatorstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py&preserve-view=true), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py&preserve-view=true)veya [datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py&preserve-view=true)gibi alt sınıflar olacaktır. [Modulestep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py&preserve-view=true) sınıfı, işlem hatları arasında paylaşılabilen, yeniden kullanılabilir bir adım dizisi içerir. Bir `Pipeline` parçası olarak çalışır `Experiment` .
 
 Bir Azure ML işlem hattı, bir Azure Machine Learning çalışma alanıyla ilişkilendirilir ve bir işlem hattı adımı söz konusu çalışma alanı içinde kullanılabilir bir işlem hedefi ile ilişkilendirilir. Daha fazla bilgi için bkz. [Azure portal Azure Machine Learning çalışma alanları oluşturma ve yönetme](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) veya [Azure Machine Learning 'Nda işlem hedefleri nelerdir?](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
 
@@ -125,7 +125,7 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-Kod parçacığı, ortak Azure Machine Learning nesneleri, a `Workspace` , a `Datastore` , [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)ve ile başlar `Experiment` . Daha sonra kod, ve tutulacak nesneleri oluşturur `input_data` `output_data` . Dizi, `steps` `PythonScriptStep` veri nesnelerini kullanacak ve üzerinde çalışacak olan tek bir öğesi barındırır `compute_target` . Daha sonra, kod `Pipeline` nesnenin kendisini başlatır, çalışma alanı ve Steps dizisine geçer. `experiment.submit(pipeline)`Azure ML işlem hattı çalıştırmasını Başlatan çağrı. `wait_for_completion()`İşlem hattı bitene kadar blokların çağrısı. 
+Kod parçacığı, ortak Azure Machine Learning nesneleri, a `Workspace` , a `Datastore` , [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py&preserve-view=true)ve ile başlar `Experiment` . Daha sonra kod, ve tutulacak nesneleri oluşturur `input_data` `output_data` . Dizi, `steps` `PythonScriptStep` veri nesnelerini kullanacak ve üzerinde çalışacak olan tek bir öğesi barındırır `compute_target` . Daha sonra, kod `Pipeline` nesnenin kendisini başlatır, çalışma alanı ve Steps dizisine geçer. `experiment.submit(pipeline)`Azure ML işlem hattı çalıştırmasını Başlatan çağrı. `wait_for_completion()`İşlem hattı bitene kadar blokların çağrısı. 
 
 İşlem hattınızı verilerinize bağlama hakkında daha fazla bilgi edinmek için [Azure Machine Learning makaleleri veri erişimi](concept-data.md) ' ne bakın ve [verileri ml ardışık düzen adımları (Python) arasında ve arasında hareket ettirin](how-to-move-data-in-out-of-pipelines.md). 
 
@@ -141,7 +141,7 @@ Görsel tasarım yüzeyini tercih eden geliştiriciler, işlem hatları oluştur
 
 Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel avantajları şunlardır:
 
-|Önemli avantaj|Açıklama|
+|Önemli avantaj|Description|
 |:-------:|-----------|
 |**Katılımsız &nbsp; çalıştırmalar**|Adımları güvenilir ve katılımsız bir şekilde paralel veya sırayla çalışacak şekilde zamanlayın. Veri hazırlama ve modelleme son günler veya haftadır ve işlem hatları, işlem çalışırken diğer görevlere odaklanabilmenize olanak tanır. |
 |**Heterojen işlem**|Heterojen ve ölçeklenebilir işlem kaynakları ve depolama konumları genelinde güvenilir bir şekilde koordine edilen birden çok işlem hattı kullanın. HDInsight, GPU veri bilimi VM 'Leri ve Databricks gibi farklı işlem hedeflerinde bireysel ardışık düzen adımlarını çalıştırarak kullanılabilir işlem kaynaklarının verimli bir şekilde kullanılmasını sağlayın.|
@@ -159,6 +159,6 @@ Azure ML işlem hatları, erken geliştirme aşamalarında değer sunmaya başla
 
 + [Büyük verilerde toplu tahmine dayalı tahminleri nasıl çalıştıracağınızı](tutorial-pipeline-batch-scoring-classification.md )öğrenin.
 
-+ İşlem [hattı çekirdeği](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) ve [ardışık düzen adımları](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)için SDK başvuru belgeleri bölümüne bakın.
++ İşlem [hattı çekirdeği](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) ve [ardışık düzen adımları](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true)için SDK başvuru belgeleri bölümüne bakın.
 
 + İşlem [hatları Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)gösteren örnek bir Jupyter Not defteri deneyin. [Bu hizmeti araştırmak için not defterlerini çalıştırmayı](samples-notebooks.md)öğrenin.

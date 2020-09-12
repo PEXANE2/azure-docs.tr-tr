@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 8c2867fc5d57cf9ad6eb6bf2d90e02c61e320120
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 62edee6a882191551ce2409646ea8b617576c059
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146666"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651154"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure Machine Learning ile dağıtılmış eğitim
 
@@ -24,7 +24,7 @@ Dağıtılmış eğitiminde, bir modeli eğitme iş yükü, çalışan düğüml
 
 ## <a name="deep-learning-and-distributed-training"></a>Derin öğrenme ve dağıtılmış eğitim 
 
-İki temel dağıtılmış eğitim türü vardır: [veri paralelliği](#data-parallelism) ve [model paralelliği](#model-parallelism). Derin öğrenme modelleriyle ilgili dağıtılmış eğitim için, [Python 'daki Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) popüler çerçeveler, PyTorch ve TensorFlow ile tümleştirmeleri destekler. Her iki çerçeve de Dağıtılmış eğitim için veri paralelliğini artırır ve işlem hızlarını iyileştirmek için [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) özelliğinden yararlanabilir. 
+İki temel dağıtılmış eğitim türü vardır: [veri paralelliği](#data-parallelism) ve [model paralelliği](#model-parallelism). Derin öğrenme modelleriyle ilgili dağıtılmış eğitim için, [Python 'daki Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) popüler çerçeveler, PyTorch ve TensorFlow ile tümleştirmeleri destekler. Her iki çerçeve de Dağıtılmış eğitim için veri paralelliğini artırır ve işlem hızlarını iyileştirmek için [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) özelliğinden yararlanabilir. 
 
 * [PyTorch ile dağıtılmış eğitim](how-to-train-pytorch.md#distributed-training)
 

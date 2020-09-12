@@ -1,18 +1,18 @@
 ---
-title: Azure Red Hat Openshıft 3,11 ' den Azure Red Hat OpenShift 4 ' e geçiş
-description: Azure Red Hat Openshıft 3,11 ' den Azure Red Hat OpenShift 4 ' e geçiş
+title: Azure Red Hat OpenShift 3.11’den Azure Red Hat OpenShift 4’e geçme
+description: Azure Red Hat OpenShift 3.11’den Azure Red Hat OpenShift 4’e geçme
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: geçiş, Aro, OpenShift, Red Hat
-ms.openlocfilehash: 68e8be24273dfab490d2423b76c372f2ff9f2b38
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513266"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469754"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Azure Red Hat Openshıft 3,11 ' den Azure Red Hat OpenShift 4 ' e geçiş yapın
 
@@ -71,7 +71,7 @@ az aro create \
 
 ## <a name="configure-the-target-openshift-4-cluster"></a>Hedef OpenShift 4 kümesini yapılandırma
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 Kullanıcıların Azure Red Hat OpenShift ile etkileşime geçmesini sağlamak için öncelikle kümeye kimlik doğrulaması yapılmalıdır. Kimlik doğrulama katmanı, isteklerle ilişkili kullanıcıyı Azure Red Hat OpenShift API 'sine göre tanımlar. Yetkilendirme katmanı daha sonra isteğin izin verilip verilmeyeceğini belirlemede istekte bulunan kullanıcı hakkındaki bilgileri kullanır.
 
@@ -100,7 +100,7 @@ Bu depolama türlerini yapılandırma hakkında daha fazla bilgi için bkz. [kal
 
 Azure Red Hat OpenShift 4, kaynak kodınızdan görüntü oluşturabilir, bunları dağıtabilir ve yaşam döngüsünü yönetebilir. Bunu etkinleştirmek için Azure Red Hat Openshıft, görüntüleri yerel olarak yönetmek için Azure Red Hat OpenShift ortamınızda dağıtılabilen 4 [dahili ve tümleşik bir kapsayıcı görüntüsü kayıt defteri](https://docs.openshift.com/aro/4/registry/registry-options.html) sağlar.
 
-[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/), [Red Hat Quay kayıt defterleri](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)veya bir [kimlik doğrulaması etkin Red hat kayıt defteri](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)gibi dış kayıt defterleri kullanıyorsanız, kümenin depolara erişmesine izin vermek için kümeye kimlik bilgileri sağlamak için adımları izleyin.
+[Azure Container Registry](../container-registry/index.yml), [Red Hat Quay kayıt defterleri](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)veya bir [kimlik doğrulaması etkin Red hat kayıt defteri](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)gibi dış kayıt defterleri kullanıyorsanız, kümenin depolara erişmesine izin vermek için kümeye kimlik bilgileri sağlamak için adımları izleyin.
 
 ### <a name="monitoring"></a>İzleme
 
@@ -128,4 +128,3 @@ az openshift delete --name $CLUSTER_NAME
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
 Red Hat tarafından sunulan Azure Red Hat OpenShift belgelerine göz atın [.](https://docs.openshift.com/aro/4/welcome/index.html)
-

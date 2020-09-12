@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/14/2018
-ms.openlocfilehash: a5d49a16324a5a97f4a0507f9abf47ea602ea072
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb19524079f84e92e1ddbc98a61917026492663
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72328709"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469907"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Azure Cloud Shell 'de Azure kaynakları için Yönetilen kimlikler kullanma
 
@@ -43,8 +43,8 @@ Yerel MSI alt sistemi belirteçleri önbelleğe alır. Bu nedenle, bunu istediğ
 
 Kodunuzda belirteci önbelleğe alırsanız, kaynağın belirtecin dolduğunu gösterdiği senaryoları işlemeye hazır olmanız gerekir.
 
-Belirteç hatalarını işlemek için, MSI [erişim belirteçlerini seçmekte olan MSI sayfasını](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling)ziyaret edin.
+Belirteç hatalarını işlemek için, MSI [erişim belirteçlerini seçmekte olan MSI sayfasını](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#error-handling)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[MSI hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
-[MSI VM 'lerinden erişim belirteçleri alınıyor](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)
+[MSI hakkında daha fazla bilgi edinin](../active-directory/managed-identities-azure-resources/overview.md)  
+[MSI VM 'lerinden erişim belirteçleri alınıyor](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)

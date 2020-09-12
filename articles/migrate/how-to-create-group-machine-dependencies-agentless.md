@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık an
 description: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlayın.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: dc2ea0656198927cc8ae58533d296a2bedc37c13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e6e562a18fa2ee0b89416ea67cc15394e760ada
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771385"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536447"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Makine bağımlılıklarını analiz etme (aracısız)
 
@@ -25,7 +25,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlı
 
 - Bağımlılık analizi görünümünde, şu anda bir gruptan bir sunucu ekleyemez veya kaldırabilirsiniz.
 - Bir sunucu grubu için bağımlılık eşlemesi Şu anda kullanılamıyor.
-- Bağımlılık verileri tablolu biçimde indirilemez.
+- Bağımlılık verileri toplama, 400 sunucuları için aynı anda ayarlanabilir. 400 toplu işler halinde sıralama yaparak daha yüksek sayıda sunucu analiz etme sağlayabilirsiniz.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 

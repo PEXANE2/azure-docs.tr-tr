@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: afa2cbdb7b0703f9fc0b419442570744c6fefae1
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6adfd9bc778318b406d5ce27cadccdad02d73d69
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049698"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437471"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure-Azure VM ağ bağlantısı sorunlarını giderme
 
@@ -108,7 +108,7 @@ Hizmet uç noktalarına Azure Site Recovery bir bağlantı kurulamazsa.
 
 #### <a name="resolution"></a>Çözüm
 
-Azure Site Recovery bölgeye bağlı olarak [Site Recovery IP aralıklarına](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) erişim gerektiriyor. Gerekli IP aralıklarının VM 'den erişilebilir olduğundan emin olun.
+Makinedeki giden ağ bağlantısını denetlemek için bir Azure ağ güvenlik grubu (NSG) kuralı/güvenlik duvarı proxy 'si kullanıyorsanız, izin verilmesi gereken birkaç hizmet etiketi vardır. [Daha fazla bilgi edinin](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags).
 
 ### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>4. sorun: ağ trafiği şirket içi ara sunucu üzerinden geçtiğinde Azure 'dan Azure 'a çoğaltma başarısız oldu (151072)
 

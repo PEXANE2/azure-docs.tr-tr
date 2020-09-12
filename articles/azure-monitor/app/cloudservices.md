@@ -4,19 +4,19 @@ description: Application Insights ile web ve çalışan rollerinizi etkili bir �
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 2de853655524e99e958f043b7801ee73e937e7ad
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1662b45d8243217357d1e69124832c499d587812
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923866"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437335"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
 [Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](../platform/diagnostics-extension-overview.md) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
 
 ![Genel Bakış Panosu](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce şunları yapmanız gerekir:
 
 * Bir [Azure](https://azure.com) aboneliği. Windows, Xbox Live veya diğer Microsoft bulut hizmetleri için Microsoft hesabı oturum açın. 
@@ -66,6 +66,8 @@ Bir önceki sürümünüz yayındayken yen özelliğiniz için özel olaylar gel
 Bu durumdan kaçınmak için, sisteminizde her derleme yapılandırması veya "damga" (geliştirme, test, üretim vb.) için ayrı kaynaklar oluşturun. Her derleme yapılandırmasına ait kaynakları ayrı bir kaynak grubuna ekleyin. 
 
 Telemetriyi uygun kaynaklara göndermek için, yapı yapılandırmasına bağlı olarak, Application Insights SDK 'sını farklı bir izleme anahtarı olacak şekilde ayarlayabilirsiniz. 
+
+Farklı aşamalar için [izleme anahtarını dinamik olarak ayarlamayı](https://docs.microsoft.com/azure/azure-monitor/app/separate-resources#dynamic-ikey) öğrenin. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Her rol için bir Application Insights kaynağı oluşturma
 
@@ -243,7 +245,7 @@ Zengin bir tanılama deneyimi için, başarısız veya yüksek gecikme süresine
 
 Çalışan rolleri için bu görünümü elde etmek üzere, tüm telemetri için ortak bir Operation.Id bağlamı özniteliği ayarlamak üzere özel bir telemetri başlatıcısı kullanabilirsiniz. Bunun yapılması, gecikme veya hata sorununun bir bağımlılık ya da kodunuzun kaynaklanıp kaynaklanmadığını bir bakışta görüntülemenizi sağlar. 
 
-Bunu yapmak için:
+Aşağıdaki adımları uygulayın:
 
 * [Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36), bağıntıkimliği öğesini bir CallContext olarak ayarlayın. Bu durumda, Istek KIMLIĞINI CorrelationId olarak kullanıyoruz.
 * Operation.Id öğesini daha önce ayarlanmış olan CorrelationId 'ye ayarlamak için özel bir Telemetryınitializer uygulamasını ekleyin. Bir örnek için bkz. [ıtemcorrelationtelemetryınitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).

@@ -10,12 +10,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 9abf4b46896a3c067cfb189da7921dfe318aedab
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 6df400e7ce4b66a1589a0c44089148b33ab88638
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229389"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439070"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure Data Factory için Azure PowerShell örnekleri
 
@@ -23,12 +23,12 @@ ms.locfileid: "86229389"
 
 Aşağıdaki tablo, Azure Data Factory için örnek Azure PowerShell betiklerinin bağlantılarını içerir.
 
-| Komut Dosyası | Açıklama  |
+| Komut Dosyası | Description  |
 |---|---|
-|**Verileri Kopyala**||
+|**Veri kopyalama**||
 |[Blob 'ları bir klasörden bir Azure Blob depolama alanındaki başka bir klasöre kopyalama](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, Blobları Azure Blob depolama alanındaki bir klasörden aynı BLOB depolama alanındaki başka bir klasöre kopyalar. |
 |[SQL Server verilerini Azure Blob depolamaya kopyalama](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, verileri bir SQL Server veritabanından Azure Blob depolama alanına kopyalar. |
-|[Toplu kopyalama](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu örnek PowerShell betiği, Azure SQL veritabanı 'ndaki bir veritabanındaki birden çok tablodan verileri Azure SQL veri ambarı 'na kopyalar. |
+|[Toplu kopyalama](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu örnek PowerShell betiği, Azure SQL veritabanı 'ndaki bir veritabanındaki birden çok tablodan verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalar. |
 |[Artımlı kopya](scripts/incremental-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu örnek PowerShell betiği, kaynak veri deposundan yalnızca yeni veya güncelleştirilmiş kayıtları, kaynaktan havuza verilerin ilk tam kopyasından sonra bir havuz veri deposuna yükler. |
 |**Verileri dönüştürme**||
 |[Spark kümesi kullanarak veri dönüştürme](scripts/transform-data-spark-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, bir Spark kümesinde program çalıştırarak verileri dönüştürür. |

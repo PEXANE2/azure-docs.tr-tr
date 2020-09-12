@@ -3,12 +3,12 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 774fdb440307d0df92e9735a8bdf055687f450a2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: eecc17e36f35e7552c0be83f7ecc38f2d644f18d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684108"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439631"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
@@ -38,7 +38,7 @@ Videoyu buluta sürekli kaydetmek için canlı video analizi kullanmayı ve sonr
 
 Bu, isteğe bağlı bir adımdır. Bunu yapmak için bu Azure CLı komutunu kullanabilirsiniz:
 
-```azure-cli
+```azurecli
 az ams streaming-endpoint scale --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --scale-units 1
 ```
 
@@ -47,7 +47,7 @@ Akış uç noktasını başlatmak için bu komutu kullanabilirsiniz
 > [!IMPORTANT]
 > Aboneliğiniz bu noktada faturalandırılmaya başlayacak.
 
-```azure-cli
+```azurecli
 az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --no-wait
 ```
 

@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 11343ba668a4b74c436313f0abd4daed577c36d4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056780"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505361"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 özel kümesi oluşturma
 
@@ -23,17 +23,35 @@ Bu makalede, ortamınızı OpenShift 4 çalıştıran Azure Red Hat OpenShift ö
 > * Önkoşulları kurun ve gerekli sanal ağı ve alt ağları oluşturun
 > * Özel API sunucusu uç noktası ve özel giriş denetleyicisi ile küme dağıtma
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-### <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
+### <a name="register-the-resource-providers"></a>Kaynak sağlayıcılarını kaydetme
 
-Daha sonra, `Microsoft.RedHatOpenShift` kaynak sağlayıcısını aboneliğinize kaydetmeniz gerekir.
+1. Birden çok Azure aboneliğiniz varsa ilgili abonelik KIMLIĞINI belirtin:
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. `Microsoft.RedHatOpenShift`Kaynak sağlayıcısını Kaydet:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+
+1. `Microsoft.Compute`Kaynak sağlayıcısını Kaydet:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+
+1. `Microsoft.Storage`Kaynak sağlayıcısını Kaydet:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red hat çekme gizli anahtarı alma (isteğe bağlı)
 
@@ -141,7 +159,7 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **Ana alt ağda [alt ağ özel uç nokta Ilkelerini devre dışı bırakın](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) .** Bu, kümeye bağlanıp yönetebilmek için gereklidir.
+5. **Ana alt ağda [alt ağ özel uç nokta Ilkelerini devre dışı bırakın](../private-link/disable-private-link-service-network-policy.md) .** Bu, kümeye bağlanıp yönetebilmek için gereklidir.
 
     ```azurecli-interactive
     az network vnet subnet update \
@@ -197,7 +215,7 @@ Aşağıdaki örnek çıktı, parolasının içinde olacağını gösterir `kube
 }
 ```
 
-Aşağıdaki komutu çalıştırarak küme konsolu URL 'sini bulabilirsiniz, şöyle görünür`https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+Aşağıdaki komutu çalıştırarak küme konsolu URL 'sini bulabilirsiniz, şöyle görünür `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
 
 ```azurecli-interactive
  az aro show \
@@ -207,7 +225,7 @@ Aşağıdaki komutu çalıştırarak küme konsolu URL 'sini bulabilirsiniz, ş�
 ```
 
 >[!IMPORTANT]
-> Özel bir Azure Red Hat OpenShift kümesine bağlanmak için, oluşturduğunuz sanal ağda veya kümenin dağıtıldığı sanal ağla eşlenmiş bir sanal ağda bulunan bir ana bilgisayardan aşağıdaki adımı gerçekleştirmeniz gerekir. [peered](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)
+> Özel bir Azure Red Hat OpenShift kümesine bağlanmak için, oluşturduğunuz sanal ağda veya kümenin dağıtıldığı sanal ağla eşlenmiş bir sanal ağda bulunan bir ana bilgisayardan aşağıdaki adımı gerçekleştirmeniz gerekir. [peered](../virtual-network/virtual-network-peering-overview.md)
 
 Konsol URL 'sini bir tarayıcıda başlatın ve kimlik bilgilerini kullanarak oturum açın `kubeadmin` .
 
@@ -230,7 +248,7 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 ```
 
 >[!IMPORTANT]
-> Özel bir Azure Red Hat OpenShift kümesine bağlanmak için, oluşturduğunuz sanal ağda veya kümenin dağıtıldığı sanal ağla eşlenmiş bir sanal ağda bulunan bir ana bilgisayardan aşağıdaki adımı gerçekleştirmeniz gerekir. [peered](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)
+> Özel bir Azure Red Hat OpenShift kümesine bağlanmak için, oluşturduğunuz sanal ağda veya kümenin dağıtıldığı sanal ağla eşlenmiş bir sanal ağda bulunan bir ana bilgisayardan aşağıdaki adımı gerçekleştirmeniz gerekir. [peered](../virtual-network/virtual-network-peering-overview.md)
 
 Aşağıdaki komutu kullanarak OpenShift kümesinin API sunucusunda oturum açın. **\<kubeadmin password>** Yeni aldığınız parolayla değiştirin.
 

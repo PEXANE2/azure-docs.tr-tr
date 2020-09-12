@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 10d901f73006051e8b1ddd02aeb36b229c6a7761
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 83509b5f452ab7cf88774561c12d7aa2cf3b46cf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270288"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482326"
 ---
 # <a name="how-to-export-fhir-data"></a>FHıR verilerini dışa aktarma
 
@@ -35,10 +35,17 @@ $Export komutu, FHıR sunucusundan de belirtilen verileri dışarı aktarmak iç
 
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
 
-|Sorgu parametresi            | Örnek |Optionitesi| Açıklama|
+|Sorgu parametresi            | Örnek |Optionitesi| Description|
 |---------------------------|---------|-----------|------------|
 | _\_anonymizationConfig_   |Üzerinde DemoConfig.js|Geçersiz şekilde tanımlanan dışarı aktarma için gereklidir |Yapılandırma dosyasının adı. Yapılandırma dosyası biçimini [buradan](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)görebilirsiniz. Bu dosya, dışarı aktarma konumu olarak yapılandırılmış aynı Azure depolama hesabı içinde, **anonimleştirme** adlı bir kapsayıcı içinde tutulmalıdır. |
-| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Geçersiz şekilde tanımlanan dışarı aktarma için isteğe bağlı|Bu, yapılandırma dosyasının ETag ' i. Blob özelliğinden Azure Depolama Gezgini 'ni kullanarak ETag 'i edinebilirsiniz|
+| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Geçersiz şekilde tanımlanan dışarı aktarma için isteğe bağlı|Bu, yapılandırma dosyasının ETag ' i. Blob özelliğinden Azure Depolama Gezgini kullanarak ETag 'i alabilirsiniz|
 
 > [!IMPORTANT]
 > Hem ham dışa aktarmanın hem de dışa aktarma yapılandırmasının bir parçası olarak belirtilen Azure depolama hesabına dışarı aktarma yazmaları olduğunu unutmayın. Farklı bir şekilde tanımlanan yapılandırmaya karşılık gelen farklı kapsayıcılar kullanmanız ve kapsayıcı düzeyinde Kullanıcı erişimini yönetmeniz önerilir.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bu makalede, geçersiz bir şekilde tanımlanan veriler de dahil olmak üzere $export komutunu kullanarak FHıR kaynaklarını dışarı aktarmayı öğrendiniz. Ardından, dışa aktarma verilerinizi yapılandırabilirsiniz:
+ 
+>[!div class="nextstepaction"]
+>[dışarı aktarma verilerini yapılandırma](configure-export-data.md)

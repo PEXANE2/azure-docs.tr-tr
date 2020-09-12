@@ -8,16 +8,16 @@ author: sabbour
 ms.author: asabbour
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 10a7dc662993327b71d43c27f44d22166a3f3611
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2cb54c202af04996080cda970b3d327145f0e72b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590328"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469890"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Red Hat OpenShift 4 kümesi için Azure Active Directory kimlik doğrulamasını yapılandırma (portal)
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -50,7 +50,7 @@ Uygulama için bir ad sağlayın (örneğin, **Aro-azuread-auth**) ve daha önce
 
 ## <a name="configure-optional-claims"></a>İsteğe bağlı talepleri yapılandırma
 
-Uygulama geliştiricileri, kendi uygulamalarına hangi talepler gönderilmesini istediğinizi belirlemek için Azure AD uygulamalarında [isteğe bağlı talepler](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) kullanabilir.
+Uygulama geliştiricileri, kendi uygulamalarına hangi talepler gönderilmesini istediğinizi belirlemek için Azure AD uygulamalarında [isteğe bağlı talepler](../active-directory/develop/active-directory-optional-claims.md) kullanabilir.
 
 İsteğe bağlı talepleri şu şekilde kullanabilirsiniz:
 
@@ -68,7 +68,7 @@ OpenShift 'i `email` talebi kullanacak ve `upn` `upn` Azure ACTIVE DIRECTORY tar
 
 Bir Azure Active Directory (Azure AD) kiracısında kayıtlı uygulamalar, varsayılan olarak, başarıyla kimlik doğrulayan kiracının tüm kullanıcıları tarafından kullanılabilir. Azure AD, kiracı yöneticilerinin ve geliştiricilerin bir uygulamayı Kiracıdaki belirli bir kullanıcı veya güvenlik grubu kümesiyle kısıtlamasına olanak sağlar.
 
-[Uygulamaya kullanıcılar ve gruplar atamak](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration)için Azure Active Directory belgelerindeki yönergeleri izleyin.
+[Uygulamaya kullanıcılar ve gruplar atamak](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration)için Azure Active Directory belgelerindeki yönergeleri izleyin.
 
 ## <a name="configure-openshift-openid-authentication"></a>OpenShift OpenID kimlik doğrulamasını yapılandırma
 

@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile GPU izlemeyi yapılandırma | Mic
 description: Bu makalede, kapsayıcılar için Azure Izleyici ile NVıDıA ve AMD GPU etkin düğümleri ile Kubernetes kümelerini izlemeyi nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 958f5ab33edcd280f5673391eba907728f1153c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c6044d407dc4abd0e69bac0190cc19c901022c3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373316"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569705"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile GPU izlemeyi yapılandırma
 
@@ -22,7 +22,10 @@ Kapsayıcılar için Azure Izleyici, GPU kümelerinin aşağıdaki GPU satıcıl
 
 - [AMD](https://github.com/RadeonOpenCompute/k8s-device-plugin)
 
-Kapsayıcılar için Azure izleyici, düğüm üzerinde GPU kullanımını izlemeye ve pod ve iş yükleri isteyen GPU 'ları 60sec aralıklarında aşağıdaki ölçümleri toplayarak ve bunları **ınsiurm ölçümleri** tablosunda depolayarak otomatik olarak başlatır:
+Kapsayıcılar için Azure izleyici, düğüm üzerindeki GPU kullanımının izlenmesini otomatik olarak başlatır ve aşağıdaki ölçümleri 60sec aralıklarında toplayarak ve bunları **ınsiurm ölçümleri** tablosunda depolayarak, Pod ve iş yükleri isteyen GPU 'ları
+
+>[!NOTE]
+>Küme, GPU düğümleri ile sağlandıktan sonra GPU iş yüklerini çalıştırmak için AKS 'in gerektirdiği şekilde [GPU sürücüsünün](../../aks/gpu-cluster.md) yüklü olduğundan emin olun. Kapsayıcılar için Azure izleyici, düğüm içinde çalışan GPU sürücü Pod aracılığıyla GPU ölçümleri toplar. 
 
 |Ölçüm adı |Ölçüm boyutu (Etiketler) |Description |
 |------------|------------------------|------------|

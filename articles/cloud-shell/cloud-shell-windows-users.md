@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
-ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27675cfbfb691120f7952a457f83f3a34adbafdd
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67204131"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469448"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>Windows kullanıcıları için Azure Cloud Shell'de PowerShell
 
@@ -69,4 +69,4 @@ Altında `$HOME/.config/PowerShell` , profil dosyalarınızı oluşturabilir `pr
 
 ## <a name="whats-new-in-powershell-core-6"></a>PowerShell Core 6 ' daki yenilikler
 
-PowerShell Core 6 ' daki yenilikler hakkında daha fazla bilgi için [PowerShell belgelerine](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-core-60?view=powershell-6) ve [PowerShell Core ile çalışmaya](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/) başlama blog gönderisine başvurun.
+PowerShell Core 6 ' daki yenilikler hakkında daha fazla bilgi için [PowerShell belgelerine](/powershell/scripting/whats-new/what-s-new-in-powershell-core-60?view=powershell-6) ve [PowerShell Core ile çalışmaya](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/) başlama blog gönderisine başvurun.

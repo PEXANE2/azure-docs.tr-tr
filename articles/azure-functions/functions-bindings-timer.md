@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 45f704afce28967237b2905ef068678ba05ae085
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 88160d82cb7cc0a012d63445f101a1f2a3740da0
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206646"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569297"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi 
 
@@ -22,15 +22,15 @@ Bu makalede, Azure Işlevlerinde süreölçer tetikleyicilerle nasıl çalışı
 
 Zamanlayıcı ile tetiklenen bir işlevi el ile çalıştırma hakkında daha fazla bilgi için bkz. [http ile tetiklenen olmayan bir Işlevi el ile çalıştırma](./functions-manually-run-non-http.md).
 
-## <a name="packages---functions-1x"></a>Paketler-Işlevler 1. x
-
-Zamanlayıcı tetikleyicisi [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet paketi, sürüm 2. x ' te sağlanır. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub deposunda bulunur.
-
-[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
-
 ## <a name="packages---functions-2x-and-higher"></a>Paketler-Işlevler 2. x ve üzeri
 
 Zamanlayıcı tetikleyicisi [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet paketi, sürüm 3. x ' te sağlanır. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub deposunda bulunur.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+## <a name="packages---functions-1x"></a>Paketler-Işlevler 1. x
+
+Zamanlayıcı tetikleyicisi [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet paketi, sürüm 2. x ' te sağlanır. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub deposunda bulunur.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -217,9 +217,9 @@ public void keepAlive(
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `TimerTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**tür** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**türüyle** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
 |**çizelgesini**|**ScheduleExpression**|Bir [cron ifadesi](#ncrontab-expressions) veya [TimeSpan](#timespan) değeri. `TimeSpan`Yalnızca, App Service planında çalışan bir işlev uygulaması için kullanılabilir. Zamanlama ifadesini bir uygulama ayarına yerleştirebilir ve bu özelliği **%** Şu örnekte gösterildiği gibi, işaretlere kaydırılmış uygulama ayarı adı olarak ayarlayabilirsiniz: "% ScheduleAppSetting%". |

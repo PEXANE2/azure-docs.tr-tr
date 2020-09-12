@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f88004d219989b06d4bc7e75e76aca1ce1e894fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586224"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536409"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 'SI için Java SDK v4 Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 
 ## <a name="helpful-content"></a>Yardımcı içerik
 
-| İçerik | Bağlantı |
+| Content | Bağlantı |
 |---|---|
 |**SDK indirmesi**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
 |**API belgeleri** | [Java API başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
@@ -68,7 +68,33 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 
 ## <a name="release-history"></a>Yayın geçmişi
 
-### <a name="440-beta1-unreleased"></a>4.4.0-Beta. 1 (serbest bırakılmamış)
+### <a name="440-beta2-unreleased"></a>4.4.0-Beta. 2 (serbest bırakılmamış)
+#### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
+* Tcnative etkin hale geldiğinde düzeltilen RequestTimeoutException.
+
+### <a name="440-beta1-2020-08-27"></a>4.4.0-Beta. 1 (2020-08-27)
+#### <a name="new-features"></a>Yeni Özellikler
+* Birçok belgeyi etkin bir şekilde yüklemek için yeni API eklendi (PK/kimlik çiftleri listesi veya bir PK değeri kümesi için tüm belgeler aracılığıyla).
+* Yeni `deleteItem` API eklendi.
+* Varsayılan olarak sorgu ölçümleri etkinleştirildi.
+#### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
+* İçinde sabitlenmiş NPE `GatewayAddressCache` .
+* Sıfır öğe yanıtı için sorgu ölçümü sorunu düzeltiliyor.
+* Adres ayrıştırma ve ana anahtar kimlik doğrulaması için gelişmiş performans (azaltılmış CPU kullanımı).
+
+### <a name="432-beta2-2020-08-17"></a>4.3.2-Beta. 2 (2020-08-17)
+#### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
+* Önceki sürümden değişiklik yapmadan yay veri modülleriyle uyumluluk sorunları için serbest bırakılıyor.
+
+### <a name="432-beta1-2020-08-14"></a>4.3.2-Beta. 1 (2020-08-14)
+#### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
+* Kullanılmayan bir TCP bağlantısının erken kapanışına engel olmak için RntbdServiceEndpoint içindeki sorun düzeltildi.
+
+### <a name="431-2020-08-13"></a>4.3.1 (2020-08-13)
+#### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
+* `GROUP BY`Sorgunun yalnızca bir sayfa döndüğü bir sorun düzeltildi.
+* Merkezi SDK kılavuzlarıyla uyum sağlamak için sabit Kullanıcı Aracısı dize biçimi.
+* Sorgu planı tanılamayı dahil etmek için geliştirilmiş tanılama bilgileri.
 
 ### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
 #### <a name="new-features"></a>Yeni özellikler

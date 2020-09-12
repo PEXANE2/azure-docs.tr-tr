@@ -4,12 +4,12 @@ description: Azure Kubernetes Service 'te (AKS) Azure CNı (Gelişmiş) ağını
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 0506eb6350358f7256a61c8d6f164b6594d20554
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 58c2c597c7a75c801af91cd735561071250bda2c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566123"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426155"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 
@@ -22,7 +22,7 @@ Bu makalede, bir AKS kümesi için bir sanal ağ alt ağı oluşturmak ve kullan
 ## <a name="prerequisites"></a>Ön koşullar
 
 * AKS kümesinin sanal ağı giden internet bağlantısına izin vermelidir.
-* Aks kümeleri,,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` veya `192.0.2.0/24` Kubernetes hizmeti adres aralığı için kullanılamıyor olabilir.
+* Aks kümeleri,,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` veya `192.0.2.0/24` Kubernetes hizmeti adres aralığı, Pod adres aralığı veya küme sanal ağ adresi aralığı için kullanılamıyor olabilir. 
 * AKS kümesi tarafından kullanılan hizmet sorumlusu, sanal ağınızdaki alt ağda en az bir [ağ katılımcısı](../role-based-access-control/built-in-roles.md#network-contributor) iznine sahip olmalıdır. Yerleşik ağ katılımcısı rolünü kullanmak yerine [özel bir rol](../role-based-access-control/custom-roles.md) tanımlamak istiyorsanız aşağıdaki izinler gereklidir:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -52,7 +52,7 @@ AKS kümesi için IP adresi planı bir sanal ağ, düğümler ve düğüm için 
 | Sanal ağ | Azure sanal ağı,/8 ile büyük olabilir, ancak 65.536 yapılandırılmış IP adresleriyle sınırlıdır. Adres alanınızı yapılandırmadan önce, diğer sanal ağlardaki hizmetlerle iletişim kurmak dahil olmak üzere tüm ağ ihtiyaçlarınızı göz önünde bulundurun. Örneğin, bir adres alanının çok büyük bir bölümünü yapılandırırsanız ağınız içindeki diğer adres alanları ile ilgili sorunlar yaşayabilirsiniz.|
 | Alt ağ | , Kümenizde sağlanmış olabilecek düğümlerin, yığınların ve tüm Kubernetes ve Azure kaynaklarına uyum sağlayacak kadar büyük olmalıdır. Örneğin, dahili bir Azure Load Balancer dağıtırsanız, ön uç IP 'Leri genel IP 'Ler değil, küme alt ağından ayrılır. Alt ağ boyutu ayrıca hesap yükseltme işlemlerini veya gelecekteki ölçekleme ihtiyaçlarını da almalıdır.<p />Yükseltme işlemleri için ek bir düğüm dahil *Minimum* alt ağ boyutunu hesaplamak için: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>50 düğüm kümesi örneği: `(51) + (51  * 30 (default)) = 1,581` (/21 veya daha büyük)<p/>Ek 10 düğümleri ölçeklendirmek için sağlama de içeren 50 düğümlü bir küme için örnek: `(61) + (61 * 30 (default)) = 1,891` (/21 veya daha büyük)<p>Kümenizi oluştururken düğüm başına en fazla sayıda Pod belirtmezseniz, düğüm başına en fazla düğüm sayısı *30*olarak ayarlanır. Gerekli olan en az IP adresi sayısı bu değere göre belirlenir. En az IP adresi gereksinimlerinizi farklı bir maksimum değer üzerinde hesaplarsanız, kümenizi dağıtırken bu değeri ayarlamak için [düğüm başına en fazla sayıda Pod 'yi yapılandırma](#configure-maximum---new-clusters) bölümüne bakın. |
 | Kubernetes hizmeti adres aralığı | Bu Aralık, bu sanal ağ üzerinde herhangi bir ağ öğesi tarafından kullanılmamalıdır veya bu sanal ağa bağlı olmamalıdır. CıDR hizmet adresi/12 ' den küçük olmalıdır. Bu aralığı farklı AKS kümelerinde yeniden kullanabilirsiniz. |
-| Kubernetes DNS hizmeti IP adresi | Küme hizmeti bulma (kuin-DNS) tarafından kullanılacak Kubernetes hizmet adres aralığı içindeki IP adresi. Adres aralığınızı. 1 gibi ilk IP adresini kullanmayın. Alt ağ aralığınızı ilk adres *Kubernetes. default. svc. Cluster. Local* adresi için kullanılır. |
+| Kubernetes DNS hizmeti IP adresi | Küme hizmeti bulma tarafından kullanılacak Kubernetes hizmeti adres aralığı içindeki IP adresi. Adres aralığınızı. 1 gibi ilk IP adresini kullanmayın. Alt ağ aralığınızı ilk adres *Kubernetes. default. svc. Cluster. Local* adresi için kullanılır. |
 | Docker köprüsü adresi | Docker köprüsü ağ adresi, tüm Docker yüklemelerinde bulunan varsayılan *docker0* köprüsü ağ adresini temsil eder. *Docker0* Bridge, aks kümeleri veya Pod tarafından kullanılmadığından, aks kümesi içindeki *Docker derlemesi* gibi senaryoları desteklemeye devam etmek için bu adresi ayarlamanız gerekir. Docker köprü ağ adresi için bir CıDR seçmeniz gerekir, aksi takdirde Docker diğer Cıdrs ile çakışabilecek bir alt ağ seçer. Kümenin hizmet CıDR ve pod CıDR dahil olmak üzere ağlarınızdaki CIO 'nun geri kalanı ile çakışmayan bir adres alanı seçmelisiniz. Varsayılan değer 172.17.0.1/16. Bu aralığı farklı AKS kümelerinde yeniden kullanabilirsiniz. |
 
 ## <a name="maximum-pods-per-node"></a>Düğüm başına maksimum Pod

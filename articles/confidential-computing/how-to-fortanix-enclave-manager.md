@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: b5b0f9acc45dba81bb7653c844bb8c78a8bd29ba
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826302"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462437"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Nasıl yapılır: Fortanx Enclave Manager ile uygulama çalıştırma 
 
@@ -24,7 +24,7 @@ Fortanx [Enclave Manager](https://azuremarketplace.microsoft.com/marketplace/app
 Fortanx, Azure altyapısının üzerine inşa eden ürün ve hizmetlere sahip üçüncü taraf bir yazılım satıcısı. Azure 'da benzer gizli bilgi işlem hizmetleri sunan başka üçüncü taraf sağlayıcılar vardır.
 
 > [!Note] 
- > BU BELGEDE BAŞVURULAN ÜRÜNLER MICROSOFT DENETIMI ALTıNDA DEĞIL. MICROSOFT BU BILGILERI SIZE KOLAYLıK SAĞLAMASı IÇIN SAĞLıYOR VE BU MICROSOFT DıŞı ÜRÜNLERIN BAŞVURUSU MICROSOFT TARAFıNDAN ONAY GÖSTERMEZ.
+ > Bu belgede başvurulan Ürünler Microsoft denetimi altında değil. Microsoft bu bilgileri size kolaylık sağlaması için sağlıyor ve bu Microsoft dışı ürünlerin başvurusu Microsoft tarafından onay göstermez.
 
 
 
@@ -33,7 +33,7 @@ Bu öğreticide, uygulama görüntünüzü gizli işlem korumalı bir görüntü
  Fortanix 'e özgü destek için [Fortanix bolluk topluluğuna](https://fortanix.com/community/) katılarak kanal #enclavemanager kullanın.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. Bir Fortanx Kuşyave yöneticisi hesabınız yoksa, başlamadan önce [kaydolun](https://em.fortanix.com/auth/sign-up) .
 1. Dönüştürülmüş uygulama görüntülerini göndermek için özel bir [Docker](https://docs.docker.com/) kayıt defteri.
@@ -43,7 +43,7 @@ Bu öğreticide, uygulama görüntünüzü gizli işlem korumalı bir görüntü
 > Ücretsiz deneme hesaplarının bu öğreticide kullanılan sanal makinelere erişimi yoktur. Lütfen Kullandıkça Öde aboneliğine yükseltin.
 
 ## <a name="add-an-application-to-fortanix-enclave-manager"></a>Fortanix Enclave Manager 'a uygulama ekleme
-1. [Fortanix em](https://fortanix.com) 'de oturum açın
+1. [Fortanix Enclave Manager 'da oturum açın (FORTANIX em)](https://em.fortanix.com)
 1. **Hesaplar** sayfasına gıdın ve **Hesap Ekle** ' yi seçerek yeni bir hesap oluşturun. 
     
 ![Hesap oluşturma](media/how-to-fortanix-enclave-manager/create-account.png)
@@ -73,7 +73,7 @@ Bu öğreticide, uygulama görüntünüzü gizli işlem korumalı bir görüntü
     - **Docker Hub**: [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
     - **Uygulama**: fortanix/Python-Flask
 
-        Aşağıdaki komutu çalıştırın:
+        Şu komutu çalıştırın:
          ```bash
             sudo docker run fortanix/python-flask
          ```
@@ -120,7 +120,7 @@ Bir Fortanx düğüm Aracısı oluşturmak, Azure Kaynak grubunuza bir sanal mak
 1. Bu sayfada, bir sanal makineyi dağıtmak için bilgi girersiniz. Özellikle, bu VM, Azure 'dan Fortanx düğüm Aracısı yazılımının yüklü olduğu DCsv2 serisi Intel SGX özellikli bir sanal makinedir. Düğüm Aracısı, dönüştürülmüş resminizin Azure 'da Intel SGX düğümlerinde güvenli şekilde çalışmasına izin verir.  Sanal makineyi ve ilişkili kaynakları dağıtmak istediğiniz **aboneliği** ve **kaynak grubunu** seçin. 
  
     > [!NOTE]
-    > Azure 'da DCsv2 serisi sanal makineler dağıtımı sırasında kısıtlamalar vardır. Ek çekirdek için kota istemeniz gerekebilir. Daha fazla bilgi için [Azure VM 'lerinde gizli bilgi işlem çözümleri](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solution) hakkında bilgi edinin. 
+    > Azure 'da DCsv2 serisi sanal makineler dağıtımı sırasında kısıtlamalar vardır. Ek çekirdek için kota istemeniz gerekebilir. Daha fazla bilgi için [Azure VM 'lerinde gizli bilgi işlem çözümleri](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) hakkında bilgi edinin. 
 
 1. Kullanılabilir bir bölge seçin.
 1. **Düğüm adı** alanına sanal makineniz için bir ad girin. 

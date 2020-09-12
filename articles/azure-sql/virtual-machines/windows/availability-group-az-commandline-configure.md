@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a74a791c8c6a95c71faf1f4a0ce6eaacd7c68901
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 212ead54f0f8212ae251175d40873e7cec4e0240
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003041"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482683"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-powershell--az-cli"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırma (PowerShell & az CLı)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ Bu makalede, [PowerShell](/powershell/scripting/install/installing-powershell) v
 
 Kullanılabilirlik grubunun dağıtımı SQL Server Management Studio (SSMS) veya Transact-SQL (T-SQL) aracılığıyla el ile yapılır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Her zaman açık kullanılabilirlik grubunu yapılandırmak için aşağıdaki önkoşullara sahip olmanız gerekir: 
 
@@ -44,13 +44,13 @@ Azure CLı kullanarak Always on kullanılabilirlik grubunu yapılandırmak için
 - Etki alanında **bilgisayar nesnesi oluşturma** iznine sahip olan mevcut bir etki alanı kullanıcı hesabı. Örneğin, bir etki alanı yönetici hesabı genellikle yeterli izne sahiptir (örneğin: account@domain.com ). _Bu hesap, kümeyi oluşturmak için her VM 'de yerel yönetici grubunun da bir parçası olmalıdır._
 - SQL Server denetleyen etki alanı kullanıcı hesabı. 
  
-## <a name="create-a-storage-account-as-a-cloud-witness"></a>Bulut tanığı olarak bir depolama hesabı oluşturma
+## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma 
+
 Kümenin bulut tanığı olarak davranması için bir depolama hesabı olması gerekir. Mevcut bir depolama hesabını kullanabilir veya yeni bir depolama hesabı oluşturabilirsiniz. Mevcut bir depolama hesabını kullanmak istiyorsanız, sonraki bölüme atlayın. 
 
 Aşağıdaki kod parçacığı depolama hesabını oluşturur: 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
 
 ```azurecli-interactive
 # Create the storage account
@@ -80,7 +80,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ---
 
-## <a name="define-windows-failover-cluster-metadata"></a>Windows Yük devretme kümesi meta verilerini tanımlama
+## <a name="define-cluster-metadata"></a>Küme meta verilerini tanımlama
 
 Azure CLı [az SQL VM Group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) komut grubu, kullanılabilirlik grubunu barındıran Windows Server yük devretme KÜMESI (wsfc) hizmetinin meta verilerini yönetir. Küme meta verileri Active Directory etki alanını, küme hesaplarını, bulut tanığı olarak kullanılacak depolama hesaplarını ve SQL Server sürümünü içerir. İlk SQL Server VM eklendiğinde kümenin tanımlandığı şekilde oluşturulması için WSFC meta verilerini tanımlamak için [az SQL VM Group Create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) kullanın. 
 
@@ -183,6 +183,17 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 ```
 
 ---
+
+
+## <a name="validate-cluster"></a>Kümeyi Doğrula 
+
+Bir yük devretme kümesinin Microsoft tarafından desteklenmesi için, küme doğrulamasını geçmesi gerekir. Uzak Masaüstü Protokolü (RDP) gibi tercih ettiğiniz yöntemi kullanarak VM 'ye bağlanın ve daha sonra devam etmeden önce kümenizin doğrulamayı geçirdiğini doğrulayın. Bunun başarısız olması, kümenizi desteklenmeyen bir durumda bırakır. 
+
+Yük Devretme Kümesi Yöneticisi (FCM) kullanarak kümeyi veya aşağıdaki PowerShell komutunu kullanabilirsiniz:
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   ```
 
 ## <a name="create-availability-group"></a>Kullanılabilirlik grubu oluştur
 

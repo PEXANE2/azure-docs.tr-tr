@@ -3,17 +3,19 @@ title: Cihazları ağ proxy 'leri için Yapılandırma-Azure IoT Edge | Microsof
 description: Azure IoT Edge çalışma zamanını ve internet 'e yönelik IoT Edge modüllerini bir ara sunucu üzerinden iletişim kuracak şekilde yapılandırma.
 author: kgremban
 ms.author: kgremban
-ms.date: 3/10/2020
-ms.topic: conceptual
+ms.date: 09/03/2020
+ms.topic: how-to
 ms.service: iot-edge
 services: iot-edge
-ms.custom: amqp
-ms.openlocfilehash: 270e6a0173ed0088ff5d37c989947f5272634200
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- amqp
+- contperfq1
+ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687193"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500377"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge cihazını ara sunucu üzerinden iletişim kuracak şekilde yapılandırma
 
@@ -21,29 +23,29 @@ IoT Edge cihazlar, IoT Hub iletişim kurmak için HTTPS istekleri gönderir. Cih
 
 Bu makalede, bir proxy sunucusunun arkasında bir IoT Edge cihazını yapılandırmak ve yönetmek için aşağıdaki dört adım izlenecek yol gösterilmektedir:
 
-1. **IoT Edge çalışma zamanını cihazınıza yükler.**
+1. [**IoT Edge çalışma zamanını cihazınıza yüklemesi**](#install-the-runtime-through-a-proxy)
 
-   IoT Edge yükleme betikleri, paketleri ve dosyaları internet 'ten çeker, böylece cihazınızın bu istekleri yapması için proxy sunucusu üzerinden iletişim kurması gerekir. Ayrıntılı adımlar için, bu makalenin [bir ara sunucu aracılığıyla çalışma zamanını Install](#install-the-runtime-through-a-proxy) bölümüne bakın. Windows cihazlarında, yükleme betiği de [çevrimdışı bir yükleme](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation) seçeneği sağlar.
+   IoT Edge yükleme betikleri, paketleri ve dosyaları internet 'ten çeker, böylece cihazınızın bu istekleri yapması için proxy sunucusu üzerinden iletişim kurması gerekir. Windows cihazlarında, yükleme betiği de [çevrimdışı bir yükleme](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation) seçeneği sağlar.
 
-   Bu adım, ilk kez ayarladığınızda IoT Edge cihazında gerçekleştirilen tek seferlik bir işlemdir. IoT Edge çalışma zamanını güncelleştirdiğinizde aynı bağlantılar da gereklidir.
+   Bu adım, ilk kez ayarladığınızda IoT Edge cihazı yapılandırmak için tek seferlik bir işlemdir. IoT Edge çalışma zamanını güncelleştirdiğinizde aynı bağlantılar da gereklidir.
 
-2. **Cihazınızda Docker Daemon 'u ve IoT Edge arka plan programını yapılandırın.**
+2. [**Cihazınızda Docker Daemon ve IoT Edge Daemon 'ı yapılandırma**](#configure-the-daemons)
 
-   IoT Edge, cihazda iki Daemon 'ları kullanır ve bunların her ikisi de proxy sunucusu üzerinden Web istekleri yapması gerekir. IoT Edge Daemon, IoT Hub iletişiminden sorumludur. Moby arka plan programı kapsayıcı yönetiminden sorumludur, bu nedenle kapsayıcı kayıt defterleri ile iletişim kurar. Ayrıntılı adımlar için, bu makalenin [Daemon 'ları yapılandırma](#configure-the-daemons) bölümüne bakın.
+   IoT Edge, cihazda iki Daemon 'ları kullanır ve bunların her ikisi de proxy sunucusu üzerinden Web istekleri yapması gerekir. IoT Edge Daemon, IoT Hub iletişiminden sorumludur. Moby arka plan programı kapsayıcı yönetiminden sorumludur, bu nedenle kapsayıcı kayıt defterleri ile iletişim kurar.
 
-   Bu adım, ilk kez ayarladığınızda IoT Edge cihazında gerçekleştirilen tek seferlik bir işlemdir.
+   Bu adım, ilk kez ayarladığınızda IoT Edge cihazı yapılandırmak için tek seferlik bir işlemdir.
 
-3. **Cihazınızdaki config. YAML dosyasında IoT Edge Aracısı özelliklerini yapılandırın.**
+3. [**Cihazınızdaki config. YAML dosyasında IoT Edge Aracısı özelliklerini yapılandırın**](#configure-the-iot-edge-agent)
 
-   IoT Edge Daemon, başlangıçta edgeAgent modülünü başlatır, ancak edgeAgent modülü, IoT Hub ' dan dağıtım bildirimini almaktan ve diğer tüm modüllerin başlatılmasına karşı sorumludur. IoT Edge aracısının ilk bağlantıyı IoT Hub hale getirmek için, edgeAgent modülü ortam değişkenlerini cihazın kendisinde el ile yapılandırın. İlk bağlantıdan sonra, edgeAgent modülünü uzaktan yapılandırabilirsiniz. Ayrıntılı adımlar için, bu makalenin [IoT Edge aracısını yapılandırma](#configure-the-iot-edge-agent) bölümüne bakın.
+   IoT Edge Daemon, başlangıçta edgeAgent modülünü başlatır. Ardından, edgeAgent modülü IoT Hub dağıtım bildirimini alır ve diğer tüm modülleri başlatır. IoT Edge aracısının ilk bağlantıyı IoT Hub hale getirmek için, edgeAgent modülü ortam değişkenlerini cihazın kendisinde el ile yapılandırın. İlk bağlantıdan sonra, edgeAgent modülünü uzaktan yapılandırabilirsiniz.
 
-   Bu adım, ilk kez ayarladığınızda IoT Edge cihazında gerçekleştirilen tek seferlik bir işlemdir.
+   Bu adım, ilk kez ayarladığınızda IoT Edge cihazı yapılandırmak için tek seferlik bir işlemdir.
 
-4. **Tüm gelecek modül dağıtımları için, proxy üzerinden iletişim kuran herhangi bir modülün ortam değişkenlerini ayarlayın.**
+4. [**Tüm gelecek modül dağıtımları için, ara sunucu üzerinden iletişim kuran herhangi bir modülün ortam değişkenlerini ayarlayın**](#configure-deployment-manifests)
 
-   IoT Edge cihazınız kurulduktan ve proxy sunucusu üzerinden IoT Hub bağlandıktan sonra, bağlantıyı gelecekteki tüm modül dağıtımlarında korumanız gerekir. Ayrıntılı adımlar için, bu makalenin [dağıtım bildirimlerini yapılandırma](#configure-deployment-manifests) bölümüne bakın.
+   IoT Edge cihazınız kurulduktan ve proxy sunucusu üzerinden IoT Hub bağlandıktan sonra, bağlantıyı gelecekteki tüm modül dağıtımlarında korumanız gerekir.
 
-   Bu adım, her yeni modül veya dağıtım güncelleştirmesinin, cihazın ara sunucu üzerinden iletişim kurma yeteneğini sakladığı şekilde uzaktan gerçekleştirilen bir işlemdir.
+   Bu adım, her yeni modül veya dağıtım güncelleştirmesinin, cihazın ara sunucu üzerinden iletişim kurma yeteneğini sakladığı şekilde uzaktan yapılan bir işlemdir.
 
 ## <a name="know-your-proxy-url"></a>Proxy URL 'nizi öğrenin
 
@@ -205,13 +207,13 @@ IoT Edge cihazınız ara sunucu ile çalışacak şekilde yapılandırıldıktan
 
 İki çalışma zamanı modülünü, edgeAgent ve edgeHub 'ı her zaman, IoT Hub ile bir bağlantı sürdürmek için proxy sunucu üzerinden iletişim kurmak üzere yapılandırın. EdgeAgent modülünden proxy bilgilerini kaldırırsanız, bağlantıyı yeniden kurmak için tek yol, önceki bölümde açıklandığı gibi, cihazdaki config. YAML dosyasını düzenlemedir.
 
-EdgeAgent ve edgeHub modüllerine ek olarak, diğer modüllerin ara sunucu yapılandırmasına ihtiyacı olabilir. Bunlar, BLOB depolama gibi IoT Hub yanı sıra Azure kaynaklarına erişmesi gereken modüllerdir ve dağıtım bildirim dosyasında bu modül için belirtilen HTTPS_PROXY değişkenine sahip olmalıdır.
+EdgeAgent ve edgeHub modüllerine ek olarak, diğer modüllerin ara sunucu yapılandırmasına ihtiyacı olabilir. BLOB depolama gibi IoT Hub yanı sıra Azure kaynaklarına erişmesi gereken modüller, dağıtım bildirimi dosyasında belirtilen HTTPS_PROXY değişkenine sahip olmalıdır.
 
 Aşağıdaki yordam IoT Edge cihazının ömrü boyunca geçerlidir.
 
 ### <a name="azure-portal"></a>Azure portal
 
-IoT Edge cihazları için dağıtımlar oluşturmak üzere **modülleri ayarlama** Sihirbazı 'nı kullandığınızda, her modülün proxy sunucu bağlantılarını yapılandırmak için kullanabileceğiniz bir **ortam değişkenleri** bölümü vardır.
+IoT Edge cihazları için dağıtımlar oluşturmak üzere **modülleri ayarlama** Sihirbazı 'nı kullandığınızda, her modülün proxy sunucu bağlantılarını yapılandırabileceğiniz bir **ortam değişkenleri** bölümü vardır.
 
 IoT Edge Aracısı ve IoT Edge hub modüllerini yapılandırmak için, sihirbazın ilk adımında **çalışma zamanı ayarları** ' nı seçin.
 
@@ -221,7 +223,7 @@ IoT Edge Aracısı ve IoT Edge hub modüllerini yapılandırmak için, sihirbaz�
 
 ![Https_proxy ortam değişkenini ayarla](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
 
-Dağıtım bildirimine eklediğiniz tüm diğer modüller aynı kalıbı izler. Modül adını ve görüntüsünü ayarladığınız sayfada bir ortam değişkenleri bölümü vardır.
+Dağıtım bildirimine eklediğiniz tüm diğer modüller aynı kalıbı izler.
 
 ### <a name="json-deployment-manifest-files"></a>JSON dağıtım bildirim dosyaları
 

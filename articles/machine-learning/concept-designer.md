@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 788eebaf28a768acbdb5b1eb778f196fe05dc3e3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012953"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651222"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) nedir? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -48,7 +48,7 @@ Tasarımcı, makine öğrenimi modellerini derlemek, test etmek ve dağıtmak i�
 
 ![Tasarımcıda eğitim, toplu çıkarım ve gerçek zamanlı çıkarım için iş akışı diyagramı](./media/concept-designer/designer-workflow-diagram.png)
 
-## <a name="pipeline"></a>İşlem hattı
+## <a name="pipeline"></a>İşlem Hattı
 
 İşlem [hattı](concept-azure-machine-learning-architecture.md#ml-pipelines) , bağlandığınız veri kümeleri ve analitik modüllerden oluşur. İşlem hatları birçok kullanımı vardır: tek bir modeli gösteren bir işlem hattını veya birden çok modeli gösteren bir işlem hattı yapabilirsiniz. Tahminleri gerçek zamanlı veya toplu olarak uygulayan bir işlem hattı oluşturabilir veya yalnızca verileri temizlemeleri için bir işlem hattı oluşturabilirsiniz. İşlem hatları, işinizi yeniden kullanmanıza ve projelerinizi düzenlemenize olanak tanır.
 
@@ -86,7 +86,7 @@ Bir modül, modülün iç algoritmalarını yapılandırmak için kullanabilece�
 
 Kullanılabilir makine öğrenimi algoritmalarının kitaplığı üzerinden gezinerek bazı yardım için bkz. [algoritma & modül başvurusuna genel bakış](algorithm-module-reference/module-reference.md). Algoritma seçme konusunda yardım için [Azure Machine Learning algoritması oluşturma sayfasına](algorithm-cheat-sheet.md)bakın.
 
-## <a name="compute-resources"></a><a name="compute"></a>İşlem kaynakları
+## <a name="compute-resources"></a><a name="compute"></a> İşlem kaynakları
 
 İş hattınızı çalıştırmak ve dağıtılan modellerinizi gerçek zamanlı uç noktalar veya ardışık düzen uç noktaları olarak barındırmak (Batch çıkarımı için) için çalışma alanınızdan işlem kaynaklarını kullanın. Desteklenen işlem hedefleri şunlardır:
 
@@ -98,7 +98,7 @@ Kullanılabilir makine öğrenimi algoritmalarının kitaplığı üzerinden gez
 
 İşlem hedefleri [Azure Machine Learning çalışma alanınıza](concept-workspace.md)iliştirilir. İşlem hedeflerinizi [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda yönetirsiniz.
 
-## <a name="deploy"></a>Dağıt
+## <a name="deploy"></a>Dağıtma
 
 Gerçek zamanlı bir işlem hattı gerçekleştirmek için, bir işlem hattını **gerçek zamanlı uç nokta**olarak dağıtmanız gerekir. Gerçek zamanlı uç nokta, bir dış uygulama ve Puanlama modeliniz arasında bir arabirim oluşturur. Gerçek zamanlı bir uç noktaya yapılan çağrı, uygulamaya gerçek zamanlı olarak tahmin sonuçları döndürür. Gerçek zamanlı bir uç noktaya çağrı yapmak için, uç noktasını dağıtırken oluşturulan API anahtarını geçirirsiniz. Uç nokta, Web programlama projeleri için popüler bir mimari seçimi olan REST 'i temel alır.
 
@@ -106,7 +106,7 @@ Gerçek zamanlı uç noktaların bir Azure Kubernetes hizmet kümesine dağıtı
 
 Modelinizi dağıtmayı öğrenmek için bkz. [öğretici: tasarımcı ile makine öğrenimi modeli dağıtma](tutorial-designer-automobile-price-deploy.md).
 
-## <a name="publish"></a>Yayımla
+## <a name="publish"></a>Yayımlama
 
 Ardışık Düzen **uç noktasına**bir işlem hattı da yayımlayabilirsiniz. Gerçek zamanlı bir uç noktaya benzer şekilde, bir ardışık düzen uç noktası, REST çağrılarını kullanarak dış uygulamalardan yeni işlem hattı çalıştırmaları göndermenize olanak tanır. Ancak, bir ardışık düzen uç noktası kullanarak gerçek zamanlı olarak veri gönderemez veya alamazsınız.
 
@@ -114,7 +114,7 @@ Yayınlanan işlem hatları esnektir, modelleri eğitme veya yeniden eğitme, [t
 
 Yayımlanan bir işlem hattı, her modülün ardışık düzen taslağı içinde tanımladığınız işlem kaynakları üzerinde çalışır.
 
-Tasarımcı, SDK ile aynı [Publishedpipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) nesnesini oluşturur.
+Tasarımcı, SDK ile aynı [Publishedpipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py&preserve-view=true) nesnesini oluşturur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

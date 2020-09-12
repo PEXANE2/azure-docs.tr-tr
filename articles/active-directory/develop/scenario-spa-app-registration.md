@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2d596b6d0e291d197146bf5e00827d82b74c125c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311577"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434546"
 ---
 # <a name="single-page-application-app-registration"></a>Tek sayfalı uygulama: uygulama kaydı
 
@@ -32,13 +32,13 @@ MSAL.js 1,0 ve 2,0 tabanlı uygulamalarda, ilk uygulama kaydını oluşturmak i�
 1. [Azure portalında](https://portal.azure.com) oturum açın. Hesabınız birden çok kiracıya erişebilirse, üst menüdeki **Dizin + abonelik** filtresini seçin ve ardından oluşturmak üzere olduğunuz uygulama kaydını içermesi gereken kiracıyı seçin.
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet**'in altında **Uygulama kayıtları**nı seçin.
-1. **Yeni kayıt**' ı seçin, uygulama Için bir **ad** girin ve uygulama için **Desteklenen hesap türlerini** seçin. **Yeniden yönlendirme URI 'si** **girmeyin.** Farklı hesap türlerinin açıklaması için, [Azure Portal kullanarak yeni bir uygulama kaydetme](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)konusuna bakın.
+1. **Yeni kayıt**' ı seçin, uygulama Için bir **ad** girin ve uygulama için **Desteklenen hesap türlerini** seçin. **Yeniden yönlendirme URI 'si** **girmeyin.** Farklı hesap türlerinin açıklaması için, [Azure Portal kullanarak yeni bir uygulama kaydetme](quickstart-register-app.md)konusuna bakın.
 1. Uygulama kaydını oluşturmak için **Kaydet** ' i seçin.
 
 Ardından, Microsoft Identity platformunun istemciyi bir güvenlik belirteci ile birlikte yeniden yönlendirdiğini belirtmek için bir **yeniden yönlendirme URI 'si** ile uygulama kaydını yapılandırın. Uygulamanızda kullanmakta olduğunuz MSAL.js sürümü için uygun olan adımları kullanın:
 
-- [AUTH Code Flow ileMSAL.js 2,0](#redirect-uri-msaljs-20-with-auth-code-flow) (önerilir)
-- [Örtük Flow ileMSAL.js 1,0](#redirect-uri-msaljs-10-with-implicit-flow)
+- [ AUTH Code Flow ileMSAL.js 2,0](#redirect-uri-msaljs-20-with-auth-code-flow) (önerilir)
+- [ Örtük Flow ileMSAL.js 1,0](#redirect-uri-msaljs-10-with-implicit-flow)
 
 ## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Yeniden yönlendirme URI 'SI: [MSAL.js 2,0, auth Code Flow](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187286"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440516"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory Hakkında SSS
 
@@ -110,7 +110,7 @@ Bir veri fabrikasında sahip olabilirsiniz tümleştirme çalışma zamanı örn
 Azure aboneliğinin bir veya birden çok Azure Data Factory örneği (veya veri fabrikası) olabilir. Azure Data Factory, veri taşıma ve dönüştürme adımları ile veri odaklı iş akışları oluşturabileceğiniz bir platform olarak birlikte çalışan dört ana bileşeni içerir.
 
 ### <a name="pipelines"></a>Pipelines
-Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir dizi iş gerçekleştirmeye yönelik mantıksal bir etkinlik gruplandırmasıdır. İşlem hattındaki etkinlikler birlikte bir görev gerçekleştirir. Örneğin, bir işlem hattı Azure blobundan verileri alan ve ardından HDInsight kümesinde verileri bölümlemek için bir Hive sorgusu çalıştıran bir etkinlik grubu içerebilir. Bu avantajda, etkinlikleri her bir etkinliği ayrı ayrı yönetmek yerine bir küme olarak yönetmek için bir işlem hattı kullanabilirsiniz. Etkinlikleri sırayla çalıştırmak için bir işlem hattındaki etkinlikleri birlikte zincirleyebilir veya bunları paralel olarak bağımsız olarak çalıştırabilirsiniz.
+Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir dizi iş gerçekleştirmeye yönelik mantıksal bir etkinlik gruplandırmasıdır. İşlem hattındaki etkinlikler birlikte bir görevi gerçekleştirir. Örneğin, bir işlem hattı Azure blobundan verileri alan ve ardından HDInsight kümesinde verileri bölümlemek için bir Hive sorgusu çalıştıran bir etkinlik grubu içerebilir. Bu avantajda, etkinlikleri her bir etkinliği ayrı ayrı yönetmek yerine bir küme olarak yönetmek için bir işlem hattı kullanabilirsiniz. Etkinlikleri sırayla çalıştırmak için bir işlem hattındaki etkinlikleri birlikte zincirleyebilir veya bunları paralel olarak bağımsız olarak çalıştırabilirsiniz.
 
 ### <a name="data-flows"></a>Veri akışları
 Veri akışları, arka uç Spark hizmetlerindeki ölçekteki verileri dönüştüren Data Factory görsel olarak oluşturduğunuz nesnelerdir. Programlama veya Spark iç yapıları anlamanız gerekmez. Grafikler (eşleme) veya elektronik tablolar (Wrangling) kullanarak veri dönüştürme hedefini tasarlamanızı yeterlidir.
@@ -190,7 +190,7 @@ Microsoft, veri akışları ile ilgili yardım veya sorun giderme işlemleri yap
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Data Factory Nasıl yaparım? diğer 90 veri kümesi türlerini kullanarak verilere erişin mi?
 
-Veri akışı eşleme özelliği şu anda Azure SQL veritabanı, Azure SQL veri ambarı, Azure Blob depolama veya Azure Data Lake Storage 2. ile ayrılmış metin dosyaları ve BLOB depolamadan ya da kaynak ve havuz için yerel olarak Data Lake Storage 2.. 
+Veri akışı eşleme özelliği şu anda Azure SQL veritabanı, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı), Azure Blob depolama veya Azure Data Lake Storage 2. sınırlandırılmış metin dosyaları ve BLOB depolamadan veya kaynak ve havuz için yerel olarak Data Lake Storage 2.. 
 
 Diğer bağlayıcılardan herhangi birinden veri hazırlamak için kopyalama etkinliğini kullanın ve sonra verileri hazırlandıktan sonra dönüştürmek için bir veri akışı etkinliği yürütün. Örneğin, işlem hatlarınız önce BLOB depolama alanına kopyalanacak, sonra veri akışı etkinliği bu verileri dönüştürmek için kaynak içinde bir veri kümesi kullanacaktır.
 
@@ -218,7 +218,7 @@ Wrangling veri akışı şu anda şu bölgelerde oluşturulan veri fabrikaları 
 * Orta Güney ABD
 * Güney Birleşik Krallık
 * Orta Batı ABD
-* Batı Avrupa
+* West Europe
 * Batı ABD
 * Batı ABD 2
 
@@ -260,7 +260,7 @@ Wrangling veri akışı, SQL 'de aşağıdaki veri türlerini destekler. Destekl
 * integer
 * int
 * bit
-* boole
+* boolean
 * smallint
 * tinyint
 * bigint

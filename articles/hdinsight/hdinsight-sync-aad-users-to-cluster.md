@@ -1,25 +1,25 @@
 ---
 title: Azure Active Directory kullanıcılarını HDInsight kümesiyle eşitler
 description: Kimliği doğrulanmış kullanıcıları Azure Active Directory bir HDInsight kümesine eşitler.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 83e168c5f1d1bad58a193937a4b97fe686dde2a3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 689417dd0743b01afd18b57b5336640f11edd044
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004411"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504664"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory kullanıcılarını HDInsight kümesine eşitleme
 
 [Kurumsal güvenlik paketi (ESP) Içeren HDInsight kümeleri](hdinsight-domain-joined-introduction.md) , Azure Active Directory (Azure AD) kullanıcılarıyla güçlü kimlik doğrulaması ve *Azure rol tabanlı erişim denetımı (Azure RBAC)* ilkelerini kullanabilir. Azure AD 'ye kullanıcılar ve gruplar eklerken, kümenize erişmesi gereken kullanıcıları da eşzamanlı hale getirebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Daha önce yapmadıysanız, [Kurumsal güvenlik paketi bir HDInsight kümesi oluşturun](hdinsight-domain-joined-configure.md).
 
@@ -59,7 +59,7 @@ Aşağıdaki yöntem REST API ambarı ile GÖNDERI kullanır. Daha fazla bilgi i
     "https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events"
     ```
 
-    Yanıt şuna benzemelidir:
+    Yanıt aşağıdaki gibi görünmelidir:
 
     ```json
     {
@@ -80,7 +80,7 @@ Aşağıdaki yöntem REST API ambarı ile GÖNDERI kullanır. Daha fazla bilgi i
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events/1
     ```
 
-    Yanıt şuna benzemelidir:
+    Yanıt aşağıdaki gibi görünmelidir:
 
     ```json
     {
@@ -123,7 +123,7 @@ Aşağıdaki yöntem REST API ambarı ile GÖNDERI kullanır. Daha fazla bilgi i
 1. Bu sonuç, durumun **tamamlandığını**, yeni bir kullanıcının oluşturulduğunu ve kullanıcıya bir üyelik atandığını gösterir. Bu örnekte, Kullanıcı Azure AD 'de aynı gruba eklendiğinden, Kullanıcı "HiveUsers" ile eşitlenen LDAP grubuna atanır.
 
     > [!NOTE]  
-    > Önceki yöntem, yalnızca küme oluşturma sırasında etki alanı ayarlarının **Erişim Kullanıcı grubu** özelliğinde BELIRTILEN Azure AD gruplarını eşitler. Daha fazla bilgi için bkz. [HDInsight kümesi oluşturma](domain-joined/apache-domain-joined-configure.md).
+    > Önceki yöntem, yalnızca küme oluşturma sırasında etki alanı ayarlarının **Erişim Kullanıcı grubu** özelliğinde BELIRTILEN Azure AD gruplarını eşitler. Daha fazla bilgi için bkz.  [HDInsight kümesi oluşturma](domain-joined/apache-domain-joined-configure.md).
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Yeni eklenen Azure AD kullanıcısını doğrulama
 
@@ -137,7 +137,7 @@ Yeni Azure AD kullanıcısının eklendiğini doğrulamak için [Apache ambarı 
 
     ![HDInsight kullanıcıları ve grupları menüsü](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
-3. Yeni kullanıcının kullanıcı tablosu içinde listelenmesi gerekir. Türü yerine olarak ayarlanır `LDAP` `Local` .
+3. Yeni kullanıcının kullanıcı tablosu içinde listelenmesi gerekir. Türü yerine olarak ayarlanır `LDAP`  `Local` .
 
     ![HDInsight AAD kullanıcıları sayfasına genel bakış](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 

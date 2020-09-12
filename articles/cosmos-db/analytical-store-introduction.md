@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: b3d1371f486a73b40d352007e3681fd451a8a8b7
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: fdaffef6c682bd1f9c81f14af6cd949816f7555a
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815836"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505531"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB analitik depo (Önizleme) nedir?
 
@@ -155,10 +155,15 @@ Bir kapsayıcıda analitik TTL, özelliği kullanılarak ayarlanır `AnalyticalS
 * Varsa ve değer bazı pozitif bir sayıya ayarlanırsa "n": öğelerin, işlem deposunda son değiştirilme zamanından sonraki "n" saniye içinde süresi dolacak. İşlemsel depodaki verilerin saklanması ne olursa olsun, işletimsel verilerinizi analitik depoda sınırlı bir süre boyunca saklamak isterseniz, bu ayar yararlanılabilir olabilir
 
 Dikkat edilmesi gereken bazı noktalar:
-*   Analitik depo bir analitik TTL değeri ile etkinleştirildikten sonra, daha sonra farklı bir geçerli değere güncelleştirilebilen olabilir. 
-*   İşlem TTL 'SI kapsayıcı veya öğe düzeyinde ayarlanırken, analitik TTL yalnızca şu anda kapsayıcı düzeyinde ayarlanabilir.
-*   Analitik deposunda, kapsayıcı düzeyinde analitik TTL >= işlem TTL ayarını yaparak, işletimsel verilerinizin daha uzun süre bekletmesini elde edebilirsiniz.
-*   Analitik depo, analitik TTL = işlem TTL 'SI ayarlanarak işlem deposunu yansıtmak için yapılabilir.
+*   Analitik depo bir analitik TTL değeri ile etkinleştirildikten sonra, daha sonra farklı bir geçerli değere güncelleştirilebilen olabilir 
+*   İşlem TTL 'SI kapsayıcı veya öğe düzeyinde ayarlanırken, analitik TTL yalnızca şu anda kapsayıcı düzeyinde ayarlanabilir
+*   Bir kapsayıcı düzeyinde analitik TTL >= işlem TTL ayarını yaparak, analitik depoda işletimsel verilerinizin daha uzun süre bekletmesini elde edebilirsiniz
+*   Analitik depo, analitik TTL = işlem TTL 'SI ayarlanarak işlem deposunu yansıtmak için yapılabilir
+
+Kapsayıcıda anaytical Store 'u etkinleştirdiğinizde:
+ * Azure portalını kullanarak analitik TTL,-1 varsayılan değerine ayarlanır. Veri Gezgini altındaki kapsayıcı ayarlarına giderek bu değeri ' n ' saniye olarak değiştirebilirsiniz. 
+ 
+ * Azure SDK veya PowerShell ya da CLı kullanarak, analitik TTL-1 veya ' n ' olarak ayarlanarak etkinleştirilebilir. 
 
 Daha fazla bilgi için bkz. [bir kapsayıcıda ANALITIK TTL yapılandırma](configure-synapse-link.md#create-analytical-ttl).
 

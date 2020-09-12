@@ -1,29 +1,26 @@
 ---
-title: Azure Blob depolama 'da değişiklik akışını işleme (Önizleme) | Microsoft Docs
+title: Azure Blob depolama 'da değişiklik akışını işleme | Microsoft Docs
 description: .NET istemci uygulamasında değişiklik akışı günlüklerini işlemeyi öğrenin
 author: normesta
 ms.author: normesta
-ms.date: 06/18/2020
+ms.date: 09/08/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cc70204a56c3a853c6c6c7f0e1573c71854c0f19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018969"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568260"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob depolama 'da değişiklik akışını işleme (Önizleme)
+# <a name="process-change-feed-in-azure-blob-storage"></a>Azure Blob depolamada işlem değişiklik akışı
 
 Değişiklik akışı, bloblarda oluşan tüm değişikliklerin işlem günlükleri ve Depolama hesabınızdaki blob meta verileri sağlar. Bu makalede blob değişiklik akışı işlemci kitaplığını kullanarak değişiklik akışı kayıtlarının nasıl okunacağı gösterilmektedir.
 
-Değişiklik akışı hakkında daha fazla bilgi edinmek için bkz. [Azure Blob depolama (Önizleme) içinde akışı değiştirme](storage-blob-change-feed.md).
-
-> [!NOTE]
-> Değişiklik akışı genel önizlemededir ve sınırlı bölgelerde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md). Değişiklik akışı işlemci kitaplığı, şu anda ve bu kitaplık genel kullanıma sunulduğunda değişiklik gösterebilir.
+Değişiklik akışı hakkında daha fazla bilgi edinmek için bkz. [Azure Blob depolamada akışı değiştirme](storage-blob-change-feed.md).
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>Blob değişiklik akışı işlemci kitaplığını al
 
@@ -219,4 +216,4 @@ Sağladığınız başlangıç saati en yakın saate yuvarlanır ve bitiş saati
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Değişiklik akışı günlükleri hakkında daha fazla bilgi edinin. Bkz. [Azure Blob depolamada akışı değiştirme (Önizleme)](storage-blob-change-feed.md)
+Değişiklik akışı günlükleri hakkında daha fazla bilgi edinin. Bkz. [Azure Blob depolamada akışı değiştirme](storage-blob-change-feed.md)

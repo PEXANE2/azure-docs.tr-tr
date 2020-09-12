@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 2f02e579f7679180cecfd8a48736b3af307ba371
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 9c16b3ff013c2985ea381ed4bb002276b1c3fdb8
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874767"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462250"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 'ta Apache Hive ve Apache Pig ile Python Kullanıcı tanımlı Işlevleri (UDF) kullanma
 
@@ -25,7 +25,7 @@ Python 2.7, HDInsight 3,0 ve üzeri sürümlerde varsayılan olarak yüklüdür.
 
 HDInsight Ayrıca, Java 'da yazılmış bir Python uygulama olan Jyıthon ' u de içerir. Jyıthon, doğrudan Java Sanal Makinesi çalışır ve akış kullanmaz. Jyıthon, Pig ile Python kullanılırken önerilen Python yorumlayıcı.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **HDInsight üzerinde bir Hadoop kümesi**. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md).
 * **Bir SSH istemcisi**. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -38,7 +38,7 @@ HDInsight Ayrıca, Java 'da yazılmış bir Python uygulama olan Jyıthon ' u de
 
 ## <a name="storage-configuration"></a>Depolama yapılandırması
 
-Kullanılan depolama hesabı tür veya ise herhangi bir eylem gerekmez `Storage (general purpose v1)` `StorageV2 (general purpose v2)` .  Bu makaledeki işlem en az çıkış oluşturacak `/tezstaging` .  Varsayılan bir Hadoop yapılandırması `/tezstaging` , `fs.azure.page.blob.dir` hizmet için içindeki yapılandırma değişkeninde bulunur `core-site.xml` `HDFS` .  Bu yapılandırma, Dizin çıkışının, depolama hesabı türü için desteklenmeyen sayfa Blobları olmasına neden olur `BlobStorage` .  `BlobStorage`Bu makalede kullanmak için `/tezstaging` `fs.azure.page.blob.dir` yapılandırma değişkeninden kaldırın.  Bu yapılandırmaya, [ambarı kullanıcı arabiriminden](../hdinsight-hadoop-manage-ambari.md)erişilebilir.  Aksi takdirde, şu hata iletisini alırsınız:`Page blob is not supported for this account type.`
+Kullanılan depolama hesabı tür veya ise herhangi bir eylem gerekmez `Storage (general purpose v1)` `StorageV2 (general purpose v2)` .  Bu makaledeki işlem en az çıkış oluşturacak `/tezstaging` .  Varsayılan bir Hadoop yapılandırması `/tezstaging` , `fs.azure.page.blob.dir` hizmet için içindeki yapılandırma değişkeninde bulunur `core-site.xml` `HDFS` .  Bu yapılandırma, Dizin çıkışının, depolama hesabı türü için desteklenmeyen sayfa Blobları olmasına neden olur `BlobStorage` .  `BlobStorage`Bu makalede kullanmak için `/tezstaging` `fs.azure.page.blob.dir` yapılandırma değişkeninden kaldırın.  Bu yapılandırmaya, [ambarı kullanıcı arabiriminden](../hdinsight-hadoop-manage-ambari.md)erişilebilir.  Aksi takdirde, şu hata iletisini alırsınız: `Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > Bu belgedeki adımlarda aşağıdaki varsayımlar yapılır:  
@@ -300,8 +300,8 @@ Python betiği, Pig öğesinden bir UDF aracılığıyla kullanılabilir `GENERA
 
 Python yorumlayıcı 'yı belirtmek için `register` Python betiğine başvururken kullanın. Aşağıdaki örnekler betikleri Pig ile kaydeder `myfuncs` :
 
-* **Jython kullanmak için**:`register '/path/to/pigudf.py' using jython as myfuncs;`
-* **C Python kullanmak için**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Jython kullanmak için**: `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **C Python kullanmak için**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > Jyıthon kullanırken pig_jython dosyanın yolu bir yerel yol veya bir WASBS://yolu olabilir. Ancak, C Python kullanırken, Pig işini göndermek için kullandığınız düğümün yerel dosya sistemindeki bir dosyaya başvurmanız gerekir.
@@ -319,7 +319,7 @@ DUMP DETAILS;
 
 1. İlk satır, örnek veri dosyasını `sample.log` içine yükler `LOGS` . Ayrıca, her bir kaydı bir olarak tanımlar `chararray` .
 2. Sonraki satır, işlemin sonucunu içine depolayarak null değerlerini filtreler `LOG` .
-3. Daha sonra, ' deki kayıtları yineler `LOG` ve `GENERATE` `create_structure` olarak yüklenen Python/Jyıthon betikte bulunan yöntemi çağırmak için kullanır `myfuncs` . `LINE`, geçerli kaydı işleve geçirmek için kullanılır.
+3. Daha sonra, ' deki kayıtları yineler `LOG` ve `GENERATE` `create_structure` olarak yüklenen Python/Jyıthon betikte bulunan yöntemi çağırmak için kullanır `myfuncs` . `LINE` , geçerli kaydı işleve geçirmek için kullanılır.
 4. Son olarak, çıktılar komutu kullanılarak STDOUT 'a dökülür `DUMP` . Bu komut, işlem tamamlandıktan sonra sonuçları görüntüler.
 
 ### <a name="create-file"></a>Dosya oluştur
@@ -594,7 +594,7 @@ Hata bilgileri (STDERR) ve işin sonucu (STDOUT) HDInsight depolama alanına da 
 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
 
-Varsayılan olarak sağlanmayan Python modüllerini yüklemeniz gerekiyorsa bkz. [Azure HDInsight 'a modül dağıtma](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
+Varsayılan olarak sağlanmayan Python modüllerini yüklemeniz gerekiyorsa bkz. [Azure HDInsight 'a modül dağıtma](https://docs.microsoft.com/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight).
 
 Pig, Hive kullanmanın diğer yolları ve MapReduce kullanma hakkında bilgi edinmek için aşağıdaki belgelere bakın:
 

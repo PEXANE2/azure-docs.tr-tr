@@ -12,18 +12,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 08/17/2020
-ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551850"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434410"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Bu makalede bir Azure Active Directory (Azure AD) örneği oluşturma ve doldurma ve Azure [SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)ve [Azure SYNAPSE Analytics (eskiden Azure SQL VERI ambarı)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)ile Azure ad kullanma hakkında yönergeler verilmektedir. Genel bakış için [Azure Active Directory kimlik doğrulaması](authentication-aad-overview.md)' na bakın.
+Bu makalede bir Azure Active Directory (Azure AD) örneği oluşturma ve doldurma ve Azure [SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)ve [Azure SYNAPSE Analytics (eski adıyla SQL VERI ambarı)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)ile Azure ad kullanma hakkında yönergeler verilmektedir. Genel bakış için [Azure Active Directory kimlik doğrulaması](authentication-aad-overview.md)' na bakın.
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD kimlik doğrulama yöntemleri
 
@@ -190,7 +190,7 @@ Bir Azure AD yöneticisi sağlamak için aşağıdaki Azure PowerShell komutlar�
 
 SQL yönetilen örneğiniz için Azure AD yöneticisi 'ni sağlamak ve yönetmek için kullanılan cmdlet 'ler aşağıdaki tabloda listelenmiştir:
 
-| Cmdlet adı | Açıklama |
+| Cmdlet adı | Description |
 | --- | --- |
 | [Set-Azsqlınstanceactivedirectoryadministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Geçerli abonelikte SQL yönetilen örneği için bir Azure AD yöneticisi sağlar. (Geçerli abonelikte olmalıdır)|
 | [Remove-Azsqlınstanceactivedirectoryadministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Geçerli abonelikteki SQL yönetilen örneği için bir Azure AD yöneticisini kaldırır. |
@@ -279,7 +279,7 @@ PowerShell cmdlet 'lerini çalıştırmak için Azure PowerShell yüklü ve çal
 
 SQL veritabanı ve Azure SYNAPSE için Azure AD yöneticisi 'ni sağlamak ve yönetmek için kullanılan cmdlet 'ler:
 
-| Cmdlet adı | Açıklama |
+| Cmdlet adı | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory Yöneticisi sağlar. (Geçerli abonelikte olmalıdır) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory yöneticisini kaldırır.|

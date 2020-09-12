@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici günlüklerini sorgulama | Microsoft 
 description: Kapsayıcılar için Azure Izleyici ölçümleri ve günlük verilerini toplar ve bu makalede kayıtları açıklanmakta ve örnek sorgular yer almaktadır.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 12c32c84f2c2aef5d6d0817c11e1ef010f30ffcb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f9b30f11ae6a2f64601b9595bfb1d45493209849
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320298"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569688"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici günlüklerini sorgulama
 
@@ -20,16 +20,15 @@ Aşağıdaki tabloda, kapsayıcılar için Azure Izleyici tarafından toplanan k
 
 | Veriler | Veri kaynağı | Veri türü | Alanlar |
 |------|-------------|-----------|--------|
-| Konaklar ve kapsayıcılar için performans | Kullanım ölçümleri, Cadvizörü 'den ve Kuto API 'si sınırlarından alınır | `Perf` | Bilgisayar, ObjectName, CounterName &#40;% Işlemci zamanı, disk okuma MB, disk yazma MB, bellek kullanımı MB, ağ alma baytları, ağ gönderme baytları, Işlemci kullanım sn, ağ&#41;, CounterValue, TimeGenerated, CounterPath, dir |
-| Kapsayıcı envanteri | Docker | `ContainerInventory` | TimeGenerated, bilgisayar, kapsayıcı adı, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, komut, CreatedTime, StartedTime, Sonlandırhedtime, dir, Containerıd, ImageID |
+| Kapsayıcı envanteri | Kubelet | `ContainerInventory` | TimeGenerated, bilgisayar, kapsayıcı adı, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, komut, CreatedTime, StartedTime, Sonlandırhedtime, dir, Containerıd, ImageID |
 | Kapsayıcı günlüğü | Docker | `ContainerLog` | TimeGenerated, bilgisayar, görüntü KIMLIĞI, kapsayıcı adı, LogEntrySource, LogEntry, dir, Containerıd |
 | Kapsayıcı düğümü envanteri | Kuin API 'SI | `ContainerNodeInventory`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, dir|
 | Bir Kubernetes kümesinde Pod sayımı | Kuin API 'SI | `KubePodInventory` | TimeGenerated, Computer, Clusterıd, ContainerCreationTimeStamp, Poduıd, Pod Creationtimestamp, ContainerRestartCount, PodRestartCount, Pod StartTime, ContainerStartTime, ServiceName, ControllerKind, ControllerName, ContainerStatus, ContainerStatusReason, Containerıd, ContainerName, Name, Pod etiketi, Namespace, Pod durum, ClusterName, Podıp, dir |
 | Bir Kubernetes kümesinin bir parçası olan düğümlerin envanteri | Kuin API 'SI | `KubeNodeInventory` | TimeGenerated, Computer, ClusterName, Clusterıd, Lastgeçişli Tiontimeready, Etiketler, durum, KubeletVersion, KubeProxyVersion, CreationTimeStamp, dir | 
 | Kubernetes Olayları | Kuin API 'SI | `KubeEvents` | TimeGenerated, bilgisayar, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, Ileti, dir | 
 | Kubernetes kümesindeki hizmetler | Kuin API 'SI | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, dir | 
-| Kubernetes kümesinin düğümlerin bir parçası için performans ölçümleri || Perf &#124; WHERE ObjectName = = "K8SNode" | Bilgisayar, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, Memorycapacitybyte, memoryRssBytes, Cpuusme Anoçekirdekler, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, dir | 
-| Kubernetes kümesinin kapsayıcılar bölümü için performans ölçümleri || Perf &#124; WHERE ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, Cpuuslationanoçekirdekler, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, dir | 
+| Kubernetes kümesinin düğümlerin bir parçası için performans ölçümleri | Kullanım ölçümleri, Cadvizörü 'den ve Kuto API 'si sınırlarından alınır | Perf &#124; WHERE ObjectName = = "K8SNode" | Bilgisayar, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, Memorycapacitybyte, memoryRssBytes, Cpuusme Anoçekirdekler, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, dir | 
+| Kubernetes kümesinin kapsayıcılar bölümü için performans ölçümleri | Kullanım ölçümleri, Cadvizörü 'den ve Kuto API 'si sınırlarından alınır | Perf &#124; WHERE ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, Cpuuslationanoçekirdekler, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, dir | 
 | Özel ölçümler ||`InsightsMetrics` | Bilgisayar, ad, ad alanı, Origin, dir, Etiketler<sup>1</sup>, TimeGenerated, Type, Va, _ResourceId | 
 
 <sup>1</sup> *Etiketler* özelliği, karşılık gelen ölçüm için [birden çok boyutu](../platform/data-platform-metrics.md#multi-dimensional-metrics) temsil eder. Tabloda toplanan ve depolanan ölçümler ve kayıt özelliklerinin açıklaması hakkında daha fazla bilgi için `InsightsMetrics` bkz. [ınsightsölçümlerini genel bakış](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
@@ -48,7 +47,7 @@ Azure Izleyici günlükleri, geçerli küme yapılandırmasının en iyi şekild
 
 Genellikle bir örnekle başlayan sorgular oluşturmak ve sonra gereksinimlerinize uyacak şekilde değiştirmek yararlıdır. Daha gelişmiş sorgular oluşturmaya yardımcı olmak için aşağıdaki örnek sorgularla denemeler yapabilirsiniz:
 
-| Sorgu | Açıklama | 
+| Sorgu | Description | 
 |-------|-------------|
 | Containerınventory<br> &#124; proje bilgisayar, ad, resim, ImageTag, ContainerState, CreatedTime, StartedTime, Sonlandırhedtime<br> &#124; oluşturma tablosu | Kapsayıcının yaşam döngüsü bilgilerinin tümünü listeleme| 
 | KubeEvents_CL<br> Not &#124; (IsEmpty (Namespace_s))<br> TimeGenerated DESC 'e göre sıralama &#124;<br> &#124; oluşturma tablosu | Kubernetes olayları|

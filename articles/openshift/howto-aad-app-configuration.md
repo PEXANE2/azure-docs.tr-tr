@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d3326587d9c03e0a3960016b8ba3668c825ee6d
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382907"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470094"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi
 
@@ -30,7 +30,7 @@ Azure Red Hat OpenShift kümenizde oturum açmak için yeni bir Azure Active Dir
 1. [Kullanıcılar-tüm kullanıcılar](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) dikey penceresine gidin.
 2. **+ Yeni Kullanıcı** ' ya tıklayarak **Kullanıcı** bölmesini açın.
 3. Bu Kullanıcı için bir **ad** girin.
-4. Sonuna eklenmiş olarak, oluşturduğunuz kiracının adına göre bir **Kullanıcı adı** oluşturun `.onmicrosoft.com` . Örneğin, `yourUserName@yourTenantName.onmicrosoft.com`. Bu Kullanıcı adını yazın. Kümenizin kümenizde oturum açması için bu gereklidir.
+4. Sonuna eklenmiş olarak, oluşturduğunuz kiracının adına göre bir **Kullanıcı adı** oluşturun  `.onmicrosoft.com` . Örneğin, `yourUserName@yourTenantName.onmicrosoft.com`. Bu Kullanıcı adını yazın. Kümenizin kümenizde oturum açması için bu gereklidir.
 5. Dizin **rolü ' nü tıklatıp Dizin** rolü bölmesini **açın ve sonra** bölmenin altındaki **Tamam** ' a tıklayın.
 6. **Kullanıcı** bölmesinde, **parolayı göster** ' e tıklayın ve geçici parolayı kaydedin. İlk kez oturum açtıktan sonra, bunu sıfırlamanız istenir.
 7. Kullanıcı oluşturmak için bölmenin alt kısmındaki **Oluştur** ' a tıklayın.
@@ -86,9 +86,9 @@ Azure Active Directory için uygulamanızın kimliğini doğrulamak için bir is
 
 ![Sertifikalar ve gizlilikler bölmesinin ekran görüntüsü](./media/howto-create-tenant/create-key.png)
 
-Azure uygulama nesneleri hakkında daha fazla bilgi için [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)bölümüne bakın.
+Azure uygulama nesneleri hakkında daha fazla bilgi için [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](../active-directory/develop/app-objects-and-service-principals.md)bölümüne bakın.
 
-Yeni bir Azure AD uygulaması oluşturma hakkında ayrıntılı bilgi için bkz. [Azure Active Directory v 1.0 uç noktası ile uygulama kaydetme](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
+Yeni bir Azure AD uygulaması oluşturma hakkında ayrıntılı bilgi için bkz. [Azure Active Directory v 1.0 uç noktası ile uygulama kaydetme](../active-directory/develop/quickstart-register-app.md).
 
 ## <a name="add-api-permissions"></a>API izinleri ekleme
 
@@ -110,12 +110,12 @@ Yeni bir Azure AD uygulaması oluşturma hakkında ayrıntılı bilgi için bkz.
 > [!IMPORTANT]
 > Küme yöneticileri grubunun eşitlenmesi, yalnızca onay verildikten sonra çalışır. *Yönetici onayı gerekli* sütununda onay işareti olan yeşil bir daire ve " *abonelik adı*için verildi" iletisi görüntülenir.
 
-Yöneticileri ve diğer rolleri yönetme hakkında daha fazla bilgi için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
+Yöneticileri ve diğer rolleri yönetme hakkında daha fazla bilgi için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="resources"></a>Kaynaklar
 
-* [Azure Active Directory içindeki uygulamalar ve hizmet sorumlusu nesneleri](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
-* [Hızlı Başlangıç: Azure Active Directory v1.0 uç noktasına uygulama kaydetme](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+* [Azure Active Directory içindeki uygulamalar ve hizmet sorumlusu nesneleri](../active-directory/develop/app-objects-and-service-principals.md)
+* [Hızlı Başlangıç: Azure Active Directory v1.0 uç noktasına uygulama kaydetme](../active-directory/develop/quickstart-register-app.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

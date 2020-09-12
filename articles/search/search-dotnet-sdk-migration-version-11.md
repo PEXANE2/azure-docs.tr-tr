@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a72f864d16ff89636b77709e439dd04134b64b7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5c943de87cbf53d4971e5cbf58768221bf2cf248
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002734"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462267"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Bilişsel Arama .NET SDK sürüm 11 ' e yükseltme
 
@@ -77,7 +77,7 @@ Uygun olduğunda, aşağıdaki tablo iki sürüm arasındaki istemci kitaplıkla
 | [Itemerror](/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
 | [Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (Ayrıca, `AnalyzerName` için `LexicalAnalyzerName` ) |
 | [Analiz Zerequest](/dotnet/api/microsoft.azure.search.models.analyzerequest) | [Analiz Zetextoptions](/dotnet/api/azure.search.documents.indexes.models.analyzetextoptions) |
-| [Standartçözümleyici](/dotnet/api/microsoft.azure.search.models.standardanalyzer) | [LuceneStandardAnalyzer](//dotnet/api/azure.search.documents.indexes.models.lucenestandardanalyzer) |
+| [Standartçözümleyici](/dotnet/api/microsoft.azure.search.models.standardanalyzer) | [LuceneStandardAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lucenestandardanalyzer) |
 | [StandardTokenizer](/dotnet/api/microsoft.azure.search.models.standardtokenizer) | [LuceneStandardTokenizer](/dotnet/api/azure.search.documents.indexes.models.lucenestandardtokenizer) (Ayrıca, `StandardTokenizerV2` için `LuceneStandardTokenizerV2` ) |
 | [TokenInfo](/dotnet/api/microsoft.azure.search.models.tokeninfo) | [Çözümleyicileri Edtokenınfo](/dotnet/api/azure.search.documents.indexes.models.analyzedtokeninfo) |
 | [Belirteç ayırıcı](/dotnet/api/microsoft.azure.search.models.tokenizer) | [Lexicaltokenizer](/dotnet/api/azure.search.documents.indexes.models.lexicaltokenizer) (Ayrıca, `TokenizerName` için `LexicalTokenizerName` ) |
@@ -90,7 +90,7 @@ Alan tanımları basitleştirilmiştir: [Searchablefield](/dotnet/api/azure.sear
 | Sürüm 10 | Sürüm 11 eşdeğeri |
 |------------|-----------------------|
 | [Dizin Oluşturucu](/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
-| [DataSource](/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](//dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
+| [DataSource](/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
 | [İmde](/dotnet/api/microsoft.azure.search.models.skill) | [SearchIndexerSkill](/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [Beceri](/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [DataSourceType](/dotnet/api/microsoft.azure.search.models.datasourcetype) | [SearchIndexerDataSourceType](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) |

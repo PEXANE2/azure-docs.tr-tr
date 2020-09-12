@@ -1,14 +1,14 @@
 ---
 title: Kaynak hiyerarşinizi koruma-Azure Idare
 description: Kaynak hiyerarşinizi, varsayılan yönetim grubunu ayarlamayı içeren hiyerarşi ayarlarıyla nasıl koruyacağınızı öğrenin.
-ms.date: 08/10/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dd6791e152ba3ef02f6e6f710589cbe7d3442bc
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 19d699b54a9979df1030c0f6e294d5a4492f2853
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056627"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469797"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Kaynak hiyerarşinizi koruma
 
@@ -31,7 +31,26 @@ Varsayılan olarak, kiracı içine eklenen yeni bir abonelik kök yönetim grubu
 
 Yeni abonelikler için varsayılan yönetim grubunun tanımlanmasına izin vererek, kuruluş genelinde idare yapıları kök yönetim grubuna uygulanabilir ve ilke atamaları veya Azure rolü atamaları olan ayrı bir yönetim grubu, yeni bir aboneliğe daha uygun olabilir.
 
-Bu ayarı yapılandırmak için, [Hiyerarşi ayarları](/rest/api/resources/hierarchysettings) REST API uç noktası çağrılır. Bunu yapmak için aşağıdaki REST API URI ve gövde biçimini kullanın. `{rootMgID}`Kök yönetim GRUBUNUZUN kimliğiyle ve `{defaultGroupID}` varsayılan Yönetim grubu olacak YÖNETIM grubu kimliğiyle değiştirin:
+### <a name="set-default-management-group-in-portal"></a>Portalda varsayılan yönetim grubunu ayarla
+
+Bu ayarı Azure portal yapılandırmak için aşağıdaki adımları izleyin:
+
+1. ' Yönetim grupları ' ' nı aramak ve seçmek için arama çubuğunu kullanın.
+
+1. Kök yönetim grubunda, yönetim grubunun adının yanındaki **Ayrıntılar** ' ı seçin.
+
+1. **Ayarlar**altında **Hiyerarşi ayarları**' nı seçin.
+
+1. **Varsayılan yönetim grubunu değiştir** düğmesini seçin.
+
+   > [!NOTE]
+   > **Varsayılan yönetim grubunu değiştir** düğmesi devre dışıysa, görüntülenen yönetim grubu kök yönetim grubu değildir veya güvenlik sorumlunuz hiyerarşi ayarlarını değiştirmek için gerekli izinlere sahip değildir.
+
+1. Hiyerarşinizden bir yönetim grubu seçin ve **Seç** düğmesini kullanın.
+
+### <a name="set-default-management-group-with-rest-api"></a>Varsayılan yönetim grubunu REST API ayarla
+
+Bu ayarı REST API yapılandırmak için [Hiyerarşi ayarları](/rest/api/resources/hierarchysettings) uç noktası çağrılır. Bunu yapmak için aşağıdaki REST API URI ve gövde biçimini kullanın. `{rootMgID}`Kök yönetim GRUBUNUZUN kimliğiyle ve `{defaultGroupID}` varsayılan Yönetim grubu olacak YÖNETIM grubu kimliğiyle değiştirin:
 
 - REST API URI'si
 
@@ -55,7 +74,24 @@ Varsayılan yönetim grubunu kök yönetim grubuna geri ayarlamak için aynı u�
 
 Herhangi bir Kullanıcı, varsayılan olarak bir kiracı içinde yeni yönetim grupları oluşturabilir. Bir kiracının yöneticileri, yönetim grubu hiyerarşisinde tutarlılık ve uyumluluk sağlamak için yalnızca belirli kullanıcılara bu izinleri sağlamak isteyebilir. Etkinleştirilirse, bir Kullanıcı, `Microsoft.Management/managementGroups/write` kök yönetim grubu üzerinde yeni alt yönetim grupları oluşturmak için bu işlemi gerektirir.
 
-Bu ayarı yapılandırmak için, [Hiyerarşi ayarları](/rest/api/resources/hierarchysettings) REST API uç noktası çağrılır. Bunu yapmak için aşağıdaki REST API URI ve gövde biçimini kullanın. Bu değer bir _Boole_değeridir, bu nedenle değer için **true** veya **false** değerini sağlayın. **Doğru** değeri, bu yönetim grubu hiyerarşinizi koruma yöntemini sunar:
+### <a name="set-require-authorization-in-portal"></a>Portalda yetkilendirme gerektir ayarı
+
+Bu ayarı Azure portal yapılandırmak için aşağıdaki adımları izleyin:
+
+1. ' Yönetim grupları ' ' nı aramak ve seçmek için arama çubuğunu kullanın.
+
+1. Kök yönetim grubunda, yönetim grubunun adının yanındaki **Ayrıntılar** ' ı seçin.
+
+1. **Ayarlar**altında **Hiyerarşi ayarları**' nı seçin.
+
+1. **Yeni yönetim grupları oluşturmak için Izinleri iste ' ye** geçiş yapın. seçeneğini açık.
+
+   > [!NOTE]
+   > **Yeni yönetim grupları oluşturmak için Izinleri iste.** geçiş devre dışı bırakıldı, görüntülenen yönetim grubu kök yönetim grubu değil ya da güvenlik sorumlunuz hiyerarşi ayarlarını değiştirmek için gerekli izinlere sahip değil.
+
+### <a name="set-require-authorization-with-rest-api"></a>REST API yetkilendirme gerektir ayarla
+
+Bu ayarı REST API yapılandırmak için [Hiyerarşi ayarları](/rest/api/resources/hierarchysettings) uç noktası çağrılır. Bunu yapmak için aşağıdaki REST API URI ve gövde biçimini kullanın. Bu değer bir _Boole_değeridir, bu nedenle değer için **true** veya **false** değerini sağlayın. **Doğru** değeri, bu yönetim grubu hiyerarşinizi koruma yöntemini sunar:
 
 - REST API URI'si
 

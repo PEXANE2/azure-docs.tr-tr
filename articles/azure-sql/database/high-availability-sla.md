@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 62dfa3214b86139a8f836b3d9bd72585653b7fa2
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 16e15976c6f09881b75dcec207833f48aa1c4e7a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189937"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437692"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,11 +91,11 @@ Yüksek kullanılabilirlik mimarisinin bölge yedekli sürümü aşağıdaki diy
 
 ## <a name="accelerated-database-recovery-adr"></a>Hızlandırılmış veritabanı kurtarma (ADR)
 
-[Hızlandırılmış veritabanı kurtarma (ADR)](../accelerated-database-recovery.md) , özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini büyük ölçüde geliştiren yeni bir veritabanı altyapısı özelliğidir. ADR Şu anda Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SQL veri ambarı için kullanılabilir.
+[Hızlandırılmış veritabanı kurtarma (ADR)](../accelerated-database-recovery.md) , özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini büyük ölçüde geliştiren yeni bir veritabanı altyapısı özelliğidir. ADR Şu anda Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için kullanılabilir.
 
 ## <a name="testing-application-fault-resiliency"></a>Uygulama hatası dayanıklılığı sınanıyor
 
-Yüksek kullanılabilirlik, SQL veritabanı ve SQL yönetilen örnek platformunun, veritabanı uygulamanız için saydam olarak çalıştırılan temel bir parçasıdır. Ancak, planlı veya planlanmamış olaylar sırasında başlatılan otomatik yük devretme işlemlerinin, üretime dağıtmadan önce bir uygulamayı ne şekilde etkilediğini test etmek isteyebilirsiniz. Bir veritabanını, elastik havuzu veya yönetilen örneği yeniden başlatmak için özel bir API çağırarak, yük devretmeyi el ile tetikleyebilirsiniz. Bölgesel olarak yedekli bir veritabanı veya elastik havuz söz konusu olduğunda, API çağrısı, eski birincil bölge kullanılabilirlik bölgesinden farklı bir kullanılabilirlik bölgesindeki yeni birincil bağlantı ile istemci bağlantılarını yeniden yönlendirmeye neden olur. Bu nedenle, yük devretmenin var olan veritabanı oturumlarını nasıl etkilediğini test etmeye ek olarak, ağ gecikmede yapılan değişiklikler nedeniyle uçtan uca performansı değiştirdiğinizi de doğrulayabilirsiniz. Yeniden başlatma işlemi zorlandığından ve çok sayıda, platformu vurgulamada, her veritabanı, elastik havuz veya yönetilen örnek için her 30 dakikada bir yük devretme çağrısına izin verilir.
+Yüksek kullanılabilirlik, veritabanı uygulamanız için saydam bir şekilde çalışan SQL Veritabanı ve SQL Yönetilen Örneği platformunun temel bir parçasıdır. Bununla birlikte uygulamayı üretime dağıtmadan önce, planlanmış veya planlanmamış olaylar sırasında başlatılan otomatik yük devretme işlemlerinin uygulamayı nasıl etkileyebileceğini test etmek isteyeceğinizin farkındayız. Bir veritabanını, elastik havuzu veya yönetilen örneği yeniden başlatmak için özel bir API çağırarak, yük devretmeyi el ile tetikleyebilirsiniz. Bölgesel olarak yedekli bir veritabanı veya elastik havuz söz konusu olduğunda, API çağrısı, eski birincil bölge kullanılabilirlik bölgesinden farklı bir kullanılabilirlik bölgesindeki yeni birincil bağlantı ile istemci bağlantılarını yeniden yönlendirmeye neden olur. Bu nedenle, yük devretmenin var olan veritabanı oturumlarını nasıl etkilediğini test etmeye ek olarak, ağ gecikmede yapılan değişiklikler nedeniyle uçtan uca performansı değiştirdiğinizi de doğrulayabilirsiniz. Yeniden başlatma işlemi zorlandığından ve çok sayıda, platformu vurgulamada, her veritabanı, elastik havuz veya yönetilen örnek için her 30 dakikada bir yük devretme çağrısına izin verilir.
 
 PowerShell, REST API veya Azure CLı kullanılarak yük devretme başlatılabilir:
 

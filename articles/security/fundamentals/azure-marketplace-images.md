@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7c317a0b4fea0c981b227bace00c1b8924fd582c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038282"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536391"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Market görüntüleri için güvenlik önerileri
 
@@ -65,11 +65,3 @@ Göndermeden önce, yansımanıza her zaman bir güvenlik açığı algılaması
 
 Kuruluşunuzun Azure Marketi 'nde görüntüleri olmasa bile, bu önerilere karşı Windows ve Linux görüntü yapılandırmalarının denetlenmesini göz önünde bulundurun.
 
-## <a name="contacting-customers"></a>Müşterilerle iletişim kurma
-
-Müşterileri ve ilgili kişi e-postalarını belirlemek için:
-
-1.  Bulut İş Ortağı Portalı, sol Rampadaki **Öngörüler**' i seçin.
-2.  **Siparişler ve kullanım** sekmesinde, gereken tarih aralığındaki kullanımı sorgulamak Için **Başlangıç tarihi** ve **bitiş tarihi** alanlarını kullanın. Bu, teklif için hangi Azure aboneliklerinin günlük olarak kullanıldığını gösterir. Bu verileri dışarı aktarın. 
-3.  Benzer şekilde, **Müşteri** sekmesinde müşteri tabanınızı sorgulayın ve dışarı aktarın.
-4.  2. adımdaki abonelik KIMLIĞINI, gerekli müşteri bilgilerini bulmak için 3. adımdaki abonelik KIMLIĞIYLE eşleştirin.

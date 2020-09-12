@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 08/11/2020
-ms.openlocfilehash: 3bc8458aa009920f183b076d12185295ef294e07
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 18e1ff05d76937f8809408da0ed25f55120e456a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186089"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440584"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için kurulumu özelleştirme
 
@@ -48,7 +48,7 @@ Aşağıdaki sınırlamalar yalnızca standart özel kurulumların için geçerl
 
 - IBM ıferies erişimi ODBC sürücüsü Azure-SSIS IR desteklenmez. Özel kurulumunuz sırasında yükleme hataları görebilirsiniz. Bunu yaparsanız yardım için IBM desteği ile iletişime geçin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -147,9 +147,9 @@ Hızlı özel kurulumlarınız için **lisanslı bileşen türünü yükleme** '
 
    * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, Azure-SSIS IR [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) veri kalitesini/eşleşen bileşenini oh22 adresinden yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **1.0.45**.
 
-   * **Kingswaysoft 'un SSIS Tümleştirme Araç Seti** bileşenini seçerseniz, Azure-SSIS IR Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud gibi CRM/ERP/pazarlama/işbirliği uygulamalarına yönelik [SSIS Tümleştirme Araç Seti](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) bağlayıcılarını yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **2019,2**' dir.
+   * **Kingswaysoft 'un SSIS Tümleştirme Araç Seti** bileşenini seçerseniz, Azure-SSIS IR Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud gibi CRM/ERP/pazarlama/işbirliği uygulamalarına yönelik [SSIS Tümleştirme Araç Seti](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) bağlayıcılarını yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **2020,1**' dir.
 
-   * **Kingswaysoft 'ıN SSIS üretkenlik paketi** bileşenini seçerseniz, Azure-SSIS IR [ssmsoft 'Tan SSIS üretkenlik paketi](https://www.kingswaysoft.com/products/ssis-productivity-pack) paketini yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **10,0**' dir.
+   * **Kingswaysoft 'ıN SSIS üretkenlik paketi** bileşenini seçerseniz, Azure-SSIS IR [ssmsoft 'Tan SSIS üretkenlik paketi](https://www.kingswaysoft.com/products/ssis-productivity-pack) paketini yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **20,1**' dir.
 
    * The **Obald yazılımının Xdikkatini** oluştur bileşenini seçerseniz, Azure-SSIS IR The OBALD yazılımından SAP sıstemlerı (ERP, s/4HANA, siyah beyaz) için [xümlik](https://theobald-software.com/en/xtract-is/) bağlayıcı paketini yükleyebilirsiniz. Bunu yapmak için & sürükleyin ve satın aldığınız ürün lisans dosyasını önceden **Lisans dosyası** giriş kutusuna bırakın/karşıya yükleyin. Geçerli tümleşik sürüm **6.1.1.3**.
 

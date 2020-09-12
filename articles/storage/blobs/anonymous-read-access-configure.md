@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/02/2020
+ms.date: 09/08/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 3a45f185a20345dac00bd459789afc9d53bd48f7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7f3f71f11c741e5e9108d945b60c4465f9cec7da
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534320"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594790"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Kapsayıcılar ve BLOB 'lar için anonim genel okuma erişimini yapılandırma
 
@@ -52,7 +52,10 @@ Depolama hesabı için genel erişime izin vermemek, bu hesaptaki tüm kapsayıc
 
 Bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için, hesabın **Allowblobpublicaccess** özelliğini yapılandırın. Bu özellik, Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Daha fazla bilgi için bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md).
 
-**Allowblobpublicaccess** özelliği varsayılan olarak ayarlı değildir ve açıkça ayarlanana kadar bir değer döndürmez. Depolama hesabı, özellik değeri **null** olduğunda veya **true**olduğunda ortak erişime izin verir.
+> [!NOTE]
+> **Allowblobpublicaccess** özelliği varsayılan olarak ayarlı değildir ve açıkça ayarlanana kadar bir değer döndürmez. Depolama hesabı, özellik değeri **null** olduğunda veya **true**olduğunda ortak erişime izin verir.
+>
+> **Allowblobpublicaccess** özelliği şu anda yalnızca Azure genel bulutundaki depolama hesapları için kullanılabilir.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 

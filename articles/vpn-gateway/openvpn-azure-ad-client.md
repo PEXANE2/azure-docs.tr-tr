@@ -2,17 +2,17 @@
 title: 'VPN Gateway: P2S OpenVPN Protokolü bağlantıları için VPN istemcisi: Azure AD kimlik doğrulaması'
 description: Azure AD kimlik doğrulaması kullanarak sanal ağınıza bağlanmak için P2S VPN kullanabilirsiniz
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: c14d300e2c09316e0665ece3f3e15f7036d5b9a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 781d3aeea6a5568aec065ec4b1cbcfacb74836a6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525084"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434682"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory kimlik doğrulaması: P2S OpenVPN Protokolü bağlantıları için VPN istemcisi yapılandırma
 
@@ -20,6 +20,8 @@ Bu makale, bir VPN istemcisini Noktadan siteye VPN ve Azure Active Directory kim
 
 > [!NOTE]
 > Azure AD kimlik doğrulaması yalnızca OpenVPN® Protokolü bağlantılarında desteklenir.
+>
+> Azure AD kimlik doğrulaması, yalnızca Windows 10 için kullanılabilen Azure VPN istemcisini gerektirir.
 >
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>İstemci profilleriyle çalışma

@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d61cad0be25f5aa1a4c63bf3dc128196ad80fdad
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 83fa119a17d319dffe1fcd54173d9a11b29135ca
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875849"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481839"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure SQL veritabanı çıkışı
 
-[Azure SQL veritabanını](https://azure.microsoft.com/services/sql-database/) , doğası veya ilişkisel bir veritabanında barındırılmakta olan içeriğe bağlı uygulamalar için bir çıktı olarak kullanabilirsiniz. Azure Stream Analytics işleri SQL veritabanında var olan bir tabloya yazar. Tablo şemasının, iş çıkışındaki alanlarla ve türleriyle tam olarak eşleşmesi gerekir. [Azure SQL veri ambarı](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) 'Nı SQL veritabanı çıkış seçeneği aracılığıyla bir çıktı olarak da belirtebilirsiniz. Yazma verimini geliştirme yolları hakkında bilgi edinmek için bkz. [Azure SQL veritabanı ile çıkış makalesi Stream Analytics](stream-analytics-sql-output-perf.md) .
+[Azure SQL veritabanını](https://azure.microsoft.com/services/sql-database/) , doğası veya ilişkisel bir veritabanında barındırılmakta olan içeriğe bağlı uygulamalar için bir çıktı olarak kullanabilirsiniz. Azure Stream Analytics işleri SQL veritabanında var olan bir tabloya yazar. Tablo şemasının, iş çıkışındaki alanlarla ve türleriyle tam olarak eşleşmesi gerekir. Ayrıca, SQL Database output seçeneği aracılığıyla [Azure SYNAPSE Analytics](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) 'i çıkış olarak belirtebilirsiniz. Yazma verimini geliştirme yolları hakkında bilgi edinmek için bkz. [Azure SQL veritabanı ile çıkış makalesi Stream Analytics](stream-analytics-sql-output-perf.md) .
 
 [Azure SQL yönetilen örneğini](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) çıkış olarak da kullanabilirsiniz. [SQL yönetilen örneği 'nde genel uç noktasını yapılandırmanız](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) ve ardından Azure Stream Analytics aşağıdaki ayarları el ile yapılandırmanız gerekir. SQL Server çalıştıran bir veritabanı ile birlikte çalışan Azure sanal makinesi, aşağıdaki ayarları el ile yapılandırarak de desteklenir.
 
@@ -24,7 +24,7 @@ ms.locfileid: "88875849"
 
 Aşağıdaki tabloda, bir SQL veritabanı çıkışı oluşturmak için özellik adları ve bunların açıklamaları listelenmektedir.
 
-| Özellik adı | Açıklama |
+| Özellik adı | Description |
 | --- | --- |
 | Çıktı diğer adı |Sorgu çıkışını bu veritabanına yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Veritabanı | Çıktlarınızı gönderdiğiniz veritabanının adı. |

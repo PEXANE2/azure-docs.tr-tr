@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 0dbd7eb9203f31b580f586a8a7d1fa216533628c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170522"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437879"
 ---
 # <a name="authentication-flows"></a>Kimlik doğrulama akışları
 
@@ -209,7 +209,7 @@ Kimlik sağlayıcısı 'nın gerçekleştirilecek iki öğeli kimlik doğrulamas
 Ortak istemci uygulamasını oluştururken geçirilen yetkili aşağıdakilerden biri olmalıdır:
 
 - Kiracıda, `https://login.microsoftonline.com/{tenant}/,` `{tenant}` Kiracı kimliğini temsıl eden GUID veya kiracı ile ilişkili bir etki alanı adı olan biçimindedir.
-- Herhangi bir iş ve okul hesabı ( `https://login.microsoftonline.com/organizations/` ) için. Microsoft kişisel hesapları (MSA) desteklenmez; `/common`veya `/consumers` kiracılarını kullanamazsınız.
+- Herhangi bir iş ve okul hesabı ( `https://login.microsoftonline.com/organizations/` ) için. Microsoft kişisel hesapları (MSA) desteklenmez; `/common` veya `/consumers` kiracılarını kullanamazsınız.
 
 IWA sessiz akış olduğundan, aşağıdakilerden biri doğru olmalıdır:
 
@@ -219,7 +219,7 @@ IWA sessiz akış olduğundan, aşağıdakilerden biri doğru olmalıdır:
 Bu, aşağıdakilerden birinin doğru olduğu anlamına gelir:
 
 - Bir geliştirici için Azure portal bir geliştirici **seçmiş olursunuz** .
-- Bir kiracı yöneticisi, Azure portal uygulama kaydının **API izinleri** sekmesinde **{kiracı etki alanı} için izin verme/iptal etme onayı** ' nı seçti (bkz. [Web API 'lerine erişim izinleri ekleme](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
+- Bir kiracı yöneticisi, Azure portal uygulama kaydının **API izinleri** sekmesinde **{kiracı etki alanı} için izin verme/iptal etme onayı** ' nı seçti (bkz. [Web API 'nize erişmek için izin ekleme](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)).
 - Kullanıcıların uygulamayı kabul etmek için bir yol sağladınız; bkz. [bireysel kullanıcı Izni isteme](v2-permissions-and-consent.md#requesting-individual-user-consent).
 - Kiracı yöneticisinin uygulamayı kabul etmek için bir yol sağladınız; bkz. [yönetici onayı](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 

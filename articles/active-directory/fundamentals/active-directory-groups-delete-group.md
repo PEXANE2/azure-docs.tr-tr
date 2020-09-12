@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 869def6b3187e10727a170377f2635fb3652f98b
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 800c1742b49fce7e1adf8c3ca22181cfb7d0a085
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797602"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565516"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Azure Active Directory kullanarak bir grubu silme
 Herhangi bir sayıda nedenden dolayı Azure Active Directory (Azure AD) grubunu silebilirsiniz, ancak genellikle şunlar olur:
@@ -48,4 +48,4 @@ Herhangi bir sayıda nedenden dolayı Azure Active Directory (Azure AD) grubunu 
 
 - Bir grubu yanlışlıkla silerseniz, yeniden oluşturabilirsiniz. Daha fazla bilgi için bkz. [temel Grup oluşturma ve üye ekleme](active-directory-groups-create-azure-portal.md).
 
-- Bir Office 365 grubunu yanlışlıkla silerseniz, geri yükleyebilirsiniz. Daha fazla bilgi için bkz. [silinen Office 365 grubunu geri yükleme](../users-groups-roles/groups-restore-deleted.md).
+- Bir Microsoft 365 grubunu yanlışlıkla silerseniz, geri yükleyebilirsiniz. Daha fazla bilgi için bkz. [silinen Office 365 grubunu geri yükleme](../users-groups-roles/groups-restore-deleted.md).

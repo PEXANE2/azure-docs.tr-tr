@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 08/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3bd059e59bebe9ae1ecc8f2f00dd63f873e08944
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: eed9109416f434e2492d621f60b7ad6bf6e188e8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269378"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437386"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
 
@@ -50,7 +50,12 @@ Kullanıcılar Active Directory (AD) veya Azure Active Directory Domain Services
 
 ### <a name="solution-for-cause-3"></a>Neden 3 için çözüm
 
-Paylaşma düzeyi izinlerini güncelleştirmek için bkz. [bir kimliğe erişim Izinleri atama](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#2-assign-access-permissions-to-an-identity).
+İzinlerin doğru şekilde yapılandırıldığını doğrulayın:
+
+- **Active Directory (ad)** bkz. [bir kimliğe paylaşma düzeyi izinleri atama](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
+
+    Paylaşma düzeyi izin atamaları, Azure AD Connect kullanarak Active Directory (AD) ile Azure Active Directory (AAD) arasında eşitlenmiş gruplar ve kullanıcılar için desteklenir.  Paylaşma düzeyi izinlerinin atandığı gruplara ve kullanıcılara desteklenmeyen "salt bulut" grupları olmadığından emin olun.
+- **Azure Active Directory Domain Services (Azure AD DS)** bkz. [bir kimliğe erişim izinleri atama](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Bir Azure dosya paylaşımını bağladığınızda veya kaldırdığınızda hata 53, hata 67 veya hata 87
@@ -316,18 +321,6 @@ Azure [ad etki alanı hizmeti 'nin (azure AD DS)](https://docs.microsoft.com/azu
 Depolama hesabınızın dağıtıldığı aboneliğin Azure AD kiracısında Azure AD DS 'yi etkinleştirin. Yönetilen bir etki alanı oluşturmak için Azure AD kiracısının yönetici ayrıcalıklarına sahip olmanız gerekir. Azure AD kiracısı yöneticisi değilseniz, yöneticiye başvurun ve [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirmek](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)için adım adım yönergeleri izleyin.
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
-
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>Hata ' sistem hatası 1359 oluştu. Azure Active Directory etki alanı hizmeti (Azure AD DS) kimlik doğrulaması etkinken dosya paylaşımlarına SMB erişimi üzerinden alınan bir iç hata '
-
-### <a name="cause"></a>Nedeni
-
-Hata ' sistem hatası 1359 oluştu. Bir iç hata ', Azure AD DS kimlik doğrulaması ile dosya paylaşımınıza bağlanmaya çalıştığınızda, bir sayısal karakterle başlayan etki alanı DNS adı ile bir Azure AD DS ile bağlantı kurmak istediğinizde gerçekleşir. Örneğin, Azure AD DS etki alanı DNS adınız "1domain" ise, Azure AD kimlik bilgilerini kullanarak dosya paylaşımının bağlamaya çalışırken bu hatayı alırsınız. 
-
-### <a name="solution"></a>Çözüm
-
-Şu anda, aşağıdaki kurallarla geçerli olan yeni bir etki alanı DNS adı kullanarak Azure AD DS yeniden dağıtmaya göz önüne alabilirsiniz:
-- Adlar sayısal bir karakterle başlayamaz.
-- Adların uzunluğu 3 ile 63 karakter arasında olmalıdır.
 
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Azure dosyaları AD kimlik bilgileriyle bağlanamıyor 
 

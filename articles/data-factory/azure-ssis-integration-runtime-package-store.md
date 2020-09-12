@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/20/2020
-ms.openlocfilehash: 6455c186e05fc98b1ec340c152f9b3e5710f1dd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/06/2020
+ms.openlocfilehash: 84a7a205e52ba37eb6fcb3b624e0f71a9b9bbc10
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087925"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505497"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Paketleri Azure-SSIS Integration Runtime paket deposuyla yönetme
 
@@ -57,7 +57,7 @@ SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, bir menü açmak ve **Yeni kl
       > [!NOTE]
       > SSIS paketlerinin Azure-SSIS IR paket depolarına aktarılması yalnızca bir tane tarafından yapılabilir ve SQL Server/SSIS sürümünü korurken bunları temel MSDB/dosya sistemine/Azure dosyalarına kopyalayacaktır. 
       >
-      > Azure-SSIS IR Şu anda **SQL Server 2017**' e eşit olan 140 olan varsayılan bir uyumluluk düzeyine sahip olduğundan, üzerinde alt sürüm paketlerinin yürütülmesi, çalışma ZAMANıNDA bunları ssıs 2017 paketlerine yükseltir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
+      > Azure-SSIS IR Şu anda **SQL Server 2017**' i temel aldığı için, alt sürüm paketlerinin yürütülmesi çalışma zamanında ssıs 2017 paketlerine yükseltilir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
       >
       > Ayrıca, eski SSIS paket depoları belirli SQL Server sürümüne bağlı ve yalnızca bu sürümde SSMS üzerinde erişilebilir olduğundan, eski SSIS paket mağazalarındaki alt sürüm paketlerinin SSMS 2019 veya sonraki sürümleri kullanılarak Azure-SSIS IR paket depolarına içeri aktarılbilmeleri için önce, belirtilen SSMS sürümü kullanılarak dosya sistemine aktarılması gerekir.
       >
@@ -72,7 +72,7 @@ SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, bir menü açmak ve **Yeni kl
       > [!NOTE]
       > Azure-SSIS IR paket mağazalarından SSIS paketlerini dışa aktarma işlemi yalnızca bir tane tek tek yapılabilir ve bu sayede koruma düzeyini değiştirmeden bu, SQL Server dosyaları SSIS 2019 veya üzeri sürüm paketlerine yükseltecektir.
       >
-      > Azure-SSIS IR Şu anda **SQL Server 2017**' e eşit olan 140 olan varsayılan bir uyumluluk düzeyine sahip olduğundan, üzerinde alt sürüm paketlerinin yürütülmesi, çalışma ZAMANıNDA bunları ssıs 2017 paketlerine yükseltir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
+      > Azure-SSIS IR Şu anda **SQL Server 2017**' i temel aldığı için, alt sürüm paketlerinin yürütülmesi çalışma zamanında ssıs 2017 paketlerine yükseltilir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
       >
       > Alternatif olarak, koruma düzeylerini değiştirirken Azure-SSIS IR paket mağazalarından birden çok SSIS paketini dışarı aktarmak için [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) komut satırı yardımcı programını kullanabilirsiniz. bkz. [dtutil ile birden çok paket dağıtma](#deploying-multiple-packages-with-dtutil).
 
@@ -124,7 +124,7 @@ Eski paket dağıtım modelini koruyarak, şirket içi SSIS iş yüklerinizi ADF
 
 Birden çok paketi toplu halde dağıtmak için SQL Server/SSIS yüklemesiyle birlikte gelen [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) komut satırı yardımcı programını kullanabilirsiniz. Bu, belirli bir SSIS sürümüne bağlanır. bu nedenle, koruma düzeyini değiştirmeden alt sürüm paketlerini dağıtmak için kullanıyorsanız, SSIS sürümünü korurken yalnızca bunları kopyalayacaktır. Bunları dağıtmak ve koruma düzeyini aynı anda geçirmek için kullanırsanız, bunları SSIS sürümüne yükseltir.
 
- Azure-SSIS IR Şu anda **SQL Server 2017**' e eşit olan 140 olan varsayılan bir uyumluluk düzeyine sahip olduğundan, üzerinde alt sürüm paketlerinin yürütülmesi, çalışma ZAMANıNDA bunları ssıs 2017 paketlerine yükseltir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
+ Azure-SSIS IR Şu anda **SQL Server 2017**' i temel aldığı için, alt sürüm paketlerinin yürütülmesi çalışma zamanında ssıs 2017 paketlerine yükseltilir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
 
 Sonuç olarak, çalışma zamanı yükseltmelerinden kaçınmak için paket dağıtım modelinde Azure-SSIS IR üzerinde çalıştırılacak paketlerin dağıtılması SQL Server/SSIS 2017 yüklemesiyle birlikte gelen dtutil 2017 kullanmalıdır. Ücretsiz [SQL Server/ssıs 2017 Developer Edition](https://go.microsoft.com/fwlink/?linkid=853016) 'ı bu amaçla indirip yükleyebilirsiniz. Yüklendikten sonra, bu klasörde dtutil 2017 bulabilirsiniz: `YourLocalDrive:\Program Files\Microsoft SQL Server\140\DTS\Binn` .
 

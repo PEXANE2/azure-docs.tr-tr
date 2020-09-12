@@ -3,16 +3,16 @@ title: Azure Image Builder hizmeti sorunlarını giderme
 description: Azure VM Image Builder hizmetini kullanırken karşılaşılan yaygın sorunları ve hataları giderme
 author: cynthn
 ms.author: danis
-ms.date: 08/07/2020
+ms.date: 09/03/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 754d9324137632b928e67bbe4c67a3e6c72e452a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068322"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459938"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Azure Image Builder hizmeti sorunlarını giderme
 
@@ -209,7 +209,7 @@ Günlük ayrıntılıdır. Görüntü dağıtımında paylaşılan görüntü Ga
     ```
 5. Serbest sağlama aşaması. Azure görüntü Oluşturucu gizli bir Özelleştirici ekler. Bu geçersiz-sağlama adımı VM 'nin de sağlama için hazırlanmasından sorumludur. Windows Sysprep (c:\DeprovisioningScript.ps1 kullanarak) veya Linux waagent sağlamayı kaldırma (/TMP/deprovisioningscript.exe kullanarak) çalıştırır. 
 
-    Örnek:
+    Örneğin:
     ```text
     PACKER ERR 2020/03/04 23:05:04 [INFO] (telemetry) Starting provisioner powershell
     PACKER ERR 2020/03/04 23:05:04 packer: 2020/03/04 23:05:04 Found command: if( TEST-PATH c:\DeprovisioningScript.ps1 ){cat c:\DeprovisioningScript.ps1} else {echo "Deprovisioning script [c:\DeprovisioningScript.ps1] could not be found. Image build may fail or the VM created from the Image may not boot. Please make sure the deprovisioning script is not accidentally deleted by a Customizer in the Template."}
@@ -247,7 +247,7 @@ Günlük ayrıntılıdır. Görüntü dağıtımında paylaşılan görüntü Ga
 
 Özelleştiriciler başarısızlıklarını bulmak için günlüğü gözden geçirin. Arama *(telemetri)*. 
 
-Örnek:
+Örneğin:
 ```text
 (telemetry) Starting provisioner windows-update
 (telemetry) ending windows-update
@@ -502,6 +502,28 @@ Bunun nedeni D1_V2 VM boyutu nedeniyle bir zamanlama sorunu olabilir. Özelleşt
 
 VM boyutunu artırın. Ya da zamanlama sorununa engel olmak için 60 saniyelik bir PowerShell Sleep özelleştirmesi ekleyebilirsiniz.
 
+### <a name="cancelling-builder-after-context-cancellation-context-canceled"></a>Bağlam iptali bağlamı iptal edildikten sonra Oluşturucu iptal ediliyor
+
+#### <a name="error"></a>Hata
+```text
+PACKER ERR 2020/03/26 22:11:23 Cancelling builder after context cancellation context canceled
+PACKER OUT Cancelling build after receiving terminated
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling hook after context cancellation context canceled
+..
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling provisioning due to context cancellation: context canceled
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [ERROR] Remote command exited without exit status or exit signal.
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [INFO] RPC endpoint: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] 148974 bytes written for 'stdout'
+PACKER ERR 2020/03/26 22:11:25 [INFO] 0 bytes written for 'stderr'
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC client: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 2300218
+```
+#### <a name="cause"></a>Nedeni
+Görüntü Oluşturucu hizmeti, derleme VM 'sine bağlanmak için 22 (Linux) veya 5986 (Windows) bağlantı noktasını kullanır. bu durum, hizmetin bir görüntü derlemesi sırasında yapı VM bağlantısı kesildiğinde oluşur. Bağlantı kesilmesi nedenleri farklılık gösterebilir, ancak betikte güvenlik duvarlarını etkinleştirmek veya yapılandırmak yukarıdaki bağlantı noktalarını engelleyebilir.
+
+#### <a name="solution"></a>Çözüm
+Güvenlik Duvarı değişiklikleri/etkinleştirme için betiklerinizi gözden geçirin veya SSH ya da WinRM üzerinde değişiklikler yapın ve tüm değişikliklerin yukarıdaki bağlantı noktalarında hizmet ve yapı VM 'si arasında sabit bağlantıya izin verildiğinden emin olun. Görüntü Oluşturucu ağı hakkında daha fazla bilgi için lütfen [gereksinimleri](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking)gözden geçirin.
+
 ## <a name="devops-task"></a>DevOps görevi 
 
 ### <a name="troubleshooting-the-task"></a>Görev sorunlarını giderme
@@ -633,9 +655,9 @@ Kılavuza başvurdıysanız ve sorun giderme sorununuzu yaşamaya devam ediyorsa
 Büyük/küçük harf ürünü seçme:
 ```bash
 Product Family: Azure
-Product: Virtual Machine Running Windows
-Support Topic: Management
-Support Subtopic: Issues with Azure Image Builder
+Product: Virtual Machine Running (Window\Linux)
+Support Topic: Azure Features
+Support Subtopic: Azure Image Builder
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

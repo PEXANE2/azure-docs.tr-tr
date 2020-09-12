@@ -1,6 +1,6 @@
 ---
 title: Verileri dönüştürme
-description: Hadoop, Machine Learning veya Azure Data Lake Analytics kullanarak Azure Data Factory veri dönüştürmeyi veya verileri işlemeyi öğrenin.
+description: Hadoop, Machine Learning veya Azure Data Lake Analytics kullanarak Azure Data Factory verileri dönüştürün veya verileri işleyin.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: fdb10894ab9d1c6b805b8b43c90e54126d67b8dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19b4ee621a3918a49b524c5e4515bddd5962e0f4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606623"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442794"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory'de veri dönüştürme
 
@@ -78,7 +78,7 @@ Zaman içinde, Machine Learning Puanlama denemeleri 'un tahmine dayalı modeller
 Bu Machine Learning etkinlikleri hakkında daha fazla bilgi için bkz. [Machine Learning etkinlikleri kullanma](transform-data-using-machine-learning.md) . 
 
 ### <a name="stored-procedure-activity"></a>Saklı yordam etkinliği
-Aşağıdaki veri depolarından birinde saklı bir yordam çağırmak için bir Data Factory Işlem hattındaki SQL Server saklı yordam etkinliğini kullanabilirsiniz: Azure SQL veritabanı, Azure SQL veri ambarı, kuruluşunuzda SQL Server veritabanı veya bir Azure VM. Ayrıntılar için bkz. [saklı yordam etkinliği](transform-data-using-stored-procedure.md) makalesi.  
+Aşağıdaki veri depolarından birinde saklı yordam çağırmak için bir Data Factory Işlem hattındaki SQL Server saklı yordam etkinliğini kullanabilirsiniz: Azure SQL veritabanı, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı), kuruluşunuzda veya bir Azure VM 'de SQL Server veritabanı. Ayrıntılar için bkz. [saklı yordam etkinliği](transform-data-using-stored-procedure.md) makalesi.  
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL etkinliği
 Data Lake Analytics U-SQL etkinliği Azure Data Lake Analytics kümesinde bir U-SQL betiği çalıştırır. Ayrıntılar için bkz. [Data Analytics U-SQL etkinliği](transform-data-using-data-lake-analytics.md) makalesi. 

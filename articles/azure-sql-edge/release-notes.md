@@ -9,28 +9,49 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 07/27/2020
-ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.date: 09/04/2020
+ms.openlocfilehash: a2d27f892e79d99f515032b72e1ec090ab1f6a31
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553419"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500360"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge sürüm notları 
 
 Bu makalede, yenilikler ve her yeni Azure SQL Edge derlemesi ile nelerin değiştiğini açıklanmaktadır.
 
+## <a name="ctp-23"></a>CTP 2,3
+### <a name="sql-engine-build-number---15020001549"></a>SQL altyapısı derleme numarası-15.0.2000.1549
+### <a name="whats-new"></a>Yenilikler
+1. Date_Bucket () işlevindeki özel kaynakları destekler. 
+2. SQL dağıtımının bir parçası olarak BacPac dosyaları için destek.
+3. Veri bekletme ilkesi tabanlı temizleme desteği.      
+   - Bekletme ilkesini etkinleştirmek için DDL desteği 
+   - Saklı yordamları Temizleme ve arka planda temizleme görevi
+   - Temizleme görevlerini izlemek için genişletilmiş olaylar
+
+### <a name="fixes"></a>Düzeltmeler
+1. TSQL akış işlemlerinde sorun gidermeye yönelik ek hata iletileri ve ayrıntılar. 
+2. Boşta modunda pil ömrünü korumak için ımporvements. 
+3. TSQL akış altyapısı düzeltmeleri: 
+   - Alt akışlı atlamalı penceresiyle takılı olmayan filigran sorununu giderme 
+   - Kullanıcı eylem yapılabilir hatası olarak toplandığından emin olmak için Framework özel durum işlemesini onarın
+
+
 ## <a name="ctp-22"></a>CTP 2,2
 ### <a name="sql-engine-build-number---15020001546"></a>SQL altyapısı derleme numarası-15.0.2000.1546
-### <a name="fixes"></a>Düzeltmeler
+### <a name="whats-new"></a>Yenilikler
 1. Kök olmayan kapsayıcılar için destek 
 2. Kullanım ve tanılama veri toplama desteği 
 3. T-SQL akış güncelleştirmeleri
    - Stream nesne adları için Unicode karakterler desteği
+
+### <a name="fixes"></a>Düzeltmeler
+1. T-SQL akış güncelleştirmeleri
    - İşlem Temizleme iyileştirmeleri
    - Günlüğe kaydetme ve tanılama geliştirmeleri
-4. Veri alımı için performans iyileştirmesi
+2. Veri alımı için performans iyileştirmesi
 
 ## <a name="ctp-21"></a>CTP 2,1 
 ### <a name="sql-engine-build-number---15020001545"></a>SQL altyapısı derleme numarası-15.0.2000.1545

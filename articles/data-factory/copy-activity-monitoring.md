@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036377"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440618"
 ---
 # <a name="monitor-copy-activity"></a>Kopyalama etkinliğini izleme
 
@@ -30,7 +30,7 @@ Azure Data Factory bir işlem hattı oluşturup yayımladıktan sonra, bir tetik
 
 Kopyalama etkinliği çalıştırmasını izlemek için data factory **yazarıza & Monitor** Kullanıcı arabirimine gidin. **İzleyici** sekmesinde, işlem hattı çalıştırmalarının bir listesini görürsünüz, işlem hattı çalıştırmasında etkinlik çalıştırmaları listesine erişmek için işlem **hattı adı** bağlantısına tıklayın.
 
-![Kopyalama etkinliği çalıştırmasını izle](./media/copy-activity-overview/monitor-pipeline-run.png)
+![İşlem hattı çalıştırmasını izleme](./media/copy-activity-overview/monitor-pipeline-run.png)
 
 Bu düzeyde, kopyalama etkinliği giriş, çıkış ve hata (kopyalama etkinliğinin başarısız olması durumunda), ayrıca süre/durum gibi istatistikler için bağlantılar bulabilirsiniz. Kopyalama etkinliği adının yanındaki **Ayrıntılar** düğmesine (eyegözlük) tıklamak, kopyalama etkinliği yürütmeyle ilgili ayrıntılı bilgiler verir. 
 
@@ -38,7 +38,7 @@ Bu düzeyde, kopyalama etkinliği giriş, çıkış ve hata (kopyalama etkinliğ
 
 Bu grafik izleme görünümünde Azure Data Factory, veri okuma/yazma birimi, kaynaktan kopyalanan veri sayısı/satır sayısı ve kopyalama senaryonuz için uygulanan yapılandırma işlemleri, kopyalama etkinliğinin ilgili süreler ve Ayrıntılar ve daha fazlası dahil olmak üzere kopyalama etkinliği yürütme bilgilerini sunar. Olası her ölçüm ve ayrıntılı açıklaması için [Bu tabloya](#monitor-programmatically) bakın. 
 
-Bazı senaryolarda, Data Factory bir kopyalama etkinliği çalıştırdığınızda örnekte gösterildiği gibi kopyalama etkinliği izleme görünümünün en üstünde **"performans ayarlama ipuçları"** görürsünüz. İpuçları, belirli bir kopya çalıştırması için ADF tarafından tanımlanan darboğazyı, kopyalama aktarım hızını artırmak için nelerin değişdiklerinin önerisiyle birlikte size bildirir. [Otomatik performans ayarlama ipuçları](copy-activity-performance-troubleshooting.md#performance-tuning-tips)hakkında daha fazla bilgi edinin.
+Bazı senaryolarda, Data Factory bir kopyalama etkinliği çalıştırdığınızda örnekte gösterildiği gibi kopyalama etkinliği izleme görünümünün en üstünde **"performans ayarlama ipuçları"**  görürsünüz. İpuçları, belirli bir kopya çalıştırması için ADF tarafından tanımlanan darboğazyı, kopyalama aktarım hızını artırmak için nelerin değişdiklerinin önerisiyle birlikte size bildirir. [Otomatik performans ayarlama ipuçları](copy-activity-performance-troubleshooting.md#performance-tuning-tips)hakkında daha fazla bilgi edinin.
 
 En son **yürütme ayrıntıları ve süreleri** , kopyalama etkinliğinizin üzerinde geçtiği önemli adımları açıklar, bu, özellikle kopyalama performansının giderilmesi için kullanışlıdır. Kopya çalışmalarınızın performans sorunu en uzun süreye sahip bir süredir. Her aşamanın ne gösterdiği ve ayrıntılı sorun giderme kılavuzunu temsil etmesi için, [kopyalama etkinliği performansını sorun giderme](copy-activity-performance-troubleshooting.md) bölümüne bakın.
 
@@ -50,7 +50,7 @@ En son **yürütme ayrıntıları ve süreleri** , kopyalama etkinliğinizin üz
 
 Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy Activity run result**  >  Kullanıcı arabirimi izleme görünümünü oluşturmak için kullanılan etkinlik çalıştırma sonucu**çıktısını** Kopyala bölümünde de döndürülür. Aşağıda, döndürülebilecek özelliklerin tamamı listelenmiştir. Yalnızca kopyalama senaryonuz için geçerli olan özellikleri görürsünüz. Etkinlik çalışmalarının genel olarak nasıl izleneceği hakkında daha fazla bilgi için bkz. [programlı bir Azure Data Factory 'yi izleme](monitor-programmatically.md).
 
-| Özellik adı  | Açıklama | Çıkışdaki birim |
+| Özellik adı  | Description | Çıkışdaki birim |
 |:--- |:--- |:--- |
 | dataRead | Kaynaktaki okunan gerçek veri miktarı. | Int64 değeri, bayt cinsinden |
 | Veri yazıldı | Havuza yazılan/havuza kaydedilen verilerin gerçek bağlaması. Boyut, `dataRead` her veri deposunun verileri nasıl depoladığını birbirleriyle ilişkilendiren şekilde boyutundan farklı olabilir. | Int64 değeri, bayt cinsinden |
@@ -67,7 +67,7 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy
 | aktarım hızı | Veri aktarımı oranı. | Kayan nokta sayısı, KBps cinsinden |
 | Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int32 değeri (birim yok) |
 | sinkPeakConnections| Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı.| Int32 değeri (birim yok) |
-| sqlDwPolyBase | Veriler SQL veri ambarı 'na kopyalandığında PolyBase 'in kullanılıp kullanılmayacağını belirtir. | Boole |
+| sqlDwPolyBase | Veriler Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalandığında PolyBase 'in kullanılıp kullanılmayacağını belirtir. | Boole |
 | Redkaydırıcı Tunload | Redshift öğesinden veri kopyalanırken KALDıRMA kullanılıp kullanılmayacağını belirtir. | Boole |
 | hdfsDistcp | Veriler, ne zaman bir sunucudan kopyalanırsa kullanılır. | Boole |
 | Etkilenen bir tümleştirme çalışma zamanı | Etkinlik çalıştırmasının gücü için kullanılan tümleştirme çalışma zamanı (IR) veya çalışma zamanları (biçiminde) `<IR name> (<region if it's Azure IR>)` . | Metin (dize) |
@@ -163,6 +163,6 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer kopyalama etkinliği makalelerine bakın:
 
-\-[Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
+\- [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
 
 \- [Kopyalama etkinliği performansı](copy-activity-performance.md)

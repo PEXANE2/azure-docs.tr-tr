@@ -4,12 +4,12 @@ description: Sayfa görüntüleme ve oturum sayıları, Web istemcisi verileri, 
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 9f335ca6912545b39fb8276f5895f98e653735d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224862"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89656954"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -104,7 +104,7 @@ Her yapılandırma seçeneği, yukarıdaki yeni bir satırda gösterilir. [iste�
 
 Kullanılabilir yapılandırma seçenekleri şunlardır 
 
-| Ad | Tür | Açıklama
+| Ad | Tür | Description
 |------|------|----------------
 | src | dize **[gerekli]** | SDK 'nın yükleneceği yerin tam URL 'SI. Bu değer, dinamik olarak eklenen bir betiğin/etiketin "src" özniteliği için kullanılır &lt; &gt; . Genel CDN konumunu veya kendi özel olarak barındırılan birini kullanabilirsiniz.
 | name | dize *[isteğe bağlı]* | Başlatılmış SDK için genel ad, varsayılan olarak olur `appInsights` . ```window.appInsights```Bu nedenle, başlatılmış örneğe bir başvuru olacaktır. Note: bir ad değeri sağlarsanız veya bir önceki örnek atanmak üzere görünüyorsa (Appınsi\dk genel adı aracılığıyla), bu ad değeri aynı zamanda genel ad alanında olarak tanımlanır ```window.appInsightsSDK=<name value>``` , bu da SDK başlatma kodunun doğru kod parçacığı çatısı ve proxy yöntemlerinin başlatılmasını ve güncelleştirilmesini sağlamak için gereklidir.
@@ -115,7 +115,7 @@ Kullanılabilir yapılandırma seçenekleri şunlardır
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Azure portal telemetri gönderme
 
-Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bu modüller şunlardır:
+Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bu güncelleştirmeler şunlardır:
 
 - Uygulamanızdaki bilgiler dahil **yakalanamayan özel durumlar**
     - Yığın izleme
@@ -153,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe bağlıdır `instrumentationKey` .
 
-| Name | Varsayılan | Açıklama |
+| Name | Varsayılan | Description |
 |------|---------|-------------|
 | ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
 | accountId | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
@@ -204,8 +204,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol **değiştirmeyi işlemez.** Tek sayfalı uygulamanız için otomatik yönlendirme değişikliği izlemeyi etkinleştirmek için, `enableAutoRouteTracking: true` Kurulum yapılandırmanıza ekleyebilirsiniz.
 
-Şu anda, bu SDK ile başlatabilmeniz için ayrı bir yanıt verme [eklentisi](#react-extensions)sunuyoruz. Ayrıca, sizin için yol değişikliği izlemeyi da gerçekleştirecek ve diğer tepki verme açısından [özel telemetri](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)toplayacaktır.
-
+Şu anda, bu SDK ile başlatabilmeniz için ayrı bir yanıt verme [eklentisi](javascript-react-plugin.md)sunuyoruz. Ayrıca, sizin için yol değişikliği izlemeyi da gerçekleştirecek ve diğer tepki verme açısından özel telemetri toplayacaktır.
 > [!NOTE]
 > `enableAutoRouteTracking: true`Yalnızca tepki verme eklentisini kullanmıyorsanız **not** kullanın. Her ikisi de yol değiştiğinde yeni PageViews gönderebilir. Her ikisi de etkinse, yinelenen PageViews gönderilebilir.
 
@@ -213,12 +212,13 @@ Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol
 
 Ayar olarak `autoTrackPageVisitTime: true` , bir kullanıcının her sayfada harcadığı zaman izlenir. Yeni bir sayfa görünümünde, *önceki* sayfada harcanan sürenin adlı [özel ölçüm](../platform/metrics-custom-overview.md) olarak gönderildiği süre `PageVisitTime` . Bu özel ölçüm, [Ölçüm Gezgini](../platform/metrics-getting-started.md) "günlük tabanlı ölçüm" olarak görüntülenebilir.
 
-## <a name="react-extensions"></a>Tepki verme uzantıları
+## <a name="extensions"></a>Uzantılar
 
 | Uzantılar |
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
+| [Angular](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-angularplugin-js) |
 
 ## <a name="correlation"></a>Bağıntı
 
@@ -315,7 +315,7 @@ Bu sürüm, en az özellik ve işlevlere sahiptir ve uygun gördüğünüz şeki
 
 ## <a name="examples"></a>Örnekler
 
-Çalıştırılabilir örnekler için bkz. [Application Insights JAVASCRIPT SDK örnekleri](https://github.com/topics/applicationinsights-js-demo)
+Çalıştırılabilir örnekler için bkz. [JAVASCRIPT SDK örnekleri Application Insights](https://github.com/Azure-Samples?q=applicationinsights-js-demo).
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>Application Insights eski sürümünden yükseltme
 

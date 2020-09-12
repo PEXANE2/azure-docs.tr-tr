@@ -7,24 +7,23 @@ ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 7a0e29d3fc90d50f23247a9c11cd4846aa4fb158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8763c07ee91f228f63880c2be16497a7a78c6453
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806024"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595283"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Azure PowerShell kullanarak URL yolu tabanlı yönlendirme ile bir uygulama ağ geçidi oluşturma
 
-Azure PowerShell’i kullanarak, bir [uygulama ağ geçidi](application-gateway-introduction.md) oluştururken [URL temelli yönlendirme kuralları](application-gateway-url-route-overview.md) yapılandırabilirsiniz. Bu makalede, [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)kullanarak arka uç havuzları oluşturacaksınız. Daha sonra, web trafiğinin uygun arka uç havuzuna yeniden yönlendirildiğinden emin olmak için URL yönlendirme kuralları oluşturacaksınız.
+Azure PowerShell’i kullanarak, bir [uygulama ağ geçidi](application-gateway-introduction.md) oluştururken [URL temelli yönlendirme kuralları](application-gateway-url-route-overview.md) yapılandırabilirsiniz. Bu makalede,  [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)kullanarak arka uç havuzları oluşturacaksınız. Daha sonra, web trafiğinin uygun arka uç havuzuna yeniden yönlendirildiğinden emin olmak için URL yönlendirme kuralları oluşturacaksınız.
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Ağı ayarlama
-> * Uygulama ağ geçidi oluşturma
-> * Dinleyiciler ve yönlendirme kuralları ekleme
-> * Arka uç havuzları için sanal makine ölçek kümeleri oluşturma
+* Ağı ayarlama
+* Uygulama ağ geçidi oluşturma
+* Dinleyiciler ve yönlendirme kuralları ekleme
+* Arka uç havuzları için sanal makine ölçek kümeleri oluşturma
 
 Aşağıdaki örnekte, 8080 ve 8081 numaralı bağlantı noktalarından gelen ve aynı arka uç havuzlarına yönlendirilmekte olan site trafiği gösterilir:
 

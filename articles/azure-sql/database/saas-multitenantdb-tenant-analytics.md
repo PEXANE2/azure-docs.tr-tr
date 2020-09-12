@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249180"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442914"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Ayıklanan verileri kullanan çapraz kiracı analizi-çok kiracılı uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Geliştirdiğiniz SaaS uygulamalarının bulutta depolanan büyük miktarda kira
 
 Tüm veriler yalnızca bir çok kiracılı veritabanında olduğunda tüm kiracılar için verilere erişim basittir. Ancak erişim, binlerce veritabanı genelinde ölçeklendirmeye dağıtıldığında daha karmaşıktır. Karmaşıklığın bir yolu, verileri bir analiz veritabanına veya bir veri ambarına ayıklamaya yönelik bir yoldur. Ardından, tüm kiracıların bilet verilerinden Öngörüler toplamak için veri ambarını sorgulayın.
 
-Bu öğreticide, bu örnek SaaS uygulaması için kapsamlı bir analiz senaryosu sunulmaktadır. İlk olarak, elastik işler her kiracı veritabanından veri ayıklanmasını zamanlamak için kullanılır. Veriler bir analiz deposuna gönderilir. Analytics Mağazası bir SQL veritabanı veya SQL veri ambarı olabilir. Büyük ölçekli veri ayıklama için [Azure Data Factory](../../data-factory/introduction.md) yapılır.
+Bu öğreticide, bu örnek SaaS uygulaması için kapsamlı bir analiz senaryosu sunulmaktadır. İlk olarak, elastik işler her kiracı veritabanından veri ayıklanmasını zamanlamak için kullanılır. Veriler bir analiz deposuna gönderilir. Analytics Mağazası bir SQL veritabanı veya bir Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) olabilir. Büyük ölçekli veri ayıklama için [Azure Data Factory](../../data-factory/introduction.md) yapılır.
 
 Ardından, toplanmış veriler bir [yıldız şeması](https://www.wikipedia.org/wiki/Star_schema) tabloları kümesine ayrılabilir. Tablolar bir merkezi olgu tablosu ve ilgili boyut tablolarından oluşur:
 

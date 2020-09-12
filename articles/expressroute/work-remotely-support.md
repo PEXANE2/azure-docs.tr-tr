@@ -2,17 +2,17 @@
 title: Uzak kullanıcıları desteklemek için Azure ExpressRoute kullanma
 description: Bu sayfada COVıD-19 pandemıc nedeniyle uzaktan çalışmayı etkinleştirmek için Azure ExpressRoute 'tan nasıl yararlanabileceğinizi açıklanmaktadır.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/22/2020
-ms.author: ajitbhu
-ms.openlocfilehash: 18b30380ede0c95c7d039749a4d47f65e5824058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: d51f47b73fe572ce81d3e7b54f902f94fcd11b5b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738082"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567682"
 ---
 # <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>Uzak kullanıcıları desteklemek üzere karma bağlantı oluşturmak için Azure ExpressRoute kullanma
 
@@ -31,7 +31,7 @@ Bu makalede, ExpressRoute, Azure, Microsoft Network ve Azure iş ortağı ekosis
 * [Mevcut ExpressRoute devresi için bant genişliğini artırma](expressroute-howto-circuit-portal-resource-manager.md#modify)
 * [ExpressRoute izleme, ölçümler ve uyarılar](expressroute-monitoring-metrics-alerts.md#expressroute-gateway-connections-in-bitsseconds)
 * [ExpressRoute üzerinden rota Iyileştirmesi](expressroute-optimize-routing.md)
-* [O365 için Azure ExpressRoute](https://docs.microsoft.com/office365/enterprise/azure-expressroute?redirectSourcePath=%252farticle%252f6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
+* [Microsoft 365 için Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)
 * [Asimetrik yönlendirme konuları](expressroute-asymmetric-routing.md)
 * [Azure portal bir destek isteği açma](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
@@ -50,4 +50,4 @@ Bu makalede, ExpressRoute, Azure, Microsoft Network ve Azure iş ortağı ekosis
 * Tüm önkoşulların sağlandığından emin olun. Bkz. [ExpressRoute önkoşulları](expressroute-prerequisites.md).
 * [ExpressRoute bağlantı hattını oluşturma ve değiştirme](expressroute-howto-circuit-portal-resource-manager.md)
 * [Bir ExpressRoute bağlantı hattı için eşlemeyi oluşturma ve değiştirme](expressroute-howto-routing-portal-resource-manager.md)
-* [Bir sanal ağı ExpressRoute bağlantı hattına bağlama](expressroute-howto-linkvnet-portal-resource-manager.md)
+* [Sanal ağı ExpressRoute bağlantı hattına bağlama](expressroute-howto-linkvnet-portal-resource-manager.md)

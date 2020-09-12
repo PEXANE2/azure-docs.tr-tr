@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 64b71c135126ebb540d5ccf72f829f83c74ed0b3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b468f967e68b72e3c9da276dc2077fc09256c895
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495327"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470043"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
 
@@ -37,9 +37,9 @@ az --version
 
 Çıktının ilk satırı CLı sürümüne sahip olacaktır, örneğin `azure-cli (2.0.65)` .
 
-Yeni bir yükleme veya yükseltme gerekiyorsa [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) yönergeleri aşağıda verilmiştir.
+Yeni bir yükleme veya yükseltme gerekiyorsa [Azure CLI yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest) yönergeleri aşağıda verilmiştir.
 
-Alternatif olarak, [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)de kullanabilirsiniz. Azure Cloud Shell kullanırken, [Azure Red Hat Openshıft kümesi oluşturma ve yönetme](tutorial-create-cluster.md) öğreticisiyle birlikte Izlemeyi planlıyorsanız **Bash** ortamını seçtiğinizden emin olun.
+Alternatif olarak, [Azure Cloud Shell](../cloud-shell/overview.md)de kullanabilirsiniz. Azure Cloud Shell kullanırken, [Azure Red Hat Openshıft kümesi oluşturma ve yönetme](tutorial-create-cluster.md) öğreticisiyle birlikte Izlemeyi planlıyorsanız **Bash** ortamını seçtiğinizden emin olun.
 
 ## <a name="register-providers-and-features"></a>Sağlayıcıları ve özellikleri kaydetme
 
@@ -103,7 +103,7 @@ Azure Red Hat OpenShift kümeniz için kiracı olarak kullanabileceğiniz bir Az
 
 ## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Azure AD kullanıcısı, güvenlik grubu ve uygulama nesnesi oluşturma
 
-Azure Red Hat OpenShift, kümenizde depolama yapılandırma gibi görevleri gerçekleştirmek için izinler gerektirir. Bu izinler bir [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)ile temsil edilir. Ayrıca, Azure Red Hat OpenShift kümenizde çalışan uygulamaları test etmek için yeni bir Active Directory Kullanıcı oluşturmak isteyeceksiniz.
+Azure Red Hat OpenShift, kümenizde depolama yapılandırma gibi görevleri gerçekleştirmek için izinler gerektirir. Bu izinler bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)ile temsil edilir. Ayrıca, Azure Red Hat OpenShift kümenizde çalışan uygulamaları test etmek için yeni bir Active Directory Kullanıcı oluşturmak isteyeceksiniz.
 
 Hizmet sorumlusu oluşturmak için [Azure AD uygulama nesnesi ve Kullanıcı oluşturma](howto-aad-app-configuration.md) bölümündeki yönergeleri izleyin, uygulamanız için bir istemci gizli anahtarı ve kimlik doğrulama geri çağırma URL 'si oluşturun ve kümeye erişmek için yeni BIR Azure AD güvenlik grubu ve kullanıcı oluşturun.
 
@@ -115,4 +115,4 @@ Artık Azure Red Hat OpenShift kullanmaya hazırsınız!
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md)
 
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
+[azure-cli-install]: /cli/azure/install-azure-cli

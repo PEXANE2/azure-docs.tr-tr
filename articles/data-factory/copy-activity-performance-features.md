@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: 45cecccd88b0b84b478bc6fc7346cb9ef9c2f454
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846352"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440551"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Etkinlik performansını en iyi duruma getirme özelliklerini Kopyala
 
@@ -42,7 +42,7 @@ Kopyalama etkinliği izleme görünümü veya etkinlik çıkışında her bir ko
 
 **Kullanılan mus \* kopyalama süresi \* birim fiyatı/Diu-saat**üzerinden ücretlendirilecektir. Geçerli fiyatlara [buradan](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)bakın. Yerel para birimi ve ayrı ayırt sayma, abonelik türü başına uygulanabilir.
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -100,7 +100,7 @@ Veri mağazalarınızı barındıran makinelerde yükü denetlemek veya kopyalam
 
 Özelliği için bir değer belirttiğinizde `parallelCopies` , kaynak ve havuz Veri depolarındaki yük artışını hesapta yapın. Ayrıca, kopyalama etkinliği tarafından güçde bulunursa, şirket içinde barındırılan tümleştirme çalışma zamanına yönelik yük artışını de göz önünde bulundurun. Bu yük artışı, özellikle aynı veri deposunda çalışan aynı etkinliklerin birden çok etkinliğiniz veya eş zamanlı çalıştırmaları olduğunda gerçekleşir. Veri deposunun veya şirket içinde barındırılan tümleştirme çalışma zamanının yük ile azaldığını fark ederseniz, `parallelCopies` yükü ortadan kaldırmak için değeri azaltın.
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -126,7 +126,7 @@ Veri mağazalarınızı barındıran makinelerde yükü denetlemek veya kopyalam
 
 Bir kaynak veri deposundan bir havuz veri deposuna veri kopyaladığınızda, blob Storage 'ı geçici bir hazırlama deposu olarak kullanmayı tercih edebilirsiniz. Hazırlama, özellikle aşağıdaki durumlarda yararlı olur:
 
-- **Çeşitli veri depolarından verileri, PolyBase aracılığıyla Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) almak istiyorsunuz.** Azure SYNAPSE Analytics, Azure SYNAPSE Analytics 'e büyük miktarda veri yüklemek için yüksek performanslı bir mekanizma olarak PolyBase 'i kullanır. Kaynak verilerin blob depolaması veya Azure Data Lake Store olması ve ek ölçütlere uyması gerekir. BLOB depolama veya Azure Data Lake Store dışında bir veri deposundan veri yüklediğinizde, veri kopyalamayı, geçici hazırlama blob depolaması aracılığıyla etkinleştirebilirsiniz. Bu durumda Azure Data Factory, PolyBase 'in gereksinimlerini karşıladığından emin olmak için gerekli veri dönüştürmelerini gerçekleştirir. Daha sonra, Azure SYNAPSE Analytics 'e verileri verimli bir şekilde yüklemek için PolyBase 'i kullanır. Daha fazla bilgi için bkz. [Azure SQL veri ambarı 'na veri yüklemek Için PolyBase kullanma](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
+- **Çeşitli veri depolarından verileri, PolyBase aracılığıyla Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) almak istiyorsunuz.** Azure SYNAPSE Analytics, Azure SYNAPSE Analytics 'e büyük miktarda veri yüklemek için yüksek performanslı bir mekanizma olarak PolyBase 'i kullanır. Kaynak verilerin blob depolaması veya Azure Data Lake Store olması ve ek ölçütlere uyması gerekir. BLOB depolama veya Azure Data Lake Store dışında bir veri deposundan veri yüklediğinizde, veri kopyalamayı, geçici hazırlama blob depolaması aracılığıyla etkinleştirebilirsiniz. Bu durumda Azure Data Factory, PolyBase 'in gereksinimlerini karşıladığından emin olmak için gerekli veri dönüştürmelerini gerçekleştirir. Daha sonra, Azure SYNAPSE Analytics 'e verileri verimli bir şekilde yüklemek için PolyBase 'i kullanır. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
 - **Bazen bir karma veri hareketini (yani, şirket içi veri deposundan bir bulut veri deposuna kopyalamak için) yavaş bir ağ bağlantısı üzerinden gerçekleştirme işlemi biraz zaman alır.** Performansı artırmak için, hazırlanan kopyayı, verileri bulutta hazırlama veri deposuna taşımak daha az zaman alması amacıyla Şirket içindeki verileri sıkıştırmak için kullanabilirsiniz. Daha sonra, hedef veri deposuna yüklemeden önce hazırlama deposundaki verileri açabilir.
 - **Şirket BT ilkeleri nedeniyle güvenlik duvarınızdaki bağlantı noktası 80 ve bağlantı noktası 443 dışındaki bağlantı noktalarını açmak istemezsiniz.** Örneğin, şirket içi bir veri deposundan verileri bir Azure SQL veritabanı havuzuna veya bir Azure SYNAPSE Analytics havuzuna kopyaladığınızda, bağlantı noktası 1433 üzerinde giden TCP iletişimini hem Windows Güvenlik Duvarı hem de kurumsal güvenlik duvarı için etkinleştirmeniz gerekir. Bu senaryoda, hazırlanan kopya, ilk olarak şirket içinde barındırılan tümleştirme çalışma zamanından yararlanarak, önce verileri HTTP veya 443 numaralı bağlantı noktasında HTTP veya HTTPS üzerinden BLOB depolama hazırlama örneğine kopyalayabilir. Ardından, BLOB depolama alanı hazırlamadaki verileri SQL veritabanı veya Azure SYNAPSE Analytics 'e yükleyebilirsiniz. Bu akışta 1433 numaralı bağlantı noktasını etkinleştirmeniz gerekmez.
 
@@ -146,10 +146,10 @@ Hedef veri deposuna yüklemeden önce, verilerin blob depolamada hazırlanması 
 
 | Özellik | Açıklama | Varsayılan değer | Gerekli |
 | --- | --- | --- | --- |
-| Enablehazırlama |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |Yanlış |Hayır |
+| Enablehazırlama |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |Yanlış |No |
 | linkedServiceName |Geçici hazırlama deposu olarak kullandığınız depolama örneğine başvuran bir [Azurestorage](connector-azure-blob-storage.md#linked-service-properties) Linked hizmetinin adını belirtin. <br/><br/> PolyBase aracılığıyla Azure SYNAPSE Analytics 'e veri yüklemek için paylaşılan erişim imzasıyla depolama kullanamazsınız. Diğer tüm senaryolarda kullanabilirsiniz. |Yok |Evet, **Enablehazırlama** true olarak ayarlandığında |
-| path |Hazırlanan verileri içermesini istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. <br/><br/> Yalnızca bir paylaşılan erişim imzasıyla depolama kullanırsanız veya geçici verilerin belirli bir konumda olmasını istiyorsanız bir yol belirtin. |Yok |Hayır |
-| enableCompression |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |Yanlış |Hayır |
+| path |Hazırlanan verileri içermesini istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. <br/><br/> Yalnızca bir paylaşılan erişim imzasıyla depolama kullanırsanız veya geçici verilerin belirli bir konumda olmasını istiyorsanız bir yol belirtin. |Yok |No |
+| enableCompression |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |Yanlış |No |
 
 >[!NOTE]
 > Hazırlanan bir kopyayı sıkıştırma etkinken kullanırsanız, hazırlama blobu bağlı hizmeti için hizmet sorumlusu veya MSI kimlik doğrulaması desteklenmez.

@@ -3,12 +3,12 @@ title: Azure Site Recovery 'de VMware/fiziksel olağanüstü durum kurtarma içi
 description: Azure Site Recovery kullanarak, VMware VM 'Leri ve fiziksel sunucu ile Azure arasında olağanüstü durum kurtarma desteğini özetler.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 288cebc4d4097ff40b618e2f1976039359458ecf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 98f9bf02b910749a98ae8cd6e409ee733c2e2dcc
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719028"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595759"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -31,9 +31,8 @@ Fiziksel sunucuların olağanüstü durum kurtarması | Şirket içi Windows/Lin
 
 **Sunucu** | **Gereksinimler** | **Ayrıntılar**
 --- | --- | ---
-vCenter Server | Sürüm 7,0, 6,7, 6,5, 6,0 veya 5,5 | Olağanüstü durum kurtarma dağıtımınızda bir vCenter sunucusu kullanmanızı öneririz.
-vSphere Konakları | Sürüm 7,0, 6,7, 6,5, 6,0 veya 5,5 | VSphere konaklarının ve vCenter sunucularının, işlem sunucusuyla aynı ağda bulunmasını öneririz. Varsayılan olarak, işlem sunucusu yapılandırma sunucusunda çalışır. [Daha fazla bilgi edinin](vmware-physical-azure-config-process-server-overview.md).
-
+vCenter Server | Sürüm 7,0, bu sürümde sonraki güncelleştirmeler &, 6,7, 6,5, 6,0 veya 5,5 | Olağanüstü durum kurtarma dağıtımınızda bir vCenter sunucusu kullanmanızı öneririz.
+vSphere Konakları | Sürüm 7,0, bu sürümde sonraki güncelleştirmeler &, 6,7, 6,5, 6,0 veya 5,5 | VSphere konaklarının ve vCenter sunucularının, işlem sunucusuyla aynı ağda bulunmasını öneririz. Varsayılan olarak, işlem sunucusu yapılandırma sunucusunda çalışır. [Daha fazla bilgi edinin](vmware-physical-azure-config-process-server-overview.md).
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery yapılandırma sunucusu
 
@@ -193,43 +192,43 @@ Site Recovery hizmetine özel bağlantı erişimi | Evet. [Daha fazla bilgi edin
 
 **Bileşen** | **Desteklenir**
 --- | ---
-Azure ExpressRoute | Evet
-ILB | Evet
-ELB | Evet
-Azure Traffic Manager | Evet
-Çoklu NIC | Evet
-Ayrılmış IP adresi | Evet
-IPv4 | Evet
-Kaynak IP adresini sakla | Evet
-Azure sanal ağ hizmet uç noktaları<br/> | Evet
-Hızlandırılmış ağ iletişimi | Hayır
+Azure ExpressRoute | Yes
+ILB | Yes
+ELB | Yes
+Azure Traffic Manager | Yes
+Çoklu NIC | Yes
+Ayrılmış IP adresi | Yes
+IPv4 | Yes
+Kaynak IP adresini sakla | Yes
+Azure sanal ağ hizmet uç noktaları<br/> | Yes
+Hızlandırılmış ağ iletişimi | No
 
 ## <a name="storage"></a>Depolama
 **Bileşen** | **Desteklenir**
 --- | ---
 Dinamik disk | İşletim sistemi diski, temel bir disk olmalıdır. <br/><br/>Veri diskleri dinamik diskler olabilir
-Docker disk yapılandırması | Hayır
+Docker disk yapılandırması | No
 Konak NFS | VMware için Evet<br/><br/> Fiziksel sunucular için Hayır
-Ana bilgisayar SAN (Iscsı/FC) | Evet
+Ana bilgisayar SAN (Iscsı/FC) | Yes
 Ana bilgisayar vSAN | VMware için Evet<br/><br/> Fiziksel sunucular için yok
 Ana bilgisayar çok yollu (MPIO) | Evet, Microsoft DSM ile test edildi, EMC PowerPath 5,7 SP4, Clariiyon için EMC PowerPath DSM
 Konak sanal birimleri (Vvir) | VMware için Evet<br/><br/> Fiziksel sunucular için yok
-Konuk/sunucu VMDK | Evet
-Konuk/sunucu paylaşılan küme diski | Hayır
-Konuk/sunucu tarafından şifrelenen disk | Hayır
-Konuk/sunucu NFS | Hayır
+Konuk/sunucu VMDK | Yes
+Konuk/sunucu paylaşılan küme diski | No
+Konuk/sunucu tarafından şifrelenen disk | No
+Konuk/sunucu NFS | No
 Konuk/sunucu Iscsı | Geçiş için-Evet<br/>Olağanüstü durum kurtarma için-Hayır, Iscsı sanal makineye bağlı bir disk olarak yeniden çalışır
-Konuk/sunucu SMB 3,0 | Hayır
-Konuk/sunucu RDM | Evet<br/><br/> Fiziksel sunucular için yok
+Konuk/sunucu SMB 3,0 | No
+Konuk/sunucu RDM | Yes<br/><br/> Fiziksel sunucular için yok
 Konuk/sunucu diski > 1 TB | Evet, disk 1024 MB 'tan büyük olmalıdır<br/><br/>Yönetilen disklere çoğaltma yaparken 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br></br> Depolama hesaplarına çoğaltma yaparken 4.095 GB 'a kadar
-4K mantıksal ve 4k fiziksel sektör boyutuna sahip konuk/sunucu diski | Hayır
-4K mantıksal ve 512 bayt fiziksel kesim boyutuna sahip konuk/sunucu diski | Hayır
-Şeritli disk >4 TB olan konuk/sunucu birimi | Evet
+4K mantıksal ve 4k fiziksel sektör boyutuna sahip konuk/sunucu diski | No
+4K mantıksal ve 512 bayt fiziksel kesim boyutuna sahip konuk/sunucu diski | No
+Şeritli disk >4 TB olan konuk/sunucu birimi | Yes
 Mantıksal birim yönetimi (LVM)| Kalın sağlama-Evet <br></br> Ölçülü kaynak sağlama-Hayır
-Konuk/sunucu-depolama alanları | Hayır
-Konuk/sunucu Hot Add/Remove disk | Hayır
-Konuk/sunucu-diski hariç tut | Evet
-Konuk/sunucu çok yollu (MPIO) | Hayır
+Konuk/sunucu-depolama alanları | No
+Konuk/sunucu Hot Add/Remove disk | No
+Konuk/sunucu-diski hariç tut | Yes
+Konuk/sunucu çok yollu (MPIO) | No
 Konuk/sunucu GPT bölümleri | Beş bölüm [güncelleştirme paketi 37](https://support.microsoft.com/help/4508614/) (Mobility hizmetinin sürüm 9,25) ve sonraki sürümlerde desteklenir. Daha önce dört destekleniyordu.
 ReFS | Dayanıklı dosya sistemi, Mobility hizmeti sürüm 9,23 veya üzeri sürümlerde desteklenir
 Konuk/sunucu EFı/UEFı önyüklemesi | -Site Recovery Mobility Agent sürüm 9,30 ve sonraki sürümleri ile tüm [Azure Market UEFI OSes](../virtual-machines/windows/generation-2.md#generation-2-vm-images-in-azure-marketplace) için desteklenir. <br/> -Secure UEFı önyükleme türü desteklenmez. [Daha fazla bilgi edinin.](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
@@ -238,26 +237,26 @@ Konuk/sunucu EFı/UEFı önyüklemesi | -Site Recovery Mobility Agent sürüm 9,
 
 |**Çoğaltma türü**   |**Desteklenir**  |
 |---------|---------|
-|Boşaltılan veri aktarımları (ODX)    |       Hayır  |
-|Çevrimdışı dengeli dağıtım        |   Hayır      |
-| Azure Data Box | Hayır
+|Boşaltılan veri aktarımları (ODX)    |       No  |
+|Çevrimdışı dengeli dağıtım        |   No      |
+| Azure Data Box | No
 
 ## <a name="azure-storage"></a>Azure depolama
 
 **Bileşen** | **Desteklenir**
 --- | ---
-Yerel olarak yedekli depolama | Evet
-Coğrafi olarak yedekli depolama | Evet
-Okuma erişimli coğrafi olarak yedekli depolama | Evet
-Seyrek Erişimli Depolama | Hayır
-Sık erişimli depolama| Hayır
-Blok blobları | Hayır
-Bekleyen şifreleme (SSE)| Evet
+Yerel olarak yedekli depolama | Yes
+Coğrafi olarak yedekli depolama | Yes
+Okuma erişimli coğrafi olarak yedekli depolama | Yes
+Seyrek Erişimli Depolama | No
+Sık erişimli depolama| No
+Blok blobları | No
+Bekleyen şifreleme (SSE)| Yes
 Bekleyen şifreleme (CMK)| Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller)
 Rest 'te Çift şifreleme | Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller). [Windows](../virtual-machines/windows/disk-encryption.md) ve [Linux](../virtual-machines/linux/disk-encryption.md)için desteklenen bölgeler hakkında daha fazla bilgi edinin.
-Premium depolama | Evet
-Güvenli aktarım seçeneği | Evet
-İçeri/dışarı aktarma hizmeti | Hayır
+Premium depolama | Yes
+Güvenli aktarım seçeneği | Yes
+İçeri/dışarı aktarma hizmeti | No
 Sanal ağlar için Azure Storage güvenlik duvarları | Evet.<br/> Hedef depolama/önbellek depolama hesabında yapılandırıldı (çoğaltma verilerini depolamak için kullanılır).
 Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katmanlar) | Evet (v1 ile karşılaştırıldığında v2 için Işlem maliyetleri önemli ölçüde yüksektir)
 
@@ -265,10 +264,10 @@ Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katman
 
 **Özellik** | **Desteklenir**
 --- | ---
-Kullanılabilirlik kümeleri | Evet
-Kullanılabilirlik alanları | Hayır
-HUB | Evet
-Yönetilen diskler | Evet
+Kullanılabilirlik kümeleri | Yes
+Kullanılabilirlik alanları | No
+HUB | Yes
+Yönetilen diskler | Yes
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri
 
@@ -279,7 +278,7 @@ Azure 'a çoğaltılan şirket içi VM 'Ler, bu tabloda özetlenen Azure VM gere
 Konuk işletim sistemi | Çoğaltılan makineler için [desteklenen işletim sistemlerini](#replicated-machines) doğrulayın. | Desteklenmiyorsa denetim başarısız olur.
 Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısız olur.
 İşletim sistemi disk boyutu | 2.048 GB 'a kadar. | Desteklenmiyorsa denetim başarısız olur.
-İşletim sistemi disk sayısı | 1 | Desteklenmiyorsa denetim başarısız olur.
+İşletim sistemi disk sayısı | 1 </br> farklı disklerde önyükleme ve sistem bölümü desteklenmiyor | Desteklenmiyorsa denetim başarısız olur.
 Veri diski sayısı | 64 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
 Veri diski boyutu | Yönetilen diske çoğaltma sırasında 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br></br>Depolama hesabına çoğaltılırken 4.095 GB 'a kadar| Desteklenmiyorsa denetim başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir. |
@@ -322,10 +321,10 @@ VM üzerindeki tüm disklerde en yüksek veri değişim sıklığı | 54 MB/sn
 
 **Eylem** | **Desteklenir**
 --- | ---
-Kasayı kaynak grupları arasında taşıma | Hayır
-Kasayı abonelik içinde ve abonelikler arasında taşıma | Hayır
-Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma | Hayır
-Depolama, ağ, Azure VM 'Leri ve abonelikler arasında taşıma. | Hayır
+Kasayı kaynak grupları arasında taşıma | No
+Kasayı abonelik içinde ve abonelikler arasında taşıma | No
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma | No
+Depolama, ağ, Azure VM 'Leri ve abonelikler arasında taşıma. | No
 
 
 ## <a name="obtain-latest-components"></a>En son bileşenleri edinin

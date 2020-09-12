@@ -10,12 +10,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 0fc4f9c2142011edf78033d36d13ecb9115a8850
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e87a083f5b31237c00bc8421774c14d3ef8ef33f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84044993"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439767"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik havuzları yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -94,7 +94,7 @@ Mevcut elastik havuzlarda veritabanları oluşturup taşımak veya Transact-SQL 
 | [ALTER DATABASE (Azure SQL veritabanı)](/sql/t-sql/statements/alter-database-azure-sql-database) |Bir veritabanını elastik havuzlar içine veya dışına taşıyın.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Bir veritabanını siler.|
 |[sys. elastic_pool_resource_stats (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Bir sunucudaki tüm elastik havuzlar için kaynak kullanım istatistikleri döndürür. Her elastik havuz için, her 15 saniyelik raporlama penceresi için bir satır vardır (dakikada dört satır). Buna CPU, GÇ, günlük, depolama alanı tüketimi ve havuzdaki tüm veritabanları tarafından eşzamanlı istek/oturum kullanımı dahildir.|
-|[sys. database_service_objectives (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|SQL veritabanı veya Azure SQL veri ambarı 'ndaki bir veritabanı için sürüm (hizmet katmanı), hizmet hedefi (Fiyatlandırma Katmanı) ve elastik havuz adı döndürür. Sunucuda ana veritabanında oturum açarsa, tüm veritabanlarına bilgi döndürür. Azure SQL veri ambarı için ana veritabanına bağlı olmanız gerekir.|
+|[sys. database_service_objectives (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) içindeki bir veritabanı için sürüm (hizmet katmanı), hizmet hedefi (Fiyatlandırma Katmanı) ve elastik havuz adı döndürür. Sunucuda ana veritabanında oturum açarsa, tüm veritabanlarına bilgi döndürür. Azure SYNAPSE Analytics için ana veritabanına bağlı olmanız gerekir.|
 
 ## <a name="rest-api"></a>REST API
 

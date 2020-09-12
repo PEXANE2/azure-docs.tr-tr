@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 54597953aac6fabe419a9d1b62b16de7ca7bd1e0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534354"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440601"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
 
@@ -129,7 +129,7 @@ Bir kopyalama etkinliğinin aşağıdaki şablonu desteklenen özelliklerin kaps
 
 | Özellik | Açıklama | Gerekli mi? |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği için,`Copy` | Yes |
+| tür | Kopyalama etkinliği için, `Copy` | Yes |
 | girişi | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Yes |
 | çıkışı | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Yes |
 | typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Yes |
@@ -200,9 +200,9 @@ Program aracılığıyla yapılandırmak için `additionalColumns` kopyalama etk
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| additionalColumns | Havuza kopyalamak için ek veri sütunları ekleyin.<br><br>Dizideki her nesne `additionalColumns` bir ek sütunu temsil eder. , `name` Sütun adını tanımlar ve `value` Bu sütunun veri değerini gösterir.<br><br>İzin verilen veri değerleri şunlardır:<br>- **`$$FILEPATH`**-ayrılmış bir değişken, kaynak dosyaların göreli yolunu veri kümesinde belirtilen klasör yoluna depolayacağını gösterir. Dosya tabanlı kaynağa uygulayın.<br>- **İfadesini**<br>- **Statik değer** | No |
+| additionalColumns | Havuza kopyalamak için ek veri sütunları ekleyin.<br><br>Dizideki her nesne `additionalColumns` bir ek sütunu temsil eder. , `name` Sütun adını tanımlar ve `value` Bu sütunun veri değerini gösterir.<br><br>İzin verilen veri değerleri şunlardır:<br>- **`$$FILEPATH`** -ayrılmış bir değişken, kaynak dosyaların göreli yolunu veri kümesinde belirtilen klasör yoluna depolayacağını gösterir. Dosya tabanlı kaynağa uygulayın.<br>- **İfadesini**<br>- **Statik değer** | No |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -248,8 +248,8 @@ Verileri SQL Database/Azure SYNAPSE Analytics 'e kopyalarken, hedef tablo yoksa,
 Bu özellik, herhangi bir kaynaktaki verileri aşağıdaki havuz veri depolarına kopyalarken desteklenir. *ADF yazma Kullanıcı arabirimi* – > *kopyalama etkinliği havuzu* – > *Tablo seçeneği* – > *otomatik olarak tablo oluştur*veya `tableOption` kopyalama etkinliği havuz yükünde özellik aracılığıyla) seçeneğini bulabilirsiniz.
 
 - [Azure SQL Veritabanı](connector-azure-sql-database.md)
-- [Azure SQL veritabanı yönetilen örneği](connector-azure-sql-managed-instance.md)
-- [Azure SYNAPSE Analytics (eski adıyla Azure SQL veri ambarı)](connector-azure-sql-data-warehouse.md)
+- [Azure SQL Veritabanı Yönetilen Örneği](connector-azure-sql-managed-instance.md)
+- [Azure Synapse Analytics (eski adı SQL Veri Ambarı)](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
 ![Havuz tabloları oluşturma](media/copy-activity-overview/create-sink-table.png)

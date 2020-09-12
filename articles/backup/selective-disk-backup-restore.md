@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine yedekleme çözümünü kullanarak 
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 12b5b4cd35d70d8ebbd6b269e82c46984652bd07
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962001"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506704"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure sanal makineleri için seçmeli disk yedekleme ve geri yükleme
 
@@ -268,6 +268,10 @@ Bir VM için seçmeli diskler Yedekleme deneyimini Azure portal aracılığıyla
 Azure portal kullanarak yedeklemeyi etkinleştirdiğinizde, **yalnızca yedekleme işletim sistemi diski** seçeneğini belirleyebilirsiniz. Böylece, işletim sistemi diski ile Azure VM 'nizin yedeklemesini yapılandırabilir ve ona bağlı tüm veri disklerini dışlayabilirsiniz.
 
 ![Yalnızca işletim sistemi diski için yedeklemeyi yapılandırma](./media/selective-disk-backup-restore/configure-backup-operating-system-disk.png)
+
+## <a name="using-azure-rest-api"></a>Azure REST API kullanma
+
+Azure VM yedeklemesini birkaç Select diski ile yapılandırabilirsiniz veya mevcut bir sanal makinenin korumasını [burada](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)belgelenen birkaç diski dahil etmek/hariç tutmak için değiştirebilirsiniz.
 
 ## <a name="selective-disk-restore"></a>Seçmeli disk geri yükleme
 

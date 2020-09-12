@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2020
-ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 86d647a79b7babc2780cb0db904e689f3916673f
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816039"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500394"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
@@ -60,7 +60,7 @@ Bir ıSE 'de Logic Apps oluşturup çalıştırdığınızda, aynı kullanıcı 
   * Azure Otomasyonu, Azure Key Vault, Azure Event Grid ve Azure Izleyici günlükleri
   * FTP, SFTP-SSH, dosya sistemi ve SMTP
   * SAP, IBM MQ, IBM DB2 ve IBM 3270
-  * SQL Server, Azure SQL veri ambarı Azure Cosmos DB
+  * SQL Server, Azure SYNAPSE Analytics, Azure Cosmos DB
   * AS2, x12 ve EDIOLGU
 
   Nadir özel durumlar sayesinde, şirket içi sistem veya veri kaynağı için ıSE Bağlayıcısı varsa, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-connection.md)kullanmadan doğrudan bağlanabilirsiniz. Daha fazla bilgi için bu konunun ilerleyen kısımlarında yer [alan şirket içi sistemlere erişim](#on-premises) bölümüne bakın.
@@ -142,7 +142,7 @@ Logic Apps, yerleşik Tetikleyiciler, yerleşik Eylemler ve ıSE 'de çalışan 
 
 ## <a name="integration-accounts-with-ise"></a>ISE ile tümleştirme hesapları
 
-Tümleştirme hesaplarını bir tümleştirme hizmeti ortamı (ıSE) içinde Logic Apps ile kullanabilirsiniz. Ancak, bu tümleştirme hesaplarının bağlı Logic Apps ile *aynı Ise* kullanması gerekir. Bir ıSE içindeki Logic Apps yalnızca aynı ıSE içindeki tümleştirme hesaplarına başvurabilir. Bir tümleştirme hesabı oluşturduğunuzda, çalışma hesabınızı tümleştirme hesabınızın konumu olarak seçebilirsiniz. Fiyatlandırma ve faturalandırma 'nin bir ıSE ile tümleştirme hesaplarında nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/).
+Tümleştirme hesaplarını bir tümleştirme hizmeti ortamı (ıSE) içinde Logic Apps ile kullanabilirsiniz. Ancak, bu tümleştirme hesaplarının bağlı Logic Apps ile *aynı Ise* kullanması gerekir. Bir ıSE içindeki Logic Apps yalnızca aynı ıSE içindeki tümleştirme hesaplarına başvurabilir. Bir tümleştirme hesabı oluşturduğunuzda, çalışma hesabınızı tümleştirme hesabınızın konumu olarak seçebilirsiniz. Fiyatlandırma ve faturalandırma 'nin bir ıSE ile tümleştirme hesaplarında nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/). Sınır bilgileri için bkz. [tümleştirme hesabı sınırları](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39736f0a369064e1a825ba3f6975a01c5e9ecc40
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 27aabac75516eed2c68b4f14c6593411d0141ef1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147642"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437250"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -108,7 +108,7 @@ CAE özellikli istemciler kullanmıyorsanız, erişim belirteci yaşam süresini
 1. Bu durumda, kaynak sağlayıcısı erişimi reddeder ve istemciye bir 401 + talep sınaması gönderir.
 1. CAE özellikli istemci, 401 + talep sınamasını anlamıştır. Önbellekler atlar ve adım 1 ' e döner ve yenileme belirtecini Azure AD 'ye geri talebi ile birlikte gönderir. Daha sonra Azure AD tüm koşulları yeniden değerlendirmenize ve kullanıcıdan bu durumda yeniden kimlik doğrulaması sorması istenir.
 
-### <a name="user-condition-change-flow-public-preview"></a>Kullanıcı koşulu değişiklik akışı (Genel Önizleme):
+### <a name="user-condition-change-flow-preview"></a>Kullanıcı koşulu değişiklik akışı (Önizleme):
 
 Aşağıdaki örnekte, koşullu erişim Yöneticisi bir konum tabanlı koşullu erişim ilkesini yalnızca belirli IP aralıklarından erişime izin verecek şekilde yapılandırmıştır:
 
@@ -135,6 +135,13 @@ Bu sayfadan, önizlemeye tabi olacak kullanıcıları ve grupları isteğe bağl
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
+### <a name="supported-location-policies"></a>Desteklenen konum ilkeleri
+
+CAE için, yalnızca adlandırılmış IP tabanlı adlandırılmış konumlara ilişkin Öngörüler sunuyoruz. [MFA güvenilir IP 'leri](../authentication/howto-mfa-mfasettings.md#trusted-ips) veya ülke tabanlı konumlar gibi diğer konum ayarlarına yönelik Öngörüler bulunmamaktadır. Kullanıcı MFA güvenilir IP 'Leri veya ülke konumunu içeren güvenilir konumlardan veya Kullanıcı farklı bir konuma geçtikten sonra CAE uygulanmaz. Bu durumlarda, anlık IP zorlama denetimi olmadan 1 saatlik bir CAE belirteci yayımlayacağız.
+
+> [!IMPORTANT]
+> Sürekli erişim değerlendirmesi için konumları yapılandırırken yalnızca [IP tabanlı koşullu erişim konumu koşulunu](../conditional-access/location-condition.md#preview-features) kullanın ve **hem IPv4 hem de IPv6 dahil olmak üzere**kimlik sağlayıcınız ve kaynak SAĞLAYıCıNıZ tarafından görülebilen tüm IP adreslerini yapılandırın. Ülke konum koşullarını veya Azure Multi-Factor Authentication hizmet ayarları sayfasında bulunan güvenilir IP 'ler özelliğini kullanmayın.
+
 ### <a name="ip-address-configuration"></a>IP adresi yapılandırması
 
 Kimlik sağlayıcınız ve kaynak sağlayıcılarınız farklı IP adresleri görebilir. Bu uyumsuzluk, kuruluşunuzdaki ağ proxy uygulamaları veya kimlik sağlayıcınız ile kaynak sağlayıcınız arasında yanlış IPv4/IPv6 yapılandırması nedeniyle oluşabilir. Örneğin:
@@ -144,9 +151,6 @@ Kimlik sağlayıcınız ve kaynak sağlayıcılarınız farklı IP adresleri gö
 - Kimlik sağlayıcınızın gördüğü IP adresi ilkede izin verilen bir IP aralığının parçası, ancak kaynak sağlayıcıdan gelen IP adresi değil.
 
 Bu senaryo, sınırlı döngüden kaçınmak için ortamınızda varsa, Azure AD bir saatlik CAE belirteci oluşturacak ve istemci konumu değişikliğini zorlamayacaktır. Bu durumda bile, istemci konum değişikliği olaylarının yanı sıra [diğer olayları](#critical-event-evaluation) değerlendirdiğimiz için, güvenlik geleneksel bir saat belirteçleriyle karşılaştırıldığında geliştirilmiştir.
-
-> [!IMPORTANT]
-> Sürekli erişim değerlendirmesi için konumları yapılandırırken yalnızca [IP tabanlı koşullu erişim konumu koşulunu](../conditional-access/location-condition.md)kullanın. Ülke konum koşullarını veya Azure Multi-Factor Authentication hizmet ayarları sayfasında bulunan güvenilir IP 'ler özelliğini kullanmayın.
 
 ### <a name="office-and-web-account-manager-settings"></a>Office ve web hesabı Yöneticisi ayarları
 

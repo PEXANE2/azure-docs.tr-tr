@@ -1,19 +1,19 @@
 ---
 title: HBase kümesini yeni sürüme geçirme-Azure HDInsight
 description: Apache HBase kümelerini Azure HDInsight 'ta daha yeni bir sürüme geçirme.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 23843743b58db91d457b509fa38243f110b76b41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079556"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504001"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase kümesini yeni bir sürüme geçirme
 
@@ -32,17 +32,17 @@ Apache HBase 'i yükseltmeden önce kaynak ve hedef kümelerindeki HBase sürüm
 
 | Uyumluluk türü | Ana sürüm| İkincil sürüm | Patch |
 | --- | --- | --- | --- |
-| İstemci-sunucu hat uyumluluğu | N | E | E |
-| Sunucu-sunucu uyumluluğu | N | E | E |
-| Dosya biçimi uyumluluğu | N | E | E |
-| İstemci API 'SI uyumluluğu | N | E | E |
-| İstemci ikili uyumluluğu | N | N | E |
+| İstemci-sunucu hat uyumluluğu | H | E | Y |
+| Sunucu-sunucu uyumluluğu | H | E | Y |
+| Dosya biçimi uyumluluğu | H | E | Y |
+| İstemci API 'SI uyumluluğu | H | E | Y |
+| İstemci ikili uyumluluğu | N | H | E |
 | **Sunucu tarafı sınırlı API uyumluluğu** |  |  |  |
-| Dengeli | N | E | E |
-| Mektedir | N | N | E |
+| Dengeli | H | E | Y |
+| Mektedir | N | H | E |
 | Gelmesine | N | N | N |
-| Bağımlılık uyumluluğu | N | E | E |
-| İşletimsel uyumluluk | N | N | E |
+| Bağımlılık uyumluluğu | H | E | Y |
+| İşletimsel uyumluluk | N | H | E |
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Aynı Apache HBase ana sürümüyle yükselt
 

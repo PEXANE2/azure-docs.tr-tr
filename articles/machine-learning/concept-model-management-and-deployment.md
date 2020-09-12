@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 680fd298f3d772ecb9a4787342d22bf44e74ec78
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543393"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651080"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
@@ -153,12 +153,12 @@ Azure ML, meta verileri kullanarak tüm ML varlıklarınızın uçtan uca deneti
 - [Yorumlandırma](how-to-machine-learning-interpretability.md) , modellerinizi açıklamanıza, yasal uyumluluğu karşılamanıza ve belirli bir giriş için modellerin bir sonuca nasıl ulaştığını anlamanıza olanak tanır.
 - Azure ML çalışma geçmişi, bir modeli eğitebilmeniz için kullanılan kodun, verilerin ve hesaplanan bir anlık görüntü depolar.
 - Azure ML modeli kayıt defteri, modelinizle ilişkili tüm meta verileri yakalar (Bu, dağıtımları, dağıtımı sağlıklı ise, dağıtıldığı yerde).
-- [Azure Ile tümleştirme](how-to-use-event-grid.md) , ml yaşam döngüsünün olayları üzerinde işlem yapmanıza olanak sağlar. Örneğin, model kaydı, dağıtım, veri kayması ve eğitim (çalıştırma) olayları.
+- [Azure Ile tümleştirme](how-to-use-event-grid.md)  , ml yaşam döngüsünün olayları üzerinde işlem yapmanıza olanak sağlar. Örneğin, model kaydı, dağıtım, veri kayması ve eğitim (çalıştırma) olayları.
 
 > [!TIP]
 > Modeller ve veri kümeleri hakkında bazı bilgiler otomatik olarak yakalanırken, __etiketleri__kullanarak ek bilgi ekleyebilirsiniz. Çalışma alanınızda kayıtlı modelleri ve veri kümelerini ararken Etiketleri filtre olarak kullanabilirsiniz.
 >
-> Bir veri kümesini kayıtlı bir modelle ilişkilendirme isteğe bağlı bir adımdır. Bir modeli kaydederken bir veri kümesine başvurma hakkında bilgi için bkz. [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) sınıfı başvurusu.
+> Bir veri kümesini kayıtlı bir modelle ilişkilendirme isteğe bağlı bir adımdır. Bir modeli kaydederken bir veri kümesine başvurma hakkında bilgi için bkz. [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py&preserve-view=true) sınıfı başvurusu.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML yaşam döngüsünde olayları bildirme, otomatikleştirme ve uyarma

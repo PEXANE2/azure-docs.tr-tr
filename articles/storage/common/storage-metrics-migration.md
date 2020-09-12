@@ -4,21 +4,21 @@ description: Depolama Analizi ölçümlerinden (klasik ölçümler) Azure Izleyi
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 09/04/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f0357c153a068b1f857e4595fa17a9ac6bc22104
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078257"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500275"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Azure Izleyici 'de ölçümlere geçiş
 
-**31 ağustos 2023** ' de, *Klasik ölçümler* olarak da bilinen depolama Analizi ölçümler kullanımdan kaldırılacak. Klasik ölçümler kullanıyorsanız, bu tarihten önce Azure Izleyici 'de ölçümlere geçiş yaptığınızdan emin olun. Bu makale, geçişi yapmanıza yardımcı olur.
+**31 ağustos 2023** ' de, *Klasik ölçümler* olarak da bilinen depolama Analizi ölçümler kullanımdan kaldırılacak. Daha fazla bilgi için [resmi duyurusuna](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)bakın. Klasik ölçümler kullanıyorsanız, bu tarihten önce Azure Izleyici 'de ölçümlere geçiş yaptığınızdan emin olun. Bu makale, geçişi yapmanıza yardımcı olur. 
 
 ## <a name="steps-to-complete-the-transition"></a>Geçişi tamamlamaya yönelik adımlar
 

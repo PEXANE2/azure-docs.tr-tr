@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bae0eb91460bf7ab72abbaa7fa56b2515367d37d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526512"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436196"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Dosya sistemi hataları nedeniyle Linux sanal makinesi sorunlarını giderme
 
@@ -83,7 +83,7 @@ Bu sorunu çözmek için, [seri konsolunu](./serial-console-linux.md) kullanarak
 
    > [!Note]
    > Linux için seri konsol kullanma hakkında daha fazla bilgi için bkz.:
-   > * [GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma](../linux/serial-console-grub-single-user-mode.md)
+   > * [GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma](serial-console-grub-single-user-mode.md)
    > * [SysRq ve NMI çağrıları için seri konsol kullan](./serial-console-nmi-sysrq.md)
 
 2. Güç simgesi düğmesini seçin ve ardından VM 'yi yeniden Başlat ' ı seçin. (Seri konsol etkinleştirilmemişse veya başarıyla bağlanmayacaksa, düğmesini görmezsiniz.)

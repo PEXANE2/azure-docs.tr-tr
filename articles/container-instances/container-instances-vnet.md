@@ -3,14 +3,13 @@ title: Kapsayıcı grubunu Azure sanal ağı 'na dağıtma
 description: Azure komut satırı arabirimini kullanarak bir kapsayıcı grubunu yeni veya mevcut bir Azure sanal ağına dağıtmayı öğrenin.
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f1678dee9c43d2ce9652018f0d09fe1738659f54
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c5eff486299a3974e8fb9b4b12d6bb74880c48d8
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407158"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569399"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Kapsayıcı örneklerini Azure sanal ağına dağıtma
 

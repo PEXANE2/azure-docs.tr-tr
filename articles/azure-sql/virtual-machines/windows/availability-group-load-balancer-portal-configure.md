@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9cf6fa26cec0abbc52a990d71c1c2fcc5d6023e4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f59f8af3f9a845f7e8663877f6d806c33b216a41
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612563"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482853"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu için yük dengeleyici yapılandırma
 
@@ -40,7 +40,7 @@ Bu makale, kullanılabilirlik gruplarınızın zaten yapılandırılmış olmas�
 
 Bu makalede yürüyerek Azure portal bir yük dengeleyici oluşturup yapılandırırsınız. İşlem tamamlandıktan sonra, küme, kullanılabilirlik grubu dinleyicisi için yük dengeleyiciden IP adresini kullanacak şekilde yapılandırılır.
 
-## <a name="create-and-configure-the-load-balancer-in-the-azure-portal"></a>Azure portal yük dengeleyici oluşturma ve yapılandırma
+## <a name="create--configure-load-balancer"></a>Yük dengeleyici oluşturma & yapılandırma 
 
 Görevin bu bölümünde aşağıdaki adımları uygulayın:
 
@@ -71,7 +71,7 @@ Görevin bu bölümünde aşağıdaki adımları uygulayın:
    | --- | --- |
    | **Ad** |Yük dengeleyiciyi temsil eden bir metin adı. Örneğin, **Sqllb**. |
    | **Tür** |**İç**: çoğu uygulama, aynı sanal ağ içindeki uygulamaların kullanılabilirlik grubuna bağlanmasına izin veren bir iç yük dengeleyici kullanır.  </br> **Harici**: uygulamaların genel bir Internet bağlantısı aracılığıyla kullanılabilirlik grubuna bağlanmasına izin verir. |
-   | **SKU** |**Standart**: SQL örneklerinizin yük dengeleyiciden farklı bir kullanılabilirlik kümesi içinde olması durumunda gereklidir. </br> **Temel**: varsayılan seçenek. |
+   | **SKU** |**Temel**: varsayılan seçenek. Yalnızca SQL Server örnekleri aynı Kullanılabilirlik kümesinde ise geçerlidir. </br> **Standart**: tercih edilen. SQL Server örnekleri aynı Kullanılabilirlik kümesi içinde ise geçerlidir. SQL Server örneklerinizin farklı kullanılabilirlik bölgelerinde olması durumunda gereklidir. |
    | **Sanal ağ** |SQL Server örneklerinin bulunduğu sanal ağı seçin. |
    | **Alt ağ** |SQL Server örneklerinin bulunduğu alt ağı seçin. |
    | **IP adresi ataması** |**Static** |

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cf630f6028248d799a3953d25db27a2150602586
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 46b3a782d93a55ed7f6eee6c76886f27c2652572
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087020"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469652"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure sanal ağlarındaki kaynaklar için ad çözümlemesi
 
@@ -86,7 +86,7 @@ Azure tarafından sağlanmış ad çözümlemesi kullanırken göz önünde bulu
 Ters DNS, tüm ARM tabanlı sanal ağlarda desteklenir. Sanal makinelerin IP adreslerini FQDN 'leri sanal makinelerin FQDN 'leri ile eşlemek için ters DNS sorguları (PTR sorguları) verebilirsiniz.
 * Sanal makinelerin IP adresleri için tüm PTR sorguları, \[ VMName. internal.cloudapp.net biçiminde FQDN 'ler \] döndürür
 * VMName. internal.cloudapp.net biçimindeki FQDN 'lerde ileriye doğru arama, \[ \] sanal MAKINEYE atanan IP adresine çözümlenir.
-* Sanal ağ, kayıt sanal ağı olarak bir [Azure DNS özel bölgesine](../dns/private-dns-overview.md) bağlanmışsa, ters DNS sorguları iki kayıt döndürür. Bir kayıt, VMName biçiminde olacaktır \[ \] . [ privatednszonename] ve diğeri \[ VMName \] . internal.cloudapp.net biçiminde olabilir
+* Sanal ağ, kayıt sanal ağı olarak bir [Azure DNS özel bölgesine](../dns/private-dns-overview.md) bağlanmışsa, ters DNS sorguları iki kayıt döndürür. Bir kayıt, VMName biçiminde olacaktır \[ \] . [ privatednszonename] ve diğeri \[ VMName \] . internal.cloudapp.net biçiminde olacaktır
 * Ters DNS arama, diğer sanal ağlara eşlense bile, belirli bir sanal ağın kapsamına alınır. Eşlenen sanal ağlarda bulunan sanal makinelerin IP adresleri için ters DNS sorguları (PTR sorguları) NXDOMAIN döndürür.
 * Bir sanal ağda ters DNS işlevini devre dışı bırakmak istiyorsanız, [Azure DNS özel bölgeler](../dns/private-dns-overview.md) ' i kullanarak bir geriye doğru arama bölgesi oluşturup bu bölgeyi sanal ağınızla bağlantılandırarak bunu yapabilirsiniz. Örneğin, sanal Ağınızın IP adresi alanı 10.20.0.0/16 ise boş bir özel DNS bölgesi 20.10.in-addr. arpa oluşturabilir ve bunu sanal ağa bağlayabilirsiniz. Bölgeyi sanal ağınıza bağlarken bağlantıda otomatik kaydı devre dışı bırakmanız gerekir. Bu bölge, sanal ağ için varsayılan geriye doğru arama bölgelerini geçersiz kılacak ve bu bölge boş olduğu için ters DNS sorgularınız için NXDOMAIN alacaksınız. Özel bir DNS bölgesi oluşturma ve bunu bir sanal ağa bağlama hakkındaki ayrıntılar için [hızlı başlangıç kılavuzumuza](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) bakın.
 

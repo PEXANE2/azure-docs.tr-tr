@@ -10,13 +10,13 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/30/2020
-ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/08/2020
+ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949142"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595111"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -242,13 +242,13 @@ Aşağıda, eski bir yayımlama dalına neden olabilecek durumlara ilişkin baz�
 
 ## <a name="switch-to-a-different-git-repository"></a>Farklı bir git deposuna geçiş yap
 
-Farklı bir git deposuna geçiş yapmak için Data Factory Genel Bakış sayfasının sağ üst köşesindeki **Git deposu ayarları** simgesine tıklayın. Simgeyi göremiyorsanız, yerel tarayıcı önbelleğinizi temizleyin. Geçerli depoyla ilişkilendirmeyi kaldırmak için simgeyi seçin.
+Farklı bir git deposuna geçiş yapmak için, **kaynak denetimi**altındaki Yönetim hub 'ındaki git yapılandırma sayfasına gidin. **Bağlantıyı kes**' i seçin. 
 
-![Git simgesi](media/author-visually/remove-repo.png)
+![Git simgesi](media/author-visually/remove-repository.png)
 
-Depo ayarları bölmesi göründüğünde **Git 'ı kaldır**' ı seçin. Data Factory adınızı girin ve veri fabrikanızın ilişkili Git deposunu kaldırmak için **Onayla** ' ya tıklayın.
+Data Factory adınızı girin ve veri fabrikanızın ilişkili Git deposunu kaldırmak için **Onayla** ' ya tıklayın.
 
-![Geçerli git deposundan ilişkilendirmeyi kaldırma](media/author-visually/remove-repo2.png)
+![Geçerli git deposundan ilişkilendirmeyi kaldırma](media/author-visually/remove-repository-2.png)
 
 Geçerli depoyla ilişkilendirmeyi kaldırdıktan sonra, git ayarlarınızı farklı bir depoyu kullanacak şekilde yapılandırabilir ve ardından mevcut Data Factory kaynaklarını yeni depoya içeri aktarabilirsiniz.
 

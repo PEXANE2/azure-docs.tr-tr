@@ -2,13 +2,13 @@
 title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: 992882859ed1c67cf66c31f69f21e151081cf087
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: 2265f1d31176052c7e7c358ee8ed4cb06fb50ee7
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002903"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469805"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Yönetim grubu düzeyinde kaynaklar oluşturma
 
@@ -43,7 +43,7 @@ Abonelikler veya kaynak gruplarına dağıtan iç içe şablonlar için şunu ku
 
 Kaynaklarınızı yönetmek için şunu kullanın:
 
-* [etiketler](/azure/templates/microsoft.resources/tags)
+* [lerimi](/azure/templates/microsoft.resources/tags)
 
 ### <a name="schema"></a>Şema
 
@@ -91,7 +91,7 @@ REST API için [dağıtımlar-yönetim grubu kapsamında oluştur](/rest/api/res
 
 Yönetim grubu düzeyinde dağıtımlar için, dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir.
 
-Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
+Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, ** üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
 
 Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
 
@@ -136,7 +136,7 @@ Başka bir yönetim grubunu hedeflemek için, iç içe geçmiş bir dağıtım e
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resources-in-different-mg
                 }
             }
         }
@@ -172,7 +172,7 @@ Yönetim grubu içinde bir aboneliği hedeflemek için, iç içe geçmiş bir da
               "properties": {
                 "mode": "Incremental",
                 "template": {
-                  nested-template
+                  nested-template-with-resources-in-resource-group
                 }
               }
             }
@@ -184,6 +184,8 @@ Yönetim grubu içinde bir aboneliği hedeflemek için, iç içe geçmiş bir da
 }
 ```
 
+Bir abonelikte kaynak grubu oluşturmaya ve bu kaynak grubuna bir depolama hesabı dağıtmaya yönelik bir yönetim grubu dağıtımı kullanmak için, bkz. [aboneliğe ve kaynak grubuna dağıtım](#deploy-to-subscription-and-resource-group).
+
 ## <a name="use-template-functions"></a>Şablon işlevlerini kullanma
 
 Yönetim grubu dağıtımları için, Şablon işlevleri kullanılırken bazı önemli noktalar vardır:
@@ -191,87 +193,91 @@ Yönetim grubu dağıtımları için, Şablon işlevleri kullanılırken bazı �
 * [ResourceGroup ()](template-functions-resource.md#resourcegroup) **işlevi desteklenmiyor.**
 * [Subscription ()](template-functions-resource.md#subscription) **işlevi desteklenmiyor.**
 * [Reference ()](template-functions-resource.md#reference) ve [List ()](template-functions-resource.md#list) işlevleri desteklenir.
-* [RESOURCEID ()](template-functions-resource.md#resourceid) işlevi desteklenir. Yönetim grubu düzeyi dağıtımlarında kullanılan kaynakların kaynak KIMLIĞINI almak için kullanın. Kaynak grubu parametresi için bir değer sağlamamayın.
+* Yönetim grubuna dağıtılan kaynaklar için [RESOURCEID ()](template-functions-resource.md#resourceid) işlevini kullanmayın.
 
-  Örneğin, bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
+  Bunun yerine, yönetim grubunun uzantıları olarak uygulanan kaynaklar için [Extensionresourceıd ()](template-functions-resource.md#extensionresourceid) işlevini kullanın. Yönetim grubuna dağıtılan özel ilke tanımları, yönetim grubunun uzantılarıdır.
+
+  Yönetim grubu düzeyinde özel bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
   
   ```json
-  resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
+  "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
-  
-  Döndürülen kaynak KIMLIĞI şu biçimdedir:
+
+  Yönetim grubu içinde kullanılabilir kiracı kaynakları için [Tenantresourceıd](template-functions-resource.md#tenantresourceid) işlevini kullanın. Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır.
+
+  Yerleşik bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
   
   ```json
-  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
 
 ## <a name="azure-policy"></a>Azure İlkesi
 
-### <a name="define-policy"></a>İlke tanımlama
-
-Aşağıdaki örnekte, yönetim grubu düzeyinde bir ilkenin nasıl [tanımlanacağı](../../governance/policy/concepts/definition-structure.md) gösterilmektedir.
+Aşağıdaki örnek, yönetim grubu düzeyinde bir ilkenin nasıl [tanımlanacağını](../../governance/policy/concepts/definition-structure.md) gösterir ve bunu atar.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Authorization/policyDefinitions",
-      "apiVersion": "2018-05-01",
-      "name": "locationpolicy",
-      "properties": {
-        "policyType": "Custom",
-        "parameters": {},
-        "policyRule": {
-          "if": {
-            "field": "location",
-            "equals": "northeurope"
-          },
-          "then": {
-            "effect": "deny"
-          }
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "targetMG": {
+            "type": "string",
+            "metadata": {
+                "description": "Target Management Group"
+            }
+        },
+        "allowedLocations": {
+            "type": "array",
+            "defaultValue": [
+                "australiaeast",
+                "australiasoutheast",
+                "australiacentral"
+            ],
+            "metadata": {
+                "description": "An array of the allowed locations, all other locations will be denied by the created policy."
+            }
         }
-      }
-    }
-  ]
-}
-```
-
-### <a name="assign-policy"></a>İlke ata
-
-Aşağıdaki örnek, var olan bir ilke tanımını yönetim grubuna atar. İlke parametreleri alırsa, bunları bir nesne olarak sağlayın. İlke parametre almadıysanız varsayılan boş nesneyi kullanın.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "policyDefinitionID": {
-      "type": "string"
     },
-    "policyName": {
-      "type": "string"
+    "variables": {
+        "mgScope": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('targetMG'))]",
+        "policyDefinition": "LocationRestriction"
     },
-    "policyParameters": {
-      "type": "object",
-      "defaultValue": {}
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Authorization/policyAssignments",
-      "apiVersion": "2018-03-01",
-      "name": "[parameters('policyName')]",
-      "properties": {
-        "policyDefinitionId": "[parameters('policyDefinitionID')]",
-        "parameters": "[parameters('policyParameters')]"
-      }
-    }
-  ]
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/policyDefinitions",
+            "name": "[variables('policyDefinition')]",
+            "apiVersion": "2019-09-01",
+            "properties": {
+                "policyType": "Custom",
+                "mode": "All",
+                "parameters": {
+                },
+                "policyRule": {
+                    "if": {
+                        "not": {
+                            "field": "location",
+                            "in": "[parameters('allowedLocations')]"
+                        }
+                    },
+                    "then": {
+                        "effect": "deny"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Authorization/policyAssignments",
+            "name": "location-lock",
+            "apiVersion": "2019-09-01",
+            "dependsOn": [
+                "[variables('policyDefinition')]"
+            ],
+            "properties": {
+                "scope": "[variables('mgScope')]",
+                "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', variables('policyDefinition'))]"
+            }
+        }
+    ]
 }
 ```
 

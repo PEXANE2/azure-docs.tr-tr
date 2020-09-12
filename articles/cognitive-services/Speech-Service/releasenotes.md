@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 94947499452c7f1b8515fee56996b13120232f34
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525930"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462386"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -250,7 +250,7 @@ Sağlıklı olun!
 
 **Örnekler**
 - **Git**: [konuşma tanıma](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) ve [özel ses Yardımcısı](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)için hızlı başlangıç eklendi. Örnek kodu [burada](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)bulabilirsiniz. 
-- **JavaScript**: [metinden konuşmaya](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript), [çeviri](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/translate-speech-to-text?pivots=programming-language-javascript)ve [Amaç tanıma](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)için hızlı başlangıçlara eklendi.
+- **JavaScript**: [metinden konuşmaya](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript), [çeviri](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-translation?tabs=script&pivots=programming-language-csharp)ve [Amaç tanıma](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)için hızlı başlangıçlara eklendi.
 - [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) ve [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) için anahtar sözcük tanıma örnekleri (Android).  
 
 **Covıd-19 ortak test:** Son birkaç hafta içinde uzaktan çalışma nedeniyle, normalde yaptığımız için el ile doğrulama testi yapamadık. Herhangi bir şeyi bozduğumuz ve otomatikleştirilmiş testlerimiz geçtiğinden hiçbir değişiklik yapmadık. Bir şey kaçırdığımız olası bir olayda, lütfen [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)'da bize bildirin.<br>
@@ -325,7 +325,7 @@ Sağlıklı olun!
 - JavaScript: `FromHost API` Şirket içi kapsayıcılar ve bağımsız bulutlarla kullanım kolaylığı sağlamak için desteği eklendi. [Belgelere bakın](speech-container-howto.md).
 - JavaScript: artık orgads ' `NODE_TLS_REJECT_UNAUTHORIZED` dan bir katkı için teşekkürler [orgads](https://github.com/orgads). [Ayrıntılara bakın](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
 
-**Son değişiklikler**
+**Yeni değişiklikler**
 
 - `OpenSSL` , 1.1.1 b sürümüne güncelleştirilmiştir ve Linux için konuşma SDK 'Sı temel kitaplığına statik olarak bağlanır. Bu, gelen kutunuz `OpenSSL` sistemdeki dizine yüklenmemişse kesintiye neden olabilir `/usr/lib/ssl` . Bu sorunu geçici olarak çözmek için lütfen konuşma SDK 'Sı belgeleri altındaki [belgelerimizi](how-to-configure-openssl-linux.md) kontrol edin.
 - C# için döndürülen veri türünü, `WordLevelTimingResult.Offset` `int` `long` `WordLevelTimingResults` konuşma verileri 2 dakikadan uzun olduğunda erişime izin verecek şekilde değiştirdik.
@@ -366,7 +366,7 @@ Sağlıklı olun!
 - `KeywordRecognizer`NuGet ve Unity paketleri aracılığıyla Windows (UWP), Android ve iOS desteği eklendi
 - Zaman uyumsuz toplu işlemlerdeki konuşma dökümü için uzak konuşma Java API 'SI eklendi.
 
-**Son değişiklikler**
+**Yeni değişiklikler**
 
 - Konuşma taşıma işlevleri ad alanı altına taşındı `Microsoft.CognitiveServices.Speech.Transcription` .
 - Görüşmenin bir parçası olan yöntemler yeni `Conversation` sınıfa taşınır.
@@ -673,7 +673,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 - İOS üzerinde amaç-C desteği. [İOS Için hedef C hızlı başlangıç](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)öğreticimize göz atın.
 - Tarayıcıda JavaScript desteği. [JavaScript hızlı](quickstart-js-browser.md)başlangıçmıza göz atın.
 
-**Son değişiklikler**
+**Yeni değişiklikler**
 
 - Bu sürümle birlikte, bir dizi Son değişiklik yapılmıştır.
   Ayrıntılar için [Bu sayfaya](https://aka.ms/csspeech/breakingchanges_1_0_0) bakın.
@@ -692,7 +692,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
 - Bağlantı hatalarıyla ilgili ek hata ayrıntısı bilgilerini kullanıma sunun.
 
-**Son değişiklikler**
+**Yeni değişiklikler**
 
 - Java 'da (Android), `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` işlev artık bir yol parametresi gerektirmez. Artık tüm desteklenen platformlarda yol otomatik olarak algılanır.
 - `EndpointUrl`Java ve C# ' de özelliğin get-erişimcisi kaldırılmıştır.
@@ -721,7 +721,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 - Tanınma sonucu daha fazla alan içeriyor. Bunlar, tanınan metnin ses başlangıcından ve süresinden (her ikisi de her ikisi de) ve tanınma durumunu temsil eden ek değerlere (örneğin, ve) göre denkleştirilir `InitialSilenceTimeout` `InitialBabbleTimeout` .
 - Fabrika örnekleri oluşturmak için AuthorizationToken 'ı destekleme.
 
-**Son değişiklikler**
+**Yeni değişiklikler**
 
 - Tanıma olayları: olay `NoMatch` türü `Error` olayla birleştirildi.
 - C# ' de SpeechOutputFormat, `OutputFormat` C++ ile hizalı kalmak için olarak yeniden adlandırıldı.

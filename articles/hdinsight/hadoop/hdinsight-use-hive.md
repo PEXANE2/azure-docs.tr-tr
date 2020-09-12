@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 95af0cd4b59863ad0f591476441d9a7733765453
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076037"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462284"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive ve HiveQL nedir?
 
@@ -100,7 +100,7 @@ Hive, **Kullanıcı tanımlı işlevler (UDF)** aracılığıyla da genişletile
 
 * [Apache Hive ile C# Kullanıcı tanımlı bir işlev kullanma](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [HDInsight 'a özel Apache Hive Kullanıcı tanımlı bir işlev ekleme](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [HDInsight 'a özel Apache Hive Kullanıcı tanımlı bir işlev ekleme](https://docs.microsoft.com/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
 
 * [Bir örnek Apache Hive tarih/saat biçimlerini Hive zaman damgasına dönüştürmek için Kullanıcı tanımlı işlev](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
@@ -131,7 +131,7 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 Önceki örnekte, HiveQL deyimleri aşağıdaki eylemleri gerçekleştirir:
 
-|Deyim |Description |
+|Deyim |Açıklama |
 |---|---|
 |TABLOYU BıRAK|Tablo zaten varsa, silin.|
 |DıŞ TABLO OLUŞTUR|Hive içinde yeni bir **dış** tablo oluşturur. Dış tablolar yalnızca tablo tanımını Hive içinde depolar. Veriler özgün konumunda ve özgün biçimde bırakılır.|
@@ -164,7 +164,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 Bu deyimler aşağıdaki eylemleri gerçekleştirir:
 
-|Deyim |Description |
+|Deyim |Açıklama |
 |---|---|
 |MEVCUT DEĞILSE CREATE TABLE|Tablo yoksa, oluşturun. **Dış** anahtar sözcük kullanılmadığından, bu ifade bir iç tablo oluşturur. Tablo Hive veri ambarında depolanır ve tamamen Hive tarafından yönetilir.|
 |ORC OLARAK DEPOLANıR|Verileri Iyileştirilmiş satır sütunlu (ORC) biçimde depolar. ORC, Hive verilerinin depolanması için yüksek düzeyde iyileştirilmiş ve etkili bir biçimdir.|

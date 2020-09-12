@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8328fa9c9e32a22e8e5093aa343f333cd1914ddc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89038695"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500309"
 ---
 # <a name="supported-authentication-methods"></a>Desteklenen kimlik doğrulama yöntemleri
 
@@ -37,15 +37,19 @@ Bunlar şu anda desteklenen oturum açma yöntemleridir:
     - Kullanıcı adı ve parola
 - iOS
     - Kullanıcı adı ve parola
-- Mac OS
+- macOS
     - Kullanıcı adı ve parola
 
 >[!NOTE]
 >Akıllı kart ve Windows Hello, oturum açmak için yalnızca Kerberos kullanabilir. Kerberos ile oturum açmak için etki alanı denetleyicisine bir görüş satırı gerekir.
 
+## <a name="hybrid-identity"></a>Karma kimlik
+
+Windows sanal masaüstü, Active Directory Federasyon Hizmetleri (AD FS) (ADFS) kullanılarak Federasyon dahil olmak üzere Azure Active Directory (AD) aracılığıyla [karma kimlikleri](../active-directory/hybrid/whatis-hybrid-identity.md) destekler. Kullanıcıların Azure AD aracılığıyla bulunabilir olması gerektiğinden, Windows sanal masaüstü ADFS ile tek başına Active Directory dağıtımlarını desteklemez.
+
 ## <a name="single-sign-on-sso"></a>Çoklu oturum açma (SSO)
 
-Windows sanal masaüstü Şu anda kimlik doğrulama veya SSO için Active Directory Federasyon Hizmetleri (AD FS) (ADFS) desteklememektedir.
+Windows sanal masaüstü Şu anda SSO için Active Directory Federasyon Hizmetleri (AD FS) (ADFS) desteklememektedir.
 
 Oturum Ana bilgisayarı için kimlik bilgileriniz istenmeden kaçınmanın tek yolu, bunları istemciye kaydetmaktır. Diğer kullanıcıların kaynaklarınıza erişmesini engellemek için bunu yalnızca güvenli cihazlarla yapmanızı öneririz.
 

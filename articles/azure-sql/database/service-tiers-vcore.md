@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 08/14/2020
-ms.openlocfilehash: 7131ddac840d2854969147da2eeb82a890ce3410
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19f811c636d5cf3ffb3eef9904c7ba4f7d456b5f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586826"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462216"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -188,7 +188,7 @@ Daha fazla ayrıntı için [az SQL mı Update](https://docs.microsoft.com/cli/az
 
 #### <a name="fsv2-series"></a>Fsv2 serisi
 
-Fsv2 serisi şu bölgelerde kullanılabilir: Avustralya Orta, Avustralya Orta 2, Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Doğu Asya, Doğu ABD, Fransa Orta, Hindistan Orta, Hindistan Batı, Kore Orta, Kore Güney, Kuzey Avrupa, Güney Afrika Kuzey, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD 2.
+Fsv2 serisi şu bölgelerde kullanılabilir: Avustralya Orta, Avustralya Orta 2, Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Doğu Asya, Doğu ABD, Fransa Orta, Hindistan Orta, Kore Orta, Kore Güney, Kuzey Avrupa, Güney Afrika Kuzey, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD 2.
 
 
 #### <a name="m-series"></a>M serisi

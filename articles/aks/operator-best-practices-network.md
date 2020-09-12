@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ' de sanal ağ kaynakları ve bağla
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542713"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482734"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hizmetinde ağ bağlantısı ve güvenlik için en iyi yöntemler
 
@@ -31,7 +31,7 @@ Bu en iyi yöntemler makalesi, küme işleçleri için ağ bağlantısı ve güv
 Sanal ağlar, uygulamalarınıza erişmek için AKS düğümlerine ve müşterilere yönelik temel bağlantıyı sağlar. AKS kümelerini sanal ağlara dağıtmanın iki farklı yolu vardır:
 
 * **Kubernetes kullanan Networking** -Azure, küme dağıtıldığında sanal ağ kaynaklarını yönetir ve [Kubernetes kullanan][kubenet] Kubernetes eklentisini kullanır.
-* **Azure CNI ağı** -mevcut bir sanal ağa dağıtılır ve [Azure Container Network Interface (CNI)][cni-networking] Kubernetes eklentisini kullanır. IP 'Ler, diğer ağ hizmetlerine veya şirket içi kaynaklara yol alabilen ayrı IP 'Leri alır.
+* **Azure CNI ağı** -sanal bir ağda dağıtılır ve [Azure Container Network Interface (CNI)][cni-networking] Kubernetes eklentisini kullanır. IP 'Ler, diğer ağ hizmetlerine veya şirket içi kaynaklara yol alabilen ayrı IP 'Leri alır.
 
 Kapsayıcı ağ arabirimi (CNı), kapsayıcı çalışma zamanının bir ağ sağlayıcısına istek yapmasını sağlayan satıcı tarafsız bir protokoldür. Azure CNI, IP adreslerini Pod ve düğümlere atar ve var olan Azure sanal ağlarına bağlandığınızda IP adresi yönetimi (IPAM) özellikleri sağlar. Her düğüm ve pod kaynağı, Azure sanal ağında bir IP adresi alır ve diğer kaynaklarla veya hizmetlerle iletişim kurmak için ek yönlendirmeye gerek yoktur.
 
@@ -64,7 +64,7 @@ Kubenet, AKS kümesinden ayrı olarak sanal ağ ve alt ağlar oluşturmanız ger
 
 **En iyi Yöntem Kılavuzu** -uygulamalarınıza http veya HTTPS trafiği dağıtmak için giriş kaynaklarını ve denetleyicileri kullanın. Giriş denetleyicileri, düzenli bir Azure yük dengeleyici üzerinden ek özellikler sağlar ve yerel Kubernetes kaynakları olarak yönetilebilir.
 
-Azure yük dengeleyici, AKS kümenizdeki uygulamalara müşteri trafiği dağıtabilir, ancak bu trafikle ilgili olarak daha fazla anlama gelir. Yük dengeleyici kaynağı 4. katman üzerinde çalışarak trafiği protokol veya bağlantı noktalarına göre dağıtır. HTTP veya HTTPS kullanan çoğu Web uygulaması, katman 7 ' de çalışan Kuberenetes giriş kaynaklarını ve denetleyicilerini kullanmalıdır. Giriş, uygulamanın URL 'sine göre trafiği dağıtabilir ve TLS/SSL sonlandırmasını idare edebilir. Bu özellik ayrıca sergileme ve eşleme yaptığınız IP adresi sayısını azaltır. Yük Dengeleyici ile, her uygulama genellikle AKS kümesinde hizmete atanmış ve eşlenmiş bir genel IP adresi gerektirir. Bir giriş kaynağıyla, tek bir IP adresi trafiği birden çok uygulamaya dağıtabilir.
+Azure yük dengeleyici, AKS kümenizdeki uygulamalara müşteri trafiği dağıtabilir, ancak bu trafikle ilgili olarak daha fazla anlama gelir. Yük dengeleyici kaynağı 4. katman üzerinde çalışarak trafiği protokol veya bağlantı noktalarına göre dağıtır. HTTP veya HTTPS kullanan çoğu Web uygulaması, katman 7 ' de çalışan Kubernetes giriş kaynaklarını ve denetleyicilerini kullanmalıdır. Giriş, uygulamanın URL 'sine göre trafiği dağıtabilir ve TLS/SSL sonlandırmasını idare edebilir. Bu özellik ayrıca sergileme ve eşleme yaptığınız IP adresi sayısını azaltır. Yük Dengeleyici ile, her uygulama genellikle AKS kümesinde hizmete atanmış ve eşlenmiş bir genel IP adresi gerektirir. Bir giriş kaynağıyla, tek bir IP adresi trafiği birden çok uygulamaya dağıtabilir.
 
 ![AKS kümesinde giriş trafiği akışını gösteren diyagram](media/operator-best-practices-network/aks-ingress.png)
 

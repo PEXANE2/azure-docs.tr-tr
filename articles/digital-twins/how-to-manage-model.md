@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3deb7c0802dbfcdb65bcff6cb2653e73017651f1
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079785"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536464"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -168,11 +168,16 @@ Modeller, içinde karşıya yüklendikleri belge formunda tam olarak döndürül
 
 ### <a name="update-models"></a>Modelleri Güncelleştir
 
-Bir model örneğinize yüklendikten sonra tüm model arabirimi sabittir. Bu, modellerin geleneksel "düzenlemesi" olmadığı anlamına gelir.
+Azure dijital TWINS örneğinize bir model yüklendikten sonra model arabiriminin tamamı sabittir. Bu, modellerin geleneksel "düzenlemesi" olmadığı anlamına gelir. Azure dijital TWINS ayrıca aynı modelin yeniden karşıya yüklenmesine izin vermez.
 
-Bunun yerine, Azure dijital TWINS 'de bir modelde değişiklik yapmak istiyorsanız, bunu yapmanın yolu aynı modelin **daha yeni bir sürümünü** karşıya yüklemedir. Önizleme süresince, bir model sürümünün ilerleme özelliği yalnızca alanları kaldırmanıza izin verir, yenilerini eklememeniz gerekmez (yeni alanlar eklemek için yalnızca [bir marka yeni model oluşturmanız](#create-models)gerekir).
+Bunun yerine, bir modelde değişiklik yapmak istiyorsanız — Örneğin, güncelleştirme `displayName` veya `description` — bunu yapmanın yolu, modelin **daha yeni bir sürümünü** karşıya yüklemedir. 
+
+#### <a name="model-versioning"></a>Model sürümü oluşturma
 
 Varolan bir modelin yeni bir sürümünü oluşturmak için özgün modelin DTDL ile başlayın. Değiştirmek istediğiniz alanları güncelleştirin.
+
+>[!NOTE]
+>Önizleme süresince, bir model sürümünün ilerleme özelliği yalnızca yeni alanlar eklemenize izin verir, bu da var olanları kaldırmaz. Alanları kaldırmak için yalnızca [Yeni bir marka modeli oluşturmanız](#create-models)gerekir.
 
 Ardından, modelin alanını güncelleştirerek bunu modelin daha yeni bir sürümü olarak işaretleyin `id` . Model KIMLIĞININ son bölümü, öğesinden sonra, `;` model numarasını temsil eder. Bu modelin daha güncel bir sürümünü olduğunu göstermek için, değerin sonundaki sayıyı `id` geçerli sürüm numarasından daha büyük bir sayı olarak artırın.
 
@@ -188,7 +193,17 @@ Bu modelin 2. sürümü şöyle görünebilir:
 "@id": "dtmi:com:contoso:PatientRoom;2",
 ```
 
-Ardından, modelin yeni sürümünü örneğinize yükleyin. Bu, eski sürümün yerini alır ve bu modeli kullanarak oluşturduğunuz yeni TWINS güncelleştirilmiş sürümü kullanacaktır.
+Ardından, modelin yeni sürümünü örneğinize yükleyin. 
+
+Daha sonra modelin bu sürümü, dijital TWINS için kullanmak üzere Örneğinizde kullanılabilir olacaktır. Modelin önceki sürümlerinin üzerine yazmaz **, bu nedenle** modelin birden çok sürümü siz [onları](#remove-models)kaldırana kadar Örneğinizde birlikte kalır.
+
+#### <a name="impact-on-twins"></a>TWINS üzerindeki etki
+
+Yeni bir ikizi oluşturduğunuzda, yeni model sürümü ve eski model sürümü birlikte kullanıldığında, yeni ikizi modelin yeni sürümünü veya eski sürümünü kullanabilir.
+
+Bu Ayrıca, bir modelin yeni bir sürümünün karşıya yüklenmesi mevcut TWINS 'in otomatik olarak etkilenmeyeceği anlamına gelir. Mevcut TWINS yalnızca eski model sürümünün örneklerini kalacak.
+
+*Nasıl yapılır: dijital TWINS 'ı yönetme*konusunun [*dijital Ikizi 'nin modelini güncelleştirme*](how-to-manage-twin.md#update-a-digital-twins-model) bölümünde açıklandığı gibi, var olan mevcut TWINS sürümlerini yeni model sürümüne güncelleştirebilirsiniz. Aynı düzeltme ekinde, hem **model kimliğini** (yeni sürüme) hem de **ikizi üzerinde değiştirilmesi gereken tüm alanları yeni modele uygun hale getirmek için**güncelleştirmeniz gerekir.
 
 ### <a name="remove-models"></a>Modelleri kaldır
 
@@ -273,6 +288,8 @@ Azure dijital TWINS bu durumu engellemez, bu nedenle, model tanımı anahtarı a
 ## <a name="manage-models-with-cli"></a>CLı ile modelleri yönetme
 
 Modeller ayrıca Azure dijital TWINS CLı kullanılarak yönetilebilir. Komutları [*nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma*](how-to-use-cli.md)bölümünde bulabilirsiniz.
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

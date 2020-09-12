@@ -11,23 +11,23 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 04/23/2020
-ms.openlocfilehash: e1f97b1a29681a65cddf3a5904020555e903fe63
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984784"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434291"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory kimlik doğrulaması kullan
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure Active Directory (Azure AD) kimlik doğrulaması, Azure AD 'de kimlikleri kullanarak Azure [SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)ve [Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) bağlamak için bir mekanizmadır.
+Azure Active Directory (Azure AD) kimlik doğrulaması, Azure [SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)ve Azure [SYNAPSE ANALYTICS 'e (eski adıyla SQL veri AMBARı)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) bağlanmak için Azure AD 'de kimlikleri kullanarak bir mekanizmadır.
 
 > [!NOTE]
 > Bu makale Azure SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics için geçerlidir.
 
-Azure AD kimlik doğrulamasıyla, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek bir konumda merkezi olarak yönetebilirsiniz. Merkezi kimlik yönetimi, tüm veritabanı kullanıcılarını aynı yerden yönetmenizi sağlar ve izin yönetimini kolaylaştırır. Avantajları şunlardır:
+Azure AD kimlik doğrulaması ile veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek merkezden yönetebilirsiniz. Merkezi kimlik yönetimi, tüm veritabanı kullanıcılarını aynı yerden yönetmenizi sağlar ve izin yönetimini kolaylaştırır. Avantajları şunlardır:
 
 - SQL Server kimlik doğrulaması için bir alternatif sağlar.
 - Sunucu genelindeki Kullanıcı kimliklerinin uzamasını durdurmaya yardımcı olur.
@@ -168,7 +168,7 @@ Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum 
 - SQL veritabanında oturum açma bilgileri, kullanıcılar, veritabanı rolleri ve izinlere genel bakış için bkz. [oturum açma bilgileri, kullanıcılar, veritabanı rolleri ve izinler](logins-create-manage.md).
 - Veritabanı sorumluları hakkında daha fazla bilgi için bkz. [Sorumlular](https://msdn.microsoft.com/library/ms181127.aspx).
 - Veritabanı rolleri hakkında daha fazla bilgi için bkz. [Veritabanı rolleri](https://msdn.microsoft.com/library/ms189121.aspx).
-- SQL yönetilen örneği için Azure AD Server sorumlularını (oturum açma) oluşturma hakkında sözdizimi için bkz. [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+- SQL yönetilen örneği için Azure AD Server sorumlularını (oturum açma) oluşturma hakkında sözdizimi için bkz.  [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 - SQL Veritabanındaki güvenlik duvarı kuralları hakkında daha fazla bilgi için bkz. [SQL Veritabanı güvenlik duvarı kuralları](firewall-configure.md).
 
 <!--Image references-->

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770990"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440533"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Kopyalama etkinliği performansını sorun giderme
 
@@ -53,7 +53,7 @@ Bir başvuru olarak şu anda performans ayarlama ipuçları aşağıdaki durumla
 
 Kopyalama etkinliği izleme görünümünün en altındaki yürütme ayrıntıları ve süreleri, kopyalama etkinliğinizin (Bu makalenin başındaki örnek), özellikle de kopyalama performansının giderilmesi için yararlı olan anahtar aşamalarını açıklar. Kopya çalışmalarınızın performans sorunu en uzun süreye sahip bir süredir. Her bir aşamanın tanımında aşağıdaki tabloya başvurun ve [Azure IR kopyalama etkinliğinin nasıl giderileceğini](#troubleshoot-copy-activity-on-azure-ir) ve bu tür bilgiyle şirket IÇINDE [barındırılan IR 'de kopyalama etkinliğinin nasıl giderileceğini](#troubleshoot-copy-activity-on-self-hosted-ir) öğrenin.
 
-| Aşama           | Açıklama                                                  |
+| Aşama           | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Kuyruk           | Kopyalama etkinliği tümleştirme çalışma zamanı üzerinde çalışmaya başlanana kadar geçen süre. |
 | Kopyalama öncesi betiği | IR ve kopyalama etkinliğinden itibaren kopyalama etkinliği arasındaki geçen süre, havuz veri deposunda kopyalama öncesi betiği yürütmeyi tamamlıyor. Veritabanı havuzları için kopyalama öncesi betiği yapılandırdığınızda, örneğin Azure SQL veritabanı 'na veri yazarken yeni verileri kopyalamaya başlamadan önce bu uygulamayı temizleyebilirsiniz. |
@@ -179,7 +179,7 @@ Desteklenen bazı veri depoları için performans izleme ve ayarlama başvurular
 * Azure Blob depolama: BLOB depolama için [ölçeklenebilirlik ve performans hedefleri](../storage/blobs/scalability-targets.md) , [BLOB depolaması için performans ve ölçeklenebilirlik denetim listesi](../storage/blobs/storage-performance-checklist.md).
 * Azure Tablo Depolama: tablo depolaması için tablo depolama ve performans [ve ölçeklenebilirlik denetim listesi](../storage/tables/storage-performance-checklist.md) [için ölçeklenebilirlik ve performans hedefleri](../storage/tables/scalability-targets.md) .
 * Azure SQL veritabanı: [performansı izleyebilir](../sql-database/sql-database-single-database-monitor.md) ve veritabanı işlem BIRIMI (DTU) yüzdesini kontrol edebilirsiniz.
-* Azure SQL veri ambarı: yeteneği, veri ambarı birimlerinde (DWU) ölçülür. Bkz. [Azure SQL veri ambarı 'nda işlem gücünü yönetme (genel bakış)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+* Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı): özelliği veri ambarı birimlerinde (DWU) ölçülür. Bkz. [Azure SYNAPSE Analytics 'te işlem gücünü yönetme (genel bakış)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Azure Cosmos DB performans düzeyleri](../cosmos-db/performance-levels.md).
 * SQL Server: [performansı izleme ve ayarlama](https://msdn.microsoft.com/library/ms189081.aspx).
 * Şirket içi dosya sunucusu: [dosya sunucuları Için performans ayarlama](https://msdn.microsoft.com/library/dn567661.aspx).

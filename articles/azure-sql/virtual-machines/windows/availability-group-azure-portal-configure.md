@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 46e2563b0d1c26c984616b523a367c8b2cff7aaa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89038679"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482809"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırma (Azure portal-Önizleme)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ Yeni bir küme oluşturmak veya var olan bir kümeyi eklemek için Azure portal 
    > Bu özellik şu anda önizleme aşamasındadır ve dağıtılmakta olduğundan, istediğiniz bölge kullanılamıyorsa yakında tekrar kontrol edin. 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure portal kullanarak her zaman açık kullanılabilirlik grubu yapılandırmak için aşağıdaki önkoşullara sahip olmanız gerekir: 
 
@@ -74,9 +74,14 @@ Zaten mevcut bir kümeniz yoksa, aşağıdaki adımlarla Azure portal kullanarak
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="SQL hizmeti hesabı, küme operatörü hesabı ve küme önyükleme hesabı için kimlik bilgilerini belirtin":::
 
 1. Kümeye eklemek istediğiniz SQL Server VM 'Leri seçin. Yeniden başlatma gerekip gerekmediğini ve dikkatli ilerlemeniz gerektiğini not edin. Yalnızca SQL VM kaynak sağlayıcısı ile tam yönetilebilirlik modunda kayıtlı olan ve birincil SQL Server VM aynı konumda, etki alanında ve aynı sanal ağda yer alan VM 'Ler görünür olur. 
-1. Kümeyi oluşturmak için **Uygula** ' yı seçin. 
+1. Kümeyi oluşturmak için **Uygula** ' yı seçin. Üst gezinti çubuğundaki zil simgesinden erişilebilen **etkinlik günlüğünde** dağıtımınızın durumunu kontrol edebilirsiniz. 
+1. Bir yük devretme kümesinin Microsoft tarafından desteklenmesi için, küme doğrulamasını geçmesi gerekir. Tercih ettiğiniz yöntemi (Uzak Masaüstü Protokolü (RDP)) kullanarak VM 'ye bağlanın ve daha sonra devam etmeden önce kümenizin doğrulamayı geçirdiğini doğrulayın. Bunun başarısız olması, kümenizi desteklenmeyen bir durumda bırakır. Yük Devretme Kümesi Yöneticisi (FCM) kullanarak kümeyi veya aşağıdaki PowerShell komutunu kullanabilirsiniz:
 
-Üst gezinti çubuğundaki zil simgesinden erişilebilen **etkinlik günlüğünde** dağıtımınızın durumunu kontrol edebilirsiniz. 
+    ```powershell
+    Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+    ```
+    
+
 
 ### <a name="onboard-existing-cluster"></a>Mevcut kümeyi ekleme
 
@@ -93,6 +98,8 @@ Bunu yapmak için şu adımları uygulayın:
 
 1. Kümenizin ayarlarını gözden geçirin. 
 1. Kümenizi eklemek için **Uygula** ' yı seçin ve sonra devam etmek Için sorulduğunda **Evet** ' i seçin.
+
+
 
 
 ## <a name="create-availability-group"></a>Kullanılabilirlik grubu oluştur

@@ -1,25 +1,28 @@
 ---
-title: Konuşmayı metne dönüştürme-konuşma hizmeti
+title: Konuşmaya metne genel bakış-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşmadan metne özelliği, ses akışlarının metin halinde gerçek zamanlı olarak dökümünü sağlar. Uygulamalarınız, araçlarınız veya cihazlarınız bu metin girişini kullanabilir, görüntüleyebilir ve eylem gerçekleştirebilir. Bu hizmet, metinden konuşmaya (konuşma birleştirme) ve konuşma çevirisi özellikleriyle sorunsuz bir şekilde çalışır.
+description: Konuşmadan metne yazılım, ses akışlarının metin halinde gerçek zamanlı olarak dökümünü sağlar. Uygulamalarınız, araçlarınız veya cihazlarınız bu metin girişini kullanabilir, görüntüleyebilir ve eylem gerçekleştirebilir. Bu makale, konuşmadan metne bir hizmetin avantajları ve özelliklerine genel bir bakış sunar.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.openlocfilehash: 90a5ec8c58865c3aa1b210db51b9ffeb7169d641
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.custom: cog-serv-seo-aug-2020
+keywords: konuşmayı metne dönüştürme, konuşmayı metne dönüştürme
+ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640421"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569229"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 
-Konuşma tanıma olarak da bilinen konuşma hizmetindeki konuşma metni, ses akışlarının gerçek zamanlı olarak dökümünü metne sağlar. Uygulamalarınız, araçlarınız veya cihazlarınız bu metni komut girişi olarak kullanabilir, görüntüleyebilir ve eylem gerçekleştirebilir. Bu hizmet, Microsoft 'un Cortana ve Office ürünleri için kullandığı aynı tanıma teknolojisi ile desteklenmektedir. <a href="./speech-translation.md" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Çeviri</a> ve <a href="./text-to-speech.md" target="_blank">metin okuma <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hizmeti teklifleriyle sorunsuz bir şekilde çalışır. Kullanılabilir konuşmadan metne yönelik dillerin tam listesi için bkz. [desteklenen diller](language-support.md#speech-to-text).
+Bu genel bakışta, konuşmadan metne olan hizmetin avantajları ve özellikleri hakkında bilgi edinebilirsiniz.
+Konuşma tanıma olarak da bilinen konuşmayı metne dönüştürme, ses akışlarının gerçek zamanlı olarak dökümünü metne sağlar. Uygulamalarınız, araçlarınız veya cihazlarınız bu metni komut girişi olarak kullanabilir, görüntüleyebilir ve eylem gerçekleştirebilir. Bu hizmet, Microsoft 'un Cortana ve Office ürünleri için kullandığı aynı tanıma teknolojisi ile desteklenmektedir. <a href="./speech-translation.md" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Çeviri</a> ve <a href="./text-to-speech.md" target="_blank">metin okuma <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hizmeti teklifleriyle sorunsuz bir şekilde çalışır. Kullanılabilir konuşmadan metne yönelik dillerin tam listesi için bkz. [desteklenen diller](language-support.md#speech-to-text).
 
 Konuşmadan metne hizmet varsayılan olarak evrensel dil modelini kullanmaktır. Bu model, Microsoft 'a ait veriler kullanılarak eğitildi ve buluta dağıtıldı. Konuşma ve dikte senaryoları için idealdir. Benzersiz bir ortamda tanıma ve döküm için konuşmayı metne dönüştürme özelliğini kullanırken özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. Özelleştirme, çevresel gürültü veya sektöre özgü sözlük adreslemeye yardımcı olur.
 
@@ -31,23 +34,11 @@ Giriş olarak ek başvuru metniyle birlikte, konuşmadan metne hizmet, konuşma 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="get-started-with-speech-to-text"></a>Konuşmaya metne Başlarken
+## <a name="get-started"></a>başlarken
 
-Konuşmaya metin hizmetine [konuşma SDK 'sı](speech-sdk.md)aracılığıyla ulaşılabilir. Hızlı başlangıçların çeşitli dillerde ve platformlarda kullanıma sunulduğu birkaç yaygın senaryo vardır:
+Konuşmayı metne kullanmaya başlamak için [hızlı](get-started-speech-to-text.md) başlangıca bakın. Hizmet, [konuşma SDK 'sı](speech-sdk.md), [REST API](rest-speech-to-text.md#pronunciation-assessment-parameters)ve [konuşma CLI](spx-overview.md)aracılığıyla kullanılabilir.
 
- - [Hızlı başlangıç: mikrofon girişi ile konuşmayı tanıma](quickstarts/speech-to-text-from-microphone.md)
- - [Hızlı başlangıç: bir dosyadan konuşmayı tanıma](quickstarts/speech-to-text-from-file.md)
- - [Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma](quickstarts/from-blob.md)
-
-Konuşmayı metne REST hizmetini kullanmayı tercih ediyorsanız bkz. [REST API 'leri](rest-speech-to-text.md).
-
- - [Hızlı başlangıç: başvuru girişi ile telaffuz değerlendirmesi](rest-speech-to-text.md#pronunciation-assessment-parameters)
-
-## <a name="tutorials-and-sample-code"></a>Öğreticiler ve örnek kod
-
-Konuşma hizmetini kullanma şansınız olduktan sonra, konuşma SDK 'sını ve LUO kullanarak konuşmayı nasıl anlayacağınızı öğreten Öğreticimizi deneyin.
-
-- [Öğretici: konuşma SDK 'Sı ve LUO ile konuşmayla ilgili amaçları C kullanarak tanıma #](how-to-recognize-intents-from-speech-csharp.md)
+## <a name="sample-code"></a>Örnek kod
 
 Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bir dosya veya akıştan ses okuma, sürekli ve tek kararlı bir tanıma ve özel modellerle çalışma gibi yaygın senaryoları kapsar.
 
@@ -61,7 +52,7 @@ Standart konuşma hizmeti modelinin yanı sıra özel modeller de oluşturabilir
 
 ## <a name="batch-transcription"></a>Toplu iş transkripsiyonu
 
-Toplu iş dökümü, depolamada büyük miktarda ses aktarmanıza olanak sağlayan bir REST API işlemleri kümesidir. Paylaşılan erişim imzası (SAS) URI 'SI olan ses dosyalarını işaret edebilir ve zaman uyumsuz olarak alma sonuçlarıyla karşılaşabilirsiniz. Toplu iş dökümü API 'sini kullanma hakkında daha fazla bilgi için bkz. [nasıl yapılır](batch-transcription.md) .
+Toplu iş dökümü, depolamada büyük miktarda ses aktarmanıza olanak sağlayan bir REST API işlemleri kümesidir. Paylaşılan erişim imzası (SAS) URI'si kullanarak ses dosyalarınızı işaret edebilir ve transkripsiyon sonuçlarını zaman uyumsuz bir şekilde alabilirsiniz. Toplu iş dökümü API 'sini kullanma hakkında daha fazla bilgi için bkz. [nasıl yapılır](batch-transcription.md) .
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 

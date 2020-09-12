@@ -1,19 +1,19 @@
 ---
 title: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
-description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
+description: Bu makalede, Azure özel uç noktası kullanılarak bir Web uygulamasına özel olarak nasıl bağlanabileceğiniz açıklanır
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: how-to
-ms.date: 06/02/2020
+ms.date: 09/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 1b3ac4c79ce92f591e74821a9f355717e4b22ea4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d547546c3c0e0bbcdde65a654bf373ab7407be3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737402"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569482"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Azure özel uç noktası (Önizleme) kullanarak bir Web uygulamasına özel olarak bağlanma
 
@@ -65,7 +65,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 1. Sanal makine oluşturma-temel bilgiler bölümünde, bu bilgileri girin veya seçin:
 
    > [!div class="mx-imgBorder"]
-   >![Sanal makine temel][4]
+   >![Sanal makine temel ][4]
 
 1. **"İleri: diskler"** i seçin
 
@@ -94,7 +94,7 @@ Bu bölümde özel bir uç nokta kullanarak özel bir Web uygulaması oluşturac
 1. Web uygulaması oluşturma-temel bilgiler bölümünde, bu bilgileri girin veya seçin:
 
    > [!div class="mx-imgBorder"]
-   >![Web uygulaması temel][6]
+   >![Web uygulaması temel ][6]
 
 1. **"Gözden geçir + oluştur"** u seçin
 
@@ -138,13 +138,13 @@ Bu bölümde özel bir uç nokta kullanarak özel bir Web uygulaması oluşturac
 
 1. İndirilen. rdp dosyasını açın.
 
-- İstendiğinde Bağlan’ı seçin.
-- VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
+   - İstendiğinde Bağlan’ı seçin.
+   - VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
-> [!Note]
-> VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için farklı bir hesap kullanmak > daha fazla seçenek belirlemeniz gerekebilir.
+   > [!Note]
+   > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için farklı bir hesap kullanmak > daha fazla seçenek belirlemeniz gerekebilir.
 
-- Tamam'ı seçin.
+   - Tamam'ı seçin.
 
 1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız Evet ' i veya devam et ' i seçin.
 
@@ -174,12 +174,21 @@ Bu bölümde özel uç nokta kullanarak Web uygulamasına özel olarak bağlanı
 1. MyVM 'de, Web uygulamasına genel IP aracılığıyla erişilebildiğini doğrulayın. Bir tarayıcı açın ve Web uygulaması adını yapıştırın, 403 yasaklanmış bir hata sayfasına sahip olmanız gerekir
 
    > [!div class="mx-imgBorder"]
-   >![Yasak][17]
+   >![IP adresi kullanılmaya çalışılırken hata yasak][17]
 
-> [!Important]
-> Bu özellik önizlemede olduğundan, DNS girişini el ile yönetmeniz gerekir.
+   > [!Important]
+   > Bu özellik önizlemede olduğundan, DNS girişini el ile yönetmeniz gerekir.
 
-1. Konak girişini oluşturun, dosya Gezgini 'ni açın ve Hosts dosyasını bulun
+   DNS için iki seçeneğiniz vardır:
+   - VM 'nin ana bilgisayar dosyasını kullan 
+   - veya Azure DNS özel bölge hizmetini kullanın.
+
+1. İlk çözüm: privatelink.azurewebsites.net adlı bir DNS özel bölgesi oluşturabilir ve bunu VNet 'e bağlayabilirsiniz
+1. Ardından, Özel uç noktanızın IP adresi ile iki bir kayıt (uygulama adı ve SCM adı) oluşturmanız gerekir
+   > [!div class="mx-imgBorder"]
+   >![DNS özel bölge kayıtları][21]
+
+1. İkinci çözüm: konak girdisini oluşturun, dosya Gezgini 'ni açın ve Hosts dosyasını bulun
 
    > [!div class="mx-imgBorder"]
    >![Hosts dosyası][18]
@@ -214,7 +223,7 @@ Bu hızlı başlangıçta, bir sanal ağ, bir Web uygulaması ve özel bir uç n
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png
 [2]: ./media/create-private-endpoint-webapp-portal/ipaddresses.png
 [3]: ./media/create-private-endpoint-webapp-portal/subnet.png
-[4]: ./media/create-private-endpoint-webapp-portal/virtualmachine.png
+[4]: ./media/create-private-endpoint-webapp-portal/virtual-machine.png
 [5]: ./media/create-private-endpoint-webapp-portal/vmnetwork.png
 [6]: ./media/create-private-endpoint-webapp-portal/webapp.png
 [7]: ./media/create-private-endpoint-webapp-portal/webappnetworking.png
@@ -231,6 +240,8 @@ Bu hızlı başlangıçta, bir sanal ağ, bir Web uygulaması ve özel bir uç n
 [18]: ./media/create-private-endpoint-webapp-portal/explorer.png
 [19]: ./media/create-private-endpoint-webapp-portal/hosts.png
 [20]: ./media/create-private-endpoint-webapp-portal/webappwithpe.png
+[21]: ./media/create-private-endpoint-webapp-portal/dns-private-zone-records.png
+
 
 <!--Links-->
 [privatenedpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502708"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595274"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Azure CLı kullanarak Web trafiğini URL 'ye göre yönlendirme
 
@@ -23,13 +23,12 @@ Web trafiğini yöneten bir BT yöneticisi olarak müşterilerinizin ihtiyaç du
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * İhtiyacınız olacak ağ kaynakları için bir kaynak grubu oluşturma
-> * Ağ kaynaklarını oluşturma
-> * Uygulamanızdan gelen trafik için bir uygulama ağ geçidi oluşturma
-> * Farklı trafik türleri için sunucu havuzlarını ve yönlendirme kurallarını belirtme
-> * Otomatik ölçeklendirme gerçekleştirmek için her havuzda bir ölçek kümesi oluşturma
-> * Farklı trafik türlerinin doğru havuza gittiğini doğrulamak için bir test gerçekleştirme
+* İhtiyacınız olacak ağ kaynakları için bir kaynak grubu oluşturma
+* Ağ kaynaklarını oluşturma
+* Uygulamanızdan gelen trafik için bir uygulama ağ geçidi oluşturma
+* Farklı trafik türleri için sunucu havuzlarını ve yönlendirme kurallarını belirtme
+* Otomatik ölçeklendirme gerçekleştirmek için her havuzda bir ölçek kümesi oluşturma
+* Farklı trafik türlerinin doğru havuza gittiğini doğrulamak için bir test gerçekleştirme
 
 İsterseniz, [Azure PowerShell](tutorial-url-route-powershell.md) veya [Azure Portal](create-url-route-portal.md)kullanarak bu yordamı tamamlayabilirsiniz.
 

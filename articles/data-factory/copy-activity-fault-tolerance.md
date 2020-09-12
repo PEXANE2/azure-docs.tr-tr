@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 6b172a6e15cbb22c3a0a16cb1e238ddfe45048bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a0529248c58f7fa7f962d9d1432411c351c7bdd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130781"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440652"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory’de kopyalama etkinliğinin hataya dayanıklılığı
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -72,13 +72,13 @@ Depolama depoları arasında ikili dosyaları kopyaladığınızda, hata toleran
 ```
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | -------- 
-skipErrorFile | Veri taşıma sırasında atlamak istediğiniz başarısızlık türlerini belirtmek için bir özellik grubu. | | Hayır
-fileMissing | SkipErrorFile özellik paketi içindeki anahtar-değer çiftlerinden biri, ADF 'nin bir arada kopyalanırken diğer uygulamalar tarafından silinmekte olan dosyaları atlamak istediğinizi öğrenmek için. <br/> -True: diğer uygulamalar tarafından silinmekte olan dosyaları atlayarak geri kalanını kopyalamak istersiniz. <br/> -False: veri hareketinin ortasında Kaynak depodan silinen dosyalar silindiğinde kopyalama etkinliğini iptal etmek istiyorsunuz. <br/>Bu özelliğin varsayılan olarak true olarak ayarlandığını unutmayın. | True (varsayılan) <br/>False | Hayır
-Dosya yasak | Belirli dosyaları atlamak istiyorsanız, bu dosya veya klasörlerin ACL 'Leri ADF 'de yapılandırılan bağlantıdan daha yüksek izin düzeyi gerektirdiğinde, bu dosyaların atlanmasını istediğinizi öğrenmek için skipErrorFile özellik paketi içindeki anahtar-değer çiftlerinden biridir. <br/> -True: dosyaları atlayarak geri kalanı kopyalamak istiyorsunuz. <br/> -False: klasörler veya dosyalar üzerinde izin sorununu elde etmek için kopyalama etkinliğini iptal etmek istiyorsunuz. | True <br/>False (varsayılan) | Hayır
-Veri tutarsızlığı | Kaynak ve hedef depo arasında tutarsız verileri atlamak istediğinizi öğrenmek için skipErrorFile özellik paketi içindeki anahtar-değer çiftlerinden biri. <br/> -True: tutarsız verileri atlayarak geri kalanı kopyalamak istiyorsunuz. <br/> -False: tutarsız veriler bulunduğunda kopyalama etkinliğini iptal etmek istiyorsunuz. <br/>Bu özelliğin yalnızca Validatedatatutarlılığı doğru olarak ayarladığınızda geçerli olduğunu unutmayın. | True <br/>False (varsayılan) | Hayır
-logStorageSettings  | Atlanan nesne adlarını günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | Hayır
-linkedServiceName | [Azure Blob depolama alanına](connector-azure-blob-storage.md#linked-service-properties) bağlı hizmet veya oturum günlüğü dosyalarını depolamak için [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) . | `AzureBlobStorage` `AzureBlobFS` Günlük dosyasını depolamak için kullandığınız örneğe karşılık gelen veya tür bağlı bir hizmetin adları. | Hayır
-yol | Günlük dosyalarının yolu. | Günlük dosyalarını depolamak için kullandığınız yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır
+skipErrorFile | Veri taşıma sırasında atlamak istediğiniz başarısızlık türlerini belirtmek için bir özellik grubu. | | No
+fileMissing | SkipErrorFile özellik paketi içindeki anahtar-değer çiftlerinden biri, ADF 'nin bir arada kopyalanırken diğer uygulamalar tarafından silinmekte olan dosyaları atlamak istediğinizi öğrenmek için. <br/> -True: diğer uygulamalar tarafından silinmekte olan dosyaları atlayarak geri kalanını kopyalamak istersiniz. <br/> -False: veri hareketinin ortasında Kaynak depodan silinen dosyalar silindiğinde kopyalama etkinliğini iptal etmek istiyorsunuz. <br/>Bu özelliğin varsayılan olarak true olarak ayarlandığını unutmayın. | True (varsayılan) <br/>Yanlış | No
+Dosya yasak | Belirli dosyaları atlamak istiyorsanız, bu dosya veya klasörlerin ACL 'Leri ADF 'de yapılandırılan bağlantıdan daha yüksek izin düzeyi gerektirdiğinde, bu dosyaların atlanmasını istediğinizi öğrenmek için skipErrorFile özellik paketi içindeki anahtar-değer çiftlerinden biridir. <br/> -True: dosyaları atlayarak geri kalanı kopyalamak istiyorsunuz. <br/> -False: klasörler veya dosyalar üzerinde izin sorununu elde etmek için kopyalama etkinliğini iptal etmek istiyorsunuz. | Doğru <br/>False (varsayılan) | No
+Veri tutarsızlığı | Kaynak ve hedef depo arasında tutarsız verileri atlamak istediğinizi öğrenmek için skipErrorFile özellik paketi içindeki anahtar-değer çiftlerinden biri. <br/> -True: tutarsız verileri atlayarak geri kalanı kopyalamak istiyorsunuz. <br/> -False: tutarsız veriler bulunduğunda kopyalama etkinliğini iptal etmek istiyorsunuz. <br/>Bu özelliğin yalnızca Validatedatatutarlılığı doğru olarak ayarladığınızda geçerli olduğunu unutmayın. | Doğru <br/>False (varsayılan) | No
+logStorageSettings  | Atlanan nesne adlarını günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | No
+linkedServiceName | [Azure Blob depolama alanına](connector-azure-blob-storage.md#linked-service-properties) bağlı hizmet veya oturum günlüğü dosyalarını depolamak için [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) . | `AzureBlobStorage` `AzureBlobFS` Günlük dosyasını depolamak için kullandığınız örneğe karşılık gelen veya tür bağlı bir hizmetin adları. | No
+path | Günlük dosyalarının yolu. | Günlük dosyalarını depolamak için kullandığınız yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | No
 
 > [!NOTE]
 > Bu şekilde, ikili dosyalar kopyalanırken kopyalama etkinliğinde hata toleransını etkinleştirme önkoşulları bulunur.
@@ -128,7 +128,7 @@ Sütun | Açıklama
 -------- | -----------  
 Zaman damgası | ADF dosyayı atlayan zaman damgası.
 Düzey | Bu öğenin günlük düzeyi. Dosya atlama gösteren öğe için ' uyarı ' düzeyinde olacaktır.
-ThrottledRequests | ADF kopyalama etkinliği işlem davranışı her dosyada. Atlanacak dosyayı belirtmek için ' FileSkip ' olur.
+OperationName | ADF kopyalama etkinliği işlem davranışı her dosyada. Atlanacak dosyayı belirtmek için ' FileSkip ' olur.
 Operationıtem | Atlanacak dosya adları.
 İleti | Dosyanın neden atlandığını göstermek için daha fazla bilgi.
 
@@ -159,7 +159,7 @@ Kopyalama etkinliği, uyumsuz tablolu verileri saptamak, atlamak ve günlüğe k
     Örneğin: bir SQL Server 'dan SQL veritabanı 'na veri kopyalama. Birincil anahtar, havuz SQL veritabanında tanımlanmıştır, ancak kaynak SQL Server 'da böyle bir birincil anahtar tanımlanmamıştır. Kaynakta bulunan yinelenen satırlar havuza kopyalanamıyor. Kopyalama etkinliği yalnızca kaynak verilerin ilk satırını havuza kopyalar. Yinelenen birincil anahtar değerini içeren sonraki kaynak satırlar uyumsuz olarak algılanır ve atlanır.
 
 >[!NOTE]
->- PolyBase kullanarak SQL veri ambarı 'na veri yüklemek için, kopyalama etkinliğinde "[Polybasesettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" aracılığıyla reddetme Ilkelerini belirterek PolyBase 'in yerel hata toleransı ayarlarını yapılandırın. Aynı zamanda, PolyBase uyumsuz satırları blob veya ADLS 'e aşağıda gösterildiği gibi normal şekilde yeniden yönlendirmeyi etkinleştirebilirsiniz.
+>- PolyBase kullanarak Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri yüklemek için, kopyalama etkinliğinde "[Polybasesettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" aracılığıyla ilke reddetme seçeneğini belirterek PolyBase 'in yerel hata toleransı ayarlarını yapılandırın. Aynı zamanda, PolyBase uyumsuz satırları blob veya ADLS 'e aşağıda gösterildiği gibi normal şekilde yeniden yönlendirmeyi etkinleştirebilirsiniz.
 >- Copy etkinliği [Amazon Redshift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)komutunu çağırmak üzere yapılandırıldığında bu özellik uygulanmaz.
 >- Kopyalama etkinliği [BIR SQL havuzundan saklı yordam](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)çağırmak üzere yapılandırıldığında bu özellik uygulanmaz.
 
@@ -187,10 +187,10 @@ Aşağıdaki örnek, kopyalama etkinliğinde uyumsuz satırları atlamayı yapı
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | -------- 
-Enableskipıncompatiblerow | Kopya sırasında uyumsuz satırların atlanıp atlanmayacağını belirtir. | True<br/>False (varsayılan) | Hayır
-logStorageSettings | Uyumsuz satırları günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | Hayır
-linkedServiceName | Atlanan satırları içeren günlüğü depolamak için [Azure Blob depolama](connector-azure-blob-storage.md#linked-service-properties) veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) bağlı hizmeti. | `AzureBlobStorage` `AzureBlobFS` Günlük dosyasını depolamak için kullandığınız örneğe karşılık gelen veya tür bağlı bir hizmetin adları. | Hayır
-yol | Atlanan satırları içeren günlük dosyalarının yolu. | Uyumsuz verileri günlüğe kaydetmek için kullanmak istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır
+Enableskipıncompatiblerow | Kopya sırasında uyumsuz satırların atlanıp atlanmayacağını belirtir. | Doğru<br/>False (varsayılan) | No
+logStorageSettings | Uyumsuz satırları günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | No
+linkedServiceName | Atlanan satırları içeren günlüğü depolamak için [Azure Blob depolama](connector-azure-blob-storage.md#linked-service-properties) veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) bağlı hizmeti. | `AzureBlobStorage` `AzureBlobFS` Günlük dosyasını depolamak için kullandığınız örneğe karşılık gelen veya tür bağlı bir hizmetin adları. | No
+path | Atlanan satırları içeren günlük dosyalarının yolu. | Uyumsuz verileri günlüğe kaydetmek için kullanmak istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | No
 
 ### <a name="monitor-skipped-rows"></a>Atlanan satırları izle
 Kopyalama etkinliği çalıştırıldıktan sonra kopyalama etkinliğinin çıkışında atlanan satır sayısını görebilirsiniz:
@@ -217,7 +217,7 @@ Sütun | Açıklama
 -------- | -----------  
 Zaman damgası | ADF uyumsuz satırları atlamazsa zaman damgası
 Düzey | Bu öğenin günlük düzeyi. Bu öğe atlanan satırları gösteriyorsa, bu ' uyarı ' düzeyinde olur
-ThrottledRequests | ADF kopyalama etkinliği işlem davranışı her satırda. Bu, uyumsuz bir satırın atlandığını belirtmek için ' TabularRowSkip ' olur
+OperationName | ADF kopyalama etkinliği işlem davranışı her satırda. Bu, uyumsuz bir satırın atlandığını belirtmek için ' TabularRowSkip ' olur
 Operationıtem | Kaynak veri deposundan atlanan satırlar.
 İleti | Bu belirli satırın uyumsuzluğunun neden olduğunu gösteren daha fazla bilgi.
 
@@ -261,10 +261,10 @@ Aşağıdaki örnek, kopyalama etkinliğinde uyumsuz satırları atlamayı yapı
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | -------- 
-Enableskipıncompatiblerow | Kopya sırasında uyumsuz satırların atlanıp atlanmayacağını belirtir. | True<br/>False (varsayılan) | Hayır
-Redirectıncompatiblerowsettings | Uyumsuz satırları günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | Hayır
-linkedServiceName | Atlanan satırları içeren günlüğü depolamak için [Azure depolama](connector-azure-blob-storage.md#linked-service-properties) 'nın bağlı hizmeti veya [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) . | `AzureStorage` `AzureDataLakeStore` Günlük dosyasını depolamak için kullanmak istediğiniz örneğe karşılık gelen veya tür bağlı bir hizmetin adı. | Hayır
-yol | Atlanan satırları içeren günlük dosyasının yolu. | Uyumsuz verileri günlüğe kaydetmek için kullanmak istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır
+Enableskipıncompatiblerow | Kopya sırasında uyumsuz satırların atlanıp atlanmayacağını belirtir. | Doğru<br/>False (varsayılan) | No
+Redirectıncompatiblerowsettings | Uyumsuz satırları günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | No
+linkedServiceName | Atlanan satırları içeren günlüğü depolamak için [Azure depolama](connector-azure-blob-storage.md#linked-service-properties) 'nın bağlı hizmeti veya [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) . | `AzureStorage` `AzureDataLakeStore` Günlük dosyasını depolamak için kullanmak istediğiniz örneğe karşılık gelen veya tür bağlı bir hizmetin adı. | No
+path | Atlanan satırları içeren günlük dosyasının yolu. | Uyumsuz verileri günlüğe kaydetmek için kullanmak istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | No
 
 ### <a name="monitor-skipped-rows"></a>Atlanan satırları izle
 Kopyalama etkinliği çalıştırıldıktan sonra kopyalama etkinliğinin çıkışında atlanan satır sayısını görebilirsiniz:
