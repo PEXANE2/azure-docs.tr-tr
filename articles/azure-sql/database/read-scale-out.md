@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 06/26/2020
-ms.openlocfilehash: cf9f48b0907d3bfe1d07dcffcc0d0b9534f74c83
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 09/03/2020
+ms.openlocfilehash: 2e7c931d6d99187b4ee7985be19374048c226312
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135891"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442233"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Salt okuma sorgusu iş yüklerini boşaltmak için salt okuma çoğaltmaları kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[Yüksek kullanılabilirlik mimarisinin](high-availability-sla.md#premium-and-business-critical-service-tier-availability)bir parçası olarak, Premium ve iş açısından kritik hizmet katmanındaki her veritabanı ve yönetilen örnek, birincil bir okuma-yazma çoğaltması ve birkaç ikincil salt okuma çoğaltmalarıyla otomatik olarak sağlanır. İkincil çoğaltmalar, birincil çoğaltmayla aynı işlem boyutuyla sağlanır. *Okuma ölçeği genişletme* özelliği, salt yazılır çoğaltmalardan birinin işlem kapasitesini kullanarak, bunları okuma/yazma çoğaltmasında çalıştırmak yerine salt okunurdur. Bu şekilde, bazı salt okunurdur bazı iş yükleri, okuma-yazma iş yüklerinden yalıtılabilir ve performanslarını etkilemeyecektir. Özelliği, analiz gibi mantıksal olarak ayrılmış salt okunurdur iş yüklerini içeren uygulamalara yöneliktir. Premium ve İş Açısından Kritik hizmet katmanlarında uygulamalar, ek ücret ödemeden bu ek kapasiteyi kullanarak performans avantajları elde edebilir.
+[Yüksek kullanılabilirlik mimarisinin](high-availability-sla.md#premium-and-business-critical-service-tier-availability)bir parçası olarak, Premium ve iş açısından kritik hizmet katmanındaki her tek veritabanı, esnek havuz veritabanı ve yönetilen örnek, birincil bir okuma-yazma çoğaltması ve birkaç ikincil salt okuma çoğaltmalarıyla otomatik olarak sağlanır. İkincil çoğaltmalar, birincil çoğaltmayla aynı işlem boyutuyla sağlanır. *Okuma ölçeği genişletme* özelliği, salt yazılır çoğaltmalardan birinin işlem kapasitesini kullanarak, bunları okuma/yazma çoğaltmasında çalıştırmak yerine salt okunurdur. Bu şekilde, bazı salt okunurdur bazı iş yükleri, okuma-yazma iş yüklerinden yalıtılabilir ve performanslarını etkilemeyecektir. Özelliği, analiz gibi mantıksal olarak ayrılmış salt okunurdur iş yüklerini içeren uygulamalara yöneliktir. Premium ve İş Açısından Kritik hizmet katmanlarında uygulamalar, ek ücret ödemeden bu ek kapasiteyi kullanarak performans avantajları elde edebilir.
 
 En az bir ikincil çoğaltma oluşturulduğunda, hiper ölçek hizmeti katmanında *okuma ölçeği* genişletme özelliği de kullanılabilir. Birden fazla ikincil çoğaltma, bir ikincil çoğaltmada bulunandan daha fazla kaynak gerektiren Yük Dengeleme salt okuma iş yükleri için kullanılabilir.
 
@@ -45,7 +45,7 @@ Uygulamanın SQL bağlantı dizesindeki ayarından bağımsız olarak birincil �
 
 ## <a name="data-consistency"></a>Veri tutarlılığı
 
-Çoğaltmaların avantajlarından biri, çoğaltmaların her zaman işlemsel olarak tutarlı durumda olması, ancak farklı noktalarda, farklı çoğaltmalar arasında bazı küçük bir gecikme süresi olabilir. Okuma ölçeği genişletme, oturum düzeyi tutarlılığını destekler. Bu, salt okuma oturumu, çoğaltma kullanım dışı olmasından kaynaklanan bir bağlantı hatasından sonra yeniden bağlanırsa, okuma-yazma çoğaltmasındaki %100 güncel olmayan bir çoğaltmaya yönlendirilebilir. Benzer şekilde, bir uygulama bir okuma-yazma oturumu kullanarak veri yazarsa ve salt okunur bir oturum kullanarak bunu hemen okuduğunda, en son güncelleştirmelerin çoğaltmada hemen görünür olmaması mümkündür. Gecikme süresi, zaman uyumsuz bir işlem günlüğü yineleme işlemi nedeniyle oluşur.
+Çoğaltmaların avantajlarından biri, çoğaltmaların her zaman işlemsel olarak tutarlı durumda olması, ancak farklı noktalarda, farklı çoğaltmalar arasında bazı küçük bir gecikme süresi olabilir. Okuma ölçeği genişletme, oturum düzeyi tutarlılığını destekler. Bu, salt okuma oturumu, çoğaltma kullanım dışı olmasından kaynaklanan bir bağlantı hatasından sonra yeniden bağlanırsa, okuma-yazma çoğaltmasındaki %100 güncel olmayan bir çoğaltmaya yönlendirilebilir. Benzer şekilde bir uygulama, okuma yazma oturumu kullanarak verileri yazarsa ve salt okunur bir oturum kullanarak hemen verileri okursa, en son güncelleştirmeler büyük ihtimalle çoğaltmada hemen görünür olmaz. Zaman uyumsuz bir işlem günlüğü yineleme işlemi nedeniyle gecikme süresi oluşur.
 
 > [!NOTE]
 > Bölge içindeki çoğaltma gecikmeleri düşüktür ve bu durum nadir olarak belirlenir. Çoğaltma gecikmesini izlemek için bkz. [salt okuma çoğaltmasını izleme ve sorun giderme](#monitoring-and-troubleshooting-read-only-replicas).
@@ -87,11 +87,11 @@ Yaygın olarak kullanılan görünümler şunlardır:
 
 | Name | Amaç |
 |:---|:---|
-|[sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Son saat için CPU, veri GÇ ve hizmet hedefi sınırlarına göre günlük yazma kullanımı dahil olmak üzere kaynak kullanım ölçümleri sağlar.|
-|[sys. dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Veritabanı altyapısı örneği için toplam bekleme istatistikleri sağlar. |
+|[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Son saat için CPU, veri GÇ ve hizmet hedefi sınırlarına göre günlük yazma kullanımı dahil olmak üzere kaynak kullanım ölçümleri sağlar.|
+|[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Veritabanı altyapısı örneği için toplam bekleme istatistikleri sağlar. |
 |[sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Çoğaltma sistem durumu ve eşitleme istatistikleri sağlar. Sıra boyutunu Yinele ve yineleme oranı, salt okuma çoğaltmasında veri gecikmesi göstergesi olarak hizmeti sunar. |
 |[sys. dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Veritabanı altyapısı performans sayaçlarını sağlar.|
-|[sys. dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Yürütmeler sayısı, kullanılan CPU süresi vb. gibi sorgu başına yürütme istatistikleri sağlar.|
+|[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Yürütmeler sayısı, kullanılan CPU süresi vb. gibi sorgu başına yürütme istatistikleri sağlar.|
 |[sys. dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Önbelleğe alınmış sorgu planları sağlar. |
 |[sys. dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Önbelleğe alınmış bir sorgu planı için sorgu metni sağlar.|
 |[sys. dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Sorgular yürütülürken gerçek zamanlı sorgu ilerleme durumu sağlar.|

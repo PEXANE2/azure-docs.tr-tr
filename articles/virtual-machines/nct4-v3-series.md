@@ -8,16 +8,18 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 73d583cb371876cefc10c982dbe66f6e15bddf03
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: af9f7eb21d533bc5fb365e7cbf1fb8fc18184fa7
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932619"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375236"
 ---
-# <a name="ncast4_v3-series"></a>NCasT4_v3 serisi 
+# <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3 serisi (önizlemede) 
 
 NCasT4_v3 serisi sanal makineler, [NVIDIA Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 'LARı ve AMD Epde 7V12 (Roma) CPU 'lar tarafından desteklenir. VM 'Ler, en fazla 64, çok iş parçacıklı AMD EPIC 7V12 (Roma) işlemci çekirdeği ve 440 GiB 'a kadar, her biri 16 GB bellek içeren 4 KB 'a kadar NVıDıA T4 GPU özelliğine sahiptir. Bu sanal makineler CUDA, TensorFlow, Pytorch, Caffe ve diğer çerçeveleri kullanan ML ve AI iş yüklerini ve NVıDıA GRID teknolojisini kullanan grafik iş yüklerini çalıştırmak için idealdir. NCasT4_v3 serisi, çıkarım iş yüklerini çalıştırmak için idealdir.
+
+[Bir isteği](https://aka.ms/NCT4v3Preview) , önizleme programının bir parçası olarak gönderebilirsiniz.
 
 <br>
 

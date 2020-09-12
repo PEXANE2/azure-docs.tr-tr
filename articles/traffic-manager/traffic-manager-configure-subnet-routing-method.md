@@ -3,20 +3,20 @@ title: Alt ağ trafiği yönlendirmeyi Yapılandırma-Azure Traffic Manager
 description: Bu makalede, belirli alt ağlardan gelen trafiği yönlendirmek üzere Traffic Manager nasıl yapılandırılacağı açıklanmaktadır.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: rohink
-ms.openlocfilehash: fe65e2e2a05c3c1d936bcdfa94bbe8cc310f7c68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: b1901ddce2eb9c8ff5ec9ac90a56379e74c11aa6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711791"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401376"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Traffic Manager'ı kullanarak trafiği kullanıcı alt ağına göre belirli uç noktalara yönlendirme
 
@@ -51,7 +51,7 @@ Bu bölümde, **Doğu ABD** **Batı Avrupa** ve Azure bölgelerinde *MyEndpointV
 
     |Ayar|Değer|
     |---|---|
-    |Adı|myIISVMEastUS|
+    |Ad|myIISVMEastUS|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Kaynak grubu| **Yeni** ' yi seçin ve *myResourceGroupTM1*yazın.|
@@ -65,7 +65,7 @@ Bu bölümde, **Doğu ABD** **Batı Avrupa** ve Azure bölgelerinde *MyEndpointV
     |---|---|
     |Sanal ağ| **Sanal ağ**'ı seçin, **Sanal ağ oluştur** bölümündeki **Ad** alanına *myVNet1*, alt ağ alanına da *mySubnet* yazın.|
     |Ağ Güvenliği Grubu|**Temel**'i seçin ve **Ortak gelen bağlantı noktası seçin** açılan menüsünde **HTTP** ve **RDP**'yi seçin. |
-    |Önyükleme tanılamaları|**Devre dışı** girişini seçin.|
+    |Önyükleme tanılaması|**Devre dışı** girişini seçin.|
     |||
 
 6. **Özet**’in **Oluştur** bölümünde **Oluştur**’u seçerek sanal makine dağıtımını başlatın.
@@ -75,7 +75,7 @@ Bu bölümde, **Doğu ABD** **Batı Avrupa** ve Azure bölgelerinde *MyEndpointV
     |Ayar|Değer|
     |---|---|
     |Kaynak grubu | **Yeni**'yi seçin ve *myResourceGroupTM2* yazın.|
-    |Konum|Batı Avrupa|
+    |Konum|West Europe|
     |VM Adı | myIISVMWEurope|
     |Sanal ağ | **Sanal ağ**'ı seçin ve **Sanal ağ oluştur** bölümündeki **Ad** alanına *myVNet2*, alt ağ alanına da *mySubnet* yazın.|
     |||
@@ -137,7 +137,7 @@ Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**bir VM
 
     |Ayar|Değer|
     |---|---|
-    |Adı|myVMEastUS|
+    |Ad|myVMEastUS|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Kaynak grubu| **Var olan**’ı seçin ve sonra *myResourceGroupTM1* öğesini seçin.|
@@ -150,7 +150,7 @@ Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**bir VM
     |---|---|
     |Sanal ağ| **Sanal ağ**'ı seçin ve **Sanal ağ oluştur** bölümündeki **Ad** alanına *myVNet3*, alt ağ alanına da *mySubnet3* yazın.|
     |Ağ Güvenliği Grubu|**Temel**'i seçin ve **Ortak gelen bağlantı noktası seçin** açılan menüsünde **HTTP** ve **RDP**'yi seçin. |
-    |Önyükleme tanılamaları|**Devre dışı** girişini seçin.|
+    |Önyükleme tanılaması|**Devre dışı** girişini seçin.|
     |||
 
 6. **Özet**’in **Oluştur** bölümünde **Oluştur**’u seçerek sanal makine dağıtımını başlatın.
@@ -174,7 +174,7 @@ Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**bir VM
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
-    | Adı                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
+    | Ad                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
     | Yönlendirme yöntemi          | **Alt ağ** yönlendirme yöntemini seçin.                                       |
     | Abonelik            | Aboneliğinizi seçin.                          |
     | Kaynak grubu          | **Var olan**’ı seçin ve sonra *myResourceGroupTM1* yazın. |

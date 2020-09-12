@@ -3,20 +3,20 @@ title: Azure ön kapısı-sık sorulan sorular
 description: Bu sayfa, Azure ön kapısı hakkında sık sorulan soruların yanıtlarını sağlar
 services: frontdoor
 documentationcenter: ''
-author: sohamnchatterjee
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
-ms.author: sohamnc
-ms.openlocfilehash: e1b8c432673712b637d51a64ce87b4eb2131be7d
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.author: duau
+ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760422"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399744"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -92,8 +92,8 @@ Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekil
 - Arka uçlarınızın IP adresini, Azure ön kapısından gelen trafiği ve yalnızca Azure 'un altyapı hizmetlerini kabul edecek şekilde yapılandırın. Arka ucunuzu hızlandırma için aşağıdaki IP ayrıntılarına bakın:
  
     - Ön kapıdaki IPv4 arka uç IP adresi aralığı için [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519) bölümündeki *azurefrontkapısı. arka* uç bölümüne bakın veya [ağ güvenlik gruplarında](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) *azurefrontkapısı. arka uç* hizmet etiketini de kullanabilirsiniz.
-    - Hizmet etiketinde kapsanan ön kapıdaki **IPv6** arka uç IP alanı, Azure IP aralıkları json dosyasında listelenmez. Açık IPv6 adres aralığı arıyorsanız şu anda şu şekilde sınırlıdır`2a01:111:2050::/44`
-    - Sanallaştırılmış ana bilgisayar IP adresleri aracılığıyla Azure 'un [temel altyapı hizmetleri](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) : `168.63.129.16` ve`169.254.169.254`
+    - Hizmet etiketinde kapsanan ön kapıdaki **IPv6** arka uç IP alanı, Azure IP aralıkları json dosyasında listelenmez. Açık IPv6 adres aralığı arıyorsanız şu anda şu şekilde sınırlıdır `2a01:111:2050::/44`
+    - Sanallaştırılmış ana bilgisayar IP adresleri aracılığıyla Azure 'un [temel altyapı hizmetleri](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) : `168.63.129.16` ve `169.254.169.254`
 
     > [!WARNING]
     > Ön kapısının arka uç IP alanı daha sonra değişebilir, ancak [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519)ile tümleştirilebilmemiz için bu işlem yapılmadan önce bu şekilde daha önce de olur. Herhangi bir değişiklik veya güncelleştirme için [Azure IP aralıklarına ve hizmet etiketlerine](https://www.microsoft.com/download/details.aspx?id=56519) abone olmanızı öneririz.

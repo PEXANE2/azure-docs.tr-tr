@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: c4c340282becf34ae34bf9e48bceeb86d68f237b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa10f97d0eb2f48e80d20f90a254c44c6e95a8e8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345334"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436978"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL veritabanına geçiş sırasında Transact-SQL farklılıklarını çözme
 
@@ -45,7 +45,7 @@ SQL veritabanı tarafından desteklenen ve desteklenmeyen özelliklerin listesi 
  [Azure SQL veritabanı özelliği karşılaştırması](features-comparison.md)bölümünde açıklanan desteklenmeyen özelliklerle ilgili Transact-SQL deyimlerine ek olarak, aşağıdaki deyimler ve deyim grupları desteklenmez. Bu nedenle, geçirilecek veritabanınız aşağıdaki özelliklerden herhangi birini kullanıyorsa t-SQL ' i yeniden mühendisler ve bu T-SQL özelliklerini ve deyimlerini ortadan kaldırır.
 
 - Harmanlanmış sistem nesneleri
-- Bağlantıyla ilgili: Endpoint deyimleri. SQL veritabanı, Windows kimlik doğrulamasını desteklemez, ancak benzer Azure Active Directory kimlik doğrulamasını destekler. Bazı kimlik doğrulaması türleri için SSMS'nin en son sürümü gerekir. Daha fazla bilgi için bkz. [Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı veya Azure SQL veri ambarı 'Na bağlanma](authentication-aad-overview.md).
+- Bağlantıyla ilgili: Endpoint deyimleri. SQL veritabanı, Windows kimlik doğrulamasını desteklemez, ancak benzer Azure Active Directory kimlik doğrulamasını destekler. Bazı kimlik doğrulaması türleri için SSMS'nin en son sürümü gerekir. Daha fazla bilgi için, [Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'na veya Azure Azure SYNAPSE Analytics 'e (eski ADıYLA SQL veri ambarı) bağlanma](authentication-aad-overview.md)konusuna bakın.
 - Üç veya dört bölüm adı kullanan veritabanları arası sorgular. (Salt okunur veritabanları arası sorgular [elastik veritabanı sorgusu](elastic-query-overview.md) kullanılarak desteklenir.)
 - Veritabanları arası sahiplik zinciri, `TRUSTWORTHY` ayarı
 - `EXECUTE AS LOGIN` Bunun yerine "EXECUTE AS USER" kullanın.
@@ -82,7 +82,7 @@ Transact-SQL dil bilgisi, kullanımı ve örnekleri hakkında daha fazla bilgi i
 
 ### <a name="about-the-applies-to-tags"></a>"Uygulandığı öğe" etiketleri hakkında
 
-Transact-SQL başvurusu, 2008 SQL Server sürümleriyle ilgili makaleleri içerir. Makale başlığının altında, dört SQL Server platformunu listelemek ve uygulanabilirliği gösteren bir simge çubuğu vardır. Örneğin kullanılabilirlik grupları SQL Server 2012'de tanıtılmıştır.  [KULLANıLABILIRLIK grubu oluştur](https://msdn.microsoft.com/library/ff878399.aspx)   makalesi, deyimin SQL Server için geçerli olduğunu gösterir **(2012 ile başlayarak)**. Bu ifade SQL Server 2008, SQL Server 2008 R2, Azure SQL veritabanı, Azure SQL veri ambarı veya paralel veri ambarı için geçerlidir.
+Transact-SQL başvurusu, 2008 SQL Server sürümleriyle ilgili makaleleri içerir. Makale başlığının altında, dört SQL Server platformunu listelemek ve uygulanabilirliği gösteren bir simge çubuğu vardır. Örneğin kullanılabilirlik grupları SQL Server 2012'de tanıtılmıştır.  [KULLANıLABILIRLIK grubu oluştur](https://msdn.microsoft.com/library/ff878399.aspx)   makalesi, deyimin SQL Server için geçerli olduğunu gösterir **(2012 ile başlayarak)**. Bu ifade SQL Server 2008, SQL Server 2008 R2, Azure SQL veritabanı, Azure Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) veya paralel veri ambarı için geçerlidir.
 
 Bazı durumlarda, bir makalenin genel konusu bir üründe kullanılabilir, ancak ürünler arasında küçük farklılıklar vardır. Farklar, makaledeki orta noktalara uygun şekilde gösterilir. Bazı durumlarda, bir makalenin genel konusu bir üründe kullanılabilir, ancak ürünler arasında küçük farklılıklar vardır. Farklar, makaledeki orta noktalara uygun şekilde gösterilir. Örneğin, TETIKLEYICI oluştur makalesi SQL veritabanında kullanılabilir. Ancak sunucu düzeyi Tetikleyiciler için **tüm sunucu** seçeneği, sunucu DÜZEYI tetikleyicilerin SQL veritabanında kullanılamayacağını belirtir. Bunun yerine veritabanı düzeyi Tetikleyicileri kullanın.
 

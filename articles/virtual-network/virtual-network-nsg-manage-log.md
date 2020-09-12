@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: c56b5ac1c1aa6fa5894d1aedcb94fe4694c2db28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 221f7577b3181b1535ab9f544073dac4d031fe66
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696053"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319454"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Bir ağ güvenlik grubu için kaynak günlüğü
 
@@ -24,7 +24,7 @@ Bir ağ güvenlik grubu (NSG), bir sanal ağ alt ağına, ağ arabirimine veya h
 Bir NSG için günlük kaydını etkinleştirdiğinizde aşağıdaki kaynak günlük bilgileri türlerini toplayabilirsiniz:
 
 * **Olay:** Şirket, MAC adresine bağlı olarak VM 'lere uygulanan NSG kuralları için günlüğe kaydedilir.
-* **Kural sayacı:** Her NSG kuralının, trafiği reddetme veya izin verme için kaç kez uygulanacağını gösteren girişleri içerir. Bu kuralların durumu her 60 saniyede toplanır.
+* **Kural sayacı:** Her NSG kuralının, trafiği reddetme veya izin verme için kaç kez uygulanacağını gösteren girişleri içerir. Bu kuralların durumu her 300 saniyede toplanır.
 
 Kaynak günlükleri yalnızca Azure Resource Manager dağıtım modeliyle dağıtılan NSG 'ler için kullanılabilir. Klasik dağıtım modeli aracılığıyla dağıtılan NSG 'ler için kaynak günlüğü etkinleştiremezsiniz. İki modeli daha iyi anlamak için bkz. [Azure dağıtım modellerini anlama](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -47,7 +47,7 @@ Kaynak günlüğünü etkinleştirmek için [Azure Portal](#azure-portal), [POWE
 
     | Ayar                                                                                     | Değer                                                          |
     | ---------                                                                                   |---------                                                       |
-    | Adı                                                                                        | Seçinizdeki bir ad.  Örneğin: *Mynsgdiagnostics*      |
+    | Ad                                                                                        | Seçinizdeki bir ad.  Örneğin: *Mynsgdiagnostics*      |
     | **Bir depolama hesabına arşivleme**, **bir olay hub 'ına akış**ve **Log Analytics gönderme** | Seçtiğiniz sayıda hedef seçebilirsiniz. Her biri hakkında daha fazla bilgi için bkz. [günlük hedefleri](#log-destinations).                                                                                                                                           |
     | LOG                                                                                         | Ya da her iki günlük kategorisini seçin. Her kategori için günlüğe kaydedilen veriler hakkında daha fazla bilgi edinmek için bkz. [günlük kategorileri](#log-categories).                                                                                                                                             |
 6. Günlükleri görüntüleyin ve çözümleyin. Daha fazla bilgi için bkz. [günlükleri görüntüleme ve çözümleme](#view-and-analyze-logs).
@@ -201,8 +201,8 @@ Kaynak günlüğü verilerini görüntülemeyi öğrenmek için bkz. [Azure plat
 - **Azure izleyici günlükleri**: Gelişmiş Öngörüler için [ağ güvenlik grubu Analizi](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) çözümünü kullanabilirsiniz. Bu çözüm, bir sanal makinedeki ağ arabiriminin MAC adresine göre trafiğe izin veren veya reddeden NSG kuralları için görselleştirmeler sağlar.
 - **Azure depolama hesabı**: veriler, dosyadaki bir PT1H.jsyazılır. Şunu bulabilirsiniz:
-  - Aşağıdaki yolda olay günlüğü:`insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
-  - Aşağıdaki yolda kural sayacı günlüğü:`insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Aşağıdaki yolda olay günlüğü: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Aşağıdaki yolda kural sayacı günlüğü: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

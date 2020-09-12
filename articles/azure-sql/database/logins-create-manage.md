@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 8408025478e2776423b0d1f10cc70828e408f87e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 891d5907ee8c964ebe7e281f6298205712ce1186
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290101"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441179"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics 'e veritabanı erişimi verme
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Bu makalede şunları öğreneceksiniz:
 
-- Kullanıcıların yönetim görevleri gerçekleştirmesini ve bu veritabanlarında depolanan verilere erişmesini sağlamak için Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı) yapılandırma seçenekleri.
+- Kullanıcıların yönetim görevleri gerçekleştirmesini ve bu veritabanlarında depolanan verilere erişmesini sağlamak için Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) yapılandırma seçenekleri.
 - İlk olarak yeni bir sunucu oluşturulduktan sonra erişim ve yetkilendirme yapılandırması.
 - Ana veritabanına ve Kullanıcı hesaplarına oturum açma bilgileri ve Kullanıcı hesapları ekleme ve ardından bu hesaplara yönetici izinleri verme.
 - Kullanıcı veritabanlarına, oturum açmalar veya dahil edilen kullanıcı hesaplarıyla ilişkili kullanıcı hesapları ekleme.
@@ -34,7 +34,7 @@ Bu makalede şunları öğreneceksiniz:
 > [!IMPORTANT]
 > Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE ' deki veritabanları, bu makalenin geri kalanında veritabanı olarak ve sunucu, Azure SQL veritabanı ve Azure SYNAPSE için veritabanlarını yöneten [sunucuya](logical-servers.md) başvurmaktadır.
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
+## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 
 [**Kimlik doğrulama**](security-overview.md#authentication) , kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Kullanıcı bir kullanıcı hesabı kullanarak bir veritabanına bağlanır.
 Bir Kullanıcı bir veritabanına bağlanmaya çalıştığında, bir kullanıcı hesabı ve kimlik doğrulama bilgileri sağlarlar. Kullanıcının kimliği, aşağıdaki iki kimlik doğrulama yönteminden birini kullanarak doğrulanır:
@@ -48,8 +48,8 @@ Bir Kullanıcı bir veritabanına bağlanmaya çalıştığında, bir kullanıc�
 
 **Oturum açmalar ve kullanıcılar**: bir veritabanındaki bir kullanıcı hesabı, ana veritabanında depolanan bir oturum ile ilişkilendirilebilir veya ayrı bir veritabanında depolanan bir Kullanıcı adı olabilir.
 
-- **Oturum açma** , ana veritabanında bir veya daha fazla veritabanında bulunan bir kullanıcı hesabının bağlanacağı bireysel bir hesaptır. Oturum açma ile, Kullanıcı hesabı için kimlik bilgisi bilgileri oturum açmayla birlikte depolanır.
-- **Kullanıcı hesabı** , herhangi bir veritabanında bir oturum açma ile bağlantılı olan, ancak olması gereken tek bir hesaptır. Bir oturum açmayla bağlantılı olmayan bir kullanıcı hesabı ile, kimlik bilgisi bilgileri kullanıcı hesabıyla birlikte depolanır.
+- **Oturum açma** , ana veritabanında bir veya daha fazla veritabanında bulunan bir kullanıcı hesabının bağlanacağı bireysel bir hesaptır. Oturum açma hesabında, kullanıcı hesabının kimlik bilgileri oturum açma hesabıyla depolanır.
+- **Kullanıcı hesabı** , herhangi bir veritabanında bir oturum açma ile bağlantılı olan, ancak olması gereken tek bir hesaptır. Oturum açmaya bağlantılı olmayan bir kullanıcı hesabında kimlik bilgileri kullanıcı hesabında depolanır.
 
 Veri erişimi ve çeşitli eylemleri gerçekleştirme [**yetkilendirmesi**](security-overview.md#authorization) , veritabanı rolleri ve açık izinler kullanılarak yönetilir. Yetkilendirme, bir kullanıcıya atanan izinleri ifade eder ve kullanıcının ne yapmasına izin verileceğini belirler. Yetkilendirme, Kullanıcı hesabınızın veritabanı [rolü üyelikleri](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) ve [nesne düzeyi izinleri](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)tarafından denetlenir. En iyi uygulama olarak, kullanıcılarınıza gerekli olan en düşük ayrıcalıkları tanımanız gerekir.
 
@@ -94,7 +94,7 @@ Bu noktada, sunucunuz veya yönetilen örneğiniz yalnızca tek bir SQL oturum a
   - `dbmanager` `loginmanager` Alter role deyimini kullanarak veritabanında, role veya her ikisine de Kullanıcı hesabını ekleyin `master` (Azure SYNAPSE [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) için [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) deyimini kullanın).
 
   > [!NOTE]
-  > `dbmanager`ve `loginmanager` rolleri, SQL yönetilen örnek dağıtımlarıyla ilgili **değildir** .
+  > `dbmanager` ve `loginmanager` rolleri, SQL yönetilen örnek dağıtımlarıyla ilgili **değildir** .
 
   Azure SQL veritabanı için bu [özel ana veritabanı rollerinin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) üyeleri veritabanları oluşturma ve yönetme veya oturum açma işlemleri oluşturma ve Yönetme yetkisine sahiptir. Rolün üyesi olan bir kullanıcı tarafından oluşturulan veritabanlarında `dbmanager` , üye `db_owner` sabit veritabanı rolüne eşlenir ve bu veritabanını oturum açıp `dbo` Kullanıcı hesabını kullanarak yönetebilir. Bu rollerin, ana veritabanı dışında açık izinleri yoktur.
 

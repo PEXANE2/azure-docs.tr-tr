@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 785b42ab963c3784e63cd00eb0baa62b20952a8a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196099"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441111"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Kopyalama Etkinliği performansı ve ayarlama kılavuzu
 
@@ -32,7 +32,7 @@ Azure Data Factory kopyalama etkinliği, birinci sınıf güvenli, güvenilir ve
 
 Azure, kurumsal düzeyde veri depolama ve veri ambarı çözümleri kümesi sağlar ve kopyalama etkinliği, yapılandırılması ve ayarlanması kolay olan, yüksek oranda iyileştirilmiş bir veri yükleme deneyimi sunar. Yalnızca tek bir kopyalama etkinliğiyle şunları yapabilirsiniz:
 
-* **1,2 Gbps**'de **Azure SQL veri ambarı** 'na veri yükleme. Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında 1 TB 'Yi Azure SQL veri ambarı 'Na yükleme](data-factory-load-sql-data-warehouse.md)bölümüne bakın.
+* **Azure SYNAPSE Analytics** 'e **1,2 Gbps**adresinden veri yükleme. Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında 1 TB 'Yi Azure SYNAPSE Analytics 'e (eski ADıYLA SQL Data Warehouse) yükleme](data-factory-load-sql-data-warehouse.md)bölümüne bakın.
 * **1,0 Gbps** 'de **Azure Blob depolamaya** veri yükleme
 * **Azure Data Lake Store** **1,0 Gbps** 'de veri yükleme
 
@@ -183,9 +183,9 @@ Kopyalama işleminin toplam süresine göre ücretlendirildiğiniz **unutulmamal
 ## <a name="staged-copy"></a>Hazırlanmış kopya
 Bir kaynak veri deposundan bir havuz veri deposuna veri kopyaladığınızda, blob Storage 'ı geçici bir hazırlama deposu olarak kullanmayı tercih edebilirsiniz. Hazırlama, özellikle aşağıdaki durumlarda yararlı olur:
 
-1. **PolyBase aracılığıyla çeşitli veri depolarındaki VERILERI SQL veri ambarı 'na almak istiyorsunuz**. SQL veri ambarı, çok büyük miktarda veriyi SQL veri ambarı 'na yüklemek için PolyBase 'i yüksek hacimli bir mekanizma olarak kullanır. Ancak, kaynak verilerin BLOB depolama alanında olması ve ek ölçütlere uyması gerekir. BLOB depolama dışında bir veri deposundan veri yüklediğinizde, veri kopyalamayı, geçici hazırlama blob depolaması aracılığıyla etkinleştirebilirsiniz. Bu durumda Data Factory, PolyBase 'in gereksinimlerini karşıladığından emin olmak için gerekli veri dönüştürmelerini gerçekleştirir. Daha sonra SQL veri ambarı 'na veri yüklemek için PolyBase 'i kullanır. Daha ayrıntılı bilgi için bkz. [Azure SQL veri ambarı 'na veri yüklemek Için PolyBase kullanma](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse). Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında 1 TB 'Yi Azure SQL veri ambarı 'Na yükleme](data-factory-load-sql-data-warehouse.md)bölümüne bakın.
+1. **Çeşitli veri depolarından verileri PolyBase aracılığıyla Azure SYNAPSE Analytics 'e almak istiyorsunuz**. Azure SYNAPSE Analytics, Azure SYNAPSE Analytics 'e büyük miktarda veri yüklemek için yüksek performanslı bir mekanizma olarak PolyBase 'i kullanır. Ancak, kaynak verilerin BLOB depolama alanında olması ve ek ölçütlere uyması gerekir. BLOB depolama dışında bir veri deposundan veri yüklediğinizde, veri kopyalamayı, geçici hazırlama blob depolaması aracılığıyla etkinleştirebilirsiniz. Bu durumda Data Factory, PolyBase 'in gereksinimlerini karşıladığından emin olmak için gerekli veri dönüştürmelerini gerçekleştirir. Daha sonra, Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase 'i kullanır. Daha ayrıntılı bilgi için bkz. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics). Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleme](data-factory-load-sql-data-warehouse.md)bölümüne bakın.
 2. **Bazen bir karma veri hareketini (yani, şirket içi veri deposu ile bulut veri deposu arasında kopyalamak için) yavaş bir ağ bağlantısı üzerinden gerçekleştirme işlemi biraz zaman alır**. Performansı artırmak için Şirket içindeki verileri sıkıştırarak verileri bulutta hazırlama veri deposuna taşımak daha az zaman alır. Daha sonra, hedef veri deposuna yüklemeden önce hazırlama deposundaki verileri açabilir.
-3. **ŞIRKET BT ilkeleri nedeniyle, güvenlik duvarınızdaki bağlantı noktası 80 ve bağlantı noktası 443 dışındaki bağlantı noktalarını açmak**istemezsiniz. Örneğin, şirket içi bir veri deposundan verileri bir Azure SQL veritabanı havuzuna veya Azure SQL veri ambarı havuzuna kopyaladığınızda, hem Windows Güvenlik Duvarı hem de kurumsal güvenlik duvarınız için bağlantı noktası 1433 ' de giden TCP iletişimini etkinleştirmeniz gerekir. Bu senaryoda, bağlantı noktası 443 ' de HTTP veya HTTPS üzerinden bir BLOB depolama hazırlama örneğine ilk olarak veri kopyalamak için ağ geçidinin avantajlarından yararlanın. Daha sonra, blob Storage hazırlama işleminden verileri SQL veritabanı veya SQL veri ambarı 'na yükleyin. Bu akışta 1433 numaralı bağlantı noktasını etkinleştirmeniz gerekmez.
+3. **ŞIRKET BT ilkeleri nedeniyle, güvenlik duvarınızdaki bağlantı noktası 80 ve bağlantı noktası 443 dışındaki bağlantı noktalarını açmak**istemezsiniz. Örneğin, şirket içi bir veri deposundan verileri bir Azure SQL veritabanı havuzuna veya bir Azure SYNAPSE Analytics havuzuna kopyaladığınızda, bağlantı noktası 1433 üzerinde giden TCP iletişimini hem Windows Güvenlik Duvarı hem de kurumsal güvenlik duvarı için etkinleştirmeniz gerekir. Bu senaryoda, bağlantı noktası 443 ' de HTTP veya HTTPS üzerinden bir BLOB depolama hazırlama örneğine ilk olarak veri kopyalamak için ağ geçidinin avantajlarından yararlanın. Daha sonra, blob Storage hazırlama işleminden verileri SQL veritabanı veya Azure SYNAPSE Analytics 'e yükleyin. Bu akışta 1433 numaralı bağlantı noktasını etkinleştirmeniz gerekmez.
 
 ### <a name="how-staged-copy-works"></a>Aşamalı kopya nasıl çalışacaktır?
 Hazırlama özelliğini etkinleştirdiğinizde, önce veriler kaynak veri deposundan hazırlama veri deposuna kopyalanır (kendinizinkini getirin). Ardından, veriler hazırlama veri deposundan havuz veri deposuna kopyalanır. Data Factory, sizin için iki aşamalı akışı otomatik olarak yönetir. Data Factory, veri taşıma işlemi tamamlandıktan sonra hazırlama depolamadan geçici verileri de temizler.
@@ -207,10 +207,10 @@ Hedef veri deposuna yüklemeden önce verilerin blob depolamada hazırlanıp haz
 
 | Özellik | Açıklama | Varsayılan değer | Gerekli |
 | --- | --- | --- | --- |
-| **Enablehazırlama** |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |False |Hayır |
-| **linkedServiceName** |Bir [Azurestorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) veya [Azurestokıgesas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) bağlı hizmetinin adını belirtin ve bu, geçici hazırlama deposu olarak kullandığınız depolamanın örneğine başvurur. <br/><br/> PolyBase aracılığıyla SQL veri ambarı 'na veri yüklemek için paylaşılan erişim imzasıyla depolama kullanamazsınız. Diğer tüm senaryolarda kullanabilirsiniz. |YOK |Evet, **Enablehazırlama** true olarak ayarlandığında |
-| **Yolun** |Hazırlanan verileri içermesini istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. <br/><br/> Yalnızca bir paylaşılan erişim imzasıyla depolama kullanırsanız veya geçici verilerin belirli bir konumda olmasını istiyorsanız bir yol belirtin. |YOK |Hayır |
-| **enableCompression** |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |False |Hayır |
+| **Enablehazırlama** |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |Yanlış |No |
+| **linkedServiceName** |Bir [Azurestorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) veya [Azurestokıgesas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) bağlı hizmetinin adını belirtin ve bu, geçici hazırlama deposu olarak kullandığınız depolamanın örneğine başvurur. <br/><br/> PolyBase aracılığıyla Azure SYNAPSE Analytics 'e veri yüklemek için paylaşılan erişim imzasıyla depolama kullanamazsınız. Diğer tüm senaryolarda kullanabilirsiniz. |Yok |Evet, **Enablehazırlama** true olarak ayarlandığında |
+| **Yolun** |Hazırlanan verileri içermesini istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. <br/><br/> Yalnızca bir paylaşılan erişim imzasıyla depolama kullanırsanız veya geçici verilerin belirli bir konumda olmasını istiyorsanız bir yol belirtin. |Yok |No |
+| **enableCompression** |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |Yanlış |No |
 
 Aşağıda, önceki tabloda açıklanan özelliklerle birlikte kopyalama etkinliğinin örnek bir tanımı verilmiştir:
 
@@ -262,7 +262,7 @@ Kopyalama etkinliğiyle Data Factory hizmetinizin performansını ayarlamak içi
      * [Bulut veri taşıma birimleri](#cloud-data-movement-units)
      * [Hazırlanmış kopya](#staged-copy)
      * [Veri Yönetimi ağ geçidi ölçeklenebilirliği](data-factory-data-management-gateway-high-availability-scalability.md)
-   * [Veri Yönetimi ağ geçidi](#considerations-for-data-management-gateway)
+   * [Veri Yönetimi Ağ Geçidi](#considerations-for-data-management-gateway)
    * [Kaynak](#considerations-for-the-source)
    * [Havuz](#considerations-for-the-sink)
    * [Serileştirme ve seri durumundan çıkarma](#considerations-for-serialization-and-deserialization)
@@ -282,7 +282,7 @@ Temel alınan veri deposunun üzerinde veya üzerinde çalışan diğer iş yük
 
 Microsoft veri depoları için bkz. veri depolarına özgü [konuları izleme ve ayarlama](#performance-reference) , veri deposu performans özelliklerini anlamanıza, yanıt sürelerini en aza indirmenize ve üretilen işi en üst düzeye çıkarmaya yardımcı olma.
 
-Blob depolamadaki verileri SQL veri ambarı 'na kopyalarsanız, performansı artırmak için **PolyBase** kullanmayı düşünün. Ayrıntılar için bkz. [PolyBase 'ı kullanarak Azure SQL veri ambarı 'na veri yükleme](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) . Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında 1 TB 'Yi Azure SQL veri ambarı 'Na yükleme](data-factory-load-sql-data-warehouse.md)bölümüne bakın.
+Blob depolamadan Azure SYNAPSE Analytics 'e veri kopyalarsanız, performansı artırmak için **PolyBase** kullanmayı düşünün. Ayrıntılar için bkz. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) . Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleme](data-factory-load-sql-data-warehouse.md)bölümüne bakın.
 
 ### <a name="file-based-data-stores"></a>Dosya tabanlı veri depoları
 *(Blob Storage, Data Lake Store, Amazon S3, şirket içi dosya sistemleri ve şirket içi olarak) dahildir*
@@ -292,7 +292,7 @@ Blob depolamadaki verileri SQL veri ambarı 'na kopyalarsanız, performansı art
 * **Veri yönetimi ağ geçidinin** gerekli olduğu **Şirket içi dosya sistemi** senaryosu Için, [veri yönetimi ağ geçidine yönelik hususlar](#considerations-for-data-management-gateway) bölümüne bakın.
 
 ### <a name="relational-data-stores"></a>İlişkisel veri depoları
-*(SQL veritabanı dahildir; SQL veri ambarı; Amazon Redshift; SQL Server veritabanları; ve Oracle, MySQL, DB2, Teradata, Sybase ve PostgreSQL veritabanları, vb.)*
+*(SQL veritabanı dahildir; Azure SYNAPSE Analytics; Amazon Redshift; SQL Server veritabanları; ve Oracle, MySQL, DB2, Teradata, Sybase ve PostgreSQL veritabanları, vb.)*
 
 * **Veri düzeni**: tablo şemanız kopyalama aktarım hızını etkiler. Büyük bir satır boyutu, aynı miktarda veriyi kopyalamak için küçük satır boyutundan daha iyi bir performans sağlar. Bunun nedeni, veritabanının daha az satır içeren daha az sayıda veriyi daha verimli bir şekilde almasına neden olabilir.
 * **Sorgu veya saklı yordam**: verileri daha verimli bir şekilde getirmek Için kopyalama etkinlik kaynağında belirttiğiniz sorgu veya saklı yordamın mantığını iyileştirin.
@@ -304,7 +304,7 @@ Temel alınan veri deposunun üzerinde veya üzerinde çalışan diğer iş yük
 
 Microsoft veri depoları için, veri depolarına özgü [izleme ve ayarlama konularına](#performance-reference) bakın. Bu konular veri deposunun performans özelliklerini anlamanıza ve yanıt sürelerini en aza indirmenize ve aktarım hızını en üst düzeye çıkarmanıza yardımcı olabilir.
 
-**BLOB depolamadan** **SQL veri ambarı**'na veri kopyalıyorsanız, performansı artırmak için **PolyBase** kullanmayı düşünün. Ayrıntılar için bkz. [PolyBase 'ı kullanarak Azure SQL veri ambarı 'na veri yükleme](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) . Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında 1 TB 'Yi Azure SQL veri ambarı 'Na yükleme](data-factory-load-sql-data-warehouse.md)bölümüne bakın.
+**BLOB depolamadan** **Azure SYNAPSE Analytics**'e veri kopyalıyorsanız, performansı artırmak için **PolyBase** kullanmayı düşünün. Ayrıntılar için bkz. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) . Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleme](data-factory-load-sql-data-warehouse.md)bölümüne bakın.
 
 ### <a name="file-based-data-stores"></a>Dosya tabanlı veri depoları
 *(Blob Storage, Data Lake Store, Amazon S3, şirket içi dosya sistemleri ve şirket içi olarak) dahildir*
@@ -315,7 +315,7 @@ Microsoft veri depoları için, veri depolarına özgü [izleme ve ayarlama konu
 * **Veri yönetimi ağ geçidi**kullanımını gerektiren **Şirket içi dosya sistemleri** senaryolarında, [veri yönetimi ağ geçidine yönelik konular](#considerations-for-data-management-gateway) bölümüne bakın.
 
 ### <a name="relational-data-stores"></a>İlişkisel veri depoları
-*(SQL veritabanı, SQL veri ambarı, SQL Server veritabanları ve Oracle veritabanları dahildir)*
+*(SQL Database, Azure SYNAPSE Analytics, SQL Server veritabanları ve Oracle veritabanları dahildir)*
 
 * **Kopyalama davranışı**: **sqlsink**için ayarladığınız özelliklere bağlı olarak kopyalama etkinliği verileri hedef veritabanına farklı yollarla yazar.
   * Varsayılan olarak, veri taşıma hizmeti, en iyi performansı sağlayan ekleme moduna veri eklemek için toplu kopyalama API 'sini kullanır.
@@ -419,7 +419,7 @@ Desteklenen bazı veri depoları için performans izleme ve ayarlama başvurular
 * Azure Blob depolama: BLOB depolama için [ölçeklenebilirlik ve performans hedefleri](../../storage/blobs/scalability-targets.md) , [BLOB depolaması için performans ve ölçeklenebilirlik denetim listesi](../../storage/blobs/storage-performance-checklist.md).
 * Azure Tablo Depolama: tablo depolaması için tablo depolama ve performans [ve ölçeklenebilirlik denetim listesi](../../storage/tables/storage-performance-checklist.md) [için ölçeklenebilirlik ve performans hedefleri](../../storage/tables/scalability-targets.md) .
 * Azure SQL veritabanı: [performansı izleyebilir](../../sql-database/sql-database-single-database-monitor.md) ve veritabanı işlem BIRIMI (DTU) yüzdesini kontrol edebilirsiniz
-* Azure SQL veri ambarı: yeteneği, veri ambarı birimlerinde (DWU) ölçülür. bkz. [Azure SQL veri ambarı 'nda işlem gücünü yönetme (genel bakış)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure SYNAPSE Analytics: özelliği veri ambarı birimlerinde (DWU) ölçülür. bkz. [Azure SYNAPSE Analytics 'te işlem gücünü yönetme (genel bakış)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB: [Azure Cosmos DB performans düzeyleri](../../cosmos-db/performance-levels.md)
 * Şirket içi SQL Server: [performansı izleme ve ayarlama](https://msdn.microsoft.com/library/ms189081.aspx)
 * Şirket içi dosya sunucusu: [dosya sunucuları Için performans ayarlama](https://msdn.microsoft.com/library/dn567661.aspx)

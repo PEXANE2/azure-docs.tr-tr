@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f9b493e862ed70bbeab9ac509c79003a535366d0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116546"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433917"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeni Uygulama kayıtları deneyimi
 
@@ -32,7 +32,7 @@ Yeni deneyim tüm Azure AD B2C uygulama kayıtlarını ve Azure AD uygulama kay�
 Azure AD B2C Uygulama kayıtları deneyimi, herhangi bir Azure AD kiracısı için genel [uygulama kayıt deneyimini](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) temel alır, ancak Azure AD B2C kiracılar için tasarlanmıştır.
 
 ## <a name="whats-not-changing"></a>Ne değiştirmiyor?
-- Uygulamalarınız ve ilgili yapılandırmalar yeni deneyimde olduğu gibi bulunabilir. Uygulamaları yeniden kaydetmeniz gerekmez ve uygulamalarınızın kullanıcılarının yeniden oturum açması gerekmez. 
+- Uygulamalarınız ve ilgili yapılandırmalar yeni deneyimde olduğu gibi bulunabilir. Uygulamaları yeniden kaydetmeniz gerekmez ve uygulamalarınızın kullanıcılarının yeniden oturum açması gerekmez.
 
 > [!NOTE]
 > Daha önce oluşturduğunuz tüm uygulamalarınızı görüntülemek için **uygulama kayıtları** dikey penceresine gidin ve **tüm uygulamalar** sekmesini seçin. Bu, eski deneyimde oluşturulan uygulamaları, yeni deneyimi ve Azure AD hizmetinde oluşturulanlar görüntülenir.
@@ -43,7 +43,7 @@ Azure AD B2C Uygulama kayıtları deneyimi, herhangi bir Azure AD kiracısı iç
 
 -   **Birleştirilmiş uygulama kaydı** , bir uygulamayı, müşteriye yönelik bir uygulama veya Microsoft Graph erişmek için bir uygulama olmasına bakılmaksızın hızlı bir şekilde kaydetmenizi sağlar.
 
-- **Uç noktalar** bölmesi, OpenID Connect YAPıLANDıRMASı, SAML meta verileri, Microsoft Graph API ve [OAuth 2,0 Kullanıcı akış uç noktaları](tokens-overview.md#endpoints)dahil olmak üzere senaryonuz için ilgili uç noktaları hızlıca tanımlamanızı sağlar. 
+- **Uç noktalar** bölmesi, OpenID Connect YAPıLANDıRMASı, SAML meta verileri, Microsoft Graph API ve [OAuth 2,0 Kullanıcı akış uç noktaları](tokens-overview.md#endpoints)dahil olmak üzere senaryonuz için ilgili uç noktaları hızlıca tanımlamanızı sağlar.
 
 - API **izinleri** ve **API 'yi kullanıma** sunma daha kapsamlı kapsam, izin ve izin yönetimi sağlar. Artık bir uygulamaya MS Graph ve Azure AD Graph izinleri de atayabilirsiniz.
 
@@ -57,7 +57,7 @@ Yeni deneyimde, aşağıdaki seçeneklerden bir destek hesabı türü seçersini
 - Herhangi bir kuruluş dizinindeki (herhangi bir Azure AD dizini – Multitenant) hesaplar.
 - Herhangi bir kuruluş dizini veya herhangi bir kimlik sağlayıcısı içindeki hesaplar. Azure AD B2C kullanıcıları kimlik doğrulaması için.
 
-Farklı hesap türlerini anlamak için, oluşturma deneyiminde seçmeme **Yardım** et ' i seçin. 
+Farklı hesap türlerini anlamak için, oluşturma deneyiminde seçmeme **Yardım** et ' i seçin.
 
 Eski deneyimde uygulamalar her zaman müşteriye yönelik uygulamalar olarak oluşturulmuştur. Bu uygulamalar için, hesap türü **herhangi bir kuruluş dizininde veya herhangi bir kimlik sağlayıcısında hesaplar olarak ayarlanır. Azure AD B2C kullanıcıları kimlik doğrulaması için**.
 > [!NOTE]
@@ -68,9 +68,9 @@ Bu seçeneği, SAML hizmet sağlayıcısı olarak Azure AD B2C kullanmak için d
 ## <a name="applications-for-devops-scenarios"></a>DevOps senaryolarına yönelik uygulamalar
 Diğer hesap türlerini, kimlik deneyimi çerçevesi ilkelerini karşıya yüklemek veya kullanıcıları sağlamak için Microsoft Graph kullanma gibi DevOps senaryolarınızı yönetmek üzere bir uygulama oluşturmak için kullanabilirsiniz. [Azure AD B2C kaynaklarını yönetmek için Microsoft Graph uygulamasını nasıl kaydedeceğinizi](microsoft-graph-get-started.md)öğrenin.
 
-Bu izinlerin birçoğu Azure B2C tüketicisi kullanıcıları için uygulanmadığından, tüm Microsoft Graph izinleri göremeyebilirsiniz. [Microsoft Graph kullanarak kullanıcıları yönetme hakkında daha fazla bilgi edinin](manage-user-accounts-graph-api.md).  
+Bu izinlerin birçoğu Azure B2C tüketicisi kullanıcıları için uygulanmadığından, tüm Microsoft Graph izinleri göremeyebilirsiniz. [Microsoft Graph kullanarak kullanıcıları yönetme hakkında daha fazla bilgi edinin](manage-user-accounts-graph-api.md).
 
-## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Yönetici onayı ve offline_access + OpenID kapsamları  
+## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Yönetici onayı ve offline_access + OpenID kapsamları
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
 Azure AD B2C bir uygulamada kullanıcıları imzalayabilmesi için **OpenID** kapsamı gereklidir. **Offline_access** kapsamı, bir kullanıcı için yenileme belirteçleri vermek üzere gereklidir. Bu kapsamlar daha önce eklendi ve varsayılan olarak yönetici onayı verildi. Şimdi, oluşturma işlemi sırasında bu kapsamlar için izinleri kolayca ekleyerek, **OpenID 'ye yönetici Izni ver ve offline_access izinleri** seçeneğinin seçili olduğundan emin olabilirsiniz. Aksi takdirde, mevcut bir uygulama için **API izinleri** ayarlarında yönetici onayı ile Microsoft Graph izinleri eklenebilir.
@@ -78,11 +78,11 @@ Azure AD B2C bir uygulamada kullanıcıları imzalayabilmesi için **OpenID** ka
 [İzinler ve izin](../active-directory/develop/v2-permissions-and-consent.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformlar/kimlik doğrulaması: yanıt URL 'Leri/yeniden yönlendirme URI 'leri
-Eski deneyimde, çeşitli platform türleri Web uygulamaları/API 'ler için yanıt URL 'leri ve yerel istemciler için yeniden yönlendirme URI **'si olarak yönetilir** . "Yerel istemciler" Ayrıca "ortak istemci" olarak da bilinir ve iOS, macOS, Android ve diğer mobil ve Masaüstü uygulama türlerine yönelik uygulamalar içerir. 
+Eski deneyimde, çeşitli platform türleri Web uygulamaları/API 'ler için yanıt URL 'leri ve yerel istemciler için yeniden yönlendirme URI **'si olarak yönetilir** . "Yerel istemciler" Ayrıca "ortak istemci" olarak da bilinir ve iOS, macOS, Android ve diğer mobil ve Masaüstü uygulama türlerine yönelik uygulamalar içerir.
 
-Yeni deneyimde, yanıt URL 'Leri ve yeniden yönlendirme URI 'lerinin her ikisi de yeniden yönlendirme URI 'Leri olarak adlandırılır ve bir uygulamanın **kimlik doğrulama** bölümünde bulunabilir. Uygulama kayıtları, bir Web uygulaması veya yerel bir uygulama ile sınırlı değildir. İlgili yeniden yönlendirme URI 'Lerini kaydederek bu platform türleri için aynı uygulama kaydını kullanabilirsiniz. 
+Yeni deneyimde, yanıt URL 'Leri ve yeniden yönlendirme URI 'lerinin her ikisi de yeniden yönlendirme URI 'Leri olarak adlandırılır ve bir uygulamanın **kimlik doğrulama** bölümünde bulunabilir. Uygulama kayıtları, bir Web uygulaması veya yerel bir uygulama ile sınırlı değildir. İlgili yeniden yönlendirme URI 'Lerini kaydederek bu platform türleri için aynı uygulama kaydını kullanabilirsiniz.
 
-Yeniden yönlendirme URI 'Lerinin, Web veya public (mobil ve Masaüstü) bir uygulama türüyle ilişkilendirilmesi gerekir. [Yeniden yönlendirme URI 'Leri hakkında daha fazla bilgi](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+Yeniden yönlendirme URI 'Lerinin, Web veya public (mobil ve Masaüstü) bir uygulama türüyle ilişkilendirilmesi gerekir. [Yeniden yönlendirme URI 'Leri hakkında daha fazla bilgi](../active-directory/develop/quickstart-register-app.md#add-a-redirect-uri)
 
 <!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 

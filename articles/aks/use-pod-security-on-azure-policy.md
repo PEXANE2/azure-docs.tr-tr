@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/06/2020
 author: jluk
-ms.openlocfilehash: 18947f409ebcef570998671f9f421f8228e9692d
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: e1c5f32e8e5df69a9c4b1eeeda46caf9d8b51f6e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987367"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440885"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Azure ilkesiyle güvenli Pod (Önizleme)
 
@@ -86,9 +86,9 @@ Hem yerleşik girişimler, [Kubernetes 'in Pod güvenlik ilkesinde](https://gith
 |Köke yönelik ayrıcalık yükseltme|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Yes |
 |Kapsayıcının Kullanıcı ve grup kimliklerini kısıtlama|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes|
 |Pod birimlerine sahip bir FSGroup ayırmayı kısıtlama|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Evet-izin verilen kurallar,,, `runAsUser: mustRunAsNonRoot` `supplementalGroup: mustRunAs 1:65536` `fsGroup: mustRunAs 1:65535` `runAsGroup: mustRunAs 1:65535` .  |
-|Seccomp profili gerektirir|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | Evet, allowedProfiles * `docker/default` veya`runtime/default` |
+|Seccomp profili gerektirir|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | Evet, allowedProfiles * `docker/default` veya `runtime/default` |
 
-\*Docker/default, v 1.11 beri Kubernetes 'te kullanım dışıdır
+\* Docker/default, v 1.11 beri Kubernetes 'te kullanım dışıdır
 
 ### <a name="additional-optional-policies"></a>Ek isteğe bağlı ilkeler
 
@@ -258,7 +258,7 @@ Temel girişim 'yi kaldırmak için:
 
 Azure Ilkesi eklentisini devre dışı bırakmak için [az aks Disable-addons][az-aks-disable-addons] komutunu kullanın.
 
-```azure-cli
+```azurecli
 az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
 ```
 
@@ -285,7 +285,7 @@ Pod güvenlik ilkesi ve Azure Ilkesi arasındaki davranış değişikliklerinin 
 | İlke kapsamı | Pod güvenlik ilkeleri gösterilemez değildir | Azure Ilkesi tarafından kullanılan kısıtlama şablonları gösterilemez değildir.
 | Reddetme/denetim/mutasyon eylemi | Pod güvenlik ilkeleri yalnızca reddetme eylemlerini destekler. Mutasyon, oluşturma isteklerinde varsayılan değerlerle yapılabilir. Doğrulama, güncelleştirme istekleri sırasında yapılabilir.| Azure Ilkesi, hem denetim & reddetme eylemlerini destekler. Mutasyon henüz desteklenmiyor, ancak planlandı.
 | Pod güvenlik ilkesi uyumluluğu | Pod güvenlik ilkesi etkinleştirilmeden önce var olan yığınların uyumluluğuna ilişkin bir görünürlük yoktur. Pod güvenlik ilkeleri etkinleştirildikten sonra oluşturulan uyumlu olmayan Pod 'ler reddedilir. | Azure ilkelerini uygulamadan önce var olan uyumlu olmayan bir pod, ilke ihlallerine göre görünür. İlkeler reddetme efektiyle ayarlandıysa, Azure ilkeleri etkinleştirildikten sonra oluşturulan uyumlu olmayan Pod 'ler reddedilir.
-| Kümedeki ilkeleri görüntüleme | `kubectl get psp` | `kubectl get constrainttemplate`-Tüm ilkeler döndürülür.
+| Kümedeki ilkeleri görüntüleme | `kubectl get psp` | `kubectl get constrainttemplate` -Tüm ilkeler döndürülür.
 | Pod güvenlik ilkesi standart-ayrıcalıklı | Özellik etkinleştirilirken ayrıcalıklı bir pod güvenlik ilkesi kaynağı varsayılan olarak oluşturulur. | Ayrıcalıklı mod hiçbir kısıtlama gerektirmez, sonuç olarak herhangi bir Azure Ilke atamasına sahip değildir.
 | [Pod güvenlik ilkesi standart-taban çizgisi/varsayılan](https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline-default) | Kullanıcı bir pod güvenlik ilkesi temel kaynağı yüklüyor. | Azure Ilkesi, taban çizgisi Pod güvenlik ilkesiyle eşleşen [yerleşik bir temel girişim](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) sağlar.
 | [Pod güvenlik ilkesi standart-kısıtlı](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) | Kullanıcı, bir pod güvenlik ilkesi kısıtlanmış kaynağı yüklüyor. | Azure Ilkesi, kısıtlı Pod güvenlik ilkesiyle eşleşen [yerleşik bir kısıtlanmış girişim](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) sağlar.

@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: fff308f241a29cbf40bf2884fc412acf5942497b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f4f81f8159e5800da7dfec58c01f474cb1c0d07
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84048808"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437454"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Azure SQL veritabanı, Azure SYNAPSE Analytics, Data Factory ve Power BI SaaS analizlerini keşfet
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu öğreticide, uçtan uca bir analiz senaryosuna kılavuzluk edersiniz. Bu senaryoda, kiracı verileri üzerindeki analizler, akıllı kararlar almak için yazılım satıcılarının nasıl güçlendirin olduğunu gösterir. Her kiracı veritabanından ayıklanan verileri kullanarak, örnek Wingtip bilet SaaS uygulamasının kullanımı dahil olmak üzere, kiracı davranışına yönelik Öngörüler elde etmek için analiz kullanırsınız. Bu senaryo üç adımdan oluşur:
 
-1. Her kiracı veritabanından bir analiz deposuna, bu durumda bir SQL veri ambarı 'na **veri ayıklayın** .
+1. Her kiracı veritabanından bir analiz deposuna, bu durumda bir SQL havuzuna **veri ayıklayın** .
 2. **Ayıklanan verileri** analiz Işleme için iyileştirin.
 3. Karar verme konusunda rehberlik sağlayan yararlı Öngörüler çizmek için **Iş zekası** araçlarını kullanın.
 
@@ -45,7 +45,7 @@ SaaS uygulamaları, bulutta büyük miktarda kiracı verisi tutabilir. Bu verile
 
 Tüm veriler yalnızca bir çok kiracılı veritabanında olduğunda tüm kiracılar için verilere erişim basittir. Ancak, binlerce veritabanı üzerinde ölçeklendirmeye dağıtıldığında erişim daha karmaşıktır. Karmaşıklığın bir yolu, verileri bir analiz veritabanına veya sorgu için bir veri ambarına ayıklamaya yöneliktir.
 
-Bu öğreticide, Wingtip bilet uygulaması için uçtan uca bir analiz senaryosu sunulmaktadır. İlk olarak, [Azure Data Factory (ADF)](../../data-factory/introduction.md) , her bir kiracı veritabanından bilet satışları ve ilgili verileri ayıklamak için düzenleme aracı olarak kullanılır. Bu veriler, bir analiz deposundaki hazırlama tablolarına yüklenir. Analytics Mağazası bir SQL veritabanı ya da SQL veri ambarı olabilir. Bu öğretici, analiz deposu olarak [SQL veri ambarı](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) 'nı kullanır.
+Bu öğreticide, Wingtip bilet uygulaması için uçtan uca bir analiz senaryosu sunulmaktadır. İlk olarak, [Azure Data Factory (ADF)](../../data-factory/introduction.md) , her bir kiracı veritabanından bilet satışları ve ilgili verileri ayıklamak için düzenleme aracı olarak kullanılır. Bu veriler, bir analiz deposundaki hazırlama tablolarına yüklenir. Analytics Mağazası bir SQL veritabanı ya da SQL havuzu olabilir. Bu öğretici, analiz deposu olarak [Azure SYNAPSE Analytics 'i (eski ADıYLA SQL veri ambarı)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) kullanır.
 
 Sonra ayıklanan veriler dönüştürülür ve bir [yıldız-şema](https://www.wikipedia.org/wiki/Star_schema) tabloları kümesine yüklenir. Tablolar bir merkezi olgu tablosu ve ilgili boyut tablolarından oluşur:
 
@@ -83,11 +83,11 @@ Bu öğreticide, Bilet satış verilerine ilişkin analizler incelenmektedir. Bu
     - **$DemoScenario**  =  **1** tüm havalandırma olaylardaki olaylar için bilet satın al
 2. Komut dosyasını çalıştırmak ve tüm havalandırma noktaları için bilet satın alma geçmişi oluşturmak için **F5** tuşuna basın. 20 kiracılar ile, betik on binlerce bilet üretir ve 10 dakika veya daha uzun sürebilir.
 
-### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>SQL veri ambarı, Data Factory ve BLOB depolama dağıtma
+### <a name="deploy-azure-synapse-analytics-data-factory-and-blob-storage"></a>Azure SYNAPSE Analytics, Data Factory ve BLOB depolamayı dağıtma
 
-Wingtip bilet uygulamasında kiracının işlem verileri birçok veritabanına dağıtılır. Azure Data Factory (ADF), veri ambarına bu verilerin ayıklanma, yükleme ve dönüştürme (ELT) işlemlerini düzenlemek için kullanılır. ADF, verileri SQL veri ambarı 'na en verimli şekilde yüklemek için verileri ara blob dosyalarına ayıklar ve sonra verileri veri ambarına yüklemek için [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) 'i kullanır.
+Wingtip bilet uygulamasında kiracının işlem verileri birçok veritabanına dağıtılır. Azure Data Factory (ADF), veri ambarına bu verilerin ayıklanma, yükleme ve dönüştürme (ELT) işlemlerini düzenlemek için kullanılır. ADF 'yi Azure SYNAPSE Analytics 'e (eskiden SQL veri ambarı) en verimli şekilde yüklemek için, ADF verileri ara blob dosyalarına ayıklar ve sonra verileri veri ambarına yüklemek için [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) 'i kullanır.
 
-Bu adımda, öğreticide kullanılan ek kaynakları dağıtırsınız: _tenantanalytics_ADLı bir SQL veri ambarı, _dbtodwload- \<user\> _adlı bir Azure Data Factory ve _wingtiphazırlama \<user\> _adlı bir Azure depolama hesabı. Depolama hesabı, ayıklanan veri dosyalarını, veri ambarına yüklenmeden önce blob olarak geçici olarak saklamak için kullanılır. Bu adım Ayrıca veri ambarı şemasını dağıtır ve ELT sürecini düzenleyen ADF işlem hatlarını tanımlar.
+Bu adımda, öğreticide kullanılan ek kaynakları dağıtırsınız: _tenantanalytics_ADLı bir SQL havuzu, _ \<user\> dbtodwload_adlı bir Azure Data Factory ve _ \<user\> wingtiphazırlama_adlı bir Azure depolama hesabı. Depolama hesabı, ayıklanan veri dosyalarını, veri ambarına yüklenmeden önce blob olarak geçici olarak saklamak için kullanılır. Bu adım Ayrıca veri ambarı şemasını dağıtır ve ELT sürecini düzenleyen ADF işlem hatlarını tanımlar.
 
 1. PowerShell ıSE 'de, *. ..\Learning Modules\işletimsel Analtics\tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* ve set ' i açın:
     - **$DemoScenario**  =  **2** kiracı Analizi veri ambarı, BLOB depolama ve Veri Fabrikası dağıtma
@@ -159,7 +159,7 @@ Genel Bakış sayfasında sol paneldeki **Yazar** sekmesine geçin ve üç işle
 
 **Ardışık düzen 3-TableCopy** , değiştirilmiş veya güncelleştirilmiş satırları BELIRLEMEK Için SQL veritabanı 'nda (_rowversion_) satır sürüm numaralarını kullanır. Bu etkinlik, kaynak tablolardan satırları ayıklamak için başlangıç ve bitiş satırı sürümünü arar. Her bir kiracı veritabanında depolanan **Copytracker** tablosu, her çalıştırmada her bir kaynak tablosundan ayıklanan son satırı izler. Yeni veya değiştirilmiş satırlar veri ambarındaki ilgili hazırlama tablolarına kopyalanır: **raw_Tickets**, **raw_Customers**, **raw_Venues**ve **raw_Events**. Son olarak, son satır sürümü bir sonraki ayıklama için ilk satır sürümü olarak kullanılacak **Copytracker** tablosuna kaydedilir.
 
-Ayrıca, veri fabrikasını kaynak SQL veritabanlarına, hedef SQL veri ambarına ve ara BLOB depolama alanına bağlayan üç parametreli bağlantılı hizmet vardır. **Yazar** sekmesinde, aşağıdaki görüntüde gösterildiği gibi bağlı hizmetleri araştırmak için **Bağlantılar** ' a tıklayın:
+Ayrıca, veri fabrikasını kaynak SQL veritabanlarına, hedef SQL havuzuna ve ara blob depolamaya bağlayan üç parametreli bağlantılı hizmet vardır. **Yazar** sekmesinde, aşağıdaki görüntüde gösterildiği gibi bağlı hizmetleri araştırmak için **Bağlantılar** ' a tıklayın:
 
 ![adf_linkedservices](./media/saas-tenancy-tenant-analytics-adf/linkedservices.JPG)
 
@@ -167,7 +167,7 @@ Ayrıca, veri fabrikasını kaynak SQL veritabanlarına, hedef SQL veri ambarın
   
 ### <a name="data-warehouse-pattern-overview"></a>Veri ambarı düzenine genel bakış
 
-Azure Synapse (eskiden Azure SQL veri ambarı), kiracı verilerinde toplamayı gerçekleştirmek için analiz deposu olarak kullanılır. Bu örnekte, veri ambarına veri yüklemek için PolyBase kullanılır. Ham veriler, yıldız şema tablolarına dönüştürülmüş satırları izlemek için bir kimlik sütunu olan hazırlama tablolarına yüklenir. Aşağıdaki görüntüde yükleme deseninin gösterildiği gösterilmektedir: ![ loadingmodel](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Azure Synapse (eski adıyla SQL veri ambarı), kiracı verilerinde toplamayı gerçekleştirmek için analiz deposu olarak kullanılır. Bu örnekte, veri ambarına veri yüklemek için PolyBase kullanılır. Ham veriler, yıldız şema tablolarına dönüştürülmüş satırları izlemek için bir kimlik sütunu olan hazırlama tablolarına yüklenir. Aşağıdaki görüntüde yükleme deseninin gösterildiği gösterilmektedir: ![ loadingmodel](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 Yavaş değişen boyut (SCD) tür 1 boyut tabloları bu örnekte kullanılır. Her boyutun bir kimlik sütunu kullanılarak tanımlanmış bir vekil anahtarı vardır. En iyi uygulama olarak, tarih boyut tablosu zaman kazanmak için önceden doldurulur. Diğer boyut tabloları için, SELECT olarak bir CREATE TABLE... (CTAS) deyimleri, yedek anahtarlarla birlikte, varolan değiştirilmiş ve değiştirilmemiş satırları içeren geçici bir tablo oluşturmak için kullanılır. Bu işlem IDENTITY_INSERT = ON ile yapılır. Yeni satırlar daha sonra tabloya IDENTITY_INSERT = OFF ile eklenir. Kolayca geri alma için, mevcut boyut tablosu yeniden adlandırılır ve geçici tablo yeni boyut tablosu olacak şekilde yeniden adlandırılır. Her çalıştırmadan önce eski boyut tablosu silinir.
 

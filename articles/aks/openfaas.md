@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98b1842f81703041f419850be17c0c05a24b7c6b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631466"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440907"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS üzerinde OpenFaaS kullanma
 
 [Openfaas][open-faas] , kapsayıcıların kullanımı aracılığıyla sunucusuz işlevler oluşturmaya yönelik bir çerçevedir. Açık kaynak proje olarak, topluluk içinde büyük ölçekli benimseme kazanımıştır. Bu belge, Azure Kubernetes Service (AKS) kümesine OpenFaas yükleme ve kullanma ayrıntılarını inceleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdakiler gerekir.
 
@@ -72,7 +72,7 @@ helm upgrade openfaas --install openfaas/openfaas \
     --set serviceType=LoadBalancer
 ```
 
-Çıktı:
+Çıkış:
 
 ```output
 NAME:   openfaas
@@ -91,7 +91,8 @@ alertmanager-config  1     20s
 NOTES:
 To verify that openfaas has started, run:
 
-  kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
+```console
+kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
 OpenFaaS ağ geçidine erişmek için genel bir IP adresi oluşturulur. Bu IP adresini almak için [kubectl Get Service][kubectl-get] komutunu kullanın. IP adresinin hizmete atanması bir dakika sürebilir.
@@ -141,7 +142,7 @@ OpenFaaS işletimsel olduğuna göre, OpenFaas portalını kullanarak bir işlev
 curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 ```
 
-Çıktı:
+Çıkış:
 
 ```output
  _   _      _ _            _
@@ -208,7 +209,7 @@ Verileri veritabanına yükleyin.
 mongoimport --uri=$COSMOS -c plans < plans.json
 ```
 
-Çıktı:
+Çıkış:
 
 ```output
 2018-02-19T14:42:14.313+0000    connected to: localhost
@@ -234,7 +235,7 @@ URL: http://52.186.64.52:8080/function/cosmos-query
 curl -s http://52.186.64.52:8080/function/cosmos-query
 ```
 
-Çıktı:
+Çıkış:
 
 ```json
 [{"ID":"","Name":"two_person","FriendlyName":"","PortionSize":"","MealsPerWeek":"","Price":72,"Description":"Our basic plan, delivering 3 meals per week, which will feed 1-2 people."}]

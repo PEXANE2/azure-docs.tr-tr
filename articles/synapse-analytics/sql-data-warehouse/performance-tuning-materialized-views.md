@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ddab106e11340dd040b99d1e8abf9d93e9338ab7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956398"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441213"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Gerçekleştirilmiş görünümlerle performans ayarı
 
@@ -36,8 +36,8 @@ Standart görünümde gereksinimlerin çoğu, gerçekleştirilmiş bir görünü
 |Tanımı görüntüleme                 | SQL havuzunda depolanır.              | SQL havuzunda depolanır.
 |İçeriği görüntüleme                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında SQL havuzunda ön işleme ve depolama. Temel tablolara veri eklendikçe güncelleştirildi.
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor
-|Karmaşık sorgulardan Görünüm verilerini alma hızı     | Dığını                                         | Hızlı  
-|Ek depolama                   | Hayır                                           | Evet
+|Karmaşık sorgulardan Görünüm verilerini alma hızı     | Yavaş                                         | Hızlı  
+|Ek depolama                   | Hayır                                           | Yes
 |Syntax                          | GÖRÜNÜM OLUŞTUR                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
 
 ## <a name="benefits-of-using-materialized-views"></a>Gerçekleştirilmiş görünümleri kullanmanın avantajları
@@ -52,13 +52,13 @@ Düzgün şekilde tasarlanan gerçekleştirilmiş bir görünüm aşağıdaki av
 
 SQL havuzunda uygulanan gerçekleştirilmiş görünümler de aşağıdaki ek avantajları sağlar:
 
-Diğer veri ambarı sağlayıcılarıyla karşılaştırıldığında, Azure SQL veri ambarı 'nda uygulanan gerçekleştirilmiş görünümler de aşağıdaki ek avantajları sağlar:
+Diğer veri ambarı sağlayıcılarıyla karşılaştırıldığında, Azure SYNAPSE Analytics 'te uygulanan gerçekleştirilmiş görünümler de aşağıdaki ek avantajları sağlar:
 
 - Taban tablolardaki veri değişiklikleriyle otomatik ve zaman uyumlu veri yenileme. Kullanıcı eylemi gerekli değildir.
 - Geniş kapsamlı toplama işlevi desteği. Bkz. [Select (Transact-SQL) olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 - Sorguya özgü gerçekleştirilmiş görünüm önerisi için destek.  Bkz. [açıkla (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="common-scenarios"></a>Yaygın senaryolar  
+## <a name="common-scenarios"></a>Genel senaryolar  
 
 Gerçekleştirilmiş görünümler genellikle aşağıdaki senaryolarda kullanılır:
 

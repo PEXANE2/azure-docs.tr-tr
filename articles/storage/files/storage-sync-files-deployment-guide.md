@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 834b3b60a887dadd75e00a7a33abaff15e1a9407
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226064"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441485"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
 
 Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağıtımı Için planlamayı](storage-files-planning.md) ve [bir Azure dosya eşitleme dağıtımı planlamayı](storage-sync-files-planning.md) kesinlikle öneririz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -404,6 +404,9 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 ## <a name="create-a-server-endpoint"></a>Sunucu uç noktası oluşturma
 Sunucu uç noktası, bir sunucu birimi üzerindeki klasör gibi kayıtlı bir sunucu üzerindeki belirli bir noktayı temsil eder. Sunucu uç noktası kayıtlı bir sunucuda (bağlı bir paylaşıma değil) bir yol olmalıdır ve bulut katmanlaması kullanmak için, yolun sistem dışı bir birimde olması gerekir. Ağa bağlı depolama (NAS) desteklenmiyor.
 
+> [!NOTE]
+> Bir birimde sunucu uç noktası oluşturulduktan sonra yolu veya sürücü harfini değiştirme desteklenmez. Kayıtlı sunucunuzda son bir yol kullandığınızdan emin olun.
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Sunucu uç noktası eklemek için yeni oluşturulan eşitleme grubuna gidin ve **sunucu uç noktası Ekle**' yi seçin.
 
@@ -571,7 +574,7 @@ Ancak, zamanlamayı, uyumlu günler değerinden daha eski olan birimde kullanıl
 
 Birim başına varsayılan en fazla VSS anlık görüntüsü sayısı (64) ve bu işlem için varsayılan zamanlama, bir bilgi çalışanının, biriminizde depolayabileceği VSS anlık görüntülerine göre geri yüklenebildiği en fazla 45 gün içinde sonuçlanır.
 
-En fazla ise. 64 birim başına VSS anlık görüntüsü sizin için doğru ayar değildir, [Bu değeri bir kayıt defteri anahtarı aracılığıyla değiştirebilirsiniz](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
+Max. 64 VSS anlık görüntüsü, birim başına doğru ayar değilse, [Bu değeri bir kayıt defteri anahtarı aracılığıyla değiştirebilirsiniz](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Yeni sınırın etkin olması için, daha önce etkinleştirildiği her birimde önceki sürüm uyumluluğunu etkinleştirmek üzere cmdlet 'i yeniden çalıştırmanız gerekir. Bu, en fazla birim başına en fazla VSS anlık görüntüsü sayısını hesaba koymak için-zorlama bayrağını kullanın. Bu, yeni hesaplanan gün sayısına neden olur. Bu değişikliğin yalnızca yeni katmanlı dosyalar üzerinde etkili olacağını ve yapmış olabileceğiniz VSS zamanlamasıyla ilgili tüm özelleştirmelerin üzerine yazılmasını lütfen unutmayın.
 
 <a id="proactive-recall"></a>

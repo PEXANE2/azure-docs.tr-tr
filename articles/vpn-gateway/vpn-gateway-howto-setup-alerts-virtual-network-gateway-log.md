@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: Tanılama kaynak günlüğü olaylarında uyarı yapılandırma'
 description: Azure Izleyici Log Analytics kullanarak Azure VPN Gateway kaynak günlüğü olaylarına göre uyarı ayarlamayı öğrenin.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/12/2019
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: f8c688adda3924d0cea3c9b57d2d24ed3b3b1e68
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e2451796cb99f57501ed74aba1dc7a3077b51881
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033182"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441621"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>VPN Gateway kaynak günlüğü olayları üzerinde uyarı ayarlama
 
@@ -39,39 +39,39 @@ Aşağıdaki örnek adımlarda, siteden siteye VPN tünelini içeren bir bağlan
 
 2. **Log Analytics** sayfasında **Oluştur** ' u seçin.
 
-   ![Oluştur düğmesi içeren Log Analytics sayfası](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Seçim")
+   ![Oluştur düğmesi içeren Log Analytics sayfası](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Şunu seçin:")
 
 3. **Yeni oluştur** ' u seçin ve ayrıntıları girin.
 
-   ![Log Analytics çalışma alanı oluşturma ayrıntıları](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Seçim")
+   ![Log Analytics çalışma alanı oluşturma ayrıntıları](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Şunu seçin:")
 
 4. **Monitor**  >  **Tanılama ayarlarını** izle dikey penceresinde VPN ağ geçidinizi bulun.
 
-   ![Tanılama ayarlarında VPN ağ geçidini bulma seçimleri](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Seçim")
+   ![Tanılama ayarlarında VPN ağ geçidini bulma seçimleri](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Şunu seçin:")
 
 5. Tanılamayı açmak için, ağ geçidine çift tıklayın ve ardından **tanılamayı aç**' ı seçin.
 
-   ![Tanılamayı açmak için seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Seçim")
+   ![Tanılamayı açmak için seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Şunu seçin:")
 
 6. Ayrıntıları girin ve Log Analytics ve **Tunneldiagnosticlog** ' a **Gönder** ' in seçildiğinden emin olun. Adım 3 ' te oluşturduğunuz Log Analytics çalışma alanını seçin.
 
-   ![Seçili onay kutuları](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Seçim")
+   ![Seçili onay kutuları](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Şunu seçin:")
 
    > [!NOTE]
    > Verilerin başlangıçta gösterilmesi birkaç saat sürebilir.
 
 7. Sanal ağ geçidi kaynağına genel bakış ' a gidin ve **izleme** sekmesinden **Uyarılar** ' ı seçin. Sonra yeni bir uyarı kuralı oluşturun veya var olan bir uyarı kuralını düzenleyin.
 
-   ![Yeni bir uyarı kuralı oluşturmaya yönelik seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Seçim")
+   ![Yeni bir uyarı kuralı oluşturmaya yönelik seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Şunu seçin:")
 
-   ![Noktadan siteye](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Seçim")
+   ![Noktadan siteye](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Şunu seçin:")
 8. Log Analytics çalışma alanını ve kaynağı seçin.
 
-   ![Çalışma alanı ve kaynak seçimleri](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Seçim")
+   ![Çalışma alanı ve kaynak seçimleri](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Şunu seçin:")
 
 9. **Koşul Ekle**altında, sinyal mantığı olarak **özel günlük araması** ' nı seçin.
 
-   ![Özel günlük araması için seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Seçim")
+   ![Özel günlük araması için seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Şunu seçin:")
 
 10. **Arama sorgusu** metin kutusuna aşağıdaki sorguyu girin.  <> ve TimeGenerated değerlerini uygun şekilde değiştirin.
 
@@ -88,15 +88,15 @@ Aşağıdaki örnek adımlarda, siteden siteye VPN tünelini içeren bir bağlan
 
     Eşik değerini 0 olarak ayarlayın ve **bitti**' yi seçin.
 
-    ![Bir sorgu girme ve eşik seçme](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Seçim")
+    ![Bir sorgu girme ve eşik seçme](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Şunu seçin:")
 
 11. **Kural oluştur** sayfasında, **eylem grupları** bölümünde **Yeni oluştur** ' u seçin. Ayrıntıları girin ve **Tamam**' ı seçin.
 
-    ![Yeni bir eylem grubu için Ayrıntılar](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Seçim")
+    ![Yeni bir eylem grubu için Ayrıntılar](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Şunu seçin:")
 
 12. **Kural oluştur** sayfasında, **eylem grubu adı** bölümünde doğru adın göründüğünden emin olmak için, ayrıntıları **Özelleştir** ' in ayrıntılarını girin. Kuralı oluşturmak için **Uyarı kuralı oluştur** ' u seçin.
 
-    ![Kural oluşturmaya yönelik seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Seçim")
+    ![Kural oluşturmaya yönelik seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Şunu seçin:")
 
 ## <a name="set-up-alerts-by-using-powershell"></a><a name="setuppowershell"></a>PowerShell kullanarak uyarıları ayarlama
 

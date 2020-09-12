@@ -12,12 +12,12 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 71219abaf6493d6dce03f05ad0e61fb71bff1745
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eebde4470ba2635a5287cb3b0103fa49e0e243e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207728"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441009"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>SQL havuzunuzu Gen2 'ye yükseltme
 
@@ -30,9 +30,9 @@ Microsoft, bir SQL havuzu çalıştırmanın giriş düzeyi maliyetini azaltmaya
 
 Aşağıdaki tabloda, alt Gen2 işlem katmanı kullanılabilir olduğunda ve otomatik yükseltmeler başlatıldığında bölge tarafından özetlenmektedir. Tarihler değişebilir. Bölgenizin ne zaman kullanılabilir hale geldiğini görmek için yeniden denetleyin.
 
-\*bölge için belirli bir zamanlamanın Şu anda kullanılamadığını belirtir.
+\* bölge için belirli bir zamanlamanın Şu anda kullanılamadığını belirtir.
 
-| **Geli** | **Düşük Gen2 kullanılabilir** | **Otomatik yükseltmeler başlar** |
+| **Bölge** | **Düşük Gen2 kullanılabilir** | **Otomatik yükseltmeler başlar** |
 |:--- |:--- |:--- |
 | Doğu Kanada |1 Haziran 2020 |1 Temmuz 2020 |
 | Doğu Çin |\* |\* |
@@ -133,4 +133,4 @@ Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-gene
 - [Bir geri yükleme noktasından yerinde yükseltme ve yükseltme](upgrade-to-latest-generation.md)
 - [Kullanıcı tanımlı geri yükleme noktası oluşturma](sql-data-warehouse-restore-points.md)
 - [Gen2 'e geri yüklemeyi öğrenin](sql-data-warehouse-restore-active-paused-dw.md)
-- [Bir SQL veri ambarı destek isteği açın](https://go.microsoft.com/fwlink/?linkid=857950)
+- [Bir Azure SYNAPSE Analytics destek isteği açın](https://go.microsoft.com/fwlink/?linkid=857950)

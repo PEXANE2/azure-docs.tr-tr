@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612393"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433950"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Güvenlik uyarılarını ve önerilerini dışarı aktarma
 
@@ -36,12 +36,12 @@ Bu araçları kullanarak şunları yapabilirsiniz:
 |Yayın durumu:|Genel olarak kullanılabilir|
 |Fiyat|Ücretsiz katmanı|
 |Gerekli roller ve izinler:|Kaynak grubunda (veya **sahip**) **Güvenlik Yöneticisi rolü**<br>Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Çin gov (Olay Hub 'ına), diğer gov|
 |||
 
 
 
-## <a name="setting-up-a-continuous-export"></a>Sürekli dışarı aktarma ayarlama
+## <a name="set-up-a-continuous-export"></a>Sürekli dışarı aktarma ayarlama
 
 Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs sürekli bir dışarı aktarma işlemi yapılıp yapılmayacağını belirtir.
 
@@ -55,12 +55,24 @@ Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs s�
 
 1. Dışarı aktarmak istediğiniz veri türünü seçin ve her bir türdeki filtrelerden birini seçin (örneğin, yalnızca yüksek önem derecesine sahip uyarıları dışarı aktarın).
 
+1. İsteğe bağlı olarak, seçiminiz bu dört önerinden birini içeriyorsa, güvenlik açığı değerlendirmesi bulgularını bunlarla birlikte dahil edebilirsiniz:
+
+    - SQL veritabanlarındaki güvenlik açığı değerlendirmesi bulguları düzeltildi
+    - Makinelerdeki SQL sunucularınızda bulunan güvenlik açığı değerlendirmesi (Önizleme) düzeltilmelidir.
+    - Azure Container Registry görüntülerdeki güvenlik açıkları düzeltilmelidir (Qualys tarafından desteklenir)
+    - Sanal makinelerinizdeki güvenlik açıkları düzeltilmelidir
+
+    Bu önerilerin bulgularını dahil etmek için **güvenlik bulgularını dahil et** seçeneğini etkinleştirin.
+
+    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et" :::
+
+
 1. "Dışarı aktarma hedefi" alanından, verilerin kaydedilmesini istediğiniz yeri seçin. Veriler farklı bir abonelikteki hedefe kaydedilebilir (örneğin, merkezi bir olay hub 'ı örneği veya merkezi bir Log Analytics çalışma alanı).
 
 1. **Kaydet**’i seçin.
 
 
-## <a name="setting-up-continuous-export-via-the-rest-api"></a>REST API aracılığıyla sürekli dışarı aktarmayı ayarlama
+## <a name="set-up-continuous-export-via-the-rest-api"></a>REST API aracılığıyla sürekli dışarı aktarmayı ayarlama
 
 Sürekli dışa aktarma özelliği Azure Güvenlik Merkezi tahmin [API 'si](https://docs.microsoft.com/rest/api/securitycenter/automations)aracılığıyla yapılandırılabilir ve yönetilebilir. Aşağıdaki olası hedeflerin herhangi birine dışarı aktarmak için bu API 'yi kullanarak akışlarını otomatikleştirin oluşturun veya güncelleştirin:
 
@@ -83,7 +95,7 @@ API, Azure portal kullanılamayan ek işlevler sağlar, örneğin:
 
 
 
-## <a name="configuring-siem-integration-via-azure-event-hubs"></a>SıEM tümleştirmesini Azure Event Hubs aracılığıyla yapılandırma
+## <a name="configure-siem-integration-via-azure-event-hubs"></a>Azure Event Hubs ile SıEM tümleştirmesini yapılandırma
 
 Azure Event Hubs, tüm akış verilerini kullanan program aracılığıyla için harika bir çözümdür. Azure Güvenlik Merkezi uyarıları ve önerileri için, üçüncü taraf SıEM ile tümleştirme için tercih edilen bir yoldur.
 

@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249287"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439784"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Bulutta yeni DBA: geçişten sonra Azure SQL veritabanı 'nı yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -101,12 +101,14 @@ SQL veritabanı, güvenlik ve gizliliği çok önemli bir şekilde alır. SQL ve
 
 SQL veritabanı 'nda sunulan iki kimlik doğrulama yöntemi vardır:
 
-- [Azure Active Directory Kimlik Doğrulaması](authentication-aad-overview.md)
+- [Azure Active Directory kimlik doğrulaması](authentication-aad-overview.md)
 - [SQL kimlik doğrulaması](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-Geleneksel Windows kimlik doğrulaması desteklenmez. Azure Active Directory (Azure AD) merkezi bir kimlik ve erişim yönetimi hizmetidir. Bu sayesinde, kuruluşunuzdaki tüm personele çok rahat bir oturum açma erişimi (SSO) sağlayabilirsiniz. Bu anlamı, kimlik bilgilerinin daha basit kimlik doğrulama için tüm Azure hizmetleri genelinde paylaşılmasıdır. Azure AD, Azure [Multi-Factor Authentication](authentication-mfa-ssms-overview.md) destekler ve [bırkaç tıklamayla](../../active-directory/hybrid/how-to-connect-install-express.md) Azure ad, Windows Server Active Directory ile tümleştirilebilir. SQL kimlik doğrulaması, tam olarak onu zaten kullandığınız gibi çalışmaktadır. Bir Kullanıcı adı/parola sağlarsınız ve belirli bir sunucudaki tüm veritabanları için kullanıcıların kimliğini doğrulayabilirsiniz. Bu Ayrıca, SQL veritabanı ve SQL veri ambarı 'nın bir Azure AD etki alanı içinde Multi-Factor Authentication ve Konuk Kullanıcı hesapları sunmasına olanak tanır. Şirket içi bir Active Directory zaten varsa, dizininizi Azure 'a genişletmek için dizini Azure Active Directory federasyona bağlayabilirsiniz.
+Geleneksel Windows kimlik doğrulaması desteklenmez. Azure Active Directory (Azure AD) merkezi bir kimlik ve erişim yönetimi hizmetidir. Bu sayesinde, kuruluşunuzdaki tüm personele çok rahat bir oturum açma erişimi (SSO) sağlayabilirsiniz. Bu anlamı, kimlik bilgilerinin daha basit kimlik doğrulama için tüm Azure hizmetleri genelinde paylaşılmasıdır. 
 
-|**Eğer...**|**SQL veritabanı/SQL veri ambarı**|
+Azure AD, Azure [Multi-Factor Authentication](authentication-mfa-ssms-overview.md) destekler ve [bırkaç tıklamayla](../../active-directory/hybrid/how-to-connect-install-express.md) Azure ad, Windows Server Active Directory ile tümleştirilebilir. SQL kimlik doğrulaması, tam olarak onu zaten kullandığınız gibi çalışmaktadır. Bir Kullanıcı adı/parola sağlarsınız ve belirli bir sunucudaki tüm veritabanları için kullanıcıların kimliğini doğrulayabilirsiniz. Bu ayrıca SQL veritabanı ve Azure SYNAPSE analizlerinin (eski adıyla SQL veri ambarı) bir Azure AD etki alanı içinde Multi-Factor Authentication ve Konuk Kullanıcı hesapları sunmasına olanak tanır. Şirket içi bir Active Directory zaten varsa, dizininizi Azure 'a genişletmek için dizini Azure Active Directory federasyona bağlayabilirsiniz.
+
+|**Eğer...**|**SQL veritabanı/Azure SYNAPSE Analizi**|
 |---|---|
 |Azure 'da Azure Active Directory (Azure AD) kullanmayı tercih etme|[SQL kimlik doğrulaması](security-overview.md) kullan|
 |Şirket içi SQL Server kullanılan AD|[Ad 'Yi Azure AD Ile Federasyonun](../../active-directory/hybrid/whatis-hybrid-identity.md)ve Azure AD kimlik doğrulamasını kullanın. Bununla birlikte, çoklu oturum açma kullanabilirsiniz.|
@@ -114,7 +116,7 @@ Geleneksel Windows kimlik doğrulaması desteklenmez. Azure Active Directory (Az
 |Microsoft hesaplarından (live.com, outlook.com) veya diğer etki alanlarından (gmail.com) Konuk hesapları vardır|Azure AD [B2B Işbirliğinin](../../active-directory/b2b/what-is-b2b.md)kullanıldığı SQL veritabanı/veri ambarı 'NDA [Azure AD evrensel kimlik doğrulaması](authentication-mfa-ssms-overview.md) kullanın.|
 |, Federasyon etki alanındaki Azure AD kimlik bilgilerinizi kullanarak Windows 'da oturum açar|[Azure AD Tümleşik kimlik doğrulaması](authentication-aad-configure.md)kullanın.|
 |Azure ile federe olmayan bir etki alanındaki kimlik bilgilerini kullanarak Windows 'da oturum açar|[Azure AD Tümleşik kimlik doğrulaması](authentication-aad-configure.md)kullanın.|
-|SQL veritabanı veya SQL veri ambarı 'na bağlanması gereken orta katman hizmetlere sahip|[Azure AD Tümleşik kimlik doğrulaması](authentication-aad-configure.md)kullanın.|
+|SQL veritabanı veya Azure SYNAPSE Analytics 'e bağlanması gereken orta katman hizmetlere sahip|[Azure AD Tümleşik kimlik doğrulaması](authentication-aad-configure.md)kullanın.|
 |||
 
 ### <a name="how-do-i-limit-or-control-connectivity-access-to-my-database"></a>Veritabanına bağlantı erişimini Nasıl yaparım? limiti veya denetimi
@@ -122,7 +124,7 @@ Geleneksel Windows kimlik doğrulaması desteklenmez. Azure Active Directory (Az
 Elden çıkarmada, uygulamanız için en uygun bağlantı kuruluşunu sağlamak için kullanabileceğiniz birden fazla teknik vardır.
 
 - Güvenlik Duvarı Kuralları
-- VNet hizmet uç noktaları
+- Sanal Ağ Hizmet Uç Noktaları
 - Ayrılmış IP’ler
 
 #### <a name="firewall"></a>Güvenlik Duvarı
@@ -137,7 +139,7 @@ Varsayılan olarak, veritabanınız "Azure hizmetlerinin sunucuya erişmesine Iz
 
 Hizmet uç noktaları (o), kritik Azure kaynaklarınızı yalnızca Azure 'daki özel sanal ağınıza sunmanıza olanak tanır. Bunu yaparak kaynaklarınıza genel erişimi ortadan kaldırabilirsiniz. Azure ile sanal ağınız arasındaki trafik Azure omurga ağında kalır. Zorunlu olmadan Zorlamalı tünel paket yönlendirmesi edinirsiniz. Sanal ağınız, internet trafiğini kuruluşunuza ve Azure hizmet trafiğine aynı rotaya göre devam etmeye zorlar. Hizmet uç noktaları ile, paketlerin sanal ağınızdan Azure omurga ağı üzerindeki hizmetine doğrudan akışı nedeniyle bunu iyileştirebilirsiniz.
 
-![Sanal Ağ hizmet uç noktaları](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
+![VNet hizmet uç noktaları](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Ayrılmış IP’ler
 
@@ -170,7 +172,7 @@ Hassas verilerinizi uçuş sırasında ve bekleyen bir şekilde korumak için SQ
 |**Özellikler**|**Always Encrypted**|**Saydam Veri Şifrelemesi**|
 |---|---|---|
 |**Şifreleme kapsamı**|Uçtan uca|Rest verileri|
-|**Sunucu, hassas verilere erişebilir**|Hayır|Evet, çünkü şifreleme bekleyen veriler için|
+|**Sunucu, hassas verilere erişebilir**|No|Evet, çünkü şifreleme bekleyen veriler için|
 |**İzin verilen T-SQL işlemleri**|Eşitlik karşılaştırması|Tüm T-SQL Surface alanı kullanılabilir|
 |**Özelliği kullanmak için gereken uygulama değişiklikleri**|En az|Çok küçük|
 |**Şifreleme ayrıntı düzeyi**|Sütun düzeyi|Veritabanı düzeyinde Kimlik Bilgileri belirleme seçeneği|
@@ -221,7 +223,7 @@ ExpressRoute Ayrıca, ek ücret ödemeden satın aldığınız bant genişliği 
 
 - [Express Route 'a giriş](../../expressroute/expressroute-introduction.md)
 - [Önkoşullar](../../expressroute/expressroute-prerequisites.md)
-- [İş akışları](../../expressroute/expressroute-workflows.md)
+- [İş Akışları](../../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL veritabanı, herhangi bir düzenleme gereksinimleriyle uyumludur ve kendi Kuruluşumun uyumluluğuyla nasıl yardımcı olur?
 

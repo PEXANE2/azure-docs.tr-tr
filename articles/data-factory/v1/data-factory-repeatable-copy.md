@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707302"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441638"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory tekrarlanabilir kopya
 
@@ -104,7 +104,7 @@ Kopyalama etkinliği, bu dilim için karşılık gelen verileri silmek üzere Te
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Mekanizma 2: Daeıdentifiercolumnname kullanma
 > [!IMPORTANT]
-> Şu anda, Azure SQL veri ambarı için Feeıdentifiercolumnname desteklenmez. 
+> Şu anda, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için Feeıdentifiercolumnname desteklenmez. 
 
 Yinelenebilirlik elde etmek için ikinci mekanizma, hedef tabloda ayrılmış bir sütuna (bir Dacıdentifiercolumnname) sahip olur. Bu sütun, kaynak ve hedefin eşitlenmiş kalmasını sağlamak için Azure Data Factory tarafından kullanılır. Bu yaklaşım, hedef SQL tablo şemasını değiştirme veya tanımlama konusunda esneklik olduğunda işe yarar. 
 
@@ -151,5 +151,5 @@ Mekanizmaya benzer şekilde, kopyalama etkinliği hedef SQL tablosundan verilen 
 Tüm JSON örnekleri için aşağıdaki bağlayıcı makalelerini gözden geçirin: 
 
 - [Azure SQL Veritabanı](data-factory-azure-sql-connector.md)
-- [Azure SQL Veri Ambarı](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

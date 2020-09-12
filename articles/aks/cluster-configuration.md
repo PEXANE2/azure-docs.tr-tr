@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: daffcbf0a2ceb6f28cbb539906d4c6387840aa20
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752090"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433458"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
@@ -218,7 +218,7 @@ az extension update --name aks-preview
 ### <a name="use-gen2-vms-on-new-clusters-preview"></a>Yeni kümeler üzerinde Gen2 VM 'Leri kullanma (Önizleme)
 Kümeyi, küme oluşturulduğunda seçili SKU için Gen2 VM 'Leri kullanacak şekilde yapılandırın. `--aks-custom-headers`Yeni bir kümede VM oluşturma olarak Gen2 ayarlamak için bayrağını kullanın.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -227,7 +227,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D
 ### <a name="use-gen2-vms-on-existing-clusters-preview"></a>Mevcut kümeler üzerinde Gen2 VM 'Leri kullanma (Önizleme)
 Yeni bir düğüm havuzunu Gen2 VM 'Leri kullanacak şekilde yapılandırın. `--aks-custom-headers`Gen2 'i bu düğüm havuzu IÇIN VM oluşturma olarak ayarlamak için bayrağını kullanın.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -276,7 +276,7 @@ az extension update --name aks-preview
 
 Kümeyi, küme oluşturulduğunda kısa ömürlü işletim sistemi disklerini kullanacak şekilde yapılandırın. `--aks-custom-headers`Yeni küme için işletim sistemi disk türü olarak kısa ömürlü işletim sistemi ayarlamak için bayrağını kullanın.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 
@@ -285,7 +285,7 @@ Ağa bağlı işletim sistemi disklerini kullanarak düzenli bir küme oluşturm
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Mevcut kümelerde kısa ömürlü işletim sistemi kullan (Önizleme)
 Kısa ömürlü işletim sistemi disklerini kullanmak için yeni bir düğüm havuzu yapılandırın. `--aks-custom-headers`Bu düğüm havuzu için işletim sistemi disk türü olarak işletim sistemi disk türü olarak ayarlamak için bayrağını kullanın.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292785"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441502"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Azure’dan şirket içi ortama yeniden koruma
 
@@ -46,6 +46,9 @@ ms.locfileid: "87292785"
 
 - Bir kurtarma planını yeniden koruyorduysanız, korunan her makinenin değerlerini sağlamanız gerekir.
 - VM 'Ler çoklu VM tutarlılığı için bir çoğaltma grubuna aitse, yalnızca bir kurtarma planı kullanılarak yeniden korunabilir. Bir çoğaltma grubundaki VM 'Lerin aynı ana hedef sunucuyu kullanması gerekir
+
+>[!NOTE]
+>Yeniden koruma sırasında Azure 'dan Erstwhile kaynağına gönderilen veri miktarı, tüm korunan makineler için 0 bayt ve disk boyutu toplamı arasında herhangi bir şey olabilir ve hesaplanamaz.
 
 ### <a name="before-you-start"></a>Başlamadan önce
 

@@ -11,16 +11,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 81ec96d244c36c0328134b415465d632ef6c1dd5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d0f040961bfb72082f8c5accb86999d489a93de5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267930"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401393"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services dinamik şifreleme ile içeriğinizi koruyun
 
@@ -156,6 +156,10 @@ Kesintisiz Akış Protokolü aşağıdaki kapsayıcı biçimlerini ve şifreleme
 |---|---|---|
 |fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
 |fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
+|fMP4 | PFF 1,1 (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> PFF 1,1 desteği, Common Encryption erken "Silverlight" sürümünü uygulayan akıllı TV (Samsung, LG) için geriye dönük olarak uyumlu bir çözüm olarak sunulmaktadır. Yalnızca PlayReady şifrelemesi 'nin pff 1,1 sürümünü destekleyen 2009-2015 arasında sevk edilen legacey Samsung veya LG akıllı TV desteği için gereken pff biçiminin kullanılması önerilir. 
 
 ### <a name="browsers"></a>Browsers (Tarayıcılar)
 

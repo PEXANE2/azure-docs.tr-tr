@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/25/2020
+ms.date: 09/03/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068735"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436859"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -35,7 +35,7 @@ Standart talepler listesi için bkz. [erişim belirteci](access-tokens.md) ve [i
 
 **Tablo 1: uygulanabilirlik**
 
-| Hesap türü               | v 1.0 belirteçleri | v 2.0 belirteçleri |
+| Hesap Türü               | v 1.0 belirteçleri | v 2.0 belirteçleri |
 |----------------------------|-------------|-------------|
 | Kişisel Microsoft hesabı | Yok         | Desteklenir   |
 | Azure AD hesabı           | Desteklenir   | Desteklenir   |
@@ -93,7 +93,7 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
 
 **Tablo 4: isteğe bağlı talepler yapılandırma değerleri**
 
-| Özellik adı  | Ek özellik adı | Açıklama |
+| Özellik adı  | Ek özellik adı | Description |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Hem SAML hem de JWT yanıtları için ve v 1.0 ve v 2.0 belirteçleri için kullanılabilir. |
 |                | `include_externally_authenticated_upn`  | , Kaynak kiracısında depolanan Konuk UPN 'sini içerir. Örneğin, `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -130,13 +130,13 @@ Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız içi
 
 **Kullanıcı arabirimi aracılığıyla isteğe bağlı talepler yapılandırma:**
 
-[![Kullanıcı arabirimini kullanarak isteğe bağlı talepler yapılandırmayı gösterir](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
+[![Kullanıcı arabiriminde isteğe bağlı talepler yapılandırma](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. **Yönet** bölümünde **belirteç yapılandırması**' nı seçin.
 1. **İsteğe bağlı talep Ekle**' yi seçin.
 1. Yapılandırmak istediğiniz belirteç türünü seçin.
 1. Eklenecek isteğe bağlı talepler ' i seçin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 **Uygulama bildirimi aracılığıyla isteğe bağlı talepler Yapılandırılıyor:**
 
@@ -182,7 +182,7 @@ Bir uygulama tarafından istenen isteğe bağlı talepleri bildirir. Bir uygulam
 
 **Tablo 5: Optionalclaim türü özellikleri**
 
-| Ad          | Tür                       | Açıklama                                           |
+| Ad          | Tür                       | Description                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Koleksiyon (OptionalClaim) | JWT KIMLIK belirtecinde döndürülen isteğe bağlı talepler.     |
 | `accessToken` | Koleksiyon (OptionalClaim) | JWT erişim belirtecinde döndürülen isteğe bağlı talepler. |
@@ -195,7 +195,7 @@ Belirli bir talep tarafından destekleniyorsa, Additionalclaim 'nin davranışı
 
 **Tablo 6: OptionalClaim türü özellikleri**
 
-| Ad                   | Tür                    | Açıklama                                                                                                                                                                                                                                                                                                   |
+| Ad                   | Tür                    | Description                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | İsteğe bağlı talebin adı.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Talebin kaynağı (Dizin nesnesi). Uzantı özelliklerinden önceden tanımlı talepler ve Kullanıcı tanımlı talepler vardır. Kaynak değeri null ise, talep önceden tanımlanmış isteğe bağlı bir talep olur. Kaynak değeri kullanıcı ise, ad özelliğindeki değer kullanıcı nesnesinden uzantı özelliğidir. |
@@ -238,7 +238,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin
 1. **Yönet** bölümünde, **belirteç yapılandırması** ' nı seçin.
 1. **Grup Ekle talebi** seçin
-1. Döndürülecek Grup türlerini seçin (**tüm gruplar**, **SecurityGroup**veya **directoryrole**). **Tüm gruplar** seçeneği **SecurityGroup**, **directoryrole**ve **distributionlist** içerir
+1. Döndürülecek Grup türlerini (**güvenlik grupları**veya **Dizin rolleri**, **tüm gruplar**ve/veya **uygulamaya atanan gruplar**) seçin. **Uygulama seçeneğine atanan gruplar** yalnızca uygulamaya atanan grupları içerir. **Tüm gruplar** seçeneği **SecurityGroup**, **directoryrole**ve **distributionlist**içerir, ancak **uygulamaya atanan grupları**içermez. 
 1. İsteğe bağlı: gruplar talep değerini, şirket içi grup özniteliklerini içerecek şekilde değiştirmek veya talep türünü bir rol olarak değiştirmek için belirli belirteç türü özelliklerini seçin
 1. **Kaydet**’i seçin
 
@@ -256,6 +256,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
    - "All" (Bu seçenek SecurityGroup, DirectoryRole ve DistributionList içerir)
    - "SecurityGroup"
    - "DirectoryRole"
+   - "ApplicationGroup" (Bu seçenek yalnızca uygulamaya atanan grupları içerir)
 
    Örneğin:
 
@@ -307,7 +308,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 
     **Kullanıcı arabirimi yapılandırması:**
 
-    [![Kullanıcı arabirimini kullanarak isteğe bağlı talepler yapılandırmayı gösterir](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
+    [![İsteğe bağlı talepleri yapılandırma](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
 
     **Uygulama bildirim girdisi:**
 
@@ -328,7 +329,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 
     **Kullanıcı arabirimi yapılandırması:**
 
-    [![Kullanıcı arabirimini kullanarak isteğe bağlı talepler yapılandırmayı gösterir](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
+    [![Bildirimde isteğe bağlı talepler](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
 
     **Uygulama bildirim girdisi:**
 
@@ -394,11 +395,11 @@ Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML bel
 
 1. **İsteğe bağlı talep Ekle**' yi seçin, **SAML** belirteci türünü seçin, talepler listesinden **Extn. sktypeınfo kimliğini** seçin (yalnızca sktypeınfo adlı bir Azure AD Kullanıcı nesnesi oluşturduysanız geçerlidir) ve ardından **Ekle**' yi seçin.
 
-    [![Kullanıcı arabirimini kullanarak isteğe bağlı talepler yapılandırmayı gösterir](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
+    [![SAML belirteci için isteğe bağlı talepler](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **Bildirim yapılandırması:**
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı bulun ve seçin.

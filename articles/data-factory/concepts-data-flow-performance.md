@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212043"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434240"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -126,7 +126,7 @@ Veri akışları, sanal çekirdek-saat ' de fiyatlandırılır ve bu, küme boyu
 
 ### <a name="time-to-live"></a>Yaşam süresi
 
-Varsayılan olarak, her veri akışı etkinliği IR yapılandırmasını temel alan yeni bir küme alır. Küme başlangıç saati birkaç dakika sürer ve veri işleme tamamlanana kadar başlayamaz. İşlem hatlarınız birden çok **sıralı** veri akışı içeriyorsa, yaşam SÜRESI (TTL) değerini etkinleştirebilirsiniz. Canlı değer için bir süre belirtmek, yürütme tamamlandıktan sonra belirli bir süre için kümeyi canlı tutar. TTL süresi boyunca yeni bir iş IR kullanmaya başlarsa, var olan kümeyi yeniden kullanacaktır ve başlangıç zamanı dakikalar içinde değil saniye içinde olur. İkinci iş tamamlandıktan sonra, küme TTL saati için de canlı kalır.
+Varsayılan olarak, her veri akışı etkinliği IR yapılandırmasını temel alan yeni bir küme alır. Küme başlangıç saati birkaç dakika sürer ve veri işleme tamamlanana kadar başlayamaz. İşlem hatlarınız birden çok **sıralı** veri akışı içeriyorsa, yaşam SÜRESI (TTL) değerini etkinleştirebilirsiniz. Canlı değer için bir süre belirtmek, yürütme tamamlandıktan sonra belirli bir süre için kümeyi canlı tutar. TTL süresi boyunca yeni bir iş IR kullanmaya başlarsa, mevcut kümeyi yeniden kullanacaktır ve başlangıç zamanı büyük ölçüde azalır. İkinci iş tamamlandıktan sonra, küme TTL saati için de canlı kalır.
 
 Tek seferde tek bir küme üzerinde yalnızca bir iş çalışabilir. Kullanılabilir bir küme varsa, ancak iki veri akışı başladıysanız, yalnızca bir tane canlı kümeyi kullanacaktır. İkinci iş kendi yalıtılmış kümesini kullanacaktır.
 

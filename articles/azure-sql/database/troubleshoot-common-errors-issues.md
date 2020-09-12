@@ -10,12 +10,12 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: e1a018b06b7ee7230612d2ee6a582214a817547b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4a1cfcbf110ab375a0fb357c1856fd0567a1c57a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985233"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459428"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile bağlantı sorunlarını ve diğer hataları giderme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ Azure altyapısının SQL Veritabanı hizmetinde ağır iş yükleri ortaya çı
 
 ### <a name="list-of-transient-fault-error-codes"></a>Geçici hata hata kodları listesi
 
-| Hata kodu | Severity | Açıklama |
+| Hata kodu | Önem Derecesi | Açıklama |
 | ---:| ---:|:--- |
 | 4060 |16 |Oturum açma tarafından istenen "%. &#x2a;ls" veritabanı açılamıyor. Oturum açılamadı. Daha fazla bilgi için bkz. [hatalar 4000-4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |Hizmet, isteğinizi işlerken bir hatayla karşılaştı. Lütfen tekrar deneyin. Hata kodu% d.<br/><br/>Yazılım veya donanım yükseltmeleri, donanım hataları veya diğer yük devretme sorunları nedeniyle bu hatayı alırsınız. 40197 hatası iletisi içinde gömülü hata kodu (% d), hata veya yük devretme türü hakkında ek bilgiler sağlar. Hata kodlarının bazı örnekleri 40020 40197, 40143, 40166 ve 40540 hata koduna katıştırılır.<br/><br/>Yeniden bağlanma, sizi veritabanınızın sağlıklı bir kopyasına otomatik olarak bağlar. Uygulamanız hata 40197 ' i yakalamalı, sorun giderme için ileti içinde katıştırılmış hata kodunu (% d) günlüğe kaydedin ve kaynaklar kullanılabilir olana kadar SQL veritabanı 'na yeniden bağlanmayı deneyin ve bağlantınız yeniden oluşturulur. Daha fazla bilgi için bkz. [geçici hatalar](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
@@ -119,7 +119,7 @@ Genellikle, hizmet Yöneticisi oturum açma kimlik bilgilerini eklemek için aş
 4. SQL oturum açma Kullanıcı adı yoksa, aşağıdaki adımları izleyerek oluşturun:
 
    1. SSMS 'de **güvenlik** ' e çift tıklayarak genişletin.
-   2. **Oturumlar**’a sağ tıklayıp **Yeni oturum açma**’yı seçin.
+   2. **Oturum açmalar**' a sağ tıklayın ve ardından **yeni oturum açma**' yı seçin.
    3. Oluşturulan betikte yer tutucuları olan aşağıdaki SQL sorgusunu düzenleyin ve çalıştırın:
 
    ```sql
@@ -128,10 +128,10 @@ Genellikle, hizmet Yöneticisi oturum açma kimlik bilgilerini eklemek için aş
    GO
    ```
 
-5. **Veritabanı**’na çift tıklayın.
+5. **Veritabanı**' na çift tıklayın.
 6. Kullanıcı iznini vermek istediğiniz veritabanını seçin.
-7. **Güvenlik**’e çift tıklayın.
-8. **Kullanıcılar**’a sağ tıklayıp **Yeni Kullanıcı**’yı seçin.
+7. **Güvenlik**' e çift tıklayın.
+8. **Kullanıcılar**' a sağ tıklayın ve ardından **Yeni Kullanıcı**' yı seçin.
 9. Oluşturulan betikte yer tutucuları olan aşağıdaki SQL sorgusunu düzenleyin ve çalıştırın:
 
    ```sql
@@ -194,13 +194,13 @@ Bu sorunu geçici olarak çözmek için aşağıdaki yöntemlerden birini deneyi
 2. Baş engelleyicisinin **giriş arabelleğini** belirleme.
 3. Baş engelleyici sorgusunu ayarlayın.
 
-   Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+   Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 Veritabanı, adresleme ve uzun süre çalışan sorgulara rağmen sürekli olarak sınırına ulaşırsa, daha fazla kaynak [sürümü](https://azure.microsoft.com/pricing/details/sql-database/)olan bir sürüme yükseltmeyi göz önünde bulundurun.
 
 Dinamik yönetim görünümleri hakkında daha fazla bilgi için bkz. [sistem dinamik yönetim görünümleri](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
 
-Veritabanı limitleri hakkında daha fazla bilgi için bkz. [sunucular Için SQL veritabanı kaynak sınırları](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server).
+Veritabanı limitleri hakkında daha fazla bilgi için bkz.  [sunucular Için SQL veritabanı kaynak sınırları](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server).
 
 ### <a name="error-10929-resource-id-1"></a>Hata 10929: kaynak KIMLIĞI: 1
 
@@ -261,7 +261,7 @@ Bu hatayla sürekli olarak karşılaşırsanız, bu adımları izleyerek sorunu 
 
 Ayrıca, sorgularınızı toplu olarak da düşünün. Toplu işleme hakkında bilgi için bkz. [SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
 
-Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Hata 40551: çok sayıda TEMPDB kullanımı nedeniyle oturum sonlandırıldı
 
@@ -292,11 +292,11 @@ Toplu işlem veya birden çok daha küçük işleme bölme uygulayarak hemen üz
 
 Bu sorunu geçici olarak çözmek için sorguyu iyileştirmeden çalışın.
 
-Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>Ek kaynak idare hata iletileri tablosu
 
-| Hata kodu | Severity | Açıklama |
+| Hata kodu | Önem Derecesi | Açıklama |
 | ---:| ---:|:--- |
 | 10928 |20 |Kaynak KIMLIĞI:% d. Veritabanı için% s sınırı% d ve bu sınıra ulaşıldı. Daha fazla bilgi için bkz. [tek ve havuza alınmış veritabanları Için SQL veritabanı kaynak sınırları](resource-limits-logical-server.md).<br/><br/>Kaynak KIMLIĞI, sınıra ulaşan kaynağı gösterir. Çalışan iş parçacıkları için kaynak KIMLIĞI = 1. Oturumlar için kaynak KIMLIĞI = 2.<br/><br/>Bu hata ve nasıl çözüleceği hakkında daha fazla bilgi için bkz.: <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). |
 | 10929 |20 |Kaynak KIMLIĞI:% d. % S en düşük garanti% d, maksimum sınır% d ve veritabanı için geçerli kullanım% d. Ancak, sunucu şu anda bu veritabanı için% d değerinden büyük istekleri desteklemeye yönelik çok meşgul. Kaynak KIMLIĞI, sınıra ulaşan kaynağı gösterir. Çalışan iş parçacıkları için kaynak KIMLIĞI = 1. Oturumlar için kaynak KIMLIĞI = 2. Daha fazla bilgi için bkz. <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). <br/>Aksi takdirde, lütfen daha sonra yeniden deneyin. |
@@ -311,11 +311,11 @@ Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel ç
 
 Aşağıdaki hatalar elastik havuzlar oluşturma ve kullanmayla ilgilidir:
 
-| Hata kodu | Severity | Açıklama | Düzeltici eylem |
+| Hata kodu | Önem Derecesi | Açıklama | Düzeltici eylem |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Elastik havuz, depolama sınırına ulaştı. Elastik havuzun depolama alanı kullanımı (% d) MB/s değerini aşamaz. Elastik havuzun depolama sınırına ulaşıldığında veritabanına veri yazmaya çalışılıyor. Kaynak limitleri hakkında bilgi için bkz.: <br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md). <br/> |Depolama sınırını artırmak, elastik havuzdaki ayrı veritabanları tarafından kullanılan depolamayı azaltmak veya elastik havuzdan veritabanlarını kaldırmak için mümkünse, depolama alanı sayısını ve/veya depolama alanını esnek havuza eklemeyi düşünün. Elastik havuz ölçekleme için bkz. [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).|
 | 10929 | 16 |% S en düşük garanti% d, maksimum sınır% d ve veritabanı için geçerli kullanım% d. Ancak, sunucu şu anda bu veritabanı için% d değerinden büyük istekleri desteklemeye yönelik çok meşgul. Kaynak limitleri hakkında bilgi için bkz.: <br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md). <br/> Aksi takdirde, lütfen daha sonra yeniden deneyin. Veritabanı başına DTU/sanal çekirdek en az; Veritabanı başına DTU/sanal çekirdek maks. Elastik havuzdaki tüm veritabanları genelinde eş zamanlı çalışan (istek) toplam sayısı havuz sınırını aşmaya çalıştı. |Çalışan sınırını artırmak veya elastik havuzdan veritabanlarını kaldırmak için mümkünse, elastik havuzun DTU 'ları veya sanal çekirdekleri artırmayı düşünün. |
-| 40844 | 16 |'% Ls ' sunucusundaki '% ls ' veritabanı, elastik havuzdaki bir '% ls ' sürüm veritabanıdır ve sürekli bir kopyalama ilişkisine sahip olamaz.  |YOK |
+| 40844 | 16 |'% Ls ' sunucusundaki '% ls ' veritabanı, elastik havuzdaki bir '% ls ' sürüm veritabanıdır ve sürekli bir kopyalama ilişkisine sahip olamaz.  |Yok |
 | 40857 | 16 |Sunucu: '% ls ', elastik havuz adı: '% ls ' için elastik havuz bulunamadı. Belirtilen elastik havuz belirtilen sunucuda yok. | Geçerli bir elastik havuz adı sağlayın. |
 | 40858 | 16 |'% Ls ' esnek havuzu sunucuda zaten var: '% ls '. Belirtilen elastik havuz belirtilen sunucuda zaten var. | Yeni elastik havuz adı sağlayın. |
 | 40859 | 16 |Elastik havuz, '% ls ' hizmet katmanını desteklemiyor. Belirtilen hizmet katmanı elastik havuz sağlama için desteklenmiyor. |Varsayılan hizmet katmanını kullanmak için doğru sürümü sağlayın veya hizmet katmanını boş bırakın. |
@@ -356,7 +356,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Özel durum sorgu sorunları tarafından tetiklendiğinde, aşağıdakine benzer bir çağrı yığını görürsünüz ( **SqlCommand** sınıfının başvurusunu unutmayın). Bu durumda, [sorgularınızı ayarlayın](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Özel durum sorgu sorunları tarafından tetiklendiğinde, aşağıdakine benzer bir çağrı yığını görürsünüz ( **SqlCommand** sınıfının başvurusunu unutmayın). Bu durumda, [sorgularınızı ayarlayın](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()

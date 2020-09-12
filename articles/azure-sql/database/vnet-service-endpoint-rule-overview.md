@@ -11,20 +11,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 76a31b10c15f2dff3d6d9304dcff6d0fb489ea7f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 827d66b51aa2080c4fb10209439d7781ddf787a7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210386"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436934"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*Sanal ağ kuralları* , veritabanlarınızı ve [Azure SQL veritabanı](sql-database-paas-overview.md) 'ndaki elastik havuzlarınızın ve [Azure SYNAPSE](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ' deki veritabanları için sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir. Bu makalede, Azure SQL veritabanı ve SQL veri ambarı 'nda veritabanınıza iletişimin güvenli bir şekilde yapılmasına olanak tanımak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenektir.
+*Sanal ağ kuralları* , veritabanlarınızı ve [Azure SQL veritabanı](sql-database-paas-overview.md) 'ndaki elastik havuzlarınızın ve [Azure SYNAPSE](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ' deki veritabanları için sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir. Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) ile veritabanınızın iletişimine güvenli bir şekilde sağlamak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenek olduğu açıklanmaktadır.
 
 > [!NOTE]
-> Bu makale hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için geçerlidir. Basitlik için, ' Database ' terimi, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına başvurur. Benzer şekilde, ' Server ' öğesine yapılan tüm başvurular, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i barındıran [MANTıKSAL SQL Server](logical-servers.md) 'a başvurmaktadır.
+> Bu makale hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics için geçerlidir. Basitlik için, ' Database ' terimi, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına başvurur. Benzer şekilde, ' Server ' öğesine yapılan tüm başvurular, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i barındıran [MANTıKSAL SQL Server](logical-servers.md) 'a başvurmaktadır.
 
 Bir sanal ağ kuralı oluşturmak için öncelikle kuralın başvurması için bir [sanal ağ hizmet uç noktası][vm-virtual-network-service-endpoints-overview-649d] olması gerekir.
 
@@ -104,7 +104,7 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>VNet hizmet uç noktalarını Azure depolama ile kullanmanın etkileri
 
-Azure Depolama da, Azure Depolama hesabınızın bağlantılarını sınırlandırmanıza imkan tanıyan aynı özelliğe sahiptir. Bu özelliği Azure SQL Veritabanı tarafından kullanılan bir Azure Depolama hesabıyla kullanmayı tercih ederseniz sorunlarla karşılaşabilirsiniz. Bundan etkilenen Azure SQL veritabanı ve Azure SQL veri ambarı özelliklerinin bir listesi ve tartışılması daha vardır.
+Azure Depolama da, Azure Depolama hesabınızın bağlantılarını sınırlandırmanıza imkan tanıyan aynı özelliğe sahiptir. Bu özelliği Azure SQL Veritabanı tarafından kullanılan bir Azure Depolama hesabıyla kullanmayı tercih ederseniz sorunlarla karşılaşabilirsiniz. Bundan etkilenen Azure SQL veritabanı ve Azure SYNAPSE Analytics özelliklerinin bir listesi ve tartışılması daha vardır.
 
 ### <a name="azure-synapse-polybase-and-copy-statement"></a>Azure SYNAPSE PolyBase ve COPY deyimleri
 

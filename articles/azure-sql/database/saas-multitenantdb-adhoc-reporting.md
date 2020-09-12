@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 7564adb6e2e596b95cd138c8e4e2190a4c1e2a57
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 098ac343885db3e267dcefb3785f5abd55d17ee2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042654"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441043"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Birden çok veritabanında geçici analiz sorguları çalıştırma (Azure SQL veritabanı)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,7 @@ SaaS uygulamaları, kuruluşunuzda merkezi olarak depolanan büyük miktarda kir
 
 Bu verilere tek bir çok kiracılı veritabanında erişim kolaydır, ancak binlerce veritabanına ölçekli olarak dağıtıldığında çok kolay değildir. Bir yaklaşım, ortak şemaya sahip dağıtılmış bir veritabanı kümesi genelinde sorgulama sağlayan [elastik sorgu](elastic-query-overview.md)kullanmaktır. Bu veritabanları, farklı kaynak grupları ve abonelikler arasında dağıtılabilir. Ancak, bir ortak oturum açmanın tüm veritabanlarından veri ayıklamak için erişimi olmalıdır. Elastik sorgu, dağıtılmış (kiracı) veritabanlarındaki tabloları veya görünümleri yansıtan dış tabloların tanımlandığı tek bir *baş* veritabanı kullanır. Bu baş veritabanına gönderilen sorgular, gerektiğinde kiracı veritabanlarına gönderilen sorgu kısımlarıyla birlikte dağıtılmış bir sorgu planı oluşturmak üzere derlenir. Elastik sorgu, tüm kiracı veritabanlarının konumunu öğrenmek için katalog veritabanındaki parça haritasını kullanır. Setup ve Query standart [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)' i kullanarak basittir ve Power BI ve Excel gibi araçlardan geçici sorgulamayı destekler.
 
-Esnek sorgu, kiracı veritabanlarına sorgu dağıtarak canlı üretim verileri hakkında anında öngörüler sağlar. Ancak, elastik sorgu potansiyel olarak çok sayıda veritabanından veri çeker, ancak sorgu gecikmesi bazen tek bir çok kiracılı veritabanına gönderilen eşdeğer sorgulardan daha yüksek olabilir. Döndürülen verileri en aza indirmek için sorguları tasarlamadığınızdan emin olun. Esnek sorgu genellikle sık kullanılan veya karmaşık analiz sorguları veya raporları oluşturma aksine, küçük miktarlarda gerçek zamanlı verileri sorgulamak için idealdir. Sorgular iyi gerçekleştirmiyor ise, sorgunun hangi kısmının uzak veritabanına itiltiğini görmek için [yürütme planına](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) bakın. Ve ne kadar veri döndürülmekte olduğunu değerlendirin. Karmaşık analitik işlem gerektiren sorgular, ayıklanan kiracı verileri analiz sorguları için iyileştirilmiş bir veritabanına kaydederek daha iyi bir şekilde sunulabilir. SQL veritabanı ve SQL veri ambarı bu tür analiz veritabanını barındırabilir.
+Esnek sorgu, kiracı veritabanlarına sorgu dağıtarak canlı üretim verileri hakkında anında öngörüler sağlar. Ancak, elastik sorgu potansiyel olarak çok sayıda veritabanından veri çeker, ancak sorgu gecikmesi bazen tek bir çok kiracılı veritabanına gönderilen eşdeğer sorgulardan daha yüksek olabilir. Döndürülen verileri en aza indirmek için sorguları tasarlamadığınızdan emin olun. Esnek sorgu genellikle sık kullanılan veya karmaşık analiz sorguları veya raporları oluşturma aksine, küçük miktarlarda gerçek zamanlı verileri sorgulamak için idealdir. Sorgular iyi gerçekleştirmiyor ise, sorgunun hangi kısmının uzak veritabanına itiltiğini görmek için [yürütme planına](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) bakın. Ve ne kadar veri döndürülmekte olduğunu değerlendirin. Karmaşık analitik işlem gerektiren sorgular, ayıklanan kiracı verileri analiz sorguları için iyileştirilmiş bir veritabanına kaydederek daha iyi bir şekilde sunulabilir. SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı), bu tür analiz veritabanını barındırabilir.
 
 Analiz için bu model, [kiracı Analizi öğreticisinde](saas-multitenantdb-tenant-analytics.md)açıklanmıştır.
 

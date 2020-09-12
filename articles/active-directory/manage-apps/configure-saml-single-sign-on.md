@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: b506d56f8aff2204c705ae8685f475654c1b1705
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 827afbf811042acb2bf01f3e863408d5a6e9732f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640489"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441927"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>SAML tabanlı çoklu oturum açmayı yapılandırma
 
@@ -44,14 +44,13 @@ Uygulama satıcısından değerleri almalısınız. Değerleri el ile girebilir 
 > [!TIP]
 > Birçok uygulama zaten Azure AD ile çalışacak şekilde önceden yapılandırılmıştır. Bu uygulamalar, Azure AD kiracınıza bir uygulama eklerken gözatabilmeniz gereken uygulamalar galerisinde listelenmiştir. [Hızlı başlangıç serisi](view-applications-portal.md) , süreç boyunca size yol gösterir. Galerideki uygulamalar için ayrıntılı, adım adım, kurulum yönergelerini bulacaksınız. Adımlara erişmek için, hızlı başlangıç serisinde açıklandığı şekilde uygulamanın SAML yapılandırması sayfasındaki bağlantıya tıklayabilir veya [SaaS uygulama yapılandırma öğreticilerinde](../saas-apps/tutorial-list.md)tüm uygulama yapılandırma öğreticilerinin listesine gidebilirsiniz.
 
-| Temel SAML yapılandırma ayarı | SP ile başlatılan | idP ile başlatılan | Açıklama |
+| Temel SAML yapılandırma ayarı | SP ile başlatılan | idP ile başlatılan | Description |
 |:--|:--|:--|:--|
 | **Tanımlayıcı (Varlık Kimliği)** | Bazı uygulamalar için gereklidir | Bazı uygulamalar için gereklidir | Uygulamayı benzersiz olarak tanımlar. Azure AD, kimliği, SAML belirtecinin hedef kitle parametresi olarak uygulamaya gönderir. Uygulamanın doğrulaması bekleniyordu. Bu değer ayrıca uygulama tarafından sağlanan SAML meta verilerinde Varlık Kimliği olarak da görünür. Şu kalıbı kullanan bir URL girin: ' https:// <subdomain> . contoso.com ' *Bu değeri, uygulama tarafından gönderilen **Authisteyner** (SAML isteği) içinde **veren** öğesi olarak bulabilirsiniz.* |
 | **Yanıt URL'si** | Gerekli | Gerekli | Uygulamanın SAML belirtecini almayı beklediği konumu belirtir. Yanıt URL'si, Onay Belgesi Tüketici Hizmeti (ACS) URL'si olarak da bilinir. Birden çok yanıt URL 'si belirtmek için ek yanıt URL 'si alanlarını kullanabilirsiniz. Örneğin, birden çok alt etki alanları için ek yanıt URL 'Leri gerekebilir. Ya da, sınama amaçları için aynı anda birden çok yanıt URL 'Si (yerel ana bilgisayar ve genel URL 'Ler) belirtebilirsiniz. |
 | **Oturum açma URL 'SI** | Gerekli | Belirtmeyin | Kullanıcı bu URL'yi açtığında hizmet sağlayıcısı kimlik doğrulaması ve oturum açma için Azure AD'ye yönlendirir. Azure AD, uygulamayı Office 365 veya Azure AD My uygulamalarından başlatmak için URL 'YI kullanır. Boş olduğunda, Kullanıcı Office 365, Azure AD My Apps veya Azure AD SSO URL 'sinden uygulamayı başlattığında Azure AD, IDP tarafından başlatılan bir oturum açma işlemi yapar.|
 | **Geçiş Durumu** | İsteğe Bağlı | İsteğe Bağlı | Uygulamaya kimlik doğrulaması tamamlandıktan sonra kullanıcının yönlendirileceği yeri belirtir. Genellikle değer uygulamanın geçerli bir URL 'sidir. Ancak, bazı uygulamalar bu alanı farklı şekilde kullanır. Daha fazla bilgi için uygulama satıcısına danışın.
 | **Oturum kapatma URL 'SI** | İsteğe Bağlı | İsteğe Bağlı | SAML oturum kapatma yanıtlarını uygulamaya geri göndermek için kullanılır.
-
 
 ## <a name="user-attributes-and-claims"></a>Kullanıcı öznitelikleri ve talepler 
 

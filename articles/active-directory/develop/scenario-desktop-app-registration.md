@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6796ac42a10d3b976b23f5af1418b1789011d61b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885166"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440958"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API 'Lerini çağıran masaüstü uygulaması: uygulama kaydı
 
@@ -28,7 +28,7 @@ Bir masaüstü uygulamasında desteklenen hesap türleri, açmak istediğiniz de
 
 ### <a name="audience-for-interactive-token-acquisition"></a>Etkileşimli belirteç alımı için hedef kitle
 
-Masaüstü uygulamanız etkileşimli kimlik doğrulaması kullanıyorsa, kullanıcıların herhangi bir [Hesap türünden](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)oturum açmasını sağlayabilirsiniz.
+Masaüstü uygulamanız etkileşimli kimlik doğrulaması kullanıyorsa, kullanıcıların herhangi bir [Hesap türünden](quickstart-register-app.md)oturum açmasını sağlayabilirsiniz.
 
 ### <a name="audience-for-desktop-app-silent-flows"></a>Masaüstü uygulaması için hedef kitle sessiz akışlar
 
@@ -41,7 +41,7 @@ Masaüstü uygulamanız etkileşimli kimlik doğrulaması kullanıyorsa, kullan�
 Bir masaüstü uygulamasında kullanılacak yeniden yönlendirme URI 'Leri, kullanmak istediğiniz akışa göre değişir.
 
 - Etkileşimli kimlik doğrulama veya cihaz kod akışı kullanıyorsanız, kullanın `https://login.microsoftonline.com/common/oauth2/nativeclient` . Bu yapılandırmayı başarmak için, uygulamanız için **kimlik doğrulama** bölümünde karşılık gelen URL 'yi seçin.
-  
+
   > [!IMPORTANT]
   > Günümüzde MSAL.NET, Windows () üzerinde çalışan masaüstü uygulamalarında varsayılan olarak başka bir yeniden yönlendirme URI 'SI kullanır `urn:ietf:wg:oauth:2.0:oob` . Gelecekte bu Varsayılanı değiştirmek istiyoruz. bu nedenle kullanmanızı öneririz `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 

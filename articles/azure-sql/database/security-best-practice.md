@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e720a95007ff06a954affe03f43f386be3bed39f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541728"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442114"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Bu belge, Azure SQL veritabanı ve Azure SQL yönetilen örneği kullanılarak y
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>Bu kılavuzda kapsanmayan dağıtım teklifleri
 
-- Azure SQL Veri Ambarı
+- Azure Synapse Analytics (eski adı SQL Veri Ambarı)
 - Azure SQL VM 'Leri (IaaS)
 - SQL Server
 
@@ -47,7 +47,7 @@ Bu kılavuza yönelik hedef kitleler, müşterilerin Azure SQL veritabanı 'nı 
 - Gizlilik ofisleri
 - Güvenlik mühendisleri
 
-### <a name="using-this-guide"></a><a id="using"></a>Bu kılavuzu kullanma
+### <a name="using-this-guide"></a><a id="using"></a> Bu kılavuzu kullanma
 
 Bu belge, mevcut [Azure SQL veritabanı güvenlik](security-overview.md) belgeleriyle bir yardımcı olarak hazırlanmıştır.
 
@@ -62,7 +62,7 @@ Aksi belirtilmedikçe, ilgili hedefi veya gereksinimi elde etmek için her böl�
 
 Burada listelenen öneriler ve en iyi uygulamalar güncelleştirilmeye devam ediyor. Bu makalenin altındaki **geri bildirim** bağlantısını kullanarak bu belge için giriş veya herhangi bir düzeltme sağlayın.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL veritabanı ve SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:
 
@@ -501,7 +501,7 @@ Azure SQL veritabanı ve SQL yönetilen örneği ile bağlantı kurarak, iyi bil
 
 **Nasıl uygulanır**:
 
-- Azure SQL veritabanı ve SQL yönetilen örneği 'ne bağlanan istemci makinelerin [Aktarım Katmanı Güvenliği (TLS)](security-overview.md#transport-layer-security-encryption-in-transit)kullandığından emin olun.
+- Azure SQL veritabanı ve SQL yönetilen örneği 'ne bağlanan istemci makinelerin  [Aktarım Katmanı Güvenliği (TLS)](security-overview.md#transport-layer-security-encryption-in-transit)kullandığından emin olun.
 
 **En iyi uygulamalar**:
 
@@ -742,7 +742,7 @@ Gizli verilere erişen ve denetim günlüklerindeki gizli verilerdeki sorguları
 
 **Nasıl uygulanır**:
 
-- SQL denetim ve veri sınıflandırması birleşimini kullanın.
+- SQL Denetimi ile Veri Sınırlandırması'nı birlikte kullanın.
   - [SQL veritabanı denetim](../../azure-sql/database/auditing-overview.md) günlüğlemenizde, erişimi gizli verilere özel olarak izleyebilirsiniz. Ayrıca, erişilen veriler ve duyarlık etiketi gibi bilgileri de görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [veri bulma ve sınıflandırma](data-discovery-and-classification-overview.md) ve [hassas verilere erişimi denetleme](data-discovery-and-classification-overview.md#audit-sensitive-data).
 
 **En iyi uygulamalar**:

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981444"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440839"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. kullanmak için en iyi uygulamalar
 
@@ -49,7 +49,7 @@ Data Lake Storage 1., bir güvenlik duvarını açma ve yalnızca Azure hizmetle
 
 ![Data Lake Storage 1. güvenlik duvarı ayarları](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage 1. güvenlik duvarı ayarları")
 
-Güvenlik duvarı etkinleştirildikten sonra yalnızca HDInsight, Data Factory, SQL veri ambarı, vb. gibi Azure hizmetlerinin Data Lake Storage 1. erişimi vardır. Azure tarafından kullanılan iç ağ adresi çevirisi nedeniyle Data Lake Storage 1. güvenlik duvarı, belirli hizmetlerin IP ile kısıtlanması ve yalnızca Azure dışındaki uç noktalar için şirket içi gibi kısıtlamalar için tasarlanmıştır.
+Güvenlik duvarı etkinleştirildikten sonra yalnızca HDInsight, Data Factory, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) gibi Azure Hizmetleri Data Lake Storage 1. erişimi vardır. Azure tarafından kullanılan iç ağ adresi çevirisi nedeniyle Data Lake Storage 1. güvenlik duvarı, belirli hizmetlerin IP ile kısıtlanması ve yalnızca Azure dışındaki uç noktalar için şirket içi gibi kısıtlamalar için tasarlanmıştır.
 
 ## <a name="performance-and-scale-considerations"></a>Performans ve ölçek konuları
 
@@ -101,10 +101,10 @@ Aşağıda Data Lake Storage 1. hesapları arasında çoğaltmayı düzenlemek i
 |  |Distcp  |Azure Data Factory  |AdlCopy  |
 |---------|---------|---------|---------|
 |**Ölçek sınırları**     | Çalışan düğümlerine göre sınırlanmış        | Maksimum bulut veri taşıma birimi ile sınırlıdır        | Analiz birimlerine göre bağlıydı        |
-|**Değişimleri kopyalamayı destekler**     |   Evet      | Hayır         | Hayır         |
-|**Yerleşik düzenleme**     |  Hayır (Oozie Airflow veya cron işleri kullanın)       | Evet        | Hayır (Azure Otomasyonu veya Windows Görev Zamanlayıcı kullanın)         |
+|**Değişimleri kopyalamayı destekler**     |   Yes      | Hayır         | Hayır         |
+|**Yerleşik düzenleme**     |  Hayır (Oozie Airflow veya cron işleri kullanın)       | Yes        | Hayır (Azure Otomasyonu veya Windows Görev Zamanlayıcı kullanın)         |
 |**Desteklenen dosya sistemleri**     | ADL,,, CSıB, S3, GS, CFS        |Çok sayıda, bkz. [Bağlayıcılar](../data-factory/connector-azure-blob-storage.md).         | Adl 'den adl 'ye, ADL 'ye (yalnızca aynı bölge)        |
-|**İşletim sistemi desteği**     |Hadoop çalıştıran herhangi bir işletim sistemi         | YOK          | Windows 10         |
+|**İşletim sistemi desteği**     |Hadoop çalıştıran herhangi bir işletim sistemi         | Yok          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>İki konum arasındaki veri taşıma için Distcp kullanma
 

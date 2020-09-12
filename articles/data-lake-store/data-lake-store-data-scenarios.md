@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 058862f2b274ef4e956c82fbcc44dec92a270d32
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193682"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441060"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 1. kullanma
 
@@ -38,7 +38,7 @@ Bu bölümde, farklı veri kaynakları ve verilerin Data Lake Storage 1. hesaba 
 ### <a name="ad-hoc-data"></a>Geçici veri
 Bu, büyük bir veri uygulamasını prototip yazmak için kullanılan daha küçük veri kümelerini temsil eder. Veri kaynağına bağlı olarak, geçici verileri almanın farklı yolları vardır.
 
-| veri kaynağı | Şunu kullanarak Al |
+| Veri Kaynağı | Şunu kullanarak Al |
 | --- | --- |
 | Yerel bilgisayar |<ul> <li>[Azure portalındaki](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[Visual Studio için Data Lake araçları kullanma](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Depolama Blobu |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy aracı](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight kümesinde çalışan DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
@@ -78,7 +78,7 @@ Web sunucusu günlük verilerini karşıya yüklemek ve aynı zamanda diğer ver
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Şirket içinde veya IaaS Hadoop kümelerinde depolanan veriler
 Büyük miktarlarda veri, var olan Hadoop kümelerinde yerel olarak,,, işlem kullanan makinelerde depolanabilir. Hadoop kümeleri şirket içi bir dağıtımda olabilir veya Azure 'da bir IaaS kümesi içinde olabilir. Bu tür verileri tek kapalı bir yaklaşım veya yinelenen bir biçimde kopyalamak için Azure Data Lake Storage 1. gereksinimler olabilir. Bunu başarmak için kullanabileceğiniz çeşitli seçenekler vardır. Aşağıda, alternatifleri ve ilişkili ticaretin bir listesi verilmiştir.
 
-| Yaklaşım | Ayrıntılar | Yararları | Önemli noktalar |
+| Yaklaşım | Ayrıntılar | Avantajlar | Dikkat edilmesi gerekenler |
 | --- | --- | --- | --- |
 | Verileri doğrudan Hadoop kümelerinden Azure Data Lake Storage 1. kopyalamak için Azure Data Factory (ADF) kullanın |[ADF, bir veri kaynağı olarak mı 'yi destekler](../data-factory/connector-hdfs.md) |ADF, ve ilk sınıf uçtan uca yönetim ve izleme için kullanıma hazır destek sağlar |Şirket içinde veya IaaS kümesinde dağıtılması için Veri Yönetimi ağ geçidi gerekir |
 | Verileri Hadoop 'dan dosya olarak dışarı aktarın. Ardından uygun mekanizmayı kullanarak dosyaları Azure Data Lake Storage 1. kopyalayın. |Kullanarak dosyaları Azure Data Lake Storage 1. kopyalayabilirsiniz: <ul><li>[Windows işletim sistemi için Azure PowerShell](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li><li>Herhangi bir Data Lake Storage 1. SDK kullanarak özel uygulama</li></ul> |Kullanmaya başlamak için hızlı. Özelleştirilmiş karşıya yüklemeler gerçekleştirebilir |Birden çok teknolojiyi kapsayan çok adımlı işlem. Yönetim ve izleme, araçların özelleştirilmiş doğası sırasında zaman içinde bir bilgi olarak büyüyecektir |
@@ -130,5 +130,5 @@ Data Lake Storage 1. depolanan verilerin görsel sunumlarını oluşturmak için
 
 ![Data Lake Storage 1. verileri görselleştirme](./media/data-lake-store-data-scenarios/visualize-data.png "Data Lake Storage 1. verileri görselleştirme")
 
-* [Data Lake Storage 1. verileri Azure SQL veri ambarı 'na taşımak için Azure Data Factory](../data-factory/copy-activity-overview.md) kullanarak başlayabilirsiniz
-* Bundan sonra, verilerin görsel temsilini oluşturmak için [Power BI Azure SQL veri ambarı ile tümleştirebilirsiniz](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) .
+* [Data Lake Storage 1. verileri Azure SYNAPSE Analytics 'e (eski ADıYLA SQL veri ambarı) taşımak için Azure Data Factory](../data-factory/copy-activity-overview.md) kullanarak başlayabilirsiniz
+* Bundan sonra, verilerin görsel temsilini oluşturmak için [Power BI Azure SYNAPSE Analytics ile tümleştirebilirsiniz](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) .

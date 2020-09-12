@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: b4cd1fefb728da797d5ff56fe833662f21630c58
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3d49422af01e38884b5d8ff871fbe84254938944
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796417"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434131"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory'de bağlı hizmetler
 
@@ -32,7 +32,7 @@ Data Factory yeni başladıysanız, bkz. genel bakış için [Azure Data Factory
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem **hattı** , birlikte bir görevi gerçekleştiren **etkinliklerin** mantıksal gruplandırmasıdır. Bir işlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, SQL Server verilerini Azure Blob depolama alanına kopyalamak için bir kopyalama etkinliği kullanabilirsiniz. Daha sonra, çıktı verileri üretmek üzere blob depolamadan veri işlemek için bir Azure HDInsight kümesinde Hive betiği çalıştıran bir Hive etkinliği kullanabilirsiniz. Son olarak, çıkış verilerini Azure SQL veri ambarı 'na kopyalamak için ikinci bir kopyalama etkinliği kullanabilirsiniz. Bu işlem, en üst kısımdaki iş zekası (BI) raporlama çözümlerini oluşturulmuştur. İşlem hatları ve etkinlikler hakkında daha fazla bilgi için bkz. Azure Data Factory işlem [hatları ve etkinlikleri](concepts-pipelines-activities.md) .
+Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem **hattı** , birlikte bir görevi gerçekleştiren **etkinliklerin** mantıksal gruplandırmasıdır. İşlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, SQL Server verilerini Azure Blob depolama alanına kopyalamak için bir kopyalama etkinliği kullanabilirsiniz. Daha sonra, çıktı verileri üretmek üzere blob depolamadan veri işlemek için bir Azure HDInsight kümesinde Hive betiği çalıştıran bir Hive etkinliği kullanabilirsiniz. Son olarak, çıkış verilerini Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalamak için ikinci bir kopyalama etkinliği kullanarak iş zekası (BI) raporlama çözümlerinin üzerine inşa edebilirsiniz. İşlem hatları ve etkinlikler hakkında daha fazla bilgi için bkz. Azure Data Factory işlem [hatları ve etkinlikleri](concepts-pipelines-activities.md) .
 
 Şimdi, veri **kümesi** , **etkinliklerde** giriş ve çıkış olarak kullanmak istediğiniz verilere işaret eden veya başvuruda bulunan verilerin adlandırılmış bir görünümüdür.
 
@@ -71,7 +71,7 @@ Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 name | Bağlı hizmetin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
 tür | Bağlı hizmetin türü. Örneğin: AzureBlobStorage (veri deposu) veya AzureBatch (işlem). TypeProperties açıklamasına bakın. | Yes |
 typeProperties | Tür özellikleri her bir veri deposu veya işlem için farklıdır. <br/><br/> Desteklenen veri deposu türleri ve bunların tür özellikleri için [bağlayıcıya genel bakış](copy-activity-overview.md#supported-data-stores-and-formats) makalesine bakın. Bir veri deposuna özgü tür özellikleri hakkında bilgi edinmek için veri deposu Bağlayıcısı makalesine gidin. <br/><br/> Desteklenen işlem türleri ve bunların tür özellikleri için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md). | Yes |
-connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel bir ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır
+connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel bir ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | No
 
 ## <a name="linked-service-example"></a>Bağlı hizmet örneği
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: cc748e8a816b944a20a12c8e8e345dca21dfaabd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043521"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437403"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Ayıklanan verileri kullanan çapraz kiracı Analizi-tek kiracılı uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Tüm veriler yalnızca bir çok kiracılı veritabanında olduğunda tüm kiracılar için verilere erişim basittir. Ancak erişim, büyük olasılıkla binlerce veritabanı üzerinde ölçekli olarak dağıtıldığında daha karmaşıktır. Karmaşıklığın bir yolu ve işlem verilerinde analiz sorgularının etkilerini en aza indirmek, verileri amacı tasarlanan bir analiz veritabanına veya veri ambarına ayıklamaya yönelik bir yoldur.
 
-Bu öğreticide, Wingtip bilet SaaS uygulaması için kapsamlı bir analiz senaryosu sunulmaktadır. İlk olarak, *elastik işler* her kiracı veritabanından veri ayıklamak ve bir analiz deposundaki hazırlama tablolarına yüklemek için kullanılır. Analytics Mağazası bir SQL veritabanı veya SQL veri ambarı olabilir. Büyük ölçekli veri ayıklama için [Azure Data Factory](../../data-factory/introduction.md) önerilir.
+Bu öğreticide, Wingtip bilet SaaS uygulaması için kapsamlı bir analiz senaryosu sunulmaktadır. İlk olarak, *elastik işler* her kiracı veritabanından veri ayıklamak ve bir analiz deposundaki hazırlama tablolarına yüklemek için kullanılır. Analytics Mağazası bir SQL veritabanı ya da SQL havuzu olabilir. Büyük ölçekli veri ayıklama için [Azure Data Factory](../../data-factory/introduction.md) önerilir.
 
 Ardından, toplanmış veriler bir [yıldız şeması](https://www.wikipedia.org/wiki/Star_schema) tabloları kümesine dönüştürülür. Tablolar bir merkezi olgu tablosu ve ilgili boyut tablolarından oluşur.  Wingtip biletleri için:
 

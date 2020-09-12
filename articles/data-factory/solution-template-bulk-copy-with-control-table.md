@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 46e81242c1fba463f547015a244650ae6e574580
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629091"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441077"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Denetim tablosu ile bir veritabanından toplu kopyalama
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Oracle Server, Netezza, Teradata veya SQL Server içindeki bir veri ambarından verileri Azure SQL veri ambarı 'na kopyalamak için, birden fazla tablodan çok büyük miktarlarda veri yüklemeniz gerekir. Genellikle verilerin her tabloda bölümlenmesi gerekir, böylece birden çok iş parçacığı içeren satırları tek bir tablodan paralel olarak yükleyebilirsiniz. Bu makalede, bu senaryolarda kullanılacak bir şablon açıklanmaktadır.
+Oracle Server, Netezza, Teradata veya SQL Server içindeki bir veri ambarından verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalamak için, birden fazla tablodan çok büyük miktarlarda veri yüklemeniz gerekir. Genellikle verilerin her tabloda bölümlenmesi gerekir, böylece birden çok iş parçacığı içeren satırları tek bir tablodan paralel olarak yükleyebilirsiniz. Bu makalede, bu senaryolarda kullanılacak bir şablon açıklanmaktadır.
 
- >! NOTE görece küçük veri hacimlerden oluşan az sayıda tablodan SQL veri ambarı 'na veri kopyalamak istiyorsanız, [Azure Data Factory veri kopyalama aracını](copy-data-tool.md)kullanmak daha etkilidir. Bu makalede açıklanan şablon, bu senaryoya yönelik gereksiniminden daha fazla.
+ >! Azure SYNAPSE Analytics 'e görece küçük veri haciminden az sayıda tablodan veri kopyalamak istiyorsanız [Azure Data Factory veri kopyalama aracını](copy-data-tool.md)kullanmak daha etkilidir. Bu makalede açıklanan şablon, bu senaryoya yönelik gereksiniminden daha fazla.
 
 ## <a name="about-this-solution-template"></a>Bu çözüm şablonu hakkında
 
@@ -44,7 +44,7 @@ Bu şablon, bir dış denetim tablosundan Kopyalanacak kaynak veritabanı bölü
 - *Data_Destination_Container* , verilerin hedef deponuzda kopyalandığı kök klasör yoludur. 
 - *Data_Destination_Directory* , verilerin hedef deponuza kopyalandığı kök altındaki Dizin yoludur. 
 
-Hedef deponuzda yolu tanımlayan son üç parametre yalnızca seçtiğiniz hedef dosya tabanlı depolama ise görünür. Hedef depo olarak "Azure SYNAPSE Analytics (eski adıyla SQL DW)" seçeneğini belirlerseniz, bu parametreler gerekli değildir. Ancak SQL veri ambarı 'ndaki tablo adları ve şema, kaynak veritabanındaki olanlarla aynı olmalıdır.
+Hedef deponuzda yolu tanımlayan son üç parametre yalnızca seçtiğiniz hedef dosya tabanlı depolama ise görünür. Hedef depo olarak "Azure SYNAPSE Analytics (eski adıyla SQL DW)" seçeneğini belirlerseniz, bu parametreler gerekli değildir. Ancak Azure SYNAPSE Analytics 'teki tablo adları ve şema, kaynak veritabanındaki olanlarla aynı olmalıdır.
 
 ## <a name="how-to-use-this-solution-template"></a>Bu çözüm şablonunu kullanma
 
@@ -94,7 +94,7 @@ Hedef deponuzda yolu tanımlayan son üç parametre yalnızca seçtiğiniz hedef
 
     ![Sonucu gözden geçirin](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Seçim Veri hedefi olarak "Azure SYNAPSE Analytics (eski adıyla SQL DW)" seçeneğini belirlediyseniz, SQL veri ambarı PolyBase 'in gerektirdiği şekilde hazırlama için Azure Blob depolama alanına bir bağlantı girmeniz gerekir. Şablon, BLOB depolama alanınızı otomatik olarak bir kapsayıcı yolu oluşturacaktır. İşlem hattı çalıştırıldıktan sonra kapsayıcının oluşturulup oluşturulmadıysa emin olun.
+9. Seçim Veri hedefi olarak "Azure SYNAPSE Analytics (eski adıyla SQL DW)" seçeneğini belirlediyseniz Azure SYNAPSE Analytics PolyBase 'in gerektirdiği şekilde hazırlama için Azure Blob depolama alanına bir bağlantı girmeniz gerekir. Şablon, BLOB depolama alanınızı otomatik olarak bir kapsayıcı yolu oluşturacaktır. İşlem hattı çalıştırıldıktan sonra kapsayıcının oluşturulup oluşturulmadıysa emin olun.
     
     ![PolyBase ayarı](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

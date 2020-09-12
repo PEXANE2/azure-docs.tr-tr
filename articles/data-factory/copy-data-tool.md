@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: a10f7c3dda4d16a264cf52f9fddcf2bf0ed93348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0ba14a05ac42e9fccc1a146ad5943716652104d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907525"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434206"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory'deki Veri Kopyalama aracı
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,7 +69,7 @@ Veri kaynağının şeması birçok durumda veri hedefi şeması ile aynı olama
 Veri Kopyalama Aracı, kaynak ve hedef mağazalar arasında sütunları eşlerken davranışınızı izler ve öğrenir. Kaynak veri deposundan bir veya birkaç sütun belirledikten ve bunları hedef şemayla eşleştirdikten sonra, Veri Kopyalama aracı her iki taraftan de seçtiğiniz sütun çiftleri için olan düzeni çözümlemeye başlar. Daha sonra, sütunların geri kalanına aynı kalıbı uygular. Bu nedenle, birkaç tıklamayla hemen sonra istediğiniz şekilde, tüm sütunların hedefle eşleştirilmiş olduğunu görürsünüz.  Veri Kopyalama aracı tarafından sunulan sütun eşleme seçiminden memnun değilseniz, yoksayabilirsiniz ve sütunları el ile eşlemek için devam edebilirsiniz. Bu arada, Veri Kopyalama Aracı, kalıbı sürekli öğrenir ve güncelleştirir ve sonunda elde etmek istediğiniz sütun eşlemesi için doğru düzene ulaşır. 
 
 > [!NOTE]
-> SQL Server veya Azure SQL veritabanından Azure SQL veri ambarı 'na veri kopyalarken, tablo hedef depoda yoksa, Veri Kopyalama araç, kaynak şemasını kullanarak tablonun otomatik olarak oluşturulmasını destekler. 
+> SQL Server veya Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalarken, tablo hedef depoda yoksa, Veri Kopyalama araç, kaynak şemayı kullanarak tablonun otomatik olarak oluşturulmasını destekler. 
 
 ## <a name="filter-data"></a>Verileri filtreleme
 Yalnızca havuz veri deposuna kopyalanması gereken verileri seçmek için kaynak verilerini filtreleyebilirsiniz. Filtreleme, havuz veri deposuna kopyalanacak verilerin hacmini azaltır ve bu nedenle kopyalama işleminin aktarım hızını geliştirir. Veri Kopyalama araç, bir ilişkisel veritabanındaki verileri SQL sorgu dilini veya bir Azure Blob klasöründeki dosyaları kullanarak filtrelemek için esnek bir yol sağlar. 

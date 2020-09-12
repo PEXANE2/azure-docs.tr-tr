@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fe847dfa24e618d2e837943309475f0a436d3a44
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486825"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459309"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Veri ambarına veri yüklemeye yönelik en iyi uygulamalar
 
@@ -144,6 +144,6 @@ Temel dış veri kaynaklarında başka bir değişiklik yapılması gerekmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- PolyBase ve Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi hakkında daha fazla bilgi edinmek için, bkz. [SQL Veri Ambarı için ELT Tasarlama](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-- Yükleme öğreticisi için, bkz. [Azure blob depolamadan verileri Azure SQL Veri Ambarı’na yüklemek için PolyBase kullanma](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- PolyBase hakkında daha fazla bilgi edinmek ve bir ayıklama, yükleme ve dönüştürme (ELT) işlemi tasarlamak için bkz. [Azure SYNAPSE Analytics Için TASARıM ELT](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- Yükleme öğreticisi için [PolyBase kullanarak Azure Blob depolama 'Dan Azure SYNAPSE Analytics 'e veri yükleyin](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 - Veri yüklerini izlemek için bkz. [DMV’leri kullanarak iş yükünüzü izleme](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

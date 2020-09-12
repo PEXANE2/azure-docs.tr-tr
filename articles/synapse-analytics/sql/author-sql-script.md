@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: ee384d6095ccbf25225a435fe8afe4281c5d62df
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 9d130c2a2db9ccead7180b6248398a84fcb34c3f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921495"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441247"
 ---
 # <a name="using-sql-script-in-azure-synapse-studio-preview"></a>Azure SYNAPSE Studio 'da SQL betiği kullanma (Önizleme)
 
@@ -25,37 +25,33 @@ SQL komut dosyasında yazma deneyimini başlatmak için birkaç yol vardır. Aş
 
 1. Geliştir menüsünde, **"+"** simgesini seçin ve **SQL betiği**' ni seçin.
 
-    ![newsqlscript](media/author-sql-script/newsqlscript.png)
+![Yeni SQL betiği](media/author-sql-script/newsqlscript.png)
 
 2. **Eylemler** menüsünden **Yeni SQL betiği**' ni seçin.
-    
-    ![newsqlscript2actions](media/author-sql-script/newsqlscript2actions.png)
+> [!div class="mx-imgBorder"]
+> ![Yeni SQL betiği 2 eylemleri](media/author-sql-script/newsqlscript2actions.png)
 
-Alternatif olarak şunları yapabilirsiniz: 
+Alternatif olarak şunları da yapabilirsiniz: 
 
-3. SQL betikleri geliştirme altındaki **Eylemler** menüsünden **içeri aktar** ' ı seçin ve yerel DEPOıNıZDAN mevcut bir SQL betiğini seçin.
- 
-    ![newsqlscript3actions](media/author-sql-script/newsqlscript3actions.png)
+3. SQL betikleri geliştirme altındaki **Eylemler** menüsünden **içeri aktar** ' ı seçin. Yerel depoınızdan mevcut bir SQL betiğini seçin.
+![Yeni SQL betiği 3 eylemleri](media/author-sql-script/newsqlscript3actions.png)
 
 ## <a name="create-your-sql-script"></a>SQL komut dosyanızı oluşturma
 
-1. **Özellik** düğmesini seçerek ve SQL betiğine atanan varsayılan adı değiştirerek SQL komutlarınız için bir ad seçin.
-  
-    ![newsqlscriptrename](media/author-sql-script/newsqlscriptrename.png)
+1. **Özellik** düğmesini seçerek ve SQL betiğine atanan varsayılan adı değiştirerek SQL komutlarınız için bir ad seçin. 
+![Yeni SQL betiği yeniden adlandırma](media/author-sql-script/newsqlscriptrename.png)
 
-2. **Bağlan** açılan menüsünde belirli SQL havuzunu veya Isteğe bağlı SQL ' i seçin. Ya da gerekirse veritabanını **kullan**' ı seçin.
- 
-    ![newsqlchoosepool](media/author-sql-script/newsqlchoosepool.png)
+2. **Bağlan** açılan menüsünde belirli SQL havuzunu veya Isteğe bağlı SQL ' i seçin. Ya da gerekirse veritabanını **kullan**' ı seçin. 
+![Yeni SQL seçme havuzu](media/author-sql-script/newsqlchoosepool.png)
 
 3. IntelliSense özelliğini kullanarak SQL komut dosyanızı yazmaya başlayın.
-
-    ![newsqlintellisense](media/author-sql-script/newsqlintellisense.png)
+![Yeni SQL IntelliSense](media/author-sql-script/newsqlintellisense.png)
 
 ## <a name="run-your-sql-script"></a>SQL komut dosyanızı çalıştırın
 
 SQL betiğinizi yürütmek için **Çalıştır** düğmesini seçin. Sonuçlar bir tabloda varsayılan olarak görüntülenir.
 
-![newsqlscriptresultstable](media/author-sql-script/newsqlscriptresultstable.png)
+![Yeni SQL betiği sonuçları tablosu](media/author-sql-script/newsqlscriptresultstable.png)
 
 ## <a name="export-your-results"></a>Sonuçlarınızı dışarı aktarın
 
@@ -63,13 +59,13 @@ SQL betiğinizi yürütmek için **Çalıştır** düğmesini seçin. Sonuçlar 
 
 Ayrıca, **grafik** düğmesini seçerek BIR grafikteki SQL betiği sonuçlarını görselleştirebilirsiniz. "Grafik türü" ve **Kategori sütununu**seçin. Resim **olarak kaydet**' i seçerek grafiği bir resme dışarı aktarabilirsiniz. 
 
-![newsqlscriptresultschart](media/author-sql-script/newsqlscriptresultschart.png)
+![Yeni SQL betiği sonuçları grafiği](media/author-sql-script/newsqlscriptresultschart.png)
 
 ## <a name="explore-data-from-a-parquet-file"></a>Bir Parquet dosyasından verileri araştırma
 
 Dosya içeriğini önizlemek için SQL betiği kullanarak bir depolama hesabındaki Parquet dosyalarını inceleyebilirsiniz.
 
-![newscriptsqlodparquet](media/author-sql-script/newscriptsqlodparquet.png)
+![Yeni betik sqlod Parquet](media/author-sql-script/newscriptsqlodparquet.png)
 
 ## <a name="sql-tables-external-tables-views"></a>SQL tabloları, dış tablolar, görünümler
 
@@ -77,12 +73,12 @@ Veriler ' in altındaki **Eylemler** menüsünü seçerek, şöyle çeşitli eyl
 
 - Yeni SQL betiği
 - En üstteki 1000 satırları seçin
-- OLUŞTURMA
+- CREATE
 - BıRAKMA ve oluşturma 
  
 SQL havuzunun düğümlerine ve isteğe bağlı SQL 'e sağ tıklayıp kullanılabilir hareketi araştırın.
  
-![newscriptdatabase](media/author-sql-script/newscriptdatabase.png)
+![Yeni betik veritabanı](media/author-sql-script/newscriptdatabase.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

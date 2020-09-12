@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 70cbb21430253dc9683cd3803f2a09ef8bb858cb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13d483507092892187bc13dd23bfa51ed516c890
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545650"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441162"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Okuma kapsayıcıları yükleyip çalıştırma (Önizleme)
 
@@ -55,6 +55,7 @@ Kapsayıcıya erişim istemek için [istek formunu](https://aka.ms/cognitivegate
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
+
 > [!WARNING]
 > Ana bilgisayar, AVX2 desteklemek için *gereklidir* . Kapsayıcı, AVX2 desteği olmadan *düzgün çalışmaz.*
 
@@ -68,14 +69,14 @@ Okuma için kapsayıcı görüntüleri kullanılabilir.
 
 | Kapsayıcı | Container Registry/depo/görüntü adı |
 |-----------|------------|
-| Okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+| Okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)Bir kapsayıcı görüntüsünü indirmek için komutunu kullanın.
 
 ### <a name="docker-pull-for-the-read-container"></a>Okuma kapsayıcısı için Docker çekme
 
 ```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0
 ```
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
@@ -186,13 +187,16 @@ Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** d
 }
 ```
 
+> [!IMPORTANT]
+> Bir yük dengeleyicinin arkasında birden çok okuma kapsayıcısı dağıtırsanız (örneğin, Docker Compose veya Kubernetes), bir dış önbelleğiniz olması gerekir. İşlem kapsayıcısı ve GET isteği kapsayıcısı aynı olamaz, çünkü bir dış önbellek sonuçları depolar ve kapsayıcılar arasında paylaşır. Önbellek ayarları hakkında daha fazla bilgi için bkz. [görüntü işleme Docker kapsayıcılarını yapılandırma](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
+
 ### <a name="synchronous-read"></a>Zaman uyumlu okuma
 
 `POST /vision/v2.0/read/core/Analyze`İşlemi eşzamanlı olarak bir görüntüyü okumak için kullanabilirsiniz. Resim tamamen okunsa ve yalnızca API bir JSON yanıtı döndürüyor. Bunun tek istisnası bir hata meydana gelir. Bir hata oluştuğunda aşağıdaki JSON döndürülür:
 
 ```json
 {
-    status: "Failed"
+    "status": "Failed"
 }
 ```
 
@@ -283,7 +287,7 @@ Bu makalede, Görüntü İşleme kapsayıcıları indirmek, yüklemek ve çalı�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Yapılandırma ayarları için [kapsayıcıları](computer-vision-resource-container-config.md) yapılandırmayı gözden geçir
-* Basılan ve el yazısı metni tanıma hakkında daha fazla bilgi edinmek için [görüntü işleme genel bakışı](Home.md) inceleyin
+* Basılan ve el yazısı metni tanıma hakkında daha fazla bilgi edinmek için [görüntü işleme genel bakışı](overview.md) inceleyin
 * Kapsayıcı tarafından desteklenen yöntemler hakkındaki ayrıntılar için [görüntü işleme API'si](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) başvurun.
 * Görüntü İşleme işlevlerle ilgili sorunları çözmek için [sık sorulan sorular (SSS)](FAQ.md) bölümüne bakın.
 * Daha fazla bilişsel [Hizmetler kapsayıcısı](../cognitive-services-container-support.md) kullanın

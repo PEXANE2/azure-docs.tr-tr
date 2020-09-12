@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs 'daki olay Işleyicisi ana bilgisayar
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27b587e6562b5ba0c9bf28a52a00a9d8e7d9201c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010469"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319512"
 ---
 # <a name="event-processor-host"></a>Olay işlemcisi konağı
 > [!NOTE]
@@ -87,6 +87,8 @@ Sonra, bir [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.
 
 Son olarak, tüketiciler [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) örneğini Event Hubs hizmetiyle kaydeder. Bir olay işlemcisi sınıfını EventProcessorHost örneğiyle kaydetme olay işlemesini başlatır. Kayıt, Event Hubs hizmetine tüketici uygulamasının bazı bölümlerinden olayları tüketmesini ve kullanım olaylarını her geldiğinde [ıeventprocessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) uygulama kodunu çağırmayı beklemesini ister. 
 
+> [!NOTE]
+> ConsumerGroupName büyük/küçük harfe duyarlıdır.  ConsumerGroupName üzerinde yapılan değişiklikler akışın başından itibaren tüm bölümlerin okunmasına neden olabilir.
 
 ### <a name="example"></a>Örnek
 

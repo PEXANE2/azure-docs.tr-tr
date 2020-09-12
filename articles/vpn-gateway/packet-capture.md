@@ -1,36 +1,36 @@
 ---
-title: 'Azure VPN Gateway: paket yakalamaları yapılandırma'
-description: VPN ağ geçitleri üzerinde kullanabileceğiniz paket yakalama işlevleri hakkında bilgi edinin.
+title: 'Azure VPN Gateway: paket yakalamayı yapılandırma'
+description: Bir sorunun nedenini daraltmaya yardımcı olması için VPN Gateway 'lerde kullanabileceğiniz paket yakalama işlevselliği hakkında bilgi edinin.
 services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/15/2019
+ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 3ba3046367ceece6bf0ddf157451025c79977324
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 486ac23f26a7eee6b31322de79bfb68076a598ec
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077216"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441604"
 ---
-# <a name="configure-packet-captures-for-vpn-gateways"></a>VPN ağ geçitleri için paket yakalamaları yapılandırma
+# <a name="configure-packet-capture-for-vpn-gateways"></a>VPN ağ geçitleri için paket yakalamayı yapılandırma
 
-Bağlantı ve performansla ilgili sorunlar genellikle karmaşıktır ve sorunun nedenini azaltmak için önemli miktarda zaman ve çaba alır. Paket yakalama özelliği büyük ölçüde sorunun kapsamını ağın müşteri tarafında, ağın Azure tarafında veya arasında bir yerde olup olmadığı gibi, ağın belirli bölümleriyle daraltma süresini azaltmaya yardımcı olur. Sorun daraltıldıktan sonra, hata ayıklama ve düzeltici eylem gerçekleştirmek çok daha verimlidir.
+Bağlantı ve performansla ilgili sorunlar genellikle karmaşıktır. Bu, sorunun nedenini azaltmak için önemli ölçüde zaman ve çaba sürebilirler. Paket yakalama, bir sorunun kapsamını ağın belirli bölümlerine daraltmanıza yardımcı olabilir. Sorunun, ağın müşteri tarafında, ağın Azure tarafında veya arasında bir yerde olup olmadığını belirlemenize yardımcı olabilir. Sorunu daraltdıktan sonra, hata ayıklama ve düzeltici eylem gerçekleştirmek daha etkilidir.
 
-Paket yakalama için bazı yaygın olarak kullanılabilecek araçlar vardır. Özellikle yüksek hacimli trafik senaryolarıyla çalışırken, bu araçlarla ilgili paket yakalamalarını almak çok daha fazla olabilir. Bir VPN ağ geçidi paket yakalaması tarafından sunulan filtreleme özellikleri, önemli bir farklılık haline gelir. Yaygın olarak kullanılabilir paket yakalama araçlarına ek olarak bir VPN Gateway paket yakalaması kullanabilirsiniz.
+Yaygın olarak kullanılan bazı paket yakalama araçları vardır. Bu araçlarla ilgili paket yakalamalarını almak, özellikle de yüksek hacimli trafik senaryolarında çok daha fazla olabilir. Azure VPN Gateway paket yakalama tarafından sunulan filtreleme özellikleri, önemli bir farklıtır. VPN Gateway paket yakalamayı, yaygın olarak kullanılan paket yakalama araçlarıyla birlikte kullanabilirsiniz.
 
-## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>VPN Gateway paket yakalama filtreleme özellikleri
+## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>Paket yakalama filtreleme özelliklerini VPN Gateway
 
-VPN Gateway paket yakalamaları, ağ geçidinde veya müşteri gereksinimlerine bağlı olarak belirli bir bağlantıda çalıştırılabilir. Aynı anda birden çok tünelde paket yakalamalarını çalıştırabilirsiniz. Bir VPN ağ geçidi üzerinde filtreleme ile birlikte tek veya çift yönlü trafiği, ıKE ve ESP trafiğini ve iç paketleri yakalayabilirsiniz.
+Gereksinimlerinize bağlı olarak, ağ geçidinde veya belirli bir bağlantıda VPN Gateway paket yakalamayı çalıştırabilirsiniz. Ayrıca aynı anda birden çok tünelde paket yakalamayı çalıştırabilirsiniz. Tek yönlü veya çift yönlü trafiği, ıKE ve ESP trafiğini, iç paketleri ve bir VPN ağ geçidi üzerinde filtreleme ile birlikte yakalayabilirsiniz.
 
-Beş demet filtresi (kaynak alt ağ, hedef alt ağ, kaynak bağlantı noktası, hedef bağlantı noktası, protokol) ve TCP bayrakları (SYN, ACK, FIN, URG, PSH, RST) kullanımı, yüksek hacimli bir trafikte sorunları yalıtmak için yararlıdır.
+Yüksek hacimli trafikte sorunları yalıtdığınızda beş demet filtresi (kaynak alt ağ, hedef alt ağ, kaynak bağlantı noktası, hedef bağlantı noktası, protokol) ve TCP bayrakları (SYN, ACK, FIN, URG, PSH, RST) kullanılması yararlı olur.
 
-Her bir özelliğin açıklaması ile bir JSON ve JSON şeması örneğine bakın. Ayrıca, paket yakalamalarını çalıştırırken bazı sınırlamalara göz önünde bulabilirsiniz:
-- Şemada, filtre bir dizi olarak gösterilir, ancak tek seferde yalnızca bir filtre kullanılabilir.
-- Aynı anda birden çok ağ geçidi genelinde paket yakalamalarına izin verilmiyor.
-- Aynı bağlantı üzerinde aynı anda birden çok paket yakalamalarına izin verilmiyor. Paket yakalamaları farklı bağlantılarda aynı anda çalıştırabilirsiniz.
-- En fazla beş paket yakalama, ağ geçidi başına paralel olarak çalıştırılabilir. Bu paket yakalamaları, ağ geçidi genelinde paket yakalama veya bağlantı paketi yakalama başına bir bileşim olabilir.
+Aşağıdaki JSON ve bir JSON şeması örnekleri her bir özelliğin açıklamalarını sağlar. Paket yakalamalarını çalıştırdığınızda aklınızda bulundurmanız gereken bazı sınırlamalar şunlardır:
+- Burada gösterilen şemada, filtre bir dizidir, ancak şu anda yalnızca bir filtre kullanılabilir.
+- Aynı anda birden çok ağ geçidi genelinde paket yakalamalarını çalıştıramazsınız.
+- Tek bir bağlantıda birden çok paket yakalama aynı anda çalıştırılamaz. Farklı bağlantılarda aynı anda birden çok paket yakalamalarını çalıştırabilirsiniz.
+- En fazla beş paket yakalama, ağ geçidi başına paralel olarak çalıştırılabilir. Bu paket yakalamaları, ağ geçidi genelinde paket yakalamaları ve bağlantı başına paket yakalamaları 'nın bir birleşimi olabilir.
 
 ### <a name="example-json"></a>Örnek JSON
 ```JSON-interactive
@@ -316,9 +316,9 @@ Her bir özelliğin açıklaması ile bir JSON ve JSON şeması örneğine bakı
 }
 ```
 
-## <a name="setup-packet-capture-using-powershell"></a>PowerShell kullanarak paket yakalamayı ayarlama
+## <a name="set-up-packet-capture-by-using-powershell"></a>PowerShell kullanarak paket yakalamayı ayarlama
 
-Paket yakalamalarını başlatmak ve durdurmak için PowerShell komutları için aşağıdaki örneklere bakın. Parametre seçenekleri hakkında daha fazla bilgi için bu PowerShell [belgesine](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)bakın.
+Aşağıdaki örneklerde, paket yakalamalarını başlatan ve durduran PowerShell komutları gösterilmektedir. Parametre seçenekleri hakkında daha fazla bilgi için [Bu PowerShell belgesine](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)bakın.
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>VPN ağ geçidi için paket yakalamayı Başlat
 
@@ -326,7 +326,7 @@ Paket yakalamalarını başlatmak ve durdurmak için PowerShell komutları için
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-İsteğe bağlı parametre **-FilterData** parametresi filtre uygulamak için kullanılabilir.
+Filtre uygulamak için isteğe bağlı parametresini kullanabilirsiniz `-FilterData` .
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>VPN ağ geçidi için paket yakalamayı durdur
 
@@ -340,7 +340,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-İsteğe bağlı parametre **-FilterData** parametresi filtre uygulamak için kullanılabilir.
+Filtre uygulamak için isteğe bağlı parametresini kullanabilirsiniz `-FilterData` .
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>VPN ağ geçidi bağlantısında paket yakalamayı durdur
 
@@ -350,10 +350,11 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 ## <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 
-- Paket yakalamalarını çalıştırmak performansı etkileyebilir. Gerekli olmadığında paket yakalamayı durdurmayı unutmayın.
-- Önerilen minimum paket yakalama süresi 600 saniyedir. Yol üzerindeki birden çok bileşen arasındaki eşitleme sorunları nedeniyle, daha kısa bir paket yakalama süresi, verilerin tamamını sağlamayabilir.
+- Çalışan paket yakalama, performansı etkileyebilir. İhtiyacınız olmadığında paket yakalamayı durdurmayı unutmayın.
+- Önerilen minimum paket yakalama süresi 600 saniyedir. Yoldaki birden çok bileşen arasındaki eşitleme sorunları nedeniyle, daha kısa bir paket yakalama, verilerin tamamını sağlamayabilir.
 - Paket yakalama veri dosyaları PCAP biçiminde oluşturulur. PCAP dosyalarını açmak için Wireshark veya diğer yaygın olarak kullanılabilir uygulamaları kullanın.
+- Paket yakalamaları, ilke tabanlı ağ geçitlerinde desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VPN Gateway hakkında daha fazla bilgi için bkz. [VPN Gateway hakkında](vpn-gateway-about-vpngateways.md)
+VPN Gateway hakkında daha fazla bilgi için bkz. [VPN Gateway nedir?](vpn-gateway-about-vpngateways.md).

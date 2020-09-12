@@ -1,6 +1,6 @@
 ---
 title: SQL Server saklı yordam etkinliği
-description: Bir Azure SQL veritabanı veya Azure SQL veri ambarı 'nda Data Factory bir işlem hattından saklı yordam çağırmak için SQL Server saklı yordam etkinliğini nasıl kullanabileceğinizi öğrenin.
+description: Data Factory bir işlem hattından bir Azure SQL veritabanı veya Azure SYNAPSE Analytics 'teki saklı yordamı çağırmak için SQL Server saklı yordam etkinliğini nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b348f3f3684d580ca84eed9b9a094717c12cf849
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c64c40e96c0ff5864e5b9c9d34bad896c0b03d91
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319093"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441706"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server saklı yordam etkinliği
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -41,13 +41,13 @@ Ham verileri tahmine dayalı ve Öngörüler halinde dönüştürmek ve [işleme
 Saklı yordam etkinliğini, kuruluşunuzda bulunan aşağıdaki veri depolarından birinde veya bir Azure sanal makinesinde (VM) bulunan bir saklı yordamı çağırmak için kullanabilirsiniz:
 
 - Azure SQL Veritabanı
-- Azure SQL Veri Ambarı
+- Azure Synapse Analytics (eski adı SQL Veri Ambarı)
 - SQL Server veritabanı. SQL Server kullanıyorsanız, veritabanını barındıran aynı makineye veya veritabanına erişimi olan ayrı bir makineye Veri Yönetimi ağ geçidi yükleyebilirsiniz. Veri Yönetimi ağ geçidi, Azure VM 'de bulunan ve Şirket içindeki veri kaynaklarını güvenli ve yönetilen bir şekilde, bulut hizmetleriyle bağlayan bir bileşendir. Ayrıntılar için bkz. [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) makalesi.
 
 > [!IMPORTANT]
-> Verileri Azure SQL veritabanı 'na veya SQL Server kopyalarken, Copy etkinliğinde **Sqlsink** öğesini, **sqlWriterStoredProcedureName** özelliğini kullanarak bir saklı yordam çağırmak üzere yapılandırabilirsiniz. Daha fazla bilgi için bkz. [kopyalama etkinliğinden saklı yordamı çağırma](data-factory-invoke-stored-procedure-from-copy-activity.md). Özelliği hakkında daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Bir kopyalama etkinliği kullanarak verileri Azure SQL veri ambarı 'na kopyalarken saklı bir yordamı çağırmak desteklenmez. Ancak, bir SQL veri ambarında saklı yordam çağırmak için saklı yordam etkinliğini kullanabilirsiniz.
+> Verileri Azure SQL veritabanı 'na veya SQL Server kopyalarken, Copy etkinliğinde **Sqlsink** öğesini, **sqlWriterStoredProcedureName** özelliğini kullanarak bir saklı yordam çağırmak üzere yapılandırabilirsiniz. Daha fazla bilgi için bkz. [kopyalama etkinliğinden saklı yordamı çağırma](data-factory-invoke-stored-procedure-from-copy-activity.md). Özelliği hakkında daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Kopyalama etkinliği kullanarak verileri Azure SYNAPSE Analytics 'e kopyalarken saklı bir yordamı çağırmak desteklenmez. Ancak, Azure SYNAPSE Analytics 'te saklı yordam çağırmak için saklı yordam etkinliğini kullanabilirsiniz.
 >
-> Verileri Azure SQL veritabanı veya SQL Server ya da Azure SQL veri ambarı 'ndan kopyalarken, **sqlReaderStoredProcedureName** özelliğini kullanarak kaynak veritabanından veri okumak için bir saklı yordam çağırmak üzere, Copy etkinliğinde **SQLSource** ' u yapılandırabilirsiniz. Daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL veri ambarı](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
+> Verileri Azure SQL veritabanı veya SQL Server ya da Azure SYNAPSE Analytics 'ten kopyalarken, **sqlReaderStoredProcedureName** özelliğini kullanarak kaynak veritabanından veri okumak için bir saklı yordam çağırmak üzere, Copy etkinliğinde **SQLSource** ' u yapılandırabilirsiniz. Daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SYNAPSE Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
 Aşağıdaki izlenecek yol, Azure SQL veritabanı 'nda saklı yordam çağırmak için bir işlem hattındaki saklı yordam etkinliğini kullanır.
 
@@ -70,7 +70,7 @@ Aşağıdaki izlenecek yol, Azure SQL veritabanı 'nda saklı yordam çağırmak
     
     ![Örnek veriler](./media/data-factory-stored-proc-activity/sample-data.png)
 
-    Bu örnekte, saklı yordam bir Azure SQL veritabanında bulunur. Saklı yordam bir Azure SQL veri ambarı 'nda ve SQL Server veritabanında ise yaklaşım benzerdir. SQL Server veritabanı için bir [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md)yüklemelisiniz.
+    Bu örnekte, saklı yordam bir Azure SQL veritabanında bulunur. Saklı yordam Azure SYNAPSE Analytics ve SQL Server veritabanı 'nda ise yaklaşım benzerdir. SQL Server veritabanı için bir [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md)yüklemelisiniz.
 2. **SampleTable**öğesine veri ekleyen aşağıdaki **saklı yordamı** oluşturun.
 
     ```SQL
@@ -90,10 +90,10 @@ Aşağıdaki izlenecek yol, Azure SQL veritabanı 'nda saklı yordam çağırmak
 1. [Azure portalı](https://portal.azure.com/)’nda oturum açın.
 2. Sol taraftaki menüde **Yeni** ' ye tıklayın, **Intelligence + Analytics**' e tıklayın ve **Data Factory**' ye tıklayın.
 
-    ![Yeni veri fabrikası](media/data-factory-stored-proc-activity/new-data-factory.png)
+    ![Yeni Veri Fabrikası 1](media/data-factory-stored-proc-activity/new-data-factory.png)
 3. **Yeni Veri Fabrikası** dikey penceresinde ad Için **sprocdf** girin. Azure Data Factory adları **genel olarak benzersizdir**. Fabrika 'nin başarıyla oluşturulmasını sağlamak için, adınızla veri fabrikasının adına önek uygulamanız gerekir.
 
-   ![Yeni veri fabrikası](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
+   ![Yeni Data Factory 2](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
 4. **Azure aboneliğinizi**seçin.
 5. **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
    1. **Yeni oluştur** ' a tıklayın ve kaynak grubu için bir ad girin.
@@ -111,7 +111,7 @@ Data Factory 'yi oluşturduktan sonra, veri fabrikanıza SampleTable tablosu ve 
 1. Data Factory Düzenleyiciyi başlatmak için **Sprocdf** **Data Factory** dikey penceresinde **Yazar ve dağıt** ' a tıklayın.
 2. Komut çubuğunda **Yeni veri deposu** ' na tıklayın ve **Azure SQL veritabanı**' nı seçin. Düzenleyicide bir Azure SQL bağlı hizmeti oluşturmak için JSON betiği görmeniz gerekir.
 
-   ![Yeni veri deposu](media/data-factory-stored-proc-activity/new-data-store.png)
+   ![Yeni veri deposu 1](media/data-factory-stored-proc-activity/new-data-store.png)
 3. JSON betiğine aşağıdaki değişiklikleri yapın:
 
    1. `<servername>`Sunucunuzun adıyla değiştirin.
@@ -119,17 +119,17 @@ Data Factory 'yi oluşturduktan sonra, veri fabrikanıza SampleTable tablosu ve 
    3. `<username@servername>`Veritabanına erişimi olan kullanıcı hesabı ile değiştirin.
    4. `<password>`Kullanıcı hesabının parolasıyla değiştirin.
 
-      ![Yeni veri deposu](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
+      ![Yeni veri deposu 2](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
 4. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt** ' a tıklayın. Sol taraftaki ağaç görünümünde Azuressqllinkedservice öğesini gördüğünüzü onaylayın.
 
-    ![bağlı hizmet ile ağaç görünümü](media/data-factory-stored-proc-activity/tree-view.png)
+    ![bağlı hizmet 1 ile ağaç görünümü](media/data-factory-stored-proc-activity/tree-view.png)
 
 ### <a name="create-an-output-dataset"></a>Çıktı veri kümesi oluşturma
-Saklı yordam herhangi bir veri üretmese bile, saklı yordam etkinliği için bir çıktı veri kümesi belirtmeniz gerekir. Bunun nedeni, etkinliğin zamanlamasını yönlendiren (etkinliğin ne sıklıkta saat, günlük, vb.) bir çıktı veri kümesidir. Çıktı veri kümesi, bir Azure SQL veritabanı veya Azure SQL veri ambarı ya da saklı yordamın çalıştırılmasını istediğiniz bir SQL Server veritabanına başvuran **bağlı bir hizmet** kullanmalıdır. Çıktı veri kümesi, diğer bir etkinlik tarafından sonraki işleme için saklı yordamın sonucunu geçirmek için bir yol işlevi görebilir (işlem hattındaki[etkinlikleri zincirleyerek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) ). Ancak, Data Factory saklı yordamın çıkışını bu veri kümesine otomatik olarak yazmaz. Bu, çıktı veri kümesinin işaret ettiği bir SQL tablosuna yazan saklı yordamdır. Bazı durumlarda, çıkış veri kümesi bir **kukla veri kümesi** (saklı yordamın çıkışını gerçekten tutmayan bir tabloyu işaret eden bir veri kümesi) olabilir. Bu kukla veri kümesi yalnızca saklı yordam etkinliğini çalıştırmaya yönelik zamanlamayı belirtmek için kullanılır.
+Saklı yordam herhangi bir veri üretmese bile, saklı yordam etkinliği için bir çıktı veri kümesi belirtmeniz gerekir. Bunun nedeni, etkinliğin zamanlamasını yönlendiren (etkinliğin ne sıklıkta saat, günlük, vb.) bir çıktı veri kümesidir. Çıktı veri kümesi, Azure SQL veritabanı veya Azure SYNAPSE Analytics 'e veya saklı yordamın çalıştırılmasını istediğiniz SQL Server veritabanına başvuran **bağlı bir hizmet** kullanmalıdır. Çıktı veri kümesi, diğer bir etkinlik tarafından sonraki işleme için saklı yordamın sonucunu geçirmek için bir yol işlevi görebilir (işlem hattındaki[etkinlikleri zincirleyerek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) ). Ancak, Data Factory saklı yordamın çıkışını bu veri kümesine otomatik olarak yazmaz. Bu, çıktı veri kümesinin işaret ettiği bir SQL tablosuna yazan saklı yordamdır. Bazı durumlarda, çıkış veri kümesi bir **kukla veri kümesi** (saklı yordamın çıkışını gerçekten tutmayan bir tabloyu işaret eden bir veri kümesi) olabilir. Bu kukla veri kümesi yalnızca saklı yordam etkinliğini çalıştırmaya yönelik zamanlamayı belirtmek için kullanılır.
 
 1. Tıklayın **... Araç çubuğundan daha fazla** , **Yeni veri kümesi**ve **Azure SQL**' e tıklayın. Komut çubuğunda **Yeni veri kümesi** ve **Azure SQL**' i seçin.
 
-    ![bağlı hizmet ile ağaç görünümü](media/data-factory-stored-proc-activity/new-dataset.png)
+    ![bağlı hizmet 2 ile ağaç görünümü](media/data-factory-stored-proc-activity/new-dataset.png)
 2. Aşağıdaki JSON betiğini kopyalayın/JSON düzenleyicisine yapıştırın.
 
     ```JSON
@@ -200,13 +200,13 @@ Aşağıdaki özelliklere dikkat edin:
 ### <a name="monitor-the-pipeline"></a>İşlem hattını izleme
 1. Data Factory Düzenleyici dikey penceresini kapatmak ve Data Factory dikey penceresine dönmek için **X** işaretine, sonra da **Diyagram**’a tıklayın.
 
-    ![Diyagram kutucuğu](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
+    ![Diyagram kutucuğu 1](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
 2. **Diyagram görünümünde**, işlem hatlarına ve bu öğreticide kullanılan veri kümelerine bir genel bakış görürsünüz.
 
-    ![Diyagram kutucuğu](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
+    ![Diyagram kutucuğu 2](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
 3. Diyagram görünümünde veri kümesine çift tıklayın `sprocsampleout` . Dilimleri, Ready durumunda görürsünüz. JSON 'dan başlangıç saati ve bitiş saati arasındaki her saat için bir dilim üretildiği için beş dilim olmalıdır.
 
-    ![Diyagram kutucuğu](media/data-factory-stored-proc-activity/data-factory-slices.png)
+    ![Diyagram kutucuğu 3](media/data-factory-stored-proc-activity/data-factory-slices.png)
 4. Bir dilim **Ready** durumunda olduğunda, `select * from sampletable` verilerin tabloya saklı yordam tarafından eklendiğini doğrulamak için veritabanında bir sorgu çalıştırın.
 
    ![Çıktı verileri](./media/data-factory-stored-proc-activity/output.png)
@@ -277,7 +277,7 @@ Benzer şekilde, mağaza yordamı etkinliğini **aşağı akış etkinlikleriyle
 > [!IMPORTANT]
 > Verileri Azure SQL veritabanı 'na veya SQL Server kopyalarken, Copy etkinliğinde **Sqlsink** öğesini, **sqlWriterStoredProcedureName** özelliğini kullanarak bir saklı yordam çağırmak üzere yapılandırabilirsiniz. Daha fazla bilgi için bkz. [kopyalama etkinliğinden saklı yordamı çağırma](data-factory-invoke-stored-procedure-from-copy-activity.md). Özelliği hakkında daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties).
 > 
-> Verileri Azure SQL veritabanı veya SQL Server ya da Azure SQL veri ambarı 'ndan kopyalarken, **sqlReaderStoredProcedureName** özelliğini kullanarak kaynak veritabanından veri okumak için bir saklı yordam çağırmak üzere, Copy etkinliğinde **SQLSource** ' u yapılandırabilirsiniz. Daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL veri ambarı](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
+> Verileri Azure SQL veritabanı veya SQL Server ya da Azure SYNAPSE Analytics 'ten kopyalarken, **sqlReaderStoredProcedureName** özelliğini kullanarak kaynak veritabanından veri okumak için bir saklı yordam çağırmak üzere, Copy etkinliğinde **SQLSource** ' u yapılandırabilirsiniz. Daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SYNAPSE Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
 ## <a name="json-format"></a>JSON biçimi
 Saklı yordam etkinliğinin tanımlanması için JSON biçimi aşağıda verilmiştir:
@@ -305,13 +305,13 @@ Aşağıdaki tabloda bu JSON özellikleri açıklanmaktadır:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| name | Etkinliğin adı |Evet |
-| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
-| tür | Şu şekilde ayarlanmalıdır: **Sqlserverstoredprocedure** | Evet |
-| girişi | İsteğe bağlı. Bir giriş veri kümesi belirtirseniz, saklı yordam etkinliğinin çalışması için (' hazır ' durumunda) kullanılabilir olmalıdır. Giriş veri kümesi, saklı yordamda parametre olarak tüketilemiyor. Yalnızca saklı yordam etkinliğini başlatmadan önce bağımlılığı denetlemek için kullanılır. |Hayır |
-| çıkışı | Saklı yordam etkinliği için bir çıkış veri kümesi belirtmeniz gerekir. Çıktı veri kümesi, saklı yordam etkinliğinin **zamanlamasını** belirtir (saatlik, haftalık, aylık, vb.). <br/><br/>Çıktı veri kümesi, bir Azure SQL veritabanı veya Azure SQL veri ambarı ya da saklı yordamın çalıştırılmasını istediğiniz bir SQL Server veritabanına başvuran **bağlı bir hizmet** kullanmalıdır. <br/><br/>Çıktı veri kümesi, diğer bir etkinlik tarafından sonraki işleme için saklı yordamın sonucunu geçirmek için bir yol işlevi görebilir (işlem hattındaki[etkinlikleri zincirleyerek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) ). Ancak, Data Factory saklı yordamın çıkışını bu veri kümesine otomatik olarak yazmaz. Bu, çıktı veri kümesinin işaret ettiği bir SQL tablosuna yazan saklı yordamdır. <br/><br/>Bazı durumlarda, çıkış veri kümesi yalnızca saklı yordam etkinliğini çalıştırmaya yönelik zamanlamayı belirtmek için kullanılan bir **kukla veri kümesi**olabilir. |Evet |
-| storedProcedureName |Azure SQL veritabanı, Azure SQL veri ambarı veya çıkış tablosunun kullandığı bağlı hizmet tarafından temsil edilen SQL Server saklı yordamın adını belirtin. |Evet |
-| storedProcedureParameters |Saklı yordam parametrelerinin değerlerini belirtin. Bir parametre için null değer geçirmeniz gerekiyorsa, "Param1": null (tümü küçük harf) sözdizimini kullanın. Bu özelliği kullanma hakkında bilgi edinmek için aşağıdaki örneğe bakın. |Hayır |
+| name | Etkinliğin adı |Yes |
+| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |No |
+| tür | Şu şekilde ayarlanmalıdır: **Sqlserverstoredprocedure** | Yes |
+| girişi | İsteğe bağlı. Bir giriş veri kümesi belirtirseniz, saklı yordam etkinliğinin çalışması için (' hazır ' durumunda) kullanılabilir olmalıdır. Giriş veri kümesi, saklı yordamda parametre olarak tüketilemiyor. Yalnızca saklı yordam etkinliğini başlatmadan önce bağımlılığı denetlemek için kullanılır. |No |
+| çıkışı | Saklı yordam etkinliği için bir çıkış veri kümesi belirtmeniz gerekir. Çıktı veri kümesi, saklı yordam etkinliğinin **zamanlamasını** belirtir (saatlik, haftalık, aylık, vb.). <br/><br/>Çıktı veri kümesi, Azure SQL veritabanı veya Azure SYNAPSE Analytics 'e veya saklı yordamın çalıştırılmasını istediğiniz SQL Server veritabanına başvuran **bağlı bir hizmet** kullanmalıdır. <br/><br/>Çıktı veri kümesi, diğer bir etkinlik tarafından sonraki işleme için saklı yordamın sonucunu geçirmek için bir yol işlevi görebilir (işlem hattındaki[etkinlikleri zincirleyerek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) ). Ancak, Data Factory saklı yordamın çıkışını bu veri kümesine otomatik olarak yazmaz. Bu, çıktı veri kümesinin işaret ettiği bir SQL tablosuna yazan saklı yordamdır. <br/><br/>Bazı durumlarda, çıkış veri kümesi yalnızca saklı yordam etkinliğini çalıştırmaya yönelik zamanlamayı belirtmek için kullanılan bir **kukla veri kümesi**olabilir. |Yes |
+| storedProcedureName |Azure SQL veritabanı, Azure SYNAPSE Analytics veya çıkış tablosunun kullandığı bağlı hizmet tarafından temsil edilen SQL Server saklı yordamın adını belirtin. |Yes |
+| storedProcedureParameters |Saklı yordam parametrelerinin değerlerini belirtin. Bir parametre için null değer geçirmeniz gerekiyorsa, "Param1": null (tümü küçük harf) sözdizimini kullanın. Bu özelliği kullanma hakkında bilgi edinmek için aşağıdaki örneğe bakın. |No |
 
 ## <a name="passing-a-static-value"></a>Statik bir değer geçirme
 Şimdi ' senaryo ' adlı, ' belge örneği ' adlı statik bir değer içeren tabloya ' senaryo ' adlı başka bir sütun eklemeyi düşünün.

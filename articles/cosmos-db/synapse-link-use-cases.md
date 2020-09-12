@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 3a522a5a5945fe7a4b63dc759077d744f951a76f
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d6039ac3bead535fd9c7de64a8e92a0d7a58f390
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814425"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319245"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB için Azure Synapse Link: Gerçek zamanlıya yakın analiz için kullanım örnekleri
 
@@ -86,7 +86,7 @@ IoT tahmine dayalı bakımda Azure Cosmos DB için Azure SYNAPSE bağlantısın�
 
 Azure Cosmos DB kullanım örnekleri için SYNAPSE bağlantısı:
 
-* Tahmine dayalı işlem hattını **hazırlayın & eğitme işlem hattı:** IoT cihaz algılayıcılarından geçmiş işletimsel veriler, anomali algılayıcıları gibi tahmine dayalı modelleri eğitmek için kullanılabilir. Bu anomali algılayıcıları daha sonra gerçek zamanlı izleme için kenara geri dağıtılır. Böyle bir sanallaştırıntı döngüsü, tahmine dayalı modellerin sürekli yeniden eğitimine izin verir.
+* Tahmine dayalı işlem hattını **hazırlayın & eğitme işlem hattı:** IoT cihaz algılayıcılarından geçmiş işletimsel veriler, anomali algılayıcıları gibi tahmine dayalı modelleri eğitmek için kullanılabilir. Bu anomali algılayıcılar daha sonra gerçek zamanlı izleme için kenara dağıtılabilir. Böyle bir sanallaştırıntı döngüsü, tahmine dayalı modellerin sürekli yeniden eğitimine izin verir.
 
 * **İşletimsel raporlama:** Dijital ikizi girişimlerin büyümesi sayesinde, şirketler, her makinenin dijital bir kopyasını oluşturmak için çok sayıda sensörden çok miktarda işletimsel veri topluyor. Bu veri güçleri, son kullanılan veriler üzerinde gerçek zamanlı uygulamalara ek olarak geçmiş veriler üzerindeki eğilimleri anlamak için gerekir.
 
@@ -134,7 +134,7 @@ Daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [Azure Cosmos DB için Azure SYNAPSE bağlantısı](synapse-link.md) 
 
-* [Analitik depo Azure Cosmos DB](analytical-store-introduction.md)
+* [Azure Cosmos DB Analiz Deposu](analytical-store-introduction.md)
 
 * [Azure Cosmos DB için Azure SYNAPSE bağlantısıyla çalışma](configure-synapse-link.md)
 
@@ -142,4 +142,4 @@ Daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [Azure SYNAPSE Analytics 'te Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [Azure SYNAPSE Analytics 'te SQL sunucusuz/isteğe bağlı](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [Azure SYNAPSE Analytics 'te SQL sunucusuz çalışma zamanı desteği](../synapse-analytics/sql/on-demand-workspace-overview.md)

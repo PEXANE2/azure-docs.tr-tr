@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: d70558efb1ea54f069981062e5379d995dbeddd2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950349"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459100"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
 
-Azure NetApp Files, otomatik anlık görüntü oluşturmayı zamanlamak için isteğe bağlı anlık görüntüler oluşturmayı ve anlık görüntü ilkelerini kullanmayı destekler.  Ayrıca, bir anlık görüntüyü yeni bir birime geri yükleyebilirsiniz.  
+Azure NetApp Files, otomatik anlık görüntü oluşturmayı zamanlamak için isteğe bağlı anlık görüntüler oluşturmayı ve anlık görüntü ilkelerini kullanmayı destekler.  Ayrıca, bir anlık görüntüyü yeni bir birime geri yükleyebilir veya bir istemciyi kullanarak tek bir dosyayı geri yükleyebilirsiniz.  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Bir birim için isteğe bağlı anlık görüntü oluşturma
 
@@ -41,7 +41,7 @@ Azure NetApp Files, otomatik anlık görüntü oluşturmayı zamanlamak için is
 
     ![Yeni anlık görüntü](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. **Tamam** düğmesine tıklayın. 
+4. **Tamam**’a tıklayın. 
 
 ## <a name="manage-snapshot-policies"></a>Anlık görüntü ilkelerini yönetme
 
@@ -134,7 +134,7 @@ Artık saklamak istemediğiniz bir anlık görüntü ilkesini silebilirsiniz.
 
 1.  NetApp hesabı görünümünde, **anlık görüntü ilkesi**' ne tıklayın.
 
-2.  Değiştirmek istediğiniz anlık görüntü ilkesine sağ tıkladıktan sonra **Sil**' i seçin.
+2.  Değiştirmek istediğiniz anlık görüntü ilkesine sağ tıklayıp **Sil**' i seçin.
 
     ![Anlık görüntü ilkesi sağ tıklama menüsü](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
 
@@ -165,7 +165,62 @@ Artık saklamak istemediğiniz bir anlık görüntü ilkesini silebilirsiniz.
     Yeni birim, anlık görüntünün kullandığı protokolü kullanır.   
     Anlık görüntünün geri yüklendiği yeni birim birimler dikey penceresinde görünür.
 
+## <a name="restore-a-file-from-a-snapshot-using-a-client"></a>Bir istemciyi kullanarak bir anlık görüntüden dosya geri yükleme
+
+[Anlık görüntünün tamamını bir birime geri yüklemek](#restore-a-snapshot-to-a-new-volume)istemiyorsanız, bir dosyayı bir anlık görüntüden bağlı olan bir istemciyi kullanarak geri yükleme seçeneğiniz vardır.  
+
+Takılan birim,  `.snapshot` istemci tarafından erişilebilen (NFS istemcileri 'nde) veya `~snapshot` (SMB istemcilerinde) adlı bir anlık görüntü dizini içerir. Snapshot dizini birimin anlık görüntülerine karşılık gelen alt dizinleri içerir. Her alt dizin, anlık görüntünün dosyalarını içerir. Yanlışlıkla bir dosyayı silerseniz veya üzerine yazarsanız, dosyayı bir anlık görüntü alt dizininden oku-yaz dizinine kopyalayarak dosyayı üst okuma-yazma dizinine geri yükleyebilirsiniz. 
+
+Birimi oluştururken anlık görüntü yolunu gizle onay kutusunu seçtiyseniz, anlık görüntü dizini gizlenir. Birimi seçerek birimin anlık görüntü yolunu Gizle durumunu görüntüleyebilirsiniz. Birimin sayfasında **Düzenle** ' ye tıklayarak anlık görüntü yolunu gizle seçeneğini düzenleyebilirsiniz.  
+
+![Birim anlık görüntü seçeneklerini düzenleme](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
+### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Linux NFS istemcisi kullanarak bir dosyayı geri yükleme 
+
+1. `ls`Dizinden geri yüklemek istediğiniz dosyayı listelemek için Linux komutunu kullanın `.snapshot` . 
+
+    Örneğin:
+
+    `$ ls my.txt`   
+    `ls: my.txt: No such file or directory`   
+
+    `$ ls .snapshot`   
+    `daily.2020-05-14_0013/              hourly.2020-05-15_1106/`   
+    `daily.2020-05-15_0012/              hourly.2020-05-15_1206/`   
+    `hourly.2020-05-15_1006/             hourly.2020-05-15_1306/`   
+
+    `$ ls .snapshot/hourly.2020-05-15_1306/my.txt`   
+    `my.txt`
+
+2. `cp`Dosyayı üst dizine kopyalamak için komutunu kullanın.  
+
+    Örneğin: 
+
+    `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
+
+    `$ ls my.txt`   
+    `my.txt`   
+
+### <a name="restore-a-file-by-using-a-windows-client"></a>Bir Windows istemcisi kullanarak bir dosyayı geri yükleme 
+
+1. `~snapshot`Birimin dizini gizliyse, görüntülenecek üst dizindeki [gizli öğeleri gösterin](https://support.microsoft.com/help/4028316/windows-view-hidden-files-and-folders-in-windows-10) `~snapshot` .
+
+    ![Gizli öğeleri gösterme](../media/azure-netapp-files/snapshot-show-hidden.png) 
+
+2. `~snapshot`Geri yüklemek istediğiniz dosyayı bulmak için içindeki alt dizine gidin.  Dosyaya sağ tıklayın. **Kopyala**’yı seçin.  
+
+    ![Dosyayı geri yüklenecek şekilde Kopyala](../media/azure-netapp-files/snapshot-copy-file-restore.png) 
+
+3. Üst dizine geri dönün. Üst dizine sağ tıklayıp `Paste` dosyayı dizine yapıştırmayı seçin.
+
+    ![Geri yüklenecek dosyayı Yapıştır](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
+
+4. Ayrıca, üst dizine sağ tıklayıp **Özellikler**' i seçip, **önceki sürümler** sekmesine tıklayarak anlık görüntü listesini görebilir ve bir dosyayı geri yüklemek için **geri yükle** ' yi seçebilirsiniz.  
+
+    ![Önceki sürümlere özellikler](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure NetApp Files’ın depolama hiyerarşisini anlama](azure-netapp-files-understand-storage-hierarchy.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
+* [Azure NetApp Files Snapshot 101 videosu](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

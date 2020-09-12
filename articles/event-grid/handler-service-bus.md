@@ -2,13 +2,13 @@
 title: Service Bus kuyrukları ve konuları Azure Event Grid olaylar için olay işleyicileri olarak
 description: Azure Event Grid olaylar için Service Bus kuyrukları ve konuları olay işleyicileri olarak nasıl kullanabileceğinizi açıklar.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: c573f7ee088fe1d88f832623891377d4fd50bd4b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/03/2020
+ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105702"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440805"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus kuyrukları ve konuları Azure Event Grid olaylar için olay işleyicileri olarak
 Olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için başka bir eylem gerçekleştirir. Çeşitli Azure Hizmetleri, olayları işleyecek şekilde otomatik olarak yapılandırılır ve bunlardan biridir **Azure Service Bus** . 
@@ -62,9 +62,9 @@ Event Grid olaylar için olay işleyicisi olarak bir **Service Bus konusu veya k
 | AEG-veri sürümü | <p>Etkinliğin veri sürümü.</p><p>Örnek: "1".</p><p>**Event Grid olay şeması**için, bu özellik veri sürümünü ve **bulut olay şeması**için, uygulanmaz.</p> |
 
 ## <a name="message-headers"></a>İleti üstbilgileri
-Bir Service Bus kuyruğuna veya konusuna aracılı ileti olarak bir olay gönderirken `messageid` aracılı iletinin **kimliği olay kimliğidir**.
+Bir Service Bus kuyruğuna veya konusuna aracılı bir ileti olarak bir olay gönderirken `messageid` aracılı iletinin bir iç SISTEM kimliği olması gerekir.
 
-Hizmet veri yolu varlığında **yinelenen saptamayı** etkinleştirerek yinelenen teslimleri önlemenize olanak sağlamak üzere olay kimliği olay yeniden tesliminde tutulur. Service Bus varlığındaki yinelenen algılamanın süresinin, etkinliğin yaşam süresi (TTL) veya en fazla yeniden deneme süresi (hangisi daha uzun) olması için etkinleştirmenizi öneririz.
+İleti için iç sistem KIMLIĞI, olay yeniden teslim sırasında korunur, böylece, Service Bus varlığında **yinelenen saptamayı** etkinleştirerek yinelenen teslimleri önleyebilirsiniz. Service Bus varlığındaki yinelenen algılamanın süresinin, etkinliğin yaşam süresi (TTL) veya en fazla yeniden deneme süresi (hangisi daha uzun) olması için etkinleştirmenizi öneririz.
 
 ## <a name="rest-examples-for-put"></a>REST örnekleri (PUT için)
 

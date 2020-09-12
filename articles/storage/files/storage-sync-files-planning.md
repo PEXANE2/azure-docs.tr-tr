@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 876a96f579bff8d30e454e927054a951734f44ba
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553116"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441108"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -136,9 +136,8 @@ Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name> -SkipNamesp
  
 Sonuçları CSV 'de göstermek için:
 ```powershell
-$errors = Invoke-AzStorageSyncCompatibilityCheck […]
-$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path
-    C:\results.csv -Encoding utf8
+$validation = Invoke-AzStorageSyncCompatibilityCheck C:\DATA
+$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results.csv -Encoding utf8
 ```
 
 ### <a name="file-system-compatibility"></a>Dosya sistemi uyumluluğu
@@ -148,7 +147,7 @@ Yalnızca NTFS birimleri desteklenir; ReFS, FAT, FAT32 ve diğer dosya sistemler
 
 Aşağıdaki tabloda NTFS dosya sistemi özelliklerinin birlikte çalışma durumu gösterilmektedir: 
 
-| Özellik | Destek durumu | Notlar |
+| Öne çıkan özelliği | Destek durumu | Notlar |
 |---------|----------------|-------|
 | Erişim denetim listeleri (ACL’ler) | Tam olarak destekleniyor | Windows stili isteğe bağlı erişim denetim listeleri Azure Dosya Eşitleme tarafından korunur ve sunucu uç noktalarında Windows Server tarafından zorlanır. Azure dosya paylaşımının doğrudan bağlanması sırasında ACL 'Ler de zorlanabilir, ancak bunun için ek yapılandırma gerekir. Daha fazla bilgi için [kimlik bölümüne](#identity) bakın. |
 | Sabit bağlantılar | Atlandı | |
@@ -304,37 +303,37 @@ Azure Dosya Eşitleme, aşağıdaki bölgelerde kullanılabilir:
 
 | Azure bulut | Coğrafi bölge | Azure bölgesi | Bölge kodu |
 |-------------|-------------------|--------------|-------------|
-| Genel | Asya | Doğu Asya | `eastasia` |
-| Genel | Asya | Güneydoğu Asya | `southeastasia` |
-| Genel | Avustralya | Doğu Avustralya | `australiaeast` |
-| Genel | Avustralya | Avustralya Güneydoğu | `australiasoutheast` |
-| Genel | Brezilya | Brezilya Güney | `brazilsouth` |
-| Genel | Kanada | Orta Kanada | `canadacentral` |
-| Genel | Kanada | Doğu Kanada | `canadaeast` |
-| Genel | Avrupa | Kuzey Avrupa | `northeurope` |
-| Genel | Avrupa | West Europe | `westeurope` |
-| Genel | Fransa | Orta Fransa | `francecentral` |
-| Genel | Fransa | Fransa Güney * | `francesouth` |
-| Genel | Hindistan | Orta Hindistan | `centralindia` |
-| Genel | Hindistan | Güney Hindistan | `southindia` |
-| Genel | Japonya | Doğu Japonya | `japaneast` |
-| Genel | Japonya | Batı Japonya | `japanwest` |
-| Genel | Güney Kore | Güney Kore - Orta | `koreacentral` |
-| Genel | Güney Kore | Güney Kore - Güney | `koreasouth` |
-| Genel | Güney Afrika | Güney Afrika Kuzey | `southafricanorth` |
-| Genel | Güney Afrika | Güney Afrika Batı * | `southafricawest` |
-| Genel | BAE | BAE Orta * | `uaecentral` |
-| Genel | BAE | BAE Kuzey | `uaenorth` |
-| Genel | Birleşik Krallık | Güney Birleşik Krallık | `uksouth` |
-| Genel | Birleşik Krallık | Batı Birleşik Krallık | `ukwest` |
-| Genel | ABD | Central US | `centralus` |
-| Genel | ABD | Doğu ABD | `eastus` |
-| Genel | ABD | Doğu ABD 2 | `eastus2` |
-| Genel | ABD | Orta Kuzey ABD | `northcentralus` |
-| Genel | ABD | Orta Güney ABD | `southcentralus` |
-| Genel | ABD | Orta Batı ABD | `westcentralus` |
-| Genel | ABD | Batı ABD | `westus` |
-| Genel | ABD | Batı ABD 2 | `westus2` |
+| Ortak | Asya | Doğu Asya | `eastasia` |
+| Ortak | Asya | Güneydoğu Asya | `southeastasia` |
+| Ortak | Avustralya | Doğu Avustralya | `australiaeast` |
+| Ortak | Avustralya | Avustralya Güneydoğu | `australiasoutheast` |
+| Ortak | Brezilya | Brezilya Güney | `brazilsouth` |
+| Ortak | Kanada | Orta Kanada | `canadacentral` |
+| Ortak | Kanada | Doğu Kanada | `canadaeast` |
+| Ortak | Avrupa | Kuzey Avrupa | `northeurope` |
+| Ortak | Avrupa | West Europe | `westeurope` |
+| Ortak | Fransa | Orta Fransa | `francecentral` |
+| Ortak | Fransa | Fransa Güney * | `francesouth` |
+| Ortak | Hindistan | Orta Hindistan | `centralindia` |
+| Ortak | Hindistan | Güney Hindistan | `southindia` |
+| Ortak | Japonya | Doğu Japonya | `japaneast` |
+| Ortak | Japonya | Batı Japonya | `japanwest` |
+| Ortak | Güney Kore | Güney Kore - Orta | `koreacentral` |
+| Ortak | Güney Kore | Güney Kore - Güney | `koreasouth` |
+| Ortak | Güney Afrika | Güney Afrika Kuzey | `southafricanorth` |
+| Ortak | Güney Afrika | Güney Afrika Batı * | `southafricawest` |
+| Ortak | BAE | BAE Orta * | `uaecentral` |
+| Ortak | BAE | BAE Kuzey | `uaenorth` |
+| Ortak | Birleşik Krallık | Güney Birleşik Krallık | `uksouth` |
+| Ortak | Birleşik Krallık | Batı Birleşik Krallık | `ukwest` |
+| Ortak | ABD | Central US | `centralus` |
+| Ortak | ABD | Doğu ABD | `eastus` |
+| Ortak | ABD | Doğu ABD 2 | `eastus2` |
+| Ortak | ABD | Orta Kuzey ABD | `northcentralus` |
+| Ortak | ABD | Orta Güney ABD | `southcentralus` |
+| Ortak | ABD | Orta Batı ABD | `westcentralus` |
+| Ortak | ABD | Batı ABD | `westus` |
+| Ortak | ABD | Batı ABD 2 | `westus2` |
 | US Gov | ABD | US Gov Arizona | `usgovarizona` |
 | US Gov | ABD | US Gov Texas | `usgovtexas` |
 | US Gov | ABD | US Gov Virginia | `usgovvirginia` |

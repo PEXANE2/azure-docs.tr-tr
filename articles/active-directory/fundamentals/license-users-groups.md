@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9909b92e58d73c9578d3d17a7bbf24fe2924fae2
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797092"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319534"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory portalında Lisans atama veya kaldırma
 
@@ -35,7 +35,7 @@ Azure AD hizmeti için aşağıdakiler de dahil olmak üzere birkaç lisans plan
 
 - Azure AD Premium P2
 
-Her lisans planı ve ilgili lisanslama ayrıntıları hakkında belirli bilgiler için bkz. [Hangi lisansa ihtiyacım var?](https://azure.microsoft.com/pricing/details/active-directory/). Azure AD Premium lisans planlarına kaydolmak için [buraya](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)bakın.
+Her lisans planı ve ilgili lisanslama ayrıntıları hakkında belirli bilgiler için bkz. [Hangi lisansa ihtiyacım var?](https://azure.microsoft.com/pricing/details/active-directory/). Azure AD Premium lisans planlarına kaydolmak için [buraya](./active-directory-get-started-premium.md)bakın.
 
 Tüm Microsoft Hizmetleri tüm konumlarda kullanılabilir değildir. Bir lisansın bir gruba atanabilmesi için önce tüm Üyeler için **kullanım konumunu** belirtmeniz gerekir. Bu değeri, Azure AD 'de **Azure Active Directory &gt; kullanıcıları &gt; profil &gt; ayarları** alanında ayarlayabilirsiniz. Kullanım konumu belirtilmemiş olan tüm kullanıcılar, Azure AD kuruluşunun konumunu devralır.
 

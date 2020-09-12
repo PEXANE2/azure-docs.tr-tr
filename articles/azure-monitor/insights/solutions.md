@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
-ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 013d8b77a16a4c7cd0efdadce25fd141793070be
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135547"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459530"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de çözümleri izleme
 
@@ -97,7 +97,7 @@ Topluluk üyeleri, yönetim çözümlerini Azure hızlı başlangıç şablonlar
 
    CLı başvuru komutlarını çalıştırmadan önce [Azure CLI 'yı yüklemeniz](/cli/azure/install-azure-cli) gerekir.  İsterseniz, bu makaledeki adımları tamamlayabilmeniz için Azure Cloud Shell de kullanabilirsiniz.  Azure Cloud Shell, tarayıcınız aracılığıyla kullandığınız etkileşimli bir kabuk ortamıdır.  Aşağıdaki yöntemlerden birini kullanarak Cloud Shell başlatın:
 
-   - Cloud Shell giderek açın[https://shell.azure.com](https://shell.azure.com)
+   - Cloud Shell giderek açın [https://shell.azure.com](https://shell.azure.com)
 
    - [Azure Portal](https://portal.azure.com) sağ üst köşedeki menü çubuğunda bulunan **Cloud Shell** düğmesini seçin
 
@@ -109,18 +109,18 @@ Topluluk üyeleri, yönetim çözümlerini Azure hızlı başlangıç şablonlar
     az login
     ```
 
-1. Uzantıyı yükler `log-analytics`
+1. Uzantıyı yükler `log-analytics-solution`
 
-   Bu `log-analytics` komut, çekirdek Azure CLI 'nın deneysel uzantısıdır. Uzantı başvuruları hakkında daha fazla bilgi için bkz. [Azure CLI ile uzantı kullanımı](/cli/azure/azure-cli-extensions-overview?).
+   Bu `log-analytics-solution` komut, çekirdek Azure CLI 'nın deneysel uzantısıdır. Uzantı başvuruları hakkında daha fazla bilgi için bkz. [Azure CLI ile uzantı kullanımı](/cli/azure/azure-cli-extensions-overview?).
 
    ```azurecli
-   az extension add --name log-analytics
+   az extension add --name log-analytics-solution
    ```
 
    Aşağıdaki uyarı beklenmektedir.
 
    ```output
-   The installed extension `log-analytics` is experimental and not covered by customer support.  Please use with discretion.
+   The installed extension `log-analytics-solution` is experimental and not covered by customer support.  Please use with discretion.
    ```
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Azure CLı ile bir çözüm yüklemesi
@@ -159,7 +159,6 @@ Tüm izleme çözümleri, çözüm tarafından toplanan verileri depolamak ve g�
 
 * Her bir çözümün yüklemesi yalnızca bir Log Analytics çalışma alanı ve bir Otomasyon hesabı kullanabilir. Çözümü birden çok çalışma alanına ayrı olarak yükleyebilirsiniz.
 * Bir çözüm bir Otomasyon hesabı gerektiriyorsa, Log Analytics çalışma alanı ve Otomasyon hesabı bir diğeri ile bağlantılı olmalıdır. Log Analytics çalışma alanı yalnızca bir Otomasyon hesabına bağlanabilir ve bir Otomasyon hesabı yalnızca bir Log Analytics çalışma alanına bağlanabilir.
-* Bağlantı sağlamak için, Log Analytics çalışma alanı ve Otomasyon hesabı aynı abonelikte olmalıdır, ancak aynı bölgeye dağıtılmış farklı kaynak gruplarında bulunabilir. Özel durum, Doğu ABD 2 Doğu ABD Region ve Automation hesabındaki bir çalışma alanıdır.
 
 Azure Marketi aracılığıyla bir çözüm yüklediğinizde, sizden bir çalışma alanı ve Otomasyon hesabı istenir. Bunlar arasındaki bağlantı, henüz bağlanmadıysa oluşturulur.
 

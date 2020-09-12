@@ -2,17 +2,17 @@
 title: "Azure ExpressRoute: ExpressRoute Direct 'i yapılandırma: Portal"
 description: Bu sayfa, portalı kullanarak ExpressRoute Direct 'i yapılandırmanıza yardımcı olur.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.author: cherylmc
-ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.author: duau
+ms.openlocfilehash: 09d3723224f9c678e41a6cbc86b5f8f9655173c8
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903604"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401478"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Azure portal kullanarak doğrudan ExpressRoute oluşturma
 
@@ -61,7 +61,7 @@ ExpressRoute Direct, Microsoft 'un Dünya genelinde stratejik olarak dağıtıla
 
 1. Herhangi bir kaynak etiketi belirtin ve ardından ExpressRoute doğrudan kaynak ayarlarını doğrulamak için **gözden geçir + oluştur** ' u seçin.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Gözden geçirme ve oluşturma":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Gözden geçir ve oluştur":::
 
 1. **Oluştur**’u seçin. Dağıtımınızın devam ettiğinden emin olarak bir ileti görürsünüz. Kaynaklar oluşturulduğundan bu sayfada durum görüntülenecektir. 
 
@@ -105,7 +105,7 @@ Aşağıdaki adımlar, ExpressRoute doğrudan iş akışından bir ExpressRoute 
 
 1. Kaynağı oluşturmadan önce değerleri doğrulamak için bir kaynak etiketi seçin, **gözden geçir + oluştur** seçeneğini belirleyin.
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Gözden geçirme ve oluşturma":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Gözden geçir ve oluştur":::
 
 1. **Oluştur**’u seçin. Dağıtımınızın devam ettiğinden emin olarak bir ileti görürsünüz. Kaynaklar oluşturulduğundan bu sayfada durum görüntülenecektir. 
 
