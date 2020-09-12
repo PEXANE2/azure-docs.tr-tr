@@ -4,12 +4,12 @@ description: Bu makalede, Azure portal kullanarak Azure Backup iş yükleri içi
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 0e1e50f27c6d0563ab51a74bbfa22d2a7f54ecd3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d04f57c19e31b946f7c360edb796bc4f0f5fcf71
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000745"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377412"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup iş yüklerini izleme
 
@@ -100,7 +100,7 @@ Sıklık bir saatlik Özet olarak ayarlandıysa ve bir süre içinde bir uyarı 
 
 ## <a name="inactivating-alerts"></a>Uyarıları etkinleştirme
 
-Etkin bir uyarıyı devre dışı bırakmak/çözümlemek için, devre dışı bırakmak istediğiniz uyarıya karşılık gelen liste öğesini seçebilirsiniz. Bu, en üstteki **devre dışı bırak** düğmesi ile uyarı hakkında ayrıntılı bilgi görüntüleyen bir ekran açar. Bu düğmeye tıklamak, uyarının durumunu **etkin değil**olarak değiştirir. Ayrıca, bu uyarıya karşılık gelen liste öğesine sağ tıklayıp **devre dışı bırak**' ı seçerek bir uyarıyı devre dışı bırakabilirsiniz.
+Etkin bir uyarıyı devre dışı bırakmak/çözümlemek için, devre dışı bırakmak istediğiniz uyarıya karşılık gelen liste öğesini seçebilirsiniz. Bu, en üstteki **devre dışı bırak** düğmesi ile uyarı hakkında ayrıntılı bilgi görüntüleyen bir ekran açar. Bu düğme seçildiğinde, uyarının durumu **etkin değil**olarak değiştirilir. Ayrıca, bu uyarıya karşılık gelen liste öğesine sağ tıklayıp **devre dışı bırak**' ı seçerek bir uyarıyı devre dışı bırakabilirsiniz.
 
 ![RS Kasası uyarısı intivasyonu](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

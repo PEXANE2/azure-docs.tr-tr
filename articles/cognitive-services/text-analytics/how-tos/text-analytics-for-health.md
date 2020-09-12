@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 4ba7aa530699ab0e06ac42e3701265254b617f73
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5bb244796414c828e1535e4874fc85aa83f182dc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167700"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300077"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)
 
@@ -91,7 +91,7 @@ Kapsayıcıyı yükleyip çalıştırmak için birden çok yol vardır.
 Azure [kapsayıcılar için Web App](https://azure.microsoft.com/services/app-service/containers/) , bulutta kapsayıcılar çalıştırmak için adanmış bir Azure kaynağıdır. Otomatik ölçeklendirme, Docker kapsayıcıları ve Docker Compose desteği, HTTPS desteği ve çok daha fazlası gibi kullanıma hazır özellikleri getirir.
 
 > [!NOTE]
-> Azure Web App 'i kullanarak bir etki alanını otomatik olarak şu biçimde alacaksınız`<appservice_name>.azurewebsites.net`
+> Azure Web App 'i kullanarak bir etki alanını otomatik olarak şu biçimde alacaksınız `<appservice_name>.azurewebsites.net`
 
 Aboneliğinizi ve HTTPS üzerinden kapsayıcı görüntüsünü kullanarak bir Kapsayıcılar için Web App oluşturmak için Azure CLı kullanarak bu PowerShell betiğini çalıştırın. İlk isteği göndermeden önce betiğin (yaklaşık 25-30 dakika) tamamlanmasını bekleyin.
 
@@ -161,11 +161,11 @@ Varsayılan olarak, kapsayıcı API 'SI ile acı kullanılırken bir güvenlik s
 
 #### <a name="set-up-nginx-as-an-ingress-gateway"></a>Giriş ağ geçidi olarak NGıNX ayarlama
 
-NGıNX, çalışma zamanında özellikleri etkinleştirmek için [yapılandırma dosyalarını](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) kullanır. Başka bir hizmet için TLS sonlandırmasını etkinleştirmek üzere TLS bağlantısını sonlandırmak ve `proxy_pass` hizmet için bir adres belirtmek üzere BIR SSL sertifikası belirtmeniz gerekir. Aşağıda bir örnek verilmiştir.
+NGıNX, çalışma zamanında özellikleri etkinleştirmek için [yapılandırma dosyalarını](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) kullanır. Başka bir hizmet için TLS sonlandırmasını etkinleştirmek üzere TLS bağlantısını sonlandırmak ve  `proxy_pass` hizmet için bir adres belirtmek üzere BIR SSL sertifikası belirtmeniz gerekir. Aşağıda bir örnek verilmiştir.
 
 
 > [!NOTE]
-> `ssl_certificate`NGıNX kapsayıcısının yerel dosya sistemi içinde bir yol belirtilmesini bekler. İçin belirtilen adres, `proxy_pass` NGıNX kapsayıcısının ağı içinden kullanılabilir olmalıdır.
+> `ssl_certificate` NGıNX kapsayıcısının yerel dosya sistemi içinde bir yol belirtilmesini bekler. İçin belirtilen adres, `proxy_pass` NGıNX kapsayıcısının ağı içinden kullanılabilir olmalıdır.
 
 NGıNX kapsayıcısı, içindeki içindeki tüm dosyaları `_.conf_` `/etc/nginx/conf.d/` http yapılandırma yoluna yükleyecek.
 
@@ -399,22 +399,19 @@ Değilleme algılama kullanılırken, bazı durumlarda tek bir olumsuzlama bir k
 
 ```json
 "relations": [
-  {
-      "relationType": "DosageOfMedication",
-      "score": 1.0,
-      "bidirectional": false,
-      "source": "#/documents/2/entities/0",
-      "target": "#/documents/2/entities/1",
-      "entities": [
-          {
-              "id": "0",
-              "role": "ATTRIBUTE"
-          },
-          {
-              "id": "1",
-              "role": "ENTITY"
-          }
-      ]
+                {
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
+                },
+                {
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
+                }
+            ]
   },
 ...
 ]

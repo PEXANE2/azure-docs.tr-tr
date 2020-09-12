@@ -3,12 +3,12 @@ title: Azure dosya paylaşma yedeklemesi hakkında
 description: Azure dosya paylaşımlarını kurtarma hizmetleri kasasında nasıl yedekleyeceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: dd8a17639c006dd1c0e8cc193776bb63cb536ceb
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e955df7662bd18ed1d1d4ec1f0aa6c9474c5386f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180023"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378092"
 ---
 # <a name="about-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi hakkında
 
@@ -52,9 +52,9 @@ Azure dosya paylaşma yedeklemesi, buluttaki verilerinizi koruyan ve şirket iç
 
 Azure dosya paylaşma yedekleme çözümüyle ilişkili iki maliyet vardır:
 
-1. **Anlık görüntü depolama maliyeti**: anlık görüntüler için tahakkuk eden depolama ücretleri, [burada](https://azure.microsoft.com/pricing/details/storage/files/) bahsedilen fiyatlandırma ayrıntılarına göre Azure dosyaları kullanımıyla birlikte faturalandırılır 
+1. **Anlık görüntü depolama maliyeti**: anlık görüntüler için tahakkuk eden depolama ücretleri, [burada](https://azure.microsoft.com/pricing/details/storage/files/) bahsedilen fiyatlandırma ayrıntılarına göre Azure dosyaları kullanımıyla birlikte faturalandırılır
 
-2. **Korumalı örnek ücreti** : 1 Eylül 2020 ' den itibaren müşteriler [burada](https://azure.microsoft.com/en-in/pricing/details/backup/) bahsedilen fiyatlandırma ayrıntılarına göre korunan bir örnek ücreti ödeyecek. Korumalı örnek ücreti, bir depolama hesabındaki korunan dosya paylaşımlarının toplam boyutuna bağlıdır.
+2. **Korumalı örnek ücreti**: 1 Eylül 2020 ' den itibaren müşteriler [burada](https://azure.microsoft.com/pricing/details/backup/)bahsedilen fiyatlandırma ayrıntılarına göre korunan bir örnek ücreti ödeyecek. Korumalı örnek ücreti, bir depolama hesabındaki korunan dosya paylaşımlarının toplam boyutuna bağlıdır.
 
 Azure dosya paylaşımlarını yedeklemeye yönelik ayrıntılı tahminler almak için ayrıntılı [Azure Backup fiyatlandırma tahminleyicisi](https://aka.ms/AzureBackupCostEstimates)'ni indirebilirsiniz.  
 

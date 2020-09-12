@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716325"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377208"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl çalışır? Azure AD self servis parola sıfırlama
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) self servis parola sıfırlama (SSPR), kullan�
 >
 > BT ekibiniz kendi parolanızı sıfırlama özelliğini etkinleştirmediyseniz, ek yardım için yardım masasına ulaşın.
 
-## <a name="how-does-the-password-reset-portal-work"></a>Parola sıfırlama portalı nasıl çalışır?
+## <a name="how-does-the-password-reset-process-work"></a>Parola sıfırlama işlemi nasıl çalışır?
 
 Kullanıcı [SSPR portalını](https://aka.ms/sspr)kullanarak parolalarını sıfırlayabilir veya değiştirebilir. Önce istedikleri kimlik doğrulama yöntemlerini kaydettirmelidir. Bir Kullanıcı SSPR portalına eriştiğinde, Azure platformu aşağıdaki faktörleri göz önünde bulundurur:
 
@@ -58,6 +58,11 @@ SSPR portalı gerekli dilde görüntülendikten sonra kullanıcıdan bir kullan�
   * SSPR geri yazma özelliği dağıtılmazsa ve kullanıcının parolası şirket içinde yönetiliyorsa, kullanıcıdan parolasını sıfırlaması için yöneticisiyle iletişim kurabilmesi istenir.
 
 Önceki denetimlerin tümü başarıyla tamamlanırsa, Kullanıcı, parolasını sıfırlama veya değiştirme sürecinde kılavuzluk eder.
+
+> [!NOTE]
+> SSPR kullanıcılara parola sıfırlama işleminin bir parçası olarak e-posta bildirimleri gönderebilir. Bu e-postalar, çeşitli bölgelerde etkin-etkin modda çalışan SMTP geçiş hizmeti kullanılarak gönderilir.
+>
+> SMTP geçiş hizmetleri e-posta gövdesini alıp işler, ancak depomayın. Kullanıcı tarafından girilen bilgileri içerebilen SSPR e-postası gövdesi SMTP geçiş hizmeti günlüklerinde depolanmaz. Günlükler yalnızca protokol meta verilerini içerir.
 
 SSPR 'yi kullanmaya başlamak için aşağıdaki öğreticiyi izleyin:
 

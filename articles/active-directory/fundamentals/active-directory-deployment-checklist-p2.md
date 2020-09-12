@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 082e4a35582e9fe643aefc13c0c46a1c75f443e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fd33845c331f907dbd5720ac92c6b1c627f01873
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025396"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318418"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory özellik dağıtım kılavuzu
 
@@ -26,7 +26,7 @@ Kuruluşunuz için Azure Active Directory (Azure AD) dağıtımı yapabilir ve g
 
 Ayrıca müşteriler, Microsoft 'un en iyi uygulamalarına nasıl hizalanacağını öğrenmek için kendi [kimlik güvenli Puanını](identity-secure-score.md) denetleyebilir. Sektörünüz ve boyutlarınızın diğer kuruluşlarındaki diğer kuruluşlara kıyasla ne kadar iyi işlem yaptığınızı görmek için bu önerileri uyguladıktan önce ve sonra güvenli puanınızı kontrol edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kılavuzdaki önerilerin birçoğu Azure AD Ücretsiz veya hiçbir lisans olmadan uygulanabilir. Lisansların gerekli olduğu durumlar, görevi gerçekleştirmek için en düşük düzeyde lisansın gerekli olduğu durumdur.
 
@@ -35,7 +35,7 @@ Lisanslama hakkında ek bilgiler aşağıdaki sayfalarda bulunabilir:
 * [Azure AD lisanslama](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Microsoft 365 Kurumsal](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
-* [Azure AD B2B Lisanslama Kılavuzu](../b2b/licensing-guidance.md)
+* [Azure AD B2B Lisanslama Kılavuzu](../external-identities/licensing-guidance.md)
 
 ## <a name="phase-1-build-a-foundation-of-security"></a>1. Aşama: güvenlik temeli oluşturma
 
@@ -47,7 +47,7 @@ Bu aşamada Yöneticiler, normal kullanıcı hesaplarını içeri aktarmadan vey
 | [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../users-groups-roles/directory-assign-admin-roles.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. | Azure AD Ücretsiz |
 | [Yönetici rolü kullanımını izlemek için Privileged Identity Management etkinleştir](../privileged-identity-management/pim-getting-started.md) | Yönetim rolü kullanımını izlemeye başlamak için Privileged Identity Management etkinleştirin. | Azure AD Premium P2 |
 | [Self servis parola sıfırlamayı dağıtma](../authentication/howto-sspr-deployment.md) | Personelin yönetici denetimi olarak sizin oluşturduğunuz ilkeleri kullanarak kendi parolalarını sıfırlamasına izin vererek parola sıfırlama için Yardım Masası çağrılarını azaltın. | |
-| [Kuruluşa özgü özel yasaklanmış parola listesi oluşturma](../authentication/howto-password-ban-bad-configure.md) | Kullanıcıların, kuruluşunuzun veya bölgenizdeki ortak sözcükleri veya tümceleri içeren parolalar oluşturmasını engelleyin. | |
+| [Kuruluşa özgü özel yasaklanmış parola listesi oluşturma](../authentication/tutorial-configure-custom-password-protection.md) | Kullanıcıların, kuruluşunuzun veya bölgenizdeki ortak sözcükleri veya tümceleri içeren parolalar oluşturmasını engelleyin. | |
 | [Azure AD parola koruması ile şirket içi tümleştirmeyi etkinleştirme](../authentication/concept-password-ban-bad-on-premises.md) | Yasaklanmış parola listesini şirket içi dizininize genişletin ve şirket içinde ayarlanan parolaların Ayrıca genel ve kiracıya özgü yasaklanmış parola listeleriyle uyumlu olduğundan emin olun. | Azure AD Premium P1 |
 | [Microsoft 'un parola kılavuzunu etkinleştir](https://www.microsoft.com/research/publication/password-guidance/) | Kullanıcıların bir küme zamanlaması üzerinde parolalarını değiştirmesini, karmaşıklık gereksinimlerini devre dışı bırakmayı ve kullanıcılarınızın parolalarını anımsamasını ve bunları güvenli bir şekilde tutmasını sağlama gereğini durdur. | Azure AD Ücretsiz |
 | [Bulut tabanlı kullanıcı hesapları için düzenli parola sıfırlamaları devre dışı bırak](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Düzenli parola sıfırlama, kullanıcılarınızın mevcut parolalarını artırmasını teşvik eder. Microsoft 'un parola Kılavuzu belgesi ' nde yer alan yönergeleri kullanın ve şirket içi ilkenizi yalnızca bulutta bulunan kullanıcılara yansıtın. | Azure AD Ücretsiz |
@@ -65,12 +65,12 @@ Daha sonra, 1. Aşama ' de bulunan, kullanıcılarınızı içeri aktararak ve e
 
 | Görev | Ayrıntı | Gerekli lisans |
 | ---- | ------ | ---------------- |
-| [Azure AD Connect'i yükleme](../connect/active-directory-aadconnect-select-installation.md) | Mevcut şirket içi dizininizdeki kullanıcıları buluta eşitlemeye hazırlanın. | Azure AD Ücretsiz |
-| [Parola karması eşitlemesini Uygula](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Parola değişikliklerinin çoğaltılmasını, hatalı parola algılamayı ve düzeltmesini ve sızdırılan kimlik bilgisi raporlamasını sağlamak için parola karmalarını eşitler. | Azure AD Ücretsiz |
-| [Parola geri yazmayı Uygula](../authentication/howto-sspr-writeback.md) | Bulutta parola değişikliklerinin şirket içi Windows Server Active Directory ortamına geri yazılmasına izin verin. | Azure AD Premium P1 |
-| [Azure AD Connect Health Uygula](../connect-health/active-directory-aadconnect-health.md) | Azure AD Connect sunucularınız, AD FS sunucularınız ve etki alanı denetleyicileriniz için anahtar sistem durumu istatistiklerinin izlenmesini etkinleştirin. | Azure AD Premium P1 |
+| [Azure AD Connect'i yükleme](../hybrid/how-to-connect-install-select-installation.md) | Mevcut şirket içi dizininizdeki kullanıcıları buluta eşitlemeye hazırlanın. | Azure AD Ücretsiz |
+| [Parola karması eşitlemesini Uygula](../hybrid/how-to-connect-password-hash-synchronization.md) | Parola değişikliklerinin çoğaltılmasını, hatalı parola algılamayı ve düzeltmesini ve sızdırılan kimlik bilgisi raporlamasını sağlamak için parola karmalarını eşitler. | Azure AD Ücretsiz |
+| [Parola geri yazmayı Uygula](../authentication/tutorial-enable-sspr-writeback.md) | Bulutta parola değişikliklerinin şirket içi Windows Server Active Directory ortamına geri yazılmasına izin verin. | Azure AD Premium P1 |
+| [Azure AD Connect Health Uygula](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Azure AD Connect sunucularınız, AD FS sunucularınız ve etki alanı denetleyicileriniz için anahtar sistem durumu istatistiklerinin izlenmesini etkinleştirin. | Azure AD Premium P1 |
 | [Azure Active Directory ' de grup üyeliğine göre kullanıcılara lisans atama](../users-groups-roles/licensing-groups-assign.md) | Kullanıcı başına ayar yerine gruba göre özellikleri etkinleştiren veya devre dışı bırakan lisanslama grupları oluşturarak zaman ve çaba tasarrufu yapın. | |
-| [Konuk Kullanıcı erişimi için bir plan oluşturun](../b2b/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerini kullanarak uygulamalarınızda ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. | [Azure AD B2B Lisanslama Kılavuzu](../b2b/licensing-guidance.md) |
+| [Konuk Kullanıcı erişimi için bir plan oluşturun](../external-identities/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerini kullanarak uygulamalarınızda ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. | [Azure AD B2B Lisanslama Kılavuzu](../external-identities/licensing-guidance.md) |
 | [Cihaz yönetimi stratejisine karar verme](../devices/overview.md) | Kuruluşunuzun cihazlara yönelik olarak izin vermesini belirleyin. Vs katılımını kaydetme, kendi cihazını ve şirket tarafından sağlanmış olan cihazları alın. | |
 | [Kuruluşunuzda Iş için Windows Hello 'Yu dağıtma](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Windows Hello kullanarak passwordless kimlik doğrulaması için hazırlanma | |
 | [Kullanıcılarınız için passwordless kimlik doğrulama yöntemlerini dağıtın](../authentication/concept-authentication-passwordless.md) | Kullanıcılarınıza güvenli parolasız kimlik doğrulama yöntemleri sağlayın | Azure AD Premium P1 |
@@ -101,6 +101,6 @@ Daha sonra, 1. Aşama ' de bulunan, kullanıcılarınızı içeri aktararak ve e
 
 [Azure AD lisanslama ve fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/active-directory/)
 
-[Kimlik ve cihaz erişim yapılandırmaları](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+[Kimlik ve cihaz erişim yapılandırmaları](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
-[Sık önerilen kimlik ve cihaz erişim ilkeleri](https://docs.microsoft.com/microsoft-365/enterprise/identity-access-policies)
+[Sık önerilen kimlik ve cihaz erişim ilkeleri](/microsoft-365/enterprise/identity-access-policies)

@@ -3,12 +3,12 @@ title: Azure Stack SQL Server iş yüklerini yedekleme
 description: Bu makalede, Azure Stack SQL Server veritabanlarını korumak için Microsoft Azure Backup sunucusu (MABS) yapılandırma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: e56b29f886224617a9ae13d58c8b3dd8dda0dcf8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 912e6f10b689217303786b20ec6315fca595a8c2
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017982"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376341"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack SQL Server yedekleme
 
@@ -54,29 +54,29 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>SQL Server veritabanlarını Azure 'da korumak için bir yedekleme ilkesi oluşturma
 
-1. Azure Backup Sunucusu Kullanıcı arabiriminde, **koruma** çalışma alanına tıklayın.
+1. Azure Backup Sunucusu Kullanıcı arabiriminde, **koruma** çalışma alanını seçin.
 
-2. Araç şeridinde **Yeni ' ye tıklayarak yeni bir** koruma grubu oluşturun.
+2. Araç **şeridinde yeni ' yi seçerek yeni** bir koruma grubu oluşturun.
 
     ![Koruma grubu oluştur](./media/backup-azure-backup-sql/protection-group.png)
 
-    Azure Backup Sunucusu, koruma grubu Sihirbazı 'nı başlatır, bu da **koruma grubu**oluşturma konusunda size yol gösterir. **İleri**’ye tıklayın.
+    Azure Backup Sunucusu, koruma grubu Sihirbazı 'nı başlatır, bu da **koruma grubu**oluşturma konusunda size yol gösterir. **İleri**’yi seçin.
 
 3. **Koruma grubu türünü seçin** ekranında **sunucular**' ı seçin.
 
     ![Koruma grubu türünü seçin-' sunucular '](./media/backup-azure-backup-sql/pg-servers.png)
 
-4. **Grup üyelerini seçin** ekranında, kullanılabilir Üyeler listesinde çeşitli veri kaynakları görüntülenir. **+** Bir klasörü genişletmek ve alt klasörleri göstermek için tıklayın. Bir öğeyi seçmek için onay kutusuna tıklayın.
+4. **Grup üyelerini seçin** ekranında, kullanılabilir Üyeler listesinde çeşitli veri kaynakları görüntülenir. **+** Bir klasörü genişletmeyi ve alt klasörleri açığa çıkarmak için seçin. Bir öğe seçmek için onay kutusunu seçin.
 
     ![SQL DB 'yi seçin](./media/backup-azure-backup-sql/pg-databases.png)
 
-    Seçili tüm öğeler seçili Üyeler listesinde görünür. Korumak istediğiniz sunucuları veya veritabanlarını seçtikten sonra **İleri**' ye tıklayın.
+    Seçili tüm öğeler seçili Üyeler listesinde görünür. Korumak istediğiniz sunucuları veya veritabanlarını seçtikten sonra **İleri**' yi seçin.
 
 5. **Veri koruma yöntemini seçin** ekranında, koruma grubu için bir ad belirtin ve **çevrimiçi koruma** istiyorum onay kutusunu seçin.
 
     ![Veri koruma yöntemi-kısa süreli disk çevrimiçi & Azure](./media/backup-azure-backup-sql/pg-name.png)
 
-6. **Kısa dönem hedeflerini belirtin** ekranında, diske yedekleme noktaları oluşturmak için gerekli girişleri ekleyin ve **İleri**' ye tıklayın.
+6. **Kısa dönem hedeflerini belirtin** ekranında, diske yedekleme noktaları oluşturmak için gerekli girişleri ekleyin ve **İleri**' yi seçin.
 
     Bu örnekte, **bekletme aralığı** **5 gündür** **ve yedekleme** sıklığı, her **15 dakikada**bir yapılır. **Hızlı tam yedekleme** **8:00 P. M**olarak ayarlanır.
 
@@ -87,9 +87,9 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
    >
    >
 
-7. **Disk ayırmayı İncele** ekranında, kullanılabilir genel depolama alanını ve olası disk alanını doğrulayın. **İleri**’ye tıklayın.
+7. **Disk ayırmayı İncele** ekranında, kullanılabilir genel depolama alanını ve olası disk alanını doğrulayın. **İleri**’yi seçin.
 
-8. **Çoğaltma oluşturma yöntemini seçin**kısmında ilk kurtarma noktanızı oluşturmayı seçin. Bant genişliği yığmasını veya ağ üzerinden bir kez daha kaçınmak için ilk yedeklemeyi el ile (ağ dışı) aktarabilirsiniz. İlk yedeklemenin aktarılmasını beklemek isterseniz, ilk aktarım için saati belirtebilirsiniz. **İleri**’ye tıklayın.
+8. **Çoğaltma oluşturma yöntemini seçin**kısmında ilk kurtarma noktanızı oluşturmayı seçin. Bant genişliği yığmasını veya ağ üzerinden bir kez daha kaçınmak için ilk yedeklemeyi el ile (ağ dışı) aktarabilirsiniz. İlk yedeklemenin aktarılmasını beklemek isterseniz, ilk aktarım için saati belirtebilirsiniz. **İleri**’yi seçin.
 
     ![İlk çoğaltma yöntemi](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -97,13 +97,13 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
     İlk yedekleme tamamlandıktan sonra, yedeklemelerin geri kalanı ilk yedekleme kopyasında artımlı yedeklemelerdir. Artımlı yedeklemeler küçük olma eğilimindedir ve ağ üzerinden kolayca aktarılır.
 
-9. Tutarlılık denetiminin ne zaman çalıştırılmasını istediğinizi seçin ve **İleri**' ye tıklayın.
+9. Tutarlılık denetiminin ne zaman çalıştırılmasını istediğinizi seçin ve **İleri ' yi**seçin.
 
     ![Tutarlılık denetimi](./media/backup-azure-backup-sql/pg-consistent.png)
 
     Azure Backup Sunucusu, yedekleme noktasının bütünlüğü üzerinde bir tutarlılık denetimi gerçekleştirir. Azure Backup Sunucusu, üretim sunucusundaki (Bu senaryodaki SQL Server bilgisayar) yedekleme dosyasının sağlama toplamını ve bu dosya için yedeklenmiş verileri hesaplar. Bir çakışma varsa, Azure Backup Sunucusu yedeklenen dosyanın bozuk olduğu varsayılır. Azure Backup Sunucusu, sağlama toplamı uyuşmazlığına karşılık gelen blokları göndererek yedeklenen verileri yeniden toplayın. Tutarlılık denetimleri performans açısından yoğun olduğundan, tutarlılık denetimini zamanlayabilir veya otomatik olarak çalıştırabilirsiniz.
 
-10. Veri kaynaklarının çevrimiçi korumasını belirtmek için, Azure 'da korunacak veritabanlarını seçin ve **İleri**' ye tıklayın.
+10. Veri kaynaklarının çevrimiçi korumasını belirtmek için, Azure 'da korunacak veritabanlarını seçin ve **İleri**' yi seçin.
 
     ![Veri kaynaklarını seçin](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 
@@ -130,9 +130,9 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
     * 12:00 P.M. ' de Cumartesi Cumartesi günü 104 hafta boyunca korunur
     * Son Cumartesi günü 12:00 P.M. ' de yedekleme 60 ay boyunca tutulur
     * Mart 'ın son Cumartesi günü 12:00 P.M. 10 yıl boyunca korunur
-13. **İleri** ' ye tıklayın ve ilk yedekleme kopyasının Azure 'a aktarılması için uygun seçeneği belirleyin. **Ağ üzerinden otomatik olarak** seçim yapabilirsiniz
+13. **İleri ' yi** seçin ve ilk yedekleme kopyasının Azure 'a aktarılması için uygun seçeneği belirleyin. **Ağ üzerinden otomatik olarak** seçim yapabilirsiniz
 
-14. **Özet** ekranında ilke ayrıntılarını gözden geçirdikten sonra, iş akışını gerçekleştirmek Için **Grup Oluştur** ' a tıklayın. **Kapat** ' a tıklayabilir ve izleme çalışma alanında işin ilerlemesini izleyebilirsiniz.
+14. **Özet** ekranında ilke ayrıntılarını gözden geçirdikten sonra, iş akışını gerçekleştirmek Için **Grup Oluştur** ' u seçin. **Kapat** ' ı seçebilir ve izleme çalışma alanında işin ilerlemesini izleyebilirsiniz.
 
     ![Koruma grubu oluşturma devam ediyor](./media/backup-azure-backup-sql/pg-summary.png)
 
@@ -146,7 +146,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 2. Veritabanına sağ tıklayın ve **Kurtarma noktası oluştur**' u seçin.
 
     ![Çevrimiçi kurtarma noktası oluştur](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
-3. Açılan menüden **çevrimiçi koruma** ' yı seçin ve Azure 'da bir kurtarma noktası oluşturmaya başlamak için **Tamam** ' ı tıklatın.
+3. Açılan menüden **çevrimiçi koruma** ' yı seçin ve Azure 'da bir kurtarma noktası oluşturmaya başlamak için **Tamam** ' ı seçin.
 
     ![Kurtarma noktası oluştur](./media/backup-azure-backup-sql/sqlbackup-azure.png)
 4. **İzleme** çalışma alanında işin ilerlemesini görüntüleyin.
@@ -160,20 +160,20 @@ Korunan bir varlığı (SQL Server veritabanı) Azure 'dan kurtarmak için aşa�
 1. Azure Backup Sunucusu Yönetim konsolunu açın. Korunan sunucuları görebileceğiniz **Kurtarma** çalışma alanı ' na gidin. Gerekli veritabanına (Bu durumda ReportServer $ MSDPM2012) gözatamazsınız. **Çevrimiçi** nokta olarak belirtilen zamanda bir **Kurtarma** seçin.
 
     ![Kurtarma noktası seçin](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-2. Veritabanı adına sağ tıklayın ve **kurtar**' a tıklayın.
+2. Veritabanı adına sağ tıklayın ve **kurtar**' ı seçin.
 
     ![Azure 'dan kurtarma](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. MABS, kurtarma noktasının ayrıntılarını gösterir. **İleri**’ye tıklayın. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar**kurtarma türünü seçin. **İleri**’ye tıklayın.
+3. MABS, kurtarma noktasının ayrıntılarını gösterir. **İleri**’yi seçin. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar**kurtarma türünü seçin. **İleri**’yi seçin.
 
     ![Özgün konuma kurtar](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     Bu örnekte, MABS veritabanını başka bir SQL Server örneğine veya tek başına bir ağ klasörüne kurtarır.
 
-4. **Kurtarma seçeneklerini belirtin** ekranında, kurtarma tarafından kullanılan bant genişliğini azaltmak için ağ bant genişliği kullanımı azaltma gibi kurtarma seçeneklerini belirleyebilirsiniz. **İleri**’ye tıklayın.
+4. **Kurtarma seçeneklerini belirtin** ekranında, kurtarma tarafından kullanılan bant genişliğini azaltmak için ağ bant genişliği kullanımı azaltma gibi kurtarma seçeneklerini belirleyebilirsiniz. **İleri**’yi seçin.
 
-5. **Özet** ekranında, şu ana kadar sunulan tüm kurtarma yapılandırmasını görürsünüz. **Kurtar**' ı tıklatın.
+5. **Özet** ekranında, şu ana kadar sunulan tüm kurtarma yapılandırmasını görürsünüz. **Kurtar**' ı seçin.
 
-    Kurtarma durumu kurtarılan veritabanını gösterir. **Kapat** ' a tıklayarak Sihirbazı kapatabilir ve ilerlemeyi **izleme** çalışma alanında görüntüleyebilirsiniz.
+    Kurtarma durumu kurtarılan veritabanını gösterir. Sihirbazı kapatmak için **Kapat** ' ı seçebilirsiniz ve ilerlemeyi **izleme** çalışma alanında görüntüleyebilirsiniz.
 
     ![Kurtarma işlemini Başlat](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 

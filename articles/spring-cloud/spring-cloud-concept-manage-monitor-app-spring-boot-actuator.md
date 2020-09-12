@@ -7,19 +7,19 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5cfc13700decf0176b283f5f1f9bd81503c1b10a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c1ea19c22d003ed1aa7c3d3191ff20a69513bc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037602"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299516"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Azure Spring Boot Actuator ile uygulama yönetme ve izleme
 
 Uygulamanıza yeni ikili dağıttıktan sonra, işlevleri denetlemek ve çalışan uygulamanız hakkındaki bilgileri görmek isteyebilirsiniz. Bu makalede, Azure Spring Cloud tarafından sunulan bir test uç noktasından API 'ye nasıl erişebileceğiniz ve uygulamanız için üretime yönelik kullanıma sunma özelliklerinin nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu makalede, Azure yay bulut hizmetinde başarıyla dağıtılabilecek ve önyüklenebilecek bir Spring Boot 2. x uygulamasına sahip olduğunuz varsayılır.  Bkz [. hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart-launch-app-portal.md)
+## <a name="prerequisites"></a>Ön koşullar
+Bu makalede, Azure yay bulut hizmetinde başarıyla dağıtılabilecek ve önyüklenebilecek bir Spring Boot 2. x uygulamasına sahip olduğunuz varsayılır.  Bkz [. hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart.md)
 
 ## <a name="verify-app-through-test-endpoint"></a>Test uç noktası aracılığıyla uygulamayı doğrulama
 1. **Uygulama panosu** ' na gidin ve uygulamaya genel bakış sayfasını girmek için uygulamanıza tıklayın.
@@ -63,12 +63,12 @@ Yapılandırma ve yapılandırılabilir ortamı gözlemlemek için, `env` ve `co
 Artık uygulamaya genel bakış bölmesine dönüp sağlama durumu "başarılı" olarak değişene kadar bekleyebilirsiniz.  Birden fazla çalışan örnek olacaktır.
 
 > [!Note] 
-> Uygulamayı herkese açık duruma getirdikten sonra, bu çalıştırıcı uç noktaları da genel kullanıma sunulur. Ortam değişkenlerini silerek tüm uç noktaları gizleyebilir `management.endpoints.web.exposure.include` ve`management.endpoints.web.exposure.exclude=*`
+> Uygulamayı herkese açık duruma getirdikten sonra, bu çalıştırıcı uç noktaları da genel kullanıma sunulur. Ortam değişkenlerini silerek tüm uç noktaları gizleyebilir `management.endpoints.web.exposure.include` ve `management.endpoints.web.exposure.exclude=*`
 
 ## <a name="view-the-actuator-endpoint-to-view-application-information"></a>Uygulama bilgilerini görüntülemek için çalıştırıcı uç noktasını görüntüleme
 1. Şimdi, `"<test-endpoint>/actuator/"` Spring Boot çalıştırıcı tarafından sunulan tüm uç noktaları görmek için URL 'ye erişebilirsiniz.
 1. Erişim URL 'si `"<test-endpoint>/actuator/env"` , uygulama tarafından kullanılan etkin profilleri ve tüm ortam değişkenlerini görebilir.
-1. Belirli bir ortamda arama yapmak istiyorsanız, URL 'yi `"<test-endpoint>/actuator/env/{toMatch}"` görüntülemek için ona erişebilirsiniz.
+1. Belirli bir ortamda arama yapmak istiyorsanız, URL 'yi  `"<test-endpoint>/actuator/env/{toMatch}"` görüntülemek için ona erişebilirsiniz.
 
 Yerleşik tüm uç noktaları görüntülemek için bkz. [uç noktaları gösterme](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints)
 

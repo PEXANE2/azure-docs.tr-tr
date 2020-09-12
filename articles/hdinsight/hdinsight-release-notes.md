@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826829"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319806"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -49,7 +49,7 @@ Apache Tez görünümü Hive tez işinin yürütülmesini izlemek ve hataların�
 
 ## <a name="behavior-changes"></a>Davranış değişiklikleri
 ### <a name="ambari-stack-version-change"></a>Ambarı yığın sürümü değişikliği
-Bu sürümden, ambarı sürümü 2. x. x. x ile 4,1 arasında değişir. Ambarı sürümü için, ambarı kullanıcı arabiriminden > edinebilirsiniz.
+Bu sürümde, ambarı sürümü 2. x. x. x ile 4,1 arasında değişir. Stack sürümünü (HDInsight 4,1), ambarı: > Kullanıcı > sürümlerinde doğrulayabilirsiniz.
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Dikkat etmeniz gereken yaklaşan Son değişiklik yok.
@@ -75,4 +75,4 @@ Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsigh
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-Azure portalında bir sorun düzeltildi ve bu, kullanıcıların bir Azure HDInsight kümesini ortak anahtarın SSH kimlik doğrulaması türünü kullanarak oluşturduklarında hata yaşar. Kullanıcılar **gözden geçir + oluştur**' u tıkladığında, "SSH kullanıcı adından üç ardışık karakter içermemelidir" hatasını alırlar. Bu sorun düzeltildi, ancak düzeltilen görünümü yüklemek için CTRL + F5 tuşlarına basarak tarayıcı önbelleğinizi yenilemeniz gerekebilir. Bu sorunun geçici çözümü ARM şablonuyla bir küme oluşturmaktır. 
+Azure Portalda, SSH kimlik doğrulaması türünde bir genel anahtar kullanarak Azure HDInsight kümesi oluşturan kullanıcıların hatayla karşılaştığı bir sorun çözüldü. Kullanıcılar **Gözden Geçir + Oluştur**'a tıkladığında "SSH kullanıcı adından üç ardışık karakter içermemelidir" hatasını alıyordu. Bu sorun düzeltildi ama düzeltilmiş görünümü yüklemek için CTRL + F5 tuşlarına basarak tarayıcınızın önbelleğini yenilemeniz gerekebilir. Bu sorunun geçici çözümü ARM şablonuyla bir küme oluşturmaktı. 

@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 04/14/2020
+ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031447"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320979"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -97,9 +97,9 @@ Bir genel benzersiz tanımlayıcı (GUID) eklemek için, ana şablon dosyasında
 
 1. Kaynak Yöneticisi şablonunu açın.
 
-1. Ana şablon dosyasına yeni bir kaynak ekleyin. Kaynağın herhangi bir iç içe veya bağlı şablonlarda değil, yalnızca dosya **üzerindemainTemplate.js** veya **azuredeploy.jsaçık** olması gerekir.
+1. Ana şablon dosyasında [Microsoft. resources/dağıtımlar](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) türünde yeni bir kaynak ekleyin. Kaynağın herhangi bir iç içe veya bağlı şablonlarda değil, yalnızca dosya ** üzerindemainTemplate.js** veya **azuredeploy.jsaçık** olması gerekir.
 
-1. Önekden sonra GUID değerini girin `pid-` (örneğin, pid-eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. `pid-`Kaynak adı olarak önekden sonra GUID değerini girin. Örneğin, GUID eb7927c8-dd66-43e1-b0cf-c346a422063 ise, kaynak adı _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_olur.
 
 1. Şablonda hata olup olmadığını denetleyin.
 
@@ -110,13 +110,13 @@ Bir genel benzersiz tanımlayıcı (GUID) eklemek için, ana şablon dosyasında
 ### <a name="sample-resource-manager-template-code"></a>Örnek Kaynak Yöneticisi Şablon kodu
 
 Şablonunuz için izleme kaynaklarını etkinleştirmek üzere kaynaklar bölümüne aşağıdaki ek kaynağı eklemeniz gerekir. Lütfen ana şablon dosyasına eklediğinizde aşağıdaki örnek kodu kendi girdunuzla değiştirdiğinizden emin olun.
-Kaynak, iç içe veya bağlı şablonlarda değil, yalnızca dosya **üzerindemainTemplate.js** ya da **azuredeploy.js** eklenmelidir.
+Kaynak, iç içe veya bağlı şablonlarda değil, yalnızca dosya ** üzerindemainTemplate.js** ya da **azuredeploy.js** eklenmelidir.
 
-```
+```json
 // Make sure to modify this sample code with your own inputs where applicable
 
 { // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
-    "apiVersion": "2018-02-01",
+    "apiVersion": "2020-06-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
@@ -153,6 +153,20 @@ Python için, **config** özniteliğini kullanın. Özniteliği yalnızca bir Us
 
 > [!NOTE]
 > Her istemci için özniteliğini ekleyin. Genel statik yapılandırma yoktur. Her istemcinin izlenmesini sağlamak için bir istemci fabrikası etiketleyebilir. Daha fazla bilgi için [GitHub 'daki bu istemci fabrikası örneğine](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)bakın.
+
+#### <a name="example-the-net-sdk"></a>Örnek: .NET SDK
+
+.NET için Kullanıcı aracısını ayarladığınızdan emin olun. [Microsoft. Azure. Management. Floent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) kitaplığı, Kullanıcı aracısını aşağıdaki kodla (C# dilinde örnek) ayarlamak için kullanılabilir:
+
+```csharp
+
+var azure = Microsoft.Azure.Management.Fluent.Azure
+    .Configure()
+    // Add your pid in the user agent header
+    .WithUserAgent("pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", String.Empty) 
+    .Authenticate(/* Credentials created via Microsoft.Azure.Management.ResourceManager.Fluent.SdkContext.AzureCredentialsFactory */)
+    .WithSubscription("<subscription ID>");
+```
 
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Azure PowerShell kullanarak bir dağıtımı etiketleme
 
@@ -252,11 +266,11 @@ Bu şablonu dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kayna
 
 \<PARTNER>Yazılım dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kaynaklarıyla yazılım yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 Karşılaştığınız sorunlara bağlı olarak iki destek kanalı vardır.
 
-Iş Ortağı Merkezi 'nde müşteri kullanımı attributıon raporunu görmek veya oturum açmak gibi herhangi bir sorunla karşılaşırsanız, Iş ortağı merkezi destek ekibi ile bir destek isteği oluşturun:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
+Iş Ortağı Merkezi 'nde müşteri kullanımı attributıon raporunu görmek veya oturum açmak gibi herhangi bir sorunla karşılaşırsanız, Iş ortağı merkezi destek ekibi ile bir destek isteği oluşturun: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![Destek alma sayfasının ekran görüntüsü](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
@@ -339,7 +353,7 @@ Hayır, şu yapılamıyor. Sanal makine görüntüsünün Azure Marketi 'nden ge
 
 **Ana şablon için *Contentversion* özelliği güncelleştirilemedi mi?**
 
-Büyük olasılıkla bir hata, şablon, daha eski contentVersion 'ı bir nedenden dolayı daha önce bekleyen başka bir şablondan TemplateLink kullanılarak dağıtıldığında oluşan bir hatadır. Geçici çözüm, meta veri özelliğini kullanmaktır:
+Bu, büyük olasılıkla bir hatadır. bu durum, şablonun başka bir şablondan, bazı nedenlerle eski contentVersion bekleyen bir TemplateLink kullanılarak dağıtılmasından kaynaklanıyor olabilir. Geçici çözüm, meta veri özelliğini kullanmaktır:
 
 ```
 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

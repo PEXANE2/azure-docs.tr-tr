@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd24e6847dbf02bc7efe5d9e6ea02043879f720b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054721"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320265"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>' Oturum açmış kalsın ' öğesini yapılandırın Azure AD hesapları istemi
 
@@ -57,7 +57,7 @@ Oturum açma hatası hakkındaki ayrıntılar aşağıda verilmiştir ve örnekt
 
 Gelişmiş marka ayarlarında **göster seçeneğini oturum açmış olarak kalacak şekilde** ayarlayarak, kullanıcıların kesme işlemini görmesini durdurabilirsiniz. **No** Bu, Azure AD dizininizde tüm kullanıcılar için KMSı isteğini devre dışı bırakır.
 
-Ayrıca, kullanıcıların KMSı sorgusunu gördüğünü engellemek için koşullu erişim 'teki kalıcı tarayıcı oturumu denetimlerini de kullanabilirsiniz. Bu seçenek, dizinde kalan kullanıcılar için oturum açma davranışını etkilemeden, belirli bir Kullanıcı grubu (Genel Yöneticiler gibi) için KMSı isteğini devre dışı bırakmanızı sağlar. Daha fazla bilgi için bkz. [Kullanıcı oturum açma sıklığı](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime). 
+Ayrıca, kullanıcıların KMSı sorgusunu gördüğünü engellemek için koşullu erişim 'teki kalıcı tarayıcı oturumu denetimlerini de kullanabilirsiniz. Bu seçenek, dizinde kalan kullanıcılar için oturum açma davranışını etkilemeden, belirli bir Kullanıcı grubu (Genel Yöneticiler gibi) için KMSı isteğini devre dışı bırakmanızı sağlar. Daha fazla bilgi için bkz. [Kullanıcı oturum açma sıklığı](../conditional-access/howto-conditional-access-session-lifetime.md). 
 
 KMSı isteminin yalnızca kullanıcıya yararlanabileceği durumlarda gösterildiğinden emin olmak için, aşağıdaki senaryolarda KMSı istemi özellikle gösterilmez:
 
@@ -72,6 +72,6 @@ KMSı isteminin yalnızca kullanıcıya yararlanabileceği durumlarda gösterild
 
 Oturum açma oturum zaman aşımını etkileyen diğer ayarlar hakkında bilgi edinin:
 
-* Microsoft 365 – [Boşta oturum zaman aşımı](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
-* Azure AD koşullu erişim- [Kullanıcı oturum açma sıklığı](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)
-* Azure portal – [dizin düzeyindeki eylemsizlik zaman aşımı](https://docs.microsoft.com/azure/azure-portal/admin-timeout)
+* Microsoft 365 – [Boşta oturum zaman aşımı](/sharepoint/sign-out-inactive-users)
+* Azure AD koşullu erişim- [Kullanıcı oturum açma sıklığı](../conditional-access/howto-conditional-access-session-lifetime.md)
+* Azure portal – [dizin düzeyindeki eylemsizlik zaman aşımı](../../azure-portal/set-preferences.md#change-the-directory-timeout-setting-admin)

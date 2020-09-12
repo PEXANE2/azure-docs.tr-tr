@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 960e480bc3271a24f1fa898e1af6c55bcaaada7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f004be0afc6c73fdabe57e568cd57b51e9abcc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037568"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299691"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub eylemleri ile Azure yay bulut CI/CD
 
 GitHub eylemleri otomatik yazılım geliştirme yaşam döngüsü iş akışını destekler. Azure Spring Cloud için GitHub eylemleri sayesinde deponuzda oluşturmak, test etmek, paketlemek, yayınlamak ve Azure 'a dağıtmak için iş akışları oluşturabilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu örnek, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerektirir.
 
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub deposunu ayarlama ve kimlik doğrulama
@@ -42,7 +42,7 @@ Komut bir JSON nesnesinin çıktısını almalıdır:
 }
 ```
 
-Bu örnek GitHub 'da [Piggy ölçümler](https://github.com/Azure-Samples/piggymetrics) örneğini kullanır.  Örnek, GitHub deposu sayfasını açın ve **Ayarlar** sekmesi ' ne tıklayın. **gizlilikler** menüsünü açın ve **Yeni bir parola Ekle**' ye tıklayın:
+Bu örnek GitHub 'da [Piggy ölçümler](https://github.com/Azure-Samples/piggymetrics) örneğini kullanır.  Örnek çatalla, GitHub deposu sayfasını açın ve **Ayarlar** sekmesi ' ne tıklayın. **Gizli** dizileri menüsünü açın ve **yeni gizli dizi Ekle**' ye tıklayın:
 
  ![Yeni gizli dizi Ekle](./media/github-actions/actions1.png)
 
@@ -164,7 +164,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Maven eklentisi ile dağıtma
-Diğer bir seçenek de Jar 'yi dağıtmak ve uygulama ayarlarını güncelleştirmek için [Maven eklentisini](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven) kullanmaktır. Komut `mvn azure-spring-cloud:deploy` ıdempotent ' dir ve gerekirse otomatik olarak uygulamalar oluşturur. İlgili uygulamaları önceden oluşturmanız gerekmez.
+Diğer bir seçenek de Jar 'yi dağıtmak ve uygulama ayarlarını güncelleştirmek için [Maven eklentisini](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart) kullanmaktır. Komut `mvn azure-spring-cloud:deploy` ıdempotent ' dir ve gerekirse otomatik olarak uygulamalar oluşturur. İlgili uygulamaları önceden oluşturmanız gerekmez.
 
 ```
 name: AzureSpringCloud

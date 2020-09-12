@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 5cd163b4c7514507d2a0563f1254c83dd22a3af2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3405f28d5f306e8370bae72eb5f3f3c406235c3d
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268202"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322033"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınızda Kubernetes kümesinde Azure yayı 'yi etkinleştirme
 
@@ -59,7 +59,7 @@ Kubernetes kümesinde Azure Arc 'ı etkinleştirebilmeniz için, Azure Stack Edg
 
 ## <a name="register-kubernetes-resource-providers"></a>Kubernetes kaynak sağlayıcılarını Kaydet
 
-Kubernetes kümesini Azure Arc aracılığıyla yapılandırmadan önce, aboneliğinizi etkinleştirmeniz ve kaydetmeniz gerekir `Microsoft.Kubernetes` `Microsoft.KubernetesConfiguration` . 
+Kubernetes kümesinde Azure Arc 'ı etkinleştirmeden önce, aboneliğinizi etkinleştirmeniz ve kaydetmeniz gerekir `Microsoft.Kubernetes` `Microsoft.KubernetesConfiguration` . 
 
 1. Bir kaynak sağlayıcısını etkinleştirmek için, Azure portal dağıtım için kullanmayı planladığınız aboneliğe gidin. **Kaynak sağlayıcıları**' na gidin. 
 1. Sağ bölmede, eklemek istediğiniz sağlayıcıları arayın. Bu örnekte, `Microsoft.Kubernetes` ve `Microsoft.KubernetesConfiguration` .
@@ -88,7 +88,7 @@ Ayrıca, kaynak sağlayıcılarını ile de kaydedebilirsiniz `az cli` . Daha fa
 
 1. Hizmet sorumlusu oluşturmak için, aracılığıyla aşağıdaki komutu kullanın `az cli` .
 
-    `az as sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
+    `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
 
     ' De oturum açma hakkında bilgi için `az cli` [Azure Portal Cloud Shell başlatın](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)
 
@@ -142,12 +142,12 @@ Azure Arc yönetimi için Kubernetes kümesini yapılandırmak için aşağıdak
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    Azure Stack Edge cihazında Azure Arc dağıtmak için, [Azure Arc Için desteklenen bir bölge](../azure-arc/kubernetes/overview.md#supported-regions)kullandığınızdan emin olun. Azure Arc Şu anda önizleme aşamasındadır. 
+    Azure Stack Edge cihazında Azure Arc dağıtmak için, [Azure Arc Için desteklenen bir bölge](../azure-arc/kubernetes/overview.md#supported-regions)kullandığınızdan emin olun. Azure Arc Şu anda önizleme aşamasındadır. Komutunu kullanarak cmdlet 'te geçirilecek bölgenin tam adını da belirleyebilirsiniz `az account list-locations` .
     
     Aşağıda bir örnek verilmiştir:
    
     ```powershell
-    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "WestEurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
+    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "westeurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
         [10.128.44.240]: PS>
     ```
     

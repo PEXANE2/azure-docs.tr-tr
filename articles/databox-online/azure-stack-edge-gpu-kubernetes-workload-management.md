@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 38c46bdcce64f726b3a7ddf74e0cfd10a14ba663
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 53bd7a404e4635833b03507e8b5ae93ae40b1c61
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268048"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318990"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızda Kubernetes iş yükü yönetimi
 
@@ -47,7 +47,7 @@ Uygulamaları Azure Stack Edge cihazında dağıtmak için şu adımları izleyi
 
 ![Kubernetes iş yükü dağıtımı](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **Yerel dağıtım**: Bu, `kubectl` Kubernetes 'i dağıtmanıza olanak sağlayan gibi komut satırı erişim aracıdır `yamls` . Dosyayı kullanarak oluşturduğunuz Azure Stack Kenarlarınızın Kubernetes kümesine bağlanırsınız `kubeconfig` . Daha fazla bilgi için, [kubectl aracılığıyla bir Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)konusuna gidin.
+- **Yerel dağıtım**: Bu dağıtım, `kubectl` Kubernetes 'i dağıtmanıza olanak sağlayan gibi komut satırı erişim aracıdır `yamls` . Kubernetes kümesine bir dosya aracılığıyla Azure Stack kenarınızdan erişirsiniz `kubeconfig` . Daha fazla bilgi için, [kubectl aracılığıyla bir Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)konusuna gidin.
 
 - **IoT Edge dağıtımı**: Bu, Azure IoT Hub 'e bağlanan IoT Edge. Ad alanı aracılığıyla Azure Stack Edge cihazınızdan Kubernetes kümesine bağlanırsınız `iotedge` . Bu ad alanında dağıtılan IoT Edge aracıları Azure bağlantısı sağlanmasından sorumludur. `IoT Edge deployment.json`Yapılandırmayı Azure DevOps CI/CD kullanarak uygularsınız. Ad alanı ve IoT Edge yönetimi, bulut operatörü aracılığıyla yapılır.
 
@@ -59,9 +59,9 @@ Uygulamaları dağıtma sırasında aşağıdaki bilgileri göz önünde bulundu
 
 - **Tek veya birden çok tür**: tek bir dağıtım seçeneği veya farklı dağıtım seçenekleri karışımı seçebilirsiniz.
 - **Bulutta yerel**olarak: uygulamalarınıza bağlı olarak, kubectl veya bulut dağıtımı aracılığıyla IoT Edge ve Azure Arc aracılığıyla yerel dağıtım seçeneğini belirleyebilirsiniz. 
-    - Yerel dağıtım, geliştirme senaryoları için daha uygundur. Yerel bir dağıtım seçtiğinizde, Azure Stack Edge cihazınızın dağıtıldığı ağla sınırlı olursunuz.
+    - Yerel bir dağıtım seçtiğinizde, Azure Stack Edge cihazınızın dağıtıldığı ağla sınırlı olursunuz.
     - Dağıtabileceğiniz bir bulut aracınız varsa, bulut operatörüzü dağıtmanız ve bulut yönetimi kullanmanız gerekir.
-- **IoT vs Azure Arc**: dağıtım seçimi, ürün senaryolarınızın amacına de bağlıdır. IoT veya IoT ekosistemi ile daha derin tümleştirme sağlayan uygulamalar veya kapsayıcılar dağıtıyorsanız, uygulamaları dağıtmanın IoT Edge yolunu seçmeniz gerekir. Mevcut Kubernetes dağıtımlarınız varsa, Azure Arc tercih edilen seçenek olacaktır.
+- **IoT vs Azure Arc**: dağıtım seçimi, ürün senaryolarınızın amacına de bağlıdır. IoT veya IoT ekosistemiyle daha derin tümleştirme sağlayan uygulamalar veya kapsayıcılar dağıtıyorsanız, uygulamalarınızı dağıtmak için IoT Edge seçin. Mevcut Kubernetes dağıtımlarınız varsa, Azure Arc tercih edilen seçenek olacaktır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -76,4 +76,4 @@ IoT Edge aracılığıyla bir uygulama dağıtmak için, bkz.:
 
 Azure Arc aracılığıyla bir uygulama dağıtmak için, bkz.:
 
-- [Azure Arc kullanarak bir uygulamayı dağıtın](azure-stack-edge-gpu-deploy-sample-module.md).
+- [Azure Arc kullanarak bir uygulamayı dağıtın](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md).

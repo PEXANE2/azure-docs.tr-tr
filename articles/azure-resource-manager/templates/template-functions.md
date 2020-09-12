@@ -2,13 +2,13 @@
 title: Şablon işlevleri
 description: Değerleri almak, dizeler ve sayı ile çalışmak ve dağıtım bilgilerini almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/01/2020
+ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84331415"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378415"
 ---
 # <a name="arm-template-functions"></a>ARM şablon işlevleri
 
@@ -38,20 +38,20 @@ Kendi işlevlerinizi oluşturmak için, bkz. [Kullanıcı tanımlı işlevler](t
 
 Kaynak Yöneticisi diziler ile çalışmak için çeşitli işlevler sağlar.
 
-* [dizide](template-functions-array.md#array)
+* [array](template-functions-array.md#array)
 * [Concat](template-functions-array.md#concat)
-* [vardır](template-functions-array.md#contains)
+* [contains](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
 * [empty](template-functions-array.md#empty)
 * [adı](template-functions-array.md#first)
 * [imin](template-functions-array.md#intersection)
 * [soyadına](template-functions-array.md#last)
-* [uzunluklu](template-functions-array.md#length)
+* [length](template-functions-array.md#length)
 * [Min](template-functions-array.md#min)
 * [Biçimlendir](template-functions-array.md#max)
 * [aralığı](template-functions-array.md#range)
 * [Şimdilik](template-functions-array.md#skip)
-* [almanız](template-functions-array.md#take)
+* [take](template-functions-array.md#take)
 * [birleşim](template-functions-array.md#union)
 
 <a id="coalesce" aria-hidden="true"></a>
@@ -66,7 +66,7 @@ Kaynak Yöneticisi diziler ile çalışmak için çeşitli işlevler sağlar.
 Kaynak Yöneticisi, şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
 
 * [Coalesce](template-functions-comparison.md#coalesce)
-* [eşittir](template-functions-comparison.md#equals)
+* [equals](template-functions-comparison.md#equals)
 * [büyüktür](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
 * [büyüktür](template-functions-comparison.md#greater)
@@ -88,7 +88,7 @@ Kaynak Yöneticisi, tarihlerle çalışmak için aşağıdaki işlevleri sağlar
 Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin değerlerini almak için aşağıdaki işlevleri sağlar:
 
 * [dağıtmak](template-functions-deployment.md#deployment)
-* [ortamınızın](template-functions-deployment.md#environment)
+* [environment (ortam)](template-functions-deployment.md#environment)
 * [parametrelere](template-functions-deployment.md#parameters)
 * [değişkenlerinin](template-functions-deployment.md#variables)
 
@@ -102,9 +102,9 @@ Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin d
 
 Kaynak Yöneticisi mantıksal koşullarla çalışmak için aşağıdaki işlevleri sağlar:
 
-* [ve](template-functions-logical.md#and)
+* [and](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
-* [kullandıysanız](template-functions-logical.md#if)
+* [if](template-functions-logical.md#if)
 * [başlatılmadı](template-functions-logical.md#not)
 * [veya](template-functions-logical.md#or)
 
@@ -140,11 +140,11 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 
 Kaynak Yöneticisi nesneleriyle çalışmak için çeşitli işlevler sağlar.
 
-* [vardır](template-functions-object.md#contains)
+* [contains](template-functions-object.md#contains)
 * [empty](template-functions-object.md#empty)
 * [imin](template-functions-object.md#intersection)
 * [nesnesinde](template-functions-object.md#json)
-* [uzunluklu](template-functions-object.md#length)
+* [length](template-functions-object.md#length)
 * [birleşim](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
@@ -167,6 +167,7 @@ Kaynak Yöneticisi, kaynak değerlerini almak için aşağıdaki işlevleri sağ
 * [ListKeys 'i al](template-functions-resource.md#listkeys)
 * [Listgizlilikler](template-functions-resource.md#list)
 * [Listele](template-functions-resource.md#list)
+* [pickZones](template-functions-resource.md#pickzones)
 * [sağlayıcılarla](template-functions-resource.md#providers)
 * [başvurunun](template-functions-resource.md#reference)
 * [resourceGroup](template-functions-resource.md#resourcegroup) -yalnızca bir kaynak grubuna yapılan dağıtımlarda kullanılabilir.
@@ -214,7 +215,7 @@ Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
 * [Concat](template-functions-string.md#concat)
-* [vardır](template-functions-string.md#contains)
+* [contains](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
 * [empty](template-functions-string.md#empty)
@@ -225,7 +226,7 @@ Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 * [IndexOf](template-functions-string.md#indexof)
 * [soyadına](template-functions-string.md#last)
 * [LastIndexOf](template-functions-string.md#lastindexof)
-* [uzunluklu](template-functions-string.md#length)
+* [length](template-functions-string.md#length)
 * [newGuid](template-functions-string.md#newguid)
 * [Asma sol](template-functions-string.md#padleft)
 * [değiştirin](template-functions-string.md#replace)
@@ -234,7 +235,7 @@ Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 * [startsWith](template-functions-string.md#startswith)
 * [string](template-functions-string.md#string)
 * [dizeden](template-functions-string.md#substring)
-* [almanız](template-functions-string.md#take)
+* [take](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
 * [toUpper](template-functions-string.md#toupper)
 * [kırpma](template-functions-string.md#trim)

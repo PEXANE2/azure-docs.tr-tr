@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: 0d98afb97113f222b9ff0edc8405ea75ad10a3fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607273"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322084"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Ödeme eşikleri, yöntemleri ve zaman çerçeveleri
 
@@ -78,7 +78,7 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Fildişi Sahili (Côte d’Ivoire) | Yes | Yes | Yes | Hayır |
 | Hırvatistan | Yes | Yes | Yes | Hayır |
 | Kıbrıs | Yes | Yes | Yes | Yes |
-| Çek Cumhuriyeti | Yes | Yes | Yes | Yes |
+| Czechia | Yes | Yes | Yes | Yes |
 | Danimarka | Yes | Yes | Yes | Yes |
 | Dominika | Yes | Yes | Hayır | Yes |
 | Dominik Cumhuriyeti | Yes | Yes | Yes | Yes |
@@ -123,7 +123,6 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Liechtenstein | Yes | Yes | Yes | Yes |
 | Litvanya | Yes | Yes | Yes | Hayır |
 | Lüksemburg | Yes | Yes | Yes | Yes |
-| Makedonya | Hayır | Yes | Yes | Hayır |
 | Madagaskar | Yes | Yes | Yes | Hayır |
 | Malavi | Yes | Yes | Yes | Yes |
 | Malezya | Yes | Yes | Yes | Yes |
@@ -142,6 +141,7 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Nikaragua | Yes | Yes | Yes | Yes |
 | Nijer | Yes | Yes | Yes | Hayır |
 | Nijerya | Yes | Yes | Yes | Hayır |
+| Kuzey Makedonya | Hayır | Yes | Yes | Hayır |
 | Norveç | Yes | Yes | Yes | Yes |
 | Umman | Yes | Yes | Yes | Yes |
 | Pakistan | Yes | Yes | Yes | Hayır |

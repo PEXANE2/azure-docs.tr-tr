@@ -3,12 +3,12 @@ title: MABS ile Hyper-V sanal makinelerini yedekleme
 description: Bu makale, Microsoft Azure Backup sunucusu (MABS) kullanarak sanal makinelerin yedeklenmesi ve kurtarılması için prosedürleri içerir.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: d3648bf6c980049a2e3ccfa90a777bddc1748dc9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fc4e34e11e2474521082b1c23f600e9a5ca7a9fe
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011948"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378007"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Sunucusu ile Hyper-V sanal makinelerini yedekleme
 
@@ -78,7 +78,7 @@ Bunlar, MABS ile Hyper-V sanal makinelerini yedeklemeye yönelik önkoşullardı
 
 2. MABS koruma aracısını Hyper-V sunucusunda veya Hyper-V küme düğümlerinde ayarlayın. Konuk düzeyinde yedekleme yapıyorsanız, aracıyı Konuk düzeyinde yedeklemek istediğiniz VM 'Lere yükleyeceksiniz.
 
-3. Mabs yönetici **konsolunda koruma**  >  **koruma grubu oluştur** ' a tıklayarak **yeni koruma grubu oluşturma** Sihirbazı ' nı açın.
+3. Mabs yönetici **konsolunda koruma**  >  **koruma grubu oluştur** ' u seçerek **yeni koruma grubu oluşturma** Sihirbazı ' nı açın.
 
 4. **Grup Üyelerini Seçin** sayfasında, üzerinde bulundukları Hyper-V konak sunucularından korumak istediğiniz VM’leri seçin. Aynı koruma ilkesine sahip olacak tüm VM’leri tek bir koruma grubuna koymanızı öneririz. Alanı verimli kullanmak için birlikte bulundurmayı etkinleştirin. Birlikte bulundurma, aynı diskte veya bant deposunda bulunan farklı koruma gruplarında veri bulundurmanıza olanak tanır. Böylece birden çok veri kaynağının tek bir çoğaltması ve kurtarma noktası birimi olur.
 
@@ -110,7 +110,7 @@ MABS Windows Server 2012 R2 veya üzeri bir sürümde çalışıyorsa, çoğaltm
 
 **Barındırıcı yedeği sağlar** - Barındırılan bir veri merkezini bir çoğaltma site olarak kullanabilirsiniz; ikincil bir veri merkezine gerek kalmaz. Bu durumda, barındırma sağlayıcı SLA çoğaltma sanal makinelerinin tutarlı yedeklemesini gerektirir.
 
-Bir yük devretme başlatılana kadar bir çoğaltma sanal makine kapalıdır ve VSS, bir çoğaltma sanal makine için uygulamada tutarlı olan bir yedeklemeyi garanti edemez. Bu nedenle çoğaltma sanal makinesinin yedeklemesi yalnızca kilitlenme tutarlı olur. Kilitlenme tutarlılığı garanti edilemiyorsa yedekleme başarısız olur ve bu birkaç koşulda gerçekleşebilir:
+Bir yük devretme başlatılana kadar bir çoğaltma sanal makine kapalıdır ve VSS, bir çoğaltma sanal makine için uygulamada tutarlı olan bir yedeklemeyi garanti edemez. Bu nedenle, bir çoğaltma sanal makinesinin yedeklemesi yalnızca kilitlenme tutarlı olur. Kilitlenme tutarlılığı garanti edilemiyorsa yedekleme başarısız olur ve bu birkaç koşulda gerçekleşebilir:
 
 - Çoğaltma sanal makinesi iyi durumda değildir ve kritik durumda.
 
@@ -128,13 +128,13 @@ Yedeklenen bir sanal makineyi kurtardığınızda, sanal makineyi ve özgül kur
 
 1. MABS Yönetici Konsolu 'nda, VM 'nin adını yazın veya korunan öğeler listesini genişletin ve kurtarmak istediğiniz VM 'yi seçin.
 
-2. **Kurtarma noktaları** bölmesinde, takvimin üzerinde, bulunan kurtarma noktalarını görmek için herhangi bir tarihe tıklayın. Sonra, **Yol** bölmesinde, Kurtarma sihirbazında kullanmak istediğiniz kurtarma noktasını seçin.
+2. Kurtarma **noktaları** bölmesinde, takvim üzerinde, kullanılabilir kurtarma noktalarını görmek için herhangi bir tarih seçin. Sonra, **Yol** bölmesinde, Kurtarma sihirbazında kullanmak istediğiniz kurtarma noktasını seçin.
 
-3. Kurtarma Sihirbazı'nı açmak için **Eylemler** menüsünden **Kurtar**'a tıklayın.
+3. **Eylemler** menüsünde, Kurtarma Sihirbazı 'nı açmak için **kurtar** ' ı seçin.
 
-    Seçtiğiniz VM ve kurtarma noktası, **Kurtarma Seçimini İnceleyin** ekranında görünür. **İleri**’ye tıklayın.
+    Seçtiğiniz VM ve kurtarma noktası, **Kurtarma Seçimini İnceleyin** ekranında görünür. **İleri**’yi seçin.
 
-4. **Kurtarma Türünü Seçin** ekranında, verileri geri yüklemek istediğiniz yeri seçin ve **İleri**'ye tıklayın.
+4. **Kurtarma türü seçin** ekranında, verileri geri yüklemek istediğiniz yeri seçin ve ardından **İleri**' yi seçin.
 
     - **Özgün örneğe kurtar**: Özgün örneğe kurtardığınızda, özgün VHD silinir. MABS, VHD 'yi ve diğer yapılandırma dosyalarını Hyper-V VSS yazıcı kullanarak özgün konuma kurtarır. Kurtarma işleminin sonunda, sanal makineler yüksek oranda kullanılabilir olarak kalır.
         Kurtarma için kaynak grubunun mevcut olması gerekir. Mevcut değilse, başka bir konuma kurtarın ve ardından sanal makineyi yüksek oranda kullanılabilir hale getirin.
@@ -143,13 +143,13 @@ Yedeklenen bir sanal makineyi kurtardığınızda, sanal makineyi ve özgül kur
 
     - **Ağ klasörüne kopyala**: Mabs, Hyper-V sanal makinelerinin ana bilgisayar düzeyindeki yedeğinden dosya, klasör, birim ve sanal sabit diskleri (VHD), bir ağ paylaşımında veya mabs korumalı sunucusundaki bir birime öğe düzeyinde kurtarmanıza olanak sağlayan öğe düzeyinde kurtarmayı (ILR) destekler. Öğe düzeyinde kurtarma gerçekleştirmek için MABS koruma aracısının Konuk içinde yüklü olması gerekmez. Bu seçeneği işaretlerseniz, Kurtarma Sihirbazı, hedefi ve hedef yolunu tanımlamak için size ek bir ekran sunar.
 
-5. **Kurtarma Seçeneklerini Belirtin**'de, kurtarma seçeneklerini yapılandırın ve **İleri**'ye tıklayın:
+5. **Kurtarma seçeneklerini belirtin** bölümünde kurtarma seçeneklerini yapılandırın ve Ileri ' **yi**seçin:
 
-    - Bir VM'yi düşük bant genişliği üzerinden kurtarıyorsanız, **Ağ bant genişliği kullanımı azaltma**'yı etkinleştirmek için **Değiştir**'e tıklayın. Azaltma seçeneğini açtıktan sonra, kullandırmak istediğiniz bant genişliği miktarını ve bu bant genişliğinin kullanılabileceği zamanı belirtebilirsiniz.
-    - Ağınızı yapılandırdıysanız, **Donanım anlık görüntüleri kullanan SAN tabanlı kurtarmayı etkinleştir**'i seçin.
+    - Düşük bant genişliğine sahip bir sanal makineyi kurtarıyorsanız, **ağ bant genişliği kullanımını azaltmayı**etkinleştirmek için **Değiştir** ' i seçin. Azaltma seçeneğini açtıktan sonra, kullandırmak istediğiniz bant genişliği miktarını ve bu bant genişliğinin kullanılabileceği zamanı belirtebilirsiniz.
+    - Ağınızı yapılandırdıysanız, **donanım anlık görüntülerini kullanarak San tabanlı kurtarmayı etkinleştir** ' i seçin.
     - Kurtarma işlemi tamamlandığında e-posta bildirimleri gönderilmesini istiyorsanız, **Kurtarma tamamlandığında bir e-posta gönder**'i seçin ve e-posta adreslerini girin.
 
-6. Özet ekranında, tüm ayrıntıların doğru olduğundan emin olun. Ayrıntılar doğru değilse veya bir değişiklik yapmak istiyorsanız, **Geri**'ye tıklayın. Ayarları karşıladıysanız kurtarma işlemini başlatmak için **kurtar** ' ı tıklatın.
+6. Özet ekranında, tüm ayrıntıların doğru olduğundan emin olun. Ayrıntılar doğru değilse veya bir değişiklik yapmak istiyorsanız, **geri**' yi seçin. Ayarları karşıladıysanız kurtarma işlemini başlatmak için **kurtar** ' ı seçin.
 
 7. **Kurtarma Durumu** ekranı kurtarma işi hakkında bilgi sağlar.
 

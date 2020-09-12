@@ -1,0 +1,268 @@
+---
+title: Desteklenen yayımcı ülkeleri ve bölgeleri
+description: Microsoft Commercial Market 'e teklif yayımlayacağınız ülkelerin listesi.
+ms.reviewer: nanef
+ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
+ms.custom: references_regions
+ms.topic: how-to
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 09/02/2020
+ms.openlocfilehash: 393b71e78c59d126b24da2f1fd354ccfadf6825a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323006"
+---
+# <a name="supported-publisher-countries-and-regions"></a>Desteklenen yayımcı ülkeleri ve bölgeleri
+
+Microsoft Commercial Market 'e bir teklif yayımlamak için, aşağıdaki ülkelerden veya bölgelerden birine sahip olmanız gerekir.
+
+- Afganistan
+- Bir i Adaları
+- Arnavutluk
+- Cezayir
+- Amerikan Samoası
+- Andorra
+- Angola
+- Anguilla
+- Antarktika
+- Antigua ve Barbuda
+- Arjantin
+- Ermenistan
+- Aruba
+- Avustralya
+- Avusturya
+- Azerbaycan
+- Bahamalar
+- Bahreyn
+- Bangladeş
+- Barbados
+- Belarus
+- Belçika
+- Belize
+- Benin
+- Bermuda
+- Butan
+- Bolivya
+- Bonaire, Sint Eustatius ve Saba
+- Bosna-Hersek
+- Botsvana
+- Bouvet Adası
+- Brezilya
+- Britanya Hint Okyanusu Toprakları
+- Britanya Virjin Adaları
+- Brunei
+- Bulgaristan
+- Burkina Faso
+- Burundi
+- Cabo Verde
+- Kamboçya
+- Kamerun
+- Kanada
+- Cayman Adaları
+- Orta Afrika Cumhuriyeti
+- Çad
+- Şili
+- Çin
+- Christmas Adası
+- Cocos (Keeling) Adaları
+- Kolombiya
+- Komorlar
+- Kongo Cumhuriyeti
+- Kongo (KDC)
+- Cook Adaları
+- Kosta Rika
+- Hırvatistan
+- Curaçao
+- Kıbrıs
+- Fildişi Sahili
+- Czechia
+- Danimarka
+- Cibuti
+- Dominika
+- Dominik Cumhuriyeti
+- Ekvador
+- Mısır
+- El Salvador
+- Ekvator Ginesi
+- Eritre
+- Estonya
+- Etiyopya
+- Falkland Adaları
+- Faroe Adaları
+- Fiji
+- Finlandiya
+- Fransa
+- Fransız Guyanası
+- Fransız Polinezyası
+- Fransız Güney Toprakları
+- Gabon
+- Gambiya
+- Gürcistan
+- Almanya
+- Gana
+- Cebelitarık
+- Yunanistan
+- Grönland
+- Grenada
+- Guadeloupe
+- Guam
+- Guatemala
+- Guernsey
+- Gine
+- Gine-Bissau
+- Guyana
+- Haiti
+- Heard Adası ve McDonald Adaları
+- Honduras
+- Hong Kong ÖİB
+- Macaristan
+- İzlanda
+- Hindistan
+- Endonezya
+- Irak
+- İrlanda
+- Man Adası
+- İsrail
+- İtalya
+- Jamaika
+- Japonya
+- Jersey
+- Ürdün
+- Kazakistan
+- Kenya
+- Kiribati
+- Güney Kore
+- Kosova
+- Kuveyt
+- Kırgızistan
+- Laos
+- Letonya
+- Lübnan
+- Lesotho
+- Liberya
+- Libya
+- Liechtenstein
+- Litvanya
+- Lüksemburg
+- Makao ÖİB
+- Madagaskar
+- Malavi
+- Malezya
+- Maldivler
+- Mali
+- Malta
+- Marshall Adaları
+- Martinique
+- Moritanya
+- Mauritius
+- Mayotte
+- Meksika
+- Mikronezya
+- Moldova
+- Monako
+- Moğolistan
+- Karadağ
+- Montserrat
+- Fas
+- Mozambik
+- Myanmar
+- Namibya
+- Nauru
+- Nepal
+- Hollanda
+- Yeni Kaledonya
+- Yeni Zelanda
+- Nikaragua
+- Nijer
+- Nijerya
+- Niue
+- Norfolk Adası
+- Kuzey Makedonya
+- Kuzey Mariana Adaları
+- Norveç
+- Umman
+- Pakistan
+- Palau
+- Filistin Yönetimi
+- Panama
+- Papua Yeni Gine
+- Paraguay
+- Peru
+- Filipinler
+- Pitcairn Adaları
+- Polonya
+- Portekiz
+- Porto Riko
+- Katar
+- Romanya
+- Rusya
+- Ruanda
+- Reunion
+- Saba
+- Saint Barthélimy
+- Saint Kitts ve Nevis
+- Saint Lucia
+- Saint Martin
+- Saint Pierre ve Miquelon
+- Saint Vincent ve Grenadinler
+- Samoa
+- San Marino
+- Suudi Arabistan
+- Senegal
+- Sırbistan
+- Seyşeller
+- Sierra Leone
+- Singapur
+- Sint Eustatius
+- Sint Maarten
+- Slovakya
+- Slovenya
+- Solomon Adaları
+- Somali
+- Güney Afrika
+- Güney Georgia ve Güney Sandwich Adaları
+- Güney Sudan
+- İspanya
+- Sri Lanka
+- Saint Helena, Ascension ve Tristan da Cunha
+- Surinam
+- Svalbard ve Jan Mayen
+- Svaziland
+- İsveç
+- İsviçre
+- Sao Tome ve Principe
+- Tayvan
+- Tacikistan
+- Tanzanya
+- Tayland
+- Timor-Leste
+- Togo
+- Tokelau
+- Tonga
+- Trinidad ve Tobago
+- Tunus
+- Türkiye
+- Türkmenistan
+- Turks ve Caicos Adaları
+- Tuvalu
+- ABD Küçük Harici Adaları
+- ABD Virgin Adaları
+- Uganda
+- Ukrayna
+- Birleşik Arap Emirlikleri
+- Birleşik Krallık
+- Birleşik Devletler
+- Uruguay
+- Özbekistan
+- Vanuatu
+- Vatikan
+- Venezuela
+- Vietnam
+- Wallis ve Futuna
+- Yemen
+- Zambiya
+- Zimbabve

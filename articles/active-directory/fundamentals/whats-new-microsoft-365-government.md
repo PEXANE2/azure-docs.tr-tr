@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a7e5e810e509a97b6010218532f6e7dff0b73f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0efc4bc8f89b0fbefbba171d80a3f8a1ed5e7f6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425553"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318939"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 Kamu 'daki Azure Active Directory yenilikleri
 
@@ -53,22 +53,22 @@ Aşağıdaki tabloda tüm müşterilerin uç noktaları gösterilmektedir:
 
 | Name | Uç nokta ayrıntıları |
 |------|------------------|
-| Portallar |Microsoft Azure Kamu:https://portal.azure.us<p>Microsoft 365 Kamu – GCC High:https://portal.office365.us<p>Microsoft 365 Kamu – DoD:https://portal.apps.mil |
+| Portallar |Microsoft Azure Kamu: https://portal.azure.us<p>Microsoft 365 Kamu – GCC High: https://portal.office365.us<p>Microsoft 365 Kamu – DoD: https://portal.apps.mil |
 | Azure Active Directory yetkilisi uç noktası | https://login.microsoftonline.us |
 | Microsoft 365 kamu için Microsoft Graph API-GCC High | https://graph.microsoft.us |
 | Microsoft 365 kamu için Microsoft Graph API-DoD | https://dod-graph.microsoft.us |
-| Azure Kamu hizmetleri uç noktaları | Ayrıntılar için bkz. [Azure Kamu Geliştirici Kılavuzu](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
-| Microsoft 365 Kamu-GCC yüksek uç noktaları | Ayrıntılar için bkz. [Office 365 ABD devlet GCC yüksek uç noktaları](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
-| Microsoft 365 Kamu-DoD | Ayrıntılar için bkz. [Office 365 ABD kamu DOD uç noktaları](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
+| Azure Kamu hizmetleri uç noktaları | Ayrıntılar için bkz. [Azure Kamu Geliştirici Kılavuzu](../../azure-government/documentation-government-developer-guide.md) |
+| Microsoft 365 Kamu-GCC yüksek uç noktaları | Ayrıntılar için bkz. [Office 365 ABD devlet GCC yüksek uç noktaları](/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
+| Microsoft 365 Kamu-DoD | Ayrıntılar için bkz. [Office 365 ABD kamu DOD uç noktaları](/office365/enterprise/office-365-u-s-government-dod-endpoints) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için şu makalelere bakın:
 
-- [Azure Government nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
+- [Azure Kamu nedir?](../../azure-government/documentation-government-welcome.md)
 
 - [Azure Kamu AAD yetkilisi uç noktası güncelleştirmesi](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
 
 - [ABD devlet bulutu 'nda Microsoft Graph uç noktalar](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
 
-- [Office 365 ABD kamu GCC High ve DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
+- [Office 365 ABD kamu GCC High ve DoD](/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)

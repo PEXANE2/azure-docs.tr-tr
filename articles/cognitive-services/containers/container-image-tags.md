@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 2a57c5244630c2328320d7d99eed98c892d49897
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4a98007917e95b1880661fe35bfd3f85f633e9a3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230764"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321778"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure bilişsel hizmetler kapsayıcı görüntüsü etiketleri
 
@@ -997,6 +997,32 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 | `1.0.0-amd64-zh-cn-huihuirus-preview`       | `zh-CN`Yerel ayar ve `zh-CN-HuihuiRUS` sesle kapsayıcı görüntüsü.       |
 | `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | `zh-CN`Yerel ayar ve `zh-CN-Kangkang-Apollo` sesle kapsayıcı görüntüsü. |
 | `1.0.0-amd64-zh-cn-yaoyao-apollo-preview`   | `zh-CN`Yerel ayar ve `zh-CN-Yaoyao-Apollo` sesle kapsayıcı görüntüsü.   |
+
+## <a name="neural-text-to-speech"></a>Sinir metin okuma
+
+[Sinir Text-to-Speech] [SP-NTTS] kapsayıcı görüntüsü `containerpreview.azurecr.io` kapsayıcı kayıt defterinde bulunabilir. Depo içinde bulunur `microsoft` ve olarak adlandırılır `cognitive-services-neural-text-to-speech` . Tam kapsayıcı görüntü adı, olur `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech` .
+
+Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
+
+| Resim etiketleri                                  | Notlar                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `latest`                                    | `en-US`Yerel ayar ve `en-US-AriaNeural` sesle kapsayıcı görüntüsü.      |
+| `1.1.0-amd64-de-de-katjaneural-preview`     | `de-DE`Yerel ayar ve `de-DE-KatjaNeural` sesle kapsayıcı görüntüsü.     |
+| `1.1.0-amd64-en-au-natashaneural-preview`   | `en-AU`Yerel ayar ve `en-AU-NatashaNeural` sesle kapsayıcı görüntüsü.   |
+| `1.1.0-amd64-en-ca-claraneural-preview`     | `en-CA`Yerel ayar ve `en-CA-ClaraNeural` sesle kapsayıcı görüntüsü.     |
+| `1.1.0-amd64-en-gb-libbyneural-preview`     | `en-GB`Yerel ayar ve `en-GB-LibbyNeural` sesle kapsayıcı görüntüsü.     |
+| `1.1.0-amd64-en-gb-mianeural-preview`       | `en-GB`Yerel ayar ve `en-GB-MiaNeural` sesle kapsayıcı görüntüsü.       |
+| `1.1.0-amd64-en-us-arianeural-preview`      | `en-US`Yerel ayar ve `en-US-AriaNeural` sesle kapsayıcı görüntüsü.      |
+| `1.1.0-amd64-en-us-guyneural-preview`       | `en-US`Yerel ayar ve `en-US-GuyNeural` sesle kapsayıcı görüntüsü.       |
+| `1.1.0-amd64-es-es-elviraneural-preview`    | `es-ES`Yerel ayar ve `es-ES-ElviraNeural` sesle kapsayıcı görüntüsü.    |
+| `1.1.0-amd64-es-mx-dalianeural-preview`     | `es-MX`Yerel ayar ve `es-MX-DaliaNeural` sesle kapsayıcı görüntüsü.     |
+| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | `fr-CA`Yerel ayar ve `fr-CA-SylvieNeural` sesle kapsayıcı görüntüsü.    |
+| `1.1.0-amd64-fr-fr-deniseneural-preview`    | `fr-FR`Yerel ayar ve `fr-FR-DeniseNeural` sesle kapsayıcı görüntüsü.    |
+| `1.1.0-amd64-it-it-elsaneural-preview`      | `it-IT`Yerel ayar ve `it-IT-ElsaNeural` sesle kapsayıcı görüntüsü.      |
+| `1.1.0-amd64-ja-jp-nanamineural-preview`    | `ja-JP`Yerel ayar ve `ja-JP-NanamiNeural` sesle kapsayıcı görüntüsü.    |
+| `1.1.0-amd64-ko-kr-sunhineural-preview`     | `ko-KR`Yerel ayar ve `ko-KR-SunHiNeural` sesle kapsayıcı görüntüsü.     |
+| `1.1.0-amd64-pt-br-franciscaneural-preview` | `pt-BR`Yerel ayar ve `pt-BR-FranciscaNeural` sesle kapsayıcı görüntüsü. |
+| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | `zh-CN`Yerel ayar ve `zh-CN-XiaoxiaoNeural` sesle kapsayıcı görüntüsü.  |
 
 ## <a name="key-phrase-extraction"></a>Anahtar İfade Ayıklama
 

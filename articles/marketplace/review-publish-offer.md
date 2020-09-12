@@ -1,5 +1,5 @@
 ---
-title: Microsoft Commercial Market 'e yönelik bir teklifi gözden geçirin ve yayımlayın
+title: Microsoft Commercial Market 'e yönelik bir teklifi İnceleme ve yayımlama
 description: Teklifinizi önizlemek için Iş Ortağı Merkezi 'ni kullanın, teklifinizin önizlemesini yapın ve Microsoft ticari Market ' te yayımlayın.
 ms.reviewer: dannyevers
 ms.service: marketplace
@@ -8,60 +8,51 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: 53e5331ab36d5466bd5cdb495ac505dae29e57bf
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142307"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375898"
 ---
-# <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ticari Market 'e yönelik bir teklifi gözden geçirin ve yayımlayın
+# <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ticari Market 'e yönelik bir teklifi İnceleme ve yayımlama
 
-Bu makalede, Iş Ortağı Merkezi 'ni kullanarak teklifinizin önizlemesini nasıl göndereceğiniz, teklifinizin önizlemesinin nasıl yapılacağı ve daha sonra Microsoft Commercial Market 'te yayımlayacağınız gösterilmektedir. Yayımlama adımlarında ilerlerken yayımlama durumunuzu nasıl denetliyoruz de ele alınmaktadır. Yayımlamak istediğiniz bir teklifi önceden oluşturmuş olmanız gerekir.
+Bu makalede, Iş Ortağı Merkezi 'ni kullanarak kendi teklifinizi yayınlama, teklifinizin önizlemesini oluşturma ve ardından ticari Market 'te yayımlama işlemlerinin nasıl yapılacağı gösterilmektedir. Yayımlama adımlarında ilerlerken yayımlama durumunuzu nasıl denetliyoruz de ele alınmaktadır. Yayımlamak istediğiniz bir teklifi önceden oluşturmuş olmanız gerekir.
 
-## <a name="go-to-your-offer-in-the-commercial-marketplace"></a>Ticari Market 'teki teklifinizi ziyaret edin
+## <a name="offer-status"></a>Teklif durumu
 
-1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
-3. **Genel bakış** sekmesinde, **teklifler**altında, her teklifin **durum** sütununda aşağıdaki durum göstergelerden biri görüntülenir.
+Teklif durumunuzu, [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)' nde ticari Market panosunun **genel bakış** sekmesinde gözden geçirebilirsiniz. Her teklifin **durum** sütununda aşağıdaki durum göstergelerden biri görüntülenir.
 
-    | Durum | Açıklama |
-    | ------------ | ------------- |
-    | Taslak | Teklif oluşturuldu ancak yayımlanmadı. |
-    | Yayımlama devam ediyor | Teklif, yayımlama sürecinde bu şekilde çalışır. |
-    | İlgilenilmesi gerekiyor | Sertifika sırasında veya başka bir yayımlama aşamasında kritik bir sorun tespit ettik. |
-    | Önizleme | Artık, yayımcı tarafından nihai bir doğrulamayı beklemiş olan teklifi sertifikalandırdık. Teklifi canlı yayımlamak için **canlı git** ' i seçin. |
-    | Canlı | Teklif, Market 'te canlı olur ve müşteriler tarafından görülebilir ve elde edilebilir. |
-    | Satışı durdur bekleniyor | Yayımcı bir teklif veya planda "satışı Durdur" seçeneğini seçti, ancak eylem henüz tamamlanmadı. |
-    | Market 'te yok | Market 'te daha önce yayınlanmış bir teklif kaldırılmıştır. |
-    |||
+| Durum | Açıklama |
+| ------------ | ------------- |
+| Taslak | Teklif oluşturuldu ancak yayımlanmadı. |
+| Yayımlama devam ediyor | Teklif, yayımlama sürecinde bu şekilde çalışır. |
+| İlgilenilmesi gerekiyor | Sertifika sırasında veya başka bir yayımlama aşamasında kritik bir sorun tespit ettik. |
+| Önizleme | Artık, yayımcı tarafından nihai bir doğrulamayı beklemiş olan teklifi sertifikalandırdık. Teklifi canlı yayımlamak için **canlı git** ' i seçin. |
+| Canlı | Teklif, Market 'te canlı olur ve müşteriler tarafından görülebilir ve elde edilebilir. |
+| Satışı durdur bekleniyor | Yayımcı bir teklif veya planda "satışı Durdur" seçeneğini seçti, ancak eylem henüz tamamlanmadı. |
+| Market 'te yok | Market 'te daha önce yayınlanmış bir teklif kaldırılmıştır. |
+|||
 
-4. **Teklif diğer adı** sütununda, önizlemek ve yayınlamak istediğiniz teklifi seçin.
+## <a name="validation-and-publishing-steps"></a>Doğrulama ve yayımlama adımları
 
-## <a name="submit-your-offer-to-preview"></a>Teklifinizi önizlemeye sunun
-
-1. Teklifinizi önizlemeye göndermek için portalın sağ üst köşesinde **gözden geçir ve Yayımla** ' yı seçin. **İnceleme ve yayımlama** sayfası görüntülenir.
-1. Her bir sayfanın **durum** sütununun **tamamlandığını**belirttiğinizden emin olun. Olası üç durum aşağıdaki gibidir:
+Yayımlamaya yönelik bir teklif göndermeye hazırsanız, portalın sağ üst köşesinde **gözden geçir ve Yayımla** ' yı seçin. **İnceleme ve yayımlama** sayfasında, teklifiniz için her sayfanın durumu gösterilir ve bu, aşağıdakilerden biri olabilir:
 
    - **Başlatılmamış** – sayfa tamamlanmadı.
    - **Tamamlanmamış** – sayfada gerekli bilgiler eksik veya düzeltilmesi gereken hatalar var. Sayfaya dönüp güncelleştirmeniz gerekir.
    - **Tamam** – sayfa tamamlanmıştır. Gerekli tüm veriler sağlanmış ve hata yok.
 
-1. Sayfaların herhangi birinde **tamamlanmamış**bir durum varsa, **sayfa** sütununda sayfa adını seçin, sorunu düzeltin, sayfayı kaydedin ve ardından **gözden geçir ve Yayımla** ' yı seçerek bu sayfaya geri dönün.
-1. Tüm sayfalar tamamlandıktan sonra, **sertifika notları** kutusunda, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın. Uygulamanızı anlamak için yardımcı olan tüm ek notları sağlayın.
-1. Teklifi yayımlamaya göndermek için **Yayımla**' yı seçin. **Teklif genel bakış** sayfası açılır ve yayımlama durumunu gösterir.
+Sayfaların herhangi birinde **tamamlanmamış**bir durum varsa, söz konusu sayfadaki sorunu düzeltmeniz ve sonra durumu şimdi **Tamam**olarak gösterir durumunu onaylamak için **İnceleme ve yayımlama** sayfasına geri dönmeniz gerekir. Bazı teklif türleri test gerektirir. Bu durumda, sertifika ekibine yönelik test yönergeleri ve uygulamanızı anlamak için yararlı olan tüm ek notlar sağlamanız gereken **sertifika alanı için bir not** görürsünüz.
 
-## <a name="validation-and-publishing-steps"></a>Doğrulama ve yayımlama adımları
-
-**Yayımla**' yı seçtikten sonra doğrulama ve yayımlama işlemi sırasıyla devam ediyor. En yaygın yayımlama süreci bu tabloda gösterilmiştir:
+Tüm sayfalar tamamlandıktan ve ilgili test notlarını girdikten sonra, doğrulama ve yayımlama işlemlerine başlamak için **Yayımla** ' yı seçin. Aşamalar ve genel sıra, yayımladığınız teklifin türüne bağlı olarak farklılık gösterebilir. Aşağıdaki tabloda, olası bir yayımlama akışı gösterilmektedir. Her aşama aşağıdaki bölümlerde daha ayrıntılı olarak açıklanmıştır.
 
 | Aşama | Ne olur? |
 | ------------ | ------------- | ------------- |
-| Otomatik doğrulama | Otomatik doğrulama kümesini işliyoruz. |
-| Sertifikasyon | El ile doğrulama yaptık. |
-| Önizleme oluşturma | Teklif önizlemeniz için liste sayfası önizleme bağlantısına sahip olan herkes tarafından kullanılabilir. Teklifiniz Microsoft (transactable) üzerinden satılıyorsa, yalnızca teklifinizin **ön izleme İzleyicisi** sayfasında belirttiğiniz hedef kitle, test için teklif satın alabilir ve bu teklifi erişebilir. |
-| Yayımcı oturumu kapatma | Teklifinizi önizlemenizi ve onaylamanıza yönelik bir istek içeren bir e-posta göndereceğiz. |
-| Yayımla | Önizleme teklifinin ticari Market 'e canlı olarak yayımlandığını doğrulamak için bir dizi adımı çalıştırdık. |
+| [Otomatik doğrulama](#automated-validation-phase) | Otomatik doğrulama kümesini işliyoruz. |
+| [Sertifika](#certification-phase) | El ile doğrulama yaptık. |
+| [Önizleme oluşturma](#preview-creation-phase) | Teklif önizlemeniz için liste sayfası önizleme bağlantısına sahip olan herkes tarafından kullanılabilir. Teklifiniz Microsoft (transactable) üzerinden satılıyorsa, yalnızca teklifinizin **ön izleme İzleyicisi** sayfasında belirttiğiniz hedef kitle, test için teklif satın alabilir ve bu teklifi erişebilir. |
+| [Yayımcı oturumu kapatma](#publisher-sign-off-phase) | Teklifinizi önizlemenizi ve onaylamanıza yönelik bir istek içeren bir e-posta göndereceğiz. |
+| [Yayımlama](#publish-phase) | Önizleme teklifinin ticari Market 'e canlı olarak yayımlandığını doğrulamak için bir dizi adımı çalıştırdık. |
 |||
 
 ## <a name="automated-validation-phase"></a>Otomatik doğrulama aşaması
@@ -102,7 +93,7 @@ Her teklif türü, gerekli bir temel uygunluk ölçütü kümesini denetler. Bu 
 
 #### <a name="content-validation"></a>İçerik doğrulama
 
-Teklifinizi oluştururken girilen bilgiler kalite ve ilgi açısından denetlenir. Bu denetimler Market listeleme ayrıntıları, fiyatlandırma, kullanılabilirlik, ilişkili planlar vb. için girdilerinizi gözden geçirir. Azure Marketi ve Microsoft AppSource listesi ölçütlerini karşılamak için teklifinizin şunları içerdiğini doğrulayacağız:
+Teklifinizi oluştururken girilen bilgiler kalite ve ilgi açısından denetlenir. Bu denetimler Market listeleme ayrıntıları, fiyatlandırma, kullanılabilirlik, ilişkili planlar vb. için girdilerinizi gözden geçirir. Microsoft AppSource ve Azure Marketi 'nin liste ölçütlerini karşılamak için teklifinizin şunları içerdiğini doğrulayacağız:
 
 - Teklifi doğru şekilde açıklayan bir başlık
 - Kapsamlı bir genel bakış ve değer teklifi sağlayan iyi yazılmış açıklamalar
@@ -141,21 +132,18 @@ Teklif gözden geçirmeniz ve oturumunuz devre dışı bırakıldığında size,
 
 Aşağıdaki ekran görüntüsünde bir SaaS teklifinin **teklif genel bakış** sayfası gösterilmektedir. Bu sayfada göreceğiniz doğrulama adımları, teklif türüne ve teklifi oluştururken yaptığınız seçimlere bağlı olarak değişir.
 
-![Iş Ortağı Merkezi 'nde teklif için teklif genel bakış sayfasını gösterir. Canlı çalış düğmesi ve önizleme bağlantıları gösterilir.](./partner-center-portal/media/publish-status-publisher-signoff.png)
+![Iş Ortağı Merkezi 'nde teklif için teklif genel bakış sayfasını gösterir. Canlı çalış düğmesi ve önizleme bağlantıları gösterilir.](./media/publish-status-publisher-signoff.png)
 
-### <a name="to-preview-your-offer-and-sign-off"></a>Teklifinizin önizlemesini yapmak ve oturumunuzu kapatmak için
+### <a name="previewing-and-approving-your-offer"></a>Teklifinizi önizleme ve onaylama
 
-1. Teklifin **genel bakış** sayfasında, teklifinizi önizlemek Için **canlı çalış** düğmesinin altındaki bağlantıyı seçin.
+> [!IMPORTANT]
+> Uçtan uca satın alma ve kurulum akışını doğrulamak için, önizleme aşamasında olan teklifinizi satın alın. Bir ücreti işlememenizi sağlamak için öncelikle Microsoft 'un bir [destek bileti](https://aka.ms/marketplacesupport) olduğunu bildirin.
 
-   > [!NOTE]
-   > Teklifinizi oluştururken seçtiğiniz seçeneklere bağlı olarak, AppSource Preview, Azure Marketi önizlemesi veya her ikisinin de bir bağlantısı olacaktır. Teklifinizi Microsoft aracılığıyla satmayı seçerseniz, önizleme izleyicisine eklenmiş olan herkes, bu aşamada gereksinimlerinizi karşıladığından emin olmak için teklifinizin Alım ve dağıtımını test edebilir.
+**Teklif genel bakış** sayfasında, **canlı çalış** düğmesinin altında Önizleme bağlantıları görüntülenir. Teklifinizi oluştururken seçtiğiniz seçeneklere bağlı olarak, AppSource Preview, Azure Marketi önizlemesi veya her ikisinin de bir bağlantısı olacaktır. Teklifinizi Microsoft aracılığıyla satmayı seçerseniz, önizleme izleyicisine eklenmiş olan herkes, bu aşamada gereksinimlerinizi karşıladığından emin olmak için teklifinizin Alım ve dağıtımını test edebilir.
 
-1. Teklifin önizlemesini yaptıktan sonra değişiklik yapmak istiyorsanız, yeni bir önizleme yayınlamak için düzenleyebilir ve yeniden gönderebilirsiniz. Daha fazla bilgi için bkz. [ticari Market 'te mevcut teklifi güncelleştirme](./partner-center-portal/update-existing-offer.md).
+Önizlemeyi onayladıktan sonra, teklifinizi ticari Market 'te canlı yayımlamak için **canlı ol** ' u seçin. 
 
-1. Önizlemeinizi onayladıktan sonra, teklifinizi ticari Market 'te yayımlayın ve **canlı çalış**' ı seçin.
-
-   > [!TIP]
-   > Teklifiniz zaten canlı ve Market 'te herkese açık ise, yaptığınız tüm güncelleştirmeler **canlı git**' i seçene kadar canlı olmaz.
+Teklifin önizlemesini yaptıktan sonra değişiklik yapmak istiyorsanız, yayın isteğinizi düzenleyebilir ve yeniden gönderebilirsiniz. Teklifiniz zaten canlı ve Market 'te herkese açık ise, yaptığınız güncelleştirmeler **canlı git*' i seçene kadar canlı olmaz. Daha fazla bilgi için bkz [. ticari Market 'te mevcut teklifi güncelleştirme](./partner-center-portal/update-existing-offer.md)
 
 ## <a name="publish-phase"></a>Yayımlama aşaması
 
@@ -183,10 +171,6 @@ Teklifinizle canlı yapmayı seçtiniz ve bu, ticari Market 'te kullanılabilir 
 
 Bu doğrulama denetimleri tamamlandıktan sonra teklifiniz Market 'te canlı olacaktır.
 
-### <a name="reporting-usage-of-preview-and-other-internal-usage"></a>Önizleme ve diğer iç kullanım kullanımı raporlaması
+## <a name="next-steps"></a>Sonraki adımlar
 
-Uçtan uca satın alma ve kurulum akışını doğrulamak için, önizleme aşamasında olan teklifinizi satın alın. Bir ücreti işlememenizi sağlamak için öncelikle Microsoft 'un bir [destek bileti](https://aka.ms/marketplacesupport) olduğunu bildirin.
-
-## <a name="next-step"></a>Sonraki adım
-
-[Iş Ortağı Merkezi 'nde ticari Market için analitik raporlara erişin](./partner-center-portal/analytics.md)
+[Iş Ortağı Merkezi 'nde ticari Market için analitik raporlara erişin](partner-center-portal/analytics.md)

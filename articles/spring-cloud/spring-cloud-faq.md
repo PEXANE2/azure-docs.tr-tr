@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: fcd9f0759ae885199347cc23d93e8f1c00251387
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260535"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322050"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -36,7 +36,8 @@ Güvenlik ve gizlilik, Azure ve Azure Spring bulut müşterileri için en öneml
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure yay bulutu hangi bölgelerde kullanılabilir?
 
-Doğu ABD, Batı ABD 2, Batı Avrupa ve Güneydoğu Asya.
+Doğu ABD, Doğu ABD 2, Orta ABD, Orta Güney ABD, Batı ABD 2, Batı Avrupa, Kuzey Avrupa, UK Güney, Güneydoğu Asya ve Avustralya Doğu.
+
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud 'ın bilinen sınırlamaları nelerdir?
 
@@ -58,7 +59,7 @@ Azure Spring Cloud ile ilgili herhangi bir sorunla karşılaşırsanız bir [Azu
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>Ben bir yay bulut geliştiricisiyim, ancak Azure 'da yeni. Azure yay bulut uygulaması geliştirmeyi öğrenmenin en hızlı yolu nedir?
 
-Azure Spring Cloud ile çalışmaya başlamanın en hızlı yolu için [hızlı başlangıç: Azure Portal kullanarak bir Azure Spring Cloud uygulaması başlatma](spring-cloud-quickstart-launch-app-portal.md)' daki yönergeleri izleyin.
+Azure Spring Cloud ile çalışmaya başlamanın en hızlı yolu için [hızlı başlangıç: Azure Portal kullanarak bir Azure Spring Cloud uygulaması başlatma](spring-cloud-quickstart.md)' daki yönergeleri izleyin.
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure yay bulutu hangi Java çalışma zamanına destekler?
 
@@ -151,7 +152,7 @@ Hayır.  Azure Spring Cloud, geliştirici temel mimariden soyutlar, uygulama kod
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure yay bulutu, kaynaktan kapsayıcılar oluşturmayı destekliyor mu?
 
-Evet. Daha fazla bilgi için bkz. [Spring Cloud uygulamanızı kaynak koddan başlatma](spring-cloud-launch-from-source.md).
+Evet. Daha fazla bilgi için bkz. [Spring Cloud uygulamanızı kaynak koddan başlatma](spring-cloud-quickstart.md).
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure yay bulutu, uygulama örneklerinde otomatik ölçeklendirmeyi destekliyor mu?
 

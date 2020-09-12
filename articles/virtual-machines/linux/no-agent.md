@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 07/06/2020
+ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: d177e7fd7d18b24f9d8fd7f3e6662abe16bba317
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 63bc3caf97e1325c365171ba3f8e6353885d9b68
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045340"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322560"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Sağlama Aracısı olmadan Genelleştirilmiş görüntüler oluşturma
 
@@ -174,7 +174,7 @@ SANAL makinenizde Python yüklü değilse veya kullanılabilir değilse, aşağ�
    </Health>
    ```
 
-3. Bu verileri kablolu sunucuya gönder:`curl -X POST -H 'x-ms-version: 2012-11-30' -H "x-ms-agent-name: WALinuxAgent" -H "Content-Type: text/xml;charset=utf-8" -d "$REPORT_READY_XML" http://168.63.129.16/machine?comp=health`
+3. Bu verileri kablolu sunucuya gönder: `curl -X POST -H 'x-ms-version: 2012-11-30' -H "x-ms-agent-name: WALinuxAgent" -H "Content-Type: text/xml;charset=utf-8" -d "$REPORT_READY_XML" http://168.63.129.16/machine?comp=health`
 
 ### <a name="automating-running-the-code-at-first-boot"></a>İlk önyüklemede kodu çalıştırmanın otomatikleştirilmesi
 
@@ -199,7 +199,7 @@ WantedBy=multi-user.target
 Bu systemd hizmeti temel sağlama için üç şey yapar:
 
 1. Azure 'a (başarıyla geldiğini göstermek için) yönelik raporlar.
-1. Bu verileri ıMDS 'den çekerek, Kullanıcı tarafından sağlanan VM 'nin adını temel alarak sanal makineyi yeniden adlandırır.
+1. Bu verileri [Azure Instance Metadata Service (ıMDS)](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service)' den çekerek Kullanıcı tarafından sağlanan VM adından sanal makineyi yeniden adlandırır. **Göz önünde** IDS Ayrıca SSH ortak anahtarları gibi diğer [örnek meta verilerini](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#accessing-azure-instance-metadata-service)de sağlar, bu sayede ana bilgisayar adından fazlasını ayarlayabilirsiniz.
 1. Kendisini, sonraki yeniden başlatmalar üzerinde değil yalnızca ilk önyüklemede çalışacak şekilde devre dışı bırakır.
 
 Dosya sisteminde birimle birlikte etkinleştirmek için aşağıdakileri çalıştırın:

@@ -4,12 +4,12 @@ description: Bu makalede, şirket içi Windows Server 'lar için sistem durumu y
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 7eb596853bfe17ec5bf14c8830c1b95bde5b7c98
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022369"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376290"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Sistem durumu yedeklemesi sorunlarını giderme
 
@@ -40,7 +40,7 @@ Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğr
 - Sistem durumu kurtarması kullanılarak farklı donanıma kurtarma, Microsoft tarafından önerilmez
 - Sistem durumu yedeklemesi Şu anda "Şirket içi" Windows sunucularını desteklemektedir. Bu işlev, Azure VM 'Leri için kullanılamaz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Backup sistem durumu yedeklemesine sorun gidermeye başlamadan önce, aşağıdaki önkoşul denetimini gerçekleştirin.  
 
@@ -66,20 +66,20 @@ PowerShell kullanarak Windows Server Yedekleme yüklemek için şu komutu çalı
 
 Sunucu Yöneticisi kullanarak Windows Server Yedekleme yüklemek için aşağıdaki adımları uygulayın:
 
-1. **Sunucu Yöneticisi**'nde **rol ve Özellik Ekle**' ye tıklayın. **Rol ve Özellik Ekleme Sihirbazı** görünür.
+1. **Sunucu Yöneticisi**'nde **rol ve Özellik Ekle**' yi seçin. **Rol ve Özellik Ekleme Sihirbazı** görünür.
 
     ![Pano](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
-2. **Yükleme türünü** seçin ve **İleri**' ye tıklayın.
+2. **Yükleme türünü** seçin ve **İleri ' yi**seçin.
 
     ![Yükleme Türü](./media/backup-azure-system-state-troubleshoot/install_type.jpg)
 
-3. Sunucu havuzundan bir sunucu seçin ve **İleri**' ye tıklayın. Sunucu rolünde, varsayılan seçimi bırakın ve **İleri**' ye tıklayın.
-4. **Özellikler** sekmesinde **Windows Server yedekleme** ' yi seçin ve **İleri**' ye tıklayın.
+3. Sunucu havuzundan bir sunucu seçin ve **İleri ' yi**seçin. Sunucu rolünde, varsayılan seçimi bırakın ve **İleri**' yi seçin.
+4. **Özellikler** sekmesinde **Windows Server yedekleme** ' ı seçin ve **İleri ' yi**seçin.
 
     ![Özellikler penceresini seçin](./media/backup-azure-system-state-troubleshoot/features.png)
 
-5. **Onay** sekmesinde, yükleme işlemini başlatmak için **yükleme** ' ye tıklayın.
+5. **Onay** sekmesinde, yükleme işlemini başlatmak için **yükleme** ' yi seçin.
 6. **Sonuçlar** sekmesinde, Windows Server yedekleme özelliği Windows sunucunuza başarıyla yüklendi.
 
     ![Yükleme sonuçları](./media/backup-azure-system-state-troubleshoot/results.jpg)
@@ -92,7 +92,7 @@ Yerel SISTEMIN Windows 'un yüklü olduğu birimde bulunan **sistem birimi bilgi
 
 Aşağıdaki hizmetlerin çalışır durumda olduğundan emin olun:
 
-**Hizmet Adı** | **Başlangıç türü**
+**Hizmet adı** | **Başlangıç türü**
 --- | ---
 Uzak yordam çağrısı (RPC) | Automatic
 COM+ olay sistemi (EventSystem) | Automatic

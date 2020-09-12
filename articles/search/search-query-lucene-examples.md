@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8e8c32f5596e469de5402a1f712d234a806a69e4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934982"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298003"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>"Full" Lucene arama sözdizimini kullanın (Azure Bilişsel Arama Gelişmiş sorgular)
 
@@ -40,13 +40,13 @@ Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bi
 
 İstek üst bilgisini belirttikten sonra, bu makaledeki tüm sorgular için onu yeniden kullanabilirsiniz ve yalnızca **Search =** dizesini takas edebilirsiniz. 
 
-  ![Postman isteği üst bilgisi](media/search-query-lucene-examples/postman-header.png)
+  ![Postman istek üst bilgisi kümesi parametreleri](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>İstek URL 'sini ayarla
 
 İstek, Azure Bilişsel Arama uç noktası ve arama dizesini içeren bir URL ile eşleştirilmiş bir GET komutu.
 
-  ![Postman isteği üst bilgisi](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Postman istek üst bilgisi al](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL kompozisyonu aşağıdaki öğelere sahiptir:
 
@@ -111,7 +111,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 Bu sorgu için yanıt aşağıdaki ekran görüntüsüne benzer görünmelidir.
 
-  ![Postman örnek yanıtı](media/search-query-lucene-examples/postman-sample-results.png)
+  ![Puanlar ile Postman örnek yanıtı](media/search-query-lucene-examples/postman-sample-results.png)
 
 Yanıtta arama puanı olduğunu fark etmiş olabilirsiniz. Arama tam metin araması olmadığı veya hiçbir ölçüt uygulanmadığı için, tek bir derecelendirme olmadığında 1 Tekdüzen puanları oluşur. Ölçüt olmadan null arama için, satırlar rastgele sırada geri gelir. Gerçek arama ölçütlerini dahil ettiğinizde, arama puanları anlamlı değerlere geliştikçe görüntülenir.
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  ![Postman örnek yanıtı](media/search-query-lucene-examples/intrafieldfilter.png)
+  ![Postman örnek yanıtı arama ifadesi](media/search-query-lucene-examples/intrafieldfilter.png)
 
 **FieldName: SearchExpression** söz dizimi ile bir ara değer arama işlemi tanımlayabilirsiniz. burada, arama ifadesi tek bir sözcük veya tümcecik ya da parantez içinde daha karmaşık bir ifade olabilir ve isteğe bağlı olarak Boolean işleçleriyle. Bazı örnekler şunlardır:
 

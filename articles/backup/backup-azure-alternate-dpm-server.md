@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu verileri kurtarma
 description: Bu kasaya kayıtlı tüm Azure Backup Sunucusu kurtarma hizmetleri kasasına koruduğunuz verileri kurtarın.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 531de9226be05bf50f887cfd0410842dadb68178
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012016"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378075"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Sunucusu’ndan veri kurtarma
 
@@ -21,7 +21,7 @@ Kurtarma Hizmetleri kasasına yedeklediğiniz verileri kurtarmak için Azure Bac
 
 Azure Backup Sunucusu verileri kurtarmak için:
 
-1. Azure Backup Sunucusu Yönetim konsolunun **Kurtarma** sekmesinde, **' dış DPM Ekle '** seçeneğine tıklayın (ekranın sol üst kısmında).
+1. Azure Backup Sunucusu Yönetim konsolunun **Kurtarma** sekmesinden **' dış DPM Ekle '** öğesini (ekranın sol üst kısmında) seçin.
 
     ![Dış DPM Ekle](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 2. Verilerin kurtarıldığı **Azure Backup sunucusu** ilişkili kasadan yeni **kasa kimlik bilgilerini** indirin, kurtarma hizmetleri kasasına kayıtlı Azure Backup sunucuları listesinden Azure Backup sunucusu seçin ve verileri kurtarılan sunucuyla ilişkili **şifreleme parolasını** belirtin.
@@ -42,10 +42,10 @@ Azure Backup Sunucusu verileri kurtarmak için:
     Dosya ve klasörlerin listesi, alt bölmede görünür ve bu, herhangi bir konuma gözatılabilir ve kurtarılabilir.
 
     ![Dış DPM sunucusu kurtarma noktaları](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Uygun öğeye sağ tıklayın ve **kurtar**' a tıklayın.
+5. Uygun öğeye sağ tıklayın ve **kurtar**' ı seçin.
 
     ![Dış DPM kurtarma](./media/backup-azure-alternate-dpm-server/recover.png)
-6. **Kurtarma seçimini**gözden geçirin. Kurtarılan yedekleme kopyasının verilerinin ve saatinin yanı sıra yedekleme kopyasının oluşturulduğu kaynağı doğrulayın. Seçim yanlışsa kurtarma sekmesine geri dönmek için **iptal** ' e tıklayarak uygun kurtarma noktasını seçin. Seçim doğruysa, **İleri**' ye tıklayın.
+6. **Kurtarma seçimini**gözden geçirin. Kurtarılan yedekleme kopyasının verilerinin ve saatinin yanı sıra yedekleme kopyasının oluşturulduğu kaynağı doğrulayın. Seçim yanlışsa kurtarma sekmesine geri dönmek için **iptal** ' i seçerek uygun kurtarma noktasını seçin. Seçim doğruysa, **İleri**' yi seçin.
 
     ![Dış DPM Kurtarma Özeti](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
 7. **Alternatif bir konuma kurtar**' ı seçin. Kurtarma için doğru konuma **gidin** .
@@ -62,7 +62,7 @@ Azure Backup Sunucusu verileri kurtarmak için:
      Kurtarma başarıyla tamamlandıktan sonra bir **bildirimin** gönderilip gönderilmeyeceğini belirler.
 
      ![Dış DPM kurtarma bildirimleri](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. **Özet** ekranında şu ana kadar seçili olan seçenekler listelenir. **' Kurtar**'a tıkladığınızda, veriler ilgili şirket içi konuma kurtarılır.
+9. **Özet** ekranında şu ana kadar seçili olan seçenekler listelenir. **Kurtar**' ı seçtiğinizde veriler ilgili şirket içi konuma kurtarılır.
 
     ![Dış DPM kurtarma seçenekleri Özeti](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
@@ -72,7 +72,7 @@ Azure Backup Sunucusu verileri kurtarmak için:
    >
 
     ![Kurtarma izleniyor](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
-10. Dış DPM sunucusunun görünümünü kaldırmak için DPM sunucusunun **Kurtarma** SEKMESINDE **dış DPM 'yi temizle** ' ye tıklayabilirsiniz.
+10. Dış DPM sunucusunun görünümünü kaldırmak için DPM sunucusunun **Kurtarma** SEKMESINDE **dış DPM 'yi temizle** seçeneğini belirleyebilirsiniz.
 
     ![Dış DPM 'yi Temizleme](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 

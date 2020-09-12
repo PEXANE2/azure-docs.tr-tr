@@ -3,39 +3,25 @@ title: Azure Kubernetes Service (AKS) ' de Azure disklerini şifrelemek için m�
 description: AKS işletim sistemini ve veri disklerini şifrelemek için kendi anahtarlarınızı getirin (BYOK).
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.openlocfilehash: 5725bc9a4d16b93ba36ac800d25e3c30f090c2df
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/01/2020
+ms.openlocfilehash: 8687d95878cde7d0ed3308d67f26ffc266abad1e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796893"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297765"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Azure diskleriyle kendi anahtarlarınızı (BYOK) getirin
 
-Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, AKS kümeleriniz için hem işletim sistemi hem de veri diskleri için bekleyen şifreleme için kullanılmak üzere [müşteri tarafından yönetilen anahtarlar][customer-managed-keys] sağlayabilirsiniz.
+Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, AKS kümeleriniz için hem işletim sistemi hem de veri diskleri için bekleyen şifreleme için kullanılmak üzere müşteri tarafından yönetilen anahtarlar sağlayabilirsiniz. [Linux][customer-managed-keys-linux] ve [Windows][customer-managed-keys-windows]'ta müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi edinin.
 
-## <a name="before-you-begin"></a>Başlamadan önce
+## <a name="limitations"></a>Sınırlamalar
+* Veri diski şifreleme desteği, Kubernetes sürüm 1,17 ve üstünü çalıştıran AKS kümeleriyle sınırlıdır.
+* Müşteri tarafından yönetilen anahtarlarla işletim sistemi ve veri diski şifrelemesi, yalnızca bir AKS kümesi oluşturulurken etkinleştirilebilir.
 
-* Bu makalede *Yeni BIR AKS kümesi*oluşturduğunuz varsayılır.
-
+## <a name="prerequisites"></a>Ön koşullar
 * Yönetilen diskleri şifrelemek için Key Vault kullanırken *Azure Key Vault* için geçici silme ve Temizleme korumasını etkinleştirmeniz gerekir.
-
-* Azure CLı sürüm 2.0.79 veya üzeri ve aks-Preview 0.4.26 uzantısı gerekir
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="install-latest-aks-cli-preview-extension"></a>En son AKS CLı önizleme uzantısını yükler
-
-Müşteri tarafından yönetilen anahtarları kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.26 veya daha yüksek olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+* Azure CLı sürüm 2.11.1 veya sonraki bir sürümü gereklidir.
 
 ## <a name="create-an-azure-key-vault-instance"></a>Azure Key Vault örneği oluşturma
 
@@ -155,11 +141,6 @@ az aks get-credentials --name myAksCluster --resource-group myResourceGroup --ou
 kubectl apply -f byok-azure-disk.yaml
 ```
 
-## <a name="limitations"></a>Sınırlamalar
-
-* Kubernetes sürüm 1,17 ve üzeri ile desteklenen veri diski şifrelemesi
-* Müşteri tarafından yönetilen anahtarlarla şifreleme Şu anda yalnızca yeni AKS kümelerine yöneliktir, mevcut kümeler yükseltilemez
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [AKS küme güvenliği için en iyi uygulamaları][best-practices-security] gözden geçirme
@@ -171,6 +152,7 @@ kubectl apply -f byok-azure-disk.yaml
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
 [byok-azure-portal]: ../storage/common/storage-encryption-keys-portal.md
-[customer-managed-keys]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-windows]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-linux]: ../virtual-machines/linux/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md
 [supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions

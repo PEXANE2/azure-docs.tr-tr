@@ -7,21 +7,21 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b9d7326ec13176fbe65ba430a8a33bb93a48f74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c092052e05f355838f3853fa7376b46ef743de7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091462"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299654"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Azure yay bulut uygulaması için sistem tarafından atanan yönetilen kimliği etkinleştirme
 Azure kaynakları için Yönetilen kimlikler, Azure Spring Cloud uygulamanız gibi bir Azure kaynağına Azure Active Directory otomatik olarak yönetilen bir kimlik sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz.
 
 Bu makalede, Azure portal ve CLı (Version 0.2.4 'ten ulaşılabilir) kullanılarak bir Azure yay bulutu uygulaması için sistem tarafından atanan yönetilen kimliklerin nasıl etkinleştirileceği ve devre dışı bırakılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Azure kaynakları için Yönetilen kimlikler hakkında bilgi sahibi değilseniz bkz. [genel bakış bölümü](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
-Dağıtılmış bir Azure yay bulutu örneğine ihtiyacınız olacak. [Azure CLI kullanarak dağıtmak Için hızlı](spring-cloud-quickstart-launch-app-cli.md)başlangıcı izleyin.
+Dağıtılmış bir Azure yay bulutu örneğine ihtiyacınız olacak. [Azure CLI kullanarak dağıtmak Için hızlı](spring-cloud-quickstart.md)başlangıcı izleyin.
 
 ## <a name="add-a-system-assigned-identity"></a>Sistem tarafından atanan kimlik ekleme
 Sistem tarafından atanan kimlik ile uygulama oluşturmak, uygulamada ek bir özellik ayarlanmasını gerektirir.
@@ -47,7 +47,7 @@ Aşağıdaki örnek, parametresi tarafından istenen şekilde sistem tarafından
 az spring-cloud app create -n app_name -s service_name -g resource_group_name --assign-identity
 ```
 
-**Mevcut bir uygulamada sistem tarafından atanan yönetilen kimliği etkinleştir** `az spring-cloud app identity assign`Mevcut bir uygulamada sistem tarafından atanan kimliği etkinleştirmek için komutunu kullanın.
+**Mevcut bir uygulamada sistem tarafından atanan yönetilen kimliği etkinleştir** `az spring-cloud app identity assign` Mevcut bir uygulamada sistem tarafından atanan kimliği etkinleştirmek için komutunu kullanın.
 
 ```azurecli
 az spring-cloud app identity assign -n app_name -s service_name -g resource_group_name
@@ -72,7 +72,7 @@ Sistem tarafından atanan yönetilen kimliği, artık ihtiyaç duyulmayan bir uy
 1. İstediğiniz sanal makineye gidin ve **kimlik**' i seçin.
 1. **Sistem tarafından atanan** / **durum**altında **kapalı** ' yı seçin ve ardından **Kaydet**' e tıklayın:
 
- ![Portalda yönetilen kimlik](./media/spring-cloud-managed-identity/remove-identity.png)
+ ![Yönetilen kimlik](./media/spring-cloud-managed-identity/remove-identity.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 Sisteme atanan yönetilen kimliği, artık ihtiyaç duyulmayan bir uygulamadan kaldırmak için aşağıdaki komutu kullanın:

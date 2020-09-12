@@ -3,12 +3,12 @@ title: Azure VM 'de SQL Server veritabanlarını geri yükleme
 description: Bu makalede, bir Azure VM üzerinde çalışan ve Azure Backup yedeklenen SQL Server veritabanlarının nasıl geri yükleneceği açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 682540e498c7531777032b5375f0105c03ce4ec6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: afb3ef7ac1d161c073ef715a9f7b1ec83bd8410a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826565"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377990"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 'lerinde SQL Server veritabanlarını geri yükleme
 
@@ -23,7 +23,7 @@ Azure Backup, Azure VM 'lerinde çalışan SQL Server veritabanlarını şu şek
 - İşlem günlüğü yedeklerini kullanarak belirli bir tarih veya saate (ikinci olarak) geri yükleyin. Azure Backup, uygun tam değişiklik yedeklemesini ve seçilen saate göre geri yüklemek için gereken günlük yedeklemeleri zincirini otomatik olarak belirler.
 - Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesini geri yükleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir veritabanını geri yüklemeden önce aşağıdakileri göz önünde bulabilirsiniz:
 
@@ -98,7 +98,7 @@ Aşağıdaki şekilde geri yükleyin:
 
         ![Hedef yolları girin](./media/backup-azure-sql-database/target-paths.png)
 
-1. Geri yüklemeyi tetiklemek için **Tamam** ' ı tıklatın. Geri yükleme ilerlemesini **Bildirimler** alanında izleyin veya kasadaki **yedekleme işleri** görünümü altında izleyin.
+1. Geri yüklemeyi tetiklemek için **Tamam ' ı** seçin. Geri yükleme ilerlemesini **Bildirimler** alanında izleyin veya kasadaki **yedekleme işleri** görünümü altında izleyin.
 
     > [!NOTE]
     > Zaman içinde geri yükleme yalnızca tam ve toplu günlük kurtarma modundaki veritabanlarına yönelik günlük yedeklemeleri için kullanılabilir.
@@ -150,7 +150,7 @@ Geri yükleme türü olarak **Günlükler (zaman içinde)** seçtiyseniz şunlar
     ![Takvimi açın](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
 1. Bir tarih seçtikten sonra, zaman çizelgesi grafiğinde kullanılabilir kurtarma noktaları sürekli bir aralıkta görüntülenir.
-1. Zaman çizelgesi grafiğinde kurtarma için bir saat belirtin veya bir saat seçin. Ardından **Tamam**’ı seçin.
+1. Zaman çizelgesi grafiğinde kurtarma için bir saat belirtin veya bir saat seçin. Ardından **Tamam**'ı seçin.
 
 ### <a name="restore-to-a-specific-restore-point"></a>Belirli bir geri yükleme noktasına geri yükleme
 
@@ -161,7 +161,7 @@ Geri yükleme türü olarak **tam & türev** seçtiyseniz şunları yapın:
     ![Tam kurtarma noktası seçin](./media/backup-azure-sql-database/choose-full-recovery-point.png)
 
     >[!NOTE]
-    > Varsayılan olarak, son 30 günün kurtarma noktaları görüntülenir. **Filtre** ' ye tıklayıp özel bir Aralık seçerek 30 günden daha eski kurtarma noktalarını görüntüleyebilirsiniz.
+    > Varsayılan olarak, son 30 günün kurtarma noktaları görüntülenir. **Filtre** ' i seçerek ve özel bir Aralık seçerek 30 günden daha eski kurtarma noktalarını görüntüleyebilirsiniz.
 
 ### <a name="restore-databases-with-large-number-of-files"></a>Çok sayıda dosya içeren veritabanlarını geri yükleme
 

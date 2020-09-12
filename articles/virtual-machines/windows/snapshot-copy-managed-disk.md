@@ -1,6 +1,6 @@
 ---
-title: Azure 'da bir sanal sabit sürücünün anlık görüntüsünü oluşturma
-description: Bir Azure sanal makinesinin yedekleme veya sorun giderme sorunları için kullanılacak bir kopyasını oluşturmayı öğrenin.
+title: Portalı veya PowerShell 'i kullanarak bir sanal sabit sürücünün anlık görüntüsünü oluşturma
+description: Azure VM 'nin bir kopyasını yedekleme veya portal veya PowerShell kullanarak sorun giderme sorunları için nasıl oluşturacağınızı öğrenin.
 author: roygara
 manager: twooley
 ms.service: virtual-machines-windows
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e5ecb99c7f64d81d57c5d6d2cb25967913a752b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074134"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322322"
 ---
-# <a name="create-a-snapshot"></a>Anlık görüntü oluşturma
+# <a name="create-a-snapshot-using-the-portal-or-powershell"></a>Portal veya PowerShell kullanarak anlık görüntü oluşturma
 
 Anlık görüntü, bir sanal sabit sürücünün (VHD) tam, salt okunurdur bir kopyasıdır. Yedekleme olarak kullanmak veya sanal makine (VM) sorunlarını gidermek için bir işletim sistemi veya veri diski VHD 'sinin anlık görüntüsünü alabilirsiniz.
 
@@ -35,7 +35,7 @@ Anlık görüntü oluşturmak için aşağıdaki adımları izleyin:
 8. Anlık görüntüyü depolamak için kullanılacak **hesap türünü** seçin. Anlık görüntünün yüksek performanslı bir diskte depolanması gerekmiyorsa **Standard_HDD**' yi seçin.
 9. **Oluştur**’u seçin.
 
-## <a name="use-powershell"></a>PowerShell'i kullanma
+## <a name="use-powershell"></a>PowerShell kullanma
 
 Aşağıdaki adımlarda, VHD diskinin nasıl kopyalanacağı ve anlık görüntü yapılandırmasının nasıl oluşturulacağı gösterilmektedir. Ardından [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) cmdlet 'ini kullanarak diskin anlık görüntüsünü alabilirsiniz. 
 

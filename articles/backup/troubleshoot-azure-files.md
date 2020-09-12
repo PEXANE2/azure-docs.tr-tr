@@ -3,12 +3,12 @@ title: Azure dosya paylaşımını yedekleme sorunlarını giderme
 description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırasında oluşan sorunlarla ilgili sorun giderme bilgileri verilmektedir.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 9e8869ed75350fd4063832932f076fb6fd52d4e5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001748"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376987"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedeklerken sorunları giderme
 
@@ -51,7 +51,7 @@ Kaydı yeniden deneyin. Sorun devam ederse desteğe başvurun.
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Dosya paylaşımının korumasını kaldırdıktan sonra kurtarma hizmetleri Kasası silinemiyor
 
-Azure Portal, **kasa**  >  **Yedekleme altyapısı**  >  **depolama hesaplarınızı** açın ve kurtarma hizmetleri kasasından depolama hesaplarını kaldırmak için **kayıt Sil** ' e tıklayın.
+Azure Portal, **kasa**  >  **Yedekleme altyapısı**  >  **depolama hesaplarınızı**açın. Kurtarma Hizmetleri kasasından depolama hesaplarını kaldırmak için **kaydı** Kaldır ' ı seçin.
 
 >[!NOTE]
 >Kurtarma Hizmetleri Kasası, yalnızca kasaya kayıtlı tüm depolama hesaplarının kaydı kaldırıldıktan sonra silinebilir.

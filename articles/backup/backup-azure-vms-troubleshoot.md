@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: aa9b5a3f6f7ca935e4e6b3645c58da5516384072
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178020"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376188"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -198,7 +198,7 @@ Yedekleme uzantısının tutarsız durumu nedeniyle yedekleme işlemi başarıs�
 
 * Konuk Aracı'nın yüklü olduğundan ve yanıt verdiğinden emin olun
 * Azure Portal, **sanal makine**  >  **Tüm ayarlar**  >  **uzantıları** ' na git
-* VmSnapshot veya VmSnapshotLinux yedekleme uzantısını seçin ve **Kaldır**'a tıklayın
+* VmSnapshot veya VmSnapshotLinux yedekleme uzantısını seçin ve **Kaldır**' ı seçin.
 * Yedekleme uzantısını sildikten sonra yedekleme işlemini yeniden deneyin
 * Sonraki yedekleme işleminde yeni uzantı istenen durumda yüklenecektir
 

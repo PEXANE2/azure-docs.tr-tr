@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202245"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297799"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Araması API'si yanıt yapısı ve yanıt türleri  
 
@@ -294,7 +294,7 @@ Matematik ifadesi aşağıdaki sembolleri içerebilir:
 |------------|-----------------|
 |+|Toplama|
 |-|Çıkarma|
-|/|Bölme|
+|/|Bölüm|
 |*|Çarpma|
 |^|Güç|
 |!|Faktöriyel|
@@ -304,7 +304,7 @@ Matematik ifadesi aşağıdaki sembolleri içerebilir:
 
 Matematik ifadesinde aşağıdaki sabitler bulunabilir:
 
-|Sembol|Açıklama|
+|Sembol|Description|
 |------------|-----------------|
 |Pi|3,14159...|
 |Ölçüde|Ölçüde|
@@ -314,7 +314,7 @@ Matematik ifadesinde aşağıdaki sabitler bulunabilir:
 
 Matematik ifadesi aşağıdaki işlevleri içerebilir:
 
-|Sembol|Açıklama|
+|Sembol|Description|
 |------------|-----------------|
 |Sırala|Kare kök|
 |Sin [x], cos [x], tan [x]<br />CSC [x], SEC [x], COT [x]|Trigonometrik İşlevler (radyan cinsinden bağımsız değişkenlerle)|
@@ -435,7 +435,7 @@ Bing, kullanıcının farklı bir şeyi aramak için tasarlanmış olabileceğin
 
 Bing Web Araması API'si yanıtları aşağıdaki üst bilgileri içerebilir:
 
-| Üst bilgi | Açıklama |
+| Üst bilgi | Description |
 |-|-|
 |`X-MSEdge-ClientID`|Bing 'in kullanıcıya atadığı benzersiz KIMLIK|
 |`BingAPIs-Market`|İsteği yerine getirmek için kullanılan Pazar|
@@ -445,7 +445,7 @@ Bing Web Araması API'si yanıtları aşağıdaki üst bilgileri içerebilir:
 
 Ancak, JavaScript 'ten Bing Web Araması API'si çağırdığınızda, tarayıcınızın yerleşik güvenlik özellikleri (CORS) bu üstbilgilerin değerlerine erişmenizi engelleyebilir.
 
-Üstbilgilere erişim kazanmak için bir CORS proxy 'si aracılığıyla Bing Web Araması API'si isteği yapabilirsiniz. Böyle bir ara sunucudan gelen yanıtta, yanıt üst bilgilerini beyaz listeye alan ve JavaScript’in kullanımına sunan `Access-Control-Expose-Headers` üst bilgisi bulunur.
+Üstbilgilere erişim kazanmak için bir CORS proxy 'si aracılığıyla Bing Web Araması API'si isteği yapabilirsiniz. Bu tür bir ara sunucu yanıtı, `Access-Control-Expose-Headers` yanıt üstbilgilerini filtreleyen ve JavaScript için kullanılabilir hale getiren bir üstbilgiye sahiptir.
 
 [Öğretici uygulamamız](tutorial-bing-web-search-single-page-app.md) , isteğe bağlı istemci üst bilgilerine erişmesine izin vermek IÇIN bir CORS proxy yüklemek kolaydır. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Sonra bir komut isteminde aşağıdaki komutu girin.
 

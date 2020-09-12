@@ -3,12 +3,12 @@ title: Azure Dosyalarını yedekleme hakkında SSS
 description: Bu makalede, Azure dosya paylaşımlarınızı Azure Backup hizmetiyle koruma hakkında sık sorulan soruların yanıtlarını bulun.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: c62f8376b220911edd26edbe18955d0103440b81
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824738"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377429"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 
@@ -30,7 +30,7 @@ Azure dosya paylaşımının, aynı Kurtarma Hizmetleri kasasında zaten korumal
 
 Evet. Eşitleme gruplarına bağlanan Azure dosya paylaşımlarının koruması etkin.
 
-### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Dosya paylaşımlarını yedeklemeye çalışırken, dosya paylaşımlarını keşfetmek için bir Depolama Hesabına tıkladım. Ancak, bunları korumadı. Bu dosya paylaşımlarını diğer kasalarla korumak Nasıl yaparım? mı?
+### <a name="when-trying-to-back-up-file-shares-i-selected-a-storage-account-to-discover-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Dosya paylaşımlarını yedeklemeye çalışırken, içindeki dosya paylaşımlarını bulacak bir depolama hesabı seçtim. Ancak, bunları korumadı. Bu dosya paylaşımlarını diğer kasalarla korumak Nasıl yaparım? mı?
 
 Yedeklemeye çalışırken, BT içindeki dosya paylaşımlarını bulacak bir depolama hesabı seçmek, depolama hesabını bunun yapıldığı kasaya kaydeder. Dosya paylaşımlarını farklı bir kasala korumayı seçerseniz, seçili depolama hesabının kaydını bu kasadan [silin](manage-afs-backup.md#unregister-a-storage-account) .
 
@@ -97,13 +97,13 @@ Bunun nasıl çalıştığını gösteren bir örnek aşağıda verilmiştir:
 
 |Bekletme türü |Zamanla |Bekletme  |
 |---------|---------|---------|
-|Günlük olarak    |    Her gün 8 saat    |  100 gün       |
+|Günlük    |    Her gün 8 saat    |  100 gün       |
 
 #### <a name="new-policy-modified-p1"></a>Yeni Ilke [değiştirilmiş P1]
 
 | Bekletme türü | Zamanla                       | Bekletme |
 | -------------- | ------------------------------ | --------- |
-| Günlük olarak          | Her gün 9 saat              | 50 gün   |
+| Günlük          | Her gün 9 saat              | 50 gün   |
 | Haftalık         | Pazar günü saat 9 ' da              | 3 hafta   |
 | Aylık olarak        | Son Pazartesi günü saat 9 ' da         | 1 ay   |
 | Yıllık         | Üçüncü Pazar günü saat 9 ' da | 4 yıl   |
@@ -131,14 +131,14 @@ Bunun nasıl çalıştığını gösteren bir örnek aşağıda verilmiştir:
 
 | Bekletme türü | Zamanla           | Bekletme |
 | -------------- | ------------------ | --------- |
-| Günlük olarak          | Her gün 8 saat | 50 gün   |
+| Günlük          | Her gün 8 saat | 50 gün   |
 | Haftalık         | Pazartesi günü 8 saat  | 3 hafta   |
 
 #### <a name="new-policy-modified-p2"></a>Yeni Ilke [Modified P2]
 
 | Bekletme türü | Zamanla               | Bekletme |
 | -------------- | ---------------------- | --------- |
-| Günlük olarak          | Her gün 9 saat     | 10 gün   |
+| Günlük          | Her gün 9 saat     | 10 gün   |
 | Haftalık         | Pazartesi günü saat 9 ' da      | 2 hafta   |
 | Aylık olarak        | Son Pazartesi günü saat 9 ' da | 2 ay  |
 

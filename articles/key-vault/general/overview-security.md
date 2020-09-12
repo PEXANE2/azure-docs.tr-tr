@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault güvenliği | Microsoft Docs
+title: Azure Key Vault güvenliği
 description: Azure Key Vault, anahtarlar ve gizli dizileri için erişim izinlerini yönetin. Key Vault için kimlik doğrulama ve yetkilendirme modelini ve anahtar kasanızın güvenliğini sağlamayı içerir.
 services: key-vault
 author: msmbaldwin
@@ -10,17 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: edef64c215f96b34cd0efbff4521a7d5adb98885
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870587"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377582"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault güvenliği
 
-Azure Key Vault kullanarak, bulutta sertifikalar, bağlantı dizeleri ve parolalar gibi şifreleme anahtarlarını ve gizli dizileri korumanız gerekir. Gizli ve iş açısından kritik verileri depolarken, kasalarınızın güvenliğini ve bunlarda depolanan verileri en üst düzeye çıkarmak için adımları uygulamanız gerekir. Bu makale, Azure Key Vault güvenliğini tasarlarken göz önünde bulundurmanız gereken kavramların bazılarını kapsar.
+Bulutta sertifikalar, bağlantı dizeleri ve parolalar gibi şifreleme anahtarlarını ve gizli dizileri korumak için Azure Key Vault kullanırsınız. Gizli ve iş açısından kritik verileri depolarken, kasalarınızın ve bunlarda depolanan verilerin güvenliğini en üst düzeye çıkarmak için adımları uygulamanız gerekir.
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
@@ -65,7 +64,7 @@ Key Vault erişim ilkeleri, izinleri anahtarlar, gizlilikler veya sertifikaya g�
 > [!IMPORTANT]
 > Key Vault erişim ilkeleri, belirli bir anahtar, gizli dizi ya da sertifika gibi ayrıntılı, nesne düzeyindeki izinleri desteklemez. Bir kullanıcıya anahtar oluşturma ve silme izni verildiğinde, bu işlemleri ilgili anahtar kasasındaki tüm anahtarlar üzerinde gerçekleştirebilirler.
 
-Bir Anahtar Kasası için erişim ilkeleri ayarlamak için [Azure Portal](https://portal.azure.com/), [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/)veya [Key Vault yönetimi REST API 'lerini](/rest/api/keyvault/)kullanın.
+Bir Anahtar Kasası için erişim ilkeleri ayarlayabilirsiniz [Azure Portal](assign-access-policy-portal.md), [Azure CLI](assign-access-policy-cli.md), [Azure PowerShell](assign-access-policy-powershell.md)veya [Key Vault yönetimi REST API 'lerini](/rest/api/keyvault/)kullanabilirsiniz.
 
 [Azure Key Vault) için sanal ağ hizmet uç noktalarını](overview-vnet-service-endpoints.md)kullanarak veri düzlemi erişimini kısıtlayabilirsiniz. Güvenlik [duvarları ve sanal ağ kurallarını](network-security.md) ek bir güvenlik katmanı için yapılandırabilirsiniz.
 
@@ -93,7 +92,7 @@ Anahtar Kasası işleminden sonraki 10 dakika içinde günlüğe kaydetme bilgil
 - Günlüklerinize erişebilecek kişileri kısıtlayarak güvenliklerini sağlamak için standart Azure erişim denetimi yöntemlerini kullanın.
 - Artık depolama hesabınızda tutmak istemediğiniz günlükleri silin.
 
-Depolama hesaplarını güvenle yönetme önerisi için [Azure depolama Güvenlik Kılavuzu ' nu](../../storage/blobs/security-recommendations.md) gözden geçirin
+Depolama hesaplarını güvenle yönetme önerisi için [Azure depolama Güvenlik Kılavuzu](../../storage/blobs/security-recommendations.md) ' nu gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

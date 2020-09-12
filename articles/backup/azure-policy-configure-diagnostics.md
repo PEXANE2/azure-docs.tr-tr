@@ -3,12 +3,12 @@ title: Kasa tanılama ayarlarını ölçekte yapılandırma
 description: Azure Ilkesini kullanarak belirli bir kapsamdaki tüm kasaları için Log Analytics tanılama ayarlarını yapılandırma
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 751ce0233fb232ef5d276c88a8c2429a2975b2f9
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179989"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378058"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Kasa tanılama ayarlarını ölçekte yapılandırma
 
@@ -22,7 +22,7 @@ Tanılama ayarlarının ölçeğe göre (hedef olarak LA birlikte) oluşturulmas
 
 * İlke, belirli bir abonelikteki tüm kurtarma hizmetleri kasalarına (veya aboneliğin içindeki bir kaynak grubuna) tek seferde uygulanabilir. İlkeyi atayan kullanıcının, ilkenin atandığı aboneliğe **sahip** erişimi olması gerekir.
 
-* Kullanıcı tarafından belirtilen LA çalışma alanı (Tanılama verilerinin gönderileceği), ilkenin atandığı kasalardan farklı bir abonelikte olabilir. Kullanıcının belirtilen LA çalışma alanının bulunduğu aboneliğe **okuyucu**, **katkıda bulunan** veya **sahip** erişiminin olması gerekir.
+* Kullanıcı tarafından belirtilen LA çalışma alanı (Tanılama verilerinin gönderileceği), ilkenin atandığı kasalardan farklı bir abonelikte olabilir. Kullanıcının belirtilen LA çalışma alanının bulunduğu aboneliğe **okuyucu**, **katkıda bulunan**veya **sahip** erişiminin olması gerekir.
 
 * Yönetim grubu kapsamı şu anda desteklenmiyor.
 

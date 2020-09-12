@@ -3,12 +3,12 @@ title: DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme
 description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 909c7cc85590005afd3b6bd32a94020937f96c32
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 368ae846a24ec04ee4b7da9b5971c00180be611d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002020"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378466"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM ve Azure Backup Sunucusu (MABS) için çevrimdışı yedekleme iş akışı
 
@@ -36,7 +36,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 > * Daha sonra SATA sürücüler en yakın Azure veri merkezine gönderilir.
 > * Yedekleme verilerinin Azure 'a yüklenmesi tamamlandıktan sonra, Azure Backup yedekleme verileri yedekleme kasasına kopyalanır ve artımlı yedeklemeler zamanlanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Çevrimdışı yedekleme iş akışını başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -51,10 +51,10 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 * Kurtarma Hizmetleri kasasıyla aynı abonelikte bir Azure depolama hesabı oluşturun.
 * Azure Active Directory uygulamasını oluşturmak için [gerekli izinlere](../active-directory/develop/howto-create-service-principal-portal.md) sahip olduğunuzdan emin olun. Çevrimdışı yedekleme iş akışı, Azure depolama hesabıyla ilişkili abonelikte bir Azure Active Directory uygulaması oluşturur. Uygulamanın amacı, Azure Içeri aktarma hizmeti 'ne yönelik güvenli ve kapsamlı erişime sahip Azure Backup, çevrimdışı yedekleme iş akışı için gereklidir.
 * Microsoft. ımportexport kaynak sağlayıcısını Azure Storage hesabını içeren abonelikle kaydedin. Kaynak sağlayıcısını kaydetmek için:
-    1. Ana menüden **abonelikler**' e tıklayın.
+    1. Ana menüden **abonelikler**' i seçin.
     2. Birden çok aboneliğe abone değilseniz, çevrimdışı yedekleme için kullanmakta olduğunuz aboneliği seçin. Yalnızca bir abonelik kullanıyorsanız, aboneliğiniz görüntülenir.
-    3. Sağlayıcı listesini görüntülemek için abonelik menüsünde **kaynak sağlayıcıları** ' na tıklayın.
-    4. Sağlayıcılar listesinde, Microsoft. ımportexport 'a gidin. Durum NotRegistered ise, **Kaydet**' e tıklayın.
+    3. Sağlayıcı listesini görüntülemek için abonelik menüsünde **kaynak sağlayıcıları** ' nı seçin.
+    4. Sağlayıcılar listesinde, Microsoft. ımportexport 'a gidin. Durum NotRegistered ise, **Kaydet**' i seçin.
 
        ![Kaynak sağlayıcısı kaydediliyor](./media/backup-azure-backup-server-import-export/register-import-export.png)
 
@@ -68,7 +68,7 @@ Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilm
 
 ## <a name="initiate-offline-backup"></a>Çevrimdışı Yedeklemeyi Başlat
 
-1. Çevrimiçi koruma ile yeni bir koruma grubu oluşturduğunuzda veya mevcut koruma grubuna çevrimiçi koruma eklediğinizde, aşağıdaki ekranı görürsünüz. Ilk çevrimiçi çoğaltma yöntemini seçmek için, **kendi diskimi kullanarak aktar** ' ı seçin ve **İleri**' ye tıklayın.
+1. Çevrimiçi koruma ile yeni bir koruma grubu oluşturduğunuzda veya mevcut koruma grubuna çevrimiçi koruma eklediğinizde, aşağıdaki ekranı görürsünüz. Ilk çevrimiçi çoğaltma yöntemini seçmek için **kendi diskimi kullanarak aktar** ' ı seçin ve **İleri ' yi**seçin.
 
     ![İçeri aktarma ekranı](./media/backup-azure-backup-server-import-export/create-new-protection-group.png)
 
@@ -115,7 +115,7 @@ Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilm
      > [!IMPORTANT]
      > Kaynak bilgisayar bir sanal makinedir, kopya bilgisayar olarak farklı bir fiziksel sunucu veya istemci makine kullanılması zorunludur.
 
-1. Geçerli dizin olarak *AzureOfflineBackupDiskPrep* yardımcı program dizini ile kopyalama bilgisayarında yükseltilmiş bir komut istemi açın. Aşağıdaki komutu çalıştırın:
+1. Geçerli dizin olarak *AzureOfflineBackupDiskPrep* yardımcı program dizini ile kopyalama bilgisayarında yükseltilmiş bir komut istemi açın. Şu komutu çalıştırın:
 
     ```console
     .\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>
@@ -160,7 +160,7 @@ Aşağıdaki yordamda Azure Içeri aktarma işi gönderme ayrıntıları güncel
 * diskleriniz için geri dönüş gönderimi ayrıntıları
 
    1. Azure aboneliğinizde oturum açın.
-   2. Ana menüde **tüm hizmetler** ' e tıklayın ve tüm hizmetler Iletişim kutusunda içeri aktar yazın. **İçeri/dışarı aktarma işlerini**gördüğünüzde, buna tıklayın.
+   2. Ana menüde **tüm hizmetler** ' i seçin ve tüm hizmetler Iletişim kutusunda içeri aktar yazın. **İçeri/dışarı aktarma işlerini**gördüğünüzde, seçin.
        ![Sevkiyat bilgilerini girme](./media/backup-azure-backup-server-import-export/search-import-job.png)
 
        **İçeri/dışarı aktarma işleri** menüsü açılır ve seçili abonelikteki tüm içeri/dışarı aktarma işlerinin listesi görüntülenir.
@@ -169,11 +169,11 @@ Aşağıdaki yordamda Azure Içeri aktarma işi gönderme ayrıntıları güncel
 
        ![Sevkiyat bilgilerini gözden geçirme](./media/backup-azure-backup-server-import-export/import-job-found.png)
 
-   4. Içeri aktarma işinin ayarlar menüsünde, **gönderim bilgilerini Yönet** ' e tıklayın ve iade gönderimi ayrıntılarını girin.
+   4. Içeri aktarma işinin ayarlar menüsünde, **gönderim bilgilerini Yönet** ' i seçin ve iade gönderimi ayrıntılarını girin.
 
        ![Sevkiyat bilgilerini depolama](./media/backup-azure-backup-server-import-export/shipping-info.png)
 
-   5. Sevkiyat taşıyıcınızdan izleme numarası varsa, Azure Içeri aktarma işine Genel Bakış sayfasında başlık ' a tıklayın ve aşağıdaki ayrıntıları girin:
+   5. Sevkiyat taşıyıcınızdan izleme numarası varsa, Azure Içeri aktarma işine Genel Bakış sayfasında başlık ' ı seçin ve aşağıdaki ayrıntıları girin:
 
       > [!IMPORTANT]
       > Azure içeri aktarma işini oluşturduktan itibaren iki hafta içinde taşıyıcı bilgilerini ve takip numarasını güncelleştirmeyi unutmayın. Bu bilgilerin iki hafta içinde doğrulanamaması, işin silinme ve sürücüler işlenmemiş olabilir.

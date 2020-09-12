@@ -3,12 +3,12 @@ title: Azure VM 'lerinde yedeklenen SAP HANA veritabanlarını yönetme
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yönetmek ve izlemek için ortak görevler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 40761415042cc619893ab3a712a763d4fb046e38
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267488"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377463"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Yedeklenen SAP HANA veritabanlarını yönetme ve izleme
 
@@ -41,7 +41,7 @@ Uyarılar SAP HANA veritabanlarının yedeklerini izlemenin kolay bir yöntemidi
 
   ![Yedekleme uyarıları listesi](./media/sap-hana-db-manage/backup-alerts-list.png)
 
-* Daha fazla ayrıntı görmek için uyarılara tıklayın:
+* Daha fazla ayrıntı görmek için uyarıları seçin:
 
   ![Uyarı ayrıntıları](./media/sap-hana-db-manage/alert-details.png)
 
@@ -61,9 +61,9 @@ Azure Backup, yedeklenen bir SAP HANA veritabanının yönetimini desteklediği 
 
 Yedeklemeler, ilke zamanlamasına uygun olarak çalışır. İsteğe bağlı bir yedeklemeyi aşağıdaki gibi çalıştırabilirsiniz:
 
-1. Kasa menüsünde, **yedekleme öğeleri**' ne tıklayın.
-2. **Yedekleme öğeleri**' nde, SAP HANA VERITABANıNı çalıştıran VM 'yi seçin ve **Şimdi Yedekle**' ye tıklayın.
-3. **Şimdi Yedekle**' de, gerçekleştirmek istediğiniz yedekleme türünü seçin. Daha sonra, **Tamam**'a tıklayın. Bu yedekleme, bu yedekleme öğesiyle ilişkili ilkeye göre saklanacaktır.
+1. Kasa menüsünde **yedekleme öğeleri**' ni seçin.
+2. **Yedekleme öğeleri**' nde, SAP HANA VERITABANıNı çalıştıran VM 'yi seçin ve ardından **Şimdi Yedekle**' yi seçin.
+3. **Şimdi Yedekle**' de, gerçekleştirmek istediğiniz yedekleme türünü seçin. Ardından **Tamam**'ı seçin. Bu yedekleme, bu yedekleme öğesiyle ilişkili ilkeye göre saklanacaktır.
 4. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri**  >  **devam**ediyor. Veritabanınızın boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
 
 Varsayılan olarak, isteğe bağlı yedeklemelerin saklanması 45 gündür.
@@ -114,7 +114,7 @@ SAP HANA yedekleme öğesi için temel olan ilkeyi değiştirebilirsiniz.
   ![Azure VM 'de SAP HANA seçin](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
 * Temel ilkesini değiştirmek istediğiniz yedekleme öğesini seçin
-* Mevcut yedekleme ilkesine tıklayın
+* Mevcut yedekleme ilkesini seçin.
 
   ![Mevcut yedekleme ilkesini seçin](./media/sap-hana-db-manage/existing-backup-policy.png)
 

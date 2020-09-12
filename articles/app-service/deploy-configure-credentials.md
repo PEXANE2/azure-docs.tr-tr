@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223865"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300281"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service için dağıtım kimlik bilgilerini yapılandırma
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Yerel git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure aboneliğiniz kimlik bilgilerinizle aynı değildir.
@@ -61,7 +61,7 @@ Git dağıtımı yapılandırılırsa, sayfada bir **Git/dağıtım Kullanıcı 
 
 ## <a name="use-user-level-credentials-with-ftpftps"></a>FTP/FTPS ile Kullanıcı düzeyi kimlik bilgilerini kullanma
 
-Kullanıcı düzeyindeki kimlik bilgilerini kullanarak bir FTP/FTPS uç noktası için kimlik doğrulaması, aşağıdaki biçimde bir Kullanıcı adı talep ediyor:`<app-name>\<user-name>`
+Kullanıcı düzeyindeki kimlik bilgilerini kullanarak bir FTP/FTPS uç noktası için kimlik doğrulaması, aşağıdaki biçimde bir Kullanıcı adı talep ediyor: `<app-name>\<user-name>`
 
 Kullanıcı düzeyi kimlik bilgileri, belirli bir kaynak değil kullanıcıya bağlı olduğundan, oturum açma işlemini doğru uygulama uç noktasına yönlendirmek için Kullanıcı adının bu biçimde olması gerekir.
 
@@ -73,6 +73,36 @@ Uygulama düzeyi kimlik bilgilerini almak için:
 2. **Uygulama kimlik bilgilerini**seçin ve Kullanıcı adını veya parolayı kopyalamak için **Kopyala** bağlantısını seçin.
 
 Uygulama düzeyi kimlik bilgilerini sıfırlamak için aynı iletişim kutusunda **kimlik bilgilerini Sıfırla** ' yı seçin.
+
+## <a name="disable-basic-authentication"></a>Temel kimlik doğrulamasını devre dışı bırak
+
+Bazı kuruluşların güvenlik gereksinimlerini karşılaması gerekir ve FTP veya WebDeploy aracılığıyla erişimi devre dışı bırakır. Bu şekilde, kuruluşun üyeleri uygulama hizmetlerine yalnızca Azure Active Directory (Azure AD) tarafından denetlenen API 'Ler aracılığıyla erişebilir.
+
+### <a name="ftp"></a>FTP
+
+Siteye FTP erişimini devre dışı bırakmak için aşağıdaki CLı komutunu çalıştırın. Yer tutucuları kaynak grubunuz ve site adınızla değiştirin. 
+
+```bash
+az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+FTP erişiminin engellendiğini onaylamak için FileZilla gibi bir FTP istemcisi kullanarak kimlik doğrulaması yapmayı deneyebilirsiniz. Yayımlama kimlik bilgilerini almak için sitenizin genel bakış dikey penceresine gidin ve yayımlama profilini Indir ' e tıklayın. Kimlik doğrulaması için dosyanın FTP ana bilgisayar adını, Kullanıcı adını ve parolasını kullanın ve yetkili olmadığını belirten bir 401 hata yanıtı alırsınız.
+
+### <a name="webdeploy-and-scm"></a>WebDeploy ve SCM
+
+WebDeploy bağlantı noktası ve SCM sitesine temel kimlik doğrulaması erişimini devre dışı bırakmak için aşağıdaki CLı komutunu çalıştırın. Yer tutucuları kaynak grubunuz ve site adınızla değiştirin. 
+
+```bash
+az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+WebDeploy 'de yayımlama profili kimlik bilgilerinin engellendiğini onaylamak için, [Visual Studio 2019 kullanarak bir Web uygulaması yayımlamayı](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)deneyin.
+
+### <a name="disable-access-to-the-api"></a>API 'ye erişimi devre dışı bırakma
+
+Önceki bölümde yer alan API, Azure rol tabanlı Access Control (RBAC), [özel bir rol oluşturabileceğiniz](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) ve rol üzerinde temel kimlik doğrulaması etkinleştiremeyecek şekilde role daha düşük bir Kullanıcı atayabileceği anlamına gelir. Özel rolü yapılandırmak için [Bu yönergeleri izleyin](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
+
+[Azure izleyici](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) 'yi, tüm başarılı kimlik doğrulama isteklerini denetlemek ve [Azure ilkesi](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) 'ni kullanarak aboneliğinizdeki tüm siteler için bu yapılandırmayı zorunlu kılmak için de kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

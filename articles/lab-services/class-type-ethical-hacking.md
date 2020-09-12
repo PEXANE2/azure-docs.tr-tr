@@ -3,12 +3,12 @@ title: Azure Lab Services ile ahlak hacme Laboratuvarı ayarlama | Microsoft Doc
 description: Azure Lab Services kullanarak bir laboratuvarı nasıl ayarlayacağınızı öğrenmek için, ahlak hackinin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0e3a5c6e09038ea731e4157657b0e6ad9c9263ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444004"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297595"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Ahlak hacme sınıfı öğretmek için laboratuvar ayarlama 
 Bu makalede, ahlak korsanın adli tarafına odaklanan bir sınıfın nasıl ayarlanacağı gösterilmektedir. Ahlak hacham topluluk tarafından kullanılan bir uygulama olan sızma testi, birisi kötü niyetli bir saldırganın yararlanmasına yönelik güvenlik açıklarını göstermek üzere sisteme veya ağa erişim kazanmayı denediğinde oluşur. 
@@ -74,7 +74,7 @@ Rapid7 Metasplosever görüntüsü, özellikle güvenlik açıklarına göre yap
 1. **Metasplosever şimdi indir** düğmesini seçin.
 1. ZIP dosyası indirildikten sonra ZIP dosyasını ayıklayın ve konumu hatırlayın.
 1. Ayıklanan VMDK dosyasını Hyper-V ile kullanabilmeniz için bir VHDX dosyasına dönüştürün. Bunu yapmak için, PowerShell 'i yönetici ayrıcalıklarıyla açın ve VMDK dosyasının bulunduğu klasöre gidin ve şu yönergeleri izleyin:
-    1. [Microsoft sanal makine dönüştürücüsünü](https://www.microsoft.com/download/details.aspx?id=42497)indirin ve istendiğinde mvmc_setup.msi dosyası çalıştırın.
+    1. [Microsoft sanal makine dönüştürücüsünü](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi)indirin ve istendiğinde mvmc_setup.msi dosyası çalıştırın.
     1. PowerShell modülünü içeri aktarın.  Modülün yüklü olduğu varsayılan konum C:\Program Files\Microsoft sanal makine Dönüştürücüsü \ ' dir
 
         ```powershell
@@ -117,7 +117,7 @@ Rapid7 Metasplosever görüntüsü, özellikle güvenlik açıklarına göre yap
 Şablon artık güncellenir ve bu durumda, sızan korsanlık bir test sınıfı için gereken görüntüler, sızma testi yapmak için araçlar içeren bir görüntü ve keşfedilecek güvenlik açıklarına sahip başka bir görüntü vardır. Şablon görüntüsü artık sınıfa yayımlanabilir. Şablonu laboratuvarda yayımlamak için şablon sayfasında **Yayımla** düğmesini seçin.
   
 
-## <a name="cost"></a>Maliyet  
+## <a name="cost"></a>Cost  
 Bu laboratuvarın maliyetini tahmin etmek isterseniz, aşağıdaki örneği kullanabilirsiniz: 
  
 20 saatlik zamanlanan sınıf süresi ve ev ödevi veya atamalar için 10 saatlik kota içeren 25 öğrenciye sahip bir sınıf için, laboratuvar fiyatı şöyle olacaktır: 

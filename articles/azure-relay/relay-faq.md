@@ -3,12 +3,12 @@ title: Azure Relay SSS | Microsoft Docs
 description: Bu makalede Azure Relay hizmetiyle ilgili sık sorulan soruların bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317034"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299295"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay SSS
 
@@ -18,7 +18,7 @@ Bu makalede [Azure Relay](https://azure.microsoft.com/services/service-bus/)hakk
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Genel sorular
-### <a name="what-is-azure-relay"></a>Azure Geçiş nedir?
+### <a name="what-is-azure-relay"></a>Azure Relay nedir?
 [Azure Relay hizmeti](relay-what-is-it.md) , kurumsal bir kurumsal ağ içinde bulunan hizmetleri genel buluta daha güvenli bir şekilde kullanıma sunmanıza yardımcı olarak karma uygulamalarınızı kolaylaştırır. Bir güvenlik duvarı bağlantısı açmadan Hizmetleri açığa çıkarmak ve kurumsal ağ altyapısına müdahale eden değişiklikler yapmanıza gerek kalmadan kullanıma sunabilirsiniz.
 
 ### <a name="what-is-a-relay-namespace"></a>Geçiş ad alanı nedir?
@@ -119,8 +119,8 @@ Ortak özel durumlar ve gerçekleştirebileceğiniz önerilen eylemlerin bir aç
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Paylaşılan erişim imzası nedir ve imza oluşturmak için hangi dilleri kullanabilirim?
 Paylaşılan erişim Imzaları (SAS), SHA-256 güvenli karmaları veya URI 'Leri temel alan bir kimlik doğrulama mekanizmasıdır. Node.js, PHP, Python, Java, C ve C# ' de kendi imzalarınızı oluşturma hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları ile Service Bus kimlik doğrulaması][Shared Access Signatures].
 
-### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Geçiş uç noktalarını beyaz listelemek mümkün mü?
-Evet. Geçiş istemcisi tam etki alanı adlarını kullanarak Azure Relay hizmetine bağlantı yapar. Müşteriler, `*.servicebus.windows.net` DNS beyaz listesini destekleyen güvenlik duvarları için bir giriş ekleyebilir.
+### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>Yalnızca bazı geçiş uç noktalarına izin vermek mümkün mü?
+Evet. Geçiş istemcisi tam etki alanı adlarını kullanarak Azure Relay hizmetine bağlantı yapar. Müşteriler, `*.servicebus.windows.net` DNS onay listesini destekleyen güvenlik duvarları için bir giriş ekleyebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Ad alanı oluşturma](relay-create-namespace-portal.md)

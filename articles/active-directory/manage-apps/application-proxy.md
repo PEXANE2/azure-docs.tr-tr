@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164929"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377871"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu aracılığıyla şirket içi uygulamalara uzaktan erişim
 
@@ -57,6 +57,11 @@ Aşağıdaki diyagramda, şirket içi uygulamalarda çoklu oturum açma sağlama
 4. Çoklu oturum açma 'yı yapılandırdıysanız, bağlayıcı kullanıcı adına gereken ek kimlik doğrulamasını gerçekleştirir.
 5. Bağlayıcı, isteği şirket içi uygulamaya gönderir.
 6. Yanıt, kullanıcıya bağlayıcı ve uygulama proxy hizmeti üzerinden gönderilir.
+
+> [!NOTE]
+> Çoğu Azure AD karma Aracısı gibi, uygulama proxy Bağlayıcısı, gelen bağlantıları güvenlik duvarınız aracılığıyla açmanızı gerektirmez. 3. adımdaki Kullanıcı trafiği, uygulama proxy 'Si hizmetinde (Azure AD 'de) sonlanır. Uygulama proxy Bağlayıcısı (Şirket içi), iletişimin geri kalanından sorumludur.
+>
+
 
 | Bileşen | Açıklama |
 | --------- | ----------- |

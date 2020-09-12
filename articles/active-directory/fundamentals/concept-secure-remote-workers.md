@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713afb7b277fba65dc4c860e8bdd6b62b4e0147d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e0e0ad9086a7945201b1752126253f12eb751bf
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204955"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320044"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure Active Directory ile güvenli kimliklere hızla yanıt verme
 
@@ -34,7 +34,7 @@ Bu denetim listesi, aşağıdaki adımları izleyerek kuruluşunuzu hemen koruma
 - Bulut zekası kullanın.
 - Son Kullanıcı self servis hizmetini etkinleştirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kılavuzda yalnızca bulutunuzun veya karma kimliklerinin Azure AD 'de zaten kurulduğu varsayılmaktadır. Kimlik türünü seçme konusunda yardım için, [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin](../hybrid/choose-ad-authn.md) . 
 
@@ -55,7 +55,7 @@ Azure AD Ücretsiz veya Office 365 uygulama müşterilerinin Kullanıcı kimlikl
 | --- | --- |
 | [Güvenlik varsayılanlarını etkinleştir](concept-fundamentals-security-defaults.md) | MFA 'yı etkinleştirerek ve eski kimlik doğrulamasını engelleyerek tüm Kullanıcı kimliklerini ve uygulamalarını koruyun |
 | [Parola karma eşitlemesini etkinleştir](../hybrid/how-to-connect-password-hash-synchronization.md) (karma kimlikler kullanılıyorsa) | Kimlik doğrulaması için artıklık sağlayın ve güvenliği geliştirebilirsiniz (akıllı kilitleme, IP kilitleme ve sızdırılan kimlik bilgilerini bulma özelliği de dahil). |
-| [ADFS akıllı kilitleme aşımını etkinleştir](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (varsa) | Kullanıcılarınızın kötü amaçlı etkinlikten extranet hesabı kilitlemesini yaşmalarını önler. |
+| [ADFS akıllı kilitleme aşımını etkinleştir](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (varsa) | Kullanıcılarınızın kötü amaçlı etkinlikten extranet hesabı kilitlemesini yaşmalarını önler. |
 | [Akıllı kilitleme Azure Active Directory etkinleştir](../authentication/howto-password-smart-lockout.md) (Yönetilen kimlikler kullanılıyorsa) | Akıllı kilitleme, kullanıcılarınızın parolalarını tahmin etmeye çalışan kötü aktörlerin kilitlenmesini sağlar veya almak için deneme yanılma yöntemlerini kullanır. |
 | [Son Kullanıcı onayını uygulamalara devre dışı bırak](../manage-apps/configure-user-consent.md) | Yönetici onayı iş akışı yöneticilere yönetici onayı gerektiren uygulamalara erişim vermek için güvenli bir yol sağlar. böylece son kullanıcılar kurumsal verileri kullanıma sunmazlar. Microsoft, Surface alanınızı azaltmaya ve bu riski azaltmaya yardımcı olmak için gelecekteki Kullanıcı onay işlemlerinin devre dışı bırakılmasını öneriyor. |
 | [Desteklenen SaaS uygulamalarını Galeriden Azure AD 'ye tümleştirin ve çoklu oturum açmayı etkinleştirin](../manage-apps/add-application-portal.md) | Azure AD 'nin binlerce önceden tümleştirilmiş uygulama içeren bir Galerisi vardır. Kuruluşunuzun kullandığı uygulamalardan bazıları büyük olasılıkla galeride doğrudan Azure portal erişilebilir. Geliştirilmiş kullanıcı deneyimiyle (SSO) Şirket SaaS uygulamalarına uzaktan ve güvenle erişim sağlama |
@@ -82,7 +82,7 @@ Aşağıdaki tablo, aşağıdaki lisans abonelikleriyle ilgili önemli eylemleri
 | [Parola geri yazmayı Uygula](../authentication/tutorial-enable-sspr-writeback.md) (karma kimlikler kullanılıyorsa) | Bulutta parola değişikliklerinin şirket içi Windows Server Active Directory ortamına geri yazılmasına izin verin. |
 | Koşullu erişim ilkeleri oluşturma ve etkinleştirme | [Yöneticiler için yönetim hakları atanmış hesapları koruma MFA.](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [Eski kimlik doğrulama protokolleriyle ilişkili risk artışı nedeniyle eski kimlik doğrulama protokollerini engelleyin.](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [Kullanıcılarınızın ve uygulamalarınızın güvenliğini sağlamak için tüm kullanıcıların ve uygulamaların, ortamınız için dengeli bir MFA ilkesi oluşturması için MFA.](../conditional-access/howto-conditional-access-policy-all-users-mfa.md) <br><br> [Azure kaynaklarına erişen herhangi bir kullanıcı için Multi-Factor Authentication 'ı zorunlu kılarak, Azure yönetimi için MFA 'yı, ayrıcalıklı kaynaklarınızın korunmasını isteyin.](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [Parola karma eşitlemesini etkinleştir](../hybrid/how-to-connect-password-hash-synchronization.md) (karma kimlikler kullanılıyorsa) | Kimlik doğrulaması için artıklık sağlayın ve güvenliği geliştirebilirsiniz (akıllı kilitleme, IP kilitleme ve sızdırılan kimlik bilgilerini bulma özelliği de dahil). |
-| [ADFS akıllı kilitleme aşımını etkinleştir](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (varsa) | Kullanıcılarınızın kötü amaçlı etkinlikten extranet hesabı kilitlemesini yaşmalarını önler. |
+| [ADFS akıllı kilitleme aşımını etkinleştir](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (varsa) | Kullanıcılarınızın kötü amaçlı etkinlikten extranet hesabı kilitlemesini yaşmalarını önler. |
 | [Akıllı kilitleme Azure Active Directory etkinleştir](../authentication/howto-password-smart-lockout.md) (Yönetilen kimlikler kullanılıyorsa) | Akıllı kilitleme, kullanıcılarınızın parolalarını tahmin etmeye çalışan kötü aktörlerin kilitlenmesini sağlar veya almak için deneme yanılma yöntemlerini kullanır. |
 | [Son Kullanıcı onayını uygulamalara devre dışı bırak](../manage-apps/configure-user-consent.md) | Yönetici onayı iş akışı yöneticilere yönetici onayı gerektiren uygulamalara erişim vermek için güvenli bir yol sağlar. böylece son kullanıcılar kurumsal verileri kullanıma sunmazlar. Microsoft, Surface alanınızı azaltmaya ve bu riski azaltmaya yardımcı olmak için gelecekteki Kullanıcı onay işlemlerinin devre dışı bırakılmasını öneriyor. |
 | [Uygulama proxy 'Si ile şirket içi eski uygulamalara uzaktan erişimi etkinleştirme](../manage-apps/application-proxy-add-on-premises-application.md) | Azure AD Uygulama Ara Sunucusu etkinleştirin ve kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara güvenli bir şekilde erişmesini sağlamak için eski uygulamalarla tümleştirin. |
@@ -94,7 +94,7 @@ Aşağıdaki tablo, aşağıdaki lisans abonelikleriyle ilgili önemli eylemleri
 | [Birden fazla genel yönetici belirleyin](../users-groups-roles/directory-emergency-access.md) | Acil durumda kullanılmak üzere en az iki bulut kalıcı genel yönetici hesabı atayın. Bu hesaplar günlük olarak kullanılmaz ve uzun ve karmaşık parolalara sahip olmalıdır. Cam hesapları kesme bir acil durumda hizmete erişebildiğinizden emin olun. |
 | [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../users-groups-roles/directory-assign-admin-roles.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. |
 | [Microsoft 'un parola kılavuzunu etkinleştir](https://www.microsoft.com/research/publication/password-guidance/) | Kullanıcıların bir küme zamanlaması üzerinde parolalarını değiştirmesini, karmaşıklık gereksinimlerini devre dışı bırakmayı ve kullanıcılarınızın parolalarını anımsamasını ve bunları güvenli bir şekilde tutmasını sağlama gereğini durdur. |
-| [Konuk Kullanıcı erişimi için bir plan oluşturun](../b2b/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerle uygulama ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. |
+| [Konuk Kullanıcı erişimi için bir plan oluşturun](../external-identities/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerle uygulama ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. |
 
 ### <a name="guidance-for-azure-ad-premium-plan-2-customers"></a>Azure AD Premium plan 2 müşterileri için rehberlik.
 
@@ -114,7 +114,7 @@ Aşağıdaki tablo, aşağıdaki lisans abonelikleriyle ilgili önemli eylemleri
 | [Kimlik koruması Kullanıcı ve oturum açma risk ilkelerini etkinleştirme](../identity-protection/howto-identity-protection-configure-risk-policies.md) | Kimlik koruması Kullanıcı ve oturum açma ilkelerini etkinleştirin. Önerilen oturum açma ilkesi, orta riskli oturum açma işlemlerini hedeflemek ve MFA gerektirmelidir. Kullanıcı ilkeleri için parola değiştirme eylemini gerektiren yüksek riskli kullanıcıları hedeflemelidir. |
 | Koşullu erişim ilkeleri oluşturma ve etkinleştirme | [Yöneticiler için yönetim hakları atanmış hesapları koruma MFA.](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [Eski kimlik doğrulama protokolleriyle ilişkili risk artışı nedeniyle eski kimlik doğrulama protokollerini engelleyin.](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [Azure kaynaklarına erişen herhangi bir kullanıcı için Multi-Factor Authentication 'ı zorunlu kılarak, Azure yönetimi için MFA 'yı, ayrıcalıklı kaynaklarınızın korunmasını isteyin.](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [Parola karma eşitlemesini etkinleştir](../hybrid/how-to-connect-password-hash-synchronization.md) (karma kimlikler kullanılıyorsa) | Kimlik doğrulaması için artıklık sağlayın ve güvenliği geliştirebilirsiniz (akıllı kilitleme, IP kilitleme ve sızdırılan kimlik bilgilerini bulma özelliği de dahil). |
-| [ADFS akıllı kilitleme aşımını etkinleştir](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (varsa) | Kullanıcılarınızın kötü amaçlı etkinlikten extranet hesabı kilitlemesini yaşmalarını önler. |
+| [ADFS akıllı kilitleme aşımını etkinleştir](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (varsa) | Kullanıcılarınızın kötü amaçlı etkinlikten extranet hesabı kilitlemesini yaşmalarını önler. |
 | [Akıllı kilitleme Azure Active Directory etkinleştir](../authentication/howto-password-smart-lockout.md) (Yönetilen kimlikler kullanılıyorsa) | Akıllı kilitleme, kullanıcılarınızın parolalarını tahmin etmeye çalışan kötü aktörlerin kilitlenmesini sağlar veya almak için deneme yanılma yöntemlerini kullanır. |
 | [Son Kullanıcı onayını uygulamalara devre dışı bırak](../manage-apps/configure-user-consent.md) | Yönetici onayı iş akışı yöneticilere yönetici onayı gerektiren uygulamalara erişim vermek için güvenli bir yol sağlar. böylece son kullanıcılar kurumsal verileri kullanıma sunmazlar. Microsoft, Surface alanınızı azaltmaya ve bu riski azaltmaya yardımcı olmak için gelecekteki Kullanıcı onay işlemlerinin devre dışı bırakılmasını öneriyor. |
 | [Uygulama proxy 'Si ile şirket içi eski uygulamalara uzaktan erişimi etkinleştirme](../manage-apps/application-proxy-add-on-premises-application.md) | Azure AD Uygulama Ara Sunucusu etkinleştirin ve kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara güvenli bir şekilde erişmesini sağlamak için eski uygulamalarla tümleştirin. |
@@ -126,7 +126,7 @@ Aşağıdaki tablo, aşağıdaki lisans abonelikleriyle ilgili önemli eylemleri
 | [Birden fazla genel yönetici belirleyin](../users-groups-roles/directory-emergency-access.md) | Acil durumda kullanılmak üzere en az iki bulut kalıcı genel yönetici hesabı atayın. Bu hesaplar günlük olarak kullanılmaz ve uzun ve karmaşık parolalara sahip olmalıdır. Cam hesapları kesme bir acil durumda hizmete erişebildiğinizden emin olun. |
 | [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../users-groups-roles/directory-assign-admin-roles.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. |
 | [Microsoft 'un parola kılavuzunu etkinleştir](https://www.microsoft.com/research/publication/password-guidance/) | Kullanıcıların bir küme zamanlaması üzerinde parolalarını değiştirmesini, karmaşıklık gereksinimlerini devre dışı bırakmayı ve kullanıcılarınızın parolalarını anımsamasını ve bunları güvenli bir şekilde tutmasını sağlama gereğini durdur. |
-| [Konuk Kullanıcı erişimi için bir plan oluşturun](../b2b/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerle uygulama ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. |
+| [Konuk Kullanıcı erişimi için bir plan oluşturun](../external-identities/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerle uygulama ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. |
 | [Privileged Identity Management etkinleştir](../privileged-identity-management/pim-configure.md) | , Kuruluşunuzdaki önemli kaynaklara erişimi yönetmenizi, denetlemenizi ve izlemenizi sağlar. böylece Yöneticiler yalnızca gerektiğinde ve onay ile erişime sahiptir |
 
 ## <a name="next-steps"></a>Sonraki adımlar

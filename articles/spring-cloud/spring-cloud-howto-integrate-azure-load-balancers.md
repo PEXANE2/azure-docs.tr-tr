@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 3a7ed148c4bc8d58b2dcbc344656137a403c62eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4315427598d004459862bcf12959e22e83c84d5d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037551"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299735"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Azure Spring Cloud’u Azure Load Balance Çözümleriyle tümleştirme
 
@@ -24,9 +24,9 @@ Azure zaten farklı Yük Dengeleme çözümleri sağlıyor. Azure yay bulutunu A
 2.  Azure yay bulutunu Azure uygulama ağ geçidi ile tümleştirme
 3.  Azure yay bulutunu Azure ön kapısına tümleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure yay bulutu: [Azure yay bulut hizmeti oluşturma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal)
+* Azure yay bulutu: [Azure yay bulut hizmeti oluşturma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
 * Azure Traffic Manager: [Traffic Manager oluşturma](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
 * Azure uygulama ağ geçidi: [uygulama ağ geçidi oluşturma](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 * Azure ön kapı: [ön kapı oluşturma](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
@@ -39,7 +39,7 @@ Azure Spring Cloud 'ı Traffic Manager ile tümleştirmek için, genel uç nokta
 Traffic Manager 'da uç noktalar ekleme:
 1.  *Dış uç nokta*olacak **tür** belirtin.
 1.  Her Azure yay bulutu genel uç noktasının tam etki alanı adını (FQDN) girin.
-1. **Tamam** düğmesine tıklayın.
+1. **Tamam**’a tıklayın.
 
     ![Traffic Manager 1 ](media/spring-cloud-load-balancers/traffic-manager-1.png) ![ Traffic Manager 2](media/spring-cloud-load-balancers/traffic-manager-2.png)
 

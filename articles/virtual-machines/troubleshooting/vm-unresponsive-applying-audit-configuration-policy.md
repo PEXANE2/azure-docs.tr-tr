@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: e55fa377f28572901202b4d722bea70786edae22
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942199"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299533"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>Denetim ilkesi yapılandırma ilkesi uygulanırken sanal makine yanıt vermiyor
 
@@ -27,7 +27,7 @@ Bu makalede, bir Azure VM 'nin önyüklenmesini önleyen denetim Ilkesi yapılan
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünün, **Denetim Ilkesi yapılandırma ilkesini uygulayan**ileti ile bir önyükleme SıRASıNDA işletim sisteminin (OS) askıda olduğunu görüntülediğini görürsünüz.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde, **Denetim Ilkesi yapılandırma ilkesini uygulayan**ileti ile bir önyükleme SıRASıNDA işletim sisteminin (OS) yanıt vermeyen bir şekilde görüntülediğini görürsünüz.
 
   !["Denetim Ilkesi yapılandırma ilkesi uygulanıyor" iletisiyle işletim sistemi önyüklemesi](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 

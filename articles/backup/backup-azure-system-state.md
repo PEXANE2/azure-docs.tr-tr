@@ -3,12 +3,12 @@ title: Windows sistem durumunu Azure 'a yedekleme
 description: Windows Server bilgisayarlarının sistem durumunu Azure 'a nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 14ca17284d48355260cdeda6ef3b20b4794a0c4f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 10d37bbafab6aa96986a5d7af88a509d4c8eac25
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181638"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376501"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Windows sistem durumunu Azure 'a yedekleme
 
@@ -62,7 +62,7 @@ Artık bir kasa oluşturduğunuza göre, Windows sistem durumunu yedeklemek içi
 
     ![Dosya ve klasörleri yedekleme](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    Tamam ' a tıkladıktan sonra, **yedekleme hedefi**' nin yanında bir onay işareti görünür ve **altyapıyı hazırla** bölmesi açılır.
+    **Tamam**' ı seçtikten sonra, **yedekleme hedefi**' nin yanında bir onay Işareti görünür ve **altyapıyı hazırla** bölmesi açılır.
 
     ![Yedekleme hedefi yapılandırılmıştır, bundan sonra altyapıyı hazırlayın](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 

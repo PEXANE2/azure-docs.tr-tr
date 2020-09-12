@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: cf0fec1f081a232abc88941e3dd785fb7617fb57
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04a3499da15bc226fe2cada2283d7a115036a48c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387124"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318309"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -132,6 +132,11 @@ Anahtar erişimi geri yüklendikten sonra, veritabanı yeniden çevrimiçi durum
 - Anahtar erişimi 8 saat içinde geri yüklenirse, veritabanı bir sonraki saat içinde otomatik olarak alınır.
 
 - Anahtar erişimi 8 saatten uzun bir süre sonra geri yüklenirse, otomatik düzeltme gerçekleştirilemez ve veritabanının geri getirilmesi için portaldan ek işlemler gerçekleştirilmesi gerekir. Bu işlemler veritabanının boyutuna bağlı olarak uzun sürebilir. Veritabanı yeniden çevrimiçi olduktan sonra, önceden [Yük devretme grubu](auto-failover-group-overview.md) yapılandırması, zaman içinde geri yükleme geçmişi ve Etiketler gibi sunucu düzeyi ayarları daha önce **yapılandırılmış olur.** Bu nedenle, temel alınan anahtar erişim sorunlarını 8 saat içinde tanımlamanızı ve adresetmenizi sağlayan bir bildirim sistemi uygulanması önerilir.
+
+Aşağıda, erişilemeyen bir veritabanını yeniden çevrimiçi hale getirmek için portalda gereken ek adımların bir görünümü yer alır.
+
+![TDE BYOK erişilemeyen veritabanı](./media/transparent-data-encryption-byok-overview/customer-managed-tde-inaccessible-database.jpg)
+
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Yanlışlıkla TDE koruyucu erişimi iptali
 

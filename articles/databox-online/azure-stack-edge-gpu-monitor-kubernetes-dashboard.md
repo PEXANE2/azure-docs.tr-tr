@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180686"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297873"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınızı izlemek için Kubernetes panosunu kullanma
 
@@ -26,7 +26,6 @@ Bu makalede şunları öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Cihazınızdaki Kubernetes panosuna erişin
-> * `aseuser`Yapılandırmayı indir
 > * Cihazınızda dağıtılan modülleri görüntüleme
 > * Cihazınızda dağıtılan uygulamalar için IP adresi al
 > * Cihazınızda dağıtılan modüller için kapsayıcı günlüklerini görüntüleme
@@ -42,26 +41,18 @@ Azure Stack Edge cihazınızda, Kubernetes panosunu *salt okunurdur* modunda kul
 
 Kubernetes panosu *salt okunurdur* ve 31000 numaralı bağlantı noktasında Kubernetes ana düğümünde çalışır. Panoya erişmek için şu adımları izleyin: 
 
-1. Cihazınızın yerel kullanıcı arabiriminde **cihaz** ' a gidin ve **cihaz uç noktaları**' na gidin. Panoyu bir tarayıcıda açmak için Kubernetes panosu URL 'sini seçin.
+1. Cihazınızın yerel kullanıcı arabiriminde **cihaz** ' a gidin ve **cihaz uç noktaları**' na gidin. 
+1. Panoya erişmenizi sağlayan bir indirmek için **yapılandırmayı indir** ' i seçin `kubeconfig` . `config.json`Dosyayı yerel sisteminize kaydedin.
+1. Panoyu bir tarayıcıda açmak için Kubernetes panosu URL 'sini seçin.
 
     ![Yerel Kullanıcı arabirimindeki cihaz sayfasında Kubernetes Pano URL 'SI](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-url-local-ui-1.png)
 
-1. **Kubernetes Pano oturum açma** sayfasında **belirteç**' ı seçin. 
-1. Belirteç girin. 
-    1. Belirteci almak için, [cihazınızın PowerShell arabirimi aracılığıyla bağlanın](azure-stack-edge-gpu-connect-powershell-interface.md).
-    1. Şu komutu çalıştırın:  `Get-HcsKubernetesDashboardToken`
+1. **Kubernetes Pano oturum açma** sayfasında:
     
-    1. Komut isteminde size sunulan belirteç dizesini kopyalayın. Örnek çıktı aşağıdaki gibidir:
-        
-        ```powershell
-        [10.100.10.10]: PS>Get-HcsKubernetesDashboardToken
-        eyJhbGciOiJSUzI1NiIsImtpZCI6IkpFTEtBYTMyZ0Ezb01OYTVFSnVaUV85OWtLdXNETTZQR0k0UlFybGdReFUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi03czZ6ayIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjU3NzY3ZDAzLTJlYWUtNDlkMi1hNDEyLTNkOTU3MDFiMThiMyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.UgNrpVYVJBEaWxFlljuENUQQmzFXMYG2VsJUIYFdp2AO20zX0k5dRvwcCpeGlqSKb9MyYjG0c6RmT9uCOZk-vAwt7btszQLD7KPCwh_nn_NiIyO8ApgGRYZP8NuP8CBTX3tl_hpwfHtZ0ksbuKAduIL-0uPF0rG5wgLk9cTEw6fKSc2UZW6bIzhNSp_uSiP6MexOS6OftF9JFZejkIGd33dSp-k-tgFlm2Zy96sdFJC0q-XsH7jygiVnfxA9XMs5wqW26LkCh0rfO2WI3C1XFK-4TpufRZLJHo5WPlu-Tnsxa8xmtk2jQ3us-sXcBRrvhPNPrNKkbqc9hbjmWfGD0Q
-        [10.100.10.10]: PS>
-        ```
-        
-1. **Oturum aç**'ı seçin.
-
-    ![Kubernetes panosu 'nda oturum açma](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png)
+    1. **Kubeconfig**' i seçin. 
+        ![Kubeconfig seçeneğini belirleyin](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png) 
+    1. Üç noktayı seçin **...**. `kubeconfig` Daha önce yerel sisteminizde indirdiğiniz öğesine gidin ve üzerine gelin. **Oturum aç**'ı seçin.
+        ![Kubeconfig dosyasına gidin](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
 6. Artık Azure Stack Edge cihazınız için Kubernetes panosunu salt okunurdur modunda görüntüleyebilirsiniz.
 
@@ -110,6 +101,21 @@ Kapsayıcı günlüklerini görüntülemek için panoda bu adımları izleyin:
 
     ![Kapsayıcı günlüklerini görüntüle 2](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-container-logs-1.png)
     
+
+## <a name="view-cpu-memory-usage"></a>CPU, bellek kullanımı görüntüleme
+
+Azure Stack Edge cihazının Kubernetes panosunda, Kubernetes kaynakları genelinde CPU ve bellek kullanımını toplayan bir [ölçüm sunucusu eklentisi](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) de vardır.
+ 
+Örneğin, tüm ad alanlarındaki dağıtımlar genelinde tüketilen CPU ve belleği görüntüleyebilirsiniz. 
+
+![Tüm dağıtımlar genelinde CPU ve bellek kullanımını görüntüleme](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-all-1.png)
+
+Belirli bir ad alanına göre de filtre uygulayabilirsiniz. Aşağıdaki örnekte, CPU ve bellek tüketimini yalnızca Azure Arc dağıtımları için görüntüleyebilirsiniz.  
+
+![Azure Arc dağıtımları için CPU ve bellek kullanımını görüntüleme](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
+
+Kubernetes ölçüm sunucusu, [yatay Pod otomatik Scaler ' a](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)benzer şekilde otomatik ölçeklendirme işlem hatları sağlar.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

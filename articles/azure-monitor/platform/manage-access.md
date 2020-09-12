@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925644"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300111"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure İzleyici'deki günlük verilerine ve çalışma alanlarına erişimi yönetme
 
@@ -162,7 +162,7 @@ Log Analytics okuyucu rolü aşağıdaki Azure eylemlerini içerir:
 
 Log Analytics katkıda bulunan rolü aşağıdaki Azure eylemlerini içerir:
 
-| İzin | Açıklama |
+| İzin | Description |
 | ---------- | ----------- |
 | `*/read`     | Tüm kaynakların ve kaynak yapılandırmalarının görüntülenmesine imkan sağlar. Aşağıdakileri görüntülemeyi içerir: <br> Sanal makine uzantısı durumu <br> Kaynaklarda Azure tanılamalarının yapılandırması <br> Tüm kaynakların tüm özellikleri ve ayarları. <br> Çalışma alanları için, tam Kısıtlanmamış izinlerin çalışma alanı ayarını okumasına ve verilerde sorgu gerçekleştirmesine izin verir. Daha ayrıntılı seçeneklere bakın. |
 | `Microsoft.Automation/automationAccounts/*` | Runbook'ları ekleme ve düzenleme dahil olmak üzere Azure Otomasyonu hesapları oluşturma ve yapılandırma olanağı |
@@ -189,7 +189,7 @@ Doğru erişim denetimini güvence altına almak için kaynak düzeyinde (çalı
 
 Kullanıcılar, kaynak bağlamı erişimi kullanarak bir çalışma alanından günlükleri sorgularsa, kaynak üzerinde aşağıdaki izinlere sahip olurlar:
 
-| İzin | Açıklama |
+| İzin | Description |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Örnekler:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Kaynak için tüm günlük verilerini görüntüleme olanağı.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Tanılama ayarını bu kaynak için günlükleri ayarlamaya izin verecek şekilde yapılandırma özelliği. |
@@ -228,14 +228,14 @@ Farklı tablolar için farklı erişim denetimi oluşturmak isterseniz, aşağı
 
     * Çalışma alanında kullanıcılara aşağıdaki izinleri verin: 
 
-        * `Microsoft.OperationalInsights/workspaces/read`– Kullanıcı çalışma alanını numaralandırabilmek ve Azure portal çalışma alanı Dikey penceresini açmak için gereklidir
-        * `Microsoft.OperationalInsights/workspaces/query/read`– sorguları yürütebilmesi için her kullanıcı için gereklidir
-        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read`– Azure AD oturum açma günlüklerini okuyabilmek için
-        * `Microsoft.OperationalInsights/workspaces/query/Update/read`– Güncelleştirme Yönetimi çözüm günlüklerini okuyabilmek için
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read`– Güncelleştirme Yönetimi çözüm günlüklerini okuyabilmek için
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read`– Güncelleştirme yönetimi günlüklerini okuyabilmek için
-        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read`– Güncelleştirme Yönetimi çözümü kullanabilmek için gereklidir
-        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read`– Güncelleştirme Yönetimi çözümü kullanabilmek için gereklidir
+        * `Microsoft.OperationalInsights/workspaces/read` – Kullanıcı çalışma alanını numaralandırabilmek ve Azure portal çalışma alanı Dikey penceresini açmak için gereklidir
+        * `Microsoft.OperationalInsights/workspaces/query/read` – sorguları yürütebilmesi için her kullanıcı için gereklidir
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` – Azure AD oturum açma günlüklerini okuyabilmek için
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read` – Güncelleştirme Yönetimi çözüm günlüklerini okuyabilmek için
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` – Güncelleştirme Yönetimi çözüm günlüklerini okuyabilmek için
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` – Güncelleştirme yönetimi günlüklerini okuyabilmek için
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` – Güncelleştirme Yönetimi çözümü kullanabilmek için gereklidir
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` – Güncelleştirme Yönetimi çözümü kullanabilmek için gereklidir
 
     * Kullanıcılara kaynakları için aşağıdaki izinleri verin: `*/read` , okuyucu rolüne atanır veya `Microsoft.Insights/logs/*/read` . 
 
@@ -270,7 +270,7 @@ Yalnızca _Securitybaseline_ tablosuna erişimi olan bir rol oluşturmak için a
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
 ```
-Yukarıdaki örnekler, izin verilen tabloların beyaz bir listesini tanımlar. Bu örnek, bir Kullanıcı tüm tablolara erişebil, ancak _Securityalert_ tablosuna erişebilme kara liste tanımını gösterir:
+Yukarıdaki örnekler, izin verilen tabloların bir listesini tanımlar. Bu örnek, bir Kullanıcı tüm tablolara erişebiliyorsa Engellenen liste tanımını gösterir, ancak _Securityalert_ tablosu:
 
 ```
 "Actions":  [

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5d41a9b638ab023d045060e14488e91dca07b10f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 63bc46f679b71f6965cda8f9db800a125683c093
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181383"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298904"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (komut dosyası) ayarlama
 
@@ -58,6 +58,13 @@ Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda veril
     * Uygulama kaydı için: Azure AD uygulaması için bir *Azure AD uygulama yanıt URL 'si* . `http://localhost` komutunu kullanın. Betik için *ortak bir istemci/yerel (mobil & Masaüstü)* URI 'si ayarlanır.
 
 Betik bir Azure dijital TWINS örneği oluşturur, Azure kullanıcısını örneğe *Azure Digital TWINS Owner (Önizleme)* rolünü atar ve istemci uygulamanızın kullanması Için BIR Azure AD uygulama kaydı ayarlayın.
+
+>[!NOTE]
+>Şu anda, bazı kullanıcıların (özellikle kişisel [Microsoft hesaplarındaki kullanıcılar (MSAs)](https://account.microsoft.com/account)) ** _Azure dijital TWINS sahibine (Önizleme)_ rol atamasını**bulabildiği, betikleştirilmiş kurulumla ilgili **bilinen bir sorun** vardır.
+>
+>Rol atamasını, bu makalenin ilerleyen kısımlarında bulunan [*Kullanıcı rolü atamasını doğrula*](#verify-user-role-assignment) bölümü ile doğrulayabilirsiniz ve gerekirse, [Azure Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) veya [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions)kullanarak rol atamasını el ile ayarlayabilirsiniz.
+>
+>Bu sorun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup).
 
 Betikten çıktı günlüğü alıntısı aşağıda verilmiştir:
 
@@ -127,5 +134,9 @@ Komut dosyası tarafından ayarlanan kaynaklarınızın ve izinlerin oluşturulm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İstemci uygulamasının kimlik doğrulama kodunu yazarak istemci uygulamanızı örneğinize bağlama konusuna bakın:
+Azure Digital TWINS CLı komutlarını kullanarak örneğiniz için tek REST API çağrılarını test edin: 
+* [az DT Reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*Nasıl yapılır: Azure dijital TWINS CLı 'sını kullanma*](how-to-use-cli.md)
+
+Ya da bkz. istemci uygulamasının kimlik doğrulama kodunu yazarak istemci uygulamanızı örneğinizle bağlama:
 * [*Nasıl yapılır: uygulama kimlik doğrulama kodunu yazma*](how-to-authenticate-client.md)

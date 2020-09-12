@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 6a1506de0bf21e44d84925fabeeea860f5807e2c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958108"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322458"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Cihazlarınızdaki verilerin Azure IoT Central neden gösterilmediğini sorun giderme
 
@@ -57,7 +57,7 @@ az set account --subscription <your-subscription-id>
 Cihazınızın gönderdiği Telemetriyi izlemek için aşağıdaki komutu kullanın:
 
 ```cmd/bash
-az iot central app monitor-events --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Cihaz IoT Central başarıyla bağlanırsa aşağıdakine benzer bir çıktı görürsünüz:
@@ -82,7 +82,7 @@ Filtering on device: device-001
 Cihazınızın IoT Central ile birlikte değişiminde olan özellik güncelleştirmelerini izlemek için aşağıdaki Önizleme komutunu kullanın:
 
 ```cmd/bash
-az iot central app monitor-properties --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Cihaz, özellik güncelleştirmelerini başarıyla gönderirse aşağıdakine benzer bir çıktı görürsünüz:
@@ -106,7 +106,7 @@ Terminalinizde herhangi bir veri görünmüyorsa, büyük olasılıkla cihazın�
 Verileriniz izleyicisinde görünmüyorsa, aşağıdaki komutu çalıştırarak cihazınızın sağlama durumunu kontrol edin:
 
 ```cmd/bash
-az iot central app device registration-info --app-id <app-id> --device-id <device-name>
+az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
 Aşağıdaki çıktıda, bağlantısı engellenen bir cihaz örneği gösterilmektedir:
@@ -129,7 +129,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Cihaz sağlama durumu | Açıklama | Olası risk azaltma |
+| Cihaz sağlama durumu | Description | Olası risk azaltma |
 | - | - | - |
 | Oluşturulamadı | Anında tanınabilir sorun yoktur. | Yok |
 | Kaydedildi | Cihaz henüz IoT Central bağlanmadı. | Bağlantı sorunları için cihaz günlüklerinizi denetleyin. |
@@ -149,7 +149,7 @@ Aşağıdaki tablolarda, genel hata kodları ve hafifletmek için olası eylemle
 
 Kimlik doğrulama akışla ilgili sorunlar görüyorsanız:
 
-| Hata kodu | Açıklama | Olası risk azaltma |
+| Hata kodu | Description | Olası risk azaltma |
 | - | - | - |
 | 400 | İsteğin gövdesi geçerli değil. Örneğin, ayrıştırılamıyor veya nesne doğrulanamıyor. | Kanıtlama akışının bir parçası olarak doğru istek gövdesini gönderdiğinizden emin olun veya bir cihaz SDK 'Sı kullanın. |
 | 401 | Yetkilendirme belirteci doğrulanamıyor. Örneğin, süresi sona ermiştir veya isteğin URI 'sine uygulanmaz. Bu hata kodu, TPM kanıtlama akışının bir parçası olarak cihazlara de döndürülür. | Cihazınızın doğru kimlik bilgilerine sahip olduğundan emin olun. |
@@ -176,13 +176,13 @@ Sorununuzla ilgili hangi kategorilerin olduğunu saptamak için senaryonuz için
 - Telemetriyi doğrulamak için Önizleme komutunu kullanın:
 
     ```cmd/bash
-    az iot central app validate-messages --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - Özellik güncelleştirmelerini doğrulamak için Önizleme komutunu kullanın
 
     ```cmd/bash
-    az iot central app validate-properties --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
 `uamqp`Bir komutu ilk kez çalıştırdığınızda kitaplığı yüklemeniz istenebilir `validate` .

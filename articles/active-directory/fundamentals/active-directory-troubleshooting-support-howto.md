@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e4d1490c4900c957a7dce7e632415823723f81b
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797296"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322543"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Yardım bulun ve Azure Active Directory için bir destek bileti açın
 Microsoft, Azure Active Directory (Azure AD) için genel teknik, satış öncesi, faturalandırma ve abonelik desteği sağlar. Destek, Microsoft Azure ücretli ve deneme abonelikleri için hem çevrimiçi hem de telefonla kullanılabilir. Telefon desteği ve çevrimiçi faturalandırma desteği, ek dillerde mevcuttur. 
@@ -29,7 +29,7 @@ Microsoft, Azure Active Directory (Azure AD) için genel teknik, satış öncesi
 
 Bir destek bileti oluşturmadan önce, yanıt aramak ve bilgi edinmek için aşağıdaki kaynaklara göz atın. 
 
-* BT uzmanlarına ve geliştiricilere yönelik nasıl yapılır bilgileri veya kod örnekleri gibi içerikler için [docs.Microsoft.com adresindeki teknik belgelere](https://docs.microsoft.com/azure/active-directory/)bakın.
+* BT uzmanlarına ve geliştiricilere yönelik nasıl yapılır bilgileri veya kod örnekleri gibi içerikler için [docs.Microsoft.com adresindeki teknik belgelere](../index.yml)bakın.
 
 * [Microsoft Teknik topluluğu](https://techcommunity.microsoft.com/) , BT uzmanı iş ortaklarımızın ve müşterilerinin işbirliği, paylaşma ve öğrenme yerdir. [Microsoft teknik topluluk bilgi merkezi](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) , Duyurular, blog gönderileri, ask-me (ama) uzmanlar ve daha fazlası için kullanılır. [Fikirlerinizi göndermek için topluluğa de katılabilir](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
 
@@ -100,4 +100,4 @@ Destek telefon numaralarını almak için [destek Için Microsoft 'A başvurun](
 
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 
-* [Docs.microsoft.com adresinde Teknik belgeler](https://docs.microsoft.com/azure/active-directory/)
+* [Docs.microsoft.com adresinde Teknik belgeler](../index.yml)

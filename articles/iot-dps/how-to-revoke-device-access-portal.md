@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: af883da67f4e1bc819514e88ff480526e16124db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abc625c27617c27a79fe284393cdf7b281973bc4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974930"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299277"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti 'nden cihaz kaydetme
 
@@ -24,16 +24,16 @@ Cihaz sağlama hizmeti 'nde kayıt, bir cihazın [otomatik olarak sağlanmasın�
 > [!NOTE] 
 > Erişimini iptal ettiğiniz cihazların yeniden deneme ilkesini unutmayın. Örneğin, sonsuz yeniden deneme ilkesine sahip bir cihaz, sağlama hizmeti ile sürekli olarak kaydolmaya çalışabilir. Bu durum hizmet kaynaklarını kullanır ve muhtemelen performansı etkiler.
 
-## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>Tek bir kayıt girdisi kullanarak kara liste cihazları
+## <a name="disallow-devices-by-using-an-individual-enrollment-entry"></a>Bireysel kayıt girişi kullanarak cihazlara izin verme
 
-Bireysel kayıtlar tek bir cihaza uygulanır ve kanıtlama mekanizması olarak X. 509.440 sertifikalarını veya SAS belirteçlerini (gerçek ya da sanal TPM 'de) kullanabilir. (Bu, kanıtlama mekanizması olarak SAS belirteçleri kullanan cihazlar yalnızca tek bir kayıt üzerinden sağlanabilir.) Tek bir kaydı olan bir cihazda liste listesi eklemek için kayıt girişini devre dışı bırakabilir veya silebilirsiniz. 
+Bireysel kayıtlar tek bir cihaza uygulanır ve kanıtlama mekanizması olarak X. 509.440 sertifikalarını veya SAS belirteçlerini (gerçek ya da sanal TPM 'de) kullanabilir. (Bu, kanıtlama mekanizması olarak SAS belirteçleri kullanan cihazlar yalnızca tek bir kayıt üzerinden sağlanabilir.) Bireysel kaydına sahip bir cihaza izin vermek için kayıt girişini devre dışı bırakabilir veya silebilirsiniz. 
 
-Kayıt girişini devre dışı bırakarak cihazı geçici olarak aşağı listede çıkarmak için: 
+Kayıt girişini devre dışı bırakarak cihaza geçici olarak izin vermek için: 
 
 1. Azure portal oturum açın ve sol menüden **tüm kaynaklar** ' ı seçin.
-2. Kaynak listesinde, cihazınızın altında olmasını istediğiniz sağlama hizmeti ' ni seçin.
+2. Kaynak listesinde, cihazınızın izin vermemesini istediğiniz sağlama hizmetini seçin.
 3. Sağlama hizmetinizde kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin.
-4. Kara listeye almak istediğiniz cihaz için kayıt girişini seçin. 
+4. İzin vermek istediğiniz cihaz için kayıt girişini seçin. 
 
     ![Bireysel kayıt bilgilerinizi seçin](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
 
@@ -41,12 +41,12 @@ Kayıt girişini devre dışı bırakarak cihazı geçici olarak aşağı listed
 
    ![Portalda bireysel kayıt girişini devre dışı bırakma](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
 
-Kayıt girişini silerek cihazın durumunu kalıcı olarak aşağı listede olacak şekilde:
+Kayıt girdisini silerek cihaza kalıcı olarak izin vermek için:
 
 1. Azure portal oturum açın ve sol menüden **tüm kaynaklar** ' ı seçin.
-2. Kaynak listesinde, cihazınızın altında olmasını istediğiniz sağlama hizmeti ' ni seçin.
+2. Kaynak listesinde, cihazınızın izin vermemesini istediğiniz sağlama hizmetini seçin.
 3. Sağlama hizmetinizde kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin.
-4. Kara listeye almak istediğiniz cihaz için kayıt girişinin yanındaki onay kutusunu işaretleyin. 
+4. İzin vermek istediğiniz cihaz için kayıt girişinin yanındaki onay kutusunu işaretleyin. 
 5. Pencerenin en üstündeki **Sil** ' i seçin ve ardından kaydı kaldırmak istediğinizi onaylamak için **Evet** ' i seçin. 
 
    ![Portalda bireysel kayıt girişini silme](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
@@ -54,29 +54,29 @@ Kayıt girişini silerek cihazın durumunu kalıcı olarak aşağı listede olac
 
 Yordamı tamamladıktan sonra, girişin ayrı kayıtlar listesinden kaldırıldığını görmeniz gerekir.  
 
-## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Bir kayıt grubu kullanarak bir X. 509.440 ara veya kök CA sertifikası kara liste
+## <a name="disallow-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Bir kayıt grubu kullanarak X. 509.952 ara veya kök CA sertifikasına izin verme
 
-X. 509.440 sertifikaları tipik olarak bir sertifika güven zincirinde düzenlenir. Bir zincirdeki herhangi bir aşamada bir sertifika tehlikeye atılırsa, güven bozulur. Cihaz sağlama hizmeti 'nin cihazları bu sertifikayı içeren herhangi bir zincirde aşağı akış olarak sağlamasını engellemek için, sertifika kara listede olmalıdır. X. 509.440 sertifikaları ve sağlama hizmeti ile nasıl kullanıldıkları hakkında daha fazla bilgi edinmek için bkz. [X. 509.440 sertifikaları](./concepts-security.md#x509-certificates). 
+X. 509.440 sertifikaları tipik olarak bir sertifika güven zincirinde düzenlenir. Bir zincirdeki herhangi bir aşamada bir sertifika tehlikeye atılırsa, güven bozulur. Cihaz sağlama hizmeti 'nin cihazları bu sertifikayı içeren herhangi bir zincirde aşağı akış olarak sağlamasını engellemek için sertifikaya izin verilmeli. X. 509.440 sertifikaları ve sağlama hizmeti ile nasıl kullanıldıkları hakkında daha fazla bilgi edinmek için bkz. [X. 509.440 sertifikaları](./concepts-security.md#x509-certificates). 
 
-Kayıt grubu, aynı ara veya kök CA tarafından imzalanan X. 509.440 sertifikalarının ortak kanıtlama mekanizmasını paylaşan cihazlar için bir giriştir. Kayıt grubu girişi, ara veya kök CA ile ilişkili X. 509.440 sertifikasıyla yapılandırılır. Giriş Ayrıca, sertifika zincirinde bu sertifikaya sahip cihazlar tarafından paylaşılan ikizi State ve IoT Hub bağlantısı gibi herhangi bir yapılandırma değeri ile yapılandırılır. Sertifikanın kara listeye gitmek için kayıt grubunu devre dışı bırakabilir veya silebilirsiniz.
+Kayıt grubu, aynı ara veya kök CA tarafından imzalanan X. 509.440 sertifikalarının ortak kanıtlama mekanizmasını paylaşan cihazlar için bir giriştir. Kayıt grubu girişi, ara veya kök CA ile ilişkili X. 509.440 sertifikasıyla yapılandırılır. Giriş Ayrıca, sertifika zincirinde bu sertifikaya sahip cihazlar tarafından paylaşılan ikizi State ve IoT Hub bağlantısı gibi herhangi bir yapılandırma değeri ile yapılandırılır. Sertifikaya izin vermemek için kayıt grubunu devre dışı bırakabilir ya da silebilirsiniz.
 
-Kayıt grubunu devre dışı bırakarak sertifikayı geçici olarak aşağı listede çıkarmak için: 
+Kayıt grubunu devre dışı bırakarak sertifikaya geçici olarak izin vermek için: 
 
 1. Azure portal oturum açın ve sol menüden **tüm kaynaklar** ' ı seçin.
-2. Kaynak listesinde, imzalama sertifikasının altına almak istediğiniz sağlama hizmeti ' ni seçin.
+2. Kaynak listesinde, imzalama sertifikasının iznini kaldırmak istediğiniz sağlama hizmetini seçin.
 3. Sağlama hizmetinizde kayıtları **Yönet**' i seçin ve ardından **kayıt grupları** sekmesini seçin.
-4. Aşağı listede yapmak istediğiniz sertifikayı kullanarak kayıt grubunu seçin.
+4. İzin vermek istediğiniz sertifikayı kullanarak kayıt grubunu seçin.
 5. **Girişi etkinleştir** anahtarından **devre dışı bırak** ' ı seçin ve ardından **Kaydet**' i seçin.  
 
    ![Portalda kayıt grubu girişini devre dışı bırakma](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
     
-Sertifika kayıt grubunu silerek sertifikayı kalıcı olarak aşağı listede silme:
+Kayıt grubunu silerek sertifikaya kalıcı olarak izin vermek için:
 
 1. Azure portal oturum açın ve sol menüden **tüm kaynaklar** ' ı seçin.
-2. Kaynak listesinde, cihazınızın altında olmasını istediğiniz sağlama hizmeti ' ni seçin.
+2. Kaynak listesinde, cihazınızın izin vermemesini istediğiniz sağlama hizmetini seçin.
 3. Sağlama hizmetinizde kayıtları **Yönet**' i seçin ve ardından **kayıt grupları** sekmesini seçin.
-4. Giriş listesi eklemek istediğiniz sertifika için kayıt grubunun yanındaki onay kutusunu işaretleyin. 
+4. İzin vermek istediğiniz sertifika için kayıt grubunun yanındaki onay kutusunu işaretleyin. 
 5. Pencerenin üstündeki **Sil** ' i seçin ve ardından kayıt grubunu kaldırmak istediğinizi onaylamak için **Evet** ' i seçin. 
 
    ![Portalda kayıt grubu girişini silme](./media/how-to-revoke-device-access-portal/delete-enrollment-group.png)
@@ -86,21 +86,21 @@ Yordamı tamamladıktan sonra, girişin kayıt grupları listesinden kaldırıld
 > [!NOTE]
 > Bir sertifika için bir kayıt grubunu silerseniz, sertifika zincirinde sertifikaya sahip olan cihazlar, kök sertifikaya yönelik etkinleştirilmiş bir kayıt grubu veya sertifika zincirinde daha yüksek olan başka bir ara sertifika varsa yine de kayıt yapabiliyor olabilir.
 
-## <a name="blacklist-specific-devices-in-an-enrollment-group"></a>Bir kayıt grubundaki belirli cihazları aşağı listede
+## <a name="disallow-specific-devices-in-an-enrollment-group"></a>Kayıt grubundaki belirli cihazlara izin verme
 
 X. 509.440 kanıtlama mekanizmasını uygulayan cihazlar, kimlik doğrulaması için cihazın sertifika zincirini ve özel anahtarını kullanır. Cihaz sağlama hizmeti ile bir cihaz bağlanıp kimlik doğrulaması yapıldığında, hizmet önce cihazın kimlik bilgileriyle eşleşen tek bir kayıt arar. Hizmet daha sonra, cihazın sağlanıp sağlanamayacağını öğrenmek için kayıt gruplarını arar. Hizmet, cihaz için devre dışı bir bireysel kayıt bulursa cihazın bağlanmasını engeller. Cihazın sertifika zincirindeki bir ara veya kök CA için etkinleştirilmiş bir kayıt grubu mevcut olsa bile hizmet bağlantıyı engeller. 
 
-Kayıt grubundaki tek bir cihazın kaydını yapmak için şu adımları izleyin:
+Kayıt grubundaki tek bir cihaza izin vermemek için şu adımları izleyin:
 
 1. Azure portal oturum açın ve sol menüden **tüm kaynaklar** ' ı seçin.
-2. Kaynak listesinden, kara listeye almak istediğiniz cihaz için kayıt grubunu içeren sağlama hizmetini seçin.
+2. Kaynak listesinden, izin vermek istediğiniz cihaz için kayıt grubunu içeren sağlama hizmeti ' ni seçin.
 3. Sağlama hizmetinizde kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin.
 4. Üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
 5. **Kayıt Ekle** sayfasında, cihaz Için kanıtlama **mekanizması** olarak **X. 509.440** ' yi seçin.
 
-    Cihaz sertifikasını karşıya yükleyin ve ardından, kara listeye eklenecek cihazın cihaz KIMLIĞINI girin. Sertifika için, cihazda yüklü imzalı son varlık sertifikasını kullanın. Cihaz, kimlik doğrulaması için imzalı son varlık sertifikasını kullanır.
+    Cihaz sertifikasını karşıya yükleyin ve izin verilmeyen cihazın cihaz KIMLIĞINI girin. Sertifika için, cihazda yüklü imzalı son varlık sertifikasını kullanın. Cihaz, kimlik doğrulaması için imzalı son varlık sertifikasını kullanır.
 
-    ![Kara listelenmiş cihaz için cihaz özelliklerini ayarla](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
+    ![İzin verilmeyen cihaz için cihaz özelliklerini ayarla](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
 
 6. **Kayıt Ekle** sayfasının en altına gidin ve **girişi etkinleştir** anahtarından **devre dışı bırak** ' ı seçin ve ardından **Kaydet**' i seçin. 
 
@@ -111,4 +111,3 @@ Kaydınıza başarıyla bağlandığınızda, **bireysel** kayıtlar sekmesinde 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Kayıt kaldırma işlemi, daha büyük sağlama işleminin de bir parçasıdır. Bir cihazın sağlamasını kaldırma işlemi, sağlama hizmetinden ve IoT Hub 'ından kaydını kaldırmak içerir. Tam işlem hakkında bilgi edinmek için bkz. [daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma](how-to-unprovision-devices.md) 
-

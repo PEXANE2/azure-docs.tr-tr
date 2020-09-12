@@ -7,20 +7,20 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: f40da30ff0d702078861367dea810cc8ca1ab91b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4a98207ef5b03f77a4f741894ec210f7551c5933
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305151"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378143"
 ---
-# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'te SaaS API sürüm 2
+# <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>Ticari Market 'te SaaS API sürüm 2
 
 Bu makalede, iş ortaklarının Microsoft AppSource ve Azure Marketi 'nde SaaS tekliflerini satmasını sağlayan API 'Ler ayrıntılı olarak açıklanır. Iş Ortağı Merkezi 'nde bir transactable SaaS teklifi yayımlamak üzere bu API 'lerle tümleştirme uygulamak için bir yayımcı gereklidir.
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>SaaS Abonelik yaşam döngüsünü yönetme
 
-Azure Marketi, SaaS aboneliğinin son müşterisi tarafından satın alma işleminden sonraki yaşam döngüsünün tamamını yönetir.  Gerçek SaaS aboneliği etkinleştirme ve kullanımı, güncelleştirmeleri ve aboneliğin iptallerini sağlamak için, giriş sayfasını, API 'Leri, Işlem API 'lerini ve Web kancasını bir mekanizma olarak kullanır.  Son müşterinin faturası, Microsoft 'un koruduğu SaaS aboneliğinin durumuna bağlıdır. 
+Ticari Market, bir SaaS aboneliğinin tüm yaşam döngüsünü son müşteri tarafından satın almayı takip eden bir şekilde yönetir.  Gerçek SaaS aboneliği etkinleştirme ve kullanımı, güncelleştirmeleri ve aboneliğin iptallerini sağlamak için, giriş sayfasını, API 'Leri, Işlem API 'lerini ve Web kancasını bir mekanizma olarak kullanır.  Son müşterinin faturası, Microsoft 'un koruduğu SaaS aboneliğinin durumuna bağlıdır. 
 
 ### <a name="states-of-a-saas-subscription"></a>SaaS aboneliğinin durumları
 
@@ -35,7 +35,7 @@ Bir son müşteri (veya CSP) Market 'te bir SaaS teklifi satın aldıktan sonra,
 Hesap oluşturmanın gerçekleşmesi için:
 
 1. Müşterinin, Microsoft AppSource veya Azure portal ' de başarıyla satın alındıktan sonra SaaS teklifinin kullanabildiği **Yapılandır** düğmesine tıklaması gerekir. Müşterinin satın alma işleminden kısa bir süre sonra alacağı e-postada.
-2. Daha sonra Microsoft, giriş sayfası URL 'sini belirteç parametresi (Market satın alma tanımlama belirteci) ile birlikte yeni tarayıcı sekmesinden açarak satın alma hakkında bilgi verir.
+2. Ardından, Microsoft, giriş sayfası URL 'sini belirteç parametresine (ticari Market satın alma tanımlama belirteci) ekleyerek yeni tarayıcı sekmesinden satın alma hakkında bilgi verir.
 
 Bu tür çağrıya bir örnek `https://contoso.com/signup?token=<blob>` , ancak Iş Ortağı Merkezi 'nde bu SaaS teklifinin giriş sayfası URL 'si olarak yapılandırılır `https://contoso.com/signup` . Bu belirteç, yayımcıya SaaS satın almayı ve müşteriyi benzersiz bir şekilde tanımlayan bir KIMLIK sağlar.
 
@@ -46,12 +46,12 @@ Giriş sayfası URL 'si, 7/24 çalışıyor olmalı ve Microsoft 'tan her zaman 
 
 Ardından, *belirtecin* , üstbilgi parametresinin değeri olarak [SaaS Resolve API](#resolve-a-purchased-subscription)'sini çağırarak yayımcıdan Microsoft 'a geri geçirilmesi gerekir `x-ms-marketplace-token header` .  Çözümleme API 'SI çağrısının sonucu olarak, belirteç satın alma, satın alınan teklif KIMLIĞI, satın alınan plan KIMLIĞI vb. gibi SaaS satın alma ayrıntıları için değiştirilir.
 
-Giriş sayfasında, müşteri yeni veya mevcut SaaS hesabında Azure Active Directory (AAD) çoklu oturum açma (SSO) yoluyla oturum açmış olmalıdır.
+Giriş sayfasında, müşteri yeni veya mevcut SaaS hesabında Azure Active Directory (Azure AD) çoklu oturum açma (SSO) yoluyla oturum açmış olmalıdır.
 
 Yayımcı, bu akış için Microsoft 'un gerektirdiği Kullanıcı deneyimini sağlamak üzere SSO oturum açma işlemi gerçekleştirmelidir.  SSO 'yu yapılandırırken, çok kiracılı Azure AD uygulaması kullandığınızdan, hem iş hem de okul hesaplarına veya kişisel Microsoft hesaplarına izin verin.  Bu gereksinim yalnızca giriş sayfası için ve Microsoft kimlik bilgileriyle zaten oturum açmış olan SaaS hizmetine yeniden yönlendirilen kullanıcılar için geçerlidir. SaaS hizmetine tüm oturum açma işlemleri için uygulanmaz.
 
 > [!NOTE]
->SSO oturum açma, bir yönetici için bir uygulamaya izin vermeyi gerektiriyorsa, Iş Ortağı Merkezi 'nde teklifin açıklaması, yönetici düzeyinde erişimin gerekli olduğunu açıklamalıdır. Bu, [Market sertifika ilkeleriyle](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options)uyumlu değildir.
+>SSO oturum açma, bir yönetici için bir uygulamaya izin vermeyi gerektiriyorsa, Iş Ortağı Merkezi 'nde teklifin açıklaması, yönetici düzeyinde erişimin gerekli olduğunu açıklamalıdır. Bu, [ticari Market sertifika ilkeleriyle](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options)uyumlu değildir.
 
 Oturum açıldıktan sonra, müşteri Yayımcı tarafında SaaS yapılandırmasını tamamlamalıdır. Ardından yayımcının, SaaS hesabını sağlama işleminin tamamlandığını Market 'e bir sinyal göndermek için [etkinleştirme aboneliği API 'sini](#activate-a-subscription) çağırması gerekir.
 Bu, müşterinin fatura döngüsünü başlatacak. Abonelik etkinleştirme API 'SI çağrısı başarılı olmazsa, müşteri satın alma için faturalandırılmaz.
@@ -67,16 +67,16 @@ SaaS aboneliği zaten etkin olduğunda ve müşteri Azure portal veya M365 yöne
 
 #### <a name="being-updated-subscribed"></a>Güncelleştiriliyor (abone olunmuş)
 
-Bu eylem, mevcut bir etkin SaaS aboneliğine yapılan bir güncelleştirmenin hem Microsoft hem de yayımcı tarafından işlendiği anlamına gelir. Bu tür bir güncelleştirme tarafından başlatılabilir
+Bu eylem, mevcut bir etkin SaaS aboneliğine yapılan bir güncelleştirmenin hem Microsoft hem de yayımcı tarafından işlendiği anlamına gelir. Bu tür bir güncelleştirme, şu şekilde başlatılabilir:
 
-* Market 'ten müşteri
-* Market 'ten CSP
-* Yayımcının SaaS sitesindeki müşteri (CSP tarafından yapılan satın alma işlemleri için geçerlidir)
+- ticari Market 'ten müşteri.
+- ticari Market 'ten CSP.
+- Yayımcının SaaS sitesindeki müşteri (CSP tarafından yapılan satın alma işlemleri için geçerlidir).
 
 SaaS aboneliği için iki tür güncelleştirme mevcuttur:
 
-1. Müşteri abonelik için başka bir plan seçtiğinde planı güncelleştirin.
-1. Müşteri, abonelik için satın alınan lisans sayısını değiştirdiğinde miktarı Güncelleştir
+- Müşteri abonelik için başka bir plan seçtiğinde planı güncelleştirin.
+- Müşteri, abonelik için satın alınan lisans sayısını değiştirdiğinde miktarı Güncelleştir
 
 Yalnızca etkin bir abonelik güncelleştirilebilen olabilir. Abonelik güncelleştirilirken, durumu Microsoft tarafında etkin kalır.
 
@@ -194,7 +194,7 @@ API 'YI çağırmak, desteklenen tüm durumlarda SaaS aboneliklerinin abonelik a
 |  `x-ms-requestid`    |  İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
 |  `x-ms-correlationid` |  İstemcideki işlem için benzersiz bir dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
 |  `authorization`     |  Bu API çağrısını yapan yayımcıyı tanımlayan benzersiz bir erişim belirteci. Biçim, `"Bearer <accessaccess_token>"` [Azure AD uygulamasına dayalı bir belirteç al](./pc-saas-registration.md#get-the-token-with-an-http-post)bölümünde açıklandığı gibi, belirteç değeri yayımcı tarafından alınır. |
-|  `x-ms-marketplace-token`  | Çözülecek Market satın alma tanımlama *belirteci* parametresi.  Müşteri SaaS ortağının Web sitesine yeniden yönlendirildiğinde (örneğin:), belirteç giriş sayfası URL 'SI çağrısına geçirilir `https://contoso.com/signup?token=<token><authorization_token>` . <br> <br>  *Note:* Kodlanan *belirteç* değeri, giriş sayfası URL 'sinin bir parçasıdır ve bu nedenle, bu API çağrısında bir parametre olarak kullanılmadan önce kodu çözülmüş olması gerekir.  <br> <br> URL 'de kodlanmış dize örneği şöyle görünür: `contoso.com/signup?token=ab%2Bcd%2Fef` , burada belirteç `ab%2Bcd%2Fef` .  Kodu çözülen aynı belirteç şu şekilde olur:`Ab+cd/ef` |
+|  `x-ms-marketplace-token`  | Çözülecek Market satın alma tanımlama *belirteci* parametresi.  Müşteri SaaS ortağının Web sitesine yeniden yönlendirildiğinde (örneğin:), belirteç giriş sayfası URL 'SI çağrısına geçirilir `https://contoso.com/signup?token=<token><authorization_token>` . <br> <br>  *Note:* Kodlanan *belirteç* değeri, giriş sayfası URL 'sinin bir parçasıdır ve bu nedenle, bu API çağrısında bir parametre olarak kullanılmadan önce kodu çözülmüş olması gerekir.  <br> <br> URL 'de kodlanmış dize örneği şöyle görünür: `contoso.com/signup?token=ab%2Bcd%2Fef` , burada belirteç `ab%2Bcd%2Fef` .  Kodu çözülen aynı belirteç şu şekilde olur: `Ab+cd/ef` |
 | | |
 
 *Yanıt kodları:*
@@ -248,7 +248,7 @@ Yanıt gövdesi örneği:
 
 ```
 
-Code: 400 hatalı istek. `x-ms-marketplace-token`eksik, hatalı biçimlendirilmiş, geçersiz veya zaman aşımına uğradı.
+Code: 400 hatalı istek. `x-ms-marketplace-token` eksik, hatalı biçimlendirilmiş, geçersiz veya zaman aşımına uğradı.
 
 Kod: 403 Yasak. Yetkilendirme belirteci geçersiz, zaman aşımına uğradı veya sağlanmadı.  İstek, yetkilendirme belirtecini oluşturmak için kullanılan birinden farklı bir Azure AD Uygulaması KIMLIĞIYLE yayımlanmış bir teklif için SaaS aboneliğine erişmeye çalışıyor.
 
@@ -296,9 +296,9 @@ Bu çağrı için yanıt gövdesi yok.
 
 Kod: 400 hatalı istek: doğrulama başarısız oldu.
 
-* `planId`istek yükünde yok.
-* `planId`istek yükünde, satın alınan bir ile eşleşmez.
-* `quantity`istek yükü içindeki satın alınan ile eşleşmiyor
+* `planId` istek yükünde yok.
+* `planId` istek yükünde, satın alınan bir ile eşleşmez.
+* `quantity` istek yükü içindeki satın alınan ile eşleşmiyor
 * SaaS aboneliği abone olmuş veya askıya alınmış durumda.
 
 Kod: 403 Yasak. Yetkilendirme belirteci geçersiz, zaman aşımına uğradı veya sağlanmamış. İstek, yetkilendirme belirtecini oluşturmak için kullanılan birinden farklı bir Azure AD Uygulaması KIMLIĞIYLE yayımlanmış bir teklif için SaaS aboneliğine erişmeye çalışıyor.
@@ -426,7 +426,7 @@ Kod: 500 Iç sunucu hatası. API çağrısını yeniden deneyin.  Hata devam ede
 
 Yayımcı tarafından Market 'te yayınlanan SaaS teklifi için belirtilen satın alınan SaaS aboneliğini alır. Tüm Aboneliklerin listesini almak için API 'YI çağırmak yerine, belirli bir SaaS aboneliğine ilişkin tüm kullanılabilir bilgileri kendi KIMLIĞIYLE almak için bu çağrıyı kullanın.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Al`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Al `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -498,7 +498,7 @@ Bu teklifin belirli bir satın alımı tarafından tanımlanan SaaS teklifinin t
 
 Bu çağrı, zaten satın alınan birinin yanı sıra o müşteri için kullanılabilen planların listesini döndürür.  Liste, yayımcı sitesindeki bir son müşteriye sunulabilir.  Son müşteri, döndürülen listedeki planlardan herhangi biri için abonelik planını değiştirebilir.  Planı listede listelenmeyen bir şekilde değiştirmek başarısız olur.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Al`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Al `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -552,7 +552,7 @@ SaaS aboneliği için satın alınan mevcut planı yeni bir plana güncelleştir
 
 Bu API yalnızca etkin abonelikler için çağrılabilir.  Herhangi bir plan, var olan başka bir plana (genel veya özel) değiştirilebilir ancak kendisi için geçerli değildir.  Özel planlar için, müşterinin kiracının Iş Ortağı Merkezi 'nde planın hedef kitlesi kapsamında tanımlanması gerekir.
 
-##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Düzeltmesi`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Düzeltmesi `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -738,7 +738,7 @@ Belirtilen SaaS aboneliği için bekleyen işlemlerin listesini al.  Döndürül
 
 Şu anda yalnızca geri çağırma **işlemleri** bu API çağrısı için yanıt olarak döndürülür.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Al`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Al `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -792,11 +792,11 @@ Kod: 500 Iç sunucu hatası. API çağrısını yeniden deneyin.  Hata devam ede
 
 #### <a name="get-operation-status"></a>İşlem durumunu al
 
-Yayımcının belirtilen zaman uyumsuz işlemin durumunu izlemesini sağlar: **abonelik kaldırma**, **değişiklik planı**veya **değişiklik miktarı**.
+Yayımcının belirtilen zaman uyumsuz işlemin durumunu izlemesini sağlar:  **abonelik kaldırma**, **değişiklik planı**veya **değişiklik miktarı**.
 
 `operationId`Bu API çağrısı için, **işlem konumu**tarafından döndürülen değerden, bekleyen işlemler API çağrısı veya `<id>` bir Web kancası çağrısında alınan parametre değeri alınabilir.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Al`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Al `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -857,7 +857,7 @@ Kod: 500 Iç sunucu hatası.  API çağrısını yeniden deneyin.  Hata devam ed
 
 `operationId`Bu API çağrısı için, **işlem konumu**tarafından döndürülen değerden, bekleyen işlemler API çağrısı veya `<id>` bir Web kancası çağrısında alınan parametre değeri elde edilebilir.
 
-##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Düzeltmesi`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Düzeltmesi `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -969,13 +969,13 @@ Teklifin nerede yayımlandığına bağlı olarak, Azure portal veya Microsoft A
 
 *Değişiklik planı*, *değişiklik miktarı*ve *abonelik kaldırma* eylemleri Yayımcı tarafında test edilir.  Microsoft yan bilgisayardan *abonelik kaldırma* , hem Azure Portal hem de yönetim merkezinden (Microsoft AppSource satın alımlarınızın yönetildiği portal) tetiklenebilir.  *Değişiklik miktarı ve plan* yalnızca yönetim merkezinden tetiklenebilir.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 Yayımcı desteği seçenekleri için [Iş Ortağı Merkezi ' nde ticari Market programına yönelik desteğe](support.md) bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Market 'te SaaS teklifleri için daha fazla seçenek için bkz. Market [ölçüm hizmeti API 'leri](marketplace-metering-service-apis.md) .
+Ticari Market 'teki SaaS teklifleri hakkında daha fazla seçenek için bkz. [ticari Market ölçüm hizmeti API 'leri](marketplace-metering-service-apis.md) .
 
-Bu belgede açıklanan API 'lerin üzerine inşa eden [SaaS SDK 'sını](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK) inceleyin ve kullanın.
+Bu belgede açıklanan API 'lerin üstünde oluşturulan [SaaS SDK 'sını](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK) inceleyin ve kullanın.

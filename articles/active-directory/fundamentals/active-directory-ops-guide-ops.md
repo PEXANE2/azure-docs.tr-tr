@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75422940"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321965"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory genel işlemler Kılavuzu başvurusu
 
@@ -49,8 +49,8 @@ Listenizi gözden geçirdikten sonra, sahibi eksik olan görevler için bir sahi
 
 #### <a name="owners-recommended-reading"></a>Okumakta önerilen sahipler
 
-- [Azure Active Directory’de yönetici rolü atama](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Azure’da idare](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Azure Active Directory’de yönetici rolü atama](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure’da idare](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>Karma yönetim
 
@@ -69,12 +69,12 @@ Biri kurulmadığı sürece, bu bileşenleri yükseltmek ve mümkün olduğunda 
 
 #### <a name="hybrid-management-recommended-reading"></a>Karma yönetiminin kullanılması önerilir
 
-- [Azure AD Connect: Otomatik yükseltme](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
-- [Azure AD Uygulama Ara Sunucusu bağlayıcıları anlama | Otomatik Güncelleştirmeler](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#automatic-updates)
+- [Azure AD Connect: Otomatik yükseltme](../hybrid/how-to-connect-install-automatic-upgrade.md)
+- [Azure AD Uygulama Ara Sunucusu bağlayıcıları anlama | Otomatik Güncelleştirmeler](../manage-apps/application-proxy-connectors.md#automatic-updates)
 
 ### <a name="azure-ad-connect-health-alert-baseline"></a>Azure AD Connect Health uyarı temeli
 
-Kuruluşlar, Azure AD Connect ve AD FS izleme ve raporlama için [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#what-is-azure-ad-connect-health) dağıtmalıdır. Azure AD Connect ve AD FS, yaşam döngüsü yönetimi ve kimlik doğrulamasını kesintiye uğratır ve bu nedenle kesintilere yol açabilecek kritik bileşenlerdir Azure AD Connect Health, ortamınızın güvenilirliğini sağlamak için şirket içi kimlik altyapınızı izlemenize ve bu altyapıyı elde etmenize yardımcı olur.
+Kuruluşlar, Azure AD Connect ve AD FS izleme ve raporlama için [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) dağıtmalıdır. Azure AD Connect ve AD FS, yaşam döngüsü yönetimi ve kimlik doğrulamasını kesintiye uğratır ve bu nedenle kesintilere yol açabilecek kritik bileşenlerdir Azure AD Connect Health, ortamınızın güvenilirliğini sağlamak için şirket içi kimlik altyapınızı izlemenize ve bu altyapıyı elde etmenize yardımcı olur.
 
 ![Azure AD Connect sistem mimarisi](./media/active-directory-ops-guide/active-directory-ops-img16.png)
 
@@ -82,7 +82,7 @@ Ortamınızın sistem durumunu izlerken, yüksek önem derecesine sahip uyarıla
 
 #### <a name="azure-ad-connect-health-recommended-reading"></a>Azure AD Connect Health okumanız önerilir
 
-- [Aracı yüklemesini Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+- [Aracı yüklemesini Azure AD Connect Health](../hybrid/how-to-connect-health-agent-install.md)
 
 ### <a name="on-premises-agents-logs"></a>Şirket içi aracılar günlükleri
 
@@ -90,11 +90,11 @@ Bazı kimlik ve erişim yönetimi hizmetleri, karma senaryoları etkinleştirmek
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>Şirket içi aracılar günlüklerinin okunması önerilir
 
-- [Uygulama Ara Sunucusu ile ilgili sorunları giderme](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
-- [Self servis parola sıfırlama sorunlarını giderme-Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
-- [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
-- [Azure AD Connect: geçişli kimlik doğrulaması sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication#collecting-pass-through-authentication-agent-logs)
-- [Azure MFA NPS uzantısı için hata kodları sorunlarını giderme](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-errors)
+- [Uygulama Ara Sunucusu ile ilgili sorunları giderme](../manage-apps/application-proxy-troubleshoot.md)
+- [Self servis parola sıfırlama sorunlarını giderme-Azure Active Directory](../authentication/active-directory-passwords-troubleshoot.md#password-writeback-event-log-error-codes)
+- [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](../manage-apps/application-proxy-connectors.md)
+- [Azure AD Connect: geçişli kimlik doğrulaması sorunlarını giderme](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
+- [Azure MFA NPS uzantısı için hata kodları sorunlarını giderme](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>Şirket içi aracılar yönetimi
 
@@ -106,14 +106,14 @@ En iyi uygulamaları benimseme, şirket içi aracıların en iyi operasyonunun s
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>Şirket içi aracılar yönetiminin kullanılması önerilir
 
-- [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
+- [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](../manage-apps/application-proxy-connectors.md)
 - [Azure AD geçişli kimlik doğrulaması-hızlı başlangıç](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>Ölçekte yönetim
 
 ### <a name="identity-secure-score"></a>Kimlik secure score’u
 
-[Kimlik güvenli puanı](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score) , kuruluşunuzun güvenlik duruşunu ölçülebilir bir ölçüm sağlar. Raporlanan bulguları sürekli gözden geçirmek ve adreslendirmenin yanı sıra mümkün olan en yüksek puanı elde etmek için bir anahtardır. Puanın yardımıyla:
+[Kimlik güvenli puanı](./identity-secure-score.md) , kuruluşunuzun güvenlik duruşunu ölçülebilir bir ölçüm sağlar. Raporlanan bulguları sürekli gözden geçirmek ve adreslendirmenin yanı sıra mümkün olan en yüksek puanı elde etmek için bir anahtardır. Puanın yardımıyla:
 
 - Kimlik güvenliği duruşunuzu nesnel olarak ölçebilirsiniz
 - Kimlik güvenliği geliştirmelerini planlayabilirsiniz
@@ -125,15 +125,15 @@ Kuruluşunuzda, kimlik güvenli puandaki değişiklikleri izlemek için şu anda
 
 ### <a name="notifications"></a>Bildirimler
 
-Microsoft, hizmette çeşitli değişiklikleri, gereken yapılandırma güncelleştirmelerini ve yönetici müdahalesini gerektiren hataları bilgilendirmek için yöneticilere e-posta iletişimleri gönderir. Müşterilerin bildirim e-posta adreslerini, bildirimlerin tüm bildirimleri kabul edebilen ve üzerinde işlem yapacak uygun takım üyelerine gönderilmesi önemlidir. [Office 365 Ileti merkezine](https://docs.microsoft.com/office365/admin/manage/message-center) birden çok alıcı eklemenizi ve bu bildirimlerin (Azure AD Connect Health bildirimleri dahil) bir dağıtım listesine veya paylaşılan posta kutusuna gönderilmesini istemeniz önerilir. Yalnızca bir e-posta adresi olan bir genel yönetici hesabınız varsa, en az iki e-posta özellikli hesabı yapılandırmayı unutmayın.
+Microsoft, hizmette çeşitli değişiklikleri, gereken yapılandırma güncelleştirmelerini ve yönetici müdahalesini gerektiren hataları bilgilendirmek için yöneticilere e-posta iletişimleri gönderir. Müşterilerin bildirim e-posta adreslerini, bildirimlerin tüm bildirimleri kabul edebilen ve üzerinde işlem yapacak uygun takım üyelerine gönderilmesi önemlidir. [Office 365 Ileti merkezine](/office365/admin/manage/message-center) birden çok alıcı eklemenizi ve bu bildirimlerin (Azure AD Connect Health bildirimleri dahil) bir dağıtım listesine veya paylaşılan posta kutusuna gönderilmesini istemeniz önerilir. Yalnızca bir e-posta adresi olan bir genel yönetici hesabınız varsa, en az iki e-posta özellikli hesabı yapılandırmayı unutmayın.
 
 Azure AD tarafından kullanılan iki "Kimden" adresi vardır: <o365mc@email2.microsoft.com> Office 365 Ileti merkezi bildirimleri gönderen ve ile <azure-noreply@microsoft.com> ilgili bildirimleri gönderen:
 
-- [Azure AD erişim Incelemeleri](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
-- [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD Kimlik Koruması](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
-- [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
-- [Kurumsal uygulamanın süresi dolan sertifika bildirimleri](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
+- [Azure AD erişim Incelemeleri](../governance/access-reviews-overview.md)
+- [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
+- [Azure AD Kimlik Koruması](../identity-protection/howto-identity-protection-configure-notifications.md)
+- [Azure AD Privileged Identity Management](../privileged-identity-management/pim-email-notifications.md)
+- [Kurumsal uygulamanın süresi dolan sertifika bildirimleri](../manage-apps/manage-certificates-for-federated-single-sign-on.md#add-email-notification-addresses-for-certificate-expiration)
 - Kurumsal uygulama sağlama hizmeti bildirimleri
 
 Gönderilen bildirimlerin türünü ve bunların nerede kontrol edildiği hakkında bilgi edinmek için aşağıdaki tabloya bakın:
@@ -148,13 +148,13 @@ Gönderilen bildirimlerin türünü ve bunların nerede kontrol edildiği hakkı
 
 #### <a name="notifications-recommended-reading"></a>Okuma için önerilen bildirimler
 
-- [Kuruluşunuzun adresini, teknik kişinizi ve daha fazlasını değiştirin-Office 365](https://docs.microsoft.com/office365/admin/manage/change-address-contact-and-more)
+- [Kuruluşunuzun adresini, teknik kişinizi ve daha fazlasını değiştirin-Office 365](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>İşletimsel yüzey alanı
 
 ### <a name="ad-fs-lockdown"></a>AD FS kilidi
 
-Uygulamaları [Azure AD akıllı kilitleme](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)'den Azure AD avantajına doğrudan kimlik doğrulaması yapacak şekilde yapılandıran kuruluşlar. Windows Server 2012 R2 'de AD FS kullanıyorsanız, AD FS [Extranet kilitleme koruması](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)uygulayın. Windows Server 2016 veya sonraki sürümlerde AD FS kullanıyorsanız, [extranet akıllı kilitleme](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)uygulayın. En azından, şirket içi Active Directory karşı deneme yanılma saldırısı riskini içermesi için extranet kilitlemeyi etkinleştirmenizi öneririz. Ancak, Windows 2016 veya üzeri sürümlerde AD FS varsa, [parola spreyi](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) saldırılarını azaltmaya yardımcı olacak extranet akıllı kilitleme özelliğini de etkinleştirmeniz gerekir.
+Uygulamaları [Azure AD akıllı kilitleme](../authentication/concept-sspr-howitworks.md)'den Azure AD avantajına doğrudan kimlik doğrulaması yapacak şekilde yapılandıran kuruluşlar. Windows Server 2012 R2 'de AD FS kullanıyorsanız, AD FS [Extranet kilitleme koruması](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)uygulayın. Windows Server 2016 veya sonraki sürümlerde AD FS kullanıyorsanız, [extranet akıllı kilitleme](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)uygulayın. En azından, şirket içi Active Directory karşı deneme yanılma saldırısı riskini içermesi için extranet kilitlemeyi etkinleştirmenizi öneririz. Ancak, Windows 2016 veya üzeri sürümlerde AD FS varsa, [parola spreyi](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) saldırılarını azaltmaya yardımcı olacak extranet akıllı kilitleme özelliğini de etkinleştirmeniz gerekir.
 
 AD FS yalnızca Azure AD Federasyonu için kullanılıyorsa, saldırı yüzeyi alanını en aza indirmek için kapatılabilir bazı uç noktalar vardır. Örneğin, AD FS yalnızca Azure AD için kullanılıyorsa, **usernamemixed** ve **windowstransport**için ETKINLEŞTIRILEN uç noktalar dışında WS-Trust uç noktalarını devre dışı bırakmanız gerekir.
 
@@ -164,7 +164,7 @@ Kuruluşlar şirket içi karma bileşenlere sahip makinelere erişimi şirket i�
 
 Active Directory Yönetim Katmanı modeli, ortamın tam denetimi (Katman 0) ve saldırganlar tarafından çok daha fazla tehlikeye neden olan yüksek riskli iş istasyonu varlıkları arasında bir dizi arabellek bölgesi kullanarak kimlik sistemlerini korumak için tasarlanmıştır. ![Katman modelinin üç katmanını gösteren diyagram](./media/active-directory-ops-guide/active-directory-ops-img18.png)
 
-[Katman modeli](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) üç düzeyden oluşur ve standart Kullanıcı hesapları yerine yalnızca yönetim hesapları içerir.
+[Katman modeli](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) üç düzeyden oluşur ve standart Kullanıcı hesapları yerine yalnızca yönetim hesapları içerir.
 
 - **Katman 0**   -Ortamdaki kurumsal kimliklerin doğrudan denetimi. Katman 0 Active Directory ormanının, etki alanlarının veya etki alanı denetleyicilerinin ve içindeki tüm varlıkların doğrudan ya da dolaylı yönetimsel denetimine sahip hesapları, grupları ve diğer varlıkları içerir. Tüm Katman 0 varlıkları birbirlerini etkin bir şekilde denetlediği için güvenlik açısından hassasiyetleri denktir.
 - **Katman 1**   -Kuruluş sunucularının ve uygulamalarının denetimi. Katman 1 varlıklarına sunucu işletim sistemleri, bulut hizmetleri ve kuruluş uygulamaları dahildir. Katman 1 yönetim hesapları, bu varlıklar üzerinde barındırılan önemli miktarda iş değeri üzerinde yönetimsel denetime sahiptir. Yaygın olarak kullanılan bir rol örneği, bu işletim sistemlerinin bakımını yapan ve tüm kuruluş hizmetlerini etkileme imkanına sahip olan sunucu yöneticileridir.

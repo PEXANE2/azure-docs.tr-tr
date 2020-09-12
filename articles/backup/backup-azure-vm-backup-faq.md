@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: ec79fc7c09f2bc1aeb2c07016365e831932fa1ff
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7206a62e3148c1bbb8d2e3704d991025deeece37
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018119"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377327"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -197,6 +197,6 @@ Evet, portaldan aynı yedekleme ilkesiyle ilişkilendirilebilen 100 VM sınırla
 
 Şu anda, bekletme ayarlarını, VM 'ye atanan yedekleme ilkesini temel alarak bir yedekleme öğesi (VM) düzeyinde görüntüleyebilirsiniz.
 
-Yedeklemeleriniz için bekletme ayarlarını görüntülemenin bir yolu, Azure portal VM 'niz için yedekleme öğesi [panosuna](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) gitmeye yöneliktir. Yedekleme ilkesinin bağlantısına tıkladığınızda, VM ile ilişkili günlük, haftalık, aylık ve yıllık bekletme noktalarının saklama süresini görüntülemenize yardımcı olur.
+Yedeklemeleriniz için bekletme ayarlarını görüntülemenin bir yolu, Azure portal VM 'niz için yedekleme öğesi [panosuna](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) gitmeye yöneliktir. Yedekleme ilkesinin bağlantısını seçmek, sanal makine ile ilişkili günlük, haftalık, aylık ve yıllık bekletme noktalarının saklama süresini görüntülemenize yardımcı olur.
 
 Ayrıca, tek bir cam bölmesinde tüm VM 'lerinizin bekletme ayarlarını görüntülemek için [yedekleme Gezgini](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) ' ni de kullanabilirsiniz. Herhangi bir kurtarma hizmetleri kasasından yedekleme Gezgini ' ne gidin, **yedekleme öğeleri** sekmesine gidin ve Gelişmiş görünümü seçerek her bir VM için ayrıntılı bekletme bilgilerini görüntüleyin.

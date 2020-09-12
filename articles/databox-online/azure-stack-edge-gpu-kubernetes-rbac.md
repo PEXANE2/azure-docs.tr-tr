@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 697c686b61a86cb01327364ad73f30f88e2e151d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268083"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318973"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Kubernetes rol tabanlı Access Control Azure Stack Edge GPU cihazınızda
 
@@ -32,10 +32,7 @@ Kubernetes kümesini ayarlarken, bu kümeye karşılık gelen tek bir Kullanıc�
 
 Pod ve dağıtımlar gibi Kubernetes kaynakları, mantıksal olarak bir ad alanı halinde gruplandırılır. Bu gruplandırmalar, bir Kubernetes kümesini mantıksal olarak bölmek ve kaynakları oluşturmak, görüntülemek veya yönetmek için erişimi kısıtlamak için bir yol sağlar. Kullanıcılar yalnızca atanan ad alanları içindeki kaynaklarla etkileşime girebilirler.
 
-Ad alanları, birden çok takıma veya projeye yayılan birçok kullanıcı olan ortamlarda kullanılmak üzere tasarlanmıştır. Az sayıda kullanıcısı olan kümeler için, ad alanlarını oluşturmanız veya düşünmek zorunda değilsiniz. Sağladıkları özelliklere ihtiyacınız olduğunda ad alanlarını kullanmaya başlayın.
-
-Daha fazla bilgi için bkz. [Kubernetes ad alanları](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
-
+Ad alanları, birden çok takıma veya projeye yayılan birçok kullanıcı olan ortamlarda kullanılmak üzere tasarlanmıştır. Daha fazla bilgi için bkz. [Kubernetes ad alanları](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
 Azure Stack Edge cihazınız aşağıdaki ad alanlarına sahiptir:
 
@@ -47,20 +44,18 @@ Azure Stack Edge cihazınız aşağıdaki ad alanlarına sahiptir:
     - din-Namespace
     - default
     - Kubernetes-Pano
-    - default
     - kuin düğüm kirası
     - KUIN-genel
-    - iotedge
-    - Azure-yay
+
 
     Oluşturduğunuz Kullanıcı ad alanları için ayrılmış adlar kullanmayın. 
 <!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
 
-- **Kullanıcı ad alanı** -uygulamaları yerel olarak dağıtmak için **kubectl** aracılığıyla oluşturabileceğiniz ad boşluklardır.
+- **Kullanıcı ad alanı** -Bunlar, **kubectl** aracılığıyla oluşturabileceğiniz ad boşluklardır veya uygulamaların yerel olarak dağıtılması için cihazın PowerShell arabirimi aracılığıyla oluşturulabilir.
  
-- **IoT Edge ad alanı** - `iotedge` IoT Edge aracılığıyla uygulama dağıtmak için bu ad alanına bağlanırsınız.
+- **IoT Edge ad alanı** - `iotedge` IoT Edge aracılığıyla dağıtılan uygulamaları yönetmek için bu ad alanına bağlanırsınız.
 
-- **Azure Arc ad alanı** - `azure-arc` Azure Arc aracılığıyla uygulamaları dağıtmak için bu ad alanına bağlanırsınız. 
+- **Azure Arc ad alanı** - `azure-arc` Azure Arc aracılığıyla dağıtılan uygulamaları yönetmek için bu ad alanına bağlanırsınız. Azure Arc ile diğer kullanıcı ad alanlarında da uygulama dağıtabilirsiniz. 
 
 ## <a name="namespaces-and-users"></a>Ad alanları ve kullanıcılar
 
@@ -96,7 +91,7 @@ Azure Stack Edge cihazında birden çok sistem ad alanı vardır ve `kubeconfig`
 
 Bu diyagramda, Gamze, Bob ve Chuck yalnızca atanan kullanıcı ad alanlarına erişebilir, bu durumda, `ns1` `ns2` ve `ns3` sırasıyla. Bu ad alanlarında yönetici erişimi vardır. Diğer yandan küme yöneticisinin sistem ad alanları ve küme genelinde kaynaklara yönetici erişimi vardır.
 
-`kubectl`Ad alanları oluşturmak, kullanıcı atamak, kullanıcı atamak veya dosyaları indirmek için komutları kullanabilirsiniz `kubeconfig` . Yüksek düzey bir iş akışı aşağıda verilmiştir:
+`kubectl`Ad alanları ve kullanıcılar oluşturmak, kullanıcıları ad alanlarına atamak veya dosyaları indirmek için komutları kullanabilirsiniz `kubeconfig` . Yüksek düzey bir iş akışı aşağıda verilmiştir:
 
 1. Bir ad alanı ve kullanıcı oluşturun.  
 
@@ -123,7 +118,7 @@ Azure Stack Edge cihazlarınızdaki ad alanları ve kullanıcılarla çalışır
 - Kullanıcı ad alanları oluşturabilir ve bu ad alanları içinde ek kullanıcılar oluşturabilir ve bu kullanıcılara ad alanı erişimi verebilir veya iptal edebilirsiniz.
 - Herhangi bir sistem ad alanı için olanlarla aynı adlara sahip ad alanı oluşturma izniniz yok. Sistem ad alanları için adlar ayrılmıştır.  
 - Diğer Kullanıcı ad alanları tarafından zaten kullanılan adlara sahip hiçbir Kullanıcı ad alanı oluşturmanıza izin verilmiyor. Örneğin, oluşturduğunuz bir tane varsa `test-ns` , başka bir `test-ns` ad alanı oluşturamazsınız.
-- Zaten ayrılmış adlara sahip kullanıcılar oluşturmanıza izin verilmiyor. Örneğin, `aseuser` ayrılmış bir küme yöneticsahiptir ve kullanılamaz.
+- Zaten ayrılmış adlara sahip kullanıcılar oluşturmanıza izin verilmiyor. Örneğin, `aseuser` ayrılmış bir Kullanıcı ve kullanılamaz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

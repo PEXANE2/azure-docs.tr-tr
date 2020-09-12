@@ -5,14 +5,14 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 09/01/2020
 ms.author: lbosq
-ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be38b1cfa698907f44c6deee77bb9b8ca88b77b7
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263067"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318225"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB 'den Azure Cosmos DB MongoDB için API 'sine veri geçişleri için geçiş öncesi adımlar
 
@@ -44,13 +44,12 @@ Aşağıda, MongoDB için Azure Cosmos DB API 'SI hakkında özel özellikler ve
 
 |**Geçiş türü**|**Çözüm**|**Dikkat edilmesi gerekenler**|
 |---------|---------|---------|
-|Çevrimdışı|[Veri geçiş aracı](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Birden çok kaynağı ayarlama ve destekleyen kolay <br/>&bull;Büyük veri kümeleri için uygun değildir.|
-|Çevrimdışı|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Birden çok kaynağı ayarlama ve destekleyen kolay <br/>&bull;Azure Cosmos DB toplu yürütücü kitaplığını kullanır <br/>&bull;Büyük veri kümeleri için uygun <br/>&bull;Checkişaret olmaması, geçiş işlemi sırasında herhangi bir sorunun tüm geçiş sürecinin yeniden başlatılmasını gerektirmeyeceği anlamına gelir.<br/>&bull;Sahipsiz bir sıra olmaması, birkaç hatalı dosyanın tüm geçiş sürecini durduramaması anlamına gelir. <br/>&bull;Belirli veri kaynakları için okuma aktarım hızını artırmak için özel kod gerekir|
-|Çevrimdışı|[Mevcut Mongo araçları (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull;Kolayca ayarlama ve Tümleştirme <br/>&bull;Azaltıcı Les için özel işleme gerekir|
-|Çevrimiçi|[Azure Veritabanı Geçiş Hizmeti](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull;Tam olarak yönetilen geçiş hizmeti.<br/>&bull;Geçiş görevi için barındırma ve izleme çözümleri sağlar. <br/>&bull;Büyük veri kümeleri için uygun ve canlı değişiklikleri çoğaltma <br/>&bull;Yalnızca diğer MongoDB kaynaklarıyla birlikte geçerlidir|
+|Çevrimiçi|[Azure Veritabanı Geçiş Hizmeti](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Azure Cosmos DB toplu yürütücü kitaplığını kullanır <br/>&bull; Büyük veri kümeleri için uygun ve canlı değişiklikleri çoğaltma <br/>&bull; Yalnızca diğer MongoDB kaynaklarıyla birlikte geçerlidir|
+|Çevrimdışı|[Azure Veritabanı Geçiş Hizmeti](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Azure Cosmos DB toplu yürütücü kitaplığını kullanır <br/>&bull; Büyük veri kümeleri için uygun ve canlı değişiklikleri çoğaltma <br/>&bull; Yalnızca diğer MongoDB kaynaklarıyla birlikte geçerlidir|
+|Çevrimdışı|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)|&bull; Birden çok kaynağı ayarlama ve destekleyen kolay <br/>&bull; Azure Cosmos DB toplu yürütücü kitaplığını kullanır <br/>&bull; Büyük veri kümeleri için uygun <br/>&bull; Checkişaret olmaması, geçiş işlemi sırasında herhangi bir sorunun tüm geçiş sürecinin yeniden başlatılmasını gerektirmeyeceği anlamına gelir.<br/>&bull; Sahipsiz bir sıra olmaması, birkaç hatalı dosyanın tüm geçiş sürecini durduramaması anlamına gelir. <br/>&bull; Belirli veri kaynakları için okuma aktarım hızını artırmak için özel kod gerekir|
+|Çevrimdışı|[Mevcut Mongo araçları (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; Kolayca ayarlama ve Tümleştirme <br/>&bull; Azaltıcı Les için özel işleme gerekir|
 
-
-## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a>İş yükleriniz için işleme gereksinimini tahmin etme
+## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a> İş yükleriniz için işleme gereksinimini tahmin etme
 
 Azure Cosmos DB, verimlilik önceden sağlanır ve saniye başına Istek birimleri (RU) cinsinden ölçülür. Sanal makinelerin veya şirket içi sunucuların aksine, ru 'nın ölçeği dilediğiniz zaman daha kolay ve daha düşük. Sağlanan RUs sayısını anında değiştirebilirsiniz. Daha fazla bilgi için [Azure Cosmos DB istek birimleri](request-units.md)bölümüne bakın.
 
@@ -71,16 +70,16 @@ Bu komut, aşağıdakine benzer bir JSON belgesinin çıktısını alacak:
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-[Tanılama ayarlarını](cosmosdb-monitor-resource-logs.md) , Azure Cosmos DB karşı yürütülen sorguların sıklığını ve desenlerini anlamak için de kullanabilirsiniz. Tanılama günlüklerinin sonuçları bir depolama hesabına, bir EventHub örneğine veya [Azure Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)gönderilebilir.  
+[Tanılama ayarlarını](cosmosdb-monitor-resource-logs.md) , Azure Cosmos DB karşı yürütülen sorguların sıklığını ve desenlerini anlamak için de kullanabilirsiniz. Tanılama günlüklerinin sonuçları bir depolama hesabına, bir EventHub örneğine veya [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md)gönderilebilir.  
 
 ## <a name="choose-your-partition-key"></a><a id="partitioning"></a>Bölüm anahtarınızı seçin
 Parça olarak da bilinen bölümlendirme, verileri geçirmeden önce önemli bir noktadır. Azure Cosmos DB, depolama ve aktarım hızı gereksinimlerini karşılamak üzere bir veritabanındaki kapasiteyi artırmak için tam olarak yönetilen bölümlendirme kullanır. Bu özellik, yönlendirme sunucularının barındırılmasına veya yapılandırılmasına gerek yoktur.   
 
-Benzer şekilde bölümlendirme özelliği, kapasiteyi otomatik olarak ekler ve verileri uygun şekilde yeniden dengeler. Verileriniz için doğru bölüm anahtarını seçmeye ilişkin ayrıntılar ve öneriler için lütfen [bölüm anahtarı seçme makalesine](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)bakın. 
+Benzer şekilde bölümlendirme özelliği, kapasiteyi otomatik olarak ekler ve verileri uygun şekilde yeniden dengeler. Verileriniz için doğru bölüm anahtarını seçmeye ilişkin ayrıntılar ve öneriler için lütfen [bölüm anahtarı seçme makalesine](partitioning-overview.md#choose-partitionkey)bakın. 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Verilerinizin dizinini oluşturma
 
-Azure Cosmos DB MongoDB Server sürüm 3,6 API 'SI yalnızca alanı otomatik olarak dizine ekler `_id` . Bu alan bırakılamaz. Bu, parça anahtarı başına alanın benzersizlik düzeyini otomatik olarak zorlar `_id` . Ek alanlara dizin eklemek için MongoDB Dizin Yönetimi komutlarını uygularsınız. Bu varsayılan dizin oluşturma ilkesi, tüm alanları varsayılan olarak dizinleyen Azure Cosmos DB SQL API 'sinden farklıdır.
+Azure Cosmos DB MongoDB Server sürüm 3,6 API 'SI yalnızca alanı otomatik olarak dizine ekler `_id` . Bu alan bırakılamaz. Bu, parça anahtarı başına alanın benzersizlik düzeyini otomatik olarak zorlar `_id` . Ek alanları dizinlemek için MongoDB dizin yönetimi komutlarını uygularsınız. Bu varsayılan dizinleme ilkesi, tüm alanları varsayılan olarak dizinleyen Azure Cosmos DB SQL API’sinden farklıdır.
 
 Azure Cosmos DB tarafından sunulan dizin oluşturma özellikleri, bileşik dizinler, benzersiz dizinler ve yaşam süresi (TTL) dizinlerinin eklenmesini içerir. Dizin yönetimi arabirimi, `createIndex()` komuta eşlenir. [Azure Cosmos DB MongoDB için API 'Sindeki dizin oluşturma](mongodb-indexing.md)hakkında daha fazla bilgi edinin.
 

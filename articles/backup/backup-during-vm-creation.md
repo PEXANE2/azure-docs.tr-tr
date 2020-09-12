@@ -3,12 +3,12 @@ title: Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 description: Azure Backup ile bir Azure VM oluşturduğunuzda yedeklemenin nasıl etkinleştirileceğini açıklar.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: bbc00239a34fc0eb88991fcabd91c5a0eb7dbea7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892312"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377344"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 
@@ -26,14 +26,14 @@ Hesabınızda zaten oturum açmadıysanız [Azure Portal](https://portal.azure.c
 
 ## <a name="create-a-vm-with-backup-configured"></a>Yedekleme yapılandırılmış bir VM oluşturma
 
-1. Azure portal, **kaynak oluştur ' a**tıklayın.
+1. Azure portal **kaynak oluştur**' u seçin.
 
-2. Azure Marketi 'nde **işlem**' e tıklayın ve ardından bir VM görüntüsü seçin.
+2. Azure Marketi 'nde **işlem**' i seçin ve ardından bir VM görüntüsü seçin.
 
 3. [Windows](../virtual-machines/windows/quick-create-portal.md) veya [Linux](../virtual-machines/linux/quick-create-portal.md) yönergelerine uygun olarak VM 'yi ayarlayın.
 
-4. **Yönetim** sekmesinde, **yedeklemeyi etkinleştir**' de, **Açık**' a tıklayın.
-5. Kurtarma Hizmetleri kasasındaki yedeklemeleri Azure Backup. Mevcut bir kasanız yoksa **Yeni oluştur** ' a tıklayın.
+4. **Yönetim** sekmesinde, **yedeklemeyi etkinleştir**bölümünde **Açık**' ı seçin.
+5. Kurtarma Hizmetleri kasasındaki yedeklemeleri Azure Backup. Mevcut bir kasanız yoksa **Yeni oluştur** ' u seçin.
 6. Önerilen kasa adını kabul edin veya kendinizinkini belirtin.
 7. Kasasının bulunduğu bir kaynak grubu belirtin veya oluşturun. Kaynak grubu Kasası, VM kaynak grubundan farklı olabilir.
 
@@ -76,8 +76,8 @@ VM yedeğiniz, yedekleme ilkenize uygun olarak çalışacaktır. Ancak, bir ilk 
 
 VM oluşturulduktan sonra şunları yapın:
 
-1. VM özellikleri ' nde **Yedekle**' ye tıklayın. İlk yedekleme çalışana kadar VM durumu Ilk yedekleme bekliyor
-2. İsteğe bağlı yedekleme çalıştırmak için **Şimdi Yedekle** ' ye tıklayın.
+1. VM özellikleri ' nde **Yedekle**' yi seçin. İlk yedekleme çalışana kadar, VM durumu Ilk yedekleme bekliyor.
+2. İsteğe bağlı yedekleme çalıştırmak için **Şimdi Yedekle** ' yi seçin.
 
     ![İsteğe bağlı yedekleme çalıştırma](./media/backup-during-vm-creation/run-backup.png)
 

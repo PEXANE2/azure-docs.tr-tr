@@ -1,5 +1,5 @@
 ---
-title: Azure 'da bir VHD 'nin anlık görüntüsünü oluşturma
+title: Azure CLı kullanarak bir VHD 'nin anlık görüntüsünü oluşturma
 description: Azure 'da bir VHD 'nin kopyasını bir yedekleme olarak veya sorun giderme sorunları için oluşturmayı öğrenin.
 author: roygara
 manager: twooley
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7f4489b3073462a93319886ee5560ed5a6660111
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6374108247b9bfb950c42495b13b501ded8a02d2
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659956"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318004"
 ---
-# <a name="create-a-snapshot"></a>Anlık görüntü oluşturma 
+# <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Portal veya Azure CLı kullanarak anlık görüntü oluşturma
 
 Yedekleme için bir işletim sistemi veya veri diskinin anlık görüntüsünü alın veya VM sorunlarını gidermek için. Anlık görüntü, bir VHD 'nin tam ve salt okunurdur kopyasıdır. 
 
@@ -65,7 +65,7 @@ az snapshot list \
 5. Var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu adı yazın. 
 7. **Kaynak disk**için, anlık görüntü yapılacak yönetilen diski seçin.
 8. Anlık görüntüyü depolamak için kullanılacak **hesap türünü** seçin. Yüksek performanslı bir SSD üzerinde depolanmış olması gerekmedikçe **Standart HDD** kullanın.
-9. **Oluştur**'a tıklayın.
+9. **Oluştur**’a tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bee1f95e1f56b65912895fec8af2512c6cd7b85a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76511102"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300383"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Geliştirme ve test ortamınızı IoT Edge için hazırlama
 
@@ -82,10 +82,10 @@ IoT Edge cihazlarının veya hata ayıklama modüllerinin daha verimli benzetimi
 
 | Araç | Olarak da bilinen | Desteklenen platformlar | En iyi kullanım alanı: |
 | ---- | ------------- | ------------------- | --------- |
-| IoT EdgeHub geliştirme aracı  | iotedgehubdev | Windows, Linux, MacOS | Modül hatalarını ayıklamak için bir cihazın benzetimini yapın. |
-| IoT Edge dev kapsayıcısı | Microsoft/ıotedgedev | Windows, Linux, MacOS | Bağımlılıkları yüklemeden geliştirme. |
-| Bir kapsayıcıda IoT Edge çalışma zamanı | iotedgec | Windows, Linux, MacOS, ARM | Çalışma zamanını destekleyemeyebilir bir cihazda test etme. |
-| IoT Edge cihaz kapsayıcısı | toolboc/Azure-IoT-Edge-cihaz-kapsayıcı | Windows, Linux, MacOS, ARM | Çok sayıda IoT Edge cihazı olan bir senaryoyu ölçeklendirerek test etme. |
+| IoT EdgeHub geliştirme aracı  | iotedgehubdev | Windows, Linux, macOS | Modül hatalarını ayıklamak için bir cihazın benzetimini yapın. |
+| IoT Edge dev kapsayıcısı | Microsoft/ıotedgedev | Windows, Linux, macOS | Bağımlılıkları yüklemeden geliştirme. |
+| Bir kapsayıcıda IoT Edge çalışma zamanı | iotedgec | Windows, Linux, macOS, ARM | Çalışma zamanını destekleyemeyebilir bir cihazda test etme. |
+| IoT Edge cihaz kapsayıcısı | toolboc/Azure-IoT-Edge-cihaz-kapsayıcı | Windows, Linux, macOS, ARM | Çok sayıda IoT Edge cihazı olan bir senaryoyu ölçeklendirerek test etme. |
 
 ### <a name="iot-edgehub-dev-tool"></a>IoT EdgeHub geliştirme aracı
 
@@ -103,7 +103,7 @@ Daha fazla bilgi için bkz. [Azure IoT Edge geliştirme kapsayıcısı](https://
 
 ### <a name="iot-edge-runtime-in-a-container"></a>Bir kapsayıcıda IoT Edge çalışma zamanı
 
-Bir kapsayıcıdaki IoT Edge çalışma zamanı, cihaz Bağlantı dizenizi ortam değişkeni olarak alan bir çalışma zamanı sağlar. Bu kapsayıcı, MacOS gibi yerel çalışma zamanını desteklemeyen bir sistemde IoT Edge modülleri ve senaryoları test etmenizi sağlar. Dağıttığınız tüm modüller çalışma zamanı kapsayıcısının dışında başlatılır. Çalışma zamanının ve dağıtılan modüllerin aynı kapsayıcı içinde mevcut olmasını istiyorsanız bunun yerine IoT Edge cihaz kapsayıcısını göz önünde bulundurun.
+Bir kapsayıcıdaki IoT Edge çalışma zamanı, cihaz Bağlantı dizenizi ortam değişkeni olarak alan bir çalışma zamanı sağlar. Bu kapsayıcı, macOS gibi yerel çalışma zamanını desteklemeyen bir sistemde IoT Edge modülleri ve senaryoları test etmenizi sağlar. Dağıttığınız tüm modüller çalışma zamanı kapsayıcısının dışında başlatılır. Çalışma zamanının ve dağıtılan modüllerin aynı kapsayıcı içinde mevcut olmasını istiyorsanız bunun yerine IoT Edge cihaz kapsayıcısını göz önünde bulundurun.
 
 Daha fazla bilgi için bkz. [Azure IoT Edge bir kapsayıcıda çalıştırma](https://github.com/Azure/iotedgedev/tree/master/docker/runtime).
 
@@ -119,7 +119,7 @@ Kapsamlı üretim senaryolarında ölçekli çözümler geliştirmeye hazırsan�
 
 Daha fazla bilgi, kılavuz ve örnekler için aşağıdaki sayfalara bakın:
 
-* [Azure IoT Edge için sürekli tümleştirme ve sürekli dağıtım](how-to-ci-cd.md)
-* [Azure DevOps Projeleri ile IoT Edge için bir CI/CD işlem hattı oluşturma](how-to-devops-project.md)
+* [Azure IoT Edge için sürekli tümleştirme ve sürekli dağıtım](how-to-continuous-integration-continuous-deployment.md)
+* [Azure DevOps Starter ile IoT Edge için bir CI/CD işlem hattı oluşturma](how-to-devops-starter.md)
 * [Jenkins eklentisi Azure IoT Edge](https://plugins.jenkins.io/azure-iot-edge)
 * [IoT Edge DevOps GitHub deposu](https://github.com/toolboc/IoTEdge-DevOps)

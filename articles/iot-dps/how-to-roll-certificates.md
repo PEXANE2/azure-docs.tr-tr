@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974896"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299278"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>X. 509.440 cihaz sertifikalarını alma
 
@@ -51,7 +51,7 @@ Bir cihaz başlangıçta otomatik sağlama aracılığıyla sağlandığında, �
 
 Cihaza yeni bir yaprak sertifikası alındıktan sonra, bağlanmak için yeni bir sertifika kullandığından, artık IoT Hub 'ına bağlanamaz. IoT Hub, cihazı yalnızca eski sertifikaya sahip olarak tanır. Cihazın bağlantı denemesinin sonucu "yetkisiz" bir bağlantı hatası olacaktır. Bu hatayı çözmek için cihazın yeni yaprak sertifikası için hesap için kayıt girişini güncelleştirmeniz gerekir. Ardından, sağlama hizmeti cihaz yeniden sağlandığında gereken cihaz kayıt defteri bilgilerini IoT Hub güncelleştirebilir. 
 
-Bu bağlantı hatasının olası bir istisnası, sağlama hizmeti 'nde cihazınız için bir [kayıt grubu](concepts-service.md#enrollment-group) oluşturduğunuz bir senaryodur. Bu durumda, cihazın sertifika güven zincirinde kök veya ara sertifikaları görmüyorsanız, yeni sertifika kayıt grubunda tanımlanan güven zincirinin bir parçasıysa cihaz tanınır... Bu senaryo bir güvenlik ihlalinin yeniden eylemi olarak ortaya çıkarsa, grupta ihlal edildiği kabul edilen belirli cihaz sertifikalarının en az bir listesini görebilirsiniz. Daha fazla bilgi için bkz. [bir kayıt grubundaki belirli cihazları aşağı bakış](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
+Bu bağlantı hatasının olası bir istisnası, sağlama hizmeti 'nde cihazınız için bir [kayıt grubu](concepts-service.md#enrollment-group) oluşturduğunuz bir senaryodur. Bu durumda, cihazın sertifika güven zincirinde kök veya ara sertifikaları görmüyorsanız, yeni sertifika kayıt grubunda tanımlanan güven zincirinin bir parçasıysa cihaz tanınır... Bu senaryo bir güvenlik ihlalinin yeniden eylemi olarak ortaya çıkarsa, grupta ihlal edilen belirli cihaz sertifikalarına en azından izin vermemelisiniz. Daha fazla bilgi için bkz. [bir kayıt grubundaki belirli cihazlara Izin verme](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#disallow-specific-devices-in-an-enrollment-group).
 
 Toplu sertifikaların kayıt girişlerini güncelleştirme, kayıtları **Yönet** sayfasında gerçekleştirilir. Bu sayfaya erişmek için şu adımları izleyin:
 
@@ -197,9 +197,9 @@ Bu, hem eski hem de yeni sertifikaların kısa bir çakışma için geçerli olm
 Yeniden sağlama işlemi tamamlandıktan sonra, cihazlar yeni sertifikalarını kullanarak IoT Hub bağlanabiliyor.
 
 
-## <a name="blacklist-certificates"></a>Kara liste sertifikaları
+## <a name="disallow-certificates"></a>Sertifikalara izin verme
 
-Bir güvenlik ihlaline yanıt olarak, bir cihaz sertifikasının listesini listeye almanız gerekebilir. Bir cihaz sertifikasının listesini almak için, hedef cihaz/sertifika için kayıt girişini devre dışı bırakın. Daha fazla bilgi için bkz. [kayıt yönetme](how-to-revoke-device-access-portal.md) makalesinde kara listeleme cihazları.
+Bir güvenlik ihlaline yanıt olarak, bir cihaz sertifikasına izin vermemelisiniz. Bir cihaz sertifikasına izin vermemek için, hedef cihaz/sertifika için kayıt girişini devre dışı bırakın. Daha fazla bilgi için bkz. [kayıt yönetme](how-to-revoke-device-access-portal.md) makalesindeki cihazlara izin vermeme.
 
 Devre dışı bırakılmış bir kayıt girişinin bir parçası olarak bir sertifika eklendikten sonra, başka bir kayıt girişinin bir parçası olarak etkinleştirilse bile bu sertifikaları kullanarak IoT Hub 'ına kaydolma girişimleri başarısız olur.
  
@@ -211,13 +211,3 @@ Devre dışı bırakılmış bir kayıt girişinin bir parçası olarak bir sert
 - Cihaz sağlama hizmeti 'nde X. 509.440 sertifikaları hakkında daha fazla bilgi edinmek için bkz. [güvenlik](concepts-security.md) 
 - Azure IoT Hub cihaz sağlama hizmeti ile X. 509.952 CA sertifikaları için birlikte kullanma hakkında bilgi edinmek için bkz. [sertifikaları doğrulama](how-to-verify-certificates.md)
 - Portal 'ın bir kayıt grubu oluşturmak üzere nasıl kullanılacağı hakkında bilgi edinmek için bkz. [Azure Portal cihaz kayıtlarını yönetme](how-to-manage-enrollments.md).
-
-
-
-
-
-
-
-
-
-

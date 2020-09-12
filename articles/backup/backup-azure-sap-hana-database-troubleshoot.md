@@ -3,12 +3,12 @@ title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 4958a5e93e27c34772c7c3285470abbc31f5b089
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004179"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377693"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -69,7 +69,7 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 | **Olası nedenler**    | SAP HANA örneği SDC 'den MDC 'ye yükseltildi. Güncelleştirme sonrasında yedeklemeler başarısız olur. |
 | **Önerilen eylem** | Sorunu çözmek için [SDC Ile MDC yükseltmesine](#sdc-to-mdc-upgrade-with-a-change-in-sid) listelenen adımları izleyin |
 
-### <a name="usererrorinvalidbackintconfiguration"></a>Usererrorınvalidbackintconfiguration
+### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
 | Hata İletisi      | <span style="font-weight:normal">Geçersiz backınt yapılandırması algılandı</span>                       |
 | ------------------ | ------------------------------------------------------------ |
@@ -97,7 +97,7 @@ Aşağıdaki noktalara dikkat edin:
 
 - Varsayılan olarak, geri yüklenen veritabanı adı yedekleme öğesi adı ile doldurulur. Bu durumda, H21 (SDC).
 - H11 olarak Target seçildiğinde geri yüklenen veritabanı adı otomatik olarak değişmez. **H11 (SDC) olarak düzenlenmelidir**. SDC ile ilgili olarak, geri yüklenen veritabanı adı, küçük harflerle birlikte hedef örnek KIMLIĞI ve köşeli ayraçlar içine eklenen ' SDC ' olur.
-- SDC 'nin yalnızca tek bir veritabanı olduğundan, var olan veritabanı verilerinin kurtarma noktası verileriyle geçersiz kılınmasına izin vermek için onay kutusuna tıklamanız gerekir.
+- SDC 'nin yalnızca tek bir veritabanı olduğundan, var olan veritabanı verilerinin kurtarma noktası verileriyle geçersiz kılınmasına izin vermek için onay kutusunu da seçmeniz gerekir.
 - Linux, büyük/küçük harfe duyarlıdır. Bu nedenle, durumu korumak için dikkatli olun.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Birden çok kapsayıcı veritabanı (MDC) geri yükleme
@@ -165,7 +165,7 @@ SDC 'den MDC 'ye, SID değişikliğine neden olmayan yükseltmeler şu şekilde 
 - Yükseltmeyi gerçekleştirin. Tamamlandıktan sonra, HANA sistemi artık bir sistem DB ve kiracı DBs ile MDC 'dir
 - [Ön kayıt betiğini](https://aka.ms/scriptforpermsonhana) yeniden çalıştır
 - Azure Portal aynı makinenin uzantısını yeniden kaydedin (**yedekleme**  ->  **Görünümü ayrıntıları** -> ilgili Azure VM 'yi seçin-> yeniden kaydedin)
-- Aynı VM için veritabanlarını **yeniden keşfet** ' e tıklayın. Bu eylem, adım 3 ' teki yeni DBs 'Leri, SDC değil, SYSTEMDB ve kiracı DB olarak göstermelidir
+- Aynı VM için veritabanlarını **yeniden keşfet** ' i seçin. Bu eylem, adım 3 ' teki yeni DBs 'Leri, SDC değil, SYSTEMDB ve kiracı DB olarak göstermelidir
 - Eski SDC veritabanı kasada olmaya devam edecektir ve eski yedeklenen verilerin ilkeye göre bekletilmesi gerekir
 - Bu veritabanları için yedeklemeyi yapılandırma
 
@@ -178,7 +178,7 @@ SDC 'den MDC 'ye yükseltme, SID değişikliğine neden olacak şekilde aşağı
 - Yükseltmeyi gerçekleştirin. Tamamlandıktan sonra, HANA sistemi artık bir sistem DB ve kiracı DBs ile MDC 'dir
 - [Ön kayıt betiğini](https://aka.ms/scriptforpermsonhana) doğru ayrıntılarla yeniden çalıştırın (yeni SID ve MDC). SID 'deki bir değişiklik nedeniyle, betiği başarıyla çalıştırmaya yönelik sorunlar yaşayabilirsiniz. Sorun yaşıyorsanız Azure Backup desteğe başvurun.
 - Azure Portal aynı makinenin uzantısını yeniden kaydedin (**yedekleme**  ->  **Görünümü ayrıntıları** -> ilgili Azure VM 'yi seçin-> yeniden kaydedin)
-- Aynı VM için veritabanlarını **yeniden keşfet** ' e tıklayın. Bu eylem, adım 3 ' teki yeni DBs 'Leri, SDC değil, SYSTEMDB ve kiracı DB olarak göstermelidir
+- Aynı VM için veritabanlarını **yeniden keşfet** ' i seçin. Bu eylem, adım 3 ' teki yeni DBs 'Leri, SDC değil, SYSTEMDB ve kiracı DB olarak göstermelidir
 - Eski SDC veritabanı kasada olmaya devam edecektir ve eski yedeklenen verilerin ilkeye göre korunması gerekir
 - Bu veritabanları için yedeklemeyi yapılandırma
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 515e23fa318e8e77024dadefe9a13e795999f820
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761704"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376647"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama tetikleyicisi
 
@@ -388,7 +388,7 @@ Algoritma aşağıdaki mantığı kullanır:
 - Bir ileti bulunduğunda, çalışma zamanı iki saniye bekler ve sonra başka bir ileti arar
 - Hiçbir ileti bulunamadığında, yeniden denemeden önce dört saniye bekler.
 - Sonraki başarısız bir kuyruk iletisi almaya çalıştıktan sonra, bekleme süresi, varsayılan olarak bir dakika olacak şekilde en fazla bekleme süresine ulaşana kadar artmaya devam eder.
-- En uzun bekleme süresi, `maxPollingInterval` [ dosyadakihost.js](functions-host-json.md#queues)özelliği aracılığıyla yapılandırılabilir.
+- En uzun bekleme süresi, `maxPollingInterval` [ dosyadakihost.js](functions-host-json-v1.md#queues)özelliği aracılığıyla yapılandırılabilir.
 
 Yerel geliştirme için en fazla yoklama aralığı varsayılan olarak iki saniyedir.
 

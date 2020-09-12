@@ -7,18 +7,20 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 81e1925810f374da6f02bf6c3a013b00b5bb9a2c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: a1f6d318c123b5907a8c434bb097fb86a351f5d1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88264061"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297544"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda uygulamayı ve dağıtımı anlama
 
-**Uygulama** ve **dağıtım** , Azure Spring Cloud 'ın kaynak modelinde iki temel kavramlardır. Azure Spring Cloud 'da, bir *uygulama* bir iş uygulamasının veya bir mikro hizmetin soyutlamasıdır.  *Uygulama* olarak dağıtılan bir kod veya ikili dosya sürümü bir *dağıtımda*çalışır.
+**Uygulama** ve **dağıtım** , Azure Spring Cloud 'ın kaynak modelinde iki temel kavramlardır. Azure Spring Cloud 'da, bir *uygulama* bir iş uygulamasının veya bir mikro hizmetin soyutlamasıdır.  *Uygulama* olarak dağıtılan bir kod veya ikili dosya sürümü bir *dağıtımda*çalışır.  Uygulamalar, daha sonra gösterildiği gibi bir *Azure Spring Cloud Service örneğinde*veya yalnızca *hizmet örneğinde*çalışır.
 
  ![Uygulamalar ve dağıtımlar](./media/spring-cloud-app-and-deployment/app-deployment-rev.png)
+
+Tek bir Azure aboneliğinde birden çok hizmet örneğiniz olabilir, ancak bir iş uygulaması veya mikro hizmeti oluşturan tüm uygulamalar tek bir hizmet örneği içinde yer alırken Azure Spring Cloud Service 'in kullanımı en kolay yoldur.
 
 Azure yay bulutu standart katmanı, bir uygulamanın bir üretim dağıtımına ve tek bir hazırlık dağıtımına sahip olmasına olanak tanır. böylece kolayca mavi/yeşil bir dağıtım yapabilirsiniz.
 
@@ -27,7 +29,7 @@ Aşağıdaki özellikler/Özellikler uygulama düzeyinde tanımlanmıştır.
 
 | Sabit listesi | Tanım |
 |:--|:----------------|
-| Genel</br>Uç Noktası | Uygulamaya erişmek için URL |
+| Ortak</br>Uç Noktası | Uygulamaya erişmek için URL |
 | Özel</br>Etki alanı | Özel etki alanının güvenliğini sağlayan CNAME kaydı |
 | Hizmet</br>Bağlama | Dosyadaki function.jsve *Servicebustrigger* özniteliğinde ayarlanan bağlama yapılandırma özellikleri |
 | Yönetilen</br>Kimlik | Azure Active Directory tarafından yönetilen kimlik, uygulamanızın Azure Key Vault gibi diğer Azure AD korumalı kaynaklara kolayca erişmesini sağlar |

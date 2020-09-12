@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 0e2aee194d3c97655dd4ec5aaeea46fb607c4c5e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210963"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319585"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure tarafından yönetilen uygulamanın oluşturma deneyimi için CreateUiDefinition.json
 
@@ -25,6 +25,7 @@ Bu belgede **createUiDefinition.js** dosyadaki temel kavramlar tanıtılmaktadı
     "version": "0.1.2-preview",
     "parameters": {
         "config": {
+            "isWizard": false,
             "basics": { }
         },
         "basics": [ ],
@@ -35,7 +36,7 @@ Bu belgede **createUiDefinition.js** dosyadaki temel kavramlar tanıtılmaktadı
 }
 ```
 
-Createuıdefinition her zaman üç özellik içerir: 
+`CreateUiDefinition`Her zaman üç özellik içerir:
 
 * Iy
 * sürüm
@@ -43,41 +44,19 @@ Createuıdefinition her zaman üç özellik içerir:
 
 İşleyici her zaman `Microsoft.Azure.CreateUIDef` ve desteklenen en son sürüm olmalıdır `0.1.2-preview` .
 
-Parameters özelliğinin şeması, belirtilen işleyicinin ve sürümün birleşimine bağlıdır. Yönetilen uygulamalar için desteklenen özellikler,, ve ' dir `basics` `steps` `outputs` `config` . Temel bilgiler ve adımlar özellikleri, Azure portal görüntülenecek metin kutuları ve açılan [öğeler](create-uidefinition-elements.md) içerir. Çıktılar özelliği, belirtilen öğelerin çıkış değerlerini Azure Resource Manager şablonunun parametreleriyle eşlemek için kullanılır. `config`Yalnızca adımın varsayılan davranışını geçersiz kılmanız gerektiğinde kullanırsınız `basics` .
+Parameters özelliğinin şeması, belirtilen işleyicinin ve sürümün birleşimine bağlıdır. Yönetilen uygulamalar için desteklenen özellikler,, ve ' dir `config` `basics` `steps` `outputs` . `config`Yalnızca adımın varsayılan davranışını geçersiz kılmanız gerektiğinde kullanırsınız `basics` . Temel bilgiler ve adımlar özellikleri, Azure portal görüntülenecek metin kutuları ve açılan [öğeler](create-uidefinition-elements.md) içerir. Çıktılar özelliği, belirtilen öğelerin çıkış değerlerini Azure Resource Manager şablonunun parametreleriyle eşlemek için kullanılır.
 
 Dahil edilmesi `$schema` önerilir, ancak isteğe bağlıdır. Belirtilmişse, değeri `version` URI içindeki sürümle eşleşmelidir `$schema` .
 
 Createuıdefinition 'nizi oluşturmak için bir JSON Düzenleyicisi kullanabilir, ardından bunu önizlemek için [Createuıdefinition korumalı](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) alanında test edebilirsiniz. Korumalı alan hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için Portal arabiriminizi test](test-createuidefinition.md)etme.
 
-## <a name="basics"></a>Temel bilgiler
-
-**Temel kavramlar** adımı Azure Portal dosyayı ayrıştırdığında oluşturulan ilk adımdır. Varsayılan olarak, temel bilgiler, kullanıcıların dağıtım için abonelik, kaynak grubu ve konum seçmesini sağlar.
-
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Temel bilgiler varsayılan":::
-
-Bu bölüme daha fazla öğe ekleyebilirsiniz. Mümkün olduğunda, küme veya yönetici kimlik bilgileri gibi dağıtım genelindeki parametreleri sorgulayan öğeleri ekleyin.
-
-Aşağıdaki örnek, varsayılan öğelere eklenen bir metin kutusunu gösterir.
-
-```json
-"basics": [
-    {
-        "name": "textBox1",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Textbox on basics",
-        "defaultValue": "my text value",
-        "toolTip": "",
-        "visible": true
-    }
-]
-```
-
 ## <a name="config"></a>Config
 
-Temel adımlar için varsayılan davranışı geçersiz kılmanız gerektiğinde yapılandırma öğesini belirtirsiniz. Aşağıdaki örnek, kullanılabilir özellikleri gösterir.
+`config`Özelliği isteğe bağlıdır. Temel bilgiler adımının varsayılan davranışını geçersiz kılmak ya da arabiriminizi adım adım sihirbaz olarak ayarlamak için kullanın. Kullanılıyorsa `config` , dosyanın bölümündeki **createUiDefinition.js** ilk özelliktir `parameters` . Aşağıdaki örnek, kullanılabilir özellikleri gösterir.
 
 ```json
 "config": {
+    "isWizard": false,
     "basics": {
         "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
         "subscription": {
@@ -124,15 +103,50 @@ Temel adımlar için varsayılan davranışı geçersiz kılmanız gerektiğinde
 },
 ```
 
-İçin `description` kaynağını açıklayan markaşağı etkin bir dize sağlayın. Çok satırlı biçim ve bağlantılar desteklenir.
+### <a name="wizard"></a>Ekleme
 
-İçin `location` , geçersiz kılmak istediğiniz konum denetimi özelliklerini belirtin. Geçersiz kılınmayan özellikler, varsayılan değerlerine ayarlanır. `resourceTypes` tam kaynak türü adlarını içeren bir dize dizisini kabul eder. Konum seçenekleri yalnızca kaynak türlerini destekleyen bölgelerle kısıtlıdır.  `allowedValues`   bir bölge dizesi dizisini kabul eder. Yalnızca bu bölgeler açılan menüde görünür.Hem hem de ayarlayabilirsiniz `allowedValues`    `resourceTypes` . Sonuç, her iki listenin kesişmesi olur. Son olarak, `visible` özellik konum açılan listesini koşullu veya tamamen devre dışı bırakmak için kullanılabilir.  
+`isWizard`Özelliği, bir sonraki adıma geçmeden önce her adımın başarılı bir şekilde doğrulanmasını zorunlu kılmanıza olanak sağlar. `isWizard`Özellik belirtilmediğinde, varsayılan değer **false**'dur ve adım adım doğrulama gerekli değildir.
+
+`isWizard`Etkinleştirildiğinde, **doğru**olarak ayarlandığında **temel kavramlar** sekmesi kullanılabilir ve diğer tüm sekmeler devre dışı bırakılır. Bir **sonraki** düğme seçildiğinde sekmenin simgesi, bir sekmenin doğrulamasının geçtiğini veya başarısız olduğunu gösterir. Sekmenin gerekli alanları tamamlandıktan ve doğrulandıktan sonra **İleri düğmesi bir sonraki sekmeye** gidilmesine izin verir. Tüm sekmeler doğrulamadan geçene zaman, **Gözden geçirme ve oluşturma** sayfasına gidebilir ve **Oluştur** düğmesini seçerek dağıtıma başlayabilirsiniz.
+
+:::image type="content" source="./media/create-uidefinition-overview/tab-wizard.png" alt-text="Sekme Sihirbazı":::
+
+### <a name="override-basics"></a>Geçersiz kılma temelleri
+
+Temel bilgiler yapılandırması, temel kavramlar adımını özelleştirmenize olanak sağlar.
+
+İçin `description` kaynağını açıklayan markaşağı etkin bir dize sağlayın. Çok satırlı biçim ve bağlantılar desteklenir.
 
 `subscription`Ve `resourceGroup` öğeleri ek doğrulamalar belirtmenize olanak tanır. Doğrulamaları belirtmenin sözdizimi, [metin kutusu](microsoft-common-textbox.md)için özel doğrulama ile aynıdır. Ayrıca `permission` , abonelik veya kaynak grubunda doğrulama belirtebilirsiniz.  
 
 Abonelik denetimi, kaynak sağlayıcısı ad alanlarının listesini kabul eder. Örneğin, **Microsoft. COMPUTE**belirtebilirsiniz. Kullanıcı kaynak sağlayıcısını desteklemeyen bir abonelik seçtiğinde bir hata iletisi gösterir. Bu hata, kaynak sağlayıcısı bu abonelikte kayıtlı olmadığında ve kullanıcının kaynak sağlayıcısını kaydetme izni yoksa oluşur.  
 
 Kaynak grubu denetimi için bir seçeneği vardır `allowExisting` . Ne zaman `true` , kullanıcılar zaten kaynakları olan kaynak gruplarını seçebilir. Bu bayrak en çok çözüm şablonları için geçerlidir; burada varsayılan davranış, kullanıcıların yeni veya boş bir kaynak grubu seçmesini sağlamalıdır. Çoğu senaryoda, bu özelliğin belirtilmesi gerekli değildir.  
+
+İçin `location` , geçersiz kılmak istediğiniz konum denetimi özelliklerini belirtin. Geçersiz kılınmayan özellikler, varsayılan değerlerine ayarlanır. `resourceTypes` tam kaynak türü adlarını içeren bir dize dizisini kabul eder. Konum seçenekleri yalnızca kaynak türlerini destekleyen bölgelerle kısıtlıdır.  `allowedValues`   bir bölge dizesi dizisini kabul eder. Yalnızca bu bölgeler açılan menüde görünür.Hem hem de ayarlayabilirsiniz `allowedValues`    `resourceTypes` . Sonuç, her iki listenin kesişmesi olur. Son olarak, `visible` özellik konum açılan listesini koşullu veya tamamen devre dışı bırakmak için kullanılabilir.  
+
+## <a name="basics"></a>Temel Bilgiler
+
+**Temel kavramlar** adımı Azure Portal dosyayı ayrıştırdığında oluşturulan ilk adımdır. Varsayılan olarak, temel bilgiler, kullanıcıların dağıtım için abonelik, kaynak grubu ve konum seçmesini sağlar.
+
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Temel bilgiler varsayılan":::
+
+Bu bölüme daha fazla öğe ekleyebilirsiniz. Mümkün olduğunda, küme veya yönetici kimlik bilgileri gibi dağıtım genelindeki parametreleri sorgulayan öğeleri ekleyin.
+
+Aşağıdaki örnek, varsayılan öğelere eklenen bir metin kutusunu gösterir.
+
+```json
+"basics": [
+    {
+        "name": "textBox1",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Textbox on basics",
+        "defaultValue": "my text value",
+        "toolTip": "",
+        "visible": true
+    }
+]
+```
 
 ## <a name="steps"></a>Adımlar
 

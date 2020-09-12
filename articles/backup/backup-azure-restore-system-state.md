@@ -3,12 +3,12 @@ title: Sistem durumunu bir Windows sunucusuna geri yükleme
 description: Windows Server sistem durumunu Azure 'daki bir yedekten geri yüklemek için adım adım açıklama.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d3fb88ddbb02327db4388de18d2645519e13d2ec
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 824ed5e71934af370211bfa8b4c266fe4323b4ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178595"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377446"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Sistem durumunu Windows Server 'a geri yükleme
 
@@ -56,7 +56,7 @@ Aşağıdaki adımlarda, Windows Server yapılandırmanızın önceki bir duruma
 
 8. **Onay** bölmesinde Kurtarma ayrıntılarını doğrulayın ve **kurtar**' ı seçin.
 
-   ![kurtarma eylemini onaylamak için kurtar 'a tıklayın](./media/backup-azure-restore-system-state/confirm-recovery.png)
+   ![Kurtarma eylemini onaylamak için kurtar ' ı seçin](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 9. Kurtarma hedefindeki *WindowsImageBackup* dizinini sunucunun kritik olmayan bir birimine kopyalayın. Genellikle, Windows işletim sistemi birimi kritik birimdir.
 
@@ -88,7 +88,7 @@ Bu adımlarda kullanılan terminoloji şunları içerir:
 6. Yedekleme sunucusunu seçin bölmesinde, görünen makineler listesinden *kaynak makineyi* seçin.
 7. Kurtarma modunu seçin bölmesinde **sistem durumu** ' nu seçin ve **İleri**' yi seçin.
 
-    ![Arayın](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Arama](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. **Birim ve tarih seçin** bölmesinde takvimde, bir kurtarma noktası seçin. Herhangi bir kurtarma noktasından dilediğiniz zaman geri yükleyebilirsiniz. **Kalın yazı** tarihi, en az bir kurtarma noktasının kullanılabilirliğini gösterir. Bir tarih seçtiğinizde, birden fazla kurtarma noktası varsa, **zaman** açılan menüsünde belirli bir kurtarma noktasını seçin.
 
@@ -104,7 +104,7 @@ Bu adımlarda kullanılan terminoloji şunları içerir:
 
 11. Onay bölmesinde Kurtarma ayrıntılarını doğrulayın ve **kurtar**' ı seçin.
 
-    ![kurtarma işlemini onaylamak için kurtar düğmesine tıklayın](./media/backup-azure-restore-system-state/confirm-recovery.png)
+    ![Kurtarma işlemini onaylamak için kurtar düğmesini seçin](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. *WindowsImageBackup* dizinini sunucunun kritik olmayan bir birimine kopyalayın (örneğin, D: \) . Genellikle, Windows işletim sistemi birimi kritik birimdir.
 

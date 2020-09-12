@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasındaki yedekleme yönetimi işlemlerine e
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 1a4bb617511f5d5ccf882ccb11e7d88eb7a848ea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c24d075dcb9ac36ce741db746d69aa9e61fac39d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017813"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376137"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure Backup kurtarma noktalarını yönetmek için rol tabanlı Access Control kullanma
 
@@ -56,7 +56,7 @@ Aşağıdaki tabloda, bu işlemi gerçekleştirmek için gereken yedekleme yöne
 | Kayıtlı şirket içi Windows Server/Client/SCDPM veya Azure Backup Sunucusu Sil | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
 
 > [!IMPORTANT]
-> Sanal makine kaynak kapsamında VM katılımcısı belirtirseniz ve VM ayarlarının bir parçası olarak yedekle ' ye tıklarsanız, yedekleme durumunu doğrulama çağrısı yalnızca abonelik düzeyinde çalışır durumda olsa da VM zaten yedeklense bile ' yedeklemeyi etkinleştir ' ekranını açar. Bunu önlemek için kasa 'ya gidin ve VM 'nin yedekleme öğesi görünümünü açın ya da bir abonelik düzeyinde VM katılımcısı rolünü belirtin.
+> VM 'yi bir VM kaynak kapsamında belirtir ve VM ayarlarının bir parçası olarak **yedekleme** ' yi SEÇERSENIZ, VM zaten yedeklense de **yedeklemeyi etkinleştir** ekranını açar. Bunun nedeni, yedekleme durumunu doğrulama çağrısının yalnızca abonelik düzeyinde çalışmadır. Bunu önlemek için kasaya gidin ve VM 'nin yedekleme öğesi görünümünü açın ya da bir abonelik düzeyinde VM katılımcısı rolünü belirtin.
 
 ## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure dosya paylaşımının yedeklenmesi için en düşük rol gereksinimleri
 

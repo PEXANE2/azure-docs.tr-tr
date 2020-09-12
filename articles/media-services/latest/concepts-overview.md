@@ -9,16 +9,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 895e29608a9f0d80b8e03c3bc95c3c74005f7c4c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: dec0503ec369ae473fb592db958c0e30a27a4268
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269718"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297442"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminoloji ve kavramlar
 
@@ -43,7 +43,7 @@ Bu konularda açıklanan temel kavramlar, geliştirmeye başlamadan önce incele
 
 ## <a name="media-services-v3-concepts"></a>Media Services v3 kavramları
 
-|Kavramlar|Açıklama|Bağlantılar|
+|Kavramlar|Description|Bağlantılar|
 |---|---|---|
 |Varlıklar ve karşıya içerik yükleme|Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız ve dijital dosyalarınızı **varlıklara**yüklemeniz gerekir.|[Bulutta karşıya yükleme ve depolama](storage-account-concept.md)<br/><br/>[Varlık kavramı](assets-concept.md)|
 |İçerik kodlama|Yüksek kaliteli dijital medya dosyalarınızı varlıklara yükledikten sonra, bunları çok çeşitli tarayıcılarda ve cihazlarda yürütülebilecek biçimlere kodlayabilirsiniz. <br/><br/>Media Services v3 ile kodlamak için **dönüşümler** ve **işler**oluşturmanız gerekir.|[Dönüşümler ve Işler](transforms-jobs-concept.md)<br/><br/>[Media Services kodlama](encoding-concept.md)|

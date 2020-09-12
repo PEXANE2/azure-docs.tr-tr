@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d8e6a4e769b08d674b355f6f88a0967316e95c63
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782337"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300230"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
@@ -28,7 +28,7 @@ Ayrıca, kendi iş ve sektöründe kullanılan terminolojiyi anlayan sinir çevi
 ## <a name="text-translation"></a>Metin çevirisi
 Metin çevirisi, Translator 'da kullanılabilen dillerden veya çeviri işlemi kullanılarak kullanılabilir. Ayrıca API, Algıla işlemini kullanarak dil algılama, alfabede kullanılan bir işlem ve sözlük arama ve sözlük örnekleri işlemlerini kullanarak iki dilli sözlük de sunar. Bu işlemlerin her biri için kullanılabilen diller aşağıda listelenmiştir. 
 
-### <a name="translate"></a>Çevirme
+### <a name="translate"></a>Çeviri
 
 Translator metin çevirisi için aşağıdaki dilleri destekler. 
 
@@ -155,6 +155,7 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |Svahili dili| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Korece |`ko`   |
+|Kürtçe (orta)  |`ku-Arab`  |
 |Letonca|   `lv`    |
 |Litvanca|    `lt`    |
 |Malayca| `ms`        |
@@ -283,10 +284,12 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 
 | Dil    | Dil kodu |
 |:----------- |:-------------:|
+|Afrikaner| `af`|
 | Arapça       | `ar`          |
 | Bangla      | `bn`          |
 | Boşnakça (Latin)      | `bs`          |
 | Bulgarca      | `bg`          |
+|Katalanca|   `ca`    |
 | Basitleştirilmiş Çince      | `zh-Hans`          |
 |Geleneksel Çince|   `zh-Hant`   |
 | Hırvatça      | `hr`          |
@@ -295,6 +298,8 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Felemenkçe      | `nl`          |
 | İngilizce    | `en`     |
 | Estonya Dili      | `et`          |
+|Fiji Adaları dili|    `fj`    |
+|Filipino|  `fil`   |
 | Fince      | `fi`          |
 | Fransızca      | `fr`          |
 | Almanca      | `de`          |
@@ -308,12 +313,14 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | İrlandaca | `ga`  |
 | İtalyanca      | `it`          |
 | Japonca      | `ja`          |
+|Kannada dili|`kn`|
 | Svahili dili|    `sw`    |
 | Korece      | `ko`          |
 | Letonca      | `lv`          |
 | Litvanca      | `lt`          |
 | Malgaşça| `mg`    |
 | Malayca|    `ms`        |
+|Maltaca|   `mt`    |
 | Maori dili| `mi`  |
 | Marathi| `mr`  |
 | Norveççe      | `nb`          |
@@ -329,7 +336,9 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Slovence      | `sl`          |
 | İspanyolca      | `es`          |
 | İsveççe      | `sv`          |
+|Tahiti dili|  `ty`    |
 | Tayca      | `th`          |
+|Tonga dili|    `to`    |
 | Türkçe      | `tr`          |
 | Ukraynaca      | `uk`          |
 | Urduca| `ur`    |

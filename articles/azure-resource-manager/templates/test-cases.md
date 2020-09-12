@@ -2,15 +2,15 @@
 title: Test araç seti için test çalışmaları
 description: ARM şablonu test araç seti tarafından çalıştırılan testleri açıklar.
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5c18a2658ba1af9370699004860d1743603e8143
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85256044"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378126"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM şablonu test araç seti için varsayılan test çalışmaları
 
@@ -100,6 +100,37 @@ Sonraki örnekte bu test **geçirilir** :
         "type": "SecureString"
     }
 }
+```
+
+## <a name="environment-urls-cant-be-hardcoded"></a>Ortam URL 'Leri sabit kodlanamıyor
+
+Test adı: **Deploymenttemplate, sabit kodlanmış URI içermemelidir**
+
+Şablonunuzda kod ortamı URL 'Leri oluşturmayın. Bunun yerine, dağıtım sırasında bu URL 'Leri dinamik olarak almak için [Environment işlevini](template-functions-deployment.md#environment) kullanın. Engellenen URL konaklarının bir listesi için, bkz. [test çalışması](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1).
+
+URL sabit kodlandığı için aşağıdaki örnek bu testi **başarısız oluyor** .
+
+```json
+"variables":{
+    "AzureURL":"https://management.azure.com"
+}
+```
+
+Test, [Concat](template-functions-string.md#concat) veya [URI](template-functions-string.md#uri)ile kullanıldığında de **başarısız olur** .
+
+```json
+"variables":{
+    "AzureSchemaURL1": "[concat('https://','gallery.azure.com')]",
+    "AzureSchemaURL2": "[uri('gallery.azure.com','test')]"
+}
+```
+
+Aşağıdaki örnek bu testi **geçirir** .
+
+```json
+"variables": {
+    "AzureSchemaURL": "[environment().gallery]"
+},
 ```
 
 ## <a name="location-uses-parameter"></a>Konum, parametresini kullanır
@@ -351,18 +382,18 @@ Ayrıca, bir Min veya Max değeri sağlarsanız, diğerini değil de bu uyarıy�
 
 ## <a name="artifacts-parameter-defined-correctly"></a>Yapıt parametresi doğru tanımlandı
 
-Test adı: **yapıtlar-parametre**
+Test adı: **yapıt parametresi**
 
 Ve için parametreler dahil ettiğinizde `_artifactsLocation` `_artifactsLocationSasToken` , doğru Varsayılanları ve türleri kullanın. Bu testi iletmek için aşağıdaki koşulların karşılanması gerekir:
 
 * bir parametre sağlarsanız, diğerini sağlamanız gerekir
 * `_artifactsLocation`bir **dize** olmalıdır
-* `_artifactsLocation`Ana şablonda bir varsayılan değere sahip olmalıdır
-* `_artifactsLocation`iç içe yerleştirilmiş bir şablonda varsayılan değere sahip olamaz 
+* `_artifactsLocation` Ana şablonda bir varsayılan değere sahip olmalıdır
+* `_artifactsLocation` iç içe yerleştirilmiş bir şablonda varsayılan değere sahip olamaz 
 * `_artifactsLocation``"[deployment().properties.templateLink.uri]"`varsayılan değeri için ya da ham depo URL 'si olmalıdır
 * `_artifactsLocationSasToken`**secureString** olmalıdır
-* `_artifactsLocationSasToken`Varsayılan değeri için yalnızca boş bir dize olabilir
-* `_artifactsLocationSasToken`iç içe yerleştirilmiş bir şablonda varsayılan değere sahip olamaz 
+* `_artifactsLocationSasToken` Varsayılan değeri için yalnızca boş bir dize olabilir
+* `_artifactsLocationSasToken` iç içe yerleştirilmiş bir şablonda varsayılan değere sahip olamaz 
 
 ## <a name="declared-variables-must-be-used"></a>Tanımlanan değişkenler kullanılmalıdır
 
@@ -514,9 +545,9 @@ Bu test için geçerlidir:
 
 Ve için, `reference` `list*` kaynak kimliği oluşturmak için kullandığınızda test **başarısız olur** `concat` .
 
-## <a name="dependson-cant-be-conditional"></a>Bağımlıdson, koşullu olamaz
+## <a name="dependson-best-practices"></a>Bağımlıdson en iyi uygulamalar
 
-Test adı: **Bağımlıdson, koşullu** olmamalıdır
+Test adı: **Bağımlıdson En Iyi Yöntemler**
 
 Dağıtım bağımlılıklarını ayarlarken, bir koşulu test etmek için [IF](template-functions-logical.md#if) işlevini kullanmayın. Bir kaynak [koşullu olarak dağıtılan](conditional-resource-deployment.md)bir kaynağa bağımlıysa, bağımlılığı herhangi bir kaynakta olduğu gibi ayarlayın. Koşullu bir kaynak dağıtıldığında Azure Resource Manager, gerekli bağımlılıklardan otomatik olarak kaldırır.
 
@@ -572,7 +603,7 @@ Test adı: **VM görüntülerinin en son sürümü kullanması gerekir**
 
 ## <a name="use-stable-vm-images"></a>Kararlı VM görüntülerini kullanma
 
-Test adı: **sanal makineler-önizleme** -olmaması gerekir
+Test adı: **sanal makineler önizleme olmamalıdır**
 
 Sanal makineler önizleme görüntülerini kullanmamalıdır.
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1822e41c8cfb3646ab43fde1b9a86569ce2c399
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 718a01abacf6f2c3cbc9523cc644aca02dc5ff49
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796769"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321200"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory kullanarak yakın zamanda silinen bir kullanıcıyı geri yükleme veya kaldırma
 Bir kullanıcıyı sildikten sonra, hesap 30 gün boyunca askıya alınmış durumda kalır. Bu 30 günlük pencerede, Kullanıcı hesabı tüm özellikleriyle birlikte geri yüklenebilir. 30 günlük pencere geçtikten sonra, Kullanıcı otomatik olarak ve kalıcı olarak silinir.
@@ -88,6 +88,6 @@ Kullanıcılarınızı geri yükledikten veya sildikten sonra, aşağıdaki teme
 
 - [Profil bilgilerini ekleme veya değiştirme](active-directory-users-profile-azure-portal.md)
 
-- [Başka bir kuruluştan Konuk kullanıcılar ekleme](../b2b/what-is-b2b.md)
+- [Başka bir kuruluştan Konuk kullanıcılar ekleme](../external-identities/what-is-b2b.md)
 
 Diğer mevcut kullanıcı yönetim görevleri hakkında daha fazla bilgi için, [Azure AD Kullanıcı yönetimi belgeleri](../users-groups-roles/index.yml).

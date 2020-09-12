@@ -3,12 +3,12 @@ title: Azure dosya paylaşımlarını geri yükleme
 description: Bir dosya paylaşımının tamamını veya belirli dosyaları Azure Backup tarafından oluşturulan bir geri yükleme noktasından geri yüklemek için Azure portal nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762835"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376783"
 ---
 # <a name="restore-azure-file-shares"></a>Azure dosya paylaşımlarını geri yükleme
 
@@ -50,16 +50,16 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
 
    ![Paylaşma geri yükle seçeneğini belirleyin](./media/restore-afs/restore-share.png)
 
-1. **Paylaşma**'yı seçtikten sonra **geri yükleme** bölmesi açılır. Geri yükleme işlemini gerçekleştirmek için kullanmak istediğiniz geri yükleme noktasını seçmek için, **geri yükleme noktası** metin kutusunun altındaki bağlantı **Seç** metnine tıklayın.
+1. **Paylaşma**'yı seçtikten sonra **geri yükleme** bölmesi açılır. Geri yükleme işlemini gerçekleştirmek için kullanmak istediğiniz geri yükleme noktasını seçmek için **geri yükleme noktası** metin kutusunun altındaki bağlantıyı **seçin** metin kutusunu seçin.
 
-    ![Seç ' i tıklayarak geri yükleme noktası seçin](./media/restore-afs/select-restore-point.png)
+    ![Seç ' i seçerek geri yükleme noktası seçin](./media/restore-afs/select-restore-point.png)
 
 1. **Geri yükleme noktası seç** bağlam bölmesi sağ tarafta açılarak seçili dosya paylaşımında kullanılabilir geri yükleme noktalarının dökümünü alır. Geri yükleme işlemini gerçekleştirmek için kullanmak istediğiniz geri yükleme noktasını seçin ve **Tamam**' ı seçin.
 
     ![Geri yükleme noktası seç](./media/restore-afs/restore-point.png)
 
     >[!NOTE]
-    >Varsayılan olarak, **geri yükleme noktası seç** bölmesi son 30 günden geri yükleme noktalarını listeler. Belirli bir süre içinde oluşturulan geri yükleme noktalarına bakmak isterseniz, uygun **başlangıç saatini** ve **bitiş saatini** seçerek aralığı belirtin ve **Yenile** düğmesine tıklayın.
+    >Varsayılan olarak, **geri yükleme noktası seç** bölmesi son 30 günden geri yükleme noktalarını listeler. Belirli bir süre içinde oluşturulan geri yükleme noktalarına bakmak isterseniz, uygun **başlangıç saatini** ve **bitiş saatini** seçerek aralığı belirtin ve **Yenile** düğmesini seçin.
 
 1. Sonraki adım **geri yükleme konumunu**seçdir. **Kurtarma hedefi** bölümünde, verilerin nereye veya nasıl geri yükleneceğini belirtin. İki seçenekten birini, iki durumlu düğmeyi kullanarak seçin:
 
@@ -93,9 +93,9 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
 
     ![Dosya kurtarma seçin](./media/restore-afs/file-recovery.png)
 
-1. **Dosya kurtarma**' yı seçtikten sonra **geri yükleme** bölmesi açılır. Geri yükleme işlemini gerçekleştirmek için kullanmak istediğiniz geri yükleme noktasını seçmek için, **geri yükleme noktası** metin kutusunun altındaki bağlantı **Seç** metnine tıklayın.
+1. **Dosya kurtarma**' yı seçtikten sonra **geri yükleme** bölmesi açılır. Geri yükleme işlemini gerçekleştirmek için kullanmak istediğiniz geri yükleme noktasını seçmek için **geri yükleme noktası** metin kutusunun altındaki bağlantıyı **seçin** metin kutusunu seçin.
 
-    ![Seç ' i tıklayarak geri yükleme noktası seçin](./media/restore-afs/select-restore-point.png)
+    ![Seçme bağlantısını seçerek geri yükleme noktası seçin](./media/restore-afs/select-restore-point.png)
 
 1. **Geri yükleme noktası seç** bağlam bölmesi sağ tarafta açılarak seçili dosya paylaşımında kullanılabilir geri yükleme noktalarının dökümünü alır. Geri yükleme işlemini gerçekleştirmek için kullanmak istediğiniz geri yükleme noktasını seçin ve **Tamam**' ı seçin.
 
@@ -112,7 +112,7 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
 
     ![Öğe düzeyinde kurtarma için özgün konum](./media/restore-afs/original-location-item-level.png)
 
-1. Geri yüklemek istediğiniz dosya veya klasörleri seçmek için **Dosya Ekle** düğmesine tıklayın. Bu işlem, sağ tarafta, geri yükleme için seçtiğiniz dosya paylaşma kurtarma noktasının içeriğini görüntüleyen bir bağlam bölmesi açar.
+1. Geri yüklemek istediğiniz dosya veya klasörleri seçmek için **Dosya Ekle** düğmesini seçin. Bu işlem, sağ tarafta, geri yükleme için seçtiğiniz dosya paylaşma kurtarma noktasının içeriğini görüntüleyen bir bağlam bölmesi açar.
 
     ![Dosya Ekle ' yi seçin](./media/restore-afs/add-file.png)
 
@@ -132,7 +132,7 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
 1. **Dosya Paylaşımı Seç** açılan listesi, adım 2 ' de seçtiğiniz depolama hesabında bulunan dosya paylaşımlarını görüntüler. Yedeklenen içeriği geri yüklemek istediğiniz dosya payını seçin.
 1. **Klasör adı** kutusunda, geri yüklenen içerikle hedef dosya paylaşımında oluşturmak istediğiniz bir klasör adı belirtin.
 1. Çakışmalar varsa atlayın veya üzerine yaz seçeneğini belirleyin.
-1. Geri yüklemek istediğiniz dosya veya klasörleri seçmek için **Dosya Ekle** düğmesine tıklayın. Bu işlem, geri yükleme için seçtiğiniz dosya paylaşma kurtarma noktasının içeriğini görüntüleyen bir bağlam bölmesi açar.
+1. Geri yüklemek istediğiniz dosya veya klasörleri seçmek için **Dosya Ekle** düğmesini seçin. Bu işlem, geri yükleme için seçtiğiniz dosya paylaşma kurtarma noktasının içeriğini görüntüleyen bir bağlam bölmesi açar.
 
     ![Alternatif konuma geri yüklenecek öğeleri seçin](./media/restore-afs/restore-to-alternate-location.png)
 
