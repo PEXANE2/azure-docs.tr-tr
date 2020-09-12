@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e53d8bf8f7cb024b468983f596d3d1bd5c91ee7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1596dd8c03ba546c47429183e5d237579f1634f1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007310"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442931"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Ana VHD görüntüsü üzerinde Office yükleme
 
@@ -56,7 +56,7 @@ Bu örnek yapılandırma XML 'i şunları yapamayacaklarınız:
 
 Office dağıtım aracı setup.exe içerir. Office 'i yüklemek için komut satırında aşağıdaki komutu çalıştırın:
 
-```batch
+```cmd
 Setup.exe /configure configuration.xml
 ```
 
@@ -90,7 +90,7 @@ Aşağıdaki XML örneği aylık kurumsal kanal sürümünü yükler.
 
 Office 'i yükledikten sonra varsayılan Office davranışını güncelleştirebilirsiniz. Davranışı güncelleştirmek için aşağıdaki komutları tek tek veya bir toplu iş dosyasında çalıştırın.
 
-```batch
+```cmd
 rem Mount the default user registry hive
 reg load HKU\TempDefault C:\Users\Default\NTUSER.DAT
 rem Must be executed with default registry hive mounted.
@@ -117,41 +117,41 @@ OneDrive 'ı makine başına modunda yüklemek için şu adımları uygulayın:
 
 1. İlk olarak, OneDrive yükleyicisinin aşamasına kadar bir konum oluşturun. Yerel disk klasörü veya [ \\ \\ UNC] (File://UNC) konumu iyidir.
 
-2. OneDriveSetup.exe, bu bağlantıyla hazırlanan konumunuza indirin:<https://aka.ms/OneDriveWVD-Installer>
+2. OneDriveSetup.exe, bu bağlantıyla hazırlanan konumunuza indirin: <https://aka.ms/OneDriveWVD-Installer>
 
 3. Office 'i yok ederek OneDrive 'a yüklediyseniz **\<ExcludeApp ID="OneDrive" /\>** , aşağıdaki komutu çalıştırarak, var olan tüm OneDrive Kullanıcı başına yüklemelerini yükseltilmiş bir komut isteminden kaldırın:
 
-    ```batch
+    ```cmd
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
 
 4. **Allusersınstall** kayıt defteri değerini ayarlamak için bu komutu yükseltilmiş bir komut isteminden çalıştırın:
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
     ```
 
 5. OneDrive 'ı makine başına modunda yüklemek için şu komutu çalıştırın:
 
-    ```batch
+    ```cmd
     Run "[staged location]\OneDriveSetup.exe" /allusers
     ```
 
 6. OneDrive 'ı tüm kullanıcılar için oturum açma sırasında başlatılacak şekilde yapılandırmak için bu komutu çalıştırın:
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
     ```
 
 7. Aşağıdaki komutu çalıştırarak **sessizce Kullanıcı hesabını Yapılandır** özelliğini etkinleştirin.
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
     ```
 
 8. Aşağıdaki komutu çalıştırarak Windows bilinen klasörlerini yeniden yönlendirin ve OneDrive 'a taşıyın.
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 

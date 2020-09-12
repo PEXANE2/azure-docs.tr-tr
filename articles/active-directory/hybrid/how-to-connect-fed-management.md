@@ -1,7 +1,7 @@
 ---
 title: Azure AD Connect AD FS Yönetimi ve özelleştirmesi | Microsoft Docs
 description: Azure AD Connect ve PowerShell ile Kullanıcı AD FS oturum açma deneyimini Azure AD Connect ve özelleştirmesiyle AD FS Yönetimi.
-keywords: AD FS, ADFS, AD FS Yönetimi, AAD Connect, Bağlan, oturum açma, AD FS özelleştirme, onarım güveni, O365, Federasyon, bağlı olan taraf
+keywords: AD FS, ADFS, AD FS Yönetimi, AAD Connect, Connect, oturum açma, AD FS özelleştirme, onarım güveni, M365, Federasyon, bağlı olan taraf
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,20 +18,20 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830936"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661257"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federasyon Hizmetleri (AD FS) Azure AD Connect kullanarak yönetin ve özelleştirin
 Bu makalede Azure Active Directory (Azure AD) Connect kullanılarak Active Directory Federasyon Hizmetleri (AD FS) (AD FS) yönetimi ve özelleştirmeyi açıklanmaktadır. Ayrıca, bir AD FS grubunun tüm yapılandırması için yapmanız gerekebilecek diğer ortak AD FS görevlerini de içerir.
 
-| Konu başlığı | Ne içerir? |
+| Konu | Ne içerir? |
 |:--- |:--- |
 | **AD FS Yönet** | |
-| [Güveni onarma](#repairthetrust) |Office 365 ile Federasyon güvenini onarma. |
+| [Güveni onarma](#repairthetrust) |Microsoft 365 ile Federasyon güvenini onarma. |
 | [Alternatif oturum açma KIMLIĞINI kullanarak Azure AD ile federasyon oluşturma](#alternateid) | Alternatif oturum açma KIMLIĞI kullanarak Federasyonu yapılandırma  |
 | [AD FS sunucusu ekleme](#addadfsserver) |AD FS grubunu ek bir AD FS sunucusu ile genişletme. |
 | [AD FS Web uygulaması ara sunucusu ekleme](#addwapserver) |Bir AD FS grubunu ek Web uygulaması ara sunucusu (WAP) sunucusu ile genişletme. |
@@ -85,7 +85,7 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
     Eksik KB durumunda yapılandırmayı yeniden düzeltmek için gerekli [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) ' yi yükleyip, ardından [AAD 'Yi onar ve güveni AD FS güven](#repairthetrust)' i kullanarak güveni onarın.
 
 > [!NOTE]
-> AlternateId ve el ile yapılandırma adımları hakkında daha fazla bilgi için [Alternatif oturum açma kimliğini yapılandırma](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id) makalesini okuyun
+> AlternateId ve el ile yapılandırma adımları hakkında daha fazla bilgi için [Alternatif oturum açma kimliğini yapılandırma](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) makalesini okuyun
 
 ## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>AD FS sunucusu ekleme 
 
@@ -174,7 +174,7 @@ Azure AD Connect kullanarak Azure AD ile Federasyon oluşturulacak bir etki alan
 
    ![Azure AD etki alanı](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
-    Etki alanını seçtikten sonra sihirbaz, sihirbazın gerçekleştirebileceği diğer eylemler ve yapılandırmanın etkisi hakkında uygun bilgileri sağlar. Bazı durumlarda, Azure AD 'de henüz doğrulanmamış bir etki alanını seçerseniz, sihirbaz, etki alanını doğrulamanıza yardımcı olacak bilgiler sağlar. Daha fazla bilgi için bkz. [Azure Active Directory için özel etki alanı adınızı ekleme](../active-directory-domains-add-azure-portal.md) .
+    Etki alanını seçtikten sonra sihirbaz, sihirbazın gerçekleştirebileceği diğer eylemler ve yapılandırmanın etkisi hakkında uygun bilgileri sağlar. Bazı durumlarda, Azure AD 'de henüz doğrulanmamış bir etki alanını seçerseniz, sihirbaz, etki alanını doğrulamanıza yardımcı olacak bilgiler sağlar. Daha fazla bilgi için bkz. [Azure Active Directory için özel etki alanı adınızı ekleme](../fundamentals/add-custom-domain.md) .
 
 5. **İleri**’ye tıklayın. **Yapılandırmaya hazırlanma** sayfası Azure AD Connect gerçekleştireceği eylemlerin listesini gösterir. Yapılandırmayı sona erdirmesi için, **Kur** ' a tıklayın.
 
@@ -207,7 +207,7 @@ Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requi
 ```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>AD FS talep kurallarını değiştirme 
-AD FS, özel talep kuralları oluşturmak için kullanabileceğiniz bir zengin talep dilini destekler. Daha fazla bilgi için bkz. [talep kuralı dili rolü](https://technet.microsoft.com/library/dd807118.aspx).
+AD FS, özel talep kuralları oluşturmak için kullanabileceğiniz bir zengin talep dilini destekler. Daha fazla bilgi için bkz. [talep kuralı dili rolü](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807118(v=ws.11)).
 
 Aşağıdaki bölümlerde, Azure AD ve AD FS Federasyonu ile ilgili bazı senaryolar için nasıl özel kurallar yazacağınız açıklanır.
 

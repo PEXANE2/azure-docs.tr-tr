@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/18/2020
+ms.date: 09/06/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b3a838e52bb0b9f3a3be7195bd528c08e499c0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: f8598e77940bd2b33a9d8ba2c5a56348be841f7b
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783663"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505208"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplar ve uygulamalar için erişim gözden geçirmesi oluşturma
 
@@ -32,7 +32,7 @@ Erişim Incelemelerini etkinleştirme hakkında hızlı bir video izleyebilirsin
 
 Bu makalede, Grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi oluşturma açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure AD Premium P2
 - Genel yönetici veya Kullanıcı Yöneticisi
@@ -100,22 +100,31 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#l
 
 1. Bir gözden geçirme tamamlandıktan sonra ne olacağını belirtmek için **Tamamlama Ayarları** bölümüne bakın.
 
-    ![Erişim gözden geçirmesi oluşturma-tamamlanma ayarları](./media/create-access-review/upon-completion-settings.png)
+    ![Erişim gözden geçirmesi oluşturma-tamamlanma ayarları](./media/create-access-review/upon-completion-settings-new.png)
 
-1. Engellenen kullanıcıların erişimini otomatik olarak kaldırmak istiyorsanız, **etkinleştirmek**Için **sonuçları otomatik uygula** ' yı ayarlayın. Gözden geçirme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtarı **devre dışı**olarak ayarlayın.
+2. Engellenen kullanıcıların erişimini otomatik olarak kaldırmak istiyorsanız, **etkinleştirmek**Için **sonuçları otomatik uygula** ' yı ayarlayın. Gözden geçirme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtarı **devre dışı**olarak ayarlayın.
 
-1. Gözden geçiren tarafından gözden geçirilmemiş kullanıcılar için gözden geçirme süresi içinde gözden **geçirmeli yanıt** verme listesini kullanın. Bu ayar, gözden geçirenler tarafından el ile gözden geçirilmiş kullanıcıları etkilemez. Son Gözden geçirenin kararı reddederse, kullanıcının erişimi kaldırılır.
+3. Gözden **geçirenler yanıt** vermiyor listesini, gözden geçiren tarafından gözden geçirilmemiş kullanıcılar için gözden geçirme dönemi dahilinde ne olacağını belirlemek için kullanın. Bu ayar, gözden geçirenler tarafından el ile gözden geçirilmiş kullanıcıları etkilemez. Son Gözden geçirenin kararı reddederse, kullanıcının erişimi kaldırılır.
 
     - **Değişiklik yok** -kullanıcının erişimini değiştirmeden bırak
     - **Erişimi kaldır** -kullanıcının erişimini kaldır
     - **Erişimi onayla** -kullanıcının erişimini Onayla
     - **Öneriler alın** -kullanıcının devam eden erişimini reddetme veya onaylama konusunda sistemin önerisini alın
 
+4. Önizle Engellenen kullanıcılara, engellendiklerinde Konuk kullanıcılar için ne olacağını belirtmek için bu eylemi kullanın.
+    - **1. seçenek** , reddedilen kullanıcının, gözden geçirilmekte olan grup veya uygulamaya erişimini kaldıracak, yine de kiracıya oturum açabiliyor. 
+    - **2. seçenek** , diğer kaynaklara erişimleri olmasına bakılmaksızın, engellenen kullanıcıların kiracıya oturum açmasını engeller. Bir hata oluşursa veya bir yönetici, birinin erişimini yeniden etkinleştirmeye karar verirse, Kullanıcı devre dışı bırakıldıktan sonra 30 gün içinde bunu yapabilir. Devre dışı bırakılan kullanıcılar üzerinde herhangi bir eylem yoksa, kiracı 'dan silinir.
+
+Kuruluşunuzdaki kaynaklara erişimi olmayan konuk kullanıcıları kaldırmak için en iyi uygulamalar hakkında daha fazla bilgi edinmek için, [artık kaynak erişimi olmayan dış kullanıcıları gözden geçirmek ve kaldırmak üzere Azure AD Identity Governance kullanın](access-reviews-external-users.md)başlıklı makaleyi okuyun.
+
+>[!NOTE]
+> Reddedilen kullanıcılara uygulanacak eylem yalnızca yalnızca Konuk kullanıcılar için bir gözden geçirme kapsamlandırdıysanız geçerlidir (bkz. **bir veya daha fazla erişim Incelemesi oluşturma** bölüm adım 8)
+
 ### <a name="advanced-settings"></a>Gelişmiş ayarlar
 
 1. Ek ayarları belirtmek için **Gelişmiş ayarlar** bölümünü genişletin.
 
-    ![Erişim incelemesi oluşturma-Gelişmiş ayarlar](./media/create-access-review/advanced-settings-preview.png)
+    ![Erişim incelemesi oluşturma-Gelişmiş ayarlar](./media/create-access-review/advanced-settings-preview-new.png)
 
 1. Kullanıcının erişim bilgilerini temel alarak sistem önerilerini gözden geçirenlere göstermek üzere **etkinleştirilecek** **önerileri göster** ' i ayarlayın.
 

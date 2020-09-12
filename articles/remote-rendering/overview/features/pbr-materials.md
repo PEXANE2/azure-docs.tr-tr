@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021322"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613670"
 ---
 # <a name="pbr-materials"></a>PBR malzemeleri
 
@@ -55,7 +55,7 @@ Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada ma
 
   Hem bir metalness değeri hem de bir metalness eşlemesi sağlanırsa, son değer iki ürünün çarpımı olur.
 
-  ![metalness ve kablık](./media/metalness-roughness.png)
+  ![Farklı metalness ve kabalık değerleriyle işlenen sışlar](./media/metalness-roughness.png)
 
   Yukarıdaki resimde, sağ alt köşedeki Sphere gerçek metal malzemeler gibi görünür ve sol alt, Ceramik veya plastik gibi görünür. Albedo rengi Ayrıca fiziksel özelliklere göre değişiyor. Büyük bir artış sayesinde, malzeme yansıma keskinliğini kaybeder.
 
@@ -63,13 +63,13 @@ Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada ma
 
 * **Occlusionmap** ve **aoscale:** [ortam occlusiyon](https://en.wikipedia.org/wiki/Ambient_occlusion) , occluya ve daha gerçekçi alanlara gölge ekleyerek nesnelerin daha gerçekçi görünmesini sağlar. Occlusiyon değeri, değerinden `0.0` `1.0` `0.0` (occluded) anlamına gelir ve `1.0` hiçbir anlamı yoktur. Bir 2B doku bir occlusiyon eşlemesi olarak sağlanıyorsa, efekt etkinleştirilir ve *AOCE ölçeği* bir çarpan gibi davranır.
 
-  ![Occlusiyon eşleme](./media/boom-box-ao2.gif)
+  ![Ortam occlusiyon ile ve ile işlenen nesne](./media/boom-box-ao2.gif)
 
 * **saydam:** PBR malzemeleri için yalnızca bir saydamlık ayarı vardır: etkin veya değildir. Opaklık, Albedo renginin alfa kanalı tarafından tanımlanır. Etkinleştirildiğinde yarı saydam yüzeyler çizmek için daha karmaşık bir işleme işlem hattı çağrılır. Azure uzaktan Işleme, gerçek [sıra bağımsız saydamlığı](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT) uygular.
 
   Saydam geometri işleme pahalıdır. Yalnızca bir yüzeydeki deliklere ihtiyacınız varsa (örneğin, bir ağacın yaprakları için), bunun yerine Alfa kırpması kullanmak daha iyidir.
 
-  ![](./media/transparency.png)Yukarıdaki görüntüde, en sağdaki Sphere 'in tamamen saydam olduğu, ancak yansıma hala görünür durumda olan saydamlık bildirimi.
+  ![](./media/transparency.png)Yukarıdaki görüntüde, en sağdaki Sphere 'in tamamen saydam olduğu, ancak yansıma hala görünür durumda olduğu için, üstteki görüntüde sıfır ile tam şeffaf bir bildirimde işlenen küreler.
 
   > [!IMPORTANT]
   > Çalışma zamanında, herhangi bir malzemenin donuk ' den saydam 'e geçiş olması gerekiyorsa, oluşturucunun *Tilebasedcomposition* [işleme modunu](../../concepts/rendering-modes.md)kullanması gerekir. Bu sınırlama, ile başlamak için saydam malzemeler olarak dönüştürülmüş malzemeler için geçerlidir.
@@ -80,6 +80,13 @@ Azure uzaktan Işleme, GGX NDF, Schlick Fresnel düşüşünü ve bir Lambx Smit
 
  Azure uzaktan Işlemede kullanılan *Metalness-Kabghize* yönelik PBR modelinin bir alternatifi, *Yansımalı* bir ve daha fazla kullanım PBR modelidir. Bu model, daha geniş bir malzeme aralığını temsil edebilir. Ancak, daha pahalıdır ve genellikle gerçek zamanlı durumlarda iyi çalışmaz.
 ( *Basecolor, Metalness)* öğesine dönüştürülemeyen *(dağıtılmış, yansımalı)* değer çiftleri olduğu Için, *Yansımalı bir ışıldan* *Metalness-kabıya* dönüştürme her zaman mümkün değildir. Tüm *(Basecolor, Metalness)* çiftleri iyi tanımlanmış *(dağıtılmış, yansımalı)* çiftlerine karşılık geldiğinden, diğer yönde dönüştürme daha basit ve daha kesin bir hale gelir.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# pbrmalzemeler sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RemoteManager. Createmalzemesi ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ Pbrmalzemeler sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RemoteManager:: Createmateryal()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

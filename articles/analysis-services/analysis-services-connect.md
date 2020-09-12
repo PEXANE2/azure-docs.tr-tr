@@ -4,16 +4,16 @@ description: Azure 'da bir Analysis Services sunucusuna bağlanmayı ve bu sunuc
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 170cf0081e6671451ece6dc2924ae7e418f520a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506783"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489026"
 ---
 # <a name="connecting-to-servers"></a>Sunuculara bağlanma
 
@@ -76,6 +76,24 @@ Geçerli işlemi çalıştıran Windows hesabını kullanın.
 ## <a name="connect-using-an-odc-file"></a>. Odc dosyası kullanarak bağlanma
 
 Excel 'in daha eski sürümleriyle, kullanıcılar bir Office veri bağlantısı (. odc) dosyası kullanarak bir Azure Analysis Services sunucusuna bağlanabilir. Daha fazla bilgi için bkz. [Office veri bağlantısı (. odc) dosyası oluşturma](analysis-services-odc.md).
+
+## <a name="connect-as-a-linked-server-from-sql-server"></a>SQL Server bağlı sunucu olarak bağlanma
+
+SQL Server, veri kaynağı sağlayıcısı olarak MSOLAP belirterek, bir Azure Analysis Services kaynağına [bağlı sunucu](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) olarak bağlanabilir. Bağlı bir sunucu bağlantısını yapılandırmadan önce, en son [MSOLAP istemci kitaplığını](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (sağlayıcı) yüklediğinizden emin olun. 
+
+Azure Analysis Services bağlı sunucu bağlantıları için, MSOLAP sağlayıcısı SQL Server işleminin dışında oluşturulmalıdır. Bağlı sunucu seçeneklerini yapılandırırken, **InProcess 'e Izin ver** seçeneğinin **Seçili**olmadığından emin olun.
+
+**InProcess 'e Izin ver** seçilirse ve sağlayıcı SQL Server işlemde örneklenmiştir, aşağıdaki hata döndürülür:
+
+```
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The following system error occurred: ".
+
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The connection failed because user credentials are needed and Sign-In UI is not allowed.".
+
+Msg 7303, Level 16, State 1, Line 2
+Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked server "(null)".
+```
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cda4aa9a811bac0ccf20caec32ee38da9b46b6c7
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021390"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613763"
 ---
 # <a name="color-materials"></a>Renk malzemeleri
 
@@ -50,6 +50,13 @@ Aşağıdaki özellikler renk malzemelere özgüdür:
   1. **Alfakarıştırılan:** Bu mod, PBR malzemeleri için saydamlık moduna benzerdir. Cam gibi görme malzemeleri için kullanılmalıdır.
 
   1. **Eklenebilir:** Bu mod, en basit ve en etkili saydamlık modudur. Malzemenin katkısı işlenen görüntüye eklenir. Bu mod, önemli nesneleri vurgulamak için kullanılan işaretçiler gibi ışıanın (ancak hala saydam) nesnelerin benzetimini yapmak için kullanılabilir.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# colormalzemeler sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C# RemoteManager. Createmalzemesi ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ Colormalzemeler sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterial)
+* [C++ RemoteManager:: Createmateryal()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

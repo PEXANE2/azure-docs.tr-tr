@@ -4,13 +4,13 @@ description: Azure Kubernetes Service (AKS) içindeki kullanılabilirlik bölgel
 services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
-ms.date: 08/13/2020
-ms.openlocfilehash: f24351c5f77e6c00365497d5e6deeefea8271cb9
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.date: 09/04/2020
+ms.openlocfilehash: b6162249592bf470c3b8e52686abd44b813d5606
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871420"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489145"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Kullanılabilirlik alanlarını kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma
 
@@ -150,7 +150,8 @@ Name:       aks-nodepool1-28993262-vmss000004
 Artık 1 ve 2. bölgelerde iki ek düğüm vardır. Üç çoğaltmalardan oluşan bir uygulamayı dağıtabilirsiniz. Örnek olarak NGıNX kullanacağız:
 
 ```console
-kubectl run nginx --image=nginx --replicas=3
+kubectl create deployment nginx --image=nginx
+kubectl scale deployment nginx --replicas=3
 ```
 
 Yığınlarınızın çalıştığı düğümleri görüntüleyerek, üç farklı kullanılabilirlik bölgesine karşılık gelen düğümlerde Pod 'nin çalıştığını görürsünüz. Örneğin, `kubectl describe pod | grep -e "^Name:" -e "^Node:"` bir bash kabuğu 'ndaki komutuyla şuna benzer bir çıktı alırsınız:

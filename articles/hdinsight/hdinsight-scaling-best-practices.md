@@ -1,19 +1,19 @@
 ---
 title: Küme boyutlarını ölçeklendirme-Azure HDInsight
 description: Azure HDInsight 'taki iş yükünüzü eşleştirmek için bir Apache Hadoop kümesi esnek ölçeklendirme
-author: ashishthaps
+author: hrasheed-msft
 ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44cfc5b651bdd5dc0d7abee575bd964ad0b603d0
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006459"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505021"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
 
@@ -111,9 +111,9 @@ Veri düğümlerinin sayısını değiştirmenin etkisi, HDInsight tarafından d
 
     Çalışan düğümlerine ölçeklendirdikten sonra `N` , HDInsight aşağıdaki konfigürasyonları otomatik olarak ayarlar ve Hive 'yi yeniden başlatır.
 
-  * Toplam eşzamanlı sorgu sayısı üst sınırı:`hive.server2.tez.sessions.per.default.queue = min(N, 32)`
-  * Hive 'ın LLAP tarafından kullanılan düğüm sayısı:`num_llap_nodes  = N`
-  * Hive LLAP cini çalıştırmak için düğüm sayısı:`num_llap_nodes_for_llap_daemons = N`
+  * Toplam eşzamanlı sorgu sayısı üst sınırı: `hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Hive 'ın LLAP tarafından kullanılan düğüm sayısı: `num_llap_nodes  = N`
+  * Hive LLAP cini çalıştırmak için düğüm sayısı: `num_llap_nodes_for_llap_daemons = N`
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Bir kümenin güvenle ölçeğini azaltma
 

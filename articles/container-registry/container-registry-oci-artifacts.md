@@ -4,14 +4,14 @@ description: Azure 'da özel bir kapsayıcı kayıt defteri kullanarak açık ka
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 08/12/2020
 ms.author: stevelas
-ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371061"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485012"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Azure Container Registry kullanarak bir OCı yapıtı gönderme ve çekme
 
@@ -54,7 +54,7 @@ az acr login --name myregistry
 ```
 
 > [!NOTE]
-> `az acr login`, dosyasında Azure Active Directory belirteç ayarlamak için Docker istemcisini kullanır `docker.config` . Tek tek kimlik doğrulama akışının tamamlanabilmesi için Docker istemcisinin yüklü ve çalışıyor olması gerekir.
+> `az acr login` , dosyasında Azure Active Directory belirteç ayarlamak için Docker istemcisini kullanır `docker.config` . Tek tek kimlik doğrulama akışının tamamlanabilmesi için Docker istemcisinin yüklü ve çalışıyor olması gerekir.
 
 ## <a name="push-an-artifact"></a>Yapıtı gönder
 
@@ -148,6 +148,36 @@ Yapıtı Azure Container Registry 'nizden kaldırmak için [az ACR Repository De
 az acr repository delete \
     --name myregistry \
     --image samples/artifact:1.0
+```
+
+## <a name="example-build-docker-image-from-oci-artifact"></a>Örnek: OCı yapıtınızdan Docker görüntüsü oluşturma
+
+Bir kapsayıcı görüntüsü derlemek için kaynak kodu ve ikili dosyalar, bir Azure Container Registry 'de OCı yapıtları olarak depolanabilir. Bir [ACR görevi](container-registry-tasks-overview.md)için derleme bağlamı olarak bir kaynak yapıtı başvurabilirsiniz. Bu örnek, bir Dockerfile dosyasının bir OCı yapıtı olarak nasıl depolanacağını ve ardından bir kapsayıcı görüntüsü oluşturmak için yapıya nasıl başvurulacağını gösterir.
+
+Örneğin, tek satırlık bir Dockerfile oluşturun:
+
+```bash
+echo "FROM hello-world" > hello-world.dockerfile
+```
+
+Hedef kapsayıcı kayıt defterinde oturum açın.
+
+```azurecli
+az login
+az acr login --name myregistry
+```
+
+Komutunu kullanarak hedef kayıt defterine yeni bir OCı yapıtı oluşturun ve gönderin `oras push` . Bu örnek, yapıt için varsayılan medya türünü ayarlar.
+
+```bash
+oras push myregistry.azurecr.io/hello-world:1.0 hello-world.dockerfile
+```
+
+Yeni yapıyı derleme bağlamı olarak kullanarak Hello-World görüntüsünü oluşturmak için [az ACR Build](/cli/azure/acr#az-acr-build) komutunu çalıştırın:
+
+```azurecli
+az acr build --registry myregistry --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/hello-world:1.0
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

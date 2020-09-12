@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 77964eed6960a79920f359a03c65102ad949a210
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 51d8b740ba1275b23bc17a58284141dce0d48fe0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004672"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300009"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Güvenlik çerçevesi: yetkilendirme | Karşı 
 | Ürün/hizmet | Makale |
@@ -81,7 +81,7 @@ ms.locfileid: "89004672"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -92,7 +92,7 @@ ms.locfileid: "89004672"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -103,7 +103,7 @@ ms.locfileid: "89004672"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -114,7 +114,7 @@ ms.locfileid: "89004672"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -133,7 +133,7 @@ Artık olası bir saldırgan, verileri alma tanımlayıcısı sunucu tarafında 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -144,7 +144,7 @@ Artık olası bir saldırgan, verileri alma tanımlayıcısı sunucu tarafında 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [SQL izinleri hiyerarşisi](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL securables](https://docs.microsoft.com/sql/relational-databases/security/securables) |
@@ -155,7 +155,7 @@ Artık olası bir saldırgan, verileri alma tanımlayıcısı sunucu tarafında 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | SQL Azure, Onprea |
 | **Öznitelikler**              | SQL sürümü-V12, SQL sürümü-MsSQL2016 |
 | **Başvurular**              | [Satır düzeyi güvenliği SQL Server (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
@@ -168,7 +168,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [SQL izinleri hiyerarşisi](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL securables](https://docs.microsoft.com/sql/relational-databases/security/securables) |
@@ -190,7 +190,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Event Hub | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Event Hubs kimlik doğrulaması ve güvenlik modeline genel bakış](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -201,18 +201,18 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Event Hub | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Event Hubs kimlik doğrulaması ve güvenlik modeline genel bakış](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **Adımlar** | Olay Hub 'ına doğrudan erişim veren bir belirteç cihaza verilmemelidir. Yalnızca bir yayımcıya erişim sağlayan cihaz için en az ayrıcalıklı bir belirteç kullanılması, bir standart dışı veya güvenliği aşılmış bir cihaz olup olmadığı tespit etmenize yardımcı olur.|
+| **Adımlar** | Olay Hub 'ına doğrudan erişim veren bir belirteç cihaza verilmemelidir. Yalnızca bir yayımcıya erişim sağlayan cihaz için en az ayrıcalıklı bir belirteç kullanılması, bir standart dışı veya güvenliği aşılmış bir cihaz gibi bulunursa, bu aygıtın belirlenmesine ve izin vermemesine yardımcı olur.|
 
 ## <a name="connect-to-event-hub-using-sas-keys-that-have-the-minimum-permissions-required"></a><a id="sas-minimum-permissions"></a>Minimum izinleri olması gereken SAS anahtarlarını kullanarak Olay Hub 'ına bağlanma
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Event Hub | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Event Hubs kimlik doğrulaması ve güvenlik modeline genel bakış](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -223,7 +223,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure belge DB | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -234,7 +234,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Güven sınırı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanın](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)  |
@@ -256,7 +256,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Dynamics CRM | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -267,7 +267,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Dynamics CRM portalı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -278,7 +278,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Storage | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | StorageType-Table |
 | **Başvurular**              | [SAS kullanarak Azure Depolama hesabınızdaki nesnelere erişim yetkisi verme](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
@@ -289,7 +289,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Storage | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Rol tabanlı Access Control (RBAC) ile depolama hesabınızı güvenli hale getirme](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
@@ -300,7 +300,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Mobil Istemci | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -311,7 +311,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel, NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
@@ -348,7 +348,7 @@ Tam nitelikli (tanımlayıcı) adların kullanılması, bir türü benzersiz bir
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel, NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
@@ -396,7 +396,7 @@ return result;
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel, MVC5 |
 | **Öznitelikler**              | Yok, kimlik sağlayıcısı-ADFS, kimlik sağlayıcısı-Azure AD |
 | **Başvurular**              | [ASP.NET Web API 'sinde kimlik doğrulama ve yetkilendirme](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
@@ -447,7 +447,7 @@ public class CustomController : ApiController
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT cihazı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -458,7 +458,7 @@ public class CustomController : ApiController
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT alan ağ geçidi | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |

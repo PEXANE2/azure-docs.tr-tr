@@ -1,6 +1,6 @@
 ---
-title: Azure RTOS desteği
-description: IoT hizmeti için Azure Güvenlik Merkezi 'nde Azure RTOS desteği hakkında bilgi edinin.
+title: Azure RTOS için güvenlik modülü genel bakış
+description: IoT hizmeti için Azure Güvenlik Merkezi 'nin bir parçası olarak Azure RTOS desteği ve uygulama için güvenlik modülü hakkında daha fazla bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/15/2020
+ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: af4579d25b94fc12f67cfc91d0f6a5af4b35c810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bcf98f503b0f0c8bf76435d9884297d5f53d65e6
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099750"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514484"
 ---
-# <a name="azure-security-center-for-iot-security-solution-for-azure-rtos"></a>Azure RTOS için IoT güvenlik çözümü için Azure Güvenlik Merkezi 
+# <a name="overview-security-module-for-azure-rtos-preview"></a>Genel Bakış: Azure RTOS için güvenlik modülü (Önizleme)
 
-IoT güvenlik modülü için Azure Güvenlik Merkezi, Azure RTOS cihazları için kapsamlı bir güvenlik çözümü sağlar. Azure RTOS, gerçek zamanlı işletim sistemi cihazlarındaki yaygın tehditleri ele alan yerleşik bir güvenlik modülüyle birlikte dağıtılır. 
+IoT RTOS güvenlik modülü için Azure Güvenlik Merkezi, Azure RTOS cihazları için kapsamlı bir güvenlik çözümü sağlar. Azure RTOS artık yerleşik Azure IoT güvenlik modülü ile birlikte gelir ve gerçek zamanlı işletim sistemi cihazlarındaki yaygın tehditler ve potansiyel kötü amaçlı etkinlikler için kapsam sağlar. 
 
 ![IoT Azure RTOS için Azure Güvenlik Merkezi](./media/architecture/azure-rtos-security-monitoring.png)
 
 
-Azure RTOS desteğiyle IoT güvenlik modülü için Azure Güvenlik Merkezi aşağıdaki özellikleri sunar: 
+Azure RTOS için güvenlik modülü aşağıdaki özellikleri sunar: 
 - Kötü amaçlı ağ etkinliği algılama
 - Özel uyarı tabanlı, cihaz davranışı taban çizgisi
 - Cihaz güvenliğini iyileştirme durumu
@@ -47,16 +47,14 @@ IoT için Azure Güvenlik Merkezi 'nin önerilen altyapısından yararlanarak, o
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Azure RTOS cihazlarını korumaya başlama
 
-- Azure RTOS için IoT güvenlik modülü için Azure Güvenlik Merkezi, cihazlarınız için ücretsiz bir indirme olarak sunulmaktadır. IoT bulut hizmeti için Azure Güvenlik Merkezi, Azure aboneliği başına 30 günlük deneme sürümü ile kullanılabilir. Kullanmaya başlamak için [Azure RTOS Için IoT güvenlik modülünü Azure Güvenlik Merkezi](https://github.com/azure-rtos/iot-security-module-preview) ' ni indirin. 
+Azure RTOS için güvenlik modülü, cihazlarınız için ücretsiz bir indirme olarak sunulmaktadır. IoT bulut hizmeti için Azure Güvenlik Merkezi, Azure aboneliği başına 30 günlük deneme sürümü ile kullanılabilir. Başlamak için [Azure RTOS güvenlik modülünü](https://github.com/azure-rtos/iot-security-module-preview) indirin. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede IoT Azure RTOS desteği için Azure Güvenlik Merkezi hakkında bilgi edindiniz. IoT Hub 'de Güvenlik çözümünüzü kullanmaya başlamanızı ve etkinleştirmeyi öğrenmek için aşağıdaki makalelere bakın:
+Bu makalede, Azure RTOS hizmeti için güvenlik modülü hakkında bilgi edindiniz. Güvenlik modülü hakkında daha fazla bilgi edinmek ve kullanmaya başlamak için aşağıdaki makalelere bakın:
 
-- [Hizmet önkoşulları](service-prerequisites.md)
-- [Başlarken](getting-started.md)
-- [Çözümünüzü yapılandırma](quickstart-configure-your-solution.md)
-- [IoT Hub güvenliği etkinleştir](quickstart-onboard-iot-hub.md)
-- [IoT için Azure Güvenlik Merkezi SSS](resources-frequently-asked-questions.md)
-- [IoT için Azure Güvenlik Merkezi güvenlik uyarıları](concept-security-alerts.md)
+- [Azure RTOS IoT güvenlik modülü kavramları](concept-rtos-security-module.md)
+- [Hızlı başlangıç: Azure RTOS IoT güvenlik modülü](quickstart-azure-rtos-security-module.md)
+
+

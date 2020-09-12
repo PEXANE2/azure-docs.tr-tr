@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 16fba1f036299a84db8301dbc09c7f4884d985f3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9fa0fbea9a6c0e95eb9bec2795ae12e5fae36bfb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305100"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568669"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Tanılama uzantısı (WAD) yapılandırma şeması sürümleri ve geçmişi
 Bu makalede, Microsoft Azure SDK 'sının bir parçası olarak gönderilen [Windows (WAD) şema sürümlerinin Azure tanılama uzantısının](diagnostics-extension-overview.md) sürüm geçmişi sağlanmaktadır.  
@@ -19,10 +19,10 @@ Bu makalede, Microsoft Azure SDK 'sının bir parçası olarak gönderilen [Wind
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK ve tanılama sürümleri sevkiyat grafiği  
 
-|Azure SDK sürümü | Tanılama uzantısı sürümü | Model|  
+|Azure SDK sürümü | Tanılama uzantısı sürümü | Modelleme|  
 |------------------|-------------------------------|------|  
-|'in               |1,0                            |eklenti|  
-|2,0-2,4         |1,0                            |eklenti|  
+|'in               |1.0                            |eklenti|  
+|2,0-2,4         |1.0                            |eklenti|  
 |2.5               |1.2                            |uzantı|  
 |2,6               |1.3                            |"|  
 |2.7               |1.4                            |"|  

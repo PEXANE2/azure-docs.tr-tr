@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee6945cec4c2441334e665947568743aaf29226
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ebde1be459078f4f3473ebc3042d8acebcce910a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013597"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613740"
 ---
 # <a name="debug-rendering"></a>İşleme Hatalarını Ayıklama
 
@@ -64,7 +64,7 @@ void EnableDebugRenderingEffects(ApiHandle<AzureSession> session, bool highlight
 > [!NOTE]
 > Tüm hata ayıklama işleme etkileri tüm çerçeveyi etkileyen genel ayarlardır.
 
-## <a name="use-cases"></a>Uygulama alanları
+## <a name="use-cases"></a>Kullanım örnekleri
 
 Hata ayıklama işleme API 'si, hizmet bağlantısının gerçekten doğru şekilde çalıştığını doğrulamak gibi basit hata ayıklama görevlerine yöneliktir. Metin işleme seçenekleri, doğrudan akışlı video çerçevelerini doğrudan etkiler. Bunları etkinleştirmek, yeni çerçevelerin alınıp doğru şekilde yeniden çözülerek doğrular.
 
@@ -74,6 +74,10 @@ Ancak, sunulan efektler hiçbir ayrıntılı iç denetim hizmet durumu 'na verme
 
 * Metin Yerpaylaşımları etkinleştirildiğinde performans yükü yoktur.
 * Tel kafes modunun etkinleştirilmesi, sahneye bağlı olarak değişebileceğinden, önemsiz olmayan bir performans yükü doğurur. Karmaşık sahneler için bu mod, çerçeve hızının 60-Hz hedefinin altına alınmasına neden olabilir.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C++ RemoteManager::D ebugRenderingSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#debugrenderingsettings)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

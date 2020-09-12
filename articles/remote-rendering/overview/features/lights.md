@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ddce7e2f073914e9393eabf12e8b0f4ef347828
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022155"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613648"
 ---
 # <a name="scene-lighting"></a>Sahne aydınlatması
 
@@ -69,6 +69,17 @@ Ek özellik yok.
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
 Hafif kaynakların işleme performansı üzerinde önemli bir etkisi vardır. Bunları dikkatle ve yalnızca uygulama için gerekliyse kullanın. Statik yönlü bir bileşen dahil olmak üzere herhangi bir statik küresel aydınlatma koşulu, ek işleme maliyeti olmadan [özel bir gök dokusuyla](sky.md)elde edilebilir.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# LightComponentBase sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
+* [C# PointLightComponent sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
+* [C# SpotLightComponent sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
+* [C# DirectionalLightComponent sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
+* [C++ LightComponentBase sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/lightcomponentbase)
+* [C++ PointLightComponent sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/pointlightcomponent)
+* [C++ SpotLightComponent sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/spotlightcomponent)
+* [C++ DirectionalLightComponent sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/directionallightcomponent)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

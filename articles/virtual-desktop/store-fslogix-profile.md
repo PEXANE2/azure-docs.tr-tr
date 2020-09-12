@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4702c68dcda0c794aef34d3c0675e2fd158e6d4f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0b1a5e36232e74caa34037efbbb0da0c39051998
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009418"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568702"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki FSLogix profil kapsayıcıları için depolama seçenekleri
 
@@ -29,7 +29,7 @@ Aşağıdaki tablolar, Windows sanal masaüstü FSLogix profil kapsayıcısı Ku
 |Platform hizmeti|Evet, Azure-Native çözümü|Evet, Azure-Native çözümü|Hayır, otomatik olarak yönetilen|
 |Bölgesel kullanılabilirlik|Tüm bölgeler|[Bölge seçin](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Tüm bölgeler|
 |Yedeklilik|Yerel olarak yedekli/bölge-yedekli/coğrafi olarak yedekli|Yerel olarak yedekli|Yerel olarak yedekli/bölge-yedekli/coğrafi olarak yedekli|
-|Katmanlar ve performans|Standart<br>Premium<br>Paylaşma başına 5 Gbps ile, paylaşma başına en fazla 100.000 IOPS, yaklaşık 3 ms gecikme|Standart<br>Premium<br>Çok<br>Yaklaşık 1 ms gecikme süresi içinde birim başına 4,5 GB/sn 'ye kadar 320 KB (16K) ıOPS|Standart HDD: disk başına en çok 500 ıOPS<br>Standart SSD: disk başına en fazla 4k ıOPS<br>Premium SSD: disk başına en fazla 20.000 IOPS sınırı<br>Depolama Alanları Doğrudan için Premium diskler öneriyoruz|
+|Katmanlar ve performans|Standart<br>Premium<br>Paylaşma başına 5 Gbps ile, paylaşma başına en fazla 100.000 IOPS, yaklaşık 3 ms gecikme|Standart<br>Premium<br>Ultra<br>Yaklaşık 1 ms gecikme süresi içinde birim başına 4,5 GB/sn 'ye kadar 320 KB (16K) ıOPS|Standart HDD: disk başına en çok 500 ıOPS<br>Standart SSD: disk başına en fazla 4k ıOPS<br>Premium SSD: disk başına en fazla 20.000 IOPS sınırı<br>Depolama Alanları Doğrudan için Premium diskler öneriyoruz|
 |Kapasite|paylaşma başına 100 TiB|Her birim için 100 TiB, abonelik başına en fazla 12,5 PiB|Disk başına en fazla 32 TiB|
 |Gerekli altyapı|En az paylaşma boyutu 1 GiB|Minimum kapasite havuzu 4 TiB, minimum birim boyutu 100 GiB|Azure IaaS (+ Cloud tanık) üzerinde iki VM veya disk 'siz ve maliyeti olan en az üç VM|
 |Protokoller|SMB 2.1/3. ve REST|NFSv3, NFSv 4.1 (Önizleme), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
@@ -51,7 +51,7 @@ FSLogix profil kapsayıcıları, Kullanıcı profili diskleri ve diğer Kullanı
 
 Kendi FSLogix profil Kapsayıcılarınızı oluşturmaya hazırsanız, şu öğreticilerden birini kullanmaya başlayın:
 
-- [Windows sanal masaüstündeki Azure dosyalarında FSLogix profil kapsayıcılarıyla çalışmaya başlama](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-FSLogix-profile-containers-on-Azure-Files/ba-p/746477)
+- [Windows sanal masaüstündeki Azure dosyalarında FSLogix profil kapsayıcılarıyla çalışmaya başlama](create-file-share.md)
 - [Azure NetApp dosyalarını kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma](create-fslogix-profile-container.md)
 - [Azure 'DA UPD depolama için iki düğümlü depolama alanları doğrudan genişleme dosya sunucusu dağıtma](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) ' daki yönergeler, bir kullanıcı profili diski yerine FSLogix profil kapsayıcısını kullandığınızda da geçerlidir.
 

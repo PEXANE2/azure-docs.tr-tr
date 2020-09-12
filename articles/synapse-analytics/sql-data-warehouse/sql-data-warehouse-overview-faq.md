@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3ee3f729e1e2f03d7c72a72081ad2e3f0316cbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482539"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462658"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular
 
@@ -27,7 +27,7 @@ A. Azure SYNAPSE, veri depolama ve büyük veri analizlerini birlikte getiren bi
 
 S. Azure SQL veri ambarı 'na ne oldu?
 
-A. Azure SYNAPSE, Azure SQL veri ambarı (SQL DW) gelişmiştir. Sektörde önde gelen veri ambarını, yeni bir performans ve özellik düzeyiyle gerçekleştirdik. Mevcut veri ambarı iş yüklerinizi Azure SYNAPSE ile üretimde çalıştırmaya devam edebilirsiniz. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir?](sql-data-warehouse-overview-what-is.md).
+A. Azure SYNAPSE, Azure SQL veri ambarı 'nın gelişmiştir. Sektörde önde gelen veri ambarını, yeni bir performans ve özellik düzeyiyle gerçekleştirdik. Mevcut veri ambarı iş yüklerinizi Azure SYNAPSE ile üretimde çalıştırmaya devam edebilirsiniz. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir?](sql-data-warehouse-overview-what-is.md).
 
 S. SYNAPSE SQL havuzu nedir?
 
@@ -75,7 +75,7 @@ A. [Destek biletleri](sql-data-warehouse-get-started-create-support-ticket.md) ,
 
 S. Hangi veri türleri destekleniyor?
 
-A. Bkz. [veri türleri](sql-data-warehouse-tables-data-types.md).
+A. Bkz.  [veri türleri](sql-data-warehouse-tables-data-types.md).
 
 S. Hangi tablo özelliklerini destekliyoruz?
 

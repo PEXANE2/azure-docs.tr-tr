@@ -6,24 +6,24 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 07/30/2020
-ms.openlocfilehash: 4a27ace4e45d00a2fbb35b9e0e3e9b7c03383681
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.date: 09/04/2020
+ms.openlocfilehash: 7acfd5e1a1b1c44a9a109bb2b8bc38c7fcc57593
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705886"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484876"
 ---
 # <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleme
 
 Teklifiniz için seçtiğiniz yayımlama seçeneği, doğrudan uygunluk gereksinimlerine ve ticari Market GTM avantajlarına yöneliktir. Daha önemlisi, yayımlama seçeneği ve teklif türü seçimi, kullanıcıların ticari Market teklifinizle nasıl etkileşime gireceğini tanımlar.
 
-Teklifinizi yapılandırmak için aşağıdaki temel ticari Market kavramlarını anlamanız gerekir: Yayımlama seçenekleri, teklif türleri ve yapılandırma ve teklifinizin ticari Market çevrimiçi mağazalarında nasıl ve nerede sunulduğunu belirleyen, eylem çağrıları.
+Teklifinizi yapılandırmak için aşağıdaki temel ticari Market kavramlarını anlamanız gerekir: Yayımlama seçenekleri, teklif türleri ve yapılandırma ve teklifinizin ticari Market online mağazalarında nasıl ve nerede sunulduğunu belirleyen listeleme seçenekleri.
 
 Bu makalede aşağıdakileri öğreneceksiniz:
 
 - Çözümünüz için uygun çevrimiçi mağazayı belirleme.
-- Her çevrimiçi mağazada hangi yayımlama seçenekleri ve yapılacak işlem çağrıları vardır.
+- Her çevrimiçi mağazada hangi yayımlama seçenekleri ve listeleme seçenekleri bulunur.
 - Her yayımlama seçeneği için hangi teklif türleri kullanılabilir.
 
 ## <a name="commercial-marketplace-publishing-options"></a>Ticari Market Yayımlama seçenekleri
@@ -53,37 +53,37 @@ Mevcut olan liste seçenekleri, müşteri adayı paylaşma ve [ticari Market ava
 
 | **Yayımlama seçeneği**    | **Açıklama**  |
 | :------------------- | :-------------------|
-| **Liste** | Uygulama veya hizmetinizin, bir ticari Market kullanıcısına **Ilgili kişi** eylemi çağrısı yoluyla müşteriyle bağlantı kurma isteğinde bulunan basit listesi. |
-| **Deneme** | Ticari Market 'i kullanarak, çözümünüzün deneme deneyiminizin sağlamasını geliştirin ve bu sayede, olası kullanıcıların satın alınmadan önce sınırlı bir süre boyunca SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmasına olanak sağlar. Deneme yayımlama seçeneği için kullanılan çağrı eylemi, **ücretsiz deneme** veya **test sürücüsü**olabilir. |
-| **KLG** | Keşfedilebilirliğini geliştirmek ve çözümünüzün sağlamasını otomatik hale getirmek için ticari Market 'i kullanın ve mali işlemi ayrı olarak doldurun. KLG teklif türleri şirket içinde bulut geçişleri için idealdir. Eyleme çağrı **Şimdi**alınır.
-| **İşlem** | Transact teklifleri ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Eyleme çağrı **Şimdi**alınır.|
+| **Liste** | Uygulama veya hizmetinizin, bir ticari Market kullanıcısına **Ilgili kişi** listeleme seçenekleri aracılığıyla müşteriye bağlanmanızı istemesini sağlayan basit listesi. |
+| **Deneme** | Ticari Market 'i kullanarak, çözümünüzün deneme deneyiminizin sağlamasını geliştirin ve bu sayede, olası kullanıcıların satın alınmadan önce sınırlı bir süre boyunca SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmasına olanak sağlar. Deneme yayımlama seçeneği için kullanılan liste seçenekleri, **ücretsiz deneme** veya **Test sürüşdir**. |
+| **KLG** | Keşfedilebilirliğini geliştirmek ve çözümünüzün sağlamasını otomatik hale getirmek için ticari Market 'i kullanın ve mali işlemi ayrı olarak doldurun. KLG teklif türleri şirket içinde bulut geçişleri için idealdir. Listeleme seçeneği **Şimdi alınır**.
+| **İşlem** | Transact teklifleri ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Listeleme seçeneği **Şimdi alınır**.|
 
 > [!Note]
 > Transact Publishing seçeneğini kullanırken, bir teklif türü seçmeden ve teklifinizi oluşturmadan önce fiyatlandırma, faturalandırma, faturalama ve ödeme konularını anlamak önemlidir. Daha fazla bilgi edinmek için [ticari Market Transact özellikleri](./marketplace-commercial-transaction-capabilities-and-considerations.md)makalesine bakın.
 
 ## <a name="selecting-an-online-store"></a>Çevrimiçi mağaza seçme
 
-Her çevrimiçi mağaza, benzersiz müşteri gereksinimlerine ve belirli hedef kitlelere sahip olacak. Teklif türü, Transact özellikleri ve kategorili, teklifinizin nerede yayımlanacağını saptacaktır. Kategoriler ve alt kategoriler, hedef kitle temelinde her bir çevrimiçi depoya eşlenir:
+Her çevrimiçi mağaza, iş ve BT çözümleri için farklı müşteri gereksinimlerine hizmet eder. Teklif türü, Transact özellikleri ve kategorili, teklifinizin nerede yayımlanacağını saptacaktır. Kategoriler ve alt kategoriler, yayımladığınız çözüm türüne göre her bir çevrimiçi mağazaya eşlenir:
 
-**Microsoft AppSource** , Dynamics 365, Microsoft 365 ve güç platformu için iş kolu veya sektör çözümleri ve danışmanlık hizmetleri arayan iş kullanıcılarını hedefler.
+**Microsoft AppSource** , Dynamics 365, Microsoft 365 ve güç platformu için sektör çözümleri ve danışmanlık hizmetleri gibi iş çözümleri sunar.
 
-Azure **marketi** , BT uzmanlarına ve geliştiricilere Azure 'un kullanımını hızlandırmaya yönelik danışmanlık hizmetleri ve Azure için oluşturulmuş çözümler arayan BT uzmanlarına ve geliştiricilere yöneliktir.
+Azure **marketi** , Azure 'Da veya Azure 'DA oluşturulan BT çözümlerini ve müşterilerinizin Azure kullanımını hızlandıran danışmanlık hizmetlerini sunar.
 
-Hedef kitlenize en uygun kategoriyi ve alt kategorisini seçin. Örneğin, Web uygulaması güvenlik duvarı, hedeflenen hedef kitle BT uzmanları olduğu için güvenlik kategorisi altında Azure Marketi 'Nde yayımlanmalıdır. Hedeflenen hedef kitle iş kullanıcıları olduğundan, bir sözleşme yönetimi uygulamasının satış kategorisi altında AppSource 'a yayımlanması gerekir. Yanlış kategori veya alt kategori seçilmesi, teklifinizin yanlış çevrimiçi mağazaya yayımlanmasına neden olabilir.
+Çözüm türü ile en uygun kategoriyi ve alt kategorisini seçin. Örneğin, bir Web uygulaması güvenlik duvarı, güvenlik kategorisi altında Azure Marketi 'ne yayımlanması gereken bir BT çözümüdür. Bir sözleşme yönetimi uygulaması, satış kategorisi altında AppSource 'a yayımlanması gereken bir iş çözümüdür. Yanlış kategori veya alt kategori seçilmesi, teklifinizin yanlış çevrimiçi mağazaya yayımlanmasına neden olabilir.
 
 ### <a name="publishing-to-both-online-stores-saas-offers-only"></a>Çevrimiçi mağazalara yayımlama (yalnızca SaaS teklifleri)
 
-SaaS teklifleri, Azure Market veya AppSource 'ta yayımlanabilir. SaaS teklifiniz hem teknik bir hedef kitle (Azure Marketi) hem *de* iş kitlesi (appsource) için tasarlanıyorsa, her çevrimiçi mağaza için geçerli bir kategori ve/veya alt kategori seçin. Her iki çevrimiçi mağaza için yayımlanan teklifler, BT uzmanlarına *ve* iş kullanıcılarına genişleyen bir değer teklifi içermelidir.
+SaaS teklifleri, Azure Market veya AppSource 'ta yayımlanabilir. SaaS teklifiniz hem BT çözümü (Azure Marketi) hem *de* bir iş çözümü (appsource) ise, her çevrimiçi mağaza için geçerli bir kategori ve/veya alt kategori seçin. Her iki çevrimiçi mağaza için yayımlanan teklifler, BT çözümü *ve* iş çözümü olarak bir değer teklifi içermelidir.
 
 > [!IMPORTANT]
-> Tarifeli faturalandırma ile SaaS teklifleri, Azure Marketi ve Azure portal aracılığıyla kullanılabilir. Yalnızca özel planlara sahip SaaS teklifleri Azure portal aracılığıyla kullanılabilir.
+> [Tarifeli faturalandırma](partner-center-portal/saas-metered-billing.md) ile SaaS teklifleri, Azure marketi ve Azure Portal aracılığıyla kullanılabilir. Yalnızca özel planlara sahip SaaS teklifleri Azure portal aracılığıyla kullanılabilir.
 
 | Ölçülen faturalandırma | Ortak plan | Özel plan | Kullanılabilir: |
 |---|---|---|---|
-| Evet             | Evet         | Hayır           | Azure Marketi ve Azure portal |
-| Evet             | Evet         | Evet          | Azure Marketi ve Azure portal * |
-| Evet             | Hayır          | Evet          | Yalnızca Azure portal |
-| Hayır              | Hayır          | Evet          | Yalnızca Azure portal |
+| Yes             | Yes         | Hayır           | Azure Marketi ve Azure portal |
+| Yes             | Yes         | Yes          | Azure Marketi ve Azure portal * |
+| Yes             | Hayır          | Yes          | Yalnızca Azure portal |
+| Hayır              | Hayır          | Yes          | Yalnızca Azure portal |
 
 &#42; teklifin özel planı yalnızca Azure portal ile kullanılabilir
 
@@ -91,15 +91,13 @@ SaaS teklifleri, Azure Market veya AppSource 'ta yayımlanabilir. SaaS teklifini
 
 ### <a name="categories"></a>Kategoriler
 
-Kategoriler ve alt kategoriler, hedef kitle temelinde her bir çevrimiçi depoya eşlenir. Teklifinizi ve hedeflenen kitleyi en iyi şekilde hizalamanızı sağlayan kategorileri ve alt kategorileri seçin. Şunları seçebilirsiniz:
+Kategoriler ve alt kategoriler, çözüm türüne göre her bir çevrimiçi mağazaya eşlenir. Çözümünüze en iyi şekilde uyum sağlayan kategorileri ve alt kategorileri seçin. Şunları seçebilirsiniz:
 
-- En az bir ve en fazla iki kategori. Birincil ve ikincil kategori seçme seçeneğiniz vardır.
+- En az bir ve en fazla iki kategori. Birincil ve ikincil bir kategori seçebilirsiniz.
 - Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Herhangi bir alt kategori seçmezseniz, teklifiniz seçili kategori altında keşfedilebilir olmaya devam eder.
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir yayımlama seçeneğine karar verdikten sonra, teklifinizi sunmak için kullanılacak [teklif türünü seçmek](./publisher-guide-by-offer-type.md) için hazır olursunuz.
-- Teklifinizin seçimini ve yapılandırmasını tamamlamak için teklif türüne göre yayımlama seçeneklerinde uygunluk gereksinimlerini gözden geçirin.
-- Çözümünüzün bir teklif türü ve yapılandırmaya nasıl eşlendiğini gösteren örnekler için çevrimiçi mağazaya göre yayımlama düzenlerini gözden geçirin.
+- Bir yayımlama seçeneğine karar verdikten sonra, [teklif türüne göre yayımlama kılavuzunu](./publisher-guide-by-offer-type.md)gözden geçirin.

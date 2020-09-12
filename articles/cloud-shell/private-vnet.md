@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114668"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468547"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Azure sanal ağına Cloud Shell dağıtma
 > [!NOTE]
@@ -52,7 +52,7 @@ Seçilen sanal ağ içinde, Cloud Shell kapsayıcılar için adanmış bir alt a
 Ağ profili, Azure kaynakları için kaynak için belirli ağ özelliklerini belirten bir ağ yapılandırması şablonudur.
 
 ### <a name="azure-relay"></a>Azure Geçişi
-[Azure Relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) , iletişim kuracak şekilde doğrudan erişilebilen iki uç noktaya izin verir. Bu durumda, yöneticinin tarayıcısının özel ağdaki kapsayıcıya iletişim kurmasına izin vermek için kullanılır.
+[Azure Relay](../azure-relay/relay-what-is-it.md) , iletişim kuracak şekilde doğrudan erişilebilen iki uç noktaya izin verir. Bu durumda, yöneticinin tarayıcısının özel ağdaki kapsayıcıya iletişim kurmasına izin vermek için kullanılır.
 
 Cloud Shell için kullanılan Azure Relay örneği, hangi ağların kapsayıcı kaynaklarına erişebileceğini denetlemek için yapılandırılabilir: 
 - Genel internet 'ten erişilebilir: Bu yapılandırmada, Cloud Shell dışında iç kaynaklara ulaşmak için bir yol sağlar. 
@@ -66,7 +66,7 @@ Standart Cloud Shell itibariyle, bir sanal ağda Cloud Shell kullanılırken bir
 
 * Önizleme sırasında, bir sanal ağda Cloud Shell için daha az bölge desteklenir. Bu şu anda şu şekilde sınırlıdır: WestUS ve WestCentralUS.
 
-* [Azure Relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) ücretsiz bir hizmet değil, lütfen [fiyatlandırmasını](https://azure.microsoft.com/pricing/details/service-bus/)görüntüleyin. Cloud Shell senaryosunda, her yönetici için Cloud Shell kullanılırken bir karma bağlantı kullanılır. Cloud Shell oturumu tamamlandıktan sonra bağlantı otomatik olarak kapatılacak.
+* [Azure Relay](../azure-relay/relay-what-is-it.md) ücretsiz bir hizmet değil, lütfen [fiyatlandırmasını](https://azure.microsoft.com/pricing/details/service-bus/)görüntüleyin. Cloud Shell senaryosunda, her yönetici için Cloud Shell kullanılırken bir karma bağlantı kullanılır. Cloud Shell oturumu tamamlandıktan sonra bağlantı otomatik olarak kapatılacak.
 
 ## <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
 
@@ -114,4 +114,4 @@ Cloud Shell bağlantı kurmak için ilk çalıştırma deneyimiyle karşılaşac
 ![Cloud Shell yalıtılmış VNET ilk deneyim ayarlarını gösterir.](media/private-vnet/vnet-settings.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure sanal ağları hakkında bilgi edinin](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+[Azure sanal ağları hakkında bilgi edinin](../virtual-network/virtual-networks-overview.md)

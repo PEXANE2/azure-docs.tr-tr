@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d9200b66d51292271f546eb111f3355649318b91
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254381"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462726"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>Kubectl 'yi, Azure Stack Edge cihazınızda bir PersistentVolume ile bir Kubernetes durum bilgisi olan uygulama çalıştırmak için kullanın
 
@@ -55,7 +55,10 @@ Azure Stack Edge cihazınızda durum bilgisi olan bir uygulamayı dağıtmaya ha
 
 ## <a name="provision-a-static-pv"></a>Statik BD sağlama
 
-Statik olarak bir BD sağlamak için cihazınızda bir paylaşma oluşturmanız gerekir. SMB veya NFS paylaşımınızda bir BD sağlamak için bu adımları izleyin. 
+Statik olarak bir BD sağlamak için cihazınızda bir paylaşma oluşturmanız gerekir. SMB paylaşımınızda bir BD sağlamak için bu adımları izleyin. 
+
+> [!NOTE]
+> Bu nasıl yapılır makalesinde kullanılan belirli örnek NFS paylaşımları ile çalışmaz. Genellikle, NFS paylaşımları, veritabanı olmayan uygulamalarla Azure Stack Edge cihazınızda sağlanabilir.
 
 1. Kenar paylaşma veya kenar yerel paylaşma oluşturmak isteyip istemediğinizi seçin. Paylaşma oluşturmak için [paylaşma ekleme](azure-stack-edge-manage-shares.md#add-a-share) bölümündeki yönergeleri izleyin. **Edge COMPUTE ile paylaşma kullan**onay kutusunu seçtiğinizden emin olun.
 
@@ -71,7 +74,7 @@ Statik olarak bir BD sağlamak için cihazınızda bir paylaşma oluşturmanız 
 
         ![BD için var olan yerel paylaşıma bağlama](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-2.png)
 
-1. Paylaşma adını bir yere getirin. Bu paylaşma oluşturulduğunda, oluşturduğunuz SMB veya NFS paylaşımıyla ilgili Kubernetes kümesinde otomatik olarak kalıcı bir birim nesnesi oluşturulur. 
+1. Paylaşma adını bir yere getirin. Bu paylaşma oluşturulduğunda, oluşturduğunuz SMB paylaşımıyla ilgili Kubernetes kümesinde otomatik olarak kalıcı bir birim nesnesi oluşturulur. 
 
 ## <a name="deploy-mysql"></a>MySQL dağıtma
 
@@ -147,7 +150,7 @@ Artık bir Kubernetes dağıtımı oluşturarak ve onu bir PersistentVolumeClaim
               claimName: mysql-pv-claim
     ```
     
-2. ' İ kaydettiğiniz klasöre bir dosya olarak kopyalayın ve kaydedin `mysql-pv.yml` `mysql-deployment.yml` . Daha önce oluşturduğunuz SMB veya NFS paylaşımından kullanmak için `kubectl` , `volumeName` PVC nesnesindeki alanı paylaşımın adına ayarlayın. 
+2. ' İ kaydettiğiniz klasöre bir dosya olarak kopyalayın ve kaydedin `mysql-pv.yml` `mysql-deployment.yml` . Daha önce oluşturduğunuz SMB payını kullanmak için `kubectl` , `volumeName` PVC nesnesindeki alanı paylaşımın adına ayarlayın. 
 
     > [!NOTE] 
     > YAML dosyalarının doğru girintide bulunduğundan emin olun. Doğrulamak ve sonra kaydetmek için [YAML Lint](http://www.yamllint.com/) ile kontrol yapabilirsiniz.
@@ -158,8 +161,8 @@ Artık bir Kubernetes dağıtımı oluşturarak ve onu bir PersistentVolumeClaim
     metadata:
       name: mysql-pv-claim
     spec:
-      volumeName: <nfs-or-smb-share-name-here>
-      storageClassName: manual
+      volumeName: <smb-share-name-here>
+      storageClassName: ""
       accessModes:
         - ReadWriteOnce
       resources:
@@ -289,7 +292,6 @@ Artık bir Kubernetes dağıtımı oluşturarak ve onu bir PersistentVolumeClaim
 
 ## <a name="verify-mysql-is-running"></a>MySQL 'in çalıştığını doğrula
 
-Önceki YAML dosyası, kümede Pod 'un veritabanına erişmesine imkan tanıyan bir hizmet oluşturur. ClusterIP: None hizmet seçeneği, hizmet DNS adının Pod 'un IP adresine doğrudan çözümlenmelerini sağlar. Bu, bir hizmetin arkasında yalnızca bir pod varsa ve pods sayısını artırmayı düşünmüyorsanız idealdir.
 
 MySQL çalıştıran bir pod içindeki bir kapsayıcıya karşı bir komut çalıştırmak için şunu yazın:
 
@@ -339,7 +341,7 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```                                                                                         
 
-PVC silindiği için BD artık PVC 'ye bağlanmadı. Bu, paylaşımın oluşturulduğu sırada sağlandığı için, bu paylaşımın silinmesi gerekir. Şu adımları uygulayın:
+PVC silindiği için BD artık PVC 'ye bağlanmadı. Bu, paylaşımın oluşturulduğu sırada sağlandığı için, bu paylaşımın silinmesi gerekir. Şu adımları izleyin:
 
 1. Paylaşımdan çıkarın. Azure portal, **Azure Stack Edge kaynak > paylaşımlarına** gidin ve çıkarmak istediğiniz paylaşımı seçin ve tıklayın. Çıkar **' ı** seçin ve işlemi onaylayın. Paylaşımın çıkarılana kadar bekleyin. Takma kaldırma, Kubernetes kümesinden paylaşımın (ve dolayısıyla ilişkili PersistentVolume) payını yayınlar. 
 

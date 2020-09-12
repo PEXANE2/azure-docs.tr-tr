@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 84a1e2edcbe9e9da93a158ebc11e7bf638dae100
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636135"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462743"
 ---
 # <a name="speech-service-for-telephony-data"></a>Telefon verileri için konuşma hizmeti
 
@@ -60,7 +60,7 @@ Bir destek çağrısının yüzde 35 ' unun, konuşmasız bir süre arayabiliriz
 
 ### <a name="translation"></a>Çeviri
 
-Bazı şirketler, dağıtım yöneticilerinin müşterilerinin dünya çapında deneyimlerini anlayabilmesi için yabancı dil destek çağrılarından çevrilmiş yazılı betikler sağlamaya devam eder. [Çeviri](translation.md) olanaklarımız unsurpassed. Çok sayıda yerel ayar için ses-ses veya ses-metin çevirisi yapabilirsiniz.
+Bazı şirketler, dağıtım yöneticilerinin müşterilerinin dünya çapında deneyimlerini anlayabilmesi için yabancı dil destek çağrılarından çevrilmiş yazılı betikler sağlamaya devam eder. [Çeviri](/azure/cognitive-services/speech-service/speech-translation) olanaklarımız unsurpassed. Çok sayıda yerel ayar için ses-ses veya ses-metin çevirisi yapabilirsiniz.
 
 ### <a name="text-to-speech"></a>Metin Okuma
 
@@ -103,7 +103,7 @@ Dahili olarak, Microsoft Müşteri çağrılarını toplu Iş modunda destekleme
 
 Bazı işletmeler, konuşmaları gerçek zamanlı olarak almak için gereklidir. Gerçek zamanlı döküm, konuşmayla ilgili içerik ve kaynakları aramak, yaklaşımı izlemek, erişilebilirliği geliştirmek veya yerel konuşmacı olmayan müşteriler ve aracılar için çeviriler sağlamak üzere kullanılabilir.
 
-Gerçek zamanlı döküm gerektiren senaryolar için [konuşma SDK 'sını](speech-sdk.md)kullanmanızı öneririz. Şu anda, konuşmadan metne [20 ' den fazla dilde](language-support.md)ERIŞILEBILIR ve SDK C++, C#, Java, Python, Node. js, amaç-C ve JavaScript 'te kullanılabilir. Örnek, [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk)'daki her dilde kullanılabilir. En son haberler ve güncelleştirmeler için bkz. [sürüm notları](releasenotes.md).
+Gerçek zamanlı döküm gerektiren senaryolar için [konuşma SDK 'sını](speech-sdk.md)kullanmanızı öneririz. Şu anda, konuşmadan metne [20 ' den fazla dilde](language-support.md)ERIŞILEBILIR ve SDK C++, C#, Java, Python, Node.js, amaç-C ve JavaScript 'te kullanılabilir. Örnek, [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk)'daki her dilde kullanılabilir. En son haberler ve güncelleştirmeler için bkz. [sürüm notları](releasenotes.md).
 
 Dahili olarak, aşağıdaki diyagramda gösterildiği gibi gerçek zamanlı Microsoft Müşteri çağrılarını çözümlemek için yukarıdaki teknolojileri kullanıyoruz.
 
@@ -121,7 +121,7 @@ Diğer senaryo, oturum başlatma Protokolü (SIP) ile doğrudan tümleştirmedir
 
  Konuşma hizmeti yerleşik modellerle iyi şekilde çalışacaktır. Bununla birlikte, ürününüzün veya ortamınızın deneyimini daha fazla özelleştirmek ve ayarlamak isteyebilirsiniz. Özelleştirme seçenekleri, akustik model ayarlamalarından markanızla ilgili benzersiz ses yazı tiplerine kadar değişir. Özel bir model oluşturduktan sonra, onu gerçek zamanlı veya toplu modda konuşma hizmeti özelliklerinden herhangi biriyle kullanabilirsiniz.
 
-| Konuşma hizmeti | Model | Açıklama |
+| Konuşma hizmeti | Modelleme | Description |
 | -------------- | ----- | ----------- |
 | Konuşmayı metne dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
 |                | [Dil modeli](how-to-customize-language-model.md) | Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi ya da It jarggibi bir tür dökümü geliştirmek için özel bir dil modeli oluşturun. |

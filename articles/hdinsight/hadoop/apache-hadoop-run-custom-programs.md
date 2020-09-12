@@ -1,25 +1,25 @@
 ---
 title: Özel MapReduce programlarını çalıştırma-Azure HDInsight
 description: Azure HDInsight kümelerinde özel Apache MapReduce programlarını ne zaman ve nasıl çalıştıracağınızı öğrenin.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 8751a54393f310c1d5a77ccbfdb553ee3643f74a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1dcc2a944fc527e4cbc8c7c1072503377ecb5798
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080117"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505276"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Özel MapReduce programlarını çalıştırma
 
 HDInsight gibi Apache Hadoop tabanlı büyük veri sistemleri, çok çeşitli araçlar ve teknolojiler kullanarak veri işlemeyi etkinleştirir. Aşağıdaki tabloda her biri için başlıca avantajlar ve noktalar açıklanmaktadır.
 
-| Sorgu mekanizması | Yararları | Önemli noktalar |
+| Sorgu mekanizması | Avantajlar | Dikkat edilmesi gerekenler |
 | --- | --- | --- |
 | **HiveQL kullanarak Apache Hive** | <ul><li>Veri özetlemesi ve isteğe bağlı sorgulama için, büyük miktarlarda sabit verilerin toplu işleme ve analizine yönelik mükemmel bir çözümdür. Tanıdık bir SQL benzeri sözdizimi kullanır.</li><li>Bu, kolayca bölümlenebilir ve dizine alınmış kalıcı veri tabloları oluşturmak için kullanılabilir.</li><li>Aynı verilerden birden çok dış tablo ve görünüm oluşturulabilir.</li><li>Veri depolama ve işleme için büyük ölçüde genişleme ve hataya dayanıklı yetenekler sağlayan basit bir veri ambarı uygulamasını destekler.</li></ul> | <ul><li>Kaynak verilerinde en az bir tanımlanabilir yapıya sahip olmasını gerektirir.</li><li>Gerçek zamanlı sorgular ve satır düzeyi güncelleştirmeler için uygun değildir. En iyi yöntem, büyük veri kümeleri üzerinde toplu iş işleri için kullanılır.</li><li>Karmaşık işlem görevlerinin bazı türlerini gerçekleştiremeyebilir.</li></ul> |
 | **Pig Latin kullanarak Apache Pig** | <ul><li>Verileri kümeler halinde işlemek, veri kümelerini birleştirmek ve filtrelemek, kayıtlar veya kayıt gruplarına işlevler uygulamak ve sütunları tanımlayarak, değerleri gruplayarak veya sütunları satırlara dönüştürerek yeniden yapılandırma için harika bir çözümdür.</li><li>Veri üzerinde işlem dizisi olarak iş akışı tabanlı bir yaklaşım kullanabilir.</li></ul> | <ul><li>SQL kullanıcıları Pig, HiveQL 'tan daha az tanıdık ve kullanımı daha zor olabilir.</li><li>Varsayılan çıktı genellikle bir metin dosyasıdır ve bu nedenle Excel gibi görselleştirme araçlarıyla kullanılması daha zor olabilir. Genellikle çıkış üzerine bir Hive tablosu katmanlarız.</li></ul> |

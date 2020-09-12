@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3b4ba62072e26f16a0e39416c9ae346d1acefd9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5dd6d682c9db044763cad64eec420c1974d4ac03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997532"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613705"
 ---
 # <a name="outline-rendering"></a>Ana hattı işleme
 
@@ -23,13 +23,13 @@ Ana hat özellikleri genel bir ayardır. Ana hat işleme kullanan tüm nesneler 
 
 Sınıf `OutlineSettings` , genel anahat özellikleriyle ilgili ayarları barındırır. Aşağıdaki üyeleri kullanıma sunar:
 
-| Parametre      | Tür    | Açıklama                                             |
+| Parametre      | Tür    | Description                                             |
 |----------------|---------|---------------------------------------------------------|
 | `Color`          | Color4Ub | Anahattı çizmek için kullanılan renk. Alfa bölümü yok sayılır.         |
 | `PulseRateHz`    | float   | Ana hattın saniyedeki kaç saniyede ele alındığı oran|
 | `PulseIntensity` | float   | Ana hat Pulse efektinin yoğunluğu. Tam pulun için 0,0 arasında bir pulun ve 1,0 olmaması gerekir. Şiddette, ana hattın en düşük opaklığını örtülü olarak belirler `MinOpacity = 1.0 - PulseIntensity` . |
 
-![](./media/outlines.png) `color` Parametrenin sarıdan (solda) macenta (orta) ve `pulseIntensity` 0 ile 0,8 (sağ) arasında değiştirilmesini açıklar.
+![Farklı ana hat parametreleriyle üç kez işlenen bir nesne, ](./media/outlines.png) `color` parametreyi sarı (solda), macenta (orta) ve `pulseIntensity` 0 ile 0,8 (sağ) arasında değiştirme etkisi.
 
 ## <a name="example"></a>Örnek
 
@@ -60,6 +60,11 @@ void SetOutlineParameters(ApiHandle<AzureSession> session)
 ## <a name="performance"></a>Performans
 
 Ana hat işleme, işleme performansı üzerinde önemli bir etkiye sahip olabilir. Bu etki, belirli bir çerçeve için seçili ve seçili olmayan nesneler arasındaki ekran alanı açısından uzamsal ilişkiye göre farklılık gösterir.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# RemoteManager. OutlineSettings özelliği](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.outlinesettings)
+* [C++ RemoteManager:: OutlineSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#outlinesettings)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

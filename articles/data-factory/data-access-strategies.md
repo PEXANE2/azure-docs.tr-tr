@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 015feac819467cf60bfb2faab27af769fadc3cfa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522882"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484961"
 ---
 # <a name="data-access-strategies"></a>Veri erişim stratejileri
 
@@ -55,7 +55,7 @@ Azure Integration Runtime ve şirket içinde barındırılan Integration Runtime
     |                              | MariaDB, MySQL, PostgreSQL için Azure veritabanı       | -                | -                   | Yes             | -            | Yes                  |
     |                              | Azure Dosya Depolama                                  | Yes              | -                   | Yes             | -            | .                    |
     |                              | Azure depolama (blob, ADLS 2.)                     | Yes              | Evet (yalnızca MSI kimlik doğrulaması) | Yes             | -            | .                    |
-    |                              | Azure SQL DB, SQL DW (SYNAPSE Analytics), SQL ml  | Evet (yalnızca Azure SQL DB/DW)        | -                   | Yes             | -            | Yes                  |
+    |                              | Azure SQL DB, Azure SYNAPSE Analytics), SQL ml  | Evet (yalnızca Azure SQL DB/DW)        | -                   | Yes             | -            | Yes                  |
     |                              | Azure Key Vault (gizli dizileri/bağlantı dizesi getiriliyor) | evet      | Yes                 | Yes             | -            | -                    |
     | Diğer PaaS/SaaS veri depoları | AWS S3, SalesForce, Google bulut depolama, vb.    | -                | -                   | Yes             | -            | -                    |
     | Azure laaS                   | SQL Server, Oracle, vb.                          | -                | -                   | Yes             | Yes          | -                    |
@@ -73,11 +73,11 @@ Azure Integration Runtime ve şirket içinde barındırılan Integration Runtime
     |                                | MariaDB, MySQL, PostgreSQL için Azure veritabanı               | Yes       | -                   |
     |                                | Azure Dosya Depolama                                            | Yes       | -                   |
     |                                | Azure depolama (blog, ADLS 2.)                             | Yes       | Evet (yalnızca MSI kimlik doğrulaması) |
-    |                                | Azure SQL DB, SQL DW (SYNAPSE Analytics), SQL ml          | Yes       | -                   |
+    |                                | Azure SQL DB, Azure SYNAPSE Analytics), SQL ml          | Yes       | -                   |
     |                                | Azure Key Vault (gizli dizileri/bağlantı dizesi getiriliyor) | Yes       | Yes                 |
     | Diğer PaaS/SaaS veri depoları | AWS S3, SalesForce, Google bulut depolama, vb.              | Yes       | -                   |
     | Azure laaS                     | SQL Server, Oracle, vb.                                  | Yes       | -                   |
-    | Şirket içi laaS              | SQL Server, Oracle, vb.                                  | Yes       | -                   |    
+    | Şirket içi laaS              | SQL Server, Oracle, vb.                                  | Evet       | -                   |    
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

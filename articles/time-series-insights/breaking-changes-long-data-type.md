@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: dpalled
-ms.openlocfilehash: 8d9b166d4ac9290a0389eac23f9d6882f667e1a0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 43d3e80c66d54e3f7518246f7d75c5661995578c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856098"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489043"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 ' de uzun veri türü desteği ekleniyor
 
@@ -33,7 +33,7 @@ Aşağıdaki durumlardan herhangi biriyle etkileniyorsanız önerilen değişikl
 
 Herhangi bir servis talebi sizin için geçerlidir, modelinizde değişiklik yapın. Değişken tanımınızdaki zaman serisi Ifadesini (TSX) önerilen değişikliklerle güncelleştirin. Her ikisini de güncelleştir:
 
-- Azure Time Series Insights TSI Gezgini
+- Azure Time Series Insights Gezgini
 - API 'lerimizi kullanan tüm özel istemciler
 
 IoT çözümünüze ve kısıtlamalarına bağlı olarak, Azure Time Series Insights Gen2 ortamınıza gönderilen verilere ilişkin görünürlüğe sahip olmayabilirsiniz. Verilerinizin yalnızca integral veya integral ve İntegral olmayan bir değer mi olduğunu bilmiyorsanız, birkaç seçeneğiniz vardır:

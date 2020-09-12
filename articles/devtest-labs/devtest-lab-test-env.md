@@ -3,12 +3,12 @@ title: VM ve PaaS test ortamları için Azure DevTest Labs kullanın | Microsoft
 description: VM ve PaaS test ortamı senaryolarında Azure DevTest Labs nasıl kullanacağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9207c070c13c5e276a6ab95e3bcf1bb8671dc382
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 978071aa160098612a5effebfb30d5d58b777df7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272919"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299839"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>VM ve PaaS test ortamları için Azure DevTest Labs kullanma
 
@@ -46,7 +46,7 @@ Bu makalede, sınayıcı gereksinimlerini karşılamak için kullanılan çeşit
    
    | Görev | Öğrenecekleriniz |
    | --- | --- |
-   | [Azure Market görüntülerini yapılandırma](devtest-lab-configure-marketplace-images.md) |Azure Marketi görüntülerini beyaz listeye eklemeyi öğrenin ve yalnızca Sınayıcılar için istediğiniz görüntüleri seçilebilir hale getirebilirsiniz.|
+   | [Azure Market görüntülerini yapılandırma](devtest-lab-configure-marketplace-images.md) |Azure Market görüntülerine nasıl izin alabileceğinizi öğrenin ve yalnızca Sınayıcılar için istediğiniz görüntüleri seçilebilir hale getirebilirsiniz.|
    | [Özel görüntü oluşturma](devtest-lab-create-template.md) |Test edicilerin özel görüntüyü kullanarak hızlı bir şekilde VM oluşturabilmesi için ihtiyacınız olan yazılımı önceden yükleyerek özel bir görüntü oluşturun.|
    | [Image Factory hakkında bilgi edinin](./devtest-lab-faq.md#blog-post) |Bir görüntü fabrikası ayarlamayı ve kullanmayı açıklayan bir video izleyin.|
 

@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/13/2020
-ms.openlocfilehash: 70a54f52470a715df1011199d5cbd6aa5030094d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/03/2020
+ms.openlocfilehash: 87ccb28f527082dccee338396b460124652c0e76
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539219"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462713"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Azure SQL Edge 'in desteklenen özellikleri (Önizleme) 
 
@@ -67,12 +67,12 @@ Aşağıdaki listede, Azure SQL Edge 'de Şu anda desteklenmeyen Linux özellikl
 | Alan | Desteklenmeyen Özellik veya hizmet |
 |-----|-----|
 | **Veritabanı tasarımı** | Bellek içi OLTP ve ilgili DDL komutları ve Transact-SQL işlevleri, katalog görünümleri ve dinamik yönetim görünümleri. |
-| &nbsp; | `HierarchyID`veri türü ve ilgili DDL komutları ve Transact-SQL işlevleri, katalog görünümleri ve dinamik yönetim görünümleri. |
-| &nbsp; | `Spatial`veri türü ve ilgili DDL komutları ve Transact-SQL işlevleri, katalog görünümleri ve dinamik yönetim görünümleri. |
+| &nbsp; | `HierarchyID` veri türü ve ilgili DDL komutları ve Transact-SQL işlevleri, katalog görünümleri ve dinamik yönetim görünümleri. |
+| &nbsp; | `Spatial` veri türü ve ilgili DDL komutları ve Transact-SQL işlevleri, katalog görünümleri ve dinamik yönetim görünümleri. |
 | &nbsp; | DB ve ilgili DDL komutları ile Transact-SQL işlevleri, katalog görünümleri ve dinamik yönetim görünümlerini uzatın. |
 | &nbsp; | Tam metin dizinleri ve arama ve ilgili DDL komutları ve Transact-SQL işlevleri, katalog görünümleri ve dinamik yönetim görünümleri.|
 | &nbsp; | `FileTable`, `FILESTREAM` ve ile ılgılı DDL komutları ve Transact-SQL işlevleri, katalog görünümleri ve dinamik yönetim görünümleri.|
-| **Veritabanı Altyapısı** | Yinelemesi. Azure SQL Edge 'i bir çoğaltma topolojisinin gönderim abonesi olarak yapılandırabileceğinizi unutmayın. |
+| **Veritabanı altyapısı** | Yinelemesi. Azure SQL Edge 'i bir çoğaltma topolojisinin gönderim abonesi olarak yapılandırabileceğinizi unutmayın. |
 | &nbsp; | PolyBase. PolyBase 'de dış tablolar için Azure SQL Edge 'i bir hedef olarak yapılandırabileceğinizi unutmayın. |
 | &nbsp; | Java ve Spark ile dil genişletilebilirliği. |
 | &nbsp; | Active Directory tümleştirme. |
@@ -89,6 +89,10 @@ Aşağıdaki listede, Azure SQL Edge 'de Şu anda desteklenmeyen Linux özellikl
 | &nbsp; | CLR bağımlı tarih ve saat Kataloğu görünümleri, işlevleri ve sorgu yan tümceleri. |
 | &nbsp; | Arabellek havuzu uzantısı. |
 | &nbsp; | Veritabanı posta. |
+| &nbsp; | Hizmet Aracısı |
+| &nbsp; | İlke tabanlı yönetim |
+| &nbsp; | Yönetim veri ambarı |
+| &nbsp; | Kapsanan veritabanları |
 | **SQL Server Agent** |  Alt sistemler: CmdExec, PowerShell, Queue Reader, SSIS, SSAS ve SSRS. |
 | &nbsp; | Larınız. |
 | &nbsp; | Yönetilen yedekleme. |

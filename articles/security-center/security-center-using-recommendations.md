@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aac6f833985a708c7ed65542e314b65fa1039ef7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783240"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569059"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Güvenliği artırmaya yönelik Azure Güvenlik Merkezi önerileri
+
 Bir güvenlik ilkesi yapılandırarak ve ardından Azure Güvenlik Merkezi tarafından sunulan önerileri uygulayarak önemli bir güvenlik olayı olasılığını azaltabilirsiniz. Bu makalede bir güvenlik saldırısını azaltmaya yardımcı olmak için Güvenlik Merkezi 'nde güvenlik ilkelerinin ve önerilerin nasıl kullanılacağı gösterilmektedir. 
 
 Güvenlik Merkezi, Azure kaynaklarınızın güvenlik durumunu çözümlemek için sürekli taramaları otomatik olarak çalıştırır. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, gerekli güvenlik denetimlerini yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur. Güvenlik Merkezi, önerilerini 24 saat içinde, aşağıdaki özel durumlarla güncelleştirir:
@@ -66,6 +67,11 @@ Günlük izleme etkinliklerinin bir parçası olarak, Jeff Azure 'da oturum aça
 6. Jeff, Internet 'e yönelik çok sayıda sanal makineye sahiptir ve bağlantı noktaları kullanıma sunulduğundan, bir saldırganın sunucular üzerinde denetim kazanmasını sağlayacağından endişelenirler. Bu nedenle Jeff [**, tam ZAMANıNDA VM erişimi**](security-center-just-in-time.md)kullanmayı seçer.
 
 Jeff, yüksek öncelikli ve orta öncelikli önerilere ilerlemeye devam eder ve uygulama üzerinde kararlar verir. Her öneri için, Jeff, Güvenlik Merkezi tarafından hangi kaynakların etkilendiğini, ne kadar güvenli puanı etkilediğini, her bir önerinin ne anlama geldiğini, her bir sorunun nasıl azaltılacağını gösteren düzeltme adımlarını anlamak için sunulan ayrıntılı bilgilere bakar.
+
+### <a name="enforce-recommendations-to-prevent-security-misconfigurations"></a>Güvenlik Yapılandırması yapılandırmalarını engellemek için öneriler zorla
+
+Kullanıcıların Jeff 'in Puanını olumsuz yönde etkileyen kaynaklar oluşturmadığından emin olmak için, bunlar için en önemli önerilerin zorla ve reddetme seçeneklerini yapılandırır. [Zorla/reddetme önerilerini kullanarak yanlış yapılandırma önleme konusunda](prevent-misconfigurations.md)daha fazla bilgi edinin.
+
 
 ## <a name="conclusion"></a>Sonuç
 Güvenlik Merkezi 'ndeki izleme önerileri, bir saldırı gerçekleşmeden önce güvenlik açıklarını ortadan kaldırmanıza yardımcı olur. Önerileri düzelttireceğiniz zaman, güvenli puanınızın ve iş yüklerinizin güvenlik sonrası güvenliğini iyileştirmenize neden olacak. Güvenlik Merkezi, dağıttığınız yeni kaynakları otomatik olarak bulur, güvenlik ilkenize göre değerlendirir ve bunların güvenliğini sağlamak için yeni öneriler sağlar.

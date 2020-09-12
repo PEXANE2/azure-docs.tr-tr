@@ -3,12 +3,12 @@ title: Azure Geçişi aleti mimarisi
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a83e044acc329572a5f3bfd4856f90379319ba1d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919752"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514585"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Geçişi aleti mimarisi
 
@@ -62,15 +62,15 @@ Tüm dağıtım senaryoları için istemci tarafından toplanan veriler [gereç 
 
 ## <a name="discovery-and-collection-process"></a>Bulma ve toplama işlemi
 
-![Mimari](./media/migrate-appliance-architecture/architecture.png)
+![Mimari](./media/migrate-appliance-architecture/architecture1.png)
 
 Gereç, aşağıdaki işlemi kullanarak vCenter sunucularıyla ve Hyper-V konaklarıyla/kümesiyle iletişim kurar.
 
 1. **Bulmayı Başlat**:
-    - Hyper-V gereci üzerinde bulmayı başlattığınızda, WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerindeki Hyper-V konaklarıyla iletişim kurar.
+    - Hyper-V gereci üzerinde bulmayı başlattığınızda, WinRM bağlantı noktası 5985 (HTTP) üzerindeki Hyper-V konaklarıyla iletişim kurar.
     - VMware gereci üzerinde bulmayı başlattığınızda, varsayılan olarak TCP bağlantı noktası 443 üzerindeki vCenter Server ile iletişim kurar. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bunu gereç Web uygulamasında yapılandırabilirsiniz.
 2. **Meta verileri ve performans verilerini toplayın**:
-    - Gereç, 5985 ve 5986 bağlantı noktalarında Hyper-V konağı üzerinden Hyper-V VM verilerini toplamak için bir Genel Bilgi Modeli (CıM) oturumu kullanır.
+    - Gereç, bağlantı noktası 5985 ' deki Hyper-V konağı üzerinden Hyper-V VM verilerini toplamak için bir Genel Bilgi Modeli (CıM) oturumu kullanır.
     - Gereç, vCenter Server VMware VM verilerini toplamak için varsayılan olarak bağlantı noktası 443 ile iletişim kurar.
 3. **Veri Gönder**: gereç, toplanan verileri Azure geçişi sunucu değerlendirmesini ve Azure geçişi sunucu geçişini SSL bağlantı noktası 443 üzerinden gönderir. Gereç Internet üzerinden Azure 'a bağlanabilir veya ExpressRoute 'u ortak/Microsoft eşlemesi ile birlikte kullanabilirsiniz.
     - Performans verileri için, Gereç gerçek zamanlı kullanım verilerini toplar.
@@ -81,17 +81,12 @@ Gereç, aşağıdaki işlemi kullanarak vCenter sunucularıyla ve Hyper-V konakl
     - Sunucu geçişi için, Gereç VM verilerini toplamaya başlar ve bunu Azure 'a çoğaltır.
 4. **Değerlendirin ve geçirin**: artık Azure geçişi sunucu değerlendirmesini kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz. Ayrıca, Azure geçişi sunucu geçişini kullanarak VMware VM 'Leri geçirmeyi daha az VM çoğaltmasını düzenlemek için de başlatabilirsiniz.
 
-
-
-
-
 ## <a name="appliance-upgrades"></a>Gereç yükseltmeleri
 
 Gereç üzerinde çalışan Azure geçiş aracıları güncelleştirildiğinden, Gereç yükseltilir. Otomatik güncelleştirme, Gereç üzerinde varsayılan olarak etkinleştirildiğinden bu otomatik olarak gerçekleşir. Aracıları el ile güncelleştirmek için bu varsayılan ayarı değiştirebilirsiniz.
 
 HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "otomatik güncelleştirme" anahtarını 0 (DWORD) olarak ayarlayarak, kayıt defterinde otomatik güncelleştirmeyi devre dışı bırakabilirsiniz.
 
- 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

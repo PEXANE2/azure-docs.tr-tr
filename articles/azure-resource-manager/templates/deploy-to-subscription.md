@@ -2,13 +2,13 @@
 title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: ef4f92d2e113e7cd393c50ba4eb8b47eb4ad9d08
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002786"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468649"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
@@ -54,7 +54,7 @@ Aboneliğinizi yönetmek için şunu kullanın:
 
 * [bütçelerinin](/azure/templates/microsoft.consumption/budgets)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
-* [etiketler](/azure/templates/microsoft.resources/tags)
+* [lerimi](/azure/templates/microsoft.resources/tags)
 
 Desteklenen diğer türler şunlardır:
 
@@ -109,13 +109,13 @@ REST API için [dağıtımlar-abonelik kapsamında oluştur](/rest/api/resources
 
 Abonelik düzeyindeki dağıtımlar için, dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir.
 
-Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
+Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, ** üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
 
 Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
 
 ## <a name="deployment-scopes"></a>Dağıtım kapsamları
 
-Bir aboneliğe dağıtım yaparken, aboneliği veya abonelik içindeki herhangi bir kaynak grubunu hedefleyebilirsiniz. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
+Bir aboneliğe dağıtım yaparken, bir aboneliği ve abonelik içindeki kaynak gruplarını hedefleyebilirsiniz. Hedef abonelikten farklı bir aboneliğe dağıtamazsınız. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
 
 Şablonun kaynaklar bölümünde tanımlanan kaynaklar aboneliğe uygulanır.
 
@@ -145,7 +145,7 @@ Abonelik içindeki bir kaynak grubunu hedeflemek için, iç içe geçmiş bir da
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resource-group-resources
                 }
             }
         }
@@ -154,15 +154,19 @@ Abonelik içindeki bir kaynak grubunu hedeflemek için, iç içe geçmiş bir da
 }
 ```
 
+Bu makalede, farklı kapsamlara kaynakların nasıl dağıtılacağını gösteren şablonlar bulabilirsiniz. Kaynak grubu oluşturan ve buna bir depolama hesabı dağıtan bir şablon için bkz. [kaynak grubu ve kaynaklar oluşturma](#create-resource-group-and-resources). Kaynak grubu oluşturan, buna bir kilit uygulayan ve kaynak grubu için bir rol atayan bir şablon için bkz. [erişim denetimi](#access-control).
+
 ## <a name="use-template-functions"></a>Şablon işlevlerini kullanma
 
 Abonelik düzeyindeki dağıtımlar için, Şablon işlevleri kullanılırken bazı önemli noktalar vardır:
 
 * [ResourceGroup ()](template-functions-resource.md#resourcegroup) **işlevi desteklenmiyor.**
 * [Reference ()](template-functions-resource.md#reference) ve [List ()](template-functions-resource.md#list) işlevleri desteklenir.
-* Abonelik düzeyinde dağıtılan kaynakların kaynak KIMLIĞINI almak için [Subscriptionresourceıd ()](template-functions-resource.md#subscriptionresourceid) işlevini kullanın.
+* Abonelik düzeyinde dağıtılan kaynakların kaynak KIMLIĞINI almak için [RESOURCEID ()](template-functions-resource.md#resourceid) kullanmayın.
 
-  Örneğin, bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
+  Bunun yerine, [Subscriptionresourceıd ()](template-functions-resource.md#subscriptionresourceid) işlevini kullanın.
+
+  Örneğin, bir aboneliğe dağıtılan bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
 
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
@@ -420,7 +424,7 @@ Aynı şablonda bir ilke tanımı [tanımlayabilir](../../governance/policy/conc
       ],
       "properties": {
         "scope": "[subscription().id]",
-        "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
+        "policyDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
       }
     }
   ]

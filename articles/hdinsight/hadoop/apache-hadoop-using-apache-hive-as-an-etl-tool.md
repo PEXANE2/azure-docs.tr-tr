@@ -1,19 +1,19 @@
 ---
 title: ETL aracı olarak Apache Hive kullanma-Azure HDInsight
 description: Azure HDInsight 'ta verileri ayıklamak, dönüştürmek ve yüklemek (ETL) için Apache Hive kullanın.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 1627fccb49f0ddbf7a3a0a42f5a483059101dae2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9b9dcd683915c17ae6909ebb88927d275e9a5896
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076071"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505293"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Ayıklama, dönüştürme ve yükleme (ETL) aracı olarak Apache Hive kullanma
 
@@ -69,19 +69,19 @@ Veri kaynakları genellikle veri deponuzdaki mevcut verilerle eşleştirilebilen
 Hive kullanarak verileri farklı türlerde hedeflere aktarabilirsiniz:
 
 * SQL Server veya Azure SQL veritabanı gibi bir ilişkisel veritabanı.
-* Azure SQL veri ambarı gibi bir veri ambarı.
+* Azure SYNAPSE Analytics gibi bir veri ambarı.
 * Excel.
 * Azure tablosu ve BLOB depolama.
 * Verilerin belirli biçimlerde işlenmesini gerektiren uygulamalar veya hizmetler veya belirli bilgi yapısı türlerini içeren dosyalar.
 * Azure Cosmos DB gibi bir JSON belge deposu.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 ETL modeli genellikle şunları yapmak istediğinizde kullanılır:
 
-`*`Dış kaynaklardan mevcut bir veritabanına veya bilgi sistemine akış verileri veya yarı yapılandırılmış veya yapılandırılmamış verilerin büyük hacimlerini yükleyin.
-`*`Küme üzerinde birden fazla dönüşüm geçişi kullanarak, yüklemeden önce verileri temizleyin, dönüştürün ve doğrulayın.
-`*`Düzenli olarak güncellenen raporlar ve görselleştirmeler oluşturun. Örneğin, raporun gün içinde oluşturması çok uzun sürüyorsa, raporu gece boyunca çalışacak şekilde zamanlayabilirsiniz. Hive sorgusunu otomatik olarak çalıştırmak için [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) ve PowerShell 'i kullanabilirsiniz.
+`*` Dış kaynaklardan mevcut bir veritabanına veya bilgi sistemine akış verileri veya yarı yapılandırılmış veya yapılandırılmamış verilerin büyük hacimlerini yükleyin.
+`*` Küme üzerinde birden fazla dönüşüm geçişi kullanarak, yüklemeden önce verileri temizleyin, dönüştürün ve doğrulayın.
+`*` Düzenli olarak güncellenen raporlar ve görselleştirmeler oluşturun. Örneğin, raporun gün içinde oluşturması çok uzun sürüyorsa, raporu gece boyunca çalışacak şekilde zamanlayabilirsiniz. Hive sorgusunu otomatik olarak çalıştırmak için [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) ve PowerShell 'i kullanabilirsiniz.
 
 Verilerin hedefi bir veritabanı değilse sorgu içinde uygun biçimde, örneğin bir CSV dosyası oluşturabilirsiniz. Bu dosya daha sonra Excel veya Power BI içeri aktarılabilir.
 

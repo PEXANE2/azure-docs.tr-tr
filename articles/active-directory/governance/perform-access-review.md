@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b672cca97e70c97a5dccb1ca54daccd6c171932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077979"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299975"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplara ve uygulamalara erişimi gözden geçirme
 
@@ -33,7 +33,7 @@ Erişim gözden geçirme işlemini bildirim e-postalarından başlatabilir veya 
 - **E-posta**:
 
 >[!IMPORTANT]
-> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. azure-noreply@microsoft.comTüm e-postaları aldığınızdan emin olmak için beyaz liste.
+> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. azure-noreply@microsoft.comTüm e-postaları aldığınızdan emin olmak için Güvenli Alıcılar listenize ekleyin.
 
 1. Microsoft 'un, erişimi incelemenizi isteyen bir e-posta bulun. Bir grubun erişimini gözden geçirmek için örnek bir e-posta aşağıda verilmiştir.
 
@@ -129,7 +129,7 @@ Erişimimde güncelleştirilmiş Kullanıcı arabirimiyle ilgili yeni gözden ge
 ### <a name="email"></a>E-posta
 
   >[!IMPORTANT]
-> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. azure-noreply@microsoft.comTüm e-postaları aldığınızdan emin olmak için beyaz liste.
+> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. azure-noreply@microsoft.comTüm e-postaları aldığınızdan emin olmak için Güvenli Alıcılar listenize ekleyin.
 
    1. Microsoft 'un, erişimi incelemenizi isteyen bir e-posta bulun. Aşağıda örnek bir e-posta iletisi görebilirsiniz:
 
@@ -144,7 +144,7 @@ Erişimimde güncelleştirilmiş Kullanıcı arabirimiyle ilgili yeni gözden ge
 
 Ayrıca, erişiminizi açmak için tarayıcınızı kullanarak bekleyen erişim incelemelerinizi görüntüleyebilirsiniz.
 
-1. Erişimimde şurada oturum açın:https://myaccess.microsoft.com/
+1. Erişimimde şurada oturum açın: https://myaccess.microsoft.com/
 
 2. Size atanan bekleyen erişim incelemelerinin listesini görmek için sol taraftaki menüden **erişim gözden geçirmeleri** ' nı seçin.
 
@@ -206,4 +206,3 @@ Tüm kullanıcılar için önerileri kabul etmek için, hiç birinin seçili olm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Grupların veya uygulamaların erişim incelemesini tamamlar](complete-access-review.md)
-

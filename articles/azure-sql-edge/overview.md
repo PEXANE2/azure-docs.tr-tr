@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 2c96e4b7baa2c463c42db9440cadb3cb396fde1b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 20e709db9e6992f52b04934cb0f6eb65d3dcb44c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642478"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489536"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Azure SQL Edge (Önizleme) nedir?
 
@@ -67,7 +67,7 @@ Azure SQL Edge, uygulamaları geliştirmeyi ve uygulamayı daha kolay ve üretke
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) -SQL Server SQL veritabanı 'na HERHANGI bir SQL altyapısını yönetmeye yönelik ücretsiz, indirilebilir bir istemci uygulaması.
 - [Visual Studio 'da SQL Server veri araçları](/sql/ssdt/download-sql-server-data-tools-ssdt/) -SQL Server ilişkisel VERITABANLARı, SQL veritabanları, Tümleştirme Hizmetleri paketleri, Analysis Services veri modelleri ve Raporlama Hizmetleri raporları geliştirmeye yönelik ücretsiz, indirilebilir bir istemci uygulaması.
 - [Azure Data Studio](/sql/azure-data-studio/what-is/) -Windows, MacOS ve Linux 'ta Microsoft 'un Şirket içi ve bulut veri platformlarını kullanarak veri uzmanlarına yönelik ücretsiz, indirilebilir ve platformlar arası veritabanı aracı.
-- [Visual Studio Code](https://code.visualstudio.com/docs) -Windows, MacOS ve Linux için ücretsiz, indirilebilir, açık kaynaklı kod Düzenleyicisi. Microsoft SQL Server, Azure SQL veritabanı ve Azure SQL veri ambarı 'nı sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler.
+- [Visual Studio Code](https://code.visualstudio.com/docs) -Windows, MacOS ve Linux için ücretsiz, indirilebilir, açık kaynaklı kod Düzenleyicisi. Microsoft SQL Server, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
