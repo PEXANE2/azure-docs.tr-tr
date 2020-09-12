@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 17a60ae604a74cf98f3a11e0cbee6d22898c1336
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 808f71ae138922b93e3742f7ff2f526e419cf58c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122106"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645891"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Uyarılar ve hata ayıklama için Application Insights makine öğrenimi ardışık düzen günlük dosyalarını toplayın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Günlüklerinizin bir yerde olması, özel durumların ve hata iletilerinin geç
 
 Bu bölüm, Azure Machine Learning bir işlem hattından OpenCensus kullanımına özgü bir giriş niteliğindedir. Ayrıntılı bir öğretici için bkz. [Opencensus Azure Izleyici Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-Azure ML ardışık düzenine bir PythonScriptStep ekleyin. [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) 'nizi opencensus-ext-Azure bağımlılığı ile yapılandırın. `APPLICATIONINSIGHTS_CONNECTION_STRING`Ortam değişkenini yapılandırın.
+Azure ML ardışık düzenine bir PythonScriptStep ekleyin. [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) 'nizi opencensus-ext-Azure bağımlılığı ile yapılandırın. `APPLICATIONINSIGHTS_CONNECTION_STRING`Ortam değişkenini yapılandırın.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: cbf1c678307d76361e6083f4e2231fb9e48a112f
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 0fb50e01e86c00ac863352118eb36f7470251435
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855150"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489162"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 'dan veri sorgulama
 
@@ -73,4 +73,4 @@ Bu API 'Ler, çok katmanlı depolama çözümümüzde (normal ve soğuk) her iki
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Zaman serisi modelinde](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm)tanımlanabilen farklı değişkenler hakkında daha fazla bilgi edinin.
-* [Azure TIME SERIES INSIGHTS TSI Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)'daki verileri sorgulama hakkında daha fazla bilgi edinin.
+* [Azure Time Series Insights Gezgini](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)'nden verileri sorgulama hakkında daha fazla bilgi edinin.

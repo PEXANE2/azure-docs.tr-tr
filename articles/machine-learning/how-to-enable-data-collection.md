@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3ece750ab63c2c8e33fbfb46739eec55de4f5d07
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 72706a67e1798662ea0f40fa7843c32d8267e0d0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320196"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646065"
 ---
 # <a name="collect-data-from-models-in-production"></a>Üretim içindeki modellerden veri toplama
 
@@ -67,11 +67,11 @@ Blob 'daki çıkış verilerinin yolu şu sözdizimini izler:
 
 - Bir AKS kümeniz olması gerekir. Oluşturma ve dağıtma hakkında daha fazla bilgi için bkz. [nasıl dağıtılır ve nerede](how-to-deploy-and-where.md).
 
-- [Ortamınızı ayarlayın](how-to-configure-environment.md) ve [Azure Machine Learning izleme SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)kurun.
+- [Ortamınızı ayarlayın](how-to-configure-environment.md) ve [Azure Machine Learning izleme SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)kurun.
 
 ## <a name="enable-data-collection"></a>Veri toplamayı etkinleştirme
 
-Azure Machine Learning veya diğer araçlarla dağıttığınız modelden bağımsız olarak [veri toplamayı](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py) etkinleştirebilirsiniz.
+Azure Machine Learning veya diğer araçlarla dağıttığınız modelden bağımsız olarak [veri toplamayı](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true) etkinleştirebilirsiniz.
 
 Veri toplamayı etkinleştirmek için şunları yapmanız gerekir:
 
@@ -149,7 +149,7 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
    # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
    ```
 
-### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a>Power BI kullanarak model verilerini analiz etme
+### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a> Power BI kullanarak model verilerini analiz etme
 
 1. [Power BI Desktop](https://www.powerbi.com)indirip açın.
 
@@ -185,7 +185,7 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
 1. Model verileriniz üzerinde özel raporlarınızı oluşturmaya başlayın.
 
-### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a>Azure Databricks kullanarak model verilerini analiz etme
+### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> Azure Databricks kullanarak model verilerini analiz etme
 
 1. [Azure Databricks çalışma alanı](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)oluşturun.
 

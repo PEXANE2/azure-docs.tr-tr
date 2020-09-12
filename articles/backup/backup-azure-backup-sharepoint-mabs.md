@@ -3,12 +3,12 @@ title: MABS ile bir SharePoint grubunu Azure 'a yedekleme
 description: SharePoint verilerinizi yedeklemek ve geri yüklemek için Azure Backup Sunucusu kullanın. Bu makalede, SharePoint grubunuzu istenen verilerin Azure 'da depolanabilmesi için yapılandırma bilgileri sağlanmaktadır. Korumalı SharePoint verilerini diskten veya Azure 'dan geri yükleyebilirsiniz.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 00af51764d5a9454b002de6375b2b16d6e80c300
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017439"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375406"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS ile bir SharePoint grubunu Azure 'a yedekleme
 
@@ -30,7 +30,7 @@ Bir SharePoint grubunu Azure 'a yedeklemebilmeniz için öncelikle onaylamanız 
 
 * MABS, genişleme dosya sunucusu (SOFS) paylaşımlarında barındırılan SharePoint SQL Server veritabanlarının yedeklemesini sağlamıyor.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Devam etmeden önce, iş yüklerini korumak için [Microsoft Azure Backup kullanmaya yönelik tüm önkoşulları](backup-azure-dpm-introduction.md#prerequisites-and-limitations) karşıladığınızdan emin olun. Önkoşullar için bazı görevler şunlardır: bir yedekleme Kasası oluşturun, kasa kimlik bilgilerini indirin, Azure Backup Aracısı yükleyin ve Azure Backup Sunucusu kasaya kaydedin.
 
@@ -74,7 +74,7 @@ SharePoint grubunu yedeklemek için ConfigureSharePoint.exe kullanarak SharePoin
 
         ConfigureSharePoint.exe çalıştırdıktan sonra, SharePoint grubu yönetici kimlik bilgilerinde bir değişiklik olursa yeniden çalıştırmanız gerekir.
 
-1. Koruma grubu oluşturmak **için koruma**  >  **Eylemler**  >  **koruma grubu oluştur** ' a tıklayarak mabs konsolundaki **yeni koruma grubu oluşturma** Sihirbazı ' nı açın.
+1. Koruma grubu oluşturmak **için koruma**  >  **Eylemler**  >  **koruma grubu oluştur** ' u seçerek mabs konsolundaki **yeni koruma grubu oluşturma** Sihirbazı ' nı açın.
 
 1. **Koruma grubu türünü seçin**içinde **sunucular**' ı seçin.
 
@@ -102,7 +102,7 @@ SharePoint grubunu yedeklemek için ConfigureSharePoint.exe kullanarak SharePoin
 
 1. **Çevrimiçi çoğaltma Seç**' de, verilerin ilk tam çoğaltmasının nasıl yapılacağını belirtin. Ağ üzerinden çoğaltma veya çevrimdışı yedekleme (çevrimdışı dengeli dağıtım) yapabilirsiniz. Çevrimdışı yedekleme Azure İçe Aktarma özelliğini kullanır. [Daha fazla bilgi edinin](./backup-azure-backup-import-export.md).
 
-1. **Özet** sayfasında, ayarlarınızı gözden geçirin. **Grup Oluştur**' a tıkladıktan sonra, verilerin ilk çoğaltması oluşur. İşlem tamamlandığında, koruma grubunun durumu **durum** sayfasında **Tamam** olarak gösterilir. Ardından, koruma grupları ayarlarına uygun olarak yedekleme gerçekleşir.
+1. **Özet** sayfasında, ayarlarınızı inceleyin. **Grup Oluştur**' u seçtikten sonra, verilerin ilk çoğaltması oluşur. İşlem tamamlandığında, koruma grubunun durumu **durum** sayfasında **Tamam** olarak gösterilir. Ardından, koruma grupları ayarlarına uygun olarak yedekleme gerçekleşir.
 
 ## <a name="monitoring"></a>İzleme
 
@@ -114,17 +114,17 @@ Koruma grubu oluşturulduktan sonra ilk çoğaltma gerçekleşir ve MABS, ShareP
 
 ### <a name="set-up-monitoring-notifications"></a>Bildirimleri izleme işlevini ayarlama
 
-1. Mabs Yönetici Konsolu, **izleme**  >  **eylemi**  >  **seçenekleri**' ne tıklayın.
+1. Mabs Yönetici Konsolu, **izleme**  >  **eylemi**  >  **seçenekleri**' ni seçin.
 
-2. **SMTP Sunucusu**'nu tıklayın; sunucu adını, bağlantı noktasını ve bildirimlerin çıkacağı e-posta adresini yazın. Adres geçerli olmalıdır.
+2. **SMTP sunucusu**' nu seçin, sunucu adını, bağlantı noktasını ve bildirimlerin gönderileceği e-posta adresini yazın. Adres geçerli olmalıdır.
 
 3. **Kimliği DOĞRULANMıŞ SMTP sunucusu**alanına bir Kullanıcı adı ve parola yazın. Kullanıcı adı ve parola, "Kimden" adresi önceki adımda açıklanan kişinin etki alanı hesap adı olmalıdır. Aksi takdirde, bildirim teslimi başarısız olur.
 
-4. SMTP sunucusu ayarlarını test etmek için **Test e-postası gönder**' e tıklayın, mabs 'nin test iletisini göndermesini istediğiniz e-posta adresini yazın ve ardından **Tamam**' a tıklayın. **Seçenekler**  >  **Bildirimler** ' e tıklayın ve alıcıların bildirim almak istediği uyarı türlerini seçin. **Alıcılar** ' de, mabs ' ın bildirimlerin kopyalarını göndermesini istediğiniz her alıcı için e-posta adresini yazın.
+4. SMTP sunucusu ayarlarını test etmek için, **Test e-postası gönder**' i SEÇIN, mabs 'nin test iletisini göndermesini istediğiniz e-posta adresini yazın ve ardından **Tamam**' ı seçin. **Seçenek**  >  **bildirimleri** ' ni seçin ve alıcıların bildirim almak istediği uyarı türlerini seçin. **Alıcılar** ' de, mabs ' ın bildirimlerin kopyalarını göndermesini istediğiniz her alıcı için e-posta adresini yazın.
 
 ### <a name="publish-operations-manager-alerts"></a>Operations Manager uyarıları yayınlama
 
-1. Mabs Yönetici Konsolu **izleme**  >  **eylemi**  >  **seçenekleri**  >  **uyarı yayımlama**  >  **Etkin uyarıları Yayımla** ' ya tıklayın.
+1. Mabs Yönetici Konsolu, **izleme**  >  **eylemi**  >  **seçenekleri**  >  **uyarı yayımlama**  >  **Etkin uyarıları Yayımla** ' yı seçin.
 
 2. **Uyarı yayımlamayı**etkinleştirdikten sonra, bir kullanıcı eylemi gerektiren tüm mevcut mabs uyarıları, **mabs uyarıları** olay günlüğüne yayımlanır. MABS sunucusunda yüklü olan Operations Manager Aracısı daha sonra bu uyarıları Operations Manager yayımlar ve yeni uyarılar oluşturulduğundan konsolu güncelleştirmeye devam eder.
 
@@ -146,10 +146,10 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
 5. Ayrıca, çeşitli kurtarma noktalarına göz atabilir ve kurtarılacak bir veritabanı veya öğe seçebilirsiniz. **Tarih > kurtarma zamanı**' nı seçin ve ardından **> SharePoint grubu > kurtarma noktası > öğesi doğru veritabanını**seçin.
 
     ![MABS SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Öğeye sağ tıklayın ve ardından **Kurtarma Sihirbazı**'nı açmak için **kurtar** ' ı seçin. **İleri**’ye tıklayın.
+6. Öğeye sağ tıklayın ve ardından **Kurtarma Sihirbazı**'nı açmak için **kurtar** ' ı seçin. **İleri**’yi seçin.
 
     ![Kurtarma seçimini İncele](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
-7. Gerçekleştirmek istediğiniz kurtarma türünü seçin ve ardından **İleri**' ye tıklayın.
+7. Gerçekleştirmek istediğiniz kurtarma türünü seçin ve ardından **İleri**' yi seçin.
 
     ![Kurtarma türü](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
@@ -170,7 +170,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
     MABS, SharePoint öğesini barındıran içerik veritabanını geçici SQL Server örneğine iliştirir. İçerik veritabanından, öğeyi kurtarır ve MABS üzerindeki hazırlama dosyası konumuna koyar. Hazırlama konumunda bulunan kurtarılan öğenin artık SharePoint grubundaki hazırlama konumuna aktarılması gerekir.
 
     ![Hazırlama Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. **Kurtarma seçeneklerini belirtin**' i seçin ve güvenlik ayarlarını SharePoint grubuna uygulayın veya kurtarma noktasının güvenlik ayarlarını uygulayın. **İleri**’ye tıklayın.
+10. **Kurtarma seçeneklerini belirtin**' i seçin ve güvenlik ayarlarını SharePoint grubuna uygulayın veya kurtarma noktasının güvenlik ayarlarını uygulayın. **İleri**’yi seçin.
 
     ![Kurtarma seçenekleri](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -178,7 +178,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
     > Ağ bant genişliği kullanımını azaltmayı seçebilirsiniz. Bu, üretim saatleri sırasında üretim sunucusuna etkisini en aza indirir.
     >
     >
-11. Özet bilgilerini gözden geçirin ve ardından dosyayı kurtarmaya başlamak için **kurtar** ' ı tıklatın.
+11. Özet bilgilerini gözden geçirin ve ardından dosyayı kurtarmaya başlamak için **kurtar** ' ı seçin.
 
     ![Kurtarma Özeti](./media/backup-azure-backup-sharepoint/recovery-summary.png)
 12. Şimdi kurtarma **durumunu** görüntülemek Için **Mabs Yönetici Konsolu** **izleme** sekmesini seçin.
@@ -201,7 +201,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
    > SharePoint grubu Azure 'da uzun süreli saklama için korunduğundan, MABS sunucusunda hiçbir katalog bilgisi (meta veri) yok. Sonuç olarak, her zaman bir noktadan SharePoint içerik veritabanının kurtarılması gerektiğinde SharePoint grubunu yeniden kataloglanmalıdır.
    >
    >
-3. **Yeniden katalog**' a tıklayın.
+3. **Yeniden katalogla**' yı seçin.
 
     ![MABS SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -209,10 +209,10 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
 
     ![MABS SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Kataloglama tamamlandıktan sonra durum *başarılı*olarak değişir. **Kapat**’a tıklayın.
+    Kataloglama tamamlandıktan sonra durum *başarılı*olarak değişir. **Kapat**’ı seçin.
 
     ![MABS SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. İçerik veritabanı yapısını almak için MABS **Kurtarma** sekmesinde gösterilen SharePoint nesnesine tıklayın. Öğeye sağ tıklayın ve ardından **kurtar**' a tıklayın.
+4. İçerik veritabanı yapısını almak için MABS **Kurtarma** sekmesinde gösterilen SharePoint nesnesini seçin. Öğeye sağ tıklayın ve ardından **kurtar**' ı seçin.
 
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Bu noktada, bir SharePoint içerik veritabanını diskten kurtarmak için bu makalenin önceki kısımlarında yer alarak kurtarma adımlarını izleyin.
@@ -247,7 +247,7 @@ Aşağıdaki yordam, *Sunucu1* ve *Sunucu2*olmak üzere iki ön uç Web sunucusu
 
 1. *Sunucu2*'de, bir komut isteminde dizinini olarak değiştirin `_MABS installation location_\bin\` ve **ConfigureSharePoint**çalıştırın. ConfigureSharePoint hakkında daha fazla bilgi için bkz. [yedeklemeyi yapılandırma](#configure-backup).
 
-1. Sunucu grubunun ait olduğu koruma grubunu seçin ve ardından **koruma grubunu değiştir**' e tıklayın.
+1. Sunucu grubunun ait olduğu koruma grubunu seçin ve ardından **koruma grubunu değiştir**' i seçin.
 
 1. Grubu Değiştir sihirbazında, **Grup üyelerini seçin** sayfasında, *Sunucu2* ' i genişletin ve sunucu grubunu seçin ve Sihirbazı doldurun.
 

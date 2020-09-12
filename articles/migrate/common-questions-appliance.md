@@ -3,12 +3,12 @@ title: Azure geçişi gereç hakkında SSS
 description: Azure geçişi gereci hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aa15a3451b990d3c3cec3535fdc14315ff149aef
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050684"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514552"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure geçişi gereci: genel sorular
 
@@ -21,7 +21,7 @@ Bu makalede, Azure geçişi gereci hakkında sık sorulan sorular yanıtlanmakta
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Azure geçişi gereci nedir?
 
-Azure geçişi gereci, Azure geçişi: Sunucu değerlendirmesi aracının şirket içi sunucuları keşfetmek ve değerlendirmek için kullandığı hafif bir gereç. Azure geçişi: sunucu geçiş aracı Ayrıca şirket içi VMware VM 'lerinin aracısız geçişi için gereci kullanır.
+Azure geçişi gereci, Azure geçişi: Sunucu değerlendirmesi aracının, şirket içi veya herhangi bir buluttan fiziksel veya sanal sunucuları keşfetmek ve değerlendirmek için kullandığı hafif bir gereç. Azure geçişi: sunucu geçiş aracı Ayrıca şirket içi VMware VM 'lerinin aracısız geçişi için gereci kullanır.
 
 Azure geçişi gereci hakkında daha fazla bilgi edinebilirsiniz:
 
@@ -35,13 +35,14 @@ Gereç hakkında [daha fazla bilgi edinin](migrate-appliance.md) .
 
 Gereç şu şekilde dağıtılabilir:
 
-- VMware VM 'leri ve Hyper-V sanal makineleri (VMware veya Hyper-V için VHD için OVA şablonu) için şablon kullanma.
-- Bir şablon kullanmak istemiyorsanız veya Azure Kamu 'da çalışıyorsanız, bir PowerShell betiği kullanarak VMware veya Hyper-V için gereci dağıtabilirsiniz.
-- Fiziksel sunucular için, her zaman gereci bir komut dosyası kullanarak dağıtırsınız.
+- VMware VM 'lerini bulmak için şablon kullanma (. OVA dosyası) ve Hyper-V VM 'Leri (. VHD dosyası) gereci barındıran yeni bir VM oluşturun.
+- Bir şablon kullanmak istemiyorsanız, bir PowerShell yükleyici betiği kullanarak VMware VM 'leri veya Hyper-V VM 'lerini bulmak için mevcut bir fiziksel veya sanal makineye, portaldan bir ZIP dosyasında indirilebilir.
+- Şirket içi veya herhangi bir buluttan fiziksel veya sanal sunucular için gereci, var olan bir sunucuda bir komut dosyası kullanarak her zaman dağıtırsınız.
+- Azure Kamu için, üç gereçlerin hepsi yalnızca PowerShell yükleyici betiği kullanılarak dağıtılabilir.
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Gereç Azure 'a nasıl bağlanır?
 
-Gereç Internet üzerinden veya Azure ExpressRoute kullanarak bağlanabilir.
+Gereç Internet üzerinden veya Azure ExpressRoute kullanarak bağlanabilir. Bu [URL 'Lerin](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) Azure 'a bağlanmak için gerecin beyaz listede bulunduğundan emin olun.
 
 - Azure ExpressRoute 'u Azure geçişi çoğaltma trafiği için kullanmak üzere Microsoft eşlemesi veya var olan bir genel eşleme gerekir (genel eşleme, yeni ER oluşturmaları için kullanım dışıdır).
 - Azure ExpressRoute üzerinden (yalnızca) özel eşleme etkin olan çoğaltma desteklenmez.
@@ -66,6 +67,7 @@ Azure geçişi gerecinin VM 'lerde topladığı veriler hakkında bilgi edinmek 
 
 - **VMware VM**: toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---vmware) .
 - **Hyper-V VM**: toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---hyper-v) .
+- **Fiziksel veya sanal sunucular**: toplanan verileri[gözden geçirin](migrate-appliance.md#collected-data---physical) .
 
 ## <a name="how-is-data-stored"></a>Veriler nasıl depolanır?
 
@@ -107,8 +109,7 @@ Bir projede birden fazla gereç eklenmiş olabilir. Ancak, bir gereç yalnızca 
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure geçiş gereci/çoğaltma gereci aynı vCenter 'a bağlanmasına mi?
 
-Evet. Hem Azure geçiş gereci (değerlendirme ve aracısız VMware geçişi için kullanılır) hem de çoğaltma gereci (VMware VM 'lerinin aracı tabanlı geçişi için kullanılır) aynı vCenter sunucusuna ekleyebilirsiniz.
-
+Evet. Hem Azure geçiş gereci (değerlendirme ve aracısız VMware geçişi için kullanılır) hem de çoğaltma gereci (VMware VM 'lerinin aracı tabanlı geçişi için kullanılır) aynı vCenter sunucusuna ekleyebilirsiniz. Ancak, aynı VM üzerinde her iki gereç de ayarlamadığınızdan emin olun ve şu anda desteklenmemektedir.
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Bir gereç ile kaç VM veya sunucu keşfedebilirim?
 
@@ -124,7 +125,9 @@ Ancak, kaynak grubu silindiğinde diğer kayıtlı gereçler, bulunan envanter, 
 
 ## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>Gereci farklı bir abonelik ya da projeyle kullanabilir miyim?
 
-Bulmayı başlatmak için gereci kullandıktan sonra, gereci farklı bir Azure aboneliğiyle kullanılmak üzere yeniden yapılandıramazsınız ve farklı bir Azure geçişi projesinde kullanamazsınız. Ayrıca, farklı bir vCenter Server örneğindeki VM 'Leri de keşfedeceksiniz. Bu görevler için yeni bir gereç ayarlayın.
+Gereci farklı bir abonelik veya projeyle kullanmak için, Gereç makinesindeki belirli bir senaryo (VMware/Hyper-V/fiziksel) için PowerShell yükleyicisi betiğini çalıştırarak mevcut gereci yeniden yapılandırmanız gerekir. Komut dosyası, yeni bir gereç dağıtmak için mevcut gereç bileşenlerini ve ayarlarını temizler. Yeni dağıtılan gereç yapılandırma yöneticisini kullanmaya başlamadan önce lütfen tarayıcı önbelleğini temizlemeniz gerekir.
+
+Ayrıca, yeniden yapılandırılmış bir gereç üzerinde mevcut bir Azure geçişi proje anahtarını yeniden kullanamazsınız. Gereç kaydını tamamlayabilmeniz için istenen abonelik/projeden yeni bir anahtar oluşturmadığınızdan emin olun.
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Gereci bir Azure VM üzerinde ayarlayabilir miyim?
 

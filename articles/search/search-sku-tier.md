@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922812"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661094"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
@@ -25,7 +25,7 @@ Bir Azure Bilişsel Arama hizmeti oluşturduğunuzda, hizmet ömrü boyunca düz
 
 Aşağıdaki tabloda katman ile ilgili özellik kısıtlamaları açıklanmaktadır.
 
-| Özellik | Sınırlamalar |
+| Öne çıkan özelliği | Sınırlamalar |
 |---------|-------------|
 | [Dizinleyiciler](search-indexer-overview.md) | Dizin oluşturucular S3 HD üzerinde kullanılamaz. |
 | [Yapay zeka zenginleştirme](search-security-manage-encryption-keys.md) | Ücretsiz katmanda çalışır, ancak önerilmez. |
@@ -39,7 +39,7 @@ Birçok özellik, ücretsiz olarak da dahil olmak üzere her katmanda mevcuttur,
 
 Katmanlar şu şekilde farklılaştırılabilir:
 
-+ Oluşturabileceğiniz dizin ve dizin oluşturucularının miktarı
++ Dizin ve dizin oluşturucularının miktarı (en fazla limit)
 + Bölümlerin boyutu ve hızı (fiziksel depolama)
 
 Seçtiğiniz katman faturalandırılabilir ücreti belirler. Azure portal aşağıdaki ekran görüntüsünde, kullanılabilir katmanlar, eksi fiyatlandırma (portalda ve [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulabilirsiniz) gösterilmektedir. **Ücretsiz**, **temel**ve **Standart** en yaygın katmanlardır.

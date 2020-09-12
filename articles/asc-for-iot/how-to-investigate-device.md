@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab9b396f72ddd35638519ab69f17e034479e0d5a
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311043"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504919"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Şüpheli bir IoT cihazını araştırın
 
@@ -39,7 +39,7 @@ Varsayılan olarak, IoT için Azure Güvenlik Merkezi, Log Analytics çalışma 
 Veri depolamaya yönelik Log Analytics çalışma alanınızı bulmak için:
 
 1. IoT Hub 'ınızı açın,
-1. **Güvenlik**altında **genel bakış**' a tıklayın ve ardından **Ayarlar**' ı seçin.
+1. **Güvenlik**altında **Ayarlar**' ı seçin ve ardından **veri toplama**' yı seçin.
 1. Log Analytics çalışma alanı yapılandırma ayrıntılarınızı değiştirin.
 1. **Kaydet**’e tıklayın.
 

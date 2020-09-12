@@ -9,14 +9,14 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2cc275028b64c3df06e2c0275bc0f4ac21fa0f6e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0edb50fd72622d3d7d628e0e02ef2c3737f8713a
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020159"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500428"
 ---
-# <a name="monitor-azure-storage"></a>Azure Storage 'ı izleme
+# <a name="monitoring-azure-storage"></a>Azure Storage 'ı izleme
 
 Azure kaynaklarına dayanan önemli uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure depolama tarafından oluşturulan izleme verileri ve bu verilerdeki uyarıları çözümlemek için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
 
@@ -30,7 +30,7 @@ Her depolama kaynağı için Azure portal **genel bakış** sayfası, istekler v
 ## <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
 Azure depolama, Azure 'da tam yığın izleme hizmeti olan [Azure izleyici](../../azure-monitor/overview.md)'yi kullanarak izleme verileri oluşturur. Azure Izleyici, diğer bulutlardaki ve Şirket içindeki Azure kaynaklarınızı ve kaynaklarınızı izlemek için tam bir özellik kümesi sağlar. 
 
-Azure Izleyici hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici Ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md). Makalesinde aşağıdaki konular açıklanmaktadır:
+Azure [izleyici Ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md) makalesini izleyerek şunları açıklayan makaleyi başlatın:
 
 - Azure İzleyici nedir?
 - İzleme ile ilişkili maliyetler
@@ -40,7 +40,7 @@ Azure Izleyici hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici Ile
 
 Aşağıdaki bölümler, Azure depolama 'dan toplanan belirli verileri açıklayarak bu makalede derleme oluşturur. Örnekler, veri toplamayı yapılandırmayı ve bu verileri Azure araçları ile çözümlemeyi gösterir.
 
-## <a name="monitor-data-from-azure-storage"></a>Azure depolama 'dan verileri izleme
+## <a name="monitoring-data-from-azure-storage"></a>Azure depolama 'dan verileri izleme
 
 Azure depolama, [Azure kaynaklarından gelen verileri izleme](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. Azure depolama tarafından oluşturulan Günlükler ve ölçümler hakkında daha fazla bilgi için bkz. [Azure depolama izleme veri başvurusu](monitor-storage-reference.md).
 
@@ -90,7 +90,7 @@ Günlükleri toplamak istediğiniz işlem kategorilerini da belirtmeniz gerekir.
 | StorageWrite | Nesneler üzerinde yazma işlemleri. |
 | StorageDelete | Nesneler üzerinde silme işlemleri. |
 
-## <a name="analyze-metric-data"></a>Ölçüm verilerini çözümleme
+## <a name="analyzing-metric-data"></a>Ölçüm verileri çözümleniyor
 
 Azure depolama ölçümlerini, Ölçüm Gezgini kullanarak diğer Azure hizmetlerinden alınan ölçümlerle çözümleyebilirsiniz. **Azure izleyici** menüsünden **ölçümler** ' i seçerek Ölçüm Gezgini açın. Bu aracı kullanma hakkında daha fazla bilgi için bkz. [Azure Ölçüm Gezgini](../../azure-monitor/platform/metrics-getting-started.md)kullanmaya başlama. 
 
@@ -115,7 +115,7 @@ Tüm Azure Storage ölçümleri şu ad alanlarında bulunur:
 Azure depolama 'yı içeren tüm Azure Izleyici destek ölçümlerinin bir listesi için bkz. [Azure izleyici desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
 
 
-### <a name="access-metrics"></a>Erişim ölçümleri
+### <a name="accessing-metrics"></a>Ölçümlere erişme
 
 > [!TIP]
 > Azure CLı veya .NET örneklerini görüntülemek için burada listelenen ilgili sekmeleri seçin.
@@ -133,7 +133,7 @@ Bu örnekte, `<resource-ID>` yer tutucuyu tüm depolama hesabının kaynak kimli
    Get-AzMetricDefinition -ResourceId $resourceId
 ```
 
-#### <a name="read-metric-values"></a>Ölçüm değerlerini oku
+#### <a name="reading-metric-values"></a>Ölçüm değerlerini okuma
 
 Depolama hesabınızın hesap düzeyindeki ölçüm değerlerini veya blob, dosya, tablo veya kuyruk hizmeti gibi ayrı depolama hizmetini okuyabilirsiniz. [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric?view=azps-3.3.0) cmdlet 'ini kullanın.
 
@@ -203,7 +203,7 @@ Aşağıdaki örnek, hesap düzeyinde bir ölçüm tanımının nasıl eklenece�
 
 ```
 
-#### <a name="read-account-level-metric-values"></a>Hesap düzeyindeki ölçüm değerlerini oku
+#### <a name="reading-account-level-metric-values"></a>Hesap düzeyindeki ölçüm değerlerini okuma
 
 Aşağıdaki örnek, `UsedCapacity` Hesap düzeyinde verilerin nasıl okunacağını gösterir:
 
@@ -249,7 +249,7 @@ Aşağıdaki örnek, `UsedCapacity` Hesap düzeyinde verilerin nasıl okunacağ�
 
 ```
 
-#### <a name="read-multidimensional-metric-values"></a>Çok boyutlu ölçüm değerlerini oku
+#### <a name="reading-multidimensional-metric-values"></a>Çok boyutlu ölçüm değerlerini okuma
 
 Çok boyutlu ölçümler için, belirli boyut değerlerinde ölçüm verilerini okumak istiyorsanız meta veri filtreleri tanımlamanız gerekir.
 
@@ -304,7 +304,7 @@ Aşağıdaki örnek, Multidimension destekleyen ölçümde ölçüm verilerinin 
 
 ---
 
-## <a name="analyze-log-data"></a>Günlük verilerini analiz etme
+## <a name="analyzing-log-data"></a>Günlük verileri çözümleniyor
 
 Kaynak günlüklerine bir depolama hesabında blob olarak, olay verileri olarak veya log analitik sorguları aracılığıyla erişebilirsiniz.
 
@@ -313,7 +313,7 @@ Bu günlüklerde görünen alanların ayrıntılı bir başvurusu için bkz. [Az
 > [!NOTE]
 > Azure Izleyici 'de Azure depolama günlükleri genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Önizlemeye kaydolmak için [Bu sayfaya](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)bakın. Bu önizleme, blob 'lar (Azure Data Lake Storage 2.), dosyalar, kuyruklar, tablolar, genel amaçlı v1 için Premium Depolama hesapları ve genel amaçlı v2 depolama hesapları için günlük Günlükler sunar. Klasik depolama hesapları desteklenmez.
 
-### <a name="access-logs-in-a-storage-account"></a>Depolama hesabındaki günlüklere erişim
+### <a name="accessing-logs-in-a-storage-account"></a>Depolama hesabındaki günlüklere erişme
 
 Günlükler, hedef depolama hesabındaki bir kapsayıcıya depolanan BLOB olarak görünür. Veriler, tek bir Blobun içinde, satır sınırlı bir JSON yükü olarak toplanır ve depolanır. Blobun adı şu adlandırma kuralını izler:
 
@@ -323,7 +323,7 @@ Aşağıda bir örnek verilmiştir:
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 
-### <a name="access-logs-in-an-event-hub"></a>Bir olay hub 'ında günlüklere erişim
+### <a name="accessing-logs-in-an-event-hub"></a>Bir olay hub 'ında günlüklere erişme
 
 Bir olay hub 'ına gönderilen Günlükler dosya olarak depolanmaz, ancak olay hub 'ının günlük bilgilerini aldığını doğrulayabilirsiniz. Azure portal, Olay Hub 'ınıza gidin ve **gelen iletilerin** sayısının sıfırdan büyük olduğunu doğrulayın. 
 
@@ -331,7 +331,7 @@ Bir olay hub 'ına gönderilen Günlükler dosya olarak depolanmaz, ancak olay h
 
 Güvenlik bilgileri ve olay yönetimi ve izleme araçlarını kullanarak, Olay Hub 'ınıza gönderilen günlük verilerine erişebilir ve bu verileri okuyabilirsiniz. Daha fazla bilgi için bkz. [Olay Hub 'ma gönderilen izleme verileriyle ne yapabilirim?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
 
-### <a name="access-logs-in-a-log-analytics-workspace"></a>Log Analytics çalışma alanındaki günlüklere erişim
+### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Log Analytics çalışma alanındaki günlüklere erişme
 
 Azure Izleyici günlük sorgularını kullanarak, bir Log Analytics çalışma alanına gönderilen günlüklere erişebilirsiniz.
 

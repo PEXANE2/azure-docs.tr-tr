@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Analytics 'e veri yükleme
+title: Azure Synapse Analytics'e veri yükleme
 description: Azure SYNAPSE Analytics 'e veri kopyalamak için Azure Data Factory kullanma
 services: data-factory
 ms.author: jingwang
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: 8891c65707822abeb2bcca52280d9b56dc725e4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c90590ac4c47f6ac8d51273fecfb653dfe056b1d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252007"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485779"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri yükleme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Azure SYNAPSE Analytics (eski ADıYLA SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) , hem ilişkisel hem de ilişkisel olmayan çok büyük hacimli verileri işleyebilen bulut tabanlı, genişleme veritabanıdır. Azure SYNAPSE Analytics, kurumsal veri ambarı iş yükleri için optimize edilmiş, yüksek düzeyde paralel işleme (MPP) mimarisi üzerine kurulmuştur. Depolama ve işlem ölçeğini bağımsız olarak ölçeklendirmeye yönelik esnekliğe sahip bulut esnekliği sunar.
+[Azure SYNAPSE Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) , hem ilişkisel hem de ilişkisel olmayan çok büyük hacimli verileri işleyebilen bulut tabanlı, genişleme bir veritabanıdır. Azure SYNAPSE Analytics, kurumsal veri ambarı iş yükleri için optimize edilmiş, yüksek düzeyde paralel işleme (MPP) mimarisi üzerine kurulmuştur. Depolama ve işlem ölçeğini bağımsız olarak ölçeklendirmeye yönelik esnekliğe sahip bulut esnekliği sunar.
 
 Azure Data Factory kullandığınızda Azure SYNAPSE Analytics 'i kullanmaya artık hiç olmadığı kadar kolay. Azure Data Factory, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. Hizmeti kullanarak bir Azure SYNAPSE analizini mevcut sisteminizdeki verilerle doldurabilir ve analiz çözümlerinizi oluştururken zamandan tasarruf edebilirsiniz.
 
@@ -54,17 +54,17 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
     * **Ad**: ad Için *Loadsqldwdemo* girin. Veri fabrikanızın adı * genel olarak benzersiz olmalıdır. "Data Factory Name ' LoadSQLDWDemo ' kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin _**, Name**_**ADFTutorialDataFactory**adını kullanabilirsiniz. Data Factory 'yi yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
     * **Abonelik**: veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
     * **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
-    * **Sürüm**: **v2**'yi seçin.
+    * **Sürüm**: **V2**'yi seçin.
     * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Store, Azure depolama, Azure SQL veritabanı vb. içerir.
 
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz:
 
    ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
 
    Veri Tümleştirme Uygulamasını ayrı bir sekmede açmak için **Oluştur ve İzle** kutucuğunu seçin.
 
-## <a name="load-data-into-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'e veri yükleme
+## <a name="load-data-into-azure-synapse-analytics"></a>Azure Synapse Analytics'e veri yükleme
 
 1. **Başlayalım** sayfasında, Veri Kopyalama aracını açmak için **Veri Kopyala** kutucuğunu seçin.
 
@@ -102,13 +102,13 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
 
     a. Bağlantı eklemek için **+ Yeni bağlantı oluştur** ' a tıklayın
 
-    b. Galeriden **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğini belirleyin ve **devam**' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna "SQL" yazabilirsiniz.
+    b. Galeriden **Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı)** seçeneğini belirleyin ve **devam**' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna "SQL" yazabilirsiniz.
 
-    ![Azure SQL DW 'yi seçin](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+    ![Azure SYNAPSE Analytics 'i seçme](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
     c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **Oluştur**' u seçin.
 
-    ![Azure SQL DW 'yi yapılandırma](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+    ![Azure SYNAPSE Analytics 'i yapılandırma](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. Kaynak olarak yeni oluşturulan bağlantılı havuz hizmetini seçin ve **İleri**'ye tıklayın.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 03b8deaa700d15a20571a8ec5f389c252c32eed2
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407702"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485728"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanı 
 
@@ -143,7 +143,7 @@ Varsayılan olan genel ağda otomatik çözümle Azure IR kullanmayı seçerseni
   - Bölgenin algılanamayan verileri Salesforce 'a kopyaladığınızda, kopyalama etkinliği Doğu ABD IR üzerinde yürütülür.
 
   >[!TIP] 
-  >Katı veri uyumluluğu gereksinimleriniz varsa ve verilerin belirli bir coğrafyadan ayrılmamasını sağlamak istiyorsanız, belirli bir bölgede açık bir şekilde Azure IR oluşturabilir ve ConnectVia özelliğini kullanarak Bağlı Hizmeti bu IR’ye yönlendirebilirsiniz. Örneğin Güney Birleşik Krallık’deki bir Blob’dan Güney Birleşik Krallık’deki bir SQL DW’ye veri kopyalamak, fakat verilerin Birleşik Krallık’tan ayrılmamasını sağlamak istiyorsanız Güney Birleşik Krallık’de bir Azure IR oluşturup her iki Bağlı Hizmet’i de bu IR’ye yönlendirin.
+  >Katı veri uyumluluğu gereksinimleriniz varsa ve verilerin belirli bir coğrafyadan ayrılmamasını sağlamak istiyorsanız, belirli bir bölgede açık bir şekilde Azure IR oluşturabilir ve ConnectVia özelliğini kullanarak Bağlı Hizmeti bu IR’ye yönlendirebilirsiniz. Örneğin, UK Güney blob 'tan UK Güney Azure SYNAPSE Analytics 'e veri kopyalamak istiyorsanız ve verilerin UK ' a ayrılmadığından emin olmak istiyorsanız, UK Güney içinde bir Azure IR oluşturun ve hem bağlı hizmetleri bu IR 'ye bağlayın.
 
 - Arama/GetMetadata/silme etkinliği yürütmesi (ardışık düzen etkinlikleri olarak da bilinir), dönüştürme etkinliği dağıtma (dış etkinlik olarak da bilinir) ve yazma işlemleri (test bağlantısı, klasör listesi ve tablo listesi, Önizleme verileri) için ADF, Data Factory bölgesindeki IR 'yi kullanır.
 

@@ -3,12 +3,12 @@ title: Azure VM 'lerinde SAP HANA veritabanlarını geri yükleme
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarının nasıl geri yükleneceğini öğrenin.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 7cb521b4034ef225d3af6d397bb6cd83b28e1b8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006321"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375321"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanlarını geri yükleme
 
@@ -24,33 +24,33 @@ Azure Backup, Azure VM 'lerinde çalışan SAP HANA veritabanlarını şu şekil
 
 * Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesine geri yükleme yapın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir veritabanını geri yüklemeden önce aşağıdakilere göz önüne alın:
 
-* Veritabanını yalnızca aynı bölgedeki bir SAP HANA örneğine geri yükleyebilirsiniz
+* Veritabanını yalnızca aynı bölgedeki bir SAP HANA örneğine geri yükleyebilirsiniz.
 
-* Hedef örnek, kaynakla aynı kasada kayıtlı olmalıdır
+* Hedef örnek, kaynakla aynı kasada kayıtlı olmalıdır.
 
 * Azure Backup aynı VM 'de iki farklı SAP HANA örneği tanımlayamıyor. Bu nedenle, verileri aynı VM 'de bir örnekten diğerine geri yüklemek mümkün değildir.
 
 * Hedef SAP HANA örneğinin geri yükleme için hazır olduğundan emin olmak için, **yedekleme hazırlığı** durumunu denetleyin:
 
-  1. Hedef SAP HANA örneğinin kaydedildiği kasayı açın
+  1. Hedef SAP HANA örneğinin kaydedildiği kasayı açın.
 
-  1. Kasa panosunda, **Başlarken**bölümünde **Yedekle** ' yi seçin.
+  1. Kasa panosunda, **Başlarken**altında **Yedekle**' yi seçin.
 
       ![Kasa panosunda yedekleme](media/sap-hana-db-restore/getting-started-backup.png)
 
-  1. **Yedekleme**'de, **ne yedeklemek** ıstıyorsunuz altında? **Azure VM 'de SAP HANA** seçin
+  1. **Yedekleme**'de, **ne yedeklemek istiyorsunuz?** altında, **Azure VM 'de SAP HANA '** yi seçin.
 
       ![Azure VM 'de SAP HANA seçin](media/sap-hana-db-restore/sap-hana-backup.png)
 
-  1. **VM 'lerde veritabanlarını bul**altında, **Ayrıntıları görüntüle** ' ye tıklayın.
+  1. **VM 'lerde veritabanlarını bul**altında, **Ayrıntıları görüntüle**' yi seçin.
 
       ![Ayrıntıları görüntüle](media/sap-hana-db-restore/view-details.png)
 
-  1. Hedef VM 'nin **yedek hazırlığını** gözden geçirin
+  1. Hedef VM 'nin **yedekleme hazırlığını** gözden geçirin.
 
       ![Korumalı sunucular](media/sap-hana-db-restore/protected-servers.png)
 
