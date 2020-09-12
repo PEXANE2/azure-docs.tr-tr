@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: d49f9df9fdc7dd8d2fb53b9ad6eb6eae64965fb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 09/02/2020
+ms.openlocfilehash: fe8024c60e204a4ec72002c878f7753ae35aa00d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271731"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393828"
 ---
 # <a name="pricing-for-virtual-machine-offers"></a>Sanal makine tekliflerinin fiyatlandırması
 
@@ -98,7 +98,7 @@ Yayımcı Ayrıca fiyatlandırma elektronik tablosunu geçici bir depolama konum
 
 ## <a name="new-core-sizes-added-on-722019"></a>7/2/2019 üzerine yeni temel boyutlar eklendi
 
-VM yayımcılarının, yeni Azure sanal makine boyutlarına (çekirdek sayısına göre) yeni fiyatlara ek olarak, 2 Temmuz 2019 tarihinde bilgilendirildi.  Yeni fiyatlar, 10, 44, 48, 60, 120, 208 ve 416 temel boyutlarına yöneliktir.  Mevcut VM için, bu çekirdek boyutları için yeni fiyatlar, geçerli fiyatlara göre otomatik olarak hesaplanır.  Yayımcılar, ek fiyatları gözden geçirmek ve istediğiniz değişiklikleri yapmak için 1 Ağustos 2019 ' e kadar.  Bu tarihten sonra, yayımcı tarafından zaten yeniden yayımlanmamışsa, bu yeni çekirdek boyutları için otomatik olarak hesaplanan fiyatlar geçerli olur.
+VM yayımcılarının, yeni Azure sanal makine boyutlarına (çekirdek sayısına göre) yeni fiyatlara ek olarak, 2 Temmuz 2019 tarihinde bilgilendirildi.  Yeni fiyatlar, 10, 44, 48, 60, 120, 208 ve 416 temel boyutlarına yöneliktir.  Mevcut VM için, bu çekirdek boyutları için yeni fiyatlar, geçerli fiyatlara göre otomatik olarak hesaplanır. Yayımcılar, ek fiyatları gözden geçirmek ve istediğiniz değişiklikleri yapmak için 1 Ağustos 2019 ' e kadar.  Bu tarihten sonra, yayımcı tarafından zaten yeniden yayımlanmamışsa, bu yeni çekirdek boyutları için otomatik olarak hesaplanan fiyatlar geçerli olur.
 
 ## <a name="regions"></a>Bölgeler
 
@@ -121,7 +121,7 @@ Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirteb
 | CR         | Kosta Rika           | CRC               |
 | HR         | Hırvatistan              | HRK dili               |
 | CY         | Kıbrıs               | EUR               |
-| CZ         | Çek Cumhuriyeti       | CZK dili               |
+| CZ         | Czechia       | CZK dili               |
 | DK         | Danimarka              | DKK               |
 | DO         | Dominik Cumhuriyeti   | USD               |
 | EC         | Ekvador              | USD               |
@@ -151,7 +151,6 @@ Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirteb
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litvanya            | EUR               |
 | LU         | Lüksemburg           | EUR               |
-| MK         | Kuzey Makedonya      | MKD               |
 | MY         | Malezya             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Meksika               | MXN               |
@@ -160,6 +159,7 @@ Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirteb
 | NL         | Hollanda          | EUR               |
 | NZ         | Yeni Zelanda          | NZD               |
 | NG         | Nijerya              | NGN               |
+| MK         | Kuzey Makedonya      | MKD               |
 | NO         | Norveç               | NOK               |
 | OM         | Umman                 | OMR               |
 | PK         | Pakistan             | PKR               |

@@ -3,17 +3,17 @@ title: Azure PowerShell kullanarak Azure Traffic Manager alt ağı geçersiz kı
 description: Bu makale, bir Traffic Manager profilinin yönlendirme yöntemini geçersiz kılmak için Traffic Manager alt ağ geçersiz kılmayı nasıl kullanacağınızı anlamanıza yardımcı olur. Bu işlem, Azure PowerShell kullanarak uç nokta eşlemelerine ön tanımlı IP aralığı aracılığıyla Son Kullanıcı IP adresini temel alarak trafiği bir uç noktaya yönlendirir.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: rohink
-ms.openlocfilehash: 3b58a0aef4df71649e657c04b44c31b6bbfe019c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 01bd3b1e945ee7c9ac16af7048536c0a9e2d731a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689580"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401597"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Azure PowerShell kullanarak alt ağ geçersiz kılma Traffic Manager
 

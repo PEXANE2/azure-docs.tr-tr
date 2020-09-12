@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 2e289f30ef1c1883c38884eb563a41bccc841329
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd8c8450d6e747e9789c785d1c594532b94a36cb
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79462660"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443084"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>Verileri bulutta kopyalamak için bir Data Factory işlem hattı oluşturmak için PowerShell 'i kullanma
 
@@ -27,7 +27,7 @@ Bu örnek PowerShell betiği, verileri bir konumdan Azure Blob depolama alanınd
 
 ## <a name="prerequisites"></a>Ön koşullar
 * **Azure depolama hesabı**. Blob depolama alanını hem **kaynak** hem de **havuz** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma sırasında [depolama hesabı oluşturma](../../storage/common/storage-account-create.md) konusuna bakın. 
-* Blob Depolama içinde bir **blob kapsayıcısı** oluşturun, kapsayıcıda bir giriş **klasörü** oluşturun ve bazı dosyaları klasöre yükleyin. [Azure Depolama gezgini](https://azure.microsoft.com/features/storage-explorer/) gibi araçları kullanarak Azure Blob depolama hesabına bağlanabilir, bir blob kapsayıcısı oluşturabilir, giriş dosyasını karşıya yükleyebilir ve çıktı dosyasını doğrulayabilirsiniz.
+* Blob Depolama içinde bir **blob kapsayıcısı** oluşturun, kapsayıcıda bir giriş **klasörü** oluşturun ve bazı dosyaları klasöre yükleyin. Azure Blob depolamaya bağlanmak, blob kapsayıcısı oluşturmak, giriş dosyasını karşıya yüklemek ve çıkış dosyasını doğrulamak için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) gibi araçları kullanabilirsiniz.
 
 ## <a name="sample-script"></a>Örnek betik
 

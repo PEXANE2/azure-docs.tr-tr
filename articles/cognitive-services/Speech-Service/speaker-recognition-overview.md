@@ -1,25 +1,27 @@
 ---
-title: Azure konuşmacı tanıma hizmeti
+title: Konuşmacı tanımaya genel bakış-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmetler konuşmacı tanıma, hoparlörleri benzersiz ses özelliklerine göre doğrulayan ve tanımlayan algoritmalar sağlar. Konuşmacı Tanıma, "konuşuyor kim?" sorusunu yanıtlamak için kullanılır.
+description: Konuşmacı Tanıma, ses biyometri kullanarak hoparlörleri benzersiz ses özelliklerine göre doğrulayan ve tanımlayan algoritmalar sağlar. Konuşmacı Tanıma, "konuşuyor kim?" sorusunu yanıtlamak için kullanılır. Bu makale, konuşmacı tanıma hizmetinin avantajları ve özelliklerine genel bir bakış sunar.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 09/02/2020
 ms.author: trbye
-ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.custom: cog-serv-seo-aug-2020
+keywords: Konuşmacı Tanıma, ses Biyometri
+ms.openlocfilehash: 2c5b73b93c22ef27d7b68455f5e1e5108f25c984
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780894"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397268"
 ---
-# <a name="what-is-the-azure-speaker-recognition-service"></a>Azure konuşmacı tanıma hizmeti nedir?
+# <a name="what-is-speaker-recognition"></a>Konuşmacı Tanıma nedir?
 
-Konuşmacı Tanıma hizmeti, kendi benzersiz ses özelliklerine göre hoparlörleri doğrulayan ve tanımlayan algoritmalar sağlar. Konuşmacı Tanıma, "konuşuyor kim?" sorusunu yanıtlamak için kullanılır. Konuşmacı sesinin benzersiz özelliklerine göre bir kayıt profili oluşturan tek konuşmacı için ses eğitimi verileri sağlarsınız. Daha sonra konuşmacının aynı kişiye (konuşmacı doğrulaması) sahip olduğunu doğrulamak veya kayıtlı bir konuşmacı profili *grubuna* karşı ses seslerinizi çapraz olarak denetlemek için, gruptaki herhangi bir profille eşleşip eşleşmediğini öğrenmek için bu profile karşı ses ses örnekleri arasında çapraz denetim yapabilirsiniz. Buna karşılık, [Konuşmacı](batch-transcription.md#speaker-separation-diarization) , bir Batch işleminde konuşmacı tarafından sesin segmentlerini gruplandırır.
+Konuşmacı Tanıma hizmeti, ses biyometri kullanarak hoparlörleri benzersiz ses özelliklerine göre doğrulayan ve belirleyen algoritmalar sağlar. Konuşmacı Tanıma, "konuşuyor kim?" sorusunu yanıtlamak için kullanılır. Konuşmacı sesinin benzersiz özelliklerine göre bir kayıt profili oluşturan tek konuşmacı için ses eğitimi verileri sağlarsınız. Daha sonra konuşmacının aynı kişiye (konuşmacı doğrulaması) sahip olduğunu doğrulamak veya kayıtlı bir konuşmacı profili *grubuna* karşı ses seslerinizi çapraz olarak denetlemek için, gruptaki herhangi bir profille eşleşip eşleşmediğini öğrenmek için bu profile karşı ses ses örnekleri arasında çapraz denetim yapabilirsiniz. Buna karşılık, [Konuşmacı](batch-transcription.md#speaker-separation-diarization) , bir Batch işleminde konuşmacı tarafından sesin segmentlerini gruplandırır.
 
 ## <a name="speaker-verification"></a>Konuşmacı Doğrulama
 

@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: bir devreyi değiştirme: PowerShell: klasik'
 description: Bu makalede, ExpressRoute klasik dağıtım modeli devrenizin durumunu denetleme, güncelleştirme veya silme ve sağlamayı kaldırma adımlarında size kılavuzluk eder.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/05/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 801032e3df9dcb778fa4e591ef37eabc317e997a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: be45d49d3f445810c7ac6a38e3e12abe178a4bed
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073345"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396293"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell kullanarak bir ExpressRoute devresini değiştirme (klasik)
 

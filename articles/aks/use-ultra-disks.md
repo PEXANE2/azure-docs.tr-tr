@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kümesinde Ultra disklerin nasıl et
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3f15f075604c104b467af289f6f5d4b92dc12659
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650188"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420872"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes hizmetinde Azure Ultra diskleri kullanma (Önizleme)
 
@@ -21,11 +21,6 @@ Bu özellik yalnızca küme oluşturma veya düğüm havuzu oluşturma zamanınd
 
 > [!IMPORTANT]
 > Azure Ultra diskler, bu diskleri ve yalnızca belirli VM serisini destekleyen kullanılabilirlik bölgelerinde ve bölgelerde dağıtılan nodepools gerektirir. Bkz. [**Ultra DISKLER GA kapsamı ve sınırlamaları**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
-
-### <a name="prerequisites"></a>Önkoşullar
-
-- `EnableUltraSSD`Özellik bayrağının etkinleştirildiğinden emin olun.
-- En son `aks-preview` [CLI uzantısının][az-extension-add] yüklü olduğundan emin olun.
 
 ### <a name="register-the-enableultrassd-preview-feature"></a>`EnableUltraSSD`Önizleme özelliğini kaydetme
 
@@ -78,7 +73,7 @@ Azure Kaynak grubu oluşturun:
 az group create --name myResourceGroup --location westus2
 ```
 
-Yönetilen Azure AD tümleştirmesi ve Kubernetes yetkilendirmesi için Azure RBAC ile AKS kümesi oluşturun.
+Ultra diskler desteğiyle AKS kümesini oluşturun.
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
@@ -133,7 +128,7 @@ storageclass.storage.k8s.io/ultra-disk-sc created
 
 ## <a name="create-a-persistent-volume-claim"></a>Kalıcı bir birim talebi oluşturun
 
-Kalıcı bir birim talebi (PVC), depolama sınıfına göre depolamayı otomatik olarak sağlamak için kullanılır. Bu durumda, bir PVC, standart veya Premium bir Azure yönetilen diski oluşturmak için önceden oluşturulmuş depolama sınıflarından birini kullanabilir.
+Kalıcı bir birim talebi (PVC), depolama sınıfına göre depolamayı otomatik olarak sağlamak için kullanılır. Bu durumda, bir PVC, bir ultra disk oluşturmak için önceden oluşturulmuş depolama sınıfını kullanabilir.
 
 Adlı bir dosya oluşturun `azure-ultra-disk-pvc.yaml` ve aşağıdaki bildirime kopyalayın. Talep, `ultra-disk` *Readwriteonce* Access ile, boyutu *1000 GB* olan adlı bir disk ister. *Ultra disk-SC* depolama sınıfı, depolama sınıfı olarak belirtilir.
 

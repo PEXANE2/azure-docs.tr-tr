@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ddfb0c9b10d96acd511b7bfaee4c6ef85d04812
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 921132947fbf52fbd187941b96d8b75197763387
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306426"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419121"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Yorumlenebilirlik: otomatik makine öğreniminde model açıklamaları (Önizleme)
 
@@ -31,7 +31,7 @@ Bu makalede şunları öğreneceksiniz:
 - Veri ve açıklamaları desenlerdeki desenleri görmenizi sağlayacak görselleştirmeleri etkinleştirin.
 - Çıkarım veya Puanlama sırasında yorumlenebilirlik uygulayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Yorumlenebilirlik özellikleri. `pip install azureml-interpret azureml-contrib-interpret`Gerekli paketleri almak için ' i çalıştırın.
 - Otomatik ML denemeleri oluşturma hakkında bilgi. Azure Machine Learning SDK 'sını kullanma hakkında daha fazla bilgi için, bu [regresyon modeli öğreticisini](tutorial-auto-train-models.md) doldurun veya [Otomatik ml denemeleri](how-to-configure-auto-train.md)'yi nasıl yapılandıracağınızı öğrenin.
@@ -39,6 +39,14 @@ Bu makalede şunları öğreneceksiniz:
 ## <a name="interpretability-during-training-for-the-best-model"></a>En iyi model için eğitim sırasında yorumlenebilirlik
 
 Tarafından `best_run` uygulanan özelliklerin açıklamalarını içeren öğesinden açıklamayı alın.
+
+> [!Warning]
+> Yorumlenebilirlik, en iyi model açıklaması, aşağıdaki algoritmaların en iyi model olarak kullanılması için otomatik ML tahmin denemeleri için kullanılamaz: 
+> * Forekaletcn
+> * Ortalama 
+> * Naive
+> * Mevsimlik ortalama 
+> * Mevsimtif
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>Yapıt deposundan uygulanan özellik önem derecesini indirin
 
@@ -112,7 +120,7 @@ engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=au
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>Çıkarım sırasında yorumlenebilirlik
+## <a name="interpretability-during-inference"></a>Çıkarım sırasında yorumlenebilirlik
 
 Bu bölümde, önceki bölümde yer alan açıklamaları hesaplamak için kullanılan açıklama ile otomatik bir ML modeli oluşturmayı öğreneceksiniz.
 

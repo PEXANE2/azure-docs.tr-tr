@@ -8,14 +8,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/02/2019
+ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 5ab8d45c12d7b2c408328e306b1a6961cbe5272a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010946"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426274"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
 
@@ -23,12 +23,12 @@ ms.locfileid: "87010946"
 
 Bu belgede, Windows sistemlerinde Azure PowerShell modülü, Azure Resource Manager şablonları ve Ayrıntılar sorunlarını giderme adımları kullanılarak özel betik uzantısının nasıl kullanılacağı ayrıntılı olarak açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 > [!NOTE]  
 > Kendi kendine beklemesi gerektiğinden, Update-AzVM öğesini parametresiyle aynı VM ile çalıştırmak için özel Betik uzantısı kullanmayın.  
 
-### <a name="operating-system"></a>Operating System
+### <a name="operating-system"></a>İşletim Sistemi
 
 Windows için özel Betik uzantısı, uzantı tarafından desteklenen OSs uzantısında çalışır;
 ### <a name="windows"></a>Windows
@@ -60,6 +60,7 @@ Betiğinizin yerel bir sunucu üzerinde olması, ek güvenlik duvarı ve ağ gü
 * Betiğin çalışması için 90 dakikalık bir süre ayrılmıştır. Betiklerin daha uzun sürmesi durumunda uzantı sağlama işlemi başarısız olur.
 * Betik içine yeniden başlatma eylemi eklemeyin. Aksi halde yüklenmekte olan diğer uzantılarla ilgili sorun yaşanabilir. Yeniden başlatma gerçekleştirildiğinde önyükleme sonrasında uzantı, kaldığı yerden devam etmeyecektir.
 * Yeniden başlatmaya neden olacak bir betiğe sahipseniz, uygulamaları yükleyip komut dosyalarını çalıştırırsanız, yeniden başlatmayı Windows zamanlanmış görevi kullanarak zamanlayabilir ya da DSC, Chef veya Pupevcil hayvan uzantıları gibi araçları kullanabilirsiniz.
+* VM aracısının durdurulmasına veya güncelleştirilmesine neden olacak bir komut dosyası çalıştırmanız önerilmez. Bu, uzantının bir zaman aşımı ile başa geçiş durumunda olmasına izin verebilir.
 * Uzantı, betiği yalnızca bir kez çalıştıracaktır. Betiğin her önyükleme sırasında çalıştırılmasını istiyorsanız uzantıyı kullanarak bir Windows Zamanlanmış Görevi oluşturmanız gerekir.
 * Betiğin çalıştırılacağı zamanı belirlemek istiyorsanız uzantıyı kullanarak bir Windows Zamanlanmış Görevi oluşturmanız gerekir.
 * Betik çalışırken Azure portalı veya CLI üzerinden uzantı durumunu yalnızca "geçiş durumunda" şeklinde görürsünüz. Çalışan bir betikle ilgili daha sık durum güncelleştirmesi almak isterseniz kendi çözümünüzü oluşturmanız gerekir.
@@ -141,7 +142,7 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 
 * `commandToExecute`: (**gerekli**, dize) yürütülecek giriş noktası betiği. Komutunuz parolalar gibi gizli dizileri içeriyorsa veya dosya URI 'larınız hassas ise bu alanı kullanın.
 * `fileUris`: (isteğe bağlı, dize dizisi) indirilecek dosya (ler) i URL 'Leri.
-* `timestamp`(isteğe bağlı, 32-bit tamsayı) bu alanı yalnızca bu alanın değerini değiştirerek betiğin yeniden çalıştırılması tetiklenecek şekilde kullanın.  Herhangi bir tamsayı değeri kabul edilebilir; yalnızca önceki değerden farklı olmalıdır.
+* `timestamp` (isteğe bağlı, 32-bit tamsayı) bu alanı yalnızca bu alanın değerini değiştirerek betiğin yeniden çalıştırılması tetiklenecek şekilde kullanın.  Herhangi bir tamsayı değeri kabul edilebilir; yalnızca önceki değerden farklı olmalıdır.
 * `storageAccountName`: (isteğe bağlı, dize) depolama hesabının adı. Depolama kimlik bilgilerini belirtirseniz, `fileUris` Azure Blobları için tümünün URL 'si olması gerekir.
 * `storageAccountKey`: (isteğe bağlı, dize) depolama hesabının erişim anahtarı
 * `managedIdentity`: (isteğe bağlı, JSON nesnesi) dosya indirmek için [yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md)
@@ -222,7 +223,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
 
 ### <a name="using-multiple-scripts"></a>Birden çok komut dosyası kullanma
 
-Bu örnekte, sunucunuzu oluşturmak için kullanılan üç betiğinin olması gerekir. **Commandtoexecute** ilk betiği çağırır, ardından diğerlerinin nasıl çağrıldığını gösteren seçenekleriniz vardır. Örneğin, doğru hata işleme, günlüğe kaydetme ve durum yönetimiyle birlikte yürütmeyi denetleyen ana bir betiğe sahip olabilirsiniz. Betikler, çalıştırmak için yerel makineye indirilir. Örneğin, `1_Add_Tools.ps1` `2_Add_Features.ps1` betiğe ekleyerek çağrın `.\2_Add_Features.ps1` ve içinde tanımladığınız diğer betikler için bu işlemi yineleyebilirsiniz `$settings` .
+Bu örnekte, sunucunuzu oluşturmak için kullanılan üç betiğinin olması gerekir. **Commandtoexecute** ilk betiği çağırır, ardından diğerlerinin nasıl çağrıldığını gösteren seçenekleriniz vardır. Örneğin, doğru hata işleme, günlüğe kaydetme ve durum yönetimiyle birlikte yürütmeyi denetleyen ana bir betiğe sahip olabilirsiniz. Betikler, çalıştırmak için yerel makineye indirilir. Örneğin, `1_Add_Tools.ps1` `2_Add_Features.ps1` betiğe ekleyerek çağrın  `.\2_Add_Features.ps1` ve içinde tanımladığınız diğer betikler için bu işlemi yineleyebilirsiniz `$settings` .
 
 ```powershell
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",
@@ -291,7 +292,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 Özel Betik uzantısını klasik VM 'lerde dağıtmak için Azure portal veya klasik Azure PowerShell cmdlet 'lerini kullanabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Klasik VM kaynağına gidin. **Ayarlar**altındaki **Uzantılar** ' ı seçin.
 

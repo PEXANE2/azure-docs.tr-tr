@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 9aac374de5af748eafbe4c22e5fc89f64e483c2a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2a017371ccb3cf70812aed5606c386746024884
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877991"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443169"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes ve Held ile Görüntü İşleme kapsayıcısı kullanma
 
@@ -48,9 +48,9 @@ Ana bilgisayarın kullanılabilir bir Kubernetes kümesi olması beklenmektedir.
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker kimlik bilgilerini Kubernetes kümesiyle paylaşma
 
-Kubernetes kümesine, `containerpreview.azurecr.io` kapsayıcı kayıt defterinden `docker pull` yapılandırılmış görüntü (ler) e izin vermek için Docker kimlik bilgilerini kümeye aktarmanız gerekir. Kapsayıcı kayıt [`kubectl create`][kubectl-create] defteri erişim önkoşulunu tarafından belirtilen kimlik bilgilerine göre *Docker-Registry gizli* anahtarı oluşturmak için aşağıdaki komutu yürütün.
+Kubernetes kümesine, `docker pull` kapsayıcı kayıt defterinden yapılandırılmış görüntü (ler) e izin vermek için `containerpreview.azurecr.io` Docker kimlik bilgilerini kümeye aktarmanız gerekir. [`kubectl create`][kubectl-create]Kapsayıcı kayıt defteri erişim önkoşulunu tarafından belirtilen kimlik bilgilerine göre *Docker-Registry gizli* anahtarı oluşturmak için aşağıdaki komutu yürütün.
 
-Seçtiğiniz komut satırı arabiriminizden aşağıdaki komutu çalıştırın. , Ve `<email-address>` ' ı kapsayıcı `<username>`kayıt `<password>`defteri kimlik bilgileriyle değiştirdiğinizden emin olun.
+Seçtiğiniz komut satırı arabiriminizden aşağıdaki komutu çalıştırın. , Ve ' ı `<username>` `<password>` `<email-address>` kapsayıcı kayıt defteri kimlik bilgileriyle değiştirdiğinizden emin olun.
 
 ```console
 kubectl create secret docker-registry containerpreview \
@@ -89,16 +89,25 @@ containerpreview      kubernetes.io/dockerconfigjson        1         30s
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Dağıtım için Held grafik değerlerini yapılandırma
 
-*Oku*adlı bir klasör oluşturarak başlayın, ardından aşağıdaki YAML içeriğini *Chart. yıml*adlı yeni bir dosyaya yapıştırın.
+*Read*adlı bir klasör oluşturarak başlayın. Ardından, aşağıdaki YAML içeriğini adlı yeni bir dosyaya yapıştırın `chart.yaml` :
 
 ```yaml
-apiVersion: v1
+apiVersion: v2
 name: read
 version: 1.0.0
 description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+dependencies:
+- name: rabbitmq
+  condition: read.image.args.rabbitmq.enabled
+  version: ^6.12.0
+  repository: https://kubernetes-charts.storage.googleapis.com/
+- name: redis
+  condition: read.image.args.redis.enabled
+  version: ^6.0.0
+  repository: https://kubernetes-charts.storage.googleapis.com/
 ```
 
-HELI grafiğinin varsayılan değerlerini yapılandırmak için aşağıdaki YAML 'yi kopyalayıp adlı `values.yaml`bir dosyaya yapıştırın. `# {ENDPOINT_URI}` Ve `# {API_KEY}` açıklamalarını kendi değerlerinizle değiştirin.
+HELI grafiğinin varsayılan değerlerini yapılandırmak için aşağıdaki YAML 'yi kopyalayıp adlı bir dosyaya yapıştırın `values.yaml` . `# {ENDPOINT_URI}`Ve `# {API_KEY}` açıklamalarını kendi değerlerinizle değiştirin. Gerekirse resultExpirationPeriod, Red, ve Kbbitmq 'ı yapılandırın.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -107,7 +116,7 @@ read:
   enabled: true
   image:
     name: cognitive-services-read
-    registry: containerpreview.azurecr.io/
+    registry:  containerpreview.azurecr.io/
     repository: microsoft/cognitive-services-read
     tag: latest
     pullSecret: containerpreview # Or an existing secret
@@ -115,25 +124,52 @@ read:
       eula: accept
       billing: # {ENDPOINT_URI}
       apikey: # {API_KEY}
+      
+      # Result expiration period setting. Specify when the system should clean up recognition results.
+      # For example, resultExpirationPeriod=1, the system will clear the recognition result 1hr after the process.
+      # resultExpirationPeriod=0, the system will clear the recognition result after result retrieval.
+      resultExpirationPeriod: 1
+      
+      # Redis storage, if configured, will be used by read container to store result records.
+      # A cache is required if multiple read containers are placed behind load balancer.
+      redis:
+        enabled: false # {true/false}
+        password: password
+
+      # RabbitMQ is used for dispatching tasks. This can be useful when multiple read containers are
+      # placed behind load balancer.
+      rabbitmq:
+        enabled: false # {true/false}
+        rabbitmq:
+          username: user
+          password: password
 ```
 
 > [!IMPORTANT]
-> `billing` Ve `apikey` değerleri sağlanmazsa, hizmetlerin süreleri 15 dakikadan sonra dolacak. Benzer şekilde, hizmetler kullanılamadığından doğrulama başarısız olur.
+> - `billing`Ve `apikey` değerleri sağlanmazsa, hizmetlerin süresi 15 dakika sonra dolacak. Benzer şekilde, hizmetler kullanılamadığından doğrulama başarısız olur.
+> 
+> - Bir yük dengeleyicinin arkasında birden çok okuma kapsayıcısı dağıtırsanız (örneğin, Docker Compose veya Kubernetes), bir dış önbelleğiniz olması gerekir. İşlem kapsayıcısı ve GET isteği kapsayıcısı aynı olamaz, çünkü bir dış önbellek sonuçları depolar ve kapsayıcılar arasında paylaşır. Önbellek ayarları hakkında daha fazla bilgi için bkz. [görüntü işleme Docker kapsayıcılarını yapılandırma](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
+>
 
-*Okuma* dizininin altında bir *Şablonlar* klasörü oluşturun. Aşağıdaki YAML 'yi kopyalayıp adlı `deployment.yaml`bir dosyaya yapıştırın. Dosya `deployment.yaml` , helb şablonu olarak görev yapar.
+*Okuma* dizininin altında bir *Şablonlar* klasörü oluşturun. Aşağıdaki YAML 'yi kopyalayıp adlı bir dosyaya yapıştırın `deployment.yaml` . `deployment.yaml`Dosya, helb şablonu olarak görev yapar.
 
 > Şablonlar, Kubernetes 'in anlayabileceği YAML biçimli kaynak açıklamaları olan bildirim dosyaları oluşturur. [-Help grafik şablonu Kılavuzu][chart-template-guide]
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: read
+  labels:
+    app: read-deployment
 spec:
+  selector:
+    matchLabels:
+      app: read-app
   template:
     metadata:
       labels:
-        app: read-app
+        app: read-app       
     spec:
       containers:
       - name: {{.Values.read.image.name}}
@@ -147,14 +183,23 @@ spec:
           value: {{.Values.read.image.args.billing}}
         - name: apikey
           value: {{.Values.read.image.args.apikey}}
+        args:        
+        - ReadEngineConfig:ResultExpirationPeriod={{ .Values.read.image.args.resultExpirationPeriod }}
+        {{- if .Values.read.image.args.rabbitmq.enabled }}
+        - Queue:RabbitMQ:HostName={{ include "rabbitmq.hostname" . }}
+        - Queue:RabbitMQ:Username={{ .Values.read.image.args.rabbitmq.rabbitmq.username }}
+        - Queue:RabbitMQ:Password={{ .Values.read.image.args.rabbitmq.rabbitmq.password }}
+        {{- end }}      
+        {{- if .Values.read.image.args.redis.enabled }}
+        - Cache:Redis:Configuration={{ include "redis.connStr" . }}
+        {{- end }}
       imagePullSecrets:
-      - name: {{.Values.read.image.pullSecret}}
-
+      - name: {{.Values.read.image.pullSecret}}      
 --- 
 apiVersion: v1
 kind: Service
 metadata:
-  name: read
+  name: read-service
 spec:
   type: LoadBalancer
   ports:
@@ -163,11 +208,26 @@ spec:
     app: read-app
 ```
 
+Aynı *Şablonlar* klasöründe aşağıdaki yardımcı işlevleri kopyalayıp içine yapıştırın `helpers.tpl` . `helpers.tpl` Hele şablonu oluşturmaya yardımcı olmak için yararlı işlevler tanımlar.
+
+```yaml
+{{- define "rabbitmq.hostname" -}}
+{{- printf "%s-rabbitmq" .Release.Name -}}
+{{- end -}}
+
+{{- define "redis.connStr" -}}
+{{- $hostMaster := printf "%s-redis-master:6379" .Release.Name }}
+{{- $hostSlave := printf "%s-redis-slave:6379" .Release.Name -}}
+{{- $passWord := printf "password=%s" .Values.read.image.args.redis.password -}}
+{{- $connTail := "ssl=False,abortConnect=False" -}}
+{{- printf "%s,%s,%s,%s" $hostMaster $hostSlave $passWord $connTail -}}
+{{- end -}}
+```
 Şablon, bir yük dengeleyici hizmetini ve okuma için kapsayıcının/görüntünüzün dağıtımını belirtir.
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes paketi (helk grafiği)
 
-*Helk grafiği* , `containerpreview.azurecr.io` kapsayıcı kayıt defterinden hangi Docker görüntüsünün çekeceğini tanımlayan yapılandırmayı içerir.
+*Helk grafiği* , kapsayıcı kayıt defterinden hangi Docker görüntüsünün çekeceğini tanımlayan yapılandırmayı içerir `containerpreview.azurecr.io` .
 
 > [Helk grafiği][helm-charts] , Ilgili bir Kubernetes kaynakları kümesini tanımlayan bir dosya koleksiyonudur. Tek bir grafik, bir veya daha çok karmaşık, örneğin, HTTP sunucuları, veritabanları, önbellekler gibi tam bir Web uygulaması yığını gibi basit bir şeyi dağıtmak için kullanılabilir.
 
@@ -175,7 +235,7 @@ Belirtilen *HELI grafikleri* , görüntü işleme hizmetinin Docker görüntüle
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Kubernetes kümesine helk grafiğini yükler
 
-*Helk grafiğini*yüklemek için [`helm install`][helm-install-cmd] komutunu yürütmemiz gerekir. `read` Klasörü yukarıdaki dizinden install komutunu yürütdiğinizden emin olun.
+*Helk grafiğini*yüklemek için komutunu yürütmemiz gerekir [`helm install`][helm-install-cmd] . Klasörü yukarıdaki dizinden install komutunu yürütdiğinizden emin olun `read` .
 
 ```console
 helm install read ./read
@@ -235,7 +295,7 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 Azure Kubernetes Service (AKS) ' de Held ile uygulama yükleme hakkında daha fazla bilgi için, [buraya gidin][installing-helm-apps-in-aks].
 
 > [!div class="nextstepaction"]
-> [Bilişsel hizmetler kapsayıcıları][cog-svcs-containers]
+> [Bilişsel Hizmetler Kapsayıcıları][cog-svcs-containers]
 
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free

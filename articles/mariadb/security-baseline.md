@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f7f559a0f0cfeddcba6e3f563c0a74a2472887d7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f067d4c777bb9a49ac2cc50595046249479a8f7a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226786"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393845"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı Azure Güvenlik temeli
 
@@ -880,11 +880,11 @@ Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/gove
 
 Azure yönetilen kimliklerle tümleştirme: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Key Vault oluşturma: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Key Vault oluşturma: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama: https://docs.microsoft.com/azure/key-vault/managed-identity 
+Key Vault kimlik doğrulaması nasıl yapılır: https://docs.microsoft.com/azure/key-vault/general/authentication
 
-
+Key Vault erişim ilkesi atama: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

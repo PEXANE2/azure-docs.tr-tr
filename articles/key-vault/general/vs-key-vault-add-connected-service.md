@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 3d39ad2016da1525658944f4f13185e9df9855af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007103"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378874"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio bağlı hizmetler 'i kullanarak Web uygulamanıza Key Vault ekleme
 
@@ -22,7 +22,7 @@ Bu öğreticide, ASP.NET Core veya herhangi bir tür ASP.NET projesi kullanıp k
 
 Bağlı hizmetlerin projenizde Key Vault sağlamak üzere yaptığı değişikliklerle ilgili ayrıntılar için, bkz. [Key Vault bağlı hizmet-ASP.NET 4.7.1 projem 'A ne oldu](#how-your-aspnet-framework-project-is-modified) veya [Key Vault bağlı Service-ASP.NET Core projem Için ne oldu?](#how-your-aspnet-core-project-is-modified).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Bir Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
 - **Visual Studio 2019 sürüm 16,3** veya sonraki sürümleri [Şimdi indirin](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
@@ -201,6 +201,6 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticiyi izlediyseniz, Key Vault izinleriniz kendi Azure aboneliğinizle çalışacak şekilde ayarlanır, ancak bu, bir üretim senaryosu için istenmeyebilir. Uygulamanıza yönelik Key Vault erişimini yönetmek için yönetilen bir kimlik oluşturabilirsiniz. Bkz. [yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](/azure/key-vault/managed-identity).
+Bu öğreticiyi izlediyseniz, Key Vault izinleriniz kendi Azure aboneliğinizle çalışacak şekilde ayarlanır, ancak bu, bir üretim senaryosu için istenmeyebilir. Uygulamanıza yönelik Key Vault erişimini yönetmek için yönetilen bir kimlik oluşturabilirsiniz. [Key Vault Için kimlik doğrulama](/azure/key-vault/general/authentication) ve [Key Vault erişim ilkesi atama](/azure/key-vault/general/assign-access-policy-portal)konusuna bakın.
 
 [Key Vault geliştirici kılavuzunu](developers-guide.md)okuyarak Key Vault geliştirme hakkında daha fazla bilgi edinin.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 42a76a2cf583a57ae5b38fe051ee48d16d705dd2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e8f9a8e1d10e39e37480e06a25fcc0e203a104ec
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319975"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378738"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Market ölçüm hizmeti kimlik doğrulama stratejileri
 
@@ -68,10 +68,10 @@ Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory er
 
 |  **Özellik adı**  |  **Gerekli**  |  **Açıklama**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   Doğru         | Verme türü. `client_credentials` adresini kullanın. |
+|  `Grant_type`       |   Doğru         | Verme türü. `client_credentials` komutunu kullanın. |
 |  `Client_id`        |   Doğru         | Azure AD uygulamasıyla ilişkili istemci/uygulama tanımlayıcısı.|
 |  `client_secret`    |   Doğru         | Azure AD uygulamasıyla ilişkili gizli dizi.  |
-|  `Resource`         |   Doğru         | Belirtecin istendiği hedef kaynak. `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` adresini kullanın. |
+|  `Resource`         |   Doğru         | Belirtecin istendiği hedef kaynak. `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` komutunu kullanın. |
 | | | |
 
 #### <a name="response"></a>*Response*
@@ -114,7 +114,7 @@ Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kay
     * [Azure portal Kullanıcı arabirimi](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
     * [CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
     * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
-    * [Azure Resource Manager şablonu](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [Azure Resource Manager Şablonu](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
     * [Rest](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
     * [Azure SDK’ları](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
@@ -145,7 +145,7 @@ Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kay
 
     ```powershell
     # Get resourceUsageId from the managed app
-    $managedAppUrl = "https://management.azure.com" + $managedappId + "\?api-version=2019-07-01"
+    $managedAppUrl = "https://management.azure.com/subscriptions/" + $metadata.compute.subscriptionId + "/resourceGroups/" + $metadata.compute.resourceGroupName + "/providers/Microsoft.Solutions/applications/" + $managedappId + "\?api-version=2019-07-01"
     $ManagedApp = curl $managedAppUrl -H $Headers | Select-Object -Expand Content | ConvertFrom-Json
     # Use this resource ID to emit usage 
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
@@ -156,4 +156,4 @@ Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kay
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure uygulama teklifi oluşturma](./create-new-azure-apps-offer.md)
-* [Transactable SaaS teklifi oluşturma](./offer-creation-checklist.md)
+* [SaaS teklifi planlama](../plan-saas-offer.md)

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 080b5a224f3d4a720d8009933ddd9161f56dba0a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d2a62b55ce7f8cd408afeb2f10fd40f42b36d53d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270236"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393947"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde koşullu erişim teknik profili tanımlama
 
@@ -47,7 +47,7 @@ Aşağıdaki örnekte, bir koşullu erişim teknik profili gösterilmektedir:
 
 ## <a name="conditional-access-evaluation"></a>Koşullu erişim değerlendirmesi
 
-Her oturum açma için, Azure AD B2C tüm ilkeleri değerlendirir ve Kullanıcı erişimi vermeden önce tüm gereksinimlerin karşılanmasını sağlar. "Erişimi engelle" diğer tüm yapılandırma ayarlarını geçersiz kılar. Koşullu erişim teknik profilinin **değerlendirme** modu, oturum açma sırasında Azure AD B2C tarafından toplanan sinyalleri yerel bir hesapla değerlendirir. Koşullu erişim teknik profilinin sonucu, koşullu erişim değerlendirmesinden kaynaklanan bir talepler kümesidir. Azure AD B2C ilkesi, Kullanıcı engelleme veya Multi-Factor Authentication ile kullanımı zorluk gibi bir eylem gerçekleştirmek için bu talepleri bir sonraki düzenleme adımında kullanır. Bu mod için aşağıdaki seçenekler yapılandırılabilir.
+Her oturum açma için, Azure AD B2C tüm ilkeleri değerlendirir ve Kullanıcı erişimi vermeden önce tüm gereksinimlerin karşılanmasını sağlar. "Erişimi engelle" diğer tüm yapılandırma ayarlarını geçersiz kılar. Koşullu erişim teknik profilinin **değerlendirme** modu, oturum açma sırasında Azure AD B2C tarafından toplanan sinyalleri yerel bir hesapla değerlendirir. Koşullu erişim teknik profilinin sonucu, koşullu erişim değerlendirmesinden kaynaklanan bir talepler kümesidir. Azure AD B2C ilkesi, kullanıcıyı engelle veya Multi-Factor Authentication ile kullanıcıyı zorluk taşıyan bir eylem gerçekleştirmek için bu talepleri bir sonraki düzenleme adımında kullanır. Bu mod için aşağıdaki seçenekler yapılandırılabilir.
 
 ### <a name="metadata"></a>Meta Veriler
 

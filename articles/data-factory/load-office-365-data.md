@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 170716804a5bc3133e070ee67f2aac71acad7b0b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415809"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435573"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Office 365 ' den veri yükleme
 
@@ -37,10 +37,10 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_Data Fa
     * **Ad**: Azure Data Factory 'niz için genel olarak benzersiz bir ad girin. "Data Factory Name *LoadFromOffice365Demo* kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin _**, Name**_**LoadFromOffice365Demo**adını kullanabilirsiniz. Data Factory 'yi yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
     * **Abonelik**: veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
     * **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
-    * **Sürüm**: **v2**'yi seçin.
+    * **Sürüm**: **V2**'yi seçin.
     * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Store, Azure depolama, Azure SQL veritabanı vb. içerir.
 
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz:
    
    ![Data factory giriş sayfası](./media/load-office-365-data/data-factory-home-page.png)
@@ -63,7 +63,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_Data Fa
 
 2. Yeni veri kümesi penceresinde **Office 365**' i seçin ve ardından **devam**' ı seçin.
  
-3. Şimdi kopyalama etkinliği yapılandırma sekmesindedir. veri yapılandırmasına devam etmek için Office 365 veri kümesinin yanındaki **Düzenle** düğmesine tıklayın.
+3. Şimdi kopyalama etkinliği yapılandırma sekmesindedir. Veri yapılandırmasına devam etmek için Office 365 veri kümesinin yanındaki **Düzenle** düğmesine tıklayın.
 
     ![Yapılandırma Office 365 veri kümesi genel](./media/load-office-365-data/transition-to-edit-dataset.png)
  
@@ -147,7 +147,7 @@ Onay sağlandığında, veri ayıklama devam eder ve bir süre sonra işlem hatt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure SQL veri ambarı desteği hakkında bilgi edinmek için aşağıdaki makaleye ilerleyin: 
+Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) desteği hakkında bilgi edinmek için aşağıdaki makaleye ilerleyin: 
 
 > [!div class="nextstepaction"]
 >[Office 365 bağlayıcısı](connector-office-365.md)

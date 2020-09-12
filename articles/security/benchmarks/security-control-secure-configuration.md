@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ac538d71f854643cb59390447be360bc541142ac
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 347a63cc77c565d800328c19d1d543c2c9efafc0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077237"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400101"
 ---
 # <a name="security-control-secure-configuration"></a>Güvenlik denetimi: güvenli yapılandırma
 
@@ -74,7 +74,7 @@ Azure kaynaklarınızın tamamında güvenli ayarları zorlamak için Azure Ilke
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 7.4 | 5,2 | Paylaşılan |
+| 7.4 | 5,2 | Shared |
 
 Azure işlem kaynaklarınız üzerinde güvenlik açığı değerlendirmesi gerçekleştirerek Azure Güvenlik Merkezi önerilerini izleyin.  Ayrıca, kuruluşunuz tarafından istenen işletim sisteminin güvenlik yapılandırmasını sürdürmek için Azure Resource Manager şablonları, özel işletim sistemi görüntüleri veya Azure Otomasyonu durum yapılandırması ' nı kullanabilirsiniz.   Azure Otomasyonu Istenen durum yapılandırması ile birleştirilmiş Microsoft sanal makine şablonları, güvenlik gereksinimlerinin karşılanmasına ve bakımında yardımcı olabilir. 
 
@@ -174,7 +174,9 @@ Bulut uygulamalarınız için gizli yönetimi basitleştirmek ve güvenli hale g
 
 - [Key Vault oluşturma](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-- [Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](https://docs.microsoft.com/azure/key-vault/managed-identity)
+- [Key Vault kimlik doğrulaması yapma](../../key-vault/general/authentication.md)
+
+- [Key Vault erişim ilkesi atama](../../key-vault/general/assign-access-policy-portal.md)
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7,12: kimlikleri güvenli ve otomatik olarak yönetme
 

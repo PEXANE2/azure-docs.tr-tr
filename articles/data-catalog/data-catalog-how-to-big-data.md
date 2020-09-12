@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: c6f7355b4505324c562ae39b05155a2902da2790
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e79e5e16b300fd02b9c9124f9677747834f22813
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523460"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443152"
 ---
 # <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda büyük verileri katalog halinde kullanma
 
@@ -19,7 +19,7 @@ ms.locfileid: "86523460"
 
 **Microsoft Azure Veri Kataloğu** , kurumsal veri kaynakları için bir kayıt sistemi ve bulma sistemi olarak hizmet veren tam olarak yönetilen bir bulut hizmetidir. Kişilerin veri kaynaklarını bulmasına, anlamasına ve kullanmasına yardımcı olmak ve kuruluşların büyük veriler de dahil olmak üzere mevcut veri kaynaklarından daha fazla değer almasını sağlar.
 
-**Azure Veri Kataloğu** , Azure blog depolama bloblarının ve dizinlerinin yanı sıra Hadoop, dosya ve dizinlerin kaydedilmesini da destekler. Bu veri kaynaklarının yarı yapılandırılmış doğası büyük esneklik sağlar. Ancak, **Azure Veri Kataloğu**'na kaydolduğunuz en yüksek değeri almak için, kullanıcıların veri kaynaklarının nasıl düzenlendiğini göz önünde bulundurmaları gerekir.
+**Azure Veri Kataloğu** , Azure depolama Blobları ve dizinlerinin yanı sıra Hadoop bir dosya ve dizinlerin kaydedilmesini da destekler. Bu veri kaynaklarının yarı yapılandırılmış doğası büyük esneklik sağlar. Ancak, **Azure Veri Kataloğu**'na kaydolduğunuz en yüksek değeri almak için, kullanıcıların veri kaynaklarının nasıl düzenlendiğini göz önünde bulundurmaları gerekir.
 
 ## <a name="directories-as-logical-data-sets"></a>Mantıksal veri kümeleri olarak dizinler
 

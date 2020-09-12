@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 7c1de2b6ef59efdaaed64fcf687fed0c834683c0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 7134fc5d591fffdfb9aea13767e597dddc92b038
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037605"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434954"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory için yönetilen kimlik
 
@@ -32,7 +32,7 @@ Bir veri fabrikası oluştururken, yönetilen bir kimlik, fabrika oluşturma ile
 Data Factory yönetilen kimliği, aşağıdaki özellikleri avantajlarına yöneliktir:
 
 - [Kimlik bilgilerini](store-credentials-in-key-vault.md), Azure Key Vault kimlik doğrulaması için veri fabrikası tarafından yönetilen kimliğin kullanıldığı Azure Key Vault depolayın.
-- [Azure Blob depolama](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure SQL veritabanı](connector-azure-sql-database.md)ve [Azure SQL veri ambarı](connector-azure-sql-data-warehouse.md)dahil olmak üzere bağlayıcılar.
+- [Azure Blob depolama](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure SQL veritabanı](connector-azure-sql-database.md)ve [Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı)](connector-azure-sql-data-warehouse.md)dahil bağlayıcılar.
 - [Web etkinliği](control-flow-web-activity.md).
 
 ## <a name="generate-managed-identity"></a>Yönetilen kimlik oluştur

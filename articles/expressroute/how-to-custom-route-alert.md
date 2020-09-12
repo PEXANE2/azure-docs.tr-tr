@@ -2,17 +2,17 @@
 title: 'ExpressRoute: tanıtılan yollar için özel uyarıları yapılandırma'
 description: Bu makalede, 200 yol sınırına vurmasını engellemek amacıyla ExpressRoute Gateway 'ten şirket içi ağlara tanıtılan yolların sayısını izlemek için Azure Otomasyonu ve Logic Apps nasıl kullanılacağı gösterilmektedir.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.author: cherylmc
-ms.openlocfilehash: 42f416cf6f297eb54298a10162e7ba28f7acd1bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: f29f43234f1541abeb448e722d0b72ef7c0221c9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738490"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401733"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Kullanıma sunulan yolları izlemek için özel uyarılar yapılandırma
 
@@ -22,7 +22,7 @@ Bu makale, ExpressRoute ağ geçidinden şirket içi ağlara tanıtılan yollar�
 
 **Azure Logic Apps** , Azure Otomasyonu runbook 'u çağıran özel bir iş akışını zamanlar. Runbook 'un yürütülmesi bir iş kullanılarak yapılır. Veri toplama çalıştıktan sonra, Azure Logic Apps iş akışı verileri sınıflandırır ve bir ön tanımlama eşiğinin üzerinde veya altında bulunan ağ ön ekleri sayısına göre eşleşme ölçütlerine göre bilgileri bir hedef e-posta adresine gönderir.
 
-### <a name="workflow"></a><a name="workflow"></a>Akışıyla
+### <a name="workflow"></a><a name="workflow"></a>İş akışı
 
 Özel bir uyarı ayarlamak üç ana adıma dayanır:
 
@@ -78,7 +78,7 @@ Varsayılan olarak, **katılımcı** rolü, **Farklı Çalıştır** hesabınız
 
 2. Kullanılmakta olan rol tanımını görüntülemek için **Roller** ' i seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="Rol ata":::
+   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="Rol atama":::
 
 ## <a name="create-and-configure-runbooks"></a><a name="runbooks"></a>Runbook 'lar oluşturma ve yapılandırma
 
@@ -257,7 +257,7 @@ PowerShell betiğini çalıştırdığınızda bir değer listesi toplanır:
 
 * Durum ayrıntılı açıklaması için uyarı iletisi (Tamam, uyarı, uyarı)
 
-PowerShell betiği, toplanan bilgileri bir JSON çıktısına dönüştürür. Runbook, bilgileri istemciye iletmek için çıkış akışı olarak PowerShell cmdlet 'i [yazma çıkışı](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?) kullanır.
+PowerShell betiği, toplanan bilgileri bir JSON çıktısına dönüştürür. Runbook, bilgileri istemciye iletmek için çıkış akışı olarak PowerShell cmdlet 'i [yazma çıkışı](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?)  kullanır.
 
 ### <a name="4-validate-the-runbook"></a><a name="validate"></a>4. runbook 'u doğrulama
 
@@ -308,13 +308,13 @@ Mantıksal uygulama, bağlayıcılar ve diğer uygulamalara, hizmetlere ve platf
 1. **Logic Apps tasarımcısında**, **yinelenme**altında **yeni adım**' ı seçin. **Eylem Seç** ' in altında ve arama kutusuna **Tümü**' nü seçin.
 2. Arama kutusuna **Azure Otomasyonu** ve arama yazın. **Iş oluştur**' u seçin. **Oluşturma işi** , daha önce oluşturulmuş Otomasyon Runbook 'unu başlatmak için kullanılacaktır.
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-job.png" alt-text="İş oluştur":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-job.png" alt-text="İş oluşturma":::
 
 3. Hizmet sorumlusu kullanarak oturum açın. Mevcut bir hizmet sorumlusunu kullanabilir veya yeni bir tane oluşturabilirsiniz. Yeni bir hizmet sorumlusu oluşturmak için, [kaynaklara erişebilen bir Azure AD hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md)konusuna bakın. **Hizmet sorumlusu Ile Bağlan**' ı seçin.
 
    :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="Oturum aç":::
 
-4. Bir **bağlantı adı**yazın, **istemci KIMLIĞINIZI** (uygulama kimliği), **ISTEMCI gizli**anahtarını ve **kiracı kimliğinizi**ekleyin. Ardından **Oluştur**' u seçin.
+4. Bir **bağlantı adı**yazın, **istemci KIMLIĞINIZI** (uygulama kimliği), **ISTEMCI gizli**anahtarını ve **kiracı kimliğinizi**ekleyin. Ardından **Oluştur**’u seçin.
 
    :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="Hizmet sorumlusu ile bağlanma":::
 

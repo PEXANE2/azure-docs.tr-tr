@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5f16a902980b8cf88fb3e8a7f888a0f58ed34355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35631c8a0b66ade1457228ba16150f94f761f7b3
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986552"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419920"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS kimlik doğrulaması için VPN istemcisi yapılandırma dosyalarını oluşturma ve yüklemeyi
 
@@ -45,7 +45,7 @@ Kullanıcı adı/parola kimlik doğrulamasını, Active Directory kullanmak veya
 
 Kullanıcı adı/parola kimlik doğrulamasını yapılandırırken yalnızca EAP-MSCHAPv2 Kullanıcı adı/parola kimlik doğrulama protokolü için bir yapılandırma oluşturabilirsiniz. Komutlarda, `-AuthenticationMethod` `EapMSChapv2` .
 
-### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a>1. VPN istemcisi yapılandırma dosyalarını oluştur
+### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a> 1. VPN istemcisi yapılandırma dosyalarını oluştur
 
 Azure portal kullanarak veya Azure PowerShell kullanarak VPN istemci yapılandırma dosyalarını oluşturabilirsiniz.
 
@@ -80,7 +80,7 @@ Komut çalıştırıldığında bir bağlantı döndürülür. **VpnClientConfig
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
 
-### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a>2. VPN istemcilerini yapılandırma
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2. VPN istemcilerini yapılandırma
 
 Aşağıdaki VPN istemcilerini yapılandırabilirsiniz:
 
@@ -184,11 +184,11 @@ EAP-TLS protokolünü kullanan RADIUS sertifikası kimlik doğrulaması için VP
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
 >
 
-Komutlarda, `-AuthenticationMethod` `EapTls` . Sertifika kimlik doğrulaması sırasında istemci, sertifikasını doğrulayarak RADIUS sunucusunu doğrular. `-RadiusRootCert`, RADIUS sunucusunu doğrulamak için kullanılan kök sertifikayı içeren. cer dosyasıdır.
+Komutlarda, `-AuthenticationMethod` `EapTls` . Sertifika kimlik doğrulaması sırasında istemci, sertifikasını doğrulayarak RADIUS sunucusunu doğrular. `-RadiusRootCert` , RADIUS sunucusunu doğrulamak için kullanılan kök sertifikayı içeren. cer dosyasıdır.
 
 Her VPN istemci cihazı için yüklü bir istemci sertifikası gerekir. Bazen bir Windows cihazında birden çok istemci sertifikası vardır. Kimlik doğrulama sırasında, bu, tüm sertifikaları listeleyen bir açılır iletişim kutusu ile sonuçlanabilir. Kullanıcının kullanılacak sertifikayı seçmesi gerekir. Doğru sertifika, istemci sertifikasının zincirine gereken kök sertifika belirtilerek filtrelenebilir. 
 
-`-ClientRootCert`, kök sertifikayı içeren. cer dosyasıdır. Bu, isteğe bağlı bir parametredir. Bağlanmak istediğiniz cihazın yalnızca bir istemci sertifikası varsa, bu parametreyi belirtmeniz gerekmez.
+`-ClientRootCert` , kök sertifikayı içeren. cer dosyasıdır. Bu, isteğe bağlı bir parametredir. Bağlanmak istediğiniz cihazın yalnızca bir istemci sertifikası varsa, bu parametreyi belirtmeniz gerekmez.
 
 ### <a name="1-generate-vpn-client-configuration-files"></a><a name="certfiles"></a>1. VPN istemcisi yapılandırma dosyalarını oluştur
 
@@ -211,7 +211,7 @@ Komut çalıştırıldığında bir bağlantı döndürülür. VpnClientConfigur
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  
-### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a>2. VPN istemcilerini yapılandırma
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2. VPN istemcilerini yapılandırma
 
 Aşağıdaki VPN istemcilerini yapılandırabilirsiniz:
 

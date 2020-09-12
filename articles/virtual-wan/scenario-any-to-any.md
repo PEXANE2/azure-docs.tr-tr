@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f8127b485d8fea5aedccd472e209a448e3076b5b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553449"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400084"
 ---
 # <a name="scenario-any-to-any"></a>Senaryo: any-any
 
@@ -29,7 +29,7 @@ Bir sanal WAN senaryosunda kaç yol tablosunun gerekli olacağını anlamak içi
 | Sanal ağlar     | &#8594;|      X     |     X    |
 | Dallar   | &#8594;|    X     |     X    |
 
-Önceki tabloda bulunan hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, tablodaki satır başlıkları), belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, tablodaki sütun başlıkları) öğrenip öğrenmediğini açıklar.
+Önceki tablodaki hücrelerin her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, tablodaki satır başlıkları), belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, tablodaki sütun üst bilgileri) öğrenip bir "X" bağlantısının sanal WAN tarafından sağlandığı anlamına gelir.
 
 Sanal ağların ve dalların (VPN, ExpressRoute ve kullanıcı VPN) tüm bağlantıları aynı bağlantı gereksinimlerine sahip olduğundan, tek bir yol tablosu gereklidir. Sonuç olarak, tüm bağlantılar ilişkilendirilir ve varsayılan yol tablosuna aynı rota tablosuna yayılır:
 
@@ -56,7 +56,7 @@ Bu bağlantılar (varsayılan olarak, oluşturma sırasında), bağlantının y�
 
 :::image type="content" source="./media/routing-scenarios/any-any/figure-1.png" alt-text="Şekil 1":::
 
-## <a name="workflow"></a><a name="workflow"></a>Akışıyla
+## <a name="workflow"></a><a name="workflow"></a>İş akışı
 
 Bu senaryo, standart sanal WAN için varsayılan olarak etkinleştirilmiştir. Şube dalı için ayarı WAN yapılandırmasında devre dışıysa, bu, dal arasında bağlantı yapılmasına izin vermez. VPN/ExpressRoute/Kullanıcı VPN, sanal WAN 'da dal olarak kabul edilir
 

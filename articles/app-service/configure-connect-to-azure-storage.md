@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8ca3688ad11bc7a694327990be22b8eccd8f8161
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962868"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435618"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Azure depolama 'nın App Service bir kapsayıcıdan ağ paylaşma olarak erişme
 
@@ -27,7 +27,7 @@ Bu kılavuzda, Azure depolama 'nın bir Linux kapsayıcısına App Service nası
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ::: zone pivot="container-windows"
 
@@ -57,7 +57,7 @@ Bu kılavuzda, Azure depolama 'nın bir Linux kapsayıcısına App Service nası
 - App Service 'de Azure depolama Şu anda kendi kod senaryolarınızı getir (kapsayıcısız Windows uygulamaları) için **desteklenmiyor** .
 - App Service ' deki Azure depolama, altyapı sınırlamaları nedeniyle **depolama güvenlik duvarı** yapılandırmasını kullanmayı **desteklemez** .
 - App Service ile Azure depolama, uygulama başına **en fazla beş** bağlama noktası belirtmenizi sağlar.
-- Bir uygulamaya bağlı Azure Storage App Service FTP/FTPs uç noktaları aracılığıyla erişilebilir değildir. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)'ni kullanın.
+- Bir uygulamaya bağlı Azure Storage App Service FTP/FTPs uç noktaları aracılığıyla erişilebilir değildir. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)kullanın.
 
 ::: zone-end
 
@@ -67,7 +67,7 @@ Bu kılavuzda, Azure depolama 'nın bir Linux kapsayıcısına App Service nası
 - App Service Azure Storage, **Azure dosya kapsayıcıları** (okuma/yazma) ve **Azure Blob kapsayıcıları** (salt okuma) bağlamayı destekler
 - App Service ' deki Azure depolama, altyapı sınırlamaları nedeniyle **depolama güvenlik duvarı** yapılandırmasını kullanmayı **desteklemez** .
 - App Service Azure depolama, uygulama başına **en fazla beş** bağlama noktası belirtmenizi sağlar.
-- Bir uygulamaya bağlı Azure Storage App Service FTP/FTPs uç noktaları aracılığıyla erişilebilir değildir. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)'ni kullanın.
+- Bir uygulamaya bağlı Azure Storage App Service FTP/FTPs uç noktaları aracılığıyla erişilebilir değildir. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)kullanın.
 
 ::: zone-end
 

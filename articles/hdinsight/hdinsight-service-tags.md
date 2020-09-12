@@ -6,19 +6,21 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/15/2020
-ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/11/2020
+ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81410866"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399965"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight için NSG hizmet etiketleri
 
 Ağ güvenlik grupları (NSG 'ler) için Azure HDInsight hizmet etiketleri, sistem durumu ve Yönetim Hizmetleri için IP adresi gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığına en aza indirmenize yardımcı olur. [Hizmet etiketleri](../virtual-network/security-overview.md#service-tags) , NSG 'lerinize her BIR [Yönetim IP adresini](hdinsight-management-ip-addresses.md) girmeden belirli IP 'lerden gelen trafiğe izin verir.
 
 HDInsight hizmeti bu hizmet etiketlerini yönetir. Kendi hizmet etiketinizi oluşturamaz veya var olan bir etiketi değiştiremezsiniz. Microsoft, hizmet etiketiyle eşleşen adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
+
+Belirli bir bölgeyi kullanmak isterseniz ve hizmet etiketi henüz bu sayfada belgelenmemişse, hizmet etiketinizi bulmak için [hizmet etiketi bulma API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 'sini kullanabilirsiniz. Ayrıca, [hizmet etıketı json dosyasını](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) indirebilir ve istediğiniz bölgeyi arayabilirsiniz.
 
 ## <a name="get-started-with-service-tags"></a>Hizmet etiketlerini kullanmaya başlama
 
@@ -57,7 +59,7 @@ Kümeniz bu tabloda listelenen bir bölgede bulunuyorsa, NSG 'nize yalnızca tek
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
 | Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
-| &nbsp; | Güneydoğu Avustralya | HDInsight. AustraliaSoutheast |
+| &nbsp; | Avustralya Güneydoğu | HDInsight. AustraliaSoutheast |
 | &nbsp; | Orta Avustralya | HDInsight. AustraliaCentral |
 | Çin | Çin Doğu 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Çin Kuzey 2 | HDInsight. ChinaNorth2 |
@@ -65,7 +67,7 @@ Kümeniz bu tabloda listelenen bir bölgede bulunuyorsa, NSG 'nize yalnızca tek
 | &nbsp; | Batı ABD 2 | HDInsight. WestUS2 |
 | &nbsp; | Orta Batı ABD | HDInsight. WestCentralUS |
 | Kanada | Doğu Kanada | HDInsight. Canadadoğu |
-| Brezilya | Güney Brezilya | HDInsight. BrazilSouth |
+| Brezilya | Brezilya Güney | HDInsight. BrazilSouth |
 | Güney Kore | Güney Kore - Orta | HDInsight. KoreaCentral |
 | &nbsp; | Güney Kore - Güney | HDInsight. Koreagüney |
 | Hindistan | Orta Hindistan | HDInsight. merkezde Hindistan |
@@ -97,14 +99,14 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, hizmet eti
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
 | Birleşik Devletler | Doğu ABD 2 | HDInsight. EastUS2 |
-| &nbsp; | Orta ABD | HDInsight. merkezde ABD |
+| &nbsp; | Central US | HDInsight. merkezde ABD |
 | &nbsp; | Kuzey Orta ABD | 'Tan. Kuzeydoğu ABD |
 | &nbsp; | Orta Güney ABD | HDInsight. Güneydoğu ABD |
 | &nbsp; | Doğu ABD | HDInsight. EastUS |
 | &nbsp; | Batı ABD | HDInsight. WestUS |
 | Japonya | Doğu Japonya | HDInsight. JapanEast |
 | Avrupa | Kuzey Avrupa | HDInsight. NorthEurope |
-| &nbsp; | Batı Avrupa| HDInsight. WestEurope |
+| &nbsp; | West Europe| HDInsight. WestEurope |
 | Asya | Doğu Asya | HDInsight. Eastasıya |
 | &nbsp; | Güneydoğu Asya | HDInsight. Güneydoğu |
 | Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |

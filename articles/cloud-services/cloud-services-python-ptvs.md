@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
 ms.custom: devx-track-python
-ms.openlocfilehash: 7025d042fa021c6ee5311566d66bfd090dbd06cd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 503e37d0e339cacc9c21a2b2f3ad739e1385c955
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851588"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443203"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Visual Studio için Python web ve çalışan rolleri içeren Python Araçları
 
 Bu makalede, [Visual Studio için Python Araçları][Python Tools for Visual Studio] ile Python web ve çalışan rollerini kullanmaya genel bir bakış sunulmuştur. Visual Studio’yu kullanarak Python kullanan temel bir Bulut Hizmetinin nasıl oluşturulup dağıtılacağını öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * [Visual Studio 2013, 2015 veya 2017](https://www.visualstudio.com/)
 * [Visual Studio için Python Araçları][Python Tools for Visual Studio] (PTVS)
 * [VS 2013 için Azure SDK Araçları][Azure SDK Tools for VS 2013] veya  
@@ -288,7 +288,7 @@ else
 #### <a name="pscmd"></a>ps.cmd
 Visual Studio şablonları **./bin** klasöründe bir **ps.cmd** dosyası oluşturmuş olmalıdır. Bu kabuk betiği yukarıdaki PowerShell sarmalayıcı betiklerini çağırır ve çağrılan PowerShell sarmalayıcısının adına göre günlük kaydı yapar. Bu dosya oluşturulmadıysa içinde olması gerekenler aşağıda verilmiştir. 
 
-```bat
+```cmd
 @echo off
 
 cd /D %~dp0
@@ -337,7 +337,7 @@ Web ve çalışan rollerinizden Azure Storage veya Service Bus gibi Azure hizmet
 * [Tablo Hizmeti][Table Service]
 * [Kuyruk Hizmeti][Queue Service]
 * [Service Bus kuyrukları][Service Bus Queues]
-* [Service Bus Konuları][Service Bus Topics]
+* [Service Bus konuları][Service Bus Topics]
 
 <!--Link references-->
 

@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f816c95b5e210e86e2215cadf8407f442d69ebe
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1c5efbbd5f9f5dfe701deb50b51605ab324c081a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476239"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401682"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Azure Active Directory rol atanabilir Grup oluşturma
 
-Yalnızca ' ıttobletorole ' özelliği true olarak ayarlanmış bir gruba bir rol atayabilir ya da Azure AD portalında Azure **ad rolleri** ile oluşturulmuş bir gruba bir rol atanabilir. Bu Grup özniteliği, grubun Azure Active Directory (Azure AD) bir role atanabileceği bir grup oluşturur. Bu makalede, bu özel Grup türünün nasıl oluşturulacağı açıklanır.
+Yalnızca ' ıttobletorole ' özelliği true olarak ayarlanmış bir gruba bir rol atayabilir ya da Azure AD portalında Azure **ad rolleri** ile oluşturulmuş bir gruba bir rol atanabilir. Bu Grup özniteliği, grubun Azure Active Directory (Azure AD) bir role atanabileceği bir grup oluşturur. Bu makalede, bu özel Grup türünün nasıl oluşturulacağı açıklanır. **Note:** Iastifbletorole özelliği true olarak ayarlanan bir grup dinamik üyelik türünde olamaz. Daha fazla bilgi için bkz. [Azure AD rol atamalarını yönetmek için Grup kullanma](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept).
 
 ## <a name="using-azure-ad-admin-center"></a>Azure AD Yönetim Merkezi 'ni kullanma
 
@@ -128,4 +128,4 @@ Bu grup türü için `isPublic` her zaman false olur ve `isSecurityEnabled` her 
 
 - [Bulut grubuna rol atama](roles-groups-assign-role.md)
 - [Rol atamalarını yönetmek için bulut gruplarını kullanma](roles-groups-concept.md)
-- [Bulut gruplarına atanan rol sorunlarını giderme](roles-groups-faq-troubleshooting.md)
+- [Bulut gruplarına atanan rollerle ilgili sorunları giderme](roles-groups-faq-troubleshooting.md)

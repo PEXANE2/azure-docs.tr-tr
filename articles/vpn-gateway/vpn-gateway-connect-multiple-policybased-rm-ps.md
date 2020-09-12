@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 7fb344e16ed672dfc6c88fbe2c4888c52c9b717d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a85204fef026940394a19934bef1c631a8e2d21
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081993"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418894"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell kullanarak Azure VPN ağ geçitlerini birden çok şirket içi ilke tabanlı VPN cihazına bağlama
 
@@ -40,7 +40,7 @@ Aşağıdaki diyagramlar iki modeli vurgulayacaktır:
 | -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
 | **Azure ağ geçidi SKU 'SU**    | Temel                       | Temel                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **IKE sürümü**          | IKEv1                       | IKEv2                            | IKEv1 ve IKEv2                         |
-| **Biçimlendir. S2S bağlantıları** | **1**                       | 10                               | 30                     |
+| **En fazla S2S bağlantıları** | **1**                       | 10                               | 30                     |
 |                          |                             |                                  |                                                    |
 
 Özel IPSec/ıKE ilkesiyle artık Azure rota tabanlı VPN ağ geçitlerini, şirket içi ilke tabanlı VPN cihazlarına bağlanmak için "**PolicyBasedTrafficSelectors**" seçeneği ile önek tabanlı trafik seçicileri kullanacak şekilde yapılandırabilirsiniz. Bu özellik, Azure sanal ağ ve VPN Gateway 'den birden çok şirket içi ilke tabanlı VPN/güvenlik duvarı cihazına bağlanmanızı sağlar ve tek bağlantı sınırını geçerli Azure ilke tabanlı VPN ağ geçitlerinden kaldırır.
@@ -56,7 +56,7 @@ Aşağıdaki diyagramda Azure VPN Gateway aracılığıyla geçiş yönlendirmen
 
 Diyagramda gösterildiği gibi, Azure VPN ağ geçidi, çapraz bağlantı öneklerini değil, sanal ağdan her bir şirket içi ağ öneklerine yönelik trafik seçicileri içerir. Örneğin, şirket içi site 2, site 3 ve site 4 her biri sırasıyla VNet1 ile iletişim kurabilir, ancak Azure VPN ağ geçidi üzerinden birbirlerine bağlanamaz. Diyagramda bu yapılandırma altındaki Azure VPN Gateway 'de kullanılamayan çapraz bağlantı trafik seçicileri gösterilmektedir.
 
-## <a name="workflow"></a><a name="workflow"></a>Akışıyla
+## <a name="workflow"></a><a name="workflow"></a>İş akışı
 
 Bu makaledeki yönergeler, S2S VPN bağlantısı kurmak üzere [S2S veya VNET-VNET bağlantıları Için IPSec/IKE Ilkesini yapılandırma](vpn-gateway-ipsecikepolicy-rm-powershell.md) bölümünde açıklananla aynı örneği izler. Bu, aşağıdaki diyagramda gösterilmiştir:
 

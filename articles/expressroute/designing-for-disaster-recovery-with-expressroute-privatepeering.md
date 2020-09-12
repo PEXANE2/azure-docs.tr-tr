@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: olağanüstü durum kurtarma için tasarlama'
 description: Bu sayfa, Azure ExpressRoute kullanılırken olağanüstü durum kurtarma için mimari öneriler sağlar.
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
-ms.author: rambala
-ms.openlocfilehash: 8adfb0ef0d9aa79d1b14127453f76223f035d62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 0c85272989a362da77b01af7bb1fe968516e53b6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081177"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398011"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma için tasarlama
 
@@ -114,7 +114,7 @@ Olağanüstü durum kurtarmanın nasıl mimarilerimiz, çapraz konuma çapraz ko
 
 Aşağıdaki diyagramda Senaryo 1 gösterilmektedir. Diyagramda yeşil çizgiler, VNet1 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Mavi çizgiler, VNet2 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Kesintisiz satırlarda, istenen yol kararlı durumda ve kesik çizgili satırlarda, sabit durum trafik akışını taşıyan ilgili ExpressRoute bağlantı hattının başarısız olduğu trafik yolunu gösterir. 
 
-[![7]][7]
+[![7@@]][7]
 
 Şirket içi ağa bağlı trafik için yerel eşleme konumu ExpressRoute 'a bağlantıyı tercih etmek üzere sanal ağları etkilemek için bağlantı ağırlığı kullanarak senaryoyu mimARDA dağıtabilirsiniz. Çözümü tamamlayabilmeniz için, simetrik trafik akışının tersine çevrilmiş olduğundan emin olmanız gerekir. Bir ExpressRoute devresini tercih etmek için BGP yönlendiricileriniz (Şirket içi tarafında ExpressRoute devrelerinin sonlandırıldığı) arasında IGP oturumunda yerel tercihi kullanabilirsiniz. Çözüm aşağıdaki diyagramda gösterilmiştir. 
 

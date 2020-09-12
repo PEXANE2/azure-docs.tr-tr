@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4f5fb02239fa48d96b0b779af7c970fc67fbcb99
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268168"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419835"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Azure Stack Edge GPU cihazınızda VM 'Leri şablonlar aracılığıyla dağıtma
 
@@ -245,11 +245,14 @@ Dosya `CreateImageAndVnet.parameters.json` aşağıdaki parametreleri alır:
 
 ```json
 "parameters": {
+        "osType": {
+              "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
+        },
         "imageName": {
             "value": "<Name for the VM iamge>"
         },
         "imageUri": {
-      "value": "<Path to the VHD that you uploaded in the Storage account>"
+              "value": "<Path to the VHD that you uploaded in the Storage account>"
         },
         "vnetName": {
             "value": "<Name for the virtual network where you will deploy the VM>"
@@ -501,7 +504,7 @@ VM oluşturma şablonunu dağıtın `CreateVM.json` . Bu şablon, mevcut VNet 't
         
         $templateFile = "<Path to CreateVM.json>"
         $templateParameterFile = "<Path to CreateVM.parameters.json>"
-        $RGName = "RG1"
+        $RGName = "<Resource group name>"
              
         New-AzureRmResourceGroupDeployment `
             -ResourceGroupName $RGName `
@@ -547,7 +550,27 @@ VM oluşturma şablonunu dağıtın `CreateVM.json` . Bu şablon, mevcut VNet 't
         
         PS C:\07-30-2020>
     ```   
- 
+`New-AzureRmResourceGroupDeployment`Komutunu parametresiyle zaman uyumsuz olarak da çalıştırabilirsiniz `–AsJob` . Cmdlet arka planda çalıştırıldığında örnek bir çıktı aşağıda verilmiştir. Ardından cmdlet 'ini kullanarak oluşturulan işin durumunu sorgulayabilirsiniz `Get-Job` .
+
+    ```powershell   
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
+    >>     -ResourceGroupName $RGName `
+    >>     -TemplateFile $templateFile `
+    >>     -TemplateParameterFile $templateParameterFile `
+    >>     -Name "Deployment2" `
+    >>     -AsJob
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmResourceGro...
+     
+    PS C:\WINDOWS\system32> Get-Job -Id 2
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
+    ```
+
 7. VM 'nin başarıyla sağlanıp sağlanmadığını denetleyin. Şu komutu çalıştırın:
 
     `Get-AzureRmVm`
@@ -555,7 +578,19 @@ VM oluşturma şablonunu dağıtın `CreateVM.json` . Bu şablon, mevcut VNet 't
 
 ## <a name="connect-to-a-vm"></a>Bir VM’ye bağlanma
 
+Windows veya Linux VM oluşturup oluşturdığınıza bağlı olarak, bağlanma adımları farklı olabilir.
+
+### <a name="connect-to-windows-vm"></a>Windows VM 'ye bağlanma
+
+Windows VM 'ye bağlanmak için aşağıdaki adımları izleyin.
+
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+### <a name="connect-to-linux-vm"></a>Linux VM 'ye bağlanma
+
+Bir Linux sanal makinesine bağlanmak için bu adımları izleyin.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
 <!--## Manage VM
 

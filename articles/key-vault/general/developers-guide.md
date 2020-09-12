@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2f90ba0bb732930b4cf3b1c832c6954683119f5f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585874"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394763"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -67,7 +67,7 @@ Anahtar kasaınızdaki anahtarlar, gizlilikler veya sertifikalarla çalışmadan
 - [CLı ile bir sertifika ayarlama ve alma](../certificates/quick-create-cli.md)
 - [PowerShell ile bir sertifika ayarlama ve alma](../certificates/quick-create-powershell.md)
 - [Azure portal bir sertifikayı ayarlama ve alma](../certificates/quick-create-portal.md)
-- [REST ile anahtar işlemleri](/rest/api/keyvault/#certificate-operations)
+- [REST ile sertifika işlemleri](/rest/api/keyvault/#certificate-operations)
 - [Python ile bir sertifika ayarlama ve alma](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>Key Vault kodlama
@@ -125,7 +125,7 @@ Aşağıdaki makaleler ve senaryolar Azure Key Vault çalışmak için göreve �
 - [SQL Server ile Genişletilebilir anahtar yönetimi için Key Vault kullanma](https://msdn.microsoft.com/library/dn198405.aspx) -Azure Key Vault için SQL Server Bağlayıcısı, SQL Server ve SQL-ın-a-VM ' y i, uygulamalar için şifreleme anahtarlarını korumak Için Genişletilebilir anahtar YÖNETIMI (ekm) sağlayıcısı olarak Azure Key Vault hizmetinden faydalanabilir. Saydam Veri Şifrelemesi, yedekleme şifrelemesi ve sütun düzeyinde şifreleme.
 - [Key Vault 'Ten sanal makinelere sertifika dağıtma](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) -Azure 'da VM 'de çalışan bir bulut uygulaması, bir sertifikaya ihtiyaç duyuyor. Bu sertifikayı bugün bu sanal makineye nasıl alırsınız?
 - [Key Vault aracılığıyla Azure Web App sertifikası dağıtmak]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) , [App Service sertifikası](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) teklifin bir parçası olarak Key Vault depolanan sertifikaları dağıtmaya yönelik adım adım yönergeler sağlar.
-- [Birçok uygulamaya bir anahtar kasasına erişmek için Izin verme](group-permissions-for-apps.md) Key Vault Access Control Policy en fazla 1024 girişi destekler. Ancak, Azure Active Directory bir güvenlik grubu oluşturabilirsiniz. Tüm ilişkili hizmet sorumlularını bu güvenlik grubuna ekleyin ve Key Vault için bu güvenlik grubuna erişim izni verin.
+- Erişim ilkesi atama ([CLI](assign-access-policy-cli.md)  |  [PowerShell](assign-access-policy-powershell.md)  |  [portalı](assign-access-policy-portal.md)). Key Vault en fazla 1024 erişim ilkesi girdisini destekler. Kullanıcılar ile bu sınırın içinde kalmak için, Azure Active Directory güvenlik grupları oluşturun, ilişkili tüm hizmet sorumlularını bu gruba ekleyin ve sonra gruba Key Vault erişim izni verin.
 - Anahtar kasalarını Azure ile tümleştirmeyle ve kullanmaya yönelik daha fazla göreve özgü rehberlik için bkz. [Ryan Jones ' Azure Resource Manager şablon örnekleri Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
 - [CLI ile geçici silme Key Vault kullanımı](soft-delete-cli.md) , anahtar kasasının kullanımı ve yaşam döngüsü boyunca ve geçici silme etkin olan çeşitli Anahtar Kasası nesnelerinde size rehberlik eder.
 - [PowerShell ile geçici silme Key Vault](soft-delete-powershell.md) , bir anahtar kasasının kullanımı ve yaşam döngüsü ve yumuşak silme etkin olan çeşitli Anahtar Kasası nesneleri boyunca size rehberlik eder.

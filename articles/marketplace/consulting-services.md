@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814731"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419763"
 ---
 # <a name="consulting-service-offers"></a>Danışmanlık hizmeti teklifleri
 
@@ -22,16 +22,16 @@ Danışmanlık hizmeti teklifleri müşterilere özgü görevlendirmelerdir. Yay
 
 ## <a name="compare-consulting-services"></a>Danışmanlık hizmetlerini karşılaştırın
 
-Ticari Market çevrimiçi mağazalarının Microsoft AppSource ve Azure Marketi, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için hedef kitleleri ve bulut ürünleri ile hizalanır. Her çevrimiçi mağaza, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. İki çevrimiçi mağaza arasındaki fark hakkında daha fazla bilgi edinmek için bkz. [Microsoft AppSource ve Azure Marketi karşılaştırması](comparing-appsource-azure-marketplace.md).
+Ticari Market çevrimiçi mağazalarının, Microsoft AppSource ve Azure Marketi, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için çözüm türleri ve bulut ürünleri ile hizalanır. Her çevrimiçi mağaza, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. İki çevrimiçi mağaza arasındaki fark hakkında daha fazla bilgi edinmek için bkz. [Microsoft AppSource ve Azure Marketi karşılaştırması](comparing-appsource-azure-marketplace.md).
 
 Dynamics 365, Power Apps ve Power BI temel alan danışmanlık hizmetleri teklifleri AppSource 'ta listelenmeye uygundur. Daha fazla bilgi için [Microsoft AppSource danışmanlık hizmetleri liste yönergeleri](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF dosyasını indirin.
 
 Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Azure Marketi 'nde listelenmeye uygundur. Daha fazla bilgi için bkz. Azure [danışmanlık hizmeti teklifi yayımlama](./partner-center-portal/create-consulting-service-offer.md) ve [Azure Market 'te yönetilen hizmet teklifi yayımlama](../lighthouse/how-to/publish-managed-services-offers.md).
 
 > [!Note]
-> Azure Marketi 'ndeki Danışmanlık Hizmetleri, teknik bir hedef kitle için tekliflere odaklanmalı ve Azure teknik çözümlerini ve hizmetlerini vurgulamalıdır.
+> Azure Marketi 'ndeki Danışmanlık Hizmetleri, Azure teknik çözümlerine ve hizmetlerine odaklanmalıdır.
 >
-> AppSource 'taki Danışmanlık Hizmetleri, Dynamics 365, Power BI veya güç uygulamalarına yönelik kalite çözümleri sunma konusunda uzmanlığa sahip kullanıcılar için tekliflere odaklanmalıdır.
+> AppSource 'taki Danışmanlık Hizmetleri, Dynamics 365, Power BI veya Power Apps için iş çözümlerine odaklanmalıdır.
  
 > [!TIP]
 > Azure Market 'te yayımlamak için, Iş Ortağı Merkezi **birincil ürün** aşağı açılan listesinde **Azure**' ı seçin.
@@ -131,7 +131,7 @@ Teklifler aşağıdaki beş hizmet türünden en az biri olmalıdır:
 > * Bir müşterinin yerinde veya iş ortağının tesisinde **olan kişi** .
 > * **Neredeyse** – teleconferencing, Web konferansı veya uzaktan uygulama aracılığıyla.
 
-Daha önce listelenen gerekli öğeleri yapılandırdıktan sonra, içerik gözden geçirme ekibi, teklif açıklainizin bilgilendirici olduğunu ve hedef kitleniz için tamamlandığını doğrular. 
+Daha önce listelenen gerekli öğeleri yapılandırdıktan sonra, içerik gözden geçirme ekibi, teklif açıklainizin bilgilendirici ve tamamlanmış olduğunu doğrulayacaktır. 
 
 ### <a name="the-listing-title"></a>Liste başlığı
 
@@ -171,9 +171,5 @@ Aşağıda bazı Markaşağı ipuçları verilmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Henüz yapmadıysanız, [Azure Marketi ile bulut işletmenizi nasıl büyütireceğinizi](https://azuremarketplace.microsoft.com/sell)öğrenin.
-
-Iş Ortağı Merkezi 'nde çalışmaya kaydolmak ve başlamak için:
-
-* Teklifinizi oluşturmak veya tamamlayabilmeniz için [Iş Ortağı Merkezi ' nde oturum açın](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
-* Daha fazla bilgi için bkz. [danışmanlık hizmeti teklifi oluşturma](./partner-center-portal/create-consulting-service-offer.md) .
+- [Azure Marketi ile bulut Işletmenizi büyütün](https://azuremarketplace.microsoft.com/sell).
+- [Danışmanlık hizmeti teklifi oluşturma](./partner-center-portal/create-consulting-service-offer.md)

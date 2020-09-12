@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: f9c5b8ae16cb43576d788f72478e2cfba521a736
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b7757b5204c9b3b32145667367a71a9acc42c230
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749879"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434665"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma
 
@@ -63,7 +63,7 @@ HDInsight kümesi adları aşağıdaki kısıtlamalara sahiptir:
 * Tüm abonelikler genelinde tüm Azure için küme adlandırma kapsamı. Bu nedenle, küme adı Dünya genelinde benzersiz olmalıdır.
 * İlk altı karakter bir sanal ağ içinde benzersiz olmalıdır
 
-#### <a name="region"></a>Region
+#### <a name="region"></a>Bölge
 
 Küme konumunu açık bir şekilde belirtmeniz gerekmez: küme, varsayılan depolamayla aynı konumda. Desteklenen bölgelerin listesi için [HDInsight fiyatlandırması](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)üzerindeki **bölge** açılan listesini seçin.
 
@@ -82,7 +82,7 @@ Azure HDInsight Şu anda, her biri belirli işlevleri sağlamak üzere bir bile�
 | [Kafka](kafka/apache-kafka-introduction.md) | Gerçek zamanlı akış veri işlem hatları ve uygulamaları oluşturmak için kullanılabilen bir dağıtılmış akış platformu |
 | [ML Services](r-server/r-server-overview.md) |Çeşitli büyük veri istatistikleri, tahmine dayalı modelleme ve makine öğrenimi özellikleri |
 | [Spark](spark/apache-spark-overview.md) |Bellek içi işleme, etkileşimli sorgular, mikro-Batch akış işleme |
-| [Fırtına](storm/apache-storm-overview.md) |Gerçek zamanlı olay işleme |
+| [Storm](storm/apache-storm-overview.md) |Gerçek zamanlı olay işleme |
 
 #### <a name="version"></a>Sürüm
 
@@ -139,7 +139,7 @@ Yapılandırma sırasında, varsayılan depolama uç noktası için bir Azure de
 
 ### <a name="metastore-settings"></a>Meta veri deposu ayarları
 
-İsteğe bağlı Hive veya Apache Oozie metastores oluşturabilirsiniz. Ancak, tüm küme türleri metastores 'yi desteklemez ve Azure SQL veri ambarı, metastores ile uyumlu değildir.
+İsteğe bağlı Hive veya Apache Oozie metastores oluşturabilirsiniz. Ancak, tüm küme türleri metastores 'yi desteklemez ve Azure SYNAPSE Analytics, metastores ile uyumlu değildir.
 
 Daha fazla bilgi için bkz. [Azure HDInsight 'ta dış meta veri depoları kullanma](./hdinsight-use-external-metadata-stores.md).
 
@@ -216,7 +216,7 @@ Her küme türünün kendi düğüm sayısı, düğüm terminolojisi ve varsayı
 | --- | --- | --- |
 | Hadoop |Baş düğüm (2), çalışan düğümü (1 +) |![HDInsight Hadoop küme düğümleri](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |Baş sunucu (2), bölge sunucusu (1 +), ana/ZooKeeper düğüm (3) |![HDInsight HBase küme türü kurulumu](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Fırtına |Nimbus node (2), gözetmen sunucusu (1 +), ZooKeeper node (3) |![HDInsight fırtınası küme türü kurulumu](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
+| Storm |Nimbus node (2), gözetmen sunucusu (1 +), ZooKeeper node (3) |![HDInsight fırtınası küme türü kurulumu](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
 | Spark |Baş düğüm (2), çalışan düğümü (1 +), ZooKeeper node (3) (a1 ZooKeeper VM boyutu için ücretsiz) |![HDInsight Spark küme türü kurulumu](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 Daha fazla bilgi için bkz. "HDInsight 'ta Hadoop bileşenleri ve sürümleri nelerdir?" içindeki [kümeler Için varsayılan düğüm yapılandırması ve sanal makine boyutları](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) .

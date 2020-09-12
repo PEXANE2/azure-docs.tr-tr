@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute özel eşlemesi: IPSec aktarım modunu yapılandırma-Windows Konakları'
 description: Azure Windows VM 'Leri ve şirket içi Windows konakları arasında, GPO ve OU 'Lar kullanılarak ExpressRoute özel eşlemesi arasında IPSec aktarım modunu etkinleştirme.
 services: expressroute
-author: fabferri
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/17/2018
-ms.author: fabferri
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 32ad4f643ff0b217460403245cbb4e99f139aef9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 026b7ee6cf8061c7cff25b4f9f8d46b6ec3e6a8d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737266"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396497"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>ExpressRoute özel eşlemesi için IPSec aktarım modunu yapılandırma
 
@@ -147,7 +147,7 @@ GPO 'yu OU 'ya uygulamak için GPO yalnızca OU 'ya bağlanmamalıdır, ancak ba
 8. **Özel güvenlik yöntemi ayarları** sayfasında, **veri bütünlüğü ve şifreleme (ESP): SHA1, 3DES '** i seçin. Ardından **Tamam**' a tıklayın.
 
    [![22]][22]
-9. **Filtre eylemlerini yönet** sayfasında, **Myencryption** filtresinin başarıyla eklendiğini görebilirsiniz. **Kapat**' a tıklayın.
+9. **Filtre eylemlerini yönet** sayfasında, **Myencryption** filtresinin başarıyla eklendiğini görebilirsiniz. **Kapat**’a tıklayın.
 
    [![23]][23]
 
@@ -246,7 +246,7 @@ IPSec ilkesine, daha önce yapılandırdığınız **IP filtre listesi** ve **fi
 4. **Ağ türü** , hangi ağ bağlantısının güvenlik ilkesiyle ilişkilendirildiğini tanımlar. **Tüm ağ bağlantıları**' nı seçin ve ardından **İleri**' ye tıklayın.
 
    [![44]][44]
-5. Daha önce oluşturduğunuz IP filtresi listesini, **Azure-OnPremises-HTTP8080**' ı seçin ve ardından **İleri**' ye tıklayın.
+5. Daha önce oluşturduğunuz IP filtresi listesini,  **Azure-OnPremises-HTTP8080**' ı seçin ve ardından **İleri**' ye tıklayın.
 
    [![45]][45]
 6. Daha önce oluşturduğunuz mevcut filtre **eylemi '** ni seçin.
@@ -255,7 +255,7 @@ IPSec ilkesine, daha önce yapılandırdığınız **IP filtre listesi** ve **fi
 7. Windows dört farklı kimlik doğrulaması türünü destekler: Kerberos, sertifikalar, NTLMv2 ve önceden paylaşılan anahtar. Etki alanına katılmış konaklarla çalıştıyoruz, **Active Directory varsayılan (Kerberos V5 protokolü)** öğesini seçin ve ardından **İleri**' ye tıklayın.
 
    [![47]][47]
-8. Yeni ilke güvenlik kuralını oluşturur: **Azure-OnPremises-HTTP8080**. **Tamam**'a tıklayın.
+8. Yeni ilke güvenlik kuralını oluşturur: **Azure-OnPremises-HTTP8080**. **Tamam**’a tıklayın.
 
    [![48]][48]
 

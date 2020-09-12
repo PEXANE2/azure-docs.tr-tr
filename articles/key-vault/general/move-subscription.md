@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 3c2fef4ebd7db076a502f63101c80c4e08683b39
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145374"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394746"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault başka bir aboneliğe taşıma
 
@@ -51,7 +51,7 @@ Kuruluşunuz, abonelik düzeyinde uygulama veya dışlamaları olan Azure Ilkesi
 
 Azure portal Azure Ilke sayfasına gitdiğinizden emin olun ve geçerli aboneliğiniz için ilke atamalarından ve taşıdığınız aboneliğin yanı sıra uyuşmazlıkların bulunmadığından emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Katılımcı düzeyinde, anahtar kasanızın bulunduğu geçerli aboneliğe erişimi veya daha yükseği.
 * Katılımcı düzeyi, anahtar kasanızı taşımak istediğiniz aboneliğe erişim veya daha yüksek.
@@ -97,11 +97,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 Artık kasanız doğru kiracı KIMLIĞIYLE ilişkilendirildiğinden ve eski erişim ilkesi girdileri kaldırıldığına göre, Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) cmdlet 'ı veya Azure CLI [az keykasası Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutunu kullanarak yeni erişim ilkesi girdileri ayarlayın.
 
-Azure kaynakları için yönetilen bir kimlik kullanıyorsanız, bunu yeni Azure AD kiracısıyla de güncelleştirmeniz gerekir. Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](managed-identity.md).
+Azure kaynakları için yönetilen bir kimlik kullanıyorsanız, bunu yeni Azure Active Directory kiracısında da güncelleştirmeniz gerekecektir. Yönetilen kimlikler hakkında daha fazla bilgi için, [yönetilen kimliğe genel bakış](/azure/active-directory/managed-identities-azure-resources/overview).
 
-MSI kullanıyorsanız, eski kimlik artık doğru AAD kiracısında yer kalmadığında MSI kimliğini de güncelleştirmeniz gerekir. Bu sorunu gidermeye yardımcı olması için aşağıdaki belgelere bakın. 
+Yönetilen kimlik kullanıyorsanız, eski kimlik artık doğru Azure Active Directory kiracısında yer lamadığından kimliği de güncelleştirmeniz gerekir. Bu sorunu gidermeye yardımcı olması için aşağıdaki belgelere bakın. 
 
 * [MSI güncelleştiriliyor](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
 * [Aboneliği yeni dizine aktar](https://docs.microsoft.com/azure/role-based-access-control/transfer-subscription)
-
-

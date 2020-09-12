@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 09/02/2020
+ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921275"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378806"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te transactable SaaS teklifinizin giriş sayfasını oluşturun
 
@@ -38,15 +38,15 @@ Giriş sayfası genellikle aşağıdakileri içerir:
 Aşağıdaki bölümler, bir giriş sayfası oluşturma işleminde size kılavuzluk eder:
 
 1. Giriş sayfası için [bir Azure AD uygulama kaydı oluşturun](#create-an-azure-ad-app-registration) .
-2. Uygulamanız için [Başlangıç noktası olarak bir kod örneği kullanın](#use-a-code-sample-as-a-starting-point) .
-3. Ticari Market tarafından URL 'ye eklenen [Market satın alma tanımlama belirtecini çözümleyin](#resolve-the-marketplace-purchase-identification-token) .
-4. Oturum açtıktan sonra Azure AD 'den alınan, [kimlik belirtecinde kodlanan taleplerden bilgi okuyun](#read-information-from-claims-encoded-in-the-id-token), bu, istekle birlikte gönderilir.
-5. Gerektiğinde ek bilgi toplamak için [MICROSOFT Graph API 'Sini kullanın](#use-the-microsoft-graph-api) .
-6. [Üretimde güvenliği geliştirmek için Iki Azure AD uygulaması kullanın](#use-two-azure-ad-apps-to-improve-security-in-production).
+1. Uygulamanız için [Başlangıç noktası olarak bir kod örneği kullanın](#use-a-code-sample-as-a-starting-point) .
+1. [Üretimde güvenliği geliştirmek için Iki Azure AD uygulaması kullanın](#use-two-azure-ad-apps-to-improve-security-in-production).
+1. Ticari Market tarafından URL 'ye eklenen [Market satın alma tanımlama belirtecini çözümleyin](#resolve-the-marketplace-purchase-identification-token) .
+1. Oturum açtıktan sonra Azure AD 'den alınan, [kimlik belirtecinde kodlanan taleplerden bilgi okuyun](#read-information-from-claims-encoded-in-the-id-token), bu, istekle birlikte gönderilir.
+1. Gerektiğinde ek bilgi toplamak için [MICROSOFT Graph API 'Sini kullanın](#use-the-microsoft-graph-api) .
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD uygulama kaydı oluşturma
 
-Ticari Market, Azure AD ile tamamen tümleşiktir. Alıcılar bir [Azure AD hesabı veya Microsoft hesabı (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)ile kimliği doğrulanan Market 'e ulaşır. Satın alma işleminden sonra alıcı, SaaS uygulamanızın aboneliğini etkinleştirmek ve yönetmek için ticari Market 'ten giriş sayfası URL 'sine gider. Alıcının Azure AD SSO ile uygulamanızda oturum açmasını sağlamalısınız. (Giriş sayfası URL 'SI, teklifin [Teknik yapılandırma](partner-center-portal/offer-creation-checklist.md#technical-configuration-page) sayfasında belirtilir.
+Ticari Market, Azure AD ile tamamen tümleşiktir. Alıcılar bir [Azure AD hesabı veya Microsoft hesabı (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)ile kimliği doğrulanan Market 'e ulaşır. Satın alma işleminden sonra alıcı, SaaS uygulamanızın aboneliğini etkinleştirmek ve yönetmek için ticari Market 'ten giriş sayfası URL 'sine gider. Alıcının Azure AD SSO ile uygulamanızda oturum açmasını sağlamalısınız. (Giriş sayfası URL 'SI, teklifin [Teknik yapılandırma](plan-saas-offer.md#technical-information) sayfasında belirtilir.
 
 Kimliği kullanmanın ilk adımı, giriş sayfanızın bir Azure AD uygulaması olarak kaydedildiğinden emin olmak için kullanılır. Uygulamayı kaydetmek, kullanıcıların kimliğini doğrulamak ve Kullanıcı kaynaklarına erişim istemek için Azure AD 'yi kullanmanıza olanak sağlar. Uygulamanın tanım olarak düşünülebilir ve bu da hizmetin uygulama ayarlarına bağlı olarak uygulamaya belirteç verme konusunda bilgi verir.
 
@@ -82,7 +82,7 @@ Bu, çözümün [endişeleri ayırmayı](https://docs.microsoft.com/dotnet/archi
 Alıcı, giriş sayfanıza gönderildiğinde, URL parametresine bir belirteç eklenir. Bu belirteç hem Azure AD tarafından verilen belirteç hem de hizmetten hizmete kimlik doğrulaması için kullanılan erişim belirtecinden farklıdır ve [SaaS tamamlama API 'leri](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) için bir giriş olarak kullanılır ve aboneliğin ayrıntılarını almak için çağrıyı çözün. SaaS 'nin birlikte getirilmesi API 'Lerinin tüm çağrılarında olduğu gibi, hizmetten hizmete isteğiniz, uygulamanın Azure AD uygulama KIMLIĞI kullanıcısına hizmetten hizmete kimlik doğrulaması için temel alan bir erişim belirteciyle kimlik doğrulamasından geçer.
 
 > [!NOTE]
-> Çoğu durumda, bu çağrıyı ikinci bir tek kiracılı uygulamadan yapmak tercih edilir. Bu makalenin ilerleyen kısımlarında [üretimde güvenliği geliştirmek için Iki Azure AD uygulaması kullanma](#use-two-azure-ad-apps-to-improve-security-in-production) konusuna bakın.
+> Çoğu durumda, bu çağrıyı ikinci bir tek kiracılı uygulamadan yapmak tercih edilir. Bu makalenin önceki kısımlarında [üretimde güvenliği artırmak için bkz. Iki Azure AD uygulaması kullanma](#use-two-azure-ad-apps-to-improve-security-in-production) .
 
 ### <a name="request-an-access-token"></a>Erişim belirteci isteme
 
@@ -131,4 +131,4 @@ Azure AD 'ye kayıtlı uygulamaların çoğu, kullanıcının şirketinin Azure 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ticari Market 'te SaaS teklifi oluşturma](./partner-center-portal/create-new-saas-offer.md)
+- [Ticari Market 'te SaaS teklifi oluşturma](create-new-saas-offer.md)

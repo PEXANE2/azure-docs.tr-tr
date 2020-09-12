@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 70dcee1cce49c658a60e98821a3ce60ec443408a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f4a345fe62a1d13a6be7dc71ecc0529fec2a6a4e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932585"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401512"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows için Key Vault sanal makine uzantısı
 
@@ -80,7 +80,7 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft.Azure.KeyVault | string |
@@ -206,7 +206,7 @@ Azure CLı, Key Vault VM uzantısını var olan bir sanal makineye veya sanal ma
 Lütfen aşağıdaki kısıtlamalara/gereksinimlere dikkat edin:
 - Key Vault kısıtlamaları:
   - Dağıtım sırasında var olmalıdır 
-  - Key Vault erişim Ilkesi, MSI kullanılarak VM/VMSS kimliği için ayarlandı
+  - Key Vault erişim Ilkesi, yönetilen bir kimlik kullanılarak VM/VMSS kimliği için ayarlanmalıdır. [Key Vault Için kimlik doğrulama](/azure/key-vault/general/authentication) ve [Key Vault erişim ilkesi atama](/azure/key-vault/general/assign-access-policy-cli)konusuna bakın.
 
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek

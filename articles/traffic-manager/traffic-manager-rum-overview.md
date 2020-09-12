@@ -3,21 +3,21 @@ title: Azure Traffic Manager Gerçek Kullanıcı Ölçümleri
 description: Bu giriş bölümünde Azure Traffic Manager Gerçek Kullanıcı Ölçümleri nasıl çalıştığını öğrenin.
 services: traffic-manager
 documentationcenter: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: rohink
+ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: e38e1255b1a84ab5d3fd37e16eb65c76001dbfa1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45c889ef8d67570fb075ec710616f20d110b7f50
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938443"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401614"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager Gerçek Kullanıcı Ölçümleri’ne genel bakış
 

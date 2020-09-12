@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: f592d6fb8fed3f15bd11d5e6ebe6ee358953748c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8a988895cd8999d15c32d7056d35abf40aeaba7e
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837237"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420702"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
 
@@ -24,7 +24,7 @@ MySQL için Azure veritabanı bazı sunucu parametrelerinin yapılandırılması
 ![Azure portal sunucu parametreleri sayfası](./media/howto-server-parameters/auzre-portal-server-parameters.png)
 3. Ayarlamanız gereken ayarları bulun. Amacı ve izin verilen değerleri anlamak için **Açıklama** sütununu gözden geçirin.
 ![Açılan listesini numaralandır](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
+4. Değişikliklerinizi kaydetmek için  **Kaydet** ' e tıklayın.
 ![Değişiklikleri kaydetme veya atma](./media/howto-server-parameters/4-save_parameters.png)
 5. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla**' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
 ![Tümünü Varsayılana sıfırla](./media/howto-server-parameters/5-reset_parameters.png)
@@ -34,11 +34,14 @@ MySQL için Azure veritabanı bazı sunucu parametrelerinin yapılandırılması
 Güncelleştirmek istediğiniz sunucu parametresi Azure portal listelenmemişse, isteğe bağlı olarak, parametresini kullanarak bağlantı düzeyinde ayar yapabilirsiniz `init_connect` . Bu, sunucuya bağlanan her istemci için sunucu parametrelerini ayarlar. 
 
 1. **Ayarlar** bölümünde **sunucu parametreleri** ' ne tıklayarak MySQL için Azure veritabanı sunucusu için sunucu parametreleri sayfasını açın.
-2. Ara`init_connect`
+2. Ara `init_connect`
 3. Sunucu parametrelerini şu biçimde ekleyin: değer `SET parameter_name=YOUR_DESIRED_VALUE` sütununda değer sütunu.
 
     Örneğin, için ayarını yaparak sunucunuzun karakter kümesini değiştirebilirsiniz. `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
 4. **Kaydet**’a tıklayarak değişikliklerinizi kaydedin.
+
+>[!Note]
+> `init_connect` , oturum düzeyinde süper ayrıcalık gerektirmeyen parametreleri değiştirmek için kullanılabilir. Parametresini kullanarak ayarlayıp ayarlayabildiğinizi doğrulamak için `init_connect` , `set session parameter_name=YOUR_DESIRED_VALUE;` komutunu yürütün ve **erişim engellendi** ile hata alıyorsa, ' init_connect ' kullanarak parametreyi ayarlayamazsınız.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Saat dilimi parametresiyle çalışma
 

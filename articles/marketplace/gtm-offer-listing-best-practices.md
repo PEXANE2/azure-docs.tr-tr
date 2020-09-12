@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816278"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420940"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
 
@@ -34,7 +34,7 @@ Farklı bir çevrimiçi mağazaya yönelik Kategoriler ve endüstriler, farklı 
 
 | Çevrimiçi mağaza | Kategoriler <br>çevrimiçi mağazaya göre | Kategoriler <br>çevrimiçi mağazaya göre | Sektörler <br> AppSource için |
 | :------------------- |:----------------:|:------:|:-------------:|
-| **Teklif türü**   |  **Azure Market**  | **AppSource**  |
+| **Teklif Türü**   |  **Azure Market**  | **AppSource**  |
 | Azure Uygulaması | X | |
 | Kapsayıcı | X | |
 | Danışmanlık Hizmetleri | | | X |
@@ -48,11 +48,11 @@ Farklı bir çevrimiçi mağazaya yönelik Kategoriler ve endüstriler, farklı 
 
 ### <a name="categories"></a>Kategoriler
 
-Microsoft AppSource ve Azure Marketi, benzersiz müşteri gereksinimlerine sunan iki farklı çevrimiçi depolardır. Azure Marketi, BT uzmanlarının ve geliştiricilerin Azure 'da çözüm oluşturduğu uygulamaları hedefler.  Microsoft AppSource, iş ve/veya sektör SaaS uygulamalarını, Dynamics 365 eklentilerini, Microsoft 365 eklentilerini ve güç platformu uygulamalarını arayan iş kullanıcılarını hedefler.
+Microsoft AppSource ve Azure Market, farklı çözüm türleri sunan çevrimiçi depolardır. Azure Marketi, Azure 'da veya Azure için oluşturulmuş BT çözümleri sunar.  Microsoft AppSource sektör SaaS uygulamaları, Dynamics 365 eklentileri, Microsoft 365 eklentileri ve güç platformu uygulamaları gibi iş çözümlerini sunmaktadır.
 
-Kategoriler ve alt kategoriler, hedef kitle temelinde her bir çevrimiçi depoya eşlenir. Teklifiniz teklif türüne, teklifin ve kategorinin/alt kategori seçimine bağlı olarak Microsoft AppSource veya Azure Marketi 'nde yayımlanacak. 
+Kategoriler ve alt kategoriler, çözüm türüne göre her bir çevrimiçi mağazaya eşlenir. Teklifiniz teklif türüne, teklifin ve kategorinin/alt kategori seçimine bağlı olarak Microsoft AppSource veya Azure Marketi 'nde yayımlanacak. 
 
-Teklifiniz ve hedeflediğiniz hedef kitlelerinizi en iyi şekilde hizalamak için kategoriler ve alt kategoriler ' i seçin. Şunları seçebilirsiniz:
+Çözüm türü ile en iyi şekilde hizalamak için kategoriler ve alt kategoriler ' i seçin. Şunları seçebilirsiniz:
 
 * Birincil ve ikincil kategori dahil olmak üzere en fazla iki kategori (isteğe bağlı).
 * Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Alt kategori seçilmezse, teklif yalnızca seçili kategori üzerinde bulunabilir olmaya devam eder.

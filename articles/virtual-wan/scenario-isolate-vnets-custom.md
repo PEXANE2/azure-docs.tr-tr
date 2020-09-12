@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0a3665f1719c7a5f8ed9bd6acf518b642e06320d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831031"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400067"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Senaryo: sanal ağlar için özel yalıtım
 
@@ -29,7 +29,7 @@ Kaç tane yol tablosunun gerekli olacağını anlamak için bir bağlantı matri
 | **Kırmızı VNET 'ler**  |   &#8594;|              |       X       |       X      |
 | **Dallar**   |   &#8594;|     X        |       X       |       X      |
 
-Önceki tabloda bulunan hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, tablodaki satır başlıkları), belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, tablodaki sütun başlıkları) öğrenip öğrenmediğini açıklar.
+Önceki tablodaki hücrelerin her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, tablodaki satır başlıkları), belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, tablodaki sütun üst bilgileri) öğrenip bir "X" bağlantısının sanal WAN tarafından sağlandığı anlamına gelir.
 
 Farklı satır desenlerinin sayısı, bu senaryoda ihtiyacımız olacak yol tablolarının sayısı olacaktır. Bu durumda, sanal ağlar için **RT_BLUE** ve **RT_RED** çağıracağız üç yol yolu tablosu ve dallar için **varsayılan** . Dalların her zaman varsayılan yönlendirme tablosuyla ilişkilendirilmesi gerektiğini unutmayın.
 
@@ -53,7 +53,7 @@ Dalların hem kırmızı hem de mavi VNET 'lerden gelen öneklerini öğrenmeler
 
 Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
-## <a name="workflow"></a><a name="architecture"></a>Akışıyla
+## <a name="workflow"></a><a name="architecture"></a>İş akışı
 
 **Şekil 1**' de mavi ve Red VNET bağlantıları vardır.
 

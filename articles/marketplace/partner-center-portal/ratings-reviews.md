@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ff46c5e2d434a75bf71d6216ce81b34de878ba80
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304199"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419189"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Derecelendirmeler & Iş Ortağı Merkezi 'nde analiz panosu
 
@@ -33,7 +33,7 @@ Panoda aşağıdaki müşteri etkinliğinin grafik gösterimi görüntülenir:
 - Derecelendirmeler & değerlendirmeleri  
 - Açıklamaları gözden geçir
 
-Teklif Microsoft AppSource ve Azure Market ölçümlerini ayrı olarak görüntülemek için **Market storefront** sekmelerini kullanın. Belirli teklif ölçümlerini görüntülemek için teklif açılan listesinden teklifi seçin.
+Teklif Microsoft AppSource ve Azure Market ölçümlerini ayrı olarak görüntülemek için **Market öngörüleri** sekmelerini kullanın. Belirli teklif ölçümlerini görüntülemek için teklif açılan listesinden teklifi seçin.
 
 ### <a name="ratings--reviews-summary"></a>Derecelendirmeler & değerlendirmeleri Özeti
 

@@ -2,22 +2,22 @@
 title: 'ExpressRoute: sanal ağı bir devreye bağlama: Azure PowerShell'
 description: Bu belgede, Kaynak Yöneticisi dağıtım modelini ve PowerShell 'i kullanarak sanal ağların (VNet 'ler) ExpressRoute devrelerine nasıl bağlanalınacağını gösteren bir genel bakış sunulmaktadır.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/20/2018
-ms.author: charwen
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: c8fd3bc4a2efd90857d0696491102790b069d5e1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 49f259178020dd0e8e4f24aed67869aefd73b037
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984160"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395851"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Sanal ağı ExpressRoute bağlantı hattına bağlama
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video-Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)

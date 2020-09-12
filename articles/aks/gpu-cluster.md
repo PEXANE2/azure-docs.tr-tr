@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757651"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443067"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde işlem yoğunluğu yoğun iş yükleri için GPU 'ları kullanma
 
@@ -162,7 +162,7 @@ az extension update --name aks-preview
 
 Kümeyi, küme oluşturulduğunda, AKS özel GPU görüntüsünü kullanacak şekilde yapılandırın. `--aks-custom-headers`AKS özel GPU görüntüsünü kullanmak için yeni KÜMENIZDEKI GPU Aracısı düğümlerinin bayrağını kullanın.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -173,7 +173,7 @@ Normal AKS görüntülerini kullanarak bir küme oluşturmak istiyorsanız, öze
 
 AKS özel GPU görüntüsünü kullanmak için yeni bir düğüm havuzu yapılandırın. `--aks-custom-headers`AKS özel GPU görüntüsünü kullanmak için yeni düğüm havuzunuzdaki GPU Aracısı düğümlerinin bayrak bayrağını kullanın.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -181,7 +181,7 @@ Normal AKS görüntülerini kullanarak bir düğüm havuzu oluşturmak istiyorsa
 
 > [!NOTE]
 > GPU SKU 'nuzun 2. nesil sanal makineler gerekiyorsa, şunları yapabilirsiniz:
-> ```azure-cli
+> ```azurecli
 > az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
 > ```
 

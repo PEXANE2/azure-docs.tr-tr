@@ -1,18 +1,18 @@
 ---
 title: Site Recovery kurtarma planlarına Azure Otomasyonu runbook 'ları ekleme
 description: Azure Site Recovery kullanarak olağanüstü durum kurtarma için Azure Otomasyonu ile kurtarma planlarını genişletmeyi öğrenin.
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: rajanaki
-ms.openlocfilehash: 1df17ccb41c974c8939710850b5bb71ee3a5ef1b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: ramamill
+ms.openlocfilehash: a141280338632fdad7053cbbe76c8bdf2797443d
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021588"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424880"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Kurtarma planlarına Azure Otomasyonu runbook’ları ekleme
 
@@ -51,7 +51,7 @@ Bir betik çalıştırıldığında, runbook 'a bir kurtarma planı bağlamını
 | ID |Plan çalışırken kurtarma planındaki grup numarasını tanımlar. |
 | VmMap |Gruptaki tüm VM 'lerin bir dizisi. |
 | VMMap anahtarı |Her VM için benzersiz bir anahtar (GUID). |
-| SubscriptionId |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
+| kaynak grubundaki |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
 | ResourceGroupName | VM 'nin bulunduğu kaynak grubunun adı.
 | CloudServiceName |VM 'nin altında oluşturulduğu Azure bulut hizmeti adı. |
 | RoleName |Azure VM 'nin adı. |
@@ -254,7 +254,7 @@ Farklı kurtarma planları için aynı betiği kullanabilirsiniz. Farklı deği�
 
 Otomasyon hesabınıza örnek betikler dağıtmak için **Azure 'A dağıt** düğmesine tıklayın.
 
-[![Azure’a dağıtma](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![Azure’a dağıt](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 Bu video başka bir örnek sağlar. İki katmanlı bir WordPress uygulamasının Azure 'a nasıl kurtarılacağı gösterilmektedir:
 

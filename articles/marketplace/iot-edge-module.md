@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6eeb27f6382585e883fbebc40a9f70feb33adb4f
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816261"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420617"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge modülleri
 
@@ -30,7 +30,7 @@ ms.locfileid: "88816261"
 
 ## <a name="what-is-an-iot-edge-module"></a>IoT Edge modülü nedir?
 
-Azure IoT Edge, çalışma mantığını uç üzerinde modüller biçiminde dağıtmanıza ve yönetmenize olanak tanır. Azure IoT Edge modüller, IoT Edge tarafından yönetilen en düşük hesaplama birimleridir ve Microsoft Hizmetleri (Azure Stream Analytics gibi), 3. taraf hizmetleri veya kendi çözüme özgü kodunuzla bulunabilir. IoT Edge modüller hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge modülleri anlama](../iot-edge/iot-edge-modules.md).
+Azure IoT Edge, çalışma mantığını uç üzerinde modüller biçiminde dağıtmanıza ve yönetmenize olanak tanır. Azure IoT Edge modüller, IoT Edge tarafından yönetilen en düşük hesaplama birimleridir ve Microsoft Hizmetleri (Azure Stream Analytics gibi), üçüncü taraf hizmetleri veya kendi çözümünüze özgü kodunuzla bulunabilir. IoT Edge modüller hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge modülleri anlama](../iot-edge/iot-edge-modules.md).
 
 **Kapsayıcı teklif türü ve IoT Edge modülü teklif türü arasındaki fark nedir?**
 
@@ -40,7 +40,7 @@ IoT Edge modülü teklif türü, bir IoT Edge cihazında çalışan belirli bir 
 
 **Doğru çevrimiçi mağazayı seçme**
 
-IoT Edge modüller yalnızca Azure Marketi 'Nde yayımlanır; AppSource uygulanmaz. Çevrimiçi mağazalardaki farklılıklar ve hedef kitleler hakkında daha fazla bilgi için bkz. [Yayımlama seçeneğinizi belirleme](determine-your-listing-type.md).
+IoT Edge modüller yalnızca Azure Marketi 'Nde yayımlanır; AppSource uygulanmaz. Çevrimiçi mağazaların farkları hakkında daha fazla bilgi için bkz. [Yayımlama seçeneğinizi belirleme](determine-your-listing-type.md).
 
 **Faturalandırma seçenekleri**
 
@@ -75,6 +75,5 @@ Azure Market 'te sertifikalı ve yayımlanmış olması için bir IoT Edge modü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Ticari Market hakkında [bilgi edinin](https://azuremarketplace.microsoft.com/sell) .
 - Teklifinizi oluşturmak veya tamamlayabilmeniz için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) ' nde oturum açın.
 - Iş Ortağı Merkezi 'nde [bir IoT Edge modülü teklifi oluşturun](./partner-center-portal/azure-iot-edge-module-creation.md) .

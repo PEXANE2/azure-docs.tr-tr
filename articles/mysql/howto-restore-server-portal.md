@@ -6,19 +6,19 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 1a10d61c5dc35a19a8b02769a517d9f1c7aac601
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c6a35d9ba2d2f1c762f44b3792792401565c4804
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119234"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421093"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu yedekleme ve geri yükleme
 
 ## <a name="backup-happens-automatically"></a>Yedekleme otomatik olarak gerçekleşir
 MySQL için Azure veritabanı sunucuları, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MySQL Için Azure veritabanı sunucusu ve veritabanı](quickstart-create-mysql-server-database-using-azure-portal.md)
 
@@ -72,6 +72,12 @@ Aşağıdaki adımlar örnek sunucuyu bir zaman noktasına geri yükler:
 5. Geri yükleme tamamlandıktan sonra, verilerin beklendiği gibi geri yüklendiğini doğrulamak için oluşturulan yeni sunucuyu bulun.
 
 Noktadan noktaya geri yükleme tarafından oluşturulan yeni sunucu, mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolası ile aynı zamanda, Parolayı yeni sunucunun **genel bakış** sayfasından değiştirebilirsiniz.
+
+Ayrıca, geri yükleme işlemi tamamlandıktan sonra, geri yükleme işleminden sonra varsayılan değerlere sıfırlanan (ve birincil sunucudan kopyalanmayan) iki sunucu parametresi vardır
+*   time_zone-bu değer varsayılan değer **sistemine** ayarlanır
+*   event_scheduler-event_scheduler, geri yüklenen sunucuda **kapalı** olarak ayarlanmıştır
+
+Birincil sunucudan değeri kopyalamanız ve [sunucu parametresini](howto-server-parameters.md) yeniden yapılandırarak geri yüklenen sunucuda ayarlamanız gerekir
 
 Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrıca ayarlanması gerekir. Özgün sunucudan gelen güvenlik duvarı kuralları geri yüklendi.
 

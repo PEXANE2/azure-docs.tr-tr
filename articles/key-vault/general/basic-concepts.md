@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c64835ced558727718690138c3e7a7666cf0809
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb1ca4fc8f550c8ed6955adaca9082f0b6b79e6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84167307"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89379010"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault temel kavramlar
 
@@ -33,7 +33,7 @@ Diğer önemli terimler şunlardır:
 
 - **Kaynak grubu**: Kaynak grubu, Azure çözümleri için ilgili kaynakları bir arada tutan kapsayıcılardır. Kaynak grubu bir çözümün tüm kaynaklarını veya yalnızca grup olarak yönetmek istediğiniz kaynakları içerebilir. Kuruluş için önemli olan faktörleri temel alarak kaynakları kaynak gruplarına nasıl ayıracağınıza siz karar verirsiniz.
 
-- **Hizmet sorumlusu**: Azure hizmet sorumlusu, Kullanıcı tarafından oluşturulan uygulamaların, hizmetlerin ve otomasyon araçlarının belirli Azure kaynaklarına erişmek için kullandığı bir güvenlik kimliğidir. Bunu belirli bir role sahip "Kullanıcı kimliği" (Kullanıcı adı ve parola veya sertifika) olarak düşünebilirsiniz ve sıkı denetimli izinlere sahip olmanız gerekir. Genel kullanıcı kimliğinin aksine, hizmet sorumlusunun yalnızca belirli şeyleri yapabilmesi gerekir. Yalnızca, yönetim görevlerini gerçekleştirmesi için ihtiyacı olan en düşük izin düzeyini verirseniz güvenliği geliştirir.
+- **Güvenlik sorumlusu**: Azure Güvenlik sorumlusu, Kullanıcı tarafından oluşturulan uygulamaların, hizmetlerin ve otomasyon araçlarının belirli Azure kaynaklarına erişmek için kullandığı bir güvenlik kimliğidir. Bunu belirli bir role sahip "Kullanıcı kimliği" (Kullanıcı adı ve parola veya sertifika) olarak düşünebilirsiniz ve sıkı denetimli izinlere sahip olmanız gerekir. Bir güvenlik sorumlusu, genel Kullanıcı kimliğinden farklı olarak yalnızca belirli şeyler yapması gerekir. Yalnızca, yönetim görevlerini gerçekleştirmesi için ihtiyacı olan en düşük izin düzeyini verirseniz güvenliği geliştirir. Bir uygulama veya hizmetle kullanılan güvenlik sorumlusu özellikle **hizmet sorumlusu**olarak adlandırılır.
 
 - [Azure Active Directory (Azure AD)](../../active-directory/active-directory-whatis.md): Azure AD, bir kiracıya ilişkin Active Directory hizmetidir. Her dizinde bir veya daha fazla etki alanı vardır. Dizinde birden fazla abonelik bulunabilir ancak tek bir kiracı olur.
 
@@ -43,7 +43,7 @@ Diğer önemli terimler şunlardır:
 
     ![Azure kaynakları için yönetilen kimliklerin nasıl çalıştığı diyagramı](../media/key-vault-whatis/msi.png)
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 Key Vault tüm işlemleri yapmak için önce bu kimlik doğrulaması yapmanız gerekir. Key Vault doğrulamak için üç yol vardır:
 
 - [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md): Azure 'da bir sanal makinede uygulama dağıtırken, Key Vault erişimi olan sanal makinenize bir kimlik atayabilirsiniz. Ayrıca, [diğer Azure kaynaklarına](../../active-directory/managed-identities-azure-resources/overview.md)kimlik de atayabilirsiniz. Bu yaklaşımın avantajı, uygulamanın veya hizmetin ilk gizli dizi dönüşünü yönetmediğinde. Azure, kimliği otomatik olarak döndürür. En iyi uygulama olarak bu yaklaşımı öneririz. 

@@ -9,12 +9,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: dd1e20504d96b55d6a450512ea287b9352fb043a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3393cb66735ffb881520a11bf9d1680c35d3d374
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496942"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424812"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Çalıştır komutunu kullanarak PowerShell betiklerini Windows sanal makinenizde çalıştırma
 
@@ -40,6 +40,7 @@ Bu özellik, bir sanal makine içinde bir komut dosyası çalıştırmak istedi�
 * Çalışan bir betiği iptal edemezsiniz.
 * Bir betiğin çalışacağı en uzun süre 90 dakikadır. Bundan sonra zaman aşımına uğrar.
 * Betiğin sonuçlarını döndürmek için VM 'den giden bağlantı gereklidir.
+* VM aracısının durdurulmasına veya güncelleştirilmesine neden olacak bir komut dosyası çalıştırmanız önerilmez. Bu, uzantının bir zaman aşımı ile başa geçiş durumunda olmasına izin verebilir.
 
 > [!NOTE]
 > Doğru çalışması için, komutu çalıştırın (bağlantı noktası 443) Azure genel IP adreslerine bağlantı gerektirir. Uzantının bu uç noktalara erişimi yoksa, betikler başarıyla çalıştırılabilir, ancak sonuçları döndürmeyebilir. Sanal makinede trafiği engelliyorsanız, etiketini kullanarak Azure genel IP adreslerine giden trafiğe izin vermek için [hizmet etiketlerini](../../virtual-network/security-overview.md#service-tags) kullanabilirsiniz `AzureCloud` .

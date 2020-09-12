@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 09/03/2020
 tags: connectors
-ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 68b81fa8cf110b47581e482e7e546821d40aef62
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853305"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435159"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -29,7 +29,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -167,7 +167,7 @@ Bir mantıksal uygulama oluşturduğunuzda, sıralı konvoy düzenini uygulayan 
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Service Bus Bağlayıcısı, bir hizmet veri yolundan bağlayıcı önbelleğine en çok 1.500 benzersiz oturum kaydedebilir. Oturum sayısı bu sınırı aşarsa, eski oturumlar önbellekten kaldırılır. Daha fazla bilgi için bkz. [ileti oturumları](../service-bus-messaging/message-sessions.md).
+Service Bus Bağlayıcısı, bir hizmet veri yolundan, [abonelik veya konu gibi Service Bus mesajlaşma varlığı](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)başına her seferinde en fazla 1.500 benzersiz oturum kaydedebilir. Oturum sayısı bu sınırı aşarsa, eski oturumlar önbellekten kaldırılır. Daha fazla bilgi için bkz. [ileti oturumları](../service-bus-messaging/message-sessions.md).
 
 Bağlayıcının Swagger açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili diğer teknik ayrıntılar için [bağlayıcı başvurusu sayfasını](/connectors/servicebus/)gözden geçirin. Azure Service Bus mesajlaşma hakkında daha fazla bilgi için bkz. [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)nedir?
 

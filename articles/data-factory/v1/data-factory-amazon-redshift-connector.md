@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710159"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443033"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Redshift 'Tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -61,12 +61,12 @@ Aşağıdaki tabloda, Amazon Redshift bağlı hizmetine özgü JSON öğeleri i�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **türüyle** |Bu özellik **AmazonRedshift**olarak ayarlanmalıdır. |Evet |
-| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
+| **türüyle** |Bu özellik **AmazonRedshift**olarak ayarlanmalıdır. |Yes |
+| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
 | **bağ** |Amazon Redshift sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası sayısı. |Hayır (varsayılan değer 5439) |
-| **veritabanınızı** |Amazon Redshift veritabanının adı. |Evet |
-| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Evet |
-| **parola** |Kullanıcı hesabının parolası. |Evet |
+| **veritabanınızı** |Amazon Redshift veritabanının adı. |Yes |
+| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Yes |
+| **parola** |Kullanıcı hesabının parolası. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
@@ -87,7 +87,7 @@ Kopyalama etkinliği için, kaynak **AmazonRedshiftSource**türünde olduğunda 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | **sorgulayamadı** | Verileri okumak için özel sorguyu kullanın. |Hayır (bir veri kümesinin **TableName** özelliği belirtilmişse) |
-| **Redkaydırıcı Tunloadsettings** | Redshift **Unload** komutu kullanılırken Özellik grubunu içerir. | Hayır |
+| **Redkaydırıcı Tunloadsettings** | Redshift **Unload** komutu kullanılırken Özellik grubunu içerir. | No |
 | **s3LinkedServiceName** | Bir ara mağaza olarak kullanmak için Amazon S3. Bağlı hizmet, **Awsaccesskey**türünde bir Azure Data Factory adı kullanılarak belirtilir. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
 | **bucketName** | Ara verileri depolamak için kullanılacak Amazon S3 demet öğesini gösterir. Bu özellik sağlanmazsa, kopyalama etkinliği otomatik olarak bir demet oluşturur. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
 
@@ -101,13 +101,13 @@ Alternatif olarak, **Typeproperties** bölümünde aşağıdaki özelliği Içer
 
 Amazon Redshift [**Unload**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) komutu bir sorgunun sonuçlarını Amazon S3 üzerindeki bir veya daha fazla dosyaya kaldırır. Bu komut, Redshift ' den büyük veri kümelerini kopyalamak için Amazon tarafından önerilir.
 
-**Örnek: Amazon Redshift 'tan Azure SQL veri ambarı 'na veri kopyalama**
+**Örnek: Amazon Redshift 'tan Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri kopyalama**
 
-Bu örnek, Amazon Redshift 'tan Azure SQL veri ambarı 'na veri kopyalar. Örnek, Redshift **Unload** komutunu, hazırlanan kopyalama verilerini ve Microsoft PolyBase 'i kullanır.
+Bu örnek, Amazon Redshift 'tan Azure SYNAPSE Analytics 'e veri kopyalar. Örnek, Redshift **Unload** komutunu, hazırlanan kopyalama verilerini ve Microsoft PolyBase 'i kullanır.
 
-Bu örnek kullanım örneği için, kopyalama etkinliği önce Amazon Redshift ' dan Amazon S3 ' dan, **Redkaydırıcı Tunloadsettings** seçeneğinde yapılandırıldığı gibi verileri kaldırır. Daha sonra, veriler, **Stagingsettings** seçeneğinde belirtildiği gibi Amazon S3 öğesinden Azure Blob depolama alanına kopyalanır. Son olarak, PolyBase verileri SQL veri ambarı 'na yükler. Tüm ara biçimler kopyalama etkinliği tarafından işlenir.
+Bu örnek kullanım örneği için, kopyalama etkinliği önce Amazon Redshift ' dan Amazon S3 ' dan,  **Redkaydırıcı Tunloadsettings** seçeneğinde yapılandırıldığı gibi verileri kaldırır. Daha sonra, veriler, **Stagingsettings** seçeneğinde belirtildiği gibi Amazon S3 öğesinden Azure Blob depolama alanına kopyalanır. Son olarak, PolyBase verileri Azure SYNAPSE Analytics 'e yükler. Tüm ara biçimler kopyalama etkinliği tarafından işlenir.
 
-![Amazon Redshift 'dan SQL veri ambarı 'na iş akışını kopyalama](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+![Amazon Redshift 'dan Azure SYNAPSE Analytics 'e iş akışını kopyalama](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -338,8 +338,8 @@ Kopyalama etkinliği verileri bir Amazon Redshift türünden .NET türüne dön�
 | BOOLEAN |Dize |
 | CHAR |Dize |
 | VARCHAR |Dize |
-| DATE |DateTime |
-| ILIŞKIN |DateTime |
+| DATE |Tarih-Saat |
+| ILIŞKIN |Tarih-Saat |
 | TEXT |Dize |
 
 ## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin

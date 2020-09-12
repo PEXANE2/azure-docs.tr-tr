@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 41df31cde95ae7ed1d05dac572718622067194c9
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265261"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397313"
 ---
 # <a name="live-event-types-comparison"></a>Canlı olay türleri karşılaştırması
 
@@ -36,7 +36,7 @@ Aşağıdaki tablo, canlı olay türlerinin özelliklerini karşılaştırır. T
 * **Liveeventencodingtype. Standard** -şirket içi bir Live Encoder canlı olaya tek bit hızlı bir akış gönderir ve Media Services çoklu bit hızı akışları oluşturur. Katkı akışı 720p veya daha yüksek çözünürlükte ise, **Default720p** önayar bir dizi 6 çözünürlük/bit hızı çifti kodlayacaktır (Ayrıntılar makalede daha sonra takip edilir).
 * **Liveeventencodingtype. Premium1080p** -şirket içi bir Live Encoder canlı olaya tek bit hızlı bir akış gönderir ve Media Services çoklu bit hızı akışları oluşturur. Default1080p önayar, çözümleme/bit hızı çiftleri çıkış kümesini belirtir (Ayrıntılar makalede daha sonra takip edilecek). 
 
-| Özellik | Geçişli canlı etkinlik | Standart veya Premium1080p canlı etkinliği |
+| Öne çıkan özelliği | Geçişli canlı etkinlik | Standart veya Premium1080p canlı etkinliği |
 | --- | --- | --- |
 | Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Yes |
 | Katkı akışı için maksimum video çözünürlüğü |4K (4096x2160/60 kare/sn) |1080p (1920x1088 üzerinde 30 kare/sn)|
@@ -63,7 +63,7 @@ Aşağıdaki tablo, canlı olay türlerinin özelliklerini karşılaştırır. T
 | Katkı akışındaki kısa yedeklerden kurtarma olanağı|Yes|Kısmi|
 | Tekdüzen olmayan giriş GOPs desteği|Yes|Hayır – girişte sabit GOP süresi olmalıdır|
 | Değişken çerçeve hızı girişi desteği|Yes|Hayır – giriş sabit kare oranı olmalıdır. Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak katkı akışı kare hızını (örneğin, 15 kare/saniye) bırakamıyor.|
-| Giriş akışı kaybolduğunda canlı etkinliğin otomatik olarak kaybolması|Hayır|12 saat sonra, çalışan bir canlı çıkış yoksa|
+| Giriş akışı kaybolduğunda canlı etkinliğin otomatik olarak kaybolması|No|12 saat sonra, çalışan bir canlı çıkış yoksa|
 
 ## <a name="system-presets"></a>Sistem önayarları
 
@@ -86,8 +86,7 @@ Katkı akışı 720p veya daha yüksek çözünürlükte ise, **Default720p** ö
 | 200 |340 |192 |30 |Yüksek |
 
 > [!NOTE]
-> Canlı kodlama ön ayarını özelleştirmeniz gerekiyorsa lütfen Azure Portal aracılığıyla bir destek bileti açın. İstediğiniz çözünürlüklerin ve bit hızlarının yer aldığı tabloyu paylaşmanız gerekir. 720p çözünürlükte yalnızca bir katman ve toplamda en fazla 6 katman bulunduğundan emin olun. Ayrıca, standart bir Live Encoder için önceden ayarlanmış bir kod isteğinde bulunduğunuzu da belirtin.
-> Bitoranlar ve çözümlerin belirli değerleri zaman içinde ayarlanabilir
+> Canlı kodlama ön ayarını özelleştirmeniz gerekiyorsa lütfen Azure Portal aracılığıyla bir destek bileti açın. İstenen video çözünürlüğü ve bit fiyatları tablosunu belirtmeniz gerekir. Ses kodlaması bit hızını özelleştirme desteklenmez. 720p çözünürlükte yalnızca bir katman ve toplamda en fazla 6 katman bulunduğundan emin olun. Ayrıca, önceden ayarlanmış bir ayar isteğinde bulunduğunuzu da belirtin.
 
 ### <a name="output-video-streams-for-default1080p"></a>Default1080p için çıkış video akışları
 
@@ -103,8 +102,7 @@ Katkı akışı 1080p çözünürlükte ise, **Default1080p** ön sürümü akı
 | 200 |320 |180 |30 |Yüksek |
 
 > [!NOTE]
-> Canlı kodlama ön ayarını özelleştirmeniz gerekiyorsa lütfen Azure Portal aracılığıyla bir destek bileti açın. İstediğiniz çözünürlüklerin ve bit hızlarının yer aldığı tabloyu paylaşmanız gerekir. 1080p ve en fazla 6 katmanda yalnızca bir katman olduğunu doğrulayın. Ayrıca, Premium1080p Live Encoder için önceden ayarlanmış bir kod isteğinde bulunduğunuzu da belirtin.
-> Bitücretler ve çözümlerin belirli değerleri zaman içinde ayarlanabilir.
+> Canlı kodlama ön ayarını özelleştirmeniz gerekiyorsa lütfen Azure Portal aracılığıyla bir destek bileti açın. İstediğiniz çözünürlüklerin ve bit hızlarının yer aldığı tabloyu paylaşmanız gerekir. 1080p ve en fazla 6 katmanda yalnızca bir katman olduğunu doğrulayın. Ayrıca, Premium1080p Live Encoder için bir ön ayar isteğinde bulunduğunuzu belirtin. Bitücretler ve çözümlerin belirli değerleri zaman içinde ayarlanabilir.
 
 ### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Default720p ve Default1080p için çıkış ses akışı
 

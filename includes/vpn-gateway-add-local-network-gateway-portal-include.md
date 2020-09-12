@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/04/2019
+ms.date: 09/03/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9648f4c16e8d266bbdd504d4a7599b67a5c846b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 059d15090204c2fce0fddd4b80f4954755ea8f65
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73524029"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89449631"
 ---
 1. [Azure Portal](https://portal.azure.com) menüsünde **kaynak oluştur**' u seçin. 
 
-   ![Azure portal bir kaynak oluşturun](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
+   ![Azure portalında kaynak oluşturma](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
 2. Market 'te **Ara** alanına **yerel ağ geçidi**yazın ve aramak için **ENTER** tuşuna basın. Böylece sonuçların bir listesi döndürülür. **Yerel ağ geçidi**’ne ve sonra **Oluştur** düğmesine tıklayarak **Yerel ağ geçidi oluştur** sayfasını açın.
 
    ![Yerel ağ geçidini oluşturma](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "Yerel ağ geçidini oluşturma")
@@ -26,7 +26,7 @@ ms.locfileid: "73524029"
 
    - **Ad:** Yerel ağ geçidi nesneniz için bir ad belirtin.
    - **IP adresi:** Bu değer, Azure'ın bağlanmasını istediğiniz VPN cihazının genel IP adresidir. Geçerli bir genel IP adresi belirtin. IP adresini şu anda bilmiyorsanız örnekte gösterilen değerleri kullanabilirsiniz ancak geri dönüp yer tutucu IP adresinizi VPN cihazınızın genel IP adresiyle değiştirmeniz gerekir. Aksi halde Azure bağlantı kuramaz.
-   - **Adres Alanı**, bu yerel ağın temsil ettiği ağa ilişkin adres aralıkları anlamına gelir. Birden fazla adres alanı aralığı ekleyebilirsiniz. Burada belirttiğiniz aralıkların, bağlanmak istediğiniz diğer ağların aralıklarıyla çakışmadığından emin olun. Azure, belirttiğiniz adres aralığını şirket içi VPN cihazının IP adresine yönlendirir. *Şirket içi sitenize bağlanmak istiyorsanız, burada, örnekte gösterilen değerleri değil, kendi değerlerinizi kullanın*.
+   - **Adres alanı** , yerel ağ nesnesinin temsil ettiği ağ (Şirket içi ağınız) için adres aralıklarını ifade eder. Şirket içi ağınıza yönlendirmek istediğiniz adres alanlarını eklersiniz. Birden fazla adres alanı aralığı ekleyebilirsiniz. Burada belirttiğiniz aralıkların, bağlanmak istediğiniz diğer ağların aralıklarıyla çakışmadığından emin olun. Azure, belirttiğiniz adres aralığını şirket içi VPN cihazının IP adresine yönlendirir. *Şirket içi sitenize bağlanmak istiyorsanız, burada, örnekte gösterilen değerleri değil, kendi değerlerinizi kullanın*.
    - **BGP ayarları yapılandır:** Yalnızca BGP’yi yapılandırırken kullanın. Aksi takdirde, bu seçeneği işaretlemeyin.
    - **Abonelik:** Doğru aboneliğin gösterildiğinden emin olun.
    - **Kaynak Grubu:** Kullanmak istediğiniz kaynak grubunu seçin. Yeni bir kaynak grubu oluşturabilir veya önceden oluşturduğunuz birini seçebilirsiniz.
