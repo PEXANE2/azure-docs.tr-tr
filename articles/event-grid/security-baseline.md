@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 132a6d9a6f5ca702b13e84402ee9bb71eca57d7c
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 581e30508b508d5a36f2d5695043ac7bd782a2d5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229710"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394389"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Event Grid için Azure Güvenlik temeli
 
@@ -804,7 +804,9 @@ Bulut uygulamalarınız için gizli yönetimi basitleştirmek üzere Azure Key V
 
 - [Key Vault oluşturma](/azure/key-vault/quick-create-portal)
 
-- [Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](/azure/key-vault/managed-identity)
+- [Key Vault kimlik doğrulaması yapma](../key-vault/general/authentication.md)
+
+- [Key Vault erişim ilkesi atama](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

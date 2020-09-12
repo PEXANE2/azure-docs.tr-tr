@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: sanal ağa ağ geçidi ekleme: Portal'
 description: Bu makalede, Azure portal kullanarak ExpressRoute için zaten oluşturulmuş bir Kaynak Yöneticisi VNet 'e bir sanal ağ geçidi ekleme işlemi adım adım açıklanmaktadır.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2018
-ms.author: cherylmc
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 188d366dafce6ee79a084750b5f7d1fe4140432b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06f7e5d28017ee618adfeeec52c6f1226e1ae82c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736382"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396378"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Azure portal kullanarak ExpressRoute için sanal ağ geçidi yapılandırma
 > [!div class="op_single_selector"]

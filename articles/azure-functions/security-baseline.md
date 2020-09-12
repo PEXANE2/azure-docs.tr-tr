@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5609df554e78996e50dcc57e200bb1dc1282cfb0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230509"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394100"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Işlevleri için Azure Güvenlik temeli
 
@@ -541,7 +541,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Rehberlik**: geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. Azure Işlevi uygulamalarının sanal ağ (VNet)/subnet ile ayrılması ve uygun şekilde etiketlenmesi gerekir.
 
-Ayrıca, Özel uç noktaları ağ yalıtımı gerçekleştirmek için de kullanabilirsiniz. Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde (örneğin: Azure Işlevleri uygulaması HTTPs uç noktası) bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Özel uç noktalar Premium planda çalışan işlev uygulamalarının (Önizleme) aşamasındadır. Özel uç noktaların, üretim iş yükleriyle kullanılmadan önce artık (Önizleme) olmadığından emin olun.
+Ayrıca, Özel uç noktaları ağ yalıtımı gerçekleştirmek için de kullanabilirsiniz. Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde (örneğin: Azure Işlevleri uygulaması HTTPs uç noktası) bağlanan bir ağ arabirimidir. Özel Uç Nokta, sanal ağınızdaki bir özel IP adresini kullanır ve bu sayede hizmeti sanal ağınıza getirir. Özel uç noktalar Premium planda çalışan işlev uygulamalarının (Önizleme) aşamasındadır. Özel uç noktaların, üretim iş yükleriyle kullanılmadan önce artık (Önizleme) olmadığından emin olun.
 
 - [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
@@ -960,7 +960,9 @@ Yüksek riskli Azure Işlevi uygulamalarını kendi sanal ağına (VNet) dağıt
 
 - [App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma](../app-service/overview-managed-identity.md)
 
-- [Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](../key-vault/general/managed-identity.md)
+* [Key Vault kimlik doğrulaması yapma](../key-vault/general/authentication.md)
+
+* [Key Vault erişim ilkesi atama](../key-vault/general/assign-access-policy-portal.md)
 
 - [App Service ve Azure Işlevleri için Key Vault başvurularını kullanma](../app-service/app-service-key-vault-references.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Uzak masaüstünü Azure AD Uygulaması Proxy ile yayımlama | Microsoft Docs
-description: Azure AD Uygulama Ara Sunucusu bağlayıcıları hakkında temel bilgileri içerir.
+description: Uygulama proxy 'Sini RDS ile yapılandırmayı içerir
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019531"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396769"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu uzak masaüstü 'Nü yayımlama
 
@@ -88,7 +88,7 @@ RDS dağıtımına yönetici olarak bağlanın ve dağıtım için RD Ağ Geçid
 1. RD Bağlantı Aracısı rolünü çalıştıran RDS sunucusuna bağlanın.
 2. **Sunucu Yöneticisi**başlatın.
 3. Soldaki bölmeden **Uzak Masaüstü Hizmetleri** seçin.
-4. **Genel Bakış**’ı seçin.
+4. **Genel bakış**'ı seçin.
 5. Dağıtıma genel bakış bölümünde, açılan menüyü seçin ve **dağıtım özelliklerini Düzenle**' yi seçin.
 6. RD Ağ Geçidi sekmesinde **sunucu adı** alanını, uygulama proxy 'sindeki RD ana bilgisayar uç noktası Için ayarladığınız dış URL ile değiştirin.
 7. **Oturum açma yöntemi** alanını **parola kimlik doğrulaması**olarak değiştirin.
@@ -133,9 +133,9 @@ Bir Windows 7 veya 10 bilgisayarda Internet Explorer ile senaryoyu test edin.
 
 Bu makalede özetlenen yapılandırma RD Web veya RD Web Istemcisi aracılığıyla RDS 'ye erişim için kullanılır. Bununla birlikte, diğer işletim sistemlerini veya tarayıcılarını de destekleyebilirsiniz. Fark, kullandığınız kimlik doğrulama yöntemidir.
 
-| Kimlik doğrulaması yöntemi | Desteklenen istemci yapılandırması |
+| Kimlik doğrulama yöntemi | Desteklenen istemci yapılandırması |
 | --------------------- | ------------------------------ |
-| Ön kimlik doğrulama    | RD Web-Internet Explorer + RDS ActiveX eklentisini kullanarak Windows 7/10 |
+| Ön kimlik doğrulama    | Internet Explorer veya [Edge berkum IE modu](https://docs.microsoft.com/deployedge/edge-ie-mode) + RDS ActiveX EKLENTISI kullanılarak RD Web-Windows 7/10 |
 | Ön kimlik doğrulama    | Microsoft Edge, Internet Explorer 11, Google Chrome, Safari veya Mozilla Firefox gibi RD Web Istemcisi-HTML5 uyumlu Web tarayıcısı (v 55.0 ve üzeri) |
 | Doğrudan geçiş | Microsoft Uzak Masaüstü uygulamasını destekleyen diğer tüm işletim sistemleri |
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b027e44a2ee31b0168ec3b6af717df23dd560abd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: d55e53ba455a4b91b4f57ea08b250320a5467c2b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89225596"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398456"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure Güvenlik temeli
 
@@ -976,7 +976,9 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 * [Key Vault oluşturma](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Key Vault kimlik doğrulaması yapma](../key-vault/general/authentication.md)
+
+* [Key Vault erişim ilkesi atama](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

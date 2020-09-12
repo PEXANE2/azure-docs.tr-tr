@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
-ms.openlocfilehash: 29caccd666294add98882d080a2a0fd3bd9dd660
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 827871bdac689d1f5e8acb64d3565ca3c6da39be
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036632"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292529"
 ---
 # <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
 
@@ -779,7 +779,7 @@ Bu sürüm, aşağıdaki düzeltme eklerine ek olarak Hive 1.2.1 ve Hive 2.1.0 s
 
 -   [*Hive-17621*](https://issues.apache.org/jira/browse/HIVE-17621): Hcatınputformat bölünmüş hesaplama sırasında Hive-site ayarları yok sayılır.
 
--   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629): cachedstore: tablo/bölümlerin seçmeli önbelleğe alınmasına izin veren ve önceden çalışırken okuma izni veren bir beyaz liste/liste listesi yapılandırmaya sahiptir.
+-   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629): cachedstore: tablo/bölümlerin seçmeli önbelleğe alınmasına izin vermek için onaylanmış/onaylanmamış bir yapılandırmaya sahiptir ve önceden ısınırken okumaya izin verin.
 
 -   [*HIVE-17636*](https://issues.apache.org/jira/browse/HIVE-17636): \_ blobmağazaları için birden çok AGG. q testi ekleyin.
 
@@ -1167,7 +1167,7 @@ Bu sürüm Spark 2.3.0 ve aşağıdaki Apache yamaları sağlar:
 
 Bu sürüm, ek Apache düzeltme ekleri olmadan Sqoop 1.4.6 sağlar.
 
-#### <a name="storm"></a>Fırtına
+#### <a name="storm"></a>Storm
 
 Bu sürüm, fırtınası 1.1.1 ve aşağıdaki Apache yamaları sağlar:
 
@@ -1570,7 +1570,7 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 | HATA-97864              | [HIVE-18833](https://issues.apache.org/jira/browse/HIVE-18833)   | "Dizini orcfile olarak ekle" olduğunda otomatik birleştirme başarısız olur                                      |
 | HATA-98814              | [, 13314](https://issues.apache.org/jira/browse/HDFS-13314)   | Süs Yot, FSIMAGE bozulmasını algılarsa, isteğe bağlı olarak çıkış                              |
 
-**Yükseltmenizi**
+**Yükseltme**
 
 | **Hortonçalışmalar hata KIMLIĞI** | **Apache JIRA**                                                                                                                | **Özet**                                                                 |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -1692,7 +1692,7 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 
 |**Apache bileşeni**|**Apache JIRA**|**Özet**|**Ayrıntılar**|
 |--|--|--|--|
-|**Spark 2,3** |**Yok** |**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |-"Kullanımdan kaldırma" belgesi ve "davranış değişikliği" kılavuzu vardır.https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-SQL bölümü için başka bir ayrıntılı "geçiş" Kılavuzu (2,2 ' den 2,3 ' e kadar) vardır.https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2,3** |**Yok** |**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |-"Kullanımdan kaldırma" belgesi ve "davranış değişikliği" kılavuzu vardır. https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-SQL bölümü için başka bir ayrıntılı "geçiş" Kılavuzu (2,2 ' den 2,3 ' e kadar) vardır. https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark işi başarıyla tamamlandı, ancak bir bu işlem için bir sürücü kotası dolu hatası var |**Senaryo:** Komutu çalıştıran kullanıcının çöp kutusu klasöründe bir kota ayarlandığında **Insert üzerine yazma** işlemi çalıştırılıyor.<br /><br />**Önceki davranış:** İş, verileri çöp kutusu 'na taşıyamasa bile başarılı oldu. Sonuç, tabloda daha önce varolan bazı verileri yanlışlıkla içerebilir.<br /><br />**Yeni davranış:** Çöp kutusu klasörüne taşıma başarısız olduğunda, dosyalar kalıcı olarak silinir.|
 |**Kafka 1,0**|**Yok**|**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |EKLEME ÜZERINE yazma için gereken ek Ranger Hive ilkeleri |**Senaryo:** **Ekleme ÜZERINE yazma** için gereken ek Ranger Hive ilkeleri<br /><br />**Önceki davranış:** Hive **ekleme ÜZERINE yazma** sorguları her zamanki gibi başarılı olur.<br /><br />**Yeni davranış:** VP-2.6. x sürümüne yükselttikten sonra Hive **ekleme ÜZERINE yazma** sorguları hata vererek beklenmedik şekilde başarısız oluyor:<br /><br />Bildiri derlenirken hata: başarısız oldu: HiveAccessControlException Izni reddedildi: Kullanıcı jtikan,/tmp/ \* (State = 42000, Code = 40000) ÜZERINDE yazma ayrıcalığına sahip değil<br /><br />HDP-2.6.0 itibariyle, Hive **ekleme üzerine** yazma sorguları, kullanıcının,, bir kullanıcı adına, bu, bir kullanıcı adına, bu da bir SAYGER ilkesi aracılığıyla verilen yazma ayrıcalığına sahip olsa bile,<br /><br />**Geçici çözüm/beklenen müşteri eylemi:**<br /><br />1. Hive deposu altında yeni bir ilke oluşturun.<br />2. veritabanını gördüğünüz açılan menüde URI 'yi seçin.<br />3. yolu güncelleştirin (örnek:/tmp/*)<br />4. kullanıcıları ve grubu ekleyin ve kaydedin.<br />5. ekleme sorgusunu yeniden deneyin.|

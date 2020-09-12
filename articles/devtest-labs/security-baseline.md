@@ -3,12 +3,12 @@ title: Azure DevTest Labs için Azure Güvenlik temeli
 description: Azure DevTest Labs için Azure Güvenlik temeli
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dc53eacf456d1e7c1926c6d7f20e343b3a84340d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078053"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398332"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -693,7 +693,8 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 - [DevTest Labs 'de Azure Resource Manager ortamları dağıtmak için yönetilen kimlik yapılandırma](use-managed-identities-environments.md)
 - [DevTest Labs 'de sanal makineleri dağıtmak için yönetilen kimlik yapılandırma](enable-managed-identities-lab-vms.md)
 - [Anahtar Kasası oluşturma](../key-vault/quick-create-portal.md)
-- [Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](../key-vault/managed-identity.md)
+- [Key Vault kimlik doğrulaması yapma](../key-vault/general/authentication.md)
+- [Key Vault erişim ilkesi atama](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Güvenlik Merkezi izleme:** Yes
 

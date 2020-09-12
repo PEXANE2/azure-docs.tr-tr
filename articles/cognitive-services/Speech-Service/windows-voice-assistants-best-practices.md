@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714789"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293651"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Windows 10 için Tasarım Yardımcısı deneyimleri
 
@@ -118,9 +118,9 @@ Birçok bilgisayar taşınabilir ancak her zaman müşteri erişim dahilinde de�
 
 Bu nedenle, yardımcılar deneyim güvende tutmaya yardımcı olmak için bu bölümdeki yönergeleri izlemelidir. Yukarıdaki etkileşim, Windows kullanıcısı kimliği doğrulanmamış olduğunda oluşur. Bu, genel olarak, **yardımcının girişinin de kimliği doğrulanmamış olarak kabul**edilmesidir.
 
-- Yardımcılar, güvenli ve güvenle kilidin üzerine erişilmek üzere **onaylanan becerileri belirlemek için bir yetenek beyaz listesi uygulamalıdır** .
+- Yardımcılar, güvenli ve güvenle kilidin üzerine erişilmek üzere **onaylanan becerileri belirlemek için bir yetenek izin verilenler listesi uygulamalıdır** .
 - Konuşmacı KIMLIĞI teknolojileri, hafifletmesini bazı riskler halinde bir rol oynayabilir, ancak konuşmacı KIMLIĞI Windows kimlik doğrulaması için uygun bir değişiklik değildir.
-- Beceri beyaz listesi, üç eylem veya yetenek sınıfını göz önünde bulundurmalıdır:
+- İzin verilen yetenek listesi, üç eylem veya yetenek sınıfını göz önünde bulundurmalıdır:
 
 | **Action sınıfı** | **Açıklama** | **Örnekler (tamamlanmamış bir liste değil)** |
 | --- | --- | --- |
@@ -130,7 +130,7 @@ Bu nedenle, yardımcılar deneyim güvende tutmaya yardımcı olmak için bu bö
 
 Contoso söz konusu olduğunda, genel stok bilgileriyle ilgili genel bilgiler kimlik doğrulaması olmadan güvenlidir. Sahip olunan paylaşımların sayısı gibi müşteriye özgü bilgiler, konuşmacı KIMLIĞIYLE güvende olabilir. Ancak, satın alma veya satış stokları Windows kimlik doğrulaması olmadan hiçbir şekilde izin vermemelidir.
 
-Deneyim, Web bağlantıları veya diğer uygulama uygulama başlatma işlemi daha güvenli hale getirmek için **Müşteri oturum açana kadar Windows tarafından her zaman engellenir.** En son bir risk azaltma aşamasında, Microsoft önemli bir güvenlik sorunu zamanında giderilmemişse bir uygulamayı etkin yardımcılar listesinden kaldırma hakkını saklı tutar.
+Deneyim, Web bağlantıları veya diğer uygulama uygulama başlatma işlemi daha güvenli hale getirmek için **Müşteri oturum açana kadar Windows tarafından her zaman engellenir.** En son bir risk azaltma olarak Microsoft, ciddi bir güvenlik sorunu zamanında giderilmemişse izin verilen etkin yardımcılar listesinden bir uygulamayı kaldırma hakkını saklı tutar.
 
 ## <a name="design-guidance-for-voice-activation-preview"></a>Ses Etkinleştirme Önizlemesi için tasarım kılavuzu
 

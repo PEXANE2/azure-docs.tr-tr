@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640591"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296524"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -38,7 +38,7 @@ Gereç destek gereksinimlerini [gözden geçirin](migrate-appliance.md) .
 
 Gereç makinesi bir proxy 'nin arkasındaysa bu durum oluşabilir.
 
-- Proxy 'ye ihtiyaç duyuyorsa yetkilendirme kimlik bilgilerini sağladığınızdan emin olun.
+- Ara sunucuya gerekiyorsa yetkilendirme kimlik bilgilerini sağlamaya dikkat edin.
 - Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, [Bu URL 'leri](migrate-appliance.md#url-access) izin verilenler listesine ekleyin.
 - İnternet 'e bağlanmak için bir kesintiye uğratan ara sunucu kullanıyorsanız, [Bu adımları](./migrate-appliance.md)kullanarak proxy SERTIFIKASıNı gereç sanal makinesine aktarın.
 
@@ -98,7 +98,7 @@ Hata 60028: "bir hata nedeniyle bulma başlatılamadı. Belirtilen konaklar veya
 - Doğrulama hatası varsa, hataları onarmak için düzeltme kılavuzunu gözden geçirin ve sonra **bulmayı Kaydet ve Başlat** seçeneğini tekrar deneyin.
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>Hata 60025: Azure AD işlemi başarısız oldu 
-Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturulurken veya güncelleştirilirken oluşan hata oluştu "bulmayı başlatmak için kullanılan Azure Kullanıcı hesabı gereci kaydetmek için kullanılan hesaptan farklı olduğunda gerçekleşir. Aşağıdakilerden birini yapın:
+Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturulurken veya güncelleştirilirken oluşan hata oluştu "bulmayı başlatmak için kullanılan Azure Kullanıcı hesabı gereci kaydetmek için kullanılan hesaptan farklı olduğunda gerçekleşir. Şunlardan birini yapın:
 
 - Keşfi başlatan kullanıcı hesabının gereci kaydetmek için kullanılan ile aynı olduğundan emin olun.
 - Bulma işleminin başarısız olduğu Kullanıcı hesabına Azure Active Directory Uygulama erişim izinleri sağlayın.
@@ -151,7 +151,7 @@ Beklerseniz ve durum değişmezse, **sunucular** sekmesinde **Yenile** ' yi seç
 Bu işe yaramazsa ve VMware sunucularını keşfederken:
 
 - Belirttiğiniz vCenter hesabının, en az bir VM 'ye erişimi olan izinlerin doğru şekilde ayarlandığını doğrulayın.
-- VCenter hesabının vCenter VM klasör düzeyinde erişimi varsa Azure geçişi, VMware VM 'lerini bulamıyor. Kapsam bulma hakkında [daha fazla bilgi edinin](set-discovery-scope.md) .
+- VCenter hesabının vCenter VM klasör düzeyinde erişimi varsa Azure geçişi, VMware VM 'lerini bulamaz. Kapsam bulma hakkında [daha fazla bilgi edinin](set-discovery-scope.md) .
 
 ## <a name="vm-data-not-in-portal"></a>VM verileri portalda yok
 

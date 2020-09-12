@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yap�
 description: Bu makalede, Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerini izlemek üzere kapsayıcılar için Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d2ca977f572ee9f60c1ca72fc472f3a6ee6c6362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26846148f3212699cecd6db3318cd2da2d9aa783
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498908"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398390"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma
 
@@ -34,11 +34,11 @@ Aşağıdaki konfigürasyonlar, kapsayıcılar için Azure Izleyici ile resmi ol
 
 - Erişim denetimi destekleniyor: Kubernetes RBAC ve RBAC olmayan
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
-- [Log Analytics çalışma alanı](../platform/design-logs-deployment.md).
+- Bir [Log Analytics çalışma alanı](../platform/design-logs-deployment.md).
 
     Kapsayıcılar için Azure Izleyici, [bölgeye göre Azure ürünlerinde](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)listelenen bölgelerde bir Log Analytics çalışma alanını destekler. Kendi çalışma alanınızı oluşturmak için [Azure Resource Manager](../platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../learn/quick-create-workspace.md)aracılığıyla oluşturulabilir.
 
@@ -71,9 +71,11 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
 Karma Kubernetes kümesine yönelik kapsayıcılar için Azure Izleyicisini etkinleştirmek, aşağıdaki adımları sırasıyla gerçekleştirmekten oluşur.
 
-1. Log Analytics çalışma alanınızı Container Insights çözümüyle yapılandırın.
+1. Log Analytics çalışma alanınızı Container Insights çözümüyle yapılandırın.   
 
 2. Log Analytics çalışma alanıyla kapsayıcılar için Azure Izleyicisini HELM grafiğini etkinleştirin.
+
+Azure Izleyici 'de çözümleri Izleme hakkında daha fazla bilgi için [buraya](../../azure-monitor/insights/solutions.md)bakın.
 
 ### <a name="how-to-add-the-azure-monitor-containers-solution"></a>Azure Izleyici kapsayıcıları çözümünü ekleme
 
@@ -334,7 +336,7 @@ Grafiği başarıyla dağıttıktan sonra, karma Kubernetes kümenizin verilerin
 
 Grafik sürümü 2.7.1 ile başlayarak grafik, ara uç noktasının grafik parametresiyle belirtilmesini destekleyecektir `omsagent.proxy` . Bu, proxy sunucunuz üzerinden iletişim kurmasını sağlar. Kapsayıcılar için Azure Izleyici Aracısı ve Azure Izleyici arasında iletişim, bir HTTP veya HTTPS proxy sunucusu olabilir ve hem anonim hem de temel kimlik doğrulaması (Kullanıcı adı/parola) desteklenir.
 
-Ara sunucu yapılandırma değeri aşağıdaki sözdizimine sahiptir:`[protocol://][user:password@]proxyhost[:port]`
+Ara sunucu yapılandırma değeri aşağıdaki sözdizimine sahiptir: `[protocol://][user:password@]proxyhost[:port]`
 
 > [!NOTE]
 >Proxy sunucunuz kimlik doğrulaması gerektirmiyorsa, yine de bir psuedo Kullanıcı adı/parolası belirtmeniz gerekir. Bu, herhangi bir Kullanıcı adı veya parola olabilir.

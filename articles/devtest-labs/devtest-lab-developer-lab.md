@@ -3,12 +3,12 @@ title: Geliştiriciler için Azure DevTest Labs kullanma | Microsoft Docs
 description: Geliştirici gereksinimlerini karşılamak için kullanılabilecek Azure DevTest Labs özellikleri ve bir laboratuvarı kurmak için izleyebileceğiniz ayrıntılı adımları öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 3fd8ae93c873d1450d4b09496dca3ad9014baa6d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b4f195f843e30ad1a56bad7d5b9ca9e73888783b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293026"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296252"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Geliştiriciler için Azure DevTest Labs kullanma
 Azure DevTest Labs, çok sayıda önemli senaryoyu uygulamak için kullanılabilir ancak başlıca senaryolardan biri, geliştiriciler için geliştirme makinelerini barındırmak üzere DevTest Labs kullanmayı içerir. Bu senaryoda DevTest Labs şu avantajları sağlar:
@@ -43,7 +43,7 @@ Bu makalede, geliştirici gereksinimlerini karşılamak için kullanılabilecek 
    
    | Görev | Öğrenecekleriniz |
    | --- | --- |
-   | [Azure Market görüntülerini yapılandırma](devtest-lab-configure-marketplace-images.md) |Azure Marketi görüntülerini beyaz listeye ekleme hakkında bilgi edinmek için, yalnızca geliştiriciler için istediğiniz görüntüleri seçime uygun hale getirebilirsiniz.|
+   | [Azure Market görüntülerini yapılandırma](devtest-lab-configure-marketplace-images.md) |Azure Market görüntülerine nasıl izin alabileceğinizi öğrenin ve yalnızca geliştiriciler için istediğiniz görüntüleri seçilebilir hale getirebilirsiniz.|
    | [Özel görüntü oluşturma](devtest-lab-create-template.md) |Geliştiricilerin özel görüntüyü kullanarak hızlı bir şekilde VM oluşturabilmesi için ihtiyacınız olan yazılımı önceden yükleyerek özel bir görüntü oluşturun.|
    | [Image Factory hakkında bilgi edinin](./devtest-lab-faq.md#blog-post) |Bir görüntü fabrikası ayarlamayı ve kullanmayı açıklayan bir video izleyin.|
 
