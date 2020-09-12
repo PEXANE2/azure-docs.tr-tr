@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 0fc9139e9456a62bf3586fb358046e7c868b834a
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705784"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005233"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Izleyici aracısına genel bakış (Önizleme)
 Azure Izleyici Aracısı (AMA), sanal makinelerin Konuk işletim sisteminden izleme verilerini toplar ve Azure Izleyici 'ye gönderir. Bu makaleler, Azure Izleyici aracısına nasıl yükleneceğine ve veri toplamayı nasıl yapılandıracağınızı içeren bir genel bakış sağlar.
@@ -68,7 +68,7 @@ Aşağıdaki tabloda, veri toplama kurallarını kullanarak şu anda Azure Izley
 
 Azure Izleyici Aracısı verileri Azure Izleyici ölçümleri 'ne veya Azure Izleyici günlüklerini destekleyen bir Log Analytics çalışma alanına gönderir.
 
-| Veri Kaynağı | Hedefler | Açıklama |
+| Veri Kaynağı | Hedefler | Description |
 |:---|:---|:---|
 | Performans        | Azure Izleyici ölçümleri<br>Log Analytics çalışma alanı | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
 | Windows olay günlükleri | Log Analytics çalışma alanı | Windows olay günlüğü sistemine gönderilen bilgiler. |
@@ -88,12 +88,12 @@ Aşağıdaki işletim sistemleri şu anda Azure Izleyici Aracısı tarafından d
   - CentOS 6<sup>1</sup>, 7
   - Borçlu 9, 10
   - Oracle Linux 6<sup>1</sup>, 7
-  - RHEL 6<sup>1</sup>, 7, 8
+  - RHEL 6<sup>1</sup>, 7
   - SLES 11, 12, 15
   - Ubuntu 14,04 LTS, 16,04 LTS, 18,04 LTS
 
 > [!IMPORTANT]
-> <sup>1</sup> Bu dağıtımların Syslog verileri gönderebilmesi için, rsyslog öğesini kaldırmalı ve Syslog-ng ' i yüklemelisiniz.
+> <sup>1</sup> Bu dağıtımların Syslog verileri gönderebilmesi için, aracı yüklendikten sonra rsyslog hizmetini bir kez yeniden başlatmanız gerekir.
 
 
 ## <a name="security"></a>Güvenlik
@@ -107,7 +107,7 @@ Azure Izleyici Aracısı, aşağıdaki tablodaki ayrıntılarla bir [Azure VM Uz
 |:---|:---|:---|
 | Publisher | Microsoft. Azure. Monitor  | Microsoft. Azure. Monitor |
 | Tür      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1,0 | 1,5 |
+| TypeHandlerVersion  | 1.0 | 1,5 |
 
 PowerShell veya CLı kullanarak aşağıdakini içeren sanal makine aracılarını yüklemek için yöntemlerden birini kullanarak Azure Izleyici aracısını yükler. Alternatif olarak, [Azure izleyici Aracısı (Önizleme) için veri toplamayı yapılandırma](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal)bölümünde açıklanan yordamla portalı kullanarak Azure aboneliğinizdeki sanal makinelerde aracı yükleyebilir ve veri toplamayı yapılandırabilirsiniz.
 

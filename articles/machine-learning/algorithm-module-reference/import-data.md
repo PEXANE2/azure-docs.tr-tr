@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68bf47f370a57fe277d4ab9679af0b920a0d81ec
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611824"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658126"
 ---
 # <a name="import-data-module"></a>Veri modülünü içeri aktarma
 
@@ -45,7 +45,7 @@ Bulut depolama 'yı kullanmadan önce, Azure Machine Learning çalışma alanın
 Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı yeniden çalıştırarak veri kümesini yenileyebilir ve yeni veri ekleyebilirsiniz.
 
 > [!WARNING]
-> Çalışma alanınız bir sanal ağda ise, veri mağazalarınızı tasarımcının veri görselleştirme özelliklerini kullanacak şekilde yapılandırmanız gerekir. Bir sanal ağda veri depoları ve veri kümelerinin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [özel sanal ağlarla eğitim sırasında ağ yalıtımı &](../how-to-enable-virtual-network.md#machine-learning-studio).
+> Çalışma alanınız bir sanal ağda ise, veri mağazalarınızı tasarımcının veri görselleştirme özelliklerini kullanacak şekilde yapılandırmanız gerekir. Bir sanal ağda veri depoları ve veri kümelerinin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure sanal ağında Azure Machine Learning Studio 'Yu kullanma](../how-to-enable-studio-virtual-network.md).
 
 
 ## <a name="how-to-configure-import-data"></a>Içeri aktarma verilerini yapılandırma
