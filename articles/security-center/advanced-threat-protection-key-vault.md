@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 449096590df6145c9f80dcf2c97726931909a2ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7025b091b83a56b7b3df18c3f42cb84b163560bb
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77914815"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277774"
 ---
 # <a name="threat-protection-for-azure-key-vault-preview"></a>Azure Key Vault için tehdit koruması (Önizleme)
 
@@ -21,7 +21,7 @@ Azure Key Vault için Gelişmiş tehdit koruması, ek bir güvenlik zekası katm
 
 Güvenlik Merkezi anormal etkinlik algıladığında uyarıları görüntüler. Ayrıca, şüpheli etkinliğin ayrıntılarını ve belirlenen tehditleri araştırıp düzeltme önerilerini içeren abonelik yöneticisine e-posta gönderir.
 
-## <a name="configuring-threat-protection-from-security-center"></a>Güvenlik Merkezi 'nden tehdit korumasını yapılandırma
+## <a name="configure-threat-protection-from-security-center"></a>Tehdit korumasını Güvenlik Merkezi 'nden yapılandırma
 
 Varsayılan olarak, güvenlik merkezi 'nin standart fiyatlandırma katmanına abone olduğunuzda, tüm Key Vault hesaplarınız için Gelişmiş tehdit koruması etkindir. Daha fazla bilgi için bkz. [fiyatlandırma](security-center-pricing.md).
 
@@ -31,13 +31,13 @@ Belirli bir aboneliğin korumasını etkinleştirmek veya devre dışı bırakma
 
 1. Tehdit korumasını etkinleştirmek veya devre dışı bırakmak istediğiniz depolama hesaplarına sahip aboneliği seçin.
 
-1. **Fiyatlandırma katmanı**'nı seçin.
+1. **Fiyatlandırma katmanını**seçin.
 
 1. **Fiyatlandırma katmanını kaynak türüne göre seçin** grubunda, **Anahtar kasaları** satırını bulun ve **etkin** veya **devre dışı**seçeneğini belirleyin.
 
     [![Azure Güvenlik Merkezi 'nde Key Vault için Gelişmiş tehdit korumasını etkinleştirme veya devre dışı bırakma](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png)](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png#lightbox)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

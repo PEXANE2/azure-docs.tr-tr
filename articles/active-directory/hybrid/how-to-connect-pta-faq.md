@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac36650e285c371457b89f7a362b51fa74d7d47c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7046ab3c30e120aaaf285c32e25fce03524a0cf4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071440"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280171"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory geçişli kimlik doğrulaması: sık sorulan sorular
 
@@ -29,7 +29,7 @@ Bu makalede Azure Active Directory (Azure AD) geçişli kimlik doğrulama hakkı
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Azure AD 'de oturum açma yöntemlerinden hangilerinin, geçişli kimlik doğrulaması, Parola karması eşitlemesi ve Active Directory Federasyon Hizmetleri (AD FS) (AD FS), seçmem gerekir mi?
 
-Çeşitli Azure AD oturum açma yöntemlerinin ve kuruluşunuzun doğru oturum açma yönteminin bir karşılaştırması için [Bu kılavuzu](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) gözden geçirin.
+Çeşitli Azure AD oturum açma yöntemlerinin ve kuruluşunuzun doğru oturum açma yönteminin bir karşılaştırması için [Bu kılavuzu](./choose-ad-authn.md) gözden geçirin.
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Geçiş kimlik doğrulaması ücretsiz bir özellik mi?
 
@@ -39,7 +39,7 @@ Geçişli kimlik doğrulaması, ücretsiz bir özelliktir. Kullanmak için Azure
 
 Hayır. Doğrudan kimlik doğrulaması yalnızca dünya çapındaki Azure AD örneğinde kullanılabilir.
 
-## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[Koşullu erişim](../active-directory-conditional-access-azure-portal.md) doğrudan kimlik doğrulamasıyla çalışır mı?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[Koşullu erişim](../conditional-access/overview.md) doğrudan kimlik doğrulamasıyla çalışır mı?
 
 Evet. Azure Multi-Factor Authentication dahil tüm koşullu erişim özellikleri doğrudan kimlik doğrulamasıyla çalışır.
 
@@ -148,7 +148,7 @@ Hayır, bu _senaryo desteklenmiyor._
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Doğrudan kimlik doğrulamayı etkinleştirmek için neden yalnızca bulutta bir genel yönetici hesabına ihtiyacım var?
 
-Yalnızca bulutta yer alan bir genel yönetici hesabı kullanarak doğrudan kimlik doğrulamayı etkinleştirmeniz veya devre dışı bırakmanız önerilir. [Yalnızca bulut genel yönetici hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu şekilde yapmanız, kiracınızın kilitlenmemesini sağlar.
+Yalnızca bulutta yer alan bir genel yönetici hesabı kullanarak doğrudan kimlik doğrulamayı etkinleştirmeniz veya devre dışı bırakmanız önerilir. [Yalnızca bulut genel yönetici hesabı ekleme](../fundamentals/add-users-azure-active-directory.md)hakkında bilgi edinin. Bu şekilde yapmanız, kiracınızın kilitlenmemesini sağlar.
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Doğrudan kimlik doğrulamasını nasıl devre dışı bırakabilirim?
 
@@ -184,4 +184,3 @@ Bunun nedeni, yalnızca 15 Haziran 2015 ' den önce oluşturulan kiracıların v
 - [Güvenlik derinlemesine](how-to-connect-pta-security-deep-dive.md)bakış: doğrudan kimlik doğrulama özelliği hakkında ayrıntılı teknik bilgiler alın.
 - [Azure AD sorunsuz SSO](how-to-connect-sso.md): Bu tamamlayıcı özellik hakkında daha fazla bilgi edinin.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): yeni özellik isteklerini dosya olarak yüklemek Için Azure Active Directory forumunu kullanın.
-

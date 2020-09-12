@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a725831efe6b92ba522900fac67b317e42bc959
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d15b12b758adbf99ddabc88eb06be9daba1ece3e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182386"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276210"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health sık sorulan sorular
 Bu makale, Azure Active Directory (Azure AD) Connect Health hakkında sık sorulan soruların (SSS) yanıtlarını içerir. Bu SSS, faturalandırma modeli, yetenekler, sınırlamalar ve destek dahil olmak üzere hizmetin nasıl kullanılacağına ilişkin soruları kapsar.
@@ -190,18 +190,18 @@ CheckForMS17-010
 
 **S: <i>Get-MsolDirSyncProvisioningError</i> PowerShell cmdlet 'i neden sonuçta daha az eşitleme hatası gösteriyor?**
 
-<i>Get-MsolDirSyncProvisioningError</i> , yalnızca DirSync sağlama hataları döndürür. Bunun yanı sıra, Connect Health portalı dışarı aktarma hataları gibi diğer eşitleme hata türlerini de gösterir. Bu, Azure AD Connect Delta sonucuyla tutarlıdır. [Azure AD Connect Eşitleme hataları](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)hakkında daha fazla bilgi edinin.
+<i>Get-MsolDirSyncProvisioningError</i> , yalnızca DirSync sağlama hataları döndürür. Bunun yanı sıra, Connect Health portalı dışarı aktarma hataları gibi diğer eşitleme hata türlerini de gösterir. Bu, Azure AD Connect Delta sonucuyla tutarlıdır. [Azure AD Connect Eşitleme hataları](./tshoot-connect-sync-errors.md)hakkında daha fazla bilgi edinin.
 
 **S: ADFS denetimlerim neden üretilmiyor?**
 
-Denetim günlüklerinin devre dışı durumda olmadığından emin olmak için lütfen <i>Get-AdfsProperties-AuditLevel</i> PowerShell cmdlet 'ini kullanın. [ADFS denetim günlükleri](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)hakkında daha fazla bilgi edinin. ADFS sunucusuna Gelişmiş denetim ayarları itilmesi durumunda, auditpol.exe olan tüm değişikliklerin üzerine yazılır (Eğer uygulama oluşturulmadıkça olay). Bu durumda, uygulama tarafından üretilen hataların ve başarısını günlüğe kaydetmek için lütfen yerel güvenlik ilkesini ayarlayın.
+Denetim günlüklerinin devre dışı durumda olmadığından emin olmak için lütfen <i>Get-AdfsProperties-AuditLevel</i> PowerShell cmdlet 'ini kullanın. [ADFS denetim günlükleri](/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)hakkında daha fazla bilgi edinin. ADFS sunucusuna Gelişmiş denetim ayarları itilmesi durumunda, auditpol.exe olan tüm değişikliklerin üzerine yazılır (Eğer uygulama oluşturulmadıkça olay). Bu durumda, uygulama tarafından üretilen hataların ve başarısını günlüğe kaydetmek için lütfen yerel güvenlik ilkesini ayarlayın.
 
 **S: Aracı sertifikası, süresi dolmadan önce otomatik olarak yenilenir mi?**
 Aracı sertifikası, sona erme tarihinden itibaren otomatik olarak **6 ay** yenilenir. Yenilenmezse, lütfen aracının ağ bağlantısının kararlı olduğundan emin olun. Aracı hizmetlerini yeniden başlatın veya en son sürüme güncelleştirme de sorunu çözebilir.
 
 
 ## <a name="related-links"></a>İlgili bağlantılar
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health Aracısı yüklemesi](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health işlemler](how-to-connect-health-operations.md)
 * [Azure AD Connect Health'i AD FS ile Kullanma](how-to-connect-health-adfs.md)

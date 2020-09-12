@@ -3,12 +3,12 @@ title: Kaynakları etiketleme ilkeleri
 description: Etiket uyumluluğunu sağlamak için atayabileceğiniz Azure Ilkelerini açıklar.
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: e3eeb28ea23b18c3492f68d2fac294fc014420c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6867bc01306ac3c08a9797ece0567a45e060af2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82147859"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293753"
 ---
 # <a name="assign-policies-for-tag-compliance"></a>Etiket uyumluluğu için ilke atama
 
@@ -16,7 +16,7 @@ Etiketleme kuralları ve kurallarını zorlamak için [Azure ilkesi](../../gover
 
 ## <a name="policies"></a>İlkeler
 
-[!INCLUDE [Tag policies](../../../includes/policy/samples/bycat/policies-tags.md)]
+[!INCLUDE [Tag policies](../../../includes/policy/reference/bycat/policies-tags.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

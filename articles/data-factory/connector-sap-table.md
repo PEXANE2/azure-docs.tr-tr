@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: a6eaa5519607d5d5e9a49851e1c55f9b60b554ea
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 09/01/2020
+ms.openlocfilehash: 608694c07894c8bdff8b1101d607e07ea4383764
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529730"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279865"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP tablosundan veri kopyalama
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, bir SAP tablosundan veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Daha fazla bilgi için bkz. [kopyalama etkinliğine genel bakış](copy-activity-overview.md).
@@ -49,7 +50,13 @@ Bir SAP tablosundan desteklenen herhangi bir havuz veri deposuna veri kopyalayab
 - SAP uygulama sunucusuna veya SAP ileti sunucusuna bağlanma.
 - Varsayılan veya özel RFC aracılığıyla veri alma.
 
-## <a name="prerequisites"></a>Önkoşullar
+Sürüm 7,01 veya üzeri, SAP ECC sürümü yerine SAP NetWeaver sürümüne başvurur. Örneğin, SAP ECC 6,0 EHP 7, genel olarak NetWeaver sürüm >= 7,4 ' dir. Ortamınız hakkında emin değilseniz SAP sisteminizden sürümü onaylamaya yönelik adımlar aşağıda verilmiştir:
+1.  SAP sistemine bağlanmak için SAP GUI 'yi kullanın. 
+2.  **Sistem**  ->  **durumuna**gidin. 
+3.  SAP_BASIS sürümünü denetleyin, 701 ' den büyük veya ona eşit olduğundan emin olun.  
+      ![SAP_BASIS denetle](./media/connector-sap-table/sap-basis.png)
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu SAP tablosu bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
@@ -64,7 +71,7 @@ Bu SAP tablosu bağlayıcısını kullanmak için şunları yapmanız gerekir:
   - Uzak Işlev çağrısı (RFC) hedeflerini kullanma yetkilendirmesi.
   - S_SDSAUTH yetkilendirme nesnesinin yürütme etkinliğinin izinleri.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -221,7 +228,7 @@ Bir SAP tablosundan veri kopyalamak için aşağıdaki özellikler desteklenir:
 | `rfcTableFields`                 | SAP tablosundan kopyalanacak alanlar (sütunlar). Örneğin, `column0, column1`. | No       |
 | `rfcTableOptions`                | SAP tablosundaki satırları filtrelemeye yönelik seçenekler. Örneğin, `COLUMN0 EQ 'SOMEVALUE'`. Bu makalenin ilerleyen kısımlarında Ayrıca bkz. SAP Query operator tablosu. | No       |
 | `customRfcReadTableFunctionModule` | Bir SAP tablosundan veri okumak için kullanılabilen özel bir RFC işlev modülü.<br>Verilerin SAP sisteminizden nasıl alındığını tanımlamak ve Data Factory ' a geri dönmek için özel bir RFC işlevi modülü kullanabilirsiniz. Özel işlev modülünün `/SAPDS/RFC_READ_TABLE2` , Data Factory tarafından kullanılan varsayılan arabirim olan öğesine benzer bir arabirimi (içeri aktarma, dışarı aktarma, tablolar) uygulanmış olması gerekir.<br>Data Factory | No       |
-| `partitionOption`                  | Bir SAP tablosundan okunacak bölüm mekanizması. Desteklenen seçenekler şunlardır: <ul><li>`None`</li><li>`PartitionOnInt`(gibi, sol tarafta sıfır dolgusu olan normal tamsayı veya tamsayı değerleri `0000012345` )</li><li>`PartitionOnCalendarYear`("YYYY" biçiminde 4 basamak)</li><li>`PartitionOnCalendarMonth`("YYYYMM" biçiminde 6 basamak)</li><li>`PartitionOnCalendarDate`("YYYYMMDD" biçiminde 8 basamak)</li></ul> | No       |
+| `partitionOption`                  | Bir SAP tablosundan okunacak bölüm mekanizması. Desteklenen seçenekler şunlardır: <ul><li>`None`</li><li>`PartitionOnInt` (gibi, sol tarafta sıfır dolgusu olan normal tamsayı veya tamsayı değerleri `0000012345` )</li><li>`PartitionOnCalendarYear` ("YYYY" biçiminde 4 basamak)</li><li>`PartitionOnCalendarMonth` ("YYYYMM" biçiminde 6 basamak)</li><li>`PartitionOnCalendarDate` ("YYYYMMDD" biçiminde 8 basamak)</li></ul> | No       |
 | `partitionColumnName`              | Verileri bölümlemek için kullanılan sütunun adı.                | No       |
 | `partitionUpperBound`              | Bölümlendirmeye devam etmek için, içinde belirtilen sütunun en büyük değeri `partitionColumnName` . | No       |
 | `partitionLowerBound`              | Bölümlendirmeye devam etmek için, içinde belirtilen sütunun en küçük değeri `partitionColumnName` . (Note: `partitionLowerBound` bölüm seçeneği olduğunda "0" olamaz `PartitionOnInt` ) | No       |
@@ -242,11 +249,11 @@ Bir SAP tablosundan veri kopyalamak için aşağıdaki özellikler desteklenir:
 | `EQ` | Eşittir |
 | `NE` | Eşit değildir |
 | `LT` | Küçüktür |
-| `LE` | Küçük veya eşittir |
+| `LE` | Küçüktür veya eşittir |
 | `GT` | Büyüktür |
 | `GE` | Büyüktür veya eşittir |
-| `IN` | İtibariyle`TABCLASS IN ('TRANSP', 'INTTAB')` |
-| `LIKE` | İtibariyle`LIKE 'Emma%'` |
+| `IN` | İtibariyle `TABCLASS IN ('TRANSP', 'INTTAB')` |
+| `LIKE` | İtibariyle `LIKE 'Emma%'` |
 
 ### <a name="example"></a>Örnek
 
@@ -293,14 +300,14 @@ Bir SAP tablosundan veri kopyalarken aşağıdaki eşlemeler, SAP tablosu veri t
 
 | SAP ABAP türü | Data Factory geçici veri türü |
 |:--- |:--- |
-| `C`Dizisinde | `String` |
-| `I`Gir | `Int32` |
-| `F`Float | `Double` |
-| `D`Güncel | `String` |
-| `T`Işınızda | `String` |
-| `P`(BCD paketlenmiş, para birimi, ondalık, miktar) | `Decimal` |
-| `N`Rakamlardan | `String` |
-| `X`(İkili ve ham) | `String` |
+| `C` Dizisinde | `String` |
+| `I` Gir | `Int32` |
+| `F` Float | `Double` |
+| `D` Güncel | `String` |
+| `T` Işınızda | `String` |
+| `P` (BCD paketlenmiş, para birimi, ondalık, miktar) | `Decimal` |
+| `N` Rakamlardan | `String` |
+| `X` (İkili ve ham) | `String` |
 
 ## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 

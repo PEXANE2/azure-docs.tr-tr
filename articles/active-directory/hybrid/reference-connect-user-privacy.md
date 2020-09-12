@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f1d1bf35d03f0f7c4d11e4cc7e9b6f98f38d8ab
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60455797"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279576"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Kullanıcı gizliliği ve Azure AD Connect 
 
@@ -43,7 +43,7 @@ Bir Azure AD Connect eşitleme sunucusu aşağıdaki Kullanıcı Gizlilik verile
 
 Azure AD Connect müşteriler Kullanıcı verilerini kaldırırken aşağıdaki yönergeleri kullanmalıdır:
 1.  Azure AD Connect yükleme günlük dosyalarını içeren klasörün içeriğini düzenli aralıklarla silin – en az 48 saat
-2.  Bu ürün, olay günlükleri de oluşturabilir.  Olay günlükleri günlükleri hakkında daha fazla bilgi edinmek için lütfen [belgelere](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx)bakın.
+2.  Bu ürün, olay günlükleri de oluşturabilir.  Olay günlükleri günlükleri hakkında daha fazla bilgi edinmek için lütfen [belgelere](/windows/win32/wes/windows-event-log)bakın.
 
 Bir kişiyle ilgili veriler, kullanıcının kaynaklandığı kaynak sistemden kaldırıldığında Azure AD Connect veritabanından otomatik olarak kaldırılır. Yöneticilerden gelen özel bir eylemin GDPR uyumlu olması gerekmez.  Ancak, Azure AD Connect verilerinin veri kaynağınıza en az iki günde eşitlendiğinden emin olmanız gerekir.
 

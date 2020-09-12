@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6f11de7f38ff97b1141afa48c26788a171727cb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 065c6661ffc9f618a5dfd32a9f45d26569a56003
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559555"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278182"
 ---
 # <a name="using-custom-security-policies"></a>Özel güvenlik ilkeleri kullanma
 
@@ -40,7 +40,7 @@ Bu özellikle kendi *özel* girişimlerinizi ekleyebilirsiniz. Daha sonra ortam�
 
     [![Özel girişim Ekle 'ye tıklayın](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
-    Aşağıdaki sayfa görüntülenir:
+    Aşağıdaki sayfa görünür:
 
     ![İlke oluşturma veya ekleme](media/custom-security-policies/create-or-add-custom-policy.png)
 
@@ -69,7 +69,7 @@ Bu özellikle kendi *özel* girişimlerinizi ekleyebilirsiniz. Daha sonra ortam�
 
     [![Özel öneriler](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
-## <a name="enhancing-your-custom-recommendations-with-detailed-information"></a>Ayrıntılı bilgilerle özel önerilerinizi geliştirme
+## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>Ayrıntılı bilgilerle özel önerilerinizi geliştirin
 
 Azure Güvenlik Merkezi ile sağlanan yerleşik öneriler, önem düzeyleri ve Düzeltme yönergeleri gibi ayrıntıları içerir. Bu tür bilgileri özel önerilerinizi eklemek istiyorsanız Azure portal görünmesini veya önerilerinizi her yerden eriştiğinizde, REST API kullanmanız gerekir. 
 

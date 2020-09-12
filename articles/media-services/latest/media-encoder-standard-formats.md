@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: c8c111d046bfaefac11df576e455162d20acecd0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f6e9c0a3d9100bc447314f5874107363c6bf5d8a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266570"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289452"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Standart kodlayıcı biçimleri ve codec bileşenleri
 
@@ -64,7 +64,7 @@ veya
 | MPEG-2 (422 Profili ve Yüksek Düzeye kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil) |422 Profiline kadar |
 | MPEG-1 |Yes |
 | VC-1/WMV9 |Yes |
-| Canopus HQ/HQX |Hayır |
+| Canopus HQ/HQX |No |
 | MPEG-4 Bölüm 2 |Yes |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Yes |
 | YUV420 sıkıştırılmamış veya mezzanine |Yes |
@@ -88,10 +88,10 @@ veya
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Yes |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Yes |
 | AMR (adaptive multi-rate) |Yes |
-| AES (SMPTE 331M ve 302M, AES3-2003) |Hayır |
-| Dolby® E |Hayır |
-| Dolby® Digital (AC3) |Hayır |
-| Dolby® Digital Plus (E-AC3) |Hayır |
+| AES (SMPTE 331M ve 302M, AES3-2003) |No |
+| Dolby® E |No |
+| Dolby® Digital (AC3) |No |
+| Dolby® Digital Plus (E-AC3) |No |
 
 ## <a name="output-formats-and-codecs"></a>Çıkış biçimleri ve codec bileşenleri
 Aşağıdaki tabloda, dışarı aktarma için desteklenen codec bileşenleri ve dosya biçimleri listelenmektedir.

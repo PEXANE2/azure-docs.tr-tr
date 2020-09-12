@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 885d30305ba2b186052e17b9b455b2248bca541b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caf0fdf5fd167987ea0fd7111a05b04bd5bf848f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608526"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279797"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory Kullanıcı asıl adı değişikliklerini planlayın ve sorun giderin
 
@@ -57,9 +57,9 @@ Bsimon@contoso.comiçinBritta.Simon@contoso.com
 
     Örneğin, bir kişi bölümleri değiştirdiğine göre, etki alanını değiştirebilirsiniz: 
 
-   * Britta.Simon@contoso.comHedefBritta.Simon@contosolabs.com <br>
+   * Britta.Simon@contoso.com Hedef Britta.Simon@contosolabs.com <br>
      Veya<br>
-    * Britta.Simon@corp.contoso.comHedefBritta.Simon@labs.contoso.com 
+    * Britta.Simon@corp.contoso.com Hedef Britta.Simon@labs.contoso.com 
 
 Birincil e-posta adresleri her güncelleştirildiği sırada kullanıcıların UPN 'sini değiştirmenizi öneririz.
 
@@ -71,14 +71,14 @@ Active Directory, varsayılan UPN soneki, Kullanıcı hesabını oluşturduğunu
 
 username@contoso.com
 
- Ancak, Active Directory etki alanları ve güvenleri kullanarak [daha fazla UPN soneki ekleyebilirsiniz](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) . 
+ Ancak, Active Directory etki alanları ve güvenleri kullanarak [daha fazla UPN soneki ekleyebilirsiniz](../fundamentals/add-custom-domain.md) . 
 
 Örneğin, labs.contoso.com eklemek ve kullanıcıların UPN 'lerini ve e-postasını göstermek isteyebilirsiniz. Bunlar daha sonra olur
 
 username@labs.contoso.com.
 
 >[!IMPORTANT]
-> [Active Directory soneki değiştiriyorsanız](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain), Azure AD 'de eşleşen bir özel etki alanı adının [eklendiğinden ve doğrulandığından](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)emin olmanız gerekir. 
+> [Active Directory soneki değiştiriyorsanız](../fundamentals/add-custom-domain.md), Azure AD 'de eşleşen bir özel etki alanı adının [eklendiğinden ve doğrulandığından](../fundamentals/add-custom-domain.md)emin olmanız gerekir. 
 
 ![Doğrulanan etki alanlarının ekran görüntüsü](./media/howto-troubleshoot-upn-changes/custom-domains.png)
 
@@ -101,7 +101,7 @@ UserPrincipalName özniteliğinin değeri Azure AD 'de doğrulanmış bir etki a
 
 ### <a name="roll-out-bulk-upn-changes"></a>Toplu UPN değişiklikleri toplama
 
-Toplu UPN değişikliklerinde [pilot için en iyi uygulamaları](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans) izleyin. Ayrıca, hızlı bir şekilde çözümlenemeyen sorunlar bulursanız, UPN 'leri geri almaya yönelik test alma planı da vardır. Pilot çalışmaya başladıktan sonra, çeşitli kuruluş rollerine ve bunların belirli uygulama veya cihaz kümelerine sahip küçük Kullanıcı gruplarını hedeflemeye başlayabilirsiniz.
+Toplu UPN değişikliklerinde [pilot için en iyi uygulamaları](../fundamentals/active-directory-deployment-plans.md) izleyin. Ayrıca, hızlı bir şekilde çözümlenemeyen sorunlar bulursanız, UPN 'leri geri almaya yönelik test alma planı da vardır. Pilot çalışmaya başladıktan sonra, çeşitli kuruluş rollerine ve bunların belirli uygulama veya cihaz kümelerine sahip küçük Kullanıcı gruplarını hedeflemeye başlayabilirsiniz.
 
 Kullanıcıların bu ilk alt kümesini kullanarak, değişikliğin bir parçası olarak hangi kullanıcıların beklemesi gerektiği konusunda iyi bir fikir verecektir. Bu bilgileri Kullanıcı İletişimlerine ekleyin.
 
@@ -111,22 +111,22 @@ Aşağıdaki bölümler, UPN 'ler değiştirildiğinde olası bilinen sorunları
 
 ## <a name="apps-known-issues-and-workarounds"></a>Uygulamalar, bilinen sorunlar ve geçici çözümler
 
-[Hizmet olarak yazılım (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) ve iş kolu (LOB) uygulamaları genellikle kullanıcıları bulmak ve roller de dahil olmak üzere Kullanıcı profili bilgilerini depolamak için UPN 'leri kullanır. Kullanıcılar uygulamada ilk kez oturum açtığında, UPN değişikliklerinden etkilenebilecek bir kullanıcı profili oluşturmak için [tam zamanında sağlama](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) kullanan uygulamalar.
+[Hizmet olarak yazılım (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) ve iş kolu (LOB) uygulamaları genellikle kullanıcıları bulmak ve roller de dahil olmak üzere Kullanıcı profili bilgilerini depolamak için UPN 'leri kullanır. Kullanıcılar uygulamada ilk kez oturum açtığında, UPN değişikliklerinden etkilenebilecek bir kullanıcı profili oluşturmak için [tam zamanında sağlama](../app-provisioning/user-provisioning.md) kullanan uygulamalar.
 
 **Bilinen sorun**<br>
-Bir kullanıcının UPN 'sini değiştirmek, Azure AD kullanıcısı ve uygulamada oluşturulan kullanıcı profili arasındaki ilişkiyi bozabilir. Uygulama [tam zamanında sağlama](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)kullanıyorsa, yeni bir kullanıcı profili oluşturabilir. Bu, uygulama yöneticisinin bu ilişkiyi onarmak için el ile değişiklikler yapmasını gerektirir.
+Bir kullanıcının UPN 'sini değiştirmek, Azure AD kullanıcısı ve uygulamada oluşturulan kullanıcı profili arasındaki ilişkiyi bozabilir. Uygulama  [tam zamanında sağlama](../app-provisioning/user-provisioning.md)kullanıyorsa, yeni bir kullanıcı profili oluşturabilir. Bu, uygulama yöneticisinin bu ilişkiyi onarmak için el ile değişiklikler yapmasını gerektirir.
 
 **Geçici çözüm**<br>
-[Azure AD otomatik Kullanıcı sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) , desteklenen bulut uygulamalarında kullanıcı kimliklerinizi otomatik olarak oluşturmanıza, korumanıza ve kaldırmanıza olanak sağlar. Uygulamalarınızda otomatik Kullanıcı sağlamayı yapılandırmak, uygulamalardaki UPN 'leri otomatik olarak güncelleştirir. , UPN değişikliklerinden etkilenmediğinden emin olmak için uygulamaları aşamalı dağıtım kapsamında test edin.
-Geliştiricisiyseniz, Azure Active Directory otomatik Kullanıcı sağlamayı etkinleştirmek için [uygulamanıza SCIM desteği eklemeyi](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) göz önünde bulundurun. 
+[Azure AD otomatik Kullanıcı sağlama](../app-provisioning/user-provisioning.md) , desteklenen bulut uygulamalarında kullanıcı kimliklerinizi otomatik olarak oluşturmanıza, korumanıza ve kaldırmanıza olanak sağlar. Uygulamalarınızda otomatik Kullanıcı sağlamayı yapılandırmak, uygulamalardaki UPN 'leri otomatik olarak güncelleştirir. , UPN değişikliklerinden etkilenmediğinden emin olmak için uygulamaları aşamalı dağıtım kapsamında test edin.
+Geliştiricisiyseniz, Azure Active Directory otomatik Kullanıcı sağlamayı etkinleştirmek için [uygulamanıza SCIM desteği eklemeyi](../app-provisioning/use-scim-to-provision-users-and-groups.md) göz önünde bulundurun. 
 
 ## <a name="managed-devices-known-issues-and-workarounds"></a>Yönetilen cihazlar bilinen sorunlar ve geçici çözümler
 
-[Cihazlarınızı Azure AD 'ye](https://docs.microsoft.com/azure/active-directory/devices/overview)getirerek, kullanıcılarınızın bulut ve şirket içi kaynaklarınız genelinde çoklu oturum açma (SSO) ile üretkenliğini en üst düzeye çıkarmış olursunuz.
+[Cihazlarınızı Azure AD 'ye](../devices/overview.md)getirerek, kullanıcılarınızın bulut ve şirket içi kaynaklarınız genelinde çoklu oturum açma (SSO) ile üretkenliğini en üst düzeye çıkarmış olursunuz.
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD’ye katılmış cihazlar
 
-[Azure AD 'ye katılmış](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-ad-join) cihazlar doğrudan Azure AD 'ye katılır ve kullanıcıların kuruluşun kimliğini kullanarak cihazda oturum açmalarına olanak tanır.
+[Azure AD 'ye katılmış](../devices/concept-azure-ad-join.md) cihazlar doğrudan Azure AD 'ye katılır ve kullanıcıların kuruluşun kimliğini kullanarak cihazda oturum açmalarına olanak tanır.
 
 **Bilinen sorunlar** <br>
 Kullanıcılar, kimlik doğrulaması için Azure AD 'ye bağlı olan uygulamalarla çoklu oturum açma sorunları yaşayabilir.
@@ -135,14 +135,14 @@ Kullanıcılar, kimlik doğrulaması için Azure AD 'ye bağlı olan uygulamalar
 Bu bölümde bahsedilen sorunlar Windows 10 Mayıs 2020 Güncelleştirmesi (2004) üzerinde düzeltildi.
 
 **Geçici çözüm** <br>
-UPN değişikliğinin Azure AD ile eşitlenmesi için yeterli zaman bekleyin. Yeni UPN 'nin Azure AD portalında yansıtıldığını doğruladıktan sonra, kullanıcıdan yeni UPN 'si ile oturum açmak için "diğer Kullanıcı" kutucuğunu seçmesini isteyin. [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)aracılığıyla da doğrulayabilirsiniz. Yeni UPN 'si ile oturum açtıktan sonra eski UPN başvuruları "iş veya okul erişimi" Windows ayarında görünmeye devam edebilir.
+UPN değişikliğinin Azure AD ile eşitlenmesi için yeterli zaman bekleyin. Yeni UPN 'nin Azure AD portalında yansıtıldığını doğruladıktan sonra, kullanıcıdan yeni UPN 'si ile oturum açmak için "diğer Kullanıcı" kutucuğunu seçmesini isteyin. [PowerShell](/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)aracılığıyla da doğrulayabilirsiniz. Yeni UPN 'si ile oturum açtıktan sonra eski UPN başvuruları "iş veya okul erişimi" Windows ayarında görünmeye devam edebilir.
 
 ![Doğrulanan etki alanlarının ekran görüntüsü](./media/howto-troubleshoot-upn-changes/other-user.png)
 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hibrit Azure AD’ye katılmış cihazlar
 
-[Karma Azure AD 'ye katılmış](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-ad-join-hybrid) cihazlar Active Directory ve Azure AD 'ye katılır. Ortamınızda şirket içi Active Directory bir parmak izi varsa ve Azure AD tarafından sunulan yeteneklerden yararlanmak istiyorsanız karma Azure AD 'ye katılmayı uygulayabilirsiniz.
+[Karma Azure AD 'ye katılmış](../devices/concept-azure-ad-join-hybrid.md) cihazlar Active Directory ve Azure AD 'ye katılır. Ortamınızda şirket içi Active Directory bir parmak izi varsa ve Azure AD tarafından sunulan yeteneklerden yararlanmak istiyorsanız karma Azure AD 'ye katılmayı uygulayabilirsiniz.
 
 **Bilinen sorunlar** 
 
@@ -163,18 +163,18 @@ Cihazın Azure AD 'den katılmamış ve yeniden başlatılması gerekiyor. Yenid
 
 **dsregcmd/Leave**
 
-Kullanıcının kullanılıyorsa Iş için Windows Hello 'ya [yeniden kaydolması](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision) gerekecektir. Windows 7 ve 8,1 cihazları, UPN değişikliklerinden sonra bu sorundan etkilenmez.
+Kullanıcının kullanılıyorsa Iş için Windows Hello 'ya [yeniden kaydolması](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision) gerekecektir. Windows 7 ve 8,1 cihazları, UPN değişikliklerinden sonra bu sorundan etkilenmez.
 
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Bilinen sorunları ve geçici çözümleri Microsoft Authenticator
 
-Kuruluşunuz, oturum açmak ve kurumsal uygulamalara ve verilere erişmek için [Microsoft Authenticator uygulamasının](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview) kullanımını gerektirebilir. Bir Kullanıcı adı uygulamada görünebilse de, Kullanıcı kayıt işlemini tamamlayana kadar hesap doğrulama yöntemi olarak çalışacak şekilde ayarlanamaz.
+Kuruluşunuz, oturum açmak ve kurumsal uygulamalara ve verilere erişmek için [Microsoft Authenticator uygulamasının](../user-help/user-help-auth-app-overview.md) kullanımını gerektirebilir. Bir Kullanıcı adı uygulamada görünebilse de, Kullanıcı kayıt işlemini tamamlayana kadar hesap doğrulama yöntemi olarak çalışacak şekilde ayarlanamaz.
 
-[Microsoft Authenticator uygulamasının](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview) dört ana işlevi vardır:
+[Microsoft Authenticator uygulamasının](../user-help/user-help-auth-app-overview.md) dört ana işlevi vardır:
 
 * Bir anında iletme bildirimi veya doğrulama kodu aracılığıyla çok faktörlü kimlik doğrulaması
 
-* [Aracılı kimlik doğrulaması](https://docs.microsoft.com/azure/active-directory/develop/brokered-auth) kullanan uygulamalar için çoklu oturum açma sağlamak üzere IOS ve Android cihazlarda kimlik doğrulama Aracısı işlevi görür
+* [Aracılı kimlik doğrulaması](../develop/brokered-auth.md) kullanan uygulamalar için çoklu oturum açma sağlamak üzere IOS ve Android cihazlarda kimlik doğrulama Aracısı işlevi görür
 
 * Intune Uygulama Koruması ve cihaz kaydı/yönetimi gibi diğer özellikler için bir gereksinim olan Azure AD 'de cihaz kaydı (Workplace Join olarak da bilinir)
 
@@ -182,11 +182,11 @@ Kuruluşunuz, oturum açmak ve kurumsal uygulamalara ve verilere erişmek için 
 
 ### <a name="multi-factor-authentication-with-android-devices"></a>Android cihazlarla Multi-Factor Authentication
 
-Microsoft Authenticator uygulama bant dışı doğrulama seçeneği sunar. Oturum açma sırasında kullanıcıya otomatik telefon çağrısı veya SMS koymak yerine [Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) kullanıcının akıllı telefonundaki veya tabletindeki Microsoft Authenticator uygulamasına bir bildirim gönderir. Kullanıcı, oturum açma işleminin tamamlanabilmesi için Onayla ' ya dokunduktan sonra (veya bir PIN veya biyometri ve "kimlik doğrulaması" ' na dokunduğunda).
+Microsoft Authenticator uygulama bant dışı doğrulama seçeneği sunar. Oturum açma sırasında kullanıcıya otomatik telefon çağrısı veya SMS koymak yerine [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) kullanıcının akıllı telefonundaki veya tabletindeki Microsoft Authenticator uygulamasına bir bildirim gönderir. Kullanıcı, oturum açma işleminin tamamlanabilmesi için Onayla ' ya dokunduktan sonra (veya bir PIN veya biyometri ve "kimlik doğrulaması" ' na dokunduğunda).
 
 **Bilinen sorunlar** 
 
-Bir kullanıcının UPN 'sini değiştirdiğinizde, eski UPN hala Kullanıcı hesabında görüntülenir ve bir bildirim alınmayabilir. [Doğrulama kodları](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq) çalışmaya devam eder.
+Bir kullanıcının UPN 'sini değiştirdiğinizde, eski UPN hala Kullanıcı hesabında görüntülenir ve bir bildirim alınmayabilir. [Doğrulama kodları](../user-help/user-help-auth-app-faq.md) çalışmaya devam eder.
 
 **Geçici çözüm**
 
@@ -202,7 +202,7 @@ Android ve Microsoft Authenticator etkinleştir gibi iOS aracılarından:
 
 * Uygulama tanımlama doğrulaması-bir uygulama aracıyı çağırdığında, yeniden yönlendirme URL 'sini geçirir ve aracı tarafından doğrulanır.
 
-Ayrıca, uygulamaların [koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/)gibi daha gelişmiş özelliklere katılmasına ve [Microsoft Intune senaryoları](https://docs.microsoft.com/azure/active-directory/develop/msal-net-use-brokers-with-xamarin-apps)desteklediğinden de olanak tanır.
+Ayrıca, uygulamaların [koşullu erişim](../conditional-access/index.yml)gibi daha gelişmiş özelliklere katılmasına ve [Microsoft Intune senaryoları](../develop/msal-net-use-brokers-with-xamarin-apps.md)desteklediğinden de olanak tanır.
 
 **Bilinen sorunlar**<br>
 Kullanıcıya, uygulama tarafından geçirilen login_hint ile aracıda depolanan UPN arasında uyuşmazlık olduğundan, aracı destekli oturum açma kullanan yeni uygulamalarda daha etkileşimli kimlik doğrulama istemleri sunulur.
@@ -240,17 +240,17 @@ Kullanıcının telefon oturumu açmak için etkinleştirilen hesapta açılan m
 Aynı anahtara birden çok Kullanıcı kaydedildiğinde, oturum açma ekranında eski UPN 'nin görüntülendiği bir hesap seçim sayfası gösterilir. Güvenlik anahtarlarını kullanarak oturum açma, UPN değişikliklerinden etkilenmez.  
 
 **Geçici çözüm**<br>
-Eski UPN başvurularını kaldırmak için, kullanıcıların [güvenlik anahtarını sıfırlaması ve yeniden kaydedilmesi](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key#known-issues)gerekir.
+Eski UPN başvurularını kaldırmak için, kullanıcıların [güvenlik anahtarını sıfırlaması ve yeniden kaydedilmesi](../authentication/howto-authentication-passwordless-security-key.md#known-issues)gerekir.
 
 ## <a name="onedrive-known-issues-and-workarounds"></a>OneDrive bilinen sorunlar ve geçici çözümler
 
-OneDrive kullanıcılarının, UPN değişikliklerinden sonra sorunlarla karşılaşması bilinmektedir. Daha fazla bilgi için bkz. [UPN değişikliklerinin ONEDRIVE URL 'sini ve OneDrive özelliklerini nasıl etkilediği](https://docs.microsoft.com/onedrive/upn-changes).
+OneDrive kullanıcılarının, UPN değişikliklerinden sonra sorunlarla karşılaşması bilinmektedir. Daha fazla bilgi için bkz. [UPN değişikliklerinin ONEDRIVE URL 'sini ve OneDrive özelliklerini nasıl etkilediği](/onedrive/upn-changes).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Şu kaynaklara bakın:
-* [Azure AD Connect: tasarım kavramları](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-design-concepts)
+* [Azure AD Connect: tasarım kavramları](./plan-connect-design-concepts.md)
 
-* [Azure AD UserPrincipalName popülasyonu](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-userprincipalname)
+* [Azure AD UserPrincipalName popülasyonu](./plan-connect-userprincipalname.md)
 
-* [Microsoft Identity platform KIMLIĞI belirteçleri](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)
+* [Microsoft Identity platform KIMLIĞI belirteçleri](../develop/id-tokens.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: bb45e1d1ee17a6daf16bd688982f79fda986bde5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d336c58971b16875d9861f85dde9529de8c734e2
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73664402"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278094"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Dosya Bütünlüğünü İzleme (FIM) kullanarak ana hatları karşılaştırma
 
@@ -41,7 +41,7 @@ FIM kayıt defteri Hive Varsayılanları, ortak güvenlik alanlarındaki özyine
 >[!NOTE]
 > Özyinelemeli denetimler yalnızca önerilen güvenlik kovanları için geçerlidir ve özel kayıt defteri yollarına uygulanmaz.  
 
-## <a name="adding-a-custom-registry-check"></a>Özel kayıt defteri denetimi ekleme
+## <a name="add-a-custom-registry-check"></a>Özel bir kayıt defteri denetimi ekleme
 
 FIM temelleri, işletim sistemi ve destekleyici uygulama için bilinen iyi durumun özelliklerini tanımlayarak başlar.  Bu örnekte, Windows Server 2008 ve üzeri için parola ilkesi yapılandırmalarına odaklanacağız.
 
@@ -73,14 +73,14 @@ FIM temelleri, işletim sistemi ve destekleyici uygulama için bilinen iyi durum
 
       ![Kayıt defterinde FIM 'yi etkinleştirme](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="tracking-changes-to-windows-files"></a>Windows dosyalarında yapılan değişiklikleri izleme
+## <a name="track-changes-to-windows-files"></a>Windows dosyalarındaki değişiklikleri izle
 
 1. **Değişiklik izleme Için Windows dosyası Ekle** penceresinde, **yolu girin** metin kutusuna izlemek istediğiniz dosyaları içeren klasörü girin. Aşağıdaki şekildeki örnekte **contoso Web uygulaması** d:\ konumunda bulunur. **ContosWebApp** klasör yapısı içindeki sürücü.  
 1. Ayar sınıfının bir adını sağlayarak, özyinelemeyi etkinleştirerek ve en üst klasörü bir joker karakter (*) sonekiyle belirterek özel bir Windows dosya girişi oluşturun.
 
     ![Dosya üzerinde FIM 'yi etkinleştirme](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
-## <a name="retrieving-change-data"></a>Değişiklik verilerini alma
+## <a name="retrieve-change-data"></a>Değişiklik verilerini al
 
 Dosya bütünlüğü Izleme verileri Azure Log Analytics/ConfigurationChange tablo kümesi içinde bulunur.  
 

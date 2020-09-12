@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 500d226fcb60646becc49144f206dcb0dee49bd8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60381170"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278403"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Dizin eşitleme gereksinimlerini belirleme
 Eşitleme, kullanıcılara şirket içi kimlik bilgilerini temel alarak bulutta bir kimlik sağlamaya yönelik bir bütün dır. Kimlik doğrulaması veya federal kimlik doğrulaması için eşitlenmiş hesap kullanıp kullanmayacağınızı, kullanıcıların bulutta bir kimliğe sahip olmaları gerekir.  Bu kimliğin düzenli aralıklarla tutulması ve güncelleştirilmeleri gerekir.  Güncelleştirmeler, başlık değişikliklerinden parola değişikliklerine kadar birçok form alabilir.  
@@ -64,7 +64,7 @@ Ayrıca güvenlik gereksinimleri ve kısıtlamalar dizin eşitlemesini belirleme
   * Eşitlemeyi desteklemek için gerekli güvenlik duvarı bağlantı noktalarını açabiliyor musunuz?
 * Eşitleme sunucusu için bir olağanüstü durum kurtarma planınız var mı?
 * Eşitleme yapmak istediğiniz tüm ormanlar için doğru izinlere sahip bir hesabınız var mı?
-  * Şirketiniz bu sorunun yanıtını bilmez ise, [Azure Active Directory eşitleme hizmetini yüklemek](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) ve bu izinlere sahip bir hesabınız olup olmadığını veya bir hesap oluşturmanız gerekip gerekmediğini öğrenmek için "parola eşitleme izinleri" bölümünü gözden geçirin.
+  * Şirketiniz bu sorunun yanıtını bilmez ise, [Azure Active Directory eşitleme hizmetini yüklemek](/previous-versions/azure/azure-services/dn757602(v=azure.100)#BKMK_CreateAnADAccountForTheSyncService) ve bu izinlere sahip bir hesabınız olup olmadığını veya bir hesap oluşturmanız gerekip gerekmediğini öğrenmek için "parola eşitleme izinleri" bölümünü gözden geçirin.
 * Çoklu orman eşitlemesi varsa eşitleme sunucusu her bir ormana alabilir mi?
 
 > [!NOTE]
@@ -77,4 +77,3 @@ Ayrıca güvenlik gereksinimleri ve kısıtlamalar dizin eşitlemesini belirleme
 
 ## <a name="see-also"></a>Ayrıca bkz.
 [Tasarım konularına genel bakış](plan-hybrid-identity-design-considerations-overview.md)
-

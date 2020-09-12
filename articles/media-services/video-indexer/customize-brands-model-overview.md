@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: a1b2738e3be2e2b8a388ef80ca94764cdae99b08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0df698cb431e5e26c69047a9f464904f0546487
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047357"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294246"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Video Indexer bir markalar modeli özelleştirme
 
 Video Indexer, video ve ses içeriğinin dizin oluşturma ve yeniden dizin oluşturma sırasında konuşma ve görsel metinden marka algılamayı destekler. Marka algılama özelliği, Bing 'ün markalar veritabanı tarafından önerilen ürünlerin, hizmetlerin ve şirketlerin bahsetmelerini belirler. Örneğin, Microsoft bir video veya ses içeriğinde bahsedildiğinde veya videoda görsel metin gösteriyorsa, Video Indexer içeriği bir marka olarak algılar. Markalar, bağlamı kullanılarak diğer terimlerden ayırt edilir.
 
-Marka algılama, içerik Arşivi ve bulma, bağlamsal reklam, Sosyal Medya Analizi, perakende rekabet analizi ve çok daha fazlası gibi çok çeşitli iş senaryolarında faydalıdır. Video Indexer marka algılama, Bing 'in markalar veritabanının yanı sıra her bir Video Indexer hesabı için özel bir markalar modeli oluşturarak özelleştirerek marka bahsetmelerini ve görsel metinleri dizmenizi sağlar. Özel markalar modeli özelliği, Bing markalar veritabanından markalar belirleyip algılamadığına, bazı markaların algılanarak dışlanVideo Indexer mayacağını (esas olarak siyah bir marka listesi oluşturarak) ve kuruluşunuzun markalar veritabanında (aslında beyaz bir marka listesi oluşturarak) modelinizin bir parçası olması gereken markaların dahil edilip edilmeyeceğini seçmenize olanak sağlar. Oluşturduğunuz özel markalar modeli yalnızca modeli oluşturduğunuz hesapta kullanılabilir olacaktır.
+Marka algılama, içerik Arşivi ve bulma, bağlamsal reklam, Sosyal Medya Analizi, perakende rekabet analizi ve çok daha fazlası gibi çok çeşitli iş senaryolarında faydalıdır. Video Indexer marka algılama, Bing 'in markalar veritabanının yanı sıra her bir Video Indexer hesabı için özel bir markalar modeli oluşturarak özelleştirerek marka bahsetmelerini ve görsel metinleri dizmenizi sağlar. Özel markalar modeli özelliği, Bing markalar veritabanından markalar belirleyip algılamadığına, bazı markaların algılanma (aslında onaylanmamış markalar listesini oluşturma) hariç tutmasını ve kuruluşunuzun markalar veritabanında (aslında onaylanan markaların listesini oluşturma), modelinizin bir parçası olması gereken markaların dahil edilip Video Indexer edilmeyeceğini seçmenize olanak sağlar. Oluşturduğunuz özel markalar modeli yalnızca modeli oluşturduğunuz hesapta kullanılabilir olacaktır.
 
 ## <a name="out-of-the-box-detection-example"></a>Kullanıma hazır algılama örneği
 

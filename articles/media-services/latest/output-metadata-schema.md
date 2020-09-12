@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 79bf6c50c1b0b1c8454999cbefa8c933a73eae8e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267216"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289381"
 ---
 # <a name="output-metadata"></a>Çıkış meta verileri
 
@@ -38,7 +38,7 @@ Kodlama işi için Assetdosya girişlerinin toplanması.
 
 | Ad | Açıklama |
 | --- | --- |
-| **Kaynaklar** |Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu.<br />Örnek: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
+| **Ğına** |Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu.<br />Örnek: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **Videoizler**|Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili bir kapsayıcı biçiminde araya eklenebilir. <br />Bkz. [Videoiz](#videotracks). |
 | **Ses Izleri**|Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla ses parçası ile uygun bir kapsayıcı biçimiyle bulunabilir. Bu, tüm ses izlemelerinin koleksiyonudur.<br /> Daha fazla bilgi için bkz. [Audioiz](#audiotracks). |
 | **Ad**<br />Gerekli |Medya varlık dosya adı. <br /><br />Örnek: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
@@ -55,8 +55,8 @@ Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili b
 | **FourCC**<br />Gerekli | FFmpeg tarafından raporlanan video codec FourCC kodu.  <br /><br />Örnek: `"FourCC": "avc1"`|
 | **Profil** |H264 profili (yalnızca H264 codec için geçerlidir).  <br /><br />Örnek: `"Profile": "High"` |
 | **Düzeyde** |H264 düzeyi (yalnızca H264 codec için geçerlidir).  <br /><br />Örnek: `"Level": "3.2"`|
-| **Width**<br />Gerekli |Piksel cinsinden kodlanmış video genişliği.  <br /><br />Örnek: `"Width": "1280"`|
-| **Height**<br />Gerekli |Piksel cinsinden kodlanmış video yüksekliği.  <br /><br />Örnek: `"Height": "720"`|
+| **Genişlik**<br />Gerekli |Piksel cinsinden kodlanmış video genişliği.  <br /><br />Örnek: `"Width": "1280"`|
+| **Yükseklik**<br />Gerekli |Piksel cinsinden kodlanmış video yüksekliği.  <br /><br />Örnek: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Gerekli|Video görüntüleme en boy oranı payı.  <br /><br />Örnek: `"DisplayAspectRatioNumerator": 16.0`|
 | **Displayaspectratiopayda**<br />Gerekli |Video görüntüleme en boy oranı paydası.  <br /><br />Örnek: `"DisplayAspectRatioDenominator": 9.0`|
 | **Framerate**<br />Gerekli |.3F biçiminde ölçülen video kare hızı.  <br /><br />Örnek: `"Framerate": 29.970`|

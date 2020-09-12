@@ -17,19 +17,19 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce4c64f0be61c2fe28a102674929333235ee29c8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 31c76b78d4ab7a3f305b52526b7e4ce14f3b1ede
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385101"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278046"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>ADSync hizmet hesabı parolasını değiştirme
 ADSync hizmet hesabı parolasını değiştirirseniz, şifreleme anahtarını terk edinceye ve ADSync hizmet hesabı parolasını yeniden başlatana kadar eşitleme hizmeti düzgün şekilde başlayamaz. 
 
 Azure AD Connect, Eşitleme Hizmetleri 'nin bir parçası olarak, AD DS bağlayıcı hesabının ve ADSync hizmet hesabının parolalarını depolamak için bir şifreleme anahtarı kullanır.  Bu hesaplar, veritabanında depolanmadan önce şifrelenir. 
 
-Kullanılan şifreleme anahtarı [Windows veri koruması (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx)kullanılarak güvenli hale getirilir. DPAPI, **ADSync hizmet hesabını**kullanarak şifreleme anahtarını korur. 
+Kullanılan şifreleme anahtarı [Windows veri koruması (DPAPI)](/previous-versions/ms995355(v=msdn.10))kullanılarak güvenli hale getirilir. DPAPI, **ADSync hizmet hesabını**kullanarak şifreleme anahtarını korur. 
 
 Hizmet hesabı parolasını değiştirmeniz gerekiyorsa, bunu gerçekleştirmek için [ADSync hizmet hesabı şifreleme anahtarını bırakma](#abandoning-the-adsync-service-account-encryption-key) konusundaki yordamları kullanabilirsiniz.  Bu yordamlar Ayrıca, herhangi bir nedenden dolayı şifreleme anahtarını iptal etmeniz gerekiyorsa de kullanılmalıdır.
 
@@ -84,9 +84,9 @@ Yeni şifreleme anahtarının oluşturulabilmesi için mevcut şifreleme anahtar
 
 2. Yeni bir PowerShell oturumu başlatın.
 
-3. Klasöre git:`'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
+3. Klasöre git: `'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
 
-4. Şu komutu çalıştırın:`./miiskmu.exe /a`
+4. Şu komutu çalıştırın: `./miiskmu.exe /a`
 
 ![Azure AD Connect eşitleme şifreleme anahtarı yardımcı programı](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
 

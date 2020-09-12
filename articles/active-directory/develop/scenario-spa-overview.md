@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3ead0ea58c6860519f027eb6a7450df37396bd89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60e4ca80faa2c8787a13d87ab06cad9243299e50
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885200"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291968"
 ---
 # <a name="scenario-single-page-application"></a>Senaryo: tek sayfalı uygulama
 
@@ -35,11 +35,17 @@ JavaScript SPA hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluştur
 
 ## <a name="overview"></a>Genel Bakış
 
-Birçok modern web uygulaması, istemci tarafı tek sayfalı uygulamalar olarak oluşturulmuştur. Geliştiriciler bunları JavaScript veya angular, Vue.js ve React.js gibi bir SPA çerçevesi kullanarak yazar. Bu uygulamalar bir Web tarayıcısında çalışır ve geleneksel sunucu tarafı Web uygulamalarından farklı kimlik doğrulama özelliklerine sahiptir. 
+Birçok modern web uygulaması, istemci tarafı tek sayfalı uygulamalar olarak oluşturulmuştur. Geliştiriciler bunları JavaScript veya angular, Vue ve tepki verme gibi bir SPA çerçevesi kullanarak yazar. Bu uygulamalar bir Web tarayıcısında çalışır ve geleneksel sunucu tarafı Web uygulamalarından farklı kimlik doğrulama özelliklerine sahiptir. 
 
-Microsoft Identity platformu, tek sayfalı uygulamaların kullanıcılara oturum açmasını ve [OAuth 2,0 örtük akışını](./v2-oauth2-implicit-grant-flow.md)kullanarak arka uç hizmetlerine veya Web API 'lerine erişim belirteçleri almasını sağlar. Örtük akış, uygulamanın kimliği doğrulanmış kullanıcıyı temsil etmesi için kimlik belirteçleri almasına izin verir ve ayrıca korumalı API 'Leri çağırmak için gereken belirteçleri de erişin.
+Microsoft Identity platformu, tek sayfalı uygulamaların kullanıcılara oturum açmasını ve arka uç hizmetlerine veya Web API 'Lerine erişim belirteçleri almasını sağlamak için **iki** seçenek sunar:
 
-![Tek sayfalı uygulamalar](./media/scenarios/spa-app.svg)
+- [OAuth 2,0 yetkilendirme kodu akışı (PKCE ile)](./v2-oauth2-auth-code-flow.md). Yetkilendirme kodu akışı, uygulamanın **kimlik** belirteçleri için bir yetkilendirme kodu gönderip, korunan API 'leri aramak için gereken kimliği doğrulanmış kullanıcı ve **erişim** belirteçlerini temsil etmesine olanak tanır. Buna ek olarak, kullanıcılar adına bu kullanıcılarla etkileşime gerek kalmadan kaynaklara uzun süreli erişim sağlayan **yenileme** belirteçlerini döndürür. Bu, **Önerilen** yaklaşımdır.
+
+![Tek sayfalı uygulamalar-kimlik doğrulama](./media/scenarios/spa-app-auth.svg)
+
+- [OAuth 2,0 örtük akış](./v2-oauth2-implicit-grant-flow.md). Örtük verme akışı, uygulamanın **kimlik** ve **erişim** belirteçleri almasına izin verir. Yetkilendirme kodu akışından farklı olarak, örtük verme akışı bir **yenileme belirteci**döndürmez.
+
+![Tek sayfalı uygulamalar-örtük](./media/scenarios/spa-app.svg)
 
 Bu kimlik doğrulama akışı, elektron ve tepki verme gibi platformlar arası JavaScript çerçeveleri kullanan uygulama senaryoları içermez. Yerel platformlarla etkileşim için daha fazla yetenek gerektirir.
 
@@ -47,9 +53,9 @@ Bu kimlik doğrulama akışı, elektron ve tepki verme gibi platformlar arası J
 
 Uygulamanız için bu senaryoyu etkinleştirmek üzere şunları yapmanız gerekir:
 
-* Azure Active Directory (Azure AD) ile uygulama kaydı. Bu kayıt, örtük akışı etkinleştirmeyi ve belirteçlerin döndürüldüğü yeniden yönlendirme URI 'sini ayarlamayı içerir.
+* Azure Active Directory (Azure AD) ile uygulama kaydı. Kayıt adımları örtük verme akışı ve yetkilendirme kodu akışı arasında farklılık gösterir.
 * Uygulama KIMLIĞI gibi kayıtlı uygulama özellikleriyle uygulama yapılandırması.
-* Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak oturum açma ve belirteçleri alma için kimlik doğrulama akışını yapın.
+* Oturum açmak ve belirteçleri almak üzere kimlik doğrulama akışını yapmak için JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı 'nı kullanma.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

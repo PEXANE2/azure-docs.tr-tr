@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053239"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278590"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
@@ -25,7 +25,7 @@ Hazırlanan dağıtım, etki alanlarınızı kesmeden önce Azure Multi-Factor A
 -  Kimlik doğrulaması için akıllı kartlar kullanıyorsunuz. 
 -  Geçerli sunucunuz yalnızca Federasyon özelliklerini sunmaktadır.
 
-Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavuzumuzu incelemenizi öneririz. Daha fazla bilgi için, [Azure Active Directory hibrit kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn#comparing-methods)içindeki "metotları karşılaştırma" tablosuna bakın.
+Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavuzumuzu incelemenizi öneririz. Daha fazla bilgi için, [Azure Active Directory hibrit kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](./choose-ad-authn.md#comparing-methods)içindeki "metotları karşılaştırma" tablosuna bakın.
 
 Özelliğe genel bir bakış için bu "Azure Active Directory: hazırlanan dağıtım nedir?" öğesini görüntüleyin. video
 
@@ -33,7 +33,7 @@ Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavu
 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 -   Federasyon etki alanları içeren bir Azure Active Directory (Azure AD) kiracınız vardır.
 
@@ -91,7 +91,7 @@ Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
 
 Hazırlanan dağıtım kullanarak *Parola karması eşitlemesini* test etmek için, sonraki bölümde yer aldığı ön iş yönergelerini izleyin.
 
-Hangi PowerShell cmdlet 'lerinin kullanılacağı hakkında daha fazla bilgi için bkz. [Azure AD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Hangi PowerShell cmdlet 'lerinin kullanılacağı hakkında daha fazla bilgi için bkz. [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
 ## <a name="pre-work-for-password-hash-sync"></a>Parola karması eşitleme için önceden çalışma
 
@@ -225,7 +225,7 @@ Oturum açmayı *Parola karması eşitleme* veya *geçişli kimlik doğrulaması
 
 1. [Azure AD oturum açma etkinlik raporunda](../reports-monitoring/concept-sign-ins.md) userPrincipalName ile filtreleyerek oturum açma 'nın başarıyla göründüğünden emin olun.
 
-   Seçili hazırlanmış dağıtım kullanıcıları için Active Directory Federasyon Hizmetleri (AD FS) (AD FS) üzerinde hala gerçekleşen Kullanıcı oturum açma işlemlerini izlemek için, [AD FS sorun giderme: olaylar ve günlüğe kaydetme](https://docs.microsoft.com/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events)bölümündeki yönergeleri izleyin. Bu üçüncü taraf Federasyon sağlayıcılarında bunu nasıl denetlayacağına ilişkin satıcı belgelerine bakın.
+   Seçili hazırlanmış dağıtım kullanıcıları için Active Directory Federasyon Hizmetleri (AD FS) (AD FS) üzerinde hala gerçekleşen Kullanıcı oturum açma işlemlerini izlemek için, [AD FS sorun giderme: olaylar ve günlüğe kaydetme](/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events)bölümündeki yönergeleri izleyin. Bu üçüncü taraf Federasyon sağlayıcılarında bunu nasıl denetlayacağına ilişkin satıcı belgelerine bakın.
 
 ## <a name="remove-a-user-from-staged-rollout"></a>Bir kullanıcıyı hazırlanan piyasaya çıkarma
 
@@ -243,7 +243,7 @@ Y: Hayır, bu özellik, Federasyon 'dan bulut kimlik doğrulamasına geçiş yap
 
 **S: PowerShell 'i, hazırlanan dağıtım gerçekleştirmek için kullanabilir miyim?**
 
-C: Evet. PowerShell kullanarak hazırlanan dağıtımı gerçekleştirme hakkında bilgi edinmek için bkz. [Azure AD önizleme](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+C: Evet. PowerShell kullanarak hazırlanan dağıtımı gerçekleştirme hakkında bilgi edinmek için bkz. [Azure AD önizleme](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure AD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

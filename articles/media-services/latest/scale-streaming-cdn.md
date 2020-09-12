@@ -9,15 +9,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: cd2b9848ef1358c1aeaaed43e55d9914ac701564
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267114"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291288"
 ---
 # <a name="stream-content-with-cdn-integration"></a>CDN tümleştirmesi ile içerik akışı
 
@@ -78,7 +78,7 @@ Bu hedefe ulaşmak için, bir akış uç noktası (Origin) ve CDN 'nin el ile bi
 - Media Services kaynağı, bir sonraki nesneyi önceden getirme için CDN 'e bildirmek üzere "zeka" (Origin-yardım) içermelidir.
 - CDN, önceden getirme ve önbelleğe alma (CDN-önceden getirme bölümü) yapar. CDN 'nin bir önceden getirme veya düzenli getirme, 404 yanıtlarını işleme ve sonsuz önceden getirme döngüsünden kaçınmak için bir yol olduğunu bildirmek üzere "zeka" sahip olması gerekir.
 
-### <a name="benefits"></a>Avantajlar
+### <a name="benefits"></a>Yararları
 
 *Kaynak-yardım CDN-önceden getirme* özelliğinin avantajları şunları içerir:
 

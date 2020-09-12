@@ -67,7 +67,7 @@ npm install requestretry request --save
 
 Bu kod parçacıkları, Node.js için Soru-Cevap Oluşturma REST API 'Leri ile aşağıdakilerin nasıl yapılacağını gösterir:
 
-* [Bilgi bankası oluşturma](#create-a-knowledge-base)
+* [Bilgi Bankası oluşturma](#create-a-knowledge-base)
 * [Bilgi bankasını değiştirme](#replace-a-knowledge-base)
 * [Bilgi bankası yayımlama](#publish-a-knowledge-base)
 * [Bilgi bankasını silme](#delete-a-knowledge-base)

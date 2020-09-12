@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a16e989a6da8daa4a290c7eaa4363eef09c9749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1111b56a08343f1e12c3b2d582e350907ab37b46
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356347"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276040"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Azure AD Connect eşitlemede bir özniteliğin sorunlarını giderme
 
@@ -80,13 +80,13 @@ ms.locfileid: "85356347"
 * Benzer şekilde, **Azure Active Directory bağlayıcı alanı** nesnesini görüntüleyebilir ve **meta** veri deposundaki öznitelik akışını **bağlayıcı alanına** görüntülemek için **Önizleme** oluşturabilir ve bunun tersini yapabilir. bu şekilde, bir özniteliğin neden eşitlenmediğini inceleyebilirsiniz.
 
 ## <a name="recommended-documents"></a>**Önerilen Belgeler**
-* [Azure AD Connect eşitleme: teknik kavramlar](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Azure AD Connect eşitleme: mimariyi anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Azure AD Connect eşitleme: bildirime dayalı sağlamayı anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Azure AD Connect eşitleme: bildirim temelli sağlama Ifadelerini anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
-* [Azure AD Connect eşitleme: Varsayılan yapılandırmayı anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Azure AD Connect eşitleme: kullanıcıları, grupları ve kişileri anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Azure AD Connect eşitleme: gölge öznitelikleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect eşitleme: teknik kavramlar](./how-to-connect-sync-technical-concepts.md)
+* [Azure AD Connect eşitleme: mimariyi anlama](./concept-azure-ad-connect-sync-architecture.md)
+* [Azure AD Connect eşitleme: bildirime dayalı sağlamayı anlama](./concept-azure-ad-connect-sync-declarative-provisioning.md)
+* [Azure AD Connect eşitleme: bildirim temelli sağlama Ifadelerini anlama](./concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
+* [Azure AD Connect eşitleme: Varsayılan yapılandırmayı anlama](./concept-azure-ad-connect-sync-default-configuration.md)
+* [Azure AD Connect eşitleme: kullanıcıları, grupları ve kişileri anlama](./concept-azure-ad-connect-sync-user-and-contacts.md)
+* [Azure AD Connect eşitleme: gölge öznitelikleri](./how-to-connect-syncservice-shadow-attributes.md)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

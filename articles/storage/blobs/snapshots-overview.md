@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8a1c61b77ab799cead319bfaf6cfa7ebd6af431b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab4c152f30ab96fe5e221a605a2339c773e32547
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230342"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295418"
 ---
 # <a name="blob-snapshots"></a>Blob anlık görüntüleri
 
@@ -90,25 +90,25 @@ Aşağıdaki senaryolarda, blob katmanı açıkça ayarlanmamışsa bir Blok Blo
 
 Senaryo 1 ' de, anlık görüntü alındıktan sonra temel blob güncelleştirilmedi, bu nedenle ücretler yalnızca 1, 2 ve 3 benzersiz bloklar için ücretlendirilir.
 
-![Temel blob ve anlık görüntüdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 1](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
+![Temel blob ve anlık görüntüdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 1.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>2\. Senaryo
 
 Senaryo 2 ' de, temel blob güncelleştirildi, ancak anlık görüntü yok. 2. blok güncelleştirildi ve aynı verileri ve aynı KIMLIĞI içerse de, anlık görüntüde blok 3 ile aynı değildir. Sonuç olarak, hesap dört blok için ücretlendirilir.
 
-![Temel blob ve anlık görüntüdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 2](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
+![Temel blob ve anlık görüntüdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 2.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>3\. Senaryo
 
 Senaryo 3 ' te, temel blob güncelleştirildi, ancak anlık görüntü yok. Blok 3, temel Blobun içindeki blok 4 ile değiştirilmiştir, ancak anlık görüntü hala blok 3 ' ü yansıtır. Sonuç olarak, hesap dört blok için ücretlendirilir.
 
-![Temel blob ve anlık görüntüdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 3](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
+![Temel blob ve anlık görüntüdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 3.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>4\. Senaryo
 
 Senaryo 4 ' te, temel blob tamamen güncelleştirilmiştir ve özgün bloklarından hiçbirini içermez. Sonuç olarak, hesap tüm sekiz benzersiz blok için ücretlendirilir.
 
-![Temel blob ve anlık görüntüdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 4](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+![Temel blob ve anlık görüntüdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 4.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
 
 > [!TIP]
 > Tüm Blobun üzerine yazacak yöntemlerin çağrılmasını önleyin ve bunun yerine maliyetleri düşük tutmak için ayrı blokları güncelleştirin.
@@ -128,6 +128,10 @@ Aşağıdaki tabloda, yeni katmana taşındığında bir blob veya anlık görü
 | Anlık görüntü | Yeni katmandaki anlık görüntü ve orijinal katmandaki temel blob ve diğer anlık görüntüdeki tüm benzersiz bloklar. <sup>1</sup> |
 
 <sup>1</sup> Özgün katmanlarından taşınmayan başka bir önceki sürüm veya anlık görüntü varsa, bu sürümler veya anlık görüntüler, [BLOB katmanı açıkça ayarlanmamışsa faturalandırma](#billing-when-the-blob-tier-has-not-been-explicitly-set)bölümünde açıklandığı gibi, içerdikleri benzersiz blok sayısına göre ücretlendirilir.
+
+Aşağıdaki diyagramda, anlık görüntülere sahip bir blob farklı bir katmana taşındığında nesnelerin nasıl faturalandırılabileceği gösterilmektedir.
+
+:::image type="content" source="media/snapshots-overview/snapshot-billing-tiers.png" alt-text="Anlık görüntülere sahip bir blob açık şekilde katmanlandığı zaman nesnelerin nasıl faturalandırıldığını gösteren diyagram.":::
 
 Bir blob, sürüm veya anlık görüntü için katmanı açıkça ayarlamak geri alınamaz. Bir blobu yeni bir katmana taşır ve sonra özgün katmanına geri taşırsanız, özgün katmandaki diğer nesnelerle blokları paylaşsa bile nesnenin tam içerik uzunluğu için ücretlendirilirsiniz.
 

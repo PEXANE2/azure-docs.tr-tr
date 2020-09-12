@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a14249f28da15f04a214c2a1cb4bd415fb59ce9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356636"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277213"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Önceki bir sürümden en son sürüme yükseltme
 Bu konuda, Azure Active Directory (Azure AD) Connect yüklemenizi en son sürüme yükseltmek için kullanabileceğiniz farklı yöntemler açıklanmaktadır. Azure AD Connect yayınlarıyla kendinizi güncel tutmanız önerilir. Önemli bir yapılandırma değişikliği yaptığınızda, [esnek geçiş](#swing-migration) bölümündeki adımları da kullanabilirsiniz.
@@ -54,7 +54,7 @@ Kullanıma hazır eşitleme kurallarında değişiklik yaptıysanız, bu kuralla
 
 Yerinde yükseltme sırasında, yükseltme tamamlandıktan sonra yürütülmesi gereken belirli eşitleme etkinliklerini (tam Içeri aktarma adımı ve tam eşitleme adımı dahil) gerektiren değişiklikler olabilir. Bu tür etkinlikleri ertelemek için, [yükseltmeden sonra tam eşitlemeyi erteleme](#how-to-defer-full-synchronization-after-upgrade)bölümüne bakın.
 
-Standart olmayan bağlayıcıyla Azure AD Connect kullanıyorsanız (örneğin, genel LDAP Bağlayıcısı ve genel SQL Bağlayıcısı), yerinde yükseltmeden sonra [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) ilgili bağlayıcı yapılandırmasını yenilemeniz gerekir. Bağlayıcı yapılandırmasını yenileme hakkında daha fazla bilgi için, bkz. makale bölümü [bağlayıcı sürümü yayın geçmişi-sorun giderme](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting). Yapılandırmayı yenilemeyin, içeri ve dışarı aktarma çalıştırma adımları bağlayıcı için doğru çalışmaz. Uygulama olay günlüğünde, *"AAD bağlayıcı yapılandırmasında derleme sürümü (" X.X.xxx) ile aşağıdaki hatayı alırsınız. X ") gerçek sürümden (" X.X.XXX) daha eski. X ")," C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll ".*
+Standart olmayan bağlayıcıyla Azure AD Connect kullanıyorsanız (örneğin, genel LDAP Bağlayıcısı ve genel SQL Bağlayıcısı), yerinde yükseltmeden sonra [Synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) ilgili bağlayıcı yapılandırmasını yenilemeniz gerekir. Bağlayıcı yapılandırmasını yenileme hakkında daha fazla bilgi için, bkz. makale bölümü [bağlayıcı sürümü yayın geçmişi-sorun giderme](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting). Yapılandırmayı yenilemeyin, içeri ve dışarı aktarma çalıştırma adımları bağlayıcı için doğru çalışmaz. Uygulama olay günlüğünde, *"AAD bağlayıcı yapılandırmasında derleme sürümü (" X.X.xxx) ile aşağıdaki hatayı alırsınız. X ") gerçek sürümden (" X.X.XXX) daha eski. X ")," C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll ".*
 
 ## <a name="swing-migration"></a>Swing geçişi
 Karmaşık bir dağıtımınız veya çok sayıda nesneniz varsa, canlı sistemde yerinde yükseltme yapmak pratik olabilir. Bazı müşteriler için, bu işlem birden çok gün alabilir ve bu süre boyunca hiçbir Delta değişikliği işlenmez. Bu yöntemi Ayrıca, yapılandırmanızda önemli değişiklikler yapmayı planladığınızda ve buluta gönderilmeden önce onları denemek istediğinizde de kullanabilirsiniz.
@@ -108,7 +108,7 @@ Bu geçersiz kılmaların yükseltmeden hemen sonra gerçekleşmesini istemediğ
 
    ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
-2. Yükseltme tamamlandıktan sonra, hangi geçersiz kılmaların eklendiğini bulmak için aşağıdaki cmdlet 'i çalıştırın:`Get-ADSyncSchedulerConnectorOverride | fl`
+2. Yükseltme tamamlandıktan sonra, hangi geçersiz kılmaların eklendiğini bulmak için aşağıdaki cmdlet 'i çalıştırın: `Get-ADSyncSchedulerConnectorOverride | fl`
 
    >[!NOTE]
    > Geçersiz kılmalar bağlayıcıya özeldir. Aşağıdaki örnekte, hem şirket içi AD Bağlayıcısı hem de Azure AD bağlayıcısına tam Içeri aktarma adımı ve tam eşitleme adımı eklenmiştir.
@@ -117,7 +117,7 @@ Bu geçersiz kılmaların yükseltmeden hemen sonra gerçekleşmesini istemediğ
 
 3. Eklenen var olan geçersiz kılmaları unutmayın.
    
-4. Rastgele bir bağlayıcıda tam içeri aktarma ve tam eşitleme için geçersiz kılmaları kaldırmak üzere aşağıdaki cmdlet 'i çalıştırın:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+4. Rastgele bir bağlayıcıda tam içeri aktarma ve tam eşitleme için geçersiz kılmaları kaldırmak üzere aşağıdaki cmdlet 'i çalıştırın: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
 
    Tüm bağlayıcılarda geçersiz kılmaları kaldırmak için aşağıdaki PowerShell betiğini yürütün:
 
@@ -128,12 +128,12 @@ Bu geçersiz kılmaların yükseltmeden hemen sonra gerçekleşmesini istemediğ
    }
    ```
 
-5. Scheduler 'ı yeniden başlatmak için aşağıdaki cmdlet 'i çalıştırın:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+5. Scheduler 'ı yeniden başlatmak için aşağıdaki cmdlet 'i çalıştırın: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
    > Gerekli eşitleme adımlarını en erken rahatınız üzerinde yürütmeyi unutmayın. Synchronization Service Manager kullanarak bu adımları el ile yürütebilir veya set-ADSyncSchedulerConnectorOverride cmdlet 'ini kullanarak geçersiz kılmaları geri ekleyebilirsiniz.
 
-Rastgele bir bağlayıcıda tam içeri aktarma ve tam eşitleme için geçersiz kılmaları eklemek üzere aşağıdaki cmdlet 'i çalıştırın:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+Rastgele bir bağlayıcıda tam içeri aktarma ve tam eşitleme için geçersiz kılmaları eklemek üzere aşağıdaki cmdlet 'i çalıştırın:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="troubleshooting"></a>Sorun giderme
 Aşağıdaki bölümde, Azure AD Connect yükseltme sorunuyla karşılaşırsanız kullanabileceğiniz sorun giderme ve bilgiler yer almaktadır.
@@ -144,7 +144,7 @@ Aşağıdaki bölümde, Azure AD Connect yükseltme sorunuyla karşılaşırsan�
 
 ![Hata](./media/how-to-upgrade-previous-version/error1.png)
 
-Bu hata, b891884f-051e-4A83-95af-2544101c9083 tanıtıcısına sahip Azure Active Directory Bağlayıcısı geçerli Azure AD Connect yapılandırmasında bulunmadığından oluşur. Bunun durum olduğunu doğrulamak için bir PowerShell penceresi açın, cmdlet 'ı çalıştırın`Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
+Bu hata, b891884f-051e-4A83-95af-2544101c9083 tanıtıcısına sahip Azure Active Directory Bağlayıcısı geçerli Azure AD Connect yapılandırmasında bulunmadığından oluşur. Bunun durum olduğunu doğrulamak için bir PowerShell penceresi açın, cmdlet 'ı çalıştırın `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
 
 ```
 PS C:\> Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083

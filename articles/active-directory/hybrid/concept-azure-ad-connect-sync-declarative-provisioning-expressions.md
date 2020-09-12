@@ -16,19 +16,19 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245497"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280222"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect eşitleme: bildirim temelli sağlama Ifadelerini anlama
 İlk olarak Forefront Identity Manager 2010 ' de tanıtılan bildirim temelli sağlama üzerinde Azure AD Connect eşitleme derlemeleri. Derlenmiş kod yazmak zorunda kalmadan, tüm kimlik Tümleştirme iş mantığınızı uygulamanıza olanak tanır.
 
 Bildirim temelli sağlamanın önemli bir parçası, öznitelik akışlarında kullanılan ifade dilidir. Kullanılan dil, uygulamalar için Microsoft® Visual Basic® alt kümesidir (VBA). Bu dil Microsoft Office kullanılır ve VBScript deneyimi olan kullanıcılar da bunu tanır. Bildirim temelli sağlama Ifade dili yalnızca işlevleri kullanıyor ve yapılandırılmış bir dil değil. Yöntem veya deyim yok. İşlevler, Express program akışına iç içe geçmiş.
 
-Daha ayrıntılı bilgi için bkz. [Office 2013 için Visual Basic for Applications Dil başvurusuna hoş geldiniz](https://msdn.microsoft.com/library/gg264383.aspx).
+Daha ayrıntılı bilgi için bkz. [Office 2013 için Visual Basic for Applications Dil başvurusuna hoş geldiniz](/office/vba/api/overview/language-reference).
 
 Öznitelikler kesin olarak türdedir. Bir işlev yalnızca doğru türdeki öznitelikleri kabul eder. Ayrıca büyük/küçük harfe duyarlıdır. Her iki işlev adı ve öznitelik adı uygun bir büyük harfe sahip olmalı veya bir hata oluşur.
 
@@ -82,10 +82,10 @@ Aşağıdaki işleçler kullanılabilir:
 ## <a name="multi-valued-attributes"></a>Çoklu değerli öznitelikler
 İşlevler hem tek değerli hem de birden çok değerli öznitelikler üzerinde çalışabilir. Çoklu değerli özniteliklerde, işlev her değer üzerinde çalışır ve her değere aynı işlevi uygular.
 
-Örnek:  
-`Trim([proxyAddresses])`ProxyAddress özniteliğinde her bir değerin kırpılıp bir bölümünü yapın.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`İle her değer için @-sign etki alanını ile değiştirin @contoso.com .  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`SIP-Address ' i bulun ve değerlerden kaldırın.
+Örneğin:  
+`Trim([proxyAddresses])` ProxyAddress özniteliğinde her bir değerin kırpılıp bir bölümünü yapın.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"` İle her değer için @-sign etki alanını ile değiştirin @contoso.com .  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` SIP-Address ' i bulun ve değerlerden kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Bildirim temelli sağlamayı anlamak](concept-azure-ad-connect-sync-declarative-provisioning.md)için yapılandırma modeli hakkında daha fazla bilgi edinin.
@@ -100,4 +100,3 @@ Aşağıdaki işleçler kullanılabilir:
 **Başvuru konuları**
 
 * [Azure AD Connect Sync: Işlevler başvurusu](reference-connect-sync-functions-reference.md)
-

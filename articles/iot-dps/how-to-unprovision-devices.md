@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 8a3677ba285f5b02407ca3d176979bf6c016ef9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974845"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294399"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma 
 
@@ -57,22 +57,10 @@ Bir kayıt grubu aracılığıyla sağlanmış cihazların listesini görmek iç
 Kayıt gruplarıyla, dikkate alınması gereken iki senaryo vardır:
 
 - Bir kayıt grubu aracılığıyla sağlanmış tüm cihazların sağlanması için:
-  1. İmza sertifikasını kara listeye eklemek için kayıt grubunu devre dışı bırakın. 
+  1. İmzalama sertifikasına izin vermemek için kayıt grubunu devre dışı bırakın. 
   2. Her bir cihazı ilgili IoT Hub 'ının kimlik kayıt defterinden devre dışı bırakmak veya silmek için, bu kayıt grubu için sağlanan cihazların listesini kullanın. 
   3. Tüm cihazları ilgili IoT Hub 'larından devre dışı bıraktıktan veya sildikten sonra, isteğe bağlı olarak kayıt grubunu silebilirsiniz. Bu durumda, kayıt grubunu silerseniz ve bir veya daha fazla cihazın sertifika zincirinde daha yüksek bir imzalama sertifikası için etkinleştirilmiş bir kayıt grubu varsa, bu cihazların yeniden kaydolabileceği farkında olun. 
 
 - Bir kayıt grubundan tek bir cihazı sağlamayı kaldırmak için:
   1. Yaprak (cihaz) sertifikası için devre dışı bir bireysel kayıt oluşturun. Bu, bu cihaz için sağlama hizmetine erişimi iptal ederken, kayıt grubunun imzalama sertifikasına sahip diğer cihazlara erişim izni almaya devam eder. Cihazın devre dışı bırakılmış kaydını silmeyin. Bunun yapılması, cihazın kayıt grubuna yeniden kaydolmasını sağlar. 
   2. Cihazın sağlandığı IoT Hub 'ını bulmak için bu kayıt grubu için sağlanan cihazların listesini kullanın ve bu hub 'ın kimlik kayıt defterinde devre dışı bırakın ya da silin. 
-  
-  
-
-
-
-
-
-
-
-
-
-

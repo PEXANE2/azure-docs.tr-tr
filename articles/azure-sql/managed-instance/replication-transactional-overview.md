@@ -1,7 +1,7 @@
 ---
 title: İşlem çoğaltması
 titleSuffix: Azure SQL Managed Instance
-description: Azure SQL yönetilen örneği ile SQL Server işlemsel çoğaltma kullanma hakkında bilgi edinin.
+description: Azure SQL yönetilen örneği (Önizleme) ile SQL Server işlemsel çoğaltma kullanma hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: data-movement
@@ -12,14 +12,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 95fc877636fe1d3dac466dc32fc49cee56f35185
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920135"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290523"
 ---
-# <a name="transactional-replication-with-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği ile işlemsel çoğaltma
+# <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL yönetilen örneği (Önizleme) ile işlemsel çoğaltma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 İşlem çoğaltma, Azure SQL yönetilen örneği 'nin bir özelliğidir ve Azure SQL yönetilen örneğindeki bir tablodan veya bir SQL Server örneğindeki verileri uzak veritabanlarına yerleştirilmiş tablolara çoğaltmanıza olanak tanıyan SQL Server. Bu özellik, farklı veritabanlarındaki birden çok tabloyu eşitlemenize olanak tanır. 
@@ -43,7 +43,7 @@ Aşağıdaki resimde gösterildiği gibi, işlemsel çoğaltma 'daki anahtar bil
 
 ![SQL veritabanı ile çoğaltma](./media/replication-transactional-overview/replication-to-sql-database.png)
 
-| Role | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
+| Rol | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
 | **Publisher** | Hayır | Yes |
 | **Dağıtım** | Hayır | Yes|

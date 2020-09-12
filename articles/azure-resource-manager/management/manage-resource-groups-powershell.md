@@ -3,14 +3,14 @@ title: Kaynak gruplarını yönetme-Azure PowerShell
 description: Kaynak gruplarınızı Azure Resource Manager kullanarak yönetmek için Azure PowerShell kullanın. Kaynak grupları oluşturma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir.
 author: mumian
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 09/01/2020
 ms.author: jgao
-ms.openlocfilehash: 8457925479e3c28e062f87dbb830969d66523ec7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9519b9a5dec898a0905310de02ef9fad3d282a65
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827085"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290540"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Resource Manager kaynak gruplarını yönetme
 
@@ -31,15 +31,10 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir k
 
 ## <a name="create-resource-groups"></a>Kaynak grupları oluşturma
 
-Aşağıdaki PowerShell betiği bir kaynak grubu oluşturur ve ardından kaynak grubunu gösterir.
+Aşağıdaki PowerShell betiği bir kaynak grubu oluşturur.
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-
-Get-AzResourceGroup -Name $resourceGroupName
+New-AzResourceGroup -Name demoResourceGroup -Location westus
 ```
 
 ## <a name="list-resource-groups"></a>Kaynak gruplarını listeleme

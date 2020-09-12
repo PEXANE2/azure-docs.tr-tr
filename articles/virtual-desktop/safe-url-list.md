@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135870"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291118"
 ---
 # <a name="safe-url-list"></a>Güvenli URL listesi
 
@@ -60,7 +60,7 @@ Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağl�
 >
 >1. Sanal makinelerinizi Windows sanal masaüstü ana bilgisayar havuzuna kaydedin.
 >2. **Olay Görüntüleyicisi**'ni açın, sonra **Windows günlükleri**  >  **uygulaması**  >  **WVD-Agent** ' a gidin ve olay kimliği 3701 ' i arayın.
->3. Olay KIMLIĞI 3701 altında bulduğunuz URL 'Leri beyaz listeye ekleyin. Olay KIMLIĞI 3701 altındaki URL 'Ler bölgeye özeldir. Sanal makinelerinizi dağıtmak istediğiniz her bölge için ilgili URL 'lerle engellemeyi kaldırma işlemini tekrarlamanız gerekir.
+>3. Olay KIMLIĞI 3701 altında bulduğunuz URL 'Lerin engelini kaldırın. Olay KIMLIĞI 3701 altındaki URL 'Ler bölgeye özeldir. Sanal makinelerinizi dağıtmak istediğiniz her bölge için ilgili URL 'lerle engellemeyi kaldırma işlemini tekrarlamanız gerekir.
 
 ## <a name="remote-desktop-clients"></a>Uzak Masaüstü istemcileri
 

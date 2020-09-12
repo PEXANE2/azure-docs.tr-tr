@@ -84,7 +84,7 @@ Yüz algılayıcısı parçalanma tekniklerini (meta verilerin zaman tabanlı ö
 ```
 
 #### <a name="attribute-descriptions"></a>Öznitelik açıklamaları
-| Öznitelik adı | Açıklama |
+| Öznitelik adı | Description |
 | --- | --- |
 | Mod |Hızlı işleme hızı, ancak daha az doğru (varsayılan).|
 
@@ -159,7 +159,7 @@ Aşağıdaki JSON çıktısı örneği kesildi.
 
 
 #### <a name="attribute-descriptions"></a>Öznitelik açıklamaları
-| Öznitelik adı | Açıklama |
+| Öznitelik adı | Description |
 | --- | --- |
 | Mod |Yüzler: yalnızca yüz algılama.<br/>Perceemotion: her yüz algılama için duygu tanıma 'ı bağımsız olarak döndürün.<br/>Aggregateemotion: çerçevedeki tüm yüzler için Ortalama duygu tanıma değeri döndürür. |
 | AggregateEmotionWindowMs |AggregateEmotion modunu seçtiyseniz kullanın. Her toplama sonucunu oluşturmak için kullanılan videonun milisaniye cinsinden uzunluğunu belirtir. |
@@ -525,7 +525,7 @@ namespace FaceDetection
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

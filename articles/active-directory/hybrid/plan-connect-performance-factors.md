@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e2c09bcd43b08778324a32cc052fad5b85714c4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253503"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279593"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Azure AD Connect performansını etkileyen faktörler
 
@@ -43,7 +43,7 @@ Aşağıdaki diyagramda, birden çok orman desteklenmesine karşın, tek bir orm
 
 ![Azureadconnentınternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-Sağlama altyapısı her bir Active Directory ormanına ve Azure AD 'ye bağlanır. Her dizinden bilgi okuma işlemi Içeri aktarma olarak adlandırılır. Dışarı aktarma işlemi, dizinleri sağlama altyapısından güncelleştirmek anlamına gelir. Eşitleme, nesnelerin sağlama altyapısının içinde nasıl akacağı kurallarını değerlendirir. Daha ayrıntılı bir bakış için, [Azure AD Connect eşitleme: mimariyi anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)bölümüne başvurabilirsiniz.
+Sağlama altyapısı her bir Active Directory ormanına ve Azure AD 'ye bağlanır. Her dizinden bilgi okuma işlemi Içeri aktarma olarak adlandırılır. Dışarı aktarma işlemi, dizinleri sağlama altyapısından güncelleştirmek anlamına gelir. Eşitleme, nesnelerin sağlama altyapısının içinde nasıl akacağı kurallarını değerlendirir. Daha ayrıntılı bir bakış için, [Azure AD Connect eşitleme: mimariyi anlama](./concept-azure-ad-connect-sync-architecture.md)bölümüne başvurabilirsiniz.
 
 Azure AD Connect, Active Directory Azure AD 'ye eşitlemeye izin vermek için aşağıdaki hazırlama bölgelerini, kuralları ve süreçlerini kullanır:
 
@@ -52,7 +52,7 @@ Azure AD Connect, Active Directory Azure AD 'ye eşitlemeye izin vermek için a�
 * **Eşitleme kuralları** -hangi nesnelerin (yansıtılmış) veya MV 'daki nesnelere bağlı (birleştirilmiş) olduğuna karar verir. Eşitleme kuralları ayrıca hangi öznitelik değerlerinin dizine ve dizinlerden/veya bu dizinlere dönüştürüleceğini de karar verir.
 * **Çalıştırma profilleri** -, hazırlama alanı ve bağlı dizinler arasındaki eşitleme kurallarına göre nesneleri ve bunların öznitelik değerlerini kopyalamanın işlem adımlarını sağlar.
 
-Sağlama altyapısının performansını iyileştirmek için farklı çalıştırma profilleri vardır. Çoğu kuruluş, varsayılan zamanlamaları kullanır ve normal işlemler için profilleri çalıştırır, ancak bazı kuruluşların yaygın olmayan durumlar için [zamanlamayı değiştirmek](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) veya diğer çalıştırma profillerini kullanmak zorunda olması gerekebilir. Aşağıdaki çalıştırma profilleri kullanılabilir:
+Sağlama altyapısının performansını iyileştirmek için farklı çalıştırma profilleri vardır. Çoğu kuruluş, varsayılan zamanlamaları kullanır ve normal işlemler için profilleri çalıştırır, ancak bazı kuruluşların yaygın olmayan durumlar için [zamanlamayı değiştirmek](./how-to-connect-sync-feature-scheduler.md) veya diğer çalıştırma profillerini kullanmak zorunda olması gerekebilir. Aşağıdaki çalıştırma profilleri kullanılabilir:
 
 ### <a name="initial-sync-profile"></a>İlk eşitleme profili
 
@@ -109,7 +109,7 @@ Eşitleme işlemi çalışma zamanı, aşağıdaki performans özelliklerine sah
 
 İçeri aktarmak istediğiniz Active Directory topolojisinin boyutu, performansı etkileyen bir faktörün ve sağlama altyapısının iç bileşenlerinin zaman aldığı sayıdır.
 
-Nesneleri eşitlenecek şekilde azaltmak için [filtreleme](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) kullanılmalıdır. Bu, gereksiz nesnelerin işlenmesini ve Azure AD 'ye verilmesini engeller. Tercih sırasına göre, filtreleme için aşağıdaki teknikler kullanılabilir:
+Nesneleri eşitlenecek şekilde azaltmak için [filtreleme](./how-to-connect-sync-configure-filtering.md) kullanılmalıdır. Bu, gereksiz nesnelerin işlenmesini ve Azure AD 'ye verilmesini engeller. Tercih sırasına göre, filtreleme için aşağıdaki teknikler kullanılabilir:
 
 
 
@@ -130,7 +130,7 @@ Active Directory CS 'deki pek çok kalıcı [ayırıcı](concept-azure-ad-connec
 
 ### <a name="attribute-flows"></a>Öznitelik akışları
 
-Öznitelik akışları, nesnelerin öznitelik değerlerini bir bağlı dizinden başka bir bağlı dizine kopyalama veya dönüştürme işlemidir. Eşitleme kurallarının bir parçası olarak tanımlanırlar. Örneğin, bir kullanıcının telefon numarası Active Directory değiştirildiğinde, Azure AD 'deki telefon numarası güncelleştirilecektir. Kuruluşlar, çeşitli gereksinimleri paketleyebileceği [öznitelik akışlarını değiştirebilir](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-change-the-configuration) . Mevcut öznitelik akışlarını değiştirmeden önce kopyalamanız önerilir.
+Öznitelik akışları, nesnelerin öznitelik değerlerini bir bağlı dizinden başka bir bağlı dizine kopyalama veya dönüştürme işlemidir. Eşitleme kurallarının bir parçası olarak tanımlanırlar. Örneğin, bir kullanıcının telefon numarası Active Directory değiştirildiğinde, Azure AD 'deki telefon numarası güncelleştirilecektir. Kuruluşlar, çeşitli gereksinimleri paketleyebileceği [öznitelik akışlarını değiştirebilir](./how-to-connect-sync-change-the-configuration.md) . Mevcut öznitelik akışlarını değiştirmeden önce kopyalamanız önerilir.
 
 Bir öznitelik değerinin farklı bir özniteliğe akmasını sağlamak gibi basit yeniden yönlendirmeler, malzeme performansı olumsuz bir etkiye sahip değildir. Azure AD 'de telefon numarası Active Directory bir yeniden yönlendirmeye örnek olarak bir cep telefonu numarası akar.
 
@@ -181,7 +181,7 @@ Azure AD Connect uygulamanızın performansını iyileştirmek için aşağıdak
 
 
 - Azure AD Connect sunucusu için uygulama boyutunuzu temel alarak [Önerilen donanım yapılandırmasını](how-to-connect-install-prerequisites.md) kullanın.
-- Büyük ölçekli dağıtımlarda Azure AD Connect yükseltirken, en az kapalı kalma süresi ve en iyi güvenilirlik olduğundan emin olmak için [esnek geçiş yöntemini](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration)kullanmayı düşünün. 
+- Büyük ölçekli dağıtımlarda Azure AD Connect yükseltirken, en az kapalı kalma süresi ve en iyi güvenilirlik olduğundan emin olmak için [esnek geçiş yöntemini](./how-to-upgrade-previous-version.md#swing-migration)kullanmayı düşünün. 
 - En iyi yazma performansı için SQL veritabanı için SSD kullanın.
 - Active Directory kapsamını yalnızca Azure AD 'de, etki alanı, OU veya öznitelik filtrelemesi kullanılarak sağlanması gereken nesneleri içerecek şekilde filtreleyin.
 - Varsayılan öznitelik akış kurallarını değiştirmeniz gerekiyorsa, önce kuralı kopyalayın, sonra kopyayı değiştirin ve özgün kuralı devre dışı bırakın. Tam eşitlemeyi yeniden çalıştırmayı unutmayın.

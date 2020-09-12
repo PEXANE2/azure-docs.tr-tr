@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde statik bir genel IP adres
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: dbab9df3acf7de801a4e75502863fff698232458
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: be4856beac69d11de12ec764f313fa59f3b24e9f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852569"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290557"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde statik bir genel IP adresi ile giriş denetleyicisi oluşturma
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> Yukarıdaki komutlar, AKS kümenizi silerseniz silinecek bir IP adresi oluşturur. Alternatif olarak, AKS kümeinizden ayrı olarak yönetilebilen farklı bir kaynak grubunda bir IP adresi oluşturabilirsiniz. Farklı bir kaynak grubunda bir IP adresi oluşturursanız, AKS kümesi tarafından kullanılan hizmet sorumlusunun, *ağ katılımcısı*gibi diğer kaynak grubu için izin Temsilcili olduğundan emin olun.
+> Yukarıdaki komutlar, AKS kümenizi silerseniz silinecek bir IP adresi oluşturur. Alternatif olarak, AKS kümeinizden ayrı olarak yönetilebilen farklı bir kaynak grubunda bir IP adresi oluşturabilirsiniz. Farklı bir kaynak grubunda bir IP adresi oluşturursanız, AKS kümesi tarafından kullanılan hizmet sorumlusunun, *ağ katılımcısı*gibi diğer kaynak grubu için izin Temsilcili olduğundan emin olun. Daha fazla bilgi için bkz. [AKS yük dengeleyicisiyle statik bir genel IP adresi ve DNS etiketi kullanma][aks-static-ip].
 
 Şimdi *NGINX-ingress* grafiğini Held ile dağıtın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
 
@@ -483,3 +483,4 @@ Aşağıdakileri de yapabilirsiniz:
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [client-source-ip]: concepts-network.md#ingress-controllers
 [install-azure-cli]: /cli/azure/install-azure-cli
+[aks-static-ip]: static-ip.md

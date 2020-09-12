@@ -351,5 +351,5 @@ Bu noktada, bir Media Services uygulaması geliştirmeye başlamaya başlayabili
 
 Ayrıca bkz. [.NET ile Media Services iş bildirimlerini izlemek Için Azure Web kancalarını kullanma](media-services-dotnet-check-job-progress-with-webhooks.md). 
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

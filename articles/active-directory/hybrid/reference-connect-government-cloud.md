@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39acc0373f5748f57f4fef5a5cee5fb038071523
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080190"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276193"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Kamu Bulutu için karma kimlik konuları
 
@@ -25,7 +25,7 @@ Bu makalede, karma bir ortamı Microsoft Azure Kamu bulutu ile tümleştirmeyle 
 > [!NOTE]
 > Şirket içi Microsoft Azure Active Directory (Azure AD) ortamını Azure Kamu bulutu ile bütünleştirmek için en son [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)sürümüne yükseltmeniz gerekir.
 
-Savunma uç noktalarının Birleşik Devletler kamu departmanı tam listesi için [belgelere](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints)bakın.
+Savunma uç noktalarının Birleşik Devletler kamu departmanı tam listesi için [belgelere](/office365/enterprise/office-365-u-s-government-dod-endpoints)bakın.
 
 ## <a name="azure-ad-pass-through-authentication"></a>Azure AD geçişli kimlik doğrulaması
 

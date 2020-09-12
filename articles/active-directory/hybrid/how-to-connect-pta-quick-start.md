@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3aad90a3894d3abc1a850ae21946e8895619a188
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849883"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280188"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory geçişli kimlik doğrulaması: hızlı başlangıç
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) geçişli kimlik doğrulaması, kullanıcılar
 >AD FS (veya diğer Federasyon teknolojileri) üzerinden doğrudan kimlik doğrulamaya geçiş yapıyorsanız, [burada](https://aka.ms/adfstoPTADPDownload)yayımlanan ayrıntılı dağıtım kılavuzumuzu izlemenizi kesinlikle öneririz.
 
 >[!NOTE]
->Azure Kamu bulutu ile geçiş kimlik doğrulamasını dağıtıyorsanız, [Azure Kamu Için karma kimlik konularını](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)görüntüleyin.
+>Azure Kamu bulutu ile geçiş kimlik doğrulamasını dağıtıyorsanız, [Azure Kamu Için karma kimlik konularını](./reference-connect-government-cloud.md)görüntüleyin.
 
 Kiracınızda geçişli kimlik doğrulaması dağıtmak için aşağıdaki yönergeleri izleyin:
 
@@ -42,12 +42,12 @@ Kiracınızda geçişli kimlik doğrulaması dağıtmak için aşağıdaki yöne
 Aşağıdaki önkoşulların yerinde olduğundan emin olun.
 
 >[!IMPORTANT]
->Bir güvenlik açısından, Yöneticiler, PTA aracısını çalıştıran sunucuyu bir etki alanı denetleyicisi gibi kabul etmelidir.  PTA aracı sunucuları, [etki alanı denetleyicilerinin saldırıya karşı güvenliğini sağlamak](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) için özetlenen aynı satırlar üzerinde sağlamlaştırılmış olmalıdır
+>Bir güvenlik açısından, Yöneticiler, PTA aracısını çalıştıran sunucuyu bir etki alanı denetleyicisi gibi kabul etmelidir.  PTA aracı sunucuları, [etki alanı denetleyicilerinin saldırıya karşı güvenliğini sağlamak](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) için özetlenen aynı satırlar üzerinde sağlamlaştırılmış olmalıdır
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory Yönetim merkezinde
 
-1. Azure AD kiracınızda yalnızca bulutta yer alan bir genel yönetici hesabı oluşturun. Bu şekilde, şirket içi hizmetleriniz başarısız olması veya kullanılamaz hale gelmesi için kiracınızın yapılandırmasını yönetebilirsiniz. [Yalnızca bulut genel yönetici hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımın tamamlanması, kiracınızdan kilitlenmemesini sağlamak açısından önemlidir.
-2. Azure AD kiracınıza bir veya daha fazla [özel etki alanı adı](../active-directory-domains-add-azure-portal.md) ekleyin. Kullanıcılarınız bu etki alanı adlarından biriyle oturum açabilir.
+1. Azure AD kiracınızda yalnızca bulutta yer alan bir genel yönetici hesabı oluşturun. Bu şekilde, şirket içi hizmetleriniz başarısız olması veya kullanılamaz hale gelmesi için kiracınızın yapılandırmasını yönetebilirsiniz. [Yalnızca bulut genel yönetici hesabı ekleme](../fundamentals/add-users-azure-active-directory.md)hakkında bilgi edinin. Bu adımın tamamlanması, kiracınızdan kilitlenmemesini sağlamak açısından önemlidir.
+2. Azure AD kiracınıza bir veya daha fazla [özel etki alanı adı](../fundamentals/add-custom-domain.md) ekleyin. Kullanıcılarınız bu etki alanı adlarından biriyle oturum açabilir.
 
 ### <a name="in-your-on-premises-environment"></a>Şirket içi ortamınızda
 
@@ -55,12 +55,12 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun.
 2. Önceki adımda tanımlanan sunucuya [Azure AD Connect en son sürümünü](https://www.microsoft.com/download/details.aspx?id=47594) yükler. Zaten Azure AD Connect çalışıyorsa, sürümün 1.1.750.0 veya üzeri olduğundan emin olun.
 
     >[!NOTE]
-    >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0, Parola karması eşitlemeyle ilgili bir sorun var. Parola karması eşitlemesini doğrudan kimlik doğrulamasıyla birlikte _kullanmayı düşünmüyorsanız_ [Azure AD Connect sürüm notlarını](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470)okuyun.
+    >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0, Parola karması eşitlemeyle ilgili bir sorun var. Parola karması eşitlemesini doğrudan kimlik doğrulamasıyla birlikte _kullanmayı düşünmüyorsanız_ [Azure AD Connect sürüm notlarını](./reference-connect-version-history.md)okuyun.
 
 3. Tek başına kimlik doğrulama aracılarını çalıştırabileceğiniz bir veya daha fazla ek sunucuyu (TLS 1,2 etkin Windows Server 2012 R2 veya üstünü çalıştıran) belirler. Bu ek sunucular, oturum açma isteklerinin yüksek kullanılabilirliğini sağlamak için gereklidir. Parolaları doğrulamanız gereken kullanıcılarla aynı Active Directory ormanına ekleyin.
 
     >[!IMPORTANT]
-    >Üretim ortamlarında, kiracınızda en az 3 kimlik doğrulama aracınız çalışıyor olması önerilir. Kiracı başına 40 kimlik doğrulama aracısından oluşan bir sistem limiti vardır. En iyi yöntem olarak, kimlik doğrulama aracılarını çalıştıran tüm sunucuları katman 0 sistemleri olarak değerlendirin (bkz. [başvuru](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+    >Üretim ortamlarında, kiracınızda en az 3 kimlik doğrulama aracınız çalışıyor olması önerilir. Kiracı başına 40 kimlik doğrulama aracısından oluşan bir sistem limiti vardır. En iyi yöntem olarak, kimlik doğrulama aracılarını çalıştıran tüm sunucuları katman 0 sistemleri olarak değerlendirin (bkz. [başvuru](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 4. Sunucularınız ve Azure AD arasında bir güvenlik duvarı varsa, aşağıdaki öğeleri yapılandırın:
    - Kimlik doğrulama aracılarının Azure AD 'ye *giden* istekleri aşağıdaki bağlantı noktaları üzerinden yapabildiğinden emin olun:
@@ -120,7 +120,7 @@ Bu aşamada, kiracınızdaki tüm yönetilen etki alanlarından kullanıcılar d
 Doğrudan kimlik doğrulamayı bir üretim ortamında dağıtmayı planlıyorsanız, ek bağımsız kimlik doğrulama aracılarını yüklemelisiniz. Bu kimlik doğrulama aracılarını, Azure AD Connect çalıştıran sunucu (ler) i _yerine sunucuya_ yükler. Bu kurulum, Kullanıcı oturum açma istekleri için yüksek kullanılabilirlik sağlar.
 
 >[!IMPORTANT]
->Üretim ortamlarında, kiracınızda en az 3 kimlik doğrulama aracınız çalışıyor olması önerilir. Kiracı başına 40 kimlik doğrulama aracısından oluşan bir sistem limiti vardır. En iyi yöntem olarak, kimlik doğrulama aracılarını çalıştıran tüm sunucuları katman 0 sistemleri olarak değerlendirin (bkz. [başvuru](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+>Üretim ortamlarında, kiracınızda en az 3 kimlik doğrulama aracınız çalışıyor olması önerilir. Kiracı başına 40 kimlik doğrulama aracısından oluşan bir sistem limiti vardır. En iyi yöntem olarak, kimlik doğrulama aracılarını çalıştıran tüm sunucuları katman 0 sistemleri olarak değerlendirin (bkz. [başvuru](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 Birden çok geçişli kimlik doğrulama Aracısı yükleme, yüksek kullanılabilirlik sağlar, ancak kimlik doğrulama aracıları arasında belirleyici yük dengeleyiciyi sağlamaz. Kiracınız için kaç kimlik doğrulama Aracısı gerektiğini öğrenmek üzere kiracınızda görmeyi düşündüğünüz oturum açma isteklerinin tepe ve ortalama yükünü göz önünde bulundurun. Bir kıyaslama olarak, tek bir kimlik doğrulama Aracısı standart 4 çekirdekli bir CPU, 16 GB RAM sunucusunda 300 ila 400 kimlik doğrulaması işleyebilir.
 

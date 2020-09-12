@@ -15,12 +15,12 @@ ms.date: 09/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 714fe5d1bdaddac2873194ab066f304e72bdde67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a655f355bb77d937f4daff2f8987769416ebd8c
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358880"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279678"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Hızlı ayarları kullanarak Azure AD Connect ile çalışmaya başlama
 Kimlik doğrulaması için [parola karması eşitleme](how-to-connect-password-hash-synchronization.md) özelliğine ve tek ormanlı bir topolojiye sahipseniz Azure AD Connect **Hızlı Ayarları** kullanılır. **Hızlı Ayarlar** varsayılan seçenek olup yaygın olarak dağıtılan senaryo için kullanılır. Şirket içi dizininizi buluta genişletmek için yalnızca birkaç tıklama yapmanız yeterli.
@@ -42,13 +42,13 @@ Bu adımların nasıl gerçekleştirildiğini [videolar](#videos) bölümünden 
    Bir hatayla karşılaştıysanız ve bağlantı sorunlarınız varsa bkz. [Bağlantı sorunlarını giderme](tshoot-connect-connectivity.md).
 6. AD DS'ye Bağlanma ekranında kuruluş yöneticisi hesabına ilişkin kullanıcı adını ve parolayı girin. Etki alanı bölümünü NetBIOS veya FQDN biçiminde (örneğin, FABRIKAM\yönetici veya fabrikam.com\yönetici) girebilirsiniz. **İleri**’ye tıklayın.  
    ![AD DS'ye Bağlanma](./media/how-to-connect-install-express/connectad.png)
-7. [**Azure AD oturum açma yapılandırması**](plan-connect-user-signin.md#azure-ad-sign-in-configuration) sayfası, yalnızca [önkoşullar](how-to-connect-install-prerequisites.md) bölümündeki [etki alanlarınızı doğrulama](../active-directory-domains-add-azure-portal.md) adımını tamamlamamış olmanız halinde görüntülenir.
+7. [**Azure AD oturum açma yapılandırması**](plan-connect-user-signin.md#azure-ad-sign-in-configuration) sayfası, yalnızca [önkoşullar](how-to-connect-install-prerequisites.md) bölümündeki [etki alanlarınızı doğrulama](../fundamentals/add-custom-domain.md) adımını tamamlamamış olmanız halinde görüntülenir.
    ![Doğrulanmamış etki alanları](./media/how-to-connect-install-express/unverifieddomain.png)  
    Bu sayfayı görüyorsanız **Eklenmedi** ve **Doğrulanmadı** olarak işaretlenen tüm etki alanlarını gözden geçirin. Kullandığınız etki alanlarının Azure AD'de doğrulanmış olduğundan emin olun. Etki alanlarınızı doğruladıktan sonra Yenile simgesine tıklayın.
 8. Yapılandırma için hazır ekranında **Yükle**'ye tıklayın.
    * İsteğe bağlı olarak, Yapılandırma için hazır sayfasında **Start the synchronization process as soon as configuration completes (Yapılandırma tamamlanınca eşitlemeyi başlat)** onay kutusunun işaretini kaldırabilirsiniz. Başka yapılandırmalar (örneğin, [filtreleme](how-to-connect-sync-configure-filtering.md)) gerçekleştirmek istiyorsanız bu onay kutusunun işaretini kaldırmanız gerekir. Bu seçeneğin işaretini kaldırırsanız sihirbaz eşitlemeyi yapılandırır ancak zamanlayıcıyı devre dışı bırakır. [Yükleme sihirbazını yeniden çalıştırarak](how-to-connect-installation-wizard.md) elle etkinleştirmediğiniz sürece çalışmaz.
    * **Yapılandırma tamamlandıktan hemen sonra eşitleme işlemini başlat** onay kutusunu etkin bırakmak, hemen tüm kullanıcıları, grupları ve kişileri Azure AD’ye tam eşitleme işlemini tetikler.
-   * Şirket içi Active Directory'nizde Exchange varsa [**Exchange Karma dağıtımını**](https://technet.microsoft.com/library/jj200581.aspx) da etkinleştirebilirsiniz. Aynı anda hem bulutta ve hem de şirket içinde Exchange posta kutunuzun olmasını istiyorsanız bu seçeneği etkinleştirin.
+   * Şirket içi Active Directory'nizde Exchange varsa [**Exchange Karma dağıtımını**](/exchange/exchange-hybrid) da etkinleştirebilirsiniz. Aynı anda hem bulutta ve hem de şirket içinde Exchange posta kutunuzun olmasını istiyorsanız bu seçeneği etkinleştirin.
      ![Azure AD Connect yapılandırma için hazır](./media/how-to-connect-install-express/readytoconfigure.png)
 9. Yükleme tamamlandığında **Çıkış**'a tıklayın.
 10. Yükleme tamamlandıktan sonra Synchronization Service Manager'ı veya Synchronization Rule Editor'ı kullanmadan önce oturumunuzu kapatıp tekrar açın.
@@ -71,7 +71,7 @@ Yüklemeyle etkinleştirilen özellikler hakkında daha fazla bilgi edinin: [Oto
 
 ## <a name="related-documentation"></a>İlgili belgeler
 
-| Konu başlığı | Bağlantı |
+| Konu | Bağlantı |
 | --- | --- |
 | Azure AD Connect'e genel bakış | [Şirket içi dizinlerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)
 | Özelleştirilmiş ayarları kullanarak yükleme | [Azure AD Connect özel yüklemesi](how-to-connect-install-custom.md) |

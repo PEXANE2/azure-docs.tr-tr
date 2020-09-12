@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c66231bcbdcaeb5371838291f1e6998f9f8bd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2eb656e46ce5e26fca5ae5c094f9b8bb85819caa
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356177"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275785"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: Kullanıcısertifikası özniteliği nedeniyle LargeObject hatalarını Işleme
 
@@ -30,28 +30,28 @@ Azure AD, **userCertificate** özniteliğinde en fazla **15** sertifika değeri 
 
 >*"Sağlanan nesne çok büyük. Bu nesnedeki öznitelik değerlerinin sayısını kırpın. İşlem bir sonraki eşitleme çevriminde yeniden denenecek... "*
 
-LargeObject hatası başka AD özniteliklerinin kaynaklanmış olabilir. Bunun gerçekten userCertificate özniteliği nedeniyle kaynaklanmadığını doğrulamak için, şirket içi AD 'de veya [Synchronization Service Manager meta](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch)veri deposu aramasında nesneye karşı doğrulamanız gerekir.
+LargeObject hatası başka AD özniteliklerinin kaynaklanmış olabilir. Bunun gerçekten userCertificate özniteliği nedeniyle kaynaklanmadığını doğrulamak için, şirket içi AD 'de veya [Synchronization Service Manager meta](./how-to-connect-sync-service-manager-ui-mvsearch.md)veri deposu aramasında nesneye karşı doğrulamanız gerekir.
 
 Kiracınızdaki nesnelerin listesini LargeObject hatalarıyla birlikte almak için aşağıdaki yöntemlerden birini kullanın:
 
- * Kiracınız eşitleme için Azure AD Connect Health etkinleştirilmişse, sağlanan [eşitleme hata raporuna](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync) başvurabilirsiniz.
+ * Kiracınız eşitleme için Azure AD Connect Health etkinleştirilmişse, sağlanan [eşitleme hata raporuna](./how-to-connect-health-sync.md) başvurabilirsiniz.
  
  * Her eşitleme döngüsünün sonunda gönderilen Dizin Eşitleme hataları için bildirim e-postası, LargeObject hatalarıyla birlikte nesnelerin listesini içerir. 
- * Azure AD 'ye en son dışarı aktarma işlemine tıkladığınızda, [Synchronization Service Manager işlemler sekmesi](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) LargeObject hatalarıyla birlikte nesnelerin listesini görüntüler.
+ * Azure AD 'ye en son dışarı aktarma işlemine tıkladığınızda, [Synchronization Service Manager işlemler sekmesi](./how-to-connect-sync-service-manager-ui-operations.md) LargeObject hatalarıyla birlikte nesnelerin listesini görüntüler.
  
 ## <a name="mitigation-options"></a>Risk azaltma seçenekleri
 LargeObject hatası çözümlenene kadar, aynı nesneye yapılan diğer öznitelik değişiklikleri Azure AD 'ye verilemez. Hatayı gidermek için aşağıdaki seçenekleri göz önünde bulundurun:
 
- * Azure AD Connect 1.1.524.0 veya sonraki bir sürüme yükseltin. Azure AD Connect Build 1.1.524.0 içinde, kullanıma hazır eşitleme kuralları, özniteliklerin 15 ' ten fazla değeri varsa userCertificate ve Usersmmecertificate özniteliklerini dışarı aktarmaya yönelik olarak güncelleştirilmiştir. Azure AD Connect yükseltme hakkında daha fazla bilgi için, [önceki bir sürümden en son sürüme yükseltme Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)makalesine başvurun.
+ * Azure AD Connect 1.1.524.0 veya sonraki bir sürüme yükseltin. Azure AD Connect Build 1.1.524.0 içinde, kullanıma hazır eşitleme kuralları, özniteliklerin 15 ' ten fazla değeri varsa userCertificate ve Usersmmecertificate özniteliklerini dışarı aktarmaya yönelik olarak güncelleştirilmiştir. Azure AD Connect yükseltme hakkında daha fazla bilgi için, [önceki bir sürümden en son sürüme yükseltme Azure AD Connect](./how-to-upgrade-previous-version.md)makalesine başvurun.
 
  * **15 ' ten fazla sertifika değeri olan nesnelerin gerçek değerleri yerine null değer**veren Azure AD Connect bir **giden eşitleme kuralı** uygulayın. Bu seçenek, 15 ' ten fazla değere sahip nesneler için Azure AD 'ye aktarılmasını istemediğiniz sertifika değerlerinden herhangi birinin gerekli olmadığı durumlarda uygundur. Bu eşitleme kuralının nasıl uygulanacağı hakkında daha fazla bilgi için, [userCertificate özniteliğinin dışarı aktarılmasını sınırlamak üzere eşitleme kuralını uygulama](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute)başlıklı sonraki bölüme bakın.
 
  * Kuruluşunuz tarafından artık kullanılmayan değerleri kaldırarak şirket içi AD nesnesindeki (15 veya daha az) sertifika değerlerinin sayısını azaltın. Bu öznitelik, blok özniteliği, zaman aşımına uğramamış veya kullanılmayan sertifikalardan kaynaklanmamışsa uygundur. Şirket içi AD 'niz içinde, süre sonu sertifikaları bulma, yedekleme ve silmeye yardımcı olması için [burada kullanılabilen PowerShell betiğini](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) kullanabilirsiniz. Sertifikaları silmeden önce, kuruluşunuzdaki ortak anahtar altyapısı yöneticileriyle doğrulamanız önerilir.
 
  * UserCertificate özniteliğinin Azure AD 'ye aktarılmasını hariç tutmak için Azure AD Connect yapılandırın. Genel olarak, öznitelik Microsoft Online Services tarafından belirli senaryoları etkinleştirmek için kullanılabilir olduğundan bu seçeneği önermiyoruz. Özellikle:
-    * Kullanıcı nesnesindeki userCertificate özniteliği, Exchange Online ve Outlook istemcileri tarafından ileti imzalama ve şifreleme için kullanılır. Bu özellik hakkında daha fazla bilgi edinmek için [ileti imzalama ve şifreleme için makale/MIME](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx)makalesine başvurun.
+    * Kullanıcı nesnesindeki userCertificate özniteliği, Exchange Online ve Outlook istemcileri tarafından ileti imzalama ve şifreleme için kullanılır. Bu özellik hakkında daha fazla bilgi edinmek için [ileti imzalama ve şifreleme için makale/MIME](/microsoft-365/security/office-365-security/s-mime-for-message-signing-and-encryption?view=o365-worldwide)makalesine başvurun.
 
-    * Bilgisayar nesnesindeki userCertificate özniteliği, Azure AD tarafından Windows 10 Şirket içi etki alanına katılmış cihazların Azure AD 'ye bağlanmasına izin vermek için kullanılır. Bu özellik hakkında daha fazla bilgi edinmek için lütfen [Windows 10 için etki alanına katılmış cihazları Azure AD 'ye bağlama](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy)makalesine başvurun.
+    * Bilgisayar nesnesindeki userCertificate özniteliği, Azure AD tarafından Windows 10 Şirket içi etki alanına katılmış cihazların Azure AD 'ye bağlanmasına izin vermek için kullanılır. Bu özellik hakkında daha fazla bilgi edinmek için lütfen [Windows 10 için etki alanına katılmış cihazları Azure AD 'ye bağlama](../devices/hybrid-azuread-join-plan.md)makalesine başvurun.
 
 ## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>UserCertificate özniteliğinin dışarı aktarılmasını sınırlamak için eşitleme kuralı uygulama
 UserCertificate özniteliğinden kaynaklanan LargeObject hatasını çözümlemek için, **15 ' ten fazla sertifika değerine sahip nesneler için gerçek değerler yerine null değer**veren Azure AD Connect bir giden eşitleme kuralı uygulayabilirsiniz. Bu bölümde, **Kullanıcı** nesneleri için eşitleme kuralını uygulamak için gereken adımlar açıklanmaktadır. Bu adımlar, **iletişim** ve **bilgisayar** nesneleri için uyarlanmıştır.
@@ -74,7 +74,7 @@ Adımlar şu şekilde özetlenebilir:
 İstenmeyen değişikliklerin Azure AD 'ye aktarılmasını önlemek için yeni bir eşitleme kuralı uygulama ortasında olduğunuzda hiçbir eşitlemenin olmadığından emin olun. Yerleşik eşitleme zamanlayıcısını devre dışı bırakmak için:
 1. Azure AD Connect sunucusunda PowerShell oturumu başlatın.
 
-2. Cmdlet 'i çalıştırarak zamanlanmış eşitlemeyi devre dışı bırak:`Set-ADSyncScheduler -SyncCycleEnabled $false`
+2. Cmdlet 'i çalıştırarak zamanlanmış eşitlemeyi devre dışı bırak: `Set-ADSyncScheduler -SyncCycleEnabled $false`
 
 > [!Note]
 > Yukarıdaki adımlar, yerleşik Scheduler ile Azure AD Connect yalnızca daha yeni sürümler (1.1. xxx. x) için geçerlidir. Windows Görev Zamanlayıcı kullanan Azure AD Connect eski sürümlerini (1.0. xxx. x) kullanıyorsanız veya düzenli aralıklarla eşitleme tetiklemeniz için kendi özel zamanlayıcısını kullanıyorsanız (ortak değil), bunları uygun şekilde devre dışı bırakmanız gerekir.
@@ -108,7 +108,7 @@ Kullanıcı nesneleri için userCertificate özniteliğini Azure AD 'ye aktarmak
     | Öznitelik | İşleç | Değer |
     | --- | --- | --- |
     | sourceObjectType | SıFıRA | Kullanıcı |
-    | Cloudana kopyalı | Not QUAL | True |
+    | Cloudana kopyalı | Not QUAL | Doğru |
 
 ### <a name="step-3-create-the-outbound-sync-rule-required"></a>3. Adım Gerekli giden eşitleme kuralını oluşturun
 Yeni eşitleme kuralı, mevcut eşitleme kuralına göre aynı **kapsam filtresine** ve **daha yüksek önceliğe** sahip olmalıdır. Bu, yeni eşitleme kuralının varolan eşitleme kuralıyla aynı nesne kümesine uygulanmasını sağlar ve userCertificate özniteliği için mevcut eşitleme kuralını geçersiz kılar. Eşitleme kuralını oluşturmak için:
@@ -118,11 +118,11 @@ Yeni eşitleme kuralı, mevcut eşitleme kuralına göre aynı **kapsam filtresi
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
     | Name | *Bir ad belirtin* | Örneğin, *"AAD 'Den dışarı-userCertificate Için özel geçersiz kılma"* |
-    | Açıklama | *Bir açıklama girin* | Örneğin, *"userCertificate özniteliğinde 15 ' ten fazla değer varsa, verileri dışarı aktarın."* |
+    | Description | *Bir açıklama girin* | Örneğin, *"userCertificate özniteliğinde 15 ' ten fazla değer varsa, verileri dışarı aktarın."* |
     | Bağlı sistem | *Azure AD bağlayıcısını seçin* |
     | Bağlı sistem nesne türü | **kullanıcısını** | |
     | Meta veri deposu nesne türü | **kişiler** | |
-    | Bağlantı türü | **Katıl** | |
+    | Bağlantı türü | **Join** | |
     | Önceliği | *1-99 arasında bir sayı seçti* | Seçilen sayı varolan eşitleme kuralı tarafından kullanılmamalıdır ve var olan eşitleme kuralına göre daha düşük bir değere (ve bu nedenle daha yüksek önceliğe) sahip olmalıdır. |
 
 3. **Kapsam filtresi** sekmesine gidin ve var olan eşitleme kuralının kullandığı kapsam filtresini uygulayın.
@@ -133,11 +133,11 @@ Yeni eşitleme kuralı, mevcut eşitleme kuralına göre aynı **kapsam filtresi
     | --- | --- |
     | Akış Türü |**Expression** |
     | Target özniteliği |**userCertificate** |
-    | Kaynak özniteliği |*Aşağıdaki Ifadeyi kullanın*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
+    | Kaynak özniteliği |*Aşağıdaki Ifadeyi kullanın*: `IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     
 6. Eşitleme kuralını oluşturmak için **Ekle** düğmesine tıklayın.
 
-### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>4. Adım. LargeObject hatası ile var olan bir nesnede yeni eşitleme kuralını doğrulama
+### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>4. Adım: LargeObject hatası ile var olan bir nesnede yeni eşitleme kuralını doğrulama
 Bu, oluşturulan eşitleme kuralının diğer nesnelere uygulamadan önce LargeObject hatası ile mevcut bir AD nesnesi üzerinde doğru şekilde çalıştığını doğrulamadır:
 1. Synchronization Service Manager **işlemler** sekmesine gidin.
 2. Azure AD 'ye en son dışarı aktarma işlemini seçin ve LargeObject hataları olan nesnelerden birine tıklayın.
@@ -176,11 +176,10 @@ Değişiklikleri Azure AD 'ye aktarmak için:
 ### <a name="step-8-re-enable-sync-scheduler"></a>8. Adım Eşitleme zamanlayıcısını yeniden etkinleştir
 Sorun çözümlendikten sonra, yerleşik eşitleme zamanlayıcısını yeniden etkinleştirin:
 1. PowerShell oturumu başlatın.
-2. Cmdlet 'i çalıştırarak zamanlanmış eşitlemeyi yeniden etkinleştirin:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+2. Cmdlet 'i çalıştırarak zamanlanmış eşitlemeyi yeniden etkinleştirin: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 > [!Note]
 > Yukarıdaki adımlar, yerleşik Scheduler ile Azure AD Connect yalnızca daha yeni sürümler (1.1. xxx. x) için geçerlidir. Windows Görev Zamanlayıcı kullanan Azure AD Connect eski sürümlerini (1.0. xxx. x) kullanıyorsanız veya düzenli aralıklarla eşitleme tetiklemeniz için kendi özel zamanlayıcısını kullanıyorsanız (ortak değil), bunları uygun şekilde devre dışı bırakmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.
-

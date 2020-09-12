@@ -1,21 +1,21 @@
 ---
-title: Windows Yönetim Merkezi 'ni Azure Güvenlik Merkezi ile tümleştirme | Microsoft Docs
+title: Windows Yönetim Merkezi sunucularını Azure Güvenlik Merkezi ile koruma
 description: Bu makalede, Azure Güvenlik Merkezi 'nin Windows Yönetim Merkezi ile nasıl tümleştirileceği açıklanmaktadır.
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 9eae210818cf623078090503deefc6295dab7164
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 90c1132091f543b84fc764522dfa95672f2e2aef
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076363"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277502"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Güvenlik Merkezi 'Ni Windows Yönetim Merkezi ile tümleştirme
+# <a name="protect-windows-admin-center-resources-with-security-center"></a>Güvenlik Merkezi ile Windows Yönetim Merkezi kaynaklarını koruma
 
 Windows Yönetim Merkezi, Windows sunucularınız için bir yönetim aracıdır. Sistem yöneticilerinin en sık kullanılan yönetim araçlarının çoğunluğuna erişebilmeleri için tek bir konumdur. Windows Yönetim Merkezi 'nin içinden, şirket içi sunucularınızı doğrudan Azure Güvenlik Merkezi 'ne ekleyebilirsiniz. Daha sonra, güvenlik önerilerinizi ve uyarılarınızı bir Özet olarak doğrudan Windows Yönetim Merkezi deneyimi ' nde görüntüleyebilirsiniz.
 
@@ -31,7 +31,7 @@ Windows Yönetim Merkezi 'nden Azure Güvenlik Merkezi 'ne bir sunucu başarıyl
 
 Bu iki aracı birleştirerek Güvenlik Merkezi, kaynak: Windows Yönetim Merkezi 'nde yönetilen şirket içi sunucuları, VM 'lerinizi ve ek PaaS iş yüklerinizi koruyan tüm güvenlik bilgilerinizi görüntülemek için tek bir cam bölmesidir.
 
-## <a name="onboarding-windows-admin-center-managed-servers-into-security-center"></a>Windows Yönetim Merkezi tarafından yönetilen sunucuları güvenlik merkezi 'ne ekleme
+## <a name="onboard-windows-admin-center-managed-servers-into-security-center"></a>Windows Yönetim Merkezi tarafından yönetilen sunucuları güvenlik merkezi 'ne ekleme
 
 1. Windows Yönetim Merkezi 'nden sunucularınızdan birini seçin ve **Araçlar** bölmesinde Azure Güvenlik Merkezi uzantısını seçin:
 
@@ -54,16 +54,16 @@ Bu iki aracı birleştirerek Güvenlik Merkezi, kaynak: Windows Yönetim Merkezi
     > Önerilerin görünmesi için ekleme biraz zaman alabilir. Aslında, sunucu etkinliklerinize bağlı olarak *herhangi bir* uyarı almazsınız. Uyarılarınızın doğru şekilde çalıştığını sınamak için test uyarıları oluşturmak üzere [Uyarı doğrulama yordamındaki](security-center-alert-validation.md)yönergeleri izleyin.
 
 
-## <a name="viewing-security-recommendations-and-alerts-in-windows-admin-center"></a>Windows Yönetim Merkezi 'nde güvenlik önerilerini ve uyarılarını görüntüleme
+## <a name="view-security-recommendations-and-alerts-in-windows-admin-center"></a>Windows Yönetim Merkezi 'nde güvenlik önerilerini ve uyarılarını görüntüleme
 
 Eklendi bir kez, uyarı ve önerilerinizi doğrudan Windows Yönetim Merkezi 'nin Azure Güvenlik Merkezi alanında görüntüleyebilirsiniz. Azure portal görüntülemek için bir öneri veya uyarıya tıklayın. Burada, daha fazla bilgi edinirsiniz ve sorunları nasıl düzelteceğinizi öğreneceksiniz.
 
 [![Windows Yönetim Merkezi 'nde görülen Güvenlik Merkezi önerileri ve uyarıları](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
 
-## <a name="viewing-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Güvenlik Merkezi 'nde Windows Yönetim Merkezi tarafından yönetilen sunucular için güvenlik önerilerini ve uyarılarını görüntüleme
+## <a name="view-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Güvenlik Merkezi 'nde Windows Yönetim Merkezi tarafından yönetilen sunucular için güvenlik önerilerini ve uyarılarını görüntüleme
 Azure Güvenlik Merkezi 'nden:
 
-* Tüm Windows Yönetim Merkezi sunucularınızın güvenlik önerilerini görüntülemek için, **işlem & uygulamaları** açın ve **VM 'ler ve bilgisayarlar** sekmesine tıklayın. listeyi aşağıda gösterildiği gibi "sunucu" kaynağına göre filtreleyin:
+* Tüm Windows Yönetim Merkezi sunucularınızın güvenlik önerilerini görüntülemek için, **işlem & uygulamalarını** açın ve **VM 'ler ve bilgisayarlar** sekmesine tıklayın. Listeyi aşağıda gösterildiği gibi "sunucu" kaynağına göre filtreleyin:
 
     [![Windows Yönetim Merkezi tarafından yönetilen sunucular için güvenlik önerilerini görüntüleme](media/windows-admin-center-integration/viewing-recommendations-wac.png)](media/windows-admin-center-integration/viewing-recommendations-wac.png#lightbox)
 

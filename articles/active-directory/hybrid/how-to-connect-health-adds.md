@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc7e8e3219cc2b11ed123889973c375edd22664d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d75b439c2753db17cffecdc97b6389a7b31b833e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359407"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279882"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Azure AD Connect Health'i AD DS ile Kullanma
 Aşağıdaki belgeler Azure AD Connect Health ile Active Directory Etki Alanı Hizmetleri’nin izlenmesine özgüdür. AD DS'nin desteklenen sürümleri şunlardır: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 ve Windows Server 2016.
@@ -57,11 +57,10 @@ Bu özellik, izlenen her bir etki alanından sürekli olarak toplanan farklı pe
 Varsayılan olarak, dört performans sayacı önceden seçilmiştir; ancak, filtre komutuna tıklayarak ve istediğiniz performans sayaçlarını seçerek ya da seçimini kaldırarak başkalarını ekleyebilirsiniz. Ayrıca, bir performans sayacı grafiğine çift tıklayarak, izlenen etki alanı denetleyicilerinin her birine ait veri noktalarını içeren yeni bir dikey pencere açabilirsiniz.
 
 ## <a name="related-links"></a>İlgili bağlantılar
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Aracı yüklemesini Azure AD Connect Health](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health İşlemleri](how-to-connect-health-operations.md)
 * [Azure AD Connect Health'i AD FS ile Kullanma](how-to-connect-health-adfs.md)
 * [Eşitleme için Azure AD Connect Health kullanma](how-to-connect-health-sync.md)
 * [Azure AD Connect Health ile ilgili SSS](reference-connect-health-faq.md)
 * [Azure AD Connect Health sürümü geçmişi](reference-connect-health-version-history.md)
-

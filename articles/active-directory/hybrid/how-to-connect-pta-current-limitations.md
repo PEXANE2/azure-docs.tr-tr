@@ -16,12 +16,12 @@ ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6efff54d2c28659af27161ab4cd4753302210006
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e9c4489f59f72e4d0b5c7a0b911da188eb0828c
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358421"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280205"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory geçişli kimlik doğrulaması: geçerli sınırlamalar
 
@@ -43,9 +43,9 @@ Aşağıdaki senaryolar desteklenir:
 
 Aşağıdaki _senaryolar desteklenmez:_
 
-- [Sızdırılan kimlik bilgilerine](../reports-monitoring/concept-risk-events.md#leaked-credentials)sahip kullanıcıların algılanması.
+- [Sızdırılan kimlik bilgilerine](../identity-protection/overview-identity-protection.md)sahip kullanıcıların algılanması.
 - Azure AD Domain Services kiracının etkin olması için Parola karması eşitlemesi gerekiyor. Bu nedenle doğrudan kimlik doğrulaması kullanan kiracılar _yalnızca_ Azure AD Domain Services ihtiyacı olan senaryolar için çalışmaz.
-- Geçişli kimlik doğrulaması [Azure AD Connect Health](whatis-hybrid-identity-health.md)ile tümleştirilmiştir.
+- Geçişli kimlik doğrulaması [Azure AD Connect Health](./whatis-azure-ad-connect.md)ile tümleştirilmiştir.
 
 > [!IMPORTANT]
 > _Yalnızca_ desteklenmeyen senaryolar (Azure AD Connect Health tümleştirme hariç) için geçici bir çözüm olarak, Azure AD Connect sihirbazındaki [isteğe bağlı özellikler](how-to-connect-install-custom.md#optional-features) sayfasında parola karması eşitlemesini etkinleştirin.

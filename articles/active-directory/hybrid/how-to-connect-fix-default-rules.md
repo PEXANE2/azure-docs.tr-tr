@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52083b2413f28b0c95b3a86be44c501e97cfd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359764"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279950"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Azure AD Connect değiştirilen varsayılan kuralları çözme
 
@@ -89,7 +89,7 @@ Kuralın gelecekteki bakımının kolay olması için kuralın kendi açıklamas
 
 **JOIN kurallarını** boş tut. Bu, kuralın standart varsayılan kuralda tanımlanan JOIN koşulunu kullandığı anlamına gelir. Bu, standart varsayılan kuralı devre dışı bırakmamalıdır veya silmemelidir. Hiçbir JOIN koşulu yoksa, öznitelik akamaz. 
 
-Öznitelindeki uygun dönüştürmeleri ekleyin. Hedef özniteliyorsanız sabit bir değer akışı yapmak için bir sabit atayabilirsiniz. Kaynak veya hedef öznitelik arasında doğrudan eşlemeyi kullanabilirsiniz. Ya da özniteliği için bir ifade kullanabilirsiniz. Kullanabileceğiniz çeşitli [ifade işlevleri](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference) aşağıda verilmiştir.
+Öznitelindeki uygun dönüştürmeleri ekleyin. Hedef özniteliyorsanız sabit bir değer akışı yapmak için bir sabit atayabilirsiniz. Kaynak veya hedef öznitelik arasında doğrudan eşlemeyi kullanabilirsiniz. Ya da özniteliği için bir ifade kullanabilirsiniz. Kullanabileceğiniz çeşitli [ifade işlevleri](./reference-connect-sync-functions-reference.md) aşağıda verilmiştir.
 
 #### <a name="add-an-outbound-sync-rule"></a>Giden eşitleme kuralı ekleme
 Özniteliği hedef dizine bağlamak için bir giden kuralı oluşturmanız gerekir. Bu, kaynağın metadize olduğu ve hedefin bağlı sistem olduğu anlamına gelir. Bir giden kuralı oluşturmak için, **eşitleme kuralları düzenleyicisini**başlatın, **yönü** **giden**olarak değiştirin ve **Yeni kural ekle**' yi seçin. 
@@ -102,7 +102,7 @@ Gelen kuralında olduğu gibi, kuralı adlandırmak için kendi adlandırma kura
 
 **Kapsam filtre** ve **ekleme kurallarının** boş kalmasını sağlayın. Dönüştürmeyi sabit, doğrudan veya ifade olarak girin. 
 
-Artık Active Directory bir kullanıcı nesnesi için yeni bir öznitelik oluşturmayı Azure Active Directory. Herhangi bir nesneden kaynak ve hedefe herhangi bir öznitelik eşlemek için bu adımları kullanabilirsiniz. Daha fazla bilgi için bkz. [özel eşitleme kuralları oluşturma](how-to-connect-create-custom-sync-rule.md) ve [kullanıcıları sağlamaya hazırlanma](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization).
+Artık Active Directory bir kullanıcı nesnesi için yeni bir öznitelik oluşturmayı Azure Active Directory. Herhangi bir nesneden kaynak ve hedefe herhangi bir öznitelik eşlemek için bu adımları kullanabilirsiniz. Daha fazla bilgi için bkz. [özel eşitleme kuralları oluşturma](how-to-connect-create-custom-sync-rule.md) ve [kullanıcıları sağlamaya hazırlanma](/office365/enterprise/prepare-for-directory-synchronization).
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>Varolan bir özniteliğin değerini geçersiz kıl
 Zaten eşlenmiş bir özniteliğin değerini geçersiz kılmak isteyebilirsiniz. Örneğin, her zaman Azure AD 'deki bir özniteliğe null değer ayarlamak istiyorsanız yalnızca bir gelen kuralı oluşturmanız yeterlidir. Sabit değeri, `AuthoritativeNull` , hedef özniteliğe akış yapın. 
@@ -194,6 +194,3 @@ Kurallarınızı varsayılan ayarlara geri değiştirecek şekilde onarmak için
 - [Donanım ve önkoşullar](how-to-connect-install-prerequisites.md) 
 - [Hızlı ayarlar](how-to-connect-install-express.md)
 - [Özelleştirilmiş ayarlar](how-to-connect-install-custom.md)
-
-
-

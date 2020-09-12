@@ -3,12 +3,12 @@ title: Eğitim için Azure DevTest Labs kullanma | Microsoft Docs
 description: Bu makalede, Azure DevTest Labs eğitim için laboratuvar ayarlamak üzere izleyebileceğiniz ayrıntılı adımlar sağlanmaktadır.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1a4b39d104d2ffdb45c23db2ad16cc4ee4627fb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2de9550c62f04286a4f9ad42238bfefb9846477
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484154"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294858"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Eğitim için Azure DevTest Labs kullanma
 Azure DevTest Labs, geliştirme ve test 'e ek olarak birçok temel senaryoyu uygulamak için kullanılabilir. Bu senaryolarından biri, eğitim için bir laboratuvar ayarlamaya yöneliktir. Azure DevTest Labs, eğitiminin aynı ve yalıtılmış ortamlar oluşturmak için kullanabileceği özel şablonlar sağlayabileceğiniz bir laboratuvar oluşturmanıza olanak sağlar. Eğitim ortamlarının yalnızca ihtiyaç duydukları ve sanal makineler gibi yeterli kaynak (eğitim için gerekli) içermesi durumunda her bir Trae tarafından kullanılabilir olmasını sağlamak için ilkeler uygulayabilirsiniz. Son olarak, laboratuvarı tek tıklamayla erişebilen traınees ile kolayca paylaşabilirsiniz.
@@ -44,7 +44,7 @@ Bu makalede, daha önce açıklanan eğitim gereksinimlerini karşılamak için 
    
    | Görev | Öğrenecekleriniz |
    | --- | --- |
-   | [Azure Market görüntülerini yapılandırma](devtest-lab-configure-marketplace-images.md) |Azure Marketi görüntülerini nasıl beyaz listeye kullanabileceğinizi öğrenin; yalnızca eğitim için istediğiniz görüntüleri seçerek kullanılabilir hale getirme. |
+   | [Azure Market görüntülerini yapılandırma](devtest-lab-configure-marketplace-images.md) |Azure Market görüntülerine nasıl izin sağlayabileceğinizi öğrenin; yalnızca eğitim için istediğiniz görüntüleri seçerek kullanılabilir hale getirme. |
    | [Özel görüntü oluşturma](devtest-lab-create-template.md) |Özel görüntü kullanarak hızlı bir şekilde VM oluşturabilmek için eğitim için ihtiyacınız olan yazılımı önceden yükleyerek özel bir görüntü oluşturun. |
 3. **Eğitim makineleri için yeniden kullanılabilir şablonlar oluşturma** 
    
@@ -91,4 +91,3 @@ Bu makalede, daha önce açıklanan eğitim gereksinimlerini karşılamak için 
    | [Kaynak Yöneticisi şablonu kullanarak laboratuvar oluşturma](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Kaynak Yöneticisi şablonları kullanarak Azure DevTest Labs laboratuvarları oluşturun. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

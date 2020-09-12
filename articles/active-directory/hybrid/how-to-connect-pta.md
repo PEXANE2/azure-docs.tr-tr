@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa763c875b06bd7e22be0e814838f2e79b24e283
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b8f613cb7c75d9dd6af1fcf62f9d484398072c6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358030"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279474"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory Geçişli Kimlik Doğrulaması ile kullanıcı oturumu açma
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) geçişli kimlik doğrulaması, kullanıcılar
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Bu özellik, kuruluşlarda bulut kimlik doğrulamasının aynı avantajını sağlayan [Azure AD Parola karması eşitleme](how-to-connect-password-hash-synchronization.md)'nin bir alternatifidir. Bununla birlikte, şirket içi Active Directory güvenlik ve parola ilkelerini zorlamak isteyen kuruluşlar, bunun yerine doğrudan kimlik doğrulamasını kullanmayı seçebilir. Çeşitli Azure AD oturum açma yöntemlerinin ve kuruluşunuzun doğru oturum açma yönteminin bir karşılaştırması için [Bu kılavuzu](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) gözden geçirin.
+Bu özellik, kuruluşlarda bulut kimlik doğrulamasının aynı avantajını sağlayan [Azure AD Parola karması eşitleme](how-to-connect-password-hash-synchronization.md)'nin bir alternatifidir. Bununla birlikte, şirket içi Active Directory güvenlik ve parola ilkelerini zorlamak isteyen kuruluşlar, bunun yerine doğrudan kimlik doğrulamasını kullanmayı seçebilir. Çeşitli Azure AD oturum açma yöntemlerinin ve kuruluşunuzun doğru oturum açma yönteminin bir karşılaştırması için [Bu kılavuzu](./choose-ad-authn.md) gözden geçirin.
 
 ![Azure AD geçişli kimlik doğrulaması](./media/how-to-connect-pta/pta1.png)
 
@@ -42,14 +42,14 @@ Doğrudan kimlik doğrulamayı [sorunsuz çoklu oturum açma](how-to-connect-sso
 - *Harika kullanıcı deneyimi*
   - Kullanıcılar, hem şirket içi hem de bulut tabanlı uygulamalarda oturum açmak için aynı parolaları kullanır.
   - Kullanıcılar, parola ile ilgili sorunları çözmede BT yardım masasına daha az zaman harcamaktadır.
-  - Kullanıcılar, buluttaki [self servis parola yönetimi](../authentication/active-directory-passwords-overview.md) görevlerini tamamlayabilir.
+  - Kullanıcılar, buluttaki [self servis parola yönetimi](../authentication/concept-sspr-howitworks.md) görevlerini tamamlayabilir.
 - *Dağıtımı kolay & Yönet*
   - Karmaşık şirket içi dağıtımlar veya ağ yapılandırmasına gerek yoktur.
   - Yalnızca bir basit aracının şirket içinde yüklü olmasını gerektirir.
   - Yönetim yükü yok. Aracı iyileştirmeleri ve hata düzeltmelerini otomatik olarak alır.
-- *Güvenlik*
+- *Güvenli*
   - Şirket içi parolalar hiçbir biçimde bulutta depolanmaz.
-  - Multi-Factor Authentication (MFA) dahil olmak üzere [Azure AD koşullu erişim ilkeleriyle](../active-directory-conditional-access-azure-portal.md)sorunsuz çalışarak kullanıcı hesaplarınızı korur, [eski kimlik doğrulamasını engellemeyi](../conditional-access/concept-conditional-access-conditions.md) ve [deneme yanılma saldırılarına zorlar](../authentication/howto-password-smart-lockout.md).
+  - Multi-Factor Authentication (MFA) dahil olmak üzere [Azure AD koşullu erişim ilkeleriyle](../conditional-access/overview.md)sorunsuz çalışarak kullanıcı hesaplarınızı korur, [eski kimlik doğrulamasını engellemeyi](../conditional-access/concept-conditional-access-conditions.md) ve [deneme yanılma saldırılarına zorlar](../authentication/howto-password-smart-lockout.md).
   - Aracı yalnızca ağınızın içinden giden bağlantılar oluşturur. Bu nedenle, aracıyı DMZ olarak da bilinen bir çevre ağına yüklemek için gerekli değildir.
   - Bir aracı ve Azure AD arasındaki iletişimin sertifika tabanlı kimlik doğrulaması kullanılarak güvenliği sağlanır. Bu sertifikalar Azure AD tarafından her birkaç ayda bir otomatik olarak yenilenir.
 - *Yüksek oranda kullanılabilir*
@@ -59,8 +59,8 @@ Doğrudan kimlik doğrulamayı [sorunsuz çoklu oturum açma](how-to-connect-sso
 
 - , Tüm Web tarayıcısı tabanlı uygulamalarda ve [modern kimlik doğrulaması](https://aka.ms/modernauthga)kullanan Microsoft Office istemci uygulamalarında Kullanıcı oturum açmayı destekler.
 - Oturum açma kullanıcı adları, şirket içi varsayılan Kullanıcı adı ( `userPrincipalName` ) veya Azure AD Connect yapılandırılmış başka bir öznitelik (olarak bilinir `Alternate ID` ) olabilir.
-- Özelliği, kullanıcılarınızın güvenliğini sağlamaya yardımcı olmak üzere Multi-Factor Authentication (MFA) gibi [koşullu erişim](../active-directory-conditional-access-azure-portal.md) özellikleriyle sorunsuz şekilde çalışır.
-- Yaygın olarak kullanılan parolalara bakarak şirket içi Active Directory ve parola korumasına yönelik parola geri yazma özelliği de dahil olmak üzere bulut tabanlı [self servis parola yönetimiyle](../authentication/active-directory-passwords-overview.md)tümleşiktir.
+- Özelliği, kullanıcılarınızın güvenliğini sağlamaya yardımcı olmak üzere Multi-Factor Authentication (MFA) gibi [koşullu erişim](../conditional-access/overview.md) özellikleriyle sorunsuz şekilde çalışır.
+- Yaygın olarak kullanılan parolalara bakarak şirket içi Active Directory ve parola korumasına yönelik parola geri yazma özelliği de dahil olmak üzere bulut tabanlı [self servis parola yönetimiyle](../authentication/concept-sspr-howitworks.md)tümleşiktir.
 - AD ormanlarınız arasında orman güvenleri varsa ve ad soneki yönlendirmesi doğru yapılandırılmışsa, çok ormanlı ortamlar desteklenir.
 - Bu, ücretsiz bir özelliktir ve Azure AD 'nin ücretli sürümlerinin kullanılmasını gerektirmez.
 - Bu, [Azure AD Connect](whatis-hybrid-identity.md)aracılığıyla etkinleştirilebilir.

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423159"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279508"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure operasyonel güvenlik en iyi uygulamaları
 Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
@@ -116,7 +116,7 @@ Internet güvenliği (CIS) denetimlerinin merkezini temel alan güvenli puan, ku
 **Ayrıntı**: Güvenlik Merkezi 'ndeki [güvenlik önerilerini](../../security-center/security-center-recommendations.md) , en yüksek öncelikli öğelerle başlayarak izleyin.
 
 **En iyi yöntem**: Güvenlik Merkezi uyarılarını güvenlik bilgileriniz ve olay yönetimi (SIEM) çözümünüz ile tümleştirin.   
-**Ayrıntı**: BIR SIEM olan kuruluşların çoğu, bir analist yanıtı gerektiren güvenlik uyarıları için merkezi bir Clearinghouse olarak kullanır. Güvenlik Merkezi tarafından üretilen işlenen olaylar, Azure Izleyici aracılığıyla kullanılabilen günlüklerden biri olan Azure etkinlik günlüğünde yayımlanır. Azure Izleyici, izleme verilerinizin herhangi birini SıEM aracında yönlendirmek için birleştirilmiş bir işlem hattı sunar. Yönergeler için bkz. [güvenlik uyarılarını ve önerilerini dışarı aktarma](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs) . Azure Sentinel kullanıyorsanız bkz. [Azure Güvenlik Merkezi 'Ni bağlama](../../sentinel/connect-azure-security-center.md).
+**Ayrıntı**: BIR SIEM olan kuruluşların çoğu, bir analist yanıtı gerektiren güvenlik uyarıları için merkezi bir Clearinghouse olarak kullanır. Güvenlik Merkezi tarafından üretilen işlenen olaylar, Azure Izleyici aracılığıyla kullanılabilen günlüklerden biri olan Azure etkinlik günlüğünde yayımlanır. Azure Izleyici, izleme verilerinizin herhangi birini SıEM aracında yönlendirmek için birleştirilmiş bir işlem hattı sunar. Yönergeler için bkz. [güvenlik uyarılarını ve önerilerini dışarı aktarma](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs) . Azure Sentinel kullanıyorsanız bkz. [Azure Güvenlik Merkezi 'Ni bağlama](../../sentinel/connect-azure-security-center.md).
 
 **En iyi yöntem**: Azure günlüklerini SIEM 'inizle tümleştirin.   
 **Ayrıntı**: [Azure izleyici 'yi kullanarak veri toplayın ve dışarı aktarın](/azure/azure-monitor/overview#integrate-and-export-data). Bu uygulama, güvenlik olay araştırmasını etkinleştirmek için önemlidir ve çevrimiçi günlük tutma sınırlı olur. Azure Sentinel kullanıyorsanız, bkz. [veri kaynaklarını bağlama](../../sentinel/connect-data-sources.md).
@@ -149,7 +149,7 @@ Kurumsal ve takımlarınızın üretken ve verimli olmasını sağlamak için a�
 Bildirim temelli bir şablon kullanarak uygulamalarınızı sağlamak için [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) kullanabilirsiniz. Tek bir şablonda birden çok hizmeti bağımlılıklarıyla birlikte dağıtabilirsiniz. Uygulama yaşam döngüsünün her aşamasında uygulamanızı tekrar tekrar dağıtmak için aynı şablonu kullanırsınız.
 
 **En iyi yöntem**: otomatik olarak Azure Web Apps veya bulut hizmetleri oluşturun ve dağıtın.  
-**Ayrıntı**: Azure DevOps Projeleri, otomatik olarak Azure Web Apps veya bulut Hizmetleri [oluşturmak ve dağıtmak](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) için yapılandırabilirsiniz. Azure DevOps, her kod iadeden sonra Azure 'a bir derleme gerçekleştirdikten sonra ikilileri otomatik olarak dağıtır. Paket oluşturma işlemi, Visual Studio 'daki paket komutuna eşdeğerdir ve yayımlama adımları Visual Studio 'daki Yayımla komutuna eşdeğerdir.
+**Ayrıntı**: Azure DevOps Projeleri, otomatik olarak Azure Web Apps veya bulut Hizmetleri  [oluşturmak ve dağıtmak](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) için yapılandırabilirsiniz. Azure DevOps, her kod iadeden sonra Azure 'a bir derleme gerçekleştirdikten sonra ikilileri otomatik olarak dağıtır. Paket oluşturma işlemi, Visual Studio 'daki paket komutuna eşdeğerdir ve yayımlama adımları Visual Studio 'daki Yayımla komutuna eşdeğerdir.
 
 **En iyi yöntem**: Release Management 'ı otomatikleştirme.  
 **Ayrıntı**: [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) , birden çok aşamalı dağıtımı otomatikleştirmek ve yayın sürecini yönetmek için bir çözümdür. Hızla, kolayca ve sıklıkla yayınlamak için yönetilen sürekli dağıtım işlem hatları oluşturun. Azure Pipelines, yayın işleminizi otomatikleştirebilir ve önceden tanımlanmış onay iş akışlarına sahip olabilirsiniz. Şirket içinde ve buluta dağıtın, gereken şekilde genişletin ve özelleştirin.
@@ -226,4 +226,4 @@ Azure 'u kullanarak bulut çözümlerinizi tasarlarken, dağıttığınızda ve 
 
 Aşağıdaki kaynaklar, Azure güvenliği ve ilgili Microsoft hizmetleri hakkında daha genel bilgiler sağlamak için kullanılabilir:
 * Azure [güvenlik ekibi blogu](https://blogs.msdn.microsoft.com/azuresecurity/) -Azure güvenliği ile ilgili en son bilgiler için
-* [Microsoft Güvenlik](https://technet.microsoft.com/library/dn440717.aspx) açıkları, Azure ile ilgili sorunlar da dahil olmak üzere Microsoft güvenlik açıklarına göre bildirilebilir veya e-posta ilesecure@microsoft.com
+* [Microsoft Güvenlik](https://technet.microsoft.com/library/dn440717.aspx) açıkları, Azure ile ilgili sorunlar da dahil olmak üzere Microsoft güvenlik açıklarına göre bildirilebilir veya e-posta ile secure@microsoft.com

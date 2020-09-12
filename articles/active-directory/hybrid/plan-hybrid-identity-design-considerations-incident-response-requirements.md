@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c68be4e46693621f77cb25dd8f34f8e0b7d75dd
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109287"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278420"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için olay yanıtı gereksinimlerini belirleme
-Büyük veya orta ölçekli kuruluşlar, olay düzeyine göre işlem yapmanıza yardımcı olmak için bir [güvenlik olayı yanıtı](https://technet.microsoft.com/library/cc700825.aspx) oluşturacaktır. Kimlik yönetimi sistemi, hedefte belirli bir eylemi gerçekleştirmeyen kişileri tanımlamaya yardımcı olmak üzere kullanılabilir olduğundan, olay yanıtı sürecinde önemli bir bileşendir. Karma kimlik çözümü, olası bir tehdidi belirlemek ve azaltmak üzere eylemler gerçekleştirmek için yararlanılabilir olabilecek izleme ve raporlama özellikleri sağlayabilmelidir. Tipik bir olay yanıt planında, planın bir parçası olarak aşağıdaki aşamalara sahip olursunuz:
+Büyük veya orta ölçekli kuruluşlar, olay düzeyine göre işlem yapmanıza yardımcı olmak için bir [güvenlik olayı yanıtı](/previous-versions/tn-archive/cc700825(v=technet.10)) oluşturacaktır. Kimlik yönetimi sistemi, hedefte belirli bir eylemi gerçekleştirmeyen kişileri tanımlamaya yardımcı olmak üzere kullanılabilir olduğundan, olay yanıtı sürecinde önemli bir bileşendir. Karma kimlik çözümü, olası bir tehdidi belirlemek ve azaltmak üzere eylemler gerçekleştirmek için yararlanılabilir olabilecek izleme ve raporlama özellikleri sağlayabilmelidir. Tipik bir olay yanıt planında, planın bir parçası olarak aşağıdaki aşamalara sahip olursunuz:
 
 1. İlk değerlendirme.
 2. Olay iletişimi.
@@ -69,4 +69,3 @@ Hasar denetimi ve risk azaltma aşamasında, bir saldırının gerçek ve potans
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 [Tasarım konularına genel bakış](plan-hybrid-identity-design-considerations-overview.md)
-

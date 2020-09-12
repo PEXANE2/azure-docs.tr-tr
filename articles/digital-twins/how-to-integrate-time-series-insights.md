@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bda07d0e14ddc630bde4fdc9c869704154c1e6cc
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 870aded1a7b00cbfbe96aff4997561b15be4141c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236361"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290114"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure dijital TWINS 'i Azure Time Series Insights ile tümleştirme
 
@@ -20,7 +20,7 @@ Bu makalede, Azure dijital TWINS 'i [Azure Time Series Insights (TSI)](../time-s
 
 Bu makalede açıklanan çözüm, IoT çözümünüz hakkında geçmiş verileri toplayıp analiz etmenize olanak sağlayacak. Azure dijital TWINS, verileri Time Series Insights, birden çok veri akışı ile ilişkilendirmenize ve bilgilerinizi Time Series Insights göndermeden önce standartlaştırmasını sağlayan harika bir şekilde bir uyum sağlar. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Time Series Insights bir ilişki ayarlayabilmeniz için önce bir **Azure dijital TWINS örneğine**sahip olmanız gerekir. Bu örnek, verileri temel alarak dijital ikizi bilgilerini güncelleştirme özelliği ile ayarlanmalıdır, çünkü bu verileri Time Series Insights ' de izlenen şekilde görmek için ikizi bilgilerini birkaç kez güncelleştirmeniz gerekir. 
 
@@ -72,6 +72,11 @@ Azure dijital TWINS [*öğreticisi: uçtan uca bir çözümü bağlama*](./tutor
     ```
 
 5. Azure dijital TWINS 'de, ikizi Update olaylarını uç noktanıza göndermek için bir [yol](concepts-route-events.md#create-an-event-route) oluşturun. Bu rotadaki filtre yalnızca ikizi güncelleştirme iletilerinin uç noktanıza geçirilmesine izin verir.
+
+    >[!NOTE]
+    >Şu anda bu komut gruplarını etkileyen Cloud Shell ' de **bilinen bir sorun** var: `az dt route` , `az dt model` , `az dt twin` .
+    >
+    >Çözümlemek için, `az login` komutu çalıştırmadan önce Cloud Shell ' de çalıştırın ya da Cloud Shell yerine [Yerel CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Bunun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -207,6 +212,8 @@ Sonra, ikinci olay hub 'ından verileri almak için bir Time Series Insights ör
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Azure dijital TWINS 'e IoT verileri göndermeye başlama
 
 Time Series Insights veri göndermeye başlamak için Azure Digital TWINS 'te değişen veri değerleriyle Digital ikizi özelliklerini güncelleştirmeye başlamanız gerekir. [Az DT ikizi Update](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) komutunu kullanın.
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 Uçtan uca öğreticiyi kullanıyorsanız ([*öğretici: uçtan uca çözümü bağlama*](tutorial-end-to-end.md)) ortam kurulumuna yardımcı olması için, örnekten *devicesimülatör* projesini çalıştırarak sanal IoT verilerini göndermeye başlayabilirsiniz. Yönergeler, öğreticinin [*benzetimini yapılandırın ve çalıştırın*](tutorial-end-to-end.md#configure-and-run-the-simulation) bölümünde bulunur.
 

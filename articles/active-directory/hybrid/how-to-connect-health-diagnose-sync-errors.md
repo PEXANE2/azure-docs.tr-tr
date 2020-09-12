@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d48483697970333c542f140567ca6a6d3fcf7d2
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179156"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278692"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Yinelenen öznitelik eşitleme hatalarını tanılama ve düzeltme
 
@@ -133,7 +133,7 @@ Yukarıdaki adımlardan sonra, Kullanıcı, var olan bir nesneye bağlantı olan
 
 ## <a name="failures-and-error-messages"></a>Hatalar ve hata iletileri
 **Çakışan özniteliğe sahip Kullanıcı Azure Active Directory geçici olarak silinir. Yeniden denemeden önce kullanıcının kalıcı olarak silindiğinden emin olun.**  
-Azure AD 'de çakışan özniteliği olan Kullanıcı, bir çözüm uygulayabilmeniz için önce temizlenmelidir. Çözümü yeniden denemeden önce [Azure AD 'de kullanıcıyı kalıcı olarak silme hakkında](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore) bilgi edinin. Kullanıcı ayrıca geçici olarak silinen durumda 30 gün sonra otomatik olarak silinir. 
+Azure AD 'de çakışan özniteliği olan Kullanıcı, bir çözüm uygulayabilmeniz için önce temizlenmelidir. Çözümü yeniden denemeden önce [Azure AD 'de kullanıcıyı kalıcı olarak silme hakkında](../fundamentals/active-directory-users-restore.md) bilgi edinin. Kullanıcı ayrıca geçici olarak silinen durumda 30 gün sonra otomatik olarak silinir. 
 
 **Kiracınızdaki bulut tabanlı kullanıcı için kaynak bağlayıcısını güncelleştirme desteklenmiyor.**  
 Azure AD 'deki bulut tabanlı Kullanıcı kaynak tutturucusu içermemelidir. Bu durumda kaynak bağlayıcının güncelleştirilmesi desteklenmiyor. Şirket içinde el ile düzeltilmesi gerekiyor. 

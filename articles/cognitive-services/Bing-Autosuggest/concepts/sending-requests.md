@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7d16b0755fae91979802e50cb2ebbf4324ce2c45
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3aa8d691eb62b94c5784d8a6efc35b53a3762d7f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921146"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294127"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>İstekleri Bing Otomatik Öneri API'si gönderiliyor.
 
@@ -64,7 +64,7 @@ Tüm istek ve yanıt üstbilgilerinin bir listesi için bkz. [Üstbilgiler](http
 > [!NOTE]
 > JavaScript 'ten Bing Otomatik Öneri API'si çağırdığınızda, tarayıcınızın yerleşik güvenlik özellikleri bu üstbilgilerin değerlerine erişmenizi engelleyebilir.
 
-Bu sorunu çözmek için, bir CORS proxy üzerinden Bing Otomatik Öneri API'si isteği yapabilirsiniz. Bu tür bir ara sunucudan yanıt, `Access-Control-Expose-Headers` yanıt üstbilgilerini beyaz listeleyen ve JavaScript için kullanılabilir hale getiren bir üstbilgiye sahiptir.
+Bu sorunu çözmek için, bir CORS proxy üzerinden Bing Otomatik Öneri API'si isteği yapabilirsiniz. Bu tür bir ara sunucudan alınan yanıtın, `Access-Control-Expose-Headers` yanıt üstbilgilerini filtreleyecek ve JavaScript için kullanılabilir hale getiren bir üstbilgisi vardır.
 
 [Öğretici uygulamamız](../tutorials/autosuggest.md) , isteğe bağlı istemci üst bilgilerine erişmesine izin vermek IÇIN bir CORS proxy yüklemek kolaydır. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Sonra bir komut isteminde aşağıdaki komutu girin.
 

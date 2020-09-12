@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abc0417fc6f97501566f03d7eae0e4274d1dbced
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182352"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279423"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Sürüm Yayınlama Geçmişi
 Azure Active Directory ekibi, yeni özellikler ve işlevlerle Azure AD Connect Health düzenli olarak güncelleştirir. Bu makalede, yayımlanan sürümleri ve özellikler listelenir.  
@@ -30,7 +30,7 @@ Azure Active Directory ekibi, yeni özellikler ve işlevlerle Azure AD Connect H
 > Yeni sürüm yayınlandığında Connect Health Agents otomatik olarak güncelleştirilir. Lütfen otomatik yükseltme ayarlarının Azure portal etkinleştirildiğinden emin olun.
 >
 
-Eşitleme için Azure AD Connect Health Azure AD Connect yüklemesiyle tümleşiktir. Özellik geri bildirimi [Azure AD Connect yayın geçmişi](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) hakkında daha fazla bilgi edinin, [Connect Health Kullanıcı ses kanalı](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) ' nı oylayın
+Eşitleme için Azure AD Connect Health Azure AD Connect yüklemesiyle tümleşiktir. Özellik geri bildirimi [Azure AD Connect yayın geçmişi](./reference-connect-version-history.md) hakkında daha fazla bilgi edinin, [Connect Health Kullanıcı ses kanalı](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) ' nı oylayın
 
 ## <a name="april-2020"></a>Nisan 2020
 **Aracı güncelleştirmesi**
@@ -260,4 +260,4 @@ Eşitleme için Azure AD Connect Health Azure AD Connect yüklemesiyle tümleşi
 * Azure AD Genel yönetici kimlik bilgilerini kullanarak daha basit aracı dağıtımı.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Bulutta şirket içi kimlik altyapınızı ve eşitleme hizmetlerinizi izleme](whatis-hybrid-identity-health.md)hakkında daha fazla bilgi edinin.
+[Bulutta şirket içi kimlik altyapınızı ve eşitleme hizmetlerinizi izleme](./whatis-azure-ad-connect.md)hakkında daha fazla bilgi edinin.

@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183650"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294722"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS çalıştıran bir StorSimple ana bilgisayarında MPIO yapılandırma
 Bu makalede, CentOS 6,6 ana sunucunuzda çok paiz ıO (MPIO) yapılandırmak için gereken adımlar açıklanmaktadır. Ana bilgisayar sunucusu, Iscsı başlatıcıları aracılığıyla yüksek kullanılabilirlik için Microsoft Azure StorSimple cihazınıza bağlanır. Bu, çok yollu cihazların otomatik olarak keşfedilmesi ve yalnızca StorSimple birimleri için belirli kurulumun ayrıntılarını açıklar.
@@ -60,7 +60,7 @@ Linux ana bilgisayarına bağlı bir StorSimple cihazı, yüksek kullanılabilir
 
 Aşağıdaki yordamda, iki ağ arabirimi olan bir StorSimple cihazı iki ağ arabirimi içeren bir konağa bağlı olduğunda çoklu pasıların nasıl yapılandırılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu bölümde, CentOS sunucusu ve StorSimple cihazınız için yapılandırma önkoşulları ayrıntılı olarak yapılır.
 
 ### <a name="on-centos-host"></a>CentOS ana bilgisayarında
@@ -377,9 +377,9 @@ Bu komutu, StorSimple cihazınız olan Iscsı hedefinde bulunan tüm bağlı ağ
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-S. Cihazımın beyaz listede olup olmadığından emin değilim.
+S. Cihazımın izin verildiğinden emin değilim.
 
-A. Cihazınızın beyaz listeye eklenip eklenmeyeceğini doğrulamak için, aşağıdaki sorun giderme etkileşimli komutunu kullanın:
+A. Cihazınızın izin verilip verilmeyeceğini doğrulamak için, aşağıdaki sorun giderme etkileşimli komutunu kullanın:
 
 ```console
 multipathd -k
@@ -449,4 +449,3 @@ Linux ana bilgisayarında MPIO yapılandırırken, aşağıdaki CentoS 6,6 belge
 
 * [CentOS 'da MPIO 'YU ayarlama](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Linux Eğitim Kılavuzu](http://linux-training.be/linuxsys.pdf)
-

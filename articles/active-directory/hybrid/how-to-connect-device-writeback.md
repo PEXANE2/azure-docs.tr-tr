@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447095"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279270"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: cihaz geri yazmayı etkinleştirme
 > [!NOTE]
@@ -31,10 +31,10 @@ ms.locfileid: "87447095"
 
 Aşağıdaki belgelerde, Azure AD Connect cihaz geri yazma özelliğinin nasıl etkinleştirileceği hakkında bilgi verilmektedir. Aşağıdaki senaryolarda cihaz geri yazma kullanılır:
 
-* [Karma sertifika güven dağıtımı kullanarak iş Için Windows Hello 'yu](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration) etkinleştir
+* [Karma sertifika güven dağıtımı kullanarak iş Için Windows Hello 'yu](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration) etkinleştir
 * Cihazları ADFS (2012 R2 veya üzeri) korunan uygulamalara (bağlı olan taraf güvenleri) göre koşullu erişimi etkinleştirin.
 
-Bu, uygulamalara erişimin yalnızca güvenilen cihazlara verilme konusunda ek güvenlik ve güvence sağlar. Koşullu erişim hakkında daha fazla bilgi için bkz. [koşullu erişim Ile riski yönetme](../active-directory-conditional-access-azure-portal.md) ve [Azure Active Directory cihaz kaydı kullanarak şirket Içi koşullu erişim ayarlama](../../active-directory/active-directory-device-registration-on-premises-setup.md).
+Bu, uygulamalara erişimin yalnızca güvenilen cihazlara verilme konusunda ek güvenlik ve güvence sağlar. Koşullu erişim hakkında daha fazla bilgi için bkz. [koşullu erişim Ile riski yönetme](../conditional-access/overview.md) ve [Azure Active Directory cihaz kaydı kullanarak şirket Içi koşullu erişim ayarlama](../devices/overview.md).
 
 > [!IMPORTANT]
 > <li>Cihazların, kullanıcılarla aynı ormanda bulunması gerekir. Cihazların tek bir ormana geri yazılması gerektiğinden, bu özellik şu anda birden çok Kullanıcı ormanıyla bir dağıtımı desteklememektedir.</li>
@@ -83,7 +83,7 @@ Cihazın geri yazma özelliği artık düzgün şekilde çalışıyor olmalıdı
    ![Active Directory Yönetim Merkezi Kayıtlı cihazlar listesi](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>Koşullu erişimi etkinleştir
-Bu senaryoyu etkinleştirmeye yönelik ayrıntılı yönergeler, [Azure Active Directory cihaz kaydı kullanarak şirket Içi koşullu erişim ayarları](../../active-directory/active-directory-device-registration-on-premises-setup.md)dahilinde kullanılabilir.
+Bu senaryoyu etkinleştirmeye yönelik ayrıntılı yönergeler, [Azure Active Directory cihaz kaydı kullanarak şirket Içi koşullu erişim ayarları](../devices/overview.md)dahilinde kullanılabilir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>Geri yazma onay kutusu hala devre dışı
@@ -126,9 +126,8 @@ Active Directory yapılandırmayı doğrulayın:
 ![Sorun giderme, cihaz kaydı yapılandırmasındaki izinleri doğrulama](./media/how-to-connect-device-writeback/troubleshoot6.png)
 
 ## <a name="additional-information"></a>Ek Bilgi
-* [Koşullu erişimle risk yönetimi](../active-directory-conditional-access-azure-portal.md)
-* [Azure Active Directory Cihaz Kaydı kullanarak şirket içi koşullu erişimi ayarlama](../../active-directory/active-directory-device-registration-on-premises-setup.md)
+* [Koşullu erişimle risk yönetimi](../conditional-access/overview.md)
+* [Azure Active Directory Cihaz Kaydı kullanarak şirket içi koşullu erişimi ayarlama](../devices/overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.
-

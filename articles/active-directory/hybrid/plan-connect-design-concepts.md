@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698606"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279661"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: tasarım kavramları
 Bu belgenin amacı, Azure AD Connect uygulama tasarımı sırasında düşünülmesi gereken alanların tanımlanmasıdır. Bu belge, bazı alanlarda ayrıntılı bir bakış ve bu kavramlar diğer belgelerde kısaca açıklanmıştır.
@@ -46,7 +46,7 @@ Bu konu, yalnızca kullanıcılarla ilişkili olan Sourcetutturucu hakkında kon
 * 60 karakterden kısa bir süre
   * -Z, A-Z veya 0-9 olmayan karakterler kodlanır ve 3 karakter olarak sayılır
 * Özel bir karakter içermez: &#92;! # $% & * +/=? ^ &#96; {} | ~ < >  () '; : , [ ] " \@ _
-* Genel olarak benzersiz olması gerekir
+* Genel olarak benzersiz olmalıdır
 * Bir dize, tamsayı veya ikili olmalıdır
 * Bu değişiklik değiştirebildiğinden, kullanıcının adına dayanmamalıdır
 * Büyük/küçük harfe duyarlı olmamalıdır ve büyük/küçük harfe göre değişebilen değerlerden kaçının
@@ -140,7 +140,7 @@ Kaynak bağlayıcı özniteliği olarak Objectguıd 'den bir kaynak bağlantı �
 
 3. Azure AD yönetici kimlik bilgilerinizi girip **İleri**' ye tıklayın.
 
-4. Azure AD Connect Sihirbazı, şirket içi Active Directory ms-DS-Imos, GUID özniteliğinin durumunu analiz eder. Öznitelik, dizindeki herhangi bir nesnede yapılandırılmamışsa, başka hiçbir uygulamanın Şu anda özniteliğini kullanmamasının ve bunu kaynak bağlantısı özniteliği olarak kullanması açısından güvenli olduğunu Azure AD Connect. Devam etmek için **İleri** 'ye tıklayın.
+4. Azure AD Connect Sihirbazı, şirket içi Active Directory ms-DS-Imos, GUID özniteliğinin durumunu analiz eder. Öznitelik, dizindeki herhangi bir nesnede yapılandırılmamışsa, başka hiçbir uygulamanın Şu anda özniteliğini kullanmamasının ve bunu kaynak bağlantısı özniteliği olarak kullanması açısından güvenli olduğunu Azure AD Connect. Devam etmek için **İleri**'ye tıklayın.
 
    ![Mevcut dağıtım için bu GUID 'yi etkinleştir-adım 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -165,7 +165,7 @@ Kaynak bağlayıcı özniteliği olarak Objectguıd 'den bir kaynak bağlantı �
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>AD FS veya üçüncü taraf Federasyon yapılandırmasındaki etki
 Şirket içi AD FS dağıtımını yönetmek için Azure AD Connect kullanıyorsanız, Azure AD Connect talep kurallarını otomatik olarak kaynak Bağlayıcısı ile aynı AD özniteliğini kullanacak şekilde güncelleştirir. Bu, ADFS tarafından oluşturulan ImmutableID talebinin Azure AD 'ye aktarılmış Sourcetutturucu değerleriyle tutarlı olmasını sağlar.
 
-Azure AD Connect dışında AD FS yönetiyorsanız veya kimlik doğrulaması için üçüncü taraf Federasyon sunucuları kullanıyorsanız, ImmutableID talebinin talep kurallarını, Azure AD 'ye, [AD FS talep kurallarını değiştirme](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims)bölümünde açıklandığı gibi Azure AD 'ye aktarılmış sourcetutturucu değerleriyle tutarlı olacak şekilde el ile güncelleştirmeniz gerekir. Sihirbaz, yükleme tamamlandıktan sonra aşağıdaki uyarıyı döndürür:
+Azure AD Connect dışında AD FS yönetiyorsanız veya kimlik doğrulaması için üçüncü taraf Federasyon sunucuları kullanıyorsanız, ImmutableID talebinin talep kurallarını, Azure AD 'ye, [AD FS talep kurallarını değiştirme](./how-to-connect-fed-management.md#modclaims)bölümünde açıklandığı gibi Azure AD 'ye aktarılmış sourcetutturucu değerleriyle tutarlı olacak şekilde el ile güncelleştirmeniz gerekir. Sihirbaz, yükleme tamamlandıktan sonra aşağıdaki uyarıyı döndürür:
 
 ![Üçüncü taraf Federasyon yapılandırması](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
@@ -193,7 +193,7 @@ John, contoso.com 'deki bir kullanıcı. \@Kullanıcıları Azure AD directory c
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Azure AD için yönlendirilebilir olmayan şirket içi etki alanları ve UPN
 Bazı kuruluşların contoso. Local gibi yönlendirilebilir olmayan etki alanları ya da contoso gibi basit tek etiketli etki alanları vardır. Azure AD 'de yönlendirilemeyen bir etki alanını doğrulayameyebilirsiniz. Azure AD Connect, Azure AD 'de yalnızca doğrulanmış bir etki alanıyla eşitlenebilir. Bir Azure AD dizini oluşturduğunuzda, Azure AD 'niz için varsayılan etki alanı haline gelen bir yönlendirilebilir etki alanı oluşturur. Örneğin, contoso.onmicrosoft.com. Bu nedenle, varsayılan onmicrosoft.com etki alanına eşitlemek istemediğiniz durumlarda böyle bir senaryoda, diğer yönlendirilebilir etki alanını doğrulamak gerekli hale gelir.
 
-Etki alanlarını ekleme ve doğrulama hakkında daha fazla bilgi için, [Azure Active Directory için özel etki alanı adınızı ekleme](../active-directory-domains-add-azure-portal.md) konusunu okuyun.
+Etki alanlarını ekleme ve doğrulama hakkında daha fazla bilgi için, [Azure Active Directory için özel etki alanı adınızı ekleme](../fundamentals/add-custom-domain.md) konusunu okuyun.
 
 Azure AD Connect, yönlendirilemeyen bir etki alanı ortamında çalışıp çalışmadığını algılar ve hızlı ayarlar ile ilerlemeniz için size uygun şekilde uyarı verebilir. Yönlendirilemeyen bir etki alanında çalışıyorsanız, büyük olasılıkla kullanıcıların UPN 'sine yönlendirilemeyen son ekler de vardır. Örneğin, contoso. Local altında çalıştırıyorsanız, Azure AD Connect hızlı ayarları kullanmak yerine özel ayarları kullanmanızı önerir. Özel ayarları kullanarak, kullanıcılar Azure AD ile eşitlendikten sonra Azure 'da oturum açmak için UPN olarak kullanılması gereken özniteliği belirtebilirsiniz.
 

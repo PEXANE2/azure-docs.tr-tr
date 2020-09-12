@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327d365cd1b110a6b57b11f92e70d221d3712cfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550183"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279780"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Işlevler başvurusu
 Azure AD Connect, işlevler eşitleme sırasında bir öznitelik değerini işlemek için kullanılır.  
@@ -75,7 +75,7 @@ Türler aşağıdaki sözdizimiyle ifade edilir:
   * [Certparmak Izi](#certthumbprint)
   * [CertVersion](#certversion)
   * [IsCert](#iscert)
-* **Dönüştürü**
+* **Dönüştürme**
   * [CBool](#cbool)
   * [CDate](#cdate)
   * [CGuid](#cguid)
@@ -117,14 +117,14 @@ Türler aşağıdaki sözdizimiyle ifade edilir:
   * [Biriktirme](#count)
   * [Öğe](#item)
   * [Imornull](#itemornull)
-  * [Katıl](#join)
+  * [Join](#join)
   * [RemoveDuplicates](#removeduplicates)
   * [Ayırmayı](#split)
 * **Program akışı**
   * [Hata](#error)
   * [Mayan](#iif)
   * [Seç](#select)
-  * [Anahtar](#switch)
+  * [Değiştirebilirsiniz](#switch)
   * [Olmadığı](#where)
   * [Kullanılarak](#with)
 * **Metin**
@@ -426,9 +426,9 @@ CGuid işlevi bir GUID 'nin dize gösterimini ikili gösterimine dönüştürür
 Contains işlevi, bir dizeyi çok değerli bir özniteliğin içinde bulur
 
 **Sözdizimi**  
-`num Contains (mvstring attribute, str search)`-büyük-küçük harfe duyarlı  
+`num Contains (mvstring attribute, str search)` -büyük-küçük harfe duyarlı  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
-`num Contains (mvref attribute, str search)`-büyük-küçük harfe duyarlı
+`num Contains (mvref attribute, str search)` -büyük-küçük harfe duyarlı
 
 * öznitelik: aranacak çok değerli öznitelik.
 * Search: özniteliğinde bulunacak dize.
@@ -450,7 +450,7 @@ ProxyAddresses özniteliğinin bir birincil e-posta adresi varsa (büyük harfli
 ConvertFromBase64 işlevi, belirtilen Base64 kodlamalı değeri normal bir dizeye dönüştürür.
 
 **Sözdizimi**  
-`str ConvertFromBase64(str source)`-kodlama için Unicode varsayılır  
+`str ConvertFromBase64(str source)` -kodlama için Unicode varsayılır  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Kaynak: Base64 kodlamalı dize  
@@ -509,7 +509,7 @@ Bu işlevin çıkış biçimi Azure Active Directory tarafından, DN öznitelik 
 48656C6C6F20776F726C6421 döndürür
 
 ---
-### <a name="count"></a>Sayı
+### <a name="count"></a>Count
 **Açıklama:**  
 Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını döndürür
 
@@ -660,7 +660,7 @@ FormatDateTime işlevi, bir tarih/saati belirtilen biçime sahip bir dizeye biç
 * Biçim: dönüştürülecek biçimi temsil eden bir dize.
 
 **Açıklamalarının**  
-Biçim için olası değerler burada bulunabilir: [Format işlevi Için özel tarih ve saat biçimleri](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
+Biçim için olası değerler burada bulunabilir: [Format işlevi Için özel tarih ve saat biçimleri](/dax/custom-date-and-time-formats-for-the-format-function).
 
 **Örnek:**  
 

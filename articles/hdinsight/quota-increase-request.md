@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 4de32bad763c0bbf0e143a7ce639efec8c9c41ae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079624"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291679"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Azure HDInsight için kota artışı isteniyor
 
@@ -65,7 +65,7 @@ Kota artışı istemek için aşağıdaki adımları uygulayın:
 1. **Gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.
 
 > [!NOTE]  
-> Özel bir bölgedeki HDInsight Core kotasını artırmanız gerekiyorsa, [bir beyaz liste isteği gönderebilirsiniz](https://aka.ms/canaryintwhitelist).
+> Özel bir bölgedeki HDInsight Core kotasını artırmanız gerekiyorsa, [onaylı bir liste isteği gönderebilirsiniz](https://aka.ms/canaryintwhitelist).
 
 [Bir kota artışı istemek için desteğe başvurabilirsiniz](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 

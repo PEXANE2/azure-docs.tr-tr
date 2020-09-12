@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 28b6a70297efb8d8237f085e1f5b08dbb6a09072
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32ee0135d4d991a9afe229747f8cb66916a12e7f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522615"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277451"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Yasal uyumluluk panonuzda standartlar kümesini özelleştirme
 
@@ -46,7 +46,7 @@ Ayrıca, genel uyumluluk çerçevelerine göre güvenlik ve uyum için en iyi uy
 Panoda kullanılabilir hale geldiğinde ek standartlar desteklenecektir. 
 
 
-## <a name="adding-a-regulatory-standard-to-your-dashboard"></a>Panonuza düzenleme standardı ekleme
+## <a name="add-a-regulatory-standard-to-your-dashboard"></a>Panonuza bir düzenleme standardı ekleme
 
 Aşağıdaki adımlarda, desteklenen mevzuata standartlarından biriyle uyumluluğunuzu izlemek için bir paket ekleme açıklanmaktadır.
 

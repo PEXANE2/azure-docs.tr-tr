@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9470e9af38fdd814f5059538656e6a3dbb8e3a7
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245486"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279321"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect eşitleme: kullanıcıları, grupları ve kişileri anlama
 Birden çok Active Directory ormanına sahip olmanız ve birkaç farklı dağıtım topolojisi vardır. Ortak modeller bir birleşme & alımı sonrasında bir hesap kaynağı dağıtımı ve GAL ile eşitleme ormanları içerir. Ancak saf modeller olsa da, karma modeller de ortaktır. Azure AD Connect eşitlemede varsayılan yapılandırma belirli bir modeli kabul etmez, ancak yükleme kılavuzunda Kullanıcı eşleşmesinin nasıl seçildiğine bağlı olarak farklı davranışlar gözlemlenebilir.
@@ -39,15 +39,15 @@ Grupları Active Directory 'den Azure AD 'ye eşitlerken önemli noktalara dikka
 
 * Azure AD Connect, yerleşik güvenlik gruplarını Dizin eşitlemeden dışlar.
 
-* Azure AD Connect, [birincil grup üyeliklerini](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx) Azure AD 'ye eşitlemeyi desteklemez.
+* Azure AD Connect, [birincil grup üyeliklerini](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11)) Azure AD 'ye eşitlemeyi desteklemez.
 
-* Azure AD Connect, [dinamik dağıtım grubu üyeliklerini](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx) Azure AD 'ye eşitlemeyi desteklemez.
+* Azure AD Connect, [dinamik dağıtım grubu üyeliklerini](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups?view=exchserver-2019) Azure AD 'ye eşitlemeyi desteklemez.
 
 * Bir Active Directory grubunu Azure AD ile posta etkin bir grup olarak eşzamanlı hale getirmek için:
 
     * Grubun *ProxyAddress* özniteliği boşsa, *posta* özniteliği bir değere sahip olmalıdır
 
-    * Grubun *ProxyAddress* özniteliği boş değilse, en az bir SMTP proxy adresi değeri içermesi gerekir. Aşağıda bazı örnekler verilmiştir:
+    * Grubun *ProxyAddress* özniteliği boş değilse, en az bir SMTP proxy adresi değeri içermesi gerekir. İşte bazı örnekler:
     
       * ProxyAddress özniteliğinin değeri *{"X500:/0 = contoso. com/OU = Users/CN = testgroup"}* olan bir Active Directory grubu Azure AD 'de posta etkin olmayacak. SMTP adresi yok.
       
@@ -76,4 +76,3 @@ Bir nesne Azure AD 'ye aktarıldığında, daha sonra Sourcebağlayıcının de�
 ## <a name="additional-resources"></a>Ek Kaynaklar
 * [Azure AD Connect eşitleme: eşitleme seçeneklerini özelleştirme](how-to-connect-sync-whatis.md)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)
-

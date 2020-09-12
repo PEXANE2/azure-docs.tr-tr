@@ -15,23 +15,23 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da21e9aa3b3b4cafec71a4d1881b9eb32b4dedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25314b4a306678dc877a95194907b3d73979e4f8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356228"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275870"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>Sorun giderme: Azure AD Connect yüklemesi sorunları
 
 ## <a name="recommended-steps"></a>**Önerilen Adımlar**
-Lütfen hangi [Azure AD Connect yükleme türünün](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) sizin için uygun olduğunu denetleyin. Hızlı yükleme ölçütlerini karşılıyoruz, Hızlı yüklemeye gitmeniz önerilir. Hızlı yükleme, yüklemeyi bitirebilmeniz için gereken en az seçenek sağlar, bu nedenle herhangi bir sorunun daha az olma olasılığı vardır. 
+Lütfen hangi [Azure AD Connect yükleme türünün](./how-to-connect-install-select-installation.md) sizin için uygun olduğunu denetleyin. Hızlı yükleme ölçütlerini karşılıyoruz, Hızlı yüklemeye gitmeniz önerilir. Hızlı yükleme, yüklemeyi bitirebilmeniz için gereken en az seçenek sağlar, bu nedenle herhangi bir sorunun daha az olma olasılığı vardır. 
 
 Ancak, hızlı yükleme ölçütlerini karşılamıyorsa ve özel yükleme yapmanız gerekiyorsa, yaygın sorunlardan kaçınmak için izleyebileceğiniz bazı en iyi uygulamalar aşağıda verilmiştir. Kolaylık sağlaması için yalnızca seçmeli seçenekler burada belirtilmiştir:
 
 * AAD Connect 'i yüklemekte olduğunuz makinede yönetici olduğunuzdan emin olun. Aynı yönetici kimlik bilgileriyle makinede oturum açın.
 
-* Mevcut SQL Server kullanmak istiyorsanız, "var olan bir SQL Server kullan" dışında tüm seçeneklerin varsayılan olmasına izin verin. Özel yükleme seçeneklerini kullanma hakkında [daha fazla ayrıntı](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom) aşağıda verilmiştir. 
+* Mevcut SQL Server kullanmak istiyorsanız, "var olan bir SQL Server kullan" dışında tüm seçeneklerin varsayılan olmasına izin verin. Özel yükleme seçeneklerini kullanma hakkında [daha fazla ayrıntı](./how-to-connect-install-custom.md) aşağıda verilmiştir. 
 
     ![Mevcut SQL Server kullan](media/tshoot-connect-install-issues/tshoot-connect-install-issues/useexistingsqlserver.png)
 
@@ -41,26 +41,21 @@ Ancak, hızlı yükleme ölçütlerini karşılamıyorsa ve özel yükleme yapma
 
 ### <a name="common-issues"></a>**Genel Sorunlar**
 
-* Şirket [içi Active Directory bağlantı sorunları](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools).
+* Şirket [içi Active Directory bağlantı sorunları](./reference-connect-adconnectivitytools.md).
 
-* [Çevrimiçi Azure Active Directory bağlantı sorunları](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity).
+* [Çevrimiçi Azure Active Directory bağlantı sorunları](./tshoot-connect-connectivity.md).
 
-* Şirket [içi Active Directory izin sorunları](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account).
+* Şirket [içi Active Directory izin sorunları](./how-to-connect-configure-ad-ds-connector-account.md).
 
 ## <a name="recommended-documents"></a>**Önerilen Belgeler**
-* [Azure AD Connect Önkoşulları](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
-* [Azure AD Connect için hangi yükleme türünün kullanılacağını seçme](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)
-* [Hızlı ayarları kullanarak Azure AD Connect ile çalışmaya başlama](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
-* [Azure AD Connect özel yüklemesi](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)
-* [Azure AD Connect: Önceki bir sürümden en son sürüme yükseltme](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
-* [Azure AD Connect: hazırlama sunucusu nedir?](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
-* [ADConnectivityTool PowerShell Modülü nedir?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
+* [Azure AD Connect Önkoşulları](./how-to-connect-install-prerequisites.md)
+* [Azure AD Connect için hangi yükleme türünün kullanılacağını seçme](./how-to-connect-install-select-installation.md)
+* [Hızlı ayarları kullanarak Azure AD Connect ile çalışmaya başlama](./how-to-connect-install-express.md)
+* [Azure AD Connect özel yüklemesi](./how-to-connect-install-custom.md)
+* [Azure AD Connect: Önceki bir sürümden en son sürüme yükseltme](./how-to-upgrade-previous-version.md)
+* [Azure AD Connect: hazırlama sunucusu nedir?](./plan-connect-topologies.md#staging-server)
+* [ADConnectivityTool PowerShell Modülü nedir?](./how-to-connect-adconnectivitytools.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md).
 - [Hibrit kimlik nedir?](whatis-hybrid-identity.md)
-
-
-
-
-

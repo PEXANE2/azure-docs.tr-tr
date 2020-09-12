@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c915898d3eec4494b6a300e88ffde216f21d5d68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358132"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279542"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Kullanıcı Gizliliği ve Azure Active Directory Doğrudan Kimlik Doğrulaması
 
@@ -67,7 +67,7 @@ Betiği, "ile bir dosyaya kaydedin. PS1 "uzantısı. Bu betiği gerektiği gibi 
 
 ### <a name="delete-authentication-agent-event-logs"></a>Kimlik doğrulama Aracısı olay günlüklerini sil
 
-Bu ürün, **Windows olay günlükleri**de oluşturabilir. Daha fazla bilgi edinmek için lütfen [Bu makaleyi](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx)okuyun.
+Bu ürün, **Windows olay günlükleri**de oluşturabilir. Daha fazla bilgi edinmek için lütfen [Bu makaleyi](/windows/win32/wes/windows-event-log)okuyun.
 
 Doğrudan kimlik doğrulama aracısıyla ilgili günlükleri görüntülemek için, sunucuda **Olay Görüntüleyicisi** uygulamayı açın ve **uygulama ve hizmet Logs\microsoft\azureadconnect\authenticationt\0\ yönetici**' nin altına bakın.
 
@@ -103,7 +103,7 @@ Bu betiği her 48 saatte bir çalışacak şekilde zamanlamak için şu adımlar
  
 ### <a name="note-about-domain-controller-logs"></a>Etki alanı denetleyicisi günlükleri hakkında
 
-Denetim günlüğü etkinse, bu ürün etki alanı denetleyicileriniz için güvenlik günlükleri oluşturabilir. Denetim ilkelerini yapılandırma hakkında daha fazla bilgi edinmek için bu [makaleyi](https://technet.microsoft.com/library/dd277403.aspx)okuyun.
+Denetim günlüğü etkinse, bu ürün etki alanı denetleyicileriniz için güvenlik günlükleri oluşturabilir. Denetim ilkelerini yapılandırma hakkında daha fazla bilgi edinmek için bu [makaleyi](/previous-versions/tn-archive/dd277403(v=technet.10))okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Güven Merkezi 'nde Microsoft gizlilik ilkesini gözden geçirme](https://www.microsoft.com/trustcenter)

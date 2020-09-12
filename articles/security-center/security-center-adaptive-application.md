@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691488"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276771"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
@@ -54,7 +54,7 @@ Bilinen güvenli uygulamalar listesini tanımlayarak ve başka bir şey yürüt�
 |Fiyat|Standart katmanı|
 |Desteklenen makineler:|![Evet ](./media/icons/yes-icon.png) Azure ve Windows ve Linux çalıştıran Azure dışı makineler<br>![Evet ](./media/icons/yes-icon.png) [Azure yay](https://docs.microsoft.com/azure/azure-arc/) makineleri|
 |Gerekli roller ve izinler:|**Güvenlik okuyucu** ve **okuyucu** rolleri hem grupları hem de bilinen güvenli uygulamaların listesini görüntüleyebilir<br>**Katkıda bulunan** ve **Güvenlik yönetici** rolleri, grupları ve bilinen güvenli uygulamaların listesini düzenleyebilir|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -76,7 +76,7 @@ Güvenlik Merkezi, aboneliklerinizde düzenli olarak benzer bir uygulama kümesi
     - Aynı uygulamaları tutarlı bir şekilde çalıştıran ve izin verilenler listesine sahip olmayan, **Önerilen** ve olmayan gruplar. Bu gruplar için uyarlamalı uygulama denetimlerini etkinleştirmenizi öneririz.
     
       > [!TIP]
-      > "BELGEADı grubu" önekiyle bir grup adı görürseniz, bu, kısmen tutarlı bir uygulamalar listesi olan makineler içerir. Güvenlik Merkezi bir düzen göremez, ancak [grubun Uyarlamalı uygulama denetimleri kuralını düzenlemede](#editing-a-groups-adaptive-application-controls-rule)açıklanan şekilde, bazı Uyarlamalı uygulama denetimleri kurallarını el ile tanımlayıp _tanımlayamayacağını görmek_ için bu grubun gözden geçirilmesini öneriyor.
+      > "BELGEADı grubu" önekiyle bir grup adı görürseniz, bu, kısmen tutarlı bir uygulamalar listesi olan makineler içerir. Güvenlik Merkezi bir düzen göremez, ancak [grubun Uyarlamalı uygulama denetimleri kuralını düzenlemede](#edit-a-groups-adaptive-application-controls-rule)açıklanan şekilde, bazı Uyarlamalı uygulama denetimleri kurallarını el ile tanımlayıp _tanımlayamayacağını görmek_ için bu grubun gözden geçirilmesini öneriyor.
       >
       > Ayrıca, [makineyi bir gruptan diğerine taşıma](#move-a-machine-from-one-group-to-another)bölümünde açıklandığı gibi bu gruptaki makineleri diğer gruplara taşıyabilirsiniz.
 
@@ -115,7 +115,7 @@ Güvenlik Merkezi, aboneliklerinizde düzenli olarak benzer bir uygulama kümesi
 
 
 
-## <a name="editing-a-groups-adaptive-application-controls-rule"></a>Grubun Uyarlamalı uygulama denetimleri kuralını Düzenle
+## <a name="edit-a-groups-adaptive-application-controls-rule"></a>Grubun Uyarlamalı uygulama denetimleri kuralını düzenleme
 
 Kuruluşunuzdaki bilinen değişiklikler nedeniyle bir makine grubu için izin verilenler listesini düzenlemeye karar verebilirsiniz. 
 
@@ -150,7 +150,7 @@ Bir makine grubunun kurallarını düzenlemek için:
 
 
 
-## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>"Uyarlamalı uygulama denetim ilkenizde izin verilen Allowlist Rules" önerisi yanıt veriyor
+## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>"Uyarlamalı uygulama denetim ilkenizde izin verilen Allowlist Rules" önerisini yanıtlayın
 
 Güvenlik Merkezi 'nin makine öğrenimi, daha önceden izin verilmeyen yasal davranış belirlediğinde, bu öneriyi görürsünüz. Öneri, hatalı pozitif uyarıların sayısını azaltmak için mevcut tanımlarınız için yeni kurallar önerir.
 
@@ -167,7 +167,7 @@ Sorunları düzeltmek için:
 
 
 
-## <a name="auditing-alerts-and-violations"></a>Uyarıları ve ihlalleri denetleme
+## <a name="audit-alerts-and-violations"></a>Denetim uyarıları ve ihlalleri
 
 1. Güvenlik Merkezi 'nin menüsünde, **Uyarlamalı uygulama denetimleri**' ni seçin.
 
@@ -199,7 +199,7 @@ Bir makineyi bir gruptan diğerine taşıdığınızda, uygulanan uygulama denet
 
 
 
-## <a name="managing-application-controls-via-the-rest-api"></a>Uygulama denetimlerini REST API aracılığıyla yönetme 
+## <a name="manage-application-controls-via-the-rest-api"></a>Uygulama denetimlerini REST API aracılığıyla yönetme 
 
 Uyarlamalı uygulama denetimlerinizi program aracılığıyla 'yi yönetmek için REST API kullanın. 
 

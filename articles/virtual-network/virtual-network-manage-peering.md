@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: 4f94c3e643e372d96a6e9d100773ccd8929e4c8b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 41cc2bfa39160d26b5c5f09687ddf1fef9ec5803
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416511"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290200"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Sanal ağ eşlemesi oluşturma, değiştirme veya silme
 
@@ -86,7 +86,7 @@ Bir eşlemeyi değiştirmeden önce, gereksinimler ve kısıtlamalar ve [gerekli
 3. **Ayarlar**altında, eşlemeler ' **i seçin.**
 4. Görüntülemek veya ayarlarını değiştirmek istediğiniz eşlemeyi seçin.
 5. Uygun ayarı değiştirin. Eşleme oluşturma [adımının 5. adımında](#add-peering) her ayar için seçenekler hakkında bilgi edinin.
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 **Komutlar**
 
@@ -126,11 +126,12 @@ Sanal ağların bazen iletişim kurmasını istiyorsanız, her zaman bir eşleme
   - *Başlatıldı:* Birinci sanal ağdan ikinci sanal ağa eşleme oluşturduğunuzda, eşleme durumu *başlatılır*. 
   - *Bağlı:* İkinci sanal ağdan ilk sanal ağa eşleme oluşturduğunuzda, eşleme durumu *bağlanır*. İlk sanal ağ için eşleme durumunu görüntülediğinizde, durumunun *başlatıldığı* ' dan *bağlı*' ya değiştiğini görürsünüz. Her iki sanal ağ eşlemesi için de eşleme durumu *bağlanana*kadar eşleme başarılı bir şekilde kurulmadı.
 - Klasik dağıtım modeli aracılığıyla oluşturulmuş bir sanal ağla Kaynak Yöneticisi aracılığıyla oluşturulan bir sanal ağı eşlemeden, yalnızca Kaynak Yöneticisi aracılığıyla dağıtılan sanal ağ için bir eşleme yapılandırırsınız. Bir sanal ağ (klasik) için eşlemeyi veya klasik dağıtım modeli aracılığıyla dağıtılan iki sanal ağ arasında yapılandırılamaz. Sanal ağdan (Kaynak Yöneticisi) sanal ağa (klasik) eşleme oluşturduğunuzda, eşleme durumu *güncelleştiriliyor*, daha sonra *bağlantılı*olarak değişir.
-- İki sanal ağ arasında bir eşleme oluşturulur. Eşlemeler geçişli değildir. Aralarında eşleme oluşturursanız:
-  - VirtualNetwork1 & VirtualNetwork2
-  - VirtualNetwork2 & VirtualNetwork3
+- İki sanal ağ arasında bir eşleme oluşturulur. Tek başına eşlemeler geçişli değildir. Aralarında eşleme oluşturursanız:
+  - VirtualNetwork1 & VirtualNetwork2-VirtualNetwork1 & VirtualNetwork2
+  - VirtualNetwork2 & VirtualNetwork3-VirtualNetwork2 & VirtualNetwork3
 
-  VirtualNetwork1 ile VirtualNetwork3 arasında bir eşleme yoktur. VirtualNetwork1 ve VirtualNetwork3 arasında bir sanal ağ eşlemesi oluşturmak istiyorsanız VirtualNetwork1 ve VirtualNetwork3 arasında bir eşleme oluşturmanız gerekir.
+
+  VirtualNetwork1 ile VirtualNetwork3 arasında bir eşleme yoktur. VirtualNetwork1 ve VirtualNetwork3 arasında bir sanal ağ eşlemesi oluşturmak istiyorsanız VirtualNetwork1 ve VirtualNetwork3 arasında bir eşleme oluşturmanız gerekir. VirtualNetwork1 ile VirtualNetwork3 arasında bir eşleme yoktur. VirtualNetwork1 ve VirtualNetwork3 'in doğrudan iletişim kurmasını istiyorsanız, VirtualNetwork1 ve VirtualNetwork3 arasında açık bir eşleme oluşturmanız veya hub ağındaki bir NVA üzerinden gitmeniz gerekir.  
 - Eşlenen sanal ağlardaki adları varsayılan Azure ad çözümlemesi kullanarak çözümleyemez. Diğer sanal ağlardaki adları çözümlemek için, [özel etki alanları](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya özel bir DNS sunucusu için Azure DNS kullanmanız gerekir. Kendi DNS sunucunuzu ayarlamayı öğrenmek için, bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 - Aynı bölgedeki eşlenmiş sanal ağlardaki kaynaklar aynı bant genişliği ve gecikme süresi ile aynı sanal ağ içinde olup olmadıkları ile birbirleriyle iletişim kurabilir. Ancak, her bir sanal makine boyutunun en fazla ağ bant genişliği vardır. Farklı sanal makine boyutları için en fazla ağ bant genişliği hakkında daha fazla bilgi edinmek için bkz. [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makine boyutları.
 - Bir sanal ağ başka bir sanal ağla eşlenebilir ve ayrıca bir Azure sanal ağ geçidi ile başka bir sanal ağa da bağlanabilir. Sanal ağlar hem eşleme hem de ağ geçidi aracılığıyla bağlandığında, sanal ağlar arasındaki trafik, ağ geçidi yerine eşleme yapılandırması üzerinden akar.

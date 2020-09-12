@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519363"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277672"
 ---
 # <a name="working-with-security-policies"></a>Güvenlik ilkeleriyle çalışma
 
@@ -40,7 +40,7 @@ Güvenlik Merkezi güvenlik ilkeleriyle çalışma için aşağıdaki seçenekle
 * **Mevzuat uyumluluk Ilkeleri ekleme** -Güvenlik Merkezi 'nin mevzuat uyumluluk panosu, ortamınızdaki tüm değerlendirmelerin durumunu belirli bir standart veya Yönetmeliği (Azure CIS, nıst SP 800-53 R4, SWIFT CSP cscf-V2020) bağlamında gösterir. Daha fazla bilgi için bkz. [mevzuata uyumluluğunu geliştirme](security-center-compliance-dashboard.md).
 
 
-## <a name="managing-your-security-policies"></a>Güvenlik ilkelerinizi yönetme
+## <a name="manage-your-security-policies"></a>Güvenlik ilkelerinizi yönetme
 
 Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
@@ -54,7 +54,7 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
 1. Bu abonelik veya yönetim grubu için güvenlik ilkesi sayfası görüntülenir. Kullanılabilir ve atanan ilkeleri gösterir.
 
-   ![ilke ekranı](./media/tutorial-security-policy/security-policy-page.png)
+   ![ilke sayfası](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
     > Varsayılan ilkenize göre "MG devralınmış" etiketi varsa, ilke bir yönetim grubuna atandı ve görüntülemekte olduğunuz aboneliğin Devralındığı anlamına gelir.
@@ -111,11 +111,11 @@ Devre dışı bırakmak istediğiniz öneri, güvenlik merkezi 'nin mevzuat uyum
 
 1. **Geçerli Ilkeyi görüntüle**' yi seçin.
 
-   ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/view-effective-policy.png)
+   ![ilkeyi görüntüle](./media/tutorial-security-policy/view-effective-policy.png)
 
 1. Atanan ilkeyi seçin.
 
-   ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/security-policy.png)
+   ![ilke seçin](./media/tutorial-security-policy/security-policy.png)
 
 1. **Parametreler** bölümünde, devre dışı bırakmak istediğiniz öneriyi çağıran ilkeyi arayın ve açılan listeden **devre dışı** ' yı seçin.
 

@@ -16,19 +16,19 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f480118aaabf24bd7c5ca472bf04b12ee1405010
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446999"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275932"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory Geçişli Kimlik Doğrulaması Sorunlarını Giderme
 
 Bu makale, Azure AD geçişli kimlik doğrulamasıyla ilgili yaygın sorunlar hakkında sorun giderme bilgilerini bulmanıza yardımcı olur.
 
 >[!IMPORTANT]
->Doğrudan kimlik doğrulamasıyla Kullanıcı oturum açma sorunlarınız varsa, geri dönebilmeniz için özelliği devre dışı bırakıp doğrudan kimlik doğrulama aracılarını, yalnızca bulutta yer alan bir genel yönetici hesabına sahip olmadan kaldırın. [Yalnızca bulut genel yönetici hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımın yapılması kritik bir öneme sahiptir ve kiracınızdan kilitlenmemesini sağlar.
+>Doğrudan kimlik doğrulamasıyla Kullanıcı oturum açma sorunlarınız varsa, geri dönebilmeniz için özelliği devre dışı bırakıp doğrudan kimlik doğrulama aracılarını, yalnızca bulutta yer alan bir genel yönetici hesabına sahip olmadan kaldırın. [Yalnızca bulut genel yönetici hesabı ekleme](../fundamentals/add-users-azure-active-directory.md)hakkında bilgi edinin. Bu adımın yapılması kritik bir öneme sahiptir ve kiracınızdan kilitlenmemesini sağlar.
 
 ## <a name="general-issues"></a>Genel sorunlar
 
@@ -72,10 +72,10 @@ Bu sorun olduğunu doğrulamak için, ilk olarak geçişli kimlik doğrulama ara
  ``` 
 4. Kimlik bilgilerini girmeniz istendiğinde, oturum açmak için kullanılan Kullanıcı adını ve parolayı girin ( https://login.microsoftonline.com) .
 
-Aynı Kullanıcı adı/parola hatası alırsanız, bu, geçişli kimlik doğrulama aracısının düzgün çalıştığı ve sorun şirket içi UPN 'nin yönlendirilemeyen olabileceği anlamına gelir. Daha fazla bilgi için bkz. [Alternatif oturum açma kimliğini yapılandırma]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
+Aynı Kullanıcı adı/parola hatası alırsanız, bu, geçişli kimlik doğrulama aracısının düzgün çalıştığı ve sorun şirket içi UPN 'nin yönlendirilemeyen olabileceği anlamına gelir. Daha fazla bilgi için bkz. [Alternatif oturum açma kimliğini yapılandırma]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
 
 > [!IMPORTANT]
-> Azure AD Connect sunucusu etki alanına katılmış değilse, [Azure AD Connect: Önkoşullar](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#installation-prerequisites)bölümünde bahsedilen bir gereksinim, geçersiz Kullanıcı adı/parola sorunu oluşur.
+> Azure AD Connect sunucusu etki alanına katılmış değilse, [Azure AD Connect: Önkoşullar](./how-to-connect-install-prerequisites.md#installation-prerequisites)bölümünde bahsedilen bir gereksinim, geçersiz Kullanıcı adı/parola sorunu oluşur.
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory Yönetim merkezinde oturum açma hatası nedenleri (Premium lisans gerekir)
 
@@ -98,7 +98,7 @@ Kiracınızda ilişkili bir Azure AD Premium lisansı varsa, [Azure Active Direc
 | 80011 | Kimlik Doğrulama Aracısı şifre çözme anahtarını alamıyor. | Sorun sürekli olarak tekrarlanabilir ise, yeni bir kimlik doğrulama Aracısı yükleyip kaydedin. Ve geçerli olanı kaldırın.
 
 >[!IMPORTANT]
->Doğrudan kimlik doğrulama aracıları, [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)'sini çağırarak kullanıcı adlarını ve parolalarını Active Directory karşı DOĞRULAYARAK Azure AD kullanıcılarının kimliğini doğrular. Sonuç olarak, iş istasyonu oturum erişimini sınırlandırmak için Active Directory ' de "oturum aç" ayarını ayarladıysanız, doğrudan kimlik doğrulama aracılarını barındıran sunucuları da "oturum açma" sunucuları listesine eklemeniz gerekir. Bunun başarısız olması, kullanıcılarınızın Azure AD 'de oturum açmasını engeller.
+>Doğrudan kimlik doğrulama aracıları, [Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera)'sini çağırarak kullanıcı adlarını ve parolalarını Active Directory karşı DOĞRULAYARAK Azure AD kullanıcılarının kimliğini doğrular. Sonuç olarak, iş istasyonu oturum erişimini sınırlandırmak için Active Directory ' de "oturum aç" ayarını ayarladıysanız, doğrudan kimlik doğrulama aracılarını barındıran sunucuları da "oturum açma" sunucuları listesine eklemeniz gerekir. Bunun başarısız olması, kullanıcılarınızın Azure AD 'de oturum açmasını engeller.
 
 ## <a name="authentication-agent-installation-issues"></a>Kimlik doğrulama Aracısı yükleme sorunları
 

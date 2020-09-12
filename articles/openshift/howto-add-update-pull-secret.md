@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/21/2020
 keywords: Çek gizli, Aro, OpenShift, Red Hat
-ms.openlocfilehash: 3351052db63f095bfca5f0b91f26e1013319c582
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 769b7589fb6496fc2f4123665ad1f6fe61d0cce2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100166"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294756"
 ---
 # <a name="add-or-update-your-red-hat-pull-secret-on-an-azure-red-hat-openshift-4-cluster"></a>Azure Red Hat OpenShift 4 kümesine Red hat çekme gizli anahtarını ekleme veya güncelleştirme
 
-Bu kılavuzda, var olan bir Azure Red Hat OpenShift 4. x kümesine yönelik Red hat çekme gizli anahtarını ekleme veya güncelleştirme ele alınmaktadır.
+Bu kılavuzda, var olan bir Azure Red Hat OpenShift (ARO) 4. x kümesi için Red hat çekme gizli anahtarını ekleme veya güncelleştirme ele alınmaktadır.
 
 İlk kez bir küme oluşturuyorsanız, kümenizi oluştururken çekme gizli dizisini ekleyebilirsiniz. Red hat çekme gizli anahtarı ile bir ARO kümesi oluşturma hakkında daha fazla bilgi için bkz. [Azure Red Hat OpenShift 4 kümesi oluşturma](tutorial-create-cluster.md#get-a-red-hat-pull-secret-optional).
 
@@ -29,13 +29,13 @@ Red hat çekme parolası eklemeden bir ARO kümesi oluşturduğunuzda, kümenizd
 
 Bu bölümde, bu çekme gizliliğini Red hat çekme gizli dizinizdeki ek değerlerle güncelleştirme adımları gösterilmektedir.
 
-1. `pull-secret`OpenShift-config ad alanında adlı gizli anahtarı getirin ve aşağıdaki komutu çalıştırarak ayrı bir dosyaya kaydedin: 
+1. Ad alanında adlı gizli anahtarı getirin `pull-secret` `openshift-config` ve aşağıdaki komutu çalıştırarak ayrı bir dosyaya kaydedin: 
 
     ```console
     oc get secrets pull-secret -n openshift-config -o template='{{index .data ".dockerconfigjson"}}' | base64 -d > pull-secret.json
     ```
 
-    Çıktın aşağıdakine benzer olması gerekir (gerçek gizli değerin kaldırıldığını unutmayın):
+    Çıktın aşağıdakine benzer olması gerekir. (Gerçek gizli anahtar değerinin kaldırıldığını unutmayın.)
 
     ```json
     {
@@ -47,7 +47,7 @@ Bu bölümde, bu çekme gizliliğini Red hat çekme gizli dizinizdeki ek değerl
     }
     ```
 
-2. [Red Hat Openshıft Küme Yöneticisi portalınıza](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) gidin ve **çekme gizli anahtarını İndir '** e tıklayın. Red hat çekme gizli anahtarı aşağıdaki gibi görünür (gerçek gizli değerlerin kaldırıldığını unutmayın):
+2. [Red Hat Openshıft Küme Yöneticisi portalınıza](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) gidin ve **çekme gizli anahtarını indir**' i seçin. Red hat çekme gizli dizisi aşağıdaki gibi görünür. (Gerçek gizli değerlerin kaldırıldığını unutmayın.)
 
     ```json
     {
@@ -75,7 +75,7 @@ Bu bölümde, bu çekme gizliliğini Red hat çekme gizli dizinizdeki ek değerl
 3. Kırmızı hat çekme gizli dosyanızda bulunan girişlere ekleyerek, kümeinizden aldığınız çekme gizli dosyasını düzenleyin. 
 
     > [!IMPORTANT]
-    > `cloud.openshift.com`Red hat çekme gizli dizinizdeki girişin dahil edilmesi, kümenizin Red Hat 'e telemetri verileri göndermeye başlamasına neden olur. Yalnızca telemetri verilerini göndermek istiyorsanız bu bölümü ekleyin. Aksi takdirde, aşağıdaki bölümden ayrılın.
+    > `cloud.openshift.com`Kırmızı hat çekme gizli dizinizdeki girişin dahil edilmesi, kümenizin Red Hat 'e telemetri verileri göndermeye başlamasına neden olur. Bu bölümü yalnızca telemetri verilerini göndermek istiyorsanız ekleyin. Aksi takdirde, aşağıdaki bölümden ayrılın.    
     > ```json
     > {
     >         "cloud.openshift.com": {
@@ -86,13 +86,14 @@ Bu bölümde, bu çekme gizliliğini Red hat çekme gizli dizinizdeki ek değerl
 
     > [!CAUTION]
     > `arosvc.azurecr.io`Çekme gizli dizinizdeki girişi kaldırmayın veya değiştirmeyin. Bu bölüm, kümenizin düzgün çalışması için gereklidir.
+
     ```json
     "arosvc.azurecr.io": {
                 "auth": "<my-aroscv.azurecr.io-secret>"
             }
     ```
 
-    Son dosyanız aşağıdaki gibi görünmelidir (gerçek gizli değerlerin kaldırıldığını unutmayın):
+    Son dosyanız aşağıdaki gibi görünmelidir. (Gerçek gizli değerlerin kaldırıldığını unutmayın.)
 
     ```json
     {
@@ -121,25 +122,26 @@ Bu bölümde, bu çekme gizliliğini Red hat çekme gizli dizinizdeki ek değerl
     ```
 
 4. Dosyanın geçerli bir JSON olduğundan emin olun. JSON 'nizi doğrulamak için kullanabileceğiniz birçok yol vardır. Aşağıdaki örnek JQ kullanır:
+
     ```json
     cat pull-secret.json | jq
     ```
 
     > [!NOTE]
-    > Bir hata bu dosyada yer alıyorsa görünebilir `parse error` .
+    > Dosyada bir hata varsa, olarak görünür `parse error` .
 
 ## <a name="add-your-pull-secret-to-your-cluster"></a>Çekme sırlarınızı kümenize ekleyin
 
-Çekme sırlarınızı güncelleştirmek için aşağıdaki komutu çalıştırın:
+Çekme sırlarınızı güncelleştirmek için aşağıdaki komutu çalıştırın.
 
 > [!NOTE]
-> Bu komutun çalıştırılması, güncelleştirme için Küme düğümlerinizin tek tek yeniden başlatılmasına neden olur. 
+> Bu komutun çalıştırılması, Küme düğümlerinizin güncelleştirildiğinden tek tek yeniden başlatılmasına neden olur. 
 
 ```console
 oc set data secret/pull-secret -n openshift-config --from-file=.dockerconfigjson=./pull-secret.json
 ```
 
-Gizli anahtar ayarlandıktan sonra Red Hat sertifikalı işleçleri etkinleştirmeye hazırlanın.
+Gizli dizi ayarlandıktan sonra Red Hat sertifikalı Işleçleri etkinleştirmeye hazırsınız demektir.
 
 ### <a name="modify-the-configuration-files"></a>Yapılandırma dosyalarını değiştirme
 
@@ -153,7 +155,7 @@ oc edit configs.samples.operator.openshift.io/cluster -o yaml
 
 `spec.architectures.managementState`Ve `status.architecture.managementState` değerlerini `Removed` olarak değiştirin `Managed` . 
 
-Aşağıdaki YAML kod parçacığı yalnızca düzenlenmiş YAML dosyasının ilgili bölümlerini gösterir.
+Aşağıdaki YAML kod parçacığı yalnızca düzenlenmiş YAML dosyasının ilgili bölümlerini gösterir:
 
 ```yaml
 apiVersion: samples.operator.openshift.io/v1
@@ -181,9 +183,9 @@ status:
 oc edit operatorhub cluster -o yaml
 ```
 
-`Spec.Sources.Disabled`Ve `Status.Sources.Disabled` değerlerini, `true` `false` etkin olmasını istediğiniz tüm kaynaklar için ile olarak değiştirin.
+`Spec.Sources.Disabled`Ve değerlerini, `Status.Sources.Disabled` `true` `false` etkin olmasını istediğiniz tüm kaynaklar için ile olarak değiştirin.
 
-Aşağıdaki YAML kod parçacığı yalnızca düzenlenmiş YAML dosyasının ilgili bölümlerini gösterir.
+Aşağıdaki YAML kod parçacığı yalnızca düzenlenmiş YAML dosyasının ilgili bölümlerini gösterir:
 
 ```yaml
 Name:         cluster
@@ -214,7 +216,7 @@ Düzenlemelerinizi uygulamak için dosyayı kaydedin.
 
 ## <a name="validate-that-your-secret-is-working"></a>Gizli dizinizin çalıştığını doğrulama
 
-Çekme sıranız eklendikten ve doğru yapılandırma dosyalarını değiştirdikten sonra, kümenizin güncelleştirilmesi birkaç dakika sürebilir. Kümenizin güncelleştirildiğini denetlemek için şu komutu çalıştırarak sertifikalı Işleçler ve Red Hat Işletmenleri kaynakları ' nı görüntüleyin:
+Çekme sıranız ekledikten ve doğru yapılandırma dosyalarını değiştirdikten sonra, kümenizin güncellenmesi birkaç dakika sürebilir. Kümenizin güncelleştirildiğini denetlemek için şu komutu çalıştırarak sertifikalı Işleçler ve Red Hat Işletmenleri kaynakları ' nı görüntüleyin:
 
 ```console
 $ oc get catalogsource -A
@@ -226,7 +228,7 @@ openshift-marketplace   redhat-operators      Red Hat Operators     grpc   Red H
 
 Sertifikalı Işleçleri ve Red Hat Işleçlerini görmüyorsanız, birkaç dakika bekleyip yeniden deneyin.
 
-Çekme gizliliklerinizin güncelleştirildiğinden ve düzgün çalıştığından emin olmak için OperatorHub açın ve Red Hat onaylanmış bir operatör olup olmadığını denetleyin. Örneğin, OpenShift kapsayıcı depolama işlecinin kullanılabilir olup olmadığını denetleyin ve yüklemek için izinleriniz olup olmadığını denetleyin.
+Çekme gizliliğin güncelleştirildiğinden ve düzgün çalıştığından emin olmak için OperatorHub açın ve Red Hat onaylanmış bir operatör olup olmadığını denetleyin. Örneğin, OpenShift kapsayıcı depolama Işlecinin kullanılabilir olup olmadığını denetleyin ve yüklemek için izinleriniz olup olmadığını denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Red hat çekme gizli dizileri hakkında daha fazla bilgi edinmek için bkz. [görüntü çekme gizli dizileri kullanma](https://docs.openshift.com/container-platform/4.5/openshift_images/managing_images/using-image-pull-secrets.html).

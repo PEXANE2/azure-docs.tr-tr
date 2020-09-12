@@ -16,12 +16,12 @@ ms.date: 09/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cedf1419a763fe0b0f528bee6e1b48e435ec0e2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90d8cc39174f6392b0c532948305fa713535f0c9
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360036"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279236"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect: cihaz seçenekleri
 
@@ -45,6 +45,5 @@ Aşağıdaki belgeler Azure AD Connect ' de kullanılabilen çeşitli cihaz seç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Karma Azure AD birleştirmesini yapılandırma](../device-management-hybrid-azuread-joined-devices-setup.md)
+* [Karma Azure AD birleştirmesini yapılandırma](../devices/hybrid-azuread-join-plan.md)
 * [Cihaz geri yazmayı yapılandırma/devre dışı bırakma](how-to-connect-device-writeback.md)
-

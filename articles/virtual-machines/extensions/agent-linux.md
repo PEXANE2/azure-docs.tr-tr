@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fda228f6a24e981bb848fbb106709aaa3d8e8613
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269130"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279712"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux aracısını anlama ve kullanma
 
@@ -53,7 +53,7 @@ Microsoft Azure Linux Aracısı (waagent) Linux & FreeBSD sağlamasını ve Azur
 * **VM Uzantısı**
   
   * Yazılım ve yapılandırma Otomasyonu 'nu etkinleştirmek için Microsoft ve Iş ortakları tarafından Linux VM 'ye (IaaS) yazılan bileşen ekleme
-  * VM uzantısı başvuru uygulama açık[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * VM uzantısı başvuru uygulama açık [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>İletişim
 Platformdan aracıya bilgi akışı iki kanal aracılığıyla gerçekleşir:
@@ -92,6 +92,9 @@ Linux Aracısı düzgün çalışması için bazı sistem paketlerine bağımlı
 * Metin işleme araçları: SED, grep
 * Ağ araçları: IP-yol
 * UDF FILESYSTEMS 'ı bağlamak için çekirdek desteği.
+
+VM 'nizin 168.63.129.16 IP adresine erişimi olduğundan emin olun. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+
 
 ## <a name="installation"></a>Yükleme
 Dağıtım paketi deposundaki bir RPM veya bir DEB paketini kullanarak yükleme, Azure Linux aracısını yükleme ve yükseltme için tercih edilen yöntemdir. Tüm [onaylı dağıtım sağlayıcıları](../linux/endorsed-distros.md) , Azure Linux Aracısı paketini görüntülerle ve depolarında tümleştirin.
@@ -204,7 +207,7 @@ Default: n
 ```
 Ayarlanırsa, waagent CustomData 'ın Base64 'ten kodunu çözer.
 
-**CuteCustomDataProvisioning.Exe**  
+** CuteCustomDataProvisioning.Exe**  
 ```txt
 Type: Boolean  
 Default: n

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27018a19db85e8544029db4f1b638ef7cae448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358149"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279491"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory geçişli kimlik doğrulaması: yükseltme önizlemesi kimlik doğrulama aracıları
 
@@ -60,7 +60,7 @@ Kimlik doğrulama aracılarınızın sürümlerini, önceki adımda tanımlanan 
 
 Yükseltmeden önce, aşağıdaki öğelerin yerinde olduğundan emin olun:
 
-1. **Yalnızca bulutta bulunan genel yönetici hesabı oluştur**: doğrudan kimlik doğrulama aracılarınızın düzgün şekilde çalışmadığını acil durumlarda kullanmak üzere yalnızca bulut genel yönetici hesabına sahip olmadan yükseltme yapmayın. [Yalnızca bulut genel yönetici hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımın yapılması kritik bir öneme sahiptir ve kiracınızdan kilitlenmemesini sağlar.
+1. **Yalnızca bulutta bulunan genel yönetici hesabı oluştur**: doğrudan kimlik doğrulama aracılarınızın düzgün şekilde çalışmadığını acil durumlarda kullanmak üzere yalnızca bulut genel yönetici hesabına sahip olmadan yükseltme yapmayın. [Yalnızca bulut genel yönetici hesabı ekleme](../fundamentals/add-users-azure-active-directory.md)hakkında bilgi edinin. Bu adımın yapılması kritik bir öneme sahiptir ve kiracınızdan kilitlenmemesini sağlar.
 2.  **Yüksek kullanılabilirlik sağlayın**: daha önce tamamlanmazsa, bu [yönergeleri](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)kullanarak, oturum açma istekleri için yüksek kullanılabilirlik sağlamak üzere Ikinci bir tek başına kimlik doğrulama Aracısı yükler.
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>Azure AD Connect sunucunuzdaki kimlik doğrulama aracısını yükseltme

@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a9b8fec7e69b6ede15f99cae01e89c962996e280
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269157"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295573"
 ---
 # <a name="input-metadata"></a>Giriş meta verileri
 
@@ -71,8 +71,8 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 | **Profil** |Video izleme profili. <br /><br />Örnek: `"Profile": "Main"`|
 | **Düzeyde** |Video izlemenin düzeyi. <br /><br />Örnek: `"Level": "3.2"`|
 | **PixelFormat 'a dönüştürme** |Video izlemenin piksel biçimi. <br /><br />Örnek: `"PixelFormat": "yuv420p"`|
-| **Width**<br />Gerekli |Piksel cinsinden kodlanmış video genişliği. <br /><br />Örnek: `"Width": "1280"`|
-| **Height**<br />Gerekli |Piksel cinsinden kodlanmış video yüksekliği.<br /><br />Örnek: `"Height": "720"` |
+| **Genişlik**<br />Gerekli |Piksel cinsinden kodlanmış video genişliği. <br /><br />Örnek: `"Width": "1280"`|
+| **Yükseklik**<br />Gerekli |Piksel cinsinden kodlanmış video yüksekliği.<br /><br />Örnek: `"Height": "720"` |
 | **DisplayAspectRatioNumerator**<br />Gerekli |Video görüntüleme en boy oranı payı.<br /><br />Örnek: `"DisplayAspectRatioNumerator": 16.0` |
 | **Displayaspectratiopayda**<br />Gerekli |Video görüntüleme en boy oranı paydası. <br /><br />Örnek: `"DisplayAspectRatioDenominator": 9.0`|
 | **SampleAspectRatioNumerator** |Video örneği en boy oranı payı. <br /><br />Örnek: `"SampleAspectRatioNumerator": 1.0`|

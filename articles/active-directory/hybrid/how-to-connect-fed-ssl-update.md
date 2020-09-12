@@ -16,12 +16,12 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1983b5090604516265ea8e041ac68200ca2dc7b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 451b50e70b98849dfc4654566d09a5a961abe451
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359594"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279916"
 ---
 # <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory Federasyon Hizmetleri (AD FS) (AD FS) grubu için TLS/SSL sertifikasını güncelleştirme
 
@@ -34,7 +34,7 @@ Tüm Federasyon ve Web uygulaması ara sunucusu (WAP) sunucularında AD FS grubu
 
 
 >[!NOTE]
->AD FS tarafından kullanılan sertifikalar hakkında daha fazla bilgi için bkz. [AD FS tarafından kullanılan sertifikaları anlama](https://technet.microsoft.com/library/cc730660.aspx).
+>AD FS tarafından kullanılan sertifikalar hakkında daha fazla bilgi için bkz. [AD FS tarafından kullanılan sertifikaları anlama](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc730660(v=ws.11)).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -109,4 +109,3 @@ Yapılandırmayı tamamladıktan sonra, Azure AD Connect güncelleştirmenin dur
 
 - [Azure AD Connect ve Federasyon](how-to-connect-fed-whatis.md)
 - [Azure AD Connect ile yönetimi ve özelleştirmeyi Active Directory Federasyon Hizmetleri (AD FS)](how-to-connect-fed-management.md)
-

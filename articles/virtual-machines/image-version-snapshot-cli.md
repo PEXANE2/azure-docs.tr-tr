@@ -1,6 +1,6 @@
 ---
-title: CLı-paylaşılan görüntü galerisinde bir anlık görüntüden veya VHD 'den görüntü oluşturma
-description: Azure CLı kullanarak paylaşılan görüntü galerisinde bir anlık görüntü veya VHD 'den görüntü oluşturmayı öğrenin.
+title: CLı-paylaşılan görüntü galerisinde bir anlık görüntü veya yönetilen diskten görüntü oluşturma
+description: Azure CLı kullanarak paylaşılan görüntü galerisinde bir anlık görüntü veya yönetilen diskten görüntü oluşturmayı öğrenin.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: b5dcadd2381596509a3d2f512d0f4ebbbfbba893
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e694630d8bcd7879d9405152c4141fb6e5bad4e2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502886"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297102"
 ---
-# <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Azure CLı kullanarak paylaşılan görüntü galerisinde bir VHD 'den veya anlık görüntüden görüntü oluşturma
+# <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Azure CLı kullanarak paylaşılan bir görüntü galerisinde yönetilen diskten veya anlık görüntüden görüntü oluşturma
 
-Paylaşılan görüntü galerisine geçirmek istediğiniz var olan bir anlık görüntünüz veya VHD varsa, doğrudan VHD veya anlık görüntüden paylaşılan bir görüntü Galerisi görüntüsü oluşturabilirsiniz. Yeni görüntünüzü sınadıktan sonra kaynak VHD 'YI veya anlık görüntüyü silebilirsiniz. Ayrıca, [Azure PowerShell](image-version-snapshot-powershell.md)kullanarak paylaşılan görüntü GALERISINDE bir VHD 'den veya anlık görüntüden görüntü oluşturabilirsiniz.
+Paylaşılan görüntü galerisine geçirmek istediğiniz mevcut bir anlık görüntü veya yönetilen diskiniz varsa, doğrudan yönetilen diskten veya anlık görüntüden paylaşılan bir görüntü Galerisi görüntüsü oluşturabilirsiniz. Yeni görüntünüzü sınadıktan sonra, kaynak yönetilen diski veya anlık görüntüyü silebilirsiniz. Ayrıca, [Azure PowerShell](image-version-snapshot-powershell.md)kullanarak paylaşılan bir görüntü galerisinde yönetilen bir diskten veya anlık görüntüden görüntü oluşturabilirsiniz.
 
 Görüntü galerisindeki görüntülerin iki bileşeni vardır ve bu örnekte oluşturacağız:
 - **Görüntü tanımı** , görüntü ve kullanma gereksinimleri hakkında bilgi taşır. Bu, görüntünün Windows veya Linux, özelleştirilmiş veya Genelleştirilmiş, sürüm notları ve en düşük ve en yüksek bellek gereksinimlerini içerir. Bu, bir görüntü türünün tanımıdır. 
@@ -27,13 +27,13 @@ Görüntü galerisindeki görüntülerin iki bileşeni vardır ve bu örnekte ol
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaleyi tamamlayabilmeniz için bir anlık görüntü veya VHD 'ye sahip olmanız gerekir. 
+Bu makaleyi tamamlayabilmeniz için bir anlık görüntü veya yönetilen diskiniz olmalıdır. 
 
 Veri diski eklemek istiyorsanız, veri diski boyutu 1 TB 'tan fazla olamaz.
 
 Bu makalede çalışırken, kaynak adlarını gereken yerde değiştirin.
 
-## <a name="find-the-snapshot-or-vhd"></a>Anlık görüntüyü veya VHD 'YI bulma 
+## <a name="find-the-snapshot-or-managed-disk"></a>Anlık görüntü veya yönetilen disk bulma 
 
 [Az Snapshot List](/cli/azure/snapshot#az-snapshot-list)kullanılarak bir kaynak grubunda kullanılabilir olan anlık görüntülerin listesini görebilirsiniz. 
 
@@ -41,13 +41,13 @@ Bu makalede çalışırken, kaynak adlarını gereken yerde değiştirin.
 az snapshot list --query "[].[name, id]" -o tsv
 ```
 
-Anlık görüntü yerine bir VHD de kullanabilirsiniz. Bir VHD almak için [az disk List](/cli/azure/disk#az-disk-list)kullanın. 
+Anlık görüntü yerine yönetilen disk de kullanabilirsiniz. Yönetilen bir disk almak için [az disk List](/cli/azure/disk#az-disk-list)kullanın. 
 
 ```azurecli-interactive
 az disk list --query "[].[name, id]" -o tsv
 ```
 
-Anlık görüntü veya VHD 'nin KIMLIĞINI aldıktan sonra, `$source` daha sonra kullanılmak üzere adlı bir değişkene atadıktan sonra.
+Anlık görüntü veya yönetilen disk KIMLIĞI ve `$source` daha sonra kullanılmak üzere adlı bir değişkene atadıktan sonra.
 
 Yansımanıza dahil etmek istediğiniz tüm veri disklerini almak için aynı işlemi kullanabilirsiniz. Bunları değişkenlere atayın ve sonra görüntü sürümünü oluştururken bu değişkenleri kullanın.
 
@@ -67,7 +67,7 @@ az sig list -o table
 
 Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. Bunlar görüntüyle ilgili bilgileri yönetmek için kullanılır. Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, noktalardan, çizgilerden ve noktalardan oluşabilir. 
 
-Görüntü tanımınızı yaparken, doğru bilgilerin tümünün bulunduğundan emin olun. Bu örnekte, anlık görüntünün veya VHD 'nin kullanımda olan bir VM 'den olduğunu ve genelleştirilemez olduğunu varsayıyoruz. VHD veya anlık görüntü genelleştirilmiş bir işletim sistemi (Windows için [Sysprep veya](https://github.com/Azure/WALinuxAgent) `-deprovision` `-deprovision+user` Linux için) aldıysanız, öğesini `-OsState` olarak değiştirin `generalized` . 
+Görüntü tanımınızı yaparken, doğru bilgilerin tümünün bulunduğundan emin olun. Bu örnekte, anlık görüntü veya yönetilen diskin kullanımda olan ve genelleştirilmiş bir VM 'den olduğunu varsayıyoruz. Yönetilen disk veya anlık görüntü genelleştirilmiş bir işletim sistemi (Windows için [Sysprep veya](https://github.com/Azure/WALinuxAgent) `-deprovision` `-deprovision+user` Linux için veya Linux için) aldıysanız, öğesini `-OsState` olarak değiştirin `generalized` . 
 
 Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./linux/shared-image-galleries.md#image-definitions).
 
@@ -99,9 +99,9 @@ az sig image-definition create \
 
 Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Düzeltme Eki*.
 
-Bu örnekte, görüntüimizin sürümü *1.0.0* ve bölgesel olarak yedekli depolama alanı kullanarak *Orta Güney ABD* bölgesinde 1 çoğaltma ve *Doğu ABD 2* bölgesinde 1 çoğaltma oluşturacağız. Çoğaltma için hedef bölgeler seçerken, çoğaltma için hedef olarak VHD veya anlık görüntünün *kaynak* bölgesini de eklemeniz gerektiğini unutmayın.
+Bu örnekte, görüntüimizin sürümü *1.0.0* ve bölgesel olarak yedekli depolama alanı kullanarak *Orta Güney ABD* bölgesinde 1 çoğaltma ve *Doğu ABD 2* bölgesinde 1 çoğaltma oluşturacağız. Çoğaltma için hedef bölgeler seçerken, yönetilen diskin veya anlık görüntünün *kaynak* bölgesini çoğaltma için hedef olarak da eklemeniz gerektiğini unutmayın.
 
-Parametresindeki anlık görüntünün veya VHD 'nin KIMLIĞINI geçirin `--os-snapshot` .
+Anlık görüntü veya yönetilen diskin KIMLIĞINI `--os-snapshot` parametreye geçirin.
 
 
 ```azurecli-interactive 

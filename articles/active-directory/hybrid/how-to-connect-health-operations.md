@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177627"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276278"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health işlemler
 Bu konuda Azure Active Directory (Azure AD) Connect Health kullanarak gerçekleştirebileceğiniz çeşitli işlemler açıklanmaktadır.
@@ -133,7 +133,7 @@ Azure AD Connect Health içindeki *tüm hizmet örnekleri* düzeyinde kullanıc�
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. Adım: kullanıcıları ve grupları ekleme ve rol atama
 1. **Yapılandır** bölümünde **Kullanıcılar**' a tıklayın.<br>
    ![Azure AD Connect Health kaynak kenar çubuğu ekran görüntüsü](./media/how-to-connect-health-operations/startRBAC.png)
-2. **Add (Ekle)** seçeneğini belirleyin.
+2. **Ekle**’yi seçin.
 3. **Rol seçin** bölmesinde bir rol (örneğin, **sahip**) seçin.<br>
    ![Azure AD Connect Health ve Azure RBAC yapılandırma menüsünün ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Hedeflenen kullanıcı veya grubun adını veya tanımlayıcısını yazın. Aynı anda bir veya daha fazla Kullanıcı veya grup seçebilirsiniz. **Seç**’e tıklayın.
@@ -167,7 +167,7 @@ Azure AD Connect Health ve Azure RBAC 'ye eklenen bir kullanıcıyı veya grubu 
 [//]: # (RBAC bölümünün sonu)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health Aracısı yüklemesi](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health'i AD FS ile Kullanma](how-to-connect-health-adfs.md)
 * [Eşitleme için Azure AD Connect Health kullanma](how-to-connect-health-sync.md)
