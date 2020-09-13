@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 08/12/2020
-ms.openlocfilehash: ad3fa9db5a15f68f0538b5de29d9a89858c472e9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/02/2020
+ms.openlocfilehash: b5042eb86f5d534655fd831147a9ab4ebb094e9b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212063"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419989"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme
 
@@ -41,7 +41,7 @@ Eşleme veri akışı, dönüştürme mantığını kolayca oluşturmak için ta
 
 ### <a name="graph"></a>Graf
 
-Grafik, dönüşüm akışını görüntüler. Bir veya daha fazla havuza akan kaynak verilerinin kökenini gösterir. Yeni bir kaynak eklemek için **Kaynak Ekle**' yi seçin. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin.
+Grafik, dönüşüm akışını görüntüler. Bir veya daha fazla havuza akan kaynak verilerinin kökenini gösterir. Yeni bir kaynak eklemek için **Kaynak Ekle**' yi seçin. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin. [Veri akışı grafiğinin nasıl yönetileceği](concepts-data-flow-manage-graph.md)hakkında daha fazla bilgi edinin.
 
 ![Tuval](media/data-flow/canvas2.png "Tuval")
 
@@ -109,7 +109,7 @@ Eşleme veri akışları aşağıdaki bölgelerde kullanılabilir:
 | Avustralya Güneydoğu   | ✓ | ✓ |
 | Brezilya Güney  | ✓ |  |
 | Orta Kanada | ✓ |  |
-| Central India | ✓ |   ✓ |
+| Orta Hindistan | ✓ |   ✓ |
 | Central US    | ✓ |   ✓ |
 | Doğu Çin |      | ✓ |
 | Çin Doğu 2  |   |    |

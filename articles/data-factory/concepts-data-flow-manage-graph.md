@@ -1,51 +1,64 @@
 ---
-title: Veri akışı grafikleri
-description: Data Factory veri akışı grafikleriyle çalışma
+title: Eşleme veri akışı grafiğini yönetme
+description: Eşleme veri akışı grafiğini etkin bir şekilde yönetme ve düzenleme
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 0d357c4c671070a5c5e9d4587e2f90b6628996f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/02/2020
+ms.openlocfilehash: 0cdad47123d69ca7cee468c5bb0cea3268d73bfe
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605366"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420120"
 ---
-# <a name="mapping-data-flow-graphs"></a>Veri akışı grafiklerini eşleme
+# <a name="managing-the-mapping-data-flow-graph"></a>Eşleme veri akışı grafiğini yönetme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Eşleme veri akışları tasarım yüzeyi, veri akışlarını yukarıdan aşağı doğru bir şekilde oluşturduğunuz bir "yapım" yüzeyidir. Her bir dönüşümün bir artı (+) simgesiyle eklenmiş bir araç kutusu vardır. Serbest biçimli bir DAG ortamındaki kenarlar aracılığıyla düğümleri bağlamak yerine iş mantığınızı yoğunlaşın.
+Eşleme veri akışları, veri akışı grafiği olarak bilinen bir tasarım yüzeyi kullanılarak yazılır. Grafikte, dönüştürme mantığı soldan sağa oluşturulmuştur ve ek veri akışları yukarıdan aşağı eklenir. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin.
 
-Aşağıda, veri akışı grafiğini yönetmek için yerleşik mekanizmalar verilmiştir.
+![Tuval](media/data-flow/canvas2.png "Tuval")
 
-## <a name="move-nodes"></a>Düğümleri taşıma
+Veri akışlarınız daha karmaşık olduğu için, veri akışı grafiğine etkin bir şekilde gezinmek ve bunları yönetmek için aşağıdaki mekanizmalardan yararlanın. 
 
-![Toplu dönüştürme seçenekleri](media/data-flow/agghead.png "Toplayıcı üst bilgisi")
+## <a name="moving-transformations"></a>Dönüşümleri taşıma
 
-Bir sürükle ve bırak paradigması olmadan, bir dönüşüm düğümünü "taşıma" yöntemi, gelen akışı değiştirlemektir. Bunun yerine, "gelen akışı" değiştirerek dönüşümleri taşıyabilirsiniz.
+Veri akışlarını eşleme bölümünde, bir bağlı dönüştürme mantığı kümesi **akış**olarak bilinir. **Gelen akış** alanı, geçerli dönüştürmeyi hangi veri akışının beslemeyi belirler. Her bir dönüşüme, işlevine bağlı olarak bir veya iki gelen akış vardır ve bir çıkış akışı temsil eder. Gelen akışların çıkış şeması, geçerli dönüşüm tarafından hangi sütun meta verilerine başvuramayacağını belirler.
 
-## <a name="streams-of-data-inside-of-data-flow"></a>Veri akışı içindeki veri akışları
+![Düğümü taşı](media/data-flow/move-nodes.png "düğümü taşı")
 
-Azure Data Factory veri akışı ' nda akışlar, veri akışını temsil eder. Dönüştürme ayarları bölmesinde, "gelen akış" alanını görürsünüz. Bu, size gelen veri akışının bu dönüşümü beslemeyi olduğunu söyler. Gelen akış adına tıklayıp başka bir veri akışı seçerek, grafikteki dönüştürme düğümünüz fiziksel konumunu değiştirebilirsiniz. O akıştaki sonraki dönüşümlerle birlikte geçerli dönüşüm yeni konuma taşınır.
-
-Bir dönüştürmeyi sonrasında bir veya daha fazla dönüşümle taşıyorsanız, veri akışındaki yeni konum yeni bir dal ile birleştirilir.
-
-Seçtiğiniz düğümden sonra sonraki dönüşümünüz yoksa, yalnızca o dönüşüm yeni konuma taşınır.
+Ardışık düzen tuvalinin aksine, veri akışı dönüştürmeleri bir sürükle ve bırak modeli kullanılarak düzenlenmez. Bir dönüşümün gelen akışını veya "taşıma" dönüşümünü değiştirmek için **gelen akış** açılan listesinden farklı bir değer seçin. Bunu yaptığınızda, tüm aşağı akış dönüştürmeleri düzenlenmiş dönüşüme göre hareket eder. Grafik, yeni mantıksal akışı göstermek için otomatik olarak güncelleştirilecek. Gelen akışı zaten aşağı akış dönüşümünü içeren bir dönüşüme değiştirirseniz yeni bir dal veya paralel veri akışı oluşturulur. [Eşleme veri akışı 'nda yeni dallar](data-flow-new-branch.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="hide-graph-and-show-graph"></a>Grafiği gizle ve grafiği göster
 
-En sağdaki yapılandırma bölmesinin sağ tarafında, dönüşüm yapılandırmalarında çalışırken alt bölmeyi tam ekran olarak genişletebileceğiniz bir düğme vardır. Bu, grafiğin yapılandırmalarında gezinmek için "önceki" ve "ileri" düğmelerini kullanmanıza imkan tanır. Grafik görünümüne geri dönmek için aşağı düğmesine tıklayın ve bölme ekranına geri dönün.
+Dönüşümünüzü düzenlediğinizde, pano 'nun tamamını gizleyerek, yapılandırma panelini genişleterek tuvali genişletebilirsiniz. Tuvalin sağ tarafında bulunan yukarı bakan köşeli çift ayraca tıklayın.
 
-## <a name="search-graph"></a>Arama grafiği
+![Grafiği gizle](media/data-flow/hide-graph.png "grafiği gizle")
 
-Grafik üzerinde tasarım yüzeyinde ara düğmesini kullanarak arama yapabilirsiniz.
+Grafik gizli olduğunda, **İleri** veya **geri**' ye tıklayarak bir akış içindeki dönüşümler arasında geçiş yapabilirsiniz. Grafiği göstermek için aşağı bakan köşeli çift ayraca tıklayın.
 
-![Search](media/data-flow/search001.png "Arama grafiği")
+![Grafiği göster](media/data-flow/show-graph.png "Grafiği göster")
+
+## <a name="searching-for-transformations"></a>Dönüşümler aranıyor
+
+Grafiğinizde bir dönüştürmeyi hızlıca bulmak için yakınlaştırma ayarının üzerindeki **arama** simgesine tıklayın.
+
+![Ara](media/data-flow/search-1.png "Arama grafiği")
+
+Bir dönüştürmeyi bulmak için dönüşüm adına veya açıklamaya göre arama yapabilirsiniz.
+
+![Ara](media/data-flow/search-2.png "Arama grafiği")
+
+## <a name="hide-reference-nodes"></a>Başvuru düğümlerini gizle
+
+Veri akışınız herhangi bir birleştirme, arama, mevcut veya birleşim dönüşümlerine sahipse, veri akışı tüm gelen akışlara başvuru düğümlerini gösterir. Alınan dikey alan miktarını en aza indirmek isterseniz, başvuru düğümlerinizi en aza indirmenize olanak sağlayabilirsiniz. Bunu yapmak için tuvale sağ tıklayıp **başvuru düğümlerini Gizle**' yi seçin.
+
+![Başvuru düğümlerini gizle](media/data-flow/hide-reference-nodes.png "Başvuru düğümlerini gizle")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri akışı tasarımınızı tamamladıktan sonra, hata ayıklama düğmesini açın ve doğrudan [veri akışı Tasarımcısı](concepts-data-flow-debug-mode.md) 'nda veya işlem [hattı hata ayıklamada](control-flow-execute-data-flow-activity.md)hata ayıklama modunda test edin.
+Veri akışı mantığınızı tamamladıktan sonra, [hata ayıklama modunu](concepts-data-flow-debug-mode.md) açın ve bir veri önizlemesinde test edin.
