@@ -1,6 +1,6 @@
 ---
 title: Karma kimlik tasarımı-benimseme stratejisi Azure | Microsoft Docs
-description: Koşullu erişim denetimi ile, kullanıcının kimliğini doğrularken ve uygulamaya erişim izni vermeden önce seçtiğiniz belirli koşulları denetler Azure Active Directory. Bu koşullar karşılandığında, kullanıcının kimliği doğrulanır ve uygulamaya erişim izni verilir.
+description: Koşullu erişim denetimi ile, Azure AD, kullanıcının kimliğini doğrularken ve uygulamaya erişim izni vermeden önce seçtiğiniz belirli koşulları denetler.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555380"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659538"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Karma kimlik benimseme stratejisi tanımlama
 Bu görevde, ' de açıklanan iş gereksinimlerini karşılamak üzere hibrit kimlik çözümü için karma kimlik benimseme stratejisini tanımlarsınız:
@@ -32,7 +32,7 @@ Bu görevde, ' de açıklanan iş gereksinimlerini karşılamak üzere hibrit ki
 * [Multi-Factor Authentication gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="define-business-needs-strategy"></a>İş ihtiyaçları stratejisini tanımlama
-Kuruluşların iş ihtiyaçlarını belirleyen ilk görev adresi.  Bu çok geniş olabilir ve dikkatli değilseniz kapsam katlama meydana gelebilir.  Başlangıcında basit tutun, ancak gelecekte değişikliğe uyum sağlayacak ve bu şekilde değişiklik yapılmasını sağlayan bir tasarımı planlamaya her zaman hatırlıyorum.  Basit bir tasarım veya son derece karmaşık olmasına bakılmaksızın, Azure Active Directory Office 365, Microsoft Online Services ve bulut kullanan uygulamaları destekleyen Microsoft Identity platform ' dır.
+Kuruluşların iş ihtiyaçlarını belirleyen ilk görev adresi.  Bu çok geniş olabilir ve dikkatli değilseniz kapsam katlama meydana gelebilir.  Başlangıcında basit tutun, ancak gelecekte değişikliğe uyum sağlayacak ve bu şekilde değişiklik yapılmasını sağlayan bir tasarımı planlamaya her zaman hatırlıyorum.  Basit bir tasarım veya son derece karmaşık olmasına bakılmaksızın, Azure Active Directory Microsoft 365, Microsoft Online Services ve bulut kullanan uygulamaları destekleyen Microsoft Identity platform ' dır.
 
 ## <a name="define-an-integration-strategy"></a>Tümleştirme stratejisi tanımlama
 Microsoft 'un bulut kimlikleri, eşitlenen kimlikler ve Federal kimlikler olan üç ana tümleştirme senaryosu vardır.  Bu tümleştirme stratejilerinden birini benimsemeye yönelik plan yapmanız gerekir.  Seçtiğiniz strateji farklılık gösterebilir ve bunlardan birini seçmek, ne tür bir kullanıcı deneyimi sağlamak istediğinizi, var olan bir altyapınızın olduğunu ve en uygun maliyetli olduğunu gösterir.  
@@ -52,7 +52,7 @@ Yukarıdaki şekilde tanımlanan senaryolar şunlardır:
 
 Aşağıdaki tablo, aşağıdaki stratejilerin her birinin olumlu ve olumsuz yönlerini belirlemede yardımcı olur:
 
-| Strateji | Yararları | Dezavantajlar |
+| Strateji | Avantajlar | Dezavantajlar |
 | --- | --- | --- |
 | **Bulut kimlikleri** |Küçük kuruluş için daha kolay yönetilebilir. <br> Şirket içinde yüklenecek bir şey yok. Ek donanım gerekmez<br>Kullanıcı şirketten ayrılırsa kolayca devre dışı bırakılır |Kullanıcıların buluttaki iş yüklerine erişirken oturum açması gerekir <br> Parolalar bulut ve şirket içi kimlikler için aynı olabilir veya olmayabilir |
 | **Zaman** |Şirket içi parola, hem şirket içi hem de bulut dizinlerinin kimliğini doğrular <br>Küçük, orta veya büyük kuruluşlar için daha kolay yönetilebilir <br>Kullanıcılar bazı kaynaklar için çoklu oturum açma (SSO) içerebilir <br> Eşitleme için Microsoft tarafından tercih edilen yöntem <br> Daha kolay yönetilebilir |Bazı müşteriler, belirli bir şirketin polis 'ı nedeniyle dizinlerini buluta eşitlebilmeyebilir |
@@ -171,7 +171,7 @@ Aşağıdakiler desteklenmez ve bir uygulama olarak seçilmemelidir:
 * Azure AD dizinleri tasarıma göre yalıtılmış. Dizinler arasında ortak ve Birleşik bir GAL oluşturma girişiminde, başka bir Azure AD dizininden veri okumak üzere Azure AD Connect eşitleme 'nin yapılandırılmasını değiştirmek desteklenmez. Ayrıca, Azure AD Connect eşitleme kullanarak kullanıcıları başka bir şirket içi AD 'ye dışarı aktarmak de desteklenmez.
 
 > [!NOTE]
-> Kuruluşunuz ağınızdaki bilgisayarları Internet 'e bağlanmadan kısıtlarsa Bu makalede, bilgisayarlarınızın Office 365 ' i başarıyla kullanabilmesi için, istemci bilgisayarların giden izin verilenler listelerine ve Internet Explorer güvenilen siteler bölgesine dahil etmeniz gereken uç noktalar (FQDN 'Ler, IPv4 ve IPv6 adres aralıkları) listelenir. Daha fazla bilgi için [Office 365 URL 'leri ve IP adresi aralıklarını](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)okuyun.
+> Kuruluşunuz ağınızdaki bilgisayarları Internet 'e bağlanılmamasını kısıtlarsa Bu makalede, bilgisayarlarınızın Microsoft 365 başarıyla kullanabilmesi için, istemci bilgisayarların giden izin verilenler listelerine ve Internet Explorer güvenilen siteler bölgesine dahil etmeniz gereken uç noktalar (FQDN 'Ler, IPv4 ve IPv6 adres aralıkları) listelenir. Daha fazla bilgi için [Office 365 URL 'leri ve IP adresi aralıklarını](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)okuyun.
 > 
 > 
 
@@ -193,9 +193,9 @@ Stratejiniz için bir çözümü kapatmış olsanız da, hala kullanıcıların�
 | Kullanıcı konumu | Tercih edilen tasarım seçeneği |
 | --- | --- |
 | Azure Active Directory |Bulutta Multi-Factorayuthentication |
-| AD FS ile federasyon kullanana Azure AD ve şirket içi AD |Her ikisi de |
-| Azure AD Connect parola eşitleme için Azure AD ve şirket içi AD kullanma |Her ikisi de |
-| Parola eşitleme ile Azure AD Connect kullanarak Azure AD ve şirket içi |Her ikisi de |
+| AD FS ile federasyon kullanana Azure AD ve şirket içi AD |Her ikisi |
+| Azure AD Connect parola eşitleme için Azure AD ve şirket içi AD kullanma |Her ikisi |
+| Parola eşitleme ile Azure AD Connect kullanarak Azure AD ve şirket içi |Her ikisi |
 | Şirket içi AD |Multi-Factor Authentication Sunucusu |
 
 > [!NOTE]

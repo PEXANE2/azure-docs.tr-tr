@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 6271cb449b6bbc80269dd325bd5acd7edd2e0a6d
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 8e0798f75aaa79031ca7cc03814282daa049fbfe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010970"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662875"
 ---
 Bu varlık kategorisi, mali bilgileri ve resmi tanımlama biçimlerini içerir. Model sürümünden itibaren kullanılabilir `2019-10-01` . Alt türler aşağıda listelenmiştir. 
 
 ### <a name="financial-account-identification"></a>Finansal hesap kimliği
 
-| Alt tür adı               | Açıklama                                                                |
+| Alt tür adı               | Description                                                                |
 |----------------------------|----------------------------------------------------------------------------|
 | ABA Yönlendirme Numarası        | American banker Association (ABA) transit yönlendirme numaraları.                  |
 | SWIFT Kodu                 | Ödeme yönergesi bilgileri için SWIFT kodları.                           |
@@ -27,7 +27,7 @@ Bu varlık kategorisi, mali bilgileri ve resmi tanımlama biçimlerini içerir. 
 | Uluslararası Bankacılık Hesap Numarası (IBAN)                  | Ödeme yönergesi bilgileri için ıBAN kodları.                            |
 
 
-### <a name="government-and-countryregion-specific-identification"></a>Devlet ve ülkeye/bölgeye özgü kimlik
+### <a name="government-and-countryregion-specific-identification"></a>Kamu ve ülkeye/bölgeye özgü kimlik
 
 > [!NOTE]
 > Aşağıdaki mali ve ülkeye özgü varlıklar `domain=phi` parametresiyle döndürülmez:
@@ -116,7 +116,7 @@ Fransa
 * Fransa Ulusal KIMLIK kartı (CNı)
 * Fransa Passport numarası
 * Fransa sosyal güvenlik numarası (ıNSEE)
-* Fransa vergi kimlik numarası (Numéro SPI.)
+* Fransa vergi kimlik numarası (Numéro SPI)
 * Fransa değeri eklenen vergi numarası
 
 Almanya

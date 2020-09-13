@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/18/2020
+ms.date: 09/09/2020
 ms.author: b-juche
-ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590379"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662462"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -49,6 +49,10 @@ Evet, gerekli DNS girdilerini oluşturursanız, bunu yapabilirsiniz. Azure NetAp
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>Bir Azure NetApp Files birimi için kendi IP adresini ayarlayabilir veya seçebilir miyim?  
 
 Hayır. Azure NetApp Files birimlerine IP ataması dinamiktir. Statik IP ataması desteklenmiyor. 
+
+### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp Files ikili yığın (IPv4 ve IPv6) VNet 'i destekliyor mu?
+
+Hayır, Azure NetApp Files Şu anda çift yığın (IPv4 ve IPv6) VNet 'i desteklemiyor.  
  
 ## <a name="security-faqs"></a>Güvenlik SSS
 
@@ -66,10 +70,9 @@ Tüm Azure NetApp Files birimleri FIPS 140-2 standardı kullanılarak şifreleni
 
 Azure NetApp Files için anahtar yönetimi, hizmet tarafından işlenir. Her birim için benzersiz bir XTS-AES-256 veri şifreleme anahtarı oluşturulur. Tüm birim anahtarlarını şifrelemek ve korumak için bir şifreleme anahtarı hiyerarşisi kullanılır. Bu şifreleme anahtarları hiçbir şekilde, şifrelenmemiş bir biçimde gösterilmez veya bildirilmez. Şifreleme anahtarları bir birim silindiğinde hemen silinir.
 
-Azure ayrılmış HSM 'yi kullanarak Kullanıcı tarafından yönetilen anahtarlar (kendi anahtarlarınızı getir) için destek, ABD Doğu, US West2 ve ABD Orta Güney bölgelerinde denetimli bir şekilde sunulmaktadır.  Adresinden erişim isteyebilirsiniz **anffeedback@microsoft.com** . Kapasite kullanılabilir olduğu için istekler onaylanır.
+Azure ayrılmış HSM kullanılarak müşteri tarafından yönetilen anahtarlar (Kendi Anahtarını Getir) için destek, Doğu ABD, Orta Güney ABD, Batı ABD 2 ve US Gov Virginia bölgelerinde denetimli bir şekilde kullanılabilir. Adresinden erişim isteyebilirsiniz [anffeedback@microsoft.com](mailto:anffeedback@microsoft.com) . Kapasite kullanılabilir hale geldiğinde istekler onaylanır.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Azure NetApp Files hizmeti bağlama hedefine erişimi denetlemek için NFS dışarı aktarma ilkesi kurallarını yapılandırabilir miyim?
-
 
 Evet, tek bir NFS dışarı aktarma ilkesinde en fazla beş kural yapılandırabilirsiniz.
 

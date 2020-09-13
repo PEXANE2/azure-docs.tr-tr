@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7e809c1990f31687acb559b5ecd6684bfec52483
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f451b39d2757425a50a186a8212042cf887b136b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423278"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662299"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps tetikleyici ve eylem türleri için şema başvurusu Kılavuzu
 
@@ -145,7 +145,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen API 'ler](../connectors/apis-l
 | <*sorgu-Parametreler*> | JSON Nesnesi | API çağrısıyla birlikte içerilecek herhangi bir sorgu parametresi. Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi `?api-version=2018-01-01` çağrıya ekler. | 
 | <*en fazla çalıştırma*> | Tamsayı | Varsayılan olarak, iş akışı örnekleri [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar (eşzamanlı veya paralel) aynı anda çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
 | <*en fazla çalıştırma-kuyruk*> | Tamsayı | İş akışınız, özelliği temel alarak değiştirebileceğiniz en fazla örnek sayısını zaten çalıştırıyorsa, `runtimeConfiguration.concurrency.runs` tüm yeni çalıştırmalar bu kuyruğa [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar yerleştirilir. Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | 
-| <*Spton-ifadesi*> | Dize | Bu ifade, diziler döndüren Tetikleyiciler için, "for each" döngüsünü kullanmak yerine her bir dizi öğesi için bir iş akışı örneği oluşturup çalıştırabilmeniz için kullanılacak diziye başvurur. <p>Örneğin, bu ifade, tetikleyicinin gövde içeriği içinde döndürülen dizideki bir öğeyi temsil eder:`@triggerbody()?['value']` |
+| <*Spton-ifadesi*> | Dize | Bu ifade, diziler döndüren Tetikleyiciler için, "for each" döngüsünü kullanmak yerine her bir dizi öğesi için bir iş akışı örneği oluşturup çalıştırabilmeniz için kullanılacak diziye başvurur. <p>Örneğin, bu ifade, tetikleyicinin gövde içeriği içinde döndürülen dizideki bir öğeyi temsil eder: `@triggerbody()?['value']` |
 | <*işlem-seçenek*> | Dize | Özelliği ayarlayarak varsayılan davranışı değiştirebilirsiniz `operationOptions` . Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options). |
 ||||
 
@@ -160,7 +160,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen API 'ler](../connectors/apis-l
 
 *Örnek*
 
-Bu tetikleyici tanımı, bir Office 365 Outlook hesabı için gelen kutusu içinde her gün e-postayı denetler:
+Bu tetikleyici tanımı, bir iş veya okul hesabı için gelen kutusu içindeki her gün e-postayı denetler:
 
 ```json
 "When_a_new_email_arrives": {
@@ -235,7 +235,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen BIR API](../connectors/apis-li
 | <*sorgu-Parametreler*> | JSON Nesnesi | API çağrısıyla birlikte içerilecek sorgu parametreleri <p>Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi `?api-version=2018-01-01` çağrıya ekler. |
 | <*en fazla çalıştırma*> | Tamsayı | Varsayılan olarak, iş akışı örnekleri [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar (eşzamanlı veya paralel) aynı anda çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). |
 | <*en fazla çalıştırma-kuyruk*> | Tamsayı | İş akışınız, özelliği temel alarak değiştirebileceğiniz en fazla örnek sayısını zaten çalıştırıyorsa, `runtimeConfiguration.concurrency.runs` tüm yeni çalıştırmalar bu kuyruğa [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar yerleştirilir. Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | 
-| <*Spton-ifadesi*> | Dize | Bu ifade, diziler döndüren Tetikleyiciler için, "for each" döngüsünü kullanmak yerine her bir dizi öğesi için bir iş akışı örneği oluşturup çalıştırabilmeniz için kullanılacak diziye başvurur. <p>Örneğin, bu ifade, tetikleyicinin gövde içeriği içinde döndürülen dizideki bir öğeyi temsil eder:`@triggerbody()?['value']` |
+| <*Spton-ifadesi*> | Dize | Bu ifade, diziler döndüren Tetikleyiciler için, "for each" döngüsünü kullanmak yerine her bir dizi öğesi için bir iş akışı örneği oluşturup çalıştırabilmeniz için kullanılacak diziye başvurur. <p>Örneğin, bu ifade, tetikleyicinin gövde içeriği içinde döndürülen dizideki bir öğeyi temsil eder: `@triggerbody()?['value']` |
 | <*işlem-seçenek*> | Dize | Özelliği ayarlayarak varsayılan davranışı değiştirebilirsiniz `operationOptions` . Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options). | 
 |||| 
 
@@ -819,19 +819,19 @@ Yaygın olarak kullanılan bazı eylem türleri şunlardır:
 
 | Eylem türü | Description | 
 |-------------|-------------| 
-| [**Compose**](#compose-action) | Girdilerden farklı türlere sahip olabilen tek bir çıktı oluşturur. | 
+| [**Oluştur**](#compose-action) | Girdilerden farklı türlere sahip olabilen tek bir çıktı oluşturur. | 
 | [**JavaScript kodunu Yürüt**](#run-javascript-code) | Belirli ölçütlere uyan JavaScript kod parçacıklarını çalıştırın. Kod gereksinimleri ve daha fazla bilgi için bkz. [satır içi kod ile kod parçacıkları ekleme ve çalıştırma](../logic-apps/logic-apps-add-run-inline-code.md). |
 | [**Çalışmayacaktır**](#function-action) | Bir Azure Işlevi çağırır. | 
 | [**HTTP**](#http-action) | Bir HTTP uç noktası çağırır. | 
 | [**Birleştir**](#join-action) | Dizideki tüm öğelerden bir dize oluşturur ve bu öğeleri belirli bir sınırlayıcı karakterle ayırır. | 
 | [**JSON Ayrıştır**](#parse-json-action) | JSON içeriğindeki özelliklerden Kullanıcı dostu belirteçler oluşturur. Daha sonra, mantıksal uygulamanıza belirteçleri ekleyerek bu özelliklere başvurabilirsiniz. | 
 | [**Sorgu**](#query-action) | Bir koşula veya filtreye bağlı olarak başka bir dizideki öğelerden bir dizi oluşturur. | 
-| [**Yanıt**](#response-action) | Gelen çağrıya veya isteğe yanıt oluşturur. | 
+| [**Yanıtıyla**](#response-action) | Gelen çağrıya veya isteğe yanıt oluşturur. | 
 | [**Şunu seçin:**](#select-action) | Belirtilen haritaya göre başka bir diziden öğeleri dönüştürerek JSON nesneleriyle bir dizi oluşturur. | 
-| [**Tablo**](#table-action) | Bir diziden CSV veya HTML tablosu oluşturur. | 
+| [**Tablosundan**](#table-action) | Bir diziden CSV veya HTML tablosu oluşturur. | 
 | [**Terminate**](#terminate-action) | Etkin şekilde çalışan bir iş akışını sonlandırır. | 
-| [**Wait**](#wait-action) | İş akışınızı belirtilen süre veya belirtilen tarih ve saate kadar duraklatır. | 
-| [**Workflow**](#workflow-action) | Bir iş akışını başka bir iş akışı içinde bir şekilde alır. | 
+| [**Bekleneceğini**](#wait-action) | İş akışınızı belirtilen süre veya belirtilen tarih ve saate kadar duraklatır. | 
+| [**İş akışı**](#workflow-action) | Bir iş akışını başka bir iş akışı içinde bir şekilde alır. | 
 ||| 
 
 <a name="managed-api-actions"></a>
@@ -855,7 +855,7 @@ Bu eylemler, iş akışı yürütmeyi denetlemenize ve diğer eylemleri dahil et
 | [**ForEach**](#foreach-action) | Bir dizideki her öğe için aynı eylemleri döngüde çalıştırın. | 
 | [**Kullandıysanız**](#if-action) | Belirtilen koşulun doğru veya yanlış olduğunu temel alarak eylemleri çalıştırın. | 
 | [**Kapsam**](#scope-action) | Eylemler kümesinden grup durumuna göre eylemleri çalıştırın. | 
-| [**Anahtar**](#switch-action) | Deyimlerden, nesnelerden veya belirteçlerdeki değerlerin her bir durum tarafından belirtilen değerlerle eşleşmesi durumunda durumları düzenlenmiş eylemler çalıştırın. | 
+| [**Değiştirebilirsiniz**](#switch-action) | Deyimlerden, nesnelerden veya belirteçlerdeki değerlerin her bir durum tarafından belirtilen değerlerle eşleşmesi durumunda durumları düzenlenmiş eylemler çalıştırın. | 
 | [**Until**](#until-action) | Belirtilen koşul true olana kadar eylemleri bir döngüde çalıştırın. | 
 |||  
 
@@ -1010,7 +1010,7 @@ Bu eylem, ifadeler de dahil olmak üzere birden çok girişin tek bir çıkış�
 
 | Değer | Tür | Description | 
 |-------|------|-------------| 
-| <*oluşturma girişleri*> | Herhangi bir | Tek bir çıkış oluşturmak için girişler | 
+| <*oluşturma girişleri*> | Herhangi biri | Tek bir çıkış oluşturmak için girişler | 
 |||| 
 
 *Örnek 1*
@@ -1101,7 +1101,7 @@ Bu eylem, mantıksal uygulamanızın adını alan ve sonuç olarak "Hello World 
 
 *Örnek 2*
 
-Bu eylem, Office 365 Outlook hesabına yeni bir e-posta geldiğinde tetiklenen bir mantıksal uygulamadaki kodu çalıştırır. Mantıksal uygulama Ayrıca, alınan e-postadaki içeriği onay isteğiyle birlikte ileten onay e-postası gönder eylemini kullanır.
+Bu eylem, bir iş veya okul hesabına yeni bir e-posta geldiğinde tetiklenen bir mantıksal uygulamadaki kodu çalıştırır. Mantıksal uygulama Ayrıca, alınan e-postadaki içeriği onay isteğiyle birlikte ileten onay e-postası gönder eylemini kullanır.
 
 Kod, tetikleyici özelliğinden e-posta adreslerini ayıklar `Body` ve `SelectedOption` onay eyleminden özellik değeriyle birlikte adresleri döndürür. Eylem, özniteliğe bağımlılık olarak onay e-postası gönder eylemini açıkça içerir `explicitDependencies`  >  `actions` .
 
@@ -1288,7 +1288,7 @@ Bu tamsayı dizisini içeren daha önce oluşturulmuş bir "myIntegerArray" değ
 
 `[1,2,3,4]` 
 
-Bu eylem tanımı, bir ifadede işlevini kullanarak değişkenden değerleri alır `variables()` ve bu dizeyi, virgülle ayrılmış şekilde bu değerlerle oluşturur:`"1,2,3,4"`
+Bu eylem tanımı, bir ifadede işlevini kullanarak değişkenden değerleri alır `variables()` ve bu dizeyi, virgülle ayrılmış şekilde bu değerlerle oluşturur: `"1,2,3,4"`
 
 ```json
 "Join": {
@@ -1330,7 +1330,7 @@ Bu eylem, JSON içeriğindeki özelliklerden Kullanıcı dostu alanları veya *b
 
 Bu eylem tanımı, iş akışınızda kullanabileceğiniz, ancak yalnızca **JSON ayrıştırması** eylemini izleyen eylemlerde çalıştırılan bu belirteçleri oluşturur:
 
-`FirstName`, `LastName` ve`Email`
+`FirstName`, `LastName` ve `Email`
 
 ```json
 "Parse_JSON": {
@@ -1649,7 +1649,7 @@ Sütun üst bilgilerini ve değerlerini belirtmek veya özelleştirmek için, `c
 | Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*sütun-adı*> | Dize | Bir sütunun üst bilgi adı | 
-| <*sütun-değer*> | Herhangi bir | Bu sütundaki değer | 
+| <*sütun-değer*> | Herhangi biri | Bu sütundaki değer | 
 |||| 
 
 *Örnek 1*

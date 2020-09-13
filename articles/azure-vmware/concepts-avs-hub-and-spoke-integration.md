@@ -2,13 +2,13 @@
 title: Kavram-bir hub ve bağlı bileşen mimarisinde bir Azure VMware çözüm dağıtımını tümleştirme
 description: Azure 'da var olan veya yeni bir hub ve bağlı bileşen mimarisinde Azure VMware çözüm dağıtımını tümleştirme önerileri hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.openlocfilehash: deb2756f7e83250ff58836098dc4954ec482fbda
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/09/2020
+ms.openlocfilehash: 1862b98b40788b6b71d05eb4be43bdacd39e927f
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684526"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659211"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware çözümünü bir hub ve bağlı bileşen mimarisinde tümleştirme
 
@@ -24,9 +24,9 @@ Hub ve bağlı bileşen senaryosu, üzerinde iş yükleri içeren bir karma bulu
 
 *Hub* , şirket Içi ve Azure VMware Çözüm özel bulutunuz için merkezi bir bağlantı noktası görevi gören bir Azure sanal ağı. Sanal *ağlar, platformlar* arası ağ iletişimini etkinleştirmek için hub ile ilişkilendirilen sanal ağlardır.
 
-Şirket içi veri merkezi, Azure VMware çözümü özel bulutu ve hub arasındaki trafik, ExpressRoute bağlantıları üzerinden geçer. Bağlı bileşen sanal ağları genellikle IaaS tabanlı iş yükleri içerir, ancak sanal ağla doğrudan tümleştirme veya [Azure özel bağlantısı](../private-link/index.yml) etkinleştirilmiş diğer PaaS hizmetleri olan [App Service ortamı](../app-service/environment/intro.md)gibi PaaS hizmetlerine sahip olabilir. 
+Şirket içi veri merkezi, Azure VMware çözümü özel bulutu ve hub arasındaki trafik Azure ExpressRoute bağlantıları üzerinden geçer. Bağlı bileşen sanal ağları genellikle IaaS tabanlı iş yükleri içerir, ancak sanal ağla doğrudan tümleştirme veya [Azure özel bağlantısı](../private-link/index.yml) etkinleştirilmiş diğer PaaS hizmetleri olan [App Service ortamı](../app-service/environment/intro.md)gibi PaaS hizmetlerine sahip olabilir.
 
-Diyagramda, Azure 'da ExpressRoute aracılığıyla şirket içi ve Azure VMware çözümüne bağlı bir hub ve bağlı bileşen dağıtımı örneği gösterilmektedir.
+Diyagramda, Azure 'da ExpressRoute Global Reach aracılığıyla şirket içi ve Azure VMware çözümüne bağlı bir hub ve bağlı bileşen dağıtımı örneği gösterilmektedir.
 
 :::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Azure VMware Çözüm Merkezi ve bağlı bileşen tümleştirme dağıtımı" border="false":::
 
@@ -36,10 +36,14 @@ Mimaride aşağıdaki ana bileşenler bulunur:
 
 -   **Azure VMware çözümü özel bulutu:** Her biri en fazla 16 düğüm içeren bir veya daha fazla vSphere kümesi tarafından oluşturulan Azure VMware Çözüm SDDC.
 
--   **ExpressRoute ağ geçidi:** Azure VMware çözümü özel bulutu, şirket içi ağ, hub sanal ağı üzerindeki paylaşılan hizmetler ve bağlı bileşen sanal ağlarında çalışan iş yükleri arasındaki iletişimi mümkün bir şekilde sunar.
+-   **ExpressRoute ağ geçidi:** Azure VMware çözümü özel bulutu, hub sanal ağı üzerindeki paylaşılan hizmetler ve bağlı olan sanal ağlarda çalışan iş yükleri arasındaki iletişimi mümkün bir şekilde sunar.
 
-    > [!NOTE]
-    > **S2S VPN konuları:** Azure VMware Çözüm üretim dağıtımları için, HCX ağ gereksinimleri nedeniyle Azure S2S desteklenmez. Ancak, HCX gerektirmeyen bir PoC veya üretim dışı dağıtımı için kullanılabilir.
+-   **ExpressRoute Global Reach:** Şirket içi ve Azure VMware çözümü özel bulutu arasında bağlantıyı mümkün bir şekilde sunar.
+
+
+  > [!NOTE]
+  > **S2S VPN konuları:** Azure VMware Çözüm üretim dağıtımları için, VMware HCX ağ gereksinimleri nedeniyle Azure S2S VPN desteklenmez. Ancak, bir PoC dağıtımı için kullanılabilir.
+
 
 -   **Hub sanal ağı:** Şirket içi ağınıza ve Azure VMware çözümü özel buluta merkezi bağlantı noktası görevi görür.
 
@@ -49,7 +53,7 @@ Mimaride aşağıdaki ana bileşenler bulunur:
 
     -   **PaaS bağlı bileşen:** PaaS bağlı, özel bir [uç nokta](../private-link/private-endpoint-overview.md) ve [özel bağlantı](../private-link/private-link-overview.md)sayesinde özel adresleme kullanarak Azure PaaS hizmetlerini barındırır.
 
--   **Azure Güvenlik Duvarı:** Bağlı bileşenler, şirket içi ve Azure VMware çözümü arasındaki trafiği segmentlere ayırmak için merkezi bir parça olarak davranır.
+-   **Azure Güvenlik Duvarı:** Bağlı bileşen ve Azure VMware çözümü arasındaki trafiği segmentlere ayırmak için merkezi bir parça olarak davranır.
 
 -   **Application Gateway:** Azure IaaS/PaaS veya Azure VMware Çözüm sanal makineleri (VM 'Ler) üzerinde çalışan Web uygulamalarını gösterir ve korur. API Management gibi diğer hizmetlerle tümleştirilir.
 
@@ -57,7 +61,7 @@ Mimaride aşağıdaki ana bileşenler bulunur:
 
 ExpressRoute bağlantıları, trafiği şirket içi, Azure VMware çözümü ve Azure ağ yapısı arasında akışa sağlar. Azure VMware çözümü, bu bağlantıyı uygulamak için [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) kullanır.
 
-Şirket içi bağlantı, ExpressRoute Global Reach de kullanabilir, ancak zorunlu değildir.
+ExpressRoute ağ geçidi, bağlı devreleri arasında geçişli yönlendirme sağlamadığından, şirket içi bağlantı, şirket içi vSphere ortamı ile Azure VMware çözümü arasında iletişim kurmak için ExpressRoute Global Reach de kullanmalıdır. 
 
 * **Şirket içinden Azure VMware Çözüm trafiği akışı**
 
@@ -69,11 +73,11 @@ ExpressRoute bağlantıları, trafiği şirket içi, Azure VMware çözümü ve 
   :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware çözümünü hub sanal ağ trafiği akışına" border="false":::
 
 
-Azure VMware Çözüm ağı ve ınterconnectivity kavramları hakkında daha fazla ayrıntıyı [Azure VMware çözüm ürün belgelerinde](./concepts-networking.md)bulabilirsiniz.
+Azure VMware Çözüm ağı ve bağlantı kavramları hakkında daha fazla ayrıntıyı [Azure VMware çözüm ürün belgelerinde](./concepts-networking.md)bulabilirsiniz.
 
 ### <a name="traffic-segmentation"></a>Trafik kesimlemesi
 
-[Azure Güvenlik Duvarı](../firewall/index.yml) , hub sanal ağında dağıtılan hub ve bağlı bileşen topolojisinin merkezi parçasıdır. Trafik kuralları oluşturmak ve farklı bağlı bileşenler, şirket içi ve Azure VMware Çözüm iş yükleri arasındaki iletişimi segmentlere ayırmak için Azure Güvenlik Duvarı veya başka bir Azure desteklenen ağ sanal gereci kullanın.
+[Azure Güvenlik Duvarı](../firewall/index.yml) , hub sanal ağında dağıtılan hub ve bağlı bileşen topolojisinin merkezi parçasıdır. Trafik kuralları oluşturmak ve farklı ışınsal ve Azure VMware Çözüm iş yükleri arasındaki iletişimi segmentlere ayırmak için Azure Güvenlik Duvarı veya başka bir Azure desteklenen ağ sanal gereci kullanın.
 
 Trafiği Azure Güvenlik Duvarı 'na yönlendirmek için yol tabloları oluşturun.  Bağlı olan sanal ağlar için, Azure Güvenlik duvarının iç arabirimine varsayılan yolu ayarlayan bir yol oluşturun, bu şekilde sanal ağdaki bir iş yükünün Azure VMware çözüm adres alanına ulaşması gerektiğinde güvenlik duvarının bunu değerlendirebilmesi ve buna izin vermek veya reddetmek üzere ilgili trafik kuralını uygulamanız gerekir.  
 
@@ -83,16 +87,20 @@ Trafiği Azure Güvenlik Duvarı 'na yönlendirmek için yol tabloları oluştur
 > [!IMPORTANT]
 > **Gatewaysubnet** ayarında 0.0.0.0/0 adres ön ekine sahip bir yol desteklenmez.
 
-Karşılık gelen yol tablosundaki belirli ağların yollarını ayarlayın. Örneğin, Azure VMware Çözüm yönetimine ve iş yüklerinden IP öneklerine şirket içi ve tek başına ulaşacak yollar, Şirket içinden gelen trafiği Azure Güvenlik Duvarı aracılığıyla Azure VMware çözümü özel bulutuna yönlendirme.
+Karşılık gelen yol tablosundaki belirli ağların yollarını ayarlayın. Örneğin, Azure VMware Çözüm yönetimine ve iş yüklerinin IP öneklerine, bağlı olan iş yüklerinden ulaşmak için yollar ve tam tersi.
 
 :::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Karşılık gelen yol tablosundaki belirli ağlar için yolları ayarla":::
 
-Daha ayrıntılı bir trafik ilkesi oluşturmak için, tekerlek ve hub içindeki ağ güvenlik grupları kullanılarak yapılan ikinci bir trafik düzeyi. 
+Daha ayrıntılı bir trafik ilkesi oluşturmak için, tekerlek ve hub içindeki ağ güvenlik grupları kullanılarak yapılan ikinci bir trafik düzeyi.
 
+> [!NOTE]
+> **Şirket Içinden Azure VMware çözümüne giden trafik:** VSphere tabanlı veya diğerleri olan şirket içi iş yükleri arasındaki trafik, Global Reach tarafından etkinleştirilir, ancak trafik hub 'daki Azure Güvenlik Duvarı 'na gitmez. Bu senaryoda, şirket içinde veya Azure VMware çözümünde trafik segmentleme mekanizmalarını uygulamanız gerekir.
 
 ### <a name="application-gateway"></a>Application Gateway
 
 Azure Application Gateway v1 ve v2, Azure VMware Çözüm VM 'lerinde arka uç havuzu olarak çalışan Web Apps ile test edilmiştir. Application Gateway Şu anda Azure VMware Çözüm VM 'lerinde çalışan Web uygulamalarını internet 'e sunmak için desteklenen tek yöntemdir. Ayrıca, uygulamaları iç kullanıcılara güvenli bir şekilde kullanıma sunabilir.
+
+Ayrıntılar ve gereksinimler için [Application Gateway](./protect-avs-web-apps-with-app-gateway.md) Azure VMware çözümüne özgü makaleyi gözden geçirin.
 
 :::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="Ağ güvenlik grupları kullanılarak ikinci trafik segmentinin düzeyi" border="false":::
 
@@ -137,8 +145,6 @@ Azure DNS özel bölgeler için göz önünde bulundurmanız gereken bazı nokta
 Kimlik açısından en iyi yaklaşım, paylaşılan hizmet alt ağını kullanarak hub üzerinde en az bir AD etki alanı denetleyicisi dağıtmaktır. Bu, her ikisi de bölge tarafından dağıtılan veya bir VM kullanılabilirlik kümesidir. Şirket içi AD etki alanınızı Azure 'a genişletmek için [Azure mimari merkezi](/azure/architecture/reference-architectures/identity/adds-extend-domain) bakın.
 
 Ayrıca, vSphere ortamında kimlik ve DNS kaynağı olarak görev yapmak için Azure VMware Çözüm tarafında başka bir etki alanı denetleyicisi dağıtın.
-
-VCenter ve SSO için, ** \> kimlik \> kimlik kaynaklarını yönetme**üzerinde Azure Portal bir kimlik kaynağı ayarlayın.
 
 Önerilen en iyi yöntem olarak, [ad etki alanını Azure Active Directory ile](/azure/architecture/reference-architectures/identity/azure-ad)tümleştirin.
 

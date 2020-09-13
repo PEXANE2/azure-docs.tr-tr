@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1f77d6189e5b32ca771d17ae9902341bcaa1871
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688139"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662161"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu makalede Azure Active Directory (Azure AD) Connect için Önkoşullar ve donanım gereksinimleri açıklanmaktadır.
@@ -33,11 +33,11 @@ Azure AD Connect yüklemeden önce, ihtiyacınız olan birkaç şey vardır.
 * Bir Azure AD kiracının olması gerekir. [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile bir tane alırsınız. Azure AD Connect yönetmek için aşağıdaki portallardan birini kullanabilirsiniz:
   * [Azure Portal](https://portal.azure.com).
   * [Office portalı](https://portal.office.com).
-* Azure AD 'de kullanmayı planladığınız [etki alanını ekleyin ve doğrulayın](../active-directory-domains-add-azure-portal.md) . Örneğin, kullanıcılarınız için contoso.com kullanmayı planlıyorsanız, bu etki alanının doğrulandığından ve yalnızca contoso.onmicrosoft.com varsayılan etki alanını kullanmadığınız emin olun.
-* Bir Azure AD kiracısı, varsayılan olarak 50.000 nesnelerine izin verir. Etki alanınızı doğruladıktan sonra sınır 300.000 nesne artar. Azure AD 'de daha fazla nesne gerekiyorsa, sınırın daha da arttığı bir destek talebi açın. 500.000 taneden fazla nesne gerekiyorsa, Office 365, Azure AD Premium veya Enterprise Mobility + Security gibi bir lisansa sahip olmanız gerekir.
+* Azure AD 'de kullanmayı planladığınız [etki alanını ekleyin ve doğrulayın](../fundamentals/add-custom-domain.md) . Örneğin, kullanıcılarınız için contoso.com kullanmayı planlıyorsanız, bu etki alanının doğrulandığından ve yalnızca contoso.onmicrosoft.com varsayılan etki alanını kullanmadığınız emin olun.
+* Bir Azure AD kiracısı, varsayılan olarak 50.000 nesnelerine izin verir. Etki alanınızı doğruladıktan sonra sınır 300.000 nesne artar. Azure AD 'de daha fazla nesne gerekiyorsa, sınırın daha da arttığı bir destek talebi açın. 500.000 ' den fazla nesneye ihtiyacınız varsa, Microsoft 365, Azure AD Premium veya Enterprise Mobility + Security gibi bir lisansa sahip olmanız gerekir.
 
 ### <a name="prepare-your-on-premises-data"></a>Şirket içi verilerinizi hazırlama
-* Azure AD ve Office 365 ile eşitlemeden önce dizininizde bulunan yinelemeler ve biçimlendirme sorunları gibi hataları belirlemek için [ıddüzeltmesini](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) kullanın.
+* Azure AD ve Microsoft 365 eşitlemeden önce dizininizde yinelenen öğeler ve biçimlendirme sorunları gibi hataları belirlemek için [ıddüzeltmesini](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) kullanın.
 * [Azure AD 'de etkinleştirebileceğiniz isteğe bağlı eşitleme özelliklerini](how-to-connect-syncservice-features.md)gözden geçirin ve hangi özellikleri etkinleştirmeniz gerektiğini değerlendirin.
 
 ### <a name="on-premises-active-directory"></a>Şirket içi Active Directory
@@ -48,11 +48,11 @@ Azure AD Connect yüklemeden önce, ihtiyacınız olan birkaç şey vardır.
 * [Active Directory geri dönüşüm kutusu 'nu etkinleştirmenizi](how-to-connect-sync-recycle-bin.md)öneririz.
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect sunucusu
-Azure AD Connect sunucusu kritik kimlik verileri içerir. Bu sunucuya yönetim erişiminin düzgün bir şekilde güvenliğinin sağlanması önemlidir. [Ayrıcalıklı erişimin güvenliğini sağlama](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)konusundaki yönergeleri izleyin. 
+Azure AD Connect sunucusu kritik kimlik verileri içerir. Bu sunucuya yönetim erişiminin düzgün bir şekilde güvenliğinin sağlanması önemlidir. [Ayrıcalıklı erişimin güvenliğini sağlama](/windows-server/identity/securing-privileged-access/securing-privileged-access)konusundaki yönergeleri izleyin. 
 
-Azure AD Connect sunucusu, [Active Directory Yönetim Katmanı modelinde](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) belgelendiği şekilde katman 0 bileşeni olarak değerlendirilmelidir 
+Azure AD Connect sunucusu, [Active Directory Yönetim Katmanı modelinde](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) belgelendiği şekilde katman 0 bileşeni olarak değerlendirilmelidir 
 
-Active Directory ortamınızı güvenli hale getirmek hakkında daha fazla bilgi için bkz. [Active Directory Için en iyi uygulamalar](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory).
+Active Directory ortamınızı güvenli hale getirmek hakkında daha fazla bilgi için bkz. [Active Directory Için en iyi uygulamalar](/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory).
 
 #### <a name="installation-prerequisites"></a>Yükleme önkoşulları
 
@@ -62,25 +62,25 @@ Active Directory ortamınızı güvenli hale getirmek hakkında daha fazla bilgi
 - Active Directory Federasyon Hizmetleri (AD FS) (AD FS) yapılandırmasını yönetmek için Azure AD Connect Sihirbazı 'nı kullanıyorsanız, Azure AD Connect sunucuda PowerShell döküm grup ilkesi etkinleştirilmemiş olmalıdır. Eşitleme yapılandırmasını yönetmek için Azure AD Connect Sihirbazı 'nı kullanırsanız PowerShell dökümünü etkinleştirebilirsiniz. 
 - AD FS dağıtılmışsa: 
     - AD FS veya Web uygulaması proxy 'Sinin yüklü olduğu sunucular Windows Server 2012 R2 veya üzeri olmalıdır. Uzaktan Yükleme için bu sunucularda Windows Uzaktan Yönetimi etkinleştirilmelidir. 
-    - TLS/SSL sertifikalarını yapılandırmanız gerekir. Daha fazla bilgi için bkz. AD FS SSL [/TLS protokollerini ve şifre paketlerini yönetme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ve [ssl sertifikalarını yönetme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)AD FS.
+    - TLS/SSL sertifikalarını yapılandırmanız gerekir. Daha fazla bilgi için bkz. AD FS SSL [/TLS protokollerini ve şifre paketlerini yönetme](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ve [ssl sertifikalarını yönetme](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)AD FS.
     - Ad çözümlemesi yapılandırmanız gerekir. 
 - Genel yöneticileriniz MFA etkinleştirilmişse, URL https://secure.aadcdn.microsoftonline-p.com *must* güvenilen siteler listesinde olmalıdır. MFA sınaması istendiğinde bu siteyi Güvenilen siteler listesine eklemeniz istenir ve daha önce eklenmemiştir. Internet Explorer 'ı, güvenilen sitelerinize eklemek için kullanabilirsiniz.
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Azure AD Connect sunucunuzu Harden 
 BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltmak için Azure AD Connect sunucunuzu çok fazla kullanmanızı öneririz. Bu önerilerin ardından, kuruluşunuzun bazı güvenlik risklerini azaltmaya yardımcı olur.
 
-- Azure AD Connect etki alanı denetleyicisi ve diğer katman 0 kaynaklarıyla aynı şekilde değerlendirin. Daha fazla bilgi için bkz. [Yönetim Katmanı modeli Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
+- Azure AD Connect etki alanı denetleyicisi ve diğer katman 0 kaynaklarıyla aynı şekilde değerlendirin. Daha fazla bilgi için bkz. [Yönetim Katmanı modeli Active Directory](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
 - Azure AD Connect sunucusuna yönetici erişimini yalnızca etki alanı yöneticileri veya diğer sıkı kontrollü güvenlik grupları ile sınırlayın.
-- [Ayrıcalıklı erişime sahip tüm personel için adanmış bir hesap](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)oluşturun. Yöneticiler web 'e göz atmamalıdır, e-postalarını kontrol etmemeli ve yüksek ayrıcalıklı hesaplar ile gündelik üretkenlik görevleri yapmaktan önce.
-- [Ayrıcalıklı erişimin güvenliğini sağlama](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)bölümünde sunulan yönergeleri izleyin. 
-- AADConnect sunucusu ile NTLM kimlik doğrulamasının kullanımını reddetme. Bunu yapmak için bazı yollar şunlardır: [AADConnect sunucusunda NTLM 'Yi kısıtlama](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) ve [BIR etki alanında NTLM 'yi kısıtlama](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
-- Her makinenin benzersiz bir yerel yönetici parolası olduğundan emin olun. Daha fazla bilgi için, bkz. [yerel yönetici parolası çözümü (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) , her iş istasyonunda benzersiz rastgele parolalar yapılandırabilir ve bir ACL tarafından korunan Active Directory sunucuda depolar. Yalnızca uygun yetkili kullanıcılar bu yerel yönetici hesabı parolalarını sıfırlayabilir veya sıfırlamayı isteyebilir. [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)' nden iş istasyonlarında ve sunucularda kullanım için laps 'leri edinebilirsiniz. LAPS ve ayrıcalıklı erişim iş istasyonları (Paw 'lar) içeren bir ortamı çalıştırmak için ek yönergeler, [Temizleme kaynak ilkesine dayalı işlem standartları](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)içinde bulunabilir. 
-- Kuruluşunuzun bilgi sistemlerine ayrıcalıklı erişimi olan tüm personel için adanmış [ayrıcalıklı erişim iş istasyonları](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) uygulayın. 
-- Active Directory ortamınızın saldırı yüzeyini azaltmak için bu [ek yönergeleri](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) izleyin.
+- [Ayrıcalıklı erişime sahip tüm personel için adanmış bir hesap](/windows-server/identity/securing-privileged-access/securing-privileged-access)oluşturun. Yöneticiler web 'e göz atmamalıdır, e-postalarını kontrol etmemeli ve yüksek ayrıcalıklı hesaplar ile gündelik üretkenlik görevleri yapmaktan önce.
+- [Ayrıcalıklı erişimin güvenliğini sağlama](/windows-server/identity/securing-privileged-access/securing-privileged-access)bölümünde sunulan yönergeleri izleyin. 
+- AADConnect sunucusu ile NTLM kimlik doğrulamasının kullanımını reddetme. Bunu yapmak için bazı yollar şunlardır: [AADConnect sunucusunda NTLM 'Yi kısıtlama](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) ve [BIR etki alanında NTLM 'yi kısıtlama](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
+- Her makinenin benzersiz bir yerel yönetici parolası olduğundan emin olun. Daha fazla bilgi için, bkz. [yerel yönetici parolası çözümü (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) , her iş istasyonunda benzersiz rastgele parolalar yapılandırabilir ve bir ACL tarafından korunan Active Directory sunucuda depolar. Yalnızca uygun yetkili kullanıcılar bu yerel yönetici hesabı parolalarını sıfırlayabilir veya sıfırlamayı isteyebilir. [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)' nden iş istasyonlarında ve sunucularda kullanım için laps 'leri edinebilirsiniz. LAPS ve ayrıcalıklı erişim iş istasyonları (Paw 'lar) içeren bir ortamı çalıştırmak için ek yönergeler, [Temizleme kaynak ilkesine dayalı işlem standartları](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)içinde bulunabilir. 
+- Kuruluşunuzun bilgi sistemlerine ayrıcalıklı erişimi olan tüm personel için adanmış [ayrıcalıklı erişim iş istasyonları](/windows-server/identity/securing-privileged-access/privileged-access-workstations) uygulayın. 
+- Active Directory ortamınızın saldırı yüzeyini azaltmak için bu [ek yönergeleri](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) izleyin.
 
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect tarafından kullanılan SQL Server
-* Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Varsayılan olarak, bir SQL Server 2012 Express LocalDB (SQL Server Express bir açık sürümü) yüklenir. SQL Server Express, yaklaşık 100.000 nesneyi yönetmenizi sağlayan 10 GB boyutlu bir boyut sınırına sahiptir. Daha yüksek bir dizin nesneleri birimini yönetmeniz gerekiyorsa, Yükleme Sihirbazı 'nı farklı bir SQL Server yüklemesine işaret edin. SQL Server yüklemesinin türü [Azure AD Connect performansını](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors)etkileyebilir.
+* Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Varsayılan olarak, bir SQL Server 2012 Express LocalDB (SQL Server Express bir açık sürümü) yüklenir. SQL Server Express, yaklaşık 100.000 nesneyi yönetmenizi sağlayan 10 GB boyutlu bir boyut sınırına sahiptir. Daha yüksek bir dizin nesneleri birimini yönetmeniz gerekiyorsa, Yükleme Sihirbazı 'nı farklı bir SQL Server yüklemesine işaret edin. SQL Server yüklemesinin türü [Azure AD Connect performansını](./plan-connect-performance-factors.md#sql-database-factors)etkileyebilir.
 * Farklı bir SQL Server yüklemesi kullanıyorsanız, bu gereksinimler geçerlidir:
   * Azure AD Connect, 2012 (en son hizmet paketiyle) SQL Server tüm sürümlerini SQL Server 2019 ' e destekler. Azure SQL veritabanı, veritabanı olarak *desteklenmez* .
   * Büyük/küçük harfe duyarsız bir SQL harmanlaması kullanmanız gerekir. Bu harmanlamalar, adında bir \_ CI_ tanımlanır. Adında CS_ tarafından tanımlanan, büyük/küçük harfe duyarlı harmanlama kullanılması \_ *desteklenmez*.
@@ -126,10 +126,10 @@ BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltm
         </system.net>
     ```
 
-* Proxy yapılandırması mevcut bir kurulumda yapılamakta ise, Azure AD Connect proxy yapılandırmasını okuyabilmesi ve behviour güncelleştirmesi için **Microsoft Azure AD Eşitleme hizmetinin** yeniden başlatılması gerekir. 
+* Proxy yapılandırması mevcut bir kurulumda yapılamakta ise, Azure AD Connect ara sunucu yapılandırmasını okuyabilmesi ve davranışı güncelleştirmesi için **Microsoft Azure AD Eşitleme hizmetinin** yeniden başlatılması gerekir. 
 * Azure AD Connect, Dizin eşitlemesinin bir parçası olarak Azure AD 'ye bir Web isteği gönderdiğinde, Azure AD 'nin yanıtlaması 5 dakika sürebilir. Proxy sunucularda bağlantı boşta kalma zaman aşımı yapılandırması olması yaygındır. Yapılandırmanın en az 6 dakika veya daha fazla ayarlandığından emin olun.
 
-Daha fazla bilgi için bkz. [varsayılan proxy öğesi](https://msdn.microsoft.com/library/kd3cf2ex.aspx)hakkında MSDN.
+Daha fazla bilgi için bkz. [varsayılan proxy öğesi](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)hakkında MSDN.
 Bağlantı sorunlarıyla karşılaşırsanız daha fazla bilgi için bkz. [bağlantı sorunlarını giderme](tshoot-connect-connectivity.md).
 
 ### <a name="other"></a>Diğer
@@ -148,9 +148,9 @@ Azure AD Connect, Microsoft PowerShell ve .NET Framework 4.5.1 bağımlıdır. S
 
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Azure AD Connect için TLS 1,2 'yi etkinleştirin
-Sürüm 1.1.614.0 ' den önce, eşitleme altyapısı sunucusu ile Azure AD arasındaki iletişimi şifrelemek için varsayılan olarak Azure AD Connect TLS 1,0 kullanır. .NET uygulamalarını, sunucuda varsayılan olarak TLS 1,2 kullanacak şekilde yapılandırabilirsiniz. TLS 1,2 hakkında daha fazla bilgi için bkz. [Microsoft Güvenlik Danışmanlığı 2960358](https://technet.microsoft.com/security/advisory/2960358).
+Sürüm 1.1.614.0 ' den önce, eşitleme altyapısı sunucusu ile Azure AD arasındaki iletişimi şifrelemek için varsayılan olarak Azure AD Connect TLS 1,0 kullanır. .NET uygulamalarını, sunucuda varsayılan olarak TLS 1,2 kullanacak şekilde yapılandırabilirsiniz. TLS 1,2 hakkında daha fazla bilgi için bkz. [Microsoft Güvenlik Danışmanlığı 2960358](/security-updates/SecurityAdvisories/2015/2960358).
 
-1. İşletim sisteminiz için .NET 4.5.1 düzeltmesinin yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Microsoft Güvenlik Danışmanlığı 2960358](https://technet.microsoft.com/security/advisory/2960358). Bu düzeltme veya daha sonraki bir sürümü sunucunuzda zaten yüklü olabilir.
+1. İşletim sisteminiz için .NET 4.5.1 düzeltmesinin yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Microsoft Güvenlik Danışmanlığı 2960358](/security-updates/SecurityAdvisories/2015/2960358). Bu düzeltme veya daha sonraki bir sürümü sunucunuzda zaten yüklü olabilir.
 
 1. Tüm işletim sistemleri için, bu kayıt defteri anahtarını ayarlayın ve sunucuyu yeniden başlatın.
     ```

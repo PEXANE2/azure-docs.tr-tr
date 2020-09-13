@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 268cf61596366d451057861db1fa5ac2d35e87d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356891"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662401"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Kimlik eşitleme ve yinelenen öznitelik dayanıklılığı
 Yinelenen öznitelik dayanıklılığı, Microsoft 'un eşitleme araçlarından birini çalıştırırken **userPrincipalName** ve SMTP **ProxyAddress** çakışmalarını ortadan kaldıran, Azure Active Directory bir özelliktir.
@@ -44,7 +44,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 
 Öznitelik dayanıklılığı işlemi yalnızca UPN ve SMTP **ProxyAddress** değerlerini işler.
 
-Öznitelik gerekli değilse, bir **ProxyAddress**gibi Azure Active Directory, yalnızca çakışma özniteliğini karantinaya alır ve nesne oluşturma veya güncelleştirme ile devam eder.
+Öznitelik gerekli değilse, bir  **ProxyAddress**gibi Azure Active Directory, yalnızca çakışma özniteliğini karantinaya alır ve nesne oluşturma veya güncelleştirme ile devam eder.
 
 Özniteliği karantinaya alındıktan sonra, çakışma hakkındaki bilgiler, eski davranışta kullanılan aynı hata raporu e-postasına gönderilir. Ancak, bu bilgi yalnızca hata raporunda bir kez görünür, karantina gerçekleştiğinde gelecek e-postalara oturum açmaya devam etmez. Ayrıca, bu nesnenin dışarı aktarılması başarılı olduğundan, eşitleme istemcisi bir hatayı günlüğe almaz ve sonraki eşitleme döngüleri üzerinde oluşturma/güncelleştirme işlemini yeniden denemez.
 
@@ -126,7 +126,7 @@ Dizin eşitleme hatalarını Microsoft 365 Yönetim merkezinde görüntüleyebil
 
 ![Etkin Kullanıcılar](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Etkin Kullanıcılar")
 
-Microsoft 365 Yönetim merkezinde Dizin eşitleme hatalarını görüntüleme hakkında yönergeler için bkz. [Office 365 ' de dizin eşitleme hatalarını belirleme](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Microsoft 365 Yönetim Merkezi 'nde Dizin eşitleme hatalarını görüntüleme hakkında yönergeler için, bkz. [Microsoft 365 Dizin eşitleme hatalarını belirleme](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>Kimlik eşitlemesi hata raporu
 Yinelenen bir öznitelik çakışması olan bir nesne bu yeni davranışla birlikte işlenirse, kiracıya yönelik teknik bildirim ekibine gönderilen standart kimlik eşitleme hata raporu e-postasına bir bildirim eklenir. Ancak, Bu davranışta önemli bir değişiklik vardır. Geçmişte, yinelenen bir öznitelik çakışması hakkındaki bilgiler, çakışma çözümlenene kadar sonraki tüm hata raporuna dahil edilebilir. Bu yeni davranışla, belirli bir çakışma için hata bildirimi yalnızca bir kez görünür ve çakışan öznitelik karantinaya alınır.
@@ -177,5 +177,5 @@ Bu bilinen sorunlardan hiçbiri veri kaybına veya hizmet düşüşüne neden ol
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)
-* [Office 365 ' de dizin eşitleme hatalarını tanımla](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [Microsoft 365 Dizin eşitleme hatalarını tanımla](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

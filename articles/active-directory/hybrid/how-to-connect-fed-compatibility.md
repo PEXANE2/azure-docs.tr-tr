@@ -16,18 +16,18 @@ ms.date: 08/23/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3ca659535c225ca6736fe7bba8aa5b0120c684c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 895e7347feea3190ba9bdc273200d2985dfaa0d1
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359832"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661832"
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Azure AD federasyonu uyumluluk listesi
-Azure Active Directory, üçüncü taraf çözüm gerekmeden karma ve yalnızca bulut uygulamalarında Office 365 ve diğer Microsoft Çevrimiçi Hizmetleri için çoklu oturum açma ve gelişmiş uygulama erişim güvenliği sağlar. Microsoft 'un çevrimiçi hizmetlerinin birçoğu gibi Office 365, Dizin Hizmetleri, kimlik doğrulama ve yetkilendirme için Azure Active Directory tümleşiktir. Azure Active Directory ayrıca binlerce SaaS uygulamasında ve şirket içi Web uygulamalarında çoklu oturum açma olanağı da sağlar. Desteklenen SaaS uygulamaları için Azure Active Directory [uygulama galerisine](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) bakın. 
+Azure Active Directory, üçüncü taraf bir çözüm gerekmeden karma ve yalnızca bulut uygulamalarına yönelik Microsoft 365 ve diğer Microsoft Çevrimiçi Hizmetleri için çoklu oturum açma ve gelişmiş uygulama erişim güvenliği sağlar. Microsoft 'un çevrimiçi hizmetlerinin birçoğu gibi Microsoft 365 Dizin Hizmetleri, kimlik doğrulama ve yetkilendirme için Azure Active Directory tümleşiktir. Azure Active Directory ayrıca binlerce SaaS uygulamasında ve şirket içi Web uygulamalarında çoklu oturum açma olanağı da sağlar. Desteklenen SaaS uygulamaları için Azure Active Directory [uygulama galerisine](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) bakın. 
 
 ## <a name="idp-validation"></a>IDP doğrulaması
-Kuruluşunuz bir üçüncü taraf Federasyon çözümü kullanıyorsa, üçüncü taraf Federasyon çözümünün Azure Active Directory ile uyumlu olması şartıyla, Office 365 gibi Microsoft Online Services ile şirket içi Active Directory kullanıcılarınız için çoklu oturum açmayı yapılandırabilirsiniz.  Uyumlulukla ilgili sorular için lütfen kimlik sağlayıcınızla iletişim kurun.  Daha önce Azure AD ile uyumluluk için test edilmiş kimlik sağlayıcılarının bir listesini görmek isterseniz, Microsoft tarafından [buraya](https://www.microsoft.com/download/details.aspx?id=56843)tıklayın. 
+Kuruluşunuz bir üçüncü taraf Federasyon çözümü kullanıyorsa, üçüncü taraf Federasyon çözümünün Azure Active Directory uyumlu olması şartıyla, Microsoft 365 gibi Microsoft Online Services ile şirket içi Active Directory kullanıcılarınız için çoklu oturum açma yapılandırabilirsiniz.  Uyumlulukla ilgili sorular için lütfen kimlik sağlayıcınızla iletişim kurun.  Daha önce Azure AD ile uyumluluk için test edilmiş olan kimlik sağlayıcılarının listesini, Microsoft tarafından görmek isterseniz, bkz. [Azure AD kimlik sağlayıcısı uyumluluk belgeleri](https://www.microsoft.com/download/details.aspx?id=56843). 
 
 >[!NOTE]
 >Microsoft artık Azure Active Directory uyumluluk için bağımsız kimlik sağlayıcılarına doğrulama testi sağlamaz. Ürününüzü birlikte çalışabilirlik için test etmek istiyorsanız lütfen bu [yönergelere](https://www.microsoft.com/download/details.aspx?id=56843)başvurun. 

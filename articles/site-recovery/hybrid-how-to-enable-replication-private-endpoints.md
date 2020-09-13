@@ -1,24 +1,21 @@
 ---
 title: Özel uç noktaları olan şirket içi makineler için çoğaltmayı etkinleştirme
 description: Bu makalede, Site Recovery içindeki özel uç noktaları kullanarak şirket içi makineler için çoğaltmanın nasıl yapılandırılacağı açıklanır.
-author: mayurigupta13
-ms.author: mayg
+author: Harsha-CS
+ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 13c19f07ac21f986a5523407e46c59c050ebf96d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 3d15f4039da85dfa926e7bc9ab96b2c48965d5f0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142086"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658795"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>Özel uç noktaları kullanarak şirket içi makineleri çoğaltma
 
-Azure Site Recovery, şirket içi makinelerinizi Azure 'da bir sanal ağa çoğaltmak için [Azure özel bağlantı](../private-link/private-endpoint-overview.md) özel noktalarını kullanmanıza olanak sağlar. Şu bölgelerde bir kurtarma kasasına özel uç nokta erişimi desteği desteklenir:
-
-- Azure ticari: Orta Güney ABD, Batı ABD 2, Doğu ABD
-- Azure Kamu: US Gov Virginia, US Gov Arizona, US Gov Teksas, US DoD Doğu, US DoD Orta
+Azure Site Recovery, şirket içi makinelerinizi Azure 'da bir sanal ağa çoğaltmak için [Azure özel bağlantı](../private-link/private-endpoint-overview.md) özel noktalarını kullanmanıza olanak sağlar. Bir kurtarma kasasına özel uç nokta erişimi, tüm Azure ticari & kamu bölgelerinde desteklenir.
 
 Bu makalede, aşağıdaki adımların nasıl tamamlanacağı açıklanmaktadır:
 
@@ -191,7 +188,7 @@ Site Recovery sağlayıcısının (Hyper-V makineleri için) veya Işlem sunucus
 
    Şimdi, oluşturduğunuz özel DNS bölgesini atlamaya bağlamanız gerekir.
 
-   1. Önceki adımda oluşturduğunuz özel DNS bölgesine gidin ve sol bölmedeki **sanal ağ bağlantıları** ' na gidin. **Add (Ekle)** seçeneğini belirleyin.
+   1. Önceki adımda oluşturduğunuz özel DNS bölgesine gidin ve sol bölmedeki **sanal ağ bağlantıları** ' na gidin. **Ekle**’yi seçin.
 
    1. Gerekli ayrıntıları girin. **Abonelik** ve **sanal ağ** listelerinde, atlama ağına karşılık gelen ayrıntıları seçin. Diğer alanlarda varsayılan değerleri değiştirmeyin.
 
@@ -210,7 +207,7 @@ Site Recovery sağlayıcısının (Hyper-V makineleri için) veya Işlem sunucus
 
    1. **Kayıt kümesi Ekle** sayfasında, her bir tam etki alanı adı için bir giriş ve **bir** tür kaydı olarak özel IP ekleyin. Tam etki alanı adlarının bir listesini ve **Özel uç nokta** sayfasındaki IP 'Leri **genel bakış**' da alabilirsiniz. Aşağıdaki ekran görüntüsünde görebileceğiniz gibi, Özel uç noktasındaki ilk tam etki alanı adı özel DNS bölgesindeki kayıt kümesine eklenir.
 
-      Bu tam etki alanı adları bu Düzenle eşleşir:`{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
+      Bu tam etki alanı adları bu Düzenle eşleşir: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
       :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Kayıt kümesi Ekle sayfasını gösteren ekran görüntüsü.":::
 

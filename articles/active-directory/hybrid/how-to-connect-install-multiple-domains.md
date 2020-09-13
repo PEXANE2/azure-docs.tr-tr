@@ -1,6 +1,6 @@
 ---
 title: Birden çok etki alanı Azure AD Connect
-description: Bu belgede O365 ve Azure AD ile birden çok üst düzey etki alanı ayarlama ve yapılandırma açıklanmaktadır.
+description: Bu belgede Microsoft 365 ve Azure AD ile birden çok üst düzey etki alanı ayarlama ve yapılandırma açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,15 +16,15 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f913199e0c0ed438d4b95b879d4defc072c615aa
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849942"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662431"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD ile Federasyon için Çoklu Etki Alanı Desteği
-Aşağıdaki belgelerde, Office 365 veya Azure AD etki alanlarıyla federasyona göre birden çok üst düzey etki alanı ve alt etki alanı kullanma hakkında rehberlik verilmektedir.
+Aşağıdaki belgelerde birden çok üst düzey etki alanı ve alt etki alanı kullanarak Microsoft 365 veya Azure AD etki alanlarıyla Federasyon oluşturma hakkında rehberlik verilmektedir.
 
 ## <a name="multiple-top-level-domain-support"></a>Birden çok üst düzey etki alanı desteği
 Azure AD ile birden çok üst düzey etki alanını federasyona eklemek için, bir üst düzey etki alanı ile federasyona göre gerekli olmayan bazı ek yapılandırmalar gerekir.
@@ -42,7 +42,7 @@ Issueruri ' i PowerShell komutunu kullanarak görüntüleyebilirsiniz `Get-MsolD
 
 Birden fazla en üst düzey etki alanı eklediğinizde bir sorun ortaya çıkar.  Örneğin, Azure AD ile şirket içi ortamınız arasında federasyon ayarınızın olduğunu varsayalım.  Bu belge için bmcontoso.com etki alanı kullanılır.  Şimdi ikinci bir üst düzey etki alanı, bmfabrikam.com eklenmiştir.
 
-![Etki Alanları](./media/how-to-connect-install-multiple-domains/domains.png)
+![Birden çok üst düzey etki alanını gösteren ekran görüntüsü](./media/how-to-connect-install-multiple-domains/domains.png)
 
 Bmfabrikam.com etki alanını federasyona dönüştürmeye çalıştığınızda bir hata oluşur.  Bunun nedeni, Azure AD 'nin birden fazla etki alanı için aynı değere sahip olduğundan ıssueruri özelliğinin aynı değere sahip olmasını engelleyen bir kısıtlaması vardır.  
 
@@ -63,11 +63,11 @@ Bmfabrikam.com etki alanının ayarlarına bakarak aşağıdakileri görebilirsi
 
 ![Federasyon hatası](./media/how-to-connect-install-multiple-domains/settings.png)
 
-`-SupportMultipleDomain`Hala adfs.bmcontoso.com üzerinde Federasyon Hizmeti 'ne işaret edecek şekilde yapılandırılmış olan diğer uç noktaları değiştirmez.
+`-SupportMultipleDomain` Hala adfs.bmcontoso.com üzerinde Federasyon Hizmeti 'ne işaret edecek şekilde yapılandırılmış olan diğer uç noktaları değiştirmez.
 
 Diğer bir deyişle, `-SupportMultipleDomain` AD FS sisteminin Azure AD için verilen belirteçlerde uygun veren değerini içermesi güvence altına alınır. Bu değer, kullanıcılar UPN 'sinin etki alanı kısmı alınarak ve ıssueruri içinde etki alanı olarak ayarlanarak ayarlanır, yani https://{UPN soneki}/ADFS/Services/Trust.
 
-Bu nedenle, Azure AD veya Office 365 kimlik doğrulaması sırasında kullanıcının belirtecindeki ıssueruri öğesi, Azure AD 'de etki alanını bulmak için kullanılır.  Bir eşleşme bulunamazsa, kimlik doğrulaması başarısız olur.
+Bu nedenle, Azure AD veya Microsoft 365 kimlik doğrulaması sırasında kullanıcının belirtecindeki ıssueruri öğesi, Azure AD 'de etki alanını bulmak için kullanılır. Bir eşleşme bulunamazsa, kimlik doğrulaması başarısız olur.
 
 Örneğin, bir kullanıcının UPN 'si ise, bsimon@bmcontoso.com belirteçteki ıssueruri öğesi AD FS sorunları olarak ayarlanır `http://bmcontoso.com/adfs/services/trust` . Bu öğe Azure AD yapılandırmasıyla eşleşecek ve kimlik doğrulaması başarılı olur.
 
@@ -106,17 +106,17 @@ Microsoft Online güvenini kaldırmak ve özgün etki alanınızı güncelleşti
 2. Sol tarafta **güven ilişkileri** ve **bağlı olan taraf güvenleri** ' ni genişletin.
 3. Sağ tarafta **Microsoft Office 365 kimlik Platform** girişini silin.
    ![Microsoft Online 'ı kaldır](./media/how-to-connect-install-multiple-domains/trust4.png)
-4. [Windows PowerShell için Azure Active Directory modülü](https://msdn.microsoft.com/library/azure/jj151815.aspx) yüklü bir makinede aşağıdakileri çalıştırın: `$cred=Get-Credential` .  
+4. [Windows PowerShell için Azure Active Directory modülü](/previous-versions/azure/jj151815(v=azure.100)) yüklü bir makinede aşağıdakileri çalıştırın: `$cred=Get-Credential` .  
 5. Federasyona sahip olduğunuz Azure AD etki alanı için genel bir yöneticinin kullanıcı adını ve parolasını girin.
-6. PowerShell 'de, şunu girin`Connect-MsolService -Credential $cred`
-7. PowerShell 'de, girin `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain` .  Bu güncelleştirme, özgün etki alanı içindir.  Bu nedenle, yukarıdaki etki alanlarını kullanarak şöyle olacaktır:`Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
+6. PowerShell 'de, şunu girin `Connect-MsolService -Credential $cred`
+7. PowerShell 'de, girin `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain` .  Bu güncelleştirme, özgün etki alanı içindir.  Bu nedenle, yukarıdaki etki alanlarını kullanarak şöyle olacaktır:  `Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
 
 PowerShell kullanarak yeni en üst düzey etki alanını eklemek için aşağıdaki adımları kullanın
 
-1. [Windows PowerShell için Azure Active Directory modülü](https://msdn.microsoft.com/library/azure/jj151815.aspx) yüklü bir makinede aşağıdakileri çalıştırın: `$cred=Get-Credential` .  
+1. [Windows PowerShell için Azure Active Directory modülü](/previous-versions/azure/jj151815(v=azure.100)) yüklü bir makinede aşağıdakileri çalıştırın: `$cred=Get-Credential` .  
 2. Federasyona eklemek istediğiniz Azure AD etki alanı için genel bir yöneticinin kullanıcı adını ve parolasını girin
-3. PowerShell 'de, şunu girin`Connect-MsolService -Credential $cred`
-4. PowerShell 'de, şunu girin`New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
+3. PowerShell 'de, şunu girin `Connect-MsolService -Credential $cred`
+4. PowerShell 'de, şunu girin `New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
 
 Azure AD Connect kullanarak yeni en üst düzey etki alanını eklemek için aşağıdaki adımları kullanın.
 
@@ -128,11 +128,11 @@ Azure AD Connect kullanarak yeni en üst düzey etki alanını eklemek için aş
 5. Yükle'ye tıklayın
 
 ### <a name="verify-the-new-top-level-domain"></a>Yeni en üst düzey etki alanını doğrulama
-PowerShell komutunu kullanarak `Get-MsolDomainFederationSettings -DomainName <your domain>` güncelleştirilmiş ıssueruri 'yi görüntüleyebilirsiniz.  Aşağıdaki ekran görüntüsünde, Federasyon ayarlarının orijinal etki alanında güncelleştirildiği gösterilmektedir`http://bmcontoso.com/adfs/services/trust`
+PowerShell komutunu kullanarak `Get-MsolDomainFederationSettings -DomainName <your domain>` güncelleştirilmiş ıssueruri 'yi görüntüleyebilirsiniz.  Aşağıdaki ekran görüntüsünde, Federasyon ayarlarının orijinal etki alanında güncelleştirildiği gösterilmektedir `http://bmcontoso.com/adfs/services/trust`
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
-Ve yeni etki alanındaki ıssueruri şu şekilde ayarlandı`https://bmfabrikam.com/adfs/services/trust`
+Ve yeni etki alanındaki ıssueruri şu şekilde ayarlandı `https://bmfabrikam.com/adfs/services/trust`
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/settings2.png)
 
@@ -171,7 +171,7 @@ Alt etki alanlarını desteklemek için özel bir talep eklemek üzere aşağıd
 
     ![Talebi Değiştir](./media/how-to-connect-install-multiple-domains/sub2.png)
 
-5. Tamam ' a tıklayın.  Uygula'ya tıklayın.  Tamam ' a tıklayın.  AD FS Yönetimi'ni kapatın.
+5. Tamam ' a tıklayın.  Uygula’ya tıklayın.  Tamam ' a tıklayın.  AD FS Yönetimi'ni kapatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure AD Connect'i yüklediniz, artık [yüklemeyi doğrulayabilir ve lisans atayabilirsiniz](how-to-connect-post-installation.md).

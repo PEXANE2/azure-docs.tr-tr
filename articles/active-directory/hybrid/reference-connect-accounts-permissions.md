@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84724285dee6dfff4913b067daa651837787d4e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255787"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662335"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Hesaplar ve izinler
 
@@ -55,7 +55,7 @@ Azure AD Connect çalıştırmak için kullanılan bu üç hesaba ek olarak, Azu
 > [!NOTE]
 > Bir ESAE yönetim ormanına Azure AD Connect ' de kullanılan yönetim hesaplarını yönetmek için desteklenir ("kırmızı orman" olarak da bilinir).
 > Adanmış yönetim ormanları kuruluşların yönetim hesaplarını, iş istasyonlarını ve grupları üretim ortamından daha güçlü güvenlik denetimleri olan bir ortamda barındırmasına imkan tanır.
-> Adanmış yönetim ormanları hakkında daha fazla bilgi edinmek için lütfen [Esae yönetim ormanı tasarım yaklaşımını](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)inceleyin.
+> Adanmış yönetim ormanları hakkında daha fazla bilgi edinmek için lütfen [Esae yönetim ormanı tasarım yaklaşımını](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)inceleyin.
 
 > [!NOTE]
 > Genel yönetici rolü, İlk kurulumdan sonra gerekli değildir ve tek gerekli hesap, **Dizin eşitleme hesapları** rol hesabı olur. Yani, hesabı yalnızca genel yönetici rolüyle kaldırmak istediğiniz anlamına gelmez. Rolü daha az güçlü bir rol olarak değiştirmek daha iyidir, ancak Sihirbazı yeniden çalıştırmanız gerektiğinde hesabın sorunları ortaya çıkarabilir. Rol ayrıcalığını azaltarak, Azure AD Connect Sihirbazı 'nı yeniden kullanmanız gerekiyorsa ayrıcalıkların her zaman yeniden yükseltilmesini sağlayabilirsiniz. 
@@ -141,15 +141,15 @@ Ayrıca gerekli izinleri verilmiş olmalıdır. Yükleme Sihirbazı izinleri do�
 
 Size gereken izinler, etkinleştirdiğiniz isteğe bağlı özelliklere bağlıdır. Birden çok etki alanı varsa, ormandaki tüm etki alanları için izinler verilmelidir. Bu özelliklerden herhangi birini etkinleştirmezseniz, varsayılan **etki alanı kullanıcı** izinleri yeterlidir.
 
-| Özellik | İzinler |
+| Öne çıkan özelliği | İzinler |
 | --- | --- |
 | ms-DS-ımlarımguıd özelliği |Tasarım kavramları bölümünde belgelenen ms-DS-ımıbu GUID özniteliğine yazma izinleri [-MS-DS-ımıbu GUID kaynağını Sourcetutturucu olarak kullanma](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Parola karması eşitleme |<li>Dizin Değişikliklerini Çoğalt</li>  <li>Dizin değişikliklerini çoğaltma |
 | Exchange karma dağıtımı |Kullanıcılar, gruplar ve kişiler için [Exchange hibrit geri yazma](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) bölümünde belgelenen özniteliklere yazma izinleri. |
 | Exchange posta genel klasörü |Ortak klasörler için [Exchange posta ortak klasöründe](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) belgelenen özniteliklere yönelik okuma izinleri. | 
-| Parola geri yazma |Kullanıcılar için [parola yönetimine](../authentication/howto-sspr-writeback.md) Başlarken bölümünde belgelenen özniteliklere yazma izinleri. |
+| Parola geri yazma |Kullanıcılar için [parola yönetimine](../authentication/tutorial-enable-sspr-writeback.md) Başlarken bölümünde belgelenen özniteliklere yazma izinleri. |
 | Cihaz geri yazma |[Cihaz geri yazma](how-to-connect-device-writeback.md)bölümünde açıklandığı şekilde bir PowerShell betiğine izin verildi. |
-| Grup geri yazma |**Office 365 gruplarını** Exchange yüklü bir ormana geri almanıza olanak sağlar.|
+| Grup geri yazma |**Microsoft 365 gruplarının** Exchange yüklü bir ormana geri yazması için izin verir.|
 
 ## <a name="upgrade"></a>Yükseltme
 Bir Azure AD Connect sürümünden yeni bir sürüme yükselttiğinizde, aşağıdaki izinlere sahip olmanız gerekir:
@@ -175,7 +175,7 @@ Hızlı ayarları kullanıyorsanız, Active Directory eşitleme için kullanıla
 ### <a name="adsync-service-account"></a>AD Eşitleme hizmeti hesabı
 Eşitleme hizmeti farklı hesaplar altında çalıştırılabilir. Bir **sanal hizmet hesabı** (VSA), **Grup tarafından yönetilen hizmet hesabı** (gMSA/sMSA) veya normal bir kullanıcı hesabı altında çalışabilir. Yeni bir yükleme yaptığınızda desteklenen seçenekler, Connect 'in 2017 Nisan sürümü ile değiştirilmiştir. Azure AD Connect önceki bir sürümünden yükseltiyorsanız, bu ek seçenekler kullanılamaz.
 
-| Hesap türü | Yükleme seçeneği | Açıklama |
+| Hesap türü | Yükleme seçeneği | Description |
 | --- | --- | --- |
 | [Sanal hizmet hesabı](#virtual-service-account) | Express ve Custom, 2017 Nisan ve üzeri | Bu, etki alanı denetleyicisindeki yüklemeler hariç tüm Express yüklemeleri için kullanılan seçenektir. Özel için, başka bir seçenek kullanılmadığı takdirde varsayılan seçenektir. |
 | [Grup Yönetilen Hizmet Hesabı](#group-managed-service-account) | Özel, 2017 Nisan ve üzeri | Uzak bir SQL Server kullanıyorsanız, grup tarafından yönetilen bir hizmet hesabı kullanmanızı öneririz. |
@@ -197,8 +197,8 @@ Açıklama:
 - Kalın olmayan desteklenen seçenek
 - Yerel hesap-sunucuda yerel kullanıcı hesabı
 - Etki alanı hesabı-etki alanı kullanıcı hesabı
-- sMSA- [tek başına yönetilen hizmet hesabı](https://technet.microsoft.com/library/dd548356.aspx)
-- gMSA- [Grup yönetilen hizmet hesabı](https://technet.microsoft.com/library/hh831782.aspx)
+- sMSA- [tek başına yönetilen hizmet hesabı](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA- [Grup yönetilen hizmet hesabı](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))
 
 | | Yerel veritabanı</br>Express | LocalDB/LocalSQL</br>Özel | Uzak SQL</br>Özel |
 | --- | --- | --- | --- |
@@ -215,11 +215,11 @@ VSA, eşitleme altyapısının ve SQL 'in aynı sunucuda olduğu senaryolarla bi
 Bu özellik Windows Server 2008 R2 veya üstünü gerektirir. Azure AD Connect Windows Server 2008 ' ye yüklerseniz, yükleme bunun yerine bir [Kullanıcı hesabı](#user-account) kullanmaya geri döner.
 
 #### <a name="group-managed-service-account"></a>Grup tarafından yönetilen hizmet hesabı
-Uzak bir SQL Server kullanıyorsanız, **Grup tarafından yönetilen bir hizmet hesabı**kullanmanızı öneririz. Grup tarafından yönetilen hizmet hesabı için Active Directory hazırlama hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesaplarına genel bakış](https://technet.microsoft.com/library/hh831782.aspx).
+Uzak bir SQL Server kullanıyorsanız, **Grup tarafından yönetilen bir hizmet hesabı**kullanmanızı öneririz. Grup tarafından yönetilen hizmet hesabı için Active Directory hazırlama hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesaplarına genel bakış](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)).
 
 Bu seçeneği kullanmak için, [gerekli bileşenleri yüklensin](how-to-connect-install-custom.md#install-required-components) sayfasında, **var olan bir hizmet hesabını kullan**' ı seçin ve **yönetilen hizmet hesabı**' nı seçin.  
 !['NıN](./media/reference-connect-accounts-permissions/serviceaccount.png)  
-[Tek başına yönetilen hizmet hesabı](https://technet.microsoft.com/library/dd548356.aspx)kullanmak için de desteklenir. Ancak bunlar yalnızca yerel makinede kullanılabilir ve bunları varsayılan sanal hizmet hesabı üzerinden kullanmanın bir avantajı yoktur.
+[Tek başına yönetilen hizmet hesabı](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))kullanmak için de desteklenir. Ancak bunlar yalnızca yerel makinede kullanılabilir ve bunları varsayılan sanal hizmet hesabı üzerinden kullanmanın bir avantajı yoktur.
 
 Bu özellik Windows Server 2012 veya üstünü gerektirir. Daha eski bir işletim sistemi kullanmanız ve uzak SQL kullanmanız gerekiyorsa, bir [Kullanıcı hesabı](#user-account)kullanmanız gerekir.
 
@@ -247,12 +247,12 @@ Hesabın kullanıldığı sunucunun adı, Kullanıcı adının ikinci bölümün
 
 Hesap, sona ermeyecek uzun bir karmaşık parolayla oluşturulur. Yalnızca dizin eşitleme görevlerini gerçekleştirmek için izinlere sahip özel bir rol **dizini eşitleme hesabı** verilir. Bu özel yerleşik rol Azure AD Connect Sihirbazı dışında verilemez. Azure portal bu hesabı rol **kullanıcısına**gösterir.
 
-Azure AD 'de 20 Sync Service hesabı sınırı vardır. Azure AD 'de mevcut Azure AD hizmet hesaplarının listesini almak için aşağıdaki Azure AD PowerShell cmdlet 'ini çalıştırın:`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
+Azure AD 'de 20 Sync Service hesabı sınırı vardır. Azure AD 'de mevcut Azure AD hizmet hesaplarının listesini almak için aşağıdaki Azure AD PowerShell cmdlet 'ini çalıştırın: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
-Kullanılmayan Azure AD hizmet hesaplarını kaldırmak için aşağıdaki Azure AD PowerShell cmdlet 'ini çalıştırın:`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+Kullanılmayan Azure AD hizmet hesaplarını kaldırmak için aşağıdaki Azure AD PowerShell cmdlet 'ini çalıştırın: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->Yukarıdaki PowerShell komutlarını kullanabilmeniz [için, Graph modülünün Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) 'i yüklemeniz ve [Connect-Azuread](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0) kullanarak Azure AD örneğinize bağlanmanız gerekir
+>Yukarıdaki PowerShell komutlarını kullanabilmeniz [için, Graph modülünün Azure Active Directory PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) 'i yüklemeniz ve [Connect-Azuread](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) kullanarak Azure AD örneğinize bağlanmanız gerekir
 
 Azure AD Bağlayıcısı hesabının parolasını yönetme veya sıfırlama hakkında daha fazla bilgi için bkz [. Azure AD Connect hesabını yönetme](how-to-connect-azureadaccount.md)
 
@@ -265,7 +265,7 @@ Azure AD Bağlayıcısı hesabının parolasını yönetme veya sıfırlama hakk
 |Hızlı ayarları kullanarak yükleme | [Azure AD Connect'i hızlı yükleme](how-to-connect-install-express.md)|
 |Özelleştirilmiş ayarları kullanarak yükleme | [Azure AD Connect özel yüklemesi](./how-to-connect-install-custom.md)|
 |DirSync'ten yükseltme | [Azure AD eşitleme aracından (DirSync) yükseltme](how-to-dirsync-upgrade-get-started.md)|
-|Yükleme işleminden sonra | [Yüklemeyi doğrulama ve lisansları atama](how-to-connect-post-installation.md)|
+|Yükleme sonrası | [Yüklemeyi doğrulama ve lisansları atama](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

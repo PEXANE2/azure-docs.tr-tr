@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 582ec01a7a843358bef749aec693a59f88a1d655
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9398fc9ee61bed41cd1e8c227fc4b4068e4b3e69
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640659"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662244"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: mevcut bir kiracınız olduğunda
 Azure AD Connect kullanımı ile ilgili konuların çoğu yeni bir Azure AD kiracısıyla başladığınız ve orada hiç Kullanıcı veya başka nesne olmadığı varsayılır. Ancak, bir Azure AD kiracısı ile başladıysanız, bunu kullanıcılar ve diğer nesnelerle doldurduktan sonra da Bağlan ' ı kullanmak istiyorsanız, bu konu sizin için önemlidir.
@@ -41,7 +41,7 @@ Eşleşme yalnızca, Connect 'ten gelen yeni nesneler için değerlendirilir. Va
 Azure AD, bağlanmasından gelen bir nesne için öznitelik değerlerinin aynı olduğu ve Azure AD 'de zaten bulunduğu bir nesne bulursa, Azure AD 'deki nesne, Connect tarafından üzerinden alınır. Daha önce bulut tarafından yönetilen nesne, şirket içi yönetilen olarak işaretlenir. Şirket içi AD 'deki bir değere sahip Azure AD 'deki tüm özniteliklerin şirket içi değer ile üzerine yazılır. Özel durum, bir özniteliğin şirket içinde **null** değere sahip olduğu durumdur. Bu durumda, Azure AD 'deki değer kalır, ancak yine de şirket içinde yalnızca başka bir şeye değiştirebilirsiniz.
 
 > [!WARNING]
-> Azure AD 'deki tüm özniteliklerin şirket içi değer tarafından üzerine yazılacağı için şirket içinde iyi veri bulunduğundan emin olun. Örneğin, yalnızca Office 365 ' de yönetilen e-posta adresiniz varsa ve şirket içi AD DS güncel tutulmazsa, AD DS Azure AD/Office 365 ' deki tüm değerleri kaybedersiniz.
+> Azure AD 'deki tüm özniteliklerin şirket içi değer tarafından üzerine yazılacağı için şirket içinde iyi veri bulunduğundan emin olun. Örneğin, Microsoft 365 içinde yalnızca yönetilen e-posta adresiniz varsa ve şirket içi AD DS güncel tutulmazsa, Azure AD/Microsoft 365 ' de AD DS ' de bulunmayan tüm değerleri kaybedersiniz.
 
 > [!IMPORTANT]
 > Her zaman hızlı ayarlar tarafından kullanılan parola eşitleme ' yi kullanırsanız, Azure AD 'deki parolanın şirket içi AD 'deki parolayla üzerine yazılır. Kullanıcılarınız farklı parolaları yönetmek için kullanılıyorsa, Connect ' i yükledikten sonra şirket içi parolayı kullanmaları gerektiğini bilgilendirmeniz gerekir.
