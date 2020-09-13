@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 6935ea505643f253daf4c0b7d818137f52583682
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132832"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434478"
 ---
 # <a name="virtual-network-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
 
@@ -30,7 +30,7 @@ Bu özellik aşağıdaki Azure hizmetleri ve bölgeleri için kullanılabilir. *
 
 - **[Azure depolama](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (*Microsoft. Storage*): tüm Azure bölgelerinde genel kullanıma sunulmuştur.
 - **[Azure SQL veritabanı](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): tüm Azure bölgelerinde genel kullanıma sunulmuştur.
-- **[Azure SQL veri ambarı](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): tüm Azure bölgelerinde genel kullanıma sunulmuştur.
+- **[Azure SYNAPSE Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): tüm Azure bölgelerinde genel kullanıma sunulmuştur.
 - **[PostgreSQL Için Azure veritabanı sunucusu](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): veritabanı hizmetinin kullanılabildiği Azure bölgelerinde genel kullanıma sunulmuştur.
 - **[MySQL Için Azure veritabanı sunucusu](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): veritabanı hizmetinin kullanılabildiği Azure bölgelerinde genel kullanıma sunulmuştur.
 - **[MariaDB Için Azure veritabanı](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft. SQL*): veritabanı hizmetinin kullanılabildiği Azure bölgelerinde genel kullanıma sunulmuştur.
@@ -40,6 +40,7 @@ Bu özellik aşağıdaki Azure hizmetleri ve bölgeleri için kullanılabilir. *
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. EventHub*): tüm Azure bölgelerinde genel olarak kullanılabilir.
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. AzureActiveDirectory*): tüm Azure bölgelerinde genel olarak kullanılabilir ADLS 1..
 - **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** (*Microsoft. Web*): App Service 'in kullanılabildiği tüm Azure bölgelerinde genel kullanıma sunulmuştur.
+- **[Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)** bilişsel hizmetler (*Microsoft. Biliveservices*): bilişsel hizmetler 'in kullanılabildiği tüm Azure bölgelerinde genel kullanıma sunulmuştur.
 
 **Genel Önizleme**
 
@@ -148,7 +149,7 @@ SSS için bkz. [sanal ağ hizmeti uç noktası SSS](https://docs.microsoft.com/a
 - [Sanal ağ hizmet uç noktalarını yapılandırma](tutorial-restrict-network-access-to-resources.md)
 - [Bir Azure Depolama hesabını bir sanal ağa güvenli hale getirme](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure SQL veritabanını bir sanal ağ ile güvenli hale getirme](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Azure SQL veri ambarını bir sanal ağa güvenli hale getirme](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
+- [Bir Azure SYNAPSE analizinin bir sanal ağ ile güvenliğini sağlama](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Sanal ağlarda Azure hizmet tümleştirmesi](virtual-network-for-azure-services.md)
 - [Sanal ağ hizmeti uç noktası Ilkeleri](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Azure Resource Manager şablonu](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

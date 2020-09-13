@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 57786aa343fd2ea863b17f65253e5d4a4a6b88ce
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226837"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437947"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory için Azure Güvenlik temeli
 
@@ -542,7 +542,7 @@ Azure SQL veritabanı veri bulma ve sınıflandırma özelliğini kullanın. Ver
 
 **Rehberlik**: geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. Tümleştirme çalışma zamanları, sanal ağ (VNet)/subnet ile ayrılmalıdır ve uygun şekilde etiketlenemez.
 
- Ayrıca, Özel uç noktaları ağ yalıtımı gerçekleştirmek için de kullanabilirsiniz. Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor.
+ Ayrıca, Özel uç noktaları ağ yalıtımı gerçekleştirmek için de kullanabilirsiniz. Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel Uç Nokta, sanal ağınızdaki bir özel IP adresini kullanır ve bu sayede hizmeti sanal ağınıza getirir.
 
 * [Ek Azure abonelikleri oluşturma](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -578,7 +578,7 @@ Azure SQL veritabanı veri bulma ve sınıflandırma özelliğini kullanın. Ver
 
 **Rehberlik**: bulut VERI deposu https veya TLS 'yi destekliyorsa, Data Factory ve bulut veri deposundaki veri taşıma hizmetleri arasındaki tüm veri aktarımları, GÜVENLI kanal https veya TLS aracılığıyla yapılır. Kullanılan TLS sürümü 1,2.
 
-Azure SQL veritabanı ve Azure SQL veri ambarı 'na yönelik tüm bağlantılar, veriler veritabanına aktarılırken ve veritabanından aktarılırken şifreleme (SSL/TLS) gerektirir. JSON kullanarak bir işlem hattı yazarken, şifreleme özelliğini ekleyin ve bağlantı dizesinde true olarak ayarlayın. Azure depolama için bağlantı dizesinde HTTPS kullanabilirsiniz.
+Azure SQL veritabanı ve Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) yapılan tüm bağlantılar, veriler veritabanına aktarılırken ve veritabanından aktarılırken şifreleme (SSL/TLS) gerektirir. JSON kullanarak bir işlem hattı yazarken, şifreleme özelliğini ekleyin ve bağlantı dizesinde true olarak ayarlayın. Azure depolama için bağlantı dizesinde HTTPS kullanabilirsiniz.
 
 * [Azure Data Factory geçişte şifrelemeyi anlama](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 
@@ -896,7 +896,7 @@ Bunun yalnızca Integration Runtime bir Azure sanal makinesinde çalışıyor ol
 
 * [Azure Güvenlik Duvarı nedir?](https://docs.microsoft.com/azure/firewall/overview)
 
-* [Azure Web Uygulaması Güvenlik Duvarı nedir?](https://docs.microsoft.com/azure/web-application-firewall/overview)
+* [Azure Web uygulaması güvenlik duvarı nedir?](https://docs.microsoft.com/azure/web-application-firewall/overview)
 
 * [Ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/security-overview)
 
@@ -1050,7 +1050,9 @@ Ayrıca, kimlik bilgilerini veya gizli değerleri bir Azure Key Vault saklayabil
 
 * [Key Vault oluşturma](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Key Vault kimlik doğrulaması yapma](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [Key Vault erişim ilkesi atama](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 * [İşlem hattı etkinliklerinde Azure Key Vault gizli dizilerini kullanma](https://docs.microsoft.com/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
 

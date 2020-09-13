@@ -1,20 +1,20 @@
 ---
-title: Azure Kubernetes hizmeti (AKS) dağıtımlarını korumak için Azure Güvenlik duvarını kullanma
+title: Azure Kubernetes Service (AKS) Dağıtımlarını korumak için Azure Güvenlik Duvarı'nı kullanın
 description: Azure Kubernetes hizmeti (AKS) dağıtımlarını korumak için Azure Güvenlik Duvarı 'nı nasıl kullanacağınızı öğrenin
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/03/2020
 ms.author: victorh
-ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87412958"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437862"
 ---
-# <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Azure Kubernetes hizmeti (AKS) dağıtımlarını korumak için Azure Güvenlik duvarını kullanma
+# <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Azure Kubernetes Service (AKS) Dağıtımlarını korumak için Azure Güvenlik Duvarı'nı kullanın
 
 Azure Kubernetes hizmeti (AKS), Azure 'da yönetilen bir Kubernetes kümesi sunar. Bu sorumluluğun çoğunu Azure 'a devrederek, Kubernetes 'in yönetilmesine yönelik karmaşıklık ve operasyonel ek yükü azaltır. AKS, sistem durumu izleme ve bakım gibi kritik görevleri işler ve kolaylaştırılmaz idare sayesinde kurumsal düzeyde ve güvenli bir küme sunar.
 
@@ -47,7 +47,13 @@ Azure Güvenlik Duvarı, yapılandırmayı basitleştirmek için bir AKS FQDN et
    - API sunucusuyla iletişim kurmayı gerektiren bir uygulamanız varsa TCP [*ıpaddrofyourapiserver*]: 443 gereklidir. Bu değişiklik küme oluşturulduktan sonra ayarlanabilir.
    - TCP bağlantı noktası 9000 ve tünel ön pod için, API sunucusundaki tünel sonuyla iletişim kurmak üzere UDP bağlantı noktası 1194.
 
-      Daha belirgin olması için bkz. **. HCP. <location> . *aşağıdaki tabloda azmk8s.io ve adresler.
+      Daha belirgin olması için bkz. **. HCP. <location> . azmk8s.io* ve aşağıdaki tablodaki adresler:
+
+   | Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanın  |
+   |----------------------------------------------------------------------------------|----------|---------|------|
+   | **`*:1194`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Veya* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. |
+   | **`*:9000`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Veya* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. |
+
    - Ağ zaman Protokolü (NTP) zaman eşitleme (Linux düğümleri) için UDP bağlantı noktası 123.
    - API sunucusuna doğrudan erişiyorsanız, DNS için UDP bağlantı noktası 53 de gereklidir.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9dc11bd046bdc3a8913b4b05f1b68b84c9736c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857652"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438475"
 ---
 # <a name="transformation-with-azure-databricks"></a>Azure Databricks ile dönüştürme
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Data Factory **doğrulama**, **kopyalama verileri**ve **N
 
 - **Verileri kopyalama** , kaynak veri kümesini Azure Databricks not defterinde dBFS olarak bağlanan havuz depolama alanına çoğaltır. Bu şekilde, veri kümesi Spark tarafından doğrudan tüketilebilir.
 
-- **Not defteri** , veri kümesini dönüştüren Databricks Not defterini tetikler. Ayrıca, veri kümesini işlenen bir klasöre veya Azure SQL veri ambarı 'na ekler.
+- **Not defteri** , veri kümesini dönüştüren Databricks Not defterini tetikler. Ayrıca, veri kümesini işlenen bir klasöre veya Azure Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) ekler.
 
 Kolaylık olması için bu öğreticideki şablon, zamanlanmış bir tetikleyici oluşturmaz. Gerekirse bir tane ekleyebilirsiniz.
 

@@ -13,12 +13,12 @@ ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 43ed0bfed1dbe48c4f66a820ecad6fedf11115fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13242a41e1d10b0df031bf10fd646d9ec3cf47c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478170"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437777"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>Yeni Azure portal uygulama kayıt deneyimi
 
@@ -77,12 +77,12 @@ Yeni deneyimde, **uygulama gizli** dizileri **sertifikalarla &** yeniden adland�
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformlar/kimlik doğrulaması: yanıt URL 'Leri/yeniden yönlendirme URI 'leri
 Eski deneyimde bir uygulamada Web, yerel ve Web API 'SI için platformlar bölümü, yeniden yönlendirme URL 'Leri, oturum kapatma URL 'SI ve örtük akış yapılandırılması gerekir.
 
-Yeni deneyimde, yanıt URL 'Leri bir App \' s kimlik doğrulama bölümünde bulunabilir. Bunlara ek olarak, yeniden yönlendirme URI 'Leri olarak adlandırılır ve yeniden yönlendirme URI 'Leri biçimi değişmiştir. Bunların bir uygulama türüyle ilişkilendirilmesi gerekir (Web veya genel istemci-mobil ve Masaüstü). [Daha fazla bilgi](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+Yeni deneyimde, yanıt URL 'Leri bir App \' s kimlik doğrulama bölümünde bulunabilir. Bunlara ek olarak, yeniden yönlendirme URI 'Leri olarak adlandırılır ve yeniden yönlendirme URI 'Leri biçimi değişmiştir. Bunların bir uygulama türüyle ilişkilendirilmesi gerekir (Web veya genel istemci-mobil ve Masaüstü). [Daha fazla bilgi edinin](quickstart-register-app.md#add-a-redirect-uri)
 
 Web API 'Leri bir API 'YI kullanıma sunma sayfasında yapılandırılır.
 
 > [!NOTE]
-> Hedeflemek istediğiniz platforma veya cihaza göre uygulamanızın ayarlarını yapılandırabileceğiniz yeni kimlik doğrulama ayarları deneyimini deneyin. [Daha fazla bilgi](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
+> Hedeflemek istediğiniz platforma veya cihaza göre uygulamanızın ayarlarını yapılandırabileceğiniz yeni kimlik doğrulama ayarları deneyimini deneyin. [Daha fazla bilgi edinin](quickstart-register-app.md#configure-platform-settings)
 
 ## <a name="microsoft-graph-permissionsapi-permissions"></a>Microsoft Graph izinleri/API izinleri
 
