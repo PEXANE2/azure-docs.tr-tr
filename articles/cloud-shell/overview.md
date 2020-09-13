@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
-ms.openlocfilehash: 766245dcfe42c16106df6beed938fe2f04af05cc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286691"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468666"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell'e Genel Bakış
 
@@ -33,7 +33,7 @@ Cloud Shell üç yolla erişebilirsiniz:
 
     ![Azure portal Cloud Shell başlatılacak simge](media/overview/portal-launch-icon.png)
 
-- **Kod parçacıkları**: [docs.Microsoft.com](https://docs.microsoft.com) ve [Microsoft Learn](https://docs.microsoft.com/learn/)üzerinde, Azure CLI ve Azure PowerShell kod parçacıkları ile görüntülenen **TRY It** düğmesini seçin:
+- **Kod parçacıkları**: [docs.Microsoft.com]() ve [Microsoft Learn](/learn/)üzerinde, Azure CLI ve Azure PowerShell kod parçacıkları ile görüntülenen **TRY It** düğmesini seçin:
 
     ```azurecli-interactive
     az account show
@@ -87,8 +87,8 @@ Cloud Shell, tarafından kullanılabilen esnek bir araçtır:
 
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure)
-* [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/azure/)
+* [Azure CLI belgeleri](/cli/azure)
+* [Azure PowerShell belgeleri](/powershell/azure/)
 * [Azure mobil uygulaması](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code Azure Hesap uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
@@ -111,7 +111,7 @@ Cloud Shell makineler geçicidir, ancak dosyalarınız iki şekilde kalıcı hal
 * Cloud Shell dosya paylaşımınızda bulunan 5 GB bir görüntü kullanarak $HOME devam ediyor
 * İzinler Bash 'te normal bir Linux kullanıcısı olarak ayarlanır
 
-Cloud Shell ve PowerShell 'deki [Bash](features.md) özellikleri hakkında daha fazla bilgi edinin [Cloud Shell](features-powershell.md).
+Cloud Shell ve PowerShell 'deki [Bash](features.md) özellikleri hakkında daha fazla bilgi edinin [Cloud Shell](./features.md).
 
 ## <a name="pricing"></a>Fiyatlandırma
 

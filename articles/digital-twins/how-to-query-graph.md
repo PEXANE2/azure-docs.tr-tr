@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055643"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468717"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -169,11 +169,47 @@ AND Room.$dtId IN ['room1', 'room2']
 
 Tek bir sorguda daha fazla ayrıntı dahil etmek için, birleşim işleçlerini kullanarak yukarıdaki sorgu türlerinden herhangi birini **birleştirebilirsiniz** . Aynı anda birden fazla ikizi tanımlayıcısı için sorgu oluşturan bileşik sorguların bazı ek örnekleri aşağıda verilmiştir.
 
-| Açıklama | Sorgu |
+| Description | Sorgu |
 | --- | --- |
 | *Oda 123* ' nin sahip olduğu cihazların dışında, işleç rolüne sunan mxyonga cihazlarını döndürün | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | KIMLIĞI *ID1* olan başka bir Ikizi ile *Contains* adlı bir ilişkiye sahip olan TWINS 'i alma | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | Bu oda modelinin *floor11* tarafından bulunan tüm odalarına ulaşın | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
+
+## <a name="reference-expressions-and-conditions"></a>Başvuru: Ifadeler ve koşullar
+
+Bu bölüm, Azure dijital TWINS sorguları yazılırken kullanılabilen işleçler ve işlevlere yönelik başvuru içerir.
+
+### <a name="operators"></a>İşleçler
+
+Aşağıdaki işleçler desteklenir:
+
+| Family (Aile) | İşleçler |
+| --- | --- |
+| Mantıksal |VE, VEYA DEĞIL |
+| Karşılaştırma |=,! =, <, >, <=, >= |
+| Contains | IÇINDE, ıN |
+
+### <a name="functions"></a>İşlevler
+
+Aşağıdaki tür denetimi ve atama işlevleri desteklenir:
+
+| İşlev | Açıklama |
+| -------- | ----------- |
+| IS_DEFINED | Özelliğe bir değer atanıp atanmadığını gösteren bir Boole değeri döndürür. Bu yalnızca değer temel bir tür olduğunda desteklenir. İlkel türler String, Boolean, numeric veya içerir `null` . DateTime, nesne türleri ve diziler desteklenmez. |
+| IS_OF_MODEL | Belirtilen ikizi belirtilen model türüyle eşleşip eşleşmediğini gösteren bir Boole değeri döndürür |
+| IS_BOOL | Belirtilen ifadenin türünün bir Boolean olup olmadığını gösteren bir Boole değeri döndürür. |
+| IS_NUMBER | Belirtilen ifadenin türünün bir sayı olup olmadığını gösteren bir Boole değeri döndürür. |
+| IS_STRING | Belirtilen ifadenin türünün bir dize olup olmadığını gösteren bir Boole değeri döndürür. |
+| IS_NULL | Belirtilen ifadenin türünün null olup olmadığını gösteren bir Boole değeri döndürür. |
+| IS_PRIMITIVE | Belirtilen ifadenin türünün bir ilkel öğe (dize, Boolean, sayısal veya) olduğunu gösteren bir Boole değeri döndürür `null` . |
+| IS_OBJECT | Belirtilen ifadenin türünün bir JSON nesnesi olup olmadığını gösteren bir Boole değeri döndürür. |
+
+Aşağıdaki dize işlevleri desteklenir:
+
+| İşlev | Açıklama |
+| -------- | ----------- |
+| STARTS_WITH (x, y) | İlk dize ifadesinin ikinciyle başlatılıp başlatılmayacağını gösteren bir Boole değeri döndürür. |
+| ENDS_WITH (x, y) | İlk dize ifadesinin ikinciyle sonlanıp bitmediğini gösteren bir Boole değeri döndürür. |
 
 ## <a name="run-queries-with-an-api-call"></a>Sorguları bir API çağrısıyla çalıştırma
 

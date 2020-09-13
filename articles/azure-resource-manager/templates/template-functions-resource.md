@@ -2,13 +2,13 @@
 title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 7f485d258074959c4a0a17449c65c38fa9648502
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 09/03/2020
+ms.openlocfilehash: 3f916be4431aa6b2b100967465450447ecc1d626
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661410"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468683"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM şablonları için kaynak işlevleri
 
@@ -16,6 +16,7 @@ Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonunuzda kaynak değerleri
 
 * [Extensionresourceıd](#extensionresourceid)
 * [Listele](#list)
+* [pickZones](#pickzones)
 * [sağlayıcılarla](#providers)
 * [başvurunun](#reference)
 * [Kaynak](#resourcegroup)
@@ -34,12 +35,12 @@ Parametrelerden, değişkenlerden veya geçerli dağıtımdan değer almak için
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| resourceId |Evet |string |Uzantı kaynağının uygulandığı kaynağın kaynak KIMLIĞI. |
-| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Evet |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceId |Yes |string |Uzantı kaynağının uygulandığı kaynağın kaynak KIMLIĞI. |
+| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Yes |string |Kaynağın adı. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -101,6 +102,12 @@ Aşağıdaki örnek, bir kaynak grubu kilidinin kaynak KIMLIĞINI döndürür.
 }
 ```
 
+Bir yönetim grubuna dağıtılan özel bir ilke tanımı uzantı kaynağı olarak uygulanır. Bir ilke oluşturup atamak için aşağıdaki şablonu bir yönetim grubuna dağıtın.
+
+:::code language="json" source="~/quickstart-templates/managementgroup-deployments/mg-policy/azuredeploy.json":::
+
+Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır. Yerleşik bir ilke tanımı dağıtmaya ilişkin bir örnek için bkz. [Tenantresourceıd](#tenantresourceid).
+
 <a id="listkeys"></a>
 <a id="list"></a>
 
@@ -112,11 +119,11 @@ Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| resourceName veya ResourceIdentifier |Evet |string |Kaynak için benzersiz tanımlayıcı. |
-| apiVersion |Evet |string |Kaynak çalışma zamanı durumunun API sürümü. Genellikle, **yyyy-aa-gg**biçiminde. |
-| functionValues |Hayır |object | İşlevi için değerler içeren bir nesne. Bu nesneyi yalnızca bir depolama hesabındaki **Listaccountsas** gibi parametre değerleriyle bir nesne almayı destekleyen işlevler için sağlayın. Bu makalede işlev değerlerini geçirme örneği gösterilmektedir. |
+| resourceName veya ResourceIdentifier |Yes |string |Kaynak için benzersiz tanımlayıcı. |
+| apiVersion |Yes |string |Kaynak çalışma zamanı durumunun API sürümü. Genellikle, **yyyy-aa-gg**biçiminde. |
+| functionValues |No |object | İşlevi için değerler içeren bir nesne. Bu nesneyi yalnızca bir depolama hesabındaki **Listaccountsas** gibi parametre değerleriyle bir nesne almayı destekleyen işlevler için sağlayın. Bu makalede işlev değerlerini geçirme örneği gösterilmektedir. |
 
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
@@ -130,9 +137,16 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 
 | Kaynak türü | İşlev adı |
 | ------------- | ------------- |
+| Microsoft. addons/supportProviders | listsupportplanınfo |
 | Microsoft. AnalysisServices/sunucuları | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Microsoft. Apimanayönetimi/hizmet/authorizationServers | [Listgizlilikler](/rest/api/apimanagement/2019-12-01/authorizationserver/listsecrets) |
+| Microsoft. Apimanayönetimi/hizmet/ağ geçitleri | [ListKeys 'i al](/rest/api/apimanagement/2019-12-01/gateway/listkeys) |
+| Microsoft. Apimanayönetimi/hizmet/IdentityProviders | [Listgizlilikler](/rest/api/apimanagement/2019-12-01/identityprovider/listsecrets) |
+| Microsoft. Apimanayönetimi/hizmet/namedValues | [Liste değeri](/rest/api/apimanagement/2019-12-01/namedvalue/listvalue) |
+| Microsoft. Apimanayönetimi/Service/Openıdconnectproviders | [Listgizlilikler](/rest/api/apimanagement/2019-12-01/openidconnectprovider/listsecrets) |
 | Microsoft. AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
-| Microsoft. AppConfiguration/Configurationmağazaları | ListKeys 'i al |
+| Microsoft. AppConfiguration/Configurationmağazaları | [ListKeys 'i al](/rest/api/appconfiguration/configurationstores/listkeys) |
+| Microsoft. AppPlatform/yay | [listTestKeys](/rest/api/azurespringclould/services/listtestkeys) |
 | Microsoft. Automation/automationAccounts | [ListKeys 'i al](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [ListKeys 'i al](/rest/api/batchmanagement/batchaccount/getkeys) |
 | ChAI/Workspaces/denemeleri/Jobs Microsoft.Bat | [lıutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
@@ -144,10 +158,15 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 | Microsoft. ContainerRegistry/kayıt defterleri | [listBuildSourceUploadUrl 'Si](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft. ContainerRegistry/kayıt defterleri | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
 | Microsoft. ContainerRegistry/kayıt defterleri | [Listkullanımlar](/rest/api/containerregistry/registries/listusages) |
+| Microsoft. ContainerRegistry/kayıt defterleri/agentpools | listQueueStatus |
+| Microsoft. ContainerRegistry/kayıt defterleri/buildTasks | listSourceRepositoryProperties |
+| Microsoft. ContainerRegistry/kayıt defterleri/buildTasks/Steps | listBuildArguments |
+| Microsoft. ContainerRegistry/kayıt defterleri/taskçalıştırmaları | listDetails |
 | Microsoft. ContainerRegistry/kayıt defterleri/Web kancaları | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft. ContainerRegistry/kayıt defterleri/çalıştırmaları | [listLogSasUrl 'Si](/rest/api/containerregistry/runs/getlogsasurl) |
 | Microsoft. ContainerRegistry/kayıt defterleri/görevler | [listDetails](/rest/api/containerregistry/tasks/getdetails) |
 | Microsoft. ContainerService/Managedkümeler | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
+| Microsoft. ContainerService/Managedkümeler | [listClusterMonitoringUserCredential](/rest/api/aks/managedclusters/listclustermonitoringusercredentials) |
 | Microsoft. ContainerService/Managedkümeler | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
 | Microsoft. ContainerService/Managedkümeler/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
 | Microsoft. DataBox/Jobs | listCredentials |
@@ -168,6 +187,7 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 | Microsoft. DevTestLab/Labs/virtualMachines | [Listapperepblezamanlamalar](/rest/api/dtl/virtualmachines/listapplicableschedules) |
 | UmentDB/databaseAccounts Microsoft.Doc | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listconnectionstrings) |
 | UmentDB/databaseAccounts Microsoft.Doc | [ListKeys 'i al](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts/Not Bookworkspaces | [Listconnectionınfo](/rest/api/cosmos-db-resource-provider/2020-04-01/notebookworkspaces/listconnectioninfo) |
 | Microsoft. DomainRegistration | [Listdomainönerilere](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft. EventGrid/Domains | [ListKeys 'i al](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -206,7 +226,9 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules | [ListKeys 'i al](/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules | [ListKeys 'i al](/rest/api/notificationhubs/notificationhubs/listkeys) |
 | Microsoft. Operationalınsights/çalışma alanları | [list](/rest/api/loganalytics/workspaces/list) |
+| Microsoft. Operationalınsights/çalışma alanları | ListKeys 'i al |
 | Microsoft. Poliyeleghts/düzeltmelere | [Listdağıtımlar](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
+| Microsoft. Redhatopenshıft/openShiftClusters | [listCredentials](/rest/api/openshift/openshiftclusters/listcredentials) |
 | Microsoft. Relay/Namespace/authorizationRules | [ListKeys 'i al](/rest/api/relay/namespaces/listkeys) |
 | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/authorizationRules | ListKeys 'i al |
 | Microsoft. Relay/Namespace/HybridConnections/authorizationRules | [ListKeys 'i al](/rest/api/relay/hybridconnections/listkeys) |
@@ -225,6 +247,7 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 | Microsoft. StorSimple/yöneticileri/cihazları | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
 | Microsoft. StorSimple/yöneticileri | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
 | Microsoft. StorSimple/yöneticileri | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
+| Microsoft. SYNAPSE/Workspaces/ıntegrationçalışmazamanları | [listAuthKeys](/rest/api/synapse/integrationruntimeauthkeys/list) |
 | Microsoft. Web/Connectiongateway 'ler | ListStatus |
 | Microsoft. Web/Connections | listconsentlinks |
 | Microsoft. Web/Customapsıs | Listwsdlınterfaces |
@@ -316,6 +339,94 @@ Sonraki örnekte bir parametre alan bir liste işlevi gösterilmektedir. Bu duru
 
 ListKeyValue örneği için bkz. [hızlı başlangıç: uygulama yapılandırması ve Kaynak Yöneticisi şablonuyla OTOMATIK VM dağıtımı](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values).
 
+## <a name="pickzones"></a>pickZones
+
+`pickZones(providerNamespace, resourceType, location, [numberOfZones], [offset])`
+
+Bir kaynak türünün bir bölgenin bölgelerini destekleyip desteklemediğini belirler.
+
+### <a name="parameters"></a>Parametreler
+
+| Parametre | Gerekli | Tür | Description |
+|:--- |:--- |:--- |:--- |
+| providerNamespace | Yes | string | Bölge desteğini denetlenecek kaynak türü için kaynak sağlayıcısı ad alanı. |
+| resourceType | Yes | string | Bölge desteğini denetlenecek kaynak türü. |
+| location | Yes | string | Bölge desteğinin denetlenecek bölge. |
+| numberOfZones | No | integer | Döndürülecek mantıksal bölge sayısı. Varsayılan değer 1'dir. Sayı 1 ile 3 arasında pozitif bir tamsayı olmalıdır.  Tek bölge kaynakları için 1 kullanın. Çok bölgeli kaynaklar için, değer desteklenen bölge sayısından küçük veya buna eşit olmalıdır. |
+| uzaklık | No | integer | Başlangıç mantıksal bölgesinden gelen fark. Aralık artı numberOfZones desteklenen bölge sayısını aşarsa, işlev bir hata döndürür. |
+
+### <a name="return-value"></a>Döndürülen değer
+
+Desteklenen bölgelere sahip bir dizi. Konum ve numberOfZones için varsayılan değerleri kullanırken, bölgeleri destekleyen bir kaynak türü ve bölgesi aşağıdaki diziyi döndürür:
+
+```json
+[
+    "1"
+]
+```
+
+`numberOfZones`Parametre 3 olarak ayarlandığında, şunu döndürür:
+
+```json
+[
+    "1",
+    "2",
+    "3"
+]
+```
+
+Kaynak türü veya bölgesi bölgeleri desteklemiyorsa, boş bir dizi döndürülür.
+
+```json
+[
+]
+```
+
+### <a name="pickzones-example"></a>pickZones örneği
+
+Aşağıdaki şablonda pickZones işlevinin kullanımıyla ilgili üç sonuç gösterilmektedir.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "supported": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'westus2')]"
+        },
+        "notSupportedRegion": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'northcentralus')]"
+        },
+        "notSupportedType": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Cdn', 'profiles', 'westus2')]"
+        }
+    }
+}
+```
+
+Yukarıdaki örneklerden alınan çıktı üç dizi döndürür.
+
+| Ad | Tür | Değer |
+| ---- | ---- | ----- |
+| destekleniyor | array | ["1"] |
+| notSupportedRegion | array | [] |
+| notSupportedType | array | [] |
+
+Bölgelere yönelik null değer sağlayıp sağlamacağınızı veya farklı bölgelere sanal makineler atamanızı anlamak için pickZones 'tan gelen yanıtı kullanabilirsiniz. Aşağıdaki örnek, bölgelerin kullanılabilirliğine bağlı olarak bölge için bir değer belirler.
+
+```json
+"zones": {
+    "value": "[if(not(empty(pickZones('Microsoft.Compute', 'virtualMachines', 'westus2'))), string(add(mod(copyIndex(),3),1)), json('null'))]"
+},
+```
+
 ## <a name="providers"></a>sağlayıcılarla
 
 `providers(providerNamespace, [resourceType])`
@@ -324,10 +435,10 @@ Kaynak sağlayıcısı ve desteklenen kaynak türleri hakkında bilgi döndürü
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Evet |string |Sağlayıcının ad alanı |
-| resourceType |Hayır |string |Belirtilen ad alanı içindeki kaynak türü. |
+| providerNamespace |Yes |string |Sağlayıcının ad alanı |
+| resourceType |No |string |Belirtilen ad alanı içindeki kaynak türü. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -399,11 +510,11 @@ Kaynağın çalışma zamanı durumunu temsil eden bir nesne döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| resourceName veya ResourceIdentifier |Evet |string |Kaynağın adı veya benzersiz tanımlayıcısı. Geçerli şablondaki bir kaynağa başvururken, yalnızca kaynak adını parametre olarak belirtin. Daha önce dağıtılan bir kaynağa ya da kaynağın adı belirsiz olduğunda kaynak KIMLIĞI sağlayın. |
-| apiVersion |Hayır |string |Belirtilen kaynağın API sürümü. **Kaynak aynı şablon içinde sağlanmıyorsa Bu parametre gereklidir.** Genellikle, **yyyy-aa-gg**biçiminde. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
-| Tümünü |Hayır |string |Tam kaynak nesnesinin döndürülüp döndürülmeyeceğini belirten değer. Belirtmezseniz `'Full'` , yalnızca kaynağın Özellikler nesnesi döndürülür. Tam nesne, kaynak KIMLIĞI ve konum gibi değerleri içerir. |
+| resourceName veya ResourceIdentifier |Yes |string |Kaynağın adı veya benzersiz tanımlayıcısı. Geçerli şablondaki bir kaynağa başvururken, yalnızca kaynak adını parametre olarak belirtin. Daha önce dağıtılan bir kaynağa ya da kaynağın adı belirsiz olduğunda kaynak KIMLIĞI sağlayın. |
+| apiVersion |No |string |Belirtilen kaynağın API sürümü. **Kaynak aynı şablon içinde sağlanmıyorsa Bu parametre gereklidir.** Genellikle, **yyyy-aa-gg**biçiminde. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
+| Tümünü |No |string |Tam kaynak nesnesinin döndürülüp döndürülmeyeceğini belirten değer. Belirtmezseniz `'Full'` , yalnızca kaynağın Özellikler nesnesi döndürülür. Tam nesne, kaynak KIMLIĞI ve konum gibi değerleri içerir. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -490,7 +601,7 @@ Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile 
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Örnek:
+Örneğin:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt``Microsoft.Compute/virtualMachines/extensions/myVM/myExt`doğru değil
 
@@ -722,13 +833,13 @@ Bir kaynağın benzersiz tanımlayıcısını döndürür. Bu işlevi, kaynak ad
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Hayır |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. Bu değeri yalnızca bir kaynak grubunun veya aboneliğin kapsamına dağıtma sırasında belirtin. |
-| resourceGroupName |Hayır |string |Varsayılan değer geçerli kaynak grubudur. Başka bir kaynak grubundaki bir kaynağı almanız gerektiğinde bu değeri belirtin. Yalnızca bir kaynak grubunun kapsamına dağıtım yaparken bu değeri sağlayın. |
-| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Evet |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| subscriptionId |No |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. Bu değeri yalnızca bir kaynak grubunun veya aboneliğin kapsamına dağıtma sırasında belirtin. |
+| resourceGroupName |No |string |Varsayılan değer geçerli kaynak grubudur. Başka bir kaynak grubundaki bir kaynağı almanız gerektiğinde bu değeri belirtin. Yalnızca bir kaynak grubunun kapsamına dağıtım yaparken bu değeri sağlayın. |
+| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Yes |string |Kaynağın adı. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -740,23 +851,27 @@ Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak 
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-[Abonelik düzeyinde bir dağıtımda](deploy-to-subscription.md)kullanıldığında, kaynak kimliği aşağıdaki biçimde döndürülür:
+Diğer dağıtım kapsamları için RESOURCEID işlevini kullanabilirsiniz, ancak KIMLIK biçimi değişir.
+
+Bir aboneliğe dağıtım sırasında RESOURCEID kullanırsanız, kaynak KIMLIĞI aşağıdaki biçimde döndürülür:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-[Yönetim grubu düzeyinde bir dağıtımda](deploy-to-management-group.md) veya kiracı düzeyinde dağıtımda kullanıldığında, kaynak kimliği aşağıdaki biçimde döndürülür:
+Bir yönetim grubuna veya kiracıya dağıtım sırasında RESOURCEID kullanırsanız, kaynak KIMLIĞI aşağıdaki biçimde döndürülür:
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-Diğer biçimlerdeki KIMLIĞI almak için bkz.:
+Karışıklığı önlemek için, aboneliğe, yönetim grubuna veya kiracıya dağıtılan kaynaklarla çalışırken RESOURCEID 'yi kullanmanızı öneririz. Bunun yerine, kapsam için tasarlanan ID işlevini kullanın.
 
-* [Extensionresourceıd](#extensionresourceid)
-* [Subscriptionresourceıd](#subscriptionresourceid)
-* [Tenantresourceıd](#tenantresourceid)
+[Abonelik düzeyi kaynakları](deploy-to-subscription.md)Için, [subscriptionresourceıd](#subscriptionresourceid) işlevini kullanın.
+
+[Yönetim grubu düzeyi kaynakları](deploy-to-management-group.md)için, bir yönetim grubunun uzantısı olarak uygulanan bir kaynağa başvurmak Için [extensionresourceıd](#extensionresourceid) işlevini kullanın. Örneğin, bir yönetim grubuna dağıtılan özel ilke tanımları yönetim grubunun uzantılarıdır. Kiracıya dağıtılan ancak yönetim grubunuzda kullanılabilir olan kaynaklara başvurmak için [Tenantresourceıd](#tenantresourceid) işlevini kullanın. Örneğin, yerleşik ilke tanımları, kiracı düzeyi kaynakları olarak uygulanır.
+
+[Kiracı düzeyinde kaynaklar](deploy-to-tenant.md)Için, [tenantresourceıd](#tenantresourceid) işlevini kullanın. Kiracı düzeyinde uygulandığından, yerleşik ilke tanımları için Tenantresourceıd kullanın.
 
 ### <a name="remarks"></a>Açıklamalar
 
@@ -918,12 +1033,12 @@ Abonelik düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı d�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Hayır |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. |
-| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Evet |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| subscriptionId |No |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. |
+| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Yes |string |Kaynağın adı. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -1000,11 +1115,11 @@ Kiracı düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı dö
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Evet |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Yes |string |Kaynağın adı. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -1019,6 +1134,44 @@ Tanımlayıcı aşağıdaki biçimde döndürülür:
 ### <a name="remarks"></a>Açıklamalar
 
 Kiracıya dağıtılan bir kaynağın kaynak KIMLIĞINI almak için bu işlevi kullanın. Döndürülen KIMLIK, kaynak grubu veya abonelik değerleri dahil değil, diğer kaynak KIMLIĞI işlevleri tarafından döndürülen değerlerden farklıdır.
+
+### <a name="tenantresourceid-example"></a>Tenantresourceıd örneği
+
+Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır. Yerleşik bir ilke tanımına başvuruda bulunan bir ilke atamasını dağıtmak için, Tenantresourceıd işlevini kullanın.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "policyAssignmentName": {
+      "type": "string",
+      "defaultValue": "[guid(parameters('policyDefinitionID'), resourceGroup().name)]",
+      "metadata": {
+        "description": "Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides."
+      }
+    },
+    "policyDefinitionID": {
+      "type": "string",
+      "defaultValue": "0a914e76-4921-4c19-b460-a2d36003525a",
+      "metadata": {
+        "description": "Specifies the ID of the policy definition or policy set definition being assigned."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "name": "[parameters('policyAssignmentName')]",
+      "apiVersion": "2019-09-01",
+      "properties": {
+        "scope": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)]",
+        "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
+      }
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

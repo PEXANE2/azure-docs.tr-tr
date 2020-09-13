@@ -2,13 +2,13 @@
 title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 2f5249eb54a62e4df082a18b22625bb93a0f09f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: 9b653f3fd4ed66f23521ea3ec8f9972e3b6cc09c
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002760"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468564"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Kiracı düzeyinde kaynaklar oluşturma
 
@@ -106,7 +106,7 @@ REST API için dağıtımları kullanın [-kiracı kapsamında oluşturun veya g
 
 Kiracı düzeyinde dağıtımlar için dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir.
 
-Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
+Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, ** üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
 
 Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
 
@@ -151,7 +151,7 @@ Kiracıdaki bir yönetim grubunu hedeflemek için, iç içe geçmiş bir dağıt
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resources-in-mg
                 }
             }
         }
@@ -167,9 +167,11 @@ Kiracı dağıtımları için, Şablon işlevleri kullanılırken bazı önemli 
 * [ResourceGroup ()](template-functions-resource.md#resourcegroup) **işlevi desteklenmiyor.**
 * [Subscription ()](template-functions-resource.md#subscription) **işlevi desteklenmiyor.**
 * [Reference ()](template-functions-resource.md#reference) ve [List ()](template-functions-resource.md#list) işlevleri desteklenir.
-* Kiracı düzeyinde dağıtılan kaynakların kaynak KIMLIĞINI almak için [Tenantresourceıd ()](template-functions-resource.md#tenantresourceid) işlevini kullanın.
+* Kiracı düzeyinde dağıtılan kaynakların kaynak KIMLIĞINI almak için [RESOURCEID ()](template-functions-resource.md#resourceid) kullanmayın.
 
-  Örneğin, bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
+  Bunun yerine, [Tenantresourceıd ()](template-functions-resource.md#tenantresourceid) işlevini kullanın.
+
+  Örneğin, bir yerleşik ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
 
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))

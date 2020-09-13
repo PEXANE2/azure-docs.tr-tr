@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b55d8bcc2f2042dc36c6875750893a345deb552
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025889"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468615"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Birincil Yenileme Belirteci nedir?
 
@@ -87,6 +87,10 @@ Bir PRT iki farklı yöntemde yenilenir:
    * Uygulama, erişim belirteci için bir WAM sessizce ister ancak bu uygulama için kullanılabilir yenileme belirteci yok. Bu durumda, WAM, uygulama için bir belirteç istemek üzere PRT 'yi kullanır ve yanıtta yeni bir PRT 'yi geri alır.
    * Uygulama, erişim belirteci için WAM ister ancak PRT geçersiz ya da Azure AD ek yetkilendirme gerektirir (örneğin, Azure Multi-Factor Authentication). Bu senaryoda, WAM kullanıcının yeniden kimlik doğrulamasını veya ek doğrulama sağlamasını gerektiren etkileşimli bir oturum açma işlemini başlatır ve başarılı bir kimlik doğrulamasında yeni bir PRT verilir.
 
+Bir ADFS ortamında, PRT 'yi yenilemek için etki alanı denetleyicisine doğrudan görüş satırı gerekli değildir. PRT yenileme, WS-Trust protokolü kullanılarak proxy üzerinde yalnızca/ADFS/Services/Trust/2005/usernamemixed ve/ADFS/Services/Trust/13/usernamemixed uç noktalarının etkinleştirilmesini gerektirir.
+
+Windows Aktarım uç noktaları, yalnızca parola değiştirildiğinde, PRT yenileme için değil, parola kimlik doğrulaması için gereklidir.
+
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 
 * Bir PRT yalnızca yerel uygulama kimlik doğrulaması sırasında verilir ve yenilenir. Bir tarayıcı oturumu sırasında bir PRT yenilenmez veya verilmez.
@@ -145,7 +149,7 @@ Aşağıdaki diyagramlarda, bir uygulama için erişim belirteci istemek üzere 
 > [!NOTE]
 > Azure AD 'ye katılmış cihazlarda bu Exchange, kullanıcının Windows 'da oturum açmasını sağlamak için zaman uyumlu olarak gerçekleştirilir. Karma Azure AD 'ye katılmış cihazlarda, şirket içi Active Directory birincil yetkilisdir. Bu nedenle, Kullanıcı oturum açmak için bir TGT elde edene kadar bekler, ancak PRT verme işlemi zaman uyumsuz olur. Bu senaryo, oturum açma Azure AD kimlik bilgilerini kullanmadığından Azure AD 'ye kayıtlı cihazlar için geçerlidir.
 
-| Adım | Açıklama |
+| Adım | Description |
 | :---: | --- |
 | A | Kullanıcı oturum açma kullanıcı arabirimindeki parolasını girer. LogonUI bir kimlik doğrulama arabelleğindeki kimlik bilgilerini LSA 'ya geçirir, bu da bunu sırayla CloudAP öğesine geçirir. CloudAP bu isteği CloudAP eklentisine iletir. |
 | B | CloudAP eklentisi kullanıcının kimlik sağlayıcısını tanımlamak için bir bölge bulma isteği başlatır. Kullanıcının kiracısında bir Federasyon sağlayıcısı kurulumu varsa, Azure AD Federasyon sağlayıcısının meta veri değişimi uç noktası (MEX) uç noktasını döndürür. Aksi takdirde Azure AD, kullanıcının Azure AD ile kimlik doğrulaması yapabileceğini belirten bir kullanıcı tarafından yönetilmediğini döndürür. |
@@ -158,7 +162,7 @@ Aşağıdaki diyagramlarda, bir uygulama için erişim belirteci istemek üzere 
 
 ![Sonraki oturumlarda PRT yenilemesi](./media/concept-primary-refresh-token/prt-renewal-subsequent-logons.png)
 
-| Adım | Açıklama |
+| Adım | Description |
 | :---: | --- |
 | A | Kullanıcı oturum açma kullanıcı arabirimindeki parolasını girer. LogonUI bir kimlik doğrulama arabelleğindeki kimlik bilgilerini LSA 'ya geçirir, bu da bunu sırayla CloudAP öğesine geçirir. CloudAP bu isteği CloudAP eklentisine iletir. |
 | B | Kullanıcı daha önce kullanıcıya oturum açtıysa, Windows önbelleğe alınmış oturum açma işlemini başlatır ve kullanıcının oturum açmasını sağlamak için kimlik bilgilerini doğrular. Her 4 saatte bir CloudAP eklentisi zaman uyumsuz olarak yenileme işlemini başlatır. |
@@ -175,7 +179,7 @@ Aşağıdaki diyagramlarda, bir uygulama için erişim belirteci istemek üzere 
 
 ![Uygulama belirteci istekleri sırasında PRT kullanımı](./media/concept-primary-refresh-token/prt-usage-app-token-requests.png)
 
-| Adım | Açıklama |
+| Adım | Description |
 | :---: | --- |
 | A | Bir uygulama (örneğin, Outlook, OneNote vb.), WAM 'ye yönelik bir belirteç isteği başlatır. WAM, sırasıyla belirteç isteğine hizmet etmek için Azure AD WAM eklentisini ister. |
 | B | Uygulama için yenileme belirteci zaten kullanılabiliyorsa, Azure AD WAM eklentisi onu bir erişim belirteci istemek için kullanır. Cihaz bağlama kanıtı sağlamak için, WAM eklentisi, isteği oturum anahtarıyla imzalar. Azure AD oturum anahtarını doğrular ve oturum anahtarı tarafından şifrelenen bir erişim belirteci ve uygulama için yeni bir yenileme belirteci yayınlar. WAM eklentisi, belirteçlerin şifresini çözmek için Cloud AP eklentisini ister. Bu, sırasıyla, oturum anahtarını kullanarak şifre çözme için TPM 'yi istediğinde, her iki belirteci de içeren WAM eklentisine neden olur. Sonra, WAM eklentisi uygulamaya yalnızca erişim belirtecini sağlar, ancak yenileme belirtecini DPAPI ile yeniden şifreler ve kendi önbelleğinde depolar  |
@@ -187,7 +191,7 @@ Aşağıdaki diyagramlarda, bir uygulama için erişim belirteci istemek üzere 
 
 ![PRT kullanarak tarayıcı SSO 'SU](./media/concept-primary-refresh-token/browser-sso-using-prt.png)
 
-| Adım | Açıklama |
+| Adım | Description |
 | :---: | --- |
 | A | Kullanıcı, bir PRT almak için kimlik bilgileriyle Windows 'da oturum açar. Kullanıcı tarayıcıyı açtıktan sonra tarayıcı (veya uzantısı), URL 'Leri kayıt defterinden yükler. |
 | B | Bir Kullanıcı Azure AD oturum açma URL 'sini açtığında tarayıcı veya uzantı, kayıt defterinden elde edilen URL 'YI doğrular. Eşleşiyorsa tarayıcı, belirteç almak için yerel istemci konağını çağırır. |

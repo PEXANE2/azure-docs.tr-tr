@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926873"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462522"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki hizmet sınırları
 
@@ -96,10 +96,26 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 
 Beceri <sup>başına en fazla</sup> 30 yetenek.
 
-<sup>5</sup> AI zenginleştirme ve görüntü analizi yoğun bir şekilde yoğun ve orantısız miktarları kullanılabilir işlem gücü kullanıyor. Bu iş yükleri için çalışma süresi, kuyruktaki diğer işlerin daha fazla fırsatta çalışmasına izin verecek şekilde kısaltıldı.  
+<sup>5</sup> AI zenginleştirme ve görüntü analizi yoğun bir şekilde yoğun ve orantısız miktarları kullanılabilir işlem gücü kullanıyor. Bu iş yükleri için çalışma süresi, kuyruktaki diğer işlerin daha fazla fırsatta çalışmasına izin verecek şekilde kısaltıldı.
 
 > [!NOTE]
 > [Dizin sınırları](#index-limits)bölümünde belirtildiği gibi, Dizin oluşturucular, karmaşık türler () ile birlikte en son GA API sürümü ile başlayarak her belge için tüm karmaşık koleksiyonlarda 3000 öğelerin üst sınırını da uygular `2019-05-06` . Yani, Dizin oluşturucuyu önceki bir API sürümüyle oluşturduysanız bu sınıra tabi olmayacaktır. En yüksek uyumluluğu korumak için, önceki bir API sürümüyle oluşturulmuş ve daha sonra bir API sürümüyle veya daha sonraki bir sürümle güncelleştirilmiş bir Dizin Oluşturucu, `2019-05-06` sınırlara **dahil** edilmez. Müşteriler çok büyük karmaşık koleksiyonlara sahip olmanın olumsuz etkisinin farkında olmalıdır (daha önce belirtildiği gibi) ve en son GA API sürümüyle yeni Dizin oluşturucular oluşturmanız önerilir.
+
+### <a name="shared-private-link-resource-limits"></a>Paylaşılan özel bağlantı kaynağı sınırları
+
+> [!NOTE]
+> Dizin oluşturucular, [Bu nasıl yapılır kılavuzunda](search-indexer-howto-access-private.md) açıklandığı gibi [paylaşılan özel bağlantı kaynağı API 'si](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) aracılığıyla yönetilen özel uç noktalar üzerinden kaynaklara güvenli bir şekilde erişebilir.
+
+| Kaynak | Ücretsiz | Temel | S1 | S2 | S3 | S3 HD | L1 | L2
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Özel uç nokta Dizin Oluşturucu desteği | Hayır | Yes | Yes | Yes | Yes | Hayır | Yes | Yes |
+| Beceri<sup>1</sup> ile Dizin oluşturucular için özel uç nokta desteği | Hayır | Hayır | Hayır | Yes | Yes | Hayır | Yes | Yes |
+| En fazla özel uç noktalar | Yok | 10 veya 30 | 100 | 400 | 400 | Yok | 20 | 20 |
+| En fazla farklı kaynak türü<sup>2</sup> | YOK | 4 | 7 | 15 | 15 | YOK | 4 | 4 |
+
+<sup>1</sup> AI zenginleştirme ve resim analizi, yoğun bir şekilde tüketilir ve kullanılabilir işlem gücü orantısız tüketilecektir ve bu nedenle, daha düşük arama hizmeti katmanları özel ortamda çalışmak üzere ayarlandığında, arama hizmetinin performansı ve kararlılığı olumsuz etkileyebilir.
+
+<sup>2</sup> farklı kaynak türü sayısı, `groupId` kaynağın durumu ne olursa olsun, belirli bir arama hizmeti için tüm paylaşılan özel bağlantı kaynaklarında kullanılan benzersiz değer sayısı olarak hesaplanır.
 
 ## <a name="synonym-limits"></a>Eş anlamlı sınırları
 
@@ -116,7 +132,7 @@ QPS tahminleri her müşteri tarafından bağımsız olarak geliştirilmelidir. 
 
 Tahminler, adanmış kaynaklar üzerinde (temel ve standart Katmanlar) çalışan hizmetler üzerinde hesaplandığında daha öngörülebilir hale ayarlanır. Daha fazla parametre üzerinde denetiminiz olduğundan QPS 'yi daha yakından tahmin edebilirsiniz. Tahmine yaklaşıma ilişkin yönergeler için bkz. [Azure bilişsel arama performansı ve iyileştirmesi](search-performance-optimization.md).
 
-Depolama için Iyileştirilmiş Katmanlar (L1 ve L2) için, standart katmanlardan daha düşük bir sorgu üretilen işi ve daha yüksek gecikme süresi beklemelisiniz. 
+Depolama için Iyileştirilmiş Katmanlar (L1 ve L2) için, standart katmanlardan daha düşük bir sorgu üretilen işi ve daha yüksek gecikme süresi beklemelisiniz.
 
 ## <a name="data-limits-ai-enrichment"></a>Veri limitleri (AI zenginleştirme)
 

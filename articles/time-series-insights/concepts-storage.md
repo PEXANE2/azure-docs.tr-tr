@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0f1e7789c0cebdd1cb5b22f21151020a0be09c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855122"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483278"
 ---
 # <a name="data-storage"></a>Veri Depolama
 
@@ -24,7 +24,7 @@ Bir Azure Time Series Insights Gen2 ortamı oluşturduğunuzda iki Azure kaynağ
 * Normal veri depolama için yapılandırılabilen bir Azure Time Series Insights Gen2 ortamı.
 * Soğuk veri depolaması için bir Azure depolama hesabı.
 
-Isınma deponuzdaki veriler yalnızca [zaman serisi sorgu API 'leri](./time-series-insights-update-tsq.md) ve [Azure Time Series Insights TSI Explorer](./time-series-insights-update-explorer.md)aracılığıyla kullanılabilir. Isınma depoluıza Azure Time Series Insights Gen2 ortamı oluşturulurken seçilen [Bekletme dönemi](./time-series-insights-update-plan.md#the-preview-environment) içinde son veriler yer alacak.
+Isınma deponuzdaki veriler yalnızca [zaman serisi sorgu API 'leri](./time-series-insights-update-tsq.md) ve [Azure Time Series Insights Gezgini](./time-series-insights-update-explorer.md)ile kullanılabilir. Isınma depoluıza Azure Time Series Insights Gen2 ortamı oluşturulurken seçilen [Bekletme dönemi](./time-series-insights-update-plan.md#the-preview-environment) içinde son veriler yer alacak.
 
 Azure Time Series Insights Gen2, soğuk mağaza verilerinizi [Parquet dosya biçiminde](#parquet-file-format-and-folder-structure)Azure Blob depolamaya kaydeder. Azure Time Series Insights Gen2 bu soğuk depolama verilerini özel olarak yönetir, ancak doğrudan standart Parquet dosyaları olarak okumanız için kullanılabilir.
 
@@ -58,7 +58,7 @@ Sorgu performansı ve veri kullanılabilirliği sağlamak için, Azure Time Seri
 
 #### <a name="accessing-cold-store-data"></a>Soğuk mağaza verilerine erişme
 
-[Azure TIME SERIES INSIGHTS TSI Gezgini](./time-series-insights-update-explorer.md) ve [zaman serisi sorgu API 'lerinde](./time-series-insights-update-tsq.md)verilerinize erişmenin yanı sıra, verilerinize doğrudan soğuk Store 'Da depolanan Parquet dosyalarından de erişmek isteyebilirsiniz. Örneğin, bir Jupyter not defterindeki verileri okuyabilir, dönüştürebilir ve temizleyebilir, ardından Azure Machine Learning modelinizi aynı Spark iş akışında eğitebilmeniz için bunu kullanabilirsiniz.
+[Azure Time Series Insights Gezgini](./time-series-insights-update-explorer.md) ve [zaman serisi sorgu API 'lerinde](./time-series-insights-update-tsq.md)verilerinize erişmenin yanı sıra, verilerinize doğrudan soğuk deposunda depolanan Parquet dosyalarından de erişmek isteyebilirsiniz. Örneğin, bir Jupyter not defterindeki verileri okuyabilir, dönüştürebilir ve temizleyebilir, ardından Azure Machine Learning modelinizi aynı Spark iş akışında eğitebilmeniz için bunu kullanabilirsiniz.
 
 Verilere doğrudan Azure Storage hesabınızdan erişmek için, Azure Time Series Insights Gen2 verilerinizi depolamak için kullanılan hesaba okuma erişiminizin olması gerekir. Daha sonra seçili verileri, aşağıda açıklanan Parquet dosyasının oluşturulma zamanına göre, `PT=Time` [Parquet dosya biçimi](#parquet-file-format-and-folder-structure) bölümünde bulabilirsiniz.  Depolama Hesabınıza yönelik okuma erişiminin etkinleştirilmesi hakkında daha fazla bilgi için bkz. [depolama hesabı kaynaklarınıza erişimi yönetme](../storage/blobs/storage-manage-access-to-resources.md).
 

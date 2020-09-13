@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 0d8e2ee684bc08ec23e052229d50b7e9d62c0ecb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/04/2020
+ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328499"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483635"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Ticari Market 'te Azure AD ve transactable SaaS teklifleri
 
@@ -25,9 +25,9 @@ Bu makaledeki kılavuzunuzu izleyerek, SaaS teklifinizi ticari Market 'te sertif
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-[SaaS teklifinizi](./partner-center-portal/create-new-saas-offer.md) Iş Ortağı Merkezi 'nde oluşturduğunuzda, teklif listesinde görüntülenecek olan eylem seçeneklerine yönelik belirli bir çağrı kümesinden seçim yapabilirsiniz. Seçiminiz, teklifinizin ticari Market 'te nasıl işlem yapıldığını belirler. Microsoft ile satılan tekliflere transactable teklifleri denir. Müşteriyi tüm transactable teklifleri için sizin adınıza faturalandırırız. Microsoft üzerinden satış yapın ve işlemleri sizin adınıza ( **Evet** seçeneği) barındırdıysanız, bir transactable teklifi oluşturmayı seçtiniz ve bu makale size yöneliktir. Bunu tamamen okumanızı öneririz.
+[SaaS teklifinizi](./partner-center-portal/create-new-saas-offer.md) Iş Ortağı Merkezi 'nde oluşturduğunuzda, teklif listesinde görüntülenecek belirli bir liste seçenekleri kümesinden seçim yapabilirsiniz. Seçiminiz, teklifinizin ticari Market 'te nasıl işlem yapıldığını belirler. Microsoft ile satılan tekliflere transactable teklifleri denir. Müşteriyi tüm transactable teklifleri için sizin adınıza faturalandırırız. Microsoft üzerinden satış yapın ve işlemleri sizin adınıza ( **Evet** seçeneği) barındırdıysanız, bir transactable teklifi oluşturmayı seçtiniz ve bu makale size yöneliktir. Bunu tamamen okumanızı öneririz.
 
-Teklifinizi yalnızca ticari Market ve işlem işlemlerini bağımsız olarak ( **Hayır** seçeneği) seçerek, müşterilerin teklifinizi nasıl erişebileceği hakkında üç seçeneğiniz vardır: şimdi alın (ücretsiz), ücretsiz deneme ve benimle iletişim kurun. **Şimdi al (ücretsiz)** veya **ücretsiz deneme sürümünü**seçerseniz bu makale sizin için değildir. Bunun yerine, daha fazla bilgi için bkz. [ticari Market 'te ücretsiz veya deneme SaaS teklifinizin giriş sayfasını oluşturma](./azure-ad-free-or-trial-landing-page.md) . **Benimle Iletişim kurun**' i seçerseniz, doğrudan yayımcı sorumluluğu yoktur. Teklifinizi Iş ortağı merkezinde oluşturmaya devam edin.
+Teklifinizi yalnızca ticari Market aracılığıyla listemeyi ve işlemleri bağımsız olarak işlemeyi tercih ederseniz ( **Hayır** seçeneği), müşterilerin teklifinizi nasıl erişebileceği hakkında üç seçeneğiniz vardır: şimdi alın (ücretsiz), ücretsiz deneme ve benimle iletişim kurun. **Şimdi al (ücretsiz)** veya **ücretsiz deneme sürümünü**seçerseniz bu makale sizin için değildir. Bunun yerine, daha fazla bilgi için bkz. [ticari Market 'te ücretsiz veya deneme SaaS teklifinizin giriş sayfasını oluşturma](./azure-ad-free-or-trial-landing-page.md) . **Benimle Iletişim kurun**' i seçerseniz, doğrudan yayımcı sorumluluğu yoktur. Teklifinizi Iş ortağı merkezinde oluşturmaya devam edin.
 
 ## <a name="how-azure-ad-works-with-the-commercial-marketplace-for-saas-offers"></a>Azure AD, SaaS teklifleri için ticari Market ile nasıl kullanılır?
 
@@ -51,7 +51,7 @@ Bu tablo, satın alma yönetimi işlem adımlarının ayrıntılarını sağlar.
 
 | İşlem adımı | Yayımcı eylemi | Yayımcılar için önerilen veya gerekli |
 | ------------ | ------------- | ------------- |
-| 1. alıcı, ticari Market 'te Azure KIMLIK kimliğiyle oturum açar ve bir SaaS teklifi seçer. | Yayımcı eylemi gerekli değildir. | Geçerli değil |
+| 1. Satınalmacı, ticari Market 'te Azure KIMLIK kimliğiyle oturum açar ve bir SaaS teklifi seçer. | Yayımcı eylemi gerekli değildir. | Geçerli değil |
 | 2. satın alma işleminden sonra, alıcı Azure Marketi 'nde **hesabı Yapılandır** ' ı seçer veya şimdi Appsource 'ta **yapılandırır** . Bu, alıcı bu teklifin yayımcı giriş sayfasına yönlendirir. Alıcı, yayımcının SaaS uygulamasında Azure AD SSO ile oturum açabiliyor ve yalnızca Azure AD yönetici onayı gerektirmeyen en düşük onay için sorulmalıdır. | Bir kullanıcıyı Azure AD veya Microsoft hesabı (MSA) kimliğiyle alacak ve gereken ek sağlama veya kurulumu kolaylaştıran teklif için bir [giriş sayfası](azure-ad-transactable-saas-landing-page.md) tasarlayın. | Gerekli |
 | 3. Yayımcı, SaaS karşılama API 'sinden satın alma ayrıntılarını ister. | Giriş sayfasının uygulama KIMLIĞINDEN oluşturulan bir [erişim belirtecini](./partner-center-portal/pc-saas-registration.md) kullanarak, satın alma hakkındaki özellikleri almak için [Çözümle bitiş noktasını çağırın](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) . | Gerekli |
 | 4. Azure AD ve Microsoft Graph API 'SI aracılığıyla Yayımcı, kuruluşun SaaS uygulamasında alıcı sağlamak için gereken şirket ve Kullanıcı ayrıntılarını toplar.  | Ad ve e-posta bulmak için Azure AD kullanıcı belirtecini oluşturun veya [MICROSOFT Graph API 'sini çağırın](https://docs.microsoft.com/graph/use-the-api) ve oturum açan kullanıcı hakkında [bilgi almak](https://docs.microsoft.com/graph/api/user-get) için temsilci izinleri kullanın. | Gerekli |
@@ -88,5 +88,6 @@ Bu şekilde Kullanıcı yönetimi için üç işlem adımı gösterilmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ticari Market 'te SaaS teklifi oluşturma](./partner-center-portal/create-new-saas-offer.md)
-- [Ticari Market 'te transactable SaaS teklifinizin giriş sayfasını oluşturun](./azure-ad-transactable-saas-landing-page.md)
+- [Ticari Market 'te transactable SaaS teklifinizin giriş sayfasını oluşturun](azure-ad-transactable-saas-landing-page.md)
+- [Ticari Market 'te ücretsiz veya deneme SaaS teklifinizin giriş sayfasını oluşturun](azure-ad-free-or-trial-landing-page.md)
+- [Ticari Market 'te SaaS teklifi oluşturma](create-new-saas-offer.md)
