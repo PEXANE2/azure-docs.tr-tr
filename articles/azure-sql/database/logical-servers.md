@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: dbcc82d3ec4b50cf51210f8a4319bbf374185a88
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498098"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441723"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Azure SQL veritabanı ve Azure SYNAPSE 'de mantıksal SQL Server nedir?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -150,7 +150,7 @@ Transact-SQL ile sunucu, veritabanları ve güvenlik duvarları oluşturup yöne
 |[VERITABANı oluşturma (Azure SQL veritabanı)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Azure SQL veritabanı 'nda yeni bir veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
 |[VERITABANı oluşturma (Azure SYNAPSE)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Azure SYNAPSE 'te yeni bir veri ambarı veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
 | [ALTER DATABASE (Azure SQL veritabanı)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Veritabanını veya elastik havuzu değiştirir. |
-|[ALTER DATABASE (Azure SQL veri ambarı)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Azure SYNAPSE 'de bir veri ambarı veritabanını değiştirir.|
+|[ALTER DATABASE (Azure SYNAPSE Analytics)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Azure SYNAPSE 'de bir veri ambarı veritabanını değiştirir.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Bir veritabanını siler.|
 |[sys. database_service_objectives (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Bir veritabanı için sürüm (hizmet katmanı), hizmet hedefi (Fiyatlandırma Katmanı) ve elastik havuz adı döndürür. Bir sunucu için ana veritabanında oturum açarsa, tüm veritabanlarına bilgi döndürür. Azure SYNAPSE için ana veritabanına bağlı olmanız gerekir.|
 |[sys. dm_db_resource_stats (Azure SQL veritabanı)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Azure SQL veritabanı 'nda bir veritabanı için CPU, GÇ ve bellek tüketimi döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyede bir satır vardır.|

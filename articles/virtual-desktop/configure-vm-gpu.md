@@ -5,14 +5,14 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 8a253723367681d947a9bd94c1505ab4cc156c08
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 33b8d3f62ef45c6078f10535c6376f611472f5a2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612648"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441757"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows sanal masaüstü için grafik işleme birimi (GPU) hızlandırmasını yapılandırma
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için grafik işlem birimi (GPU) hızlandırmasını yapılandırma
 
 >[!IMPORTANT]
 >Bu içerik Azure Resource Manager Windows sanal masaüstü nesneleri ile Windows sanal masaüstü için geçerlidir. Azure Resource Manager nesneleri olmadan Windows sanal masaüstü (klasik) kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)bakın.
@@ -67,7 +67,7 @@ Uzak Masaüstü, uzak masaüstü istemcilerine iletilmek üzere uygulamalar ve m
 
 2. Artık grup ilkeleri düzenlenmişse, bir grup ilkesi güncelleştirmesini zorlayın. Komut Istemi ' ni açın ve şunu yazın:
 
-    ```batch
+    ```cmd
     gpupdate.exe /force
     ```
 
@@ -80,7 +80,7 @@ Genellikle 3B modelleme, CAD/CAM ve video uygulamaları gibi yüksek kare hızl�
 1. **Uzak Masaüstü bağlantıları için Ilke öncelik atama H.,/avc 444 grafik modu** ' nu seçin ve bu ilkeyi uzak oturumda h., ve AVC 444 codec bileşenini zorlamak için **etkin** olarak ayarlayın.
 2. Artık grup ilkeleri düzenlenmişse, bir grup ilkesi güncelleştirmesini zorlayın. Komut Istemi ' ni açın ve şunu yazın:
 
-    ```batch
+    ```cmd
     gpupdate.exe /force
     ```
 

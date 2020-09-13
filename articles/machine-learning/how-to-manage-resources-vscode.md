@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 07/09/2020
-ms.openlocfilehash: 5ec6af894f434f8d1f7df34b2ed0c2514ab88cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/03/2020
+ms.openlocfilehash: 06fc929e0149c48aa75aa87a12e3747ef1df1bf2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306154"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440127"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code Uzantısı ile Azure Machine Learning kaynaklarını yönetme (Önizleme)
 
@@ -24,7 +24,7 @@ Azure Machine Learning kaynaklarını VS Code uzantısıyla yönetmeyi öğrenin
 
 ![Azure Machine Learning VS Code uzantısı](media/how-to-manage-resources-vscode/azure-machine-learning-vscode-extension.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Bir hesabınız yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)denemek için kaydolun.
 - Visual Studio Code. Bunu yapmazsanız, [yükleyebilirsiniz](https://code.visualstudio.com/docs/setup/setup-overview).
@@ -48,6 +48,7 @@ Daha fazla bilgi için bkz. [çalışma alanları](concept-workspace.md).
 
 Çalışma alanı oluşturmak için alternatif yöntemler şunlardır:
 
+- Komut paleti > komut **paleti** ' ni açın ve metin Istemine gırın **Azure ml: çalışma alanı oluştur**.
 - `+`Azure Machine Learning görünümünün en üstündeki simgeye tıklayın.
 - Diğer kaynakların sağlanması sırasında bir çalışma alanı seçmeniz istendiğinde yeni bir çalışma alanı oluşturun.
 
@@ -242,6 +243,39 @@ Deneme hesabınızı çalıştırdığınız için ilerleme durumunu görmek ist
 ### <a name="view-run-metadata"></a>Çalışma meta verilerini görüntüle
 
 Uzantısında, çalıştırma için kullanılan çalıştırma yapılandırması gibi meta verileri ve çalıştırma ayrıntılarını inceleyebilirsiniz.
+
+## <a name="compute-instances"></a>İşlem örnekleri
+
+Daha fazla bilgi için bkz. [işlem örnekleri](concept-compute-instance.md).
+
+### <a name="create-compute-instance"></a>İşlem örneği oluştur
+
+1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
+1. İşlem örneğini oluşturmak istediğiniz çalışma alanı düğümünü genişletin.
+1. **İşlem örnekleri** düğümüne sağ tıklayın ve **işlem örneği oluştur**' u seçin.
+1. İsteminde:
+    1. İşlem örneğiniz için bir ad sağlayın.
+    1. Listeden bir VM boyutu seçin.
+    1. SSH erişimini etkinleştirmek isteyip istemediğinizi seçin.
+        1. SSH erişimini etkinleştirirseniz, ortak SSH anahtarını veya anahtarı içeren dosyayı da sağlamanız gerekir. Daha fazla bilgi için bkz. [Azure 'DA SSH anahtarları oluşturma ve kullanma kılavuzu](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
+
+### <a name="stop-or-restart-compute-instance"></a>İşlem örneğini Durdur veya yeniden Başlat
+
+1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
+1. Çalışma alanınızın içindeki **işlem örneği** düğümünü genişletin.
+1. Durdurmak veya yeniden başlatmak istediğiniz işlem örneğine sağ tıklayın ve sırasıyla **işlem örneğini durdur** veya **Işlem örneğini yeniden Başlat** ' ı seçin.
+
+### <a name="view-compute-instance-configuration"></a>İşlem örneği yapılandırmasını görüntüle
+
+1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
+1. Çalışma alanınızın içindeki **işlem örneği** düğümünü genişletin.
+1. İncelemek istediğiniz işlem örneğine sağ tıklayın ve **işlem örneği özelliklerini görüntüle**' yi seçin.
+
+### <a name="delete-compute-instance"></a>İşlem örneğini Sil
+
+1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
+1. Çalışma alanınızın içindeki **işlem örneği** düğümünü genişletin.
+1. Silmek istediğiniz işlem örneğine sağ tıklayın ve **işlem örneğini Sil**' i seçin.
 
 ## <a name="compute-clusters"></a>İşlem kümeleri
 

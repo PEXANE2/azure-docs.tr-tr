@@ -4,7 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Bağlantı Izleyicisi 'nden bağlantı Izleyicisi 'ne (Önizleme) geçiş yapmayı öğrenin.
 services: network-watcher
 documentationcenter: na
-author: vinigam
+author: vinynigam
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: how-to
@@ -12,50 +12,57 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: ddf6e326df876229d32ef15983f76879836f1fca
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 05b42024529b8d9de3590488ecafbdf83283e007
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701868"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441825"
 ---
 # <a name="migrate-to-connection-monitor-preview-from-connection-monitor"></a>Bağlantı Izleyicisi 'nden bağlantı Izleyicisi 'ne (Önizleme) geçiş
 
-Mevcut bağlantı izleyicilerini yeni ve geliştirilmiş bağlantı Izleyicisine (Önizleme) tek tıklamayla ve sıfır kapalı kalma süresiyle geçirebilirsiniz. Avantajlar hakkında daha fazla bilgi edinmek için [Bağlantı İzleyicisi 'ni okuyabilirsiniz (Önizleme)](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview)
+Var olan bağlantı izleyicilerini yalnızca birkaç tıklamayla ve sıfır kapalı kalma süresiyle yeni, geliştirilmiş bağlantı Izleyicisine (Önizleme) geçirebilirsiniz. Avantajlar hakkında daha fazla bilgi edinmek için bkz. [Bağlantı İzleyicisi (Önizleme)](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview).
 
 ## <a name="key-points-to-note"></a>Önemli noktaları göz önünde
 
-* Aracılar ve güvenlik duvarı ayarları olduğu gibi çalışır (dokunma gerekmez) 
-* Mevcut bağlantı izleyicileri bağlantı Izleyici (Önizleme)-> test grubu > test biçimine eşlenir. Kullanıcılar, bağlantı Izleyicisinde değişiklik yapmak ve Azure Resource Manager aracılığıyla göndermek için yeni bağlantı Izleyicisinin özelliklerini görüntüleyip değiştirmek üzere *Düzenle* ' ye tıklayabilir. 
-* Ağ Izleyicisi uzantısına sahip Azure sanal makineleri, verileri çalışma alanına ve ölçümlere gönderir. Bağlantı Izleyicileri, eski ölçümleri Durdur (ProbesFailedPercent ve AverageRoundtripMs) yerine yeni ölçümler (ChecksFailedPercent (Preview) ve Roundroundtimems (Önizleme)) aracılığıyla verilerin kullanılabilmesini sağlayacak 
-* Verileri izleme
-    * Uyarılar – geçişin bir parçası olarak yeni ölçümlere geçirilecektir
-    * Panolar ve tümleştirmeler – ölçüm kümesini el ile düzenlemeniz gerekir. 
+Geçiş, aşağıdaki sonuçları üretmenize yardımcı olur:
+
+* Aracılar ve güvenlik duvarı ayarları olduğu gibi çalışır. Değişiklik gerekmiyor. 
+* Var olan bağlantı izleyicileri, test grubu > test biçimi > bağlantı Izleyicisi (Önizleme) ile eşleştirilir. **Düzenle**' yi seçerek, yeni bağlantı izleyicisinin özelliklerini görüntüleyip değiştirebilir, bağlantı izleyicisinde değişiklik yapmak için bir şablon indirebilir ve Azure Resource Manager aracılığıyla gönderebilirsiniz. 
+* Ağ Izleyicisi uzantısına sahip Azure sanal makineleri, hem çalışma alanına hem de ölçümlere veri gönderir. Bağlantı Izleyicisi, verileri eski ölçümler (ProbesFailedPercent ve AverageRoundtripMs) yerine yeni ölçümler (ChecksFailedPercent [Preview] ve Roundroundtimems [Preview]) üzerinden kullanılabilir hale getirir. 
+* Veri izleme:
+   * **Uyarılar**: otomatik olarak yeni ölçümlere geçirilir.
+   * **Panolar ve tümleştirmeler**: ölçüm kümesinin el ile düzenlenmesine gerek vardır. 
     
 ## <a name="prerequisites"></a>Ön koşullar
 
-Özel çalışma alanı kullanıyorsanız, Log Analytics çalışma alanının aboneliğinde ve bölgesinde ağ izleyicisinin etkinleştirildiğinden emin olun 
+Özel bir çalışma alanı kullanıyorsanız, aboneliğinizde ve Log Analytics çalışma alanınızın bölgesinde ağ Izleyicisi 'nin etkinleştirildiğinden emin olun. 
 
-## <a name="steps-to-migrate-from-connection-monitor-to-connection-monitor-preview"></a>Bağlantı izleyiciden bağlantı Izleyicisine geçiş adımları (Önizleme)
+## <a name="migrate-the-connection-monitors"></a>Bağlantı izleyicilerini geçirme
 
-1. Bağlantı izleyicilerini daha yeni çözüme geçirmek için "bağlantı Izleyicisi" ne tıklayın, "bağlantı Izleyicilerini geçir" e gidin.
+1. Eski bağlantı izleyicilerini yeni bir sürümüne geçirmek için **Bağlantı İzleyicisi**' ni seçin ve ardından **bağlantı izleyicilerini geçir**' i seçin.
 
-    ![Bağlantı izleyicilerine bağlantı Izleyicisi önizlemesine geçişi gösteren ekran görüntüsü](./media/connection-monitor-2-preview/migrate-cm-to-cm-preview.png)
+    ![Bağlantı izleyicilerinin bağlantı izleyicilerine geçişini gösteren ekran görüntüsü (Önizleme).](./media/connection-monitor-2-preview/migrate-cm-to-cm-preview.png)
     
-1. Abonelik ve bağlantı izleyicileri seçip "Seçileni geçir" seçeneğine tıklayın. Bir tek tıklama var olan bağlantı izleyicilerini bağlantı Izleyicisine geçir (Önizleme) 
-1. Bağlantı İzleyicisi özelliklerini özelleştirebilir, varsayılan çalışma alanını değiştirebilir, şablonu indirebilir ve geçişin durumunu kontrol edebilirsiniz. 
-1. Geçiş başladıktan sonra, aşağıdaki değişiklikler gerçekleşir: 
-    1. Kaynak değişikliklerini daha yeni bağlantı izleyicisinde Azure Resource Manager
-        1. Bağlantı izleyicisinin adı, bölgesi ve aboneliği değişmeden kalır. Bu nedenle, kaynak KIMLIĞI üzerinde hiçbir etkisi yoktur.
-        1. Özelleştirilmediği takdirde, bağlantı izleyicisinin bölgesinde ve aboneliğinde varsayılan bir Log Analytics çalışma alanı oluşturulur. Bu çalışma alanı, izleme verilerinin depolanacağı yerdir. Test sonucu verileri de ölçümler ' de depolanır.
-        1. Her test, * defaultTestGroup * adlı bir test grubuna geçirilir
-        1.  Kaynak ve hedef uç noktaları oluşturulan test grubunda oluşturulur ve kullanılır. Varsayılan adlar *Defaultsourceendpoint* ve *defaultdestinationendpoint*
-        1. Hedef bağlantı noktası ve yoklama aralığı, *defaulttestconfiguration*adlı test yapılandırmasına taşınır. Bağlantı noktası değerlerine bağlı olarak protokol ayarlanır. Başarı eşikleri ve diğer isteğe bağlı özellikler boş bırakılır.
-    1. Ölçüm uyarıları bağlantı Izleyicisi (Önizleme) ölçüm uyarılarına geçirilir. Ölçümler farklıdır <link to metric section in the doc> , bu nedenle değişiklik
-    1. Geçirilen bağlantı izleyicileri eski Bağlantı İzleyicisi çözümünde gösterilmez, artık yalnızca bağlantı Izleyicilerinde (Önizleme) kullanıma sunulacaktır
-    1. SıEM sistemleriyle Power BI, Grafana ve tümleştirmeler gibi tüm dış tümleştirmeler, Kullanıcı tarafından doğrudan geçirilmesi gerekecektir. Bu, kullanıcının kurulumunu geçirmek için gerçekleştirmesi gereken tek el ile yapılan adımdır.
+1. Aboneliğinizi ve geçirmek istediğiniz bağlantı izleyicilerini seçin ve sonra da **Seçileni geçir**' i seçin. 
+
+Yalnızca birkaç tıklamayla, var olan bağlantı izleyicilerini bağlantı Izleyicisi 'ne (Önizleme) geçirdiniz. 
+
+Artık bağlantı Izleyicisi (Önizleme) özelliklerini özelleştirebilir, varsayılan çalışma alanını değiştirebilir, şablonları indirebilir ve geçiş durumunu kontrol edebilirsiniz. 
+
+Geçiş başladıktan sonra aşağıdaki değişiklikler gerçekleşir: 
+* Azure Resource Manager kaynağı daha yeni bağlantı izleyicisinde değişir.
+    * Bağlantı izleyicisinin adı, bölgesi ve aboneliği değişmeden kalır. Kaynak KIMLIĞI etkilenmemiştir.
+    * Bağlantı İzleyicisi özelleştirilmediği takdirde, abonelikte ve bağlantı izleyicisinin bölgesinde varsayılan bir Log Analytics çalışma alanı oluşturulur. Bu çalışma alanı, izleme verilerinin depolandığı yerdir. Test sonucu verileri de ölçümlerde depolanır.
+    * Her test, *defaulttestgroup*adlı bir test grubuna geçirilir.
+    * Kaynak ve hedef uç noktaları yeni test grubunda oluşturulur ve kullanılır. Varsayılan adlar *Defaultsourceendpoint* ve *defaultdestinationendpoint*' dir.
+    * Hedef bağlantı noktası ve yoklama aralığı, *Defaulttestconfiguration*adlı bir test yapılandırmasına taşınır. Protokol, bağlantı noktası değerlerine göre ayarlanır. Başarı eşikleri ve diğer isteğe bağlı özellikler boş bırakılır.
+* Ölçüm uyarıları, bağlantı Izleyicisi (Önizleme) ölçüm uyarılarına geçirilir. Ölçümler farklıdır, bu nedenle değişiklik. Daha fazla bilgi için bkz. [Bağlantı İzleyicisi Ile ağ bağlantısı izleme (Önizleme)](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#metrics-in-azure-monitor).
+* Geçirilen bağlantı izleyicileri artık eski Bağlantı İzleyicisi çözümü olarak gösterilmez. Artık yalnızca bağlantı Izleyicisinde (Önizleme) kullanılabilir.
+* Power BI ve Grafana 'deki panolar ve güvenlik bilgileri ve olay yönetimi (SıEM) sistemleriyle tümleştirmeler gibi dış tümleştirmeler, el ile geçirilmesi gerekir. Bu, kurulumunuzu geçirmek için yapmanız gereken tek el ile gerçekleştirilen adımdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ağ performansı İzleyicisi Bağlantı İzleyicisi 'ne (Önizleme) geçiş yapmayı](migrate-to-connection-monitor-preview-from-network-performance-monitor.md) öğrenin
-* [Azure Portal kullanarak bağlantı İzleyicisi (Önizleme) oluşturmayı](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview-create-using-portal) öğrenin
+Bağlantı Izleyicisi (Önizleme) hakkında daha fazla bilgi için bkz.:
+* [Ağ Performansı İzleyicisi bağlantı Izleyicisine geçiş (Önizleme)](migrate-to-connection-monitor-preview-from-network-performance-monitor.md)
+* [Azure portal kullanarak bağlantı Izleyicisi (Önizleme) oluşturun](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview-create-using-portal)

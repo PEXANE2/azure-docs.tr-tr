@@ -11,12 +11,12 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 515de0fed987f412adb060a3ba58978f0400ae0d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628955"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441978"
 ---
 # <a name="templates"></a>Şablonlar
 
@@ -56,7 +56,7 @@ Data Factory, Data Factory işlem hattı şablonlarını kaydetmek için Azure R
 
     -   [Veritabanından Delta kopyası](solution-template-delta-copy-with-control-table.md)
 
-    -   Öğesinden \<source\> öğesine Kopyala\<destination\>
+    -   Öğesinden \<source\> öğesine Kopyala \<destination\>
 
         -   [Amazon S3 'ten Azure Data Lake Store Gen 2 ' ye kadar](solution-template-migration-s3-azure.md)
 
@@ -68,9 +68,9 @@ Data Factory, Data Factory işlem hattı şablonlarını kaydetmek için Azure R
 
         -   Şirket içinden Azure SQL veritabanı 'na SQL Server
 
-        -   Şirket içinden Azure SQL veri ambarı 'na SQL Server
+        -   Şirket içinden Azure SYNAPSE Analytics 'e SQL Server (eski adıyla SQL veri ambarı)
 
-        -   Şirket içi Oracle 'dan Azure SQL veri ambarı 'na
+        -   Şirket içi Oracle 'dan Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı)
 
 -   SSIS şablonları
 

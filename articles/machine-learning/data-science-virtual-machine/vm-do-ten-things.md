@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: dba0f22f1dfece7edd92a80ae1c3a91616a4236c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815938"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440465"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi ile veri bilimi
 
@@ -255,7 +255,7 @@ Veriler veri çerçevesi olarak okundu:
 ### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) ve veritabanları
 Azure SYNAPSE Analytics (eski adıyla SQL DW), kurumsal sınıf SQL Server deneyimine sahip bir hizmet olarak elastik bir veri ambarıdır.
 
-[Bu makaledeki](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)yönergeleri Izleyerek Azure SYNAPSE Analytics sağlayabilirsiniz. SQL veri Ambarınızı sağlamadıktan sonra, SQL veri ambarı içindeki verileri kullanarak veri yükleme, araştırma ve Modelleme işlemleri yapmak için [Bu](../team-data-science-process/sqldw-walkthrough.md) Kılavuzu kullanabilirsiniz.
+[Bu makaledeki](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)yönergeleri Izleyerek Azure SYNAPSE Analytics sağlayabilirsiniz. Azure SYNAPSE Analytics 'i sağlamadıktan sonra, Azure SYNAPSE Analytics içindeki verileri kullanarak karşıya veri yükleme, araştırma ve Modelleme işlemleri yapmak için [Bu](../team-data-science-process/sqldw-walkthrough.md) Kılavuzu kullanabilirsiniz.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB, buluttaki bir NoSQL veritabanıdır. Bunu, JSON gibi belgelerle çalışmak ve belgeleri depolamak ve sorgulamak için kullanabilirsiniz.
