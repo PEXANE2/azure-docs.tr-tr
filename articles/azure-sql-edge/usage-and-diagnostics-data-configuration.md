@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: af4353e5b0991f7ce2f6fe8ff940e916717b0579
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759623"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650476"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Azure SQL Edge kullanımı ve tanılama veri yapılandırması
 
@@ -72,7 +72,7 @@ Azure SQL Edge 'de kullanım ve tanılama veri toplamayı devre dışı bırakma
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>MSSQL. conf dosyasını kullanarak kullanımı ve tanılamayı devre dışı bırakma
 
-Azure SQL Edge 'de kullanım ve tanılama veri toplamayı devre dışı bırakmak için, SQL Edge modülünde/var/seçenek/MSSQL/Folder öğesine eşlenen kalıcı depolama sürücüsündeki MSSQL. conf dosyasına aşağıdaki dosyaları ekleyin. MSSQL. conf dosyasını kullanarak Azure SQL Edge 'i yapılandırma hakkında daha fazla bilgi için bkz. [MSSQL. conf dosyasını kullanarak yapılandırma](configure.md#configure-by-using-an-mssqlconf-file).
+Azure SQL Edge 'de kullanım ve tanılama veri toplamayı devre dışı bırakmak için, SQL Edge modülünde/var/seçenek/MSSQL/Folder öğesine eşlenen kalıcı depolama sürücüsündeki MSSQL. conf dosyasına aşağıdaki satırları ekleyin. MSSQL. conf dosyasını kullanarak Azure SQL Edge 'i yapılandırma hakkında daha fazla bilgi için bkz. [MSSQL. conf dosyasını kullanarak yapılandırma](configure.md#configure-by-using-an-mssqlconf-file).
 
 ```ini
 [telemetry]

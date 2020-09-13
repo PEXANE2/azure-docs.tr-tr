@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: d2c8271f0bc33bc47e64c85846061a9b77bbe66f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62f147104cf9e0e1605b02a420cb6d20190361b8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066221"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657463"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps içindeki belirli değerlere göre iş akışı eylemlerini çalıştıran Switch deyimleri oluşturma
 
@@ -27,7 +27,7 @@ Nesnelerin, ifadelerin veya belirteçlerin değerlerine göre belirli eylemleri 
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Bu makaledeki örneği izlemek için, Outlook.com veya Office 365 Outlook hesabıyla [Bu örnek mantıksal uygulamayı oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md) .
+* Bu makaledeki örneği izlemek için [Bu örnek mantıksal uygulamayı](../logic-apps/quickstart-create-first-logic-app-workflow.md) bir Outlook.com hesabı ya da bir iş veya okul hesabıyla oluşturun.
 
   1. E-posta gönder eylemini eklediğinizde bunun yerine bu eylemi bulun ve seçin: **onay e-postası gönder**
 
@@ -110,7 +110,7 @@ Artık bir switch ifadesini kullanarak bir mantıksal uygulama oluşturduğunuza
 }
 ```
 
-| Etiketle | Açıklama |
+| Etiketle | Description |
 |-------|-------------|
 | `"Switch"`         | Okunabilirlik için yeniden adlandırabileceği switch ifadesinin adı |
 | `"type": "Switch"` | Eylemin bir switch ifadesinin olduğunu belirtir |
@@ -119,7 +119,7 @@ Artık bir switch ifadesini kullanarak bir mantıksal uygulama oluşturduğunuza
 | `"case"` | Anahtar ifadesinin karşılaştırma için kullandığı sabit ve benzersiz bir değer olması gereken Case değerini belirtir. Anahtar ifadesi sonucuyla eşleşen hiçbir durum yoksa, `"default"` bölümündeki eylemler çalıştırılır. | 
 | | | 
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri veya önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.

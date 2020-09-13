@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a13fa7c819dcccc101c23015214bac55d2ab26c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 48157c8d9285c48d49e76f39602075a2a8ac9682
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855543"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650713"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 
@@ -119,7 +119,7 @@ Uygulamanızın performans gereksinimlerini ölçmenin en iyi yolu, sunucusunun 
 
 PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiziksel disk için kullanılabilir. Premium Depolama disklerini bir VM ile kullandığınızda, her bir Premium Depolama diski için fiziksel disk sayaçları ve Premium Depolama disklerinde oluşturulan her birim için mantıksal disk sayaçları bulunur. Uygulama iş yükünüzü barındıran disklerin değerlerini yakalamalısınız. Mantıksal ve fiziksel diskler arasında bire bir eşleme varsa, fiziksel disk sayaçlarına başvurabilirsiniz; Aksi takdirde mantıksal disk sayaçlarına bakın. Linux 'ta, Iostat komutu bir CPU ve disk kullanımı raporu oluşturur. Disk kullanımı raporu, fiziksel cihaz veya bölüm başına istatistikler sağlar. Verileri ve günlükleri ayrı disklerde içeren bir veritabanı sunucusuna sahipseniz, bu verileri her iki disk için de toplayın. Aşağıdaki tabloda diskler, işlemciler ve Bellek sayaçlarını açıklanmaktadır:
 
-| Sayaç | Açıklama | Sin | Iostat |
+| Sayaç | Description | Sin | Iostat |
 | --- | --- | --- | --- |
 | **IOPS veya saniye başına Işlem** |Depolama diskine saniye başına verilen g/ç isteği sayısı. |Disk Okuma/sn <br> Disk yazma/sn |TPS <br> r/s <br> w/s |
 | **Disk okuma ve yazma Işlemleri** |disk üzerinde gerçekleştirilen okuma ve yazma işlemlerinin yüzdesi. |% Disk okuma zamanı <br> % Disk yazma zamanı |r/s <br> w/s |
@@ -127,10 +127,10 @@ PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiz
 | **Gecikme süresi** |Bir disk GÇ isteğini tamamlayacak toplam süre. |Ortalama Disk sn/okuma <br> Ortalama Disk sn/yazma |bekleme <br> svctd |
 | **GÇ boyutu** |G/ç isteklerinin boyutu depolama disklerinde sorun verir. |Ortalama disk bayt/okuma <br> Ortalama disk bayt/yazma |avgrq-SZ |
 | **Sıra derinliği** |Depolama diskine okunmayı bekleyen bekleyen g/ç isteklerinin sayısı. |Geçerli disk sırası uzunluğu |avgqu-SZ |
-| **Biçimlendir. Bellek** |Uygulamayı sorunsuz bir şekilde çalıştırmak için gereken bellek miktarı |Kullanılan kaydedilmiş bayt yüzdesi |Vmstat kullanma |
-| **Biçimlendir. 'SUNA** |Uygulamayı sorunsuz şekilde çalıştırmak için CPU miktarı gereklidir |% İşlemci zamanı |% Util |
+| **En fazla bellek** |Uygulamayı sorunsuz bir şekilde çalıştırmak için gereken bellek miktarı |Kullanılan kaydedilmiş bayt yüzdesi |Vmstat kullanma |
+| **Maks. CPU** |Uygulamayı sorunsuz şekilde çalıştırmak için CPU miktarı gereklidir |% İşlemci zamanı |% Util |
 
-[Iostat](https://linux.die.net/man/1/iostat) ve [Perfmon](https://msdn.microsoft.com/library/aa645516.aspx)hakkında daha fazla bilgi edinin.
+[Iostat](https://linux.die.net/man/1/iostat) ve [Perfmon](https://docs.microsoft.com/windows/win32/perfctrs/performance-counters-portal)hakkında daha fazla bilgi edinin.
 
 
 

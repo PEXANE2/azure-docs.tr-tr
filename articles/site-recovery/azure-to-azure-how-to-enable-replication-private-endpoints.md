@@ -1,25 +1,22 @@
 ---
 title: Azure Site Recovery Özel uç noktalar için çoğaltmayı etkinleştir
 description: Bu makalede, Site Recovery kullanarak bir Azure bölgesinden diğerine özel uç noktaları olan VM 'Ler için çoğaltmanın nasıl yapılandırılacağı açıklanır.
-author: mayurigupta13
-ms.author: mayg
+author: Harsha-CS
+ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 16cde1cf43c6463cbbe640d9e0a80a9ea88f1f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 37784c4a294ccf296818f2afb1a8a345cb9d813e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099806"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658256"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>Makineleri özel uç noktalarla Çoğalt
 
-Azure Site Recovery, makinelerinizi yalıtılmış bir sanal ağın içinden çoğaltmak için [Azure özel bağlantı](../private-link/private-endpoint-overview.md) özel noktalarını kullanmanıza olanak sağlar. Aşağıdaki bölgeler için bir kurtarma kasasına özel uç nokta erişimi desteği desteklenir:
-
-- Azure ticari: Orta Güney ABD, Batı ABD 2, Doğu ABD
-- Azure Kamu: US Gov Virginia, US Gov Arizona, US Gov Teksas, US DoD Doğu, US DoD Orta
+Azure Site Recovery, makinelerinizi yalıtılmış bir sanal ağın içinden çoğaltmak için [Azure özel bağlantı](../private-link/private-endpoint-overview.md) özel noktalarını kullanmanıza olanak sağlar. Bir kurtarma kasasına özel uç nokta erişimi, tüm Azure ticari & kamu bölgelerinde desteklenir.
 
 Bu makalede, aşağıdaki adımları gerçekleştirmenize yönelik yönergeler sağlanmaktadır:
 
@@ -140,7 +137,7 @@ Sanal makinelerin çoğaltılmasını etkinleştirmeden önce, kasanın yönetil
 
 - Kaynak Yöneticisi tabanlı depolama hesapları (Standart tür):
   - [Katkıda Bulunan](../role-based-access-control/built-in-roles.md#contributor)
-  - [Depolama Blobu veri Katılımcısı](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+  - [Depolama Blob Verileri Katkıda Bulunanı](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Kaynak Yöneticisi tabanlı depolama hesapları (Premium türü):
   - [Katkıda Bulunan](../role-based-access-control/built-in-roles.md#contributor)
   - [Depolama Blobu veri sahibi](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
@@ -209,7 +206,7 @@ Mobility aracısının özel IP 'lere tam etki alanı adlarını çözümlemesin
 
    1. Açılan "kayıt kümesi Ekle" sayfasında, her bir tam etki alanı adı ve _bir_ tür kaydı olarak özel IP için bir giriş ekleyin. Tam etki alanı adları ve IP 'Lerin listesi **genel bakış**bölümünde "özel uç nokta" sayfasından elde edilebilir. Aşağıdaki örnekte gösterildiği gibi, Özel uç noktasındaki ilk tam etki alanı adı özel DNS bölgesindeki kayıt kümesine eklenir.
 
-      Bu tam etki alanı adları düzeniyle eşleşir:`{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
+      Bu tam etki alanı adları düzeniyle eşleşir: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
       :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Azure portal, tam etki alanı adı için bir DNS A türü kaydını, Özel uç noktasına eklemek için sayfayı gösterir.":::
 
@@ -220,5 +217,5 @@ Mobility aracısının özel IP 'lere tam etki alanı adlarını çözümlemesin
 
 Sanal makine çoğaltmalarınızda özel uç noktaları etkinleştirdiğiniz için, bu diğer sayfalara ek ve ilgili bilgiler için bkz.
 
-- [Azure VM 'lerini başka bir Azure bölgesine çoğaltma](./azure-to-azure-how-to-enable-replication.md)
+- [Azure sanal makinelerini başka bir Azure bölgesine çoğaltma](./azure-to-azure-how-to-enable-replication.md)
 - [Öğretici: Azure VM 'Leri için olağanüstü durum kurtarmayı ayarlama](./azure-to-azure-tutorial-enable-replication.md)

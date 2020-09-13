@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 168aec49dc9b14af57df98ebc4c997f8dfb27c9e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ffd374f650140b5b65988578756b25f5d0fb21cc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228367"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657359"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning için Azure Güvenlik temeli
 
@@ -28,7 +28,7 @@ Microsoft Azure Machine Learning için Azure Güvenlik temeli, dağıtımınız�
 
 Azure Güvenlik Duvarı, Azure Machine Learning çalışma alanınıza ve genel İnternet 'e erişimi denetlemek için kullanılabilir.
 
-- [Yalıtılmış bir sanal ağda denemeleri ve çıkarımı güvenle çalıştırma](how-to-enable-virtual-network.md)
+- [Sanal ağ yalıtımı ve gizliliği genel bakış](how-to-network-security-overview.md)
 
 - [Azure Machine Learning için Azure Güvenlik duvarının arkasındaki çalışma alanını kullanın](how-to-access-azureml-behind-firewall.md)
 
@@ -58,7 +58,7 @@ Denetim için ağ güvenlik grubu akış günlüklerini etkinleştirin ve günl�
 
 - [TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama](how-to-secure-web-service.md)
 
-- [&amp;Özel sanal ağlarla eğitim çıkarımı sırasında ağ yalıtımı](how-to-enable-virtual-network.md)
+- [Sanal ağ yalıtımı ve gizliliği genel bakış](how-to-network-security-overview.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -94,7 +94,7 @@ Tehdit zekası tabanlı filtreleme etkin ve kötü amaçlı ağ trafiği için "
 
 **Rehberlik**: kötü amaçlı trafiği algılamak ve/veya engellemek için kuruluşunuzun ağ sınırlarının her birinde tercih ettiğiniz güvenlik duvarı çözümünü dağıtın.
 
-Azure Marketi 'nden, yük İnceleme özelliklerine sahip KIMLIKLER/IP 'leri işlevselliğini destekleyen bir teklif seçin.  Yük incelemesi bir gereksinim olmadığında, Azure Güvenlik Duvarı tehdit bilgileri kullanılabilir. Azure Güvenlik Duvarı tehdit zekası tabanlı filtreleme, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen ve giden trafiği filtrelemek ve/veya engellemek için kullanılır. IP adresleri ve etki alanları, Microsoft Tehdit Analizi akışından alınır.
+Azure Marketi 'nden, yük İnceleme özellikleri ile KIMLIKLER/IP işlevlerini destekleyen bir teklif seçin.  Yük incelemesi bir gereksinim olmadığında, Azure Güvenlik Duvarı tehdit bilgileri kullanılabilir. Azure Güvenlik Duvarı tehdit zekası tabanlı filtreleme, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen ve giden trafiği filtrelemek ve/veya engellemek için kullanılır. IP adresleri ve etki alanları, Microsoft Tehdit Analizi akışından alınır.
 
 - [Azure Güvenlik duvarını dağıtma](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -122,7 +122,7 @@ Azure Machine Learning hizmet, karmaşıklığı en aza indirmenize yardımcı o
 
 - [Hizmet etiketlerini kullanma hakkında daha fazla bilgi için](../virtual-network/service-tags-overview.md)
 
-- [Azure Machine Learning sanal ağ için](how-to-enable-virtual-network.md)
+- [Sanal ağ yalıtımı ve gizliliği genel bakış](how-to-network-security-overview.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -326,7 +326,7 @@ Ayrıca, yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici 
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: adanmış yönetim hesapları kullanın
 
-**Rehberlik**: Azure Machine Learning yeni bir çalışma alanı oluşturulduğunda üç varsayılan rol ile birlikte sahip hesaplarının kullanımı etrafında standart işletim yordamları oluşturur.
+**Rehberlik**: Azure Machine Learning yeni bir çalışma alanı oluşturulduğunda, sahip hesaplarının kullanımı etrafında standart işletim yordamları oluşturarak üç varsayılan rolle gelir.
 
 Ayrıca, Azure AD Privileged Identity Management ve Azure Resource Manager kullanarak Yönetimsel hesaplara tam zamanında erişimi etkinleştirebilirsiniz. 
 
@@ -979,7 +979,9 @@ Gizli dizileri eğitim betiklerinizde düz metin yerine güvenli bir şekilde ge
 
 - [Key Vault oluşturma](/azure/key-vault/quick-create-portal)
 
-- [Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](/azure/key-vault/managed-identity)
+- [Key Vault kimlik doğrulaması yapma](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+- [Key Vault erişim ilkesi atama](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

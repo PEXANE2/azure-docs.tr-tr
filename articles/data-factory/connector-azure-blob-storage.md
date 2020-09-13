@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/31/2020
-ms.openlocfilehash: 34ddea1445ef8a8eb8554add3ee8920078a6e573
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/10/2020
+ms.openlocfilehash: 883c88386e4796f8d0cd2631b7754c06ce13d141
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182578"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657277"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamada verileri kopyalama ve dönüştürme
 
@@ -51,7 +51,7 @@ Kopyalama etkinliği için bu blob Storage Bağlayıcısı şunları destekler:
 >[!IMPORTANT]
 >Azure Storage güvenlik duvarı ayarlarında **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver** seçeneğini etkinleştirip blob depolamaya bağlanmak için Azure tümleştirme çalışma zamanını kullanmak istiyorsanız, [yönetilen kimlik kimlik doğrulamasını](#managed-identity)kullanmanız gerekir.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -67,7 +67,7 @@ Bu BLOB depolama Bağlayıcısı aşağıdaki kimlik doğrulama türlerini deste
 - [Azure Kaynak kimlik doğrulaması için Yönetilen kimlikler](#managed-identity)
 
 >[!NOTE]
->Azure SQL veri ambarı 'na veri yüklemek için PolyBase kullandığınızda, kaynak veya hazırlama BLOB depolama alanı bir Azure sanal ağ uç noktasıyla yapılandırılmışsa, PolyBase için gereken yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. Şirket içinde barındırılan tümleştirme çalışma zamanını 3,18 veya üzeri bir sürümle de kullanmalısınız. Daha fazla yapılandırma önkoşulları için [yönetilen kimlik doğrulama](#managed-identity) bölümüne bakın.
+>Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri yüklemek için PolyBase kullandığınızda, kaynak veya hazırlama BLOB depolama alanı bir Azure sanal ağ uç noktasıyla yapılandırılmışsa, PolyBase için gereken yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. Şirket içinde barındırılan tümleştirme çalışma zamanını 3,18 veya üzeri bir sürümle de kullanmalısınız. Daha fazla yapılandırma önkoşulları için [yönetilen kimlik doğrulama](#managed-identity) bölümüne bakın.
 
 >[!NOTE]
 >Azure HDInsight ve Azure Machine Learning etkinlikleri yalnızca Azure Blob depolama hesabı anahtarlarını kullanan kimlik doğrulamasını destekler.
@@ -234,6 +234,7 @@ Bu özellikler, Azure Blob depolama bağlı hizmeti için desteklenir:
 |:--- |:--- |:--- |
 | tür | **Type** özelliği **AzureBlobStorage**olarak ayarlanmalıdır. |Yes |
 | Sözleşmeli | Düzenine sahip Azure Blob depolama hizmeti uç noktasını belirtin `https://<accountName>.blob.core.windows.net/` . |Yes |
+| accountKind | Depolama hesabınızın türünü belirtin. İzin verilen değerler: **depolama** (genel amaçlı v1), **StorageV2** (genel amaçlı v2), **blobstorage**veya **blockblobstorage**. <br/> Veri akışında Azure Blob bağlı hizmeti kullanılırken, hesap türü boş veya "depolama" olduğunda yönetilen kimlik veya hizmet sorumlusu kimlik doğrulaması desteklenmez. Uygun hesap türünü belirtin, farklı bir kimlik doğrulaması seçin veya depolama hesabınızı genel amaçlı v2 'ye yükseltin. |No |
 | Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Yes |
 | Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
 | Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Azure portal, sağ üst köşenin üzerine gelerek alın. | Yes |
@@ -252,6 +253,7 @@ Bu özellikler, Azure Blob depolama bağlı hizmeti için desteklenir:
         "type": "AzureBlobStorage",
         "typeProperties": {            
             "serviceEndpoint": "https://<accountName>.blob.core.windows.net/",
+            "accountKind": "StorageV2",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
                 "type": "SecureString",
@@ -281,7 +283,7 @@ Azure depolama kimlik doğrulaması hakkında genel bilgi için bkz. [Azure Acti
     - **Havuz olarak**, **erişim denetımı 'nde (IAM)**, en azından **Depolama Blobu veri katılımcısı** rolüne izin verin.
 
 >[!IMPORTANT]
->BLOB depolama alanından (kaynak veya hazırlama olarak) verileri SQL veri ambarı 'na yüklemek için PolyBase kullanırsanız, blob depolaması için yönetilen kimlik kimlik doğrulamasını kullanırken, [Bu](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)kılavuzda 1 ve 2. adımları izlediğinizden emin olun. Bu adımlar, sunucunuzu Azure AD 'ye kaydeder ve Depolama Blobu veri katılımcısı rolünü sunucunuza atar. Data Factory Rest 'i işler. Blob depolamayı bir Azure sanal ağ uç noktası ile yapılandırdıysanız, verileri dosyadan yüklemek için PolyBase kullanmak istiyorsanız, PolyBase 'in gerektirdiği şekilde yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir.
+>BLOB depolama alanından (kaynak veya hazırlama olarak) Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri yüklemek için PolyBase kullanırsanız, BLOB depolama için yönetilen kimlik kimlik doğrulamasını kullanırken, [Bu](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)kılavuzda 1 ve 2. adımları izlediğinizden emin olun. Bu adımlar, sunucunuzu Azure AD 'ye kaydeder ve Depolama Blobu veri katılımcısı rolünü sunucunuza atar. Data Factory Rest 'i işler. Blob depolamayı bir Azure sanal ağ uç noktası ile yapılandırdıysanız, verileri dosyadan yüklemek için PolyBase kullanmak istiyorsanız, PolyBase 'in gerektirdiği şekilde yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir.
 
 Bu özellikler, Azure Blob depolama bağlı hizmeti için desteklenir:
 
@@ -289,6 +291,7 @@ Bu özellikler, Azure Blob depolama bağlı hizmeti için desteklenir:
 |:--- |:--- |:--- |
 | tür | **Type** özelliği **AzureBlobStorage**olarak ayarlanmalıdır. |Yes |
 | Sözleşmeli | Düzenine sahip Azure Blob depolama hizmeti uç noktasını belirtin `https://<accountName>.blob.core.windows.net/` . |Yes |
+| accountKind | Depolama hesabınızın türünü belirtin. İzin verilen değerler: **depolama** (genel amaçlı v1), **StorageV2** (genel amaçlı v2), **blobstorage**veya **blockblobstorage**. <br/> Veri akışında Azure Blob bağlı hizmeti kullanılırken, hesap türü boş veya "depolama" olduğunda yönetilen kimlik veya hizmet sorumlusu kimlik doğrulaması desteklenmez. Uygun hesap türünü belirtin, farklı bir kimlik doğrulaması seçin veya depolama hesabınızı genel amaçlı v2 'ye yükseltin. |No |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolduğunuz özel bir ağda olması halinde) kullanabilirsiniz. Bu özellik belirtilmezse, hizmet varsayılan Azure tümleştirme çalışma zamanını kullanır. |No |
 
 > [!NOTE]
@@ -302,7 +305,8 @@ Bu özellikler, Azure Blob depolama bağlı hizmeti için desteklenir:
     "properties": {
         "type": "AzureBlobStorage",
         "typeProperties": {            
-            "serviceEndpoint": "https://<accountName>.blob.core.windows.net/"
+            "serviceEndpoint": "https://<accountName>.blob.core.windows.net/",
+            "accountKind": "StorageV2" 
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

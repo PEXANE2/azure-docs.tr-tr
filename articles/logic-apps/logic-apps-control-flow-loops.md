@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5bd637f4e4a786cd4cba0f70c4b2349e354469fd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495616"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657473"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps’te iş akışı eylemlerini veya işlem dizilerini tekrarlayacak döngüler oluşturma
 
@@ -22,7 +22,7 @@ Bir koşul karşılanana veya bir durum değişikliği yapılıncaya kadar eylem
 > [!TIP]
 > Bir diziyi alan ve her dizi öğesi için bir iş akışı çalıştırmak istediğiniz bir Tetikleyiciniz varsa, bu diziyi [ **spton** tetikleyici özelliğiyle](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *toplu* olarak silebilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
@@ -40,12 +40,12 @@ Bir koşul karşılanana veya bir durum değişikliği yapılıncaya kadar eylem
 
 * Her döngü yinelemesi sırasında değişkenlerdeki işlemlerden öngörülebilir sonuçlar almak için, bu döngüleri sırayla çalıştırın. Örneğin, eşzamanlı olarak çalışan bir döngü sona erdiğinde, artırma, azaltma ve değişken işlemlerine ekleme işlemi öngörülebilir sonuçlar döndürür. Ancak, eşzamanlı çalışan döngüde her yineleme sırasında, bu işlemler öngörülemeyen sonuçlar döndürebilir. 
 
-* "Foreach" döngüsünde eylemler[`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
+* "Foreach" döngüsünde eylemler [`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
 dizideki her öğeye başvurmak ve işlemek için ifade. Bir dizide olmayan verileri belirtirseniz, mantıksal uygulama iş akışı başarısız olur. 
 
 Bu örnek mantıksal uygulama, Web sitesi RSS akışı için günlük bir Özet gönderir. Uygulama, her yeni öğe için bir e-posta gönderen "foreach" döngüsünü kullanır.
 
-1. [Bu örnek mantıksal uygulamayı](../logic-apps/quickstart-create-first-logic-app-workflow.md) bir Outlook.com veya Office 365 Outlook hesabıyla oluşturun.
+1. [Bu örnek mantıksal uygulamayı](../logic-apps/quickstart-create-first-logic-app-workflow.md) bir Outlook.com hesabı veya iş veya okul hesabıyla oluşturun.
 
 2. RSS tetikleyicisi ve e-posta gönder eylemi arasında bir "foreach" döngüsü ekleyin. 
 
@@ -232,7 +232,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
       | Özellik | Değer | Açıklama |
       | -------- | ----- | ----------- | 
-      | **Hedef** | *\<email-address\@domain>* | Alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
+      | **Amaç** | *\<email-address\@domain>* | Alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
       | **Konu** | "Limit" için geçerli değer **limit** | E-posta konusunu belirtin. Bu örnekte, **sınır** değişkenini eklediğinizden emin olun. | 
       | **Gövde** | <*e-posta-içerik*> | Göndermek istediğiniz e-posta iletisi içeriğini belirtin. Bu örnek için dilediğiniz metni girin. | 
       |||| 
@@ -333,7 +333,7 @@ Bu örnek "Until" döngüsü bir kaynak oluşturan bir HTTP uç noktası çağı
 }
 ```
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Kullanıcı geri bildirim sitesini Azure Logic Apps](https://aka.ms/logicapps-wish).

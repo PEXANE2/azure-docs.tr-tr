@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358574"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652066"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
 Bu makale, Kullanıcı parolalarınızı şirket içi Active Directory örneğinden bulut tabanlı Azure Active Directory (Azure AD) örneğine eşitlemeniz için gereken bilgileri sağlar.
@@ -32,7 +32,7 @@ Parolanızı eşitlemek için Azure AD Connect eşitleme, parola karmalarınız�
 
 Parola karması eşitleme işleminin gerçek veri akışı, Kullanıcı verilerinin eşitlenmesine benzerdir. Ancak, parolalar diğer özniteliklerin standart dizin eşitleme penceresinden daha sık eşitlenir. Parola karması eşitleme işlemi her 2 dakikada bir çalışır. Bu işlemin sıklığını değiştiremezsiniz. Bir parolayı eşitlediğinizde, mevcut bulut parolasının üzerine yazar.
 
-Parola karması eşitleme özelliğini ilk kez etkinleştirdiğinizde, tüm kapsamdaki kullanıcıların parolalarının ilk eşitlemesini gerçekleştirir. Eşitlenmesi istediğiniz kullanıcı parolalarının bir alt kümesini açıkça tanımlayamazsınız. Ancak, birden çok bağlayıcı varsa, bazı bağlayıcılar için parola karma eşitlemesini devre dışı bırakmak mümkündür ancak [set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) cmdlet 'ini kullanarak diğerlerine uygulanmaz.
+Parola karması eşitleme özelliğini ilk kez etkinleştirdiğinizde, tüm kapsamdaki kullanıcıların parolalarının ilk eşitlemesini gerçekleştirir. Eşitlenmesi istediğiniz kullanıcı parolalarının bir alt kümesini açıkça tanımlayamazsınız. Ancak, birden çok bağlayıcı varsa, bazı bağlayıcılar için parola karma eşitlemesini devre dışı bırakmak mümkündür ancak [set-ADSyncAADPasswordSyncConfiguration](../../active-directory-domain-services/tutorial-configure-password-hash-sync.md) cmdlet 'ini kullanarak diğerlerine uygulanmaz.
 
 Şirket içi bir parolayı değiştirdiğinizde, güncelleştirilmiş parola genellikle birkaç dakika içinde eşitlenir.
 Parola karması eşitleme özelliği başarısız eşitleme girişimlerini otomatik olarak yeniden dener. Parolayı eşitlemeye çalışırken bir hata oluşursa, olay görüntüleyiciniz bir hata günlüğe kaydedilir.
@@ -51,12 +51,12 @@ Aşağıdaki bölümde, parola karma eşitlemesinin Active Directory ile Azure A
 
 ![Ayrıntılı parola akışı](./media/how-to-connect-password-hash-synchronization/arch3b.png)
 
-1. Her iki dakikada bir AD Connect sunucusundaki Parola karması eşitleme Aracısı, bir DC 'den depolanan parola karmalarını (unicodePwd özniteliği) ister.  Bu istek, DC 'Ler arasında verileri eşzamanlı hale getirmek için kullanılan standart [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) çoğaltma protokolü aracılığıyla yapılır. Hizmet hesabı, parola karmalarını almak için Dizin değişikliklerini çoğaltma ve Dizin değişikliklerini çoğaltma (yüklemede varsayılan olarak verilir) olmalıdır.
+1. Her iki dakikada bir AD Connect sunucusundaki Parola karması eşitleme Aracısı, bir DC 'den depolanan parola karmalarını (unicodePwd özniteliği) ister.  Bu istek, DC 'Ler arasında verileri eşzamanlı hale getirmek için kullanılan standart [MS-DRSR](/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47) çoğaltma protokolü aracılığıyla yapılır. Hizmet hesabı, parola karmalarını almak için Dizin değişikliklerini çoğaltma ve Dizin değişikliklerini çoğaltma (yüklemede varsayılan olarak verilir) olmalıdır.
 2. Göndermeden önce, DC, RPC oturum anahtarının [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) karması ve bir güvenlik alanı olan bir anahtar kullanarak MD4 parola karmasını şifreler. Ardından, sonucu RPC üzerinden parola karması eşitleme aracısına gönderir. DC, DC çoğaltma protokolünü kullanarak da güvenlik alanı 'nı eşitleme aracısına geçirir, bu nedenle, aracı zarfın şifresini çözebilecektir.
-3. Parola karması eşitleme aracısının şifreli zarfı olduktan sonra, alınan verilerin şifresinin çözülmesi için bir anahtar oluşturmak üzere [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) kullanır ve bu ANAHTARıN özgün MD4 biçimine geri dönmesi için anahtarı oluşturur. Parola karması eşitleme aracısının hiçbir zaman şifresiz metin parolasına erişimi yoktur. Parola karması eşitleme aracısının MD5 kullanımı, DC ile çoğaltma protokolü uyumluluğu için kesinlikle ve yalnızca DC ile parola karması eşitleme Aracısı arasında kullanılır.
+3. Parola karması eşitleme aracısının şifreli zarfı olduktan sonra, alınan verilerin şifresinin çözülmesi için bir anahtar oluşturmak üzere [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider?view=netcore-3.1) kullanır ve bu ANAHTARıN özgün MD4 biçimine geri dönmesi için anahtarı oluşturur. Parola karması eşitleme aracısının hiçbir zaman şifresiz metin parolasına erişimi yoktur. Parola karması eşitleme aracısının MD5 kullanımı, DC ile çoğaltma protokolü uyumluluğu için kesinlikle ve yalnızca DC ile parola karması eşitleme Aracısı arasında kullanılır.
 4. Parola karması eşitleme Aracısı, önce karmayı 32 baytlık bir onaltılı dizeye dönüştürerek 16 baytlık ikili parola karmasını 64 bayta genişletir ve ardından bu dizeyi UTF-16 kodlaması ile tekrar ikiliye dönüştürür.
 5. Parola karması eşitleme Aracısı, özgün karmayı daha fazla korumak için 10 baytlık uzunluğa sahip bir 2. ve 64 baytlık ikiliye sahip Kullanıcı başına bir anahtar ekler.
-6. Parola karması eşitleme Aracısı daha sonra MD4 karmasını ve Kullanıcı başına anahtar olarak birleştirir ve [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) işlevine giriş yapın. [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) anahtarlı karma algoritmasının 1000 yinelemesi kullanılır. 
+6. Parola karması eşitleme Aracısı daha sonra MD4 karmasını ve Kullanıcı başına anahtar olarak birleştirir ve [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) işlevine giriş yapın. [HMAC-SHA256](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) anahtarlı karma algoritmasının 1000 yinelemesi kullanılır. 
 7. Parola karması eşitleme Aracısı elde edilen 32 baytlık karma değeri alır, hem Kullanıcı başına güvenlik düzeyini hem de SHA256 yineleme sayısını (Azure AD tarafından kullanılmak üzere) birleştirir, ardından Azure AD Connect dizeyi TLS üzerinden Azure AD 'ye iletir.</br> 
 8. Bir Kullanıcı Azure AD 'de oturum açmaya çalıştığında ve parolasını girerse, parola aynı MD4 + anahtar + PBKDF2 + HMAC-SHA256 işlemi üzerinden çalıştırılır. Elde edilen karma, Azure AD 'de depolanan karma ile eşleşiyorsa, Kullanıcı doğru parolayı girdikten sonra kimliği doğrulanır.
 
@@ -132,7 +132,7 @@ Geçici parola işlevi, kimlik bilgisinin sahipliğinin bu kimlik bilgisi ile il
 
 Azure AD 'de eşitlenen kullanıcılar için geçici parolaları desteklemek üzere Azure AD Connect sunucunuzda aşağıdaki komutu çalıştırarak *Forcepasswordchangeonlogon* özelliğini etkinleştirebilirsiniz:
 
-`Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
+`Set-ADSyncAADCompanyFeature -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
 > Bir kullanıcının bir sonraki oturum açışında parolasını değiştirmesine zorlamak için aynı anda bir parola değişikliği yapılması gerekir.  Azure AD Connect, parolayı zorla değiştirme bayrağını kendisi seçmeyecektir; Parola karması eşitleme sırasında oluşan algılanan parola değişikliğine ek olarak belirlenir.
@@ -142,7 +142,7 @@ Azure AD 'de eşitlenen kullanıcılar için geçici parolaları desteklemek üz
 
 #### <a name="account-expiration"></a>Hesap süre sonu
 
-Kuruluşunuz, Kullanıcı hesabı yönetiminin bir parçası olarak accountExpires özniteliğini kullanıyorsa, bu öznitelik Azure AD ile eşitlenmez. Sonuç olarak, Parola karması eşitlemesi için yapılandırılmış bir ortamdaki zaman aşımına uğradı Active Directory hesabı Azure AD 'de etkin olmaya devam edecektir. Hesabın kullanım zamanı dolmuşsa, bir iş akışı eyleminin kullanıcının Azure AD hesabını devre dışı bırakan bir PowerShell betiğini tetiklemesi gerektiğini öneririz ( [set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) cmdlet 'ini kullanın). Buna karşılık, hesap açık olduğunda, Azure AD örneği açık olmalıdır.
+Kuruluşunuz, Kullanıcı hesabı yönetiminin bir parçası olarak accountExpires özniteliğini kullanıyorsa, bu öznitelik Azure AD ile eşitlenmez. Sonuç olarak, Parola karması eşitlemesi için yapılandırılmış bir ortamdaki zaman aşımına uğradı Active Directory hesabı Azure AD 'de etkin olmaya devam edecektir. Hesabın kullanım zamanı dolmuşsa, bir iş akışı eyleminin kullanıcının Azure AD hesabını devre dışı bırakan bir PowerShell betiğini tetiklemesi gerektiğini öneririz ( [set-AzureADUser](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) cmdlet 'ini kullanın). Buna karşılık, hesap açık olduğunda, Azure AD örneği açık olmalıdır.
 
 ### <a name="overwrite-synchronized-passwords"></a>Eşitlenen parolaların üzerine yaz
 
@@ -213,7 +213,7 @@ Sunucunuz Federal bilgi Işleme standardı (FIPS) uyarınca kilitliyse, MD5 devr
 1. %Programfiles%\Azure AD Sync\Bin. 'e gidin
 2. miiserver.exe.config açın.
 3. Dosyanın sonundaki yapılandırma/çalışma zamanı düğümüne gidin.
-4. Aşağıdaki düğümü ekleyin:`<enforceFIPSPolicy enabled="false"/>`
+4. Aşağıdaki düğümü ekleyin: `<enforceFIPSPolicy enabled="false"/>`
 5. Yaptığınız değişiklikleri kaydedin.
 
 Başvuru için, bu kod parçacığı şöyle görünmelidir:

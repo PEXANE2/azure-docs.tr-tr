@@ -1,26 +1,23 @@
 ---
-title: Azure Data Lake Storage sorgu hızlandırma (Önizleme)
-description: Sorgu hızlandırma (Önizleme), uygulamaların ve analiz çerçevelerinin yalnızca bir işleme işlemi için gerekli olan verileri alarak veri işlemeyi önemli ölçüde iyileştirmesine olanak sağlayan yeni bir Azure Data Lake Storage özelliktir.
+title: Azure Data Lake Storage sorgu hızlandırma
+description: Sorgu hızlandırma, uygulama ve analiz çerçevelerinin yalnızca bir işleme işlemi için gerekli olan verileri alarak veri işlemeyi önemli ölçüde iyileştirmesine olanak sağlar.
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 42eec4a0796a7f07c7e7d1c35571d9d4ddcf69d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae92828f08ae4abf9cc28f18872cca27ce747be4
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176711"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657636"
 ---
-# <a name="azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage sorgu hızlandırma (Önizleme)
+# <a name="azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage sorgu hızlandırma
 
-Sorgu hızlandırma (Önizleme), uygulamaların ve analiz çerçevelerinin yalnızca belirli bir işlemi gerçekleştirmek için gereksinim duydukları verileri alarak veri işlemeyi önemli ölçüde iyileştirmesini sağlayan Azure Data Lake Storage yeni bir özelliğidir. Bu, depolanan veriler hakkında kritik Öngörüler kazanmak için gereken süre ve işleme gücünü azaltır.
-
-> [!NOTE]
-> Sorgu hızlandırma özelliği genel önizlemededir ve Kanada Orta ve Fransa Orta bölgelerinde kullanılabilir. Sınırlamaları gözden geçirmek için, [bilinen sorunlar](data-lake-storage-known-issues.md) makalesine bakın. Önizlemeye kaydolmak için [Bu forma](https://aka.ms/adls/qa-preview-signup)bakın.  
+Sorgu hızlandırma, uygulama ve analiz çerçevelerinin yalnızca belirli bir işlemi gerçekleştirmek için gereksinim duydukları verileri alarak veri işlemeyi önemli ölçüde iyileştirmesini sağlar. Bu, depolanan veriler hakkında kritik Öngörüler kazanmak için gereken süre ve işleme gücünü azaltır.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -65,7 +62,7 @@ Sorgu hızlandırma, dağıtılmış analiz çerçeveleri ve veri işleme uygula
 
 Apache Spark ve Apache Hive gibi dağıtılmış analiz çerçeveleri Framework içine bir depolama soyutlama katmanı içerir. Bu altyapılar Ayrıca, Kullanıcı sorguları için en iyi sorgu planını belirlerken temel alınan g/ç hizmetinin yeteneklerini kapsayan sorgu iyileştiricilerin de yer alır. Bu çerçeveler sorgu hızlandırmayı tümleştirmeye başlıyor. Sonuç olarak, bu çerçevelerin kullanıcıları sorguları üzerinde herhangi bir değişiklik yapmak zorunda kalmadan geliştirilmiş sorgu gecikmesini ve daha düşük toplam sahip olma maliyetini görecektir. 
 
-Sorgu hızlandırma, veri işleme uygulamaları için de tasarlanmıştır. Bu tür uygulamalar genellikle, analiz öngörülerine doğrudan yol açabilecek büyük ölçekli veri dönüştürmeleri gerçekleştirir. bu sayede, her zaman kurulu olan dağıtılmış analitik çerçeveleri kullanmaz. Bu uygulamalar genellikle doğrudan sorgu hızlandırma gibi özelliklerden yararlanabilmeleri için temeldeki depolama hizmetiyle daha doğrudan ilişkiye sahiptir. 
+Sorgu hızlandırma, veri işleme uygulamaları için de tasarlanmıştır. Bu tür uygulamalar genellikle, analiz öngörülerine doğrudan yol açabilecek büyük ölçekli veri dönüştürmeleri gerçekleştirir, bu sayede her zaman kurulu olan dağıtılmış analitik çerçeveleri kullanmaz. Bu uygulamalar genellikle doğrudan sorgu hızlandırma gibi özelliklerden yararlanabilmeleri için temeldeki depolama hizmetiyle daha doğrudan ilişkiye sahiptir. 
 
 Bir uygulamanın sorgu hızlandırmasını nasıl tümleştirebileceğinizi gösteren bir örnek için, bkz. [Azure Data Lake Storage sorgu hızlandırma kullanarak verileri filtreleme](data-lake-storage-query-acceleration-how-to.md).
 
@@ -77,8 +74,7 @@ Faturalama modelinde değişikliğe rağmen sorgu hızlandırmanın fiyatlandır
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sorgu hızlandırma kayıt formu](https://aka.ms/adls/qa-preview-signup)    
-- [Azure Data Lake Storage sorgu hızlandırma kullanarak verileri filtreleme (Önizleme)](data-lake-storage-query-acceleration-how-to.md)
-- [Sorgu hızlandırma SQL dil başvurusu (Önizleme)](query-acceleration-sql-reference.md)
+- [Azure Data Lake Storage sorgu hızlandırmasını kullanarak verileri filtreleme](data-lake-storage-query-acceleration-how-to.md)
+- [Sorgu hızlandırma SQL dil başvurusu](query-acceleration-sql-reference.md)
 
 

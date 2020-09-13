@@ -16,12 +16,12 @@ ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358455"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657115"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Sonraki adımlar ve Azure AD Connect yönetme
 Kuruluşunuzun gereksinimlerini ve gereksinimlerini karşılamak üzere Azure Active Directory (Azure AD) ile bağlantı kurmak için bu makaledeki işletimsel yordamları kullanın.  
@@ -30,7 +30,7 @@ Kuruluşunuzun gereksinimlerini ve gereksinimlerini karşılamak üzere Azure Ac
 Varsayılan olarak, yalnızca yüklemeyi ve yerel yöneticileri yapan Kullanıcı yüklü eşitleme altyapısını yönetebilir. Daha fazla kişinin eşitleme altyapısına erişip yönetebilmesi için, yerel sunucuda ADSyncAdmins adlı grubu bulun ve bu gruba ekleyin.
 
 ## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Azure AD Premium ve Enterprise Mobility Suite kullanıcılarına lisans atama
-Kullanıcılarınız buluta eşitlenene kadar, Office 365 gibi bulut uygulamalarına ulaşmak için onlara bir lisans atamanız gerekir.
+Kullanıcılarınız buluta eşitlendiklerinde, Microsoft 365 gibi bulut uygulamalarına ulaşmak için onlara bir lisans atamanız gerekir.
 
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Azure AD Premium veya Enterprise Mobility Suite lisansı atamak için
 
@@ -72,7 +72,7 @@ Aşağıdaki tabloda, bu görevlerin bir özeti ve her görevin kısa bir açık
 
 ![Ek görevlerin listesi](./media/how-to-connect-post-installation/addtasks2.png)
 
-| Ek görev | Açıklama |
+| Ek görev | Description |
 | --- | --- |
 |**Gizlilik Ayarları**|Microsoft ile hangi Telemetri verilerinin paylaşıldığını görüntüleyin.|
 |**Geçerli yapılandırmayı görüntüle**|Geçerli Azure AD Connect çözümünüzü görüntüleyin.  Bu, genel ayarları, eşitlenen dizinleri ve eşitleme ayarlarını içerir. |

@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: c899d14b6e0eea8135b996aadfe2a7388a8fcb89
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 886e45e92fb3a882de167b5c59a9b5ee09a9c430
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88861308"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657582"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning sogeign bulut eşliği
 
@@ -34,7 +34,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 
 ## <a name="azure-government"></a>Azure Kamu 
 
-| Özellik | Genel bulut durumu  | ABD-Virginia | ABD-Arizona| 
+| Öne çıkan özelliği | Genel bulut durumu  | ABD-Virginia | ABD-Arizona| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
 | **Otomatik makine öğrenimi** | | | |
 | Not defterlerinde denemeleri oluşturma ve çalıştırma                                    | GA                   | EVET                | EVET         |
@@ -96,7 +96,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 | veri sayfalarını uygulamak için Azure Machine Learning özel Etiketler              | GA                   | NO                 | NO          |
 | Eşitliği AzureML tümleştirmesi                                               | Genel Önizleme       | NO                 | NO          |
 | Yorumlenebilirlik SDK 'Sı                                                      | GA                   | EVET                | EVET         |
-| **İtme** |   | | |
+| **Eğitim** |   | | |
 | Deneme günlük akışı                                              | GA                   | EVET                | EVET         |
 | Pekiştirmeye dayalı öğrenme                                                     | Genel Önizleme       | NO                 | NO          |
 | Deneme Kullanıcı arabirimi                                                         | GA                   | EVET                | EVET         |
@@ -136,7 +136,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 * Azure Machine Learning işlem örnekleri için, 24 saatten fazla bir belirteç yenileme özelliği Azure Kamu 'da kullanılamaz.
 * Model profili oluşturma, US-Arizona bölgesinde 4 CPU desteklemez.   
 * Ortak verilere erişmesi gerekiyorsa örnek Not defterleri, Azure Kamu 'da çalışmayabilir.
-* IP adresleri: VNET 'te kullanılan CLı komutu [ve Zorlamalı tünel](how-to-enable-virtual-network.md#forced-tunneling) yönergeleri IP aralıklarını döndürmez. Bunun yerine Azure [kamu Için Azure IP aralıklarını ve hizmet etiketlerini](https://www.microsoft.com/download/details.aspx?id=57063) kullanın.
+* IP adresleri: VNET 'te kullanılan CLı komutu [ve Zorlamalı tünel](how-to-secure-training-vnet.md#forced-tunneling) yönergeleri IP aralıklarını döndürmez. Bunun yerine Azure [kamu Için Azure IP aralıklarını ve hizmet etiketlerini](https://www.microsoft.com/download/details.aspx?id=57063) kullanın.
 * Zamanlanan işlem hatları için Ayrıca blob tabanlı bir tetikleyici mekanizması sunuyoruz. Bu mekanizma CMK çalışma alanları için desteklenmez. CMK çalışma alanları için blob tabanlı bir tetikleyiciyi etkinleştirmek üzere ek kurulum yapmanız gerekir. Daha fazla bilgi için bkz. [bir mantıksal uygulamadan makine öğrenimi işlem hattı çalıştırmayı tetikleme](how-to-trigger-published-pipeline.md).
 * Güvenlik duvarları: bir Azure Kamu bölgesi kullanırken, güvenlik duvarı ayarınızdan aşağıdaki ek Konakları ekleyin:
 
@@ -147,80 +147,80 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 
 ## <a name="azure-china-21vianet"></a>Azure China 21Vianet 
 
-| Özellik                                       | Genel bulut durumu | CH-Doğu-2 | CH-Kuzey-3 |
+| Öne çıkan özelliği                                       | Genel bulut durumu | CH-Doğu-2 | CH-Kuzey-3 |
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **Otomatik makine öğrenimi** |    | | |
-| Not defterlerinde denemeleri oluşturma ve çalıştırma                                    | GA               | EVET       | YOK        |
-| Studio Web deneyiminde denemeleri oluşturma ve çalıştırma                        | Genel Önizleme   | EVET       | YOK        |
-| Sektör lideri tahmin özellikleri                                  | GA               | EVET       | YOK        |
-| Derin öğrenme ve diğer gelişmiş öğrenenler için destek                      | GA               | EVET       | YOK        |
-| Büyük veri desteği (100 GB 'a kadar)                                          | Genel Önizleme   | EVET       | YOK        |
-| Azure Databricks tümleştirme                                              | GA               | NO        | YOK        |
-| SQL, CosmosDB ve HDInsight tümleştirmeleri                                   | GA               | EVET       | YOK        |
+| Not defterlerinde denemeleri oluşturma ve çalıştırma                                    | GA               | EVET       | Yok        |
+| Studio Web deneyiminde denemeleri oluşturma ve çalıştırma                        | Genel Önizleme   | EVET       | Yok        |
+| Sektör lideri tahmin özellikleri                                  | GA               | EVET       | Yok        |
+| Derin öğrenme ve diğer gelişmiş öğrenenler için destek                      | GA               | EVET       | Yok        |
+| Büyük veri desteği (100 GB 'a kadar)                                          | Genel Önizleme   | EVET       | Yok        |
+| Azure Databricks tümleştirme                                              | GA               | NO        | Yok        |
+| SQL, CosmosDB ve HDInsight tümleştirmeleri                                   | GA               | EVET       | Yok        |
 | **Machine Learning işlem hatları** |    | | |
-| Azure ML SDK kullanarak işlem hatları oluşturma, çalıştırma ve yayımlama                   | GA               | EVET       | YOK        |
-| Azure ML SDK 'sını kullanarak işlem hattı uç noktaları oluşturma                           | GA               | EVET       | YOK        |
-| Azure ML SDK 'sını kullanarak zamanlanan işlem hattı çalıştırmalarını oluşturma, düzenleme ve silme | GA               | EVET       | YOK        |
-| Studio 'da işlem hattı çalıştırma ayrıntılarını görüntüleme                                        | GA               | EVET       | YOK        |
-| Azure ML tasarımcısında işlem hatları oluşturma, çalıştırma, görselleştirme ve yayımlama          | Genel Önizleme   | EVET       | YOK        |
-| ML işlem hattı ile tümleştirme Azure Databricks                             | GA               | NO        | YOK        |
-| Azure ML tasarımcısında işlem hattı uç noktaları oluşturma                             | Genel Önizleme   | EVET       | YOK        |
+| Azure ML SDK kullanarak işlem hatları oluşturma, çalıştırma ve yayımlama                   | GA               | EVET       | Yok        |
+| Azure ML SDK 'sını kullanarak işlem hattı uç noktaları oluşturma                           | GA               | EVET       | Yok        |
+| Azure ML SDK 'sını kullanarak zamanlanan işlem hattı çalıştırmalarını oluşturma, düzenleme ve silme | GA               | EVET       | Yok        |
+| Studio 'da işlem hattı çalıştırma ayrıntılarını görüntüleme                                        | GA               | EVET       | Yok        |
+| Azure ML tasarımcısında işlem hatları oluşturma, çalıştırma, görselleştirme ve yayımlama          | Genel Önizleme   | EVET       | Yok        |
+| ML işlem hattı ile tümleştirme Azure Databricks                             | GA               | NO        | Yok        |
+| Azure ML tasarımcısında işlem hattı uç noktaları oluşturma                             | Genel Önizleme   | EVET       | Yok        |
 | **Tümleşik Not defterleri** |   | | |
-| Çalışma alanı Not defteri ve dosya paylaşımı                                        | GA               | EVET       | YOK        |
-| R ve Python desteği                                                       | GA               | EVET       | YOK        |
-| Sanal Ağ desteği                                                    | Genel Önizleme   | NO        | YOK        |
+| Çalışma alanı Not defteri ve dosya paylaşımı                                        | GA               | EVET       | Yok        |
+| R ve Python desteği                                                       | GA               | EVET       | Yok        |
+| Sanal Ağ desteği                                                    | Genel Önizleme   | NO        | Yok        |
 | **İşlem örneği** |    | | |
-| Tümleşik Not defterleri için yönetilen işlem örnekleri                         | GA               | NO        | YOK        |
-| Jupyıter, Jupyıterlab tümleştirmesi                                            | GA               | EVET       | YOK        |
-| Sanal ağ (VNet) desteği                                             | Genel Önizleme   | EVET       | YOK        |
+| Tümleşik Not defterleri için yönetilen işlem örnekleri                         | GA               | NO        | Yok        |
+| Jupyıter, Jupyıterlab tümleştirmesi                                            | GA               | EVET       | Yok        |
+| Sanal ağ (VNet) desteği                                             | Genel Önizleme   | EVET       | Yok        |
 | **SDK desteği** |    | | |
-| R SDK desteği                                                              | Genel Önizleme   | EVET       | YOK        |
-| Python SDK desteği                                                         | GA               | EVET       | YOK        |
+| R SDK desteği                                                              | Genel Önizleme   | EVET       | Yok        |
+| Python SDK desteği                                                         | GA               | EVET       | Yok        |
 | **Güvenlik** |   | | |
-| Eğitim için sanal ağ (VNet) desteği                                | GA               | EVET       | YOK        |
-| Çıkarım için sanal ağ (VNet) desteği                               | GA               | EVET       | YOK        |
-| Puanlama uç noktası kimlik doğrulaması                                            | Genel Önizleme   | EVET       | YOK        |
-| Çalışma alanı özel bağlantısı                                                     | Genel Önizleme   | NO        | YOK        |
-| VNet 'in arkasında ACI                                                            | Genel Önizleme   | NO        | YOK        |
-| VNet arkasında ACR                                                            | Genel Önizleme   | NO        | YOK        |
-| AKS kümesinin özel IP 'si                                                  | Genel Önizleme   | NO        | YOK        |
+| Eğitim için sanal ağ (VNet) desteği                                | GA               | EVET       | Yok        |
+| Çıkarım için sanal ağ (VNet) desteği                               | GA               | EVET       | Yok        |
+| Puanlama uç noktası kimlik doğrulaması                                            | Genel Önizleme   | EVET       | Yok        |
+| Çalışma alanı özel bağlantısı                                                     | Genel Önizleme   | NO        | Yok        |
+| VNet 'in arkasında ACI                                                            | Genel Önizleme   | NO        | Yok        |
+| VNet arkasında ACR                                                            | Genel Önizleme   | NO        | Yok        |
+| AKS kümesinin özel IP 'si                                                  | Genel Önizleme   | NO        | Yok        |
 | **İşlem** |   | | |
-| çalışma alanları genelinde Kota Yönetimi                                         | GA               | EVET       | YOK        |
+| çalışma alanları genelinde Kota Yönetimi                                         | GA               | EVET       | Yok        |
 | **Machine Learning için veriler** | | | |
-| SDK 'dan veri kümeleri ve veri depoları oluşturma, görüntüleme veya düzenleme                  | GA               | EVET       | YOK        |
-| Kullanıcı arabiriminden veri kümeleri ve veri depoları oluşturma, görüntüleme veya düzenleme                   | GA               | EVET       | YOK        |
-| SDK 'dan veri kümesi DRFT izleyicileri görüntüleme, düzenleme veya silme                   | Genel Önizleme   | EVET       | YOK        |
-| Kullanıcı arabiriminden veri kümesi DRFT izleyicileri görüntüleme, düzenleme veya silme                    | Genel Önizleme   | EVET       | YOK        |
+| SDK 'dan veri kümeleri ve veri depoları oluşturma, görüntüleme veya düzenleme                  | GA               | EVET       | Yok        |
+| Kullanıcı arabiriminden veri kümeleri ve veri depoları oluşturma, görüntüleme veya düzenleme                   | GA               | EVET       | Yok        |
+| SDK 'dan veri kümesi DRFT izleyicileri görüntüleme, düzenleme veya silme                   | Genel Önizleme   | EVET       | Yok        |
+| Kullanıcı arabiriminden veri kümesi DRFT izleyicileri görüntüleme, düzenleme veya silme                    | Genel Önizleme   | EVET       | Yok        |
 | **Makine öğrenimi yaşam döngüsü** |    | | |
-| Model profili oluşturma                                                            | GA               | KıSMI   | YOK        |
-| Azure ML CLI & Machine Learning için Azure DevOps uzantısı         | GA               | EVET       | YOK        |
-| FPGA tabanlı Hızlandırılmış Donanım Modelleri                                     | GA               | NO        | YOK        |
-| Visual Studio Code tümleştirme                                             | Genel Önizleme   | NO        | YOK        |
-| Event Grid tümleştirmesi                                                     | Genel Önizleme   | EVET       | YOK        |
-| Azure Stream Analytics Azure Machine Learning ile tümleştirin               | Genel Önizleme   | NO        | YOK        |
+| Model profili oluşturma                                                            | GA               | KıSMI   | Yok        |
+| Azure ML CLI & Machine Learning için Azure DevOps uzantısı         | GA               | EVET       | Yok        |
+| FPGA tabanlı Hızlandırılmış Donanım Modelleri                                     | GA               | NO        | Yok        |
+| Visual Studio Code tümleştirme                                             | Genel Önizleme   | NO        | Yok        |
+| Event Grid tümleştirmesi                                                     | Genel Önizleme   | EVET       | Yok        |
+| Azure Stream Analytics Azure Machine Learning ile tümleştirin               | Genel Önizleme   | NO        | Yok        |
 | **Kapatma** |    | | |
-| Proje Yönetim Portalı etiketleme                                        | GA               | EVET       | YOK        |
-| Etiketleyici portalı                                                            | GA               | EVET       | YOK        |
-| Özel iş gücü kullanarak etiketleme                                          | GA               | EVET       | YOK        |
-| ML yardımlı etiketleme (görüntü sınıflandırması ve nesne algılama)           | Genel Önizleme   | EVET       | YOK        |
+| Proje Yönetim Portalı etiketleme                                        | GA               | EVET       | Yok        |
+| Etiketleyici portalı                                                            | GA               | EVET       | Yok        |
+| Özel iş gücü kullanarak etiketleme                                          | GA               | EVET       | Yok        |
+| ML yardımlı etiketleme (görüntü sınıflandırması ve nesne algılama)           | Genel Önizleme   | EVET       | Yok        |
 | **Sorumlu makine öğrenmesi** |    | | |
-| Kullanıcı arabiriminde Explainability                                                       | Genel Önizleme   | NO        | YOK        |
-| Değişiklik gizliliği araç seti                                    | OSS              | NO        | YOK        |
-| veri sayfalarını uygulamak için Azure Machine Learning özel Etiketler              | GA               | NO        | YOK        |
-| Eşitliği AzureML tümleştirmesi                                               | Genel Önizleme   | NO        | YOK        |
-| Yorumlenebilirlik SDK 'Sı                                                      | GA               | EVET       | YOK        |
-| **İtme** |    | | |
-| Deneme günlük akışı                                              | GA               | EVET       | YOK        |
-| Pekiştirmeye dayalı öğrenme                                                     | Genel Önizleme   | NO        | YOK        |
-| Deneme Kullanıcı arabirimi                                                         | GA               | EVET       | YOK        |
-| .NET tümleştirmesi ML.NET 1,0                                                | GA               | EVET       | YOK        |
+| Kullanıcı arabiriminde Explainability                                                       | Genel Önizleme   | NO        | Yok        |
+| Değişiklik gizliliği araç seti                                    | OSS              | NO        | Yok        |
+| veri sayfalarını uygulamak için Azure Machine Learning özel Etiketler              | GA               | NO        | Yok        |
+| Eşitliği AzureML tümleştirmesi                                               | Genel Önizleme   | NO        | Yok        |
+| Yorumlenebilirlik SDK 'Sı                                                      | GA               | EVET       | Yok        |
+| **Eğitim** |    | | |
+| Deneme günlük akışı                                              | GA               | EVET       | Yok        |
+| Pekiştirmeye dayalı öğrenme                                                     | Genel Önizleme   | NO        | Yok        |
+| Deneme Kullanıcı arabirimi                                                         | GA               | EVET       | Yok        |
+| .NET tümleştirmesi ML.NET 1,0                                                | GA               | EVET       | Yok        |
 | **Ma** |   | | |
-| Toplu iş ınkrii                                                          | GA               | EVET       | YOK        |
-| FPGA ile Data Box Edge                                                    | Genel Önizleme   | NO        | YOK        |
+| Toplu iş ınkrii                                                          | GA               | EVET       | Yok        |
+| FPGA ile Data Box Edge                                                    | Genel Önizleme   | NO        | Yok        |
 | **Diğer** |    | | |
-| Açık Veri Kümeleri                                                              | Genel Önizleme   | EVET       | YOK        |
-| Özel Bilişsel Arama                                                    | Genel Önizleme   | EVET       | YOK        |
-| Birçok model                                                                | Genel Önizleme   | NO        | YOK        |
+| Açık Veri Kümeleri                                                              | Genel Önizleme   | EVET       | Yok        |
+| Özel Bilişsel Arama                                                    | Genel Önizleme   | EVET       | Yok        |
+| Birçok model                                                                | Genel Önizleme   | NO        | Yok        |
 
 
 
@@ -236,7 +236,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
     | Azure Active Directory              | `https://login.microsoftonline.com`          | `https://login.chinacloudapi.cn`             |
 
 * Ortak verilere erişmesi gerekiyorsa örnek Not defteri çalışmayabilir.
-* IP adresi aralıkları: [VNET Zorlamalı tünel](how-to-enable-virtual-network.md#forced-tunneling) YÖNERGELERINDE kullanılan CLı komutu IP aralıklarını döndürmez. Bunun yerine [Azure Çin Için Azure IP aralıklarını ve hizmet etiketlerini](https://www.microsoft.com//download/details.aspx?id=57062) kullanın.
+* IP adresi aralıkları: [VNET Zorlamalı tünel](how-to-secure-training-vnet.md#forced-tunneling) YÖNERGELERINDE kullanılan CLı komutu IP aralıklarını döndürmez. Bunun yerine [Azure Çin Için Azure IP aralıklarını ve hizmet etiketlerini](https://www.microsoft.com//download/details.aspx?id=57062) kullanın.
 * Azure Machine Learning işlem örnekleri önizlemesi, şu anda özel bağlantının etkinleştirildiği bir çalışma alanında desteklenmez, ancak CI 'nin tüm AML bölgelerine hizmet genişletmesi için bir sonraki dağıtımda desteklenecek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
