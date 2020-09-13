@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: c03459a86f521cafd792b9bf86b2b6b46bf3da9c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62716d5061d7c5e6ed8c64a0ce00a780f35c10be
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534114"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018008"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Öğretici: Kullanıcı sağlamasını Active Directory için SAP başarılı faktörleri yapılandırma 
 Bu öğreticinin amacı, kullanıcıları başarıyla Active Directory (AD) ve Azure AD 'ye, isteğe bağlı e-posta adresi olarak başarılı bir şekilde geri yazma işlemi ile Azure AD 'ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. 
@@ -30,13 +30,13 @@ Bu öğreticinin amacı, kullanıcıları başarıyla Active Directory (AD) ve A
 
 Azure AD Kullanıcı sağlama hizmeti tarafından desteklenen Kullanıcı sağlama iş akışlarının başarılı olması, aşağıdaki insan kaynakları ve kimlik yaşam döngüsü yönetimi senaryolarına yönelik Otomasyonu etkinleştirir:
 
-* **Yeni çalışanların işe** Alım-başarılı etkenlere yeni bir çalışan eklendiğinde, bir kullanıcı hesabı, Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak oluşturulur. Bu, e-posta adresi başarılı etkenlere geri yazılır.
+* **Yeni çalışanların işe** Alım-başarılı etkenlere yeni bir çalışan eklendiğinde, bir kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak oluşturulur ve e-posta adresi başarılı etkenlere geri yazılır.
 
-* **Çalışan özniteliği ve profil güncelleştirmeleri** -bir çalışan kaydı başarılı bir şekilde güncelleştirildiğinde (ad, başlık veya yönetici gibi), kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak güncelleştirilir.
+* **Çalışan özniteliği ve profil güncelleştirmeleri** -bir çalışan kaydı başarılı bir şekilde güncelleştirildiğinde (ad, başlık veya yönetici gibi), kullanıcı hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak güncelleştirilir.
 
-* **Çalışan sonlandırmaları** -bir çalışan başarılı bir şekilde sonlandırılırsa, kullanıcı hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak devre dışı bırakılır.
+* **Çalışan sonlandırmaları** -bir çalışan başarılı bir şekilde sonlandırılırsa, kullanıcı hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak devre dışı bırakılır.
 
-* **Çalışan rehires** -bir çalışan başarılı bir şekilde yeniden çalıştırıldığında, eski hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../app-provisioning/user-provisioning.md)için otomatik olarak yeniden etkinleştirilebilir veya yeniden sağlanabilir (tercihinize bağlı olarak).
+* **Çalışan rehires** -bir çalışan başarılı bir şekilde yeniden çalıştırıldığında, eski hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../app-provisioning/user-provisioning.md)için otomatik olarak yeniden etkinleştirilebilir veya yeniden sağlanabilir.
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Bu Kullanıcı sağlama çözümü kim için en uygun?
 
@@ -50,7 +50,7 @@ Active Directory Kullanıcı sağlama çözümünün bu başarılı olması içi
 
 * Kullanıcıları katılım, taşıma ve bir veya daha fazla Active Directory ormanlara, etki alanına ve yalnızca başarılı bir şekilde [çalışan merkezi](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) 'nde algılanan değişiklik bilgilerini temel alan kuruluş
 
-* E-posta için Office 365 kullanan kuruluşlar
+* E-posta için Microsoft 365 kullanan kuruluşlar
 
 ## <a name="solution-architecture"></a>Çözüm mimarisi
 
@@ -234,7 +234,7 @@ Bu bölüm, tümleştirmenizi kapsamındaki her bir Active Directory etki alanı
    
 1. Aracının yüklenmesini doğrulayın ve "Hizmetler" eklentisini açıp "Microsoft Azure AD Connect sağlama Aracısı" adlı hizmeti arayın ve çalıştığından emin olun.
   
-   ![Hizmetler](./media/workday-inbound-tutorial/services.png)
+   ![Hizmetlerde çalışan Microsoft Azure AD Connect sağlama aracısının ekran görüntüsü](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>3. kısım: sağlama uygulamasında, başarılı etkenlere ve Active Directory bağlantı yapılandırın
 Bu adımda, başarılı faktörlerle bağlantı kurmaya ve Azure portal Active Directory. 

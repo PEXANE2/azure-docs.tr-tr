@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526839"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017481"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Öğretici: Azure AD 'den Workday 'ye öznitelik geri yazmayı yapılandırma
 Bu öğreticinin amacı, Azure AD 'deki öznitelikleri Workday 'e geri yazma için gerçekleştirmeniz gereken adımları gösteriyoruz. Workday geri yazma sağlama uygulaması, aşağıdaki Workday özniteliklerine değer atanmasını destekler:
@@ -34,7 +34,7 @@ Bu öğreticinin amacı, Azure AD 'deki öznitelikleri Workday 'e geri yazma iç
 
 Bu Workday için geri yazma Kullanıcı sağlama çözümü idealdir:
 
-* Office 365 kullanan kuruluşlar (e-posta adresi, Kullanıcı adı ve telefon numarası gibi) tarafından yönetilen yetkili öznitelikleri, Workday 'e geri yazma
+* BT tarafından yönetilen yetkili özniteliklerini (e-posta adresi, Kullanıcı adı ve telefon numarası gibi) yeniden Workday 'e geri yazması gereken Microsoft 365 kullanan kuruluşlar
 
 ## <a name="configure-integration-system-user-in-workday"></a>Workday 'de tümleştirme sistemi kullanıcısını yapılandırma
 

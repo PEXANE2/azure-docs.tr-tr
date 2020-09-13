@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: ddc70ccbbb5c964f16b078470517ce667bc878f1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bf22e20a6c6187677f000e0c50ac64582233c3cd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082650"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019674"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux tabanlı HDInsight kümeleri için işletim sistemi düzeltme eki uygulama zamanlamasını yapılandırma
 
@@ -22,8 +22,8 @@ ms.locfileid: "86082650"
 
 HDInsight, kümenizde işletim sistemi düzeltme ekleri, güvenlik güncelleştirmeleri ve yeniden başlatma düğümlerini yükleme gibi genel görevleri gerçekleştirmenize yönelik destek sağlar. Bu görevler, [komut dosyası eylemleri](hdinsight-hadoop-customize-cluster-linux.md)olarak çalıştırılabilen ve parametrelerle yapılandırılmış olan aşağıdaki iki betiği kullanarak gerçekleştirilir:
 
-- `schedule-reboots.sh`-Anında yeniden başlatma yapın veya küme düğümlerinde yeniden başlatma zamanlayın.
-- `install-updates-schedule-reboots.sh`-Tüm güncelleştirmeleri, yalnızca çekirdek + güvenlik güncelleştirmelerini veya yalnızca çekirdek güncelleştirmelerini yükler.
+- `schedule-reboots.sh` -Anında yeniden başlatma yapın veya küme düğümlerinde yeniden başlatma zamanlayın.
+- `install-updates-schedule-reboots.sh` -Tüm güncelleştirmeleri, yalnızca çekirdek + güvenlik güncelleştirmelerini veya yalnızca çekirdek güncelleştirmelerini yükler.
 
 > [!NOTE]  
 > Betik eylemleri, gelecekteki tüm güncelleştirme döngüleri için güncelleştirmeleri otomatik olarak uygulamaz. Güncelleştirmeleri yüklemek için yeni güncelleştirmelerin uygulanması gereken her seferinde komut dosyalarını çalıştırın ve ardından sanal makineyi yeniden başlatın.
@@ -32,11 +32,16 @@ HDInsight, kümenizde işletim sistemi düzeltme ekleri, güvenlik güncelleşti
 
 Üretime dağıtmadan önce temsilcinin üretim dışı bir ortamda yama yapın. Gerçek düzeltme eki uygulamanıza başlamadan sisteminizi yeterince test etmek için bir plan geliştirin.
 
-Kümenizin bulunduğu bir SSH oturumundan zaman, bir yükseltmenin kullanılabilir olduğunu belirten bir ileti alabilirsiniz. İleti şöyle görünebilir:
+Kümenizin bulunduğu bir SSH oturumundan zaman, güvenlik güncelleştirmelerinin kullanılabilir olduğunu belirten bir ileti alabilirsiniz. İleti şöyle görünebilir:
 
 ```
-New release '18.04.3 LTS' available.
-Run 'do-release-upgrade' to upgrade it
+89 packages can be updated.
+82 updates are security updates.
+
+*** System restart required ***
+
+Welcome to Spark on HDInsight.
+
 ```
 
 Düzeltme eki uygulama isteğe bağlıdır.
@@ -64,6 +69,9 @@ Betik [install-Updates-Schedule-reboots.sh](https://hdiconfigactions.blob.core.w
 
 > [!NOTE]
 > Mevcut bir kümeye uyguladıktan sonra bir betiği kalıcı olarak işaretlemeniz gerekir. Aksi takdirde, ölçeklendirme işlemleri aracılığıyla oluşturulan tüm yeni düğümler varsayılan düzeltme eki uygulama zamanlamasını kullanır. Betiği küme oluşturma işleminin parçası olarak uygularsanız, otomatik olarak kalıcı hale getirilir.
+
+> [!NOTE]
+> Zamanlanmış yeniden başlatma seçeneği, düzeltme eki uygulanmış küme düğümlerinin 12 ile 24 saat arasında bir süre içinde otomatik olarak yeniden başlatılmasını ve yüksek kullanılabilirlik, güncelleştirme etki alanı ve hata etki alanı konularını dikkate alır. Zamanlanmış yeniden başlatma, çalışan iş yüklerini sonlandırır, ancak düğümler kullanılamadığında, daha uzun süre işlem süreleriyle küme kapasitesini dışarıda bırakabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

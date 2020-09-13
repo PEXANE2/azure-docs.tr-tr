@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 3d46df8847a5865c42438ea36245ead0f1e6e528
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: f65bf2bbe174ff90d5a0b962768833b8668f6400
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951125"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019725"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure depolama hesabı (Önizleme) için paylaşılan anahtar yetkilendirmesini engelleyin
 
@@ -213,7 +213,7 @@ Bazı Azure Araçları, Azure depolama 'ya erişmek için Azure AD yetkilendirme
 
 | Azure aracı | Azure depolama için Azure AD yetkilendirmesi |
 |-|-|
-| Azure portal | Destekleniyor. Azure portal Azure AD hesabınızla yetkilendirme hakkında daha fazla bilgi için bkz. [Azure Portal blob veya kuyruk verilerine erişim yetkisi verme](storage-access-blobs-queues-portal.md). |
+| Azure portal | Destekleniyor. Azure portal Azure AD hesabınızla yetkilendirme hakkında daha fazla bilgi için bkz. [Azure Portal blob verilerine erişim yetkisi verme](../blobs/authorize-blob-access-portal.md). |
 | AzCopy | BLOB depolama için desteklenir. AzCopy işlemlerini yetkilendirme hakkında daha fazla bilgi için bkz. AzCopy belgelerinde [Yetkilendirme kimlik bilgilerini nasıl sağlayacaksınız](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) . |
 | Azure Depolama Gezgini | Yalnızca BLOB depolama ve Azure Data Lake Storage 2. için desteklenir. Kuyruk depolamaya Azure AD erişimi desteklenmiyor. Doğru Azure AD kiracısını seçtiğinizden emin olun. Daha fazla bilgi için bkz. [Depolama Gezgini kullanmaya başlama](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure) |
 | Azure PowerShell | Destekleniyor. Blob ve kuyruk verilerine erişim için Azure AD ile PowerShell komutlarının nasıl yetkilendirdiği hakkında bilgi için bkz. [BLOB veya kuyruk verilerine erişmek Için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma](authorize-active-directory-powershell.md). |

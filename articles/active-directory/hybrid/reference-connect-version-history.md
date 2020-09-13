@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect: sürüm sürümü geçmişi | Microsoft Docs'
-description: Bu makalede Azure AD Connect ve Azure AD Eşitleme tüm sürümleri listelenir
+description: Bu makalede Azure AD Connect ve Azure AD Eşitleme tüm sürümleri listelenir.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b0b0a98e80fb7f343411b49ff2ccd11046bcdc5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1570f4a8c4fb23b885c1de68c2c8d2440c4f6aae
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88052938"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018450"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -48,7 +48,7 @@ Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir 
 >
 >Eşitleme için Azure AD Connect etkinleştirdiyseniz, eski sürümlerden birini çalıştırırken yakında kullanım dışı bırakılıklar hakkında sizi uyaran sistem durumu bildirimlerini almaya hemen başlayacaksınız.
 >
->Azure AD Connect en son sürüme nasıl yükselteceğiniz hakkında daha fazla bilgi edinmek için lütfen [Bu makaleye](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) bakın.
+>Azure AD Connect en son sürüme nasıl yükselteceğiniz hakkında daha fazla bilgi edinmek için lütfen [Bu makaleye](./how-to-upgrade-previous-version.md) bakın.
 >
 >Kullanım dışı sürümler hakkında sürüm geçmişi bilgileri için bkz. [sürüm sürümü geçmişi arşivi Azure AD Connect](reference-connect-version-history-archive.md)
 
@@ -74,7 +74,7 @@ Bu bir hata çözme sürümüdür. Bu sürümde işlevsel değişiklik yok.
 ### <a name="functional-changes"></a>İşlevsel değişiklikler
 Bu sürüm, mevcut bir Azure AD Connect sunucusunun yapılandırmasını ' a dışarı aktarma işlevselliğinin genel önizlemesini içerir. Ardından, özgün sunucunun bir kopyasını oluşturmak için yeni bir Azure AD Connect sunucusu yüklenirken kullanılabilen JSON dosyası.
 
-Bu yeni özelliğin ayrıntılı bir açıklaması [Bu makalede](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config) bulunabilir
+Bu yeni özelliğin ayrıntılı bir açıklaması [Bu makalede](./how-to-connect-import-export-config.md) bulunabilir
 
 ### <a name="fixed-issues"></a>Düzeltilen sorunlar
 - Yükseltme sırasında yerelleştirilmiş derlemelerde yerel DB boyutuyla ilgili yanlış bir uyarı olacağı bir hata düzeltildi.
@@ -244,13 +244,13 @@ Yedek karakterleri doğru bir şekilde işlemeyen Eşitleme hataları sıkışt�
 
 ## <a name="13210"></a>1.3.21.0
 >[!IMPORTANT]
->Daha önceki bir sürümden Azure AD Connect yükseltirken, Azure AD Connect başarıyla yükseltilse de O365 portalının güncelleştirilmiş sürümü yansıtmadığından, bu bilinen bir sorun vardır.
+>Daha önceki bir sürümden Azure AD Connect yükseltirken, Microsoft 365 portalın Azure AD Connect başarıyla yükseltilmesine rağmen güncelleştirilmiş sürümü yansıtmadığından oluşan bilinen bir sorun vardır.
 >
 > Bu sorunu gidermek için **ADSync** modülünü içeri aktarmanız ve sonra `Set-ADSyncDirSyncConfiguration` Azure AD Connect sunucusunda PowerShell cmdlet 'ini çalıştırmanız gerekir.  Aşağıdaki adımları kullanabilirsiniz:
 >
 >1. PowerShell 'i erişiminizin engellenmediğinden modunda açın.
->2. `Import-Module "ADSync"` komutunu çalıştırın.
->3. `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` komutunu çalıştırın.
+>2. `Import-Module "ADSync"` öğesini çalıştırın.
+>3. `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` öğesini çalıştırın.
  
 ### <a name="release-status"></a>Yayın durumu 
 

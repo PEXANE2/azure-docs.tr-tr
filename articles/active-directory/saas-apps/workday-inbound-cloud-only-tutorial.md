@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540975"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015492"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Öğretici: Workday 'yi Azure AD Kullanıcı sağlaması için yapılandırma
 Bu öğreticinin amacı, Workday 'den çalışan verileri Azure Active Directory ' ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. 
@@ -27,13 +27,13 @@ Bu öğreticinin amacı, Workday 'den çalışan verileri Azure Active Directory
 
 [Azure Active Directory Kullanıcı sağlama hizmeti](../app-provisioning/user-provisioning.md) , Kullanıcı hesaplarını sağlamak Için [Workday insan kaynakları API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 'siyle tümleştirilir. Azure AD Kullanıcı sağlama hizmeti tarafından desteklenen Workday Kullanıcı sağlama iş akışları aşağıdaki insan kaynakları ve kimlik yaşam döngüsü yönetimi senaryolarına yönelik Otomasyonu etkinleştirir:
 
-* **Yeni çalışanların işe** Alım-Workday 'e yeni bir çalışan eklendiğinde, bir kullanıcı hesabı Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md), Workday 'e e-posta adresinin geri yazılması ile otomatik olarak oluşturulur.
+* **Yeni çalışanların işe** Alım-Workday 'e yeni bir çalışan eklendiğinde, Azure Active Directory ' de otomatik olarak bir kullanıcı hesabı oluşturulur ve Microsoft 365 isteğe bağlı olarak, [Azure AD tarafından desteklenen diğer SaaS uygulamalarına](../app-provisioning/user-provisioning.md)ve e-posta adresinin Workday 'e geri yazılması gerekir.
 
-* **Çalışan özniteliği ve profil güncelleştirmeleri** -iş günü içinde bir çalışan kaydı güncelleştirildiğinde (ad, başlık veya yönetici gibi), kullanıcı hesabı Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../app-provisioning/user-provisioning.md)için otomatik olarak güncelleştirilir.
+* **Çalışan özniteliği ve profil güncelleştirmeleri** -bir çalışan kaydı Workday 'de (ad, başlık veya yönetici gibi) güncelleştirildiğinde, kullanıcı hesabı Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarını](../app-provisioning/user-provisioning.md)otomatik olarak güncelleştirir.
 
-* **Çalışan sonlandırmaları** -bir çalışan Workday 'de sonlandırıldığında, kullanıcı hesabı Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak devre dışıdır.
+* **Çalışan sonlandırmaları** -bir çalışan Workday 'de sonlandırıldığında, kullanıcı hesabı Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../app-provisioning/user-provisioning.md)için otomatik olarak devre dışıdır.
 
-* **Çalışan rehires** -bir çalışan Workday 'de yeniden hazırlandığında, eski hesapları Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../app-provisioning/user-provisioning.md)için otomatik olarak yeniden etkinleştirilebilir veya yeniden sağlanabilir.
+* **Çalışan rehires** -bir çalışan Workday 'de yeniden hazırlandığında, eski hesapları otomatik olarak yeniden etkinleştirilebilir veya Azure Active Directory ve isteğe bağlı olarak [Azure AD tarafından desteklenen diğer SaaS uygulamalarına](../app-provisioning/user-provisioning.md)Microsoft 365.
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Bu Kullanıcı sağlama çözümü kim için en uygun?
 
@@ -45,7 +45,7 @@ Bu iş günü, Kullanıcı sağlama çözümünün Azure Active Directory için 
 
 * Kullanıcıların Workday 'den elde edilen veriler kullanılarak sağlanması gereken kuruluşlar
 
-* E-posta için Office 365 kullanan kuruluşlar
+* E-posta için Microsoft 365 kullanan kuruluşlar
 
 ## <a name="solution-architecture"></a>Çözüm mimarisi
 

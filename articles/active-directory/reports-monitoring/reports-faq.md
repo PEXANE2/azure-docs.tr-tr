@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352b4d46e1693580c386f11f7f4d949740f90cc6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231053"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015339"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory raporlarının etrafında sık sorulan sorular
 
@@ -37,7 +37,7 @@ Y **:** [Etkinlik raporlarına erişmek için API 'leri nasıl kullanabileceğin
 
 **S: Şu anda `https://graph.windows.net/<tenant-name>/reports/` Azure AD güvenlik raporlarını (IP adreslerinden gelen kimlik bilgileri veya anonim IP adreslerinden oturum açma işlemleri gibi), raporlama sistemlerimize programlı olarak çekmek için uç nokta API 'lerini kullanıyorum. Ne geçiş yapmam gerekir?**
 
-Y **:** Güvenlik algılamalarını Microsoft Graph aracılığıyla erişmek için [kimlik koruması risk ALGıLAMA API](../identity-protection/howto-identity-protection-graph-api.md)'sini kullanabilirsiniz   . Bu yeni biçim, Gelişmiş filtreleme, alan seçimi ve daha fazlası ile verileri nasıl sorgulayabilme ve risk algılamalarını bir tür halinde kullanarak Sıems ve diğer veri toplama araçlarına daha kolay tümleştirme için daha fazla esneklik sağlar. Veriler farklı bir biçimde olduğundan eski sorgularınız için yeni bir sorgu yerine kullanamazsınız. Ancak, [yenı API](/graph/api/resources/identityriskevent?view=graph-rest-beta), O365 veya Azure AD gibi bu API 'Ler için Microsoft standard olan Microsoft Graph kullanır. Bu nedenle, gereken iş, geçerli Microsoft Graph yatırımlarınızı genişletebilir veya bu yeni standart platforma geçişinizi başlamanıza yardımcı olabilir.
+Y **:** Güvenlik algılamalarını Microsoft Graph aracılığıyla erişmek için [kimlik koruması risk ALGıLAMA API](../identity-protection/howto-identity-protection-graph-api.md)'sini kullanabilirsiniz   . Bu yeni biçim, Gelişmiş filtreleme, alan seçimi ve daha fazlası ile verileri nasıl sorgulayabilme ve risk algılamalarını bir tür halinde kullanarak Sıems ve diğer veri toplama araçlarına daha kolay tümleştirme için daha fazla esneklik sağlar. Veriler farklı bir biçimde olduğundan eski sorgularınız için yeni bir sorgu yerine kullanamazsınız. Ancak, [yenı API](/graph/api/resources/identityriskevent?view=graph-rest-beta), Microsoft 365 veya Azure AD gibi bu API 'Ler için Microsoft standard olan Microsoft Graph kullanır. Bu nedenle, gereken iş, geçerli Microsoft Graph yatırımlarınızı genişletebilir veya bu yeni standart platforma geçişinizi başlamanıza yardımcı olabilir.
 
 ---
 
@@ -81,15 +81,15 @@ Y **:** Denetim günlükleri 15 dakikadan bir saate kadar gecikme süresine sahi
 
 ---
 
-**S: Azure portal aracılığıyla Office 365 etkinlik günlüğü bilgilerini alabilir miyim?**
+**S: Azure portal Microsoft 365 etkinlik günlüğü bilgilerini alabilir miyim?**
 
-Y **:** Office 365 etkinliği ve Azure AD etkinlik günlükleri birçok dizin kaynağını paylaşsa da, Office 365 etkinlik günlüklerinin tam bir görünümünü istiyorsanız, Office 365 etkinlik günlüğü bilgilerini almak için [Microsoft 365 yönetim merkezine](https://admin.microsoft.com) gitmeniz gerekir.
+Y **:** Microsoft 365 etkinliği ve Azure AD etkinlik günlükleri birçok dizin kaynağını paylaşsa da, Microsoft 365 etkinlik günlüklerinin tam bir görünümünü istiyorsanız, Office 365 etkinlik günlüğü bilgilerini almak için [Microsoft 365 yönetim merkezine](https://admin.microsoft.com) gitmeniz gerekir.
 
 ---
 
-**S: Office 365 etkinlik günlükleri hakkında bilgi almak için hangi API 'Leri kullanmalıyım?**
+**S: Microsoft 365 etkinlik günlükleri hakkında bilgi almak için hangi API 'Leri kullanmalıyım?**
 
-Y **:** Office 365 etkinlik günlüklerine bir API aracılığıyla erişmek için [office 365 Yönetim API 'lerini](/office/office-365-management-api/office-365-management-apis-overview) kullanın.
+Y **:** Bir API aracılığıyla Microsoft 365 etkinlik günlüklerine erişmek için [Microsoft 365 Management API 'lerini](/office/office-365-management-api/office-365-management-apis-overview) kullanın.
 
 ---
 

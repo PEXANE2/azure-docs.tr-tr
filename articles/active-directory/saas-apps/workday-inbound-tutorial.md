@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 51ab05a995ba5b620b759f419fb5b4594873d2f5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0a025ad7857594b3117b1703a0e19ae47407d0fd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527817"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018110"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -31,13 +31,13 @@ Bu öğreticinin amacı, Workday 'den çalışan profillerini şirket içi Activ
 
 [Azure Active Directory Kullanıcı sağlama hizmeti](../app-provisioning/user-provisioning.md) , Kullanıcı hesaplarını sağlamak Için [Workday insan kaynakları API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 'siyle tümleştirilir. Azure AD Kullanıcı sağlama hizmeti tarafından desteklenen Workday Kullanıcı sağlama iş akışları aşağıdaki insan kaynakları ve kimlik yaşam döngüsü yönetimi senaryolarına yönelik Otomasyonu etkinleştirir:
 
-* **Yeni çalışanların işe** Alım-Workday 'e yeni bir çalışan eklendiğinde, bu kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak oluşturulur ve bu, BT tarafından yönetilen iletişim bilgilerini Workday 'e geri yazılır.
+* **Yeni çalışanların işe** Alım-Workday 'e yeni bir çalışan eklendiğinde, Active Directory, Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak bir kullanıcı hesabı oluşturulur.
 
-* **Çalışan özniteliği ve profil güncelleştirmeleri** -bir çalışan kaydı Workday 'de (ad, başlık veya yönetici gibi) güncelleştirildiğinde, kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak güncelleştirilir.
+* **Çalışan özniteliği ve profil güncelleştirmeleri** -bir çalışan kaydı Workday 'de (ad, başlık veya yönetici gibi) güncelleştirildiğinde, kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak güncelleştirilir.
 
-* **Çalışan sonlandırmaları** -bir çalışan Workday 'de sonlandırıldığında, kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak devre dışıdır.
+* **Çalışan sonlandırmaları** -bir çalışan Workday 'de sonlandırıldığında, kullanıcı hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../app-provisioning/user-provisioning.md)için otomatik olarak devre dışıdır.
 
-* **Çalışan rehires** -bir çalışan Workday 'de yeniden hazırlandığında, eski hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../app-provisioning/user-provisioning.md)için otomatik olarak yeniden etkinleştirilebilir veya yeniden sağlanabilir.
+* **Çalışan rehires** -bir çalışan Workday 'de yeniden hazırlandığında, eski hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../app-provisioning/user-provisioning.md)için otomatik olarak yeniden etkinleştirilebilir veya yeniden sağlanabilir.
 
 ### <a name="whats-new"></a>Yenilikler
 Bu bölüm, son Workday tümleştirme geliştirmelerini yakalar. Kapsamlı güncelleştirmeler, planlanan değişiklikler ve arşivlerin bir listesi için, lütfen [Azure Active Directory](../fundamentals/whats-new.md) yenilikler sayfasını ziyaret edin. 
@@ -60,7 +60,7 @@ Bu Workday Kullanıcı sağlama çözümü idealdir:
 
 * Kullanıcılara katılım, taşıma ve kullanıcıların bir veya daha fazla Active Directory ormanlara, etki alanına ve yalnızca Workday HCM modülünde algılanan değişiklik bilgilerine dayalı olarak eşitlenmesini gerektiren kuruluşlar (bkz. [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
 
-* E-posta için Office 365 kullanan kuruluşlar
+* E-posta için Microsoft 365 kullanan kuruluşlar
 
 ## <a name="solution-architecture"></a>Çözüm mimarisi
 
@@ -171,7 +171,7 @@ Bu adımda, güvenlik grubuna çalışan verileri için "etki alanı güvenliği
      >[!div class="mx-imgBorder"]
      >![Etki alanı güvenlik Ilkeleri](./media/workday-inbound-tutorial/wd_isu_08.png "Etki alanı güvenlik Ilkeleri") 
 
-     **Tamam** düğmesine tıklayın.
+     **Tamam**’a tıklayın.
 
 3. Görüntülenen raporda, **dış hesap sağlama** seçeneğinin yanında görüntülenen üç nokta (...) simgesini seçin ve **etki alanı-> güvenlik ilkesi izinlerini Düzenle** ' ye tıklayın.
    >[!div class="mx-imgBorder"]
@@ -373,7 +373,7 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
 1. Aracının yüklenmesini doğrulayın ve "Hizmetler" eklentisini açıp "Microsoft Azure AD Connect sağlama Aracısı" adlı hizmeti arayın ve çalıştığından emin olun.
 
    >[!div class="mx-imgBorder"]
-   >![Hizmetler](./media/workday-inbound-tutorial/services.png)
+   >![Hizmetlerde çalışan Microsoft Azure AD Connect sağlama aracısının ekran görüntüsü](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>3. kısım: sağlama uygulamasında, Workday ve Active Directory bağlantısını yapılandırın
 Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz. 

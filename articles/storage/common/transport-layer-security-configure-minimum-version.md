@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/10/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755917"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018586"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Depolama hesabına yönelik istekler için gereken en düşük Aktarım Katmanı Güvenliği (TLS) sürümünü zorla
 
@@ -92,11 +92,13 @@ Daha eski TLS sürümlerini kullanan istemcilerden gelen trafiğin en az olduğu
 Bir depolama hesabı için en düşük TLS sürümünü yapılandırmak üzere hesabın **Minimumtlsversion** sürümünü ayarlayın. Bu özellik, Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Azure Resource Manager dağıtım modeli hakkında daha fazla bilgi için bkz. [depolama hesabına genel bakış](storage-account-overview.md).
 
 > [!NOTE]
-> **Minimumtlsversion** özelliği varsayılan olarak ayarlanmadı ve açıkça ayarlanana kadar bir değer döndürmez. Depolama hesabı, özellik değeri **null**ise TLS sürüm 1,0 veya üzeri ile gönderilen isteklere izin verir.
+> **Minimumtlsversion** özelliği şu anda yalnızca Azure genel bulutundaki depolama hesapları için kullanılabilir.
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
-Bir depolama hesabı için en düşük TLS sürümünü Azure portal yapılandırmak için aşağıdaki adımları izleyin:
+Azure portal ile bir depolama hesabı oluşturduğunuzda, en düşük TLS sürümü varsayılan olarak 1,2 olarak ayarlanır.
+
+Mevcut bir depolama hesabı için en düşük TLS sürümünü Azure portal yapılandırmak için aşağıdaki adımları izleyin:
 
 1. Azure portalda depolama hesabınıza gidin.
 1. **Yapılandırma** ayarını seçin.
@@ -108,6 +110,8 @@ Bir depolama hesabı için en düşük TLS sürümünü Azure portal yapılandı
 
 PowerShell ile bir depolama hesabı için en düşük TLS sürümünü yapılandırmak üzere [Azure PowerShell Version 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) veya üzeri sürümünü yüklemelisiniz. Ardından, yeni veya mevcut bir depolama hesabı için **Minimumtlsversion** özelliğini yapılandırın. **Minimumtlsversion** için geçerli değerler `TLS1_0` , `TLS1_1` ve ' dir `TLS1_2` .
 
+**Minimumtlsversion** özelliği, PowerShell ile bir depolama hesabı oluşturduğunuzda varsayılan olarak ayarlanır. Bu özellik, açıkça ayarlanana kadar bir değer döndürmez. Depolama hesabı, özellik değeri **null**ise TLS sürüm 1,0 veya üzeri ile gönderilen isteklere izin verir.
+
 Aşağıdaki örnek bir depolama hesabı oluşturur ve **Minimumtlsversion** 'ı TLS 1,1 olarak ayarlar, ardından hesabı güncelleştirir ve **minimumtlsversion** 'ı TLS 1,2 olarak ayarlar. Örnek, her durumda özellik değerini de alır. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```powershell
@@ -116,18 +120,18 @@ $accountName = "<storage-account>"
 $location = "<location>"
 
 # Create a storage account with MinimumTlsVersion set to TLS 1.1.
-New-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
-    -Location $location \
-    -SkuName Standard_GRS \
+New-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -Location $location `
+    -SkuName Standard_GRS `
     -MinimumTlsVersion TLS1_1
 
 # Read the MinimumTlsVersion property.
 (Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 
 # Update the MinimumTlsVersion version for the storage account to TLS 1.2.
-Set-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
+Set-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
     -MinimumTlsVersion TLS1_2
 
 # Read the MinimumTlsVersion property.
@@ -137,6 +141,8 @@ Set-AzStorageAccount -ResourceGroupName $rgName \
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı ile bir depolama hesabı için en düşük TLS sürümünü yapılandırmak üzere Azure CLı sürüm 2.9.0 veya üstünü yüklemeyi yapın. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli). Ardından, yeni veya mevcut bir depolama hesabı için **Minimumtlsversion** özelliğini yapılandırın. **Minimumtlsversion** için geçerli değerler `TLS1_0` , `TLS1_1` ve ' dir `TLS1_2` .
+
+Azure CLı ile bir depolama hesabı oluşturduğunuzda **Minimumtlsversion** özelliği varsayılan olarak ayarlanır. Bu özellik, açıkça ayarlanana kadar bir değer döndürmez. Depolama hesabı, özellik değeri **null**ise TLS sürüm 1,0 veya üzeri ile gönderilen isteklere izin verir.
 
 Aşağıdaki örnek bir depolama hesabı oluşturur ve **Minimumtlsversion** 'ı TLS 1,1 olarak ayarlar. Daha sonra hesabı güncelleştirir ve **Minimumtlsversion** özelliğini TLS 1,2 olarak ayarlar. Örnek, her durumda özellik değerini de alır. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 

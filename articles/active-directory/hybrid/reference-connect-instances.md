@@ -16,15 +16,15 @@ ms.date: 05/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c4d8b0a33763a967550453d8a205258f7583084
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66298826"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015271"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: örneklerle ilgili özel konular
-Azure AD Connect en yaygın olarak, Azure AD ve Office 365 'nin dünya çapındaki örneğiyle kullanılır. Ancak başka örnekler de vardır ve bunlar, URL 'Ler ve diğer özel hususlar için farklı gereksinimlere sahiptir.
+Azure AD Connect en yaygın olarak, Azure AD ve Microsoft 365 'ın dünya genelinde örneği ile kullanılır. Ancak başka örnekler de vardır ve bunlar, URL 'Ler ve diğer özel hususlar için farklı gereksinimlere sahiptir.
 
 ## <a name="microsoft-cloud-germany"></a>Almanya Microsoft Bulut
 [Almanya Microsoft bulut](https://www.microsoft.de/cloud-deutschland) , bir Almanya veri emanetçisi tarafından çalıştırılan bir sogeign bulutu.

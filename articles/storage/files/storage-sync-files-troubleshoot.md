@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a93c127d0b04667b0f28949f4b384f22769bace4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056270"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018603"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -220,7 +220,7 @@ Sunucu uç noktası, bir hata veya yetersiz sistem kaynakları nedeniyle eşitle
 <a id="serverendpoint-pending"></a>**Sunucu uç noktası sistem durumu, birkaç saat boyunca bekleme durumunda**  
 Bu sorun, bir bulut uç noktası oluşturup veri içeren bir Azure dosya paylaşımının kullanılması halinde beklenmektedir. Azure dosya paylaşımındaki değişiklikleri tarayan değişiklik numaralandırma işi, dosyaların bulut ve sunucu uç noktaları arasında eşitlenebilmesi için tamamlanmalıdır. İşi tamamlanma süresi, Azure dosya paylaşımındaki ad alanının boyutuna bağlıdır. Değişiklik numaralandırması işi tamamlandıktan sonra sunucu uç noktası durumunun güncelleştirilmesi gerekir.
 
-### <a name="how-do-i-monitor-sync-health"></a><a id="broken-sync"></a>Eşitleme durumunu nasıl izleyebilirim?
+### <a name="how-do-i-monitor-sync-health"></a><a id="broken-sync"></a>Nasıl yaparım? eşitleme durumu İzmi?
 # <a name="portal"></a>[Portal](#tab/portal1)
 Her bir eşitleme grubunda, son tamamlanan eşitleme oturumlarının durumunu görmek için bireysel sunucu uç noktalarında ayrıntıya gidebilirsiniz. Yeşil bir sistem durumu sütunu ve 0 değerini eşitlemeden bir dosya eşitlemenin beklendiği gibi çalıştığını gösterir. Böyle bir durum söz konusu değilse, yaygın eşitleme hatalarının listesi ve eşitlenmemiş dosyaların nasıl işleneceği hakkında bilgi için aşağıya bakın. 
 
@@ -1107,7 +1107,7 @@ Dosyalar Azure dosyalarını katmanlamaz:
 | 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Azure depolama sorunu nedeniyle dosya katmanı başarısız oldu. | Hata devam ederse bir destek isteği açın. |
 | 0x800703E3 | -2147023901 | ERROR_OPERATION_ABORTED | Dosya, aynı anda geri çekilmiş olduğundan katmana gönderilemedi. | Eylem gerekmiyor. Geri çağırma tamamlandığında ve dosya artık kullanımda olmadığında dosya katmanlanacaktır. |
 | 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Dosya, Azure dosya paylaşımıyla eşitlenmediği için katmanı gerçekleştiremedi. | Eylem gerekmiyor. Dosya, Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
-| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Bulut katmanlama filtresi sürücüsü (storagesync.sys) çalışmadığından dosya katmanı başarısız oldu. | Bu sorunu çözmek için, yükseltilmiş bir komut istemi açın ve aşağıdaki komutu çalıştırın:`fltmc load storagesync`<br>FltMC komutu çalıştırılırken storagessync filtre sürücüsü yüklenemezse, Azure Dosya Eşitleme aracısını kaldırın, sunucuyu yeniden başlatın ve Azure Dosya Eşitleme aracısını yeniden yükleyin. |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Bulut katmanlama filtresi sürücüsü (storagesync.sys) çalışmadığından dosya katmanı başarısız oldu. | Bu sorunu çözmek için, yükseltilmiş bir komut istemi açın ve aşağıdaki komutu çalıştırın: `fltmc load storagesync`<br>FltMC komutu çalıştırılırken storagessync filtre sürücüsü yüklenemezse, Azure Dosya Eşitleme aracısını kaldırın, sunucuyu yeniden başlatın ve Azure Dosya Eşitleme aracısını yeniden yükleyin. |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | Sunucu uç noktasının bulunduğu birimde yetersiz disk alanı nedeniyle dosya katmana gönderilemedi. | Bu sorunu çözmek için sunucu uç noktasının bulunduğu birimde en az 100 MB disk alanı boşaltın. |
 | 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Dosya, Azure dosya paylaşımıyla eşitlenmediği için katmanı gerçekleştiremedi. | Eylem gerekmiyor. Dosya, Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
 | 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Dosya, desteklenmeyen bir yeniden ayrıştırma noktası olduğundan katmana gönderilemedi. | Dosya yinelenen verileri kaldırma yeniden ayrıştırma noktanız ise, yinelenen verileri kaldırma desteğini etkinleştirmek için [planlama kılavuzundaki](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication) adımları izleyin. Yinelenen verileri kaldırma dışında yeniden ayrıştırma noktaları olan dosyalar desteklenmez ve katmanlanmaz.  |
@@ -1257,23 +1257,7 @@ Sunucuda Azure Dosya Eşitleme sorunlarla karşılaşırsanız, aşağıdaki ad�
 
 Sorun çözümlenmezse AFSDiag aracını çalıştırın ve. zip dosyası çıkışını daha fazla tanılama için servis talebine atanan destek mühendisine gönderin.
 
-Aracı sürümü v11 ve üzeri için:
-
-1. Yükseltilmiş bir PowerShell penceresi açın ve ardından aşağıdaki komutları çalıştırın (her komuttan sonra ENTER tuşuna basın):
-
-    > [!NOTE]
-    >AFSDiag, günlükleri toplamadan önce içinde çıkış dizinini ve bir Temp klasörünü oluşturur ve yürütmeden sonra Temp klasörünü siler. Veri içermeyen bir çıkış konumu belirtin.
-    
-    ```powershell
-    cd "c:\Program Files\Azure\StorageSyncAgent"
-    Import-Module .\afsdiag.ps1
-    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
-    ```
-
-2. Sorunu yeniden üretin. İşiniz bittiğinde **D**girin.
-3. Günlükleri ve izleme dosyalarını içeren bir. zip dosyası belirttiğiniz çıkış dizinine kaydedilir. 
-
-Aracı sürümü ile v10 arasındaki ve önceki sürümler için:
+AFSDiag 'ı çalıştırmak için aşağıdaki adımları gerçekleştirin:
 1. AFSDiag çıkışının kaydedileceği bir dizin oluşturun (örneğin, C:\Output).
     > [!NOTE]
     >AFSDiag, günlükleri toplamadan önce çıkış dizinindeki tüm içeriği silecektir. Veri içermeyen bir çıkış konumu belirtin.

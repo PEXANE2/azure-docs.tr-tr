@@ -29,6 +29,10 @@
       href: fusion.md
     - name: Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Veri kaynaklarını bağlama
@@ -50,17 +54,17 @@
               href: connect-azure-ad-identity-protection.md
             - name: Azure Information Protection
               href: connect-azure-information-protection.md
-            - name: Uç nokta için Microsoft Defender
+            - name: Microsoft Defender ATP
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Kimlik için Microsoft Defender (eski adıyla Azure ATP)
+            - name: Azure ATP
               href: connect-azure-atp.md
             - name: Azure DDoS Koruması
               href: connect-azure-ddos-protection.md
             - name: Azure Güvenlik Duvarı
               href: connect-azure-firewall.md
-            - name: ASC’den gelen Azure Defender uyarıları
+            - name: Azure Güvenlik Merkezi
               href: connect-azure-security-center.md
-            - name: IoT için Azure Defender (eski adıyla ASC)
+            - name: IoT için Azure Güvenlik Merkezi
               href: connect-asc-iot.md
             - name: Azure Web Uygulaması Güvenlik Duvarı (WAF)
               href: connect-azure-waf.md
@@ -114,8 +118,6 @@
               href: connect-vmware-carbon-black.md
             - name: Zimperium Mobile Threat Defense
               href: connect-zimperium-mtd.md
-            - name: Logstash kullanarak bağlama
-              href: connect-logstash.md
             - name: CEF tabanlı çözümler
               href: connect-common-event-format.md
               items:

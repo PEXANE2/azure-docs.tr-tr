@@ -13,18 +13,20 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: 1c1e29d43fefa6be1586aefc28249fe2f0f9e9fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8c9555bc208766d5275e392ee22889f5b618e216
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001034"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018314"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT hub'ınızda X.509 güvenliğini ayarlama
 
 Bu öğreticide, *X. 509.952 sertifika kimlik doğrulamasını*kullanarak Azure IoT Hub 'ınızı güvence altına almak için gereken adımlar gösterilmektedir. Çizim amacına yönelik olarak, Windows makinenizde yerel olarak sertifika oluşturmak için OpenSSL açık kaynaklı aracını kullanırız. Bu öğreticiyi yalnızca test amacıyla kullanmanızı öneririz. Üretim ortamında, sertifikaları bir *kök sertifika yetkilisinden (CA)* satın almalısınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, aşağıdaki kaynakların size hazırlanmaya yönelik olması gerekir:
 
@@ -102,7 +104,7 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 cihazının benzetimini y
 
 1. Çözüm Gezgini, **SimulateX509Device** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
-1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**’yi seçin.
+1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**'yi seçin.
 
    ![Visual Studio 'da cihaz SDK 'Sı NuGet paketi ekleme](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 

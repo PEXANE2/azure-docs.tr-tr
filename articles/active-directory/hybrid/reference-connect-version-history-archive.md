@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a62694790505dcf8355b3011387d9bdfd036b6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: f80808f917036dfba122a97bbd255d466f40e476
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057374"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018501"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect: sürüm sürümü geçmiş Arşivi
 
@@ -166,7 +166,7 @@ ADSync DB için SQL Always on kullanılabilirliği yapılandırılırsa Azure AD
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 
-- Azure AD Connect ' deki ping Federate tümleştirmesi artık genel kullanıma sunulmuştur. [Ping Federate ile Azure AD federasyon oluşturma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
+- Azure AD Connect ' deki ping Federate tümleştirmesi artık genel kullanıma sunulmuştur. [Ping Federate ile Azure AD federasyon oluşturma hakkında daha fazla bilgi edinin](./plan-connect-user-signin.md#federation-with-pingfederate)
 - Azure AD Connect, bir güncelleştirme her yapıldığında AD FS Azure AD güveninin yedeklemesini oluşturur ve gerektiğinde kolayca geri yüklemek için ayrı bir dosyada depolar. [Azure AD Connect ' de yeni işlevsellik ve Azure AD güven yönetimi hakkında daha fazla bilgi edinin](https://aka.ms/fedtrustinaadconnect).
 - Yeni sorun giderme araçları, birincil e-posta adresini değiştirme ve hesabı genel adres listesinden gizleme sorunlarını gidermeye yardımcı olur
 - Azure AD Connect, en son SQL Server 2012 yerel Istemcisini içerecek şekilde güncelleştirildi
@@ -355,7 +355,7 @@ Azure AD Connect AD DS hesabı oluşturduğunda [AD DS hesabına kilit kilitleme
 
 >[!NOTE]
 >Bu sürüm, yalnızca hizmet hesabının yükleme işlemi tarafından oluşturulduğu yeni Azure AD Connect yüklemelerine yönelik güvenlik açığını ortadan kaldırır. Mevcut yüklemeler veya hesabı kendiniz sağladığınız durumlarda, bu güvenlik açığının mevcut olmadığından emin olun.
-#### <a name="lock-down-access-to-the-ad-ds-account"></a><a name="lock"></a>AD DS hesabına erişimi kilitle
+#### <a name="lock-down-access-to-the-ad-ds-account"></a><a name="lock"></a> AD DS hesabına erişimi kilitle
 Şirket içi AD 'de aşağıdaki izin değişikliklerini uygulayarak AD DS hesabına erişimi kilitle:  
 
 *   Belirtilen nesnede devralmayı devre dışı bırak
@@ -402,7 +402,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 Azure AD Connect yapılandırmanızı tehlikeye almak için bu güvenlik açığının kullanıldığını görmek için, hizmet hesabının son parola sıfırlama tarihini doğrulamanız gerekir.  Zaman damgası beklenmedik şekilde, bu parola sıfırlama olayı için olay günlüğü aracılığıyla daha fazla araştırma yapılması gerekir.
 
-Daha fazla bilgi için bkz. [Microsoft Güvenlik Danışmanlığı 4056318](https://technet.microsoft.com/library/security/4056318)
+Daha fazla bilgi için bkz. [Microsoft Güvenlik Danışmanlığı 4056318](/security-updates/securityadvisories/2017/4056318)
 
 ## <a name="116490"></a>1.1.649.0
 Durum: Ekim 27 2017
@@ -443,7 +443,7 @@ Durum: Ekim 19 2017
 
 * Azure AD Connect yükseltmenin başarısız olmasına neden olan bir sorun düzeltildi *, "eşitleme hizmeti yükseltilemiyor*" hatası oluştu. Ayrıca, eşitleme hizmeti artık olay hatasıyla başlayamaz "*veritabanının sürümü yüklü ikili dosyaların sürümünden daha yeni olduğundan hizmet başlatılamadı*". Bu sorun, yükseltmenin gerçekleştiği yöneticinin Azure AD Connect tarafından kullanılmakta olan SQL Server 'da sysadmin ayrıcalığı olmadığında oluşur. Bu düzeltmeyle Azure AD Connect, yalnızca yöneticinin yükseltme sırasında ADSync veritabanına db_owner ayrıcalığına sahip olmasını gerektirir.
 
-* [Sorunsuz çoklu oturum açmayı](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)etkinleştirmiş etkilenen müşterilerin etkilediği Azure AD Connect bir yükseltme sorunu düzeltildi. Azure AD Connect yükseltildikten sonra, özellik etkin ve tamamen işlevsel olsa bile, sorunsuz çoklu oturum açma işlemi Azure AD Connect sihirbazında devre dışı olarak görünür. Bu düzeltmeyle, özellik artık sihirbazda etkin şekilde doğru şekilde görünür.
+* [Sorunsuz çoklu oturum açmayı](./how-to-connect-sso.md)etkinleştirmiş etkilenen müşterilerin etkilediği Azure AD Connect bir yükseltme sorunu düzeltildi. Azure AD Connect yükseltildikten sonra, özellik etkin ve tamamen işlevsel olsa bile, sorunsuz çoklu oturum açma işlemi Azure AD Connect sihirbazında devre dışı olarak görünür. Bu düzeltmeyle, özellik artık sihirbazda etkin şekilde doğru şekilde görünür.
 
 * Kaynak çıpası ile ilgili hiçbir değişiklik yapılmasa bile, *yapılandırmaya hazırlanma* sayfasında her zaman "*kaynak bağlayıcısını yapılandırma*" istemi göstermek için Azure AD Connect sihirbaza neden olan bir sorun düzeltildi.
 
@@ -457,7 +457,7 @@ Durum: Ekim 19 2017
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
 > [!NOTE]
-> Note: eşitleme hizmeti, kendi özel Scheduler uygulamanızı geliştirmenize olanak sağlayan bir WMI arabirimine sahiptir. Bu arabirim artık kullanım dışıdır ve 30 Haziran 2018 ' den sonra gelen Azure AD Connect gelecek sürümlerinden kaldırılacak. Eşitleme zamanlamasını özelleştirmek isteyen müşteriler [yerleşik zamanlayıcıyı](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler)kullanmalıdır.
+> Note: eşitleme hizmeti, kendi özel Scheduler uygulamanızı geliştirmenize olanak sağlayan bir WMI arabirimine sahiptir. Bu arabirim artık kullanım dışıdır ve 30 Haziran 2018 ' den sonra gelen Azure AD Connect gelecek sürümlerinden kaldırılacak. Eşitleme zamanlamasını özelleştirmek isteyen müşteriler [yerleşik zamanlayıcıyı](./how-to-connect-sync-feature-scheduler.md)kullanmalıdır.
 #### <a name="fixed-issues"></a>Düzeltilen sorunlar
 * Azure AD Connect Sihirbazı, değişiklikleri şirket içi Active Directory eşitlenmesi için gereken AD Bağlayıcısı hesabını oluşturduğunda, PublicFolder nesnelerini okumak için gereken izinleri hesaba doğru atamaz. Bu sorun hem hızlı yükleme hem de özel yüklemeyi etkiler. Bu değişiklik sorunu düzeltir.
 
@@ -470,7 +470,7 @@ Durum: Ekim 19 2017
 
 ### <a name="ad-fs-management"></a>AD FS Yönetimi
 #### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/5046]( ) sorunu düzeltildi
-* [MS-DS-ımnbu GUID 'Nin kaynak bağlantısı olarak](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) kullanımıyla ilgili bir sorun düzeltildi. Bu sorun, Kullanıcı oturum açma yöntemi olarak *AD FS Federasyonu* yapılandıran müşterileri etkiler. Sihirbazda *kaynak bağlantısını yapılandır* görevini yürüttüğünüzde, ' Azure AD Connect, ImmutableID için kaynak özniteliği olarak * ms-DS-ımıbu GUID ' i kullanarak geçiş yapar. Bu değişikliğin bir parçası olarak, Azure AD Connect AD FS ImmutableID talep kurallarını güncelleştirmeye çalışır. Ancak, Azure AD Connect AD FS yapılandırmak için gereken yönetici kimlik bilgilerine sahip olmadığı için bu adım başarısız oldu. Bu düzeltmeyle Azure AD Connect, şimdi *kaynak bağlantısını yapılandır* görevini yürüttüğünüzde AD FS için yönetici kimlik bilgilerini girmenizi ister.
+* [MS-DS-ımnbu GUID 'Nin kaynak bağlantısı olarak](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) kullanımıyla ilgili bir sorun düzeltildi. Bu sorun, Kullanıcı oturum açma yöntemi olarak *AD FS Federasyonu* yapılandıran müşterileri etkiler. Sihirbazda *kaynak bağlantısını yapılandır* görevini yürüttüğünüzde, ' Azure AD Connect, ImmutableID için kaynak özniteliği olarak * ms-DS-ımıbu GUID ' i kullanarak geçiş yapar. Bu değişikliğin bir parçası olarak, Azure AD Connect AD FS ImmutableID talep kurallarını güncelleştirmeye çalışır. Ancak, Azure AD Connect AD FS yapılandırmak için gereken yönetici kimlik bilgilerine sahip olmadığı için bu adım başarısız oldu. Bu düzeltmeyle Azure AD Connect, şimdi *kaynak bağlantısını yapılandır* görevini yürüttüğünüzde AD FS için yönetici kimlik bilgilerini girmenizi ister.
 
 
 
@@ -485,7 +485,7 @@ Durum: Eylül 05 2017
 * [Kesintisiz çoklu oturum açma](how-to-connect-sso.md)özelliği sunan müşterileri etkileyen Azure AD Connect yükseltmesinde bilinen bir sorun vardır. Azure AD Connect yükseltildikten sonra, özellik etkin olmaya devam etse bile Özellik sihirbazda devre dışı olarak görünür. Bu soruna yönelik bir çözüm gelecek sürümde sunulacaktır. Bu görüntü sorunuyla ilgili olan müşteriler, sihirbazda sorunsuz çoklu oturum açmayı etkinleştirerek el ile düzeldebilir.
 
 #### <a name="fixed-issues"></a>Düzeltilen sorunlar
-* Azure AD Connect, şirket içi AD FS talep kurallarının güncelleştirilmesini engelleyen bir sorun düzeltildi ve bu sayede, [kaynak bağlantısı olarak ms-DS-](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) IBir GUID özelliği etkinleştiriliyor. Bu sorun, oturum açma yöntemi olarak yapılandırılmış AD FS sahip olan mevcut bir Azure AD Connect dağıtımı için özelliği etkinleştirmeye çalışırsanız oluşur. Bu sorun, sihirbaz AD FS ' deki talep kurallarını güncelleştirmeye çalışmadan önce ADFS kimlik bilgilerini istemez.
+* Azure AD Connect, şirket içi AD FS talep kurallarının güncelleştirilmesini engelleyen bir sorun düzeltildi ve bu sayede, [kaynak bağlantısı olarak ms-DS-](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) IBir GUID özelliği etkinleştiriliyor. Bu sorun, oturum açma yöntemi olarak yapılandırılmış AD FS sahip olan mevcut bir Azure AD Connect dağıtımı için özelliği etkinleştirmeye çalışırsanız oluşur. Bu sorun, sihirbaz AD FS ' deki talep kurallarını güncelleştirmeye çalışmadan önce ADFS kimlik bilgilerini istemez.
 * Şirket içi AD ormanında NTLM devre dışı bırakılmışsa Azure AD Connect yüklemede başarısız olmasına neden olan bir sorun düzeltildi. Bu sorun, Kerberos kimlik doğrulaması için gerekli güvenlik bağlamlarını oluştururken Azure AD Connect Sihirbazı 'nın tam nitelikli kimlik bilgileri sağlamamasından kaynaklanır. Bu, Kerberos kimlik doğrulamasının başarısız olmasına ve Azure AD Connect sihirbazının NTLM kullanmaya geri dönmesine neden olur.
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
@@ -631,16 +631,16 @@ Bu sorun, Sihirbazı çalıştırdığınızda **tüm etki alanlarını ve OU 'L
 
 #### <a name="fixed-issues"></a>Düzeltilen sorunlar
 
-* Bir Azure AD yöneticisinin şirket içi AD ayrıcalıklı kullanıcı hesabının parolasını sıfırlamasına izin veren parola geri yazma ile ilgili bir sorun düzeltildi. Bu sorun, Azure AD Connect ayrıcalıklı hesap için parola sıfırlama izni verildiğinde oluşur. Bu sorun, yönetici bu hesabın sahibi olmadığı takdirde bir Azure AD yöneticisinin rastgele bir şirket içi AD ayrıcalıklı kullanıcı hesabının parolasını sıfırlamasına izin vermeyerek Azure AD Connect bu sürümünde karşılanır. Daha fazla bilgi için [Güvenlik Danışmanlığı 4033453](https://technet.microsoft.com/library/security/4033453)' a bakın.
+* Bir Azure AD yöneticisinin şirket içi AD ayrıcalıklı kullanıcı hesabının parolasını sıfırlamasına izin veren parola geri yazma ile ilgili bir sorun düzeltildi. Bu sorun, Azure AD Connect ayrıcalıklı hesap için parola sıfırlama izni verildiğinde oluşur. Bu sorun, yönetici bu hesabın sahibi olmadığı takdirde bir Azure AD yöneticisinin rastgele bir şirket içi AD ayrıcalıklı kullanıcı hesabının parolasını sıfırlamasına izin vermeyerek Azure AD Connect bu sürümünde karşılanır. Daha fazla bilgi için [Güvenlik Danışmanlığı 4033453](/security-updates/SecurityAdvisories/2017/4033453)' a bakın.
 
-* Azure AD Connect, şirket içi AD ms-DS-ımced GUID özniteliğinde geri [yazarken, kaynak bağlayıcı özelliği olarak ms-DS-ımced GUID 'si](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) ile ilgili bir sorun düzeltildi. Sorun, Azure AD Connect eklenen birden çok şirket içi AD Ormanı olduğunda ve *birden çok dizinde bulunan Kullanıcı kimlikleri seçeneği* belirlendiğinde oluşur. Bu tür yapılandırma kullanıldığında, sonuç eşitleme kuralları meta veri deposundaki sourceAnchorBinary özniteliğini doldurmaz. SourceAnchorBinary özniteliği, ms-DS-ımıbu Guid özniteliği için kaynak özniteliği olarak kullanılır. Sonuç olarak, MS-Dsmda, Guid özniteliği için geri yazma gerçekleşmez. Sorunu düzeltemedi, meta veri deposundaki sourceAnchorBinary özniteliğinin her zaman doldurulduğundan emin olmak için aşağıdaki eşitleme kuralları güncelleştirilmiştir:
+* Azure AD Connect, şirket içi AD ms-DS-ımced GUID özniteliğinde geri [yazarken, kaynak bağlayıcı özelliği olarak ms-DS-ımced GUID 'si](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) ile ilgili bir sorun düzeltildi. Sorun, Azure AD Connect eklenen birden çok şirket içi AD Ormanı olduğunda ve *birden çok dizinde bulunan Kullanıcı kimlikleri seçeneği* belirlendiğinde oluşur. Bu tür yapılandırma kullanıldığında, sonuç eşitleme kuralları meta veri deposundaki sourceAnchorBinary özniteliğini doldurmaz. SourceAnchorBinary özniteliği, ms-DS-ımıbu Guid özniteliği için kaynak özniteliği olarak kullanılır. Sonuç olarak, MS-Dsmda, Guid özniteliği için geri yazma gerçekleşmez. Sorunu düzeltemedi, meta veri deposundaki sourceAnchorBinary özniteliğinin her zaman doldurulduğundan emin olmak için aşağıdaki eşitleme kuralları güncelleştirilmiştir:
   * AD-InetOrgPerson AccountEnabled.xml içinde
   * AD-InetOrgPerson Common.xml içinde
   * AD-Kullanıcı AccountEnabled.xml içinde
   * AD-Kullanıcı Common.xml içinde
   * AD-Kullanıcı birleşimi SOAInAAD.xml içinde
 
-* Daha önce, [MS-DS-ımıbu GUID kaynak bağlayıcı](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) özelliği etkin olmasa bile, "ad-Kullanıcı ImmutableID" eşitleme kuralı hala Azure AD Connect eklenir. Bu efekt zararsız olur ve ms-DS-ımbu GUID özniteliğinin geri yazma işleminin oluşmasına neden olmaz. Karışıklığın önüne geçmek için, eşitleme kuralının yalnızca özellik etkinleştirildiğinde eklendiğinden emin olmak için mantık eklenmiştir.
+* Daha önce, [MS-DS-ımıbu GUID kaynak bağlayıcı](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) özelliği etkin olmasa bile, "ad-Kullanıcı ImmutableID" eşitleme kuralı hala Azure AD Connect eklenir. Bu efekt zararsız olur ve ms-DS-ımbu GUID özniteliğinin geri yazma işleminin oluşmasına neden olmaz. Karışıklığın önüne geçmek için, eşitleme kuralının yalnızca özellik etkinleştirildiğinde eklendiğinden emin olmak için mantık eklenmiştir.
 
 * Parola karması eşitlemesinin hata olayı 611 ile başarısız olmasına neden olan bir sorun düzeltildi. Bu sorun, şirket içi AD 'den bir veya daha fazla etki alanı denetleyicisi kaldırıldıktan sonra oluşur. Her parola eşitleme döngüsünün sonunda, şirket içi AD tarafından verilen eşitleme tanımlama bilgisi, kaldırılan etki alanı denetleyicilerinin USN (güncelleştirme sıra numarası) değeri olan çağırma kimliklerini içerir. Parola Eşitleme Yöneticisi, 0 USN değerini içeren eşitleme tanımlama bilgisini sürdüremiyor ve hata olayı 611 ile başarısız oluyor. Bir sonraki eşitleme çevrimi sırasında, Parola Eşitleme Yöneticisi, USN değeri 0 içermeyen son kalıcı eşitleme tanımlama bilgisini yeniden kullanır. Bu, aynı parola değişikliklerinin yeniden eşitlenmesi oluşmasına neden olur. Bu düzeltmeyle, Parola Eşitleme Yöneticisi eşitleme tanımlama bilgisini doğru şekilde devam ettirir.
 
@@ -648,12 +648,12 @@ Bu sorun, Sihirbazı çalıştırdığınızda **tüm etki alanlarını ve OU 'L
 
 #### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 
-* Daha önce, [MS-DS-mımnsource bağlantı noktası olarak GUID](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) özelliği yalnızca Yeni dağıtımlar için kullanılabilir. Şimdi mevcut dağıtımlar tarafından kullanılabilir. Daha ayrıntılı belirtmek gerekirse:
+* Daha önce, [MS-DS-mımnsource bağlantı noktası olarak GUID](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) özelliği yalnızca Yeni dağıtımlar için kullanılabilir. Şimdi mevcut dağıtımlar tarafından kullanılabilir. Daha ayrıntılı belirtmek gerekirse:
   * Özelliğe erişmek için Azure AD Connect Sihirbazı 'nı başlatın ve *kaynak bağlantısını Güncelleştir* seçeneğini belirleyin.
   * Bu seçenek yalnızca, Sourcetutturucu özniteliği olarak Objectguıd kullanan mevcut dağıtımlar için görülebilir.
   * Seçeneği yapılandırılırken, sihirbaz, şirket içi Active Directory ms-DS-ımlar, Guid özniteliğinin durumunu doğrular. Öznitelik, dizindeki herhangi bir Kullanıcı nesnesinde yapılandırılmamışsa, sihirbaz, Sourcetutturucu özniteliği olarak ms-DS-ımıbu GUID ' i kullanır. Öznitelik, dizindeki bir veya daha fazla kullanıcı nesnesi üzerinde yapılandırılmışsa, sihirbaz özniteliği diğer uygulamalar tarafından kullanılır ve Sourcetutturucu özniteliği olarak uygun değildir ve kaynak bağlantısı değişikliğinin devam etsin. Özniteliğin mevcut uygulamalar tarafından kullanılmadığından eminseniz, hatanın nasıl bastıralınacağını öğrenmek için desteğe başvurmanız gerekir.
 
-* Cihaz nesnelerinde **userCertificate** özniteliğine özgü, Azure AD Connect artık, [etki alanına katılmış cihazları Windows 10 için Azure AD 'ye bağlamak](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy) ve Azure AD 'ye eşitlemeden önce Rest 'i filtrelemekte gerekli sertifika değerlerini arar. Bu davranışı etkinleştirmek için, kullanıma hazır eşitleme kuralı "AAD-Device JOIN SOAInAD" olarak güncelleştirilmiştir.
+* Cihaz nesnelerinde **userCertificate** özniteliğine özgü, Azure AD Connect artık, [etki alanına katılmış cihazları Windows 10 için Azure AD 'ye bağlamak](../devices/hybrid-azuread-join-plan.md) ve Azure AD 'ye eşitlemeden önce Rest 'i filtrelemekte gerekli sertifika değerlerini arar. Bu davranışı etkinleştirmek için, kullanıma hazır eşitleme kuralı "AAD-Device JOIN SOAInAD" olarak güncelleştirilmiştir.
 
 * Azure AD Connect artık Exchange Online **CloudPublicDelegates** özniteliğinin ŞIRKET Içi ad **publicDelegates** özniteliğine geri yazmayı destekliyor. Bu, Exchange Online posta kutusu 'nun şirket içi Exchange posta kutusuyla kullanıcılara yönelik haklara izin verilebileceği senaryoya olanak sağlar. Bu özelliği desteklemek için yeni bir kullanıma hazır eşitleme kuralı "AD – Kullanıcı Exchange hibrit PublicDelegates geri yazma" eklenmiştir. Bu eşitleme kuralı yalnızca Exchange karma özelliği etkinleştirildiğinde Azure AD Connect eklenir.
 
@@ -844,7 +844,7 @@ Azure AD Connect Eşitleme
 * Azure AD kiracınızda, kiracınız için parola eşitleme özelliğinin etkinleştirilip etkinleştirilmediğini belirten bir hizmet yapılandırması vardır. Daha önce, etkin ve bir hazırlama sunucunuz olduğunda, hizmet yapılandırmasının Azure AD Connect tarafından hatalı şekilde yapılandırılması kolaydır. Artık Azure AD Connect, hizmet yapılandırmasını yalnızca etkin Azure AD Connect sunucusu ile tutarlı tutmaya çalışacaktır.
 * Azure AD Connect Sihirbazı şimdi, şirket içi AD 'de AD geri dönüşüm kutusu etkin değilse bir uyarı algılar ve döndürür.
 * Daha önce, toplu işteki nesnelerin Birleşik boyutu belirli eşiki aşarsa Azure AD 'ye dışarı aktarma zaman aşımına uğrar ve başarısız olur. Artık eşitleme hizmeti, sorun ile karşılaşılırsa, nesneleri ayrı, daha küçük toplu işlerle yeniden göndermek için yeniden yanıt vermeye çalışır.
-* Eşitleme hizmeti anahtar yönetimi uygulaması Windows Başlat menüsünden kaldırılmıştır. Şifreleme anahtarının yönetimi, miiskmu.exe kullanılarak komut satırı arabirimi aracılığıyla desteklenmeye devam edecektir. Şifreleme anahtarını yönetme hakkında bilgi için, [Azure AD Connect eşitleme şifreleme anahtarını bırakma](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key)makalesine başvurun.
+* Eşitleme hizmeti anahtar yönetimi uygulaması Windows Başlat menüsünden kaldırılmıştır. Şifreleme anahtarının yönetimi, miiskmu.exe kullanılarak komut satırı arabirimi aracılığıyla desteklenmeye devam edecektir. Şifreleme anahtarını yönetme hakkında bilgi için, [Azure AD Connect eşitleme şifreleme anahtarını bırakma](./how-to-connect-sync-change-serviceacct-pass.md#abandoning-the-adsync-service-account-encryption-key)makalesine başvurun.
 * Daha önce, Azure AD Connect eşitleme hizmeti hesabı parolasını değiştirirseniz, şifreleme anahtarını terk edinceye ve Azure AD Connect eşitleme hizmeti hesabı parolasını yeniden başlatana kadar eşitleme hizmeti düzgün şekilde başlayamaz. Artık bu işlem artık gerekli değildir.
 
 Masaüstü SSO 'SU
@@ -1072,7 +1072,7 @@ Yayımlanma tarihi: Kasım 2015
 
 **Yeni desteklenen senaryo:**
 
-* Birden çok şirket içi Exchange kuruluşu destekler. Daha fazla bilgi için bkz. [birden çok Active Directory ormanlı karma dağıtımlar](https://docs.microsoft.com/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150)).
+* Birden çok şirket içi Exchange kuruluşu destekler. Daha fazla bilgi için bkz. [birden çok Active Directory ormanlı karma dağıtımlar](/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150)).
 
 **Sorun düzeltildi:**
 
@@ -1181,7 +1181,7 @@ Yayımlanma tarihi: Aralık 2014
 **Yeni Özellikler:**
 
 * Öznitelik tabanlı filtrelemeye sahip parola eşitleme artık desteklenmektedir. Daha fazla bilgi için bkz. [filtreleme Ile parola eşitleme](how-to-connect-sync-configure-filtering.md).
-* Ms-DS-Externaldirectoryobjectıd özniteliği Active Directory 'e geri yazılır. Bu özellik Office 365 uygulamaları için destek ekler. Karma bir Exchange dağıtımında çevrimiçi ve şirket içi posta kutularına erişmek için OAuth2 kullanır.
+* Ms-DS-Externaldirectoryobjectıd özniteliği Active Directory 'e geri yazılır. Bu özellik Microsoft 365 uygulamaları için destek ekler. Karma bir Exchange dağıtımında çevrimiçi ve şirket içi posta kutularına erişmek için OAuth2 kullanır.
 
 **Düzeltilen yükseltme sorunları:**
 

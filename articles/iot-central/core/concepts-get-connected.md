@@ -7,15 +7,17 @@ ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
+manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+- device-developer
+ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337101"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018208"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central'a bağlanma
 
@@ -147,10 +149,10 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Birincil anahtarı SAS-IoT-Devices kayıt grubundan grupla":::
 
-1. Cihaz SAS anahtarlarını oluşturmak için [DPS-keygen](https://www.npmjs.com/package/dps-keygen) aracını kullanın. Önceki adımda grup birincil anahtarını kullanın. Cihaz kimlikleri küçük harf olmalıdır:
+1. `az iot central device compute-device-key`CIHAZ SAS anahtarlarını oluşturmak için komutunu kullanın. Önceki adımda grup birincil anahtarını kullanın. Cihaz kimlikleri küçük harf olmalıdır:
 
-    ```cmd
-    dps-keygen -mk:<group primary key> -di:<device ID>
+    ```azurecli
+    az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
     ```
 
 1. OEM, cihaz KIMLIĞI, oluşturulan cihaz SAS anahtarı ve uygulama **kimliği kapsam** değeri olan her bir cihazı yanıp sönmez.
@@ -195,12 +197,12 @@ IoT Central, bireysel kayıtlar için aşağıdaki kanıtlama mekanizmalarını 
 - **Simetrik anahtar kanıtlama:** Simetrik anahtar kanıtlama, bir cihazın DPS örneğine kimlik doğrulaması için basit bir yaklaşımdır. Simetrik anahtarlar kullanan tek bir kayıt oluşturmak için, **cihaz bağlantısı** sayfasını açın, bağlantı yöntemi olarak **bireysel kaydı** ve mekanizma olarak **paylaşılan erişim imzasını (SAS)** seçin. Base64 kodlamalı birincil ve ikincil anahtarlar girin ve değişikliklerinizi kaydedin. Cihazınızı bağlamak için **kimlik kapsamını**, **cihaz kimliğini**ve birincil ya da ikincil anahtarı kullanın.
 
     > [!TIP]
-    > Sınama için, **OpenSSL** kullanarak Base64 kodlamalı anahtarlar oluşturabilirsiniz:`openssl rand -base64 64`
+    > Sınama için, **OpenSSL** kullanarak Base64 kodlamalı anahtarlar oluşturabilirsiniz: `openssl rand -base64 64`
 
 - **X. 509.440 sertifikaları:** X. 509.440 sertifikalarıyla tek bir kayıt oluşturmak için, **cihaz bağlantısı** sayfasını açın, bağlantı yöntemi olarak **bireysel kayıt** ' ı ve **Sertifikalar (X. 509.440)** öğesini seçin. Tek bir kayıt girişiyle kullanılan cihaz sertifikalarının, veren ve Subject CN 'nin cihaz KIMLIĞINE ayarlandığı bir gereksinimi vardır.
 
     > [!TIP]
-    > Sınama için, otomatik olarak imzalanan bir sertifika oluşturmak üzere [Node.jsIçin Azure IoT cihaz sağlama cihaz SDK 'Sı araçlarını](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) kullanabilirsiniz:`node create_test_cert.js device "mytestdevice"`
+    > Sınama için, otomatik olarak imzalanan bir sertifika oluşturmak üzere [Node.jsIçin Azure IoT cihaz sağlama cihaz SDK 'Sı araçlarını ](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) kullanabilirsiniz: `node create_test_cert.js device "mytestdevice"`
 
 - **Güvenilir Platform Modülü (TPM) kanıtlama:** [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) , bir tür donanım güvenlik modülüdür. TPM kullanmak, bir cihazı bağlamak için en güvenli yöntemlerle biridir. Bu makalede ayrı, bellenim veya tümleşik TPM kullandığınız varsayılır. Yazılım öykünmesi, prototip oluşturma veya test etme için idealdir, ancak ayrık, bellenim veya tümleşik TPMs ile aynı güvenlik düzeyini sağlamalardır. Üretimde yazılım TPM 'Leri kullanmayın. TPM kullanan tek bir kayıt oluşturmak için, **cihaz bağlantısı** sayfasını açın, bağlantı yöntemi olarak **bireysel kayıt** ' ı ve, mekanizma olarak **TPM 'yi** seçin. TPM onay anahtarını girin ve cihaz bağlantı bilgilerini kaydedin.
 

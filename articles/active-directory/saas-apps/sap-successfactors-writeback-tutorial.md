@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534005"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017940"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Öğretici: Azure AD 'den SAP 'ye geri yazma özelliği yapılandırma başarılı
 Bu öğreticinin amacı, Azure AD 'den SAP 'nin başarıyla, çalışan Merkezi ' ne kadar geri yazma adımlarını gösterir. 
@@ -40,7 +40,7 @@ SAP başarılı bir şekilde geri yazma uygulamasını, Azure Active Directory '
 
 Bu başarılı bir şekilde geri yazma Kullanıcı sağlama çözümü için idealdir:
 
-* Office 365 kullanan kuruluşlar (e-posta adresi, telefon, Kullanıcı adı gibi) tarafından yönetilen yetkili öznitelikleri, çalışan merkezi 'ne geri yazmak istiyor.
+* BT tarafından yönetilen yetkili öznitelikleri (e-posta adresi, telefon, Kullanıcı adı gibi) başarılı bir şekilde çalışan merkezi 'ne geri yazmak için Microsoft 365 kullanan kuruluşlar.
 
 ## <a name="configuring-successfactors-for-the-integration"></a>Tümleştirme için başarılı faktörleri yapılandırma
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/07/2020
+ms.date: 09/10/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8fa409a8ee66cd69016b7978f0d5f0194b338c4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: d0f67f9052467e5d1a89fc4c520bd39821403bbe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959162"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015458"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın
 
@@ -147,7 +147,7 @@ SCıM 2,0 kullanıcı yönetim API 'sini destekleyen bir uygulama oluşturuyorsa
 [SCIM 2,0 protokol belirtimi](http://www.simplecloud.info/#Specification)içinde, uygulamanız şu gereksinimleri karşılamalıdır:
 
 * , [SCıM protokolünün 3,3](https://tools.ietf.org/html/rfc7644#section-3.3)bölümünde olduğu gibi, kullanıcıların ve isteğe bağlı olarak grupların oluşturulmasını destekler.  
-* , [SCıM protokolünün Bölüm 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2)göre, yama istekleri olan kullanıcı veya grupların değiştirilmesini destekler.  
+* , [SCıM protokolünün Bölüm 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2)göre, yama istekleri olan kullanıcı veya grupların değiştirilmesini destekler. Destekleme, grupların ve kullanıcıların bir performansa göre sağlanmasını sağlar. 
 * , [SCıM protokolünün bölüm başına 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1)göre daha önce oluşturulmuş bir kullanıcı veya grup için bilinen bir kaynağı almayı destekler.  
 * , [SCıM protokolünün](https://tools.ietf.org/html/rfc7644#section-3.4.2)bölüm başına 3.4.2 göre Kullanıcı veya grupların sorgulanmasını destekler.  Varsayılan olarak, kullanıcılar, `id` ve tarafından sorgulanır ve grupları tarafından `username` `externalId` sorgulanır `displayName` .  
 * , SCıM protokolünün Bölüm 3.4.2 göre, kullanıcının KIMLIĞE ve yöneticiye göre sorgulanmasını destekler.  
@@ -746,7 +746,7 @@ TLS 1,2 şifre paketleri minimum çubuğu:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP aralıkları
-Azure AD sağlama hizmeti şu anda AzureActiveDirectory ve AzureActiveDirectoryDomainServices için IP aralıkları altında [aşağıda](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)listelenen şekilde çalışır. AzureActiveDirectory altındaki yalnızca IP aralıklarında birleştirilecek olan iş devam ediyor. 
+Azure AD sağlama hizmeti şu anda [burada](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)listelenen AZUREACTIVEDIRECTORY Için IP aralıkları altında çalışır. Azure AD sağlama hizmeti 'nin uygulamanıza bağlanmasına izin vermek için AzureActiveDirectory etiketinin altına listelenen IP aralıklarını ekleyebilirsiniz. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3. Adım: SCıM uç noktası oluşturma
 
@@ -1175,7 +1175,7 @@ Birden fazla kiracı tarafından kullanılacak bir uygulama oluşturuyorsanız, 
 Uygulamanızın eklendi Quicky olduğundan ve müşterilerin sorunsuz bir dağıtım deneyimine sahip olduğundan emin olmak için aşağıdaki denetim listesini izleyin. Bu bilgiler, galeriye ekleme sırasında sizin için toplanacaktır. 
 > [!div class="checklist"]
 > * [SCIM 2,0](#step-2-understand-the-azure-ad-scim-implementation) Kullanıcı ve grup uç noktasını destekleme (yalnızca bir tane gereklidir ancak her ikisi de önerilir)
-> * Her kiracı için saniyede en az 25 istek desteklenir (gerekli)
+> * Kullanıcıların ve grupların gecikme süresi olmadan sağlanması ve sağlanması için her kiracı için saniyede en az 25 istek desteklenir (gerekli)
 > * Mühendisler için mühendislik ve destek kişileri oluşturun müşteri galerisini ekleme (gerekli)
 > * uygulamanız için 3 süresi dolan test kimlik bilgileri (gerekli)
 > * Aşağıda açıklandığı gibi, OAuth yetkilendirme kodu yetkisini veya uzun süreli bir belirteci destekler (gerekli)

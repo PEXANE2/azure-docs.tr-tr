@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
-ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: device-developer
+ms.openlocfilehash: 34b767a2cc48c94fdb5c2db032321b9254bf4ce2
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83715078"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017702"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Azure Sphere cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -20,7 +21,7 @@ ms.locfileid: "83715078"
 
 Bu makalede bir Azure Sphere (DevKit) cihazının bir Azure IoT Central uygulamasına nasıl bağlanacağı gösterilmektedir.
 
-Azure Sphere, internet 'e bağlı cihazlara yönelik yerleşik iletişim ve güvenlik özellikleriyle güvenli, üst düzey bir uygulama platformudur. Güvenli, bağlı, çapraz mikro denetleyici birimi (MCU), özel bir üst düzey Linux tabanlı işletim sistemi (OS) ve sürekli ve yenilenebilir güvenlik sağlayan bulut tabanlı bir güvenlik hizmeti içerir. Daha fazla bilgi için bkz. [Azure Sphere nedir?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere).
+Azure Sphere güvenli, internete bağlı cihazlara yönelik yerleşik bağlantı ve güvenlik özellikler içeren üst düzey bir uygulama platformudur. Güvenli, bağlı, çapraz mikro denetleyici birimi (MCU), özel bir üst düzey Linux tabanlı işletim sistemi (OS) ve sürekli ve yenilenebilir güvenlik sağlayan bulut tabanlı bir güvenlik hizmeti içerir. Daha fazla bilgi için bkz. [Azure Sphere nedir?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere).
 
 [Azure Sphere geliştirme setleri](https://azure.microsoft.com/services/azure-sphere/get-started/) , prototip oluşturma ve Azure Sphere uygulamalar geliştirme için ihtiyacınız olan her şeyi sağlar. Azure Sphere ile Azure IoT Central, IoT çözümüne yönelik uçtan uca bir yığın sağlar. Azure Sphere, cihaz desteği sağlar ve sıfır kodlu bir yönetilen IoT uygulama platformu olarak IoT Central.
 
@@ -52,7 +53,7 @@ IoT Central Azure Sphere bir cihaz oluşturmak için:
 
 1. Cihaz şablonunda, **sıcaklık** ve **düğme basma**' ı göstermek için **genel bakış** adlı görünümü düzenleyin.
 
-1. Okuma/yazma özelliği **durumunu**gösteren başka bir görünüm eklemek için **cihazı ve bulut verilerini** görüntüleme türünü seçin. **Durum LED** özelliğini formun sağ tarafındaki boş, noktalı dikdörtgene sürükleyin. **Kaydet**'i seçin.
+1. Okuma/yazma özelliği **durumunu**gösteren başka bir görünüm eklemek için **cihazı ve bulut verilerini** görüntüleme türünü seçin. **Durum LED** özelliğini formun sağ tarafındaki boş, noktalı dikdörtgene sürükleyin. **Kaydet**’i seçin.
 
 ## <a name="prepare-the-device"></a>Cihazı hazırlama
 
@@ -75,10 +76,10 @@ Bir fiziksel Azure Sphere DevKit cihazınız yoksa, Azure IoT Central uygulamas�
 Sanal cihaz oluşturmak için:
 
 - **Azure IoT Sphere > cihazları** seçme
-- **+ Yeni**seçeneğini belirleyin.
+- **+ Yeni** seçeneğini belirleyin.
 - Benzersiz bir **CIHAZ kimliği** ve kolay bir **Cihaz adı**girin.
 - **Benzetimli** ayarı etkinleştirin.
-- **Oluştur**'u seçin.
+- **Oluştur**’u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
