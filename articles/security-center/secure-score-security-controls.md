@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 9594e1ed14b017591ea2c4ddda59ba61feb81b0c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 91935e8c052a9130d0a40ed292ca466bc1ab5427
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272289"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567633"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde gelişmiş güvenli puan
 
@@ -45,17 +45,17 @@ Güvenlik Merkezi 'nin güvenli skor sayfasında şunları içerir:
 > Güvenlik Merkezi 'nin önceki sürümleri, öneri düzeyinde puan elde eder: tek bir kaynak için bir öneri belirlediğinizde, güvenli puanınız geliştirilmiştir. Bugün, skor yalnızca bir denetim içindeki tek bir kaynak için *Tüm* önerileri düzeltmenizi artırdıysanız gelişir. Bu nedenle, puanınız yalnızca bir kaynağın güvenliğini artırdığınızda geliştirilir.
 
 
-## <a name="accessing-your-secure-score"></a>Güvenli puanına erişme
+## <a name="access-your-secure-score"></a>Güvenli puanınızı erişin
 
 Azure Güvenlik Merkezi REST API ile Azure portal veya program aracılığıyla aracılığıyla genel güvenli puanınızın yanı sıra abonelik başına puanınızı bulabilirsiniz.
 
-### <a name="getting-your-secure-score-from-the-portal"></a>Portaldan güvenli puanınızı alma
+### <a name="get-your-secure-score-from-the-portal"></a>Portaldan güvenli puanınızı alın
 
 Güvenlik Merkezi, puanınızı portalda göze çarpacak şekilde görüntüler: Genel Bakış sayfasında gösterilen ilk şey. Adanmış güvenli puan sayfasına tıkladığınızda, puanı aboneliğe göre aşağı doğru görürsünüz. Önceliklendirilmiş önerilerin ayrıntılı listesini görmek için tek bir aboneliğe tıklayın ve bu bilgilerin, aboneliğin puanına ait olduğunu belirten olası etkileri görebilirsiniz.
 
 ![Portalda gösterildiği gibi genel güvenli puan](media/secure-score-security-controls/single-secure-score-via-ui.png)
 
-### <a name="getting-your-secure-score-from-the-rest-api"></a>REST API güvenli puanınızı alma
+### <a name="get-your-secure-score-from-the-rest-api"></a>REST API güvenli puanınızı alın
 
 Puanınızı [güvenli Puanlama API 'si](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (Şu anda önizleme aşamasında) aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin, belirli bir aboneliğin Puanını almak için **güvenli puanlar** API 'sini kullanabilirsiniz. Ayrıca, güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için **güvenli puan denetimleri** API 'sini de kullanabilirsiniz.
 
@@ -91,13 +91,22 @@ Bu denetim için en yüksek puan, sistem güncelleştirmelerini Uygula, her zama
 |**Güvenlik puanı**<br>Birden çok abonelik|<br>Tüm aboneliklerdeki tüm kaynakların geçerli puanları eklenir ve hesaplama daha sonra tek bir abonelikle aynı olur<br><br>Birden çok abonelik görüntülenirken, güvenli puan tüm etkin ilkelerin içindeki tüm kaynakları değerlendirir ve her bir güvenlik denetiminin en fazla puanı üzerinde Birleşik etkileri gruplandırır.<br>![Tüm denetimler etkin olan birden çok abonelik için güvenli puan](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Birleşik puan bir ortalama **değil** ; Bunun yerine, tüm aboneliklerdeki tüm kaynakların durumunun değerlendirilmiş bir şekilde olduğunu gösterir.<br>Burada, öneriler sayfasına giderseniz ve kullanılabilir olası noktaları eklerseniz, geçerli puan (24) ile kullanılabilir maksimum puan (60) arasındaki fark olduğunu göreceksiniz.|
 ||||
 
-## <a name="improving-your-secure-score"></a>Güvenli puanınızı iyileştirme
+### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>Hangi öneriler, güvenli puan hesaplamalarına dahildir?
+
+Yalnızca yerleşik önerilerin güvenli puanı üzerinde etkisi vardır.
+
+Ayrıca, **Önizleme** olarak işaretlenen öneriler, güvenli puanınızın hesaplamalarına dahil değildir. Önizleme dönemi sona erdiğinde puanınızın altına katkıda bulunduklarında, bunlar mümkün olduğunda yine de düzeltilmelidir.
+
+Önizleme önerisi örneği:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Önizleme bayrağıyla ilgili öneri":::
+
+
+## <a name="improve-your-secure-score"></a>Secure score’unuzu iyileştirme
 
 Güvenli puanınızı iyileştirmek için, öneriler listenizden güvenlik önerilerini düzeltin. Her bir kaynak için veya **hızlı düzeltme** kullanarak her öneriyi el ile düzeltebilirsiniz! bir kaynak grubuna hızlıca bir öneri için düzeltme uygulamak üzere (kullanılabilir olduğunda) seçeneği. Daha fazla bilgi için bkz. [önerileri](security-center-remediate-recommendations.md)düzeltme.
 
->[!IMPORTANT]
-> Yalnızca yerleşik önerilerin güvenli puanı üzerinde etkisi vardır.
-
+Puanınızı artırmanın ve kullanıcılarınızın puanınızı olumsuz yönde etkileyen kaynaklar oluşturmadığından ve ilgili önerilerden zorla ve reddetme seçeneklerini yapılandıracağından emin olmanın bir diğer yolu. [Zorla/reddetme önerilerini kullanarak yanlış yapılandırma önleme konusunda](prevent-misconfigurations.md)daha fazla bilgi edinin.
 
 ## <a name="security-controls-and-their-recommendations"></a>Güvenlik denetimleri ve önerileri
 
@@ -144,7 +153,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Güvenlik yapılandırmasını düzeltme (maks. puan 4)</p></strong>Yanlış yapılandırılmış BT varlıklarının saldırıya uğramakta olma riski daha yüksektir. Varlıklar dağıtıldığında ve son tarihler karşılanıyorsa, temel sağlamlaştırma eylemleri genellikle unutulur. Güvenlik yapılandırması hataları altyapıdaki herhangi bir düzeyde olabilir: işletim sistemleri ve ağ gereçlerden bulut kaynaklarına.<br>Azure Güvenlik Merkezi, kaynaklarınızın yapılandırmalarını endüstri standartları, yönetmelikler ve kıyaslamalar ile sürekli olarak karşılaştırır. Kuruluşunuza göre ilgili "uyumluluk paketlerini" (standartlar ve temeller) yapılandırdığınızda, tüm boşluklar CCEıD ve olası güvenlik etkisi hakkında bir açıklama içeren güvenlik önerilerine neden olur.<br>Yaygın olarak kullanılan paketler, <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure Güvenlik kıyaslaması</a> ve <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure temelleri kıyaslama sürümü 1.1.0</a></td>
-    <td class="tg-lboi"; width=55%>- Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır<br>- Kapsayıcı güvenlik yapılandırmalarında güvenlik açıkları düzeltilmelidir<br>- Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir<br>- Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir<br>- İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>- İzleme Aracısı makinelerinizde yüklü olmalıdır<br>- Log Analytics Aracısı Windows tabanlı Azure Arc makinelerinizde yüklü olmalıdır (Önizleme)<br>- Log Analytics Aracısı, Linux tabanlı Azure yay makinelerinizde yüklü olmalıdır (Önizleme)<br>- İzleme Aracısı sanal makine ölçek kümelerine yüklenmelidir<br>- İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir</td>
+    <td class="tg-lboi"; width=55%>- Kapsayıcı güvenlik yapılandırmalarında güvenlik açıkları düzeltilmelidir<br>- Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir<br>- Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir<br>- İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>- İzleme Aracısı makinelerinizde yüklü olmalıdır<br>- Log Analytics Aracısı Windows tabanlı Azure Arc makinelerinizde yüklü olmalıdır (Önizleme)<br>- Log Analytics Aracısı, Linux tabanlı Azure yay makinelerinizde yüklü olmalıdır (Önizleme)<br>- İzleme Aracısı sanal makine ölçek kümelerine yüklenmelidir<br>- İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Yetkisiz ağ erişimini kısıtla (maks. puan 4)</p></strong>Kuruluş içindeki uç noktalar, sanal ağınızdan desteklenen Azure hizmetlerine doğrudan bağlantı sağlar. Bir alt ağdaki sanal makineler tüm kaynaklarla iletişim kurabilir. Bir alt ağ içindeki kaynaklarla ve bu kaynaklardan gelen iletişimi sınırlandırmak için bir ağ güvenlik grubu oluşturun ve alt ağ ile ilişkilendirin. Kuruluşlar, gelen ve giden kurallar oluşturarak yetkisiz trafiğe karşı sınırlayabilir ve koruyabilir.</td>

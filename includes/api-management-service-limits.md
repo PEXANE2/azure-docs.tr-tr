@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 072f13f5a0884cf95fe760e17ff0d770111f4da0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ed918c841989cb50efa362251d09c0b655b7fc4
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204618"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89570145"
 ---
 | Kaynak | Sınır |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -29,7 +29,7 @@ ms.locfileid: "82204618"
 | Hizmet örneği başına en fazla abonelik sayısı<sup>8</sup> | 500 |
 | Hizmet örneği başına en fazla istemci sertifikası sayısı<sup>8</sup> | 50 |
 | Hizmet örneği başına en fazla API sayısı<sup>8</sup> | 50 |
-| Hizmet örneği başına en fazla API işlemi sayısı<sup>8</sup> | 1000 |
+| Hizmet örneği başına en fazla API işlemi sayısı<sup>8</sup> | 1.000 |
 | En fazla toplam istek süresi<sup>8</sup> | 30 saniye |
 | En fazla arabelleğe alınmış yük boyutu<sup>8</sup> | 2 MIB |
 | En yüksek istek URL 'SI boyutu<sup>9</sup> | 4096 bayt |
@@ -42,6 +42,6 @@ ms.locfileid: "82204618"
 <sup>5</sup> Bu sınır, temel, standart ve Premium katmanları için geçerlidir. Tüketim katmanında, ilke belgesi boyutu 4 KiB ile sınırlıdır.<br/>
 <sup>6</sup> Yalnızca geliştirici ve Premium katmanlarında birden çok özel etki alanı desteklenir.<br/>
 <sup>7</sup> CA sertifikaları, tüketim katmanında desteklenmez.<br/>
-<sup>8</sup> Bu kaynak yalnızca tüketim katmanı için geçerlidir.<br/>
+<sup>8</sup> Bu sınır yalnızca tüketim katmanı için geçerlidir. Bu kategorilerde diğer katmanlara yönelik bir sınır yoktur.<br/>
 <sup>9</sup> Yalnızca tüketim katmanı için geçerlidir. En fazla 2048 bayt uzunluğunda sorgu dizesi içerir.<br/>
 <sup>10</sup> Şirket içinde barındırılan ağ geçitleri yalnızca geliştirici ve Premium katmanlarda desteklenir. Sınır, [kendinden konak ağ geçidi kaynaklarının](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway)sayısı için geçerlidir. Bu sınırı artırmak için lütfen [desteğe](https://azure.microsoft.com/support/options/)başvurun. Şirket içinde barındırılan bir ağ geçidi kaynağıyla ilişkili düğümlerin (veya çoğaltmaların) sayısının Premium katmanda sınırsız olduğunu ve geliştirici katmanındaki tek bir düğümde bulunduğunu unutmayın.

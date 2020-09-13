@@ -3,12 +3,12 @@ title: İzleme ve günlüğe kaydetme-Azure
 description: Bu makalede, IoT Edge izleme ve günlüğe kaydetme hakkında canlı video analizine genel bakış sunulmaktadır.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934302"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567563"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 
@@ -20,7 +20,8 @@ Ayrıca, modülün oluşturduğu günlükleri nasıl denetleyebileceğinizi de �
 
 IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki sınıflandırmaya göre yayar.
 
-![IoT Edge telemetri şemasında canlı video analizi](./media/telemetry-schema/taxonomy.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Olayların taksonomisi":::
 
 * İşletimsel: bir kullanıcı tarafından alınan eylemlerin bir parçası olarak veya bir [medya grafiğinin](media-graph-concept.md)yürütülmesi sırasında oluşturulan olaylar.
    
@@ -71,6 +72,7 @@ IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki 
    * Örnekler:
       
       Hareket algılandı (aşağıda), çıkarım sonucu.
+
    ```      
    {
      "body": {
@@ -98,15 +100,19 @@ IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki 
      }
    }
    ```
+
 Modül tarafından yayılan olaylar [IoT Edge hub 'ına](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)gönderilir ve oradan başka hedeflere yönlendirilebilir. 
 
 ### <a name="timestamps-in-analytic-events"></a>Analitik olaylardaki zaman damgaları
+
 Yukarıda belirtildiği gibi, video analizinin bir parçası olarak oluşturulan olaylar kendileriyle ilişkili bir zaman damgasına sahiptir. Canlı videoyu grafik topolojinizin bir parçası olarak [kaydettiyse](video-recording-concept.md) bu zaman damgası, Kaydedilen videoda belirli bir olayın oluştuğu yeri bulmanıza yardımcı olur. Aşağıda, bir analitik olaydaki zaman damgasının, bir [Azure Media Service](terminology.md#asset)varlığına kaydedilen videonun zaman çizelgesine eşlenme yönergeleri verilmiştir.
 
 İlk olarak, `eventTime` değeri ayıklayın. Kaydın uygun bir bölümünü almak için bu değeri bir [zaman aralığı filtresinde](playback-recordings-how-to.md#time-range-filters) kullanın. Örneğin, 30 saniye önce başlayan `eventTime` ve daha sonra sona erecek bir video getirmek isteyebilirsiniz. Yukarıdaki örnekte, `eventTime` 2020-05-12T23:33:09.381 z olduğunda, +/-30 saniye penceresi için BIR HLS bildirimi isteği aşağıdaki gibi görünür:
+
 ```
 https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
 ```
+
 Yukarıdaki URL, medya çalma listeleri için URL 'Leri içeren, bu şekilde adlandırılan [ana çalma listesini](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)döndürür. Medya çalma listesi aşağıdaki gibi girdileri içerir:
 
 ```
@@ -199,7 +205,7 @@ Olay türleri bir ad alanına aşağıdaki şemaya göre atanır:
 
 #### <a name="event-classes"></a>Olay sınıfları
 
-|Sınıf Adı|Açıklama|
+|Sınıf Adı|Description|
 |---|---|
 |Analiz  |İçerik analizinin bir parçası olarak oluşturulan olaylar.|
 |Tanılama    |Sorunların ve performansın tanılanmasına yardımcı olan olaylar.|

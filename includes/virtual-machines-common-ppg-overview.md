@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81421817"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89570129"
 ---
 VM 'Lerin tek bir bölgeye yerleştirilmesi, örnekler arasındaki fiziksel mesafeyi azaltır. Bunları tek bir kullanılabilirlik alanına koymak, bunları fiziksel olarak bir araya getirir. Ancak, Azure ayak izi büyüdükçe, tek bir kullanılabilirlik alanı birden fazla fiziksel veri merkezine yayılabilir ve bu da uygulamanızı etkileyen bir ağ gecikme süresi oluşmasına neden olabilir. 
 
@@ -34,7 +34,7 @@ Yakınlık yerleşimi grubu, Azure işlem kaynaklarının fiziksel olarak birbir
 
 Yakınlık yerleşimi grubu, Azure 'da yeni bir kaynak türüdür. Diğer kaynaklarla kullanmadan önce bir tane oluşturmanız gerekir. Oluşturulduktan sonra sanal makineler, kullanılabilirlik kümeleri veya sanal makine ölçek kümeleri ile birlikte kullanılabilir. Yakınlık yerleşimi grubu KIMLIĞINI sağlayan işlem kaynaklarını oluştururken bir yakınlık yerleşimi grubu belirtirsiniz. 
 
-Ayrıca, mevcut bir kaynağı bir yakınlık yerleşimi grubuna taşıyabilirsiniz. Bir kaynağı bir yakınlık yerleşimi grubuna taşırken, bir varlık potansiyel olarak bölgede farklı bir veri merkezine dağıtıldıktan sonra, birlikte bulundurma kısıtlamasını karşılamadan önce varlığı durdurmanız (serbest bırakma) gerekir. 
+Ayrıca, mevcut bir kaynağı bir yakınlık yerleşimi grubuna taşıyabilirsiniz. Bir kaynağı bir yakınlık yerleşimi grubuna taşırken, bir varlık büyük olasılıkla birlikte bulundurma kısıtlamasını karşılamak için bölgedeki farklı bir veri merkezine yeniden dağıtılmasından bu yana varlığı durdurmanız (serbest bırakma) gerekir. 
 
 Kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri söz konusu olduğunda, yakınlık yerleşimi grubunu ayrı sanal makineler yerine kaynak düzeyinde ayarlamanız gerekir. 
 

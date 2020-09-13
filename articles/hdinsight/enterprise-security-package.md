@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 07210350826001bd3e0be6e04be211c9de43695a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91fa6a8da555d0b0cc79b262a83306c1f72aa68a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82997262"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567104"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Azure HDInsight için Kurumsal Güvenlik Paketi
 
@@ -20,7 +20,7 @@ Kurumsal Güvenlik, HDInsight kümenize küme iş akışı oluşturma işlemi ka
 
 * Kimlik doğrulaması için Active Directory ile tümleştirme.
 
-    Geçmişte, yerel yönetici kullanıcısı ve yerel SSH kullanıcısı ile HDInsight kümeleri oluşturdunuz. Yerel yönetici kullanıcı tüm dosyalara, klasörlere, tablolara ve sütunlara erişebilir.  Kurumsal Güvenlik Paketi, HDInsight 'ı Active Directory ile tümleştirerek rol tabanlı erişim denetimini etkinleştirirsiniz. Şirket içi Active Directory Azure Active Directory Domain Services içerir. IaaS sanal makinesinde veya Active Directory. Kümedeki etki alanı yöneticisi, kullanıcılara kendi şirket (etki alanı) Kullanıcı adını ve parolasını kullanmasını sağlayabilir.
+    Geçmişte, yerel yönetici kullanıcısı ve yerel SSH kullanıcısı ile HDInsight kümeleri oluşturdunuz. Yerel yönetici kullanıcı tüm dosyalara, klasörlere, tablolara ve sütunlara erişebilir.  Kurumsal Güvenlik Paketi, HDInsight 'ı Azure Active Directory Domain Services ile tümleştirerek rol tabanlı erişim denetimini etkinleştirirsiniz.
 
     Daha fazla bilgi için bkz.
 

@@ -1,14 +1,14 @@
 ---
 title: Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 description: Müşteri kiracılarından yönetilen kiracınıza olan yetkilendirme etkinliğini izlemeyi öğrenin.
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19c8cd4fa2b43961c46640a736a91e3fed3ac79d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589750"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567614"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 
@@ -48,6 +48,9 @@ Bu çok geniş bir erişim düzeyi olduğundan, bu rolü tek bir kullanıcı vey
 - Bu hizmet sorumlusunun, temsilcili müşteri kaynaklarına erişimi olmadığından emin olun.
 - Azure Key Vault kimlik doğrulaması yapmak ve güvenli bir şekilde [depolamak](../../key-vault/general/best-practices.md) [Için bir sertifika kullanın](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in) .
 - Erişimi olan kullanıcıları hizmet sorumlusu adına hareket etmek için sınırlayın.
+
+> [!NOTE]
+> Ayrıca, kök kapsamdaki Izleme okuyucusu Azure yerleşik rolünü bireysel kullanıcılara veya Kullanıcı gruplarına atayabilirsiniz. Bu, bir kullanıcının [Azure Portal doğrudan yetkilendirme bilgilerini görüntüleyebilmesini](#view-delegation-changes-in-the-azure-portal)istiyorsanız yararlı olabilir. Bunu yaparsanız, mümkün olan en az sayıda kullanıcıyla sınırlı olması gereken geniş bir erişim düzeyi olduğunu unutmayın.
 
 Kök kapsam atamalarını yapmak için aşağıdaki yöntemlerden birini kullanın.
 
@@ -164,6 +167,15 @@ else {
 
 > [!TIP]
 > Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, [birden çok kiracıyı yöneten kuruluşlar](../concepts/enterprise.md) aynı işlemlerin aynısını kullanabilir.
+
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Azure portal temsili değişikliklerini görüntüle
+
+Izleme okuyucusu Azure yerleşik rolü kök kapsamda atanmış olan kullanıcılar, doğrudan Azure portal, yetkilendirme değişikliklerini görüntüleyebilir.
+
+1. **Müşterilerimiz** sayfasına gidin ve ardından sol taraftaki gezinti menüsünde **etkinlik günlüğü** ' nü seçin.
+1. Ekranın üst kısmındaki filtrede **Dizin etkinliğinin** seçildiğinden emin olun.
+
+Temsili değişikliklerinin bir listesi görüntülenir. **Durum**, **olay kategorisi**, **saat**, **zaman damgası**, **abonelik**, **olay tarafından başlatılan olay**, kaynak **grubu**, **kaynak türü**ve **kaynak** değerlerini göstermek veya gizlemek için **Sütunları Düzenle** seçeneğini belirleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

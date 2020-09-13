@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56948b700f816c13d35915400658136ffcf48846
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 1b6e2ac9d80c1c3bf76b4a3d4c44f0654100670f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783595"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567427"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketinin kaynak rollerini değiştirme
 
@@ -72,13 +72,13 @@ Bir erişim paketi atandığında, yetkilendirme yönetiminin kullanıcıları M
 - Bir grup veya takım bir erişim paketinin parçası olduğunda ve bu erişim paketine bir Kullanıcı atandığında, zaten mevcut değilse Kullanıcı o gruba veya takıma eklenir.
 - Bir kullanıcının erişim paketi atamasının süresi dolarsa, o anda aynı grup veya takımı içeren başka bir erişim paketine bir atamaya sahip olmadıkları takdirde, bunlar gruptan veya takımdan kaldırılır.
 
-Herhangi bir [Azure AD güvenlik grubunu veya Office 365 grubunu](../fundamentals/active-directory-groups-create-azure-portal.md)seçebilirsiniz. Yöneticiler, kataloğa herhangi bir grup ekleyebilir; Katalog sahipleri, grubun sahibiyseniz, kataloğa herhangi bir grup ekleyebilir. Bir grup seçerken aşağıdaki Azure AD kısıtlamalarını aklınızda bulundurun:
+Herhangi bir [Azure AD güvenlik grubunu veya Microsoft 365 grubunu](../fundamentals/active-directory-groups-create-azure-portal.md)seçebilirsiniz. Yöneticiler, kataloğa herhangi bir grup ekleyebilir; Katalog sahipleri, grubun sahibiyseniz, kataloğa herhangi bir grup ekleyebilir. Bir grup seçerken aşağıdaki Azure AD kısıtlamalarını aklınızda bulundurun:
 
 - Konuk dahil bir Kullanıcı, bir grup veya takıma üye olarak eklendiğinde, bu grubun veya ekibin tüm diğer üyelerini görebilirler.
 - Azure AD, Azure AD Connect kullanılarak Windows Server Active Directory eşitlenen veya Exchange Online 'da bir dağıtım grubu olarak oluşturulan bir grubun üyeliğini değiştiremiyor.  
 - Dinamik grupların üyeliği üye ekleyerek veya kaldırarak güncelleştirilemez, bu nedenle dinamik grup üyelikleri yetkilendirme yönetimiyle kullanım için uygun değildir.
 
-Daha fazla bilgi için bkz. grupları ve [Office 365 gruplarını ve Microsoft ekiplerini](/microsoftteams/office-365-groups) [karşılaştırın](/office365/admin/create-groups/compare-groups) .
+Daha fazla bilgi için bkz. grupları ve [Microsoft 365 gruplarını ve Microsoft ekiplerini](/microsoftteams/office-365-groups) [karşılaştırın](/office365/admin/create-groups/compare-groups) .
 
 1. **Pakete erişmek için kaynak rolleri ekle** sayfasında, **gruplar ve takımlar** ' a tıklayarak Grup Seç bölmesini açın.
 
@@ -90,12 +90,12 @@ Daha fazla bilgi için bkz. grupları ve [Office 365 gruplarını ve Microsoft e
 
     Grubu veya takımı seçtiğinizde, **alt tür** sütunu aşağıdaki alt türlerinden birini listeler:
 
-    | Alt tür | Açıklama |
+    | Alt tür | Description |
     | --- | --- |
     | Güvenlik | Kaynaklara erişim vermek için kullanılır. |
     | Dağıtım | Bir grup kişiye bildirim göndermek için kullanılır. |
-    | O365 | Ekipler etkin olmayan Office 365 grubu. Şirket içindeki ve dışındaki kullanıcılar arasında işbirliği için kullanılır. |
-    | Takım | Ekipler etkin olan Office 365 grubu. Şirket içindeki ve dışındaki kullanıcılar arasında işbirliği için kullanılır. |
+    | Microsoft 365 | Ekipte etkin olmayan Microsoft 365 grubu. Şirket içindeki ve dışındaki kullanıcılar arasında işbirliği için kullanılır. |
+    | Takım | Takımlar tarafından etkinleştirilen grup Microsoft 365. Şirket içindeki ve dışındaki kullanıcılar arasında işbirliği için kullanılır. |
 
 1. **Rol** listesinde **Owner** veya **member**' ı seçin.
 
@@ -178,7 +178,7 @@ Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online 
 
 Yetkilendirme Yönetimi 'nde Azure AD, erişim paketinizdeki atama ve kaynaklara yönelik toplu değişiklikleri günde birkaç kez işleyecek. Bu nedenle, bir atama yaparsanız veya erişim paketinizin kaynak rollerini değiştirirseniz, bu değişikliğin Azure AD 'de yapılması ve bu değişiklikleri diğer Microsoft Online hizmetlerine veya bağlı SaaS uygulamalarına yayılması için geçen süreyi 24 saate kadar sürebilir. Yaptığınız değişiklik yalnızca birkaç nesneyi etkiliyorsa, değişikliğin Azure AD 'de uygulanması birkaç dakika sürer. Bu durumda, diğer Azure AD bileşenleri bu değişikliği algılayacak ve SaaS uygulamalarını güncelleştirmeyecektir. Değişiklik, binlerce nesneyi etkiliyorsa değişiklik daha uzun sürer. Örneğin, 2 uygulama ve 100 Kullanıcı Ataması olan bir erişim paketiniz varsa ve erişim paketine bir SharePoint site rolü eklemeye karar verirseniz, tüm kullanıcılar bu SharePoint sitesi rolünün parçası olana kadar bir gecikme olabilir. İlerlemeyi Azure AD denetim günlüğü, Azure AD sağlama günlüğü ve SharePoint site denetim günlükleri aracılığıyla izleyebilirsiniz.
 
-Ekibin bir üyesini kaldırdığınızda bu üye Office 365 Grubundan da kaldırılır. Ekibin sohbet işlevinden kaldırma işlemi geciktirilebilir. Daha fazla bilgi için bkz. [Grup üyeliği](/microsoftteams/office-365-groups#group-membership).
+Ekibin bir üyesini kaldırdığınızda, Microsoft 365 gruptan da kaldırılır. Ekibin sohbet işlevinden kaldırma işlemi geciktirilebilir. Daha fazla bilgi için bkz. [Grup üyeliği](/microsoftteams/office-365-groups#group-membership).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
