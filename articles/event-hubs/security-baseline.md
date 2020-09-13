@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a6beb1023b3c934cdbb4b7dc479d87e23a7c96be
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f47e9cb93b90c8a2401d1dfe6c0ff7800b0bcf27
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230373"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401138"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs için Azure Güvenlik temeli
 
@@ -882,9 +882,11 @@ Event Hubs için müşteri tarafından yönetilen anahtarları yapılandırın: 
 
 Azure yönetilen kimliklerle tümleştirme: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Key Vault oluşturma: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Key Vault oluşturma: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama: https://docs.microsoft.com/azure/key-vault/managed-identity
+Key Vault kimlik doğrulaması nasıl yapılır: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Key Vault erişim ilkesi atama: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

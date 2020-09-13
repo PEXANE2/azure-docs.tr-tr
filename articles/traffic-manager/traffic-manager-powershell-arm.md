@@ -3,20 +3,20 @@ title: Azure 'da Traffic Manager yönetmek için PowerShell kullanma
 description: Bu öğrenme yoluyla, Traffic Manager için Azure PowerShell kullanmaya başlayın.
 services: traffic-manager
 documentationcenter: na
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: rohink
-ms.openlocfilehash: e9d995a69a4fc54d6f001ced7503a9138d737dbc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 21076fe23301c189d9987f78706cc81691ce7a4f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089048"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400577"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager yönetmek için PowerShell kullanma
 
@@ -125,7 +125,7 @@ Her durumda:
 * ' Weight ' belirtildiğinde isteğe bağlı. Ağırlıklar yalnızca profil ' ağırlıklı ' trafik-yönlendirme yöntemini kullanacak şekilde yapılandırıldıysa kullanılır. Aksi takdirde, bunlar yok sayılır. Belirtilmişse değer 1 ile 1000 arasında bir sayı olmalıdır. Varsayılan değer ' 1 '.
 * ' Priority ' belirtildiğinde isteğe bağlıdır. Öncelikler yalnızca profil ' Priority ' trafik-yönlendirme yöntemini kullanacak şekilde yapılandırıldıysa kullanılır. Aksi takdirde, bunlar yok sayılır. Geçerli değerler 1 ile 1000 arasında, daha düşük değerler daha yüksek önceliğe işaret eden değerlerdir. Bir uç nokta için belirtilmişse, bunların tüm uç noktalar için belirtilmesi gerekir. Atlanırsa, ' 1 ' den başlayan varsayılan değerler bitiş noktalarının listelendiği sırada uygulanır.
 
-### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>Örnek 1: kullanarak App Service uç noktaları ekleme`Add-AzTrafficManagerEndpointConfig`
+### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>Örnek 1: kullanarak App Service uç noktaları ekleme `Add-AzTrafficManagerEndpointConfig`
 
 Bu örnekte, bir Traffic Manager profili oluşturur ve cmdlet 'ini kullanarak iki App Service uç noktası ekler `Add-AzTrafficManagerEndpointConfig` .
 
@@ -137,7 +137,7 @@ $webapp2 = Get-AzWebApp -Name webapp2
 Add-AzTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $TmProfile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
-### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-aztrafficmanagerendpoint"></a>Örnek 2: kullanarak Publicıpaddress uç noktası ekleme`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-aztrafficmanagerendpoint"></a>Örnek 2: kullanarak Publicıpaddress uç noktası ekleme `New-AzTrafficManagerEndpoint`
 
 Bu örnekte, Traffic Manager profiline bir genel IP adresi kaynağı eklenir. Genel IP adresi, yapılandırılmış bir DNS adına sahip olmalıdır ve bir VM 'nin ya da bir yük dengeleyicinin NIC 'sine bağlanabilir.
 
@@ -167,7 +167,7 @@ Add-AzTrafficManagerEndpointConfig -EndpointName us-endpoint -TrafficManagerProf
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-### <a name="example-2-adding-external-endpoints-using-new-aztrafficmanagerendpoint"></a>Örnek 2: kullanarak dış uç noktaları ekleme`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-external-endpoints-using-new-aztrafficmanagerendpoint"></a>Örnek 2: kullanarak dış uç noktaları ekleme `New-AzTrafficManagerEndpoint`
 
 Bu örnekte, var olan bir profile dış uç nokta ekleyeceğiz. Profil, profil ve kaynak grubu adları kullanılarak belirtilir.
 
@@ -199,7 +199,7 @@ Set-AzTrafficManagerProfile -TrafficManagerProfile $parent
 
 Bu örnekteki kısaltma için alt veya üst profillere başka bir uç nokta eklemedik.
 
-### <a name="example-2-adding-nested-endpoints-using-new-aztrafficmanagerendpoint"></a>Örnek 2: kullanarak iç içe geçmiş uç noktaları ekleme`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-nested-endpoints-using-new-aztrafficmanagerendpoint"></a>Örnek 2: kullanarak iç içe geçmiş uç noktaları ekleme `New-AzTrafficManagerEndpoint`
 
 Bu örnekte, var olan bir alt profili var olan bir üst profile iç içe geçmiş bir uç nokta olarak ekleyeceğiz. Profil, profil ve kaynak grubu adları kullanılarak belirtilir.
 

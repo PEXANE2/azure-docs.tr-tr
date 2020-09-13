@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5546fc63b01d1da6b4033e071ac071574ab9699a
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: f233aedf8b51967264994f5a4081f8f4cd99df01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987229"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400016"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Senaryo: trafiği NVA 'lar aracılığıyla yönlendirme-özel (Önizleme)
 
@@ -40,7 +40,7 @@ Aşağıdaki bağlantı matrisi, bu senaryoda desteklenen akışları özetler:
 | **DMZ VNet** | &#8594;|       X |            X |      X    |      X       |
 | **Dallar** | &#8594;|  Statik |            X |      X    |      X       |
 
-Bağlantı matrisindeki hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları) belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, italik olan sütun üst bilgileri) öğrenip öğrenmediğini tanımlar. Farklı satırlarda ayrıntıya bakalım:
+Bağlantı matrisindeki hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları) belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, italik olan sütun üst bilgileri) öğrenip öğrenmediğini tanımlar. "X", bağlantının sanal WAN tarafından yerel olarak sağlandığı ve "static" anlamına gelir, bu da bağlantının statik yollar kullanılarak sanal WAN tarafından sağlandığı anlamına gelir. Farklı satırlarda ayrıntıya bakalım:
 
 * NVA ışınsal 'ler:
   * Bağlı bileşen doğrudan sanal WAN hub 'ları üzerinde diğer bağlı ışınsal Lara ulaşacaktır.
@@ -65,14 +65,14 @@ Bu nedenle, bağlantı matrisi üç farklı bağlantı deseni sunar ve bu üç y
 
 Sanal ağlar arası ve daldan VNet trafiğinin hizmet VNet 'teki NVA 'dan (VNet 4) geldiğinden emin olmak için bu statik yollara ihtiyacımız vardır:
 
-| Açıklama | Yol tablosu | Statik yol              |
+| Description | Yol tablosu | Statik yol              |
 | ----------- | ----------- | ------------------------- |
 | Dallar    | RT_V2B      | 10.2.0.0/16-> vnet4conn  |
 | NVA tekerlek  | Varsayılan     | 10.1.0.0/16-> vnet4conn  |
 
 Artık sanal WAN, paketlerin gönderileceği bağlantıyı bilir, ancak bağlantının bu paketleri alırken ne yapılacağını bilmesi gerekir: bağlantı yolu tablolarının kullanıldığı yer.
 
-| Açıklama | Bağlantı | Statik yol            |
+| Description | Bağlantı | Statik yol            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16-> 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16-> 10.4.0.5 |
@@ -95,7 +95,7 @@ Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönle
 
 :::image type="content" source="./media/routing-scenarios/nva-custom/figure-1.png" alt-text="Şekil 1":::
 
-## <a name="workflow"></a><a name="workflow"></a>Akışıyla
+## <a name="workflow"></a><a name="workflow"></a>İş akışı
 
 NVA aracılığıyla yönlendirmeyi ayarlamak için şunları göz önünde bulundurmanız gereken adımlar şunlardır:
 

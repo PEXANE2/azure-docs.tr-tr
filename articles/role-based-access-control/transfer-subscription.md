@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227041"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400553"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)
 
@@ -224,7 +224,7 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
 > [!WARNING]
 > Aktarılmakta olan abonelikte aynı abonelikte **olmayan** bir anahtar kasasına bağımlılığı olan bir depolama HESABı veya SQL veritabanı gibi bir kaynak için geri kalan şifrelemeyi kullanıyorsanız kurtarılamaz bir senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
 
-- Anahtar kasanız varsa, erişim ilkelerini listelemek için [az keykasa Show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) komutunu kullanın. Daha fazla bilgi için bkz. [erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama](../key-vault/key-vault-group-permissions-for-apps.md).
+- Anahtar kasanız varsa, erişim ilkelerini listelemek için [az keykasa Show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) komutunu kullanın. Daha fazla bilgi için bkz. [Key Vault erişim Ilkesi atama](../key-vault/general/assign-access-policy-cli.md).
 
     ```azurecli
     az keyvault show --name MyKeyVault

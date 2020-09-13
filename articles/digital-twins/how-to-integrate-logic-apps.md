@@ -8,22 +8,22 @@ ms.date: 8/14/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 2fc2db54217756ba0f4f7d643b1bc12ad2668209
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 20959709854f8366cc067437fe86c245fcbc3ef0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88848838"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401070"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Özel bağlayıcı kullanarak Logic Apps tümleştirme
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , uygulamalar ve hizmetler arasında iş akışlarını otomatikleştirmenize yardımcı olan bir bulut hizmetidir. Azure dijital TWINS API 'Lerine Logic Apps bağlayarak, Azure dijital TWINS ve bunların verileri etrafında bu tür otomatikleştirilmiş akışlar oluşturabilirsiniz.
 
-Azure dijital TWINS 'in Şu anda Logic Apps için Sertifikalı (önceden oluşturulmuş) bir Bağlayıcısı yoktur. Bunun yerine, Azure Digital TWINS ile Logic Apps kullanmaya yönelik geçerli işlem, Logic Apps ile çalışmak üzere değiştirilmiş [özel bir Azure dijital TWINS Swagger dosyası](https://github.com/Azure-Samples/digital-twins-custom-swaggers/blob/main/LogicApps/preview/2020-05-31-preview/digitaltwins.json) kullanarak [**özel bir Logic Apps Bağlayıcısı**](../logic-apps/custom-connector-overview.md)oluşturmaktır.
+Azure dijital TWINS 'in Şu anda Logic Apps için Sertifikalı (önceden oluşturulmuş) bir Bağlayıcısı yoktur. Bunun yerine, Azure Digital TWINS ile Logic Apps kullanmaya yönelik geçerli işlem, Logic Apps ile çalışmak üzere değiştirilmiş [özel bir Azure dijital TWINS Swagger](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) kullanarak [**özel bir Logic Apps Bağlayıcısı**](../logic-apps/custom-connector-overview.md)oluşturmaktır.
 
 Bu makalede, bir Azure dijital TWINS örneğine Logic Apps bağlamak için kullanılabilecek **özel bir bağlayıcı oluşturmak** için [Azure Portal](https://portal.azure.com) kullanacaksınız. Daha sonra bu bağlantıyı bir örnek senaryo için kullanan **bir mantıksal uygulama oluşturacaksınız** . Bu, bir Zamanlayıcı tarafından tetiklenen olayların Azure dijital TWINS örneğindeki bir ikizi otomatik olarak güncelleştirilmesini sağlayacaktır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce ** [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun** .
 
@@ -77,9 +77,9 @@ Bağlayıcının dağıtım sayfasına yönlendirilirsiniz. Dağıtım tamamland
 
 Daha sonra, oluşturduğunuz bağlayıcıyı Azure dijital TWINS 'e ulaşmak için yapılandıracaksınız.
 
-İlk olarak, Logic Apps çalışmak üzere değiştirilmiş olan özel bir Azure dijital TWINS Swagger 'yi indirin. *digitaltwins.js* [Bu bağlantıdan](https://github.com/Azure-Samples/digital-twins-custom-swaggers/blob/main/LogicApps/preview/2020-05-31-preview/digitaltwins.json)indirin.
+İlk olarak, Logic Apps çalışmak üzere değiştirilmiş olan özel bir Azure dijital TWINS Swagger 'yi indirin. *Posta indirme* düğmesine basarak **Azure Digital Twins özel Swaggers** örneğini [Bu bağlantıdan](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) indirin. İndirilen *Azure_Digital_Twins_Custom_Swaggers.zip* klasörüne gidin ve sıkıştırmayı açın. Bu öğretici için özel Swagger, * üzerindeAzure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.js*bulunmaktadır.
 
-Daha sonra, bağlayıcının genel bakış sayfasından Azure portal, *Düzenle*' ye basın.
+Ardından, [Azure Portal](https://portal.azure.com) bağlayıcının genel bakış sayfasına gidin ve *Düzenle*'ye basın.
 
 :::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Önceki adımda oluşturulan bağlayıcının ' genel bakış ' sayfası. ' Düzenle ' düğmesinin etrafında Vurgula":::
 
@@ -87,7 +87,7 @@ Aşağıdaki *Logic Apps özel bağlayıcıyı Düzenle* sayfasında, bu bilgile
 * **Özel bağlayıcılar**
     - API uç noktası: REST (varsayılan olarak bırakın)
     - İçeri aktarma modu: Openapı dosyası (varsayılanı bırak)
-    - Dosya: Bu, daha önce indirdiğiniz özel Swagger dosyası olacaktır. *Içeri aktar*' a basın, makinenizde dosyayı bulun ve *Açık*' a basın.
+    - Dosya: Bu, daha önce indirdiğiniz özel Swagger dosyası olacaktır. *Içeri aktar*' a basın, makinenizde dosyayı bulun (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.js*) ve *Aç*' a basın.
 * **Genel bilgiler**
     - Simge, simge arka plan rengi, Açıklama: istediğiniz değerleri girin.
     - Düzen: HTTPS (varsayılan olarak bırakın)

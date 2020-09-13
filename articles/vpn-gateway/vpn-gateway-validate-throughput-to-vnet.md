@@ -1,21 +1,21 @@
 ---
 title: Microsoft Azure Sanal Ağ VPN aktarım hızını doğrulama
-description: Bu belgenin amacı, kullanıcının şirket içi kaynaklarından bir Azure sanal makinesine ağ aktarım hızını doğrulaması için yardım sağlamaktır.
+description: Bu makale, şirket içi kaynaklarınızdan bir Azure sanal makinesine ağ aktarım hızını doğrulamanıza yardımcı olur.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 05/29/2019
+ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d2347c0688ca58698831019a193d03fe2c6721e9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998485"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398517"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Sanal ağa yönelik VPN aktarım hızını doğrulama
 
@@ -108,7 +108,7 @@ Bu araç diske okuma/yazma işlemi gerçekleştirmez. Yalnızca bir uçtan diğe
 
    Aşağıdaki ekranda bu örnekteki çıktı gösterilmektedir:
 
-   ![Çıktı](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
+   ![Çıkış](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
 1. SEÇIM Test sonuçlarını korumak için şu komutu çalıştırın:
 
@@ -127,7 +127,7 @@ Bu araç diske okuma/yazma işlemi gerçekleştirmez. Yalnızca bir uçtan diğe
 
 En son [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) sürümünü indirin
 
-Latte.exe gibi ayrı bir klasöre yerleştirmeyi düşünün.`c:\tools`
+Latte.exe gibi ayrı bir klasöre yerleştirmeyi düşünün. `c:\tools`
 
 ### <a name="allow-latteexe-through-the-windows-firewall"></a>Windows Güvenlik Duvarı üzerinden Latte.exe izin ver
 
@@ -217,7 +217,7 @@ Yüklemeyi hızlı yapın
 
 > [!Note]
 > VM ve ağ geçidi arasında üretilen işleme testi sırasında ara atlama (ör. Sanal Gereç) olmadığından emin olun.
-> Yukarıdaki Iperf/NTTTCP testlerinden gelen önemli sonuçlar (genel verimlilik açısından) varsa, sorunun olası temel nedenlerini öğrenmek için lütfen aşağıdaki makaleye başvurun:https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> Yukarıdaki Iperf/NTTTCP testlerinden gelen önemli sonuçlar (genel verimlilik açısından) varsa, sorunun olası temel nedenlerini öğrenmek için lütfen aşağıdaki makaleye başvurun: https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
 
 Özellikle, istemci ve sunucudan paralel olarak toplanan paket yakalama izlemelerinin (Wireshark/Ağ İzleyicisi) analizi, hatalı performans değerlendirmelerinde yardımcı olacaktır. Bu izlemelerde paket kaybı, yüksek gecikme süresi, MTU boyutu yer alabilir. Parçalama, TCP 0 penceresi, sıra dışı parçalar vb.
 

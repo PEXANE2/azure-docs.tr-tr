@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
-ms.date: 04/21/2020
-ms.openlocfilehash: 383c64c585f05869e1d01b5c99693fcf560cdedc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/02/2020
+ms.openlocfilehash: b30a7822511dc6b4c3ae7e852cba49ebff6e24ad
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006680"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400866"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
@@ -66,13 +66,15 @@ Bir betik eylemi, HDInsight kümesindeki düğümlerde çalışan Bash betiktir.
 
     Kalıcı betik eylemlerinin benzersiz bir adı olmalıdır. Kalıcı betikler, ölçek işlemleri aracılığıyla kümeye eklenen yeni çalışan düğümlerini özelleştirmek için kullanılır. Kalıcı bir betik, ölçeklendirme işlemleri gerçekleştiğinde başka bir düğüm türüne değişiklikler de uygulayabilir. Bir baş düğüm bir örnektir.
 
-    `Ad hoc`betikler kalıcı değil. Küme oluşturma sırasında kullanılan betik eylemleri otomatik olarak kalıcı hale getirilir. Betik çalıştırıldıktan sonra kümeye eklenen çalışan düğümlerine uygulanmaz. Ardından, bir `ad hoc` betiği kalıcı bir betiğe yükseltebilir veya kalıcı bir betiği bir `ad hoc` betiğe indirgeyebilirsiniz. Özel olarak olması gerektiğini gösterseniz bile, başarısız olan betikler kalıcı olmaz.
+    `Ad hoc` betikler kalıcı değil. Küme oluşturma sırasında kullanılan betik eylemleri otomatik olarak kalıcı hale getirilir. Betik çalıştırıldıktan sonra kümeye eklenen çalışan düğümlerine uygulanmaz. Ardından, bir `ad hoc` betiği kalıcı bir betiğe yükseltebilir veya kalıcı bir betiği bir `ad hoc` betiğe indirgeyebilirsiniz. Özel olarak olması gerektiğini gösterseniz bile, başarısız olan betikler kalıcı olmaz.
 
 * , Yürütme sırasında komut dosyası tarafından kullanılan parametreleri kabul edebilir.
 
 * Küme düğümlerinde kök düzeyi ayrıcalıklarla çalıştırın.
 
 * Azure portal, Azure PowerShell, Azure CLı veya HDInsight .NET SDK 'Sı aracılığıyla kullanılabilir.
+
+* VM 'deki hizmet dosyalarını kaldırmak veya değiştirmek için betik eylemleri, hizmet durumunu ve kullanılabilirliğini etkileyebilir.
 
 Küme, çalıştırılan tüm betiklerin geçmişini tutar. Geçmiş, yükseltme veya indirgeme işlemleri için bir betiğin KIMLIĞINI bulmanız gerektiğinde yardımcı olur.
 
@@ -124,7 +126,7 @@ Status            : Succeeded
 
 Betik eylemi betikleri aşağıdaki yardımcı programlar aracılığıyla kullanılabilir:
 
-* Azure portalı
+* Azure portal
 * Azure PowerShell
 * Azure CLI
 * HDInsight .NET SDK 'Sı
@@ -330,7 +332,7 @@ Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'l
 
 ### <a name="hdinsight-net-sdk"></a>HDInsight .NET SDK 'Sı
 
-.NET SDK kullanarak bir kümeden betik geçmişi alma, betikleri yükseltme veya indirgeme hakkında bir örnek için bkz. [çalışan bir Linux tabanlı HDInsight kümesine karşı betik eylemi uygulama](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
+.NET SDK kullanarak bir kümeden betik geçmişi alma, betikleri yükseltme veya indirgeme hakkında bir örnek için bkz. [ çalışan bir Linux tabanlı HDInsight kümesine karşı betik eylemi uygulama](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
 > [!NOTE]  
 > Bu örnek ayrıca, .NET SDK kullanarak bir HDInsight uygulamasının nasıl yükleneceğini gösterir.

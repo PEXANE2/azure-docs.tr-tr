@@ -3,20 +3,20 @@ title: Çoklu değer trafik yönlendirmeyi Yapılandırma-Azure Traffic Manager
 description: Bu makalede, trafiği bir/AAAA uç noktalarına yönlendirmek üzere Traffic Manager nasıl yapılandırılacağı açıklanmaktadır.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: rohink
-ms.openlocfilehash: 3ac6d20acf32be9678818483e5929dee225501b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706826"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401053"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager çoklu değer yönlendirme yöntemini yapılandırma
 
@@ -42,7 +42,7 @@ En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı traf
     
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
-    | Adı                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
+    | Ad                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
     | Yönlendirme yöntemi          | **Çoklu değer** yönlendirme yöntemini seçin.                                       |
     | Abonelik            | Aboneliğinizi seçin.                          |
     | Kaynak grubu          | *MyResourceGroupTM1*öğesini seçin. |

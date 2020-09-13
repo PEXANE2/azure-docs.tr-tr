@@ -3,20 +3,20 @@ title: Azure ön kapılarında arka uçlar ve arka uç havuzları | Microsoft Do
 description: Bu makalede, ön kapı yapılandırmasında arka uçların ve arka uç havuzlarının ne olduğu açıklanmaktadır.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 18b165d83bfa154348842542bd8323a40330aa2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 66767d4329a0a757de99308e1f586b56b327a515
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80293462"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399931"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Azure ön kapılarındaki arka uçlar ve arka uç havuzları
 Bu makalede, Azure ön kapısına sahip uygulama dağıtımınızı eşleme kavramları açıklanmaktadır. Ayrıca, uygulama arka uçları etrafında ön kapı yapılandırmasındaki farklı koşulları da açıklar.

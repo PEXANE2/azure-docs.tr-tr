@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2ca5a591d168e18181a29cf1c00a7d1fead54595
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c8a4b22966c3d4db268e212bb3f2d1bbb78fee74
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226055"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400645"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Web istemcisiyle Windows sanal masaüstüne bağlanma
 
@@ -31,7 +31,7 @@ HTML5 özellikli herhangi bir tarayıcı çalışması gerektiği sürece, aşa�
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          | Sürüm 11 veya üzeri |
-| Apple Safari      | Mac OS                            |                     |
+| Apple Safari      | macOS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Sürüm 55 veya üzeri |
 | Google Chrome     | Windows, macOS, Linux, Chrome OS |                     |
 
@@ -48,6 +48,25 @@ Bir tarayıcıda, üzerinde Windows sanal masaüstü web istemcisinin Azure Reso
 >Windows sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, oturumunuzu açmanız veya özel bir tarayıcı penceresi kullanmanız gerekir.
 
 Oturum açtıktan sonra, artık kaynakların bir listesini görmeniz gerekir. Kaynakları, **tüm kaynaklar** sekmesindeki normal bir uygulama gibi seçerek de başlatabilirsiniz.
+
+## <a name="using-an-input-method-editor"></a>Giriş Yöntemi Düzenleyicisi kullanma
+
+Web istemcisi, **1.0.21.16 veya üzeri**sürümlerde uzak oturumunda bir Giriş Yöntemi Düzenleyicisi 'NI (IME) kullanmayı destekler. Uzak oturumda kullanmak istediğiniz klavyeye ait dil paketinin konak sanal makinesine yüklenmesi gerekir. Uzak oturumda dil paketleri ayarlama hakkında daha fazla bilgi edinmek için [Windows 10 çoklu oturum görüntüsüne dil paketleri ekleme ' ye](language-packs.md)göz atın.
+
+Web istemcisini kullanarak IME girişini etkinleştirmek için:
+
+1. Uzak oturuma bağlanmadan önce Web istemcisi **ayarları** paneline gidin.
+
+2. **Giriş yöntemi düzenleyicisini etkinleştir** ayarını **Açık**olarak değiştirin.
+
+3. Açılan menüde, uzak oturumda kullanacağınız klavyeyi seçin.
+
+4. Uzak oturuma bağlanın.
+
+Uzak oturuma odaklandığınızda Web istemcisi yerel IME penceresini bastırır. Uzak oturuma zaten bağlandıktan sonra IME ayarlarını değiştirmek herhangi bir etkiye sahip olmayacaktır.
+
+>[!NOTE]
+>Dil paketi konak sanal makinesine yüklenmemişse, uzak oturum varsayılan olarak Ingilizce (Birleşik Devletler) klavyesine sahip olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
