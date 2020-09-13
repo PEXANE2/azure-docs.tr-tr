@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3010c1d597907e7d5c7f82c8b42721dc1f934f6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd79568944d81e267a45287104bd0fa9698df2fb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74782027"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648688"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight kümesi Yönetimi en iyi uygulamaları
 
@@ -62,6 +62,8 @@ HDInsight kümelerini yönetmeye yönelik en iyi yöntemleri öğrenin.
 | El ile ölçeklendirme | [Azure HDInsight kümelerini ölçeklendirme](./hdinsight-scaling-best-practices.md) |
 | Ambarı ile izleme| [Azure HDInsight 'ta küme performansını izleme](./hdinsight-key-scenarios-to-monitor.md) |
 | Azure Izleyici günlükleri ile izleme | [Azure İzleyici günlüklerini kullanarak HDInsight kümelerini izleme](./hdinsight-hadoop-oms-log-analytics-tutorial.md) |
+| Hizmet sorunları, planlı bakım, sağlık & Güvenlik Danışma belgeleri | [Aboneliğe özgü hizmet durumu uyarılarına abone ol](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal) |
+
 
 ## <a name="how-do-i-check-on-deleted-hdinsight-clusters"></a>Nasıl yaparım? silinen HDInsight kümelerinde denetim yapılsın mı?
 

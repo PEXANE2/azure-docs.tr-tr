@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 076493fa8fd54e9585d09a3dd352eabdee652f18
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 81e08e07236d445a4ca351a7d93e7851cad69ace
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079039"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648722"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -17,7 +17,7 @@ Azure Ilkesi, kaynaklar için kurallar oluşturur. İlke tanımları, kaynak uyu
 
 Kuralları tanımlayarak, maliyetlerinizi denetleyebilir ve kaynaklarınızı daha kolay yönetebilirsiniz. Örneğin, yalnızca belirli türlerdeki sanal makinelere izin verileceğini belirtebilirsiniz. Ya da kaynakların belirli bir etiketi olmasını isteyebilirsiniz. İlke atamaları alt kaynaklar tarafından devralınır. Bir kaynak grubuna bir ilke ataması uygulanmışsa, bu kaynak grubundaki tüm kaynaklar için geçerlidir.
 
-İlke tanımı şeması şurada bulunur: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+İlke tanımı _Policyrule_ şeması şurada bulunur: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 Bir ilke tanımı oluşturmak için JSON kullanırsınız. İlke tanımı öğeleri içerir:
 
@@ -619,7 +619,7 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
 
   Kaynak özelliklerinin diğer adlarını görüntülemek ve saptamak için [Visual Studio Code Için Azure ilke uzantısını](../how-to/extension-for-vscode.md) kullanın.
 
-  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code için Azure Ilke uzantısı" border="false":::
+  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code için Azure Ilke uzantısının, diğer ad adlarını görüntüleyecek bir özelliği bir ekran görüntüsü." border="false":::
 
 - Azure Kaynak Grafiği
 

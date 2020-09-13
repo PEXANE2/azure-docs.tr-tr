@@ -3,12 +3,12 @@ title: Uyumsuzluk nedenlerini belirleme
 description: Bir kaynak uyumsuz olduğunda birçok olası neden vardır. Uyumsuzluğun ne olduğunu öğrenin.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512036"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648570"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Uyumsuzluk nedenlerini belirleme
 
@@ -30,17 +30,17 @@ Bir kaynak uyumsuz olduğunda, bu kaynağa ilişkin uyumluluk ayrıntıları **i
 
 Uyumluluk ayrıntılarını görüntülemek için aşağıdaki adımları izleyin:
 
-1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
+1. **Tüm hizmetler**' i seçip **ilke**arayıp ' yi seçerek Azure Portal Azure ilke hizmetini başlatın.
 
 1. **Genel bakış** veya **Uyumluluk** sayfasında, **uyumluluk durumunda** _uyumlu olmayan_bir ilke seçin.
 
 1. **İlke uyumluluğu** sayfasının **kaynak uyumluluğu** sekmesinde, _uyumlu olmayan_bir **Uyumluluk durumundaki** kaynağın üç nokta simgesini sağ tıklayın veya seçin. Ardından **uyumluluk ayrıntılarını görüntüle**' yi seçin.
 
-   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Uyumluluk ayrıntılarını görüntüleme seçeneği" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Kaynak uyumluluğu sekmesindeki ' uyumluluk ayrıntılarını görüntüle ' bağlantısının ekran görüntüsü." border="false":::
 
 1. **Uyumluluk ayrıntıları** bölmesi, kaynağın en son değerlendirmesinin bilgilerini geçerli ilke atamasına görüntüler. Bu örnekte, ilke tanımı _14,0_beklenirken **Microsoft. SQL/Servers/Version** alanı _12,0_ olarak bulunur. Kaynak birden çok nedenden dolayı uyumlu değilse, her biri bu bölmede listelenir.
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Uyumluluk ayrıntıları bölmesi ve uyumsuzluğun nedenleri" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Uyumluluk ayrıntıları bölmesinin ekran görüntüsü ve geçerli değere ilişkin uyumsuzluk ve hedef değer on dört." border="false":::
 
    **Auditınotexists** veya **deployifnotexists** ilke tanımı için Ayrıntılar **. Type** özelliğini ve isteğe bağlı tüm özellikleri içerir. Bir liste için, bkz. [Auditınotexists Properties](../concepts/effects.md#auditifnotexists-properties) ve [deployifnotexists özellikleri](../concepts/effects.md#deployifnotexists-properties). **Son değerlendirilen kaynak** , tanımın **Ayrıntılar** bölümünden ilgili bir kaynaktır.
 
@@ -69,7 +69,7 @@ Uyumluluk ayrıntılarını görüntülemek için aşağıdaki adımları izleyi
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Uyumluluk ayrıntıları bölmesi-* ifNotExists" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Değerlendirilen kaynak sayısı dahil olmak üzere ifNotExists için uyumluluk ayrıntıları bölmesinin ekran görüntüsü." border="false":::
 
 > [!NOTE]
 > Verileri korumak için, bir özellik değeri _gizli_ olduğunda, geçerli değer yıldız işaretlerini görüntüler.
@@ -114,13 +114,13 @@ Ayrıca, VM 'de doğrudan oturum açma erişimi de olmayabilir, ancak VM 'nin ne
 
 İlke uyumluluk ayrıntılarını görüntülemek için yukarıdaki bölümde bulunan adımları izleyerek başlayın.
 
-Uyumluluk ayrıntıları bölmesi görünümünde, **son değerlendirilen kaynağı**bağla ' yı tıklatın.
+Uyumluluk ayrıntıları bölmesi görünümünde, **son değerlendirilen kaynağı**bağla ' yı seçin.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Auditınotexists tanım ayrıntılarını görüntüle" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Auditınotexists tanım uyumluluk ayrıntılarını görüntüleme ekran görüntüsü." border="false":::
 
 **Konuk atama** sayfası tüm kullanılabilir uyumluluk ayrıntılarını görüntüler. Görünümdeki her satır, makine içinde gerçekleştirilen bir değerlendirmeyi temsil eder. **Neden** sütununda, Konuk atamasının neden _uyumlu olmadığı açıklanamayan_bir ifade gösterilir. Örneğin, parola ilkelerini denetleriz, **Reason** sütununda her ayar için geçerli değer de dahil olmak üzere metin görüntülenir.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Uyumluluk ayrıntılarını görüntüle" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Konuk atama uyumluluğu ayrıntılarının ekran görüntüsü." border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -191,7 +191,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 Yeni bir **genel önizlemenin**parçası olarak, değişiklik geçmişinin son 14 günü, [tamamlanmış mod silme Işlemini](../../../azure-resource-manager/templates/complete-mode-deletion.md)destekleyen tüm Azure kaynakları için kullanılabilir. Değişiklik geçmişi bir değişikliğin ne zaman algılandığına ilişkin ayrıntıları ve her değişiklik için _görsel bir farkı_ sağlar. Azure Resource Manager Özellikler eklendiğinde, kaldırıldığında veya değiştirilmediğinde değişiklik algılama tetiklenir.
 
-1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
+1. **Tüm hizmetler**' i seçip **ilke**arayıp ' yi seçerek Azure Portal Azure ilke hizmetini başlatın.
 
 1. **Genel bakış** veya **Uyumluluk** sayfasında, herhangi bir **uyumluluk durumunda**bir ilke seçin.
 
@@ -199,11 +199,11 @@ Yeni bir **genel önizlemenin**parçası olarak, değişiklik geçmişinin son 1
 
 1. **Kaynak uyumluluğu** sayfasında **değişiklik geçmişi (Önizleme)** sekmesini seçin. Varsa, algılanan değişikliklerin bir listesi görüntülenir.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Kaynak uyumluluğu sayfasında Azure Ilke değiştirme geçmişi sekmesi" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Değişiklik geçmişi sekmesinin ekran görüntüsü ve kaynak uyumluluğu sayfasında değişiklik süreleri algılandı." border="false":::
 
 1. Algılanan değişikliklerden birini seçin. Kaynak için _görsel fark_ , **değişiklik geçmişi** sayfasında sunulur.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Değişiklik geçmişi sayfasında Azure Ilkesi değişiklik geçmişi görsel farkı" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Değişiklik geçmişi sayfasında özelliklerin önceki ve sonraki durumunun değişiklik geçmişi görsel farkı görüntüsünün ekran görüntüsü." border="false":::
 
 Bir kaynakta yapılan değişiklikleri tanımlayan _görsel fark_ . Algılanan değişiklikler kaynağın geçerli uyumluluk durumuyla ilişkili olmayabilir.
 

@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: e3e14001758cadc8df5af3c82cb4386659a59d6a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 330c7e01b33cfdf48687c492d09fb7aab8a5e779
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843734"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648750"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -58,7 +58,7 @@ if spec is None:
 > İşlem hatlarınız, önceden yüklenmiş listesinde olmayan paketlere ihtiyacı olan birden çok yürütme Python betik modülü içeriyorsa, paketleri her modüle yükler.
 
 ## <a name="upload-files"></a>Dosyaları karşıya yükleme
-Execute Python betik modülü, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)kullanarak dosyaları karşıya yüklemeyi destekler.
+Execute Python betik modülü, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#&preserve-view=trueupload-file-name--path-or-stream-)kullanarak dosyaları karşıya yüklemeyi destekler.
 
 Aşağıdaki örnek, Python betik modülündeki bir görüntü dosyasının nasıl karşıya yükleneceğini göstermektedir:
 

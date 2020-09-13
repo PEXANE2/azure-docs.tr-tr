@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e131992f9c70feba9553b8ac278048e6e5e10061
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5c7568b0914b5e60d1a47971424f1f04f41745da
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319414"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646950"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Azure Machine Learning eğitim çalışmalarından kimlik doğrulama kimlik bilgileri gizli dizilerini kullanın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Gizli dizileri kullanmak için temel akış:
 
 ## <a name="set-secrets"></a>Gizli dizileri ayarla
 
-Azure Machine Learning, [Keykasası](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py) sınıfı gizli dizileri ayarlamaya yönelik yöntemleri içerir. Yerel Python oturumunda, önce çalışma alanınızın Key Vault bir başvurusunu alın ve sonra bu yöntemi kullanarak bir [`set_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-) gizli dizi adı ve değeri ayarlayın. __Set_secret__ yöntemi, ad zaten varsa gizli değeri günceller.
+Azure Machine Learning, [Keykasası](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py&preserve-view=true) sınıfı gizli dizileri ayarlamaya yönelik yöntemleri içerir. Yerel Python oturumunda, önce çalışma alanınızın Key Vault bir başvurusunu alın ve sonra bu yöntemi kullanarak bir [`set_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#&preserve-view=trueset-secret-name--value-) gizli dizi adı ve değeri ayarlayın. __Set_secret__ yöntemi, ad zaten varsa gizli değeri günceller.
 
 ```python
 from azureml.core import Workspace
@@ -49,13 +49,13 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 
 Gizli bir değeri, şifresiz metin olarak depolamak için güvenli olmadığı için Python kodunuza yerleştirmeyin. Bunun yerine, bir ortam değişkeninden (örneğin, Azure DevOps derleme sırrı) veya etkileşimli Kullanıcı girişinden gizli değer elde edin.
 
-Yöntemini kullanarak gizli adları listeleyebilir [`list_secrets()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--) ve aynı anda birden çok gizli dizi ayarlamanıza olanak sağlayan bir Batch sürümü[(set_secrets ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secrets-secrets-batch-) de mevcuttur.
+Yöntemini kullanarak gizli adları listeleyebilir [`list_secrets()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#&preserve-view=truelist-secrets--) ve aynı anda birden çok gizli dizi ayarlamanıza olanak sağlayan bir Batch sürümü[(set_secrets ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#&preserve-view=trueset-secrets-secrets-batch-) de mevcuttur.
 
 ## <a name="get-secrets"></a>Gizli dizileri al
 
-Yerel kodunuzda, [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) gizli değeri ada göre almak için yöntemini kullanabilirsiniz.
+Yerel kodunuzda, [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#&preserve-view=trueget-secret-name-) gizli değeri ada göre almak için yöntemini kullanabilirsiniz.
 
-' A gönderilen çalıştırmalar için [`Experiment.submit`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-) [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) yöntemini sınıfıyla birlikte kullanın [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) . Gönderilen bir çalıştırma çalışma alanının farkında olduğundan, bu yöntem çalışma alanı örneklemesini kısayollar ve gizli değeri doğrudan döndürür.
+' A gönderilen çalıştırmalar için [`Experiment.submit`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-) [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-secret-name-) yöntemini sınıfıyla birlikte kullanın [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) . Gönderilen bir çalıştırma çalışma alanının farkında olduğundan, bu yöntem çalışma alanı örneklemesini kısayollar ve gizli değeri doğrudan döndürür.
 
 ```python
 # Code in submitted run
@@ -67,7 +67,7 @@ secret_value = run.get_secret(name="mysecret")
 
 Yazarak veya yazdırarak gizli değeri göstermemeye dikkat edin.
 
-Aynı zamanda birden çok gizli dizi sürümüne erişmek için [get_secrets ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secrets-secrets-) Batch sürümü de vardır.
+Aynı zamanda birden çok gizli dizi sürümüne erişmek için [get_secrets ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-secrets-secrets-) Batch sürümü de vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
