@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6677f9275d3b6f0569216eb16046d096c574beab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290705"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030910"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Aerospace 'de tahmine dayalı bakım için çözüm şablonuna yönelik teknik kılavuz
 
@@ -170,7 +170,7 @@ Aşağıdaki adımlarda, dosya, görselleştirme için verileri (örneğin, tahm
    * Çözüm şablonu diyagramınızdaki **' Azure SQL veritabanı '** yeşil ' i etkinleştirdikten sonra, tıklayın ve sonra **' Aç '** düğmesine tıklayın.
    * Azure portal sayfasını görüntüleyen yeni bir tarayıcı sekmesi/penceresi görürsünüz. Sol panelde **' kaynak grupları '** seçeneğine tıklayın.
    * Çözümü dağıtmak için kullanmakta olduğunuz aboneliği seçin ve ardından **' YourSolutionName \_ ResourceGroup '** öğesini seçin.
-   * Yeni açılan panelde, ![ ](./media/predictive-maintenance-technical-guide/icon-sql.png) veritabanınıza erişmek için SQL simgesi simgesine tıklayın. Veritabanınızın adı bu simgenin yanında (örneğin, **' pmaintenancedb '**) ve **veritabanı sunucu adı** sunucu adı özelliği altında listelenir ve **YourSolutionName.Database.Windows.net**şuna benzer görünmelidir.
+   * Yeni açılan panelde,  ![ ](./media/predictive-maintenance-technical-guide/icon-sql.png) veritabanınıza erişmek için SQL simgesi simgesine tıklayın. Veritabanınızın adı bu simgenin yanında (örneğin, **' pmaintenancedb '**) ve **veritabanı sunucu adı** sunucu adı özelliği altında listelenir ve **YourSolutionName.Database.Windows.net**şuna benzer görünmelidir.
    * Veritabanınızın **Kullanıcı adı** ve **parolası** , çözümün dağıtımı sırasında daha önce kaydedilen Kullanıcı adı ve parola ile aynıdır.
 2. Power BI Desktop ile soğuk yol rapor dosyasının veri kaynağını güncelleştirin.
    
@@ -182,7 +182,7 @@ Aşağıdaki adımlarda, dosya, görselleştirme için verileri (örneğin, tahm
    * Sonraki açılan pencerede, sol bölmede (**Windows** ve **veritabanı**) iki seçenek görürsünüz. ' **Veritabanı '** seçeneğine tıklayın, **' Kullanıcı adı '** ve **' parola '** (çözümü ilk dağıtırken girdiğiniz Kullanıcı adı ve parola) ile bir Azure SQL veritabanı oluşturduğunuzda girin. ***Bu ayarların hangi düzeye uygulanacağını seçin***bölümünde, veritabanı düzeyi seçeneğini işaretleyin. Ardından **' Bağlan**'a tıklayın.
    * İkinci tablo **Pmresult** ' a tıklayın, ardından ![ ](./media/predictive-maintenance-technical-guide/icon-navigation.png) sağ **' sorgu ayarları '** panelinde **' uygulanan adımlar '** altında bulunan **' kaynak '** ' ın yanındaki Gezinti simgesi ' ne tıklayın ve sunucu ve veritabanı adlarını yukarıdaki adımlarda olduğu gibi güncelleştirin ve Tamam ' a tıklayın.
    * Önceki sayfaya geri döndüğünüzde pencereyi kapatın. Bir ileti görüntülenir ve **Uygula**' ya tıklayın. Son olarak, değişiklikleri kaydetmek için **Kaydet** düğmesine tıklayın. Power BI dosyanız artık sunucuyla bağlantı kurdu. Görselleştirmeleriniz boşsa, göstergelerin sağ üst köşesindeki silgi simgesine tıklayarak tüm verileri görselleştirmek için görselleştirmelerin seçimlerini temizlediğinizden emin olun. Görselleştirmelerde yeni verileri yansıtmak için Yenile düğmesini kullanın. Başlangıçta, Veri Fabrikası her 3 saatte bir yenilenmek üzere zamanlandığında yalnızca görselleştirmelerinizde çekirdek verileri görürsünüz. 3 saat sonra, verileri yenilediğinizde görselleştirmelerinizde yansıtılan yeni tahminleri görürsünüz.
-3. Seçim [Power BI çevrimiçi](https://www.powerbi.com/)olarak soğuk yol panosunu yayımlayın. Bu adım bir Power BI hesabına (veya Office 365 hesabına) ihtiyaç duyuyor.
+3. Seçim [Power BI çevrimiçi](https://www.powerbi.com/)olarak soğuk yol panosunu yayımlayın. Bu adımın Power BI bir hesabı (veya bir iş veya okul hesabı) olması gerekir.
    
    * Daha sonra "Power BI başarılı yayımlama!" ile görüntülenen bir pencere görüntülenirken " **Yayımla** " ve birkaç saniye ' ne tıklayın. yeşil bir onay işareti ile. Aşağıdaki bağlantıya tıklayın. Power BI içinde PredictiveMaintenanceAerospace. pbix dosyasını açın. Ayrıntılı yönergeleri bulmak için bkz. [Power BI Desktop yayımlama](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
    * Yeni bir pano oluşturmak için: **+** sol bölmedeki **panolar** bölümünün yanındaki işaretine tıklayın. Bu yeni Pano için "tahmine dayalı bakım tanıtımı" adını girin.
@@ -208,7 +208,7 @@ Aşağıdaki adımlarda, çözüm dağıtımı sırasında oluşturulan Stream A
 1. Azure Stream Analytics (ASA) içinde Power BI çıkışı ekleyin.
    
    * Azure Stream Analytics işinizin çıkışını Power BI panonuz olarak ayarlamak için [Azure Stream Analytics & Power BI: veri akışı verilerinin gerçek zamanlı görünürlüğü için analiz panosu](../../stream-analytics/stream-analytics-power-bi-dashboard.md) ' nda bulunan yönergeleri izlemeniz gerekir.
-   * ASA sorgusunda **aircraftmonitor**, **aircraftalert**ve **flightsbyhour**'un üç çıkışı vardır. Sorgu sekmesine tıklayarak sorguyu görüntüleyebilirsiniz. bu tabloların her birine karşılık gelen, ASA 'ye bir çıktı eklemeniz gerekir. İlk çıktıyı eklediğinizde (**aircraftmonitor**) **Çıkış diğer**adının, **veri kümesi adının** ve **tablo adının** aynı (**aircraftmonitor**) olduğundan emin olun. **Uçak uyarısı**ve **flightsbyhour**için çıkış eklemek için adımları tekrarlayın. Üç çıkış tablosunu ekledikten ve ASA işini başlattıktan sonra, bir onay iletisi almalısınız ("iş maintenancesa02asapbi başarıyla Stream Analytics başlatılıyor").
+   * ASA sorgusunda **aircraftmonitor**, **aircraftalert**ve **flightsbyhour**'un üç çıkışı vardır. Sorgu sekmesine tıklayarak sorguyu görüntüleyebilirsiniz. Bu tabloların her birine karşılık gelen bir çıktı eklemeniz gerekir. İlk çıktıyı eklediğinizde (**aircraftmonitor**) **Çıkış diğer**adının, **veri kümesi adının** ve **tablo adının** aynı (**aircraftmonitor**) olduğundan emin olun. **Uçak uyarısı**ve **flightsbyhour**için çıkış eklemek için adımları tekrarlayın. Üç çıkış tablosunu ekledikten ve ASA işini başlattıktan sonra, bir onay iletisi almalısınız ("iş maintenancesa02asapbi başarıyla Stream Analytics başlatılıyor").
 2. [Power BI çevrimiçi](https://www.powerbi.com) olarak oturum açın
    
    * Çalışma alanım 'daki sol panel veri kümeleri bölümünde **aircraftmonitor**, **aircraftalert**ve **Flightsbyhour** ***veri kümesi*** adları görüntülenmelidir. Bu, önceki adımda Azure Stream Analytics gönderdiğiniz akış verileri. Veri kümesi **flightsbyhour** , arkasındaki SQL sorgusunun doğası nedeniyle diğer iki veri kümesiyle aynı anda görüntülenmeyebilir. Ancak, bir saatten sonra gösterilmesi gerekir.

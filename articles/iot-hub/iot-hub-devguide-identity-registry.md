@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 675f25107a2e4f0ddedf468dc06afea36ffc6151
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2f811c504f8871b06805d5578ed2d70c651be25d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327761"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029843"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub 'ınızdaki kimlik kayıt defterini anlayın
 
@@ -84,7 +84,7 @@ Cihaz kimliklerini bir IoT Hub 'ının kimlik kayıt defterine toplu olarak içe
 
 İçeri ve dışarı aktarma API 'Leri hakkında daha fazla bilgi için bkz. [IoT Hub kaynak sağlayıcısı REST API 'leri](/rest/api/iothub/iothubresource). İşleri içeri ve dışarı aktarma hakkında daha fazla bilgi edinmek için bkz. [IoT Hub cihaz kimliklerinin toplu yönetimi](iot-hub-bulk-identity-mgmt.md).
 
-Cihaz kimlikleri, hizmet API 'SI aracılığıyla bir IoT Hub [REST API](/rest/api/iothub/service/jobclient/createimportexportjob) veya IoT Hub [hizmeti SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)'larından biri aracılığıyla da aktarılabilir ve içeri aktarılabilir.
+Cihaz kimlikleri, hizmet API 'SI aracılığıyla bir IoT Hub [REST API](/rest/api/iothub/service/jobs/createimportexportjob) veya IoT Hub [hizmeti SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)'larından biri aracılığıyla da aktarılabilir ve içeri aktarılabilir.
 
 ## <a name="device-provisioning"></a>Cihaz sağlama
 
@@ -112,7 +112,7 @@ IoT Hub, yaşam döngüsü bildirimleri göndererek bir kimlik oluşturulduğund
 
 Cihaz için bildirim iletisi:
 
-| Ad | Değer |
+| Name | Değer |
 | --- | --- |
 |$content türü | uygulama/json |
 |$iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -148,7 +148,7 @@ Gövde: Bu bölüm JSON biçimindedir ve oluşturulan cihaz kimliğinin ikizi te
 ```
 Modül için bildirim iletisi:
 
-| Ad | Değer |
+| Name | Değer |
 | --- | --- |
 $content türü | uygulama/json |
 $iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -188,7 +188,7 @@ Gövde: Bu bölüm JSON biçimindedir ve oluşturulan modül kimliğinin ikizi t
 
 Cihaz kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 
-| Özellik | Seçenekler | Açıklama |
+| Özellik | Seçenekler | Description |
 | --- | --- | --- |
 | deviceId |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | GenerationID |gerekli, salt okunurdur |128 karakter uzunluğunda bir IoT Hub 'ı tarafından üretilen, büyük/küçük harfe duyarlı dize. Bu değer, silinen ve yeniden oluşturulduğu zaman, cihazları aynı **DeviceID**ile ayırt etmek için kullanılır. |
@@ -212,7 +212,7 @@ Cihaz kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 
 Modül kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 
-| Özellik | Seçenekler | Açıklama |
+| Özellik | Seçenekler | Description |
 | --- | --- | --- |
 | deviceId |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | Modül kimliği |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , : = @ $ '` . |

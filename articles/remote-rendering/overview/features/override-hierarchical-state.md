@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 99f57c212dfc44d84640224b1526ab770fe97230
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a3f032ca973a188bf294155c73de3ca84f6ee30f
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009466"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024409"
 ---
 # <a name="hierarchical-state-override"></a>Hiyerarşik durumu geçersiz kılma
 
@@ -31,20 +31,23 @@ Geçersiz kılınabilen sabit durumlar kümesi şunlardır:
 * **`Hidden`**: Sahne grafiğinde ilgili kafesler gizlenir veya gösterilir.
 * **`Tint color`**: İşlenmiş bir nesne, tek bir renk tonu rengi ve renk tonu ağırlığı ile renk tonlu olabilir. Aşağıdaki görüntüde, bir tekerleğin kıyısı renk gösterilmektedir.
   
-  ![Renk renk tonu](./media/color-tint.png)
+  ![Bir nesneyi açmak için kullanılan renk tonu rengi](./media/color-tint.png)
 
 * **`See-through`**: Geometri yarı saydam olarak işlenir, örneğin bir nesnenin iç parçalarını açığa çıkarmak için. Aşağıdaki görüntüde, kırmızı hızınızı düşüren Caliper dışında, bkz.-Through modunda işlenen tüm otomobil gösterilmektedir:
 
-  ![Bkz.](./media/see-through.png)
+  ![Seçili nesneleri saydam hale getirmek için kullanılan modu göster](./media/see-through.png)
 
   > [!IMPORTANT]
   > Yalnızca *Tilebasedcomposition* [işleme modu](../../concepts/rendering-modes.md) kullanıldığında, diğer adım etkisi geçerlidir.
 
 * **`Selected`**: Geometri bir [seçim ana hattı](outlines.md)ile işlenir.
 
-  ![Seçim ana hattı](./media/selection-outline.png)
+  ![Seçili parçayı vurgulamak için kullanılan ana hat seçeneği](./media/selection-outline.png)
 
 * **`DisableCollision`**: Geometri, [uzamsal sorgulardan](spatial-queries.md)muaf tutulur. **`Hidden`** Bayrak, çakışma durumu bayrağını etkilemez, bu nedenle bu iki bayrak genellikle birlikte ayarlanır.
+
+> [!TIP]
+> Tam bir alt grafiğin görünürlük ve uzamsal sorgularını kapatmaya alternatif olarak, `enabled` bir oyun nesnesinin durumu değiştirilebilir. Bir hiyerarşi devre dışıysa, bunun üzerinde tercih vardır `HierarchicalStateOverrideComponent` .
 
 ## <a name="hierarchical-overrides"></a>Hiyerarşik geçersiz kılmalar
 
@@ -95,6 +98,11 @@ component->SetState(
 Bir örneği, `HierarchicalStateOverrideComponent` çok çalışma zamanı ek yükü eklemez. Ancak, etkin bileşenlerin sayısını düşük tutmak her zaman iyi bir uygulamadır. Örneğin, çekilen nesneyi vurgulayan bir seçim sistemi uygularken, vurgu kaldırıldığında bileşeni silmeniz önerilir. Bileşenlerin nötr özelliklerle birlikte tutulması hızlı bir şekilde eklenebilir.
 
 Saydam işleme, sunucunun GPU 'lara standart işleme göre daha fazla iş yükü koyar. Sahne grafiğinin büyük *bölümleri, çok*sayıda geometrinin görünür olması halinde, görünen bir performans sorunu haline gelebilir. Aynı [seçim anahatları](../../overview/features/outlines.md#performance)olan nesneler için de geçerlidir.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# HierarchicalStateOverrideComponent sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
+* [C++ HierarchicalStateOverrideComponent sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
 title: Raporları planlayın & izleme dağıtımı-Azure AD
-description: Raporlama ve izlemenin nasıl planlanacağını ve yürütüleceğini açıklar.
+description: Raporlama ve izleme uygulamasının nasıl planlanacağını ve yürütüleceğini açıklar.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a75cc77b45d41d7fd63eadce34265ca54b663e14
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229761"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030999"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory raporlama ve izleme dağıtımını planlayın
 
@@ -133,7 +133,7 @@ Ayrıca, oturum açma ve denetim olaylarına ilişkin yaygın senaryoları izlem
 
 Azure Olay Hub 'ına yönlendirme günlükleri, üçüncü taraf SıEM araçlarıyla tümleştirmeyi sağlar. Bu tümleştirme, ortamınızda daha zengin Öngörüler sağlamak için Azure AD etkinlik günlüğü verilerini SıEM 'niz tarafından yönetilen diğer verilerle birleştirmenizi sağlar. 
 
-[Olay hub'ına günlük akışı yapmayı](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub) öğrenin.
+[Olay hub'ına günlük akışı yapmayı](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub) öğrenin.
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Azure AD raporlama ve izleme için Işlem ve güvenlik planlayın
 

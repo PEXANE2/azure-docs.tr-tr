@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: d9d2f29ffc34c203e5f3b3ebf094e73fb9cdfb75
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c802fafa92ace2260002f7156b0df9841af8338c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132407"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029588"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik onay tabanlı iş akışları oluşturma
 
@@ -40,7 +40,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Mantıksal uygulamanızın onaylanan Üyeler için e-posta adresi ekleyebildiği "test-Members-ML" adlı bir liste içeren bir MailChimp hesabı. Hesabınız yoksa, [ücretsiz hesap için kaydolun](https://login.mailchimp.com/signup/)ve ardından [bir MailChimp listesi oluşturmayı](https://us17.admin.mailchimp.com/lists/#)öğrenin.
 
-* Office 365 Outlook veya Outlook.com 'de onay iş akışlarını destekleyen bir e-posta hesabı. Bu makalede Office 365 Outlook kullanılır. Farklı bir e-posta hesabı kullanırsanız genel adımlar aynı kalır, ancak kullanıcı arabiriminiz biraz farklı görünebilir.
+* Microsoft 365 veya Outlook.com için Outlook 'ta onay iş akışlarını destekleyen bir e-posta hesabı. Bu makalede Office 365 Outlook kullanılır. Farklı bir e-posta hesabı kullanırsanız genel adımlar aynı kalır, ancak kullanıcı arabiriminiz biraz farklı görünebilir.
 
 ## <a name="create-your-logic-app"></a>Mantıksal uygulamanızı oluşturma
 
@@ -107,7 +107,7 @@ Sonra abonelik isteklerinin bulunduğu gelen e-postaları dinleyen bir [tetikley
 
       Bu tetikleyicinin özellikleri hakkında daha fazla bilgi için bkz. [Office 365 Outlook Bağlayıcısı başvurusu](/connectors/office365/) veya [Outlook.com bağlayıcı başvurusu](/connectors/outlook/).
 
-   1. Özelliği tetikleyicide görüntülendikten sonra şu metni girin:`subscribe-test-members-ML`
+   1. Özelliği tetikleyicide görüntülendikten sonra şu metni girin: `subscribe-test-members-ML`
 
       !["Konu filtresi" özelliği için metin girin](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
 
@@ -137,7 +137,7 @@ Artık tetikleyiciniz olduğuna göre, isteği onaylamak veya reddetmek üzere e
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Hedef** | <*e-posta adresiniz*> | Onaylayanın e-posta adresi. Test için kendi adresinizi kullanabilirsiniz. Bu örnek, kurgusal " sophia.owen@fabrikam.com " e-posta adresini kullanır. |
+   | **Amaç** | <*e-posta adresiniz*> | Onaylayanın e-posta adresi. Test için kendi adresinizi kullanabilirsiniz. Bu örnek, kurgusal " sophia.owen@fabrikam.com " e-posta adresini kullanır. |
    | **Konu** | `Approve member request for test-members-ML` | Açıklayıcı bir e-posta konusu |
    | **Kullanıcı Seçenekleri** | `Approve, Reject` | Onaylayanın seçim yapabilir yanıt seçenekleri. Varsayılan olarak, onaylayan yanıt olarak "Onayla" veya "Reddet" seçeneğini belirleyebilir. |
    ||||
@@ -176,7 +176,7 @@ Sonra, onaylayanın seçili yanıtını denetlemek için bir koşul ekleyin.
 
    1. Orta karşılaştırma kutusunda, **eşittir** işlecini seçin.
 
-   1. Koşulun sağ tarafındaki **bir değer seçin** kutusunda şu metni girin:`Approve`
+   1. Koşulun sağ tarafındaki **bir değer seçin** kutusunda şu metni girin: `Approve`
 
       İşiniz bittiğinde, koşul şu örneğe benzer şekilde görünür:
 
@@ -233,7 +233,7 @@ Ardından, yeni üyenin posta listenize başarıyla katılıp katılmadığını
 
    1. Orta karşılaştırma kutusunda, **eşittir** işlecini seçin.
 
-   1. Koşulun sağ tarafındaki **bir değer seçin** kutusunda şu metni girin:`subscribed`
+   1. Koşulun sağ tarafındaki **bir değer seçin** kutusunda şu metni girin: `subscribed`
 
       İşiniz bittiğinde, koşul şu örneğe benzer şekilde görünür:
 
@@ -259,9 +259,9 @@ Ardından, onaylanan üyenin posta listenize katılımının başarılı veya ba
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Hedef** | Yes | <*e-posta adresiniz*> | Başarı e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
+   | **Amaç** | Yes | <*e-posta adresiniz*> | Başarı e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
    | **Konu** | Yes | <*Konu-başarılı-e-posta*> | Başarı e-postasının konusu. Bu öğretici için şu metni girin: <p>`Success! Member added to "test-members-ML": ` <p>Dinamik içerik listesinden **üye Ekle**' nin altında, **e-posta adresi** özelliğini seçin. |
-   | **Gövde** | Yes | <*gövde-başarılı-e-posta*> | Başarı e-postasının gövde içeriği. Bu öğretici için şu metni girin: <p>`New member has joined "test-members-ML":` <p>Dinamik içerik listesinden **e-posta adresi** özelliğini seçin. <p>Sonraki satırda şu metni girin:`Member opt-in status: ` <p> Dinamik içerik listesinden **üye Ekle**' nin altında, **durum** özelliğini seçin. |
+   | **Gövde** | Yes | <*gövde-başarılı-e-posta*> | Başarı e-postasının gövde içeriği. Bu öğretici için şu metni girin: <p>`New member has joined "test-members-ML":` <p>Dinamik içerik listesinden **e-posta adresi** özelliğini seçin. <p>Sonraki satırda şu metni girin: `Member opt-in status: ` <p> Dinamik içerik listesinden **üye Ekle**' nin altında, **durum** özelliğini seçin. |
    |||||
 
 1. Mantıksal uygulamanızı kaydedin.
@@ -284,7 +284,7 @@ Ardından, onaylanan üyenin posta listenize katılımının başarılı veya ba
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Hedef** | Yes | <*e-posta adresiniz*> | Başarısızlık e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
+   | **Amaç** | Yes | <*e-posta adresiniz*> | Başarısızlık e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
    | **Konu** | Yes | <*sorun-e-posta*> | Başarısızlık e-postasının konusu. Bu öğretici için şu metni girin: <p>`Failed, member not added to "test-members-ML": ` <p>Dinamik içerik listesinden **üye Ekle**' nin altında, **e-posta adresi** özelliğini seçin. |
    | **Gövde** | Yes | <*hata gövdesi-e-posta*> | Başarısızlık e-postasının gövde içeriği. Bu öğretici için şu metni girin: <p>`Member might already exist. Check your MailChimp account.` |
    |||||

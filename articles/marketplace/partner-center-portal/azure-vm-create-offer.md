@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b9bacb352b3559c33a4a2ef92dc0c3af6ebbc7d6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816533"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029711"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
@@ -27,7 +27,7 @@ Başlamadan önce [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturu
 Tekliflerinizi Azure Marketi 'nde yayımladığınızda şunları yapabilirsiniz:
 
 - Microsoft marka 'in yardımıyla şirketinizi yükseltin.
-- 100.000.000 Office 365 ve Dynamics 365 kullanıcıları ve 200.000 'den fazla kuruluşa ulaşın.
+- 100.000.000 ' 200.000 den fazla Microsoft 365 ve Dynamics 365 ' den fazla kuruluşa ulaşın.
 - Bu Pazar yerlerden yüksek kaliteli müşteri adayları elde edin.
 - Hizmetlerinizi Microsoft alanı Sales ve Telesales ekipleri tarafından yükseltilen hizmetlerden yararlanın.
 
@@ -162,7 +162,7 @@ Müşterilerinize teklif hüküm ve koşullar sağlamanız gerekir. İki seçene
 
        a. **Özel düzeltme** koşulları kutusuna kendi değişiklik koşullarınızı girin. Sınırsız sayıda karakter girebilirsiniz. Yalnızca bu özel şartlar için belirttiğiniz kiracı kimliklerinin müşterileri, Azure portal teklifin satın alma akışında görür.
 
-       b. Istenir **Kiracı kimlikleri**sağlayın. Her özel değişiklik, en fazla 20 Kiracı kimliğini hedefleyebilir. Özel bir düzeltme eklerseniz, Azure 'da müşterinizin tanımlandığı en az bir kiracı KIMLIĞI sağlamalısınız. Müşteriniz, **Azure Active Directory**Özellikler ' i seçerek bunu sizin için Azure 'da bulabilir  >  **Properties**. Dizin KIMLIĞI değeri kiracı KIMLIĞIDIR (örneğin, 50c464d3-4930-494c-963c-1e951d15360e). Ayrıca, [Microsoft Azure ve Office 365 KIRACı kimliği olan](https://www.whatismytenantid.com/)etki alanı adı Web adresini kullanarak KURULUŞUNUZUN Kiracı kimliğini de bulabilirsiniz.
+       b. Istenir **Kiracı kimlikleri**sağlayın. Her özel değişiklik, en fazla 20 Kiracı kimliğini hedefleyebilir. Özel bir düzeltme eklerseniz, Azure 'da müşterinizin tanımlandığı en az bir kiracı KIMLIĞI sağlamalısınız. Müşteriniz, **Azure Active Directory**Özellikler ' i seçerek bunu sizin için Azure 'da bulabilir  >  **Properties**. Dizin KIMLIĞI değeri kiracı KIMLIĞIDIR (örneğin, 50c464d3-4930-494c-963c-1e951d15360e). Ayrıca, [Microsoft Azure ve Microsoft 365 KIRACı kimliği olan](https://www.whatismytenantid.com/)etki alanı adı Web adresini kullanarak ŞIRKETINIZIN Kiracı kimliğini de bulabilirsiniz.
 
        c. Seçim Kiracı KIMLIĞI için, değişiklik yaparken hedeflediğiniz müşteriyi belirlemenize yardımcı olan kolay bir **Açıklama** sağlayın.
 
@@ -196,7 +196,7 @@ Azure Marketi arama sonuçlarında gösterilmek üzere teklifinizin kısa bir a�
 
 Azure Marketi arama sonuçlarında gösterilmek üzere teklifiniz için daha uzun bir açıklama sağlayın. Bu, en fazla 256 karakter içerebilir.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -541,7 +541,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 4. hüküm ve koşullar
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
-7. Açıklama
+7. Description
 8. Yararlı bağlantılar
 9. Ekran görüntüleri/videolar
 

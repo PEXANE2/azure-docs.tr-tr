@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 07/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b469ea0d0a91cc4ca7f0602dffbcc63b31c60855
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: dc7417cafc2a9d6f1abca31da884d55bfac42b75
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588373"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90028942"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault yenilikler
 
@@ -36,6 +36,7 @@ Microsoft, Azure hizmetlerini farklı bir kök sertifika yetkilisi (CA) kümesin
 - Azure Active Directory (Azure AD) Hizmetleri, bu geçişe 7 Temmuz 2020 tarihinde başlamıştır.
 - Yeni oluşturulan tüm Azure TLS/SSL uç noktaları, yeni kök CA 'Lara zincirleme olan güncelleştirilmiş sertifikaları içerir. 
 - Mevcut Azure uç noktaları, 13 Ağustos 2020 ' den itibaren ve 26 Ekim 2020 ' ye kadar bir aşamalı olarak geçiş yapacaktır.
+- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) ve [DPS](/azure/iot-dps/) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
 
 > [!IMPORTANT]
 > Müşterilerin, Azure hizmetlerine bağlanmaya çalışırken bağlantı başarısızlıklarını engellemek için bu değişiklikten sonra uygulama (ler) i güncelleştirmeleri güncelleştirmesi gerekebilir. 

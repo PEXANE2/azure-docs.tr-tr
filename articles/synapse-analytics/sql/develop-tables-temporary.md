@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4559c72481dfa0cefb2ce84cab56a50d0bf182ef
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503217"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030336"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>SYNAPSE SQL 'de geçici tablolar
 
@@ -33,7 +33,7 @@ SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel olarak yazıldı
 
 ### <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
 
-Geçici tablolar, tablo adınızın bir ile önek olarak eklenerek oluşturulur `#` .  Örnek:
+Geçici tablolar, tablo adınızın bir ile önek olarak eklenerek oluşturulur `#` .  Örneğin:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -94,12 +94,12 @@ GROUP BY
 ```
 
 > [!NOTE]
-> `CTAS`güçlü bir komuttur ve işlem günlüğü alanı kullanımıyla ilgili verimli bir avantajdır. 
+> `CTAS` güçlü bir komuttur ve işlem günlüğü alanı kullanımıyla ilgili verimli bir avantajdır. 
 > 
 > 
 
 ### <a name="drop-temporary-tables"></a>Geçici tabloları bırak
-Yeni bir oturum oluşturulduğunda geçici tabloların olmaması gerekir.  Bununla birlikte, aynı ada sahip bir geçici oluşturan aynı saklı yordamı arıyorsanız, deyimlerinizin başarılı olduğundan emin olmak için, `CREATE TABLE` ile basit bir ön varlık denetimi kullanın `DROP` : 
+Yeni bir oturum oluşturulduğunda geçici tabloların olmaması gerekir.  Bununla birlikte, aynı ada sahip bir geçici oluşturan aynı saklı yordamı arıyorsanız, deyimlerinizin başarılı olduğundan emin olmak için, `CREATE TABLE` ile basit bir ön varlık denetimi kullanın  `DROP` : 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL

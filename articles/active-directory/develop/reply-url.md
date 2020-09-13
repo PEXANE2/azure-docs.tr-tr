@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205931"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030319"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI 'SI (yanıt URL 'SI) kısıtlamaları ve sınırlamaları
 
@@ -32,7 +32,7 @@ Yeniden yönlendirme URI 'SI veya yanıt URL 'SI, uygulama başarıyla yetkilend
 
 Bu tablo, Microsoft Identity platformunda bir uygulama kaydına ekleyebileceğiniz en fazla yeniden yönlendirme URI sayısını gösterir.
 
-| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Açıklama |
+| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Description |
 |--------------------------|---------------------------------|-------------|
 | Herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısındaki Microsoft iş veya okul hesapları | 256 | `signInAudience`uygulama bildirimindeki alan *Azureadmyorg* ya da *Azureadmultipleorgs* olarak ayarlandı |
 | Kişisel Microsoft hesapları ve iş ve okul hesapları | 100 | `signInAudience`uygulama bildirimindeki alan *Azureadandpersonmicrosoftaccount* olarak ayarlandı |
@@ -65,6 +65,8 @@ Geliştirme açısından, bu birkaç şey anlamına gelir:
 * Yalnızca bağlantı noktasının farklı olduğu birden çok yeniden yönlendirme URI 'sini kaydetme. Oturum açma sunucusu bir rastgele seçer ve bu yeniden yönlendirme URI 'siyle ilişkili davranışı kullanır (örneğin,-, `web` `native` -veya `spa` -Type yeniden yönlendirmesi).
 * Geliştirme sırasında farklı akışları test etmek için localhost 'a birden çok yeniden yönlendirme URI 'SI kaydetmeniz gerekiyorsa, bunları URI 'nin *yol* bileşenini kullanarak birbirinden ayırın. Örneğin, `http://127.0.0.1/MyWebApp` eşleşmez `http://127.0.0.1/MyNativeApp` .
 * RFC gözetimi başına, `localhost` yeniden yönlendirme URI 'si içinde kullanmamalısınız. Bunun yerine, gerçek geri döngü IP adresini kullanın `127.0.0.1` . Bu, uygulamanızın yanlış yapılandırılmış güvenlik duvarları veya yeniden adlandırılmış ağ arabirimleri tarafından bozulmasına engel olur.
+
+    `http`Şemayı localhost yerine geri döngü adresiyle (127.0.0.1) kullanmak için, [uygulama bildirimini](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute)düzenlemeniz gerekir. 
 
     IPv6 geri döngü adresi ( `[::1]` ) Şu anda desteklenmiyor.
 

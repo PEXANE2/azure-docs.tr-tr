@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 05/28/2020
+ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799052"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029554"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Güvenlik bilgilerini kullanarak iş veya okul parolanızı sıfırlayın
 
@@ -107,7 +107,7 @@ Parolanızı sıfırladıktan sonra, "Microsoft adına Microsoft" gibi bir hesap
 
 ## <a name="how-to-change-your-password"></a>Parolanızı değiştirme
 
-Parolanızı değiştirmek istiyorsanız, bunu Office 365 Portalı, Azure erişim paneli veya Windows 10 oturum açma sayfası aracılığıyla yapabilirsiniz.
+Yalnızca parolanızı değiştirmek istiyorsanız, bunu Office 365 Portalı, My Apps portalı veya Windows 10 oturum açma sayfasından yapabilirsiniz.
 
 ### <a name="to-change-your-password-using-the-office-365-portal"></a>Office 365 portalını kullanarak parolanızı değiştirme
 
@@ -121,11 +121,11 @@ Genellikle uygulamalarınıza Office portalından erişmeniz durumunda bu yönte
 
 4. Eski parolanızı yazın, yeni parolanızı oluşturup onaylayın ve ardından **Gönder**' i seçin.
 
-### <a name="to-change-your-password-from-the-azure-access-panel"></a>Azure erişim panelinden parolanızı değiştirmek için
+### <a name="to-change-your-password-from-the-my-apps-portal"></a>Uygulamalarım portalından parolanızı değiştirmek için
 
-Uygulamalarınıza genellikle Azure erişim panelinden (Uygps) erişmeniz durumunda bu yöntemi kullanın:
+Uygulamalarınıza genellikle uygulamalarım portalından erişmeniz durumunda bu yöntemi kullanın:
 
-1. Mevcut parolanızı kullanarak [Azure erişim paneli](https://myapps.microsoft.com/)' nde oturum açın.
+1. Mevcut parolanızı kullanarak, [My Apps portalında](https://myapps.microsoft.com/)oturum açın.
 
 2. Sağ üst taraftaki profilinizi seçip **profil**' i seçin.
 
@@ -155,7 +155,7 @@ Yöneticiniz işlevselliği etkinleştirdiyseniz, Windows 7, Windows 8, Windows 
 
 Aşağıda bazı yaygın hata durumları ve çözümleri verilmiştir:
 
-|Sorun|Açıklama|Çözüm|
+|Sorun|Description|Çözüm|
 | --- | --- | --- |
 |Parolamı değiştirmeyi denediğimde bir hata alıyorum. |Parolanız, parolanızı kolayca tahmin eden bir sözcük, tümcecik veya düzene sahiptir.| Daha güçlü bir parola kullanarak yeniden deneyin.|
 |Kullanıcı kimliğimi girdikten sonra, "lütfen yöneticinize başvurun" yazan bir sayfaya gideceğim.|Microsoft, Kullanıcı hesabınızın parolasının şirket içi bir ortamda yönetilip yönetilmediğini belirledi. Sonuç olarak, parolanızı "hesabınıza erişemiyor" bağlantısına sıfırlayamazsınız. |Daha fazla yardım için yöneticinize başvurun.|

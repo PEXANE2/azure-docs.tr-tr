@@ -3,12 +3,12 @@ title: Azure Notebooks önizlemesinden bir Jupyter Notebook projesi dışarı ak
 description: Jupyter Notebook projesini hızlıca dışarı aktarın.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: a2e76f2c1956df4d0de59cfb429dc1c9dce85a62
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 3153247b9d15167ab437d6c46142bbd41f8e4b23
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892108"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030455"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede Jupyter Notebook projesi dışarı aktarma
 
@@ -16,7 +16,7 @@ ms.locfileid: "88892108"
 
 Bu hızlı başlangıçta, diğer Jupyter Notebook çözümlerinde kullanmak üzere bir Azure Notebooks projesi indirirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Mevcut bir Azure Notebooks projesi.
 
@@ -34,7 +34,7 @@ Mevcut bir Azure Notebooks projesi.
 
 Proje dosyalarınızı indirdikten sonra, bunları diğer Jupyter Notebook çözümleriyle birlikte kullanabilirsiniz. Aşağıdaki bölümlerde açıklanan bazı seçenekler şunlardır: 
 - [Visual Studio Code](#use-notebooks-in-visual-studio-code)
-- [Visual Studio Codespaces](#use-notebooks-in-visual-studio-codespaces)
+- [GitHub Codespaces](#use-notebooks-in-github-codespaces)
 - [Azure Machine Learning](#use-notebooks-with-azure-machine-learning)
 - [Azure Lab Services](#use-azure-lab-services)
 - [GitHub](#use-github)
@@ -58,14 +58,13 @@ Proje dosyalarınızı [indirdikten](#export-an-azure-notebooks-project) sonra, 
 
 Azure Notebooks önizlemesiyle eşleşen bir ortam oluşturmak için Visual Studio Code ile [Azure Notebooks ortam betiğini](#create-an-environment-for-notebooks) de kullanabilirsiniz.
 
-## <a name="use-notebooks-in-visual-studio-codespaces"></a>Visual Studio Codespaces içindeki not defterlerini kullanma
+## <a name="use-notebooks-in-github-codespaces"></a>GitHub Codespaces içindeki not defterlerini kullanma
 
-Visual Studio Codespaces, Visual Studio Code veya Web tarayıcınızı kullanarak not defterlerinizi düzenleyebileceğiniz bulutta barındırılan ortamlar sağlar. Aynı harika Jupde deneyimi VS Code, ancak cihazınıza her şeyi yüklemeye gerek kalmadan sunar. Yerel bir ortam ayarlamak ve bulutta desteklenen bir çözümü tercih etmek istemiyorsanız, codespace oluşturmak harika bir seçenektir. Başlamak için:
-
+GitHub Codespaces, Visual Studio Code veya Web tarayıcınızda not defterlerinizi düzenleyebileceğiniz bulutta barındırılan ortamlar sağlar. Aynı harika Jupde deneyimi VS Code, ancak cihazınıza her şeyi yüklemeye gerek kalmadan sunar. Yerel bir ortam ayarlamak ve bulutta desteklenen bir çözümü tercih etmek istemiyorsanız, codespace oluşturmak harika bir seçenektir. Başlamak için:
 1. Proje dosyalarınızı [indirin](#export-an-azure-notebooks-project) .
-1. Not defterlerinizi depolamak için [bir GitHub deposu oluşturun](https://help.github.com/github/getting-started-with-github/create-a-repo) . 
+1. Not defterlerinizi depolamak için [bir GitHub deposu oluşturun](https://help.github.com/github/getting-started-with-github/create-a-repo) .   
 1. [Dosyalarınızı depoya ekleyin](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository) .
-1. Visual Studio Codespaces 'ı [tarayıcıda](https://docs.microsoft.com/visualstudio/online/how-to/browser), [Visual studio](https://docs.microsoft.com/visualstudio/online/how-to/vside)'da veya [Visual Studio Code](https://docs.microsoft.com/visualstudio/online/how-to/vscode)ayarlayın.
+1. [GitHub Codespaces önizlemesine erişim isteme](https://github.com/features/codespaces)
 
 ## <a name="use-notebooks-with-azure-machine-learning"></a>Azure Machine Learning ile not defterlerini kullanma
 
@@ -93,7 +92,7 @@ Azure ML ve Jupimter not defterlerini çalıştırma hakkında ek bilgi için [b
 
 ## <a name="use-github"></a>GitHub 'ı kullanma
 
-GitHub, not defterlerini (ve diğer dosyaları) depolamak, not defterlerinizi başkalarıyla paylaşmak ve işbirliği yapmak için ücretsiz, kaynak denetimi ile desteklenen bir yol sağlar. Projelerinizi paylaşmanın ve başkalarıyla işbirliği yapmaya yönelik bir yol arıyorsanız, GitHub harika bir seçenektir ve harika bir geliştirme deneyimi için [Visual Studio Codespaces](#use-notebooks-in-visual-studio-codespaces) ile birleştirilebilir. GitHub 'ı kullanmaya başlamak için
+GitHub, not defterlerini (ve diğer dosyaları) depolamak, not defterlerinizi başkalarıyla paylaşmak ve işbirliği yapmak için ücretsiz, kaynak denetimi ile desteklenen bir yol sağlar. Projelerinizi paylaşmanın ve başkalarıyla işbirliği yapmaya yönelik bir yol arıyorsanız, GitHub harika bir seçenektir ve harika bir geliştirme deneyimi için [GitHub Codespaces](#use-notebooks-in-github-codespaces) ile birleştirilebilir. GitHub 'ı kullanmaya başlamak için
 
 1. Proje dosyalarınızı [indirin](#export-an-azure-notebooks-project) .
 1. Not defterlerinizi depolamak için [bir GitHub deposu oluşturun](https://help.github.com/github/getting-started-with-github/create-a-repo) . 
@@ -103,6 +102,6 @@ GitHub, not defterlerini (ve diğer dosyaları) depolamak, not defterlerinizi ba
 
 - [Visual Studio Code 'de Python hakkında bilgi edinin](https://code.visualstudio.com/docs/python/python-tutorial)
 - [Azure Machine Learning ve Jupyıter not defterlerini öğrenin](../machine-learning/how-to-run-jupyter-notebooks.md)
-- [Visual Studio Codespaces hakkında bilgi edinin](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)
+- [GitHub Codespaces hakkında bilgi edinin](https://github.com/features/codespaces)
 - [Azure Lab Services hakkında bilgi edinin](https://azure.microsoft.com/services/lab-services/)
 - [GitHub hakkında bilgi edinin](https://help.github.com/github/getting-started-with-github/)

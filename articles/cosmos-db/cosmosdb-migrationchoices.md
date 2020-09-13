@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: a08c6abe52801e1fbafd517adcb8fd9a8b8b4aee
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4de6d4ba019af75b0f6179b2794ddb6c1e35e0c1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462301"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030081"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Şirket içi veya bulut verilerinizi Azure Cosmos DB 'e geçirmeye yönelik seçenekler
 
@@ -47,7 +47,7 @@ Aşağıdaki etmenler geçiş aracının seçimini belirlemektir:
 |Çevrimdışı|[Azure Cosmos DB Spark Bağlayıcısı](spark-connector.md)|SQL API Azure Cosmos DB. <br/><br/>Diğer kaynakları Spark ekosistemindeki ek bağlayıcılarla birlikte kullanabilirsiniz.| SQL API Azure Cosmos DB. <br/><br/>Diğer hedefleri Spark ekosistemindeki ek bağlayıcılarla birlikte kullanabilirsiniz.| &bull; Azure Cosmos DB toplu yürütücü Kitaplığı ' nı kullanır. <br/>&bull; Büyük veri kümeleri için uygundur. <br/>&bull; Özel bir Spark kurulumuna ihtiyaç duyuyor. <br/>&bull; Spark, şema tutarsızlıklarına duyarlıdır ve bu, geçiş sırasında bir sorun olabilir. |
 |Çevrimdışı|[Cosmos DB toplu yürütücü kitaplığı ile özel araç](migrate-cosmosdb-data.md)| Kaynak, özel kodunuza bağlıdır | Azure Cosmos DB SQL API| &bull; Geçiş dayanıklılığını artıran denetim noktası, ölü Özellik özellikleri sağlar. <br/>&bull; Çok büyük veri kümeleri (10 TB +) için uygundur.  <br/>&bull; App Service olarak çalışan bu aracın özel kurulumunu gerektirir. |
 |Çevrimiçi|[Cosmos DB Işlevleri + ChangeFeed API 'SI](change-feed-functions.md)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; Kolayca ayarlanabilir. <br/>&bull; Yalnızca kaynak bir Azure Cosmos DB kapsayıcısı ise geçerlidir. <br/>&bull; Büyük veri kümeleri için uygun değildir. <br/>&bull; Kaynak kapsayıcıdan silmeleri yakalamaz. |
-|Çevrimiçi|[Değişiklik akışını kullanarak özel geçiş hizmeti](https://github.com/nomiero/CosmosDBLiveETLSample)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; İlerleme durumunu izleme sağlar. <br/>&bull; Yalnızca kaynak bir Azure Cosmos DB kapsayıcısı ise geçerlidir. <br/>&bull; Daha büyük veri kümeleri için de geçerlidir.<br/>&bull; Kullanıcının değişiklik akışı işlemcisini barındırmak için bir App Service ayarlaması gerekir. <br/>&bull; Kaynak kapsayıcıdan silmeleri yakalamaz.|
+|Çevrimiçi|[Değişiklik akışını kullanarak özel geçiş hizmeti](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; İlerleme durumunu izleme sağlar. <br/>&bull; Yalnızca kaynak bir Azure Cosmos DB kapsayıcısı ise geçerlidir. <br/>&bull; Daha büyük veri kümeleri için de geçerlidir.<br/>&bull; Kullanıcının değişiklik akışı işlemcisini barındırmak için bir App Service ayarlaması gerekir. <br/>&bull; Kaynak kapsayıcıdan silmeleri yakalamaz.|
 |Çevrimiçi|[Anlık ileti](cosmosdb-sql-api-migrate-data-striim.md)| &bull;Oracle <br/>&bull;Apache Cassandra<br/><br/> Desteklenen diğer kaynaklar için bkz. [anlık ileti Web sitesi](https://www.striim.com/sources-and-targets/) . |&bull;Azure Cosmos DB SQL API <br/>&bull; Azure Cosmos DB Cassandra API<br/><br/> Desteklenen diğer hedefler için bkz. [anlık ileti Web sitesi](https://www.striim.com/sources-and-targets/) . | &bull; Oracle, DB2, SQL Server gibi çok çeşitli kaynaklarla birlikte çalışarak.<br/>&bull; ETL işlem hatlarını kolayca oluşturun ve izleme için bir pano sağlar. <br/>&bull; Daha büyük veri kümelerini destekler. <br/>&bull; Bu bir üçüncü taraf araç olduğundan Market 'ten satın alınması ve kullanıcının ortamına yüklenmesi gerekir.|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API 'SI

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbe3af30963791891f0ceee4e18c34e078c0ac7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0e217676f5e1f4dcba24917cb140d9d4d8fcc422
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013189"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024375"
 ---
 # <a name="z-fighting-mitigation"></a>Z dikişini azaltma
 
@@ -21,9 +21,9 @@ ms.locfileid: "89013189"
 
 |Olanını                        | Sonuç                               |
 |---------------------------------|:-------------------------------------|
-|Normal z-Fighting               |![Z-Fighting](./media/zfighting-0.png)|
-|Z-mücadele azaltma etkin    |![Z-Fighting](./media/zfighting-1.png)|
-|Dama tahtası vurgusu etkin|![Z-Fighting](./media/zfighting-2.png)|
+|Normal z-Fighting               |![Kırmızı ve yeşil Quads arasında belirleyici öncelik yok](./media/zfighting-0.png)|
+|Z-mücadele azaltma etkin    |![Kırmızı dörtlü öncelik vardır](./media/zfighting-1.png)|
+|Dama tahtası vurgusu etkin|![Dama tahtası düzeninde kırmızı ve yeşil dört durumlu tercih](./media/zfighting-2.png)|
 
 Aşağıdaki kod, z-Fighting hafifletme imkanı sunar:
 
@@ -53,7 +53,6 @@ void EnableZFightingMitigation(ApiHandle<AzureSession> session, bool highlight)
 }
 ```
 
-
 > [!NOTE]
 > Z-Fighting, tüm işlenmiş kafesleri etkileyen genel bir ayardır.
 
@@ -76,6 +75,11 @@ Sunulan z mücadele azaltma, en iyi çabadır. Tüm z-mücadele ' i kaldıran ga
 
 * Z-Fighting azaltma özelliğinin etkinleştirilmesi, performans yükünü ortadan kaldırır.
 * Ayrıca, z-Fighting kaplamasını etkinleştirmek, sahneye bağlı olarak değişebileceğinden, önemsiz olmayan bir performans yükü doğurur.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# RemoteManager. ZFightingMitigationSettings özelliği](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.zfightingmitigationsettings)
+* [C++ RemoteManager:: ZFightingMitigationSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#zfightingmitigationsettings)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

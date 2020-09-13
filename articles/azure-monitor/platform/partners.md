@@ -4,12 +4,12 @@ description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belge
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d5f239540a74c431e381c581f00514a1f7acd5e3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142425"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030397"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -77,6 +77,8 @@ Cloudmonitorx, Microsoft Azure platformu için izleme, otomasyon ve kendi kendin
 Dataköpek, dünyanın bulut ölçekli uygulamalar için önde gelen izleme hizmetidir. Tüm yığınınızın birleştirilmiş bir görünümünü sunmak için sunuculardan, veritabanlarından, araçlardan ve hizmetlerden verileri bir araya getirir. Bu yetenekler, SaaS tabanlı bir veri analizi platformunda sunulmaktadır. Bu hizmet, iş kesintilerini önlemek, performans sorunlarını çözmek ve geliştirme ve dağıtım döngülerinin zamanında bitmesini sağlamak için geliştirme ve Ops takımlarının işbirliği yapmasına olanak sağlar. Veri köklerini ve Azure 'u tümleştirerek, altyapınızın genelinde ölçümleri toplayabilir ve görüntüleyebilirsiniz. VM ölçümlerini uygulama düzeyi ölçümleriyle ilişkilendirin. Özelliklerin ve özel etiketlerin birleşimini kullanarak ölçülerinizi dilimleyin ve zar.
 
 [Belgelere gidin.][datadog-doc]
+
+Yeni bir Azure Marketi tümleştirme için veri Köpey, erken 2020 Ekim 'de kullanıma zamanlandı. Yayın sonrasında buraya bir bağlantı eklenecektir. 
 
 ## <a name="dynatrace"></a>Dynatrace
 

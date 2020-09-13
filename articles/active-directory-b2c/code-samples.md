@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: da84fee4e974f02f29dc9006fe740c415632ae53
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82181167"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029027"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C kod örnekleri
 
@@ -26,7 +26,7 @@ Aşağıdaki tablolarda iOS, Android, .NET ve Node.js de dahil olmak üzere uygu
 | Örnek | Açıklama |
 |--------| ----------- |
 | [ios-swift-native-msal](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal) | Swift’te, Azure AD B2C kullanıcılarının kimliğini doğrulayan ve OAuth 2.0 kullanarak bir API’yi çağıran iOS örneği |
-| [android-native-msal](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | Azure Active Directory B2C ile kullanıcıların kimliklerinin nasıl doğrulanacağını ve sonuç belirteçleriyle bir Web API’sine nasıl erişileceğini gösteren basit bir Android uygulaması. |
+| [android-native-msal](https://github.com/Azure-Samples/ms-identity-android-java#b2cmodefragment-class) | Azure Active Directory B2C ile kullanıcıların kimliklerinin nasıl doğrulanacağını ve sonuç belirteçleriyle bir Web API’sine nasıl erişileceğini gösteren basit bir Android uygulaması. |
 | [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Objective C'de, Azure AD B2C kimlik hizmetimiz için Microsoft Identity kullanıcılarının kimliğini doğrulayan bir iOS uygulaması oluşturmak amacıyla üçüncü taraf bir kitaplığı nasıl kullanabileceğinizi gösteren bir örnek. |
 | [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | B2C kimlik hizmetimiz için Microsoft Identity kullanıcılarının kimliğini doğrulayan ve OAuth 2.0 erişim belirteçlerini kullanarak web API’si çağıran bir Android uygulaması oluşturmak amacıyla üçüncü- taraf kitaplığı nasıl kullanabileceğinizi gösteren bir örnek. |
 | [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Windows Masaüstü .NET (WPF) uygulamasının Azure AD B2C’yi kullanarak bir kullanıcının oturumunu nasıl açabildiğini, MSAL.NET kullanarak bir erişim belirtecini nasıl alabildiğini ve bir API’yi nasıl çağırabildiğini gösteren bir örnek. |

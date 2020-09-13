@@ -1,5 +1,5 @@
 ---
-title: Telefon kaydı ve özel ilkelerle oturum açma (Önizleme)
+title: Telefon kaydı ve özel ilkelerle oturum açma
 titleSuffix: Azure AD B2C
 description: Bir kerelik parolalar (OTP) metin iletilerinde, uygulama kullanıcılarınızın telefonlarınıza Azure Active Directory B2C ' de özel ilkelerle gönderin.
 services: active-directory-b2c
@@ -8,27 +8,85 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/25/2020
+ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d432912cb0442744061500fc01bdd86a4c5d97ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a429314d4a992ea93f4c068203371cda769a4ff
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385357"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029171"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Azure AD B2C (Önizleme) içinde özel ilkelerle telefon kayıt ve oturum açma ayarlama
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Azure AD B2C özel ilkelerle telefon kayıt ve oturum açma ayarlama
 
 Azure Active Directory B2C (Azure AD B2C) telefon kaydı ve oturum açma, kullanıcılarınızın telefonunuza bir kısa mesajdan gönderilen bir kerelik parola (OTP) kullanarak uygulamalarınıza kaydolmalarını ve oturum açmasını sağlar. Bir kerelik parolalar, kullanıcılarınızın parolalarının tehlikeye düşmesi veya bu uygulamaların güvenliğinin aşılmasına neden olması riskini en aza indirmenize yardımcı olabilir.
 
 Müşterilerinizin, telefonunuza bir kerelik parola kullanarak uygulamalarınıza kaydolup oturum açmasını sağlamak üzere özel ilkeleri kullanmak için bu makaledeki adımları izleyin.
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="pricing"></a>Fiyatlandırma
 
 Bir kerelik parolalar SMS metin iletileri kullanılarak kullanıcılarınıza gönderilir ve gönderilen her ileti için ücretlendirilmeyebilirsiniz. Fiyatlandırma bilgileri için [Azure Active Directory B2C fiyatlandırmasının](https://azure.microsoft.com/pricing/details/active-directory-b2c/) **ayrı ücretler** bölümüne bakın.
+
+## <a name="user-experience-for-phone-sign-up-and-sign-in"></a>Telefon kayıt ve oturum açma için Kullanıcı deneyimi
+
+Telefon kayıt ve oturum açma ile Kullanıcı, birincil tanımlayıcıları olarak bir telefon numarası kullanarak uygulamaya kaydolabilir. Kaydolma ve oturum açma sırasında son kullanıcının deneyimi aşağıda açıklanmaktadır.
+
+> [!NOTE]
+> Kaydolma ve oturum açma deneyiminize aşağıdaki örnek metinlere benzer onay bilgileri dahil etmeyi kesinlikle öneririz. Bu örnek metin yalnızca bilgilendirme amaçlıdır. Lütfen [CUR Web sitesinde](https://www.ctia.org/programs) kısa kod izleme el kitabı bakın ve son metin ve özellik yapılandırmanıza, kendi uyumluluk ihtiyaçlarınızı karşılayacak yönergeler için kendi yasal veya uyumluluk uzmanlarıyla temasa geçin:
+>
+> *Telefon numaranızı girerek, eklemek üzere oturum açmanıza yardımcı olmak üzere kısa mesaj tarafından gönderilen bir kerelik geçiş kodu almayı kabul etmiş olursunuz * &lt; : uygulamanızın adı &gt; *. Standart ileti ve veri ücretleri uygulanabilir.*
+>
+> *&lt;Ekle: Gizlilik Bildiriinize bir bağlantı&gt;*<br/>*&lt;Ekle: hizmet koşullarınıza bir bağlantı&gt;*
+
+Kendi onay bilgilerinizi eklemek için aşağıdaki örneği özelleştirin ve görüntüleme denetimiyle birlikte kendi kendini onaylanan sayfa tarafından kullanılan ContentDefinition için LocalizedResources öğesine ekleyin (telefon kayıt & oturum açma paketinin Phone-Email-Base.xml dosyası):
+
+```xml
+<LocalizedResources Id="phoneSignUp.en">        
+    <LocalizedStrings>
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_url">{insert your terms and conditions URL}</LocalizedString>          
+    <LocalizedString ElementType="UxElement" StringId="initial_intro">Please verify your country code and phone number</LocalizedString>        
+    </LocalizedStrings>      
+</LocalizedResources>
+   ```
+
+### <a name="phone-sign-up-experience"></a>Telefon kayıt deneyimi
+
+Kullanıcının uygulamanız için zaten bir hesabı yoksa, **Şimdi kaydolun** bağlantısını seçerek bir tane oluşturabilir. Kullanıcının **ülkesini**seçtiği, telefon numarasını girdiği ve **kodu gönder**seçtiği bir kaydolma sayfası görüntülenir.
+
+![Kullanıcı telefon kaydı başlatır](media/phone-authentication/phone-signup-start.png)
+
+Kullanıcının telefon numarasına bir kerelik doğrulama kodu gönderilir. Kullanıcı **doğrulama kodunu** kaydolma sayfasına girer ve **kodu doğrula**' yı seçer. (Kullanıcı kodu alamıyorsa, **Yeni kod gönder**' i seçebiliyor.)
+
+![Kullanıcı telefon kaydı sırasında kodu doğrular](media/phone-authentication/phone-signup-verify-code.png)
+
+ Kullanıcı kaydolma sayfasında istenen diğer bilgileri (örneğin, **görünen ad**, **verilen ad**ve **Soyadı** ) girer (ülke ve telefon numarası doldurulmuş olarak kalır). Kullanıcı farklı bir telefon numarası kullanmak isterse, kayıt işlemini yeniden başlatmak için **numarayı Değiştir** ' i seçebilirler. İşiniz bittiğinde, Kullanıcı **devam**' ı seçer.
+
+![Kullanıcı ek bilgi sağlar](media/phone-authentication/phone-signup-additional-info.png)
+
+Ardından, kullanıcıdan bir kurtarma e-postası sağlaması istenir. Kullanıcı e-posta adresini girip, **doğrulama kodu gönder**' i seçer. Bir kod, kullanıcının e-posta gelen kutusuna gönderilir ve bu kimlik **doğrulama kodu** kutusuna girebilirler. Ardından Kullanıcı **doğrulama kodunu**seçer. 
+
+Kod doğrulandıktan sonra Kullanıcı, hesabını oluşturmak için **Oluştur** ' u seçer. Ya da Kullanıcı farklı bir e-posta adresi kullanmak isterse, **e-postayı değiştir**' i seçebilirler.
+
+![Kullanıcı Hesap oluşturuyor](media/phone-authentication/email-verification.png)
+
+### <a name="phone-sign-in-experience"></a>Telefonla oturum açma deneyimi
+
+Kullanıcı, telefon numarası tanımlayıcı olarak bir hesap hesabı içeriyorsa, Kullanıcı telefon numarasını girer ve **devam**' ı seçer. **Devam**' i seçerek ülke ve telefon numarasını onaylarlar ve telefonlarına bir kerelik doğrulama kodu gönderilir. Kullanıcı doğrulama kodunu girer ve oturum açmak için **devam** ' i seçer.
+
+![Telefonla oturum açma kullanıcı deneyimi](media/phone-authentication/phone-signin-screens.png)
+
+## <a name="deleting-a-user-account"></a>Kullanıcı hesabını silme
+
+Belirli durumlarda, Azure AD B2C dizininizden bir kullanıcıyı ve ilişkili verileri silmeniz gerekebilir. Azure portal aracılığıyla bir kullanıcı hesabının nasıl silineceği hakkında ayrıntılar için, [Bu yönergelere](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete)bakın. 
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
+
+
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -94,12 +152,7 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-GitHub 'da telefon kayıt ve oturum açma özel İlkesi başlangıç paketini (ve diğer başlangıç paketleri) bulabilirsiniz:
-
-[Azure-Samples/Active-Directory-B2C-Custom-Policy-starterpack/senaryolar/Phone-Number-passwordless][starter-pack-phone]
-
-Başlangıç paketi ilke dosyaları Multi-Factor Authentication teknik profillerini ve telefon numarası talep dönüşümlerini kullanır:
-
+GitHub 'da telefon kayıt ve oturum açma özel İlkesi başlangıç paketini (ve diğer başlangıç paketleri) bulabilirsiniz: [Azure-Samples/Active-Directory-B2C-Custom-Policy-starterpack/senaryolar/Phone-Number-passwordless][starter-pack-phone] Başlatıcı paketi ilke dosyaları Multi-Factor Authentication teknik profillerini ve telefon numarası talep dönüşümlerini kullanır:
 * [Azure Multi-Factor Authentication teknik profili tanımlama](multi-factor-auth-technical-profile.md)
 * [Telefon numarası talep dönüşümlerini tanımlayın](phone-number-claims-transformations.md)
 

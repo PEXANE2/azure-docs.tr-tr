@@ -1,14 +1,14 @@
 ---
-title: Avustralya kamu ile korunan şema örnek genel bakış
-description: Avustralya kamu ile korunan şema örneğine genel bakış. Bu şema örneği, müşterilerin belirli bir ISM korumalı denetimleri değerlendirmesine yardımcı olur.
-ms.date: 08/03/2020
+title: Avustralya kamu ile korunan şema örnek denetimleri
+description: Avustralya kamu ile korunan şema örneğinin denetim eşlemesi. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
+ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 605e92b75da1e5363884fc6ef9457251cfbc6e4e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760439"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030115"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Avustralya kamu ile korunan şema örneğine yönelik denetim eşlemesi
 
@@ -350,6 +350,10 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
+
+> [!div class="nextstepaction"]
+> [ISM korumalı şema-genel bakış](./index.md) 
+>  [ISM korumalı şema-Deploy adımları](./deploy.md)
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

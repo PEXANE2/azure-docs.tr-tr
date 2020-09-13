@@ -535,6 +535,9 @@
       href: reference-pipeline-yaml.md
     - name: Bağımsız bulut eşliği
       href: reference-machine-learning-cloud-parity.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Sürüm notları

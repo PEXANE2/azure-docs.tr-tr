@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0bb7b91cd31761b801ad469b8ce556b29e09fd3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ebc73c75d9a23a53ac94f28208251dcff83e684a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074716"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030710"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Azure IoT Hub cihazları için müşteri verileri isteği özellikleri
 
@@ -36,13 +36,13 @@ Tanılama günlükleri oluşturmak için Azure IoT Hub hizmetinin Azure Izleyici
 
 Kiracı yöneticileri, bir cihazı silmek için Azure portal Azure IoT Hub uzantısının IoT cihazları Dikey penceresini kullanarak bu cihazla ilişkili verileri siler.
 
-REST API 'Leri kullanan cihazlar için silme işlemlerini gerçekleştirmek de mümkündür. Daha fazla bilgi için bkz. [hizmet-cihaz silme](/rest/api/iothub/service/registrymanager/deletedevice).
+REST API 'Leri kullanan cihazlar için silme işlemlerini gerçekleştirmek de mümkündür. Daha fazla bilgi için bkz. [hizmet-cihaz silme](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice).
 
 ## <a name="exporting-customer-data"></a>Müşteri verilerini dışa aktarma
 
 Kiracı yöneticileri, bir cihazla ilişkili verileri dışarı aktarmak için Azure portal Azure IoT Hub uzantısının IoT cihazları bölmesinde kopyalama ve yapıştırmayı kullanabilir.
 
-REST API 'Leri kullanan cihazlar için dışarı aktarma işlemleri gerçekleştirmek da mümkündür. Daha fazla bilgi için bkz. [hizmet-cihazı al](/rest/api/iothub/service/registrymanager/getdevice).
+REST API 'Leri kullanan cihazlar için dışarı aktarma işlemleri gerçekleştirmek da mümkündür. Daha fazla bilgi için bkz. [hizmet-cihazı al](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice).
 
 > [!NOTE]
 > Microsoft 'un kurumsal hizmetlerini kullandığınızda, Microsoft, sistem tarafından oluşturulan Günlükler olarak bilinen bazı bilgiler üretir. Bazı Azure IoT Hub sistem tarafından oluşturulan günlüklere, kiracı yöneticileri tarafından erişilebilir veya dışarı aktarılabilir. Bu Günlükler, hizmet içinde yürütülen ve ayrı cihazlarla ilgili tanılama verileri için yapılan özel eylemleri oluşturur.

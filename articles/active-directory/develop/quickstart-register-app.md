@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d52673f1c66c8e053639b24bb31a3159a75736b9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436751"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029061"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Microsoft kimlik platformunun uygulamanız ve kullan�
 
 Microsoft Identity platformunun kimlik ve erişim yönetimi (ıAM) gerçekleştirmesini istediğiniz her uygulama için gereklidir. Bir Web veya mobil uygulama gibi bir istemci uygulaması ya da bir istemci uygulamasını yedekleyen bir Web API 'SI olup olmadığı, kaydetme, uygulamanız ile kimlik sağlayıcısı arasında bir güven ilişkisi oluşturur, Microsoft Identity platform.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı- [ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Hızlı başlangıç tamamlama: kiracı ayarlama](quickstart-create-new-tenant.md)
@@ -43,7 +43,7 @@ Uygulama kaydını oluşturmak için aşağıdaki adımları izleyin:
 1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 1. Bazen *oturum açma hedef kitlesi*olarak adlandırılan, uygulamayı kimlerin kullanacağınızı belirtin.
 
-    | Desteklenen hesap türleri | Açıklama |
+    | Desteklenen hesap türleri | Description |
     |-------------------------|-------------|
     | **Yalnızca bu kuruluş dizinindeki hesaplar** | *Kiracınızda* yalnızca kullanıcılar (veya konuklar) tarafından kullanılacak bir uygulama oluşturuyorsanız bu seçeneği belirleyin.<br><br>Genellikle, *iş kolu* (LOB) uygulaması olarak adlandırılan bu, Microsoft Identity platformunda **tek kiracılı** bir uygulamadır. |
     | **Herhangi bir kuruluş dizinindeki hesaplar** | *Herhangi bir* Azure AD kiracısındaki kullanıcıların uygulamanızı kullanabilmemizi istiyorsanız bu seçeneği belirleyin. Örneğin, birden çok kuruluşa sağlamak istediğiniz bir hizmet olarak yazılım (SaaS) uygulaması oluşturuyorsanız, bu seçenek uygundur.<br><br>Bu, Microsoft Identity platformunda **çok kiracılı** bir uygulama olarak bilinir. |
@@ -65,7 +65,7 @@ Uygulamanızın kodu veya daha yaygın olarak uygulamanızda kullanılan bir kim
 
 Yeniden yönlendirme URI 'SI, Microsoft Identity platformunun bir kullanıcının istemcisini yeniden yönlendirdiği ve kimlik doğrulamasından sonra güvenlik belirteçleri gönderdiği konumdur.
 
-Bir üretim Web uygulamasında, örneğin, yeniden yönlendirme URI 'SI genellikle uygulamanızın çalıştırıldığı ortak bir uç noktadır `https://contoso.com/auth-response` . Geliştirme sırasında, uygulamanızı yerel olarak çalıştırdığınız uç noktayı (gibi) de eklemek yaygın bir uygulamadır `https://127.0.0.1/auth-response` .
+Bir üretim Web uygulamasında, örneğin, yeniden yönlendirme URI 'SI genellikle uygulamanızın çalıştırıldığı ortak bir uç noktadır `https://contoso.com/auth-response` . Geliştirme sırasında, uygulamanızı yerel olarak çalıştırdığınız (veya gibi) uç noktasını da eklemek yaygın bir uygulamadır `https://127.0.0.1/auth-response` `http://localhost/auth-response` .
 
 [Platform ayarlarını](#configure-platform-settings)yapılandırarak kayıtlı uygulamalarınız için yeniden yönlendirme URI 'leri ekler ve değiştirirsiniz.
 
@@ -110,7 +110,7 @@ Bazen *ortak anahtar*olarak da bilinen sertifikalar, istemci gizliliğine göre 
 1. Azure portal **uygulama kayıtları** uygulamanızdaki uygulamanızı seçin.
 1. **Sertifikalar & parolaları**  >  **karşıya yükleme sertifikası**' nı seçin.
 1. Yüklemek istediğiniz dosyayı seçin. Şu dosya türlerinden biri olmalıdır: .cer, .pem, .crt.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 ### <a name="add-a-client-secret"></a>İstemci parolası ekleme
 
@@ -120,7 +120,7 @@ Bazen *ortak anahtar*olarak da bilinen sertifikalar, istemci gizliliğine göre 
 1. **Sertifikalar & parolaları**seçin  >   **yeni istemci gizli anahtarı**.
 1. İstemci gizli diziniz için bir açıklama ekleyin.
 1. Bir süre seçin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 1. **Gizli anahtarı** istemci uygulama kodunuzda kullanım için kaydedin-bu sayfadan ayrıldıktan sonra *hiç bir daha gösterilmez* .
 
 ## <a name="next-steps"></a>Sonraki adımlar

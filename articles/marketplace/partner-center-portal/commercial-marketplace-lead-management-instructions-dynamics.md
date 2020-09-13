@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 31dba5489db3778d738fc2856cf6aacfd6987711
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120390"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030761"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Dynamics 365 müşteri katılımı için lider yönetimini yapılandırma
 
@@ -21,13 +21,13 @@ Bu makalede, Dynamics 365 müşteri katılımı ayarlama (daha önce Dynamics CR
 >[!NOTE]
 >Bu yönergeler, Dynamics 365 müşteri katılımı için Microsoft tarafından barındırılan bulut ortamına özgüdür. Dynamics şirket içi bir ortama doğrudan bağlanmak Şu anda desteklenmemektedir. Bir [https uç noktası](./commercial-marketplace-lead-management-instructions-https.md) veya [Azure tablosu](./commercial-marketplace-lead-management-instructions-azure-table.md)yapılandırma gibi müşteri adaylarını almanızı sağlamak için başka seçenekler de vardır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki Kullanıcı izinleri gereklidir:
 
 * Dynamics 365 müşteri katılım Örneğinizde bir çözüm yükleyebilmeleri için yönetici hakları.
 * Müşteri adayı hizmeti için ticari Market tekliflerden müşteri adaylarını göndermek üzere kullanılan yeni bir hizmet hesabı oluşturmak için kiracı yöneticisi hakları.
-* Office 365 Yönetici portalına erişim.
+* Yönetici portalına erişim.
 * Azure portal erişim.
 
 ## <a name="install-the-solution"></a>Çözümü yükler
@@ -78,7 +78,7 @@ Dynamics 365 müşteri katılımı için Azure Active Directory yapılandırmak 
 1. Uygulama adı için anlamlı bir ad girin.
 1. **Desteklenen hesap türleri**altında, **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** altında **Web** ' i SEÇIN ve gibi bir URI girin `https://contosoapp1/auth` . 
-1. **Kaydol**’u seçin.
+1. **Kaydet**’i seçin.
 
     ![Uygulama sayfası kaydetme](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
 
@@ -157,7 +157,7 @@ Son adım, oluşturduğunuz kullanıcıyı müşteri adaylarını yazmak üzere 
 
     ![Güvenlik rolleri bölmesi](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-1. Güvenlik rolünde, **Çekirdek Kayıtlar** sekmesini seçin. **Kullanıcı varlığı Kullanıcı arabirimi ayarları** öğesini arayın. İlgili dairelerin her birinde bir kez tıklayarak bu varlık için Kullanıcı için oluşturma, okuma ve yazma izinleri (1/4 sarı daire) etkinleştirin.
+1. Güvenlik rolünde, **temel kayıtlar** sekmesini seçin. **Kullanıcı varlığı Kullanıcı arabirimi ayarları** öğesini arayın. İlgili dairelerin her birinde bir kez tıklayarak bu varlık için Kullanıcı için oluşturma, okuma ve yazma izinleri (1/4 sarı daire) etkinleştirin.
 
     ![Microsoft Market öncü yazıcı çekirdek kayıtları sekmesi](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 

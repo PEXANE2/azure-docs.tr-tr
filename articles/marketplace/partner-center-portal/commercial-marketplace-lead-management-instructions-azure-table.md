@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/25/2020
-ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2dca0ae02f2d079e98b51e1222114db1f2104b96
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855754"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030806"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Tablo Depolamayı kullanarak ticari Market müşteri adaylarını yönetme
 
@@ -135,7 +135,7 @@ Azure depolama tablonuza bir müşteri adayı her eklendiğinde bildirimleri oto
    Sonraki birkaç adımda, koşulun sonucuna göre gerçekleştirilecek eylemi ayarlarsınız:
 
    * Koşul **Hayır**olarak çözümlenirse, hiçbir şey yapmayın.
-   * Koşul **Evet ise**, bir e-posta göndermek için Office 365 hesabınızı bağlayan bir eylem tetikleyin.
+   * Koşul **Evet ise**olarak çözümlenirse, e-posta göndermek için iş veya okul hesabınızı bağlayan bir eylem tetikleyin. 
 
 1. **Evet ise** **Eylem Ekle** ' yi seçin.
 

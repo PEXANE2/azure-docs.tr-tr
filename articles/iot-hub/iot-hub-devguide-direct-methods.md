@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 55472f16cefeca3b00bea79e71aee5d6588528d6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 516b3bac5da2e078217d5c12f1efdf527b7c83a1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323069"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029078"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Doğrudan yöntemleri anlama ve IoT Hub'dan çağırma
 
@@ -38,7 +38,7 @@ Doğrudan Yöntemler bir istek-yanıt modelini izler ve sonuçlarının hemen on
 Doğrudan yöntemler cihaza uygulanır ve doğru şekilde örneklendirilecek Yöntem yükünde sıfır veya daha fazla giriş gerektirebilir. Bir hizmete yönelik URI () aracılığıyla doğrudan bir yöntem çağırılır `{iot hub}/twins/{device id}/methods/` . Bir cihaz, cihaza özgü bir MQTT konusu ( `$iothub/methods/POST/{method name}/` ) veya AMQP bağlantıları aracılığıyla doğrudan Yöntemler alır ( `IoThub-methodname` ve `IoThub-status` uygulama özellikleri).
 
 > [!NOTE]
-> Bir cihazda doğrudan yöntem çağırdığınızda, özellik adları ve değerleri, aşağıdaki küme dışında yalnızca US-ASCII yazdırılabilir alfasayısal içerebilir:``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
+> Bir cihazda doğrudan yöntem çağırdığınızda, özellik adları ve değerleri, aşağıdaki küme dışında yalnızca US-ASCII yazdırılabilir alfasayısal içerebilir: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
 Doğrudan Yöntemler zaman uyumludur ve zaman aşımı süresinden sonra başarılı ya da başarısız olur (varsayılan: 30 saniye, 5 ile 300 saniye arasında ayarlanabilir). Doğrudan Yöntemler, cihazın ve yalnızca cihaz çevrimiçi olduğunda ve komutları alacağından, bir cihazın çalışır durumda olmasını istediğiniz Etkileşimli senaryolarda faydalıdır. Örneğin, bir telefonda bir ışığı açmak. Bu senaryolarda, bulut hizmetinin sonuca en kısa sürede işlem yapabilmesi için anında başarı veya başarısızlık olduğunu görmek istersiniz. Cihaz, metodun bir sonucu olarak bazı ileti gövdesini döndürebilir, ancak bunu yapmak için gerekli değildir. Yöntem çağrılarında sıralamada veya herhangi bir eşzamanlılık semantiğinin garantisi yoktur.
@@ -55,7 +55,7 @@ Yöntem istekleri ve yanıtları için yük, 128 KB 'ye kadar bir JSON belgesidi
 
 Bir cihazdaki doğrudan yöntem etkinleştirmeleri, aşağıdaki öğelerden oluşan HTTPS çağrılardır:
 
-* [API sürümüyle](/rest/api/iothub/service/devicemethod/invokedevicemethod)birlikte cihaza özgü *istek URI 'si* :
+* [API sürümüyle](https://docs.aws.amazon.com/cli/latest/reference/iot1click-devices/invoke-device-method.html)birlikte cihaza özgü *istek URI 'si* :
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30

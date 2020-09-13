@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c0ddd9ad395da5f5cf4d65ea8ccf849a6473263
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4a02d46688fa49401684f836a7c289906affb413
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664652"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030030"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Azure Active Directory içinde self servis parola sıfırlama sorunlarını giderme
 
@@ -114,7 +114,7 @@ Sorunu ve Azure AD kiracısında veya bireysel kullanıcı hesabında düzeltilm
 | Usernotlisanslanmış = 12 | Ne yazık ki, gerekli lisanslar kuruluşunuzda olmadığından parolanızı Şu anda sıfırlayamazsınız. Bu durumu çözmek için gerçekleştirebileceğiniz başka bir eylem yoktur. Lütfen yöneticinize başvurarak lisans atamasını denetlemesini isteyin.<br /><br />Lisanslama hakkında daha fazla bilgi edinmek için bkz. [Azure AD self servis parola sıfırlama Için lisans gereksinimleri](./concept-sspr-licensing.md). | SSPR_0012: kuruluşunuzda, parola sıfırlama işlemini gerçekleştirmek için gerekli lisanslar yok. Lütfen yöneticinize başvurun ve lisans atamalarını gözden geçirmesini isteyin. |
 | UserNotMemberOfScopedAccessGroup = 13 | Maalesef yöneticiniz hesabınızı parola sıfırlamayı kullanacak şekilde yapılandırmadığından, şu anda parolanızı sıfırlayamazsınız. Bu durumu çözmek için gerçekleştirebileceğiniz başka bir eylem yoktur. Lütfen yöneticinizle iletişime geçerek parolanızı parola sıfırlama için yapılandırmasını isteyin.<br /><br />Parola sıfırlama için hesap yapılandırması hakkında daha fazla bilgi için bkz. [kullanıcılar için parola sıfırlamayı kullanıma alma](./howto-sspr-deployment.md). | SSPR_0013: parola sıfırlama için etkinleştirilen bir grubun üyesi değilsiniz. Yöneticinizle iletişime geçin ve gruba ekleme isteğinizi yapın. |
 | UserNotProperlyConfigured = 14 | Ne yazık ki hesabınızda gerekli bilgiler eksik olduğu için parolanızı Şu anda sıfırlayamazsınız. Bu durumu çözmek için gerçekleştirebileceğiniz başka bir eylem yoktur. Lütfen yöneticinizle iletişime geçin ve parolanızı sıfırlamasını isteyin. Hesabınıza yeniden erişduktan sonra gerekli bilgileri kaydetmeniz gerekir.<br /><br />Bilgileri kaydetmek için, [self servis parola sıfırlama Için kaydolun](../user-help/active-directory-passwords-reset-register.md) makalesindeki adımları izleyin. | SSPR_0014: parolanızı sıfırlamak için ek güvenlik bilgileri gerekir. Devam etmek için yöneticinize başvurun ve parolanızı sıfırlamasını isteyin. Hesabınıza erişeceğinizden sonra ek güvenlik bilgilerini adresinden kaydedebilirsiniz https://aka.ms/ssprsetup . Yöneticiniz, [parola sıfırlama için kimlik doğrulama verilerini ayarlama ve okuma](howto-sspr-authenticationdata.md)bölümündeki adımları izleyerek hesabınıza ek güvenlik bilgileri ekleyebilir. |
-| OnPremisesAdminActionRequired = 29 | Ne yazık ki kuruluşunuzun parola sıfırlama yapılandırmasıyla ilgili bir sorun nedeniyle parolanızı Şu anda sıfırlayamıyoruz. Bu durumu çözmek için gerçekleştirebileceğiniz başka bir eylem yoktur. Lütfen yöneticinizle iletişime geçin ve araştırmasını isteyin.<br /><br />Olası sorun hakkında daha fazla bilgi edinmek için bkz. [parola geri yazma sorunlarını giderme](troubleshoot-sspr-writeback.md). | SSPR_0029: şirket içi yapılandırmanızda bir hata nedeniyle parolanızı sıfırlayamıyoruz. Lütfen yöneticinizle iletişime geçin ve araştırmasını isteyin. |
+| OnPremisesAdminActionRequired = 29 | Ne yazık ki kuruluşunuzun parola sıfırlama yapılandırmasıyla ilgili bir sorun nedeniyle parolanızı Şu anda sıfırlayamıyoruz. Bu durumu çözmek için gerçekleştirebileceğiniz başka bir eylem yoktur. Lütfen yöneticinizle iletişime geçin ve araştırmasını isteyin. <br /><br />Veya<br /><br />Kuruluşunuzun parola sıfırlama yapılandırmasıyla ilgili bir sorun olduğundan şu anda parolanızı sıfırlayamıyoruz. Bu sorunu çözmek için gerçekleştirebileceğiniz başka bir eylem yoktur. Lütfen yöneticinizle iletişime geçin ve araştırmasını isteyin.<br /><br />Olası sorun hakkında daha fazla bilgi edinmek için bkz. [parola geri yazma sorunlarını giderme](troubleshoot-sspr-writeback.md). | SSPR_0029: şirket içi yapılandırmanızda bir hata nedeniyle parolanızı sıfırlayamıyoruz. Lütfen yöneticinizle iletişime geçin ve araştırmasını isteyin. |
 | OnPremisesConnectivityError = 30 | Ne yazık ki, kuruluşunuzda bağlantı sorunları nedeniyle parolanızı Şu anda sıfırlayamıyoruz. Şu anda yapılacak bir eylem yok, ancak daha sonra yeniden denerseniz sorun çözülebilir. Sorun devam ederse lütfen yöneticinizle iletişime geçin ve araştırmasını isteyin.<br /><br />Bağlantı sorunları hakkında daha fazla bilgi edinmek için bkz. [parola geri yazma bağlantısı sorunlarını giderme](troubleshoot-sspr-writeback.md). | SSPR_0030: şirket içi ortamınıza kötü bir bağlantı nedeniyle parolanızı sıfırlayamıyoruz. Yöneticinizle iletişime geçin ve araştırmasını isteyin.|
 
 ## <a name="azure-ad-forums"></a>Azure AD forumları

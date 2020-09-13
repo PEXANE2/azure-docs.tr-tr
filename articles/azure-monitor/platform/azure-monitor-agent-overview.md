@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 0fc9139e9456a62bf3586fb358046e7c868b834a
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005233"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030836"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Izleyici aracısına genel bakış (Önizleme)
 Azure Izleyici Aracısı (AMA), sanal makinelerin Konuk işletim sisteminden izleme verilerini toplar ve Azure Izleyici 'ye gönderir. Bu makaleler, Azure Izleyici aracısına nasıl yükleneceğine ve veri toplamayı nasıl yapılandıracağınızı içeren bir genel bakış sağlar.
@@ -99,6 +99,8 @@ Aşağıdaki işletim sistemleri şu anda Azure Izleyici Aracısı tarafından d
 ## <a name="security"></a>Güvenlik
 Azure Izleyici Aracısı herhangi bir anahtar gerektirmez, bunun yerine [sistem tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)gerektirir. Aracıyı dağıtabilmeniz için, her bir sanal makinede bir sistem tarafından atanmış yönetilen kimliğinizin etkinleştirilmiş olması gerekir.
 
+## <a name="networking"></a>Ağ
+Azure Izleyici Aracısı, Azure hizmet etiketlerini (AzureMonitor ve AzureResourceManager etiketleri gerekir) destekler, ancak henüz Azure Izleyici özel bağlantı kapsamları veya doğrudan proxy 'ler ile çalışmaz.
 
 ## <a name="install-the-azure-monitor-agent"></a>Azure Izleyici aracısını yükler
 Azure Izleyici Aracısı, aşağıdaki tablodaki ayrıntılarla bir [Azure VM Uzantısı](../../virtual-machines/extensions/overview.md) olarak uygulanır. 

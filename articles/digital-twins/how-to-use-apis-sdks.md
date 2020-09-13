@@ -7,20 +7,24 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f61773e693ad1276ef48b2f26ef6e3e8f59e2992
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e97db598556d10538746242fa67449631394cd55
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612376"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030659"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
-Azure dijital TWINS, örneğinizi ve onun öğelerini yönetmek için hem **Denetim düzlemi API 'leri** hem de **veri düzlemi API 'leri** ile birlikte sunulur. Bu makale, kullanılabilir API 'Lere ve bunlarla etkileşime yönelik yöntemlere genel bir bakış sunar. REST API 'Leri doğrudan ilişkili Swaggers ile veya bir SDK aracılığıyla kullanabilirsiniz.
+Azure dijital TWINS, örneğinizi ve onun öğelerini yönetmek için hem **Denetim düzlemi API 'leri** hem de **veri düzlemi API 'leri** ile birlikte sunulur. 
+* Denetim düzlemi API 'leri [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) API 'lardır ve örneğinizi oluşturma ve silme gibi kaynak yönetimi işlemlerini kapsar. 
+* Veri düzlemi API 'leri Azure dijital TWINS API 'leridir ve modelleri, TWINS 'Leri ve grafiği yönetme gibi veri yönetimi işlemleri için kullanılır.
+
+Bu makale, kullanılabilir API 'Lere ve bunlarla etkileşime yönelik yöntemlere genel bir bakış sunar. REST API 'Leri doğrudan ilişkili Swaggers ile veya bir SDK aracılığıyla kullanabilirsiniz.
 
 ## <a name="overview-control-plane-apis"></a>Genel Bakış: denetim düzlemi API 'Leri
 
-Denetim düzlemi API 'Leri, Azure dijital TWINS örneğinizi bir bütün olarak yönetmek için kullanılır, bu nedenle tüm örneğinizi oluşturma veya silme gibi işlemleri kapsar. Bunları, uç noktaları oluşturmak ve silmek için de kullanacaksınız.
+Denetim düzlemi API 'Leri, Azure dijital TWINS örneğinizi bir bütün olarak yönetmek için kullanılan [ARM](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) API 'lardır, böylece tüm örneğinizi oluşturma veya silme gibi işlemleri kapsar. Bunları, uç noktaları oluşturmak ve silmek için de kullanacaksınız.
 
 Genel önizleme için en güncel Denetim düzlemi API sürümü _**2020-03-01-Preview**_' dır.
 
@@ -37,7 +41,7 @@ Ayrıca, [Azure Portal](https://portal.azure.com) ve [CLI](how-to-use-cli.md)ara
 
 ## <a name="overview-data-plane-apis"></a>Genel Bakış: veri düzlemi API 'Leri
 
-Veri düzlemi API 'Leri, Azure dijital TWINS örneğiniz içindeki öğeleri yönetmek için kullanılır. Yollar oluşturma, model yükleme, ilişki oluşturma ve TWINS yönetimi gibi işlemleri içerirler. Bunlar, aşağıdaki kategorilere büyük ölçüde ayrılabilir:
+Veri düzlemi API 'Leri, Azure dijital TWINS örneğinizin içindeki öğeleri yönetmek için kullanılan Azure dijital TWINS API 'lardır. Yollar oluşturma, model yükleme, ilişki oluşturma ve TWINS yönetimi gibi işlemleri içerirler. Bunlar, aşağıdaki kategorilere büyük ölçüde ayrılabilir:
 * **Digitaltwınsmodelleriyle** -digitaltwınsmodel kategorisi, bir Azure dijital TWINS örneğindeki [modelleri](concepts-models.md) yönetmek için API 'ler içerir. Yönetim etkinlikleri, DTDL 'de yazılan modellerin karşıya yükleme, doğrulama, alma ve silme işlemlerini içerir.
 * **Digitaltwins** -digitaltwıns kategorisi, geliştiricilerin bir Azure dijital TWINS örneğinde bulunan [dijital TWINS](concepts-twins-graph.md) ve ilişkilerini oluşturmalarına, değiştirmesine ve silmesine izin veren API 'leri içerir.
 * **Sorgu** -sorgu kategorisi, geliştiricilerin ilişkiler genelinde [ikizi grafiğinde dijital TWINS kümeleri bulmasına](how-to-query-graph.md) olanak tanır.

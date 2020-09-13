@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 41f7b1309a9c7fa9a5f2abb3e2e59f08ef31382d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8c9239196d26bcd4967b685fa7970c4d3bd706d4
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124859"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030540"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik, zamanlamaya dayalı ve yinelenen iş akışları oluşturma
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/) .
 
-* Office 365 Outlook, Outlook.com veya Gmail gibi Logic Apps tarafından desteklenen bir e-posta sağlayıcısından e-posta hesabı. Diğer sağlayıcılar için [buradaki bağlayıcı listesini inceleyin](/connectors/). Bu hızlı başlangıç, Office 365 Outlook hesabını kullanır. Farklı bir e-posta hesabı kullanırsanız, genel adımlar aynı kalır, ancak kullanıcı arabirimi biraz farklı görünebilir.
+* Office 365 Outlook, Outlook.com veya Gmail gibi Logic Apps tarafından desteklenen bir e-posta sağlayıcısından e-posta hesabı. Diğer sağlayıcılar için [buradaki bağlayıcı listesini inceleyin](/connectors/). Bu hızlı başlangıçta bir iş veya okul hesabı kullanılır. Farklı bir e-posta hesabı kullanırsanız, genel adımlar aynı kalır, ancak kullanıcı arabirimi biraz farklı görünebilir.
 
   > [!IMPORTANT]
   > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
@@ -163,9 +163,9 @@ Ardından, belirtilen bir zamanlamaya göre tetiklenen yinelenme [tetikleyicisin
    |----------|----------|-------|-------------|
    | **Güzergah noktası 1** | Yes | <*başlangıç konumu*> | Rotanızın başlangıç noktası |
    | **Güzergah noktası 2** | Yes | <*Son konum*> | Rotanızın hedefi |
-   | **İyileştirme** | Hayır | timeWithTraffic | Rotanızı iyileştirmeye yönelik bir parametre; örneğin, mesafe, mevcut trafik ile seyahat süresi vb. "TimeWithTraffic" parametresini seçin. |
-   | **Mesafe birimi** | Hayır | <*tercih edin*> | Rotanız için mesafe birimi. Bu örnek birim olarak "mil" kullanır. |
-   | **Seyahat modu** | Hayır | Sürüş | Rotanız için seyahat modu. "Itici" modunu seçin. |
+   | **İyileştirme** | No | timeWithTraffic | Rotanızı iyileştirmeye yönelik bir parametre; örneğin, mesafe, mevcut trafik ile seyahat süresi vb. "TimeWithTraffic" parametresini seçin. |
+   | **Mesafe birimi** | No | <*tercih edin*> | Rotanız için mesafe birimi. Bu örnek birim olarak "mil" kullanır. |
+   | **Seyahat modu** | No | Sürüş | Rotanız için seyahat modu. "Itici" modunu seçin. |
    ||||
 
    Bu parametreler hakkında daha fazla bilgi için bkz. [Rota hesaplama](/bingmaps/rest-services/routes/calculate-a-route).
@@ -194,7 +194,7 @@ Varsayılan olarak, önceki **yol al** eylemi, **seyahat süresi trafik** özell
    |----------|----------|-------|-------------|
    | **Ad** | Yes | travelTime | Değişkeninizin adı. Bu örnek "Seyahattime" kullanır. |
    | **Tür** | Yes | Tamsayı | Değişkeninizin veri türü |
-   | **Değer** | Hayır| Geçerli seyahat süresini saniyelerden dakikalara dönüştüren bir ifade (bu tablonun altındaki adımlara bakın). | Değişkeninizin ilk değeri |
+   | **Değer** | No| Geçerli seyahat süresini saniyelerden dakikalara dönüştüren bir ifade (bu tablonun altındaki adımlara bakın). | Değişkeninizin ilk değeri |
    ||||
 
    1. **Değer** özelliği için ifade oluşturmak üzere, dinamik içerik listesinin görünmesi için kutunun içine tıklayın. Gerekirse liste görüntüleninceye kadar tarayıcınızı genişletin. Dinamik içerik listesinde **ifade**' yi seçin.
@@ -248,7 +248,7 @@ Ardından, geçerli seyahat süresinin belirli bir sınırdan büyük olup olmad
 
    1. Orta karşılaştırma kutusunda, işleç ' **den büyüktür** ' i seçin.
 
-   1. Koşulun sağ tarafındaki **bir değer seçin** kutusunda şu sınırı girin:`15`
+   1. Koşulun sağ tarafındaki **bir değer seçin** kutusunda şu sınırı girin: `15`
 
       İşiniz bittiğinde, koşul şu örneğe benzer şekilde görünür:
 

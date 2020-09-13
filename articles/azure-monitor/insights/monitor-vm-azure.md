@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326197"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029470"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinelerini izleme
 Bu makalede, Azure Izleyici 'nin, Azure sanal makinelerindeki izleme verilerini toplamak ve analiz etmek için, sistem durumlarını korumak üzere nasıl kullanılacağı açıklanır. Sanal makineler, Azure Izleyici ile [diğer Azure kaynakları](monitor-azure-resource.md)gibi kullanılabilirlik ve performans için izlenebilir, ancak Konuk işletim sistemini ve sistemi ve içinde çalışan iş yüklerini izlemeniz gerektiğinden diğer kaynaklardan benzersizdir. 
@@ -59,7 +59,7 @@ Azure Izleyici 'nin bir sanal makineyi izlemeye yönelik tüm özelliklerini etk
 | [VM'ler için Azure İzleyici etkinleştir](#enable-azure-monitor-for-vms) | -Log Analytics Aracısı yüklendi.<br>-Bağımlılık Aracısı yüklendi.<br>-Günlüklere toplanan konuk performansı verileri.<br>-Günlüklere toplanan işlem ve bağımlılık ayrıntıları. | -Konuk performans verileri için performans grafikleri ve çalışma kitapları.<br>-Konuk performans verileri için sorguları günlüğe kaydedin.<br>-Konuk performans verileri için günlük uyarıları.<br>-Bağımlılık eşlemesi. |
 | [Tanılama uzantısı ve telegraf Aracısı 'nı yükler](#enable-diagnostics-extension-and-telegraf-agent) | -Ölçümlere toplanan konuk performansı verileri. | -Konuk için ölçüm Gezgini.<br>-Konuk için ölçüm uyarıları.  |
 | [Log Analytics çalışma alanını Yapılandır](#configure-log-analytics-workspace) | -Konuktaki toplanan olaylar. | -Konuk olayları için sorguları günlüğe kaydedin.<br>-Konuk olayları için günlük uyarıları. |
-| [Sanal makine için tanılama ayarı oluştur](#collect-platform-metrics-and-activity-log) | -Günlüklere toplanan platform ölçümleri.<br>-Etkinlik günlüğü günlüklere toplandı. | -LoQ, konak ölçümleri için sorgular.<br>-Konak ölçümleri için günlük uyarıları.<br>-Etkinlik günlüğü için sorgular günlüğe yazılır.
+| [Sanal makine için tanılama ayarı oluştur](#collect-platform-metrics-and-activity-log) | -Günlüklere toplanan platform ölçümleri.<br>-Etkinlik günlüğü günlüklere toplandı. | -Konak ölçümleri için günlük sorguları.<br>-Konak ölçümleri için günlük uyarıları.<br>-Etkinlik günlüğü için sorgular günlüğe yazılır.
 
 Bu yapılandırma adımlarının her biri aşağıdaki bölümlerde açıklanmıştır.
 
@@ -70,9 +70,9 @@ Bu yapılandırma adımlarının her biri aşağıdaki bölümlerde açıklanmı
 - Sanal makinenin Konuk işletim sisteminden temel performans ölçümlerini incelemenize olanak tanıyan, önceden tanımlanmış popüler performans grafikleri ve çalışma kitapları.
 - Her bir sanal makinede çalışan işlem ve diğer makineler ve dış kaynaklarla bağlantılı bileşenler görüntüleyen bağımlılık eşlemesi.
 
-![VM'ler için Azure İzleyici](media/monitor-vm-azure/vminsights-01.png)
+![VM'ler için Azure İzleyici performans görünümü](media/monitor-vm-azure/vminsights-01.png)
 
-![VM'ler için Azure İzleyici](media/monitor-vm-azure/vminsights-02.png)
+![VM'ler için Azure İzleyici haritaları görünümü](media/monitor-vm-azure/vminsights-02.png)
 
 
 Azure portal sanal makine menüsündeki **Öngörüler** seçeneğinden VM'ler için Azure izleyici etkinleştirin. Ayrıntılar ve diğer yapılandırma yöntemleri için bkz. [VM'ler için Azure izleyici genel bakış](vminsights-enable-overview.md) .
@@ -80,7 +80,7 @@ Azure portal sanal makine menüsündeki **Öngörüler** seçeneğinden VM'ler i
 ![VM'ler için Azure İzleyici etkinleştir](media/monitor-vm-azure/enable-vminsights.png)
 
 ### <a name="configure-log-analytics-workspace"></a>Log Analytics çalışma alanını Yapılandır
-VM'ler için Azure İzleyici tarafından kullanılan Log Analytics Aracısı bir [Log Analytics çalışma alanına](../platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured)veri gönderir. Log Analytics çalışma alanını yapılandırarak ek performans verileri, olaylar ve diğer izleme verilerini aracıdan etkinleştirebilirsiniz. Çalışma alanına bağlanan herhangi bir aracı yapılandırmayı otomatik olarak indirecek ve tanımlanan verileri toplamaya başladıktan sonra yalnızca bir kez yapılandırılması gerekir. 
+VM'ler için Azure İzleyici tarafından kullanılan Log Analytics Aracısı bir [Log Analytics çalışma alanına](../platform/data-platform-logs.md)veri gönderir. Log Analytics çalışma alanını yapılandırarak ek performans verileri, olaylar ve diğer izleme verilerini aracıdan etkinleştirebilirsiniz. Çalışma alanına bağlanan herhangi bir aracı yapılandırmayı otomatik olarak indirecek ve tanımlanan verileri toplamaya başladıktan sonra yalnızca bir kez yapılandırılması gerekir. 
 
 **Kullanmaya başlama**alanı **yapılandırması** ' nı seçerek çalışma alanının yapılandırmasına doğrudan VM'ler için Azure izleyici erişebilirsiniz. Menüsünü açmak için çalışma alanı adına tıklayın.
 
@@ -96,7 +96,7 @@ VM'ler için Azure İzleyici tarafından kullanılan Log Analytics Aracısı bir
 
 
 ### <a name="enable-diagnostics-extension-and-telegraf-agent"></a>Tanılama uzantısı ve telegraf Aracısı 'nı etkinleştir
-VM'ler için Azure İzleyici, verileri bir Log Analytics çalışma alanına toplayan Log Analytics aracısına dayalıdır. Bu, [günlük sorguları](../log-query/log-query-overview.md), [günlük uyarıları](../platform/alerts-log.md)ve [çalışma kitapları](../platform/workbooks-overview.md)gibi [Azure izleyici 'nin birden çok özelliğini](../platform/data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) destekler. [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) , Windows sanal makinelerinin Konuk Işletim sisteminden Azure depolama 'ya performans verilerini toplar ve isteğe bağlı olarak [Azure izleyici ölçümlerine](../platform/data-platform-metrics.md)performans verileri gönderir. Linux sanal makineleri için, [telegraf Aracısı](../platform/collect-custom-metrics-linux-telegraf.md) Azure ölçümlerine veri göndermek için gereklidir.  Bu, Azure Izleyici 'nin [Ölçüm Gezgini](../platform/metrics-getting-started.md) ve [ölçüm uyarıları](../platform/alerts-metric.md)gibi diğer özelliklerine izin vermez. Tanılama uzantısını Azure Event Hubs kullanarak Azure Izleyici dışında olay ve performans verilerini gönderecek şekilde de yapılandırabilirsiniz.
+VM'ler için Azure İzleyici, bir Log Analytics çalışma alanına veri gönderen Log Analytics aracısına dayalıdır. Bu, [günlük sorguları](../log-query/log-query-overview.md), [günlük uyarıları](../platform/alerts-log.md)ve [çalışma kitapları](../platform/workbooks-overview.md)gibi Azure izleyici 'nin birden çok özelliğini destekler. [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) , Windows sanal makinelerinin Konuk Işletim sisteminden Azure depolama 'ya performans verilerini toplar ve isteğe bağlı olarak [Azure izleyici ölçümlerine](../platform/data-platform-metrics.md)performans verileri gönderir. Linux sanal makineleri için, [telegraf Aracısı](../platform/collect-custom-metrics-linux-telegraf.md) Azure ölçümlerine veri göndermek için gereklidir.  Bu, Azure Izleyici 'nin [Ölçüm Gezgini](../platform/metrics-getting-started.md) ve [ölçüm uyarıları](../platform/alerts-metric.md)gibi diğer özelliklerine izin vermez. Tanılama uzantısını Azure Event Hubs kullanarak Azure Izleyici dışında olay ve performans verilerini gönderecek şekilde de yapılandırabilirsiniz.
 
 Tek bir Windows sanal makinesi için tanılama uzantısı 'nı, VM menüsündeki **Tanılama ayarı** seçeneğinden Azure Portal. **Havuzlar** sekmesinde **Azure izleyicisini** etkinleştirme seçeneğini belirleyin. Uzantıyı bir şablondan veya komut satırından birden çok sanal makineye etkinleştirmek için bkz. [yükleme ve yapılandırma](../platform/diagnostics-extension-overview.md#installation-and-configuration). Log Analytics aracısının aksine, toplanacak veriler her bir sanal makinedeki uzantının yapılandırmasında tanımlanmıştır.
 
@@ -154,7 +154,7 @@ Sanal makine menüsünden **ölçümler** ' i açarak, Ölçüm Gezgini 'ni kull
 | Konuk (klasik) | Sınırlı bir konuk işletim sistemi ve uygulama performansı verileri kümesi. Ölçüm uyarıları gibi diğer Azure Izleyici özellikleriyle Ölçüm Gezgini 'nde kullanılabilir.  | [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) yüklendi. Veriler Azure depolama alanından okundu.  |
 | Sanal makine konuğu | Konuk işletim sistemi ve uygulama performansı verileri, ölçümler kullanılarak tüm Azure Izleyici özellikleri için kullanılabilir. | Windows için [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) , Azure izleyici havuzu etkin olarak yüklendi. Linux için [telegraf Aracısı yüklenir](../platform/collect-custom-metrics-linux-telegraf.md). |
 
-![Ölçümler](media/monitor-vm-azure/metrics.png)
+![Azure portal Ölçüm Gezgini](media/monitor-vm-azure/metrics.png)
 
 ## <a name="analyzing-log-data"></a>Günlük verileri çözümleniyor
 Azure sanal makineleri, Azure Izleyici günlüklerine aşağıdaki verileri toplar. 
@@ -212,7 +212,7 @@ Heartbeat
 | summarize max(TimeGenerated) by Computer
 ```
 
-![Günlük uyarısı](media/monitor-vm-azure/log-alert-01.png)
+![Kaçırılan sinyal için günlük uyarısı](media/monitor-vm-azure/log-alert-01.png)
 
 Abonelikteki herhangi bir Windows sanal makinesi üzerinde çok fazla sayıda başarısız oturum açma işlemi gerçekleştiyse uyarı oluşturmak için, Son saatteki her başarısız oturum açma olayı için bir kayıt döndüren aşağıdaki sorguyu kullanın. İzin verilen başarısız oturum açma sayısı için bir eşik kümesi kullanın. 
 
@@ -222,20 +222,20 @@ Event
 | where EventID == 4625
 ```
 
-![Günlük uyarısı](media/monitor-vm-azure/log-alert-02.png)
+![Başarısız oturum açmalar için günlük uyarısı](media/monitor-vm-azure/log-alert-02.png)
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM), sanal makinelerde iş yüklerinin ayrıntılı bir şekilde izlenmesini sağlar. İzleme platformlarının ve uygulama için farklı stratejilerin karşılaştırması için bkz. [bulut Izleme Kılavuzu](/azure/cloud-adoption-framework/manage/monitor/) .
+System Center Operations Manager, sanal makinelerde iş yüklerinin ayrıntılı bir şekilde izlenmesini sağlar. İzleme platformlarının ve uygulama için farklı stratejilerin karşılaştırması için bkz. [bulut Izleme Kılavuzu](/azure/cloud-adoption-framework/manage/monitor/) .
 
-Kullanmaya devam etmek istediğiniz mevcut bir SCOM ortamınız varsa, ek işlevsellik sağlamak için Azure Izleyici ile tümleştirilebilir. Azure Izleyici tarafından kullanılan Log Analytics Aracısı, SCOM için kullanılan ve her ikisine de veri gönderen izlenen sanal makineler olacak şekilde aynıdır. VM'ler için Azure İzleyici için aracıyı eklemeniz ve çalışma alanını yukarıda belirtilen ek verileri toplayacak şekilde yapılandırmanız gerekir, ancak sanal makineler, değişiklik yapmadan bir SCOM ortamında var olan yönetim paketlerini çalıştırmaya devam edebilir.
+Kullanmaya devam etmek istediğiniz mevcut bir Operations Manager ortamınız varsa, ek işlevsellik sağlamak için Azure Izleyici ile tümleştirilebilir. Azure Izleyici tarafından kullanılan Log Analytics Aracısı, her ikisine de veri gönderen izlenen sanal makineler olacak şekilde, Operations Manager için kullanılan bir aracısıdır. VM'ler için Azure İzleyici için aracıyı eklemeniz ve çalışma alanını yukarıda belirtilen ek verileri toplayacak şekilde yapılandırmanız gerekir, ancak sanal makineler, mevcut yönetim paketlerini değişiklik yapmadan bir Operations Manager ortamında çalıştırmaya devam edebilir.
 
-Mevcut SCOM özelliklerini geliştiren Azure Izleyici özellikleri şunlardır:
+Mevcut Operations Manager özelliklerini geliştiren Azure Izleyici özellikleri şunlardır:
 
 - Günlük ve performans verilerinizi etkileşimli olarak analiz etmek için Log Analytics kullanın.
-- Birden çok sanal makine genelinde uyarı koşullarını tanımlamak ve SCOM 'deki uyarıları kullanarak mümkün olmayan uzun süreli eğilimleri kullanmak için günlük uyarılarını kullanın.   
+- Birden çok sanal makine genelinde uyarı koşullarını tanımlamak ve Operations Manager uyarıları kullanarak mümkün olmayan uzun süreli eğilimleri kullanmak için günlük uyarılarını kullanın.   
 
-Mevcut SCOM yönetim grubunuzu Log Analytics çalışma alanınıza bağlama hakkında daha fazla bilgi için bkz. [Azure izleyici 'ye bağlanma Operations Manager](../platform/om-agents.md) .
+Mevcut Operations Manager Yönetimi grubunuzu Log Analytics çalışma alanınıza bağlama hakkında daha fazla bilgi için bkz. [Azure izleyici 'ye Operations Manager bağlama](../platform/om-agents.md) .
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

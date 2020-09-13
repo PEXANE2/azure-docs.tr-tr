@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/06/2019
-ms.openlocfilehash: 02ec26c80a8a64f88a30ded2067a377c292d621d
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 09/11/2020
+ms.openlocfilehash: 1d996e62fe60606c3eb93a638d229028ee0471e6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475609"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030614"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Eşleme veri akışı hata ayıklama modu
 
@@ -41,13 +41,15 @@ Hata ayıklamanız ile işiniz bittiğinde, Azure Databricks kümenizin sonlanab
 
 ## <a name="debug-settings"></a>Hata ayıklama ayarları
 
-Hata ayıklama ayarları, veri akışı tuvali araç çubuğunda "hata ayıklama ayarları" seçeneğine tıklanarak düzenlenebilirler. Burada kaynak dönüşümlerinizin her biri için kullanılacak satır sınırını veya dosya kaynağını seçebilirsiniz. Bu ayarda bulunan satır limitleri yalnızca geçerli hata ayıklama oturumu içindir. Ayrıca, bir SQL DW kaynağı için kullanılacak hazırlama bağlantılı hizmetini de seçebilirsiniz. 
+Hata ayıklama modunu etkinleştirdikten sonra, veri akışı verilerinin nasıl önizlebildiğini düzenleyebilirsiniz. Hata ayıklama ayarları, veri akışı tuvali araç çubuğunda "hata ayıklama ayarları" seçeneğine tıklanarak düzenlenebilirler. Burada kaynak dönüşümlerinizin her biri için kullanılacak satır sınırını veya dosya kaynağını seçebilirsiniz. Bu ayarda bulunan satır limitleri yalnızca geçerli hata ayıklama oturumu içindir. Azure SYNAPSE Analytics kaynağı için kullanılacak hazırlama bağlantılı hizmetini de seçebilirsiniz. 
 
 ![Hata ayıklama ayarları](media/data-flow/debug-settings.png "Hata ayıklama ayarları")
 
 Veri akışınızda veya başvurulan veri kümelerinde parametrelere sahipseniz, **Parametreler** sekmesini seçerek hata ayıklama sırasında kullanılacak değerleri belirtebilirsiniz.
 
 ![Hata ayıklama ayarları parametreleri](media/data-flow/debug-settings2.png "Hata ayıklama ayarları parametreleri")
+
+ADF veri akışlarında hata ayıklama modu için kullanılan varsayılan IR, 4 çekirdekli tek sürücü düğümüne sahip küçük 4 çekirdekli tek çalışan düğümüdür. Bu, veri akışı mantığınızı sınarken daha küçük veri örnekleriyle sorunsuz bir şekilde çalışabilir. Veri önizleme sırasında hata ayıklama ayarlarınızda satır sınırlarını genişlettikten veya ardışık düzen hata ayıklaması sırasında kaynağınıza daha fazla sayıda örneklenmiş satır ayarlarsanız, yeni bir Azure Integration Runtime daha büyük bir işlem ortamı ayarlamayı düşünebilirsiniz. Daha sonra, hata ayıklama oturumunuzu daha büyük işlem ortamını kullanarak yeniden başlatabilirsiniz.
 
 ## <a name="data-preview"></a>Veri önizlemesi
 
@@ -59,6 +61,8 @@ Hata ayıklama tarihinde, veri Önizleme sekmesi alt panelde açılır. Üzerind
 > Dosya kaynakları, okunan satırları değil yalnızca gördüğünüz satırları sınırlar. Çok büyük veri kümelerinde, bu dosyanın küçük bir bölümünü almanız ve test etmeniz için kullanmanız önerilir. Dosya veri kümesi türü olan her kaynak için hata ayıklama ayarlarında geçici bir dosya seçebilirsiniz.
 
 Veri akışında hata ayıklama modunda çalışırken verileriniz havuz dönüşümüne yazılmaz. Bir hata ayıklama oturumu, dönüştürmelerinizi için bir test bandı işlevi sunacak şekilde tasarlanmıştır. Hata ayıklama sırasında havuzlar gerekli değildir ve veri akışınız içinde yok sayılır. Havuzınızdaki verilerin yazılmasını test etmek isterseniz, veri akışını bir Azure Data Factory işlem hattından yürütün ve bir işlem hattından hata ayıklama yürütmesini kullanın.
+
+Veri önizleme,, Spark belleğindeki veri çerçevelerinden satır sınırlarını ve veri örneklemesi kullanarak dönüştürülmüş verilerinizin anlık görüntüsüdür. Bu nedenle, havuz sürücüleri bu senaryoda kullanılmaz veya test edilmez.
 
 ### <a name="testing-join-conditions"></a>Test ekleme koşulları
 

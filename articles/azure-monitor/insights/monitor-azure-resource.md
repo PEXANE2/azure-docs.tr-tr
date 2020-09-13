@@ -6,24 +6,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: de381b4200e2ec3381f452ac0ec32e61a055a6ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326180"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030353"
 ---
-# <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Izleyici ile Azure kaynaklarını izleme
+# <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure İzleyici ile Azure kaynaklarını izleme
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure kaynakları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
 
 > [!IMPORTANT]
 > Bu makale Azure Izleyici kullanan tüm Azure hizmetleri için geçerlidir. VM 'Ler ve App Service dahil işlem kaynakları, burada açıklanan izleme verilerinin aynısını oluşturur ve ayrıca Günlükler ve ölçümler oluşturabilen bir konuk işletim sistemine sahiptir. Bu verilerin toplanması ve çözümlenmesi hakkında ayrıntılı bilgi edinmek için bu hizmetlere ilişkin izleme belgelerine bakın.
 
 ## <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
-Azure Izleyici, Azure 'da, diğer bulutlardaki ve Şirket içindeki kaynaklara ek olarak Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sunan tam bir yığın izleme hizmetidir. [Azure izleyici veri platformu](../platform/data-platform.md) , aşağıdaki bölümlerde açıklandığı gibi, bir dizi izleme aracı kullanılarak birlikte çözümlenebilecekleri [günlüklere](../platform/data-platform-logs.md) ve [ölçümlere](../platform/data-platform-metrics.md) veri toplar.
-
-- [Azure Izleyici ölçümleriyle ne yapabilirsiniz?](../platform/data-platform-metrics.md#what-can-you-do-with-azure-monitor-metrics)
-- [Azure Izleyici günlükleri ile neler yapabilirsiniz?](../platform/data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)
+Azure Izleyici, Azure 'da, diğer bulutlardaki ve Şirket içindeki kaynaklara ek olarak Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sunan tam bir yığın izleme hizmetidir. [Azure izleyici veri platformu](../platform/data-platform.md) , tüm izleme araçları kümesi kullanılarak analiz edilebilecekleri [günlüklere](../platform/data-platform-logs.md) ve [ölçümlere](../platform/data-platform-metrics.md) veri toplar. Azure izleyici tarafından [izlenen](../monitor-reference.md)Azure izleyici tarafından izlenebilecekleri uygulamaların ve hizmetlerin tüm listesini görün.
 
 Bir Azure kaynağı oluşturandan itibaren Azure Izleyici etkinleştirilir ve [Azure Portal görüntüleyip çözümleyebilmeniz](#monitoring-in-the-azure-portal)gereken ölçümleri ve etkinlik günlüklerini toplamaya başlar. Bazı yapılandırmalar ile ek izleme verileri toplayabilir ve ek özellikleri etkinleştirebilirsiniz. Yapılandırma gereksinimleriyle ilgili ayrıntılı bilgi için aşağıdaki [Izleme verilerini](#monitoring-data) inceleyin.
 
@@ -100,7 +97,7 @@ Bazı hizmetler, Azure Izleyici 'nin standart özelliklerinden daha fazla araç 
 
 Bir hizmette Azure Izleyici Insight varsa, bu kaynağa her bir kaynağın menüsündeki **izleme** 'den erişebilirsiniz. **Azure izleyici** menüsünden tüm Öngörüler ve çözümlere erişin.
 
-![Insights](media/monitor-azure-resource/insights.png)
+![Azure portal içgörüler](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Ölçümler
 Ölçüm [Gezgini](../platform/metrics-getting-started.md) 'ni kullanarak Azure Portal ölçümleri analiz ederek, çoğu hizmet için **ölçümler** menü öğesinden kullanılabilir. Bu araç, bağıntıları ve eğilimleri belirlemek için bireysel ölçümlerle çalışmanıza veya birden çok birleştirme yapmanıza olanak sağlar. 
@@ -108,7 +105,7 @@ Bir hizmette Azure Izleyici Insight varsa, bu kaynağa her bir kaynağın menüs
 - Ölçüm Gezgini 'ni kullanmanın temelleri için bkz. [Azure Ölçüm Gezgini](../platform/metrics-getting-started.md) kullanmaya başlama.
 - Birden çok ölçüm kullanma ve filtre uygulama ve bölme gibi Ölçüm Gezgini 'nin gelişmiş özellikleri için [Azure Ölçüm Gezgini gelişmiş özelliklerine](../platform/metrics-charts.md) bakın.
 
-![Ölçümler](media/monitor-azure-resource/metrics.png)
+![Azure portal Ölçüm Gezgini](media/monitor-azure-resource/metrics.png)
 
 
 ### <a name="activity-log"></a>Etkinlik günlüğü 
@@ -129,7 +126,7 @@ Azure Izleyici günlükleri, güçlü bir sorgu aracıyla analizler için birden
 - Kaynak günlük verilerinin Azure Izleyici günlüklerinde nasıl yapılandırıldığı hakkında bir açıklama için bkz. [koleksiyon modu](../platform/resource-logs.md#send-to-log-analytics-workspace) .
 - Azure Izleyici günlüklerinde tablosu hakkındaki ayrıntılar için her bir Azure hizmetine yönelik belgelere bakın.
 
-![Günlükler](media/monitor-azure-resource/logs.png)
+![Azure portal Log Analytics](media/monitor-azure-resource/logs.png)
 
 ## <a name="monitoring-from-command-line"></a>Komut satırından izleme
 Bir komut satırından kaynağından toplanan izleme verilerine erişebilir veya [Azure PowerShell](/powershell/azure/) veya [Azure komut satırı arabirimini](/cli/azure/)kullanarak bir komut dosyasına dahil edebilirsiniz. 

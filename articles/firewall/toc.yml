@@ -1,6 +1,6 @@
 - name: Azure Güvenlik Duvarı belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Güvenlik Duvarı nedir?
       href: overview.md
@@ -28,8 +28,6 @@
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
-    - name: Azure İzleyici günlükleri
-      href: log-analytics-samples.md
 - name: Kavramlar
   items:
     - name: Azure Güvenlik Duvarı özellikleri
@@ -88,6 +86,8 @@
       href: dns-settings.md
     - name: Tanılama günlüklerini izleme
       href: firewall-diagnostics.md
+    - name: Azure İzleyici günlükleri
+      href: log-analytics-samples.md
 - name: Başvuru
   items:
     - name: Azure CLI
