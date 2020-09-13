@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 08/20/2020
+ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6fb7a6654f5917c0651ffba6e672b41d14fdbe20
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798440"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489655"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Azure Active Directory 'de Konuk erişim izinlerini (Önizleme) kısıtlama
 
@@ -40,10 +40,7 @@ Dış işbirliği ayarlarını yapılandırmak için genel yönetici rolünde ol
 
 Mevcut Azure portal denetimlerinde Konuk Kullanıcı izinleri için değişiklikler yaptık.
 
-> [!IMPORTANT]
-> Kısa bir süre için, Konuk Kullanıcı izinleri için yeni Portal denetimleri yalnızca URL kullanılarak görünür olur [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) . PowerShell ve Microsoft Graph, denetimleri ayarlamak için hala kullanılabilir ve bu, değişiklikler Portal tarafından kabul edilir.
-
-1. [Azure AD Yönetim merkezinde](https://aka.ms/AADRestrictedGuestAccess) genel yönetici izinleriyle oturum açın.
+1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) genel yönetici izinleriyle oturum açın.
 1. Kuruluşunuzun **Azure Active Directory** Genel Bakış sayfasında, **Kullanıcı ayarları**' nı seçin.
 1. **Dış kullanıcılar**altında, **dış işbirliği ayarlarını yönet**' i seçin.
 1. **Dış işbirliği ayarları** sayfasında, **Konuk Kullanıcı erişimi, kendi dizin nesnelerinin özellikleri ve üyelikleri ile kısıtlıdır** seçeneğini belirleyin.

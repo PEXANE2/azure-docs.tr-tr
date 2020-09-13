@@ -1,22 +1,22 @@
 ---
 title: Azure Marketi teklifi ve hizmet listesi gereksinimleri
-description: Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listelemek için gereksinimler ve yönergeler açıklanmaktadır.
+description: Bu makalede, Azure Marketi 'nde yeni teklifler, hizmetler ve diğer BT çözümlerini listelemek için gereksinimler ve yönergeler açıklanmaktadır.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 07/14/2020
-ms.openlocfilehash: 2f472f15f5f15fb48563aba90df273e31bb1b665
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/04/2020
+ms.openlocfilehash: 51f226443e6f21b6c333cacf6c88f0d00208f5f2
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812878"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484281"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketi listeleme yönergeleri
 
-Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksinimleri ve yönergeleri açıklanmaktadır. Tüm teklifler, [Tüm tekliflere yönelik listeleme gereksinimleri](#listing-requirements-for-all-offers) bölümünde listelenen gereksinimlere uymalıdır. Belirli liste türlerine yönelik gereksinimlere ve denetim listelerine geçmek için sağdaki bağlantıları kullanın.
+Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksinimleri ve yönergeleri açıklanmaktadır. Tüm tekliflerin aşağıda listelenen [liste gereksinimlerini](#listing-requirements-for-all-offers) karşılaması gerekir. Belirli liste türleri için ek gereksinimlere ve denetim listelerine gitmek için sağdaki bağlantıları kullanın.
 
 ## <a name="listing-requirements-for-all-offers"></a>Tüm teklifler için gereksinimleri listeleme
 
@@ -29,7 +29,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 | 5 | Kategoriler ve endüstriler | <ul><li>Kategoriler ve alt kategoriler teklif özelliklerine uymalıdır </li><li>Teklif olanaklarınız için uygun olmayan kategorileri/alt kategorileri seçmeyin. </li></ul> | <ul><li>Birincil ve ikincil kategori dahil olmak üzere en fazla iki kategori seçin (isteğe bağlı).</li><li>Her birincil ve/veya ikincil kategori için en fazla iki alt kategori seçin. Alt kategori seçilmezse, teklifiniz seçili kategoride keşfedilebilir olmaya devam eder.</li></ul> |
 | 6 | Görüntüler | <ul><li>Görüntü gereksinimleri Iş Ortağı Merkezi ' nde listelenir.</li><li>Ekran görüntüsüne eklenen metin okunabilir ve görüntü açık olur. | Çözüm teklifi bir bakışta kolayca anlaşılır. |
 | 7 | Videolar | <ul><li>Video gerekmez, ancak sağlanmışsa, herhangi bir hata olmadan kayıttan yürütülmesi gerekir.</li><li>Sağlanmışsa, bir geçiş çözümü *göstermediği müddetçe* rakip şirketlerine başvurmayabilir. |<ul><li>En ideal olarak Uzunluk 3 dakikadır.</li><li>Çözüm teklifi, video içeriği aracılığıyla kolayca anlaşılır.</li><li>Çözüm özellikleri tanıtımı sağlar. |
-| 8 | Liste durumu (eylem çağrısı) | <ul><li>Aşağıdaki türlerden biri olarak etiketlenmelidir: <ul><li>*Benimle iletişim kurun*</li><li>*Deneme sürümü* / *Deneme sürümünü şimdi al* / *Denemeyi Başlat* / *Sınama sürücüsü*</li><li>*Hemen* / satın alın *Hemen alın*</li></ul></ul> | Müşteri, sonraki adımların ne olduğunu kolay bir şekilde anlayabilir: <ol><li>Denemeyi deneyin.</li><li>Hemen satın alın.</li><li>Kavram kanıtı (POC), değerlendirme veya Brit açısından düzenlemek için e-posta veya telefon numarası ile iletişim kurun.</li></ol> | 
+| 8 | Liste durumu (listeleme seçenekleri) | <ul><li>Aşağıdaki türlerden biri olarak etiketlenmelidir: <ul><li>*Benimle iletişim kurun*</li><li>*Deneme sürümü* / *Deneme sürümünü şimdi al* / *Denemeyi Başlat* / *Sınama sürücüsü*</li><li>*Hemen* / satın alın *Hemen alın*</li></ul></ul> | Müşteri, sonraki adımların ne olduğunu kolay bir şekilde anlayabilir: <ol><li>Denemeyi deneyin.</li><li>Hemen satın alın.</li><li>Kavram kanıtı (POC), değerlendirme veya Brit açısından düzenlemek için e-posta veya telefon numarası ile iletişim kurun.</li></ol> | 
 | 9 | Çözüm fiyatlandırması | Çözüm fiyatlandırma sekmesi/ayrıntıları olmalıdır ve fiyatlandırma, iş ortağı çözümü sunumunun yerel para birimi cinsinden olmalıdır. | Müşteri seçenekleri sağlamak için katman fiyatlandırmasıyla birden çok faturalandırma seçeneği kullanılabilir olmalıdır. |
 | 10 | Daha fazla bilgi edinin | En alttaki bağlantılar (açıklama altında, sol taraftaki Azure Marketi bağlantıları değil), çözüm hakkında daha fazla bilgi sağlar ve genel olarak kullanılabilir ve doğru şekilde görüntülenir. |    Yalnızca iş ortağı giriş sayfasına değil belirli öğelerin (örneğin, iş ortağı sitesindeki özellikler sayfaları) bağlantıları. | 
 | 11 | Çözüm desteği ve yardım | Aşağıdakilerden en az birine bağlantı: <ul><li>Telefon numaraları</li><li>E-posta desteği</li><li>Sohbet aracıları</li><li>Topluluk forumları |<ul><li>Tüm destek yöntemleri listelenmiştir.</li><li>Ücretli destek, *deneme* veya *Test sürücü* döneminde ücretsiz olarak sunulur. |
@@ -40,7 +40,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 
 | Hayır. | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
 |:--- |:--- |:--- |:--- |
-|  | Liste durumu (eylem çağrısı) | Bağlantı, müşteri tarafından LED 'e yönelik bir *deneme* deneyimine yol açmalıdır. | Eyleme yapılan diğer çağrılar (örneğin, *Şimdi satın al*) de mevcuttur. | 
+|  | Liste durumu (listeleme seçeneği) | Bağlantı, müşteri tarafından LED 'e yönelik bir *deneme* deneyimine yol açmalıdır. | Diğer liste seçenekleri de (örneğin, *Şimdi satın al*) kullanılabilir. | 
 |||
 
 ## <a name="saas-application-requirements"></a>SaaS uygulama gereksinimleri
@@ -78,7 +78,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 | 2 | Teklif açıklaması  |<ul><li>[Microsoft ürün adlarının](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx)doğru kullanımını sağlayın.</li><li>Fiyat olarak işaretlenen teklifler *: tahmini* , değişkenlik (istemciye yolculuk, geçirilmekte olan sunucu sayısı vb.) açıklamak için en üst veya alt kısımdaki bir nota sahip olmalıdır.</li><li>Her teklif türü, aşağıdaki gibi açıklama gereksinimlerine sahiptir: <ul><li>Brifler, ele alınanlara ilişkin bilgilerle en az dört veya beş madde işareti olmalıdır.</li><li>Tüm atölyeler bir ajandası olmalıdır.</li><li>Atölyenin süresine bağlı olarak tüm ajandaların güne veya haftaya göre ayrılmış olması gerekir.</li><li>Assessment, POC, eğitim olmayan atölyeler ve uygulama için teslim edilebilirler gerekir.</li><li>Eğitim atölyeler için teslim edilebilirler gerekmez, ancak kapsanacak konularda daha ayrıntılı bir gündemi olması gerekir.</li></ul></ul> | <ul><li>Herhangi bir teklifin gündem ve teslim edilebilirler vardır.</li><li>Teklif, en üst bölümde hizmeti sağlayan şirket hakkında bağlam içeren bir paragraf içerir.</li><li>Teklif, en üst bölüm olarak hizmetin kendisinin değeri hakkında bir paragraf içerir. |
 | 3 | Markaşağı biçimlendirme  | Teklifin HTML 'ye dönüştürüldüğünde düzgün şekilde çalışması için tüm tekliflerden Markup biçimlendirmesi kullanılması gerekir.  |  |
 | 4 | Kategoriler ve endüstriler | Kategoriler ilgili değildir. |  | 
-| 5 | Liste durumu (eylem çağrısı) | *Benimle Iletişim kurmak*için otomatik olarak listelendi. |  | 
+| 5 | Liste durumu (listeleme seçeneği) | *Benimle Iletişim kurmak*için otomatik olarak listelendi. |  | 
 | 6 | Çözüm desteği ve yardım  | Destek ve yardım gerekli değildir.  | | 
 | 7 | Gizlilik ilkesi ve kullanım koşulları kullanılabilir  |  İlkeler veya koşullar gerekli değildir.  | | 
 | 8 | Hizmet türleri | Hizmet türünün başlıkla eşleştiğinden emin olun. | |

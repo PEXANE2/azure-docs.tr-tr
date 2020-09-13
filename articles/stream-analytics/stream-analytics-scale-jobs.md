@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: d982cc94a9ab0517d6453a30371635c1e3100676
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b96bc456d2dc0e3f1a1110f36b61be4accfbd8c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835606"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488516"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Azure Stream Analytics işini, aktarım hızını artırmak için ölçeklendirin
 Bu makalede, Akış Analizi işlerinin aktarım hızını artırmak için bir Stream Analytics sorgusunun nasıl ayarlanacağı gösterilmektedir. Daha yüksek yükü işleyecek ve daha fazla sistem kaynaklarından (daha fazla bant genişliği, daha fazla CPU kaynağı, daha fazla bellek gibi) yararlanmak üzere işinizi ölçeklendirmek için aşağıdaki kılavuzu kullanabilirsiniz.
@@ -23,7 +23,7 @@ Bir önkoşul olarak, aşağıdaki makaleleri okumanız gerekebilir:
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>Durum 1 – sorgunuz doğal olarak giriş bölümleri genelinde tamamen paralelleştirilebilir
 Sorgunuz doğal olarak giriş bölümlerine tam olarak paralelleştirmemişse aşağıdaki adımları izleyebilirsiniz:
 1.  Anahtar sözcüğe **göre Bölüm** kullanarak sorgunuzu beyana yazın. [Bu sayfanın Embarson](stream-analytics-parallelization.md)'un paralel işleri bölümünde daha fazla ayrıntı görüntüleyin.
-2.  Sorgunuzda kullanılan çıkış türlerine bağlı olarak, bazı çıktılar paralelleştirilebilir veya daha fazla yapılandırmanın emson paralel olması gerekebilir. Örneğin, PowerBI çıkışı paralelleştirilebilir. Çıktılar, çıkış havuzuna gönderilmeden önce her zaman birleştirilir. Blob 'lar, tablolar, ADLS, Service Bus ve Azure Işlevi otomatik olarak paraleldir. SQL ve SQL DW çıktıları paralelleştirme için bir seçeneğe sahiptir. Olay Hub 'ının PartitionKey yapılandırması, **bölümleme ölçütü** alanı (genellikle PartitionID) ile eşleşecek şekilde ayarlanmalıdır. Olay Hub 'ı için Ayrıca, bölümler arasında çapraz geçiş yapmaktan kaçınmak üzere tüm girişler ve tüm çıktılar için bölüm sayısıyla eşleşen ek dikkat ödeyin. 
+2.  Sorgunuzda kullanılan çıkış türlerine bağlı olarak, bazı çıktılar paralelleştirilebilir veya daha fazla yapılandırmanın emson paralel olması gerekebilir. Örneğin, PowerBI çıkışı paralelleştirilebilir. Çıktılar, çıkış havuzuna gönderilmeden önce her zaman birleştirilir. Blob 'lar, tablolar, ADLS, Service Bus ve Azure Işlevi otomatik olarak paraleldir. SQL ve Azure SYNAPSE Analytics çıkışları paralelleştirme için bir seçeneğe sahiptir. Olay Hub 'ının PartitionKey yapılandırması, **bölümleme ölçütü** alanı (genellikle PartitionID) ile eşleşecek şekilde ayarlanmalıdır. Olay Hub 'ı için Ayrıca, bölümler arasında çapraz geçiş yapmaktan kaçınmak üzere tüm girişler ve tüm çıktılar için bölüm sayısıyla eşleşen ek dikkat ödeyin. 
 3.  En yüksek ulaşılabilir üretilen iş miktarını ölçmek için sorgunuzu **6 su** (tek bir bilgi işlem düğümünün tam kapasitesi olan) ile çalıştırın ve **gruplama ölçütü**kullanıyorsanız, işin işleyebileceği grup sayısını (kardinalite) ölçebilir. İş, sistem kaynağı sınırlarına vurarak yapılacak işin genel belirtileri aşağıda verilmiştir.
     - % SU kullanım ölçümü %80 üzerinde. Bu, bellek kullanımının yüksek olduğunu gösterir. Bu ölçümün artışına katkıda bulunan faktörler [burada](stream-analytics-streaming-unit-consumption.md)açıklanmıştır. 
     -   Çıkış zaman damgası, duvar saati zamanına göre geride olur. Sorgu mantığınıza bağlı olarak, çıkış zaman damgası, duvar saati saatinden bir mantık uzaklığa sahip olabilir. Ancak, kabaca aynı hızda ilerlemelidir. Çıktı zaman damgası daha fazla ve daha sonra geri düşolursa sistemin fazla çalıştığını gösteren bir göstergedir. Bu, akış çıkış havuzunun azalmasını veya yüksek CPU kullanımının bir sonucu olabilir. Şu anda CPU kullanım ölçümü sağlamadık, bu yüzden ikisini ayırt etmek zor olabilir.

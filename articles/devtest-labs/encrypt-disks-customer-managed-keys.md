@@ -2,19 +2,18 @@
 title: Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi disklerini şifreleyin
 description: Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi (OS) disklerini şifrelemeyi öğrenin.
 ms.topic: article
-ms.date: 07/28/2020
-ms.openlocfilehash: 241f53f0c8f289b43b8de465eb7509489345b955
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/01/2020
+ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815930"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489853"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi (OS) disklerini şifreleyin
 Sunucu tarafı şifreleme (SSE) verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. SSE, Azure 'da (işletim sistemi ve veri diskleri) yönetilen disklerde depolanan verilerinizi otomatik olarak buluta kalıcı hale getirerek varsayılan olarak şifreler. Azure 'da [disk şifrelemesi](../virtual-machines/windows/disk-encryption.md) hakkında daha fazla bilgi edinin. 
 
 DevTest Labs içinde, bir laboratuvarın parçası olarak oluşturulan tüm işletim sistemi diskleri ve veri diskleri, platform tarafından yönetilen anahtarlar kullanılarak şifrelenir. Ancak, bir laboratuar sahibi olarak, kendi anahtarlarınızı kullanarak laboratuvar sanal makine işletim sistemi disklerini şifrelemeyi tercih edebilirsiniz. Şifrelemeyi kendi anahtarlarınız ile yönetmeyi seçerseniz, laboratuvar işletim sistemi disklerindeki verileri şifrelemek için kullanılacak **müşteri tarafından yönetilen bir anahtar** belirtebilirsiniz. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme (SSE) hakkında daha fazla bilgi edinmek ve diğer yönetilen disk şifreleme türleri hakkında daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtarlar](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Ayrıca bkz. [müşteri tarafından yönetilen anahtarları kullanmayla ilgili kısıtlamalar](../virtual-machines/disks-enable-customer-managed-keys-portal.md#restrictions).
-
 
 > [!NOTE]
 > - Şu anda, müşteri tarafından yönetilen bir anahtarla disk şifrelemesi yalnızca DevTest Labs içindeki işletim sistemi diskleri için desteklenir. 
@@ -29,8 +28,11 @@ Aşağıdaki bölümde, bir laboratuar sahibinin, müşteri tarafından yönetil
 
     - Disk şifreleme kümesinin **laboratuvarınız ile aynı bölgede ve abonelikte**olması gerekir. 
     - Laboratuvar işletim sistemi disklerini şifrelemek için kullanılacak disk şifreleme kümesine en az bir **okuyucu düzeyinde erişime** sahip olduğunuzdan emin olun. 
-2. 8/1/2020 ' den önce oluşturulan laboratuvarlar için laboratuvar sahibinin laboratuvar sistemi tarafından atanan kimliğin etkinleştirildiğinden emin olması gerekir. Bunu yapmak için, laboratuvar sahibi laboratuvarına gidebilir, **yapılandırma ve ilkeler**' e tıklayabilir, **kimlik (Önizleme)** dikey penceresine tıklayabilir, sistem tarafından atanan kimlik **durumunu** **Açık** olarak değiştirebilir ve **Kaydet**' e tıklayabilirsiniz. 8/1/2020 Laboratuvarı sistem tarafından atanan kimlik ile oluşturulan yeni laboratuvarlar için varsayılan olarak etkinleştirilir. 
-3. Laboratuvarın tüm laboratuar işletim sistemi diskleri için şifrelemeyi işlemesi için, laboratuvar sahibinin, temel alınan Azure aboneliğinde sanal makine katılımcısı rolü ' ne ek olarak, laboratuvar sahibinin, disk şifreleme kümesi ve sanal makine katılımcısı rolü üzerinde **sistem tarafından atanan kimlik** okuyucusu rolünü açıkça vermesi gerekir. Laboratuvar sahibi bunu aşağıdaki adımları tamamlayarak yapabilir:
+1. 8/1/2020 ' den önce oluşturulan laboratuvarlar için laboratuvar sahibinin laboratuvar sistemi tarafından atanan kimliğin etkinleştirildiğinden emin olması gerekir. Bunu yapmak için, laboratuvar sahibi laboratuvarına gidebilir, **yapılandırma ve ilkeler**' e tıklayabilir, **kimlik (Önizleme)** dikey penceresine tıklayabilir, sistem tarafından atanan kimlik **durumunu** **Açık** olarak değiştirebilir ve **Kaydet**' e tıklayabilirsiniz. 8/1/2020 Laboratuvarı sistem tarafından atanan kimlik ile oluşturulan yeni laboratuvarlar için varsayılan olarak etkinleştirilir. 
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/managed-keys.png" alt-text="Yönetilen Anahtarlar":::
+1. Laboratuvarın tüm laboratuar işletim sistemi diskleri için şifrelemeyi işlemesi için, laboratuvar sahibinin, temel alınan Azure aboneliğinde sanal makine katılımcısı rolü ' ne ek olarak, laboratuvar sahibinin, disk şifreleme kümesi ve sanal makine katılımcısı rolü üzerinde **sistem tarafından atanan kimlik** okuyucusu rolünü açıkça vermesi gerekir. Laboratuvar sahibi bunu aşağıdaki adımları tamamlayarak yapabilir:
 
    
     1. Azure kaynaklarına Kullanıcı erişimini yönetebilmeniz için Azure abonelik düzeyinde [Kullanıcı erişimi Yöneticisi rolünün](../role-based-access-control/built-in-roles.md#user-access-administrator) bir üyesi olduğunuzdan emin olun. 
@@ -71,8 +73,24 @@ Aşağıdaki bölümde, bir laboratuar sahibinin, müşteri tarafından yönetil
 1. İleti kutusunda aşağıdaki metinle: *Bu ayar, laboratuvardaki yeni oluşturulan makineler için geçerlidir. Eski işletim sistemi diski eski disk şifrelemesi kümesiyle şifreli kalacak*, **Tamam**' ı seçin. 
 
     Bir kez yapılandırıldıktan sonra, laboratuvar işletim sistemi diskleri disk şifreleme kümesi kullanılarak sunulan müşteri tarafından yönetilen anahtarla şifrelenir. 
+   
+## <a name="how-to-validate-if-disks-are-being-encrypted"></a>Disklerin şifrelenip şifrelenmediğini doğrulama
 
+1. Laboratuvar üzerinde müşteri tarafından yönetilen bir anahtarla disk şifrelemeyi etkinleştirdikten sonra oluşturulan bir laboratuvar sanal makinesine gidin.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="Etkin disk şifrelemesi olan VM":::
+1. VM 'nin kaynak grubuna tıklayın ve işletim sistemi diskine tıklayın.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="VM kaynak grubu":::
+1. Şifreleme ' ye gidin ve şifrelemenin, seçtiğiniz disk şifrelemesi kümesiyle müşterinin yönettiği anahtar olarak ayarlandığını doğrulayın.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Şifrelemeyi doğrula":::
+  
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Aşağıdaki makalelere bakın: 
 
 - [Azure disk şifrelemesi](../virtual-machines/windows/disk-encryption.md). 

@@ -1,19 +1,19 @@
 ---
 title: Ölçekte ayıklama, dönüştürme ve yükleme (ETL)-Azure HDInsight
 description: Apache Hadoop ile HDInsight 'ta ayıklama, dönüştürme ve yükleme işlemlerinin nasıl kullanıldığını öğrenin.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e048365ca589d452385607b902ee6b285de8165f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb3c45c01b2e3ca1761e86f3ac991d67f7813856
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084129"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504324"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Ölçeklendirerek ayıklama, dönüştürme ve yükleme (ETL)
 
@@ -48,7 +48,7 @@ Azure Data Factory için kullanın:
 
 1. Veri odaklı iş akışları oluşturun ve zamanlayın. Bu işlem hatları, farklı veri depolarından veri içerir.
 1. HDInsight veya Hadoop gibi işlem hizmetlerini kullanarak verileri işleyin ve dönüştürün. Bu adım için Spark, Azure Data Lake Analytics, Azure Batch veya Azure Machine Learning de kullanabilirsiniz.
-1. Bı uygulamalarının kullanması için çıkış verilerini Azure SQL veri ambarı gibi veri depolarında yayımlayın.
+1. Bı uygulamalarının kullanması için çıktı verilerini Azure SYNAPSE Analytics gibi veri depolarında yayımlayın.
 
 Azure Data Factory hakkında daha fazla bilgi için [belgelerine](../../data-factory/introduction.md)bakın.
 
@@ -84,11 +84,11 @@ Veri kümelerini terabayt aralığında karşıya yüklemek için ağ gecikmesi 
 
 - **Sabit disk sürücülerinden karşıya veri yükleme:** Azure [içeri/dışarı aktarma hizmetini](../../storage/common/storage-import-export-service.md) kullanarak verilerinize bir Azure veri merkezine sabit disk sürücüleri gönderebilirsiniz. Verileriniz ilk olarak Azure Blob depolama alanına yüklenir. Daha sonra, Azure Blob depolamadan Data Lake Storage verileri kopyalamak için Azure Data Factory veya AdlCopy aracını kullanabilirsiniz.
 
-### <a name="azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı
+### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL veri ambarı, hazırlanan sonuçları depolamak için uygun bir seçimdir. Azure HDInsight 'ı kullanarak SQL veri ambarı için bu hizmetleri gerçekleştirebilirsiniz.
+Azure SYNAPSE Analytics, hazırlanan sonuçları depolamak için uygun bir seçimdir. Bu hizmetleri zure SYNAPSE Analytics için gerçekleştirmek üzere Azure HDInsight 'ı kullanabilirsiniz.
 
-Azure SQL veri ambarı, analitik iş yükleri için iyileştirilmiş bir ilişkisel veritabanı deposudur. Bölümlenmiş tablolara göre ölçeklendirilir. Tablolar birden çok düğüm arasında bölümlenebilir. Düğümler, oluşturma sırasında seçilir. Olgu sonrasında ölçeklendirebilir, ancak bu, veri taşıma gerektirebilecek etkin bir işlemdir. Daha fazla bilgi için bkz. [SQL veri ambarı 'nda Işlem yönetme](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+Azure SYNAPSE Analytics, analitik iş yükleri için iyileştirilmiş bir ilişkisel veritabanı deposudur. Bölümlenmiş tablolara göre ölçeklendirilir. Tablolar birden çok düğüm arasında bölümlenebilir. Düğümler, oluşturma sırasında seçilir. Olgu sonrasında ölçeklendirebilir, ancak bu, veri taşıma gerektirebilecek etkin bir işlemdir. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics 'te Işlem yönetme](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 
 ### <a name="apache-hbase"></a>Apache HBase
 
@@ -107,7 +107,7 @@ HBase uyumluluk, HDInsight kümesindeki düğüm sayısına bağlıdır.
 Azure üç PaaS ilişkisel veritabanı sunar:
 
 * [Azure SQL veritabanı](../../azure-sql/database/sql-database-paas-overview.md) Microsoft SQL Server uygulamasıdır. Performans hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda ayarlama performansı](../../azure-sql/database/performance-guidance.md).
-* [MySQL Için Azure veritabanı](../../mysql/overview.md) , Oracle MySQL 'in bir uygulamasıdır.
+* [MySQL Için Azure veritabanı](../../mysql/overview.md)  , Oracle MySQL 'in bir uygulamasıdır.
 * [PostgreSQL Için Azure veritabanı](../../postgresql/quickstart-create-server-database-portal.md) , PostgreSQL 'in bir uygulamasıdır.
 
 Bu ürünlerin ölçeğini ölçeklendirmek için daha fazla CPU ve bellek ekleyin.  Daha iyi g/ç performansı için ürünlerle Premium diskler kullanmayı da tercih edebilirsiniz.

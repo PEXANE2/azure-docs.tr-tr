@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 359de25d2bdb57ad5c6386586f987942acc120ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500155"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488975"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,16 +45,16 @@ Sanal çekirdek tabanlı hizmet katmanları, aşağıdaki tabloda açıklandığ
 | **En iyi kullanım alanı:** |Tümü|Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar.|Birçok iş yükü. Otomatik ölçeklendirme depolama boyutu 100 TB 'ye kadar, hızlı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme.|Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|
 |  **Kaynak türü** ||SQL veritabanı/SQL yönetilen örneği | Tek veritabanı | SQL veritabanı/SQL yönetilen örneği |
 | **İşlem boyutu**|SQL veritabanı * | 1-80 sanal çekirdek | 1-80 sanal çekirdek * | 1-80 sanal çekirdek |
-| **İşlem boyutu**|SQL Yönetilen Örnek | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | YOK | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
+| **İşlem boyutu**|SQL Yönetilen Örnek | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | Yok | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
 | **Depolama türü** | Tümü |Premium uzak depolama (örnek başına) | Yerel SSD Önbelleği (örnek başına) ile birlikte bağlanmış depolama | Süper hızlı yerel SSD depolaması (örnek başına) |
 | **Depolama boyutu** | SQL veritabanı *| 5 GB – 4 TB | 100 TB 'a kadar | 5 GB – 4 TB |
-| **Depolama boyutu** | SQL Yönetilen Örnek  | 32 GB – 8 TB | YOK | 32 GB – 4 TB |
+| **Depolama boyutu** | SQL Yönetilen Örnek  | 32 GB – 8 TB | Yok | 32 GB – 4 TB |
 | **IOPS** | Tek veritabanı | maksimum 7000 ıOPS ile vCore başına 500 ıOPS | Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS iş yüküne bağlı olacaktır. | 5000 ıOPS, en fazla 200.000 ıOPS|
-| **IOPS** | SQL Yönetilen Örnek | Dosya boyutuna bağlıdır | YOK | 1375 ıOPS/sanal çekirdek |
+| **IOPS** | SQL Yönetilen Örnek | Dosya boyutuna bağlıdır | Yok | 1375 ıOPS/sanal çekirdek |
 |**Kullanılabilirlik**|Tümü|1 çoğaltma, okuma ölçeği yok, yerel önbellek yok | Birden çok çoğaltma, en fazla 4 okuma ölçeği genişletme, kısmi yerel önbellek | 3 çoğaltma, 1 okuma ölçeği genişletme, bölge yedekli HA, tam yerel depolama |
 |**Yedeklemeler**|Tümü|RA-GRS, 7-35 gün bekletme (varsayılan olarak 7 gün)| RA-GRS, 7 günlük bekletme, sabit zaman zaman aşımı kurtarma (sür) | RA-GRS, 7-35 gün bekletme (varsayılan olarak 7 gün) |
 
-\*Esnek havuzlar hiper ölçek hizmeti katmanında desteklenmez
+\* Esnek havuzlar hiper ölçek hizmeti katmanında desteklenmez
 
 ### <a name="who-should-use-the-hyperscale-service-tier"></a>Hiper ölçek hizmet katmanını kimler kullanmalıdır?
 
@@ -114,11 +114,11 @@ Evet, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefi
 
 Hiper ölçek tüm SQL Server iş yüklerini destekler, ancak öncelikle OLTP için iyileştirilmiştir. Karma (HTAP) ve analitik (veri reyonu) iş yüklerini da getirebilirsiniz.
 
-### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-azure-sql-database-hyperscale"></a>Azure SQL veri ambarı ve Azure SQL veritabanı hiper ölçeği arasında nasıl seçim yapabilirim?
+### <a name="how-can-i-choose-between-azure-synapse-analytics-and-azure-sql-database-hyperscale"></a>Azure SYNAPSE Analytics ve Azure SQL veritabanı Hyperscale arasından nasıl seçim yapabilirim
 
 Şu anda bir veri ambarı olarak SQL Server kullanarak etkileşimli analiz sorguları çalıştırıyorsanız, daha düşük bir maliyetle küçük ve orta ölçekli veri ambarlarını (100 TB 'a kadar birkaç TB) barındırabileceğiniz için Hiperscale harika bir seçenektir ve SQL Server veri ambarı iş yüklerinizi en az T-SQL kod değişiklikleriyle hiper ölçeğe geçirebilirsiniz.
 
-Veri analizlerini, karmaşık sorgular ve sürekli olarak 100 MB/sn 'den büyük bir ölçekte çalıştırıyorsanız ya da paralel veri ambarı (PDW), Teradata veya diğer yoğun paralel Işleme (MPP) veri ambarlarından yararlanarak SQL veri ambarı en iyi seçim olabilir.
+Veri analizlerini, karmaşık sorgular ve sürekli olarak 100 MB/sn 'den büyük bir ölçekte çalıştırıyorsanız ya da paralel veri ambarı (PDW), Teradata veya diğer yoğun paralel Işleme (MPP) veri ambarlarından yararlanarak Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) en iyi seçim olabilir.
   
 ## <a name="hyperscale-compute-questions"></a>Hiper ölçekli işlem soruları
 
@@ -158,7 +158,7 @@ Hiperscale ile işlem günlüğü, pratik olarak sonsuzdur. Yüksek günlük ür
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>`tempdb`My Veritabanım olarak ölçeklendirim büyüyor
 
-`tempdb`Veritabanınız yerel SSD depolamada bulunur ve sağladığınız işlem boyutuna orantılı olarak boyutlandırılır. `tempdb`En yüksek performans avantajları sağlamak için en iyi duruma getirilmiştir. `tempdb`Boyut yapılandırılamaz ve sizin için yönetiliyor.
+`tempdb`Veritabanınız yerel SSD depolamada bulunur ve sağladığınız işlem boyutuna orantılı olarak boyutlandırılır. `tempdb`En yüksek performans avantajları sağlamak için en iyi duruma getirilmiştir. `tempdb` Boyut yapılandırılamaz ve sizin için yönetiliyor.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Veritabanı boyutumun otomatik olarak büyümesi veya veri dosyalarının boyutunu yönetmesi gerekir
 
@@ -229,7 +229,7 @@ Hiper ölçeğe geçiş için kapalı kalma süresi, veritabanlarınızı diğer
 
 Hiper ölçek, yeni/değiştirilmiş verileri 100 MB/s olarak kullanabilir, ancak verileri Azure SQL veritabanı 'nda veritabanlarına taşımak için gereken süre, kullanılabilir ağ aktarım hızı, kaynak okuma hızı ve hedef veritabanı hizmet düzeyi hedefi tarafından da etkilenir.
 
-### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-sql-data-warehouse"></a>Blob depolamadaki verileri okuyabilir ve hızlı yükleme yapabilir (SQL veri ambarı 'nda PolyBase gibi)
+### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>Blob depolamadaki verileri okuyabilir ve hızlı yükleme yapabilir (Azure SYNAPSE Analytics 'te PolyBase gibi)
 
 Bir istemci uygulamanızın Azure Storage 'dan veri okuyabilmesini ve veri yükünü bir hiper ölçekli veritabanına yüklemesini (tıpkı Azure SQL veritabanı 'ndaki diğer veritabanları gibi) sağlayabilirsiniz. PolyBase Şu anda Azure SQL veritabanı 'nda desteklenmiyor. Hızlı yük sağlamaya alternatif olarak, [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/)KULLANABILIR veya [SQL için spark Bağlayıcısı](spark-connector.md)ile [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) bir Spark işi kullanabilirsiniz. SQL 'e Spark Bağlayıcısı toplu ekleme 'yi destekler.
 
@@ -269,7 +269,7 @@ Evet.
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-for-database-restore-in-hyperscale"></a>Hiper ölçekte veritabanı geri yüklemesi için kurtarma noktası hedefi (RPO)/kurtarma süresi hedefi (RTO) nedir?
 
-RPO 0 dk. RTO hedefi, veritabanı boyutundan bağımsız olarak 10 dakikadan azdır.
+RPO 0 dk. En geri yükleme işlemleri, veritabanı boyutundan bağımsız olarak 60 dakika içinde tamamlanır. Geri yükleme süresi daha büyük veritabanları için daha uzun olabilir ve veritabanı daha önce ve geri yükleme noktasına kadar önemli bir yazma etkinliği yaşadı.
 
 ### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>Veritabanı yedeklemesi, birincil veya ikincil çoğaltmalarda işlem performansını etkiler
 
@@ -345,9 +345,9 @@ Hayır. Ölçeği artırma ve azaltma çevrimiçi olacak.
 
 Son Kullanıcı. Otomatik değil.  
 
-### <a name="does-the-size-of-my-tempdb-database-also-grow-as-the-compute-is-scaled-up"></a>`tempdb`İşlem büyüdükçe veritabanı boyutu da büyür
+### <a name="does-the-size-of-my-tempdb-database-and-rbpex-cache-also-grow-as-the-compute-is-scaled-up"></a>`tempdb`İşlem ölçeği büyüdükçe veritabanı ve RBPEX önbelleğim boyutu da büyür
 
-Evet. `tempdb`İşlem büyüdükçe veritabanı otomatik olarak ölçeklendirilir.  
+Evet. `tempdb`Çekirdek sayısı arttığı için, işlem düğümlerinde veritabanı ve [Rbpex önbellek](service-tier-hyperscale.md#distributed-functions-architecture) boyutu otomatik olarak ölçeklendirilir.
 
 ### <a name="can-i-provision-multiple-primary-compute-replicas-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Birden fazla birincil bilgi işlem yöneticisinin daha yüksek bir eşzamanlılık düzeyini sağlayabildiği çok yöneticili bir sistem gibi birden çok birincil işlem çoğaltması sağlayabilir miyim
 
@@ -361,7 +361,7 @@ Hiper ölçek veritabanları için varsayılan olarak bir ikincil çoğaltma olu
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>Nasıl yaparım? bu ikincil işlem çoğaltmalarına bağlanın
 
-`ApplicationIntent`Bağlantı dizinizdeki bağımsız değişkeni olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz `ReadOnly` . İle işaretlenen tüm bağlantılar `ReadOnly` otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir.  
+`ApplicationIntent`Bağlantı dizinizdeki bağımsız değişkeni olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz `ReadOnly` . İle işaretlenen tüm bağlantılar `ReadOnly` otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir. Ayrıntılar için bkz. salt okuma [sorgusu iş yüklerini boşaltmak için salt okuma çoğaltmaları kullanma](read-scale-out.md).
 
 ### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-replica-using-ssms-or-other-client-tools"></a>SSMS veya diğer istemci araçlarını kullanarak ikincil işlem çoğaltmasına başarıyla bağlanıp bağlanmadım Nasıl yaparım? doğrulayın.
 
@@ -390,7 +390,7 @@ Hayır. Hiper ölçekli veritabanlarında paylaşılan depolama vardır ve tüm 
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>Birincil ve ikincil işlem çoğaltmaları arasında ne kadar gecikme olur?
 
-Bir işlemin birincili üzerinde yürütüldüğü zamandan itibaren, bir ikincil üzerinde görünür durumda olan veri gecikmesi, geçerli günlük oluşturma hızına bağlıdır. Tipik veri gecikmesi düşük milisaniyedir.
+Bir işlemin birincil üzerinde, bir ikincil üzerinde okunabilen zamana kadar olan veri gecikmesi, geçerli günlük oluşturma hızına, işlem boyutuna, çoğaltma üzerinde yüklemeye ve diğer faktörlere bağlıdır. Küçük işlemler için tipik veri gecikme süresi on milisaniyedir, ancak veri gecikmesi üzerinde üst sınır yoktur. Belirli bir ikincil çoğaltmada bulunan veriler her zaman işlemsel olarak tutarlıdır. Ancak, belirli bir zamanda veri gecikmesi, farklı ikincil çoğaltmalar için farklı olabilir. Kaydedilmiş verileri okuması gereken iş yükleri, birincil çoğaltmada hemen çalıştırılmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

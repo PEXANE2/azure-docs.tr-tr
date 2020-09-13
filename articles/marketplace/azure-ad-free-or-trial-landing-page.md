@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 09/04/2020
+ms.openlocfilehash: b01b482b967ba6db90aa80ba537457597fb91046
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921393"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488618"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te ücretsiz veya deneme SaaS teklifinizin giriş sayfasını oluşturun
 
@@ -21,13 +21,13 @@ Bu makalede, Microsoft ticari Market 'te satılacak ücretsiz veya deneme SaaS u
 
 ## <a name="overview"></a>Genel Bakış
 
-Giriş sayfasını, hizmet olarak yazılım (SaaS) teklifi için "LOB" olarak düşünebilirsiniz. Müşteri uygulamanızı almayı seçtikten sonra, ticari Market bunları SaaS uygulamanıza yönelik aboneliklerini etkinleştirmek ve yapılandırmak için giriş sayfasına yönlendirir. Hizmet olarak yazılım (SaaS) teklifi oluşturduğunuzda, Iş Ortağı Merkezi 'nde, [Microsoft üzerinden satış](partner-center-portal/create-new-saas-offer.md)yapılıp yapılmayacağını seçebilirsiniz. Teklifinizi yalnızca Microsoft ticari Market 'te listelemek ve Microsoft ile satış yapmak istiyorsanız, potansiyel müşterilerin teklifle nasıl etkileşime girebileceği belirtebilirsiniz. **Şimdi al (ücretsiz)** veya **ücretsiz deneme** listesi seçeneğini etkinleştirdiğinizde, kullanıcının ücretsiz aboneliğe veya deneme sürümüne erişmek için gidebileceği BIR giriş sayfası URL 'si belirtmeniz gerekir.
+Giriş sayfasını, hizmet olarak yazılım (SaaS) teklifi için "LOB" olarak düşünebilirsiniz. Müşteri uygulamanızı almayı seçtikten sonra, ticari Market bunları SaaS uygulamanıza yönelik aboneliklerini etkinleştirmek ve yapılandırmak için giriş sayfasına yönlendirir. Hizmet olarak yazılım (SaaS) teklifi oluşturduğunuzda, Iş Ortağı Merkezi 'nde, [Microsoft üzerinden satış](plan-saas-offer.md#listing-options)yapılıp yapılmayacağını seçebilirsiniz. Teklifinizi yalnızca Microsoft ticari Market 'te listelemek ve Microsoft ile satış yapmak istiyorsanız, potansiyel müşterilerin teklifle nasıl etkileşime girebileceği belirtebilirsiniz. **Şimdi al (ücretsiz)** veya **ücretsiz deneme** listesi seçeneğini etkinleştirdiğinizde, kullanıcının ücretsiz aboneliğe veya deneme sürümüne erişmek için gidebileceği BIR giriş sayfası URL 'si belirtmeniz gerekir.
 
 Giriş sayfasının amacı, kullanıcının ücretsiz deneme sürümünü veya ücretsiz aboneliği etkinleştirebilmeleri için yalnızca kullanıcıyı alması yeterlidir. Azure Active Directory (Azure AD) ve Microsoft Graph kullanarak, Kullanıcı için çoklu oturum açma (SSO) özelliğini etkinleştirir ve Kullanıcı hakkında, kendi ad, e-posta adresi ve organizasyonu dahil ücretsiz deneme sürümünü veya ücretsiz aboneliğini etkinleştirmek için kullanabileceğiniz önemli ayrıntıları alırsınız.
 
 Aboneliği etkinleştirmek için gereken bilgiler, Azure AD ve Microsoft Graph tarafından sınırlandırıldı ve sağlandığı için temel onay gerektiren bilgileri isteme gereksinimi olmamalıdır. Uygulamanız için ek onay gerektiren Kullanıcı ayrıntılarına ihtiyacınız varsa, abonelik etkinleştirme tamamlandıktan sonra bu bilgileri istemeniz gerekir. Böylece Kullanıcı için frictionuz abonelik etkinleştirmesi etkinleştirilir ve terk olma riski azalır.
 
-Giriş sayfası genellikle aşağıdaki bilgileri ve eyleme yapılan çağrıları içerir:
+Giriş sayfası genellikle aşağıdaki bilgileri ve listeleme seçeneklerini içerir:
 
 - Ücretsiz deneme veya ücretsiz aboneliğin adını ve ayrıntılarını sunun. Örneğin, kullanım sınırlarını veya deneme süresini belirtin.
 - Kullanıcının hesap ayrıntılarını, ilk adı ve soyadı, organizasyonu ve e-posta ile birlikte sunun.
@@ -43,7 +43,7 @@ Bu makaledeki aşağıdaki bölümler, bir giriş sayfası oluşturma işleminde
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD uygulama kaydı oluşturma
 
-Ticari Market, Azure AD ile tamamen tümleşiktir. Kullanıcılar bir [Azure AD hesabı veya Microsoft hesabı (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)ile kimliği doğrulanan Market 'e ulaşır. Yalnızca liste teklifiniz aracılığıyla ücretsiz veya ücretsiz bir deneme aboneliği aldıktan sonra, Kullanıcı, SaaS uygulamanıza yönelik aboneliklerini etkinleştirmek ve yönetmek için ticari Market 'ten giriş sayfası URL 'sine gider. Kullanıcının Azure AD SSO ile uygulamanızda oturum açmasını sağlamalısınız. (Teklifin [Teknik yapılandırma sayfasında](partner-center-portal/offer-creation-checklist.md#technical-configuration-page)giriş sayfası URL 'si belirtilir).
+Ticari Market, Azure AD ile tamamen tümleşiktir. Kullanıcılar bir [Azure AD hesabı veya Microsoft hesabı (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)ile kimliği doğrulanan Market 'e ulaşır. Yalnızca liste teklifiniz aracılığıyla ücretsiz veya ücretsiz bir deneme aboneliği aldıktan sonra, Kullanıcı, SaaS uygulamanıza yönelik aboneliklerini etkinleştirmek ve yönetmek için ticari Market 'ten giriş sayfası URL 'sine gider. Kullanıcının Azure AD SSO ile uygulamanızda oturum açmasını sağlamalısınız. (Giriş sayfası URL 'SI, teklifin [Teknik yapılandırma](plan-saas-offer.md#technical-information) sayfasında belirtilir.
 
 Kimliği kullanmanın ilk adımı, giriş sayfanızın bir Azure AD uygulaması olarak kaydedildiğinden emin olmak için kullanılır. Uygulamayı kaydetmek, kullanıcıların kimliğini doğrulamak ve Kullanıcı kaynaklarına erişim istemek için Azure AD 'yi kullanmanıza olanak sağlar. Uygulamanın tanım olarak düşünülebilir ve bu da hizmetin uygulama ayarlarına bağlı olarak uygulamaya belirteç verme konusunda bilgi verir.
 
@@ -103,4 +103,4 @@ Azure AD 'ye kayıtlı uygulamaların çoğu, kullanıcının şirketinin Azure 
 > MSA kiracısından (kiracı KIMLIĞI olan) hesaplar, `9188040d-6c67-4c5b-b112-36a304b66dad` kimlik belirteciyle toplanmamış olandan daha fazla bilgi döndürmez. Bu nedenle, bu hesaplar için Graph API bu çağrıyı atlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Ticari Market 'te SaaS teklifi oluşturma](./partner-center-portal/create-new-saas-offer.md)
+- [Ticari Market 'te SaaS teklifi oluşturma](create-new-saas-offer.md)

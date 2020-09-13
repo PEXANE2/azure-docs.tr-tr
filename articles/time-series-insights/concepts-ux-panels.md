@@ -1,5 +1,5 @@
 ---
-title: Verileri TSI Explorer 'da görselleştirin-Azure Time Series Insights Gen2 | Microsoft Docs
+title: Time Series Insights Explorer 'da verileri görselleştirme-Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure Time Series Insights Gezgini 'nde bulunan özellikler ve seçenekler hakkında bilgi edinin.
 author: deepakpalled
 ms.author: dpalled
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0933e34e5bdd8469b827ed03c0eff51a4ecba0d5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227058"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488176"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Gezgini
 
@@ -47,7 +47,7 @@ Azure Time Series Insights Gezgini aşağıdaki yedi öğeden oluşur:
 
 ## <a name="1-environment-panel"></a>1. ortam paneli
 
-Ortam paneli, erişiminiz olan tüm Azure Time Series Insights Gen2 ortamlarını görüntüler. Liste, Gen2 ortamlarının yanı sıra Gen 1 ortamları da içerir. Hemen burada almak için kullanmak istediğiniz ortamı seçmeniz yeterlidir.
+Ortam paneli, erişiminiz olan tüm Azure Time Series Insights Gen2 ortamlarını görüntüler. Liste, Gen2 ortamlarının yanı sıra Gen1 ortamlarını içerir. Hemen burada almak için kullanmak istediğiniz ortamı seçmeniz yeterlidir.
 
 1. Görüntülenmiş ortamınızın yanındaki aşağı açılan oku seçin.
 
@@ -200,11 +200,11 @@ Azure Time Series Insights Explorer iki tema destekler:
 
   [![Seçili Koyu tema](media/v2-update-explorer/tsi-preview-dark-theme-selected.png)](media/v2-update-explorer/tsi-preview-dark-theme-selected.png#lightbox)
 
-## <a name="gen-1-environment-controls"></a>Gen 1 ortam denetimleri
+## <a name="gen1-environment-controls"></a>Gen1 ortam denetimleri
 
 ### <a name="gen2-terms-panel"></a>Gen2 terimleri bölmesi
 
-Bu bölüm yalnızca, güncelleştirilmiş Kullanıcı arabiriminde gezgin kullanmayı deneyen mevcut Gen 1 ortamları için geçerlidir. Gen 1 ürün ve Gen2 ürününü birlikte kullanmak isteyebilirsiniz. Mevcut kullanıcı arabiriminden güncelleştirilmiş gezgin 'e bazı işlevler ekledik, ancak yeni Azure Time Series Insights Gezgininde bir gen 1 ortamı için tam kullanıcı arabirimi deneyimini edinebilirsiniz.
+Bu bölüm yalnızca, güncelleştirilmiş Kullanıcı arabiriminde gezgin kullanmayı deneyen mevcut Gen1 ortamları için geçerlidir. Gen1 Product ve Gen2 ürününü birlikte kullanmak isteyebilirsiniz. Mevcut kullanıcı arabiriminden güncelleştirilmiş gezgin 'e bazı işlevler ekledik, ancak yeni Azure Time Series Insights Gezgininde bir Gen1 ortamı için tam kullanıcı arabirimi deneyimini alabilirsiniz.
 
 Hiyerarşi yerine, Azure Time Series Insights Gen2 terimleri paneli görüntülenir. Terimler paneli ortamınızda sorgular tanımlamanızı sağlar. Ayrıca, bir koşula göre verileri filtrelemek için kullanın.
 

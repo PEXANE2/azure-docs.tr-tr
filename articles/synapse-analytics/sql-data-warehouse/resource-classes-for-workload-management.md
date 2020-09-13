@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1dc9c39192dc478a4ffeba64983a498191417ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c3793daa820d0cb5b5b6900402704756f206425
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213593"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488397"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak sınıflarıyla iş yükü yönetimi
 
@@ -67,9 +67,9 @@ Dinamik kaynak sınıfları, önceden tanımlanmış bu veritabanı rolleriyle u
 
 Her kaynak sınıfı için bellek ayırma aşağıdaki gibidir.
 
-| Hizmet düzeyi  | smallrc           | düz RC               | largerc                | xlargerc               |
+| Hizmet Düzeyi  | smallrc           | düz RC               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
-| DW100c         | %25               | %25                    | %25                    | %70                    |
+| DW100c         | 25%               | 25%                    | 25%                    | %70                    |
 | DW200c         | % 12,5             | % 12,5                  | #c16                    | %70                    |
 | DW300c         | %8                | %10                    | #c16                    | %70                    |
 | DW400c         | % 6,25             | %10                    | #c16                    | %70                    |
@@ -133,7 +133,7 @@ Aşağıdaki deyimler kaynak sınıflarından muaf tutulur ve her zaman smallrc 
 - DBCC
 
 <!--
-Removed as these two are not confirmed / supported under SQL DW
+Removed as these two are not confirmed / supported under Azure Synapse Analytics
 - CREATE REMOTE TABLE AS SELECT
 - CREATE EXTERNAL TABLE AS SELECT
 - REDISTRIBUTE
@@ -192,7 +192,7 @@ Belirli bir sorgu veya yükleme işlemi türünü çalıştırmaya ayrılmış b
 
 ### <a name="resource-classes-for-load-users"></a>Yükleme kullanıcıları için kaynak sınıfları
 
-`CREATE TABLE`Varsayılan olarak kümelenmiş columnstore dizinleri kullanır. Verileri bir columnstore dizinine sıkıştırmak bellek yoğun bir işlemdir ve bellek baskısı Dizin kalitesini azaltabilir. Bellek baskısı, verileri yüklerken daha yüksek bir kaynak sınıfına ihtiyaç duymasına yol açabilir. Yüklerin yeterli belleğe sahip olduğundan emin olmak için, yükleri çalıştırmak için tasarlanmış bir kullanıcı oluşturabilir ve bu kullanıcıyı daha yüksek bir kaynak sınıfına atayabilirsiniz.
+`CREATE TABLE` Varsayılan olarak kümelenmiş columnstore dizinleri kullanır. Verileri bir columnstore dizinine sıkıştırmak bellek yoğun bir işlemdir ve bellek baskısı Dizin kalitesini azaltabilir. Bellek baskısı, verileri yüklerken daha yüksek bir kaynak sınıfına ihtiyaç duymasına yol açabilir. Yüklerin yeterli belleğe sahip olduğundan emin olmak için, yükleri çalıştırmak için tasarlanmış bir kullanıcı oluşturabilir ve bu kullanıcıyı daha yüksek bir kaynak sınıfına atayabilirsiniz.
 
 Yüklemeleri verimli bir şekilde işlemek için gereken bellek, yüklenen tablonun yapısına ve veri boyutuna bağlıdır. Bellek gereksinimleri hakkında daha fazla bilgi için bkz. [satır grubu kalitesini en üst düzeye çıkarma](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
@@ -243,9 +243,9 @@ Bu saklı yordamın amacı aşağıda verilmiştir:
 Söz dizimi:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU:DW DB 'den geçerli DWU 'yi ayıklamak için NULL bir parametre sağlayın ya da ' DW100c ' biçiminde desteklenen DWU 'yi sağlayın
-2. @SCHEMA_NAME:Tablo için bir şema adı sağlayın
-3. @TABLE_NAME:İlgilendiğiniz bir tablo adı girin
+1. @DWU: DW DB 'den geçerli DWU 'yi ayıklamak için NULL bir parametre sağlayın ya da ' DW100c ' biçiminde desteklenen DWU 'yi sağlayın
+2. @SCHEMA_NAME: Tablo için bir şema adı sağlayın
+3. @TABLE_NAME: İlgilendiğiniz bir tablo adı girin
 
 Bu saklı proc yürütülen örnekler:
 

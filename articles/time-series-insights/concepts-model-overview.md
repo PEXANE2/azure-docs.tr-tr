@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 18212bf92304e75c702c51ff12628cd670755bb0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 53db53f60166c3b5afa117a60a99e3429a14576d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855199"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488567"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 içinde zaman serisi modeli
 
@@ -24,7 +24,7 @@ Bu makalede zaman serisi modeli, özellikleri ve Azure Time Series Insights Gen2
 > [!TIP]
 >
 > * Canlı bir zaman serisi modeli örneği için [contoso rüzgar grubu tanıtım](https://insights.timeseries.azure.com/preview/samples) ortamına gidin.
-> * Azure Time Series Insights TSI gezginini kullanarak [zaman serisi modeliyle nasıl çalışacağınızı](/azure/time-series-insights/how-to-edit-your-model) öğrenin.
+> * Azure Time Series Insights gezginini kullanarak [zaman serisi modeliyle nasıl çalışacağınızı](/azure/time-series-insights/how-to-edit-your-model) öğrenin.
 
 ## <a name="summary"></a>Özet
 
@@ -75,7 +75,7 @@ Bu bileşenler, zaman serisi modeli belirtmek ve verilerinizi düzenlemek için 
 
 [![Zaman serisi modeline genel bakış grafiği](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Bir zaman serisi modeli [Azure TIME SERIES INSIGHTS TSI Explorer](/azure/time-series-insights/concepts-model-overview)aracılığıyla oluşturulup yönetilebilir. Zaman serisi modeli ayarları, [model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)aracılığıyla yönetilebilir.
+Bir zaman serisi modeli [Azure Time Series Insights Gezgini](/azure/time-series-insights/concepts-model-overview)aracılığıyla oluşturulup yönetilebilir. Zaman serisi modeli ayarları, [model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)aracılığıyla yönetilebilir.
 
 ## <a name="time-series-model-instances"></a>Zaman serisi model örnekleri
 
@@ -87,7 +87,7 @@ Zaman serisi model *örnekleri* , zaman serisinin kendi sanal temsilleridir.
 
 *Örnek alanları* , hiyerarşi düzeyleri ve üretici, işleç vb. değerleri içerebilen açıklayıcı bilgilerin bir koleksiyonudur.
 
-Azure Time Series Insights Gen2 ortamı için bir olay kaynağı yapılandırıldıktan sonra, örnekler otomatik olarak keşfedilir ve bir zaman serisi modelinde oluşturulur. Örnekler, zaman serisi modeli sorguları kullanılarak Azure Time Series Insights TSI Explorer aracılığıyla oluşturulabilir veya güncelleştirilir.
+Azure Time Series Insights Gen2 ortamı için bir olay kaynağı yapılandırıldıktan sonra, örnekler otomatik olarak keşfedilir ve bir zaman serisi modelinde oluşturulur. Örnekler, zaman serisi modeli sorguları kullanılarak Azure Time Series Insights Gezgini aracılığıyla oluşturulabilir veya güncelleştirilir.
 
 [Contoso rüzgar grubu tanıtımı](https://insights.timeseries.azure.com/preview/samples) çeşitli canlı örnek örnekleri sunar.
 
@@ -216,7 +216,7 @@ Bu **hiyerarşinin** `building` , `floor` , ve hiyerarşisinde `room` **ınstanc
 | ID4 | "derleniyor" = "1000", "Floor" = "10"  |
 | ID5 | Hiçbir "derleme", "kat" veya "Oda" ayarlanmamış. |
 
-**ID1** ve **ID4** zaman serisi, tam olarak tanımlanmış ve doğru sıralı *oluşturma*, *kat*ve *Oda* parametrelerine sahip olduklarından [Azure Time Series Insights TSI Explorer 'ın](time-series-insights-update-explorer.md) **H1** hiyerarşisinin bir parçası olarak görüntülenir.
+**ID1** ve **ID4** zaman serisi, tam olarak tanımlanmış ve doğru sıralı *oluşturma*, *kat*ve *Oda* parametrelerine sahip olduklarından [Azure Time Series Insights Explorer](time-series-insights-update-explorer.md) 'ın **H1** hiyerarşisinin bir parçası olarak görüntülenir.
 
 Bunlar, belirtilen veri hiyerarşisine uygun olmadıkları için, *üst öğe olmayan örnekler* altında sınıflandırılmaktadır.
 

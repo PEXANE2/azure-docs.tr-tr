@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: ce63da745fb84ebccd57b246fc934f595dd7cda1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a756a3cec5702570751e0bea09a4f59152accafc
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418261"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484553"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Redshift 'tan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -42,7 +42,7 @@ Amazon Redshift 'tan, desteklenen herhangi bir havuz veri deposuna veri kopyalay
 > [!TIP]
 > Redshift adresinden büyük miktarlarda veri kopyalarken en iyi performansı elde etmek için, Amazon S3 aracılığıyla yerleşik Redshift UNLOAD ' ı kullanmayı göz önünde bulundurun. Ayrıntılar için bkz. [Amazon Redshift 'tan verileri kopyalamak IÇIN kaldırma kullanma](#use-unload-to-copy-data-from-amazon-redshift) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Şirket içinde [barındırılan Integration Runtime](create-self-hosted-integration-runtime.md)kullanarak verileri şirket içi veri deposuna kopyalıyorsanız, Amazon Redshift kümesine erişim Integration Runtime izni verin (makinenin IP adresini kullanın). Yönergeler için bkz. [kümeye erişim yetkisi verme](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) .
 * Verileri bir Azure veri deposuna kopyalıyorsunuz, Azure veri merkezleri tarafından kullanılan Işlem IP adresi ve SQL aralıkları için bkz. [Azure veri MERKEZI IP aralıkları](https://www.microsoft.com/download/details.aspx?id=41653) .
@@ -63,7 +63,7 @@ Amazon Redshift Linked Service için aşağıdaki özellikler desteklenir:
 | sunucu |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
 | port |Amazon Redshift sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası sayısı. |Hayır, varsayılan değer 5439 ' dir |
 | database |Amazon Redshift veritabanının adı. |Yes |
-| kullanıcı adı |Veritabanına erişimi olan kullanıcının adı. |Yes |
+| username |Veritabanına erişimi olan kullanıcının adı. |Yes |
 | password |Kullanıcı hesabı için parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Yes |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
 
@@ -102,8 +102,8 @@ Amazon Redshift 'tan veri kopyalamak için aşağıdaki özellikler desteklenir:
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | DataSet 'in Type özelliği: **AmazonRedshiftTable** olarak ayarlanmalıdır | Yes |
-| manızı | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
-| tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| table | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -164,11 +164,11 @@ Bir sonraki bölümden, Amazon Redshift 'tan verileri etkin bir şekilde kopyala
 
 [Kaldırma](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) , Amazon Redshift tarafından sağlanmış bir mekanizmadır. Bu, bir sorgunun sonuçlarını Amazon Simple Storage Service (Amazon S3) üzerindeki bir veya daha fazla dosyaya kaldırabilen bir mekanizmadır. Bu, Redshift ' den büyük veri kümesini kopyalamak için Amazon tarafından önerilme yöntemidir.
 
-**Örnek: UNLOAD, hazırlanan kopya ve PolyBase kullanarak Amazon Redshift 'tan Azure SQL veri ambarı 'na veri kopyalama**
+**Örnek: UNLOAD, hazırlanan Copy ve PolyBase kullanarak Amazon Redshift 'tan Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri kopyalama**
 
-Bu örnek kullanım örneği için, kopyalama etkinliği, "Redkaydırıcı Tunloadsettings" içinde yapılandırıldığı şekilde Amazon Redshift 'tan Amazon S3 'e verileri kaldırır ve ardından Amazon S3 ' dan Azure blob ' dan verileri "stagingSettings" bölümünde belirtildiği gibi kopyalar, son olarak, verileri SQL veri ambarı 'na yüklemek için PolyBase kullanın. Tüm geçici biçim, kopyalama etkinliği tarafından düzgün şekilde işlenir.
+Bu örnek kullanım örneği için kopyalama etkinliği, "Redkaydırıcı Tunloadsettings" içinde yapılandırıldığı şekilde Amazon Redshift 'tan Amazon S3 'e verileri kaldırır ve ardından Amazon S3 ' dan Azure blob ' a verileri "stagingSettings" bölümünde belirtildiği gibi kopyalar, son olarak PolyBase kullanarak verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) yükler. Tüm geçici biçim, kopyalama etkinliği tarafından düzgün şekilde işlenir.
 
-![Redshift to SQL DW Copy Workflow](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
+![Redshift to Azure SYNAPSE Analytics Copy Workflow](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 "activities":[
@@ -223,14 +223,14 @@ Amazon Redshift 'tan veri kopyalarken, Amazon Redshift veri türlerinden aşağ�
 | BIGıNT |Int64 |
 | BOOLEAN |Dize |
 | CHAR |Dize |
-| DATE |DateTime |
+| DATE |Tarih-Saat |
 | KATEGORI |Ondalık |
 | ÇIFT DUYARLıK |Çift |
 | TAMSAYI |Int32 |
 | GERÇEK SAYI |Tek |
 | Small |Int16 |
 | TEXT |Dize |
-| ILIŞKIN |DateTime |
+| ILIŞKIN |Tarih-Saat |
 | VARCHAR |Dize |
 
 ## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri

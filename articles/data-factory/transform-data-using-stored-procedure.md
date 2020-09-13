@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 8543276a338b523a290fb131a8f1b7a55affbd98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdab4f33852be6bfc2621e2cbecff76778567b1a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248981"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484740"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory SQL Server saklı yordam etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -33,13 +33,13 @@ Ham verileri tahmine dayalı ve Öngörüler halinde dönüştürmek ve [işleme
 Saklı yordam etkinliğini, kuruluşunuzda bulunan aşağıdaki veri depolarından birinde veya bir Azure sanal makinesinde (VM) bulunan bir saklı yordamı çağırmak için kullanabilirsiniz: 
 
 - Azure SQL Veritabanı
-- Azure Synapse Analytics (eski adı Azure SQL Veri Ambarı)
+- Azure Synapse Analytics (eski adı SQL Veri Ambarı)
 - SQL Server veritabanı.  SQL Server kullanıyorsanız, kendisini barındıran aynı makineye veya veritabanına erişimi olan ayrı bir makineye şirket içinde barındırılan tümleştirme çalışma zamanı 'nı yükleyebilirsiniz. Şirket içinde barındırılan tümleştirme çalışma zamanı, Azure VM 'deki veri kaynaklarını güvenli ve yönetilen bir şekilde bulut hizmetleriyle bağlayan bir bileşendir. Ayrıntılar için bkz. [Şirket içinde barındırılan tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md) makalesi.
 
 > [!IMPORTANT]
-> Verileri Azure SQL veritabanı 'na veya SQL Server kopyalarken, Copy etkinliğinde **Sqlsink** öğesini, **sqlWriterStoredProcedureName** özelliğini kullanarak bir saklı yordam çağırmak üzere yapılandırabilirsiniz. Özelliği hakkında daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Bir kopyalama etkinliği kullanarak verileri bir Azure SYNAPSE Analytics 'e (eski adıyla Azure SQL veri ambarı) kopyalarken saklı bir yordamı çağırmak desteklenmez. Ancak, bir SQL veri ambarında saklı yordam çağırmak için saklı yordam etkinliğini kullanabilirsiniz. 
+> Verileri Azure SQL veritabanı 'na veya SQL Server kopyalarken, Copy etkinliğinde **Sqlsink** öğesini, **sqlWriterStoredProcedureName** özelliğini kullanarak bir saklı yordam çağırmak üzere yapılandırabilirsiniz. Özelliği hakkında daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Bir kopyalama etkinliği kullanarak verileri Azure SYNAPSE Analytics 'e kopyalarken saklı yordamı çağırmak desteklenmez. Ancak, Azure SYNAPSE Analytics 'te saklı yordam çağırmak için saklı yordam etkinliğini kullanabilirsiniz. 
 >
-> Azure SQL veritabanı veya SQL Server ya da Azure SYNAPSE Analytics (eski adıyla Azure SQL veri ambarı) verilerini kopyalarken, **sqlReaderStoredProcedureName** özelliğini kullanarak kaynak veritabanından veri okumak için bir saklı yordam çağırmak üzere **SQLSource** 'u Copy etkinliğinde yapılandırabilirsiniz. Daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı)](connector-azure-sql-data-warehouse.md)          
+> Verileri Azure SQL veritabanı veya SQL Server ya da Azure SYNAPSE Analytics 'ten kopyalarken, **sqlReaderStoredProcedureName** özelliğini kullanarak kaynak veritabanından veri okumak için bir saklı yordam çağırmak üzere, Copy etkinliğinde **SQLSource** ' u yapılandırabilirsiniz. Daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure SYNAPSE Analytics](connector-azure-sql-data-warehouse.md)          
 
  
 
@@ -70,19 +70,19 @@ Aşağıdaki tabloda bu JSON özellikleri açıklanmaktadır:
 
 | Özellik                  | Açıklama                              | Gerekli |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | Etkinliğin adı                     | Evet      |
-| açıklama               | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
-| tür                      | Saklı yordam etkinliği için etkinlik türü **Sqlserverstoredprocedure** olur | Evet      |
-| linkedServiceName         | **Azure SQL veritabanı** veya **Azure SYNAPSE Analytics (eskı adıyla Azure SQL veri ambarı)** veya Data Factory bağlantılı hizmet olarak kaydedilen **SQL Server** başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
-| storedProcedureName       | Çağrılacak saklı yordamın adını belirtin. | Evet      |
-| storedProcedureParameters | Saklı yordam parametrelerinin değerlerini belirtin. `"param1": { "value": "param1Value","type":"param1Type" }`Parametre değerlerini ve veri kaynağı tarafından desteklenen türlerini geçirmek için kullanın. Bir parametre için null değer geçirmeniz gerekiyorsa, `"param1": { "value": null }` (tüm küçük harf) seçeneğini kullanın. | Hayır       |
+| name                      | Etkinliğin adı                     | Yes      |
+| açıklama               | Etkinliğin ne için kullanıldığını açıklayan metin | No       |
+| tür                      | Saklı yordam etkinliği için etkinlik türü **Sqlserverstoredprocedure** olur | Yes      |
+| linkedServiceName         | **Azure SQL veritabanı** veya **Azure SYNAPSE Analytics** 'e veya Data Factory bağlı hizmet olarak kaydedilen **SQL Server** başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
+| storedProcedureName       | Çağrılacak saklı yordamın adını belirtin. | Yes      |
+| storedProcedureParameters | Saklı yordam parametrelerinin değerlerini belirtin. `"param1": { "value": "param1Value","type":"param1Type" }`Parametre değerlerini ve veri kaynağı tarafından desteklenen türlerini geçirmek için kullanın. Bir parametre için null değer geçirmeniz gerekiyorsa, `"param1": { "value": null }` (tüm küçük harf) seçeneğini kullanın. | No       |
 
 ## <a name="parameter-data-type-mapping"></a>Parametre veri türü eşleme
 Parametresi için belirttiğiniz veri türü, kullanmakta olduğunuz veri kaynağındaki veri türüyle eşleşen Azure Data Factory türüdür. Veri kaynağınız için veri türü eşlemelerini bağlayıcılar alanında bulabilirsiniz. Bazı örnekler
 
-| veri kaynağı          | Veri türü eşleme |
+| Veri Kaynağı          | Veri türü eşleme |
 | ---------------------|-------------------|
-| Azure Synapse Analytics (eski adı Azure SQL Veri Ambarı) | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
+| Azure Synapse Analytics | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
 | Azure SQL Veritabanı   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
 | Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
 | SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |

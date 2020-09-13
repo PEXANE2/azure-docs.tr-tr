@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: a0f6af706a81db537b9ed66dc49996282c4dbbaa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4afd6f0cc3b4b5e135d80b420d8260c50d9ca46c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833904"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488856"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
@@ -39,7 +39,7 @@ Bu makalede, daha önce açıklanan tümleştirme senaryolarını kapsayan, SAP 
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyle birlikte takip etmek için şu öğelere ihtiyacınız vardır:
 
@@ -124,7 +124,7 @@ Bu Önkoşullar, mantıksal uygulamalarınız Premium düzeyinde (Geliştirici d
 
 ### <a name="sap-client-library-prerequisites"></a>SAP istemci kitaplığı önkoşulları
 
-* [.NET Framework 4,0-Windows 64-bit (x64) ile derlenen Microsoft .NET 3.0.22.0 Için SAP Bağlayıcısı (NCo 3,0)](https://softwaredownloads.sap.com/file/0020000001000932019)en son sürümünü yüklediğinizden emin olun. Önceki sürümler uyumluluk sorunlarına yol açabilir. Daha fazla bilgi için bkz. [SAP istemci Kitaplığı sürümleri](#sap-library-versions).
+* [.NET Framework 4,0-Windows 64-bit (x64) ile derlenen Microsoft .NET 3.0.22.0 Için SAP Bağlayıcısı (NCo 3,0)](https://support.sap.com/en/product/connectors/msnet.html)en son sürümünü yüklediğinizden emin olun. Önceki sürümler uyumluluk sorunlarına yol açabilir. Daha fazla bilgi için bkz. [SAP istemci Kitaplığı sürümleri](#sap-library-versions).
 
 * Varsayılan olarak, SAP yükleyicisi derleme dosyalarını varsayılan yükleme klasörüne koyar. Senaryonuza bağlı olarak, bu derleme dosyalarını aşağıdaki gibi başka bir konuma kopyalamanız gerekir:
 
@@ -396,7 +396,7 @@ Bu örnek, uygulama SAP sisteminden bir ileti aldığında tetiklenen bir mantı
 
    Ya da bir eylemi el ile belirtebilirsiniz:
 
-   ![SAP eylemini el ile girin](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
+   ![Kullanmak istediğiniz SAP eylemini el ile girin](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
 
    Bu, tetikleyiciyi birden fazla ileti alacak şekilde ayarlarken eylemin nasıl göründüğünü gösteren bir örnektir.
 
@@ -626,7 +626,7 @@ SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönder
 
 1. Başlamadan önce SAP tetikleyicisine sahip bir mantıksal uygulama gerekir. Bu mantıksal uygulama henüz yoksa, [SAP tetikleyicisiyle bir mantıksal uygulama ayarlamak](#receive-from-sap)için bu konudaki önceki adımları izleyin.
 
-   Örnek:
+   Örneğin:
 
    ![Logic App 'e SAP tetikleyicisi ekleme](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
@@ -808,12 +808,12 @@ Bir düz SAP IDoc XML şeması oluşturmak için **SAP oturum açma** uygulamas�
 
 Bu örnek, kök düğümü ve ad alanlarını bildirir. Örnek koddaki URI, `http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send` aşağıdaki yapılandırmayı bildirir:
 
-* `/IDoc`Tüm IDoc 'Lar için kök notdır
-* `/3`ortak kesim tanımlarının kayıt türleri sürümüdür
-* `/ORDERS05`IDoc türü
-* `//`, IDoc uzantısı olmadığından boş bir kesimdir
-* `/700`SAP sürümüdür
-* `/Send`bilgileri SAP 'ye gönderme eylemi
+* `/IDoc` Tüm IDoc 'Lar için kök notdır
+* `/3` ortak kesim tanımlarının kayıt türleri sürümüdür
+* `/ORDERS05` IDoc türü
+* `//` , IDoc uzantısı olmadığından boş bir kesimdir
+* `/700` SAP sürümüdür
+* `/Send` bilgileri SAP 'ye gönderme eylemi
 
 ```xml
 

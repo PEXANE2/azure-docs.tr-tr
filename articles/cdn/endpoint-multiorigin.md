@@ -1,21 +1,21 @@
 ---
-title: Azure CDN uç noktası çoklu kaynak
+title: Azure CDN uç noktası çoklu kaynak (Önizleme)
 description: Azure CDN uç noktası birden çok kaynağı kullanmaya başlayın.
 services: cdn
 author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: how-to
-ms.date: 8/20/2020
+ms.date: 9/06/2020
 ms.author: allensu
-ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870483"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504682"
 ---
-# <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN uç noktası çoklu kaynak
+# <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN uç noktası çoklu kaynak (Önizleme)
 
 Çoklu kaynak desteği kapalı kalma süresini ortadan kaldırır ve küresel artıklık oluşturur. 
 
@@ -25,6 +25,10 @@ Bir veya daha fazla kaynak grubu kurun ve varsayılan bir kaynak grubu seçin. H
 
 > [!NOTE]
 > Şu anda bu özellik yalnızca Microsoft 'tan Azure CDN kullanılabilir. 
+
+> [!IMPORTANT]
+> Azure CDN uç noktası çoklu kaynak şu anda genel önizlemede.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-the-origin-group"></a>Kaynak grubu oluşturma
 
@@ -66,7 +70,7 @@ Bir veya daha fazla kaynak grubu kurun ve varsayılan bir kaynak grubu seçin. H
 
    | Ayar           | Değer                                                                 |
    |-------------------|-----------------------------------------------------------------------|
-   | Adı        | Kaynak için bir ad girin.        |
+   | Ad        | Kaynak için bir ad girin.        |
    | Kaynak türü | **Depolama**, **bulut hizmeti**, **Web uygulaması**veya **özel başlangıç**seçin.                                   |
    | Çıkış noktası konağı        | Kaynak ana bilgisayar adını seçin veya girin.  Açılan listede, önceki ayarda belirttiğiniz türün tüm kullanılabilir kaynakları listelenir. Kaynak türü olarak **özel kaynak** ' ı seçtiyseniz, müşteri kaynak sunucunuzun etki alanını girin. |
    | Kaynak barındırma üst bilgisi    | Her istekle göndermek Azure CDN istediğiniz ana bilgisayar üst bilgisini girin veya varsayılan ' ı bırakın.                        |

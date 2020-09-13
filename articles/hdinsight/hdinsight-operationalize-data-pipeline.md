@@ -1,19 +1,19 @@
 ---
 title: Veri Analizi ardışık düzeni oluşturma-Azure
 description: Yeni veriler tarafından tetiklenen ve kısa sonuçlar üreten bir örnek veri işlem hattı ayarlayın ve çalıştırın.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1e73c403a03eef9a47bc0550b37769db302a599c
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082803"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504427"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Veri analizi işlem hattını kullanıma hazır hale getirme
 
@@ -101,7 +101,7 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 
 ## <a name="configure-hive"></a>Hive 'yi yapılandırma
 
-### <a name="upload-data"></a>Karşıya veri yükleme
+### <a name="upload-data"></a>Verileri karşıya yükleme
 
 1. Bir ay için uçuş verileri içeren örnek bir CSV dosyası indirin. `2017-01-FlightData.zip` [HDInsight GITHUB deposundan](https://github.com/hdinsight/hdinsight-dev-guide) ZIP dosyasını indirin ve CSV dosyasına ayıklayın `2017-01-FlightData.csv` .
 
@@ -594,7 +594,7 @@ Bu dosyada sunulan tek yeni özellikler `job.properties` şunlardır:
     oozie job -config job.properties -run
     ```
 
-5. Oozie web konsolunu kullanarak durumu doğrulayın, bu kez **Düzenleyici işleri** sekmesini ve ardından **tüm işleri**seçin.
+5. Oozie web konsolunu kullanarak durumu doğrulayın, bu kez **Düzenleyici işleri** sekmesini ve ardından  **tüm işleri**seçin.
 
     ![Oozie Web Konsolu Düzenleyicisi Işleri](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 

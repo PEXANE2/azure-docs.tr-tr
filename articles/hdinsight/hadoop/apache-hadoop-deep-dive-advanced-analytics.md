@@ -1,19 +1,19 @@
 ---
 title: Derin ve gelişmiş analiz-Azure HDInsight
 description: Gelişmiş analizler 'in Azure HDInsight 'ta büyük verileri işlemek için algoritmaları nasıl kullandığını öğrenin.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: fa2909055259d7832942f9f47434963f7bbb2aa1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079369"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504358"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Derin ve gelişmiş analiz
 
@@ -42,7 +42,7 @@ En iyi sığdırma algoritmasını seçerken birlikte, eğitim için veri sağla
 * Denetimli olmayan algoritma eğitim verileri gerektirmez
 * Pekiştirmeye dayalı algoritması, belirli bir bağlam içinde ideal davranışları (genellikle Robotics 'de kullanılır) belirlemede yazılım aracılarını kullanır
 
-| Algoritma kategorisi| Kullanım | Öğrenme türü | Algoritmalar |
+| Algoritma kategorisi| Kullanın | Öğrenme türü | Algoritmalar |
 | --- | --- | --- | -- |
 | Sınıflandırma | Kişileri veya şeyleri gruplar halinde sınıflandırın | Denetimli | Karar ağaçları, lojistik regresyon, sinir ağları |
 | Kümeleme | Örnek kümesini hogenou gruplarına bölme | Denetimsiz | K-kümelemenin anlamı |
@@ -67,7 +67,7 @@ Bu dağıtılmış ortama algoritmik modelleme özellikleri getiren üç ölçek
 
 * [**Mllib**](https://spark.apache.org/docs/latest/ml-guide.html) -Mllib Spark rdds üzerinde oluşturulmuş özgün API 'yi içerir.
 * [**Parlak ml**](https://spark.apache.org/docs/1.2.2/ml-guide.html) -parlak ML, ml işlem hatları oluşturmak Için Spark veri çerçevelerinin üzerine inşa edilen daha yüksek düzeyde bir API sağlayan daha yeni bir pakettir.
-* [**Mmlspark**](https://github.com/Azure/mmlspark) -Apache Spark (mmlspark) için Microsoft Machine Learning kitaplığı, veri bilimcilerinin Spark üzerinde daha üretken olmasını sağlamak, deneme oranını artırmak ve çok büyük veri kümelerinde derin öğrenme dahil olmak üzere son teknoloji makine öğrenimi tekniklerinden yararlanmak için tasarlanmıştır. MMLSpark kitaplığı, PySpark 'da model oluşturmaya yönelik ortak modelleme görevlerini basitleştirir.
+* [**Mmlspark**](https://github.com/Azure/mmlspark)  -Apache Spark (mmlspark) için Microsoft Machine Learning kitaplığı, veri bilimcilerinin Spark üzerinde daha üretken olmasını sağlamak, deneme oranını artırmak ve çok büyük veri kümelerinde derin öğrenme dahil olmak üzere son teknoloji makine öğrenimi tekniklerinden yararlanmak için tasarlanmıştır. MMLSpark kitaplığı, PySpark 'da model oluşturmaya yönelik ortak modelleme görevlerini basitleştirir.
 
 ### <a name="r-and-ml-services"></a>R ve ML Hizmetleri
 

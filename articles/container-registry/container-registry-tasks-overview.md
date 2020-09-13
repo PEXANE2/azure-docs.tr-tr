@@ -2,13 +2,13 @@
 title: ACR Görevlerine genel bakış
 description: Bulutta güvenli, otomatik kapsayıcı görüntüsü oluşturma, yönetim ve düzeltme eki uygulama sağlayan bir Azure Container Registry özellik paketi olan ACR görevlerine giriş.
 ms.topic: article
-ms.date: 01/22/2020
-ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.openlocfilehash: 24cc0415fe8756e900a8ea0ce7039f6b4710cf6f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087273"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488652"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
 
@@ -58,8 +58,8 @@ ACR görevleri görevin bağlamı olarak bir git deposu ayarladığınızda aşa
 
 | Tetikleyici | Varsayılan olarak etkindir |
 | ------- | ------------------ |
-| İşleme | Evet |
-| Çekme isteği | Hayır |
+| İşleme | Yes |
+| Çekme isteği | No |
 
 Bir kaynak kodu güncelleştirme tetikleyicisi yapılandırmak için, genel veya özel GitHub veya Azure DevOps deposunda Web kancasını ayarlamak üzere bir kişisel erişim belirteci (PAT) görevi sağlamanız gerekir.
 
@@ -100,7 +100,7 @@ Görevi oluştururken veya güncelleştirdiğinizde bir veya daha fazla *Zamanla
 
 ## <a name="context-locations"></a>Bağlam konumları
 
-Aşağıdaki tabloda ACR görevleri için desteklenen bağlam konumlarına yönelik birkaç örnek gösterilmektedir:
+Aşağıdaki tabloda ACR görevleri için desteklenen bağlam konumlarının örnekleri gösterilmektedir:
 
 | Bağlam konumu | Açıklama | Örnek |
 | ---------------- | ----------- | ------- |
@@ -111,6 +111,7 @@ Aşağıdaki tabloda ACR görevleri için desteklenen bağlam konumlarına yöne
 | GitHub yürütmesi | Genel veya özel bir GitHub deposunda belirli bir işleme. Örnek, bir COMMIT Hash (SHA) ve alt klasör belirtiminin birleşimini gösterir. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps alt klasörü | Ortak veya özel bir Azure deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, dal ve alt klasör belirtiminin birleşimini gösterir. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Uzak tarbol | Uzak Web sunucusu üzerindeki sıkıştırılmış arşivdeki dosyalar. | `http://remoteserver/myapp.tar.gz` |
+| Kapsayıcı kayıt defterinde yapıt | Bir kapsayıcı kayıt defteri deposundaki [OCI yapıt](container-registry-oci-artifacts.md) dosyaları. | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
 > Bir görev için bağlam olarak özel bir git deposu kullanırken, bir kişisel erişim belirteci (PAT) sağlamanız gerekir.

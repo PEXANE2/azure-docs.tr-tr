@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: d4ad11d156fd3a672e93b5e039c82d16b2aebdc3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 17783662ba91f227a7b0bf69203bf21dd8342277
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321743"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489553"
 ---
 # <a name="create-external-stream-transact-sql"></a>Dış AKıŞ oluşturma (Transact-SQL)
 
@@ -24,7 +24,7 @@ Ayrıca, bir dış AKıŞ, Olay Hub 'ı veya blob depolama gibi hizmetler için 
 
 Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aşağıdaki veri kaynaklarını destekler.
 
-| Veri kaynağı türü | Girdi | Çıktı | Açıklama |
+| Veri kaynağı türü | Girdi | Çıktı | Description |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub 'ı | Y | Y | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
 | SQL Veritabanı | H | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
@@ -141,7 +141,7 @@ WITH  ( <with_options> )
   - MAXIMUM_BATCH_COUNT:  
     Azure işlevi için çağrı başına işleve gönderilen en fazla olay sayısı-varsayılan 100 ' dir. SQL veritabanı için, bu, her toplu ekleme işlemi ile gönderilen en fazla kayıt sayısını temsil eder-varsayılan değer 10.000 ' dir. 
     - Tüm SQL tabanlı çıkışlar için geçerlidir 
-  - STAGING_AREA: dış VERI kaynağı nesnesi, BLOB depolama alanına SQL veri ambarı 'na veri alımı için yüksek aktarım hızı verileri alma 
+  - STAGING_AREA: dış VERI kaynağı nesnesi BLOB depolama alanına, Azure SYNAPSE Analytics 'e yönelik yüksek performanslı veri alımı için hazırlama alanı 
     - Gelecekteki kullanım için ayrılmıştır. Azure SQL Edge için geçerlidir.
 
 

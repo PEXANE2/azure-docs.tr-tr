@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871573"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488839"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için Bağlayıcılar
 
@@ -66,7 +66,7 @@ Bir Azure sanal ağındaki kaynaklara doğrudan erişmesi gereken Logic Apps iç
 > [!NOTE]
 > ISE ve bağlayıcılarında çalışan Logic Apps, bu bağlayıcıların çalıştığı durumlar ne olursa olsun, tüketim tabanlı fiyatlandırma planına karşı sabit bir fiyatlandırma planını takip edin. Daha fazla bilgi için bkz. [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) ve [Logic Apps fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-| Etiketle | Örnek | Açıklama |
+| Etiketle | Örnek | Description |
 |-------|---------|-------------|
 | **ÇEKIRDEĞIN** | ![Örnek çekırdek Bağlayıcısı](./media/apis-list/example-core-connector.png) | Bu etiketle birlikte yerleşik Tetikleyiciler ve Eylemler, Logic Apps ile aynı ıSE 'de çalışır. |
 | **ISE** | ![Örnek ıSE Bağlayıcısı](./media/apis-list/example-ise-connector.png) | Bu etikete sahip yönetilen bağlayıcılar, Logic Apps ile aynı ıSE 'de çalışır. Azure sanal ağına bağlı bir şirket içi sisteminiz varsa, bir ıSE, Logic Apps 'in [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)olmadan bu sisteme doğrudan erişmesini sağlar. Bunun yerine, varsa, bu sistemin **Ise** bağlayıcısını kullanabilirsiniz, bir http eylemi veya [özel bağlayıcı](#custom). **Ise** bağlayıcıları olmayan şirket içi sistemler için şirket içi veri ağ geçidi kullanın. Kullanılabilir ıSE bağlayıcılarını gözden geçirmek için bkz. [Ise bağlayıcıları](#ise-connectors). |
@@ -308,7 +308,7 @@ Logic Apps, SAP ve IBM MQ gibi kurumsal sistemlere erişmek için bu kurumsal ba
         [![Azure Service Bus ıSE Bağlayıcısı ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![Azure SQL veri ambarı ıSE Bağlayıcısı ][azure-sql-data-warehouse-icon]<br> **Azure SQL veri <br> ambarı**][azure-sql-data-warehouse-doc]
+        [![Azure SYNAPSE Analytics ıSE Bağlayıcısı ][azure-sql-data-warehouse-icon]<br> **Azure SQL veri <br> ambarı**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
         [![Azure Tablo depolama ıSE Bağlayıcısı ][azure-table-storage-icon]<br> **Azure Tablo <br> depolama**][azure-table-storage-doc]
@@ -572,7 +572,7 @@ Bir mantıksal uygulama içinden bağlantı oluşturabilirsiniz, ancak bağlant�
 [azure-monitor-logs-doc]: /connectors/azuremonitorlogs/ "Log Analytics çalışma alanları ve Application Insights bileşenleri arasında Azure Izleyici günlüklerine yönelik sorguları çalıştırma"
 [azure-queues-doc]: /connectors/azurequeues/ "Kuyrukları ve iletileri oluşturabilmeniz ve yönetebilmeniz için Azure depolama hesabınıza bağlanın"
 [azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Service Bus kuyruklardan ve konulardan ileti gönderin ve Service Bus kuyruklardan ve aboneliklerden ileti alın"
-[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "Verilerinizi görüntüleyebilmeniz için Azure SQL veri ambarı 'na bağlanın"
+[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "Verilerinizi görüntüleyebilmeniz için Azure SYNAPSE Analytics 'e bağlanın"
 [azure-table-storage-doc]: /connectors/azuretables/ "Tabloları ve daha fazlasını oluşturabilmeniz, güncelleştirebilmeniz ve sorgulamanızı sağlamak için Azure depolama hesabınıza bağlanın"
 [biztalk-server-doc]: /connectors/biztalk/ "BizTalk tabanlı uygulamaları Azure Logic Apps ile yan yana çalıştırabilmeniz için BizTalk Server bağlanın"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "Şirket içi dosya sistemine bağlanın"

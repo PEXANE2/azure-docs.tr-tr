@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
-ms.date: 04/22/2020
-ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: 10ca7602dd3cf5a80e371ceda845977bcd8f218a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119829"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484248"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için Yayımlama Kılavuzu
 
-Azure *yönetilen uygulama* teklifi, Azure Market 'te Azure uygulaması yayımlamanın bir yoludur. Yönetilen uygulamalar, Azure Marketi aracılığıyla dağıtılan ve faturalandırılan Transact teklifleridir. Kullanıcının gördüğü eyleme yapılan çağrı *Şimdi bu uygulamayı alır*.
+Azure *yönetilen uygulama* teklifi, Azure Market 'te Azure uygulaması yayımlamanın bir yoludur. Yönetilen uygulamalar, Azure Marketi aracılığıyla dağıtılan ve faturalandırılan Transact teklifleridir. Kullanıcının gördüğü listeleme seçeneği *Şimdi alın*.
 
 Bu makalede, yönetilen uygulama teklif türü için gereksinimler açıklanmaktadır.
 
