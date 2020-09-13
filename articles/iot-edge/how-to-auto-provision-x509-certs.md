@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c54690645286a4fceb3fd786d85652b1cf77d7aa
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e01255a34e97f6c11e4909287b98fcd3d15fca92
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260029"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669043"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>X. 509.440 sertifikalarını kullanarak bir IoT Edge cihazı oluşturma ve sağlama
 
@@ -28,7 +28,7 @@ Bu makalede, aşağıdaki adımlarla bir IoT Edge cihazında X. 509.440 sertifik
 
 Bir kanıtlama mekanizması olarak X. 509.440 sertifikalarını kullanmak, üretimi ölçeklendirmek ve cihaz sağlamayı basitleştirmek için mükemmel bir yoldur. Genellikle, X. 509.440 sertifikaları bir sertifika güven zincirinde düzenlenir. Otomatik olarak imzalanan veya güvenilen bir kök sertifikayla başlayarak, zincirdeki her bir sertifika sonraki alt sertifikayı imzalar. Bu model, bir cihazda yüklü olan son "yaprak" sertifikaya, her ara sertifika aracılığıyla kök sertifikadan bir güven zinciri oluşturur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin bir IoT Hub.
 * IoT Edge cihaz olması için fiziksel veya sanal bir cihaz.
@@ -52,7 +52,7 @@ X. 509.952 ile otomatik sağlamayı ayarlamak için aşağıdaki dosyalara ihtiy
 * Sertifika güven zincirindeki bir ara veya kök CA sertifikası. Bu sertifika, bir grup kaydı oluşturursanız, DPS 'e yüklenir.
 
 > [!NOTE]
-> Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2050 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor.
+> Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2038 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor.
 
 ### <a name="use-test-certificates"></a>Test sertifikalarını kullanma
 
@@ -103,7 +103,7 @@ Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. ciha
 
    * **Bu cihazın atanabileceği IoT Hub 'Larını seçin**: Cihazınızı bağlamak Istediğiniz bağlantılı IoT Hub 'ını seçin. Birden çok hub seçebilirsiniz ve bu cihaz, seçilen ayırma ilkesine göre bu cihazdan birine atanır.
 
-   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örnek:
+   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örneğin:
 
       ```json
       {
@@ -188,7 +188,7 @@ Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. ciha
 
    * **Bu cihazın atanabileceği IoT Hub 'Larını seçin**: Cihazınızı bağlamak Istediğiniz bağlantılı IoT Hub 'ını seçin. Birden çok hub seçebilirsiniz ve bu cihaz, seçilen ayırma ilkesine göre bu cihazdan birine atanır.
 
-   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örnek:
+   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örneğin:
 
       ```json
       {
@@ -224,7 +224,7 @@ Cihazınızın mimarisine uygun komutları kullanarak Azure IoT Edge çalışma 
 
 [Linux üzerinde Azure IoT Edge çalışma zamanını yükler](how-to-install-iot-edge-linux.md)
 
-X. 509.952 sertifikasını ve anahtar bilgilerini config. YAML dosyasına eklediğinizde, yolların dosya URI 'Leri olarak sağlanması gerekir. Örnek:
+X. 509.952 sertifikasını ve anahtar bilgilerini config. YAML dosyasına eklediğinizde, yolların dosya URI 'Leri olarak sağlanması gerekir. Örneğin:
 
 * `file:///<path>/identity_certificate_chain.pem`
 * `file:///<path>/identity_key.pem`

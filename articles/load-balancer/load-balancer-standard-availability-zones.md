@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 55a86eeee4f819955e3f8adfcc0f55f24d58bed0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 541aa7da3e804931c1793e455bcbfca83c809dae
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420320"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669180"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer ve Kullanılabilirlik Bölgeleri
 
 Azure Standart Load Balancer, kullanılabilirlik alanları senaryolarını destekler. Standart yük dengeleyiciyi kullanarak, kaynakları ve bölgeler arasında dağıtımı yaparak senaryonuz genelinde kullanılabilirliği artırabilirsiniz. Standart yük dengeleyici ile birlikte kullanılabilirlik alanları, birçok farklı senaryo oluşturabileceğiniz bir expantik ve esnek özellik kümesidir.  Bu [kavramları](#concepts) ve temel senaryo [tasarım kılavuzunu](#design)anlamak için bu belgeyi gözden geçirin.
 
-## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a>Load Balancer uygulanan Kullanılabilirlik Alanları kavramları
+## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a> Load Balancer uygulanan Kullanılabilirlik Alanları kavramları
 
 Yük dengeleyici, bileşenlerinden bölge yapılandırmasını devralır: 
 
@@ -67,7 +67,7 @@ Ayrıca, her bir bölgedeki yük dengeli uç noktalar için doğrudan bölgesel 
   <img src="./media/az-zonal/zonal-lb-1.svg" alt="Figure depicts three zonal standard load balancers each directing traffic in a zone to three different subnets in a zonal configuration." width="512" title="Sanal ağ NAT">
 </p>
 
-*Şekil: ZGen yedekli yük dengeleyici*
+*Şekil: ZGen yük dengeleyici*
 
 Bu kavramları karıştırmak istiyorsanız (aynı arka uç için bölgesel olarak yedekli ve bölgesel), [Azure Load Balancer için birden fazla](load-balancer-multivip-overview.md)ön eki gözden geçirin.
 
@@ -101,7 +101,7 @@ Bölgesel olarak yedekli ön uçlar kullanılırken, yük dengeleyici iç sistem
 
 Bu sanal makineye erişebilen diğer bölgeler, sanal makineyi ilgili ön uçlarından sunmaya devam edebilir. Hata olayları sırasında, hizmetinizin genel sistem durumunu korurken her bir bölgenin farklı yeni akış dağıtımları olabilir.
 
-## <a name="design-considerations"></a><a name="design"></a>Tasarım konuları
+## <a name="design-considerations"></a><a name="design"></a> Tasarım konuları
 
 Yük dengeleyici, kullanılabilirlik alanları bağlamında esnektir. Bölgelere hizalamayı veya her kural için bölgeye yedekli olmasını seçebilirsiniz. Artan kullanılabilirlik, artan karmaşıklık fiyatına göre gelebilir. En iyi performans için kullanılabilirlik tasarımı.
 
@@ -113,7 +113,7 @@ Bölge artıklığı, itless veri yolu veya denetim düzlemi göstermez; veri d�
 
 Bölge hatası sırasında bölge kullanan trafik akışları etkilenebilir, ancak uygulamalar kurtarabilir. Trafik, Azure 'un bölge hatasını aşmak için yeniden aktarım sırasında bölge içindeki sağlıklı bölgelerde devam eder.
 
-### <a name="cross-zone-boundaries"></a><a name="xzonedesign"></a>Çapraz bölge sınırları
+### <a name="cross-zone-boundaries"></a><a name="xzonedesign"></a> Çapraz bölge sınırları
 
 Bir hizmetin bölgeleri ne zaman söylediğinden emin olmak önemlidir, Fate 'yi tek bir bölge ve potansiyel olarak birden çok bölge ile paylaşabilirsiniz. Sonuç olarak, hizmetiniz, hiç türlü dağıtım dışı dağıtımlar üzerinde herhangi bir kullanılabilirlik kazanmamış olabilir.
 

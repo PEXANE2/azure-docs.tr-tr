@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4b895054f8fa81526bf72cadd2fea1a3691d758
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eef04be1891eac35577a5f4cb18d5b83b8d0f301
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910134"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669380"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme
 
@@ -51,39 +51,43 @@ Ayrıca, bu bağlantı kiracı bilgilerinizi içerdiği sürece Google Konuk kul
 ## <a name="step-1-configure-a-google-developer-project"></a>1. Adım: Google Geliştirici projesini yapılandırma
 İlk olarak, bir istemci KIMLIĞI ve daha sonra Azure AD 'ye ekleyebileceğiniz bir istemci gizli anahtarı almak için Google geliştiricileri konsolunda yeni bir proje oluşturun. 
 1. Adresindeki Google API 'Lerine gidin https://console.developers.google.com ve Google hesabınızla oturum açın. Paylaşılan bir takım Google hesabı kullanmanızı öneririz.
-2. Yeni bir proje oluşturun: panoda **proje oluştur**' u seçin ve ardından **Oluştur**' u seçin. Yeni proje sayfasında, bir **Proje adı**girin ve ardından **Oluştur**' u seçin.
+2. İstenirse hizmet koşullarını kabul edin
+3. Yeni bir proje oluşturun: panoda **proje oluştur**' u seçin, projeye bir ad verin (örneğin, "Azure AD B2B") ve ardından **Oluştur**' u seçin. 
    
    ![Google için yeni bir proje sayfası gösteren ekran görüntüsü](media/google-federation/google-new-project.png)
 
-3. Proje menüsünde Yeni projenizin seçildiğinden emin olun. Ardından, **API 'ler & Hizmetleri**altında **OAuth onay ekranı**' nı seçin.
+4. Artık size sunulan **apı & Hizmetleri** sayfasında yeni projenizin altındaki **Görünüm** ' e tıklayın.
 
-4. **Dış**' i seçin ve ardından **Oluştur**' u seçin. 
-5. **OAuth onay ekranında**bir **uygulama adı**girin. (Diğer ayarları bırakın.)
+5. API 'Ler kartına **API 'Lere git ' e** tıklayın. **OAuth onay ekranı**' nı seçin.
+
+6. **Dış**' i seçin ve ardından **Oluştur**' u seçin. 
+
+7. **OAuth onay ekranında**bir **uygulama adı**girin. 
 
    ![Google OAuth onay ekranı seçeneğini gösteren ekran görüntüsü](media/google-federation/google-oauth-consent-screen.png)
 
-6. **Yetkili etki alanları** bölümüne gidin ve microsoftonline.com girin.
+8. **Yetkili etki alanları** bölümüne gidin ve microsoftonline.com girin.
 
-   ![Yetkili etki alanları bölümünü gösteren ekran görüntüsü](media/google-federation/google-oauth-authorized-domains.png)
+   ![Yetkili etki alanları bölümünü gösteren ekran görüntüsü](media/google-federation/google-oauth-authorized-domains.PNG)
 
-7. **Kaydet**’i seçin.
+9. **Kaydet**’i seçin.
 
-8. **Kimlik bilgilerini**seçin. **Kimlik bilgileri oluştur** menüsünde **OAuth istemci kimliği**' ni seçin.
+10. **Kimlik bilgilerini**seçin. **Kimlik bilgileri oluştur** menüsünde **OAuth istemci kimliği**' ni seçin.
 
-   ![Google API 'Leri kimlik bilgileri oluşturma seçeneğini gösteren ekran görüntüsü](media/google-federation/google-api-credentials.png)
+    ![Google API 'Leri kimlik bilgileri oluşturma seçeneğini gösteren ekran görüntüsü](media/google-federation/google-api-credentials.png)
 
-9. **Uygulama türü**' nün altında **Web uygulaması**' nı seçin ve ardından **yetkili yeniden yönlendirme URI 'leri**altında aşağıdaki URI 'leri girin:
-   - `https://login.microsoftonline.com` 
-   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>( `<directory id>` DIZIN kimliğiniz nerede)
+11. **Uygulama türü**' nün altında **Web uygulaması** ' nı seçin ve uygulamaya uygun bir ad verin (ÖRNEĞIN, "Azure AD B2B") ve sonra **yetkilendirilmiş yeniden yönlendirme URI 'leri**altında aşağıdaki URI 'leri girin:
+    - `https://login.microsoftonline.com` 
+    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>( `<directory id>` DIZIN kimliğiniz nerede)
    
-     > [!NOTE]
-     > Dizin KIMLIĞINIZI bulmak için adresine gidin https://portal.azure.com ve **Azure Active Directory**altında **Özellikler** ' i seçin ve **dizin kimliğini**kopyalayın.
+    > [!NOTE]
+    > Dizin KIMLIĞINIZI bulmak için adresine gidin https://portal.azure.com ve **Azure Active Directory**altında **Özellikler** ' i seçin ve **dizin kimliğini**kopyalayın.
 
-   ![Yetkili yeniden yönlendirme URI 'Leri bölümünü gösteren ekran görüntüsü](media/google-federation/google-create-oauth-client-id.png)
+    ![Yetkili yeniden yönlendirme URI 'Leri bölümünü gösteren ekran görüntüsü](media/google-federation/google-create-oauth-client-id.png)
 
-10. **Oluştur**’u seçin. Kimlik sağlayıcısını Azure AD portalına eklerken kullanacağınız istemci KIMLIĞINI ve istemci parolasını kopyalayın.
+12. **Oluştur**’u seçin. Kimlik sağlayıcısını Azure AD portalına eklerken kullanacağınız istemci KIMLIĞINI ve istemci parolasını kopyalayın.
 
-   ![OAuth İstemci KIMLIĞINI ve istemci gizli anahtarını gösteren ekran görüntüsü](media/google-federation/google-auth-client-id-secret.png)
+    ![OAuth İstemci KIMLIĞINI ve istemci gizli anahtarını gösteren ekran görüntüsü](media/google-federation/google-auth-client-id-secret.png)
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>2. Adım: Google Federation 'ı Azure AD 'de yapılandırma 
 Artık Google istemci KIMLIĞINI ve istemci gizli anahtarını Azure AD portalına girerek ya da PowerShell kullanarak ayarlayacaksınız. Kendinize bir Gmail adresi kullanarak davet ederek Google Federation yapılandırmanızı test ettiğinizden emin olun ve daveti davet edilen Google hesabınızla kullanmaya çalışıyorsunuz. 
@@ -92,7 +96,7 @@ Artık Google istemci KIMLIĞINI ve istemci gizli anahtarını Azure AD portalı
 1. [Azure portalına](https://portal.azure.com) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Dış kimlikler**' i seçin.
 3. **Tüm kimlik sağlayıcıları**' nı seçin ve ardından **Google** düğmesine tıklayın.
-4. Bir ad girin. Daha önce edindiğiniz istemci KIMLIĞINI ve istemci gizli anahtarını girin. **Kaydet**’i seçin. 
+4. Daha önce edindiğiniz istemci KIMLIĞINI ve istemci gizli anahtarını girin. **Kaydet**’i seçin. 
 
    ![Google Identity Provider Ekle sayfasını gösteren ekran görüntüsü](media/google-federation/google-identity-provider.png)
 
@@ -122,7 +126,7 @@ Google Federation kurulumunuzu silebilirsiniz. Bunu yaparsanız, davetini zaten 
 
 ### <a name="to-delete-google-federation-by-using-powershell"></a>PowerShell kullanarak Google Federasyonu silmek için: 
 1. Graph modülü için Azure AD PowerShell 'in en son sürümünü ([Azureadpreview](https://www.powershellgallery.com/packages/AzureADPreview)) yükler.
-2. Şu komutu çalıştırın: `Connect-AzureAD`.  
+2. `Connect-AzureAD` öğesini çalıştırın.  
 4. Oturum açma isteminde, yönetilen genel yönetici hesabıyla oturum açın.  
 5. Aşağıdaki komutu girin:
 

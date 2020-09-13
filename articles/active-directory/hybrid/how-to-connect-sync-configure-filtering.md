@@ -16,20 +16,20 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c539fd37116f8c55f336aecf1e8979355a40d61c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88061515"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662553"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Eşitleme: Filtrelemeyi yapılandırma
-Filtreleme kullanarak, şirket içi dizininizden Azure Active Directory (Azure AD) içinde hangi nesnelerin göründüğünü denetleyebilirsiniz. Varsayılan yapılandırma, yapılandırılan ormanlardaki tüm etki alanlarındaki tüm nesneleri alır. Genel olarak, önerilen yapılandırmadır. Exchange Online ve Skype Kurumsal gibi Office 365 iş yüklerini kullanan kullanıcılar, e-posta gönderebilmeleri ve herkes arayabilmesi için tüm genel adres listesinden faydalanır. Varsayılan yapılandırmayla, Exchange veya Lync 'in şirket içi uygulamasıyla aynı deneyim yaşar.
+Filtreleme kullanarak, şirket içi dizininizden Azure Active Directory (Azure AD) içinde hangi nesnelerin göründüğünü denetleyebilirsiniz. Varsayılan yapılandırma, yapılandırılan ormanlardaki tüm etki alanlarındaki tüm nesneleri alır. Genel olarak, önerilen yapılandırmadır. Exchange Online ve Skype Kurumsal gibi Microsoft 365 iş yüklerini kullanan kullanıcılar, e-posta gönderebilmeleri ve herkes arayabilmesi için tüm genel adres listesinden faydalanır. Varsayılan yapılandırmayla, Exchange veya Lync 'in şirket içi uygulamasıyla aynı deneyim yaşar.
 
 Ancak bazı durumlarda, varsayılan yapılandırmada bazı değişiklikler yapmanız gerekir. İşte bazı örnekler:
 
 * [Çoklu Azure AD dizin topolojisini](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)kullanmayı planlıyorsunuz. Ardından belirli bir Azure AD dizini ile eşitlenecek nesneleri denetlemek için bir filtre uygulamanız gerekir.
-* Azure veya Office 365 için bir pilot çalıştıralım ve yalnızca Azure AD 'de kullanıcıların bir alt kümesini istiyorsunuz. Küçük pilot sürümünde, işlevselliği göstermek için bir genel adres listesinin tamamen olması önemli değildir.
+* Azure veya Microsoft 365 için bir pilot çalıştırırsınız ve yalnızca Azure AD 'deki bir kullanıcı alt kümesini istiyorsunuz. Küçük pilot sürümünde, işlevselliği göstermek için bir genel adres listesinin tamamen olması önemli değildir.
 * Azure AD 'de istemediğiniz birçok hizmet hesabınız ve diğer kişisel hesabınız vardır.
 * Uyumluluk nedenleriyle, şirket içi kullanıcı hesaplarını silmeyin. Yalnızca bunları devre dışı bırakabilirsiniz. Ancak Azure AD 'de yalnızca etkin hesapların bulunmasını istiyorsunuz.
 
@@ -217,7 +217,7 @@ Gelen filtreleme varsayılan yapılandırmayı kullanır, burada Azure AD 'ye gi
 Gelen filtrelemede, hangi nesnelerin eşitleneceğini veya eşitleneceğini öğrenmek için **kapsam** gücünü kullanırsınız. Bu, kendi kuruluşunuzun gereksinimlerini karşılayacak şekilde ayarlamalar yaparsınız. Kapsam modülünde bir eşitleme kuralının kapsam içinde olduğu zaman saptanıp bir **grubu** ve **yan tümcesi** vardır. Bir grup bir veya daha fazla yan tümce içerir. Birden çok yan tümce arasında mantıksal bir "ve", birden çok grup arasında mantıksal bir "veya" vardır.
 
 Bir örneğe bakmamıza izin verin:  
-![Kapsam](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![Kapsam filtresi ekleme örneği gösteren ekran görüntüsü](./media/how-to-connect-sync-configure-filtering/scope.png)  
 Bu, **(departman = It) veya (departman = Sales ve c = US)** olarak okunmalıdır.
 
 Aşağıdaki örneklerde ve adımlarda, Kullanıcı nesnesini bir örnek olarak kullanırsınız, ancak bunu tüm nesne türleri için kullanabilirsiniz.
@@ -299,9 +299,9 @@ Aşağıdaki adımları uygulayın:
 Eşitlemeden sonra tüm değişiklikler verilmek üzere hazırlanır. Azure AD 'de değişiklikleri gerçekten yapmadan önce, tüm bu değişikliklerin doğru olduğunu doğrulamak istiyorsunuz.
 
 1. Bir komut istemi başlatın ve adresine gidin `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
-2. `csexport "Name of Connector" %temp%\export.xml /f:x` komutunu çalıştırın.  
+2. `csexport "Name of Connector" %temp%\export.xml /f:x` öğesini çalıştırın.  
    Bağlayıcının adı, eşitleme hizmetidir. Azure AD için "contoso.com – AAD" benzeri bir ada sahiptir.
-3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` komutunu çalıştırın.
+3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` öğesini çalıştırın.
 4. Artık% TEMP% adlı, Microsoft Excel 'de incelenebilir export.csv adlı bir dosyanız var. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
 5. Veri veya yapılandırmada gerekli değişiklikleri yapın ve dışarı aktarılacak değişiklikler beklediğiniz şeydir, bu adımları yeniden çalıştırın (Içeri aktar, eşitlendiğinde ve Doğrula).
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Office 365 kaynakları için tercih edilen veri konumunu yapılandırın'
-description: Azure Active Directory Connect Sync ile Office 365 kullanıcı kaynaklarınızı kullanıcıya nasıl yakın bir şekilde koyabileceğinizi açıklar.
+title: 'Azure AD Connect: Microsoft 365 kaynaklar için tercih edilen veri konumunu yapılandırın'
+description: Microsoft 365 kullanıcı kaynaklarınızın Azure Active Directory Connect eşitleme ile kullanıcıya nasıl yakın şekilde yerleştirileceğini açıklar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,29 +16,29 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 597e322536703560fad8a0ba562cc70ce3aa1775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ad2bf071d4aa5b49541c710ef9b0793a1076ea9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357418"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662505"
 ---
-# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect eşitleme: Office 365 kaynakları için tercih edilen veri konumunu yapılandırın
-Bu konunun amacı, Azure Active Directory (Azure AD) Connect Sync içinde tercih edilen veri konumu için özniteliği yapılandırma konusunda size yol gösterir. Birisi Office 365 ' de çok coğrafi bölge özellikleri kullandığında, bu özniteliği kullanıcının Office 365 verilerinin coğrafi konumunu belirlemek için kullanırsınız. (Hüküm *bölgesi* ve *coğrafi* , birbirlerinin yerine kullanılır.)
+# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Eşitleme Azure Active Directory Connect: Microsoft 365 kaynaklar için tercih edilen veri konumunu yapılandırın
+Bu konunun amacı, Azure Active Directory (Azure AD) Connect Sync içinde tercih edilen veri konumu için özniteliği yapılandırma konusunda size yol gösterir. Birisi Microsoft 365 çoklu coğrafi bölge özellikleri kullandığında, bu özniteliği kullanıcının Microsoft 365 verilerinin coğrafi konumunu belirlemek için kullanırsınız. (Hüküm *bölgesi* ve *coğrafi* , birbirlerinin yerine kullanılır.)
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>Tercih edilen veri konumu eşitlemesini etkinleştir
-Varsayılan olarak, kullanıcılarınız için Office 365 kaynakları, Azure AD kiracınızla aynı coğrafi bölgede bulunur. Örneğin, kiracınız Kuzey Amerika, kullanıcıların Exchange posta kutuları da Kuzey Amerika de bulunur. Çok uluslu bir kuruluş için bu ideal olmayabilir.
+Varsayılan olarak, kullanıcılarınız için Microsoft 365 kaynakları Azure AD kiracınızla aynı coğrafi bölgede bulunur. Örneğin, kiracınız Kuzey Amerika, kullanıcıların Exchange posta kutuları da Kuzey Amerika de bulunur. Çok uluslu bir kuruluş için bu ideal olmayabilir.
 
-**Preferreddatalocation**özniteliğini ayarlayarak bir kullanıcının coğrafi bölge tanımlayabilirsiniz. Kullanıcının posta kutusu ve OneDrive gibi Office 365 kaynaklarına, kullanıcıyla aynı coğrafi bölgede ve kuruluşunuzun tamamı için tek bir kiracıya sahip olabilirsiniz.
+**Preferreddatalocation**özniteliğini ayarlayarak bir kullanıcının coğrafi bölge tanımlayabilirsiniz. Kullanıcının posta kutusu ve OneDrive gibi Microsoft 365 kaynaklarını kullanıcıyla aynı coğrafi bölgede ve kuruluşunuzun tamamı için tek bir kiracıya sahip olabilirsiniz.
 
 > [!IMPORTANT]
-> Çoklu coğrafi bölge, şu anda etkin bir Kurumsal Anlaşma ve en az 500 Office 365 hizmet aboneliği olan müşteriler tarafından kullanılabilir. Ayrıntılar için lütfen Microsoft temsilcinize başvurun.
+> Çoklu coğrafi bölge, şu anda etkin bir Kurumsal Anlaşma ve en az 250 Microsoft 365 hizmetleri aboneliğine sahip olan müşteriler tarafından kullanılabilir. Ayrıntılar için lütfen Microsoft temsilcinize başvurun.
 >
 >
 
-Office 365 için tüm coğrafyalar 'lar [, verilerinizin nerede bulunduğu](https://aka.ms/datamaps)konusunda bulunabilir.
+Microsoft 365 için tüm coğrafyalar 'lar [, verilerinizin nerede bulunduğu](https://aka.ms/datamaps)konusunda bulunabilir.
 
-Office 365 ' deki coğrafyalar çok coğrafi bölge için kullanılabilir:
+Microsoft 365 çoklu coğrafi bölge için kullanılabilen coğrafyalar şunlardır:
 
 | Coğrafi Bölge | preferredDataLocation değeri |
 | --- | --- |
@@ -58,16 +58,16 @@ Office 365 ' deki coğrafyalar çok coğrafi bölge için kullanılabilir:
 
 * Coğrafi bölge bu tabloda listelenmediyse (örneğin, Güney Amerika), birden çok coğrafi bölge için kullanılamaz.
 
-* Office 365 iş yüklerinin hepsi, kullanıcının coğrafi bölge ayarlama kullanımını desteklemez.
+* Microsoft 365 iş yüklerinin hepsi, kullanıcının coğrafi bölge ayarlama kullanımını desteklemez.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Eşitleme için Azure AD Connect desteği
 
-Azure AD Connect, 1.1.524.0 ve üzeri sürümlerde **Kullanıcı** nesneleri Için **preferreddatalocation** özniteliği eşitlemesini destekler. Daha ayrıntılı şekilde belirtmek gerekirse:
+Azure AD Connect, 1.1.524.0 ve üzeri sürümlerde **Kullanıcı** nesneleri Için **preferreddatalocation** özniteliği eşitlemesini destekler. Özellikle:
 
 * Azure AD Bağlayıcısı 'ndaki nesne türü **Kullanıcı** şeması, **preferreddatalocation** özniteliğini içerecek şekilde genişletilir. Öznitelik türü, tek değerli dize.
 * Meta veri deposundaki **kişinin** nesne türü şeması, **preferreddatalocation** özniteliğini içerecek şekilde genişletilir. Öznitelik türü, tek değerli dize.
 
-Varsayılan olarak, **Preferreddatalocation** eşitleme için etkin değildir. Bu özellik daha büyük kuruluşlar için tasarlanmıştır. Windows Server 2019 ' deki Active Directory şemasında, bu amaçla kullanmanız gereken bir **msDS-preferredDataLocation** özniteliği vardır. Active Directory şemasını güncelleştirmediyseniz ve bunu yapamadıysanız, kullanıcılarınız için Office 365 coğrafi bölge 'yi tutacak bir öznitelik tanımlamalısınız. Bu, her kuruluş için farklı olacaktır.
+Varsayılan olarak, **Preferreddatalocation** eşitleme için etkin değildir. Bu özellik daha büyük kuruluşlar için tasarlanmıştır. Windows Server 2019 ' deki Active Directory şemasında, bu amaçla kullanmanız gereken bir **msDS-preferredDataLocation** özniteliği vardır. Active Directory şemasını güncelleştirmediyseniz ve bunu yapamadıysanız, kullanıcılarınız için Microsoft 365 coğrafi bölge tutacak bir öznitelik tanımlamalısınız. Bu, her kuruluş için farklı olacaktır.
 
 > [!IMPORTANT]
 > Azure AD, Azure AD PowerShell kullanılarak **bulut Kullanıcı nesnelerindeki** **preferreddatalocation** özniteliğinin doğrudan yapılandırılmasını sağlar. Bu özniteliği **eşitlenmiş kullanıcı nesnelerinde**yapılandırmak için Azure AD Connect kullanmanız gerekir.
@@ -143,11 +143,11 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
     | Name | *Bir ad belirtin* | Örneğin, "AD 'den Içinde – Kullanıcı preferredDataLocation" |
-    | Açıklama | *Özel bir açıklama sağlayın* |  |
+    | Description | *Özel bir açıklama sağlayın* |  |
     | Bağlı sistem | *Şirket içi Active Directory bağlayıcısını seçme* |  |
     | Bağlı sistem nesne türü | **Kullanıcı** |  |
     | Meta veri deposu nesne türü | **Kişi** |  |
-    | Bağlantı türü | **Katıl** |  |
+    | Bağlantı türü | **Join** |  |
     | Önceliği | *1 – 99 arasında bir sayı seçin* | 1 – 99 özel eşitleme kuralları için ayrılmıştır. Başka bir eşitleme kuralı tarafından kullanılan bir değer seçmeyin. |
 
 5. Tüm nesneleri dahil etmek için **kapsam filtresini** boş tutun. Azure AD Connect dağıtımınıza göre kapsam filtresini ince ayar gerekebilir.
@@ -172,11 +172,11 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
     | Öznitelik | Değer | Ayrıntılar |
     | ----- | ------ | --- |
     | Name | *Bir ad belirtin* | Örneğin, "Azure AD 'ye kadar – Kullanıcı preferredDataLocation" |
-    | Açıklama | *Bir açıklama girin* ||
+    | Description | *Bir açıklama girin* ||
     | Bağlı sistem | *Azure AD bağlayıcısını seçin* ||
     | Bağlı sistem nesne türü | **Kullanıcı** ||
     | Meta veri deposu nesne türü | **Kişi** ||
-    | Bağlantı türü | **Katıl** ||
+    | Bağlantı türü | **Join** ||
     | Önceliği | *1 – 99 arasında bir sayı seçin* | 1 – 99 özel eşitleme kuralları için ayrılmıştır. Başka bir eşitleme kuralı tarafından kullanılan bir değer seçmeyin. |
 
 5. **Kapsam filtresi** sekmesine gidin ve iki yan tümce içeren tek bir kapsam filtresi grubu ekleyin:
@@ -184,7 +184,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
     | Öznitelik | İşleç | Değer |
     | --- | --- | --- |
     | sourceObjectType | SıFıRA | Kullanıcı |
-    | Cloudana kopyalı | Not QUAL | True |
+    | Cloudana kopyalı | Not QUAL | Doğru |
 
     Kapsam filtresi, bu giden eşitleme kuralının hangi Azure AD nesnelerini uygulanacağını belirler. Bu örnekte, "Azure AD – Kullanıcı kimliği" OOB (kullanıma hazır) eşitleme kuralında aynı kapsam filtresini kullanırız. Eşitleme kuralının, şirket içi Active Directory eşitlenmemiş **Kullanıcı** nesnelerine uygulanmasını önler. Azure AD Connect dağıtımınıza göre kapsam filtresini ince ayar gerekebilir.
 
@@ -250,7 +250,7 @@ Genel olarak, tam eşitleme çevrimi gereklidir. Bunun nedeni, hem Active Direct
 Yerleşik eşitleme zamanlayıcısını yeniden etkinleştirin:
 
 1. Bir PowerShell oturumu başlatın.
-2. Şu cmdlet 'i çalıştırarak zamanlanmış eşitlemeyi yeniden etkinleştirin:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+2. Şu cmdlet 'i çalıştırarak zamanlanmış eşitlemeyi yeniden etkinleştirin: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 ## <a name="step-9-verify-the-result"></a>9. Adım: sonucu doğrulama
 Şimdi yapılandırmayı doğrulamak ve kullanıcılarınız için etkinleştirmek zaman alabilir.
@@ -264,7 +264,7 @@ Kiracınızın bu özelliği kullanabilmesi için işaretlenip işaretlenmediği
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Office 365 ' de çok coğrafi bölge hakkında daha fazla bilgi edinin:
+Microsoft 365 çoklu coğrafi bölge hakkında daha fazla bilgi edinin:
 
 * [Ignite 'de çok coğrafi olan oturumlar](https://aka.ms/MultiGeoIgnite)
 * [OneDrive 'da çoklu coğrafi konum](https://aka.ms/OneDriveMultiGeo)

@@ -3,25 +3,25 @@ title: Ödeme raporları-Microsoft ticari Market
 description: Ödeme raporlarında, ödemenizin ödemesini de içeren ve ödeme yaptığınız para miktarı dahil olmak üzere size ait ayrıntılar gösterilir.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 04/24/2020
-ms.openlocfilehash: a013dd875fc5a97e5e2e619553cdeb8c6d729298
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 09/09/2020
+ms.openlocfilehash: 62de9380578ca5a97f7b72f9939d5c2dd7392c0d
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502639"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004230"
 ---
 # <a name="payout-summaries"></a>Ödeme özetleri
 
 Ödeme Özeti, Microsoft ile kazandığınızı gösteren ayrıntıları gösterir. Ayrıca, ödemeleri ne zaman alacağınız ve ne kadar ücret ödetireceğiz size bilgi verir.
 
-Ürünleri Azure Marketi 'nde satmanız durumunda, ödeme özetinde başarılı ödemeler hakkındaki bilgileri de görürsünüz. Ayrıntılar için bkz. [katılım ilkeleri](https://docs.microsoft.com/legal/marketplace/participation-policy) ve [Microsoft Azure Market Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)Microsoft Azure Market.
+Ürünleri Azure Marketi 'nde satmanız durumunda, ödeme özetinde başarılı ödemeler hakkındaki bilgileri de görürsünüz. Azure Marketi ödemesi hakkında daha fazla bilgi için bkz. ticari Market ve [Microsoft Publisher sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) ['nde ücretli alma](./get-paid.md) .
 
 > [!NOTE]
-> Ödemenizin uygun olması için, devam eden $50 [ödeme eşiğine](payment-thresholds-methods-timeframes.md) ulaşmalıdır. Ödeme eşiği hakkında daha fazla bilgi için bu sayfaya bakın ve uygulama geliştirici sözleşmesini gözden geçirin.
+> Ödemenizin uygun olması için, devam eden $50 ödeme eşiğine ulaşmalıdır. Ayrıntılar için bkz. [Microsoft Publisher sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
 > Ödemeler hakkında, ödeme hesaplarını yapılandırma, ödeme yok, ödemeler veya başka bir şey yapma dahil olmak üzere destek arıyorsanız, [burada](https://developer.microsoft.com/windows/support)desteğe başvurun.
@@ -31,22 +31,14 @@ ms.locfileid: "87502639"
 Ödeme Özet sayfalarından birini açmak için:
 
 1. Sağ üst köşedeki ödeme simgesini seçin.
-2. Işlem geçmişi, ödemeler veya dışarı aktarma verilerini seçin.
-
-## <a name="transaction-history-page"></a>İşlem geçmişi sayfası
-
-Bu sayfada, her biri için tarih, tür ve kazanç dahil olmak üzere tüm bireysel gelirlerinizi görüntüler. Görüntülenecek bir zaman aralığı seçebilirsiniz ve kayıt KIMLIĞI, program, ödeme KIMLIĞI, kazanç türü, MANI ve duruma göre de filtre uygulayabilirsiniz. Veriler geçerli mali yıl (1 Temmuz – 30 Haziran) ve önceki iki mali yıl için kullanılabilir.
-
-Bir atma hakkında daha fazla ayrıntı görmek için sayfanın sağ tarafındaki aşağı oku seçin. Bu, mandalı, gelir miktarını ve ürünü gösterir. Bu verilerden herhangi biri kullanılamıyorsa ancak ona erişmeniz gerekiyorsa [desteğe](https://developer.microsoft.com/windows/support)başvurun. Kazanım, bir işlem değil, bir ayarlamanın sonucu ise, ürün alanları gösterilmez.
-
-Bu sayfadaki herhangi bir işlem verisini dışarı aktarmak için, **verileri dışarı aktar** sayfasını kullanın.
+2. **İşlem geçmişi**, **ödemeler**veya **dışarı aktarma verilerini**seçin.
 
 ## <a name="payments-page"></a>Ödemeler sayfası
 
 Bu sayfadaki toplamlar, katıldığınızda tüm programları temsil eder. Katılımcı kimliği, Program, Ödeme kimliği ve Kazanç türüne göre filtreleyebilirsiniz. Tutarlar ABD doları cinsinden verilir. Ödenen değer, ödeme yapılan para biriminde görüntülenir.
 
-| Alan                   | Açıklama                                                                                |
-|------------------------|---------------------------------------------------------------------------------------------|
+| Alan  | Description |
+| --- | --- |
 | Toplam ödenen bu yıl   | Tüm programlarınız için ABD Doları cinsinden bu yıla kadar ödenen Birleşik Toplam       |
 | Sonraki tahmini ödeme | Size yaklaşan tek bir sonraki ödeme (çok yakında geliyor olsa bile) ABD Doları cinsinden |
 | Son ödeme           | En son ödemenin miktarı (ABD Doları cinsinden), program adı ve program           |
@@ -60,25 +52,25 @@ Bu sayfadaki verilerin herhangi birini dışarı aktarmak için **dışarı** Ak
 
 Bu sayfada, her biri için tarih, tür ve kazanç dahil olmak üzere tüm bireysel gelirlerinizi görüntüler. Görüntülenecek bir zaman aralığı seçebilirsiniz ve kayıt KIMLIĞI, program, ödeme KIMLIĞI, kazanç türü, MANI ve duruma göre filtre uygulayabilirsiniz. Veriler geçerli mali yıl (1 Temmuz – 30 Haziran) ve önceki iki mali yıl için kullanılabilir.
 
-Bir atma hakkında daha fazla ayrıntı görmek için sayfanın sağ tarafındaki aşağı oku seçin. Bu, mandalı, gelir miktarını ve ürünü gösterir. Bu verilerden herhangi biri kullanılamıyorsa ancak ona erişmeniz gerekiyorsa [desteğe](https://developer.microsoft.com/windows/support)başvurun]. Kazanım, bir işlem değil, bir ayarlamanın sonucu ise, ürün alanları gösterilmez.
+Bir atma hakkında daha fazla ayrıntı görmek için sayfanın sağ tarafındaki aşağı oku seçin. Bu, mandalı, gelir miktarını ve ürünü gösterir. Bu verilerden herhangi biri kullanılamıyorsa ancak ona erişmeniz gerekiyorsa [desteğe](https://developer.microsoft.com/windows/support)başvurun. Kazanım, bir işlem değil, bir ayarlamanın sonucu ise, ürün alanları gösterilmez.
 
 Bu sayfadaki herhangi bir işlem verisini dışarı aktarmak için **dışarı** Aktar ' ı seçin ve verileri dışarı aktar sayfasında yönergeleri izleyin. Işlem geçmişi sayfasından içe aktarılmış dosyalar, işlem para birimi, hem işlem para birimi, ABD Doları için kazanç, hem de para birimi cinsinden ödenen ödeme değeri gibi verileri gösterir.
 
 ## <a name="payment-status"></a>Ödeme durumu
 
-| Kazanç durumu           | Neden                                                                                                                                      | İş ortağı eylemi gerekli mi?                                   |
-|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
+| Kazanç durumu | Neden | İş ortağı eylemi gerekli mi? |
+| --- | --- | --- |
 | İşlenmemiş              | Kazanç ödeme için uygun. Bu durum, bir soğutma dönemi için, ister program kılavuzunda, ister program kılavuzumuza göre tanımlanan bu durumda kalır. | No                                                         |
 | İlerideki                 | Ödeme işlenmeden önce bekleyen dahili incelemeler için ödeme siparişi oluşturuldu                                                               | No                                                         |
 | Bekleyen vergi faturası      | Vergi faturanızda eksik veya geçersiz                                                                                                  | Ödeme yapabilmeniz için vergi faturanızı güncelleştirmeniz gerekir |
 | İnceleme sırasında reddedildi   | Ödeme, gözden geçirme sırasında reddedildi                                                                                                     | Ayrıntılar için [Microsoft destek](https://developer.microsoft.com/windows/support) 'e başvurun                      |
-| Başarısız                   | Ödeme, bir Microsoft Sistem hatası nedeniyle başarısız oldu                                                                                         | Ayrıntılar için [Microsoft destek](https://developer.microsoft.com/windows/support) 'e başvurun                      |
+| Başarısız                   | Ödeme, bir Microsoft Sistem hatası nedeniyle başarısız oldu                                                                                         | Ayrıntılar için [Microsoft destek](https://developer.microsoft.com/windows/support)  'e başvurun                      |
 | Sürüyor              | Ödeme devam ediyor                                                                                                                 | No                                                         |
 | Yanlış ödeme        | Ödeme kurtarma devam ediyor                                                                                                       | No                                                         |
 | Gönderilen                     | Ödeme, bankanızla gönderilmiştir                                                                                                     | No                                                         |
 | Yeniden işleme             | Ödeme bir Microsoft sistem hatasıyla karşılaştı ve yeniden işleniyor                                                                  | No                                                         |
 | Reversed                 | Ödeme, bankanızla tersine çevrildi ve sonraki ödeme aşamasında yeniden gönderilecek                                                     | No                                                         |
-| Vergi faturası reddedildi     | Vergi faturanızda gözden geçirme sırasında reddedildi. Tüm bekleyen ödemeler, vergi faturası incelemesi tamamlanana kadar beklemeye alınacaktır.                 | Ayrıntılar için [Microsoft destek](https://developer.microsoft.com/windows/support) 'e başvurun                      |
+| Vergi faturası reddedildi     | Vergi faturanızda gözden geçirme sırasında reddedildi. Tüm bekleyen ödemeler, vergi faturası incelemesi tamamlanana kadar beklemeye alınacaktır.                 | Ayrıntılar için [Microsoft destek](https://developer.microsoft.com/windows/support)  'e başvurun                      |
 | Gözden geçirme kapsamında vergi faturası | Vergi faturanızda İnceleme uygulanıyor. Vergi faturası onaylandıktan sonra ödeme serbest bırakılır.                                   | No                                                         |
 | Reddedildi                 | Ödeme, bankanızla reddedildi                                                                                                      | Ayrıntılar için bankanızla görüşün.                             |
 |||
@@ -97,8 +89,8 @@ Filtreniz, **veri kullanılamaz** hatasıyla sonuçlanabilir. Bu, büyük olası
 
 Bu seçenek, belirli bir program, ilişkili vergi ve toplu kazanç miktarı için bankanızla aldığınız ödemeleri karşıdan yüklemeyi sağlar. Bu rapor birçok Iş Ortağı Merkezi programı için kullanılır, bu nedenle bazı sütunlar raporunuz için geçerli olmayabilir. Bu sütunlar aşağıda işaretlenir.
 
-| Sütun adı              | Açıklama                                                                                                                               |
-|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------  |
+| Sütun adı | Description |
+| --- | --- |
 | participantID            | İş ortağının birincil kimliği program altında                                                                             |
 | participantIDType        | Genellikle programları ve mağaza programları için satıcı KIMLIĞINI teşvik etmek için program KIMLIĞI                                                                |
 | participantName          | Kazanç ortağının adı                                                                                                               |
@@ -123,8 +115,8 @@ Bu seçenek, belirli bir program, ilişkili vergi ve toplu kazanç miktarı içi
 
 Bu seçenek, Işlem geçmişi sayfasında gördüğünüz her bir atma satırı öğesinin karşıdan yüklenmesini, tür, tarih, ilişkili işlem miktarı, müşteri, ürün ve diğer işlem ayrıntılarını programlarınıza göre sağlar.
 
-| Sütun adı                    | Açıklama                                                                                                                              | Teşvikleri/Store/Azure Marketi için uygulanabilirlik           |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| Sütun adı | Description | Teşvikleri/Store/Azure Marketi için uygulanabilirlik |
+| --- | --- | --- |
 | Eardokgıd                      | Her bir atma için benzersiz tanımlayıcı                                                                                                       | Tümü                                                            |
 | participantId                  | İş ortağının birincil kimliği program altında                                                                            | Tümü                                                            |
 | participantIdType              | Programları ve satıcı, mağaza programları ve Azure Marketi için genellikle program KIMLIĞI                                          | Tümü                                                            |
@@ -209,8 +201,8 @@ Temmuz 1 2019 ' den önceki işlem geçmişi ayrı olarak işlenir. Deyimler, ge
 > [!NOTE]
 > 3K, 6k veya 12D gibi filtreler **Geçmiş deyimler** bölümüne uygulanmaz.
 
-| Alan adı              | Açıklama                                                                                                                                                             |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Alan adı | Description |
+| --- | --- |
 | Gelir kaynağı          | Microsoft Store, Windows Phone Mağazası, Windows Mağazası 8 veya reklam gibi işlem gerçekleştiği yere göre gelirinin kaynağı                  |
 | Sipariş kimliği                | Benzersiz sipariş tanımlayıcısı. Bu KIMLIK, satın alma veya geri ödeme gibi satın alma işlemleri olmayan işlemlerle Satınalma işlemlerini tanımlamanızı sağlar. Her ikisinin de aynı sıra KIMLIĞI olur. Ayrıca, tek bir satın alma işlemi için birden çok ödeme yönteminin kullanıldığı bölünmüş bir ücret söz konusu olduğunda, satın alma işlemlerini bağlayabilmeniz için izin verir. |
 | İşlem kimliği          | Benzersiz işlem tanımlayıcısı.                                                                                                                                          |

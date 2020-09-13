@@ -16,18 +16,18 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019770"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662492"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Eşitleme Azure AD Connect: Dizin uzantıları
-Azure Active Directory (Azure AD) içindeki şemayı şirket içi Active Directory kendi nitelikleriyle genişletmek için Dizin uzantıları 'nı kullanabilirsiniz. Bu özellik, şirket içinde yönetmeye devam ettiğiniz öznitelikleri kullanıp LOB uygulamaları oluşturmanıza olanak sağlar. Bu öznitelikler, [Uzantılar](https://docs.microsoft.com/graph/extensibility-overview
+Azure Active Directory (Azure AD) içindeki şemayı şirket içi Active Directory kendi nitelikleriyle genişletmek için Dizin uzantıları 'nı kullanabilirsiniz. Bu özellik, şirket içinde yönetmeye devam ettiğiniz öznitelikleri kullanıp LOB uygulamaları oluşturmanıza olanak sağlar. Bu öznitelikler, [Uzantılar](/graph/extensibility-overview
 )aracılığıyla tüketilebilir. Kullanılabilir öznitelikleri [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer)kullanarak görebilirsiniz. Bu özelliği ayrıca, Azure AD 'de dinamik gruplar oluşturmak için de kullanabilirsiniz.
 
-Mevcut olduğunda, Office 365 iş yükü bu öznitelikleri kullanır.
+Mevcut olduğunda, Microsoft 365 iş yükü bu öznitelikleri kullanır.
 
 ## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Azure AD ile hangi özniteliklerin eşitleneceğini özelleştirin
 
@@ -69,11 +69,11 @@ Bu öznitelikler artık Microsoft Graph API ile [Microsoft Graph Explorer](https
 >[!NOTE]
 > Microsoft Graph API 'sinde, özniteliklerin döndürülmesini istemek gerekir. Aşağıdaki öznitelikleri açıkça seçin: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` .
 >
-> Daha fazla bilgi için bkz. [Microsoft Graph: sorgu parametrelerini kullanma](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
+> Daha fazla bilgi için bkz. [Microsoft Graph: sorgu parametrelerini kullanma](/graph/query-parameters#select-parameter).
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>Dinamik gruplardaki öznitelikleri kullanma
 
-Daha kullanışlı senaryolarından biri, bu özniteliklerin dinamik güvenlik veya Office 365 gruplarında kullanılması.
+Daha kullanışlı senaryolarından biri, bu özniteliklerin dinamik güvenlik veya Microsoft 365 gruplarında kullanılması.
 
 1. Azure AD 'de yeni bir grup oluşturun. Buna iyi bir ad verin ve **Üyelik türünün** **Dinamik Kullanıcı**olduğundan emin olun.
 
