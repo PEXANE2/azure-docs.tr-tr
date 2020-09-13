@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: f6e0009a1e1df57298884097cac076ef3a344714
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135836"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612911"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama
 
@@ -217,7 +217,7 @@ Senaryonuz gelen uç noktalar gerektiriyorsa iki seçeneğiniz vardır:
 
 Sanal makine örnekleri aynı alt ağ içindeki birden çok bölgeye dağıtıldığında, NAT ağ geçidi kaynaklarıyla bir bölgesel taahhüdüne ulaşamıyoruz.   Bir alt ağa eklenmiş birden çok sayıda NAT ağ geçidi bulunsa bile, sanal makine örneği hangi NAT ağ geçidi kaynağını seçeceğimizi bilmez.
 
-Bir sanal makine örneği ve bir IP ağ geçidinin bölgeleri hizalanmamış veya b), bir bölgesel NAT ağ geçidi kaynağı, zeli sanal makine örnekleri ile birlikte kullanılır.
+Bir sanal makine örneği ve bir IP 'nin bir NAT ağ geçidinin bölgesi hizalanmamış veya b), bir bölgesel NAT ağ geçidi kaynağı, zeli sanal makine örnekleri ile birlikte kullanılır.
 
 Senaryo çalışır durumda gözükirken, sistem durumu modeli ve hata modu, bir kullanılabilirlik bölgesi bakış noktasından tanımlanmamıştır. Bunun yerine bölgesel yığınları veya tüm bölge ile çalışmaya devam edin.
 
@@ -237,7 +237,7 @@ Her NAT ağ geçidi, atanan giden IP adresi başına 64.000 bağlantıyı destek
 
 Kaynak ağ adresi çevirisi (SNAT), bir akışın kaynağını farklı bir IP adresinden kaynaklanan bir şekilde yeniden yazar.  NAT ağ geçidi kaynakları, bağlantı noktası adresi çevirisi (PAT) ile yaygın olarak anılan bir, SNAT değişkenini kullanır. PAT kaynak adresi ve kaynak bağlantı noktasını yeniden yazar. SNAT ile, özel adres sayısı ve bunların çevrilmiş ortak adresleri arasında sabit bir ilişki yoktur.  
 
-### <a name="fundamentals"></a>Temeller
+### <a name="fundamentals"></a>Temel Bilgiler
 
 Temel kavramı açıklamak için dört akışla bir örneğe bakalım.  NAT ağ geçidi, genel IP adresi kaynağı 65.52.0.2 kullanıyor.
 

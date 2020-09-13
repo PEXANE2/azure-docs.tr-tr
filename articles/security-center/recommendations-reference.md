@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8a0ead681c8b6cfbfbf820b546f1bcb320871c70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c3351931013fb9b4d4de25d12e358fbe27f05472
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587370"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613509"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri-bir başvuru kılavuzu
 
@@ -57,7 +57,6 @@ Güvenli puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısı
 |----|----|----|----|----|
 |**Gelişmiş tehdit koruması, Azure Kubernetes hizmet kümelerinde etkinleştirilmelidir**|Güvenlik Merkezi, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit koruması sağlar ve şüpheli etkinlikler için uyarı oluşturur. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.<br>Önemli: Bu önerinin yapılması, AKS kümelerinizi korumaya yönelik ücretlere neden olur. Bu abonelikte AKS kümeniz yoksa, hiçbir ücret alınmaz. Gelecekte bu abonelikte herhangi bir AKS kümesi oluşturursanız, bunlar otomatik olarak korunur ve ücretler bu anda başlayacaktır.<br>(İlgili ilke: [Gelişmiş tehdit koruması 'Nın Azure Kubernetes hizmet kümelerinde etkinleştirilmesi gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a))|Yüksek|**E**|Abonelik|
 |**Yetkili IP aralıkları, Kubernetes hizmetlerinde tanımlanmalıdır**|Yalnızca belirli aralıklardaki IP adreslerine API erişimi vererek Kubernetes hizmet yönetimi API 'sine erişimi kısıtlayın. Yetkilendirilmiş IP aralıklarının yalnızca izin verilen ağlardan gelen uygulamaların kümeye erişebilmesi için yapılandırılması önerilir.<br>(İlgili ilke: [Önizleme]: yetkili IP aralıkları Kubernetes hizmetlerinde tanımlanmalıdır)|Yüksek|H|İşlem kaynakları (kapsayıcılar)|
-|**Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlanmalıdır (Önizleme)**|Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlayın. Yalnızca erişim izni verilen kaynaklara erişebilmeleri için pod güvenlik ilkelerinin yapılandırılması önerilir.<br>(İlgili ilke: [Önizleme]: Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır)|Orta|N|İşlem kaynakları (kapsayıcılar)|
 |**Bir Kubernetes hizmet kümesine erişimi kısıtlamak için rol tabanlı Access Control kullanılmalıdır**|Kullanıcıların gerçekleştirebileceği eylemlerin ayrıntılı filtrelemesini sağlamak için, Kubernetes hizmet kümelerindeki izinleri yönetmek ve ilgili yetkilendirme ilkelerini yapılandırmak üzere rol tabanlı Access Control (RBAC) kullanın. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac).<br>(İlgili ilke: [Önizleme]: rol tabanlı Access Control (RBAC) Kubernetes hizmetlerinde kullanılmalıdır)|Orta|N|İşlem kaynakları (kapsayıcılar)|
 |**Kubernetes hizmeti en son Kubernetes sürümüne yükseltilmelidir**|Güncel güvenlik açığı düzeltme eklerinden faydalanmak için Azure Kubernetes hizmet kümelerini en son Kubernetes sürümüne yükseltin. Belirli Kubernetes güvenlik açıklarına ilişkin ayrıntılar için bkz. [Kubernetes cika](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes).<br>(İlgili ilke: [Önizleme]: Kubernetes Hizmetleri, güvenlik açığı olmayan bir Kubernetes sürümüne yükseltilmelidir)|Yüksek|H|İşlem kaynakları (kapsayıcılar)|
 |**Gelişmiş tehdit koruması Azure Container Registry kayıt defterlerinde etkinleştirilmelidir**|Güvenli Kapsayıcılı iş yükleri oluşturmak için, temel aldıkları görüntülerin bilinen güvenlik açıklarına açık olmadığından emin olun. Güvenlik Merkezi, gönderilen her kapsayıcı görüntüsündeki güvenlik açıklarına karşı kayıt defterinizi tarar ve görüntü başına ayrıntılı bulguları gösterir.<br>Önemli: bu öneriyi gidermek, ACR kayıt defterlerinden koruma ücretlerine neden olur. Bu abonelikte ACR kayıt defterleri yoksa, hiçbir ücret alınmaz. Gelecekte bu abonelikte herhangi bir ACR kayıt defterleri oluşturursanız, bunlar otomatik olarak korunur ve ücretler bu anda başlayacaktır.<br>(İlgili ilke: [Gelişmiş tehdit koruması Azure Container Registry kayıt defterlerinde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4))|Yüksek|**E**|Abonelik|
@@ -191,7 +190,9 @@ Güvenli puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısı
 |----|----|----|----|----|
 |**Uygulama Hizmetleri 'ne erişim kısıtlı olmalıdır**|Ağ yapılandırmasını değiştirerek, çok geniş aralıklardan gelen trafiği reddedecek şekilde uygulama hizmetlerinize erişimi kısıtlayın.<br>(İlgili ilke: [Önizleme]: uygulama hizmetlerine erişim kısıtlı olmalıdır)|Yüksek|H|App service|
 |**IaaS NSG 'lerdeki Web uygulamalarına yönelik kurallar sağlamlaştırılmış olmalıdır**|Web uygulamaları çalıştıran sanal makinelerinizin ağ güvenlik grubu (NSG), Web uygulaması bağlantı noktalarıyla ilgili aşırı izin veren NSG kuralları ile Harden.<br>(İlgili ilke: IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır)|Yüksek|H|Sanal makine|
-
+|**Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlanmalıdır (Önizleme)**|Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlayın. Yalnızca erişim izni verilen kaynaklara erişebilmeleri için pod güvenlik ilkelerinin yapılandırılması önerilir.<br>(İlgili ilke: [Önizleme]: Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır)|Orta|N|İşlem kaynakları (kapsayıcılar)|
+|**IoT cihazlarınıza daha fazla görünürlük sağlamak için IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni yükler**|IoT cihazlarınıza daha fazla görünürlük sağlamak için IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni yükler.|Düşük|N|IoT cihazı|
+||||
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b800272a538243d39a89e4eed64bc5cbc2d53ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eea43f48abef5e2b258251d46eca1061a2263519
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681772"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613846"
 ---
 # <a name="meshes"></a>Ağ yapıları
 
@@ -37,6 +37,13 @@ Kafesler yalnızca [model dönüştürme](../how-tos/conversion/model-conversion
 * **Malzemeler:** Kafes bileşeninin kendisinde belirtilen malzeme dizisi. Dizi, her zaman kafes kaynağındaki *malzemeler* dizisiyle aynı uzunluğa sahip olacaktır. Bu dizide varsayılan olarak geçersiz kılınamayan malzemeler, bu dizide *null* olarak ayarlanır.
 
 * **Usedmalzemeleri:** Her alt ağ için gerçekten kullanılan malzemeler dizisi. Null olmayan değerler için, *malzemeler* dizisindeki verilerle aynı olacaktır. Aksi takdirde, kafes örneğindeki *malzemeler* dizisinden değeri içerir.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# kafes sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.mesh)
+* [C# MeshComponent sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.meshcomponent)
+* [C++ kafes sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/mesh)
+* [C++ MeshComponent sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/meshcomponent)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

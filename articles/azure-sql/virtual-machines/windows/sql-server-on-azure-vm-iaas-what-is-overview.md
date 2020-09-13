@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4bf5b9b6f683783a39b7d34c430f1c6671c35885
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 541f3e5ada69568506969f6406564a8ff59c0ba6
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236378"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613219"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure sanal makinelerinde SQL Server nedir (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,6 +30,9 @@ ms.locfileid: "88236378"
 [Azure sanal makinelerinde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) , şirket içi donanımları yönetmek zorunda kalmadan bulutta SQL Server tam sürümlerini kullanmanıza olanak sağlar. SQL Server sanal makineler (VM 'Ler), Kullandıkça Öde sırasında lisans maliyetlerini de basitleştirir.
 
 Azure sanal makineleri dünyanın birçok farklı [coğrafi bölgesinde](https://azure.microsoft.com/regions/) çalışır. Bu makineler, ayrıca çeşitli [makine boyutları](../../../virtual-machines/windows/sizes.md) sunar. Sanal makine resim galerisi, doğru sürüm ve işletim sistemiyle bir SQL Server VM’i oluşturmanızı sağlar. Bu, sanal makinelere birçok farklı SQL Server iş yükü için iyi bir seçenek sunar.
+
+Azure VM 'lerinde SQL Server yeni başladıysanız, derinlemesine Azure [SQL video serimizin](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) *Azure VM 'sine genel bakış videosunu SQL Server* inceleyin:
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="automated-updates"></a>Otomatik güncelleştirmeler
 

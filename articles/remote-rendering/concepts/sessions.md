@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74fae6a8aa0c59043db0ab816e09b16affb63580
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2e7f441a727bea8d1a5d401fb5e9757dee1044fc
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021842"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613806"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering Oturumları
 
@@ -31,7 +31,7 @@ Etkin bir oturuma *bağlandıktan* sonra, [model yükleme](models.md) ve sahne i
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Birden çok oturumu eşzamanlı olarak yönetme
 
-Bir cihazdan birden çok oturuma tam olarak *bağlanmak* mümkün değildir. Ancak, tek bir uygulamadan istediğiniz sayıda oturum oluşturabilir, gözlemleyebilirsiniz ve kapatabilirsiniz. Uygulamanın bir oturuma hiçbir zaman bağlanmadığından, her iki durumda da HoloLens 2 gibi bir cihazda çalışması gerekmez. Bu tür bir uygulama için kullanım örneği, bir merkezi mekanizmasıyla oturumları denetlemek istediğinizde olabilir. Örneğin, bir tane birden çok tablette ve Holomerses 'in oturum açabilbileceği bir Web uygulaması oluşturabilir. Daha sonra uygulama, tabletlerdeki, hangi CAD modelinin görüntüleneceği gibi seçenekleri görüntüleyebilir. Bir Kullanıcı bir seçim yaptığında, bu bilgiler paylaşılan bir deneyim oluşturmak için tüm Holomercekler 'e iletilir.
+Bir cihazdan birden çok oturuma tam olarak *bağlanmak* mümkün değildir. Ancak, tek bir uygulamadan istediğiniz sayıda oturum oluşturabilir, gözlemleyebilirsiniz ve kapatabilirsiniz. Uygulamanın bir oturuma hiçbir zaman bağlanmadığından, her iki durumda da HoloLens 2 gibi bir cihazda çalışması gerekmez. Bu tür bir uygulama için kullanım örneği, bir merkezi mekanizmasıyla oturumları denetlemek istediğinizde olabilir. Örneğin, birisi birden çok tablette ve HoloLens cihazlarının oturum açabilbileceği bir Web uygulaması oluşturabilir. Daha sonra uygulama, tabletlerdeki, hangi CAD modelinin görüntüleneceği gibi seçenekleri görüntüleyebilir. Bir Kullanıcı bir seçim yaptığında, bu bilgiler paylaşılan bir deneyim oluşturmak için tüm HoloLens cihazlarına iletilir.
 
 ## <a name="session-phases"></a>Oturum aşamaları
 
@@ -146,6 +146,15 @@ Bir sanal makinenin ömrü `AzureFrontend` örneğe veya örneğe bağlı değil
 Kalıcı oturum KIMLIĞI ile `AzureSession.SessionUUID()` yerel olarak sorgulanabilir ve yerel olarak önbelleğe alınabilir. Bu KIMLIKLE, bir uygulama bu `AzureFrontend.OpenSession` oturuma bağlamak için çağrı yapabilir.
 
 True olduğunda, `AzureSession.IsConnected` `AzureSession.Actions` `RemoteManager` [model yükleme](models.md), [varlıkları](entities.md)işleme ve işlenmiş sahneye ilişkin [sorgu bilgilerini](../overview/features/spatial-queries.md) içeren öğesinin bir örneğini döndürür.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# AzureSession sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azuresession)
+* [C# AzureFrontend. CreateNewRenderingSessionAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
+* [C# AzureFrontend. OpenRenderingSession ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
+* [C++ AzureSession sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/azuresession)
+* [C++ AzureFrontend:: CreateNewRenderingSessionAsync](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
+* [C++ AzureFrontend:: OpenRenderingSession](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

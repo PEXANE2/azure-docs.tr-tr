@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 62c4813caa1d35f20824223c77fb3a652b0cc6b8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/09/2020
+ms.openlocfilehash: 06c09144fc112d6f095271c510fa33b816e8f906
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182590"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612645"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Data Lake Storage 2. verileri kopyalama ve dönüştürme
 
@@ -50,7 +50,7 @@ Kopyalama etkinliği için, bu bağlayıcıyla şunları yapabilirsiniz:
 >Azure Storage güvenlik duvarı ayarlarında **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver** seçeneğini etkinleştirip Data Lake Storage 2. bağlanmak için Azure tümleştirme çalışma zamanını kullanmak istiyorsanız, ADLS 2. için [yönetilen kimlik kimlik doğrulamasını](#managed-identity) kullanmanız gerekir.
 
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 >[!TIP]
 >Data Lake Storage 2. bağlayıcısını nasıl kullanacağınızı öğrenmek için bkz. [Azure Data Lake Storage 2. verileri yükleme](load-azure-data-lake-storage-gen2.md).
@@ -68,7 +68,7 @@ Azure Data Lake Storage 2. Bağlayıcısı aşağıdaki kimlik doğrulama türle
 - [Azure kaynakları kimlik doğrulaması için Yönetilen kimlikler](#managed-identity)
 
 >[!NOTE]
->SQL veri ambarı 'na veri yüklemek için PolyBase kullanılırken, kaynak Data Lake Storage 2. sanal ağ uç noktası ile yapılandırıldıysa, PolyBase için gereken yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. Daha fazla yapılandırma önkoşulları ile [yönetilen kimlik doğrulama](#managed-identity) bölümüne bakın.
+>Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri yüklemek için PolyBase kullanılırken, kaynak Data Lake Storage 2. sanal ağ uç noktası ile yapılandırıldıysa, PolyBase için gereken yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. Daha fazla yapılandırma önkoşulları ile [yönetilen kimlik doğrulama](#managed-identity) bölümüne bakın.
 
 ### <a name="account-key-authentication"></a>Hesap anahtarı kimlik doğrulaması
 
@@ -131,12 +131,16 @@ Bu özellikler bağlı hizmet için desteklenir:
 | tür | Type özelliği **AzureBlobFS**olarak ayarlanmalıdır. |Yes |
 | url | Düzenine sahip Data Lake Storage 2. için uç nokta `https://<accountname>.dfs.core.windows.net` . | Yes |
 | Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Yes |
-| Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı bir olarak işaretleyin `SecureString` . Veya [Azure Key Vault depolanan bir gizli](store-credentials-in-key-vault.md)dizi ile başvurabilirsiniz. | Yes |
+| servicePrincipalCredentialType | Hizmet sorumlusu kimlik doğrulaması için kullanılacak kimlik bilgisi türü. İzin verilen değerler **Servicesprincipalkey** ve **serviceprincipalcert**' dir. | Yes |
+| servicePrincipalCredential | Hizmet sorumlusu kimlik bilgileri. <br/> Kimlik bilgisi türü olarak **Serviceprincipalkey** kullandığınızda, uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. <br/> Kimlik bilgisi olarak **Serviceprincipalcert** kullandığınızda Azure Key Vault bir sertifikaya başvurun. | Yes |
+| Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. <br/> Bu özellik için olduğu gibi hala desteklenir `servicePrincipalId`  +  `servicePrincipalKey` . ADF yeni hizmet sorumlusu sertifikası kimlik doğrulaması eklediğinden, hizmet sorumlusu kimlik doğrulaması için yeni model `servicePrincipalId`  +  `servicePrincipalCredentialType`  +  `servicePrincipalCredential` . | No |
 | Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alın. | Yes |
 | Azurecses türü | Hizmet sorumlusu kimlik doğrulaması için Azure Active Directory uygulamanızın kaydedildiği Azure bulut ortamının türünü belirtin. <br/> İzin verilen değerler **Azucumhuriyeti**, **AzureChina**, **AzureUsGovernment**ve **AzureGermany**. Varsayılan olarak, Data Factory 'nin bulut ortamı kullanılır. | No |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Veri depolubir özel ağda ise Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |No |
 
-**Örnek:**
+**Örnek: hizmet sorumlusu anahtar kimlik doğrulamasını kullanma**
+
+Ayrıca, hizmet sorumlusu anahtarını Azure Key Vault de saklayabilirsiniz.
 
 ```json
 {
@@ -146,9 +150,38 @@ Bu özellikler bağlı hizmet için desteklenir:
         "typeProperties": {
             "url": "https://<accountname>.dfs.core.windows.net", 
             "servicePrincipalId": "<service principal id>",
-            "servicePrincipalKey": {
+            "servicePrincipalCredentialType": "ServicePrincipalKey",
+            "servicePrincipalCredential": {
                 "type": "SecureString",
                 "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Örnek: hizmet sorumlusu sertifika kimlik doğrulamasını kullanma**
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalCert",
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
             },
             "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
         },
@@ -177,7 +210,7 @@ Azure Kaynak kimlik doğrulaması için yönetilen kimlikleri kullanmak için a�
 >Yazmak için Data Factory UI kullanırsanız ve yönetilen kimlik, ıAM 'de "Depolama Blobu veri okuyucusu/katkıda bulunan" rolü ile ayarlanmamışsa, test bağlantısı veya tarama/gezinme sırasında "dosya yoluna Bağlantıyı Sına" veya "belirtilen yoldan göz at" seçeneğini belirleyin ve devam etmek için **okuma + yürütme** iznine sahip bir yol belirtin.
 
 >[!IMPORTANT]
->Data Lake Storage 2. verileri SQL veri ambarı 'na yüklemek için PolyBase kullanıyorsanız, Data Lake Storage 2. için yönetilen kimlik kimlik doğrulamasını kullanırken, bu kılavuzdaki 1 ve 2. adımları, Azure Active Directory [Bu](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) kılavuzdaki 1. ve 2. adımları (Azure AD) ve 2), sunucunuza Depolama Blobu veri katılımcısı rolünü atayın Rest Data Factory tarafından işlenir. Data Lake Storage 2. Azure sanal ağ uç noktası ile yapılandırıldıysa, verileri dosyadan yüklemek için PolyBase kullanmak istiyorsanız, PolyBase 'in gerektirdiği şekilde yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir.
+>Data Lake Storage 2. verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) yüklemek için PolyBase kullanırsanız, Data Lake Storage 2. için yönetilen kimlik kimlik doğrulaması kullanılırken, Azure Active Directory [Bu](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) kılavuzdaki 1. ve 2. adımları izlediğinizden emin olun. (Azure AD) ve 2) Depolama Blobu veri katılımcısı rolünü sunucunuza atayın; Rest Data Factory tarafından işlenir. Data Lake Storage 2. Azure sanal ağ uç noktası ile yapılandırıldıysa, verileri dosyadan yüklemek için PolyBase kullanmak istiyorsanız, PolyBase 'in gerektirdiği şekilde yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir.
 
 Bu özellikler bağlı hizmet için desteklenir:
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: dadfd3abfad0c588f53d47cb7ab1eb138d4f90ac
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869227"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612508"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure 'da isteğe bağlı Red Hat Enterprise Linux VM 'Ler için Red Hat güncelleştirme altyapısı
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (rhuı), Azure gibi bulut sağlayıcılarının Red Hat ile barındırılan depo içeriğini yansıtmasını, Azure 'a özgü içerikle özel depolar oluşturmasını ve Son Kullanıcı VM 'leri için kullanılabilir olmasını sağlar.
@@ -89,11 +89,11 @@ Bu yazma sırasında, RHEL <= 7,4 için EUS desteği sona ermiştir. Daha fazla 
 * RHEL 7,6 EUS desteği 31 Mayıs 2021 ' de bitiyor
 * RHEL 7,7 EUS desteği 30 Ağustos 2021 ' de bitiyor
 
-### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL VM 'yi EUS 'ye değiştirme (belirli bir alt sürüme yönelik sürüm kilidi)
-Bir RHEL VM 'yi belirli bir alt sürüme (farklı çalıştır kökü) kilitlemek için aşağıdaki yönergeleri kullanın:
+### <a name="switch-a-rhel-vm-7x-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL VM 7. x ' i EUS 'ye (sürüm-kilit, belirli bir alt sürüme) değiştirme
+Bir RHEL 7. x VM 'yi belirli bir alt sürüme (farklı çalıştır root) kilitlemek için aşağıdaki yönergeleri kullanın:
 
 >[!NOTE]
-> Bu yalnızca EUS 'nin kullanılabildiği RHEL sürümleri için geçerlidir. Bu yazma sırasında, RHEL 7.2-7.7 içerir. Daha fazla ayrıntı [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
+> Bu yalnızca EUS 'nin kullanılabildiği RHEL 7. x sürümleri için geçerlidir. Bu yazma sırasında, RHEL 7.2-7.7 içerir. Daha fazla ayrıntı [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
 
 1. EUS dışı depoları devre dışı bırak:
     ```bash
@@ -111,14 +111,52 @@ Bir RHEL VM 'yi belirli bir alt sürüme (farklı çalıştır kökü) kilitleme
     ```
 
     >[!NOTE]
-    > Yukarıdaki yönerge, RHEL ikincil sürümünü geçerli küçük sürüme kilitler. Yükseltmek ve en son olmayan sonraki bir alt sürüme kilitlemek istiyorsanız, belirli bir ikincil sürüm girin. Örneğin, `echo 7.5 > /etc/yum/vars/releasever` RHEL sürümünüzü rhel 7,5 olarak kilitleyecek
+    > Yukarıdaki yönerge, RHEL ikincil sürümünü geçerli küçük sürüme kilitler. Yükseltmek ve en son olmayan sonraki bir alt sürüme kilitlemek istiyorsanız, belirli bir ikincil sürüm girin. Örneğin, `echo 7.5 > /etc/yum/vars/releasever` RHEL sürümünüzü rhel 7,5 olarak kilitleyecek.
 
 1. RHEL VM 'nizi güncelleştirme
     ```bash
     sudo yum update
     ```
 
-### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL VM 'yi EUS olmayan bir değere değiştirme (sürüm kilidini kaldırma)
+### <a name="switch-a-rhel-vm-8x-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL VM 8. x ' i EUS 'ye (sürüm-kilit, belirli bir alt sürüme) değiştirme
+Bir RHEL 8. x sanal makinesini belirli bir alt sürüme (farklı çalıştır root) kilitlemek için aşağıdaki yönergeleri kullanın:
+
+>[!NOTE]
+> Bu yalnızca EUS 'nin kullanılabildiği RHEL 8. x sürümleri için geçerlidir. Bu yazma sırasında, RHEL 8.1-8.2 ' i içerir. Daha fazla ayrıntı [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
+
+1. EUS dışı depoları devre dışı bırak:
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8'
+    ```
+
+1. EUS depoları yapılandırma dosyasını alın:
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8-eus.config
+    ```
+
+1. EUS depoları ekleyin:
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8-eus.config install rhui-azure-rhel8-eus
+    ```
+
+1. Değişkeni kilitle `releasever` (farklı çalıştır kökü):
+    ```bash
+    echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
+    ```
+
+    >[!NOTE]
+    > Yukarıdaki yönerge, RHEL ikincil sürümünü geçerli küçük sürüme kilitler. Yükseltmek ve en son olmayan sonraki bir alt sürüme kilitlemek istiyorsanız, belirli bir ikincil sürüm girin. Örneğin, `echo 8.1 > /etc/yum/vars/releasever` RHEL sürümünüzü rhel 8,1 olarak kilitleyecek.
+
+    >[!NOTE]
+    > Releasever 'e erişim için izin sorunları varsa, ' nano/etc/yum/VARS/releaseve ' kullanarak dosyayı düzenleyebilir ve görüntü sürümü ayrıntılarını ekleyip kaydedebilirsiniz (' Ctrl + o ') ve ardından ENTER tuşuna basabilir ve ardından ' Ctrl + x ').  
+
+1. RHEL VM 'nizi güncelleştirme
+    ```bash
+    sudo yum update
+    ```
+
+
+### <a name="switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL 7. x VM 'sini EUS olmayan bir değere değiştirme (sürüm kilidini kaldırma)
 Aşağıdakileri kök olarak çalıştırın:
 1. Dosyayı kaldır `releasever` :
     ```bash
@@ -135,6 +173,33 @@ Aşağıdakileri kök olarak çalıştırın:
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
     ```
 
+1. RHEL VM 'nizi güncelleştirme
+    ```bash
+    sudo yum update
+    ```
+
+### <a name="switch-a-rhel-8x-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL 8. x VM 'sini EUS olmayan bir değere değiştirme (sürüm kilidini kaldırma)
+Aşağıdakileri kök olarak çalıştırın:
+1. Dosyayı kaldır `releasever` :
+    ```bash
+    rm /etc/yum/vars/releasever
+     ```
+
+1. EUS depoları devre dışı bırak:
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8-eus'
+   ```
+
+1. Düzenli depoları yapılandırma dosyasını al:
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8.config
+    ```
+
+1. EUS depoları ekleyin:
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8.config install rhui-azure-rhel8
+    ```
+    
 1. RHEL VM 'nizi güncelleştirme
     ```bash
     sudo yum update

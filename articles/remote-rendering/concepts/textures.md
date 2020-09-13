@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20c2951b601690beb9ec64040cf650bb5208d0e4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dc38b53705c24cb12a001237a9a80ec66ec33e14
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997719"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613794"
 ---
 # <a name="textures"></a>Dokular
 
@@ -82,11 +82,19 @@ void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
 }
 ```
 
-
 Dokuya yönelik olarak kullanılması beklenen değere bağlı olarak, doku türü ve içeriği için kısıtlamalar olabilir. Örneğin, bir [PBR malzemelerinin](../overview/features/pbr-materials.md) kablık eşlemesi gri tonlamalı olmalıdır.
 
 > [!CAUTION]
 > ARR 'deki tüm *zaman uyumsuz* işlevler zaman uyumsuz işlem nesneleri döndürüyor. İşlem tamamlanana kadar bu nesnelere bir başvuru depolamanız gerekir. Aksi halde, C# çöp toplayıcı işlemi erken silebilir ve hiçbir şekilde bitmeyebilir. ' _TextureLoad ' üye değişkeninin yukarıdaki örnek kodda, *Tamamlanan* olay gelene kadar bir başvuruyu tutmak için kullanılır.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# doku sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.texture)
+* [C# RemoteManager. LoadTextureAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
+* [C# RemoteManager. LoadTextureFromSASAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
+* [C++ doku sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/texture)
+* [C++ RemoteManager:: LoadTextureAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtextureasync)
+* [C++ RemoteManager:: LoadTextureFromSASAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

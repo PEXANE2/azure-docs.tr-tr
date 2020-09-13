@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 42470df5391a976e8023467758d2a3fd0890883e
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d9939b706eb63e5681ddef438cde92f32786f889
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041485"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612837"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure sanal makine aracısına genel bakış
 Microsoft Azure sanal makine Aracısı (VM Aracısı), Azure yapı denetleyicisi ile sanal makine (VM) etkileşimini yöneten güvenli ve hafif bir işlemdir. VM aracısının Azure sanal makine uzantıları 'nı etkinleştirmek ve yürütmek için birincil bir rolü vardır. VM uzantıları, yazılım yükleme ve yapılandırma gibi VM 'nin dağıtım sonrası yapılandırmasını etkinleştirir. VM uzantıları, bir VM 'nin yönetici parolasını sıfırlama gibi kurtarma özelliklerini de etkinleştirir. Azure VM Aracısı olmadan VM uzantıları çalıştırılamaz.
@@ -68,9 +68,9 @@ $vm.OSProfile.AllowExtensionOperations = $true
 $vm | Update-AzVM
 ```
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-- Windows VM aracısının, .NET Framework 4,0 ile en az Windows Server 2008 (64-bit) çalıştırması gerekir. Bkz. [Azure 'da sanal makine aracıları Için en düşük sürüm desteği](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- Windows VM aracısının, .NET Framework 4,0 ile en az Windows Server 2008 SP2 (64-bit) çalıştırması gerekir. Bkz. [Azure 'da sanal makine aracıları Için en düşük sürüm desteği](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
 - VM 'nizin 168.63.129.16 IP adresine erişimi olduğundan emin olun. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 1109dae90790c9667b3c60afb6416c20061a95fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daf4c4ab56e23a212256c2629b7d0ae52a09e7c4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808101"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595719"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway ile App Service yapılandırma
 
@@ -23,10 +23,8 @@ Application Gateway, istek `Pick host name from backend address` Application Gat
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
->
-> - Bir arka uç havuzu oluşturun ve buna bir App Service ekleyin
-> - "Seçme ana bilgisayar adı" anahtarları etkinken HTTP ayarları ve özel araştırma oluşturma
+- Bir arka uç havuzu oluşturun ve buna bir App Service ekleyin
+- "Seçme ana bilgisayar adı" anahtarları etkinken HTTP ayarları ve özel araştırma oluşturma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -61,9 +59,9 @@ Bu makalede şunları öğreneceksiniz:
    > [!NOTE]
    > HTTPS ' yi seçerseniz, App Service güvenilen bir Azure hizmeti olduğundan, App Service arka ucuna izin vermek için herhangi bir kimlik doğrulama sertifikası veya güvenilen kök sertifikası yüklemeniz gerekmez.
 
-4. **App Service Için kullanım** kutusunu işaretleyin. Anahtarların `Create a probe with pick host name from backend address` ve `Pick host name from backend address` otomatik olarak etkinleştirildiğini unutmayın.`Pick host name from backend address` istek Application Gateway arka uca yönlendirildiğini, istekteki konak üstbilgisini arka ucun ana bilgisayar adıyla geçersiz kılar.  
+4. **App Service Için kullanım** kutusunu işaretleyin. Anahtarların  `Create a probe with pick host name from backend address` ve `Pick host name from backend address` otomatik olarak etkinleştirildiğini unutmayın.`Pick host name from backend address` istek Application Gateway arka uca yönlendirildiğini, istekteki konak üstbilgisini arka ucun ana bilgisayar adıyla geçersiz kılar.  
 
-   `Create a probe with pick host name from backend address`otomatik olarak bir durum araştırması oluşturur ve bu HTTP ayarıyla ilişkilendirir. Bu HTTP ayarı için başka bir sistem durumu araştırması oluşturmanız gerekmez. Bu ada sahip yeni bir araştırmanın <HTTP Setting name> <Unique GUID> sistem durumu araştırmaları listesine eklendiğini ve bu anahtarın zaten anahtara sahip olduğunu kontrol edebilirsiniz `Pick host name from backend http settings enabled` .
+   `Create a probe with pick host name from backend address` otomatik olarak bir durum araştırması oluşturur ve bu HTTP ayarıyla ilişkilendirir. Bu HTTP ayarı için başka bir sistem durumu araştırması oluşturmanız gerekmez. Bu ada sahip yeni bir araştırmanın <HTTP Setting name> <Unique GUID> sistem durumu araştırmaları listesine eklendiğini ve bu anahtarın zaten anahtara sahip olduğunu kontrol edebilirsiniz `Pick host name from backend http settings enabled` .
 
    App Service için kullanılmakta olan bir veya daha fazla HTTP ayarı zaten varsa ve bu HTTP ayarları, oluşturmakta olduğunuz bir protokol ile aynı protokolü kullanıyorsa, `Create a probe with pick host name from backend address` anahtar yerine, özel araştırmaların birini seçmek için bir açılır liste alırsınız. Bunun nedeni, App Service ile bir HTTP ayarı zaten var olduğundan, bu nedenle anahtara sahip bir sistem durumu araştırması de var `Pick host name from backend http settings enabled` . Açılan listeden özel araştırmayı seçin.
 

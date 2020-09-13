@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 17dcaee4f9cd4d889e585394362695ab31f0d012
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079743"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595793"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetme
 
@@ -47,9 +47,9 @@ Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabili
 
 Kurumsal Güvenlik Paketi (önceki adı HDInsight Premium), kümeye çok kullanıcılı erişim sağlar ve bu kimlik doğrulaması, Apache Ranger ve depolama ACL 'Leri (ADLS ACL 'Ler) tarafından Active Directory ve yetkilendirmeyle yapılır. Yetkilendirme, birden çok kullanıcı arasında güvenli sınırlar sağlar ve yalnızca ayrıcalıklı kullanıcıların yetkilendirme ilkelerine göre verilere erişmesine izin verir.
 
-Güvenlik ve Kullanıcı yalıtımı, Kurumsal Güvenlik Paketi bir HDInsight kümesi için önemlidir. Bu gereksinimleri karşılamak için Kurumsal Güvenlik Paketi ile kümeye SSH erişimi engellenir. Aşağıdaki tabloda her küme türü için önerilen erişim yöntemleri gösterilmektedir:
+Güvenlik ve Kullanıcı yalıtımı, Kurumsal Güvenlik Paketi bir HDInsight kümesi için önemlidir. Bu gereksinimleri karşılamak için, küme oluşturma sırasında seçilen yerel kullanıcının yanı sıra AAD-DS ' d e (Kerberos) bulunan kullanıcılar için Kurumsal Güvenlik Paketi ile SSH erişimi desteklenir. Aşağıdaki tabloda her küme türü için önerilen erişim yöntemleri gösterilmektedir:
 
-|İş yükü|Senaryo|Erişim yöntemi|
+|İş Yükü|Senaryo|Erişim yöntemi|
 |--------|--------|-------------|
 |Apache Hadoop|Hive – etkileşimli Işler/sorgular  |<ul><li>[Beeline](#beeline)</li><li>[Hive Görünümü](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Araçları](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|Etkileşimli Işler/sorgular, PySpark etkileşimli|<ul><li>[Beeline](#beeline)</li><li>[Livy ile Zeppelin](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive Görünümü](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Araçları](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
