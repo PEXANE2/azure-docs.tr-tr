@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 7acfd5e1a1b1c44a9a109bb2b8bc38c7fcc57593
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484876"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032393"
 ---
 # <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleme
 
@@ -45,7 +45,7 @@ Aşağıdaki tabloda, Microsoft AppSource ve Azure Marketi 'nde teklif türleri 
 
 Microsoft AppSource SaaS uygulaması Transact tekliflerinin &#42; Şu anda yalnızca kredi kartınlardır.
 
-&#42;&#42; Microsoft 365 teklifleri yüklenmeye ücretsizdir ve bir lisans hizmeti olarak SaaS teklifi aracılığıyla oluşturulabilir. Daha fazla bilgi için bkz. [Microsoft Commercial Market aracılığıyla Office 365 eklentilerinizi Moneleştirme](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+&#42;&#42; Microsoft 365 teklifleri yüklenmeye ücretsizdir ve bir lisans hizmeti olarak SaaS teklifi aracılığıyla oluşturulabilir. Daha fazla bilgi için bkz. [Microsoft Commercial Market aracılığıyla Microsoft 365 eklentilerinizi Moneleştirme](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ## <a name="choose-a-listing-option"></a>Listeleme seçeneği seçin
 

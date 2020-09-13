@@ -1,17 +1,17 @@
 ---
-title: Azure Izleyici 'de günlük sorgu kapsamı Log Analytics | Microsoft Docs
+title: Azure Izleyici 'de günlük sorgu kapsamı Log Analytics
 description: Azure Izleyici Log Analytics bir günlük sorgusunun kapsamını ve zaman aralığını açıklar.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/01/2020
-ms.openlocfilehash: 2840e5b8ff16d44f76aaafcf68264c65e4401ff7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/09/2020
+ms.openlocfilehash: 2036505dea134a59e7dc0c75a030175b15dac0b5
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83199021"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031951"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics
 [Azure portal Log Analytics](get-started-portal.md)bir [günlük sorgusu](log-query-overview.md) çalıştırdığınızda, sorgu tarafından değerlendirilen veri kümesi, seçtiğiniz kapsama ve zaman aralığına bağlıdır. Bu makalede kapsam ve zaman aralığı ve gereksinimlerinize bağlı olarak her bir şekilde nasıl ayarlayabileceğiniz açıklanır. Ayrıca, farklı kapsam türlerinin davranışlarını açıklar.
@@ -22,20 +22,20 @@ Sorgu kapsamı sorgu tarafından değerlendirilen kayıtları tanımlar. Bu, gen
 
 Kapsam her zaman Log Analytics penceresinin sol üst kısmında görüntülenir. Bir simge, kapsamın bir Log Analytics çalışma alanı mı yoksa Application Insights uygulaması mı olduğunu gösterir. Hiçbir simge başka bir Azure kaynağını gösterir.
 
-![Kapsam](media/scope/scope.png)
+![Portalda görünen kapsam](media/scope/scope.png)
 
 Kapsam, Log Analytics başlamak için kullandığınız yönteme göre belirlenir ve bazı durumlarda, üzerine tıklayarak kapsamı değiştirebilirsiniz. Aşağıdaki tabloda, kullanılan farklı kapsam türleri ve her biri için farklı Ayrıntılar listelenmektedir.
 
 > [!IMPORTANT]
-> APM 2,1 kullanıyorsanız, Application Insights uygulamalar diğer tüm günlük verileriyle birlikte bir Log Analytics çalışma alanında depolanır ve Application Insights kapsamı kullanılamaz. Application Insights menüsünden **Günlükler** ' i seçerseniz, **diğer Azure kaynakları** kapsamıyla aynı şekilde davranır ve yalnızca Application Insights tablolarında bu uygulamanın bulunduğu veri testten bulunur.
+> Application Insights içinde çalışma alanı tabanlı bir uygulama kullanıyorsanız, verileri diğer tüm günlük verileriyle birlikte bir Log Analytics çalışma alanında depolanır. Geriye dönük uyumluluk için, kapsamı olarak uygulamayı seçerken klasik Application Insights deneyimini alacaksınız. Log Analytics çalışma alanında bu verileri görmek için, kapsamı çalışma alanı olarak ayarlayın.
 
 | Sorgu kapsamı | Kapsamdaki kayıtlar | Seçme | Kapsam değiştiriliyor |
 |:---|:---|:---|:---|
 | Log Analytics çalışma alanı | Log Analytics çalışma alanındaki tüm kayıtlar. | **Azure izleyici** menüsünde veya **Log Analytics çalışma alanları** menüsünden **Günlükler** ' i seçin.  | Kapsamı diğer kaynak türlerine değiştirebilir. |
-| Application Insights uygulaması | Application Insights uygulamasındaki tüm kayıtlar. | Application Insights **genel bakış** sayfasından **analiz** ' ı seçin. | Kapsam yalnızca başka bir Application Insights uygulama olarak değiştirilebilir. |
+| Application Insights uygulaması | Application Insights uygulamasındaki tüm kayıtlar. | Uygulamanın **Application Insights** menüsünden **Günlükler** ' i seçin. | Kapsam yalnızca başka bir Application Insights uygulama olarak değiştirilebilir. |
 | Kaynak grubu | Kaynak grubundaki tüm kaynaklar tarafından oluşturulan kayıtlar. Birden çok Log Analytics çalışma alanındaki verileri içerebilir. | Kaynak grubu menüsünden **Günlükler** ' i seçin. | Kapsam değiştirilemiyor.|
 | Abonelik | Abonelikteki tüm kaynaklar tarafından oluşturulan kayıtlar. Birden çok Log Analytics çalışma alanındaki verileri içerebilir. | Abonelik menüsünden **Günlükler** ' i seçin.   | Kapsam değiştirilemiyor. |
-| Diğer Azure kaynakları | Kaynak tarafından oluşturulan kayıtlar. Birden çok Log Analytics çalışma alanındaki verileri içerebilir.  | Kaynak menüsünden **Günlükler** ' i seçin.<br>OR<br>**Azure izleyici** menüsünden **Günlükler** ' i seçin ve ardından yeni bir kapsam seçin. | Kapsam yalnızca aynı kaynak türüne değiştirilebilir. |
+| Diğer Azure kaynakları | Kaynak tarafından oluşturulan kayıtlar. Birden çok Log Analytics çalışma alanındaki verileri içerebilir.  | Kaynak menüsünden **Günlükler** ' i seçin.<br>VEYA<br>**Azure izleyici** menüsünden **Günlükler** ' i seçin ve ardından yeni bir kapsam seçin. | Kapsam yalnızca aynı kaynak türüne değiştirilebilir. |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>Kaynak kapsamına alınan sınırlamalar
 
@@ -66,9 +66,9 @@ Kapsam, 20 veya daha fazla bölgede çalışma alanları içeriyorsa, bu sorgunu
 
 
 ## <a name="time-range"></a>Zaman aralığı
-Zaman aralığı, kaydın oluşturulduğu zamana göre sorgu için değerlendirilen kayıt kümesini belirtir. Bu, aşağıdaki tabloda belirtildiği gibi çalışma alanı veya uygulamadaki her kayıtta standart bir özellik tarafından tanımlanır.
+Zaman aralığı, kaydın oluşturulduğu zamana göre sorgu için değerlendirilen kayıt kümesini belirtir. Bu, aşağıdaki tabloda belirtildiği gibi çalışma alanı veya uygulamadaki her kayıtta standart bir sütun tarafından tanımlanır.
 
-| Konum | Özellik |
+| Konum | Sütun |
 |:---|:---|
 | Log Analytics çalışma alanı          | TimeGenerated |
 | Application Insights uygulaması | timestamp     |
@@ -77,17 +77,17 @@ Log Analytics penceresinin en üstündeki saat seçicisinden seçim yaparak zama
 
 ![Saat seçici](media/scope/time-picker.png)
 
-Sorguda, yukarıdaki tabloda gösterildiği gibi standart saat özelliğini kullanan bir filtre ayarlarsanız, saat seçici **sorgu olarak ayarlanır**ve zaman seçici devre dışı bırakılır. Bu durumda, izleyen işlemin yalnızca filtrelenmiş kayıtlarla çalışması için filtreyi sorgunun en üstüne koymak en verimli yoldur.
+Sorguda, yukarıdaki tabloda gösterildiği gibi standart zaman sütununu kullanan bir filtre ayarlarsanız, saat seçici **sorgu olarak ayarlanır**ve zaman seçici devre dışı bırakılır. Bu durumda, izleyen işlemin yalnızca filtrelenmiş kayıtlarla çalışması için filtreyi sorgunun en üstüne koymak en verimli yoldur.
 
 ![Filtrelenmiş sorgu](media/scope/query-filtered.png)
 
-Başka bir çalışma alanı veya uygulamadan veri almak için [çalışma alanı](workspace-expression.md) veya [uygulama](app-expression.md) komutunu kullanırsanız, zaman seçici farklı davranabilir. Kapsam bir Log Analytics çalışma alanım ve **uygulama**kullanıyorsanız ya da kapsam bir Application Insights uygulama ise ve **çalışma alanı**kullanıyorsanız, Log Analytics filtrede kullanılan özelliğin saat filtresini belirlemesi gerektiğini anlayamayabilir.
+Başka bir çalışma alanı veya uygulamadan veri almak için [çalışma alanı](workspace-expression.md) veya [uygulama](app-expression.md) komutunu kullanırsanız, zaman seçici farklı davranabilir. Kapsam bir Log Analytics çalışma alanım ve **uygulama**kullanıyorsanız ya da kapsam bir Application Insights uygulama ise ve **çalışma alanı**kullanıyorsanız, Log Analytics filtrede kullanılan sütunun saat filtresini belirlemesi gerektiğini anlayamayabilir.
 
-Aşağıdaki örnekte, kapsam bir Log Analytics çalışma alanına ayarlanır.  Sorgu, başka bir Log Analytics çalışma alanından veri almak için **çalışma alanını** kullanır. Beklenen **TimeGenerated** özelliğini kullanan bir filtre gördüğünden, zaman seçici **sorgu içinde ayarlanacak** şekilde değişir.
+Aşağıdaki örnekte, kapsam bir Log Analytics çalışma alanına ayarlanır.  Sorgu, başka bir Log Analytics çalışma alanından veri almak için **çalışma alanını** kullanır. Saat Seçici, beklenen **TimeGenerated** sütununu kullanan bir filtre gördüğünden **sorgu içinde ayarlanacak** şekilde değişir.
 
 ![Çalışma alanıyla sorgula](media/scope/query-workspace.png)
 
-Sorgu, Application Insights uygulamadan veri almak için **uygulama** kullanıyorsa, Log Analytics filtrenin **zaman damgası** özelliğini tanımıyor ve saat seçici değişmeden kalır. Bu durumda, her iki filtre de uygulanır. Örnekte, **WHERE** yan tümcesinde 7 gün belirtse de yalnızca son 24 saat içinde oluşturulan kayıtlar sorguya dahil edilir.
+Sorgu, Application Insights uygulamadan veri almak için **uygulama** kullanıyorsa, Log Analytics filtrenin **zaman damgası** sütununu tanımaz ve zaman seçici değişmeden kalır. Bu durumda, her iki filtre de uygulanır. Örnekte, **WHERE** yan tümcesinde 7 gün belirtse de yalnızca son 24 saat içinde oluşturulan kayıtlar sorguya dahil edilir.
 
 ![Uygulamayla sorgulama](media/scope/query-app.png)
 

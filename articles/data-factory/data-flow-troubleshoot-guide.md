@@ -1,25 +1,25 @@
 ---
-title: Veri akışları sorunlarını giderme
+title: Veri akışlarını eşleme sorunlarını giderme
 description: Azure Data Factory 'de veri akışı sorunlarını giderme hakkında bilgi edinin.
 services: data-factory
 ms.author: makromer
 author: kromerm
-manager: anandsub
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/08/2020
-ms.openlocfilehash: 6f2bf98e1c527be27ba0f08a43785ae7d3aea726
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.date: 09/11/2020
+ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594161"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031866"
 ---
-# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışları sorunlarını giderme
+# <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme sorunlarını giderme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu makalede Azure Data Factory veri akışları için genel sorun giderme yöntemleri incelenmektedir.
+Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun giderme yöntemleri incelenmektedir.
 
 ## <a name="common-errors-and-messages"></a>Sık karşılaşılan hatalar ve mesajlar
 
@@ -31,7 +31,7 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 ### <a name="error-code-df-executor-systemimplicitcartesian"></a>Hata kodu: DF-yürütücü-Systemımplicıtkartezyen
 
 - **İleti**: iç birleşim için örtülü Kartezyen ürün desteklenmiyor, bunun yerıne çapraz birleşim kullanın. Birleşimde kullanılan sütunlar, satırlar için benzersiz bir anahtar oluşturmaktır.
-- **Nedenler**: mantıksal planlar arasında iç birleşim için örtülü Kartezyen ürün desteklenmez. Birleşimde kullanılan sütunlar benzersiz anahtarı oluşturursa, ilişkinin her iki taraflarından en az bir sütun gereklidir.
+- **Nedenler**: mantıksal planlar arasında iç birleşim için örtülü Kartezyen ürün desteklenmez. Birleşimde kullanılan sütunlar benzersiz anahtarı oluştururken, ilişkinin her iki tarafındaki en az bir sütun gereklidir.
 - **Öneri**: eşitlik tabanlı olmayan BIRLEŞTIRMELER IÇIN özel çapraz katılmayı kabul etmeniz gerekir.
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>Hata kodu: DF-yürütücü-SystemInvalidJson
@@ -43,10 +43,10 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 ### <a name="error-code-df-executor-broadcasttimeout"></a>Hata kodu: DF-yürütücü-Yayınzaman aşımı
 
 - **İleti**: yayın birleşimi zaman aşımı hatası, yayın akışının hata ayıklama çalıştırmaları ve 300 saniye içinde iş çalıştırmaları sırasında 60 saniye içinde veri ürettiğinden emin olun
-- **Nedenler**: yayının hata ayıklama çalıştırmaları ve 300 saniye olarak iş çalıştırmaları sırasında varsayılan 60 saniye zaman aşımı süresi vardır. Yayın için seçilen akış, bu sınırın içinde veri üretmek için büyük görünüyor.
-- **Öneri**: JOIN, Exists ve Lookup için veri akışı dönüştürmelerinizin en iyileştirme sekmesini kontrol edin. Yayın için varsayılan seçenek "Auto" dır. Bu ayarlandıysa veya "fixed" altında yayın için sol veya sağ tarafını el ile ayarlıyorsanız, daha büyük bir Azure Integration Runtime yapılandırması ayarlayabilir veya yayını kapatabilirsiniz. Veri akışlarında en iyi performans için önerilen yaklaşım, Spark 'ın "Auto" kullanarak yayınmasına ve bellek için Iyileştirilmiş Azure IR kullanmasına izin vermedir.
+- Nedenler: yayın, hata ayıklama çalıştırmaları ve iş çalıştırmalarının 300 saniye içinde varsayılan 60 saniye zaman aşımına **neden olur**. Yayın için seçilen akış bu sınırın içinde veri üretmede çok büyük görünüyor.
+- **Öneri**: JOIN, Exists ve Lookup için veri akışı dönüştürmelerinizin en iyileştirme sekmesini kontrol edin. Yayın için varsayılan seçenek "Auto" dır. "Auto" ayarlandıysa veya sol veya sağ tarafı "düzeltildi" altında yayınlanacak şekilde ayarlıyorsanız, daha büyük bir Azure Integration Runtime yapılandırması ayarlayabilir veya yayını kapatabilirsiniz. Veri akışlarında en iyi performans için önerilen yaklaşım, Spark 'ın "Auto" kullanarak yayınmasına ve bellek için Iyileştirilmiş Azure IR kullanmasına izin vermedir.
 
-Hata ayıklama işlem hattı çalıştırmasıyla veri akışını bir hata ayıklama testi yürütmesinde yürütüyorsunuz, Bu koşulla daha sık karşılaşabilirsiniz. Bunun nedeni, ADF 'nin yayını daha hızlı bir hata ayıklama deneyimi sağlamak için yayın zaman aşımını 60 saniye olarak kısıtlar. Bunu tetiklenen bir çalıştırmadan 300 saniye zaman aşımıyla uzatmak isterseniz, veri akışı işlem hattı yürütme etkinliğinizdeki tanımlı Azure IR kullanmak için, etkinlik çalışma zamanı kullan > hata ayıkla seçeneğini kullanabilirsiniz.
+Hata ayıklama işlem hattı çalıştırmasıyla veri akışını bir hata ayıklama testi yürütmesinde yürütüyorsunuz, Bu koşulla daha sık karşılaşabilirsiniz. Bunun nedeni, ADF 'nin yayını daha hızlı bir hata ayıklama deneyimi sağlamak için yayın zaman aşımını 60 saniye olarak kısıtlar. Bunu tetiklenen bir çalıştırmadan 300 saniyelik zaman aşımına göre uzatmak isterseniz, veri akışı işlem hattı yürütme etkinliğinizdeki tanımlı Azure IR kullanmak için, etkinlik çalışma zamanı kullan > hata ayıkla seçeneğini kullanabilirsiniz.
 
 ### <a name="error-code-df-executor-conversion"></a>Hata kodu: DF-yürütücü-dönüştürme
 
@@ -59,6 +59,46 @@ Hata ayıklama işlem hattı çalıştırmasıyla veri akışını bir hata ayı
 - **İleti**: sorguda sütun adının belirtilmesi gerekir, bir SQL işlevi kullanılıyorsa bir diğer ad ayarlayın
 - **Nedenler**: sütun adı belirtilmedi
 - **Öneri**: min ()/Max () vb. gıbı bir SQL işlevi kullanılıyorsa bir diğer ad ayarlayın.
+
+ ### <a name="error-code-df-executor-drivererror"></a>Hata kodu: DF-yürütücü-DriverError
+- **İleti**: INT96, ADF veri akışı tarafından desteklenmeyen eski zaman damgası türüdür. Lütfen sütun türünü en son türlere yükseltmeyi göz önünde bulundurun.
+- **Nedenler**: sürücü hatası
+- **Öneri**: INT96, ADF veri akışı tarafından desteklenmeyen eski zaman damgası türüdür. Sütun türünü en son türlere yükseltmeyi göz önünde bulundurun.
+
+ ### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>Hata kodu: DF-yürütücü-Blockcountexceedslimıterror
+- **İleti**: kaydedilmemiş blok sayısı 100.000 blok üst sınırını aşamaz. Blob yapılandırmasını denetleyin.
+- **Nedenler**: bir blob 'da en fazla 100.000 kaydedilmemiş blok olabilir.
+- **Öneri**: daha fazla bilgi için bu sorunla Ilgili olarak Microsoft ürün ekibine başvurun
+
+ ### <a name="error-code-df-executor-partitiondirectoryerror"></a>Hata kodu: DF-yürütücü-PartitionDirectoryError
+- **İleti**: belirtilen kaynak yolu birden çok bölümlenmiş dizine sahip (örn. <Source Path> /<bölüm kök dizini 1>/a = 10/b = 20, <Source Path> /<bölüm kök dizin 2>/c = 10/d = 30) veya diğer dosya ya da bölümlenmemiş dizin ile bölümlenmiş dizin (örneğin <Source Path> /<bölüm kök dizini 1>/a = 10/b = 20, <Source Path> /Dizin 2/FILE1), bölüm kök dizinini kaynak yolundan kaldırın ve ayrı kaynak dönüşümünde okuyun.
+- **Nedenler**: kaynak yolunda birden çok bölümlenmiş dizin veya diğer dosya ya da bölümlenmemiş dizine sahip bölümlenmiş dizin bulunur.
+- **Öneri**: bölümlenmiş kök dizini kaynak yolundan kaldırın ve ayrı kaynak dönüşümünde okuyun.
+
+ ### <a name="error-code-df-executor-outofmemoryerror"></a>Hata kodu: DF-yürütücü-OutOfMemoryError
+- **İleti**: küme, yürütme sırasında yetersiz bellek sorunuyla karşılaştı, lütfen daha büyük çekirdek sayısı ve/veya bellek için iyileştirilmiş işlem türü ile bir tümleştirme çalışma zamanı kullanmayı deneyin
+- **Nedenler**: kümede bellek tükençalışıyor
+- **Öneri**: hata ayıklama kümeleri geliştirme amaçlarıyla yöneliktir. Yük çalıştırmak için veri örnekleme, uygun işlem türü ve boyuttan yararlanın. En iyi performansı elde etmek için ayarlama için [veri akışı performansını eşleme kılavuzuna](concepts-data-flow-performance.md) bakın.
+
+ ### <a name="error-code-df-executor-illegalargument"></a>Hata kodu: DF-yürütücü-düzeneği Galargument
+- **İleti**: lütfen bağlı hizmetinizdeki erişim anahtarının doğru olduğundan emin olun
+- **Nedenler**: hesap adı veya erişim anahtarı yanlış
+- **Öneri**: bağlı hizmetinizde belirtilen hesap adının veya erişim anahtarının doğru olduğundan emin olun. 
+
+ ### <a name="error-code-df-executor-invalidtype"></a>Hata kodu: DF-yürütücü-ınvalidtype
+- **İleti**: lütfen parametre türünün geçirilen değer türüyle eşleştiğinden emin olun. İşlem hatlarından kayan parametrelerin geçirilmesi Şu anda desteklenmiyor.
+- **Nedenler**: belirtilen tür ile gerçek parametre değeri arasında uyumsuz veri türleri
+- **Öneri**: bir veri akışına geçirilen parametre değerlerinizin, belirtilen türle eşleştiğinden emin olun.
+
+ ### <a name="error-code-df-executor-columnunavailable"></a>Hata kodu: DF-yürütücü-ColumnUnavailable
+- **İleti**: ifadede kullanılan sütun adı kullanılamıyor veya geçersiz
+- **Nedenler**: ifadelerde geçersiz veya kullanılamayan sütun adı kullanıldı
+- **Öneri**: ifadelerde kullanılan sütun adlarını denetle
+
+ ### <a name="error-code-df-executor-parseerror"></a>Hata kodu: DF-yürütücü-ParseError
+- **İleti**: ifade ayrıştırılamıyor
+- **Nedenler**: ifadede biçimlendirme nedeniyle hatalar ayrıştırılıyor
+- **Öneri**: ifadede biçimlendirmeyi denetle
 
 ### <a name="error-code-getcommand-outputasync-failed"></a>Hata kodu: GetCommand OutputAsync başarısız oldu
 

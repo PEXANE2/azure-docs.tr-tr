@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a4b0cb9b53adbf6362d79766fcd7bce57f5441ac
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fd68f720f372ee61f7c441ea83bd365bc2a6f36a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322998"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032750"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azure Izleyici için Azure Güvenlik temeli
 
@@ -80,7 +80,7 @@ Azure Izleyici 'yi özel bağlantıyla birlikte kullanırken, ' özel uç nokta 
 
 - [Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama](platform/gateway.md) 
 
-- [Bkz. Application Insights kullanmaya başlama](//azure/azure-monitor/app/app-insights-overview#get-started)
+- [Bkz. Application Insights kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#get-started)
 
 - [Kullanılabilirlik Web testlerini ayarlama](app/monitor-web-app-availability.md)
 

@@ -6,16 +6,16 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3bf180c2b70a686879082888e45e67936cdbec67
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d225511bb78a5773ce4ed5866f6ffc1257921e96
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799239"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032172"
 ---
 # <a name="design-tables-using-synapse-sql"></a>SYNAPSE SQL kullanarak tabloları tasarlama
 
@@ -75,7 +75,7 @@ SQL havuzundaki tabloların organizasyonunu göstermek için, tablo adlarına ö
 
 | WideWorldImportersDW tablosu  | Tablo türü | SQL havuzu |
 |:-----|:-----|:------|:-----|
-| City | Boyut | wwi. DimCity |
+| Şehir | Boyut | wwi. DimCity |
 | Sipariş verme | Fact | wwi. FactOrder |
 
 ## <a name="table-persistence"></a>Tablo kalıcılığı
@@ -207,7 +207,7 @@ BIRINCIL anahtar yalnızca KÜMELENMEMIŞ ve zorunlu KıLıNMAYAN her ikisi de k
 
 Yeni bir boş tablo olarak tablo oluşturabilirsiniz. Ayrıca bir SELECT ifadesinin sonuçlarıyla bir tablo oluşturup doldurabilirsiniz. Aşağıda tablo oluşturmak için T-SQL komutları verilmiştir.
 
-| T-SQL ekstresi | Açıklama |
+| T-SQL ekstresi | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
 | [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Dış tablo oluşturur. Tablonun tanımı SQL havuzunda depolanır. Tablo verileri Azure Blob depolamada veya Azure Data Lake Storage depolanır. |
@@ -360,9 +360,6 @@ SELECT *
 FROM size
 ;
 ```
-
->[!TIP]
-> SYNAPSE SQL 'de geliştirilmiş performans için, kalıcı Kullanıcı tablolarında **sys. pdw_table_mappings** yerine **sys. pdw_permanent_table_mappings** kullanmayı düşünün. Daha fazla bilgi için bkz. **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 ### <a name="table-space-summary"></a>Tablo alanı Özeti
 

@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/05/2020
+ms.date: 09/10/2020
 ms.author: abnarain
-ms.openlocfilehash: 49d173e0d0f2b96c385b4325335483d25e9a7c2d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a6a0a62bd857dff575e17f47f1e2394375b08c45
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800921"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033668"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -113,14 +113,14 @@ SSL/TLS anlaşması ile ilgili servis taleplerini işleytiğimiz zaman, sertifik
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
         ```
 
-        Örnek:
+        Örneğin:
 
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
     4. Çıkış txt dosyasında herhangi bir hata olup olmadığını denetleyin. Hata özetini txt dosyasının sonunda bulabilirsiniz.
 
-        Örnek: 
+        Örneğin: 
 
         ![Hata Özeti](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
 
@@ -152,7 +152,7 @@ SSL/TLS anlaşması ile ilgili servis taleplerini işleytiğimiz zaman, sertifik
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Örnek: 
+Örneğin: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -190,7 +190,7 @@ GAC hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/do
 
 #### <a name="symptoms"></a>Belirtiler
 
-Şirket içinde barındırılan tümleştirme çalışma zamanı aniden anahtar olmadan çevrimdışı duruma geçer, aşağıdaki hata iletisi olay günlüğünde gösterilir:`Authentication Key is not assigned yet`
+Şirket içinde barındırılan tümleştirme çalışma zamanı aniden anahtar olmadan çevrimdışı duruma geçer, aşağıdaki hata iletisi olay günlüğünde gösterilir: `Authentication Key is not assigned yet`
 
 ![Kimlik doğrulama anahtarı eksik](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
@@ -351,7 +351,7 @@ Büyük/küçük bir çözünürlükte iki desenden hiçbiri uygulamanızda yoks
 
 #### <a name="cause"></a>Nedeni
 
-*Integration Runtime 3,0*' nin yayımlanmasından sonra, bir temizleyici ve daha güvenli bir ortamı etkinleştirmek için mevcut bir Integration Runtime düğümündeki **Kaydet** düğmesi kaldırılmıştır. Bir düğüm bazı Integration Runtime kaydedilmişse (çevrimiçi veya değil), başka bir Integration Runtime yeniden kaydetmek için önceki düğümü kaldırmanız ve ardından düğümü yükleyip kaydetmeniz gerekir.
+*Integration Runtime 3,0*' nin yayımlanmasından sonra, bir temizleyici ve daha güvenli bir ortamı etkinleştirmek için mevcut bir Integration Runtime düğümündeki **Kaydet** düğmesi kaldırılmıştır. Herhangi bir Integration Runtime'a (çevrimiçi veya değil) düğüm kaydedildiyse, bu düğümü başka bir Integration Runtime'a yeniden kaydetmek için önceki düğümün yüklemesini kaldırmalı ve sonra düğümü yükleyip kaydetmelisiniz.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -366,7 +366,7 @@ Büyük/küçük bir çözünürlükte iki desenden hiçbiri uygulamanızda yoks
 1. MSI 'yi yükleyip Integration Runtime kaydedin.
 
 
-### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>Localhost nedeniyle Şirket içinde barındırılan IR kaydedilemiyor    
+### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>Şirket içinde barındırılan IR localhost nedeniyle kaydedilemedi    
 
 #### <a name="symptoms"></a>Belirtiler
 
@@ -519,7 +519,7 @@ Bu davranış, düğümler birbirleriyle iletişim kuramıyorsa oluşur.
 
 ### <a name="connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Şirket içinde barındırılan IR ve Data Factory veya şirket içinde barındırılan IR ve veri kaynağı/havuz arasında bağlantı sorunu
 
-Ağ bağlantısı sorununu gidermek için, [Ağ izlemesini nasıl toplayacağınızı](#how-to-collect-netmon-trace), nasıl kullanacağınızı anlamanız gerektiğini ve NetMon 'u şirket IÇINDE barındırılan IR 'den gerçek zamanlı olarak uygulamadan önce [Netmon izlemesini nasıl analiz](#how-to-analyze-netmon-trace) edeceğinizi bilmeniz gerekir.
+Ağ bağlantısı sorununu gidermek için, ağ izlemesini nasıl toplayacağınızı, nasıl kullanacağınızı anlamanız gerektiğini ve NetMon 'u şirket içinde barındırılan IR 'den gerçek zamanlı olarak uygulamadan önce [Netmon izlemesini nasıl analiz](#how-to-analyze-netmon-trace) edeceğinizi bilmeniz gerekir.
 
 #### <a name="symptoms"></a>Belirtiler
 
@@ -577,7 +577,7 @@ Netmon izlemesini alın ve daha fazla analiz edin.
 
 ### <a name="how-to-collect-netmon-trace"></a>Netmon Trace nasıl toplanır
 
-1.  [Bu Web sitesinden](https://www.microsoft.com/en-sg/download/details.aspx?id=4865)alınan Netmon araçlarını Indirin ve sunucu makinenize (sorunu yaşayan sunucu) ve istemciye (Şirket IÇINDE barındırılan IR gibi) yükleyin.
+1.  [Bu Web sitesinden](https://cnet-downloads.com/network-monitor)alınan Netmon araçlarını Indirin ve sunucu makinenize (sorunu yaşayan sunucu) ve istemciye (Şirket IÇINDE barındırılan IR gibi) yükleyin.
 
 2.  Örneğin, şu yolda bir klasör oluşturun: *D:\netmon*. Günlüğü kaydetmek için yeterli alana sahip olduğundan emin olun.
 
@@ -621,7 +621,10 @@ Netmon izlemesini alın ve daha fazla analiz edin.
 
 ### <a name="how-to-analyze-netmon-trace"></a>Netmon izlemesini çözümleme
 
-Telnet **8.8.8.8 888** ' i yukarıdaki Netmon izleme toplanmış olarak çalıştırdığınızda, izlemeyi aşağıda görmeniz gerekir:
+> [!NOTE] 
+> Aşağıdaki yönerge, Netmon Trace için geçerlidir. Netmon Trace Şu anda destek dışında olduğundan, Wireshark ' den aynı şekilde yararlanabilirsiniz.
+
+Netmon Trace ile Telnet **8.8.8.8 888** ' i topladığınızda, izlemeyi aşağıdaki şekilde görmeniz gerekir:
 
 ![Netmon izleme 1](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
 

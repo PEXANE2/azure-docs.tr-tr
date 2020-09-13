@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 28f8dd4be9e03af9f0b155d6e79949fe522cd7c2
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.date: 09/11/2020
+ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007766"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032121"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -22,7 +22,7 @@ Bu makalede ticari Market hakkında sık sorulan sorular yanıtlanmaktadır.
 
 ### <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market nedir?
 
-Ticari Market iş ve kamu kuruluşlarını iş ortaklarımız tarafından oluşturulan çözümlerle bağlar. İş ortaklarımız Iş Ortağı Merkezi 'nde teklifler oluşturur ve yönetir ve müşteriler, Microsoft AppSource, Azure Marketi, bulut çözüm sağlayıcısı programı ve satış ekiplerimiz gibi ürün içi deneyimler aracılığıyla ortak satış programı aracılığıyla çözümleri bulabilir ve satın alabilir.
+Ticari Market iş ve kamu kuruluşlarını iş ortaklarımız tarafından oluşturulan çözümlerle bağlar. İş ortaklarımız Iş Ortağı Merkezi 'nde teklifler oluşturur ve yönetir ve müşteriler, Microsoft AppSource, Azure Marketi, bulut çözümü sağlayıcısı programındaki satıcılar ve ortak satış programı aracılığıyla satış ekiplerimiz gibi ürün içi deneyimler aracılığıyla çözümleri bulabilir ve satın alabilir.
 
 Daha fazla bilgi edinmek için [Microsoft ticari Market hub 'ına](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)gidin.
 
@@ -42,7 +42,7 @@ Ticari Market, plan esasına göre 141 bölgede kullanılabilir.
 
 Vergi ödemesini birçok ülkede/bölgede yönetiyoruz ve satıcılarımızın küresel kanal ağına erişim sağlıyoruz. Bir müşterinin Microsoft Müşteri sözleşmesini veya Kurumsal Anlaşma, yeni bir satın alma ilişkisi oluşturmaya gerek kalmadan kuruluşlara satmak için kullanabilirsiniz.
 
-Daha fazla bilgi edinmek için [Market üzerinden satış nedeninin](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace)videosunu görüntüleyin.
+Daha fazla bilgi için bkz. [Microsoft ticari Market hub](https://aka.ms/commercialmarketplacehub)'ı.
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market için bir listeleme ücreti var mı?
 
@@ -67,7 +67,7 @@ Müşterilerin ticari Market teklifinizi kullanma yolları, teklifleri nasıl ol
 
 Kaydolduktan ve yayımcı anlaşmasını kabul ettikten sonra, Iş Ortağı Merkezi 'nde ticari Market sayfasına erişebilirsiniz. Bu, teklifleri oluşturduğunuz ve yönettiğiniz ve analiz raporlarını görüntülediğiniz yerdir. Microsoft 365 uygulamalar için Iş Ortağı Merkezi 'nde Office Mağazası programını da etkinleştirmeniz gerekir.
 
-Daha fazla bilgi için bkz. [ticari Market 'e hoş geldiniz](index.yml) ve [Microsoft Commercial market aracılığıyla Office 365 eklentilerinizi Monaya](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)dönüştürme.
+Daha fazla bilgi için bkz. [ticari Market 'e hoş geldiniz](index.yml) ve [Microsoft 365 eklentisi Microsoft Commercial Market aracılığıyla](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)veriliyor.
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Ticari Market için destek yardımına Nasıl yaparım? misiniz?
 
@@ -329,7 +329,7 @@ Başlamak için bazı kaynaklar aşağıda verilmiştir:
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Microsoft Yönetim Merkezi hakkında nereden daha fazla bilgi edinebilirim?
 
-Microsoft Yönetim Merkezi hakkında daha fazla bilgi için bkz. [Kuruluşunuz için üçüncü taraf uygulama aboneliklerini yönetme](https://docs.microsoft.com/microsoft-365/commerce/manage-saas-apps?view=o365-worldwide).
+Microsoft Yönetim Merkezi hakkında daha fazla bilgi için bkz. [Kuruluşunuz için üçüncü taraf uygulama aboneliklerini yönetme](/microsoft-365/commerce/manage-saas-apps).
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>Azure Faturalandırma hakkında nereden daha fazla bilgi edinebilirim?
 

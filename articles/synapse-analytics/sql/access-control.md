@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6dc0bb08e3d824c1d3fea155d1b3d4c52e1af4a6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 52cf3af4b4ab84c12b2e1b5d7f076c43e652157d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499849"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031323"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Çalışma alanları, veriler ve işlem hatları erişimini yönetme
 
@@ -32,8 +32,8 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 
 ### <a name="step-1-set-up-security-groups-with-names-following-this-pattern"></a>1. Adım: bu kalıbı izleyen adlarla güvenlik grupları ayarlama
 
-1. Adlı güvenlik grubu oluştur`Synapse_WORKSPACENAME_Users`
-2. Adlı güvenlik grubu oluştur`Synapse_WORKSPACENAME_Admins`
+1. Adlı güvenlik grubu oluştur `Synapse_WORKSPACENAME_Users`
+2. Adlı güvenlik grubu oluştur `Synapse_WORKSPACENAME_Admins`
 3. `Synapse_WORKSPACENAME_Users` için `Synapse_WORKSPACENAME_Admins` eklendi
 
 > [!NOTE]
@@ -52,10 +52,10 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 3. Azure SYNAPSE çalışma alanı için seçtiğiniz kapsayıcıya (dosya sistemi) gidin
 4. **Access Control (IAM)** seçeneğine tıklayın
 5. Aşağıdaki rolleri atayın:
-   1. **Okuyucu** rolü:`Synapse_WORKSPACENAME_Users`
-   2. **Depolama Blobu veri sahibi** rolü:`Synapse_WORKSPACENAME_Admins`
-   3. **Depolama Blobu veri katılımcısı** rolü:`Synapse_WORKSPACENAME_Users`
-   4. **Depolama Blobu veri sahibi** rolü:`WORKSPACENAME`
+   1. **Okuyucu** rolü:  `Synapse_WORKSPACENAME_Users`
+   2. **Depolama Blobu veri sahibi** rolü:  `Synapse_WORKSPACENAME_Admins`
+   3. **Depolama Blobu veri katılımcısı** rolü: `Synapse_WORKSPACENAME_Users`
+   4. **Depolama Blobu veri sahibi** rolü:  `WORKSPACENAME`
 
 > [!NOTE]
 > ÇALıŞMAALANıADı-bu bölümü gerçek çalışma alanı adınızla değiştirmelisiniz.
@@ -81,8 +81,8 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 
 ### <a name="step-5-add-and-remove-users-and-admins-to-security-groups"></a>5. Adım: kullanıcıları ve yöneticileri güvenlik gruplarına ekleme ve kaldırma
 
-1. Üzerinde yönetici erişimi olması gereken kullanıcıları ekleyin`Synapse_WORKSPACENAME_Admins`
-2. Diğer tüm kullanıcıları buraya ekle`Synapse_WORKSPACENAME_Users`
+1. Üzerinde yönetici erişimi olması gereken kullanıcıları ekleyin `Synapse_WORKSPACENAME_Admins`
+2. Diğer tüm kullanıcıları buraya ekle `Synapse_WORKSPACENAME_Users`
 
 > [!NOTE]
 > [Bu makalede](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal) bir güvenlik grubuna üye olarak Kullanıcı ekleme hakkında bilgi edinin

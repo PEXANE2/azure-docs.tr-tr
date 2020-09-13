@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: fb58728e005ad70ac5392aa9e3e6a254ed317276
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016350"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032529"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 Azure Log Analytics Aracısı tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](/system-center/scom/) tarafından izlenen Windows ve Linux sanal makinelerinden telemetri toplar ve toplanan verileri Azure izleyici 'de Log Analytics çalışma alanınıza gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](../insights/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](../../security-center/index.yml)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler. Bu makalede Aracı, sistem ve ağ gereksinimleri ve dağıtım yöntemlerine ilişkin ayrıntılı bir genel bakış sunulmaktadır.
@@ -39,7 +39,7 @@ Log Analytics Aracısı için maliyet yoktur, ancak alınan veriler için ücret
 ## <a name="data-collected"></a>Toplanan veriler
 Aşağıdaki tabloda, tüm bağlı aracılardan toplanacak bir Log Analytics çalışma alanını yapılandırabileceğiniz veri türleri listelenmektedir. Diğer veri türlerini toplamak için Log Analytics aracısını kullanan Öngörüler, çözümler ve diğer çözümlerin listesi için bkz. [Azure izleyici tarafından Izlenen nedir?](../monitor-reference.md) .
 
-| Veri Kaynağı | Açıklama |
+| Veri Kaynağı | Description |
 | --- | --- |
 | [Windows olay günlükleri](data-sources-windows-events.md) | Windows olay günlüğü sistemine gönderilen bilgiler. |
 | [Syslog](data-sources-syslog.md)                     | Linux olay günlüğü sistemine gönderilen bilgiler. |
@@ -63,7 +63,7 @@ Bir aracıyı Operations Manager yönetim grubuna bağlama hakkında ayrıntıl�
 
 ## <a name="security-limitations"></a>Güvenlik sınırlamaları
 
-* Windows Aracısı [fıps 140 standardını](/windows/security/threat-protection/fips-140-validation)destekler, ancak Linux Aracısı tarafından desteklenmez.  
+* Windows ve Linux aracıları [fıps 140 standardını](/windows/security/threat-protection/fips-140-validation)destekler, ancak [diğer sağlamlaştırma türleri de desteklenmiyor olabilir](agent-linux.md#supported-linux-hardening).
 
 
 ## <a name="installation-options"></a>Yükleme seçenekleri
@@ -109,10 +109,10 @@ Aşağıdaki tabloda, Linux ve Windows aracılarının Azure Izleyici günlükle
 
 |Aracı Kaynağı|Bağlantı noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Evet |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Evet |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Evet |
-|*.azure-automation.net |Bağlantı noktası 443 |Outbound|Evet |
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Yes |
+|*.azure-automation.net |Bağlantı noktası 443 |Outbound|Yes |
 
 Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 

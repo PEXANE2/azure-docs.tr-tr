@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: d87635b3bfbfd70a67e8eebd4000fda73229d606
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018365"
+ms.locfileid: "90033532"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Özel bağlantı ve yönetilen kimlik ile sanal ağlar için IoT Hub desteği
 
@@ -252,7 +252,7 @@ Bu işlevsellik IoT Hub depolama hesabına bağlantı gerektirir. Güvenlik duva
 
 3. Depolama hesabınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver**kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
 
-Artık toplu içeri/dışarı aktarma işlevini kullanma hakkında bilgi için [içeri aktarma dışarı aktarma işleri oluşturmak](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) üzere Azure IoT REST API 'lerini kullanabilirsiniz. `storageAuthenticationType="identityBased"` `inputBlobContainerUri="https://..."` `outputBlobContainerUri="https://..."` Depolama hesabınızın giriş ve çıkış URL 'leri sırasıyla, istek gövdesine ve kullanmanız gerekir.
+Artık toplu içeri/dışarı aktarma işlevini kullanma hakkında bilgi için [içeri aktarma dışarı aktarma işleri oluşturmak](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) üzere Azure IoT REST API 'lerini kullanabilirsiniz. `storageAuthenticationType="identityBased"` `inputBlobContainerUri="https://..."` `outputBlobContainerUri="https://..."` Depolama hesabınızın giriş ve çıkış URL 'leri sırasıyla, istek gövdesine ve kullanmanız gerekir.
 
 Azure IoT Hub SDK 'Ları Ayrıca hizmet istemcisinin kayıt defteri yöneticisinde bu işlevselliği destekler. Aşağıdaki kod parçacığında, C# SDK 'SıNı kullanarak bir içeri aktarma işinin veya dışarı aktarma işinin nasıl başlatılacağı gösterilmektedir.
 

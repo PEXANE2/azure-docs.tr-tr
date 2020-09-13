@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f5a3c73d60f038820de100f99c554eec27fd6f55
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387259"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033192"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Bağlı bir hizmetin özel bağlantılarla güvenliğini sağlama 
 
-Bu makalede, özel bir uç nokta ile SYNAPSE 'de bağlı bir hizmetin nasıl güvenli hale alınacağını öğreneceksiniz.
+Bu makalede, SYNAPSE ' de bir özel uç nokta ile bağlı bir hizmetin nasıl güvenliğini sağlayacağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**: Azure Data Lake Gen 2 ' nı *kaynak* veri deposu olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../../storage/blobs/data-lake-storage-quickstart-create-account.md) . Depolama hesabının buna erişmek için SYNAPSE Studio IP filtrelemesine sahip olduğundan ve yalnızca **Seçili ağların** depolama hesabına erişmesine izin verdiğinizden emin olun. Dikey pencere **güvenlik duvarları ve sanal ağlar** altındaki ayar aşağıdaki resim gibi görünmelidir.
@@ -33,16 +33,16 @@ Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer
 
 1. Azure SYNAPSE Studio 'Yu açın ve **Yönet** sekmesine gidin.
 1. **Dış bağlantılar**altında **bağlı hizmetler**' i seçin.
-1. Bağlı bir hizmet eklemek için **Yeni**' ye tıklayın.
-1. Listeden Azure Data Lake Storage 2. kutucuğunu seçin ve **devam**' a tıklayın.
+1. Bağlı bir hizmet eklemek için **Yeni**' yi seçin.
+1. Listeden Azure Data Lake Storage 2. kutucuğunu seçin ve **devam**' ı seçin.
 1. **Etkileşimli yazma**özelliğini etkinleştirdiğinizden emin olun. 1 dakika içinde etkinleştirilmesi gerekebilir. 
-1. Kimlik doğrulama kimlik bilgilerinizi girin. Hesap anahtarı, hizmet sorumlusu ve yönetilen kimlik, şu anda desteklenen kimlik doğrulama türleridir. Kimlik bilgilerinizin doğru olduğunu doğrulamak için Bağlantıyı Sına ' ya tıklayın.
+1. Kimlik doğrulama kimlik bilgilerinizi girin. Hesap anahtarı, hizmet sorumlusu ve yönetilen kimlik, şu anda desteklenen kimlik doğrulama türleridir. Kimlik bilgilerinizin doğru olduğunu doğrulamak için Bağlantıyı Sına ' yı seçin.
 1. **Bağlantıyı test**et ' i seçtiğinizde, depolama hesabı özel bir uç noktanın oluşturulması ve onaylanması olmadan bu hesaba erişimi etkinleştirmediğinden başarısız olması gerekir. Hata iletisinde, bir sonraki bölüme gitmek için izleyebileceğiniz bir **Özel uç nokta** oluşturmak üzere bir bağlantı görmeniz gerekir. Bu bağlantıyı izlerseniz, sonraki parçayı atlayın.
 1. Bittiğinde **Oluştur**’u seçin.
 
 ## <a name="create-a-managed-private-endpoint"></a>Yönetilen özel uç nokta oluşturma
 
-Bu durumda, yukarıdaki bağlantıyı sınarken köprüye tıklamadınız, aşağıdaki yolu izleyin. Şimdi, yukarıda oluşturulan bağlı hizmete bağlanacak bir yönetilen özel uç noktası oluşturmanız gerekir.
+Yukarıdaki bağlantıyı sınarken köprü içine seçmezseniz aşağıdaki yolu izleyin. Yukarıda oluşturulan bağlı hizmete bağlanacak bir yönetilen özel bitiş noktası oluşturun.
 
 1. **Yönet** sekmesine gidin.
 1. **Yönetilen sanal ağlar** bölümüne gidin.
@@ -55,7 +55,7 @@ Bu durumda, yukarıdaki bağlantıyı sınarken köprüye tıklamadınız, aşa�
 ## <a name="private-link-approval"></a>Özel bağlantı onayı
 1. Yukarıda oluşturduğunuz özel uç noktayı seçin. Depolama hesabı düzeyinde özel uç noktasını onaylamanıza olanak sağlayacak bir köprü görebilirsiniz. *Alternatif olarak, Azure portal depolama hesabına doğrudan gidip **Özel uç nokta bağlantıları** dikey penceresine gidebilirsiniz.*
 1. Studio 'da oluşturduğunuz özel uç noktayı işaret edin ve **Onayla**' yı seçin.
-1. Bir açıklama ekleyin ve **Evet** ' e tıklayın.
+1. Bir açıklama ekleyin ve **Evet** ' i seçin
 1. **Yönet** sekmesinin **yönetilen sanal ağlar** bölümünde SYNAPSE Studio 'ya geri dönün.
 1. Onayın özel uç noktanıza yansıtılmasıyla ilgili olarak yaklaşık 1 dakika sürer.
 
@@ -64,7 +64,7 @@ Bu durumda, yukarıdaki bağlantıyı sınarken köprüye tıklamadınız, aşa�
 1. **Etkileşimli yazmanın** etkin olduğundan emin olun.
 1. **Bağlantıyı sına**’yı seçin. Bağlantının başarılı olduğunu görmeniz gerekir.
 
-Artık SYNAPSE ile bağlı hizmetiniz arasında güvenli ve özel bir bağlantı oluşturdunuz!
+Artık SYNAPSE ile bağlı hizmetiniz arasında güvenli ve özel bir bağlantı oluşturdunuz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

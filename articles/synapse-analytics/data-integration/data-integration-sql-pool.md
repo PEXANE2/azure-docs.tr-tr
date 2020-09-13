@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 63e83e69e5e09c17b2a2ddb5ca7bee6474e2fddd
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 02efaf3f0382a7af63717e777036637de2bbec25
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386682"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033209"
 ---
 # <a name="ingest-data-into-a-sql-pool"></a>Verileri bir SQL havuzuna alma
 
@@ -32,24 +32,24 @@ Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer
 
 1. Azure SYNAPSE Analytics UX ' i açın ve **Yönet** sekmesine gidin.
 1. **Dış bağlantılar**altında **bağlı hizmetler**' i seçin.
-1. Bağlı bir hizmet eklemek için **Yeni**' ye tıklayın.
-1. Listeden Azure Data Lake Storage 2. kutucuğunu seçin ve **devam**' a tıklayın.
-1. Kimlik doğrulama kimlik bilgilerinizi girin. Hesap anahtarı, hizmet sorumlusu ve yönetilen kimlik, şu anda desteklenen kimlik doğrulama türleridir. Kimlik bilgilerinizin doğru olduğunu doğrulamak için Bağlantıyı Sına ' ya tıklayın. İşiniz bittiğinde **Oluştur** ' a tıklayın.
+1. Bağlı bir hizmet eklemek için **Yeni**' yi seçin.
+1. Listeden Azure Data Lake Storage 2. kutucuğunu seçin ve **devam**' ı seçin.
+1. Kimlik doğrulama kimlik bilgilerinizi girin. Hesap anahtarı, hizmet sorumlusu ve yönetilen kimlik, şu anda desteklenen kimlik doğrulama türleridir. Kimlik bilgilerinizin doğru olduğunu doğrulamak için Bağlantıyı Sına ' yı seçin. Bittiğinde **Oluştur**’u seçin.
 1. 3-5 arası adımları yineleyin, ancak Azure Data Lake Storage 2. yerine Azure SYNAPSE Analytics kutucuğunu seçin ve ilgili bağlantı kimlik bilgilerini girin. Azure SYNAPSE Analytics, SQL kimlik doğrulaması, yönetilen kimlik ve hizmet sorumlusu için şu anda desteklenmektedir.
 
 ## <a name="create-pipeline"></a>İşlem hattı oluşturma
 
 İşlem hattı, bir dizi etkinliğin yürütülmesi için mantıksal akışı içerir. Bu bölümde, verileri bir SQL havuzuna ADLS 2. veren bir kopyalama etkinliği içeren bir işlem hattı oluşturacaksınız.
 
-1. Organize **et sekmesine gidin** . ardışık düzen üstbilgisinin yanındaki artı simgesine tıklayın ve Işlem **hattı**' nı seçin.
+1. **Orchestrate** sekmesine gidin. Ardışık düzen üstbilgisinin yanındaki artı simgesini seçin ve işlem **hattı**' nı seçin.
 1. Etkinlikler bölmesinde **taşıma ve dönüştürme** ' nın altında, verileri ardışık düzen tuvaline **Kopyala** ' yı sürükleyin.
-1. Kopyalama etkinliğine tıklayın ve **kaynak** sekmesine gidin. yeni bir kaynak veri kümesi oluşturmak Için **Yeni** ' ye tıklayın.
-1. Veri depolama alanı olarak Azure Data Lake Storage Gen2 seçin ve devam ' a tıklayın.
-1. Biçim olarak DelimitedText ' i seçin ve devam ' a tıklayın.
-1. Özellikleri ayarla bölmesinde, oluşturduğunuz ADLS bağlı hizmeti ' ni seçin. Kaynak verilerinizin dosya yolunu belirtin ve ilk satırın bir üst bilgisine sahip olup olmadığını belirtin. Şemayı dosya deposundan veya örnek bir dosyadan içeri aktarabilirsiniz. Bittiğinde Tamam ' a tıklayın.
-1. **Havuz** sekmesine gidin. yeni bir havuz veri kümesi oluşturmak Için **Yeni** 'yi tıklatın.
-1. Veri depolduğunuz Azure SYNAPSE Analytics ' i seçin ve devam ' a tıklayın.
-1. Özellikleri ayarla bölmesinde, oluşturduğunuz Azure SYNAPSE Analytics bağlı hizmetini seçin. Varolan bir tabloya yazıyorsanız, açılan listeden seçin. Aksi takdirde, **Düzenle** ' yi işaretleyin ve yeni tablo adınızı girin. Bittiğinde Tamam 'a tıklayın
+1. Kopyalama etkinliği ' ni seçin ve **kaynak** sekmesine gidin. Yeni bir kaynak veri kümesi oluşturmak için **Yeni** ' yi seçin.
+1. Veri depolama alanı olarak Azure Data Lake Storage Gen2 seçin ve devam ' ı seçin.
+1. Biçim olarak DelimitedText ' i seçin ve devam ' ı seçin.
+1. Özellikleri ayarla bölmesinde, oluşturduğunuz ADLS bağlı hizmeti ' ni seçin. Kaynak verilerinizin dosya yolunu belirtin ve ilk satırın bir üst bilgisine sahip olup olmadığını belirtin. Şemayı dosya deposundan veya örnek bir dosyadan içeri aktarabilirsiniz. Bittiğinde Tamam ' ı seçin.
+1. **Havuz** sekmesine gidin. Yeni bir havuz veri kümesi oluşturmak için **Yeni** ' yi seçin.
+1. Veri depolduğunuz Azure SYNAPSE Analytics ' i seçin ve devam ' ı seçin.
+1. Özellikleri ayarla bölmesinde, oluşturduğunuz Azure SYNAPSE Analytics bağlı hizmetini seçin. Varolan bir tabloya yazıyorsanız, açılan listeden seçin. Aksi takdirde, **Düzenle** ' yi işaretleyin ve yeni tablo adınızı girin. Bittiğinde Tamam 'ı seçin
 1. Tablo oluşturuyorsanız tablo seçenek alanında **otomatik oluşturma tablosu** ' nu etkinleştirin.
 
 ## <a name="debug-and-publish-pipeline"></a>Hata ayıklama ve yayımlama işlem hattı
@@ -58,7 +58,7 @@ Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer
 
 1. İşlem hattında hata ayıklamak için araç çubuğunda **Hata Ayıkla**'yı seçin. Pencerenin altındaki **Çıkış** sekmesinde işlem hattı çalıştırmasının durumu görüntülenir. 
 1. İşlem hattı başarıyla çalıştırıldığında, üstteki araç çubuğunda **Tümünü Yayımla**' yı seçin. Bu eylem, oluşturduğunuz varlıkları (veri kümeleri ve işlem hatları) SYNAPSE Analytics hizmetinde yayımlar.
-1. **Başarıyla yayımlandı** iletisini görene kadar bekleyin. Bildirim iletilerini görmek için sağ üst köşedeki zil düğmesine tıklayın. 
+1. **Başarıyla yayımlandı** iletisini görene kadar bekleyin. Bildirim iletilerini görmek için sağ üst köşedeki zil düğmesini seçin. 
 
 
 ## <a name="trigger-and-monitor-the-pipeline"></a>İşlem hattını tetikleme ve izleme
@@ -73,4 +73,4 @@ Bu adımda, önceki adımda yayınlanan işlem hattını el ile tetiklersiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SYNAPSE Analytics için veri tümleştirmesi hakkında daha fazla bilgi için bkz. [verileri Azure Data Lake Storage 2. 'a dönüştürme](data-integration-data-lake.md) makalesi.
+SYNAPSE Analytics için veri tümleştirmesi hakkında daha fazla bilgi için bkz. [verileri Azure Data Lake Storage 2. 'a dönüştürme ](data-integration-data-lake.md) makalesi.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: 529988ce456b9017d700880d55b349fa93e15f96
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104240"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033260"
 ---
 # <a name="co-sell-option-in-partner-center"></a>İş Ortağı Merkezi’nde ortak satış seçeneği
 
@@ -20,7 +20,7 @@ Ortak satış sekmesi hakkında bilgi sağlanması tamamen isteğe bağlıdır. 
 
 Iş Ortağı Merkezi 'ndeki ortak satış seçeneği, bazı teklif türleri için şu anda kullanılabilir. Ek teklif türleri için destek, zaman içinde kullanılabilir hale getirilir.
 
-| **Teklif türü** | **Ortak satış sayfası Iş Ortağı Merkezi 'nde kullanılabilir** |
+| **Teklif Türü** | **Ortak satış sayfası Iş Ortağı Merkezi 'nde kullanılabilir** |
 |    -----------------------    |    -----------------------------  |
 | Hizmet olarak yazılım (SaaS) |      Kullanıma sunuldu      |
 | PowerApps & müşteri katılımı için Dynamics 365      |     Kullanıma sunuldu      |
@@ -62,11 +62,11 @@ Teklifiniz için en fazla üç çözüm alanı ekleyebilirsiniz. Her çözüm al
 
 ## <a name="documents"></a>Belgeler
 
-Microsoft 'un müşteri ihtiyaçlarını değerlendirmek için kullanması için yardımcı malzemeler sağlayabilirsiniz.
+Microsoft 'un teklifiniz hakkında daha fazla bilgi edinmek ve müşteri gereksinimleriniz için uygun olduğunu değerlendirmek için kullanacağı yardımcı belgeler sağlama seçeneğiniz vardır. Aşağıdaki tabloda listelenen tüm belgeler isteğe bağlıdır.
 
 | **Belgeler**    | **Açıklama**  |
 | :------------------- | :-------------------|
-| *Müşteri tek çağrı cihazı* | Tekliflerinizin müşteri için Ready açıklaması. Microsoft satış ekipleri, teklifinizin uygun olup olmadığını belirlemenize ve müşterinin hazır olmasını sağlamaya yardımcı olmak için bu bilgileri müşterilerle paylaşabilir. <br> <br> Iş Ortağı Merkezi 'nde kullanılabilen ilgili şablonlardan birini kullanın: <br> <ul> <li> Tek sayfalayıcı şablonu Microsoft Azure </li> <li> Microsoft Dynamics 365 1-sayfalayıcı şablonu </li> <li> Office 365 1-sayfalayıcı şablonu </li> <li> Windows 10 1-sayfalayıcı şablonu </li> </ul> |
+| *Müşteri tek çağrı cihazı* | Tekliflerinizin müşteri için Ready açıklaması. Microsoft satış ekipleri, teklifinizin uygun olup olmadığını belirlemenize ve müşterinin hazır olmasını sağlamaya yardımcı olmak için bu bilgileri müşterilerle paylaşabilir. <br> <br> Iş Ortağı Merkezi 'nde kullanılabilen ilgili şablonlardan birini kullanın: <br> <ul> <li> Tek sayfalayıcı şablonu Microsoft Azure </li> <li> Microsoft Dynamics 365 1-sayfalayıcı şablonu </li> <li> Microsoft 365 1-sayfalayıcı şablonu </li> <li> Windows 10 1-sayfalayıcı şablonu </li> </ul> |
 | *Müşteri sunumu* | Çözümünüzü ve değer teklifini aralıklı olarak kaydırarak slayt destesi. Teklifinizin müşteri için hazırlandığından emin olduktan sonra, Microsoft satış takımları, her iki şirketin da bir Birleşik çözüm dağıtmakta olduğu değeri ifade etmek için sunuyu müşterilerle paylaşabilir. Sunu, çözümünüzün ne yaptığını, BT 'nin müşterilere nasıl yardımcı olduğunu, çözüm için hangi sektörlerin olduğunu ve rakip çözümlerle nasıl karşılaştırdığını kapsamalıdır. <br> <br> Iş Ortağı Merkezi 'nde bulunan şablonu kullanın.|
 | *Müşteri örnek olay incelemesi* | Bu bilgiler, siz ve Microsoft 'un bu çözümü önceki durumlarda nasıl başarıyla dağıttığından oluşan potansiyel bir müşteriyi gösterir. <br> <br> Iş Ortağı Merkezi 'nde bulunan şablonu kullanın. |
 | *Doğrulanabilen müşteri WINS (isteğe bağlı)* | Çözümünüz dağıtıldıktan sonra müşteri başarılarını belirli örneklere örnekler. |
@@ -79,14 +79,14 @@ Microsoft 'un müşteri ihtiyaçlarını değerlendirmek için kullanması için
 
 İletişim bilgileriniz, Microsoft satış ekiplerinin ve kanal satıcılarının kuruluşunuzdaki uygun kaynaktan ek bilgi istemesine olanak tanır. İletişim bilgileri tüm Microsoft satış ekiplerinde kullanılabilir. Teklifinizi CSP programında kullanılabilir hale getirmek isterseniz, bu iletişim bilgileri de Kanal satıcıları tarafından kullanılabilir.
 
-Bu belgede iş ortakları için farklı roller ve aralarında nasıl seçim yapılacağı hakkında rehberlik sunulmaktadır. Iş Ortağı Merkezi 'nden CSV şablonunu indirerek, her satırı ilgili bilgilerle doldurarak ve bu CSV dosyasını içeri aktararak kişilerinizi sağlayabilirsiniz. Bir CSV dosyasının içe aktarılması, mevcut kişilerin üzerine yazacak.
+Iş Ortağı Merkezi 'nden CSV şablonunu indirerek, her satırı ilgili bilgilerle doldurarak ve bu CSV dosyasını içeri aktararak kişilerinizi sağlayabilirsiniz. Bir CSV dosyasının içe aktarılması, mevcut kişilerin üzerine yazacak.
 
 Ayrıca, bir teklifin mevcut kişi listesini dışarı aktarabilir ve ardından bu dosyada değişiklik yapabilirsiniz.
 
 * *Ad (gerekli)*: kişinin adı.
 * *E-posta adresi (gerekli)*: kişinin e-posta adresi.
 * *İş unvanı (gerekli)*: iş unvanı.
-* *Rol (zorunlu)*: şablonda bu alanda aşağıdaki rollerden birini kullanın.
+* *Rol (zorunlu)*: aşağıdaki rollerden birini kullanın.
 
     | **Role**    | **Açıklama**  |
     | :------------------- | :-------------------|

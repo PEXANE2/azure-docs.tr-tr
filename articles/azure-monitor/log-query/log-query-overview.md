@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 7e8e2015e7d0798542ff0c80d8eb39461918ad67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a47de51a90d926b47f6b465d6c10111407da9c6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539610"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033175"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularına genel bakış
 Günlük sorguları, [Azure Izleyici günlüklerinde](../platform/data-platform-logs.md)toplanan verilerin değerini tamamen kullanmanıza yardımcı olur. Güçlü bir sorgu dili, birden çok tablodan veri birleştirme, büyük veri kümelerini toplama ve en az kodla karmaşık işlemler gerçekleştirmenize olanak tanır. Neredeyse her soru yanıtlanarak, destekleyici veriler toplandıkça ve analiz, doğru sorgunun nasıl oluşturulacağını anlamış olabilir.
@@ -38,10 +38,7 @@ Azure Izleyici günlüklerinden verileri kullanarak dile yönelik hızlı bir an
 Azure Izleyici tarafından kullanılan KQL sürümündeki küçük farklılıklar için bkz. [Azure izleyici günlük sorgu dili farklılıkları](data-explorer-difference.md) .
 
 ## <a name="what-data-is-available-to-log-queries"></a>Günlük sorgularının hangi verileri kullanılabilir?
-Azure Izleyici günlüklerinde toplanan tüm veriler, günlük sorgularını almak ve analiz etmek için kullanılabilir. Farklı veri kaynakları verileri farklı tablolara yazacak, ancak birden çok kaynak genelinde verileri çözümlemek için tek bir sorguya birden fazla tablo ekleyebilirsiniz. Bir sorgu oluşturduğunuzda, hangi tabloların Aradığınız verilere sahip olduğunu belirleyerek başlar, bu nedenle Azure Izleyici günlüklerindeki verilerin nasıl yapılandırıldığı hakkında en az bir temel bilgiye sahip olmanız gerekir.
-
-Azure Izleyici günlüklerini dolduran farklı veri kaynaklarının listesi için bkz. [Azure Izleyici günlüklerinin kaynakları](../platform/data-platform-logs.md#sources-of-azure-monitor-logs).<br>
-Verilerin nasıl yapılandırıldığını gösteren bir açıklama için bkz. [Azure Izleyici günlüklerinin yapısı](logs-structure.md) .
+Azure Izleyici günlüklerinde toplanan tüm veriler, günlük sorgularını almak ve analiz etmek için kullanılabilir. Farklı veri kaynakları verileri farklı tablolara yazacak, ancak birden çok kaynak genelinde verileri çözümlemek için tek bir sorguya birden fazla tablo ekleyebilirsiniz. Bir sorgu oluşturduğunuzda, hangi tabloların aradığınız verileri olduğunu belirleyerek başlar. Verilerin nasıl yapılandırıldığını gösteren bir açıklama için bkz. [Azure Izleyici günlüklerinin yapısı](logs-structure.md) .
 
 ## <a name="what-does-a-log-query-look-like"></a>Günlük sorgusu nasıl görünür?
 Bir sorgu, tablodaki tüm kayıtları almak için tek bir tablo adı kadar basit olabilir:

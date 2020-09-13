@@ -8,18 +8,18 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 98814060fb9ae669fc4e9a90fcda6319bbfaeacf
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ede55196793e7eb19a5f64e539ee870ff0fada9d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182553"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031425"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Ruby kullanma-tek sunucu
 
 Bu hızlı başlangıçta, [Ruby](https://www.ruby-lang.org) uygulaması kullanılarak PostgreSQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, Ruby kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
 - [DB Oluşturma - Portal](quickstart-create-server-database-portal.md)
 - [DB Oluşturma - Azure CLI](quickstart-create-server-database-azure-cli.md)
@@ -43,7 +43,7 @@ PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgi
 ## <a name="connect-and-create-a-table"></a>Bağlanma ve tablo oluşturma
 **CREATE TABLE** SQL deyimini kullanarak bir tabloyu bağlamak ve oluşturmak ve ardından **INSERT INTO** SQL deyimlerini kullanarak tabloya satırlar eklemek için aşağıdaki kodu kullanın.
 
-Kod, PostgreSQL için Azure Veritabanı’na bağlanmak amacıyla [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) oluşturucusuna sahip [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) nesnesini kullanır. Ardından DROP, CREATE TABLE ve INSERT INTO komutlarını çalıştırmak için [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) yöntemini çağırır. Kod, [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) sınıfını kullanarak hataları kontrol eder. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) yöntemini çağırır.
+Kod, PostgreSQL için Azure Veritabanı’na bağlanmak amacıyla [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) oluşturucusuna sahip [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) nesnesini kullanır. Ardından DROP, CREATE TABLE ve INSERT INTO komutlarını çalıştırmak için [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) yöntemini çağırır. Kod, [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) sınıfını kullanarak hataları kontrol eder. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) yöntemini çağırır.
 
 `host`, `database`, `user` ve `password` dizelerini kendi değerlerinizle değiştirin. 
 
@@ -87,7 +87,7 @@ end
 ## <a name="read-data"></a>Verileri okuma
 Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. 
 
-Kod, PostgreSQL için Azure Veritabanı’na bağlanmak amacıyla [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) oluşturucusuna sahip [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) nesnesini kullanır. Ardından sonuçları sonuç kümesinde tutarak SELECT komutunu çalıştırmak için [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) yöntemini çağırır. Sonuç kümesi koleksiyonu, `resultSet.each do` döngüsü kullanılarak ve geçerli satır değerleri `row` değişkeninde tutularak yinelenir. Kod, [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) sınıfını kullanarak hataları kontrol eder. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) yöntemini çağırır.
+Kod, PostgreSQL için Azure Veritabanı’na bağlanmak amacıyla [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) oluşturucusuna sahip [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) nesnesini kullanır. Ardından sonuçları sonuç kümesinde tutarak SELECT komutunu çalıştırmak için [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) yöntemini çağırır. Sonuç kümesi koleksiyonu, `resultSet.each do` döngüsü kullanılarak ve geçerli satır değerleri `row` değişkeninde tutularak yinelenir. Kod, [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) sınıfını kullanarak hataları kontrol eder. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) yöntemini çağırır.
 
 `host`, `database`, `user` ve `password` dizelerini kendi değerlerinizle değiştirin. 
 
@@ -121,7 +121,7 @@ end
 ## <a name="update-data"></a>Verileri güncelleştirme
 **UPDATE** SQL deyimini kullanarak bağlanmak ve verileri güncelleştirmek için aşağıdaki kodu kullanın.
 
-Kod, PostgreSQL için Azure Veritabanı’na bağlanmak amacıyla [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) oluşturucusuna sahip [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) nesnesini kullanır. Ardından UPDATE komutunu çalıştırmak için [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) yöntemini çağırır. Kod, [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) sınıfını kullanarak hataları kontrol eder. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) yöntemini çağırır.
+Kod, PostgreSQL için Azure Veritabanı’na bağlanmak amacıyla [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) oluşturucusuna sahip [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) nesnesini kullanır. Ardından UPDATE komutunu çalıştırmak için [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) yöntemini çağırır. Kod, [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) sınıfını kullanarak hataları kontrol eder. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) yöntemini çağırır.
 
 `host`, `database`, `user` ve `password` dizelerini kendi değerlerinizle değiştirin. 
 
@@ -155,7 +155,7 @@ end
 ## <a name="delete-data"></a>Verileri silme
 Bağlanmak ve **DELETE** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. 
 
-Kod, PostgreSQL için Azure Veritabanı’na bağlanmak amacıyla [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) oluşturucusuna sahip [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) nesnesini kullanır. Ardından UPDATE komutunu çalıştırmak için [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) yöntemini çağırır. Kod, [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) sınıfını kullanarak hataları kontrol eder. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) yöntemini çağırır.
+Kod, PostgreSQL için Azure Veritabanı’na bağlanmak amacıyla [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) oluşturucusuna sahip [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) nesnesini kullanır. Ardından UPDATE komutunu çalıştırmak için [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) yöntemini çağırır. Kod, [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) sınıfını kullanarak hataları kontrol eder. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) yöntemini çağırır.
 
 `host`, `database`, `user` ve `password` dizelerini kendi değerlerinizle değiştirin. 
 

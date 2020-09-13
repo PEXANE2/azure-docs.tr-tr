@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: b1b438dd9370e0f0d76e5c596176d9bd08cc76d5
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462012"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031492"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -220,7 +220,7 @@ Depolama günlüğü, Azure Depolama hesabınızdaki depolama isteklerinin sunuc
 İstemci ve sunucunun değiş tokuş olduğu veriler ve temel alınan ağ koşulları hakkında ayrıntılı bilgi sağlamak için istemci ile sunucu arasındaki trafiği yakalayabilirsiniz. Faydalı ağ günlüğü araçları şunları içerir:
 
 * [Fiddler](https://www.telerik.com/fiddler) , http ve https istek ve yanıt iletilerinin üst bilgilerini ve yük verilerini incelemenize olanak tanıyan, ücretsiz bir Web hata ayıklama proxy 'si. Daha fazla bilgi için bkz. [ek 1: http ve HTTPS trafiğini yakalamak Için Fiddler kullanma](#appendix-1).
-* [Microsoft Ağ İzleyicisi (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) ve [Wireshark](https://www.wireshark.org/) , çok çeşitli ağ protokolleri için ayrıntılı paket bilgilerini görüntülemenize olanak tanıyan ücretsiz ağ protokol çözümleyicileri vardır. Wireshark hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma](#appendix-2)".
+* [Microsoft Ağ İzleyicisi (Netmon)](https://cnet-downloads.com/network-monitor) ve [Wireshark](https://www.wireshark.org/) , çok çeşitli ağ protokolleri için ayrıntılı paket bilgilerini görüntülemenize olanak tanıyan ücretsiz ağ protokol çözümleyicileri vardır. Wireshark hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma](#appendix-2)".
 * Microsoft Message Analyzer, Microsoft 'un Netmon 'u yerine geçen ve ağ paketi verilerinin yakalanmasının yanı sıra diğer araçlardan yakalanan günlük verilerini görüntülemenize ve çözümlemenize yardımcı olan bir araçtır. Daha fazla bilgi için bkz. "[ek 3: ağ trafiğini yakalamak Için Microsoft Message Analyzer 'ı kullanma](#appendix-3)".
 * İstemci Makinenizin ağ üzerinden Azure depolama hizmetine bağlanıp bağlanamamasını denetlemek için temel bir bağlantı testi gerçekleştirmek istiyorsanız, bu işlemi istemcisinde standart **ping** aracını kullanarak yapamazsınız. Ancak, bağlantı denetlemek için [ **tcpıng** aracını](https://www.elifulkerson.com/projects/tcping.php) kullanabilirsiniz.
 
@@ -346,7 +346,7 @@ Sorununuz, depolama hizmetlerinden birinin kullanılabilirliğiyle bağlantılı
 
 ![Azure portal, AverageE2ELatency 'in AverageServerLatency 'den önemli ölçüde daha yüksek olduğu bir örnek gösteren bir örnektir.][4]
 
-Depolama hizmeti yalnızca başarılı istekler için **AverageE2ELatency** ölçüsünü hesaplar ve **averageserverlatency**'ın aksine istemcinin verileri göndermek ve depolama hizmetinden onay almak için geçen süreyi de içerir. Bu nedenle, **AverageE2ELatency** ve **averageserverlatency** arasındaki fark, istemci uygulamanın yavaş yanıt vermesi ya da ağdaki koşullar nedeniyle olabilir.
+Depolama hizmeti yalnızca başarılı istekler için **AverageE2ELatency** ölçüsünü hesaplar ve **averageserverlatency**'ın aksine istemcinin, verileri göndermek ve depolama hizmetinden onay almak için geçen süreyi de içerir. Bu nedenle, **AverageE2ELatency** ve **averageserverlatency** arasındaki fark, istemci uygulamanın yavaş yanıt vermesi ya da ağdaki koşullar nedeniyle olabilir.
 
 > [!NOTE]
 > Depolama günlüğü günlük verilerinde ayrı depolama işlemleri için **E2ELatency** ve **serverlatency** ' i de görüntüleyebilirsiniz.
@@ -409,7 +409,7 @@ Bir uygulamanın bir sıraya ileti eklemesi ve kuyruktan okunabilmesi için kull
 
 * Uygulamanın iletileri sıraya başarıyla eklediğini doğrulayın. Uygulamanın başarılı bir şekilde **AddMessage** metodunu birkaç kez yeniden denemediğinden emin olun. Depolama Istemci kitaplığı günlükleri, depolama işlemlerinin yinelenen yeniden denemelerini gösterir.
 * İletiyi kuyruğa ekleyen çalışan rolü ve işlem sırasında bir gecikme gibi görünen sıradan iletiyi okuyan çalışan rolü arasında bir saat çarpıklığı olmadığını doğrulayın.
-* Sıradaki iletileri okuyan çalışan rolünün başarısız olup olmadığını denetleyin. Bir kuyruk istemcisi **GetMessage** yöntemini çağırırsa ancak bir bildirimle yanıt vermezse, **ınvisibilitytimeout** süresi doluncaya kadar ileti kuyrukta görünmez olarak kalır. Bu noktada ileti tekrar işlenmek üzere kullanılabilir hale gelir.
+* Sıradaki iletileri okuyan çalışan rolünün başarısız olup olmadığını denetleyin. Bir kuyruk istemcisi **GetMessage** yöntemini çağırırsa ancak bir bildirim ile yanıt vermezse, **ınvisibilitytimeout** süresi doluncaya kadar ileti kuyrukta görünmez olarak kalır. Bu noktada ileti tekrar işlenmek üzere kullanılabilir hale gelir.
 * Sıra uzunluğunun zaman içinde büyüdüğünü denetleyin. Diğer çalışanların sıraya yerleştirmekte olduğu tüm iletileri işlemek için yeterli çalışan yoksa bu durum oluşabilir. Ayrıca, silme isteklerinin başarısız olup olmadığını ve iletilerde sıradan çıkarma sayısını görmek için ölçümleri kontrol edin. bu durum, iletiyi silme için yinelenen başarısız denemeleri gösterebilir.
 * Beklenenden daha uzun bir süre boyunca beklenen **E2ELatency** ve **serverlatency** değerlerinden daha yüksek bir sıra işlemi için depolama günlüğü günlüklerini inceleyin.
 
@@ -617,9 +617,9 @@ Bazı durumlarda, kayıp ağ paketleri istemciye HTTP 404 iletileri döndüren d
 
 Sunucu tarafı günlüğü aynı varlık için başarılı bir silme işlemi için aynı **istemci-istek kimliği** değerine (813ea74f...) sahip başka bir giriş de içerir ve aynı istemciden. Bu başarılı silme işlemi, başarısız silme isteğinden çok kısa bir süre önce gerçekleşti.
 
-Bu senaryonun en olası nedeni, istemcinin tablo hizmetine varlık için bir silme isteği göndermesinin başarılı olduğunu, ancak sunucudan bir onay almaması (Belki de geçici bir ağ sorunu nedeniyle) bildirmektir. İstemci daha sonra işlemi otomatik olarak yeniden dener (aynı **istemci-istek kimliği**kullanılarak) ve varlık zaten silindiğinden bu yeniden deneme başarısız oldu.
+Bu senaryonun en olası nedeni, istemcinin tablo hizmetine varlık için bir silme isteği göndermesinin başarılı olduğunu, ancak sunucudan bir bildirim almamasının (Belki de geçici bir ağ sorunundan kaynaklanıyor olması nedeniyle). İstemci daha sonra işlemi otomatik olarak yeniden dener (aynı **istemci-istek kimliği**kullanılarak) ve varlık zaten silindiğinden bu yeniden deneme başarısız oldu.
 
-Bu sorun sık sık oluşuyorsa, istemcinin tablo hizmetinden alınan bildirimleri almasının neden başarısız olduğunu araştırmanız gerekir. Sorun kesintili ise, "HTTP (404) bulunamadı" hatasını yakalayıp istemcide günlüğe kaydedin, ancak istemcinin devam etmesine izin verin.
+Bu sorun sık sık oluşuyorsa, istemcinin tablo hizmetinden gelen bildirimleri almamasının neden başarısız olduğunu araştırmanız gerekir. Sorun kesintili ise, "HTTP (404) bulunamadı" hatasını yakalayıp istemcide günlüğe kaydedin, ancak istemcinin devam etmesine izin verin.
 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>İstemci HTTP 409 (Çakışma) iletileri alıyor
 Aşağıdaki tabloda iki istemci işlemi için sunucu tarafı günlüğünden ayıklama gösterilmektedir: **Deleteifexists** , aynı blob kapsayıcısı adı kullanılarak **Createifnotexists** tarafından hemen izlenir. Her istemci işlemi, sunucuya iki istekle gönderilir, ilk olarak bir **Getcontainerproperties** , kapsayıcının var olup olmadığını kontrol etmek için, ardından **DeleteContainer** veya **CreateContainer** isteği ile sonuçlanır.
@@ -777,7 +777,7 @@ Microsoft Message Analyzer 'daki yerleşik **Web proxy** Izlemesi Fiddler 'a day
 #### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Microsoft Message Analyzer kullanarak ağ sorunlarını tanılama
 İstemci uygulaması ve depolama hizmeti arasındaki HTTP/HTTPs trafiğinin ayrıntılarını yakalamak için Microsoft Message Analyzer **Web proxy** izlemeyi kullanmanın yanı sıra, yerleşik **yerel bağlantı katmanı** izlemesini ağ paketi bilgilerini yakalamak için de kullanabilirsiniz. Bu, Wireshark ile yakalayabilmeniz ve bırakılan paketler gibi ağ sorunlarını tanılamak için benzer verileri yakalamanızı sağlar.
 
-Aşağıdaki ekran görüntüsünde, **DiagnosisTypes** sütununda bazı **bilgilendirici** Iletilerle örnek bir **yerel bağlantı katmanı** izlemesi gösterilmektedir. **DiagnosisTypes** sütunundaki bir simgeye tıkladığınızda iletinin ayrıntıları gösterilir. Bu örnekte, istemciden bir onay almadığı için sunucu #305 yeniden aktarılan ileti:
+Aşağıdaki ekran görüntüsünde, **DiagnosisTypes** sütununda bazı **bilgilendirici** Iletilerle örnek bir **yerel bağlantı katmanı** izlemesi gösterilmektedir. **DiagnosisTypes** sütunundaki bir simgeye tıkladığınızda iletinin ayrıntıları gösterilir. Bu örnekte, istemciden bir bildirim almadığı için sunucu #305 yeniden aktarılan ileti:
 
 ![DiagnosisTypes sütununda bazı bilgilendirici iletilerle örnek bir yerel bağlantı katmanı izlemesi gösteren ekran görüntüsü][9]
 

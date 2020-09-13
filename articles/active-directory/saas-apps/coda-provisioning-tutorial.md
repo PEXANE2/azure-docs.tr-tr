@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: d5748b9d374a33e0aa3c52d9623f4e73d3bace1c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1013e7f7fa824a7fef0535b8ab599e2a4e786b40
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89303652"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032342"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Coda yapılandırma
 
@@ -133,7 +133,7 @@ Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm kullanıcılar
 Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
 1. Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
-2. Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
+2. Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
 3. Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar

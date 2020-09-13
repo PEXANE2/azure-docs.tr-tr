@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
-ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 019c78236ed0cc689de09a9ee04ebb6a0b9243b1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131489"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033600"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Hızlı Başlangıç: Visual Studio Code kullanarak mantıksal uygulama iş akışı tanımlarını oluşturma ve yönetme
 
@@ -130,7 +130,7 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
    Örneğin, bir RSS tetikleyicisi ve Office 365 Outlook eylemiyle başlayan örnek bir mantıksal uygulama iş akışı tanımı aşağıda verilmiştir. Genellikle, JSON öğeleri her bölümde alfabetik olarak görünür. Ancak bu örnek, bu öğeleri kabaca, mantıksal uygulamanın adımlarının tasarımcıda göründüğü sırayla gösterir.
 
    > [!IMPORTANT]
-   > Bu örnek mantıksal uygulama tanımını yeniden kullanmak istiyorsanız, örneğin, bir Office 365 Kurumsal hesabına sahip olmanız gerekir @fabrikam.com . Kurgusal e-posta adresini kendi e-posta adresiniz ile değiştirdiğinizden emin olun. Outlook.com veya Gmail gibi farklı bir e-posta Bağlayıcısı kullanmak için, `Send_an_email_action` eylemi [Azure Logic Apps tarafından desteklenen bir e-posta bağlayıcısından](../connectors/apis-list.md)erişilebilen benzer bir eylemle değiştirin.
+   > Bu örnek mantıksal uygulama tanımını yeniden kullanmak istiyorsanız, örneğin, bir kuruluş hesabına ihtiyacınız vardır @fabrikam.com . Kurgusal e-posta adresini kendi e-posta adresiniz ile değiştirdiğinizden emin olun. Outlook.com veya Gmail gibi farklı bir e-posta Bağlayıcısı kullanmak için, `Send_an_email_action` eylemi [Azure Logic Apps tarafından desteklenen bir e-posta bağlayıcısından](../connectors/apis-list.md)erişilebilen benzer bir eylemle değiştirin.
    >
    > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. 
    > Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). 

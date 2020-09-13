@@ -106,8 +106,6 @@
   items:
     - name: Uygulamalarım portalında oturum açma ve portalı kullanma
       href: my-apps-portal-end-user-access.md
-    - name: Profil ve hesap bilgilerinizi güncelleştirme
-      href: my-apps-portal-end-user-update-profile.md
     - name: Grup bilgilerinizi güncelleştirme
       href: my-apps-portal-end-user-groups.md
     - name: Uygulamaları koleksiyonlarla düzenleme

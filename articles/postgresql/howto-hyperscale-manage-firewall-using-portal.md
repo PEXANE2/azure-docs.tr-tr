@@ -6,32 +6,32 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 9/12/2019
-ms.openlocfilehash: c84616e8a9b9ff9722f5a104175c80c37dbcbcc3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 9/11/2020
+ms.openlocfilehash: 35d5b101f4ad5fe4498c0566227c5f0a9d102b60
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116922"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032584"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nın güvenlik duvarı kurallarını yönetme-hiper ölçek (Citus)
 Sunucu düzeyinde güvenlik duvarı kuralları, belirtilen IP adreslerinden veya IP adresi aralığından bir Hyperscale (Citus) düzenleyici düğümüne erişimi yönetmek için kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - Bir sunucu grubu [PostgreSQL Için Azure veritabanı – Hyperscale (Citus) sunucu grubu oluşturun](quickstart-create-hyperscale-portal.md).
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure portalında sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 
 > [!NOTE]
-> Bu ayarlar, PostgreSQL için Azure veritabanı-hiper ölçek (Citus) sunucu grubu oluşturma sırasında da erişilebilir. **Ağ** sekmesinde, **genel uç nokta**' ı tıklatın.
+> Bu ayarlar, PostgreSQL için Azure veritabanı-hiper ölçek (Citus) sunucu grubu oluşturma sırasında da erişilebilir. **Ağ** sekmesinde, **ortak erişim**' e tıklayın.
 > ![Azure portal-ağ sekmesi](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
 
 1. PostgreSQL sunucu grubu sayfasında, güvenlik başlığı altında, güvenlik duvarı kurallarını açmak için **ağ** ' ı tıklatın.
 
    ![Azure portal-ağ ' a tıklayın](./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png)
 
-2. Araç çubuğunda **istemci IP 'Si Ekle**' ye (aşağıdan seçenek) veya bağlantıda (seçenek B) tıklayın. Her iki yöntem de, Azure sistemi tarafından algılanan şekilde bilgisayarınızın genel IP adresi ile bir güvenlik duvarı kuralı oluşturur.
+2. Azure sistemi tarafından algılanan şekilde, bilgisayarınızın genel IP adresiyle bir güvenlik duvarı kuralı oluşturmak için **geçerli ISTEMCI IP adresi ekle** ' ye tıklayın.
 
    ![Azure portal-istemci IP 'si Ekle ' ye tıklayın](./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png)
 
@@ -55,7 +55,7 @@ Azure 'da barındırılan uygulamalara (Azure Web Apps uygulaması veya bir Azur
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>Azure portalı aracılığıyla mevcut sunucu düzeyinde güvenlik duvarı kurallarını yönetme
 Güvenlik duvarı kurallarını yönetmek için adımları yineleyin.
-* Geçerli bilgisayarı eklemek için + **istemci IP 'Si Ekle**düğmesine tıklayın. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+* Geçerli bilgisayarı eklemek için düğmeye tıklayarak + **geçerli ISTEMCI IP adresini ekleyin**. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 * Daha fazla IP adresi eklemek için Kural Adı, Başlangıç IP Adresi ve Bitiş IP Adresi’ni yazın. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 * Mevcut bir kuralı değiştirmek için kuraldaki alanlardan dilediğinize tıklayıp değiştirin. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 * Mevcut bir kuralı silmek için, üç nokta (...] simgesine tıklayın ve **Sil** ' e tıklayarak kuralı kaldırın. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.

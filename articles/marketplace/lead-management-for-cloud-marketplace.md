@@ -7,24 +7,24 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: b08324654a046b5a2296f6e533107c1b26a0e1fc
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e3924e609091f4d0975901024f20db74efb6aac5
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606892"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032716"
 ---
 # <a name="lead-management-for-the-commercial-marketplace"></a>Ticari Market için lider yönetimi
 
 Müşteriler her türlü iyi iş merkeziydi. Bugünün ürün alma dönüştürmesinin dönüşümünde, pazarlamacılar müşterilere doğrudan bağlanmaya ve bir ilişki oluşturmaya odaklanmalıdır. Yüksek kaliteli müşteri adaylarının oluşturulması, satış döngünüzde önemli bir araçtır. Teklifinizi [Iş Ortağı Merkezi](https://partner.microsoft.com/)' nde listeledikten sonra, müşteri iletişim bilgilerini bir müşterinin ilgilendiklerini belirledikten veya ürününüzü Market 'te dağıttığında hemen elde etmeniz için etkinleştirilen araçlar vardır. 
 
-## <a name="what-are-leads-in-the-marketplace"></a>Market 'teki müşteri adayları nelerdir?
+## <a name="what-are-leads-in-the-commercial-marketplace"></a>Ticari Market 'teki müşteri adayları nelerdir?
 
-Müşteri adayları, ürünlerinizi Market 'ten ilgilenen veya dağıtmakta olan müşterilerden elde edilir. Ürününüzün Azure Market veya AppSource 'ta listelenip listelenmediğini, CRM 'nizden Iş Ortağı Merkezi 'ndeki listelerinize doğru bir şekilde ayarladıktan sonra müşterilerden müşteri adaylarını alabileceksiniz. 
+Müşteri adayları, ürünlerinizi ticari Market 'ten ilgilenen veya dağıtmakta olan müşterilerden elde edilir. CRM 'nizi Iş Ortağı Merkezi 'nde dökümlerle bağladığınızda, Azure Marketi ve AppSource müşterilerinin müşteri adaylarını alabileceksiniz.
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>CRM sisteminizi Iş Ortağı Merkezi ile bağlama
 
-Müşteri adaylarını almaya başlamak için, Iş Ortağı Merkezi 'nde lider yönetimi Bağlayıcısı, CRM bilgilerinizin mevcut olduğu bir CRM sistem listesine kolayca kolayca takılabilmesi için tasarlanmıştır. Artık, bir dış sistemle tümleştirme için önemli bir mühendislik çabası olmadan Market tarafından oluşturulan müşteri adaylarını kolayca kullanabilirsiniz.
+Iş Ortağı Merkezi 'ndeki lider yönetimi Bağlayıcısı, CRM bilgilerinizin bulunduğu bir CRM sistemi listesine kolayca kolayca takılabilir şekilde tasarlanmıştır. Artık, bir dış sistemle tümleştirme için önemli bir mühendislik çabası olmadan Market tarafından oluşturulan müşteri adaylarını kolayca kullanabilirsiniz.
 
 Olası her bir müşteri adayı hedefini nasıl bağlayacağınız hakkında adım adım yönergeler aşağıda verilmiştir:
 
@@ -38,25 +38,25 @@ Olası her bir müşteri adayı hedefini nasıl bağlayacağınız hakkında ad�
 
 **Https uç noktası** -müşteri adaylarını almak Için HTTPS uç noktanızı ayarlamaya ilişkin yönergeler IÇIN [bir HTTPS uç noktası kullanarak müşteri adayı yönetimini yapılandırma](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md) konusuna bakın.
 
-Müşteri adayı hedefini doğru bir şekilde yapılandırdıktan ve teklifiniz üzerinde isabet yayımladıktan sonra, bağlantıyı doğrulayacağız ve size bir test lideri göndereceğiz. Teklifi, canlı çalışmadan önce görüntülerken, teklifi önizleme ortamında edinmeyi deneyerek lider bağlantınızı da test edebilirsiniz. Müşteri adaylarını kaybetmemeniz için müşteri adayı ayarlarınızın güncel kalmasını sağlamak önemlidir. bu nedenle, bu bağlantıları sonunda her değişiklik yapıldığında güncelleştirdiğinizden emin olun.
+Müşteri adayı hedefini doğru bir şekilde yapılandırdıktan ve teklifinizi yayımlamayı istetikten sonra bağlantıyı doğrulayacağız ve size bir test lideri göndereceğiz. Teklifi, canlı çalışmadan önce görüntülerken, teklifi önizleme ortamında edinmeyi deneyerek lider bağlantınızı da test edebilirsiniz. Müşteri adaylarını kaybetmemeniz için müşteri adayı ayarlarınızın güncel kalmasını sağlamak önemlidir. bu nedenle, bu bağlantıları sonunda her değişiklik yapıldığında güncelleştirdiğinizden emin olun.
 
 ### <a name="what-are-the-next-steps"></a>Sonraki adımlar nelerdir?
 
-Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış & pazarlama stratejinize ve işlemsel süreçlerinize eklemeniz gerekir. Genel Satış sürecinizi daha iyi anlamak ve yüksek kaliteli müşteri adayları sağlamak ve size yeterli veri sağlamak için size yakın bir şekilde çalışmak istemeniz gerekir. Size bu müşterileri başarılı hale getirmeye yardımcı olmak için size ek veriler gönderdiğimiz müşteri adaylarını iyileştirebilecek ve geliştirebilmemiz için geri bildirimde bulunun. Satış ekibinizin Market müşteri adaylarıyla daha başarılı olmasını sağlamak için geri bildirim ve öneriler sağlamayı düşünüyorsanız bize bilgi verin.
+Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış & pazarlama stratejinize ve işlemsel süreçlerinize eklemeniz gerekir. Genel Satış sürecinizi anlamak ve size yüksek kaliteli müşteri adayları sağlamak ve size yeterli veri sağlamak için size yakın bir şekilde çalışmak istemeniz gerekir. Size bu müşterileri başarılı hale getirmeye yardımcı olmak için size ek veriler gönderdiğimiz müşteri adaylarını iyileştirebilecek ve geliştirebilmemiz için geri bildirimde bulunun. Satış ekibinizin ticari Market liderlerine göre daha başarılı olmasını sağlamak için geri bildirim ve öneriler sağlamayı düşünüyorsanız bize bilgi verin.
 
 ## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a> Iş Ortağı Merkezi 'nde yayımlama sırasında ortak lider yapılandırma hataları
 
 **Müşteri adayı Dynamics CRM 'ye kaydedilemedi. Dynamics CRM hesap ayarlarını kontrol edin. LastCRMError: Dynamics CRM 'de oturum açılamıyor, LastCRMException:** 
 
-> O365 kimlik doğrulaması seçildiyse, Kullanıcı hesabının ve parolanın geçerli olup olmadığını denetleyin. AAD seçildiyse, kiracı KIMLIĞI, uygulama KIMLIĞI ve uygulama gizli anahtarı 'nın AAD 'de ayarlanmış olan ile eşleşip eşleşmediğini denetleyin. [Buradaki](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)yönergeleri izleyin. Hesap Kullanıcı adı/parola geçerliyse, lütfen Dynamics 365 ' e erişime sahip olduğundan ve atanmış bir lisansa sahip olduğundan emin olun (Office kullanıcısı kullanılıyorsa Azure Active Directory veya güvenlik ayarları kullanıyorsanız 11-15 adımları). 
+> Microsoft 365 kimlik doğrulaması seçildiyse, Kullanıcı hesabının ve parolanın geçerli olup olmadığını denetleyin. Azure Active Directory seçilmişse, kiracı KIMLIĞI, uygulama KIMLIĞI ve uygulama gizli anahtarı 'nın Azure Active Directory üzerinde ayarlanmış olan ile eşleşip eşleşmediğini denetleyin. [Buradaki](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)yönergeleri izleyin. Hesap Kullanıcı adı/parola geçerliyse, lütfen Dynamics 365 ' e erişime sahip olduğundan ve atanmış bir lisansa sahip olduğundan emin olun (Office kullanıcısı kullanılıyorsa Azure Active Directory veya güvenlik ayarları kullanıyorsanız 11-15 adımları). 
 
 **Müşteri adayı Dynamics CRM 'ye kaydedilemedi. Kullanıcı, lider varlığındaki leadsourcecode özniteliği için oluşturma izinlerine sahip değil** 
 
-> Uygulama/kullanıcının Microsoft Market lider yazıcı için güvenlik rolleri eksik. [Burada](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)Office kullanıcısı kullanıyorsanız, Azure Active Directory veya güvenlik ayarlarını kullanıyorsanız 11-15 adımlarını izleyin.
+> Uygulama/kullanıcının Microsoft Market lider yazıcı için güvenlik rolleri eksik. Azure Active Directory kullanıyorsanız 11-15 adımlarını veya [burada](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)bir Office kullanıcısı kullanıyorsanız güvenlik ayarlarını izleyin.
 
 **AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: kiracı bulunamadı. Bu örnek, kiracı için etkin abonelikler yoksa gerçekleşebilir.**  
 
-> Lider Yönetimi bölümünde belirtilen dizin kimliği geçerli bir dizin değil. Lütfen adım 2 ' deki yönergelere (Azure Active Directory altında, [buradan](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)) göre dizin kimliğini alın.
+> Lider Yönetimi bölümünde belirtilen dizin kimliği geçerli bir dizin değil. Lütfen adım 2 ' deki yönergelere (Azure Active Directory [altında) göre](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)dizin kimliğini alın.
 
 **Müşteri adayı Dynamics CRM 'ye kaydedilemedi. LastCRMError: SecLib:: RetrievePrivilegeForUser başarısız oldu-kullanıcıya hiçbir rol atanmadı.**  
 
@@ -76,7 +76,7 @@ Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış
 
 **Müşteri adayı Dynamics CRM 'ye kaydedilemedi. LastCRMError: 00:02:00 sonrasında bir yanıt beklenirken istek kanalı zaman aşımına uğradı. Istek çağrısına geçirilen zaman aşımı değerini artırın veya bağlamada SendTimeout değerini artırın. Bu işlem için ayrılan süre daha uzun bir zaman aşımı değerinin bir bölümü olabilir.**  
 
-> Çözüm: Iş Ortağı Merkezi 'nde oturum açın, storefront ayrıntılarını >> müşteri adayı hedefi >> URL 'sini denetleyin, geçerli bir dinamik CRM örneği olup olmadığını denetleyin.
+> Çözüm: Iş Ortağı Merkezi 'nde oturum açın, kurulum teklif >> müşteri liderleri >> URL 'SI, geçerli bir dinamik CRM örneği olup olmadığını kontrol edin.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -139,7 +139,7 @@ Her müşteri adayının seçtiğiniz müşteri adayı hedefindeki alanlara geç
 - *Eylem*
   - "INS"-yükleme anlamına gelir. Bu, bir müşteri, ürününüzü almak için düğmeyi her ziyaret eden Azure Market veya AppSource 'ta bulunur.
   - "PLT"-Iş ortağı LED deneme sürümünü temsil eder. Bu, bir müşteri benimle Iletişim kurma düğmesine her geldiğinde AppSource 'ta bulunur.
-  - "DNC"-başvurmayın için temsil eder. Bu, uygulama sayfanızda çapraz olarak listelenen bir Iş ortağı ile iletişim kurulması istendiği her seferinde AppSource 'ta yer alır. Bu müşterinin uygulamanızda çapraz olarak listelenme kafalarını paylaşıyoruz, ancak bunlara başvurulmaları gerekmez.
+  - "DNC"-başvurmayın için temsil eder. Bu, uygulama sayfanızda çapraz olarak listelenen bir Iş ortağı ile iletişim kurulması istendiği her seferinde AppSource 'ta yer alır. Bu müşterinin uygulamanızda çapraz olarak listelendiği, ancak bunlara ulaşılması gerekmeyen kafa paylaşıyoruz.
   - "Oluştur"-Bu yalnızca Azure portal içindedir ve bir müşterinin kendi hesabına teklifinizi satın aldığı her zaman.
   - "StartTestDrive"-Bu yalnızca test sürücülerine yöneliktir ve bir müşterinin test sürücüsünü her başlattığında olur.
 
@@ -190,4 +190,4 @@ Gizlilik ilkeleri nedeniyle, güvenli olmayan e-posta ile müşteri adayı bilgi
 
 **Azure depolama 'yı (BLOB/tablo), lider hedefi olarak yapılandırdım, ne kadar ücret alınacaktır?** 
 
-Öncü gen verileri düşüktür (neredeyse tüm yayımcılar için 1 GB <). Maliyet, bir 50 ayda 1.000 müşteri adayı alınmışsa, ücretlendirilecektir. 
+Müşteri adayı oluşturma verileri düşüktür (neredeyse tüm yayımcılar için 1 GB <). Maliyet, bir 50 ayda 1.000 müşteri adayı alınmışsa, ücretlendirilecektir. 

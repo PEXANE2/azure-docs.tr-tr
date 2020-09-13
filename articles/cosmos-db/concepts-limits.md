@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400322"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033022"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -163,7 +163,17 @@ Cosmos DB yetkilendirme için HMAC kullanır. Kapsayıcılar, bölüm anahtarlar
 | En fazla kaynak belirteci süre sonu zamanı | Varsayılan olarak 24 saat. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
 | Belirteç yetkilendirme için maksimum saat eğriltme| 15 dk |
 
-Cosmos DB, yazma işlemleri sırasında tetikleyicilerin yürütülmesini destekler. Hizmet, her yazma işlemi için en fazla bir ön tetikleyici ve bir tetikleme tetiklemeyi destekler. 
+Cosmos DB, yazma işlemleri sırasında tetikleyicilerin yürütülmesini destekler. Hizmet, her yazma işlemi için en fazla bir ön tetikleyici ve bir tetikleme tetiklemeyi destekler.
+
+## <a name="metadata-request-limits"></a>Meta veri isteği sınırları
+
+Azure Cosmos DB her hesap için sistem meta verilerini korur. Bu meta veriler, koleksiyonları, veritabanlarını, diğer Azure Cosmos DB kaynakları ve bunların ücretsiz olarak yapılandırmasını listeletmenize olanak tanır.
+
+| Kaynak | Varsayılan limit |
+| --- | --- |
+|Maksimum koleksiyon oluşturma oranı RER dakikası| 5|
+|Dakika başına en fazla veritabanı oluşturma hızı|   5|
+|Dakika başına sağlanan en fazla aktarım hızı güncelleştirme hızı| 5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Otomatik ölçeklendirme sağlanan verimlilik için sınırlar
 

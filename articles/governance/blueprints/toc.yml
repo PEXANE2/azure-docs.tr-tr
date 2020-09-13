@@ -41,9 +41,15 @@
       href: ./samples/azure-security-benchmark.md
     - name: ISM İLE KORUNAN Avustralya Kamu
       items:
+        - name: Genel Bakış
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/index.md
         - name: Denetim eşlemesi
           displayName: 'standards, Australian, Government, ISM, PROTECTED'
           href: ./samples/ism-protected/control-mapping.md
+        - name: Dağıtım adımları
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/deploy.md
     - name: Kanada Federal PBMM
       items:
         - name: Genel Bakış

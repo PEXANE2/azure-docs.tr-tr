@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4c7f82b729355e59ff05d5513e22fa143d53a5e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e36485b54f209b10f9a4e6b4e6a26248955b2275
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206851"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031407"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Derleme görevlerini yapılandırma ve özelleştirme
 
@@ -143,7 +143,7 @@ Mevcut seçenekler şunlardır:
 >
 >   Yeni görev, özgün görevle aynı aracıda çalışıyorsa, yeni görevin çıktısı, *s* kaynakları klasöründeki özgün görevin çıktısının üzerine yazar. Yapı çıkışı aynı olsa da, MSBuild 'i çalıştırmanızı, çıkışları yapıt hazırlama dizinine kopyalamanızı ve sonra da Roslyn çözümleyicilerinin çalıştırılmasını tavsiye ederiz.
 
-Roslyn Çözümleyicileri görevi için ek kaynaklar için Microsoft Docs bulunan [Roslyn tabanlı Çözümleyicileri](https://docs.microsoft.com/dotnet/standard/analyzers/) inceleyin.
+Roslyn Çözümleyicileri görevi için ek kaynaklar için Microsoft Docs bulunan [Roslyn tabanlı Çözümleyicileri](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer) inceleyin.
 
 Bu derleme görevi tarafından yüklenen ve kullanılan çözümleyici paketini [Microsoft. CodeAnalysis. Fxcopçözümleyiciler](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers)NuGet sayfasında bulabilirsiniz.
 

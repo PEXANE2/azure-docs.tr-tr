@@ -2,33 +2,70 @@
 title: Azure AD güvenli karma erişim | Microsoft Docs
 description: Bu makalede, Azure AD ile eski şirket içi, genel bulutunuzun veya özel bulut uygulamalarınızın tümleştirilmesine yönelik iş ortağı çözümleri açıklanmaktadır. Uygulama teslim denetleyicilerini veya ağlarını Azure AD 'ye bağlayarak eski uygulamalarınızın güvenliğini sağlayın.
 services: active-directory
-author: kenwith
-manager: celestedg
+author: gargi-sinha
+manager: martinco
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/18/2019
-ms.author: kenwith
+ms.date: 9/10/2020
+ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 295891afbb0136e0b05bcd49f4045e0e8bcff6e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94a118b6d526d538015b7aa076b2715ed68af338
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763049"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032085"
 ---
-# <a name="secure-hybrid-access-secure-legacy-apps-with-app-delivery-controllers-and-networks"></a>Güvenli karma erişim: uygulama teslim denetleyicileri ve ağlarla güvenli eski uygulamalar sağlayın
+# <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>Güvenli karma erişim: Azure Active Directory ile güvenli eski uygulamalar
 
-Artık şirket içi ve bulut eski kimlik doğrulama uygulamalarınızı, mevcut uygulama teslim denetleyicinize veya ağınıza Azure AD 'ye bağlayarak koruyabilirsiniz. Bu şekilde, Azure AD koşullu erişim ve Azure AD Kimlik Koruması gibi Azure AD özelliklerine sahip tüm uygulamalarda, boşluğu köprülemek ve güvenlik duruşunuzu güçlendirebilirsiniz.
+Artık şirket içi ve bulut eski kimlik doğrulama uygulamalarınızı, ile Azure Active Directory (AD) ile bağlanarak koruyabilirsiniz:
 
-Mevcut ağ ve teslim denetleyicinizi kullanarak, İş süreçleriniz için hala kritik olan eski uygulamaları kolayca koruyabilir ancak Azure AD ile önce koruyamazsınız. Bu uygulamaları korumaya başlamak için ihtiyacınız olan her şeye zaten sahipsiniz.
+- [Azure AD Uygulama Ara Sunucusu](#secure-hybrid-access-through-azure-ad-application-proxy)
 
-![Güvenli karma erişimi gösteren resim](media/secure-hybrid-access/secure-hybrid-access.png)
+- [Mevcut uygulama teslim denetleyiciniz ve ağlarınız](#secure-hybrid-access-through-networking-and-delivery-controllers)
 
-Aşağıdaki satıcılar, Azure AD ile tümleştirme için önceden oluşturulmuş çözümler ve ayrıntılı kılavuz sunar.
+- [Sanal özel ağ (VPN) uygulamaları](#secure-hybrid-access-through-vpn-applications)
 
-* [Akamai kurumsal uygulama erişimi (EAA)](../saas-apps/akamai-tutorial.md)
-* [Citrix uygulama teslim denetleyicisi (ADC)](../saas-apps/citrix-netscaler-tutorial.md)
-* [F5 Big-IP APM](https://aka.ms/f5-hybridaccessguide)
-* [Zscaler Private Access (ZPA)](https://aka.ms/zscaler-hybridaccessguide)
+Azure AD [koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) ve Azure AD [kimlik KORUMASı](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)gibi Azure AD özelliklerine sahip tüm uygulamalarda, boşluğu köprüleyin ve güvenlik duruşunuzu güçlendirebilirsiniz.
+
+## <a name="secure-hybrid-access-through-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu aracılığıyla karma erişimi güvenli hale getirme
+  
+[Uygulama proxy 'sini](https://aka.ms/whyappproxy) kullanarak şirket içi Web uygulamalarınıza [güvenli uzaktan erişim](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) sağlayabilirsiniz. Kullanıcılarınızın VPN kullanması gerekmez. Kullanıcılar, [Çoklu oturum](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-sso)açma işleminden sonra herhangi bir cihazdan uygulamalara kolayca bağlanarak faydalanır. Uygulama proxy 'Si, bir hizmet olarak uzaktan erişim sağlar ve şirket [içi uygulamalarınızı](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application) şirket ağı dışındaki kullanıcılara kolayca yayımlamanıza olanak sağlar. Şirket içi uygulamalarınızı değiştirmenize gerek kalmadan bulut erişim yönetimenizi ölçeklendirmenize yardımcı olur. Bir sonraki adım olarak [bir Azure AD uygulama ara sunucusu dağıtımı planlayın](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) .
+
+## <a name="azure-ad-partner-integrations"></a>Azure AD iş ortağı tümleştirmeleri
+
+### <a name="secure-hybrid-access-through-networking-and-delivery-controllers"></a>Ağ ve dağıtım denetleyicileri aracılığıyla karma erişimi güvenli hale getirme
+
+[Azure AD uygulama ara sunucusu](https://aka.ms/whyappproxy)' ye ek olarak, Microsoft iş ortakları, üçüncü taraf sağlayıcılardan oluşan [sıfır güvenlik çerçevesini](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)kullanmanıza olanak tanır. Mevcut ağ ve teslim denetleyicilerinizi kullanabilir ve iş süreçleriniz için kritik olan eski uygulamaları kolayca koruyabilirsiniz, ancak Azure AD ile önce koruyamazsınız. Bu uygulamaları korumaya başlamak için ihtiyacınız olan her şeye zaten sahipsiniz.
+
+![Görüntü, ağ ortakları ve uygulama proxy 'si ile güvenli karma erişimi gösterir](media/secure-hybrid-access/secure-hybrid-access.png)
+
+Aşağıdaki ağ satıcıları, Azure AD ile tümleştirme için önceden oluşturulmuş çözümler ve ayrıntılı kılavuz sunar.
+
+- [Akamai kurumsal uygulama erişimi (EAA)](https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial)
+
+- [Citrix uygulama teslim denetleyicisi (ADC)](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial)
+
+- [F5 Big-IP APM](https://docs.microsoft.com/azure/active-directory/saas-apps/headerf5-tutorial)
+
+- [Kemp](https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial)
+
+### <a name="secure-hybrid-access-through-vpn-applications"></a>VPN uygulamaları aracılığıyla karma erişimi güvenli hale getirme
+
+VPN çözümlerini kullanarak, kuruluşunuzun verilerini korurken herhangi bir yerden, herhangi bir cihazdan kurumsal ağınıza güvenli erişim sağlayabilirsiniz. Azure AD 'yi bir kimlik sağlayıcısı (ıDP) olarak bulundurarak, şirket içi eski uygulamalarınızı güvenli hale getirmek için Azure AD [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) ve [çok faktörlü kimlik doğrulaması](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) gibi modern kimlik doğrulama ve yetkilendirme yöntemlerini kullanabilirsiniz.  
+
+![Görüntü, VPN iş ortakları ve uygulama proxy 'si ile güvenli karma erişimi gösterir ](media/secure-hybrid-access/app-proxy-vpn.png)
+
+Aşağıdaki VPN satıcıları, Azure AD ile tümleştirme için önceden oluşturulmuş çözümler ve ayrıntılı kılavuz sunar.
+
+• [Cisco AnyConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect)
+
+• [Fortinet](https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial)
+
+• [F5 Big-IP APM](https://aka.ms/f5-hybridaccessguide)
+
+• [Palo Alto ağları küresel koruma](https://docs.microsoft.com/azure/active-directory/saas-apps/paloaltoadmin-tutorial)
+
+• [Zscaler özel erişimi (ZPA)](https://aka.ms/zscaler-hybridaccessguide)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 489025d9cfdd6f1bdbc950e2bd1e7e4d835a4fff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c2d76ccd0c2e81147c39f81568fd1394cc1868b6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079228"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032886"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Bir Node.js uygulaması derleme ve Azure Cloud Service’e dağıtma
 
@@ -36,8 +36,8 @@ Uygulama basit bir "hello world" uygulamasıdır:
 > [!NOTE]
 > Bu öğretici Windows gerektiren Azure PowerShell’i kullanır.
 
-* [Azure PowerShell]'i yükleyip yapılandırın.
-* [.NET 2.7 için Azure SDK’sını] indirip yükleyin. Yükleme kurulumunda şunları seçin:
+* [Azure PowerShell]yükleyip yapılandırın.
+* [.NET 2,7 için Azure SDK] indirin ve yükleyin. Yükleme kurulumunda şunları seçin:
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
 
@@ -180,7 +180,7 @@ Daha fazla bilgi için bkz. [Node.js Geliştirici Merkezi].
 [Azure Websites, Cloud Services ve Virtual Machines karşılaştırması]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [basit bir web uygulaması kullanmayı]: ../app-service/quickstart-nodejs.md
 [Azure PowerShell]: /powershell/azure/
-[.NET 2.7 için Azure SDK’sını]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
+[Azure SDK for .NET 3.0]: https://www.microsoft.com/download/details.aspx?id=54917
 [PowerShell’i bağlayın]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [Azure için Barındırılan Hizmet Oluşturmaya Genel Bakış]: https://azure.microsoft.com/documentation/services/cloud-services/

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 11/04/2019
-ms.openlocfilehash: 0c7702c8832e22d889a5d785dad845430bfb7d17
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/27/2020
+ms.openlocfilehash: f08fb01cf26ddf73d31b575242b27d7d8b4017d9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116888"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033293"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>Hiper ölçek (Citus) yüksek kullanılabilirliği yapılandırma
 
@@ -21,7 +21,7 @@ PostgreSQL için Azure veritabanı-hiper ölçek (Citus), veritabanı kapalı ka
 > [!IMPORTANT]
 > HA gruptaki sunucu sayısını çift katına katdığı için aynı zamanda maliyeti de aynı olacaktır.
 
-Sunucu grubu oluşturma sırasında HA 'nin etkinleştirilmesi veya Azure portal sunucu grubunuzun **yapılandırma** sekmesinde daha sonra olması mümkündür. Kullanıcı arabirimi her iki durumda da benzer şekilde görünür. **Yüksek kullanılabilirlik** IÇIN kaydırıcıyı Evet olarak sürükleyin:
+Sunucu grubu oluşturma sırasında HA 'nin etkinleştirilmesi veya daha sonra Azure portal sunucu grubunuz için **işlem + depolama** sekmesinde daha sonra mümkündür. Kullanıcı arabirimi her iki durumda da benzer şekilde görünür. **Yüksek kullanılabilirlik** IÇIN kaydırıcıyı Hayır 'dan Evet 'e sürükleyin:
 
 ![ha kaydırıcısı](./media/howto-hyperscale-high-availability/01-ha-slider.png)
 

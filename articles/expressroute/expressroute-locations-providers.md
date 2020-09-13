@@ -2,17 +2,17 @@
 title: 'Konumlar ve bağlantı sağlayıcıları: Azure ExpressRoute | Microsoft Docs'
 description: Bu makale, sunulan hizmetlerin konumları ve Azure bölgelerine nasıl bağlanılacağı hakkında ayrıntılı bir genel bakış sağlar. Konuma göre sıralanmıştır.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.author: cherylmc
-ms.openlocfilehash: 30d41729aaf5301d28186c87ce3684c2fcd5d6f5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.author: duau
+ms.openlocfilehash: e10d2c84be45b01cf2a3963d43606909ea7522e0
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927672"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032427"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -77,8 +77,8 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 ### <a name="global-commercial-azure"></a>Küresel ticari Azure
 | **Konum** | **Adres** | **Bölge** | **Yerel Azure bölgeleri** | **ER doğrudan** | **Hizmet sağlayıcıları** |
 | --- | --- | --- | --- | --- | --- |
-| **Amsterdam** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | 1 | Batı Avrupa | 10G, 100G | Aryaka Networks, AT&T Netbonı, Ingiliz telekomünikasyon, Colt, Equinx, Eunetçalışmalar, GÉANT, Intercloud, ınterxiyon, KPN, x REACH, Level 3 Communications, Megaport, NTT Communications, turuncu, Tata Communications, Telefonica, Telenor, Telia taşıyıcısı, Verizon, Zayo |
-| **Amsterdam2** | [Interxiyon AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | Batı Avrupa | 10G, 100G | CenturyLink Cloud Connect, Colt, DE-CIX, Eunetçalışmalar, GÉANT, ınterxiyon, No, turuncu, Vodafone |
+| **Amsterdam** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | 1 | West Europe | 10G, 100G | Aryaka Networks, AT&T Netbonı, Ingiliz telekomünikasyon, Colt, Equinx, Eunetçalışmalar, GÉANT, Intercloud, ınterxiyon, KPN, x REACH, Level 3 Communications, Megaport, NTT Communications, turuncu, Tata Communications, Telefonica, Telenor, Telia taşıyıcısı, Verizon, Zayo |
+| **Amsterdam2** | [Interxiyon AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | West Europe | 10G, 100G | İngiliz Teley, CenturyLink Cloud Connect, Colt, DE-CIX, Eunetçalışmalar, GÉANT, ınterxiyon, No, turuncu, Vodafone |
 | **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | yok | 10G, 100G | Equinix, Megaport |
 | **Auckland** | [Vocus grubu NZ Albümno](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | yok | 'Yi | Devoli, Kordia, Megaport, Spark NZ, Vocus Group NZ |
 | **Bangkok** | [AıS](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | yok | 'Yi | A,, UıH |
@@ -96,14 +96,14 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | BAE Kuzey | yok | Etisalat UAE |
 | **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | BAE Kuzey | yok | DE-CIX, du datamena, Megaport, turuncu, Cumxcom |
 | **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Kuzey Avrupa | 10G, 100G | Colt, EIR, Equinix, GEANT, Eunetçalışmalar, ınterxiyon, Megaport |
-| **Frankfurt** | [Interxiyon FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Almanya Orta Batı | 10G, 100G | &T Netbono, CenturyLink Cloud Connect, Colt, DE-CIX, Equinix, Eunetçalışma, GEANT, ınterxiyon, Megaport, turuncu, Telia taşıyıcısı |
+| **Frankfurt** | [Interxiyon FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Almanya Orta Batı | 10G, 100G | &T Netbono, CenturyLink Cloud Connect, Colt, DE-CIX, Equinix, Eunetçalışma, GEANT, ınterxiyon, Megaport, turuncu, Telia taşıyıcısı, T-Systems |
 | **Cenevre** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | İsviçre Batı | 10G, 100G | Equinix, Megaport |
 | **Hong Kong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Doğu Asya | 'Yi | Aryaka Networks, Ingiliz Teletası, CenturyLink Cloud Connect, Başkan, Çin telekomünikasyon küresel, Equinx, Intercloud, Megaport, NTT Communications, turuncu, PCCW küresel Limited, Tata Iletişimleri, Telia taşıyıcısı, Verizon |
 | **Hong Kong2** | [MEGA-ı](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | Doğu Asya | 'Yi | Çin Mobile International, Çin telekomünikasyon küresel, PCFA küresel sınırlı, SingTel |
 | **Cakarta** | Telkoa Endonezya | 4 | yok | 'Yi | |
 | **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Güney Afrika Kuzey | 'Yi | BCX, Ingiliz Telekoı, Internet çözümleri-bulut bağlantısı, sıvı telekomünikasyon, turuncu, Teraco |
 | **Kuala Lumpur** | [ZAMAN dotCom Menara AIMS](https://www.time.com.my/enterprise/connectivity/direct-cloud) | 2 | yok | yok | TIME dotCom |
-| **Las Vegas** | [Anahtar LV](https://www.switch.com/las-vegas) | 1 | yok | yok | CenturyLink Cloud Connect, Megaport |
+| **Las Vegas** | [Anahtar LV](https://www.switch.com/las-vegas) | 1 | yok | yok | CenturyLink Cloud Connect, Megaport, PacketFabric |
 | **Londra** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | Güney Birleşik Krallık | 10G, 100G | &T Netbononun, Ingiliz telekomünikasyon, Colt, Equinx, Eunetçalışmalar, Intercloud, Internet Solutions-Cloud Connect, ınterxiyon, JISC, Level 3 Iletişimleri, Megaport, MTN, NTT Communications, turuncu, PCCW küresel Limited, Tata Iletişimleri, Telehouse-KDDI, Telenor, Telia taşıyıcısı, Verizon, Vodafone, Zayo |
 | **London2** | [Telehouse Kuzey Iki](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | Güney Birleşik Krallık | 10G, 100G | CenturyLink Cloud Connect, Colt, GTT, x REACH, Equınx, Megaport, Telehouse-KDDI |
 | **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | yok | 10G, 100G | CoreSite, Equinx, Megaport, Neutrona Networks, NTT, Zayo |
@@ -111,9 +111,9 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Marsilya** |[Interxiyon MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Güney Fransa | yok | DE-CIX, GEANT, ınterxiyon, Jaguar Network, Ooredoo Cloud Connect |
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Avustralya Güneydoğu | 10G, 100G | AARNet, Devoli, Equinix, Megaport, NEXTDC, Ops, Telstra Corporation, TPG telekomünikasyon |
 | **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | yok | 10G, 100G | Claro, C3ntro, Equinix, Megaport, nörona Networks |
-| **Milano** | [IRıDEOS](https://irideos.it/en/data-centers/) | 1 | yok | 'Yi | Equinx, Reteaydınlatmalı |
+| **Milano** | [IRıDEOS](https://irideos.it/en/data-centers/) | 1 | yok | 'Yi | Colt, Equinx, Reteaydınlatma |
 | **Minneapolis** | [Birlikte bulundurgix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | yok | 10G, 100G | Cologix |
-| **Montreal** | [Birlikte bulundurgix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | yok | 10G, 100G | Bell Kanada, Kolombiya Gix, Megaport, Telus, Zayo |
+| **Montreal** | [Birlikte bulundurgix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | yok | 10G, 100G | Bell Kanada, Kolombiya Gix, Fibrenoire, Megaport, Telus, Zayo |
 | **Mumbai** | Tata Communications | 2 | Batı Hindistan | 'Yi | DE-CIX, küresel CloudXchange (GCX), Reliance jıo, Sıfy, Tata Iletişimleri, Verizon |
 | **Bombay2** | Airtel | 2 | Batı Hindistan | 'Yi | Airtel, Sify, Vodafone Idea |
 | **Münih** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | yok | 'Yi | DE-CıX |

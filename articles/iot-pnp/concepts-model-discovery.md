@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4cdd6f63c9e5e717a533b88702b2886387fe3e39
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 9752589c8863cc911369225d268035d9f61c0273
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475252"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032036"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT çözümünde IoT Tak ve Kullan modellerini kullanma
 
@@ -40,7 +40,7 @@ Bir çözüm, aşağıdaki üç yöntemden birini kullanarak IoT Tak ve Kullan c
 
 ### <a name="get-device-twin-api"></a>Cihaz Ikizi API 'sini al
 
-Çözüm, IoT Tak ve Kullan cihazının model KIMLIĞINI almak için [Device ikizi](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) API 'sini alabilir.
+Çözüm, IoT Tak ve Kullan cihazının model KIMLIĞINI almak için [Device ikizi](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) API 'sini alabilir.
 
 Aşağıdaki cihaz ikizi yanıt kod parçacığında, `modelId` ıot Tak ve kullan cihazının model kimliğini içerir:
 

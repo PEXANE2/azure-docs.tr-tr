@@ -6,17 +6,17 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 25c92437b350d7329c340fe1ea13b3df40e231ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f30e9c30f1067595fc502bf3ea349cd6b7630ae1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020608"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032689"
 ---
 # <a name="statistics-in-synapse-sql"></a>SYNAPSE SQL istatistikleri
 
@@ -443,7 +443,7 @@ Tam sözdizimi için bkz. [güncelleştirme istatistikleri](/sql/t-sql/statement
 
 Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
-| Katalog görünümü | Açıklama |
+| Katalog görünümü | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Her sütun için bir satır. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Veritabanındaki her nesne için bir satır. |
@@ -457,7 +457,7 @@ Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
 Bu sistem işlevleri, istatistiklerle çalışmak için faydalıdır:
 
-| Sistem işlevi | Açıklama |
+| Sistem işlevi | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |İstatistik nesnesinin son güncelleştirilme tarihi. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |İstatistik nesnesi tarafından anlaşıldıkça değerlerin dağılımı hakkında özet düzeyi ve ayrıntılı bilgiler. |
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS () farkları
 
-`DBCC SHOW_STATISTICS()`SQL Server karşılaştırıldığında SQL havuzunda daha net bir şekilde uygulanmıştır:
+`DBCC SHOW_STATISTICS()` SQL Server karşılaştırıldığında SQL havuzunda daha net bir şekilde uygulanmıştır:
 
 - Belgelenmemiş özellikler desteklenmez.
 - Stats_stream kullanılamıyor.

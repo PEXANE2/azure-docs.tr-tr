@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 112792d4ccee2be7f85e6a5a6c0caf64df9a019e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7046062b1c2e42f47d650df6d616d6fb73c8d1ca
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286079"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033073"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 'da ağ sanal gereç sorunları
 
@@ -140,7 +140,7 @@ VM ağı artışlar kullanıyorsa veya yüksek kullanım dönemlerini gösteriyo
    sudo tcpdump-S0-ı eth0-X-w vmtrace. Cap
 
 2. Kaynak VM 'den hedef VM 'ye **Psping** veya **Nmap** kullanın (örneğin: `PsPing 10.0.0.4:80` veya `Nmap -p 80 10.0.0.4` ).
-3. [Ağ İzleyicisi](https://www.microsoft.com/download/details.aspx?id=4865) veya tcpdump kullanarak hedef VM 'den ağ izlemesini açın. Ya da (Linux) gibi, **Psping** veya **Nmap** çalıştıran kaynak VM 'nin IP 'si için bir görüntüleme filtresi `IPv4.address==10.0.0.4 (Windows netmon)` uygulayın `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` .
+3. [Ağ İzleyicisi](https://cnet-downloads.com/network-monitor) veya tcpdump kullanarak hedef VM 'den ağ izlemesini açın. Ya da (Linux) gibi, **Psping** veya **Nmap** çalıştıran kaynak VM 'nin IP 'si için bir görüntüleme filtresi `IPv4.address==10.0.0.4 (Windows netmon)` uygulayın `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` .
 
 ### <a name="analyze-traces"></a>İzlemeleri çözümle
 

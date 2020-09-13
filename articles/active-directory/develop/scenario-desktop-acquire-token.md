@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 0d1946862ec8af6a107ca4f5f963efbcb8912a5e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: ab6842fe6787b9e1a61b3c25fabb6c64c2597b9a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440941"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032818"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması: belirteç alma
 
@@ -183,7 +183,7 @@ Android 'de, ayrıca gösterildiği gibi ana etkinliği de belirtmeniz gerekir. 
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-Etkileşimli olduğundan, Kullanıcı arabirimi önemlidir. `AcquireTokenInteractive` , kendisini destekleyen platformlar için üst Kullanıcı arabirimini belirten belirli bir isteğe bağlı parametreye sahiptir. Bir masaüstü uygulamasında kullanıldığında, `.WithParentActivityOrWindow` platforma bağlı olan farklı bir türü vardır.
+Etkileşimli olduğundan, Kullanıcı arabirimi önemlidir. `AcquireTokenInteractive` , kendisini destekleyen platformlar için üst Kullanıcı arabirimini belirten belirli bir isteğe bağlı parametreye sahiptir. Bir masaüstü uygulamasında kullanıldığında, `.WithParentActivityOrWindow` platforma bağlı olan farklı bir türü vardır. Alternatif olarak, oturum açma iletişim kutusunun ekranda nerede göründüğünü denetlemek istemediğiniz bir pencere oluşturmak için isteğe bağlı üst pencere parametresini atlayabilirsiniz. Bu durum, komut satırı tabanlı uygulamalar için geçerli olur, başka bir arka uç hizmetine çağrı geçirmek için kullanılır ve herhangi bir Windows for User etkileşimi gerekmez. 
 
 ```csharp
 // net45

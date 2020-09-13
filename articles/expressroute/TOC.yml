@@ -1,4 +1,4 @@
-- name: ExpressRoute Belgeleri
+- name: ExpressRoute belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
@@ -8,6 +8,7 @@
   items:
     - name: ExpressRoute bağlantı hattı oluşturma - ARM Şablonu
       href: quickstart-create-expressroute-vnet-template.md
+  expanded: true
 - name: Öğreticiler
   items:
     - name: Bağlantı hattı oluşturma ve değiştirme

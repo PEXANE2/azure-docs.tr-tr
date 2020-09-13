@@ -1,14 +1,14 @@
 ---
 title: Şema örnekleri dizini
 description: Azure Blueprints ile ortamlar, ilkeler ve Bulut Benimseme Çerçevesi temelleri dağıtmak için uyumluluk ve standart örnek dizini.
-ms.date: 07/10/2020
+ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: cf8109dc8446fe1e3625e4f7c6fd0b5493c352d6
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 7ac95dee88cb244ecb4b60738daae26bb0d8831a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488363"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031883"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints örnekleri
 
@@ -18,7 +18,7 @@ Aşağıdaki tabloda Azure Blueprints'e ait örneklerin bağlantıları yer alı
 
 | Örnek | Açıklama |
 |---------|---------|
-| [ISM İLE KORUNAN Avustralya Kamu](./ism-protected/control-mapping.md) | ISM İLE KORUNAN Avustralya Kamu’ya uyumluluk için korkuluklar sağlar. |
+| [ISM İLE KORUNAN Avustralya Kamu](./ism-protected/index.md) | ISM İLE KORUNAN Avustralya Kamu’ya uyumluluk için korkuluklar sağlar. |
 | [Azure Güvenlik Karşılaştırması](./azure-security-benchmark.md) | [Azure Güvenlik Karşılaştırması](../../../security/benchmarks/overview.md) uyumluluğu için koruma sağlar. |
 | [Kanada Federal PBMM](./canada-federal-pbmm/index.md) | Kanada Federal Tarafından Korunan B, Orta Düzeyde Bütünlük, Orta Düzeyde Kullanılabilirlik (PBMM) için uyumluluğa yönelik koruma sağlar. |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| CIS Microsoft Azure Foundations Benchmark önerileriyle uyumlu olmaya yardımcı olan bir dizi ilke sağlar. |

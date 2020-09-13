@@ -1,19 +1,19 @@
 ---
-title: Azure Izleyicisini dağıtma
+title: Azure İzleyici’yi dağıtma
 description: Azure aboneliğinizdeki tüm kaynakları izlemek üzere Azure Izleyici 'nin tamamen uygulanması için gereken farklı adımları açıklar.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 34a048c702b62caeecaf21e710a9dcd9156e4aea
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87801772"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033481"
 ---
-# <a name="deploy-azure-monitor"></a>Azure Izleyicisini dağıtma
+# <a name="deploy-azure-monitor"></a>Azure İzleyici’yi dağıtma
 Azure izleyici 'nin tüm Azure kaynaklarınızın izlenmesini sağlamak için Azure izleyici bileşenleri yapılandırma ve Azure Izleyici 'nin toplanacak izleme verilerini oluşturmak için Azure kaynaklarını yapılandırma bir birleşimidir. Bu makalede, Azure aboneliğinizdeki tüm kaynakları izlemek için ortak bir yapılandırma kullanarak Azure Izleyici 'nin tamamen uygulanması için gereken farklı adımlar açıklanmaktadır. Her adımın temel açıklamaları, ayrıntılı yapılandırma gereksinimleri için diğer belgelerin bağlantılarıyla birlikte sağlanır.
 
 > [!IMPORTANT]
@@ -48,7 +48,7 @@ Azure Izleyici 'nin aşağıdaki özellikleri, bir Azure aboneliği oluştururke
 
 
 ### <a name="create-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
-Bu tür verilerin Azure kaynaklarından Günlükler olarak toplanması, Azure sanal makinelerinin Konuk işletim sisteminden veri toplanması ve Azure Izleyici öngörülerinin çoğu için gerekli olan [Azure Izleyici günlüklerini](platform/data-platform-logs.md)etkinleştirmek için en az bir Log Analytics çalışma alanı gerekir. Azure Sentinel ve Azure Güvenlik Merkezi gibi diğer hizmetler de Log Analytics çalışma alanı kullanır ve Azure Izleyici için kullandığınız aynı şekilde paylaşabilir. Bu izlemeyi desteklemek için tek bir çalışma alanıyla başlayabilirsiniz, ancak birden çok çalışma alanı ne zaman kullanılacağı konusunda rehberlik için [Azure Izleyici günlükleri dağıtımını tasarlama](platform/design-logs-deployment.md) konusuna bakın.
+Bu tür verilerin Azure kaynaklarından Günlükler olarak toplanması, Azure sanal makinelerinin Konuk işletim sisteminden veri toplanması ve Azure Izleyici öngörülerinin çoğu için gerekli olan [Azure Izleyici günlüklerini](platform/data-platform-logs.md)etkinleştirmek için en az bir Log Analytics çalışma alanı gerekir. Azure Sentinel ve Azure Güvenlik Merkezi gibi diğer hizmetler de Log Analytics çalışma alanı kullanır ve Azure Izleyici için kullandığınız aynı şekilde paylaşabilir. Bu izlemeyi desteklemek için tek bir çalışma alanıyla başlayabilirsiniz, ancak birden çok çalışma alanı ne zaman kullanılacağı konusunda rehberlik için  [Azure Izleyici günlükleri dağıtımını tasarlama](platform/design-logs-deployment.md) konusuna bakın.
 
 Log Analytics çalışma alanı oluşturmak için herhangi bir maliyet yoktur, ancak bu verilere toplanacak veriler yapılandırıldıktan sonra potansiyel bir ücret gönderilir. Ayrıntılar için bkz. [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme](platform/manage-cost-storage.md) .  
 
@@ -118,9 +118,9 @@ Bu aracıları yükleme ve yapılandırma hakkında ayrıntılı bilgi için, bk
 Azure Izleyici, izlemek istediğiniz her uygulama için yapılandırmanız gereken [Application Insights](app/app-insights-overview.md)kullanarak özel uygulamalarınızı izler. Yapılandırma işlemi, izlenen uygulamanın türüne ve gerçekleştirmek istediğiniz izleme türüne göre değişir. Application Insights tarafından toplanan veriler, özelliğe bağlı olarak Azure Izleyici ölçümleri, Azure Izleyici günlükleri ve Azure Blob depolama alanında depolanır. Performans verileri, Azure Izleyici ölçümlerinde ve Azure Izleyici günlüklerinde ek yapılandırma gerekmeden depolanır.
 
 ### <a name="create-an-application-resource"></a>Uygulama kaynağı oluşturma
-İzlemek istediğiniz her uygulama için Application Insights bir kaynak oluşturmanız gerekir. Application Insights tarafından toplanan günlük verileri Azure Izleyici günlüklerinde depolanır, ancak [Azure Izleyici günlüklerindeki veriler nasıl yapılandırılmıştır?](platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured)bölümünde açıklandığı gibi Log Analytics çalışma alanınızdan ayrıdır. Şu anda önizleme aşamasında olan uygulama verilerinizi doğrudan diğer verilerle birlikte bir Log Analytics çalışma alanında depolamanıza olanak tanır. Bu, yapılandırmanızı basitleştirir ve uygulamanızın bir Log Analytics çalışma alanının tüm özelliklerinden yararlanmasını sağlar.
+İzlemek istediğiniz her uygulama için Application Insights bir kaynak oluşturmanız gerekir. Application Insights tarafından toplanan günlük verileri, çalışma alanı tabanlı bir uygulama için Azure Izleyici günlüklerinde depolanır. Klasik uygulamalar için günlük verileri, [veri yapısı](platform/data-platform-logs.md#structure-of-data)bölümünde açıklandığı gibi Log Analytics çalışma alanınızdan ayrı bir şekilde depolanır.
 
- Uygulamayı oluştururken, klasik veya çalışma alanı tabanlı (Önizleme) seçeneğini kullanmanız gerekir. Bkz. klasik bir uygulama oluşturmak için [Application Insights kaynağı oluşturma](app/create-new-resource.md) . Çalışma alanı tabanlı bir uygulama oluşturmak için [çalışma alanı tabanlı Application Insights kaynaklarına (Önizleme)](app/create-workspace-resource.md) bakın.
+ Uygulamayı oluştururken klasik veya çalışma alanı tabanlı ' i kullanmayı seçmeniz gerekir. Bkz. klasik bir uygulama oluşturmak için [Application Insights kaynağı oluşturma](app/create-new-resource.md) . Çalışma alanı tabanlı bir uygulama oluşturmak için [çalışma alanı tabanlı Application Insights kaynaklarına (Önizleme)](app/create-workspace-resource.md) bakın.
 
 ### <a name="configure-codeless-or-code-based-monitoring"></a>Kodsuz kullanacaksınız veya kod tabanlı izlemeyi yapılandırma
 Bir uygulama için izlemeyi etkinleştirmek üzere, kodsuz kullanacaksınız veya kod tabanlı izleme kullanıp kullanmayacağınızı karar vermelisiniz. Yapılandırma işlemi, bu kararya ve izlediğiniz uygulamanın türüne bağlı olarak farklılık gösterir.

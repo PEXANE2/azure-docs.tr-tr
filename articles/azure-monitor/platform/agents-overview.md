@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: 2a0c95e45dc529d779d6b06e1e5bdb32ba80b241
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 48d233dee063d8f9049e6e54baa2d744e1b8b058
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007545"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033464"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Izleyici aracılarına genel bakış
 
@@ -79,7 +79,7 @@ Azure Izleyici aracısının sınırlamaları şunlardır:
 Şunları yapmanız gerekirse Log Analytics aracısını kullanın:
 
 * Azure 'un içindeki veya dışındaki sanal veya fiziksel makinelerden gelen günlükleri ve performans verilerini toplayın. 
-* [Günlük sorguları](../log-query/log-query-overview.md)gibi [Azure izleyici günlükleri](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) tarafından desteklenen özelliklerden yararlanmak için bir Log Analytics çalışma alanına veri gönderin.
+* [Günlük sorguları](../log-query/log-query-overview.md)gibi [Azure izleyici günlükleri](data-platform-logs.md) tarafından desteklenen özelliklerden yararlanmak için bir Log Analytics çalışma alanına veri gönderin.
 * Sanal makinelerinizi ölçekli olarak izlemenize ve diğer kaynaklardaki ve dış süreçlerdeki işlem ve bağımlılıklarını izleyicmenize olanak tanıyan [VM'ler için Azure izleyici](../insights/vminsights-overview.md) kullanın.  
 * [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) veya [Azure Sentinel](../../sentinel/overview.md)kullanarak sanal makinelerinizin güvenliğini yönetin.
 * Azure sanal makinelerinizin kapsamlı bir şekilde yönetilmesini sağlamak için [Azure Otomasyonu güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md), [Azure Otomasyonu durum yapılandırması](../../automation/automation-dsc-overview.md)veya [Azure Otomasyonu değişiklik izleme ve envanterini](../../automation/change-tracking.md) kullanın

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: ad164f8af3e5506ae5ac9121010b99303286dd1f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320605"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033005"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Doğrulama (önizleme)
 
@@ -25,7 +25,7 @@ Azure kanıtlama, [Azure gizli bilgi işlem](../confidential-computing/overview.
 
 Azure kanıtlama, işlem varlıklarından gelen kanıtları alır, bunları bir dizi talebe dönüştürür, yapılandırılabilir ilkelere göre doğrular ve talep tabanlı uygulamalar için şifreleme provaları üretir (örneğin, bağlı olan taraflar ve denetim yetkilileri).
 
-## <a name="use-cases"></a>Uygulama alanları
+## <a name="use-cases"></a>Kullanım örnekleri
 
 Azure kanıtlama, birden çok ortam ve farklı kullanım durumları için kapsamlı kanıtlama hizmetleri sağlar.
 
@@ -85,7 +85,7 @@ Aşağıda şu anda BCDR tarafından desteklenen bölgeler verilmiştir
 - Bölge için [Azure Traffic Manager](../traffic-manager/index.yml) , sistem durumu araştırmasının düştüğü olduğunu algılayacak ve uç noktayı eşleştirilmiş bölgeye geçecek
 - Mevcut bağlantılar çalışmayacak ve iç sunucu hatası ya da zaman aşımı sorunları alacak
 - Tüm denetim düzlemi işlemleri engellenir. Müşteriler, birincil bölgede kanıtlama sağlayıcıları ve güncelleştirme ilkeleri oluşturamayacak
-- Attest dahil tüm veri düzlemi işlemleri, çağrılar birincil bölgede çalışmaya devam edecektir
+- Onaylamasını sağlar çağrıları dahil tüm veri düzlemi işlemleri birincil bölgede çalışmaya devam edecektir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure kanıtlama temel kavramları](basic-concepts.md) hakkında bilgi edinin

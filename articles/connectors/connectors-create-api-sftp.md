@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ROBOTS: NOINDEX
-ms.openlocfilehash: 817c17b0e05180f5c7a616320a25c2bc3c21c5f8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd2f8ce45ef9270866941cdedb7c768529c3175f
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651411"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033311"
 ---
 # <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>Azure Logic Apps içinde SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -114,6 +114,10 @@ Bu tetikleyici bir SFTP sunucusunda dosya eklendiğinde veya değiştirildiğind
 ### <a name="sftp-action-get-content"></a>SFTP eylemi: içerik al
 
 Bu eylem, SFTP sunucusundaki bir dosyanın içeriğini alır. Örneğin, önceki örnekteki tetikleyiciyi ve dosyanın içeriğinin uyması gereken bir koşulu ekleyebilirsiniz. Koşul doğru ise, içeriği alan eylem çalıştırılabilir.
+
+## <a name="connector-reference"></a>Bağlayıcı başvurusu
+
+Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/azure/data-factory/connector-sftp)gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

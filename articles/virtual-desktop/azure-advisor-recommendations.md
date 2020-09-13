@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b14dd4aa44620f2b13891a18fc473acbcb0f3245
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087322"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033039"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Azure Advisor önerilerini çözme
 
@@ -34,7 +34,7 @@ Doğrulama ortamını etkinleştirmek için:
 
 2. Ardından, bir üretim ortamından doğrulama ortamına değiştirmek istediğiniz konak havuzunu seçin.
 
-3. Konak havuzunuzdaki ekranın sağ tarafındaki sütunun **Özellikler** sekmesini seçin. Sonra, "doğrulama ortamı" görene kadar aşağı kaydırın. **Evet**' i seçin ve ardından **Uygula**' yı seçin.
+3. Konak havuzunuzdaki sol sütundaki **Özellikler** ' i seçin. Sonra, "doğrulama ortamı" görene kadar aşağı kaydırın. **Evet**' i seçin ve ardından **Uygula**' yı seçin.
 
 >[!div class="mx-imgBorder"]
 >![Özellikler menüsünün ekran görüntüsü. "Doğrulama ortamı" kırmızı renkle vurgulanır ve "Evet" balonu seçilidir.](media/validation-yes.png)

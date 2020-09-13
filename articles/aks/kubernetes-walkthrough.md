@@ -3,7 +3,7 @@ title: 'Hızlı başlangıç: Azure CLı kullanarak AKS kümesi dağıtma'
 description: Hızlı bir şekilde bir Kubernetes kümesi oluşturmayı, uygulamayı dağıtmayı ve Azure CLı kullanarak Azure Kubernetes Service (AKS) içindeki performansı izlemeyi öğrenin.
 services: container-service
 ms.topic: quickstart
-ms.date: 08/18/2020
+ms.date: 09/11/2020
 ms.custom:
 - H1Hack27Feb2017
 - mvc
@@ -13,12 +13,12 @@ ms.custom:
 - seo-python-october2019
 - devx-track-azurecli
 - contperfq1
-ms.openlocfilehash: 975f32872cd5fcdf00fb9e394920a7a50ba898ce
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: c5198f4ed838e653ed2eab15fa26493075a56d8a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482832"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032614"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir Azure Kubernetes hizmet kümesi dağıtma
 
@@ -187,7 +187,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-front
-        image: microsoft/azure-vote-front:v1
+        image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
         resources:
           requests:
             cpu: 100m
