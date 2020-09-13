@@ -2,18 +2,18 @@
 title: 'ExpressRoute bağlantı hattı oluşturma ve değiştirme: Azure CLı'
 description: Bu makalede, CLı kullanarak bir ExpressRoute bağlantı hattı oluşturma, sağlama, doğrulama, güncelleştirme, silme ve kaldırma işlemlerinin nasıl yapılacağı gösterilir.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2d8ad6b90f533161835ab12a43865b177c24c14e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5f3270bbed5042ef89d5818523005dfc31589945
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503591"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566152"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI kullanarak ExpressRoute bağlantı hattını oluşturma ve değiştirme
 
@@ -142,7 +142,7 @@ Aşağıdaki örnek, bir 200 Mbps ExpressRoute bağlantı hattının, Silicon Va
 
 Doğru SKU katmanını ve SKU ailesini belirttiğinizden emin olun:
 
-* SKU katmanı, bir ExpressRoute devresinin [Yerel](expressroute-faqs.md#expressroute-local), standart veya [Premium](expressroute-faqs.md#expressroute-premium)olup olmadığını belirler. *Yerel*, *Standart* veya *Premium*belirtebilirsiniz.
+* SKU katmanı, bir ExpressRoute devresinin [Yerel](expressroute-faqs.md#expressroute-local), standart veya [Premium](expressroute-faqs.md#expressroute-premium)olup olmadığını belirler. *Yerel*, *Standart* veya *Premium*belirtebilirsiniz. SKU 'YU *Standart/Premium* 'dan *Yerel*olarak değiştiremezsiniz.
 * SKU ailesi Faturalandırma türünü belirler. Tarifeli veri planı için *Metereddata* , sınırsız bir veri planı Için de *unlimiteddata* belirtebilirsiniz. Faturalandırma türünü *Metereddata* 'Den *unlimiteddata*olarak değiştirebilirsiniz, ancak türü *Unlimiteddata* iken *Metereddata*olarak değiştiremezsiniz. *Yerel* devre yalnızca *limiteddata* ' dır.
 
 
@@ -280,7 +280,7 @@ Ardından, bir sanal ağı ExpressRoute bağlantı hattına bağlayın. [Sanal a
 
 Bağlantıyı etkilemeden bir ExpressRoute devresine ait belirli özellikleri değiştirebilirsiniz. Kapalı kalma süresi olmadan aşağıdaki değişiklikleri yapabilirsiniz:
 
-* ExpressRoute devreniz için bir ExpressRoute Premium eklentisini etkinleştirebilir veya devre dışı bırakabilirsiniz.
+* ExpressRoute devreniz için bir ExpressRoute Premium eklentisini etkinleştirebilir veya devre dışı bırakabilirsiniz. SKU 'nun *Standart/Premium* 'dan *Yerel* olarak değiştirilmesi desteklenmez.
 * Bağlantı noktasında kullanılabilir kapasite bulunduğundan ExpressRoute devrenizi için bant genişliğini artırabilirsiniz. Ancak, bir bağlantı hattının devre dışı bir şekilde düşürülmesi desteklenmez.
 * Ölçüm planını ölçülen verilerden sınırsız veriye dönüştürebilirsiniz. Ancak, ölçüm planının sınırsız verilerden ölçülen verilerle değiştirilmesi desteklenmez.
 * *Klasik Işlemlere Izin ver*' i etkinleştirebilir ve devre dışı bırakabilirsiniz.

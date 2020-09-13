@@ -2,13 +2,13 @@
 title: Kaynak türüne göre işlem desteğini taşıma
 description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kaynak türlerini listeler.
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: 69fcb271ac94df3faf8e9e37c1ef30a6c0681441
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079502"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566135"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 
@@ -728,7 +728,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | özellikler | Hayır | Hayır |
 > | checkdomainnameavaılabılıty | Hayır | Hayır |
-> | DomainNames | Evet | Hayır |
+> | DomainNames | Yes | Hayır |
 > | DomainNames/yetenekleri | Hayır | Hayır |
 > | DomainNames/internalloadbalancers | Hayır | Hayır |
 > | DomainNames/servicecertificates | Hayır | Hayır |
@@ -744,7 +744,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | quotas | Hayır | Hayır |
 > | resourcetypes | Hayır | Hayır |
 > | validatesubscriptionmoveavaılabılıty | Hayır | Hayır |
-> | virtualmachines | Yes | Hayır |
+> | virtualmachines | Yes | Yes |
 > | virtualmachines/diagnosticsettings | Hayır | Hayır |
 > | virtualmachines/MetricDefinitions | Hayır | Hayır |
 > | virtualmachines/ölçümler | Hayır | Hayır |
@@ -796,7 +796,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | osplatformımages | Hayır | Hayır |
 > | publicımages | Hayır | Hayır |
 > | quotas | Hayır | Hayır |
-> | storageaccounts | Evet | Hayır |
+> | storageaccounts | Yes | Hayır |
 > | storageaccounts/blobservices | Hayır | Hayır |
 > | storageaccounts/fileservices | Hayır | Hayır |
 > | storageaccounts/MetricDefinitions | Hayır | Hayır |
@@ -917,7 +917,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | rezervationönerilere | Hayır | Hayır |
 > | rezervlerin Özeti | Hayır | Hayır |
 > | rezervlik işlemleri | Hayır | Hayır |
-> | tags | Hayır | Hayır |
+> | etiketler | Hayır | Hayır |
 > | Kira | Hayır | Hayır |
 > | larındaki | Hayır | Hayır |
 > | UsageDetails | Hayır | Hayır |
@@ -1437,10 +1437,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | labcenters | Hayır | Hayır |
-> | larda | Evet | Hayır |
+> | larda | Yes | Hayır |
 > | Laboratuvarlar/ortamlar | Yes | Yes |
 > | Labs/servicerunanlar | Yes | Yes |
-> | Labs/virtualmachines | Evet | Hayır |
+> | Labs/virtualmachines | Yes | Hayır |
 > | yerlerini | Hayır | Hayır |
 > | konumlar/işlemler | Hayır | Hayır |
 > | işlemler | Hayır | Hayır |
@@ -1866,8 +1866,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Hayır | Hayır |
 > | Tümleştirme hesapları | Yes | Yes |
-> | ıntegrationserviceortamortamları | Evet | Hayır |
-> | ıntegrationserviceortamortamları/managedap | Evet | Hayır |
+> | ıntegrationserviceortamortamları | Yes | Hayır |
+> | ıntegrationserviceortamortamları/managedap | Yes | Hayır |
 > | ısotedenvironments | Hayır | Hayır |
 > | yerlerini | Hayır | Hayır |
 > | konumlar/iş akışları | Hayır | Hayır |
@@ -1884,7 +1884,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | konumlar/işlemler | Hayır | Hayır |
 > | konumlar/operationsstatus | Hayır | Hayır |
 > | işlemler | Hayır | Hayır |
-> | Hizmetleri | Evet | Hayır |
+> | Hizmetleri | Yes | Hayır |
 > | çalışma alanı | Yes | Yes |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
@@ -2197,10 +2197,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | NetworkInterfaces | Yes | Yes |
 > | networkprofiles | Hayır | Hayır |
 > | networksecuritygroups | Yes | Yes |
-> | networkwatchers | Evet | Hayır |
-> | networkwatchers/connectionmonitörleri | Evet | Hayır |
-> | networkwatchers/flowlogs | Evet | Hayır |
-> | networkwatchers/pingkafesler | Evet | Hayır |
+> | networkwatchers | Yes | Hayır |
+> | networkwatchers/connectionmonitörleri | Yes | Hayır |
+> | networkwatchers/flowlogs | Yes | Hayır |
+> | networkwatchers/pingkafesler | Yes | Hayır |
 > | işlemler | Hayır | Hayır |
 > | p2svpngateways | Hayır | Hayır |
 > | privatednsoperationresults | Hayır | Hayır |
@@ -2513,7 +2513,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Abonelikler/kaynaklar | Hayır | Hayır |
 > | Abonelikler/etiket adları | Hayır | Hayır |
 > | Abonelikler/etiket adları/tagvalues | Hayır | Hayır |
-> | tags | Hayır | Hayır |
+> | etiketler | Hayır | Hayır |
 > | templatespec | Hayır | Hayır |
 > | templatespec/sürümler | Hayır | Hayır |
 > | Kira | Hayır | Hayır |
@@ -2789,7 +2789,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | konumlar/jobagentoperationsonuçları | Hayır | Hayır |
 > | konumlar/longtermretentionbackupazureasyncoperation | Hayır | Hayır |
 > | konumlar/longtermretentionbackupoperationresults | Hayır | Hayır |
-> | konumlar/longtermretentionbackups | Hayır | Hayır |
+> | konumlar/longtermretentionbackups | Yes | Yes |
 > | konumlar/longtermretentionmanagedinstancebackupazureasyncoperation | Hayır | Hayır |
 > | konumlar/longtermretentionmanagedinstancebackupoperationresults | Hayır | Hayır |
 > | konumlar/longtermretentionmanagedinstancebackups | Hayır | Hayır |
@@ -2872,7 +2872,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | sunucular/veritabanları/auditingsettings | Hayır | Hayır |
 > | sunucular/veritabanları/denetimkayıtları | Hayır | Hayır |
 > | sunucular/veritabanları/otomatik olarak ayarlama | Hayır | Hayır |
-> | sunucular/veritabanları/backuplongtermretentionpolicies | Hayır | Hayır |
+> | sunucular/veritabanları/backuplongtermretentionpolicies | Yes | Yes |
 > | sunucular/veritabanları/backupshorttermretentionpolicies | Hayır | Hayır |
 > | sunucular/veritabanları/connectionpolicies | Hayır | Hayır |
 > | sunucular/veritabanları/datamaskingpolicies | Hayır | Hayır |
@@ -3186,7 +3186,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | availableyığınları | Hayır | Hayır |
 > | billingmeters | Hayır | Hayır |
-> | sertifikalar | Hayır | Evet |
+> | sertifikalar | Hayır | Yes |
 > | checknameavaılabılıty | Hayır | Hayır |
 > | connectiongateway 'ler | Yes | Yes |
 > | bağlantının | Yes | Yes |

@@ -2,18 +2,18 @@
 title: 'Ağ bağlantısı performansının sorunlarını giderme: Azure'
 description: Bu sayfa, Azure ağ bağlantısı performansını test etmek için standartlaştırılmış bir yöntem sağlar.
 services: expressroute
-author: tracsman
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 12/20/2017
-ms.author: jonor
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521675"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566084"
 ---
 # <a name="troubleshooting-network-performance"></a>Ağ performansı sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
@@ -121,7 +121,7 @@ Bulutun kenarının gerçekten olduğu konusunda emin değilseniz, Azure bileşe
 ![2][2]
 
 >[!NOTE]
-> MSEE 'ın Azure bulutu 'nda olmadığına dikkat edin. ExpressRoute aslında yalnızca Azure 'da olmayan Microsoft ağının kenarında bulunur. Bir MSEE ExpressRoute ile bağlandıktan sonra, Microsoft 'un ağına bağlanırsınız. buradan, Office 365 (Microsoft eşlemesi ile) veya Azure (özel ve/veya Microsoft eşlemesi ile) gibi bulut hizmetlerinden birine gidebilirsiniz.
+> MSEE 'ın Azure bulutu 'nda olmadığına dikkat edin. ExpressRoute aslında yalnızca Azure 'da olmayan Microsoft ağının kenarında bulunur. Bir MSEE ExpressRoute ile bağlandıktan sonra, Microsoft 'un ağına bağlanırsınız, buradan Microsoft 365 (Microsoft eşlemesiyle) veya Azure (özel ve/veya Microsoft eşlemesiyle) gibi bulut hizmetlerinden birine gidebilirsiniz.
 >
 >
 
@@ -181,23 +181,23 @@ Test kurulumu:
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | Batı ABD 2        |    191 km |   5 MS | 262,0 Mbits/sn |  3,74 Gbit/sn |
 | Seattle | Batı ABD          |  1.094 km |  18 MS |  82,3 Mbits/sn |  3,70 Gbit/sn |
-| Seattle | Orta ABD       |  2.357 km |  40 ms |  38,8 Mbits/sn |  2,55 Gbit/sn |
+| Seattle | Central US       |  2.357 km |  40 ms |  38,8 Mbits/sn |  2,55 Gbit/sn |
 | Seattle | Orta Güney ABD |  2.877 km |  51 MS |  30,6 Mbits/sn |  2,49 Gbit/sn |
 | Seattle | Orta Kuzey ABD |  2.792 km |  55 MS |  27,7 Mbits/sn |  2,19 Gbit/sn |
 | Seattle | Doğu ABD 2        |  3.769 km |  73 MS |  21,3 Mbits/sn |  1,79 Gbit/sn |
 | Seattle | Doğu ABD          |  3.699 km |  74 MS |  21,1 Mbits/sn |  1,78 Gbit/sn |
 | Seattle | Doğu Japonya       |  7.705 km | 106 MS |  14,6 Mbits/sn |  1,22 Gbit/sn |
 | Seattle | Güney Birleşik Krallık         |  7.708 km | 146 MS |  10,6 Mbits/sn |   896 Mbits/sn |
-| Seattle | Batı Avrupa      |  7.834 km | 153 MS |  10,2 Mbits/sn |   761 Mbits/sn |
+| Seattle | West Europe      |  7.834 km | 153 MS |  10,2 Mbits/sn |   761 Mbits/sn |
 | Seattle | Doğu Avustralya   | 12.484 km | 165 MS |   9,4 Mbits/sn |   794 Mbits/sn |
 | Seattle | Güneydoğu Asya   | 12.989 km | 170 MS |   9,2 Mbits/sn |   756 Mbits/sn |
 | Seattle | Brezilya Güney *   | 10.930 km | 189 MS |   8,2 Mbits/sn |   699 Mbits/sn |
 | Seattle | Güney Hindistan      | 12.918 km | 202 MS |   7,7 Mbits/sn |   634 Mbits/sn |
 
-\*Brezilya gecikmesi, düz çizgili mesafenin fiber çalışma uzaklığına göre önemli ölçüde farklı olduğu iyi bir örnektir. Gecikme süresinin 160 ms 'in komşuları içinde olmasını bekler, ancak gerçekten 189 MS olur. Beklentilerimin bu farkı, bir ağ sorununun bir yerde olduğunu gösteriyor olabilir, ancak büyük olasılıkla fiber çalıştırmanın Brezilya 'ye doğrudan bir satırda gitmemesi ve Seattle 'dan Brezilya 'ye gitmesi için fazladan 1.000 km veya buna karşılık gelen bir yolculuğu vardır.
+\* Brezilya gecikmesi, düz çizgili mesafenin fiber çalışma uzaklığına göre önemli ölçüde farklı olduğu iyi bir örnektir. Gecikme süresinin 160 ms 'in komşuları içinde olmasını bekler, ancak gerçekten 189 MS olur. Beklentilerimin bu farkı, bir ağ sorununun bir yerde olduğunu gösteriyor olabilir, ancak büyük olasılıkla fiber çalıştırmanın Brezilya 'ye doğrudan bir satırda gitmemesi ve Seattle 'dan Brezilya 'ye gitmesi için fazladan 1.000 km veya buna karşılık gelen bir yolculuğu vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-1. Azure bağlantı araç setini GitHub 'dan yükleme[https://aka.ms/AzCT][ACT]
+1. Azure bağlantı araç setini GitHub 'dan yükleme [https://aka.ms/AzCT][ACT]
 2. [Bağlantı performansı testi][Performance Doc] için yönergeleri izleyin
 
 <!--Image References-->

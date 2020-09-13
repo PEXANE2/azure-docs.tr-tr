@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: bbea0accc79cafb6fea3f1438a71250dc02f4d62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77982bb8e001670ec1db57405e746cd849024278
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311000"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504902"
 ---
 # <a name="access-your-security-data"></a>Güvenlik verilerinize erişin
 
@@ -31,8 +31,8 @@ IoT için Azure Güvenlik Merkezi, Log Analytics çalışma alanınıza güvenli
 Hangi Log Analytics çalışma alanının kullanıldığını yapılandırmak için:
 
 1. IoT Hub 'ınızı açın.
-1. **Güvenlik** bölümünün altındaki **genel bakış** dikey penceresine tıklayın
-1. **Ayarlar**' a tıklayın ve Log Analytics çalışma alanı yapılandırmanızı değiştirin.
+1. **Güvenlik** bölümünün altındaki **Ayarlar** dikey penceresine tıklayın.
+1. **Veri toplama**' yı tıklatın ve Log Analytics çalışma alanı yapılandırmanızı değiştirin.
 
 Yapılandırma sonrasında Log Analytics çalışma alanınızdaki uyarılarınıza ve önerilerinizi erişmek için:
 
@@ -66,7 +66,7 @@ SecurityAlert
 | take 3
 ```
 
-| TimeGenerated           | Iothubıd                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Açıklama                                             | ExtendedProperties                                                                                                                                                             |
+| TimeGenerated           | Iothubıd                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Description                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-11-18T18:10:29.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Yüksek          | Deneme yanılma saldırısı başarılı           | Cihaza yönelik bir deneme yanılma saldırısı başarılı oldu        |    {"Tam kaynak adresi": "[ \" 10.165.12.18: \" ]", "Kullanıcı adları": "[ \" \" ]", "DeviceID": "IoT-Device-Linux"}                                                                       |
 | 2018-11-19T12:40:31.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Yüksek          | Cihazda başarılı yerel oturum açma      | Cihazda başarılı bir yerel oturum açma algılandı     | {"Uzak adres": "?", "uzak bağlantı noktası": "", "yerel bağlantı noktası": "", "oturum açma kabuğu": "/bin/su", "oturum açma Işlemi kimliği": "28207", "Kullanıcı adı": "saldırgan", "DeviceID": "IoT-Device-Linux"} |
@@ -89,7 +89,7 @@ SecurityAlert
     DisplayName
 ```
 
-| Iothubıd                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Sayı |
+| Iothubıd                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Yüksek          | Deneme yanılma saldırısı başarılı           | 9   |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Orta        | Cihazda yerel oturum açma denemesi başarısız  | 242 |
@@ -146,7 +146,7 @@ SecurityRecommendation
 | take 2
 ```
 
-| TimeGenerated | Iothubıd | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Açıklama | RecommendationAdditionalData |
+| TimeGenerated | Iothubıd | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Description | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
 | 2019-03-22T10:21:06.060 |    /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Orta | Etkin | Giriş zincirindeki izin veren güvenlik duvarı kuralı bulundu | Çok sayıda IP adresi veya bağlantı noktası aralığı için izin veren bir model içeren güvenlik duvarındaki bir kural bulundu | {"Rules": "[{ \" sourceAddress \" : \" \" , \" sourceport \" : \" \" , \" DestinationAddress \" : \" \" , \" destinationport \" : \" 1337 \" }]"} |
 | 2019-03-22T10:50:27.237 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Orta | Etkin | Giriş zincirindeki izin veren güvenlik duvarı kuralı bulundu | Çok sayıda IP adresi veya bağlantı noktası aralığı için izin veren bir model içeren güvenlik duvarındaki bir kural bulundu | {"Rules": "[{ \" sourceAddress \" : \" \" , \" sourceport \" : \" \" , \" DestinationAddress \" : \" \" , \" destinationport \" : \" 1337 \" }]"} |
@@ -166,7 +166,7 @@ SecurityRecommendation
 | summarize Cnt=count() by IoTHubId, DeviceId, RecommendationSeverity
 ```
 
-| Iothubıd                                                                                                       | DeviceId      | RecommendationSeverity | Sayı |
+| Iothubıd                                                                                                       | DeviceId      | RecommendationSeverity | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Yüksek          | 2   |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Orta        | 1 |

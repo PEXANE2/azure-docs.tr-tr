@@ -1,22 +1,22 @@
 ---
 title: Azure ön kapısı ve Azure Web uygulaması güvenlik duvarı (WAF) kullanarak bir Web uygulamasını hızlıca ölçeklendirin ve koruyun | Microsoft Docs
-description: Bu makale, Web uygulaması güvenlik duvarını AAzure ön kapılı hizmetinize nasıl kullanacağınızı anlamanıza yardımcı olur
+description: Bu makale, Azure ön kapılı hizmetinize Web uygulaması güvenlik duvarı 'nı nasıl kullanacağınızı anlamanıza yardımcı olur
 services: frontdoor
 documentationcenter: ''
-author: tremansdoerfer
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/06/2020
-ms.author: rimansdo
-ms.openlocfilehash: 6f91a98372aa85a52a6013a121235ca354004a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a0252004b01e64b195b372d72682f6b777012258
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743550"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535440"
 ---
 # <a name="quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Azure ön kapısı ve Azure Web uygulaması güvenlik duvarı (WAF) kullanarak bir Web uygulamasını hızla ölçeklendirme ve koruma
 
@@ -119,7 +119,7 @@ Başlangıçta Web uygulamanızın özel etki alanı adı (örneğin, www.contos
 
 DNS kayıtlarınızı güncelleştirmek için özel adımlar, DNS hizmet sağlayıcınıza bağlı olacaktır, ancak DNS adınızı barındırmak için Azure DNS kullanıyorsanız, [adımlar için BIR DNS kaydını güncelleştirme](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) ve AFD ana bilgisayar adına işaret eden yönergeler için belgelere başvurabilirsiniz. 
 
-Burada, kullanıcılarınızın bölge tepesinde kullanarak Web sitenizde gezinmeniz gerekiyorsa (örneğin, exakı, contoso.com için), DNS adınızı barındırmak için Azure DNS ve [diğer ad kayıt türünü](https://docs.microsoft.com/azure/dns/dns-alias) kullanmanız gerekir. 
+Burada, kullanıcılarınızın bölge tepesinde kullanarak Web sitenize gitmesini istiyorsanız (örneğin, contoso.com), DNS adınızı barındırmak için Azure DNS ve [diğer ad kayıt türünü](https://docs.microsoft.com/azure/dns/dns-alias) kullanmanız gerekir. 
 
 Ayrıca, AFD bu eşlemeyi anlaması için [Bu özel etki alanını eklemek](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) üzere AFD yapılandırmanızı de güncelleştirmeniz gerekir.
 

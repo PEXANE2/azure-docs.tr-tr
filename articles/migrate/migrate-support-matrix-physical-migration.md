@@ -4,12 +4,12 @@ description: Azure geçişi 'nde fiziksel sunucu geçişi desteği hakkında bil
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: 30c96b11fb15ca1783b6ffc574d9d258dff9da06
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 2e71ab5cd934f2fe931cd901d425061455cc9f0e
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051143"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535457"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Fiziksel sunucu geçişi için destek matrisi
 
@@ -45,7 +45,7 @@ Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz fiziksel sunucu
 **Mobility hizmeti** | Taşımak istediğiniz her makinede Mobility hizmeti aracısının yüklü olması gerekir.
 **UEFı önyüklemesi** | Azure 'daki geçirilmiş makine otomatik olarak bir BIOS önyüklemesi Azure VM 'sine dönüştürülür. Yalnızca Windows Server 2012 ve üzeri sürümleri çalıştıran sunucu desteklenir.<br/><br/> İşletim sistemi diski en fazla dört bölüm içermelidir ve birimler NTFS ile biçimlendirilmelidir.
 **UEFı-güvenli önyükleme**         | Geçiş için desteklenmez.
-**Hedef disk** | Makineler, yalnızca Azure 'da yönetilen disklere (Standart HDD, Premium SSD) geçirilebilir.
+**Hedef disk** | Makineler, yalnızca Azure 'da yönetilen disklere (Standart HDD, standart SSD, Premium SSD) geçirilebilir.
 **Disk boyutu** | 2 TB işletim sistemi diski; veri diskleri için 8 TB.
 **Disk sınırları** |  Makine başına en fazla 63 disk.
 **Şifrelenmiş diskler/birimler** |  Şifrelenmiş diskleri/birimleri olan makineler geçiş için desteklenmez.
