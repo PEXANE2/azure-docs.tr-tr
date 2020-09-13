@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542968"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458629"
 ---
 # <a name="azure-encryption-overview"></a>Azure'da şifrelemeye genel bakış
 
@@ -83,7 +83,7 @@ Son olarak, Azure depolama 'ya veri yüklemeden önce, istemci tarafı şifrelem
 
 #### <a name="transparent-data-encryption"></a>Saydam Veri Şifrelemesi
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) , kurtarma sırasında kullanılabilirlik için veritabanı önyükleme kaydında depolanan bir veritabanı şifreleme anahtarı (dek) kullanarak [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL veritabanı](../../azure-sql/database/sql-database-paas-overview.md)ve [Azure SQL veri ambarı](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) veri dosyalarını gerçek zamanlı olarak şifrelemek için kullanılır.
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) , kurtarma sırasında kullanılabilirlik için veritabanı önyükleme kaydında depolanan bir veritabanı şifreleme anahtarı (dek) kullanarak [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL veritabanı](../../azure-sql/database/sql-database-paas-overview.md)ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) veri dosyalarını gerçek zamanlı olarak şifrelemek için kullanılır.
 
 TDE, AES ve üçlü veri şifreleme standardı (3DES) şifreleme algoritmaları kullanarak verileri ve günlük dosyalarını korur. Veritabanı dosyasının şifrelenmesi sayfa düzeyinde gerçekleştirilir. Şifrelenmiş bir veritabanındaki sayfalar diske yazılmadan önce şifrelenir ve belleğe okunduklarında şifresi çözülür. TDE, yeni oluşturulan Azure SQL veritabanlarında varsayılan olarak etkinleştirilmiştir.
 

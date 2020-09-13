@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: d681c79cb3c7874cbcd75d03db08721dd4b25f4d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6fc0add55caccd7721f3ee2c72db68fbcf6bc0dc
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835468"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458510"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı'nda Sanal Ağ hizmet uç noktalarını ve kuralları kullanma
 
@@ -112,7 +112,7 @@ MariaDB için Azure veritabanı 'nda, sanal ağ kuralları özelliği aşağıda
 
 - Sanal ağ kuralları yalnızca Azure Resource Manager sanal ağlar için geçerlidir; [klasik dağıtım modeli][resource-manager-deployment-model-568f] ağlarına değil.
 
-- **Microsoft. SQL** Service etiketi kullanılarak MariaDB Için Azure veritabanı 'nda sanal ağ hizmet uç noktalarını açmak, tüm Azure veritabanı hizmetleri için uç noktaları da sağlar: MariaDB Için Azure veritabanı, MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı, Azure SQL veritabanı ve Azure SQL veri ambarı.
+- **Microsoft. SQL** Service etiketi kullanılarak MariaDB Için Azure veritabanı 'nda sanal ağ hizmet uç noktalarını açmak, tüm Azure veritabanı hizmetleri için uç noktaları da sağlar: MariaDB Için Azure veritabanı, MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eskı adıyla SQL veri ambarı).
 
 - VNet hizmet uç noktaları için destek yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucular içindir.
 

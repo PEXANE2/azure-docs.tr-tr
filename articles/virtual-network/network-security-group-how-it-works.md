@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: b0199af69eb5e7c05cee91a3a3cffd682aab75fd
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e60cdfb00d0dc9d446bd52a72e9fd15676acd285
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087242"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458204"
 ---
 # <a name="how-network-security-groups-filter-network-traffic"></a>Ağ güvenlik grupları ağ trafiğini filtreleyerek
 <a name="network-security-groups"></a>
 
-Bir Azure sanal ağındaki Azure kaynaklarından gelen ve giden ağ trafiğini filtrelemek için bir Azure ağ güvenlik grubu kullanabilirsiniz. Bir ağ güvenlik grubu, Azure kaynaklarından oluşan çeşitli türlerden gelen ağ trafiğine veya giden ağ trafiğine izin veren veya reddeden [güvenlik kuralları](https://docs.microsoft.com/azure/virtual-network/security-overview.md#security-rules) içerir. Her kural için kaynak, hedef, bağlantı noktası ve protokol belirtebilirsiniz.
+Bir Azure sanal ağındaki Azure kaynaklarından gelen ve giden ağ trafiğini filtrelemek için bir Azure ağ güvenlik grubu kullanabilirsiniz. Bir ağ güvenlik grubu, Azure kaynaklarından oluşan çeşitli türlerden gelen ağ trafiğine veya giden ağ trafiğine izin veren veya reddeden [güvenlik kuralları](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) içerir. Her kural için kaynak, hedef, bağlantı noktası ve protokol belirtebilirsiniz.
 
 Birden fazla Azure hizmetinde bulunan kaynakları bir Azure sanal ağına dağıtabilirsiniz. Hizmetlerin tam listesi için bkz. [Sanal ağa dağıtılabilecek hizmetler](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Bir sanal makine içindeki her bir sanal ağ [alt ağına](virtual-network-manage-subnet.md#change-subnet-settings) ve [ağ arabirimine](virtual-network-network-interface.md#associate-or-dissociate-a-network-security-group) sıfır veya bir ağ güvenlik grubu atayabilirsiniz. Bir ağ güvenlik grubunu istediğiniz sayıda alt ağ ve ağ arabirimi ile ilişkilendirebilirsiniz.
 
@@ -46,7 +46,7 @@ Azure, gelen trafik için ilk olarak varsa bir alt ağ ile ilişkilendirilmiş a
 
 Azure, giden trafik için ilk olarak varsa bir ağ arabirimi ile ilişkilendirilmiş ağ güvenlik grubu içindeki kuralları ve ardından varsa alt ağ ile ilişkilendirilmiş ağ güvenlik grubundaki kuralları işler.
 
-- **VM1**: *NSG2* içindeki güvenlik kuralları işlenir. 80 numaralı bağlantı noktası üzerinden internete giden trafiği reddeden bir güvenlik kuralı oluşturmadığınız sürece *NSG1* ve *NSG2* içindeki [AllowInternetOutbound](https://docs.microsoft.com/azure/virtual-network/security-overview.md#allowinternetoutbound) varsayılan güvenlik kuralı trafiğe izin verir. *NSG2* içinde 80 numaralı bağlantı noktasından giden trafiği reddeden bir güvenlik kuralı varsa trafik reddedilir ve *NSG1* tarafından değerlendirilmez. Sanal makinenin 80 numaralı bağlantı noktasından giden trafiği reddetmek için ağ güvenlik gruplarından birinde veya her ikisinde 80 numaralı bağlantı noktasından internete giden trafiği reddeden bir kural olması gerekir.
+- **VM1**: *NSG2* içindeki güvenlik kuralları işlenir. 80 numaralı bağlantı noktası üzerinden internete giden trafiği reddeden bir güvenlik kuralı oluşturmadığınız sürece *NSG1* ve *NSG2* içindeki [AllowInternetOutbound](https://docs.microsoft.com/azure/virtual-network/security-overview#allowinternetoutbound) varsayılan güvenlik kuralı trafiğe izin verir. *NSG2* içinde 80 numaralı bağlantı noktasından giden trafiği reddeden bir güvenlik kuralı varsa trafik reddedilir ve *NSG1* tarafından değerlendirilmez. Sanal makinenin 80 numaralı bağlantı noktasından giden trafiği reddetmek için ağ güvenlik gruplarından birinde veya her ikisinde 80 numaralı bağlantı noktasından internete giden trafiği reddeden bir kural olması gerekir.
 - **VM2**: *VM2* ile ilişkilendirilmiş ağ arabiriminde bir ağ güvenlik kuralı bulunmadığından tüm trafik ağ arabiriminden alt ağa gönderilir. *NSG1* içindeki kurallar işlenir.
 - **VM3**: *NSG2* içinde 80 numaralı bağlantı noktasından giden trafiği reddeden bir güvenlik kuralı varsa trafik reddedilir. *NSG2* içinde 80 numaralı bağlantı noktasından giden trafiğe izin veren bir güvenlik kuralı varsa *Subnet2* ile ilişkilendirilmiş bir ağ güvenlik grubu bulunmadığından 80 numaralı bağlantı noktasından internete giden trafiğe izin verilir.
 - **VM4**: *VM4* adlı sanal makineye bağlı olan ağ arabirimi veya *Subnet3* ile ilişkilendirilmiş bir ağ güvenlik grubu olmadığından bu sanal makineden gelen tüm ağ trafiğine izin verilir.

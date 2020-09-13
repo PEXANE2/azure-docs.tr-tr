@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: f176e8fceb4d3e2e07398e6cb878180c8fe2321b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 141b19ca73c3465e59d8c94a3bdc3657d0900b8d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533164"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458935"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
 
@@ -87,7 +87,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol (NFSv3 ve 
     
         ![Alt ağ oluşturma](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Birime var olan bir anlık görüntü ilkesi uygulamak istiyorsanız, genişletmek için **Gelişmiş bölümünü göster** ' e tıklayın ve açılır menüden bir anlık görüntü ilkesi seçin. 
+    * Birime var olan bir anlık görüntü ilkesi uygulamak istiyorsanız, genişletmek için **Gelişmiş bölümü göster** ' e tıklayın, anlık görüntü yolunu gizlemek isteyip istemediğinizi belirtin ve açılır menüden bir anlık görüntü ilkesi seçin. 
 
         Anlık görüntü ilkesi oluşturma hakkında daha fazla bilgi için bkz. [anlık görüntü Ilkelerini yönetme](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
@@ -121,7 +121,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol (NFSv3 ve 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
 * [Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırma](azure-netapp-files-configure-nfsv41-domain.md)
-* [NFSv 4.1 Kerberos şifrelemesini yapılandırma](configure-kerberos-encryption.md)
+* [NFSv4.1 Kerberos şifrelemesini yapılandırma](configure-kerberos-encryption.md)
 * [Windows veya Linux sanal makineleri için birimi bağlama veya ayırma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [NFS birimine yönelik dışarı aktarma ilkesini yapılandırma](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)

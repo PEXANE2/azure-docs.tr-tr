@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63872f3d62bcf62562cef7fd4ee02e9a0535da67
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 3050d0c61b6278b32b8e9272f228a863c9a0a244
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756886"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458697"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -1255,7 +1255,9 @@ Azure Resource Manager ile, artık eski Klasik modelde olduğu gibi varsayılan 
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Internet üzerinden SAP System ve SAP GUI bağlantısı yapılandırması
 
-Bu konunun ayrıntılarını açıklayan bu makaleye bakın: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+Bu konunun ayrıntılarını açıklayan bu makaleye bakın:
+
+<https://docs.microsoft.com/archive/blogs/saponsqlserver/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure>
 
 #### <a name="changing-firewall-settings-within-vm"></a>VM 'de güvenlik duvarı ayarlarını değiştirme
 
@@ -1980,7 +1982,7 @@ SAP sisteminde bulunan diğer VM 'Ler Azure sanal makine yedekleme işlevi kulla
 
 PARÇAAL 2014 ' den itibaren, Hyper-V, System Center ve Azure 'daki çeşitli bileşenlere yönelik uzantılar, Hyper-V ' d e bağlı olarak şirket içinde çalışan VM 'Ler için DR sitesi olarak kullanılmasını sağlar.
 
-Bu çözümün nasıl dağıtılacağını ayrıntılandıran bir blog şurada belgelenmiştir: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx> .
+Bu çözümün nasıl dağıtılacağını ayrıntılandıran bir blog şurada belgelenmiştir: <https://docs.microsoft.com/archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery> .
 
 ## <a name="summary"></a>Özet
 
