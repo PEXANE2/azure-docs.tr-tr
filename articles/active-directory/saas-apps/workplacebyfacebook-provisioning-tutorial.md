@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ea5a7a0cd89b9aad78ce789517aa8f75767955d8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4b4953cbca4d08e911fd043413387a1602bd8e08
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526408"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006100"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için çalışma alanını Facebook ile yapılandırma
 
@@ -71,7 +71,7 @@ Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup öznitelikleri
 
 * Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -125,8 +125,16 @@ Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup öznitelikleri
    |phoneNumbers [tür EQ "Faks"]. değer|Dize|
    |externalID|Dize|
    |preferredLanguage|Dize|
-   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Dize|
-   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
+   |urn: SCIM: schemas: Extension: Enterprise: 1.0. Manager|Dize|
+   |urn: Scim: schemas: uzantı: Enterprise: 1.0. Department|Dize|
+   |urn: Scim: schemas: uzantı: Enterprise: 1.0. Bölüm|Dize|
+   |urn: Scim: schemas: uzantı: Enterprise: 1.0. Organization|Dize|
+   |urn: SCIM: schemas: Extension: Enterprise: 1.0. costCenter|Dize|
+   |urn: Scim: schemas: uzantı: Enterprise: 1.0. employeeNumber|Dize|
+   |urn: Scim: schemas: uzantı: Facebook: auth_method: 1.0: auth_method|Dize|
+   |urn: Scim: schemas: uzantı: Facebook: Frontline: 1.0. is_frontline|Boole|
+   |urn: Scim: schemas: uzantı: Facebook: starsımmtarihlere: 1.0. startDate|Tamsayı|
+
 
 10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
@@ -153,6 +161,10 @@ Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağı
 
 ## <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
 *  Başarısız bir Kullanıcı görürseniz ve "1789003" koduna sahip bir denetim günlüğü olayı varsa, kullanıcının doğrulanmamış bir etki alanından olduğu anlamına gelir.
+
+## <a name="change-log"></a>Değişiklik günlüğü
+
+* 09/10/2020-kurumsal öznitelikler "bölme", "kuruluş", "costCenter" ve "employeeNumber" için destek eklendi. "StartDate", "auth_method" ve "Frontline" özel öznitelikleri için destek eklendi
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d692b81d24b6c5088ffc42644ed1dd7f45b2d2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f056b34df0a70374e8bae909f210bfabf107ed4a
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795325"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005947"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 gruplara duyarlılık etiketleri atama
 
@@ -68,7 +68,7 @@ Yayınlanmış etiketleri gruplara uygulamak için, önce özelliği etkinleşti
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-İşte bu kadar. Özelliği etkinleştirdiniz ve gruplar için yayımlanmış Etiketler uygulayabilirsiniz.
+Ayrıca, duyarlılık etiketlerinizi Azure AD ile eşitlemeniz gerekir. Yönergeler için bkz. [kapsayıcılar için duyarlılık etiketlerini etkinleştirme ve etiketleri senkronize etme](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Azure portal yeni bir gruba etiket atama
 
@@ -113,7 +113,8 @@ Bu özelliği etkinleştirdikten sonra, gruplar için "klasik" sınıflandırmal
 Duyarlılık etiketi seçeneği yalnızca aşağıdaki koşulların tümü karşılandığında gruplar için görüntülenir:
 
 1. Etiketler, bu Azure AD kuruluşu için Microsoft 365 Uyumluluk Merkezi 'nde yayımlanır.
-1. Özellik etkin, PowerShell 'de Enablemıplabels true olarak ayarlandı.
+1. Özellik etkin, Azure AD PowerShell modülündeki Enablemıplas ' de true olarak ayarlandı.
+1. LABLES, güvenlik & uyumluluğu PowerShell modülündeki Execute-AzureAdLabelSync cmdlet 'i ile Azure AD ile eşitlenir.
 1. Grup bir Microsoft 365 grubudur.
 1. Kuruluşun etkin bir Azure Active Directory Premium P1 lisansı vardır.
 1. Geçerli oturum açan kullanıcının etiket atamak için yeterli ayrıcalıkları vardır. Kullanıcının bir genel yönetici, Grup Yöneticisi veya grup sahibi olması gerekir.

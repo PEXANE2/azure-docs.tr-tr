@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 5c717a02c2008436617d16f08625a1cecc204340
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcf7620f53c9bfdb51eb62598f2c8b441574eca6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83849527"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006089"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>IoT Hub 'de TLS 1,0 ve 1,1 kullanımdan kaldırılması
 
@@ -38,9 +38,9 @@ IoT Hub, daha fazla bildirimde bulunuluncaya kadar TLS 1.0/1.1 'yi desteklemeye 
 * `TLS_RSA_WITH_AES_128_CBC_SHA`
 * `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
 
-## <a name="tls-12-ciphers"></a>TLS 1,2 şifrelemeleri
+## <a name="tls-12-cipher-suites"></a>TLS 1,2 şifre paketleri
 
-Bkz. [IoT Hub TLS 1,2 önerilen şifre](iot-hub-tls-support.md#recommended-ciphers).
+Bkz. [IoT Hub TLS 1,2 şifre paketleri](iot-hub-tls-support.md#cipher-suites).
  
 ## <a name="customer-feedback"></a>Müşteri geri bildirimi
 
