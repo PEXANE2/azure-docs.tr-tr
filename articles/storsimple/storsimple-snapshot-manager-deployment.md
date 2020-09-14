@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager dağıtma | Microsoft Docs
 description: StorSimple veri koruma ve yedekleme özelliklerini yönetmek için bir MMC ek bileşeni olan StorSimple Snapshot Manager indirme ve yükleme hakkında bilgi edinin.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: f0128f57-519e-49ec-9187-23575809cdbe
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 6d3e3d6cdf7a831bf09d9c4709c1a60d27683438
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75933375"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055087"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>StorSimple Snapshot Manager MMC ek bileşenini dağıtma
 
@@ -117,7 +117,7 @@ StorSimple Snapshot Manager StorSimple cihazına bağlamak için aşağıdaki ad
 2. **Kapsam** bölmesinde, **cihazlar** düğümüne sağ tıklayın ve ardından **cihaz yapılandırma**' ya tıklayın. **Cihaz Yapılandır** iletişim kutusu görüntülenir.
    
     ![Cihaz yapılandırma](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
-3. **Cihaz** liste kutusunda Microsoft Azure StorSimple cihazının veya sanal cihazın IP adresini seçin. **Parola** metin kutusuna, Azure Portal cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam**'a tıklayın.
+3. **Cihaz** liste kutusunda Microsoft Azure StorSimple cihazının veya sanal cihazın IP adresini seçin. **Parola** metin kutusuna, Azure Portal cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam**’a tıklayın.
 4. StorSimple Snapshot Manager, tanımladığınız cihazı arar. Cihaz kullanılabiliyorsa, StorSimple Snapshot Manager bir bağlantı ekler. Bağlantının başarıyla eklendiğini doğrulamak için [cihazla olan bağlantıyı doğrulayabilirsiniz](#to-verify-the-connection) .
    
     Cihaz herhangi bir nedenle kullanılamıyorsa, StorSimple Snapshot Manager bir hata mesajı döndürür. **Tamam** ' a tıklayarak hata iletisini kapatın ve ardından **iptal** ' e tıklayarak **bir cihaz Yapılandır** iletişim kutusunu kapatın.
@@ -160,7 +160,7 @@ StorSimple Snapshot Manager kaldırmak için aşağıdaki adımları kullanın.
    > Arka planda çalışan StorSimple Snapshot Manager veya disk yönetimi gibi bir MMC işlemi varsa, kaldırma işlemi başarısız olur ve programı kaldırmayı denemeden önce tüm MMC örneklerini kapatmak üzere bir ileti alırsınız. **Uygulamaları otomatik olarak Kapat ' ı ve kurulum tamamlandıktan sonra yeniden başlatmayı dene**' yi seçin ve ardından **Tamam**' a tıklayın.
    > 
    > 
-5. Kaldırma işlemi tamamlandığında, bir **Kurulum başarılı** iletisi görüntülenir. **Kapat**' a tıklayın.
+5. Kaldırma işlemi tamamlandığında, bir **Kurulum başarılı** iletisi görüntülenir. **Kapat**’a tıklayın.
 
 ### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>2. Adım: StorSimple Snapshot Manager veritabanını yedekleme
 StorSimple Snapshot Manager veritabanının bir kopyasını oluşturmak ve kaydetmek için aşağıdaki adımları kullanın.

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 4c87ee92a2bc30dc2923127241013601cf3f4419
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ea66f044664082b547d1b012d7253cd6443e8610
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519875"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052809"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>Öğretici: Clever ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -40,6 +40,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Clever, **SP** tarafından başlatılan SSO 'yu destekler
+* Concur yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
@@ -56,7 +57,7 @@ Clever 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden yö
 1. Sonuçlar panelinden **Clever** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-clever"></a>Clever için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-clever"></a>Clever için Azure AD SSO 'yu yapılandırma ve test etme
 
 Azure AD SSO 'yu, **B. Simon**adlı bir test kullanıcısı kullanarak Clever ile yapılandırın ve test edin. SSO 'nun çalışması için Clever içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -83,10 +84,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://clever.com/in/<companyname>`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://clever.com/oauth/saml/metadata.xml`
+    b. **Tanımlayıcı (VARLıK kimliği)** metın kutusuna URL yazın:`https://clever.com/oauth/saml/metadata.xml`
 
+    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://clever.com/<companyname>`
+    
     > [!NOTE]
-    > Oturum açma URL 'SI değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Clever istemci desteği ekibine](https://clever.com/about/contact/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    >  Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve yanıt URL 'SI ile güncelleştirin. Değeri almak için [Clever istemci desteği ekibine](https://clever.com/about/contact/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
@@ -135,7 +138,7 @@ Bu bölümde, Clever 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 1. **Anlık oturum** sayfasında, aşağıdaki adımları uygulayın:
  
-    ![Anlık oturum açma](./media/clever-tutorial/ic798985.png "Anlık oturum açma")
+    ![Anlık oturum açma sayfasında SSO yapılandırması](./media/clever-tutorial/ic798985.png "Anlık oturum açma")
 
     a. **Oturum açma URL 'sini**yazın.
 

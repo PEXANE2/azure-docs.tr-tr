@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d1251813486d4b7406f89ac9c09c49f985fa205
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260619"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055291"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB toplu yürütücü kitaplığına genel bakış
  
@@ -25,6 +25,9 @@ Toplu yürütücü kitaplığı bu muazzam işlem hızı ve depolamadan yararlan
 
 > [!NOTE] 
 > Şu anda, toplu yürütücü kitaplığı içeri aktarma ve güncelleştirme işlemlerini destekler ve bu kitaplık yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları tarafından desteklenir.
+
+> [!IMPORTANT]
+> Toplu yürütücü kitaplığı, şu anda [sunucusuz](serverless.md) hesaplarda desteklenmez. .NET ' te, SDK 'nın v3 sürümünde sunulan [toplu desteğin](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk/) kullanılması önerilir.
  
 ## <a name="key-features-of-the-bulk-executor-library"></a>Toplu yürütücü kitaplığı 'nın temel özellikleri  
  

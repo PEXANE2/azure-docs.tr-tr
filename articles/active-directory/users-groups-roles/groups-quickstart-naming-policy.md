@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b54af39401ba8c3fede4c9ad80ec8edc963b1d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de0212739f5cd24cec9ab58bdaf4d2b272f31200
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213680"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054373"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory'de gruplar için adlandırma ilkesi
 
@@ -68,6 +68,6 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Bu hızlı başlangıçta, Azure portal aracılığıyla Azure AD kuruluşunuz için adlandırma ilkesini nasıl ayarlayadığınızı öğrendiniz.
 
-Adlandırma ilkesi, teknik kısıtlamalar, özel engellenen sözcüklerin listesini ekleme ve Office 365 uygulamalarında son kullanıcı deneyimleri gibi daha fazla bilgi için sonraki makaleye ilerleyin.
+Adlandırma ilkesi, teknik kısıtlamalar, özel engellenen sözcüklerin listesini ekleme ve Microsoft 365 uygulamalarda son kullanıcı deneyimleri gibi daha fazla bilgi için sonraki makaleye ilerleyin.
 > [!div class="nextstepaction"]
 > [Adlandırma ilkesi PowerShell](groups-naming-policy.md)

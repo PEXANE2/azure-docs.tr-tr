@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/28/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: fdea1f3b2d4cff0203951b6ec5ef6b86b62cdf9c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a631ab7190891ae3716a28615bcdbfe4d219ea27
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527583"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053506"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Öğretici: bolluk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -50,6 +50,9 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * Bolluk [ **Otomatik** Kullanıcı sağlamasını destekler](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial)
 * Bolluk yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+
 ## <a name="adding-slack-from-the-gallery"></a>Galeriden bolluk ekleme
 
 Bolluk 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize bolluk eklemeniz gerekir.
@@ -61,7 +64,7 @@ Bolluk 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yö
 1. **Galeriden Ekle** bölümünde, arama kutusuna **bolluk** yazın.
 1. Sonuçlar panelinden **bolluk** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-slack"></a>Bolluk için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-slack"></a>Bolluk için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu bolluk ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve bolluk içinde ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -86,13 +89,20 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://< DOMAIN NAME>.slack.com/sso/saml/start`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<DOMAIN NAME>.slack.com/sso/saml/start`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın:`https://slack.com`
+    b. **Tanımlayıcı (VARLıK kimliği)** metın kutusuna URL yazın:`https://slack.com`
+    
+    c. **Yanıt URL 'si**IÇIN aşağıdaki URL örüntüsünün birini girin:
+    
+    | Yanıt URL'si|
+    |----------|
+    | `https://<DOMAIN NAME>.slack.com/sso/saml` |
+    | `https://<DOMAIN NAME>.enterprise.slack.com/sso/saml` |
 
     > [!NOTE]
-    > Oturum açma URL 'SI değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [bolluk istemci destek ekibine](https://slack.com/help/contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
-    
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve yanıt URL 'SI ile güncelleştirmeniz gerekir. Değeri almak için [bolluk istemci destek ekibine](https://slack.com/help/contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+
     > [!NOTE]
     > Kiracı ile tümleştirmeniz gereken birden fazla bolluk örneğine sahipseniz, **tanımlayıcı (VARLıK kimliği)** değeri bir değişken olabilir. Kalıbı kullanın `https://<DOMAIN NAME>.slack.com` . Bu senaryoda ayrıca aynı değeri kullanarak bolluk içinde başka bir ayarla aynı değeri eşleştirmelidir.
 
@@ -102,11 +112,10 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Bolluk uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz. Özniteliği de eklemeniz gerekir `email` . Kullanıcının bir e-posta adresi yoksa, **emapostaadresi** ' ni **User. UserPrincipalName** ile eşleyin ve **e-postayı** **User. UserPrincipalName**ile eşleyin.
 
-    | Adı | Kaynak özniteliği |
+    | Name | Kaynak özniteliği |
     | -----|---------|
     | EmailAddress | User. UserPrincipalName |
     | e-posta | User. UserPrincipalName |
-    | | |
 
    > [!NOTE]
    > Hizmet sağlayıcısı (SP) yapılandırmasını ayarlamak için SAML yapılandırması sayfasındaki **Gelişmiş Seçenekler** ' ın yanındaki **Genişlet** ' e tıklamanız gerekir. **Hizmet sağlayıcısı veren** kutusunda, çalışma alanı URL 'sini girin. Varsayılan değer slack.com ' dir. 
@@ -155,15 +164,15 @@ Bu bölümde, bolluk erişimi vererek Azure çoklu oturum açma özelliğini kul
 
 2. **Microsoft Azure AD** gidin ve **Takım ayarları**' na gidin.
 
-     ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-team-settings.png)
+     ![Microsoft Azure AD çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. **Takım ayarları** bölümünde **kimlik doğrulama** sekmesine tıklayın ve ardından **Ayarları Değiştir**' e tıklayın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-authentication.png)
+    ![Takım ayarlarında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. **SAML kimlik doğrulama ayarları** iletişim kutusunda, aşağıdaki adımları uygulayın:
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-save-authentication.png)
+    ![SAML kimlik doğrulaması ayarlarında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  **SAML 2,0 uç noktası (http)** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 

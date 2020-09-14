@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: cf03dffe82d611f10639af2a147bc2d9e9316621
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377208"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052783"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl çalışır? Azure AD self servis parola sıfırlama
 
@@ -39,7 +39,7 @@ Kullanıcı [SSPR portalını](https://aka.ms/sspr)kullanarak parolalarını sı
 
 Bir Kullanıcı bir uygulama veya sayfadan **Hesap bağlantısına erişemeyeceğini** veya doğrudan öğesine gittiğinden, [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) SSPR portalında kullanılan dil aşağıdaki seçeneklere dayanır:
 
-* Varsayılan olarak, tarayıcı yerel ayarı SSPR 'yi uygun dilde göstermek için kullanılır. Parola sıfırlama deneyimi, [Office 365 'nin desteklediği](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec)dillere yereldir.
+* Varsayılan olarak, tarayıcı yerel ayarı SSPR 'yi uygun dilde göstermek için kullanılır. Parola sıfırlama deneyimi [Microsoft 365 desteklediği](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec)dillere yereldir.
 * SSPR 'yi belirli bir yerelleştirilmiş dilde bağlamak istiyorsanız, `?mkt=` parola sıfırlama URL 'sinin sonuna gereken yerel ayarı ekleyin.
     * Örneğin, Ispanyolca *-US* yerel ayarını belirtmek için, kullanın `?mkt=es-us`  -  [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) .
 
@@ -77,7 +77,7 @@ Kullanıcılar SSPR kullanarak parolalarını sıfırlayamaz veya değiştirebil
 
 Azure AD kullanarak herhangi bir uygulamada oturum açtıklarında, kullanıcının SSPR kaydını tamamlamasını gerektirme seçeneğini etkinleştirebilirsiniz. Bu iş akışı aşağıdaki uygulamaları içerir:
 
-* Office 365
+* Microsoft 365
 * Azure portal
 * Erişim Paneli
 * Federasyon uygulamaları
@@ -226,7 +226,7 @@ SSPR Active Directory ' de yönetici tarafından başlatılan parola sıfırlama
 
 Parola sıfırlama ve değiştirme, tüm işletmeler arası (B2B) yapılandırmalarda tam olarak desteklenmektedir. B2B Kullanıcı parolası sıfırlama, aşağıdaki üç durumda desteklenir:
 
-* **Mevcut bir Azure AD kiracısına sahip bir iş ortağı kuruluştan kullanıcılar**: ile iş ortağınız olan kuruluşun mevcut BIR Azure AD kiracısı varsa, bu kiracıda hangi parola sıfırlama ilkelerinin etkin olduğunu dikkate aldık. Parola sıfırlamanın çalışması için, iş ortağı kuruluşun yalnızca Azure AD SSPR 'nin etkinleştirildiğinden emin olması gerekir. Office 365 müşterileri için ek ücret alınmaz.
+* **Mevcut bir Azure AD kiracısına sahip bir iş ortağı kuruluştan kullanıcılar**: ile iş ortağınız olan kuruluşun mevcut BIR Azure AD kiracısı varsa, bu kiracıda hangi parola sıfırlama ilkelerinin etkin olduğunu dikkate aldık. Parola sıfırlamanın çalışması için, iş ortağı kuruluşun yalnızca Azure AD SSPR 'nin etkinleştirildiğinden emin olması gerekir. Microsoft 365 müşterileri için ek ücret alınmaz.
 * Self Servis kaydolma ile kaydolan **Kullanıcılar** : ile iş ortağınız olan kuruluş, bir kiracıya ulaşmak için [self servis kaydolma](../users-groups-roles/directory-self-service-signup.md) özelliğini kullandıysanız, parolaları kayıtlı e-posta ile sıfırlayacağız.
 * **B2B kullanıcıları**: yenı [Azure AD B2B özellikleri](../external-identities/what-is-b2b.md) KULLANıLARAK oluşturulan tüm yeni B2B kullanıcıları parolalarını, davet işlemi sırasında kayıtlı olan e-posta ile de sıfırlayabilir.
 

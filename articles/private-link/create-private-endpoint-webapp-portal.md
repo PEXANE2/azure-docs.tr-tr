@@ -1,6 +1,6 @@
 ---
-title: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
-description: Bu makalede, Azure özel uç noktası kullanılarak bir Web uygulamasına özel olarak nasıl bağlanabileceğiniz açıklanır
+title: Azure özel uç noktası (Önizleme) kullanarak bir Web uygulamasına özel olarak bağlanma
+description: Bu makalede, Azure özel uç noktası (Önizleme) kullanılarak bir Web uygulamasına özel olarak nasıl bağlanabileceğiniz açıklanır.
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: how-to
@@ -8,216 +8,222 @@ ms.date: 09/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 3d547546c3c0e0bbcdde65a654bf373ab7407be3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: ccbcdbe9204120e1cf181136f566556ec30be871
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569482"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054543"
 ---
-# <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Azure özel uç noktası (Önizleme) kullanarak bir Web uygulamasına özel olarak bağlanma
+# <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint-preview"></a>Azure özel uç noktası (Önizleme) kullanarak bir Web uygulamasına özel olarak bağlanma
 
-Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Web uygulamanıza özel olarak bağlanmanızı sağlar.
-Bu hızlı başlangıçta, bir Web uygulamasını özel uç nokta ile dağıtmayı ve bir sanal makineden bu Web uygulamasına bağlanmayı öğreneceksiniz.
+Azure özel uç noktası (Önizleme), Azure özel bağlantısı için temel yapı taşıdır. Özel uç nokta kullanarak Web uygulamanıza özel olarak bağlanabilirsiniz. Bu makalede, Özel uç nokta kullanarak bir Web uygulamasını dağıtmayı ve ardından bir sanal makineden (VM) Web uygulamasına bağlanmayı öğreneceksiniz.
 
-Daha fazla bilgi için bkz. [Azure Web uygulaması Için özel uç noktaları kullanma][privatenedpointwebapp].
+Daha fazla bilgi için bkz. [Azure Web uygulaması için özel uç noktaları kullanma][privateendpointwebapp].
 
 > [!Note]
->Önizleme, PremiumV2 Windows ve Linux Web Apps ve elastik Premium işlevleri için genel bölgelerde kullanılabilir. 
+> Özel uç nokta (Önizleme), PremiumV2 katmanlı Windows Web uygulamaları, Linux Web uygulamaları ve Azure Işlevleri Premium planı (bazen elastik Premium plan olarak adlandırılır) için genel bölgelerde kullanılabilir. 
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-https://portal.azure.com adresinden Azure portalında oturum açın.
+Başlamadan önce [Azure Portal](https://portal.azure.com)oturum açın.
 
-## <a name="virtual-network-and-virtual-machine"></a>Sanal ağ ve sanal makine
+## <a name="create-a-virtual-network-and-virtual-machine"></a>Sanal ağ ve sanal makine oluşturma
 
-Bu bölümde, Özel uç nokta aracılığıyla Web uygulamanıza erişmek için kullanılan VM 'yi barındırmak için sanal ağ ve alt ağ oluşturacaksınız.
+Bu bölümde, bir Web uygulamasına özel bir uç nokta aracılığıyla erişmek için kullanacağınız bir VM 'yi barındırmak için bir sanal ağ ve alt ağ oluşturursunuz.
 
 ### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 
-Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
+Sanal ağ ve alt ağ oluşturmak için aşağıdakileri yapın:
 
-1. Ekranın sol üst tarafında, **kaynak oluştur**  >  **ağ**  >  **sanal ağı** ' nı veya arama kutusunda **sanal ağ** ara ' yı seçin.
+1. Sol bölmede **kaynak oluştur**  >  **ağ**  >  **sanal ağ**' ı seçin.
 
-1. **Sanal ağ oluştur**' da, temel bilgiler sekmesinde bu bilgileri girin veya seçin:
-
-   > [!div class="mx-imgBorder"]
-   > ![Sanal ağ oluştur][1]
-
-1. **"İleri: IP adresleri >"** düğmesine tıklayın ve bu bilgileri girin veya seçin:
+1. **Sanal ağ oluştur** bölmesinde **temel bilgiler** sekmesini seçin ve ardından burada gösterilen bilgileri girin:
 
    > [!div class="mx-imgBorder"]
-   >![IP adreslerini yapılandırma][2]
+   > ![Azure portal "sanal ağ oluştur" bölmesinin ekran görüntüsü.][1]
 
-1. Alt ağ bölümünde **"+ alt ağ ekle"** ye tıklayın ve aşağıdaki bilgileri girip **"Ekle"** ye tıklayın
-
-   > [!div class="mx-imgBorder"]
-   >![Alt ağ ekle][3]
-
-1. **"Gözden geçir + oluştur"** seçeneğine tıklayın
-
-1. Doğrulama başarılı olduktan sonra **"Oluştur"** düğmesine tıklayın.
-
-### <a name="create-virtual-machine"></a>Sanal makine oluşturma
-
-1. Azure Portal ekranın sol üst kısmında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi** ' ni seçin.
-
-1. Sanal makine oluşturma-temel bilgiler bölümünde, bu bilgileri girin veya seçin:
+1. **IP adresleri** sekmesini seçin ve ardından burada gösterilen bilgileri girin:
 
    > [!div class="mx-imgBorder"]
-   >![Sanal makine temel ][4]
+   > ![Sanal ağ oluştur bölmesinde "IP adresleri" sekmesinin ekran görüntüsü.][2]
 
-1. **"İleri: diskler"** i seçin
-
-   Varsayılan ayarları koruyun.
-
-1. **"İleri: ağ"** seçeneğini belirleyin, bu bilgileri seçin:
+1. **Alt ağ** bölümünde, **alt ağ ekle**' yi seçin, burada gösterilen bilgileri girin ve **Ekle**' yi seçin.
 
    > [!div class="mx-imgBorder"]
-   >![Ağ ][5]
+   > !["Alt ağ ekle" bölmesinin ekran görüntüsü.][3]
 
-1. **"Gözden geçir + oluştur"** seçeneğine tıklayın
+1. **Gözden geçir + oluştur**’u seçin.
 
-1. Doğrulama geçtiğinde ileti **"Oluştur"** düğmesine tıklayın.
+1. Doğrulama başarılı olduktan sonra **Oluştur**' u seçin.
 
-## <a name="create-your-web-app-and-private-endpoint"></a>Web uygulamanızı ve özel uç noktayı oluşturma
+### <a name="create-the-virtual-machine"></a>Sanal makineyi oluşturma
 
-Bu bölümde özel bir uç nokta kullanarak özel bir Web uygulaması oluşturacaksınız.
+Sanal makineyi oluşturmak için aşağıdakileri yapın:
+
+1. Azure Portal, sol bölmede **kaynak oluşturma**  >  **işlem**  >  **sanal makinesi**' ni seçin.
+
+1. **Sanal makine temel kavramları oluştur** bölmesinde, burada gösterilen bilgileri girin:
+
+   > [!div class="mx-imgBorder"]
+   > !["Sanal makine oluşturma" bölmesinin ekran görüntüsü.][4]
+
+1. **İleri ' yi seçin: diskler**.
+
+1. **Diskler** bölmesinde, varsayılan ayarları koruyun ve ardından İleri ' yi seçin **: ağ**.
+
+1. **Ağ** bölmesine, burada gösterilen bilgileri girin:
+
+   > [!div class="mx-imgBorder"]
+   > !["Sanal makine oluşturma" bölmesindeki "ağ" sekmesinin ekran görüntüsü.][5]
+
+1. **Gözden geçir + oluştur**’u seçin.
+
+1. Doğrulama başarılı olduktan sonra **Oluştur**' u seçin.
+
+## <a name="create-a-web-app-and-a-private-endpoint"></a>Web uygulaması ve özel uç nokta oluşturma
+
+Bu bölümde, özel bir uç nokta kullanan özel bir Web uygulaması oluşturacaksınız.
 
 > [!Note]
->Özel uç nokta özelliği yalnızca Premium v2 SKU 'SU için kullanılabilir.
+> Özel uç nokta özelliği yalnızca PremiumV2 katmanı için kullanılabilir.
 
-### <a name="web-app"></a>Web App
+### <a name="create-the-web-app"></a>Web uygulaması oluşturma
 
-1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **Web**  >  **Web uygulaması** ' nı seçin.
+1. Azure Portal, sol bölmedeki **kaynak oluştur**  >  **Web**  >  **Web uygulaması**' nı seçin.
 
-1. Web uygulaması oluşturma-temel bilgiler bölümünde, bu bilgileri girin veya seçin:
+1. **Web uygulaması** bölmesinde **temel bilgiler** sekmesini seçin ve ardından burada gösterilen bilgileri girin:
 
    > [!div class="mx-imgBorder"]
-   >![Web uygulaması temel ][6]
+   > !["Web uygulaması" bölmesindeki "temel bilgiler" sekmesinin ekran görüntüsü.][6]
 
-1. **"Gözden geçir + oluştur"** u seçin
+1. **Gözden geçir + oluştur**’u seçin.
 
-1. Doğrulama geçtiğinde ileti **"Oluştur"** düğmesine tıklayın.
+1. Doğrulama başarılı olduktan sonra **Oluştur**' u seçin.
 
 ### <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma
 
-1. Web uygulaması özelliklerinde **Ayarlar**  >  **ağ** ' ı seçin ve **"özel uç nokta bağlantılarınızı yapılandırın"** seçeneğine tıklayın.
+1. Web uygulaması özelliklerinde, **Ayarlar**altında **ağ**' ı seçin ve ardından **Özel uç nokta bağlantıları (Önizleme)** altında **Özel uç nokta bağlantılarınızı Yapılandır**' ı seçin.
 
    > [!div class="mx-imgBorder"]
-   >![Web uygulaması ağı][7]
+   > ![Web uygulaması ağ bölmesinde "özel uç nokta bağlantılarınızı yapılandırma" bağlantısının ekran görüntüsü.][7]
 
-1. Sihirbazda, **"+ Ekle"** ye tıklayın
-
-   > [!div class="mx-imgBorder"]
-   >![Web uygulaması özel uç noktası][8]
-
-1. Abonelik, VNet ve alt ağ bilgilerini doldurup **"Tamam"** a tıklayın
+1. **Özel uç nokta bağlantıları (Önizleme)** sihirbazında **Ekle**' yi seçin.
 
    > [!div class="mx-imgBorder"]
-   >![Web uygulaması ağı][9]
+   > !["Özel uç nokta bağlantıları (Önizleme)" sihirbazındaki Ekle düğmesinin ekran görüntüsü.][8]
 
-1. Özel uç noktanın oluşturulmasını gözden geçirin
-
-   > [!div class="mx-imgBorder"]
-   >![][10]
-   > ![ Özel uç noktanın son görünümünü gözden geçirin][11]
-
-## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
-
-1. Portalın arama çubuğunda **Myvm** yazın
-1. **Bağlan düğmesini**seçin. Bağlan düğmesini seçtikten sonra sanal makineye bağlan açılır, **RDP** 'yi seçin
+1. **Abonelik**, **sanal ağ**ve **alt ağ** açılan listelerinde doğru bilgileri seçin ve ardından **Tamam**' ı seçin.
 
    > [!div class="mx-imgBorder"]
-   >![RDP düğmesi][12]
+   > !["Özel uç nokta Ekle (Önizleme)" bölmesinin ekran görüntüsü.][9]
 
-1. Azure, Uzak Masaüstü Protokolü (. rdp) dosyası oluşturur ve **RDP dosyasını indir** ' e tıkladıktan sonra bilgisayarınıza indirir
+1. Özel uç nokta oluşturma işleminin ilerlemesini izleyin.
 
    > [!div class="mx-imgBorder"]
-   >![RDP dosyasını indir][13]
+   > ![Özel uç nokta ekleme ilerleme durumunun ekran görüntüsü. ][10]
+   >  ![ Yeni oluşturulan özel uç noktanın ekran görüntüsü.][11]
 
-1. İndirilen. rdp dosyasını açın.
+## <a name="connect-to-the-vm-from-the-internet"></a>İnternet 'ten sanal makineye bağlanma
 
-   - İstendiğinde Bağlan’ı seçin.
-   - VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
+1. Azure portal **arama** kutusuna **myvm**yazın.
+1. **Bağlan**' ı seçin ve ardından **RDP**' yi seçin.
+
+   > [!div class="mx-imgBorder"]
+   > !["MyVM" bölmesindeki "RDP" düğmesinin ekran görüntüsü.][12]
+
+1. **RDP Ile Bağlan** bölmesinde **RDP dosyasını indir**' i seçin.  
+
+   > [!div class="mx-imgBorder"]
+   > !["RDP ile bağlan" bölmesindeki "RDP dosyasını Indir" düğmesinin ekran görüntüsü.][13]
+
+   Azure bir Uzak Masaüstü Protokolü (RDP) dosyası oluşturur ve bilgisayarınıza indirir.   
+
+1. İndirilen RDP dosyasını açın.
+
+   a. İstemde, **Bağlan**' ı seçin.  
+   b. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
+
+     > [!Note]
+     > Bu kimlik bilgilerini kullanmak için **diğer seçimler**' i seçmeniz gerekebilir,  >  **farklı bir hesap kullanın**.
+
+1. **Tamam**’ı seçin.
 
    > [!Note]
-   > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için farklı bir hesap kullanmak > daha fazla seçenek belirlemeniz gerekebilir.
+   > Oturum açma işlemi sırasında bir sertifika uyarısı alırsanız **Evet** ' i veya **devam et**' i seçin.
 
-   - Tamam'ı seçin.
+1. VM masaüstü penceresi göründüğünde, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.
 
-1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız Evet ' i veya devam et ' i seçin.
-
-1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.
-
-## <a name="access-web-app-privately-from-the-vm"></a>Web uygulamasına özel olarak VM 'den erişin
+## <a name="access-the-web-app-privately-from-the-vm"></a>Web uygulamasına özel olarak VM 'den erişin
 
 Bu bölümde özel uç nokta kullanarak Web uygulamasına özel olarak bağlanırsınız.
 
-1. Özel uç noktanızın özel IP 'sini, arama çubuğu türü **özel bağlantısı**' na ve özel bağlantı ' yı seçin.
+1. Özel uç noktanızın özel IP 'sini almak için, **arama** kutusuna **özel bağlantı** yazın ve ardından sonuçlar listesinde **özel bağlantı**' yı seçin.
 
    > [!div class="mx-imgBorder"]
-   >![Özel Bağlantı][14]
+   > ![Arama sonuçları listesindeki "özel bağlantı" bağlantısının ekran görüntüsü.][14]
 
-1. Özel bağlantı merkezinde özel **uç noktalar** ' ı seçerek tüm özel uç noktalarınızı listeleyin
-
-   > [!div class="mx-imgBorder"]
-   >![Özel bağlantı merkezi][15]
-
-1. Web uygulamanız ve alt ağınız için özel uç nokta bağlantısını seçin
+1. Özel bağlantı merkezinde, sol bölmede Özel uç **noktalar** ' ı seçerek özel uç noktalarınızı görüntüleyin.
 
    > [!div class="mx-imgBorder"]
-   >![Özel uç nokta özellikleri][16]
+   > ![Özel bağlantı merkezindeki özel uç noktalar listesinin ekran görüntüsü.][15]
 
-1. Özel uç noktanızın özel IP 'sini ve Web uygulamanızın FQDN 'sini webappdemope.azurewebsites.net 10.10.2.4 ' de kopyalayın
-
-1. MyVM 'de, Web uygulamasına genel IP aracılığıyla erişilebildiğini doğrulayın. Bir tarayıcı açın ve Web uygulaması adını yapıştırın, 403 yasaklanmış bir hata sayfasına sahip olmanız gerekir
+1. Web uygulamanıza ve alt ağıza bağlanan özel uç noktayı seçin.
 
    > [!div class="mx-imgBorder"]
-   >![IP adresi kullanılmaya çalışılırken hata yasak][17]
+   > ![Özel bir uç nokta için Özellikler bölmesinin ekran görüntüsü.][16]
+
+1. Özel uç noktanızın özel IP 'sini ve Web uygulamanızın tam etki alanı adını (FQDN) kopyalayın. Önceki örnekte, özel KIMLIĞI *`webappdemope.azurewebsites.net 10.10.2.4`* .
+
+1. **Myvm** bölmesinde, Web UYGULAMASıNA genel IP üzerinden erişildiğini doğrulayın. Bunu yapmak için bir tarayıcı açın ve Web uygulaması adını yapıştırın. Sayfada bir "hata 403-Yasak" iletisi görüntülenmelidir.
+
+   > [!div class="mx-imgBorder"]
+   > !["Hata 403-Yasak" hata sayfasının ekran görüntüsü.][17]
 
    > [!Important]
-   > Bu özellik önizlemede olduğundan, DNS girişini el ile yönetmeniz gerekir.
+   > Bu özellik önizlemede olduğundan, etki alanı adı hizmeti (DNS) girişini el ile yönetmeniz gerekir.
 
-   DNS için iki seçeneğiniz vardır:
-   - VM 'nin ana bilgisayar dosyasını kullan 
-   - veya Azure DNS özel bölge hizmetini kullanın.
+   DNS için aşağıdakilerden birini yapın:
+ 
+   - Azure DNS özel bölge hizmetini kullanın.  
 
-1. İlk çözüm: privatelink.azurewebsites.net adlı bir DNS özel bölgesi oluşturabilir ve bunu VNet 'e bağlayabilirsiniz
-1. Ardından, Özel uç noktanızın IP adresi ile iki bir kayıt (uygulama adı ve SCM adı) oluşturmanız gerekir
-   > [!div class="mx-imgBorder"]
-   >![DNS özel bölge kayıtları][21]
+     a. Adlı bir DNS özel bölgesi oluşturun *`privatelink.azurewebsites.net`* ve sonra sanal ağa bağlayın.  
+     b. Özel uç noktanızın IP adresiyle iki bir kayıt (yani, uygulama adı ve hizmet Denetim Yöneticisi [SCM] adı) oluşturun.  
+     > [!div class="mx-imgBorder"]
+     > ![DNS özel bölge kayıtlarının ekran görüntüsü.][21]  
 
-1. İkinci çözüm: konak girdisini oluşturun, dosya Gezgini 'ni açın ve Hosts dosyasını bulun
+   - VM 'nin *Hosts* dosyasını kullanın.  
 
-   > [!div class="mx-imgBorder"]
-   >![Hosts dosyası][18]
+     a. Konaklar girdisini oluşturun, dosya Gezgini 'ni açın ve *Hosts* dosyasına bakın.  
+     > [!div class="mx-imgBorder"]
+     > ![Dosya Gezgini 'nde ana bilgisayar dosyasını gösteren ekran görüntüsü.][18]  
+     b. *Ana bilgisayar* dosyasını bir metin düzenleyicisinde düzenleyerek Web UYGULAMANıZıN özel IP adresini ve genel adını içeren bir giriş ekleyin.  
+     > [!div class="mx-imgBorder"]
+     > ![Hosts dosyası metninin ekran görüntüsü.][19]  
+     c. Dosyayı kaydedin.
 
-1. Hosts dosyasını Notepad ile düzenleyerek Web uygulamanızın özel IP adresine ve genel adına sahip bir giriş ekleyin
-
-   > [!div class="mx-imgBorder"]
-   >![İçerik barındırır][19]
-
-1. Dosyayı kaydetme
-
-1. Bir tarayıcı açın ve Web uygulamanızın URL 'sini yazın
+1. Bir tarayıcıda, Web uygulamanızın URL 'sini yazın.
 
    > [!div class="mx-imgBorder"]
-   >![PE ile Web sitesi][20]
+   > ![Web uygulaması görüntüleyen bir tarayıcının ekran görüntüsü.][20]
 
-1. Web uygulamanıza özel uç nokta aracılığıyla erişiyorsunuz
+Artık özel uç nokta aracılığıyla Web uygulamanıza erişiyorsunuz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Özel uç nokta, Web uygulaması ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
+Özel uç nokta, Web uygulaması ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin.
 
-1. Portalın üst kısmındaki arama kutusuna Ready-RG yazın ve arama sonuçlarından Ready-RG seçeneğini belirleyin.
-1. Kaynak grubunu sil'i seçin.
-1. KAYNAK grubu adını yazmak için Ready-RG girin ve Sil ' i seçin.
+1. Azure portal, **arama** kutusuna, **Ready-RG**yazın ve ardından sonuçlar listesinde **Ready-RG** ' yi seçin.
+
+1. **Kaynak grubunu sil**'i seçin.
+
+1. **Kaynak grubu adını yazın**altında, **Ready-RG**girin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir sanal ağ, bir Web uygulaması ve özel bir uç nokta üzerinde bir VM oluşturdunuz. Internet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak Web uygulamasına güvenli bir şekilde iletilecaksınız. Özel uç nokta hakkında daha fazla bilgi için bkz. [Azure özel uç noktası nedir?][privateendpoint].
+Bu makalede, bir sanal ağ, bir Web uygulaması ve özel bir uç nokta üzerinde bir VM oluşturdunuz. İnternet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak Web uygulamasına güvenli bir şekilde iletilecaksınız. 
+
+Özel uç nokta (Önizleme) hakkında daha fazla bilgi için bkz. [Azure özel uç noktası nedir?][privateendpoint].
 
 <!--Image references-->
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png
@@ -244,5 +250,5 @@ Bu hızlı başlangıçta, bir sanal ağ, bir Web uygulaması ve özel bir uç n
 
 
 <!--Links-->
-[privatenedpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[privateendpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
 [privateendpoint]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview

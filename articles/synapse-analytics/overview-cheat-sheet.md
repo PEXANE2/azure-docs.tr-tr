@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3141f8044a4a257de8022ff789b12d5d3e6e7a90
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 0e4b96092107e3411f33411f1044fd7cc839f132
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807035"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052010"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure SYNAPSE Analytics, yemek sayfası
 
@@ -22,13 +22,16 @@ ms.locfileid: "85807035"
 
 Azure SYNAPSE Analytics, hizmet ve önemli komutların temel kavramları boyunca size kılavuzluk eder. Bu makale, hem yeni öğrenenlere hem de temel Azure SYNAPSE konularının vurgulamaları isteyen kişilere yardımcı olur.
 
-## <a name="architecture"></a>Mimari
+## <a name="basics"></a>Temel Bilgiler
 
-> [!div class="mx-imgBorder"]
->![SYNAPSE mimarisi](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
+**SYNAPSE çalışma alanı** , Azure 'da bulut tabanlı kurumsal analizler gerçekleştirmek için güvenli kılınabilir bir işbirliği sınırıdır. Çalışma alanı belirli bir bölgeye dağıtılır ve ilişkili bir ADLS 2. hesabına ve dosya sistemine sahiptir (geçici verileri depolamak için). Çalışma alanı bir kaynak grubu altında.
 
+Bir çalışma alanı SQL ve Apache Spark ile analiz gerçekleştirmenize olanak tanır. SQL ve Spark Analytics için kullanılabilen kaynaklar **havuzlar**halinde düzenlenir. Üç tür havuz vardır.
+* **SQL havuzları**. Bu, **adanmış** SQL Analytics kapasitesi sağlar.
+* **SQL isteğe bağlı havuzu**. Her çalışma alanının tam olarak bir SQL isteğe bağlı havuzu vardır. Bu, her sorgu temelinde **sunucusuz** SQL Analytics kapasitesi sağlar.
+* **Spark havuzları**. Bunlar Spark Analytics kapasitesi sağlar.
 ## <a name="terminology"></a>Terminoloji
-| Terim                         | Tanım      |
+| Süre                         | Tanım      |
 |:---                                 |:---                 |
 | **SYNAPSE çalışma alanı** | Azure 'da bulut tabanlı kurumsal analizler gerçekleştirmek için güvenli kılınabilir bir işbirliği sınırı. Çalışma alanı belirli bir bölgeye dağıtılır ve ilişkili bir ADLS 2. hesabına ve dosya sistemine sahiptir (geçici verileri depolamak için). Çalışma alanı bir kaynak grubu altında. |
 | **Synapse SQL**   | Analytics 'i havuzlarla veya isteğe bağlı yetenekler ile çalıştırın.  |
@@ -45,7 +48,7 @@ Azure SYNAPSE Analytics, hizmet ve önemli komutların temel kavramları boyunca
 |**Spark iş tanımı**|Kodu ve bağımlılıklarını içeren derleme jar ile Spark işi göndermek için arabirim.|
 |**Veri Akışı**|  Büyük veri dönüştürmesi yapmak için hiçbir kodlamaya gerek olmadan tam bir görsel deneyimi sağlar. Tüm iyileştirme ve yürütme işlemleri sunucusuz bir biçimde işlenir. |
 |**SQL betiği**| Bir dosyaya kaydedilmiş SQL komutları kümesi. Bir SQL betiği bir veya daha fazla SQL deyimi içerebilir. SQL havuzu veya istek üzerine SQL istekleri aracılığıyla SQL istekleri çalıştırmak için kullanılabilir.|
-|**İşlem hattı**| Bir görevi birlikte gerçekleştiren etkinliklerin mantıksal gruplandırması.|
+|**İşlem Hattı**| Bir görevi birlikte gerçekleştiren etkinliklerin mantıksal gruplandırması.|
 |**Etkinlik**| Verilerin kopyalanması, bir not defteri veya bir SQL betiği çalıştırması gibi verilerde gerçekleştirilecek eylemleri tanımlar.|
 |**Tetikleyici**| Bir işlem hattı yürütür. El ile veya otomatik olarak çalıştırılabilir (zamanlama, pencere veya olay tabanlı).|
 |**Bağlı hizmet**| Dış kaynaklara bağlanmak için çalışma alanı için gereken bağlantı bilgilerini tanımlayan bağlantı dizeleri.|
@@ -54,7 +57,7 @@ Azure SYNAPSE Analytics, hizmet ve önemli komutların temel kavramları boyunca
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Çalışma alanı oluşturma](quickstart-create-workspace.md)
-- [SYNAPSE Studio 'Yu kullanma](quickstart-synapse-studio.md)
+- [Synapse Studio’yu kullanma](quickstart-synapse-studio.md)
 - [SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md)
 - [Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool-portal.md)
 - [İsteğe bağlı SQL kullanma](quickstart-sql-on-demand.md)

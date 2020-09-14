@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cf911a240456871275abbd7f1e7313a1d2289b98
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82582879"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054612"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Öğretici: Grup üyelerini otomatik olarak ekleme veya kaldırma
 
-Azure Active Directory'de (Azure AD) sürekli el ile müdahale etmenize gerek kalmaması için güvenlik gruplarında veya Office 365 gruplarında kullanıcı ekleme veya kaldırma işlemlerini otomatik olarak gerçekleştirebilirsiniz. Bir kullanıcının veya cihazın herhangi bir özelliği değiştiğinde Azure AD, değişikliğin üye eklemesi veya kaldırılması gerekip gerekmediğini görmek için Azure AD kuruluşunuzdaki tüm dinamik grup kurallarını değerlendirir.
+Azure Active Directory (Azure AD) içinde, otomatik olarak güvenlik gruplarına veya Microsoft 365 gruplara kullanıcı ekleyebilir veya kaldırabilirsiniz. böylece, her zaman el ile yapmanız gerekmez. Bir kullanıcının veya cihazın herhangi bir özelliği değiştiğinde Azure AD, değişikliğin üye eklemesi veya kaldırılması gerekip gerekmediğini görmek için Azure AD kuruluşunuzdaki tüm dinamik grup kurallarını değerlendirir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bir iş ortağı şirketten otomatik olarak doldurulmuş bir konuk kullanıcıları grubu oluşturma
 > * Gruba konuk kullanıcıların erişmesi için iş ortağına özgü özelliklere yönelik lisans atama
@@ -33,7 +33,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu özellik, kuruluşun genel yöneticisi olarak sizin için bir Azure AD Premium lisansı gerektirir. Bir tane yoksa, Azure AD 'de **Lisans**  >  **ürünlerini**  >  **dene/satın al**' ı seçin.
 

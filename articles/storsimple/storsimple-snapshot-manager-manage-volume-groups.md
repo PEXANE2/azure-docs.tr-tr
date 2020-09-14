@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager birim grupları | Microsoft Docs
 description: Toplu grupları oluşturmak ve yönetmek için StorSimple Snapshot Manager MMC ek bileşeninin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 97bb232f726dada5241242e4a1d90e120c07e38c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506268"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054781"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Toplu grupları oluşturmak ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -50,9 +50,9 @@ Bu eylemlerin tümü, **Eylemler** bölmesinde de kullanılabilir.
 
 | Sonuç sütunu | Açıklama |
 |:--- |:--- |
-| Name |**Ad** sütunu, birim grubunun adını içerir. |
+| Ad |**Ad** sütunu, birim grubunun adını içerir. |
 | Uygulama |**Uygulamalar** sütununda, Windows konakta yüklü olan ve ÇALıŞMAKTA olan VSS yazıcılarının sayısı gösterilir. |
-| Seçildi |**Seçili** sütun, birim grubunda bulunan birim sayısını gösterir. Sıfır (0), birim grubundaki birimlerle hiçbir uygulamanın ilişkilendirilmediğini belirtir. |
+| Seçili |**Seçili** sütun, birim grubunda bulunan birim sayısını gösterir. Sıfır (0), birim grubundaki birimlerle hiçbir uygulamanın ilişkilendirilmediğini belirtir. |
 | Alındıysa |**Içeri aktarılan** sütun, içeri aktarılan birim sayısını gösterir. **True**olarak ayarlandığında, bu sütun bir birim grubunun Azure Portal içeri aktarıldığını ve storsimple Snapshot Manager içinde oluşturulmadığını gösterir. |
 
 > [!NOTE]

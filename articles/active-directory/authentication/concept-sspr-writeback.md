@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 690dead3cb0059dd1b20ff042a93c36d674e62d2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717447"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052690"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Self servis parola sıfırlama geri yazma özelliği Azure Active Directory nasıl çalışır?
 
@@ -37,7 +37,7 @@ Parola geri yazma özelliği aşağıdaki özellikleri sağlar:
 
 * Şirket **içi Active Directory Domain Services (AD DS) parola Ilkeleri zorlaması**: bir Kullanıcı parolasını sıfırladığında, bu dizine işlemeden önce şirket içi AD DS ilkenizi karşıladığından emin olmak denetlenir. Bu gözden geçirme geçmişi, karmaşıklığı, yaşı, parola filtrelerini ve AD DS tanımladığınız diğer parola kısıtlamalarını denetlemeyi içerir.
 * **Sıfır gecikme geri bildirimi**: parola geri yazma işlemi zaman uyumlu bir işlemdir. Kullanıcılar, parolaları ilkeyi karşılamıyorsa veya herhangi bir nedenden dolayı sıfırlanıp değiştirimezse anında bilgilendirilir.
-* , **Erişim panelinden ve Office 365 ' deki parola değişikliklerini destekler**: Federasyon veya parola karması eşitlenen kullanıcılar, son kullanma zamanı veya süre dolmayan parolalarını değiştirmek için, bu parolalar AD DS 'e geri yazılır.
+* , **Erişim panelinden parola değişikliklerini destekler ve Microsoft 365**: Federasyon veya parola karması eşitlenen kullanıcılar, son kullanma zamanı veya süre dolmayan parolalarını değiştirmek için bu parolalar geri AD DS olarak yazılır.
 * **, Bir yönetici tarafından Azure Portal bir yönetici tarafından sıfırlanırsa parola geri yazma özelliğini destekler**: yönetici, bir kullanıcının [Azure Portal](https://portal.azure.com)parolasını sıfırladığında, bu kullanıcı federe veya parola karması eşitlendiğinde, parola şirket içine geri yazılır. Bu işlevsellik şu anda Office Yönetim Portalı 'nda desteklenmiyor.
 * **Tüm gelen güvenlik duvarı kuralları gerektirmez**: parola geri yazma, temel bir iletişim kanalı olarak Azure Service Bus geçişini kullanır. Tüm iletişimler 443 numaralı bağlantı noktasından dışarıya gönderilir.
 

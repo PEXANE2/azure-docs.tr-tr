@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7e4772ba2b3d8adf163d6f2932461e1e939ed84
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81309896"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052452"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Multi-Factor Authentication sağlayıcısı ne zaman kullanılır?
 
 > [!IMPORTANT]
 > 1 Eylül 2018 ' den itibaren geçerli olan yeni kimlik doğrulama sağlayıcıları artık oluşturulmayabilir. Mevcut kimlik doğrulama sağlayıcıları çalışmaya ve güncelleştirilmesine devam edebilir, ancak geçiş artık mümkün değildir. Multi-Factor Authentication, Azure AD Premium lisanlarında bir özellik olarak kullanılabilir olmaya devam edecektir.
 
-İki adımlı doğrulama, Azure Active Directory’ye sahip genel yöneticiler ve Office 365 kullanıcıları için varsayılan olarak kullanılabilir durumdadır. Ancak, [gelişmiş özelliklerden](howto-mfa-mfasettings.md) yararlanmak isterseniz Azure Multi-Factor Authentication’ın (MFA) tam sürümünü satın almanız gerekir.
+İki aşamalı doğrulama, Azure Active Directory sahip olan genel Yöneticiler ve Microsoft 365 kullanıcıları için varsayılan olarak kullanılabilir. Ancak, [gelişmiş özelliklerden](howto-mfa-mfasettings.md) yararlanmak isterseniz Azure Multi-Factor Authentication’ın (MFA) tam sürümünü satın almanız gerekir.
 
 Azure Multi-Factor auth sağlayıcısı, **lisanslarına sahip olmayan**kullanıcılar için Azure Multi-Factor Authentication tarafından belirtilen özelliklerden faydalanmak için kullanılır.
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015893"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054713"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma
 
@@ -34,7 +34,7 @@ Yönetici devralma işlemi sırasında, [Azure AD’ye özel etki alanı adı ek
 
 ## <a name="internal-admin-takeover"></a>İç yönetici devralması
 
-SharePoint ve OneDrive içeren bazı ürünler (Office 365 gibi) dışarıdan devralmayı desteklemez. Bu senaryonuz varsa veya bir yöneticileriniz varsa ve self servis kaydolma kullanan kullanıcılar tarafından yönetilen bir yönetilmeyen veya "gölge" Azure AD kuruluşu üzerinden yararlanmak istiyorsanız, bunu bir iç yönetici ile gerçekleştirebilirsiniz.
+Microsoft 365 gibi SharePoint ve OneDrive içeren bazı ürünler dışarıdan devralmayı desteklemez. Bu senaryonuz varsa veya bir yöneticileriniz varsa ve self servis kaydolma kullanan kullanıcılar tarafından yönetilen bir yönetilmeyen veya "gölge" Azure AD kuruluşu üzerinden yararlanmak istiyorsanız, bunu bir iç yönetici ile gerçekleştirebilirsiniz.
 
 1. Power BI için kaydolup yönetilmeyen kuruluşta bir kullanıcı bağlamı oluşturun. Örneğin, bu adımlar bu yolu kabul eder.
 
@@ -52,7 +52,7 @@ SharePoint ve OneDrive içeren bazı ürünler (Office 365 gibi) dışarıdan de
 
 DNS TXT kayıtları, etki alanı adı kaydedicisinde doğrulandığında Azure AD organizasyonunu yönetebilirsiniz.
 
-Yukarıdaki adımları tamamladığınızda, artık Office 365 ' de dördüncü kahve kuruluşunun genel yöneticisi olursunuz. Etki alanı adını diğer Azure hizmetlerinize tümleştirmek için, bunu Office 365 'den kaldırabilir ve Azure 'da farklı bir yönetilen kuruluşa ekleyebilirsiniz.
+Yukarıdaki adımları tamamladığınızda, artık Microsoft 365 dördüncü kahve kuruluşunun genel yöneticisi olursunuz. Etki alanı adını diğer Azure hizmetlerinize tümleştirebilmek için Microsoft 365 ' dan kaldırabilir ve Azure 'da farklı bir yönetilen kuruluşa ekleyebilirsiniz.
 
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>Azure AD 'de yönetilen bir kuruluşa etki alanı adı ekleme
 
@@ -61,9 +61,9 @@ Yukarıdaki adımları tamamladığınızda, artık Office 365 ' de dördüncü 
 3. Yeni Kullanıcı hesabının Azure AD kuruluşu için genel yönetici ayrıcalıklarına sahip olduğundan emin olun.
 4. Microsoft 365 Yönetim merkezinde **etki alanları** sekmesini açın, etki alanı adını seçin ve **Kaldır**' ı seçin. 
   
-   ![etki alanı adını Office 365 ' dan kaldırma](./media/domains-admin-takeover/remove-domain-from-o365.png)
+   ![Microsoft 365 etki alanı adını kaldır](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Office 365 ' de kaldırılan etki alanı adına başvuran herhangi bir kullanıcı veya grup varsa,. onmicrosoft.com etki alanına yeniden adlandırılması gerekir. Etki alanı adını silmeye zorlarsanız, bu örnekte *user \@ fourthcoffeexyz.onmicrosoft.com*olarak tüm kullanıcılar otomatik olarak yeniden adlandırılır.
+5. Microsoft 365 ' de, kaldırılan etki alanı adına başvuran herhangi bir kullanıcı veya grubunuz varsa,. onmicrosoft.com etki alanı olarak yeniden adlandırılması gerekir. Etki alanı adını silmeye zorlarsanız, bu örnekte *user \@ fourthcoffeexyz.onmicrosoft.com*olarak tüm kullanıcılar otomatik olarak yeniden adlandırılır.
   
 6. Azure AD [Yönetim merkezinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) Azure AD kuruluşu için genel yönetici olan bir hesapla oturum açın.
   
@@ -72,11 +72,11 @@ Yukarıdaki adımları tamamladığınızda, artık Office 365 ' de dördüncü 
    ![Azure AD 'ye eklenen etki alanı doğrulandı](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Office 365 kuruluşunda atanmış lisanslarına sahip tüm Power BI veya Azure Rights Management hizmet kullanıcıları, etki alanı adı kaldırılırsa panoları kaydetmelidir. Kullanıcı * \@ fourthcoffeexyz.onmicrosoft.com* gibi Kullanıcı adı ile oturum açması gerekir, yani Kullanıcı, * \@ mathcoffee. xyz*.
+> Microsoft 365 kuruluşta atanmış lisanslarına sahip tüm Power BI veya Azure Rights Management hizmet kullanıcıları, etki alanı adı kaldırılırsa panoları kaydetmelidir. Kullanıcı * \@ fourthcoffeexyz.onmicrosoft.com* gibi Kullanıcı adı ile oturum açması gerekir, yani Kullanıcı, * \@ mathcoffee. xyz*.
 
 ## <a name="external-admin-takeover"></a>Dış yönetici devralması
 
-Bir kuruluşu zaten Azure hizmetleri veya Office 365 ile yönetiyorsanız, başka bir Azure AD kuruluşunda zaten doğrulandıysa, özel bir etki alanı adı ekleyemezsiniz. Ancak, Azure AD 'de yönetilen kuruluşunuzda, yönetilmeyen bir kuruluştan dışarıdan bir dış yönetici tarafından yararlanalabilirsiniz. Genel yordam, [Azure AD 'ye özel etki alanı ekleme](../fundamentals/add-custom-domain.md)makalesini izler.
+Bir kuruluşu zaten Azure hizmetleri veya Microsoft 365 ile yönetiyorsanız, başka bir Azure AD kuruluşunda zaten doğrulandıysa, özel bir etki alanı adı ekleyemezsiniz. Ancak, Azure AD 'de yönetilen kuruluşunuzda, yönetilmeyen bir kuruluştan dışarıdan bir dış yönetici tarafından yararlanalabilirsiniz. Genel yordam, [Azure AD 'ye özel etki alanı ekleme](../fundamentals/add-custom-domain.md)makalesini izler.
 
 Etki alanı adının sahipliğini doğruladıktan sonra, Azure AD etki alanı adını yönetilmeyen kuruluştan kaldırır ve mevcut kuruluşunuza taşır. Yönetilmeyen bir dizinin dışarıdan yönetimi, iç yönetici tarafından aynı DNS TXT doğrulama işlemini gerektirir. Bunun farkı, aşağıdakilerin etki alanı adı ile de taşınabileceği bir addır:
 
@@ -120,7 +120,7 @@ cmdlet | Kullanım
 `new-msoldomain –name <domainname>` | Etki alanı adını kuruluşa doğrulanmamış olarak ekler (henüz bir DNS doğrulaması gerçekleştirilmedi).
 `get-msoldomain` | Etki alanı adı artık yönetilen kuruluşunuzla ilişkili etki alanı adları listesine dahil edilmiştir, ancak **doğrulanmamış**olarak listelenir.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Etki alanı için yeni DNS TXT kaydına (MS = xxxxx) konacak bilgileri sağlar. Doğrulama, TXT kaydının yayılması biraz zaman alacağından, **-forcetakeover** seçeneğini düşünmeden önce birkaç dakika bekleyin. 
-`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Etki alanı adınız hala doğrulanmıyorsa, **-forcetakeover** seçeneğiyle devam edebilirsiniz. Bu, TXT kaydının oluşturulduğunu doğrular ve devralma işlemini devre dışı bırakır.<li>**-Forcetakeover** seçeneği yalnızca, yönetilmeyen kuruluşun tarafından devralmayı engelleyen Office 365 hizmetlerine sahip olduğu durumlarda olduğu gibi, cmdlet 'e yalnızca bir dış yönetici tarafından zorlanırken eklenmelidir.
+`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Etki alanı adınız hala doğrulanmıyorsa, **-forcetakeover** seçeneğiyle devam edebilirsiniz. Bu, TXT kaydının oluşturulduğunu doğrular ve devralma işlemini devre dışı bırakır.<li>**-Forcetakeover** seçeneği, yönetilmeyen kuruluşun devralmayı engellediği Microsoft 365 hizmetleri olduğu durumlarda olduğu gibi, cmdlet 'e yalnızca bir dış yönetici tarafından zorlanırken eklenmelidir.
 `get-msoldomain` | Etki alanı listesi artık etki alanı adını **doğrulanmış**olarak gösterir.
 
 > [!NOTE]

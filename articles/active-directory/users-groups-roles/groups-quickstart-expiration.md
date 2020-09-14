@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178f6a2c1a71d088eeb1a3ea6f7e39198d401ff4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213735"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054407"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory Microsoft 365 grupları sona ermek üzere ayarla
 
@@ -33,7 +33,7 @@ Süre sonu ilkesi oldukça basittir:
 - Silinen bir Microsoft 365 Grubu, bir grup sahibine veya bir Azure AD yöneticisi tarafından 30 gün içinde geri yüklenebilir
 
 > [!NOTE]
-> Gruplar artık, son kullanımda olup olmadığına göre otomatik olarak yenilenmekte olan Azure AD zekasını kullanır. Bu yenileme kararı Outlook, SharePoint, takımlar, Yammer ve diğerleri gibi Office 365 Hizmetleri içindeki gruplardaki Kullanıcı etkinliklerini temel alır.
+> Gruplar artık, son kullanımda olup olmadığına göre otomatik olarak yenilenmekte olan Azure AD zekasını kullanır. Bu yenileme kararı Outlook, SharePoint, takımlar, Yammer ve diğerleri gibi Microsoft 365 hizmetler genelinde gruplar halinde Kullanıcı etkinliklerini temel alır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 

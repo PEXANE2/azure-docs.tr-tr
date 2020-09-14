@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179360"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052673"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için yeniden kimlik doğrulama istemlerini iyileştirin ve oturum ömrünü anlayın
 
@@ -36,7 +36,7 @@ Kullanıcılarınıza doğru sıklıkta oturum açmasını isteyerek kullanıcı
     * [Yönetilen cihazları](../devices/overview.md) veya [sorunsuz SSO](../hybrid/how-to-connect-sso.md)'yu kullanarak uygulamalar arasında çoklu oturum açma (SSO) özelliğini etkinleştirin.
     * Yeniden kimlik doğrulaması gerekliyse, koşullu erişim [oturum açma sıklığı ilkesini](../conditional-access/howto-conditional-access-session-lifetime.md)kullanın.
     * Yönetilmeyen cihazlardan veya mobil cihaz senaryolarından oturum açma kullanıcıları için, kalıcı tarayıcı oturumlarını ve oturum açma sıklığı ilkelerini etkinleştirmek üzere koşullu erişim kullanın.
-* Office 365 uygulama lisanslarınız veya ücretsiz Azure AD katmanınız varsa:
+* Microsoft 365 Apps lisanslarınız veya ücretsiz Azure AD katmanınız varsa:
     * [Yönetilen cihazları](../devices/overview.md) veya [sorunsuz SSO](../hybrid/how-to-connect-sso.md)'yu kullanarak uygulamalar arasında çoklu oturum açma (SSO) özelliğini etkinleştirin.
     * Açık *oturum açmış durumda kalır* seçeneğinin etkin kalmasını sağlayın ve kullanıcılarınıza bunu kabul etmesine kılavuzluk edin.
 * Mobil cihaz senaryolarında, kullanıcılarınızın Microsoft Authenticator uygulamasını kullanmasına emin olun. Bu uygulama, diğer Azure AD federasyon uygulamalarına yönelik bir aracı olarak kullanılır ve cihazdaki kimlik doğrulama istemlerini azaltır.
@@ -123,13 +123,13 @@ Oturum açma sıklığı ve kalıcı tarayıcı oturumu için koşullu erişim i
 
 Belirteç ömrünü gözden geçirmek için Azure AD [PowerShell 'i kullanarak Azure AD ilkelerini sorgulayın](../develop/active-directory-configurable-token-lifetimes.md#prerequisites). Yerinde olan tüm ilkeleri devre dışı bırakın.
 
-Kiracınızda birden fazla ayar etkinse, sizin için kullanılabilir lisanslama temelinde ayarlarınızı güncelleştirmenizi öneririz. Örneğin, Azure AD Premium lisanslarınız varsa, yalnızca *oturum açma sıklığı* ve *kalıcı tarayıcı oturumunun*koşullu erişim ilkesini kullanmanız gerekir. Office 365 uygulamalarınız veya Azure AD ücretsiz lisanslarınız varsa, *oturum açmış durumda kaldı?* yapılandırmasını kullanmanız gerekir.
+Kiracınızda birden fazla ayar etkinse, sizin için kullanılabilir lisanslama temelinde ayarlarınızı güncelleştirmenizi öneririz. Örneğin, Azure AD Premium lisanslarınız varsa, yalnızca *oturum açma sıklığı* ve *kalıcı tarayıcı oturumunun*koşullu erişim ilkesini kullanmanız gerekir. Microsoft 365 uygulamalarınız veya Azure AD ücretsiz lisanslarınız varsa, *oturum açmış durumda kaldı?* yapılandırmasını kullanmanız gerekir.
 
 Yapılandırılabilir belirteç yaşam sürelerini etkinleştirdiyseniz, bu özellik yakında kaldırılacaktır. Koşullu erişim ilkesine geçiş planlayın.
 
 Aşağıdaki tabloda lisanslarına göre öneriler özetlenmektedir:
 
-|              | Azure AD Ücretsiz ve Office 365 uygulamaları | Azure AD Premium |
+|              | Azure AD Ücretsiz ve Microsoft 365 uygulamalar | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
 | **SSO**                      | [Azure AD JOIN](../devices/concept-azure-ad-join.md) veya [hibrit Azure AD JOIN](../devices/concept-azure-ad-join-hybrid.md)veya YÖNETILMEYEN cihazlar için [sorunsuz SSO](../hybrid/how-to-connect-sso.md) . | Azure AD'ye katılım<br />Hibrit Azure AD'ye katılım |
 | **Yeniden kimlik doğrulama ayarları** | Oturum açmış durumda kalır                  | Oturum açma sıklığı ve kalıcı tarayıcı oturumu için koşullu erişim ilkelerini kullanın |

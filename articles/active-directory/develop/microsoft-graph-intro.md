@@ -11,19 +11,19 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: fb6f5c4840f127ac174b6b60359dd52a4797b3ec
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 13cbeca909b445d75fcbcf7b3751183421479d42
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119683"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052571"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 Microsoft Graph API 'SI, Microsoft Bulut hizmet kaynaklarına erişmenize olanak tanıyan bir yeniden takip eden Web API 'sidir. Uygulamanızı kaydettikten ve bir kullanıcı veya hizmet için kimlik doğrulama belirteçleri aldıktan sonra, Microsoft Graph API 'sine istek yapabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Graph genel bakış](/graph/overview).
 
 Microsoft Graph, aşağıdaki Microsoft 365 hizmetlerindeki verilere erişmek için REST API 'Leri ve istemci kitaplıklarını kullanıma sunar:
-- Office 365 hizmetleri: Delve, Excel, Microsoft kayıtları, Microsoft ekipleri, OneDrive, OneNote, Outlook/Exchange, Planner ve SharePoint
+- Microsoft 365 Services: Delve, Excel, Microsoft kayıtları, Microsoft ekipleri, OneDrive, OneNote, Outlook/Exchange, Planner ve SharePoint
 - Enterprise Mobility and Security Services: Gelişmiş tehdit analizi, Gelişmiş tehdit koruması, Azure Active Directory, Identity Manager ve Intune
 - Windows 10 Hizmetleri: Etkinlikler, cihazlar, bildirimler
 - Dynamics 365 Business Central

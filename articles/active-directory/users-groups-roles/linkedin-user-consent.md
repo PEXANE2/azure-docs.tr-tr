@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 5d90391dd5512b08ee6995a32bcd0b0f111b0f2b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542370"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053948"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn hesap bağlantıları veri paylaşımı ve onayı
 
@@ -73,7 +73,7 @@ Microsoft ve LinkedIn hesaplarınızı bağladığınızda Microsoft 'un LinkedI
 * Profil verileri-ilk adınız, soyadı, profil fotoğrafınız, e-posta adresiniz, yöneticiniz ve yönettiğiniz kişiler gibi bilgileri içerir.
 * Takvim verileri-takvimlerinizde, saatlerinizde, konumlarında ve katılımcıların iletişim bilgilerinde toplantılar içerir. Toplantı hakkındaki bilgiler, Gündem, içerik veya toplantı başlığı gibi takvim verilerine dahil değildir.
 * İlgi alanları verileri-Cortana ve Bing for Business gibi Microsoft hizmetlerini kullanmanıza göre hesabınızla ilişkili olan ilgi alanlarınızı içerir.
-* Abonelik verileri-kuruluşunuz tarafından sunulan abonelikleri, Office 365 gibi Microsoft uygulamalarına ve hizmetlerine dahil eder.
+* Abonelik verileri-kuruluşunuz tarafından sunulan abonelikleri, Microsoft 365 gibi Microsoft uygulamalarına ve hizmetlerine dahil eder.
 * Kişiler verileri-Outlook, Skype ve diğer Microsoft hesabı hizmetlerinde, sık iletişim kurduğunuz veya işbirliği yaptığınız kişilerin iletişim bilgileri de dahil olmak üzere kişi listelerini içerir. Kişiler, LinkedIn tarafından düzenli olarak içeri aktarılır, depolanır ve kullanılır. Örneğin, bağlantılar önermek, kişilerin düzenlenmesine yardımcı olur ve kişiler hakkındaki güncelleştirmeleri gösterebilirsiniz.
 
 Microsoft 'tan erişilen veriler, kişiler hariç, LinkedIn ile kalıcı olarak depolanmaz. Microsoft kişileri, kullanıcılar onları kaldırana kadar LinkedIn 'e depolanır. [İçeri aktarılan kişileri LinkedIn 'den silme](https://www.linkedin.com/help/linkedin/answer/43377)hakkında daha fazla bilgi edinin.

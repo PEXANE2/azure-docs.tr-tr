@@ -4,19 +4,19 @@ description: Azure Active Directory ve Elium arasında çoklu oturum açmayı na
 services: active-directory
 author: jeevansd
 manager: CelesteDG
-ms.reviewer: celested
+ms.reviewer: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 756b8e8e06d393736b330c3ae3e9128de76bf5a0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e7fc8f68bf344b689d6d4ebb49fde8d43ebcaccd
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544222"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053672"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>Öğretici: Elium ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,14 +26,15 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Elium 'un nasıl tümleş
 * Kullanıcılarınızın Azure AD hesaplarıyla tam olarak oturum açmalarına olanak sağlar.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 * Elium çoklu oturum açma (SSO) etkin aboneliği.
+
+> [!NOTE]
+> Bu tümleştirme Ayrıca Azure AD ABD kamu bulut ortamından kullanılabilir. Bu uygulamayı Azure AD ABD kamu bulutu uygulama galerisinde bulabilir ve bunu ortak buluttan yaptığınız şekilde yapılandırabilirsiniz.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -46,14 +47,14 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 Azure AD 'de Elium tümleştirmesini yapılandırmak için Galeriden yönetilen SaaS uygulamaları listenize bir duyum eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **elium** yazın.
 1. Sonuçlar panelinden **Elium** ' u seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-elium"></a>Azure AD çoklu oturum açmayı, Elium için yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-elium"></a>Azure AD SSO 'yu Elium için yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu sorunsuz bir şekilde yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında Elium 'da bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -70,7 +71,7 @@ Azure AD SSO 'yu sorunsuz bir şekilde yapılandırmak ve test etmek için aşa�
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **elium** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Elium** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -95,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakine ek olarak, Elium uygulaması aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha fazla özniteliğe geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| ----------------|
     | e-posta   |Kullanıcı. Mail |
     | first_name| Kullanıcı. |
@@ -133,15 +134,9 @@ Bu bölümde, elim 'ye erişim vererek B. Simon 'u Azure çoklu oturum açma öz
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Elium**' u seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-elium-sso"></a>Elium SSO 'yu yapılandırma
@@ -156,17 +151,17 @@ Bu bölümde, elim 'ye erişim vererek B. Simon 'u Azure çoklu oturum açma öz
 
 1. El ile el ile ayarlama yapmak istiyorsanız, yeni bir Web tarayıcısı penceresi açın ve bir yönetici olarak Elium şirket sitenizde oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-1. Sağ üst köşedeki **Kullanıcı profiline** tıklayın ve sonra **Yönetim**' i seçin.
+1. Sağ üst köşedeki **Kullanıcı profiline** tıklayın ve ardından **Ayarlar**' ı seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/elium-tutorial/user1.png)
+    ![Çoklu oturum açmayı yapılandırma 01](./media/elium-tutorial/elium-01.png)
 
-1. **Güvenlik** sekmesini seçin.
+1. **Gelişmiş**' ın altında **güvenlik** ' i seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/elium-tutorial/user2.png)
+    ![Çoklu oturum açmayı yapılandırma 02](./media/elium-tutorial/elium-02.png)
 
 1. ' İ **Çoklu oturum açma (SSO)** bölümüne kaydırın ve aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/elium-tutorial/user3.png)
+    ![Çoklu oturum açma, Elium 03 yapılandırma](./media/elium-tutorial/elium-03.png)
 
     a. **SAML2 kimlik doğrulamasının hesabınız için çalıştığını doğrulayın** ve Azure Portal bu değeri, **temel SAML yapılandırması** bölümünde bulunan **oturum açma URL 'si** metin kutusuna yapıştırın.
 
@@ -181,11 +176,11 @@ Bu bölümde, elim 'ye erişim vererek B. Simon 'u Azure çoklu oturum açma öz
 
     e. **SP meta veri** dosyasında **EntityId** 'Yi arayın, **entityıd** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümündeki **tanımlayıcı** metin kutusuna yapıştırın. 
 
-    ![Çoklu oturum açmayı yapılandırma](./media/elium-tutorial/user4.png)
+    ![Çoklu oturum açma, Elium 04 'Yi yapılandırma](./media/elium-tutorial/elium-04.png)
 
     f. Azure portal bkz. **The The The** The **The The The** The The The The The The, **SP Metadata** **Reply URL** **Basic SAML Configuration**
 
-    ![Çoklu oturum açmayı yapılandırma](./media/elium-tutorial/user5.png)
+    ![Çoklu oturum açmayı yapılandırma 05](./media/elium-tutorial/elium-05.png)
 
     örneğin: Azure portal indirilen meta veri dosyasını Not defteri 'nde açın, içeriği kopyalayın ve **IDP meta verileri** metin kutusuna yapıştırın.
 
@@ -200,16 +195,20 @@ Bu bölümde, Elium 'da B. Simon adlı bir Kullanıcı oluşturulur. Elium, vars
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
+ 
+#### <a name="sp-initiated"></a>SP başlatıldı:
+ 
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Elium oturum açma URL 'sine yönlendirecektir.  
+ 
+* Doğrudan oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
+ 
+#### <a name="idp-initiated"></a>IDP başlatıldı:
+ 
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız elim 'de otomatik olarak oturum açmış olmanız gerekir 
+ 
+Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de kullanabilirsiniz. Erişim panelinde Elium kutucuğuna tıkladığınızda, SP modunda yapılandırılmışsa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız elim 'de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Erişim panelinde Elium kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız elim 'de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+## <a name="next-steps"></a>Sonraki Adımlar
 
-## <a name="additional-resources"></a>Ek kaynaklar
-
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Azure AD ile Elium kullanmayı deneyin](https://aad.portal.azure.com/)
+Glint Inc 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

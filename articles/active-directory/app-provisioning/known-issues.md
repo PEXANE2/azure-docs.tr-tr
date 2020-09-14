@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/12/2020
+ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271014"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052400"
 ---
 # <a name="known-issues-application-provisioning"></a>Bilinen sorunlar: uygulama sağlama
 Uygulama sağlama ile çalışırken farkında olmak üzere bilinen sorunlar. UserVoice üzerinde uygulama sağlama hizmeti hakkında geri bildirimde bulunmak için bkz. [Azure AD uygulama sağlama UserVoice](https://aka.ms/appprovisioningfeaturerequest). Hizmeti iyileştirebilmemiz için UserVoice 'ı yakından izliyoruz. 
@@ -66,7 +66,13 @@ Azure AD Şu anda null öznitelikler sağlayamaz. Kullanıcı nesnesinde bir öz
 - İç içe grupların sağlanması desteklenmez. 
 - Bu kiracılar için sağlama, kiracının boyutu nedeniyle desteklenmiyor. 
 
-**Sağlama aralığı düzeltildi** Sağlama döngüleri arasındaki [süre](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) Şu anda yapılandırılamaz. 
+**OıDC tabanlı uygulamamda otomatik sağlama kullanılamıyor**
+
+Bir uygulama kaydı oluşturursanız, kurumsal uygulamalarda karşılık gelen hizmet sorumlusu otomatik Kullanıcı sağlaması için etkinleştirilmeyecektir. Uygulamanın, birden çok kuruluş tarafından kullanılması amaçlanıyorsa veya sağlama için ikinci Galeri olmayan bir uygulama oluşturmak üzere galeriye eklenmesini istemeniz gerekir. 
+
+**Sağlama aralığı düzeltildi**
+
+Sağlama döngüleri arasındaki [süre](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) Şu anda yapılandırılamaz. 
 
 **Değişiklikler hedef uygulamadan Azure AD 'ye taşınmıyor**
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 8ace82147f17e6ee7e888553c58f32ec6e5ba271
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4a5203a91ba528328dce7036d4690c6dea137c33
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569212"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054271"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -785,7 +785,7 @@ Yanıt süresi yaklaşık bir değer. Uygulamanın kodunu işaretlemediğimiz i�
 
 Bu yaklaşık, istek/yanıt tabanlı protokollerde iyi sonuç verir: tek bir istek bağlantı üzerinde geçer ve tek bir yanıt ulaşır. Bu, HTTP (S) için (ardışık düzen olmadan), ancak diğer protokollerin karşılanmadığı durumdur.
 
-### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Log Analytics ücretsiz fiyatlandırma planıyla karşılaştığım kısıtlamalardır.
+### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Log Analytics ücretsiz fiyatlandırma plansın varsa sınırlamalar var mı?
 *Ücretsiz* fiyatlandırma katmanını kullanarak Azure izleyici 'yi bir Log Analytics çalışma alanıyla yapılandırdıysanız, VM'ler için Azure izleyici eşleme özelliği yalnızca çalışma alanına bağlı beş bağlı makineyi destekler. Ücretsiz bir çalışma alanına bağlı beş VM varsa, VM 'lerden birinin bağlantısını kesip daha sonra yeni bir VM 'yi bağladığınızda yeni VM izlenmiyor ve harita sayfasında yansıtılmaz.  
 
 Bu koşulun altında, VM 'yi açıp, zaten VM 'ye yüklendikten sonra bile sol bölmedeki **Öngörüler** ' i seçtiğinizde **Şimdi dene** seçeneği istenir.  Ancak, bu VM VM'ler için Azure İzleyici için eklendi değilse, genellikle bu sanal makine için bir seçenek istenmez. 

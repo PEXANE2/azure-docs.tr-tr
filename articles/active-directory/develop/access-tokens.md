@@ -13,12 +13,12 @@ ms.date: 08/24/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3054180f65a7d65300067edadee5e9507bb92414
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 9aa5eb54d79d98627697c51ee7dcb16a44fccb60
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796179"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053217"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -71,7 +71,7 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 
 ### <a name="header-claims"></a>Üst bilgi talepleri
 
-|İste | Biçimlendir | Açıklama |
+|İste | Biçimlendir | Description |
 |--------|--------|-------------|
 | `typ` | Dize-Always "JWT" | Belirtecin JWT olduğunu gösterir.|
 | `nonce` | Dize | Belirteç yeniden yürütme saldırılarına karşı korumak için kullanılan benzersiz bir tanımlayıcı. Kaynağınız, yeniden oynacak şekilde korumak için bu değeri kaydedebilir. |
@@ -81,7 +81,7 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 
 ### <a name="payload-claims"></a>Yük talepleri
 
-| İste | Biçimlendir | Açıklama |
+| İste | Biçimlendir | Description |
 |-----|--------|-------------|
 | `aud` | Dize, uygulama KIMLIĞI URI 'SI | Belirtecin amaçlanan alıcısını tanımlar. KIMLIK belirteçlerinde hedef kitle, uygulamanızın Azure portal uygulamanıza atanan uygulama KIMLIĞIDIR. Uygulamanızın bu değeri doğrulaması ve değer eşleşmezse belirteci reddetmesi gerekir. |
 | `iss` | Dize, STS URI 'SI | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) ve kullanıcının kimlik doğrulamasının bulunduğu Azure AD kiracısını tanımlar. Verilen belirteç bir v 2.0 belirteci ise ( `ver` talebe bakın), URI sona ermeyecektir `/v2.0` . Kullanıcının Microsoft hesabı bir tüketici kullanıcısı olduğunu gösteren GUID `9188040d-6c67-4c5b-b112-36a304b66dad` . Uygulamanız, varsa uygulamada oturum açmak için gereken kiracılar kümesini kısıtlamak için talebin GUID kısmını kullanmalıdır. |
@@ -101,7 +101,7 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 | `scp` | Dize, virgülle ayrılmış bir kapsam listesi | Uygulamanız tarafından sunulan, istemci uygulamasının istediği (ve aldığı) izin veren kapsamlar kümesi. Uygulamanız, bu kapsamların uygulamanız tarafından açığa çıkarılan geçerli olduğunu doğrulamalıdır ve bu kapsamların değerine göre yetkilendirme kararları verir. Yalnızca [Kullanıcı belirteçleri](#user-and-application-tokens)için dahil edilmiştir. |
 | `roles` | Dizelerin dizisi, bir izin listesi | Uygulamanız tarafından kullanıma sunulan uygulamanın veya kullanıcının çağrı için izin verilen izinler kümesi. [Uygulama belirteçleri](#user-and-application-tokens)için, bu, Kullanıcı kapsamları yerine istemci kimlik bilgisi akışı ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) sırasında kullanılır.  [Kullanıcı belirteçleri](#user-and-application-tokens) için bu, kullanıcının hedef uygulamada atandığı rollerle doldurulur. |
 | `wids` | [Roletemplateıd](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids) GUID dizisi | Bu kullanıcıya atanan kiracı genelindeki rolleri, [yönetici rolleri sayfasında](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids)bulunan roller bölümünden gösterir.  Bu talep uygulama bildiriminin özelliği aracılığıyla uygulama başına temelinde yapılandırılır `groupMembershipClaims` . [application manifest](reference-app-manifest.md)  "All" veya "DirectoryRole" olarak ayarlanması gerekir.  Belirteç uzunluğu sorunları nedeniyle örtük akış aracılığıyla alınan belirteçlerde bulunmayabilir. |
-| `groups` | GUID 'lerin JSON dizisi | Konunun grup üyeliklerini temsil eden nesne kimliklerini sağlar. Bu değerler benzersizdir (bkz. nesne KIMLIĞI) ve bir kaynağa erişmek için Yetkilendirmeyi zorlama gibi erişimi yönetmek için güvenli bir şekilde kullanılabilir. Gruplar talebine dahil olan gruplar, `groupMembershipClaims` [uygulama bildiriminin](reference-app-manifest.md)özelliği aracılığıyla uygulama başına temelinde yapılandırılır. Null değeri tüm grupları dışlayacak, "SecurityGroup" değeri yalnızca Active Directory güvenlik grubu üyeliklerini içerir ve "All" değeri hem güvenlik gruplarını hem de Office 365 dağıtım listelerini içerir. <br><br>`hasgroups`Dolaylı izin ile talebi kullanma hakkında ayrıntılı bilgi için aşağıdaki talebe bakın `groups` . <br>Diğer akışlar için, kullanıcının sayısı bir sınırı (SAML için 150 200, JWT için) alıyorsa, bir fazla kullanım talebi, Kullanıcı için grupların listesini içeren Microsoft Graph uç noktasını gösteren talep kaynaklarına eklenir. |
+| `groups` | GUID 'lerin JSON dizisi | Konunun grup üyeliklerini temsil eden nesne kimliklerini sağlar. Bu değerler benzersizdir (bkz. nesne KIMLIĞI) ve bir kaynağa erişmek için Yetkilendirmeyi zorlama gibi erişimi yönetmek için güvenli bir şekilde kullanılabilir. Gruplar talebine dahil olan gruplar, `groupMembershipClaims` [uygulama bildiriminin](reference-app-manifest.md)özelliği aracılığıyla uygulama başına temelinde yapılandırılır. Null değeri tüm grupları dışlayacak, "SecurityGroup" değeri yalnızca Active Directory güvenlik grubu üyeliklerini içerir ve "All" değeri hem güvenlik gruplarını hem de Microsoft 365 dağıtım listelerini içerir. <br><br>`hasgroups`Dolaylı izin ile talebi kullanma hakkında ayrıntılı bilgi için aşağıdaki talebe bakın `groups` . <br>Diğer akışlar için, kullanıcının sayısı bir sınırı (SAML için 150 200, JWT için) alıyorsa, bir fazla kullanım talebi, Kullanıcı için grupların listesini içeren Microsoft Graph uç noktasını gösteren talep kaynaklarına eklenir. |
 | `hasgroups` | Boole | Varsa, her zaman `true` kullanıcının en az bir grupta olduğunu belirten. `groups`Tam gruplar TALEBI URI PARÇASıNı URL uzunluğu sınırlarının ötesinde (Şu anda 6 veya daha fazla grup) genişletecek, örtük verme akışlarında JWTs talebi yerine kullanılır. İstemcinin, kullanıcının gruplarını () belirleyebilmek için Microsoft Graph API 'sini kullanması gerektiğini belirtir `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` . |
 | `groups:src1` | JSON nesnesi | Sınırlı olmayan Belirteç istekleri ( `hasgroups` yukarıya bakın), ancak belirteç için hala çok büyük olması için, kullanıcının tam gruplar listesine bir bağlantı dahil edilir. Cwts için, talep yerine yeni bir talep olarak SAML için dağıtılmış bir talep olarak `groups` . <br><br>**Örnek JWT değeri**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | Dize | Belirtecin, uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Belirteç bir kaynağa erişmek için kullanıldığında ve veritabanı tablolarında anahtar olarak kullanılabilecek gibi, güvenli bir şekilde yetkilendirme denetimleri gerçekleştirmek için kullanılabilir. Konu her zaman Azure AD 'nin sorun verdiği belirteçlerde bulunduğundan, bu değeri genel amaçlı yetkilendirme sisteminde kullanmanızı öneririz. Bununla birlikte, bir ikili tanımlayıcı, belirli bir uygulama KIMLIĞI için benzersizdir. Bu nedenle, tek bir Kullanıcı iki farklı istemci kimliği kullanarak iki farklı uygulama üzerinde oturum açarsa, bu uygulamalar konu talebi için iki farklı değer alır. Bu, mimarinize ve gizlilik gereksinimlerinize bağlı olarak istenebilir veya istenmeyebilir. Ayrıca bkz `oid` . talep (bir Kiracıdaki uygulamalar arasında aynı kalır). |
@@ -139,7 +139,7 @@ Belirteç boyutunun HTTP üst bilgi boyutu sınırlarını aşmadığından emin
 
 Aşağıdaki talepler varsa v 1.0 belirteçlerine dahil edilir, ancak varsayılan olarak v 2.0 belirteçlerine dahil edilmez. V 2.0 kullanıyorsanız ve bu taleplerden birine ihtiyacınız varsa, bunları [isteğe bağlı talepler](active-directory-optional-claims.md)kullanarak isteyin.
 
-| İste | Biçimlendir | Açıklama |
+| İste | Biçimlendir | Description |
 |-----|--------|-------------|
 | `ipaddr`| Dize | Kullanıcının kimliği doğrulanan IP adresi. |
 | `onprem_sid`| Dize, [SID biçiminde](/windows/desktop/SecAuthZ/sid-components) | Kullanıcının şirket içi kimlik doğrulamasına sahip olduğu durumlarda, bu talep SID 'leri sağlar. `onprem_sid`Eski uygulamalarda yetkilendirme için ' i kullanabilirsiniz.|

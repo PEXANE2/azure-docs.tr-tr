@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff525eab42d69ded33381fefc83076f9aa94f05
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7fe5072042553d676c798a32e0ca6fc28e92332d
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213753"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054475"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 Gruplar üzerinde bir adlandırma ilkesi zorlama
 
@@ -229,9 +229,9 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
-## <a name="experience-across-office-365-apps"></a>Office 365 uygulamaları genelinde deneyim
+## <a name="experience-across-microsoft-365-apps"></a>Microsoft 365 uygulamalar genelinde deneyim
 
-Azure AD 'de bir grup adlandırma ilkesi ayarladıktan sonra, bir Kullanıcı Office 365 uygulamasında bir grup oluşturduğunda şunları görürler:
+Azure AD 'de bir grup adlandırma ilkesi ayarladıktan sonra, Kullanıcı Microsoft 365 bir uygulamada grup oluşturduğunda şunları görürler:
 
 - Adlandırma ilkenize göre adın Önizlemesi (ön ekler ve son ekler), Kullanıcı Grup adında her türdedir
 - Kullanıcı engellenen sözcükleri girerse, engellenen kelimeleri kaldırabilmeleri için bir hata iletisi görür.
@@ -252,7 +252,7 @@ Okul veri eşitleme (SDS) | SDS ile oluşturulan gruplar, adlandırma ilkesiyle 
 Outlook Müşteri Yöneticisi (OCM) | Outlook müşteri yöneticisi, Outlook müşteri yöneticisi 'nde oluşturulan gruba otomatik olarak uygulanan adlandırma ilkesiyle uyumludur. Özel engellenen bir sözcük algılanırsa, OCM 'de Grup oluşturma engellenir ve kullanıcının OCM uygulamasını kullanımı engellenir.
 Sınıf uygulaması | Sınıf uygulamasında oluşturulan gruplar, adlandırma ilkesiyle uyumlu değildir, ancak adlandırma ilkesi otomatik olarak uygulanmaz ve bir sınıf grubu adı girerken, adlandırma ilkesi önizlemesi kullanıcılara gösterilmez. Kullanıcılar, ön ekler ve sonekler ile zorlanan derslik grubu adını girmelidir. Aksi takdirde, sınıf grubu oluşturma veya düzenleme işlemi hatalarla başarısız olur.
 Power BI | Power BI çalışma alanları, adlandırma ilkesiyle uyumludur.    
-Yammer | Yammer 'da Azure Active Directory hesabıyla oturum açmış bir Kullanıcı bir grup oluşturur veya bir grup adını düzenlediğinde, Grup adı adlandırma ilkesiyle uyumlu olur. Bu, hem Office 365 bağlı grupları hem de diğer tüm Yammer grupları için geçerlidir.<br>Adlandırma ilkesi gerçekleşmeden önce Office 365 bağlantılı bir grup oluşturulduysa, Grup adı adlandırma ilkelerini otomatik olarak takip etmez. Kullanıcı, Grup adını düzenlediklerinde, ön eki ve soneki eklemesi istenir.
+Yammer | Yammer 'da Azure Active Directory hesabıyla oturum açmış bir Kullanıcı bir grup oluşturur veya bir grup adını düzenlediğinde, Grup adı adlandırma ilkesiyle uyumlu olur. Bu, hem Microsoft 365 bağlı gruplar hem de diğer tüm Yammer grupları için geçerlidir.<br>Adlandırma ilkesi gerçekleşmeden önce bir Microsoft 365 bağlantılı Grup oluşturulduysa, Grup adı otomatik olarak adlandırma ilkelerini takip etmez. Kullanıcı, Grup adını düzenlediklerinde, ön eki ve soneki eklemesi istenir.
 StaffHub  | Çalışan hub takımları, adlandırma ilkesini takip etmez, ancak temel alınan Microsoft 365 Grubu yapar. Ekip merkezi takım adı, önekleri ve sonekleri uygulamaz ve özel engellenen kelimeleri denetlemez. Ancak, çalışan hub 'ı ön ekleri ve sonekleri uygular ve engellenen kelimeleri temel alınan Microsoft 365 grubundan kaldırır.
 Exchange PowerShell | Exchange PowerShell cmdlet 'leri adlandırma ilkesiyle uyumludur. Kullanıcılar, önerilen ön ekler ve son ekler ve grup adı ve grup diğer adında (Mailrumuz) adlandırma ilkesini izolmadıkları takdirde özel engellenen sözcükler için uygun hata iletileri alırlar.
 Azure Active Directory PowerShell cmdlet 'leri | Azure Active Directory PowerShell cmdlet 'leri adlandırma ilkesiyle uyumludur. Kullanıcılar, önerilen ön ekler ve sonekler ve grup adları ve grup diğer adında adlandırma kuralını izolmadıkları takdirde özel engellenen sözcükler için uygun hata iletileri alır.

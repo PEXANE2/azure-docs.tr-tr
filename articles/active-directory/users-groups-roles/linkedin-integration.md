@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08d6b12f897b8b7efb150b11ae4b3f5e2440f7c8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797998"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053982"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Azure Active Directory LinkedIn hesabı bağlantılarını tümleştirin
 
@@ -29,7 +29,7 @@ Kuruluşunuzdaki kullanıcıların bazı Microsoft uygulamaları dahilinde Linke
 >
 > Özel durumlar:
 >
-> * Bu ayar ABD Kamu, Microsoft Bulut Almanya veya Azure ve Office 365 ile Çin 'de 21Vianet tarafından işletilen Microsoft Bulut kullanan müşteriler için kullanılamaz.
+> * Bu ayar ABD Kamu, Microsoft Bulut Almanya veya Azure için Microsoft Bulut kullanan müşteriler ve Çin 'de 21Vianet tarafından işletilen Microsoft 365 için kullanılamaz.
 > * Bu ayar, Almanya 'da sağlanan Azure AD kuruluşları için varsayılan olarak kapalıdır. Ayarın Microsoft Bulut Almanya kullanan müşteriler için kullanılamaz olduğunu unutmayın.
 > * Bu ayar, Fransa 'da sağlanan kuruluşlar için varsayılan olarak kapalıdır.
 >
@@ -99,7 +99,7 @@ Grubu Azure AD Yönetim Merkezi 'ndeki LinkedIn hesap bağlantıları ayarında 
    **Etkin** | Office 2016 seçeneklerinde **Office uygulamalarında LinkedIn özelliklerini göster** ayarı etkinleştirilmiştir. Kuruluşunuzdaki kullanıcılar, Office 2016 uygulamalarında LinkedIn özelliklerini kullanabilir.
    **Devre dışı** | Office 2016 seçeneklerinde **LinkedIn özelliklerini Office uygulamalarında göster** ayarı devre dışıdır ve son kullanıcılar bu ayarı değiştiremezler. Kuruluşunuzdaki kullanıcılar, Office 2016 uygulamalarında LinkedIn özelliklerini kullanamaz.
 
-Bu Grup ilkesi yalnızca yerel bir bilgisayar için Office 2016 uygulamalarını etkiler. Kullanıcılar Office 2016 uygulamalarında LinkedIn 'i devre dışı bıraklarsa Office 365 ' de LinkedIn özelliklerini görmeye devam edebilirler.
+Bu Grup ilkesi yalnızca yerel bir bilgisayar için Office 2016 uygulamalarını etkiler. Kullanıcılar Office 2016 uygulamalarında LinkedIn 'i devre dışı bıraklarsa, hala Microsoft 365 LinkedIn özelliklerini görebilirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

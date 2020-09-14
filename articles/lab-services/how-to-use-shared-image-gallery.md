@@ -2,16 +2,19 @@
 title: Azure Lab Services paylaşılan görüntü galerisini kullanma | Microsoft Docs
 description: Bir laboratuvar hesabını paylaşılan görüntü Galerisi 'ni kullanmak üzere yapılandırmayı öğrenin, böylece Kullanıcı bir görüntüyü başkalarıyla paylaşabilir ve başka bir Kullanıcı, laboratuvarda bir şablon VM oluşturmak için görüntüyü kullanabilir.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 4dc001a5e4c95db608c38f0a7c00190fd1859998
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/11/2020
+ms.openlocfilehash: 04e3764b095706d091bb72baaae77f5a4016fd28
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445160"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052843"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services paylaşılan görüntü galerisini kullanma
 Bu makalede, eğitimciler/Lab yöneticilerinin bir şablon sanal makine görüntüsünü [paylaşılan bir görüntü galerisine](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries) nasıl kaydedebilmesi, böylece diğerleri tarafından laboratuvarları oluşturmak için kullanılabilir. 
+
+> [!IMPORTANT]
+> Paylaşılan bir görüntü Galerisi kullanılırken, Azure Lab Services yalnızca 128 GB 'den az işletim sistemi disk alanı olan görüntüleri destekler. 128 GB 'den fazla disk alanı veya birden fazla disk içeren görüntüler, Laboratuvar oluşturma sırasında sanal makine görüntüleri listesinde gösterilmez.
 
 ## <a name="scenarios"></a>Senaryolar
 Bu özellik tarafından desteklenen birkaç senaryo şunlardır: 

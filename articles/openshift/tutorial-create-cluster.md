@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: f4b43129db5288275434253545861f3eae218e82
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 1ba383b99b8265e01cf757bfb1589a86a934e0e3
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89503797"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053880"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesi oluşturma
 
@@ -104,20 +104,22 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
    CLUSTER=cluster                 # the name of your cluster
    ```
 
-1. **Bir kaynak grubu oluşturun.**
+2. **Bir kaynak grubu oluşturun.**
 
-    Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) komutunu kullanarak bir kaynak grubu oluşturun.
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) komutunu kullanarak bir kaynak grubu oluşturun.
     
-> [!NOTE]
+> [!NOTE] 
 > Azure Red Hat OpenShift, bir Azure Kaynak grubunun oluşturulabildiği tüm bölgelerde kullanılamaz. Azure Red Hat OpenShift 'in desteklendiği konum hakkında bilgi için bkz. [kullanılabilir bölgeler](https://docs.openshift.com/aro/4/welcome/index.html#available-regions) .
 
-    ```azurecli-interactive
-    az group create --name $RESOURCEGROUP --location $LOCATION
-    ```
+```azurecli-interactive
+az group create \
+  --name $RESOURCEGROUP \
+  --location $LOCATION
+```
 
-    The following example output shows the resource group created successfully:
+Aşağıdaki örnek çıktıda başarıyla oluşturulan kaynak grubu gösterilmektedir:
 
-    ```json
+```json
     {
     "id": "/subscriptions/<guid>/resourceGroups/aro-rg",
     "location": "eastus",
@@ -128,24 +130,24 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
     },
     "tags": null
     }
-    ```
+```
 
-2. **Bir sanal ağ oluşturun.**
+3. **Bir sanal ağ oluşturun.**
 
-    OpenShift 4 çalıştıran Azure Red Hat OpenShift kümeleri, ana ve çalışan düğümleri için iki boş alt ağa sahip bir sanal ağ gerektirir.
+OpenShift 4 çalıştıran Azure Red Hat OpenShift kümeleri, ana ve çalışan düğümleri için iki boş alt ağa sahip bir sanal ağ gerektirir.
 
-    Daha önce oluşturduğunuz kaynak grubunda yeni bir sanal ağ oluşturun:
+Daha önce oluşturduğunuz kaynak grubunda yeni bir sanal ağ oluşturun:
 
-    ```azurecli-interactive
-    az network vnet create \
-    --resource-group $RESOURCEGROUP \
-    --name aro-vnet \
-    --address-prefixes 10.0.0.0/22
-    ```
+```azurecli-interactive
+az network vnet create \
+   --resource-group $RESOURCEGROUP \
+   --name aro-vnet \
+   --address-prefixes 10.0.0.0/22
+```
 
-    Aşağıdaki örnek çıktıda başarıyla oluşturulan sanal ağ gösterilmektedir:
+Aşağıdaki örnek çıktıda başarıyla oluşturulan sanal ağ gösterilmektedir:
 
-    ```json
+```json
     {
     "newVNet": {
         "addressSpace": {
@@ -161,9 +163,9 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
         "type": "Microsoft.Network/virtualNetworks"
     }
     }
-    ```
+```
 
-3. **Ana düğümler için boş bir alt ağ ekleyin.**
+4. **Ana düğümler için boş bir alt ağ ekleyin.**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -174,7 +176,7 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-4. **Çalışan düğümleri için boş bir alt ağ ekleyin.**
+5. **Çalışan düğümleri için boş bir alt ağ ekleyin.**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -185,7 +187,7 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **Ana alt ağda [alt ağ özel uç nokta Ilkelerini devre dışı bırakın](../private-link/disable-private-link-service-network-policy.md) .** Bu, kümeye bağlanıp yönetebilmek için gereklidir.
+6. **Ana alt ağda [alt ağ özel uç nokta Ilkelerini devre dışı bırakın](../private-link/disable-private-link-service-network-policy.md) .** Bu, kümeye bağlanıp yönetebilmek için gereklidir.
 
     ```azurecli-interactive
     az network vnet subnet update \

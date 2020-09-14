@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb637ae3da9c6a0a3ea066ad741845bad36d5d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 019327436eaf2186e23068a5b0a1ac4b21b9fbe7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489638"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055172"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Hesapları Azure AD ile paylaşma
 
@@ -29,7 +29,7 @@ ms.locfileid: "89489638"
 Bazen kuruluşların, genellikle iki durumda gerçekleşen birden çok kişi için tek bir Kullanıcı adı ve parola kullanması gerekir:
 
 * Her bir kullanıcı için benzersiz bir oturum açma ve parola gerektiren uygulamalara erişirken, şirket içi uygulamalar veya tüketici bulut Hizmetleri (örneğin, kurumsal sosyal medya hesapları).
-* Çoklu Kullanıcı ortamları oluştururken. Yükseltilmiş ayrıcalıklara sahip tek bir yerel hesabınız olabilir ve temel kurulum, yönetim ve kurtarma etkinliklerini yapmak için kullanılır. Örneğin, Office 365 için yerel "genel yönetici" hesabı veya Salesforce 'daki kök hesabı.
+* Çoklu Kullanıcı ortamları oluştururken. Yükseltilmiş ayrıcalıklara sahip tek bir yerel hesabınız olabilir ve temel kurulum, yönetim ve kurtarma etkinliklerini yapmak için kullanılır. Örneğin, Microsoft 365 için yerel "genel yönetici" hesabı veya Salesforce 'daki kök hesap.
 
 Geleneksel olarak, bu hesaplar kimlik bilgileri (Kullanıcı adı ve parola) doğru kişilere dağıtarak veya birden çok güvenilen aracının erişebileceği paylaşılan bir konumda depolanarak paylaşılır.
 

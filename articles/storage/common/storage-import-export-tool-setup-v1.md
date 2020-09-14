@@ -1,19 +1,19 @@
 ---
 title: Azure Içeri/dışarı aktarma aracı v1 'yi ayarlama | Microsoft Docs
 description: Azure Içeri/dışarı aktarma hizmeti için sürücü hazırlama ve onarım aracını ayarlamayı öğrenin. Bu makale, Içeri/dışarı aktarma aracının 1. sürümünü ifade eder.
-author: twooley
+author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
 ms.date: 01/15/2017
-ms.author: twooley
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e03601bc929354a69e7f9027db5ac9b7697c3c82
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530809"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054084"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Azure Içeri/dışarı aktarma aracı v1 ayarlanıyor
 Microsoft Azure İçeri/Dışarı Aktarma Aracı, Microsoft Azure İçeri/Dışarı Aktarma hizmeti ile kullanabileceğiniz sürücü hazırlama ve onarma aracıdır. Aracı aşağıdaki işlevler için kullanabilirsiniz:  

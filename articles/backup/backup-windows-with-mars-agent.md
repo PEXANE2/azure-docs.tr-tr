@@ -3,12 +3,12 @@ title: MARS Aracısı 'nı kullanarak Windows makinelerini yedekleme
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını kullanın.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 55eb8bdf069fd1b5793468ae52f764eb4288f261
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182097"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052231"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server dosyalarını ve klasörlerini Azure 'a yedekleme
 
@@ -125,7 +125,7 @@ Ağ azaltmayı etkinleştirmek için:
 1. **Daraltma** sekmesinde, **yedekleme işlemleri için internet bant genişliği kullanımını azaltmayı etkinleştir**' i seçin.
 
     ![Yedekleme işlemleri için ağ daraltma ayarlama](./media/backup-configure-vault/throttling-dialog.png)
-1. Çalışma saatleri ve çalışma dışı saatler sırasında izin verilen bant genişliğini belirtin. Bant genişliği değerleri 512 kbps ile başlar ve 1.023 MBps 'e kadar gider. Ardından **Tamam**’ı seçin.
+1. Çalışma saatleri ve çalışma dışı saatler sırasında izin verilen bant genişliğini belirtin. Bant genişliği değerleri 512 kbps ile başlar ve 1.023 Mbps 'e kadar gider. Ardından **Tamam**'ı seçin.
 
 ## <a name="run-an-on-demand-backup"></a>İsteğe bağlı yedekleme çalıştırma
 

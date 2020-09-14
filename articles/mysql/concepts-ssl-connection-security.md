@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ad255b2e03cdecd9a87f1af3ce780ae64535bfa2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641ff13ec440bb8267e546c54b684ab4453f91a7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495089"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052945"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda SSL/TLS bağlantısı
 
@@ -19,6 +19,9 @@ MySQL için Azure veritabanı, veritabanı sunucunuzu Güvenli Yuva Katmanı (SS
 
 > [!NOTE]
 > `require_secure_transport`Sunucu parametre değerinin güncelleştirilmesi MySQL hizmetinin davranışını etkilemez. Veritabanınıza yönelik bağlantıları güvenli hale getirmek için bu makalede özetlenen SSL ve TLS zorlama özelliklerini kullanın.
+
+> [!IMPORTANT] 
+> SSL kök sertifikası, 26 Ekim 2020 (10/26/2020) tarihinden itibaren dolacak şekilde ayarlanmıştır. Lütfen uygulamanızı [yeni sertifikayı](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)kullanacak şekilde güncelleştirin. Daha fazla bilgi için bkz. [planlı sertifika güncelleştirmeleri](concepts-certificate-rotation.md)
 
 ## <a name="ssl-default-settings"></a>SSL varsayılan ayarları
 

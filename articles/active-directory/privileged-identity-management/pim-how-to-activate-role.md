@@ -14,18 +14,18 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1041cb5fc4aa7503f5ae9de6ffc74ba72052b8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421408"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055461"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>PIM'de Azure AD rollerimi etkinleştirme
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PıM), kuruluşların Azure AD 'deki kaynaklara yönelik ayrıcalıklı erişimi ve Office 365 veya Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler yönetmesini basitleştirir.  
+Azure Active Directory (Azure AD) Privileged Identity Management (PıM), kuruluşların Azure AD 'deki kaynaklara yönelik ayrıcalıklı erişimi ve Microsoft 365 veya Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler nasıl yöneteceğini basitleştirir.  
 
-Bir yönetim rolü için uygun yaptıysanız, ayrıcalıklı eylemler gerçekleştirmeniz gerektiğinde rol atamasını etkinleştirmeniz gerekir. Örneğin, bazen Office 365 özelliklerini yönetiyorsanız, bu rol diğer hizmetleri de etkilediği için kuruluşunuzun ayrıcalıklı rol yöneticileri kalıcı bir genel yönetici sunmayabilir. Bunun yerine, Exchange Online Yöneticisi gibi Azure AD rollerine uygun hale getirir. Ayrıcalıklarına ihtiyacınız olduğunda bu rolü etkinleştirmek isteyebilirsiniz ve daha sonra önceden belirlenmiş bir süre için yönetici denetimine sahip olursunuz.
+Bir yönetim rolü için uygun yaptıysanız, ayrıcalıklı eylemler gerçekleştirmeniz gerektiğinde rol atamasını etkinleştirmeniz gerekir. Örneğin, bazen Microsoft 365 özellikleri yönetiyorsanız, bu rol diğer hizmetleri de etkilediği için kuruluşunuzun ayrıcalıklı rol yöneticileri kalıcı bir genel yönetici sunmayabilir. Bunun yerine, Exchange Online Yöneticisi gibi Azure AD rollerine uygun hale getirir. Ayrıcalıklarına ihtiyacınız olduğunda bu rolü etkinleştirmek isteyebilirsiniz ve daha sonra önceden belirlenmiş bir süre için yönetici denetimine sahip olursunuz.
 
 Bu makale, Privileged Identity Management ' de Azure AD rolünü etkinleştirmesi gereken yöneticilere yöneliktir.
 
@@ -118,7 +118,7 @@ Privileged Identity Management bir rolü etkinleştirdiğinizde, etkinleştirme 
 
 # <a name="previous-version"></a>[Önceki sürüm](#tab/previous)
 
-## <a name="activate-a-role"></a>Rol etkinleştirme
+## <a name="activate-a-role-previous-version"></a>Rol etkinleştirme (önceki sürüm)
 
 Bir Azure AD rolünü gerçekleştirmeniz gerektiğinde, Privileged Identity Management ' de **rollerim** gezinti seçeneğini kullanarak etkinleştirme isteğinde bulunabilir.
 
@@ -168,7 +168,7 @@ Bir Azure AD rolünü gerçekleştirmeniz gerektiğinde, Privileged Identity Man
 
     Rolün etkinleştirilmesi için [onay](./azure-ad-pim-approval-workflow.md) gerekiyorsa, tarayıcınızın sağ üst köşesinde, isteğin onay beklendiğini bildiren bir Azure bildirimi görüntülenir.
 
-## <a name="view-the-status-of-your-requests"></a>İsteklerinizin durumunu görüntüleyin
+## <a name="view-the-status-of-your-requests-previous-version"></a>İsteklerinizin durumunu (önceki sürüm) görüntüleyin
 
 Etkinleştirme için bekleyen isteklerinizin durumunu görüntüleyebilirsiniz.
 
@@ -180,7 +180,7 @@ Etkinleştirme için bekleyen isteklerinizin durumunu görüntüleyebilirsiniz.
 
     ![Azure AD rolleri-isteklerim listesi](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
-## <a name="deactivate-a-role"></a>Rolü devre dışı bırak
+## <a name="deactivate-a-role-previous-version"></a>Rolü devre dışı bırak (önceki sürüm)
 
 Bir rol etkinleştirildikten sonra, zaman sınırına (uygun süre) ulaşıldığında otomatik olarak devre dışı bırakır.
 
@@ -196,7 +196,7 @@ Yönetici görevlerinizi erken tamamladıktan sonra Azure AD Privileged Identity
 
 1. Kullanarak yaptığınız rolü bulun ve **devre dışı bırak**' a tıklayın.
 
-## <a name="cancel-a-pending-request"></a>Bekleyen bir isteği iptal etme
+## <a name="cancel-a-pending-request-previous-version"></a>Bekleyen bir isteği iptal etme (önceki sürüm)
 
 Onay gerektiren bir rolün etkinleştirilmesini gerektirmiyorsa, bekleyen bir isteği dilediğiniz zaman iptal edebilirsiniz.
 
@@ -212,7 +212,7 @@ Onay gerektiren bir rolün etkinleştirilmesini gerektirmiyorsa, bekleyen bir is
 
    ![Iptal düğmesi vurgulanmış isteklerim listesi](./media/pim-how-to-activate-role/directory-role-cancel.png)
 
-## <a name="troubleshoot"></a>Sorun giderme
+## <a name="troubleshoot-previous-version"></a>Sorun giderme (önceki sürüm)
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Rol etkinleştirildikten sonra izinler verilmiyor
 

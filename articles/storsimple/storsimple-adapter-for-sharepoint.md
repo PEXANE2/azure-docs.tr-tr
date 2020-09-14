@@ -3,7 +3,7 @@ title: SharePoint için StorSimple Bağdaştırıcısı 'nı yükler | Microsoft
 description: SharePoint için StorSimple bağdaştırıcısının SharePoint sunucu grubunda nasıl yükleneceğini ve yapılandırılacağını açıklar.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
-ms.author: twooley
-ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: a33e01d68a31585e216faa51ac8af193d86c6123
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75930217"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053285"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>SharePoint için StorSimple bağdaştırıcısını yükleyip yapılandırma
 ## <a name="overview"></a>Genel Bakış
@@ -92,7 +92,7 @@ SharePoint için StorSimple bağdaştırıcısını yüklemeden önce, StorSimpl
 ## <a name="configure-prerequisites"></a>Önkoşulları yapılandırma
 SharePoint için StorSimple bağdaştırıcısını yüklemeden önce, StorSimple cihazının, SharePoint sunucu grubunun ve SQL Server örneğinin aşağıdaki önkoşulları karşıladığından emin olun.
 
-### <a name="system-requirements"></a>Sistem Gereksinimleri
+### <a name="system-requirements"></a>Sistem gereksinimleri
 SharePoint için StorSimple bağdaştırıcısı, aşağıdaki donanım ve yazılımla birlikte kullanılabilir:
 
 * Desteklenen işletim sistemi – Windows Server 2008 R2 SP1, Windows Server 2012 veya Windows Server 2012 R2
@@ -140,7 +140,7 @@ SharePoint sunucu grubunuzun doğru yapılandırıldığından emin olun, aşağ
   3. Sol bölmede **yerel sunucu**' ya tıklayın.
   4. Sağ bölmedeki **IE artırılmış güvenlik yapılandırması**' nın yanındaki **Açık**' a tıklayın.
   5. **Yöneticiler**altında **kapalı**' ya tıklayın.
-  6. **Tamam**'a tıklayın.
+  6. **Tamam**’a tıklayın.
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>Uzak BLOB depolama (KÇY) önkoşulları
 SQL Server desteklenen bir sürümünü kullandığınızdan emin olun. Yalnızca aşağıdaki sürümler desteklenir ve KÇY 'yi kullanabilir:

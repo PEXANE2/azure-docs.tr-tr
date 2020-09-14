@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager ve birimleri | Microsoft Docs
 description: Birimleri görüntülemek ve yönetmek ve yedeklemeleri yapılandırmak için StorSimple Snapshot Manager MMC ek bileşeninin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
-ms.author: twooley
-ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 79a239def70f0455f63c18d86397ec8d927f244c
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508929"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054916"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Birimleri görüntülemek ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -93,7 +93,7 @@ Yerel ve Azure StorSimple birimleri hakkındaki bilgileri görüntülemek için 
    
    | Sonuç sütunu | Açıklama |
    |:--- |:--- |
-   |  Name |**Ad** sütunu, bulunan her birime atanan sürücü harfini içerir. |
+   |  Ad |**Ad** sütunu, bulunan her birime atanan sürücü harfini içerir. |
    |  Cihaz |**Cihaz** sütunu, ana bilgisayara bağlı olan cihazın IP adresini içerir. |
    |  Cihaz birimi adı |**Cihaz birimi adı** sütunu, Seçilen birimin ait olduğu cihaz biriminin adını içerir. Bu, söz konusu birimin Azure portal tanımlanan birim adıdır. |
    |  Erişim yolları |**Erişim yolları** sütunu, birimin erişim yolunu görüntüler. Bu, birimin ana bilgisayar üzerinde erişilebilir olduğu sürücü harfi veya bağlama noktasıdır. |
@@ -183,7 +183,7 @@ Disk Yönetimi, sabit diskleri ve içerdikleri birimleri veya bölümleri yönet
 6. **Sürücü harfi veya yolu ata** sayfasında, Varsayılanları kabul edin ve ardından **İleri**' ye tıklayın. 
 7. **Birim Biçimlendir** sayfasında, **ayırma birimi boyutu** kutusunda, **64K**' yı seçin. **Hızlı biçimlendirme gerçekleştir** onay kutusunu seçin ve ardından **İleri**' ye tıklayın. 
 8. **Yeni yansıtılmış birimi tamamlama** sayfasında, ayarlarınızı gözden geçirin ve ardından **son**' a tıklayın. 
-9. Temel diskin dinamik diske dönüştürüleceğini belirten bir ileti görüntülenir. **Evet**' e tıklayın.
+9. Temel diskin dinamik diske dönüştürüleceğini belirten bir ileti görüntülenir. **Evet**'e tıklayın.
    
     ![Dinamik disk dönüştürme iletisi](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
 10. Disk Yönetimi 'nde disk 1 ve disk 2 ' nin dinamik yansıtılmış birimler olarak gösterildiğini doğrulayın. (**Dinamik** durum sütununda görünmelidir ve kapasite çubuğu rengi, yansıtılmış bir birimi belirten kırmızı olarak değiştirilmelidir.) 
@@ -198,7 +198,7 @@ Dinamik bir yansıtılmış birimi yapılandırmak için aşağıdaki yordamı k
 2. **Kapsam** bölmesinde, **birimler** düğümüne sağ tıklayın ve **birimleri yeniden Tara**' yı seçin. Tarama tamamlandığında, **sonuçlar** bölmesinde bir birim listesi görünmelidir. Dinamik yansıtılmış birim tek bir birim olarak listelenir. 
 3. **Sonuçlar** bölmesinde, dinamik yansıtılmış birime sağ tıklayın ve ardından **birim grubu oluştur**' a tıklayın. 
 4. **Birim grubu oluştur** iletişim kutusunda, birim grubu için bir ad yazın, dinamik yansıtılmış birimi bu gruba atayın ve ardından **Tamam**' a tıklayın. 
-5. **Kapsam** bölmesinde, **Birim grupları** düğümünü genişletin. Yeni birim grubu **Birim grupları** düğümünün altında görünmelidir. 
+5. **Kapsam** bölmesinde, **Birim grupları** düğümünü genişletin. Yeni birim grubu  **Birim grupları** düğümünün altında görünmelidir. 
 6. Birim grubu adına sağ tıklayın. 
    
    * Etkileşimli (isteğe bağlı) yedekleme işini başlatmak için, **yedeklemeyi al**' ı tıklatın. 

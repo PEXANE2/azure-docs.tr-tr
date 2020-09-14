@@ -2,18 +2,18 @@
 title: Azure Data Box verileri dışarı aktarma öğreticisi | Microsoft Docs
 description: Dağıtım önkoşullarını ve Azure Data Box verileri dışarı aktarmayı öğrenin
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.author: twooley
-ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.author: alkohli
+ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783629"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053135"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Öğretici: Azure Data Box için dışarı aktarma siparişi oluşturma (Önizleme)
 
@@ -30,7 +30,7 @@ Bu öğreticide şunları öğrenirsiniz:
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Cihazı sipariş etmeden önce Data Box hizmeti ve cihazı için aşağıdaki yapılandırma önkoşullarını doldurun.
 
@@ -115,9 +115,20 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
 
    XML girişi örneğini görmek için bkz. [Sample XML Input](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. **Veri seçimi**' nde ayarlarınızı gözden geçirin ve ileri ' yi seçin **: iletişim>Ayrıntılar **.
+9. **Veri seçimi**' nde ayarlarınızı gözden geçirin ve **İleri ' yi seçin: güvenlik>**.
 
    ![İletişim Bilgileri](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+
+1. **Güvenlik**bölümünde, yazılım tabanlı çift şifrelemeyi etkinleştirmek istiyorsanız, **sırasıyla çift şifrelemeyi etkinleştir**' i seçin. 
+
+   Yazılım tabanlı şifreleme, Data Box verilerin AES-256 bit şifrelemesine ek olarak gerçekleştirilir.
+
+   > [!NOTE]
+   > Bu seçeneğin etkinleştirilmesi, sipariş işleme ve veri kopyalamanın daha uzun sürmesiyle yapılır. Siparişinizi oluşturduktan sonra bu seçeneği değiştiremezsiniz.
+
+   ![Veri kutusu içeri aktarma için güvenlik ekranı, Çift şifreleme](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+
+   Ileri ' yi seçin: devam etmek için **kişi ayrıntıları** .
 
 10. **İletişim ayrıntılarında**, sevkıyat bilgilerinizi girmek Için **+ Sevkiyat Adresi Ekle** ' yi seçin.
 
@@ -245,7 +256,7 @@ XML dosyalarına göre bazı önemli noktaları:
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Açıklama |
+   | Seçici | Blob yolu | Description |
    | --- | --- | --- |
    | İle başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | İle başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager yedekleme ilkeleri | Microsoft Docs
 description: Zamanlanmış yedeklemeleri denetleyen yedekleme ilkelerini oluşturmak ve yönetmek için StorSimple Snapshot Manager MMC ek bileşeninin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 871f2313b8cd0e8b94a7daff00e5743ee5cdfd71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 745aeb9844f1abad075d34b34735563200ea618b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511532"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054951"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Yedekleme ilkeleri oluşturmak ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -58,7 +58,7 @@ Yeni bir yedekleme ilkesi oluşturmak için aşağıdaki yordamı kullanın.
    2. **Ayarlar**altında **bir kez**, **günlük**, **haftalık**veya **aylık**' ı seçin.
    3. **Başlat** metin kutusunda Takvim simgesine tıklayın ve bir başlangıç tarihi seçin.
    4. **Gelişmiş ayarlar**altında, isteğe bağlı yineleme zamanlamaları ve bitiş tarihi ayarlayabilirsiniz.
-   5. **Tamam**'a tıklayın.
+   5. **Tamam**’a tıklayın.
 
 Bir yedekleme ilkesi oluşturduktan sonra, **sonuçlar** bölmesinde aşağıdaki bilgiler görüntülenir:
 

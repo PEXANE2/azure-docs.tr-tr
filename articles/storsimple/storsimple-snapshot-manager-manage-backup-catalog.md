@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager Yedekleme kataloğu | Microsoft Docs
 description: Yedekleme kataloğunu görüntülemek ve yönetmek için StorSimple Snapshot Manager MMC ek bileşeninin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 94dccdabfa4cf83077bca3629dee8a796d27182a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515470"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055002"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Yedekleme kataloğunu yönetmek için StorSimple Snapshot Manager kullanma
 
@@ -93,7 +93,7 @@ Birim veya birim grubunun bir çoğaltmasını (klonlamak) oluşturmak için aş
    1. **Ad** metin kutusuna kopyalanmış birim için bir ad yazın. Bu ad **birimler** düğümünde görünür. 
    2. (İsteğe bağlı) **sürücü**' yi seçin ve ardından açılır listeden bir sürücü harfi seçin.
    3. (İsteğe bağlı) **klasör (NTFS)** öğesini seçin ve bir klasör yolu yazın veya bul ' a tıklayın ve klasör için bir konum seçin. 
-   4. **Oluştur**'a tıklayın.
+   4. **Oluştur**’a tıklayın.
 5. Kopyalama işlemi tamamlandığında klonlanan birimi başlatmalısınız. Sunucu Yöneticisi başlatın ve ardından disk yönetimi 'ni başlatın. Ayrıntılı yönergeler için bkz. [bağlama birimleri](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Bu işlem başlatıldıktan sonra birim, **kapsam** bölmesindeki **birimler** düğümünün altında listelenir. Listelenen birimi görmüyorsanız, birim listesini yenileyin ( **birimler** düğümüne sağ tıklayın ve ardından **Yenile**' ye tıklayın).
 
 ## <a name="delete-a-backup"></a>Bir yedeklemeyi silme
@@ -126,7 +126,7 @@ Başlamadan önce, birim grubunun güncel yedeğine sahip olduğunuzdan emin olu
    1. **Ad** metin kutusuna kopyalanmış birim için bir ad yazın. Bu ad **birimler** düğümünde görünür. 
    2. Seçim **Sürücü**' yi seçin ve ardından açılır listeden bir sürücü harfi seçin. 
    3. Seçim **Klasör (NTFS)** öğesini seçin ve bir klasör yolu yazın ya da **görüntüle** ' ye tıklayın ve klasör için bir konum seçin. 
-   4. **Oluştur**'a tıklayın. 
+   4. **Oluştur**’a tıklayın. 
 5. Kopyalama işlemi tamamlandığında klonlanan birimi başlatmalısınız. Sunucu Yöneticisi başlatın ve ardından disk yönetimi 'ni başlatın. Ayrıntılı yönergeler için bkz. [bağlama birimleri](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Bu işlem başlatıldıktan sonra birim, **kapsam** bölmesindeki **birimler** düğümünün altında listelenir. 
    
     Listelenen birimi görmüyorsanız, birim listesini yenileyin ( **birimler** düğümüne sağ tıklayın ve ardından **Yenile**' ye tıklayın).

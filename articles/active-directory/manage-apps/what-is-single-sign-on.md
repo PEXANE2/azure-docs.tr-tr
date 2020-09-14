@@ -12,18 +12,18 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.custom: contperfq1
-ms.openlocfilehash: 6c7ac840dfba665c4691fc4d389d66f44b077bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b1f23d52b96e708a16adbbf6098de4b7ab0423e4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069478"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052112"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Çoklu oturum açma (SSO) nedir?
 
 Çoklu oturum açma, kullanıcının kullandıkları her uygulamada oturum açması gerekmediği anlamına gelir. Kullanıcı bir kez oturum açar ve bu kimlik bilgileri diğer uygulamalar için de kullanılır.
 
-Son bir kullanıcı ise, SSO ayrıntılarından çok önemli değildir. Parolanızı çok büyük bir şekilde yazmak zorunda kalmadan yalnızca üretken olmanızı sağlayan uygulamaları kullanmak istersiniz. Uygulamalarınızı şurada bulabilirsiniz: https://myapps.microsoft.com .
+Son bir kullanıcı ise, SSO ayrıntılarından çok önemli değildir. Parolanızı çok büyük bir şekilde yazmak zorunda kalmadan yalnızca üretken olmanızı sağlayan uygulamaları kullanmak istersiniz. Uygulamalarınızı şurada bulabilirsiniz: https://myapplications.microsoft.com .
  
 Bir Yöneticiyseniz veya BT uzmanı varsa, SSO ve Azure 'da nasıl uygulandığı hakkında daha fazla bilgi edinmek için okumaya devam edin.
 

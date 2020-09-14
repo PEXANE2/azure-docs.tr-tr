@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory | rol atamalarını yönetmek için bulut gruplarını kullanın | Microsoft Docs
-description: Kimlik yönetimi temsilcisi seçme için özel Azure AD rollerini önizleyin. Azure portal, PowerShell veya Graph API Azure rollerini yönetin.
+description: Kimlik yönetimi temsilcisi seçme için özel Azure AD rollerini önizleyin. Azure portal, PowerShell veya Graph API Azure rol atamalarını yönetin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798321"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053778"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Azure Active Directory 'de rol atamalarını yönetmek için bulut gruplarını kullanma (Önizleme)
 
@@ -28,7 +28,7 @@ Bu örneği göz önünde bulundurun: contoso, kişilerin Azure AD kuruluşunda 
 
 ## <a name="how-this-feature-works"></a>Bu özelliğin çalışması
 
-' Isastifbletorole ' özelliği ' true ' olarak ayarlanmış yeni bir Office 365 veya güvenlik grubu oluşturun. Ayrıca, bu özelliği, Azure portal bir grup oluştururken, **Azure AD rolleri gruba atanabilmesini**sağlayabilirsiniz. Her iki durumda da, kullanıcılara rolleri atarken aynı şekilde grubu bir veya daha fazla Azure AD rolüne atayabilirsiniz. Tek bir Azure AD kuruluşunda (kiracı), en fazla 200 rol atanabilir grup oluşturulabilir.
+' Isastifbletorole ' özelliği ' true ' olarak ayarlanmış yeni bir Microsoft 365 veya güvenlik grubu oluşturun. Ayrıca, bu özelliği, Azure portal bir grup oluştururken, **Azure AD rolleri gruba atanabilmesini**sağlayabilirsiniz. Her iki durumda da, kullanıcılara rolleri atarken aynı şekilde grubu bir veya daha fazla Azure AD rolüne atayabilirsiniz. Tek bir Azure AD kuruluşunda (kiracı), en fazla 200 rol atanabilir grup oluşturulabilir.
 
 Grubun üyelerinin role erişiminin olmasını istemiyorsanız Azure AD Privileged Identity Management kullanabilirsiniz... Bir Azure AD rolünün uygun bir üyesi olarak bir grup atayın. Grubun her üyesi, grubun atandığı rol için atamasının etkinleştirilmesini sağlar. Daha sonra, kendi rol atamasını sabit bir süre için etkinleştirebilir.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 08f3a3c17a5f6ea519eea04c4b8c5e7025adcbac
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116776"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052367"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
@@ -35,9 +35,9 @@ Aşağıdaki tabloda, birincil veya ikincil kimlik doğrulaması için hangi yö
 
 | Yöntem | Birincil kimlik doğrulama | İkincil kimlik doğrulaması |
 | --- | --- | --- |
-| [Parola](#password) | Evet | |
+| [Parola](#password) | Yes | |
 | [Microsoft Authenticator uygulaması](#microsoft-authenticator-app) | Evet (Önizleme) | MFA ve SSPR |
-| [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Evet | Yalnızca MFA |
+| [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Yes | Yalnızca MFA |
 | [OATH yazılım belirteçleri](#oath-software-tokens) | No | MFA |
 | [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens-preview) | No | MFA |
 | [SMS](#phone-options) | Evet (Önizleme) | MFA ve SSPR |
@@ -119,7 +119,7 @@ OATH TOTP Donanım belirteçleri genellikle, belirteçte önceden programlanabil
 
 Yeniden kullanılabilen programlanabilir OATH TOTP Donanım belirteçleri, yazılım belirteci kurulum akışında Azure AD ile de ayarlanabilir.
 
-OATH Donanım belirteçleri, genel önizlemenin bir parçası olarak desteklenir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+OATH Donanım belirteçleri, genel önizlemenin bir parçası olarak desteklenir. Önizlemeler hakkında daha fazla bilgi için bkz.  [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ![OATH belirteçlerini MFA OATH belirteçleri dikey penceresine yükleme](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
@@ -212,7 +212,7 @@ Bazı kullanıcılar başka bir Kullanıcı sorusunun yanıtlarını bilebilece�
 
 ### <a name="predefined-questions"></a>Önceden tanımlanmış sorular
 
-Aşağıdaki önceden tanımlanmış güvenlik soruları, SSPR ile doğrulama yöntemi olarak kullanılabilir. Bu güvenlik sorularının tümü, kullanıcının tarayıcı yerel ayarlarına bağlı olarak Office 365 dillerinin tam kümesine çevrilir ve yerelleştirilir:
+Aşağıdaki önceden tanımlanmış güvenlik soruları, SSPR ile doğrulama yöntemi olarak kullanılabilir. Bu güvenlik sorularının tümü, kullanıcının tarayıcı yerel ayarlarına bağlı olarak Microsoft 365 dillerin tam kümesine çevrilir ve yerelleştirilir:
 
 * İlk eşiniz/iş ortağınızı hangi şehirle karşıladınız?
 * Ebeveynleriniz hangi şehirle buluşmış?

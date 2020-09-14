@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4cfeda0d06c1e6956c7bbc953f1082a3510e8712
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005029"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052724"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve hesap kısıtlamaları
 
@@ -108,7 +108,7 @@ Tek bir geçit ilkesi, bir e-posta adresi veya telefon numarası gibi bir dizi k
 
 Ayrıca, herhangi bir zaman aşımı yapılandırmasını kaldırmak veya hangi kullanıcı parolalarının süresinin dolmamasını görmek için PowerShell cmdlet 'lerini kullanabilirsiniz.
 
-Bu kılavuz, Intune ve Office 365 gibi diğer sağlayıcılar için geçerlidir; bu da kimlik ve Dizin Hizmetleri için Azure AD 'ye bağımlıdır. Parola süre sonu, ilkenin değiştirilebilecek tek bölümüdür.
+Bu kılavuz, Intune ve Microsoft 365 gibi diğer sağlayıcılar için geçerlidir; bu da kimlik ve Dizin Hizmetleri için Azure AD 'ye bağımlıdır. Parola süre sonu, ilkenin değiştirilebilecek tek bölümüdür.
 
 > [!NOTE]
 > Yalnızca Azure AD Connect aracılığıyla eşitlenmemiş Kullanıcı hesapları için parolalar, kullanım süreleri dolacak şekilde yapılandırılabilir. Dizin eşitleme hakkında daha fazla bilgi için bkz. [Azure AD Ile ad bağlama](../hybrid/whatis-hybrid-identity.md).

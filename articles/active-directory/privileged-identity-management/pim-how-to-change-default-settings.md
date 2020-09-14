@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a42cdfbf251e24ed2b59adca1a73b4dfe427a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: cedd6d019005a4c55bbabf6070c6d864da90f40a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420014"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055495"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rol ayarlarını yapılandırma
 
@@ -123,7 +123,7 @@ Birden çok onaylayan ayarlarsanız onay, bunlardan biri onaylar veya reddeder b
 
 # <a name="previous-version"></a>[Önceki sürüm](#tab/previous)
 
-## <a name="open-role-settings"></a>Rol ayarlarını aç
+## <a name="open-role-settings-previous-version"></a>Rol ayarlarını Aç (önceki sürüm)
 
 Bir Azure AD rolünün ayarlarını açmak için aşağıdaki adımları izleyin.
 
@@ -168,7 +168,7 @@ Uygun yöneticilerin rolünü etkinleştirdiklerinde bilet numarası içermesini
 Kullanıcıların rollerini etkinleştirebilmeleri için önce MFA ile kimliklerini doğrulamaları gerekip gerekmediğini belirtmek için **Multi-Factor Authentication** anahtarını kullanın. Her bir rolü etkinleştirdiklerinde değil, her oturum için kimliklerini yalnızca bir kez doğrulamalıdır. MFA 'yı etkinleştirdiğinizde göz önünde bulundurmanız gereken iki ipucu vardır:
 
 - Kendi e-posta adresleri (genellikle @outlook.com , ancak her zaman değil) Için Microsoft hesabı olan kullanıcılar Azure Multi-Factor Authentication için kayıt olamaz. Kullanıcılara Microsoft hesaplarıyla roller atamak istiyorsanız, bu rol için kalıcı Yöneticiler yapmanız veya Multi-Factor Authentication 'ı devre dışı bırakmanız gerekir.
-- Azure AD ve Office 365 için yüksek ayrıcalıklı roller için Azure Multi-Factor Authentication 'yi devre dışı bırakamezsiniz. Bu güvenlik özelliği aşağıdaki rollerin korunmasına yardımcı olur:  
+- Azure AD ve Microsoft 365 için yüksek ayrıcalıklı roller için Azure Multi-Factor Authentication 'yi devre dışı bırakamezsiniz. Bu güvenlik özelliği aşağıdaki rollerin korunmasına yardımcı olur:  
   
   - Azure Information Protection Yöneticisi
   - Faturalama yöneticisi

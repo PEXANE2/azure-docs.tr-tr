@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799443"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055240"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması nedir?
 
@@ -37,12 +37,12 @@ Microsoft Authenticator uygulamasını, aşağıdakiler dahil olmak üzere birde
 
 ## <a name="terminology"></a>Terminoloji
 
-| Terim|Açıklama|
+| Süre|Açıklama|
 | ----|-----------|
 | İki öğeli doğrulama | Bir parola ve PIN gibi özellikle yalnızca iki doğrulama bilgisi parçasını kullanmanızı gerektiren bir doğrulama işlemi. Microsoft Authenticator uygulaması hem standart iki öğeli doğrulamayı hem de passwordless oturum açmayı destekler. |
 | Çok faktörlü kimlik doğrulaması (MFA) | İki öğeli kimlik doğrulama işlemi, kuruluşunuzun gereksinimlerine bağlı olarak, *en az* iki adet doğrulama bilgileri kullanmanızı gerektiren Multi-Factor Authentication ' dır. |
-| Microsoft hesabı (da denir, MSA) | Müşteri odaklı Microsoft ürünlerine ve Outlook, OneDrive, Xbox LIVE veya Office 365 gibi bulut hizmetlerine erişim sağlamak için kendi kişisel hesaplarınızı oluşturursunuz. Microsoft hesabı, Microsoft tarafından çalıştırılan Microsoft tüketici kimliği hesap sisteminde oluşturulur ve depolanır. |
-| İş veya okul hesabı | Kuruluşunuz, alain@contoso.com Microsoft Azure, Windows Intune ve Office 365 gibi iç ve potansiyel olarak kısıtlanmış kaynaklara erişmenizi sağlamak için iş veya okul hesabınızı (gibi) oluşturur. |
+| Microsoft hesabı (da denir, MSA) | Müşteri odaklı Microsoft ürünlerine ve Outlook, OneDrive, Xbox LIVE veya Microsoft 365 gibi bulut hizmetlerine erişim sağlamak için kendi kişisel hesaplarınızı oluşturursunuz. Microsoft hesabı, Microsoft tarafından çalıştırılan Microsoft tüketici kimliği hesap sisteminde oluşturulur ve depolanır. |
+| İş veya okul hesabı | Kuruluşunuz, alain@contoso.com Microsoft Azure, Windows Intune ve Microsoft 365 gibi iç ve potansiyel olarak kısıtlanmış kaynaklara erişmenizi sağlamak için iş veya okul hesabınızı (gibi) oluşturur. |
 | Doğrulama kodu | Her eklenen hesap altında kimlik doğrulayıcı uygulamasında görünen altı basamaklı kod. Doğrulama kodu, birinin bir kodu birden çok kez kullanmasını önlemek için 30 saniyede bir değişir. Bu, tek seferlik geçiş kodu (OTP) olarak da bilinir. |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>İki öğeli doğrulamanın uygulamayla nasıl çalıştığı
@@ -71,7 +71,7 @@ Kuruluşunuz, hesap türüne bağlı olarak iki öğeli doğrulama kullanmanız 
 
 ## <a name="in-this-section"></a>Bu bölümde
 
-| Makale | Açıklama |
+| Makale | Description |
 | ------ | ------------ |
 | [Uygulamayı indirme ve yükleme](user-help-auth-app-download-install.md) | Android ve iOS çalıştıran cihazlar için Microsoft Authenticator uygulamasının nereden ve nasıl alınacağını ve yükleneceğini açıklar. |
 | [İş veya okul hesaplarınızı ekleyin](user-help-auth-app-add-work-school-account.md) | Çeşitli iş veya okul ve kişisel hesaplarınızın Microsoft Authenticator uygulamasına nasıl ekleneceğini açıklar. |

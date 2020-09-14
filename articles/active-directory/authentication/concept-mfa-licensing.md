@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e294aa2580dd9f0cceb539a2696e7ebbf08c4afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 829a82cb94e5c2a7e7cbc9190047c368299612cd
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051002"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052758"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication yönelik özellikler ve lisanslar
 
@@ -41,7 +41,7 @@ Azure Multi-Factor Authentication, kuruluşunuzun ihtiyaçlarına bağlı olarak
 
 Aşağıdaki tabloda, çeşitli Azure Multi-Factor Authentication sürümlerinde kullanılabilen özelliklerin bir listesi verilmiştir. Kullanıcı kimlik doğrulamasının güvenliğini sağlamak için gereksinimlerinizi planlayın, ardından hangi yaklaşımın bu gereksinimleri karşıladığını saptayın. Örneğin, Azure AD Ücretsiz Azure Multi-Factor Authentication sağlayan güvenlik varsayılanlarını sağladığından, telefon araması veya SMS değil yalnızca mobil kimlik doğrulayıcı uygulaması kimlik doğrulama istemi için kullanılabilir. Mobil kimlik doğrulama uygulamasının bir kullanıcının kişisel cihazında yüklü olduğundan emin değilseniz bu yaklaşım bir sınırlama olabilir.
 
-| Özellik | Azure AD Ücretsiz-güvenlik Varsayılanları | Azure AD Ücretsiz-Azure AD Genel yöneticileri | Office 365 uygulamaları | Azure AD Premium P1 veya P2 |
+| Öne çıkan özelliği | Azure AD Ücretsiz-güvenlik Varsayılanları | Azure AD Ücretsiz-Azure AD Genel yöneticileri | Microsoft 365 uygulamaları | Azure AD Premium P1 veya P2 |
 | --- |:---:|:---:|:---:|:---:|
 | MFA ile Azure AD kiracı yönetici hesaplarını koruma | ● | ● (Yalnızca*Azure AD Genel yönetici* hesapları) | ● | ● |
 | İkinci bir faktör olarak mobil uygulama | ● | ● | ● | ● |
@@ -58,7 +58,7 @@ Aşağıdaki tabloda, çeşitli Azure Multi-Factor Authentication sürümlerinde
 
 ## <a name="purchase-and-enable-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication satın alıp etkinleştirin
 
-Azure Multi-Factor Authentication kullanmak için uygun bir Azure AD katmanını kaydettirin veya satın alın. Azure AD, ücretsiz, Office 365 uygulamaları, Premium P1 ve Premium P2 olmak üzere dört sürümde sunulur.
+Azure Multi-Factor Authentication kullanmak için uygun bir Azure AD katmanını kaydettirin veya satın alın. Azure AD, ücretsiz, Microsoft 365 uygulamalar, Premium P1 ve Premium P2 dört sürümde sunulur.
 
 Ücretsiz sürüm, bir Azure aboneliğine dahildir. Güvenlik varsayılanlarını kullanma veya hesapları *Azure AD Genel yönetici* rolüyle koruma hakkında bilgi için [aşağıdaki bölüme](#azure-ad-free-tier) bakın.
 

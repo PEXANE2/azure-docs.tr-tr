@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799307"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054560"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -42,7 +42,7 @@ Azure AD PowerShell cmdlet 'lerini indirme ve yükleme hakkında daha fazla bilg
 
 ## <a name="activity-based-automatic-renewal"></a>Etkinlik tabanlı otomatik yenileme
 
-Azure AD Intelligence ile gruplar, son zamanlarda kullanılıp kullanıldıklarından bağımsız olarak otomatik olarak yenilenir. Bu özellik, Outlook, SharePoint veya takımlar gibi Office 365 Hizmetleri içindeki gruplardaki Kullanıcı etkinliklerini temel aldığı için Grup sahiplerine göre el ile gerçekleştirilen işlem gereksinimini ortadan kaldırır. Örneğin, bir sahip veya grup üyesi SharePoint 'te belge yükleme gibi bir şey kullanıyorsa, bir ekip kanalını ziyaret edin veya Outlook 'ta gruba bir e-posta gönderin, Grup otomatik olarak yenilenir ve sahip herhangi bir yenileme bildirimi almaz.
+Azure AD Intelligence ile gruplar, son zamanlarda kullanılıp kullanıldıklarından bağımsız olarak otomatik olarak yenilenir. Bu özellik, Outlook, SharePoint veya takımlar gibi Microsoft 365 hizmetler genelinde gruplar içindeki kullanıcı etkinliklerini temel aldığı için, Grup sahiplerine göre el ile işlem gereksinimini ortadan kaldırır. Örneğin, bir sahip veya grup üyesi SharePoint 'te belge yükleme gibi bir şey kullanıyorsa, bir ekip kanalını ziyaret edin veya Outlook 'ta gruba bir e-posta gönderin, Grup otomatik olarak yenilenir ve sahip herhangi bir yenileme bildirimi almaz.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Grup süre sonunu otomatik olarak yenileme etkinlikleri
 

@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee4b15311dfefecd9a533add9c5a028a9b7b22fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051164"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052288"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication veri yerleşimi ve müşteri verileri
 
-Müşteri verileri, Azure AD tarafından, Office 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Müşteri verilerinizin depolandığı hakkında daha fazla bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde kullanabilirsiniz.
+Müşteri verileri, Azure AD tarafından, Microsoft 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Müşteri verilerinizin depolandığı hakkında daha fazla bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde kullanabilirsiniz.
 
 Bulut tabanlı Azure Multi-Factor Authentication ve Azure Multi-Factor Authentication Sunucusu işleme ve bazı kişisel verileri ve kurumsal verileri depolama. Bu makalede, verilerin depolandığı ve nerede saklandığı özetlenmektedir.
 

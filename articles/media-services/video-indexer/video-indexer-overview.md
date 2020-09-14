@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: bff99cdd44763c0df6bb5b2dd863b27728c23fcd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: b327facc2ac9ad64cf5237ecddc3e4024f75daa6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318701"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052146"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer nedir?
 
@@ -81,7 +81,7 @@ Aşağıdaki listede video ve ses modellerini Video Indexer kullanarak videolar�
 * **İki kanal işleme**: otomatik olarak ayrı dökümü algılar ve tek bir zaman çizelgesine birleştirir.
 * **Gürültü azaltma**: telefon sesini veya gürültülü kayıtları (Skype filtreleri temelinde) temizler.
 * **Transcript özelleştirmesi** (CRA): sektöre özgü döküm oluşturmak için özel konuşmayı metin modellerine kadar kullanın. Daha fazla bilgi için bkz. [video Indexer Web sitesinden dil modelini özelleştirme](customize-language-model-with-website.md) ve [video Indexer API 'leriyle bir dil modelini özelleştirme](customize-language-model-with-api.md).
-* **Konuşmacı numaralandırması**: hangi konuşmacının hangi sözcüklere ve ne zaman bağlı olduğunu eşleştirir ve anlamıştır.
+* **Konuşmacı numaralandırması**: hangi konuşmacının hangi sözcüklere ve ne zaman bağlı olduğunu eşleştirir ve anlamıştır. On altı hoparlör tek bir ses dosyasında algılanabilir.
 * **Konuşmacı İstatistikleri: konuşmacının**konuşma oranları için istatistikler sağlar.
 * **Metinsel içerik moderasyonu**: Ses transkriptlerindeki müstehcen metinleri algılar.
 * **Ses efektleri**: parmaklar, konuşma ve sessizlik gibi ses efektlerini tanımlar.

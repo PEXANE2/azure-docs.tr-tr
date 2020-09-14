@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a8d1b6d912cadb073251d72ee327f4b19950ab1b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147142"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055194"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory Kullanıcı erişimini iptal etme
 
@@ -38,7 +38,7 @@ Erişim belirteçleri ve yenileme belirteçleri, genellikle kalın istemci uygul
 
 Azure AD daha sonra yetkilendirme ilkelerini yeniden değerlendirin. Kullanıcı hala yetkilendirilirse, Azure AD yeni bir erişim belirteci yayınlar ve belirteci yeniler.
 
-Erişim belirteçleri, genellikle bir saat içinde olan belirtecin yaşam süresinden daha kısa bir süre içinde iptal edilmeli bir güvenlik sorunu olabilir. Bu nedenle, Microsoft, Office 365 uygulamalarına [sürekli erişim değerlendirmesi](../conditional-access/concept-continuous-access-evaluation.md) getirmek için etkin bir şekilde çalışır ve bu da neredeyse gerçek zamanlı olarak erişim belirteçlerinin doğrulanması sağlanmasına yardımcı olur.  
+Erişim belirteçleri, genellikle bir saat içinde olan belirtecin yaşam süresinden daha kısa bir süre içinde iptal edilmeli bir güvenlik sorunu olabilir. Bu nedenle, Microsoft, erişim belirteçlerinin neredeyse gerçek zamanlı olarak doğrulanmasını sağlamaya yardımcı olan Microsoft 365 uygulamalarına [sürekli erişim değerlendirmesi](../conditional-access/concept-continuous-access-evaluation.md) getirmek için etkin bir şekilde çalışır.  
 
 ## <a name="session-tokens-cookies"></a>Oturum belirteçleri (tanımlama bilgileri)
 

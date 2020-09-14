@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c1927cc103ba14b4b9b545eca82aee28cd32eeb2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716342"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052401"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Self servis parola sıfırlama sık sorulan sorular
 
@@ -104,7 +104,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
   > * Dizindeki kimlik doğrulama verilerinin doğru biçimlendirildiğinden emin olun, örneğin + 1 4255551234 veya *kullanıcı \@ contoso.com*. 
 * **S: parola sıfırlama hangi dilleri destekler?**
 
-  > Y **:** Parola sıfırlama kullanıcı arabirimi, SMS iletileri ve sesli çağrılar, Office 365 ' de desteklenen dillerde yerelleştirilir.
+  > Y **:** Parola sıfırlama kullanıcı arabirimi, SMS iletileri ve sesli çağrılar, Microsoft 365 desteklenen dillerdeki aynı dillerde yerelleştirilir.
   >
   >
 * **S: dizinimin Yapılandır sekmesindeki kurumsal marka öğelerini ayarladıktan sonra parola sıfırlama deneyiminin hangi bölümlerinin markalı olduğunu al?**
