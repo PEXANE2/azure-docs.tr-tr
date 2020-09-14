@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2da67b9996156f136aa2eddb8aa3d2b1777a554
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794562"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056226"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Grup yönetimi için sürüm 2 cmdlet 'leri Azure Active Directory
 
@@ -328,13 +328,13 @@ Bir grup oluşturulduğunda, belirli uç noktalar, son kullanıcının grubun e-
 
 ## <a name="group-writeback-to-on-premises-preview"></a>Şirket içi için Grup geri yazma (Önizleme)
 
-Günümüzde, çok sayıda grup hala şirket içi Active Directory yönetilmektedir. Bulut gruplarını şirket içine geri eşitleme isteklerini yanıtlamak için, Azure AD için Office 365 grupları geri yazma özelliği artık önizleme için kullanılabilir.
+Günümüzde, çok sayıda grup hala şirket içi Active Directory yönetilmektedir. Bulut gruplarını şirket içine geri eşitleme isteklerini yanıtlamak için, Azure AD için Microsoft 365 Gruplar geri yazma özelliği artık önizleme için kullanılabilir.
 
-Office 365 grupları bulutta oluşturulur ve yönetilir. Geri yazma özelliği, Exchange yüklü bir Active Directory ormanında Office 365 gruplarını dağıtım grupları olarak yazmanızı sağlar. Şirket içi Exchange posta kutularına sahip kullanıcılar, bu gruplardan e-posta gönderip alabilir. Grup geri yazma özelliği, Azure AD güvenlik gruplarını veya dağıtım gruplarını desteklemez.
+Microsoft 365 Gruplar bulutta oluşturulur ve yönetilir. Geri yazma özelliği, Exchange yüklü bir Active Directory ormanına dağıtım grupları olarak Microsoft 365 gruplarını geri yazmanıza izin verir. Şirket içi Exchange posta kutularına sahip kullanıcılar, bu gruplardan e-posta gönderip alabilir. Grup geri yazma özelliği, Azure AD güvenlik gruplarını veya dağıtım gruplarını desteklemez.
 
 Daha fazla ayrıntı için lütfen [Azure AD Connect Eşitleme hizmetine](../hybrid/how-to-connect-syncservice-features.md)yönelik belgelere bakın.
 
-Office 365 grup geri yazma, Azure Active Directory (Azure AD) genel önizleme özelliğidir ve ücretli Azure AD lisans planıyla birlikte kullanılabilir. Önizlemeler hakkında bazı yasal bilgiler için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Microsoft 365 grup geri yazma, Azure Active Directory (Azure AD) genel önizleme özelliğidir ve ücretli Azure AD lisans planıyla birlikte kullanılabilir. Önizlemeler hakkında bazı yasal bilgiler için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -14,12 +14,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 862b304d1f36567aecd4452f91f31d1a50c3198a
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 0403fe3cf0bf8cfaf9c722edadbecd2fee61cb46
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782490"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056294"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Privileged Identity Management içinde yönetileyemiyorum roller
 
@@ -35,9 +35,9 @@ Privileged Identity Management ' de aşağıdaki klasik abonelik yöneticisi rol
 
 Klasik abonelik yöneticisi rolleri hakkında daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="what-about-office-365-admin-roles"></a>Office 365 Yönetici rolleri hakkında ne olacak?
+## <a name="what-about-microsoft-365-admin-roles"></a>Yönetici rolleri ne Microsoft 365?
 
-Exchange Yöneticisi ve SharePoint Yöneticisi gibi Azure AD rolleri ve yöneticiler portalı deneyiminde tüm Office365 rollerini destekliyoruz, ancak Exchange RBAC veya SharePoint RBAC içindeki belirli rolleri desteklemiyoruz. Bu Office 365 hizmetleri hakkında daha fazla bilgi için bkz. [office 365 Yönetici rolleri](/office365/admin/add-users/about-admin-roles).
+Exchange Yöneticisi ve SharePoint Yöneticisi gibi Azure AD rolleri ve yöneticiler portalı deneyiminde tüm Microsoft 365 rollerini destekliyoruz, ancak Exchange RBAC veya SharePoint RBAC içindeki belirli rolleri desteklemiyoruz. Bu Microsoft 365 hizmetleri hakkında daha fazla bilgi için bkz. [Microsoft 365 Yönetici rolleri](/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
 > SharePoint yönetici rolü için uygun kullanıcılar, Cihaz Yöneticisi rolü ve Microsoft Güvenlik ve Uyumluluk Merkezi 'ne erişmeye çalışan tüm roller, rollerini etkinleştirdikten sonra birkaç saate kadar gecikme yaşar. Bu ekiplerle ilgili sorunları gidermek için çalışıyoruz.

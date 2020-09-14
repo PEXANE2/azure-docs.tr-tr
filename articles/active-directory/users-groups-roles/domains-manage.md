@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12193b469b6e1f014e6c948da7b2adb370e78d4b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795346"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056260"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory özel etki alanı adlarını yönetme
 
@@ -55,7 +55,7 @@ Zaten bir Azure AD kiracısına bir contoso.com etki alanı eklediyseniz, ikinci
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Özel etki alanı adınızın DNS kaydedicisinde değişiklik yaparsanız yapmanız gerekenler
 
-DNS kayıt şirketlerinde değiştirirseniz, Azure AD 'de başka yapılandırma görevleri yoktur. Azure AD ile etki alanı adını kesinti olmadan kullanmaya devam edebilirsiniz. Özel etki alanı adınızı Office 365, Intune veya Azure AD 'de özel etki alanı adlarına bağlı diğer hizmetlerle kullanıyorsanız, bu hizmetler için belgelere bakın.
+DNS kayıt şirketlerinde değiştirirseniz, Azure AD 'de başka yapılandırma görevleri yoktur. Azure AD ile etki alanı adını kesinti olmadan kullanmaya devam edebilirsiniz. Özel etki alanı adınızı Microsoft 365, Intune veya Azure AD 'de özel etki alanı adlarına bağlı diğer hizmetlerle kullanıyorsanız, bu hizmetler için belgelere bakın.
 
 ## <a name="delete-a-custom-domain-name"></a>Özel bir etki alanı adını silme
 
@@ -75,7 +75,7 @@ Kuruluşunuz artık bu etki alanı adını kullanmadıysanız veya başka bir Az
 
 Azure portal **Forcedelete** ' i çağırmak için, etki alanı adına 1000 ' den az başvuru olduğundan emin olmanız ve Exchange 'in sağlama hizmeti 'Nin [Exchange Yönetim merkezinde](https://outlook.office365.com/ecp/)güncellenmesi veya kaldırılması gerektiği tüm başvurular olması gerekir. Bu, Exchange posta etkin güvenlik gruplarını ve dağıtılmış listeleri içerir; daha fazla bilgi için bkz. [posta etkin güvenlik gruplarını kaldırma](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups). Ayrıca, aşağıdakilerden biri geçerliyse **Forcedelete** işlemi başarılı olmaz:
 
-* Office 365 etki alanı abonelik hizmetleri aracılığıyla bir etki alanı satın aldınız
+* Microsoft 365 etki alanı abonelik hizmetleri aracılığıyla bir etki alanı satın aldınız
 * Başka bir müşteri kuruluşu adına bir iş ortağıysanız
 
 **Forcedelete** işleminin bir parçası olarak aşağıdaki eylemler gerçekleştirilir:

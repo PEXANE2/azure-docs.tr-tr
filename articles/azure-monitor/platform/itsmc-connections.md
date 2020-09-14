@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 57a981f4967bc58ca39067f94abdcf64d764ab87
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 9d037fa0faa1419e4cd1b600eea1b3b3eb0a29c0
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536200"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058776"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı ile ITSM ürünlerine/hizmetlerine bağlanma
 Bu makalede, çalışma öğelerinizi merkezi olarak yönetmek için ıTSM ürününüz/hizmetiniz ile Log Analytics BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır. ISMC hakkında daha fazla bilgi için bkz. [genel bakış](./itsmc-overview.md).
@@ -25,7 +25,8 @@ Aşağıdaki ıTSM ürünleri/hizmetleri desteklenir. Ürünün ıSMC 'a nasıl 
 
 > [!NOTE]
 > 
-> ITSM Bağlayıcısı, yalnızca bulut tabanlı ServiceNow örneklerine bağlanabilir. Şirket içi ServiceNow örnekleri şu anda desteklenmiyor.
+> 1-Ekim-2020 Cherwell ve Azure uyarısı ile Provance ıSM tümleştirmeleri artık yeni müşteriler için etkinleştirilmeyecektir. Yeni ıTSM bağlantıları desteklenecek. 
+> Mevcut ıTSM bağlantıları desteklenecek.
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>Azure 'da BT Hizmet Yönetimi Bağlayıcısı System Center Service Manager bağlama
 
@@ -40,6 +41,10 @@ Aşağıdaki önkoşulların karşılandığından emin olun:
 - Karma bağlantı oluşturuldu ve yapılandırıldı. Daha fazla bilgi: [karma bağlantıyı yapılandırın](#configure-the-hybrid-connection).
 - Desteklenen Service Manager sürümleri: 2012 R2 veya 2016.
 - Kullanıcı rolü:  [Gelişmiş işleç](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10)).
+
+> [!NOTE]
+> 
+> ITSM Bağlayıcısı, yalnızca bulut tabanlı ServiceNow örneklerine bağlanabilir. Şirket içi ServiceNow örnekleri şu anda desteklenmiyor.
 
 ### <a name="connection-procedure"></a>Bağlantı yordamı
 

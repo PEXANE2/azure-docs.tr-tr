@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Microsoft Azure haritasında bölge alanı oluşturma ve cihazları izleme'
+title: "Öğretici: Azure haritalar 'da bölge bölge oluşturma ve izleme cihazları"
 description: Bölge belirleme ayarlamayı öğrenin. Bkz. Azure Maps uzamsal hizmetini kullanarak, bölge sınırına göre cihazları izleme.
 author: anastasia-ms
 ms.author: v-stharr
@@ -9,54 +9,54 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3ea9923dd98a49b1533defa3e95616655b7ea78d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b374bbe086281c7f7914334be6ca275f0fd05b7f
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299312"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056518"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure Haritalar’ı kullanarak bölge sınırı ayarlama
 
-Bu öğreticide, aşağıdaki senaryo bağlamında Azure Maps bölge hizmetleri oluşturma ve kullanma hakkında temel bilgiler verilmektedir:
+Bu öğreticide, Azure haritalar bölge hizmetleri oluşturma ve kullanma hakkında temel bilgiler verilmektedir. Bunu aşağıdaki senaryo bağlamında gerçekleştirirsiniz:
 
-*Bir oluşturma Site Yöneticisi, bir yapı alanının perimetrelerini girip terk ettiğinde ekipmanları izmelidir. Her bir ekipman her çıktığında veya bu perimeters 'a girdiğinde, Operations Manager bir e-posta bildirimi gönderilir.*
+*Bir oluşturma Site Yöneticisi, bir yapı alanının perimetrelerini girip terk ettiğinde ekipmanları izmelidir. Her bir ekipman her çıktığında veya bu perimeters 'a girdiğinde, Operations Manager 'a bir e-posta bildirimi gönderilir.*
 
-Azure haritalar, yukarıdaki senaryoda bulunan oluşturma alanını girip çıkarken ekipmanların izlenmesini desteklemeye yönelik çeşitli hizmetler sunar. Bu öğreticide nasıl yapılacağını ele aldık:
+Azure haritalar, üretim alanını girip çıkarken ekipmanların izlenmesini desteklemeye yönelik çeşitli hizmetler sunar. Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
-> * İzlemek istediğimiz yapı alanı alanları ' nı tanımlayan [Bölge sınırlaması coğrafi JSON verilerini](geofence-geojson.md) karşıya yükleyin. Azure haritalar hesabınıza Çokgen koordinatları olarak bölge 'leri yüklemek için [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) 'sini kullanacağız.
-> * Tetiklendiğinde bölge bölgesi alanına girdiğinde ve bu alana çıkılırken oluşturma Operations Manager sitesine e-posta bildirimleri gönderecek iki [mantıksal uygulama](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) ayarlayın.
-> * Azure haritalar bölge giriş ve çıkış olaylarına abone olmak için [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) kullanın. İki Logic Apps tanımlanmış HTTP uç noktalarını çağıran iki Web kancası olay aboneliği ayarlayacağız. Logic Apps, daha sonra, bir ekipman için uygun e-posta bildirimlerini daha sonra veya bölge girişi altına alacak şekilde gönderir.
+> * İzlemek istediğiniz yapı alanı alanları ' nı tanımlayan [bölge sınırlama coğrafi JSON verilerini](geofence-geojson.md) karşıya yükleyin. Azure haritalar hesabınıza Çokgen koordinatları olarak bölge 'leri yüklemek için [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) 'sini kullanırsınız.
+> * Tetiklendiğinde bölge bölgesine girdiğinde ve bu alandan çıkılırken yapım site Operations Manager 'a e-posta bildirimleri gönderen iki [mantıksal uygulama](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) ayarlayın.
+> * Azure haritalar bölge 'larınızın giriş ve çıkış olaylarına abone olmak için [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) kullanın. İki mantıksal uygulamalarınızda tanımlanan HTTP uç noktalarını çağıran iki Web kancası olay aboneliği ayarlarsınız. Logic Apps bundan sonra, mantığın ötesinde veya girilme gibi donanımların uygun e-posta bildirimlerini gönderir.
 > * Bir ekipman parçası çıktığında ve bölge alanları girdiğinde bildirim almak için [Arama bölge kümesi API 'sini](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) kullanın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+1. [Azure haritalar hesabı oluşturun](quick-demo-map-app.md#create-an-azure-maps-account).
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
 
 Bu öğretici [Postman](https://www.postman.com/) uygulamasını kullanır, ancak farklı bir API geliştirme ortamı seçebilirsiniz.
 
 ## <a name="upload-geofencing-geojson-data"></a>Bölge sınırlaması coğrafi JSON verilerini karşıya yükle
 
-Bu öğreticide, içeren bölge sınırlaması coğrafi JSON verilerini karşıya yükleyeceğiz `FeatureCollection` . , `FeatureCollection` Oluşturma sitesi içinde Çokgen alanları tanımlayan iki bölge içerir. İlk bölge için zaman aşımı süresi veya kısıtlama yoktur. İkinci bir, yalnızca iş saatleri boyunca sorgulanabilecek (9-5 P.M. PST) ve artık 1 Ocak 2022 ' den sonra geçerli olmayacaktır. GeoJSON biçimi hakkında daha fazla bilgi için bkz. [bölge sınırlama coğrafi JSON verileri](geofence-geojson.md).
+Bu öğreticide, içeren bölge sınırlaması coğrafi JSON verilerini karşıya yüklersiniz `FeatureCollection` . , `FeatureCollection` Oluşturma sitesi içinde Çokgen alanları tanımlayan iki bölge içerir. İlk bölge için zaman aşımı süresi veya kısıtlama yoktur. İkinci bir, yalnızca iş saatleri (Pasifik saati diliminde 9:00 ÖÖ-5:00 PM) ile sorgulanabilir ve 1 Ocak 2022 ' den sonra geçerli olmayacaktır. GeoJSON biçimi hakkında daha fazla bilgi için bkz. [bölge sınırlama coğrafi JSON verileri](geofence-geojson.md).
 
 >[!TIP]
->Bölge sınırlaması verilerinizi dilediğiniz zaman güncelleştirebilirsiniz. Verilerinizi güncelleştirme hakkında daha fazla bilgi için bkz. [veri yükleme API 'si](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
+>Bölge sınırlaması verilerinizi dilediğiniz zaman güncelleştirebilirsiniz. Daha fazla bilgi için bkz. [veri yükleme API 'si](https://docs.microsoft.com/rest/api/maps/data/uploadpreview).
 
-1. Postman uygulamasını açın. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin.
+1. Postman uygulamasını açın. En üstteki, **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin. Koleksiyonu adlandırın ve **Oluştur**' u seçin.
 
 2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
-3. Oluşturucu sekmesinde http **Post** yöntemini seçin ve bölge sınırlaması verilerini Azure Maps hizmetine yüklemek için aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
+3. Oluşturucu sekmesinde http **Post** yöntemini seçin ve bölge sınırlaması verilerini Azure Maps 'a yüklemek için aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
     ```HTTP
     https://atlas.microsoft.com/mapData/upload?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-    URL yolundaki _geojson_ parametresi, karşıya yüklenen verilerin veri biçimini temsil eder.
+    `geojson`URL yolundaki parametre, karşıya yüklenen verilerin veri biçimini temsil eder.
 
-4. **Gövde** sekmesine tıklayın. Girdi biçimi olarak **RAW**ve sonra **JSON** ' ı seçin. Aşağıdaki GeoJSON verilerini kopyalayıp **gövde** metin alanına yapıştırın:
+4. **Gövde** sekmesini seçin. Girdi biçimi olarak **RAW**ve sonra **JSON** ' ı seçin. Aşağıdaki GeoJSON verilerini kopyalayıp **gövde** metin alanına yapıştırın:
 
    ```JSON
    {
@@ -144,7 +144,7 @@ Bu öğreticide, içeren bölge sınırlaması coğrafi JSON verilerini karşıy
    }
    ```
 
-5. Mavi **Gönder** düğmesine tıklayın ve isteğin işlemesini bekleyin. İstek tamamlandıktan sonra yanıtın **üstbilgiler** sekmesine gidin. Olan **konum** anahtarının değerini kopyalayın `status URL` .
+5. **Gönder**' i seçin ve isteğin işlemesini bekleyin. İstek tamamlandığında, yanıtın **üstbilgiler** sekmesine gidin. Olan **konum** anahtarının değerini kopyalayın `status URL` .
 
     ```http
     https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0
@@ -156,7 +156,7 @@ Bu öğreticide, içeren bölge sınırlaması coğrafi JSON verilerini karşıy
    https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. HTTP isteği **Al** işlemi başarıyla tamamlandığında, döndürür `resourceLocation` . , `resourceLocation` `udid` Karşıya yüklenen içerik için benzersiz bir içerir. `udid`Bu öğreticinin son bölümünde bölge Al API 'sini sorgulamak için bunu kaydetmeniz gerekir. İsteğe bağlı olarak, bir `resourceLocation` sonraki adımda bu kaynaktan meta verileri almak için URL 'yi kullanabilirsiniz.
+7. HTTP isteği **Al** işlemi başarıyla tamamlandığında, bir döndürür `resourceLocation` . , `resourceLocation` `udid` Karşıya yüklenen içerik için benzersiz bir içerir. Bu `udid` öğreticinin son bölümünde bölge Al API 'sini sorgulamak için bunu kaydedin. İsteğe bağlı olarak, bir `resourceLocation` sonraki adımda bu kaynaktan meta verileri almak için URL 'yi kullanabilirsiniz.
 
       ```json
       {
@@ -171,7 +171,7 @@ Bu öğreticide, içeren bölge sınırlaması coğrafi JSON verilerini karşıy
    https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-9. HTTP isteği **Al** işlemi başarıyla tamamlandığında, yanıt gövdesi `udid` `resourceLocation` adım 7 ' de belirtilen içeriği, gelecekteki içeriğe erişmek/indirmek için konumunu ve oluşturulma/güncelleme tarihi, boyutu vb. gibi içerikler hakkında bazı diğer meta verileri içerir. Genel yanıta bir örnek:
+9. HTTP isteği **Al** işlemi başarıyla tamamlandığında, yanıt gövdesi `udid` `resourceLocation` 7. adımda belirtilen ' yi içerir. Ayrıca, gelecekte içeriğe erişmek ve içerik hakkında diğer meta verileri yüklemek ve indirmek için konumu da içerecektir. Genel yanıta bir örnek:
 
     ```json
     {
@@ -184,105 +184,105 @@ Bu öğreticide, içeren bölge sınırlaması coğrafi JSON verilerini karşıy
     }
     ```
 
-## <a name="create-logic-app-workflows"></a>Mantıksal uygulama iş akışları oluşturma
+## <a name="create-workflows-in-azure-logic-apps"></a>Azure Logic Apps iş akışları oluşturma
 
-Bu bölümde, bir e-posta bildirimi tetiklenecek iki [mantıksal uygulama](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) uç noktası oluşturacağız. Her bitiş noktası çağrıldığında e-posta bildirimleri gönderecek ilk tetikleyiciyi nasıl oluşturacağınız hakkında göstereceğiz.
+Ardından, bir e-posta bildirimi tetikleyen iki [mantıksal uygulama](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) uç noktası oluşturursunuz. İlk olanı oluşturmak için aşağıdaki adımları uygulayın:
 
-1. [Azure portalda](https://portal.azure.com) oturum açma
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. [Azure portalının](https://portal.azure.com) sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
+2. Azure portal **kaynak oluştur**' u seçin.
 
-3. Market 'te *Ara* kutusuna **Logic App**yazın.
+3. Market 'te **Ara** kutusuna **Logic App**yazın.
 
-4. *Sonuçlardan* **Logic App**' i seçin. **Oluştur** düğmesine tıklayın.
+4. Sonuçlardan **Logic App**  >  **Oluştur**' u seçin.
 
 5. **Mantıksal uygulama** sayfasında, aşağıdaki değerleri girin:
-    * Bu mantıksal uygulama için kullanmak istediğiniz *abonelik* .
-    * Bu mantıksal uygulamanın *kaynak grubu* adı. Kaynak grubu için *Yeni oluştur* veya *Mevcut olanı kullan* seçeneğini belirleyebilirsiniz.
-    * Mantıksal uygulamanızın *mantıksal uygulama adı* . Bu durumda, ad olarak kullanacağız `Equipment-Enter` .
+    * Bu mantıksal uygulama için kullanmak istediğiniz **abonelik** .
+    * Bu mantıksal uygulamanın **kaynak grubu** adı. **Yeni oluştur** veya **var olan** kaynak grubunu kullan seçeneğini belirleyebilirsiniz.
+    * Mantıksal uygulamanızın **mantıksal uygulama adı** . Bu durumda, `Equipment-Enter` ad olarak kullanın.
 
-    Bu öğreticinin amaçları doğrultusunda, kalan değerleri varsayılan ayarlarında tutun.
+    Bu öğreticinin amaçları doğrultusunda, diğer tüm değerleri varsayılan ayarlarında saklayın.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-create.png" alt-text="Mantıksal uygulama oluşturma":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-create.png" alt-text="Mantıksal uygulama oluşturma ekranının ekran görüntüsü.":::
 
-6. **Gözden geçir + oluştur** düğmesine tıklayın. Ayarlarınızı gözden geçirin ve dağıtımı göndermek için **Oluştur** ' a tıklayın. Dağıtım başarıyla tamamlandığında **Kaynağa Git ' e**tıklayın. **Logic App Designer** 'a yönlendirilirsiniz
+6. **Gözden geçir + oluştur**' u seçin. Ayarlarınızı gözden geçirin ve dağıtımı göndermek için **Oluştur** ' u seçin. Dağıtım başarıyla tamamlandığında **Kaynağa Git**' i seçin. **Mantıksal uygulama Tasarımcısı**' na götürülürsünüz.
 
-7. Şimdi bir tetikleyici türü seçeceğiz. Bir bit ' i ortak bir *tetikleyici ile kullanmaya başlayın** bölümüne gidin. **BIR http isteği alındığında**üzerine tıklayın.
+7. Tetikleyici türü seçin. **Sık kullanılan bir tetikleyici Ile başlayın** bölümüne gidin. **BIR http isteği alındığında**öğesini seçin.
 
-     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Mantıksal uygulama HTTP tetikleyicisi oluşturma":::
+     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Mantıksal uygulama oluşturma HTTP tetikleyicisi ekran görüntüsü.":::
 
-8. Tasarımcının sağ üst köşesindeki **Kaydet** ' e tıklayın. **Http post URL 'si** otomatik olarak oluşturulacaktır. Bir olay uç noktası oluşturmak için sonraki bölümde ihtiyacınız olacak şekilde URL 'YI kaydedin.
+8. Mantıksal uygulama Tasarımcısı 'nın sağ üst köşesinde **Kaydet**' i seçin. **Http post URL 'si** otomatik olarak oluşturulur. URL 'YI kaydedin. Bir sonraki bölümde bir olay uç noktası oluşturmak için bu gereklidir.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Mantıksal uygulama HTTP Isteği URL 'SI ve JSON":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Mantıksal uygulama HTTP Isteği URL 'SI ve JSON ekran görüntüsü.":::
 
-9. **+ Yeni adım**' ı seçin. Şimdi bir eylem seçeceğiz. `outlook.com email`Arama kutusuna yazın. **Eylemler** listesinde, aşağı kaydırın ve **e-posta gönder (v2)** seçeneğine tıklayın.
+9. **+ Yeni adım**' ı seçin. Şimdi bir eylem seçersiniz. `outlook.com email`Arama kutusuna yazın. **Eylemler** listesinde aşağı kaydırın ve **e-posta gönder (v2)** seçeneğini belirleyin.
   
-    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Mantıksal uygulama Tasarımcısı oluşturma":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Mantıksal uygulama Tasarımcısı oluşturma ekranının ekran görüntüsü.":::
 
-10. Outlook.com hesabınızda oturum açın. Mantıksal uygulamanın hesaba erişmesine izin vermek için **Evet** ' i tıklatın. E-posta göndermek için alanları girin.
+10. Outlook Hesabınızda oturum açın. Mantıksal uygulamanın hesaba erişmesine izin vermek için **Evet** ' i seçtiğinizden emin olun. E-posta göndermek için alanları girin.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Mantıksal uygulama oluşturma e-posta gönder adımı":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Mantıksal uygulama oluşturma için e-posta gönder adımının ekran görüntüsü.":::
 
     >[!TIP]
-    > `geometryId` `deviceId` Event Grid tarafından gönderilen verileri okumak üzere mantıksal uygulamayı yapılandırarak e-posta bildirimlerinde veya gibi geojson yanıt verilerini alabilirsiniz. Mantıksal uygulamanın, olay verilerini kullanmak ve e-posta bildirimlerine iletmek üzere nasıl yapılandırılacağı hakkında bilgi için bkz. [öğretici: Event Grid ve Logic Apps kullanarak Azure IoT Hub olayları hakkında e-posta bildirimleri gönderme](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps).
+    > `geometryId` `deviceId` E-posta bildirimlerinde, veya gibi coğrafi JSON yanıt verilerini alabilirsiniz. Event Grid tarafından gönderilen verileri okumak için Logic Apps yapılandırabilirsiniz. Logic Apps yapılandırma hakkında daha fazla bilgi için bkz. [öğretici: Azure IoT Hub olaylar hakkında Event Grid ve Logic Apps kullanarak e-posta bildirimleri gönderme](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps).
 
-11. Logic Apps tasarımcısının sol üst köşesindeki **Kaydet** ' e tıklayın.
+11. Mantıksal uygulama Tasarımcısı 'nın sol üst köşesinde **Kaydet**' i seçin.
 
-12. Ekipman yapım sitesinden çıktığında yöneticiyi bilgilendirmek için ikinci bir mantıksal uygulama oluşturmak üzere 3-11 arası adımları tekrarlayın. Mantıksal uygulamayı adlandırın `Equipment-Exit` .
+Ekipman yapım sitesinden çıktığında yöneticiye bildirmek için ikinci bir mantıksal uygulama oluşturmak üzere 3-11 arasındaki adımları yineleyin. Mantıksal uygulamayı adlandırın `Equipment-Exit` .
 
 ## <a name="create-azure-maps-events-subscriptions"></a>Azure haritalar olay abonelikleri oluşturma
 
-Azure haritalar üç olay türünü destekler. Azure haritalar desteklenen olay türlerine [buradan](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps)göz atabilirsiniz.  İki farklı olay aboneliği oluşturabileceğiz: bir adet bölge ve bölge girme çıkış olayları için bir tane.
+Azure haritalar [üç olay türünü](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps)destekler. Burada iki farklı olay aboneliği oluşturmanız gerekir: bir adet, bölge sınırı olayları için bir tane ve bir diğeri de bölge, çıkış olayları için.
 
-Bölge giriş olayları için bir olay aboneliği oluşturmak üzere aşağıdaki adımları izleyin. Adımları benzer bir şekilde tekrarlayarak bölge, çıkış olaylarına abone olabilirsiniz.
+Aşağıdaki adımlarda, bölge girme olayları için bir olay aboneliğinin nasıl oluşturulacağı gösterilmektedir. Adımları benzer bir şekilde tekrarlayarak bölge, çıkış olaylarına abone olabilirsiniz.
 
-1. Azure haritalar hesabınıza gidin. Panoda, **abonelikler**' i seçin. Abonelik adı ' na tıklayın ve ayarlar menüsünde **Olaylar** ' ı seçin.
+1. Azure haritalar hesabınıza gidin. Panoda, **abonelikler**' i seçin. Abonelik adınızı seçin ve Ayarlar menüsünden **Olaylar** ' ı seçin.
 
-    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Azure Maps hesap olaylarına gidin":::
+    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Azure Maps hesap olaylarına git ekran görüntüsü.":::
 
 2. Bir olay aboneliği oluşturmak için olaylar sayfasından **+ olay aboneliği** ' ni seçin.
 
-    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Azure haritalar olayları aboneliği oluşturma":::
+    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Azure Maps olayları aboneliği oluşturma için ekran görüntüsü.":::
 
 3. **Olay aboneliği oluştur** sayfasında, aşağıdaki değerleri girin:
-    * Olay aboneliğinin *adı* .
-    * *Olay şeması* *Event Grid şema*olmalıdır.
-    * Bu olay aboneliğinin *Sistem konu adı* . Bu durumda, kullanacağız `Contoso-Construction` .
-    * *Olay türlerine filtrele*' de, `Geofence Entered` olay türü olarak öğesini seçin.
-    * *Uç nokta türü*için öğesini seçin `Web Hook` .
-    * *Uç nokta*için, önceki bölümde oluşturduğunuz mantıksal uygulama giriş uç noktası IÇIN http post URL 'sini kopyalayın. Kaydetmeyi unuttuysanız, Logic App Designer 'a geri dönüp HTTP tetikleyici adımından kopyalamanız yeterlidir.
+    * Olay aboneliğinin **adı** .
+    * **Olay şeması** *Event Grid şema*olmalıdır.
+    * Bu olay aboneliği için **Sistem konu adı** , bu durumda `Contoso-Construction` .
+    * **Olay türlerine filtre**için `Geofence Entered` olay türü olarak öğesini seçin.
+    * **Uç nokta türü**için öğesini seçin `Web Hook` .
+    * **Uç nokta**için, önceki bölümde oluşturduğunuz uç nokta girin mantıksal uygulama IÇIN http post URL 'sini kopyalayın. Kaydetmeyi unuttuysanız, mantıksal uygulama tasarımcısına geri dönüp HTTP tetikleyici adımından kopyalamanız yeterlidir.
 
-    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Azure haritalar olayları abonelik ayrıntıları":::
+    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Azure Maps olayları abonelik ayrıntılarının ekran görüntüsü.":::
 
-4. **Oluştur**’a tıklayın.
+4. **Oluştur**’u seçin.
 
-5. Önceki bölümde oluşturduğunuz Logic App çıkış uç noktası için 1-4 adımlarını yineleyin. Adım 3 ' te `Geofence Exited` olay türü olarak seçtiğinizden emin olun.
+Önceki bölümde oluşturduğunuz mantıksal uygulama çıkış uç noktası için 1-4 adımlarını yineleyin. Adım 3 ' te `Geofence Exited` olay türü olarak seçtiğinizden emin olun.
 
 ## <a name="use-spatial-geofence-get-api"></a>Uzamsal bölge Get API 'sini kullanma
 
-Şimdi, bir ekipman parçası bölge dilimleri girdiğinde veya oradan çıktığında Operations Manager e-posta bildirimleri göndermek için [uzamsal bölge edınme API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 'sini kullanacağız.
+Bir ekipman parçası bölge dilimleri girdiğinde veya oradan çıktığında Operations Manager 'a e-posta bildirimleri göndermek için [uzamsal bölge Get API 'sini](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) kullanın.
 
-Her ekipman bir içerir `deviceId` . Bu öğreticide, benzersiz KIMLIĞI olan tek bir ekipman parçasını izliyoruz `device_1` .
+Her bir ekipman parçası bir `deviceId` . Bu öğreticide, benzersiz bir KIMLIĞIYLE tek bir ekipman parçasını izliyorsunuz `device_1` .
 
-Daha anlaşılır olması için aşağıdaki diyagramda, zaman içindeki donanımların, bölge sayısı dışında bir yerde olan *Başlangıç* konumundan başlayan beş konumu gösterilmektedir. Bu öğreticinin amaçları doğrultusunda, bu konumda cihazı sorguladığımızdan *Başlangıç* konumu tanımsızdır.
+Aşağıdaki diyagramda, zaman içindeki donanımların, bölge sayısı dışında bir yerde olan *Başlangıç* konumundan başlayan beş konumu gösterilmektedir. Bu öğreticinin amaçları doğrultusunda, bu konumda cihazı sorgulamayacağından *Başlangıç* konumu tanımsızdır.
 
-[Uzamsal bölge edinme API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 'sini ilk bölge sınırı girişi veya çıkışı gösteren bir ekipman konumuyla sorgulıyoruz, Event Grid Operations Manager e-posta bildirimi göndermek için uygun mantıksal uygulama uç noktasını çağırır.
+[Uzamsal bölge edınme API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 'sini ilk bölge girişi veya çıkışı gösteren bir ekipman konumuyla sorgulayıp, Event Grid Operations Manager 'a bir e-posta bildirimi göndermek için uygun mantıksal uygulama uç noktasını çağırır.
 
-Aşağıdaki bölümlerin her biri, donanımların beş farklı konum koordinasını kullanarak HTTP GET bölge sınırlaması API 'SI isteklerini sağlar.
+Aşağıdaki bölümlerin her biri, donanımların beş farklı konum koordinatlarını kullanarak API istekleri yapar.
 
-![Azure haritalar 'da bölge sınırı Haritası](./media/tutorial-geofence/geofence.png)
+![Azure haritalar 'da bölge haritası haritasının diyagramı](./media/tutorial-geofence/geofence.png)
 
 ### <a name="equipment-location-1-47638237-122132483"></a>Ekipman konumu 1 (47.638237,-122,132483)
 
-1. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin.  İstek için bir **istek adı** girin. Ad, *konum 1*' i kullanacağız. Bölge sınırlaması olan [coğrafi JSON verilerini karşıya yükle bölümünde](#upload-geofencing-geojson-data)oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
+1. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. Bu *konumu 1*yapın. Bölge sınırlaması olan [coğrafi JSON verilerini karşıya yükle bölümünde](#upload-geofencing-geojson-data)oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
-2. Oluşturucu sekmesinde http yöntemini **Al** ' ı seçin ve aşağıdaki URL 'yi girin, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla ve bölge sınırlaması olan `{udid}` `udid` [coğrafi JSON verilerini karşıya yükleme bölümüne](#upload-geofencing-geojson-data)kaydettiğinizden emin olun.
+2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. `{Azure-Maps-Primary-Subscription-key}`Birincil abonelik anahtarınızla ve `{udid}` Bölge sınırlaması olan `udid` [coğrafi JSON verilerini karşıya yükleme bölümüne](#upload-geofencing-geojson-data)kaydettiğiniz ile değiştirdiğinizden emin olun.
 
    ```HTTP
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. **Gönder** düğmesine tıklayın. Aşağıdaki GeoJSON yanıt penceresinde görünür.
+3. **Gönder**’i seçin. Aşağıdaki GeoJSON yanıt penceresinde görünür.
 
     ```json
     {
@@ -310,19 +310,19 @@ Aşağıdaki bölümlerin her biri, donanımların beş farklı konum koordinas�
     }
     ```
 
-4. Yukarıdaki GeoJSON yanıtında, ana site bölge listesinden olumsuz mesafe, ekipmanın bölge bölgesi içinde olduğu anlamına gelir. Alt site bölge bölge değerinden olumlu mesafe, ekipmanın alt site bölge sınırı dışında olduğu anlamına gelir. Bu cihaz, ana site bölge adı içinde ilk kez bulunduğu `isEventPublished` için, parametresi olarak ayarlanır `true` ve Operations Manager, ekipmanın bölge bölgesine girdiği bir e-posta bildirimi almış olabilir.
+Önceki GeoJSON yanıtında, ana site bölge listesinden olumsuz mesafe, ekipmanın bölge bölgesi içinde olduğu anlamına gelir. Alt siteden gelen pozitif mesafe, ekipmanın alt site bölge sınırı dışında olduğu anlamına gelir. Bu cihaz, ana site bölge sınırı içinde ilk kez bulunduğu `isEventPublished` için parametresi olarak ayarlanır `true` . Operations Manager, ekipmanın bölge sınırlaması girdiği bir e-posta bildirimi alır.
 
 ### <a name="location-2-4763800-122132531"></a>Konum 2 (47.63800,-122,132531)
 
-1. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin.  İstek için bir **istek adı** girin. Ad, *Konum 2*' yi kullanacağız. Bölge sınırlaması olan [coğrafi JSON verilerini karşıya yükle bölümünde](#upload-geofencing-geojson-data)oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
+1. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. Bu *konumu 2*yapın. Bölge sınırlaması olan [coğrafi JSON verilerini karşıya yükle bölümünde](#upload-geofencing-geojson-data)oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
-2. Oluşturucu sekmesinde http yöntemini **Al** ' ı seçin ve aşağıdaki URL 'yi girin, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla ve bölge sınırlaması olan `{udid}` `udid` [coğrafi JSON verilerini karşıya yükleme bölümüne](#upload-geofencing-geojson-data)kaydettiğinizden emin olun.
+2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. `{Azure-Maps-Primary-Subscription-key}`Birincil abonelik anahtarınızla ve `{udid}` Bölge sınırlaması olan `udid` [coğrafi JSON verilerini karşıya yükleme bölümüne](#upload-geofencing-geojson-data)kaydettiğiniz ile değiştirdiğinizden emin olun.
 
    ```HTTP
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. **Gönder** düğmesine tıklayın. Aşağıdaki GeoJSON yanıt penceresinde görünür:
+3. **Gönder**’i seçin. Aşağıdaki GeoJSON yanıt penceresinde görünür:
 
     ```json
     {
@@ -350,19 +350,19 @@ Aşağıdaki bölümlerin her biri, donanımların beş farklı konum koordinas�
     }
     ````
 
-4. Yukarıdaki GeoJSON yanıtında, ekipman ana site bölge bölgesine kaldı ve alt site bölge bölge bölge 'sini girmemiştir. Sonuç olarak, parametresi olarak `isEventPublished` ayarlanır `false` ve Operations Manager herhangi bir e-posta bildirimi almaz.
+Önceki GeoJSON yanıtında, ekipman ana site bölge bölgesine kaldı ve alt site bölge bölge bölge 'sini girmemiştir. Sonuç olarak, parametresi olarak `isEventPublished` ayarlanır `false` ve Operations Manager herhangi bir e-posta bildirimi almaz.
 
 ### <a name="location-3-4763810783315048-12213336020708084"></a>Konum 3 (47.63810783315048,-122.13336020708084)
 
-1. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin.  İstek için bir **istek adı** girin. Ad, *Konum 3*' ü kullanacağız. Bölge sınırlaması olan [coğrafi JSON verilerini karşıya yükle bölümünde](#upload-geofencing-geojson-data)oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
+1. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. BT *konumunu 3*yapın. Bölge sınırlaması olan [coğrafi JSON verilerini karşıya yükle bölümünde](#upload-geofencing-geojson-data)oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
-2. Oluşturucu sekmesinde http yöntemini **Al** ' ı seçin ve aşağıdaki URL 'yi girin, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla ve bölge sınırlaması olan `{udid}` `udid` [coğrafi JSON verilerini karşıya yükleme bölümüne](#upload-geofencing-geojson-data)kaydettiğinizden emin olun.
+2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. `{Azure-Maps-Primary-Subscription-key}`Birincil abonelik anahtarınızla ve `{udid}` Bölge sınırlaması olan `udid` [coğrafi JSON verilerini karşıya yükleme bölümüne](#upload-geofencing-geojson-data)kaydettiğiniz ile değiştirdiğinizden emin olun.
 
     ```HTTP
       https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
       ```
 
-3. **Gönder** düğmesine tıklayın. Aşağıdaki GeoJSON yanıt penceresinde görünür:
+3. **Gönder**’i seçin. Aşağıdaki GeoJSON yanıt penceresinde görünür:
 
     ```json
     {
@@ -390,22 +390,22 @@ Aşağıdaki bölümlerin her biri, donanımların beş farklı konum koordinas�
     }
     ````
 
-4. Yukarıdaki GeoJSON yanıtında, ekipman ana site bölge bölgesine kaldı, ancak alt site bölge bölge bölgesine girdi. Sonuç olarak, parametresi olarak `isEventPublished` ayarlanır `true` ve Operations Manager, ekipmanın bölge sınırlaması olduğunu belirten bir e-posta bildirimi alır.
+Önceki GeoJSON yanıtında, ekipman ana site bölge bölgesine kaldı, ancak alt site bölge bölge bölgesine girdi. Sonuç olarak, parametresi olarak `isEventPublished` ayarlanır `true` . Operations Manager, ekipmanın bölge olarak girildiğini belirten bir e-posta bildirimi alır.
 
-    >[!NOTE]
-    >Ekipman iş saatlerinden sonra alt siteye taşınmışsa, hiçbir olay yayımlanmaz ve Operations Manager hiçbir bildirim almaz.  
+>[!NOTE]
+>Ekipman iş saatlerinden sonra alt siteye taşınmışsa, hiçbir olay yayımlanmaz ve Operations Manager hiçbir bildirim almaz.  
 
 ### <a name="location-4-47637988-1221338344"></a>Konum 4 (47.637988,-122,1338344)
 
-1. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin.  İstek için bir **istek adı** girin. Ad, *konum 4*' ü kullanacağız. Bölge sınırlaması olan [coğrafi JSON verilerini karşıya yükle bölümünde](#upload-geofencing-geojson-data)oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
+1. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. Bu *konumu 4*yapın. Bölge sınırlaması olan [coğrafi JSON verilerini karşıya yükle bölümünde](#upload-geofencing-geojson-data)oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
-2. Oluşturucu sekmesinde http yöntemini **Al** ' ı seçin ve aşağıdaki URL 'yi girin, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla ve bölge sınırlaması olan `{udid}` `udid` [coğrafi JSON verilerini karşıya yükleme bölümüne](#upload-geofencing-geojson-data)kaydettiğinizden emin olun.
+2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. `{Azure-Maps-Primary-Subscription-key}`Birincil abonelik anahtarınızla ve `{udid}` Bölge sınırlaması olan `udid` [coğrafi JSON verilerini karşıya yükleme bölümüne](#upload-geofencing-geojson-data)kaydettiğiniz ile değiştirdiğinizden emin olun.
 
     ```HTTP
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. **Gönder** düğmesine tıklayın. Aşağıdaki GeoJSON yanıt penceresinde görünür:
+3. **Gönder**’i seçin. Aşağıdaki GeoJSON yanıt penceresinde görünür:
 
     ```json
     {
@@ -427,19 +427,19 @@ Aşağıdaki bölümlerin her biri, donanımların beş farklı konum koordinas�
     }
     ````
 
-4. Yukarıdaki GeoJSON yanıtında, ekipman ana site bölge bölgesine çıkımıştır, ancak alt site bölge bölge değerinden çıkıldı. Ancak, fark ederseniz `userTime` değer `expiredTime` bölge verilerinde tanımlananla daha sonra olur. Sonuç olarak, parametresi olarak `isEventPublished` ayarlanır `false` ve Operations Manager bir e-posta bildirimi almaz.
+Önceki GeoJSON yanıtında, ekipman ana site bölge bölgesine çıkımıştır, ancak alt site bölge bölge değerinden çıkıldı. Bununla birlikte, `userTime` değerin `expiredTime` bölge verilerinde tanımlandığına göre olduğuna dikkat edin. Sonuç olarak, parametresi olarak `isEventPublished` ayarlanır `false` ve Operations Manager bir e-posta bildirimi almaz.
 
 ### <a name="location-547637988-1221338344"></a>Konum 5 (47.637988,-122,1338344)
 
-1. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin.  İstek için bir **istek adı** girin. Ad, *konum 4*' ü kullanacağız. Bölge sınırlaması olan [coğrafi JSON verilerini karşıya yükle bölümünde](#upload-geofencing-geojson-data)oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
+1. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. BT *konumunu 5*yapın. Bölge sınırlaması olan [coğrafi JSON verilerini karşıya yükle bölümünde](#upload-geofencing-geojson-data)oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
-2. Oluşturucu sekmesinde http yöntemini **Al** ' ı seçin ve aşağıdaki URL 'yi girin, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla ve bölge sınırlaması olan `{udid}` `udid` [coğrafi JSON verilerini karşıya yükleme bölümüne](#upload-geofencing-geojson-data)kaydettiğinizden emin olun.
+2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. `{Azure-Maps-Primary-Subscription-key}`Birincil abonelik anahtarınızla ve `{udid}` Bölge sınırlaması olan `udid` [coğrafi JSON verilerini karşıya yükleme bölümüne](#upload-geofencing-geojson-data)kaydettiğiniz ile değiştirdiğinizden emin olun.
 
     ```HTTP
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. **Gönder** düğmesine tıklayın. Aşağıdaki GeoJSON yanıt penceresinde görünür:
+3. **Gönder**’i seçin. Aşağıdaki GeoJSON yanıt penceresinde görünür:
 
     ```json
     {
@@ -467,7 +467,7 @@ Aşağıdaki bölümlerin her biri, donanımların beş farklı konum koordinas�
     }
     ````
 
-4. Yukarıdaki GeoJSON yanıtında, ekipman ana site bölge bölgesine çıkış yaptı. Sonuç olarak, parametresi olarak `isEventPublished` ayarlanır `true` ve Operations Manager, ekipmanın bir bölge kapsamında çıkış yapıldığını belirten bir e-posta bildirimi alır.
+Önceki GeoJSON yanıtında, ekipman ana site bölge bölgesine çıkış yaptı. Sonuç olarak, parametresi olarak `isEventPublished` ayarlanır `true` ve Operations Manager, ekipmanın bir bölge kapsamında çıkış yapıldığını belirten bir e-posta bildirimi alır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -478,4 +478,4 @@ Aşağıdaki bölümlerin her biri, donanımların beş farklı konum koordinas�
 > [Event Grid ve Logic Apps kullanarak e-posta bildirimleri gönderin](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)
 
 > [!div class="nextstepaction"]
-> [Event Grid 'de desteklenen Olaylar işleyicileri](https://docs.microsoft.com/azure/event-grid/event-handlers).
+> [Event Grid 'de desteklenen olay işleyicileri](https://docs.microsoft.com/azure/event-grid/event-handlers)

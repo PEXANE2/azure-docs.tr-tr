@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 09/12/2020
 ms.author: aahi
-ms.openlocfilehash: e2c6fc739fa81e6eb7c98073e3575e4143d317b2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 185a6a26350f7803d109e26d8985510380b8cc16
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932976"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056600"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Metin Analizi API'si v3 dil desteği 
 
@@ -86,7 +86,10 @@ ms.locfileid: "88932976"
 | İsveççe               |     `sv`      |     ✓      |            |                                 |                    |
 | Türkçe               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Anahtar tümceciği ayıklama](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Anahtar ifade ayıklama](#tab/key-phrase-extraction)
+
+> [!NOTE]
+> 2020-07-01 ' den önceki Anahtar İfade Ayıklama model sürümlerinin 64 karakter sınırı vardır. Bu sınır sonraki model sürümlerinde yok.
 
 | Dil              | Dil kodu | v2 desteği | v3 desteği | V3 model sürümü ile başlayarak kullanılabilir: |       Notlar        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|

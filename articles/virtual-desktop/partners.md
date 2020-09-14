@@ -3,15 +3,15 @@ title: Windows sanal masaüstü iş ortağı tümleştirmeleri-Azure
 description: Windows sanal masaüstü iş ortakları ve bunlarla tümleştirme hakkında daha fazla bilgi edinin.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94da428862e1af66ee58e739b3ad3b5b95be3310
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612376"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056454"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -46,7 +46,8 @@ Microsoft ve adanmış bir Microsoft Azure ve Windows sanal masaüstü ortağıy
 
 10ZiG's World-sanal masaüstleri için Ince ve sıfır Istemci uç noktası cihazlarının ve yönetim yazılımlarının müşterileri için nasıl çalıştıkları Ölçülü Istemci donanımı, müşterilerin gereksinimlerine göre doğru Istemci cihazları aldığından emin olmak için tasarlanan, düşünceli bir şekilde oluşturulmuş avantaj özellikleri ve seçenekleri sunar. 10ZiG, sanal masaüstlerinde hem bulut içinde hem de dışında en iyi performansı sağlayan Windows tabanlı ve Linux tabanlı Istemcilerle müşteri ortamlarına uyum sağlamak için cihazlarını özelleştirir.
 
-- [İş ortağı Web sitesine gidin](https://www.10zig.com/about/microsoft-wvd).
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeR).
+- [İş ortağı Web sitesine gidin](https://www.10zig.com/about/microsoft-windows-virtual-desktop).
 
 ## <a name="automai"></a>Automaı
 
@@ -101,7 +102,7 @@ Windows sanal masaüstü ile kullanıldığında ControlUp, Windows sanal masaü
 
 Dell teknolojileri ' ince istemciler, Microsoft Azure ve Windows sanal masaüstü hizmetlerine erişmek için iyileştirilmiştir. İşbirliğine dayalı bilgi çalışanlarının grafik yoğunluklu güç kullanıcılarına yönelik ihtiyaçlarını karşılamak için Wyse ince istemciler, artan sayıda uygulama ve içerikten tam olarak yararlanabilmek için yüksek kaliteli bir bilgi işlem deneyimi sağlar. Boşluk sınırlamalı ortamlar için Ideal olan Wyse ince istemciler, insanların çok yönlü form faktörleri ve bağlama seçenekleri için geniş bir seçenek dizisi ile çalışma yöntemini uyarlar.
 
-Wyse ince istemciler, sınırlı saldırı yüzeyi, güvenlik uyumluluk standartları desteği ve gelişmiş Multi-Factor Authentication çözümleri için güvenlik ile tasarlanmıştır. Dell 'e özgü Wyse cesos sayesinde yüksek düzeyde güvenli ince istemciler dağıtın veya bulut uygulamalarına ve sanal çalışma alanlarına, Dell tarafından eklenen güvenlik özellikleriyle, kendini kanıtlamış bir tasarım ve Windows 10 IoT Enterprise ile güçlendirilmiş Wyse ölçülü Linux 'tan güvenli erişim yaşayın. Rol tabanlı yönetim için güvenli, HTTPS tabanlı iletişimler ve Active Directory kimlik doğrulaması ile Wyse Management Suite, Wyse uç noktalarını her zaman güncel tutar ve WMS Pro için mobil uygulama, önemli uyarıları görüntülemesine ve herhangi bir dokunmayla gerçek zamanlı komutlar gönderebilmesine olanak sağlar.
+Wyse ince istemciler, sınırlı saldırı yüzeyleri, güvenlik uyumluluk standartları desteği ve gelişmiş Multi-Factor Authentication çözümleri için güvenlik ile tasarlanmıştır. Windows 10 IoT Enterprise ve Dell tarafından eklenen güvenlik özellikleriyle yüksek düzeyde güvenli ince istemciler dağıtın. Rol tabanlı yönetim için güvenli, HTTPS tabanlı iletişimler ve Active Directory kimlik doğrulaması, Wyse Management Suite, Wyse uç noktalarını her zaman güncel tutar ve WMS Pro mobil uygulaması, bu BT 'nin herhangi bir dokunmayla ilgili kritik uyarıları görüntülemesine ve gerçek zamanlı komutlar göndermesini sağlar.
 
 - [İş ortağı Web sitesine gidin](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf).
 
@@ -190,6 +191,15 @@ Lakeside yazılımının dijital deneyim izleme çözümü olan SysTrack, perfor
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
 - [İş ortağı Web sitesine gidin](https://www.lakesidesoftware.com/assessments/wvd).
 
+## <a name="lenovo"></a>Lenovo
+
+![Lenovo logosu](./media/partners/lenovo.png)
+
+Lenovo Ince Istemciler, ağınıza, yerel bılgısayar özelliği ve gücüyle çalışan bir istemci bilgisayarın esnekliğini sağlar. Lenovo Ince Istemciler, Windows sanal masaüstü dağıtımlarının performansını ve sezgisel yönetilebilirlik sağlar ve şirketinizin ağını bir sonraki güvenilirlik düzeyine yükseltir. Her ölçülü Istemci, kuruluşların sorunsuz ve uygun maliyetli donanım yönetimi ve dağıtım seçenekleri sunarak hiçbir ek ücret ödemeden bir Lenovo Terminal Yöneticisi lisansıyla donatılmıştır. Bunlar da küçük ve çok yönlüdür ve var olan Lenovo dağıtımlarına kolayca eklenebilmektedir.
+
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FnaB).
+- [İş ortağı Web sitesine gidin](https://www.lenovo.com/us/en/desktops-and-all-in-ones/thinkcentre/m-series-thin-clients/c/M-Series-Thin-Clients).
+
 ## <a name="liquidware"></a>Liquidware
 
 ![Liquidware logosu](./media/partners/liquidware.png)
@@ -220,6 +230,17 @@ Oturum açma sunucusu, Windows sanal masaüstü ortamlarında uygulama performan
 
 - [İş ortağı Web sitesine gidin](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop).
 
+## <a name="nasuni"></a>Nasuni
+
+![Nasuni logosu](./media/partners/nasuni.png)
+
+Bulut dosya hizmetleri 'nin önde gelen sağlayıcısı ve bir üst Azure küresel ISV iş ortağı olan Nasuni Corp., modern sanal masaüstleri için modern dosya depolama çözümü olarak Nasuni Software for-Service platformunu sunmaktadır. Nasuni, Azure Blob depolama ile birleştirildiğinde birincil dosya depolama (NAS), dosya yedekleme, olağanüstü durum kurtarma ve çapraz bölge dosya eşitlemesini tek bir birleştirilmiş çözümde birleştirir. Nasuni sayesinde kuruluşlar, daha fazla kullanım durumu ve daha fazla Azure bölgesinde Windows sanal masaüstlerini dağıtabilir, yönetimi basitleştirir ve iş sürekliliği sağlayabilir. 
+
+Modern bir bulut VDı çözümü olan Windows sanal masaüstü, modern bulut dosya depolaması gerektirir. Geleneksel olarak, VDı dosya depolaması, şirket içinde bulunan ağa bağlı depolama (NAS) ve dosya sunucusu donanımını ve dosya yedeklemeleri, geri yükleme ve olağanüstü durum kurtarma sağlamak için gereken teknolojiyi temel alır. Bu geleneksel yaklaşımlar, kolayca ölçeklenebilmek ve yönetmeniz ve kolayca ölçeklendirilmesi için pahalıdır, karmaşıktır. Ayrıca, Azure 'a ve şirket içi dosya depolama alanına bağlı masaüstleri arasında fiziksel uzaklık ve yavaş WAN bağlantıları nedeniyle Windows sanal masaüstü gibi modern bir bulut VDı çözümü ile kullanılırsa gecikme süresi de tanıtılmaktadır. Azure için özel olarak oluşturulan bir dosya hizmetleri platformu olan Nasuni, sınırsız dosya depolama kapasitesi ve yüksek performanslı dosya erişimi sunar. Nasuni, tek bir genel ad alanına ekonomik ve yüksek performanslı dosya erişimi sunmak için aynı Azure bölgelerinde Windows sanal masaüstü ile birlikte bulunabilir. Nasuni, geleneksel NAS ve Windows dosya sunucularının maliyetinin bir bölümünde Windows sanal masaüstü dosya depolaması sunar ve maliyetleri daha da azaltmak ve BT kaynaklarını boşaltmak için yerleşik yedeklemeler ve olağanüstü durum kurtarma özellikleri içerir.
+
+- [İş ortağı Web sitesine gidin](https://www.nasuni.com/partner/microsoft/#wvd).
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS).
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio logosu](./media/partners/nerdio.png)
@@ -230,6 +251,17 @@ Nerdio, Azure kaynaklarını sağlamayı ve dağıtımı kolaylaştırmayı kola
 
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [İş ortağı Web sitesine gidin](https://getnerdio.com/windows-virtual-desktop/).
+
+## <a name="nexthink"></a>Nexdüşünmek
+
+![Nexdüşünme logosu](./media/partners/nexthink.png)
+
+Nexdüşünme, kuruluşların çalışanların dijital deneyimini ve üretkenliğini güvenle ölçmesine, yönetmesine ve iyileştirmesine yardımcı olan bir Windows sanal masaüstü katma değer sağlayıcısıdır. Dijital çalışan deneyimi 'nin bir sabiti sayesinde, nerede çalıştıysanız bağımsız olarak teknolojiden sürekli olarak iş yapma, güçlendirin ve bunlarla mücadele etme imkanını iyileştirebilirler. 
+
+Çalışma alanı kaynakları ile çözümler sunarak, Nexdüşünmek size Kullanıcı tabanınız için bağlam ve öngörüler sağlar. Nexdüşünmek 'nin güçlü deneyim yönetimi platformu, BT ekiplerinin Windows sanal masaüstüne geçişlerin planlanmasını ve zamanında ve başarılı bir şekilde eyleme koymasını sağlamanıza yardımcı olur.
+
+- [İş ortağı Web sitesine gidin](https://www.nexthink.com/initiative/desktop-virtualization/).
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeT).
 
 ## <a name="numecent"></a>Numesan
 
@@ -287,12 +319,16 @@ RDPSoft 'in uzak masaüstü Commander Çözümleri Windows sanal masaüstü yön
 
 ![Rimo3 logosu](./media/partners/rimo3.png)
 
-Rimo3, dağıtımı hızlandırarak ve sürekli değişiklik yönetimini geliştirerek Windows sanal masaüstü deneyimini geliştirir. Rimo3 BT ekiplerini, uygulama iş yüklerinin Azure geçişine yönelik hazırlık için uygulama portföyünüzü desteklemesi gereken bilgilerle donatılmıştır. Kullanıcılar, uygulamaları ve bunları hedef Windows sanal masaüstü çalışma alanında hızlı ve sorunsuz bir şekilde test edebilir. Kullanıcılar yeni uygulamaları ve güncelleştirmeleri kaydettiren her türlü değişikliğin etkisini de etkili bir şekilde anlayabilirler. Son olarak, BT yöneticileri Rimo3's akıllı duman test özelliğinden yararlanabilir ve kullanıcı oturumlarını kesintiye uğramadan işlevsellik testini otomatikleştirebilir.
+Rimo3, Windows sanal masaüstü deneyimini kullanımı kolay, ölçeklenebilir ve bulut tabanlı uygulama modernleştirme platformuyla geliştirir.
 
-Rimo3 kullanımı kolay, ölçeklenebilir, otomatik uygulama testi platformu sunar. Bu platform, üç uygulama testi temelleri için özellikleri içerir: uyumluluk, işlevsellik ve performans. Kuruluşların, liderlerin ve takımların iş sürekliliği geliştirmesine, değişikliği daha hızlı benimsemesine ve Kullanıcı deneyimini iyileştirmesine olanak tanır.
+Rimo3, BT ekipleri için Windows sanal masaüstüne geçiş için uygulama iş yüklerini bulmaya, modernleştirin ve yönetmeye yardımcı olur. Kullanıcılar, Windows Sanal Masaüstü ' ne ekleme veya MALTıYA modernize uygun adayları bulması için uygulama portföylerini otomatik olarak tarayabilir.  
+
+Kullanıcılar, uygulamaları doğru şekilde dönüştürmediğinde otomatik düzeltmeyi uygularken, uygulamalarını önceden test etmeyi, uygulamaları MALTıYA dönüştürme ve dönüştürme sonrası testi otomatik hale getirebilir. Sonuç, dağıtıma yönelik, dağıtıma hazırlı bir MSIX paketidir. Her Windows sanal masaüstü özelliği sürümü ve güncelleştirmesi sayesinde, kullanıcılar dağıtımdan önce uygulamaları otomatik olarak test edebilir, tam güven ve devam eden yönetim sağlar.
+
+Yönetilen hizmet sağlayıcıları için Rimo3, kenar boşluklarını geliştirmek üzere yönetilen hizmetler yeteneklerini genişletmenize yardımcı olur ve proje tabanlı geliri abonelik tabanlı yinelenen gelire köprülemek ve modernleştirin ve Windows sanal masaüstüne taşımak ve Masaüstü çalışma alanlarında düzenli güncelleştirmeleri yönetmek isteyen müşterilere değer eklemektir.
 
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B).
-- [İş ortağı Web sitesine gidin](https://rimo3.com/outcomes/).
+- [İş ortağı Web sitesine gidin](https://rimo3.com/windows-virtual-desktop/).
 
 ## <a name="sepago"></a>sepago
 
@@ -304,6 +340,17 @@ sepago 'nın yenilik ve geliştirme Laboratuvarı, büyük veri ve AI teknolojil
 
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
 - [İş ortağı Web sitesine gidin](https://www.sepago.de/en/).
+
+## <a name="ssh2"></a>SSH2 PUBLıC
+
+![SSH2 PUBLıC logosu](./media/partners/ssh2.png)
+
+SSH2 PUBLıC, BT ekiplerinizi Azure 'daki Windows Sanal Masaüstü ' ne güncel platformdan hızlandıran bir Windows sanal masaüstü katma hizmet sağlayıcıdır. SSH2 PUBLıC, geçiş sürecini kolaylaştırmak için uygulama yakalamayı hızlandırmasına olanak tanır. SSH2's App, çalışan uygulamaları uç noktada yakalar, Son Kullanıcı ortamlarının yürütüldüğü hızda kapsamlı bir adım değişikliği oluşturmak için güncelleştirme ve düzeltme sağlar. 
+
+App, son kullanıcının uygulamalarını etkileyebilecek tüm noktaların anlaşıldığından emin olmak için, çalışan uygulamalardan uygulama ayrıntılarını yakalar. ardından, bunları güncelleştirir ve yeni Windows sanal masaüstünüze dağıtır. AppGet, geçerli ortamınızdaki tüm uygulama tümleştirme noktalarını yakalayarak, BT kaynaklarını iyileştirme ve geçişlerinizi daha hızlı ve daha hızlı bir şekilde planlamak, böylece kuruluşların üretime daha hızlı bir şekilde yararlanmasını sağlama hızını sağlar.
+
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38).
+- [İş ortağı sayfasına gidin](https://www.ssh2.xyz/windows-virtual-desktop/).
 
 ## <a name="thinprint"></a>Ölçülü yazdırma
 
@@ -334,6 +381,7 @@ uberAgent şirketi de büyük sınırlara Windows sanal masaüstü dağıtımlar
 
 uberAgent, yalnızca veri toplamadığı Son Kullanıcı bilgi işlem için tasarlanan bir izleme ve analiz ürünüdür; müşterilere önemli bilgiler verir. uberAgent 'ın kendi ölçümleri vardır ve kullanıcı deneyiminin, uygulama performansının ve uç nokta güvenliğinin önemli yönlerini kapsayan, sistem Kullanıcı yoğunluğunu etkilemeden Windows sanal masaüstü Sanal makinelerinizle ilgili bilmeniz gereken her şeyi size söylemiş olursunuz. uberAgent sorun gidermeyi basitleştirir, boyutlandırılmasına yardımcı olur ve bilgi güvenliği açısından çok daha fazla bilgi sağlar.
 
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs39).
 - [İş ortağı Web sitesine gidin](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop).
 
 ## <a name="workspace-365"></a>Çalışma alanı 365

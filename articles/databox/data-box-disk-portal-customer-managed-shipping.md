@@ -2,24 +2,24 @@
 title: Microsoft Azure Data Box Disk kendinden yönetilen kargo | Verilerdeki Microsoft Docs
 description: Azure Data Box Disk cihazlar için kendi kendine yönetilen teslim iş akışını açıklar
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
-ms.author: twooley
-ms.openlocfilehash: f3292e2088397e332323bec71f9a5965eddd0fe0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 7b069d1bf16e8cbf4dfc245fbb3c66863cd0b994
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783238"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055589"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Azure portal Azure Data Box Disk için kendi kendine yönetilen dağıtımı kullanın
 
 Bu makalede, Azure Data Box Disk sipariş, çekme ve bırakma işlemleri için kendi kendine yönetilen sevkıyat görevleri açıklanmaktadır. Azure portal kullanarak Data Box Disk yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Azure Data Box disk sipariş](data-box-disk-deploy-ordered.md)ettiğinizde kendi kendine yönetilen sevkıyat bir seçenek olarak kullanılabilir. Otomatik olarak yönetilen kargo yalnızca aşağıdaki bölgelerde kullanılabilir:
 

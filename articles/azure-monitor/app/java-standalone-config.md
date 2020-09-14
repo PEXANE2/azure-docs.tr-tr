@@ -4,12 +4,12 @@ description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uyg
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ca3094197deb7c74ba9b51422a78ee0f5d3687d2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374295"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056107"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Yapılandırma seçenekleri-Azure Izleyici için Java tek başına aracı Application Insights
 
@@ -38,8 +38,8 @@ Varsayılan olarak, Application Insights Java 3,0 Önizlemesi yapılandırma dos
 
 Kendi yapılandırma dosya yolunuzu aşağıdakilerden birini kullanarak belirtebilirsiniz
 
-* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`ortam değişkeni veya
-* `applicationinsights.configurationFile`Java sistem özelliği
+* `APPLICATIONINSIGHTS_CONFIGURATION_FILE` ortam değişkeni veya
+* `applicationinsights.configurationFile` Java sistem özelliği
 
 Göreli bir yol belirtirseniz, bulunduğu dizine göre çözümlenir `applicationinsights-agent-3.0.0-PREVIEW.5.jar` .
 
@@ -113,18 +113,18 @@ Bu eşiği değiştirmek istiyorsanız:
 
 Bunlar `threshold` , dosyada belirtebileceğiniz geçerli değerlerdir `ApplicationInsights.json` ve farklı günlük çerçeveleri genelinde günlük düzeylerine nasıl karşılık gelmektedir:
 
-| `threshold`  | Log4J  | Logback | TEM     |
-|--------------|--------|---------|---------|
-| KAPALI          | KAPALI    | KAPALI     | KAPALI     |
-| HATAYA        | HATAYA  | HATA   | OLAN  |
-| HATA/ÖNEMLI | HATA  | HATA   | OLAN  |
-| UYAR/UYARı | UYARıR   | UYARıR    | UYARI |
-| BILGISINE         | BILGISINE   | BILGISINE    | BILGISINE    |
-| KURULUMUNUN       | HATA AYIKLAMA  | HATA AYIKLAMA   | KURULUMUNUN  |
-| HATA AYıKLAMA/INCE   | HATA AYIKLAMA  | HATA AYIKLAMA   | AYRıNTı    |
-| ZARIF        | HATA AYIKLAMA  | HATA AYIKLAMA   | ZARIF   |
-| IZLEME/FINEST | TRACE  | TRACE   | FıNEST  |
-| ALL          | ALL    | ALL     | ALL     |
+| eşik değeri   | Log4J  | Logback | TEM     |
+|-------------------|--------|---------|---------|
+| KAPALI               | KAPALI    | KAPALI     | KAPALI     |
+| HATAYA             | HATAYA  | HATA   | OLAN  |
+| HATA (veya cıddı) | HATA  | HATA   | OLAN  |
+| UYAR (veya uyarı) | UYARıR   | UYARıR    | UYARI |
+| BILGISINE              | BILGISINE   | BILGISINE    | BILGISINE    |
+| KURULUMUNUN            | HATA AYIKLAMA  | HATA AYIKLAMA   | KURULUMUNUN  |
+| Hata ayıklama (veya AYRıNTıLı)   | HATA AYIKLAMA  | HATA AYIKLAMA   | AYRıNTı    |
+| ZARIF             | HATA AYIKLAMA  | HATA AYIKLAMA   | ZARIF   |
+| Izleme (veya FINEST) | TRACE  | TRACE   | FıNEST  |
+| ALL               | ALL    | ALL     | ALL     |
 
 ## <a name="jmx-metrics"></a>JMX ölçümleri
 
@@ -134,7 +134,7 @@ Yakalamaya ilgilendiğiniz bazı JMX ölçümleri varsa:
 {
   "instrumentationSettings": {
     "preview": {
-        "jmxMetrics": [
+      "jmxMetrics": [
         {
           "objectName": "java.lang:type=ClassLoading",
           "attribute": "LoadedClassCount",
@@ -181,9 +181,9 @@ Varsayılan olarak, Application Insights Java 3,0 Preview, 15 dakikada bir sinya
 {
   "instrumentationSettings": {
     "preview": {
-        "heartbeat": {
-            "intervalSeconds": 60
-        }
+      "heartbeat": {
+        "intervalSeconds": 60
+      }
     }
   }
 }
@@ -205,13 +205,13 @@ Maliyeti azaltmanız gerekiyorsa örnekleme yararlı olur.
 {
   "instrumentationSettings": {
     "preview": {
-        "sampling": {
-            "fixedRate": {
-                "percentage": 10
-            }
-          }
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10
         }
+      }
     }
+  }
 }
 ```
 
@@ -244,10 +244,10 @@ Varsayılan olarak, `warn` Bu yapılandırmaya karşılık gelen ve düzeyi olan
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "console",
-            "level": "WARN"
-        }
+      "selfDiagnostics": {
+        "destination": "console",
+        "level": "WARN"
+      }
     }
   }
 }
@@ -261,12 +261,12 @@ Konsola kaydetmek yerine bir dosyaya oturum açmak istiyorsanız:
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "file",
-            "directory": "/var/log/applicationinsights",
-            "level": "WARN",
-            "maxSizeMB": 10
-        }    
+      "selfDiagnostics": {
+        "destination": "file",
+        "directory": "/var/log/applicationinsights",
+        "level": "WARN",
+        "maxSizeMB": 10
+      }
     }
   }
 }

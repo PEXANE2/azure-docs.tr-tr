@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f5116b3dfd53c5272ef7bb11d1719b7ee62416c4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762326"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055801"
 ---
 # <a name="about-virtual-hub-routing"></a>Sanal merkez yönlendirmesi hakkında
 
@@ -30,7 +30,7 @@ Aşağıdaki bölümlerde, sanal hub yönlendirmesinde temel kavramlar açıklan
 
 Bir sanal hub yol tablosu, bir veya daha fazla yol içerebilir. Rota, adını, etiketini, hedef türünü, hedef önekleri listesini ve bir paketin yönlendirileceği sonraki atlama bilgilerini içerir. Bir **bağlantı** genellikle bir rota tablosuna ilişkili veya yayan bir yönlendirme yapılandırmasına sahip olur
 
-### <a name="connection"></a><a name="connection"></a>Bağlanma
+### <a name="connection"></a><a name="connection"></a>Bağlantı
 
 Bağlantılar, yönlendirme yapılandırmasına sahip Kaynak Yöneticisi kaynaklardır. Dört bağlantı türü şunlardır:
 
@@ -87,6 +87,7 @@ Sanal WAN yönlendirmeyi yapılandırırken lütfen aşağıdakileri göz önün
 * Azure Güvenlik Duvarı 'Nı birden çok bölgede kullanırken, tüm bağlı olan sanal ağların aynı yol tablosuyla ilişkilendirilmesi gerekir. Örneğin, Azure güvenlik duvarından geçiş yaparken sanal ağların bir alt kümesine sahip olma, Azure Güvenlik duvarını aynı sanal hub 'da atlayarak başka sanal ağlarda atlama mümkün değildir.
 * Her VNet bağlantısı için tek bir sonraki atlama IP 'si yapılandırılabilir.
 * Sanal hub, 0.0.0.0/0 ve sonraki atlama sanal ağ bağlantısı (veya VNet bağlantısı 'ndaki bir gereç IP 'si) için statik yolu desteklemez
+* 0.0.0.0/0 rotası ile ilgili tüm bilgiler, yerel bir hub 'ın yol tablosuna göre belirlenir. Bu yol hub 'larda yayılmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

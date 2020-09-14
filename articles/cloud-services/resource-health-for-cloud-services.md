@@ -3,17 +3,16 @@ title: Cloud Services için Kaynak Durumu (klasik)
 description: Bu makalede, Microsoft Azure Cloud Services (klasik) için Kaynak Durumu denetimi (RHC) desteği ele bir konuşuyor
 services: cloud-services
 author: tanmaygore
-manager: vashan
 ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: 969390b0988c59940cb210c14821cbee42edfa7a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89665129"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056072"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Azure Cloud Services için Kaynak Durumu denetimi (RHC) desteği (klasik)
 Bu makalede, [Microsoft Azure Cloud Services (klasik)](https://azure.microsoft.com/services/cloud-services) Için kaynak durumu denetimi (RHC) desteği ele bir konuşuyor
@@ -22,6 +21,7 @@ Bulut hizmetleri için [Azure Kaynak durumu](https://docs.microsoft.com/azure/se
 
 Azure durum, geniş bir Azure müşterisi kümesini etkileyen sorunlar hakkında raporlar. Kaynak Durumu kaynaklarınızın sistem durumunun kişiselleştirilmiş bir panosunu sağlar. Kaynak Durumu, Azure hizmet sorunları nedeniyle kaynaklarınızın kullanılamadığı tüm süreleri gösterir. Bu veriler, bir SLA 'nın ihlal edildiğini görmenizi kolaylaştırır.
 
+:::image type="content" source="media/cloud-services-allocation-failure/rhc-blade-cloud-services.png" alt-text="Görüntü Azure portal kaynak sistem durumu denetimi dikey penceresini gösterir.":::
 
 ## <a name="how-health-is-checked-and-reported"></a>Sağlık nasıl denetlenir ve bildirilir?
 Kaynak sistem durumu bir dağıtım veya rol düzeyinde bildirilir. Durum denetimi rol örneği düzeyinde gerçekleşir, durumu topladık ve rol düzeyinde raporlarız. Örneğin Tüm rol örnekleri varsa, rol durumu kullanılabilir olur. Benzer şekilde, tüm rollerin sistem durumunu toplar ve dağıtım düzeyinde rapor edin. Örneğin Tüm roller varsa dağıtım durumu kullanılabilir hale gelir. 

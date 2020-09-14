@@ -10,16 +10,22 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 13129d5a2540548b8532b14593de60fdca73efef
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: a87769e1b67187a15daf3a256a2c1f4c79e10040
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560771"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055529"
 ---
 # <a name="whats-new-in-custom-vision"></a>Özel Görüntü İşleme yenilikleri
 
-Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler notları, Videoları, blog yayınlarını ve diğer bilgi türlerini bırakabilir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
+Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videolar, blog gönderileri ve diğer bilgi türleri olabilir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
+
+## <a name="july-2020"></a>Temmuz 2020
+
+### <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
+
+Özel Görüntü İşleme, Azure kaynaklarına bireysel erişimi yönetmeye yönelik bir yetkilendirme sistemi olan Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) destekler. Özel Görüntü İşleme projelerinize erişimi yönetmeyi öğrenmek için bkz. [rol tabanlı erişim denetimi](./role-based-access-control.md).
 
 ## <a name="september-2019"></a>Eylül 2019
 

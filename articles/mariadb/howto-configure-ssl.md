@@ -7,19 +7,24 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d8f01d0b9ba3394d33b9bd6e9f0b3f13fff2f844
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1b7127fd4807e1ddd3d5181d73c7f8e77f10cf77
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021383"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055994"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'na güvenli bir şekilde bağlanmak üzere uygulamanızda SSL bağlantısı yapılandırma
 MariaDB için Azure veritabanı, MariaDB sunucusu için Azure veritabanınızı Güvenli Yuva Katmanı (SSL) kullanarak istemci uygulamalarına bağlamayı destekler. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur.
 
 ## <a name="obtain-ssl-certificate"></a>SSL sertifikası al
+
+
 SSL üzerinden, MariaDB sunucusu için Azure veritabanı ile iletişim kurmak için gereken sertifikayı indirin [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) ve sertifika dosyasını yerel sürücünüze kaydedin (Bu öğretici örneğin c:\ssl kullanır).
 **Microsoft Internet Explorer ve Microsoft Edge için:** İndirme tamamlandıktan sonra, sertifikayı BaltimoreCyberTrustRoot. CRT. ped olarak yeniden adlandırın.
+
+> [!IMPORTANT] 
+> SSL kök sertifikası, 26 Ekim 2020 (10/26/2020) tarihinden itibaren dolacak şekilde ayarlanmıştır. Lütfen uygulamanızı [yeni sertifikayı](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)kullanacak şekilde güncelleştirin. Daha fazla bilgi için bkz. [planlı sertifika güncelleştirmeleri](concepts-certificate-rotation.md)
 
 Bağımsız bulutlarda bulunan sunucular için sertifikalar için aşağıdaki bağlantılara bakın: [Azure Kamu](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem), [Azure Çin](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)ve [Azure Almanya](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).
 
@@ -49,9 +54,10 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 > Windows üzerinde MySQL komut satırı arabirimini kullanırken bir hata alabilirsiniz `SSL connection error: Certificate signature check failed` . Bu gerçekleşirse, `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametreleri ile değiştirin `--ssl` .
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>Azure 'da SSL bağlantılarını zorunlu tutma 
+
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 Azure portal kullanarak, MariaDB sunucusu için Azure veritabanı ' nı ziyaret edin ve **bağlantı güvenliği**' ne tıklayın. **SSL bağlantısını zorla** ayarını etkinleştirmek veya devre dışı bırakmak için iki durumlu düğmeyi kullanın ve ardından **Kaydet**' e tıklayın. Microsoft, gelişmiş güvenlik için her zaman **SSL bağlantısını zorla** ayarını etkinleştirmenizi önerir.
-![Enable-SSL](./media/howto-configure-ssl/enable-ssl.png)
+![MariaDB sunucusu için Enable-SSL](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 Azure CLı 'de sırasıyla etkin veya devre dışı değerler kullanarak **SSL zorlama** parametresini etkinleştirebilir veya devre dışı bırakabilirsiniz.

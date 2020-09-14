@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62628e4b85af96fd9c9ba4174d22d3f1f7c6540a
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 0a861a038cefec56dfaaed1aca443f494dc82680
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006032"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055767"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -96,7 +96,7 @@ Tüm kurumsal Azure DevOps ilkeleri, bu roldeki kullanıcılar tarafından yöne
 
 ### <a name="azure-information-protection-administrator"></a>[Azure Information Protection Yöneticisi](#azure-information-protection-administrator-permissions)
 
-Bu role sahip olan kullanıcılar Azure Information Protection hizmetinde tüm izinlere sahiptir. Bu rol, Azure Information Protection ilkesi için etiketlerin yapılandırılmasını, koruma şablonlarının yönetilmesini ve korumanın etkinleşmesini sağlar. Bu rol, kimlik koruma Merkezi, Privileged Identity Management, Office 365 hizmet durumunu Izleme veya Office 365 güvenlik & Uyumluluk Merkezi 'nde herhangi bir izin vermez.
+Bu role sahip olan kullanıcılar Azure Information Protection hizmetinde tüm izinlere sahiptir. Bu rol, Azure Information Protection ilkesi için etiketlerin yapılandırılmasını, koruma şablonlarının yönetilmesini ve korumanın etkinleşmesini sağlar. Bu rol, kimlik koruma Merkezi, Privileged Identity Management, Izleme Microsoft 365 hizmet durumu veya Office 365 güvenlik & Uyumluluk Merkezi 'nde herhangi bir izin vermez.
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C ıEF anahtar kümesi Yöneticisi](#b2c-ief-keyset-administrator-permissions)
 
@@ -130,7 +130,7 @@ Bu roldeki kullanıcılar, Azure AD 'de cihazları etkinleştirebilir, devre dı
 
 ### <a name="compliance-administrator"></a>[Uyumluluk Yöneticisi](#compliance-administrator-permissions)
 
-Bu role sahip olan kullanıcılar Microsoft 365 Uyumluluk Merkezi 'nde uyumlulukla ilgili özellikleri yönetme izinlerine sahiptir Microsoft 365 Yönetim Merkezi, Azure ve Office 365 güvenlik & Uyumluluk Merkezi. Atanan, Exchange Yönetim Merkezi ve takımlar & Skype Kurumsal Yönetici merkezlerinin içindeki tüm özellikleri yönetebilir ve Azure ve Microsoft 365 için destek biletleri oluşturabilir. [Office 365 Yönetici rolleri hakkında](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)daha fazla bilgi bulabilirsiniz. [Bu belgede](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center?view=o365-worldwide#permissions-needed-to-use-features-in-the-security--compliance-center) , uyumluluk Yöneticisi ve uyumluluk veri Yöneticisi arasındaki farklara ilişkin ayrıntılar bulunur. 
+Bu role sahip olan kullanıcılar Microsoft 365 Uyumluluk Merkezi 'nde uyumlulukla ilgili özellikleri yönetme izinlerine sahiptir Microsoft 365 Yönetim Merkezi, Azure ve Office 365 güvenlik & Uyumluluk Merkezi. Atanan, Exchange Yönetim Merkezi ve takımlar & Skype Kurumsal Yönetici merkezlerinin içindeki tüm özellikleri yönetebilir ve Azure ve Microsoft 365 için destek biletleri oluşturabilir. [Microsoft 365 Yönetici rolleri hakkında](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)daha fazla bilgi bulabilirsiniz.
 
 İçinde | Yapılabilir
 ----- | ----------
@@ -195,17 +195,17 @@ Bu role sahip olan kullanıcılar, hizmet mevcut olduğunda Microsoft Dynamics 3
 
 ### <a name="exchange-administrator"></a>[Exchange Yöneticisi](#exchange-service-administrator-permissions)
 
-Bu role sahip olan kullanıcılar, hizmet mevcut olduğunda Microsoft Exchange Online içinde genel izinlere sahiptir. Ayrıca tüm Microsoft 365 gruplarını oluşturup yönetebilir, destek biletlerini yönetebilir ve hizmet durumunu izleyebilir. [Office 365 Yönetici rolleri hakkında](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)daha fazla bilgi.
+Bu role sahip olan kullanıcılar, hizmet mevcut olduğunda Microsoft Exchange Online içinde genel izinlere sahiptir. Ayrıca tüm Microsoft 365 gruplarını oluşturup yönetebilir, destek biletlerini yönetebilir ve hizmet durumunu izleyebilir. [Yönetici rolleri hakkında](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)daha fazla bilgi Microsoft 365.
 
 > [!NOTE]
 > Microsoft Graph API ve Azure AD PowerShell 'de, bu rol "Exchange hizmeti Yöneticisi" olarak tanımlanır. [Azure Portal](https://portal.azure.com), "Exchange Yöneticisi" dir. [Exchange Yönetim Merkezi](https://go.microsoft.com/fwlink/p/?LinkID=529144)'Nde "Exchange Online Yöneticisi" dir.
 
 
-### <a name="external-id-user-flow-administrator"></a>[Dış kimlik Kullanıcı akış Yöneticisi](#external-id-user-flow-administrator-permissions)
+### <a name="external-id-user-flow-administrator"></a>[Dış KIMLIK Kullanıcı akış Yöneticisi](#external-id-user-flow-administrator-permissions)
 
 Bu role sahip kullanıcılar, Azure portal Kullanıcı akışları oluşturabilir ve yönetebilir ("yerleşik" ilkeleri olarak da bilinir). Bu kullanıcılar HTML/CSS/JavaScript içeriğini özelleştirebilir, MFA gereksinimlerini değiştirebilir, belirteçteki talepleri seçebilir, API bağlayıcılarını yönetebilir ve Azure AD kuruluşunda tüm Kullanıcı akışları için oturum ayarlarını yapılandırabilir. Diğer taraftan, bu rol, Kullanıcı verilerini gözden geçirme veya kuruluş şemasına dahil olan özniteliklerde değişiklik yapma özelliğini içermez. Kimlik deneyimi çerçevesi ilkelerine (özel ilkeler olarak da bilinir) yapılan değişiklikler Ayrıca bu rolün kapsamı dışındadır.
 
-### <a name="external-id-user-flow-attribute-administrator"></a>[Dış kimlik Kullanıcı akışı öznitelik Yöneticisi](#external-id-user-flow-attribute-administrator-permissions)
+### <a name="external-id-user-flow-attribute-administrator"></a>[Dış KIMLIK Kullanıcı akışı öznitelik Yöneticisi](#external-id-user-flow-attribute-administrator-permissions)
 
 Bu role sahip kullanıcılar, Azure AD kuruluşundaki tüm Kullanıcı akışları için kullanılabilir özel öznitelikler ekler veya siler.Bu nedenle, bu role sahip olan kullanıcılar Son Kullanıcı şemasına değiştirebilir veya yeni öğe ekleyebilir, tüm Kullanıcı akışlarının davranışını etkileyebilir ve son kullanıcılar ve son olarak uygulamalara talepler olarak gönderilebilir.Bu rol Kullanıcı akışlarını düzenleyemez.
 
@@ -307,7 +307,7 @@ Bu roldeki kullanıcılar, veri gizlilik iletileri dahil olmak üzere Ileti merk
 
 ### <a name="message-center-reader"></a>[İleti Merkezi okuyucusu](#message-center-reader-permissions)
 
-Bu roldeki kullanıcılar, Exchange, Intune ve Microsoft ekipleri gibi yapılandırılmış hizmetlerde kuruluşları için [Office 365 İleti merkezindeki](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) bildirimleri ve danışmanlık sistem durumu güncelleştirmelerini izleyebilir. İleti Merkezi okuyucuları, Office 365 ' de ileti merkezi gönderilerini bir haftalık e-posta ile alırlar. Azure AD 'de, bu role atanan kullanıcılar yalnızca kullanıcılar ve gruplar gibi Azure AD hizmetlerinde salt okuma erişimine sahip olur. Bu rolün destek biletlerini görüntüleme, oluşturma veya yönetme erişimi yok.
+Bu roldeki kullanıcılar, Exchange, Intune ve Microsoft ekipleri gibi yapılandırılmış hizmetlerde kuruluş için [ileti merkezindeki](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) bildirimleri ve danışmanlık sistem durumu güncelleştirmelerini izleyebilir. İleti Merkezi okuyucuları, e-posta, güncelleştirme ve Microsoft 365 İleti Merkezi gönderilerini paylaşabilir. Azure AD 'de, bu role atanan kullanıcılar yalnızca kullanıcılar ve gruplar gibi Azure AD hizmetlerinde salt okuma erişimine sahip olur. Bu rolün destek biletlerini görüntüleme, oluşturma veya yönetme erişimi yok.
 
 ### <a name="modern-commerce-user"></a>[Modern ticari Kullanıcı](#modern-commerce-user-permissions)
 
@@ -328,10 +328,10 @@ Modern ticaret Kullanıcı rolü bir kullanıcıdan atanmadıklarında, Microsof
 
 ### <a name="network-administrator"></a>[Ağ Yöneticisi](#network-administrator-permissions)
 
-Bu roldeki kullanıcılar, Kullanıcı konumlarından ağ telemetrisini temel alan Microsoft 'un ağ çevre mimarisi önerilerini gözden geçirebilir. Office 365 için ağ performansı, genellikle kullanıcı konumlarına özgü, dikkatli bir kurumsal müşteri ağ çevre mimarisine dayanır. Bu rol, geliştirilmiş telemetri ölçümlerini ve tasarım önerilerini kolaylaştırmak için, bulunan Kullanıcı konumlarının düzenlenmesine ve bu konumların ağ parametrelerinin yapılandırılmasını sağlar
+Bu roldeki kullanıcılar, Kullanıcı konumlarından ağ telemetrisini temel alan Microsoft 'un ağ çevre mimarisi önerilerini gözden geçirebilir. Microsoft 365 için ağ performansı, genellikle kullanıcı konumlarına özgü, dikkatli kurumsal müşteri ağ çevre mimarisine bağımlıdır. Bu rol, geliştirilmiş telemetri ölçümlerini ve tasarım önerilerini kolaylaştırmak için, bulunan Kullanıcı konumlarının düzenlenmesine ve bu konumların ağ parametrelerinin yapılandırılmasını sağlar
 ### <a name="office-apps-administrator"></a>[Office uygulamaları Yöneticisi](#office-apps-administrator-permissions)
 
-Bu roldeki kullanıcılar, Office 365 uygulamalarının bulut ayarlarını yönetebilir. Bu, bulut ilkelerinin yönetimi, self servis indirme yönetimi ve Office uygulamalarıyla ilgili raporu görüntüleme imkanını içerir. Bu rol Ayrıca, destek biletlerini yönetme ve ana yönetim merkezinde hizmet durumunu izleme özelliğini sağlar. Bu role atanan kullanıcılar, Office uygulamalarındaki yeni özelliklerin iletişimini de yönetebilir. 
+Bu roldeki kullanıcılar, Microsoft 365 uygulamalarının bulut ayarlarını yönetebilir. Bu, bulut ilkelerinin yönetimi, self servis indirme yönetimi ve Office uygulamalarıyla ilgili raporu görüntüleme imkanını içerir. Bu rol Ayrıca, destek biletlerini yönetme ve ana yönetim merkezinde hizmet durumunu izleme özelliğini sağlar. Bu role atanan kullanıcılar, Office uygulamalarındaki yeni özelliklerin iletişimini de yönetebilir. 
 
 ### <a name="partner-tier1-support"></a>[Partner Katman1 desteği](#partner-tier1-support-permissions)
 
@@ -399,7 +399,7 @@ Bu roldeki kullanıcılar, Microsoft 365 Yönetim Merkezi 'nde yer işaretleri, 
 
 ### <a name="security-administrator"></a>[Güvenlik Yöneticisi](#security-administrator-permissions)
 
-Bu role sahip olan kullanıcılar, Microsoft 365 Güvenlik Merkezi, Azure Active Directory Kimlik Koruması, Azure Active Directory kimlik doğrulaması, Azure Information Protection ve Office 365 güvenlik & Uyumluluk Merkezi 'ndeki güvenlikle ilgili özellikleri yönetme iznine sahiptir. Office [365 güvenlik & Uyumluluk Merkezi 'Nde](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)Office 365 izinleri hakkında daha fazla bilgi bulabilirsiniz.
+Bu role sahip olan kullanıcılar, Microsoft 365 Güvenlik Merkezi, Azure Active Directory Kimlik Koruması, Azure Active Directory kimlik doğrulaması, Azure Information Protection ve Office 365 güvenlik & Uyumluluk Merkezi 'ndeki güvenlikle ilgili özellikleri yönetme iznine sahiptir. Office 365 izinleri hakkında daha fazla bilgi [Için güvenlik & Uyumluluk Merkezi ' nde izinler](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)bulabilirsiniz.
 
 İçinde | Yapılabilir
 --- | ---
@@ -412,13 +412,13 @@ Windows Defender ATP ve EDR | Rol atama<br>Makine gruplarını yönetme<br>Uç n
 [Intune](/intune/role-based-access-control) | Kullanıcı, cihaz, kayıt, yapılandırma ve uygulama bilgilerini görüntüler<br>Intune üzerinde değişiklik yapılamıyor
 [Cloud App Security](/cloud-app-security/manage-admins) | Yönetici ekleme, ilke ve ayarlar ekleme, günlükleri karşıya yükleme ve idare eylemleri gerçekleştirme
 [Azure Güvenlik Merkezi](../../role-based-access-control/built-in-roles.md) | Güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, güvenlik ilkelerini düzenleyebilir, uyarıları ve önerileri görüntüleyebilir, uyarıları ve önerileri kapatabilir
-[Office 365 hizmet durumu](/office365/enterprise/view-service-health) | Office 365 hizmetlerinin sistem durumunu görüntüleme
+[Microsoft 365 hizmet durumu](/office365/enterprise/view-service-health) | Microsoft 365 hizmetlerinin sistem durumunu görüntüleme
 [Akıllı kilitleme](../authentication/howto-password-smart-lockout.md) | Başarısız oturum açma olayları gerçekleştiğinde, loctattatların eşiğini ve süresini tanımlayın.
 [Parola koruması](../authentication/concept-password-ban-bad.md) | Özel yasaklanmış parola listesini veya şirket içi parola korumasını yapılandırın.
 
 ### <a name="security-operator"></a>[Güvenlik operatörü](#security-operator-permissions)
 
-Bu role sahip kullanıcılar, uyarıları yönetebilir ve güvenlikle ilgili özellikler üzerinde Microsoft 365 Güvenlik Merkezi, Azure Active Directory, kimlik koruması Privileged Identity Management ve Office 365 güvenlik & Uyumluluk Merkezi 'ndeki tüm bilgiler dahil olmak üzere genel salt okuma erişimine sahip olabilir. Office [365 güvenlik & Uyumluluk Merkezi 'Nde](/office365/securitycompliance/permissions-in-the-security-and-compliance-center)Office 365 izinleri hakkında daha fazla bilgi bulabilirsiniz.
+Bu role sahip kullanıcılar, uyarıları yönetebilir ve güvenlikle ilgili özellikler üzerinde Microsoft 365 Güvenlik Merkezi, Azure Active Directory, kimlik koruması Privileged Identity Management ve Office 365 güvenlik & Uyumluluk Merkezi 'ndeki tüm bilgiler dahil olmak üzere genel salt okuma erişimine sahip olabilir. Office 365 izinleri hakkında daha fazla bilgi [Için güvenlik & Uyumluluk Merkezi ' nde izinler](/office365/securitycompliance/permissions-in-the-security-and-compliance-center)bulabilirsiniz.
 
 İçinde | Yapılabilir
 --- | ---
@@ -429,11 +429,11 @@ Kimlik koruma Merkezi | Güvenlik okuyucusu rolünün tüm izinleri<br>Ayrıca, 
 Windows Defender ATP ve EDR | Güvenlik okuyucusu rolünün tüm izinleri<br>Güvenlik uyarılarını görüntüleyin, araştırın ve yanıtlayın
 [Intune](/intune/role-based-access-control) | Güvenlik okuyucusu rolünün tüm izinleri
 [Cloud App Security](/cloud-app-security/manage-admins) | Güvenlik okuyucusu rolünün tüm izinleri
-[Office 365 hizmet durumu](/office365/enterprise/view-service-health) | Office 365 hizmetlerinin sistem durumunu görüntüleme
+[Microsoft 365 hizmet durumu](/office365/enterprise/view-service-health) | Microsoft 365 hizmetlerinin sistem durumunu görüntüleme
 
 ### <a name="security-reader"></a>[Güvenlik Okuyucusu](#security-reader-permissions)
 
-Bu role sahip olan kullanıcılar, Microsoft 365 Güvenlik Merkezi, Azure Active Directory, kimlik koruması, Privileged Identity Management ve Azure Active Directory oturum açma raporlarını ve denetim günlüklerini okuma ve Office 365 güvenlik & Uyumluluk Merkezi 'ndeki tüm bilgiler dahil olmak üzere güvenlikle ilgili özellik üzerinde genel salt okuma erişimine sahiptir. Office [365 güvenlik & Uyumluluk Merkezi 'Nde](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)Office 365 izinleri hakkında daha fazla bilgi bulabilirsiniz.
+Bu role sahip olan kullanıcılar, Microsoft 365 Güvenlik Merkezi, Azure Active Directory, kimlik koruması, Privileged Identity Management ve Azure Active Directory oturum açma raporlarını ve denetim günlüklerini okuma ve Office 365 güvenlik & Uyumluluk Merkezi 'ndeki tüm bilgiler dahil olmak üzere güvenlikle ilgili özellik üzerinde genel salt okuma erişimine sahiptir. Office 365 izinleri hakkında daha fazla bilgi [Için güvenlik & Uyumluluk Merkezi ' nde izinler](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)bulabilirsiniz.
 
 İçinde | Yapılabilir
 --- | ---
@@ -445,11 +445,11 @@ Windows Defender ATP ve EDR | Uyarıları görüntüleyin ve araştırın. Windo
 [Intune](/intune/role-based-access-control) | Kullanıcı, cihaz, kayıt, yapılandırma ve uygulama bilgilerini görüntüler. Intune’da değişiklik yapamaz.
 [Cloud App Security](/cloud-app-security/manage-admins) | Salt okuma izinlerine sahiptir ve uyarıları yönetebilir
 [Azure Güvenlik Merkezi](../../role-based-access-control/built-in-roles.md) | Önerileri ve uyarıları görüntüleyebilir, güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz
-[Office 365 hizmet durumu](/office365/enterprise/view-service-health) | Office 365 hizmetlerinin sistem durumunu görüntüleme
+[Microsoft 365 hizmet durumu](/office365/enterprise/view-service-health) | Microsoft 365 hizmetlerinin sistem durumunu görüntüleme
 
 ### <a name="service-support-administrator"></a>[Hizmet desteği Yöneticisi](#service-support-administrator-permissions)
 
-Bu role sahip olan kullanıcılar, Azure ve Office 365 hizmetleri için Microsoft ile destek istekleri açabilir ve [Azure Portal](https://portal.azure.com) ve [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com)'nde hizmet panosu ve ileti merkezini görüntüler. [Yönetici rolleri hakkında](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)daha fazla bilgi.
+Bu role sahip kullanıcılar, Azure ve Microsoft 365 hizmetleri için Microsoft ile destek istekleri açabilir ve [Azure Portal](https://portal.azure.com) ve [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com)'nde hizmet panosu ve ileti merkezini görüntüler. [Yönetici rolleri hakkında](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)daha fazla bilgi.
 
 > [!NOTE]
 > Daha önce bu rol, [Azure Portal](https://portal.azure.com) ve [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com)'nde "Hizmet Yöneticisi" olarak adlandırılmıştı. Microsoft Graph API 'SI, Azure AD Graph API ve Azure AD PowerShell 'de bulunan adı ile uyum sağlamak için bunu "hizmet desteği Yöneticisi" olarak yeniden adlandırdık.
@@ -564,8 +564,8 @@ Aşağıdaki tablolarda, her role verilen Azure Active Directory belirli izinler
 | Microsoft. Directory/Servicesorumlularını/ilkeleri/güncelleştirme | Azure Active Directory Servicesorumlularını. Policies özelliğini güncelleştirin. |
 | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
-| Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="application-developer-permissions"></a>Uygulama geliştirici izinleri
@@ -590,9 +590,9 @@ Yönetici olmayan kullanıcılar için kimlik doğrulama yöntemi bilgilerini g�
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-| Microsoft. Directory/Users/Password/Update | Office 365 kuruluşundaki tüm kullanıcılar için parolaları güncelleştirin. Daha ayrıntılı bilgi için çevrimiçi belgelere bakın. |
+| Microsoft. Directory/Users/Password/Update | Microsoft 365 kuruluştaki tüm kullanıcılar için parolaları güncelleştirin. Daha ayrıntılı bilgi için çevrimiçi belgelere bakın. |
 
 ### <a name="azure-devops-administrator-permissions"></a>Azure DevOps yönetici izinleri
 
@@ -620,8 +620,8 @@ Azure Information Protection hizmetinin tüm yönlerini yönetebilir.
 | --- | --- |
 | Microsoft. Azure. ınformationprotection/allEntities/allTasks | Azure Information Protection tüm yönlerini yönetin. |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
-| Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C ıEF anahtar kümesi yönetici izinleri
@@ -656,7 +656,7 @@ Kimlik deneyimi çerçevesinde güven çerçevesi ilkeleri oluşturun ve yöneti
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. Commerce. faturalandırma/allEntities/allTasks | Faturalandırma 'nin tüm yönlerini yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="cloud-application-administrator-permissions"></a>Bulut uygulaması yönetici izinleri
@@ -698,8 +698,8 @@ Uygulama kayıtları ve kurumsal uygulamaların uygulama proxy 'Si hariç tüm y
 | Microsoft. Directory/Servicesorumlularını/ilkeleri/güncelleştirme | Azure Active Directory Servicesorumlularını. Policies özelliğini güncelleştirin. |
 | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
-| Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="cloud-device-administrator-permissions"></a>Bulut aygıtı yönetici izinleri
@@ -715,7 +715,7 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 | Microsoft. Directory/cihazlar/etkinleştir | Azure Active Directory cihazları etkinleştirin. |
 | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 
 ### <a name="company-administrator-permissions"></a>Şirket Yöneticisi izinleri
 
@@ -777,7 +777,7 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 | Microsoft. office365. messageCenter/securityMessages/Read | Microsoft. office365. messageCenter içindeki securityMessages 'i okuyun. |
 | Microsoft. office365. protectionCenter/allEntities/allTasks | Office 365 Koruma Merkezi 'nin tüm yönlerini yönetin. |
 | Microsoft. office365. Securityzorluk Ancecenter/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. office365. Securitykarmaşıkancecenter içindeki standart özellikleri okuyun ve güncelleştirin. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. SharePoint/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. office365. SharePoint içindeki standart özellikleri okuyun ve güncelleştirin. |
 | Microsoft. office365. Sktypeınfo/allEntities/allTasks | Skype Kurumsal Çevrimiçi 'nin tüm yönlerini yönetin. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
@@ -789,7 +789,7 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 
 ### <a name="compliance-administrator-permissions"></a>Uyumluluk Yöneticisi izinleri
 
-, Azure AD ve Office 365 ' de uyumluluk yapılandırma ve raporlarını okuyabilir ve yönetebilir.
+, Azure AD ve Microsoft 365 uyumluluk yapılandırma ve raporlarını okuyabilir ve yönetebilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
@@ -801,7 +801,7 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. Karmaşıssuancemanager/allEntities/allTasks | Office 365 uyumluluk Yöneticisi 'nin tüm yönlerini yönetme |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
@@ -821,7 +821,7 @@ Uyumluluk içeriğini oluşturur ve yönetir.
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. Karmaşıssuancemanager/allEntities/allTasks | Office 365 uyumluluk Yöneticisi 'nin tüm yönlerini yönetme |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
@@ -855,7 +855,7 @@ Uyumluluk içeriğini oluşturur ve yönetir.
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. powerApps. dynamics365/allEntities/allTasks | Dynamics 365 'in tüm yönlerini yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="customer-lockbox-access-approver-permissions"></a>Müşteri Kasası erişimi onaylayan izinleri
@@ -887,7 +887,7 @@ Uyumluluk içeriğini oluşturur ve yönetir.
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 | Microsoft. office365. desktopAnalytics/allEntities/allTasks | Masaüstü analizinin tüm yönlerini yönetin. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="device-administrators-permissions"></a>Cihaz yöneticileri izinleri
@@ -1043,13 +1043,13 @@ Temel dizin bilgilerini okuyabilir & yazabilir. Uygulamalara erişim vermek içi
 | Microsoft. Directory/gruplar/Birleşik/Üyeler/güncelleştirme | Microsoft 365 gruplarının üyeliğini güncelleştirin. |
 | Microsoft. Directory/gruplar/Birleşik/sahipler/güncelleştirme | Microsoft 365 gruplarının sahipliğini güncelleştirin. |
 | Microsoft. office365. Exchange/allEntities/allTasks | Exchange Online 'ın tüm yönlerini yönetin. |
-| Microsoft. office365. Network/Performance/allProperties/Read | M365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. Network/Performance/allProperties/Read | Microsoft 365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
-### <a name="external-id-user-flow-administrator-permissions"></a>Dış kimlik Kullanıcı akış Yöneticisi izinleri
+### <a name="external-id-user-flow-administrator-permissions"></a>Dış KIMLIK Kullanıcı akış Yöneticisi izinleri
 
 Kullanıcı akışlarının tüm yönlerini oluşturun ve yönetin.
 
@@ -1057,7 +1057,7 @@ Kullanıcı akışlarının tüm yönlerini oluşturun ve yönetin.
 | --- | --- |
 | Microsoft. AAD. B2C/Userakışlar/allTasks | Azure Active Directory B2C Kullanıcı akışlarını okuyun ve yapılandırın. |
 
-### <a name="external-id-user-flow-attribute-administrator-permissions"></a>Dış kimlik Kullanıcı akışı öznitelik Yöneticisi izinleri
+### <a name="external-id-user-flow-attribute-administrator-permissions"></a>Dış KIMLIK Kullanıcı akışı öznitelik Yöneticisi izinleri
 
 Tüm Kullanıcı akışları için kullanılabilen öznitelik şemasını oluşturun ve yönetin.
 
@@ -1138,7 +1138,7 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 | Microsoft. office365. Exchange/allEntities/okuma    | Exchange Online 'ın tüm yönlerini okuyun. |
 | Microsoft. office365. messageCenter/messages/okundu    | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
 | Microsoft. office365. messageCenter/securityMessages/Read    | Microsoft. office365. messageCenter içindeki securityMessages 'i okuyun. |
-| Microsoft. office365. Network/Performance/allProperties/Read | M365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun. |
+| Microsoft. office365. Network/Performance/allProperties/Read | Microsoft 365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun. |
 | Microsoft. office365. protectionCenter/allEntities/okuma    | Office 365 Koruma Merkezi 'nin tüm yönlerini okuyun. |
 | Microsoft. office365. Securityzorluk Ancecenter/allEntities/Read    | Microsoft. office365. Securitykarmaşıkancecenter içindeki tüm standart özellikleri okuyun. |
 | Microsoft. office365. usageReports/allEntities/okuma    | Office 365 kullanım raporlarını okuyun. |
@@ -1162,7 +1162,7 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="guest-inviter-permissions"></a>Konuk Davetleyici izinleri
@@ -1193,7 +1193,7 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="hybrid-identity-administrator-permissions"></a>Karma kimlik Yöneticisi izinleri
@@ -1236,19 +1236,19 @@ Bulut sağlama ve kimlik doğrulama hizmetlerini etkinleştirin, dağıtın, yap
 | Microsoft. Directory/Servicesorumlularını/etiketi/güncelleştirme | Azure Active Directory Servicesorumlularını. Tag özelliğini güncelleştirin. |
 | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 | Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="insights-administrator-permissions"></a>Öngörüler yönetici izinleri
 
-M365 Insights uygulamasında sdministrative erişimi vardır. 
+Microsoft 365 Insights uygulamasında yönetim erişimine sahiptir. 
 
 | **Eylemler** | **Açıklama** |
 | --- | --- |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. Insights/allEntities/allTasks | Öngörülerin tüm yönlerini yönetin. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
@@ -1310,9 +1310,9 @@ M365 Insights uygulamasında sdministrative erişimi vardır.
 
 | **Eylemler** | **Açıklama** |
 | --- | --- |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. webPortal/allEntities/temel/okuma | Office 365 Yönetim merkezini okuyun. |
+| Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft 365 Yönetim merkezini okuyun. |
 
 ### <a name="license-administrator-permissions"></a>Lisans Yöneticisi izinleri
 
@@ -1324,7 +1324,7 @@ M365 Insights uygulamasında sdministrative erişimi vardır.
 | Microsoft. Directory/Users/usageLocation/Update | Azure Active Directory Users. usageLocation özelliğini güncelleştirin. |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 
 ### <a name="lync-service-administrator-permissions"></a>Lync hizmeti yönetici izinleri
 
@@ -1338,8 +1338,8 @@ M365 Insights uygulamasında sdministrative erişimi vardır.
 | **Eylemler** | **Açıklama** |
 | --- | --- |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
-| Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Sktypeınfo/allEntities/allTasks | Skype Kurumsal Çevrimiçi 'nin tüm yönlerini yönetin. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. usageReports/allEntities/okuma    | Office 365 kullanım raporlarını okuyun. |
@@ -1362,7 +1362,7 @@ Ileti merkezi gönderilerini, veri gizliliği iletilerini, grupları, etki alanl
 | Microsoft. office365. messageCenter/securityMessages/Read | Microsoft. office365. messageCenter içindeki securityMessages 'i okuyun. |
 
 ### <a name="message-center-reader-permissions"></a>İleti Merkezi okuyucu izinleri
-, Yalnızca Office 365 Ileti merkezindeki kuruluşlarındaki iletileri ve güncelleştirmeleri okuyabilir. 
+Yalnızca Ileti merkezindeki kuruluşlarındaki iletileri ve güncelleştirmeleri okuyabilir. 
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
@@ -1384,7 +1384,7 @@ Ileti merkezi gönderilerini, veri gizliliği iletilerini, grupları, etki alanl
 
 | **Eylemler** | **Açıklama** |
 | --- | --- |
-| Microsoft. Commerce. faturalandırma/iş ortakları/okuma | O365 faturalandırması 'nın iş ortağı özelliğini okuyun. |
+| Microsoft. Commerce. faturalandırma/iş ortakları/okuma | Microsoft 365 faturalandırma iş ortağı özelliğini okuyun. |
 | Microsoft. Commerce. volumeLicenseServiceCenter/allEntities/allTasks | Toplu Lisanslama hizmeti Merkezi 'nin tüm yönlerini yönetin. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Kendi Office 365 destek biletlerini oluşturun ve görüntüleyin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
@@ -1416,7 +1416,7 @@ Ileti merkezi gönderilerini, veri gizliliği iletilerini, grupları, etki alanl
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. userCommunication/allEntities/allTasks | Yeni iletilerin görünürlüğünü okuyun ve güncelleştirin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
@@ -1451,7 +1451,7 @@ Kullanmayın-genel kullanıma yönelik değildir.
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="partner-tier2-support-permissions"></a>İş ortağı Katman2 destek izinleri
@@ -1486,7 +1486,7 @@ Kullanmayın-genel kullanıma yönelik değildir.
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="password-administrator-permissions"></a>Parola yönetici izinleri
@@ -1512,7 +1512,7 @@ Power BI ürünün tüm yönlerini yönetebilir.
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. powerApps. PowerBI/allEntities/allTasks | Power BI tüm yönlerini yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 
@@ -1532,7 +1532,7 @@ Microsoft Dynamics 365, PowerApps ve Microsoft Flow 'ın tüm yönlerini oluştu
 | Microsoft. Flow/Allentitıes/allTasks | Microsoft Flow tüm yönlerini yönetin. |
 | Microsoft. powerApps/allEntities/allTasks | PowerApps 'in tüm yönlerini yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="printer-administrator-permissions"></a>Yazıcı Yöneticisi izinleri
@@ -1574,9 +1574,9 @@ Herhangi bir Kullanıcı (yönetici veya yönetici olmayan) için kimlik doğrul
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-| Microsoft. Directory/Users/Password/Update | Office 365 kuruluşundaki tüm kullanıcılar için parolaları güncelleştirin. Daha ayrıntılı bilgi için çevrimiçi belgelere bakın. |
+| Microsoft. Directory/Users/Password/Update | Microsoft 365 kuruluştaki tüm kullanıcılar için parolaları güncelleştirin. Daha ayrıntılı bilgi için çevrimiçi belgelere bakın. |
 
 ### <a name="privileged-role-administrator-permissions"></a>Ayrıcalıklı rol Yöneticisi izinleri
 
@@ -1628,7 +1628,7 @@ Herhangi bir Kullanıcı (yönetici veya yönetici olmayan) için kimlik doğrul
 | --- | --- |
 | Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
 | Microsoft. office365. Search/Allentitıes/allProperties/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. office365. Search içindeki tüm özellikleri okuyun ve güncelleştirin. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
@@ -1648,7 +1648,7 @@ Yer işaretleri, Q ve as, konumlar, FloorPlan gibi düzenleme içeriği oluştur
 
 ### <a name="security-administrator-permissions"></a>Güvenlik Yöneticisi izinleri
 
-Azure AD ve Office 365 ' de güvenlik bilgilerini ve raporlarını okuyabilir ve yapılandırmayı yönetebilir.
+Güvenlik bilgilerini ve raporlarını okuyabilir ve Azure AD 'de yapılandırmayı yönetebilir ve Microsoft 365.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
@@ -1674,7 +1674,7 @@ Azure AD ve Office 365 ' de güvenlik bilgilerini ve raporlarını okuyabilir ve
 | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 | Microsoft. office365. protectionCenter/allEntities/okuma | Office 365 Koruma Merkezi 'nin tüm yönlerini okuyun. |
 | Microsoft. office365. protectionCenter/allEntities/Update | Microsoft. office365. protectionCenter 'daki tüm kaynakları güncelleştirin. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
@@ -1701,7 +1701,7 @@ Güvenlik olaylarını oluşturur ve yönetir.
 
 ### <a name="security-reader-permissions"></a>Güvenlik okuyucusu izinleri
 
-, Azure AD ve Office 365 ' deki güvenlik bilgilerini ve raporlarını okuyabilir.
+, Azure AD ve Microsoft 365 güvenlik bilgilerini ve raporlarını okuyabilir.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
@@ -1719,7 +1719,7 @@ Güvenlik olaylarını oluşturur ve yönetir.
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 | Microsoft. office365. protectionCenter/allEntities/okuma | Office 365 Koruma Merkezi 'nin tüm yönlerini okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 
 ### <a name="service-support-administrator-permissions"></a>Hizmet desteği yönetici izinleri
 
@@ -1735,7 +1735,7 @@ Güvenlik olaylarını oluşturur ve yönetir.
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="sharepoint-service-administrator-permissions"></a>SharePoint Hizmet Yöneticisi izinleri
@@ -1758,7 +1758,7 @@ Güvenlik olaylarını oluşturur ve yönetir.
 | Microsoft. Directory/gruplar/Birleşik/Üyeler/güncelleştirme | Microsoft 365 gruplarının üyeliğini güncelleştirin. |
 | Microsoft. Directory/gruplar/Birleşik/sahipler/güncelleştirme | Microsoft 365 gruplarının sahipliğini güncelleştirin. |
 | Microsoft. office365. Network/Performance/allProperties/Read | M365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. SharePoint/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. office365. SharePoint içindeki standart özellikleri okuyun ve güncelleştirin. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. usageReports/allEntities/okuma    | Office 365 kullanım raporlarını okuyun. |
@@ -1778,7 +1778,7 @@ Güvenlik olaylarını oluşturur ve yönetir.
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
 | Microsoft. ekipler/toplantılar/allProperties/allTasks | Toplantı ilkeleri, konfigürasyonlar ve konferans köprüleri dahil olmak üzere toplantıları yönetin. |
@@ -1798,7 +1798,7 @@ Güvenlik olaylarını oluşturur ve yönetir.
 | --- | --- |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. ekipler/callQuality/allProperties/Read | Çağrı kalitesi panosundaki (CQD) tüm verileri okuyun. |
 
 ### <a name="teams-communications-support-specialist-permissions"></a>Takımlar Iletişimleri destek uzmanı izinleri
@@ -1814,7 +1814,7 @@ Temel araçları kullanarak takımlar içindeki iletişim sorunlarını giderebi
 | --- | --- |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. ekipler/callQuality/Basic/Read | Çağrı kalitesi panosundaki temel verileri okuyun (CQD). |
 
 ### <a name="teams-devices-administrator-permissions"></a>Takımlar cihazlar yönetici izinleri
@@ -1852,7 +1852,7 @@ Ekip sertifikalı cihazlarda yönetim ile ilgili görevler gerçekleştirebilir.
 | Microsoft. Directory/gruplar/Birleşik/Üyeler/güncelleştirme | Microsoft 365 gruplarının üyeliğini güncelleştirin. |
 | Microsoft. Directory/gruplar/Birleşik/sahipler/güncelleştirme | Microsoft 365 gruplarının sahipliğini güncelleştirin. |
 | Microsoft. office365. Network/Performance/allProperties/Read | M365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
@@ -1892,7 +1892,7 @@ Ekip sertifikalı cihazlarda yönetim ile ilgili görevler gerçekleştirebilir.
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
-| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ## <a name="role-template-ids"></a>Rol şablonu kimlikleri

@@ -13,12 +13,12 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8c6a9304927f5d4bcad895b725955c522b60207a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9d8bb85aac87503ca641f6633668a6dc582882f
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266245"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056090"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>İki adımlı doğrulama için uygulama parolalarını yönetme
 
@@ -44,7 +44,7 @@ Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 - **Kuruluşunuz iki öğeli doğrulama ve ek güvenlik doğrulama sayfası kullanır.** Kuruluşunuzda iki öğeli doğrulama ile iş veya okul hesabınızı (gibi) kullanıyorsanız alain@contoso.com , uygulama parolalarınızı [ek güvenlik doğrulama sayfasından](https://account.activedirectory.windowsazure.com/Proofup.aspx)yönetebilirsiniz. Ayrıntılı yönergeler için, bu makaledeki [ek güvenlik doğrulaması sayfasını kullanarak uygulama parolaları oluşturma ve silme](#create-and-delete-app-passwords-from-the-additional-security-verification-page) bölümüne bakın.
 
-- **Kuruluşunuz iki öğeli doğrulama ve Office 365 portalını kullanır.** Kuruluşunuzda iş veya okul hesabınızı (örneğin, alain@contoso.com ), iki faktörlü doğrulamayı ve office 365 uygulamalarını kullanıyorsanız, uygulama parolalarınızı [Office 365 Portal sayfasından](https://www.office.com)yönetebilirsiniz. Ayrıntılı yönergeler için, bu makaledeki [Office 365 portalını kullanarak uygulama parolaları oluşturma ve silme](#create-and-delete-app-passwords-using-the-office-365-portal) bölümüne bakın.
+- **Kuruluşunuz iki öğeli doğrulama ve Office 365 portalını kullanır.** İş veya okul hesabınızı (örneğin, alain@contoso.com ), iki faktörlü doğrulamayı ve kuruluşunuzda Microsoft 365 uygulamaları kullanıyorsanız, uygulama parolalarınızı [Office 365 Portal sayfasından](https://www.office.com)yönetebilirsiniz. Ayrıntılı yönergeler için, bu makaledeki [Office 365 portalını kullanarak uygulama parolaları oluşturma ve silme](#create-and-delete-app-passwords-using-the-office-365-portal) bölümüne bakın.
 
 - **Kişisel Microsoft hesabı iki öğeli doğrulama kullanıyorsunuz.** İki öğeli doğrulamayla bir kişisel Microsoft hesabı (gibi alain@outlook.com ) kullanıyorsanız, uygulama parolalarınızı [güvenlik temel bilgileri sayfasından](https://account.microsoft.com/security/)yönetebilirsiniz. Ayrıntılı yönergeler için bkz. [iki aşamalı doğrulamayı desteklemeyen uygulamalarla uygulama parolaları kullanma](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
 
@@ -82,11 +82,11 @@ Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>Office 365 portalını kullanarak uygulama parolaları oluşturma ve silme
 
-İş veya okul hesabınızla ve Office 365 uygulamalarınızda iki aşamalı doğrulama kullanırsanız, Office 365 portalını kullanarak uygulama parolalarınızı oluşturabilir ve silebilirsiniz.
+İş veya okul hesabınızla ve Microsoft 365 uygulamalarınızda iki adımlı doğrulama kullanırsanız, Office 365 portalını kullanarak uygulama parolalarınızı oluşturabilir ve silebilirsiniz.
 
 ### <a name="to-create-app-passwords-using-the-office-365-portal"></a>Office 365 portalını kullanarak uygulama parolaları oluşturmak için
 
-1. Office 365 ' te oturum açın ve [Hesabım sayfasına](https://portal.office.com)gidin, **güvenlik & gizlilik**' i seçin ve ardından **ek güvenlik doğrulaması**' nı genişletin.
+1. İş veya okul hesabınızda oturum açın, [Hesabım sayfasına](https://portal.office.com)gidin, **güvenlik & gizlilik**' i seçin ve ardından **ek güvenlik doğrulaması**' nı genişletin.
 
     ![Genişletilmiş ek güvenlik doğrulama alanını gösteren Office portalı](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
 

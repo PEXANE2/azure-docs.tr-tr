@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 473fe838f53df0a874a2c793792533e01b7c069a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2df534842c6f6a922579e1128757ee4b7f46e006
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408525"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058606"
 ---
 # <a name="security-control-identity-and-access-control"></a>Güvenlik denetimi: kimlik ve Access Control
 
@@ -76,7 +76,7 @@ Azure AD MFA 'yı etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim y�
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 3,6 | 4,6, 11,6, 12,12 | Müşteri |
+| 3.6 | 4,6, 11,6, 12,12 | Müşteri |
 
 Azure kaynaklarını açmak ve yapılandırmak için MFA ile Paw 'lar (ayrıcalıklı erişim iş istasyonları) kullanın.
 
@@ -112,9 +112,9 @@ IP adresi aralıklarının veya ülkelerin/bölgelerin yalnızca belirli mantık
 |--|--|--|
 | 3.9 | 16,1, 16,2, 16,4, 16,5, 16,6 | Müşteri |
 
-Merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (AAD) kullanın. AAD, bekleyen ve aktarım sırasında veriler için güçlü şifrelemeyi kullanarak verileri korur. AAD Ayrıca, karma ve Kullanıcı kimlik bilgilerini güvenli bir şekilde depolar.
+Merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory kullanın. Azure AD, bekleyen ve aktarım sırasında veriler için güçlü şifrelemeyi kullanarak verileri korur. Azure AD Ayrıca, karma ve Kullanıcı kimlik bilgilerini güvenli bir şekilde depolar.
 
-- [AAD örneği oluşturma ve yapılandırma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Azure AD örneği oluşturma ve yapılandırma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: Kullanıcı erişimini düzenli olarak gözden geçirin ve karşılaştırın
 

@@ -2,24 +2,22 @@
 title: Kaynakları yeni bir aboneliğe veya kaynak grubuna taşıma
 description: Kaynakları yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 09/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e5b3e27110d5bd7941aad0209681d13f45fa66fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2b278dae956ec0bd17773badbeaa880b7bf901a5
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498880"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056676"
 ---
-# <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni kaynak grubuna veya aboneliğe taşıma
+# <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
 Bu makalede, Azure kaynaklarını başka bir Azure aboneliğine veya aynı abonelik altındaki başka bir kaynak grubuna nasıl taşıyacağınız gösterilmektedir. Azure portalı, Azure PowerShell, Azure CLI veya REST API ile kaynakları taşıyabilirsiniz.
 
 Taşıma işlemi sırasında hem kaynak grubu hem de hedef grup kilitlenir. Taşıma tamamlanana kadar kaynak gruplarında yazma ve silme işlemleri engellenir. Bu kilit, kaynak gruplarındaki kaynakları ekleyemez, güncelleştiremez veya silemezsiniz. Bu, kaynakların dondurulmuş olduğu anlamına gelmez. Örneğin, bir SQL Server ve veritabanını yeni bir kaynak grubuna taşırsanız, veritabanını kullanan bir uygulama kesinti yaşmaz. Hala veritabanına okuma ve yazma olabilir. Kilit en fazla dört saat için en fazla dört saat olabilir, ancak çoğu zaman çok daha az zaman tamamlanır.
 
 Bir kaynağı taşıdığınızda yalnızca onu yeni bir kaynak grubuna veya aboneliğe taşımış olursunuz. Bu işlem kaynağın konumunu değiştirmez.
-
-Azure Stack hub kullanıyorsanız, kaynakları gruplar arasında taşıyamazsınız.
 
 ## <a name="checklist-before-moving-resources"></a>Kaynakları taşımadan önce kullanılacak kontrol listesi
 
@@ -29,6 +27,7 @@ Bir kaynağı taşımadan önce gerçekleştirmeniz gereken bazı önemli adıml
 
 1. Bazı hizmetlerde kaynakları taşırken belirli sınırlamalar veya gereksinimler vardır. Aşağıdaki hizmetlerden birini taşıyorsanız, taşımadan önce bu Kılavuzu kontrol edin.
 
+   * Azure Stack hub kullanıyorsanız, kaynakları gruplar arasında taşıyamazsınız.
    * [Uygulama Hizmetleri taşıma Kılavuzu](./move-limitations/app-service-move-limitations.md)
    * [Azure DevOps Services taşıma Kılavuzu](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [Klasik dağıtım modeli taşıma Kılavuzu](./move-limitations/classic-model-move-limitations.md) -klasik işlem, klasik depolama, klasik sanal ağlar ve Cloud Services
@@ -96,7 +95,7 @@ Bir kaynağı taşımadan önce gerçekleştirmeniz gereken bazı önemli adıml
 
 1. **Abonelikler arasında geçiş için kaynak ve bağımlı kaynakları aynı kaynak grubunda yer almalıdır ve birlikte taşınmaları gerekir.** Örneğin, yönetilen disklere sahip bir VM, diğer bağımlı kaynaklarla birlikte VM ve yönetilen disklerin birlikte taşınmasını gerektirir.
 
-   Bir kaynağı yeni bir aboneliğe taşıyorsanız, kaynağın bağımlı kaynaklara sahip olup olmadığını ve aynı kaynak grubunda bulunup bulunmadığını kontrol edin. Kaynaklar aynı kaynak grubunda değilse, kaynakların aynı kaynak grubuyla birleştirilebilir olup olmadığını denetleyin. Bu durumda, kaynak grupları arasında taşıma işlemi kullanarak tüm bu kaynakları aynı kaynak grubuna getirin.
+   Bir kaynağı yeni bir aboneliğe taşıyorsanız, kaynağın bağımlı kaynaklara sahip olup olmadığını ve aynı kaynak grubunda bulunup bulunmadığını kontrol edin. Kaynaklar aynı kaynak grubunda değilse, kaynakların aynı kaynak grubunda birleştirilebilir olup olmadığını denetleyin. Bu durumda, kaynak grupları arasında taşıma işlemi kullanarak tüm bu kaynakları aynı kaynak grubuna getirin.
 
    Daha fazla bilgi için bkz. [abonelikler arasında taşıma senaryosu](#scenario-for-move-across-subscriptions).
 
@@ -167,23 +166,37 @@ Authorization: Bearer <access-token>
 
 ## <a name="use-the-portal"></a>Portalı kullanma
 
-Kaynakları taşımak için bu kaynaklarla kaynak grubunu seçin ve ardından **Taşı** düğmesini seçin.
+Kaynakları taşımak için, bu kaynakları içeren kaynak grubunu seçin.
 
-![kaynakları taşıma](./media/move-resource-group-and-subscription/select-move.png)
+Kaynak grubunu görüntülediğinizde, taşı seçeneği devre dışıdır.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="taşıma seçeneği devre dışı":::
+
+Taşıma seçeneğini etkinleştirmek için, taşımak istediğiniz kaynakları seçin. Tüm kaynakları seçmek için, listenin en üstündeki onay kutusunu seçin. Ya da kaynakları tek tek seçin.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="kaynakları seçin":::
+
+**Taşı** düğmesini seçin.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="taşıma seçenekleri":::
+
+Bu düğme size üç seçenek sunar:
+
+* Yeni bir kaynak grubuna taşıyın.
+* Yeni bir aboneliğe taşıyın.
+* Yeni bir bölgeye taşıyın. Bölgeleri değiştirmek için bkz. [kaynakları bölgeler arasında taşıma (kaynak grubundan)](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json).
 
 Kaynakları yeni bir kaynak grubuna mı yoksa yeni bir aboneliğe mi taşıdığınızı seçin.
 
-Taşınacak kaynakları ve hedef kaynak grubunu seçin. Bu kaynaklar için betikleri güncelleştirmeniz ve **Tamam**' ı seçmeniz gerektiğini kabul edin. Önceki adımda abonelik Düzenle simgesini seçtiyseniz, hedef aboneliği de seçmeniz gerekir.
+Hedef kaynak grubunu seçin. Bu kaynaklar için betikleri güncelleştirmeniz ve **Tamam**' ı seçmeniz gerektiğini kabul edin. Yeni bir aboneliğe taşımayı seçtiyseniz, hedef aboneliği de seçmeniz gerekir.
 
-![hedef seçin](./media/move-resource-group-and-subscription/select-destination.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="hedef seçin":::
 
-**Bildirimler**' de taşıma işleminin çalıştığını görürsünüz.
+Kaynakların taşınabileceği doğrulandıktan sonra taşıma işleminin çalıştığını belirten bir bildirim görürsünüz.
 
-![taşıma durumunu göster](./media/move-resource-group-and-subscription/show-status.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="uyarıyı":::
 
 Tamamlandığında, sonuç size bildirilir.
-
-![taşıma sonucunu göster](./media/move-resource-group-and-subscription/show-result.png)
 
 Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme](troubleshoot-move.md).
 
@@ -203,7 +216,7 @@ Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneli
 
 ## <a name="use-azure-cli"></a>Azure CLI kullanma
 
-Mevcut kaynakları başka bir kaynak grubuna veya aboneliğe taşımak için [az Resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) komutunu kullanın. Taşınacak kaynakların kaynak kimliklerini sağlayın. Aşağıdaki örnek, birkaç kaynağın yeni bir kaynak grubuna nasıl taşınacağını gösterir. `--ids`Parametresinde, taşınacak kaynak kimliklerinin boşlukla ayrılmış bir listesini sağlayın.
+Mevcut kaynakları başka bir kaynak grubuna veya aboneliğe taşımak için [az Resource Move](/cli/azure/resource#az-resource-move) komutunu kullanın. Taşınacak kaynakların kaynak kimliklerini sağlayın. Aşağıdaki örnek, birkaç kaynağın yeni bir kaynak grubuna nasıl taşınacağını gösterir. `--ids`Parametresinde, taşınacak kaynak kimliklerinin boşlukla ayrılmış bir listesini sağlayın.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -238,15 +251,15 @@ Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneli
 
 **Soru: genellikle birkaç dakika süren kaynak taşıma işlemi, neredeyse bir saat boyunca çalışmaktadır. Yanlış bir sorun var mı?**
 
-Bir kaynağın taşınması, farklı aşamalara sahip karmaşık bir işlemdir. Taşımaya çalıştığınız kaynağın yalnızca kaynak sağlayıcısından fazlasını içerebilir. Kaynak sağlayıcıları arasındaki bağımlılıklar nedeniyle Azure Resource Manager işlemin tamamlanabilmesi için 4 saat izin verir. Bu zaman dilimi, kaynak sağlayıcılarına geçici sorunlardan kurtulmasına olanak tanır. Taşıma isteğiniz 4 saatlik bir süre içindeyse, işlem tamamlanana kadar devam eder ve yine de başarılı olabilir. Tutarlılık sorunlarından kaçınmak için kaynak ve hedef kaynak grupları bu süre boyunca kilitlenir.
+Bir kaynağın taşınması, farklı aşamalara sahip karmaşık bir işlemdir. Taşımaya çalıştığınız kaynağın yalnızca kaynak sağlayıcısından fazlasını içerebilir. Kaynak sağlayıcıları arasındaki bağımlılıklar nedeniyle Azure Resource Manager işlemin tamamlanabilmesi için 4 saat izin verir. Bu zaman dilimi, kaynak sağlayıcılarına geçici sorunlardan kurtulmasına olanak tanır. Taşıma isteğiniz dört saatlik dönem içindeyse, işlem tamamlanmaya devam eder ve yine de başarılı olabilir. Tutarlılık sorunlarından kaçınmak için kaynak ve hedef kaynak grupları bu süre boyunca kilitlenir.
 
-**Soru: kaynak grubu neden kaynak taşıma sırasında 4 saat boyunca kilitlidir?**
+**Soru: kaynak grupum neden kaynak taşıma sırasında dört saat boyunca kilitlidir?**
 
-4 saatlik pencere, kaynak taşıma için izin verilen en uzun süredir. Taşınan kaynaklarda değişiklik yapılmasını engellemek için kaynak ve hedef kaynak gruplarının her ikisi de kaynak taşıma süresince kilitlenir.
+Taşıma isteğine en fazla dört saat tamamlanmak için izin verilir. Taşınan kaynaklarda değişiklik yapılmasını engellemek için kaynak ve hedef kaynak gruplarının her ikisi de kaynak taşıma süresince kilitlenir.
 
-Taşıma isteğinde iki aşama vardır. İlk aşamada kaynak taşınır. İkinci aşamada, bildirimler, taşınan kaynağa bağımlı diğer kaynak sağlayıcılarına gönderilir. Bir kaynak sağlayıcısı her iki aşamada de başarısız olursa, bir kaynak grubu 4 saatlik tüm pencere için kilitlenebilir. İzin verilen süre boyunca başarısız olan adımı yeniden dener Kaynak Yöneticisi.
+Taşıma isteğinde iki aşama vardır. İlk aşamada kaynak taşınır. İkinci aşamada, bildirimler, taşınan kaynağa bağımlı diğer kaynak sağlayıcılarına gönderilir. Bir kaynak sağlayıcısı her iki aşamada de başarısız olursa, kaynak grubu dört saatin tamamı için kilitlenebilir. İzin verilen süre boyunca başarısız olan adımı yeniden dener Kaynak Yöneticisi.
 
-Bir kaynak 4 saatlik bir pencere içinde taşınamayacağını Kaynak Yöneticisi her iki kaynak grubunun kilidini açar. Başarıyla taşınan kaynaklar hedef kaynak grubunda bulunur. Taşıyacağınız kaynaklar kaynak kaynak grubunun solununlardır.
+Bir kaynak dört saat içinde taşınamayacağını Kaynak Yöneticisi her iki kaynak grubunun da kilidini açar. Başarıyla taşınan kaynaklar hedef kaynak grubunda bulunur. Taşıyacağınız kaynaklar kaynak kaynak grubunun solununlardır.
 
 **Soru: kaynak taşıma sırasında kaynak ve hedef kaynak gruplarının kilitlenmesinin etkileri nelerdir?**
 

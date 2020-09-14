@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 4462ea0277193f0f8a4112cad5991d1e12c5f600
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ddb1c68ab417390987ac4873a16b89757ec24789
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89653002"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058742"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure bölgeleri arasında Azure VM 'Leri taşıma desteği
 
@@ -80,7 +80,7 @@ Debian 8 |  3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0.
 
 **Sürüm** | **Çekirdek sürümü** 
 --- |  --- 
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) |  Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.34-Azure  
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) |  Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.34-Azure  
 
 
 ### <a name="supported-suse-linux-enterprise-server-15-kernel-versions"></a>Desteklenen SUSE Linux Enterprise Server 15 çekirdek sürümü
@@ -100,7 +100,7 @@ SUSE Linux Enterprise Server 15 ve 15 SP1 |  Tüm hisse senedi SUSE 15 ve 15 çe
 
 **Ayar** | **Destek** | **Ayrıntılar**
 --- | --- | ---
-Boyut | En az iki CPU çekirdeği ve 1 GB RAM içeren herhangi bir Azure VM boyutu | [Azure sanal makine boyutlarını](https://docs.microsoft.com/azure/virtual-machines/sizes-general)doğrulayın.
+Boyut | En az iki CPU çekirdeği ve 1 GB RAM içeren herhangi bir Azure VM boyutu | [Azure sanal makine boyutlarını](../virtual-machines/sizes-general.md)doğrulayın.
 Kullanılabilirlik kümeleri | Şu anda desteklenmiyor | Bir kullanılabilirlik kümesine sahip bir Azure VM 'yi taşıma koleksiyonuna varsayılan seçeneklerle eklerseniz, hazırlama işlemi başarısız olur. VM 'yi tek bir örnek VM olarak taşımak için bir kullanılabilirlik bölgesine taşımayı ya da seçebilirsiniz. Bu ayarları, hedef özelliklerini Düzenle sayfasında değiştirebilirsiniz.
 Kullanılabilirlik alanları | Desteklenir | Hedef bölge desteğine bağlı olarak desteklenir.
 Azure galeri görüntüleri (Microsoft tarafından yayımlanan) | Desteklenir | VM desteklenen bir işletim sisteminde çalışıyorsa desteklenir.
@@ -113,15 +113,15 @@ Uzantılar | Desteklenmez | Uzantılar hedef bölgedeki sanal makineye kopyalanm
 
 ## <a name="supported-vm-storage-settings"></a>Desteklenen VM depolama ayarları
 
-Bu tabloda, Azure VM işletim sistemi diski, veri diski ve geçici disk için destek özetlenmektedir. Tüm performans sorunlarını önlemek için, [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/disk-scalability-targets) ve [WINDOWS](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets) VM 'lerinin VM disk sınırlarını ve hedeflerini gözlemlemek önemlidir.
+Bu tabloda, Azure VM işletim sistemi diski, veri diski ve geçici disk için destek özetlenmektedir. Tüm performans sorunlarını önlemek için, [Linux](../virtual-machines/linux/disk-scalability-targets.md) ve [WINDOWS](../virtual-machines/windows/disk-scalability-targets.md) VM 'lerinin VM disk sınırlarını ve hedeflerini gözlemlemek önemlidir.
 
 **Bileşen** | **Destek** | **Ayrıntılar**
 --- | --- | ---
-İşletim sistemi diski en büyük boyutu | 2048 GB | VM diskleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) .
-Geçici disk | Desteklenmez | Geçici disk her zaman hazırlama işleminden çıkarılır.<br/><br/> Kalıcı verileri geçici diskte depolamamayın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk).
+İşletim sistemi diski en büyük boyutu | 2048 GB | VM diskleri hakkında [daha fazla bilgi edinin](../virtual-machines/windows/managed-disks-overview.md) .
+Geçici disk | Desteklenmez | Geçici disk her zaman hazırlama işleminden çıkarılır.<br/><br/> Kalıcı verileri geçici diskte depolamamayın. [Daha fazla bilgi edinin](../virtual-machines/windows/managed-disks-overview.md#temporary-disk).
 Veri diski en büyük boyutu | yönetilen diskler için 8192 GB
 Veri diski en küçük boyutu |  yönetilen diskler için 2 GB |
-Veri diski en fazla sayı | Belirli bir Azure VM boyutu için desteğe uygun olarak 64 'e kadar | VM boyutları hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/sizesd) .
+Veri diski en fazla sayı | Belirli bir Azure VM boyutu için desteğe uygun olarak 64 'e kadar | VM boyutları hakkında [daha fazla bilgi edinin](../virtual-machines/windows/sizes.md) .
 Veri diski değişim oranı | Premium Depolama için disk başına en fazla 10 MBps. Standart depolama için disk başına en fazla 2 MBps. | Disk üzerindeki ortalama veri değişim oranı, en yüksek değerden sürekli yüksek ise hazırlık işlemi gerçekleştirilmez.<br/><br/>  Ancak, en yüksek değer, tek tek aşılırsa, hazırlık yakalayabilir, ancak biraz gecikmeli kurtarma noktası görebilirsiniz.
 Veri diski (Standart depolama hesabı) | Desteklenmez. | Depolama türünü yönetilen disk olarak değiştirip VM 'yi taşımayı deneyin.
 Veri diski (Premium depolama hesabı) | Desteklenmez | Depolama türünü yönetilen disk olarak değiştirip VM 'yi taşımayı deneyin.

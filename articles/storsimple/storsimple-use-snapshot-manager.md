@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager Kullanıcı arabirimi | Microsoft Docs
 description: StorSimple Snapshot Manager Kullanıcı arabirimini açıklar ve yedekleme işlerini ve yedekleme kataloğunu yönetmek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
+ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 1706ae4005c337fdffb45683133e5682a56a0de5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ead24b89dba889a4bb8f11d57eb687e7790aebfb
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513748"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055920"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Yedekleme işlerini ve yedekleme kataloğunu yönetmek için StorSimple Snapshot Manager Kullanıcı arabirimini kullanma
 
@@ -67,10 +67,10 @@ Menüdeki kullanılabilir komutların listesini görmek için menü çubuğundak
 #### <a name="menu-description"></a>Menü açıklaması
 Aşağıdaki tabloda **Dosya** menüsünde görünen öğeler açıklanmaktadır.
 
-| Menü öğesi | Açıklama |
+| Menü öğesi | Description |
 |:--- |:--- |
 | Yeni |StorSimple Snapshot Manager temel alan yeni bir konsol oluşturmak için **Yeni** ' ye tıklayın. |
-| Open |Mevcut bir konsolu açmak için **Aç** ' a tıklayın. |
+| Aç |Mevcut bir konsolu açmak için **Aç** ' a tıklayın. |
 | Kaydet |Geçerli konsolu kaydetmek için **Kaydet** ' e tıklayın. |
 | Farklı kaydet |Geçerli konsolun yeni, yeniden adlandırılmış bir örneğini oluşturmak için **farklı kaydet** ' e tıklayın. Bir görünümü özelleştirmek ve daha sonra almak üzere kaydetmek için **farklı kaydet** seçeneğini kullanın. Örneğin, belirli sunuculara işaret eden StorSimple Snapshot Manager ek bileşenleri oluşturabilirsiniz. |
 | Ek bileşen Ekle/Kaldır |Ek bileşen eklemek veya kaldırmak ve **kapsam** bölmesinde düğümleri düzenlemek Için **ek bileşen Ekle/Kaldır** ' a tıklayın. Daha fazla bilgi için, [MMC 3,0 ' de ek bileşenler ve uzantılar ekleme, kaldırma ve düzenleme](https://technet.microsoft.com/library/cc722035.aspx)bölümüne gidin. |
@@ -107,14 +107,14 @@ Aşağıdaki tablo, StorSimple Snapshot Manager eylemlerinin alfabetik bir liste
 > 
 > 
 
-| Eylem | Gezinti | Açıklama |
+| Eylem | Gezinti | Description |
 |:--- |:--- |:--- |
 | Kimlik doğrulaması |**Cihazlar** düğümüne tıklayın ve **sonuçlar** bölmesinde bir cihaza sağ tıklayın. |Cihaz için yapılandırdığınız parolayı girmek için **kimlik doğrulaması** ' na tıklayın. |
 | Kopyalama |**Yedekleme kataloğu**' nu genişletin, **bulut anlık görüntüleri**' ni genişletin, bulunan bir yedeğe tıklayın ve ardından **sonuçlar** bölmesinde bir birim seçin. |Bir bulut anlık görüntüsünün kopyasını oluşturmak ve bunu belirleyeceğiniz bir konumda depolamak için **Kopyala** ' ya tıklayın. |
 | Cihaz yapılandırma |**Cihazlar** düğümüne sağ tıklayın. |Tek bir cihazı veya birden çok cihazı Windows ana bilgisayarına bağlanacak şekilde yapılandırmak için **cihaz yapılandırma** ' ya tıklayın. |
 | Yedekleme Ilkesi oluştur |Şunlardan birini yapın:<ul><li>**Yedekleme ilkeleri**' ne sağ tıklayın.</li><li>**Birim grupları**' na tıklayın veya genişletin ve ardından bir birim grubuna sağ tıklayın.</li><li>**Yedekleme kataloğu**' na tıklayın veya genişletin ve ardından bir birim grubuna sağ tıklayın.</li></ul> |Bir birim grubu için zamanlanmış bir yedekleme yapılandırmak üzere **yedekleme Ilkesi oluştur** ' a tıklayın. |
 | Birim grubu oluştur |Şunlardan birini yapın:<ul><li>**Birimler** düğümüne tıklayın ve ardından **sonuçlar** bölmesinde bir birime sağ tıklayın.</li><li>**Birim grupları** düğümüne sağ tıklayın.</li></ul> |Birim grubuna birimler atamak için **birim grubu oluştur** ' a tıklayın. |
-| Sil |Bir düğüme veya sonuca tıklayın (Bu öğe birçok **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Seçtiğiniz düğümü veya sonucu silmek için **Sil** ' e tıklayın. Onay iletişim kutusu göründüğünde, silme işlemini onaylayın veya iptal edin. |
+| Sil |Bir düğüme veya sonuca tıklayın (Bu öğe birçok **eylem** menülerinde ve  **Eylemler** bölmelerinde görüntülenir.) |Seçtiğiniz düğümü veya sonucu silmek için **Sil** ' e tıklayın. Onay iletişim kutusu göründüğünde, silme işlemini onaylayın veya iptal edin. |
 | Ayrıntılar |**Cihazlar** düğümüne tıklayın ve ardından **sonuçlar** bölmesinde bir cihaza sağ tıklayın. |Bir cihazın yapılandırma ayrıntılarını görmek için **Ayrıntılar** ' a tıklayın. |
 | Düzenle |**Yedekleme ilkeleri**' ne tıklayın ve ardından **sonuçlar** bölmesinde bir ilkeye sağ tıklayın. |Birim grubu için Yedekleme zamanlamasını değiştirmek üzere **Düzenle** ' ye tıklayın. |
 | Listeyi dışarı aktar |Herhangi bir düğüme veya sonuca tıklayın (Bu öğe tüm **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Listeyi bir virgülle ayrılmış değer (CSV) dosyasına kaydetmek için **Listeyi dışarı aktar** ' a tıklayın. Daha sonra bu dosyayı analiz için bir elektronik tablo uygulamasına aktarabilirsiniz. |
@@ -139,7 +139,7 @@ Menü çubuğundaki veya **Eylemler** bölmesindeki **Görünüm** menüsüne er
 #### <a name="menu-description"></a>Menü açıklaması
 Aşağıdaki tabloda, **Görünüm** menüsünde görüntülenen öğeler açıklanmaktadır.
 
-| Menü öğesi | Açıklama |
+| Menü öğesi | Description |
 |:--- |:--- |
 | Sütun Ekle/Kaldır |**Sonuçlar** bölmesinde sütun eklemek veya kaldırmak Için **sütun Ekle/Kaldır** ' a tıklayın. |
 | Özelleştirme |StorSimple Snapshot Manager konsol penceresinde öğeleri göstermek veya gizlemek için **Özelleştir** ' e tıklayın. |
@@ -155,7 +155,7 @@ Menü çubuğundaki **Sık Kullanılanlar** menüsüne erişebilirsiniz.
 #### <a name="menu-description"></a>Menü açıklaması
 Aşağıdaki tabloda, **Sık Kullanılanlar** menüsünde görüntülenen öğeler açıklanmaktadır.
 
-| Menü öğesi | Açıklama |
+| Menü öğesi | Description |
 |:--- |:--- |
 | Sık kullanılanlara ekleme |Geçerli görünümü sık kullanılanlar listenize eklemek için **Sık Kullanılanlara Ekle** ' ye tıklayın. |
 | Sık Kullanılanları Düzenle |Sık Kullanılanlar klasörünüzün içeriğini düzenlemek için **Sık Kullanılanları Düzenle** ' ye tıklayın. |
@@ -173,7 +173,7 @@ Menünün altındaki numaralandırılmış liste, şu anda açık olan pencerele
 #### <a name="menu-description"></a>Menü açıklaması
 Aşağıdaki tabloda pencere menüsünde görüntülenen öğeler açıklanmaktadır.
 
-| Menü öğesi | Açıklama |
+| Menü öğesi | Description |
 |:--- |:--- |
 | Yeni pencere |Yeni **pencere** ' ye tıklayarak yeni bir konsol penceresi açın (varolan pencereye ek olarak). |
 | Seçilemez |Açık konsol pencerelerini geçişli bir stilde göstermek için **basamakla** ' ya tıklayın. |
@@ -190,7 +190,7 @@ Menü çubuğundaki **Yardım** menüsüne erişebilirsiniz. Ayrıca, **işlemle
 #### <a name="menu-description"></a>Menü açıklaması
 Aşağıdaki tabloda Yardım menüsünde görüntülenen öğeler açıklanmaktadır.
 
-| Menü öğesi | Açıklama |
+| Menü öğesi | Description |
 |:--- |:--- |
 | StorSimple Snapshot Manager Yardım |StorSimple **Snapshot Manager** Yardım ' a tıklayarak storsimple Snapshot Manager yardımını ayrı bir pencerede açın. |
 | Yardım konuları |MMC çevrimiçi yardımını ayrı bir pencerede açmak için **Yardım konuları** ' na tıklayın. |
@@ -204,7 +204,7 @@ Menü çubuğunun altında bulunan araç çubuğu, gezinti ve görev simgelerini
 ### <a name="icon-descriptions"></a>Simge açıklamaları
 Aşağıdaki tabloda araç çubuğunda görüntülenen simgeler açıklanmaktadır. 
 
-| Simge | Açıklama |
+| Simge | Description |
 |:--- |:--- |
 | ![Sol ok](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |Önceki sayfaya dönmek için sol ok simgesine tıklayın. |
 | ![Sağ ok](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |Sonraki sayfaya gitmek için sağ oka tıklayın (ok gri ise, eylem kullanılamaz). |

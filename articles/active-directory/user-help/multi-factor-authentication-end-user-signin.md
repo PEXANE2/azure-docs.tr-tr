@@ -13,12 +13,12 @@ ms.date: 04/02/2017
 ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: daa2cfae4ed8371e245d12a9f805fe07f31a6d76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51cfe2c448fde8c50f8b846979a4b35fa4be5ec1
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742948"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056037"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>İki öğeli doğrulama yönteminizi kullanarak iş veya okul hesabınızda oturum açın
 
@@ -39,14 +39,14 @@ Oturum açma deneyiminiz, bir telefon araması, kimlik doğrulama uygulaması ve
 ## <a name="signing-in-with-a-phone-call"></a>Telefon çağrısıyla oturum açma
 Aşağıdaki bilgiler, mobil veya Office telefonunuza yapılan bir çağrı ile iki adımlı doğrulama deneyimini açıklar.
 
-1. Kullanıcı adınızı ve parolanızı kullanarak Office 365 gibi bir uygulama veya hizmette oturum açın.  
+1. Kullanıcı adınızı ve parolanızı kullanarak Microsoft 365 gibi bir uygulamada veya hizmette oturum açın.  
 2. Microsoft sizi çağırır.  
 3. Telefonu yanıtlayın ve # tuşuna basın.  
 
 ## <a name="signing-in-with-a-text-message"></a>Kısa mesajla oturum açma
 Aşağıdaki bilgiler, cep telefonunuza bir SMS mesajı ile iki adımlı doğrulama deneyimini anlatmaktadır:
 
-1. Kullanıcı adınızı ve parolanızı kullanarak Office 365 gibi bir uygulama veya hizmette oturum açın.
+1. Kullanıcı adınızı ve parolanızı kullanarak Microsoft 365 gibi bir uygulamada veya hizmette oturum açın.
 2. Microsoft size sayı kodu içeren bir kısa mesaj gönderir.
 3. Oturum açma sayfasında belirtilen kutuya kodu girin.
 
@@ -54,7 +54,7 @@ Aşağıdaki bilgiler, cep telefonunuza bir SMS mesajı ile iki adımlı doğrul
 Aşağıdaki bilgiler, iki adımlı doğrulama için Microsoft Authenticator uygulamasını kullanma deneyimini açıklamaktadır. Uygulamayı kullanmanın iki farklı yolu vardır. Cihazınızda anında iletme bildirimleri alabilir veya bir doğrulama kodu almak için uygulamayı açabilirsiniz.
 
 ### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasından bir bildirim ile oturum açmak için
-1. Kullanıcı adınızı ve parolanızı kullanarak Office 365 gibi bir uygulama veya hizmette oturum açın.
+1. Kullanıcı adınızı ve parolanızı kullanarak Microsoft 365 gibi bir uygulamada veya hizmette oturum açın.
 2. Microsoft, cihazınızda Microsoft Authenticator uygulamasına bir bildirim gönderir.
 
    ![Microsoft bildirim gönderiyor](./media/multi-factor-authentication-end-user-signin/notify.png)
@@ -66,7 +66,7 @@ Aşağıdaki bilgiler, iki adımlı doğrulama için Microsoft Authenticator uyg
 
 Doğrulama kodlarını almak için Microsoft Authenticator uygulamasını kullanıyorsanız, uygulamayı açtığınızda hesap adınızın altına bir sayı görürsünüz. Bu sayı, her 30 saniyede bir değişir; böylece aynı numarayı iki kez kullanamazsınız. Bir doğrulama kodu istendiğinde, uygulamayı açın ve şu anda hangi numaranın görüntülendiğini kullanın.
 
-1. Kullanıcı adınızı ve parolanızı kullanarak Office 365 gibi bir uygulama veya hizmette oturum açın.
+1. Kullanıcı adınızı ve parolanızı kullanarak Microsoft 365 gibi bir uygulamada veya hizmette oturum açın.
 2. Microsoft sizden bir doğrulama kodu ister.
 
    ![Doğrulama kodunu girin](./media/multi-factor-authentication-end-user-signin/verify3.png)
@@ -76,7 +76,7 @@ Doğrulama kodlarını almak için Microsoft Authenticator uygulamasını kullan
 ## <a name="signing-in-with-an-alternate-method"></a>Alternatif bir yöntemle oturum açma
 Bazen tercih ettiğiniz doğrulama yöntemi olarak ayarladığınız telefonun veya cihazınızın olması gerekmez. Bu durum, hesabınız için yedekleme yöntemleri ayarlamanızı öneririz. Aşağıdaki bölümde, birincil yönteminizin kullanılamadığı durumlarda alternatif bir yöntemle nasıl oturum alabileceğiniz gösterilmektedir.
 
-1. Kullanıcı adınızı ve parolanızı kullanarak Office 365 gibi bir uygulama veya hizmette oturum açın.
+1. Kullanıcı adınızı ve parolanızı kullanarak Microsoft 365 gibi bir uygulamada veya hizmette oturum açın.
 2. **Farklı bir doğrulama seçeneği kullan**' ı seçin. Ayarlamış olduğunuz sayısına göre farklı doğrulama seçenekleri görürsünüz.
 3. Alternatif bir yöntem seçin ve oturum açın.
 

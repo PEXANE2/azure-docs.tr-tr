@@ -1,6 +1,6 @@
 ---
 title: Gruplara duyarlılık etiketleri atama-Azure AD | Microsoft Docs
-description: Grupları otomatik olarak doldurmak için üyelik kuralları ve bir kural başvurusu oluşturma.
+description: Gruplara duyarlılık etiketleri atamayı öğrenin. Sorun giderme bilgilerini görün ve kullanılabilir ek kaynakları görüntüleyin.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f056b34df0a70374e8bae909f210bfabf107ed4a
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 3179bb294678ee030218e67dafa1c69dcf5d77a0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005947"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056277"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 gruplara duyarlılık etiketleri atama
 
-Azure Active Directory (Azure AD), [Microsoft 365 Uyumluluk Merkezi](https://sip.protection.office.com/homepage) tarafından yayımlanan duyarlılık etiketlerini Microsoft 365 gruplarına uygulamayı destekler. Duyarlılık etiketleri Outlook, Microsoft ekipleri ve SharePoint gibi hizmetler arasında grup için geçerlidir. Bu özellik şu anda genel GA 'dir. Office 365 uygulamaları desteği hakkında daha fazla bilgi için bkz. [duyarlılık etiketleri Için office 365 desteği](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD), [Microsoft 365 Uyumluluk Merkezi](https://sip.protection.office.com/homepage) tarafından yayımlanan duyarlılık etiketlerini Microsoft 365 gruplarına uygulamayı destekler. Duyarlılık etiketleri Outlook, Microsoft ekipleri ve SharePoint gibi hizmetler arasında grup için geçerlidir. Bu özellik şu anda genel GA 'dir. Microsoft 365 Apps desteği hakkında daha fazla bilgi için bkz. [duyarlık etiketleri için Microsoft 365 desteği](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > Bu özelliği yapılandırmak için, Azure AD kuruluşunuzda en az bir etkin Azure Active Directory Premium P1 Lisansı olmalıdır.

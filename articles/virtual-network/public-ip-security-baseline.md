@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd02f2dbb7666ba9f2134ffba4cf683e1e9ac67b
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d90384644c58938bfc8a37ec1231b0d12fd60057
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90039137"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058709"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure genel IP 'si için Azure Güvenlik temeli
 
-Bu güvenlik temeli, [Azure Güvenlik kıyaslama sürümü 1,0](../security/benchmarks/overview.md) ' dan Azure genel IP 'ye kılavuzluk uygular. Azure Güvenlik kıyaslaması, bulut Çözümlerinizi Azure 'da nasıl güvence altına almak için öneriler sağlar. İçerik, Azure Güvenlik kıyaslaması tarafından tanımlanan **güvenlik denetimlerine** ve Azure genel IP 'si için geçerli olan ilgili kılavuza göre gruplandırılır. Azure genel IP 'si için geçerli olmayan **denetimler** dışlandı.
+Bu güvenlik temeli, [Azure Güvenlik kıyaslama sürümü 1,0](../security/benchmarks/overview.md) ' dan Azure genel IP 'ye kılavuzluk uygular. Azure Güvenlik kıyaslaması, bulut Çözümlerinizi Azure 'da nasıl güvence altına almak için öneriler sağlar. İçerik, Azure Güvenlik kıyaslaması tarafından tanımlanan **güvenlik denetimlerine** ve Azure genel IP 'si için geçerli olan ilgili kılavuza göre gruplandırılır. Azure genel IP 'si için geçerli olmayan **denetimler** dışlandı.  Not Azure genel IP 'Leri müşteri verilerini depolamaz.
 
 Azure genel IP 'nin Azure Güvenlik kıyaslaması ile tamamen nasıl eşlendiğini görmek için, [tam Azure genel IP güvenlik temeli eşleme dosyasına](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)bakın.
 
@@ -46,7 +46,7 @@ Azure PowerShell veya Azure CLı, etiketlerine göre kaynakları aramak veya bun
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Merkezi güvenlik günlüğü yönetimini yapılandırma
 
-**Kılavuz**: Azure etkinlik günlüğünü kullanarak, yapılandırmaların Izlenmesini ve genel IP örnekinizdeki değişiklikleri algılamasını sağlar. Denetim düzlemi dışında (örneğin, Azure portal), genel IP kendisi ağ trafiğiyle ilgili Günlükler oluşturmaz. 
+**Kılavuz**: Azure etkinlik günlüğünü kullanarak, yapılandırmaların Izlenmesini ve genel IP örnekinizdeki değişiklikleri algılamasını sağlar. Denetim düzlemi dışında (örneğin, Azure portal), genel IP kendisi ağ trafiğiyle ilgili Günlükler oluşturmaz.
 
 Genel IP, bir Azure sanal ağındaki kaynakların günlüklerini izlemek, tanılamak, görüntülemek ve etkinleştirmek ya da devre dışı bırakmak için araçlar sağlar.
 

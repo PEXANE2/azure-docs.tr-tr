@@ -2,18 +2,18 @@
 title: Sipariş Azure Data Box öğretici | Microsoft Docs
 description: Bu öğreticide, şirket içi verileri Azure 'a aktarmanıza ve Azure Data Box nasıl sipariş alabileceğinizi sağlayan bir karma çözüm olan Azure Data Box hakkında bilgi edinin.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
-ms.author: twooley
-ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/09/2020
+ms.author: alkohli
+ms.openlocfilehash: 2ab74b87b287296c4ff975d5af75714c89001004
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783578"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055725"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -138,7 +138,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 * Windows PowerShell 6.2.4 veya üstünü yükler.
 * Azure PowerShell (AZ) modülünü yükler.
 * Azure Data Box (az. DataBox) modülünü yükler.
-* Azure 'da oturum açın.
+* Azure'da oturum açın.
 
 #### <a name="install-azure-powershell-and-modules-locally"></a>Azure PowerShell ve modülleri yerel olarak yükler
 
@@ -237,7 +237,7 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
     ![Data Box seçeneğini belirtin 1](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
-6. **Sırasıyla** **temel bilgiler** sekmesine gidin. aşağıdaki bilgileri girin veya seçin ve **Ileri ' yi seçin: veri hedefi>**.
+6. **Sırasıyla** **temel bilgiler** sekmesine gidin. Aşağıdaki bilgileri girin veya seçin ve Ileri ' **yi seçin: veri hedefi>**.
 
     |Ayar  |Değer  |
     |---------|---------|
@@ -269,7 +269,18 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
     Yönetilen diskler için belirtilen depolama hesabı, hazırlama depolama hesabı olarak kullanılır. Data Box hizmeti, VHD'leri yönetilen disklere dönüştürmeden ve kaynak gruplarına taşımadan önce hazırlama depolama hesabına sayfa blobları olarak yükler. Daha fazla bilgi için bkz. [Azure'a veri yüklemeyi doğrulama](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
-    Ileri ' yi seçin: devam etmek için **kişi ayrıntıları** .
+    **İleri ' yi seçin:** devam etmek için güvenlik.
+
+1. **Güvenlik**bölümünde, yazılım tabanlı çift şifrelemeyi etkinleştirmek istiyorsanız, **sırasıyla çift şifrelemeyi etkinleştir**' i seçin. 
+
+   Yazılım tabanlı şifreleme, Data Box verilerin AES-256 bit şifrelemesine ek olarak gerçekleştirilir.
+
+   > [!NOTE]
+   > Bu seçeneğin etkinleştirilmesi, sipariş işleme ve veri kopyalamanın daha uzun sürmesiyle yapılır. Siparişinizi oluşturduktan sonra bu seçeneği değiştiremezsiniz.
+
+   ![Veri kutusu içeri aktarma için güvenlik ekranı, Çift şifreleme](media/data-box-deploy-ordered/select-data-box-import-07c.png)
+
+   Ileri ' yi seçin: devam etmek için **kişi ayrıntıları** .
 
 8. **Kişi ayrıntıları**' nda **+ Sevkiyat Adresi Ekle**' yi seçin.
 
@@ -301,7 +312,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
 
 1. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için CLı komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda, için kullanılan parametre ayarları gösterilmektedir `az databox job create` :
 
-   | Ayar (parametre) | Açıklama |  Örnek değer |
+   | Ayar (parametre) | Description |  Örnek değer |
    |---|---|---|
    |resource-group| Var olan bir taneyi kullanın veya yenisini oluşturun. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
    |name| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|
@@ -420,7 +431,7 @@ Bir cihazı sıralamak için Azure PowerShell kullanarak aşağıdaki adımları
 
 2. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için PowerShell komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob)için kullanılan parametre ayarları gösterilmektedir.
 
-    | Ayar (parametre) | Açıklama |  Örnek değer |
+    | Ayar (parametre) | Description |  Örnek değer |
     |---|---|---|
     |ResourceGroupName [gerekli]| Mevcut bir kaynak grubunu kullanın. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
     |Ad [gerekli]| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|

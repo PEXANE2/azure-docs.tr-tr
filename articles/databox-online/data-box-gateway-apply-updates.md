@@ -2,17 +2,17 @@
 title: Azure Data Box Gateway serisi cihaza güncelleştirme yüklemeyi | Microsoft Docs
 description: Azure Data Box Gateway serisi cihaz için Azure portal ve yerel Web Kullanıcı arabirimini kullanarak güncelleştirmelerin nasıl uygulanacağını açıklar.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.topic: article
 ms.date: 06/30/2020
-ms.author: twooley
-ms.openlocfilehash: 3972aecf70a664980e8279152eb001915ae1bb53
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 1b3f0faa2b5f67a23317935f0ad868e3872cf86e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783884"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055972"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>Azure Data Box Gateway güncelleştirin
 
@@ -22,7 +22,7 @@ Bu makalede, Azure Data Box Gateway yerel Web Kullanıcı arabirimi üzerinden v
 >
 > - Güncelleştirme **1911** , cihazınızdaki **1.6.1049.786** yazılım sürümüne karşılık gelir. Bu güncelleştirme hakkında daha fazla bilgi için, [sürüm notları](data-box-gateway-1911-release-notes.md)' na gidin.
 >
-> - Bir güncelleştirme veya Düzeltme yüklemenin cihazınızı yeniden başlatdığını aklınızda bulundurun. Data Box Gateway tek düğümlü bir cihaz olduğundan, sürmekte olan g/ç miktarı bozulur ve cihazınız, cihaz yazılım güncelleştirmesi için 30 dakikaya varan bir kesinti yaşar.
+> - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. Data Box Gateway'in tek düğümlü bir cihaz olduğu düşünüldüğünde devam eden her G/Ç kesintiye uğrar ve cihaz yazılım güncelleştirmesi için cihazınızda 30 dakikaya varan bir kapalı kalma süresi yaşanır.
 
 Bu adımların her biri aşağıdaki bölümlerde açıklanmıştır.
 
@@ -39,7 +39,7 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
 
 2. **Cihaz güncelleştirmeleri** dikey penceresinde, sürüm notlarındaki yeni özelliklerle ilişkili lisans koşullarını gözden geçirdiğinizden emin olun.
 
-    Güncelleştirmeleri **indirip yüklemeyi** veya yalnızca güncelleştirmeleri **indirmeyi** seçebilirsiniz. Daha sonra bu güncelleştirmeleri yüklemeyi tercih edebilirsiniz.
+    Güncelleştirmeleri **indirip yüklemeyi** veya yalnızca güncelleştirmeleri **indirmeyi** seçebilirsiniz. Daha sonra da bu güncelleştirmeleri yükleyebilirsiniz.
 
     ![Güncelleştirmeden sonra yazılım sürümü](./media/data-box-gateway-apply-updates/portal-apply-update-02.png)
 
@@ -63,7 +63,7 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
 
     ![Güncelleştirmeden sonra yazılım sürümü](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    Yalnızca güncelleştirmeleri indirmeyi seçerseniz, **cihaz güncelleştirmeleri** dikey penceresini açmak için bildirimi seçin. **Yükle**’yi seçin.
+    Yalnızca güncelleştirmeleri indirmeyi seçerseniz, **cihaz güncelleştirmeleri** dikey penceresini açmak için bildirimi seçin. **Yükle**'yi seçin.
   
     ![Güncelleştirmeden sonra yazılım sürümü](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -139,7 +139,7 @@ Bu yordamın tamamlandığı 20 dakika sürer. Güncelleştirmeyi veya düzeltme
 
    ![cihaz güncelleştirme](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
 
-3. **Apply** (Uygula) seçeneğini belirleyin.
+3. **Uygula**’yı seçin.
 
    ![cihaz güncelleştirme](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
 

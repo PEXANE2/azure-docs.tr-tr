@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 949afc00b12b1238973f832270d57fff3c2db5f9
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 46116fd7157b6a1cf8112613703aa2388b3ba7d3
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669542"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056192"
 ---
 # <a name="create-a-synapse-workspace"></a>Synapse çalışma alanı oluşturma
 
@@ -33,8 +33,9 @@ Bu öğreticide, bir Synapse çalışma alanı, bir SQL havuzu ve bir Apache Spa
 
 1. Bir çalışma alanı oluşturmak için bir ADLSGEN2 hesabınızın olması gerekir. Yeni bir tane oluşturmak için en basit seçenektir. Mevcut bir işlemi yeniden kullanmak istiyorsanız, bazı ek yapılandırmalar gerçekleştirmeniz gerekir. 
 1. 1. seçenek yeni bir ADLSGEN2 hesabı oluşturma 
-    1. **Data Lake Storage Gen 2**' yi seçin altında **Yeni oluştur** ' a tıklayın ve **contosolake**olarak adlandırın.
-    1. **Data Lake Storage Gen 2**' yi seçin altında **dosya sistemi** ' ne tıklayın ve ardından **kullanıcıları**adlandırın.
+    1. **Data Lake Storage Gen 2**' yi seçmek için gidin. 
+    1. **Yeni oluştur** ' a tıklayın ve **contosolake**olarak adlandırın.
+    1. **Dosya sistemi** ' ne tıklayın ve **kullanıcıları**adlandırın.
 1. 2. seçenek mevcut bir ADLSGEN2 hesabını kullanma. Bu belgenin en altındaki **ADLSGEN2 Storage hesabı Için hazırlama** yönergelerine bakın.
 1. Azure SYNAPSE çalışma alanınız, bu depolama hesabını "birincil" depolama hesabı ve çalışma alanı verilerini depolamak için kapsayıcı olarak kullanacaktır. Çalışma alanı, verileri Apache Spark tablolarında depolar. Spark uygulama günlüklerini **/SYNAPSE/WorkspaceName**adlı bir klasörde depolar.
 1. **Gözden geçir ve oluştur** > **Oluştur**'u seçin. Çalışma alanınız birkaç dakika içinde hazırlanıyor.

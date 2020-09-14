@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327659"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056175"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
 
@@ -188,7 +188,7 @@ Telemetri verileri gönderilmeden önce iletileri filtrelemek için [yönlendirm
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Cihazla bağlandı ve cihaz bağlantısı kesildi olaylarına ilişkin sınırlamalar
 
-Cihaz bağlantısı durum olaylarını almak için, bir cihazın IoT Hub 'ı ile bir ya da bir ' C2D Receive Message ' işlemi yapması gerekir. Ancak, bir cihaz IoT Hub 'a bağlanmak için AMQP protokolünü kullanıyorsa, bir ' C2D Receive Message ' işlemi yapması önerildiğine, aksi takdirde bağlantı durumu bildirimlerinin birkaç dakika geciktirebileceğine unutmayın. Cihazınız MQTT protokolünü kullanıyorsa, IoT Hub C2D bağlantısını açık tutacaktır. AMQP için, [alma zaman uyumsuz API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)'yi, IoT Hub C# SDK IÇIN veya [AMQP için CIHAZ istemcisini](iot-hub-amqp-support.md#device-client)çağırarak C2D bağlantısını açabilirsiniz.
+Cihaz bağlantısı durum olaylarını almak için, bir cihazın IoT Hub 'ı ile bir ya da bir ' C2D Receive Message ' işlemi yapması gerekir. Ancak, bir cihaz IoT Hub 'a bağlanmak için AMQP protokolünü kullanıyorsa, bir ' C2D Receive Message ' işlemi yapması önerildiğine, aksi takdirde bağlantı durumu bildirimlerinin birkaç dakika geciktirebileceğine unutmayın. Cihazınız MQTT protokolünü kullanıyorsa, IoT Hub C2D bağlantısını açık tutacaktır. AMQP için, IoT Hub C# SDK için zaman uyumsuz API 'sini veya [AMQP için cihaz istemcisini](iot-hub-amqp-support.md#device-client)çağırarak C2D bağlantısını açabilirsiniz.
 
 Telemetri gönderiyorsanız D2C bağlantısı açıktır. 
 
@@ -214,4 +214,4 @@ IoT Hub olaylarını işleyen uygulamalar aşağıdaki önerilen yöntemleri izl
 
 * [Yönlendirme IoT Hub olayları ve iletileri arasındaki farkları karşılaştırın](iot-hub-event-grid-routing-comparison.md)
 
-* [Azure haritalar kullanarak IoT uzamsal analizlerini uygulamak için IoT telemetri olaylarını nasıl kullanacağınızı öğrenin](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)
+* [Azure haritalar kullanarak IoT uzamsal analizlerini uygulamak için IoT telemetri olaylarını nasıl kullanacağınızı öğrenin](../azure-maps/tutorial-iot-hub-maps.md)

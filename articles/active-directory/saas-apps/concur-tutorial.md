@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Concur ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
-description: Azure Active Directory ve Concur arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+description: Azure Active Directory ve Concur arasında SSO yapılandırma hakkında bilgi edinin.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71e6dc8bdb8bdccdaaf845498eebdbe75a8b35c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 38cc5458b2e62e071227a2372d56e4647e347338
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547197"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056039"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>Öğretici: Concur ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -41,7 +41,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Concur, **SP** tarafından başlatılan SSO 'yu destekler
 * Concur **, tam zamanında** Kullanıcı sağlamayı destekler
-* Concur yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Concur yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-concur-from-the-gallery"></a>Galeriden Concur ekleme
 
@@ -54,7 +54,7 @@ Concur 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Concur** yazın.
 1. Sonuçlar panelinden **Concur** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-concur"></a>Concur için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-concur"></a>Concur için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Concur ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Concur içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -82,9 +82,18 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.concursolutions.com/UI/SSO/<OrganizationId>`
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<customer-domain>.concursolutions.com`
+    
+    c. **Yanıt URL 'si**IÇIN aşağıdaki URL örüntüsünün birini girin:
 
+    | Yanıt URL'si|
+    |----------|
+    | `https://www.concursolutions.com/SAMLRedirector/SAMLReceiver.ashx` |
+    | `https://<customer-domain>.concursolutions.com/<OrganizationId>` |
+    | `https://<customer-domain>.concur.com` |
+    | `https://<customer-domain>.concursolutions.com` | 
+    
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Concur istemci desteği ekibine](https://www.concur.co.in/contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Concur istemci desteği ekibine](https://www.concur.co.in/contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 

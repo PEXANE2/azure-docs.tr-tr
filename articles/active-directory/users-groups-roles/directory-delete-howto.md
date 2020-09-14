@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c0b203647bc57c7c7eb48e321895cf3b3fa7d44
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 97a8f372a90d3add99390220d89214c6ad205db6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795431"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056311"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Azure Active Directory kiracı silme
 
@@ -27,12 +27,12 @@ Bir Azure AD kuruluşu (kiracı) silindiğinde, kuruluşta bulunan tüm kaynakla
 
 ## <a name="prepare-the-organization"></a>Organizasyonu hazırlama
 
-Birkaç denetim geçirene kadar Azure AD 'de bir kuruluşu silemezsiniz. Bu denetimler, bir Azure AD kuruluşunun silinmesinin, Office 365 ' de oturum açma veya Azure 'daki kaynaklara erişme olanağı gibi Kullanıcı erişimini olumsuz şekilde etkilemesinin riskini azaltır. Örneğin, bir abonelikle ilişkili kuruluş yanlışlıkla silinirse, kullanıcılar söz konusu aboneliğin Azure kaynaklarına erişemez. Şu koşullar denetlenir:
+Birkaç denetim geçirene kadar Azure AD 'de bir kuruluşu silemezsiniz. Bu denetimler, bir Azure AD organizasyonunun silinmesi, Azure 'daki Microsoft 365 oturum açma veya kaynaklara erişme özelliği gibi Kullanıcı erişimini olumsuz şekilde etkiler. Örneğin, bir abonelikle ilişkili kuruluş yanlışlıkla silinirse, kullanıcılar söz konusu aboneliğin Azure kaynaklarına erişemez. Şu koşullar denetlenir:
 
 * Azure AD kuruluşunda (kiracı), kuruluşun silineceği bir genel yönetici haricinde hiçbir Kullanıcı olamaz. Kuruluşun silinebilmesi için önce diğer tüm kullanıcıların silinmesi gerekir. Kullanıcılar Şirket içinden eşitlendiğinde, eşitlemenin önce kapatılması ve kullanıcıların Azure portal veya Azure PowerShell cmdlet 'leri kullanılarak bulut kuruluşunda silinmesi gerekir.
 * Kuruluşta hiç uygulama yok. Kuruluşun silinebilmesi için önce herhangi bir uygulamanın kaldırılması gerekir.
 * Kuruluşa bağlı çok faktörlü kimlik doğrulama sağlayıcısı yok.
-* Microsoft Azure, Office 365 veya kuruluşla ilişkili Azure AD Premium gibi herhangi bir Microsoft Online hizmeti için abonelik olamaz. Örneğin, Azure 'da sizin için varsayılan bir Azure AD kuruluşu oluşturulduysa, Azure aboneliğiniz kimlik doğrulaması için bu kuruluşa hala dayandıysa bu kuruluşu silemezsiniz. Benzer şekilde, başka bir Kullanıcı abonelikle ilişkili olduğunda bir kuruluşu silemezsiniz.
+* Kuruluşla ilişkili Microsoft Azure, Microsoft 365 veya Azure AD Premium gibi herhangi bir Microsoft Online hizmeti için abonelik olamaz. Örneğin, Azure 'da sizin için varsayılan bir Azure AD kuruluşu oluşturulduysa, Azure aboneliğiniz kimlik doğrulaması için bu kuruluşa hala dayandıysa bu kuruluşu silemezsiniz. Benzer şekilde, başka bir Kullanıcı abonelikle ilişkili olduğunda bir kuruluşu silemezsiniz.
 
 ## <a name="delete-the-organization"></a>Organizasyonu silme
 
@@ -52,16 +52,16 @@ Birkaç denetim geçirene kadar Azure AD 'de bir kuruluşu silemezsiniz. Bu dene
 
 ## <a name="if-you-cant-delete-the-organization"></a>Organizasyonu silemiyorum
 
-Azure AD kuruluşunuzu yapılandırdığınızda, kuruluşunuz için Azure AD Premium P2, Office 365 Business Premium veya Enterprise Mobility + Security E5 gibi lisans tabanlı abonelikleri de etkinleştirmiş olabilirsiniz. Yanlışlıkla veri kaybını önlemek için, abonelikler tamamen silinene kadar bir kuruluşu silemezsiniz. Aboneliklerin, kuruluşun silinmesine izin vermek için, **sağlaması kaldırılmış** durumda olmalıdır. Bir **zaman aşımına uğradı** veya **iptal edildi** bir abonelik **devre dışı** durumuna geçer ve son aşama **sağlanmakta** olan durumdur.
+Azure AD kuruluşunuzu yapılandırdığınızda, kuruluşunuz için Azure AD Premium P2, Microsoft 365 İş standart veya Enterprise Mobility + Security E5 gibi lisans tabanlı abonelikleri de etkinleştirmiş olabilirsiniz. Yanlışlıkla veri kaybını önlemek için, abonelikler tamamen silinene kadar bir kuruluşu silemezsiniz. Aboneliklerin, kuruluşun silinmesine izin vermek için, **sağlaması kaldırılmış** durumda olmalıdır. Bir **zaman aşımına uğradı** veya **iptal edildi** bir abonelik **devre dışı** durumuna geçer ve son aşama **sağlanmakta** olan durumdur.
 
-Deneme sürümü Office 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değildir), aşağıdaki tabloya bakın. Office 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. [office 365 for Business aboneliğim sona erdiğinde verilere ne olur?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3) 
+Deneme Microsoft 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değil) bekleneceği için aşağıdaki tabloya bakın. Microsoft 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. My [Data ve Access for Business aboneliğMicrosoft 365 im sona erdiğinde ne olur?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
 Abonelik durumu | Veriler | Verilere erişim
 ----- | ----- | -----
-Etkin (deneme için 30 gün) | Tüm veriler erişilebilir | Kullanıcıların Office 365 dosyalarına veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır 
-Zaman aşımına uğradı (30 gün) | Tüm veriler erişilebilir| Kullanıcıların Office 365 dosyalarına veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır
-Devre dışı (30 gün) | Yalnızca yönetici tarafından erişilebilen veriler | Kullanıcılar Office 365 dosyalarına veya uygulamalarına erişemez<br>Yöneticiler Microsoft 365 yönetim merkezine erişebilir, ancak kullanıcılara lisans atayamaz veya kullanıcıları güncelleştirebilir
-Sağlaması kaldırıldı (devre dışı bırakılsa 30 gün) | Silinen veriler (başka bir hizmet kullanımda değilse otomatik olarak silinir) | Kullanıcılar Office 365 dosyalarına veya uygulamalarına erişemez<br>Yöneticiler Microsoft 365 yönetim merkezine erişerek diğer abonelikleri satın alabilir ve yönetebilir
+Etkin (deneme için 30 gün) | Tüm veriler erişilebilir | Kullanıcıların Microsoft 365 dosyalara veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır 
+Zaman aşımına uğradı (30 gün) | Tüm veriler erişilebilir| Kullanıcıların Microsoft 365 dosyalara veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır
+Devre dışı (30 gün) | Yalnızca yönetici tarafından erişilebilen veriler | Kullanıcılar Microsoft 365 dosyalara veya uygulamalara erişemez<br>Yöneticiler Microsoft 365 yönetim merkezine erişebilir, ancak kullanıcılara lisans atayamaz veya kullanıcıları güncelleştirebilir
+Sağlaması kaldırıldı (devre dışı bırakılsa 30 gün) | Silinen veriler (başka bir hizmet kullanımda değilse otomatik olarak silinir) | Kullanıcılar Microsoft 365 dosyalara veya uygulamalara erişemez<br>Yöneticiler Microsoft 365 yönetim merkezine erişerek diğer abonelikleri satın alabilir ve yönetebilir
 
 ## <a name="delete-a-subscription"></a>Abonelik silme
 
@@ -97,7 +97,7 @@ Microsoft 365 Yönetim merkezini kullanarak, üç gün içinde silinmek üzere, 
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Silmeyi engelleyen bir deneme aboneliğine sahibim
 
-Microsoft Power BI, Rights Management Hizmetleri, Microsoft Power Apps veya Dynamics 365 gibi [self servis kaydolma ürünleri](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) vardır; bireysel kullanıcılar, Azure AD kuruluşunuzda kimlik doğrulaması için bir Konuk Kullanıcı da oluşturan Office 365 aracılığıyla kaydolabilir. Bu self servis ürünleri, ürünler kuruluştan tamamen silinene kadar, veri kaybını önlemek için Dizin silmelerini engeller. Yalnızca Azure AD yöneticisi tarafından, kullanıcının tek tek kaydolup kaydolmadığını veya ürünün atandığını de silinebilirler.
+Microsoft Power BI, Rights Management Hizmetleri, Microsoft Power Apps veya Dynamics 365 gibi [self servis kaydolma ürünleri](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) vardır. bireysel kullanıcılar, Azure AD kuruluşunuzda kimlik doğrulaması için de Konuk kullanıcı oluşturan Microsoft 365 aracılığıyla kaydolabilir. Bu self servis ürünleri, ürünler kuruluştan tamamen silinene kadar, veri kaybını önlemek için Dizin silmelerini engeller. Yalnızca Azure AD yöneticisi tarafından, kullanıcının tek tek kaydolup kaydolmadığını veya ürünün atandığını de silinebilirler.
 
 Nasıl atandıklarından bağımsız olarak iki tür self servis kaydolma ürünü vardır: 
 
@@ -108,7 +108,7 @@ Self Servis kaydolma ürününün silinmesine başladığınızda, eylem veriler
 
 Mevcut olan Self Servis kaydolma ürünleri ve hizmetleri hakkında daha fazla bilgi için bkz. [kullanılabilir self servis programları](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
 
-Deneme sürümü Office 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değildir), aşağıdaki tabloya bakın. Office 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. [office 365 for Business aboneliğim sona erdiğinde verilere ne olur?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)
+Deneme Microsoft 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değil) bekleneceği için aşağıdaki tabloya bakın. Microsoft 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. My [Data ve Access for Business aboneliğMicrosoft 365 im sona erdiğinde ne olur?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
 Ürün durumu | Veriler | Verilere erişim
 ------------- | ---- | --------------
