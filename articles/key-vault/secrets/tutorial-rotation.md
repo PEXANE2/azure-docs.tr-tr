@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c2d1a46a35ef38791b6a3b47c300aa1b47f70324
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378024"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086914"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Bir kimlik doğrulama kimlik bilgileri kümesi kullanan kaynaklar için gizli dizi döndürmeyi otomatikleştirin
 
@@ -24,7 +24,7 @@ Azure hizmetlerinde kimlik doğrulaması yapmanın en iyi yolu [yönetilen bir k
 
 Bu öğreticide, tek bir kimlik doğrulama kimlik bilgileri kümesi kullanan veritabanları ve hizmetler için düzenli aralıklarla yapılan gizli dizi döndürmenin nasıl otomatikleştirdiği gösterilmektedir. Özellikle, bu öğretici Azure Event Grid bildirimi tarafından tetiklenen bir işlev kullanılarak Azure Key Vault depolanan SQL Server parolalarını döndürür:
 
-![Döndürme çözümünün diyagramı](../media/rotate1.png)
+![Döndürme çözümünün diyagramı](../media/rotate-1.png)
 
 1. Bir parolanın süre sonu tarihinden otuz gün önce, Key Vault Event Grid "sona erme" olayını yayınlar.
 1. Event Grid olay aboneliklerini denetler ve olaya abone olan işlev uygulama uç noktasını çağırmak için HTTP POST kullanır.
@@ -34,7 +34,7 @@ Bu öğreticide, tek bir kimlik doğrulama kimlik bilgileri kümesi kullanan ver
 > [!NOTE]
 > 3 ve 4. adımlar arasında bir gecikme olabilir. Bu süre boyunca Key Vault gizli dizi SQL Server kimlik doğrulaması yapamaz. Adımların hiçbirinde hata olması durumunda iki saat boyunca yeniden denemeler Event Grid.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Azure Key Vault
@@ -46,10 +46,10 @@ Mevcut Key Vault ve SQL Server yoksa dağıtım bağlantısı aşağıdaki şeki
 
 1. **Kaynak grubu**altında **Yeni oluştur**' u seçin. Grubu **akvdönüşü**olarak adlandırın.
 1. **SQL Yöneticisi oturum açma**bölümünde SQL yönetici oturum açma adı yazın. 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 1. **Oluştur**’u seçin
 
-    ![Kaynak grubu oluşturma](../media/rotate2.png)
+    ![Kaynak grubu oluşturma](../media/rotate-2.png)
 
 Artık Key Vault ve SQL Server bir örnek vardır. Aşağıdaki komutu çalıştırarak bu kurulumu Azure CLı 'da doğrulayabilirsiniz:
 
@@ -91,7 +91,7 @@ Sonra, sistem tarafından yönetilen kimliğe sahip bir işlev uygulaması oluş
 1. **Gözden geçir ve oluştur**’u seçin.
 1. **Oluştur**’u seçin.
 
-   ![Gözden geçir + oluştur ' u seçin](../media/rotate3.png)
+   ![Gözden geçir + oluştur ' u seçin](../media/rotate-3.png)
 
 Yukarıdaki adımları tamamladıktan sonra bir depolama hesabınız, sunucu grubunuz ve bir işlev uygulamanız olacaktır. Aşağıdaki komutu çalıştırarak bu kurulumu Azure CLı 'da doğrulayabilirsiniz:
 
@@ -207,11 +207,11 @@ Kısa süre sonu tarihi ile bir gizli dizi oluşturmak `SecretNearExpiry` , 15 d
 
 Gizli dizinin döndürülmeyeceğini doğrulamak için **Key Vault**  >  **gizli**dizi sayfasına gidin:
 
-![Gizli anahtarlara git](../media/rotate8.png)
+![Gizli anahtarlara git](../media/rotate-8.png)
 
 **SQLPassword** gizli anahtarını açın ve özgün ve döndürülmüş sürümleri görüntüleyin:
 
-![SQLUSER parolasını açın](../media/rotate9.png)
+![SQLUSER parolasını açın](../media/rotate-9.png)
 
 ### <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
@@ -242,9 +242,9 @@ https://akvrotation-app.azurewebsites.net/
 
 Uygulama tarayıcıda açıldığında, **oluşturulan gizli değeri** ve bir **veritabanı bağlı** değeri *true*olarak görürsünüz.
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 - Öğretici: [iki kimlik bilgileri kümesi olan kaynaklar Için döndürme](tutorial-rotation-dual.md)
-- Genel Bakış: [Azure Event Grid Key Vault izleme (Önizleme)](../general/event-grid-overview.md)
+- Genel Bakış: [Azure Event Grid Key Vault izleme](../general/event-grid-overview.md)
 - Nasıl yapılır: [Anahtar Kasası gizli anahtarı değiştiğinde e-posta alma](../general/event-grid-logicapps.md)
-- [Azure Key Vault için Azure Event Grid olay şeması (Önizleme)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault için Azure Event Grid olay şeması](../../event-grid/event-schema-key-vault.md)

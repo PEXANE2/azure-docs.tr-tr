@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: c8de7148e91f8fafa4a2b1f8a661964a77ead215
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009146"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089454"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Veri tabanlı stil Ifadeleri (Web SDK)
 
@@ -72,7 +72,12 @@ Bu belgedeki tüm örnekler, farklı ifade türlerinin kullanılabileceği farkl
         "subTitle": "Building 40", 
         "temperature": 72,
         "title": "Cafeteria", 
-        "zoneColor": "red"
+        "zoneColor": "red",
+        "abcArray": ['a', 'b', 'c'],
+        "array2d": [['a', 'b'], ['x', 'y']],
+        "_style": {
+            "fillColor": 'red'
+        }
     }
 }
 ```
@@ -137,6 +142,28 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Benzer şekilde, çokgenler ana hattı çizgi katmanlarında işlenir. Bir çizgi katmanında bu davranışı devre dışı bırakmak için yalnızca ve özelliklerine izin veren bir filtre ekleyin `LineString` `MultiLineString` .  
 
+Veri ifadelerinin nasıl kullanılacağına ilişkin bazı ek örnekler aşağıda verilmiştir:
+
+```javascript
+//Get item [2] from an array "properties.abcArray[1]" = "c"
+['at', 2, ['get', 'abcArray']]
+
+//Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
+['at', 1, ['at', 0, ['get', 'array2d']]]
+
+//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+['in', 'a', ['get', 'abcArray']]
+
+//Get the length of an array "properties.abcArray.length" = 3
+['length', ['get', 'abcArray']]
+
+//Get the value of a subproperty "properties._style.fillColor" = "red"
+['get', 'fillColor', ['get', '_style']]
+
+//Check that "fillColor" exists as a subproperty of "_style".
+['has', 'fillColor', ['get', '_style']]
+```
+
 ## <a name="math-expressions"></a>Matematik ifadeleri
 
 Matematik ifadeleri, ifade çerçevesi içinde veri odaklı hesaplamalar gerçekleştirmek için matematik işleçleri sağlar.
@@ -181,14 +208,14 @@ Toplama ifadesi üç değer alır: bir işleç değeri ve başlangıç değeri v
 ```
 
 - işleç: kümedeki her bir nokta için hesaplanan tüm değerlere karşı uygulanan bir ifade işlevi `mapExpression` . Desteklenen işleçler: 
-    - Sayılar için:,, `+` `*` `max` ,`min`
-    - Boole değerleri için: `all` ,`any`
+    - Sayılar için:,, `+` `*` `max` , `min`
+    - Boole değerleri için: `all` , `any`
 - InitialValue: ilk hesaplanan değerin oluşturulduğu başlangıç değeri.
 - mapExpression: veri kümesindeki her bir noktaya göre uygulanan bir ifade.
 
 **Örnekler**
 
-Bir veri kümesindeki tüm özellikler bir sayı olan bir `revenue` özelliğe sahiptir. Daha sonra, bir kümede bulunan ve veri kümesinden oluşturulan tüm noktaların toplam geliri hesaplanabilir. Bu hesaplama aşağıdaki toplama ifadesi kullanılarak yapılır:`['+', 0, ['get', 'revenue']]`
+Bir veri kümesindeki tüm özellikler bir sayı olan bir `revenue` özelliğe sahiptir. Daha sonra, bir kümede bulunan ve veri kümesinden oluşturulan tüm noktaların toplam geliri hesaplanabilir. Bu hesaplama aşağıdaki toplama ifadesi kullanılarak yapılır: `['+', 0, ['get', 'revenue']]`
 
 ## <a name="boolean-expressions"></a>Mantıksal ifadeler
 
@@ -410,7 +437,7 @@ Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türleri
 | `['typeof', value]` | string | Verilen değerin türünü tanımlayan bir dize döndürür. |
 
 > [!TIP]
-> Tarayıcı konsolunda aşağıdakine benzer bir hata iletisi varsa `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` , kodunuzda ilk değeri için bir dize olmayan bir dizi içeren bir ifade olduğu anlamına gelir. İfadenin bir dizi döndürmesini istiyorsanız, diziyi ifadesiyle sarın `literal` . Aşağıdaki örnek, `offset` `match` nokta özelliğinin özelliğinin değerine bağlı olarak iki sayı değeri arasında seçim yapmak için bir ifade kullanarak bir sembol katmanının simge seçeneğini ayarlar `entityType` .
+> Tarayıcı konsolunda aşağıdakine benzer bir hata iletisi varsa `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` , kodunuzda ilk değeri için bir dize olmayan bir dizi içeren bir ifade olduğu anlamına gelir. İfadenin bir dizi döndürmesini istiyorsanız, diziyi ifadesiyle sarın `literal` . Aşağıdaki örnek, `offset` `match` nokta özelliğinin özelliğinin değerine bağlı olarak iki sayı değeri arasında seçim yapmak için bir ifade kullanarak bir sembol katmanının simge seçeneğini ayarlar  `entityType` .
 >
 > ```javascript
 > var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -502,9 +529,9 @@ Bir `interpolate` ifade, durdurma değerleri arasında ilişkilendirme yaparak s
 
 Bir ifadede kullanılabilecek üç tür ilişkilendirme yöntemi vardır `interpolate` :
  
-* `['linear']`-Durak çifti arasında doğrusal bir şekilde enterpolasyonlar.
-* `['exponential', base]`-Duraklar arasında üstel olarak katlanarak enterpolasyonlar. `base`Değer, çıktının arttığı hızı denetler. Daha yüksek değerler, çıktıyı aralığın üst ucunda daha fazla artar. `base`1 ' e yakın bir değer, daha fazla doğrusal bir şekilde artan bir çıktı üretir.
-* `['cubic-bezier', x1, y1, x2, y2]`-Verilen denetim noktaları tarafından tanımlanan [üçüncü dereceden Bezier eğrisini](https://developer.mozilla.org/docs/Web/CSS/timing-function) kullanarak enterpolasyonlar.
+* `['linear']` -Durak çifti arasında doğrusal bir şekilde enterpolasyonlar.
+* `['exponential', base]` -Duraklar arasında üstel olarak katlanarak enterpolasyonlar. `base`Değer, çıktının arttığı hızı denetler. Daha yüksek değerler, çıktıyı aralığın üst ucunda daha fazla artar. `base`1 ' e yakın bir değer, daha fazla doğrusal bir şekilde artan bir çıktı üretir.
+* `['cubic-bezier', x1, y1, x2, y2]` -Verilen denetim noktaları tarafından tanımlanan [üçüncü dereceden Bezier eğrisini](https://developer.mozilla.org/docs/Web/CSS/timing-function) kullanarak enterpolasyonlar.
 
 İşte bu farklı türlerde ara nesnelerin nasıl görüneceğine ilişkin bir örnek. 
 
@@ -609,7 +636,7 @@ Yalnızca belirli katmanlara uygulanan özel ifadeler.
 
 ### <a name="heat-map-density-expression"></a>Isı haritası yoğunluğu ifadesi
 
-Isı haritası yoğunluğu ifadesi, ısı haritası katmanındaki her bir piksel için ısı haritası yoğunluğu değerini alır ve olarak tanımlanır `['heatmap-density']` . Bu değer ile arasında bir sayıdır `0` `1` . `interpolation` `step` Isı haritasını renklendirmek için kullanılan renk degradesini tanımlamak için veya ifadesiyle birlikte kullanılır. Bu ifade yalnızca ısı haritası katmanının [Color seçeneğinde](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) kullanılabilir.
+Isı haritası yoğunluğu ifadesi, ısı haritası katmanındaki her bir piksel için ısı haritası yoğunluğu değerini alır ve olarak tanımlanır `['heatmap-density']` . Bu değer ile arasında bir sayıdır `0` `1` . `interpolation` `step` Isı haritasını renklendirmek için kullanılan renk degradesini tanımlamak için veya ifadesiyle birlikte kullanılır. Bu ifade yalnızca ısı haritası katmanının [Color seçeneğinde](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions#color) kullanılabilir.
 
 > [!TIP]
 > Dizin 0 ' daki, bir enterpolasyon ifadesinde veya bir adım renginin varsayılan renginden renk, veri bulunmayan alanın rengini tanımlar. 0 dizinindeki renk, bir arka plan rengi tanımlamak için kullanılabilir. Birçok, bu değeri saydam veya yarı saydam bir siyah olarak ayarlamayı tercih eder.
@@ -653,7 +680,7 @@ Daha fazla bilgi için bkz. [ısı haritası katmanı ekleme](map-add-heat-map-l
 
 ### <a name="line-progress-expression"></a>Satır ilerleme ifadesi
 
-Bir satır ilerleme ifadesi, ilerleme durumunu çizgi katmanında bir gradyan çizgisi üzerinde alır ve olarak tanımlanır `['line-progress']` . Bu değer 0 ile 1 arasında bir sayıdır. Or ifadesi ile birlikte kullanılır `interpolation` `step` . Bu ifade yalnızca çizgi katmanının [Strokegradient seçeneğiyle]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) birlikte kullanılabilir. 
+Bir satır ilerleme ifadesi, ilerleme durumunu çizgi katmanında bir gradyan çizgisi üzerinde alır ve olarak tanımlanır `['line-progress']` . Bu değer 0 ile 1 arasında bir sayıdır. Or ifadesi ile birlikte kullanılır `interpolation` `step` . Bu ifade yalnızca çizgi katmanının [Strokegradient seçeneğiyle]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions#strokegradient) birlikte kullanılabilir. 
 
 > [!NOTE]
 > `strokeGradient`Çizgi katmanının seçeneği, `lineMetrics` veri kaynağı seçeneğinin olarak ayarlanmasını gerektirir `true` .
@@ -684,9 +711,9 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 Metin alanı biçimi ifadesi, `textField` `textOptions` karışık metin biçimlendirmesi sağlamak üzere sembol katmanları özelliğinin seçeneğiyle birlikte kullanılabilir. Bu ifade, bir giriş dizesi ve biçimlendirme seçenekleri kümesinin belirtilmesini sağlar. Bu ifadedeki her giriş dizesi için aşağıdaki seçenekler belirlenebilir.
 
- * `'font-scale'`-Yazı tipi boyutu için ölçekleme faktörünü belirtir. Belirtilmişse, bu değer `size` bağımsız dize için öğesinin özelliğini geçersiz kılar `textOptions` .
- * `'text-font'`-Bu dize için kullanılması gereken bir veya daha fazla yazı tipi ailesini belirtir. Belirtilmişse, bu değer `font` bağımsız dize için öğesinin özelliğini geçersiz kılar `textOptions` .
- * `'text-color'`-İşleme sırasında metne uygulanacak rengi belirtir. 
+ * `'font-scale'` -Yazı tipi boyutu için ölçekleme faktörünü belirtir. Belirtilmişse, bu değer `size` bağımsız dize için öğesinin özelliğini geçersiz kılar `textOptions` .
+ * `'text-font'` -Bu dize için kullanılması gereken bir veya daha fazla yazı tipi ailesini belirtir. Belirtilmişse, bu değer `font` bağımsız dize için öğesinin özelliğini geçersiz kılar `textOptions` .
+ * `'text-color'` -İşleme sırasında metne uygulanacak rengi belirtir. 
 
 Aşağıdaki sözde kod, metin alanı biçim ifadesinin yapısını tanımlar. 
 
@@ -743,16 +770,16 @@ Bu katman, aşağıdaki görüntüde gösterildiği gibi nokta özelliğini olu�
  
 <center>
 
-![Biçimli metin alanı ](media/how-to-expressions/text-field-format-expression.png) olan nokta özelliğinin görüntüsü</center>
+![Biçimli metin alanı ](media/how-to-expressions/text-field-format-expression.png) olan nokta özelliğinin görüntüsü </center>
 
 ### <a name="number-format-expression"></a>Sayı biçimi ifadesi
 
 `number-format`İfade yalnızca `textField` bir sembol katmanının seçeneğiyle birlikte kullanılabilir. Bu ifade, belirtilen sayıyı biçimli bir dizeye dönüştürür. Bu ifade, JavaScript [Number. toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) işlevini sarmalayan ve aşağıdaki seçenek kümesini destekler.
 
- * `locale`-Sayıları, belirtilen dille hizalanan bir şekilde dizelere dönüştürmek için bu seçeneği belirtin. Bu seçeneğe bir [BCP 47 Language etiketi](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) geçirin.
- * `currency`-Sayıyı bir para birimini temsil eden bir dizeye dönüştürmek için. Olası değerler [ıso 4217 para birimi kodlarıdır](https://en.wikipedia.org/wiki/ISO_4217), örneğin ABD Doları IÇIN "USD", Euro IÇIN "EUR" veya Çince RMB IÇIN "CNY" gibi.
- * `'min-fraction-digits'`-Sayının dize sürümüne dahil edilecek en az ondalık basamak sayısını belirtir.
- * `'max-fraction-digits'`-Sayının dize sürümüne dahil edilecek en fazla ondalık basamak sayısını belirtir.
+ * `locale` -Sayıları, belirtilen dille hizalanan bir şekilde dizelere dönüştürmek için bu seçeneği belirtin. Bu seçeneğe bir [BCP 47 Language etiketi](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) geçirin.
+ * `currency` -Sayıyı bir para birimini temsil eden bir dizeye dönüştürmek için. Olası değerler [ıso 4217 para birimi kodlarıdır](https://en.wikipedia.org/wiki/ISO_4217), örneğin ABD Doları IÇIN "USD", Euro IÇIN "EUR" veya Çince RMB IÇIN "CNY" gibi.
+ * `'min-fraction-digits'` -Sayının dize sürümüne dahil edilecek en az ondalık basamak sayısını belirtir.
+ * `'max-fraction-digits'` -Sayının dize sürümüne dahil edilecek en fazla ondalık basamak sayısını belirtir.
 
 Aşağıdaki sözde kod, metin alanı biçim ifadesinin yapısını tanımlar. 
 
@@ -916,16 +943,16 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 İfadeleri destekleyen katman seçenekleri hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"] 
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
+> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 > [!div class="nextstepaction"] 
-> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
+> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
+> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
 > [!div class="nextstepaction"] 
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions)

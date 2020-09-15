@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: bbb1378419c68db07be5ca14ca6834810f2fc9f5
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: e85937103e94a0fbb8dd8be92bb22ee5078df70a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055473"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087329"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>ADT gezginini kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -31,7 +31,7 @@ Hızlı başlangıç aşağıdaki önemli adımları içerir:
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil.":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için bir Azure aboneliğine sahip olmanız gerekir. Henüz bir tane yoksa, şimdi **[ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** .
 
@@ -106,6 +106,9 @@ ADT Gezginini ayarladığınız örnekle çalışacak şekilde yapılandırmak i
 
 >[!NOTE]
 > Aynı simgeyi seçerek, oturum açma kutusunu tekrar çekmek için bu bilgileri dilediğiniz zaman yeniden ziyaret edebilir/düzenleyebilirsiniz. Bu, geçirilen değerleri tutacak.
+
+> [!TIP]
+> Bağlandığınızda bir SignalRService. Subscribe hata iletisi gösteriliyorsa, ADT URL 'nizin *https://* ön ekine sahip olduğundan emin olun.
 
 Microsoft 'tan bir *izin* iste açılan pencere görürseniz, bu uygulamaya izin verin ve devam etmek için kabul edin.
 

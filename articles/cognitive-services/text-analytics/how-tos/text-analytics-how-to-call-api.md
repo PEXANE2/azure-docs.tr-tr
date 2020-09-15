@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fec85a03b74155b5b18145bfaddc5d326c910bc9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561015"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087312"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -27,7 +27,7 @@ Yönetilecek veri varlığı olmadığından Metin Analizi durum bilgisiz olduğ
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -59,10 +59,10 @@ Hizmet, boyutu 1 MB 'a kadar olan isteği kabul eder. Postman (veya başka bir W
 
    Kaynak uç noktaları aşağıdaki gibidir (bölgeniz farklılık gösterebilir):
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/entities/recognition/general`
 
 2. Üç istek üst bilgilerini ayarlayın:
 
@@ -81,8 +81,8 @@ Hizmet, boyutu 1 MB 'a kadar olan isteği kabul eder. Postman (veya başka bir W
 5. Bazı JSON belgelerini amaçlanan analiz için geçerli bir biçimde yapıştırın. Belirli bir analiz hakkında daha fazla bilgi için aşağıdaki konulara bakın:
 
   + [Dil algılama](text-analytics-how-to-language-detection.md)  
-  + [Anahtar tümceciği ayıklama](text-analytics-how-to-keyword-extraction.md)  
-  + [Yaklaşım Analizi](text-analytics-how-to-sentiment-analysis.md)  
+  + [Anahtar ifade ayıklama](text-analytics-how-to-keyword-extraction.md)  
+  + [Yaklaşım analizi](text-analytics-how-to-sentiment-analysis.md)  
   + [Varlık tanıma](text-analytics-how-to-entity-linking.md)  
 
 

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541745"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088315"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD bağlantısı sorunlarını giderme
 Bu makalede, Azure AD Connect ile Azure AD arasındaki bağlantının nasıl çalıştığı ve bağlantı sorunlarını nasıl giderebileceğiniz açıklanır. Bu sorunlar büyük olasılıkla ara sunucu içeren bir ortamda görülebilir.
@@ -33,7 +33,7 @@ Azure AD Connect, kimlik doğrulaması için modern kimlik doğrulaması (ADAL k
 Bu makalede, Fabrikam 'ın proxy 'si aracılığıyla Azure AD 'ye nasıl bağlandığını göstereceğiz. Proxy sunucusu fabrikamproxy olarak adlandırılır ve 8080 numaralı bağlantı noktasını kullanıyor.
 
 İlk olarak [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) doğru yapılandırıldığından ve machine.config dosya güncelleştirmesinden sonra **Microsoft Azure AD Eşitleme hizmetinin** yeniden başlatıldığından emin olun.
-![MachineConfig](./media/tshoot-connect-connectivity/machineconfig.png)
+![Ekran görüntüsü makine noktası yapılandırma dosyasının bir parçasını gösterir.](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
 > Bazı Microsoft dışı bloglarda, bunun yerine miiserver.exe.config yapılması gerektiğine ilişkin değişiklikler belgelenmiştir. Ancak, bu dosyanın her yükseltme sırasında üzerine yazılır, böylece ilk yüklemede çalışıyor olsa bile sistem ilk yükseltme sırasında çalışmayı durduruyor. Bu nedenle, bunun yerine machine.config güncelleştirme önerisi.
@@ -60,7 +60,7 @@ Aşağıdaki sorunlar, Yükleme sihirbazında karşılaştığınız en yaygın 
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>Yükleme Sihirbazı doğru yapılandırılmadı
 Sihirbazın proxy 'sine ulaşamadığınızda bu hata görüntülenir.
-![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
+![Ekran görüntüsünde bir hata gösterilir: kimlik bilgileri doğrulanamıyor.](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * Bu hatayı görürseniz [machine.config](how-to-connect-install-prerequisites.md#connectivity) doğru şekilde yapılandırıldığını doğrulayın.
 * Bu doğru görünüyorsa, sorunun sihirbazın dışında mevcut olup olmadığını görmek için [Proxy bağlantısını doğrulama](#verify-proxy-connectivity) bölümündeki adımları izleyin.
@@ -83,7 +83,7 @@ Yükleme Sihirbazı Azure AD 'ye bağlanmada başarılı olursa, ancak parolanı
 ### <a name="verify-proxy-connectivity"></a>Proxy bağlantısını doğrulama
 Azure AD Connect sunucusunun proxy ve Internet ile gerçek bağlantı olup olmadığını doğrulamak için, proxy 'nin Web isteklerine izin vermeyi öğrenmek için bazı PowerShell kullanın. Bir PowerShell isteminde çalıştırın `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` . (Teknik olarak ilk çağrı, `https://login.microsoftonline.com` ve bu URI de çalışır, ancak DIĞER URI yanıt vermek daha hızlıdır.)
 
-PowerShell, proxy ile iletişim kurmak için machine.config ' deki yapılandırmayı kullanır. WinHTTP/Netsh 'deki ayarlar bu cmdlet 'leri etkilememelidir.
+PowerShell ara sunucuya bağlanmak için machine.config dosyasındaki yapılandırmayı kullanır. winhttp/netsh’deki ayarlar bu cmdlet’leri etkilememelidir.
 
 Proxy doğru yapılandırılmışsa, bir başarı durumu almalısınız: ![ proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
@@ -113,7 +113,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **Azure AD'ye Bağlanma**
 
-| Zaman | URL |
+| Süre | URL |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -124,7 +124,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **Yapılandır**
 
-| Zaman | URL |
+| Süre | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800-bağlayıcısını*. microsoftonline.com:443 |
@@ -140,7 +140,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **İlk eşitleme**
 
-| Zaman | URL |
+| Süre | URL |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
@@ -225,14 +225,14 @@ Yükleme sihirbazında beklenmeyen bir hata olarak gösteriliyor. **Okul veya ku
 Yayın numarası 1.1.105.0 (2016 ' de yayımlanmıştır) ile başlayan yayınlar sayesinde, oturum açma Yardımcısı kullanımdan kaldırıldı. Bu bölüm ve yapılandırma artık gerekli değildir, ancak başvuru olarak tutulur.
 
 Çoklu oturum açma Yardımcısı 'nın çalışması için, WinHTTP 'nin yapılandırılması gerekir. Bu yapılandırma, [**netsh**](how-to-connect-install-prerequisites.md#connectivity)ile yapılabilir.
-![komutlarına](./media/tshoot-connect-connectivity/netsh.png)
+![Ekran görüntüsü, bir proxy ayarlamak için Netsh aracını çalıştıran bir komut istemi penceresi gösterir.](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>Oturum açma Yardımcısı doğru yapılandırılmadı
 Bu hata, oturum açma Yardımcısı ara sunucuya ulaşamadığınızda veya proxy isteğe izin verilmediğinde görüntülenir.
-![etme dışı](./media/tshoot-connect-connectivity/nonetsh.png)
+![Ekran görüntüsünde bir hata gösterilir: kimlik bilgileri doğrulanamıyor, ağ bağlantısını ve güvenlik duvarını veya proxy ayarlarını doğrulayın.](./media/tshoot-connect-connectivity/nonetsh.png)
 
 * Bu hatayı görürseniz, [netsh](how-to-connect-install-prerequisites.md#connectivity) 'deki proxy yapılandırmasına bakın ve doğru olduğunu doğrulayın.
-  ![netshshow](./media/tshoot-connect-connectivity/netshshow.png)
+  ![Ekran görüntüsü, proxy yapılandırmasını göstermek için Netsh aracını çalıştıran bir komut istemi penceresi gösterir.](./media/tshoot-connect-connectivity/netshshow.png)
 * Bu doğru görünüyorsa, sorunun sihirbazın dışında mevcut olup olmadığını görmek için [Proxy bağlantısını doğrulama](#verify-proxy-connectivity) bölümündeki adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

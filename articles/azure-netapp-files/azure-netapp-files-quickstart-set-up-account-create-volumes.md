@@ -7,13 +7,13 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.custom: devx-track-azurecli, subject-armqs
+ms.openlocfilehash: c8f431a609dafc1064b901cfdda8d170124cf0f9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987520"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089284"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma 
 
@@ -67,6 +67,14 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
+# <a name="template"></a>[Şablon](#tab/template)
+
+Yok.  
+
+Azure NetApp Files ve NetApp kaynak sağlayıcısına kaydolmak için Azure portal, PowerShell veya Azure CLı 'yi kullanın.  
+
+Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-files-register.md) . 
+
 ---
 
 ## <a name="create-a-netapp-account"></a>NetApp hesabı oluşturma
@@ -105,7 +113,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
     > [!NOTE]
     > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) bakın.
-    > Komut satırı araçlarımız tarafından desteklenen bölge adını almak için lütfen şunu kullanın`Get-AzLocation | select Location`
+    > Komut satırı araçlarımız tarafından desteklenen bölge adını almak için lütfen şunu kullanın `Get-AzLocation | select Location`
     >
 
 1. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak yeni bir kaynak grubu oluşturun:
@@ -132,7 +140,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
     > [!NOTE]
     > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) bakın.
-    > Komut satırı araçlarımız tarafından desteklenen bölge adını almak için lütfen şunu kullanın`az account list-locations --query "[].{Region:name}" --out table`
+    > Komut satırı araçlarımız tarafından desteklenen bölge adını almak için lütfen şunu kullanın `az account list-locations --query "[].{Region:name}" --out table`
     >
 
 2. [Az Group Create](/cli/azure/group#az-group-create) komutunu kullanarak yeni bir kaynak grubu oluşturun:
@@ -151,6 +159,17 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
         --location $LOCATION \
         --account-name $ANF_ACCOUNT_NAME
     ```
+
+# <a name="template"></a>[Şablon](#tab/template)
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts) kaynağını kullanarak bir Azure Resource Manager ŞABLONUNDA (ARM şablonu) bir NetApp hesabı oluşturmayı gösterir. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) indirin.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
+
+<!-- Block begins with "type": "Microsoft.NetApp/netAppAccounts", -->
+
 ---
 
 ## <a name="set-up-a-capacity-pool"></a>Kapasite havuzunu ayarlama
@@ -213,6 +232,16 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
         --size $POOL_SIZE_TiB \
         --service-level $SERVICE_LEVEL
     ```
+
+# <a name="template"></a>[Şablon](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
+
+Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzlar](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools) kaynağını kullanarak bir Azure Resource Manager ŞABLONUNDA (ARM şablonu) bir kapasite havuzu oluşturmayı gösterir. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) indirin.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
+
+<!-- LN 185, block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools", -->
 
 ---
 
@@ -353,6 +382,20 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
         --protocol-types "NFSv3"
     ```
 
+# <a name="template"></a>[Şablon](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
+
+Aşağıdaki kod parçacıkları, bir sanal ağı ayarlamayı ve bir Azure Resource Manager şablonunda (ARM şablonunda) Azure NetApp Files birim oluşturmayı gösterir. VNet kurulumu, [Microsoft. Network/virtualNetworks](https://docs.microsoft.com/azure/templates/Microsoft.Network/virtualNetworks) kaynağını kullanır. Birim oluşturma, [Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/Volumes](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) kaynağını kullanır. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) indirin.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
+
+<!-- Block begins with  "type": "Microsoft.Network/virtualNetworks", -->
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="197-229":::
+
+<!-- Block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes", -->
+
 ---
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -379,7 +422,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
 4. Kaynak grubunu ve içindeki tüm kaynakları kalıcı olarak silmek istediğinizi onaylamak için kaynak grubunun adını (myRG1) girin ve ardından **Sil**' e tıklayın.
 
-    ![Kaynak grubunu silme](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Kaynak grubunu silmeyi onayla](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -407,6 +450,13 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
     az group delete \
         --name $RESOURCE_GROUP
     ```
+
+# <a name="template"></a>[Şablon](#tab/template)
+
+Yok.
+
+Kaynak grubunu silmek için Azure portal, PowerShell veya Azure CLı kullanın.   
+
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar  

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e1cce536a9ec498304cbbc591fc56a0ee1b21b13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036451"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087278"
 ---
 # <a name="interact-with-the-map"></a>Harita ile etkileşim kurma
 
@@ -26,7 +26,7 @@ Aşağıdaki haritada yürütün ve sağ tarafta vurgulanan ilgili fare olaylar�
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Harita ile etkileşim kurma – fare olayları' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. kalemin <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>harita – fare olayları Ile</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) Ile <a href='https://codepen.io'>codepen</a>.
+<iframe height='600' scrolling='no' title='Harita ile etkileşim kurma – fare olayları' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. kalemin <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>harita – fare olayları Ile</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) Ile <a href='https://codepen.io'>codepen</a>.
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>Harita katmanları ile etkileşim kurma
@@ -35,7 +35,7 @@ Aşağıdaki kod, simge katmanıyla etkileşime geçerek tetiklenen olayı vurgu
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Harita-katman olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>harita-katman olayları</a> (Azure Maps () Ile etkileşim kurma kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='600' scrolling='no' title='Harita-katman olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>harita-katman olayları</a> (Azure Maps () Ile etkileşim kurma kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>HTML Işaretleyicisi ile etkileşim kurma
@@ -44,7 +44,7 @@ Aşağıdaki kod, bir HTML işaretine JavaScript harita olayları ekler. Ayrıca
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Map-HTML Işaretleyici olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>harita-HTML işaretçisi olayları Ile etkileşime</a> geçen kaleme bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Map-HTML Işaretleyici olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>harita-HTML işaretçisi olayları Ile etkileşime</a> geçen kaleme bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 Aşağıdaki tabloda desteklenen tüm harita sınıfı olayları listelenmektedir.
@@ -98,11 +98,11 @@ Aşağıdaki tabloda desteklenen tüm harita sınıfı olayları listelenmektedi
 | `sourceremoved`     | `DataSource`Eşlemden bir veya `VectorTileSource` kaldırıldığında tetiklenir.|
 | `styledata`         | Haritanın stili yüklenirken veya değiştiğinde harekete geçirilir.|
 | `styleimagemissing` | Bir katman mevcut olmayan görüntü Sprite öğesinden bir görüntü yüklemeye çalıştığında tetiklenir |
-| `tokenacquired`     | AAD erişim belirteci edinildiği zaman tetiklenir.|
-| `touchcancel`       | Eşleme içinde bir touchcancel olayı oluştuğunda harekete geçirildi.|
-| `touchend`          | Eşleme içinde bir touchEnd olayı oluştuğunda harekete geçirildi.|
-| `touchmove`         | Eşleme içinde bir TouchMove olayı oluştuğunda harekete geçirildi.|
-| `touchstart`        | Eşleme içinde bir touchstart olayı oluştuğunda harekete geçirildi.|
+| `tokenacquired`     | Azure Active Directory erişim belirteci elde edildiğinde tetiklenir.|
+| `touchcancel`       | `touchcancel`Haritada bir olay oluştuğunda harekete geçirildi.|
+| `touchend`          | `touchend`Haritada bir olay oluştuğunda harekete geçirildi.|
+| `touchmove`         | `touchmove`Haritada bir olay oluştuğunda harekete geçirildi.|
+| `touchstart`        | `touchstart`Haritada bir olay oluştuğunda harekete geçirildi.|
 | `wheel`             | Eşleme içinde fare tekerleği olayı oluştuğunda harekete geçirildi.|
 | `zoom`              | Bir yakınlaştırma düzeyinden diğerine animasyon eklenmiş bir geçiş sırasında, Kullanıcı etkileşimi ya da yöntemlerinin sonucu olarak tekrar tekrar tetiklenir.|
 | `zoomend`           | Eşleme, Kullanıcı etkileşimi ya da yöntemlerinin sonucu olarak, bir yakınlaştırma düzeyinden diğerine geçişi tamamladıktan hemen sonra harekete geçirilir.|

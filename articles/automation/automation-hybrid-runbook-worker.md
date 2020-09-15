@@ -3,14 +3,14 @@ title: Azure Otomasyonu karma Runbook Worker genel bakış
 description: Bu makalede, yerel veri merkezinizdeki veya bulut sağlayıcınızdaki makinelerde runbook 'ları çalıştırmak için kullanabileceğiniz karma Runbook Worker 'a genel bakış sunulmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/16/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f5dc9305df8ce0e26e13738d605849fa75cc53a7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448078"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087906"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Karma Runbook Çalışanına genel bakış
 
@@ -51,9 +51,9 @@ Karma Runbook Worker 'ın Azure Otomasyonu 'na bağlanması ve kaydolmasının a
 Karma Runbook Worker için aşağıdaki bağlantı noktası ve URL 'Ler gereklidir:
 
 * Bağlantı noktası: giden internet erişimi için yalnızca TCP 443 gerekir
-* Genel URL:`*.azure-automation.net`
-* US Gov Virginia genel URL 'SI:`*.azure-automation.us`
-* Aracı hizmeti:`https://<workspaceId>.agentsvc.azure-automation.net`
+* Genel URL: `*.azure-automation.net`
+* US Gov Virginia genel URL 'SI: `*.azure-automation.us`
+* Aracı hizmeti: `https://<workspaceId>.agentsvc.azure-automation.net`
 
 Belirli bir bölge için tanımlanan bir Otomasyon hesabınız varsa, karma Runbook Worker iletişimini ilgili bölge veri merkezi ile kısıtlayabilirsiniz. Azure Otomasyonu tarafından gerekli DNS kayıtları için [kullanılan DNS kayıtlarını](how-to/automation-region-dns-records.md) gözden geçirin.
 
@@ -63,11 +63,11 @@ Azure Otomasyonu ve Log Analytics aracısını çalıştıran makineler arasınd
 
 ### <a name="firewall-use"></a>Güvenlik duvarı kullanımı
 
-İnternet 'e erişimi kısıtlamak için güvenlik duvarı kullanıyorsanız, güvenlik duvarını erişime izin verecek şekilde yapılandırmanız gerekir. Log Analytics ağ geçidini ara sunucu olarak kullanıyorsanız, karma runbook çalışanları için yapılandırıldığından emin olun. Bkz. [Otomasyon karma çalışanları için Log Analytics ağ geçidini yapılandırma](../azure-monitor/platform/gateway.md).
+İnternet 'e erişimi kısıtlamak için güvenlik duvarı kullanıyorsanız, güvenlik duvarını erişime izin verecek şekilde yapılandırmanız gerekir. Log Analytics ağ geçidini ara sunucu olarak kullanıyorsanız, karma runbook çalışanları için yapılandırıldığından emin olun. Bkz. [Otomasyon karma runbook çalışanları için Log Analytics ağ geçidini yapılandırma](../azure-monitor/platform/gateway.md).
 
 ### <a name="service-tags"></a>Hizmet etiketleri
 
-Azure Otomasyonu, Azure sanal ağ hizmeti etiketlerini destekleyerek [Guestandhybridmanagement](../virtual-network/service-tags-overview.md)hizmet etiketiyle başlar. [Ağ güvenlik gruplarında](../virtual-network/security-overview.md#security-rules) veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Hizmet etiketleri, güvenlik kuralları oluştururken belirli IP adreslerinin yerine kullanılabilir. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı **Guestandhybridmanagement** ' i belirterek, Otomasyon Hizmeti için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Bu hizmet etiketi, IP aralıklarını belirli bir bölgeyle kısıtlayarak daha ayrıntılı denetim yapılmasına izin vermeyi desteklemez.
+Azure Otomasyonu, Azure sanal ağ hizmeti etiketlerini destekleyerek [Guestandhybridmanagement](../virtual-network/service-tags-overview.md)hizmet etiketiyle başlar. [Ağ güvenlik gruplarında](../virtual-network/security-overview.md#security-rules) veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Hizmet etiketleri, güvenlik kuralları oluştururken belirli IP adreslerinin yerine kullanılabilir. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı **Guestandhybridmanagement**  ' i belirterek, Otomasyon Hizmeti için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Bu hizmet etiketi, IP aralıklarını belirli bir bölgeyle kısıtlayarak daha ayrıntılı denetim yapılmasına izin vermeyi desteklemez.
 
 Azure Otomasyonu hizmetinin hizmet etiketi yalnızca aşağıdaki senaryolar için kullanılan IP 'Leri sağlar:
 
@@ -115,6 +115,20 @@ Karma Runbook Worker konak makinesi yeniden başlatılırsa, çalışan runbook 
 ### <a name="runbook-permissions-for-a-hybrid-runbook-worker"></a>Karma Runbook Worker için Runbook izinleri
 
 Azure dışı kaynaklara erişirken, karma runbook çalışanı üzerinde çalışan runbook 'lar, genellikle Azure kaynaklarında kimlik doğrulaması yapan runbook 'lar tarafından kullanılan kimlik doğrulama mekanizmasını kullanamaz. Bir runbook yerel kaynaklara kendi kimlik doğrulamasını sağlar veya [Azure kaynakları için yönetilen kimlikleri](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)kullanarak kimlik doğrulamasını yapılandırır. Ayrıca, tüm runbook 'lar için bir kullanıcı bağlamı sağlamak üzere bir farklı çalıştır hesabı belirtebilirsiniz.
+
+## <a name="view-hybrid-runbook-workers"></a>Karma runbook çalışanlarını görüntüleme
+
+Güncelleştirme Yönetimi özelliği Windows sunucularında veya VM 'lerde etkinleştirildikten sonra, Azure portal sistem karma runbook çalışanları grubunun listesini envantere kaydedebilirsiniz. Seçilen Otomasyon hesabı için sol bölmeden **karma çalışanlar grubu** seçeneğini belirleyerek, portalda en **System hybrid workers group** fazla 2.000 çalışanı görüntüleyebilirsiniz ve ardından,
+
+:::image type="content" source="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png" alt-text="Otomasyon hesabı sistemi karma çalışanı grupları sayfası" border="false" lightbox="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png":::
+
+2.000 ' den fazla karma çalışanı varsa, tümünün listesini almak için aşağıdaki PowerShell betiğini çalıştırabilirsiniz:
+
+```powershell
+"Get-AzSubscription -SubscriptionName "<subscriptionName>" | Set-AzContext
+$workersList = (Get-AzAutomationHybridWorkerGroup -ResourceGroupName "<resourceGroupName>" -AutomationAccountName "<automationAccountName>").Runbookworker
+$workersList | export-csv -Path "<Path>\output.csv" -NoClobber -NoTypeInformation"
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

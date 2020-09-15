@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b957453758b9b8e34989877516a9083f06a85ed8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400798"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086411"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route hizmeti için en iyi yöntemler
 
@@ -30,7 +30,7 @@ Azure haritalar 'daki yol yönleri ve yol Matrisi API 'Leri [yönlendirme hizmet
 > * Destekleyici noktaları kullanarak alternatif yolları iyileştirin. Örneğin, elektrik araç doldurma istasyonunu geçiren alternatif yollar sunun.
 > * Azure Maps web SDK ile [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
@@ -275,7 +275,7 @@ Aşağıdaki görüntüde, zaman ve mesafe için belirtilen Sapma limitleriyle a
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Yönlendirme hizmetini bir Web uygulamasında kullanma
 
-Azure Haritalar Web SDK 'Sı bir [hizmet modülü](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)sağlar. Bu modül, JavaScript veya TypeScript kullanarak Web veya Node.js uygulamalarında Azure Maps REST API 'Lerini kullanmayı kolaylaştıran bir yardımcı kitaplıktır. Hizmet modülü, haritada döndürülen yolları işlemek için kullanılabilir. Modül, hangi API 'nin GET ve POST istekleri ile kullanılacağını otomatik olarak belirler.
+Azure Haritalar Web SDK 'Sı bir [hizmet modülü](https://docs.microsoft.com/javascript/api/azure-maps-rest/)sağlar. Bu modül, JavaScript veya TypeScript kullanarak Web veya Node.js uygulamalarında Azure Maps REST API 'Lerini kullanmayı kolaylaştıran bir yardımcı kitaplıktır. Hizmet modülü, haritada döndürülen yolları işlemek için kullanılabilir. Modül, hangi API 'nin GET ve POST istekleri ile kullanılacağını otomatik olarak belirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

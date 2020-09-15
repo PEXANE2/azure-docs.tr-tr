@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: f8df1a62ace8a1f094a708b752e175f3299d0ee0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 268470f846f31e3577b12c217ddcb3c128136101
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053183"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086649"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos öykünücüsü-sürüm notları ve indirme bilgileri
 
@@ -28,9 +28,10 @@ Bu makalede, Azure Cosmos öykünücü sürüm notları her sürümde yapılan �
 
 ### <a name="2115-08232020"></a>2.11.5 (08/23/2020)
 
-- Bu sürüm iki yeni Cosmos öykünücü başlatma seçeneği ekler: 
-* "/EnablePreview"-Cosmos öykünücüsü için Önizleme özelliklerini sunar; Bunlar hala geliştirildiği ve CI ile örnek yazma aracılığıyla erişilebilen özelliklerdir.
-* "/EnableAadAuthentication"-Cosmos öykünücüsünün, Cosmos ana anahtarlarına alternatif olarak özel AAD belirteçlerini kabul etmesine olanak sağlar. Bu özellik hala geliştirme aşamasındadır; belirli rol atamaları ve diğer izinlerle ilgili ayarlar şu anda desteklenmiyor.
+Bu sürüm iki yeni Cosmos öykünücü başlatma seçeneği ekler: 
+
+* "/EnablePreview"-öykünücü için Önizleme özellikleri sunar. Hala geliştirme aşamasında olan ve bunlara CI ve örnek yazma aracılığıyla erişilebilen Önizleme özellikleri.
+* "/EnableAadAuthentication"-öykünücü, Azure Cosmos ana anahtarlarına alternatif olarak özel AAD belirteçlerini kabul etmesine olanak sağlar. Bu özellik hala geliştirme aşamasındadır; belirli rol atamaları ve diğer izinlerle ilgili ayarlar şu anda desteklenmemektedir.
 
 ### <a name="2112-07072020"></a>2.11.2 (07/07/2020)
 

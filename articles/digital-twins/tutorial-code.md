@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9c9f286b9d81c89844582698ac98833f10bcaade
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923713"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086666"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -322,12 +322,13 @@ TWINS, ilk çalıştırmadan sonra zaten mevcut olsa bile, ikinci kez oluşturul
 
 Daha sonra, oluşturduğunuz TWINS arasında **ilişkiler** oluşturarak bunları bir **ikizi grafiğine**bağlayabilirsiniz. [İkizi grafikleri](concepts-twins-graph.md) , tüm ortamınızı temsil etmek için kullanılır.
 
-İlişkiler oluşturabilmek için `using` SDK 'daki ilişki temel türü için bir ifade ekleyin: zaten eklendiyse bunu atlayın.
+İlişki oluşturabilmek için `Azure.DigitalTwins.Core.Serialization` ad alanına ihtiyacınız olacaktır. Bunu projeye bu deyimle daha önce eklediniz `using` :
+
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
-Ardından, sınıfının altına yeni bir static yöntemi ekleyin `Program` `Main` :
+`Program`Sınıfına, yönteminin altına yeni bir static yöntem ekleyin `Main` :
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: ae3fa4684e4e71115d2d4ddce3c34ccb4f1cb703
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d6c7ba255b0dcec280d05eab36be71b8c9a726ae
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004659"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086564"
 ---
 # <a name="how-to-use-image-templates"></a>Görüntü şablonlarını kullanma
 
@@ -58,7 +58,7 @@ Aşağıdaki örnek, bir sembol katmanını, `marker-flat` deniz mavisi birincil
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Yerleşik simge şablonuyla sembol katmanı" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Yerleşik simge şablonuyla sembol katmanı" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Codepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>birlikte yerleşik simge şablonuyla kalem sembolü katmanına</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
@@ -70,7 +70,7 @@ Aşağıdaki örnek, haritada pembe bir çizgi oluşturur ve bir sembol katmanı
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Yerleşik simge şablonuyla çizgi katmanı" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Yerleşik simge şablonuyla çizgi katmanı" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>yerleşik simge şablonuyla kalem çizgisi katmanına</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
@@ -85,7 +85,7 @@ Aşağıdaki örnek, `dot` kırmızı bir birincil renkle görüntü şablonunu 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Yerleşik simge şablonuyla Çokgen doldur" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Yerleşik simge şablonuyla Çokgen doldur" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>yerleşik simge şablonuyla kalem dolgusu Çokgen</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> ' ne <a href='https://codepen.io'>CodePen</a>bakın.
 </iframe>
 
@@ -100,7 +100,7 @@ Aşağıdaki örnek, `marker-arrow` şablonu kırmızı bir birincil renkle, bir
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Yerleşik simge şablonuyla HTML Işaretçisi" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Yerleşik simge şablonuyla HTML Işaretçisi" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>yerleşik simge şablonuyla kalem HTML işaretine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
@@ -119,7 +119,7 @@ Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremap
 
 Uygulamanız farklı simgelerle aynı simgeyi kullanıyorsa veya ek görüntü şablonları ekleyen bir modül oluşturuyorsanız, bu simgeleri Azure Maps web SDK 'sına kolayca ekleyebilir ve alabilirsiniz. Ad alanı üzerinde aşağıdaki statik işlevleri kullanın `atlas` .
 
-| Ad | Dönüş Türü | Açıklama | 
+| Name | Dönüş Türü | Açıklama | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Atlas ad alanına özel bir SVG resim şablonu ekler. |
 |  `getImageTemplate(templateName: string, scale?: number)`| string | Bir SVG şablonunu ada göre alır. |
@@ -138,7 +138,7 @@ Aşağıdaki örnek, bir SVG şablonunun nasıl alınacağını ve Azure Maps we
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Atlas ad alanına özel simge şablonu ekleme" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Atlas ad alanına özel simge şablonu ekleme" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Codepen üzerinde Azure Maps () tarafından bulunan <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Atlas ad alanına özel simge şablonu ekleme</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
@@ -505,7 +505,7 @@ Aşağıdaki araçla farklı yerleşik görüntü şablonlarını çeşitli şek
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Simge şablonu seçenekleri" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Simge şablonu seçenekleri" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>simgesi şablon seçeneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -517,7 +517,7 @@ Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edin
 > [Imabir Pritemanager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagespritemanager)
 
 > [!div class="nextstepaction"]
-> [Atlas ad alanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-maps-typescript-latest#functions
+> [Atlas ad alanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#functions
 )
 
 Görüntü şablonlarının kullanılabileceği daha fazla kod örneği için aşağıdaki makalelere bakın:

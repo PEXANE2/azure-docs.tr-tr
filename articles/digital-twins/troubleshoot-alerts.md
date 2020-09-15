@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: ded2f54379e60e8e3fc26d9c2166930a6f953078
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: ae7e85624f5da06603ddc2675787b84203bc987b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854844"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087226"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Azure dijital TWINS sorunlarını giderme: uyarılar
 
@@ -31,16 +31,16 @@ Azure dijital TWINS örneğiniz için uyarıların nasıl etkinleştirileceği a
 3. Aşağıdaki *Uyarı kuralı oluştur* sayfasında, koşulları, tetiklenecek eylemleri ve uyarı ayrıntılarını belirlemek için istemleri takip edebilirsiniz.     
     * **Kapsam** ayrıntıları, örneğinizin ayrıntıları ile otomatik olarak doldurulmalıdır
     * Uyarı tetikleyicilerini ve yanıtlarını özelleştirmek için **koşul** ve **eylem grubu** ayrıntılarını tanımlayacaksınız
-    * **Uyarı kuralı ayrıntıları** bölümünde, _Uyarı kuralı adı_, _Açıklama (isteğe bağlı)_ girin. Uyarının, oluşturulduktan hemen sonra etkin hale gelmesini istiyorsanız, _oluşturulduktan sonra uyarı kuralını etkinleştir_ onay kutusunu seçebilirsiniz.
-    * Eklediğiniz bazı koşullara ve eylemlere göre, ilgili açılan kutudan kaynak grubuna ve _önem derecesine_ sahip _Uyarı kuralını kaydet_ ' i seçmeniz gerekir.
+    * **Uyarı kuralı ayrıntıları** bölümünde, kuralınız için bir ad ve isteğe bağlı bir açıklama girin. Uyarının, oluşturulduktan hemen sonra etkin hale gelmesini istiyorsanız, _oluşturulduktan sonra uyarı kuralını etkinleştir_ onay kutusunu seçebilirsiniz.
+        - Bu Ayrıca, bir _kaynak grubu_ ve _önem_ düzeyi düzeyini seçtiğiniz yerdir.
 
 4. Uyarı kuralınızı oluşturmak için _Uyarı kuralı oluştur_ düğmesini seçin.
 
-:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Kapsam, koşul ve eylem grubu için bölümlerle uyarı kuralı oluştur sayfasını gösteren ekran görüntüsü" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
-
-:::image type="content" source="media/troubleshoot-alerts/alert-rule-details.png" alt-text="Uyarı kuralı oluşturma uyarı kuralı ayrıntıları bölümünü gösteren ekran görüntüsü" lightbox="media/troubleshoot-alerts/alert-rule-details.png":::
+:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Kapsam, koşul, eylem grubu ve uyarı kuralı ayrıntılarının bölümleri ile uyarı kuralı oluştur sayfasını gösteren ekran görüntüsü" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
 Bu alanları doldurmaya yönelik kılavuzlu bir anlatım için bkz. [*Microsoft Azure uyarılara genel bakış*](../azure-monitor/platform/alerts-overview.md). Aşağıda, adımların Azure dijital TWINS için nasıl görüneceğine ilişkin bazı örnekler verilmiştir.
+
+### <a name="select-conditions"></a>Koşulları seçin
 
 Azure dijital TWINS için hangi tür uyarı sinyallerinin kullanılabildiğini gösteren *Select Condition* işleminden alıntı aşağıda verilmiştir. Bu sayfada, sinyal türünü filtreleyebilir ve listeden istediğiniz sinyali seçebilirsiniz.
 
@@ -49,11 +49,12 @@ Azure dijital TWINS için hangi tür uyarı sinyallerinin kullanılabildiğini g
 Bir sinyal seçtikten sonra uyarının mantığını yapılandırmanız istenir. Bir boyut üzerinde filtre uygulayabilir, uyarılarınız için bir eşik değeri ayarlayabilir ve koşul için denetim sıklığını ayarlayabilirsiniz. Ortalama yönlendirme hatası oranı ölçüsünün %5 ' inin üzerinde ne zaman geçgireceğini bildiren bir uyarı ayarlamaya bir örnek aşağıda verilmiştir.
 
 :::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="İkinci sinyal mantığını Yapılandır sayfasını gösteren ekran görüntüsü. Sayfa, ölçüm geçmişini gösterir, Event Grid işlemler gibi bir boyut üzerinde filtrelemeye yönelik bir alana sahiptir ve ' ortalama, 5 ' ten büyük olan uyarı mantığını tanımlamaya yönelik bir bölümdür":::
- 
-Ayarlar uyarıları oluşturulduktan sonra, örneğiniz için *Uyarılar* sayfasında geri görünür.
+
+### <a name="verify-success"></a>Başarıyı doğrula
+
+Uyarıları ayarladıktan sonra, örneğiniz için *Uyarılar* sayfasında geri görünür.
  
 :::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Uyarı sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü. Yapılandırılmış bir uyarı var" lightbox="media/troubleshoot-alerts/alerts-post.png":::
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

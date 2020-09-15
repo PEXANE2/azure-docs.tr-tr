@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c57ab03f72f0f59dd18a873ddc7cd98d3c36ef9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356670"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088979"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect eşitleme hizmeti gölge öznitelikleri
 Çoğu öznitelik, Azure AD 'de şirket içi Active Directory olduklarından aynı şekilde temsil edilir. Ancak bazı özniteliklerin bazı özel işlemesi vardır ve Azure AD 'de öznitelik değeri Azure AD Connect eşitlenenden farklı olabilir.
@@ -32,7 +32,7 @@ Bazı özniteliklerin Azure AD 'de iki temsili vardır. Hem şirket içi değer 
 Azure portal veya PowerShell 'i kullanarak gölge öznitelikleri göremezsiniz. Ancak kavramı anlamak, özniteliğin şirket içinde ve bulutta farklı değerlere sahip olduğu belirli senaryoları gidermenize yardımcı olur.
 
 Davranışı daha iyi anlamak için Fabrikam ' dan bu örneğe bakın:  
-![Etki Alanları](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
+![Ekran görüntüsünde, karşılık gelen bir Azure AD etki alanı değeri eklenmemiş, doğrulanmadı ve doğrulanmayan birkaç örnek için Active Directory UPN soneki gösterilmektedir.](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
 Şirket içi Active Directory birden çok UPN soneki vardır, ancak yalnızca bir tane doğrulanır.
 
 ### <a name="userprincipalname"></a>userPrincipalName

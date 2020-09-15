@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/14/2020
+ms.openlocfilehash: 5110f5fd09e360d1435e26312dd2ee2db6891cbb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949974"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087193"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Örneklerle Data Factory fiyatlandırmasını anlama
 
@@ -130,9 +130,13 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Normal bir Workday için eşleme veri akışı hata ayıklamasını kullanma
 
-Veri mühendisi olarak her gün veri akışlarını tasarlama, oluşturma ve test etme konusunda siz sorumlusunuz. Sabah ADF Kullanıcı arabiriminde oturum açın ve veri akışları için hata ayıklama modunu etkinleştirin. Hata ayıklama oturumları için varsayılan TTL 60 dakikadır. Günde 8 saat boyunca çalışırsınız, bu nedenle hata ayıklama oturumunuzun süresi dolmaz. Bu nedenle, günün ücreti şu şekilde olacaktır:
+Veri mühendisi olarak, Sam her gün veri akışlarını tasarlamada, oluşturmadan ve test etmekten sorumludur. Sam, sabah ADF Kullanıcı arabirimine oturum açar ve veri akışları için hata ayıklama moduna izin vermez. Hata ayıklama oturumları için varsayılan TTL 60 dakikadır. Sam, günde 8 saat boyunca çalışarak hata ayıklama oturumunun süresi dolmaz. Bu nedenle, Sam günün ücreti şu şekilde olacaktır:
 
 **8 (saat) x 8 (işlem için iyileştirilmiş çekirdek) x $0,193 = $12,35**
+
+Aynı zamanda Chris, başka bir veri mühendisi de veri profili oluşturma ve ETL tasarım çalışması için ADF tarayıcı kullanıcı arabirimine kaydedilir. Chris, ADF gibi tüm gün içinde çalışmaz. Chris yalnızca, yukarıdaki Sam ile aynı dönemde ve aynı gün içinde 1 saat boyunca veri akışı hata ayıklayıcısını kullanmalıdır. Bunlar, hata ayıklama kullanımı için Gamze 'nin ücretlerine yöneliktir:
+
+**1 (saat) x 8 (genel amaçlı çekirdekler) x $0,274 = $2,19**
 
 ## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Eşleme verisi akışlarıyla blob deposundaki verileri dönüştürme
 

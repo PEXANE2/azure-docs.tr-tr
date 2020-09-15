@@ -4,12 +4,12 @@ description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenleme
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1eaf9b735e65811b242fa7198b3545c9c68a4d46
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 3ffcb4a0f2f5dc64b165fcdec03f7c3ced258cc1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426002"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086768"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanma
 
@@ -307,7 +307,27 @@ az group list --tag Dept=IT
 
 ### <a name="handling-spaces"></a>Boşluk işleme
 
-Etiket adlarınız veya değerleriniz boşluk içeriyorsa, fazladan birkaç adım gerçekleştirmeniz gerekir. Aşağıdaki örnek, Etiketler boşluk içerdiğinde bir kaynak grubundaki tüm etiketleri kaynaklarına uygular.
+Etiket adlarınız veya değerleriniz boşluk içeriyorsa, birkaç ek adım uygulamanız gerekir. 
+
+`--tags`Azure CLI 'daki parametreler, dizelerden oluşan bir diziyi içeren bir dizeyi kabul edebilir. Aşağıdaki örnek, etiketlerin boşluk ve kısa çizgi olduğu bir kaynak grubundaki etiketlerin üzerine yazar: 
+
+```azurecli-interactive
+TAGS=("Cost Center=Finance-1222" "Location=West US")
+az group update --name examplegroup --tags "${TAGS[@]}"
+```
+
+Parametresini kullanarak bir kaynak grubu veya kaynak oluşturduğunuzda veya güncelleştirdiğinizde aynı sözdizimini kullanabilirsiniz `--tags` .
+
+Parametresini kullanarak etiketleri güncelleştirmek için `--set` anahtar ve değeri bir dize olarak geçirmeniz gerekir. Aşağıdaki örnek, bir kaynak grubuna tek bir etiket ekler:
+
+```azurecli-interactive
+TAG="Cost Center='Account-56'"
+az group update --name examplegroup --set tags."$TAG"
+```
+
+Bu durumda, değer bir tire içerdiğinden, etiket değeri tek tırnak işaretleriyle işaretlenir.
+
+Ayrıca, birçok kaynağa Etiketler uygulamanız gerekebilir. Aşağıdaki örnek, Etiketler boşluk içerdiğinde bir kaynak grubundaki tüm etiketleri kaynaklarına uygular:
 
 ```azurecli-interactive
 jsontags=$(az group show --name examplegroup --query tags -o json)

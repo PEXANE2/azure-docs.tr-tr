@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: adeba1964ab802a903e82b3ea71bc3248b86cea9
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705070"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086717"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -426,7 +426,7 @@ Azure ortamının bulutu ve değerleri aşağıda listelenmiştir.
 ---------|-----------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
+[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
 [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ## <a name="network-metadata"></a>Ağ meta verileri 
@@ -517,10 +517,11 @@ Veriler    | Açıklama
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
 diffDiskSettings | Kısa ömürlü disk ayarları
 diskSizeGB | Diskin GB cinsinden boyutu
+encryptionSettings | Disk için şifreleme ayarları
 image   | Kaynak Kullanıcı görüntüsü sanal sabit diski
-'yi     | Diskin mantıksal birim numarası
 managedDisk | Yönetilen disk parametreleri
 name    | Disk adı
+osType  | Diske dahil edilen işletim sisteminin türü
 sahip     | Sanal sabit disk
 Writeivatorenabled | Diskte writeAccelerator etkin olup olmadığı
 
@@ -532,11 +533,10 @@ Veriler    | Açıklama
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
 diffDiskSettings | Kısa ömürlü disk ayarları
 diskSizeGB | Diskin GB cinsinden boyutu
-encryptionSettings | Disk için şifreleme ayarları
 image   | Kaynak Kullanıcı görüntüsü sanal sabit diski
+'yi     | Diskin mantıksal birim numarası
 managedDisk | Yönetilen disk parametreleri
 name    | Disk adı
-osType  | Diske dahil edilen işletim sisteminin türü
 sahip     | Sanal sabit disk
 Writeivatorenabled | Diskte writeAccelerator etkin olup olmadığı
 
@@ -747,7 +747,7 @@ Bulut | Sertifika
 ------|------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/) | *. metadata.azure.com
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)          | *. metadata.azure.us
-[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)     | *. metadata.azure.cn
+[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)     | *. metadata.azure.cn
 [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                | *. metadata.microsoftazure.de
 
 > [!NOTE]

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6565d8056ae8106bd93b7dd096bc709010ec5c3f
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ec2b971941f460522046d56cd097ede15a3bdcbe
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400713"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086343"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure haritalar için en iyi uygulamalar Arama Hizmeti
 
@@ -26,7 +26,7 @@ Bu makalede Arama Hizmeti Azure Maps 'tan veri çağırdığınızda ses uygulam
 > * Sonuç türleri arasındaki farkları öğrenin
 > * Adres Arama-Yanıt yapısını okuyun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
@@ -426,7 +426,7 @@ query=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 Aşağıdaki yöntemleri kullanabilirsiniz.
 
 JavaScript veya TypeScript:
-```Javascript
+```javascript
 encodeURIComponent(query)
 ```
 

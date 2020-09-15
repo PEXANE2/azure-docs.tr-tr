@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 005068c8e81adb9a79a4e6dc7e86a9bfb39902a1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505831"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088655"
 ---
 # <a name="azure-monitor-overview"></a>Azure İzleyici'ye genel bakış
 
@@ -42,13 +42,13 @@ Azure Izleyici tarafından toplanan tüm veriler, iki temel tür, [ölçüm ve g
 
 Birçok Azure kaynağı için, Azure Izleyici tarafından toplanan verileri Azure portal genel bakış sayfasında görürsünüz. Örneğin, herhangi bir sanal makineye göz atın ve performans ölçümlerini görüntüleyen birkaç grafik görürsünüz. Azure portal, verileri [Ölçüm Gezgini](platform/metrics-charts.md) 'nde açmak için herhangi bir grafiğe tıklayın. Bu, zaman içinde birden çok ölçümün değerlerini grafik oluşturmanızı sağlar.  Grafikleri etkileşimli olarak görüntüleyebilir veya diğer görselleştirmelerle görüntülemek için bunları bir panoya sabitleyebilirsiniz.
 
-![Ölçümler](media/overview/metrics.png)
+![Diyagramda, Görselleştirmelerde kullanılacak Ölçüm Gezgini ölçüm verileri gösterilir.](media/overview/metrics.png)
 
 Azure Izleyici tarafından toplanan günlük verileri, toplanan verileri hızlı bir şekilde almak, birleştirmek ve analiz etmek için [sorgularla](log-query/log-query-overview.md) analiz edilebilir.  Azure portal [Log Analytics](./log-query/log-query-overview.md) kullanarak sorgular oluşturup test edebilir ve ardından farklı araçları kullanarak verileri doğrudan çözümleyebilir ya da [görselleştirmeler](visualizations.md) veya [Uyarı kurallarıyla](platform/alerts-overview.md)kullanılacak sorguları kaydedebilirsiniz.
 
 Azure Izleyici, Azure Veri Gezgini tarafından kullanılan ve basit günlük sorguları için uygun olan, ayrıca toplamalar, birleşimler ve akıllı analiz gibi gelişmiş işlevleri de içeren [kusto sorgu dilinin](/azure/kusto/query/) bir sürümünü kullanır. [Birden çok ders](log-query/get-started-queries.md)kullanarak sorgu dilini hızlıca öğrenebilirsiniz.  [SQL](log-query/sql-cheatsheet.md) ve [Splunk](log-query/splunk-cheatsheet.md)’u önceden bilen kullanıcılara belirli yönergeler sağlanır.
 
-![Günlükler](media/overview/logs.png)
+![Diyagramda, analiz için Log Analytics günlük verilerinin akışı gösterilmektedir.](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Azure İzleyici hangi verileri toplar?
 
@@ -103,12 +103,12 @@ Azure Izleyici 'de [izleme çözümleri](insights/solutions.md) , belirli bir uy
 
 Azure Izleyici 'deki uyarı kuralları, birden çok kural arasında paylaşılabilen benzersiz alıcı kümeleri ve Eylemler içeren [eylem gruplarını](platform/action-groups.md)kullanır. Gereksinimlerinize bağlı olarak, eylem grupları, uyarıları dış eylemleri başlatacak veya ıTSM araçlarınızla tümleştirilebilen Web kancaları kullanarak bu tür eylemleri gerçekleştirebilir.
 
-![Uyarılar](media/overview/alerts.png)
+![Ekran görüntüsü, Azure Izleyici 'deki uyarıları önem derecesi, toplam uyarı ve diğer bilgilerle gösterir.](media/overview/alerts.png)
 
 ### <a name="autoscale"></a>Otomatik Ölçeklendirme
 Otomatik ölçeklendirme, uygulamanızdaki yükü işlemek için çalışan kaynakların doğru miktarına sahip olmasını sağlar. Yükün ne zaman otomatik olarak ekleneceğini ve ayrıca boşta duran kaynakları kaldırarak paradan tasarruf etmek üzere kaynakların ne zaman otomatik olarak ekleneceğini öğrenmek için Azure Izleyici tarafından toplanan ölçümleri kullanan kurallar oluşturmanıza olanak sağlar. Minimum ve maksimum örnek sayısını ve kaynakların ne zaman artırması veya azaltılacağı mantığı belirtirsiniz.
 
-![Otomatik Ölçeklendirme](media/overview/autoscale.png)
+![Diyagramda, Işlemci zamanı 80 > etiketli ve en az sayıda sunucu, geçerli kapasite olarak üç sunucu ve en fazla beş olarak işaretlenmiş bir satırdaki çeşitli sunucularla otomatik ölçeklendirme gösterilmektedir.](media/overview/autoscale.png)
 
 ## <a name="visualizing-monitoring-data"></a>İzleme verileri görselleştiriliyor
 Grafikler ve tablolar gibi [görselleştirmeler](visualizations.md) , izleme verilerini özetlemeye ve farklı kitlelere sunmaya yönelik etkili araçlardır. Azure Izleyici, izleme verilerini görselleştirmeye yönelik kendi özelliklerine sahiptir ve farklı kitlelere yayımlamak için diğer Azure hizmetlerinden yararlanır.
@@ -116,12 +116,12 @@ Grafikler ve tablolar gibi [görselleştirmeler](visualizations.md) , izleme ver
 ### <a name="dashboards"></a>Panolar
 [Azure panoları](../azure-portal/azure-portal-dashboards.md) , hem ölçümler hem de Günlükler dahil olmak üzere farklı türlerdeki verileri [Azure Portal](https://portal.azure.com)tek bir bölmede birleştirmenizi sağlar. İsterseniz panoyu diğer Azure kullanıcılarıyla paylaşabilirsiniz. Azure Izleyici genelinde öğeler, herhangi bir günlük sorgusunun veya ölçüm grafiğinin çıktısının yanı sıra bir Azure panosuna eklenebilir. Örneğin, bir ölçüm grafiği, etkinlik günlüklerinin bir tablosu, Application Insights bir kullanım grafiği ve günlük sorgusunun çıkışı gösteren kutucukları birleştiren bir pano oluşturabilirsiniz.
 
-![Pano](media/overview/dashboard.png)
+![Ekran görüntüsünde, diğer özelleştirilebilir bilgilerle birlikte uygulama ve güvenlik kutucukları içeren bir Azure panosu gösterilir.](media/overview/dashboard.png)
 
 ### <a name="views"></a>Görünümler
 [Görünümler](./platform/view-designer.md) Azure izleyici 'de günlük verilerini görsel olarak sunar.  Her görünüm, kritik verileri özetleyen listelerin yanı sıra çubuk ve çizgi grafikler gibi görselleştirmelerin birleşimine kadar ayrıntıya eklenen tek bir kutucuk içerir.  İzleme çözümleri, belirli bir uygulama için verileri özetleyen görünümler içerir ve herhangi bir günlük sorgusundan veri sunmak için kendi görünümlerinizi de oluşturabilirsiniz. Azure Izleyici 'deki diğer öğelere benzer şekilde, görünümler Azure panolarına eklenebilir.
 
-![Görüntüle](media/overview/view.png)
+![Ekran görüntüsü kapsayıcı Izleme çözümü için bir kutucuk ve kutucuğu seçerseniz açılan ayrıntılı görünümü gösterir.](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com) , çeşitli veri kaynakları genelinde etkileşimli görselleştirmeler sağlayan ve kuruluşunuzun içindeki ve dışındaki başkalarının kullanımına yönelik etkili bir yol sunan bir iş analizi hizmetidir. Bu ek görselleştirmelerin avantajlarından yararlanmak için [Azure izleyici 'den günlük verilerini otomatik olarak içeri aktarmak](./platform/powerbi.md) üzere Power BI yapılandırabilirsiniz.

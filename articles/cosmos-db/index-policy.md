@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607516"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089522"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkeleri
 
-Azure Cosmos DB, her kapsayıcının kapsayıcının öğelerinin nasıl dizine alınacağını belirleyen bir dizin oluşturma ilkesi vardır. Yeni oluşturulan kapsayıcılar için varsayılan dizin oluşturma ilkesi her öğenin her bir özelliğini dizinler ve herhangi bir dize veya sayı için Aralık dizinleri uygular. Bu, dizin oluşturma ve dizin yönetimi ile ilgili düşünmek zorunda kalmadan yüksek sorgu performansı almanızı sağlar.
+Azure Cosmos DB'de her kapsayıcının bir dizin oluşturma ilkesi vardır ve bu ilke kapsayıcıdaki öğelerin nasıl dizine alınacağını belirler. Yeni oluşturulan kapsayıcıların varsayılan dizin oluşturma ilkesi tüm öğelerin tüm özelliklerini dizine alır ve tüm dizeler veya sayılar için aralık dizinlerini zorunlu tutar. Bu sayede önceden dizin oluşturmayı ve dizin yönetimini düşünmek zorunda kalmadan yüksek bir sorgu performansı elde edebilirsiniz.
 
 Bazı durumlarda bu otomatik davranışı kendi gereksinimlerinize daha iyi uyacak şekilde geçersiz kılmak isteyebilirsiniz. *Dizin oluşturma modunu*ayarlayarak bir kapsayıcının dizin oluşturma ilkesini özelleştirebilir ve *özellik yollarını*dahil edebilir veya dışlayabilirsiniz.
 
@@ -30,7 +30,7 @@ Azure Cosmos DB iki dizin oluşturma modunu destekler:
 - **Hiçbiri**: Dizin oluşturma kapsayıcıda devre dışı bırakıldı. Bu genellikle bir kapsayıcı, ikincil dizinlere gerek olmadan saf anahtar-değer deposu olarak kullanıldığında kullanılır. Toplu işlemlerin performansını artırmak için de kullanılabilir. Toplu işlemler tamamlandıktan sonra, dizin modu tutarlı olarak ayarlanabilir ve sonra, Işlem tamamlanana kadar [ındexdönüşümle ilerlemesi](how-to-manage-indexing-policy.md#dotnet-sdk) kullanılarak izlenebilir.
 
 > [!NOTE]
-> Azure Cosmos DB, yavaş dizin oluşturma modunu da destekler. Yavaş dizin oluşturma, altyapı başka bir iş gerçekleştirmediğinden daha düşük bir öncelik düzeyinde dizinde güncelleştirmeler gerçekleştirir. Bu, **tutarsız veya tamamlanmamış** sorgu sonuçlarının oluşmasına neden olabilir. Bir Cosmos kapsayıcısını sorgulamayı planlıyorsanız, geç dizin oluşturma ' yı seçmemelisiniz. Haziran 2020 ' de, artık yeni kapsayıcıların geç dizin oluşturma moduna ayarlamaya izin veren bir değişiklik yaptık. Azure Cosmos DB hesabınız zaten yavaş dizin oluşturma ile en az bir kapsayıcı içeriyorsa, bu hesap otomatik olarak değişiklikten muaf tutulur. Ayrıca, [Azure desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ile iletişim kurarak (yavaş Dizin oluşturmayı desteklemeyen [sunucusuz](serverless.md) modda bir Azure Cosmos hesabı kullanıyor olmanız dışında) bir istisna da isteyebilirsiniz.
+> Azure Cosmos DB, yavaş dizin oluşturma modunu da destekler. Gecikmeli dizinde, dizin güncelleştirmeleri altyapıda hiçbir çalışma yapılmadığı sırada çok daha düşük öncelik düzeyinde gerçekleştirilir. Bu **tutarsız veya eksik** sorgu sonuçlarına yol açabilir. Cosmos kapsayıcısını sorgulamayı planlıyorsanız gecikmeli dizini seçmemelisiniz. Haziran 2020 ' de, artık yeni kapsayıcıların geç dizin oluşturma moduna ayarlamaya izin veren bir değişiklik yaptık. Azure Cosmos DB hesabınız zaten yavaş dizin oluşturma ile en az bir kapsayıcı içeriyorsa, bu hesap otomatik olarak değişiklikten muaf tutulur. Ayrıca, [Azure desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ile iletişim kurarak (yavaş Dizin oluşturmayı desteklemeyen [sunucusuz](serverless.md) modda bir Azure Cosmos hesabı kullanıyor olmanız dışında) bir istisna da isteyebilirsiniz.
 
 Varsayılan olarak, dizin oluşturma ilkesi olarak ayarlanır `automatic` . `automatic`Dizin oluşturma ilkesindeki özelliği olarak ayarlanarak elde edilir `true` . Bu özelliği ayarlamak için `true` Azure CosmosDB 'nin belgeleri yazıldığı gibi otomatik olarak dizin oluşturulmasına izin verir.
 
@@ -81,7 +81,7 @@ Herhangi bir dizin oluşturma ilkesinin kök yolu `/*` dahil edilen ya da hariç
 
 Yolları dahil etme ve hariç tutma sırasında aşağıdaki özniteliklerle karşılaşabilirsiniz:
 
-- `kind` ya da olabilir `range` `hash` . Aralık dizini işlevselliği bir karma dizinin tüm işlevlerini sağlar, bu nedenle bir Aralık dizini kullanmanızı öneririz.
+- `kind` ya da olabilir `range` `hash` . Karma dizin desteği eşitlik filtreleriyle sınırlıdır. Aralık dizini işlevselliği, karma dizinlerin tüm işlevlerini ve etkili sıralama, Aralık filtreleri, sistem işlevlerini sağlar. Her zaman bir Aralık dizini kullanmanızı öneririz.
 
 - `precision` , eklenen yollar için dizin düzeyinde tanımlanmış bir sayıdır. Değeri `-1` en fazla duyarlığı gösterir. Bu değeri her zaman olarak ayarlamayı öneririz `-1` .
 

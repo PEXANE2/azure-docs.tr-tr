@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fe07d6d54296a3c55cb0b2cadb4d4ae0a311873b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036802"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089573"
 ---
 # <a name="change-the-style-of-the-map"></a>Haritanın stilini değiştirme
 
@@ -82,7 +82,7 @@ Temel harita stili, `setStyle` işlevi kullanılarak ve `style` farklı bir teme
 map.setStyle({ style: 'satellite' });
 ```
 
-Aşağıdaki kodda, bir eşleme örneği yüklendikten sonra, eşleme stili, ' den `grayscale_dark` `satellite` [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-) işlevi kullanılarak güncelleştirilir.
+Aşağıdaki kodda, bir eşleme örneği yüklendikten sonra, eşleme stili, ' den `grayscale_dark` `satellite` [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) işlevi kullanılarak güncelleştirilir.
 
 <br/>
 
@@ -97,14 +97,14 @@ Stil seçicisinin iki farklı düzen seçeneği vardır: `icon` ve `list` . Ayr�
 
 Aşağıdaki görüntüde, düzen içinde gösterilen stil Seçici denetimi gösterilmektedir `icon` .
 
-:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Stil Seçici liste düzeni":::
+:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Stil Seçici simge düzeni":::
 
 Aşağıdaki görüntüde, düzen içinde gösterilen stil Seçici denetimi gösterilmektedir `list` .
 
 :::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Stil Seçici liste düzeni":::
 
 > [!IMPORTANT]
->Varsayılan olarak, stil Seçici denetimi Azure haritalar 'ın S0 fiyatlandırma katmanı altında bulunan tüm stilleri listeler. Bu listedeki stil sayısını azaltmak isterseniz, listede görünmesini istediğiniz stillerin bir dizisini `mapStyle` Stil seçicisinin seçeneğine geçirin. S1 kullanıyorsanız ve tüm kullanılabilir stilleri göstermek istiyorsanız, `mapStyles` Stil seçicisinin seçeneğini olarak ayarlayın `"all"` .
+> Varsayılan olarak, stil Seçici denetimi Azure haritalar 'ın S0 fiyatlandırma katmanı altında bulunan tüm stilleri listeler. Bu listedeki stil sayısını azaltmak isterseniz, listede görünmesini istediğiniz stillerin bir dizisini `mapStyle` Stil seçicisinin seçeneğine geçirin. S1 kullanıyorsanız ve tüm kullanılabilir stilleri göstermek istiyorsanız, `mapStyles` Stil seçicisinin seçeneğini olarak ayarlayın `"all"` .
 
 Aşağıdaki kod, varsayılan temel stil listesini geçersiz kılmayı gösterir `mapStyles` . Bu örnekte, `mapStyles` stil Seçici denetimi tarafından görüntülenmesini istediğimiz temel stilleri listelemek için seçeneği ayarlıyoruz.
 

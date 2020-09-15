@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: bfb7c94f1a29eaaf849dbf18a2b6137102617be8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a9e563f32f2b8f38af7ab86be82cd18ef1c2309c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986857"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088417"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,7 +89,7 @@ SQL veritabanı ve SQL yönetilen örnek denetimi, veritabanı etkinliklerini m�
 
 ### <a name="advanced-threat-protection"></a>Gelişmiş Tehdit Koruması
 
-Gelişmiş tehdit koruması, olağan dışı davranışları ve veritabanlarına erişme ya da yararlanmaya yönelik olabilecek olası girişimleri algılamak için günlüklerinizi analiz etmeyi sağlar. SQL ekleme, olası veri girişi ve deneme yanılma saldırıları gibi şüpheli etkinlikler için uyarılar oluşturulur ve erişim desenlerine yönelik olarak ayrıcalık yürüyen istekleri ve ihlal edilen kimlik bilgileri kullanımını yakalayın. Uyarılar, şüpheli etkinliklerin ayrıntılarının sağlandığı ve tehdidi hafifletmek için eylemlerle birlikte daha fazla araştırma önerileri sunan [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)' nden görüntülenir. Gelişmiş tehdit koruması, sunucu başına ek bir ücret karşılığında etkinleştirilebilir. Daha fazla bilgi için bkz. [SQL veritabanı Gelişmiş tehdit koruması ile çalışmaya başlama](threat-detection-configure.md).
+Gelişmiş tehdit koruması, olağan dışı davranışları ve veritabanlarına erişme ya da yararlanmaya yönelik olabilecek olası girişimleri algılamak için günlüklerinizi analiz etmeyi sağlar. SQL ekleme, olası veri girişi ve deneme yanılma saldırıları gibi şüpheli etkinlikler için uyarılar oluşturulur ve erişim desenlerine yönelik olarak ayrıcalık yürüyen istekleri ve ihlal edilen kimlik bilgileri kullanımını yakalayın. Uyarılar, şüpheli etkinliklerin ayrıntılarının sağlandığı ve tehdidi hafifletmek için eylemlerle birlikte daha fazla araştırma önerileri sunan  [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)' nden görüntülenir. Gelişmiş tehdit koruması, sunucu başına ek bir ücret karşılığında etkinleştirilebilir. Daha fazla bilgi için bkz. [SQL veritabanı Gelişmiş tehdit koruması ile çalışmaya başlama](threat-detection-configure.md).
 
 ![azure-database-td.jpg](./media/security-overview/azure-database-td.jpg)
 
@@ -103,7 +103,7 @@ SQL veritabanı ve SQL yönetilen örneği, tüm bağlantılar için her zaman �
 
 En iyi yöntem olarak, uygulama tarafından kullanılan bağlantı dizesinde, şifreli bir bağlantı belirtmeniz ve sunucu sertifikasına _**güvenmemeniz**_ önerilir. Bu, uygulamanızı sunucu sertifikasını doğrulamaya zorlar ve böylece uygulamanızın ortadaki tür saldırılarına karşı savunmasız kalmasına engel olur.
 
-Örneğin, ADO.NET sürücüsünü kullanırken bu, **encrypt = true** ve **TrustServerCertificate = false**aracılığıyla gerçekleştirilir. Bağlantı dizenizi Azure portal elde ediyorsanız, doğru ayarlara sahip olur.
+Örneğin, ADO.NET sürücüsünü kullanırken bu,  **encrypt = true** ve **TrustServerCertificate = false**aracılığıyla gerçekleştirilir. Bağlantı dizenizi Azure portal elde ediyorsanız, doğru ayarlara sahip olur.
 
 > [!IMPORTANT]
 > Bazı Microsoft dışı sürücülerin, çalışması için varsayılan olarak TLS veya daha eski bir TLS sürümünü (<1,2) kullanabileceğini unutmayın. Bu durumda sunucu yine de veritabanınıza bağlanmanızı sağlar. Ancak, özellikle hassas verileri depoluiyorsanız, bu tür sürücülere ve uygulamanın SQL veritabanına bağlanmasına izin vermenin güvenlik risklerini değerlendirmenizi öneririz.
@@ -150,7 +150,7 @@ Daha fazla bilgi için, bkz. [veri bulma ve sınıflandırmayla çalışmaya ba�
 
 ### <a name="compliance"></a>Uyumluluk
 
-Uygulamanızın çeşitli güvenlik gereksinimlerini karşılamasına yardımcı olabilecek yukarıdaki özelliklere ve işlevlere ek olarak, Azure SQL veritabanı normal denetim özelliklerine de katılır ve bir dizi uyumluluk standartlarına karşı sertifikalandırilmiştir. Daha fazla bilgi için SQL veritabanı uyumluluk sertifikalarının en güncel listesini bulabileceğiniz [Microsoft Azure Güven Merkezi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ' ne bakın.
+Uygulamanızın çeşitli güvenlik gereksinimlerini karşılamasına yardımcı olabilecek yukarıdaki özelliklere ve işlevlere ek olarak, Azure SQL veritabanı normal denetim özelliklerine de katılır ve bir dizi uyumluluk standartlarına karşı sertifikalandırilmiştir. Daha fazla bilgi için SQL veritabanı uyumluluk sertifikalarının en güncel listesini bulabileceğiniz [Microsoft Azure Güven Merkezi](https://www.microsoft.com/trust-center/compliance/compliance-overview) ' ne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

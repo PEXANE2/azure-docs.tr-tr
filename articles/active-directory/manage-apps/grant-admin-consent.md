@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68e40696c935adf6bef78636770b1add81255fa8
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060926"
+ms.locfileid: "90069586"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Uygulamaya kiracı genelinde yönetici onayı verme
 
@@ -69,6 +69,9 @@ Kuruluşunuzun geliştirdiği veya doğrudan Azure AD kiracınızda kayıtlı ol
 4. **API izinleri** ' ni seçin ve ardından **yönetici izni ver**' e tıklayın.
 5. Uygulamanın gerektirdiği izinleri dikkatle gözden geçirin.
 6. Uygulamanın gerektirdiği izinleri kabul ediyorsanız izin verin. Aksi takdirde, **iptal** ' e tıklayın veya pencereyi kapatın.
+
+> [!WARNING]
+> **Uygulama kayıtları** aracılığıyla kiracı genelinde yönetici onayı verilmesi, daha önce kiracı genelinde verilen tüm izinleri iptal eder. Kullanıcıları kendi adına önceden vermiş olan izinler etkilenmez. 
 
 ## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>Kiracı genelinde yönetici onayı vermek için URL oluşturun
 

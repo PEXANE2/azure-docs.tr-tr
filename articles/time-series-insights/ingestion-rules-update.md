@@ -10,49 +10,50 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: lyhughes
-ms.openlocfilehash: cdf90614e1f766fc37e04a1416081bd35e19b74e
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9a345661a50b18d53411d073ccf12375fe17cdb9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168210"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088604"
 ---
-# <a name="upcoming-changes-to-the-json-flattening-and-escaping-rules-for-new-environments"></a>Yeni ortamlar için JSON düzleştirme ve kaçış kurallarında yakında yapılan değişiklikler
+# <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>Yeni ortamlar için JSON düzleştirme ve kaçış kurallarında yaklaşan değişiklikler
 
-**Bu değişiklikler yalnızca *Yeni oluşturulan* Azure Time Series Insights Gen2 ortamlarına uygulanır. Bu değişiklikler Gen1 ortamları için geçerlidir.**
+> [!IMPORTANT]
+> Bu değişiklikler yalnızca *Yeni oluşturulan* Microsoft Azure Time Series Insights Gen2 ortamları için uygulanır. Değişiklikler Gen1 ortamları için uygulanmaz.
 
-Azure Time Series Insights Gen2 ortamınız, belirli bir adlandırma kuralları kümesini izleyerek depolama sütunlarınızı dinamik olarak oluşturur. Bir olay tamamlandığında, JSON yüküne ve özellik adlarına bir dizi kural uygulanır. JSON verilerinin düzleştirildiğinde ve depolanabileceği değişiklikler 2020 Temmuz 'da yeni Azure Time Series Insights Gen2 ortamları için geçerli olacaktır. Bu değişiklik, aşağıdaki durumlarda sizi etkiler:
+Azure Time Series Insights Gen2 ortamınız, belirli bir adlandırma kuralları kümesini izleyerek depolama sütunlarınızı dinamik olarak oluşturur. Bir olay yapıldığında Time Series Insights JSON yükünün ve özellik adlarının bir kural kümesini uygular. JSON verilerinin düzleştirildiğinde ve depolama, 2020 Temmuz 'da yeni Azure Time Series Insights Gen2 ortamları için geçerli olan değişiklikler. Bu değişiklik, aşağıdaki durumlarda sizi etkiler:
 
-* JSON yükünüzü iç içe nesneler içeriyorsa
-* JSON yükünüzü diziler içeriyorsa
-* JSON özelliği adında aşağıdaki dört özel karakterden birini kullanıyorsanız: [\. '
-* Bir veya daha fazla TS KIMLIĞINIZ özelliği iç içe yerleştirilmiş bir nesne içindeyse.
+* JSON yükünüzü iç içe geçmiş nesneler içeriyor.
+* JSON yükünüzü diziler içeriyor.
+* JSON özellik adında aşağıdaki dört özel karakterden birini kullanın: `[` `\` `.``'`
+* Zaman serisi (TS) KIMLIĞI özelliklerinden biri veya birkaçı iç içe geçmiş bir nesne içinde.
 
-Yeni bir ortam oluşturursanız ve yukarıdaki durumlardan biri veya daha fazlası olay yükünüzü geçerliyse, verilerinizi düzleştirilmiş ve farklı şekilde depoladığınız şekilde görürsünüz. Değişikliklerin özeti aşağıda verilmiştir:
+Yeni bir ortam oluşturursanız ve bu durumların bir veya daha fazlası olay yükünüzü geçerliyse, verileriniz düzleştirilmez ve farklı şekilde depolanır. Aşağıdaki tabloda değişiklikler özetlenmektedir:
 
-| Geçerli kural | Yeni Kural | Örnek JSON | Önceki sütun adı | Yeni sütun adı
+| Geçerli kural | Yeni kural | Örnek JSON | Önceki sütun adı | Yeni sütun adı
 |---|---| ---| ---|  ---|
-| İç içe geçmiş JSON, ayırıcı olarak alt çizgi kullanılarak düzleştirilir |İç içe geçmiş JSON, ayırıcı olarak bir nokta kullanılarak düzleştirilir  | ``{"series" : { "value" : 19.338 }}`` | `series_value_double` |`series.value_double` |
-| Özel karakterler atlanmaz | Özel karakterleri içeren JSON özelliği adları. [\ ve ', [' ve '] kullanılarak atlanmalıdır. [' Ve '] içinde, tek tırnak ve ters eğik çizgiler için ek kaçış var. Tek bir teklif olarak yazılacak \' ve bir ters eğik çizgi şu şekilde yazılacak\\\  | ```"Foo's Law Value": "17.139999389648"``` | `Foo's Law Value_double` | `['Foo\'s Law Value']_double` |
-| Temel elemanlar dizileri bir dize olarak depolanır | Temel türlerin dizileri dinamik bir tür olarak depolanır  | `"values": [154, 149, 147]` | `values_string`  | `values_dynamic` |
-Nesne dizileri her zaman düzleştirilir, birden çok olay üretir | Bir dizideki nesneler TS KIMLIĞI veya zaman damgası özellikleri (lar) yoksa, nesne dizisi dinamik bir tür olarak tamamen saklanır | `"values": [{"foo" : 140}, {"bar" : 149}]` | `values_foo_long | values_bar_long` | `values_dynamic` |
+| İç içe geçmiş JSON, ayırıcı olarak alt çizgi kullanılarak düzleştirilir. |İç içe geçmiş JSON, ayırıcı olarak bir nokta kullanılarak düzleştirilir.  | ``{"series" : { "value" : 19.338 }}`` | `series_value_double` |`series.value_double` |
+| Özel karakterler atlanmaz. | Özel karakterleri içeren `.` `[`   `\` ve `'` ve kullanarak kaçan JSON `['` özellik adları `']` . `['`Ve içinde `']` , tek tırnak ve ters eğik çizgi ek kaçışı vardır. Tek tırnak işareti olarak `\'` ve ters eğik çizgi olarak yazılır `\\` .  | ```"Foo's Law Value": "17.139999389648"``` | `Foo's Law Value_double` | `['Foo\'s Law Value']_double` |
+| Temel elemanlar dizileri bir dize olarak depolanır. | Temel türlerin dizileri dinamik bir tür olarak depolanır.  | `"values": [154, 149, 147]` | `values_string`  | `values_dynamic` |
+Nesne dizileri her zaman düzleştirilir ve birden çok olay üretir. | Bir dizideki nesneler TS ID veya timestamp özelliklerine sahip değilse, nesne dizisi dinamik bir tür olarak tamamen saklanır. | `"values": [{"foo" : 140}, {"bar" : 149}]` | `values_foo_long | values_bar_long` | `values_dynamic` |
 
 ## <a name="recommended-changes-for-new-environments"></a>Yeni ortamlar için önerilen değişiklikler
 
 ### <a name="if-your-ts-id-andor-timestamp-property-is-nested-within-an-object"></a>TS KIMLIĞINIZ ve/veya timestamp özelliği bir nesne içinde iç içe ise
 
-* Yeni dağıtımların yeni alım kurallarıyla eşleşmesi gerekecektir. Örneğin, TS KIMLIĞINIZ ise, `telemetry_tagId` ortam kimliği olarak yapılandırmak üzere Azure Resource Manager (ARM) şablonları veya otomatik dağıtım betikleri güncelleştirmeniz gerekir `telemetry.tagId` . Bu değişiklik, iç içe geçmiş JSON 'daki olay kaynak zaman damgaları için de gereklidir.
+Yeni dağıtım kurallarından her türlü yeni dağıtımın eşleşmesi gerekir. Örneğin, TS KIMLIĞINIZ ise, `telemetry_tagId` `telemetry.tagId` ortam TS kimliği olarak yapılandırmak için tüm Azure Resource Manager şablonlarını veya Otomatik Dağıtım betiklerini güncelleştirmeniz gerekir. Ayrıca, iç içe geçmiş JSON 'daki olay kaynağı zaman damgaları için de bu değişikliği yapmanız gerekir
 
 ### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Yükleriniz iç içe geçmiş JSON veya özel karakterler içeriyorsa ve yazma [zaman serisi model](.\time-series-insights-update-tsm.md) değişkeni ifadelerini otomatikleştirin
 
-* Yeni giriş kurallarını eşleştirmek için [Typesbatchput](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) öğesini yürüten istemci kodunuzu güncelleştirin. Örneğin, önceki bir [zaman serisi ifadesinin](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) `"value": {"tsx": "$event.series_value.Double"}` aşağıdaki seçeneklerden birine güncelleştirilmeleri gerekir:
+Yeni giriş kurallarını eşleştirmek için [Typesbatchput](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) çalıştıran istemci kodunuzu güncelleştirin. Örneğin, önceki bir [zaman serisi ifadesini](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) `"value": {"tsx": "$event.series_value.Double"}` aşağıdaki seçeneklerden birine güncelleştirmeniz gerekir:
   * `"value": {"tsx": "$event.series.value.Double"}`
   * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Gen2 depolama ve giriş Azure Time Series Insights](./time-series-insights-update-storage-ingress.md)okuyun.
+* [Azure Time Series Insights Gen2 Storage ve ınress](./time-series-insights-update-storage-ingress.md)hakkında bilgi edinin.
 
-* [Zaman serisi sorgu API 'lerini](./concepts-query-overview.md)kullanarak verilerinizi sorgulama hakkında daha fazla bilgi edinin.
+* [Zaman serisi sorgu API 'lerini](./concepts-query-overview.md)kullanarak verilerinizi sorgulamayı öğrenin.
 
 * [Yeni zaman serisi ifade sözdizimi](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)hakkında daha fazla bilgi edinin.

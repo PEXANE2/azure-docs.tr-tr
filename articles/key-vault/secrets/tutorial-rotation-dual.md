@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: b9478d3b171189decb4e2cca7fc93ba2fa75e32e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: f1a29866715c746e7a7eef82f11237bcbd159925
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482792"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086836"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>İki kimlik doğrulama kimlik kümesi içeren kaynaklar için gizli dizi döndürmeyi otomatikleştirin
 
@@ -35,7 +35,7 @@ Yukarıdaki çözümde, Azure Key Vault depolama hesabı ayrı erişim anahtarla
 1. İşlev uygulaması alternatif anahtarı (en son dışında) tanımlar ve depolama hesabı 'nı yeniden oluşturmak için çağırır
 1. İşlev uygulaması, yeni bir parola Azure Key Vault için yeni bir anahtar ekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Azure Key Vault
 * İki Azure depolama hesabı
@@ -204,7 +204,7 @@ az storage account keys list -n akvrotationstorage
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
-- Genel Bakış: [Azure Event Grid Key Vault izleme (Önizleme)](../general/event-grid-overview.md)
+- Genel Bakış: [Azure Event Grid Key Vault izleme](../general/event-grid-overview.md)
 - Nasıl yapılır: [Azure Portal ilk işlevinizi oluşturma](../../azure-functions/functions-create-first-azure-function.md)
 - Nasıl yapılır: [Anahtar Kasası gizli anahtarı değiştiğinde e-posta alma](../general/event-grid-logicapps.md)
-- [Azure Key Vault için Azure Event Grid olay şeması (Önizleme)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault için Azure Event Grid olay şeması](../../event-grid/event-schema-key-vault.md)

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: b337065f125d12e309dd1f7fcc56c2af72b1c28c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874240"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088366"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Öğretici: Log Analytics sorguları kullanmaya başlama
 
@@ -42,7 +42,7 @@ Azure Izleyici 'yi kullanarak en az bir Azure kaynağında günlük verilerini t
 
 Şema tabloları, Log Analytics çalışma alanının **Tablolar** sekmesinde görüntülenir. Tablolar, her biri sütun adının yanında bulunan simgesiyle gösterilen bir veri türüne sahip sütunları içerir. Örneğin, **olay** tablosu, **bilgisayar** ve **EventCategory**gibi sayısal sütunlar gibi metin sütunları içerir.
 
-![Şema](media/get-started-portal/schema.png)
+![Ekran görüntüsünde, bilgisayar ve EventCategory vurgulanmış şekilde tablolar bölmesini vurgulayıp yeni bir sorguyla birlikte Azure portal günlükleri sayfası gösterilmektedir.](media/get-started-portal/schema.png)
 
 ## <a name="write-and-run-basic-queries"></a>Temel sorguları yazma ve çalıştırma
 
@@ -120,7 +120,7 @@ Sorgu `Event` sonuçlarını filtreleyerek sorgu sonuçlarını **hata** olaylar
    
 1. **Filtre**' yi seçin.
    
-   ![Filtre](media/get-started-portal/filter.png)
+   ![Ekran görüntüsü, olayları EventLevelName 'e göre filtrelemeye yönelik bağlamsal menüye sahip bir sonuç tablosu gösterir.](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>Sütunları Sırala, Gruplandır ve Seç
 Sorgu sonuçlarını **TimeGenerated [UTC]** gibi belirli bir sütuna göre sıralamak için sütun başlığını seçin. Artan ve azalan sıra arasında geçiş yapmak için başlığı tekrar seçin.
@@ -129,7 +129,7 @@ Sorgu sonuçlarını **TimeGenerated [UTC]** gibi belirli bir sütuna göre sır
 
 Sonuçları düzenlemenin başka bir yolu da gruplara göre yapılır. Sonuçları belirli bir sütuna göre gruplandırmak için, sütun başlığını, sütun **üst bilgisini sürükleyin ve bu sütuna göre gruplandırmak üzere buraya bırakın**. Alt gruplar oluşturmak için diğer sütunları üst çubuğa sürükleyin. Çubuktaki grupları ve alt grupları hiyerarşiyi ve sıralamayı yeniden düzenleyebilirsiniz.
 
-![Gruplar](media/get-started-portal/groups.png)
+![Ekran görüntüsü EventLevelName ve Computer alt gruplarının sorgu sonuçlarını gösterir.](media/get-started-portal/groups.png)
 
 Sonuçlarda sütunları gizlemek veya göstermek için tablonun üzerindeki **sütunlar** ' ı seçin ve ardından aşağı açılan listeden istediğiniz sütunları seçin veya seçimi kaldırın.
 

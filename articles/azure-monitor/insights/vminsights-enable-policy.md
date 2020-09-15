@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 9bc323e0fafc576c5e75f46b3c38fdf140b1b0f4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 240c96016304c009c36485869ac15f5f38076fb7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799811"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088298"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Ilkesini kullanarak VM'ler için Azure İzleyici etkinleştirme
 Bu makalede, Azure Policy kullanılarak Azure sanal makineler veya Azure Arc (Önizleme) ile bağlantılı karma sanal makine için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır. Azure Ilkesi, Azure ortamınızda VM'ler için Azure İzleyici için gerekli aracıları yükleyen ve her sanal makine oluşturulduğu sürece VM 'Ler için izlemeyi otomatik olarak etkinleştiren ilke tanımlarını atamanıza olanak tanır. VM'ler için Azure İzleyici, ortamınızdaki uyumsuz VM 'Leri keşfetmenizi ve düzeltmenizi sağlayan bir özellik sunar. Doğrudan Azure Ilkesiyle çalışmak yerine bu özelliği kullanın.
@@ -46,7 +46,7 @@ Bu, seçtiğiniz kapsamla ve **Enable VM'ler için Azure izleyici** girişim tan
 **Parametreler** sayfasında, atamadaki tüm sanal makineler tarafından kullanılacak bir **Log Analytics çalışma alanı** seçin. Farklı sanal makineler için farklı çalışma alanları belirtmek istiyorsanız, her biri kendi kapsamına sahip birden çok atama oluşturmanız gerekir. 
 
    > [!NOTE]
-   > Çalışma alanı atama kapsamının ötesinde, ilke atamasının asıl KIMLIĞINE *Log Analytics katkıda bulunan* izinleri verin. Bunu yapmazsanız, şunun gibi bir dağıtım hatası görebilirsiniz:`The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
+   > Çalışma alanı atama kapsamının ötesinde, ilke atamasının asıl KIMLIĞINE *Log Analytics katkıda bulunan* izinleri verin. Bunu yapmazsanız, şunun gibi bir dağıtım hatası görebilirsiniz: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
 
 [![Çalışma alanı](media/vminsights-enable-at-scale-policy/assignment-workspace.png)](media/vminsights-enable-at-scale-policy/assignment-workspace.png#lightbox)
 
@@ -102,7 +102,7 @@ Uyumluluk sorunlarını azaltmak için bir düzeltme görevi oluşturmak üzere 
 
 Düzeltme görevini oluşturmak için **Düzelt** ' e tıklayın ve ardından başlatmak için **düzeltin** . Büyük olasılıkla her ilke tanımı için bir tane olmak üzere birden çok düzeltme görevi oluşturmanız gerekir. Bir girişim için düzeltme görevi oluşturamazsınız.
 
-[![Düzeltmesi](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
+[![Ekran görüntüsü Izleme için Ilke Düzeltme bölmesini gösterir | Sanal makineler.](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
 
 
 Düzeltme görevleri tamamlandıktan sonra, sanal makinelerinizin VM'ler için Azure İzleyici için yüklü ve etkinleştirilmiş aracıların uyumlu olması gerekir. 

@@ -5,24 +5,23 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
+editor: thsomasu
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 09/14/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3acfc9e3a856ec777bfada68d535b6a1e9878a08
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bf9670ae8fd22342a05f8d506f743c7a5c395e5f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017932"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088145"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs platformlar arası bildirimler gönderin
 
@@ -38,9 +37,9 @@ Bu makalede, tüm platformları hedefleyen bir bildirim göndermek için şablon
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>Şablonları kullanarak platformlar arası bildirimler gönderme
 
-Bu bölüm, [Azure Notification Hubs öğreticisini kullanarak belirli kullanıcılara bildirim gönderme] bölümünde oluşturduğunuz örnek kodu kullanır. Örneği [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)'dan indirebilirsiniz.
+Bu bölüm, [Azure Notification Hubs öğreticisini kullanarak belirli kullanıcılara bildirim gönderme] bölümünde oluşturduğunuz örnek kodu kullanır. [GitHub 'dan tüm örneği indirebilirsiniz](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 
-Şablonları kullanarak platformlar arası bildirimler göndermek için aşağıdaki adımları uygulayın:
+Şablonları kullanarak platformlar arası bildirimler göndermek için aşağıdakileri yapın:
 
 1. **Çözüm Gezgini**'Deki Visual Studio 'Da, **denetleyiciler** klasörünü genişletin ve ardından *RegisterController.cs* dosyasını açın.
 
@@ -77,7 +76,7 @@ Bu bölüm, [Azure Notification Hubs öğreticisini kullanarak belirli kullanıc
 
     Bu kod, yerel kayıt yerine bir şablon kaydı oluşturmak için platforma özgü yöntemi çağırır. Şablon kayıtları yerel kayıtlardan türetiğinden, var olan kayıtları değiştirmenize gerek yoktur.
 
-1. **Çözüm Gezgini**, **denetleyiciler** klasöründe, *NotificationsController.cs* dosyasını açın. `Post` yöntemini aşağıdaki kod ile değiştirin:
+1. **Çözüm Gezgini**, **denetleyiciler** klasöründe, **NotificationsController.cs** dosyasını açın. `Post` yöntemini aşağıdaki kod ile değiştirin:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()

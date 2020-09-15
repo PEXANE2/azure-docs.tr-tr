@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752018"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088502"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure'da hangi disk türleri kullanılabilir?
 
@@ -71,7 +71,7 @@ Ultra diskler kullanmaya başlamak istiyorsanız, konudaki makalemize bakın: [A
 
 Azure Premium SSD 'ler, giriş/çıkış (GÇ) yoğun iş yükleri ile sanal makineler (VM) için yüksek performanslı ve düşük gecikmeli disk desteği sunar. Premium Depolama disklerinin hız ve performansından yararlanmak için, mevcut VM disklerini Premium SSD 'Ler 'e geçirebilirsiniz. Premium SSD 'Ler, görev açısından kritik üretim uygulamaları için uygundur. Premium SSD 'Ler, yalnızca Premium Depolama ile uyumlu olan VM serileri ile kullanılabilir.
 
-Windows veya Linux için Azure 'daki tek tek VM türleri ve boyutları hakkında daha fazla bilgi edinmek için bkz. [Azure 'da sanal makineler Için boyutlar](sizes.md). Linux için Azure 'daki tek tek VM türleri ve boyutları hakkında daha fazla bilgi edinmek için, hangi boyutlarda Premium Depolama ile uyumlu olduğu da dahil olmak üzere bkz. [Azure 'da sanal makine boyutları](sizes.md). Bu makalelerden herhangi birinden, Premium Depolama ile uyumlu olup olmadığını öğrenmek için her bir VM boyutu makalesini denetlemeniz gerekir.
+Windows veya Linux için Azure 'daki tek tek VM türleri ve boyutları hakkında daha fazla bilgi edinmek için bkz. [Azure 'da sanal makineler Için boyutlar](sizes.md). Bu makalede, Premium Depolama ile uyumlu olup olmadığını öğrenmek için her bir VM boyutu makalesini denetlemeniz gerekir.
 
 ### <a name="disk-size"></a>Disk boyutu
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]

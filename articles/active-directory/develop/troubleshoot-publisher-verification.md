@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: c332b960caf7707953069c5252219ca6c51761a8
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007562"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088332"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Yayımcı doğrulaması ile ilgili sorunları giderme
 Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verification-overview.md)ile ilgili beklenmeyen davranışlarla karşılaşıyorsanız, hata alıyorsanız veya beklenmeyen davranışı görüyorsanız aşağıdakileri yaparak başlatmanız gerekir: 
@@ -39,10 +39,10 @@ Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verifi
     1. Bir MPN hesabı zaten mevcutsa, bu tanınacaktır ve hesaba eklenirsiniz 
     1. MPN KIMLIĞI ve birincil hesap kişisinin listeleneceği [iş ortağı profili sayfasına](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) gidin
 
-- **Azure AD Genel yöneticimin (Şirket Yöneticisi veya kiracı yöneticisi olarak da bilinir) kim olduğunu bilmiyorum, bunları nasıl bulabilirim? Uygulama Yöneticisi veya farklı bir yönetici rolü nedir?**
+- **Azure AD Genel yöneticimin (Şirket Yöneticisi veya kiracı yöneticisi olarak da bilinir) kim olduğunu bilmiyorum, bunları nasıl bulabilirim? Uygulama Yöneticisi veya bulut uygulama Yöneticisi hakkında ne olacak?**
     1. Kuruluşunuzun birincil kiracısındaki bir kullanıcı hesabını kullanarak [Azure AD portalında](https://aad.portal.azure.com) oturum açın
     1. [Rol yönetimine](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) git
-    1. "Genel yönetici" veya istenen yönetici rolü ' ne tıklayın
+    1. İstediğiniz yönetici rolüne tıklayın
     1. Bu rolün atandığı kullanıcıların listesi görüntülenir
 
 - **MPN hesabımın yöneticimin kim olduğunu bilmiyorum** [MPN Kullanıcı yönetimi sayfasına](https://partner.microsoft.com/pcv/users) gidin ve kullanıcıların çeşitli yönetici rollerde olduğunu görmek için kullanıcı listesine filtre uygulayın.
@@ -51,22 +51,25 @@ Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verifi
     1. [İş ortağı profilinize](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) gidin ve şunları doğrulayın: 
         - MPN KIMLIĞI doğru. 
         - Bir hata veya "bekleyen eylemler" görüntülenir ve yasal iş profili ve Iş ortağı bilgileri altındaki doğrulama durumu "yetkili" veya "başarılı" deyin.
-    1. [MPN Kiracı Yönetimi sayfasına](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) gidin ve uygulamanın kaydolmasını ve ' den bir kullanıcı hesabı ile imzalarınızın ilişkili kiracılar listesinde olduğunu doğrulayın.
-    1. [MPN Kullanıcı yönetimi sayfasına](https://partner.microsoft.com/pcv/users) gidin ve oturum açmak için kullandığınız kullanıcının genel yönetici, MPN Yöneticisi veya hesaplar Yöneticisi olduğunu onaylayın.
+    1. [MPN Kiracı Yönetimi sayfasına](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) gidin ve uygulamanın kaydolmasını ve ' den bir kullanıcı hesabı ile imzalarınızın ilişkili kiracılar listesinde olduğunu doğrulayın. Ek bir kiracı eklemeniz gerekiyorsa [buradaki](https://docs.microsoft.com/partner-center/multi-tenant-account)yönergeleri izleyin. Lütfen eklediğiniz herhangi bir kiracının genel yöneticilerinin Iş Ortağı Merkezi hesabınızda genel yönetici ayrıcalıklarına sahip olacağını unutmayın.
+    1. [MPN Kullanıcı yönetimi sayfasına](https://partner.microsoft.com/pcv/users) gidin ve oturum açmak için kullandığınız kullanıcının genel yönetici, MPN Yöneticisi veya hesaplar Yöneticisi olduğunu onaylayın. Iş Ortağı Merkezi 'nde bir role Kullanıcı eklemeniz gerekiyorsa [buradaki](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions)yönergeleri izleyin.
 
 - **Azure AD portalında oturum açarken hiçbir uygulamanın kayıtlı olmadığını görmüyorum. Kaydol?** 
-    Uygulama kayıtlarınız farklı bir kullanıcı hesabı kullanılarak veya farklı bir kiracıda oluşturulmuş olabilir. Uygulama kayıtlarınızın oluşturulduğu kiracıda doğru hesapla oturum açtığınızdan emin olun.
+    Uygulama kayıtlarınız, bu kiracıda farklı bir kullanıcı hesabı, kişisel/tüketici hesabı veya farklı bir kiracıda oluşturulmuş olabilir. Uygulama kayıtlarınızın oluşturulduğu kiracıda doğru hesapla oturum açtığınızdan emin olun.
 
-- **Azure AD 'de bir uygulama kaydı sahibinin kim olduğunu Nasıl yaparım? mı?** 
-    Uygulamanın kaydedildiği bir kiracıda oturum açıldığında, uygulama kayıtları dikey penceresine gidin, bir uygulamaya tıklayın ve sahipler ' e tıklayın.
+- **Multi-Factor Authentication ile ilgili bir hata alıyorum. Ne yapmam gerekir?** 
+    Lütfen [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) 'ın etkinleştirildiğinden ve bu senaryoya yönelik olarak oturum açmak için gerekli olduğundan emin olun. Örneğin, MFA şu şekilde olabilir:
+    - Oturum açarken kullandığınız kullanıcı için her zaman gereklidir
+    - [Azure yönetimi Için gereklidir](../conditional-access/howto-conditional-access-policy-azure-management.md).
+    - Oturum açarken kullandığınız [yönetici türü Için gereklidir](../conditional-access/howto-conditional-access-policy-admin-mfa.md) .
 
 ## <a name="making-microsoft-graph-api-calls"></a>Microsoft Graph API çağrısı yapma 
 
 Bir sorun yaşıyorsanız ancak kullanıcı arabiriminde neleri gördüğünüzü anlayacağınızı anlayamadığında, uygulama kayıt portalında gerçekleştirebileceğiniz işlemleri gerçekleştirmek için Microsoft Graph çağrılarını kullanarak daha fazla sorun giderme işlemi gerçekleştirmek yararlı olabilir.
 
-Bu istekleri yapmanın en kolay yolu, [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)kullanmaktır. Ayrıca, [Postman](https://www.postman.com/)kullanma gibi diğer seçenekleri veya [bir Web Isteği çağırmak](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7)için PowerShell 'i kullanmayı da düşünebilirsiniz.  
+Bu istekleri yapmanın en kolay yolu, [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)kullanmaktır. Ayrıca, [Postman](https://www.postman.com/)kullanma gibi diğer seçenekleri veya [bir Web Isteği çağırmak](/powershell/module/microsoft.powershell.utility/invoke-webrequest)için PowerShell 'i kullanmayı da düşünebilirsiniz.  
 
-Microsoft Graph, uygulamanızın doğrulanmış yayımcısını ayarlayıp kaldırmak ve bu işlemlerden birini gerçekleştirdikten sonra sonucu denetlemek için kullanabilirsiniz. Sonuç, uygulama kaydınızdan ve bu uygulamadan oluşturulan herhangi bir [hizmet sorumlusu](/graph/api/resources/serviceprincipal?view=graph-rest-beta) ile eşleşen [uygulama](/graph/api/resources/application?view=graph-rest-beta) nesnesi üzerinde görülebilir. Bu nesneler arasındaki ilişki hakkında daha fazla bilgi için bkz. [Azure Active Directory: uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).  
+Microsoft Graph, uygulamanızın doğrulanmış yayımcısını ayarlayıp kaldırmak ve bu işlemlerden birini gerçekleştirdikten sonra sonucu denetlemek için kullanabilirsiniz. Sonuç, uygulama kaydınızdan ve bu uygulamadan oluşturulan herhangi bir [hizmet sorumlusu](/graph/api/resources/serviceprincipal) ile eşleşen [uygulama](/graph/api/resources/application) nesnesi üzerinde görülebilir. Bu nesneler arasındaki ilişki hakkında daha fazla bilgi için bkz. [Azure Active Directory: uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).  
 
 Bazı yararlı isteklerin örnekleri aşağıda verilmiştir:  
 
@@ -105,7 +108,7 @@ Yanıt
 ### <a name="get-verified-publisher-info-from-application"></a>Uygulamadan doğrulanmış Yayımcı bilgilerini al 
  
 ```
-GET https://graph.microsoft.com/beta/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
+GET https://graph.microsoft.com/v1.0/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
 
 HTTP/1.1 200 OK 
 
@@ -124,7 +127,7 @@ HTTP/1.1 200 OK
 
 ### <a name="get-verified-publisher-info-from-service-principal"></a>Hizmet sorumlusu 'ndan doğrulanmış Yayımcı bilgilerini al 
 ```
-GET https://graph.microsoft.com/beta/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
+GET https://graph.microsoft.com/v1.0/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
 
 HTTP/1.1 200 OK 
 
@@ -183,11 +186,7 @@ Bu özellik, e-posta tarafından doğrulanan bir kiracıda desteklenmez.
 
 ### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication   
 
-Hedef uygulamanın ( <AppId> ) bir yayımcı etki alanı kümesi olması gerekir. Bir yayımcı etki alanı ayarlayıp yeniden deneyin. 
-
-### <a name="publisherdomainisnotdnsverified"></a>Publisherdomainisnotdnsdoğrulandı  
-
-Hedef uygulamanın yayımcı etki alanı ( <publisherDomain> ), bu kiracıda doğrulanmış bir etki alanı değil. DNS doğrulaması kullanarak bir kiracı etki alanını doğrulayın ve yeniden deneyin. 
+Hedef uygulamanın ( \<AppId\> ) bir yayımcı etki alanı ayarlanmış olması gerekir. Bir yayımcı etki alanı ayarlayıp yeniden deneyin.
 
 ### <a name="publisherdomainmismatch"></a>Publisherdomainuyuşmazlık  
 
