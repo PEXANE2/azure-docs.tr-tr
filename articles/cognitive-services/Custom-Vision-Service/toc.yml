@@ -39,6 +39,8 @@
       href: use-prediction-api.md
     - name: Akıllı Etiketçiyi kullanma
       href: suggested-tags.md
+    - name: Rol tabanlı erişim denetimi
+      href: role-based-access-control.md
     - name: Modelleri dışarı aktarma
       items:
         - name: Modelinizi mobil cihaza dışarı aktarma

@@ -101,6 +101,8 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: Denetleme yapılandırma ilkesi uygulanırken VM yanıt vermiyor
           href: vm-unresponsive-applying-audit-configuration-policy.md
+        - name: Varsayılan etki alanı denetleyicisi ilkesi uygulanırken VM yanıt vermiyor
+          href: vm-unresponsive-domain-controllers-policy.md
         - name: Grup ilkesi uygulanırken VM yanıt vermiyor
           href: unresponsive-vm-apply-group-policy.md
         - name: Güvenlik ilkesi uygulanırken VM yanıt vermiyor

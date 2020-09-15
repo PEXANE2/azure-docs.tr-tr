@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 08c2a3d81b8e7ed051ea9b9d2d3b75c7f1257b01
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: b59bfb72df88c80656935e15045933dcb13a139e
+  ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87335588"
+  ms.lasthandoff: 09/11/2020
+  ms.locfileid: "90014625"
 landingContent:
 - title: Sağlık çözümleri oluşturma
   linkLists:
@@ -27,18 +27,32 @@ landingContent:
     links:
     - text: Sürekli hasta izleme çözümü oluşturma
       url: tutorial-continuous-patient-monitoring.md
-- title: Bağlanma
+- title: Cihazları bağlama ve geliştirme
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Cihaz geliştiricilerine yönelik genel bakış
+      url: ../core/overview-iot-central-developer.md
   - linkListType: tutorial
     links:
-    - text: Cihaz şablonu ayarlama
-      url: ../core/howto-set-up-template.md
-    - text: Cihaz bağlama
-      url: ../core/tutorial-connect-device.md
+    - text: Cihaz bağlama (Node.js)
+      url: ../core/tutorial-connect-device-nodejs.md
+    - text: Cihaz bağlama (Python)
+      url: ../core/tutorial-connect-device-python.md
+  - linkListType: concept
+    links:
+    - text: Cihaz bağlantısı
+      url: ../core/concepts-get-connected.md
+    - text: Cihaz şablonları
+      url: ../core/concepts-device-templates.md
   - linkListType: how-to-guide
     links:
-    - text: Diğer IoT bulutlarına bağlanma
-      url: ../core/howto-build-iotc-device-bridge.md
+    - text: Şablon ayarlama
+      url: ../core/howto-set-up-template.md
+    - text: Azure Sphere cihazı bağlama
+      url: ../core/howto-connect-sphere.md
+    - text: Cihaz bağlantısı sorunlarını giderme
+      url: ../core/troubleshoot-connection.md
 - title: Bağlı kalma
   linkLists:
   - linkListType: tutorial

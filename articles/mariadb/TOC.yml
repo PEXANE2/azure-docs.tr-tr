@@ -6,6 +6,10 @@
       href: overview.md
     - name: Hangi MariaDB seçeneğini kullanmalıyım?
       href: select-right-deployment-type.md
+    - name: Hizmet güncelleştirmeleri
+      items:
+        - name: SSL kök sertifikasının süresi doluyor
+          href: concepts-certificate-rotation.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -30,7 +34,7 @@
       items:
         - name: Azure portal
           href: tutorial-design-database-using-portal.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: tutorial-design-database-cli.md
         - name: Azure PowerShell
           href: tutorial-design-database-using-powershell.md
@@ -132,7 +136,7 @@
       items:
         - name: Azure portal
           href: howto-restore-server-portal.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: howto-restore-server-cli.md
         - name: Azure PowerShell
           href: howto-restore-server-powershell.md
@@ -160,7 +164,7 @@
       items:
         - name: Azure portal
           href: howto-server-parameters.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: howto-configure-server-parameters-cli.md
         - name: Azure PowerShell
           href: howto-configure-server-parameters-using-powershell.md
@@ -168,7 +172,7 @@
       items:
         - name: Azure portal
           href: howto-auto-grow-storage-portal.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
         - name: Azure PowerShell
           href: howto-auto-grow-storage-powershell.md
@@ -230,13 +234,13 @@
       items:
         - name: Azure portal
           href: howto-restart-server-portal.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/mariadb
     - name: REST API
       href: /rest/api/mariadb

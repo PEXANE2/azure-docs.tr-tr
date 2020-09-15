@@ -2,7 +2,7 @@
 title: Azure Güvenlik Karşılaştırması belgeleri
 summary: En iyi yöntemlerimiz ve kılavuzlarımızla Azure’da bulut çözümünüzün güvenliğini sağlamayı öğrenin.
 metadata:
-  title: Azure Güvenlik Karşılaştırmaları
+  title: Azure Güvenlik Karşılaştırması
   description: Azure Güvenlik Karşılaştırması, Azure’da uygulamalarınızın ve verilerinizin güvenliğini geliştirmeye yardımcı olacak öneriler içerir.
   services: security
   ms.service: security
@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: 705757e3021ff7421dd88e3a2661b1b51f3f927a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: addc6aab30d23ab1aaca691e5d1ee1f0b9d12c39
+  ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88213556"
+  ms.lasthandoff: 09/13/2020
+  ms.locfileid: "90058674"
 landingContent:
 - title: Azure Güvenlik Karşılaştırması hakkında
   linkLists:
@@ -34,22 +34,22 @@ landingContent:
       url: ../../security-center/index.yml
     - text: Azure güvenliğinin temelleri
       url: ../fundamentals/index.yml
-- title: Azure Güvenlik Karşılaştırması denetimleri
+- title: Azure Security Benchmark V2 denetimleri
   linkLists:
   - linkListType: overview
     links:
     - text: Ağ güvenliği
-      url: security-control-network-security.md
-    - text: Günlüğe kaydetme ve izleme
-      url: security-control-logging-monitoring.md
-    - text: Kimlik ve erişim denetimi
-      url: security-control-identity-access-control.md
+      url: security-controls-v2-network-security.md
+    - text: Kimlik yönetimi
+      url: security-controls-v2-identity-management.md
+    - text: Ayrıcalıklı erişim
+      url: security-controls-v2-privileged-access.md
     - text: Veri koruma
-      url: security-control-data-protection.md
-    - text: Güvenlik açığı yönetimi
-      url: security-control-vulnerability-management.md
+      url: security-controls-v2-data-protection.md
+    - text: Varlık yönetimi
+      url: security-controls-v2-asset-management.md
     - text: Daha fazla göster
-      url: security-control-inventory-asset-management.md
+      url: security-controls-v2-logging-threat-detection.md
 - title: İşlem güvenlik temelleri
   linkLists:
   - linkListType: overview

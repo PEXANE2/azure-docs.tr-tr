@@ -7,8 +7,10 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Front Door oluşturma
+    - name: Front Door oluşturma - Portal
       href: quickstart-create-front-door.md
+    - name: Front Door oluşturma - ARM Şablonu
+      href: quickstart-create-front-door-template.md
 - name: Öğreticiler
   items:
     - name: Front Door hizmetine özel etki alanı ekleyin
@@ -83,7 +85,7 @@
           href: front-door-troubleshoot-allowed-ca.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/ext/front-door/
     - name: Azure PowerShell
       href: /powershell/module/az.frontdoor

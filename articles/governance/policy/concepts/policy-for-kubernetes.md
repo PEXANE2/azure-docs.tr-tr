@@ -3,12 +3,12 @@ title: Önizleme-Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin. Bu bir önizleme özelliğidir.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: a824548cb45f886bcf82bedad6e5d5c216bb7fea
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509884"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645603"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes kümeleri için Azure Ilkesini anlama (Önizleme)
 
@@ -57,13 +57,13 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
      1. **Microsoft. ContainerService** ve **Microsoft. policınghts** kaynak sağlayıcılarını kaydedin. Adımlar için bkz. [kaynak sağlayıcıları ve türleri](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-     1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
+     1. **Tüm hizmetler**' i seçip **ilke**arayıp ' yi seçerek Azure Portal Azure ilke hizmetini başlatın.
 
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="Tüm hizmetlerde Ilke ara" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="Tüm hizmetlerde Ilke aramanın ekran görüntüsü." border="false":::
 
      1. Azure Ilke sayfasının sol tarafındaki **önizlemeyi Birleştir** ' i seçin.
 
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="AKS önizlemesi için Ilkeye katın" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Ilke sayfasındaki ' Önizlemeyi Birleştir ' düğümünün ekran görüntüsü." border="false":::
 
      1. Önizlemeye eklenmesini istediğiniz aboneliğin satırını seçin.
 
@@ -118,19 +118,19 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 Yukarıdaki önkoşul adımları tamamlandıktan sonra, yönetmek istediğiniz AKS kümesine Azure Policy eklentisini yükleyebilirsiniz.
 
-- Azure portal
+- Azure portalı
 
-  1. **Tüm hizmetler**' e tıklayıp **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
+  1. **Tüm hizmetler**' i seçip **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
 
   1. AKS kümelerinizdeki birini seçin.
 
   1. Kubernetes hizmet sayfasının sol tarafındaki **ilkeleri (Önizleme)** seçin.
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="AKS kümesindeki ilke tanımları" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes hizmet sayfasındaki ' Ilkeler (Önizleme) ' düğümünün ekran görüntüsü." border="false":::
 
   1. Ana sayfada **eklentiyi etkinleştir** düğmesini seçin.
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="AKS eklentisi için Azure Ilkesini etkinleştirin":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="' Azure Kubernetes Services (bir K S) için Azure Ilkesine ekleme sayfasında ' eklentiyi etkinleştir ' düğmesinin ekran görüntüsü.":::
 
      <a name="migrate-from-v1"></a>
      > [!NOTE]
@@ -410,7 +410,7 @@ Aşağıdaki adımlarla Azure portal kullanarak kümenizi yönetmeye yönelik ye
 
    - Kubernetes ad alanlarını ilke değerlendirmesinden dışlamak için, parametre **ad uzayı dışlamaları**içindeki ad alanlarının listesini belirtin. Şunları hariç tutmak önerilir: _KUVE sistem_, _Gatekeeper-System_ve _Azure-Arc_.
 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
 Alternatif olarak, bir Kubernetes ilkesini bulmak ve atamak için [Ilke atama-Portal](../assign-policy-portal.md) hızlı başlangıcı ' nı kullanın. ' Denetim VM 'leri ' örneği yerine bir Kubernetes ilke tanımı arayın.
 
@@ -458,19 +458,19 @@ Daha fazla bilgi için bkz. Gatekeeper belgelerindeki [hata ayıklama ağ](https
 
 Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure CLı kullanın:
 
-- Azure portal
+- Azure portalı
 
-  1. **Tüm hizmetler**' e tıklayıp **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
+  1. **Tüm hizmetler**' i seçip **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
 
   1. Azure Ilke eklentisini devre dışı bırakmak istediğiniz AKS kümenizi seçin.
 
   1. Kubernetes hizmet sayfasının sol tarafındaki **ilkeleri (Önizleme)** seçin.
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="AKS kümesindeki ilke tanımları" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes hizmet sayfasındaki ' Ilkeler (Önizleme) ' düğümünün ekran görüntüsü." border="false":::
 
   1. Ana sayfada, **eklentiyi devre dışı bırak** düğmesini seçin.
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="AKS eklentisi için Azure Ilkesini devre dışı bırakma" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="' Azure Kubernetes Services (bir K S) için Azure 'a ekleme sayfasına "eklentiyi devre dışı bırak" düğmesinin ekran görüntüsü." border="false":::
 
 - Azure CLI
 

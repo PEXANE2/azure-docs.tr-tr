@@ -61,6 +61,8 @@
       href: ../../azure-databricks/security-baseline.md
     - name: Azure DNS güvenlik temeli
       href: ../../dns/security-baseline.md
+    - name: Azure DevTest Labs güvenlik temeli
+      href: ../../devtest-labs/security-baseline.md
     - name: Azure Güvenlik Duvarı güvenlik temeli
       href: ../../firewall/security-baseline.md
     - name: Azure İşlevleri güvenlik temeli
@@ -73,8 +75,14 @@
       href: ../../machine-learning/security-baseline.md
     - name: Azure İlkesi güvenlik temeli
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+    - name: Azure Özel Bağlantı güvenlik temeli
+      href: ../../private-link/security-baseline.md
+    - name: Azure Genel IP güvenlik temeli
+      href: ../../virtual-network/public-ip-security-baseline.md
     - name: Azure Kaynak Grafı güvenlik temeli
       href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Azure Sentinel güvenlik temeli
+      href: ../../sentinel/security-baseline.md
     - name: Azure SQL Veritabanı güvenlik temeli
       href: ../../sql-database/security-baseline.md
     - name: Azure Depolama güvenlik temeli

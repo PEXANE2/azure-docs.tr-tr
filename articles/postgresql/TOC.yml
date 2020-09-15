@@ -4,6 +4,10 @@
   items:
     - name: PostgreSQL için Azure DB nedir?
       href: overview.md
+    - name: Hizmet güncelleştirmeleri
+      items:
+        - name: SSL kök sertifikasının süresi doluyor
+          href: concepts-certificate-rotation.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

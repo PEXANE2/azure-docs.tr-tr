@@ -24,7 +24,7 @@
   items:
     - name: Uygulamanızı Dynamics 365 Field Services’a bağlama
       href: how-to-configure-connected-field-services.md
-    - name: Cihazları bağlama
+    - name: Cihazları bağlama ve geliştirme
       items:
         - name: Rigado Cascade 500'ü hazırlama ve bağlama
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json

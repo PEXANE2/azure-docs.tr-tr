@@ -4,7 +4,7 @@
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Genel Bakış
   items:
-    - name: Azure Synapse Analytics nedir?
+    - name: Azure Synapse nedir?
       href: overview-what-is.md
     - name: Başlarken
       items:
@@ -36,10 +36,10 @@
   items:
     - name: Azure portalı kullanarak Synapse çalışma alanı oluşturma
       href: quickstart-create-workspace.md
-    - name: Şablonla dağıtma
-      href: quickstart-deployment-template-workspaces.md
     - name: Azure CLI’yı kullanarak Synapse çalışma alanı oluşturma
       href: quickstart-create-workspace-cli.md
+    - name: Şablonla dağıtma
+      href: quickstart-deployment-template-workspaces.md
     - name: Synapse Studio’yu kullanma
       href: quickstart-synapse-studio.md
     - name: Power BI çalışma alanına bağlanma
@@ -70,7 +70,7 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Öğreticiler
   items:
-    - name: Spark havuzları için Apache Spark uygulamalarını çalıştırma
+    - name: Apache Spark uygulamaları çalıştırma
       href: ./spark/intellij-tool-synapse.md
     - name: Spark iş tanımları
       href: ./spark/apache-spark-job-definitions.md
@@ -84,7 +84,7 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
     - name: Veri Analisti
       items:
-        - name: Analiz için SQL isteğe bağlı özelliğini ve görselleştirmek için Synapse Studio’yu kullanma
+        - name: Veri analizi için isteğe bağlı SQL kullanma
           href: ./sql/tutorial-data-analyst.md
 - name: Örnekler
   href: 'https://github.com/Azure-Samples/Synapse'
@@ -372,9 +372,9 @@
           href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 'Araç tümleştirmesi (AI, ETL, BI)'
       items:
-        - name: Synapse Analytics Studio sorunlarını giderme
+        - name: Synapse Studio sorunlarını giderme
           href: troubleshoot/troubleshoot-synapse-studio.md
-        - name: PowerShell ile Synapse Analytics Studio sorunlarını giderme
+        - name: Synapse Studio bağlantı sorunlarını giderme
           href: troubleshoot/troubleshoot-synapse-studio-powershell.md
 - name: Nasıl yapılır
   items:
@@ -422,7 +422,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Gen2'ye yükselt
               href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Veri alımı ve hazırlığı
+    - name: Verileri alma ve hazırlama
       items:
         - name: Veri ambarına
           items:
@@ -869,7 +869,7 @@
               href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Şirket içinde barındırılan tümleştirme çalışma zamanlarında sorun giderme
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Araçları Synapse Analytics’e bağlama
+    - name: Synapse çalışma alanlarına araç bağlama
       items:
         - name: Synapse SQL
           items:

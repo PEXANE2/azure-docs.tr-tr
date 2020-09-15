@@ -20,6 +20,8 @@
       href: set-up-service-alerts.md
 - name: Nasıl yapılır
   items:
+    - name: El ile geçiş yapma
+      href: manual-migration.md
     - name: Windows Sanal Masaüstü kaynaklarına bağlanma
       items:
         - name: Windows Masaüstü istemcisine bağlanma

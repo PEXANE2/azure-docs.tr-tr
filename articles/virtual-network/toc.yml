@@ -1,6 +1,6 @@
 - name: Sanal Ağ Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Sanal Ağ hakkında
       href: virtual-networks-overview.md
@@ -91,6 +91,8 @@
           href: ipv6-public-ip-address-prefix.md
         - name: Yönlendirme tercihi
           href: routing-preference-overview.md
+        - name: Genel IP güvenlik temeli
+          href: public-ip-security-baseline.md
     - name: Güvenlik
       items:
         - name: Ağ güvenlik grupları

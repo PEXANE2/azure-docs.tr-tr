@@ -4,7 +4,7 @@
   items:
     - name: Azure Özel Bağlantı nedir?
       href: private-link-overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   items:
     - name: Özel Uç Nokta oluşturma - Portal
       href: create-private-endpoint-portal.md
@@ -42,7 +42,7 @@
       href: create-private-endpoint-storage-portal.md
     - name: Cosmos DB hesabına özel olarak bağlanma
       href: create-private-endpoint-cosmosdb-portal.md
-    - name: Bir Web Uygulamasına özel olarak bağlanma
+    - name: Bir web uygulamasına özel olarak bağlanma
       href: create-private-endpoint-webapp-portal.md
     - name: Özel bir uç nokta için ağ ilkelerini devre dışı bırakma
       href: disable-private-endpoint-network-policy.md

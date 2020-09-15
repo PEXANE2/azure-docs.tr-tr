@@ -89,7 +89,7 @@ Bu SQL ağ geçitleri, 10 Ağustos 2020 ' de müşteri trafiğini kabul etmeye b
 - Batı ABD
 - West Europe
 - Doğu ABD
-- Central US
+- Orta ABD
 - Güneydoğu Asya
 - Orta Güney ABD
 - Kuzey Avrupa

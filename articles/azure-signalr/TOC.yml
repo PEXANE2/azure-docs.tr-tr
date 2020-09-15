@@ -1,6 +1,6 @@
 - name: Azure SignalR Hizmeti belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure SignalR Hizmeti Hakkında
       href: signalr-overview.md
@@ -25,6 +25,8 @@
   items:
     - name: Kimlik doğrulama özelliklerine sahip sunucusuz gerçek zamanlı uygulama derleme
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: Blazor Server sohbet uygulaması oluşturma
+      href: signalr-tutorial-build-blazor-server-chat-app.md
 - name: Örnekler
   items:
     - name: Kod örnekleri

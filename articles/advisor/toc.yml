@@ -41,6 +41,8 @@
       href: advisor-quick-fix.md
     - name: Azure Kaynak Grafı’nda danışma verileri
       href: advisor-azure-resource-graph.md
+    - name: Danışman puanını kullanma
+      href: azure-advisor-score.md
 - name: Başvuru
   items:
     - name: Güvenlik Merkezi

@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a1c3828a4b1899ff4b22c0a9520f676add21fe02
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a1fca14035dd4a9af00ecfb8d1d01dc27ab0b8d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420133"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658169"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps içinde satır içi kod kullanarak kod parçacıkları ekleme ve çalıştırma
 
@@ -29,7 +29,7 @@ Mantıksal uygulamanızın içinde kod parçası çalıştırmak istediğinizde,
 
 Bu eylem, kod parçacığını çalıştırır ve mantıksal uygulamanızdaki sonraki eylemlerde kullanabileceğiniz **Result**adlı bir belirteç olarak bu kod parçacığındaki çıktıyı döndürür. Kodunuz için bir işlev oluşturmak istediğiniz diğer senaryolar için, mantıksal uygulamanızda [bir Azure işlevi oluşturmayı ve çağırmayı](../logic-apps/logic-apps-azure-functions.md) deneyin.
 
-Bu makalede, bir Office 365 Outlook hesabına yeni bir e-posta geldiğinde örnek mantıksal uygulama tetiklenir. Kod parçacığı, e-posta gövdesinde görünen tüm e-posta adreslerini ayıklar ve döndürür.
+Bu makalede, örnek mantıksal uygulama bir iş veya okul hesabına yeni bir e-posta geldiğinde tetiklenir. Kod parçacığı, e-posta gövdesinde görünen tüm e-posta adreslerini ayıklar ve döndürür.
 
 ![Örneğe genel bakış](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
@@ -129,7 +129,7 @@ Nesnesi,, `workflowContext` ve alt özellikleri içeren bu yapıya `actions` sah
 
 Bu tablo, bu alt özellikler hakkında daha fazla bilgi içerir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 |----------|------|-------|
 | `actions` | Nesne koleksiyonu | Kod parçacığınızdan önce çalışan eylemlerden elde edilen sonuç nesneleri. Her bir nesne, anahtarın bir eylemin adı olduğu ve değeri ile [eylem () işlevinin](../logic-apps/workflow-definition-language-functions-reference.md#actions) çağrılmasının eşdeğeri olan *anahtar-değer* çiftine sahiptir `@actions('<action-name>')` . Eylemin adı, temel alınan iş akışı tanımında kullanılan aynı eylem adını kullanır. Bu, eylem adındaki boşluklar ("") alt çizgi (_) ile değiştirir. Bu nesne, geçerli iş akışı örneğinden çalıştırılan eylem özelliği değerlerine erişim sağlar. |
 | `trigger` | Nesne | Tetikleyiciden elde edilen sonuç nesnesi ve [Trigger () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#trigger)çağırma ile eşdeğerdir. Bu nesne, geçerli iş akışı örneği çalıştırağından tetikleme özelliği değerlerine erişim sağlar. |

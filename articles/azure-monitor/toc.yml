@@ -224,12 +224,10 @@
               href: log-query/get-started-queries.md
         - name: Günlük verileri
           items:
-            - name: Günlük verileri yapısı
-              href: log-query/logs-structure.md
             - name: Sorgu kapsamı
               href: log-query/scope.md
-            - name: Standart özellikler
-              href: platform/log-standard-properties.md
+            - name: Standart sütunlar
+              href: platform/log-standard-columns.md
             - name: Bilgisayar grupları
               href: platform/computer-groups.md
         - name: Sorgu dili

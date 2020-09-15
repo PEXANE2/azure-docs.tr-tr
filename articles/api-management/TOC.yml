@@ -1,6 +1,6 @@
 - name: Azure API Management Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: API Management hakkında
       href: api-management-key-concepts.md
@@ -11,6 +11,8 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
+    - name: Örnek oluşturma - CLI
+      href: get-started-create-service-instance-cli.md
     - name: Örnek oluşturma - Portal
       href: get-started-create-service-instance.md
     - name: Örnek oluşturma - PowerShell
