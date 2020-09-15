@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: e5adf007294ea4be0f5716a4614e0639f840fa75
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c7622c4916b186a39aad9dafb54a1e2404458794
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684941"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569365"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure için kredi kartı ekleme, güncelleştirme veya kaldırma
 
@@ -190,7 +190,7 @@ Ne yazık ki abonelikleriniz zaten aynı kartı kullanıyorsa, bu abonelikleri f
 
 ### <a name="how-do-i-change-the-tax-id"></a>Vergi numarasını nasıl değiştirebilirim?
 
-Vergi numarası eklemek veya güncelleştirmek için [Azure Hesap Merkezi](https://account.azure.com/Profile)’nde profilinizi güncelleştirin ve **Vergi numarası**’nı seçin. Vergi numarası, vergi muafiyeti hesaplamaları için kullanılır ve faturanızda görünür.
+Vergi numarası eklemek veya güncelleştirmek için [Azure portalda](https://portal.azure.com) profilinizi güncelleştirin ve **Vergi numarası**’nı seçin. Vergi numarası, vergi muafiyeti hesaplamaları için kullanılır ve faturanızda görünür.
 
 ## <a name="check-the-type-of-your-account"></a>Hesabınızın türünü denetleme
 

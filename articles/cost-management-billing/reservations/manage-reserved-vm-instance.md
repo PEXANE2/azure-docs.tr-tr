@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: f67cbb70d7064b894b9042bba42f48e4fb6a6b5e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d032937fe79b9f51818ce8917c36fa1cc30397c0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684788"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400135"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure kaynakları için Rezervasyonları yönetme
 
@@ -73,7 +73,7 @@ Rezervasyona yönetim erişimi temsilcisi atamak için:
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Tek rezervasyonu iki rezervasyona bölme
 
- Bir rezervasyon içinde birden fazla kaynak örneği satın aldıktan sonra o rezervasyon içindeki örnekleri farklı aboneliklere atamak isteyebilirsiniz. Varsayılan olarak tüm örneklerin kapsamı (tek abonelik veya paylaşılan) vardır. On rezervasyon örneği satın aldığınızı ve kapsam olarak A aboneliğini belirttiğinizi varsayalım. Şimdi yedi rezervasyonun kapsamı A aboneliği ve kalan üçünün B aboneliği olacak şekilde değişiklik yapmak istiyor olabilirsiniz. Rezervasyonun bölünmesi ayrıntılı kapsam yönetimi için örnekleri dağıtabilmenizi sağlar. Paylaşılan kapsamı seçerek abonelikleri ayırma işlemini basitleştirebilirsiniz. Ama maliyet yönetimi ve bütçeleme amacıyla, miktarları belirli aboneliklere ayırabilirsiniz.
+ Bir rezervasyon içinde birden fazla kaynak örneği satın aldıktan sonra o rezervasyon içindeki örnekleri farklı aboneliklere atamak isteyebilirsiniz. Varsayılan olarak tüm örneklerin kapsamı (tek abonelik, kaynak grubu veya paylaşılan) vardır. 10 VM örneği için rezervasyon satın aldığınızı ve kapsam olarak A aboneliğini belirttiğinizi varsayalım. Şimdi 7 VM örneğinin kapsamını A aboneliği ve kalan üçünün B aboneliği olacak şekilde değişiklik yapmak istiyorsunuz. Rezervasyonun bölerek bunu yapabilirsiniz. Rezervasyonu böldükten sonra, özgün ReservationID iptal edilir ve iki yeni rezervasyon oluşturulur. Bölme işlemi rezervasyon sırasını etkilemez. Bölme içeren yeni bir ticari işlem yoktur ve yeni rezervasyonlar bölünmüş olan rezervasyonla aynı bitiş tarihine sahiptir.
 
  Rezervasyonu PowerShell, CLI veya API aracılığıyla iki rezervasyona bölebilirsiniz.
 
