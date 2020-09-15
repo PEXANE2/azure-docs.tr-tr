@@ -1,6 +1,6 @@
 ---
 title: Öğretici-mevcut eşitlenmiş bir AD Ormanı için pilot Azure AD Connect bulut sağlama
-description: öğreticide.
+description: Azure Active Directory (Azure AD) Connect Sync kullanılarak eşitlenmiş bir test Active Directory ormanı için nasıl pilot bir bulut sağlamasını öğrenin.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 43edb9ba6cdd73ce195a8b4eb60071b6831b7223
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86146810"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526944"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
@@ -35,7 +35,7 @@ Bu öğreticiyi denemeden önce aşağıdaki öğeleri göz önünde bulundurun:
 
 4. Bu gelişmiş bir senaryodur. Bu öğreticide açıklanan adımları tam olarak izlediğinizden emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - Azure AD Connect Sync sürüm 1.4.32.0 veya üzeri bir test ortamı
 - Eşitleme kapsamındaki bir OU veya grup ve pilot kullanılabilir. Küçük bir nesne kümesiyle başlamasını öneririz.

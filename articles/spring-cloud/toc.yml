@@ -47,6 +47,8 @@
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Sanal ağda Azure Spring Cloud dağıtma
       href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+    - name: Azure Spring Cloud uygulamasından Azure İşlevleri çağırmak için yönetilen kimlik kullanma
+      href: spring-cloud-tutorial-managed-identities-functions.md
 - name: Kavramlar
   items:
     - name: Uygulama ve dağıtımı anlama

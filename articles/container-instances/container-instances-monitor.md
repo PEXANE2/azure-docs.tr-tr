@@ -3,12 +3,12 @@ title: Kapsayıcı örneklerini izleme
 description: Azure Container Instances kapsayıcılarında, CPU ve bellek gibi işlem kaynaklarının tüketimini izleme.
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116376"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526706"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcı kaynaklarını izleme
 
@@ -44,7 +44,7 @@ Birden çok kapsayıcı içeren bir kapsayıcı grubunda, ölçümleri kapsayıc
 1. **Genel bakış** sayfasında, **CPU**gibi ölçüm grafiklerinden birini seçin. 
 1. **Bölmeyi Uygula** düğmesini seçin ve **kapsayıcı adı**' nı seçin.
 
-![boyut][dimension]
+![Ekran yakalama seçili ve kapsayıcı adı Uygula seçili olan bir kapsayıcı örneği için ölçümleri gösterir.][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>Ölçümleri alma - Azure CLI
 

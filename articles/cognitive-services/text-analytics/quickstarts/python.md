@@ -1,7 +1,7 @@
 ---
 title: "Hızlı başlangıç: Metin Analizi API'sini çağırmak için Python kullanma"
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örneklerinin nasıl alınacağı gösterilmektedir.
+description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örnekleri almak için Python 'un nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 34d1b62ed97b966c000ff81e8f7676c30338b6a1
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0ef870b6b2d3b88b13c16c8c2acbfcee7ed551c1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876776"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527250"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi bilişsel hizmeti çağırmak için Python REST API kullanma 
 <a name="HOLTop"></a>
@@ -25,7 +25,7 @@ Metin Analizi REST API ve Python ile dili çözümlemeye başlamak için bu hız
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Python 3.x](https://python.org)
 
@@ -90,7 +90,7 @@ languages = response.json()
 pprint(languages)
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```json
 {
@@ -158,7 +158,7 @@ sentiments = response.json()
 pprint(sentiments)
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bir belge için yaklaşım puanı, daha pozitif bir yaklaşım belirten daha yüksek bir puana sahip 0,0 ve 1,0 arasındadır.
 
@@ -249,7 +249,7 @@ key_phrases = response.json()
 pprint(key_phrases)
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```json
 {
@@ -318,7 +318,7 @@ entities = response.json()
 pprint(entities)
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```json
 {

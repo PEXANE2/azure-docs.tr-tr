@@ -3,15 +3,15 @@ title: Windows Sanal Masaüstü nedir? - Azure
 description: Windows sanal masaüstü 'ne genel bakış.
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 08455d3033040d14c85e4c4170ae34a6d05cfac1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661121"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527182"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir?
 
@@ -110,12 +110,10 @@ Aşağıdaki uzak masaüstü istemcileri Windows sanal masaüstünü destekler:
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android](connect-android.md)
+* Microsoft Store Istemcisi
 
 > [!IMPORTANT]
 > Windows sanal masaüstü, RemoteApp ve Masaüstü bağlantıları (ÇDC) istemcisini veya Uzak Masaüstü Bağlantısı (MSTSC) istemcisini desteklemez.
-
-> [!IMPORTANT]
-> Windows sanal masaüstü Şu anda Windows Mağazası 'ndan uzak masaüstü istemcisini desteklememektedir. Bu istemciye yönelik destek gelecekteki bir sürüme eklenecektir.
 
 İstemcileri kullanmak için engellemesini kaldırmanız gereken URL 'Ler hakkında daha fazla bilgi edinmek için bkz. [GÜVENLI URL listesi](safe-url-list.md).
 
@@ -136,14 +134,14 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (çoklu oturum), sürüm 2004|Evet|Evet|Evet|Evet|
-|Windows 10 Enterprise (çoklu oturum), sürüm 1909|Evet|Evet|Evet|Evet|
-|Windows 10 Enterprise (çoklu oturum), sürüm 1903|Evet|Evet|Hayır|Hayır|
-|Windows 10 Enterprise (çoklu oturum), sürüm 1809|Evet|Evet|Hayır|Hayır|
-|Windows 7 Enterprise|Evet|Evet|Hayır|Hayır|
-|Windows Server 2019|Evet|Evet|Hayır|Hayır|
-|Windows Server 2016|Evet|Evet|Evet|Evet|
-|Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|
+|Windows 10 Enterprise (çoklu oturum), sürüm 2004|Yes|Yes|Yes|Yes|
+|Windows 10 Enterprise (çoklu oturum), sürüm 1909|Yes|Yes|Yes|Yes|
+|Windows 10 Enterprise (çoklu oturum), sürüm 1903|Yes|Yes|Hayır|Hayır|
+|Windows 10 Enterprise (çoklu oturum), sürüm 1809|Yes|Yes|Hayır|Hayır|
+|Windows 7 Enterprise|Yes|Yes|Hayır|Hayır|
+|Windows Server 2019|Yes|Yes|Hayır|Hayır|
+|Windows Server 2016|Evet|Yes|Yes|Yes|
+|Windows Server 2012 R2|Evet|Yes|Hayır|Hayır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

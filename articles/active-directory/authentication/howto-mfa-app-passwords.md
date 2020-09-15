@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 12be5109f339223c11970041922ed2172f67382b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224926"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526910"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Uygulama parolalarını kullanarak eski uygulamalarla Azure Multi-Factor Authentication etkinleştirme ve kullanma
 
-Office 2010 veya önceki bir sürümü ve iOS 11 ' den önceki Apple Mail gibi bazı uygulamalar, Multi-Factor Authentication 'ı desteklemezler. Uygulamalar, ikincil bir kimlik doğrulama veya istem formunu kabul edecek şekilde yapılandırılmamış. Bu uygulamaları Azure Multi-Factor Authentication Kullanıcı hesapları için etkin olarak güvenli bir şekilde kullanmak için uygulama parolaları ' nı kullanabilirsiniz. Bu uygulama parolaları, uygulamanın çok faktörlü kimlik doğrulamasını atlayıp doğru şekilde çalışmasını sağlamak için geleneksel parolanızı değiştirdi.
+Office 2010 veya önceki bir sürümü ve iOS 11 ' den önceki Apple Mail gibi bazı eski, tarayıcı olmayan uygulamalar, kimlik doğrulama işleminde duraklamaları veya molaları anlamıyor. Bir Kullanıcı Azure Multi-Factor Authentication için etkinleştirilmişse ve bu eski, tarayıcı olmayan uygulamalardan birini kullanmaya çalışırsa, kimlik doğrulaması başarılı bir şekilde doğrulanamazlar. Bu uygulamaları Azure Multi-Factor Authentication Kullanıcı hesapları için etkin olarak güvenli bir şekilde kullanmak için uygulama parolaları ' nı kullanabilirsiniz. Bu uygulama parolaları, uygulamanın çok faktörlü kimlik doğrulamasını atlayıp doğru şekilde çalışmasını sağlamak için geleneksel parolanızı değiştirdi.
 
 Modern kimlik doğrulaması Microsoft Office 2013 istemcileri ve sonraki sürümler için desteklenir. Outlook dahil Office 2013 istemcileri, modern kimlik doğrulama protokollerini destekler ve iki adımlı doğrulama ile çalışmak üzere etkinleştirilebilir. İstemci etkinleştirildikten sonra istemci için uygulama parolaları gerekli değildir.
 

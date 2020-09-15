@@ -6,21 +6,21 @@ ms.topic: tutorial
 ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8eac40ad958a10b8c853304ee2be8b2dc27af1a2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b8eb8378480b8784939e3ab63327e73e3705c74a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008721"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526519"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Öğretici: hizmet güncelleştirmelerini doğrulamak için bir konak havuzu oluşturma
 
 >[!IMPORTANT]
 >Bu içerik Azure Resource Manager Windows sanal masaüstü nesneleri ile Windows sanal masaüstü için geçerlidir. Azure Resource Manager nesneleri olmadan Windows sanal masaüstü (klasik) kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)bakın.
 
-Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Ana bilgisayar havuzlarını üretim ortamınıza dağıtılmadan önce, bir doğrulama ana bilgisayar havuzu oluşturmanızı kesinlikle öneririz. Güncelleştirmeler önce doğrulama ana bilgisayar havuzlarına uygulanır, böylece üretim ortamınıza göndermeden önce hizmet güncelleştirmelerini izlemenizi sağlar. Doğrulama ana bilgisayar havuzu olmadan, hata oluşturan değişiklikleri bulamamanıza neden olabilir ve bu da üretim ortamınızdaki kullanıcılar için kapalı kalma süresine yol açabilir.
+Konak havuzları, Windows Sanal Masaüstü ortamındaki özdeş bir veya daha fazla sanal makine koleksiyonudur. Önce hizmet güncelleştirmelerinin uygulandığı bir doğrulama ana bilgisayar havuzu oluşturmanızı önemle öneririz. Bu, hizmet güncelleştirmelerini standart ya da doğrulama olmayan ortamınıza uygulamadan önce izlemenize olanak sağlar. Doğrulama ana bilgisayar havuzu olmadan hata veren değişiklikleri bulamamanıza neden olabilir ve bu da standart ortamınızdaki kullanıcılar için kapalı kalma süresine yol açabilir.
 
-Uygulamalarınızın en son güncelleştirmelerle çalışmasını sağlamak için, doğrulama ana bilgisayar havuzu, üretim ortamınızda mümkün olduğunca ana bilgisayar havuzlarına benzer olmalıdır. Kullanıcıların, üretim ana bilgisayar havuzunda çalıştıkları şekilde doğrulama ana bilgisayar havuzuna sık olarak bağlanması gerekir. Konak havuzunuzdaki otomatik test testiniz varsa, doğrulama ana bilgisayar havuzuna otomatik test eklemeniz gerekir.
+Uygulamalarınızın en son güncelleştirmelerle çalışmasını sağlamak için doğrulama ana bilgisayar havuzunun, doğrulama olmayan ortamınızdaki konak havuzlarıyla mümkün olduğunca benzer olması gerekir. Kullanıcılar, Standart ana bilgisayar havuzunda olduğu gibi doğrulama ana bilgisayar havuzuna sık olarak bağlanmalıdır. Konak havuzunuzdaki otomatik test testiniz varsa, doğrulama ana bilgisayar havuzuna otomatik test eklemeniz gerekir.
 
 [Tanılama özelliğiyle](diagnostics-role-service.md) veya [Windows sanal masaüstü sorunlarını giderme makaleleriyle](troubleshoot-set-up-overview.md)doğrulama konak havuzundaki sorunları ayıklayabilirsiniz.
 

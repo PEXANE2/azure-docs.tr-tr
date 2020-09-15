@@ -4,12 +4,12 @@ description: Azure Relay Karma Bağlantılar Web Yuvaları için bir Node.js kon
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8dc52c93d4b5cd6d50b66338350a41cf0e24daa0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cf660d7a776c0dfa48b6c023fa0fa3516a3a0ea5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386308"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527420"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Node.js geçiş Karma Bağlantılar WebSockets ile çalışmaya başlama
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
 4. İleti göndermek için bir istemci (gönderen) konsol uygulaması yazma.
 5. Uygulamaları çalıştırın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Node.js](https://nodejs.org/en/).
 - Azure aboneliği. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
@@ -52,7 +52,7 @@ Geçiş hizmetinden ileti göndermek için bir Node.js konsol uygulaması yazın
 2. İstemci uygulamasını çalıştırın: Node.js komut istemine `node sender.js` yazın ve bazı metinler girin.
 3. Sunucu uygulama konsolunun istemci uygulamasına girilen metni çıkardığından emin olun.
 
-    ![running-applications](./media/relay-hybrid-connections-node-get-started/running-applications.png)
+    ![Konsol pencereleri, hem sunucu hem de istemci uygulamalarını test ediyor.](./media/relay-hybrid-connections-node-get-started/running-applications.png)
 
 Tebrikler, Node.js kullanarak uçtan uca bir Karma Bağlantılar uygulaması oluşturdunuz!
 

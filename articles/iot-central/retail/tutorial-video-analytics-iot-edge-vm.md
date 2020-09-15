@@ -1,6 +1,6 @@
 ---
 title: Öğretici-Azure IoT Central 'da bir video analizi IoT Edge örneği oluşturma (Linux VM)
-description: Bu öğreticide, video analizi-nesne ve hareket algılama uygulama şablonuyla kullanılacak bir video analizi IoT Edge örneği oluşturma işleminin nasıl yapılacağı gösterilmektedir.
+description: Bu öğreticide, bir Linux sanal makinesinde video analizi-nesne ve hareket algılama uygulama şablonuyla kullanılacak bir video analizi IoT Edge örneği oluşturma işleminin nasıl yapılacağı gösterilmektedir.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 69e5b757036a2d68fa779e3fc232cc42a034e33c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038468"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526400"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Öğretici: video analizi için IoT Edge örneği oluşturma (Linux VM)
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure IoT Edge çalışma zamanı yüklü bir Azure VM oluşturma
 > * Canlı video analizi modülünü barındırmak ve IoT Central bağlanmak için IoT Edge yüklemesini hazırlayın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, Azure IoT Central öğreticide önceki [bir video analizi oluşturma uygulamasını](./tutorial-video-analytics-create-app.md) tamamlamalısınız.
 
@@ -64,7 +64,7 @@ En son IoT Edge çalışma zamanı ve canlı video analizi modülleri yüklü bi
 | Ubuntu işletim sistemi sürümü | *18,04-LTS* |
 | Konum | *[resourceGroup (). Location]* |
 
-**İncele ve oluştur**’u seçin. Doğrulama tamamlandığında **Oluştur**' u seçin. Dağıtımın tamamlanabilmesi için genellikle üç dakika sürer. Dağıtım tamamlandığında, Azure portal **LVA-RG** kaynak grubuna gidin.
+**Gözden geçir ve oluştur**’u seçin. Doğrulama tamamlandığında **Oluştur**' u seçin. Dağıtımın tamamlanabilmesi için genellikle üç dakika sürer. Dağıtım tamamlandığında, Azure portal **LVA-RG** kaynak grubuna gidin.
 
 ## <a name="ensure-the-iot-edge-runtime-loads-the-modules"></a>IoT Edge çalışma zamanının modülleri yüklediğini emin olun
 

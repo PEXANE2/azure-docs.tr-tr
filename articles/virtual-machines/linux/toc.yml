@@ -4,7 +4,7 @@
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: VM Oluşturma - Azure CLI
       href: quick-create-cli.md
@@ -479,7 +479,7 @@
                   items:
                     - name: Sanal makineden
                       href: ../image-version-vm-cli.md
-                    - name: VHD veya anlık görüntüden
+                    - name: Yönetilen Disk’ten veya anlık görüntüden
                       href: ../image-version-snapshot-cli.md
                     - name: Yönetilen görüntüden geçiş yapma
                       href: ../image-version-managed-image-cli.md
@@ -501,7 +501,7 @@
                   items:
                     - name: Sanal makineden
                       href: ../image-version-vm-powershell.md
-                    - name: VHD veya anlık görüntüden
+                    - name: Yönetilen Disk’ten veya anlık görüntüden
                       href: ../image-version-snapshot-powershell.md
                     - name: Yönetilen görüntüden geçiş yapma
                       href: ../image-version-managed-image-powershell.md
@@ -542,14 +542,16 @@
               href: image-builder-overview.md
             - name: Azure CLI kullanma
               href: image-builder.md
-            - name: VNET kullanarak VM oluşturma - CLI
+            - name: Sanal ağ kullanma - CLI
               href: image-builder-vnet.md
-            - name: İzinleri yapılandırma - CLI
-              href: image-builder-permissions-cli.md
-            - name: İzinleri yapılandırma - PowerShell
-              href: image-builder-permissions-powershell.md
             - name: Ağ seçenekleri
               href: image-builder-networking.md
+            - name: İzinleri yapılandırma
+              items:
+                - name: CLI
+                  href: image-builder-permissions-cli.md
+                - name: PowerShell
+                  href: image-builder-permissions-powershell.md
             - name: DevOps görevi
               href: image-builder-devops-task.md
             - name: ARM şablonu başvurusu
@@ -749,7 +751,7 @@
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure Tanılama uzantısı
               items:
-                - name: Genel Bakış
+                - name: Genel bakış
                   href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: Linux tanılama uzantısı
                   items:

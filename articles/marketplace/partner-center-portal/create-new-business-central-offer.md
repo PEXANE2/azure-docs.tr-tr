@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 953d22e2dc41ca64af3793c8e0f67a203eb5ca7c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646861"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527097"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central teklifi oluşturma
 
@@ -71,9 +71,7 @@ Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişi
 
 ### <a name="test-drive"></a>Sınama sürücüsü
 
-Test sürücüsü, "satın almadan önce dene" seçeneği sunarak olası müşterilere teklifinizi göstermek için harika bir yoldur. bu sayede, artan dönüştürmeye ve yüksek oranda nitelikli müşteri adaylarının oluşturulmasına neden olur. Daha fazla bilgi edinmek için, [test sürüşü](../what-is-test-drive.md)ile başlayın.
-
-Bir sınama sürücüsünü sabit bir süre etkinleştirmek için, **bir sınama sürücüsünü etkinleştir** onay kutusunu seçin. Test sürücüsünü teklifinizden kaldırmak için bu onay kutusunu temizleyin.
+Bu noktada, Dynamics 365 Iş Merkezi teklifleri test sürücüsünü desteklemez. Test sürücüsünü teklifinizden kaldırmak için, **sınama sürücüsünü etkinleştir** onay kutusunu temizleyin.
 
 ### <a name="customer-leads"></a>Müşteri liderleri
 
@@ -131,7 +129,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 6. Gizlilik ilkesi
 7. Teklif adı
 8. Özet
-9. Description
+9. Açıklama
 10. Ekran görüntüleri/videolar
 
 ### <a name="name"></a>Name
@@ -142,7 +140,7 @@ Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığ�
 
 Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıklama sağlayın. Bu açıklama Market arama sonuçlarında kullanılabilir.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

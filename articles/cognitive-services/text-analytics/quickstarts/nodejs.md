@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Metin Analizi çağırmak için Node.js kullanın REST API'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örneklerinin nasıl alınacağı gösterilmektedir.
+description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örnekleri almak için Node.js nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-javascript-september2019, devx-track-javascript
-ms.openlocfilehash: fe9877649d850796b03e9f1c3554a1b9aa7344c3
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ecab49ce61e17853f6f8b48d68391798a37da0fd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407753"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527284"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi bilişsel hizmeti 'ni çağırmak için Node.js kullanma  
 <a name="HOLTop"></a>
@@ -25,13 +25,13 @@ Bu makalede, Node.JS ile [metin analizi API 'lerini](//go.microsoft.com/fwlink/
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dil algılama
+## <a name="detect-language"></a>Dili algılama
 
 Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) kullanarak bir metin belgesinin dilini algılar.
 

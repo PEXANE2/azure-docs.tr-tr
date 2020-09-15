@@ -1,7 +1,7 @@
 ---
 title: "Hızlı başlangıç: Metin Analizi API'sini çağırmak için PHP kullanma"
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örneklerinin nasıl alınacağı gösterilmektedir.
+description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örnekleri almak için PHP 'nin nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: aahi
-ms.openlocfilehash: 4627cc83de70f596ae4917d0449f785a33bf720f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 09901c514a1f2b94edc3e4108ec46051a284a6db
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261357"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527267"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için PHP kullanma
 <a name="HOLTop"></a>
@@ -30,7 +30,7 @@ Bu makalede, [dil algılama](#Detect), yaklaşım [Çözümleme](#SentimentAnaly
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dil algılama
+## <a name="detect-language"></a>Dili algılama
 
 Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) kullanarak bir metin belgesinin dilini algılar.
 

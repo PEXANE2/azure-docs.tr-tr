@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 50b61ce7e2ef2a551d41dcb82d7127071005c34e
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 1a75c083015d1f10a3ed3dba15480430747756eb
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90020519"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90525025"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Öğretici: Blazor Server sohbet uygulaması oluşturma
 
@@ -28,6 +28,8 @@ Bu öğreticide bir Blazor sunucu uygulamasını nasıl derleyip değiştireceğ
 * [.NET Core 3,0 SDK 'sını](https://dotnet.microsoft.com/download/dotnet-core/3.0) (sürüm >= 3.0.100) yükler
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) 'yi (sürüm >= 16,3) yükler
 > Visual Studio 2019 Preview sürümü Ayrıca, daha yeni .Net Core sürümünü hedefleyen en son Blazor Server uygulama şablonuyla serbest bırakılıyor.
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="build-a-local-chat-room-in-blazor-server-app"></a>Blazor sunucu uygulamasında yerel bir sohbet odası oluşturun
 
@@ -354,6 +356,8 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
 1. Uygulamayı çalıştırmak için <kbd>F5</kbd> ' e tıklayın. Aşağıdaki gibi sohbet edebilirsiniz.
 
    [![blazor-sohbet ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
+   
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="publish-to-azure"></a>Azure’da Yayımlama
 
@@ -397,6 +401,8 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
    > Bunun yanı sıra, trafiği Azure SignalR hizmetine zaten yönlendirdiğini doğrulamak için tarayıcı hata ayıklayıcısı modunu <kbd>F12</kbd> ile birlikte kullanabilirsiniz.
 
    [![blazor-sohbet-Azure ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
+   
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="further-topic-enable-azure-signalr-service-in-local-development"></a>Daha fazla konu: yerel geliştirmede Azure SignalR hizmetini etkinleştirin
 
@@ -440,6 +446,8 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
 >        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.Azure.SignalR"
 >      }
 >    ```
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

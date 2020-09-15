@@ -3,18 +3,18 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eecc17e36f35e7552c0be83f7ecc38f2d644f18d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 30a3bda4069bb8c07d7c9be3fd8a3a2b1171eba2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89439631"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526332"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
 Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Canlı video analizi için HW/SW kısıtlamalarını karşılayan bir Linux makinesi
 * [Sahip olduğunuz ayrıcalıklara](../../role-based-access-control/built-in-roles.md#owner) sahip olduğunuz Azure aboneliği
@@ -107,7 +107,7 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
     * **IoT Edge modül adı**: lvaedge
     * **Görüntü URI 'si**: MCR.Microsoft.com/Media/Live-video-Analytics:1.0    
     
-    ![Ekle](./media/deploy-iot-edge-device/add.png)
+    ![Ekran görüntüsü modül ayarları sekmesini gösterir.](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
     > Bu yordamda açıklandığı gibi **Modül ayarlarında**, **kapsayıcı oluşturma seçeneklerinde**ve **module ikizi Settings** sekmelerinde değer belirtene kadar **Ekle** ' yi seçmeyin.
@@ -217,7 +217,7 @@ Dağıtımı oluşturduktan sonra IoT Hub 'ınızın IoT Edge sayfasına döners
 Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.
 Durum kodu: 200 – OK [, IoT Edge çalışma zamanının](../../iot-edge/iot-edge-runtime.md) sağlıklı ve sorunsuz bir şekilde çalıştığı anlamına gelir.
 
-![Durum](./media/deploy-iot-edge-device/status.png)
+![Ekran görüntüsü IoT Edge çalışma zamanı için bir durum değeri gösterir.](./media/deploy-iot-edge-device/status.png)
 
 #### <a name="invoke-a-direct-method"></a>Doğrudan yöntem çağırma
 
@@ -225,7 +225,7 @@ Sonra, bir doğrudan yöntemi çağırarak örneği test etmenizi sağlar. LvaEd
 
 1. Oluşturduğunuz Edge modülüne tıkladığınızda sizi yapılandırma sayfasına götürür.  
 
-    ![Modül](./media/deploy-iot-edge-device/modules.png)
+    ![Ekran görüntüsü, bir kenar modülünün yapılandırma sayfasını gösterir.](./media/deploy-iot-edge-device/modules.png)
 1. Doğrudan yöntem menü seçeneğine tıklayın.
 
     > [!NOTE] 

@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect bulut sağlama desteklenen topolojiler ve senaryolar
-description: Bu konuda, önkoşulların ve donanım gereksinimlerinin bulut sağlaması açıklanmaktadır.
+description: Azure AD Connect bulut sağlamasını kullanan çeşitli şirket içi ve Azure Active Directory (Azure AD) topolojileri hakkında bilgi edinin.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77620864"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526859"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect bulut sağlama desteklenen topolojiler ve senaryolar
 Bu makalede Azure AD Connect bulut sağlamasını kullanan çeşitli şirket içi ve Azure Active Directory (Azure AD) topolojileri açıklanmaktadır. Bu makalede yalnızca desteklenen yapılandırma ve senaryolar bulunur.

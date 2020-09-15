@@ -1,6 +1,6 @@
 ---
 title: Java 3,0 SDK kullanarak Azure Cosmos DB Cassandra API ile Java uygulaması
-description: Bu hızlı başlangıçta Azure portalı ve Java ile profil uygulaması oluşturmak için Azure Cosmos DB Cassandra API’sinin nasıl kullanılacağı gösterilmektedir
+description: Bu hızlı başlangıçta, Azure portal ve Java 3,0 SDK ile profil uygulaması oluşturmak için Azure Cosmos DB Cassandra API nasıl kullanılacağı gösterilmektedir.
 ms.service: cosmos-db
 author: TheovanKraay
 ms.author: thvankra
@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 78a8e6cd777c239841f6d26e06a9fc348a221286
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 59f3bf1cfda7bf26f63c1ec1352a5a231ee07995
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323154"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526791"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>Hızlı başlangıç: Azure Cosmos DB Cassandra API verileri (v3 sürücüsü) yönetmek için bir Java uygulaması oluşturma
 

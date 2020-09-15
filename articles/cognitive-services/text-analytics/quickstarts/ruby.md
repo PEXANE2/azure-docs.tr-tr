@@ -1,7 +1,7 @@
 ---
 title: "Hızlı başlangıç: Metin Analizi API'sini çağırmak için Ruby kullanma"
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örneklerinin nasıl alınacağı gösterilmektedir.
+description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örnekleri almak için Ruby 'nin nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: 92a80dc69afbda76d57a09e01efc9b91ecb286ba
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 076276068b62ed1b7b30864e9a4227cd449c680e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027925"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527233"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için Ruby kullanma
 <a name="HOLTop"></a>
@@ -24,13 +24,13 @@ Bu makalede, Ruby ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?Link
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dil algılama
+## <a name="detect-language"></a>Dili algılama
 
 Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) kullanarak bir metin belgesinin dilini algılar.
 

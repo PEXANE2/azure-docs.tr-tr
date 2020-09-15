@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 3fe2fa8b094830e2d15c1cebce782381b4ca7bc7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 93cccb1455f7a228cf40d4948cd8579610230db5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74975049"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526451"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Öğretici: Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak bir IoT Hub 'ına cihaz sağlama
 
@@ -28,12 +28,12 @@ ms.locfileid: "74975049"
 
 Devam etmeden önce, [Azure IoT Hub Cihazı Sağlama Hizmeti’ni kullanarak bir cihazı sağlamak üzere ayarlama](./tutorial-set-up-device.md) öğreticisinde açıklandığı gibi cihazınızı yapılandırdığınızdan emin olun.
 
-Otomatik sağlama işlemini bilmiyorsanız, devam etmeden önce [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md) gözden geçirdiğinizden emin olun.
+Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin.
 
 <a id="enrolldevice"></a>
 ## <a name="enroll-the-device"></a>Cihazı kaydedin
 
-Bu adım, cihazın benzersiz güvenlik yapılarının Cihaz Sağlama Hizmeti’ne eklenmesini kapsar. Bu güvenlik yapıları, aşağıdaki gibi cihazın [Kanıtlama mekanizması](concepts-device.md#attestation-mechanism)’nı temel alır:
+Bu adım, cihazın benzersiz güvenlik yapılarının Cihaz Sağlama Hizmeti’ne eklenmesini kapsar. Bu güvenlik yapıları, aşağıdaki gibi cihazın [Kanıtlama mekanizması](concepts-service.md#attestation-mechanism)’nı temel alır:
 
 - TPM tabanlı cihazlar için şunlar gerekir:
     - TPM yongası veya simülasyonu için benzersiz olan, TPM yonga üreticisinden alınan *Onay Anahtarı*.  Daha fazla bilgi için [TPM Onay Anahtarını Anlama](https://technet.microsoft.com/library/cc770443.aspx) bölümünü okuyun.
@@ -48,7 +48,7 @@ Bu adım, cihazın benzersiz güvenlik yapılarının Cihaz Sağlama Hizmeti’n
 
 Cihaz Sağlama Hizmeti’ne cihazı kaydetmenin iki yolu vardır:
 
-- **Kayıt Grupları** Bu, belirli bir kanıtlama mekanizmasını paylaşan bir aygıt grubunu temsil eder. İstenen bir ilk yapılandırmayı paylaşan çok sayıda cihaz için veya aynı kiracıya giden tüm cihazlar için bir kayıt grubu kullanılmasını öneririz. Kayıt grupları için kimlik kanıtlaması hakkında daha fazla bilgi için bkz. [Güvenlik](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+- **Kayıt Grupları** Bu, belirli bir kanıtlama mekanizmasını paylaşan bir aygıt grubunu temsil eder. İstenen bir ilk yapılandırmayı paylaşan çok sayıda cihaz için veya aynı kiracıya giden tüm cihazlar için bir kayıt grubu kullanılmasını öneririz. Kayıt grupları için kimlik kanıtlaması hakkında daha fazla bilgi için bkz. [Güvenlik](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
     [![Portalda X. 509.440 kanıtlama için Grup kaydı ekleme](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 

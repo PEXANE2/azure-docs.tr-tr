@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51d8c45f652173e5b2b0731d64a8e6f14ee46c7
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: a6013ed47196e2300f56f0066c634da2a64fdee8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717362"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526876"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Windows oturum açma ekranında self servis parola sıfırlamayı Azure Active Directory etkinleştirme
 
@@ -40,7 +40,7 @@ Windows oturum açma ekranından SSPR kullanımı için aşağıdaki sınırlama
 - Hibrit Azure AD 'ye katılmış makineler, yeni parolayı kullanmak ve önbelleğe alınmış kimlik bilgilerini güncelleştirmek için bir etki alanı denetleyicisine görüşün ağ bağlantısı hattına sahip olmalıdır. Bu, cihazların kuruluşun iç ağı üzerinde veya şirket içi etki alanı denetleyicisine ağ erişimi olan bir VPN üzerinde olması gerektiği anlamına gelir.
 - Bir görüntü kullanıyorsanız, Sysprep 'i çalıştırmadan önce, CopyProfile adımını gerçekleştirmeden önce yerleşik yönetici için Web önbelleğinin temizlendiğinden emin olun. Bu adım hakkında daha fazla bilgi, [özel varsayılan kullanıcı profili kullanılırken destek makalesinde performans düşüklede](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)bulunabilir.
 - Aşağıdaki ayarlar Windows 10 cihazlarında parola kullanma ve sıfırlama özelliğini kesintiye uğratabilecek şekilde bilinmektedir:
-    - V1809 öncesi Windows 10 sürümlerindeki ilke için Ctrl + Alt + Del gerekliyse, **parola sıfırlama** işlemi çalışmaz.
+    - V1909 öncesi Windows 10 sürümlerindeki ilke için Ctrl + Alt + Del gerekliyse, **parola sıfırlama** işlemi çalışmaz.
     - Kilit ekranı bildirimleri kapalıysa, **parola sıfırlama** çalışmaz.
     - *Hidefastuseranahtarlama* etkin veya 1 olarak ayarlandı
     - *DontDisplayLastUserName* , etkin veya 1 olarak ayarlandı

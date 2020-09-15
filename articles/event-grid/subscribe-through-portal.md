@@ -3,12 +3,12 @@ title: Portal üzerinden abonelikler Azure Event Grid
 description: Bu makalede, Azure portal kullanılarak Azure Blob depolama gibi desteklenen kaynaklar için Event Grid aboneliklerin nasıl oluşturulacağı açıklanır.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 2890f57e50e508f85579a2b1198de536fa9a9013
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: acbf83d6df0c7d74da5e561d98d0c3df23d5fbd5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119999"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526468"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Portala etkinliklere abone olma
 
@@ -18,13 +18,13 @@ Bu makalede Portal üzerinden Event Grid aboneliklerin nasıl oluşturulacağı 
 
 Desteklenen [olay kaynaklarından](overview.md#event-sources)herhangi biri için bir Event Grid aboneliği oluşturmak için aşağıdaki adımları kullanın. Bu makalede, bir Azure aboneliği için Event Grid aboneliğinin nasıl oluşturulacağı gösterilmektedir.
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 
    ![Tüm hizmetleri seçin](./media/subscribe-through-portal/select-all-services.png)
 
 1. **Event Grid abonelikleri** arayın ve kullanılabilir seçeneklerden seçin.
 
-   ![Arayın](./media/subscribe-through-portal/search.png)
+   ![Ekran yakalama, Event Grid abonelikleri seçili Azure portal arama ' yı gösterir.](./media/subscribe-through-portal/search.png)
 
 1. **+ Olay Aboneliği**'ni seçin.
 

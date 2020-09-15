@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 09/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e523f8cc3aa9ab2f42d2d28909c9dec2dad30b43
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116606"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526961"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Passwordless güvenlik anahtarı oturumunu etkinleştir (Önizleme)
 
@@ -32,15 +32,15 @@ Bu belge güvenlik anahtarı tabanlı passwordless kimlik doğrulamasını etkin
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Birleşik güvenlik bilgileri kaydı önizlemesini](concept-registration-mfa-sspr-combined.md) etkinleştir
 - Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN, Windows 10 sürüm 1809 veya üstünü gerektirir * *
+- WebAuthN, Windows 10 sürüm 1903 veya üstünü gerektirir * *
 
 Web Apps ve hizmetlerinde oturum açmak için güvenlik anahtarlarını kullanmak üzere, WebAuthN protokolünü destekleyen bir tarayıcıya sahip olmanız gerekir. Bunlara Microsoft Edge, Chrome, Firefox ve Safari dahildir.
 
 ## <a name="prepare-devices-for-preview"></a>Cihazları önizleme için hazırlama
 
-Pilot ile birlikte çalıştığınız Azure AD 'ye katılmış cihazların Windows 10 sürüm 1809 veya üstünü çalıştırması gerekir. En iyi deneyim Windows 10 sürüm 1903 veya daha yüksektir.
+Pilot ile birlikte çalıştığınız Azure AD 'ye katılmış cihazların Windows 10 sürüm 1909 veya üstünü çalıştırması gerekir. En iyi deneyim Windows 10 sürüm 1903 veya daha yüksektir.
 
-Karma Azure AD 'ye katılmış cihazlar Windows 10 Insider Build 18945 veya üstünü çalıştırmalıdır.
+Karma Azure AD 'ye katılmış cihazların Windows 10 sürüm 2004 veya daha yeni bir sürümü çalıştırması gerekir.
 
 ## <a name="enable-passwordless-authentication-method"></a>Passwordless kimlik doğrulama yöntemini Etkinleştir
 
@@ -73,7 +73,7 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 
 ## <a name="sign-in-with-passwordless-credential"></a>Passwordless kimlik bilgileriyle oturum açın
 
-Aşağıdaki örnekte, bir Kullanıcı FIDO2 güvenlik anahtarını zaten sağladı. Kullanıcı, Windows 10 sürüm 1809 veya üzeri sürümlerde desteklenen bir tarayıcı içinde FIDO2 güvenlik anahtarı ile Web 'de oturum açmayı tercih edebilir.
+Aşağıdaki örnekte, bir Kullanıcı FIDO2 güvenlik anahtarını zaten sağladı. Kullanıcı, Windows 10 sürüm 1903 veya üzeri sürümlerde desteklenen bir tarayıcı içinde FIDO2 güvenlik anahtarı ile Web 'de oturum açmayı tercih edebilir.
 
 ![Güvenlik anahtarı oturum açma Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 

@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: e87ecc14907c6e0618de47ffdbd334d8ba03ec99
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500633"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526349"
 ---
 # <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>Derin-Apache Spark için bir dizin oluşturma alt sistemi
 
@@ -392,7 +392,8 @@ Dizine eklenecek verilere başvuran bir Spark DataFrame.
 Dizin yapılandırma nesnesi: Dizin adı, dizine alınmış ve dahil edilen sütunları belirten ındexconfig.
 Örnek verilerimizde üç derin uzay dizini oluşturarak başlayın: "deptIndex1" ve "deptIndex2" adlı departman veri kümesinde iki dizin ve ' Empındex ' adlı çalışan veri kümesinde tek bir dizin. Her bir dizin için, adı dizinli ve dahil edilen sütunlar için sütun listeleriyle birlikte yakalamak için karşılık gelen bir ındexconfig 'e ihtiyacınız vardır. Aşağıdaki hücre çalıştırıldığında, bu ındexconfigs ve çıktısı listelenir.
 
-Note: bir dizin sütunu, filtrelerinizin veya JOIN koşullarınızın içinde görüntülenen sütundur. Dahil edilen sütun, select/projenizde görüntülenen bir sütundur.
+> [!Note]
+> Dizin sütunu, filtrelerinizin veya JOIN koşullarınızın içinde görüntülenen sütundur. Dahil edilen sütun, select/projenizde görüntülenen bir sütundur.
 
 Örneğin, aşağıdaki sorguda:
 
@@ -508,8 +509,9 @@ Aşağıdaki kod, derin bir örnekteki tüm kullanılabilir dizinleri nasıl lis
 
 Aşağıdaki hücre, satırları tam olarak yazdırmak ve dizinlerimizin ayrıntılarını tablolu bir biçimde göstermek için DataFrame ' Show ' eylemini kullanır. Her bir dizin için, tüm bilgi uzay boşluğu ile ilgili meta verilerde depolanabileceğini görebilirsiniz. Hemen şunları fark edeceksiniz:
 
-"config. IndexName", "config. IndexedColumns", "config. IncludedColumns" ve "Status. Status" bir kullanıcının normalde başvurduğu alanlardır.
-"dfSignature", uzay boşluğu tarafından otomatik olarak oluşturulur ve her bir dizin için benzersizdir. Uzay boşluğu, dizini sürdürmek ve sorgu zamanında yararlanmak için bu imzayı dahili olarak kullanır.
+* "config. IndexName", "config. IndexedColumns", "config. IncludedColumns" ve "Status. Status" bir kullanıcının normalde başvurduğu alanlardır.
+* "dfSignature", uzay boşluğu tarafından otomatik olarak oluşturulur ve her bir dizin için benzersizdir. Uzay boşluğu, dizini sürdürmek ve sorgu zamanında yararlanmak için bu imzayı dahili olarak kullanır.
+
 Aşağıdaki çıktıda, her üç dizinin de durum olarak "ETKIN" olması gerekir ve ad, dizinli sütunları ve dahil edilen sütunlar yukarıdaki Dizin yapılandırmalarında tanımlandığımız verilerle eşleşmelidir.
 
 :::zone pivot = "programming-language-scala"
@@ -839,7 +841,7 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 | 7876|  ADAMS|    20|
 ```
 
-&nbsp;&nbsp;yalnızca ilk beş satır &nbsp; gösteriliyor&nbsp;
+&nbsp;&nbsp;Bu yalnızca ilk 5 satırı &nbsp; gösterir&nbsp;
 
 ```console
 |deptId|  deptName|location|
@@ -1369,8 +1371,8 @@ Bir dizinin üzerinde oluşturulduğu orijinal veriler değişirse, Dizin artık
 
 Aşağıdaki iki hücrede bu senaryo için bir örnek gösterilmektedir:
 
-İlk hücre, özgün departmanlar verilerine iki departman daha ekler. Yeni bölümlerin doğru eklendiğini doğrulamak için departmanlar listesini okur ve yazdırır. Çıktıda toplam altı bölüm gösterilir: dört eski ve iki yeni. "Refreshındex" güncelleştirmeleri "deptIndex1" olarak çağrılıyor, dizin yeni departmanları yakalar.
-İkinci hücre, Aralık seçim sorgu örneğimizi çalıştırır. Sonuçlar artık dört bölüm içermelidir: Yukarıdaki sorguyu çalıştırdığımızda görülen ve iki, yeni eklediğimiz yeni departmanlardır.
+* İlk hücre, özgün departmanlar verilerine iki departman daha ekler. Yeni bölümlerin doğru eklendiğini doğrulamak için departmanlar listesini okur ve yazdırır. Çıktıda toplam altı bölüm gösterilir: dört eski ve iki yeni. "Refreshındex" güncelleştirmeleri "deptIndex1" olarak çağrılıyor, dizin yeni departmanları yakalar.
+* İkinci hücre, Aralık seçim sorgu örneğimizi çalıştırır. Sonuçlar artık dört bölüm içermelidir: Yukarıdaki sorguyu çalıştırdığımızda görülen ve iki, yeni eklediğimiz yeni departmanlardır.
 
 ### <a name="specific-index-refresh"></a>Belirli dizin yenileme
 

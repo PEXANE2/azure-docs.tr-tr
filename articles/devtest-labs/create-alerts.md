@@ -3,12 +3,12 @@ title: Azure DevTest Labs 'de Labs için etkinlik günlüğü uyarıları oluşt
 description: Bu makalede, Azure DevTest Labs ' de laboratuvar için etkinlik günlüğü uyarıları oluşturma adımları sağlanmaktadır.
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 6c859e70ab8a101c533e16f9cb118e26727baa52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d5886ea26ddbeb07efc23d61d3197860620eebf3
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100185"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526366"
 ---
 # <a name="create-activity-log-alerts-for-labs-in-azure-devtest-labs"></a>Azure DevTest Labs 'de Labs için etkinlik günlüğü uyarıları oluşturma
 Bu makalede, Azure DevTest Labs (örneğin, bir VM oluşturulduğunda veya bir VM silindiğinde) Labs için etkinlik günlüğü uyarılarının nasıl oluşturulacağı açıklanmaktadır.
@@ -64,7 +64,7 @@ Bu örnekte, abonelik sahiplerine e-posta gönderen bir eylem ile laboratuvardak
 ## <a name="view-alerts"></a>Uyarıları görüntüleme 
 1. Tüm yönetim işlemlerine yönelik **uyarılarda** uyarılar görürsünüz (Bu örnekte). Uyarıların görünmesi biraz zaman alabilir. 
 
-    :::image type="content" source="./media/activity-logs/alerts.png" alt-text="Uyarılar":::
+    :::image type="content" source="./media/activity-logs/alerts.png" alt-text="Ekran yakalama, panodaki uyarıları görüntüler.":::
 1. Sütunda sayı ' yı seçerseniz (örneğin, **Toplam uyarı**), yükseltilen uyarıları görürsünüz. 
 
     :::image type="content" source="./media/activity-logs/all-alerts.png" alt-text="Tüm uyarılar":::
@@ -77,6 +77,6 @@ Bu örnekte, abonelik sahiplerine e-posta gönderen bir eylem ile laboratuvardak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Farklı eylem türlerini kullanarak eylem grupları oluşturma hakkında daha fazla bilgi için, bkz. [Azure Portal eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md).
-- Etkinlik günlükleri hakkında daha fazla bilgi için bkz. [Azure etkinlik günlüğü](../azure-monitor/platform/activity-log.md).
+- Etkinlik günlükleri hakkında daha fazla bilgi için bkz.  [Azure etkinlik günlüğü](../azure-monitor/platform/activity-log.md).
 - Etkinlik günlüklerinde uyarı ayarlama hakkında bilgi edinmek için bkz. [etkinlik günlüğündeki uyarılar](../azure-monitor/platform/activity-log-alerts.md).
 

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79807e8e0f798a73063576a00b8d0c32cdfe5a4b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 53d41b5024b29a8c6c394d65a3ce36f8bb878fc2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005353"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524989"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeniden yönlendirme URL 'Lerini b2clogin.com olarak ayarlayın
 
-Azure Active Directory B2C (Azure AD B2C) uygulamanızda kaydolma ve oturum açma için bir kimlik sağlayıcısı ayarladığınızda, bir yeniden yönlendirme URL 'SI belirtmeniz gerekir. Artık uygulamalarınızda ve API 'lerinize *login.microsoftonline.com* başvurmamalıdır. Bunun yerine, tüm yeni uygulamalar için *b2clogin.com* kullanın ve mevcut uygulamaları *login.microsoftonline.com* ' den *b2clogin.com*' ye geçirin.
+Azure Active Directory B2C (Azure AD B2C) uygulamanızda kaydolma ve oturum açma için bir kimlik sağlayıcısı ayarladığınızda, bir yeniden yönlendirme URL 'SI belirtmeniz gerekir. Artık Azure AD B2C, uygulamalarınızda ve API 'Lerinde Kullanıcı kimliğini doğrulamaya yönelik *login.microsoftonline.com* başvurmamalıdır. Bunun yerine, tüm yeni uygulamalar için *b2clogin.com* kullanın ve mevcut uygulamaları *login.microsoftonline.com* ' den *b2clogin.com*' ye geçirin.
 
 ## <a name="deprecation-of-loginmicrosoftonlinecom"></a>Login.microsoftonline.com kullanımdan kaldırma
 
@@ -31,6 +31,23 @@ Azure Active Directory B2C (Azure AD B2C) uygulamanızda kaydolma ve oturum açm
 Login.microsoftonline.com 'ın kullanımdan kaldırılması, 04 Aralık 2020 ' deki tüm Azure AD B2C kiracılar için geçerli olur ve bu da b2clogin.com 'e geçiş için bir (1) yıl. 04 Aralık 2019 ' den sonra oluşturulan yeni kiracılar, login.microsoftonline.com 'dan gelen istekleri kabul etmez. Tüm işlevler, b2clogin.com uç noktasında aynı kalır.
 
 Login.microsoftonline.com 'nin kullanımdan kaldırılması Azure Active Directory kiracıları etkilemez. Bu değişiklikten yalnızca Azure Active Directory B2C kiracılar etkilenir.
+
+## <a name="what-endpoints-does-this-apply-to"></a>Bunun için hangi uç noktalar geçerlidir?
+B2clogin.com 'e geçiş yalnızca kullanıcıların kimliğini doğrulamak için Azure AD B2C ilkeleri (Kullanıcı akışları veya özel ilkeler) kullanan kimlik doğrulama uç noktaları için geçerlidir. Bu uç noktalar `<policy-name>` , Azure AD B2C kullanması gereken ilkeyi belirten bir parametreye sahiptir. [Azure AD B2C ilkeleri hakkında daha fazla bilgi edinin](technical-overview.md#identity-experiences-user-flows-or-custom-policies). 
+
+Bu uç noktalar şöyle görünebilir:
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/<b>\<policy-name\></b>/oauth2/v2.0/authorize</code>
+
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/<b>\<policy-name\></b>/oauth2/v2.0/token</code>
+
+Alternatif olarak, `<policy-name>` bir sorgu parametresi olarak geçirilebilir:
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/oauth2/v2.0/authorize?<b>p=\<policy-name\></b></code>
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/oauth2/v2.0/token?<b>p=\<policy-name\></b></code>
+
+> [!IMPORTANT]
+> ' İlke ' parametresini kullanan uç noktaların yanı sıra [kimlik sağlayıcısı yeniden yönlendirme URL 'leri](#change-identity-provider-redirect-urls)de güncelleştirilmeleri gerekir.
+
+Bazı Azure AD B2C müşteriler, Azure AD kurumsal kiracılarının OAuth 2,0 istemci kimlik bilgileri verme akışı gibi paylaşılan yeteneklerini kullanır. Bu özelliklere, *bir ilke parametresi Içermeyen*Azure AD 'nin Login.microsoftonline.com uç noktaları kullanılarak erişilir. __Bu uç noktalar etkilenmez__.
 
 ## <a name="benefits-of-b2clogincom"></a>B2clogin.com avantajları
 
@@ -45,8 +62,15 @@ Yeniden yönlendirme URL 'SI olarak *b2clogin.com* kullandığınızda:
 Uygulamalarınızı *b2clogin.com*'e geçirmek için yapmanız gerekebilecek birkaç değişiklik vardır:
 
 * Kimlik sağlayıcınızın uygulamalarındaki yeniden yönlendirme URL 'sini *b2clogin.com*başvurusuna değiştirin.
-* Azure AD B2C uygulamalarınızı, Kullanıcı akışında ve belirteç uç noktası başvurularında *b2clogin.com* kullanacak şekilde güncelleştirin.
+* Azure AD B2C uygulamalarınızı, Kullanıcı akışında ve belirteç uç noktası başvurularında *b2clogin.com* kullanacak şekilde güncelleştirin. Bu, Microsoft kimlik doğrulama kitaplığı (MSAL) gibi bir kimlik doğrulama kitaplığı kullanlarınızın güncelleştirilmesini içerebilir.
 * [Kullanıcı arabirimi özelleştirmesi](custom-policy-ui-customization.md)için CORS ayarlarında tanımladığınız tüm **izin verilen kaynakları** güncelleştirin.
+
+Eski bir uç nokta şöyle görünebilir:
+- <b><code>https://login.microsoft.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
+
+Buna karşılık gelen güncelleştirilmiş bir uç nokta şöyle görünür:
+- <code><b>https://\<tenant-name\>.b2clogin.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
+
 
 ## <a name="change-identity-provider-redirect-urls"></a>Kimlik sağlayıcısı yeniden yönlendirme URL 'Lerini Değiştir
 
@@ -58,7 +82,7 @@ B2clogin.com yeniden yönlendirme URL 'Leri için kullanabileceğiniz iki biçim
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-İkinci seçenek, kiracı etki alanı adınızı biçiminde kullanır `your-tenant-name.onmicrosoft.com` . Örneğin:
+İkinci seçenek, kiracı etki alanı adınızı biçiminde kullanır `your-tenant-name.onmicrosoft.com` . Örnek:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp

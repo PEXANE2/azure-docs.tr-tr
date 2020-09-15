@@ -1,6 +1,6 @@
 - name: Azure İzleyici Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure İzleyici nedir?
       href: overview.md
@@ -146,7 +146,7 @@
           href: app/data-retention-privacy.md
     - name: Uyarılar
       items:
-        - name: Genel Bakış
+        - name: Genel bakış
           href: platform/alerts-overview.md
         - name: Ölçüm uyarıları
           href: platform/alerts-metric-overview.md
@@ -400,7 +400,7 @@
               href: insights/solution-agenthealth.md
         - name: Azure Tanılama uzantısı
           items:
-            - name: Genel Bakış
+            - name: Genel bakış
               href: platform/diagnostics-extension-overview.md
             - name: Windows
               displayname: diagnostics extension
@@ -564,7 +564,7 @@
               href: platform/itsmc-overview.md
             - name: BT Hizmet Yönetimi bağlantıları
               href: platform/itsmc-connections.md
-            - name: Güvenli Dışarı Aktarma Tümleştirmesi
+            - name: Güvenli Dışarı Aktarma ile tümleştirme
               href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Service Manager web uygulaması oluşturma
               href: platform/itsmc-service-manager-script.md

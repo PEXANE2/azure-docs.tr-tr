@@ -3,12 +3,12 @@ title: Özel Azure Resource Manager rolü oluşturma ve hizmet sorumlusu 'na ata
 description: Bu makalede, Azure CLı kullanarak IoT Edge üzerinde canlı video analizine yönelik özel Azure Resource Manager rol oluşturma ve hizmet sorumlusuna atama hakkında yönergeler sunulmaktadır.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a780ecbbf2530b15984c596281c4aa7e4f5dd520
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043165"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526587"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Özel Azure Resource Manager rolü oluşturma ve hizmet sorumlusuna atama
 
@@ -25,7 +25,7 @@ Bu makaleye yönelik önkoşullar aşağıdaki gibidir:
 
 Hesabınızın yeterli izinlere sahip olup olmadığını denetlemenin en kolay yolu portalı kullanmaktır. Bkz. [Gerekli izinleri denetleme](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
-## <a name="overview"></a>Genel Bakış  
+## <a name="overview"></a>Genel bakış  
 
 Özel bir rol oluşturma ve bunu bir hizmet sorumlusu ile bağlama adımlarını aşağıdaki sırayla öğreneceksiniz:
 
@@ -43,7 +43,7 @@ Medya hizmeti hesabınız yoksa, bir tane oluşturmak için aşağıdaki adımla
 1. [Cloud Shell](https://shell.azure.com/)gidin.
 1. Kabuk penceresinin sol tarafındaki açılan menüdeki ortamınız olarak "Bash" ı seçin
 
-    ![Bash](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
+    ![Ekran başlıklarından, kabuk penceresinden Bash seçili gösterilmektedir.](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
 1. Aşağıdaki komut şablonunu kullanarak Azure aboneliğinizi varsayılan hesap olarak ayarlayın:
     
     ```
@@ -163,7 +163,7 @@ az ad sp show --id "<appId>" | Select-String "objectId"
 ```
 
 > [!NOTE]
-> `<appId>`, [hizmet sorumlusu oluşturma](#create-service-principal) adımının çıktısından alınabilir.
+> `<appId>` , [hizmet sorumlusu oluşturma](#create-service-principal) adımının çıktısından alınabilir.
 
 Yukarıdaki komut, hizmet sorumlusu ObjectID 'yi yazdıracak. 
 

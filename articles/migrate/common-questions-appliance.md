@@ -2,13 +2,13 @@
 title: Azure geçişi gereç hakkında SSS
 description: Azure geçişi gereci hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: aa15a3451b990d3c3cec3535fdc14315ff149aef
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.date: 09/15/2020
+ms.openlocfilehash: 6c1e5099f208788919d27ba3d2b1de296f0d91a6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514552"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526570"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure geçişi gereci: genel sorular
 
@@ -76,7 +76,7 @@ Azure geçişi gereci tarafından toplanan veriler, Azure geçişi projesini olu
 Verilerin nasıl depolandığı hakkında daha fazla bilgi aşağıdadır:
 
 - Toplanan veriler, CosmosDB 'de bir Microsoft aboneliğine güvenli bir şekilde depolanır. Azure geçişi projesini sildiğinizde veriler silinir. Depolama, Azure geçişi tarafından işlenir. Toplanan veriler için özel olarak bir depolama hesabı seçemezsiniz.
-- [Bağımlılık görselleştirmesi](concepts-dependency-visualization.md)kullanıyorsanız, toplanan veriler Azure aboneliğinizde oluşturulan bir Azure Log Analytics çalışma alanındaki Birleşik Devletler depolanır. Aboneliğinizdeki Log Analytics çalışma alanını sildiğinizde veriler silinir.
+- [Bağımlılık görselleştirmesi](concepts-dependency-visualization.md)kullanıyorsanız, toplanan veriler Azure aboneliğinizde oluşturulan bir Azure Log Analytics çalışma alanında depolanır. Aboneliğinizdeki Log Analytics çalışma alanını sildiğinizde veriler silinir. 
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>Sürekli profil oluşturma sırasında karşıya ne kadar veri yüklendi?
 

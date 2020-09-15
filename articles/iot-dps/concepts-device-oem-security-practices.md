@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: 3854f353e4ea0b78c0162681e0b89d37419105d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80529514"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527216"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Azure IoT cihaz üreticilerine yönelik güvenlik uygulamaları
 Daha fazla üretici IoT cihazlarını serbest bıraktığından, yaygın uygulamaların etrafında rehberlik belirlemek yararlı olur. Bu makalede, cihazları Azure IoT cihaz sağlama hizmeti (DPS) ile birlikte kullanmak üzere üretdiğinizde göz önünde bulundurmanız gereken önerilen güvenlik uygulamaları özetlenmektedir.  
@@ -182,7 +182,7 @@ Bir cihaz, dağıtılmadan önce 6-12 ay boyunca bir ambara ait olabilir.
 #### <a name="step-5-device-is-installed-into-the-location"></a>5. Adım: cihaz konuma yüklendi
 Cihaz son konumuna ulaştıktan sonra, DPS ile otomatik sağlama aracılığıyla geçer.
 
-Daha fazla bilgi için bkz. [oto sağlama kavramları](concepts-auto-provisioning.md) ve [TPM kanıtlama](concepts-tpm-attestation.md). 
+Daha fazla bilgi için bkz. [sağlama](about-iot-dps.md#provisioning-process) ve [TPM kanıtlama](concepts-tpm-attestation.md). 
 
 ## <a name="resources"></a>Kaynaklar
 

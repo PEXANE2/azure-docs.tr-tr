@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 7e78c0d2538dbb6326df30d63ec1c38de48b62e6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 9c5c4247ab01a571613cad4f33832de152909b11
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057281"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527114"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'ndaki kök CA 'daki değişiklikleri anlama
 
@@ -87,7 +87,7 @@ SSL/TLS kullanmıyorsanız hiçbir eylem gerekmez.
 Hayır, yeni sertifikayı kullanmaya başlamak için veritabanı sunucusunu yeniden başlatmanız gerekmez. Bu kök sertifika, istemci tarafı bir değişiklik ve gelen istemci bağlantılarının veritabanı sunucusuna bağlanabildiklerinden emin olmak için yeni sertifikayı kullanması gerekir.
 
 ### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. kök sertifikayı 26 Ekim 2020 (10/26/2020) tarihinden önce güncelleştirdiğimde ne olur?
-Kök sertifikayı 30 Kasım 2020 tarihinden önce güncelleştirmediğinizi, SSL/TLS aracılığıyla bağlanan ve kök sertifika için doğrulama yapan uygulamalarınız MySQL veritabanı sunucusuyla iletişim kuramayacaktır ve uygulama MySQL veritabanı sunucunuza bağlantı sorunlarıyla karşılaşacaktır.
+Kök sertifikayı 26 Ekim 2020 ' den önce güncelleştirmediğinizi, SSL/TLS aracılığıyla bağlanan ve kök sertifika için doğrulama yapan uygulamalarınız MySQL veritabanı sunucusuyla iletişim kuramayacaksınız ve uygulama MySQL veritabanı sunucunuza bağlantı sorunlarıyla karşılaşacaktır.
 
 ### <a name="4-do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>4. bu değişiklik için bir bakım kapalı kalma süresi planlamanız gerekir mi?<BR>
 Hayır. Buradaki değişiklik yalnızca istemci tarafında, veritabanı sunucusuna bağlanmak için olduğundan, bu değişiklik için burada gereken bakım kapalı kalma süresi yoktur.
@@ -95,7 +95,7 @@ Hayır. Buradaki değişiklik yalnızca istemci tarafında, veritabanı sunucusu
 ### <a name="5--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>5. bu değişiklik için 26 Ekim 10/26/2020 2020 ' den önce zamanlanan kapalı kalma süresi alamazsanız ne olur?
 Sunucuya bağlanmak için kullanılan istemcilerin [buradaki](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)çözüm bölümünde açıklandığı gibi sertifika bilgilerini güncelleştirmesi gerektiğinden, bu durumda sunucu için kapalı kalma süresine gerek kalmaz.
 
-###  <a name="6-if-i-create-a-new-server-after-nov-30-2020-will-i-be-impacted"></a>6.30 Kasım 2020 ' den sonra yeni bir sunucu oluştururum, bundan etkilenmem gerekir mi?
+###  <a name="6-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>6.26 Ekim 2020 ' den sonra yeni bir sunucu oluştururum, bundan etkilenmem gerekir mi?
 26 Ekim 2020 (10/26/2020) sonrasında oluşturulan sunucular için, SSL kullanarak bağlanmak üzere uygulamalarınız için yeni verilen sertifikayı kullanabilirsiniz.
 
 ### <a name="7-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>7. Microsoft sertifikalarını ne sıklıkla güncelleştiriyor veya süre sonu ilkesi nedir?

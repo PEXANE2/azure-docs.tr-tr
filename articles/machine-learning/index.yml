@@ -13,12 +13,12 @@ metadata:
   ms.author: jmartens
   ms.date: 09/17/2020
   ms.custom: contperfq1
-  ms.openlocfilehash: 19aba3cd915ac980f2f21e2457365fb6768d10c2
-  ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+  ms.openlocfilehash: c103b04fff2cc0b1d5b804c16f98e63fd1aa3e87
+  ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/10/2020
-  ms.locfileid: "89668805"
+  ms.lasthandoff: 09/14/2020
+  ms.locfileid: "90068294"
 landingContent:
 - title: 'Başlarken: Kod öncelikli'
   linkLists:
@@ -42,9 +42,9 @@ landingContent:
       url: concept-designer.md
   - linkListType: tutorial
     links:
-    - text: AutoML kullanmaya başlama
+    - text: Kullanmaya başlama (AutoML)
       url: tutorial-first-experiment-automated-ml.md
-    - text: Tasarımcıyı kullanmaya başlama
+    - text: Kullanmaya başlama (tasarımcı)
       url: tutorial-designer-automobile-price-train-score.md
   - linkListType: reference
     links:
@@ -58,7 +58,7 @@ landingContent:
       url: how-to-deploy-existing-model.md
     - text: MLflow modellerini izleme ve dağıtma
       url: how-to-use-mlflow.md
-- title: 'MLOps: Modelleri dağıtma ve yönetme'
+- title: Modelleri dağıtma ve yönetme (MLOps)
   linkLists:
   - linkListType: how-to-guide
     links:

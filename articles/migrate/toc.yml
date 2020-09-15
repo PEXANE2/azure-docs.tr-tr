@@ -18,12 +18,32 @@
           href: common-questions-server-migration.md
 - name: Öğreticiler
   items:
-    - name: VMware VM’lerini değerlendirme ve geçirme
+    - name: Bulma
       items:
-        - name: VMware’i değerlendirme ve geçişe hazırlama
-          href: tutorial-prepare-vmware.md
-        - name: VMware VM’leri geçiş için değerlendirme
-          href: tutorial-assess-vmware.md
+        - name: VMware VM’lerini bulma
+          href: tutorial-discover-vmware.md
+        - name: Hyper-V VM’lerini bulma
+          href: tutorial-discover-hyper-v.md
+        - name: Fiziksel sunucuları bulma
+          href: tutorial-discover-physical.md
+        - name: AWS örneklerini bulma
+          href: tutorial-discover-aws.md
+        - name: İçeri aktarılan sunucuları bulma
+          href: tutorial-discover-import.md
+    - name: Değerlendirme
+      items:
+        - name: VMware VM’lerini Azure VM’lerine geçiş için değerlendirme
+          href: tutorial-assess-vmware-azure-vm.md
+        - name: VMware VM’lerini AVS'ye geçiş için değerlendirme
+          href: tutorial-assess-vmware-azure-vmware-solution.md
+        - name: Hyper-V VM’lerini Azure'a geçiş için değerlendirme
+          href: tutorial-assess-hyper-v.md
+        - name: Fiziksel sunucuları Azure’a geçiş için değerlendirme
+          href: tutorial-assess-physical.md
+        - name: AWS örneklerini Azure’a geçiş için değerlendirme
+          href: tutorial-assess-aws.md
+    - name: Geçiş
+      items:
         - name: VMware VM’leri geçirme
           items:
             - name: VMware VM’lere yönelik geçiş seçenekleri hakkında
@@ -32,30 +52,12 @@
               href: tutorial-migrate-vmware.md
             - name: VMware VM'leri aracı tabanlı geçiş ile geçirme
               href: tutorial-migrate-vmware-agent.md
-    - name: Hyper-V VM’lerini değerlendirme ve geçirme
-      items:
-        - name: Hyper-V’yi değerlendirme ve geçişe hazırlama
-          href: tutorial-prepare-hyper-v.md
-        - name: Hyper-V VM’leri geçiş için değerlendirme
-          href: tutorial-assess-hyper-v.md
         - name: Hyper-V VM’leri Azure’a Geçirme
           href: tutorial-migrate-hyper-v.md
-    - name: Fiziksel sunucuları değerlendirme ve geçirme
-      items:
-        - name: Fiziksel sunucuları değerlendirme ve geçiş için hazırlama
-          href: tutorial-prepare-physical.md
-        - name: Fiziksel sunucuları değerlendirme
-          href: tutorial-assess-physical.md
         - name: Fiziksel sunucuları geçirme
           href: tutorial-migrate-physical-virtual-machines.md
-    - name: AWS VM’lerini değerlendirme ve geçirme
-      items:
-        - name: 'Amazon Web Services (AWS) sanal makinelerini bulma, değerlendirme ve Azure’a geçirme'
+        - name: AWS örneklerini geçirme
           href: tutorial-migrate-aws-virtual-machines.md
-    - name: İçeri aktarılan sunucuları geçiş için değerlendirme
-      items:
-        - name: İçeri aktarılan sunucuları geçiş için değerlendirme
-          href: tutorial-assess-import.md
 - name: Kavramlar
   items:
     - name: Azure Geçişi ile geçiş planı oluşturma

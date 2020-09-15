@@ -17,6 +17,8 @@
       href: get-started-create-service-instance.md
     - name: Örnek oluşturma - PowerShell
       href: powershell-create-service-instance.md
+    - name: Örnek oluşturma - Visual Studio Code
+      href: vscode-create-service-instance.md
 - name: Öğreticiler
   items:
     - name: 1 - İlk API'nizi içeri aktarma

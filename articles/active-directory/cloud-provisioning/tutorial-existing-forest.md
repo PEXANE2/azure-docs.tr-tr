@@ -1,6 +1,6 @@
 ---
 title: Öğretici-Azure AD Connect bulut sağlama kullanarak, mevcut bir ormanı ve yeni bir ormanı tek bir Azure AD kiracısı ile tümleştirin.
-description: öğreticide.
+description: Mevcut bir karma kimlik ortamına bulut sağlama eklemeyi öğrenin. .
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eba35d6ffb4cbeb25d64d42adb2429636f1d56ce
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 25e70809becd59ceeb3c45867b9e35119df497a3
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228485"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526927"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Mevcut bir ormanı ve yeni bir ormanı tek bir Azure AD kiracısı ile tümleştirme
 
@@ -28,7 +28,7 @@ Bu öğreticide oluşturduğunuz ortamı test etmek veya karma kimliğin nasıl 
 
 Bu senaryoda, bir Azure AD kiracısına Azure AD Connect eşitleme kullanılarak eşitlenmiş mevcut bir orman vardır. Aynı Azure AD kiracısıyla eşitlemek istediğiniz yeni bir ormanınız vardır. Yeni orman için bulut sağlama kurulumunu yapmanız gerekir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory Yönetim merkezinde
 
 1. Azure AD kiracınızda yalnızca bulutta yer alan bir genel yönetici hesabı oluşturun. Bu şekilde, şirket içi hizmetleriniz başarısız olması veya kullanılamaz hale gelmesi için kiracınızın yapılandırmasını yönetebilirsiniz. [Yalnızca bulut genel yönetici hesabı ekleme](../fundamentals/add-users-azure-active-directory.md)hakkında bilgi edinin. Bu adımın tamamlanması, kiracınızdan kilitlenmemesini sağlamak açısından önemlidir.
@@ -127,7 +127,7 @@ Artık şirket içi dizinimizde bulunan kullanıcıların Azure AD kiracımızda
 
 1. Buraya gidin [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: ( user@domain.onmicrosoft.com ). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.</br>
-   ![Doğru](media/tutorial-single-forest/verify1.png)</br>
+   ![Doğrulama](media/tutorial-single-forest/verify1.png)</br>
 
 Artık Azure 'un sunabileceği bir karma kimlik ortamını test etmek ve tanımak için kullanabileceğiniz bir karma kimlik ortamı oluşturdunuz.
 

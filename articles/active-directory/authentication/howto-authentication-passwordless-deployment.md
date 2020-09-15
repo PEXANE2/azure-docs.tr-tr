@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9ca8b7e188a7ed438feb5e2b99c6db22ad12b3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717158"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527012"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory bir passwordless kimlik doğrulama dağıtımı planlayın
 
@@ -61,7 +61,7 @@ Microsoft 'un parolasız kimlik doğrulama yöntemleri farklı senaryolara olana
 
 Kuruluşunuz için en iyi yöntemi seçme hakkında daha fazla bilgi için bkz. [passwordless yöntemine karar verme](./concept-authentication-passwordless.md#choose-a-passwordless-method).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önkoşulları karşılaması gerekir:
 
@@ -160,7 +160,7 @@ Güvenlik anahtarları ile kullanılabilen üç tür passwordless oturum açma d
 -    Windows 10 sürüm 1809, FIDO2 oturum açmayı destekler ve FIDO2 anahtar üreticisinden yazılımın dağıtılmasını gerektirebilir. Sürüm 1903 veya sonraki bir sürümü kullanmanızı öneririz. 
 
 **Karma Azure Active Directory etki alanına katılmış cihazlar için**: 
--    Windows 10 Insider Build 18945 veya üzeri
+-    Windows 10 sürüm 2004 veya üzeri
 -    Windows Server 2016 veya 2019 çalıştıran tam düzeltme eki uygulanmış etki alanı sunucuları.
 -    Azure AD Connect en son sürümü
 

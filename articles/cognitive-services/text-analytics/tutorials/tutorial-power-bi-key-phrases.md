@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 2fb38fdfaace188936975c1cfdd8c86b44d5b0a5
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1a76c753cdf22d2c9b8b56893017cdc3cee9c8cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231546"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527301"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Metin Analizi Bilişsel Hizmeti ile Power BI’ı tümleştirme
 
@@ -30,7 +30,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Müşteri geri bildiriminden en önemli ifadeleri ayıklamak için Metin Analizi Anahtar İfadeler API’sini kullanma
 > * Müşteri geri bildiriminden sözcük bulutu oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop. [Ücretsiz olarak indirin](https://powerbi.microsoft.com/get-started/).
@@ -232,7 +232,7 @@ Aşağıdaki Yaklaşım Analizi işlevi, metinde ifade edilen yaklaşımın ne �
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    sentiment   = jsonresp[documents]{0}[score]
+    sentiment   = jsonresp[documents]{0}[confidenceScores]
 in  sentiment
 ```
 

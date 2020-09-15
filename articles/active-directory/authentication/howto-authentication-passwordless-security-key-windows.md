@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717974"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526995"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile Windows 10 cihazlarında passwordless güvenlik anahtarı oturumunu etkinleştirme
 
@@ -32,8 +32,8 @@ Bu belge, Windows 10 cihazlarıyla, FIDO2 güvenlik anahtarı tabanlı passwordl
 | [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
 | [Birleşik güvenlik bilgileri kayıt önizlemesi](concept-registration-mfa-sspr-combined.md) | X | X |
 | Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
-| WebAuthN, Windows 10 sürüm 1809 veya üstünü gerektirir | X | X |
-| [Azure AD 'ye katılmış cihazlar](../devices/concept-azure-ad-join.md) için Windows 10 sürüm 1903 veya üzeri gerekir | X |   |
+| WebAuthN, Windows 10 sürüm 1903 veya üstünü gerektirir | X | X |
+| [Azure AD 'ye katılmış cihazlar](../devices/concept-azure-ad-join.md) için Windows 10 sürüm 1909 veya üzeri gerekir | X |   |
 | [Karma Azure AD 'ye katılmış cihazlar](../devices/concept-azure-ad-join-hybrid.md) için Windows 10 sürüm 2004 veya üzeri gerekir |   | X |
 | Tam düzeltme eki uygulanan Windows Server 2016/2019 etki alanı denetleyicileri. |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) sürüm 1.4.32.0 veya üzeri |   | X |
@@ -56,7 +56,7 @@ Aşağıdaki senaryolar desteklenmez:
 
 ## <a name="prepare-devices-for-preview"></a>Cihazları önizleme için hazırlama
 
-Özellik önizlemesi sırasında daha önce kullandığınız Azure AD 'ye katılmış cihazların Windows 10 sürüm 1809 veya üstünü çalıştırması gerekir. En iyi deneyim Windows 10 sürüm 1903 veya daha yüksektir.
+Özellik önizlemesi sırasında daha önce kullandığınız Azure AD 'ye katılmış cihazların Windows 10 sürüm 1909 veya üstünü çalıştırması gerekir.
 
 Karma Azure AD 'ye katılmış cihazların Windows 10 sürüm 2004 veya daha yeni bir sürümü çalıştırması gerekir.
 
@@ -125,7 +125,7 @@ Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek 
 1. Oluşturduğunuz sağlama paketini uygulamak için bkz. [sağlama paketi uygulama](/windows/configuration/provisioning-packages/provisioning-apply-package).
 
 > [!NOTE]
-> Windows 10 sürüm 1809 çalıştıran cihazların Ayrıca paylaşılan bılgısayar modunu (*Enablesharedpcmode*) etkinleştirmesi gerekir. Bu işlevi etkinleştirme hakkında daha fazla bilgi için bkz. [Windows 10 ile paylaşılan veya konuk bilgisayar ayarlama](/windows/configuration/set-up-shared-or-guest-pc).
+> Windows 10 sürüm 1903 çalıştıran cihazların Ayrıca paylaşılan bılgısayar modunu (*Enablesharedpcmode*) etkinleştirmesi gerekir. Bu işlevi etkinleştirme hakkında daha fazla bilgi için bkz. [Windows 10 ile paylaşılan veya konuk bilgisayar ayarlama](/windows/configuration/set-up-shared-or-guest-pc).
 
 ### <a name="enable-with-group-policy"></a>grup ilkesi ile etkinleştir
 

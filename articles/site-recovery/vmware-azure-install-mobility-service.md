@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0613af3d286a9c670d09b2e72c2807c018753455
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669241"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90525006"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Mobility aracısının gönderim yüklemesi için kaynak makineyi hazırlama
 
@@ -63,7 +63,7 @@ Korumak istediğiniz her Linux makinesinde şunları yapın:
 11. **Hesapları Yönet** sekmesinde **Hesap Ekle**' yi seçin.
 12. Oluşturduğunuz hesabı ekleyin.
 13. Bir bilgisayar için çoğaltmayı etkinleştirdiğinizde kullandığınız kimlik bilgilerini girin.
-1. SUSE Linux Enterprise Server 11 SP3 makinelerini güncelleştirmek veya korumak için ek adım. [Yapılandırma sunucusunda en son sürümün kullanılabilir olduğundan emin olun](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server).
+1. SUSE Linux Enterprise Server 11 SP3 veya RHEL 5 veya CentOS 5 ya da de/2 7 makinelerini güncelleştirmek veya korumak için ek adım. [Yapılandırma sunucusunda en son sürümün kullanılabilir olduğundan emin olun](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server).
 
 ## <a name="anti-virus-on-replicated-machines"></a>Çoğaltılan makinelerde virüsten koruma
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068821"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526893"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -31,7 +31,7 @@ Aşağıdaki Azure Multi-Factor Authentication ayarları Azure portal sunulmakta
 | [Kullanıcıları engelle/engelini kaldır](#block-and-unblock-users) | Belirli kullanıcıların Azure Multi-Factor Authentication isteklerini almasına engel olmak. Engellenen kullanıcılar için tüm kimlik doğrulaması denemeleri otomatik olarak reddedilir. Kullanıcılar engellendikleri zamandan itibaren 90 gün boyunca engellenmeye devam eder veya el ile engellenmemiş. |
 | [Sahtekarlık uyarısı](#fraud-alert) | Kullanıcıların sahte doğrulama isteklerini rapordeğiştirmesine izin veren ayarları yapılandırın. |
 | [Bildirimler](#notifications) | MFA sunucusundan olayların bildirimlerini etkinleştirin. |
-| [OATH belirteçleri](concept-authentication-methods.md#oath-tokens) | Kullanıcılar için OATH belirteçlerini yönetmek üzere bulut tabanlı Azure MFA ortamlarında kullanılır. |
+| [OATH belirteçleri](concept-authentication-oath-tokens.md) | Kullanıcılar için OATH belirteçlerini yönetmek üzere bulut tabanlı Azure MFA ortamlarında kullanılır. |
 | [Telefon araması ayarları](#phone-call-settings) | Bulut ve şirket içi ortamlar için telefon çağrılarıyla ve tebrikler ilgili ayarları yapılandırın. |
 | Sağlayıcılar | Bu, hesabınızla ilişkilendirdiğiniz mevcut herhangi bir kimlik doğrulama sağlayıcısını gösterir. Yeni kimlik doğrulama sağlayıcıları 1 Eylül 2018 itibariyle oluşturulmayabilir |
 

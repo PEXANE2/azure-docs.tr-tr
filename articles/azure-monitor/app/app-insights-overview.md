@@ -4,12 +4,12 @@ description: Uygulama Performansı Yönetimi ve canlı web uygulamanızın kulla
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: f80322e8cde27ea48ca343ca8eee5985cba23ceb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: da57bcb7ed434893548ae74fdb3cd9ac1ab5b245
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321454"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526842"
 ---
 # <a name="what-is-application-insights"></a>Application Insights nedir?
 [Azure izleyici](../overview.md)'nin bir özelliği olan Application Insights, geliştiriciler ve DevOps uzmanları için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı uygulamalarınızı izlemek için bu uygulamayı kullanın. Performans sorunlarını otomatik olarak algılar ve sorunları tanılamanıza ve hangi kullanıcıların uygulamanızla gerçekten ne yaptığını anlamanıza yardımcı olacak güçlü analiz araçları içerir.  Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. Şirket içi, hibrit veya herhangi bir genel bulut üzerinde barındırılan .NET, Node.js, Java ve Python gibi çok çeşitli platformlarda uygulamalar için geçerlidir. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır. Visual Studio App Center ile tümleştirerek mobil uygulamalardan telemetriyi izleyebilir ve çözümleyebilir.
@@ -51,7 +51,7 @@ Verilerinizi keşfetmenin birçok yolu vardır. Aşağıdaki makaleleri inceleyi
 | --- | --- |
 | [**Akıllı algılama ve el ile uyarılar**](./proactive-diagnostics.md)<br/>Uygulamanızın normal telemetri desenlerine uyarlanabilen otomatik uyarıları ayarlayın ve normal desen dışında bir şey olduğunda tetikleyin. Belirli özel veya standart ölçüm düzeylerinde de [uyarılar](../platform/alerts-log.md) ayarlayabilirsiniz. |![Uyarı örneği](./media/app-insights-overview/alerts-tn.png) |
 | [**Uygulama eşlemesi**](./app-map.md)<br/>Ana ölçümler ve uyarılarla uygulamanızın bileşenlerini araştırma. |![Uygulama haritası](./media/app-insights-overview/appmap-tn.png)  |
-| [**Profil Oluşturucu**](./profiler.md)<br/>Örnek isteklerinin yürütme profillerini inceleyin. |![Profil Oluşturucu](./media/app-insights-overview/profiler.png) |
+| [**Profil Oluşturucu**](./profiler.md)<br/>Örnek isteklerinin yürütme profillerini inceleyin. |![Ekran yakalama, Örneklenmiş isteklerin yürütme profillerini gösterir.](./media/app-insights-overview/profiler.png) |
 | [**Kullanım Analizi**](./usage-overview.md)<br/>Kullanıcıların segmentlere nasıl ayrıldığını ve nasıl elde tutulduğunu çözümleyin.|![Elde tutma aracı](./media/app-insights-overview/retention.png) |
 | [**Örnek verileri için tanılama arama**](./diagnostic-search.md)<br/>İstekler, özel durumlar, bağımlılık çağrıları, günlük izlemeleri ve sayfa görüntülemeleri gibi olaylarda arama yapın ve bunları filtreleyin.  |![Telemetri arama](./media/app-insights-overview/search-tn.png) |
 | [**Toplu veriler için Ölçüm Gezgini**](../platform/metrics-charts.md)<br/>İstek, hata ve özel durum oranları; yanıt süreleri, sayfa yükleme süreleri gibi toplu verileri keşfedin, filtreleyin ve bölümlere ayırın. |![Ölçümler](./media/app-insights-overview/metrics-tn.png) |

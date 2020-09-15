@@ -4,12 +4,12 @@ description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belge
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: d5f239540a74c431e381c581f00514a1f7acd5e3
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030397"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526485"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -149,7 +149,7 @@ Daha fazla bilgi edinin
 
 ## <a name="moogsoft"></a>Moogsoft
 
-![Moogsoft](./media/partners/moogsoft.png)
+![Moogsoft logosu](./media/partners/moogsoft.png)
 
 Moogsoft Aıops, çevik iş dönüşümünü hızlandırır.
 

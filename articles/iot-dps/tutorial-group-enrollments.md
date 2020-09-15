@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 43ae9bd0e844a23adabf52e7fbb4b8cd077d23bd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 80efd92560bc7fb5c8bf16b524752e7dbfcdc74b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326724"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526672"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Öğretici: IoT Hub cihaz sağlama hizmeti için Java cihaz ve hizmet SDK 'Sı ve grup kayıtlarını kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
 
@@ -251,7 +251,7 @@ Devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarla
 Cihaz istemci örneği üzerinde çalışmaya ve inceleme yapmaya devam etmeyi planlıyorsanız bu Hızlı Başlangıç’ta oluşturulan kaynakları silmeyin. Devam etmeyi planlamıyorsanız, bu hızlı başlangıç ile oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın:
 
 1. Makinenizde cihaz istemci örnek çıktı penceresini kapatın.
-1. Azure portalında sol taraftaki menüden **Tüm kaynaklar**’ı ve ardından Cihaz Sağlama hizmetini seçin. Hizmetinizin kayıtları **yönetme** dikey penceresini açın ve sonra **bireysel** Kayıtlar sekmesine tıklayın. bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *kayıt kimliği* ' ni seçin ve üstteki **Sil** düğmesine tıklayın. 
+1. Azure portalında sol taraftaki menüden **Tüm kaynaklar**’ı ve ardından Cihaz Sağlama hizmetini seçin. Hizmetiniz için kayıtları **Yönet** dikey penceresini açın ve **bireysel** Kayıtlar sekmesine tıklayın. Bu hızlı başlangıçta kaydettiğiniz cihazın *kayıt kimliği* ' ni seçin ve üstteki **Sil** düğmesine tıklayın. 
 1. Azure portalında sol taraftaki menüden **Tüm kaynaklar**’ı ve ardından IoT hub’ınızı seçin. Hub'ınızın **IoT Cihazları** dikey penceresini açıp bu Hızlı Başlangıç adımlarını kullanarak kaydettiğiniz cihazın *CİHAZ KİMLİĞİ* değerini seçip en üstte bulunan **Sil** düğmesine tıklayın.
 
 
@@ -260,4 +260,4 @@ Cihaz istemci örneği üzerinde çalışmaya ve inceleme yapmaya devam etmeyi p
 Bu öğreticide, Windows makinenizde bir X.509 sanal cihazı oluşturdunuz ve Azure IoT Hub Cihazı Sağlama Hizmeti ve kayıt grupları ile IoT hub'ınıza sağladınız. X.509 cihazınız hakkında daha fazla bilgi edinmek için cihaz kavramlarıyla devam edin. 
 
 > [!div class="nextstepaction"]
-> [IoT Hub Cihazı Sağlama Hizmeti cihaz kavramları](concepts-device.md)
+> [Cihaz sağlama hizmeti kavramlarını IoT Hub](concepts-service.md)

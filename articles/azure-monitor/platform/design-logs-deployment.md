@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551331"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527318"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure İzleyici Günlükleri dağıtımınızı tasarlama
 
-Azure Izleyici, [günlük](data-platform-logs.md) verilerini bir Azure kaynağı olan bir Log Analytics çalışma alanında ve verilerin toplandığı, toplandığı ve yönetim sınırı olarak hizmet verdiği bir kapsayıcı olarak depolar. Azure aboneliğinizde bir veya daha fazla çalışma alanı dağıtabilirken, kuruluşunuzun ihtiyaç duymasıyla ilgili uygun maliyetli, yönetilebilir ve ölçeklenebilir bir dağıtım sunmak için ilk dağıtımınızın kılavuzumuzu takip etmek amacıyla anlamanız gereken birkaç önemli noktalar vardır.
+Azure Izleyici, [günlük](data-platform-logs.md) verilerini bir Azure kaynağı olan bir Log Analytics çalışma alanında ve verilerin toplandığı, toplandığı ve yönetim sınırı olarak hizmet verdiği bir kapsayıcı olarak depolar. Azure aboneliğinizde bir veya daha fazla çalışma alanı dağıtabileceğiniz sürece, kuruluşunuzun ihtiyaçlarına uygun maliyetli, yönetilebilir ve ölçeklenebilir bir dağıtım sunmak için ilk dağıtımınızın kılavuzumuzu takip etmek amacıyla anlamanız gereken birkaç önemli noktalar vardır.
 
 Çalışma alanındaki veriler, her biri farklı veri türlerini depolayan ve verileri oluşturan kaynağı temel alan kendi benzersiz özellik kümesine sahip olan tablolar halinde düzenlenir. Çoğu veri kaynağı, Log Analytics çalışma alanında kendi tablolarına yazar.
 
@@ -131,7 +131,7 @@ Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet vere
 
 Çalışma alanınızda yapılandırılan eşiğin %80 ' inden daha yüksek olan bir çalışma alanına veri gönderdiğinizde, eşik aşılmaya devam edilirken her 6 saatte bir bir olay gönderilir *Operation* . Alınan birim oranı eşiğin üstünde olduğunda, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım hacminin oranı eşiği aşmaya devam ediyorsa veya kısa bir süre sonra bu duruma ulaşmayı bekliyorsanız, bir destek isteği açarak onu ' de artırma isteğinde bulunabilir. 
 
-Çalışma alanınızda Alım hacmi hız sınırına ulaşılması veya ulaşılmaya yönelik bildirim almak için, sıfıra kıyasla sonuç sayısı, 5 dakikalık değerlendirme süresi ve 5 dakikalık sıklık üzerinde uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](alerts-log.md) oluşturun.
+Çalışma alanınızda alımı veya alımı hakkında bildirim almak için, sıfırdan büyük sonuç sayısı, 5 dakikalık değerlendirme süresi ve 5 dakikalık sıklık üzerinde uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](alerts-log.md) oluşturun.
 
 Alma birimi oranı eşiğin %80 ' i oranında ulaştı:
 ```Kusto
@@ -152,9 +152,9 @@ Operation
 
 ![Kaynak bağlamı tasarım örneği](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 
-Bu senaryo, BT kuruluşları aboneliğinizdeki, veri egemenliği veya mevzuata uyumluluğuyla sınırlandırılmamış ya da kaynaklarınızın dağıtıldığı bölgelerle eşleşmesi gereken tek bir çalışma alanı tasarımını ele almaktadır. Kuruluşların güvenlik ve BT yöneticinizin, Azure erişim yönetimiyle geliştirilmiş tümleştirmeden ve daha güvenli erişim denetimiyle yararlanmasını sağlar.
+Bu senaryo, BT kuruluşunuzun aboneliğindeki veri egemenliği veya mevzuata uyumluluğuyla sınırlandırılmamış ya da kaynaklarınızın dağıtıldığı bölgelerle eşleşmesi gereken tek bir çalışma alanı tasarımını ele almaktadır. Kuruluşunuzun güvenliğine ve BT yöneticisine, Azure erişim yönetimi ve daha güvenli erişim denetimi ile geliştirilmiş tümleştirmeden yararlanma olanağı sağlar.
 
-Farklı ekipler tarafından tutulan Application Insights ve VM'ler için Azure İzleyici gibi tüm kaynaklar, izleme çözümleri ve Öngörüler, toplanan günlük verilerini BT kuruluşları merkezi paylaşılan çalışma alanına iletecek şekilde yapılandırılmıştır. Her ekipte bulunan kullanıcılara, erişimi verilen kaynaklar için günlüklere erişim verilir.
+Farklı ekipler tarafından tutulan Application Insights ve VM'ler için Azure İzleyici gibi tüm kaynaklar, izleme çözümleri ve Öngörüler, toplanan günlük verilerini BT kuruluşunun merkezi paylaşılan çalışma alanına iletecek şekilde yapılandırılmıştır. Her ekipte bulunan kullanıcılara, erişimi verilen kaynaklar için günlüklere erişim verilir.
 
 Çalışma alanı mimarinizi dağıttıktan sonra Azure [ilkesi](../../governance/policy/overview.md)ile Azure kaynakları üzerinde bunu zorunlu kılabilirsiniz. Bu, ilke tanımlamak ve Azure kaynaklarınızla uyumluluğu sağlamak için bir yol sağlar, böylece tüm kaynak günlüklerini belirli bir çalışma alanına gönderir. Örneğin, Azure sanal makineler veya sanal makine ölçek kümeleri ile, çalışma alanı uyumluluğunu ve rapor sonuçlarını değerlendiren mevcut ilkeleri kullanabilir veya uyumlu değil olarak düzeltmek için özelleştirebilirsiniz.  
 

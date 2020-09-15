@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 56f9873828e2f93008498beed986827a01872bf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67e33732574d2a6c173675d5adf0a7d1c2050688
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675868"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528185"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Bakım denetimi ve Azure CLı ile güncelleştirmeleri denetleme
 
@@ -37,7 +37,7 @@ Daha sonra kullanmak için çıktıdan yapılandırma KIMLIĞINI kopyalayın.
 
 Kullanarak, `--maintenanceScope host` bakım yapılandırmasının konaktaki güncelleştirmeleri denetlemek için kullanılmasını sağlar.
 
-Aynı ada sahip bir yapılandırma oluşturmaya çalışırsanız, ancak farklı bir konumda hata alırsınız. Yapılandırma adları, aboneliğiniz için benzersiz olmalıdır.
+Aynı ada sahip bir yapılandırma oluşturmaya çalışırsanız, ancak farklı bir konumda hata alırsınız. Yapılandırma adları, kaynak grubunuz için benzersiz olmalıdır.
 
 Kullanarak kullanılabilir bakım yapılandırması için sorgulama yapabilirsiniz `az maintenance configuration list` .
 

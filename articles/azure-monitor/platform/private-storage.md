@@ -1,241 +1,100 @@
 ---
-title: Günlük alımı için müşterinin sahip olduğu depolama hesapları
-description: Azure Izleyici 'de bir Log Analytics çalışma alanına günlük verilerinin alımı için kendi depolama hesabınızı kullanın.
+title: Azure Izleyici 'de müşteri tarafından yönetilen depolama hesaplarını kullanma Log Analytics
+description: Log Analytics senaryolar için kendi depolama hesabınızı kullanın
 ms.subservice: logs
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 05/20/2020
-ms.openlocfilehash: 58d6f98c87e37254e77bcc8dda1cdca6e608cafc
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+author: noakup
+ms.author: noakuper
+ms.date: 09/03/2020
+ms.openlocfilehash: 9d54e6eb84e3269eb95f8d314875474f78536652
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962681"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526434"
 ---
-# <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Izleyici 'de günlük alımı için müşterinin sahip olduğu depolama hesapları
+# <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de müşteri tarafından yönetilen depolama hesaplarını kullanma Log Analytics
 
-Azure Izleyici, [özel Günlükler](data-sources-custom-logs.md) ve bazı [Azure günlükleri](./diagnostics-extension-logs.md)gibi bazı veri türlerinin alma işlemindeki depolama hesaplarını kullanır. Alma işlemi sırasında, Günlükler önce bir depolama hesabına gönderilir ve daha sonra Log Analytics veya Application Insights. Alma sırasında verileriniz üzerinde denetim istiyorsanız, hizmet tarafından yönetilen depolama yerine kendi depolama hesaplarınızı kullanabilirsiniz. Kendi depolama hesabınızı kullanmak, alma sırasında günlüklerin erişim, içerik, şifreleme ve bekletme işlemi üzerinde denetim sahibi olmanızı sağlar. Bu, kendi depolama alanınızı veya KCG 'LERI getir olarak adlandırdık. 
+Log Analytics, Azure Storage 'ı çeşitli senaryolarda kullanır. Bu kullanım genellikle otomatik olarak yönetilir. Ancak, bazı durumlar, müşteri tarafından yönetilen depolama hesabı olarak da adlandırılan kendi depolama hesabınızı sağlamanızı ve yönetmenizi gerektirir. Bu belge, WAD/LAD günlüklerinin, özel bağlantıya özgü senaryoların ve CMK şifrelemenin alımı için müşteri tarafından yönetilen depolamanın kullanımının ayrıntılarını ayrıntılarıyla ifade edecek. 
 
-KCG gerektiren bir senaryo, özel bağlantılar aracılığıyla ağ yalıtımına sahiptir. VNet kullanılırken, ağ yalıtımı genellikle gereksinimdir ve genel internet erişimi sınırlıdır. Bu gibi durumlarda, günlük alma için Azure Izleyici hizmeti depolamaya erişmek tamamen engelleniyor veya hatalı bir uygulama olarak kabul edilir. Bunun yerine, günlüklerin VNet içindeki bir müşterinin sahip olduğu veya kolayca erişilebilen bir depolama hesabı aracılığıyla kullanılması gerekir.
+> [!NOTE]
+> Bu biçimlendirmeye ve içeriğe göre değişiklik olabileceğinden, müşteri tarafından yönetilen depolama 'ya karşıya yükleme Log Analytics içerikler üzerinde bir bağımlılık yapmanızı öneririz.
 
-Başka bir senaryo, müşteri tarafından yönetilen anahtarlarla günlüklerin şifrelenme (CMK). Müşteriler, günlükleri depolayan kümeler üzerinde CMK kullanarak günlüğe kaydedilmiş verileri şifreleyebilir. Aynı anahtar, alma işlemi sırasında günlükleri şifrelemek için de kullanılabilir.
+## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Azure Tanılama uzantısı günlüklerini geri yükleme (WAD/LAD)
+Azure Tanılama uzantısı aracıları (sırasıyla, Windows ve Linux aracıları için WAD ve LAD olarak da bilinir), çeşitli işletim sistemi günlükleri toplar ve bunları müşteri tarafından yönetilen bir depolama hesabında depolar. Daha sonra bu günlükleri gözden geçirmek ve analiz etmek için Log Analytics kullanabilirsiniz.
+Depolama hesabınızdan Azure Tanılama uzantısı günlüklerini toplama, depolama hesabını [Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs#collect-logs-from-azure-storage) kullanarak veya [Storage Insights API](https://docs.microsoft.com/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate)'sini çağırarak depolama alanı veri kaynağı olarak Log Analytics çalışma alanınıza bağlayın.
 
-## <a name="data-types-supported"></a>Desteklenen veri türleri
+Desteklenen veri türleri:
+* Syslog
+* Windows olayları
+* Service Fabric
+* ETW olayları
+* IIS Günlükleri
 
-Bir depolama hesabından alınan veri türleri şunlardır. Bu türlerin alımı hakkında daha fazla bilgi için bkz. [Azure tanılama uzantısından Azure Izleyici günlüklerine veri toplama](./diagnostics-extension-logs.md) .
+## <a name="using-private-links"></a>Özel bağlantıları kullanma
+Azure Izleyici kaynaklarına bağlanmak için özel bağlantılar kullanıldığında, müşteri tarafından yönetilen depolama hesapları bazı kullanım durumlarında gereklidir. Bu tür bir durum, özel günlüklerin veya IIS günlüklerinin alımı olur. Bu veri türleri önce bir ara Azure depolama hesabına Bloblar olarak yüklenir ve ardından bir çalışma alanına alınır. Benzer şekilde, bazı Azure Izleyici çözümleri, Azure Güvenlik Merkezi çözümü tarafından kullanılan Watson döküm dosyaları gibi büyük dosyaları depolamak için depolama hesaplarını kullanabilir. 
 
-| Tür | Tablo bilgileri |
-|:-----|:------------------|
-| IIS günlükleri | Blob: wad-IIS-LogFiles|
-|Windows olay günlükleri | Tablo: WADWindowsEventLogsTable |
-| Syslog | Tablo: LinuxsyslogVer2v0 |
-| Windows ETW günlükleri | Tablo: Wadelenebilir Venttable|
-| Service Fabric | Tablo: WADServiceFabricSystemEventTable <br/> WADServiceFabricReliableActorEventTable<br/> WADServiceFabricReliableServicEventTable |
-| Özel günlükler | yok |
-| Azure Güvenlik Merkezi Watson döküm dosyaları | yok|  
+##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>Müşteri tarafından yönetilen depolama gerektiren özel bağlantı senaryoları
+* Özel günlüklerin ve IIS günlüklerinin alımı
+* ASC çözümünün Watson döküm dosyalarını toplamasına izin verme
 
-## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri 
-Depolama hesabının aşağıdaki gereksinimleri karşılaması gerekir:
+### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>Özel bir bağlantı üzerinden müşteri tarafından yönetilen depolama hesabı kullanma
+##### <a name="workspace-requirements"></a>Çalışma alanı gereksinimleri
+Azure Izleyici 'ye bir özel bağlantı üzerinden bağlanılırken, Log Analytics aracılar yalnızca bir özel bağlantı üzerinden ağınıza bağlı olan çalışma alanlarına Günlükler gönderebilecektir. Bu kural, bir Azure Izleyici özel bağlantı kapsamı (AMPLS) nesnesini doğru bir şekilde yapılandırmanızı, çalışma alanınıza bağlamayı ve ardından AMPLS 'yi ağınıza özel bir bağlantı üzerinden bağlamayı gerektirir. AMPLS yapılandırma yordamı hakkında daha fazla bilgi için bkz. [Azure özel bağlantı kullanarak ağları güvenli bir şekilde Azure izleyici 'ye bağlama](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security). 
+##### <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
+Depolama hesabının özel bağlantısına başarıyla bağlanması için şunları yapmanız gerekir:
+* VNet 'iniz veya eşlenmiş bir ağ üzerinde yer alır ve özel bir bağlantı üzerinden sanal ağınıza bağlı olun. Bu, VNet 'teki aracıların depolama hesabına Günlükler göndermesini sağlar.
+* Bağlandığı çalışma alanıyla aynı bölgede yer alır.
+* Azure Izleyici 'nin depolama hesabına erişmesine izin verin. Yalnızca belirli ağların depolama hesabınıza erişmesine izin vermeyi seçtiyseniz, bu özel duruma de izin vermeniz gerekir: "Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver". Bu, Log Analytics bu depolama hesabına alınan günlükleri okumasına olanak tanır.
+* Çalışma alanınız diğer ağlardan gelen trafiği de işlediğinde, depolama hesabını ilgili ağlardan/Internet 'ten gelen trafiğe izin verecek şekilde yapılandırmanız gerekir.
 
-- VNet 'iniz üzerinde günlükleri depolama alanına yazan kaynaklar için erişilebilir.
-- Bağlandığı çalışma alanıyla aynı bölgede olmalıdır.
-- Azure Izleyici erişimine izin ver-depolama hesabı erişiminizi ağ Seç olarak sınırlandırmayı seçerseniz, bu özel duruma izin verdiğinizden emin olun: *Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin verin*.
+##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>Depolama hesabınızı bir Log Analytics çalışma alanına bağlama
+[Azure CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) veya [REST API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts)aracılığıyla depolama hesabınızı çalışma alanına bağlayabilirsiniz. Uygulanabilir dataSourceType değerleri:
+* CustomLogs: alma sırasında özel Günlükler ve IIS günlükleri için depolamayı kullanmak için.
+* AzureWatson – ASC (Azure Güvenlik Merkezi) çözümü tarafından karşıya yüklenen Watson döküm dosyalarını depolamayı kullanın. Saklama Yönetimi, bağlı bir depolama hesabını değiştirme ve depolama hesabı etkinliğinizi izleme hakkında daha fazla bilgi için bkz. [bağlı depolama hesaplarını yönetme](#managing-linked-storage-accounts). 
 
-## <a name="process-to-configure-customer-owned-storage"></a>Müşteriye ait depolamayı yapılandırma işlemi
-Alma için kendi depolama hesabınızı kullanmanın temel süreci aşağıdaki gibidir:
+## <a name="encrypting-data-with-cmk"></a>CMK ile verileri şifreleme
+Azure depolama, bir depolama hesabındaki bekleyen tüm verileri şifreler. Varsayılan olarak, verileri Microsoft tarafından yönetilen anahtarlarla (MMK) şifreler. Ancak Azure depolama, Azure Anahtar Kasası 'ndan, depolama verilerinizi şifrelemek için müşteri tarafından yönetilen bir anahtar (CMK) kullanmanıza olanak tanır. Kendi anahtarlarınızı Azure Key Vault içeri aktarabilir ya da anahtar oluşturmak için Azure Key Vault API 'Lerini kullanabilirsiniz.
+##### <a name="cmk-scenarios-that-require-a-customer-managed-storage-account"></a>Müşteri tarafından yönetilen bir depolama hesabı gerektiren CMK senaryoları
+* CMK ile günlük uyarı sorgularını şifreleme
+* Kaydedilen sorguları CMK ile şifreleme
 
-1. Bir depolama hesabı oluşturun veya var olan bir hesabı seçin.
-2. Depolama hesabını bir Log Analytics çalışma alanına bağlayın.
-3. Yük ve bekletmeyi inceleyerek, beklendiği gibi çalıştığından emin olmak için depolamayı yönetin.
+### <a name="how-to-apply-cmk-to-customer-managed-storage-accounts"></a>CMK 'yi müşteri tarafından yönetilen depolama hesaplarına uygulama
+##### <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
+Depolama hesabı ve Anahtar Kasası aynı bölgede olmalıdır, ancak farklı aboneliklerde olabilir. Azure depolama şifreleme ve anahtar yönetimi hakkında daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
 
-Bağlantıların oluşturulması ve kaldırılması için kullanılabilecek tek yöntem REST API. Her işlem için gerekli olan belirli API isteği hakkındaki ayrıntılar aşağıdaki bölümlerde verilmiştir.
+##### <a name="apply-cmk-to-your-storage-accounts"></a>Depolama hesaplarınıza CMK uygulama
+Azure depolama hesabınızı Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanacak şekilde yapılandırmak için [Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal?toc=/azure/storage/blobs/toc.json), [PowerShell](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-powershell?toc=/azure/storage/blobs/toc.json) veya [CLI](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-cli?toc=/azure/storage/blobs/toc.json)kullanın. 
 
-## <a name="command-line-and-rest-api"></a>Komut satırı ve REST API
+## <a name="managing-linked-storage-accounts"></a>Bağlı depolama hesaplarını yönetme
 
-### <a name="command-line"></a>Komut satırı
-Bağlı depolama hesapları oluşturmak ve yönetmek için [az Monitor Log Analytics Workspace Linked-Storage](/cli/azure/monitor/log-analytics/workspace/linked-storage)' ı kullanın. Bu komut, depolama hesaplarının bir çalışma alanından bağlanıp bağlantısını kesebilir ve bağlı depolama hesaplarını listeleyebilir.
+Depolama hesaplarını çalışma alanınıza bağlamak veya bağlantısını kaldırmak için [Azure CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) veya [REST API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts)kullanın.
 
-### <a name="request-and-cli-values"></a>İstek ve CLı değerleri
+##### <a name="create-or-modify-a-link"></a>Bağlantı oluşturma veya değiştirme
+Bir depolama hesabını bir çalışma alanına bağladığınızda, Log Analytics hizmetin sahip olduğu depolama hesabı yerine onu kullanmaya başlayacaktır. Şunları yapabilirsiniz 
+* Günlüklerin yükünü aralarında yaymak için birden fazla depolama hesabı kaydetme
+* Birden çok çalışma alanı için aynı depolama hesabını yeniden kullanma
 
-#### <a name="datasourcetype"></a>dataSourceType 
+##### <a name="unlink-a-storage-account"></a>Depolama hesabının bağlantısını kaldırma
+Bir depolama hesabı kullanmayı durdurmak için, depolamanın çalışma alanıyla bağlantısını kaldırın. Tüm depolama hesaplarının bir çalışma alanından bağlantısı kesmek, Log Analytics hizmet tarafından yönetilen depolama hesaplarına güvenmeye çalışacağı anlamına gelir. Ağınızın internet erişimi sınırlı ise, bu depolar kullanılamayabilir ve depolamaya bağlı olan herhangi bir senaryo başarısız olur.
 
-- AzureWatson-bu değeri Azure Güvenlik Merkezi Azure Watson döküm dosyaları için kullanın.
-- CustomLogs – bu değeri aşağıdaki veri türleri için kullanın:
-  - Özel günlükler
-  - IIS Günlükleri
-  - Olaylar (Windows)
-  - Syslog (Linux)
-  - ETW günlükleri
-  - Service Fabric olaylar
-  - Değerlendirme verileri  
+##### <a name="replace-a-storage-account"></a>Bir depolama hesabını değiştirme
+Alma işlemi için kullanılan bir depolama hesabını değiştirmek için
+1.  **Yeni bir depolama hesabının bağlantısını oluşturun.** Günlüğe kaydetme aracıları güncelleştirilmiş yapılandırmayı alacak ve yeni depolama alanına veri göndermeye başlayacak. İşlem birkaç dakika sürebilir.
+2.  **Ardından, aracıların kaldırılan hesaba yazmayı durdurması için eski depolama hesabının bağlantısını kaldırın.** Alma işlemi, tüm içeri alınana kadar bu hesaptan veri okumayı sürdürür. Tüm Günlükler alınana kadar depolama hesabını silmeyin.
 
-#### <a name="storage_account_resource_id"></a>storage_account_resource_id
-Bu değer aşağıdaki yapıyı kullanır:
+### <a name="maintaining-storage-accounts"></a>Depolama hesaplarını sürdürme
+##### <a name="manage-log-retention"></a>Günlük bekletmesini yönetme
+Kendi depolama hesabınızı kullanırken, bekletme size aittir. Diğer bir deyişle, Log Analytics özel depolama ortamınızda depolanan günlükleri silmez. Bunun yerine, tercihlerinize göre yükü işlemek için bir ilke oluşturmanız gerekir.
 
-```
-subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName1}
-```
-
-
-## <a name="get-linked-storage-accounts"></a>Bağlı depolama hesapları al
-
-### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>Tüm veri kaynağı türleri için bağlantılı depolama hesapları al
-
-#### <a name="api-request"></a>API isteği
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Yanıt
-
-```json
-{
-    [
-        {
-            "properties":
-            {
-                "dataSourceType": "CustomLogs",
-                "storageAccountIds  ": 
-                [  
-                    "<storage_account_resource_id_1>",
-                    "<storage_account_resource_id_2>"
-                ],
-            },
-            "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-            "name": "CustomLogs",
-            "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-        },
-        {
-            "properties":
-            {
-                "dataSourceType": " AzureWatson "
-                "storageAccountIds  ": 
-                [  
-                    "<storage_account_resource_id_3>",
-                    "<storage_account_resource_id_4>"
-                ],
-            },
-            "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/AzureWatson",
-            "name": "AzureWatson",
-            "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-        }
-    ]
-}
-```
-
-
-### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Belirli bir veri kaynağı türü için bağlantılı depolama hesapları al
-
-#### <a name="api-request"></a>API isteği
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Yanıt 
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs",
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-    "name": "CustomLogs",
-    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-## <a name="create-or-modify-a-link"></a>Bağlantı oluşturma veya değiştirme
-
-Bir depolama hesabını bir çalışma alanına bağladığınızda, Log Analytics hizmetin sahip olduğu depolama hesabı yerine onu kullanmaya başlayacaktır. Aynı anda bir depolama hesapları listesi kaydedebilir ve birden çok çalışma alanı için aynı depolama hesabını kullanabilirsiniz.
-
-Çalışma alanınız hem VNet kaynaklarını hem de bir sanal ağın dışındaki kaynakları işlediğinde, internet 'ten gelen trafiği reddetmediğinden emin olmanız gerekir. Depolama alanınız, çalışma alanınız ile aynı ayarlara sahip olmalıdır ve sanal ağınızın dışındaki kaynaklar için kullanılabilir hale getirilir. 
-
-### <a name="api-request"></a>API isteği
-
-```
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-### <a name="payload"></a>Te
-
-```json
-{
-    "properties":
-    {
-        "storageAccountIds  " : 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    }
-}
-```
-
-### <a name="response"></a>Yanıt
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs"
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-"id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-"name": "CustomLogs",
-"type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-
-## <a name="unlink-a-storage-account"></a>Depolama hesabının bağlantısını kaldırma
-Alma işlemi için bir depolama hesabı kullanmayı durdurmayı veya kullandığınız çalışma alanını değiştirmeyi seçerseniz, depolama alanının bağlantısını çalışma alanından kaldırmanız gerekir.
-
-Tüm depolama hesaplarının bir çalışma alanından bağlantısı kesmek, alma, hizmet tarafından yönetilen depolama hesaplarına güvenmeye çalışacağı anlamına gelir. Aracılarınız internet 'e sınırlı erişimi olan bir VNet üzerinde çalışıyorsa, alma işlemi başarısız olması beklenir. Çalışma alanının, izlenen kaynaklarınızdan erişilebilen bağlı bir depolama hesabı olması gerekir.
-
-Bir depolama hesabını silmeden önce, içerdiği tüm verilerin çalışma alanına alınmış olduğundan emin olmanız gerekir. Bir önlem olarak, alternatif bir depolama alanını bağlantıladıktan sonra depolama hesabınızı kullanılabilir durumda tutun. Yalnızca tüm içeriği alındıktan sonra silin ve yeni bağlanan depolama hesabına yeni veri yazıldığını görebilirsiniz.
-
-
-### <a name="api-request"></a>API isteği
-```
-DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-## <a name="replace-a-storage-account"></a>Bir depolama hesabını değiştirme
-
-Alma işlemi için kullanılan bir depolama hesabını değiştirmek için, önce yeni depolama hesabı için bir bağlantı oluşturun. Günlüğe kaydetme aracıları güncelleştirilmiş yapılandırmayı alacak ve yeni depolama alanına veri göndermeye başlayacak.
-
-Daha sonra aracıların kaldırılan hesaba yazmayı durdurması için eski depolama hesabının bağlantısını kaldırın. Alma işlemi, tüm içeri alınana kadar bu hesaptan veri okumayı sürdürür. Tüm Günlükler alınana kadar depolama hesabını silmeyin.
-
-Aracı yapılandırması birkaç dakika sonra yenilenir ve yeni depolama alanına geçiş yapar.
-
-## <a name="manage-storage-account"></a>Depolama hesabını Yönet
-
-### <a name="load"></a>Yükleme
-
-Depolama hesapları, istek azaltma isteklerini başlatmaya başlamadan önce belirli bir okuma ve yazma isteği yükünü işleyebilir. Azaltma, günlükleri almak için gereken süreyi etkiler ve kayıp verilere neden olabilir. Depolama alanınızı aşırı yüklenmişse, ek depolama hesaplarını kaydedin ve yükü aralarında yayın. 
+##### <a name="consider-load"></a>Yüklemeyi düşünün
+Depolama hesapları, istek azaltma isteklerini başlatmadan önce belirli bir okuma ve yazma isteği yükünü işleyebilir (daha fazla ayrıntı için bkz. [BLOB depolama Için ölçeklenebilirlik ve performans hedefleri](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account) ). Azaltma, günlüklerin alınması için gereken süreyi etkiler. Depolama Hesabınız aşırı yüklenmişse, yükü aralarında dağıtmak için ek bir depolama hesabı kaydedin. Depolama hesabınızın kapasitesini izlemek için [Azure Portal öngörülerini]( https://docs.microsoft.com/azure/azure-monitor/insights/storage-insights-overview)gözden geçirin.
 
 ### <a name="related-charges"></a>İlgili ücretler
-
-Depolama hesapları, depolanan verilerin hacmine, depolama türlerine ve artıklık türüne göre ücretlendirilir. Ayrıntılar için bkz. [Blok Blobu fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/blobs/) ve [Tablo Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/tables/).
-
-Çalışma alanınızın kayıtlı depolama hesabı başka bir bölgedeyse, bu [bant genişliği fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/bandwidth/)göre çıkış için ücretlendirilirsiniz.
-
+Depolama hesapları, depolanan verilerin hacmi, depolama türü ve artıklık türü tarafından ücretlendirilir. Ayrıntılar için bkz. [Blok Blobu fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/blobs) ve [Tablo Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/tables).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Özel bir bağlantı ayarlama hakkında daha fazla bilgi için bkz. [Azure özel bağlantı kullanarak ağları güvenli bir şekilde Azure izleyici 'ye bağlama](private-link-security.md)
-
+- [Ağları Azure izleyici 'ye güvenli bir şekilde bağlamak Için Azure özel bağlantısını kullanma](private-link-security.md) hakkında bilgi edinin
+- [Azure izleyici müşterinin yönettiği anahtarlar](customer-managed-keys.md) hakkında bilgi edinin

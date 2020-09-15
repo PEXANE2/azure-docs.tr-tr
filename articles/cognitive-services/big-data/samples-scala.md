@@ -1,6 +1,6 @@
 ---
 title: Büyük veri Scala örnekleri için bilişsel hizmetler
-description: Büyük veriler için MMLSpark işlem hattınızı çalıştırmak üzere Azure Databricks için Python 'da bilişsel hizmetler örneklerini deneyin.
+description: Büyük verilere ilişkin MMLSpark işlem hattınızı çalıştırmak için bilişsel hizmetler 'i Azure Databricks kullanın.
 services: cognitive-services
 author: mhamilton723
 manager: nitinme
@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 098b59b8de0d0d7e5c3929ce084276350c04810a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189827"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524972"
 ---
 # <a name="quick-examples"></a>Hızlı örnekler
 
@@ -27,7 +27,7 @@ Aşağıdaki kod parçacıkları çalıştırılmaya hazırlanıyor ve Spark üz
 - Metin tabanlı döküm dosyalarını ayıklamak için konuşmayı metne dönüştürme ses dosyaları.
 - Anomali algılayıcısı-bir zaman serisi verileri içindeki aykırlıkları algılayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Azure Databricks ve [bilişsel](getting-started.md) hizmetler ortamınızı ayarlamaya Başlarken bölümündeki adımları izleyin. Bu öğretici, MMLSpark 'ın nasıl yükleneceğini ve Databricks 'te Spark kümenizin nasıl oluşturulacağını içerir.
 1. Azure Databricks yeni bir not defteri oluşturduktan sonra, aşağıdaki **paylaşılan kodu** kopyalayın ve Not defterinize yeni bir hücreye yapıştırın.

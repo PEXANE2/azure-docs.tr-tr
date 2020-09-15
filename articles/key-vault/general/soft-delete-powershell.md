@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 251159c4fcf27ceb4d8b0dddeecbe501c7346e9e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 05ff5d2f7ff87d2ce58f135330487f746cc5c1c7
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073242"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528389"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Key Vault geçici silmeyi PowerShell ile kullanma
 
@@ -47,7 +47,7 @@ Key Vault işlemler, rol tabanlı erişim denetimi (RBAC) izinleri aracılığı
 |Kurtar|Silinen bir anahtar kasasını geri yükler.|Microsoft. Keykasası/Vaults/yazma|
 |Temizle|Silinen bir anahtar kasasını ve tüm içeriğini kalıcı olarak kaldırır.|Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem|
 
-İzinler ve erişim denetimi hakkında daha fazla bilgi için bkz. [anahtar kasanızın güvenliğini sağlama](secure-your-key-vault.md)).
+İzinler ve erişim denetimi hakkında daha fazla bilgi için bkz. [anahtar kasanızın güvenliğini sağlama](secure-your-key-vault.md).
 
 ## <a name="enabling-soft-delete"></a>Geçici silme etkinleştiriliyor
 
@@ -282,5 +282,5 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ## <a name="other-resources"></a>Diğer kaynaklar
 
-- Key Vault geçici silme özelliğine genel bakış için, bkz. [Azure Key Vault geçici silme genel bakış](soft-delete-overview.md)).
-- Azure Key Vault kullanımı için genel bir bakış için bkz. [Azure Key Vault nedir?](overview.md)).
+- Key Vault geçici silme özelliğine genel bakış için bkz. [Azure Key Vault geçici silme genel bakış](soft-delete-overview.md).
+- Azure Key Vault kullanımı için genel bir bakış için bkz. [Azure Key Vault nedir?](overview.md).

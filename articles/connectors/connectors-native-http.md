@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 9ed490dba1547db6ec3c0ddcff38aa3e0c393fcf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226438"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526764"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps'ten HTTP veya HTTPS üzerinden hizmet uç noktalarını çağırma
 
@@ -28,7 +28,7 @@ Bu makalede, mantıksal uygulamanızın diğer hizmetlere ve sistemlere giden ç
 
 Mantıksal uygulamanızdan, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), önceden imzalanmış sertifikalar veya [Azure Active Directory açık kimlik doğrulama (Azure AD OAuth)](../active-directory/develop/index.yml)gibi güvenli yuva katmanı bilinen giden çağrılar için şifreleme, güvenlik ve yetkilendirme hakkında bilgi için bkz. [diğer hizmet ve sistemlere giden çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -104,7 +104,7 @@ Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapa
 
 Bu bilgileri döndüren bir HTTP tetikleyicisinden veya eylemden çıktılar hakkında daha fazla bilgi bulabilirsiniz:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 |----------|------|-------------|
 | `headers` | JSON nesnesi | İstekten gelen üstbilgiler |
 | `body` | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
@@ -167,6 +167,14 @@ Aşağıda, temel alınan iş akışı tanımında HTTP eyleminin JSON tanımın
    "type": "Http"
 }
 ```
+
+## <a name="content-with-applicationx-www-form-urlencoded-type"></a>Application/x-www-form-urlencoded Type ile içerik
+
+Bir HTTP isteğinin gövdesinde form-urlencoded verileri sağlamak için, verilerin içerik türüne sahip olduğunu belirtmeniz gerekir `application/x-www-form-urlencoded` . HTTP tetikleyicisi veya eyleminde `content-type` üstbilgiyi ekleyin. Üst bilgi değerini olarak ayarlayın `application/x-www-form-urlencoded` .
+
+Örneğin, bir Web sitesine HTTP POST isteği gönderen ve türü destekleyen bir mantıksal uygulamanız olduğunu varsayalım `application/x-www-form-urlencoded` . Bu eylemin şu şekilde görünebileceğini aşağıda görebilirsiniz:
+
+![' Content-Type ' üst bilgisi ' Application/x-www-form-urlencoded ' olarak ayarlanmış bir HTTP isteği gösteren ekran görüntüsü](./media/connectors-native-http/http-action-urlencoded.png)
 
 <a name="asynchronous-pattern"></a>
 
@@ -263,4 +271,3 @@ Tetikleyici ve eylem parametreleri hakkında daha fazla bilgi için aşağıdaki
 
 * [Diğer hizmetlere ve sistemlere giden çağrılar için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
 * [Logic Apps için bağlayıcılar](../connectors/apis-list.md)
-

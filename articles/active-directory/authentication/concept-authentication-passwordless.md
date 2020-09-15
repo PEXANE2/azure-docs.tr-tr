@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 144198a708b8e3cfcb5b3c6936d7fc51cadf4a13
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: fdac9562ed9a83f49e074e7abd790e8e2819d6aa
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084337"
+ms.locfileid: "90527029"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
@@ -82,11 +82,15 @@ Parolasız oturum açma 'yı kullanmaya başlamak için aşağıdaki nasıl yap�
 
 ## <a name="fido2-security-keys"></a>FIDO2 güvenlik anahtarları
 
+FIDO (hızlı kimlik çevrimiçi) Birliği, açık kimlik doğrulama standartlarını yükseltmenize ve parolaların Kullanıcı kimliğini bir kimlik doğrulama formu olarak azaltmaya yardımcı olur. FIDO2, Web kimlik doğrulaması (WebAuthn) standardını içeren en son standarttır.
+
 FIDO2 güvenlik anahtarları, herhangi bir form faktöründe yer alan unphishable standartlara dayalı, passwordless kimlik doğrulama yöntemidir. Hızlı kimlik çevrimiçi (FIDO), passwordless kimlik doğrulaması için açık bir standarttır. FIDO, kullanıcıların ve kuruluşların, bir dış güvenlik anahtarı veya bir cihaza yerleşik bir platform anahtarı kullanarak bir Kullanıcı adı veya parola olmadan kendi kaynaklarında oturum açmasını sağlar.
 
-Çalışanlar, Azure AD 'de veya karma Azure AD 'ye katılmış Windows 10 cihazlarında oturum açmak ve bulutta ve şirket içi kaynaklarda çoklu oturum açmayı sağlamak için güvenlik anahtarlarını kullanabilir. Kullanıcılar, desteklenen tarayıcılarda da oturum açabilirler. FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numarası ikinci bir faktör olarak kullanabilecek senaryolar veya çalışanlar olan kuruluşlar için harika bir seçenektir.
+Kullanıcılar, kimlik doğrulama yöntemi olarak oturum açma arabiriminde bir FIDO2 güvenlik anahtarı kaydedebilir ve seçebilir. Bu FIDO2 güvenlik anahtarları genellikle USB cihazlarıdır, ancak Bluetooth veya NFC de kullanabilir. Kimlik doğrulamasını işleyen bir donanım aygıtıyla, açığa çıkarılan veya tahmin edilecek bir parola olmadığından hesabın güvenliği artar.
 
-Azure AD 'de FIDO2 güvenlik anahtarları ile oturum açma Şu anda önizlemededir.
+FIDO2 güvenlik anahtarları, Azure AD 'de veya hibrit Azure AD 'ye katılmış Windows 10 cihazlarında oturum açmak ve bulutta ve şirket içi kaynaklarda çoklu oturum açma sağlamak için kullanılabilir. Kullanıcılar, desteklenen tarayıcılarda da oturum açabilirler. FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numarası ikinci bir faktör olarak kullanabilecek senaryolar veya çalışanlar olan kuruluşlar için harika bir seçenektir.
+
+Azure AD 'de FIDO2 güvenlik anahtarları ile oturum açma Şu anda önizlemededir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Bir güvenlik anahtarıyla Microsoft Edge 'de oturum açın](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -141,7 +145,6 @@ FIDO2 güvenlik anahtarlarını kullanmaya başlamak için aşağıdaki nasıl y
 > [!div class="nextstepaction"]
 > [FIDO2 güvenlik anahtarlarını kullanarak passwordless imzalamayı etkinleştir](howto-authentication-passwordless-security-key.md)
 
-
 ## <a name="what-scenarios-work-with-the-preview"></a>Önizlemele hangi senaryolar çalışıyor?
 
 Azure AD parolasız oturum açma özellikleri şu anda önizleme aşamasındadır. Aşağıdaki noktalara dikkat edilmelidir:
@@ -161,7 +164,7 @@ Microsoft passwordless teknolojisini seçerken göz önünde bulundurmanız gere
 
 ||**İş İçin Windows Hello**|**Microsoft Authenticator uygulamayla passwordless oturum açma**|**FIDO2 güvenlik anahtarları**|
 |:-|:-|:-|:-|
-|**Önkoşul**| Windows 10, sürüm 1809 veya üzeri<br>Azure Active Directory| Microsoft Authenticator uygulaması<br>Telefon (Android 6,0 veya üzeri çalıştıran iOS ve Android cihazları.)|Windows 10, sürüm 1809 veya üzeri<br>Azure Active Directory|
+|**Önkoşul**| Windows 10, sürüm 1809 veya üzeri<br>Azure Active Directory| Microsoft Authenticator uygulaması<br>Telefon (Android 6,0 veya üzeri çalıştıran iOS ve Android cihazları.)|Windows 10, sürüm 1903 veya üzeri<br>Azure Active Directory|
 |**Mod**|Platform|Yazılım|Donanım|
 |**Sistemler ve cihazlar**|Yerleşik Güvenilir Platform Modülü bılgısayar (TPM)<br>PIN ve Biyometri tanıma |Telefonda PIN ve Biyometri tanıma|Microsoft uyumlu FIDO2 güvenlik cihazları|
 |**Kullanıcı deneyimi**|Windows cihazlarıyla bir PIN veya biyometrik tanıma (yüz, Iris veya parmak izi) kullanarak oturum açın.<br>Windows Hello kimlik doğrulaması cihaza bağlıdır; kullanıcının şirket kaynaklarına erişmek için hem cihaza hem de PIN veya biyometri faktörü gibi bir oturum açma bileşenine ihtiyacı vardır.|Parmak izi taraması, yüz veya Iris tanıma veya PIN ile cep telefonu kullanarak oturum açın.<br>Kullanıcılar, PC veya cep telefonlarından iş veya kişisel hesap için oturum açabilirler.|FIDO2 güvenlik cihazını (biyometri, PIN ve NFC) kullanarak oturum açın<br>Kullanıcı, cihaza, USB güvenlik anahtarları ve NFC 'nin etkinleştirildiği akıllı kartlar, anahtarlar veya wearables gibi cihazları kullanarak kuruluş denetimlerini ve kimlik doğrulamasını temel alarak cihaz erişimi sağlayabilir.|

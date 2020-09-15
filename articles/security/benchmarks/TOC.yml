@@ -2,11 +2,37 @@
   href: index.yml
 - name: Giriş
   href: introduction.md
-- name: Güvenlik Denetimleri
+- name: Güvenlik Denetimleri (v2)
   expanded: true
   items:
     - name: Azure güvenlik denetimlerine genel bakış
       href: overview.md
+    - name: Ağ güvenliği
+      href: security-controls-v2-network-security.md
+    - name: Kimlik yönetimi
+      href: security-controls-v2-identity-management.md
+    - name: Ayrıcalıklı erişim
+      href: security-controls-v2-privileged-access.md
+    - name: Veri koruma
+      href: security-controls-v2-data-protection.md
+    - name: Varlık yönetimi
+      href: security-controls-v2-asset-management.md
+    - name: Günlüğe kaydetme ve tehdit algılama
+      href: security-controls-v2-logging-threat-detection.md
+    - name: Olay yanıtı
+      href: security-controls-v2-incident-response.md
+    - name: Duruş ve güvenlik açığı yönetimi
+      href: security-controls-v2-posture-vulnerability-management.md
+    - name: Uç nokta güvenliği
+      href: security-controls-v2-endpoint-security.md
+    - name: Yedekleme ve kurtarma
+      href: security-controls-v2-backup-recovery.md
+    - name: İdare ve Strateji
+      href: security-controls-v2-governance-strategy.md
+- name: Güvenlik Denetimleri (v1)
+  items:
+    - name: Azure güvenlik denetimlerine genel bakış (v1)
+      href: overview-v1.md
     - name: Ağ güvenliği
       href: security-control-network-security.md
     - name: Günlüğe kaydetme ve izleme

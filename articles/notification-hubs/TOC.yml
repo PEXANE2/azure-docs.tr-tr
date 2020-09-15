@@ -113,7 +113,7 @@
       href: notification-hubs-send-push-notifications-scheduled.md
     - name: Azure PowerShell’i kullanarak bildirim hub’larını dağıtma ve yönetme
       href: notification-hubs-deploy-and-manage-powershell.md
-    - name: Kullanıcılara güvenli anında iletme bildirimleri gönderme
+    - name: Kullanıcılara güvenli bildirimler gönderme
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
     - name: Kayıtları toplu halde dışarı ve içeri aktarma
       href: export-modify-registrations-bulk.md

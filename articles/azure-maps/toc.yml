@@ -33,6 +33,14 @@
           href: tutorial-ev-routing.md
         - name: Azure Notebooks kullanarak hava durumu verilerini analiz etme (Python)
           href: weather-service-tutorial.md
+    - name: Bing Haritalar’dan geçiş
+      items:
+        - name: Bing Haritalar’dan geçiş
+          href: migrate-from-bing-maps.md
+        - name: Web uygulamasını geçirme
+          href: migrate-from-bing-maps-web-app.md
+        - name: Web hizmetini geçirme
+          href: migrate-from-bing-maps-web-services.md
     - name: Google Haritalar'dan geçiş yapma
       items:
         - name: Google Haritalar'dan geçiş yapma

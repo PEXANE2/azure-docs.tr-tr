@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: 676d287969933d4815260f040b164753ec5803e1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: f66eaaa3be0b300f6a0aa68bd43a2c336f4b4d23
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754880"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526638"
 ---
 # <a name="what-is-azure-hdinsight"></a>Azure HDInsight nedir?
 
@@ -27,7 +27,7 @@ HDInsight üzerindeki kullanılabilir Hadoop teknolojisi yığını bileşenleri
 
 ## <a name="what-is-big-data"></a>Büyük veri nedir?
 
-Hacmi gittikçe artan büyük veriler hiç olmadığı kadar yüksek hızlarda ve yüksek çeşitlilikteki biçimlerde toplanmaktadır. Geçmiş tarihli (depolanmış anlamına gelir) veya gerçek zamanlı (kaynaktan akışlı anlamına gelir) olabilir. Büyük veriler için en yaygın kullanım örnekleri hakkında bilgi edinmek için bkz. [HDInsight kullanma senaryoları](#scenarios-for-using-hdinsight).
+Hacmi gittikçe artan büyük veriler hiç olmadığı kadar yüksek hızlarda ve yüksek çeşitlilikteki biçimlerde toplanmaktadır. Bu veriler geçmiş (depolanmış) veya gerçek zamanlı (kaynaktan aktarılan) olabilir. Büyük veriler için en yaygın kullanım örnekleri hakkında bilgi edinmek için bkz. [HDInsight kullanma senaryoları](#scenarios-for-using-hdinsight).
 
 ## <a name="why-should-i-use-azure-hdinsight"></a>Neden Azure HDInsight kullanmalıyım?
 
@@ -128,6 +128,16 @@ Bilinen iş zekası (BI) araçları, Power Query eklentisini veya Microsoft Hive
 * [Excel 'i Power Query Apache Hadoop bağlama](./hadoop/apache-hadoop-connect-excel-power-query.md) (Windows gerektirir)
 
 * [Excel 'i Microsoft Hive ODBC Sürücüsü Apache Hadoop bağlama](./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) (Windows gerektirir)
+
+
+## <a name="in-region-data-residency"></a>Bölge içi veri yerleşimi 
+
+Spark, Hadoop, LLAP, fırtınası ve MLService müşteri verilerini depolamaz, bu nedenle [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler dahil, bu hizmetler otomatik olarak bölge içi veri yerleşimi gereksinimlerini karşılar. 
+
+Kafka ve HBase, müşteri verilerini depolar. Bu veriler, tek bir bölgede Kafka ve HBase tarafından otomatik olarak depolanır. bu nedenle, bu hizmet, [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler de dahil olmak üzere bölge içi veri fazlalığını karşılar. 
+
+
+Tanıdık iş zekası (BI) araçları, Power Query eklentisi ya da Microsoft Hive ODBC Sürücüsü kullanarak HDInsight ile tümleştirilmiş verileri alır, çözümler ve raporlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

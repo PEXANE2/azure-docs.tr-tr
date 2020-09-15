@@ -392,14 +392,20 @@
                   href: ./spark/apache-spark-analyze-application-insight-logs.md
         - name: Yönetme
           items:
+            - name: Bağımlılıkları yönetme
+              items:
+                - name: Spark uygulama bağımlılıklarını yönetme
+                  href: ./spark/apache-spark-manage-dependencies.md
+                - name: Jar bağımlılıklarını güvenli şekilde yönetme
+                  href: ./spark/safely-manage-jar-dependency.md
+                - name: Python ortamını güvenli şekilde yönetme
+                  href: ./spark/apache-spark-python-package-installation.md
             - name: Küme kaynaklarını yönetme
               href: ./spark/apache-spark-resource-manager.md
             - name: Genişletilmiş Geçmiş Sunucusu kullanarak Apache Spark uygulamalarını yönetme
               href: ./spark/apache-azure-spark-history-server.md
             - name: GÇ Önbellek ile önbelleğe almayı etkinleştirme
               href: ./spark/apache-spark-improve-performance-iocache.md
-            - name: Jar bağımlılıklarını yönetme
-              href: ./spark/manage-jar-dependency.md
             - name: Not defterlerini Apache Spark ile kullanma
               items:
                 - name: Yerel Jupyter not defterini kullanma
@@ -408,8 +414,6 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: Jupyter’de cell magic komutları aracılığıyla dış paketleri kullanma
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
-                  href: ./spark/apache-spark-python-package-installation.md
                 - name: Apache Zeppelin not defterlerini kullanma
                   href: ./spark/apache-spark-zeppelin-notebook.md
             - name: Diğer Azure hizmetleri ile kullanma

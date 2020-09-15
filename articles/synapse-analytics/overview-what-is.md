@@ -6,15 +6,15 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 04/15/2020
+ms.date: 09/12/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: b93814c69a08dd757a390232804a00b2777bc20e
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c4338152579170bf809577262992f0db9a1a95ff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052009"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524955"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Azure SYNAPSE Analytics (çalışma alanları önizlemesi) nedir?
 
@@ -22,13 +22,7 @@ ms.locfileid: "90052009"
 
 Kurumsal analizler, ham, iyileştirilmiş veya yüksek düzeyde bir şekilde, her türlü veri üzerinde büyük ölçekli bir ölçek çalışmalıdır. Bu gerekli kuruluşlar, Spark ve SQL gibi büyük verileri ve veri ambarı teknolojilerini, ilişkisel depolardaki ve veri laklarındaki veriler arasında çalışan zengin veri işlem hatlarına birleştirmek için gereklidir. Bunun gibi çözümlerin oluşturulması, güvende olması ve korunması zordur. Karmaşıklık enteprises gereksinimini ortadan kaldırın.
 
-**Azure SYNAPSE** , veri ambarlarında ve büyük veri analizi sistemlerinde öngörülere yönelik Zamanı hızlandıran tümleşik bir analiz hizmetidir. Azure SYNAPSE, çekirdek veri ambarı 'nda kullanılan **SQL** teknolojilerinden en iyi şekilde, büyük veriler Için kullanılan **Spark** teknolojilerine ve veri TÜMLEŞTIRME ve etl/ **ELT için işlem** hatlarına bir araya getirir.
-
-Azure SYNAPSE, yönetim, izleme, kodlama ve güvenlik için tek bir yer sağlayan Web tabanlı bir **Studio** deneyimi sağlar.
-
-Azure SYNAPSE, bir kuruluşun en kolay ve en hızlı yolunu, herhangi bir boyutta tüm veriler hakkında bilgi toplamak için en kolay ve en hızlı yolu sağlar. Veri mühendislerinin, Iş zekası sağlamak üzere uçtan uca çalışan analiz çözümleri oluşturmasına olanak tanıyan **Power BI** ile tümleşir.
-
-Ayrıca, Azure SYNAPSE, bu derleme ve gelişmiş analizler ile makine öğrenimi sayesinde **AzureML**için yerleşik destek sağlar.
+**Azure SYNAPSE** , veri ambarlarında ve büyük veri analizi sistemlerinde öngörülere yönelik Zamanı hızlandıran tümleşik bir analiz hizmetidir. Azure SYNAPSE, kurumsal veri ambarlarında kullanılan **SQL** teknolojilerinin en iyi özelliklerini, büyük veriler Için kullanılan **Spark** teknolojilerini ve veri TÜMLEŞTIRME ve etl/ELT için işlem **hatlarını** kullanır. SYNAPSE, yönetim, izleme, kodlama ve güvenlik için tek bir yer sağlayan Web tabanlı bir **Studio 'ya** sahiptir. SYNAPSE, **PowerBI**, **Cosmosdb**ve **AzureML**gibi diğer Azure hizmetleriyle ayrıntılı tümleştirmeyi Özellikler.
 
 ## <a name="key-features--benefits"></a>Önemli özellikler & avantajları
 

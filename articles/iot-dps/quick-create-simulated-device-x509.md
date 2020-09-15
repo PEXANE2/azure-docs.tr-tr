@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 882d62c088fa51153ca496231beccd4bfd5af0cb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6cd606a8373e8abd4c58151cdb0b5f1f2b689535
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190375"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526689"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Hızlı başlangıç: Azure IoT C SDK'sını kullanarak simülasyon X.509 cihazı sağlama
 
@@ -21,7 +21,7 @@ ms.locfileid: "82190375"
 
 Bu hızlı başlangıçta bir Windows geliştirme makinesi üzerinde bir X.509 cihazı simülatörü oluşturmayı ve çalıştırmayı öğreneceksiniz. Cihaz Sağlama Hizmeti örneği ile bir kayıt kullanarak bir IoT hub'ına atanacak bu simülasyon cihazını yapılandıracaksınız. Cihaz için önyükleme sırası simülasyonu yapmak için [Azure IoT C SDK'sından](https://github.com/Azure/azure-iot-sdk-c) alınan örnek kod kullanılacaktır. Cihaz, sağlama hizmeti ile kayıt durumuna göre tanınacak ve IoT hub'ına atanacaktır.
 
-Otomatik sağlama işlemini bilmiyorsanız, [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md) gözden geçirin. Ayrıca, bu hızlı başlangıçla devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalla ayarlama](quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
+Oto sağlama işlemini bilmiyorsanız, [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. Ayrıca, bu hızlı başlangıçla devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalla ayarlama](quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
 
 Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
 
@@ -32,11 +32,11 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya macOS için SDK belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
 
-* [' C++ Ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
+* [' C++ Ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
 
 * [Git](https://git-scm.com/download/)'in en son sürümünün yüklemesi.
 
@@ -50,7 +50,7 @@ Bu bölümde, X. 509.440 önyükleme sırasının örnek kodunu Içeren [Azure I
 
 2. SDK 'nın [en son sürümü](https://github.com/Azure/azure-iot-sdk-c/releases/latest) için etiket adını bulun.
 
-3. Komut istemini veya Git Bash kabuğunu açın. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünü kopyalamak için aşağıdaki komutları çalıştırın. Önceki adımda bulunan etiketini `-b` parametre değeri olarak kullanın:
+3. Komut istemini veya Git Bash kabuğunu açın. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünü kopyalamak için aşağıdaki komutları çalıştırın. Önceki adımda bulunan etiketini parametre değeri olarak kullanın `-b` :
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -60,7 +60,7 @@ Bu bölümde, X. 509.440 önyükleme sırasının örnek kodunu Içeren [Azure I
 
     Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
 
-4. Git deposunun kök dizininde bir `cmake` alt dizini oluşturun ve o klasöre gidin. `azure-iot-sdk-c` Dizininden aşağıdaki komutları çalıştırın:
+4. Git deposunun kök dizininde bir `cmake` alt dizini oluşturun ve o klasöre gidin. Dizininden aşağıdaki komutları çalıştırın `azure-iot-sdk-c` :
 
     ```cmd/sh
     mkdir cmake
@@ -101,11 +101,11 @@ Benzetim cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluşturma
 
 1. Visual Studio’yu başlatın ve `azure_iot_sdks.sln` adlı yeni çözüm dosyasını açın. Bu çözüm dosyası daha önce azure-iot-sdk-c git deposunun kökünde oluşturduğunuz `cmake` klasöründe yer alır.
 
-2. Visual Studio menüsünde, Çözümdeki tüm projeleri derlemek için Build**Build Solution** **öğesini seçin.** > 
+2. Visual Studio menüsünde, **Build**  >  Çözümdeki tüm projeleri derlemek için Build**Build Solution** öğesini seçin.
 
 3. Visual Studio'nun *Çözüm Gezgini* penceresinde **Sağlama\_Araçları** klasörüne gidin. **dice\_device\_enrollment** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin.
 
-4. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama** > **olmadan Başlat** ' ı seçin. Çıktı penceresinde, istendiğinde tek kayıt için **i** girin.
+4. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama**  >  **olmadan Başlat** ' ı seçin. Çıktı penceresinde, istendiğinde tek kayıt için **i** girin.
 
     Çıktı penceresi, sanal cihazınız için yerel olarak oluşturulmuş otomatik olarak imzalanan X.509 sertifikasını görüntüler. **-----BEGIN CERTIFICATE-----** ile başlayıp ilk **-----END PUBLIC KEY-----** ile biten çıktıyı panoya kopyalayın ve bu iki satırı da dahil ettiğinizden emin olun. Yalnızca çıktı penceresindeki ilk sertifikayı kopyalamanız gerekir.
 
@@ -153,7 +153,7 @@ Bu bölümde cihazın önyükleme sırasını Cihaz Sağlama Hizmeti örneğiniz
 
 5. **prov\_dev\_client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin.
 
-6. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama** > **olmadan Başlat** ' ı seçin. Projeyi yeniden oluşturmak için istemde, çalıştırmadan önce projeyi yeniden derlemek için **Evet** ' i seçin.
+6. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama**  >  **olmadan Başlat** ' ı seçin. Projeyi yeniden oluşturmak için istemde, çalıştırmadan önce projeyi yeniden derlemek için **Evet** ' i seçin.
 
     Aşağıdaki çıkış, başarıyla önyüklemesi yapılan cihaz istemci örneğini sağlama ve IoT hub bilgilerini almak üzere sağlama Hizmeti örneğine bağlanıp kaydolma işlemlerinin bir örneğidir:
 
@@ -179,7 +179,7 @@ Bu bölümde cihazın önyükleme sırasını Cihaz Sağlama Hizmeti örneğiniz
 Cihaz istemci örneğini üzerinde çalışmaya ve keşfetmeye devam etmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız, bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
 1. Makinenizde cihaz istemci örnek çıktı penceresini kapatın.
-1. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından cihaz sağlama hizmetinizi seçin. Hizmetiniz için kayıtları **Yönet** ' i açın ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın. 
+1. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından cihaz sağlama hizmetinizi seçin. Hizmetiniz için kayıtları **Yönet** ' i açın ve **bireysel** kayıtlar sekmesini seçin. Bu hızlı başlangıçta kaydettiğiniz cihazın *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın. 
 1. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından IoT Hub 'ınızı seçin. , Hub 'ınız için **IoT cihazlarını** açın, bu hızlı başlangıçta kaydettiğiniz CIHAZıN *cihaz kimliği* ' nin yanındaki onay kutusunu işaretleyin ve ardından bölmenin en üstündeki **Sil** düğmesine basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

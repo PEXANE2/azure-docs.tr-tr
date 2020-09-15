@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services v3 .NET SDK ile Filtreler oluşturma
-description: Bu konuda, istemcinizin bir akışın belirli bölümlerini akışa almak için bunları kullanabilmesi için filtrelerin nasıl oluşturulacağı açıklanmaktadır. Media Services, bu seçmeli akışa ulaşmak için dinamik bildirimler oluşturuyor.
+description: Bu konuda, istemcinizin bir akışın belirli bölümlerini akışa almak için bunları kullanabilmesi için filtrelerin nasıl oluşturulacağı açıklanmaktadır. Media Services v3 .NET SDK, bu seçmeli akışa ulaşmak için dinamik bildirimler oluşturuyor.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2a392ab5301a51edff1df88596f2fe68d85ea63
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9f54a505d63660fb7c97b3226df4c232e48125e1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266723"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527369"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK ile filtre oluşturma
 
@@ -34,7 +34,7 @@ Bu konu başlığı altında, Isteğe bağlı bir video için filtre tanımlamak
 > [!NOTE]
 > [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - [Filtreleri ve dinamik bildirimleri](filters-dynamic-manifest-overview.md)gözden geçirin.
 - [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 

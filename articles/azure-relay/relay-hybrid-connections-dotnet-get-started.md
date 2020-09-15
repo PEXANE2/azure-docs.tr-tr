@@ -4,12 +4,12 @@ description: Azure Relay Karma Bağlantılar WebSockets için bir C# konsol uygu
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: eb204a7bf18ed1c88a6d359cc521130fa19a1c82
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bf22b8b11dc386644803b43ee4e3a51d04b70419
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934268"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527437"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>.NET’te Geçiş Karma Bağlantıları Web Yuvaları ile çalışmaya başlama
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -52,7 +52,7 @@ Geçiş hizmetine ileti göndermek Visual Studio kullanarak bir C# konsol uygula
 2. İstemci uygulamasını çalıştırın ve metin girin.
 3. Sunucu uygulama konsolunun istemci uygulamasına girilen metni görüntülediğinden emin olun.
 
-    ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
+    ![Konsol pencereleri, hem sunucu hem de istemci uygulamalarını test ediyor.](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
 Tebrikler, tamamlanmış bir Karma Bağlantılar uygulaması oluşturdunuz!
 

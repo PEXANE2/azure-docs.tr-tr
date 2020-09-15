@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 24be20d7eac48024b73e88f8ac8500928f0fb840
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: cbcfddcd02a3998b3b35b01d386816735c59ae7e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594237"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526417"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
@@ -24,7 +24,7 @@ Azure Görüntü İşleme API'si, görüntülerden yazdırılmış veya el yazı
 
 ## <a name="read-api"></a>API 'YI oku 
 
-Görüntü İşleme [okuma API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 'Si, Azure 'un en son OCR teknolojisidir[(yenilikler),](./whats-new.md#read-api-v31-public-preview-adds-simplified-chinese-support)yazdırılan metni (bazı dillerde), el yazısı metin (yalnızca İngilizce), rakamları ve görüntü ve çok sayfalı PDF belgelerinden gelen para birimi sembollerini ayıklar. Metin açısından kalın görüntülerden ve çok sayfalı PDF belgelerinden karışık dillerle metin ayıklamak en iyi duruma getirilmiştir. Aynı görüntüde veya belgede hem yazdırılmış hem de el yazısı metnin algılanmasının aynısını destekler.
+Görüntü İşleme [okuma API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 'Si, Azure 'un en son OCR teknolojisidir[(yenilikler),](./whats-new.md)yazdırılan metni (bazı dillerde), el yazısı metin (yalnızca İngilizce), rakamları ve görüntü ve çok sayfalı PDF belgelerinden gelen para birimi sembollerini ayıklar. Metin açısından kalın görüntülerden ve çok sayfalı PDF belgelerinden karışık dillerle metin ayıklamak en iyi duruma getirilmiştir. Aynı görüntüde veya belgede hem yazdırılmış hem de el yazısı metnin algılanmasının aynısını destekler.
 
 ![OCR, resimleri ve belgeleri ayıklanan metinle yapısal çıktıya dönüştürür](./Images/how-ocr-works.svg)
 
@@ -35,6 +35,9 @@ Görüntü İşleme [okuma API](https://westcentralus.dev.cognitive.microsoft.co
 * PDF ve TIFF dosyaları için en fazla 2000 sayfa (ücretsiz katman için yalnızca ilk iki sayfa) işlenir.
 * Dosya boyutu 50 MB 'tan az (ücretsiz katman için 4 MB) ve en az 50 x 50 piksel ve en fazla 10000 x 10000 piksel boyutunda olmalıdır. 
 * PDF boyutları, yasal veya A3 kağıt boyutlarına ve daha küçük boyutlara karşılık gelen en fazla 17 x 17 inç olmalıdır.
+
+### <a name="read-31-preview-allows-selecting-pages"></a>Okuma 3,1 önizlemesi, sayfa (ler) i seçmeyi sağlar
+[Okuma 3,1 Önizleme API 'si](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)ile, büyük çok sayfalı belgeler için, yalnızca bu sayfalardan metin ayıklamak üzere belirli sayfa numaralarını veya sayfa aralıklarını giriş parametresi olarak sağlayabilirsiniz. Bu, isteğe bağlı dil parametresine ek olarak yeni bir giriş parametresidir.
 
 > [!NOTE]
 > **Dil girişi** 
@@ -125,14 +128,24 @@ Başarılı bir JSON yanıtı örneğine bakın:
   }
 }
 ```
+### <a name="read-31-preview-adds-text-line-style-latin-languages-only"></a>Okuma 3,1 Preview metin satırı stili ekler (yalnızca Latin dilleri)
+[Okuma 3,1 Önizleme API 'si](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) , her metin satırının yazdırma veya el yazısı stili olup olmadığı, Güvenirlik puanı ile birlikte bir **Görünüm** nesnesi verir. Bu özellik yalnızca Latin dilleri için desteklenir.
+
+```json
+  "appearance": {
+              "style": "handwriting",
+              "styleConfidence": 0.836
+            }
+```
 [Görüntü işleme OCR SDK 'sı hızlı](./quickstarts-sdk/client-library.md) başlangıçlarını kullanmaya başlayın ve [okuma REST API hızlı](./QuickStarts/CSharp-hand-text.md) başlangıçlarını kullanarak, kuruluşunuzda OCR özelliklerini tümleştirmaya başlayabilirsiniz.
 
 ## <a name="supported-languages-for-print-text"></a>Yazdırma metni için desteklenen diller
-[Read 3,0 API 'Si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) Ingilizce, Ispanyolca, Almanca, Fransızca, Italyanca, Portekizce ve Felemenkçe dillerde yazdırılmış metnin ayıklanmasından sonra desteklenir. 
-
-[Okuma 3,1 API genel önizlemesi](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) , Basitleştirilmiş Çince desteği ekler. Senaryonuz daha fazla dil desteklemelidir gerektiriyorsa, [OCR API 'si](#ocr-api) bölümüne bakın. 
+[Read 3,0 API 'Si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) Ingilizce, Ispanyolca, Almanca, Fransızca, Italyanca, Portekizce ve Felemenkçe dillerde yazdırılmış metnin ayıklanmasından sonra desteklenir.
 
 OCR destekli dillerin tam listesi için [desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) bölümüne bakın.
+
+### <a name="read-31-preview-adds-simplified-chinese-and-japanese"></a>Okuma 3,1 Preview Basitleştirilmiş Çince ve Japonca ekler
+[Okuma 3,1 API genel önizlemesi](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) , Basitleştirilmiş Çince ve Japonca desteği ekler. Senaryonuz daha fazla dil desteklemelidir gerektiriyorsa, [OCR API 'si](#ocr-api) bölümüne bakın. 
 
 ## <a name="supported-languages-for-handwritten-text"></a>El yazısı metin için desteklenen diller
 Okuma işlemi şu anda yalnızca Ingilizce dilinde el yazısı metinleri ayıklamayı desteklemektedir.
@@ -191,4 +204,4 @@ Tüm bilişsel hizmetlerde olduğu gibi, okuma/OCR hizmetlerini kullanan gelişt
 - C#, Java, JavaScript veya Python 'da [görüntü işleme okuma 3,0 SDK hızlı](./quickstarts-sdk/client-library.md) başlangıçlarını kullanmaya başlayın.
 - REST API 'Lerinin nasıl kullanılacağını öğrenmek için C#, Java, JavaScript veya Python 'da [3,0 REST API hızlı](./QuickStarts/CSharp-hand-text.md) başlangıçlarını kullanın.
 - [Okuma 3,0 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)hakkında bilgi edinin.
-- Basitleştirilmiş Çince desteğiyle ilgili [okuma 3,1 genel önizleme REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) hakkında bilgi edinin.
+- Basitleştirilmiş Çince ve Japonca desteğiyle ilgili [REST API 3,1 okuma genel önizlemesi](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) hakkında bilgi edinin.

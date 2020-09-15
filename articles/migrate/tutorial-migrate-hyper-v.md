@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 370712ea976db027abee943d786f6ce81ac99c4a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 10e17a4fba1adbccf71497c54060fda2f60088ab
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376018"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90525346"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM’lerini Azure’a geçirme 
 
@@ -34,7 +34,7 @@ Bu öğretici, makinelerin Azure 'a nasıl değerlendirileceğini ve geçirilece
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
@@ -137,7 +137,7 @@ Bulma işlemi tamamlandıktan sonra, Hyper-V VM 'lerinin Azure 'a çoğaltılmas
     - Diskleri çoğaltmadan çıkarabilirsiniz.
     - Diskleri çıkarırsanız bu diskler geçişten sonra Azure VM’de bulunmaz. 
 
-    ![Diskler](./media/tutorial-migrate-hyper-v/disks.png)
+    ![Ekran görüntüsü Çoğalt iletişim kutusunun diskler sekmesini gösterir.](./media/tutorial-migrate-hyper-v/disks.png)
 
 13. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
 

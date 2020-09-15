@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8ce343045f7ff124f5faf86b13210bfb5b3b5519
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386121"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527165"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 'da Ethereum yetki kanıtlama Konsorsiyumu çözüm şablonu dağıtma
 
@@ -325,15 +325,15 @@ Güvenlik nedenleriyle, SSH bağlantı noktası erişimi varsayılan olarak bir 
 
 1. **Allow-SSH** kuralını seçin.
 
-    ![SSH-izin ver](./media/ethereum-poa-deployment/ssh-allow.png)
+    ![Ekran yakalama, SSH-Allow seçiliyken genel bakış penceresini gösterir.](./media/ethereum-poa-deployment/ssh-allow.png)
 
 1. **Eylemi** **izin ver** olarak değiştir
 
     ![SSH etkinleştirme izin ver](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-1. **Kaydet**'i seçin. Değişikliklerin uygulanması birkaç dakika sürebilir.
+1. **Kaydet**’i seçin. Değişikliklerin uygulanması birkaç dakika sürebilir.
 
-Belirtilen Yönetici Kullanıcı adı ve parola/SSH anahtarı ile SSH aracılığıyla Doğrulayıcı düğümlerine yönelik sanal makinelere uzaktan bağlanabilirsiniz. İlk Doğrulayıcı düğümüne erişmek için SSH komutu, şablon dağıtım çıktısında listelenir. Örneğin:
+Belirtilen Yönetici Kullanıcı adı ve parola/SSH anahtarı ile SSH aracılığıyla Doğrulayıcı düğümlerine yönelik sanal makinelere uzaktan bağlanabilirsiniz. İlk Doğrulayıcı düğümüne erişmek için SSH komutu, şablon dağıtım çıktısında listelenir. Örnek:
 
 ``` bash
 ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
@@ -561,7 +561,7 @@ Akıllı sözleşmeleri derlemek, dağıtmak ve test etmek için, Ethereum geli�
 
 Aşağıdaki örnekte basit bir akıllı sözleşme oluşturursunuz. Akıllı sözleşmeyi derlemek ve blok zinciri ağınıza dağıtmak için Truffle kullanırsınız. Dağıtıldıktan sonra bir işlem aracılığıyla akıllı sözleşme işlevini çağırabilirsiniz.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)'i yükler. Truffle ve Web3 için Python gereklidir. Yolunuza Python eklemek için Install seçeneğini seçin.
 * Truffle v 5.0.5 'i yükler `npm install -g truffle@v5.0.5` . Truffle, [Node.js](https://nodejs.org), [Git](https://git-scm.com/)gibi çeşitli araçların yüklenmesini gerektirir. Daha fazla bilgi için bkz. [Truffle belgeleri](https://github.com/trufflesuite/truffle).

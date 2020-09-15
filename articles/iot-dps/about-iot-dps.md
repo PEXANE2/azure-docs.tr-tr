@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 450d0675f81f161e68a207fbe0460c68fcafef29
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81683301"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526383"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Cihazı Sağlama Hizmeti ile cihaz sağlama
 Microsoft Azure, tüm IoT çözüm ihtiyaçlarınız için zengin bir tümleşik genel bulut hizmetleri kümesi sağlar. IoT Hub cihaz sağlama hizmeti (DPS), doğru IoT Hub 'a, Kullanıcı müdahalesi gerektirmeden tam zamanında sağlama sağlayan, IoT Hub için bir yardımcı hizmettir. DPS, milyonlarca cihazın güvenli ve ölçeklenebilir bir şekilde sağlanması için izin vermez.
@@ -88,7 +88,7 @@ DPS birçok özelliğe sahiptir ve bu, cihazları sağlamak için ideal hale get
 * **Bekleyen veriler Için şifreleme** , DPS 'nin 256 bit AES şifrelemesi kullanılarak şifrelenmiş ve şifresi çözülebilmesi, en güçlü blok şifrelemeleri mevcuttur ve FIPS 140-2 uyumludur.
 
 
-[Cihaz kavramları](concepts-device.md), [hizmet kavramları](concepts-service.md) ve [güvenlik kavramları](concepts-security.md) bölümlerinde cihaz sağlamayla ilgili kavramlar ve özellikler hakkında daha fazla bilgi edinebilirsiniz.
+Aynı bölümdeki diğer kavramsal konularla birlikte [DPS terminoloji](concepts-service.md) konusunu inceleyerek cihaz sağlama ile ilgili kavramlar ve özellikler hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="cross-platform-support"></a>Platformlar arası destek
 Tüm Azure IoT hizmetlerinde olduğu gibi, DPS, çeşitli işletim sistemleriyle platformlar arası çalışıyor. Azure, cihazların bağlanmasını ve hizmetin yönetilmesini kolaylaştırmak amacıyla birçok [dilde](https://github.com/Azure/azure-iot-sdks) açık kaynak SDK’ları sunar. DPS, cihazları bağlamak için aşağıdaki protokolleri destekler:
@@ -119,11 +119,11 @@ Kota sınırları hakkındaki diğer ayrıntılar için:
 * [Azure Aboneliği Hizmet Sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>İlgili Azure bileşenleri
-DPS cihaz sağlamayı Azure IoT Hub otomatikleştirir. [IoT Hub](https://docs.microsoft.com/azure/iot-hub/) hakkında daha fazla bilgi edinin.
+DPS cihaz sağlamayı Azure IoT Hub otomatikleştirir. [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık Azure’da IoT cihazlarını sağlama hakkında genel bilgilere sahipsiniz. Bir sonraki adımda uçtan uca bir IoT senaryosunu tamamlamayı deneyeceksiniz.
 > [!div class="nextstepaction"]
-> [Cihaz sağlama hizmeti 'ni Azure Portal](quick-setup-auto-provision.md)
-> [bir sanal cihaz](quick-create-simulated-device.md)
-> oluşturma ve sağlama IoT Hub ayarlama[cihaz sağlama için cihazı ayarlama](tutorial-set-up-device.md)
+> [IoT Hub cihaz sağlama hizmeti 'ni Azure Portal](quick-setup-auto-provision.md) 
+>  ile ayarlama [Sanal cihaz](quick-create-simulated-device.md) 
+>  oluşturma ve sağlama [Cihazı sağlama Için ayarlama](tutorial-set-up-device.md)
