@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f90f5f4298fcca77e293965ddd377598bcfd1930
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077310"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532537"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple özel bulutu 'nda vCenter için kimlik sağlayıcısı olarak Azure AD kullanma
 
@@ -46,7 +46,7 @@ Başlamadan önce, genel yönetici ayrıcalıklarıyla Azure aboneliğinize eri�
 > [!NOTE]
 > Zaten Azure AD varsa, bu bölümü atlayabilirsiniz.
 
-1. Azure AD [belgelerinde](../active-directory/fundamentals/active-directory-whatis.md)açıklandığı gibi ABONELIĞINIZDE Azure AD 'yi ayarlayın.
+1. Azure AD  [belgelerinde](../active-directory/fundamentals/active-directory-whatis.md)açıklandığı gibi ABONELIĞINIZDE Azure AD 'yi ayarlayın.
 2. [Azure Active Directory Premium kaydolma](../active-directory/fundamentals/active-directory-get-started-premium.md)konusunda açıklandığı gibi aboneliğinizde Azure Active Directory Premium etkinleştirin.
 3. Özel bir etki alanı adı ayarlayın ve [Azure Active Directory için](../active-directory/fundamentals/add-custom-domain.md)özel etki alanı adı ekleme bölümünde açıklandığı gibi özel etki alanı adını doğrulayın.
     1. Azure 'da belirtilen bilgileri kullanarak etki alanı kayıt şirketinizde bir DNS kaydı ayarlayın.
@@ -64,7 +64,7 @@ Başlamadan önce, genel yönetici ayrıcalıklarıyla Azure aboneliğinize eri�
 3. [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirme](../active-directory-domain-services/tutorial-create-instance.md)bölümünde açıklandığı gibi Azure AD Domain Services yönetmek Için yönetici grubunu yapılandırın.
 4. Azure AD Domain Services için DNS ayarlarını, [etkinleştirme Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md)' de açıklandığı gibi güncelleştirin.  Internet üzerinden AD 'ye bağlanmak istiyorsanız, Azure AD etki alanı Hizmetleri genel IP adresi için DNS kaydını etki alanı adına ayarlayın.
 5. Kullanıcılar için parola karma eşitlemesini etkinleştirin.  Bu adım, NT LAN Manager (NTLM) ve Kerberos kimlik doğrulaması için gereken parola karmalarının Azure AD Domain Services için eşitlenmesini sağlar. Parola karma eşitlemesini ayarladıktan sonra kullanıcılar, şirket kimlik bilgileri ile yönetilen etki alanında oturum açabilir. Bkz. [Azure Active Directory Domain Services parola karma eşitlemesini etkinleştirme](../active-directory-domain-services/tutorial-create-instance.md).
-    1. Yalnızca bulutta bulunan kullanıcılar varsa, parola karmalarının NTLM veya Kerberos tarafından istenen biçimde depolanmasını sağlamak için <a href="http://myapps.microsoft.com/" target="_blank">Azure AD erişim paneli</a> ' ni kullanarak parolalarını değiştirmeleri gerekir.  [Yalnızca bulutta yer alan Kullanıcı hesapları için yönetilen etki alanınız için parola karma eşitlemesini etkinleştirme](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)konusundaki yönergeleri izleyin.  Bu adım, Azure AD dizininizde Azure portal veya Azure AD PowerShell cmdlet 'lerini kullanarak oluşturulan tek tek kullanıcılar ve tüm yeni kullanıcılar için yapılmalıdır. Azure AD etki alanı Hizmetleri 'ne erişmesi gereken kullanıcıların, <a href="http://myapps.microsoft.com/" target="_blank">Azure AD erişim panelini</a> kullanması ve parolayı değiştirmesi için profiline erişmesi gerekir.
+    1. Yalnızca bulutta bulunan kullanıcılar varsa, parola karmalarının NTLM veya Kerberos tarafından istenen biçimde depolanmasını sağlamak için <a href="https://myapps.microsoft.com/" target="_blank">Azure AD erişim paneli</a> ' ni kullanarak parolalarını değiştirmeleri gerekir.  [Yalnızca bulutta yer alan Kullanıcı hesapları için yönetilen etki alanınız için parola karma eşitlemesini etkinleştirme](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)konusundaki yönergeleri izleyin.  Bu adım, Azure AD dizininizde Azure portal veya Azure AD PowerShell cmdlet 'lerini kullanarak oluşturulan tek tek kullanıcılar ve tüm yeni kullanıcılar için yapılmalıdır. Azure AD etki alanı Hizmetleri 'ne erişmesi gereken kullanıcıların, <a href="https://myapps.microsoft.com/" target="_blank">Azure AD erişim panelini</a> kullanması ve parolayı değiştirmesi için profiline erişmesi gerekir.
 
         > [!NOTE]
         > Kuruluşunuz yalnızca bulutta yer alan bir kullanıcı hesabına sahipse Azure Active Directory Domain Services'i kullanması gereken tüm kullanıcıların parolalarını değiştirmesi gerekir. Yalnızca bulutta yer alan bir kullanıcı hesabı, Azure portal veya Azure AD PowerShell cmdlet’leri kullanılarak Azure AD dizininizde oluşturulmuş bir hesaptır. Bu tür kullanıcı hesapları şirket içi dizinden eşitlenmez.
@@ -86,10 +86,10 @@ Başlamadan önce, genel yönetici ayrıcalıklarıyla Azure aboneliğinize eri�
     | **Seçenek** | **Açıklama** |
     |------------|-----------------|
     | **Ad** | Kimlik kaynağının adı. |
-    | **Kullanıcılar için temel DN** | Kullanıcılar için temel ayırt edici ad.  Azure AD için şunu kullanın: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` örnek: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` .|
+    | **Kullanıcılar için temel DN** | Kullanıcılar için temel ayırt edici ad.  Azure AD için şunu kullanın: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  örnek: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` .|
     | **Etki alanı adı** | Etki alanının FQDN 'SI, örneğin, example.com. Bu metin kutusunda bir IP adresi sağlamaın. |
     | **Etki alanı diğer adı** | *(isteğe bağlı)* Etki alanı NetBIOS adı. SSPI kimlik doğrulamaları kullanıyorsanız, Active Directory etki alanının NetBIOS adını kimlik kaynağının diğer adı olarak ekleyin. |
-    | **Gruplar için temel DN** | Gruplar için temel ayırt edici ad. Azure AD için şunu kullanın: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` örnek:`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **Gruplar için temel DN** | Gruplar için temel ayırt edici ad. Azure AD için şunu kullanın: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  örnek: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
     | **Birincil sunucu URL 'SI** | Etki alanı için birincil etki alanı denetleyicisi LDAP sunucusu.<br><br>Biçimini kullanın  `ldaps://hostname:port` . Bağlantı noktası genellikle LDAPS bağlantıları için 636 ' dir. <br><br> `ldaps://`   Birincil veya IKINCIL LDAP URL 'sinde kullandığınızda Active Directory sunucusunun LDAPS uç noktası için güven kuran bir sertifika gerekir. |
     | **İkincil sunucu URL 'SI** | Yük devretme için kullanılan ikincil etki alanı denetleyicisi LDAP sunucusunun adresi. |
     | **Sertifika Seç** | Active Directory LDAP sunucunuz veya OpenLDAP sunucu kimlik kaynağı ile LDAPS kullanmak istiyorsanız,  `ldaps://` URL metin kutusuna yazdıktan sonra Sertifika Seç düğmesi görünür   . İkincil bir URL gerekli değildir. |

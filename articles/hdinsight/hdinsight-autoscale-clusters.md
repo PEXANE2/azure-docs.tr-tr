@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
-ms.date: 08/21/2020
-ms.openlocfilehash: 7ce4580b366b57e2a1d4904b6ab63bf1834bdb65
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/14/2020
+ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090117"
+ms.locfileid: "90532197"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
 
@@ -68,7 +68,7 @@ Aşağıdaki koşullar algılandığında otomatik ölçeklendirme bir ölçek i
 > [!Important]
 > Azure HDInsight Otomatik Ölçeklendirme özelliği, Spark ve Hadoop kümeleri için 7 Kasım 2019’da genel kullanıma sunulmuştu ve özelliğin önizleme sürümünde sağlanmayan geliştirmeler içeriyordu. 7 Kasım 2019’dan önce Spark kümesi oluşturduysanız ve kümenizde Otomatik Ölçeklendirme özelliğini kullanmak istiyorsanız, yeni küme oluşturma ve yeni kümede Otomatik Ölçeklendirme’yi etkinleştirme yolunu izlemeniz önerilir.
 >
-> Interactive Query (LLAP) ve HBase kümeleri için otomatik ölçeklendirme hala önizleme aşamasındadır. Otomatik ölçeklendirme yalnızca Spark, Hadoop, Interactive Query ve HBase kümelerinde kullanılabilir.
+> Etkileşimli sorgu (LLAP) için otomatik ölçeklendirme, 6 Ağustos 2020 ' de genel kullanıma sunuldu. HBase kümeleri hala önizlemededir. Otomatik ölçeklendirme yalnızca Spark, Hadoop, Interactive Query ve HBase kümelerinde kullanılabilir.
 
 Aşağıdaki tablo, otomatik ölçeklendirme özelliğiyle uyumlu küme türlerini ve sürümlerini açıklamaktadır.
 

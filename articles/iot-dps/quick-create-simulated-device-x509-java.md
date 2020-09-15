@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: f16ace3e54db4d30f89da7335f00153191a7e226
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e36f026257563555013fa432a897f8458de22ab0
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326758"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532486"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için Java cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, bir Windows bilgisayarda sanal bir X. 509.952 aygıt�
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md)gözden geçirme.
+- [Sağlama](about-iot-dps.md#provisioning-process) kavramları hakkında bilgi edinin.
 - [Azure Portal Ile cihaz sağlama hizmeti IoT Hub ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Java SE Development Kit 8](https://aka.ms/azure-jdks).
@@ -170,7 +170,7 @@ Bu makalede, bireysel kayıtlar gösterilmektedir.
 Cihaz istemci örneğini üzerinde çalışmaya ve keşfetmeye devam etmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız, bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
 1. Makinenizde cihaz istemci örnek çıktı penceresini kapatın.
-2. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından cihaz sağlama hizmetinizi seçin. Hizmetinizin kayıtları **yönetme** dikey penceresini açın ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın. 
+2. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından cihaz sağlama hizmetinizi seçin. Hizmetiniz için kayıtları **Yönet** dikey penceresini açın ve **bireysel** kayıtlar sekmesini seçin. Bu hızlı başlangıçta kaydettiğiniz cihazın *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın. 
 3. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından IoT Hub 'ınızı seçin. Hub 'ınız için **IoT cihazları** dikey penceresini açın, bu hızlı başlangıçta kaydettiğiniz CIHAZıN *cihaz kimliği* ' nin yanındaki onay kutusunu işaretleyin ve ardından bölmenin en üstündeki **Sil** düğmesine basın.
 
 

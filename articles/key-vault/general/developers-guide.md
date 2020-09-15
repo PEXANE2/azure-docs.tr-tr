@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e6ee8ce065361ac27bba0e80349eb5e1d1877526
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394763"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532299"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -24,7 +24,7 @@ Key Vault, uygulamalarınızın içinden hassas bilgilere güvenli bir şekilde 
 - Uygulamanız imzalama ve şifreleme için anahtarlar kullanabilir, ancak çözümünüz coğrafi olarak dağıtılmış bir uygulama olarak uygun olacak şekilde uygulamanızda önemli yönetim sağlar.
 - Key Vault sertifikalarını yönetin. Daha fazla bilgi için bkz. [Sertifikalar](../certificates/about-certificates.md)
 
-Azure Key Vault hakkında daha fazla genel bilgi için bkz. [Key Vault nedir](overview.md)).
+Azure Key Vault hakkında daha fazla genel bilgi için bkz. [Key Vault nedir](overview.md).
 
 ## <a name="public-previews"></a>Genel önizlemeler
 
@@ -140,7 +140,7 @@ Bu makaleler, Key Vault kullanan veya ile tümleştirilebilen diğer senaryolar 
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault genel bakış ve kavramlar
 
-- [Key Vault geçici silme davranışı](soft-delete-overview.md)) silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu belirten silinen nesnelerin kurtarılmasına izin veren bir özelliği açıklar.
+- [Key Vault geçici silme davranışı](soft-delete-overview.md) , silmenin yanlışlıkla mi yoksa bilerek mi olduğunu, silinen nesnelerin kurtarılmasına izin veren bir özelliği açıklar.
 - [Key Vault istemci kısıtlama](overview-throttling.md) , sizi daraltma temel kavramlara yönlendirir ve uygulamanız için bir yaklaşım sunar.
 - [Key Vault güvenliği](overview-security-worlds.md) , bölgeler ve güvenlik alanları arasındaki ilişkileri açıklar.
 

@@ -3,16 +3,16 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 08/17/2020
-ms.openlocfilehash: f54b5c7bec7d2b9af67b967ff34ab43bd1818a7d
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 21ee22e7a493a6bbc8b5934e353db7c59b4aa17d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511322"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533300"
 ---
 Bu makalede bir nesne algılama modeli oluşturmak için Python ile Özel Görüntü İşleme istemci kitaplığını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı bir şekilde test etmek için uç noktayı kullanabilirsiniz. Kendi Python uygulamanızı oluştururken bu örneği şablon olarak kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Python 2.7+ veya 3.5+](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installing/) aracı
@@ -40,7 +40,7 @@ Tercih ettiğiniz proje dizininde *sample.py* adlı yeni bir dosya oluşturun.
 
 Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin. Ayrıca, Özel Görüntü İşleme Web sitesinin ayarlar sayfasından uç nokta URL 'nizi alın.
 
-Projenizi oluştururken diğer seçenekleri belirtmek için [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-) yöntemine bakın ( [bir algılayıcı derleme](../../get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).  
+Projenizi oluştururken diğer seçenekleri belirtmek için **[create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-&preserve-view=true)** yöntemine bakın ( [bir algılayıcı derleme](../../get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -188,6 +188,11 @@ while (iteration.status != "Completed"):
 trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, prediction_resource_id)
 print ("Done!")
 ```
+
+> [!TIP]
+> Seçili etiketlerle eğitme
+>
+> İsteğe bağlı olarak, uygulanan etiketlerin yalnızca bir alt kümesini eğitebilirsiniz. Yalnızca belirli etiketlerden yeterince birini uygulamadıysanız bunu yapmak isteyebilirsiniz, ancak bu, başkalarının yeterli olması durumunda. **[Train_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#train-project-project-id--training-type-none--reserved-budget-in-hours-0--force-train-false--notification-email-address-none--selected-tags-none--custom-headers-none--raw-false----operation-config-&preserve-view=true)** çağrısında, *selected_tags* isteğe bağlı parametre ÖĞESINI kullanmak istediğiniz etiketlerin kimlik dizeleri listesine ayarlayın. Model yalnızca listedeki etiketleri tanımak için eğitecektir.
 
 ### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Tahmin uç noktasında yayımlanmış yinelemeyi edinme ve kullanma
 

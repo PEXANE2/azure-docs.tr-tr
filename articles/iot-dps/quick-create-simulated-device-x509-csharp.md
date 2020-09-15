@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 639ab07113a0e62cac43af5b79f052da1efd93ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b0832ece807c42d270f18d4ab293c449b2068948
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74976528"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532520"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için C# cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
 
@@ -22,7 +22,7 @@ ms.locfileid: "74976528"
 
 Bu adımlar, Windows işletim sistemini çalıştıran bir geliştirme makinesinde bir X. 509.440 cihazının benzetimini yapmak için [C# için Azure IoT örnekleri](https://github.com/Azure-Samples/azure-iot-samples-csharp) 'ni nasıl kullanacağınızı gösterir. Örnek ayrıca, cihaz sağlama hizmeti 'ni kullanarak sanal cihazı bir IoT Hub da bağlar.
 
-Otomatik sağlama işlemini bilmiyorsanız, [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md) gözden geçirdiğinizden emin olun. Ayrıca devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
+Oto sağlama işlemini bilmiyorsanız, [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. Ayrıca devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
 
 Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
 - [Kayıt grupları](concepts-service.md#enrollment-group): Birden fazla ilgili cihazı kaydetmek için kullanılır.

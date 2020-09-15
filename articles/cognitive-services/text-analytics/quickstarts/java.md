@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Metin Analizi REST API çağırmak için Java kullanın'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örneklerinin nasıl alınacağı gösterilmektedir.
+description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örnekleri almak için Java 'nın nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019, devx-track-java
-ms.openlocfilehash: f8f9d76e5f1584ce54897950d7e35e2b22ba958e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6c3c613f8733c8f786d121ab33b09afab244b09e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319788"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532282"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Hızlı başlangıç: Azure Metin Analizi bilişsel hizmetini çağırmak için Java kullanma
 <a name="HOLTop"></a>
@@ -33,7 +33,7 @@ Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../../c
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dil algılama
+## <a name="detect-language"></a>Dili algılama
 
 Dil Algılama API 'SI, [Dili algıla yöntemini](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)kullanarak bir metin belgesinin dilini algılar.
 

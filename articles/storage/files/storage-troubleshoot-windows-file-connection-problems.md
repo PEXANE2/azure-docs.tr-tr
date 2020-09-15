@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f167ffb652054b64098994d334eea6e1db6d2d14
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 549f9b03272accbe107c432f4929c5de250a6f6b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061215"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532401"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
 
@@ -369,7 +369,7 @@ Bu hata büyük olasılıkla Join-AzStorageAccountforAuth komutundaki bir söz d
 
 ## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>AES 256 Kerberos şifrelemesi için Azure dosyaları şirket içi AD DS kimlik doğrulama desteği
 
-Azure dosyaları için [AzFilesHybrid Module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases)ile şirket içi AD DS kimlik doğrulaması için AES 256 Kerberos şifreleme desteği tanıtıldık. V 0.2.2 'den daha düşük bir modül sürümü ile AD DS kimlik doğrulamasını etkinleştirdiyseniz, en son AzFilesHybrid modülünü (v 0.2.2 +) indirmeniz ve aşağıdaki PowerShell 'i çalıştırmanız gerekir. Depolama hesabınızda AD DS kimlik doğrulamasını henüz etkinleştirmediyseniz, etkinleştirme için bu [Kılavuzu](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) izleyebilirsiniz. AzFilesHybrid Module v 0.2.2 veya üzeri ile özelliği etkinleştirme işlemini yaptıysanız aşağıdaki PowerShell 'i yeniden çalıştırmanız gerekmez. 
+Azure dosyaları için [AzFilesHybrid Module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases)ile şirket içi AD DS kimlik doğrulaması için AES 256 Kerberos şifreleme desteği tanıtıldık. V 0.2.2 'den daha düşük bir modül sürümü ile AD DS kimlik doğrulamasını etkinleştirdiyseniz, en son AzFilesHybrid modülünü (v 0.2.2 +) indirmeniz ve aşağıdaki PowerShell 'i çalıştırmanız gerekir. Depolama hesabınızda AD DS kimlik doğrulamasını henüz etkinleştirmediyseniz, etkinleştirme için bu [Kılavuzu](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) izleyebilirsiniz. 
 
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"

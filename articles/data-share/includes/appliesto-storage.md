@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 62645d38f85572f35b8382e385d32a8412880975
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 75fee1283692cc1aead87b72009d440e45037782
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270246"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533168"
 ---
-<Token>**Uygulama hedefi:** ![ Evet ](../media/applies-to/yes.png) ![ ](../media/applies-to/yes.png) Azure Data Lake Storage 1. Evet ![ ](../media/applies-to/yes.png) Azure Data Lake Storage 2. Azure Blob depolama Evet</Token> 
+<Token>**Uygulama hedefi:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure Blob depolama :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure Data Lake Storage 1. :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure Data Lake Storage 2.</Token> 

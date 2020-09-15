@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 844a174e8cd3208e071db165a31d6c82dd1af3b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 54baa0d1a969e922bee237d08eb3dfe97cbc7c4d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422122"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532469"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için Node.js cihaz SDK 'sını kullanarak bir X. 509.952 sanal cihazı oluşturma ve sağlama
 
@@ -22,9 +22,9 @@ ms.locfileid: "87422122"
 
 Bu hızlı başlangıçta, bir Windows bilgisayarda sanal bir X. 509.952 aygıtı oluşturacaksınız. Cihaz sağlama hizmeti (DPS) ile tek bir kayıt kullanarak bu sanal cihazı IoT Hub 'ınıza bağlamak için cihaz örnek Node.js kodunu kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md)gözden geçirme.
+- [Sağlama](about-iot-dps.md#provisioning-process) kavramları hakkında bilgi edinin.
 - [Azure Portal Ile cihaz sağlama hizmeti IoT Hub ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Node.js v 4.0 +](https://nodejs.org).
@@ -97,7 +97,7 @@ Bu makalede, bireysel kayıtlar gösterilmektedir.
 
      [![Portalda X. 509.440 kanıtlama için bireysel kayıt ekleme](./media/quick-create-simulated-device-x509-node/device-enrollment.png)](./media/quick-create-simulated-device-x509-node/device-enrollment.png#lightbox)
 
-     Kayıt başarılı olduğunda, X. 509.440 cihazınız *bireysel* kayıtlar SEKMESINDEKI *kayıt kimliği* sütununun altında **{CertificateName}** olarak görünür. daha sonra bu değeri aklınızda yapın.
+     Kayıt başarılı olduğunda, X. 509.440 cihazınız *bireysel* kayıtlar SEKMESINDEKI *kayıt kimliği* sütununun altında **{CertificateName}** olarak görünür. Daha sonra bu değeri aklınızda edin.
 
 ## <a name="simulate-the-device"></a>Cihazı benzetme
 
@@ -145,7 +145,7 @@ Bu makalede, bireysel kayıtlar gösterilmektedir.
 Cihaz istemci örneğini üzerinde çalışmaya ve keşfetmeye devam etmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız, bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
 1. Makinenizde cihaz istemci örnek çıktı penceresini kapatın.
-2. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından cihaz sağlama hizmetinizi seçin. Hizmetinizin kayıtları **yönetme** dikey penceresini açın ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın. 
+2. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından cihaz sağlama hizmetinizi seçin. Hizmetiniz için kayıtları **Yönet** dikey penceresini açın ve **bireysel** kayıtlar sekmesini seçin. Bu hızlı başlangıçta kaydettiğiniz cihazın *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın. 
 3. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından IoT Hub 'ınızı seçin. Hub 'ınız için **IoT cihazları** dikey penceresini açın, bu hızlı başlangıçta kaydettiğiniz CIHAZıN *cihaz kimliği* ' nin yanındaki onay kutusunu işaretleyin ve ardından bölmenin en üstündeki **Sil** düğmesine basın.
 
 

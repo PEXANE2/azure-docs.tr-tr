@@ -1,7 +1,7 @@
 ---
 title: Bing Varlık Arama API'si nedir?
 titleSuffix: Azure Cognitive Services
-description: Arama sorgularından varlıkları ve yerleri ayıklamak ve aramak için Bing Varlık Arama API'si kullanın.
+description: Bing Varlık Arama API'si ilgili ayrıntıları ve arama sorgularından varlıkları ve yerleri ayıklama ve arama hakkında bilgi edinin.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4afb20699d52ea80d7ba6cf9760a465b61cc6d6b
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: e0402b1695e1d5f5c9f29d128f4cd405f219e724
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85604820"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532503"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Bing Varlık Arama API'si nedir?
 
 Bing Varlık Arama API'si, Bing'e bir arama sorgusu gönderip varlıkları ve yerleri içeren sonuçlar alır. Yer sonuçları restoranlar, oteller veya diğer yerel işletmeleri kapsar. Sorguda yerel işletmenin adı belirtildiğinde veya bir işletme türü istendiğinde (yakınımdaki restoranlar gibi) Bing, yerleri döndürür. Sorgu iyi bilinen kişileri, yerleri (toist, eyalet, ülke/bölge vb.) veya şeyleri belirtiyorsa Bing varlık döndürür.
 
-|Özellik  |Description  |
+|Özellik  |Açıklama  |
 |---------|---------|
 |[Gerçek zamanlı arama önerileri](concepts/search-for-entities.md#suggest-search-terms-with-the-bing-autosuggest-api)     | Kullanıcılarınızın yazmasıyla açılan bir liste olarak görüntülenebilen arama önerileri sağlar.       | 
 | [Varlık Kesinleştirme](concepts/search-for-entities.md#the-bing-entity-search-api-response)  | Birden çok olası anlam içeren sorgular için birden çok varlık alın. |

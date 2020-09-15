@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5350b4a6a505a29be0ea1b5eed76937574b93568
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 64111b9c060ecdd058c5d731d5c013c8e226b529
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514738"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533290"
 ---
-<Token>**Uygulama hedefi:** ![ Evet ](../media/applies-to/yes.png) Azure SQL veritabanı ![ Evet Azure ](../media/applies-to/yes.png) SQL yönetilen örneği ![ Evet ](../media/applies-to/yes.png) Azure SYNAPSE Analytics (SQL DW) </Token> 
+<Token>**Uygulama hedefi:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure SQL veritabanı :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure SQL yönetilen örneği :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure SYNAPSE ANALYTICS (SQL DW) </Token> 
 

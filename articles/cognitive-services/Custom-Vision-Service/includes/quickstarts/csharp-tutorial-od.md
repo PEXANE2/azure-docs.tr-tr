@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 08/17/2020
-ms.openlocfilehash: 3e4206d00d33020098770600e151f9075d160caa
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8af5d8ad2ed4d623d7128ffa5fba3c9e3647a057
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511337"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533225"
 ---
 Bu makalede bir nesne algılama modeli oluşturmak Için C# ile Özel Görüntü İşleme istemci kitaplığını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin varsayılan tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı bir şekilde test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi .NET uygulamanızı oluşturmak için bir şablon olarak kullanın. 
 
@@ -30,7 +30,7 @@ Bu Visual Studio projesi, [Özel Görüntü İşleme web sitesi](https://customv
 
 [!INCLUDE [get-keys](../../includes/get-keys.md)]
 
-## <a name="understand-the-code"></a>Kodu anlama
+## <a name="examine-the-code"></a>Kodu inceleme
 
 _Program.cs_ dosyasını açın ve kodu inceleyin. Eğitim ve tahmin anahtarlarınız için sırasıyla ve olarak adlı [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `CUSTOM_VISION_TRAINING_KEY` `CUSTOM_VISION_PREDICTION_KEY` . Betik bu değişkenlere bakar.
 
@@ -40,18 +40,18 @@ Ayrıca, Özel Görüntü İşleme Web sitesinin ayarlar sayfasından uç nokta 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_endpoint)]
 
-### <a name="create-a-new-custom-vision-service-project"></a>Yeni bir Özel Görüntü İşleme Hizmeti projesi oluştur
+## <a name="create-a-new-custom-vision-service-project"></a>Yeni bir Özel Görüntü İşleme Hizmeti projesi oluştur
 
-Bu sonraki küçük kod bir nesne algılama projesi oluşturur. Oluşturulan proje, daha önce ziyaret ettiğiniz [Özel Görüntü İşleme web sitesinde](https://customvision.ai/) gösterilir. Projenizi oluştururken diğer seçenekleri belirtmek için bkz. [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) yöntemi ( [bir algılayıcı derleme](../../get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).  
+Bu sonraki küçük kod bir nesne algılama projesi oluşturur. Oluşturulan proje, daha önce ziyaret ettiğiniz [Özel Görüntü İşleme web sitesinde](https://customvision.ai/) gösterilir. Projenizi oluştururken diğer seçenekleri belirtmek için bkz. [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) yöntemi ( [bir algılayıcı derleme](../../get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).  
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_create)]
 
 
-### <a name="add-tags-to-the-project"></a>Projeye Etiketler ekleyin
+## <a name="add-tags-to-the-project"></a>Projeye Etiketler ekleyin
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_tags)]
 
-### <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
+## <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
 
 Nesne algılama projelerinde resimleri etiketlediğinizde, her etiketlenmiş nesnenin bölgesini normalleştirilmiş koordinatları kullanarak belirtmeniz gerekir. Aşağıdaki kod, örnek görüntülerin her birini etiketli bölgesiyle ilişkilendirir.
 
@@ -66,23 +66,28 @@ Ardından her örnek görüntüyü bölge koordinatlarıyla karşıya yüklemek 
 
 Bu noktada, tüm örnek görüntülerini karşıya yüklediniz ve her birini (**çatal** veya **makas**) ilişkili bir piksel dikdörtgeniyle etiketledi.
 
-### <a name="train-the-project"></a>Projeyi eğitme
+## <a name="train-the-project"></a>Projeyi eğitme
 
 Bu kod, projedeki ilk eğitim yinelemesini oluşturur.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_train)]
 
-### <a name="publish-the-current-iteration"></a>Geçerli yinelemeyi Yayımla
+> [!TIP]
+> Seçili etiketlerle eğitme
+>
+> İsteğe bağlı olarak, uygulanan etiketlerin yalnızca bir alt kümesini eğitebilirsiniz. Yalnızca belirli etiketlerden yeterince birini uygulamadıysanız bunu yapmak isteyebilirsiniz, ancak bu, başkalarının yeterli olması durumunda. [Trainproject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) çağrısında *Traıningparameters* parametresini kullanın. Bir [Traıningparameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters?view=azure-dotnet&preserve-view=true) oluşturun ve **selectedtags** özelliğini kullanmak istediğiniz etiketlerin kimliklerini bir liste olarak ayarlayın. Model yalnızca listedeki etiketleri tanımak için eğitecektir.
+
+## <a name="publish-the-current-iteration"></a>Geçerli yinelemeyi Yayımla
 
 Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayınlanana kadar tahmin uç noktasında kullanılamaz.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_publish)]
 
-### <a name="create-a-prediction-endpoint"></a>Tahmin uç noktası oluşturma
+## <a name="create-a-prediction-endpoint"></a>Tahmin uç noktası oluşturma
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_prediction_endpoint)]
 
-### <a name="use-the-prediction-endpoint"></a>Tahmin uç noktasını kullanma
+## <a name="use-the-prediction-endpoint"></a>Tahmin uç noktasını kullanma
 
 Komut dosyasının bu bölümü, test görüntüsünü yükler, model uç noktasını sorgular ve tahmin verilerinin konsola çıktısını verir.
 

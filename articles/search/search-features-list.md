@@ -1,0 +1,77 @@
+---
+title: Özelliklere genel bakış
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama özellik kategorilerini bulun.
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 09/15/2020
+ms.openlocfilehash: 540936ac190e981ff786ea90a91516161346d65c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533104"
+---
+# <a name="features-of-azure-cognitive-search"></a>Azure Bilişsel Arama özellikleri
+
+Azure Bilişsel Arama, daha fazla metin ve yapıyı ve API 'Leri ve araçları ayıklamak için dizin oluşturma sırasında kullanılan bir tam metin arama altyapısı, kalıcı bir arama dizinleri depolaması ve tümleşik AI sağlar. Aşağıdaki tablo, kategorilere göre özellikleri özetler. Bilişsel Arama diğer arama teknolojileriyle nasıl Karşılaştırıldığı hakkında daha fazla bilgi için bkz. [Azure bilişsel arama nedir?](search-what-is-azure-search.md).
+
+## <a name="indexing-features"></a>Dizin oluşturma özellikleri
+
+| Alan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Özellikler |
+|-------------------|----------|
+| Veri kaynakları | Azure Bilişsel Arama dizinleri, JSON veri yapısı olarak gönderildiği belirtilen kaynaklardan verileri kabul eder. <br/><br/> [**Dizin oluşturucular**](search-indexer-overview.md) , desteklenen Azure veri kaynakları için veri alımı otomatikleştirin ve JSON serileştirmesini işleyebilir. Birincil veri depolarında aranabilir içerik ayıklamak için [Azure SQL veritabanı](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DB](search-howto-index-cosmosdb.md)veya [Azure Blob depolama](search-howto-indexing-azure-blob-storage.md) 'ya bağlanın. Azure Blob dizin oluşturucuları, Microsoft Office, PDF ve HTML belgeleri de dahil, [başlıca dosya biçimlerinden metin ayıklamak](search-howto-indexing-azure-blob-storage.md) için *belge çözme* işlemini gerçekleştirebilir. |
+| Hiyerarşik ve iç içe veri yapıları | [**Karmaşık türler**](search-howto-complex-data-types.md) ve koleksiyonlar, neredeyse her türlü JSON yapısını Azure bilişsel arama dizini olarak modellebilmenize olanak tanır. Bire çok ve çoka çok kardinalite, koleksiyonlar, karmaşık türler ve karmaşık türlerin koleksiyonları aracılığıyla yerel olarak ifade edilebilir.|
+| Dil çözümleme | Çözümleyiciler, dizin oluşturma ve arama işlemleri sırasında metin işleme için kullanılan bileşenlerdir. İki tür vardır. <br/><br/>[**Özel sözcük temelli çözümleyiciler**](index-add-custom-analyzers.md), fonetik eşleştirme ve düzenli ifadeler kullanılarak yapılan karmaşık arama sorguları için kullanılır. <br/><br/>Lucene veya Microsoft’un [**dil çözümleyicileri**](index-add-language-analyzers.md), zaman kipleri, cinsiyet belirteçleri, düzensiz çoğul adlar (İngilizce’deki 'mouse' ve 'mice' gibi), sözcüğü bileşenlerine ayırma, sözcüklere bölme (boşluk içermeyen diller için) vb. gibi dile özgü linguistik durumları akıllıca işlemek için kullanılır. <br/><br/>|
+
+## <a name="ai-enrichment-and-knowledge-mining"></a>AI zenginleştirme ve bilgi madenciliği
+
+| Alan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Özellikler |
+|-------------------|----------|
+|Dizin oluşturma sırasında AI işleme | Görüntü ve metin analizi için [**AI zenginleştirme**](cognitive-search-concept-intro.md) , ham içerikten metin bilgilerini ayıklamak üzere bir dizin oluşturma işlem hattına uygulanabilir. [Yerleşik yeteneklere](cognitive-search-predefined-skills.md) örnek olarak optik karakter tanıma (taranmış JPEG'leri aranabilir duruma getirme), varlık tanıma (bir kuruluşu, adı veya konumu tanıma) ve anahtar ifade tanıma verilebilir. İşlem hattına ekleme yapmak için [özel yetenek kodu da yazabilirsiniz](cognitive-search-create-custom-skill-example.md). Ayrıca, [Azure Machine Learning yazılan becerileri tümleştirebilirsiniz](./cognitive-search-tutorial-aml-custom-skill.md). |
+| Arama olmayan senaryolarda analiz ve tüketim için zenginleştirilmiş içerik depolama | [**Bilgi deposu**](knowledge-store-concept-intro.md) , bir AI tabanlı dizin oluşturma uzantısıdır. Azure depolama ile arka uç olarak, dizin oluşturma sırasında oluşturulan zenginleştirme kaydedebilirsiniz. Bu yapıtlar, daha iyi becerileri tasarlamanıza yardımcı olmak veya amorphous veya belirsiz verilerden şekil ve yapı oluşturmak için kullanılabilir. Belirli iş yüklerini veya kullanıcıları hedefleyen bu yapıların projeksiyonlarını oluşturabilirsiniz. Ayrıca ayıklanan verileri doğrudan analiz edebilir veya diğer uygulamalara yükleyebilirsiniz.<br/><br/> |
+| Önbelleğe alınmış içerik | [**Artımlı zenginleştirme (Önizleme)**](cognitive-search-incremental-indexing-conceptual.md) işlemi, işlem hattının değişmeyen parçaları için önbelleğe alınmış içerik kullanılarak yalnızca belirli bir düzenleme tarafından değiştirilen belgelere kısıtlar. |
+
+## <a name="query-and-user-experience"></a>Sorgu ve Kullanıcı deneyimi
+
+| Alan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Özellikler |
+|-------------------|----------|
+|Serbest biçimli metin arama | [**Tam metin arama**](search-lucene-query-architecture.md) , çoğu arama tabanlı uygulama için birincil kullanım durumdur. Desteklenen bir söz dizimi kullanılarak sorgular formüle edilebilir. <br/><br/>[**Basit sorgu söz dizimi**](query-simple-syntax.md), mantıksal işleçler, tümcecik arama işleçleri, sonek işleçleri, öncelik işleçleri sağlar.<br/><br/>[**Lucene sorgu söz dizimi**](query-lucene-syntax.md), belirsiz arama, yakınlık araması, terimle yükseltme ve düzenli ifadeler için uzantılarla birlikte basit söz diziminde tüm işlemleri içerir.|
+| İlgi düzeyi | [**Basit skor**](index-add-scoring-profiles.md) , Azure bilişsel arama 'ın önemli bir avantajıdır. Belgelerdeki değer işlevi olarak ilgi düzeyini modellemek için puanlama profilleri kullanılır. Örneğin, yeni ürünlerin veya indirimli ürünlerin arama sonuçlarında daha yukarıda görüntülenmesini isteyebilirsiniz. Ayrı olarak izleyip depoladığınız müşteri arama tercihlerine göre kişiselleştirilmiş puanlama için etiketleri kullanarak da puanlama profilleri derleyebilirsiniz. |
+| Coğrafi arama | Azure Bilişsel Arama, coğrafi konumları işler, filtreler ve görüntüler. Kullanıcıların, bir arama sonucunun fiziksel bir konuma göre yakınlığına göre verileri bulmasını sağlar. Daha fazla bilgi edinmek için [bu videoyu izleyin](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) veya [bu örneği gözden geçirin](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). |
+| Filtreler ve modeller | [**Modellenmiş gezinti**](search-faceted-navigation.md), tek bir sorgu parametresi aracılığıyla etkinleştirilir. Azure Bilişsel Arama, kendi kendine yönlendirilmiş filtreleme için (örneğin, katalog öğelerini fiyat aralığına veya markaya göre filtrelemek için) bir Kategoriler listesinin arkasında kod olarak kullanabileceğiniz, çok yönlü bir gezinti yapısı döndürür. <br/><br/> [**Filtreler**](query-odata-filter-orderby-syntax.md), uygulamanın kullanıcı arabiriminde çok yönlü gezintiye yer vermek, sorgu oluşumunu geliştirmek ve kullanıcı veya geliştirici tarafından belirtilen ölçütlere göre filtreleme yapmak için kullanılabilir. OData söz dizimini kullanarak filtreler oluşturun. |
+| Kullanıcı deneyimi | [**Otomatik tamamlama**](search-autocomplete-tutorial.md) , bir arama çubuğundaki tür ilerlek sorguları için etkinleştirilebilir. <br/><br/>[**Arama önerileri**](/rest/api/searchservice/suggesters) de arama çubuğuna girilen kısmi metinler için kullanılabilir ancak sonuçlar sorgu terimi yerine dizininizdeki gerçek belgeler olur. <br/><br/>[**Eş anlamlılar**](search-synonyms.md), kullanıcının alternatif terim belirtmesine gerek kalmadan bir sorguyu kapsamını genişleten eşdeğer terimlerle ilişkilendirir. <br/><br/>[**İsabet vurgulama**](/rest/api/searchservice/Search-Documents), arama sonuçlarında eşleşen bir anahtar sözcüğe metin biçimlendirmesi uygular. Hangi alanların vurgulanan kod parçacıklarını döndürdüğünü seçebilirsiniz.<br/><br/>Dizin şeması aracılığıyla birden fazla alan için [**Sıralama**](/rest/api/searchservice/Search-Documents) sunulur ve sonra tek bir arama parametresi ile sorgu zamanında açılıp kapatılır.<br/><br/> Arama sonuçlarınızı [**sayfalama**](search-pagination-page-layout.md) ve daraltma, Azure bilişsel arama 'nin arama sonuçlarınız üzerinde sunduğu ince ayar denetimi ile kolay bir şekilde ayarlanır.  <br/><br/>|
+
+## <a name="security-features"></a>Güvenlik özellikleri
+
+| Alan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Özellikler |
+|-------------------|----------|
+| Veri şifrelemesi | [**Bekleyen Microsoft tarafından yönetilen şifreleme**](search-security-overview.md#encrypted-transmissions-and-storage) , iç depolama katmanında yerleşik olarak bulunur ve geri alınamaz. <br/><br/>Azure Key Vault içinde oluşturduğunuz ve yönettiğiniz [**müşteri tarafından yönetilen şifreleme anahtarları**](search-security-manage-encryption-keys.md) , dizinlerin ve eş anlamlı eşlemelerin ek şifrelenebilmesi için kullanılabilir. 1 2020 Ağustos 'Tan sonra oluşturulan hizmetler için, CMK şifrelemesi, dizini oluşturulmuş içeriğin tam çift şifrelemesi için geçici disklerdeki verilere genişletilir.|
+| Endpoint protection | [**Gelen güvenlik duvarı desteği Için IP kuralları**](service-configure-firewall.md) , arama hizmetinin istekleri kabul edeceği IP aralıklarını ayarlamanıza olanak sağlar.<br/><br/>Tüm istekleri bir sanal ağ üzerinden zorlamak için Azure özel bağlantısını kullanarak [**özel bir uç nokta oluşturun**](service-create-private-endpoint.md) . |
+| Giden güvenlik (dizin oluşturucular) | [**Özel uç noktalar aracılığıyla veri erişimi**](search-indexer-howto-access-private.md) , dizin oluşturucunun Azure özel bağlantısı aracılığıyla korunan Azure kaynaklarına bağlanmasına izin verir.<br/><br/>[**Güvenilir bir kimlik kullanılarak veri erişimi**](search-howto-managed-identities-data-sources.md) , dış veri kaynaklarına yönelik bağlantı dizelerinin Kullanıcı adlarını ve parolaları belirleyebileceği anlamına gelir. Bir dizin oluşturucu veri kaynağına bağlanırsa, arama hizmeti daha önce güvenilir bir hizmet olarak kaydedilmişse, kaynak bağlantıya izin verir. |
+
+## <a name="portal-features"></a>Portal özellikleri
+
+| Alan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Özellikler |
+|-------------------|----------|
+| Prototip oluşturma ve inceleme araçları | [**Veri alma Sihirbazı**](search-import-data-portal.md) dizinler, Dizin oluşturucular, becerileri ve veri kaynağı tanımları oluşturur. <br/><br/>[**Arama Gezgini**](search-explorer.md) sorguları test etmek ve Puanlama profillerini iyileştirmek için kullanılır.<br/><br/>[**Demo uygulaması oluşturma**](search-create-app-portal.md) , arama deneyimini test etmek için KULLANıLABILECEK bir HTML sayfası oluşturmak için kullanılır.  |
+| İzleme ve tanılama | Her zaman portalda görünür olan ölçümleri bir bakışta görmek için [**izleme özelliklerini etkinleştirin**](search-monitor-usage.md) . Ek bir yapılandırma gerekmeden saniye başına sorgu sayısı, gecikme süresi ve azaltma ölçümleri toplanıp portal sayfalarında raporlanır.|
+
+## <a name="programmability"></a>Programlama
+
+| Alan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Özellikler |
+|-------------------|----------|
+| REST | [**Service REST API**](https://docs.microsoft.com/rest/api/searchservice/) , dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Yönetim REST API**](https://docs.microsoft.com/rest/api/searchmanagement/) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz.|
+| .NET için Azure SDK | [**Azure.Search.Doc**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) işlemler, dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Microsoft. Azure. Management. Search**](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz.|
+| Java için Azure SDK | [**com.azure.search.doc**](https://docs.microsoft.com/java/api/com.azure.search.documents) işlemler, dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**com. Microsoft. Azure. Management. Search**](https://docs.microsoft.com/java/api/overview/azure/search/management) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz.|
+| Python için Azure SDK | [**Azure-Search-Belgeler**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme) , dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Azure-MGMT-arama**](https://docs.microsoft.com/python/api/overview/azure/search/management) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz. |
+| JavaScript/TypeScript için Azure SDK | [**Azure/Search belgeleri**](https://docs.microsoft.com/javascript/api/@azure/search-documents/) , dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Azure/ARM-arama**](https://docs.microsoft.com/javascript/api/@azure/arm-search/) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz. |
+
+## <a name="see-also"></a>Ayrıca bkz.
+
++ [Bilişsel Arama yenilikleri](whats-new.md)
+
++ [Bilişsel Arama Önizleme özellikleri](search-api-preview.md)

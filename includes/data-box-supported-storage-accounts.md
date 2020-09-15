@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 06/08/2020
+ms.date: 09/git14/2020
 ms.author: alkohli
-ms.openlocfilehash: da36e2bbf358a1c61d2b9b3f7ede592ac88fd427
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 91f91b1260cc445f90c2608fc5259ad61acd37ac
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200316"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533316"
 ---
 Data Box cihaz için desteklenen depolama hesaplarının ve depolama türlerinin bir listesi aşağıda verilmiştir. Tüm farklı depolama hesabı türlerinin ve tüm yeteneklerini tam bir liste için bkz. [depolama hesabı türleri](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 
@@ -41,7 +41,7 @@ Dışarı aktarma siparişlerinde, aşağıdaki tabloda desteklenen depolama hes
 | Sayfa Blobu depolama Premium | |Y | | |
 
 > [!IMPORTANT]
-> - Genel amaçlı hesaplar için Data Box kuyruk, tablo, disk ve Azure Data Lake Gen 2 depolama türlerini desteklemez.
+> - Genel amaçlı hesaplar için Data Box içeri aktarma siparişleri için sırayı, tabloyu ve disk depolama türlerini desteklemez. Data Box, genel amaçlı hesaplar için kuyruk, tablo, disk ve Azure Data Lake Gen 2 depolama türlerini desteklemez.
 > - Data Box BLOB depolama ve blok BLOB depolama hesapları için ekleme bloblarını desteklemez.
 > - Data Box Premium dosya depolama hesaplarını desteklemez.
 > - Sayfa bloblarına yüklenen veriler, VHD 'ler gibi 512 bayt hizalı olmalıdır.

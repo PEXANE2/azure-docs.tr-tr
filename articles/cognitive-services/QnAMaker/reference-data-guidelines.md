@@ -1,14 +1,14 @@
 ---
 title: Veri başvurusunu içeri ve dışarı aktarma-Soru-Cevap Oluşturma
-description: URL türlerinin QnA çiftlerini içeri ve dışarı aktarmak için nasıl kullanılacağını anlayın.
+description: Bilgi Bankası yedeğiniz, depolama ve değiştirme için en iyi sonuçları elde etmek için bu içeri ve dışarı aktarma başvurusunu kullanın.
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c77f51263206c3cc0d4b546e1728963211a186c6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804252"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532163"
 ---
 # <a name="import-and-export-data-reference"></a>Veri başvurusunu içeri ve dışarı aktarma
 

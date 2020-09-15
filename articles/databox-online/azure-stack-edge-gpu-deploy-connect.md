@@ -1,6 +1,6 @@
 ---
 title: Azure portal ' de GPU ile Azure Stack Edge cihazını bağlama, yapılandırma, etkinleştirme öğreticisi | Microsoft Docs
-description: Azure Stack Edge GPU 'YU dağıtmaya yönelik öğretici, fiziksel cihazınızı bağlanmanızı, ayarlamanıza ve etkinleştirmenizi sağlar.
+description: Yerel Web Kullanıcı arabirimini kullanarak Azure Stack Edge cihazınıza yerleşik bir GPU ile nasıl bağlanacağınızı öğrenin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3b500a7d93d19bcc0cd9c23d64ad079f0abfd353
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: ac3ba2583e0f9a42b7f139538eee04de8980b492
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421365"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532265"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge 'e bağlanma
 
@@ -48,17 +48,17 @@ Azure Stack Edge cihazınızı GPU ile yapılandırmadan ve ayarlamadan önce ş
     Cihazın geri düzlemi, almış olduğunuz modele bağlı olarak biraz farklı görünebilir. Daha fazla bilgi için bkz. [cihazınızı kabloyla](azure-stack-edge-gpu-deploy-install.md#cable-the-device)bağlama.
 
 
-3. Bir tarayıcı penceresi açın ve konumundaki cihazın yerel Web Kullanıcı arabirimine erişin `https://192.168.100.10` .  
-    Bu eylem, cihazı etkinleştirdikten sonra birkaç dakika sürebilir.
+3. Tarayıcı penceresini açın ve `https://192.168.100.10` adresinden cihazın yerel web kullanıcı arabirimine erişin.  
+    Siz cihazı açtıktan sonra bu eylem birkaç dakika sürebilir.
 
-    Bir hata veya Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu belirten bir uyarı görürsünüz. 
+    Web sitesinin güvenlik sertifikasında sorun olduğunu belirten bir hata veya uyarı görürsünüz. 
    
     ![Web sitesi güvenlik sertifikası hata iletisi](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
 
 4. **Bu Web sayfasına devam et**' i seçin.  
-    Bu adımlar, kullanmakta olduğunuz tarayıcıya bağlı olarak farklılık gösterebilir.
+    Bu adımlar kullandığınız tarayıcıya bağlı olarak değişebilir.
 
-5. Cihazınızın Web Kullanıcı arabiriminde oturum açın. Varsayılan parola *Parola1*' dir. 
+5. Cihazınızın web kullanıcı arabiriminde oturum açın. Varsayılan parola *Parola1*' dir. 
    
     ![Azure Stack Edge cihaz oturum açma sayfası](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 

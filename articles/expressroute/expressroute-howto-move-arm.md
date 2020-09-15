@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2b88fb32fd4bc07bbaaaf8834646e8d585491dc6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 460ea446fc6dfc43e81a1a57bbba032a61f3a72d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395698"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532554"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>ExpressRoute devrelerini klasik bilgisayardan Kaynak Yöneticisi dağıtım modeline PowerShell kullanarak taşıma
 
@@ -95,14 +95,14 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
 Klasik modda, bir ExpressRoute bağlantı hattının bir bölgeye bağlı olması kavramı yoktur. Ancak, Kaynak Yöneticisi ' de, her kaynağın bir Azure bölgesine eşlenmesi gerekir. Move-Azexpressroutedevresi cmdlet 'inde belirtilen bölge Teknik olarak herhangi bir bölge olabilir. Kuruluş amacıyla, eşleme konumunuzu en iyi şekilde temsil eden bir bölge seçmek isteyebilirsiniz.
 
 > [!NOTE]
-> Taşıma tamamlandıktan sonra, önceki cmdlet 'te listelenen yeni ad, kaynağı ele almak için kullanılacaktır. Devre adı temel olarak yeniden adlandırılır.
-> 
+> * Klasik ExpressRoute devrenizi Kaynak Yöneticisi dağıtım modeline taşıdıktan sonra, varsayılan olarak hem klasik hem de Kaynak Yöneticisi dağıtım modellerine erişim sahibi olur.
+> * Önceki cmdlet 'inde listelenen yeni ad, kaynağı ele almak için kullanılacaktır. Devre adı temel olarak yeniden adlandırılır.
 
 ## <a name="modify-circuit-access"></a>Devre erişimini Değiştir
 
 ### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>Her iki dağıtım modeli için ExpressRoute devresine erişimini etkinleştirmek için
 
-Klasik ExpressRoute devrenizi Kaynak Yöneticisi dağıtım modeline taşıdıktan sonra, her iki dağıtım modeline de erişimi etkinleştirebilirsiniz. Dağıtım modellerine erişimi etkinleştirmek için aşağıdaki cmdlet 'leri çalıştırın:
+Kaynak Yöneticisi dağıtım modelinde oluşturulan ExpressRoute devreleri için klasik dağıtım modeline erişimi etkinleştirebilirsiniz. Dağıtım modellerine erişimi etkinleştirmek için aşağıdaki cmdlet 'leri çalıştırın:
 
 1. Devre ayrıntılarını alın.
 

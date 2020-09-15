@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: abc625c27617c27a79fe284393cdf7b281973bc4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f5bedde9e5e095b1b8637a09263bf18b06bcddea
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299277"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532350"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti 'nden cihaz kaydetme
 
 Cihaz kimlik bilgilerinin doğru yönetimi, IoT çözümleri gibi yüksek profilli sistemler için önemlidir. Bu tür sistemler için en iyi yöntem, kimlik bilgileri ne zaman, paylaşılan erişim imzaları (SAS) belirtecinin veya X. 509.440 sertifikası güvenliğinin tehlikeye atılıp tehlikede olduğu gibi cihazlara erişimin nasıl iptal edileceği konusunda net bir plana sahip olmanızdır. 
 
-Cihaz sağlama hizmeti 'nde kayıt, bir cihazın [otomatik olarak sağlanmasını](concepts-auto-provisioning.md)sağlar. Sağlanan bir cihaz, IoT Hub ile kaydedilmiş ve ilk [cihaz ikizi](~/articles/iot-hub/iot-hub-devguide-device-twins.md) durumunu almasına ve telemetri verilerini raporlamaya başlamaya izin veren bir aygıttır. Bu makalede, sağlama hizmeti örneğinizden bir cihazın daha sonra yeniden sağlanmasını önleyecek şekilde nasıl yapılacağı açıklanır.
+Cihaz sağlama hizmeti 'nde kayıt, bir cihazın [sağlanmasını](about-iot-dps.md#provisioning-process)sağlar. Sağlanan bir cihaz, IoT Hub ile kaydedilmiş ve ilk [cihaz ikizi](~/articles/iot-hub/iot-hub-devguide-device-twins.md) durumunu almasına ve telemetri verilerini raporlamaya başlamaya izin veren bir aygıttır. Bu makalede, sağlama hizmeti örneğinizden bir cihazın daha sonra yeniden sağlanmasını önleyecek şekilde nasıl yapılacağı açıklanır.
 
 > [!NOTE] 
 > Erişimini iptal ettiğiniz cihazların yeniden deneme ilkesini unutmayın. Örneğin, sonsuz yeniden deneme ilkesine sahip bir cihaz, sağlama hizmeti ile sürekli olarak kaydolmaya çalışabilir. Bu durum hizmet kaynaklarını kullanır ve muhtemelen performansı etkiler.
