@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight kümelerini otomatik olarak ölçeklendirme
-description: Ölçek kümelerini otomatik olarak Apache Hadoop için Azure HDInsight otomatik ölçeklendirme özelliğini kullanın
+title: Azure HDInsight kümelerini otomatik ölçeklendirme ölçeği
+description: Apache Hadoop kümelerini otomatik olarak ölçeklendirmek için Azure HDInsight otomatik ölçeklendirme özelliğini kullanın.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: 4c4b9c60eb967b5791af724e5c15bba887263d44
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 7ce4580b366b57e2a1d4904b6ab63bf1834bdb65
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757872"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090117"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik olarak ölçeklendirme
+# <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
 
 Azure HDInsight 'ın ücretsiz otomatik ölçeklendirme özelliği, daha önce ayarlanan ölçütlere göre kümenizdeki çalışan düğümlerinin sayısını otomatik olarak artırabilir veya azaltabilir. Küme oluşturma sırasında en az ve en fazla düğüm sayısını ayarlarsınız, bir gün-saat zamanlaması veya belirli performans ölçümlerini kullanarak ölçekleme ölçütlerini oluşturun ve HDInsight platformu Rest 'i yapar.
 
@@ -72,12 +72,12 @@ Aşağıdaki koşullar algılandığında otomatik ölçeklendirme bir ölçek i
 
 Aşağıdaki tablo, otomatik ölçeklendirme özelliğiyle uyumlu küme türlerini ve sürümlerini açıklamaktadır.
 
-| Sürüm | Spark | Hive | LLAP | HBase | Kafka | Fırtına | ML |
+| Sürüm | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| ESP olmadan HDInsight 3,6 | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
-| ESP olmadan HDInsight 4,0 | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
-| HDInsight 3,6, ESP ile | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
-| HDInsight 4,0, ESP ile | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
+| ESP olmadan HDInsight 3,6 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+| ESP olmadan HDInsight 4,0 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+| HDInsight 3,6, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+| HDInsight 4,0, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
 
 \* HBase kümeleri, yük tabanlı değil yalnızca zamanlama tabanlı ölçeklendirme için yapılandırılabilir.
 
@@ -243,41 +243,43 @@ Küme ölçümlerinin bir parçası olarak küme ölçeği artırma ve ölçeği
 
 ![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirme ölçümünü etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="other-considerations"></a>Diğer önemli noktalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
-### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Ölçek artırma veya azaltma işlemlerinin gecikme süresini göz önünde bulundurun
+### <a name="consider-the-latency-of-scale-up-and-scale-down-operations"></a>Ölçek artırma ve ölçeği azaltma işlemlerinin gecikmesini göz önünde bulundurun
 
 Ölçeklendirme işleminin tamamlanması 10 ila 20 dakika sürebilir. Özelleştirilmiş bir zamanlama ayarlarken bu gecikmeyi planlayın. Örneğin, küme boyutunun 9:00 ' de 20 olması gerekiyorsa, ölçeklendirme işleminin 9:00 "ile tamamlanmasını sağlamak için zamanlama tetikleyicisini 8:30 olarak daha önceki bir zamana ayarlayın.
 
-### <a name="preparation-for-scaling-down"></a>Ölçeği azaltma hazırlığı
+### <a name="prepare-for-scaling-down"></a>Ölçeklendirme için hazırlanma
 
-Küme ölçeklendirme işlemi sırasında, otomatik ölçeklendirme, hedef boyutunu karşılamak için düğümlerin yetkisini alınır. Görevler bu düğümlerde çalışıyorsa, otomatik ölçeklendirme, görevler tamamlanana kadar bekler. Her çalışan düğüm da bir rol görevi görüyor olduğundan, geçici veriler kalan düğümlere kaydıralınacaktır. Bu nedenle, tüm geçici verileri barındırmak için kalan düğümlerde yeterli alan olduğundan emin olun.
+Küme ölçeklendirme işlemi sırasında, otomatik ölçeklendirme, düğümleri hedef boyutunu karşılayacak şekilde kaldırır. Görevler bu düğümlerde çalışıyorsa, otomatik ölçeklendirme, görevler tamamlanana kadar bekler. Her çalışan düğüm da bir rol görevi görüyor olduğundan, geçici veriler kalan düğümlere kaydırılacağı. Tüm geçici verileri barındırmak için kalan düğümlerde yeterli alan olduğundan emin olun.
 
 Çalışan işler devam edecektir. Bekleyen işler, daha az kullanılabilir çalışan düğümü ile zamanlamaya göre bekleyecektir.
 
-### <a name="minimum-cluster-size"></a>En düşük küme boyutu
+### <a name="be-aware-of-the-minimum-cluster-size"></a>En düşük küme boyutunu bilmelisiniz
 
-Kümenizi üçten az düğüme ölçeklendirmeyin. Kümenizin üçten az düğüme ölçeklendirilmesi, yetersiz dosya çoğaltma nedeniyle güvenli modda takılmasına neden olabilir.  Daha fazla bilgi için bkz. [güvenli modda takılme](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+Kümenizi üçten az düğüme ölçeklendirmeyin. Kümenizin üçten az düğüme ölçeklendirilmesi, yetersiz dosya çoğaltma nedeniyle güvenli modda takılmasına neden olabilir. Daha fazla bilgi için bkz. [güvenli modda takılme](hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+
+### <a name="increase-the-number-of-mappers-and-reducers"></a>Mapbir ve azaltıcının sayısını artırma
+
+Hadoop kümelerinin otomatik ölçeklendirmeyi Ayrıca, bu işlemleri izler. Bu,, kümenin hala geçerli kaynaklara ihtiyacı olduğunu varsayar. Sorguda büyük miktarda veri olduğunda, paralelliği artırmak ve hacimsel işlemleri hızlandırmak için mapzm ve azaltıcının sayısını artırabilirsiniz. Bu şekilde, ek kaynak olduğunda doğru ölçeklendirme tetiklenecektir. 
+
+### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>En yüksek kullanım senaryosu için Hive yapılandırması için maksimum eşzamanlı sorgu ayarlama
+
+Otomatik ölçeklendirme olayları, ambarı 'nda bulunan *en fazla eşzamanlı sorgu* olan Hive yapılandırmasını değiştirmez. Bu, Hive sunucu 2 etkileşimli hizmeti 'nin, LLAP Daemon 'ları sayısı, yük ve zamanlamaya göre ölçeği yukarı ve aşağı ölçeklense bile herhangi bir zamanda yalnızca verilen sayıda eşzamanlı sorgu işleyebileceği anlamına gelir. Genel öneri, bu yapılandırmayı el ile müdahale önlemek için en yoğun kullanım senaryosuna göre ayarlamadır.
+
+Ancak, yalnızca az sayıda çalışan düğümü varsa ve en fazla toplam eşzamanlı sorgu sayısı çok yüksek olduğunda bir Hive sunucu 2 yeniden başlatma hatası yaşayabilirsiniz. En azından, belirtilen sayıda tez AMS (maksimum eşzamanlı sorgu yapılandırmasına eşit) barındırabilecek çalışan düğümü sayısının en az olması gerekir. 
+
+## <a name="limitations"></a>Sınırlamalar
+
+### <a name="node-label-file-missing"></a>Düğüm etiketi dosyası eksik
+
+HDInsight otomatik ölçeklendirme, bir düğümün görevleri yürütmeye hazırlanma olup olmadığını anlamak için bir düğüm etiketi dosyası kullanır. Düğüm etiketi dosyası, üç çoğaltmaya göre ve üzerinde depolanır. Küme boyutu önemli ölçüde azaltıldığı ve büyük miktarda geçici veri varsa, bu üç çoğaltmanın de bırakılması küçük bir şansınız olur. Bu durumda, küme bir hata durumu girer.
 
 ### <a name="llap-daemons-count"></a>LLAP Daemon 'ları sayısı
 
-Otomatik Ölçeklendirme özelliği etkinleştirilmiş LLAP kümelerinde, otomatik ölçeklendirme yukarı/aşağı olayı, LLAP Daemon 'ları sayısının etkin çalışan düğümü sayısına göre ölçeğini/ölçeğini de ölçeklendirir. Ancak Daemon 'ları sayısında bu değişiklik, ambarı 'nda **num_llap_nodes** config 'de kalıcı değildir. Hive hizmetleri el ile yeniden başlatılırsa, ambarı 'ndaki yapılandırmaya göre LLAP Daemon 'ları sayısı sıfırlanır.
+Otomatik Ölçeklendirme özelliği etkinleştirilmiş LLAP kümelerinde, otomatik ölçek artırma/azaltma olayı aynı zamanda LLAP Daemon 'ları sayısının etkin çalışan düğüm sayısına göre ölçeğini/ölçeğini de ölçeklendirir. Daemon 'ları sayısında değişiklik, `num_llap_nodes` ambarı 'ndaki yapılandırmada kalıcı değildir. Hive hizmetleri el ile yeniden başlatılırsa, LLAP Daemon 'ları sayısı, ambarı 'nda yapılandırma uyarınca sıfırlanır.
 
-Aşağıdaki senaryoyu ele alalım:
-1. 3 çalışan düğümü ile bir LLAP otomatik ölçeklendirme etkin kümesi oluşturulur ve yük tabanlı otomatik ölçeklendirme, en düşük çalışan düğümleri 3 ve en fazla çalışan düğümü 10 olarak etkinleştirilir.
-2. LLAP Daemon 'ları Count config, LLAP yapılandırmasına ve ambarı 'na göre 3 çalışan düğümü ile oluşturulduğundan 3 ' e sahiptir.
-3. Küme üzerinde yük olması nedeniyle bir otomatik ölçeklendirme işlemi tetiklenir, küme artık 10 düğüme ölçeklendirilir.
-4. Düzenli aralıklarla çalışan otomatik ölçeklendirme denetimi, LLAP Daemon 'ları Count 'un 3 olduğunu, ancak etkin çalışan düğümü sayısının 10 olduğunu, otomatik ölçeklendirme işleminin de LLAP Daemon sayısını 10 olarak artıracaktır, ancak bu değişiklik, ambarı yapılandırması-num_llap_nodes içinde kalıcı olmaz.
-5. Otomatik ölçeklendirme artık devre dışı.
-6. Kümede artık 10 çalışan düğümü ve 10 LLAP Daemon 'ları vardır.
-7. LLAP hizmeti el ile yeniden başlatıldı.
-8. Yeniden başlatma sırasında, LLAP yapılandırmasındaki num_llap_nodes yapılandırmasını denetler ve değeri 3 olarak fark eder, bu nedenle Daemon 'ları 3 örneğini alır, ancak çalışan düğümü sayısı 10 ' dur. Artık iki ile arasında bir uyumsuzluk var.
-
-Bu durumda, geçerli etkin çalışan düğüm sayısı ile eşleşecek şekilde **Gelişmiş Hive-Interactive-env altında num_llap_node yapılandırmasını (HIVE LLAP cini çalıştırmak için olan düğüm sayısı)** el ile değiştirmemiz gerekir.
-
-**Not**
-
-Otomatik ölçeklendirme olayları, ambarı 'nda bulunan **en fazla toplam eşzamanlı sorgu** olan Hive yapılandırmasını değiştirmez. Yani, Hive Server 2 etkileşimli hizmeti, **LLAP Daemon 'ları sayısı, yük/zamanlamaya göre ölçeği yukarı ve aşağı ölçeklense bile, her zaman herhangi bir zamanda yalnızca verilen sayıda eşzamanlı sorgu işleyebilir**. Genel öneri, bu yapılandırmayı el ile müdahale edilmesi için en yoğun kullanım senaryosuna göre ayarlamak olacaktır. Ancak, en **az sayıda çalışan düğümü belirtilen sayıda tez AMS (maksimum eşzamanlı sorgu yapılandırmasına eşit) barındıramazsa, biri en fazla toplam eşzamanlı sorgu yapılandırması için yüksek bir değer ayarlamanın başarısız olabileceğini** unutmayın.
+LLAP hizmeti el ile yeniden başlatılırsa, `num_llap_node` geçerli etkin çalışan düğüm sayısıyla eşleşecek şekilde yapılandırmayı (HIVE LLAP cini 'nı çalıştırmak için gereken düğüm sayısı) *Gelişmiş Hive-Interactive-env* altında el ile değiştirmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

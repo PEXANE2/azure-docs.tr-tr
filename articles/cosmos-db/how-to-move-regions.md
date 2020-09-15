@@ -1,72 +1,81 @@
 ---
-title: Azure Cosmos DB hesabını başka bir bölgeye taşımayı öğrenin
-description: Azure Cosmos DB hesabını başka bir bölgeye taşımayı öğrenin
+title: Bir Azure Cosmos DB hesabını başka bir bölgeye taşıma
+description: Azure Cosmos DB hesabını başka bir bölgeye taşımayı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 60c28a96008355491c058cd08dbbb3a1cbffad98
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: b34bc81f48b806b1016fbbd19d3ebc8bfef908c2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059453"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090542"
 ---
-# <a name="how-to-move-an-azure-cosmos-db-account-to-another-region"></a>Azure Cosmos DB hesabını başka bir bölgeye taşıma
+# <a name="move-an-azure-cosmos-db-account-to-another-region"></a>Bir Azure Cosmos DB hesabını başka bir bölgeye taşıma
 
-Bu makalede, verilerin Azure Cosmos DB çoğaltılacağı bir bölgenin nasıl taşınacağı veya hesabın (Azure Resource Manager) meta verilerinin yanı sıra bir bölgeden diğerine nasıl geçirileceği açıklanır.
+Bu makalede aşağıdakilerden birini açıklanmaktadır:
+
+- Verilerin Azure Cosmos DB çoğaltılacağı bölgeyi taşıyın.
+- Hesap (Azure Resource Manager) meta verilerini ve verileri bir bölgeden diğerine geçirin.
 
 ## <a name="move-data-from-one-region-to-another"></a>Verileri bir bölgeden diğerine taşıma
 
-Azure Cosmos DB veri çoğaltmasını yerel olarak destekler, böylece verileri bir bölgeden diğerine taşımak basittir ve Azure portal, Azure PowerShell veya Azure CLı kullanılarak gerçekleştirilebilir ve aşağıdaki adımları içerir:
+Azure Cosmos DB veri çoğaltmasını yerel olarak destekler, bu nedenle verileri bir bölgeden diğerine taşımak basittir. Azure portal, Azure PowerShell veya Azure CLı kullanarak bunu yapabilirsiniz. Aşağıdaki adımları içerir:
 
-1. Hesaba yeni bir bölge ekleyin
+1. Hesaba yeni bir bölge ekleyin.
 
-    Bir Azure Cosmos DB hesabına yeni bir bölge eklemek için bkz. bir [Azure Cosmos DB hesabına bölge ekleme/kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+    Azure Cosmos DB hesabına yeni bir bölge eklemek için, bkz. [bir Azure Cosmos DB hesabına bölge ekleme/kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account).
 
-1. Yeni bölgeye el ile yük devretme gerçekleştirme
+1. Yeni bölgeye el ile yük devretme işlemi gerçekleştirin.
 
-    Kaldırılmakta olan bölgenin şu anda hesap için yazma bölgesi olduğu durumlarda, yukarıda eklenen yeni bölgeye bir yük devretme başlatmanız gerekir. Bu, sıfır kesinti süresi işlemidir. Çok bölgeli bir hesapta bir okuma bölgesi taşıyorsanız, bu adımı atlayabilirsiniz. Yük devretmeyi başlatmak için bkz. [Azure Cosmos hesabında el ile yük devretme gerçekleştirme](how-to-manage-database-account.md#manual-failover)
+    Kaldırılmakta olan bölge şu anda hesap için yazma bölgesidir, önceki adımda eklenen yeni bölgeye bir yük devretme başlatmanız gerekir. Bu sıfır kapalı kalma bir işlemdir. Çok bölgeli bir hesapta bir okuma bölgesi taşıyorsanız, bu adımı atlayabilirsiniz. 
+    
+    Yük devretmeyi başlatmak için bkz. [Azure Cosmos hesabında el ile yük devretme gerçekleştirme](how-to-manage-database-account.md#manual-failover).
 
-1. Özgün bölgeyi kaldır
+1. Özgün bölgeyi kaldırın.
 
-    Bir Azure Cosmos DB hesabından bir bölgeyi kaldırmak için bkz. bir [Azure Cosmos DB hesabına bölge ekleme/kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+    Bir Azure Cosmos DB hesabından bölge kaldırmak için, bkz. [Azure Cosmos DB hesabınızdan bölge ekleme/kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account).
 
-## <a name="migrate-azure-cosmos-db-account-meta-data"></a>Azure Cosmos DB hesabı meta verilerini geçirme
+## <a name="migrate-azure-cosmos-db-account-metadata"></a>Azure Cosmos DB hesabı meta verilerini geçirme
 
-Azure Cosmos DB, hesap meta verilerinin bir bölgeden diğerine geçirilmesini yerel olarak desteklemez. Hesap meta verilerini ve müşteri verilerini bir bölgeden diğerine geçirmek için, istenen bölgede yeni bir hesap oluşturulması ve ardından verilerin el ile kopyalanması gerekir. SQL API 'sinin neredeyse sıfır kapalı kalma süresi geçişi, [değişiklik akışı](change-feed.md) veya onu kullanan bir araç gerektirir. MongoDB API 'SI, Cassandra veya diğer API 'yi geçiriyorsanız veya hesaplar arasında veri geçirirken seçenekler hakkında daha fazla bilgi edinmek için, Şirket [içi veya bulut verilerinizi Azure Cosmos DB 'ye geçirme seçenekleri](cosmosdb-migrationchoices.md)konusuna bakın. Aşağıdaki adımlarda, SQL API için bir Azure Cosmos DB hesabının ve verilerinin bir bölgeden diğerine nasıl geçirileceği gösterilmektedir:
+Azure Cosmos DB, hesap meta verilerinin bir bölgeden diğerine geçirilmesini yerel olarak desteklemez. Hem hesap meta verilerini hem de müşteri verilerini bir bölgeden diğerine geçirmek için, istenen bölgede yeni bir hesap oluşturmanız ve ardından verileri el ile kopyalamanız gerekir. 
 
-1. İstenen bölgede yeni bir Azure Cosmos DB hesabı oluşturun
+SQL API 'SI için neredeyse sıfır kapalı kalma süresi, [değişiklik akışı](change-feed.md) veya onu kullanan bir araç kullanılmasını gerektirir. MongoDB API 'sini, Cassandra API veya başka bir API 'yi geçiriyorsanız veya hesapların arasında veri geçirmeye yönelik seçenekler hakkında daha fazla bilgi edinmek için, bkz. Şirket [içi veya bulut verilerinizi Azure Cosmos DB geçirme seçenekleri](cosmosdb-migrationchoices.md). 
 
-    Azure portal, PowerShell veya CLı ile yeni bir hesap oluşturmak için, [bir Azure Cosmos DB hesabı oluşturun](how-to-manage-database-account.md#create-an-account).
+Aşağıdaki adımlarda, SQL API ve verileri için bir Azure Cosmos DB hesabının bir bölgeden diğerine nasıl geçirileceği gösterilmektedir:
 
-1. Yeni bir veritabanı ve kapsayıcı oluşturma
+1. İstenen bölgede yeni bir Azure Cosmos DB hesabı oluşturun.
 
-    Yeni bir veritabanı ve kapsayıcı oluşturmak için bkz. [Azure Cosmos kapsayıcısı oluşturma](how-to-create-container.md)
+    Azure portal, PowerShell veya Azure CLı aracılığıyla yeni bir hesap oluşturmak için bkz. [Azure Cosmos DB hesabı oluşturma](how-to-manage-database-account.md#create-an-account).
 
-1. Azure Cosmos DB Live Data Migrator aracıyla veri geçirme
+1. Yeni bir veritabanı ve kapsayıcı oluşturun.
 
-    Neredeyse sıfır kapalı kalma süresine sahip verileri geçirmek için bkz. [Azure Cosmos DB canlı veri Migrator aracı](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)
+    Yeni bir veritabanı ve kapsayıcı oluşturmak için bkz. [Azure Cosmos kapsayıcısı oluşturma](how-to-create-container.md).
 
-1. Uygulama bağlantı dizesini Güncelleştir
+1. Azure Cosmos DB Live Data Migrator aracını kullanarak verileri geçirin.
 
-    Canlı Migrator aracı çalışmaya devam ediyorsa, uygulamalarınızın yeni dağıtımında bağlantı bilgilerini güncelleştirin. Uygulamanıza yönelik uç noktalar ve anahtarlar Azure portal alınabilir.
+    Neredeyse sıfır kapalı kalma süresine sahip verileri geçirmek için bkz. [canlı veri Migrator aracı Azure Cosmos DB](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator).
 
-    :::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure portal-gösteren NoSQL veritabanı güvenliğine erişim denetimi (ıAM)":::
+1. Uygulama bağlantı dizesini güncelleştirin.
 
-1. İstekleri yeni uygulamaya yönlendir
+    Canlı veri Migrator aracı çalışmaya devam ediyorsa, uygulamanızın yeni dağıtımında bağlantı bilgilerini güncelleştirin. Uygulamanıza ait uç noktaları ve anahtarları Azure portal alabilirsiniz.
 
-    Yeni uygulama Azure Cosmos DB bağlandığında, istemci isteklerini yeni dağıtımınıza yeniden yönlendirebilirsiniz.
+    :::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="NoSQL veritabanı güvenliğini gösteren Azure portal erişim denetimi.":::
 
-1. Artık gerekli olmayan kaynakları Sil
+1. İstekleri yeni uygulamaya yeniden yönlendirin.
+
+    Yeni uygulama Azure Cosmos DB bağlandıktan sonra, istemci isteklerini yeni dağıtımınıza yeniden yönlendirebilirsiniz.
+
+1. Artık ihtiyacınız olmayan kaynakları silin.
 
     Artık yeni örneğe tamamen yeniden yönlendirilen isteklerle, eski Azure Cosmos DB hesabını ve canlı veri Migrator aracını silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos hesabının yanı sıra veritabanı ve kapsayıcıları yönetme hakkında daha fazla bilgi ve örnek için aşağıdaki makaleleri okuyun:
+Azure Cosmos hesabının yanı sıra veritabanlarının ve kapsayıcıların nasıl yönetileceği hakkında daha fazla bilgi ve örnek için aşağıdaki makaleleri okuyun:
 
 * [Azure Cosmos hesabını yönetme](how-to-manage-database-account.md)
 * [Azure Cosmos DB akışı değiştirme](change-feed.md)

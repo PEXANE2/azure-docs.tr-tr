@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 6744bbf2e77fa0ec275350678e75ff094eec82e0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 806b25fea208afae63ca6be704b22808578d5ba2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650395"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090678"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
 
@@ -36,7 +36,7 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 > Ardışık düzen adımları arasında geçici verileri geçirmek ve işlem hattı çalıştırmalarından sonra verilerinizi sürdürmek için geliştirilmiş bir deneyim, genel önizleme sınıflarında ve ' de bulunur  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Bu sınıflar [deneysel](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental) önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şunlara ihtiyacınız var:
 
@@ -85,7 +85,7 @@ Adlandırılmış bir giriş oluşturduktan sonra, erişim modunu seçebilirsini
 
 Bir veri kümesini ardışık düzen adımınızda geçirmek için:
 
-1. `TabularDataset.as_named_inputs()` `FileDataset.as_named_input()` Bir nesne oluşturmak için veya (sonunda ' sonunda yok) kullanın `DatasetConsumptionConfig`
+1. `TabularDataset.as_named_input()` `FileDataset.as_named_input()` Bir nesne oluşturmak için veya (sonunda ' sonunda yok) kullanın `DatasetConsumptionConfig`
 1. `as_mount()` `as_download()` Erişim modunu ayarlamak için veya kullanın
 1. `arguments`Ya da bağımsız değişkenini kullanarak veri kümelerini ardışık düzen adımlarınızı geçirin `inputs`
 
@@ -97,7 +97,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    inputs=[iris_dataset.as_named_inputs('iris').as_mount()]
+    inputs=[iris_dataset.as_named_input('iris').as_mount()]
 )
 ```
 
@@ -112,7 +112,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    inputs=[train.as_named_inputs('train').as_download(), test.as_named_inputs('test').as_download()]
+    inputs=[train.as_named_input('train').as_download(), test.as_named_input('test').as_download()]
 )
 ```
 
@@ -127,8 +127,8 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    arguments=['--training-folder', train.as_named_inputs('train').as_download()]
-    inputs=[test.as_named_inputs('test').as_download()]
+    arguments=['--training-folder', train.as_named_input('train').as_download()]
+    inputs=[test.as_named_input('test').as_download()]
 )
 
 # In pipeline script

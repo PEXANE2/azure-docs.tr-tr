@@ -5,58 +5,57 @@ documentationcenter: ios
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/17/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d47974554534a0614eb98b473c1e5539ff4d9aa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 33626b7aee615d07ef88dd9fbca46e6512e2cafc
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018017"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090372"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs zengin gönderim
 
 ## <a name="overview"></a>Genel Bakış
 
-Kullanıcıları anlık zengin içerikle birlikte kullanmak için, bir uygulama düz metnin ötesine gönderim yapmak isteyebilir. Bu bildirimler kullanıcı etkileşimlerini yükseltir ve URL, ses, resim/kupon gibi içerikler sunar. Bu öğretici [kullanıcıları bilgilendir](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) konusuna sahiptir ve yükleri içeren anında iletme bildirimlerinin nasıl gönderileceğini gösterir (örneğin, görüntü).
+Kullanıcıları anlık zengin içerikle birlikte kullanmak için, bir uygulama düz metnin ötesine gönderim yapmak isteyebilir. Bu bildirimler kullanıcı etkileşimlerini yükseltir ve URL, ses, resim/kupon gibi içerikler sunar. Bu öğretici [kullanıcılara bildirme](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticisini oluşturur ve yükleri içeren anında iletme bildirimlerinin nasıl gönderileceğini gösterir (örneğin, görüntüler).
 
-Bu öğretici iOS 7 & 8 ile uyumludur.
+Bu öğretici iOS 7 ve 8 ile uyumludur.
 
   ![Üç ekran görüntüsü: Gönder düğmesine sahip bir uygulama ekranı, bir cihazdaki başlangıç ekranı ve geri düğmesi olan bir Windows logosu.][IOS1]
 
 Yüksek düzeyde:
 
 1. Uygulama arka ucu:
-   * Zengin yükü (Bu durumda görüntüde) arka uç veritabanında/yerel depolamada depolar
-   * Bu zengin bildirimin KIMLIĞINI cihaza gönderir
+   * Zengin yükü (Bu durumda görüntüde) arka uç veritabanında/yerel depolama alanında depolar.
+   * Bu zengin bildirimin KIMLIĞINI cihaza gönderir.
 2. Cihazdaki uygulama:
-   * Aldığı KIMLIKLE zengin yük isteyen arka uca iletişim kurar
-   * Veri alımı tamamlandığında cihazda Kullanıcı bildirimleri gönderir ve kullanıcıların daha fazla bilgi edinmek için dokunduğunda yükü hemen gösterir
+   * , Aldığı KIMLIKLE zengin yük isteyen arka uca iletişim kurar.
+   * Veri alımı tamamlandığında cihazda Kullanıcı bildirimleri gönderir ve kullanıcılar daha fazla bilgi edinmek için dokunduğunda yükü hemen gösterir.
 
 ## <a name="webapi-project"></a>WebAPI projesi
 
 1. Visual Studio 'da, [kullanıcıları bilgilendir](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticisinde oluşturduğunuz **apparka uç** projesini açın.
 2. Kullanıcılara bildirmek istediğiniz görüntüyü alın ve proje dizininizde bir **img** klasörüne yerleştirin.
 3. Çözüm Gezgini **tüm dosyaları göster** ' e tıklayın ve **projeye dahil**etmek için klasöre sağ tıklayın.
-4. Görüntü seçiliyken Özellikler penceresi yapı eylemini **gömülü kaynağa**değiştirin.
+4. Görüntü seçiliyken, **Özellikler** penceresindeki **yapı eylemini** **gömülü kaynak**olarak değiştirin.
 
     ![Çözüm Gezgini ekran görüntüsü. Görüntü dosyası seçilidir ve Özellikler bölmesinde, gömülü kaynak derleme eylemi olarak listelenir.][IOS2]
-5. İçinde `Notifications.cs` , aşağıdaki using ifadesini ekleyin:
+5. İçinde `Notifications.cs` , aşağıdaki ifadeyi ekleyin `using` :
 
     ```csharp
     using System.Reflection;
     ```
-6. Tüm `Notifications` sınıfı aşağıdaki kodla güncelleştirin. Yer tutucuları, Bildirim Hub 'ı kimlik bilgilerinizle ve görüntü dosyası adınızla değiştirdiğinizden emin olun.
+
+6. `Notifications`Sınıfını aşağıdaki kodla değiştirin. Yer tutucuları Notification Hub kimlik bilgilerinizle ve görüntü dosyası adıyla değiştirdiğinizden emin olun:
 
     ```csharp
     public class Notification {
@@ -103,10 +102,7 @@ Yüksek düzeyde:
     }
     ```
 
-   > [!NOTE]
-   > seçim Proje kaynaklarını ekleme ve alma hakkında daha fazla bilgi için bkz. [Visual C# kullanarak kaynakları katıştırma ve bunlara erişme](https://support.microsoft.com/kb/319292) .
-
-7. `NotificationsController.cs`' De, ' NotificationsController ' ı aşağıdaki kod parçacıklarıyla yeniden tanımlayın. Bu, cihaza bir ilk sessiz zengin bildirim kimliği gönderir ve görüntünün istemci tarafı alınmasına izin verir:
+7. `NotificationsController.cs`' De, `NotificationsController` aşağıdaki kodla yeniden tanımlayın. Bu, cihaza bir ilk sessiz zengin bildirim KIMLIĞI gönderir ve görüntünün istemci tarafı alınmasına izin verir:
 
     ```csharp
     // Return http response with image binary
@@ -137,42 +133,46 @@ Yüksek düzeyde:
         return Request.CreateResponse(HttpStatusCode.OK);
     }
     ```
-8. Şimdi bu uygulamayı tüm cihazlardan erişilebilir hale getirmek için bir Azure Web sitesine yeniden dağıtacağız. **AppBackend** projesine sağ tıklayıp **Yayımla**’yı seçin.
-9. Yayımlama hedefi olarak Azure Web sitesini seçin. Azure hesabınızla oturum açın ve var olan veya yeni bir Web sitesini seçin ve **bağlantı** SEKMESINDE **hedef URL** özelliğini bir yere göz önünde koyun. Bu öğreticide daha sonra *arka uç uç* noktanız olarak bu URL 'ye başvuracağız. **Yayımla**’ya tıklayın.
+
+8. Şimdi bu uygulamayı tüm cihazlardan erişilebilir hale getirmek için bir Azure Web sitesine yeniden dağıtın. **AppBackend** projesine sağ tıklayıp **Yayımla**’yı seçin.
+9. Yayımlama hedefi olarak **Azure Web sitesini** seçin. Azure hesabınızla oturum açın ve var olan veya yeni bir Web sitesini seçin ve **bağlantı** SEKMESINDE **hedef URL** özelliğini bir yere göz önüne alın. Bu öğreticide daha sonra arka uç *uç* noktanız olarak bu URL 'ye başvurduk. **Yayımla**’yı seçin.
 
 ## <a name="modify-the-ios-project"></a>İOS projesini değiştirme
 
-Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucunu değiştirdiğimize göre, iOS uygulamanızı bu kimliği işleyecek şekilde değiştirecek ve arka ucunuzdaki zengin iletiyi alacak şekilde değiştirmiş olursunuz.
+Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucunu değiştirdiğimize göre, iOS UYGULAMANıZı bu kimliği işleyecek şekilde değiştirin ve arka ucunuzdaki zengin iletiyi alın:
 
 1. İOS projenizi açın ve **hedefler** bölümünde ana uygulama hedeflerinize giderek uzak bildirimleri etkinleştirin.
-2. **Yetenekler**' e tıklayın, **arka plan modlarını**açın ve **uzak bildirimler** onay kutusunu işaretleyin.
+2. **Özellikleri**seçin, **arka plan modlarını**etkinleştirin ve **uzak bildirimler** onay kutusunu işaretleyin.
 
     ![Yetenek ekranını gösteren iOS projesinin ekran görüntüsü. Arka plan modları açıktır ve uzaktan bildirimler onay kutusu seçilidir.][IOS3]
-3. `Main.storyboard`' İ açın ve Kullanıcı öğreticisini [bilgilendirdiğinizden](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) bir görünüm denetleyicinizin (Bu öğreticide giriş görünümü denetleyicisi olarak adlandırılır) olduğundan emin olun.
-4. Görsel taslağınızı bir **Gezinti denetleyicisi** ekleyin ve ana görünüm denetleyicisine sürükleyip sürükleyerek gezintinin **kök görünümünü** yapın. **Ilk görünüm denetleyicisinin** öznitelikler denetçisinde yalnızca gezinti denetleyicisi için seçildiğinden emin olun.
+3. `Main.storyboard`' İ açın ve Kullanıcı öğreticisini [bildir](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticiden bir görünüm denetleyicinizin (Bu öğreticide giriş görünümü denetleyicisi olarak adlandırılır) bulunduğundan emin olun.
+4. Görsel taslağınızı bir **Gezinti denetleyicisi** ekleyin ve giriş görünümü denetleyicisi ' ni denetimin **kök görünümü** haline getirmek için sürükleyin. **Ilk görünüm denetleyicisinin** öznitelikler denetçisinde yalnızca gezinti denetleyicisi için seçildiğinden emin olun.
 5. Görsel taslağa bir **Görünüm denetleyicisi** ekleyin ve bir **görüntü görünümü**ekleyin. Bu, bildirim üzerine tıklayarak kullanıcıların daha fazla bilgi edinmeleri için göreceği sayfasıdır. Görsel taslağınızı aşağıdaki gibi görünmelidir:
 
     ![Görsel taslağın ekran görüntüsü. Üç uygulama ekranı görünür: bir gezinti görünümü, bir giriş görünümü ve bir görüntü görünümü.][IOS4]
-6. Film şeridi ' ndeki **Giriş görünümü denetleyicisine** tıklayın ve kimlik denetçisi altında **özel sınıfı** ve **film şeridi kimliği** olarak **homeviewcontroller** olduğundan emin olun.
-7. Görüntü görüntüleme denetleyicisi için **ımageviewcontroller**ile aynı yapın.
-8. Ardından, az önce oluşturduğunuz Kullanıcı arabirimini işlemek için **ımageviewcontroller** başlıklı yeni bir görünüm denetleyicisi sınıfı oluşturun.
-9. **Imageviewcontroller. h**içinde, aşağıdaki denetleyiciyi denetleyicinin arabirim bildirimlerine ekleyin. İki tane bağlamak için görsel taslak görüntü görünümünden bu özelliklere denetimin sürükleyip sürüklediğinizden emin olun:
+6. Görsel taslakta bulunan **Giriş görünümü denetleyicisine** tıklayın ve kimlik denetçisi altında **özel sınıfı** ve **film şeridi kimliği** olarak **homeviewcontroller** olduğundan emin olun.
+7. Görüntü görüntüleme denetleyicisi için **ımageviewcontroller**olarak aynısını yapın.
+8. Ardından, az önce oluşturduğunuz Kullanıcı arabirimini işlemek için **ımageviewcontroller** adlı yeni bir görünüm denetleyicisi sınıfı oluşturun.
+9. **Imageviewcontroller. h**içinde, denetleyicinin arabirim bildirimlerine aşağıdaki kodu ekleyin. İki tane bağlamak için görsel taslak görüntü görünümünden bu özelliklere denetimin sürükleyip sürüklediğinizden emin olun:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UIImageView *myImage;
     @property (strong) UIImage* imagePayload;
     ```
+
 10. İçinde `imageViewController.m` , aşağıdakilerin sonuna şunu ekleyin `viewDidload` :
 
     ```objc
     // Display the UI Image in UI Image View
     [self.myImage setImage:self.imagePayload];
     ```
+
 11. ' De `AppDelegate.m` , oluşturduğunuz görüntü denetleyicisini içeri aktarın:
 
     ```objc
     #import "imageViewController.h"
     ```
+
 12. Aşağıdaki bildirime sahip bir arabirim bölümü ekleyin:
 
     ```objc
@@ -190,6 +190,7 @@ Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucun
 
     @end
     ```
+
 13. ' De `AppDelegate` , uygulamanızın ' de sessiz bildirimler için kaydolduktan emin olun `application: didFinishLaunchingWithOptions` :
 
     ```objc
@@ -234,7 +235,7 @@ Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucun
     return YES;
     ```
 
-14. `application:didRegisterForRemoteNotificationsWithDeviceToken`Film şeridi Kullanıcı arabirimi değişikliğini hesaba almak için aşağıdaki uygulamada yerine geçin:
+14. `application:didRegisterForRemoteNotificationsWithDeviceToken`Film şeridi Kullanıcı arabirimi değişikliğini hesaba eklemek için aşağıdaki uygulamayı değiştirin:
 
     ```objc
     // Access navigation controller which is at the root of window
@@ -243,6 +244,7 @@ Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucun
     homeViewController *hvc = (homeViewController *)[nc.viewControllers objectAtIndex:0];
     hvc.deviceToken = deviceToken;
     ```
+
 15. Ardından, `AppDelegate.m` uç noktanıza görüntüyü almak için aşağıdaki yöntemleri ekleyin ve alma tamamlandığında yerel bir bildirim gönderin. Yer tutucuyu arka uç uç noktanızla değiştirdiğinizden emin olun `{backend endpoint}` :
 
     ```objc
@@ -324,7 +326,8 @@ Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucun
         // Add "else if" here to handle more types of rich content such as url, sound files, etc.
     }
     ```
-16. Aşağıdaki yöntemlerle içindeki görüntü görünümü denetleyicisini açarak yukarıdaki yerel bildirimi işleyin `AppDelegate.m` :
+
+16. Aşağıdaki yöntemlerle görüntü görünümü denetleyicisini açarak önceki yerel bildirimi işleyin `AppDelegate.m` :
 
     ```objc
     // Helper: redirect users to image view controller

@@ -3,12 +3,12 @@ title: Azure Arc etkin Kubernetes kümesini kapsayıcılar için Azure Izleyici 
 description: Bu makalede, Azure Arc etkin Kubernetes kümelerinde kapsayıcılar için Azure Izleyici ile izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54a8fea6ddb46dc00fff29ad83a2a348d9218380
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092890"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090627"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc etkin Kubernetes kümesini izlemeyi etkinleştir
 
@@ -124,7 +124,7 @@ Daha önce indirdiğiniz PowerShell veya bash betiğini kullanarak kümenizin iz
 4. Mevcut Azure Izleyici Log Analytics çalışma alanını kullanmak istiyorsanız, değişkeni, `$logAnalyticsWorkspaceResourceId` çalışma alanının kaynak kimliğini temsil eden karşılık gelen değerle yapılandırın. Aksi takdirde, değişkenini olarak ayarlayın `""` ve komut dosyası bölgede yoksa, küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturur. Oluşturulan varsayılan çalışma alanı, *defaultworkspace- \<SubscriptionID> - \<Region> *biçimine benzer.
 
     ```powershell
-    $logAnalyticsWorkspaceResourceId = “/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    $logAnalyticsWorkspaceResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
 5. Arc etkin Kubernetes kümeniz bir ara sunucu üzerinden iletişim kuruyorsa, değişkeni `$proxyEndpoint` ara sunucunun URL 'siyle yapılandırın. Küme bir ara sunucu üzerinden iletişim kurmadığından, değerini olarak ayarlayabilirsiniz `""` .  Daha fazla bilgi için bu makalenin ilerleyen kısımlarında [proxy uç noktasını yapılandırma](#configure-proxy-endpoint) konusuna bakın.
@@ -199,7 +199,7 @@ Belirtilen Bash betiğini kullanarak izlemeyi etkinleştirmek için aşağıdaki
 
 Kapsayıcılar için Azure Izleyici Kapsayıcılı aracı ile proxy sunucusu üzerinden iletişim kurmasına izin vermek için bir proxy uç noktası yapılandırabilirsiniz. Kapsayıcılı aracı ve Azure Izleyici arasındaki iletişim bir HTTP veya HTTPS proxy sunucusu olabilir ve hem anonim hem de temel kimlik doğrulaması (Kullanıcı adı/parola) desteklenir.
 
-Ara sunucu yapılandırma değeri aşağıdaki sözdizimine sahiptir:`[protocol://][user:password@]proxyhost[:port]`
+Ara sunucu yapılandırma değeri aşağıdaki sözdizimine sahiptir: `[protocol://][user:password@]proxyhost[:port]`
 
 > [!NOTE]
 >Proxy sunucunuz kimlik doğrulaması gerektirmiyorsa, yine de bir psuedo Kullanıcı adı/parolası belirtmeniz gerekir. Bu, herhangi bir Kullanıcı adı veya parola olabilir.
@@ -218,7 +218,7 @@ Protokolü **http**olarak BELIRTIRSENIZ, http istekleri SSL/TLS güvenli bağlan
 
 ### <a name="configure-using-powershell"></a>PowerShell’i kullanarak yapılandırma
 
-Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örneğin:
+Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örnek:
 
 ```powershell
 $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
@@ -226,7 +226,7 @@ $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
 
 ### <a name="configure-using-bash"></a>Bash kullanarak yapılandırma
 
-Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örneğin:
+Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örnek:
 
 ```bash
 export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>

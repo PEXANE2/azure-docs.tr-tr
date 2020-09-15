@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 063fbd2ad4f2f5d427fd2cb39b8ce9b231eba374
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: cd59bb411a598603ccef215cd9a56b7619115e72
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036439"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090576"
 ---
 # <a name="show-traffic-on-the-map"></a>Haritada trafiği göster
 
@@ -22,9 +22,9 @@ Azure haritalar 'da kullanılabilen iki tür trafik verisi vardır:
 
 - Olay verileri-oluşturma, yol kapanışları ve kazalardan dolayı gibi şeyler için nokta ve hat tabanlı verilerden oluşur.
 - Akış verileri-yollar üzerindeki trafik akışı hakkında ölçümler sağlar. Genellikle trafik akışı verileri, yolların renklendirmek için kullanılır. Renkler, akışı yavaşlatan, hız sınırına veya başka bir ölçüye göre ne kadar trafik altına göre belirlenir. Azure haritalar 'daki trafik akışı verileri üç farklı ölçüm ölçümüne sahiptir:
-    - `relative`-yolun ücretsiz akış hızına göre değişir.
-    - `absolute`-yolda tüm taşıtlardan oluşan mutlak hızdır.
-    - `relative-delay`-beklenen ortalama gecikmeden daha yavaş olan bölgeleri görüntüler.
+    - `relative` -yolun ücretsiz akış hızına göre değişir.
+    - `absolute` -yolda tüm taşıtlardan oluşan mutlak hızdır.
+    - `relative-delay` -beklenen ortalama gecikmeden daha yavaş olan bölgeleri görüntüler.
 
 Aşağıdaki kod, Haritada trafik verilerinin nasıl görüntüleneceğini gösterir.
 
@@ -40,7 +40,7 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Haritada trafiği gösterme' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. kaleme Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>bir haritadaki trafiği gösterme</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Haritada trafiği gösterme' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. kaleme Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>bir haritadaki trafiği gösterme</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="traffic-overlay-options"></a>Trafik kaplama seçenekleri
@@ -49,9 +49,31 @@ Aşağıdaki araç, işleme değişikliğini görmek için farklı trafik kaplam
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Trafik kaplama seçenekleri" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="700" style="width: 100%;" scrolling="no" title="Trafik kaplama seçenekleri" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>trafiği kaplama seçeneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+
+## <a name="add-traffic-controls"></a>Trafik denetimleri ekleme
+
+Haritaya eklenebilen iki farklı trafik denetimi vardır. İlk denetim, `TrafficControl` trafiği açmak ve kapatmak için kullanılabilecek bir iki durumlu düğme ekler. Bu denetimin seçenekleri, trafiği gösterdiğinizde trafik ayarlarının ne zaman kullanılacağını belirtmenize izin verir. Bu denetim, varsayılan olarak göreli trafik akışını ve olay verilerini görüntüler, ancak bunu mutlak trafik akışını göstermek için ve isterseniz herhangi bir olay olmadan değiştirebilirsiniz. İkinci denetim, `TrafficLegendControl` kullanıcının renk kodu yolunda ne anlama geldiğini anlamalarına yardımcı olan haritaya bir trafik akışı göstergesi ekler. Bu denetim haritada yalnızca trafik akışı verileri haritada görüntülenirken ve diğer zamanlarda gizli olacak şekilde görünür.
+
+Aşağıdaki kod, haritaya trafik denetimlerinin nasıl ekleneceğini gösterir.
+
+```JavaScript
+//Att the traffic control toogle button to the top right corner of the map.
+map.controls.add(new atlas.control.TrafficControl(), { position: 'top-right' });
+
+//Att the traffic legend control to the bottom left corner of the map.
+map.controls.add(new atlas.control.TrafficLegendControl(), { position: 'bottom-left' });
+```
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Trafik denetimleri" src="https://codepen.io/azuremaps/embed/ZEWaeLJ?height500&theme-id=0&default-tab=js,result&embed-version=2&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
+Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>trafiği denetimlerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+</iframe>
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

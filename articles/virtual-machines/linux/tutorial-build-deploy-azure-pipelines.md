@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6025e1c257ad7b94586ceb4f89c02c3a44c59c3e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462182"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090321"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Öğretici: Azure DevOps Services ve Azure Pipelines kullanarak uygulamanızı Azure 'da Linux sanal makinelerine dağıtın
 
@@ -147,6 +147,7 @@ Web uygulamanızı yayımlayan bir sürekli tümleştirme (CI) derleme işlem ha
 **Başlangıç** şablonunu seçin ve Java projenizi oluşturan aşağıdaki YAML kod parçacığını kopyalayın ve Apache Maven ile testleri çalıştırır:
 
 ```YAML
+jobs:
 - job: Build
   displayName: Build Maven Project
   steps:
@@ -209,7 +210,7 @@ Daha fazla bilgi için, [Gulp ile Node.js uygulamanızı oluşturma](/azure/devo
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>Linux VM 'ye dağıtmak için CD adımları tanımlama
 
-1. Yukarıdaki YAML söz dizimini kullanarak daha önce sahip olduğunuz ortama ve VM kaynaklarına başvurarak, yukarıdaki işlem hattını düzenleyin ve bir [dağıtım işi](/azure/devops/pipelines/process/deployment-jobs) dahil edin:
+1. Yukarıdaki YAML söz dizimini kullanarak daha önce sahip olduğunuz ortama ve VM kaynaklarına başvurarak, yukarıdaki işlem hattının YAML dosyasını bir [dağıtım işi](/azure/devops/pipelines/process/deployment-jobs) içerecek şekilde değiştirin:
 
    ```YAML
    jobs:  
@@ -218,8 +219,7 @@ Daha fazla bilgi için, [Gulp ile Node.js uygulamanızı oluşturma](/azure/devo
      environment:
        name:  <environment name>
        resourceType: VirtualMachine
-       tags: web1
-     strategy:
+       tags: web
    ```
 2. Ortamdaki her bir sanal makine için tanımladığınız **etiketleri** belirterek dağıtımı almak için ortamdan belirli sanal makine kümelerini seçebilirsiniz.
 Dağıtım işi için tüm YAML şeması [aşağıda](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) verilmiştir.

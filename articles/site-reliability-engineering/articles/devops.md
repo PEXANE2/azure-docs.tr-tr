@@ -3,17 +3,17 @@ title: 'SSS: SRE ve DevOps | Microsoft Docs'
 titleSuffix: Azure
 description: 'SSS: SRE ve DevOps arasındaki ilişkiyi anlama'
 author: dnblankedelman
-manager: efreeman
+manager: ScottCa
 ms.service: site-reliability-engineering
 ms.topic: article
-ms.date: 04/22/2020
+ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: e917c609b484b1a58377fea2f6cdd75dde30ca6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d0698f2780a4ccc41eedbde70fddea1766c5f21
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196419"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090338"
 ---
 # <a name="frequently-asked-questions-whats-the-relationship-between-sre-and-devops"></a>Sık sorulan sorular: SRE ve DevOps arasındaki ilişki nedir?
 
@@ -24,8 +24,8 @@ Site güvenilirliği Mühendisliği ile DevOps arasındaki ilişkiyi kapsayan ya
 SRE ve DevOps, dahil edilen güçlüklere yanıt olarak oluşturulan ve geliştirilen modern işlemler uygulamalardır:
 
 - üretim ortamlarımızın ve geliştirme işlemlerimizin büyümekte olan karmaşıklığı
-- Bu ortamların sürekli olarak çalışmaya yönelik iş bağımlılığını artırma
-- Bu ortamların boyutuyla birlikte iş gücünü ölçeklendirmeme
+- işletmelerin bu ortamların sürekli çalışmasına olan bağımlılığının artması
+- iş gücünü bu ortamların boyutuyla doğrusal olarak ölçeklendirmenin mümkün olmaması
 - Hala işletimsel kararlılığı korurken daha hızlı hareket etmeniz gerekir
 
 Her iki işlem de, izleme/Observability, otomasyon, belgeler ve işbirliğine dayalı yazılım geliştirme araçları gibi bu güçlükler için önemli olan konularla ilgili değer dikkatini sağlar.

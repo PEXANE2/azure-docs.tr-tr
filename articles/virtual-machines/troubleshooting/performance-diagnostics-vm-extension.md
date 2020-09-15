@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028558"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090661"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows için Azure Performans Tanılama VM Uzantısı
 
@@ -29,7 +29,15 @@ Azure Performans Tanılama VM uzantısı, Windows VM 'lerinden Performans Tanıl
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu uzantı Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 ve Windows Server 2016 üzerine yüklenebilir. Ayrıca, Windows 8.1 ve Windows 10 ' da de yüklenebilir.
+Bu uzantı, üzerine yüklenebilir
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ## <a name="extension-schema"></a>Uzantı şeması
 Aşağıdaki JSON, Azure Performans Tanılama VM Uzantısı şemasını gösterir. Bu uzantı, tanılama çıkışını ve raporunu depolamak için bir depolama hesabının adını ve anahtarını gerektirir. Bu değerler duyarlıdır. Depolama hesabı anahtarı korumalı ayar Yapılandırması içinde depolanmalıdır. Azure VM Uzantısı korumalı ayar verileri şifrelenir ve yalnızca hedef sanal makinede şifresi çözülür. **StorageAccountName** ve **storageaccountkey** 'ın büyük/küçük harfe duyarlı olduğunu unutmayın. Aşağıdaki bölümde, diğer gerekli parametreler listelenmiştir.
@@ -71,7 +79,7 @@ Aşağıdaki JSON, Azure Performans Tanılama VM Uzantısı şemasını gösteri
 |apiVersion|2015-06-15|API sürümü.
 |yayımcı|Microsoft. Azure. performance. Diagnostics|Uzantı için yayımcı ad alanı.
 |tür|AzurePerformanceDiagnostics|VM uzantısının türü.
-|typeHandlerVersion|1,0|Uzantı işleyicisinin sürümü.
+|typeHandlerVersion|1.0|Uzantı işleyicisinin sürümü.
 |Performanslı Orceni|basit|Verilerin yakalanması için performans senaryosu. Geçerli değerler şunlardır: **Basic**, **vmslow**, **azurefiles**ve **Custom**.
 |traceDurationInSeconds|300|İzleme seçeneklerinden herhangi biri seçilirse izlemelerin süresi.
 |perfCounterTrace|p|Performans sayacı Izlemesini etkinleştirme seçeneği. Geçerli değerler **p** veya boş değerdir. Bu izlemeyi yakalamak istemiyorsanız, değeri boş bırakın.

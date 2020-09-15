@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 934a7546464cf552c355ee6b4e278b79a0f9ff90
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8cc16e611002748dad2716a1c8dc914f297da9f1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83747496"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090559"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Web hizmetini Google Maps 'tan geçirme
 
@@ -94,7 +94,7 @@ Bu tablo, Google Maps API parametrelerine Azure haritalar 'daki karşılaştır�
 | `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
 | `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `latlng`                    | `query`  |
-| `location_type`             | *N/A*     |
+| `location_type`             | *Yok*     |
 | `result_type`               | `entityType`    |
 
 [Arama için en iyi uygulamaları](how-to-use-best-practices-for-search.md)gözden geçirin.
@@ -138,9 +138,9 @@ Tabloda, Google Maps API parametrelerine benzer Azure Maps API parametreleri ile
 
 | Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi |
 |---------------------------|-------------------------------------|
-| `fields`                  | *N/A*                               |
+| `fields`                  | *Yok*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *N/A*                               |
+| `inputtype`               | *Yok*                               |
 | `key`                     | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
 | `language`                | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `locationbias`            | `lat``lon`ve`radius`<br/>`topLeft` ve `btmRight`<br/>`countrySet`  |
@@ -157,13 +157,13 @@ Tablo, Google Maps API parametrelerini karşılaştırılabilir Azure Maps API p
 | `keyword`                   | `categorySet` ve `brandSet`        |
 | `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `location`                  | `lat` ve `lon`                     |
-| `maxprice`                  | *N/A*                               |
-| `minprice`                  | *N/A*                               |
+| `maxprice`                  | *Yok*                               |
+| `minprice`                  | *Yok*                               |
 | `name`                      | `categorySet` ve `brandSet`        |
-| `opennow`                   | *N/A*                               |
+| `opennow`                   | *Yok*                               |
 | `pagetoken`                 | `ofs` ve `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *N/A*                               |
+| `rankby`                    | *Yok*                               |
 | `type`                      | `categorySet –` Bkz. [desteklenen arama kategorileri](supported-search-categories.md) belgeleri.   |
 
 ## <a name="calculate-routes-and-directions"></a>Rotaları ve yönleri hesapla
@@ -243,10 +243,10 @@ Tablo çapraz başvuruları, Google Maps API parametreleri ile Azure haritalar '
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | *Yok* – bu, coğrafi kodlama ile ilgili bir özelliktir. `countrySet`Azure Maps coğrafi kodlama API 'sini kullanırken parametresini kullanın.  |
-| `scale`                     | *N/A*                              |
+| `scale`                     | *Yok*                              |
 | `size`                      | `width` ve `height` – boyutu 8192x8192 olabilir. |
-| `style`                     | *N/A*                              |
-| `visible`                   | *N/A*                              |
+| `style`                     | *Yok*                              |
+| `visible`                   | *Yok*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
@@ -495,6 +495,9 @@ Azure haritalar REST hizmetleri hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Hizmetler modülünü kullanma (Web SDK)](how-to-use-best-practices-for-routing.md)
+
+> [!div class="nextstepaction"]
+> [Azure haritalar REST hizmeti API başvuru belgeleri](https://docs.microsoft.com/rest/api/maps/)
 
 > [!div class="nextstepaction"]
 > [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)

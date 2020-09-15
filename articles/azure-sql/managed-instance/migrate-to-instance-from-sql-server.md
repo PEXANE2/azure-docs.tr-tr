@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a54cf2ed228a166ea3d87c14515f41d5b0e7aed9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209488"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090236"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL yönetilen örneğine örnek geçişi SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -126,7 +126,7 @@ Bu senaryo ve veritabanı geçiş hizmeti için yapılandırma adımları hakkı
 
 Aşağıdaki diyagramda, işleme ilişkin üst düzey bir genel bakış sunulmaktadır:
 
-![geçiş-akış](./media/migrate-to-instance-from-sql-server/migration-flow.png)
+![Diyagramda, Azure depolama 'ya giden URL 'ye yedekleme/karşıya yükleme etiketli bir oka ve Azure depolama 'dan yönetilen bir SQL örneğine GERI yükleme etiketli ikinci bir oka sahip SQL Server gösterilmektedir.](./media/migrate-to-instance-from-sql-server/migration-flow.png)
 
 Aşağıdaki tabloda, çalıştırdığınız kaynak SQL Server sürümüne bağlı olarak kullanabileceğiniz yöntemlerle ilgili daha fazla bilgi verilmektedir:
 

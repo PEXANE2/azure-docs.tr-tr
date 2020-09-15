@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 08/11/2020
-ms.openlocfilehash: 18e1ff05d76937f8809408da0ed25f55120e456a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/15/2020
+ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440584"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090610"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için kurulumu özelleştirme
 
@@ -40,7 +40,7 @@ Standart ve hızlı özel kurulumlarla hem ücretsiz (Lisanssız) hem de ücretl
 
 Aşağıdaki sınırlamalar yalnızca standart özel kurulumların için geçerlidir:
 
-- Genel derleme önbelleği 'ne (GAC) derlemeleri yüklemek için komut dosyasında *gacutil.exe* kullanmak istiyorsanız, özel kurulumlarınızın bir parçası olarak *gacutil.exe* sağlamanız gerekir. Ya da, daha sonra "yönergeler" bölümünde ele alınan *genel önizleme* kapsayıcımız içinde sunulan kopyayı kullanabilirsiniz.
+- Genel derleme önbelleği 'ne (GAC) derlemeleri yüklemek için komut dosyasında *gacutil.exe* kullanmak istiyorsanız, özel kurulumlarınızın bir parçası olarak *gacutil.exe* sağlamanız gerekir. Ya da *genel önizleme* Kapsayıcımız *örnek* klasöründe sağlanan kopyayı kullanabilirsiniz, aşağıdaki **Standart özel kurulum örnekleri** bölümüne bakın.
 
 - Betiğinizdeki bir alt klasöre başvurmak istiyorsanız, *msiexec.exe* `.\` kök klasöre başvurmak için gösterimi desteklemez. Yerine bir komut kullanın `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` .
 
@@ -48,7 +48,7 @@ Aşağıdaki sınırlamalar yalnızca standart özel kurulumların için geçerl
 
 - IBM ıferies erişimi ODBC sürücüsü Azure-SSIS IR desteklenmez. Özel kurulumunuz sırasında yükleme hataları görebilirsiniz. Bunu yaparsanız yardım için IBM desteği ile iletişime geçin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

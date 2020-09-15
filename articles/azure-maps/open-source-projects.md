@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f24a04db9317083fb47c0956174e649b5bd7ae10
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815700"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090525"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure haritalar topluluk-açık kaynaklı projeler
 
@@ -22,12 +22,14 @@ Bu açık kaynaklı ve topluluk odaklı girişimler, Azure haritalar ekibi taraf
 
 Aşağıda, en popüler Azure haritaları açık kaynaklı projeler ve örnekler listelenmiştir.
 
-**Göz**
+**Botlar**
 
 | Proje Adı | Açıklama |
 |-|-|
 | [Bot Framework-Ilgilendiğiniz beceri noktası](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Ilgilendiğiniz beceri noktası, Azure bot hizmeti ve bot Framework ile Azure haritalar 'ı kullanarak sanal bir yardımcı ile ilgili çok sayıda özellik sağlar. |
 | [BotBuilder konumu](https://github.com/Microsoft/BotBuilder-Location) | Bing Haritalar REST Hizmetleri tarafından desteklenen Microsoft bot Framework için açık kaynaklı konum seçici denetimi. |
+
+<a name="open-web-sdk-modules"></a>
 
 **Açık Web SDK modülleri**
 
@@ -35,7 +37,11 @@ Aşağıda, Azure Maps web SDK 'sının yeteneklerini genişleten açık kaynakl
 
 | Proje Adı | Açıklama |
 |-|-|
-| [Azure haritalar animasyon modülü](https://github.com/Azure-Samples/azure-maps-animations)| Azure Haritalar Web SDK 'Sı ile kullanmak için zengin bir animasyon kitaplığı. |
+| [Azure haritalar animasyon modülü](https://github.com/Azure-Samples/azure-maps-animations) | Azure Haritalar Web SDK 'Sı ile kullanmak için zengin bir animasyon kitaplığı. |
+| [Azure Maps coğrafi konum denetim modülü](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Kullanıcının haritada konumunu bulmak için tarayıcının coğrafi konum API 'sini kullanan bir denetim sağlayan bir Azure Maps web SDK modülü. |
+| [Azure haritalar tam ekran denetim modülü](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | Haritayı tam ekranda göstermek için bir denetim sağlayan bir Azure Maps web SDK modülü. |
+| [Azure haritalar seçim denetimi modülü](https://github.com/Azure-Samples/azure-maps-selection-control) | Çizim araçlarını kullanarak veya bir yol aralığı poligonu isteyerek veri kaynağındaki verileri seçmeye yönelik denetimler sağlayan bir Azure Maps web SDK modülü. |
+| [Azure haritalar eşitleme eşleme Modülü](https://github.com/Azure-Samples/azure-maps-sync-maps) | İki veya daha fazla harita kameralarını eşitleyen bir Azure Maps web SDK modülü. |
 | [Azure haritalar Hizmetleri Kullanıcı arabirimi modülü](https://github.com/Azure-Samples/azure-maps-services-ui) | Azure haritalar REST hizmetlerini çevrelediği Web UI denetimleri kümesi. |
 
 **Örnekler**

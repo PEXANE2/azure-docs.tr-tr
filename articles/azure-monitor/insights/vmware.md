@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322916"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090185"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Izleyici 'de VMware İzleme (kullanım dışı) çözümü
 
@@ -42,7 +42,7 @@ ESXi konaklarından tüm Syslog verilerini almak için bir Linux işletim sistem
 ### <a name="configure-syslog-collection"></a>Syslog koleksiyonunu yapılandırma
 1. VSphere için Syslog iletmeyi ayarlayın. Syslog iletmeyi ayarlamaya yardımcı olacak ayrıntılı bilgiler için, bkz. [ESXi 5,0 ve üzeri için Syslog yapılandırma (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). **ESXi ana bilgisayar yapılandırması**  >  **yazılım**  >  **Gelişmiş ayarlar**  >  **Syslog**' a gidin.
    ![vspburconfig](./media/vmware/vsphere1.png)  
-1. *Syslog. Global. logHost* alanında, Linux sunucunuzu ve *1514*numaralı bağlantı noktasını ekleyin. Örneğin `tcp://hostname:1514` veya `tcp://123.456.789.101:1514` olabilir.
+1. *Syslog. Global. logHost* alanında, Linux sunucunuzu ve *1514*numaralı bağlantı noktasını ekleyin. Örneğin `tcp://hostname:1514` veya `tcp://123.456.789.101:1514`
 1. Syslog için ESXi ana bilgisayar güvenlik duvarını açın. **ESXi ana bilgisayar yapılandırması**  >  **Yazılım**  >  **Güvenlik profili**  >  **Güvenlik duvarı** ve açık **Özellikler**.  
 
     ![vsizefw](./media/vmware/vsphere2.png)  
@@ -66,7 +66,7 @@ ESXi konaklarından tüm Syslog verilerini almak için bir Linux işletim sistem
 
 1. Azure portal için bir günlük sorgusu gerçekleştirin `VMware_CL` . Azure Izleyici Syslog verilerini toplarken Syslog biçimini korur. Portalda, *ana bilgisayar* adı ve *ProcessName*gibi bazı belirli alanlar yakalanır.  
 
-    ![tür](./media/vmware/type.png)  
+    ![Ekran görüntüsü, zaman damgamış bir sonuçla Type = VMware_CL için bir günlük sorgusu gösterir.](./media/vmware/type.png)  
 
     Görünüm günlüğü arama sonuçlarınız yukarıdaki görüntüyle benzerdir VMware İzleme çözüm panosunu kullanmak üzere ayarlanır.  
 
@@ -75,7 +75,7 @@ VMware İzleme çözümü, etkinleştirdiğiniz Linux için Log Analytics aracı
 
 Aşağıdaki tabloda veri toplama yöntemleri ve verilerin toplanmasına ilişkin diğer ayrıntılar gösterilmektedir.
 
-| platform | Linux için Log Analytics Aracısı | SCOM Aracısı | Azure Storage | SCOM gerekli mi? | Yönetim grubu aracılığıyla gönderilen SCOM Aracısı verileri | toplama sıklığı |
+| platform | Linux için Log Analytics Aracısı | System Center Operations Manager Aracısı | Azure Storage | Operations Manager gerekli mi? | Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager | toplama sıklığı |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |3 dakikada bir |
 
@@ -105,7 +105,7 @@ Aşağıdaki tabloda VMware İzleme çözümü tarafından toplanan veri alanı 
 ## <a name="vmware-monitoring-solution-overview"></a>VMware İzleme çözüme genel bakış
 VMware kutucuğu Log Analytics çalışma alanınızda görünür. Hatalara ilişkin üst düzey bir görünüm sağlar. Kutucuğa tıkladığınızda bir Pano görünümüne gidebilirsiniz.
 
-![tile (döşeme)](./media/vmware/tile.png)
+![Ekran görüntüsü, dokuz başarısızlık gösteren VMware kutucuğunu gösterir.](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>Pano görünümünde gezinme
 **VMware** Pano görünümünde, Blade 'leri şu şekilde düzenlenmiştir:
@@ -147,13 +147,13 @@ Ek ESXi konak VM oluşturma verilerini görmek isterseniz, bir ESXi ana bilgisay
 #### <a name="common-log-queries"></a>Ortak günlük sorguları
 Çözüm, yüksek depolama alanı, depolama gecikme süresi ve yol hatası gibi ESXi konaklarınızı yönetmenize yardımcı olabilecek diğer yararlı sorguları içerir.
 
-![lardır](./media/vmware/queries.png)
+![Ekran görüntüsünde, yararlı saklı sorgular olan ÖNERILEN aramalar gösterilmektedir.](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Sorguları kaydet
 Günlük sorgularını kaydetmek, Azure Izleyici 'de standart bir özelliktir ve faydalı bulduğunuz sorguları korumanıza yardımcı olabilir. Faydalı bulduğunuz bir sorgu oluşturduktan sonra **Sık Kullanılanlar**' a tıklayarak bunu kaydedin. Kayıtlı bir sorgu daha sonra kendi özel panolarınızı oluşturabileceğiniz [Pano](../learn/tutorial-logs-dashboards.md) sayfasından daha sonra kolayca yeniden kullanmanıza olanak tanır.
 
-![DockerDashboardView](./media/vmware/dockerdashboardview.png)
+![Ekran görüntüsü, geri al, dışarı aktar, uyar, Kaydet, Sık Kullanılanlar ve geçmiş simgelerle günlük araması etiketli özel panonun bir parçasını gösterir.](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Sorgulardan uyarı oluşturma
 Sorgularınızı oluşturduktan sonra, belirli olaylar oluştuğunda sizi uyarmak için sorguları kullanmak isteyebilirsiniz. Uyarı oluşturma hakkında bilgi için bkz. [Log Analytics Uyarıları](../platform/alerts-overview.md) . Uyarı sorgularının ve diğer sorgu örneklerinin örnekleri için bkz. Log Analytics Web günlüğü gönderisini [kullanarak VMware 'Yi izleme](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) .
@@ -179,20 +179,20 @@ Birden çok neden olabilir:
 
 * ESXi ana bilgisayarı, omsagent çalıştıran VM 'ye doğru bir şekilde veri itimez. Test etmek için aşağıdaki adımları gerçekleştirin:
 
-  1. Doğrulamak için, SSH kullanarak ESXi konağında oturum açın ve şu komutu çalıştırın:`nc -z ipaddressofVM 1514`
+  1. Doğrulamak için, SSH kullanarak ESXi konağında oturum açın ve şu komutu çalıştırın: `nc -z ipaddressofVM 1514`
 
       Bu başarılı olmazsa, gelişmiş yapılandırmadaki vSphere ayarları muhtemelen doğru değildir. Syslog iletimi için ESXi konağını ayarlama hakkında bilgi için bkz. [Syslog toplamasını yapılandırma](#configure-syslog-collection) .
-  1. Syslog bağlantı noktası bağlantısı başarılı olursa, ancak yine de herhangi bir veri görmezseniz, aşağıdaki komutu çalıştırmak için SSH kullanarak ESXi ana bilgisayarında Syslog 'u yeniden yükleyin:`esxcli system syslog reload`
+  1. Syslog bağlantı noktası bağlantısı başarılı olursa, ancak yine de herhangi bir veri görmezseniz, aşağıdaki komutu çalıştırmak için SSH kullanarak ESXi ana bilgisayarında Syslog 'u yeniden yükleyin: `esxcli system syslog reload`
 * Log Analytics aracısına sahip VM doğru ayarlanmadı. Bunu test etmek için aşağıdaki adımları gerçekleştirin:
 
-  1. Log Analytics 1514 numaralı bağlantı noktasını dinler. Açık olduğunu doğrulamak için şu komutu çalıştırın:`netstat -a | grep 1514`
+  1. Log Analytics 1514 numaralı bağlantı noktasını dinler. Açık olduğunu doğrulamak için şu komutu çalıştırın: `netstat -a | grep 1514`
   1. Açık bağlantı noktasını görmeniz gerekir `1514/tcp` . Bunu yapmazsanız, omsagent 'ın doğru bir şekilde yüklendiğinden emin olun. Bağlantı noktası bilgilerini görmüyorsanız, VM 'de Syslog bağlantı noktası açık değildir.
 
-    a. Kullanarak Log Analytics aracısının çalıştığını doğrulayın `ps -ef | grep oms` . Çalışmıyorsa, komutunu çalıştırarak işlemi başlatın`sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Kullanarak Log Analytics aracısının çalıştığını doğrulayın `ps -ef | grep oms` . Çalışmıyorsa, komutunu çalıştırarak işlemi başlatın `sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` dosyasını açın.
 
-     c. Doğru Kullanıcı ve grup ayarının geçerli olduğunu ve şuna benzer olduğunu doğrulayın:`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+     c. Doğru Kullanıcı ve grup ayarının geçerli olduğunu ve şuna benzer olduğunu doğrulayın: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
      d. Dosya yoksa veya Kullanıcı ve Grup ayarı yanlışsa, [bir Linux sunucusunu hazırlarken](#prepare-a-linux-server)düzeltici işlem gerçekleştirin.
 

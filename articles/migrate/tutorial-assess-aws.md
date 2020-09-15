@@ -1,22 +1,21 @@
 ---
-title: Azure geçişi sunucu değerlendirmesi ile Azure 'a geçiş için fiziksel sunucuları değerlendirme
-description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçiş için şirket içi fiziksel sunucuların nasıl değerlendirileneceğini açıklar.
+title: Azure geçişi sunucu değerlendirmesi ile Azure 'a geçiş için AWS örneklerini değerlendirme
+description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçiş için AWS örneklerinin nasıl değerlendirileneceğini açıklar.
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 3669658100681d08e754c19377b82faff5bce1ea
+ms.openlocfilehash: 14928c8a3249cca172ad088f290b54a22a125ae7
 ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090479"
+ms.locfileid: "90109026"
 ---
-# <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>Öğretici: Azure 'a geçiş için fiziksel sunucuları değerlendirme
+# <a name="tutorial-assess-aws-instances-for-migration-to-azure"></a>Öğretici: Azure 'a geçiş için AWS örneklerini değerlendirme
 
 Azure 'a geçiş sürecinizin bir parçası olarak, bulut hazırlığını ölçmek, riskleri belirlemek ve maliyetleri ve karmaşıklığı tahmin etmek için şirket içi iş yüklerinizi değerlendirmenizi sağlar.
 
-Bu makalede, Azure geçişi: Sunucu değerlendirmesi Aracı kullanılarak Azure 'a geçiş için şirket içi fiziksel sunucuların nasıl değerlendirireceğiniz gösterilmektedir.
-
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi Aracı kullanılarak Azure 'a geçiş için Amazon Web Services (AWS) örneklerinin nasıl değerlendirireceğiniz gösterilmektedir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -31,10 +30,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Makinelerinizi Azure VM 'lerine geçişe değerlendirmek için bu öğreticiyi izlemeden önce, değerlendirmek istediğiniz makineleri bulduğunuzdan emin olun:
-    - Azure geçişi gereci kullanarak makineleri bulma [öğreticisini izleyin](tutorial-discover-physical.md). 
-    - İçeri aktarılan bir CSV dosyası kullanan makineleri saptamak için [Bu öğreticiyi izleyin](tutorial-discover-import.md).
-- Değerlendirmek istediğiniz fiziksel makinelerin Windows Server 2003 veya SUSE Linux çalıştırmadığından emin olun. Bu makineler için değerlendirme desteklenmiyor.
+- Bu öğreticideki adımları izlemeden önce, Şirket [içi envanterinizi saptamak](tutorial-discover-aws.md)için bu serideki ilk öğreticiyi tamamlayın. 
+- AWS örneklerinin Windows Server 2003 veya SUSE Linux çalıştırmadığından emin olun. Bu makineler için değerlendirme desteklenmiyor.
 
 
 ## <a name="decide-which-assessment-to-run"></a>Hangi değerlendirmenin çalıştırılacağını belirleyin
@@ -53,22 +50,21 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
 1. **Windows ve Linux sunucuları**> **sunucular** sayfasında, **sunucuları değerlendir ve geçir**' e tıklayın.
 
-   ![Sunucuları değerlendir ve geçir düğmesinin konumu](./media/tutorial-assess-physical/assess.png)
+   ![Sunucuları değerlendir ve geçir düğmesinin konumu](./media/tutorial-assess-aws/assess.png)
 
-2. **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendir**' e tıklayın.
+2. * * Azure geçişi: Sunucu değerlendirmesi ' nde **değerlendir**' e tıklayın.
 
-    ![Değerlendirme düğmesinin konumu](./media/tutorial-assess-physical/assess-servers.png)
+    ![Değerlendirme düğmesinin konumu](./media/tutorial-assess-aws/assess-servers.png)
 
 3. **Sunucu**  >  **değerlendirmesi türünü**değerlendir bölümünde **Azure VM**' yi seçin.
 4. **Bulma kaynağında**:
 
     - Gereci kullanarak makineler keşfetiyorsanız, **Azure geçişi gereci ' ndan bulunan makineler**' i seçin.
     - İçeri aktarılan bir CSV dosyası kullanan makineler tespit ederseniz, **Içeri aktarılan makineler**' i seçin. 
-    
 5. Değerlendirme için bir ad belirtin. 
 6. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’ye tıklayın.
 
-    ![Değerlendirme özelliklerini gözden geçirmek için tümünü görüntüle düğmesinin konumu](./media/tutorial-assess-physical/assessment-name.png)
+    ![Değerlendirme özelliklerini gözden geçirmek için tümünü görüntüle düğmesinin konumu](./media/tutorial-assess-aws/assessment-name.png)
 
 7. **Değerlendirme özellikleri**  >  **hedef özellikleri**:
     - **Hedef konum**' da, geçirmek istediğiniz Azure bölgesini belirtin.
@@ -88,7 +84,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
     - **VM Serisi**' nde, göz önünde bulundurmanız ISTEDIĞINIZ Azure VM serisini belirtin.
         - Performans tabanlı değerlendirme kullanıyorsanız, Azure geçişi sizin için bir değer önerir.
         - Gerektiğinde ince ayar ayarları. Örneğin, Azure 'da bir serisi VM gerektiren bir üretim ortamınız yoksa, seri listesinden bir serisi dışarıda bırakabilirsiniz.
-    - **Rahatlık faktörüyle**, değerlendirme sırasında kullanmak istediğiniz arabelleği belirtin. Bu hesaplar, dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlara yöneliktir. Örneğin, iki bir rahatlık faktörü kullanıyorsanız: **bileşen**  |  **etkin kullanımı**,  |  **rakip faktörü (2,0)** çekirdekler Ekle | 2 | 4 bellek | 8 GB | 16 GB    
+    - **Rahatlık faktörüyle**, değerlendirme sırasında kullanmak istediğiniz arabelleği belirtin. Bu hesaplar, dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlara yöneliktir. Örneğin, iki bir rakip faktörü kullanıyorsanız: **Ayrıntılar**  |  **kullanım**  |  **rahatlığını Ekle (2,0)** IOPS 'yi oku | 100 | 200 Yazma IOPS | 100 | 200 okuma üretilen işi | 100 Mbps | 200 MB/sn yazma işleme | 100 Mbps | 200 Mbps
    
 9. **Fiyatlandırma**:
     - **Teklif**bölümünde, kaydolduysanız [Azure teklifini](https://azure.microsoft.com/support/legal/offer-details/) belirtin. Sunucu değerlendirmesi, bu teklifin maliyetini tahmin eder.
@@ -104,7 +100,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
 10. Değişiklik yaparsanız **Kaydet** ' e tıklayın.
 
-    ![Değerlendirme özellikleri](./media/tutorial-assess-physical/assessment-properties.png)
+    ![Değerlendirme özellikleri](./media/tutorial-assess-aws/assessment-properties.png)
 
 11. **Sunucuları değerlendir**bölümünde **İleri**' ye tıklayın.
 12. **Değerlendirmek için makineleri seçin**' de, **Yeni oluştur**' u seçin ve bir grup adı belirtin. 
@@ -128,7 +124,7 @@ Bir değerlendirmeyi görüntülemek için:
 1. **Sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde, **değerlendirmeler**' ın yanındaki sayıya tıklayın.
 2. **Değerlendirmede**, açmak için bir değerlendirme seçin. Örnek olarak (yalnızca Örneğin, tahminler ve maliyetler): 
 
-    ![Değerlendirme özeti](./media/tutorial-assess-physical/assessment-summary.png)
+    ![Değerlendirme özeti](./media/tutorial-assess-aws/assessment-summary.png)
 
 3. Değerlendirme özetini gözden geçirin. Ayrıca değerlendirme özelliklerini düzenleyebilir veya değerlendirmeyi yeniden hesaplayabilirsiniz.
  
@@ -161,12 +157,13 @@ Değerlendirme özeti, Azure 'da çalışan VM 'lerin tahmini işlem ve depolama
 
 Sunucu değerlendirmesi, performans tabanlı değerlendirmelere güvenle bir derecelendirme atar. Derecelendirme bir yıldız (en düşük) ile beş yıldız (en yüksek) arasında.
 
-![Güvenilirlik derecelendirmesi](./media/tutorial-assess-physical/confidence-rating.png)
+![Güvenilirlik derecelendirmesi](./media/tutorial-assess-aws/confidence-rating.png)
 
 Güvenilirlik derecelendirmesi, değerlendirmede boyut önerilerinin güvenilirliğini tahmin etmenize yardımcı olur. Derecelendirme, değerlendirmeyi hesaplamak için gereken veri noktalarının kullanılabilirliğine bağlıdır.
 
 > [!NOTE]
 > Bir CSV dosyasını temel alan bir değerlendirme oluşturursanız güven derecelendirmeleri atanmaz.
+
 
 Güven derecelendirmeleri aşağıdaki gibidir.
 

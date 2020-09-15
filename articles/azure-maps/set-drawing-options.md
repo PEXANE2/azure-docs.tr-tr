@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 4c00639c02f8834a24a3828ac5b8ba828d0e1733
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 82c5d87be084e85b6de9f890bd042babca9df476
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282832"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090508"
 ---
 # <a name="use-the-drawing-tools-module"></a>Çizim araçları modülünü kullanma
 
-Azure Haritalar Web SDK 'Sı bir *çizim araçları modülü*sağlar. Bu modül, fare veya dokunmatik ekran gibi bir giriş cihazını kullanarak haritada şekil çizmeyi ve düzenlemenizi kolaylaştırır. Bu modülün çekirdek sınıfı, [Çizim yöneticisidir](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). Çizim Yöneticisi, haritada şekil çizmek ve düzenlemek için gereken tüm özellikleri sağlar. Doğrudan kullanılabilir ve özel bir araç çubuğu kullanıcı arabirimiyle tümleşiktir. Yerleşik [Çizim araç çubuğu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) sınıfını da kullanabilirsiniz. 
+Azure Haritalar Web SDK 'Sı bir *çizim araçları modülü*sağlar. Bu modül, fare veya dokunmatik ekran gibi bir giriş cihazını kullanarak haritada şekil çizmeyi ve düzenlemenizi kolaylaştırır. Bu modülün çekirdek sınıfı, [Çizim yöneticisidir](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Çizim Yöneticisi, haritada şekil çizmek ve düzenlemek için gereken tüm özellikleri sağlar. Doğrudan kullanılabilir ve özel bir araç çubuğu kullanıcı arabirimiyle tümleşiktir. Yerleşik [Çizim araç çubuğu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) sınıfını da kullanabilirsiniz. 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>Bir Web sayfasında çizim araçları modülünü yükleme
 
@@ -44,13 +44,13 @@ Azure Haritalar Web SDK 'Sı bir *çizim araçları modülü*sağlar. Bu modül,
 
 ## <a name="use-the-drawing-manager-directly"></a>Çizim yöneticisini doğrudan kullanma
 
-Çizim araçları modülü uygulamanıza yüklendikten sonra, çizim [Yöneticisi 'ni](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)kullanarak çizim ve Düzenle özelliklerini etkinleştirebilirsiniz. Çizim Yöneticisi seçeneklerini örneklarken veya alternatif olarak işlevini kullanarak belirtebilirsiniz `drawingManager.setOptions()` .
+Çizim araçları modülü uygulamanıza yüklendikten sonra, çizim [Yöneticisi 'ni](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)kullanarak çizim ve Düzenle özelliklerini etkinleştirebilirsiniz. Çizim Yöneticisi seçeneklerini örneklarken veya alternatif olarak işlevini kullanarak belirtebilirsiniz `drawingManager.setOptions()` .
 
 ### <a name="set-the-drawing-mode"></a>Çizim modunu ayarlama
 
 Aşağıdaki kod, çizim Yöneticisi 'nin bir örneğini oluşturur ve çizim **modu** seçeneğini ayarlar. 
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and set drawing mode.
 drawingManager = new atlas.drawing.DrawingManager(map,{
     mode: "draw-polygon"
@@ -70,13 +70,13 @@ Bodepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/Yz
 
 Çizim Yöneticisi, şekil çizmek için harita ile etkileşimde bulunmanın üç farklı yolunu destekler.
 
-* `click`-, Fare veya dokunma tıklandığında koordinatlar eklenir.
-* `freehand `-Koordinat, fare veya dokunma haritada sürüklendiğinde eklenir. 
-* `hybrid`-, Fare veya dokunma tıklandığında veya sürüklendiğinde koordinatlar eklenir.
+* `click` -, Fare veya dokunma tıklandığında koordinatlar eklenir.
+* `freehand ` -Koordinat, fare veya dokunma haritada sürüklendiğinde eklenir. 
+* `hybrid` -, Fare veya dokunma tıklandığında veya sürüklendiğinde koordinatlar eklenir.
 
 Aşağıdaki kod, çokgen çizim modunu sağlar ve çizim etkileşiminin bağlı olması gereken çizim etkileşiminin türünü ayarlar `freehand` . 
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and set drawing mode.
 drawingManager = new atlas.drawing.DrawingManager(map,{
     mode: "draw-polygon",
@@ -122,10 +122,10 @@ Codepen 'da Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Harita](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Harita](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Çizim Yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Çizim Yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Çizim araç çubuğu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Çizim araç çubuğu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

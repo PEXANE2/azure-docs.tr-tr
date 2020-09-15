@@ -16,12 +16,12 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18c982b09aa8a28d520c709c9b8db2c9be4c7bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356959"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090134"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: hazırlama sunucusu ve olağanüstü durum kurtarma
 Hazırlama modundaki bir sunucu ile, yapılandırma üzerinde değişiklik yapabilir ve sunucuyu etkin hale gelmeden önce değişiklikleri önizleyebilirsiniz. Ayrıca, bu değişiklikleri üretim ortamınızda yapmadan önce tüm değişikliklerin beklendiğini doğrulamak üzere tam içeri aktarma ve tam eşitleme çalıştırmanızı sağlar.
@@ -57,7 +57,7 @@ Bu yöntemi uygulamak için aşağıdaki adımları izleyin:
 
 #### <a name="prepare"></a>Hazırlama
 1. Azure AD Connect yükleme, **hazırlama modu**' nu seçin ve yükleme sihirbazındaki son sayfada **Eşitlemeyi Başlat** seçimini kaldırın. Bu mod, eşitleme altyapısını el ile çalıştırmanızı sağlar.
-   ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
+   ![Ekran görüntüsü Azure AD Connect iletişim kutusunda yapılandırmaya hazırlanma sayfasını gösterir.](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. Oturumu kapatın/oturum açın ve Başlat menüsünde **eşitleme hizmeti**' ni seçin.
 
 #### <a name="configuration"></a>Yapılandırma
@@ -72,8 +72,8 @@ Birincil sunucuda özel değişiklikler yaptıysanız ve yapılandırmayı hazı
 Artık Azure AD 'ye ve şirket içi AD 'ye dışarı aktarma değişiklikleri hazırladınız (Exchange karma dağıtımı kullanıyorsanız). Sonraki adımlar, dizinlere dışa aktarma işlemine başlamadan önce nelerin değişmekte olduğunu incelemenizi sağlar.
 
 #### <a name="verify"></a>Doğrulama
-1. Bir komut istemi başlatın ve şuraya gidin`%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Çalıştırma: `csexport "Name of Connector" %temp%\export.xml /f:x` bağlayıcının adı, eşitleme hizmeti ' nde bulunabilir. Azure AD için "contoso.com – AAD" benzeri bir ada sahiptir.
+1. Bir komut istemi başlatın ve şuraya gidin `%ProgramFiles%\Microsoft Azure AD Sync\bin`
+2. Çalıştırma: `csexport "Name of Connector" %temp%\export.xml /f:x` bağlayıcının adı, eşitleme hizmeti ' nde bulunabilir. Azure AD için "contoso.com – Azure AD" benzeri bir ada sahiptir.
 3. Çalıştır: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` % TEMP% adlı bir dosyanız, Microsoft Excel 'de incelenebilir export.csv. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
 4. Veri veya yapılandırmada gerekli değişiklikleri yapın ve dışarı aktarılacak değişiklikler beklenene kadar bu adımları yeniden çalıştırın (Içeri ve dışarı ve Doğrula).
 
