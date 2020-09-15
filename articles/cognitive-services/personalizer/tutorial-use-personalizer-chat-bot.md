@@ -4,12 +4,12 @@ description: Eylemler (özelliklerle birlikte) ve bağlam özellikleriyle bir ku
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935662"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089896"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Öğretici: .NET Chat bot 'ta kişiselleştirici kullanma
 
@@ -21,7 +21,7 @@ Bir kullanıcıya doğru içerik sağlamak için bir kişiselleştirici döngüs
 > [!div class="checklist"]
 > * Azure kaynakları ayarlama
 > * Bot 'ı yapılandırma ve çalıştırma
-> * Bot öykünücüsünü kullanarak bot ile etkileşim kurma
+> * Bot Framework öykünücüsünü kullanarak bot ile etkileşim kurma
 > * Bot 'ın nasıl ve nasıl kişiselleştirici kullandığını anlayın
 
 
@@ -174,7 +174,7 @@ Web sitesini çalışır durumda tutun çünkü öğretici, bot 'ın ne yaptığ
 
 ## <a name="set-up-the-bot-emulator"></a>Bot öykünücüsünü ayarlama
 
-1. Bot öykünücüsünü açın ve bot 'ı **Aç**' ı seçin.
+1. Bot Framework öykünücüsünü açın ve bot 'ı **Aç**' ı seçin.
 
     :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Bot öykünücüsü başlangıç ekranının ekran görüntüsü.":::
 

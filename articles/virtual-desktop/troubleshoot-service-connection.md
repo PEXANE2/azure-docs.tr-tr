@@ -1,17 +1,17 @@
 ---
 title: Hizmet bağlantısı Windows sanal masaüstü-Azure sorunlarını giderme
-description: Windows sanal masaüstü kiracı ortamında istemci bağlantılarını ayarlarken oluşan sorunları çözme.
+description: Windows sanal masaüstü kiracı ortamında hizmet bağlantıları ayarlanırken sorunları çözme.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/19/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009384"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089913"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows sanal masaüstü hizmeti bağlantıları
 
@@ -39,6 +39,12 @@ Kullanıcı, uzak masaüstü istemcileri başlatabilir ve kimlik doğrulaması y
 3. Web istemcisi kullanılıyorsa, önbelleğe alınmış kimlik bilgileri sorunları olduğunu doğrulayın.
 
 4. Kullanıcı bir Azure Active Directory (AD) Kullanıcı grubunun parçasıysa, Kullanıcı grubunun bir dağıtım grubu yerine bir güvenlik grubu olduğundan emin olun. Windows sanal masaüstü, Azure AD Dağıtım gruplarını desteklemez.
+
+## <a name="user-loses-existing-feed-and-no-remote-resource-is-displayed-no-feed"></a>Kullanıcı var olan akışı kaybeder ve hiçbir uzak kaynak gösterilmez (akış yok)
+
+Bu hata genellikle, bir Kullanıcı aboneliğini bir Azure AD kiracısından diğerine taşıdıktan sonra görüntülenir. Sonuç olarak, bunlar hala eski Azure AD kiracısına bağlı olduğundan hizmet Kullanıcı atamalarının izini kaybeder.
+
+Bunu çözmek için tüm yapmanız gereken, kullanıcıları uygulama gruplarına yeniden atayabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

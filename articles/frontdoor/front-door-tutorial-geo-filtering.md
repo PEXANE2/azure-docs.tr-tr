@@ -1,6 +1,6 @@
 ---
 title: Öğretici-coğrafi filtreleme WAF ilkesini Yapılandırma-Azure ön kapısı
-description: Bu öğreticide, coğrafi filtreleme ilkesi oluşturmayı ve ilkeyi mevcut ön kapılı ön uç konunuzla ilişkilendirmeyi öğreneceksiniz
+description: Bu öğreticide, coğrafi filtreleme ilkesi oluşturmayı ve ilkeyi mevcut ön kapılı ön uç konunuzla ilişkilendirmeyi öğreneceksiniz.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -9,45 +9,30 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 31892232d5483bd2cb99d27c4672dbf347b904ef
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 20aa038e15b1ae5734ad6f463c6f450368617119
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399030"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090048"
 ---
-# <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Front Door hizmetiniz için bir coğrafi filtreleme WAF ilkesi hazırlama
+# <a name="tutorial-how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Öğretici: ön kapılarınız için coğrafi filtreleme WAF ilkesini ayarlama
 Bu öğreticide, örnek bir coğrafi filtreleme ilkesi oluşturmak ve bu ilkeyi mevcut bir Front Door ön uç konağı ile ilişkilendirmek için Azure PowerShell kullanma gösterilmektedir. Bu örnek coğrafi filtreleme ilkesi, Birleşik Devletler dışındaki diğer tüm ülke/bölgelerden gelen istekleri engeller.
 
-Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+> [!div class="checklist"]
+> - Coğrafi filtreleme eşleştirme koşulunu tanımlayın.
+> - Bir kurala coğrafi filtreleme eşleştirme koşulu ekleyin.
+> - İlkeye kural ekleyin.
+> - WAF ilkesini Frontkapılı ön uç konağına bağlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
-Bir coğrafi filtre İlkesi ayarlamaya başlamadan önce, PowerShell ortamınızı ayarlayın ve bir ön kapı profili oluşturun.
-### <a name="set-up-your-powershell-environment"></a>PowerShell ortamınızı hazırlama
-Azure PowerShell, Azure kaynaklarınızı yönetmek için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modelini kullanan bir dizi cmdlet sunar. 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizle oturum açmak ve az PowerShell modülünü yüklemek için sayfadaki yönergeleri izleyin.
-
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açma için etkileşimli iletişim kutusuyla Azure 'a bağlanma
-```
-Install-Module -Name Az
-Connect-AzAccount
-```
-PowerShellGet 'in güncel sürümünün yüklü olduğundan emin olun. Aşağıdaki komutu çalıştırın ve PowerShell'i yeniden açın.
-
-```
-Install-Module PowerShellGet -Force -AllowClobber
-``` 
-#### <a name="install-azfrontdoor-module"></a>Install az. Frontkapı Module 
-
-```
-Install-Module -Name Az.FrontDoor
-```
-
-### <a name="create-a-front-door-profile"></a>Ön kapı profili oluşturma
-[Hızlı başlangıç: ön kapı profili oluşturma](quickstart-create-front-door.md)bölümünde açıklanan yönergeleri Izleyerek bir ön kapı profili oluşturun.
+## <a name="prerequisites"></a>Önkoşullar
+* Bir coğrafi filtre İlkesi ayarlamaya başlamadan önce, PowerShell ortamınızı ayarlayın ve bir ön kapı profili oluşturun.
+* [Hızlı başlangıç: ön kapı profili oluşturma](quickstart-create-front-door.md)bölümünde açıklanan yönergeleri Izleyerek ön kapı oluşturun.
 
 ## <a name="define-geo-filtering-match-condition"></a>Coğrafi filtreleme eşleştirme koşulunu tanımlayın
 
@@ -60,7 +45,6 @@ $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -NegateCondition $true `
 -MatchValue "US"
 ```
- 
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>Eylem ve Öncelik ile bir kurala coğrafi filtreleme eşleşme koşulu ekleme
 
 `nonUSBlockRule` [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)kullanarak eşleşme koşuluna, eyleme ve önceliğe göre bir customrule nesnesi oluşturun.  Bir CustomRule'un birden fazla MatchCondition'ı olabilir.  Bu örnekte Eylem Engelle değerine, Öncelik ise en yüksek öncelik olan 1 değerine ayarlanmıştır.
@@ -73,31 +57,28 @@ $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 -Action Block `
 -Priority 1
 ```
-
 ## <a name="add-rules-to-a-policy"></a>İlkeye kural ekleme
 Kullanarak ön kapı profilini içeren kaynak grubunun adını bulun `Get-AzResourceGroup` . Ardından, `geoPolicy` `nonUSBlockRule`  ön kapı profilini içeren belirtilen kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak içeren bir ilke nesnesi oluşturun. Coğrafi filtreleme ilkesi için benzersiz bir ad sağlamanız gerekir. 
 
-Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](quickstart-create-front-door.md) makalesinde belirtilen yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır. Aşağıdaki örnekte, *Geopolicyallowusname* Ilke adını yalnızca benzersiz bir ilke adıyla değiştirin.
+Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](quickstart-create-front-door.md) makalesinde sunulan yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *FrontDoorQS_rg0* kaynak grubu adını kullanır. Aşağıdaki örnekte, *Geopolicyallowusname* Ilke adını yalnızca benzersiz bir ilke adıyla değiştirin.
 
 ```
 $geoPolicy = New-AzFrontDoorWafPolicy `
 -Name "geoPolicyAllowUSOnly" `
--resourceGroupName myResourceGroupFD1 `
+-resourceGroupName FrontDoorQS_rg0 `
 -Customrule $nonUSBlockRule  `
 -Mode Prevention `
 -EnabledState Enabled
 ```
-
 ## <a name="link-waf-policy-to-a-front-door-frontend-host"></a>WAF ilkesini bir ön kapılı ön uç konağına bağlama
 WAF ilke nesnesini mevcut ön kapı ön uç konağına bağlayın ve ön kapı özelliklerini güncelleştirin. 
 
 Bunu yapmak için ilk olarak [Get-Azfrontkapısı](/powershell/module/az.frontdoor/get-azfrontdoor)kullanarak ön kapı nesnenizin alınması gerekir. 
 
 ```
-$geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName myResourceGroupFD1
+$geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName FrontDoorQS_rg0
 $geoFrontDoorObjectExample[0].FrontendEndpoints[0].WebApplicationFirewallPolicyLink = $geoPolicy.Id
 ```
-
 Ardından, ön uç WebApplicationFirewallPolicyLink özelliğini, `geoPolicy` [set-Azfrontkapısının](/powershell/module/az.frontdoor/set-azfrontdoor)kullanıldığı RESOURCEID olarak ayarlayın.
 
 ```
@@ -107,6 +88,15 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > [!NOTE] 
 > Bir WAF ilkesini bir ön kapılı ön uç konağına bağlamak için yalnızca WebApplicationFirewallPolicyLink özelliğini bir kez ayarlamanız gerekir. Sonraki ilke güncelleştirmeleri, ön uç konağına otomatik olarak uygulanır.
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Yukarıdaki adımlarda, bir WAF ilkesiyle ilişkili bir coğrafi filtreleme kuralı yapılandırdınız. Ardından ilkeyi ön kapılarınızın ön uç konağına bağladınız. Artık coğrafi filtreleme kuralına veya WAF ilkesine ihtiyacınız yoksa, WAF ilkesi silinmeden önce ilkenin ön uç konağından ilişkilendirmesini kaldırmanız gerekir.
+
+:::image type="content" source="media/front-door-geo-filtering/front-door-disassociate-policy.png" alt-text="WAF ilkesinin ilişkisini kaldır":::
+
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Web uygulaması güvenlik duvarı](waf-overview.md)hakkında bilgi edinin.
-- [Front Door oluşturmayı](quickstart-create-front-door.md) öğrenin.
+
+Ön kapılarınız için bir Web uygulaması güvenlik duvarını yapılandırma hakkında bilgi edinmek için sonraki öğreticiye geçin.
+
+> [!div class="nextstepaction"]
+> [Web Uygulaması Güvenlik Duvarı ve Front Door](front-door-waf.md)

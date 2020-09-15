@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b68d4779d33d2f8a1f1c2bae35f438ad2ccccabb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505848"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090083"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Öğretici: Azure kaynağından kaynak günlüklerini toplayın ve çözümleyin
 
@@ -84,7 +84,7 @@ Veriler, kusto sorgu dilinde (KQL) yazılmış bir günlük sorgusu kullanılara
     > [!NOTE]
     > Günlükleri Azure Izleyici menüsünden açtıysanız, kapsam Log Analytics çalışma alanına ayarlanır. Bu durumda, tüm sorgular çalışma alanındaki tüm kayıtları içerir.
    
-    ![Günlükler](media/tutorial-resource-logs/logs.png)
+    ![Ekran görüntüsü mantıksal uygulama adının vurgulandığı yeni bir sorgu görüntüleyen bir mantıksal uygulamanın günlüklerini gösterir.](media/tutorial-resource-logs/logs.png)
 
 4. Örnekte gösterilen hizmet, kaynak günlüklerini **AzureDiagnostics** tablosuna yazar, ancak diğer hizmetler diğer tablolara yazabilir. Farklı Azure hizmetleri tarafından kullanılan tablolar için [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/resource-logs-schema.md) bölümüne bakın.
 

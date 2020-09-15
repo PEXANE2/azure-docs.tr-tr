@@ -5,53 +5,55 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 018275b6db4c2d2d1059f35077f74a6f45ec3ba9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 330c1b74a46b0f18af1068797d080e903f516ea6
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422086"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089879"
 ---
-# <a name="use-the-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) içindeki Azure dosya kapsayıcısı depolama arabirimi (CSı) sürücülerini kullanma (Önizleme)
-Azure Files CSı sürücüsü, Azure dosya paylaşımlarının yaşam döngüsünü yönetmek için AKS tarafından kullanılan bir [CSI belirtimiyle](https://github.com/container-storage-interface/spec/blob/master/spec.md) uyumlu bir sürücü. 
+# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) içindeki Azure dosya kapsayıcısı depolama arabirimi (CSı) sürücülerini kullanma (Önizleme)
 
-Kapsayıcı depolama arabirimi (CSı), Kubernetes üzerindeki Kapsayıcılı iş yüklerine rastgele blok ve dosya depolama sistemleri sunmak için bir standarttır. Azure Kubernetes hizmeti (AKS), CSı 'yi benimseme ve kullanma yoluyla, temel Kubernetes koduna dokunarak ve kendi yayın döngüsünü beklemeden Kubernetes 'te var olan depolama sistemlerini yeni bir şekilde oluşturabilir, dağıtabilir ve yineleyebilirsiniz.
+Azure dosya kapsayıcısı depolama arabirimi (CSı) sürücüsü, Azure dosya paylaşımlarının yaşam döngüsünü yönetmek için Azure Kubernetes hizmeti (AKS) tarafından kullanılan bir [CSI belirtimiyle](https://github.com/container-storage-interface/spec/blob/master/spec.md)uyumlu bir sürücü.
+
+CSı, Kubernetes üzerindeki Kapsayıcılı iş yüklerine rastgele blok ve dosya depolama sistemleri sunmak için bir standarttır. PKS, CSı 'yi benimseerek ve kullanarak, temel Kubernetes koduna dokunarak ve kendi yayın döngüsünü beklemek zorunda kalmadan Kubernetes 'te yeni veya daha fazla depolama sistemi geliştirmek için eklentileri yazabilir, dağıtabilir ve yineleyebilir.
 
 CSı sürücü desteğiyle bir AKS kümesi oluşturmak için bkz. [Azure diskleri ve aks 'de Azure dosyaları IÇIN CSI sürücülerini etkinleştirme](csi-storage-drivers.md).
 
 >[!NOTE]
-> *"Ağaç içi Sürücüler"* , temel Kubernetes kodunun parçası olan geçerli depolama sürücülerine ve eklenti olan yeni CSI sürücülerine başvurur.
+> *Ağaç içi sürücüler* , temel Kubernetes kodunun parçası olan geçerli depolama sürücülerini, eklentiler olan yeni CSI sürücülerine karşılık gelir.
 
-## <a name="use-a-persistent-volume-pv-with-azure-files"></a>Azure dosyaları ile kalıcı bir birim (BD) kullanma
+## <a name="use-a-persistent-volume-with-azure-files"></a>Azure dosyaları ile kalıcı bir birim kullanma
 
-[Kalıcı bir birim](concepts-storage.md#persistent-volumes) , Kubernetes pods ile kullanılmak üzere sağlanan bir depolama parçasını temsil eder. Kalıcı bir birim bir veya daha fazla sayıda pods tarafından kullanılabilir ve dinamik veya statik olarak sağlanabilir. Aynı depolama birimine eşzamanlı olarak birden çok Pod erişimi gerekiyorsa, [sunucu ileti bloğu (SMB) protokolünü][smb-overview]kullanarak bağlanmak için Azure dosyalarını kullanabilirsiniz. Bu makalede, bir Azure Kubernetes Service (AKS) kümesinde birden çok düğüm tarafından kullanılmak üzere Azure dosya paylaşımının nasıl dinamik olarak oluşturulacağı gösterilmektedir. Statik sağlama için bkz. [Azure dosya paylaşımıyla bir birimi el ile oluşturma ve kullanma](azure-files-volume.md).
+[Kalıcı birim (BD)](concepts-storage.md#persistent-volumes) , Kubernetes pods ile kullanılmak üzere sağlanan bir depolama parçasını temsil eder. Bir BD, bir veya daha fazla Pod tarafından kullanılabilir ve dinamik veya statik olarak sağlanabilir. Aynı depolama birimine eşzamanlı olarak birden çok dizin gerekiyorsa, [sunucu Ileti bloğu (SMB) protokolünü][smb-overview]kullanarak bağlanmak Için Azure dosyalarını kullanabilirsiniz. Bu makalede, bir aks kümesinde birden çok Pod tarafından kullanılmak üzere bir Azure dosyaları paylaşımının dinamik olarak nasıl oluşturulacağı gösterilir. Statik sağlama için bkz. [Azure dosya paylaşımıyla bir birimi el ile oluşturma ve kullanma](azure-files-volume.md).
 
 Kubernetes birimleri hakkında daha fazla bilgi için bkz. [AKS 'de uygulamalar Için depolama seçenekleri][concepts-storage].
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="dynamically-create-azure-files-pvs-using-the-built-in-storage-classes"></a>Yerleşik depolama sınıflarını kullanarak Azure dosyaları PVs 'yi dinamik olarak oluşturma
-Bir Azure dosya paylaşımının nasıl oluşturulduğunu tanımlamak için bir depolama sınıfı kullanılır. Depolama hesabı, Azure dosya paylaşımlarını tutmak üzere depolama sınıfıyla kullanılmak üzere [düğüm kaynak grubunda][node-resource-group] otomatik olarak oluşturulur. *Skuname*Için aşağıdaki [Azure depolama yedekliliği][storage-skus] arasından seçim yapın:
+## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Yerleşik depolama sınıflarını kullanarak Azure dosyaları PVs 'yi dinamik olarak oluşturma
 
-* *Standard_LRS* -standart yerel olarak yedekli depolama
-* *Standard_GRS* -standart coğrafi olarak yedekli depolama
-* *Standard_ZRS* -standart bölge yedekli depolama
-* *Standard_RAGRS* -standart Okuma Erişimli Coğrafi olarak yedekli depolama
-* *Premium_LRS* -Premium yerel olarak yedekli depolama
+Bir Azure dosya paylaşımının nasıl oluşturulduğunu tanımlamak için bir depolama sınıfı kullanılır. Depolama hesabı, Azure dosya paylaşımlarını tutmak üzere depolama sınıfıyla kullanılmak üzere [düğüm kaynak grubunda][node-resource-group] otomatik olarak oluşturulur. *Skuname*Için aşağıdaki [Azure Storage artıklık SKU][storage-skus] 'larından birini seçin:
+
+* **Standard_LRS**: standart yerel olarak yedekli depolama
+* **Standard_GRS**: Standart coğrafi olarak yedekli depolama
+* **Standard_ZRS**: standart bölge-yedekli depolama
+* **Standard_RAGRS**: Standart Okuma Erişimli Coğrafi olarak yedekli depolama
+* **Premium_LRS**: Premium yerel olarak yedekli depolama
 
 > [!NOTE]
-> Azure dosyaları Premium depolamayı destekler, en düşük Premium dosya paylaşma 100 GB 'dir.
+> Azure dosyaları, Azure Premium depolamayı destekler. En düşük Premium dosya paylaşma 100 GB 'dir.
 
-AKS üzerinde Storage CSı sürücülerini kullanırken, `StorageClasses` **Azure dosyaları CSI depolama sürücülerinden**yararlanan 2 ek yerleşik bulunur. Ek CSı Depolama sınıfları, ağaç içi varsayılan depolama sınıflarının yanı sıra kümeyle oluşturulur.
+AKS üzerinde Storage CSı sürücülerini kullandığınızda, `StorageClasses` Azure dosyaları CSI depolama sürücülerini kullanan iki ek yerleşik vardır. Ek CSı Depolama sınıfları, ağaç içi varsayılan depolama sınıflarının yanı sıra kümeyle oluşturulur.
 
-- `azurefile-csi` -Azure Standart depolama kullanarak bir Azure dosya paylaşımının oluşturulmasını sağlar. 
-- `azurefile-csi-premium` -Azure dosya paylaşımının oluşturulması için Azure Premium depolama kullanır. 
+- `azurefile-csi`: Azure Standart depolama kullanarak bir Azure dosya paylaşımının oluşturulmasını sağlar.
+- `azurefile-csi-premium`: Azure dosya paylaşma oluşturmak için Azure Premium depolama kullanır.
 
-Her iki depolama sınıflarında de geri kazanma ilkesi, ilgili kalıcı birim silindiğinde temeldeki Azure dosya paylaşımının silinmesini sağlar. Depolama sınıfları Ayrıca, dosya paylaşımlarını genişletilebilir olacak şekilde yapılandırır, yalnızca yeni boyutla kalıcı birim talebi düzenlemeniz gerekir.
+Her iki depolama sınıfında geri kazanma ilkesi, ilgili BD silindiğinde temeldeki Azure dosya paylaşımının silinmesini sağlar. Depolama sınıfları Ayrıca, dosya paylaşımlarını genişletilebilir olacak şekilde yapılandırır, yalnızca yeni boyutla kalıcı birim talebi (PVC) düzenlemeniz gerekir.
 
-Bu depolama sınıflarından yararlanmak için, kalıcı bir [birim talebi (PVC)](concepts-storage.md#persistent-volume-claims) ve bunlara başvuran ve bunlara karşılık gelen bir pod oluşturun. Kalıcı bir birim talebi (PVC), depolama sınıfına göre depolamayı otomatik olarak sağlamak için kullanılır. Bir PVC, istenen SKU ve boyut için bir Azure dosya paylaşımının oluşturulması için önceden oluşturulmuş depolama sınıflarından birini veya Kullanıcı tanımlı bir depolama sınıfını kullanabilir. Pod tanımı oluşturduğunuzda, kalıcı birim talebi istenen depolamayı istemek için belirtilir.
+Bu depolama sınıflarını kullanmak için, bir [PVC](concepts-storage.md#persistent-volume-claims) ve bunlara başvuran ve bunları kullanan bir pod oluşturun. Bir PVC, depolama sınıfına göre otomatik olarak depolama sağlamak için kullanılır. Bir PVC, istenen SKU ve boyut için bir Azure dosya paylaşımının oluşturulması için önceden oluşturulmuş depolama sınıflarından birini veya Kullanıcı tanımlı bir depolama sınıfını kullanabilir. Pod tanımı oluşturduğunuzda, PVC istenen depolamayı istemek için belirtilir.
 
-Şu anki tarihi, [kubectl Apply][kubectl-apply] komutuyla birlikte içeren [bir `outfile` kalıcı birim talebi ve pod](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) oluşturun:
+Şu anki tarihi, [kubectl Apply][kubectl-apply] komutuyla [bir `outfile` IÇINE yazdıran örnek bir PVC ve pod](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) oluşturun:
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/pvc-azurefile-csi.yaml
@@ -61,7 +63,7 @@ persistentvolumeclaim/pvc-azurefile created
 pod/nginx-azurefile created
 ```
 
-Pod çalışır durumda olduktan sonra, aşağıdaki komutu çalıştırarak ve çıktının şunu içerdiğini doğrulayarak dosya paylaşımının doğru şekilde takıldığını doğrulayabilirsiniz `outfile` : 
+Pod çalışır durumda olduktan sonra, aşağıdaki komutu çalıştırarak ve çıktının şunu içerdiğini doğrulayarak dosya paylaşımının doğru şekilde takıldığını doğrulayabilirsiniz `outfile` :
 
 ```console
 $ kubectl exec nginx-azurefile -- ls -l /mnt/azurefile
@@ -72,11 +74,11 @@ total 29
 
 ## <a name="create-a-custom-storage-class"></a>Özel depolama sınıfı oluşturma
 
-Varsayılan depolama sınıfları en yaygın senaryolara göre değil, hepsi değildir. Bazı durumlarda kendi parametrelerinizi kullanarak kendi depolama sınıfınızın özelleştirilmiş olmasını isteyebilirsiniz. Örneğin, dosya paylaşımının yapılandırmasını yapılandırmak için aşağıdaki bildirimi kullanın `mountOptions` .
+Varsayılan depolama sınıfları en yaygın senaryolara sahiptir, ancak hepsini değildir. Bazı durumlarda kendi parametrelerinizi kullanarak kendi depolama sınıfınızın özelleştirilmiş olmasını isteyebilirsiniz. Örneğin, dosya paylaşımının yapılandırmasını yapılandırmak için aşağıdaki bildirimi kullanın `mountOptions` .
 
 *FileMode* ve *dirmode* Için varsayılan değer, Kubernetes bağlı dosya paylaşımları için *0777* ' dir. Depolama sınıfı nesnesinde farklı bağlama seçeneklerini belirtebilirsiniz.
 
-Adlı bir dosya oluşturun `azure-file-sc.yaml` ve aşağıdaki örnek bildirimi yapıştırın: 
+Adlı bir dosya oluşturun `azure-file-sc.yaml` ve aşağıdaki örnek bildirimi yapıştırın:
 
 ```yaml
 kind: StorageClass
@@ -107,7 +109,7 @@ kubectl apply -f azure-file-sc.yaml
 storageclass.storage.k8s.io/my-azurefile created
 ```
 
-Azure Files CSı sürücüsü, kalıcı birimlerin ve temel dosya paylaşımlarının [anlık görüntülerini](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) oluşturmayı destekler. 
+Azure Files CSı sürücüsü, kalıcı birimlerin ve temel dosya paylaşımlarının [anlık görüntülerini](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) oluşturmayı destekler.
 
 [Kubectl Apply][kubectl-apply] komutuyla bir [birim anlık görüntü sınıfı](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshotclass-azurefile.yaml) oluşturun:
 
@@ -117,7 +119,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-c
 volumesnapshotclass.snapshot.storage.k8s.io/csi-azurefile-vsc created
 ```
 
-[Bu öğreticinin başlangıcında dinamik olarak oluşturulan](#dynamically-create-azure-files-pvs-using-the-built-in-storage-classes)PVC 'den bir [birim anlık görüntüsü](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) oluşturun `pvc-azurefile` .
+[Bu öğreticinin başlangıcında dinamik olarak oluşturulan](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes)PVC 'den bir [birim anlık görüntüsü](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) oluşturun `pvc-azurefile` .
 
 
 ```bash
@@ -156,14 +158,14 @@ Status:
 Events:                                <none>
 ```
 
-## <a name="resize-a-persistent-volume-pv"></a>Kalıcı bir birimi yeniden boyutlandırma (BD)
+## <a name="resize-a-persistent-volume"></a>Kalıcı bir birimi yeniden boyutlandırma
 
-Bir PVC için daha büyük bir birim isteyebilirsiniz. PVC nesnesini düzenleyin ve daha büyük bir boyut belirtin. Bu değişiklik, PersistentVolume 'i yedekleyen temeldeki birimin genişletmesinin tetiklemesini tetikler. 
+Bir PVC için daha büyük bir birim isteyebilirsiniz. PVC nesnesini düzenleyin ve daha büyük bir boyut belirtin. Bu değişiklik, BD 'i yedekleyen temeldeki birimin genişletmesinin tetiklemesini tetikler.
 
-> [!NOTE] 
-> Talebi karşılamak için hiçbir şekilde yeni bir PersistentVolume oluşturulmaz. Bunun yerine, var olan bir birim yeniden boyutlandırılır.
+> [!NOTE]
+> Talebi karşılamak için hiçbir şekilde yeni bir BD oluşturulmaz. Bunun yerine, var olan bir birim yeniden boyutlandırılır.
 
-AKS 'de, yerleşik `azurefile-csi` depolama sınıfı genişletmeyi zaten desteklediğinden, [Bu depolama sınıfıyla daha önce oluşturulmuş olan PVC 'den](#dynamically-create-azure-files-pvs-using-the-built-in-storage-classes)yararlanın. PVC bir 100Gi dosya paylaşma istedi, şunu çalıştırarak şunları doğrulayabiliriz:
+AKS 'de, yerleşik `azurefile-csi` depolama sınıfı genişletmeyi zaten desteklediğinden, [Bu depolama sınıfıyla daha önce oluşturulan PVC](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes)'yi kullanın. PVC bir 100Gi dosya paylaşımının istedi. Şunu çalıştırarak şunları doğrulayabiliriz:
 
 ```console 
 $ kubectl exec -it nginx-azurefile -- df -h /mnt/azurefile
@@ -180,7 +182,7 @@ $ kubectl patch pvc pvc-azurefile --type merge --patch '{"spec": {"resources": {
 persistentvolumeclaim/pvc-azurefile patched
 ```
 
-Pod içindeki hem PVC 'nin hem de FileSystem 'ın yeni boyutu göstermesini doğrulayın:
+Pod 'ın içindeki hem PVC 'nin hem de dosya sisteminin yeni boyutu göstermesini doğrulayın:
 
 ```console
 $ kubectl get pvc pvc-azurefile
@@ -192,11 +194,11 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
-## <a name="windows-containers"></a>Windows Kapsayıcıları
+## <a name="windows-containers"></a>Windows kapsayıcıları
 
-Windows kapsayıcıları kullanmak istiyorsanız, Azure Files CSı sürücüsü de Windows düğümleri ve kapsayıcıları destekler, Windows kapsayıcıları [öğreticisini](windows-container-cli.md) kullanarak bir Windows düğüm havuzu ekleyin.
+Azure Files CSı sürücüsü ayrıca Windows düğümlerini ve kapsayıcıları destekler. Windows kapsayıcıları kullanmak istiyorsanız, Windows düğüm havuzu eklemek için [Windows kapsayıcıları öğreticisini](windows-container-cli.md) izleyin.
 
-Windows düğüm havuzunuz olduktan sonra, gibi yerleşik depolama sınıflarından yararlanın `azurefile-csi` veya özel bir tane oluşturun. [windows-based stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) `data.txt` Aşağıdaki [kubectl Apply][kubectl-apply] komutuyla, zaman damgalarını bir dosyaya kaydeden, örnek Windows tabanlı bir durum bilgisi kümesini dağıtabilirsiniz:
+Bir Windows düğüm havuzunuz olduktan sonra, gibi yerleşik depolama sınıflarını kullanın `azurefile-csi` veya özel bir tane oluşturun. [Windows-based stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) `data.txt` Aşağıdaki komutu [kubectl Apply][kubectl-apply] komutuyla dağıtarak, zaman damgalarını bir dosyaya kaydeden örnek bir Windows tabanlı durum belirleme kümesi dağıtabilirsiniz:
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
@@ -218,8 +220,8 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure diskleri için CSı sürücüsünü nasıl kullanacağınızı öğrenmek için bkz. [CSI sürücüleriyle Azure disklerini kullanma](azure-disk-csi.md).
-- Depolama en iyi uygulamaları hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (AKS) içinde depolama ve yedeklemeler Için en iyi uygulamalar][operator-best-practices-storage]
+- Azure diskleri için CSı sürücülerini nasıl kullanacağınızı öğrenmek için bkz. [CSI sürücüleriyle Azure disklerini kullanma](azure-disk-csi.md).
+- Depolama en iyi uygulamaları hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmetindeki depolama ve yedeklemeler Için en iyi uygulamalar][operator-best-practices-storage].
 
 
 <!-- LINKS - external -->

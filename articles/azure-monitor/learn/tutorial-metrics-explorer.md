@@ -6,17 +6,17 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 72f90918afa275e56528016539ecb2eec93d5db0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "79082821"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090100"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Öğretici: Azure Izleyici 'de ölçüm grafiği oluşturma
 Ölçüm değerleri, ölçüm değerlerinden grafikler oluşturmanıza, eğilimleri görsel olarak ilişkilendirmenize ve ölçüm değerlerinde ani artışları ve DIP 'leri araştırmanıza olanak tanıyan Azure portal Azure Izleyici 'nin bir özelliğidir. Azure kaynaklarınızın sistem durumunu ve kullanımını araştırmak veya özel ölçülerden grafikler çizmek için ölçüm gezginini kullanın. 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Grafik çizmek istediğiniz bir ölçüm seçin
@@ -52,7 +52,7 @@ Bu öğreticiyi tamamlayabilmeniz için izlemeniz gereken bir Azure kaynağını
 
 4. İsteğe bağlı olarak, ölçüm **toplamayı**değiştirin. Bu, ölçüm değerlerinin grafik için zaman parçalı olarak nasıl toplandığını tanımlar. Örneğin, zaman ayrıntı düzeyi 15 dakikaya ayarlanmışsa ve toplama Sum olarak ayarlandıysa, grafikteki her bir nokta, her 15 dakikalık segment üzerinde tüm toplanan değerlerin toplamı olur.
 
-    ![Grafik](media/tutorial-metrics-explorer/chart.png)
+    ![Ekran görüntüsü contosoretailweb için Sum girişi başlıklı bir grafik gösterir.](media/tutorial-metrics-explorer/chart.png)
 
 5. Aynı grafikte birden çok ölçüm çizilmek istiyorsanız **ölçüm Ekle** düğmesini kullanın ve bu adımları tekrarlayın. Tek bir görünümdeki birden çok grafik için **yeni grafik** düğmesini seçin.
 

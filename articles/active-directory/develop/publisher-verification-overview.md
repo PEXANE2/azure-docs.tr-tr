@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 07e8f1d0cf173a8ab41f8feb105743a7559cdd2f
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005800"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089760"
 ---
 # <a name="publisher-verification"></a>Yayımcı doğrulaması
 
@@ -33,7 +33,7 @@ Yayımcı doğrulaması aşağıdaki avantajları sağlar:
 
 - **Geliştirilmiş marka**-Azure AD [onay Istemi](application-consent-experience.md), kurumsal uygulamalar sayfasında ve son kullanıcılar ve YÖNETICILER tarafından kullanılan ek UX yüzeyleri üzerinde "doğrulanan" bir rozet görüntülenir. 
 
-- **Daha yumuşak bir kurumsal benimseme**-Yöneticiler yeni Kullanıcı onay ilkeleri yapılandırabilir ve yayımcı doğrulama durumu, birincil ilke ölçütlerinden biri olacaktır. 
+- **Daha yumuşak bir kurumsal benimseme**-Yöneticiler, [Kullanıcı onay ilkelerini](../manage-apps/configure-user-consent.md), birincil ilke ölçütlerinden biri olarak yayımcı doğrulama durumuyla yapılandırabilir. 
 
 - **İyileştirilmiş risk değerlendirmesi**-Microsoft 'un "riskli" izin istekleri için algılamaları, yayımcı doğrulamasını bir sinyal olarak içerecektir. 
 
@@ -52,6 +52,8 @@ Yayımcı doğrulaması için birkaç önkoşul vardır; bazıları zaten birço
 
     -  Iş Ortağı Merkezi 'nde bu kullanıcının şu [rollere](/partner-center/permissions-overview)sahip olması gerekir: MPN Yöneticisi, hesaplar Yöneticisi veya genel yönetici (Bu, Azure AD 'de ana kopyalı bir paylaşılan roldür).
     
+-  Doğrulama gerçekleştiren kullanıcının [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)kullanarak oturum açması gerekir.
+
 -  Yayımcı, [geliştiricilerin kullanım koşulları Için Microsoft Identity platformunu](/legal/microsoft-identity-platform/terms-of-use)kabul eder.
 
 Bu önkoşulların zaten karşıladığı geliştiriciler, birkaç dakika içinde doğrulanır. Gereksinimler karşılanmazsa, kurulum alma ücretsizdir. 

@@ -1,23 +1,23 @@
 ---
-title: Azure Cosmos DB kullanırken sorgu sorunlarını giderme
+title: Azure Cosmos DB kullanırken karşılaşılan sorgu sorunlarını giderme
 description: Azure Cosmos DB SQL sorgu sorunlarını belirlemeyi, tanılamayı ve sorun gidermeyi öğrenin.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 04/22/2020
+ms.date: 09/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117922"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089998"
 ---
-# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken sorgu sorunlarını giderme
+# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken karşılaşılan sorgu sorunlarını giderme
 
-Bu makalede, Azure Cosmos DB sorgularda sorun giderme için önerilen genel bir yaklaşım gösterilmektedir. Bu makalede özetlenen adımları olası sorgu sorunlarına karşı kapsamlı bir savunma olarak düşünmemeniz durumunda, en sık karşılaşılan performans ipuçlarını buradan sunuyoruz. Bu makaleyi, Azure Cosmos DB Core (SQL) API 'sindeki yavaş veya pahalı sorguların giderilmesi için bir başlangıç yeri olarak kullanmanız gerekir. [Tanılama günlüklerini](cosmosdb-monitor-resource-logs.md) , yavaş olan veya önemli miktarda işleme tüketen sorguları belirlemek için de kullanabilirsiniz.
+Bu makalede, Azure Cosmos DB sorgularda sorun giderme için önerilen genel bir yaklaşım gösterilmektedir. Bu makalede özetlenen adımları olası sorgu sorunlarına karşı kapsamlı bir savunma olarak düşünmemeniz durumunda, en sık karşılaşılan performans ipuçlarını buradan sunuyoruz. Azure Cosmos DB Core (SQL) API'sinde yavaş veya pahalı sorgularla ilgili sorunları gidermek için başlangıç noktası olarak bu makaleyi kullanmalısınız. Ayrıca yavaş çalışan veya önemli miktarda aktarım hızı kullanan sorguları belirlemek için [tanılama günlüklerini](cosmosdb-monitor-resource-logs.md) de kullanabilirsiniz.
 
 Azure Cosmos DB içindeki sorgu iyileştirmelerini büyük ölçüde kategorilere ayırabilirsiniz:
 
@@ -26,22 +26,21 @@ Azure Cosmos DB içindeki sorgu iyileştirmelerini büyük ölçüde kategoriler
 
 Bir sorgunun RU ücreti düşürüyoruz, gecikme süresini de neredeyse tamamen azaltabilirsiniz.
 
-Bu makalede, [beslenme](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) veri kümesini kullanarak yeniden oluşturabileceğiniz örnekler sağlanmaktadır.
+Bu makalede, [beslenme veri kümesini](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)kullanarak yeniden oluşturabileceğiniz örnekler sağlanmaktadır.
 
 ## <a name="common-sdk-issues"></a>Yaygın SDK sorunları
 
 Bu kılavuzu okumadan önce, sorgu altyapısıyla ilgili olmayan yaygın SDK sorunlarını göz önünde bulundurmanız yararlı olur.
 
-- En iyi performans için, bu [performans ipuçlarını](performance-tips.md)izleyin.
-    > [!NOTE]
-    > Daha iyi performans için Windows 64 bit ana bilgisayar işlemesini öneririz. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel bir ServiceInterop.dll içerir. ServiceInterop.dll yalnızca Windows x64 platformunda desteklenir. ServiceInterop.dll kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır.
+- Bu [SDK performans ipuçlarını](performance-tips.md)izleyin.
+    - [.NET SDK sorun giderme kılavuzu](troubleshoot-dot-net-sdk.md)
+    - [Java SDK sorunlarını giderme kılavuzu](troubleshoot-java-sdk-v4-sql.md)
 - SDK, sorgunuz için bir ayar yapılmasına izin verir, `MaxItemCount` ancak en az öğe sayısını belirtemezsiniz.
     - Kod, sıfırdan olan herhangi bir sayfa boyutunu işlemelidir `MaxItemCount` .
-    - Sayfadaki öğelerin sayısı her zaman belirtilen değere eşit veya daha büyük olacaktır `MaxItemCount` . Ancak, `MaxItemCount` tam olarak en yüksek bir değer ve bu tutardan daha az sonuç olabilir.
 - Bazen, gelecekteki bir sayfada sonuçlar olduğunda bile sorgularda boş sayfalar bulunabilir. Bunun nedenleri şunlar olabilir:
     - SDK birden çok ağ çağrısı yapıyor olabilir.
     - Sorgunun belgeleri alması uzun sürüyor olabilir.
-- Tüm sorguların, sorgunun devam etmesine izin veren bir devamlılık belirteci vardır. Sorguyu tamamen boşalttığınızdan emin olun. SDK örneklerine bakın ve `while` `FeedIterator.HasMoreResults` Tüm sorguyu boşaltmak için üzerinde bir döngüsü kullanın.
+- Tüm sorguların, sorgunun devam etmesine izin veren bir devamlılık belirteci vardır. Sorguyu tamamen boşalttığınızdan emin olun. [Birçok sonuç sayfasını işleme](sql-query-pagination.md#handling-multiple-pages-of-results) hakkında daha fazla bilgi edinin
 
 ## <a name="get-query-metrics"></a>Sorgu ölçümlerini al
 
