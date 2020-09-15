@@ -2,26 +2,12 @@
   href: index.yml
 - name: Çevirmen
   items:
-    - name: Genel Bakış
-      items:
-        - name: Translator nedir?
-          href: translator-info-overview.md
-        - name: Dil Desteği
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
-    - name: Hızlı Başlangıçlar
-      items:
-        - name: Metin çevirme
-          href: quickstart-translate.md
-        - name: Metni başka dildi yazma
-          href: quickstart-transliterate.md
-        - name: Dili algılama
-          href: quickstart-detect.md
-        - name: Sözcük çevirileri arama
-          href: quickstart-dictionary.md
-        - name: Desteklenen dilleri alma
-          href: quickstart-languages.md
-        - name: Tümce uzunluğu belirleme
-          href: quickstart-sentences.md
+    - name: Translator nedir?
+      href: translator-info-overview.md
+    - name: Hızlı Başlangıç
+      href: quickstart-translator.md
+    - name: Dil Desteği
+      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: Öğreticiler
       items:
         - name: 'Translator için WPF uygulaması oluşturma, C#'
