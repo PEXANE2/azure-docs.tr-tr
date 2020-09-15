@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: eea43f48abef5e2b258251d46eca1061a2263519
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 08d80a5ec2099147c12bcecd3b52d64429837285
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613846"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563973"
 ---
 # <a name="meshes"></a>Ağ yapıları
 
 ## <a name="mesh-resource"></a>Kafes kaynağı
 
-Kafesler yalnızca [model dönüştürme](../how-tos/conversion/model-conversion.md)ile oluşturulabilecek sabit bir [paylaşılan kaynaktır](../concepts/lifetime.md). Kafesler bir veya birden çok *alt kafes*içeriyor. Her alt ağ, varsayılan olarak işlenmesi gereken bir [malzemeye](materials.md) başvurur. 3B alana bir ağ yerleştirmek için bir [varlığa](entities.md)bir [meshcomponent](#meshcomponent) ekleyin.
+Kafesler yalnızca [model dönüştürme](../how-tos/conversion/model-conversion.md)ile oluşturulabilecek sabit bir [paylaşılan kaynaktır](../concepts/lifetime.md). Kafesler, [raycast sorguları](../overview/features/spatial-queries.md)için bir veya daha fazla *alt kafes* ve bir fizik gösterimiyle birlikte bulunur. Her alt ağ, varsayılan olarak işlenmesi gereken bir [malzemeye](materials.md) başvurur. 3B alana bir ağ yerleştirmek için bir [varlığa](entities.md)bir [meshcomponent](#meshcomponent) ekleyin.
 
 ### <a name="mesh-resource-properties"></a>Kafes kaynağı özellikleri
 
@@ -38,12 +38,46 @@ Kafesler yalnızca [model dönüştürme](../how-tos/conversion/model-conversion
 
 * **Usedmalzemeleri:** Her alt ağ için gerçekten kullanılan malzemeler dizisi. Null olmayan değerler için, *malzemeler* dizisindeki verilerle aynı olacaktır. Aksi takdirde, kafes örneğindeki *malzemeler* dizisinden değeri içerir.
 
+### <a name="sharing-of-meshes"></a>Kafeslerin paylaşılması
+
+Bir `Mesh` kaynak, birden fazla kafes bileşeni örneği arasında paylaşılabilir. Ayrıca, `Mesh` bir ağ bileşenine atanan kaynak, programlama yoluyla dilediğiniz zaman değiştirilebilir. Aşağıdaki kod, bir ağı nasıl klonlanacağını göstermektedir:
+
+```cs
+Entity CloneEntityWithModel(RemoteManager manager, Entity sourceEntity)
+{
+    MeshComponent meshComp = sourceEntity.FindComponentOfType<MeshComponent>();
+    if (meshComp != null)
+    {
+        Entity newEntity = manager.CreateEntity();
+        MeshComponent newMeshComp = manager.CreateComponent(ObjectType.MeshComponent, newEntity) as MeshComponent;
+        newMeshComp.Mesh = meshComp.Mesh; // share the mesh
+        return newEntity;
+    }
+    return null;
+}
+```
+
+```cpp
+ApiHandle<Entity> CloneEntityWithModel(ApiHandle<RemoteManager> manager, ApiHandle<Entity> sourceEntity)
+{
+    if (ApiHandle<MeshComponent> meshComp = sourceEntity->FindComponentOfType<MeshComponent>())
+    {
+        ApiHandle<Entity> newEntity = *manager->CreateEntity();
+        ApiHandle<MeshComponent> newMeshComp = manager->CreateComponent(ObjectType::MeshComponent, newEntity)->as<RemoteRendering::MeshComponent>();
+        newMeshComp->SetMesh(meshComp->GetMesh()); // share the mesh
+        return newEntity;
+    }
+    return nullptr;
+}
+```
+
 ## <a name="api-documentation"></a>API belgeleri
 
 * [C# kafes sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.mesh)
 * [C# MeshComponent sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.meshcomponent)
 * [C++ kafes sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/mesh)
 * [C++ MeshComponent sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/meshcomponent)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

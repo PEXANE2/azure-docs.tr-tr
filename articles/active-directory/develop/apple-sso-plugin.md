@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6afbdb6bcb067bdcb570c366f4604ea77ec4f490
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526825"
+ms.locfileid: "90561355"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple cihazları için Microsoft Enterprise SSO eklentisi (Önizleme)
 
@@ -148,11 +148,11 @@ Aşağıdaki koşullar karşılanmadığı sürece bu uygulamalarda kod değişi
 - Uygulama, Azure AD ile iletişim kurmak için standart protokolleri kullanıyor (örneğin, OAuth2, SAML, WS-Federation)
 - Uygulama yerel kullanıcı arabiriminde düz metin Kullanıcı adı ve parola toplamıyor
 
-Bu durumda, uygulama bir ağ isteği oluşturduğunda ve kullanıcının oturumu açmak için bir Web tarayıcısı açtığında SSO sağlanır. Bir Kullanıcı Azure AD oturum açma URL 'sine yeniden yönlendirildiğinde, SSO eklentisi URL 'YI doğrular ve bu URL için kullanılabilir SSO kimlik bilgisi olup olmadığını denetler. Bir tane varsa, SSO eklentisi SSO kimlik bilgisini Azure AD 'ye geçirir ve bu da uygulamanın, son kullanıcıdan kimlik bilgilerini girmesini istemeden ağ isteğini tamamlamasını yetkilendirir. Ayrıca, cihaz Azure AD ile biliniyorsa, SSO eklentisi cihaz sertifikasını cihaz tabanlı koşullu erişim denetimini karşılayacak şekilde de geçilecektir. 
+Bu durumda, uygulama bir ağ isteği oluşturduğunda ve Kullanıcı oturumu açmak üzere bir Web tarayıcısı açtığında SSO sağlanır. Bir Kullanıcı Azure AD oturum açma URL 'sine yeniden yönlendirildiğinde, SSO eklentisi URL 'YI doğrular ve bu URL için kullanılabilir SSO kimlik bilgisi olup olmadığını denetler. Bir tane varsa, SSO eklentisi SSO kimlik bilgisini Azure AD 'ye geçirir, bu da uygulamanın, kimlik bilgilerini girmesini istemeden ağ isteğini tamamlamasını yetkilenmektedir. Ayrıca, cihaz Azure AD ile biliniyorsa, SSO eklentisi cihaz sertifikasını cihaz tabanlı koşullu erişim denetimini karşılayacak şekilde de geçilecektir. 
 
 MSAL olmayan uygulamalarda SSO 'yu desteklemek için, SSO eklentisi, [birincil yenileme belirteci nedir?](../devices/concept-primary-refresh-token.md#browser-sso-using-prt)bölümünde açıklanan Windows tarayıcı eklentisine benzer bir protokol uygular. 
 
-MSAL tabanlı uygulamalarla karşılaştırıldığında, SSO eklentisi, uygulamaların sağladığı mevcut tarayıcı oturum açma deneyimiyle tümleştirerek MSAL olmayan uygulamalar için daha şeffaf bir şekilde davranır. Son Kullanıcı, uygulamaların her birinde ek oturum açma işlemi yapmak zorunda kalmadan tanıdık deneyimini görür. Örneğin, yerel hesap seçiciyi göstermek yerine, SSO eklentisi Web tabanlı hesap seçici deneyimine SSO oturumları ekler. 
+MSAL tabanlı uygulamalarla karşılaştırıldığında, SSO eklentisi, uygulamaların sağladığı mevcut tarayıcı oturum açma deneyimiyle tümleştirerek MSAL olmayan uygulamalar için daha şeffaf bir şekilde davranır. Son Kullanıcı tanıdık deneyimini görebilir ve uygulamaların her birinde ek oturum açma işlemleri gerçekleştirmeme avantajına sahiptir. Örneğin, yerel hesap seçiciyi göstermek yerine, SSO eklentisi Web tabanlı hesap seçici deneyimine SSO oturumları ekler. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

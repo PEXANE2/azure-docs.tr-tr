@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6792fdc405d539a662c8dc20c04b2891fd036704
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1aa0eb0988474a21fbf77ea08ce14a5fa9fb21bc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421918"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564126"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 'de Azure AD rolleri için PowerShell
 
@@ -30,7 +30,7 @@ Bu makale, Azure AD rollerini Privileged Identity Management (PıM) içinde yön
 > [!Note]
 > Resmi PowerShell, yalnızca yeni Azure AD Privileged Identity Management sürümlerimizde desteklenir. Lütfen Privileged Identity Management gidin ve hızlı başlangıç dikey penceresinde aşağıdaki başlık bulunduğundan emin olun.
 > [![sahip olduğunuz Privileged Identity Management sürümünü denetleyin](media/pim-how-to-add-role-to-user/pim-new-version.png "Azure AD > seçin Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) Bu başlığa sahip değilseniz, şu anda bir sonraki birkaç hafta içinde bu güncelleştirilmiş deneyimi verme sürecinde olduğundan lütfen bekleyin.
-> Privileged Identity Management PowerShell cmdlet 'leri Azure AD önizleme modülü aracılığıyla desteklenir. Farklı bir modül kullanıyorsanız ve bu modül şimdi bir hata mesajı döndürüyorsa, lütfen bu yeni modülü kullanmaya başlayın. Farklı bir modülün üzerine inşa ettiğiniz üretim sistemleriniz varsa, lütfen bu duruma ulaşınpim_preview@microsoft.com
+> Privileged Identity Management PowerShell cmdlet 'leri Azure AD önizleme modülü aracılığıyla desteklenir. Farklı bir modül kullanıyorsanız ve bu modül şimdi bir hata mesajı döndürüyorsa, lütfen bu yeni modülü kullanmaya başlayın. Farklı bir modülün üzerine inşa ettiğiniz üretim sistemleriniz varsa, lütfen öğesine ulaşın [pim_preview@microsoft.com](mailto:pim_preview@microsoft.com) .
 
 ## <a name="installation-and-setup"></a>Yükleme ve Kurulum
 
@@ -54,7 +54,7 @@ Bu makale, Azure AD rollerini Privileged Identity Management (PıM) içinde yön
     ![Azure AD kuruluşunun özelliklerinde kuruluş KIMLIĞINI bulma](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> Aşağıdaki bölümler, çalışmaya başlamanıza yardımcı olabilecek basit örneklerdir. Aşağıdaki cmdlet 'lerle ilgili daha ayrıntılı belgeler bulabilirsiniz https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management . Ancak, ProviderID parametresindeki "azureResources" öğesini "aadRoles" ile değiştirmeniz gerekir. Ayrıca RESOURCEID parametresi olarak Azure AD kuruluşunuz için kuruluş KIMLIĞINI de kullanmayı unutmayın.
+> Aşağıdaki bölümler, çalışmaya başlamanıza yardımcı olabilecek basit örneklerdir. Aşağıdaki cmdlet 'lerle ilgili daha ayrıntılı belgeler bulabilirsiniz [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . Ancak, ProviderID parametresindeki "azureResources" öğesini "aadRoles" ile değiştirmelisiniz. Ayrıca, Azure AD kuruluşunuz için RESOURCEID parametresi olarak kiracı KIMLIĞINI de kullanmayı unutmayın.
 
 ## <a name="retrieving-role-definitions"></a>Rol tanımları alınıyor
 
@@ -135,7 +135,7 @@ Bu cmdlet, rol ataması oluşturmaya yönelik cmdlet ile neredeyse aynıdır. Cm
 Azure AD kuruluşunuzda tüm rol ayarlarını almak için aşağıdaki cmdlet 'i kullanın.
 
 ```powershell
-Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'"
 ```
 
 Ayarında dört ana nesne vardır. Şu anda bu nesnelerden yalnızca üçü PıM tarafından kullanılmaktadır. UserMemberSettings etkinleştirme ayarlarından, AdminEligibleSettings uygun atamaların atama ayarları, AdminmemberSettings ise etkin atamaların atama ayarlardır.
@@ -145,8 +145,10 @@ Ayarında dört ana nesne vardır. Şu anda bu nesnelerden yalnızca üçü PıM
 Rol ayarını güncelleştirmek için, belirli bir rol için var olan ayar nesnesini almanız ve üzerinde değişiklikler yapmanız gerekir:
 
 ```powershell
-$setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
-$setting.UserMemberSetting.justificationRule = '{"required":false}'
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq 'tenant id' and RoleDefinitionId eq 'role id'"
+$settinga = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting
+$settinga.RuleIdentifier = "JustificationRule"
+$settinga.Setting = '{"required":false}'
 ```
 
 Daha sonra devam edebilir ve ayarı aşağıda gösterildiği gibi belirli bir rol için nesnelerden birine uygulayabilirsiniz. Buradaki KIMLIK, rol ayarları cmdlet 'inin sonuçlarından alınabilecek rol ayarı KIMLIĞIDIR.

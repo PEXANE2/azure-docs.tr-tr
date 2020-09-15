@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8d8dc4a3efb034c9428de32f0f975869e1044327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613885"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561882"
 ---
 # <a name="graphics-binding"></a>Grafik bağlama
 
@@ -137,11 +137,23 @@ wmrBinding->BlitRemoteFrame();
 ### <a name="simulation"></a>Simülasyon
 
 `GraphicsApiType.SimD3D11` simülasyon bağlamadır ve seçili ise `GraphicsBindingSimD3d11` grafik bağlamayı oluşturur. Bu arabirim, örneğin bir masaüstü uygulamasındaki baş taşımanın benzetimini yapmak için kullanılır ve tek bir scopc görüntüsü oluşturur.
+
+Simülasyon bağlamasını uygulamak için, [Kamera](../overview/features/camera.md) sayfasında açıklanan şekilde, yerel kamera ile uzak çerçeve arasındaki farkı anlamak önemlidir.
+
+İki kamera gereklidir:
+
+* **Yerel kamera**: Bu kamera, uygulama mantığı tarafından yönetilen geçerli kamera konumunu temsil eder.
+* **Proxy kamera**: Bu kamera, sunucu tarafından gönderilen geçerli *uzak kareyle* eşleşir. Bir çerçeve isteyen istemci arasında bir zaman gecikmesi olduğu için, *uzak çerçeve* her zaman yerel kameranın hareketinin arkasında bir bit olur.
+
+Burada temel yaklaşım, hem uzak görüntünün hem de yerel içeriğin, proxy Kamerası kullanılarak bir ekran hedefine işlenmelerdir. Daha sonra, proxy görüntüsü daha sonra, [geç aşama yeniden projeksiyonda](../overview/features/late-stage-reprojection.md)açıklanan yerel kamera alanına yeniden yansıtılmıştı.
+
 Kurulum biraz daha karmaşıktır ve aşağıdaki gibi çalışmaktadır:
 
 #### <a name="create-proxy-render-target"></a>Proxy oluşturma hedefi oluştur
 
-Uzak ve yerel içeriğin, işlev tarafından verilen proxy kamera verilerini kullanarak ' Proxy ' adlı bir ekran genişliği renk/derinlik işleme hedefine işlenmesi gerekir `GraphicsBindingSimD3d11.Update` . Proxy, geri arabelleğin çözümlenmesinden uyuşmalıdır. Bir oturum başlamaya başladıktan sonra, `GraphicsBindingSimD3d11.InitSimulation` kendisine bağlanmadan önce çağrılması gerekir:
+Uzak ve yerel içeriğin, işlev tarafından verilen proxy kamera verilerini kullanarak ' Proxy ' adlı bir ekran genişliği renk/derinlik işleme hedefine işlenmesi gerekir `GraphicsBindingSimD3d11.Update` .
+
+Proxy, arka arabelleğin çözümlenmesinden eşleşmelidir ve *DXGI_FORMAT_R8G8B8A8_UNORM* veya *DXGI_FORMAT_B8G8R8A8_UNORM* biçimindeki tamsayı olmalıdır. Bir oturum başlamaya başladıktan sonra, `GraphicsBindingSimD3d11.InitSimulation` kendisine bağlanmadan önce çağrılması gerekir:
 
 ```cs
 AzureSession currentSession = ...;
@@ -244,4 +256,6 @@ else
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Kamera](../overview/features/camera.md)
+* [Geç aşama yeniden projeksiyonu](../overview/features/late-stage-reprojection.md)
 * [Öğretici: uzaktan işlenmiş modelleri görüntüleme](../tutorials/unity/view-remote-models/view-remote-models.md)

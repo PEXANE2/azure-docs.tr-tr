@@ -4,14 +4,14 @@ description: Bu makalede, Azure Otomasyonu 'nda basit bir grafik runbook 'u olu�
 keywords: runbook, runbook şablonu, runbook otomasyonu, azure runbook
 services: automation
 ms.subservice: process-automation
-ms.date: 04/19/2020
+ms.date: 09/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: fa92cd4f4cba63eee09714813954af9fa9c9c4ea
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1490687e85d2f59b8cfa28712ef075b451363534
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290942"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564228"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Öğretici: grafik runbook 'u oluşturma
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-* Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
+* Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free)için kaydolabilirsiniz.
 * Runbook’u tutacak ve Azure kaynaklarında kimlik doğrulamasını yapacak bir [Automation hesabı](../index.yml). Bu hesabın sanal makineyi başlatma ve durdurma izni olmalıdır.
 * Azure sanal makinesi. Bu makineyi durdurup başlatabileceğinizden bu, bir üretim sanal makinesi olmamalıdır.
 * Gerekirse, [Azure modüllerini içeri aktarın](../shared-resources/modules.md) veya kullandığınız cmdlet 'lere göre [modülleri güncelleştirin](../automation-update-azure-modules.md) .
@@ -38,7 +38,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Metni veren basit bir runbook oluşturarak başlayın `Hello World` .
 
-1. Azure portalında, Otomasyon hesabınızı açın. 
+1. Azure portalında, Otomasyon hesabınızı açın.
 
     Automation hesabı sayfası size bu hesaptaki kaynakların hızlı bir görünümünü sağlar. Birkaç varlığınız zaten olmalıdır. Bu varlıkların çoğu, otomatik olarak yeni bir Otomasyon hesabına eklenen modüllerdir. Ayrıca, aboneliğinizle ilişkili kimlik bilgisi varlığını de bilmelisiniz.
 
@@ -48,7 +48,9 @@ Metni veren basit bir runbook oluşturarak başlayın `Hello World` .
 
 4. Runbook’a **MyFirstRunbook-Graphical** adını verin.
 
-5. Bu durumda, bir [grafik runbook](../automation-graphical-authoring-intro.md)oluşturacağız. **Runbook türü**için **grafik** ' i seçin.<br> ![Yeni runbook](../media/automation-tutorial-runbook-graphical/create-new-runbook.png)<br>
+5. Bu durumda, bir [grafik runbook](../automation-graphical-authoring-intro.md)oluşturacağız. **Runbook türü**için **grafik** ' i seçin.
+
+    ![Yeni runbook](../media/automation-tutorial-runbook-graphical/create-new-runbook.png)
 
 6. Runbook’u oluşturmak için **Oluştur**’a tıklayın ve grafik düzenleyicisini açın.
 
@@ -56,7 +58,9 @@ Metni veren basit bir runbook oluşturarak başlayın `Hello World` .
 
 Düzenleyicinin sol tarafındaki Kitaplık denetimi runbook uygulamanıza eklenecek etkinlikleri seçmenizi sağlar. `Write-Output`Runbook 'tan çıkış metnine bir cmdlet ekleyeceksiniz.
 
-1. Kitaplık denetiminde, arama alanına tıklayın ve yazın `write-output` . Arama sonuçları aşağıdaki görüntüde gösterilmiştir. <br> ![Microsoft.PowerShell.Utility](../media/automation-tutorial-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
+1. Kitaplık denetiminde, arama alanına tıklayın ve yazın `write-output` . Arama sonuçları aşağıdaki görüntüde gösterilmiştir.
+
+    ![Microsoft.PowerShell.Utility](../media/automation-tutorial-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
 
 2. Listenin aşağısına kaydırın. **Write-output** ' a sağ tıklayın ve **tuvale Ekle**' yi seçin. Alternatif olarak, cmdlet adının yanındaki üç nokta (...) simgesine ve ardından **tuvale Ekle**' yi seçebilirsiniz.
 
@@ -70,9 +74,9 @@ Düzenleyicinin sol tarafındaki Kitaplık denetimi runbook uygulamanıza eklene
 
 6. Parametresini seçin `InputObject` . Bu, çıkış akışına göndermek üzere metin belirtmek için kullandığınız parametredir.
 
-7. **Veri kaynağı** açılır menüsü bir parametre değerini doldurmak için kullanabileceğiniz kaynaklar sağlar. Bu menüde **PowerShell ifadesi**' ni seçin. 
+7. **Veri kaynağı** açılır menüsü bir parametre değerini doldurmak için kullanabileceğiniz kaynaklar sağlar. Bu menüde **PowerShell ifadesi**' ni seçin.
 
-   Bu tür kaynaklardan gelen çıktıyı başka bir etkinlik, Otomasyon varlığı veya PowerShell ifadesi olarak kullanabilirsiniz. Bu durumda çıktı yalnızca `Hello World` . Bir PowerShell ifadesi kullanabilir ve dize belirtebilirsiniz.<br>
+   Bu tür kaynaklardan gelen çıktıyı başka bir etkinlik, Otomasyon varlığı veya PowerShell ifadesi olarak kullanabilirsiniz. Bu durumda çıktı yalnızca `Hello World` . Bir PowerShell ifadesi kullanabilir ve dize belirtebilirsiniz.
 
 8. **İfade** alanına, yazın `Hello World` ve ardından tuvale dönmek Için iki kez **Tamam** ' a tıklayın.
 
@@ -92,7 +96,7 @@ Runbook 'u üretimde kullanılabilir hale getirmek için yayımlamadan önce, d�
 
 4. Runbook işi tamamlandığında, test bölmesi çıktısını görüntüler. Bu durumda, görürsünüz `Hello World` .
 
-    ![Hello World](../media/automation-tutorial-runbook-graphical/runbook-test-results.png)
+    ![Merhaba Dünya Runbook çıkışı](../media/automation-tutorial-runbook-graphical/runbook-test-results.png)
 
 5. Tuvale geri dönmek için Test bölmesini kapatın.
 
@@ -116,7 +120,7 @@ Oluşturduğunuz runbook hala taslak modunda. Üretimde çalıştırılabilmesi 
 
 7. Çıkış sayfasını kapatın.
 
-8. Runbook işine ait Akışlar bölmesini açmak için **Tüm Günlükler**’e tıklayın. Yalnızca `Hello World` Çıkış akışında görmeniz gerekir. 
+8. Runbook işine ait Akışlar bölmesini açmak için **Tüm Günlükler**’e tıklayın. Yalnızca `Hello World` Çıkış akışında görmeniz gerekir.
 
     Akışlar bölmesinin, runbook 'a yazıyorsa ayrıntılı ve hata akışları gibi bir runbook işi için diğer akışları gösterebileceğini unutmayın.
 
@@ -139,7 +143,7 @@ Runbook 'unuzu test ve yayımladınız, ancak şu ana kadar Azure kaynaklarını
 4. Yeni değişken sayfasında, belirtilen alanlarda aşağıdaki ayarları yapın.
 
     * **Ad** --girin `AzureSubscriptionId` .
-    * **Değer** --abonelik kimliğinizi girin. 
+    * **Değer** --abonelik kimliğinizi girin.
     * **Tür** --dizeyi tut seçili.
     * **Şifreleme** --varsayılan değeri kullanın.
 
@@ -147,7 +151,7 @@ Runbook 'unuzu test ve yayımladınız, ancak şu ana kadar Azure kaynaklarını
 
 ## <a name="step-6---add-authentication"></a>6. Adım-kimlik doğrulaması ekleme
 
-Abonelik KIMLIĞINI tutmak için bir değişkene sahip olduğunuza göre, runbook 'u aboneliğiniz için farklı çalıştır kimlik bilgileriyle kimlik doğrulaması yapacak şekilde yapılandırabilirsiniz. Bunu, Azure farklı çalıştır bağlantısını bir varlık olarak ekleyerek yapın. Ayrıca, tuvale [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) cmdlet 'Ini ve [set-azcontext](/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) cmdlet 'ini de eklemeniz gerekir.
+Abonelik KIMLIĞINI tutmak için bir değişkene sahip olduğunuza göre, runbook 'u aboneliğiniz için farklı çalıştır kimlik bilgileriyle kimlik doğrulaması yapacak şekilde yapılandırabilirsiniz. Bunu, Azure farklı çalıştır bağlantısını bir varlık olarak ekleyerek yapın. Ayrıca, tuvale [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) cmdlet 'Ini ve [set-azcontext](/powershell/module/az.accounts/Set-AzContext) cmdlet 'ini de eklemeniz gerekir.
 
 >[!NOTE]
 >PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` diğer adlardır `Connect-AzAccount` . Bu diğer adların grafik runbook 'larınız için kullanılamayacağını unutmayın. Grafik runbook 'u yalnızca kendisi kullanabilir `Connect-AzAccount` .
@@ -164,7 +168,9 @@ Abonelik KIMLIĞINI tutmak için bir değişkene sahip olduğunuza göre, runboo
 
 6. `Connect-AzAccount`Tuvale ekleyin.
 
-7. `Get Run As Connection`Şeklin altında bir daire görünene kadar üzerine gelin. Bir bağlantı oluşturmak için daireye tıklayın ve oku sürükleyin `Connect-AzAccount` . Runbook ile başlar `Get Run As Connection` ve sonra çalışır `Connect-AzAccount` .<br> ![Etkinlikler arasında bağlantı oluşturma](../media/automation-tutorial-runbook-graphical/runbook-link-auth-activities.png)
+7. `Get Run As Connection`Şeklin altında bir daire görünene kadar üzerine gelin. Bir bağlantı oluşturmak için daireye tıklayın ve oku sürükleyin `Connect-AzAccount` . Runbook ile başlar `Get Run As Connection` ve sonra çalışır `Connect-AzAccount` .
+
+    ![Etkinlikler arasında bağlantı oluşturma](../media/automation-tutorial-runbook-graphical/runbook-link-auth-activities.png)
 
 8. Tuvalde öğesini seçin `Connect-AzAccount` . Yapılandırma denetim bölmesinde **etiket** alanına Azure 'Da **oturum aç** yazın.
 
@@ -172,7 +178,9 @@ Abonelik KIMLIĞINI tutmak için bir değişkene sahip olduğunuza göre, runboo
 
 10. `Connect-AzAccount`Cmdlet 'in birden çok parametre kümesi vardır ve parametre değerleri sağlamadan önce bir tane seçmeniz gerekir. **Parametre kümesi** ' ne tıklayın ve ardından **Serviceprincipalcertificatewithsubscriptionıd**' yi seçin.
 
-11. Bu parametre kümesinin parametreleri etkinlik parametresi yapılandırma sayfasında görüntülenir. **APPLICATIONID**’ye tıklayın.<br> ![Azure hesabı parametreleri ekleme](../media/automation-tutorial-runbook-graphical/Add-AzureRmAccount-params.png)
+11. Bu parametre kümesinin parametreleri etkinlik parametresi yapılandırma sayfasında görüntülenir. **APPLICATIONID**’ye tıklayın.
+
+    ![Azure hesabı parametreleri ekleme](../media/automation-tutorial-runbook-graphical/Add-AzureRmAccount-params.png)
 
 12. Parametre değeri sayfasında, aşağıdaki ayarları yapın ve ardından **Tamam**' a tıklayın.
 
@@ -186,13 +194,13 @@ Abonelik KIMLIĞINI tutmak için bir değişkene sahip olduğunuza göre, runboo
     * Veri kaynağı listesi-- **Otomasyon bağlantısını al**' ı seçin.
     * **Alan yolu** --türü `CertificateThumbprint` .
 
-14. **ServicePrincipal**öğesine tıklayın ve parametre değeri sayfasında, **veri kaynağı** alanı için **ConstantValue** öğesini seçin; **doğru**seçeneğine tıklayın; ardından **Tamam**' a tıklayın.
+14. **ServicePrincipal**öğesine tıklayın ve parametre değeri sayfasında, **veri kaynağı** alanı için **ConstantValue** öğesini seçin. **Doğru**seçeneğine ve ardından **Tamam**' a tıklayın.
 
 15. **Tenantıd**' ye tıklayın ve parametre değeri sayfasında aşağıdaki ayarları yapın. İşiniz bittiğinde, iki kez **Tamam** ' a tıklayın.
 
-    * **Veri kaynağı** -- **etkinlik çıkışı**' nı seçin. 
+    * **Veri kaynağı** -- **etkinlik çıkışı**' nı seçin.
     * Veri kaynağı listesi-- **Otomasyon bağlantısını al**' ı seçin.
-    * **Alan yolu** --türü `TenantId` . 
+    * **Alan yolu** --türü `TenantId` .
 
 16. Kitaplık denetiminde, `Set-AzContext` Arama alanına yazın.
 
@@ -214,7 +222,7 @@ Abonelik KIMLIĞINI tutmak için bir değişkene sahip olduğunuza göre, runboo
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>7. Adım - Sanal makineyi başlatmak üzere etkinlik ekleme
 
-Artık bir `Start-AzVM` sanal makineyi başlatmak için bir etkinlik eklemeniz gerekir. Azure aboneliğinizdeki herhangi bir VM 'yi seçebilirsiniz ve şu anda adını [Start-AzVM](/powershell/module/az.compute/start-azvm?view=azps-3.5.0) cmdlet 'ine kodırsınız.
+Artık bir `Start-AzVM` sanal makineyi başlatmak için bir etkinlik eklemeniz gerekir. Azure aboneliğinizdeki herhangi bir VM 'yi seçebilirsiniz ve şu anda adını [Start-AzVM](/powershell/module/az.compute/start-azvm) cmdlet 'ine kodırsınız.
 
 1. Kitaplık denetiminde, `Start-Az` Arama alanına yazın.
 
@@ -226,15 +234,15 @@ Artık bir `Start-AzVM` sanal makineyi başlatmak için bir etkinlik eklemeniz g
 
 5. Parametre kümesi için **Resourcegroupnameparametersetname** ' ı seçin. **Resourcegroupname** ve **Name** alanları, bunların yanında, gerekli parametreler olduğunu göstermek için ünlem işaretleri vardır. Her iki alanın de dize değerleri beklediği unutulmamalıdır.
 
-6. **Ad**’ı seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** ' ni seçin. Bu runbook 'u başlatmak için kullandığınız VM için, çift tırnak işaretleriyle çevrelenen makine adını yazın. **Tamam** düğmesine tıklayın.
+6. **Ad**’ı seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** ' ni seçin. Bu runbook 'u başlatmak için kullandığınız VM için, çift tırnak işaretleriyle çevrelenen makine adını yazın. **Tamam**’a tıklayın.
 
-7. **ResourceGroupName**’i seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** değerini kullanın ve çift tırnaklarla çevrelenen kaynak grubunun adını yazın. **Tamam** düğmesine tıklayın.
+7. **ResourceGroupName**’i seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** değerini kullanın ve çift tırnaklarla çevrelenen kaynak grubunun adını yazın. **Tamam**’a tıklayın.
 
 8. Runbook 'u test edebilmeniz için **Test bölmesi** ' ne tıklayın.
 
 9. Testi başlatmak için **Başlat** ' a tıklayın. Tamamlandıktan sonra, VM 'nin başlatıldığından emin olun. Runbook 'larınızın bu noktada aşağıdaki gibi görünmesi gerekir.
 
-    ![Runbook kimlik doğrulama yapılandırması](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
+    ![Runbook başlangıcı-AzVM çıkışı](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
 
 ## <a name="step-8---add-additional-input-parameters"></a>8. adım-ek giriş parametreleri ekleme
 
@@ -249,13 +257,17 @@ Runbook 'larınız Şu anda cmdlet 'i için belirttiğiniz kaynak grubundaki VM 
    * **Tür** --dize ayarını saklayın.
    * **Zorunlu** --değeri **Evet**olarak değiştirin.
 
-4. Adlı ikinci bir zorunlu giriş parametresi oluşturun `ResourceGroupName` ve ardından giriş ve çıkış bölmesini kapatmak Için **Tamam** ' ı tıklatın.<br> ![Runbook Giriş Parametreleri](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-outputs.png)
+4. Adlı ikinci bir zorunlu giriş parametresi oluşturun `ResourceGroupName` ve ardından giriş ve çıkış bölmesini kapatmak Için **Tamam** ' ı tıklatın.
+
+    ![Runbook Giriş Parametreleri](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-outputs.png)
 
 5. Etkinliği seçin `Start-AzVM` ve ardından **Parametreler**' e tıklayın.
 
 6. **Ad** için **veri kaynağı** alanını **runbook girişi**olarak değiştirin. Ardından **VMName**' i seçin.
 
-7. **Resourcegroupname** için **veri kaynağı** alanını **runbook girişi** olarak değiştirin ve ardından **resourcegroupname**öğesini seçin.<br> ![Start-AzVM parametreleri](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-runbookinput.png)
+7. **Resourcegroupname** için **veri kaynağı** alanını **runbook girişi** olarak değiştirin ve ardından **resourcegroupname**öğesini seçin.
+
+    ![Start-AzVM parametreleri](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-runbookinput.png)
 
 8. Runbook'u kaydedin ve Test bölmesini açın. Şimdi testte kullanılacak olan iki girdi değişkeni için değerleri sağlayabilirsiniz.
 
@@ -271,7 +283,7 @@ Runbook 'larınız Şu anda cmdlet 'i için belirttiğiniz kaynak grubundaki VM 
 
 ## <a name="step-9---create-a-conditional-link"></a>9. Adım - Koşullu bağlantı oluşturma
 
-Artık, runbook 'u yalnızca henüz başlatılmamışsa VM 'yi başlatmaya çalışır şekilde değiştirebilirsiniz. Bunu, sanal makinenin örnek düzeyi durumunu alan bir [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) cmdlet 'i ekleyerek yapın. Ardından, `Get Status` VM durumunun çalışıyor veya durduruldu olduğunu anlamak Için PowerShell kodu kod parçacığına sahip adlı bir PowerShell Iş akışı kodu modülü ekleyebilirsiniz. Modülden koşullu bağlantı `Get Status` yalnızca `Start-AzVM` geçerli çalışma durumu durdurulmuşsa çalışır. Bu yordamın sonunda, runbook 'un `Write-Output` başarılı bir şekilde başlatılıp başlatılamadığını bildirmek üzere bir ileti çıktısı almak için cmdlet 'ini kullanır.
+Artık, runbook 'u yalnızca henüz başlatılmamışsa VM 'yi başlatmaya çalışır şekilde değiştirebilirsiniz. Bunu, sanal makinenin örnek düzeyi durumunu alan bir [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) cmdlet 'i ekleyerek yapın. Ardından, `Get Status` VM durumunun çalışıyor veya durduruldu olduğunu anlamak Için PowerShell kodu kod parçacığına sahip adlı bir PowerShell Iş akışı kodu modülü ekleyebilirsiniz. Modülden koşullu bağlantı `Get Status` yalnızca `Start-AzVM` geçerli çalışma durumu durdurulmuşsa çalışır. Bu yordamın sonunda, runbook 'un `Write-Output` başarılı bir şekilde başlatılıp başlatılamadığını bildirmek üzere bir ileti çıktısı almak için cmdlet 'ini kullanır.
 
 1. Grafik düzenleyicide **Myfirstrunbook-grafik** ' i açın.
 
@@ -281,15 +293,15 @@ Artık, runbook 'u yalnızca henüz başlatılmamışsa VM 'yi başlatmaya çal�
 
 4. `Get-AzVM`Tuvale ekleyin.
 
-5. `Get-AzVM`Cmdlet 'i için kümeleri görüntülemek üzere **parametre kümesi** ' ni seçin ve tıklayın. 
+5. `Get-AzVM`Cmdlet 'i için kümeleri görüntülemek üzere **parametre kümesi** ' ni seçin ve tıklayın.
 
 6. **GetVirtualMachineInResourceGroupNameParamSet** parametre kümesini seçin. **Resourcegroupname** ve **ad** alanları, bunların yanında, gerekli parametreleri belirttikleri belirten ünlem işaretleri vardır. Her iki alanın de dize değerleri beklediği unutulmamalıdır.
 
-7. **Ad**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **VMName**' i seçin. **Tamam** düğmesine tıklayın.
+7. **Ad**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **VMName**' i seçin. **Tamam**’a tıklayın.
 
-8. **Resourcegroupname**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **resourcegroupname**' ı seçin. **Tamam** düğmesine tıklayın.
+8. **Resourcegroupname**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **resourcegroupname**' ı seçin. **Tamam**’a tıklayın.
 
-9. **Durum**için **veri kaynağı** altında, **sabit değer**' i seçin ve ardından **doğru**. **Tamam** düğmesine tıklayın.
+9. **Durum**için **veri kaynağı** altında, **sabit değer**' i seçin ve ardından **doğru**. **Tamam**’a tıklayın.
 
 10. ' Den ' e bir bağlantı oluşturun `Specify Subscription Id` `Get-AzVM` .
 
@@ -303,16 +315,17 @@ Artık, runbook 'u yalnızca henüz başlatılmamışsa VM 'yi başlatmaya çal�
 
 15. Aşağıdaki kod parçacığını düzenleyici sayfasına yapıştırın.
 
-    ```powershell-interactive
-     $StatusesJson = $ActivityOutput['Get-AzVM'].StatusesText
-     $Statuses = ConvertFrom-Json $StatusesJson
-     $StatusOut =""
-     foreach ($Status in $Statuses){
-     if($Status.Code -eq "Powerstate/running"){$StatusOut = "running"}
-     elseif ($Status.Code -eq "Powerstate/deallocated") {$StatusOut = "stopped"}
-     }
-     $StatusOut
-     ```
+    ```powershell
+    $Statuses = $ActivityOutput['Get-AzVM'].Statuses
+    $StatusOut = ""
+    foreach ($Status in $Statuses) {
+      if($Status.Code -eq "Powerstate/running")
+        {$StatusOut = "running"}
+      elseif ($Status.Code -eq "Powerstate/deallocated")
+        {$StatusOut = "stopped"}
+    }
+    $StatusOut
+    ```
 
 16. ' Den ' e bir bağlantı oluşturun `Get Status` `Start-AzVM` .
 
@@ -320,7 +333,7 @@ Artık, runbook 'u yalnızca henüz başlatılmamışsa VM 'yi başlatmaya çal�
 
 17. Bağlantıyı seçin ve Yapılandırma bölmesinde **koşul Uygula** ' yı **Evet**olarak değiştirin. Bağlantının, hedef etkinliğin yalnızca koşulun true olarak çözümlenirse çalışacağını belirten kesikli bir çizgi haline geldiğini unutmayın.  
 
-18. **Koşul ifadesi**için, yazın `$ActivityOutput['Get Status'] -eq "Stopped"` . `Start-AzVM`Artık yalnızca VM durdurulmuşsa çalışır.
+18. **Koşul ifadesi**için, yazın `$ActivityOutput['Get Status'] -eq "Stopped"` . `Start-AzVM` Artık yalnızca VM durdurulmuşsa çalışır.
 
 19. Kitaplık denetiminde, **Cmdlet'leri** ve ardından **Microsoft.PowerShell.Utility**’yi genişletin.
 
@@ -355,4 +368,4 @@ Artık, runbook 'u yalnızca henüz başlatılmamışsa VM 'yi başlatmaya çal�
 * Grafik yazma hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'nda grafik runbook 'U yazma](../automation-graphical-authoring-intro.md).
 * PowerShell runbook 'larını kullanmaya başlamak için bkz. [PowerShell runbook 'U oluşturma](automation-tutorial-runbook-textual-powershell.md).
 * PowerShell Iş akışı runbook 'larını kullanmaya başlamak için bkz. [PowerShell iş akışı runbook 'U oluşturma](automation-tutorial-runbook-textual.md).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).

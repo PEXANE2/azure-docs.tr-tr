@@ -3,12 +3,12 @@ title: Bir kümenin Azure Service Fabric sürümünü yükseltme
 description: Küme güncelleştirme modunu ayarlama, sertifika yükseltme, uygulama bağlantı noktaları ekleme, işletim sistemi düzeltme ekleri yapma gibi bir Service Fabric kümesini çalıştıran Service Fabric kodu ve/veya yapılandırmayı yükseltin. Yükseltmeler gerçekleştirildiğinde ne bekleyebiliriz?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01fe916f0ee78c8481ac6b17b8f7409b47c852ee
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261054"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564296"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Kümenin Service Fabric sürümünü yükseltme
 
@@ -28,7 +28,7 @@ Bu, portalda "upgradeMode" küme yapılandırmasını ayarlayarak veya dinamik b
 ## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>Azure portal yükseltme modunu ayarlama
 Kümeyi oluştururken kümeyi otomatik veya el ile ayarlayabilirsiniz.
 
-![Create_Manualmode][Create_Manualmode]
+![Ekran görüntüsü, seçenek 2 küme yapılandırması seçiliyken ve küme yapılandırma bölmesi açık olan Service Fabric kümesi oluştur bölmesini gösterir.][Create_Manualmode]
 
 Yönetim deneyimini kullanarak, canlı bir kümede kümesini otomatik veya el ile ayarlayabilirsiniz. 
 
@@ -39,12 +39,12 @@ Küme sistem durumu ilkeleri karşılanmazsa, yükseltme geri alınır. Bu özel
 
 Geri alma işlemine neden olan sorunları düzelttikten sonra, daha önce yaptığınız adımları izleyerek yükseltmeyi yeniden başlatmanız gerekir.
 
-![Manage_Automaticmode][Manage_Automaticmode]
+![Ekran görüntüsü, doku yükseltmeleri bölmesinin açık olduğu Service Fabric kümeleri penceresini ve otomatik ve El Ile de içeren yükseltme seçeneklerini gösterir.][Manage_Automaticmode]
 
 ## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak yükseltme modunu ayarlama
 "UpgradeMode" yapılandırmasını Microsoft. ServiceFabric/kümeler kaynak tanımına ekleyin ve "clusterCodeVersion" değerini aşağıda gösterildiği gibi desteklenen yapı sürümlerinden birine ayarlayın ve ardından şablonu dağıtın. "UpgradeMode" için geçerli değerler "Manual" veya "Automatic"
 
-![ARMUpgradeMode][ARMUpgradeMode]
+![Ekran görüntüsü, yapıyı yansıtmak için düz metin girintili olan bir şablon gösterir ve clusterCodeVersion ve upgradeMode vurgulanır.][ARMUpgradeMode]
 
 ### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Bir Kaynak Yöneticisi şablonu aracılığıyla el Ile moduna ayarlanmış bir kümedeki yeni bir sürüme yükseltme.
 Küme El Ile modundayken, yeni bir sürüme yükseltmek için, "clusterCodeVersion" öğesini desteklenen bir sürüm olarak değiştirin ve dağıtın. Şablon dağıtımı, doku yükseltmesiyle otomatik olarak açılır. Küme sistem durumu ilkeleri (düğüm durumunun bir birleşimi ve kümede çalışan tüm uygulamaların sistem durumu), yükseltme sırasında öğesine dağıtılır.

@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 20a376d303f90727063f288e239e89ede2a1113c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298224"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564377"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
 
@@ -25,7 +25,7 @@ Bu şekilde nasıl ele alınacaktır:
 2. Azure Maps ınkapılı haritalar Özellik stateset 'i güncelleştirmek için bir Azure işlevi oluşturma.
 3. Haritalar KIMLIĞINIZI ve özellik stateset KIMLIĞINIZI Azure dijital TWINS grafiğinde depolama.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Azure dijital TWINS [*öğreticisini izleyin: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md).
     * Bu ikizi ek bir uç nokta ve rotayla genişletiyorsunuz. Ayrıca, bu öğreticiden işlev uygulamanıza başka bir işlev da eklersiniz. 
@@ -135,7 +135,7 @@ namespace SampleFunctionsApp
 
 İşlev uygulamanızda iki ortam değişkeni ayarlamanız gerekir. Bunlardan biri [Azure Maps birincil abonelik anahtarınıza](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account), diğeri Ise [Azure HARITALAR stateset Kimliğinizle](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)biridir.
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "subscription-key=<your-Azure-Maps-primary-subscription-key> -g <your-resource-group> -n <your-App-Service-(function-app)-name>"
 az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-stateset-ID> -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```

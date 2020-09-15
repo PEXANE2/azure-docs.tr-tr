@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure VM altyapısını bir Service Fabric kümesi
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e9f62f944fff331bcf2dad1b380161e563614219
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75614018"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561849"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesi barındırmak için Azure VM altyapısı oluşturma
 
@@ -49,7 +49,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
 
 8. Ardından, **NIC ağ güvenlik grubunu** **Gelişmiş**olarak ayarlayın. Adını belirterek yeni bir güvenlik grubu oluşturun ve herhangi bir kaynaktan gelen TCP trafiğine izin vermek için aşağıdaki kuralları oluşturun:
 
-   ![SF-gelen][sf-inbound]
+   ![Ekran görüntüsü, gelen TCP trafiğine izin veren kuralların oluşturulmasını gösterir.][sf-inbound]
 
    * `3389`RDP ve ICMP için bağlantı noktası (temel bağlantı).
    * `19000-19003`Service Fabric için bağlantı noktaları.
@@ -61,7 +61,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
 
 9. Başka bir kural ekleyin. Kaynağı **hizmet etiketi** olarak ayarlayın ve kaynak hizmet etiketini **VirtualNetwork**olarak ayarlayın. Service Fabric, şu bağlantı noktalarının küme içindeki iletişim için açılmasını gerektiriyor: 135137-139, 445, 20.001-20031, 20606-20861.
 
-   ![VNET-gelen][vnet-inbound]
+   ![Ekran görüntüsünde, bir küme için TCP trafiğine izin veren kuralların oluşturulması gösterilmektedir.][vnet-inbound]
 
 10. Diğer seçeneklerin varsayılan durumunda kabul edilebilir. İsterseniz bunları gözden geçirin ve ardından sanal makinenizi başlatın.
 

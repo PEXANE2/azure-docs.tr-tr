@@ -4,14 +4,14 @@ description: Azure Site Recovery ile VM 'Leri/fiziksel sunucuları Azure 'a devr
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: bebc4cd56f248d09579dcde2fc234f63dd65a09f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309977"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563990"
 ---
-# <a name="run-a-failover-from-on-premises-to-azure"></a>Şirket içinden Azure 'a yük devretme çalıştırma
+# <a name="run-a-failover-from-on-premises-to-azure"></a>Şirket içinden Azure’a yük devretme çalıştırma
 
 Bu makalede [Azure Site Recovery](site-recovery-overview.md) ' de şirket Içi makinelerin Azure 'a yük devretme işlemi açıklanır
 
@@ -46,7 +46,7 @@ Kurtarma planı yük devretmesini aşağıdaki gibi çalıştırın:
 1. Site Recovery kasasında **kurtarma planları**  >  *recoveryplan_name*' nı seçin.
 2. **Yük devretme**' ye tıklayın.
 
-    ![Yük devretme](./media/site-recovery-failover/Failover.png)
+    ![Ekran görüntüsünde, diğer menüden yük devretme seçiliyken ADRP bölmesi görüntülenir.](./media/site-recovery-failover/Failover.png)
 
 3. **Yük**devretme  >  **yük devretmesi yönü**' nde, Azure 'a çoğaltma yapıyorsanız varsayılan olarak bırakın.
 4. **Yük devretme**bölümünde yük devretmek Için bir **Kurtarma noktası** seçin.
@@ -125,7 +125,7 @@ Site Recovery sürücü harflerinin bekletilmesini yönetir. VM çoğaltma sıra
 
 RDP veya SSH kullanarak yük devretmeden sonra oluşturulan Azure VM 'lerine bağlanmak istiyorsanız, tabloda özetlenen gereksinimleri izleyin.
 
-**Yükünü** | **Konum** | **Eylemler**
+**Yük devretme** | **Konum** | **Eylemler**
 --- | --- | ---
 **Windows çalıştıran Azure VM** | Yük devretmeden sonra Azure VM |  VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının, RDP bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM 'nin ekran görüntüsünü doğrulamak için **önyükleme tanılamalarını** denetleyin.<br/><br/> Bağlanamıyorsanız, sanal makinenin çalıştığından emin olun ve bu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)gözden geçirin.
 **Linux çalıştıran Azure VM** | Yük devretmeden sonra Azure VM | Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının SSH bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> VM 'nin ekran görüntüsü için **önyükleme tanılamayı** denetleyin.<br/><br/>

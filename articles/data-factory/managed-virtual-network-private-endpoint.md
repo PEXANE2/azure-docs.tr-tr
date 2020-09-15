@@ -9,14 +9,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom:
+- seo-lt-2019
+- references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 0553cb47ba0119cf1bc5e744b689b6c510ba8396
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5a40faa1feac20ae096dfe39a5b1d109d4a11d3d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594365"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564007"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory yönetilen sanal ağ (Önizleme)
 
@@ -88,7 +90,7 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 - PostgreSQL için Azure Veritabanı
 - MariaDB için Azure Veritabanı
 
-### <a name="supported-regions"></a>Desteklenen bölgeler
+### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure Data Factory yönetilen sanal ağ aşağıdaki Azure bölgelerinde kullanılabilir:
 - Doğu ABD
 - Doğu ABD 2
 - Orta Batı ABD
@@ -104,6 +106,10 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>ADF tarafından yönetilen sanal ağdan gelen genel uç nokta aracılığıyla giden iletişimler
 - Giden iletişimler için yalnızca bağlantı noktası 443 açılır.
 - Azure depolama ve Azure Data Lake Gen2, ADF tarafından yönetilen sanal ağdan gelen genel uç nokta ile bağlantı için desteklenmez.
+
+### <a name="linked-service-creation-of-azure-key-vault"></a>Bağlı hizmet oluşturma Azure Key Vault 
+- Azure Key Vault için bağlı bir hizmet oluşturduğunuzda, hiçbir Azure Integration Runtime başvurusu yoktur. Bu nedenle Azure Key Vault bağlı hizmet oluşturma sırasında özel uç nokta oluşturamazsınız. Ancak, Azure Key Vault bağlı hizmete başvuran ve bu bağlı hizmet, yönetilen sanal ağ ile Azure Integration Runtime başvuran veri depoları için bağlı hizmet oluşturduğunuzda, oluşturma sırasında Azure Key Vault bağlı hizmeti için özel bir uç nokta oluşturabilirsiniz. 
+- Azure Key Vault bağlı hizmeti için **test bağlantısı** IŞLEMI yalnızca URL biçimini doğrular, ancak herhangi bir ağ işlemi yapmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

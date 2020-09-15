@@ -1,22 +1,25 @@
 ---
-title: Windows 'da Azure dosyaları sorunlarını giderme | Microsoft Docs
-description: Windows 'da Azure dosyaları sorunlarını giderme. Windows istemcilerinden bağlandığınızda Azure dosyalarıyla ilgili yaygın sorunları inceleyin ve olası çözümleri görün.
+title: Windows’ta Azure Dosyalar sorunlarını giderme
+description: Windows 'da Azure dosyaları sorunlarını giderme. Windows istemcilerinden bağlandığınızda Azure dosyalarıyla ilgili yaygın sorunları inceleyin ve olası çözümleri görün. Yalnızca SMB paylaşımları için
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 549f9b03272accbe107c432f4929c5de250a6f6b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 16491e36e0196bc3dabee17daf905d9a5204f8cd
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532401"
+ms.locfileid: "90564262"
 ---
-# <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
+# <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows 'da Azure dosyaları sorunlarını giderme (SMB)
 
 Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak Için azfilediagnostics 'i de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Bu bilgileri Azure dosya [paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) de bulabilirsiniz. Bu bilgiler, Azure dosya paylaşımlarını bağlama/eşleme/bağlama sorunları konusunda size yardımcı olacak adımlar sağlar.
+
+> [!IMPORTANT]
+> Bu makalenin içeriği yalnızca SMB paylaşımları için geçerlidir.
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Bir Azure dosya paylaşımından bağlama yaparken hata 5
@@ -54,7 +57,7 @@ Kullanıcılar Active Directory (AD) veya Azure Active Directory Domain Services
 
 - **Active Directory (ad)** bkz. [bir kimliğe paylaşma düzeyi izinleri atama](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
 
-    Paylaşma düzeyi izin atamaları, Azure AD Connect kullanarak Active Directory (AD) ile Azure Active Directory (AAD) arasında eşitlenmiş gruplar ve kullanıcılar için desteklenir.  Paylaşma düzeyi izinlerinin atandığı gruplara ve kullanıcılara desteklenmeyen "salt bulut" grupları olmadığından emin olun.
+    Paylaşma düzeyi izin atamaları, Active Directory (AD) ile Azure Active Directory (Azure AD) arasında eşitlenmiş olan gruplar ve kullanıcılar için Azure AD Connect kullanılarak desteklenir.  Paylaşma düzeyi izinlerinin atandığı gruplara ve kullanıcılara desteklenmeyen "salt bulut" grupları olmadığından emin olun.
 - **Azure Active Directory Domain Services (Azure AD DS)** bkz. [bir kimliğe erişim izinleri atama](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>

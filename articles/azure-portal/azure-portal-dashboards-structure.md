@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: ad0d3a1bf2c293039df3bba3aa18da7d6e7dd0a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81459228"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561610"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure Panolarının yapısı
 Bu belge, örnek olarak aşağıdaki Panoyu kullanarak bir Azure panosunun yapısını gösterir:
@@ -329,16 +329,16 @@ __Position__ özelliği, __x__, __y__, __RowSpan__ve __colspan__olarak ifade edi
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
-![ızgara birimleri](./media/azure-portal-dashboards-structure/grid-units.png)
+![Ekran görüntüsü, tek kare kılavuz birimi vurgulanmış şekilde kılavuzun kapanışını gösterir.](./media/azure-portal-dashboards-structure/grid-units.png)
 
 ### <a name="the-metadata-object"></a>Meta veri nesnesi
 Her bölümde bir meta veri özelliği bulunur, bir nesne, __Type__adlı yalnızca bir gerekli özelliğe sahiptir. Bu dize, portala hangi kutucuğun gösterileceğini söyler. Örnek panonuz bu tür kutucukları kullanır:
 
 
-1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart`– İzleme ölçümlerini göstermek için kullanılır
-1. `Extension[azure]/HubsExtension/PartType/MarkdownPart`– Listeler, bağlantılar vb. için temel biçimlendirmeye sahip metin veya görüntülerle göstermek için kullanılır.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart`– YouTube, Channel9 ve HTML video etiketinde kullanılan diğer herhangi bir video türünün videolarını göstermek için kullanılır.
-1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart`– Bir Azure sanal makinesinin adını ve durumunu göstermek için kullanılır.
+1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` – İzleme ölçümlerini göstermek için kullanılır
+1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` – Listeler, bağlantılar vb. için temel biçimlendirmeye sahip metin veya görüntülerle göstermek için kullanılır.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` – YouTube, Channel9 ve HTML video etiketinde kullanılan diğer herhangi bir video türünün videolarını göstermek için kullanılır.
+1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – Bir Azure sanal makinesinin adını ve durumunu göstermek için kullanılır.
 
 Her parça türünün kendi yapılandırması vardır. Olası yapılandırma özelliklerine __giriş__, __Ayarlar__ve __varlık__adı verilir. 
 

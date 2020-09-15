@@ -12,18 +12,18 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.custom: contperfq1
-ms.openlocfilehash: b1f23d52b96e708a16adbbf6098de4b7ab0423e4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 1eaef57f46bf6373fdd2a73575bb028904ef108b
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052112"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561660"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Çoklu oturum açma (SSO) nedir?
 
 Çoklu oturum açma, kullanıcının kullandıkları her uygulamada oturum açması gerekmediği anlamına gelir. Kullanıcı bir kez oturum açar ve bu kimlik bilgileri diğer uygulamalar için de kullanılır.
 
-Son bir kullanıcı ise, SSO ayrıntılarından çok önemli değildir. Parolanızı çok büyük bir şekilde yazmak zorunda kalmadan yalnızca üretken olmanızı sağlayan uygulamaları kullanmak istersiniz. Uygulamalarınızı şurada bulabilirsiniz: https://myapplications.microsoft.com .
+Son bir kullanıcı ise, SSO ayrıntılarından çok önemli değildir. Parolanızı çok büyük bir şekilde yazmak zorunda kalmadan yalnızca üretken olmanızı sağlayan uygulamaları kullanmak istersiniz. Uygulamalarınızı şurada bulabilirsiniz: https://myapps.microsoft.com .
  
 Bir Yöneticiyseniz veya BT uzmanı varsa, SSO ve Azure 'da nasıl uygulandığı hakkında daha fazla bilgi edinmek için okumaya devam edin.
 
@@ -53,7 +53,7 @@ Kimlik doğrulama temelleri: Web çoklu oturum açma | Azure Active Directory
 > [!TIP]
 > Bulutta barındırılan uygulamalar hizmet olarak yazılım (SaaS) uygulamaları olarak da adlandırılır. 
 
-Bulutta barındırılan uygulamalar için çoklu oturum açma basittir. Kimlik sağlayıcısı 'nın uygulama için kullanılmakta olduğunu bilmesini sağlayabilirsiniz. Ardından, uygulamayı kimlik sağlayıcısına güvenmek üzere yapılandırırsınız. Azure AD 'yi bir uygulama için kimlik sağlayıcısı olarak kullanmayı öğrenmek için bkz. [uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md).
+Bulutta barındırılan uygulamalar için çoklu oturum açma basittir. Kimlik sağlayıcısı 'nın uygulama için kullanılmakta olduğunu bilmesini sağlayabilirsiniz. Ardından, uygulamayı kimlik sağlayıcısına güvenmek üzere yapılandırırsınız. Azure AD 'yi bir uygulama için kimlik sağlayıcısı olarak kullanmayı öğrenmek için bkz. [uygulama yönetiminde hızlı başlangıç serisi](add-application-portal.md).
 
 > [!TIP]
 > Bulut ve Internet terimleri genellikle birbirinin yerine kullanılır. Bunun nedeni, ağ diyagramlarında yapmanız gerekidir. Her bileşeni çizmek uygun olmadığından büyük bilgisayar ağlarını bir diyagram üzerinde bir bulut şekliyle göstermek yaygındır. Internet, en iyi bilinen bir ağ olduğundan, bu koşulların yerine kullanılması kolay bir işlemdir. Ancak, herhangi bir bilgisayar ağı bir buluta dağıtılabilir.

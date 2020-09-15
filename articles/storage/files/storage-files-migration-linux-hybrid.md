@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 202f7fd065641f9921df5237fb83e7900819c8f7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510382"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563514"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure Dosya Eşitleme ile Linux 'tan karma bulut dağıtımına geçiş
 
-Azure Dosya Eşitleme, doğrudan bağlı depolama (DAS) ile Windows Server örneklerinde çalışmaktadır. Linux veya uzak sunucu Ileti bloğu (SMB) paylaşımıyla eşitlemeyi desteklemez.
+Azure Dosya Eşitleme, doğrudan bağlı depolama (DAS) ile Windows Server örneklerinde çalışmaktadır. Linux istemcilerinden ve bu bilgisayarlardan veya bir uzak sunucu Ileti bloğu (SMB) paylaşımına veya ağ dosya sistemi (NFS) paylaşımlarına eşitlemeyi desteklemez.
 
 Sonuç olarak, dosya hizmetlerinizi karma dağıtıma dönüştürmek, Windows Server 'a geçiş yapmayı zorunlu kılar. Bu makale, böyle bir geçişin planlanması ve yürütülmesi sırasında size rehberlik eder.
 
@@ -201,7 +201,7 @@ Bir paylaşımı veya bir paylaşım grubunu ortak bir köke veya birime geçirm
 Bu kopyaların birkaçını paralel olarak çalıştırmayı deneyebilirsiniz. Tek seferde bir Azure dosya paylaşımının kapsamını işlemeyi öneririz.
 
 > [!WARNING]
-> Linux Samba sunucunuzdaki tüm verileri Windows Server örneğine taşıdıktan ve geçiş işlemi tamamlandıktan sonra, Azure portal *Tüm* eşitleme gruplarına geri dönün. Bulut katmanlama birimi için boş alan yüzdesini, önbellek kullanımının yüzde 20 ' si için daha uygun bir değere ayarlayın. 
+> Linux Samba sunucunuzdaki tüm verileri Windows Server örneğine taşıdıktan ve geçiş işlemi tamamlandıktan sonra, Azure portal *Tüm*  eşitleme gruplarına geri dönün. Bulut katmanlama birimi için boş alan yüzdesini, önbellek kullanımının yüzde 20 ' si için daha uygun bir değere ayarlayın. 
 
 Bulut katmanlama birimindeki boş alan ilkesi, büyük olasılıkla birden çok sunucu uç noktası ile eşitlenmesi olan bir birim düzeyinde çalışır. Bir sunucu uç noktasında boş alanı ayarlamayı unutursanız, eşitleme en kısıtlayıcı kuralı uygulamaya devam eder ve boş disk alanını yüzde 99 ' de tutmaya çalışır. Yerel önbellek daha sonra beklediği gibi gerçekleştirilemeyebilir. Amacınız, yalnızca nadiren erişilen arşiv verileri içeren bir birim için ad alanına sahip olduğunda ve diğer bir senaryo için depolama alanının geri kalanını ayırdıysanız, performans kabul edilebilir olabilir.
 

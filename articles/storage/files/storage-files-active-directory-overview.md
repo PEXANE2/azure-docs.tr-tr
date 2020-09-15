@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447255"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561832"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB erişimi için Azure dosyalarına yönelik kimlik tabanlı kimlik doğrulama seçeneklerine genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -78,6 +78,7 @@ Aşağıdaki tabloda Azure AD DS için desteklenen Azure dosya paylaşımları k
 - Azure AD DS ve şirket içi AD DS kimlik doğrulaması, bilgisayar hesaplarında kimlik doğrulamasını desteklemez. Bunun yerine bir hizmet oturum açma hesabı kullanmayı düşünebilirsiniz.
 - Azure AD 'ye katılmış cihazlarda veya Azure AD 'ye kayıtlı cihazlarda Azure AD DS kimlik doğrulaması ve şirket içi AD DS kimlik doğrulaması desteklenmez.
 - Azure dosya paylaşımları yalnızca aşağıdaki etki alanı hizmetlerinden birine yönelik kimlik tabanlı kimlik doğrulamasını destekler [Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) ya da [Şirket içi Active Directory Domain Services (AD DS)](#ad-ds).
+- Önizleme aşamasında olan ağ dosya sistemi (NFS) ile kimlik tabanlı kimlik doğrulama yöntemi desteklenmez.
 
 ## <a name="advantages-of-identity-based-authentication"></a>Kimlik tabanlı kimlik doğrulamanın avantajları
 Azure dosyaları için kimlik tabanlı kimlik doğrulaması, paylaşılan anahtar kimlik doğrulamasını kullanarak çeşitli avantajlar sunar:

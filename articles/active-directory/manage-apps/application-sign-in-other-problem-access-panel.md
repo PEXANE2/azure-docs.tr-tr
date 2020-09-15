@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 472ab82e6941be5c1485773b1115d91eda701666
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a5201d0e31eb6d3b06316b74463dc2b68b33008c
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231189"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563922"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD uygulamalarımın bir uygulamada oturum açma sorunlarını giderme
 
@@ -33,7 +33,7 @@ Bir kullanıcının görebilecekleri uygulamaların türü aşağıdaki kategori
 -   Var olan SSO çözümlerini içeren uygulamalar
 
 Uygulamanın görünmemiş veya görünmediğinden emin olmak için bazı şeyler aşağıda verilmiştir.
-- Uygulamanın Azure AD 'ye eklendiğinden emin olun ve kullanıcının atandığından emin olun. Daha fazla bilgi edinmek için bkz. [uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md).
+- Uygulamanın Azure AD 'ye eklendiğinden emin olun ve kullanıcının atandığından emin olun. Daha fazla bilgi edinmek için bkz. [uygulama yönetiminde hızlı başlangıç serisi](add-application-portal.md).
 - Uygulama son zamanlarda eklendiyse, kullanıcının oturumu kapatıp tekrar oturum açmasını sağlayabilirsiniz. 
 - Uygulama Office gibi bir lisans gerektiriyorsa, kullanıcıya uygun lisans atandığından emin olun.
 - Lisans değişiklikleri için gereken süre, grubun boyutuna ve karmaşıklığına bağlı olarak farklılık gösterebilir.

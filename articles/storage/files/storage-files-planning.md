@@ -4,25 +4,32 @@ description: Azure dosyaları dağıtımının planlanmasını anlayın. Azure d
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: db7ae0bd33bc52f80788db4994dcf2a3ca4d909a
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: bf982b313c99034065aad5f246a69caf665a2657
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705920"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563475"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
 
-- **Azure dosya paylaşımının doğrudan bağlanması**: Azure dosyaları SMB erişimi sağladığından, Windows, MacOS ve Linux 'ta bulunan standart SMB istemcisini kullanarak şirket içinde veya bulutta Azure dosya paylaşımlarını bağlayabilirsiniz. Azure dosya paylaşımları sunucusuz olduğundan, üretim senaryolarına yönelik dağıtım, bir dosya sunucusu veya NAS cihazının yönetilmesini gerektirmez. Bu, yazılım düzeltme ekleri uygulamanız veya fiziksel diskleri takas etmeniz gerekmediği anlamına gelir. 
+- **Azure dosya paylaşımının doğrudan bağlanması**: Azure dosyaları sunucu ileti bloğu (SMB) veya ağ dosya SISTEMI (NFS) erişimi SAĞLADıĞıNDAN, işletim sisteminde bulunan standart SMB veya NFS Istemcilerini kullanarak Azure dosya paylaşımlarını şirket içinde veya bulutta bağlayabilirsiniz. Azure dosya paylaşımları sunucusuz olduğundan, üretim senaryolarına yönelik dağıtım, bir dosya sunucusu veya NAS cihazının yönetilmesini gerektirmez. Bu, yazılım düzeltme ekleri uygulamanız veya fiziksel diskleri takas etmeniz gerekmediği anlamına gelir. 
 
-- **Şirket Içi Azure dosya paylaşımını Azure dosya eşitleme Ile önbelleğe alma**: Azure dosya eşitleme, kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirirken şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu mümkün tutmaya olanak sağlar. Azure Dosya Eşitleme, şirket içi (veya bulut) Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelleğine dönüştürür. 
+- **Şirket Içi Azure dosya paylaşımını Azure dosya eşitleme Ile önbelleğe alma**: Azure dosya eşitleme, kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirirken şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu mümkün tutmaya olanak sağlar. Azure Dosya Eşitleme, şirket içi (veya bulut) Windows Server 'ı Azure SMB dosya paylaşımınızın hızlı önbelleğine dönüştürür. 
 
 Bu makalede öncelikle bir Azure dosya paylaşımının dağıtımı, şirket içi veya bulut istemcisi tarafından doğrudan bağlanması için dağıtım konuları ele alınmaktadır. Azure Dosya Eşitleme dağıtımı planlamak için, bkz. [Azure dosya eşitleme dağıtımı planlama](storage-sync-files-planning.md).
+
+## <a name="available-protocols"></a>Kullanılabilir protokoller
+
+Azure dosyaları, dosya paylaşımlarınız, SMB ve ağ dosya sistemi (NFS) bağlanırken kullanılabilecek iki protokol sunar. Bu protokollerle ilgili ayrıntılar için bkz. [Azure dosya paylaşma protokolleri](storage-files-compare-protocols.md).
+
+> [!IMPORTANT]
+> Bu makalenin içeriğinin çoğu yalnızca SMB paylaşımları için geçerlidir. NFS paylaşımları için geçerli olan herhangi bir şey, özellikle geçerli olur.
 
 ## <a name="management-concepts"></a>Yönetim kavramları
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
@@ -54,7 +61,7 @@ Azure dosya paylaşımınıza erişimi engellemeyi kaldırmak için iki ana seç
 
 - Azure dosya paylaşımlarına bir ExpressRoute veya VPN bağlantısı üzerinden erişin. Azure dosya paylaşımınıza bir ağ tüneli üzerinden eriştiğinizde, SMB trafiği kuruluş sınırınızda geçiş yaptığından, Azure dosya paylaşımınızı şirket içi dosya paylaşımında bağlayabilirsiniz.   
 
-Technical perspektifinden, Azure dosya paylaşımlarınızı genel uç nokta aracılığıyla bağlamak çok daha kolay olsa da, çoğu müşterinin Azure dosya paylaşımlarını bir ExpressRoute veya VPN bağlantısı üzerinden bağlamaya karar veririz. Bunu yapmak için, ortamınız için aşağıdakileri yapılandırmanız gerekir:  
+Technical perspektifinden, Azure dosya paylaşımlarınızı genel uç nokta aracılığıyla bağlamak çok daha kolay olsa da, çoğu müşterinin Azure dosya paylaşımlarını bir ExpressRoute veya VPN bağlantısı üzerinden bağlamaya karar veririz. Bu seçeneklerle bağlama, hem SMB hem de NFS paylaşımlarında mümkündür. Bunu yapmak için, ortamınız için aşağıdakileri yapılandırmanız gerekir:  
 
 - **ExpressRoute, siteden siteye veya noktadan sıteye VPN kullanarak ağ tüneli**: bir sanal ağa tünel oluşturma, 445 bağlantı noktası engellense bile şirket içi Azure dosya paylaşımlarına erişim sağlar.
 - **Özel uç**noktalar: özel uç noktalar, depolama hesabınıza sanal ağın adres alanından ayrılmış bir IP adresi sağlar. Bu, Azure depolama kümelerinin sahip olduğu tüm IP adresi aralıklarına kadar şirket içi ağları açmaya gerek kalmadan ağ tünelini sağlar. 
@@ -66,6 +73,10 @@ Azure dosya paylaşımının dağıtımıyla ilişkili ağı planlamak için bkz
 Azure dosyaları iki farklı şifreleme türünü destekler: Azure dosya paylaşımında bağlama/erişim sırasında kullanılan şifrelemeyle ve bekleyen şifreleme ile ilgili olarak, diskte depolandığında verilerin nasıl şifrelendiğine ilişkin şifreleme ile ilişkili olan geçişte şifreleme. 
 
 ### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
+
+> [!IMPORTANT]
+> Bu bölüm, SMB paylaşımları için iletim ayrıntılarının şifrelemesini anlatmaktadır. NFS paylaşımları ile aktarım sırasında şifreleme ile ilgili ayrıntılar için bkz. [güvenlik](storage-files-compare-protocols.md#security).
+
 Varsayılan olarak, tüm Azure depolama hesaplarının geçiş etkin olarak şifrelenmesi vardır. Bu, SMB üzerinden bir dosya paylaşımının bağladığınızda veya dosyayı dosya paylaşımından (Azure portal, PowerShell/CLı veya Azure SDK 'Ları aracılığıyla) eriştiğinizde, Azure dosyaları yalnızca şifreleme veya HTTPS ile SMB 3.0 + ile yapılırsa bağlantıya izin verir. SMB 3,0 ' i veya SMB 3,0 ' i destekleyen ancak SMB 'yi destekleyen istemcileri desteklemeyen istemciler, aktarım sırasında şifreleme etkinse Azure dosya paylaşımının bağlanabilmesi mümkün olmayacaktır. Şifreleme ile SMB 3,0 ' i destekleyen işletim sistemleri hakkında daha fazla bilgi için bkz. [Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)ve [Linux](storage-how-to-use-files-linux.md)için ayrıntılı Belgelerimiz. PowerShell, CLı ve SDK 'ların tüm geçerli sürümleri HTTPS 'yi destekler.  
 
 Azure depolama hesabı için iletim sırasında şifrelemeyi devre dışı bırakabilirsiniz. Şifreleme devre dışı bırakıldığında, Azure dosyaları da SMB 2,1, şifrelemeden SMB 3,0 ve HTTP üzerinden şifrelenmemiş dosya API çağrıları sağlar. Geçiş sırasında şifrelemeyi devre dışı bırakmak için birincil neden, Windows Server 2008 R2 veya daha eski Linux dağıtımı gibi eski bir işletim sisteminde çalıştırılması gereken eski bir uygulamayı desteklemedir. Azure dosyaları yalnızca Azure dosya paylaşımıyla aynı Azure bölgesi içinde SMB 2,1 bağlantılarına izin verir; Azure dosya paylaşımının Azure bölgesinin dışında bir SMB 2,1 istemcisi, örneğin şirket içi veya farklı bir Azure bölgesinde, dosya paylaşımıyla erişemeyecektir.

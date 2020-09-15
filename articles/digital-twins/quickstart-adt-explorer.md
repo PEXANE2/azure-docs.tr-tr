@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: e85937103e94a0fbb8dd8be92bb22ee5078df70a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d91ae0f3db9ad3637043f9eb7472539d8aba2c8d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087329"
+ms.locfileid: "90563047"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>ADT gezginini kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -102,13 +102,13 @@ ADT Gezginini ayarladığınız örnekle çalışacak şekilde yapılandırmak i
 [Önkoşul](#prerequisites) bölümünde daha önce topladığınız önemli bilgileri girin:
 * Uygulama (istemci) kimliği
 * Dizin (kiracı) kimliği
-* ADT URL 'SI, *https://{örnek konak adı}* biçiminde
+* Azure dijital TWINS örneği URL 'SI, *https://{örnek konak adı}* biçiminde
 
 >[!NOTE]
 > Aynı simgeyi seçerek, oturum açma kutusunu tekrar çekmek için bu bilgileri dilediğiniz zaman yeniden ziyaret edebilir/düzenleyebilirsiniz. Bu, geçirilen değerleri tutacak.
 
 > [!TIP]
-> Bağlandığınızda bir SignalRService. Subscribe hata iletisi gösteriliyorsa, ADT URL 'nizin *https://* ön ekine sahip olduğundan emin olun.
+> Bağlandığınızda bir `SignalRService.subscribe` hata iletisi gösteriliyorsa, Azure Digital TWINS URL 'nizin *https://* ile başladığından emin olun.
 
 Microsoft 'tan bir *izin* iste açılan pencere görürseniz, bu uygulamaya izin verin ve devam etmek için kabul edin.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4efa8626e80cbd64cd6216faa1869d7210f32cf2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 870467760a2baaa887b06fb8e01335f225f04d6e
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261106"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561899"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric düğüm türleri ve sanal makine ölçek kümeleri
 
@@ -32,7 +32,7 @@ Yukarıdaki şekilde gösterildiği gibi, ölçek kümesi örnekleri 0 ' dan ba�
 
 Kümenizi Azure portal dağıttıysanız veya örnek Azure Resource Manager şablonunu kullandıysanız, bir kaynak grubundaki tüm kaynaklar listelenir. Her ölçek kümesi veya düğüm türü için yük dengeleyicileri görebilirsiniz. Yük dengeleyici adı şu biçimi kullanır: **lb- &lt; node tür adı &gt; **. Aşağıdaki şekilde gösterildiği gibi LB-sfcluster4doc-0 bir örnektir:
 
-![Kaynaklar][Resources]
+![Ekran görüntüsü, iki yük dengeleyicileri vurgulanmış bir kaynak grubu gösterir.][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric sanal makine uzantısı
 

@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b7562ab6c7ec9c6234ed3fbb867361307b80a638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67673125"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563786"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Azure Data Box Heavy güvenle yükleyip çalıştırın
 
@@ -156,7 +156,7 @@ Bu cihaz, FCC kuralları ve sektör Kanada lisans muafiyeti RSS standardının 1
 - Bu cihaz zararlı bir girişim olmasına neden olabilir.
 - Bu cihaz, cihazın istenmeyen çalışmasına neden olabilecek girişim de dahil olmak üzere, alınan bir girişimi kabul etmelidir.
 
-![Kanada](./media/data-box-heavy-safety/canada.png)
+![Ekran görüntüsünde, Kanada için gereken bir bildirim gösterilir.](./media/data-box-heavy-safety/canada.png)
 
 ICES-3 (A)/NMB-3 (A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 Birleşik Devletler: (800) 426-9400 Kanada: (800) 933-4750

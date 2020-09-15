@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: daf4c4ab56e23a212256c2629b7d0ae52a09e7c4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: dbaad0f6639d65d88da6847886d3aa3d39b93e82
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595719"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563762"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway ile App Service yapılandırma
 
@@ -26,7 +26,7 @@ Bu makalede şunları öğreneceksiniz:
 - Bir arka uç havuzu oluşturun ve buna bir App Service ekleyin
 - "Seçme ana bilgisayar adı" anahtarları etkinken HTTP ayarları ve özel araştırma oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Application Gateway: mevcut bir uygulama ağ geçidiniz yoksa bkz. [uygulama ağ geçidi oluşturma](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 - App Service: mevcut bir App Service yoksa [App Service belgeleri](https://docs.microsoft.com/azure/app-service/)bölümüne bakın.
@@ -67,9 +67,9 @@ Bu makalede şunları öğreneceksiniz:
 
 5. HTTP ayarını oluşturmak için **Tamam** ' ı tıklatın.
 
-   ![HTTP-setting1](./media/configure-web-app-portal/http-setting1.png)
+   ![Ekran görüntüsü, App Service için kullan ve Tamam seçili olan H T t P ayar Ekle bölmesini gösterir.](./media/configure-web-app-portal/http-setting1.png)
 
-   ![HTTP-setting2](./media/configure-web-app-portal/http-setting2.png)
+   ![Ekran görüntüsü, seçilen konak adı formu arka uç http ayarları seçiliyken bir sistem durumu araştırması gösterir.](./media/configure-web-app-portal/http-setting2.png)
 
 
 
@@ -85,7 +85,7 @@ Bu makalede şunları öğreneceksiniz:
 
 5. Bu kuralı kaydetmek için **Tamam** ' ı tıklatın.
 
-   ![Kural](./media/configure-web-app-portal/rule.png)
+   ![Ekran görüntüsü, dinleyici, arka uç havuzu ve H T T P ayarı vurgulanmış şekilde temel kural ekle bölmesini gösterir.](./media/configure-web-app-portal/rule.png)
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>App Service 'in göreli yoluna yeniden yönlendirme durumunda ek yapılandırma
 

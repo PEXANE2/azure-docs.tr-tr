@@ -4,14 +4,14 @@ description: Bekletme ve Gizlilik ilkesi bildirimi
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f6fa42d6cc20c4d26caa7f571f13bb3917b2c7c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a2440379c001c0213145c1c5972cfed8799f4966
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929338"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562800"
 ---
-# <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights veri toplama, bekletme ve depolama
+# <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights'da veri toplama, saklama ve depolama
 
 Uygulamanıza [Azure Application Insights][start] SDK 'yı yüklediğinizde, uygulamanız hakkında telemetri, buluta gönderilir. Doğal olarak, sorumlu geliştiriciler tam olarak hangi verilerin gönderildiğini, verilere ne olduğunu ve bunların denetimini nasıl tutabileceklerini bilmek ister. Özellikle gizli veriler gönderilebilir, nerede depolanıyor ve ne kadar güvenli? 
 
@@ -153,7 +153,16 @@ Kod aracılığıyla:
 
 ### <a name="netcore"></a>NetCore
 
-Varsayılan olarak `ServerTelemetryChannel` , geçerli kullanıcının yerel uygulama verileri klasörünü `%localAppData%\Microsoft\ApplicationInsights` veya Temp klasörünü kullanır `%TMP%` . (Bkz. [uygulama](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) burada.) Bir Linux ortamında, bir depolama klasörü belirtilmediği takdirde yerel depolama devre dışı bırakılır.
+Varsayılan olarak `ServerTelemetryChannel` , geçerli kullanıcının yerel uygulama verileri klasörünü `%localAppData%\Microsoft\ApplicationInsights` veya Temp klasörünü kullanır `%TMP%` . (Bkz. [uygulama](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) burada.) 
+
+Bir Linux ortamında, bir depolama klasörü belirtilmediği takdirde yerel depolama devre dışı bırakılır.
+
+> [!NOTE]
+> 2.15.0-Beta3 ve daha büyük yerel depolama sürümü ile artık Linux, Mac ve Windows için otomatik olarak oluşturulur. Windows dışı sistemler için SDK, aşağıdaki mantığa göre otomatik olarak yerel bir depolama klasörü oluşturacaktır:
+> - `${TMPDIR}` - `${TMPDIR}` ortam değişkeni ayarlanmışsa bu konum kullanılır.
+> - `/var/tmp` -önceki konum yoksa, denememiz önerilir `/var/tmp` .
+> - `/tmp` -bir önceki konumların her ikisi de yoksa, denememiz önerilir `tmp` . 
+> - Bu konumların hiçbiri yoksa yerel depolama alanı oluşturulmaz ve el ile yapılandırma yine de gereklidir. [Tam uygulama ayrıntıları için](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860).
 
 Aşağıdaki kod parçacığı, sınıfınızın yönteminde nasıl ayarlanacağını gösterir `ServerTelemetryChannel.StorageFolder` `ConfigureServices()` `Startup.cs` :
 

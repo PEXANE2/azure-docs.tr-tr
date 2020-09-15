@@ -3,12 +3,12 @@ title: Azure Site Recovery kullanarak Azure Stack VM 'Leri Azure 'a çoğaltma |
 description: Azure Site Recovery hizmetiyle Azure Stack VM 'Ler için Azure 'da olağanüstü durum kurtarmayı ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 873b9c5efc2a89d3cda1bfe14a7518e6786a6870
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131602"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564318"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM'lerini Azure'a çoğaltma
 
@@ -36,7 +36,7 @@ Bu adımlar tamamlandığında, Azure 'da ve gerektiğinde tam yük devretme ça
 
 ## <a name="architecture"></a>Mimari
 
-![Mimari](./media/azure-stack-site-recovery/architecture.png)
+![Diyagramda, kiracı abonelikleriyle ilişkili bulutlarda iki kiracı için kurtarma hizmetleri kasalarının her ikisi de ortak bir Azure Stack altyapısında gösterilmektedir.](./media/azure-stack-site-recovery/architecture.png)
 
 **Konum** | **Bileşen** |**Ayrıntılar**
 --- | --- | ---
@@ -62,7 +62,7 @@ Bu senaryoyu ayarlamanız için gerekenler aşağıda verilmiştir.
 
 **Gereksinim** | **Ayrıntılar**
 --- | ---
-**Azure abonelik hesabı** | Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)oluşturun.
+**Azure abonelik hesabı** | Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 **Azure hesabı izinleri** | Kullandığınız Azure hesabı için izinler gerekir:<br/><br/> -Kurtarma hizmeti Kasası oluşturma<br/><br/> -Senaryo için kullandığınız kaynak grubunda ve sanal ağda bir sanal makine oluşturun<br/><br/> -Belirttiğiniz depolama hesabına yazın<br/><br/> Şunlara dikkat edin:<br/><br/> -Bir hesap oluşturursanız, aboneliğinizin yöneticisi olursunuz ve tüm eylemleri gerçekleştirebilirsiniz.<br/><br/> -Mevcut bir aboneliği kullanıyorsanız ve yönetici değilseniz, size sahip veya katkıda bulunan izinleri atamak için yönetici ile çalışmanız gerekir.<br/><br/> -Daha ayrıntılı izinlere ihtiyacınız varsa [Bu makaleye](site-recovery-role-based-linked-access-control.md)bakın.
 **Azure Stack VM** | Kiracı aboneliğinde, Site Recovery yapılandırma sunucusu olarak dağıtılacak bir Azure Stack VM olması gerekir.
 
@@ -153,7 +153,7 @@ VM 'Lerin tabloda özetlenen işletim sistemlerinden birini çalıştırdığın
 2. **Başlarken** bölümünde Site Recovery’yi seçin. Daha sonra **Altyapıyı Hazırlama**’yı seçin.
 3. Makinelerinizin bulunduğu **koruma hedefi**bölümünde  >  **Where are your machines located** **Şirket içi**' ı seçin.
 4. **Makinelerinizi nereye çoğaltmak istiyorsunuz** bölümünde **Azure’a** seçeneğini belirleyin.
-5. **Makinelerinizde sanallaştırılmış**, **sanallaştırılmış değil**' i seçin. Sonra **Tamam**’ı seçin.
+5. **Makinelerinizde sanallaştırılmış**, **sanallaştırılmış değil**' i seçin. Ardından **Tamam**'ı seçin.
 
     ![Koruma hedefi](./media/azure-stack-site-recovery/protection-goal.png)
 
@@ -227,7 +227,7 @@ Hemen bu adımı atlayabilirsiniz. **Dağıtım planlama** açılan listesinde E
 1. **Uygulama kaynağını Çoğalt**' ı seçin  >  **Source**.
 2. **Kaynak** bölümünde yapılandırma sunucusunu seçin.
 3. **Makine türü**' nde **fiziksel makineler**' i seçin.
-4. İşlem sunucusunu (yapılandırma sunucusu) seçin. Ardından **Tamam**'a tıklayın.
+4. İşlem sunucusunu (yapılandırma sunucusu) seçin. Daha sonra, **Tamam**'a tıklayın.
 5. **Hedef**bölümünde, yük devretmeden sonra VM 'leri oluşturmak istediğiniz aboneliği ve kaynak grubunu seçin. Yük devredilen VM 'Ler için kullanmak istediğiniz dağıtım modelini seçin.
 6. Çoğaltılan verileri depolamak istediğiniz Azure Depolama hesabını seçin.
 7. Yük devretme işleminden sonra oluşturulan Azure VM’lerin bağlandığı Azure ağını ve alt ağını seçin.

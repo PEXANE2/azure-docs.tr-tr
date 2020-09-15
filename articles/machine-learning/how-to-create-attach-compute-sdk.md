@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: af912838e99e7b36cb29695758108f0a9efeb8ea
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662545"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561661"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Python SDK ile model eğitimi ve dağıtımı için işlem hedefleri oluşturma
 
@@ -28,7 +28,7 @@ Bu makalede, işlem hedeflerini oluşturmak ve yönetmek için Python SDK Azure 
 * Azure Machine Learning için [vs Code uzantısı](how-to-manage-resources-vscode.md#compute-clusters) .
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 * [Python için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
@@ -36,7 +36,11 @@ Bu makalede, işlem hedeflerini oluşturmak ve yönetmek için Python SDK Azure 
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Bu belgede listelenen senaryolardan bazıları __Önizleme__olarak işaretlendi. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+* Çalışma alanınızdan **aynı işlem için birden çok, eşzamanlı ek oluşturmayın** . Örneğin, bir Azure Kubernetes hizmet kümesini iki farklı ad kullanarak bir çalışma alanına ekleme. Her yeni ek önceki mevcut ekleri keser.
+
+    Bir işlem hedefini yeniden iliştirmek istiyorsanız (örneğin, TLS veya diğer küme yapılandırma ayarını değiştirmek için), önce mevcut eki kaldırmalısınız.
+
+* Bu belgede listelenen senaryolardan bazıları __Önizleme__olarak işaretlendi. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="whats-a-compute-target"></a>İşlem hedefi nedir?
 
@@ -269,6 +273,9 @@ Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi San
 
    Veya [Azure Machine Learning Studio 'yu kullanarak](how-to-create-attach-compute-studio.md#attached-compute)dsvm 'yi çalışma alanınıza ekleyebilirsiniz.
 
+    > [!WARNING]
+    > Çalışma alanınızdan aynı DSVM 'ye birden çok, eşzamanlı ek oluşturmayın. Her yeni ek önceki mevcut ekleri keser.
+
 1. **Yapılandır**: dsvm işlem hedefi için bir çalıştırma yapılandırması oluşturun. Docker ve Conda, DSVM 'de Eğitim ortamı oluşturmak ve yapılandırmak için kullanılır.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
@@ -313,6 +320,9 @@ Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, 
    ```
 
    İsterseniz de [Azure Machine Learning Studio kullanarak](how-to-create-attach-compute-studio.md#attached-compute)HDInsight kümesini çalışma alanınıza ekleyebilirsiniz.
+
+    > [!WARNING]
+    > Çalışma alanınızdan aynı HDInsight 'a birden çok, eşzamanlı ek oluşturmayın. Her yeni ek önceki mevcut ekleri keser.
 
 1. **Yapılandır**: HDI işlem hedefi için bir çalıştırma yapılandırması oluşturun. 
 
@@ -360,6 +370,9 @@ except ComputeTargetException:
 
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
+
+> [!WARNING]
+> Çalışma alanınızdan aynı Azure Batch birden çok, eşzamanlı ek oluşturmayın. Her yeni ek önceki mevcut ekleri keser.
 
 ### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
@@ -414,6 +427,9 @@ except ComputeTargetException:
 
 Daha ayrıntılı bir örnek için GitHub 'daki [örnek bir not defteri](https://aka.ms/pl-databricks) bölümüne bakın.
 
+> [!WARNING]
+> Çalışma alanınızdan aynı Azure Databricks birden çok, eşzamanlı ek oluşturmayın. Her yeni ek önceki mevcut ekleri keser.
+
 ### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics, Azure bulutundaki büyük bir veri analizi platformudur. Bir Azure Machine Learning işlem hattı ile işlem hedefi olarak kullanılabilir.
@@ -463,6 +479,9 @@ except ComputeTargetException:
 ```
 
 Daha ayrıntılı bir örnek için GitHub 'daki [örnek bir not defteri](https://aka.ms/pl-adla) bölümüne bakın.
+
+> [!WARNING]
+> Çalışma alanınızdan aynı ADLA birden çok, eşzamanlı ek oluşturmayın. Her yeni ek önceki mevcut ekleri keser.
 
 > [!TIP]
 > Azure Machine Learning işlem hatları yalnızca Data Lake Analytics hesabının varsayılan veri deposunda depolanan verilerle çalışabilir. Üzerinde çalışmanız gereken veriler varsayılan olmayan bir depoda varsa, [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) verileri eğitimden önce kopyalamak için kullanabilirsiniz.

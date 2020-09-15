@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 65f378f52c464869217084c6f155b9d34c6fc092
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803729"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562528"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bir şablon kullanarak IPv6 ile Internet 'e yönelik yük dengeleyici çözümü dağıtma
 
@@ -38,7 +38,7 @@ Azure Load Balancer bir Katman 4 (TCP, UDP) yük dengeleyicidir. Yük dengeleyic
 
 Aşağıdaki diyagramda, bu makalede açıklanan örnek şablon kullanılarak dağıtılan yük dengeleme çözümü gösterilmektedir.
 
-![Yük dengeleyici senaryosu](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
+![Diyagramda, Internet üzerinden bir Azure Load Balancer bağlı olan bir iş istasyonu istemcisi de dahil olmak üzere iki sanal makineye bağlı olan bir örnek senaryo gösterilmektedir.](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
 Bu senaryoda, aşağıdaki Azure kaynaklarını oluşturacaksınız:
 
@@ -55,43 +55,43 @@ Bu makale, [Azure hızlı başlangıç şablonları](https://azure.microsoft.com
 1. Azure portal açın ve bir Azure aboneliği içinde VM 'Ler ve ağ kaynakları oluşturma izinlerine sahip bir hesapla oturum açın. Ayrıca, mevcut kaynakları kullanmıyorsanız, hesap için bir kaynak grubu ve depolama hesabı oluşturma izni gerekir.
 2. Menüden "+ yeni" ye tıklayın, sonra arama kutusuna "şablon" yazın. Arama sonuçlarından "Şablon dağıtımı" seçeneğini belirleyin.
 
-    ![lb-IPv6-Portal-Step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![Ekran görüntüsü yeni ve Şablon dağıtımı seçili Azure portal gösterir.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. Her şey dikey penceresinde "Şablon dağıtımı" a tıklayın.
 
-    ![lb-IPv6-Portal-Step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![Ekran görüntüsünde Market 'teki Şablon dağıtımı gösterilmektedir.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. "Oluştur" a tıklayın.
 
-    ![lb-IPv6-Portal-Step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![Ekran görüntüsü Market 'teki Şablon dağıtımı açıklamasını gösterir.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. "Şablonu Düzenle" ye tıklayın. Mevcut içeriği silin ve şablon dosyasının tüm içeriğini Kopyala/Yapıştır (başlangıç ve bitiş {} dahil etmek için), ardından "Kaydet" e tıklayın.
 
     > [!NOTE]
     > Microsoft Internet Explorer kullanıyorsanız, yapıştırdığınızda Windows panosuna erişime izin vermenizi isteyen bir iletişim kutusu alırsınız. "Erişime Izin ver" e tıklayın.
 
-    ![lb-IPv6-Portal-Step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![Ekran görüntüsü, şablonu Düzenle olan özel dağıtımın firest adımını gösterir.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. "Parametreleri Düzenle" seçeneğine tıklayın. Parametreler dikey penceresinde, şablon parametreleri bölümünde rehberlik başına değerleri belirtin ve sonra parametreler dikey penceresini kapatmak için "Kaydet" e tıklayın. Özel dağıtım dikey penceresinde, aboneliğinizi, var olan bir kaynak grubunu seçin ya da bir tane oluşturun. Bir kaynak grubu oluşturuyorsanız, kaynak grubu için bir konum seçin. Ardından **yasal koşullar**' a ve ardından yasal koşullar Için **satın al** ' a tıklayın. Azure, kaynakları dağıtmaya başlar. Tüm kaynakların dağıtılması birkaç dakika sürer.
 
-    ![lb-IPv6-Portal-Step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![Ekran görüntüsü, şablon parametre değerlerini girmeye başlamadan itibaren özel dağıtımda yer alan adımları gösterir.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     Bu parametreler hakkında daha fazla bilgi için bu makalenin ilerleyen kısımlarında yer alarak [şablon parametreleri ve değişkenleri](#template-parameters-and-variables) bölümüne bakın.
 
 7. Şablon tarafından oluşturulan kaynakları görmek için, Araştır ' a tıklayın, "kaynak grupları" görene kadar listeyi aşağı kaydırın ve ardından tıklatın.
 
-    ![lb-IPv6-Portal-Step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![Ekran görüntüsünde, gözatamıyorum ve kaynak grupları seçili Azure portal gösterilmektedir.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. Kaynak grupları dikey penceresinde, adım 6 ' da belirttiğiniz kaynak grubunun adına tıklayın. Dağıtılan tüm kaynakların bir listesini görürsünüz. Her şey iyi olursa, "son dağıtım" altında "başarılı" deyin. Aksi takdirde, kullanmakta olduğunuz hesabın gerekli kaynakları oluşturmak için izinlere sahip olduğundan emin olun.
 
-    ![lb-IPv6-Portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![Ekran görüntüsü, bir kaynak grubu için son dağıtımın durumunu gösterir, bu örnekte başarılı.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > Adım 6 ' yı tamamladıktan hemen sonra kaynak gruplarınıza gözatıyorsanız, "son dağıtım", kaynaklar dağıtılırken "dağıtım" durumunu görüntüler.
 
 9. Kaynak listesinde "myIPv6PublicIP" düğmesine tıklayın. IP adresi altında bir IPv6 adresine sahip olduğunu ve bu sunucunun DNS adının 6. adımdaki dnsNameforIPv6LbIP parametresi için belirttiğiniz değer olduğunu görürsünüz. Bu kaynak, Internet istemcileri tarafından erişilebilen genel IPv6 adresi ve ana bilgisayar adıdır.
 
-    ![lb-IPv6-Portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![Ekran görüntüsü IPv6 genel adresini gösterir.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
 

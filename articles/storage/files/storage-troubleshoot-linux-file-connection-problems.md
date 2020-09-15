@@ -7,18 +7,21 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a01d9e90e87d1c23b9aefc5f2d9ba3ba84d0f59f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e4aa0cb2cc3ff623929222d83a560f66198f13c0
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904930"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564279"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux 'ta Azure dosyaları sorunlarını giderme
+# <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux 'ta Azure dosyaları sorunlarını giderme (SMB)
 
 Bu makalede, Linux istemcilerinden bağlandığınızda Azure dosyalarıyla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. 
 
 Bu makaledeki sorun giderme adımlarına ek olarak, Linux istemcisinin doğru önkoşullara sahip olduğundan emin olmak için [Azfilediagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) 'i kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunun algılanmasını otomatikleştirir. En iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Ayrıca, bu bilgileri [Azure dosya paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)bulabilirsiniz. Sorun giderici, Azure dosya paylaşımlarını bağlama, eşleme ve bağlama ile ilgili sorunları gidermenize yardımcı olacak adımları sağlar.
+
+> [!IMPORTANT]
+> Bu makalenin içeriği yalnızca SMB paylaşımları için geçerlidir.
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Azure dosya paylaşımında bağlantı veya bağlama yapılamaz
 
@@ -80,7 +83,7 @@ Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapı
 
 Linux 'ta aşağıdakine benzer bir hata iletisi alırsınız:
 
-**\<filename>[izin verilmedi] Disk kotası aşıldı**
+**\<filename> [izin verilmedi] Disk kotası aşıldı**
 
 ### <a name="cause"></a>Nedeni
 
@@ -107,7 +110,7 @@ Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını ka
     - İki dosya paylaşımı arasındaki herhangi bir aktarım için [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) kullanın.
     - CP veya DD 'yi paralel olarak kullanmak kopyalama hızını iyileştirebilir, iş parçacıklarının sayısı kullanım örneğine ve iş yüküne bağlıdır. Aşağıdaki örneklerde altı kullanılır: 
     - CP örneği (CP, dosya sisteminin varsayılan blok boyutunu öbek boyutu olarak kullanır): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
-    - dd örneği (Bu komut, öbek boyutunu açıkça 1 MiB olarak belirler):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
+    - dd örneği (Bu komut, öbek boyutunu açıkça 1 MiB olarak belirler): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Açık kaynak üçüncü taraf araçları:
         - [GNU paralel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) -dosyaları sıralar ve onları bölümler halinde paketler.
@@ -115,7 +118,7 @@ Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını ka
         - GNU coreutils tabanlı [Çoklu](https://github.com/pkolano/mutil) iş parçacıklı CP ve md5sum.
 - Dosya boyutunu önceden ayarlamak, her yazma için bir genişletme yazma yapmak yerine dosya boyutunun bilinen senaryolarda kopyalama hızını artırmaya yardımcı olur. Yazmaları genişletmeyi kaçınılması gerekiyorsa, bir hedef dosya boyutunu `truncate - size <size><file>` komutla ayarlayabilirsiniz. Bundan sonra `dd if=<source> of=<target> bs=1M conv=notrunc` komut, hedef dosyanın boyutunu sürekli olarak güncelleştirmek zorunda kalmadan bir kaynak dosyayı kopyalayacaktır. Örneğin, kopyalamak istediğiniz her dosya için hedef dosya boyutunu ayarlayabilirsiniz (bir paylaşımın/mnt/Share altında bağlanmış olduğunu varsayın):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
-    - ve sonra dosyaları paralel olarak genişletmeksizin kopyalayın:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
+    - ve sonra dosyaları paralel olarak genişletmeksizin kopyalayın: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Bağlama hatası (115): Azure dosyalarını SMB 3,0 kullanarak bağladığınızda Işlem şimdi devam ediyor.
@@ -183,7 +186,7 @@ Bazı senaryolarda, **serverino** bağlama seçeneği **ls** komutunun her dizin
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-Ayrıca, **sudo Mount | grep CIFS** komutunu çalıştırarak ve çıktısını denetleyerek doğru seçeneklerin kullanılıp kullanılmadığını kontrol edebilirsiniz. Örnek çıkış aşağıda verilmiştir:
+Ayrıca,  **sudo Mount | grep CIFS** komutunu çalıştırarak ve çıktısını denetleyerek doğru seçeneklerin kullanılıp kullanılmadığını kontrol edebilirsiniz. Örnek çıkış aşağıda verilmiştir:
 
 ```
 //azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)

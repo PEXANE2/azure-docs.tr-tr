@@ -6,12 +6,12 @@ author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: d4f8a41df64c3bcbbd85438e4d340d44d5f16351
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7743a3a8d6e77affd6229b648ab79b5b2f07a0af
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255226"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564109"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Kubernetes hizmetine dağıtmaya yönelik GitHub eylemleri
 
@@ -23,7 +23,7 @@ AKS 'i hedefleyen bir iş akışı için, dosyanın üç bölümü vardır:
 
 |Section  |Görevler  |
 |---------|---------|
-|**Kimlik doğrulaması** | Özel bir kapsayıcı kayıt defterinde (ACR) oturum açma |
+|**Kimlik Doğrulaması** | Özel bir kapsayıcı kayıt defterinde (ACR) oturum açma |
 |**Derleme** | Kapsayıcı görüntüsünü oluşturun & gönderin  |
 |**Dağıtma** | 1. hedef AKS kümesini ayarlama |
 | |2. Kubernetes kümesinde genel/Docker-Registry gizli dizisi oluşturma  |
@@ -56,7 +56,7 @@ Gizli dizileri yapılandırmak için aşağıdaki adımları izleyin:
 
 1. [GitHub](https://github.com/)'da deponuza gidin, **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin**.
 
-    ![kaynaklanır](media/kubernetes-action/secrets.png)
+    ![Ekran görüntüsü, bir depo için yeni bir gizli dizi Ekle bağlantısı gösterir.](media/kubernetes-action/secrets.png)
 
 2. Yukarıdaki `az cli` komutun içeriğini gizli değişkenin değeri olarak yapıştırın. Örneğin, `AZURE_CREDENTIALS`.
 
@@ -67,7 +67,7 @@ Gizli dizileri yapılandırmak için aşağıdaki adımları izleyin:
 
 4. Gizli dizileri, tanımlandıktan sonra aşağıda gösterildiği gibi göreceksiniz.
 
-    ![Kubernetes-gizlilikler](media/kubernetes-action/kubernetes-secrets.png)
+    ![Ekran görüntüsü, bir depo için mevcut gizli dizileri gösterir.](media/kubernetes-action/kubernetes-secrets.png)
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Bir kapsayıcı görüntüsü oluşturun ve Azure Kubernetes hizmet kümesine dağıtın
 

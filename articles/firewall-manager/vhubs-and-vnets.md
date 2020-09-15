@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 09/14/2020
 ms.author: victorh
-ms.openlocfilehash: 7a06111fbe38f167ddf3512fdb312d7de754a738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563581"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563157"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Azure Güvenlik Duvarı Yöneticisi mimari seçenekleri nelerdir?
 
@@ -35,15 +35,16 @@ Aşağıdaki tabloda bu iki mimari seçeneği karşılaştırılmaktadır ve kur
 |**Temel alınan kaynak**     |Sanal ağ|Sanal WAN hub 'ı|
 |**Hub & bağlı bileşen**     |Sanal Ağ eşlemesini kullanır|Hub sanal ağ bağlantısı kullanılarak otomatik|
 |**Şirket içi bağlantı**     |10 Gbps ve 30 S2S bağlantısı VPN Gateway; ExpressRoute|Daha ölçeklenebilir VPN Gateway 20 Gbps ve 1000 S2S bağlantısı; Express Route|
-|**SDWAN kullanarak otomatik dal bağlantısı**      |Desteklenmiyor|Destekleniyor|
+|**SDWAN kullanarak otomatik dal bağlantısı**      |Desteklenmez|Desteklenir|
 |**Bölge başına hub 'lar**     |Bölge başına birden çok sanal ağ|Her bölge için tek bir sanal hub. Birden çok sanal WAN ile birden çok hub olabilir|
 |**Azure Güvenlik Duvarı – birden çok genel IP adresi**      |Müşteri tarafından sağlanmış|Otomatik olarak oluşturulan|
-|**Azure Güvenlik Duvarı Kullanılabilirlik Alanları**     |Destekleniyor|Henüz kullanılamıyor|
+|**Azure Güvenlik Duvarı Kullanılabilirlik Alanları**     |Desteklenir|Henüz kullanılamıyor|
 |**Hizmet iş ortakları olarak üçüncü taraf güvenliği ile gelişmiş Internet güvenliği**     |Tercih edilen iş ortağı hizmetine müşteri tarafından sağlanan ve yönetilen VPN bağlantısı|Güvenlik iş ortağı sağlayıcısı Flow ve iş ortağı yönetim deneyimi aracılığıyla otomatikleştirilmiş|
 |**Trafiği hub 'a yönlendirmek için merkezi yol yönetimi**     |Müşteri tarafından yönetilen Kullanıcı tanımlı rota|BGP kullanılarak desteklenir|
 |**Birden çok güvenlik sağlayıcısı desteği**|Üçüncü taraf güvenlik duvarlarına Zorlamalı tünel elle yapılandırılmış şekilde desteklenir|İki güvenlik sağlayıcısı için otomatik destek: özel trafik filtrelemesi için Azure Güvenlik Duvarı ve Internet filtreleme için üçüncü taraf|
 |**Application Gateway üzerinde Web Uygulaması Güvenlik Duvarı** |Sanal ağda destekleniyor|Şu anda bağlı olan ağda destekleniyor|
 |**Ağ sanal gereci**|Sanal ağda destekleniyor|Şu anda bağlı olan ağda destekleniyor|
+|**Azure DDoS koruması standart desteği**|Yes|Hayır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

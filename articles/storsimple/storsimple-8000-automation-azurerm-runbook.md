@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: fee0837c1196adf35a956cd13df584528d46bfc0
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: dff1d8f48b275fa7e45dab93b5ce45962499b450
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183488"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563888"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>StorSimple cihazlarını yönetmek için Azure Otomasyonu runbook 'larını kullanma
 
@@ -85,7 +85,7 @@ StorSimple 8000 serisi cihaz yönetimi için bir otomasyon modülü oluşturmak 
 
 6. Uygulamasında bir otomasyon modülü ZIP dosyası oluşturulduğunu doğrulayın `C:\scripts\StorSimpleSDKTools` .
 
-    ![Verify-Automation-Module](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
+    ![Ekran görüntüsü, otomasyon modülü ZIP dosyası ile StorSimpleSDKTools klasörünü gösterir.](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
 7. Aşağıdaki çıktı, otomasyon modülü Windows PowerShell aracılığıyla oluşturulduğunda sunulur.
 
@@ -184,7 +184,7 @@ StorSimple 8000 serisi cihaz yönetimi için bir otomasyon modülü oluşturmak 
    5. Varsayılan **Farklı Çalıştır hesabı oluştur** seçeneğini seçili bırakın.
    6. İsteğe bağlı olarak **panoya sabitle ' yi**işaretleyin. **Oluştur**’a tıklayın.
 
-       ![oluşturma-Otomasyon hesabı](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
+       ![Ekran görüntüsü, abonelik değerleriyle Otomasyon hesabı ekle, Azure farklı çalıştır hesabı oluştur ve Oluştur ' u gösterir.](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
       Otomasyon hesabı başarıyla oluşturulduktan sonra bilgilendirirsiniz. Otomasyon hesabı oluşturma hakkında daha fazla bilgi için, [Farklı Çalıştır hesabı oluşturma](https://docs.microsoft.com/azure/automation/automation-create-runas-account)bölümüne gidin.
 
@@ -196,7 +196,7 @@ StorSimple 8000 serisi cihaz yönetimi için bir otomasyon modülü oluşturmak 
 
 5. **Modül Ekle** dikey penceresinde, daraltılmış modülün konumuna gidin ve modülünü seçin ve açın. **Tamam**’a tıklayın.
 
-    ![Add-Module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
+    ![Ekran görüntüsü, bir karşıya yükleme dosyası değeri olan modül Ekle bölmesini gösterir ve Tamam.](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
 6. **Işlem otomasyonu > runbook 'larına gidin ve + Runbook Ekle ' ye tıklayın**. **Runbook Ekle** dikey penceresinde **mevcut bir runbook 'u içeri aktar**' a tıklayın. **Runbook dosyası**Için Windows PowerShell betik dosyasına işaret edin. Runbook türü otomatik olarak seçilir. Runbook için bir ad ve isteğe bağlı bir açıklama sağlayın. **Oluştur**’a tıklayın.
 
@@ -208,11 +208,11 @@ StorSimple 8000 serisi cihaz yönetimi için bir otomasyon modülü oluşturmak 
 
 8. Runbook 'u düzenleyin ve **Test bölmesi**' ne tıklayın. StorSimple Aygıt Yöneticisi hizmetinizin adı, StorSimple cihazının adı ve aboneliğin adı gibi parametreleri sağlayın. Testi **başlatın** . Çalışma tamamlandığında rapor oluşturulur. Daha fazla bilgi için, [runbook 'u test etme](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)konusuna gidin.
 
-    ![test-runbook](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
+    ![Ekran görüntüsü, parametre değerlerini girebileceğiniz ve bir test başlattığınız test kaydırma süresini gösterir.](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 
 9. Test bölmesindeki runbook 'tan çıktıyı inceleyin. Memnun olursa bölmeyi kapatın. **Yayımla** ' ya tıklayın ve onay sorulduğunda runbook 'u onaylayın ve yayımlayın.
 
-    ![Yayımlama-runbook](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
+    ![Ekran görüntüsü, runbook 'u yayımlamaya devam etmeniz için size istemde bulunan PowerShell runbook 'U Düzenle bölmesini gösterir.](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

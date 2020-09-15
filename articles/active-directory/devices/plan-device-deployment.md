@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f17f6fd881243d91428c6025fd63469a38afa0f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268817"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563905"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory cihaz dağıtımınızı planlayın
 
@@ -38,7 +38,7 @@ Cihazlarınızı Azure AD ile tümleştirmeye yönelik birden çok yöntem vard�
 
 Başlamadan önce, [cihaz kimlik yönetimine genel bakış](overview.md)hakkında bilgi sahibi olduğunuzdan emin olun.
 
-### <a name="benefits"></a>Avantajlar
+### <a name="benefits"></a>Yararları
 
 Cihazlarınıza bir Azure AD kimliği verme hakkında önemli avantajlar:
 
@@ -105,24 +105,24 @@ iOS ve Android cihazları yalnızca Azure AD kayıtlı olabilir. Aşağıdaki ta
 | Değerlendirme | Azure AD kayıtlı| Azure AD'ye katılım| Hibrit Azure AD'ye katılım |
 | - | - | - | - |
 | **İstemci işletim sistemleri**| | |  |
-| Windows 10 cihazları| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
-| Windows alt düzey cihazlar (Windows 8.1 veya Windows 7)| | | ![denetlemez](./media/plan-device-deployment/check.png) |
+| Windows 10 cihazları| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
+| Windows alt düzey cihazlar (Windows 8.1 veya Windows 7)| | | ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
 |**Oturum açma seçenekleri**| | |  |
-| Son Kullanıcı yerel kimlik bilgileri| ![denetlemez](./media/plan-device-deployment/check.png)| |  |
-| Parola| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
-| Cihaz PIN'i| ![denetlemez](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello| ![denetlemez](./media/plan-device-deployment/check.png)| |  |
-| İş İçin Windows Hello| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
-| FıDO 2,0 güvenlik anahtarları| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
-| Microsoft Authenticator uygulaması (passwordless)| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
+| Son Kullanıcı yerel kimlik bilgileri| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| |  |
+| Parola| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
+| Cihaz PIN'i| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| |  |
+| İş İçin Windows Hello| | ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
+| FıDO 2,0 güvenlik anahtarları| | ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
+| Microsoft Authenticator uygulaması (passwordless)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
 |**Temel işlevler**| | |  |
-| Bulut kaynaklarına SSO| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
-| Şirket içi kaynaklarda çoklu oturum açma| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
-| Koşullu Erişim <br> (Cihazların uyumlu olarak işaretlenmesini gerektir) <br> (MDM tarafından yönetiliyor olması gerekir)| ![denetlemez](./media/plan-device-deployment/check.png) | ![denetlemez](./media/plan-device-deployment/check.png)|![denetlemez](./media/plan-device-deployment/check.png) |
-Koşullu Erişim <br>(Karma Azure AD 'ye katılmış cihazlar gerektir)| | | ![denetlemez](./media/plan-device-deployment/check.png)
-| Windows oturum açma ekranından self servis parola sıfırlama| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
-| Windows Hello PIN sıfırlama| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
-| Cihazlar arasında kurumsal durum dolaşımı| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
+| Bulut kaynaklarına SSO| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
+| Şirket içi kaynaklarda çoklu oturum açma| | ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
+| Koşullu Erişim <br> (Cihazların uyumlu olarak işaretlenmesini gerektir) <br> (MDM tarafından yönetiliyor olması gerekir)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) | ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)|![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
+Koşullu Erişim <br>(Karma Azure AD 'ye katılmış cihazlar gerektir)| | | ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)
+| Windows oturum açma ekranından self servis parola sıfırlama| | ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
+| Windows Hello PIN sıfırlama| | ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
+| Cihazlar arasında kurumsal durum dolaşımı| | ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png) |
 
 
 ## <a name="azure-ad-registration"></a>Azure AD kaydı 
@@ -239,9 +239,9 @@ Tümleşik Aygıtlar için desteklenen ve desteklenmeyen platformları gözden g
 
 | Cihaz yönetimi araçları| Azure AD kayıtlı| Azure AD'ye katılım| Hibrit Azure AD'ye katılım|
 | - | - | - | - |
-| [Mobil cihaz yönetimi (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Örnek: Microsoft Intune| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)|  |
-| [Microsoft Intune ve Microsoft uç noktası ile ortak yönetim Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 ve üzeri)| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)|  |
-| [Grup İlkesi](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Yalnızca Windows)| | | ![denetlemez](./media/plan-device-deployment/check.png)|  |
+| [Mobil cihaz yönetimi (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Örnek: Microsoft Intune| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)|  |
+| [Microsoft Intune ve Microsoft uç noktası ile ortak yönetim Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 ve üzeri)| | ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)| ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)|  |
+| [Grup İlkesi](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Yalnızca Windows)| | | ![Bu değerler için onay işareti.](./media/plan-device-deployment/check.png)|  |
 
 
 

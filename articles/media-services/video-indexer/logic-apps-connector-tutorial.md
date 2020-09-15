@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 6c46195572fc4495b35f5ec44421440975ab9ffc
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 16a28ee01606fa9067c279183ca6c02b2857bcd7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531364"
+ms.locfileid: "90563854"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Öğretici: mantıksal uygulama ve güç otomatikleştirme ile Video Indexer kullanma
 
@@ -58,7 +58,7 @@ Azure depolama kapsayıcıınızda her bir blob eklendiğinde ilk akış tetikle
 
 Azure depolama ve Video Indexer hesaplarına bağlanarak, "bir blob eklendiğinde veya değiştirildiğinde) tetikleyicisine gidin ve video dosyalarınızı yerleştireceğiniz kapsayıcıyı seçin. 
 
-![Depolama kapsayıcısı](./media/logic-apps-connector-tutorial/container.png)
+![Ekran görüntüsü bir blob eklendiğinde veya değiştirildiğinde bir kapsayıcı seçebileceğiniz bir iletişim kutusu gösterir.](./media/logic-apps-connector-tutorial/container.png)
 
 Sonra, "yola göre SAS URI 'SI oluştur" eylemine gidin ve dinamik içerik seçeneklerinden dosya yolu listesi ' ni seçin.  
 

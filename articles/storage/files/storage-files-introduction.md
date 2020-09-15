@@ -4,18 +4,18 @@ description: Endüstri standardı SMB protokolünü kullanarak bulutta ağ dosya
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 03/10/2018
+ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aff6f99c119ba2854fd7923d2a15efb2e1a6b601
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4590a881fbc42467d55c3440d09f4770f447e97f
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80666807"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563395"
 ---
 # <a name="what-is-azure-files"></a>Azure Dosyaları nedir?
-Azure Dosyaları bulutta tamamen yönetilen dosya paylaşımları sunar. Bu dosyalara sektör standardı olan [Sunucu İleti Bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) aracılığıyla erişilebilir. Azure dosya paylaşımları Windows, Linux ve macOS bulut ve şirket içi dağıtımları tarafından aynı anda bağlanabilir. Azure dosya paylaşımları ayrıca verilerin kullanıldığı yerin yakınlarında hızlı erişim sağlamak için Azure Dosya Eşitleme ile Windows Server’larda önbelleğe alınabilir.
+Azure dosyaları, bulutta sektör standart [sunucu Ileti bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) veya [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımları, bulut veya şirket içi dağıtımlar tarafından eşzamanlı olarak bağlanabilir. Azure dosyaları SMB dosya paylaşımlarına Windows, Linux ve macOS istemcilerinden erişilebilir. Azure dosyaları NFS dosya paylaşımlarına Linux veya macOS istemcilerinden erişilebilir. Ayrıca, Azure dosyaları SMB dosya paylaşımları, verilerin kullanıldığı yerden neredeyse hızlı erişim için Azure Dosya Eşitleme ile Windows sunucularında önbelleğe alınabilir.
 
 ## <a name="videos"></a>Videolar
 | Azure Dosya Eşitleme tanıtımı | Eşitlenmiş Azure dosyaları (Ignite 2019)  |
@@ -30,13 +30,13 @@ Azure dosyalarının genel kullanım durumlarında bazı videolar aşağıda ver
 Azure dosya paylaşımları şunları yapmak için kullanılabilir:
 
 * **Şirket içi dosya sunucularını değiştirme veya destekleme**:  
-    Azure Dosyaları geleneksel şirket içi dosya sunucularını veya NAS cihazlarını tamamen değiştirmek veya desteklemek için kullanılabilir. Windows, macOS ve Linux gibi yaygın işletim sistemleri, dünyanın neresinde olursa olsun Azure dosya paylaşımlarına doğrudan bağlanabilir. Azure dosya paylaşımları ayrıca verilerin kullanıldığı yerde performanslı ve dağıtılmış bir şekilde önbelleğe alınması için Azure Dosya Eşitleme ile şirket içi veya bulut üzerindeki Windows Server’larda çoğaltılabilir. Azure [dosyaları ad kimlik doğrulamasının](storage-files-active-directory-overview.md)son sürümü ile Azure dosya paylaşımları, erişim denetimi için şirket IÇINDE barındırılan ad ile çalışmaya devam edebilir. 
+    Azure Dosyaları geleneksel şirket içi dosya sunucularını veya NAS cihazlarını tamamen değiştirmek veya desteklemek için kullanılabilir. Windows, macOS ve Linux gibi yaygın işletim sistemleri, dünyanın neresinde olursa olsun Azure dosya paylaşımlarına doğrudan bağlanabilir. Azure dosya SMB dosya paylaşımları ayrıca, kullanıldığı verilerin performansı ve dağıtılmış önbelleği için şirket içinde veya bulutta Azure Dosya Eşitleme Windows Server 'Lar ile de çoğaltılabilir. Azure dosya SMB dosya paylaşımları en son sürümü [sayesinde, erişim](storage-files-active-directory-overview.md)denetimi için şirket IÇINDE barındırılan ad ile çalışmaya devam edebilir. 
 
 * **"Kaldırma ve kaydırma" uygulamaları**:  
     Azure Dosyaları dosya uygulamasını veya kullanıcı verilerini saklamak için bir dosya paylaşımı gerektiren uygulamaların buluta taşınmasını kolaylaştırır. Azure Dosyaları, uygulamanın ve verilerinin Azure'a taşındığı "klasik" taşıma senaryosunun yanı sıra uygulama verilerinin Azure Dosyaları'na taşındığı ve uygulamanın şirket içi ortamda çalışmaya devam ettiği "hibrit" taşıma senaryosunu destekler. 
 
 * **Bulut geliştirmeyi basitleştirme**:  
-    Azure Dosyaları ayrıca yeni bulut geliştirme projelerini kolaylaştırma amacıyla farklı şekillerde kullanılabilir. Örneğin:
+    Azure Dosyaları ayrıca yeni bulut geliştirme projelerini kolaylaştırma amacıyla farklı şekillerde kullanılabilir. Örnek:
     * **Paylaşılan uygulama ayarları**:  
         Dağıtılmış uygulamalar için yaygın bir düzen, yapılandırma dosyalarının birçok uygulama örneğinin erişebildiği merkezi bir konumda tutulmasıdır. Uygulama örnekleri yapılandırmalarını Dosya REST API'si üzerinden yükleyebilir ve kullanıcılar bu verilere SMB paylaşımını yerel ortama bağlayarak erişebilir.
 
@@ -45,9 +45,11 @@ Azure dosya paylaşımları şunları yapmak için kullanılabilir:
 
     * **Geliştirme/Test/Hata Ayıklama**:  
         Geliştiriciler veya yöneticiler bulutta sanal makinelerle çalışırken, sıklıkla bir dizi araca veya yardımcı programa ihtiyaçları olur. Bu tür yardımcı programları ve araçları tüm sanal makineleri kopyalamak uzun zaman alabilir. Bir Azure dosya paylaşımını sanal makinelere yerel olarak bağlayan geliştirici ve yöneticiler kopyalamaya gerek duymadan araçlarına ve yardımcı programlarına erişebilirler.
+* **Kapsayıcılama**:  
+    Azure dosya paylaşımları, durum bilgisi olmayan kapsayıcılar için kalıcı birimler olarak kullanılabilir. Kapsayıcılar, geliştiricilerin yeniliklerini hızlandırmasını sağlayan "bir kez derleyin, her yerde Çalıştır" özellikleri sunar. Her başlangıçta ham verilere erişen kapsayıcılar için, bu kapsayıcıların hangi örneği çalıştırdıklarından bağımsız olarak dosya sistemine erişmesine izin vermek üzere paylaşılan bir dosya sistemi gerekir.
 
 ## <a name="key-benefits"></a>Önemli avantajlar
-* **Paylaşılan erişim**. Azure dosya paylaşımları endüstri standardı SMB protokolünü destekler. Bu, şirket içi dosya paylaşımlarınızı uygulama uyumluluğu konusunda kaygılanmadan rahatça Azure dosya paylaşımlarıyla değiştirebileceğiniz anlamına gelir. Dosya sistemini birden çok makine, uygulama/örnek arasında paylaşabilmek, paylaşılabilirlik gerektiren uygulamalarda Azure Dosyaları'nın önemli bir avantaj olmasını sağlar. 
+* **Paylaşılan erişim**. Azure dosya paylaşımları, sektör standardı SMB ve NFS protokollerini destekler, yani şirket içi dosya paylaşımlarınızı uygulama uyumluluğuna endişelenmeden Azure dosya paylaşımlarıyla sorunsuz bir şekilde değiştirebilirsiniz. Dosya sistemini birden çok makine, uygulama/örnek arasında paylaşabilmek, paylaşılabilirlik gerektiren uygulamalarda Azure Dosyaları'nın önemli bir avantaj olmasını sağlar. 
 * **Tam olarak yönetilir**. Azure dosya paylaşımları donanım veya işletim sistemi yönetmeye gerek kalmadan oluşturulabilir. Bu, sunucu işletim sistemine kritik güvenlik yükseltmeleri için yama eklemekle veya arızalı sabit diskleri değiştirmekle uğraşmanız gerekmediği anlamına gelir.
 * **Betik oluşturma ve araç**. Azure uygulamalarının yönetimi kapsamında Azure dosya paylaşımlarını oluşturmak, bağlamak ve yönetmek için PowerShell cmdlet'leri ve Azure CLI kullanılabilir. Azure portalını ve Azure Depolama Gezgini'ni kullanarak Azure dosya paylaşımlarını oluşturabilir ve yönetebilirsiniz. 
 * **Dayanıklılık**. Azure Dosyaları, baştan sonra her zaman kullanılabilir olacak şekilde hazırlanmıştır. Şirket içi dosya paylaşımlarını Azure Dosyaları ile değiştirmek, artık kalkıp bölgesel elektrik kesintileriyle veya ağ sorunlarıyla uğraşmak zorunda kalmayacağınız anlamına gelir. 
@@ -55,6 +57,7 @@ Azure dosya paylaşımları şunları yapmak için kullanılabilir:
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * [Azure dosya paylaşma oluşturma](storage-how-to-create-file-share.md)
-* [Windows 'a bağlanma ve bağlama](storage-how-to-use-files-windows.md)
-* [Linux 'a bağlanma ve bağlama](storage-how-to-use-files-linux.md)
-* [MacOS 'a bağlanma ve bağlama](storage-how-to-use-files-mac.md)
+* [Windows üzerinde bir SMB paylaşımında bağlantı kurmak ve bağlama](storage-how-to-use-files-windows.md)
+* [Linux üzerinde bir SMB paylaşımında bağlantı oluşturma ve bağlama](storage-how-to-use-files-linux.md)
+* [MacOS 'ta SMB paylaşımıyla bağlantı kurmak ve bağlama](storage-how-to-use-files-mac.md)
+* [NFS paylaşma oluşturma](storage-files-how-to-create-nfs-shares.md)

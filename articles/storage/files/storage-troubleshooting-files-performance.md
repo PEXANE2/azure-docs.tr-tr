@@ -7,14 +7,17 @@ ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: cffac114cacd05e04e149af96d1678b536db7fec
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782379"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564245"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>Azure dosyaları performans sorunlarını giderme
+# <a name="troubleshoot-azure-files-performance-issues-smb"></a>Azure dosyaları performans sorunlarını giderme (SMB)
+
+> [!IMPORTANT]
+> Bu makalenin içeriği yalnızca SMB paylaşımları için geçerlidir.
 
 Bu makalede, Azure dosya paylaşımlarıyla ilgili bazı yaygın sorunlar listelenmektedir. Bu sorunlarla karşılaşıldığında olası nedenleri ve geçici çözümleri sağlar.
 
@@ -26,7 +29,7 @@ Bir dosya paylaşımının ıOPS, giriş veya çıkış sınırlarına ulaşıld
 
 Paylaşımınızın kısıtlandığından emin olmak için, portalda Azure ölçümlerinden yararlanabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **Tüm hizmetler** ' i seçin ve ardından **ölçümler**' i arayın.
 
@@ -200,6 +203,36 @@ GÇ yoğun iş yükleri için Azure dosyalarına erişirken beklenen gecikme sü
 11. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir **eylem grubu** (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
 12. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
 13. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
+
+Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılara genel bakış]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-towards-being-throttled"></a>Premium dosya paylaşımının kısıtlanıyor olması durumunda uyarı oluşturma
+
+1. **Azure Portal** **depolama hesabınıza** gidin.
+2. Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
+3. **Kaynağı Düzenle**' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. Örneğin, depolama hesabı adı contoso ise, contoso/dosya kaynağını seçin.
+4. Koşul eklemek için **Koşul Seç** ' e tıklayın.
+5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **Çıkış** ölçümünü seçin.
+
+  > [!NOTE]
+  > Giriş, çıkış veya Işlemler ayarladığınız eşik miktarını aştığında uyarılmak için 3 ayrı uyarı oluşturmanız gerekir. Bunun nedeni, uyarının yalnızca tüm koşulların karşılandığı zaman tetiklenir. Bu nedenle tüm koşulları tek bir uyarıya yerleştirirseniz, giriş, çıkış ve Işlem eşik miktarları aşıldıysa yalnızca uyarı alırsınız.
+
+6. Aşağı kaydırın. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
+7. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
+8. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti**' ye tıklayın.
+
+  > [!NOTE]
+  > Çıkış, giriş ve Işlem ölçümleri dakika başına yapılır, ancak saniye başına çıkış, giriş ve ıOPS sağlanmış olmasına rağmen. (toplama ayrıntı düzeyi hakkında konuşur-dakikada > = daha gürültülü, fark olanı seçin) Bu nedenle, örneğin, sağlanan çıkış, 90 MIB/saniye ise ve eşiğin sağlanan çıkış için %80 olmasını istiyorsanız, aşağıdaki uyarı parametrelerini seçmelisiniz: **eşik değeri**için 75497472, **işleç**için büyük veya eşittir, **toplama türü**için Ortalama. Uyarının ne kadar gürültülü olmasını istediğinize bağlı olarak, toplama ayrıntı düzeyi ve değerlendirme sıklığı için seçilecek değerleri seçebilirsiniz. Örneğin, uyarımın bir saatin zaman diliminde ortalama giriş bölümüne bakması ve uyarı Kuralımın her saat içinde çalıştırılmasını istiyorum ise, **toplama ayrıntı düzeyi** için 1 saat ve **değerlendirme sıklığı**1 saat ' i seçiyorum.
+
+9. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir **eylem grubu** (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
+10. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+11. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
+
+  > [!NOTE]
+  > Premium dosya paylaşımınızın, sağlanan giriş nedeniyle kısıtlanmak üzere yakın olması durumunda bildirim almak için, lütfen 5. adım ' da olduğu gibi, **Giriş ölçümünü seçin** .
+
+  > [!NOTE]
+  > Premium dosya paylaşımınızın, sağlanan ıOPS nedeniyle kısıtlanmak üzere yakın olması durumunda, bazı değişiklikler yapmanız gerekir. 5. adımda, bunun yerine **işlem** ölçümünü seçin. Ayrıca, 10. adım için, **toplama türü** için tek seçenek Toplam ' dur. Bu nedenle, eşik değeri seçtiğiniz toplama ayrıntı düzeyine bağlı olacaktır. Örneğin, eşiğin sağlanan temel ıOPS 'nin %80 ' i olmasını istediyseniz ve **toplama ayrıntı düzeyi**için 1 saat seçtiniz, **eşik DEĞERI** taban çizgisi IOPS (bayt cinsinden) x 0,8 x 3600 olacaktır. Bu değişikliklerin yanı sıra, yukarıda listelenen adımların aynısını izleyin. 
 
 Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılara genel bakış]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4a0739eb1ab14155a98b17e2427c5b08c9db788
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68985938"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564432"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Azure Data Box güvenle yükleyip çalıştırın
 ![Uyarı simgesi ](./media/data-box-safety/warning_icon.png)
@@ -24,7 +24,7 @@ Azure Data Box kullanmadan önce bu makaledeki tüm güvenlik bilgilerini okuyun
 ## <a name="safety-icon-conventions"></a>Güvenlik simgesi kuralları
 Data Box kurarken ve çalıştırırken gözlenecek güvenlik önlemleri gözden geçirdikten sonra bulacağınız simgeler aşağıda verilmiştir.
 
-| Simge | Açıklama |
+| Simge | Description |
 |:--- |:--- |
 | ![Danger simgesi ](./media/data-box-safety/warning_icon.png) **tehlike!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olan tehlikeli bir durum belirtir. Bu sinyal sözcüğü, en Extreme durumlarla sınırlı olacaktır. |
 | ![Uyarı simgesi ](./media/data-box-safety/warning_icon.png) **uyarısı!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olabilecek tehlikeli bir durum belirtir. |
@@ -120,7 +120,7 @@ Bu ekipman test edilmiştir ve bir sınıftaki dijital bir cihaz için sınırla
 
 Bu cihaz, FCC kuralları ve sektör Kanada lisans muafiyeti RSS standardının 15. bölümüne uyar. İşlem şu iki koşula tabidir: (1) Bu cihaz zararlı bir girişim oluşmasına neden olabilir ve (2) Bu cihaz, cihazın istenmeyen çalışmasına neden olabilecek girişim dahil olmak üzere, alınan bir girişimi kabul etmelidir.
 
-![Kanada](./media/data-box-safety/canada.png)
+![Ekran görüntüsünde, Kanada için gereken bir bildirim gösterilir.](./media/data-box-safety/canada.png)
 
 ICES-3 (A)/NMB-3 (A)
 
@@ -154,7 +154,7 @@ Faks numarası: + 353 1 706 4110
 
 **Japonya**
 
-![Japonya](./media/data-box-safety/japan.png)
+![Ekran görüntüsünde, Japonya için gereken bir bildirim gösterilir.](./media/data-box-safety/japan.png)
 
 <!--**South Korea**
 

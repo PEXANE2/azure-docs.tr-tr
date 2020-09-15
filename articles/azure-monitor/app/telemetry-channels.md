@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918409"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564024"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights telemetri kanalları
 
@@ -153,13 +153,25 @@ Kısa yanıt, yerleşik kanalların hiçbirinin arka uca telemetri tesliminde i�
 
 Paketinin ve ad alanının adı "WindowsServer" içerse de, bu kanal Windows dışındaki sistemlerde aşağıdaki özel durumla desteklenir. Windows dışındaki sistemlerde, kanal varsayılan olarak yerel bir depolama klasörü oluşturmaz. Yerel bir depolama klasörü oluşturmanız ve kanalı kullanacak şekilde yapılandırmanız gerekir. Yerel depolama yapılandırıldıktan sonra kanal tüm sistemlerde aynı şekilde çalışacaktır.
 
+> [!NOTE]
+> 2.15.0-Beta3 ve daha büyük yerel depolama sürümü ile artık Linux, Mac ve Windows için otomatik olarak oluşturulur. Windows dışı sistemler için SDK, aşağıdaki mantığa göre otomatik olarak yerel bir depolama klasörü oluşturacaktır:
+> - `${TMPDIR}` - `${TMPDIR}` ortam değişkeni ayarlanmışsa bu konum kullanılır.
+> - `/var/tmp` -önceki konum yoksa, denememiz önerilir `/var/tmp` .
+> - `/tmp` -bir önceki konumların her ikisi de yoksa, denememiz önerilir `tmp` . 
+> - Bu konumların hiçbiri yoksa yerel depolama alanı oluşturulmaz ve el ile yapılandırma yine de gereklidir. [Tam uygulama ayrıntıları için](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860).
+
 ### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>SDK geçici yerel depolama alanı mı oluşturur? Veriler depolamada şifrelendi mı?
 
 SDK, telemetri öğelerini ağ sorunları sırasında veya daraltma sırasında yerel depolama alanında depolar. Bu veriler yerel olarak şifrelenmez.
 
 Windows sistemlerinde, SDK otomatik olarak% TEMP% veya% LOCALAPPDATA% dizininde geçici bir yerel klasör oluşturur ve yöneticilere ve yalnızca geçerli kullanıcıya erişimi kısıtlar.
 
-Windows dışındaki sistemler için, SDK tarafından otomatik olarak hiçbir yerel depolama oluşturulmaz ve varsayılan olarak hiçbir veri yerel olarak depolanmaz. Kendiniz bir depolama dizini oluşturabilir ve kanalı kullanmak üzere yapılandırabilirsiniz. Bu durumda, dizinin güvenliğinin sağlanması sağlanmasından sorumlu olursunuz.
+Windows dışındaki sistemler için, SDK tarafından otomatik olarak hiçbir yerel depolama oluşturulmaz ve varsayılan olarak hiçbir veri yerel olarak depolanmaz.
+
+> [!NOTE]
+> 2.15.0-Beta3 ve daha büyük yerel depolama sürümü ile artık Linux, Mac ve Windows için otomatik olarak oluşturulur. 
+
+ Kendiniz bir depolama dizini oluşturabilir ve kanalı kullanmak üzere yapılandırabilirsiniz. Bu durumda, dizinin güvenliğinin sağlanması sağlanmasından sorumlu olursunuz.
 [Veri koruma ve gizlilik](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage)hakkında daha fazla bilgi edinin.
 
 ## <a name="open-source-sdk"></a>Açık kaynaklı SDK

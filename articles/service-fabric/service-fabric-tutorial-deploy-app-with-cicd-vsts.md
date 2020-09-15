@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure Pipelines kullanarak Service Fabric bir uygu
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 302ad1dcfaa93564d70fab739726787ef09c79df
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260360"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563939"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesine CI/CD ile uygulama dağıtma
 
@@ -39,7 +39,7 @@ Bu öğreticiye başlamadan önce:
 * [Visual Studio 2019](https://www.visualstudio.com/) ' i yükleyip **Azure geliştirme** ve **ASP.net ve Web geliştirme** iş yüklerini yüklersiniz.
 * [Service Fabric SDK 'sını yükler](service-fabric-get-started.md)
 * Azure’da Windows Service Fabric kümesi oluşturun; örneğin, [bu öğreticiyi izleyin](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* [Azure DevOps kuruluşu](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) oluşturun. Bu, Azure DevOps 'da bir proje oluşturmanıza ve Azure Pipelines kullanmanıza olanak sağlar.
+* [Azure DevOps organizasyonu](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)oluşturun. Bu, Azure DevOps 'da bir proje oluşturmanıza ve Azure Pipelines kullanmanıza olanak sağlar.
 
 ## <a name="download-the-voting-sample-application"></a>Voting örnek uygulamasını indirme
 
@@ -139,7 +139,7 @@ Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını d
 
 Azure DevOps'da yapılan bazı kod değişikliklerini denetleyerek sürekli tümleştirme işlem hattının çalıştığını doğrulayın.
 
-Siz kodunuzu yazarken, değişiklikleriniz Visual Studio tarafından otomatik olarak izlenir. Sağ alt kısımdaki durum çubuğunda bekleyen değişiklikler simgesini (![Beklemede][pending]) seçerek değişiklikleri yerel Git deponuza işleyin.
+Siz kodunuzu yazarken, değişiklikleriniz Visual Studio tarafından otomatik olarak izlenir. Sağ alt kısımdaki durum çubuğunda bekleyen değişiklikler simgesini (![Bekleyen değişiklikler simgesi bir kurşun kalem ve sayı gösterir.][pending]) seçerek değişiklikleri yerel Git deponuza işleyin.
 
 Takım Gezgini'ndeki **Değişiklikler** görünümünde, güncelleştirmenizi açıklayan bir ileti ekleyin ve değişikliklerinizi işleyin.
 

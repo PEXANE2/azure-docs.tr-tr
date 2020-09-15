@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689223"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563871"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect eşitleme: mimariyi anlama
 Bu konuda Azure AD Connect eşitleme için temel mimari ele alınmaktadır. Birçok bakımdan, öncülleri MıSıS 2003, Ile 2007 ve FIM 2010 ' ye benzer. Azure AD Connect eşitleme, bu teknolojilerin gelişmidir. Bu önceki teknolojilerden herhangi birini biliyorsanız, bu konunun içeriği de size tanıdık gelecektir. Eşitleme için yeni bir konudur, bu konu sizin için önemlidir. Bu konu başlığı, özelleştirmeleri Azure AD Connect eşitleme yapma (Bu konudaki eşitleme altyapısı adı verilir) sırasında başarılı olmak için bu konunun ayrıntılarını sağlamak için gerekli değildir.
@@ -36,7 +36,7 @@ Eşitleme altyapısı, **bağlayıcı**adı verilen bir modül içindeki bağlı
 
 Bağlayıcılar, bağlı bir veri kaynağıyla Exchange kimlik bilgileri (hem okuma hem de yazma) için API çağrıları yapar. Genişletilebilir bağlantı çerçevesini kullanarak özel bir bağlayıcı eklemek de mümkündür. Aşağıdaki çizim, bir bağlayıcının bir bağlantı veri kaynağını eşitleme altyapısına nasıl bağladığını gösterir.
 
-![Arch1](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
+![Diyagramda bağlı bir veri kaynağı ve bağlayıcı adlı bir satırla ilişkili bir eşitleme altyapısı gösterilmektedir.](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
 
 Veriler her iki yönde de akabilir, ancak aynı anda iki yönde de akamaz. Diğer bir deyişle, bir bağlayıcı, verilerin bağlı veri kaynağından Sync Engine 'e veya Sync Engine 'e bağlı veri kaynağına akmasını sağlamak üzere yapılandırılabilir, ancak bu işlemlerden yalnızca biri bir nesne ve öznitelik için herhangi bir zamanda meydana gelebilir. Yön farklı nesneler ve farklı öznitelikler için farklı olabilir.
 
@@ -62,7 +62,7 @@ Ayrıca, eşitleme altyapısı, bağlayıcı alanında aşamaları olan tüm nes
 
 Aşağıdaki çizimde, bağlayıcı alanı ad alanı ve Sync Engine içindeki meta veri deposu ad alanı gösterilmektedir.
 
-![Arch2](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
+![Diyagramda bağlı bir veri kaynağı ve bağlayıcı alanı ve meta dize ad alanları ile ayrılmış, bağlayıcı adlı bir satırla ilişkilendirilen bir eşitleme altyapısı gösterilmektedir.](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
 
 ## <a name="sync-engine-identity-objects"></a>Eşitleme altyapısı kimlik nesneleri
 Eşitleme altyapısındaki nesneler, bağlı veri kaynağındaki nesnelerin veya eşitleme motorunun bu nesnelere sahip olduğu tümleşik görünümün temsilleridir. Her eşitleme motoru nesnesinin bir genel benzersiz tanıtıcısı (GUID) olmalıdır. GUID 'Ler, nesneler arasında veri bütünlüğü ve hızlı ilişkiler sağlar.
@@ -97,13 +97,13 @@ Hazırlama nesnesi bir içeri aktarma nesnesi veya dışa aktarma nesnesi olabil
 
 Aşağıdaki çizimde, bağlantılı veri kaynağındaki bir nesneyi temsil eden bir içeri aktarma nesnesi gösterilmektedir.
 
-![Arch3](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
+![Diyagram, bağlı veri kaynağından eşitleme altyapısındaki bağlayıcı alanı ad alanına getirilen bir içeri aktarma nesnesi gösterir.](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
 
 Eşitleme altyapısı, meta veri deposundaki nesne bilgilerini kullanarak bir dışarı aktarma nesnesi oluşturur. Dışarı aktarma nesneleri, sonraki iletişim oturumu sırasında bağlı veri kaynağına dışarı aktarılabilir. Eşitleme altyapısının perspektifinden, dışarı aktarma nesneleri henüz bağlı veri kaynağında yok. Bu nedenle, bir dışa aktarma nesnesi için tutturucu özniteliği kullanılamaz. Eşitleme altyapısından nesne aldıktan sonra, bağlantılı veri kaynağı nesnenin tutturucu özniteliği için benzersiz bir değer oluşturur.
 
 Aşağıdaki çizim, meta veri deposundaki kimlik bilgileri kullanılarak dışarı aktarma nesnesinin nasıl oluşturulduğunu gösterir.
 
-![Arch4](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
+![Diyagramda, meta veri deposundaki bağlayıcı alanı ad alanına, ardından bağlı veri kaynağına getirilen bir dışarı aktarma nesnesi gösterilir.](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
 
 Eşitleme altyapısı, nesneyi bağlı veri kaynağından yeniden içe aktararak nesnenin dışarı aktarılmasını onaylar. Dışarı aktarma nesneleri, eşitleme altyapısı bu bağlı veri kaynağından bir sonraki içeri aktarma işlemi sırasında aldığında içeri aktarma nesneleri haline gelir.
 
@@ -132,7 +132,7 @@ Bir hazırlama nesnesi eşitleme sırasında birleştirilmiş bir nesne haline g
 
 Tek bağlayıcı alanı nesnesi yalnızca bir meta veri deposu nesnesine bağlanabilir. Ancak, her metadizeler nesnesi, aşağıdaki çizimde gösterildiği gibi, aynı veya farklı bağlayıcı alanlarında bulunan birden çok bağlayıcı alanı nesnesine bağlanabilir.
 
-![Arch5](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
+![Diyagram, bağlayıcılarla ilişkili iki bağlı veri nesnesini, birleştirilmiş nesneler ve birleştirilmemiş bir nesne içeren bir Sync altyapısına gösterir.](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
 
 Hazırlama nesnesi ile meta veri deposu nesnesi arasındaki bağlantılı ilişki kalıcıdır ve yalnızca belirttiğiniz kurallarla kaldırılabilir.
 
@@ -145,7 +145,7 @@ Bağlantılı nesneleri kullanarak, kimlik bilgilerini eşitleme altyapısında 
 ## <a name="sync-engine-identity-management-process"></a>Eşitleme altyapısı kimlik yönetimi işlemi
 Kimlik Yönetimi işlemi, farklı bağlı veri kaynakları arasında kimlik bilgilerinin nasıl güncelleştirileceğini denetler. Kimlik yönetimi üç işlem halinde gerçekleşir:
 
-* İçeri Aktar
+* İçeri Aktarma
 * Eşitleme
 * Dışarı Aktarma
 
@@ -157,7 +157,7 @@ Dışarı aktarma işlemi sırasında, eşitleme altyapısı hazırlama nesneler
 
 Aşağıdaki çizimde, her bir işlemin her birinin, kimlik bilgileri bağlı bir veri kaynağından diğerine akacağı nerede gerçekleştiği gösterilmektedir.
 
-![Arch6](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
+![Diyagramda, bağlı verilerden (içeri aktarma) bağlantılı verilere ait kimlik bilgilerinin, bağlı verilere (dışarı aktarma), bağlayıcı alanına (eşitleme) meta veri deposuna](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
 
 ### <a name="import-process"></a>İçeri aktarma işlemi
 İçeri aktarma işlemi sırasında, eşitleme altyapısı, güncelleştirmeleri kimlik bilgilerine göre değerlendirir. Sync Engine, bağlı veri kaynağından alınan kimlik bilgilerini hazırlama nesnesi hakkındaki kimlik bilgileriyle karşılaştırır ve hazırlama nesnesinin güncelleştirme gerektirip gerektirmediğini belirler. Hazırlama nesnesini yeni verilerle güncelleştirmek gerekirse, hazırlama nesnesi bekleyen içeri aktarma olarak işaretlenir.
@@ -252,7 +252,7 @@ Eşitleme altyapısı bir dışarı aktarmanın başarısını tespit edebilir, 
 
 Eşitleme altyapısı her hazırlama nesnesi hakkında dışarı ve içeri aktarma durum bilgilerini depolar. Öznitelik ekleme listesinde belirtilen özniteliklerin değerleri son dışarı aktarma işleminden sonra değiştiyse, içeri ve dışarı aktarma durumunun depolanması, eşitleme altyapısının uygun şekilde tepki vermesini sağlar. Sync Engine, bağlı veri kaynağına aktarılmış öznitelik değerlerini onaylamak için içeri aktarma işlemini kullanır. İçeri aktarılan ve dışarı aktarılan bilgiler arasında, aşağıdaki çizimde gösterildiği gibi bir karşılaştırma, eşitleme altyapısının dışarı aktarmanın başarılı olup olmadığını veya tekrarlanması gerekip gerekmediğini belirlemesine olanak sağlar.
 
-![Arch7](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
+![Diyagramda bağlayıcı alanı ve bağlayıcı üzerinden bağlı veriler arasındaki bir nesnenin eşitlenmesi gösterilmektedir.](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
 
 Örneğin, eşitleme altyapısı, bir değeri 5 olan C özniteliğini bağlı bir veri kaynağına dışa aktardığında, C = 5 değerini dışa aktarma durumu belleğinde depolar. Bu nesnedeki her bir ek dışa aktarma işlemi, bu değerin kalıcı olarak nesneye uygulanmadığını (yani, bağlı veri kaynağından farklı bir değer içeri aktarılmadığı müddetçe) yeniden bağlantılı veri kaynağına dışa aktarma girişimine neden olur. Nesne üzerindeki bir içeri aktarma işlemi sırasında C = 5 alındığında dışarı aktarma belleği temizlenir.
 

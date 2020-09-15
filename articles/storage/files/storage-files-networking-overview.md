@@ -7,17 +7,17 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 804e469a01be042b4c299fd608f11426e7274b72
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464819"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563344"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure dosyaları ağ iletişimi konuları 
 Bir Azure dosya paylaşımının bağlantısını iki şekilde yapabilirsiniz:
 
-- Doğrudan SMB veya FileREST protokolleri aracılığıyla paylaşıma erişme. Bu erişim stili, birincil olarak çok sayıda şirket içi sunucuyu ortadan kaldırmak için kullanılır.
+- Sunucu Ileti bloğu (SMB), ağ dosya sistemi (NFS) (Önizleme) veya Dosyasıest protokolleri aracılığıyla paylaşıma doğrudan erişme. Bu erişim stili, birincil olarak çok sayıda şirket içi sunucuyu ortadan kaldırmak için kullanılır.
 - Azure Dosya Eşitleme ile şirket içi sunucuda (veya bir Azure VM 'de) Azure dosya paylaşımının bir önbelleğini oluşturma ve şirket içi sunucudaki dosya paylaşımının verilerine (SMB, NFS, FTPS, vb.) kullanım örneği için erişim Bu erişim deseninin her ikisi de şirket içi performans ve bulut ölçeğinden ve Azure Backup gibi sunucusuz eklenebilir hizmetlerden en iyi şekilde birleştirilemediğinden yararlı olur.
 
 Bu makalede, kullanım örneği Azure Dosya Eşitleme kullanmak yerine doğrudan Azure dosya paylaşımında erişim için çağrı yapıldığında, için ağ yapılandırma konusuna odaklanılır. Azure Dosya Eşitleme dağıtımına yönelik ağ konuları hakkında daha fazla bilgi için bkz. [Azure dosya eşitleme ağ değerlendirmeleri](storage-sync-files-networking-overview.md).
@@ -29,17 +29,17 @@ Bu kavramsal kılavuzu okumadan önce [bir Azure dosyaları dağıtımı Için p
 ## <a name="accessing-your-azure-file-shares"></a>Azure dosya paylaşımlarınız ile erişme
 Bir depolama hesabı içinde bir Azure dosya paylaşımından dağıtırken, dosya paylaşımınıza depolama hesabının genel uç noktası aracılığıyla hemen erişilebilir. Bu, bir kullanıcının oturum açma kimliği tarafından yetkilendirilmiş istekler gibi kimliği doğrulanmış isteklerin Azure içinden veya dışından güvenli bir şekilde kaynaklanabilmesi anlamına gelir. 
 
-Birçok müşteri ortamında, Azure VM 'lerinden gelen Mount başarılı olsa bile, şirket içi iş istasyonunuzda Azure dosya paylaşımının ilk bağlanması başarısız olur. Bunun nedeni, SMB 'nin iletişim kurmak için kullandığı bağlantı noktasını pek çok kuruluşun ve Internet hizmet sağlayıcısının (ISS) engellemesini, bağlantı noktası 445 ' dir. Bu uygulama, SMB protokolünün eski ve kullanımdan kaldırılmış sürümleriyle ilgili güvenlik kılavuzlarından kaynaklanır. SMB 3,0, internet güvenli bir protokol olsa da, SMB 'nin eski sürümleri, özellikle SMB 1,0 değildir. Azure dosya paylaşımlarına yalnızca genel uç nokta aracılığıyla SMB 3,0 ve en son dosya Protokolü (aynı zamanda bir internet güvenli Protokolü) aracılığıyla dışarıdan erişilebilir.
+Birçok müşteri ortamında, Azure VM 'lerinden gelen Mount başarılı olsa bile, şirket içi iş istasyonunuzda Azure dosya paylaşımının ilk bağlanması başarısız olur. Bunun nedeni, SMB 'nin iletişim kurmak için kullandığı bağlantı noktasını pek çok kuruluşun ve Internet hizmet sağlayıcısının (ISS) engellemesini, bağlantı noktası 445 ' dir. NFS paylaşımlarında bu sorun yoktur. Bu uygulama, SMB protokolünün eski ve kullanımdan kaldırılmış sürümleriyle ilgili güvenlik kılavuzlarından kaynaklanır. SMB 3,0, internet güvenli bir protokol olsa da, SMB 'nin eski sürümleri, özellikle SMB 1,0 değildir. Azure dosya paylaşımlarına yalnızca genel uç nokta aracılığıyla SMB 3,0 ve en son dosya Protokolü (aynı zamanda bir internet güvenli Protokolü) aracılığıyla dışarıdan erişilebilir.
 
-Şirket içinden Azure dosya paylaşımınıza erişmenin en kolay yolu, şirket içi ağınızı 445 numaralı bağlantı noktasına açmak için Microsoft, ortamınızdaki SMB 1,0 ' yi kaldırmak için aşağıdaki adımları önerir:
+Şirket içinden Azure SMB dosya paylaşımınıza erişmenin en kolay yolu, şirket içi ağınızı 445 numaralı bağlantı noktasına açmak için Microsoft, ortamınızdaki SMB 1,0 ' yi kaldırmak için aşağıdaki adımları önerir:
 
 1. SMB 1,0 ' nin, kuruluşunuzun cihazlarında kaldırıldığından veya devre dışı bırakıldığından emin olun. Windows ve Windows Server 'ın Şu anda desteklenen tüm sürümleri, SMB 1,0 ' nin kaldırılmasını veya devre dışı bırakılmasını destekler ve Windows 10, sürüm 1709 ' den başlayarak SMB 1,0 varsayılan olarak Windows 'da yüklü değildir. SMB 1,0 ' i devre dışı bırakma hakkında daha fazla bilgi için, bkz. işletim sistemine özgü sayfalarımız:
     - [Windows/Windows Server'ı güvenli hale getirme](storage-how-to-use-files-windows.md#securing-windowswindows-server)
     - [Linux güvenliğini sağlama](storage-how-to-use-files-linux.md#securing-linux)
-2. Kuruluşunuzdaki hiçbir ürünün SMB 1,0 gerektirmediğinden emin olun ve bunu kaldıranları kaldırın. SMB 1,0 gerektiren Microsoft tarafından bilinen birinci ve üçüncü taraf ürünlerin tümünü içeren bir [SMB1 ürün Clearinghouse](https://aka.ms/stillneedssmb1)'ı sunuyoruz. 
-3. Seçim SMB 1,0 trafiğinin kuruluş sınırınızdan ayrılmasını engellemek için kuruluşunuzun şirket içi ağı ile bir üçüncü taraf güvenlik duvarı kullanın.
+1. Kuruluşunuzdaki hiçbir ürünün SMB 1,0 gerektirmediğinden emin olun ve bunu kaldıranları kaldırın. SMB 1,0 gerektiren Microsoft tarafından bilinen birinci ve üçüncü taraf ürünlerin tümünü içeren bir [SMB1 ürün Clearinghouse](https://aka.ms/stillneedssmb1)'ı sunuyoruz. 
+1. Seçim SMB 1,0 trafiğinin kuruluş sınırınızdan ayrılmasını engellemek için kuruluşunuzun şirket içi ağı ile bir üçüncü taraf güvenlik duvarı kullanın.
 
-Kuruluşunuz, ilke veya yönetmelik için 445 bağlantı noktasını bloke etmek isterse veya kuruluşunuz Azure 'a bir belirleyici yolu izlemek için trafik gerektiriyorsa, Azure dosya paylaşımlarınız için trafik tünellemek üzere Azure VPN Gateway veya ExpressRoute 'u kullanabilirsiniz.
+Kuruluşunuz, ilke veya yönetmelik için 445 bağlantı noktasını bloke etmek isterse veya kuruluşunuz Azure 'a bir belirleyici yolu izlemek için trafik gerektiriyorsa, Azure dosya paylaşımlarınız için trafik tünellemek üzere Azure VPN Gateway veya ExpressRoute 'u kullanabilirsiniz. NFS paylaşımları, 445 bağlantı noktasına gerek duymadığından, bunlardan herhangi birini gerektirmez.
 
 > [!Important]  
 > Azure dosya paylaşımlarınızda erişim için alternatif bir yöntem kullanmaya karar verseniz bile, Microsoft, ortamınızdaki SMB 1,0 ' i kaldırmayı hala öneriyor.
@@ -47,7 +47,7 @@ Kuruluşunuz, ilke veya yönetmelik için 445 bağlantı noktasını bloke etmek
 ### <a name="tunneling-traffic-over-a-virtual-private-network-or-expressroute"></a>Bir sanal özel ağ veya ExpressRoute üzerinden tünel trafiği
 Şirket içi ağınız ve Azure arasında bir ağ tüneli oluşturduğunuzda, Azure 'daki bir veya daha fazla sanal ağ ile şirket içi ağınızı eşleyelim. Bir [sanal ağ](../../virtual-network/virtual-networks-overview.md)veya VNet, şirket içinde çalışdığınız geleneksel bir ağa benzerdir. Bir Azure depolama hesabı veya bir Azure VM gibi, VNet bir kaynak grubuna dağıtılan bir Azure kaynağıdır. 
 
-Azure dosyaları, şirket içi iş istasyonlarınız ve sunucularınız ile Azure arasında trafiği tünele sağlamak için aşağıdaki mekanizmaları destekler:
+Azure dosyaları, şirket içi iş istasyonlarınız ve sunucularınız ile Azure SMB/NFS dosya paylaşımlarınız arasında trafiği tünele sağlamak için aşağıdaki mekanizmaları destekler:
 
 - [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): VPN Gateway, bir Azure sanal ağı ile Internet üzerinden farklı bir konum (örneğin, şirket içi) arasında şifrelenmiş trafik göndermek için kullanılan belirli bir sanal ağ geçidi türüdür. Azure VPN Gateway, bir depolama hesabının veya diğer Azure kaynaklarının yanı bir şekilde bir kaynak grubuna dağıtılabilecek bir Azure kaynağıdır. VPN ağ geçitleri iki farklı bağlantı türünü kullanıma sunar:
     - Azure ile tek bir istemci arasındaki VPN bağlantıları olan [Noktadan siteye (P2S) VPN](../../vpn-gateway/point-to-site-about.md) ağ geçidi bağlantıları. Bu çözüm, genellikle kuruluşunuzun şirket içi ağına ait olmayan cihazlar için yararlıdır; Örneğin, Azure dosya paylaşımlarını yoldayken evden, kahve dükkanı veya otel 'tan bağlayabilmek ister. Azure dosyaları ile P2S VPN bağlantısı kullanmak için, bağlanmak isteyen her istemci için bir P2S VPN bağlantısının yapılandırılması gerekir. Bir P2S VPN bağlantısının dağıtımını basitleştirmek için bkz. Azure [dosyaları ile kullanmak üzere Windows üzerinde Noktadan siteye (P2S) VPN yapılandırma](storage-files-configure-p2s-vpn-windows.md) ve [Azure dosyaları Ile kullanmak Için Linux 'ta Noktadan siteye (P2S) VPN](storage-files-configure-p2s-vpn-linux.md)yapılandırma.
@@ -109,7 +109,7 @@ TimeToExpiration       : 2419200
 DefaultTTL             : 300
 ```
 
-Aynı komutu şirket içinde çalıştırırsanız, aynı depolama hesabı adının bunun yerine depolama hesabının genel IP adresine çözümlendiğini görürsünüz; `storageaccount.file.core.windows.net`, için BIR CNAME kaydıdır `storageaccount.privatelink.file.core.windows.net` , bu da depolama hesabını barındıran Azure Storage kümesi IÇIN bir CNAME kaydıdır:
+Aynı komutu şirket içinde çalıştırırsanız, aynı depolama hesabı adının bunun yerine depolama hesabının genel IP adresine çözümlendiğini görürsünüz; `storageaccount.file.core.windows.net` , için BIR CNAME kaydıdır `storageaccount.privatelink.file.core.windows.net` , bu da depolama hesabını barındıran Azure Storage kümesi IÇIN bir CNAME kaydıdır:
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -139,9 +139,16 @@ Bir depolama hesabına erişimi bir sanal ağla kısıtlamak için iki yaklaşı
 - Depolama hesabı için bir veya daha fazla özel uç nokta oluşturun ve tüm erişimi genel uç noktaya sınırlayın. Bu, yalnızca istenen sanal ağlardan gelen trafiğin depolama hesabı içindeki Azure dosya paylaşımlarına erişebilmesini sağlar.
 - Genel uç noktayı bir veya daha fazla sanal ağla sınırlayın. Bu, *hizmet uç noktaları*adlı sanal ağın bir özelliği kullanılarak işe yarar. Bir hizmet uç noktası aracılığıyla bir depolama hesabıyla trafiği kısıtladığınızda, hala genel IP adresi aracılığıyla depolama hesabına erişmeye devam edersiniz.
 
+> [!NOTE]
+> NFS paylaşımları, genel IP adresi aracılığıyla depolama hesabının genel uç noktasına erişemez, yalnızca sanal ağları kullanarak depolama hesabının genel uç noktasına erişebilirler. NFS paylaşımları ayrıca, Özel uç noktaları kullanarak depolama hesabına erişebilir.
+
 Depolama hesabı güvenlik duvarını yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
+
+> [!IMPORTANT]
+> Bu bölüm, SMB paylaşımları için iletim ayrıntılarının şifrelemesini anlatmaktadır. NFS paylaşımları ile aktarım sırasında şifreleme ile ilgili ayrıntılar için bkz. [güvenlik](storage-files-compare-protocols.md#security).
+
 Varsayılan olarak, tüm Azure depolama hesaplarının geçiş etkin olarak şifrelenmesi vardır. Bu, SMB üzerinden bir dosya paylaşımının bağladığınızda veya dosyayı dosya paylaşımından (Azure portal, PowerShell/CLı veya Azure SDK 'Ları aracılığıyla) eriştiğinizde, Azure dosyaları yalnızca şifreleme veya HTTPS ile SMB 3.0 + ile yapılırsa bağlantıya izin verir. SMB 3,0 ' i veya SMB 3,0 ' i destekleyen ancak SMB 'yi destekleyen istemcileri desteklemeyen istemciler, aktarım sırasında şifreleme etkinse Azure dosya paylaşımının bağlanabilmesi mümkün olmayacaktır. Şifreleme ile SMB 3,0 ' i destekleyen işletim sistemleri hakkında daha fazla bilgi için bkz. [Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)ve [Linux](storage-how-to-use-files-linux.md)için ayrıntılı Belgelerimiz. PowerShell, CLı ve SDK 'ların tüm geçerli sürümleri HTTPS 'yi destekler.  
 
 Azure depolama hesabı için iletim sırasında şifrelemeyi devre dışı bırakabilirsiniz. Şifreleme devre dışı bırakıldığında, Azure dosyaları SMB 2,1, şifrelemeden SMB 3,0 ve HTTP üzerinden şifrelenmemiş en iyi API çağrıları da sağlar. Geçiş sırasında şifrelemeyi devre dışı bırakmak için birincil neden, Windows Server 2008 R2 veya daha eski Linux dağıtımı gibi eski bir işletim sisteminde çalıştırılması gereken eski bir uygulamayı desteklemedir. Azure dosyaları yalnızca Azure dosya paylaşımıyla aynı Azure bölgesi içinde SMB 2,1 bağlantılarına izin verir; Azure dosya paylaşımının Azure bölgesinin dışında bir SMB 2,1 istemcisi, örneğin şirket içi veya farklı bir Azure bölgesinde, dosya paylaşımıyla erişemeyecektir.
@@ -150,4 +157,4 @@ Aktarım sırasında şifreleme hakkında daha fazla bilgi için bkz. [Azure dep
 
 ## <a name="see-also"></a>Ayrıca bkz.
 - [Azure Dosyalar'a genel bakış](storage-files-introduction.md)
-- [Azure Dosyaları dağıtımı planlama](storage-files-planning.md)
+- [Azure Dosyalar dağıtımını planlama](storage-files-planning.md)

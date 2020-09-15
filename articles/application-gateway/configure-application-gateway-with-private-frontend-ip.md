@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64dfe284772faf2a345b7959f1a1bd6f474cd1bf
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808120"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562494"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>İç yük dengeleyici (ıLB) uç noktası ile uygulama ağ geçidi yapılandırma
 
@@ -59,7 +59,7 @@ Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir san
 10. **Arka uç Havuzu Ekle**' yi seçin.
 11. **Ad**Için *Appgatewaybackendpool*yazın.
 12. **Hedefleri olmayan arka uç havuzu ekleme**için **Evet**' i seçin. Hedefleri daha sonra ekleyeceksiniz.
-13. **Ekle**'yi seçin.
+13. **Ekle**’yi seçin.
 14. Ileri 'yi seçin **: yapılandırma**.
 15. **Yönlendirme kuralları**altında **Kural Ekle**' yi seçin.
 16. **Kural adı**Için *rrule-01*yazın.
@@ -74,7 +74,7 @@ Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir san
 25. Kalan Varsayılanları kabul edin ve **Ekle**' yi seçin.
 26. **Yönlendirme kuralı ekle** sayfasında **Ekle**' yi seçin.
 27. **Sonraki: Etiketler**' i seçin.
-28. **İleri ' yi seçin: gözden geçir + oluştur**.
+28. **Sonraki: Gözden geçirme ve oluşturma**’yı seçin.
 29. Özet sayfasındaki ayarları gözden geçirin ve ardından **Oluştur** ' u seçerek ağ kaynaklarını ve uygulama ağ geçidini oluşturun. Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Bir sonraki bölüme geçmeden önce Dağıtım başarıyla bitene kadar bekleyin.
 
 ## <a name="add-backend-pool"></a>Arka uç Havuzu Ekle
@@ -103,14 +103,14 @@ Bunu yapmak için şunları yapın:
 8. Kalan Varsayılanları kabul edin ve **İleri: yönetim**' i seçin.
 9. Önyükleme tanılamayı devre dışı bırakmak için **Kapat** ' ı seçin.
 10. Kalan Varsayılanları kabul edin ve **İleri: Gelişmiş**' i seçin.
-11. **Sonraki: Etiketler**' i seçin.
+11. Şunu seçin: **İleri: Etiketler**.
 12. **İleri ' yi seçin: gözden geçir + oluştur**.
 13. Özet sayfasında ayarları gözden geçirin ve ardından **Oluştur**' u seçin. VM 'nin oluşturulması birkaç dakika sürebilir. Bir sonraki bölüme geçmeden önce Dağıtım başarıyla bitene kadar bekleyin.
 
 ### <a name="install-iis"></a>IIS yükleme
 
 1. Cloud Shell açın ve **PowerShell**olarak ayarlandığından emin olun.
-    ![Private-frontendıp-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
+    ![Ekran görüntüsü PowerShell kullanan açık bir Azure Cloud Shell konsol penceresini gösterir.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. Sanal makineye IIS yüklemek için aşağıdaki komutu çalıştırın:
 
    ```azurepowershell
@@ -144,13 +144,13 @@ Bunu yapmak için şunları yapın:
 2. **Arka uç havuzlarını**seçin. **Appgatewaybackendpool**öğesini seçin.
 3. **Hedef türü** ' nün altında **sanal makine** ' yi seçin ve **hedef**altında myvm ile ilişkili vNIC 'i seçin.
 4. MyVM2 eklemek için tekrarlayın.
-   ![Private-frontendıp-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
+   ![Ekran görüntüsü, hedef türleri ve hedefleri vurgulanmış şekilde arka uç havuzunu Düzenle bölmesini gösterir.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
 5. Kaydet ' i seçin **.**
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
 1. Portalın **ön uç IP yapılandırması** sayfasına tıklayarak atanan ön uç IP 'nizi denetleyin.
-    ![Private-frontendıp-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
+    ![Ekran görüntüsü, özel türü vurgulanmış ön uç IP yapılandırması bölmesini gösterir.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
 2. Özel IP adresini kopyalayın ve ardından aynı VNet 'te veya şirket içinde bu VNet 'e bağlantısı olan Şirket içindeki bir VM 'deki tarayıcı adres çubuğuna yapıştırın ve Application Gateway erişmeyi deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

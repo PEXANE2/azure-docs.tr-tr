@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 8c2bac1bee5a2301a29589f15d72d0f69b4a05b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb01d5a4923410f693b682d66be8d5d09f9019d0
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253860"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561587"
 ---
 # <a name="application-gateway-redirect-overview"></a>Application Gateway yeniden yönlendirmeye genel bakış
 
@@ -37,7 +37,7 @@ Application Gateway yeniden yönlendirme desteği aşağıdaki özellikleri suna
    Bu tür bir yeniden yönlendirme, yalnızca belirli bir site alanında HTTP-HTTPS yeniden yönlendirmesine, örneğin/cart/* ile belirtilen bir alışveriş sepeti alanı sağlar.
 - **Dış siteye yönlendir**
 
-![meniz](./media/redirect-overview/redirect.png)
+![Diyagramda, kilidi açılmış bir g T t r kırmızı ok, izin verilmeyen 301 doğrudan kırmızı ok ve kilitli bir g T T P, yeşil ok gibi kullanıcılar ve bir uygulama ağ geçidi ve bağlantıları gösterilmektedir.](./media/redirect-overview/redirect.png)
 
 Bu değişiklik ile müşterilerin, yeniden yönlendirmenin istendiği hedef dinleyiciyi veya dış siteyi belirten yeni bir yeniden yönlendirme yapılandırma nesnesi oluşturması gerekir. Yapılandırma öğesi, URI yolunu ve sorgu dizesini yeniden yönlendirilen URL 'ye eklemeyi etkinleştirmek için seçenekleri de destekler. Yeniden yönlendirme türünü de seçebilirsiniz. Bu yeniden yönlendirme yapılandırması oluşturulduktan sonra, kaynak dinleyicisine yeni bir kural aracılığıyla eklenir. Temel bir kural kullanırken, yeniden yönlendirme yapılandırması bir kaynak dinleyicisi ile ilişkilendirilir ve küresel bir yeniden yönlendirmelidir. Yol tabanlı bir kural kullanıldığında, yeniden yönlendirme yapılandırması URL yol eşlemesinde tanımlanır. Bu nedenle, yalnızca bir sitenin belirli yol alanı için geçerlidir.
 

@@ -11,19 +11,19 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: edd4cc28c6d59f1d6e0c9cabfd5855c72bd3fe73
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cac14d5995042847bc98e47e50ea2d188382fd2a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661836"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564347"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma ve iliştirme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning, eğitilen makine öğrenimi modellerini Azure Kubernetes hizmetine dağıtabilir. Ancak, önce Azure ML çalışma alanınızdan bir Azure Kubernetes hizmeti (AKS) kümesi __oluşturmanız__ ya da mevcut bir aks kümesini __eklemeniz__ gerekir. Bu makalede, küme oluşturma ve ekleme hakkında bilgi sağlanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -68,6 +68,83 @@ Azure Machine Learning, eğitilen makine öğrenimi modellerini Azure Kubernetes
 
     - [AKS kümesindeki düğüm sayısını el ile ölçeklendirme](../aks/scale-cluster.md)
     - [AKS 'de küme otomatik Scaler 'ı ayarlama](../aks/cluster-autoscaler.md)
+
+## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes hizmet sürümü
+
+Azure Kubernetes hizmeti, çeşitli Kubernetes sürümlerini kullanarak bir küme oluşturmanıza olanak sağlar. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmetinde desteklenen Kubernetes sürümleri](/azure/aks/supported-kubernetes-versions).
+
+Aşağıdaki yöntemlerden birini kullanarak bir Azure Kubernetes hizmet kümesi **oluştururken** , oluşturulan kümenin *sürümünde bir seçeneğiniz* yoktur:
+
+* Azure Machine Learning Studio veya Azure portal Azure Machine Learning bölümü.
+* Azure CLı için Machine Learning uzantısı.
+* SDK Azure Machine Learning.
+
+AKS kümesi oluşturma yöntemleri kümenin __varsayılan__ sürümünü kullanır. Yeni Kubernetes sürümleri kullanılabilir hale geldiğinde *, varsayılan sürüm zaman içinde değişir* .
+
+Mevcut bir AKS kümesini **eklerken** , şu anda desteklenen tüm aks sürümlerini destekliyoruz.
+
+> [!NOTE]
+> Artık desteklenmeyen daha eski bir kümeniz olan uç durumlar olabilir. Bu durumda iliştirme işlemi bir hata döndürür ve şu anda desteklenen sürümleri listeler.
+>
+> **Önizleme** sürümleri ekleyebilirsiniz. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Önizleme sürümlerinin kullanımı için destek sınırlı olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+### <a name="available-and-default-versions"></a>Kullanılabilir ve varsayılan sürümler
+
+Kullanılabilir ve varsayılan AKS sürümlerini bulmak için [az aks get-versions](/cli/azure/aks?view=azure-cli-latest#az_aks_get_versions) [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) komutunu kullanın. Örneğin, aşağıdaki komut Batı ABD bölgesinde bulunan sürümleri döndürür:
+
+```azurecli-interactive
+az aks get-versions -l westus -o table
+```
+
+Bu komutun çıktısı aşağıdaki metne benzer:
+
+```text
+KubernetesVersion    Upgrades
+-------------------  ----------------------------------------
+1.18.6(preview)      None available
+1.18.4(preview)      1.18.6(preview)
+1.17.9               1.18.4(preview), 1.18.6(preview)
+1.17.7               1.17.9, 1.18.4(preview), 1.18.6(preview)
+1.16.13              1.17.7, 1.17.9
+1.16.10              1.16.13, 1.17.7, 1.17.9
+1.15.12              1.16.10, 1.16.13
+1.15.11              1.15.12, 1.16.10, 1.16.13
+```
+
+Azure Machine Learning aracılığıyla bir küme **oluştururken** kullanılan varsayılan sürümü bulmak için, `--query` varsayılan sürümü seçmek için parametresini kullanabilirsiniz:
+
+```azurecli-interactive
+az aks get-versions -l westus --query "orchestrators[?default == `true`].orchestratorVersion" -o table
+```
+
+Bu komutun çıktısı aşağıdaki metne benzer:
+
+```text
+Result
+--------
+1.16.13
+```
+
+**Kullanılabilir sürümleri programlı olarak denetlemek**Isterseniz, [kapsayıcı hizmeti istemci listesi düzenleyiciler](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API kullanın. Kullanılabilir sürümleri bulmak için, olduğu girişlere bakın `orchestratorType` `Kubernetes` . İlişkili `orchestrationVersion` girişler, çalışma alanınıza **iliştirilebilecek** kullanılabilir sürümleri içerir.
+
+Azure Machine Learning aracılığıyla küme **oluştururken** kullanılan varsayılan sürümü bulmak için, ve olduğu girişi bulun `orchestratorType` `Kubernetes` `default` `true` . İlişkili `orchestratorVersion` değer varsayılan sürümdür. Aşağıdaki JSON kod parçacığında bir örnek girişi gösterilmektedir:
+
+```json
+...
+ {
+        "orchestratorType": "Kubernetes",
+        "orchestratorVersion": "1.16.13",
+        "default": true,
+        "upgrades": [
+          {
+            "orchestratorType": "",
+            "orchestratorVersion": "1.17.7",
+            "isPreview": false
+          }
+        ]
+      },
+...
+```
 
 ## <a name="create-a-new-aks-cluster"></a>Yeni bir AKS kümesi oluşturma
 

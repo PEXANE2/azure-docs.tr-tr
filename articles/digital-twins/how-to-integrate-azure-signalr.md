@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0931a7e344d6546bd62ceb7513c4aa540f5b9638
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 38e3526627eb4191643f8bc86b9ce5f49e41a71f
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89448003"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564415"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital TWINS 'i Azure SignalR hizmeti ile tümleştirme
 
@@ -20,7 +20,7 @@ Bu makalede, Azure Digital TWINS 'i [Azure SignalR hizmeti](../azure-signalr/sig
 
 Bu makalede açıklanan çözüm, dijital ikizi telemetri verilerini, tek bir Web sayfası veya bir mobil uygulama gibi bağlı istemcilere anında gönderebilmeniz için izin verir. Sonuç olarak, istemciler, gerçek zamanlı ölçümler ve durum, sunucu yoklamaları veya güncelleştirmeler için yeni HTTP istekleri göndermek zorunda kalmadan IoT cihazlarından güncellenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce gerçekleştirmeniz gereken önkoşullar şunlardır:
 
@@ -147,7 +147,7 @@ Sonra, *bir uçtan uca çözüm oluşturma* öğreticisinin [ *uygulamayı Yayı
 
 1. Son olarak, aşağıdaki Azure CLı komutunu kullanarak daha önce Azure SignalR **Bağlantı dizenizi** işlevin uygulama ayarlarına ekleyin. Bu komut, [makinenizde yüklü](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)olan Azure CLI 'niz varsa [Azure Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir:
  
-    ```azurecli-interactive
+    ```azurecli
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
     ```
 
@@ -242,7 +242,7 @@ Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](https://do
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 
 
-```azurecli-interactive
+```azurecli
 az group delete --name <your-resource-group>
 ```
 

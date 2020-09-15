@@ -3,17 +3,17 @@ title: Azure portalında bir Service Fabric kümesi oluşturma
 description: Azure 'da Azure portal ve Azure Key Vault kullanarak güvenli Service Fabric kümesi ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259317"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563735"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure 'da Azure portal kullanarak Service Fabric kümesi oluşturma
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portalındaki](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -68,7 +68,7 @@ Uygulama gereksinimlerinizi karşılamak için bir üretim kümesi oluşturmak b
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Service Fabric kümesi kaynağını arayın
 
-[Azure portalında][azure-portal] oturum açın.
+[Azure Portal][azure-portal] oturum açın.
 Yeni kaynak şablonu eklemek için **kaynak oluştur** ' a tıklayın. **Market** 'Teki Service Fabric kümesi şablonunu **her şey**için arayın.
 Listeden **Service Fabric kümesi** seçin.
 
@@ -128,42 +128,42 @@ Var olan bir anahtar kasasını eklemek veya yeniden kullanmak ve bir sertifika 
 
 Önceki işlem tamamlanana kadar ekrandan uzaklaşmak için ekranın sonuna kadar yeniden gezinme.
 
-![Createkeykasası]
+![Ekran görüntüsü, Anahtar Kasası bölmesi ve Anahtar Kasası Oluştur bölümünde temel seçili olan Güvenlik sayfasını gösterir.][CreateKeyVault]
 
 Anahtar Kasası oluşturuldığına göre, anahtar kasanızın erişim ilkelerini düzenleyin. 
 
-![CreateKeyVault2]
+![Ekran görüntüsü, seçenek 3 güvenliği seçili olan Service Fabric kümesi oluştur bölmesini ve anahtar kasasının etkinleştirilmediğini belirten bir açıklama gösterir.][CreateKeyVault2]
 
 **Erişim Ilkelerini Düzenle**' ye tıklayın, ardından **Gelişmiş erişim Ilkeleri** ' ni gösterin ve dağıtım için Azure sanal makinelerine erişimi etkinleştirin. Şablon dağıtımını da etkinleştirmeniz önerilir. Seçimlerinizi yaptıktan sonra **Kaydet** düğmesine tıklamayın ve **erişim ilkeleri** bölmesini kapatın.
 
-![CreateKeyVault3]
+![Ekran görüntüsü, güvenlik bölmesi açık ve erişim ilkeleri bölmesi açık olan Service Fabric kümesi oluştur bölmesini gösterir.][CreateKeyVault3]
 
 Sertifikanın adını girip **Tamam**' a tıklayın.
 
-![CreateKeyVault4]
+![Ekran görüntüsü, anahtar kasasının etkin olmadığı açıklama olmadan daha önce seçili güvenlik ile Service Fabric küme oluştur bölmesini gösterir.][CreateKeyVault4]
 
 #### <a name="custom-option"></a>Özel seçenek
 **Temel** seçeneğinde adımları zaten gerçekleştirdiyseniz bu bölümü atlayın.
 
-![SecurityCustomOption]
+![Ekran görüntüsü, güvenlik kümesi güvenlik ayarlarını yapılandır iletişim kutusunu gösterir.][SecurityCustomOption]
 
 Güvenlik sayfasını tamamlayabilmeniz için kaynak Anahtar Kasası, sertifika URL 'SI ve sertifika parmak izi bilgilerine ihtiyacınız vardır. İhtiyacınız yoksa, başka bir tarayıcı penceresi açın ve Azure portal aşağıdaki adımları izleyin
 
 1. Anahtar Kasası hizmetinize gidin.
 2. "Özellikler" sekmesini seçin ve diğer tarayıcı penceresinde ' kaynak KIMLIĞI ' ni "kaynak Anahtar Kasası" olarak kopyalayın 
 
-    ![CertInfo0]
+    ![Ekran görüntüsünde, Anahtar Kasası için Özellikler penceresi gösterilmektedir.][CertInfo0]
 
 3. Şimdi "Sertifikalar" sekmesini seçin.
 4. Sertifika parmak izi ' ne tıklayarak sürümler sayfasına gidin.
 5. Geçerli sürüm altında gördüğünüz GUID 'lere tıklayın.
 
-    ![CertInfo1]
+    ![Ekran görüntüsü, Anahtar Kasası için sertifika penceresini gösterir][CertInfo1]
 
 6. Artık aşağıdaki gibi ekranda olmanız gerekir. On altılı SHA-1 parmak Izini diğer tarayıcı penceresinde "sertifika parmak izi" olarak Kopyala
 7. ' Gizli dizi tanımlayıcısı ' nı diğer tarayıcı penceresinde "sertifika URL 'SI" olarak kopyalayın.
 
-    ![CertInfo2]
+    ![Ekran görüntüsü, sertifika tanıtıcısını kopyalama seçeneği ile sertifika sürümü iletişim kutusunu gösterir.][CertInfo2]
 
 **Yönetici istemcisi** ve **salt okunurdur istemci**için istemci sertifikaları girmek üzere **Gelişmiş ayarları Yapılandır** kutusunu işaretleyin. Bu alanlarda, varsa, yönetici istemci sertifikanızın parmak izini ve salt okunurdur Kullanıcı istemci sertifikanızın parmak izini girin. Yöneticiler kümeye bağlanmayı denediklerinde, yalnızca buraya girilen parmak izi değerleriyle eşleşen parmak izine sahip bir sertifika varsa erişim izni verilir.  
 
@@ -173,7 +173,7 @@ Güvenlik sayfasını tamamlayabilmeniz için kaynak Anahtar Kasası, sertifika 
 
 Küme oluşturmayı tamamladıktan sonra **Oluştur**' a tıklayın. İsterseniz şablonu indirebilirsiniz.
 
-![Özet]
+![Ekran görüntüsü, bir sertifikayı görüntülemek ve indirmek için bağlantı içeren Service Fabric kümesi Özeti oluştur sayfasını gösterir.][Summary]
 
 Oluşturma işleminin ilerleme durumunu bildirimler bölümünden görebilirsiniz. (Ekranınızın sağ üst köşesindeki durum çubuğunun yanında bulunan "zil" simgesine tıklayın.) Kümeyi oluştururken başlangıç **panosuna sabitle ' ye** tıkladıysanız, **dağıtım Service Fabric kümenin** **Başlangıç** panosuna sabitlenmiş olduğunu görürsünüz. Bu işlem biraz zaman alacak. 
 
@@ -221,7 +221,7 @@ Bu noktada, yönetim kimlik doğrulaması için sertifikaları kullanarak güven
 [CreateRG]: ./media/service-fabric-cluster-creation-via-portal/CreateRG.png
 [CreateNodeType]: ./media/service-fabric-cluster-creation-via-portal/NodeType.png
 [BasicSecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/BasicSecurityConfigs.PNG
-[Createkeykasası]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault.PNG
+[CreateKeyVault]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault.PNG
 [CreateKeyVault2]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault2.PNG
 [CreateKeyVault3]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault3.PNG
 [CreateKeyVault4]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault4.PNG
@@ -230,7 +230,7 @@ Bu noktada, yönetim kimlik doğrulaması için sertifikaları kullanarak güven
 [CertInfo2]: ./media/service-fabric-cluster-creation-via-portal/CertInfo2.PNG
 [SecurityCustomOption]: ./media/service-fabric-cluster-creation-via-portal/SecurityCustomOption.PNG
 [DownloadCert]: ./media/service-fabric-cluster-creation-via-portal/DownloadCert.PNG
-[Özet]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
+[Summary]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png

@@ -7,15 +7,15 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: eca9596666b318b71bb1deec64e3a7d037e8fa0d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654336"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563701"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
-[Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
+[Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) ve [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System) (Önizleme) aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
 
 Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak üzere Azure dosyaları özellikleri ve işlevleri hakkında sık sorulan sorular yanıtlanmaktadır. Sorunuzun yanıtını görmüyorsanız, aşağıdaki kanallarla (yürüyen sırada) bizimle iletişim kurmanız gerekir:
 
@@ -31,7 +31,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
 * <a id="file-access-options"></a>
   **Azure dosyalarındaki dosyalara erişmenin farklı yolları nelerdir?**  
-    SMB 3,0 protokolünü kullanarak dosya paylaşımından yerel makinenize bağlanabilir veya dosya paylaşımınızda dosyalara erişmek için [Depolama Gezgini](https://storageexplorer.com/) gibi araçları kullanabilirsiniz. Uygulamanızdan Azure dosya paylaşımında dosyalarınıza erişmek için depolama istemci kitaplıklarını, REST API 'Leri, PowerShell veya Azure CLı kullanabilirsiniz.
+    SMB dosya paylaşımları, SMB 3,0 protokolü kullanılarak yerel makinenize bağlanabilir veya dosya paylaşımınızda dosyalara erişmek için [Depolama Gezgini](https://storageexplorer.com/) gibi araçları kullanabilirsiniz. NFS dosya paylaşımları, Azure portal tarafından sunulan betiği kopyalayabilir/yapıştırarak yerel makinenize bağlanabilir. Uygulamanızdan Azure dosya paylaşımında dosyalarınıza erişmek için depolama istemci kitaplıklarını, REST API 'Leri, PowerShell veya Azure CLı kullanabilirsiniz.
 
 * <a id="what-is-afs"></a>
   **Azure Dosya Eşitleme nedir?**  
@@ -43,12 +43,12 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
     
     Azure Blob depolama, yapılandırılmamış verileri depolaması gereken büyük ölçekli, bulutta yerel uygulamalar için yararlıdır. Performansı ve ölçeği en üst düzeye çıkarmak için, Azure Blob depolama, doğru bir dosya sisteminden daha basit bir depolama soyutlamasıdır. Azure Blob depolamaya yalnızca REST tabanlı istemci kitaplıkları aracılığıyla erişebilirsiniz (veya doğrudan REST tabanlı protokolde).
 
-    Azure dosyaları özellikle bir dosya sistemidir. Azure dosyaları, şirket içi işletim sistemleriyle çalışma yıllarından bildiğiniz ve sevdiğiniz tüm dosya soyutlarına sahiptir. Azure Blob depolama gibi Azure dosyaları da bir REST arabirimi ve REST tabanlı istemci kitaplıkları sunar. Azure Blob depolama alanının aksine Azure dosyaları, Azure dosya paylaşımlarına SMB erişimi sağlar. SMB kullanarak, herhangi bir kod yazmadan veya dosya sistemine özel bir sürücü eklemeden veya şirket içinde ya da bulut VM 'lerinde Azure dosya paylaşımından doğrudan Windows, Linux veya macOS üzerinde bağlantı takabilirsiniz. Ayrıca, hızlı erişim için Azure Dosya Eşitleme kullanarak Azure dosya paylaşımlarını önbelleğe alabilir ve verilerin kullanıldığı yere yakın bir şekilde erişebilirsiniz. 
+    Azure dosyaları özellikle bir dosya sistemidir. Azure dosyaları, şirket içi işletim sistemleriyle çalışma yıllarından bildiğiniz ve sevdiğiniz tüm dosya soyutlarına sahiptir. Azure Blob depolama gibi Azure dosyaları da bir REST arabirimi ve REST tabanlı istemci kitaplıkları sunar. Azure Blob depolama alanının aksine Azure dosyaları, Azure dosya paylaşımlarına SMB veya NFS erişimi sağlar. Dosya paylaşımları, herhangi bir kod yazmadan veya dosya sistemine özel bir sürücü eklemeden şirket içinde veya bulut VM 'lerinde doğrudan Windows, Linux veya macOS 'a bağlanabilir. Ayrıca, hızlı erişim için Azure Dosya Eşitleme kullanarak, verilerin kullanıldığı yere yakın şekilde Azure SMB dosya paylaşımlarını da önbelleğe alabilirsiniz. 
    
     Azure dosyaları ile Azure Blob depolama arasındaki farklılıklarla ilgili daha ayrıntılı bir açıklama için bkz. [temel Azure depolama hizmetlerine giriş](../common/storage-introduction.md). Azure Blob depolama hakkında daha fazla bilgi için bkz. [BLOB depolamaya giriş](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Azure diskleri yerine neden Azure dosya paylaşımından kullanmalıyım?**  
-    Azure disklerindeki bir disk yalnızca bir disktir. Azure disklerinden değer almak için, Azure 'da çalışan bir sanal makineye bir disk bağlamanız gerekir. Azure diskleri, bir şirket içi sunucuda için disk kullanacağınızı her şey için kullanılabilir. Bunu bir işletim sistemi sistem diski olarak, bir işletim sistemi için takas alanı veya bir uygulama için ayrılmış depolama olarak kullanabilirsiniz. Azure diskleri için ilginç bir kullanım, bulutta bir Azure dosya paylaşımının kullanıldığı yerlerde kullanılacak bir dosya sunucusu oluşturmaktır. Azure sanal makinelerinde bir dosya sunucusu dağıtmak, şu anda Azure dosyaları tarafından desteklenmeyen (NFS protokol desteği veya Premium depolama gibi) dağıtım seçenekleri gerektirdiğinde Azure 'da dosya depolamayı almanın yüksek performanslı bir yoludur. 
+    Azure disklerindeki bir disk yalnızca bir disktir. Azure disklerinden değer almak için, Azure 'da çalışan bir sanal makineye bir disk bağlamanız gerekir. Azure diskleri, bir şirket içi sunucuda için disk kullanacağınızı her şey için kullanılabilir. Bunu bir işletim sistemi sistem diski olarak, bir işletim sistemi için takas alanı veya bir uygulama için ayrılmış depolama olarak kullanabilirsiniz. Azure diskleri için ilginç bir kullanım, bulutta bir Azure dosya paylaşımının kullanıldığı yerlerde kullanılacak bir dosya sunucusu oluşturmaktır. Azure sanal makinelerinde bir dosya sunucusu dağıtmak, Azure dosyaları tarafından desteklenmeyen dağıtım seçenekleri istediğinizde Azure 'da dosya depolamayı almanın yüksek performanslı bir yoludur. 
 
     Ancak, arka uç depolama olarak Azure diskleriyle bir dosya sunucusu çalıştırmak, birkaç nedenden dolayı bir Azure dosya paylaşımının kullanılmasıyla çok daha pahalıdır. İlk olarak, disk depolama alanı ödemesinin yanı sıra bir veya daha fazla Azure sanal makinesi çalıştırmanın masrafına de ödeme yapmanız gerekir. İkincisi de dosya sunucusunu çalıştırmak için kullanılan VM 'Leri yönetmeniz gerekir. Örneğin, işletim sistemi yükseltmelerinden siz sorumlusunuz. Son olarak, verilerin şirket içinde önbelleğe alınması gerekiyorsa, bunu yapmak için Dağıtılmış Dosya Sistemi Çoğaltma (DFSR) gibi çoğaltma teknolojilerini ayarlamak ve yönetmek en iyisidir.
 
@@ -58,17 +58,18 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
 * <a id="get-started"></a>
   **Azure dosyalarını kullanmaya başlamak Nasıl yaparım? misiniz?**  
-   Azure dosyalarını kullanmaya başlamak kolaydır. İlk olarak, [bir dosya paylaşma oluşturun](storage-how-to-create-file-share.md)ve bunu tercih ettiğiniz işletim sistemine bağlayın: 
+   Azure dosyalarını kullanmaya başlamak kolaydır. İlk olarak, bir [SMB dosya paylaşımından](storage-how-to-create-file-share.md) ya da bir [NFS paylaşımının nasıl](storage-files-how-to-create-nfs-shares.md)oluşturulduğunu oluşturun ve ardından bunu tercih ettiğiniz işletim sistemine bağlayın: 
 
-  * [Windows 'da bağla](storage-how-to-use-files-windows.md)
-  * [Linux 'ta bağlama](storage-how-to-use-files-linux.md)
-  * [MacOS 'ta bağlama](storage-how-to-use-files-mac.md)
+  * [Windows 'da bir SMB paylaşma bağlama](storage-how-to-use-files-windows.md)
+  * [Linux 'ta bir SMB paylaşma bağlama](storage-how-to-use-files-linux.md)
+  * [MacOS 'ta bir SMB paylaşma bağlama](storage-how-to-use-files-mac.md)
+  * [NFS dosya paylaşımının bağlama](storage-files-how-to-mount-nfs-shares.md)
 
     Kuruluşunuzda üretim dosya paylaşımlarının yerini alacak bir Azure dosya paylaşımının dağıtılması hakkında daha ayrıntılı bir kılavuz için bkz. [Azure dosyaları dağıtımı Için planlama](storage-files-planning.md).
 
 * <a id="redundancy-options"></a>
   **Azure dosyaları tarafından desteklenen depolama yedeklilik seçenekleri nelerdir?**  
-    Şu anda Azure dosyaları yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS), coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS) destekler. Gelecekte Okuma Erişimli Coğrafi olarak yedekli (RA-GRS) depolamayı desteklemeyi planlıyoruz, ancak şu anda paylaşılacak zaman çizelgelerinizi yok.
+    Şu anda Azure dosyaları yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS), coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS) destekler. Azure Files Premium katmanı Şu anda yalnızca LRS ve ZRS 'yi destekliyor.
 
 * <a id="tier-options"></a>
   **Azure dosyalarında hangi depolama katmanları desteklenir?**  
@@ -282,6 +283,23 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 **Dizin/dosya Windows ACL 'Lerini al/ayarla/Kopyala desteği için REST API 'Ler var mı?**
 
     Evet, [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (veya üzeri) REST API kullanılırken dizinler veya dosyalar Için NTFS ACL 'LERINI alan REST API 'leri destekliyoruz. Ayrıca REST tabanlı araçlarda kalıcı Windows ACL 'Leri de destekliyoruz: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
+
+## <a name="network-file-system"></a>Ağ dosya sistemi
+
+* <a id="when-to-use-nfs"></a>
+**Azure dosyaları NFS ne zaman kullanmalıyım?**
+
+    Bkz. [NFS paylaşımları (Önizleme)](storage-files-compare-protocols.md#nfs-shares-preview).
+
+* <a id="backup-nfs-data"></a>
+**NFS paylaşımlarında depolanan yedekleme verileri Nasıl yaparım? mı?**
+
+    Verilerinizi NFS paylaşımlarında yedeklemek, rsync veya üçüncü taraf yedekleme iş ortaklarından birindeki ürünler gibi tanıdık araç kullanılarak ayarlanabilir. [Commkasası](https://documentation.commvault.com/commvault/v11/article?p=92634.htm), [Veeaz](https://www.veeam.com/blog/?p=123438)ve [VERITAS](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) dahil olmak üzere birden çok yedekleme iş ortağı Ilk önizlememiz KAPSAMıNDA ve Azure dosyaları IÇIN hem SMB 3,0 hem de NFS 4,1 ile birlikte çalışmak üzere çözümlerini genişletti.
+
+* <a id="migrate-nfs-data"></a>
+**Mevcut verileri bir NFS paylaşımında geçirebilir miyim?**
+
+    Bir bölge içinde, verileri taşımak için SCP, rsync veya SSHFS gibi standart araçları kullanabilirsiniz. Azure dosyaları NFS 'nin eşzamanlı olarak birden çok işlem örneğiyle erişilebilir olduğu için, paralel karşıya yükleme ile kopyalama hızlarını geliştirebilirsiniz. Verileri bir bölgenin dışından getirmek istiyorsanız, şirket içi veri merkezinizden dosya sisteminize bağlamak için bir VPN veya ExpressRoute kullanın.
 
 ## <a name="on-premises-access"></a>Şirket içi erişim
 

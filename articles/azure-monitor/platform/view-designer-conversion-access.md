@@ -6,12 +6,12 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: fb53a966b0dc4959253ac0786ef09ef3c497e809
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7614dd1d60bad5c124269ae2af02d30a5aacfe3e
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658855"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564041"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Çalışma kitabı dönüştürme özeti ve erişim için tasarımcıyı görüntüleyin
 [Görünüm Tasarımcısı](view-designer.md) , Log Analytics çalışma alanınızdaki verileri grafiklerle, listelerle ve zaman çizelgeleriyle görselleştirmenize yardımcı olmak üzere özel görünümler oluşturmanıza olanak sağlayan bir Azure izleyici özelliğidir. Bunlar kullanıma alınır ve başka işlevler sağlayan çalışma kitapları ile değiştirilmiştir. Bu makalede, çalışma kitaplarına erişmek için gereken bir genel bakış Özeti ve izinleri nasıl oluşturabileceğiniz açıklanır.
@@ -21,7 +21,7 @@ Görünüm Tasarımcısı kullanıcıları, bir görünüm kümesini temsil eden
 
 Azure panolarıyla birlikte sunulan, sabitlenmiş öğeleriniz ve Görselleştirmeleriniz için otomatik yenileme, taşıma, boyutlandırma ve ek filtrelemeye olanak sağlayan yüksek düzeyde özelleştirme özelliklerinden yararlanabilirsiniz. 
 
-![Pano](media/view-designer-conversion-access/dashboard.png)
+![Ekran görüntüsü, çalışma alanı Özeti başlıklı özelleştirilmiş bir Azure panosunu gösterir.](media/view-designer-conversion-access/dashboard.png)
 
 Çalışma kitabı öğelerini sabitlemeye başlamak için yeni bir Azure panosu oluşturun veya var olan bir panoyu seçin.
 
