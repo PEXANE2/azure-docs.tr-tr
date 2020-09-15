@@ -3,12 +3,12 @@ title: Apache Kafka için Azure Event Hubs sorunlarını giderme
 description: Bu makalede Apache Kafka için Azure Event Hubs ile ilgili sorunların nasıl giderileceği gösterilmektedir
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 034541aa6ea683c0e294ca8790b02f0dc60b5440
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090578"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061436"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs için sorun giderme kılavuzu Apache Kafka
 Bu makalede, Apache Kafka için Event Hubs kullanırken çalıştırabileceğiniz sorunlar için sorun giderme ipuçları sunulmaktadır. 
@@ -55,11 +55,11 @@ Event Hubs üzerinde Kafka kullanırken sorunlarla karşılaşırsanız aşağı
 - **SASL kimlik doğrulaması** -Event Hubs için gereken SASL kimlik doğrulama protokolü ile işbirliği yapmak, bu gözle buluşmamak daha zor olabilir. SASL kimlik doğrulamasında Framework 'ün kaynaklarını kullanarak yapılandırmanın sorunlarını giderebileceğinizden bkz.. 
 
 ## <a name="limits"></a>Sınırlar
-Apache Kafka vs. Event Hubs Kafka. Çoğu bölüm için, Event Hubs Kafka aynı varsayılanlara, özelliklere, hata kodlarına ve Apache Kafka genel davranışına sahiptir. Bu iki açıkça farklı olan örnekler (veya Event Hubs Kafka olmayan bir sınır uygular) aşağıda listelenmiştir:
+Apache Kafka vs. Event Hubs Kafka. Çoğu bölümde, Azure Event Hubs ' Kafka arabirimi aynı varsayılanlara, özelliklere, hata kodlarına ve Apache Kafka genel davranışına sahiptir. Bu iki açıkça farklı olan örnekler (veya Event Hubs Kafka olmayan bir sınır uygular) aşağıda listelenmiştir:
 
 - Özelliğin uzunluk üst sınırı `group.id` 256 karakterdir
 - En büyük boyut `offset.metadata.max.bytes` 1024 bayttır
-- En büyük iç günlük boyutu olan 1 MB 'a sahip bölüm başına 4 çağrı/saniye cinsinden fark yürütmeler kısıtlandı
+- En büyük iç günlük boyutu 1 MB olan, konum işleme/bölüm başına 4 çağrı/saniye azaltılır
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

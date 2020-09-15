@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c539fd37116f8c55f336aecf1e8979355a40d61c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662553"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084847"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Eşitleme: Filtrelemeyi yapılandırma
 Filtreleme kullanarak, şirket içi dizininizden Azure Active Directory (Azure AD) içinde hangi nesnelerin göründüğünü denetleyebilirsiniz. Varsayılan yapılandırma, yapılandırılan ormanlardaki tüm etki alanlarındaki tüm nesneleri alır. Genel olarak, önerilen yapılandırmadır. Exchange Online ve Skype Kurumsal gibi Microsoft 365 iş yüklerini kullanan kullanıcılar, e-posta gönderebilmeleri ve herkes arayabilmesi için tüm genel adres listesinden faydalanır. Varsayılan yapılandırmayla, Exchange veya Lync 'in şirket içi uygulamasıyla aynı deneyim yaşar.
@@ -217,7 +217,7 @@ Gelen filtreleme varsayılan yapılandırmayı kullanır, burada Azure AD 'ye gi
 Gelen filtrelemede, hangi nesnelerin eşitleneceğini veya eşitleneceğini öğrenmek için **kapsam** gücünü kullanırsınız. Bu, kendi kuruluşunuzun gereksinimlerini karşılayacak şekilde ayarlamalar yaparsınız. Kapsam modülünde bir eşitleme kuralının kapsam içinde olduğu zaman saptanıp bir **grubu** ve **yan tümcesi** vardır. Bir grup bir veya daha fazla yan tümce içerir. Birden çok yan tümce arasında mantıksal bir "ve", birden çok grup arasında mantıksal bir "veya" vardır.
 
 Bir örneğe bakmamıza izin verin:  
-![Kapsam filtresi ekleme örneği gösteren ekran görüntüsü](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![Kapsam filtresi ekleme örneği gösteren ekran görüntüsü.](./media/how-to-connect-sync-configure-filtering/scope.png)  
 Bu, **(departman = It) veya (departman = Sales ve c = US)** olarak okunmalıdır.
 
 Aşağıdaki örneklerde ve adımlarda, Kullanıcı nesnesini bir örnek olarak kullanırsınız, ancak bunu tüm nesne türleri için kullanabilirsiniz.
@@ -275,7 +275,7 @@ Bu örnekte, yalnızca hem e-postası hem de userPrincipalName 'i olan kullanıc
 1. Azure AD Connect çalıştıran sunucuda, **Adsyncadmins** güvenlik grubunun üyesi olan bir hesap kullanarak oturum açın.
 2. **Başlangıç** menüsünden **eşitleme kuralları düzenleyicisini** başlatın.
 3. **Kurallar türü**altında **giden**' e tıklayın.
-4. Kullandığınız bağlantı sürümüne bağlı olarak, **AAD 'ye yönelik** olarak adlandırılan ve AAD 'ye yönelik Kullanıcı JOIN veya **Out-User JOIN soainad**adlı kuralı bulun ve **Düzenle**' ye tıklayın.
+4. Kullandığınız bağlantı sürümüne bağlı olarak, **Azure AD 'ye giden Kullanıcı katılımı** veya **giden Azure AD-User JOIN soainad**adlı kuralı bulun ve **Düzenle**' ye tıklayın.
 5. Açılır pencerede, kuralın bir kopyasını oluşturmak için **Evet** yanıtını verin.
 6. **Açıklama** sayfasında, **önceliği** 50 gibi kullanılmayan bir değerle değiştirin.
 7. Sol taraftaki **gezinmede kapsam filtresi** ' ne tıklayın ve ardından **yan tümce Ekle**' ye tıklayın. **Öznitelikte**, **posta**' yı seçin. **İşleç**Içinde, **EndsWith**öğesini seçin. **Değer**alanına ** \@ contoso.com**yazın ve ardından **yan tümce Ekle**' ye tıklayın. **Özniteliğinde** **userPrincipalName**' i seçin. **İşleç**Içinde, **EndsWith**öğesini seçin. **Değer**alanına ** \@ contoso.com**yazın.
@@ -300,7 +300,7 @@ Eşitlemeden sonra tüm değişiklikler verilmek üzere hazırlanır. Azure AD '
 
 1. Bir komut istemi başlatın ve adresine gidin `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
 2. `csexport "Name of Connector" %temp%\export.xml /f:x` öğesini çalıştırın.  
-   Bağlayıcının adı, eşitleme hizmetidir. Azure AD için "contoso.com – AAD" benzeri bir ada sahiptir.
+   Bağlayıcının adı, eşitleme hizmetidir. Azure AD için "contoso.com – Azure AD" benzeri bir ada sahiptir.
 3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` öğesini çalıştırın.
 4. Artık% TEMP% adlı, Microsoft Excel 'de incelenebilir export.csv adlı bir dosyanız var. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
 5. Veri veya yapılandırmada gerekli değişiklikleri yapın ve dışarı aktarılacak değişiklikler beklediğiniz şeydir, bu adımları yeniden çalıştırın (Içeri aktar, eşitlendiğinde ve Doğrula).

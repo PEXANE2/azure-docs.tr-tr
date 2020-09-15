@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/14/2020
-ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 09/14/2020
+ms.openlocfilehash: 3c9389e6063279e214e3650f6364dc25ff773db5
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587319"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069603"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL yönetilen örnek kaynak sınırlarına genel bakış
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,12 +99,12 @@ Birkaç ek dikkat edin:
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>Genel Amaçlı katmanındaki dosya GÇ özellikleri
 
-Genel Amaçlı hizmet katmanında her veritabanı dosyası, dosya boyutuna bağlı olan adanmış ıOPS ve aktarım hızını alır. Daha büyük veri dosyaları daha fazla ıOPS ve aktarım hızı alır. Veritabanı dosyalarının GÇ özellikleri aşağıdaki tabloda gösterilmiştir:
+Genel Amaçlı hizmet katmanında her veritabanı dosyası, dosya boyutuna bağlı olan adanmış ıOPS ve aktarım hızını alır. Daha büyük dosyalar daha fazla ıOPS ve aktarım hızı alır. Veritabanı dosyalarının GÇ özellikleri aşağıdaki tabloda gösterilmiştir:
 
-| Dosya boyutu | >= 0 ve <= 128 GiB | >128 ve <= 256 GiB | >256 ve <= 512 GiB | >0,5 ve <= 1 TiB    | >1 ve <= 2 TiB    | >2 ve <= 4 TiB | >4 ve <= 8 TiB |
+| Dosya boyutu | >= 0 ve <= 128 GiB | >128 ve <= 512 GiB | >0,5 ve <= 1 TiB    | >1 ve <= 2 TiB    | >2 ve <= 4 TiB | >4 ve <= 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Dosya başına ıOPS       | 500   | 1100 | 2300              | 5000              | 7.500              | 7.500              | 12,500   |
-| Dosya başına aktarım hızı | 100 MIB/sn | 125 MIB/sn | 150 MIB/sn | 200 MIB/sn | 250 MiB/sn | 250 MiB/sn | 480 MIB/sn | 
+| Dosya başına ıOPS       | 500   | 2300              | 5000              | 7.500              | 7.500              | 12,500   |
+| Dosya başına aktarım hızı | 100 MIB/sn | 150 MIB/sn | 200 MIB/sn | 250 MiB/sn | 250 MiB/sn | 480 MIB/sn | 
 
 Bazı veritabanı dosyasında yüksek GÇ gecikme süresi fark ederseniz veya ıOPS/aktarım hızının sınıra ulaşdığına görürseniz, [dosya boyutunu artırarak](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)performansı artırabilirsiniz.
 

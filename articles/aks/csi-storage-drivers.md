@@ -1,44 +1,44 @@
 ---
 title: Azure Kubernetes Service (AKS) üzerinde kapsayıcı depolama arabirimi (CSı) sürücülerini etkinleştirme
-description: Azure disk ve Azure dosyaları için Azure Kubernetes hizmeti (AKS) kümesindeki kapsayıcı depolama arabirimi (CSı) sürücülerini nasıl etkinleştireceğinizi öğrenin.
+description: Azure diskleri ve Azure dosyaları için Azure Kubernetes hizmeti (AKS) kümesindeki kapsayıcı depolama arabirimi (CSı) sürücülerini nasıl etkinleştireceğinizi öğrenin.
 services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: bd5706d20496e1ff00843f761443d183cf7fcae3
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 54764b16ba63d5656f61152cfe40ef50475192a5
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422076"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085680"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) üzerinde Azure diskleri ve Azure dosyaları için kapsayıcı depolama arabirimi (CSı) sürücülerini etkinleştirme (Önizleme)
 
-Kapsayıcı depolama arabirimi (CSı), Kubernetes üzerindeki Kapsayıcılı iş yüklerine rastgele blok ve dosya depolama sistemleri sunmak için bir standarttır. Azure Kubernetes hizmeti (AKS), CSı 'yi benimseme ve kullanarak, temel Kubernetes koduna dokunarak ve kendi yayın döngüsünü beklemeden Kubernetes 'te mevcut depolama sistemlerini yeni bir şekilde oluşturabilir, dağıtabilir ve yineleyebilir.
+Kapsayıcı depolama arabirimi (CSı), Kubernetes üzerindeki Kapsayıcılı iş yüklerine rastgele blok ve dosya depolama sistemleri sunmak için bir standarttır. Azure Kubernetes hizmeti (AKS), CSı 'yi benimsemek ve kullanarak, temel Kubernetes koduna dokunarak ve kendi yayın döngüsünü beklemek zorunda kalmadan Kubernetes 'te var olan depolama sistemlerini ortaya çıkarmak için eklentileri yazabilir, dağıtabilir ve yineleyebilir.
 
-AKS üzerinde CSı depolama sürücüsü desteği, yerel olarak yararlanmanızı sağlar:
-- [*Azure diskleri*](azure-disk-csi.md) -bir Kubernetes *veri diski* kaynağı oluşturmak için kullanılabilir. Diskler, yüksek performanslı SSD 'Ler veya Azure Standart depolama tarafından desteklenen, normal HDD 'Ler veya standart SSD 'Ler tarafından desteklenen Azure Premium depolama kullanabilir. Çoğu üretim ve geliştirme iş yükleri için Premium depolama kullanın. Azure diskleri *Readwriteonce*olarak bağlanır, bu nedenle yalnızca tek bir pod için kullanılabilir. Aynı anda birden çok dizin tarafından erişilebilen depolama birimlerinde Azure dosyalarını kullanın.
-- [*Azure dosyaları*](azure-files-csi.md) , Azure depolama hesabı tarafından desteklenen bir SMB 3,0 paylaşımının pods 'ye bağlanması için kullanılabilir. Dosyalar, verileri birden çok düğümde ve düğüm genelinde paylaşmanızı sağlar. Dosyalar, yüksek performanslı SSD 'Ler tarafından desteklenen normal HDD 'Ler veya Azure Premium Depolama tarafından desteklenen Azure Standart depolama alanını kullanabilir.
+AKS üzerinde CSı depolama sürücüsü desteği yerel olarak kullanmanıza olanak tanır:
+- Bir Kubernetes *veri diski* kaynağı oluşturmak Için kullanılabilen [*Azure diskleri*](azure-disk-csi.md). Diskler, yüksek performanslı SSD 'Ler veya Azure Standart depolama tarafından desteklenen, normal HDD 'Ler veya standart SSD 'Ler tarafından desteklenen Azure Premium depolama kullanabilir. Çoğu üretim ve geliştirme iş yükleri için Premium depolama kullanın. Azure diskleri *Readwriteonce*olarak bağlanır, bu nedenle yalnızca tek bir pod için kullanılabilir. Aynı anda birden çok dizin tarafından erişilebilen depolama birimlerinde Azure dosyalarını kullanın.
+- Azure depolama hesabı tarafından desteklenen bir SMB 3,0 paylaşımının pods 'ye bağlanması için kullanılabilen [*Azure dosyaları*](azure-files-csi.md). Azure dosyaları ile birden çok düğümde ve düğüm genelinde veri paylaşabilirsiniz. Azure dosyaları, yüksek performanslı SSD 'Ler tarafından desteklenen normal HDD 'Ler veya Azure Premium Depolama tarafından desteklenen Azure Standart depolama kullanabilir.
 
 > [!IMPORTANT]
-> Kubernetes sürüm 1,21 ' den başlayarak Kubernetes yalnızca CSı sürücülerini ve varsayılan olarak kullanır. Bunlar, Kubernetes 'te depolama desteğinin geleceği.
+> Kubernetes sürüm 1,21 ' den başlayarak Kubernetes yalnızca CSı sürücülerini ve varsayılan olarak kullanır. Bu sürücüler, Kubernetes 'te depolama desteğinin geleceği.
 >
-> *"Ağaç içi Sürücüler"* , temel Kubernetes kodunun parçası olan geçerli depolama sürücülerine ve eklenti olan yeni CSI sürücülerine başvurur.
+> *Ağaç içi sürücüler* , temel Kubernetes kodunun parçası olan geçerli depolama sürücülerini, eklentiler olan yeni CSI sürücülerine karşılık gelir.
 
 ## <a name="limitations"></a>Sınırlamalar
 
 - Bu özellik yalnızca küme oluşturma zamanında ayarlanabilir.
 - CSı sürücülerini destekleyen en düşük Kubernetes ikincil sürümü v 1.17.
-- Önizleme süresince, varsayılan depolama sınıfı hala [ağaç depolama sınıfı ile aynı](concepts-storage.md#storage-classes)olacaktır. Bu özellik genel kullanıma sunulduğunda, varsayılan depolama sınıfı `managed-csi` depolama sınıfı olur ve ağaç içi Depolama sınıfları kaldırılır.
+- Önizleme sırasında, varsayılan depolama sınıfı hala [ağaç depolama sınıfı ile aynı](concepts-storage.md#storage-classes)olacaktır. Bu özellik genel kullanıma sunulduğunda, varsayılan depolama sınıfı `managed-csi` depolama sınıfı olur ve ağaç içi Depolama sınıfları kaldırılır.
 - İlk önizleme aşamasında yalnızca Azure CLı desteklenir.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="register-the-enableazurediskfilecsidriver-preview-feature"></a>`EnableAzureDiskFileCSIDriver`Önizleme özelliğini kaydetme
 
-Azure diskleri ve Azure dosyaları için CSı sürücülerinden faydalanabilir bir AKS kümesi oluşturmak için, `EnableAzureDiskFileCSIDriver` aboneliğinizde Özellik bayrağını etkinleştirmeniz gerekir.
+Azure diskleri ve Azure dosyaları için CSı sürücülerini kullanılabilecek bir AKS kümesi oluşturmak için, `EnableAzureDiskFileCSIDriver` aboneliğinizde Özellik bayrağını etkinleştirmeniz gerekir.
 
-`EnableAzureDiskFileCSIDriver`Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak özellik bayrağını kaydedin:
+`EnableAzureDiskFileCSIDriver`Aşağıdaki örnekte gösterildiği gibi, [az Feature Register][az-feature-register] komutunu kullanarak özellik bayrağını kaydedin:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureDiskFileCSIDriver"
@@ -60,7 +60,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI uzantısını yükleme
 
-CSı depolama sürücülerini kullanan bir AKS kümesi veya düğüm havuzu oluşturmak için en son *aks-Preview* CLI uzantısına ihtiyacınız vardır. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını veya [az Extension Update][az-extension-update] komutunu kullanarak tüm kullanılabilir güncelleştirmeleri yüklemeyi kullanın:
+CSı depolama sürücülerini kullanan bir AKS kümesi veya düğüm havuzu oluşturmak için en son *aks-önizleme* Azure CLI uzantısının olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükler. Veya [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir tüm güncelleştirmeleri yükler.
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -73,7 +73,7 @@ az extension update --name aks-preview
 
 ## <a name="create-a-new-cluster-that-can-use-csi-storage-drivers"></a>CSı depolama sürücülerini kullanan yeni bir küme oluşturun
 
-Aşağıdaki CLı komutlarını kullanarak Azure diskleri ve Azure dosyaları için CSı depolama sürücülerinden faydalanabilir yeni bir küme oluşturun. `--aks-custom-headers`Özelliği ayarlamak için bayrağını kullanın `EnableAzureDiskFileCSIDriver` .
+Aşağıdaki CLı komutlarını kullanarak Azure diskleri ve Azure dosyaları için CSı depolama sürücülerini kullanan yeni bir küme oluşturun. `--aks-custom-headers`Özelliği ayarlamak için bayrağını kullanın `EnableAzureDiskFileCSIDriver` .
 
 Azure Kaynak grubu oluşturun:
 
@@ -82,7 +82,7 @@ Azure Kaynak grubu oluşturun:
 az group create --name myResourceGroup --location canadacentral
 ```
 
-CSı depolama sürücüleri desteğiyle AKS kümesini oluşturun.
+CSı depolama sürücüleri desteğiyle AKS kümesini oluşturun:
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
@@ -106,9 +106,9 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure diskleri için CSı sürücüsünü kullanın, bkz. [CSI sürücüleriyle Azure disk kullanma](azure-disk-csi.md).
-- Azure dosyaları için CSı sürücüsünü kullanın, bkz. [Azure dosyalarını CSI sürücülerle kullanma](azure-files-csi.md).
-- Depolama en iyi uygulamaları hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (AKS) içinde depolama ve yedeklemeler Için en iyi uygulamalar][operator-best-practices-storage]
+- Azure diskleri için CSı sürücüsünü kullanmak için bkz. [CSI sürücüleriyle Azure disklerini kullanma](azure-disk-csi.md).
+- Azure dosyaları için CSı sürücüsünü kullanmak üzere, bkz. [Azure dosyalarını CSI sürücülerle kullanma](azure-files-csi.md).
+- Depolama en iyi uygulamaları hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmetindeki depolama ve yedeklemeler Için en iyi uygulamalar][operator-best-practices-storage].
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
@@ -132,8 +132,8 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
+[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true

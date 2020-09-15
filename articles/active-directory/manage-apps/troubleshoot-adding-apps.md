@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory bir uygulama ekleme hakkında yaygın sorun giderme
-description: Azure Active Directory için bir uygulama eklerken karşılaştığı yaygın sorunları giderin.
+title: Azure Active Directory bir uygulamayı ekleme veya kaldırma hakkında yaygın sorun giderme
+description: Azure Active Directory için bir uygulama eklerken veya kaldırırken karşılaşılan yaygın sorunları giderin.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 1502c97e625d3af128772451be8db4dd6187e3a7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89410452"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068039"
 ---
-# <a name="troubleshoot-common-problem-adding-an-application-to-azure-active-directory"></a>Azure Active Directory bir uygulama ekleme hakkında yaygın sorun giderme
-Bu makale, Azure Active Directory bir uygulama eklerken insanların karşılaştığı yaygın sorunları anlamanıza yardımcı olur.
+# <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Azure Active Directory bir uygulamayı ekleme veya kaldırma hakkında yaygın sorun giderme
+Bu makale, Azure Active Directory bir uygulama eklerken veya kaldırırken insanların karşılaştığı yaygın sorunları anlamanıza yardımcı olur.
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>"Ekle" düğmesine tıkladım ve uygulamamın görünmesi uzun sürdü
 Bazı durumlarda, bir uygulamanın dizininize eklendikten sonra görünmesi 1-2 dakika (ve bazen daha uzun süre) alabilir. Bu, normal beklenen performans olmadığından, [Azure Portal](https://portal.azure.com/) uygulamanın sağ üst köşesindeki **Bildirimler** simgesine (zil) tıklayarak ve **uygulama ekleme** etiketli **devam eden** veya **tamamlanmış** bildirimi arayarak uygulama ekleme işleminin devam ettiğini görebilirsiniz.
@@ -34,6 +34,16 @@ Bazen geçici sorunlar, ağ sorunları veya bir hata nedeniyle uygulama ekleme b
 Uygulamalar hakkında bilgi edinmek için yardıma ihtiyacınız varsa, [SaaS uygulamalarını Azure Active Directory makaleyle tümleştirme hakkında öğreticilerin listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) başlamak için iyi bir yerdir.
 
 Buna ek olarak, [Azure AD uygulamaları belge kitaplığı](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) , Azure AD ile çoklu oturum açma ve nasıl çalıştığı hakkında daha fazla bilgi edinmenize yardımcı olur.
+
+## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>Bir uygulamayı silmek istiyorum, ancak Sil düğmesi devre dışı
+
+Sil düğmesi aşağıdaki senaryolarda devre dışı bırakılır:
+
+- Kurumsal uygulama altındaki uygulamalar için, şu rollerden birine sahip değilseniz: genel yönetici, bulut uygulaması Yöneticisi, uygulama Yöneticisi veya hizmet sorumlusu sahibi.
+
+- Microsoft uygulaması için, rolünüze bakılmaksızın onları kullanıcı arabiriminden silmeniz mümkün olmayacaktır.
+
+- Yönetilen bir kimliğe karşılık gelen hizmet sorumluları için. Yönetilen kimlikler hizmet sorumluları, kurumsal uygulamalar dikey penceresinde silinemez. Bunu yönetmek için Azure kaynağına gitmeniz gerekir. [Yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) hakkında daha fazlasını temizle
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Portal bildiriminin ayrıntılarını görme
 Aşağıdaki adımları izleyerek, herhangi bir portal bildiriminin ayrıntılarını görebilirsiniz:

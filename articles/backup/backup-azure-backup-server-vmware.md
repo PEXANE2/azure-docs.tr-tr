@@ -3,16 +3,16 @@ title: Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 description: Bu makalede, VMware vCenter/ESXi sunucusunda çalışan VMware VM 'lerini yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017575"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069841"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 
-Bu makalede Azure Backup Sunucusu kullanarak Azure 'a VMware ESXi Konakları/vCenter Server üzerinde çalışan VMware VM 'lerinin nasıl yedekleneceği açıklanmaktadır.
+Bu makalede, VMware ESXi Konakları/vCenter Server üzerinde çalışan VMware VM 'lerinin Azure Backup Sunucusu (MABS) kullanarak Azure 'a yedeklenmesi açıklanmaktadır.
 
 Bu makalede nasıl yapılacağı açıklanmaktadır:
 
@@ -21,6 +21,31 @@ Bu makalede nasıl yapılacağı açıklanmaktadır:
 - Azure Backup için hesap kimlik bilgilerini ekleyin.
 - VCenter veya ESXi sunucusunu Azure Backup Sunucusu ekleyin.
 - Yedeklemek istediğiniz VMware VM 'lerini içeren bir koruma grubu ayarlayın, yedekleme ayarlarını belirtin ve yedeklemeyi zamanlayın.
+
+## <a name="supported-vmware-features"></a>Desteklenen VMware özellikleri
+
+MABS, VMware sanal makinelerini yedeklerken aşağıdaki özellikleri sağlar:
+
+- Aracısız yedekleme: MABS, sanal makineyi yedeklemek için vCenter veya ESXi sunucusuna bir aracının yüklenmesini gerektirmez. Bunun yerine, IP adresi veya tam etki alanı adı (FQDN) ve MABS ile VMware sunucusunun kimliğini doğrulamak için kullanılan oturum açma kimlik bilgilerini sağlamanız yeterlidir.
+- Bulut tümleşik yedekleme: MABS, iş yüklerini disk ve buluta korur. MABS 'nin yedekleme ve kurtarma iş akışı, uzun süreli saklama ve şirket dışı yedekleme yönetmenize yardımcı olur.
+- VCenter tarafından yönetilen VM 'Leri Algıla ve koru: MABS, bir VMware sunucusuna (vCenter veya ESXi sunucusu) dağıtılan VM 'Leri algılar ve korur. Dağıtım boyutunuz büyüdükçe, VMware ortamınızı yönetmek için vCenter 'ı kullanın. MABS Ayrıca, vCenter tarafından yönetilen VM 'Leri algılar ve büyük dağıtımları korumanıza olanak sağlar.
+- Klasör düzeyinde otomatik koruma: vCenter, sanal makinelerinizi VM klasörlerinde düzenlemenizi sağlar. MABS bu klasörleri algılar ve klasör düzeyinde VM 'Leri korumanıza olanak sağlar ve tüm alt klasörleri içerir. Klasörler korunurken, MABS yalnızca söz konusu klasördeki VM 'Leri korumakla kalmaz, daha sonra eklenen VM 'leri de korur. MABS, günlük olarak yeni VM 'Leri algılar ve bunları otomatik olarak korur. VM 'lerinizi özyinelemeli klasörlerde düzenlediğinizde MABS, özyinelemeli klasörlerde dağıtılan yeni VM 'Leri otomatik olarak algılar ve korur.
+- MABS, yerel bir disk, ağ dosya sistemi (NFS) veya küme depolama alanı üzerinde depolanan VM 'Leri korur.
+- MABS yük dengeleme için geçirilen VM 'Leri korur: VM 'Ler yük dengeleme için geçirildiğinde, MABS VM korumasını otomatik olarak algılar ve devam ettirir.
+- MABS, gerekli dosyaların daha hızlı kurtarılmasına yardımcı olan tüm VM 'leri kurtarmadan dosyaları/klasörleri bir Windows VM 'den kurtarabilir.
+
+## <a name="prerequisites-and-limitations"></a>Önkoşullar ve sınırlamalar
+
+Bir VMware sanal makinesini yedeklemeye başlamadan önce, aşağıdaki sınırlamalar ve Önkoşullar listesini gözden geçirin.
+
+- Bir vCenter sunucusunu (Windows üzerinde çalışan) sunucunun FQDN 'sini kullanarak bir Windows Server olarak korumak için MABS kullandıysanız, bu vCenter Server 'ı sunucunun FQDN 'sini kullanarak bir VMware sunucusu olarak koruyamazsınız.
+  - VCenter Server statik IP adresini geçici bir çözüm olarak kullanabilirsiniz.
+  - FQDN 'yi kullanmak istiyorsanız, Windows Server olarak korumayı durdurmanız, koruma aracısını kaldırmanız ve ardından FQDN kullanarak VMware sunucusu olarak eklemeniz gerekir.
+- Ortamınızdaki ESXi sunucularını yönetmek için vCenter kullanıyorsanız, MABS koruma grubuna vCenter (ve ESXi değil) ekleyin.
+- İlk MABS yedeklemesinden önce Kullanıcı anlık görüntülerini yedekleyemiyorum. MABS ilk yedeklemeyi tamamladıktan sonra, Kullanıcı anlık görüntülerini yedekleyebilirsiniz.
+- MABS, VMware VM 'lerini doğrudan geçiş disklerine ve fiziksel ham cihaz eşlemeleriyle (pRDM) koruyamaz.
+- MABS, VMware vApps 'i algılayamaz veya koruyamıyor.
+- MABS, VMware VM 'lerini mevcut anlık görüntülerle koruyamaz.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -392,7 +417,7 @@ MABS 'nin önceki sürümlerinde, paralel yedeklemeler yalnızca koruma gruplar�
 
 VSphere 6,7 'yi yedeklemek için aşağıdakileri yapın:
 
-- DPM sunucusunda TLS 1,2 'yi etkinleştirme
+- MABS sunucusunda TLS 1,2 'yi etkinleştirme
 
 >[!NOTE]
 >VMWare 6,7 üzerinde, iletişim kuralı olarak etkinleştirilmiş TLS var.

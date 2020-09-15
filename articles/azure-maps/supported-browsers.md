@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: e6d4ea19e5547adb7bee25f4bdce295eb9a76d44
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 73d875e32f4fcf22551cf6b0946e49c2f826e523
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002940"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085034"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK destekleyen tarayıcılar
 
-Azure Haritalar Web SDK 'Sı, [Atlas. IsSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-)adlı bir yardımcı işlev sağlar. Bu işlev, bir Web tarayıcısının harita denetimini yüklemeyi ve işlemeyi desteklemek için gereken en düşük WebGL özellikleri kümesine sahip olup olmadığını algılar. İşlevin nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
+Azure Haritalar Web SDK 'Sı, [Atlas. IsSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#issupported-boolean-)adlı bir yardımcı işlev sağlar. Bu işlev, bir Web tarayıcısının harita denetimini yüklemeyi ve işlemeyi desteklemek için gereken en düşük WebGL özellikleri kümesine sahip olup olmadığını algılar. İşlevin nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
 
 ```JavaScript
 if (!atlas.isSupported()) {

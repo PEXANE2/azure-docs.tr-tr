@@ -7,12 +7,12 @@ author: sarahhubbard
 ms.author: sahubbar
 ms.date: 09/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 82a370bcda2d762abb36e6e43ab755c45348e4c5
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: ae8b830469a9b52ae68310dde2e65dcffdf4e3be
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019998"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060824"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda iş oluşturma ve çalıştırma
 
@@ -38,7 +38,7 @@ Aşağıdaki örnek, bir lojistik ağ geçidi cihazı grubu için ışık eşiğ
 
     İşi **işler** sayfasındaki kaydedilen işler listesine eklemek için **Kaydet ve çık ' ı** seçin. Daha sonra kaydedilen işler listesinden bir işe dönebilirsiniz.
 
-    **İnceleme** sayfasına gitmek için **İleri ' yi** seçin. * * Gözden geçir * * * * sayfasında iş yapılandırması ayrıntıları gösterilir. İşi göndermek için **Çalıştır** ' ı seçin.
+    **İnceleme** sayfasına gitmek için **İleri ' yi** seçin. **İnceleme** sayfasında iş yapılandırması ayrıntıları gösterilir. İşi göndermek için **Çalıştır** ' ı seçin.
 
     :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="İş Sihirbazı inceleme sayfasının ekran görüntüsü":::
 

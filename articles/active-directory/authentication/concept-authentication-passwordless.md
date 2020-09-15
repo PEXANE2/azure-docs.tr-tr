@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1148555706ff04c58733b66f4784da71849ce8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 144198a708b8e3cfcb5b3c6936d7fc51cadf4a13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226684"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084337"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
@@ -45,7 +45,7 @@ Aşağıdaki adımlarda, oturum açma işleminin Azure AD ile nasıl çalıştı
 ![Iş için Windows Hello ile Kullanıcı oturumu açma ile ilgili adımları özetleyen diyagram](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
 1. Kullanıcı, Biyometri veya PIN hareketini kullanarak Windows 'da oturum açar. Hareket, Iş için Windows Hello özel anahtarının kilidini açar ve Cloud *AP sağlayıcısı*olarak adlandırılan bulut kimlik doğrulaması güvenlik desteği sağlayıcısına gönderilir.
-1. Cloud AP sağlayıcısı, Azure AD 'den bir kerelik anahtar ister.
+1. Cloud AP sağlayıcısı, Azure AD 'den bir kerelik anahtar (yalnızca bir kez kullanılabilecek rastgele rastgele bir sayı) ister.
 1. Azure AD, 5 dakika boyunca geçerli bir nonce döndürür.
 1. Cloud AP sağlayıcısı, kullanıcının özel anahtarını kullanarak nonce 'yi imzalar ve imzalı nonce 'yi Azure AD 'ye döndürür.
 1. Azure AD, kullanıcının güvenli şekilde kaydedilmiş ortak anahtarını nonce imzasına karşı kullanarak imzalı nonce 'yi doğrular. İmza doğrulandıktan sonra, Azure AD döndürülen imzalı nonce 'yi doğrular. Nonce doğrulandığında, Azure AD, cihazın aktarım anahtarına şifrelenmiş ve bunu Cloud AP sağlayıcısına döndüren bir birincil yenileme belirteci (PRT) oluşturur.

@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 0edb50fd72622d3d7d628e0e02ef2c3737f8713a
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 0c4178513c5a6027b3261d6d7975d4ec7cc55c6a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500428"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085799"
 ---
 # <a name="monitoring-azure-storage"></a>Azure Storage 'ı izleme
 
@@ -76,7 +76,11 @@ Tüm başarısız anonim istekler günlüğe kaydedilmez. Günlüğe kaydedilen 
 
 ## <a name="configuration"></a>Yapılandırma
 
-Platform ölçümleri ve etkinlik günlüğü otomatik olarak toplanır, ancak kaynak günlüklerini toplamak veya Azure Izleyici dışında iletmek için bir tanılama ayarı oluşturmanız gerekir. Azure portal, Azure CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmak için, bkz. [Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md).
+Platform ölçümleri ve etkinlik günlüğü otomatik olarak toplanır, ancak kaynak günlüklerini toplamak veya Azure Izleyici dışında iletmek için bir tanılama ayarı oluşturmanız gerekir. 
+
+Azure portal, Azure CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmak için bkz. [Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md). 
+
+Bir tanılama ayarı oluşturan Azure Resource Manager şablonu görmek için bkz. [Azure depolama Için tanılama ayarı](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
 
 Bir tanılama ayarı oluşturduğunuzda bir blob, kuyruk, tablo veya dosya gibi günlükleri etkinleştirmek istediğiniz depolama türünü seçin. Data Lake Storage 2., depolama türü olarak görünmez. Bunun nedeni, Data Lake Storage 2. blob depolama için kullanılabilen bir özellik kümesidir. 
 
@@ -124,7 +128,7 @@ Azure depolama 'yı içeren tüm Azure Izleyici destek ölçümlerinin bir liste
 
 #### <a name="list-the-metric-definition"></a>Ölçüm tanımını listeleyin
 
-Depolama hesabınızın ölçüm tanımını veya blob, dosya, tablo veya kuyruk hizmeti gibi ayrı depolama hizmetini listeleyebilirsiniz. [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition?view=azps-3.3.0) cmdlet 'ini kullanın.
+Depolama hesabınızın ölçüm tanımını veya blob, dosya, tablo veya kuyruk hizmeti gibi ayrı depolama hizmetini listeleyebilirsiniz. [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) cmdlet 'ini kullanın.
 
 Bu örnekte, `<resource-ID>` yer tutucuyu tüm depolama hesabının kaynak kimliğiyle veya blob, dosya, tablo veya kuyruk hizmeti gibi tek bir depolama hizmetinin kaynak kimliği ile değiştirin. Bu kaynak kimliklerini, Azure portal depolama hesabınızın **Özellikler** sayfalarında bulabilirsiniz.
 
@@ -135,7 +139,7 @@ Bu örnekte, `<resource-ID>` yer tutucuyu tüm depolama hesabının kaynak kimli
 
 #### <a name="reading-metric-values"></a>Ölçüm değerlerini okuma
 
-Depolama hesabınızın hesap düzeyindeki ölçüm değerlerini veya blob, dosya, tablo veya kuyruk hizmeti gibi ayrı depolama hizmetini okuyabilirsiniz. [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric?view=azps-3.3.0) cmdlet 'ini kullanın.
+Depolama hesabınızın hesap düzeyindeki ölçüm değerlerini veya blob, dosya, tablo veya kuyruk hizmeti gibi ayrı depolama hizmetini okuyabilirsiniz. [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) cmdlet 'ini kullanın.
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -146,7 +150,7 @@ Depolama hesabınızın hesap düzeyindeki ölçüm değerlerini veya blob, dosy
 
 #### <a name="list-the-account-level-metric-definition"></a>Hesap düzeyi ölçüm tanımını listeleyin
 
-Depolama hesabınızın ölçüm tanımını veya blob, dosya, tablo veya kuyruk hizmeti gibi ayrı depolama hizmetini listeleyebilirsiniz. [Az Monitor ölçümleri List-Definitions](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list-definitions) komutunu kullanın.
+Depolama hesabınızın ölçüm tanımını veya blob, dosya, tablo veya kuyruk hizmeti gibi ayrı depolama hizmetini listeleyebilirsiniz. [Az Monitor ölçümleri List-Definitions](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) komutunu kullanın.
  
 Bu örnekte, `<resource-ID>` yer tutucuyu tüm depolama hesabının kaynak kimliğiyle veya blob, dosya, tablo veya kuyruk hizmeti gibi tek bir depolama hizmetinin kaynak kimliği ile değiştirin. Bu kaynak kimliklerini, Azure portal depolama hesabınızın **Özellikler** sayfalarında bulabilirsiniz.
 
@@ -156,7 +160,7 @@ Bu örnekte, `<resource-ID>` yer tutucuyu tüm depolama hesabının kaynak kimli
 
 #### <a name="read-account-level-metric-values"></a>Hesap düzeyindeki ölçüm değerlerini oku
 
-Depolama hesabınızın ölçüm değerlerini veya blob, dosya, tablo veya kuyruk hizmeti gibi ayrı depolama hizmetini okuyabilirsiniz. [Az Monitor ölçümleri List](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) komutunu kullanın.
+Depolama hesabınızın ölçüm değerlerini veya blob, dosya, tablo veya kuyruk hizmeti gibi ayrı depolama hizmetini okuyabilirsiniz. [Az Monitor ölçümleri List](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) komutunu kullanın.
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H

@@ -12,21 +12,21 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: b3c3bed20b5fd60b9323dada617fb1302efc41d2
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: acb4b601118b341d14bc5e7c549d22eef23b2cc2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006953"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085714"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Uygulamanızı yayımcısı doğrulandı olarak işaretleme
 
-Bir uygulama, yayımcı doğrulanmış olarak işaretlendiğinde, yayımcı Microsoft İş Ortağı Ağı (MPN) hesabını kullanarak kimliğini doğrulamıştır ve bu MPN hesabını uygulama kaydıyla ilişkilendirmiştir. Bu makalede [Yayımcı doğrulama (Önizleme)](publisher-verification-overview.md) sürecinin nasıl tamamlanacağı açıklanır.
+Bir uygulama, yayımcı doğrulanmış olarak işaretlendiğinde, yayımcı Microsoft İş Ortağı Ağı (MPN) hesabını kullanarak kimliğini doğrulamıştır ve bu MPN hesabını uygulama kaydıyla ilişkilendirmiştir. Bu makalede, [Yayımcı doğrulama](publisher-verification-overview.md) işleminin nasıl tamamlanacağı açıklanır.
 
 ## <a name="quickstart"></a>Hızlı Başlangıç
 Microsoft İş Ortağı Ağı (MPN) zaten kaydolduysanız ve [önkoşulları](publisher-verification-overview.md#requirements)karşıladıysanız, hemen kullanmaya başlayabilirsiniz: 
 
-1. [Uygulama kayıt portalı](https://aka.ms/PublisherVerificationPreview)' na gidin.
+1. [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) kullanarak [uygulama kayıt portalı](https://aka.ms/PublisherVerificationPreview) 'nda oturum açma
 
 1. Bir uygulama seçin ve **marka**' e tıklayın. 
 
@@ -40,9 +40,9 @@ Belirli avantajlar, gereksinimler ve sık sorulan sorular hakkında daha fazla a
 ## <a name="mark-your-app-as-publisher-verified"></a>Uygulamanızı yayımcısı doğrulandı olarak işaretleme
 [Önkoşulları](publisher-verification-overview.md#requirements)karşıladığınızdan emin olun, sonra uygulamanızı yayımcı doğrulanmış olarak işaretlemek için aşağıdaki adımları izleyin.  
 
-1. Bir kuruluş (Azure AD) hesabıyla oturum açtığınızdan emin olun ve bu durumda, yayımcı doğrulanmış olarak işaretlemek istediğiniz uygulamalarda ve Iş Ortağı Merkezi 'nde MPN hesabında değişiklik yapma yetkisi vardır. 
+1. Yayımcı doğrulanmış olarak işaretlemek istediğiniz uygulamalarda ve Iş Ortağı Merkezi 'nde MPN hesabında değişiklik yapma yetkisi olan bir kuruluş (Azure AD) hesabına [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) 'ı kullanarak oturum açtığınızdan emin olun.
 
-    - Azure AD 'de bu kullanıcı uygulamanın sahibi olmalıdır veya şu rollerden birine sahip olmalıdır: uygulama Yöneticisi, bulut uygulaması Yöneticisi, genel yönetici. 
+    - Azure AD 'de bu kullanıcı şu rollerden birine üye olmalıdır: uygulama Yöneticisi, bulut uygulaması Yöneticisi, genel yönetici. 
 
     - Iş Ortağı Merkezi 'nde bu kullanıcının şu rollere sahip olması gerekir: MPN Yöneticisi, hesaplar Yöneticisi veya genel yönetici (Bu, Azure AD 'de ana kopyalı bir paylaşılan roldür). 
 
@@ -50,11 +50,9 @@ Belirli avantajlar, gereksinimler ve sık sorulan sorular hakkında daha fazla a
 
 1. Yayımcı doğrulanmış olarak işaretlemek istediğiniz uygulamaya tıklayın ve marka dikey penceresini açın. 
 
-1. Uygulamanın yayımcı etki alanının uygun şekilde ayarlandığından emin olun. Bu etki alanı şu olmalıdır: 
+1. Uygulamanın [Yayımcı etki alanının](howto-configure-publisher-domain.md) ayarlandığından emin olun. 
 
-    - DNS tarafından doğrulanan özel etki alanı olarak Azure AD kiracısına eklenmelidir,  
-
-    - MPN hesabınız için doğrulama işlemi sırasında kullanılan e-posta adresinin etki alanını eşleştirin. 
+1. Kiracıdaki yayımcı etki alanının veya DNS tarafından doğrulanan [özel etki alanının](../fundamentals/add-custom-domain.md) , MPN hesabınız için doğrulama işlemi sırasında kullanılan e-posta adresi etki alanıyla eşleştiğinden emin olun.
 
 1. Bir yayımcıyı sayfanın en altına yakın bir **şekilde doğrulamak için MPN kimliği Ekle** ' ye tıklayın. 
 
@@ -72,7 +70,7 @@ Belirli avantajlar, gereksinimler ve sık sorulan sorular hakkında daha fazla a
 
 1. Uygulamanızı onaylaması istenmeden kullananlar, bu işlemi başarılı bir şekilde tamamladıktan hemen sonra, bu işlem, sistem genelinde çoğaltılmasının biraz zaman alabilir. 
 
-1. Uygulamanızda oturum açarak ve doğrulanmış rozet 'nin onay ekranında görünür olmasını sağlamak için bu işlevselliği test edin. Uygulamaya izin vermiş olan bir kullanıcı olarak oturum açtıysanız, bir onay istemi zorlamak için *Prompt = onay* sorgu parametresini kullanabilirsiniz. 
+1. Uygulamanızda oturum açarak ve doğrulanmış rozet 'nin onay ekranında görünür olmasını sağlamak için bu işlevselliği test edin. Uygulamaya izin vermiş olan bir kullanıcı olarak oturum açtıysanız, bir onay istemi zorlamak için *Prompt = onay* sorgu parametresini kullanabilirsiniz. Bu parametre yalnızca test için kullanılmalıdır ve uygulamanızın isteklerine asla sabit olarak kodlanmamalıdır.
 
 1. Bu işlemi, rozetinin görüntülenmesini istediğiniz diğer uygulamalar için gerektiği şekilde tekrarlayın. Bunu toplu olarak daha hızlı yapmak için Microsoft Graph kullanabilirsiniz ve PowerShell cmdlet 'leri yakında kullanılabilir olacaktır. Daha fazla bilgi için bkz. [MICROSOFT API Graph çağrıları yapma](troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls) . 
 

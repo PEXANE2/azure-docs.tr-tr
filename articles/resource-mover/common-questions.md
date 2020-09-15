@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 09/07/2020
+ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: 520c2d4fd258bfab5a5a1e0abf890d58bb98fbdc
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83191fd29e0cda4bc398f6a46a0d2ebf9631665
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89653185"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068056"
 ---
 # <a name="common-questions"></a>Sık sorulan sorular
 
@@ -24,7 +24,13 @@ Bu makalede, [Azure Kaynak taşıyıcısı](overview.md)hakkında sık sorulan s
 
 Kaynak taşıyıcısı Şu anda genel önizleme aşamasındadır. Üretim iş yükleri desteklenir.
 
-## <a name="region-move"></a>Bölge taşıma
+
+
+## <a name="moving-across-regions"></a>Bölgeler arasında taşıma
+
+### <a name="can-i-move-resources-across-any-regions"></a>Kaynakları herhangi bir bölgede taşıyabilir miyim?
+
+Şu anda, [söz konusu bölgede bulunan kaynak türlerine](https://azure.microsoft.com/global-infrastructure/services/)bağlı olarak, kaynakları herhangi bir kaynak ortak bölgesinden herhangi bir hedef ortak bölgeye taşıyabilirsiniz. Azure Kamu bölgelerinde kaynak taşıma Şu anda desteklenmiyor.
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>Kaynak taşıyıcısı kullanarak bölgeler arasında hangi kaynakları taşıyabilirim?
 
@@ -34,13 +40,19 @@ Kaynak taşıyıcısı kullanarak şu anda bölgeler arasında şu kaynakları t
 - NIC’ler
 - Kullanılabilirlik kümeleri 
 - Azure sanal ağları 
-- Genel IP adresleri ağ güvenlik grupları (NSG 'ler)
+- Genel IP adresleri
+- Ağ güvenlik grupları (NSG)
 - İç ve genel yük dengeleyiciler 
 - Azure SQL veritabanları ve elastik havuzlar
 
+
+### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Kaynakları bölgeler arasında taşırken kaynakları abonelikler arasında taşıyabilir miyim?
+
+Kaynakları hedef bölgeye taşıdıktan sonra aboneliği değiştirebilirsiniz. Kaynakları farklı bir aboneliğe taşıma hakkında [daha fazla bilgi edinin](../azure-resource-manager/management/move-resource-group-and-subscription.md) . 
+
 ### <a name="where-is-the-metadata-about-a-region-move-stored"></a>Bölge taşıma hakkındaki meta veriler nerede depolanır?
 
-Bir Microsoft aboneliğinde [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) veritabanında ve [Azure Blob depolamada](../storage/common/storage-service-encryption.md)depolanır.
+Bir Microsoft aboneliğinde [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) veritabanında ve [Azure Blob depolamada](../storage/common/storage-service-encryption.md)depolanır. Şu anda meta veriler Doğu ABD 2 ve Kuzey Avrupa depolanıyor. Bu kapsamı diğer bölgelere genişleteceğiz. Bu, kaynakları herhangi bir genel bölgede taşımaya kısıtlama vermez.
 
 ### <a name="is-the-collected-metadata-encrypted"></a>Toplanan meta veriler şifrelendi mı?
 

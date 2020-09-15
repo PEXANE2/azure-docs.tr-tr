@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531268"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069807"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Key Vault için Azure Izleyici ile Anahtar Kasası hizmetinizi izleme (Önizleme)
 Key Vault için Azure Izleyici (Önizleme), Key Vault isteklerinizin, performanlarınızın, hatalarından ve gecikmelerinden oluşan Birleşik bir görünüm sunarak anahtar kasalarınızın kapsamlı bir şekilde izlenmesini sağlar.
@@ -76,16 +76,6 @@ Sayfanın üst kısmında bulunan **hataların** yanı sıra arızalar sekmesi a
 Çalışma kitabı başarıları (2xx durum kodları), kimlik doğrulama hatalarını (401/403 durum kodları), daraltma (429 durum kodları) ve diğer hataları (4xx durum kodları) görüntüler.
 
 Durum kodlarının her birinin neyi temsil ettiğini daha iyi anlamak için, [Azure Key Vault durum ve yanıt kodlarıyla](../../key-vault/general/authentication-requests-and-responses.md)ilgili belgelerde okumanız önerilir.
-
-## <a name="operations--latency-workbook"></a>İşlemler & gecikme çalışma kitabı
-
-Sayfanın üst kısmında **işlemler & gecikme süresi** seçin ve **Işlemler & gecikme süresi** sekmesi açılır. Bu sekme, izleme için anahtar kasalarınızı eklemenizi sağlar. Daha ayrıntılı adımlar için, [izleme için anahtar kasalarınızı yapılandırma](#configuring-your-key-vaults-for-monitoring) bölümüne bakın.
-
-Günlüğe kaydetme için anahtar kasalarınızın kaç tane etkin olduğunu görebilirsiniz. En az bir kasa doğru şekilde yapılandırıldıysa, anahtar kasalarınızın her biri için işlemleri ve durum kodlarını görüntüleyen tabloları görebileceksiniz. Tek işlemle ilgili ek bilgi almak için bir satırın Ayrıntılar bölümüne tıklayabilirsiniz.
-
-![İşlem ve gecikme şemaları ekran görüntüsü](./media/key-vaults-insights-overview/logs.png)
-
-Bu bölüm için herhangi bir veri görmüyorsanız, Azure Key Vault günlüklerin nasıl etkinleştirileceği hakkında üst bölüme başvurun veya aşağıdaki sorun giderme bölümüne bakın.
 
 ## <a name="view-from-a-key-vault-resource"></a>Key Vault kaynağından görüntüleme
 
@@ -191,16 +181,6 @@ Değişiklik yapmak için, çalışma kitabını değiştirmek üzere "düzenlem
 ### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Çalışma kitabının herhangi bir bölümünün sabitlendiği zaman aralığı nedir?
 
 Zaman aralığı, pano ayarlarına bağlı olarak değişir.
-
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>Işlemler & gecikme bölümleri bölümünde Key Vault için hiçbir veri görmüyorum
-
-Günlük tabanlı verilerinizi görüntülemek için, izlemek istediğiniz her Anahtar Kasası için günlükleri etkinleştirmeniz gerekir. Bu, her Anahtar Kasası için Tanılama ayarları altında yapılabilir. Verilerinizi belirlenen bir Log Analytics çalışma alanına göndermeniz gerekir.
-
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Key Vault için günlükleri zaten etkinleştirdim, neden hala verileri "gecikme süresi altında göremem gerekir &
-
-Şu anda, tanılama günlükleri geriye dönük olarak çalışmaz, bu nedenle yalnızca anahtar kasalarınıza yapılan eylemler yapıldıktan sonra, veriler görünmeye başlar. Bu nedenle, anahtar kasanızın ne kadar etkin olduğuna bağlı olarak saatlerce bir güne kadar zaman alabilir.
-
-Ayrıca, yüksek sayıda anahtar kasası ve abonelik seçtiyseniz, sorgu sınırlamaları nedeniyle verilerinizi görüntüleyemeyebilirsiniz. Verilerinizi görüntülemek için Seçili aboneliklerin veya anahtar kasalarının sayısını azaltmanız gerekebilir. 
 
 ### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>Diğer verileri görmek veya kendi görselleştirmelerimi yapmak istersem ne yapmalıyım? Key Vault öngörülerini nasıl değiştirebilir?
 

@@ -5,12 +5,12 @@ ms.date: 06/23/2020
 ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
-ms.openlocfilehash: 3a6535a13ab00c4e22ac4cd8c2de5a5bbb02d0a8
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 080b089efa276779420f6d9bc8e76272f1e65788
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189802"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069705"
 ---
 # <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Konuya bir Service Bus konu ve abonelik oluşturmak için Azure CLı kullanma
 Bu hızlı başlangıçta, bir Service Bus konu oluşturmak ve ardından bu konuya abonelikler oluşturmak için Azure CLı 'yi kullanırsınız. 
@@ -24,7 +24,7 @@ Her iletinin tek bir tüketici tarafından işlendiği Service Bus kuyrukların�
 
 Service Bus konuları ve abonelikleri, çok sayıda kullanıcı ve uygulama genelinde çok sayıda iletiyi işlemek için ölçeklendirmenize olanak tanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][free account] oluşturabilirsiniz.
 
 Bu hızlı başlangıçta, Azure portal oturum açtıktan sonra başlatabilmeniz Azure Cloud Shell kullanırsınız. Azure Cloud Shell hakkındaki ayrıntılar için bkz. [Azure Cloud Shell Genel Bakış](../cloud-shell/overview.md). Ayrıca, makinenizde Azure PowerShell [yükleyip](/cli/azure/install-azure-cli) kullanabilirsiniz. 
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, Azure portal oturum açtıktan sonra başlatabilmeniz
 ## <a name="create-a-service-bus-topic-and-subscriptions"></a>Service Bus konu başlığı ve abonelikleri oluşturma
 Her [konu başlığı aboneliği](service-bus-messaging-overview.md#topics) her iletinin bir kopyasını alabilir. Konular, protokol ve anlam açılarından Service Bus kuyrukları ile tam olarak uyumludur. Service Bus konu başlıkları, filtreleme koşullarını ve ileti özelliklerini belirleyen veya değiştiren isteğe bağlı eylemleri olan geniş bir seçim kuralı yelpazesini destekler. Bir kural eşleştiğinde bir ileti oluşturulur. Kurallar, filtreler ve eylemler hakkında daha fazla bilgi edinmek için bu [bağlantıyı](topic-filters.md) izleyin.
 
-1. [Azure portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Aşağıdaki görüntüde gösterilen simgeyi seçerek Azure Cloud Shell başlatın. Cloud Shell **PowerShell** modundaysa **Bash** moduna geçin. 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Cloud Shell Başlat":::
@@ -80,7 +80,7 @@ Her [konu başlığı aboneliği](service-bus-messaging-overview.md#topics) her 
 9. Müşteri özelliklerini kullanarak filtre ile üçüncü abonelikte filtre oluşturun (,,, `StoreId` `Store1` `Store2` `Store3` veya `Store4` ).
 
     ```azurecli-interactive
-    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3', 'Store4')"     
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId NOT IN ('Store1','Store2','Store3', 'Store4')"     
     ```
 10. Ad alanı için birincil bağlantı dizesini almak için aşağıdaki komutu çalıştırın. Bu bağlantı dizesini kuyruğa bağlanmak ve ileti göndermek ve almak için kullanırsınız. 
 

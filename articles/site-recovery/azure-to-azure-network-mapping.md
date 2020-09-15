@@ -1,20 +1,20 @@
 ---
 title: Azure Site Recovery iki bölge arasında sanal ağları eşleme
 description: Azure Site Recovery ile Azure VM olağanüstü durum kurtarma için iki Azure bölgesi arasında sanal ağları eşleme hakkında bilgi edinin.
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: mayg
-ms.openlocfilehash: 11cc71a05fb95453553223dcb34839e8a5fc6a3a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: b5ae68dea228e834b2449152bd3ef357f2a74e83
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130444"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069501"
 ---
-# <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNET 'ler için Ağ eşlemesini ve IP adresini ayarlama
+# <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Sanal ağlar için ağ eşlemesini ve IP adresini ayarlama
 
 Bu makalede, farklı Azure bölgelerinde bulunan iki Azure sanal ağı örneğinin (VNet 'ler) nasıl eşleneceğini ve ağlar arasında IP adreslemenin nasıl ayarlanacağı açıklanır. Ağ eşleme, çoğaltmayı etkinleştirme sırasında kaynak ağa göre hedef ağ seçimi için varsayılan bir davranış sağlar.
 

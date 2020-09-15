@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 09/14/2020
 ms.author: abnarain
-ms.openlocfilehash: a6a0a62bd857dff575e17f47f1e2394375b08c45
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033668"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069484"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -46,47 +46,47 @@ Bu makalede Azure Data Factory içindeki şirket içinde barındırılan tümle�
 > Günlük görüntüleme ve karşıya yükleme istekleri, tüm çevrimiçi şirket içinde barındırılan IR örneklerinde yürütülür. Lütfen tüm şirket içinde barındırılan IR örneklerinin eksik Günlükler olması durumunda çevrimiçi olduğundan emin olun. 
 
 
-## <a name="self-hosted-ir-general-failure-or-error"></a>Şirket içinde barındırılan IR genel hatası veya hatası
+## <a name="self-hosted-ir-general-failure-or-error"></a>Şirket içinde barındırılan IR genel başarısızlığı veya hatası
 
 ### <a name="tlsssl-certificate-issue"></a>TLS/SSL sertifikası sorunu
 
 #### <a name="symptoms"></a>Belirtiler
 
-**Şirket içinde barındırılan IR Configuration Manager**TLS/SSL sertifikası (Gelişmiş)  ->  ,**intranet 'ten uzaktan erişim**, TLS/SSL sertifikası ' nı seçtikten sonra, aşağıdaki hata görüntülenir:
+TLS/SSL sertifikası seçildikten sonra **Şirket içinde barındırılan IR Configuration Manager** -> **İntranete uzaktan erişim**'den TLS/SSL sertifikasını (gelişmiş) etkinleştirmeye çalışırken aşağıdaki hata gösteriliyor:
 
 `Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
 
-Yukarıdaki durumda, Kullanıcı son öğe olarak "microsoft.com" ile sertifikayı kullanıyor.
+Yukarıdaki durumda kullanıcı son öğe olarak "microsoft.com" bulunan sertifikayı kullanıyor.
 
 #### <a name="cause"></a>Nedeni
 
-Bu, WCF 'de bilinen bir sorundur: WCF TLS/SSL doğrulaması yalnızca SAN 'da son DNSName 'yi denetler. 
+Bu WCF'de bilinen bir sorundur: WCF TLS/SSL doğrulaması SAN içinde yalnızca son DNSName öğesini denetler. 
 
 #### <a name="resolution"></a>Çözüm
 
-Joker karakter sertifikası Azure Data Factory v2 şirket içinde barındırılan IR 'de desteklenir. Bu sorun normalde SSL sertifikası doğru olmadığı için oluşur. SAN 'daki son DNSName geçerli olmalıdır. Doğrulamak için aşağıdaki adımları izleyin. 
+Joker sertifika Azure Data Factory v2 Şirket İçinde Barındırılan IR'de desteklenir. Bu sorun normalde SSL sertifikası doğru olmadığı için oluşur. SAN'deki son DNSName doğru olmalıdır. Bunu doğrulamak için aşağıdaki adımları izleyin. 
 1.  Yönetim Konsolu 'Nu açın, sertifika ayrıntılarından hem *Konu* hem de *konu alternatif adını* iki kez kontrol edin. Yukarıdaki durumda, örneğin "DNS Name = microsoft.com.com" olan *konu alternatif adındaki*son öğe geçerli değildir.
 2.  Yanlış DNS adını kaldırmak için sertifika sorunu şirketine başvurun.
 
-### <a name="concurrent-jobs-limit-issue"></a>Eşzamanlı işler sınırı sorunu
+### <a name="concurrent-jobs-limit-issue"></a>Eşzamanlı işleri sınırlama sorunu
 
 #### <a name="symptoms"></a>Belirtiler
 
-Azure Data Factory kullanıcı arabiriminden eşzamanlı işleri sınırla ' yı arttırmaya çalışırken, her zaman *güncelleştirme* olarak askıda kalır.
-Eşzamanlı işlerin maksimum değeri 24 olarak ayarlanmıştır ve işlerin daha hızlı çalışabilmesi için sayıyı artırmak istiyorsunuz. Girebileceğiniz en küçük değer 3 ve girebileceğiniz en büyük değer 32 ' dir. Bu değeri 24 ' ten 32 ' e artırmış ve *güncelleştirme* düğmesi ' nde, aşağıda gördüğünüz şekilde *güncelleştirmede* yer aldığı Kullanıcı arabiriminde anlamış olursunuz. Yenilemeden sonra müşteri, değeri yine 24 olarak görmemiştir ve 32 'e hiçbir şekilde güncelleştirilmedi.
+Azure Data Factory kullanıcı arabiriminde eşzamanlı işlerin sınırını artırmayı denediğinizde sonsuza kadar *güncelleştiriliyormuş* gibi kilitleniyor.
+Eşzamanlı işler için üst sınır 24 olarak ayarlanmış ve işlerin daha hızlı çalıştırılması için bu sayıyı artırmak istiyorsunuz. Girebileceğiniz en düşük değer 3 ve en yüksek değer de 32'dir. Bu değeri 24 ' ten 32 ' e artırmış ve *güncelleştirme* düğmesi ' nde, aşağıda gördüğünüz şekilde *güncelleştirmede* yer aldığı Kullanıcı arabiriminde anlamış olursunuz. Yenileme sonrasında müşteri değerin hala 24 olduğunu, 32'ye hiç güncelleştirilmediğini görüyor.
 
 ![Durum güncelleştiriliyor](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
 
 #### <a name="cause"></a>Nedeni
 
-Değer, bilgisayar logicCore ve belleğe bağlı olduğundan, bu ayar için bir sınırlama vardır; bunu yalnızca 24 gibi daha küçük bir değere ayarlayabilir ve sonuca bakabilirsiniz.
+Bu değer bilgisayarın Mantıksal Çekirdek ve Bellek değerlerine bağlı olduğundan ayarın bir sınırlaması vardır; bunu 24 gibi daha düşük bir değere ayarlayıp sonuca bakabilirsiniz.
 
 > [!TIP] 
 > - Mantıksal çekirdek sayısının ne olduğu ve makinenizin mantıksal çekirdek sayısını bulma hakkında daha fazla bilgi için [Bu makaleye](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)bakın.
 > - Math. log ' u hesaplama hakkında daha fazla bilgi için [Bu makaleye](https://www.rapidtables.com/calc/math/Log_Calculator.html)bakın.
 
 
-### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>Şirket içinde barındırılan IR HA SSL sertifikası sorunu
+### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>Şirket içinde barındırılan IR HA SSL Sertifikası sorunu
 
 #### <a name="symptoms"></a>Belirtiler
 
@@ -96,31 +96,31 @@ Değer, bilgisayar logicCore ve belleğe bağlı olduğundan, bu ayar için bir 
 
 #### <a name="cause"></a>Nedeni
 
-SSL/TLS anlaşması ile ilgili servis taleplerini işleytiğimiz zaman, sertifika zinciri doğrulamayla ilgili bazı sorunlarla karşılaşabilirler. 
+SSL/TLS el sıkışmasıyla ilgili olayları işlerken, sertifika zinciri doğrulamasıyla ilgili bazı sorunlarla karşılaşabiliyoruz. 
 
 #### <a name="resolution"></a>Çözüm
 
 - X. 509.440 sertifika zinciri derleme hatası sorunlarını gidermek için hızlı ve sezgisel bir yol aşağıda verilmiştir.
  
-    1. Doğrulanması gereken sertifikayı dışarı aktarın. Bilgisayar sertifikasını Yönet ' e gidin ve denetlemek istediğiniz sertifikayı bulun ve **Tüm görevler**  ->  **dışarı aktar**' a sağ tıklayın.
+    1. Doğrulanması gereken sertifikayı dışarı aktarın. Bilgisayar sertifikasını yönetme bölümüne gidin, denetlemek istediğiniz sertifikayı bulun ve **Tüm görevler** -> **Dışarı aktar**'a sağ tıklayın.
     
         ![Görevleri dışarı aktar](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
     2. İçe aktarılmış sertifikayı istemci makinesine kopyalayın. 
-    3. İstemci tarafında CMD ' de aşağıdaki komutu çalıştırın. Aşağıdaki *\<certificate path>* ve *\<output txt file path>* yer tutucuları ilgili yollarla değiştirdiğinizden emin olun.
+    3. İstemci tarafında, CMD'de aşağıdaki komutu çalıştırın. Aşağıdaki *\<certificate path>* ve *\<output txt file path>* yer tutucuları ilgili yollarla değiştirdiğinizden emin olun.
     
         ```
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
         ```
 
-        Örneğin:
+        Örnek:
 
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
-    4. Çıkış txt dosyasında herhangi bir hata olup olmadığını denetleyin. Hata özetini txt dosyasının sonunda bulabilirsiniz.
+    4. Çıkış txt dosyasında herhangi bir hata olup olmadığını denetleyin. Bu txt dosyasının sonunda hata özetini bulabilirsiniz.
 
-        Örneğin: 
+        Örnek: 
 
         ![Hata Özeti](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
 
@@ -138,21 +138,21 @@ SSL/TLS anlaşması ile ilgili servis taleplerini işleytiğimiz zaman, sertifik
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. Sonra **URL alma aracı** açılır. **Al** DÜĞMESINE tıklayarak AIA, CDP ve OCSP 'den sertifikaları doğrulayabilirsiniz.
+    1. Ardından **URL Alma aracı** açılır. **Al** düğmesine tıklayarak AIA, CDP ve OCSP'den sertifikaları doğrulayabilirsiniz.
 
         ![Alma düğmesi](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
-        AIA sertifikası "doğrulandı" ise ve CDP veya OCSP sertifikası "doğrulandıktan" ise sertifika zinciri başarıyla oluşturulabilir.
+        AIA'dan sertifika "Doğrulandı" ve CDP veya OCSP'den sertifika "Doğrulandı" durumundaysa sertifika zinciri başarıyla oluşturulabilir.
 
-        AIA, CDP alırken hata görürseniz, istemci makinenin hedef URL 'ye bağlanmasına hazırlığını sağlamak için ağ ekibiyle birlikte çalışın. Http yolu veya LDAP yolu doğrulanamazsa bu yeterli olur.
+        AIA ve CDP'yi alırken hata görüyorsanız ağ ekibiyle birlikte çalışarak istemci makinesinin hedef URL'ye bağlanmaya hazır olmasını sağlayın. Http yolunun veya Idap yolunun doğrulanabilir olması yeterli olacaktır.
 
-### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>Şirket içinde barındırılan IR, dosya veya derlemeyi yükleyemedi
+### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>Şirket içinde barındırılan IR dosyayı veya derlemeyi yükleyemedi
 
 #### <a name="symptoms"></a>Belirtiler
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Örneğin: 
+Örnek: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -165,7 +165,7 @@ SSL/TLS anlaşması ile ilgili servis taleplerini işleytiğimiz zaman, sertifik
 > [!TIP] 
 > Aşağıdaki ekran görüntüsünde gösterilen şekilde filtre ayarlayabilirsiniz.
 > Bu, dll **System. ValueTuple** 'nin GAC ile ilgili klasörde veya *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway*veya *c:\Program Files\Microsoft Integration Runtime\4.0\Shared* klasöründe yer aldığı konusunda bize söyler.
-> Temel olarak, dll 'yi önce *GAC* klasöründen, sonra da *paylaşılan* ve son olarak *ağ geçidi* klasöründen yükler. Bu nedenle, dll 'yi yararlı olabilecek herhangi bir yola koyabilirsiniz.
+> Temelde dll'yi önce *GAC* klasöründen, ardından *Shared* ve son olarak da *Gateway* klasöründen yükler. Bu nedenle dll'yi yararlı olabilecek herhangi bir yola koyabilirsiniz.
 
 ![Filtreleri ayarlama](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
@@ -173,7 +173,7 @@ SSL/TLS anlaşması ile ilgili servis taleplerini işleytiğimiz zaman, sertifik
 
 **System.ValueTuple.dll** *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan* klasöründe bulunduğunu görebilirsiniz. Sorunu çözmek **System.ValueTuple.dll** içinSystem.ValueTuple.dll*C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* klasörüne kopyalayın.
 
-Aynı yöntemi diğer dosya veya bütünleştirilmiş kod eksik sorunlarını çözmek için de kullanabilirsiniz.
+Diğer eksik dosya veya derleme sorunlarını çözmek için de aynı yöntemi kullanabilirsiniz.
 
 #### <a name="more-information"></a>Daha Fazla Bilgi
 
@@ -186,73 +186,73 @@ Aşağıdaki hatadan, derleme sistemini açık bir şekilde görebilirsiniz *. V
 GAC hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/dotnet/framework/app-domains/gac)bakın.
 
 
-### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Şirket içinde barındırılan IR anahtarını denetleme eksik
+### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Şirket içinde barındırılan IR eksik anahtarını izleme
 
 #### <a name="symptoms"></a>Belirtiler
 
-Şirket içinde barındırılan tümleştirme çalışma zamanı aniden anahtar olmadan çevrimdışı duruma geçer, aşağıdaki hata iletisi olay günlüğünde gösterilir: `Authentication Key is not assigned yet`
+Şirket içinde barındırılan tümleştirme çalışma zamanı anahtar olmadan aniden çevrimdışı duruma geliyor, Olay Günlüğünde şu hata iletisi gösteriliyor: `Authentication Key is not assigned yet`
 
 ![Kimlik doğrulama anahtarı eksik](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
 #### <a name="cause"></a>Nedeni
 
-- Şirket içinde barındırılan IR düğümü veya portalda otomatik olarak barındırılan bir IR silinir.
-- Temiz bir kaldırma işlemi yapılır.
+- Portalda Şirket içinde barındırılan IR düğümü veya mantıksal Şirket içinde barındırılan IR silinmiş.
+- Temiz bir kaldırma işlemi yapılmış.
 
 #### <a name="resolution"></a>Çözüm
 
-Yukarıdaki nedenlerin hiçbiri geçerli değilse, şu klasöre gidebilirsiniz: *%ProgramData%\microsoft\data Transfer\DataManagementGateway*ve **yapılandırma** adlı dosyanın silinip silinmediğini kontrol edebilirsiniz. Silinirse, dosyayı kimin sildiğini denetlemek için [buradaki](https://www.netwrix.com/how_to_detect_who_deleted_file.html) yönergeleri izleyin.
+Yukarıdaki nedenlerin hiçbiri geçerli değilse, şu klasöre gidebilirsiniz: *%ProgramData%\microsoft\data Transfer\DataManagementGateway*ve **yapılandırma** adlı dosyanın silinip silinmediğini kontrol edebilirsiniz. Silinmişse, [buradaki](https://www.netwrix.com/how_to_detect_who_deleted_file.html) yönergeleri izleyerek dosyayı kimin sildiğini denetleyin.
 
 ![Yapılandırma dosyasını denetle](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
 
-### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>İki şirket içi veri deposunu köprülemek için kendi kendine barındırılan IR kullanılamaz
+### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>Şirket içindeki iki veri deposu arasında köprü oluşturmak için Şirket içinde barındırılan IR kullanılamıyor
 
 #### <a name="symptoms"></a>Belirtiler
 
-Hem kaynak hem de hedef veri depoları için şirket içinde barındırılan IRS oluşturduktan sonra, bir kopyayı tamamlaması için iki IRS 'yi birbirine bağlamak istersiniz. Veri depoları farklı VNET 'lerde yapılandırılmışsa veya ağ geçidi mekanizmasını anlamadıklarında, şunun gibi hatalarla karşılaşmanız gerekir: *kaynak sürücüsü hedef IR 'de bulunamıyor*; *hedef IR tarafından kaynağa erişilemiyor*.
+Hem kaynak hem de hedef veri deposunda Şirket içinde barındırılan IR'ler oluşturulduktan sonra bir kopyalamayı bitirmek için iki IR'yi birbirine bağlamak istiyorsunuz. Veri depoları farklı VNET 'lerde yapılandırılmışsa veya ağ geçidi mekanizmasını anlamadıklarında, şunun gibi hatalarla karşılaşmanız gerekir: *kaynak sürücüsü hedef IR 'de bulunamıyor*; *hedef IR tarafından kaynağa erişilemiyor*.
  
 #### <a name="cause"></a>Nedeni
 
-Şirket içinde barındırılan IR, her bir veri deposu için yüklenmesi gereken bir istemci aracısına değil, kopyalama etkinliğinin merkezi bir düğümü olarak tasarlanmıştır.
+Şirket içinde barındırılan IR, her veri deposu için yüklenmesi gereken bir istemci aracısı olarak değil kopyalama etkinliğinin merkezi düğümü olarak belirlenmiş.
  
-Yukarıdaki durumda, her bir veri deposu için bağlı hizmetin aynı IR ile oluşturulması gerekir ve IR, ağ üzerinden her iki veri deposuna de erişebilmelidir. IR, kaynak veri deposu, hedef veri deposu veya üçüncü bir makine üzerinde her ne olursa olsun, farklı IRS ile iki bağlı hizmet oluşturulmuşsa, ancak aynı kopyalama etkinliğinde kullanılırsa, hedef IR kullanılır ve her iki veri deposunun sürücülerinin hedef IR makinesine yüklenmesi gerekir.
+Yukarıdaki durumda her veri deposu için bağlı hizmet aynı IR ile oluşturulmalı ve IR ağ üzerinden her iki veri deposuna da erişebilmelidir. IR'nin kaynak veri deposu, hedef veri deposu için veya üçüncü bir makinede yüklenmiş olması fark etmez; iki bağlı hizmet farklı IR'lerle oluşturulduysa ama aynı kopyalama etkinliğinde kullanılıyorsa, hedef IR kullanılır ve hedef IR makinesine her iki veri deposu için de sürücülerin yüklenmesi gerekir.
 
 #### <a name="resolution"></a>Çözüm
 
-Hedef IR üzerinde hem kaynak hem de hedef için sürücüleri yükler ve kaynak veri deposuna erişebilecekleri emin olun.
+Hedef IR'de hem kaynak hem de hedef sürücülerini yükleyin ve bunun kaynak veri deposuna erişebildiğinden emin olun.
  
-Trafik iki veri deposu arasında ağdan geçemezse (örneğin, iki VNET 'lerde yapılandırılmışsa), bu kopyayı, IR yüklü olsa bile tek bir etkinlikte bitiremeyebilirsiniz. Bu durumda, her biri bir VENT 'te iki IRS ile iki adet kopyalama etkinliği oluşturabilirsiniz: 1 IR; veri deposu 1 ' den Azure Blob depolama alanına kopyalamak için başka bir Azure Blob depolama 'dan veri deposu 2 ' ye kopyalama yapabilirsiniz. Bu, iki bağlantısı kesik veri deposunu bağlayan bir köprü oluşturmak için IR kullanma gereksiniminin benzetimini yapar.
+İki veri deposu arasındaki ağdan trafik geçemiyorsa (örneğin iki VNET'te yapılandırıldılarsa), IR yüklü olduğunda bile bir etkinlikteki kopyalamayı bitiremezler. Böyle bir durumda her biri bir VNET'te olmak üzere iki IR ile iki kopyalama etkinliği oluşturabilirsiniz: 1 IR 1. veri deposundan Azure Blob Depolama'ya ve diğeri de Azure Blob Depolama'dan 2. veri deposuna kopyalamak için. Bu yöntem iki bağlantısız veri deposunu bağlayan bir köprü oluşturmak için IR'yi kullanma gereksiniminin simülasyonunu sağlayabilir.
 
 
-### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>Kimlik bilgisi eşitleme sorunu, HA 'dan kimlik bilgilerinin kaybolmasına neden oluyor
+### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>Kimlik bilgileri eşitleme sorunu HA'dan kimlik bilgilerinin kaybolmasına neden oluyor
 
 #### <a name="symptoms"></a>Belirtiler
 
-"XXXXXXXXXX Integration Runtime" veri kaynağı kimlik bilgisi, Azure portal bağlantı hizmetini sildiğinizde veya görevin yanlış yükü varsa, lütfen kimlik bilgilerinizi yeniden kullanarak yeni bağlantı hizmeti oluşturun "
+Veri kaynağı "XXXXXXXXXX" kimlik bilgisi, yükü şöyle olan geçerli Integration Runtime düğümünden silinmiş: "Azure portaldaki bağlantı hizmetini sildiğinizde veya görevin yükü yanlış olduğunda, lütfen kimlik bilginizle yeni bir bağlantı hizmeti oluşturun".
 
 #### <a name="cause"></a>Nedeni
 
-Şirket içinde barındırılan IR, iki düğüm ile HA modunda oluşturulmuştur, ancak kimlik bilgileri eşitleme durumunda değil, dağıtıcı düğümünde depolanan kimlik bilgileri diğer çalışan düğümleriyle eşitlenmez. Herhangi bir yük devretme dağıtıcı düğümünden çalışan düğümüne, ancak kimlik bilgileri yalnızca önceki dağıtıcı düğümünde mevcutsa, kimlik bilgilerine erişmeye çalışırken görev başarısız olur ve yukarıdaki hata hakkında daha fazla vurun.
+Şirket içinde barındırılan IR'niz iki düğümlü HA modunda oluşturulmuş ama kimlik bilgilerini eşitleme durumunda değiller. Diğer bir deyişle dağıtıcı düğümünde depolanan kimlik bilgileri diğer çalışan düğümlerine eşitlenmiyor. Dağıtıcı düğümünden çalışan düğümüne herhangi bir yük devretme gerçekleşirse ama kimlik bilgileri yalnızca önceki dağıtıcı düğümünde bulunuyorsa, kimlik bilgilerine erişmeye çalışılırken görev başarısız olur ve yukarıdaki hatayla karşılaşırsınız.
 
 #### <a name="resolution"></a>Çözüm
 
-Bu sorundan kaçınmak için tek yol, kimlik bilgilerinin eşitleme durumunda iki düğümün olduğundan emin olmak içindir. Aksi takdirde, yeni dağıtıcı için kimlik bilgilerini yeniden giretmeniz gerekir.
+Bu sorundan kaçınmanın tek yolu her iki düğümünde kimlik bilgilerini eşitleme durumunda olduğundan emin olmaktır. Aksi takdirde, yeni dağıtıcı için kimlik bilgilerini yeniden girmeniz gerekir.
 
 
-### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>Özel anahtar eksik olduğundan sertifika seçemezsiniz
+### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>Özel anahtar eksik olduğundan sertifika seçilemiyor
 
 #### <a name="symptoms"></a>Belirtiler
 
-1.  Bir PFX dosyasını sertifika deposuna aktarın.
-2.  IR Configuration Manager Kullanıcı arabirimi aracılığıyla sertifikayı seçerken aşağıdaki hata ile karşılaşrsınız:
+1.  PFX dosyasını sertifika depolama alanına aktarın.
+2.  IR Configuration Manager kullanıcı arabirimi üzerinden sertifikayı seçerken aşağıdaki hatayla karşılaşıyorsunuz:
 
     ![Özel anahtar eksik](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
 
 #### <a name="cause"></a>Nedeni
 
-- Kullanıcı hesabı düşük ayrıcalıkta ve özel anahtara erişemez.
-- Sertifika imza olarak oluşturuldu ancak anahtar değişimi olarak üretildi.
+- Kullanıcı hesabının ayrıcalık düzeyi düşük ve özel anahtara erişemiyor.
+- Sertifika imza olarak oluşturuldu ama anahtar değişimi olarak oluşturulmadı.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -574,50 +574,6 @@ Netmon izlemesini alın ve daha fazla analiz edin.
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
     Bu nedenle, dördüncü atlamanın kendinden konak IR 'den ne olduğunu denetlemek için ağ ekibine ihtiyacınız vardır. Bu, Linux sistemi olarak güvenlik duvarıdır, bu nedenle cihazın TCP 3 el sıkışması sonrasında paketi sıfırlamalarında herhangi bir günlüğe bakın. Ancak, araştırmanın nerede olduğundan emin değilseniz, bu paketi hangi cihazın sıfırlayabileceğinizi ve bağlantısının kesilmesine neden olduğunu anlamak için sorunlu süre içinde kendinden konak IR ve güvenlik duvarından alınan Netmon izlemesini almayı deneyin. Bu durumda, ileride ilerlemek için ağ ekibinize de ihtiyacınız vardır.
-
-### <a name="how-to-collect-netmon-trace"></a>Netmon Trace nasıl toplanır
-
-1.  [Bu Web sitesinden](https://cnet-downloads.com/network-monitor)alınan Netmon araçlarını Indirin ve sunucu makinenize (sorunu yaşayan sunucu) ve istemciye (Şirket IÇINDE barındırılan IR gibi) yükleyin.
-
-2.  Örneğin, şu yolda bir klasör oluşturun: *D:\netmon*. Günlüğü kaydetmek için yeterli alana sahip olduğundan emin olun.
-
-3.  IP ve bağlantı noktası bilgilerini yakalayın. 
-    1. Bir komut Istemi başlatın.
-    2. Yönetici olarak Çalıştır ' ı seçin ve aşağıdaki komutu çalıştırın:
-       
-        ```
-        Ipconfig /all >D:\netmon\IP.txt
-        netstat -abno > D:\netmon\ServerNetstat.txt
-        ```
-
-4.  Netmon Trace 'i (ağ paketi) yakalayın.
-    1. Bir komut Istemi başlatın.
-    2. Yönetici olarak Çalıştır ' ı seçin ve aşağıdaki komutu çalıştırın:
-        
-        ```
-        cd C:\Program Files\Microsoft Network Monitor 3
-        ```
-    3. Ağ sayfasını yakalamak için üç farklı komut kullanabilirsiniz:
-        - Seçenek A: RoundRobin dosya komutu (Bu, yalnızca bir dosya yakalar ve eski günlüklerin üzerine yazacak).
-
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
-            ```         
-        - Seçenek B: zincirleme dosya komutu (200 MB ulaşıldığında bu yeni dosya oluşturur).
-        
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
-            ```          
-        - Seçenek C: zamanlanmış dosya komutu.
-
-            ```
-            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
-            ```  
-
-5.  Netmon Trace 'i yakalamayı durdurmak için **CTRL + C** tuşlarına basın.
- 
-> [!NOTE]
-> İstemci makinesinde yalnızca Netmon izlemesini toplayabiliyorsanız, izlemeyi analiz etmenize yardımcı olması için sunucu IP adresini alın.
 
 ### <a name="how-to-analyze-netmon-trace"></a>Netmon izlemesini çözümleme
 

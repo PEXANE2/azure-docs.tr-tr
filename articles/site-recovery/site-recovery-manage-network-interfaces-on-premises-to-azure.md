@@ -1,20 +1,20 @@
 ---
 title: Azure Site Recovery ile şirket içi olağanüstü durum kurtarma için ağ bağdaştırıcılarını yönetme
 description: Azure 'da şirket içi olağanüstü durum kurtarma için ağ arabirimlerinin Azure Site Recovery ile nasıl yönetileceğini açıklar
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
-ms.author: mayg
-ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: 4dad7f76edf34782131c7c844978763cda53acc7
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129896"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068124"
 ---
-# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Azure 'da şirket içi olağanüstü durum kurtarma için VM ağ arabirimlerini yönetme
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Azure'a şirket içinden olağanüstü durum kurtarma için sanal makine ağ arabirimlerini yönetme
 
 Azure 'daki bir sanal makineye (VM) en az bir ağ arabirimi eklenmiş olmalıdır. VM boyutunun desteklediğinden, kendisine bağlı çok sayıda ağ arabirimi olabilir.
 

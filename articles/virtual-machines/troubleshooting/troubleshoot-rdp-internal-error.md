@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7cbb67a215d44759b2b503929c37cb50ea94709c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235171"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069773"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Azure VM'ye Uzak Masaüstü ile bağlanmaya çalıştığınızda dahili hata oluşuyor
 
@@ -26,7 +26,7 @@ Bu makalede, Microsoft Azure ' de bir sanal makineye (VM) bağlanmaya çalışt�
 
 ## <a name="symptoms"></a>Belirtiler
 
-Uzak Masaüstü Protokolü 'nü (RDP) kullanarak bir Azure VM 'sine bağlanamazsınız. Bağlantı, "uzaktan yapılandırma" bölümünde takılmış olur veya aşağıdaki hata iletisini alırsınız:
+Uzak Masaüstü Protokolü 'nü (RDP) kullanarak bir Azure VM 'sine bağlanamazsınız. Bağlantı, **Uzak yapılandırma** bölümüne takılmış veya şu hata iletisini alıyorsunuz:
 
 - RDP iç hatası
 - Bir iç hata oluştu
@@ -37,20 +37,24 @@ Uzak Masaüstü Protokolü 'nü (RDP) kullanarak bir Azure VM 'sine bağlanamazs
 
 Bu sorun aşağıdaki nedenlerden kaynaklanabilir:
 
+- Sanal makine saldırıya uğrayan bir durum olabilir.
 - Yerel RSA şifreleme anahtarlarına erişilemiyor.
 - TLS protokolü devre dışı bırakıldı.
 - Sertifika bozuk veya zaman aşımına uğradı.
 
 ## <a name="solution"></a>Çözüm
 
-Bu adımları izlemeden önce, etkilenen VM 'nin işletim sistemi diskinin bir yedek olarak anlık görüntüsünü alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
+Bu sorunu gidermek için, aşağıdaki bölümlerdeki adımları izleyin. Başlamadan önce, etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
 
-Bu sorunu gidermek için, sanal makinenin işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek seri konsolunu kullanın veya [VM 'yi çevrimdışı onarın](#repair-the-vm-offline) .
+### <a name="check-rdp-security"></a>RDP güvenliğini denetle
 
+İlk olarak, RDP bağlantı noktası 3389 için ağ güvenlik grubunun güvenli olmayan (açık) olup olmadığını denetleyin. Güvenli değilse ve \* gelen için kaynak IP adresi olarak gösteriyorsa, RDP bağlantı noktasını bir belirtilen c KULLANıCıSıNıN IP adresine kısıtlar ve ardından RDP erişimini test edin. Bu başarısız olursa, sonraki bölümdeki adımları izleyin.
 
 ### <a name="use-serial-control"></a>Seri denetim kullan
 
-[Seri konsoluna bağlanın ve PowerShell örneğini açın](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+VM 'nin işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek seri konsolunu kullanın veya [VM 'yi çevrimdışı olarak onarın](#repair-the-vm-offline) .
+
+Başlamak için [seri konsoluna bağlanın ve bir PowerShell örneği açın](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). VM 'niz üzerinde seri konsol etkinleştirilmemişse, [sanal makineyi çevrimdışı olarak Onar](#repair-the-vm-offline) bölümüne gidin.
 
 #### <a name="step-1-check-the-rdp-port"></a>Adım: 1 RDP bağlantı noktasını denetleyin

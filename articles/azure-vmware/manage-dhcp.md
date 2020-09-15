@@ -3,12 +3,12 @@ title: DHCP oluşturma ve yönetme
 description: Bu makalede, Azure VMware çözümünde DHCP 'nin nasıl yönetileceği açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 3fc3de228179925afdf1b7c1015c577fd9c4c924
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ba7c3983f55ed729c77d2f24d3ef311a00522148
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752163"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069569"
 ---
 # <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>Azure VMWare çözümünde DHCP oluşturma ve yönetme
 
@@ -56,7 +56,7 @@ DHCP sunucunuzu oluşturduktan sonra bu sunucuya ağ kesimleri eklemeniz gerekir
 
 ## <a name="create-dhcp-relay-service"></a>DHCP geçiş hizmeti oluştur
 
-1. NXT-T penceresinde **ağ** sekmesini seçin ve **IP yönetimi**altında **DHCP**' yi seçin. **Sunucu Ekle**' yi seçin. **Sunucu türü** Için DHCP geçişi ' ni seçin ve geçiş sunucusu için sunucu adını ve IP adresini girin. Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.
+1. NSX-T penceresinde **ağ** sekmesini seçin ve **IP yönetimi**altında **DHCP**' yi seçin. **Sunucu Ekle**' yi seçin. **Sunucu türü** Için DHCP geçişi ' ni seçin ve geçiş sunucusu için sunucu adını ve IP adresini girin. Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP geçiş sunucusu oluştur" border="true":::
 

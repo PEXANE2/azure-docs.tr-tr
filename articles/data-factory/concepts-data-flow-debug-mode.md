@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/11/2020
-ms.openlocfilehash: 1d996e62fe60606c3eb93a638d229028ee0471e6
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 41153c488825e87583284b23a287353f63ff8db8
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030614"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085102"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Eşleme veri akışı hata ayıklama modu
 
@@ -32,6 +32,11 @@ Kaydırıcıyı açtıktan sonra hangi tümleştirme çalışma zamanı yapılan
 Hata ayıklama modu açık olduğunda, etkin bir Spark kümesi ile veri akışınızı etkileşimli olarak oluşturacaksınız. Azure Data Factory, hata ayıklamayı kapattıktan sonra oturum kapatılacak. Hata ayıklama oturumunun açık olduğu süre boyunca Azure Databricks tarafından tahakkuk edilen saatlik ücretlerden haberdar olmanız gerekir.
 
 Çoğu durumda, iş mantığınızı doğrulayabilmeniz ve işinizi Azure Data Factory yayımlamadan önce veri dönüştürmelerinizi görüntüleyebilmeniz için veri akışlarınızı hata ayıklama modunda oluşturmak iyi bir uygulamadır. Veri akışınızı bir ardışık düzende test etmek için işlem hattı panelinde "hata ayıkla" düğmesini kullanın.
+
+![Veri akışı hata ayıklama oturumlarını görüntüle](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
+
+> [!NOTE]
+> Kullanıcının ADF tarayıcı kullanıcı arabiriminden başlattığı her hata ayıklama oturumu, kendi Spark kümesi ile yeni bir oturumdur. Fabrika başına hata ayıklama oturumlarını görüntülemek ve yönetmek için yukarıdaki hata ayıklama oturumları için izleme görünümünü kullanabilirsiniz.
 
 ## <a name="cluster-status"></a>Küme durumu
 

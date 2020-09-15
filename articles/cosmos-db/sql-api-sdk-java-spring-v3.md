@@ -1,6 +1,6 @@
 ---
 title: Spring Data Azure Cosmos DB v3 for SQL API sürüm notları ve kaynakları
-description: Sürüm tarihleri, kullanımdan kaldırma tarihleri ve SQL zaman uyumsuz Java SDK 'sının her Azure Cosmos DB bir sürümü arasında yapılan değişiklikler dahil olmak üzere, SQL API 'SI için Azure Cosmos DB için v3 verileri hakkında bilgi edinin.
+description: Sürüm tarihleri, kullanımdan kaldırma tarihleri ve SQL zaman uyumsuz Java SDK 'sının her Azure Cosmos DB bir sürümü arasında yapılan değişiklikler dahil olmak üzere, SQL API için Azure Cosmos DB v3 verileri hakkında bilgi edinin.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: e67e6911eeac29036dee2b68c19395b34e1d11da
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b2d474f25209034034db092ca971bff6b78d73a
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228044"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068754"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Yay verileri Azure Cosmos DB v3 for Core (SQL) API: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -36,20 +36,20 @@ ms.locfileid: "89228044"
 > * [Toplu yürütücü-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
 
-Çekirdek (SQL) için Spring Data Azure Cosmos DB v3, geliştiricilerin Spring uygulamalarında Azure Cosmos DB kullanmasına izin verir. Spring Data Azure Cosmos DB veritabanlarını ve koleksiyonları işlemek, belgelerle çalışmak ve sorgu vermek için Spring Data arabirimini kullanıma sunar. Aynı Maven yapıtı içinde hem eşitleme hem de Async (reaktif) API 'Leri desteklenir. 
+Çekirdek (SQL) için Spring Data Azure Cosmos DB sürüm 3, geliştiricilerin Spring uygulamalarında Azure Cosmos DB kullanmasına izin verir. Spring Data Azure Cosmos DB veritabanlarını ve koleksiyonları işlemek, belgelerle çalışmak ve sorgu vermek için Spring Data arabirimini kullanıma sunar. Aynı Maven yapıtı içinde hem eşitleme hem de Async (reaktif) API 'Leri desteklenir. 
 
-Spring Data Azure Cosmos DB yay veri çerçevesine bir bağımlılık alır. Azure Cosmos DB SDK ekibi, Spring Data v 2.2 ve v 2.3 için Maven yapıtları yayınlar.
+Spring Data Azure Cosmos DB yay veri çerçevesine bir bağımlılığı vardır. Azure Cosmos DB SDK ekibi, yay veri sürümleri 2,2 ve 2,3 için Maven yapıtları yayınlar.
 
-[Spring Framework](https://spring.io/projects/spring-framework) , Java uygulaması geliştirmeyi kolaylaştırın bir programlama ve yapılandırma modelidir. Kuruluşun Web sitesini teklife göre yay, bağımlılık ekleme kullanarak uygulamaların "sıhhi tesisat" düzeyini kolaylaştırır. Uygulama oluşturma ve test etme işlemleri daha basit hale geldiği için Spring gibi birçok geliştirici. [Spring Boot](https://spring.io/projects/spring-boot) , Web uygulaması ve mikro hizmet geliştirme ile ilgili bir gözle sıhhi tesisat 'yi işlemeye yönelik bu fikir düzeyini genişletiyor. [Spring Data](https://spring.io/projects/spring-data) , Spring veya Spring Boot uygulaması bağlamından Azure Cosmos DB gibi veri depolarına erişmek için bir programlama modeli ve çerçevesidir. 
+[Spring Framework](https://spring.io/projects/spring-framework) , Java uygulaması geliştirmeyi kolaylaştırın bir programlama ve yapılandırma modelidir. Yay, bağımlılık ekleme kullanarak uygulamaların "sıhhi tesisat" düzeyini kolaylaştırır. Uygulama oluşturmayı ve test etmeyi daha basit hale getiren yay gibi birçok geliştirici. [Spring Boot](https://spring.io/projects/spring-boot) , sıhhi tesisat 'nin bu işlemesini, Web uygulaması ve mikro hizmet geliştirmeye yönelik bir gözle genişletiyor. [Spring Data](https://spring.io/projects/spring-data) , Spring veya Spring Boot uygulaması bağlamından Azure Cosmos DB gibi veri depolarına erişmek için bir programlama modeli ve çerçevesidir. 
 
 Spring Data Azure Cosmos DB, [Azure Spring Cloud](https://azure.microsoft.com/services/spring-cloud/) uygulamalarınızda kullanabilirsiniz.
 
 > [!IMPORTANT]  
-> Bu sürüm notları, Azure Cosmos DB için v3 veri verilerini yöneliktir. V2 sürüm notlarını [buradan](sql-api-sdk-java-spring-v2.md)bulabilirsiniz. 
+> Bu sürüm notları, Spring Data Azure Cosmos DB sürüm 3 ' ü yöneliktir. [Sürüm 2 için sürüm notlarını buradan](sql-api-sdk-java-spring-v2.md)bulabilirsiniz. 
 >
 > Spring Data Azure Cosmos DB yalnızca SQL API 'sini destekler.
 >
-> Aşağıdaki kılavuzlar diğer Azure Cosmos DB API 'Lerinde Spring verilerini destekler:
+> Diğer Azure Cosmos DB API 'Lerinde yay verileri hakkında bilgi için şu makalelere bakın:
 > * [Azure Cosmos DB ile Apache Cassandra için yay verileri](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
 > * [Azure Cosmos DB ile Spring Data MongoDB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
 > * [Yay verileri Gremlin Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
@@ -61,31 +61,31 @@ Spring Data Azure Cosmos DB, [Azure Spring Cloud](https://azure.microsoft.com/se
 
 <img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
 
-### <a name="navigate-the-tabs-above-for-basic-spring-data-azure-cosmos-db-samples"></a>Temel yay verileri Azure Cosmos DB örnekleri için yukarıdaki sekmelere gidin.
+#### <a name="these-tabs-contain-basic-spring-data-azure-cosmos-db-samples"></a>Bu sekmeler, temel Spring Data Azure Cosmos DB örnekleri içerir.
 
 # <a name="pomxml"></a>[pom.xml](#tab/pom)
 
 ### <a name="configure-dependencies"></a>Bağımlılıkları yapılandırma
 
-İki Spring Data Azure Cosmos DB v3 Maven yapıtları mevcuttur.
+İki Spring Data Azure Cosmos DB sürüm 3 Maven yapıtları mevcuttur.
 
-Spring Data Framework v 2.2 'e bağlı olan yapıt:
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-spring-data-2-2-cosmos</artifactId>
-    <version>latest</version>
-</dependency>
-```
+- Spring Data Framework sürüm 2,2 ' ye bağlı olan yapıt:
+  ```xml
+  <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-spring-data-2-2-cosmos</artifactId>
+      <version>latest</version>
+  </dependency>
+  ```
 
-Spring Data Framework v 2.3 'e bağlı olan yapıt:
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-spring-data-2-3-cosmos</artifactId>
-    <version>latest</version>
-</dependency>
-```
+- Spring Data Framework sürüm 2,3 ' ye bağlı olan yapıt:
+  ```xml
+  <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-spring-data-2-3-cosmos</artifactId>
+      <version>latest</version>
+  </dependency>
+  ```
 
 # <a name="connect"></a>[Bağlan](#tab/connect)
 
@@ -114,15 +114,13 @@ cosmos.queryMetricsEnabled=true
 
 # <a name="query"></a>[Sorgu](#tab/queries)
 
-### <a name="query"></a>Sorgu
-
 [Sorgu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Query)]
 
 ---
 
-## <a name="helpful-content"></a>Yardımcı içerik
+## <a name="resources"></a>Kaynaklar
 
-| İçerik | Spring Data Framework v 2.2 | Spring Data Framework v 2.3 |
+| Kaynak | Spring Data Framework 2,2 | Spring Data Framework 2,3 |
 |---|---|
 | **SDK indirmesi** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
 |**SDK 'ya katkıda bulunma** | [Spring Data Azure Cosmos DB GitHub 'da depo](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [Spring Data Azure Cosmos DB GitHub 'da depo](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
@@ -132,19 +130,19 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="300-beta2-unreleased"></a>3.0.0-Beta. 2 (serbest bırakılmamış)
 
-### <a name="300-beta1-2020-08-17"></a>3.0.0-Beta. 1 (2020-08-17)
+### <a name="300-beta1-august-17-2020"></a>3.0.0-Beta. 1 (17 Ağustos 2020)
 #### <a name="new-features"></a>Yeni özellikler
-* Grup KIMLIĞI ile güncelleştirildi `com.azure` .
-* Yapıt KIMLIĞI ile güncelleştirildi `azure-spring-data-2-3-cosmos` .
-* Azure-Cosmos SDK bağımlılığı güncelleştirildi `4.3.2-beta.2` .
-* Denetim varlıkları desteği-createdBy, createdDate, lastModifiedBy ve lastModifiedDate açıklamalı alanlarının otomatik yönetimi.
-* `@GeneratedValue` türündeki KIMLIK alanları için otomatik kimlik oluşturmaya yönelik ek açıklama desteği `String` .
-* Birden çok veritabanına sahip tek Cosmos hesabı ve birden çok veritabanı içeren birden çok Cosmos hesabı için çoklu veritabanı yapılandırma desteği.
-* `@Version`Herhangi bir dize alanı üzerinde ek açıklama desteği.
-* Güncelleştirilmiş eşitleme API 'Leri, türü `Iterable` yerine türlerine döndürülür `List` .
-* `CosmosClientBuilder`Cosmos SDK 'den Spring çekirdeklere to Class olarak sunulur `@Configuration` .
-* `CosmosConfig`Sorgu ölçümleri ve yanıt tanılama işlemcisi uygulamasını içerecek şekilde güncelleştirildi.
-* `Optional`Tek sonuç sorguları için veri türü döndürme desteği.
+* Grup KIMLIĞINI ile güncelleştirir `com.azure` .
+* Yapıt KIMLIĞINI ile güncelleştirir `azure-spring-data-2-3-cosmos` .
+* Azure-Cosmos SDK bağımlılığını güncelleştirir `4.3.2-beta.2` .
+* Denetim varlıkları için destek ekler:,,, `createdBy` `createdDate` `lastModifiedBy` ve `lastModifiedDate` açıklamalı alanlarının otomatik yönetimi.
+* `@GeneratedValue`TÜRÜNDEKI kimlik alanları için OTOMATIK kimlik oluşturma desteği ekler `String` .
+* Birden çok veritabanına sahip tek Azure Cosmos DB hesapları için çoklu veritabanı yapılandırma desteği ve birden çok veritabanı içeren birden çok Azure Cosmos DB hesabı ekler.
+* `@Version`Herhangi bir dize alanına ek açıklama desteği ekler.
+* Eşitleme API 'SI dönüş türlerini `Iterable` yerine türlerine güncelleştirir `List` .
+* `CosmosClientBuilder`Azure Cosmos DB SDK 'dan, sınıfa Spring çekirdeklere olarak sunar `@Configuration` .
+* `CosmosConfig`Sorgu ölçümleri ve yanıt tanılama işlemcisi uygulamasını içerecek güncelleştirmeler.
+* `Optional`Tek sonuç sorguları için veri türünü döndürmeye yönelik destek ekler.
 #### <a name="renames"></a>Onların
 * `CosmosDbFactory``CosmosFactory`.
 * `CosmosDBConfig``CosmosConfig`.
@@ -154,22 +152,22 @@ cosmos.queryMetricsEnabled=true
 * `DocumentQuery``CosmosQuery`.
 * Application. Properties bayrağı `populateQueryMetrics` `queryMetricsEnabled` .
 #### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
-* `Parallel`Netty g/ç iş parçacıklarını engellemeyi önlemek için tanılama günlüğü görevini iş parçacığına zamanlama.
-* Silme işleminde iyimser kilitleme düzeltildi.
-* Yan tümce için kaçış sorgularıyla sorun düzeltildi `IN` .
-* `long`İçin veri türüne izin vererek sorun düzeltildi `@Id` .
-* `boolean` `long` `int` `double` Ek açıklama için veri türleri olarak izin vererek sorun düzeltildi `@PartitionKey` .
-* `IgnoreCase`  &  `AllIgnoreCase` Büyük/küçük harf sorgularını yoksay için sabit anahtar sözcükler.
-* Otomatik olarak kapsayıcı oluştururken 4000 varsayılan istek birimi değeri kaldırıldı.
+* `Parallel`Netty g/ç iş parçacıklarını engellemeyi önlemek için tanılama günlüğü görevinin iş parçacıklarına zamanlaması.
+* Silme işleminde iyimser kilitlemeyi düzeltir.
+* Yan tümce için kaçış sorgularıyla sorunu düzeltir `IN` .
+* `long`İçin veri türüne izin vererek sorunu düzeltir `@Id` .
+* `boolean` `long` `int` `double` Ek açıklama için veri türlerine izin vererek,, ve gibi sorunları düzeltir `@PartitionKey` .
+* `IgnoreCase` `AllIgnoreCase` Durum sorgularını yoksay için düzeltmeler ve anahtar sözcükler.
+* Kapsayıcılar otomatik olarak oluşturulduğunda, varsayılan istek birimi değeri olan 4.000 ' i kaldırır.
 
 ## <a name="faq"></a>SSS
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası.
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)hakkında daha fazla bilgi edinin.
 
-Spring Framework hakkında daha fazla bilgi için bkz. [proje giriş sayfası](https://spring.io/projects/spring-framework).
+[Spring Framework](https://spring.io/projects/spring-framework)hakkında daha fazla bilgi edinin.
 
-Spring Boot hakkında daha fazla bilgi için bkz. [proje giriş sayfası](https://spring.io/projects/spring-boot).
+[Spring Boot](https://spring.io/projects/spring-boot)hakkında daha fazla bilgi edinin.
 
-Yay verileri hakkında daha fazla bilgi için bkz. [proje giriş sayfası](https://spring.io/projects/spring-data).
+[Yay verileri](https://spring.io/projects/spring-data)hakkında daha fazla bilgi edinin.

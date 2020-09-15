@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: fdd564618232ce7fde5a76fb9c37937113f179b2
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 315ea9b683ccd583f5c29c7527013f0d924336f4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670869"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061894"
 ---
 # <a name="move-azure-vms-to-an-availability-zone-in-another-region"></a>Azure VM 'lerini başka bir bölgedeki kullanılabilirlik bölgesine taşıma
 
@@ -30,7 +30,7 @@ Bu makalede, Azure sanal makinelerini (ve ilgili ağ/depolama kaynaklarını) [A
 
 VM 'Leri aynı bölgedeki farklı bir kullanılabilirlik bölgesine taşımak istiyorsanız, [Bu makaleyi gözden geçirin](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Taşımak istediğiniz kaynakların bulunduğu abonelikte *sahip* erişimi bulunur.
     - Bir Azure aboneliğinde belirli bir kaynak ve hedef eşleme için ilk kez kaynak eklediğinizde, kaynak taşıyıcısı abonelik tarafından güvenilen [sistem tarafından atanan bir yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (eski adıyla yönetilen hizmet tanımlaması (MSI)) oluşturur.
@@ -71,8 +71,7 @@ Taşımak istediğiniz kaynakları seçin.
     ![Kullanmaya başlamak için düğme](./media/move-region-availability-zone/get-started.png)
 
 3. Kaynak **taşıma**  >  **kaynağı + hedef**bölümünde, kaynak aboneliğini ve bölgeyi seçin.
-4. **Hedef**bölümünde, VM 'leri taşımak istediğiniz bölgeyi seçin. 
-5. **Meta veri bölgesi**' nde, taşıdığınız kaynaklarla ilgili meta verileri nerede depolamak istediğinizi seçin. Bu amaçla özel olarak bir kaynak grubu oluşturulur. Ardından **İleri**'ye tıklayın.
+4. **Hedef**bölümünde, VM 'leri taşımak istediğiniz bölgeyi seçin. Ardından **İleri**'ye tıklayın.
 
      ![Kaynak ve hedef abonelik/bölge doldurulacak sayfa](./media/move-region-availability-zone/source-target.png)
 

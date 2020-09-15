@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 834b3b60a887dadd75e00a7a33abaff15e1a9407
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441485"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069637"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
 
 Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağıtımı Için planlamayı](storage-files-planning.md) ve [bir Azure dosya eşitleme dağıtımı planlamayı](storage-sync-files-planning.md) kesinlikle öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -157,7 +157,7 @@ Bir depolama eşitleme hizmeti dağıtmak için, [Azure Portal](https://portal.a
 
 Açılan bölmeye aşağıdaki bilgileri girin:
 
-- **Ad**: depolama eşitleme hizmeti için benzersiz bir ad (abonelik başına).
+- **Ad**: depolama eşitleme hizmeti için benzersiz bir ad (bölge başına).
 - **Abonelik**: depolama eşitleme hizmetini oluşturmak istediğiniz abonelik. Kuruluşunuzun yapılandırma stratejisine bağlı olarak, bir veya daha fazla aboneliğe erişiminiz olabilir. Azure aboneliği, her bir bulut hizmeti için (Azure dosyaları gibi) Faturalandırma için en temel kapsayıcıdır.
 - **Kaynak grubu**: bir kaynak grubu, depolama hesabı veya depolama eşitleme hizmeti gibi bir Azure kaynakları mantıksal grubudur. Azure Dosya Eşitleme için yeni bir kaynak grubu oluşturabilir veya var olan bir kaynak grubunu kullanabilirsiniz. (Belirli bir proje için HR kaynaklarını veya kaynaklarını gruplama gibi kaynak gruplarını kuruluşunuz için mantıksal olarak yalıtmak üzere kapsayıcı olarak kullanmanızı öneririz.)
 - **Konum**: Azure dosya eşitleme dağıtmak istediğiniz bölge. Bu listede yalnızca desteklenen bölgeler bulunur.

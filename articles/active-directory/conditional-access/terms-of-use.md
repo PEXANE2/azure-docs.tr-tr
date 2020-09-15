@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 05/29/2019
+ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948938"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085918"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
@@ -255,16 +255,16 @@ Desteklenen platformların ve yazılımların listesi aşağıda verilmiştir.
 > [!div class="mx-tableFixed"]
 > |  | iOS | Android | Windows 10 | Diğer |
 > | --- | --- | --- | --- | --- |
-> | **Yerel uygulama** | Evet | Evet | Evet |  |
-> | **Microsoft Edge** | Evet | Evet | Evet |  |
-> | **Internet Explorer** | Evet | Evet | Evet |  |
-> | **Chrome (uzantısıyla)** | Evet | Evet | Evet |  |
+> | **Yerel uygulama** | Yes | Yes | Yes |  |
+> | **Microsoft Edge** | Yes | Yes | Yes |  |
+> | **Internet Explorer** | Yes | Yes | Yes |  |
+> | **Chrome (uzantısıyla)** | Yes | Yes | Yes |  |
 
 Cihaz başına kullanım koşulları aşağıdaki kısıtlamalara sahiptir:
 
 - Bir cihaz yalnızca bir kiracıya eklenebilir.
 - Bir kullanıcının cihazına katılması için izinleri olması gerekir.
-- Intune kayıt uygulaması desteklenmez.
+- Intune kayıt uygulaması desteklenmez. Kullanım koşulları gerektiren tüm koşullu erişim ilkelerinin dışlandığından emin olun.
 - Azure AD B2B kullanıcıları desteklenmez.
 
 Kullanıcının cihazı birleştirilmemişse, cihazlarına katılması gereken bir ileti alırlar. Bu deneyim, platforma ve yazılıma bağımlıdır.

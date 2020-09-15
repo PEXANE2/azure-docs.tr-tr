@@ -1,21 +1,21 @@
 ---
 title: Sık Sorulan Sorular-Apache Kafka için Azure Event Hubs
-description: Bu makalede, Azure Event Hubs kullanılırken farklı protokoller (AMQP, Apache Kafka ve HTTPS) kullanan tüketiciler ve üreticileri olayları nasıl değiş tokuş edebilir gösterilmektedir.
+description: Bu makalede, başka bir yerde kapsanmayan Apache Kafka istemciler için Azure Event Hubs ' desteğiyle ilgili sık sorulan sorular yanıtlanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8bdd86d9f299a69d5f2d05bb8ec526ed94780608
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1ca54bf314d795b88b727ddb648f3e1e74133fd3
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031692"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061470"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>Sık Sorulan Sorular-Apache Kafka için Event Hubs 
 Bu makalede, Apache Kafka için Event Hubs geçiş hakkında sık sorulan soruların bazılarına yanıtlar verilmektedir.
 
-## <a name="do-you-run-apache-kafka"></a>Apache Kafka çalışıyor musunuz?
+## <a name="does-azure-event-hubs-run-on-apache-kafka"></a>Azure Event Hubs Apache Kafka üzerinde çalışıyor mu?
 
-Hayır.  Event Hubs altyapısına karşı Kafka API işlemlerini yürütüyoruz.  Apache Kafka ve Event Hubs AMQP işlevselliği (yani, üret, al, yönetim vb.) arasında sıkı bir bağıntı olduğundan, Event Hubs bilinen güvenilirliğini Kafka PaaS alanına getirebildik.
+Hayır. Azure Event Hubs, Microsoft tarafından geliştirilen ve bakımını yapan ve herhangi bir Apache Kafka kodu kullanmayan birden fazla protokol için desteğe sahip, bulutta yerel bir çok katmanlı aracıdır. Desteklenen protokollerden biri, Kafka istemcisinin tüketicisi ve üreticisi API 'Leri için Kafka RPC protokolüdür. Event Hubs, mevcut Kafka uygulamalarınızın birçoğu ile birlikte kullanılabilir. Daha fazla bilgi için bkz. [Apache Kafka Event Hubs](event-hubs-for-kafka-ecosystem-overview.md). Apache Kafka ve Azure Event Hubs kavramları çok benzer (ancak aynı değil), mevcut Apache Kafka yatırımlarıyla müşterilere eşleşmeyen Azure Event Hubs güvenilirliğini sunabileğiz. 
 
 ## <a name="event-hubs-consumer-group-vs-kafka-consumer-group"></a>Event Hubs Tüketici grubu vs. Kafka Tüketici grubu
 Event Hubs üzerinde bir olay hub 'ı Tüketici grubu ve Kafka Tüketici grubu arasındaki fark nedir? Event Hubs üzerindeki Kafka tüketici grupları standart Event Hubs tüketici gruplarından tamamen farklıdır.

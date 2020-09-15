@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8617b0b71e58d22ccd2cf753e4ddc862932f68da
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 1c8d1af9bcea6b5e0e43a8928cbcdd907f2fb534
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536064"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069042"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -27,7 +27,7 @@ Bu makalede, anahtar kasanıza erişimi kısıtlamak için Azure Key Vault güve
 > [!NOTE]
 > Aşağıdaki yapılandırma sınırlamalarından haberdar olun:
 > * En fazla 127 sanal ağ kuralına ve 127 IPv4 kuralına izin verilir. 
-> * "/31" veya "/32" ön ek boyutlarını kullanan küçük adres aralıkları desteklenmez. Bunun yerine, tek tek IP adresi kurallarını kullanarak bu aralıkları yapılandırın.
+> * "/31" ön ek boyutunu kullanan küçük adres aralıkları desteklenmez. Bunun yerine, tek tek IP adresi kurallarını kullanarak bu aralıkları yapılandırın.
 > * IP ağ kurallarına yalnızca genel IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına (RFC 1918 ' de tanımlandığı gibi) IP kurallarında izin verilmez. Özel ağlarda **10.**, **172.16-31**ve 192,168 ile başlayan adresler bulunur **.** 
 > * Şu anda yalnızca IPv4 adresleri destekleniyor.
 

@@ -4,12 +4,12 @@ description: Fiziksel sunucu değerlendirmesi için bir Azure geçişi gereci ay
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: 1b4e875a81c92f74cd7d2db96cf1c313157297eb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bace4ab03051a9febfe14cc30143bd4a5cfa7c84
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923591"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085953"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Fiziksel sunucular için bir gereç ayarlama
 
@@ -59,7 +59,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Genel bulut için örnek kullanım: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
     - Kamu Bulutu için örnek kullanım: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  En son gereç sürümünü ve karma değerleri [ayarlarını](./tutorial-assess-physical.md#verify-security)doğrulayın.
+3.  En son gereç sürümünü ve karma değerleri ayarlarını doğrulayın.
  
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Azure geçişi yükleyici betiğini çalıştırma

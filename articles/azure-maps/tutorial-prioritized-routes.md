@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: a7b6b658590d0c764435bc28baa6d21197984e10
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: a5b8dba920db0227c400e62ef7ddaf718d27c78a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007171"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085068"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Öğretici: Azure Maps kullanarak farklı seyahat modları için yolları bulma ve görüntüleme
 
@@ -219,7 +219,7 @@ Bu bölümde, taşıma modınızdan yola çıkarak bir noktadan diğerine yönle
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   , `SubscriptionKeyCredential` `SubscriptionKeyCredentialPolicy` Azure Maps 'a ABONELIK anahtarıyla http isteklerinin kimliğini doğrulamak için bir oluşturur. , `atlas.service.MapsURL.newPipeline()` `SubscriptionKeyCredential` İlkeyi alır ve bir işlem [hattı](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest&preserve-view=false) örneği oluşturur. , `routeURL` Azure Maps [yönlendirme](https://docs.microsoft.com/rest/api/maps/route) işlemlerine yönelik bir URL 'yi temsil eder.
+   , `SubscriptionKeyCredential` `SubscriptionKeyCredentialPolicy` Azure Maps 'a ABONELIK anahtarıyla http isteklerinin kimliğini doğrulamak için bir oluşturur. , `atlas.service.MapsURL.newPipeline()` `SubscriptionKeyCredential` İlkeyi alır ve bir işlem [hattı](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) örneği oluşturur. , `routeURL` Azure Maps [yönlendirme](https://docs.microsoft.com/rest/api/maps/route) işlemlerine yönelik bir URL 'yi temsil eder.
 
 2. Kimlik bilgilerini ve URL 'YI ayarladıktan sonra, başlangıçtan bitiş noktasına bir kamyon yol yolu oluşturmak için aşağıdaki JavaScript kodunu ekleyin. Bu yol, sınıflı Cargo 'yu taşıyan bir kamyon için oluşturulur ve görüntülenir `USHazmatClass2` .
 
@@ -248,7 +248,7 @@ Bu bölümde, taşıma modınızdan yola çıkarak bir noktadan diğerine yönle
     });
     ```
 
-    Yukarıdaki kod, Azure Maps yol [yönleri API 'si](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-maps-typescript-latest#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-&preserve-view=false)aracılığıyla Azure Maps Route hizmetini sorgular. Daha sonra yol satırı, yöntemi kullanılarak ayıklanan yanıttan coğrafi JSON özelliği koleksiyonundan ayıklanır `geojson.getFeatures()` . Son olarak, yol satırı veri kaynağına eklenir. Kamyonun rota hesaplamasının genellikle bir otomobil rota hesaplamasından daha yavaş olması nedeniyle, kamyon yolunun veri kaynağındaki diğer satırlardan önce oluşturulmasını sağlamak için bunu 0 dizinine ekliyoruz. Kamyon rotası satırı, araba yönlendirdikten sonra veri kaynağına eklenirse, üzerine işlenir. Kamyon yol satırına iki özellik eklenir: mavi bir kontur rengi ve dokuz piksellik bir kontur genişliği.
+    Yukarıdaki kod, Azure Maps yol [yönleri API 'si](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-)aracılığıyla Azure Maps Route hizmetini sorgular. Daha sonra yol satırı, yöntemi kullanılarak ayıklanan yanıttan coğrafi JSON özelliği koleksiyonundan ayıklanır `geojson.getFeatures()` . Son olarak, yol satırı veri kaynağına eklenir. Kamyonun rota hesaplamasının genellikle bir otomobil rota hesaplamasından daha yavaş olması nedeniyle, kamyon yolunun veri kaynağındaki diğer satırlardan önce oluşturulmasını sağlamak için bunu 0 dizinine ekliyoruz. Kamyon rotası satırı, araba yönlendirdikten sonra veri kaynağına eklenirse, üzerine işlenir. Kamyon yol satırına iki özellik eklenir: mavi bir kontur rengi ve dokuz piksellik bir kontur genişliği.
 
     >[!TIP]
     > Azure haritalar yol yönleri API 'sine yönelik tüm olası seçenekleri ve değerleri görmek için bkz. [yol gönderme yönlendirmeleri Için URI parametreleri](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#uri-parameters).
@@ -271,7 +271,7 @@ Bu bölümde, taşıma modınızdan yola çıkarak bir noktadan diğerine yönle
     });
     ```
 
-    Yukarıdaki kod, Azure Maps yönlendirme hizmeti 'ni  [Azure haritalar yol yönleri API 'si](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-maps-typescript-latest#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-&preserve-view=false) yöntemiyle sorgular. Daha sonra yol satırı, yöntemi kullanılarak ayıklanan yanıttan coğrafi JSON özelliği koleksiyonundan ayıklanır `geojson.getFeatures()` . Son olarak, yol satırı veri kaynağına eklenir. Kamyon yol satırına iki özellik eklenir: mor vuruş rengi ve beş piksellik kontur genişliği.
+    Yukarıdaki kod, Azure Maps yönlendirme hizmeti 'ni  [Azure haritalar yol yönleri API 'si](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) yöntemiyle sorgular. Daha sonra yol satırı, yöntemi kullanılarak ayıklanan yanıttan coğrafi JSON özelliği koleksiyonundan ayıklanır `geojson.getFeatures()` . Son olarak, yol satırı veri kaynağına eklenir. Kamyon yol satırına iki özellik eklenir: mor vuruş rengi ve beş piksellik kontur genişliği.
 
 4. **TruckRoute.html** dosyasını kaydedin ve Web tarayıcınızı yenileyin. Harita Şimdi kamyon ve araba yollarını görüntülemelidir.
 

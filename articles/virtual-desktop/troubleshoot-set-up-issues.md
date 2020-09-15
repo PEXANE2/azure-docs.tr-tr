@@ -3,15 +3,15 @@ title: Windows sanal masaüstü ortamı konak havuzu oluşturma-Azure
 description: Windows sanal masaüstü ortamının kurulumu sırasında kiracı ve konak havuzu sorunlarını giderme ve çözme.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121383"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084422"
 ---
 # <a name="host-pool-creation"></a>Konak havuzu oluşturma
 
@@ -46,6 +46,12 @@ Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marke
 - Aynı parametrelerle, ancak daha az VM ve VM çekirdeğine sahip yeni bir konak havuzu oluşturun.
 
 - Belirtilen VM SKU 'SU için Azure aboneliğinizin kotasını artırma isteği göndermek üzere bir tarayıcıda statusMessage alanında gördüğünüz bağlantıyı açın.
+
+### <a name="error-cant-see-user-assignments-in-app-groups"></a>Hata: uygulama gruplarında Kullanıcı atamaları göremez.
+
+Neden: Bu hata genellikle aboneliği 1 Azure Active Directory (AD) kiracısından diğerine taşıdıktan sonra oluşur. Eski atamalarınız hala eski Azure AD kiracısına bağlıysa, Azure portal bunların izini kaybeder.
+
+Çözüm: kullanıcıları uygulama gruplarına yeniden atamanız gerekir.
 
 ## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager şablonu hataları
 
@@ -88,7 +94,7 @@ Bunu yapmak için aşağıdaki işlemleri yapın:
 3. Ekranınızın sağ tarafında DNS sunucuları menüsü görünmelidir. Bu menüde **özel**' i seçin.
 4. Özel altında listelenen DNS sunucularının etki alanı denetleyicinize veya Active Directory etki alanına göre eşleştiğinden emin olun. DNS sunucunuzu görmüyorsanız, değerini **DNS sunucusu Ekle** alanına girerek ekleyebilirsiniz.
 
-### <a name="error-your-deployment-failedunauthorized"></a>Hata: dağıtımınız başarısız oldu. ..\Yetkilendirilmemiş
+### <a name="error-your-deployment-failedunauthorized"></a>Hata: Dağıtımınız başarısız oldu...\Unauthorized
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
@@ -109,7 +115,7 @@ Bunu yapmak için aşağıdaki işlemleri yapın:
 
 **Çözüm:** PowerShell kullanarak oturum açarak Windows sanal masaüstü ortamının sağlıklı olduğunu onaylayın. [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md)bölümünde VM kaydını el ile tamamlama.
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hata: belirtilen yönetici kullanıcı adına izin verilmiyor
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hata: Belirtilen Yönetici Kullanıcı Adına izin verilmiyor
 
 > [!div class="mx-imgBorder"]
 > ![Belirtilen bir yöneticiye izin verilmediğinden dağıtımınızın ekran görüntüsü başarısız oldu.](media/failure-username.png)
@@ -127,7 +133,7 @@ Ham hata örneği:
 
 **Çözüm:** Kullanıcı adını güncelleştirin veya farklı kullanıcılar kullanın.
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hata: VM, uzantıyı işlerken bir hata bildirdi
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hata: VM uzantıyı işlerken bir hata bildirdi
 
 > [!div class="mx-imgBorder"]
 > ![Dağıtımınızda Terminal sağlama durumu ile tamamlanan kaynak işleminin ekran görüntüsü başarısız oldu.](media/failure-processing.png)

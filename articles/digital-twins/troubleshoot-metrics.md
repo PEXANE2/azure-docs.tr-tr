@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: ecd402c30fee63ad594fff5e4fdc3b1610fe7e4e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f2dc93767457bfb96a9457a73adb83c0ed965308
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003890"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069756"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure dijital TWINS sorunlarını giderme: ölçümler
 
@@ -41,7 +41,7 @@ Bu makalede açıklanan ölçümler, Azure aboneliğinizdeki Azure dijital TWINS
 4. Menüden **Uyarılar** ' ı ve sonra **+ Yeni uyarı kuralı**' nı seçerek ölçüm verilerinize yönelik uyarıları ayarlamayı tercih edebilirsiniz.
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Uyarı sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
 
-    Bu işlem hakkında daha fazla bilgi için bkz. [*sorun giderme: tanılamayı ayarlama*](troubleshoot-diagnostics.md).
+    Bu işlem hakkında daha fazla bilgi için bkz. [*sorun giderme: uyarıları ayarlama*](troubleshoot-alerts.md).
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure dijital TWINS ölçümleri ve bunların nasıl kullanılacağı
 
@@ -70,7 +70,7 @@ Faturalandırma ile yapılacak ölçümler:
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Faturalama API 'SI Işlemleri (Önizleme) | Count | Toplam | Azure Digital TWINS hizmetinde yapılan tüm API isteklerinin sayısı için faturalandırma ölçümü. | Ölçüm kimliği |
 | Billingiletide Işlendi | Işlenen faturalama Iletileri (Önizleme) | Count | Toplam | Azure dijital TWINS 'den dış uç noktalara gönderilen ileti sayısı için faturalandırma ölçümü. | Ölçüm kimliği |
-| BillingQueryUnits | Faturalama sorgu birimleri (Önizleme) | Count | Toplam | Sorgu birimlerinin sayısı, sorgu yürütmek için tüketilen, hizmet kaynağı kullanımının dahili olarak hesaplanan bir ölçümüdür. Sorgu birimlerini ölçmek için bir yardımcı API de mevcuttur: [Querychargehelper sınıfı](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview) | Ölçüm kimliği |
+| BillingQueryUnits | Faturalama sorgu birimleri (Önizleme) | Count | Toplam | Sorgu birimlerinin sayısı, sorgu yürütmek için tüketilen, hizmet kaynağı kullanımının dahili olarak hesaplanan bir ölçümüdür. Sorgu birimlerini ölçmek için bir yardımcı API de mevcuttur: [Querychargehelper sınıfı](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | Ölçüm kimliği |
 
 #### <a name="ingress-metrics"></a>Giriş ölçümleri
 

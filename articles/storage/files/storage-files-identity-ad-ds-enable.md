@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ce6325abf34813a9ca397f5bcbe2e774af3442d4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535085"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061487"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Birinci kısım: Azure dosya paylaşımlarınız için AD DS kimlik doğrulamasını etkinleştirme 
 
@@ -28,7 +28,7 @@ AzFilesHybrid PowerShell modülündeki cmdlet 'ler gerekli değişiklikleri yapa
 
 ### <a name="download-azfileshybrid-module"></a>AzFilesHybrid modülünü indir
 
-- [AzFilesHybrid modülünü indir ve sıkıştırmayı](https://github.com/Azure-Samples/azure-files-samples/releases) aç (GA modülü: v 0.2.0 +)
+- [AzFilesHybrid modülünü indir ve sıkıştırmayı aç (GA modülü: v 0.2.0 +)](https://github.com/Azure-Samples/azure-files-samples/releases) AES 256 Kerberos şifrelemesi 'nin v 0.2.2 veya üzeri sürümlerde desteklendiğini unutmayın. Özelliği v 0.2.2 'nin altında bir AzFilesHybrid sürümü ile etkinleştirdiyseniz ve AES 256 Kerberos şifrelemesini destekleyecek şekilde güncelleştirmek istiyorsanız lütfen [Bu makaleye](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)başvurun. 
 - Bir hizmet oturum açma hesabı veya hedef AD 'de bilgisayar hesabı oluşturma izinlerine sahip AD DS kimlik bilgileri ile şirket içi AD DS etki alanına katılmış bir cihaza modül yükleyip yürütün.
 -  Azure AD 'niz ile eşitlenen şirket içi AD DS kimlik bilgilerini kullanarak betiği çalıştırın. Şirket içi AD DS kimlik bilgisinin depolama hesabı sahibi ya da katkıda bulunan Azure rolü izinleri olmalıdır.
 

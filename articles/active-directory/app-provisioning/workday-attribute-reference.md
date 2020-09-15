@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 036b3af03dec2bdaa7feacc94abca930ebd9b317
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 4d6e5fb765125a4cf68c4939e7350feb84509bf2
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235392"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068107"
 ---
 # <a name="workday-attribute-reference"></a>Workday öznitelik başvurusu
 
@@ -147,7 +147,7 @@ Ek XPATHs yapılandırmak için, [yapılandırmanızı yönetme](../saas-apps/wo
 | 18 | CountryRegionReference                | WD: Worker/WD: çalışan \_ verileri/WD: iş \_ verileri/WD: çalışan \_ iş \_ verileri \[ @wd:Primary_Job = 1]/WD: konum \_ verileri/WD: Iş \_ sitesi \_ Özet \_ verileri/WD: Adres \_ verileri/WD: ülke \_ bölge \_ tanımlayıcısı/metin\(\)                                                                                                                                                                                   |
 | 19 | EmailAddress                          | WD: Worker/WD: çalışan verileri/WD: kişisel veri/WD: kişi verileri/WD: \_ \_ \_ e-posta \_ adresi \_ verileri \[ WD: Usage \_ Data/@wd:Public = ' 1 ' ve dize \( WD: kullanım \_ verileri/WD: Type \_ Data/WD: tür \_ Reference/WD: ID \[ @wd:type = ' Communication \_ Usage \_ Type \_ ID ' \] \) = ' Work ' \] /WD: e-posta \_ adresi/metin\(\)                                                                                                               |
 | 20 | Çalışan Kimliği                            | WD: Worker/WD: çalışan \_ başvurusu/WD: ID \[ @wd:type = ' Employee \_ ID ' \] /Text\(\)                                                                                                                                                                                                                                                                                                               |
-| 21 | FacilityLocation                      | WD: Worker/WD: Worker \_ Data/WD: kuruluş verileri/WD: \_ çalışan \_ kuruluş \_ veri \[ çevirme \( dizesi \( WD: kuruluş \_ verileri/WD: kuruluş \_ türü \_ başvurusu/WD: ID \[ @wd:type = ' kuruluş \_ türü \_ kimliği ' \] \) , ' abcdefghgpqrstuıxyz ', ' abcdefghgpqrstuıxyz ' \) = ' tesis ' \] /WD: kuruluş \_ Reference/@wd:Descriptor 0                                                                                                                                                                                                                                                                                                                                      |
+| 21 | FacilityLocation                      | WD: Worker/WD: Worker Data/WD: kuruluş verileri/WD: \_ \_ Worker \_ kuruluşu \_ veri \[ çevirme \( dizesi \( WD: kuruluş \_ verileri/WD: kuruluş \_ türü \_ başvurusu/WD: ID \[ @wd:type = ' kuruluş \_ türü \_ kimliği ' \] \) , ' abcdefghgpqrstuerxyz ', ' abcdefghgpqrstuıxyz ' \) = ' tesis ' \] /WD: Organization\_Reference/@wd:Descriptor                                                                                                                                                                                                                                                                                                                                                                       |
 | 22 | Faks                                   | WD: Worker/WD: çalışan \_ verileri/WD: kişisel \_ veri/WD: iletişim \_ verileri/WD: telefon \_ verileri \[ WD: Usage \_ Data/@wd:Public = ' 1 ' ve dize \( WD: kullanım \_ verileri/WD: Type \_ Data/WD: tür \_ Reference/WD: ID \[ @wd:type = ' Communication \_ Usage \_ Type \_ ID ' \] \) = ' Work ' ve dize \( WD: Phone cihaz türü \_ \_ \_ Reference/WD: ID \[ @wd:type = ' Phone \_ cihaz \_ türü \_ ID ' \] \) = ' Fax '\]/@wd:Workday_Traditional_Formatted_Phone      |
 | 23 | FirstName                             | WD: Worker/WD: çalışan \_ verileri/WD: Personal \_ Data/WD: Name \_ Data/WD: yasal \_ ad \_ veri/WD: ad \_ ayrıntı \_ verileri/WD: \_ ad/metin\(\)                                                                                                                                                                                                                                                           |
 | 24 | JobClassificationID                   | WD: Worker/WD: Worker \_ Data/WD: istihdam \_ Data/WD: Worker \_ iş \_ verileri \[ @wd:Primary_Job = 1]/WD: konum \_ verisi/WD: iş \_ sınıflandırması \_ Özet \_ verileri/WD: iş \_ sınıflandırması \_ başvurusu/WD: ID \[ @wd:type = ' iş \_ sınıflandırması \_ başvuru \_ kimliği ' \] /Text\(\)                                                                                                                                     |

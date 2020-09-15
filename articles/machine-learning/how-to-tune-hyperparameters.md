@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 84262427c6d5183fb803f3fc16d2e7b8021e9d5e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 52e419e970173ddaf3d4d6176f2dd26a1e8194e2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651807"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084678"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Azure Machine Learning modelinize ait hiper parametreleri ayarlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -151,11 +151,9 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> Bayema örneklemesi, hiçbir erken sonlandırma ilkesini desteklemez (bkz. [erken sonlandırma Ilkesi belirtme](#specify-early-termination-policy)). Bayeme parametre örneklemesi kullanılırken, parametresini ayarlayın `early_termination_policy = None` veya devre dışı bırakın `early_termination_policy` .
+> Bayema örneklemesi, hiçbir erken sonlandırma ilkesini desteklemez (bkz. [erken sonlandırma Ilkesi belirtme](#early-termination)). Bayeme parametre örneklemesi kullanılırken, parametresini ayarlayın `early_termination_policy = None` veya devre dışı bırakın `early_termination_policy` .
 
-<a name='specify-primary-metric-to-optimize'/>
-
-## <a name="specify-primary-metric"></a>Birincil ölçümü belirtin
+## <a name="specify-primary-metric"></a><a name="specify-primary-metric-to-optimize"></a> Birincil ölçümü belirtin
 
 Hiperparameter ayarlama denemesinin [İyileştirilmek istediğiniz birincil ölçüyü](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py&preserve-view=true) belirtin. Her eğitim çalışması, birincil ölçüm için değerlendirilir. Kötü performanslı çalıştırmalar (birincil ölçümün erken sonlandırma ilkesi tarafından ayarlanan ölçütleri karşılamadığında) sonlandırılır. Birincil ölçüm adının yanı sıra, en iyi duruma getirme amacını da belirtirsiniz. birincil ölçümü en üst düzeye çıkarıp en aza indirmenize mi olursunuz.
 
@@ -169,9 +167,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 "Doğruluğu" en üst düzeye çıkarmak için çalıştırmaları iyileştirin.  Bu değeri eğitim betiğinizdeki günlüğe kaydettiğinizden emin olun.
 
-<a name='log-metrics-for-hyperparameter-tuning'/>
-
-### <a name="log-metrics-for-hyperparameter-tuning"></a>Hyperparameter ayarlama için günlük ölçümleri
+### <a name="specify-primary-metric"></a><a name="log-metrics-for-hyperparameter-tuning"></a> Birincil ölçümü belirtin
 
 Modelinize yönelik eğitim betiği, model eğitimi sırasında ilgili ölçümleri günlüğe vermelidir. Hiper parametre ayarlamayı yapılandırdığınızda, çalıştırma performansını değerlendirmek için kullanılacak birincil ölçümü belirtirsiniz. (Bkz. [iyileştirmek için bir birincil ölçüm belirtin](#specify-primary-metric-to-optimize).)  Eğitim betiğinizdeki bu ölçümü hiper parametre ayarlama işleminde kullanılabilir olacak şekilde günlüğe yazmanız gerekir.
 
@@ -184,8 +180,6 @@ run_logger.log("accuracy", float(val_accuracy))
 ```
 
 Eğitim betiği, öğesini hesaplar `val_accuracy` ve birincil ölçüm olarak kullanılan "doğruluk" olarak kaydeder. Ölçüm günlüğe kaydedildiği her seferinde hiper parametre ayarlama hizmeti tarafından alınır. Bu ölçümün ne sıklıkla raporlanduğunu öğrenmek için model geliştiricisi vardır.
-
-<a name='specify-early-termination-policy'/>
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> Erken sonlandırma ilkesini belirtin
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
-ms.openlocfilehash: 627b020ce618a2a1f2646a95e143947876bd6a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83754842eeb4b5d609596045c11451e898960b9a
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82072646"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90064866"
 ---
 ### <a name="general-query-limits"></a>Genel sorgu limitleri
 
@@ -30,8 +30,8 @@ Azure Izleyici, çok fazla sayıda sorgu gönderen kullanıcılara karşı korum
 | Measure | Kullanıcı başına sınır | Description |
 |:---|:---|:---|
 | Eşzamanlı sorgular | 5 | Kullanıcı için çalıştırılan 5 sorgu varsa, tüm yeni sorgular Kullanıcı başına eşzamanlılık kuyruğuna yerleştirilir. Çalışan sorgulardan biri sona erdiğinde, sonraki sorgu kuyruktan çekilir ve başlatılır. Bu, uyarı kurallarından sorgu içermez.
-| Eşzamanlılık kuyruğundaki süre | 2,5 dakika | Bir sorgu, başlatılmadan 2,5 dakikadan uzun bir süre içinde yer alıyorsa, kod 429 ile bir HTTP hatası yanıtıyla sonlandırılır. |
-| Eşzamanlılık kuyruğundaki toplam sorgu sayısı | 40 | Kuyruktaki sorguların sayısı 40 ' ye ulaştığında, herhangi bir ek sorgu, HTTP hata kodu 429 ile reddedilir. Bu sayı aynı anda çalışabilecek 5 sorguya ek olarak yapılır. |
+| Eşzamanlılık kuyruğundaki süre | 3 dakika | Bir sorgu, başlatılmadan 3 dakikadan uzun bir süre içinde yer alıyorsa, kod 429 ile bir HTTP hatası yanıtıyla sonlandırılır. |
+| Eşzamanlılık kuyruğundaki toplam sorgu sayısı | 200 | Kuyruktaki sorguların sayısı 200 ' ye ulaştığında, herhangi bir ek sorgu, HTTP hata kodu 429 ile reddedilir. Bu sayı aynı anda çalışabilecek 5 sorguya ek olarak yapılır. |
 | Sorgu hızı | 30 saniye başına 200 sorgu | Bu, sorguların tek bir kullanıcı tarafından tüm çalışma alanlarına gönderilebilmesinin genel hızıdır.  Bu sınır, Azure panoları ve Log Analytics çalışma alanı Özet sayfası gibi görselleştirme parçaları tarafından başlatılan programlı sorgular veya sorgular için geçerlidir. |
 
 - [Azure izleyici 'de günlük sorgularını iyileştirme](../articles/azure-monitor/log-query/query-optimization.md)bölümünde açıklandığı gibi sorgularınızı iyileştirin.

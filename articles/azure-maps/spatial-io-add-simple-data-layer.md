@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 704cb43a31ff1dfcaf287f9af467f7d6e7d6c50d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e79135ccf672fa057d9e88fc91fa72b7826ba71e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282815"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085204"
 ---
 # <a name="add-a-simple-data-layer"></a>Basit bir veri katmanı ekleme
 
@@ -57,7 +57,7 @@ Aşağıdaki kod, basit veri katmanını kullanarak yukarıdaki nokta özelliği
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Basit veri katmanını kullanma" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> Bkz. kalemin Azure Maps () ile birlikte <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>basit veri katmanını kullanma</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="Basit veri katmanını kullanma" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> Bkz. kalemin Azure Maps () ile birlikte <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>basit veri katmanını kullanma</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 Basit veri katmanının gerçek gücü şu durumlarda gelir:
@@ -70,7 +70,7 @@ Basit veri katmanının gerçek gücü şu durumlarda gelir:
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Basit veri katmanı seçenekleri" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>basit veri katmanı seçeneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height="700" style="width: 100%;" scrolling="no" title="Basit veri katmanı seçenekleri" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>basit veri katmanı seçeneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
@@ -102,7 +102,7 @@ Bir özellik bir veya ise `Point` `MultiPoint` , ve özelliği bir `image` sembo
 | `radius` | `size`<sup>1</sup>, `marker-size` <sup>2</sup>, `scale` <sup>1</sup> | `8` |
 | `strokeColor` | `strokeColor`, `stroke` | `'#FFFFFF'` |
 
-\[1 \] `size` ve `scale` değerleri skaler değerler olarak değerlendirilir ve bu değerler ile çarpılacak`8`
+\[1 \] `size` ve `scale` değerleri skaler değerler olarak değerlendirilir ve bu değerler ile çarpılacak `8`
 
 \[2 \] GitHub `marker-size` seçeneği belirtilmişse, yarıçap için aşağıdaki değerler kullanılacaktır.
 
@@ -114,11 +114,11 @@ Bir özellik bir veya ise `Point` `MultiPoint` , ve özelliği bir `image` sembo
 
 Kümeler kabarcık katmanı kullanılarak da işlenir. Varsayılan olarak, bir kümenin yarıçapı olarak ayarlanır `16` . Kümenin rengi, aşağıda tanımlandığı şekilde kümedeki noktaların sayısına bağlı olarak farklılık gösterir:
 
-| noktaların sayısı | Color (Renk)    |
+| noktaların sayısı | Renk    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |
-| &lt;(     | `green`  |
+| &lt; (     | `green`  |
 
 ### <a name="symbol-style-properties"></a>Sembol stili özellikleri
 

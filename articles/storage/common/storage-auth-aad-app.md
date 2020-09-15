@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/14/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: d842974b0b53e0b0ce199334a07f11e5c998b18d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5a39b08f34bec5ee1db42cde1fb171452d0efd3
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018816"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069824"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>İstemci uygulamasından gelen istekleri yetkilendirmek için Azure AD 'den bir belirteç alın
 
-Azure Blob depolama veya kuyruk depolama ile Azure Active Directory (Azure AD) kullanmanın önemli bir avantajı, kimlik bilgilerinizin artık kodunuzda depolanmasına gerek kalmaz. Bunun yerine, Microsoft Identity platform (eski adıyla Azure AD) için bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya erişim belirtecini döndürür ve uygulama, istekleri Azure Blob depolama veya kuyruk depolama alanına yetkilendirmek için erişim belirtecini kullanabilir.
+Azure Blob depolama veya kuyruk depolama ile Azure Active Directory (Azure AD) kullanmanın önemli bir avantajı, kimlik bilgilerinizin artık kodunuzda depolanmasına gerek kalmaz. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya erişim belirtecini döndürür ve uygulama, istekleri Azure Blob depolama veya kuyruk depolama alanına yetkilendirmek için erişim belirtecini kullanabilir.
 
 Bu makalede, Microsoft Identity Platform 2,0 ile yerel uygulamanızı veya Web uygulamanızı kimlik doğrulaması için nasıl yapılandıracağınız gösterilir. Kod örneği .NET özelliklerine sahiptir, ancak diğer diller de benzer bir yaklaşım kullanır. Microsoft Identity Platform 2,0 hakkında daha fazla bilgi için bkz. [Microsoft Identity platform (v 2.0) genel bakış](../../active-directory/develop/v2-overview.md).
 
@@ -27,7 +27,7 @@ OAuth 2,0 kod verme akışına genel bakış için bkz. [oauth 2,0 kod verme ak�
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Azure AD güvenlik sorumlusuna rol atama
 
-Azure depolama uygulamanızdan bir güvenlik sorumlusunun kimliğini doğrulamak için önce bu güvenlik sorumlusu için rol tabanlı erişim denetimi (RBAC) ayarlarını yapılandırın. Azure depolama, kapsayıcılar ve kuyruklar için izinleri çevreleyen Azure yerleşik rollerini tanımlar. Azure rolü bir güvenlik sorumlusuna atandığında, bu güvenlik sorumlusuna bu kaynağa erişim verilir. Daha fazla bilgi için bkz. [Azure Blob 'a erişim haklarını yönetme ve RBAC Ile kuyruk verileri](storage-auth-aad-rbac.md).
+Azure depolama uygulamanızdan bir güvenlik sorumlusunun kimliğini doğrulamak için önce bu güvenlik sorumlusu için rol tabanlı erişim denetimi (RBAC) ayarlarını yapılandırın. Azure depolama, kapsayıcılar ve kuyruklar için izinleri çevreleyen yerleşik rolleri tanımlar. RBAC rolü bir güvenlik sorumlusuna atandığında, bu güvenlik sorumlusuna bu kaynağa erişim verilir. Daha fazla bilgi için bkz. [Azure Blob 'a erişim haklarını yönetme ve RBAC Ile kuyruk verileri](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Uygulamanızı bir Azure AD kiracısıyla kaydetme
 
@@ -127,39 +127,78 @@ Belirteç içeren ve Azure Storage 'da blob oluşturmak için onu kullanan tamam
 
 Visual Studio 'dan Azure Storage istemci kitaplığı 'nı yükler. **Araçlar** menüsünden **NuGet Paket Yöneticisi**’ni ve ardından **Paket Yöneticisi Konsolu**’nu seçin. Gerekli paketleri .NET için Azure Storage istemci kitaplığından yüklemek üzere konsol penceresine aşağıdaki komutları yazın:
 
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+```console
+Install-Package Azure.Storage.Blobs
+Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
+```
+
+Ardından, aşağıdaki using deyimlerini HomeController.cs dosyasına ekleyin:
+
+```csharp
+using Microsoft.Identity.Web; //MSAL library for getting the access token
+using Azure.Storage.Blobs;
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
-Install-Package Microsoft.Azure.Storage.Common
+Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
 ```
 
 Ardından, aşağıdaki using deyimlerini HomeController.cs dosyasına ekleyin:
 
 ```csharp
 using Microsoft.Identity.Client; //MSAL library for getting the access token
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.Azure.Storage.Blob;
 ```
+
+---
 
 #### <a name="create-a-block-blob"></a>Blok Blobu oluşturma
 
 Blok Blobu oluşturmak için aşağıdaki kod parçacığını ekleyin:
 
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+```csharp
+private static async Task<string> CreateBlob(TokenAcquisitionTokenCredential tokenCredential)
+{
+    Uri blobUri = new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt");
+    BlobClient blobClient = new BlobClient(blobUri, tokenCredential);
+
+    string blobContents = "Blob created by Azure AD authenticated user.";
+    byte[] byteArray = Encoding.ASCII.GetBytes(blobContents);
+
+    using (MemoryStream stream = new MemoryStream(byteArray))
+    {
+        await blobClient.UploadAsync(stream);
+    }
+    return "Blob successfully created";
+}
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 ```csharp
 private static async Task<string> CreateBlob(string accessToken)
 {
-    // Create a blob on behalf of the user
+    // Create a blob on behalf of the user.
     TokenCredential tokenCredential = new TokenCredential(accessToken);
     StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
 
-    // Replace the URL below with your storage account URL
-    CloudBlockBlob blob =
-        new CloudBlockBlob(
-            new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
-            storageCredentials);
+    // Replace the URL below with the URL to your blob.
+    Uri blobUri = new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt");
+    CloudBlockBlob blob = new CloudBlockBlob(blobUri, storageCredentials);
     await blob.UploadTextAsync("Blob created by Azure AD authenticated user.");
     return "Blob successfully created";
 }
 ```
+
+---
 
 > [!NOTE]
 > Blob ve kuyruk işlemlerini bir OAuth 2,0 belirteciyle yetkilendirmek için HTTPS kullanmanız gerekir.
@@ -175,69 +214,25 @@ x-ms-version: 2017-11-09
 Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 ```
 
-#### <a name="get-an-oauth-token-from-azure-ad"></a>Azure AD 'den bir OAuth belirteci alın
+#### <a name="get-an-access-token-from-azure-ad"></a>Azure AD'den erişim belirteci alma
 
 Sonra, Azure AD 'den Kullanıcı adına belirteç isteyen bir yöntem ekleyin. Bu yöntem, izin verilecek kapsamı tanımlar. İzinler ve kapsamlar hakkında daha fazla bilgi için bkz. [Microsoft Identity platform uç noktasındaki izinler ve onay](../../active-directory/develop/v2-permissions-and-consent.md).
 
 Belirtecin alınacağı kapsamı oluşturmak için kaynak KIMLIĞINI kullanın. Örnek, kaynak KIMLIĞINI yerleşik kapsamla birlikte kullanarak `user_impersonation` , belirtecin Kullanıcı adına istenmekte olduğunu gösteren kapsamı oluşturur.
 
-Kullanıcıya, kullanıcının adına belirteç isteme izni vermesini sağlayan bir arayüz sunmanız gerektiğini aklınızda bulundurun. Onay gerekli olduğunda, örnek **Msaluırequiredexception** yakalar ve izin isteğini kolaylaştırmak için başka bir yöntem çağırır:
+Kullanıcıya, Kullanıcı adına belirteç isteme izni vermesini sağlayan bir arabirim ile Kullanıcı sunmanız gerektiğini aklınızda bulundurun:
 
 ```csharp
+[AuthorizeForScopes(Scopes = new string[] { "https://storage.azure.com/user_impersonation" })]
 public async Task<IActionResult> Blob()
 {
-    var scopes = new string[] { "https://storage.azure.com/user_impersonation" };
-    try
-    {
-        var accessToken =
-            await _tokenAcquisition.GetAccessTokenOnBehalfOfUser(HttpContext, scopes);
-        ViewData["Message"] = await CreateBlob(accessToken);
-        return View();
-    }
-    catch (MsalUiRequiredException ex)
-    {
-        AuthenticationProperties properties =
-            BuildAuthenticationPropertiesForIncrementalConsent(scopes, ex);
-        return Challenge(properties);
-    }
+    string message = await CreateBlob(new TokenAcquisitionTokenCredential(_tokenAcquisition));
+    ViewData["Message"] = message;
+    return View();
 }
 ```
 
-Onay, bir kullanıcının adına korumalı kaynaklara erişmesi için yetkilendirme izni veren bir işlemdir. Microsoft Identity Platform 2,0 artımlı onayı destekler, yani bir güvenlik sorumlusu başlangıçta minimum izin kümesi isteyebilir ve gerektiğinde zaman içinde izinler ekleyebilir. Kodunuz bir erişim belirteci istediğinde, uygulamanız için, parametre içinde herhangi bir zamanda uygulamanıza gereken izin kapsamını belirtin `scope` . Artımlı izin hakkında daha fazla bilgi için bkz. [Microsoft Identity platform (v 2.0) güncelleştirmesinde neden](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)olan **artımlı ve dinamik onay** başlıklı Bölüm.
-
-Aşağıdaki yöntem artımlı izin istemek için kimlik doğrulama özelliklerini oluşturur:
-
-```csharp
-private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes,
-                                                                                    MsalUiRequiredException ex)
-{
-    AuthenticationProperties properties = new AuthenticationProperties();
-
-    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
-    string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
-    properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
-                                                 scopes.Union(additionalBuildInScopes).ToList());
-
-    // Attempt to set the login_hint so that the logged-in user is not presented
-    // with an account selection dialog.
-    string loginHint = HttpContext.User.GetLoginHint();
-    if (!string.IsNullOrWhiteSpace(loginHint))
-    {
-        properties.SetParameter<string>(OpenIdConnectParameterNames.LoginHint, loginHint);
-
-        string domainHint = HttpContext.User.GetDomainHint();
-        properties.SetParameter<string>(OpenIdConnectParameterNames.DomainHint, domainHint);
-    }
-
-    // Specify any additional claims that are required (for instance, MFA).
-    if (!string.IsNullOrEmpty(ex.Claims))
-    {
-        properties.Items.Add("claims", ex.Claims);
-    }
-
-    return properties;
-}
-```
+Onay, bir kullanıcının adına korumalı kaynaklara erişmesi için yetkilendirme izni veren bir işlemdir. Microsoft Identity Platform 2,0 artımlı onayı destekler, yani bir güvenlik sorumlusu başlangıçta minimum izin kümesi isteyebilir ve gerektiğinde zaman içinde izinler ekleyebilir. Kodunuz bir erişim belirteci istediğinde, uygulamanız için, parametre içinde herhangi bir zamanda uygulamanıza gereken izin kapsamını belirtin `scope` . Artımlı izin hakkında daha fazla bilgi için bkz. [artımlı ve dinamik izin](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
 ## <a name="view-and-run-the-completed-sample"></a>Tamamlanan örneği görüntüleme ve çalıştırma
 
@@ -271,17 +266,15 @@ Sonra, dosyadaki *appsettings.js* aşağıdaki gibi kendi değerlerinizle günce
 
 ### <a name="update-the-storage-account-and-container-name"></a>Depolama hesabı ve kapsayıcı adını güncelleştirme
 
-*HomeController.cs* dosyasında, blok BLOBUNA başvuran URI 'yi, depolama hesabınızın ve kapsayıcının adını kullanacak şekilde güncelleştirin:
+*HomeController.cs* dosyasında, blok BLOBUNA başvuran URI 'yi, bir depolama hesabınızın ve kapsayıcının adını kullanacak şekilde güncelleştirin ve açılı ayraçlar içindeki değerleri kendi değerlerinizle değiştirin:
 
-```csharp
-CloudBlockBlob blob = new CloudBlockBlob(
-                      new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
-                      storageCredentials);
+```html
+https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ```
 
 ### <a name="enable-implicit-grant-flow"></a>Örtük verme akışını etkinleştir
 
-Örneği çalıştırmak için, uygulama kaydınız için örtük verme akışını yapılandırmanız gerekebilir. Şu adımları uygulayın:
+Örneği çalıştırmak için, uygulama kaydınız için örtük verme akışını yapılandırmanız gerekebilir. Şu adımları izleyin:
 
 1. Azure portal uygulama kaydınız ' ne gidin.
 1. **Yönet** bölümünde **kimlik doğrulama** ayarını seçin.

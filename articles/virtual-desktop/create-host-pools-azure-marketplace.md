@@ -3,15 +3,15 @@ title: Windows sanal masaüstü konak havuzu Azure portal-Azure
 description: Azure portal kullanarak Windows sanal masaüstü konak havuzu oluşturma.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322594"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084371"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -22,7 +22,7 @@ Konak havuzları, Windows sanal masaüstü ortamlarında bir veya daha fazla öz
 
 Bu makale, Azure portal aracılığıyla bir Windows sanal masaüstü ortamı için bir konak havuzu oluşturmaya yönelik kurulum sürecinde size yol gösterecektir. Bu yöntem, Windows sanal masaüstünde bir konak havuzu oluşturmak, bir Azure aboneliğinde VM 'Ler içeren bir kaynak grubu oluşturmak, bu VM 'Leri Azure Active Directory (AD) etki alanına eklemek ve VM 'Leri Windows sanal masaüstü ile kaydettirmek için tarayıcı tabanlı bir kullanıcı arabirimi sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir konak havuzu oluşturmak için aşağıdaki parametreleri girmeniz gerekir:
 
@@ -188,6 +188,13 @@ Masaüstü uygulama grubunu bir çalışma alanına kaydetmek için:
      - Yapılandırmanızı temel alan bir Azure Kaynak Yönetimi şablonu için indirme bağlantısı.
 
 Bundan sonra işiniz tamamlandı!
+
+## <a name="run-the-azure-resource-manager-template-to-provision-a-new-host-pool"></a>Yeni bir konak havuzu sağlamak için Azure Resource Manager şablonunu çalıştırma
+
+Otomatik bir işlem kullanmak istiyorsanız, bunun yerine yeni konak havuzunuzu sağlamak için [Azure Resource Manager şablonumuzu indirin](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates) .
+
+>[!NOTE]
+>Ortamınızı derlemek için otomatikleştirilmiş bir işlem kullanıyorsanız, yapılandırma JSON dosyasının en son sürümü gerekir. JSON dosyasını [buradan](https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts?restype=container&comp=list)bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

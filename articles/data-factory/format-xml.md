@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 6c0b03db281a054410b3c4f44e278dbccf32029f
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: a11b72024188fa434374110d9ce9e8cc69b2c6f0
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042692"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060977"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure Data Factory XML biçimi
 
@@ -35,7 +35,7 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 | encodingName     | Test dosyalarını okumak/yazmak için kullanılan kodlama türü. <br>İzin verilen değerler şunlardır: "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32TO", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JıS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "" IBM861 "," IBM863 "," IBM864 "," IBM865 "," IBM869 "," IBM870 "," IBM01140 "," IBM01141 "," IBM01142 "," IBM01143 "," IBM01144 "," IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| No       |
 | nullValue | Null değerin dize gösterimini belirtir.<br/>Varsayılan değer boş bir **dizedir**. | No |
 | sıkıştırma | Dosya sıkıştırmayı yapılandırmak için özellik grubu. Etkinlik yürütmesi sırasında sıkıştırma/açma işlemi yapmak istediğinizde bu bölümü yapılandırın. | No |
-| tür<br>(*altında `compression` *) | XML dosyalarını okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler şunlardır **bzip2**, **gzip**, **söndür**, **zipsöndür**, **Snappy**veya **lz4**. dosyasını kaydederken kullanmak için. Varsayılan değer sıkıştırılmaz.<br>**Şu anda** kopyalama etkinliği "Snappy" & "lz4" desteklemez ve eşleme veri akışı "zipsöndür" seçeneğini desteklemez.<br>Bu **dosyaları açmak ve dosya tabanlı** havuz veri deposuna yazmak için kopyalama **etkinliği kullanılırken,** varsayılan olarak dosyalar klasörüne çıkarılır: `<path specified in dataset>/<folder named as source zip file>/` , `preserveZipFileNameAsFolder` ZIP dosya adının klasör yapısı olarak korunup korunmayacağını denetlemek için [etkinlik kaynağını kopyalama](#xml-as-source) üzerinde kullanın. | Hayır.  |
+| tür<br>(*altında `compression` *) | XML dosyalarını okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler şunlardır **bzip2**, **gzip**, **söndür**, **zipsöndür**, **targzip**, **Snappy**veya **lz4**. Varsayılan değer sıkıştırılmaz.<br>**Şu anda** kopyalama etkinliği "Snappy" & "lz4" desteklemez ve eşleme veri akışı "zipsöndür" seçeneğini desteklemez.<br>Örneğin, dosya tabanlı havuz veri deposuna **açmak için**kopyalama **etkinliği kullanılırken,** / **TarGzip** varsayılan olarak dosyalar klasörüne çıkarılır: `<path specified in dataset>/<folder named as source compressed file>/` , `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` ZIP dosya adının klasör yapısı olarak korunup korunmayacağını denetlemek için [etkinlik kaynağını kopyalama](#xml-as-source) üzerinde kullanın. | Hayır.  |
 | düzey<br/>(*altında `compression` *) | Sıkıştırma oranı. <br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) konusu. | No       |
 
 Azure Blob depolamada bir XML veri kümesi örneği aşağıda verilmiştir:
@@ -87,7 +87,8 @@ Altında desteklenen **XML okuma ayarları** `formatSettings` :
 | validationMode | XML şemasının doğrulanması gerekip gerekmediğini belirtir.<br>İzin verilen değerler **none** (varsayılan, doğrulama yok), **XSD** (XSD kullanarak doğrula), **DTD** (DTD kullanarak doğrula). | No |
 | Namespaceöneklerini | XML dosyası ayrıştırılırken alanları adlandırmak için kullanılan, önek eşleme için ad alanı URI 'SI.<br/>Bir XML dosyasında ad alanı ve ad alanı etkinse, varsayılan olarak, alan adı XML belgesinde olduğu gibidir.<br>Bu haritada ad alanı URI 'SI için tanımlanmış bir öğe varsa, alan adı `prefix:fieldName` . | No |
 | compressionProperties | Belirli bir sıkıştırma codec bileşeni için verileri açmak üzere bir özellik grubu. | No       |
-| preserveZipFileNameAsFolder<br>(*altında `compressionProperties` *) | Giriş veri kümesi **Zipsöndür** sıkıştırma ile yapılandırıldığında geçerlidir. Kaynak ZIP dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory daraltılmış dosyaları içine yazar `<path specified in dataset>/<folder named as source zip file>/` .<br>- **False**olarak ayarlandığında Data Factory ZIP dosyalarını doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak ZIP dosyalarında yinelenen dosya adlarında bulunmadığından emin olun.  | No |
+| preserveZipFileNameAsFolder<br>(* `compressionProperties` -> `type` as `ZipDeflateReadSettings` *)  | Giriş veri kümesi **Zipsöndür** sıkıştırma ile yapılandırıldığında geçerlidir. Kaynak ZIP dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory daraltılmış dosyaları içine yazar `<path specified in dataset>/<folder named as source zip file>/` .<br>- **False**olarak ayarlandığında Data Factory ZIP dosyalarını doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak ZIP dosyalarında yinelenen dosya adlarında bulunmadığından emin olun.  | No |
+| preserveCompressionFileNameAsFolder<br>(* `compressionProperties` -> `type` as `TarGZipReadSettings` *) | Giriş veri kümesi **Targzip** sıkıştırması ile yapılandırıldığında geçerlidir. Kaynak sıkıştırılmış dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory, açılan dosyaları içine yazar `<path specified in dataset>/<folder named as source compressed file>/` . <br>- **False**olarak ayarlandığında Data Factory açılan dosyaları doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak dosyalarında yinelenen dosya adlarında bulunmadığından emin olun. | No |
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
@@ -100,13 +101,13 @@ Aşağıdaki tabloda bir XML kaynağı tarafından desteklenen özellikler liste
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Joker karakter yolları | Joker karakterle eşleşen tüm dosyalar işlenecek. Veri kümesinde ayarlanan klasör ve dosya yolunu geçersiz kılar. | No | String [] | Yavaya Cardyolları |
-| Bölüm kök yolu | Bölümlenmiş dosya verileri için bölümlenmiş klasörleri sütun olarak okumak üzere bir bölüm kök yolu girebilirsiniz | No | Dize | Partitionrootyolu |
+| Bölüm kök yolu | Bölümlenmiş dosya verileri için bölümlenmiş klasörleri sütun olarak okumak üzere bir bölüm kök yolu girebilirsiniz | Hayır | Dize | Partitionrootyolu |
 | Dosya listesi | Kaynağınızın işlenecek dosyaları listeleyen bir metin dosyasına işaret edip etmediğini belirtir | No | `true` veya `false` | Si |
-| Dosya adının depolanacak sütun | Kaynak dosya adı ve yolu ile yeni bir sütun oluşturma | No | Dize | rowUrlColumn |
-| Tamamlandıktan sonra | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | No | Sil: `true` veya`false` <br> Geçiş`['<from>', '<to>']` | purgeFiles <br>moveFiles |
+| Dosya adının depolanacak sütun | Kaynak dosya adı ve yolu ile yeni bir sütun oluşturma | Hayır | Dize | rowUrlColumn |
+| Tamamlandıktan sonra | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | No | Sil: `true` veya `false` <br> Geçiş `['<from>', '<to>']` | purgeFiles <br>moveFiles |
 | Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | No | Zaman damgası | Modıfıedafter <br>modifiedBefore |
-| Doğrulama modu | XML şemasının doğrulanması gerekip gerekmediğini belirtir. | No | `None`(varsayılan, doğrulama yok)<br>`xsd`(XSD kullanarak doğrula)<br>`dtd`(DTD kullanarak doğrula). | validationMode |
-| Ad Alanları | XML dosyalarını ayrıştırırken ad alanının etkinleştirilip etkinleştirilmeyeceğini belirtir. | No | `true`(varsayılan) veya`false` | öznitelikleri |
+| Doğrulama modu | XML şemasının doğrulanması gerekip gerekmediğini belirtir. | No | `None` (varsayılan, doğrulama yok)<br>`xsd` (XSD kullanarak doğrula)<br>`dtd` (DTD kullanarak doğrula). | validationMode |
+| Ad alanları | XML dosyalarını ayrıştırırken ad alanının etkinleştirilip etkinleştirilmeyeceğini belirtir. | No | `true` (varsayılan) veya `false` | öznitelikleri |
 | Ad alanı ön eki çiftleri | XML dosyası ayrıştırılırken alanları adlandırmak için kullanılan, önek eşleme için ad alanı URI 'SI.<br/>Bir XML dosyasında ad alanı ve ad alanı etkinse, varsayılan olarak, alan adı XML belgesinde olduğu gibidir.<br>Bu haritada ad alanı URI 'SI için tanımlanmış bir öğe varsa, alan adı `prefix:fieldName` . | No | Desenli dizi`['URI1'->'prefix1','URI2'->'prefix2']` | Namespaceöneklerini |
 
 ### <a name="xml-source-script-example"></a>XML kaynak betiği örneği
@@ -149,7 +150,7 @@ Kaynak olarak XML kullanırken aşağıdakileri göz önünde edin.
 - Ad alanı işleme:
 
     - Ad alanı, veri akışı kullanılırken devre dışı bırakılabilir, bu durumda ad alanını tanımlayan öznitelikler normal öznitelikler olarak ayrıştırılacaktır.
-    - Ad alanı etkinleştirildiğinde, öğe ve özniteliklerin adları, `namespaceUri,elementName` ve varsayılan olarak, stili izler `namespaceUri,@attributeName` . Kaynaktaki her bir ad alanı için ad alanı öneki tanımlayabilir, bu durumda öğe ve özniteliklerin adları, `definedPrefix:elementName` ya da bunun yerine, veya özniteliklerini izler `definedPrefix:@attributeName` .
+    - Ad alanı etkinleştirildiğinde, öğe ve özniteliklerin adları,       `namespaceUri,elementName` ve varsayılan olarak, stili izler `namespaceUri,@attributeName` . Kaynaktaki her bir ad alanı için ad alanı öneki tanımlayabilir, bu durumda öğe ve özniteliklerin adları, `definedPrefix:elementName` ya da bunun yerine, veya özniteliklerini izler `definedPrefix:@attributeName` .
 
 - Değer sütunu:
 

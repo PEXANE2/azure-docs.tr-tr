@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/25/2020
-ms.openlocfilehash: c3813210808138f02f664a5445ef6faefc9591dc
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: f77d197c30d00083b280a97079fe03146fcfeb82
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031968"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061810"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Öğretici: Kubernetes 'te gizli dizi için Azure Key Vault sağlayıcıyı yapılandırma ve çalıştırma
 
@@ -70,7 +70,7 @@ Azure Cloud Shell kullanmanız gerekmez. Azure CLı yüklü olan komut isteminiz
     ```azurecli
     kubectl version
     ```
-1. Kubernetes sürümünüzün 1.16.0 veya üzeri olduğundan emin olun. Aşağıdaki komut hem Kubernetes kümesini hem de düğüm havuzunu yükseltir. Komutun yürütülmesi birkaç dakika sürebilir. Bu örnekte, kaynak grubu *Contosoresourcegroup*ve Kubernetes kümesi *Contosoakscluster*' dir.
+1. Kubernetes sürümünüzün 1.16.0 veya üzeri olduğundan emin olun. Windows kümeleri için Kubernetes sürümünüzün 1.18.0 veya üzeri olduğundan emin olun. Aşağıdaki komut hem Kubernetes kümesini hem de düğüm havuzunu yükseltir. Komutun yürütülmesi birkaç dakika sürebilir. Bu örnekte, kaynak grubu *Contosoresourcegroup*ve Kubernetes kümesi *Contosoakscluster*' dir.
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
@@ -110,18 +110,20 @@ Kendi anahtar kasanızı oluşturmak ve sırlarınızı ayarlamak için [Azure C
 
 ## <a name="create-your-own-secretproviderclass-object"></a>Kendi SecretProviderClass nesneniz oluşturma
 
-Özel bir SecretProviderClass nesneniz olan gizli dizi parametrelerini sağlayıcıya özgü parametrelerle oluşturmak için [Bu şablonu kullanın](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/test/bats/tests/azure_v1alpha1_secretproviderclass.yaml). Bu nesne, anahtar kasanıza kimlik erişimi sağlar.
+Özel bir SecretProviderClass nesneniz olan gizli dizi parametrelerini sağlayıcıya özgü parametrelerle oluşturmak için [Bu şablonu kullanın](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass_service_principal.yaml). Bu nesne, anahtar kasanıza kimlik erişimi sağlar.
 
 Örnek SecretProviderClass YAML dosyasında eksik parametreleri girin. Aşağıdaki parametreler gereklidir:
 
-* **Useratandıdentityıd**: hizmet SORUMLUSUNUN istemci kimliği
+* **Useratandıdentityıd**: # [gerekli] bir hizmet sorumlusu kullanıyorsanız, kullanılacak kullanıcı tarafından atanan yönetilen kimliği belirtmek için istemci kimliğini kullanın. VM 'nin yönetilen kimliği olarak Kullanıcı tarafından atanan bir kimlik kullanıyorsanız, kimliğin istemci kimliğini belirtin. Değer boşsa, varsayılan olarak VM 'de sistem tarafından atanan kimliği kullanır 
 * **Keyvaultname**: anahtar kasanızın adı
 * **nesneler**: bağlamak istediğiniz tüm gizli içerik için kapsayıcı
     * **ObjectName**: gizli içeriğin adı
     * **ObjectType**: nesne türü (gizli, anahtar, sertifika)
-* **resourceGroup**: kaynak grubunun adı
-* **SubscriptionID**: anahtar kasanızın abonelik kimliği
+* **resourceGroup**: kaynak grubunun adı # [sürüm için gerekli < 0.0.4] anahtar kasasının kaynak grubu
+* **SubscriptionID**: anahtar KASASıNıN abonelik kimliği # [sürüm < 0.0.4] için gereken anahtar kasasının abonelik kimliği
 * **Tenantıd**: anahtar kasaınızın Kiracı kimliği veya dizin kimliği
+
+Tüm gerekli alanların belgelerine buradan ulaşabilirsiniz: [bağlantı](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
 
 Güncelleştirilmiş şablon aşağıdaki kodda gösterilmiştir. Bunu bir YAML dosyası olarak indirin ve gerekli alanları girin. Bu örnekte, Anahtar Kasası **contosoKeyVault5**' dir. İki gizli dizi vardır, **secret1** ve **secret2**.
 
@@ -210,6 +212,11 @@ Yönetilen kimlikler kullanıyorsanız, oluşturduğunuz AKS kümesine belirli r
 1. Kullanıcı tarafından atanan yönetilen kimlik oluşturmak, listelemek veya okumak için, AKS kümenizin [yönetilen kimlik operatörü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) rolüne atanması gerekir. **$ClientID** Kubernetes kümesinin ClientID 'si olduğundan emin olun. Kapsam için, bu, özellikle AKS kümesi oluşturulduğunda yapılmış olan düğüm kaynak grubu Azure abonelik hizmetiniz altında olacaktır. Bu kapsam, aşağıda atanan rollerden yalnızca o gruptaki kaynakların etkilendiğinden emin olur. 
 
     ```azurecli
+    RESOURCE_GROUP=contosoResourceGroup
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+    
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP

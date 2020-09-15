@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f0bba2f2d200ffc84855ff8fc7f634bd8b71ceb6
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 2092b03ee95349286b9e845689b5d9d55b61c772
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514365"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060739"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -101,7 +101,7 @@ Azure geçişi gereci internet bağlantısı gerektirir.
 **URL** | **Ayrıntılar**  
 --- | --- |
 *.portal.azure.com  | Azure portalına gidin.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Azure aboneliğinizde oturum açın.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *. office.com | Azure aboneliğinizde oturum açın.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Gereç için Azure geçişi ile iletişim kurmak üzere Azure Active Directory (AD) uygulamalar oluşturun.
 management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Azure AD uygulamaları oluşturun.
 *.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.

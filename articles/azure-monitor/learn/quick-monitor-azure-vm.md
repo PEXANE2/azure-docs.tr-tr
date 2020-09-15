@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 11475de159cf3d59923d6f2129aa46ddf0ef8f2c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516405"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084439"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Azure sanal makinesini Izleme
 [Azure izleyici](../overview.md) , Azure sanal makinelerinden oluşturulan verilerin veri toplamaya başlar. Bu hızlı başlangıçta, bir Azure sanal makinesi için otomatik olarak toplanan verileri ve Azure portal nasıl görüntüleyekullanacağınızı gösteren kısa bir adım adım bulacaksınız. Daha sonra VM 'niz için [VM'ler için Azure izleyici](../insights/vminsights-overview.md) ETKINLEŞTIREREK, sanal makine üzerindeki aracıların süreçler ve bunların bağımlılıkları dahil Konuk işletim sisteminden veri toplayıp analiz etmesine olanak sağlar.
@@ -85,15 +85,15 @@ Yeni bir Log Analytics çalışma alanı oluşturduğunuzda, günlükleri toplam
 
 7. Sanal makinenize tıklayın ve sonra **izleme** menüsü **öngörüleri** kutucuğunun altındaki **performans** sekmesini seçin. Bu, sanal makinenizin Konuk işletim sisteminden toplanan bir grup performans sayacını gösterir. Daha fazla sayaç görüntülemek için aşağı kaydırın ve ortalama ve yüzdebirlik değeri farklı zamanlarda görüntülemek için fareyi grafiğin üzerine taşıyın.
 
-    ![Performans](media/quick-monitor-azure-vm/performance.png)
+    ![Ekran görüntüsü performans bölmesini gösterir.](media/quick-monitor-azure-vm/performance.png)
 
 9. Sanal makinede çalışan işlemlerin yanı sıra bağımlılıklarını gösteren haritalar özelliğini açmak için **eşle** ' yi seçin. Henüz açık değilse Özellik bölmesini açmak için **Özellikler** ' i seçin.
 
-    ![Harita](media/quick-monitor-azure-vm/map.png)
+    ![Ekran görüntüsü harita bölmesini gösterir.](media/quick-monitor-azure-vm/map.png)
 
 11. Sanal makineniz için süreçler ' ı genişletin. Ayrıntılarını görüntülemek ve bağımlılıklarını vurgulamak için işlemlerden birini seçin.
 
-    ![İşlemler](media/quick-monitor-azure-vm/processes.png)
+    ![Ekran görüntüsü, genişletilmiş bir sanal makine için işlemlerle harita bölmesini gösterir.](media/quick-monitor-azure-vm/processes.png)
 
 12. Sanal makinenizi yeniden seçin ve ardından **günlük olayları**' nı seçin. 
 

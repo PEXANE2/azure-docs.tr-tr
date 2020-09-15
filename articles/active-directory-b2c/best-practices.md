@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6fee96354760e448de132f88918e9839c6220af3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c8739da859c00a9caf08ac833f7b4ae7ae52e392
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254500"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084320"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için öneriler ve en iyi uygulamalar
 
 Aşağıdaki en iyi yöntemler ve öneriler, Azure Active Directory (Azure AD) B2C 'yi mevcut veya yeni uygulama ortamlarında tümleştirmesinin bazı birincil yönlerini kapsar.
 
-## <a name="fundamentals"></a>Temel Bilgiler
+## <a name="fundamentals"></a>Temeller
 
 | En iyi yöntem | Açıklama |
 |--|--|
@@ -56,7 +56,6 @@ Uygulama aşamasında aşağıdaki önerileri göz önünde bulundurun.
 | Sorun gidermeyi öğrenin Azure AD B2C | Geliştirme sırasında [özel ilkelerle ilgili sorunları nasıl giderebileceğinizi](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications) öğrenin. Normal bir kimlik doğrulama akışının nasıl göründüğünü öğrenin ve bozukluklar ve hatalar bulmak için araçları kullanın. Örneğin, Kullanıcı günlüğünün çıktı günlüklerini gözden geçirmek için [Application Insights](troubleshoot-with-application-insights.md) kullanın. |
 | Kendini kanıtlamış özel ilke desenleri ile yararlanın | Çeşitli gelişmiş Azure AD B2C Müşteri Kimliği ve erişim yönetimi (CıHAR) Kullanıcı ile ilgili [örnekleri](https://github.com/azure-ad-b2c/samples) bulun. |
 
-
 ## <a name="testing"></a>Test Etme
 
 Azure AD B2C uygulamanızı test edin ve otomatikleştirin.
@@ -79,11 +78,10 @@ Azure AD B2C ortamınızı yönetin.
 |--|--|
 | Birden çok ortam oluşturma | Daha kolay işlemler ve dağıtım toplaması için geliştirme, test, ön üretim ve üretim için ayrı ortamlar oluşturun. Her biri için Azure AD B2C kiracılar oluşturun. |
 | Özel ilkeleriniz için sürüm denetimini kullanma | Azure AD B2C özel ilkeleriniz için GitHub, Azure Repos veya başka bir bulut tabanlı sürüm denetim sistemi kullanmayı düşünün. |
-| B2C Kiracılarınızın yönetimini otomatikleştirmek için Microsoft Graph API 'sini kullanın | Microsoft Graph API 'Leri:<br/>[Kimlik deneyimi çerçevesini](https://docs.microsoft.com/graph/api/resources/trustframeworkpolicy?view=graph-rest-beta) yönetme (özel ilkeler)<br/>[Anahtarlar](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset?view=graph-rest-beta)<br/>[Kullanıcı Akışları](https://docs.microsoft.com/graph/api/resources/identityuserflow?view=graph-rest-beta) |
+| B2C Kiracılarınızın yönetimini otomatikleştirmek için Microsoft Graph API 'sini kullanın | Microsoft Graph API 'Leri:<br/>[Kimlik deneyimi çerçevesini](https://docs.microsoft.com/graph/api/resources/trustframeworkpolicy?view=graph-rest-beta&preserve-view=true) yönetme (özel ilkeler)<br/>[Anahtarlar](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset?view=graph-rest-beta&preserve-view=true)<br/>[Kullanıcı Akışları](https://docs.microsoft.com/graph/api/resources/identityuserflow?view=graph-rest-beta&preserve-view=true) |
 | Azure DevOps ile tümleştirme | Bir [CI/CD işlem hattı](deploy-custom-policies-devops.md) , kodun farklı ortamlar arasında hareket etmelerini kolaylaştırır ve her zaman üretime hazır hale gelmesini sağlar.   |
 | Azure Izleyici ile tümleştirme | [Denetim günlüğü olayları](view-audit-logs.md) yalnızca yedi gün boyunca tutulur. Uzun süreli kullanıma yönelik günlükleri [sürdürmek Için Azure izleyici Ile tümleştirin](azure-monitor.md) veya ortamınızda Öngörüler elde etmek için üçüncü taraf güvenlik bilgileri ve olay yönetimi (SIEM) araçlarıyla tümleştirin. |
 | Etkin uyarı ve izleme kurulumu | Application Insights kullanarak Azure AD B2C [Kullanıcı davranışını izleyin](active-directory-b2c-custom-guide-eventlogger-appins.md) . |
-
 
 ## <a name="support-and-status-updates"></a>Destek ve durum güncelleştirmeleri
 

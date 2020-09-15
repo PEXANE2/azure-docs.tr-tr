@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de495d18220500e5aa5653e89776c2634d5b1c85
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719163"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084218"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Windows 10 çoklu oturum görüntüsüne dil paketleri ekleme
 
@@ -24,13 +24,13 @@ Kullanıcılarınızın dil ihtiyaçlarını karşılamak için kullanabileceği
 
 İkinci yöntem daha verimli ve ekonomik maliyetli bir yoldur. Ancak, hangi yöntemin gereksinimlerinize en uygun olduğuna karar vermek sizin için önemlidir. Bu makalede, görüntüleriniz için dillerin nasıl özelleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Birden çok dil eklemek için Windows 10 Kurumsal Çoklu oturum görüntülerini özelleştirmek üzere aşağıdaki şeylere ihtiyacınız vardır:
 
 - Windows 10 Enterprise multi-session, sürüm 1903 veya üzeri bir Azure sanal makinesi (VM)
 
-- Dil ISO ve görüntünün kullandığı işletim sistemi sürümünün Istek üzerine Özellik (FOD) disk 1. Buradan indirebilirsiniz:
+- Dil ISO, Istek üzerine Özellik (FOD) disk 1 ve görüntünün kullandığı işletim sistemi sürümüne ait gelen kutusu uygulamaları ISO. Buradan indirebilirsiniz:
      
      - Dil ISO:
         - [Windows 10, sürüm 1903 veya 1909 dil paketi ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
@@ -39,6 +39,10 @@ Birden çok dil eklemek için Windows 10 Kurumsal Çoklu oturum görüntülerini
      - FOD disk 1 ISO:
         - [Windows 10, sürüm 1903 veya 1909 FOD disk 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         - [Windows 10, sürüm 2004 FOD disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        
+     - Gelen kutusu uygulamaları ISO:
+        - [Windows 10, sürüm 1903 veya 1909 gelen kutusu uygulamaları ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
+        - [Windows 10, sürüm 2004 gelen kutusu uygulamaları ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
 
 - Windows dosya sunucusu sanal makinesindeki bir Azure dosya paylaşma veya dosya paylaşma
 
@@ -47,15 +51,16 @@ Birden çok dil eklemek için Windows 10 Kurumsal Çoklu oturum görüntülerini
 
 ## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>Dil paketleri ve isteğe bağlı özellikler için bir içerik deposu oluşturun
 
-Dil paketleri ve bilgisayarlar için içerik deposu oluşturmak için:
+Dil paketleri için içerik deposunu ve gelen kutusu uygulama paketleri için bir depoyu oluşturmak için:
 
-1. Azure VM 'de, [Önkoşullar](#prerequisites)'daki bağlantılardan Windows 10 Enterprise multi-session, sürüm 1903, 1909 ve 2004 görüntüleri için Windows 10 çok dilli ISO ve fods 'yi indirin.
+1. Azure VM 'de, [Önkoşullar](#prerequisites)'Daki bağlantılardan Windows 10 Enterprise multi-session, sürüm 1903/1909 ve 2004 görüntüleri için Windows 10 çok dilli ISO, fods ve gelen kutusu uygulamalarını indirin.
 
 2. ISO dosyalarını sanal makineye açın ve bağlayın.
 
 3. Dil paketi ISO dosyasına gidin ve içeriği **Localexperiencepacks** ve **x64 \\ Langpacks** klasörlerinden kopyalayıp dosya paylaşımının içeriğini yapıştırın.
 
 4. **FOD ISO dosyasına**gidin, tüm içeriğini kopyalayın ve dosya paylaşımında yapıştırın.
+5. Gelen kutusu uygulamaları ISO 'daki **amd64fre** klasörüne gidin ve hazırladığınız gelen kutusu uygulamaları için depodaki içeriği kopyalayın.
 
      >[!NOTE]
      > Sınırlı depolamayla çalışıyorsanız, yalnızca kullanıcılarınızın ihtiyacı olan dillerin dosyalarını kopyalayın. Dosya adlarında dil kodlarına bakarak dosyaları birbirinden ayırt edebilirsiniz. Örneğin, Fransızca dosyası adında "fr-FR" koduna sahiptir. Tüm kullanılabilir dillerin dil kodlarının tüm listesi için bkz. [Windows Için kullanılabilir dil paketleri](/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
@@ -66,7 +71,7 @@ Dil paketleri ve bilgisayarlar için içerik deposu oluşturmak için:
      > [!div class="mx-imgBorder"]
      > ![Dosya adlarında "Jpan" dili etiketiyle Japonca dil paketlerine bir örnek.](media/language-pack-example.png)
 
-5. Özel görüntü oluşturmak için kullanacağınız VM 'den okuma erişiminizin olması için dil içeriği depo paylaşımında izinleri ayarlayın.
+6. Özel görüntü oluşturmak için kullanacağınız VM 'den okuma erişiminizin olması için dil içeriği depo paylaşımında izinleri ayarlayın.
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>Özel bir Windows 10 Kurumsal Çoklu oturum görüntüsünü el ile oluşturma
 
@@ -75,7 +80,7 @@ Dil paketleri ve bilgisayarlar için içerik deposu oluşturmak için:
 1. Bir Azure VM dağıtın, ardından Azure galerisine gidin ve kullanmakta olduğunuz Windows 10 Enterprise çoklu oturumunun geçerli sürümünü seçin.
 2. VM 'yi dağıttıktan sonra, RDP 'yi yerel yönetici olarak kullanarak buna bağlanın.
 3. SANAL makinenizin en son Windows güncelleştirmelerine sahip olduğundan emin olun. Gerekirse güncelleştirmeleri indirin ve VM 'yi yeniden başlatın.
-4. Dil paketine ve FOD dosya paylaşma deposuna bağlanın ve bir mektup sürücüsüne (örneğin, E sürücüsüne) bağlayın.
+4. Dil paketi, FOD ve gelen kutusu uygulamaları dosya paylaşma deposuna bağlanın ve bir mektup sürücüsüne (örneğin, E sürücüsüne) bağlayın.
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>Özel bir Windows 10 Kurumsal Çoklu oturum görüntüsünü otomatik olarak oluşturma
 
@@ -161,6 +166,56 @@ Betik, yüklemeniz gereken dillerin sayısına bağlı olarak biraz zaman alabil
 
 Betiğin çalışması tamamlandıktan sonra, **Başlangıç**  >  **ayarları**  >  **zaman & dil**  >  **dili**' ne giderek dil paketlerinin doğru şekilde yüklendiğinden emin olun. Dil dosyaları varsa, her şey ayarlanır.
 
+Windows görüntüsüne ek diller ekledikten sonra, eklenen dilleri desteklemek için gelen kutusu uygulamalarının de güncelleştirilmeleri gerekir. Bu, önceden yüklenmiş uygulamaların gelen kutusu Apps ISO 'daki içerikle yenilenerek yapılabilir. Bu yenilemeyi, bağlantısı kesilen bir ortamda gerçekleştirmek için (sanal makineden Internet erişimi olmadan), işlemi otomatikleştirmek için aşağıdaki PowerShell betiği örneğini kullanabilirsiniz.
+
+```powershell
+#########################################
+## Update Inbox Apps for Multi Language##
+#########################################
+##Set Inbox App Package Content Stores##
+[string]$InboxApps = "F:\"
+##Update Inbox Store Apps##
+$AllAppx = Get-Item $inboxapps\*.appx | Select-Object name
+$AllAppxBundles = Get-Item $inboxapps\*.appxbundle | Select-Object name
+$allAppxXML = Get-Item $inboxapps\*.xml | Select-Object name
+foreach ($Appx in $AllAppx) {
+    $appname = $appx.name.substring(0,$Appx.name.length-5)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    
+    Write-Host "Handeling with xml $appname"  
+  
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+      
+      Write-Host "Handeling without xml $appname"
+      
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+foreach ($Appx in $AllAppxBundles) {
+    $appname = $appx.name.substring(0,$Appx.name.length-11)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    Write-Host "Handeling with xml $appname"
+    
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+       Write-Host "Handeling without xml $appname"
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+```
+
+>[!IMPORTANT]
+>ISO 'da bulunan gelen kutusu uygulamaları önceden yüklenmiş Windows uygulamalarının en son sürümleri değildir. Tüm uygulamaların en son sürümünü almak için Windows Mağazası uygulamasını kullanarak uygulamaları güncelleştirmeniz ve ek dilleri yükledikten sonra güncelleştirmeler için el ile arama yapmanız gerekir.
+
 İşiniz bittiğinde paylaşımın bağlantısını kesdiğinizden emin olun.
 
 ## <a name="finish-customizing-your-image"></a>Görüntünüzü özelleştirmeyi tamamlama
@@ -177,15 +232,15 @@ Sysprep çalıştırmak için:
      C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
      ```
 
-2. Sanal makineyi kapatın ve ardından [Azure 'da Genelleştirilmiş BIR VM 'nin yönetilen bir görüntüsünü oluşturma](../virtual-machines/windows/capture-image-resource.md)bölümündeki yönergeleri izleyerek yönetilen bir görüntüde yakalayın.
+2. VM 'yi durdurun, ardından [Azure 'da Genelleştirilmiş BIR VM 'nin yönetilen bir görüntüsünü oluşturma](../virtual-machines/windows/capture-image-resource.md)bölümündeki yönergeleri izleyerek bir yönetilen görüntüde yakalayın.
 
 3. Artık özelleştirilmiş görüntüyü Windows sanal masaüstü ana bilgisayar havuzunu dağıtmak için kullanabilirsiniz. Bir konak havuzunu dağıtmayı öğrenmek için bkz. [öğretici: Azure Portal bir konak havuzu oluşturma](create-host-pools-azure-marketplace.md).
 
 ## <a name="enable-languages-in-windows-settings-app"></a>Windows ayarları uygulamasında dilleri etkinleştirme
 
-Son olarak, Ayarlar menüsünde tercih edilen dillerini seçebilmeniz için dili her kullanıcının dil listesine eklemeniz gerekir.
+Son olarak, ana bilgisayar havuzunu dağıttıktan sonra, Ayarlar menüsünde tercih edilen dillerini seçebilmeniz için dili her kullanıcının dil listesine eklemeniz gerekir.
 
-Kullanıcılarınızın yüklediğiniz dilleri seçmesini sağlamak için, Kullanıcı olarak oturum açın ve ardından, yüklü dil paketlerini diller menüsüne eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın. Bu betiği, kullanıcı oturumunda oturum açtığında etkinleştiren otomatik bir görev olarak da ayarlayabilirsiniz.
+Kullanıcılarınızın yüklediğiniz dilleri seçmesini sağlamak için, Kullanıcı olarak oturum açın ve ardından, yüklü dil paketlerini diller menüsüne eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın. Bu betiği, kullanıcı oturumunda oturum açtığında etkinleştiren otomatik bir görev veya oturum açma betiği olarak da ayarlayabilirsiniz.
 
 ```powershell
 $LanguageList = Get-WinUserLanguageList

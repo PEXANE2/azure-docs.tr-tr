@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053057"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084745"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect eşitleme: Scheduler
 Bu konuda Azure AD Connect Sync (eşitleme altyapısı) içinde yerleşik Zamanlayıcı açıklanmaktadır.
@@ -79,7 +79,7 @@ Daha önceki Azure AD Connect yapılarda **ıstagingmodeenabled** , set-ADSyncSc
 Zamanlayıcı yapılandırması Azure AD 'de depolanır. Hazırlama sunucunuz varsa, birincil sunucu üzerindeki herhangi bir değişiklik hazırlama sunucusunu da etkiler (ısstagingmodeenabled hariç).
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
-Sözdizimi`Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
+Sözdizimi `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
 d-gün, SS-saat, mm-dakika, SS-saniye
 
 Örnek: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
@@ -160,12 +160,15 @@ Tam eşitleme döngüsünü çalıştırmayı önlemek için, belirli bağlayıc
 ## <a name="stop-the-scheduler"></a>Zamanlayıcıyı durdur
 Zamanlayıcı Şu anda bir eşitleme döngüsünü çalıştırıyorsa, durdurmanız gerekebilir. Örneğin, Yükleme Sihirbazı 'nı başlatırsanız ve bu hatayı alırsanız:
 
-![Syncgerlerundokgerror](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
+![Ekran görüntüsü, yapılandırma hata iletisini değiştirebir şekilde görünür.](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
 Bir eşitleme çevrimi çalışırken, yapılandırma değişiklikleri yapamazsınız. Zamanlayıcı işlemi bitirene kadar bekleyebilirsiniz, ancak değişikliklerinizi hemen yapabilmeniz için bunu da durdurabilirsiniz. Geçerli döngüyü durdurmak zararlı değildir ve bekleyen değişiklikler sonraki çalıştırma ile işlenir.
 
 1. Zamanlayıcı cmdlet 'ini kullanarak Scheduler 'ın geçerli döngüsünü durdurmasını bildirerek başlayın `Stop-ADSyncSyncCycle` .
-2. 1.1.281 önce bir yapı kullanırsanız, Scheduler 'ı durdurmak geçerli bağlayıcının geçerli görevinden durdurulmaz. Bağlayıcının durdurulmasına zorlamak için aşağıdaki eylemleri gerçekleştirin: ![ StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+2. 1.1.281 önce bir yapı kullanırsanız, Scheduler 'ı durdurmak geçerli bağlayıcının geçerli görevinden durdurulmaz. Bağlayıcının durdurulmasına zorlamak için aşağıdaki işlemleri gerçekleştirin:
+
+   ![Ekran görüntüsünde, bağlayıcılar seçiliyken ve çalıştırılan bir bağlayıcının, durdur eylemiyle işaretlenmiş Synchronization Service Manager gösterir.](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+
    * Başlangıç menüsünden **eşitleme hizmetini** başlatın. **Bağlayıcılar**' a gidin, bağlayıcıyı **çalışır**durumda vurgulayın ve eylemlerden **Durdur** ' u seçin.
 
 Zamanlayıcı hala etkin ve sonraki fırsatta yeniden başlatılıyor.

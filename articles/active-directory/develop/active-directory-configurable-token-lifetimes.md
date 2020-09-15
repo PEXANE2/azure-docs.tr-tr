@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e50b4aa300c74ed5fff9a345f83d41fdda5a1054
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bbe4328d797f740e124d4944aee889d471393200
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115875"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085612"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -90,13 +90,13 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 | Yenileme belirteci en fazla etkin olmayan süre |Maxınactivetime |Belirteçleri Yenile |90 gün |10 dakika |90 gün |
 | Tek faktörlü yenileme belirtecinin en fazla yaşı |Maxagesinglefaktör |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
 | Multi-Factor Refresh belirtecinin en fazla yaşı |MaxAgeMultiFactor |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
-| Tek faktörlü oturum belirteci maksimum yaşı |Maxagesessionsinglefaktör |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
-| Multi-Factor Session belirtecinin en fazla yaşı |MaxAgeSessionMultiFactor |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
+| Tek faktörlü oturum belirteci maksimum yaşı |Maxagesessionsinglefaktör |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |180 gün<sup>1</sup> |
+| Multi-Factor Session belirtecinin en fazla yaşı |MaxAgeSessionMultiFactor |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |180 gün<sup>1</sup> |
 
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanoluşturulabilecek maksimum açık uzunluktadır.
 * <sup>2</sup> Microsoft ekipleri web istemcisinin çalıştığından emin olmak için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla tutulması önerilir.
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 | Özellik | Ekranlarını | Varsayılan |
 | --- | --- | --- |
 | Yenileme belirteci maksimum yaşı (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |Belirteçleri Yenile (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |12 saat |
@@ -209,7 +209,7 @@ Uygulamalar, hizmet sorumluları ve genel kuruluşunuz için belirteç yaşam s�
 * Web API 'sini çağıran yerel uygulama için bir ilke oluşturma
 * Gelişmiş bir ilkeyi yönetme
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Aşağıdaki örneklerde uygulamalar, hizmet sorumluları ve genel kurumunuzun ilkelerini oluşturur, güncelleştirir, bağlar ve silebilirsiniz. Azure AD 'de yeni başladıysanız, bu örneklere geçmeden önce [bir Azure AD kiracısı alma](quickstart-create-new-tenant.md) hakkında bilgi almanızı öneririz.  
 
 Başlamak için aşağıdaki adımları uygulayın:
@@ -400,7 +400,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 | <code>&#8209;DisplayName</code> |İlke adının dizesi. |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;IsOrganizationDefault</code> |Doğru ise, ilkeyi kuruluşun varsayılan ilkesi olarak ayarlar. Yanlışsa, hiçbir şey yapmaz. |`-IsOrganizationDefault $true` |
 | <code>&#8209;Type</code> |İlke türü. Belirteç ömürleri için her zaman "TokenLifetimePolicy" kullanın. | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Seçim |İlke için alternatif bir KIMLIK ayarlar. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;AlternativeIdentifier</code> Seçim |İlke için alternatif bir KIMLIK ayarlar. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -413,7 +413,7 @@ Get-AzureADPolicy
 
 | Parametreler | Açıklama | Örnek |
 | --- | --- | --- |
-| <code>&#8209;Id</code>Seçim |İstediğiniz ilkenin **ObjectID (ID)** . |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> Seçim |İstediğiniz ilkenin **ObjectID (ID)** . |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -441,10 +441,10 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 | --- | --- | --- |
 | <code>&#8209;Id</code> |İstediğiniz ilkenin **ObjectID (ID)** . |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |İlke adının dizesi. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code>Seçim |Tüm ilkenin kurallarını içeren, strıngiingjson dizisi. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code>Seçim |Doğru ise, ilkeyi kuruluşun varsayılan ilkesi olarak ayarlar. Yanlışsa, hiçbir şey yapmaz. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code>Seçim |İlke türü. Belirteç ömürleri için her zaman "TokenLifetimePolicy" kullanın. |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Seçim |İlke için alternatif bir KIMLIK ayarlar. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;Definition</code> Seçim |Tüm ilkenin kurallarını içeren, strıngiingjson dizisi. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| <code>&#8209;IsOrganizationDefault</code> Seçim |Doğru ise, ilkeyi kuruluşun varsayılan ilkesi olarak ayarlar. Yanlışsa, hiçbir şey yapmaz. |`-IsOrganizationDefault $true` |
+| <code>&#8209;Type</code> Seçim |İlke türü. Belirteç ömürleri için her zaman "TokenLifetimePolicy" kullanın. |`-Type "TokenLifetimePolicy"` |
+| <code>&#8209;AlternativeIdentifier</code> Seçim |İlke için alternatif bir KIMLIK ayarlar. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 7d230ce068678bbc074b54ab361f3d70d9b102f8
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 716928761d23c2cf04ebcc72e253ad7884408065
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670788"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061860"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Kaynakları bölgeler arasında taşıma (kaynak grubundan)
 
@@ -22,7 +22,7 @@ Bu makalede, belirli bir kaynak grubundaki kaynakları farklı bir Azure bölges
 > Azure Kaynak taşıyıcısı Şu anda genel önizleme aşamasındadır.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Taşımak istediğiniz kaynakların bulunduğu abonelikte *sahip* erişiminizin olması gerekir.
     - Bir Azure aboneliğinde belirli bir kaynak ve hedef eşleme için ilk kez kaynak eklediğinizde, kaynak taşıyıcısı abonelik tarafından güvenilen [sistem tarafından atanan bir yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (eski adıyla yönetilen hizmet tanımlaması (MSI)) oluşturur.
@@ -65,7 +65,6 @@ Taşımak istediğiniz kaynakları seçin. Kaynakları kaynak bölgesi aboneliğ
     ![Kaynakları farklı bir bölgeye taşımak için seçim](./media/move-region-within-resource-group/select-move-region.png)
     
 4. **Kaynak + hedef**bölümünde, kaynakları taşımak istediğiniz hedef bölgeyi seçin. Ardından **İleri**’yi seçin.
-5. **Meta veri bölgesi**' nde, taşıdığınız kaynaklarla ilgili meta verileri nerede depolamak istediğinizi seçin.  Bu amaçla özel olarak bir kaynak grubu oluşturulur. Ardından **İleri**’yi seçin.
 
 
     ![Hedef bölgeyi seçmek için kaynak ve hedef sayfası](./media/move-region-within-resource-group/source-target.png)

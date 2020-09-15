@@ -1,16 +1,16 @@
 ---
 title: Değişiklik verilerini yakalama için Debezium ile Azure Event Hubs 'da (Önizleme) Apache Kafka Connect 'i tümleştirin
-description: Bu makalede, Kafka için Azure Event Hubs ile Apache Spark kullanma hakkında bilgi sağlanır.
+description: Bu makalede, Kafka için Azure Event Hubs Debezium kullanımı hakkında bilgi sağlanır.
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a11ec882a50d051a34758562ac84dcef5b799f5f
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: cac04bed797bb9956125bc1a38fdfa5c8285050e
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88137015"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061691"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Değişiklik verilerini yakalama için Debezium ile Azure Event Hubs (Önizleme) üzerinde Apache Kafka Connect desteğini tümleştirin
 
@@ -51,7 +51,7 @@ Bu bölümde aşağıdaki konular ele alınacaktır:
 ### <a name="download-and-setup-debezium-connector"></a>Debezium bağlayıcısını indirme ve kurma
 Bağlayıcıyı indirmek ve ayarlamak için lütfen [Debezium belgelerindeki](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-deploying-a-connector) en son yönergeleri izleyin.
 
-- Bağlayıcının eklenti arşivini indirin. Örneğin, bağlayıcının sürümünü indirmek için `1.2.0` Bu bağlantıyı kullanın-https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.2.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz
+- Bağlayıcının eklenti arşivini indirin. Örneğin, bağlayıcının sürümünü indirmek için `1.2.0` Bu bağlantıyı kullanın- https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.2.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz
 - JAR dosyalarını ayıklayın ve [Kafka Connect Plugin. Path](https://kafka.apache.org/documentation/#connectconfigs)dosyasına kopyalayın.
 
 
@@ -133,7 +133,7 @@ Bu adımda, bir Kafka Connect çalışanı dağıtılmış modda yerel olarak ba
 ```
 
 > [!TIP]
-> `database.server.name`öznitelik, izlenmekte olan belirli bir PostgreSQL veritabanı sunucusu/kümesi için ad alanı tanımlayan ve sağlayan bir mantıksal addır. Ayrıntılı bilgi için, [Debezium belgelerini](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-property-database-server-name) denetleyin
+> `database.server.name` öznitelik, izlenmekte olan belirli bir PostgreSQL veritabanı sunucusu/kümesi için ad alanı tanımlayan ve sağlayan bir mantıksal addır. Ayrıntılı bilgi için, [Debezium belgelerini](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-property-database-server-name) denetleyin
 
 Bağlayıcının bir örneğini oluşturmak için Kafka Connect REST API uç noktasını kullanın:
 

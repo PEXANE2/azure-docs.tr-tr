@@ -1,21 +1,21 @@
 ---
 title: 3ds Max 'ta PBR malzemeleri ayarlama
 description: 3ds Max ile fiziksel olarak temel işleme malzemelerinin nasıl ayarlanacağını ve bunları FBX biçimine dışarı aktarmayı açıklar.
-author: muxanickms
-ms.author: misams
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: ac0f4ee8f06982126d2ae30bed01716b287e8993
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e77379be863f4527081eeec6a0ee1f426d526527
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078049"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084473"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Öğretici: 3ds Max ile fiziksel tabanlı işleme malzemeleri ayarlama
 
 ## <a name="overview"></a>Genel Bakış
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 >[!div class="checklist"]
 >

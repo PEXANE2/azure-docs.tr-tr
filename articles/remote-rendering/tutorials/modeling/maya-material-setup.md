@@ -1,16 +1,16 @@
 ---
 title: Maya içinde fiziksel tabanlı işleme malzemeleri ayarlama
 description: Maya ' de fiziksel tabanlı işleme malzemelerinin nasıl ayarlanacağını ve bunları FBX biçimine dışarı aktarmayı açıklar.
-author: muxanickms
-ms.author: misams
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72742ff4f6aa19fda092b44d8d2237e7d49dd816
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 43c11575be084354e4c9287b44b5847d4d086aff
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85373259"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084405"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Öğretici: Maya 'de fiziksel tabanlı işleme malzemeleri ayarlama
 
@@ -33,7 +33,7 @@ Bu öğreticideki örnek sahnenin bir dizi Çokgen kutusu nesnesi vardır. Bunla
 * **Normal**, daha fazla çokgen eklemek zorunda kalmadan bir yüzeye ayrıntı ekleyen normal. Ayrıntı örnekleri, bir metal yüzey veya tahta 'daki Grenler ve kanlar olabilir.
 * Yumuşak gölgeleme eklemek ve bir modele iletişim kurmak için kullanılan **çevresel Occlusiyon**. Bu, bir modelin hangi alanlarının tam aydınlatma (beyaz) veya tam gölge (siyah) alacağını belirten gri tonlamalı bir eşlemedir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Autodesk Maya 2017 veya üzeri
 
 ## <a name="set-up-materials-in-the-scene"></a>Sahnede malzemeleri ayarlama

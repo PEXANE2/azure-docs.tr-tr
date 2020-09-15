@@ -3,14 +3,14 @@ title: Kapsayıcılar için Azure Izleyicisini yapılandırma Prometheus tümle�
 description: Bu makalede, Kubernetes kümeniz ile Prometheus 'dan bir kapsayıcı için Azure Izleyicisini, Azure Izleyici ölçümleri için nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: f7a43f00ce160829cc8e6ed3b6272ab14aaace66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c83d962a31150b31f5883150a2f7bd8d4b49183
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800469"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069433"
 ---
-# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Prometheus ölçümlerinin korumasını yapılandırın
+# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Kapsayıcılara yönelik Azure İzleyici ile Prometheus Metrics atığını yapılandırma
 
 [Prometheus](https://prometheus.io/) , popüler bir açık kaynaklı ölçüm izleme çözümüdür ve [bulut Yerel işlem altyapısı](https://www.cncf.io/)'nın bir parçasıdır. Kapsayıcılar için Azure Izleyici, Prometheus ölçümlerini toplamak için sorunsuz bir ekleme deneyimi sağlar. Genellikle, Prometheus 'yi kullanmak için bir depolama ile bir Prometheus sunucusu ayarlamanız ve yönetmeniz gerekir. Azure Izleyici ile tümleştirerek bir Prometheus sunucusu gerekli değildir. Tek yapmanız gereken, dışarı aktardığınız veya yığınlarınızın (uygulamanızın) yanı sıra Azure Izleyici kapsayıcıları için Kapsayıcılı aracı sizin yerinize ıskartaya çıkarabilirsiniz. 
 
@@ -36,7 +36,7 @@ Prometheus ölçülerinin etkin bir şekilde kullanılması, iki perspektiften b
 * Küme genelinde HTTP URL 'SI ve bir hizmetin listelenen bitiş noktalarından hedefleri bulur. Örneğin, kuas-DNS ve KUIN-eyalet-ölçümleri gibi k8s Hizmetleri ve bir uygulamaya özgü Pod ek açıklamaları. Bu bağlamda toplanan ölçümler ConfigMap bölümünde *[Prometheus data_collection_settings. Cluster]* tanımlanacaktır.
 * Düğüm genelinde HTTP URL 'SI ve bir hizmetin listelenen bitiş noktalarından hedefleri bulur. Bu bağlamda toplanan ölçümler ConfigMap bölümünde *[Prometheus_data_collection_settings. Node]* tanımlanacaktır.
 
-| Uç Nokta | Kapsam | Örnek |
+| Uç Noktası | Kapsam | Örnek |
 |----------|-------|---------|
 | Pod ek açıklaması | Küme genelinde | açıklamaları <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
 | Kubernetes hizmeti | Küme genelinde | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
@@ -50,7 +50,7 @@ Bir URL belirtildiğinde, kapsayıcılar için Azure Izleyici yalnızca uç nokt
 | | `urls` | Dize | Virgülle ayrılmış dizi | HTTP uç noktası (IP adresi veya geçerli URL yolu belirtildi). Örneğin: `urls=[$NODE_IP/metrics]`. ($NODE _IP, kapsayıcılar için belirli bir Azure Izleyici parametresi ve düğüm IP adresi yerine kullanılabilir. Tümü büyük harf olmalıdır.) |
 | | `kubernetes_services` | Dize | Virgülle ayrılmış dizi | Kuin-State-ölçümlerini kullanarak bir Kubernetes hizmeti dizisi. Örneğin `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
 | | `monitor_kubernetes_pods` | Boole | true veya false | `true`, Küme genelinde ayarlar halinde ayarlandığında, kapsayıcılar Için Azure izleyici Aracı, aşağıdaki Prometheus ek açıklamaları için tüm küme genelinde atık olarak çalışır:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boole | true veya false | Pod 'un scraping öğesini sunar. `monitor_kubernetes_pods`olarak ayarlanmalıdır `true` . |
+| | `prometheus.io/scrape` | Boole | true veya false | Pod 'un scraping öğesini sunar. `monitor_kubernetes_pods` olarak ayarlanmalıdır `true` . |
 | | `prometheus.io/scheme` | Dize | http veya https | Varsayılan olarak HTTP üzerinden atık yapılır. Gerekirse, olarak ayarlayın `https` . | 
 | | `prometheus.io/path` | Dize | Virgülle ayrılmış dizi | Ölçümlerinin alınacağı HTTP kaynak yolu. Ölçüm yolu yoksa `/metrics` , bu ek açıklama ile tanımlayın. |
 | | `prometheus.io/port` | Dize | 9102 | Iskartaya çıkış için bir bağlantı noktası belirtin. Bağlantı noktası ayarlanmamışsa, varsayılan olarak 9102 olur. |
@@ -142,7 +142,7 @@ Aşağıdaki kümeler için ConfigMap yapılandırma dosyanızı yapılandırmak
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
-           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/scheme:"http" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
            - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
@@ -162,7 +162,7 @@ Bu bölüm, Azure Red Hat OpenShift v3. x kümesine yönelik ConfigMap yapıland
 >[!NOTE]
 >Azure Red Hat OpenShift v3. x için, *OpenShift-Azure-Logging* ad alanında bir şablon configmap dosyası oluşturulur. Aracıdan etkin bir şekilde hurdaya, ölçüm veya veri koleksiyonu için yapılandırılmamış.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce Kapsayıcılı aracıyı ve Prometheus scraping ayarlarını yapılandırmak için Azure Red Hat Openshıft kümenizin müşteri kümesi Yöneticisi rolünün bir üyesi olduğunu doğrulayın. *OSA-müşteri-Yöneticiler* grubunun bir üyesi olduğunuzu doğrulamak için şu komutu çalıştırın:
 
@@ -259,7 +259,7 @@ Azure Red Hat Openshıft v3. x kümeniz için ConfigMap yapılandırma dosyanız
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
-           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/scheme:"http" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
            - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```

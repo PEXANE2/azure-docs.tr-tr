@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873764"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060756"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
-
-> [!div class="op_single_selector"]
-> * [Hücre Magic 'i kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Betik eylemini kullanma](apache-spark-python-package-installation.md)
 
 HDInsight, Spark kümesinde, Anaconda Python 2,7 ve Python 3,5 ' de iki yerleşik Python yüklemelerine sahiptir. Müşterilerin Python ortamını özelleştirmesi gerekebilir. Dış Python paketleri veya başka bir Python sürümü yükleme gibi. Burada, HDInsight 'ta Apache Spark kümeleri için Python ortamlarını güvenli bir şekilde yönetmeye yönelik en iyi uygulama gösterilmektedir.
 
@@ -60,9 +56,9 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
 
 1. Conda kullanarak Python sanal ortamı oluşturun. Sanal bir ortam, başka bir yere kırçıkmadan projeleriniz için yalıtılmış bir alan sağlar. Python sanal ortamını oluştururken, kullanmak istediğiniz Python sürümünü belirtebilirsiniz. Python 2,7 ve 3,5 ' i kullanmak istiyor olsanız bile, hala sanal ortam oluşturmanız gerekir. Bu gereksinim, kümenin varsayılan ortamının Brode gerçekleştirmediğinden emin olmak için gereklidir. Python sanal ortamı oluşturmak için aşağıdaki betiği içeren tüm düğümler için kümenizde betik eylemleri çalıştırın.
 
-    -   `--prefix`bir Conda sanal ortamının yaşadığı bir yolu belirtir. Burada belirtilen yola göre daha fazla değiştirilmesi gereken birkaç yapılandırma vardır. Bu örnekte, küme zaten py35 adlı mevcut bir sanal ortama sahip olduğu için py35new kullanıyoruz.
-    -   `python=`sanal ortam için Python sürümünü belirtir. Bu örnekte, içinde yerleşik olarak bulunan kümeyle aynı sürüme sahip sürüm 3,5 ' i kullanırız. Sanal ortam oluşturmak için diğer Python sürümlerini de kullanabilirsiniz.
-    -   `anaconda`sanal ortama Anaconda paketleri yüklemek için package_spec, Anaconda olarak belirtir.
+    -   `--prefix` bir Conda sanal ortamının yaşadığı bir yolu belirtir. Burada belirtilen yola göre daha fazla değiştirilmesi gereken birkaç yapılandırma vardır. Bu örnekte, küme zaten py35 adlı mevcut bir sanal ortama sahip olduğu için py35new kullanıyoruz.
+    -   `python=` sanal ortam için Python sürümünü belirtir. Bu örnekte, içinde yerleşik olarak bulunan kümeyle aynı sürüme sahip sürüm 3,5 ' i kullanırız. Sanal ortam oluşturmak için diğer Python sürümlerini de kullanabilirsiniz.
+    -   `anaconda` sanal ortama Anaconda paketleri yüklemek için package_spec, Anaconda olarak belirtir.
     
     ```bash
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes
@@ -76,8 +72,8 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
 
     - Conda kanalını kullanın:
 
-        -   `seaborn`, yüklemek istediğiniz paket adıdır.
-        -   `-n py35new`Yeni oluşturulan sanal ortam adını belirtin. Sanal ortam oluşturmaya göre adı karşılık geldiğinden emin olun.
+        -   `seaborn` , yüklemek istediğiniz paket adıdır.
+        -   `-n py35new` Yeni oluşturulan sanal ortam adını belirtin. Sanal ortam oluşturmaya göre adı karşılık geldiğinden emin olun.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
@@ -92,8 +88,8 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
 
     - Conda kanalını kullanın:
 
-        -   `numpy=1.16.1`, yüklemek istediğiniz paket adı ve sürümdür.
-        -   `-n py35new`Yeni oluşturulan sanal ortam adını belirtin. Sanal ortam oluşturmaya göre adı karşılık geldiğinden emin olun.
+        -   `numpy=1.16.1` , yüklemek istediğiniz paket adı ve sürümdür.
+        -   `-n py35new` Yeni oluşturulan sanal ortam adını belirtin. Sanal ortam oluşturmaya göre adı karşılık geldiğinden emin olun.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
@@ -132,7 +128,7 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
 
     4. Değişiklikleri kaydedin ve etkilenen hizmetleri yeniden başlatın. Bu değişikliklerin Spark2 hizmetinin yeniden başlatılması gerekir. Ambarı Kullanıcı arabirimi gerekli bir yeniden başlatma anımsatıcısı ister, tüm etkilenen hizmetleri yeniden başlatmak için yeniden Başlat 'a tıklayın.
 
-        ![Spark config 'i ambarı aracılığıyla değiştirme](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Hizmetleri yeniden Başlat](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
 4. Jupyıter üzerinde yeni oluşturulan sanal ortamı kullanmak istiyorsanız. Jupi yapılandırmalarını 'yi değiştirip jupyıter 'ı yeniden başlatın. Jupi 'yi yeni oluşturulan sanal ortama işaret etmek için aşağıdaki deyimle tüm üst bilgi düğümlerinde betik eylemlerini çalıştırın. Sanal ortamınız için belirttiğiniz önek için yolu değiştirdiğinizden emin olun. Bu betik eylemini çalıştırdıktan sonra, bu değişikliği kullanılabilir hale getirmek için ambarı Kullanıcı arabirimi aracılığıyla Jupyıter hizmetini yeniden başlatın.
 

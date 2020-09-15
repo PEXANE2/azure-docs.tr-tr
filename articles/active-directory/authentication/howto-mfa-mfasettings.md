@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 6a5ec4644eaed8d525c278c4fc464b4dbc683596
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023848"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068821"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -156,7 +156,7 @@ Birleşik Devletler, MFA arayanın KIMLIĞINI yapılandırmadıysanız, Microsof
 * *+ 1 (877) 668 6536*
 
 > [!NOTE]
-> Azure Multi-Factor Authentication çağrıları genel telefon ağı üzerinden yerleştirildiğinde, bazen arayan KIMLIĞINI desteklemeyen bir taşıyıcı aracılığıyla yönlendirilir. Bu nedenle, Azure Multi-Factor Authentication her zaman gönderse de arayan KIMLIĞI garanti edilmez.
+> Azure Multi-Factor Authentication çağrıları genel telefon ağı üzerinden yerleştirildiğinde, bazı durumlarda çağrılar arayan KIMLIĞINI desteklemeyen bir taşıyıcı aracılığıyla yönlendirilir. Bu nedenle, Azure Multi-Factor Authentication her zaman göndermesi mümkün olsa da arayan KIMLIĞI garanti edilmez. Bu, hem telefon aramalarına hem de Azure Multi-Factor Authentication tarafından sunulan SMS iletilerine uygulanır. Bir SMS iletisinin Azure Multi-Factor Authentication 'den olduğunu doğrulamanız gerekiyorsa bkz. [ileti göndermek Için hangi SMS kısa kodlarının kullanıldığı](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users) .
 
 Kendi arayanın KIMLIK numaranızı yapılandırmak için aşağıdaki adımları izleyin:
 
