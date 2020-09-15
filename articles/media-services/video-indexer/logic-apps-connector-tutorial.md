@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c46195572fc4495b35f5ec44421440975ab9ffc
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047101"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531364"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Öğretici: mantıksal uygulama ve güç otomatikleştirme ile Video Indexer kullanma
 
@@ -58,13 +58,13 @@ Azure depolama kapsayıcıınızda her bir blob eklendiğinde ilk akış tetikle
 
 Azure depolama ve Video Indexer hesaplarına bağlanarak, "bir blob eklendiğinde veya değiştirildiğinde) tetikleyicisine gidin ve video dosyalarınızı yerleştireceğiniz kapsayıcıyı seçin. 
 
-![Kapsayıcı](./media/logic-apps-connector-tutorial/container.png)
+![Depolama kapsayıcısı](./media/logic-apps-connector-tutorial/container.png)
 
 Sonra, "yola göre SAS URI 'SI oluştur" eylemine gidin ve dinamik içerik seçeneklerinden dosya yolu listesi ' ni seçin.  
 
 ![Yola göre SAS URI 'si](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-Video Indexer hesap belirtecini almak için [hesabınızın konumunu ve kimliğini](./video-indexer-use-apis.md#account-id)doldurun   .
+Video Indexer hesap belirtecini almak için [Hesap konumunuzu](regions.md) ve [Hesap kimliğinizi](./video-indexer-use-apis.md#account-id)doldurun   .
 
 ![Hesap erişim belirtecini al](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -90,7 +90,7 @@ Bu akışı ayarlamak için, Video Indexer API anahtarınızı ve Azure depolama
 
 Tetikleyiciniz için bir HTTP POST URL 'SI alanı görürsünüz. Akışınızı kaydettikten sonra URL oluşturulmaz; Bununla birlikte, URL sonunda gerekecektir. Buna geri dönecektir. 
 
-Video Indexer hesap belirtecini almak için [hesabınızın konumunu ve kimliğini](./video-indexer-use-apis.md#account-id)doldurun   .  
+Video Indexer hesap belirtecini almak için [Hesap konumunuzu](regions.md) ve [Hesap kimliğinizi](./video-indexer-use-apis.md#account-id)doldurun   .  
 
 "Video dizinini al" eylemine gidin ve gerekli parametreleri doldurun. Video KIMLIĞI için şu ifadeyi koyun: Triggerçıktılar () [' sorgular '] [' ID '] 
 

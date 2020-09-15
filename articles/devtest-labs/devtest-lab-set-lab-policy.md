@@ -3,12 +3,12 @@ title: Laboratuvar ilkelerini Azure DevTest Labs yönetme | Microsoft Docs
 description: VM boyutları, Kullanıcı başına en fazla VM ve kapalı otomasyon gibi Laboratuvar ilkeleri tanımlama hakkında bilgi edinin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290418"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530361"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs laboratuvar için tüm ilkeleri yönetme
 
@@ -29,7 +29,7 @@ Azure DevTest Labs, her bir laboratuvarın ilkelerini (ayarlarını) yöneterek 
 
 1. Bu ilkeyi etkinleştirirseniz laboratuvarınızda oluşturulabilecek bir veya daha fazla VM boyutunu seçin.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="set-virtual-machines-per-user"></a>Kullanıcı başına sanal makine ayarlama
 **Kullanıcı başına sanal makine** ilkesi, tek bir kullanıcı tarafından oluşturulabilen VM sayısını belirtmenizi sağlar. Kullanıcı sınırı karşılandığında bir sanal makine oluşturmaya veya talep almaya çalışırsa, VM 'nin oluşturuamayacağını/istenmediğini belirten bir hata iletisi görüntülenir. 
@@ -42,7 +42,7 @@ Azure DevTest Labs, her bir laboratuvarın ilkelerini (ayarlarını) yöneterek 
 
 1. SSD 'yi (katı hal diski) kullanılabilecek VM 'lerin sayısını sınırlandırmak için **Evet** ' i seçin. SSD 'yi kullanacak sanal makinelerin sayısını sınırlandırmak istemiyorsanız **Hayır**' ı seçin. **Evet**' i SEÇERSENIZ, SSD kullanılarak oluşturulabilen VM sayısını belirten bir değer girin. 
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="set-virtual-machines-per-lab"></a>Laboratuvar başına sanal makine ayarlama
 **Laboratuvar başına sanal makine** ilkesi, geçerli laboratuvar Için oluşturulabilecek VM sayısını belirtmenizi sağlar. Laboratuvar sınırı karşılandığında bir Kullanıcı VM oluşturmaya çalışırsa, VM 'nin oluşturuamayacağını belirten bir hata iletisi görüntülenir. 
@@ -55,7 +55,7 @@ Azure DevTest Labs, her bir laboratuvarın ilkelerini (ayarlarını) yöneterek 
 
 1. SSD 'yi (katı hal diski) kullanılabilecek VM 'lerin sayısını sınırlandırmak için **Evet** ' i seçin. SSD 'yi kullanacak sanal makinelerin sayısını sınırlandırmak istemiyorsanız **Hayır**' ı seçin. **Evet**' i SEÇERSENIZ, SSD kullanılarak oluşturulabilen VM sayısını belirten bir değer girin. 
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="set-auto-shutdown"></a>Otomatik kapanışı ayarla
 Otomatik kapatma ilkesi, bu laboratuvarın VM 'lerinin kapandığı saati belirtmenize izin vererek laboratuvar harcanmasının en aza indirilmesine yardımcı olur.
@@ -72,7 +72,7 @@ Otomatik kapatma ilkesi, bu laboratuvarın VM 'lerinin kapandığı saati belirt
 
    Web kancaları hakkında daha fazla bilgi için bkz. [Web kancası veya API Azure Işlevi oluşturma](../azure-functions/functions-bindings-http-webhook.md). 
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Varsayılan olarak, bu ilke, etkinleştirildikten sonra geçerli laboratuvardaki tüm VM 'Ler için geçerlidir. Bu ayarı belirli bir VM 'den kaldırmak için VM 'nin Yönetim bölmesini açın ve **otomatik kapatılma** ayarını değiştirin.
 
@@ -105,13 +105,13 @@ Otomatik başlatma ilkesi, geçerli laboratuvardaki VM 'Lerin ne zaman başlatı
 
 1. Laboratuvarın **yapılandırma ve ilkeler** bölmesinde otomatik **Başlat**' ı seçin.
    
-    ![Otomatik başlatma](./media/devtest-lab-set-lab-policy/auto-start.png)
+    ![Ekran yakalama, bir sanal makine için otomatik başlatma seçeneklerini gösterir.](./media/devtest-lab-set-lab-policy/auto-start.png)
 
 2. Bu ilkeyi **etkinleştirmek ve devre dışı bırakmak Için** **Açık** seçeneğini belirleyin.
 
 3. Bu ilkeyi etkinleştirirseniz, zamanlanan başlangıç saati, saat dilimi ve saatin geçerli olduğu haftanın günleri belirtin. 
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 Bu ilke etkinleştirildikten sonra, geçerli laboratuvardaki tüm sanal makinelere otomatik olarak uygulanmaz. Bu ayarı belirli bir VM 'ye uygulamak için, VM 'nin Yönetim bölmesini açın ve **autostart** ayarını değiştirin.
 

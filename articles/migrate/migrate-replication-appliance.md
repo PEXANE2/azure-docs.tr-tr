@@ -3,19 +3,19 @@ title: Azure Geçişi çoğaltma gereci
 description: Aracı tabanlı VMWare geçişi için Azure geçişi çoğaltma gereci hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8149613effc4519638cc9b80f7894874ef3eafe3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122107"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532129"
 ---
 # <a name="replication-appliance"></a>Çoğaltma gereci
 
 Bu makalede, [Azure geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) tarafından kullanılan çoğaltma gereci açıklanmaktadır: VMware VM 'leri, fiziksel makineler ve özel/genel bulut VM 'lerini, aracı tabanlı geçiş kullanarak Azure 'a geçirme. 
 
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 VMware VM 'Leri veya fiziksel sunucuları için aracı tabanlı geçiş ayarladığınızda, çoğaltma gereci dağıtılır. VMware VM ya da fiziksel sunucu olarak tek bir şirket içi makine olarak dağıtılır. Çalışır:
 
@@ -129,7 +129,7 @@ VM'ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS
     - İşlem sunucusu çoğaltma verilerini alır, bu verileri iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.
 5. Çoğaltma verileri günlüğü, ilk olarak Azure 'da bir önbellek depolama hesabında yer açar. Bu Günlükler işlenir ve veriler bir Azure yönetilen diskinde depolanır.
 
-![Mimari](./media/migrate-replication-appliance/architecture.png)
+![Diyagram, çoğaltma işleminin mimarisini gösterir.](./media/migrate-replication-appliance/architecture.png)
 
 ## <a name="appliance-upgrades"></a>Gereç yükseltmeleri
 

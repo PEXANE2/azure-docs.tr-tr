@@ -4,12 +4,12 @@ description: Azure blok zinciri hizmeti 'ne genel bakış
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 2a28baeb6de3c8ca1e8ad89e11d45b492f33588c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8364f4b8f063611df08275ba4cbb3acb4be5d196
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076954"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530038"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blok Zinciri Hizmeti nedir?
 
@@ -45,7 +45,7 @@ Yönetilen bir hizmet olarak, Azure blok zinciri hizmeti, blok zinciri üyesinin
 
 Ayrıca, Azure blok zinciri hizmeti, düğümlerin CPU, bellek ve depolama kullanımı hakkında Öngörüler sağlayan Azure Izleyici hizmeti aracılığıyla zengin ölçümler sağlar.  Azure Izleyici Ayrıca, blok zinciri ağ etkinliğine yönelik işlemler ve bloklar, işlem sırası derinliği ve etkin bağlantılar gibi yararlı öngörüler sağlar.  Ölçümler, blok zinciri uygulamanız için önemli olan öngörülere görünümler sunacak şekilde özelleştirilebilir.  Ayrıca, eşikler, kullanıcıların bir e-posta veya kısa mesaj gönderme, bir Logic App, Azure Işlevi çalıştırma veya özel tanımlanmış bir Web kancasına gönderme gibi eylemleri tetiklemelerine olanak sağlayan uyarılar aracılığıyla tanımlanabilir.
 
-![Ölçümler](./media/overview/metrics.png)
+![Ekran yakalama, blokları, işlemleri, bekleyen işlemleri ve işlenmiş isteklerin değerlerini içeren izlemeyi gösterir.](./media/overview/metrics.png)
 
 Kullanıcılar, Azure Log Analytics aracılığıyla çekirdek Muhasebeyle ilgili günlükleri veya işlem düğümlerine bağlantı girişimi gibi diğer önemli bilgileri görüntüleyebilir.
 

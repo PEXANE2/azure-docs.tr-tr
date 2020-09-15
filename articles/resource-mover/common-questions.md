@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: a83191fd29e0cda4bc398f6a46a0d2ebf9631665
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 18de210d817ee309ac4970ecea6b62f6ef03ef02
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068056"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530412"
 ---
 # <a name="common-questions"></a>Sık sorulan sorular
 
@@ -50,7 +50,7 @@ Kaynak taşıyıcısı kullanarak şu anda bölgeler arasında şu kaynakları t
 
 Kaynakları hedef bölgeye taşıdıktan sonra aboneliği değiştirebilirsiniz. Kaynakları farklı bir aboneliğe taşıma hakkında [daha fazla bilgi edinin](../azure-resource-manager/management/move-resource-group-and-subscription.md) . 
 
-### <a name="where-is-the-metadata-about-a-region-move-stored"></a>Bölge taşıma hakkındaki meta veriler nerede depolanır?
+### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>Bölgeler arasında taşınabilecek meta veriler nerede?
 
 Bir Microsoft aboneliğinde [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) veritabanında ve [Azure Blob depolamada](../storage/common/storage-service-encryption.md)depolanır. Şu anda meta veriler Doğu ABD 2 ve Kuzey Avrupa depolanıyor. Bu kapsamı diğer bölgelere genişleteceğiz. Bu, kaynakları herhangi bir genel bölgede taşımaya kısıtlama vermez.
 

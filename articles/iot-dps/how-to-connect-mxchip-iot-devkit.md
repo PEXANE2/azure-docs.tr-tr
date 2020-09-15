@@ -1,23 +1,23 @@
 ---
 title: IoT Hub ile Mxyonga IoT DevKit 'i kaydettirmek için Azure IoT Hub cihaz sağlama hizmeti 'nin otomatik sağlamasını kullanma | Microsoft Docs
 description: Mxyonga IoT DevKit 'i IoT Hub kaydetmek için Azure IoT Hub cihaz sağlama hizmeti (DPS) otomatik sağlamayı kullanma.
-author: liydu
-ms.author: liydu
+author: wesmc7777
+ms.author: wesmc
 ms.date: 06/25/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: jeffya
-ms.openlocfilehash: f05e92f0452b1cfff23e2094354203fd7eaea48b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: eliotgra
+ms.openlocfilehash: 2a030d9ca5422e12856dcb81b29f8327e684c97e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975661"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528662"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Mxyonga IoT DevKit 'i IoT Hub kaydetmek için Azure IoT Hub cihaz sağlama hizmeti 'ni otomatik sağlama
 
-Bu makalede, Azure IoT Hub ile Mxyonga IoT DevKit 'i kaydettirmek için Azure IoT Hub cihaz sağlama hizmeti [Otomatik sağlama](concepts-auto-provisioning.md)'nın nasıl kullanılacağı açıklanır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu makalede, Azure IoT Hub cihaz sağlama hizmeti 'nin bir Azure IoT Hub Mxyonga IoT DevKit 'i [sağlaması](about-iot-dps.md#provisioning-process) için nasıl kullanılacağı açıklanır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Cihazda cihaz sağlama hizmetinin genel uç noktasını yapılandırın.
 * Bir X. 509.440 sertifikası oluşturmak için benzersiz bir cihaz gizli dizisi (UDS) kullanın.
@@ -45,7 +45,7 @@ Bu öğreticideki adımları tamamlayabilmeniz için önce aşağıdaki görevle
 
 ## <a name="save-a-unique-device-secret-on-device-security-storage"></a>Cihaz güvenlik depolaması 'nda benzersiz bir cihaz gizli anahtarı kaydetme
 
-Otomatik sağlama, cihazın [kanıtlama mekanizmasına](concepts-security.md#attestation-mechanism)bağlı olarak bir cihazda yapılandırılabilir. Mxyongaıot DevKit, [Trusted Computing Group](https://trustedcomputinggroup.org) [cihaz kimliği bileşim altyapısını](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) kullanır. DevKit 'teki STSAFE güvenlik yongasında ([stsafe-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) kaydedilmiş **benzersiz bir cihaz gizli** dizisi (UDS), cihazın benzersiz [X. 509.440 sertifikasını](concepts-security.md#x509-certificates)oluşturmak için kullanılır. Sertifika, daha sonra cihaz sağlama hizmetindeki kayıt işlemi için ve çalışma zamanında kayıt sırasında kullanılır.
+Otomatik sağlama, cihazın [kanıtlama mekanizmasına](concepts-service.md#attestation-mechanism)bağlı olarak bir cihazda yapılandırılabilir. Mxyongaıot DevKit, [Trusted Computing Group](https://trustedcomputinggroup.org) [cihaz kimliği bileşim altyapısını](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) kullanır. DevKit 'teki STSAFE güvenlik yongasında ([stsafe-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) kaydedilmiş **benzersiz bir cihaz gizli** dizisi (UDS), cihazın benzersiz [X. 509.440 sertifikasını](concepts-x509-attestation.md)oluşturmak için kullanılır. Sertifika, daha sonra cihaz sağlama hizmetindeki kayıt işlemi için ve çalışma zamanında kayıt sırasında kullanılır.
 
 Tipik bir UDS, aşağıdaki örnekte görüldüğü gibi 64 karakter dizesidir:
 

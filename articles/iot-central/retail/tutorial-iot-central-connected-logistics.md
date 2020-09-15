@@ -6,114 +6,114 @@ ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
-ms.date: 10/20/2019
-ms.openlocfilehash: eac43ae68b10436b3e45452c6b1d03bec3ae4c9c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 09/11/2020
+ms.openlocfilehash: 5818e57f29558cbb5a29592cd4e1d7ae2eebbec1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000563"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531551"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Öğretici: bağlı bir lojistik uygulama şablonunu dağıtma ve gözden geçir
 
+Bu öğreticide, IoT Central *bağlı lojistik* uygulama şablonuyla çalışmaya başlama işlemi gösterilmektedir. Şablonu dağıtmayı ve kullanmayı öğreneceksiniz.
 
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
-Bu öğreticide, IoT Central **bağlı bir lojistik** uygulama şablonunu dağıtmaya nasıl başlacağınız gösterilmektedir. Şablonu dağıtmayı, kutudan hangilerinin ekleneceğini ve daha sonra ne yapmak isteyebileceğiniz hakkında bilgi edineceksiniz.
+> [!div class="checklist"]
+> * Bağlı bir lojistik uygulaması oluşturun.
+> * Uygulamadaki önemli özellikleri kullanın.
 
-Bu öğreticide, şunları nasıl yapacağınızı öğreneceksiniz
+## <a name="prerequisites"></a>Önkoşullar
 
-* bağlı lojistik uygulaması oluştur
-* uygulamayı gözden geçir 
+* Bu uygulamayı dağıtmak için belirli bir önkoşul yoktur.
+* Ücretsiz fiyatlandırma planını kullanabilir veya bir Azure aboneliği kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="create-connected-logistics-application"></a>Bağlı lojistik uygulaması oluştur
 
-* Bu uygulamayı dağıtmak için belirli bir ön koşul gerekmez
-* Azure aboneliğinin olması önerilir, ancak bunu yapmadan da deneyebilirsiniz
+Aşağıdaki adımları kullanarak uygulamayı oluşturun:
 
-## <a name="create-connected-logistics-application-template"></a>Bağlı lojistik uygulama şablonu oluştur
+1. [Azure IoT Central Build](https://aka.ms/iotcentral) sitesine gidin. Sonra bir Microsoft kişisel, iş veya okul hesabıyla oturum açın. Sol taraftaki Gezinti çubuğundan **Oluştur** ' u seçin ve ardından **Perakende** sekmesini seçin:
 
-Aşağıdaki adımları kullanarak uygulama oluşturabilirsiniz
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png" alt-text="Bağlı lojistik şablonu":::
 
-1. Azure IoT Central uygulama Yöneticisi Web sitesine gidin. Sol taraftaki Gezinti çubuğundan **Oluştur** ' u seçin ve ardından **Perakende** sekmesine tıklayın.
+2. **Bağlı lojistik uygulaması**altında **uygulama oluştur** ' u seçin.
 
-    > [!div class="mx-imgBorder"]
-    > ![Bağlı lojistik panosu](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
+3. **Uygulama oluştur** **Yeni uygulama** formunu açar. Şu ayrıntıları girin:
 
-2. **Bağlı lojistik uygulaması** altında **uygulama oluştur** ' u seçin
+    * **Uygulama adı**: varsayılan önerilen adı kullanabilir veya kolay uygulamanızın adını girebilirsiniz.
+    * **URL**: önerilen varsayılan URL 'yi kullanabilir veya kolay eşsiz bir URL 'yi girebilirsiniz. Daha sonra, zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. 7 günlük ücretsiz deneme fiyatlandırma planıyla başlayabilir ve ücretsiz izleme süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planına dönüştürmeyi tercih edebilirsiniz.
+    * **Fatura bilgileri**: kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
+    * **Oluştur**: uygulamanızı dağıtmak için sayfanın alt kısmındaki Oluştur ' u seçin.
 
-3. **Uygulama oluştur** yeni uygulama formunu açar ve istenen ayrıntıları aşağıda göster olarak doldurur.
-   * **Uygulama adı**: varsayılan önerilen adı kullanabilir veya kolay uygulamanızın adını girebilirsiniz.
-   * **URL**: önerilen varsayılan URL 'yi kullanabilir veya kolay eşsiz bir URL 'yi girebilirsiniz. Daha sonra, zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. 7 günlük ücretsiz deneme fiyatlandırma planıyla başlayabilir ve ücretsiz izleme süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planına dönüştürmeyi tercih edebilirsiniz.
-   * **Fatura bilgileri**: kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
-   * **Oluştur**: uygulamanızı dağıtmak için sayfanın alt kısmındaki Oluştur ' u seçin.
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="Bağlı lojistik uygulama şablonu":::
 
-    > [!div class="mx-imgBorder"]
-    > ![Bağlı lojistik panosu](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="Bağlı lojistik faturalandırma bilgileri":::
 
-    > [!div class="mx-imgBorder"]
-    > ![Bağlı lojistik faturalandırma bilgileri](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
+## <a name="walk-through-the-application"></a>Uygulamayı gözden geçir
 
-## <a name="walk-through-the-application"></a>Uygulamayı gözden geçir 
+Aşağıdaki bölümler, uygulamanın temel özellikleri boyunca size yol gösterir:
 
-## <a name="dashboard"></a>Pano
+### <a name="dashboard"></a>Pano
 
-Uygulama şablonunu başarıyla dağıttıktan sonra, varsayılan panonuz bağlı bir lojistik operatör odaklı portaldır. Northwind Trader, okyanus ve arazi içinde Kago 'nun yakıt düzeyini yöneten kurgusal bir lojistik sağlayıcıdır. Bu panoda, ilgili komutlar, işler ve yapabileceğiniz eylemlerle birlikte sevkiyatlar hakkında telemetri sağlayan iki farklı ağ geçidi görürsünüz. Bu Pano, kritik lojistik cihaz işlemleri etkinliğini göstermek için önceden yapılandırılmıştır.
-Pano, iki farklı ağ geçidi cihaz yönetim işlemi arasında mantıksal olarak bölünür, 
-   * Okyanus Sevkiyat ve konum ayrıntıları için lojistik rotası, tüm çok kalıcı ulaşım için önemli bir öğedir
-   * İlgili bilgileri & ağ geçidi durumunu görüntüleyin 
+Uygulama şablonu dağıttıktan sonra, varsayılan panonuz bağlı bir lojistik operatör odaklı portaldır. Northwind Trader, deniz ve Land 'ta bir kargo filo 'i yöneten kurgusal bir lojistik sağlayıcıdır. Bu panoda, sevkiyatlardan telemetri sağlayan, ilişkili komutlar, işler ve eylemlerle birlikte iki farklı ağ geçidi görürsünüz.
 
-> [!div class="mx-imgBorder"]
-> ![Bağlı lojistik panosu](./media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png)
+Bu Pano, kritik lojistik cihaz işlemleri etkinliğini gösterecek şekilde önceden yapılandırılmıştır.
 
-   * Ağ geçitlerinin, etkin ve bilinmeyen etiketlerin toplam sayısını kolayca izleyebilirsiniz.
-   * Üretici yazılımı güncelleştirme, algılayıcıyı devre dışı bırakma, algılayıcı etkinleştirme, algılayıcı eşiğini güncelleştirme, telemetri aralıklarını güncelleştirme, & güncelleştirme cihaz hizmeti sözleşmeleri gibi cihaz yönetim işlemleri yapabilirsiniz.
-   * Cihaz pil tüketimini görüntüleme
+Pano iki farklı ağ geçidi cihaz yönetimi işlemini mümkün bir şekilde sunar:
 
-> [!div class="mx-imgBorder"]
-> ![Bağlı lojistik panosu](./media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png)
+* Kamyonun sevkıyatları için lojistik rotalarını ve okyanus sevkiyatlarının konum ayrıntılarını görüntüleyin.
+* Ağ Geçidi durumunu ve diğer ilgili bilgileri görüntüleyin.
 
-## <a name="device-template"></a>Cihaz şablonu
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="Bağlı lojistik panosu":::
 
-Cihaz şablonları sekmesine tıklayın ve ağ geçidi yetenek modelini görürsünüz. Yetenek modeli iki farklı arabirim etrafında yapılandırılır **& özelliği** ve **ağ geçidi komutları**
+* Toplam ağ geçidi sayısını, etkin ve bilinmeyen etiketleri izleyebilirsiniz.
+* Cihaz yönetimi işlemlerini şu şekilde yapabilirsiniz: üretici yazılımını güncelleştirme, algılayıcıları devre dışı bırakma ve etkinleştirme, bir algılayıcı eşiğini güncelleştirme, telemetri aralıklarını güncelleştirme ve cihaz hizmeti sözleşmelerini güncelleştirme.
+* Cihaz pili tüketimini görüntüleyin.
 
-**Ağ geçidi telemetrisi & özelliği** -bu arabirim, sensörler, konum ve cihaz bilgileri ile ilgili tüm Telemetriyi ve algılayıcı eşikleri & güncelleştirme aralıkları gibi cihaz ikizi özellik özelliğini temsil eder.
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="Bağlı lojistik Pano durumu":::
 
-> [!div class="mx-imgBorder"]
-> ![Bağlı lojistik panosu](./media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png)
+#### <a name="device-template"></a>Cihaz şablonu
 
-**Ağ geçidi komutları** -bu arabirim tüm ağ geçidi komut yeteneklerini düzenler
+Ağ Geçidi yetenek modelini görmek için **cihaz şablonları** ' nı seçin. Yetenek modeli, **ağ geçidi telemetrisi & özelliği** ve **ağ geçidi komutları** arabirimleri etrafında yapılandırılır.
 
-> [!div class="mx-imgBorder"]
-> ![Bağlı lojistik panosu](./media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png)
+**Ağ geçidi telemetrisi & özelliği** -bu arabirim sensörler, konum ve cihaz bilgileriyle ilgili tüm telemetrileri tanımlar. Arabirim Ayrıca, algılayıcı eşikleri ve güncelleştirme aralıkları gibi cihaz ikizi Özellik özelliklerini de tanımlar.
 
-## <a name="rules"></a>Kurallar
-Bu uygulama şablonunda bulunan iki farklı kuralı görmek için kurallar sekmesini seçin. Bu kurallar, daha fazla araştırma için işleçlere e-posta bildirimleri olarak yapılandırılmıştır.
- 
-**Ağ geçidi hırsızlığı uyarısı**: Bu kural, yolculuğun sırasında sensörler tarafından beklenmeyen ışık algılaması olduğunda tetiklenir. Olası hırsızlık araştırmak için operatörlerin ASAP olarak bildirilmesi gerekir.
- 
-**Yanıt vermeyen Ağ Geçidi**: Bu kural, ağ geçidi, uzun süreli bir süre için buluta rapor vermezse tetiklenir. Düşük pil modu, bağlantı kaybı, cihaz sistem durumu nedeniyle ağ geçidi yanıt vermemeye başladı.
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="Telemetri ve özellik arabirimi":::
 
-> [!div class="mx-imgBorder"]
-> ![Bağlı lojistik panosu](./media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png)
+**Ağ geçidi komutları** -bu arabirim tüm ağ geçidi komut yeteneklerini düzenler:
 
-## <a name="jobs"></a>İşler
-Bu uygulama şablonunun bir parçası olarak var olan beş farklı işi görmek için işler sekmesini seçin:
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="Ağ Geçidi komutları arabirimi":::
 
-> [!div class="mx-imgBorder"]
-> ![Bağlı lojistik panosu](./media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png)
+### <a name="rules"></a>Kurallar
 
-İşler özelliğini, çözüm genelinde işlemler yapmak için kullanabilirsiniz. Burada işler, tüm ağ geçitlerinde belirli algılayıcıları devre dışı bırakma veya yükleme moduna ve rotaya göre algılayıcı eşiğini değiştirme gibi görevleri yapmak için cihaz komutlarını ve ikizi özelliğini kullanıyor. 
-   * Bu, soğuk zincir ulaşım sırasında pili korumak veya sıcaklık eşiğini azaltmak üzere okyanus sevkiyat sırasında darbe algılayıcılarının devre dışı bırakılması için standart bir işlemdir. 
- 
-   * İşler, bakım etkinliklerinin güncel kalması için ağ geçitlerinde üretici yazılımı güncelleştirme veya hizmet sözleşmesini güncelleştirme gibi sistem genelinde işlemler yapabilmesini sağlar.
+Bu uygulama şablonundaki kuralların **kurallar** sekmesini seçin. Bu kurallar, daha fazla araştırma için işleçlere e-posta bildirimleri olarak yapılandırılmıştır:
+
+**Ağ geçidi hırsızlığı uyarısı**: Bu kural, yolculuğun sırasında algılayıcılar tarafından beklenmeyen ışık algılaması olduğunda tetiklenir. Olası hırsızlık araştırmak için işleçlere hemen bildirilmesi gerekir.
+
+**Yanıt vermeyen Ağ Geçidi**: Bu kural, ağ geçidi, uzun süreli bir süre için buluta rapor vermezse tetiklenir. Düşük pil, bağlantı kaybı veya cihaz bozulması nedeniyle ağ geçidi yanıt vermemeye başladı.
+
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="Kural tanımları":::
+
+### <a name="jobs"></a>İşler
+
+Bu uygulamadaki işleri görmek için **işler** sekmesini seçin:
+
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="Çalıştırılacak işler":::
+
+İşleri uygulama genelinde işlemler yapmak için kullanabilirsiniz. Bu uygulamadaki işler, tüm ağ geçitlerinde belirli algılayıcıları devre dışı bırakma veya yükleme moduna ve rotaya göre algılayıcı eşiğini değiştirme gibi görevleri yapmak için cihaz komutlarını ve ikizi yeteneklerini kullanır:
+
+* Bu, soğuk zincir ulaşım sırasında pili korumak veya daha düşük sıcaklık eşiğine karşı koruma sağlamak üzere okyanus sevkıyatlarının devre dışı bırakılması standart bir işlemdir.
+
+* İşler, bakım etkinliklerinin güncel kalması için ağ geçitlerinde üretici yazılımı güncelleştirme veya hizmet sözleşmesini güncelleştirme gibi sistem genelinde işlemler yapabilmesini sağlar.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim** > **uygulaması ayarlarını** ziyaret ederek uygulama şablonunu silin ve **Sil**' e tıklayın.
 
-> [!div class="mx-imgBorder"]
-> ![Bağlı lojistik panosu](./media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png)
+Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim**  >  **uygulaması ayarlarını** ziyaret ederek uygulama şablonunu silin ve **Sil**' i seçin.
+
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Şablon Temizleme":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Bağlı lojistik kavramı](./architecture-connected-logistics.md) hakkında daha fazla bilgi edinin
 * Diğer [IoT Central perakende şablonları](./overview-iot-central-retail.md) hakkında daha fazla bilgi edinin
-* [IoT Central genel bakış](../core/overview-iot-central.md) hakkında daha fazla bilgi edinin

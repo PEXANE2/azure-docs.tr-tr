@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: 71f5488b1f689e8892155b013730bcbb3c8e0e35
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606526"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531985"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Eşleme veri akışında toplama dönüştürmesi
 
@@ -29,17 +29,18 @@ Toplama için bir Group by yan tümcesi olarak kullanılacak yeni bir hesaplanm�
 
 Toplama dönüşümünde Group by yan tümcesi isteğe bağlıdır.
 
-## <a name="aggregate-column"></a>Toplama sütunu 
+## <a name="aggregate-columns"></a>Toplam sütunları
 
-Toplama ifadeleri oluşturmak için **Toplamlar** sekmesine gidin. Bir toplama ile var olan bir sütunun üzerine yazabilir ya da yeni bir adla yeni bir alan oluşturabilirsiniz. Toplama ifadesi, sütun adı seçicisinin yanındaki sağ kutuya girilir. İfadeyi düzenlemek için, metin kutusuna tıklayarak ifade oluşturucuyu açın. Ek toplamalar eklemek için mevcut bir ifadenin üzerine gelin ve artı simgesine tıklayarak yeni bir toplama sütunu veya [sütun stili](concepts-data-flow-column-pattern.md)oluşturun.
+Toplama ifadeleri oluşturmak için **Toplamlar** sekmesine gidin. Bir toplama ile var olan bir sütunun üzerine yazabilir ya da yeni bir adla yeni bir alan oluşturabilirsiniz. Toplama ifadesi, sütun adı seçicisinin yanındaki sağ kutuya girilir. İfadeyi düzenlemek için metin kutusuna tıklayın ve deyim Oluşturucu 'yu açın. Daha fazla toplama sütunu eklemek için sütun listesini yukarıya **Ekle** ' ye veya varolan bir toplama sütununun yanındaki artı simgesine tıklayın. **Sütun Ekle** veya **sütun Ekle düzenlerini**seçin. Her toplama ifadesi en az bir toplama işlevi içermelidir.
 
-Her toplama ifadesi en az bir toplama işlevi içermelidir.
-
-![Toplu dönüştürme toplama ayarları](media/data-flow/agg2.png "Toplu dönüştürme toplama ayarları")
-
+![Toplama ayarları](media/data-flow/aggregate-columns.png "Toplama ayarları")
 
 > [!NOTE]
 > Hata ayıklama modunda, ifade Oluşturucusu toplama işlevleriyle veri önizlemeleri üretemiyor. Toplama dönüştürmelerinin veri önizlemelerini görüntülemek için, ifade oluşturucuyu kapatın ve verileri ' veri önizleme ' sekmesi aracılığıyla görüntüleyin.
+
+### <a name="column-patterns"></a>Sütun desenleri
+
+Aynı toplamayı bir sütun kümesine uygulamak için [sütun desenleri](concepts-data-flow-column-pattern.md) kullanın. Bu, giriş şemasından birçok sütunu varsayılan olarak bırakıldıklarında kalıcı hale getirmek istiyorsanız yararlıdır. `first()`Giriş sütunlarını toplama yoluyla kalıcı hale getirmek için gibi bir buluşsal yöntem kullanın.
 
 ## <a name="reconnect-rows-and-columns"></a>Satırları ve sütunları yeniden bağla
 

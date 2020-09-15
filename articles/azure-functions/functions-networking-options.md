@@ -3,12 +3,13 @@ title: Azure İşlevleri ağ seçenekleri
 description: Azure Işlevlerinde kullanılabilen tüm ağ seçeneklerine genel bakış.
 ms.topic: conceptual
 ms.date: 4/11/2019
-ms.openlocfilehash: 60258ef4aa3bbbbab69acd4f5106c774caa6f46f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385951"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530106"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -71,7 +72,7 @@ Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı des
 
 Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](./functions-create-function-app-portal.md#storage-account-requirements).
 
-## <a name="use-key-vault-references"></a>Key Vault başvurularını kullan
+## <a name="use-key-vault-references"></a>Key Vault başvurularını kullanma
 
 Kod değişikliği gerektirmeden Azure Işlevleri uygulamanızda Azure Key Vault gizli dizileri kullanmak için Azure Key Vault başvurularını kullanabilirsiniz. Azure Key Vault, erişim ilkeleri ve denetim geçmişi üzerinde tam denetim ile merkezi gizli dizi yönetimi sağlayan bir hizmettir.
 
@@ -86,7 +87,7 @@ Kod değişikliği gerektirmeden Azure Işlevleri uygulamanızda Azure Key Vault
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Sanal ağ tetikleyicilerine sahip Premium plan
 
-Bir Premium planı çalıştırdığınızda, HTTP olmayan tetikleyici işlevlerini bir sanal ağ içinde çalışan hizmetlere bağlayabilirsiniz. Bunu yapmak için, işlev uygulamanız için sanal ağ tetikleme desteğini etkinleştirmeniz gerekir. **Sanal ağ tetikleme desteği** ayarı, [Azure Portal](https://portal.azure.com) **yapılandırma**  >  **işlevi çalışma zamanı ayarları**altında bulunur.
+Bir Premium planı çalıştırdığınızda, HTTP olmayan tetikleyici işlevlerini bir sanal ağ içinde çalışan hizmetlere bağlayabilirsiniz. Bunu yapmak için, işlev uygulamanız için sanal ağ tetikleme desteğini etkinleştirmeniz gerekir. **Çalışma zamanı ölçek izleme** ayarı, [Azure Portal](https://portal.azure.com) **yapılandırma**  >  **işlevi çalışma zamanı ayarları**altında bulunur.
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -98,7 +99,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Sanal ağ Tetikleyicileri, Işlevler çalışma zamanının 2. x ve üzerinde desteklenir. Aşağıdaki HTTP olmayan tetikleyici türleri desteklenir.
 
-| Uzantı | En düşük sürüm |
+| Dahili numara | En düşük sürüm |
 |-----------|---------| 
 |[Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 veya üzeri |
 |[Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 veya üzeri|

@@ -1,22 +1,22 @@
 ---
 title: Azure Güvenlik Duvarı tehdit zekası yapılandırması
-description: Güvenlik duvarınızın, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen/giden trafiği uyarmasını ve reddetmesi için tehdit zekası tabanlı filtreleme etkinleştirilebilir.
+description: Azure Güvenlik Duvarı ilkenize yönelik tehdit zekası tabanlı filtreleme işlemlerini, ve bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen trafiği uyaracak ve reddedecek şekilde nasıl yapılandıracağınızı öğrenin.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 136ceeb271bec29bdbfc4572626936ee67f05556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a663c5f3bcf3492c4a9bc74fe93c6ed6a86137ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85569061"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530650"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure Güvenlik Duvarı tehdit zekası yapılandırması
 
-Tehdit zekası tabanlı filtreleme, Azure Güvenlik Duvarı ilkenizin ve bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen trafiği uyarmak ve reddetmek için yapılandırılabilir. IP adresleri ve etki alanları Microsoft Threat Intelligence akışından kaynaklıdır. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) , Microsoft Threat Intelligence 'ı güçlendirir ve Azure Güvenlik Merkezi dahil birden çok hizmet tarafından kullanılır.<br>
+Tehdit zekası tabanlı filtreleme, Azure Güvenlik Duvarı ilkenizin ve bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen trafiği uyarmak ve reddetmek için yapılandırılabilir. IP adresleri ve etki alanları, Microsoft Tehdit Analizi akışından alınır. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) , Microsoft Threat Intelligence 'ı güçlendirir ve Azure Güvenlik Merkezi dahil birden çok hizmet tarafından kullanılır.<br>
 
 Tehdit zekası tabanlı filtreleme 'yi yapılandırdıysanız, ilişkili kurallar NAT kurallarından, ağ kurallarından veya uygulama kurallarından önce işlenir.
 
@@ -50,7 +50,7 @@ Aşağıdaki günlük alıntısı tetiklenen bir kural gösterir:
 }
 ```
 
-## <a name="testing"></a>Test Etme
+## <a name="testing"></a>Sınama
 
 - **Giden sınama** -giden trafik uyarıları nadir bir oluşum olmalıdır, çünkü ortamınız tehlikede olduğu anlamına gelir. Giden uyarıların test sağlanmasına yardımcı olmak için bir uyarıyı tetikleyen bir test FQDN 'SI oluşturulmuştur. Giden testleriniz için **testmaliciousdomain.eastus.cloudapp.Azure.com** kullanın.
 

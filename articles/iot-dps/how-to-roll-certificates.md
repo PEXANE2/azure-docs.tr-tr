@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299278"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531415"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>X. 509.440 cihaz sertifikalarını alma
 
@@ -20,14 +20,14 @@ IoT çözümünüzün yaşam döngüsü boyunca sertifikaları almanız gerekir.
 
 Çalışan sertifikalar, bir ihlal durumunda sisteminizin güvenliğini sağlamaya yardımcı olmak için en iyi güvenlik uygulamasıdır. [Ihlal metodolojinin](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)bir parçası olarak Microsoft, önleyici ölçülerle birlikte reaktif güvenlik işlemlerine sahip olma gereksinimini ortadan kaldırır. Cihaz sertifikalarınızın, bu güvenlik işlemlerinin bir parçası olarak eklenmesi gerekir. Sertifikalarınızı alacağınız sıklık, çözümünüzün güvenlik ihtiyaçlarına bağlı olarak değişir. Son derece hassas verileri içeren çözümleri olan müşteriler, sertifikaları her iki yılda bir kez sunarken, her gün sertifika alabilir.
 
-Sıralı cihaz sertifikaları, cihazda depolanan sertifikanın ve IoT Hub 'ında güncelleştirilmesini içerir. Daha sonra cihaz, cihaz sağlama hizmeti ile normal [otomatik sağlamayı](concepts-auto-provisioning.md) kullanarak IoT Hub ile kendisini yeniden sağlayabilir.
+Sıralı cihaz sertifikaları, cihazda depolanan sertifikanın ve IoT Hub 'ında güncelleştirilmesini içerir. Daha sonra cihaz, cihaz sağlama hizmeti (DPS) ile normal [sağlama](about-iot-dps.md#provisioning-process) kullanarak IoT Hub ile kendisini yeniden sağlayabilir.
 
 
 ## <a name="obtain-new-certificates"></a>Yeni sertifikalar al
 
 IoT cihazlarınız için yeni sertifikalar almanın birçok yolu vardır. Bunlar cihaz fabrikasından sertifika alma, kendi sertifikalarınızı oluşturma ve üçüncü tarafa sizin için sertifika oluşturmayı yönetme sayılabilir. 
 
-Sertifikalar bir kök CA sertifikasından [yaprak sertifikaya](concepts-security.md#end-entity-leaf-certificate)bir güven zinciri oluşturmak için birbirleriyle imzalanır. İmza sertifikası, güven zincirinin sonunda yaprak sertifikayı imzalamak için kullanılan sertifikadır. İmza sertifikası bir kök CA sertifikası veya güven zincirindeki bir ara sertifika olabilir. Daha fazla bilgi için bkz. [X. 509.440 sertifikaları](concepts-security.md#x509-certificates).
+Sertifikalar bir kök CA sertifikasından [yaprak sertifikaya](concepts-x509-attestation.md#end-entity-leaf-certificate)bir güven zinciri oluşturmak için birbirleriyle imzalanır. İmza sertifikası, güven zincirinin sonunda yaprak sertifikayı imzalamak için kullanılan sertifikadır. İmza sertifikası bir kök CA sertifikası veya güven zincirindeki bir ara sertifika olabilir. Daha fazla bilgi için bkz. [X. 509.440 sertifikaları](concepts-x509-attestation.md#x509-certificates).
  
 İmza sertifikası almanın iki farklı yolu vardır. Üretim sistemleri için önerilen ilk yöntem, bir kök sertifika yetkilisinden (CA) bir imzalama sertifikası satın alınabilecektir. Bu şekilde, güvenlik güvenliği güvenilen bir kaynağa bağlanır. 
 
@@ -36,7 +36,7 @@ Sertifikalar bir kök CA sertifikasından [yaprak sertifikaya](concepts-security
 
 ## <a name="roll-the-certificate-on-the-device"></a>Sertifikayı cihazda topla
 
-Bir cihazdaki sertifikaların her zaman bir [donanım güvenlik modülü (HSM)](concepts-device.md#hardware-security-module)gibi güvenli bir yerde depolanması gerekir. Cihaz sertifikalarını alma yöntemi, nasıl oluşturulduğuna ve ilk yerinde cihazlara nasıl yüklenediğinize bağlıdır. 
+Bir cihazdaki sertifikaların her zaman bir [donanım güvenlik modülü (HSM)](concepts-service.md#hardware-security-module)gibi güvenli bir yerde depolanması gerekir. Cihaz sertifikalarını alma yöntemi, nasıl oluşturulduğuna ve ilk yerinde cihazlara nasıl yüklenediğinize bağlıdır. 
 
 Bir üçüncü taraftan sertifikalarınızı aldıysanız, sertifikalarını nasıl ele alacağına bakmanız gerekir. İşlem, bu kendileriyle birlikte düzenize dahil edilebilir veya sundukları ayrı bir hizmet olabilir. 
 
@@ -75,7 +75,7 @@ Bir güvenlik ihlaline yanıt olarak sertifika alıyorsanız, geçerli sertifika
 
     Her ikisi de tehlikeye girerse, birincil ve ikincil sertifika için bu adımların tamamlanması gerekir.
 
-    ![Bireysel kayıtları yönetme](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
+    ![Bireysel kayıtları bir güvenlik ihlali ile yönetme](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
 3. Güvenliği aşılan sertifika, sağlama hizmetinden kaldırıldıktan sonra, bu sertifika için bir cihaz kaydı olduğu sürece bu sertifika, IoT Hub 'ına cihaz bağlantısı kurmak için yine de kullanılabilir. Bu iki yolu ele alabilirsiniz: 
 
@@ -96,7 +96,7 @@ Daha sonra ikincil sertifika süre sonu yaklaştığında ve alınması gerekti�
 
 2. **Ikincil sertifika** ' ya tıklayın, ardından kayıt girişi için karşıya yüklenecek yeni sertifikayı seçmek için klasör simgesine tıklayın. **Kaydet**’e tıklayın.
 
-    ![İkincil sertifikayı kullanarak bireysel kayıtları yönetme](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
+    ![İkincil sertifika süre sonunu kullanarak bireysel kayıtları yönetme](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
 3. Daha sonra birincil sertifikanın süresi dolduğunda, **geçerli sertifikayı Sil** düğmesine tıklayarak geri dönüp ilgili birincil sertifikayı silin.
 
@@ -118,7 +118,7 @@ Bir güvenlik ihlaline yanıt olarak bir grup kaydını güncelleştirmek için,
 
 5. **CA sertifikası**' na tıklayın ve yenı kök CA sertifikanızı seçin. Daha sonra **Kaydet**'e tıklayın. 
 
-    ![Yeni kök CA sertifikasını seçin](./media/how-to-roll-certificates/select-new-root-cert.png)
+    ![Güvenliği aşılmış bir sertifika için yeni kök CA sertifikasını seçin](./media/how-to-roll-certificates/select-new-root-cert.png)
 
 6. Güvenliği aşılan sertifika, sağlama hizmetinden kaldırıldıktan sonra, cihaz kayıtları mevcut olduğu sürece bu sertifika IoT Hub 'ına cihaz bağlantısı kurmak için yine de kullanılabilir. Bu iki yolu ele alabilirsiniz: 
 
@@ -136,9 +136,9 @@ Bir güvenlik ihlaline yanıt olarak bir grup kaydını güncelleştirmek için,
 
 2. **Ara Sertifika**' a tıklayın ve **geçerli sertifikayı silin**. Kayıt grubuna yüklenecek yeni ara sertifikaya gitmek için klasör simgesine tıklayın. İşiniz bittiğinde **Kaydet** ' e tıklayın. Her ikisi de tehlikeye girerse, hem birincil hem de ikincil sertifika için bu adımların tamamlanması gerekir.
 
-    Bu yeni ara sertifika, sağlama hizmetine zaten eklenmiş olan doğrulanmış bir kök CA sertifikası tarafından imzalanmalıdır. Daha fazla bilgi için bkz. [X. 509.440 sertifikaları](concepts-security.md#x509-certificates).
+    Bu yeni ara sertifika, sağlama hizmetine zaten eklenmiş olan doğrulanmış bir kök CA sertifikası tarafından imzalanmalıdır. Daha fazla bilgi için bkz. [X. 509.440 sertifikaları](concepts-x509-attestation.md#x509-certificates).
 
-    ![Bireysel kayıtları yönetme](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
+    ![Güvenliği aşılmış bir ara için bireysel kayıtları yönetme](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
 3. Güvenliği aşılan sertifika, sağlama hizmetinden kaldırıldıktan sonra, cihaz kayıtları mevcut olduğu sürece bu sertifika IoT Hub 'ına cihaz bağlantısı kurmak için yine de kullanılabilir. Bu iki yolu ele alabilirsiniz: 
@@ -164,7 +164,7 @@ Daha sonra ikincil sertifika süre sonu yaklaştığında ve alınması gerekti�
 
 3. **CA sertifikası**' na tıklayın ve **İkincil sertifika** YAPıLANDıRMASı altında yeni kök CA sertifikanızı seçin. Daha sonra **Kaydet**'e tıklayın. 
 
-    ![Yeni kök CA sertifikasını seçin](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
+    ![Süre sonu için yeni kök CA sertifikasını seçin](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
 4. Daha sonra birincil sertifikanın süresi dolduğunda, cihaz sağlama hizmeti örneğiniz için **Sertifikalar** sekmesine tıklayın. Listedeki zaman aşımına uğradı sertifikasına tıklayın ve sonra **Sil** düğmesine tıklayın. Sertifika adını girerek silmeyi onaylayın ve **Tamam**' a tıklayın.
 
@@ -179,9 +179,9 @@ Daha sonra ikincil sertifika süre sonu yaklaştığında ve alınması gerekti�
 
 2. **Ikincil sertifika** ' ya tıklayın, ardından kayıt girişi için karşıya yüklenecek yeni sertifikayı seçmek için klasör simgesine tıklayın. **Kaydet**’e tıklayın.
 
-    Bu yeni ara sertifika, sağlama hizmetine zaten eklenmiş olan doğrulanmış bir kök CA sertifikası tarafından imzalanmalıdır. Daha fazla bilgi için bkz. [X. 509.440 sertifikaları](concepts-security.md#x509-certificates).
+    Bu yeni ara sertifika, sağlama hizmetine zaten eklenmiş olan doğrulanmış bir kök CA sertifikası tarafından imzalanmalıdır. Daha fazla bilgi için bkz. [X. 509.440 sertifikaları](concepts-x509-attestation.md#x509-certificates).
 
-   ![İkincil sertifikayı kullanarak bireysel kayıtları yönetme](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+   ![İkincil sertifikayı kullanarak kayıt gruplarını yönetme süresi doluyor](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
 
 3. Daha sonra birincil sertifikanın süresi dolduğunda, **geçerli sertifikayı Sil** düğmesine tıklayarak geri dönüp ilgili birincil sertifikayı silin.
 
@@ -208,6 +208,6 @@ Devre dışı bırakılmış bir kayıt girişinin bir parçası olarak bir sert
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Cihaz sağlama hizmeti 'nde X. 509.440 sertifikaları hakkında daha fazla bilgi edinmek için bkz. [güvenlik](concepts-security.md) 
+- Cihaz sağlama hizmeti 'nde X. 509.440 sertifikaları hakkında daha fazla bilgi edinmek için bkz [. x. 509.440 sertifika kanıtlama](concepts-x509-attestation.md) 
 - Azure IoT Hub cihaz sağlama hizmeti ile X. 509.952 CA sertifikaları için birlikte kullanma hakkında bilgi edinmek için bkz. [sertifikaları doğrulama](how-to-verify-certificates.md)
 - Portal 'ın bir kayıt grubu oluşturmak üzere nasıl kullanılacağı hakkında bilgi edinmek için bkz. [Azure Portal cihaz kayıtlarını yönetme](how-to-manage-enrollments.md).

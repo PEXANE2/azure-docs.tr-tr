@@ -3,12 +3,12 @@ title: Kota hataları
 description: Kaynakları Azure Resource Manager ile dağıttığınızda kaynak kota hatalarının nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75e8abf31d035a1e3a106bc0c6561624762db5d5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007810"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530429"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Kaynak kotası hatalarını düzeltme
 
@@ -95,7 +95,7 @@ Kota artışı istemek için portala gidin ve bir destek sorunu verin. Destek so
 
 1. **Abonelikler**' i seçin.
 
-   ![Abonelikler](./media/error-resource-quota/subscriptions.png)
+   ![Ekran yakalama, abonelikleri seçili olan Azure Portal menüsünü gösterir.](./media/error-resource-quota/subscriptions.png)
 
 2. Kotasını artırmanız gereken aboneliği seçin.
 

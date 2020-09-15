@@ -7,12 +7,12 @@ keywords: değişiklik, izleme, değişiklik izleme, stok, Otomasyon
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05b99c7f010ad307956b70890ee45f649111b373
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185815"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530548"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure VM 'deki değişikliklerle ilgili sorunları giderme
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Değişiklikleri görüntüleme
 > * Uyarı yapılandırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -218,9 +218,9 @@ Azure portalda değişiklikleri görüntülemek faydalı olabilir ancak durdurul
 
 18. Uyarı e-postası konusunu özelleştirmek için, **eylemleri Özelleştir**' i seçin. 
 
-19. **Oluşturma kuralı**Için **e-posta konusu**' ı seçin ve **Uyarı kuralı oluştur**' u seçin. Bu uyarı, bir güncelleştirme dağıtımı başarılı olduğunda sizi uyarır ve güncelleştirme dağıtımı çalıştırmasının hangi makineleri kapsadığını bildirir. Aşağıdaki görüntüde W3SVC hizmeti durduğunda alınan örnek bir e-posta vardır.
+19. **Oluşturma kuralı**Için **e-posta konusu**' ı seçin ve **Uyarı kuralı oluştur**' u seçin. Bu uyarı, bir güncelleştirme dağıtımı başarılı olduğunda sizi uyarır ve güncelleştirme dağıtımı çalıştırmasının hangi makineleri kapsadığını bildirir. Aşağıdaki görüntü, W3SVC hizmeti durdurulduğunda alınan örnek bir e-postadır.
 
-    ![e-posta](./media/automation-tutorial-troubleshoot-changes/email.png)
+    ![Ekran yakalama, W 3 S V C Hizmetleri durdurulduğunda alınan bir e-posta bildirimi gösterir.](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,14 +1,14 @@
 ---
-title: IoT Edge kotaları üzerinde canlı video analizi-Azure
+title: IoT Edge kotalar ve sınırlamalar üzerinde canlı video analizi-Azure
 description: Bu makalede, IoT Edge kotaları ve sınırlamaları hakkında canlı video analizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: df1978de4ee1bbbe15d0df3b02a70fb51491e9d2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750234"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529239"
 ---
 # <a name="quotas-and-limitations"></a>Kotalar ve sınırlamalar
 
@@ -65,6 +65,10 @@ Hem hareket algılama hem de filtre hızı işlemci düğümleri kullanılıyors
 * Medya hizmeti hesabını bir abonelikten diğerine kesinti olmadan geçirme özelliği.
 * Medya Hizmeti hesabıyla birden fazla depolama hesabı kullanma özelliği.
 * Yeniden başlatma olmadan, modülün istenen özelliklerindeki hizmet sorumlusu bilgilerini dinamik olarak değiştirme özelliği.
+
+Yalnızca RTSP protokolünü destekleyen IP kameralarını kullanabilirsiniz. [ONVIF uyumlu ürünler](https://www.onvif.org/conformant-products) sayfasında RTSP 'YI destekleyen IP kameralarını bulabilirsiniz. Profiller G, S veya T ile uyumlu olan cihazları arayın.
+
+Ayrıca, bu kameraları H. lenebilir video ve AAC ses kullanmak için yapılandırmanız gerekir. Diğer codec bileşenleri Şu anda desteklenmiyor. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

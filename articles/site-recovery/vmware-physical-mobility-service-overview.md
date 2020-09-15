@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 19d6933497b469148687dc9c5012513ab7d0314b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047216"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530072"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için Mobility hizmeti hakkında
 
@@ -33,11 +33,11 @@ ms.locfileid: "89047216"
 
 Anında yükleme, [çoğaltmayı etkinleştirmek](vmware-azure-enable-replication.md#enable-replication)için Azure Portal çalıştırılan işin integral bir parçasıdır. Korumak ve çoğaltmayı etkinleştirmek istediğiniz VM kümesini seçtikten sonra, yapılandırma sunucusu Mobility hizmet aracısını sunuculara gönderir, aracıyı kurar ve yapılandırma sunucusu ile aracının kaydını tamamlar.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Tüm gönderme yükleme [önkoşullarının](vmware-azure-install-mobility-service.md) karşılandığından emin olun.
 - Tüm sunucu yapılandırmalarının, [VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma Için destek matrisindeki](vmware-physical-azure-support-matrix.md)ölçütlere uygun olduğundan emin olun.
-- SUSE Linux Enterprise Server 11 SP4 için [9,36 sürümü](https://support.microsoft.com/help/4578241/) , en son yükleyicinin [yapılandırma sunucusu ve genişleme işlem sunucusu 'nda kullanılabilir](#download-latest-mobility-agent-installer-for-suse-11-sp3-server) olmasını sağlayın
+- 9,36 sürümünden başlayarak SUSE Linux Enterprise Server 11 SP3, RHEL 5, CentOS 5, detem 7 için en son yükleyicinin [yapılandırma sunucusu ve genişleme işlem sunucusu 'nda kullanılabilir](#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server) olmasını sağlayın
 
 Anında yükleme iş akışı aşağıdaki bölümlerde açıklanmıştır:
 
@@ -69,7 +69,7 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
 
 ## <a name="install-the-mobility-service-using-ui"></a>Kullanıcı arabirimini kullanarak Mobility hizmetini yükler
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Tüm sunucu yapılandırmalarının, [VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma Için destek matrisindeki](vmware-physical-azure-support-matrix.md)ölçütlere uygun olduğundan emin olun.
 - Sunucunun işletim sistemi için [yükleyiciyi bulun](#locate-installer-files) .
@@ -97,7 +97,7 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>Komut istemi kullanarak Mobility hizmetini yükler
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Tüm sunucu yapılandırmalarının, [VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma Için destek matrisindeki](vmware-physical-azure-support-matrix.md)ölçütlere uygun olduğundan emin olun.
 - Sunucunun işletim sistemi için [yükleyiciyi bulun](#locate-installer-files) .
@@ -202,30 +202,62 @@ Yapılandırma sunucusunda _%ProgramData%\asr\home\svsystems\pushınstallsvc\rep
 Yükleyici dosyası | İşletim sistemi (yalnızca 64 bit)
 --- | ---
 `Microsoft-ASR_UA_version_Windows_GA_date_release.exe` | Windows Server 2016 </br> Windows Server 2012 R2 </br> Windows Server 2012 </br> Windows Server 2008 R2 SP1
+[İndirilip bu klasöre el ile yerleştirilecek](#rhel-5-or-centos-5-server) | Red Hat Enterprise Linux (RHEL) 5 </br> CentOS 5
 `Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
 `Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 7 </br> CentOS 7
+`Microsoft-ASR_UA_version_RHEL8-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 8 </br> CentOS 8
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> SP2 ve SP3 'Ü içerir.
-[İndirilip bu klasöre el ile yerleştirilecek](#download-latest-mobility-agent-installer-for-suse-11-sp3-server). | SUSE Linux Enterprise Server 11 SP3
+[İndirilip bu klasöre el ile yerleştirilecek](#suse-11-sp3-server) | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
+`Microsoft-ASR_UA_version_SLES15-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 15 
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6,4 </br> Oracle Enterprise Linux 6,5
+`Microsoft-ASR_UA_version_OL7-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 7 
+`Microsoft-ASR_UA_version_OL8-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 8
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14,04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16,04 LTS sunucusu
-`Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Deyi 7
+`Microsoft-ASR_UA_version_UBUNTU-18.04-64_GA_date_release.tar.gz` | Ubuntu Linux 18,04 LTS sunucusu
+`Microsoft-ASR_UA_version_UBUNTU-20.04-64_GA_date_release.tar.gz` | Ubuntu Linux 20,04 LTS sunucusu
+[İndirilip bu klasöre el ile yerleştirilecek](#debian-7-server) | Deyi 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
+`Microsoft-ASR_UA_version_DEBIAN9-64_GA_date_release.tar.gz` | Debian 9
 
-### <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-server"></a>SUSE 11 SP3 sunucusu için en son Mobility Aracısı yükleyicisini indirin
+## <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server"></a>SUSE 11 SP3, RHEL 5, de/2 7 Server için en son Mobility Aracısı yükleyicisini indirin
 
-[9,36 sürümü](https://support.microsoft.com/help/4578241/) ile **SUSE Linux Enterprise Server 11 SP3 makinelerini güncelleştirmek veya korumak için bir önkoşul** olarak:
+### <a name="suse-11-sp3-server"></a>SUSE 11 SP3 sunucusu
+
+9,36 sürümü ile **SUSE Linux Enterprise Server 11 SP3 makinelerini güncelleştirmek veya korumak için bir önkoşul** olarak:
 
 1. En son Mobility Aracısı yükleyicisinin Microsoft Indirme Merkezi ' nden indirildiğinden ve yapılandırma sunucusuna ve tüm genişleme işlem sunucularında bulunan Push Installer deposuna yerleştirildiğinden emin olun
-2. SUSE Linux Enterprise Server 11 SP3 Aracı yükleyicisini [indirin](https://download.microsoft.com/download/0/3/4/0341b388-1ff5-4ead-b197-7cf6d2bb3e40/Microsoft-ASR_UA_9.36.0.0_SLES11-SP3-64_GA_06Aug2020_release.tar.gz) .
-3. Configuration Server 'a gidin, SUSE Linux Enterprise Server 11 SP3 Aracı yükleyicisini aşağıdaki yollarla kopyalayın
-    1. INSTALL_DIR \home\svsystems\pushınstallsvc\repository
-    1.  \Home\svsystems\admin\web\sw klasörleri INSTALL_DIR
-4. Şimdi, ilişkili genişleme işlem sunucularına giderek, yükleyiciyi 3. adımda bahsedilen yolların her ikisinde de kopyalayın &.
-5. **Örneğin**, install Path, C:\Program Files (x86) \Microsoft Azure Site Recovery ise yukarıdaki belirtilen dizinler şu şekilde olur
+2. En son SUSE Linux Enterprise Server 11 SP3 Aracı yükleyicisini [indirin](site-recovery-whats-new.md) . En son Mobility Aracısı sürümü [9,37](https://support.microsoft.com/help/4582666/) ' dir
+3. Configuration Server 'a gidin, SUSE Linux Enterprise Server 11 SP3 Aracı yükleyicisini yol INSTALL_DIR \home\svsystems\pushınstallsvc\repository dizinine kopyalayın
+1. En son yükleyiciyi kopyaladıktan sonra, InMage Pushınstall hizmetini yeniden başlatın. 
+1. Şimdi, ilişkili genişleme işlem sunucularına giderek adım 3 ve 4. adımları yineleyin.
+1. **Örneğin**, install Path, C:\Program Files (x86) \Microsoft Azure Site Recovery ise yukarıdaki belirtilen dizinler şu şekilde olur
     1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushınstallsvc\repository
-    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\admin\web\sw yolu
+
+### <a name="rhel-5-or-centos-5-server"></a>RHEL 5 veya CentOS 5 sunucusu
+
+9,36 sürümden sonraki sürümlerde **RHEL 5 makinelerini güncelleştirmek veya korumak için bir önkoşul** olarak:
+
+1. En son Mobility Aracısı yükleyicisinin Microsoft Indirme Merkezi ' nden indirildiğinden ve yapılandırma sunucusuna ve tüm genişleme işlem sunucularında bulunan Push Installer deposuna yerleştirildiğinden emin olun
+2. En son RHEL 5 veya CentOS 5 Aracı yükleyicisini [indirin](site-recovery-whats-new.md) . En son Mobility Aracısı sürümü [9,37](https://support.microsoft.com/help/4582666/) ' dir
+3. Yapılandırma sunucusu ' na gidin, RHEL 5 veya CentOS 5 Aracı yükleyicisini yol INSTALL_DIR \home\svsystems\pushınstallsvc\repository dizinine kopyalayın
+1. En son yükleyiciyi kopyaladıktan sonra, InMage Pushınstall hizmetini yeniden başlatın. 
+1. Şimdi, ilişkili genişleme işlem sunucularına giderek adım 3 ve 4. adımları yineleyin.
+1. **Örneğin**, install Path, C:\Program Files (x86) \Microsoft Azure Site Recovery ise yukarıdaki belirtilen dizinler şu şekilde olur
+    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushınstallsvc\repository
+
+## <a name="debian-7-server"></a>7 sunucu
+
+9,36 makine sürümlerinin sürümlerini **güncelleştirme veya koruma için önkoşul** olarak:
+
+1. En son Mobility Aracısı yükleyicisinin Microsoft Indirme Merkezi ' nden indirildiğinden ve yapılandırma sunucusuna ve tüm genişleme işlem sunucularında bulunan Push Installer deposuna yerleştirildiğinden emin olun
+2. En son DE7,7 Aracı yükleyicisini [indirin](site-recovery-whats-new.md) . En son Mobility Aracısı sürümü [9,37](https://support.microsoft.com/help/4582666/) ' dir
+3. Configuration Server 'a gidin, INSTALL_DIR \home\svsystems\pushınstallsvc\repository yolunda detem 7 Aracı yükleyicisini kopyalayın
+1. En son yükleyiciyi kopyaladıktan sonra, InMage Pushınstall hizmetini yeniden başlatın. 
+1. Şimdi, ilişkili genişleme işlem sunucularına giderek adım 3 ve 4. adımları yineleyin.
+1. **Örneğin**, install Path, C:\Program Files (x86) \Microsoft Azure Site Recovery ise yukarıdaki belirtilen dizinler şu şekilde olur
+    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushınstallsvc\repository
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

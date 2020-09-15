@@ -6,29 +6,29 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 08/10/2020
-ms.openlocfilehash: f522812f762b55ec61794101e6cd1ec15fb171ca
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/14/2020
+ms.openlocfilehash: 4297cc83ab3fa280e15480aefcd5aef8734c65ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212109"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531050"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Eşleme veri akışında derleme ifadeleri
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Eşleme veri akışı ' nda birçok dönüştürme özelliği ifadeler olarak girilir. Bu ifadeler, çalışma zamanında Spark veri türü sonucunu değerlendiren sütun değerleri, parametreler, işlevler, işleçler ve değişmez değerlerdir.
+Eşleme veri akışı ' nda birçok dönüştürme özelliği ifadeler olarak girilir. Bu ifadeler, çalışma zamanında Spark veri türü sonucunu değerlendiren sütun değerleri, parametreler, işlevler, işleçler ve değişmez değerlerdir. Veri akışları eşleme, **Ifade Oluşturucusu**olarak adlandırılan bu ifadeleri oluşturma konusunda size yardımcı olmak için adanmış bir deneyimle sahiptir. Vurgulama, sözdizimi denetimi ve otomatik tamamlama için  [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense) kod tamamlamayı kullanarak, ifade Oluşturucusu, veri akışı oluşturmayı kolay hale getirmek için tasarlanmıştır. Bu makalede, iş mantığınızı etkin bir şekilde oluşturmak için ifade oluşturucusunun nasıl kullanılacağı açıklanmaktadır.
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tkur]
+![İfade Oluşturucusu](media/data-flow/expresion-builder.png "İfade Oluşturucusu")
 
 ## <a name="open-expression-builder"></a>Ifade Oluşturucuyu Aç
 
-Azure Data Factory kullanıcı deneyiminde ifade düzenlemesi arabirimi Ifade Oluşturucusu olarak bilinir. İfade mantığınızı girerken, Data Factory vurgulama, sözdizimi denetimi ve otomatik tamamlama için [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019) kod tamamlamayı kullanır.
+İfade oluşturucuyu açmak için birden çok giriş noktası var. Bunlar, veri akışı dönüşümünün belirli bağlamına bağımlıdır. En yaygın kullanım örneği, [türetilmiş sütun](data-flow-derived-column.md) ve [toplama](data-flow-aggregate.md) gibi, kullanıcıların veri akışı ifade dilini kullanarak sütun oluşturup güncelleştirmediği bir şekilde dönüştürmelerinden alınmıştır. İfade Oluşturucusu, sütun listesinin üstünde, **ifade Oluşturucu aç** seçilerek açılabilir. Ayrıca, bir sütun bağlamına tıklayıp deyim oluşturucuyu doğrudan bu ifadeye açabilirsiniz.
 
-![İfade Oluşturucusu](media/data-flow/xpb1.png "İfade Oluşturucusu")
+![Açık Ifade Oluşturucu türet](media/data-flow/open-expression-builder-derive.png "Açık Ifade Oluşturucu türet")
 
-Türetilmiş sütun ve filtre gibi dönüşümlerde, ifadelerin zorunlu olduğu, mavi ifade kutusunu seçerek Ifade oluşturucuyu açın.
+[Filtre](data-flow-filter.md)gibi bazı dönüşümlerdeki mavi ifade metin kutusuna tıkladığınızda ifade Oluşturucusu açılır. 
 
 ![Mavi ifade kutusu](media/data-flow/expressionbox.png "İfade Oluşturucusu")
 
@@ -40,29 +40,52 @@ Bir ifadenin veya değişmez değerin geçerli girişler olduğu durumlarda, de�
 
 ![Dinamik içerik Ekle seçeneği](media/data-flow/add-dynamic-content.png "İfade Oluşturucusu")
 
-## <a name="expression-language-reference"></a>İfade dili başvurusu
+## <a name="expression-elements"></a>İfade öğeleri
 
-Veri akışları eşleme, ifadelerde kullanılabilecek yerleşik işlevlere ve işleçlere sahiptir. Kullanılabilir işlevlerin listesi için, bkz. [eşleme veri akışındaki ifade işlevleri](data-flow-expression-functions.md).
+Veri akışlarını eşleme bölümünde, ifadeler sütun değerlerinden, parametrelerden, işlevlerden, yerel değişkenlerden, işleçlerden ve değişmez değerlerden oluşabilir. Bu ifadeler String, Boolean veya integer gibi bir Spark veri türü olarak değerlendirilmelidir.
 
-## <a name="column-names-with-special-characters"></a>Özel karakterlerle sütun adları
+![İfade öğeleri](media/data-flow/expression-elements.png "İfade öğeleri")
+
+### <a name="functions"></a>İşlevler
+
+Veri akışları eşleme, ifadelerde kullanılabilecek yerleşik işlevlere ve işleçlere sahiptir. Kullanılabilir işlevlerin listesi için bkz. [eşleme veri akışı dili başvurusu](data-flow-expression-functions.md).
+
+#### <a name="address-array-indexes"></a>Adres dizisi dizinleri
+
+Dizi türleri döndüren sütunlarla veya işlevlerle ilgilenirken, belirli bir öğeye erişmek için köşeli ayraç ([]) kullanın. Dizin yoksa, ifade NULL olarak değerlendirilir.
+
+![İfade Oluşturucu dizisi](media/data-flow/expression-array.png "İfade verileri önizlemesi")
+
+> [!IMPORTANT]
+> Veri akışlarını eşleme bölümünde, diziler tek tabanlı anlamına gelir ve ilk öğeye birinci dizin tarafından başvurulur. Örneğin, myArray [1], ' myArray ' adlı bir dizinin ilk öğesine erişir.
+
+### <a name="input-schema"></a>Giriş şeması
+
+Veri akışınız, herhangi bir kaynağında tanımlı bir şema kullanıyorsa, birçok ifadede ada göre bir sütuna başvurabilirsiniz. Şema DRI kullanıyorsanız, `byName()` veya işlevlerini kullanarak sütunlara veya `byNames()` sütun düzenlerini kullanarak eşleştirebilirsiniz.
+
+#### <a name="column-names-with-special-characters"></a>Özel karakterlerle sütun adları
 
 Özel karakterler veya boşluk içeren sütun adlarınız varsa, bu adı bir ifadede başvurmak için küme ayraçları ile çevreleyin.
 
 ```{[dbo].this_is my complex name$$$}```
 
+### <a name="parameters"></a>Parametreler
+
+Parametreler, bir işlem hattından çalışma zamanında bir veri akışına geçirilen değerlerdir. Bir parametreye başvurmak için, **ifade öğeleri** görünümünden parametreye tıklayın veya adın önünde bir dolar işareti ile başvuru yapın. Örneğin, parametre1 adlı bir parametreye tarafından başvurulur `$parameter1` . Daha fazla bilgi edinmek için bkz. [eşleme veri akışlarını parametrize](parameters-data-flow.md)etme.
+
+### <a name="locals"></a>Ayarlanmalıdır
+
+Mantığı birden çok sütunda paylaşıyorsanız veya mantığınızı eklemek istiyorsanız, türetilmiş bir column\içinde yerel bir oluşturabilirsiniz. Yerel bir başvuruda bulunmak için, **ifade öğeleri** görünümünden yerel öğesine tıklayın veya bunun adının önünde bir iki nokta üst üste ile başvuru yapın. Örneğin, local1 adlı bir yerel, tarafından başvurulmalıdır `:local1` . [Türetilmiş sütun belgelerindeki](data-flow-derived-column.md#locals)Yereller hakkında daha fazla bilgi edinin.
+
 ## <a name="preview-expression-results"></a>Önizleme ifadesi sonuçları
 
-[Hata ayıklama modu](concepts-data-flow-debug-mode.md) açık ise, ifadenizde ne kadar değerlendirdiği hakkında devam eden bir önizleme görmek Için Live Spark kümesini kullanabilirsiniz. Mantığınızı oluştururken, ifadenizde gerçek zamanlı olarak hata ayıklaması yapabilirsiniz. 
+[Hata ayıklama modu](concepts-data-flow-debug-mode.md) açık ise, ifadenizde hangi amaçla değerlendirileceğini önizlemek için hata ayıklama kümesini etkileşimli olarak kullanabilirsiniz. Veri önizlemesinin sonuçlarını güncelleştirmek için veri Önizlemesi ' nin yanındaki **Yenile** ' yi seçin. Giriş sütunları verilen her bir satırın çıktısını görebilirsiniz.
 
-![Devam eden Önizleme](media/data-flow/exp4b.png "İfade verileri önizlemesi")
-
-Deyimizin sonuçlarını kaynağınızın canlı bir örneğine göre güncelleştirmek için **Yenile** ' yi seçin.
-
-![Yenile düğmesi](media/data-flow/exp5.png "İfade verileri önizlemesi")
+![Devam eden Önizleme](media/data-flow/preview-expression.png "İfade verileri önizlemesi")
 
 ## <a name="string-interpolation"></a>Dize ilişkilendirme
 
-Değişmez dize metnini ifadelerle birlikte kapsamak için tırnak işaretleri kullanın. İfade işlevleri, sütunlar ve parametreler ekleyebilirsiniz. Dize ilişkilendirme, parametreler sorgu dizelerine dahil edildiğinde dize bitişinin kapsamlı kullanımını önlemek için yararlıdır. İfade sözdizimini kullanmak için, küme ayraçları içine alın
+İfade öğeleri kullanan uzun dizeler oluştururken, karmaşık dize mantığını kolayca oluşturmak için dize ilişkilendirmeyi kullanın. Dize ilişkilendirme, sorgu dizelerine parametreler dahil edildiğinde dize bitişinin kapsamlı kullanımını önler. Sabit dize metnini ifadelerle birlikte tırnak içine almak için çift tırnak işareti kullanın. İfade işlevleri, sütunlar ve parametreler ekleyebilirsiniz. İfade sözdizimini kullanmak için, küme ayraçları içine alın
 
 Dize ilişkilendirme için bazı örnekler:
 
@@ -72,7 +95,9 @@ Dize ilişkilendirme için bazı örnekler:
 
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
-## <a name="comment-expressions"></a>Açıklama ifadeleri
+* ```"{:playerName} is a {:playerRating} player"```
+
+## <a name="commenting-expressions"></a>Açıklama ifadeleri
 
 Tek satırlı ve çok satırlı açıklama söz dizimini kullanarak deyimlerinizi açıklama ekleyin.
 
@@ -81,11 +106,11 @@ Aşağıdaki örnekler geçerli açıklamalardır:
 * ```/* This is my comment */```
 
 * ```/* This is a```
-*   ```multi-line comment */```
+* ```multi-line comment */```
 
 İfadeniz üzerine bir yorum koyarsanız, dönüştürme ifadelerinizi belgelemek için dönüşüm metin kutusunda görünür.
 
-![Dönüştürme metin kutusunda açıklama](media/data-flow/comments2.png "Yorumlar")
+![Dönüştürme metin kutusunda açıklama](media/data-flow/comment-expression.png "Yorumlar")
 
 ## <a name="regular-expressions"></a>Normal ifadeler
 
@@ -103,13 +128,9 @@ regex_replace('100 and 200', `(\d+)`, 'digits')
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="address-array-indexes"></a>Adres dizisi dizinleri
-
-Dizileri döndüren ifade işlevleri ile, döndürülen dizi nesneleri içindeki belirli dizinleri adresleyen köşeli ayraç ([]) kullanın. Dizi, bunları temel alır.
-
-![İfade Oluşturucu dizisi](media/data-flow/expb2.png "İfade verileri önizlemesi")
-
 ## <a name="keyboard-shortcuts"></a>Klavye kısayolları
+
+Aşağıda, ifade Oluşturucusu 'nda bulunan kısayolların bir listesi verilmiştir. İfade oluştururken çoğu IntelliSense kısayolu kullanılabilir.
 
 * CTRL + K CTRL + C: tüm satırı açıklama.
 * CTRL + K Ctrl + U: Açıklama kaldır.
@@ -118,7 +139,9 @@ Dizileri döndüren ifade işlevleri ile, döndürülen dizi nesneleri içindeki
 * Alt + yukarı ok tuşu: geçerli satırı yukarı taşı.
 * CTRL + Ara çubuğu: bağlam yardımını göster.
 
-## <a name="convert-to-dates-or-timestamps"></a>Tarihlere veya zaman damgalarına Dönüştür
+## <a name="commonly-used-expressions"></a>Yaygın olarak kullanılan ifadeler
+
+### <a name="convert-to-dates-or-timestamps"></a>Tarihlere veya zaman damgalarına Dönüştür
 
 Zaman damgası çıkışındaki dize sabit değerlerini dahil etmek için, dönüştürmeyi ' de sarın ```toString()``` .
 
@@ -130,7 +153,7 @@ Süreyi dönem 'den bir tarih veya zaman damgasına dönüştürmek için kullan
 
 Önceki ifadenin sonundaki "l" ifadesi, uzun bir tür için satır içi sözdizimi olarak dönüştürmeyi belirtir.
 
-## <a name="find-time-from-epoch-or-unix-time"></a>Dönem veya Unix saatinden zaman bulma
+### <a name="find-time-from-epoch-or-unix-time"></a>Dönem veya Unix saatinden zaman bulma
 
 toLong (currentTimestamp ()-toTimestamp (' 1970-01-01 00:00:00.000 ', ' yyyy-AA-GG SS: DD: ss. SSS ')) * 1000L
 

@@ -1,21 +1,21 @@
 ---
 title: Azure IoT Hub cihaz sağlama hizmeti SDK 'Ları araçlarını kullanma
 description: Bu belgede, geliştirme için Azure IoT Hub cihaz sağlama hizmeti (DPS) SDK 'lerinde sunulan araçlar incelenir
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28d682a9ca698afb72d08b4d111562c725d46996
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691637"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530854"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Sağlama geliştirmeyi basitleştirmek için SDK 'larda sunulan araçları kullanma
-Cihaz sağlama hizmeti IoT Hub, güvenli ve ölçeklenebilir bir şekilde, tam zamanında [Otomatik sağlama](concepts-auto-provisioning.md) sağlayan, sağlama sürecini basitleştirir.  X. 509.440 sertifikası veya Güvenilir Platform Modülü (TPM) biçiminde güvenlik kanıtlama gereklidir.  Microsoft, IoT dağıtımını güvenli hale getirmek için [diğer güvenlik donanımı ortaklarıyla](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) de işbirliği yapıyor. Donanım güvenlik gereksinimini anlamak geliştiriciler için oldukça zor olabilir. Geliştiricilerin sağlama hizmeti ile iletişim kuran istemcileri yazmak için kullanışlı bir katman kullanabilmesi için bir Azure IoT sağlama hizmeti SDK 'Sı kümesi sunulmaktadır. SDK 'lar Ayrıca yaygın senaryolar için örnekler ve geliştirmede güvenlik kanıtlamasını basitleştirecek bir araç kümesi sağlar.
+IoT Hub cihaz sağlama hizmeti, sağlama sürecini güvenli ve ölçeklenebilir bir şekilde tam zamanında [sağlama](about-iot-dps.md#provisioning-process) ile basitleştirir.  X. 509.440 sertifikası veya Güvenilir Platform Modülü (TPM) biçiminde güvenlik kanıtlama gereklidir.  Microsoft, IoT dağıtımını güvenli hale getirmek için [diğer güvenlik donanımı ortaklarıyla](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) de işbirliği yapıyor. Donanım güvenlik gereksinimini anlamak geliştiriciler için oldukça zor olabilir. Geliştiricilerin sağlama hizmeti ile iletişim kuran istemcileri yazmak için kullanışlı bir katman kullanabilmesi için bir Azure IoT sağlama hizmeti SDK 'Sı kümesi sunulmaktadır. SDK 'lar Ayrıca yaygın senaryolar için örnekler ve geliştirmede güvenlik kanıtlamasını basitleştirecek bir araç kümesi sağlar.
 
 ## <a name="trusted-platform-module-tpm-simulator"></a>Güvenilir Platform Modülü (TPM) simülatör
 [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) , platformun kimliğini doğrulamak için anahtarları güvenli bir şekilde depolamak üzere bir standarda başvurabilir veya standart uygulayan modüllerle etkileşim kurmak için kullanılan g/ç arabirimine başvurabilir. TPMs ayrık donanım, tümleşik donanım, bellenim tabanlı veya yazılım tabanlı olarak bulunabilir.  Üretimde TPM, ayrı donanım, tümleşik donanım ya da bellenim tabanlı olarak cihazda bulunur. Test aşamasında, geliştiricilere yazılım tabanlı bir TPM simülatörü sağlanır.  Bu Benzetici, şimdilik yalnızca Windows platformunda geliştirme için kullanılabilir.
@@ -52,7 +52,7 @@ Bu oluşturucuyu kullanarak X. 509.440 sertifikası oluşturmak için:
 2. Kökü Azure-IoT-SDK-Java olarak değiştirin.
 3. ```mvn install -DskipTests=true```Tüm gerekli paketleri indirmek ve SDK 'yı derlemek için Çalıştır
 4. ' De X. 509.440 sertifika Oluşturucu köküne gidin ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator``` .
-5. İle derleme```mvn clean install```
+5. İle derleme ```mvn clean install```
 6. Aşağıdaki komutları kullanarak aracı çalıştırın:
    ```
    cd target

@@ -7,16 +7,16 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcdda8d1bd08a26dcdbec294be88fd4540670596
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434749"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531432"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Çoklu kiracı için sağlama 
 
-Sağlama hizmeti tarafından tanımlanan ayırma ilkeleri çeşitli ayırma senaryolarını destekler. İki yaygın senaryo şunlardır:
+Bu makalede, bir [ayırma ilkesi](concepts-service.md#allocation-policy)kullanılarak bir IoT Hub 'ı grubuna birden çok simetrik anahtar cihazı güvenli bir şekilde sağlama gösterilmektedir. Sağlama hizmeti tarafından tanımlanan ayırma ilkeleri, çeşitli ayırma senaryolarını destekler. İki yaygın senaryo şunlardır:
 
 * **Coğrafi konum/tsıklık**: bir cihaz konumlar arasında taşındıkça, cihazın her bir konuma en yakın IoT Hub 'ına sağlanması halinde ağ gecikmesi geliştirilmiştir. Bu senaryoda, bölgeler arasında yayılan bir IoT Hub grubu kayıtları için seçilidir. Bu kayıtlar için **En düşük gecikme süresi** ayırma ilkesi seçilidir. Bu ilke, cihaz sağlama hizmeti 'nin cihaz gecikmesini değerlendirmesini ve IoT Hub 'ından IoT Hub 'ı grubunu belirlemesine neden olur. 
 
@@ -36,7 +36,7 @@ Bu makalede, bölgeler arasında çok kiracılı bir senaryoda cihazların nası
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [IoT Hub cihazı sağlama hizmetini Azure Portal](./quick-setup-auto-provision.md) hızlı başlangıç ile tamamlama.
 
@@ -83,7 +83,7 @@ Bu bölümde, bir kiracının **Batı ABD** ve **Doğu ABD** bölgelerinde iki y
 
 Bu bölümde, kiracı cihazları için yeni bir kayıt grubu oluşturacaksınız.  
 
-Kolaylık olması için, bu makale kayıt ile [simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md) kullanır. Daha güvenli bir çözüm için, bir güven zinciri ile [X. 509.440 sertifika kanıtlama](concepts-security.md#x509-certificates) kullanmayı göz önünde bulundurun.
+Kolaylık olması için, bu makale kayıt ile [simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md) kullanır. Daha güvenli bir çözüm için, bir güven zinciri ile [X. 509.440 sertifika kanıtlama](concepts-x509-attestation.md) kullanmayı göz önünde bulundurun.
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve cihaz sağlama hizmeti örneğinizi açın.
 

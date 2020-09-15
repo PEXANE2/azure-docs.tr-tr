@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7733859c4ca4de8b580a228d8a73b899f0afa953
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fc1154a3d4cefc84f223810a1972dd85673a6b3e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001986"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530905"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Özel ayırma ilkelerini kullanma
 
@@ -44,7 +44,7 @@ Bu makalede aşağıdaki adımları gerçekleştirirsiniz:
 
 Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya macOS için SDK belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
 
-* [' C++ Ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
+* [' C++ Ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
 
 * [Git](https://git-scm.com/download/)'in en son sürümünün yüklemesi.
 
@@ -298,7 +298,7 @@ Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksı
 
 ## <a name="create-the-enrollment"></a>Kayıt oluşturma
 
-Bu bölümde, özel ayırma ilkesini kullanan yeni bir kayıt grubu oluşturacaksınız. Kolaylık olması için, bu makale kayıt ile [simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md) kullanır. Daha güvenli bir çözüm için, bir güven zinciri ile [X. 509.440 sertifika kanıtlama](concepts-security.md#x509-certificates) kullanmayı göz önünde bulundurun.
+Bu bölümde, özel ayırma ilkesini kullanan yeni bir kayıt grubu oluşturacaksınız. Kolaylık olması için, bu makale kayıt ile [simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md) kullanır. Daha güvenli bir çözüm için, bir güven zinciri ile [X. 509.440 sertifika kanıtlama](concepts-x509-attestation.md) kullanmayı göz önünde bulundurun.
 
 1. Hala [Azure Portal](https://portal.azure.com)sağlama hizmetinizi açın.
 

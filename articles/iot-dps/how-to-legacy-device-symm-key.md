@@ -1,25 +1,27 @@
 ---
-title: Simetrik anahtarlar kullanarak eski cihazları Sağlama-Azure IoT Hub cihaz sağlama hizmeti
-description: Cihaz sağlama hizmeti (DPS) örneğiniz ile eski cihazları sağlamak için simetrik anahtarlar kullanma
+title: Simetrik anahtarlar kullanarak cihazları Sağlama-Azure IoT Hub cihaz sağlama hizmeti
+description: Cihaz sağlama hizmeti (DPS) örneğiniz ile cihazları sağlamak için simetrik anahtarlar kullanma
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: eliotga
+ms.openlocfilehash: f67ed44fffe6bd690d6bd76fcefa19d9ee23e52b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434709"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529409"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Simetrik anahtarlar kullanarak eski cihazları sağlama
+# <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Simetrik anahtar kayıt grupları kullanarak cihazları sağlama
 
-Birçok eski cihazda yaygın bir sorun, genellikle tek bir bilgi parçasına sahip olan bir kimliğe sahip olmalarıdır. Bu kimlik bilgileri genellikle bir MAC adresi veya seri numarasıdır. Eski cihazlarda, cihazı güvenli bir şekilde tanımlamak için kullanılabilecek bir sertifika, TPM veya başka bir güvenlik özelliği bulunmayabilir. IoT Hub için cihaz sağlama hizmeti simetrik anahtar kanıtlama içerir. Simetrik anahtar kanıtlama, MAC adresi veya seri numarası gibi bilgileri temel alarak bir cihazı belirlemek için kullanılabilir.
+Bu makalede, birden çok simetrik anahtar cihazı bir kayıt grubu kullanılarak tek bir IoT Hub güvenli bir şekilde sağlama gösterilmektedir.
 
-Bir [donanım güvenlik modülünü (HSM)](concepts-security.md#hardware-security-module) ve bir sertifikayı kolayca yükleyebiliyorsanız, cihazlarınızı tanımlamaya ve sağlamaya yönelik daha iyi bir yaklaşım olabilir. Bu yaklaşım, tüm cihazlarınıza dağıtılan kodu güncelleştirme işlemini atlamanıza izin verebilir ve cihaz yansımanıza gömülü bir gizli anahtar yoktur.
+Bazı cihazlarda, cihazı güvenli bir şekilde tanımlamak için kullanılabilecek bir sertifika, TPM veya başka bir güvenlik özelliği bulunmayabilir. Cihaz sağlama hizmeti [simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md)içerir. Simetrik anahtar kanıtlama, MAC adresi veya seri numarası gibi benzersiz bilgileri temel alarak bir cihazı belirlemek için kullanılabilir.
+
+Bir [donanım güvenlik modülünü (HSM)](concepts-service.md#hardware-security-module) ve bir sertifikayı kolayca yükleyebiliyorsanız, cihazlarınızı tanımlamaya ve sağlamaya yönelik daha iyi bir yaklaşım olabilir. Bu yaklaşım, tüm cihazlarınıza dağıtılan kodu güncelleştirme işlemini atlamanıza izin verebilir ve cihaz yansımanıza gömülü bir gizli anahtar yoktur.
 
 Bu makalede, ne bir HSM veya bir sertifikanın uygun bir seçenek olduğu varsayılır. Ancak, bu cihazları sağlamak için cihaz kodu güncelleştirme bir yöntem, cihaz sağlama hizmetini kullanmak üzere bir yöntem olduğunu varsayın. 
 
@@ -30,7 +32,7 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
 > [!NOTE]
 > Bu makalede kullanılan örnek C dilinde yazılmıştır. Ayrıca bir [C# cihaz sağlama simetrik anahtar örneği](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) de mevcuttur. Bu örneği kullanmak için, [Azure-IoT-Samples-CSharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) deposunu indirin veya kopyalayın ve örnek kodda satır içi yönergeleri izleyin. Bu makaledeki yönergeleri izleyerek, portalı kullanarak bir simetrik anahtar kayıt grubu oluşturabilir ve örneği çalıştırmak için gereken KIMLIK kapsamını ve kayıt grubu birincil ve ikincil anahtarlarını bulabilirsiniz. Ayrıca, örneği kullanarak ayrı kayıtlar da oluşturabilirsiniz.
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Her bir cihaz için, cihazı tanımlayan bilgileri temel alan benzersiz bir kayıt KIMLIĞI tanımlanır. Örneğin, MAC adresi veya seri numarası.
 
@@ -41,13 +43,13 @@ Bu makalede gösterilen cihaz kodu, [hızlı başlangıç: simetrik anahtarlarla
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [IoT Hub cihazı sağlama hizmetini Azure Portal](./quick-setup-auto-provision.md) hızlı başlangıç ile tamamlama.
 
 Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya macOS için SDK belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
 
-* [' C++ Ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
+* [' C++ Ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
 
 * [Git](https://git-scm.com/download/)'in en son sürümünün yüklemesi.
 
@@ -73,7 +75,7 @@ SDK, sanal cihaz için örnek kodu içerir. Simülasyon cihazı, cihazın önyü
 
     Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
 
-4. Git deposunun kök dizininde bir `cmake` alt dizini oluşturun ve o klasöre gidin. Dizininden aşağıdaki komutları çalıştırın `azure-iot-sdk-c` :
+4. `cmake`Git deposunun kök dizininde bir alt dizin oluşturun ve bu klasöre gidin. Dizininden aşağıdaki komutları çalıştırın `azure-iot-sdk-c` :
 
     ```cmd/sh
     mkdir cmake
@@ -147,7 +149,8 @@ Cihazınız için benzersiz bir kayıt KIMLIĞI oluşturun. Geçerli karakterler
 
 Cihaz anahtarı oluşturmak için, cihaz için benzersiz kayıt KIMLIĞI için [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) hesaplamak ve sonucu base64 biçimine dönüştürmek için Grup ana anahtarını kullanın.
 
-Grup ana anahtarınızı cihaz kodunuza eklemeyin.
+> [!WARNING]
+> Cihaz kodunuz yalnızca tek bir cihaz için türetilmiş Cihaz anahtarını içermelidir. Grup ana anahtarınızı cihaz kodunuza eklemeyin. Güvenliği aşılmış bir ana anahtar, kimlik doğrulamasından geçen tüm cihazların güvenliğine güvenme olasılığı vardır.
 
 
 #### <a name="linux-workstations"></a>Linux iş istasyonları

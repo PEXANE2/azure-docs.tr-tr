@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central sürekli bir hasta izleme uygulaması oluşturun | Microsoft Docs
-description: Azure IoT Central uygulama şablonlarını kullanarak sürekli bir hasta izleme uygulaması derlemeyi öğrenin.
+title: Öğretici-Azure IoT Central sürekli bir hasta izleme uygulaması oluşturma | Microsoft Docs
+description: Bu öğreticide, Azure IoT Central uygulama şablonlarını kullanarak sürekli bir hasta izleme uygulaması oluşturmayı öğreneceksiniz.
 author: philmea
 ms.author: philmea
 ms.date: 09/24/2019
@@ -8,18 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 704c56745ad89e9ed2f79e8a863f1d0bc9845bf9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1967a2fb5adebe01ef4bff8d58f7832bffe95762
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001834"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531279"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Öğretici: sürekli hasta izleme uygulama şablonunu dağıtma ve gözden geçirme
 
-
-
-Bu öğreticide, bir çözüm Oluşturucu olarak IoT Central bir sürekli hasta izleme uygulama şablonu dağıtarak nasıl başlacağınız gösterilmektedir. Şablonu dağıtmayı, kutudan hangilerinin ekleneceğini ve bundan sonra neler yapabileceğinizi öğreneceksiniz.
+Bu öğreticide, bir çözüm Oluşturucu olarak IoT Central bir sürekli hasta izleme uygulama şablonu dağıtarak nasıl başlacağınız gösterilmektedir. Şablonu dağıtmayı ve kullanmayı öğrenirsiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -29,12 +27,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-an-application-template"></a>Uygulama şablonu oluşturma
 
-[Azure IoT Central uygulama Yöneticisi Web sitesine](https://apps.azureiotcentral.com/)gidin. Sol taraftaki Gezinti çubuğundan **Oluştur** ' u seçin ve ardından **sağlık** sekmesine tıklayın. 
+[Azure IoT Central uygulama Yöneticisi Web sitesine](https://apps.azureiotcentral.com/)gidin. Sol taraftaki Gezinti çubuğundan **Oluştur** ' u seçin ve ardından **sağlık** sekmesi ' ni seçin.
 
->[!div class="mx-imgBorder"] 
->![App Manager Sağlık Hizmetleri](media/app-manager-health.png)
+:::image type="content" source="media/app-manager-health.png" alt-text="Healthcre uygulama şablonu":::
 
-Uygulamanızı oluşturmaya başlamak için uygulama **Oluştur** düğmesine tıklayın ve ardından bir Microsoft kişisel, iş veya okul hesabıyla oturum açın. Bu işlem sizi **Yeni uygulama** sayfasına götürür.
+Uygulamanızı oluşturmaya başlamak için uygulama **Oluştur** düğmesini seçin ve ardından bir Microsoft kişisel, iş veya okul hesabıyla oturum açın. Bu işlem sizi **Yeni uygulama** sayfasına götürür.
 
 ![Uygulama sağlık hizmetleri oluşturma](media/app-manager-health-create.png)
 
@@ -52,7 +49,7 @@ Uygulamanızı oluşturmak için:
 
 ### <a name="dashboards"></a>Panolar
 
-Uygulama şablonu dağıttıktan sonra, önce **Lamna in hasta izleme panosuna**gideceksiniz. Lamna sağlık, iki hastaneler: Woodgrove Hospstanve Burkville hospstani içeren kurgusal bir barındırma sistemidir. Woodgrove Hosstana için bu operatör panosunda, bu şablondaki cihazlarla ilgili bilgileri ve telemetrisi, gerçekleştirebileceğiniz bir komut, iş ve eylem kümesiyle birlikte görürsünüz. Panodan şunları yapabilirsiniz:
+Uygulama şablonu dağıttıktan sonra, önce **Lamna in hasta izleme panosuna**gideceksiniz. Lamna sağlık, iki hastaneler: Woodgrove Hospstanve Burkville hospstani içeren kurgusal bir barındırma sistemidir. Woodgrove Hospstanoperator panosunda şunları yapabilirsiniz:
 
 * Cihazınızın **pil düzeyi** veya **bağlantı** durumu gibi cihaz telemetrisi ve özellikleri konusuna bakın.
 
@@ -64,75 +61,69 @@ Uygulama şablonu dağıttıktan sonra, önce **Lamna in hasta izleme panosuna**
 
 * Cihazın hasta veya uzak bir senaryo için kullanıldığını belirtmek üzere cihazınızın **hasta durumunu** değiştirin.
 
->[!div class="mx-imgBorder"] 
->![Hasta Lamna](media/lamna-in-patient.png)
+:::image type="content" source="media/lamna-in-patient.png" alt-text="Hasta durumu":::
 
-Ayrıca, Burkville hastanı için kullanılan ikinci operatör panosunu görmek için **uzak hasta panosuna git ' e** tıklayabilirsiniz. Bu pano benzer bir eylem, telemetri ve bilgi kümesi içerir. Ayrıca, birden çok cihazın kullanıldığını ve her birinde **bellenimi güncelleştirme** yeteneğine sahip olduğunu görebilirsiniz.
+Burkville Hospstanu işleci panosunu görmek için **uzak hasta panosuna git** ' i de seçebilirsiniz. Bu pano benzer bir eylem, telemetri ve bilgi kümesi içerir. Ayrıca, kullanımda olan birden çok cihazı görebilir ve her birinde **bellenimi güncelleştirmeyi** seçebilirsiniz.
 
->[!div class="mx-imgBorder"] 
->![Lamna uzak](media/lamna-remote.png)
-
-Her iki panoda da bu belgeye her zaman geri bağlanabilirsiniz.
+:::image type="content" source="media/lamna-remote.png" alt-text="Uzak Operatör Panosu":::
 
 ### <a name="device-templates"></a>Cihaz şablonları
 
-**Cihaz şablonları** sekmesine tıklarsanız, şablonun bir parçası olan iki farklı cihaz türü olduğunu görürsünüz:
+**Cihaz şablonları**' nı seçerseniz, şablonda iki cihaz türünü görürsünüz:
 
-* **Akıllı Vinals düzeltme eki**: Bu cihaz, farklı türlerde vitals işaretlerini ölçen bir düzeltme ekini temsil eder. Bu, hastaların içinde ve dışında hastaları izlemek için kullanılabilir. Şablona tıkladığınızda, pil düzeyi ve cihaz sıcaklığı gibi cihaz verilerini göndermenin yanı sıra, düzeltme ekinin de hastam oranı ve kan basıncı gibi hasta sistem durumu verileri göndermesi gerektiğini görürsünüz.
+* **Akıllı vitals düzeltme eki**: Bu cihaz, çeşitli önemli işaretleri ölçen bir düzeltme ekini temsil eder. Bu, hoçte ve dışından hastaların izlenmesi için kullanılır. Şablonu seçerseniz, düzeltme ekinin hem pil düzeyi ve cihaz sıcaklığı gibi cihaz verilerini hem de hastam oranı ve kan basıncı gibi hasta sistem durumu verilerini göndereceğini görürsünüz.
 
-* **Akıllı Knee ayracı**: Bu cihaz, bir Knee değiştirme Sury 'den kurtarma yaparken hastaların kullanabileceği bir Knee ayracı temsil eder. Bu şablona tıkladığınızda, cihaz verilerine ek olarak hareket ve hızlandırma aralığı gibi yetenekler görürsünüz.
+* **Akıllı Knee ayracı**: Bu cihaz, bir Knee değiştirme Sury 'den kurtarma yaparken, hastaların kullandığı bir Knee ayracını temsil eder. Bu şablonu seçerseniz cihaz verileri, hareket aralığı ve hızlandırma gibi işlevleri görürsünüz.
 
->[!div class="mx-imgBorder"] 
->![Akıllı vitals düzeltme eki cihaz şablonu](media/smart-vitals-device-template.png)
+:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Akıllı yama şablonu":::
 
-### <a name="device-groups"></a>Device groups 
-Cihaz grupları, bir cihaz kümesini mantıksal olarak gruplandırmanıza olanak tanır. böylece, bunlar üzerinde toplu sorgular veya işlemler gerçekleştirebilirsiniz. 
+### <a name="device-groups"></a>Device groups
 
-Cihaz grupları sekmesine tıklarsanız, uygulamadaki cihaz şablonlarının her biri için bazı varsayılan cihaz gruplarını oluşturduğumuz görürsünüz. Ayrıca, ' cihaz sağlama ' ve ' süresi geçmiş bellenime sahip cihazlar ' adlı iki ek örnek cihaz grubu oluşturduğumuz fark edeceksiniz. Bu örnek cihaz gruplarını, bazı [işleri](#jobs)çalıştırmak için giriş olarak kullanacağız.
+Bir cihaz kümesini mantıksal olarak gruplamak ve ardından bunlar üzerinde toplu sorgular veya işlemler çalıştırmak için cihaz gruplarını kullanın.
+
+Cihaz grupları sekmesini seçerseniz, uygulamadaki her bir cihaz şablonu için varsayılan bir cihaz grubu görürsünüz. Ayrıca, **sağlama cihazları** ve **cihazları güncel olmayan üretici yazılımına sahip olan**iki ek örnek cihaz grubu da oluşturulmuştur. Bu örnek cihaz gruplarını, uygulamadaki bazı [işleri](#jobs) çalıştırmak için giriş olarak kullanabilirsiniz.
 
 ### <a name="rules"></a>Kurallar
 
-Kurallar sekmesine atladıktan sonra, uygulama şablonunda var olan üç kural görürsünüz:
+**Kurallar**' ı seçerseniz, şablonda üç kuralı görürsünüz:
 
-* **Küme ayracı yüksek**: Bu kural, akıllı Knee ayracın cihaz sıcaklığı &deg; 5 dakikalık bir pencere üzerinde 95 F 'den büyükse tetiklenir. Bu kuralı, hasta ve bakım ekibine uyarı vermek ve cihazı uzaktan yavaşlatmak için kullanabilirsiniz.
+* **Küme ayracı yüksek**: Bu kural, akıllı Knee ayracın cihaz sıcaklığının &deg; 5 dakikalık bir pencere üzerinde 95 F 'den büyük olduğunda tetiklenir. Hasta ve bakım ekibine uyarı vermek ve cihazı uzaktan yavaşlatmak için bu kuralı kullanın.
 
-* **Düşüş tespit edildi**: Bu kural bir hasta olursa tetiklenir. Bu kuralı, işlem ekibinin süresi düşmüş olan hastaya yardımcı olmak üzere bir operasyonel takım dağıtmak üzere bir eylem yapılandırmak için kullanabilirsiniz.
+* **Düşüş tespit edildi**: bir hasta olursa bu kural tetiklenir. Bu kuralı, işlemsel bir ekibi dağıtmak üzere bir eylem yapılandırmak için kullanın.
 
-* **Düzeltme Eki pili düşük**: Bu kural, cihazdaki pil düzeyi %10 ' un altına gittiğinde tetiklenir. Bu kuralı, cihazındaki cihazlarını ücretlendirmesi için bir bildirim tetikleyebilmeniz için kullanabilirsiniz.
+* **Düzeltme Eki pili düşük**: Bu kural, cihazdaki pil düzeyi %10 ' un altına gittiğinde tetiklenir. Cihazını ücretlendirmesi için bir bildirim tetiklemek üzere bu kuralı kullanın.
 
->[!div class="mx-imgBorder"] 
->![Küme ayracı sıcaklık üst kuralı](media/brace-temp-rule.png)
+:::image type="content" source="media/brace-temp-rule.png" alt-text="Kurallar":::
 
 ### <a name="jobs"></a>İşler
 
-İşler, giriş olarak [cihaz gruplarını](#device-groups) kullanarak bir cihaz kümesi üzerinde toplu işlemler çalıştırmanızı sağlar. Uygulama şablonunu, bir çözüm işlecinin bir cihaz yaşam döngüsü noktasında çalışması gerekebilecek iki örnek iş ile sunuyoruz:
-* **Knee ayraç bellenimini Güncelleştir**: Bu iş cihaz grubundaki cihazların süresi geçmiş bellenime sahip cihazları bulacak ve bu cihazları Knee ayracın en son bellenim sürümüne güncelleştirmek için bir komut çalıştıracaktır. Bu örnek iş, cihazların bir ' Update ' komutu alma ve bellenim dosyalarını buluttan doğrudan getirme becerileri olduğunu varsayar.  
+İşler, giriş olarak [cihaz gruplarını](#device-groups) kullanarak bir dizi cihazda toplu işlemler çalıştırmanızı sağlar. Uygulama şablonunda bir işlecin çalışacağı iki örnek iş vardır:
 
-* **Cihazları yeniden sağla**: son zamanlarda hastana döndürülen bir cihaz kümesine sahipseniz ve sonraki hastalar için yeniden sağlanması gerekiyorsa, bu işi, sağlama cihazlarınızı toplu olarak güncelleştirmek için çalıştırabilirsiniz. Bu durumda, ' cihazları sağla ' adlı bir cihaz grubundan tüm cihazları alırız ve ' ı sağlamak için bir komut yürütüyoruz. 
+* **Knee ayraç bellenimini Güncelleştir**: Bu iş, cihaz grubu **cihazlarındaki cihazları güncel olmayan bellenim ile** bulur ve bu cihazları en son bellenim sürümüne güncelleştirmek için bir komut çalıştırır. Bu örnek iş, cihazların bir **güncelleştirme** komutunu işleyebileceğini varsayar ve ardından bellenim dosyalarını buluttan getirir.  
+
+* **Cihazları yeniden sağlama**: yakın zamanda hastana 'ya döndürülen bir cihaz kümesine sahipsiniz. Bu iş cihaz grubu **sağlama cihazlarda** cihazları bulur ve sonraki hastalar için bunları yeniden sağlamak üzere bir komut çalıştırır.
 
 ### <a name="devices"></a>Cihazlar
 
-**Cihazlar** sekmesine tıklayın ve ardından **akıllı Knee ayracın**bir örneğini seçin. Seçtiğiniz belirli bir cihazla ilgili bilgileri araştırmak için üç görünüm olduğunu göreceksiniz. Bu görünümler, cihazınızın cihaz şablonu oluşturulurken oluşturulur ve yayımlanır, bu, bağlandığınız veya benzetim yaptığınız tüm cihazlarda tutarlı olabilecekleri anlamına gelir.
+**Cihazlar** sekmesini seçin ve ardından **akıllı Knee ayracın**bir örneğini seçin. Seçtiğiniz belirli bir cihazla ilgili bilgileri araştırmak için üç görünüm vardır. Bu görünümler, cihazınız için cihaz şablonu oluşturduğunuzda oluşturulur ve yayımlanır. Bu nedenle, bu görünümler, bağlandığınız veya benzetim yaptığınız tüm cihazlarda tutarlıdır.
 
-**Pano** görünümü, operatör odaklı cihazdan gelen telemetri ve özelliklere genel bir bakış sağlar.
+**Pano** görünümü cihazdan operatör odaklı telemetri ve özelliklere genel bir bakış sunar.
 
-**Özellikler** sekmesi, bulut özelliklerini düzenlemenize ve cihaz özelliklerini okuma/yazma özelliği sağlayacak.
+**Özellikler** sekmesi, bulut özelliklerini düzenlemenize ve cihaz özelliklerini okuma/yazma olanağı sağlar.
 
-**Komutlar** sekmesi, cihaz şablonunuzun bir parçası olarak modellenen komutları çalıştırmanıza olanak sağlayacak.
+**Komutlar** sekmesi cihazdaki komutları çalıştırmanızı sağlar.
 
->[!div class="mx-imgBorder"] 
->![Knee küme ayracı görünümleri](media/knee-brace-dashboard.png)
+:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Knee küme ayracı panosu":::
 
 ### <a name="data-export"></a>Veri dışarı aktarma
 
-Veri dışa aktarma, IoT Central cihaz verilerinizi [FHıR Için Azure API 'si](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir)de dahil olmak üzere diğer Azure hizmetlerine sürekli olarak vermenize olanak tanır.
+Veri dışa aktarma işlemi, cihaz verilerinizi [FHıR Için Azure API 'si](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir)de dahil olmak üzere diğer Azure hizmetlerine sürekli olarak aktarmanıza olanak tanır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu uygulamayı kullanmaya devam edemeyecekiniz, **yönetim > uygulama ayarlarını** ziyaret ederek uygulamayı silin ve **Sil**' e tıklayın.
 
->[!div class="mx-imgBorder"] 
->![Uygulamayı Sil](media/admin-delete.png)
+:::image type="content" source="media/admin-delete.png" alt-text="Tidy kaynakları":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

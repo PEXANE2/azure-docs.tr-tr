@@ -1,16 +1,16 @@
 ---
 title: Tek başına Azure Service Fabric düzenli yedekleme/geri yükleme
-description: Uygulama verilerinizin düzenli veri yedeklemesini etkinleştirmek için Service Fabric düzenli yedekleme ve geri yükleme özelliğini kullanın.
+description: Uygulama verilerinizin düzenli veri yedeklemesini etkinleştirmek için tek başına Service Fabric düzenli yedekleme ve geri yükleme özelliğini kullanın.
 author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 07a6260c176165af5ced5ce275b9e4b365707d77
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dd91b8eb120de24d752073fd80157e9d2a663594
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261248"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531330"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Tek başına Service Fabric düzenli yedekleme ve geri yükleme
 > [!div class="op_single_selector"]

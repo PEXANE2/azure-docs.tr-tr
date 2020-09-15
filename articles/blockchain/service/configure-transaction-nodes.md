@@ -4,12 +4,12 @@ description: Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212573"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530395"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
 
@@ -37,10 +37,10 @@ Blok zinciri üyesine toplam 10 işlem düğümü için en fazla dokuz ek işlem
 
     | Ayar | Açıklama |
     |---------|-------------|
-    | Name | İşlem düğümü adı. Ad, işlem düğümü uç noktasının DNS adresini oluşturmak için kullanılır. Örneğin, `newnode-myblockchainmember.blockchain.azure.com`. Düğüm adı, oluşturulduktan sonra değiştirilemez. |
+    | Ad | İşlem düğümü adı. Ad, işlem düğümü uç noktasının DNS adresini oluşturmak için kullanılır. Örneğin, `newnode-myblockchainmember.blockchain.azure.com`. Düğüm adı, oluşturulduktan sonra değiştirilemez. |
     | Parola | Güçlü bir parola ayarlayın. Temel kimlik doğrulamasıyla işlem düğümü uç noktasına erişmek için parolayı kullanın.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
     Yeni bir işlem düğümü sağlanması yaklaşık 10 dakika sürer. Ek işlem düğümleri ücret doğurur. Maliyetler hakkında daha fazla bilgi için bkz. [Azure fiyatlandırması](https://aka.ms/ABSPricing).
 
@@ -52,7 +52,7 @@ Blok zinciri üyesine toplam 10 işlem düğümü için en fazla dokuz ek işlem
 
 1. Azure portal Azure blok zinciri hizmeti üye işlem düğümlerinizin birine gidin ve **genel bakış**' ı seçin.
 
-    ![Uç Noktalar](./media/configure-transaction-nodes/endpoints.png)
+    ![Ekran yakalama, bir blok zinciri üyesinin işlem düğümlerine ilişkin genel bakışı gösterir.](./media/configure-transaction-nodes/endpoints.png)
 
 İşlem düğümü uç noktaları güvenlidir ve kimlik doğrulaması gerekir. Azure AD kimlik doğrulaması, HTTPS temel kimlik doğrulaması ve HTTPS üzerinden bir erişim anahtarı veya TLS üzerinden WebSocket kullanarak bir işlem uç noktasına bağlanabilirsiniz.
 

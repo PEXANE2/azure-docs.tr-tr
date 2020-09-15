@@ -3,12 +3,12 @@ title: Çok günlük kayıtların kayıttan yürütülmesi-Azure
 description: Bu öğreticide, Azure Media Service API 'Lerini kullanarak çok günlü bir sürekli video kaydını kayıttan yürütmeyi öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649100"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530582"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Öğretici: çok günlük kayıtları kayıttan yürütme  
 
@@ -72,11 +72,11 @@ Ardından, Visual Studio Code 'da src/AMS-varlık-Player ' ı açın. Bu klasör
 
 Visual Studio Code, sol taraftaki Çalıştır simgesine tıklayabilir (veya CTRL + SHIFT + D), kullanılabilir uygulamaların çalıştırılmasını sağlayabilirsiniz:
 
-![Çalıştır](./media/playback-multi-day-recordings-tutorial/run.png)
+![Ekran görüntüsü, seçili Çalıştır öğesiyle birlikte Visual Studio Code bir menü gösterir.](./media/playback-multi-day-recordings-tutorial/run.png)
  
 Aşağıda gösterildiği gibi açılan kutudan AMS varlık oynatıcı uygulamasını seçin ve hata ayıklamaya başlamak için F5 'e basın.
 
-![Hata ayıklama](./media/playback-multi-day-recordings-tutorial/debug.png)
+![Ekran görüntüsü, AMS varlık yürütücüsü seçiliyken Visual Studio Code bir menü gösterir.](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 Örnek uygulama, varsayılan tarayıcı uygulamanızı derleyip başlatacaktır ve AMS varlık oynatıcı sayfasını açar.
 

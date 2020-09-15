@@ -7,17 +7,17 @@ author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/30/2020
+ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 99a590fd3adacc9a63c2ec482965ccd9ff162ac3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1b2b891a0b6b67efef38005d3a4d67eecf41afbd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399251"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531874"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door Kural Altyapısı Eşleştirme Koşulları
 
@@ -82,7 +82,7 @@ IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 - Birden çok IP adresi ve IP adres bloğu belirtmek için, değerler arasında tek bir boşluk kullanın:
   - **IPv4 örneği**: *1.2.3.4 10.20.30.40* , 1.2.3.4 veya 10.20.30.40 adresinden gelen isteklerle eşleşir.
   - **IPv6 örneği**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* , 1:2:3:4:5:6:7:8 ya da 10:20:30:40:50:60:70:80 adresinden gelen isteklerle eşleşir.
-- Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örneğin:
+- Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örnek:
   - **IPv4 örneği**: *5.5.5.64/26* , 5.5.5.64 ile 5.5.5.127 arası adreslerden gelen isteklerle eşleşir.
   - **IPv6 örneği**: *1:2:3:/48* , 1:2:3:0:0:0:0:0 ile 1:2: 3: ffff: ffff: ffff: ffff: ffff adresinden gelen tüm isteklerle eşleşir.
 
@@ -150,7 +150,7 @@ Operatör | İstek URL’si | Örnek dönüştürme
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | Uzantı | Örnek dönüştürme
+Operatör | Dahili numara | Örnek dönüştürme
 ---------|-----------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 

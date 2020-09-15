@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6ff732888e416fcd51216070b3b30ed37b79e92c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4a017f4b71a91f580a5281468a3f2bcbf7ba31b1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84687150"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531534"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Öğretici: Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak sağlama için bir cihaz ayarlama
 
-Önceki öğreticide, IoT hub’ınıza cihazlarınızı otomatik olarak sağlamak için Azure IoT Hub Cihazı Sağlama Hizmeti’nin nasıl ayarlanacağını öğrendiniz. Bu öğretici, cihazınızın IOT Hub ile otomatik olarak sağlanmasına imkan vermek için üretim işlemi boyunca cihazınızın ayarlanacağını gösterir. Cihazınız, [Kanıtlama mekanizmasına](concepts-device.md#attestation-mechanism) dayalı olarak, ilk önyüklemenin ve sağlama hizmetiyle bağlantının ardından sağlanır. Bu öğretici aşağıdaki görevleri kapsar:
+Önceki öğreticide, IoT hub’ınıza cihazlarınızı otomatik olarak sağlamak için Azure IoT Hub Cihazı Sağlama Hizmeti’nin nasıl ayarlanacağını öğrendiniz. Bu öğretici, cihazınızın IOT Hub ile otomatik olarak sağlanmasına imkan vermek için üretim işlemi boyunca cihazınızın ayarlanacağını gösterir. Cihazınız, [Kanıtlama mekanizmasına](concepts-service.md#attestation-mechanism) dayalı olarak, ilk önyüklemenin ve sağlama hizmetiyle bağlantının ardından sağlanır. Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
 > * Platforma özgü Cihaz Sağlama Hizmetleri İstemci SDK’sını derleme
@@ -29,16 +29,16 @@ Bu öğreticide önceki [Bulut kaynaklarını ayarlama](tutorial-set-up-cloud.md
 
 Bu öğretici, C için Cihaz Sağlama Hizmeti İstemci SDK’sını içeren [C deposu için Azure IoT SDK’ları ve kitaplıkları](https://github.com/Azure/azure-iot-sdk-c)’nı kullanır. SDK şu anda Windows veya Ubuntu uygulamalarında çalıştırılan cihazlar için TPM ve X.509 desteği sağlar. Bu öğretici, Visual Studio ile temel yeterliliğinizi varsayan bir Windows geliştirme istemcisi kullanımını temel alır. 
 
-Otomatik sağlama işlemini bilmiyorsanız, devam etmeden önce [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md) gözden geçirdiğinizden emin olun. 
+Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. 
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya macOS için SDK belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
 
-* [' C++ Ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
+* [' C++ Ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
 
 * [Git](https://git-scm.com/download/)'in en son sürümünün yüklemesi.
 
@@ -100,9 +100,9 @@ SDK'yı kanıtlama için fiziksel TPM/HSM veya X.509 sertifikası kullanacak şe
 
 - Bir X.509 cihazı için cihazlarınıza verilmiş sertifikaları almanız gerekir. Sağlama hizmeti, X.509 kanıtlama mekanizmasını kullanan cihazlara erişimi kontrol eden iki kayıt girişi türü sunar. Gerekli sertifikalar, kullanacağınız kayıt türüne göre değişiklik gösterir.
 
-    - Bireysel kayıtlar: Tek bir cihaz kaydı. Bu kayıt girişi türü için [end-entity, "leaf", certificates](concepts-security.md#end-entity-leaf-certificate) kullanılması gerekir.
+    - Bireysel kayıtlar: Tek bir cihaz kaydı. Bu kayıt girişi türü için [end-entity, "leaf", certificates](concepts-x509-attestation.md#end-entity-leaf-certificate) kullanılması gerekir.
     
-    - Kayıt grupları: Bu kayıt girişi türü için ara veya kök sertifika kullanılması gerekir. Daha fazla bilgi için bkz. [X.509 sertifikalarıyla sağlama hizmetine cihaz erişimini denetleme](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+    - Kayıt grupları: Bu kayıt girişi türü için ara veya kök sertifika kullanılması gerekir. Daha fazla bilgi için bkz. [X.509 sertifikalarıyla sağlama hizmetine cihaz erişimini denetleme](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ### <a name="simulated-devices"></a>Sanal cihazlar
 

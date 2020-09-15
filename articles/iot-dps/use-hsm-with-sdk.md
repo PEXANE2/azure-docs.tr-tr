@@ -1,8 +1,8 @@
 ---
 title: Azure IoT Hub cihaz sağlama hizmeti Istemci SDK 'Sı ile farklı kanıtlama mekanizmaları kullanma
 description: Azure nasıl yapılır-Azure 'da cihaz sağlama hizmeti (DPS) Istemci SDK 'Sı ile farklı kanıtlama mekanizmaları kullanma
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
@@ -10,18 +10,18 @@ services: iot-dps
 ms.custom:
 - mvc
 - amqp
-ms.openlocfilehash: c110e90f26f595bcbf181b72e13f12a6de2fa8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a32e2f055b2914fa0008e043e80092ac2da0814
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687216"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531517"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Azure’da Cihaz Sağlama Hizmeti İstemci SDK'sı ile farklı kanıtlama mekanizmaları kullanma
 
-Bu makalede, C için Cihaz Sağlama Hizmeti İstemci SDK’sı ile farklı [kanıtlama mekanizmalarının](concepts-security.md#attestation-mechanism) nasıl kullanılacağı gösterilmektedir. Fiziksel bir cihaz veya simülatör kullanabilirsiniz. Sağlama hizmeti, iki tür kanıtlama mekanizması için kimlik doğrulamasını destekler: X.509 ve Güvenilir Platform Modülü (TPM).
+Bu makalede, C için Cihaz Sağlama Hizmeti İstemci SDK’sı ile farklı [kanıtlama mekanizmalarının](concepts-service.md#attestation-mechanism) nasıl kullanılacağı gösterilmektedir. Fiziksel bir cihaz veya simülatör kullanabilirsiniz. Sağlama hizmeti, iki tür kanıtlama mekanizması için kimlik doğrulamasını destekler: X.509 ve Güvenilir Platform Modülü (TPM).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme ortamınızı [Simülasyon cihazı oluşturma ve sağlama](./quick-create-simulated-device.md) kılavuzundaki "Geliştirme ortamınızı hazırlama" başlıklı bölüme göre hazırlayın.
 
@@ -29,11 +29,11 @@ Geliştirme ortamınızı [Simülasyon cihazı oluşturma ve sağlama](./quick-c
 
 Cihaz üreticisi olarak öncelikle desteklenen türlerden birini temel alan bir kanıtlama mekanizması seçmeniz gerekir. Şu anda [C için Cihaz Sağlama Hizmeti istemci SDK’sı](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client), aşağıdaki kanıtlama mekanizmaları için destek sağlar: 
 
-- [Güvenilir Platform Modülü (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM, çoğu Windows tabanlı cihaz platformu ve birkaç Linux/Ubuntu tabanlı cihaz için belirlenmiş bir standarttır. Cihaz üreticisi olarak, cihazlarınızda bu işletim sistemlerinden herhangi biri yüklüyse ve belirlenmiş bir standart arıyorsanız bu kanıtlama mekanizmasını seçebilirsiniz. TPM yongaları ile her bir cihazı ayrı olarak Cihaz Sağlama Hizmetine kaydedebilirsiniz. Geliştirme amacıyla, Windows veya Linux geliştirme makinenizde TPM simülatörünü kullanabilirsiniz.
+- [Güvenilir Platform Modülü (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM, çoğu Windows tabanlı cihaz platformu ve birkaç Linux/Ubuntu tabanlı cihaz için belirlenmiş bir standarttır. Bir cihaz üreticisi olarak, cihazlarınızda çalışan bu işletim sistemlerinden biri varsa ve bir standart için arama yapıyorsanız bu kanıtlama mekanizmasını seçebilirsiniz. TPM yongaları ile her bir cihazı ayrı olarak Cihaz Sağlama Hizmetine kaydedebilirsiniz. Geliştirme amacıyla, Windows veya Linux geliştirme makinenizde TPM simülatörünü kullanabilirsiniz.
 
-- [X.509](https://cryptography.io/en/latest/x509/): X.509 sertifikaları [Donanım Güvenlik Modülleri (HSM)](concepts-security.md#hardware-security-module) adı verilen, nispeten daha yeni yongalarda depolanabilir. İş aynı zamanda Microsoft bünyesinde, X.509 sertifikalarını uygulayan RIoT veya DICE yongalarında da devam eder. X.509 yongalarıyla, portalda toplu cihaz kaydı gerçekleştirebilirsiniz. Bu, embedOS gibi Windows olmayan belirli işletim sistemlerini de destekler. Geliştirme amacıyla Cihaz Sağlama Hizmeti istemci SDK’sı, X.509 cihaz simülatörünü destekler. 
+- [X.509](https://cryptography.io/en/latest/x509/): X.509 sertifikaları [Donanım Güvenlik Modülleri (HSM)](concepts-service.md#hardware-security-module) adı verilen, nispeten daha yeni yongalarda depolanabilir. İş aynı zamanda Microsoft bünyesinde, X.509 sertifikalarını uygulayan RIoT veya DICE yongalarında da devam eder. X.509 yongalarıyla, portalda toplu cihaz kaydı gerçekleştirebilirsiniz. Bu, embedOS gibi Windows olmayan belirli işletim sistemlerini de destekler. Geliştirme amacıyla Cihaz Sağlama Hizmeti istemci SDK’sı, X.509 cihaz simülatörünü destekler. 
 
-Daha fazla bilgi için IoT Hub Cihazı Sağlama Hizmeti [güvenlik kavramları](concepts-security.md) ve [otomatik sağlama kavramları](/azure/iot-dps/concepts-auto-provisioning) bölümlerine bakın.
+Daha fazla bilgi için bkz. cihaz sağlama hizmeti [kanıtlama mekanizmaları](concepts-service.md#attestation-mechanism)IoT Hub.
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>Desteklenen kanıtlama mekanizmaları için kimlik doğrulamasını etkinleştirme
 

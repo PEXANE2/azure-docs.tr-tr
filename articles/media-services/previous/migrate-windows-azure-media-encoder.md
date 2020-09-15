@@ -1,6 +1,6 @@
 ---
 title: Windows Azure Media Encoder 'dan Media Encoder Standard 'e geçiş | Microsoft Docs
-description: Bu konuda, Azure Medya Kodlayıcısı 'ndan Media Encoder Standard medya işlemcisine nasıl geçiş yapılacağı anlatılmaktadır.
+description: Bu konuda, Windows Azure Medya Kodlayıcısı 'ndan Media Encoder Standard medya işlemcisine nasıl geçiş yapılacağı açıklanır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a4a5f2f448cc5e954cf21f9785f788925d5a461e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9125639ab5b563a8db7cfa5730bd9673f383071c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263952"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529256"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Windows Azure Medya Kodlayıcısı 'ndan Media Encoder Standard 'e geçiş
 

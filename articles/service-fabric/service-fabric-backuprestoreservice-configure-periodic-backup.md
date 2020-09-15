@@ -1,16 +1,16 @@
 ---
 title: Düzenli aralıklarla yedekleme yapılandırmasını anlama
-description: Uygulama verilerinizin düzenli veri yedeklemesini etkinleştirmek için Service Fabric düzenli yedekleme ve geri yükleme özelliğini kullanın.
+description: Güvenilir durum bilgisi olan hizmetlerin veya Reliable Actors düzenli olarak yedeklenmesini yapılandırmak için Service Fabric düzenli yedekleme ve geri yükleme özelliğini kullanın.
 author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: c77f069d93e368652c30cd100b0f99ca55341882
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 53f63f341fe614f2287a09f37fafd2eedc614be7
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261227"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530922"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama
 
@@ -119,7 +119,7 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
 >
 
 * **Bekletme ilkesi**: yapılandırılan depolamada yedeklemelerin tutulacağı ilkeyi belirtir. Yalnızca temel bekletme Ilkesi desteklenir.
-    1. **Temel bekletme ilkesi**: Bu bekletme ilkesi, daha gerekli olmayan yedekleme dosyalarını kaldırarak en iyi depolama kullanımını sağlamaya olanak tanır. `RetentionDuration`, yedeklemelerin depolama alanında korunması gereken zaman aralığını ayarlamak için belirtilebilir. `MinimumNumberOfBackups`, belirtilen sayıda yedeklemenin ne olursa olsun her zaman korunduğundan emin olmak için belirtilecek isteğe bağlı bir parametredir `RetentionDuration` . Aşağıdaki örnek, yedeklemeleri _10_ gün boyunca koruyacak yapılandırmayı gösterir ve yedekleme sayısının _20_' nin altına geçmesine izin vermez.
+    1. **Temel bekletme ilkesi**: Bu bekletme ilkesi, daha gerekli olmayan yedekleme dosyalarını kaldırarak en iyi depolama kullanımını sağlamaya olanak tanır. `RetentionDuration` , yedeklemelerin depolama alanında korunması gereken zaman aralığını ayarlamak için belirtilebilir. `MinimumNumberOfBackups` , belirtilen sayıda yedeklemenin ne olursa olsun her zaman korunduğundan emin olmak için belirtilecek isteğe bağlı bir parametredir `RetentionDuration` . Aşağıdaki örnek, yedeklemeleri _10_ gün boyunca koruyacak yapılandırmayı gösterir ve yedekleme sayısının _20_' nin altına geçmesine izin vermez.
 
         ```json
         {

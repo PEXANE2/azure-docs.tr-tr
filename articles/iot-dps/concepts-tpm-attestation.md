@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12860629d78391ed271306daba29a51aeb326c1d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975287"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531602"
 ---
 # <a name="tpm-attestation"></a>TPM kanıtlama
 
 IoT Hub cihaz sağlama hizmeti, belirli bir IoT Hub 'ına sıfır Touch cihaz sağlamayı yapılandırmak için kullandığınız IoT Hub yardımcı hizmettir. Cihaz sağlama hizmeti ile milyonlarca cihazı güvenli bir şekilde sağlayabilirsiniz.
 
-Bu makalede [TPM](./concepts-device.md)kullanılırken kimlik kanıtlama süreci açıklanmaktadır. TPM Güvenilir Platform Modülü temsil eder ve bir donanım güvenlik modülü (HSM) türüdür. Bu makalede ayrı, bellenim veya tümleşik TPM kullandığınız varsayılır. Yazılım öykünmesi, prototip oluşturma veya test etme için uygundur, ancak ayrık, bellenim veya tümleşik TPM 'Ler ile aynı güvenlik düzeyini sağlamalardır. Üretimde yazılım TPMs kullanılması önerilmez. TPMs türleri hakkında daha fazla bilgi için bkz. [TPM 'ye giriş](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
+Bu makalede bir Güvenilir Platform Modülü (TPM) kullanılırken kimlik kanıtlama işlemi açıklanmaktadır. TPM, donanım güvenlik modülü (HSM) türüdür. Bu makalede ayrı, bellenim veya tümleşik TPM kullandığınız varsayılır. Yazılım öykünmesi, prototip oluşturma veya test etme için uygundur, ancak ayrık, bellenim veya tümleşik TPM 'Ler ile aynı güvenlik düzeyini sağlamalardır. Üretimde yazılım TPMs kullanılması önerilmez. TPMs türleri hakkında daha fazla bilgi için bkz. [TPM 'ye giriş](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
 
 Bu makale yalnızca HMAC anahtar desteği ve bunların onay anahtarlarıyla TPM 2,0 kullanan cihazlar için geçerlidir. Kimlik doğrulaması için X. 509.440 sertifikalarını kullanan cihazlar için değildir. TPM, Trusted Computing Group bir sektör genelinde, ISO standardıdır ve TPM hakkında daha fazla bilgi edinmek için [tam tpm 2,0 belirtiminde](https://trustedcomputinggroup.org/tpm-library-specification/) veya [ıso/IEC 11889 belirtiminde](https://www.iso.org/standard/66510.html)daha fazla bilgi edinebilirsiniz. Bu makalede ayrıca ortak ve özel anahtar çiftleri hakkında bilgi sahibi olduğunuz ve bunların şifreleme için nasıl kullanıldığı varsayılmaktadır.
 
 Cihaz sağlama hizmeti cihaz SDK 'Ları, bu makalede açıklanan her şeyi sizin için işler. Cihazlarınızda SDK 'Ları kullanıyorsanız ek bir şey uygulamanız gerekmez. Bu makale, cihazınızın sağlamasını yaparken TPM güvenlik yongasında neler olduğunu ve neden güvenli olduğunu anlamanıza yardımcı olur.
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 TPMs, güvenli güven kökü olarak onay anahtarı (EK) olarak adlandırılan bir şeyi kullanır. EK TPM için benzersizdir ve bunun değiştirilmesi aslında cihazı yeni bir tane olarak değiştirir.
 
@@ -67,5 +67,5 @@ Cihaz daha sonra, şifresi çözülmüş nonce kullanarak bir SAS belirtecini im
 
 Artık cihaz IoT Hub bağlanır ve cihazlarınızın anahtarlarının güvenli bir şekilde saklandığı bilgilerden güvende olursunuz. Cihaz sağlama hizmetinin TPM kullanarak bir cihazın kimliğini güvenli bir şekilde doğrulama işlemini öğrenmiş olduğunuza göre, daha fazla bilgi edinmek için aşağıdaki makalelere göz atın:
 
-* [Otomatik sağlama ile ilgili tüm kavramlar hakkında bilgi edinin](./concepts-auto-provisioning.md)
+* [Sağlama kavramları hakkında bilgi edinin](about-iot-dps.md#provisioning-process)
 * Akışı gerçekleştirmek için SDK 'Ları kullanarak [otomatik sağlamayı](./quick-setup-auto-provision.md) kullanmaya başlayın.

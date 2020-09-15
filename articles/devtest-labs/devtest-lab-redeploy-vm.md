@@ -3,12 +3,12 @@ title: Azure DevTest Labs bir laboratuvarda sanal makineyi yeniden dağıtma | M
 description: Azure DevTest Labs bir sanal makineyi yeniden dağıtmayı öğrenin (bir Azure düğümünden diğerine geçiş).
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: da0edf13adaa0d7ecd84ee2c190f376c19b398db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a38b112165b893d877733b967c21bb62b20ca2f6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480244"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530327"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvarda sanal makineyi yeniden dağıtma
 Bir laboratuvarda Uzak Masaüstü bağlantısı aracılığıyla bir sanal makineye (VM) bağlanamıyorsanız, VM 'yi yeniden dağıtın ve tekrar bağlanmayı deneyin. Bir VM 'yi yeniden dağıtırken, DevTest Labs VM 'yi çalıştıran düğümden Azure altyapısı içindeki yeni bir düğüme taşıdır. Daha sonra tüm yapılandırma seçeneklerinizi ve ilişkili kaynaklarınızı korurken VM 'yi başlatır. Bu özellik, uzak masaüstü bağlantınızın giderilmesi veya laboratuvardaki Windows tabanlı VM 'lere erişim için harcanan süreyi kaydeder. 
@@ -23,7 +23,7 @@ Azure DevTest Labs bir laboratuvarda bir sanal makineyi yeniden dağıtmak için
 5. VM 'Ler listesinden bir VM seçin.
 6. VM 'nizin sanal makine sayfasında sol menüdeki **işlemler** ' in altında yeniden **Dağıt** ' ı seçin.
 
-    ![Yeniden dağıtım](media/devtest-lab-redeploy-vm/redeploy.png)
+    ![Ekran yakalama, yeniden dağıtma seçili olan sanal makine sayfasını gösterir.](media/devtest-lab-redeploy-vm/redeploy.png)
 7. Sayfadaki bilgileri okuyun ve yeniden **Dağıt** düğmesini seçin. 9. **Bildirimler** penceresindeki yeniden dağıtma işleminin durumunu denetleyin.
 
     ![Yeniden dağıtım durumu](media/devtest-lab-redeploy-vm/redeploy-status.png)

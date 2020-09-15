@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 'ta disk alanını yönetme
-description: Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri.
+description: Azure HDInsight kümeleriyle etkileşim kurarken disk alanı sorunlarını yönetmeye yönelik sorun giderme adımları ve olası çözümleri.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/17/2020
-ms.openlocfilehash: 577bed7ce342be14a50077a3ffd841cd901b5b31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0628033ecf6f2e51cf18f61c6e5b36042557dc7b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77473018"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530170"
 ---
 # <a name="manage-disk-space-in-azure-hdinsight"></a>Azure HDInsight 'ta disk alanını yönetme
 
@@ -42,7 +42,7 @@ Aşağıdaki konfigürasyonları gözden geçirin:
 
 * Küme boyutunun iş yükü için uygun olduğundan emin olun. İş yükü yakın zamanda değiştirilmiş olabilir veya küme yeniden boyutlandırılmış olabilir. Daha yüksek bir iş yüküyle eşleşecek şekilde kümeyi [ölçeklendirin](../hdinsight-scaling-best-practices.md) .
 
-* `/mnt/resource`Yalnız bırakılmış dosyalarla doldurulmuş olabilir (Resource Manager yeniden başlatma durumunda olduğu gibi). Gerekirse, ve el ile `/mnt/resource/hadoop/yarn/log` temizleyin `/mnt/resource/hadoop/yarn/local` .
+* `/mnt/resource` Yalnız bırakılmış dosyalarla doldurulmuş olabilir (Resource Manager yeniden başlatma durumunda olduğu gibi). Gerekirse, ve el ile `/mnt/resource/hadoop/yarn/log` temizleyin `/mnt/resource/hadoop/yarn/local` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

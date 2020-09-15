@@ -4,12 +4,12 @@ description: MetaMask kullanarak bir Azure blok zinciri hizmeti ağına bağlan�
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920575"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530446"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Hızlı başlangıç: akıllı bir sözleşmeyi bağlamak ve dağıtmak için MetaMask kullanma
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, bir Azure blok zinciri hizmeti ağına bağlanmak ve 
 
 Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti uç noktası adresine ihtiyacınız vardır. Uç nokta adresi ve erişim anahtarları Azure portal.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure blok zinciri hizmeti üyesine gidin.
 1. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
 
@@ -41,7 +41,7 @@ Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti uç noktası ad
 ## <a name="connect-metamask"></a>MetaMask bağlama
 
 1. MetaMask Browser uzantısını açın ve oturum açın.
-1. Ağ açılan menüsünde **özel RPC**' yi seçin.
+1. Ağ açılan menüsünde  **özel RPC**' yi seçin.
 
     ![Özel RPC](./media/connect-metamask/custom-rpc.png)
 
@@ -87,9 +87,9 @@ Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır.
     ```
 
     **Basit sözleşme** , **Bakiye**adlı bir durum değişkeni bildirir. Tanımlanmış iki işlev vardır. **Add** işlevi **dengelemek**için bir sayı ekler. **Get** işlevi, **Bakiyenin**değerini döndürür.
-1. Sözleşmeyi derlemek için önce Solidity derleyici bölmesini seçin, sonra **Simple. Nuevo derlemesini**seçin.
+1. Sözleşmeyi derlemek için önce Solidity derleyici bölmesini seçin, sonra  **Simple. Nuevo derlemesini**seçin.
 
-    ![Se](./media/connect-metamask/compile.png)
+    ![Ekran yakalama, derlenen bir sözleşmeyi gösterir.](./media/connect-metamask/compile.png)
 
 1. **Dağıtım & Çalıştır** bölmesini seçin ve ardından **ortamı** , MetaMask ile blok zinciri üyesine bağlamak üzere **eklenmiş Web3** olarak ayarlayın.
 
@@ -97,7 +97,7 @@ Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır.
 
 1. **Basit** sözleşmeyi seçin ve ardından **dağıtın**.
 
-    ![Dağıtma](./media/connect-metamask/deploy.png)
+    ![Ekran yakalama, seçili bir sözleşmeye sahip ve seçili bir sözleşmeyle birlikte dağıtım ve çalıştırma işlemlerini gösterir.](./media/connect-metamask/deploy.png)
 
 
 1. Bir MetaMask bildirimi, işlemi gerçekleştirmek için yeterli fon sayısını uyarır.

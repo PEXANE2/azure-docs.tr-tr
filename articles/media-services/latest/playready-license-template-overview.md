@@ -1,6 +1,6 @@
 ---
 title: Microsoft PlayReady lisans şablonuyla Azure Media Services v3
-description: Bu konu, PlayReady lisanslarını yapılandırmak için kullanılan bir PlayReady lisans şablonuna genel bakış sunar.
+description: PlayReady lisans şablonuyla Azure Media Services v3 ve PlayReady lisanslarını yapılandırma hakkında bilgi edinin.
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1aec5861f06b7309a90c84f28dafb30c3580f51
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0a4b694ca449390e5b2f282f1361f0a455ba5750
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289345"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531449"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>PlayReady lisans şablonuyla v3 Media Services
 

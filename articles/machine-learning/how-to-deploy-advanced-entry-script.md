@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 95d3570d93aa4966fcf6864838ec01735b8662db
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: c135d649feb42c8fa735e67ad6f3c3e51551d3e9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650292"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530293"
 ---
 # <a name="advanced-entry-script-authoring"></a>Gelişmiş giriş betiği yazma
 
 Bu makalede, özel kullanım durumları için giriş betikleri yazma gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, Azure Machine Learning ile dağıtmayı planladığınız eğitilen bir makine öğrenimi modeli zaten var. Model dağıtımı hakkında daha fazla bilgi edinmek için [Bu öğreticiye](how-to-deploy-and-where.md)bakın.
 
@@ -34,12 +34,16 @@ Bu türler Şu anda destekleniyor:
 * `pyspark`
 * Standart Python nesnesi
 
-Şema oluşturmayı kullanmak için, `inference-schema` Bağımlılıklar dosyanıza açık kaynaklı paketi ekleyin. Bu paket hakkında daha fazla bilgi için bkz [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) .. `input_sample` `output_sample` Web hizmetinin istek ve yanıt biçimlerini temsil eden ve değişkenlerinde giriş ve çıkış örnek biçimlerini tanımlayın. Bu örnekleri işlevindeki giriş ve çıkış işlevi Dekoratörleri içinde kullanın `run()` . Aşağıdaki scikit-örnek, şema oluşturmayı kullanır.
+Şema oluşturmayı kullanmak için, `inference-schema` Bağımlılıklar dosyanıza 1.1.0 veya üzeri bir açık kaynaklı paket sürümü ekleyin. Bu paket hakkında daha fazla bilgi için bkz [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) .. Uygun Swagger otomatik Web hizmeti tüketimi oluşturmak için, Puanlama betiği çalıştırması () işlevinin API şekli olmalıdır:
+* "StandardPythonParameterType" türünde, adlandırılmış girişler, PandasDataframeParameterTypes içeren bir ilk parametre.
+* "StandardPythonParameterType" türünde, iç içe olmayan GlobalParameter adlı isteğe bağlı ikinci parametre.
+* "StandardPythonParameterType" türünde bir sözlük döndürür. Bu, PandasDataFrameParameterTypes içeren iç içe geçmiş olabilir.
+`input_sample` `output_sample` Web hizmetinin istek ve yanıt biçimlerini temsil eden ve değişkenlerinde giriş ve çıkış örnek biçimlerini tanımlayın. Bu örnekleri işlevindeki giriş ve çıkış işlevi Dekoratörleri içinde kullanın `run()` . Aşağıdaki scikit-örnek, şema oluşturmayı kullanır.
 
 
 ## <a name="power-bi-compatible-endpoint"></a>Power BI uyumlu uç nokta 
 
-Aşağıdaki örnek, veri çerçevesini kullanarak giriş verilerinin bir sözlük olarak nasıl tanımlanacağını göstermektedir `<key: value>` . Bu yöntem, dağıtılan Web hizmetinin Power BI tüketmesi için desteklenir. ([Power BI Web hizmetini kullanma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/power-bi/service-machine-learning-integration).)
+Aşağıdaki örnekte, API şeklinin yukarıdaki yönergeye göre nasıl tanımlanacağı gösterilmektedir. Bu yöntem, dağıtılan Web hizmetinin Power BI tüketmesi için desteklenir. ([Power BI Web hizmetini kullanma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/power-bi/service-machine-learning-integration).)
 
 ```python
 import json
@@ -48,9 +52,10 @@ import numpy as np
 import pandas as pd
 import azureml.train.automl
 from sklearn.externals import joblib
-from azureml.core.model import Model
+from sklearn.linear_model import Ridge
 
 from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.standard_py_parameter_type import StandardPythonParameterType
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
 
@@ -58,31 +63,32 @@ from inference_schema.parameter_types.pandas_parameter_type import PandasParamet
 def init():
     global model
     # Replace filename if needed.
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model_file.pkl')
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
     # Deserialize the model file back into a sklearn model.
     model = joblib.load(model_path)
 
+# providing 3 sample inputs for schema generation
+numpy_sample_input = NumpyParameterType(np.array([[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]],dtype='float64'))
+pandas_sample_input = PandasParameterType(pd.DataFrame({'name': ['Sarah', 'John'], 'age': [25, 26]}))
+standard_sample_input = StandardPythonParameterType(0.0)
 
-input_sample = pd.DataFrame(data=[{
-    # This is a decimal type sample. Use the data type that reflects this column in your data.
-    "input_name_1": 5.1,
-    # This is a string type sample. Use the data type that reflects this column in your data.
-    "input_name_2": "value2",
-    # This is an integer type sample. Use the data type that reflects this column in your data.
-    "input_name_3": 3
-}])
+# This is a nested input sample, any item wrapped by `ParameterType` will be described by schema
+sample_input = StandardPythonParameterType({'input1': numpy_sample_input, 
+                                            'input2': pandas_sample_input, 
+                                            'input3': standard_sample_input})
 
-# This is an integer type sample. Use the data type that reflects the expected result.
-output_sample = np.array([0])
+sample_global_parameters = StandardPythonParameterType(1.0) #this is optional
+sample_output = StandardPythonParameterType([1.0, 1.0])
 
-# To indicate that we support a variable length of data input,
-# set enforce_shape=False
-@input_schema('data', PandasParameterType(input_sample, enforce_shape=False))
-@output_schema(NumpyParameterType(output_sample))
-def run(data):
+@input_schema('inputs', sample_input)
+@input_schema('global_parameters', sample_global_parameters) #this is optional
+@output_schema(sample_output)
+def run(inputs, global_parameters):
     try:
+        data = inputs['input1']
+        # data will be convert to target format
+        assert isinstance(data, np.ndarray)
         result = model.predict(data)
-        # You can return any data type, as long as it is JSON serializable.
         return result.tolist()
     except Exception as e:
         error = str(e)

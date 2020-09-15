@@ -3,12 +3,12 @@ title: Azure App Service kaynaklarını taşıma
 description: App Service kaynaklarını yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 27555a4616befca41c7e970e947afa1cd1ff7248
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042068"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531381"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>App Service kaynakları için kılavuzu taşıma
 
@@ -42,7 +42,7 @@ Web uygulamasını taşımak için önerilen adımlar seçeneğini belirleyin.
 
 Kaynakları taşımadan önce gerçekleştirilecek önerilen eylemleri görürsünüz. Bilgiler, Web uygulaması için özgün kaynak grubunu içerir.
 
-![Öneriler](./media/app-service-move-limitations/recommendations.png)
+![Ekran yakalama, Microsoft dot Web kaynaklarını taşımak için önerilen adımları gösterir.](./media/app-service-move-limitations/recommendations.png)
 
 ## <a name="move-support"></a>Taşıma desteği
 

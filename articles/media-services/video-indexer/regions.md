@@ -3,19 +3,19 @@ title: Video Indexer kullanılabildiği bölgeler-Azure
 titleSuffix: Azure Media Services
 description: Bu makalede Azure Media Services Video Indexer kullanılabildiği Azure bölgeleri ele sunulmuştur.
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/08/2020
-ms.author: kumud
-ms.openlocfilehash: dd95f022e40b9ae6fa60a6536a87146049c53b68
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.date: 09/14/2020
+ms.author: juliako
+ms.openlocfilehash: 6ebdb22f50efbefc695f9752c6e6fc333571828c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565336"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530955"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Video Indexer var olan Azure bölgeleri
 
@@ -23,7 +23,18 @@ Video Indexer API 'Leri, çağrının yönlendirileceği Azure bölgesine ayarla
 
 ## <a name="locations"></a>Konumlar
 
-`location`Parametreye, değeri olarak Azure bölge kodu adı verilmelidir. Önizleme modunda Video Indexer kullanıyorsanız, `"trial"` değeri olarak koymanız gerekir. `trial` , parametresi için varsayılan değerdir `location` . Aksi takdirde, hesabınızın bulunduğu Azure bölgesinin kod adını almak ve çağrın ' a yönlendirilmek için, [Azure CLI](/cli/azure)'de aşağıdaki satırı çalıştırabilirsiniz:
+`location`Parametreye, değeri olarak Azure bölge kodu adı verilmelidir. Önizleme modunda Video Indexer kullanıyorsanız, `"trial"` değeri olarak koymanız gerekir. `trial` , parametresi için varsayılan değerdir `location` . Aksi takdirde, hesabınızın bulunduğu Azure bölgesinin kod adını almak ve çağrının yönlendirilmek zorunda olması için Azure portal kullanabilir veya bir [Azure CLI](/cli/azure) komutu çalıştırabilirsiniz.
+
+### <a name="azure-portal"></a>Azure portalı
+
+1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın.
+1. Sayfanın sağ üst köşesinden **Kullanıcı hesapları** ' nı seçin.
+1. Sağ üst köşedeki hesabınızın konumunu bulun.  
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/location/location1.png" alt-text="Konum":::
+    
+###  <a name="cli-command"></a>CLı komutu
 
 ```azurecli-interactive
 az account list-locations

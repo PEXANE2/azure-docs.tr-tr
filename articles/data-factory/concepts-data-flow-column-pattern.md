@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/21/2019
-ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: c6a2d38644d844cb1231a24465478b7f70a85111
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606126"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531175"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Eşleme veri akışında sütun düzenlerini kullanma
 
@@ -27,17 +27,17 @@ Sütun desenleri Şu anda türetilmiş sütunda, toplama, seçme ve havuz dönü
 
 ## <a name="column-patterns-in-derived-column-and-aggregate"></a>Türetilmiş sütunda ve toplamada sütun desenleri
 
-Bir toplama dönüşümünün türetilmiş bir sütuna veya toplamalar sekmesine bir sütun stili eklemek için, varolan bir sütunun sağ tarafındaki artı simgesine tıklayın. **Sütun Ekle deseninin**seçimini yapın. 
+Türetilmiş bir sütuna, toplamaya veya pencere dönüşümüne bir sütun stili eklemek için, sütun listesinin üstüne **Ekle** ' ye veya varolan bir türetilmiş sütunun yanındaki artı simgesine tıklayın. **Sütun Ekle kalıbı**seçin.
 
-![sütun desenleri](media/data-flow/columnpattern.png "Sütun Desenleri")
+![sütun desenleri](media/data-flow/add-column-pattern.png "Sütun Desenleri")
 
 Eşleştirme koşulunu girmek için [ifade oluşturucusunu](concepts-data-flow-expression-builder.md) kullanın. Sütunu,,, ve ' ı temel alarak sütunlarla eşleşen bir Boole ifadesi oluşturun `name` `type` `stream` `position` . Bu model, koşulun true döndüğü düzeltebilecekler veya tanımlanmış tüm sütunları etkiler.
 
 Eşleştirme koşulunun altındaki iki ifade kutusu, etkilenen sütunların yeni adlarını ve değerlerini belirtir. `$$`Eşleşen alanın varolan değerine başvurmak için kullanın. Sol ifade kutusu, adı tanımlar ve sağ ifade kutusu değeri tanımlar.
 
-![sütun desenleri](media/data-flow/columnpattern2.png "Sütun Desenleri")
+![sütun desenleri](media/data-flow/edit-column-pattern.png "Sütun Desenleri")
 
-Yukarıdaki sütun deseninin Double türü her sütunla eşleşiyor ve eşleşme başına bir toplama sütunu oluşturuyor. Yeni sütunun adı, eşleşen sütun adının ' _total ' ile bitiştirildiği addır. Yeni sütunun değeri, var olan çift değerin yuvarlanmış, toplanmış toplamıdır.
+Yukarıdaki sütun deseninin Double türü her sütunla eşleşiyor ve eşleşme başına bir türetilmiş sütun oluşturuyor. `$$`Sütun adı alanı olarak belirterek, eşleşen her sütun aynı adla güncelleştirilir. Her sütunun değeri, varolan değerin iki ondalık noktalara yuvarlanmasını sağlar.
 
 Eşleştirme koşullarınızın doğru olduğunu doğrulamak için **İnceleme** sekmesinde tanımlı sütunların çıktı şemasını doğrulayabilir veya **veri önizleme** sekmesindeki verilerin bir anlık görüntüsünü alabilirsiniz. 
 
@@ -73,15 +73,15 @@ Tanımlı projeksiyonda bir hiyerarşisi varsa, hiyerarşiler alt sütunlarını
 
 ![kural tabanlı eşleme](media/data-flow/rule-based-hierarchy.png "Kural tabanlı eşleme")
 
-Yukarıdaki örnek, karmaşık sütunun tüm alt sütunlarında eşleşir `a` . `a`iki alt sütun `b` ve içerir `c` . Çıkış şeması iki sütun içerir `b` ve `c` ' ad As ' koşulu olur `$$` .
+Yukarıdaki örnek, karmaşık sütunun tüm alt sütunlarında eşleşir `a` . `a` iki alt sütun `b` ve içerir `c` . Çıkış şeması iki sütun içerir `b` ve `c` ' ad As ' koşulu olur `$$` .
 
 ## <a name="pattern-matching-expression-values"></a>Model eşleştirme ifadesi değerleri.
 
-* `$$`çalışma zamanında her eşleşmenin adına veya değerine çevirir
-* `name`Her gelen sütunun adını temsil eder
-* `type`Her gelen sütunun veri türünü temsil eder
-* `stream`akışdaki her bir akışla veya dönüşümle ilişkilendirilen adı temsil eder
-* `position`, veri akışındaki sütunların sıralı konumudur
+* `$$` çalışma zamanında her eşleşmenin adına veya değerine çevirir
+* `name` Her gelen sütunun adını temsil eder
+* `type` Her gelen sütunun veri türünü temsil eder
+* `stream` akışdaki her bir akışla veya dönüşümle ilişkilendirilen adı temsil eder
+* `position` , veri akışındaki sütunların sıralı konumudur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Veri dönüştürmeleri için eşleme veri akışı [ifade dili](data-flow-expression-functions.md) hakkında daha fazla bilgi edinin

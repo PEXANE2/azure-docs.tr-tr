@@ -5,16 +5,16 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: b97b373936f9c485eaa96cdd34ed33c49e75ad9a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 09/14/2020
+ms.openlocfilehash: 3f7796dd565238eb853fcea431a6bcb7d18ee05a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242075"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530242"
 ---
-# <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları-tek sunucu
-PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar, tek bir komutla birlikte tek bir pakette yüklenebilecek veya kaldırılabileceği tek bir pakette birden çok ilgili SQL nesnesini birlikte paketleyebilir. Veritabanına yüklendikten sonra uzantı işlevleri yerleşik özellikler gibi.
+# <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı'ndaki PostgreSQL uzantıları - Tek Sunucu
+PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar birden çok ilgili SQL nesnesini tek bir komutla veritabanınıza yüklenip kaldırılabilecek bir paket haline getirir. Veritabanınıza yüklenen uzantılar, yerleşik özellikler gibi çalışır.
 
 ## <a name="how-to-use-postgresql-extensions"></a>PostgreSQL uzantılarını kullanma
 PostgreSQL uzantılarının kullanabilmeniz için veritabanınıza yüklenmesi gerekir. Belirli bir uzantıyı yüklemek için, psql aracından [Uzantı Oluştur](https://www.postgresql.org/docs/current/sql-createextension.html)   komutunu çalıştırarak paketlenmiş nesneleri veritabanınıza yükleyin.
@@ -26,7 +26,7 @@ PostgreSQL için Azure veritabanı aşağıda listelenen bir anahtar uzantılar�
 Aşağıdaki uzantılar Postgres sürüm 11 ' in PostgreSQL sunucuları için Azure veritabanı 'nda mevcuttur. 
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
+> | **Dahili numara**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -71,7 +71,7 @@ Aşağıdaki uzantılar Postgres sürüm 11 ' in PostgreSQL sunucuları için Az
 Aşağıdaki uzantılar Postgres sürüm 10 ' a sahip PostgreSQL için Azure veritabanı sunucuları 'nda mevcuttur.
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
+> | **Dahili numara**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -117,7 +117,7 @@ Aşağıdaki uzantılar Postgres sürüm 10 ' a sahip PostgreSQL için Azure ver
 Postgres sürüm 9,6 ' den PostgreSQL için Azure veritabanı sunucuları 'nda aşağıdaki uzantılar mevcuttur.
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
+> | **Dahili numara**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -163,7 +163,7 @@ Postgres sürüm 9,6 ' den PostgreSQL için Azure veritabanı sunucuları 'nda a
 Postgres sürüm 9,5 ' den PostgreSQL için Azure veritabanı sunucuları 'nda aşağıdaki uzantılar mevcuttur.
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
+> | **Dahili numara**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -228,7 +228,7 @@ Postgres 11 ve üzeri sürümlerde, önısını [otomatik olarak](https://www.po
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB, PostgreSQL için bir uzantı olarak paketlenmiş bir zaman serisi veritabanıdır. TimescaleDB zamana dayalı analitik işlevler, iyileştirmeler ve zaman serisi iş yükleri için Postgres ölçekleme sağlar.
 
-[TimescaleDB hakkında daha fazla bilgi](https://docs.timescale.com/latest)için bkz. zaman ölçeğinin tescilli ticari marka [, Inc.](https://www.timescale.com/). PostgreSQL için Azure veritabanı, zaman ölçeğinin açık kaynak sürümünü sağlar. Bu sürümde hangi zaman ölçeği özelliklerinin kullanılabildiğini öğrenmek için bkz. [zaman ölçeği ürün karşılaştırması](https://www.timescale.com/products/).
+[TimescaleDB hakkında daha fazla bilgi](https://docs.timescale.com/latest)için bkz. zaman ölçeğinin tescilli ticari marka [, Inc.](https://www.timescale.com/). PostgreSQL için Azure veritabanı TimescaleDB [Apache-2 sürümünü](https://www.timescale.com/legal/licenses)sağlar.
 
 ### <a name="installing-timescaledb"></a>TimescaleDB yükleniyor
 TimescaleDB yüklemek için, bunu sunucunun paylaşılan önyükleme kitaplıklarına dahil etmeniz gerekir. Postgres 'nin parametresinin bir değişikliği, `shared_preload_libraries` **sunucu yeniden başlatmanın** etkili olmasını gerektirir. [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)kullanarak parametreleri değiştirebilirsiniz.

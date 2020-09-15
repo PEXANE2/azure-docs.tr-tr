@@ -7,17 +7,17 @@ author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/30/2020
+ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: f5110a7644d3ca33da5755f783f61ac35484ddb1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e1893c32ed486772e56432f6263626d0ee1a65df
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399285"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531891"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door Kural Altyapısı Eylemleri
 
@@ -35,7 +35,7 @@ Bu eylemi, kaynağına gönderilen isteklerde bulunan üst bilgileri değiştirm
 
 Eylem | HTTP üst bilgi adı | Değer
 -------|------------------|------
-Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, değer mevcut değere eklenir. | Dize
+Ekleme | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, değer mevcut değere eklenir. | Dize
 Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, belirtilen değer varolan değerin üzerine yazar. | Dize
 Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst bilgi bulunur, üst bilgi istekten silinir. | Dize
 
@@ -47,7 +47,7 @@ Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst b
 
 Eylem | HTTP üst bilgi adı | Değer
 -------|------------------|------
-Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** var olan değere eklenir. | Dize
+Ekleme | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** var olan değere eklenir. | Dize
 Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** varolan değerin üzerine yazar. | Dize
 Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst bilgi bulunur, üst bilgi yanıttan silinir. | Dize
 

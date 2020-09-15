@@ -3,12 +3,12 @@ title: Azure Application Insights Kullanım Analizi | Microsoft docs
 description: Kullanıcılarınıza ve uygulamalarınızla neler olduğunu anlayın.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800220"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532112"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights ile kullanım analizi
 
@@ -54,7 +54,7 @@ Kullanıcılarınızın uygulamanızı ne zaman kullandığı, ne kadar ilgilend
 
 Kullanıcılar ve oturumlar, verilerinizi sayfalara veya özel olaylara göre filtreleyip konum, ortam ve sayfa gibi özelliklere göre segmentlere ayırabilir. Kendi filtrelerinizi de ekleyebilirsiniz.
 
-![Kullanıcılar](./media/usage-overview/users.png)  
+![Ekran yakalama, kurgusal bir şirket için kullanıcılara genel bakış sayfasını gösterir.](./media/usage-overview/users.png)  
 
 Veri kümesindeki ilginç desenler hakkında bilgi edinin.  
 
@@ -71,7 +71,7 @@ Saklama, kullanıcılarınızın, belirli bir zaman aralığı boyunca bazı iş
 - Gerçek kullanıcı verilerine göre hipotezleri formu 
 - Üretim, ürününüzün bir sorun olup olmadığını belirleme 
 
-![Bekletme](./media/usage-overview/retention.png) 
+![Ekran yakalama, kullanıcıların uygulamalarını kullanmak için ne sıklıkta geri döndürdüğü hakkında bilgi görüntüleyen bekletme genel bakış sayfasını gösterir.](./media/usage-overview/retention.png) 
 
 En üstteki bekletme denetimleri, saklama süresini hesaplamak için belirli olayları ve zaman aralığını tanımlamanızı sağlar. Ortadaki grafik, belirtilen zaman aralığına göre genel bekletme yüzdesinin görsel bir gösterimini sağlar. Alt kısımdaki grafik belirli bir dönemde tek tek bekletme 'yi temsil eder. Bu ayrıntı düzeyi, kullanıcılarınızın ne yaptığını ve daha ayrıntılı bir ayrıntı düzeyi üzerinde Kullanıcı döndürmeyi neyin etkileyebileceğini anlamanıza olanak tanır.  
 
@@ -110,7 +110,7 @@ Bu olaylara özellik değerleri iliştirebilirsiniz, böylece olayları portalda
 ### <a name="slice-and-dice-events"></a>Dilim ve zar olayları
 
 Kullanıcılar, oturumlar ve olaylar araçlarında, özel olayları Kullanıcı, olay adı ve özelliklere göre dilimleyerek ve zar aktarabilirsiniz.
-![Kullanıcılar](./media/usage-overview/users.png)  
+![Ekran yakalama, kurgusal bir şirket için kullanıcılara genel bakış sayfasını gösterir.](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>Uygulamayla telemetri tasarlama
 

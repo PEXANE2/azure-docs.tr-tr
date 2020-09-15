@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918052"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530701"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Öğretici: Power Apps 'ten bir Bilişsel Arama dizini sorgulama
 
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Power Apps hesabı](http://make.powerapps.com)
+* [Power Apps hesabı](https://make.powerapps.com)
 
 * [Oteller-örnek Dizin](search-get-started-portal.md)
 
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda, buluttaki bir arama dizinine bağlanmak için özel bir bağlayıcı oluşturacaksınız.
 
-1. Power Apps ['Te oturum açın](http://make.powerapps.com) .
+1. Power Apps ['Te oturum açın](https://make.powerapps.com) .
 
 1. Sol tarafta, **veri**  >  **özel bağlayıcıları**' nı genişletin.
  

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b24514ed477d1acd31dbc4ef0daa3aa89b8739f9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956381"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530837"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer için birden çok ön uç
 
@@ -163,6 +163,7 @@ Kayan IP kuralı türü, çeşitli yük dengeleyici yapılandırma desenlerinin 
 
 * Birden çok ön uç yapılandırması yalnızca IaaS sanal makinelerinde desteklenir.
 * Kayan IP kuralıyla, uygulamanızın giden SNAT akışları için birincil IP yapılandırmasını kullanması gerekir. Uygulamanız Konuk işletim sistemindeki geri döngü arabiriminde yapılandırılmış ön uç IP adresine bağlandığında, giden akışı yeniden yazmak için Azure 'un giden SNAT 'si kullanılabilir değildir ve akış başarısız olur.  [Giden senaryoları](load-balancer-outbound-connections.md)gözden geçirin.
+* Kayan IP, Iç Yük Dengeleme senaryoları için ikincil IP yapılandırmalarında Şu anda desteklenmiyor.
 * Genel IP adreslerinin faturalandırma üzerinde bir etkisi vardır. Daha fazla bilgi için bkz. [IP adresi fiyatlandırması](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * Abonelik sınırları geçerlidir. Daha fazla bilgi için bkz. Ayrıntılar için [hizmet limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) .
 

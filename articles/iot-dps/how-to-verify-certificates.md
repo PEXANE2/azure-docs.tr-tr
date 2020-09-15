@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74973450"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530871"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Cihaz sağlama hizmeti ile X. 509.440 CA sertifikaları için birlikte kullanma
 
@@ -23,7 +23,7 @@ Sahip olma kanıtı aşağıdaki adımları içerir:
 2. Onaylama kodu olan bir X. 509.952 doğrulama sertifikası oluşturun ve sertifikayı X. 509.440 CA sertifikanız ile ilişkili özel anahtarla imzalayın.
 3. İmzalı doğrulama sertifikasını hizmete yükleyin. Hizmet, CA sertifikasının doğrulanması için ortak kısmını kullanarak doğrulama sertifikasını doğrular ve bu nedenle CA sertifikasının özel anahtarını elinde bulabilirsiniz.
 
-Doğrulanan sertifikalar, kayıt grupları kullanılırken önemli bir rol oynar. Sertifika sahipliğinin doğrulanması, sertifikanın yükleyici 'nin sertifikanın özel anahtarıyla aynı olduğundan emin olarak ek bir güvenlik katmanı sağlar. Doğrulama kötü niyetli bir aktörün bir ara sertifikayı ayıklamasını ve bu sertifikayı kullanarak kendi sağlama hizmetinde bir kayıt grubu oluşturmasını ve cihazlarınızı etkili bir şekilde ele almasını engeller. Bir sertifika zincirindeki kök veya ara sertifikanın sahipliğini seçerek, bu kayıt grubunun bir parçası olarak kaydedilecek cihazlar için yaprak sertifikaları oluşturma izninizin olduğunu size sunuyoruz. Bu nedenle, bir kayıt grubunda yapılandırılan kök veya ara sertifikanın doğrulanmış bir sertifika olması veya bir cihazın hizmet ile kimliğini doğruladığında sunduğu sertifika zincirindeki doğrulanmış bir sertifikaya toplaması gerekir. Kayıt grupları hakkında daha fazla bilgi edinmek için bkz. [x. 509.440 sertifikaları](concepts-security.md#x509-certificates) ve [x. 509.440 sertifikalarıyla sağlama hizmetine cihaz erişimini denetleme](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+Doğrulanan sertifikalar, kayıt grupları kullanılırken önemli bir rol oynar. Sertifika sahipliğinin doğrulanması, sertifikanın yükleyici 'nin sertifikanın özel anahtarıyla aynı olduğundan emin olarak ek bir güvenlik katmanı sağlar. Doğrulama kötü niyetli bir aktörün bir ara sertifikayı ayıklamasını ve bu sertifikayı kullanarak kendi sağlama hizmetinde bir kayıt grubu oluşturmasını ve cihazlarınızı etkili bir şekilde ele almasını engeller. Bir sertifika zincirindeki kök veya ara sertifikanın sahipliğini seçerek, bu kayıt grubunun bir parçası olarak kaydedilecek cihazlar için yaprak sertifikaları oluşturma izninizin olduğunu size sunuyoruz. Bu nedenle, bir kayıt grubunda yapılandırılan kök veya ara sertifikanın doğrulanmış bir sertifika olması veya bir cihazın hizmet ile kimliğini doğruladığında sunduğu sertifika zincirindeki doğrulanmış bir sertifikaya toplaması gerekir. X. 509.440 sertifika kanıtlama hakkında daha fazla bilgi edinmek için bkz. [x. 509.952 sertifikaları](concepts-x509-attestation.md) ve [x. 509.440 sertifikalarıyla sağlama hizmetine cihaz erişimini denetleme](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Bir X. 509.952 sertifikasının ortak bölümünü kaydedin ve doğrulama kodu alın
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 3204de6ea497666108ce63b1a3cfa77c6faa6b59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5cb504e10c9a1b10c5bad201f4f599a3c00992fe
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028660"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530769"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Bakım denetimi ve Azure PowerShell güncelleştirmeleri denetleme
 
@@ -59,7 +59,7 @@ $config = New-AzMaintenanceConfiguration `
 
 Kullanımı, `-MaintenanceScope host` bakım yapılandırmasının konaktaki güncelleştirmeleri denetlemek için kullanılmasını sağlar.
 
-Aynı ada sahip bir yapılandırma oluşturmaya çalışırsanız, ancak farklı bir konumda hata alırsınız. Yapılandırma adları, aboneliğiniz için benzersiz olmalıdır.
+Aynı ada sahip bir yapılandırma oluşturmaya çalışırsanız, ancak farklı bir konumda hata alırsınız. Yapılandırma adları, kaynak grubunuz için benzersiz olmalıdır.
 
 [Get-AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaintenanceconfiguration)kullanarak kullanılabilir bakım yapılandırması için sorgulama yapabilirsiniz.
 

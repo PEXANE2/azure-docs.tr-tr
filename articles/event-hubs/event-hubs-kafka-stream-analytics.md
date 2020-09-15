@@ -3,12 +3,12 @@ title: Azure Event Hubs-Işlem Apache Kafka olayları
 description: "Öğretici: Bu makalede Azure Stream Analytics kullanılarak Olay Hub 'ları aracılığıyla alınan Kafka olaylarının nasıl işlenmesi gösterilmektedir."
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 6dfca5b476dff1ee3367b5365c15869c8cff819b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f0c7bf40b721a3f35fcf68c71cb38a4302a56f6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074914"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531296"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Öğretici: Stream Analytics kullanarak Event Hubs olaylar için Işlem Apache Kafka 
 Bu makalede, verilerin Event Hubs ' a akışını ve Azure Stream Analytics nasıl işleyeceğini gösterir. Aşağıdaki adımlarda size yol gösterir: 
@@ -110,7 +110,7 @@ Stream Analytics işteki sorgu, herhangi bir analiz yapmadan verileri geçirir. 
     2. **Azure aboneliğinizi**seçin.
     3. Daha önce oluşturduğunuz **Olay Hub 'ı ad alanını** seçin. 
     4. **Olay Hub 'ı**için **Test** ' i seçin. 
-    5. **Kaydet**'i seçin. 
+    5. **Kaydet**’i seçin. 
 
         ![Olay Hub 'ı giriş yapılandırması](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
 
@@ -123,7 +123,7 @@ Stream Analytics işteki sorgu, herhangi bir analiz yapmadan verileri geçirir. 
     2. Azure **aboneliğinizi**seçin. 
     3. **Azure depolama hesabınızı**seçin. 
     4. Stream Analytics sorgusundan çıkış verilerini depolayan **kapsayıcı için bir ad** girin.
-    5. **Kaydet**'i seçin.
+    5. **Kaydet**’i seçin.
 
         ![BLOB depolama çıkış yapılandırması](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
  
@@ -136,7 +136,7 @@ Gelen bir veri akışını okumak için bir Stream Analytics işi ayarladıktan 
 3. `[YourInputAlias]`Daha önce oluşturduğunuz giriş diğer adıyla değiştirin. 
 4. Araç çubuğunda **Kaydet**’i seçin. 
 
-    ![Sorgu](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![Ekran yakalama, giriş ve çıkış değişkenlerinin değerlerini içeren sorgu penceresini gösterir.](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics işini çalıştırma

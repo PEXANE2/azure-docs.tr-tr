@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin aracısız geçişini nasıl 
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: c9a7e76496c2851b90c8fd1d164645c46d02609b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 37181246a20044f16414735e2247fa90fc36433b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376051"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530531"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
@@ -121,7 +121,7 @@ Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
 
 11. **Diskler** bölümünde, VM disklerinin Azure’a çoğaltılıp çoğaltılmayacağını belirtin ve Azure’da disk türünü (Standart SSD/HDD veya premium yönetilen diskler) seçin. Ardından **İleri**'ye tıklayın.
    
-    ![Diskler](./media/tutorial-migrate-vmware/disks.png)
+    ![Ekran görüntüsü Çoğalt iletişim kutusunun diskler sekmesini gösterir.](./media/tutorial-migrate-vmware/disks.png)
 
 12. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
 

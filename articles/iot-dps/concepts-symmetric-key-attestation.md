@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba4f67f924455b911d76426231cc71b661faf4a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020346"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531568"
 ---
 # <a name="symmetric-key-attestation"></a>Simetrik anahtar kanıtlama
 
 Bu makalede, cihaz sağlama hizmeti ile simetrik anahtarlar kullanılırken kimlik kanıtlama süreci açıklanmaktadır. 
 
-Simetrik anahtar kanıtlama, cihaz sağlama hizmeti örneğiyle bir cihazın kimliğini doğrulamaya yönelik basit bir yaklaşımdır. Bu kanıtlama yöntemi, cihaz sağlama için yeni olan veya katı güvenlik gereksinimleri olmayan geliştiriciler için bir "Hello World" deneyimini temsil eder. [TPM](concepts-tpm-attestation.md) veya [X. 509.440 sertifikası](concepts-security.md#x509-certificates) kullanan cihaz kanıtlama daha güvenlidir ve daha sıkı güvenlik gereksinimleri için kullanılmalıdır.
+Simetrik anahtar kanıtlama, cihaz sağlama hizmeti örneğiyle bir cihazın kimliğini doğrulamaya yönelik basit bir yaklaşımdır. Bu kanıtlama yöntemi, cihaz sağlama için yeni olan veya katı güvenlik gereksinimleri olmayan geliştiriciler için bir "Hello World" deneyimini temsil eder. [TPM](concepts-tpm-attestation.md) veya [X. 509.440 sertifikası](concepts-x509-attestation.md) kullanan cihaz kanıtlama daha güvenlidir ve daha sıkı güvenlik gereksinimleri için kullanılmalıdır.
 
 Simetrik anahtar kayıtları Ayrıca, Azure IoT aracılığıyla buluta önyükleme yapmak için sınırlı güvenlik işlevselliğine sahip eski cihazlar için harika bir yol sağlar. Eski cihazlarla simetrik anahtar kanıtı hakkında daha fazla bilgi için bkz. [eski cihazlarla simetrik anahtarlar kullanma](how-to-legacy-device-symm-key.md).
 
@@ -109,12 +109,12 @@ Her cihaz kayıt KIMLIĞINI grup kayıt anahtarıyla (**K**) karma olarak bir fa
 
 Her bir cihazın kimliği, fabrikada yüklenen kayıt KIMLIĞI ve türetilmiş cihaz anahtarı tarafından temsil edilir. Cihaz anahtarı hiçbir şekilde başka bir konuma kopyalanmaz ve grup anahtarı hiçbir şekilde bir cihazda depolanmaz.
 
-Cihaz anahtarları fabrikada yüklenmemişse, cihaz kimliğini güvenli bir şekilde depolamak için bir [donanım güvenlik modülü HSM](concepts-security.md#hardware-security-module) 'nin kullanılması gerekir.
+Cihaz anahtarları fabrikada yüklenmemişse, cihaz kimliğini güvenli bir şekilde depolamak için bir [donanım güvenlik modülü HSM](concepts-service.md#hardware-security-module) 'nin kullanılması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Simetrik anahtar kanıtını öğrenmiş olduğunuza göre, daha fazla bilgi edinmek için aşağıdaki makalelere göz atın:
 
 * [Hızlı Başlangıç: Simetrik anahtarlar ile bir simülasyon cihazı sağlama](quick-create-simulated-device-symm-key.md)
-* [Otomatik sağlama ile ilgili kavramlar hakkında bilgi edinin](./concepts-auto-provisioning.md)
+* [Sağlama kavramları hakkında bilgi edinin](about-iot-dps.md#provisioning-process)
 * [Otomatik sağlamayı kullanmaya başlayın](./quick-setup-auto-provision.md) 

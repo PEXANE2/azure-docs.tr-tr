@@ -11,18 +11,18 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 3621d0c22aa6f35fc845f449d07bce8dcf0ba1fa
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461893"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531228"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Sürekli tümleştirme, kod tabanınızda yapılan her değişikliği otomatik olarak ve mümkün olduğunca erken test etme yöntemidir.Sürekli teslim, sürekli tümleştirme sırasında gerçekleşen testi izler ve bir hazırlama veya üretim sistemine değişiklikleri gönderir.
 
@@ -305,7 +305,7 @@ Parametreleştirme şablonunun nasıl görünebileceğini aşağıda görebilirs
 ```
 Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bölündüğü hakkında bir açıklama aşağıda verilmiştir.
 
-#### <a name="pipelines"></a>Pipelines
+#### <a name="pipelines"></a>İşlem hatları
     
 * Yoldaki herhangi bir özellik `activities/typeProperties/waitTimeInSeconds` parametrelenir. Bir işlem hattındaki (örneğin, etkinlik) bir kod düzeyi özelliği olan herhangi bir etkinlik, `waitTimeInSeconds` `Wait` varsayılan bir ada sahip bir sayı olarak parametrelendirilir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
 * Benzer şekilde, adlı bir özellik `headers` (örneğin, bir `Web` etkinlikte) türü `object` (JObject) ile parametrelenir. Kaynak fabrikasının değeriyle aynı değer olan varsayılan bir değere sahiptir.
@@ -639,7 +639,7 @@ Veri fabrikanınızla git tümleştirmesi kullanıyorsanız ve değişikliklerin
 
 -   **Key Vault**. Bağlantı bilgileri Azure Key Vault depolanan bağlı hizmetleri kullandığınızda, farklı ortamlarda ayrı anahtar kasalarının tutulması önerilir. Ayrıca, her Anahtar Kasası için ayrı izin düzeyleri yapılandırabilirsiniz. Örneğin, ekip üyelerinizin üretim gizli dizileri için izinleri olmasını istemeyebilirsiniz. Bu yaklaşımı izlerseniz, tüm aşamalar genelinde aynı gizli adları tutmanız önerilir. Aynı gizli dizi adlarını tutarsanız, tek şey yalnızca bir parametre olan Anahtar Kasası adı olduğundan, her bir bağlantı dizesini CI/CD ortamları arasında parametreleştirmek zorunda kalmazsınız.
 
--  **Kaynak adlandırma** Şablon kısıtlamasını ARM yapmak için, kaynaklarınız adda boşluk içeriyorsa, dağıtımdaki sorunlar ortaya çıkabilir. Azure Data Factory ekibi, kaynaklar için boşluklar yerine ' _ ' veya '-' karakterlerini kullanmanızı öneriyor. Örneğin, ' Pipeline_1 ', ' Pipeline 1 ' üzerinden tercih edilen bir ad olabilir.
+-  **Kaynak adlandırma** ARM şablon kısıtlamaları nedeniyle, kaynaklarınız adda boşluk içeriyorsa dağıtımdaki sorunlar ortaya çıkabilir. Azure Data Factory ekibi, kaynaklar için boşluklar yerine ' _ ' veya '-' karakterlerini kullanmanızı öneriyor. Örneğin, ' Pipeline_1 ', ' Pipeline 1 ' üzerinden tercih edilen bir ad olabilir.
 
 ## <a name="unsupported-features"></a>Desteklenmeyen özellikler
 

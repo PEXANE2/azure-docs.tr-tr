@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 46ffb5bfe52fe4f398594a1dfed76a6ea6c0fd81
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400033"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530803"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Senaryo: trafiği bir NVA üzerinden yönlendirme
 
@@ -69,14 +69,14 @@ Ancak, bu senaryoda hangi statik yolların yapılandırılacağını düşünmem
 
 Bu şekilde, NVA VNet 'in arkasındaki NVA ışınsal 'ler arasında trafik göndermek için varsayılan tabloda ihtiyaç duyduğumuz statik yollar aşağıdaki gibidir:
 
-| Description | Yol tablosu | Statik yol              |
+| Açıklama | Yol tablosu | Statik yol              |
 | ----------- | ----------- | ------------------------- |
 | VNet 2       | Varsayılan     | 10.2.0.0/16-> eastusconn |
 | VNet 4       | Varsayılan     | 10.4.0.0/16-> weconn     |
 
 Artık sanal WAN, paketlerin gönderileceği bağlantıyı bilir, ancak bağlantının bu paketleri alırken ne yapılacağını bilmesi gerekir: bağlantı yolu tablolarının kullanıldığı yer. Burada, bu yolların NVA sanal ağları (VNet 2 ve VNet 4) tarafından içeri aktarılan yolların üzerinde tercih olduğundan emin olmak için daha kısa ön ekleri (daha uzun/16 yerine/24) kullanacağız:
 
-| Description | Bağlantı | Statik yol            |
+| Açıklama | Bağlantı | Statik yol            |
 | ----------- | ---------- | ----------------------- |
 | VNet 5       | eastusconn | 10.2.1.0/24-> 10.2.0.5 |
 | VNet 6       | eastusconn | 10.2.2.0/24-> 10.2.0.5 |
@@ -112,6 +112,8 @@ NVA aracılığıyla yönlendirmeyi ayarlamak için şunları göz önünde bulu
    * VNet 7 ve VNet 8 ' den VNet 4 NVA IP 'si 
    
    VNET 'leri 5, 6, 7, 8 ' e doğrudan sanal hub 'lara bağlamanız gerekmez. Vnetme 5, 6, 7, 8 ' deki NSG 'lerin şube (VPN/ER/P2S) veya uzak sanal ağlarına bağlı sanal ağlar için trafiğe izin verildiğinden emin olun. Örneğin, Vnetme 5, 6, NSG 'lerin şirket içi adres önekleri ve sanal ağlar 7, uzak hub 2 ' ye bağlı trafik için trafiğe izin vermemesini sağlamalıdır.
+
+Sanal WAN, Vnettir 5, 6 sanal hub 'a bağlanıp VNet 2 NVA IP aracılığıyla iletişim kuran bir senaryoyu desteklemez; Bu nedenle, VI 5, 6-VNet2 ve benzer VNet 7, 8 ile VNet 4 arasında bağlantı kurmak gerekir.
 
 2. Vnetme 2, 5, 6 ' dan hub 1 ' in varsayılan yol tablosuna toplanan bir statik yol girişi ekleyin.
 

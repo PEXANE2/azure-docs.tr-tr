@@ -1,7 +1,7 @@
 ---
 title: Anomali algılayıcı API 'sini kullanarak kapsayıcıları yüklemek ve çalıştırmak
 titleSuffix: Azure Cognitive Services
-description: Zaman serisi verilerinizde bozukluklar belirlemek için anomali algılayıcı API 'sinin gelişmiş algoritmalarını kullanın.
+description: Anomali algılayıcı API 'sinin gelişmiş algoritmalarının kullanımı için kapsayıcıyı yüklemeyi ve kullanmayı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: ee742f09f3fcc1bd283efbc346fea6a040e53f48
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0ae3b66d8093c0498011d9f93cd8d869b85f9003
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548540"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530718"
 ---
 # <a name="install-and-run-anomaly-detector-containers-preview"></a>Anomali algılayıcı kapsayıcılarını (Önizleme) yükleyip çalıştırın
 
@@ -30,7 +30,7 @@ API 'Ler hakkında ayrıntılı bilgi için lütfen bkz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Anomali algılayıcı kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
 

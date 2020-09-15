@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294399"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531398"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma 
 
@@ -43,7 +43,7 @@ Tek bir kaydı olan bir cihazı sağlamayı kaldırmak için:
 
 
 ## <a name="enrollment-groups"></a>Kayıt grupları
-X. 509.440 kanıtlama ile, cihazlar bir kayıt grubu aracılığıyla da sağlanabilir. Kayıt grupları bir imzalama sertifikasıyla, ara veya kök CA sertifikasıyla yapılandırılır ve sertifika zincirinde bu sertifikaya sahip cihazlar için sağlama hizmetine erişimi denetler. Sağlama hizmeti ile kayıt grupları ve X. 509.440 sertifikaları hakkında daha fazla bilgi edinmek için bkz. [X. 509.440 sertifikaları](concepts-security.md#x509-certificates). 
+X. 509.440 kanıtlama ile, cihazlar bir kayıt grubu aracılığıyla da sağlanabilir. Kayıt grupları bir imzalama sertifikasıyla, ara veya kök CA sertifikasıyla yapılandırılır ve sertifika zincirinde bu sertifikaya sahip cihazlar için sağlama hizmetine erişimi denetler. Sağlama hizmeti ile kayıt grupları ve X. 509.440 sertifikaları hakkında daha fazla bilgi edinmek için bkz. [X. 509.440 sertifika kanıtlama](concepts-x509-attestation.md). 
 
 Bir kayıt grubu aracılığıyla sağlanmış cihazların listesini görmek için kayıt grubunun ayrıntılarını görüntüleyebilirsiniz. Bu, her bir cihazın hangi IoT Hub 'ına sağlandığını anlamanın kolay bir yoludur. Cihaz listesini görüntülemek için: 
 

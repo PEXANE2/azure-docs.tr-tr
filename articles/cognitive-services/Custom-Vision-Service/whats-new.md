@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: a87769e1b67187a15daf3a256a2c1f4c79e10040
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 6ed8e1deba7b3b2df03fa517a922721bcb8f8ad1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055529"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531245"
 ---
 # <a name="whats-new-in-custom-vision"></a>Özel Görüntü İşleme yenilikleri
 
@@ -25,7 +25,19 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videola
 
 ### <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-Özel Görüntü İşleme, Azure kaynaklarına bireysel erişimi yönetmeye yönelik bir yetkilendirme sistemi olan Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) destekler. Özel Görüntü İşleme projelerinize erişimi yönetmeyi öğrenmek için bkz. [rol tabanlı erişim denetimi](./role-based-access-control.md).
+* Özel Görüntü İşleme, Azure kaynaklarına bireysel erişimi yönetmeye yönelik bir yetkilendirme sistemi olan Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) destekler. Özel Görüntü İşleme projelerinize erişimi yönetmeyi öğrenmek için bkz. [rol tabanlı erişim denetimi](./role-based-access-control.md).
+
+### <a name="subset-training"></a>Alt küme eğitimi
+
+* Bir nesne algılama projesi eğitimi yaparken, isteğe bağlı olarak yalnızca uygulanan etiketlerin bir alt kümesini eğitebilirsiniz. Yalnızca belirli etiketlerden yeterince birini uygulamadıysanız bunu yapmak isteyebilirsiniz, ancak bu, başkalarının yeterli olması durumunda. Daha fazla bilgi edinmek için C# veya Python için [istemci kitaplığı hızlı](./quickstarts/object-detection.md) başlangıcını izleyin.
+
+### <a name="azure-storage-notifications"></a>Azure depolama bildirimleri
+
+* Proje Eğitimi/dışarı aktarma etkinliğinin ve yayımlanan modellerin yedek kopyalarının anında bildirimlerini almak için Özel Görüntü İşleme projenizi bir Azure Blob depolama kuyruğu ile tümleştirebilirsiniz. Bu özellik, uzun işlemler çalışırken hizmetin sonuçları sürekli olarak yoklanmaması için yararlıdır. Bunun yerine, depolama kuyruğu bildirimlerini iş akışınız ile tümleştirebilirsiniz. Daha fazla bilgi edinmek için [Depolama Tümleştirme](./storage-integration.md) kılavuzuna bakın.
+
+### <a name="copy-and-move-projects"></a>Projeleri Kopyala ve taşı
+
+* Artık, projeleri bir Özel Görüntü İşleme hesabından başkalarına kopyalayabilirsiniz. Bir projeyi geliştirmeden üretim ortamına taşımak veya daha fazla veri güvenliği için bir projeyi farklı bir Azure bölgesindeki bir hesaba yedeklemek isteyebilirsiniz. Daha fazla bilgi edinmek için [projeleri kopyalama ve taşıma](./copy-move-projects.md) kılavuzuna bakın.
 
 ## <a name="september-2019"></a>Eylül 2019
 

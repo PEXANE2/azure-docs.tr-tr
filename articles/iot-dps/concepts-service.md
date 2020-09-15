@@ -1,23 +1,23 @@
 ---
-title: Azure IoT Hub cihaz sağlama hizmeti 'nde hizmet kavramları | Microsoft Docs
-description: Cihaz sağlama hizmeti (DPS) ve IoT Hub cihazları için özel hizmet sağlama kavramlarını açıklar
-author: nberdy
-ms.author: nberdy
+title: Azure IoT Hub cihaz sağlama hizmeti ile kullanılan terminoloji | Microsoft Docs
+description: Cihaz sağlama hizmeti (DPS) ve IoT Hub ile kullanılan ortak terminolojiyi açıklar
+author: wesmc7777
+ms.author: wesmc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: eliotga
+ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79285220"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531619"
 ---
-# <a name="iot-hub-device-provisioning-service-concepts"></a>Cihaz sağlama hizmeti kavramlarını IoT Hub
+# <a name="iot-hub-device-provisioning-service-dps-terminology"></a>IoT Hub cihaz sağlama hizmeti (DPS) terminolojisi
 
-IoT Hub cihaz sağlama hizmeti, belirli bir IoT Hub 'ına sıfır Touch cihaz sağlamayı yapılandırmak için kullandığınız IoT Hub yardımcı hizmettir. Cihaz sağlama hizmeti ile milyonlarca cihazı güvenli ve ölçeklenebilir bir şekilde [Otomatik](concepts-auto-provisioning.md) olarak sağlayabilirsiniz.
+IoT Hub cihaz sağlama hizmeti, belirli bir IoT Hub 'ına sıfır Touch cihaz sağlamayı yapılandırmak için kullandığınız IoT Hub yardımcı hizmettir. Cihaz sağlama hizmeti [ile milyonlarca cihazı](about-iot-dps.md#provisioning-process) güvenli ve ölçeklenebilir bir şekilde sağlayabilirsiniz.
 
 Cihaz sağlama iki bölümden oluşan bir işlemdir. İlk bölüm, cihazı *kaydederek* cihaz ile IoT çözümü arasında ilk bağlantıyı kurmaya yönelik olur. İkinci bölüm, çözümün belirli gereksinimlerine bağlı olarak uygun *yapılandırmayı* cihaza uyguluyor. Her iki adım tamamlandıktan sonra cihaz tam olarak *sağlanmış*demektir. Cihaz Sağlama Hizmeti, bu adımların ikisini de otomatikleştirerek cihaz için sorunsuz bir sağlama deneyimi sağlar.
 
@@ -35,6 +35,7 @@ Cihaz sağlama uç noktası, tüm cihazların otomatik sağlama için kullanaca�
 
 Cihaz sağlama hizmeti cihazları yalnızca onunla bağlantılı olan IoT Hub 'larına sağlayabilir. IoT Hub 'ı cihaz sağlama hizmeti örneğine bağlamak, IoT Hub 'ın cihaz kayıt defterine yönelik okuma/yazma izinleri verir; bağlantıyla birlikte cihaz sağlama hizmeti cihaz KIMLIĞINI kaydedebilir ve cihaz ikizi ilk yapılandırmasını ayarlayabilir. Bağlantılı IoT Hub 'ları herhangi bir Azure bölgesinde olabilir. Diğer aboneliklerdeki hub 'ları, sağlama hizmetinize bağlayabilirsiniz.
 
+
 ## <a name="allocation-policy"></a>Ayırma ilkesi
 
 Cihaz sağlama hizmeti 'nin cihazları bir IoT Hub 'ına nasıl atayabileceğini belirleyen hizmet düzeyi ayarı. Desteklenen üç ayırma ilkesi vardır:
@@ -45,10 +46,12 @@ Cihaz sağlama hizmeti 'nin cihazları bir IoT Hub 'ına nasıl atayabileceğini
 
 * **Kayıt listesi aracılığıyla statik yapılandırma**: kayıt listesindeki istenen IoT Hub 'ının belirtimi, hizmet düzeyi ayırma ilkesine göre önceliklidir.
 
+* **Özel (Azure Işlevini kullanın)**: özel bir ayırma ilkesi, cihazların bir IoT Hub 'ına nasıl atanabileceği konusunda daha fazla denetim sağlar. Bu, bir Azure Işlevindeki cihazları bir IoT Hub 'ına atamak için özel kod kullanılarak gerçekleştirilir. Cihaz sağlama hizmeti, cihazla ilgili tüm bilgileri ve kodunuza kaydetme bilgilerini sağlayan Azure Işlev kodunuzu çağırır. İşlev kodunuz yürütülür ve cihazı sağlamak için kullanılan IoT Hub bilgilerini döndürür.
+
 ## <a name="enrollment"></a>Kayıt
 
 Kayıt, otomatik sağlama ile kaydedebileceği cihazların veya cihaz gruplarının kaydıdır. Kayıt kaydı, cihaz veya cihaz grubu hakkında aşağıdakiler de dahil olmak üzere bilgiler içerir:
-- cihaz tarafından kullanılan [kanıtlama mekanizması](concepts-security.md#attestation-mechanism)
+- cihaz tarafından kullanılan [kanıtlama mekanizması](#attestation-mechanism)
 - isteğe bağlı ilk istenen yapılandırma
 - istenen IoT Hub 'ı
 - istenen cihaz KIMLIĞI
@@ -69,10 +72,57 @@ Tek bir kayıt, kaydedebilen tek bir cihaz için giriştir. Bireysel kayıtlar, 
 > [!TIP]
 > Benzersiz ilk yapılandırma gerektiren cihazlarda veya yalnızca TPM kanıtlama aracılığıyla SAS belirteçlerini kullanarak kimlik doğrulayabilecek cihazlarda bireysel kayıtları kullanmanızı öneririz.
 
+
+## <a name="attestation-mechanism"></a>Kanıtlama mekanizması
+
+Kanıtlama mekanizması, bir cihazın kimliğini onaylamak için kullanılan yöntemdir. Kanıtlama mekanizması bir kayıt girişinde yapılandırılır ve sağlama hizmetine, kayıt sırasında bir cihazın kimliği doğrulanırken hangi yöntemin kullanılacağını söyler.
+
+> [!NOTE]
+> IoT Hub, söz konusu hizmette benzer bir kavram için "kimlik doğrulama şeması" nı kullanır.
+
+Cihaz sağlama hizmeti aşağıdaki kanıtlama biçimlerini destekler:
+* Standart X. 509.440 sertifika kimlik doğrulama akışına göre **X. 509.440 sertifikaları** . Daha fazla bilgi için bkz. [X. 509.440 kanıtlama](concepts-x509-attestation.md).
+* Anahtar bir paylaşılan erişim Imzası (SAS) belirteci sunmak için anahtarlar için TPM standardı kullanarak, bir kerelik anahtar sınamasını temel alan **Güvenilir Platform Modülü (TPM)** . Bu, cihazda fiziksel TPM gerektirmez, ancak hizmet [TPM belirtimi](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)başına onay anahtarını kullanarak test bulmayı bekler. Daha fazla bilgi için bkz. [TPM kanıtlama](concepts-tpm-attestation.md).
+* Karma **anahtar** , karma bir imza ve katıştırılmış süre sonu içeren paylaşılan erişim IMZASı (SAS) [güvenlik belirteçlerini](../iot-hub/iot-hub-devguide-security.md#security-tokens)temel alır. Daha fazla bilgi için bkz. [simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md).
+
+
+## <a name="hardware-security-module"></a>Donanım güvenlik modülü
+
+Donanım güvenlik modülü veya HSM, cihaz gizli dizileri için güvenli, donanım tabanlı depolamada kullanılır ve gizli depolama alanının en güvenli biçimidir. Hem X. 509.440 sertifikaları hem de SAS belirteçleri HSM 'de depolanabilir. HSM 'ler, sağlama hizmeti 'nin desteklediği kanıtlama mekanizmalarıyla birlikte kullanılabilir.
+
+> [!TIP]
+> Cihazlarınızda gizli dizileri güvenli bir şekilde depolamak için cihazlarla bir HSM kullanmanız önemle önerilir.
+
+Cihaz gizli dizileri de yazılımda (bellek) depolanabilir, ancak bir HSM 'den daha az güvenli bir depolama biçimidir.
+
+
+
+## <a name="id-scope"></a>KIMLIK kapsamı
+
+KIMLIK kapsamı, Kullanıcı tarafından oluşturulduğunda bir cihaz sağlama hizmetine atanır ve cihazın kaydedileceği belirli sağlama hizmetini benzersiz şekilde tanımlamak için kullanılır. KIMLIK kapsamı, hizmet tarafından oluşturulur ve, benzersizliği garanti eden sabittir.
+
+> [!NOTE]
+> Benzersizlik, uzun süre çalışan dağıtım işlemleri ve merme ve Alım senaryoları için önemlidir.
+
+
 ## <a name="registration"></a>Kayıt
 
 Kayıt, cihaz sağlama hizmeti aracılığıyla bir IoT Hub başarıyla kaydolduğunu/sağlamayı sağlayan bir cihazın kaydıdır. Kayıt kayıtları otomatik olarak oluşturulur; Bunlar silinebilir, ancak güncelleştirilemez.
 
-## <a name="operations"></a>İşlemler
+
+## <a name="registration-id"></a>Kayıt KIMLIĞI
+
+Kayıt KIMLIĞI cihaz sağlama hizmeti ile bir cihaz kaydını benzersiz şekilde tanımlamak için kullanılır. Cihaz KIMLIĞI, sağlama hizmeti [kimlik kapsamında](#id-scope)benzersiz olmalıdır. Her cihazın bir kayıt KIMLIĞI olmalıdır. Kayıt KIMLIĞI alfasayısal, büyük/küçük harfe duyarsız ve iki nokta, nokta, alt çizgi ve kısa çizgi gibi özel karakterler içerebilir.
+
+* TPM söz konusu olduğunda kayıt KIMLIĞI TPM tarafından sağlanır.
+* X. 509.440 tabanlı kanıtlama söz konusu olduğunda, kayıt KIMLIĞI sertifikanın konu adı olarak sağlanır.
+
+## <a name="device-id"></a>Cihaz Kimliği
+
+Cihaz KIMLIĞI, IoT Hub göründüğü şekliyle KIMLIĞIDIR. İstenen cihaz KIMLIĞI kayıt girişinde ayarlanabilir, ancak ayarlanması gerekli değildir. İstenen cihaz KIMLIĞI ayarı yalnızca bireysel kayıtlar 'da desteklenir. Kayıt listesinde istenen cihaz KIMLIĞI belirtilmemişse, cihaz kaydı sırasında cihaz KIMLIĞI olarak kayıt KIMLIĞI kullanılır. [IoT Hub cihaz kimlikleri](../iot-hub/iot-hub-devguide-identity-registry.md)hakkında daha fazla bilgi edinin.
+
+
+
+## <a name="operations"></a>Operations
 
 İşlemler, cihaz sağlama hizmetinin fatura birimidir. Tek bir işlem, hizmete yönelik bir yönergenin başarıyla tamamlanmasıyla aynıdır. İşlemler cihaz kayıtları ve yeniden kayıtlar içerir; işlemler, kayıt listesi girişleri ekleme ve kayıt listesi girişlerini güncelleştirme gibi hizmet tarafı değişiklikleri de içerir.

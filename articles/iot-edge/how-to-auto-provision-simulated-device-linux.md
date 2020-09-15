@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9bd597bbff54687af1ba8536dddd6f0d8dfc621e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684465"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531500"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux 'ta TPM ile IoT Edge cihaz oluşturma ve sağlama
 
-Bu makalede, bir Güvenilir Platform Modülü (TPM) kullanarak bir Linux IoT Edge cihazında otomatik sağlamayı test etme işlemi gösterilmektedir. [Cihaz sağlama hizmeti](../iot-dps/index.yml)ile Azure IoT Edge cihazları otomatik olarak sağlayabilirsiniz. Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [Otomatik sağlama kavramlarını](../iot-dps/concepts-auto-provisioning.md) gözden geçirin.
+Bu makalede, bir Güvenilir Platform Modülü (TPM) kullanarak bir Linux IoT Edge cihazında otomatik sağlamayı test etme işlemi gösterilmektedir. [Cihaz sağlama hizmeti](../iot-dps/index.yml)ile Azure IoT Edge cihazları otomatik olarak sağlayabilirsiniz. Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [sağlamaya](../iot-dps/about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin.
 
 Görevler aşağıdaki gibidir:
 
@@ -31,7 +31,7 @@ Görevler aşağıdaki gibidir:
 >
 > Fiziksel bir cihaz kullanıyorsanız, bu makaledeki [sağlama bilgilerini bir fiziksel cihazdan alma](#retrieve-provisioning-information-from-a-physical-device) bölümüne geçebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)' y i etkin bir Windows geliştirme makinesi. Bu makalede bir Ubuntu sunucu VM 'sini çalıştıran Windows 10 kullanılır.
 * Etkin bir IoT Hub.
@@ -87,7 +87,7 @@ VM 'niz oluşturulduktan sonra, cihazı otomatik olarak sağlamanıza olanak tan
 
 4. **Güvenilir Platform Modülü etkinleştir**' i işaretleyin.
 
-5. **Tamam** düğmesine tıklayın.  
+5. **Tamam**’a tıklayın.  
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>Sanal makineyi başlatın ve TPM verilerini toplayın
 

@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 261d85c60473749719830c380d8a4866d7561874
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 3b1e71a5aadbe9e6a4fa89d4b3ec0fb6b1d9e6ce
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438049"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530463"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmeti uç noktaları
 
@@ -87,5 +87,5 @@ Daha fazla bilgi için bkz. [Azure Key Vault güvenlik duvarlarını ve sanal a�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Anahtar kasanızın güvenliğini sağlama](secure-your-key-vault.md))
+* [Anahtar kasanızın güvenliğini sağlama](secure-your-key-vault.md)
 * [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](network-security.md)

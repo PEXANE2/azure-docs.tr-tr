@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 82bd284ede23e8880f79c614f4a6e2f588a4293c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b2648382fb19fafcfc342379aa9da974f6f8d1ff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74977004"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528429"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için C# cihaz SDK 'sını kullanarak sanal bir TPM cihazı oluşturma ve sağlama
 
@@ -23,7 +23,7 @@ Bu adımlarda, Windows işletim sistemini çalıştıran bir geliştirme makines
 
 Örnek kodda cihazın [Donanım Güvenlik Modülü (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) olarak Windows TPM simülatörü kullanılmaktadır. 
 
-Otomatik sağlama işlemini bilmiyorsanız, [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md) gözden geçirdiğinizden emin olun. Ayrıca devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
+Oto sağlama işlemini bilmiyorsanız, [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. Ayrıca devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
 
 Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
 
@@ -49,7 +49,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 ## <a name="provision-the-simulated-device"></a>Sanal cihazı sağlama
 
-1. Azure Portal’da oturum açın. Sol taraftaki menüden **tüm kaynaklar** düğmesini seçin ve cihaz sağlama hizmetinizi açın. **Genel bakış** dikey penceresinde, **_kimlik kapsamı_** değerini aklınızda bir değer.
+1. Azure portalında oturum açın. Sol taraftaki menüden **tüm kaynaklar** düğmesini seçin ve cihaz sağlama hizmetinizi açın. **Genel bakış** dikey penceresinde, **_kimlik kapsamı_** değerini aklınızda bir değer.
 
     ![Portal dikey penceresindeki sağlama hizmeti Kapsam Kimliğini kopyalama](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
 
@@ -65,7 +65,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
     dotnet run <IDScope>
     ```
 
-    Bu komut, TPM yonga simülatörünü ayrı bir komut isteminde başlatacaktır. Windows 'ta, simülatör. exe ' nin ortak ağlarda iletişim kurmasına izin vermek isteyip istemediğinizi soran bir Windows Güvenlik uyarısıyla karşılaşabilirsiniz. Bu örneğin amaçları doğrultusunda, isteği iptal edebilirsiniz.
+    Bu komut, TPM yonga simülatörünü ayrı bir komut isteminde başlatacaktır. Windows 'da, Simulator.exe ortak ağlarda iletişim kurmasına izin vermek isteyip istemediğinizi soran bir Windows Güvenlik uyarısıyla karşılaşabilirsiniz. Bu örneğin amaçları doğrultusunda, isteği iptal edebilirsiniz.
 
 1. Özgün komut penceresinde, cihaz kaydı için gereken **_onay anahtarı_**, **_kayıt kimliği_** ve önerilen **_cihaz kimliği_** görüntülenir. Bu değerleri bir yere göz atın. Bu değeri, cihaz sağlama hizmeti Örneğinizde tek bir kayıt oluşturmak için kullanacaksınız. 
    > [!NOTE]

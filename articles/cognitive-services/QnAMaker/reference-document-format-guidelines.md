@@ -1,14 +1,14 @@
 ---
 title: Belge biçimini içeri aktarma yönergeleri-Soru-Cevap Oluşturma
-description: URL türlerinin QnA çiftlerini içeri ve dışarı aktarmak için nasıl kullanılacağını anlayın.
+description: İçeriğiniz için en iyi sonuçları elde etmek üzere belgeleri içeri aktarmak için bu yönergeleri kullanın.
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: 799e85e2200d3caa29c9b76bc57a62fc883d246d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b94c8b3fd4d4c082e0bc49c6bd42d3b37e963988
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804342"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530786"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>İçeri aktarılan belgeler ve URL 'Ler için biçimlendirme yönergeleri
 
@@ -16,7 +16,7 @@ ms.locfileid: "80804342"
 
 ## <a name="formatting-considerations"></a>Biçimlendirme konuları
 
-Bir dosya veya URL 'YI içeri aktardıktan sonra Soru-Cevap Oluşturma, içeriğinizi [markı biçiminde](https://en.wikipedia.org/wiki/Markdown)dönüştürür ve depolar. Dönüştürme işlemi, metinde gibi yeni satırlar ekler `\n\n`. Markaşağı biçimi hakkında bilgi, dönüştürülen içeriği anlamanıza ve Bilgi Bankası içeriğinizi yönetmenize yardımcı olur.
+Bir dosya veya URL 'YI içeri aktardıktan sonra Soru-Cevap Oluşturma, içeriğinizi [markı biçiminde](https://en.wikipedia.org/wiki/Markdown)dönüştürür ve depolar. Dönüştürme işlemi, metinde gibi yeni satırlar ekler `\n\n` . Markaşağı biçimi hakkında bilgi, dönüştürülen içeriği anlamanıza ve Bilgi Bankası içeriğinizi yönetmenize yardımcı olur.
 
 İçeriğinizi doğrudan bilgi tabanınız içinde ekler veya düzenlersiniz, zengin metin içeriği oluşturmak veya zaten yanıtdaki markaşağı biçim içeriğini değiştirmek için **markı biçimlendirme** kullanın. Soru-Cevap Oluşturma, içeriğinize zengin metin özellikleri getirmek için markaşağı biçiminin çoğunu destekler. Ancak, bir sohbet bot gibi istemci uygulaması aynı markı biçimleri kümesini desteklemiyor olabilir. İstemci uygulamanın yanıt görüntüsünü test etmek önemlidir.
 
@@ -110,7 +110,7 @@ Bilgi bankasını içeri aktarmak, mevcut bilgi bankasındaki içeriğin yerini 
 
 * Hiyerarşiyi göstermek için başlıklar ve alt başlıklar kullanın. Örneğin, komut istemi olarak alınması gereken QnA 'yi göstermek için üst QnA ve H2 'yi belirtmek üzere H1 'yi belirtebilirsiniz. Sonraki hiyerarşiyi göstermek için küçük başlık boyutunu kullanın. Belgenizde yapıyı daha fazla yapmak için stil, renk veya başka bir mekanizma kullanmayın, Soru-Cevap Oluşturma çoklu açma istemlerini ayıklamaz.
 * Başlığın ilk karakteri büyük harfle yazılmalıdır.
-* Bir başlığı soru işaretiyle sonlandırmayın `?`.
+* Bir başlığı soru işaretiyle sonlandırmayın `?` .
 
 **Örnek belgeler**:<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso avantajları (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso avantajları (PDF)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 

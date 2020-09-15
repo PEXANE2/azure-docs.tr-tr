@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: çok kiracılı bir veritabanı tasarlama-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı'
-description: Bu öğreticide, PostgreSQL için Azure veritabanı hiper ölçek (Citus) üzerinde dağıtılmış tabloları oluşturma, doldurma ve sorgulama işlemlerinin nasıl yapılacağı gösterilmektedir.
+description: Bu öğreticide, PostgreSQL için Azure veritabanı hiper ölçek (Citus) kullanılarak çok kiracılı bir veritabanının nasıl tasarlanacağını göstermektedir.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: bc7891e157bbffa386396a352fd1d48e4559ecdc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b28307783957af2613152c2a8305f3650aa352ac
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386410"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530735"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Öğretici: PostgreSQL için Azure veritabanı – hiper ölçek (Citus) kullanarak çok kiracılı bir veritabanı tasarlama
 
@@ -29,7 +29,7 @@ Bu öğreticide, şu şekilde nasıl yapılacağını öğrenmek için PostgreSQ
 > * Kiracılar arasında veri paylaşma
 > * Kiracı başına şemayı özelleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
