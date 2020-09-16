@@ -1,6 +1,6 @@
 ---
 title: Microsoft uygulamasında oturum açma sorunları | Microsoft Docs
-description: Azure AD 'yi kullanarak ilk taraf Microsoft uygulamalarında oturum açarken karşılaşılan yaygın sorunları giderme (Office 365 gibi)
+description: Azure AD 'yi kullanarak ilk taraf Microsoft uygulamalarında oturum açarken karşılaşılan yaygın sorunları giderin (Microsoft 365 gibi).
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,20 +16,20 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69edf8e8dc51f8a8841ceed94221ed44786e280d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8942a55d880132313e1cdac6bfc025e0b153b410
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759292"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707960"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft uygulamasında oturum açma sorunları
 
-Microsoft uygulamaları (Office 365 Exchange, SharePoint, Yammer vb. gibi), üçüncü taraf SaaS uygulamalarından veya çoklu oturum açma için Azure AD ile tümleştirmiş olduğunuz diğer uygulamalardan farklı bir şekilde atanır ve yönetilir.
+Microsoft uygulamaları (Exchange, SharePoint, Yammer vb. gibi), üçüncü taraf SaaS uygulamalarından veya çoklu oturum açma için Azure AD ile tümleştirmiş olduğunuz diğer uygulamalardan farklı bir şekilde atanır ve yönetilir.
 
 Bir kullanıcının Microsoft tarafından yayımlanan bir uygulamaya erişebileceği üç ana yol vardır.
 
--   Office 365 veya diğer ücretli paketlerde bulunan uygulamalarda, kullanıcılara doğrudan kendi kullanıcı hesaplarına veya grup tabanlı lisans atama becerimizi kullanan bir **Grup aracılığıyla erişim** izni verilir.
+-   Microsoft 365 veya diğer ücretli paketlerde bulunan uygulamalar için, kullanıcılara doğrudan kullanıcı hesaplarına veya grup tabanlı lisans atama becerimizi kullanan bir grup aracılığıyla **Lisans ataması** üzerinden erişim verilir.
 
 -   Microsoft 'un veya üçüncü bir tarafın herkes tarafından kullanılmak üzere serbestçe yayımlayabilen uygulamalar için, kullanıcılara **Kullanıcı izni**aracılığıyla erişim izni verilebilir. Bu, Azure AD Iş veya okul hesabıyla uygulamada oturum açtıklarında ve hesabın hesabında sınırlı miktarda veri kümesine erişmesine izin veren anlamına gelir.
 
@@ -61,7 +61,7 @@ Kullanıcıları bir Microsoft uygulamasında oturum açarken bazı yaygın soru
 
   * **Kullanıcı hesabının** Azure Active Directory bulunduğundan emin olun. [Azure Active Directory bir kullanıcı hesabının bulunup bulunmadığını denetle](#problems-with-the-users-account)
 
-  * Kullanıcı hesabının oturum açma işlemleri için **etkinleştirildiğinden** emin olun. [kullanıcının hesap durumunu denetleyin](#problems-with-the-users-account)
+  * Oturum açma işlemlerinin Kullanıcı hesabının **etkinleştirildiğinden** emin olun. [Kullanıcının hesap durumunu denetleme](#problems-with-the-users-account)
 
   * Kullanıcının **parolasının dolmadığından veya unutulmuş** olduğundan emin olun. [Kullanıcının parolasını sıfırlama](#reset-a-users-password) veya [self servis parola sıfırlamayı etkinleştirme](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
@@ -438,7 +438,7 @@ Tek bir koşullu erişim ilkesini denetlemek veya doğrulamak için:
 7. Belirli bir koşul, atama veya Kullanıcı erişimini engelleyebilecek diğer ayarlar olmadığını gözden geçirin.
 
    >[!NOTE]
-   >Bu ilkeyi, oturum açma işlemlerinin etkilenmediğinden emin olmak için geçici olarak devre dışı bırakmak isteyebilirsiniz. Bunu yapmak için **Ilkeyi etkinleştir** seçeneğini **Hayır** olarak ayarlayın ve **Kaydet** düğmesine tıklayın.
+   >Bu ilkeyi, oturum açma işlemlerini etkilemediğinden emin olmak için geçici olarak devre dışı bırakmak isteyebilirsiniz. Bunu yapmak için **Ilkeyi etkinleştir** seçeneğini **Hayır** olarak ayarlayın ve **Kaydet** düğmesine tıklayın.
    >
    >
 
@@ -470,7 +470,7 @@ Tek bir uygulamanın yapılandırılmış olan koşullu erişim ilkesini denetle
 9.  Belirli bir koşul, atama veya Kullanıcı erişimini engelliyor olabilecek diğer ayarlar olmadığını gözden geçirin.
 
      >[!NOTE]
-     >Bu ilkeyi, oturum açma işlemlerinin etkilenmediğinden emin olmak için geçici olarak devre dışı bırakmak isteyebilirsiniz. Bunu yapmak için **Ilkeyi etkinleştir** seçeneğini **Hayır** olarak ayarlayın ve **Kaydet** düğmesine tıklayın.
+     >Bu ilkeyi, oturum açma işlemlerini etkilemediğinden emin olmak için geçici olarak devre dışı bırakmak isteyebilirsiniz. Bunu yapmak için **Ilkeyi etkinleştir** seçeneğini **Hayır** olarak ayarlayın ve **Kaydet** düğmesine tıklayın.
      >
      >
 

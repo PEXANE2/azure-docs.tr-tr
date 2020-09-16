@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: bdd0530aa580f8f1a1cfdffb81d070827a714115
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8548e7449056ecb1f211d5dd026544bf7e1375cc
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686080"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708198"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Öğretici: Atlasduyi bulutunu Azure Active Directory tümleştirin
 
@@ -28,7 +28,7 @@ Bu öğreticide, Atlasme bulutunu Azure Active Directory (Azure AD) ile tümleş
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -163,7 +163,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![image](./media/atlassian-cloud-tutorial/default-attributes.png)
    
-   1. Office 365 lisansıyla bir Azure AD kiracısı için öznitelik eşlemesi
+   1. Microsoft 365 lisansıyla bir Azure AD kiracısı için öznitelik eşlemesi
       
       a. **Benzersiz kullanıcı tanımlayıcısı (ad kimliği)** talebine tıklayın
 
@@ -177,13 +177,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
       ![image](common/default-attributes.png)
       
-   1. Office 365 lisansı olmadan bir Azure AD kiracısı için öznitelik eşlemesi 
+   1. Microsoft 365 lisansı olmadan bir Azure AD kiracısı için öznitelik eşlemesi 
 
       a. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`Talebe tıklayın.
 
       ![image](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Azure, Azure AD kiracılarında Office 365 lisansı olmadan oluşturulan kullanıcılar için **User. Mail** özniteliğini doldurmamışken, e-postayı **userPrincipalName** özniteliğinde bu kullanıcı için depolar. Atlasme bulutu, **NameIdentifier** 'ın (**benzersiz kullanıcı tanımlayıcısı**) kullanıcının e-postasına (**User. UserPrincipalName**) eşlenmesini bekliyor.  **Kaynak özniteliğini** düzenleyin ve **User. UserPrincipalName**olarak değiştirin. Talepte yapılan değişiklikleri kaydedin.
+      b. Azure, Azure AD kiracılarında oluşturulan kullanıcılara Microsoft 365 lisansı olmadan **Kullanıcı. Mail** özniteliğini doldurmamışken, bu gibi kullanıcı için e-postayı **userPrincipalName** özniteliğinde depolamaz. Atlasme bulutu, **NameIdentifier** 'ın (**benzersiz kullanıcı tanımlayıcısı**) kullanıcının e-postasına (**User. UserPrincipalName**) eşlenmesini bekliyor.  **Kaynak özniteliğini** düzenleyin ve **User. UserPrincipalName**olarak değiştirin. Talepte yapılan değişiklikleri kaydedin.
 
       ![image](./media/atlassian-cloud-tutorial/set-email.png)
          

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 6592b1a934e732888ef949071d95075d0af61bf6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762275"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708079"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Sanal merkezin geçerli yollarını görüntüleme
 
@@ -33,7 +33,7 @@ Sayfa çıktısı aşağıdaki alanları gösterir:
 * **Kaynak**: yönlendirme KAYNAĞıNıN kaynak kimliği.
 * **As yolu**: BGP özniteliği as (özerk sistem) yolu, yolun eklendiği öneki bulunduğu konuma ulaşmak için geçmesi gereken her türlü as sayısını listeler.
 
-### <a name="example"></a><a name="example"></a>Örneğinde
+### <a name="example"></a><a name="example"></a>Örnek
 
 Aşağıdaki örnek tablodaki değerler, sanal hub bağlantısı veya yol tablosunun 10.2.0.0/24 yolunu (bir dal öneki) öğrendiklerini göstermez. **Sonraki atlama** VPN Gateway kaynak kimliği Ile VPN_S2S_Gateway **VPN sonraki atlama türü** nedeniyle yolu öğrenmiştir. **Yol kaynağı** , kaynak VPN ağ geçidi/yol tablosu/BAĞLANTıSıNıN kaynak kimliğine işaret eder. **As yolu** , dalın as yolunu gösterir.
 
@@ -50,6 +50,8 @@ Aşağıdaki örnek tablodaki değerler, sanal hub bağlantısı veya yol tablos
 * Bir sanal ağ bağlantısını, VPN bağlantısını veya ExpressRoute bağlantısını düzenlerken, **varsayılan yolu yay** alanı Azure sanal WAN portalında görülür. Bu alan, her zaman varsayılan olarak ExpressRoute ve VPN bağlantıları için "false" olan ve sanal ağ bağlantıları için "true" olan **Enableınternetsecurity** bayrağını gösterir.
 
 * VM NIC üzerinde etkin yollar görüntülenirken, VM sanal bir WAN hub 'ına bağlı bir bağlı ağ içinde olduğunda sanal hub yönlendiricisini belirten bir sonraki atlamayı "sanal ağ geçidi" olarak görürseniz.
+
+* Bir sanal hub yol tablosu için geçerli rotaları görüntüleme yalnızca sanal hub 'ın kendisine bağlı en az bir bağlantı türü (VPN/ER/VNET) varsa doldurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

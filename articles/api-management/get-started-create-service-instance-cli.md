@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 763a4f5555e9ea6cdb7e78840251fda5d6861f16
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 8e41e20752e4203bf9916813b86cd901f4f75c09
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90042563"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708232"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli-preview"></a>Hızlı başlangıç: Azure CLı (Önizleme) kullanarak yeni bir Azure API Management hizmet örneği oluşturma
 
@@ -51,7 +51,7 @@ az apim create --name myapim --resource-group myResourceGroup \
 Varsayılan olarak, komut, Azure API Management değerlendirmek için ekonomik bir seçenek olan geliştirici katmanında örneği oluşturur. Bu katman üretim kullanımı için değildir. API Management katmanlarını ölçeklendirme hakkında daha fazla bilgi için bkz. [yükseltme ve ölçeklendirme](upgrade-and-scale.md). 
 
 > [!TIP]
-> Genellikle bu katmanda bir API Management hizmeti oluşturmak ve etkinleştirmek için 20 ila 30 dakika arasında sürer. Önceki komut, `--no-wait` hizmet oluşturulduğunda komutun hemen döndürdüğü şekilde seçeneğini kullanır.
+> Bu katmanda bir API Management hizmeti oluşturmak ve etkinleştirmek için 30 ila 40 dakika sürebilir. Önceki komut, `--no-wait` hizmet oluşturulduğunda komutun hemen döndürdüğü şekilde seçeneğini kullanır.
 
 [Az APIM Show](/cli/azure/apim#az-apim-show) komutunu çalıştırarak dağıtım durumunu denetleyin:
 

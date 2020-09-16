@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 90d51d7eb5425530ebad0fc9ac66ba2c95776076
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564977"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708147"
 ---
 # <a name="azure-file-share-protocols"></a>Azure dosya paylaşma protokolleri
 
@@ -55,7 +55,7 @@ Azure dosya paylaşımlarını NFS 4,1 ile bağlama Şu anda önizleme aşaması
 Azure dosyaları ile NFS için idealdir:
 
 - POSIX ile uyumlu dosya paylaşımları, büyük/küçük harf duyarlılığı veya UNIX stil izinleri (UID/GID) gerektiren iş yükleri.
-- SMB erişimi gerektirmeyen Linux merkezli iş yükleri.
+- Windows erişimi gerektirmeyen Linux merkezli iş yükleri.
 
 ### <a name="security"></a>Güvenlik
 

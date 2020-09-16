@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: ea66f044664082b547d1b012d7253cd6443e8610
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bb8eef01e2673c3f84b1678a93b4bd168f1faf63
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052809"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708130"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>Öğretici: Clever ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide Clever 'i Azure Active Directory (Azure AD) ile tümleştirmeyi 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -134,7 +134,7 @@ Bu bölümde, Clever 'e erişim vererek Azure çoklu oturum açma özelliğini k
     ![Anlık oturum açma](./media/clever-tutorial/ic798984.png "Anlık oturum açma")
 
     > [!NOTE]
-    > Çoklu oturum açmayı test etmeden önce, arka uçta Office 365 SSO 'yu etkinleştirmek üzere [Clever istemci desteği ekibine](https://clever.com/about/contact/) başvurmanız gerekir.
+    > Çoklu oturum açmayı test etmeden önce, arka uçta Microsoft 365 SSO 'yu etkinleştirmek üzere [Clever istemci desteği ekibine](https://clever.com/about/contact/) başvurmanız gerekir.
 
 1. **Anlık oturum** sayfasında, aşağıdaki adımları uygulayın:
  

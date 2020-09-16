@@ -4,12 +4,12 @@ description: Azure Container Instances öğreticisi Bölüm 2/3-bir Azure Contai
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 44a7f21c067897b046413851ef5a2c73bfccc24f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78252152"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708045"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Öğretici: Azure Container Registry oluşturma ve kapsayıcı görüntüsü gönderme
 
@@ -28,66 +28,7 @@ Serinin son öğreticisi olan sonraki makalede, özel kayıt defterinizdeki kaps
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
-## <a name="create-azure-container-registry"></a>Azure kapsayıcı kayıt defteri oluşturma
-
-Kapsayıcı kayıt defterinizi oluşturmadan önce bunun dağıtılacağı bir *kaynak grubu* gerekir. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal koleksiyondur.
-
-[az group create][az-group-create] komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnekte, *eastus* bölgesinde *myResourceGroup* adlı bir kaynak grubu oluşturulur:
-
-```azurecli
-az group create --name myResourceGroup --location eastus
-```
-
-Kaynak grubunu oluşturduktan sonra [az acr create][az-acr-create] komutuyla bir Azure kapsayıcı kayıt defteri oluşturun. Kapsayıcı kayıt defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. `<acrName>` değerini kayıt defteriniz için benzersiz bir adla değiştirin:
-
-```azurecli
-az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
-```
-
-Aşağıda, *mycontainerregistry082* adlı yeni bir Azure kapsayıcı kayıt defteri için çıktı örneği yer almaktadır (burada kısaltılmış şekilde gösterilmektedir):
-
-```output
-...
-{
-  "creationDate": "2018-03-16T21:54:47.297875+00:00",
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/mycontainerregistry082",
-  "location": "eastus",
-  "loginServer": "mycontainerregistry082.azurecr.io",
-  "name": "mycontainerregistry082",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "sku": {
-    "name": "Basic",
-    "tier": "Basic"
-  },
-  "status": null,
-  "storageAccount": null,
-  "tags": {},
-  "type": "Microsoft.ContainerRegistry/registries"
-}
-```
-
-Bu öğreticinin geri kalan aşamalarında, bu adımda seçtiğiniz kapsayıcı kayıt defteri adı için yer tutucu olarak `<acrName>` kullanılmaktadır.
-
-## <a name="log-in-to-container-registry"></a>Kapsayıcı kayıt defterinde oturum açma
-
-Görüntü göndermeden önce, Azure Container Registry örneğinizde oturum açmanız gerekir. İşlemi tamamlamak için [az acr login][az-acr-login] komutunu kullanın. Oluşturduğunuzda, kapsayıcı kayıt defteri için seçtiğiniz benzersiz adı sağlamanız gerekir.
-
-```azurecli
-az acr login --name <acrName>
-```
-
-Örnek:
-
-```azurecli
-az acr login --name mycontainerregistry082
-```
-
-Komut tamamlandığında `Login Succeeded` döndürülür:
-
-```output
-Login Succeeded
-```
+[!INCLUDE [container-instances-create-registry](../../includes/container-instances-create-registry.md)]
 
 ## <a name="tag-container-image"></a>Kapsayıcı görüntüsünü etiketleme
 
@@ -170,7 +111,7 @@ Gönderdiğiniz görüntünün aslında Azure kapsayıcı kayıt defterinizde ol
 az acr repository list --name <acrName> --output table
 ```
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az acr repository list --name mycontainerregistry082 --output table
