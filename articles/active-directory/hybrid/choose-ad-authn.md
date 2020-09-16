@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: beabe9440c37d16ca4a81efdbc9588739f4c7473
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: d5de8da548c2e141eb921aa4f95e82f7199ae1f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279355"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602379"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin
 
@@ -86,7 +86,7 @@ Karar sorularına ilişkin ayrıntılar:
 
 ### <a name="cloud-authentication-password-hash-synchronization"></a>Bulut kimlik doğrulaması: Parola karması eşitleme
 
-* **Çaba**. Parola karması eşitleme, dağıtım, bakım ve altyapıyla ilgili en az çaba gerektirir.  Bu çaba düzeyi genellikle yalnızca kullanıcılarına Office 365, SaaS uygulamalarında ve diğer Azure AD tabanlı kaynaklarda oturum açmasını gerektiren kuruluşlar için geçerlidir. Oturum açıldığında, Parola karması eşitleme Azure AD Connect eşitleme işleminin bir parçasıdır ve iki dakikada bir çalışır.
+* **Çaba**. Parola karması eşitleme, dağıtım, bakım ve altyapıyla ilgili en az çaba gerektirir.  Bu çaba düzeyi genellikle kullanıcıların Microsoft 365, SaaS uygulamalarında ve diğer Azure AD tabanlı kaynaklarda oturum açmasını gerektiren kuruluşlar için geçerlidir. Oturum açıldığında, Parola karması eşitleme Azure AD Connect eşitleme işleminin bir parçasıdır ve iki dakikada bir çalışır.
 
 * **Kullanıcı deneyimi**. Kullanıcıların oturum açma deneyimini geliştirmek için Parola karması eşitlemeyle sorunsuz SSO dağıtın. Kullanıcılar oturum açıldığında sorunsuz SSO gereksiz istemleri ortadan kaldırır.
 
@@ -203,7 +203,7 @@ Aşağıdaki nedenlerden dolayı seçtiğiniz kimlik doğrulama yöntemi için P
 
 2. **Şirket içi kesinti acil değer**.  Bir siber saldırı veya olağanüstü durum nedeniyle Şirket içi kesintiden kaynaklanan sonuçlar önemli olabilir. reputational marka zararlarından Paralyzed bir kuruluşa kadar olan saldırılara karşı kesintiye uğrammakla uğraşmayı başaramadı. Yakın zamanda, çok sayıda kuruluş, hedeflenen fidye yazılımı da dahil olmak üzere şirket içi sunucuların açık kalmasına neden olan kötü amaçlı yazılım saldırılarına sahiptir. Microsoft, müşterilerin bu tür saldırılara uğramasına yardımcı olduğunda iki kuruluş kategorisi görür:
 
-   * Daha önce, federe veya geçişli kimlik doğrulaması üzerinde parola karması eşitlemesi etkinleştirilmiş olan kuruluşlar, birincil kimlik doğrulama yöntemini daha sonra Parola karması eşitlemesini kullanacak şekilde değiştirdi. Bunlar birkaç saat içinde çevrimiçi olarak geri getirilir. Office 365 aracılığıyla e-postaya erişim kullanarak, sorunları çözmeye ve diğer bulut tabanlı iş yüklerine erişmeye çalışmış olurlar.
+   * Daha önce, federe veya geçişli kimlik doğrulaması üzerinde parola karması eşitlemesi etkinleştirilmiş olan kuruluşlar, birincil kimlik doğrulama yöntemini daha sonra Parola karması eşitlemesini kullanacak şekilde değiştirdi. Bunlar birkaç saat içinde çevrimiçi olarak geri getirilir. Microsoft 365 aracılığıyla e-postaya erişim kullanarak, sorunları çözmeye ve diğer bulut tabanlı iş yüklerine erişmeye çalıştık.
 
    * Daha önce parola karması eşitlemesini etkinleştirmediğiniz kuruluşların, iletişim için sorunları çözmek üzere güvenilmeyen dış tüketici e-posta sistemlerine çare olması gerekiyordu. Bu gibi durumlarda, kullanıcılar bulut tabanlı uygulamalarda yeniden oturum açabilmeniz için, bu kullanıcıların kendi şirket içi kimlik altyapısını geri yüklemesi için haftalar sürmesidir.
 

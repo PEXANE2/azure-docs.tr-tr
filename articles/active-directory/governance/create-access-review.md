@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/06/2020
+ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8598e77940bd2b33a9d8ba2c5a56348be841f7b
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 02d1c40c26dd6b6992d8df85a986b4157a22226a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505208"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602940"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplar ve uygulamalar için erişim gözden geçirmesi oluşturma
 
@@ -32,7 +32,7 @@ Erişim Incelemelerini etkinleştirme hakkında hızlı bir video izleyebilirsin
 
 Bu makalede, Grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi oluşturma açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure AD Premium P2
 - Genel yönetici veya Kullanıcı Yöneticisi
@@ -111,6 +111,8 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#l
     - **Erişimi onayla** -kullanıcının erişimini Onayla
     - **Öneriler alın** -kullanıcının devam eden erişimini reddetme veya onaylama konusunda sistemin önerisini alın
 
+    ![Erişim incelemesi oluşturma-Gelişmiş ayarlar](./media/create-access-review/advanced-settings-preview-new.png)
+
 4. Önizle Engellenen kullanıcılara, engellendiklerinde Konuk kullanıcılar için ne olacağını belirtmek için bu eylemi kullanın.
     - **1. seçenek** , reddedilen kullanıcının, gözden geçirilmekte olan grup veya uygulamaya erişimini kaldıracak, yine de kiracıya oturum açabiliyor. 
     - **2. seçenek** , diğer kaynaklara erişimleri olmasına bakılmaksızın, engellenen kullanıcıların kiracıya oturum açmasını engeller. Bir hata oluşursa veya bir yönetici, birinin erişimini yeniden etkinleştirmeye karar verirse, Kullanıcı devre dışı bırakıldıktan sonra 30 gün içinde bunu yapabilir. Devre dışı bırakılan kullanıcılar üzerinde herhangi bir eylem yoksa, kiracı 'dan silinir.
@@ -123,8 +125,6 @@ Kuruluşunuzdaki kaynaklara erişimi olmayan konuk kullanıcıları kaldırmak i
 ### <a name="advanced-settings"></a>Gelişmiş ayarlar
 
 1. Ek ayarları belirtmek için **Gelişmiş ayarlar** bölümünü genişletin.
-
-    ![Erişim incelemesi oluşturma-Gelişmiş ayarlar](./media/create-access-review/advanced-settings-preview-new.png)
 
 1. Kullanıcının erişim bilgilerini temel alarak sistem önerilerini gözden geçirenlere göstermek üzere **etkinleştirilecek** **önerileri göster** ' i ayarlayın.
 

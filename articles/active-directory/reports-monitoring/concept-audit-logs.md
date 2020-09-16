@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c9449a996929eb20acf35897a100dfbb722e82
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229931"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603529"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki denetim etkinliği raporları 
 
@@ -208,11 +208,11 @@ Uygulamalarınızla ilgili denetim verilerini gözden geçirmek istiyorsanız, *
 
 ![Denetim günlükleri](./media/concept-audit-logs/enterpriseapplications.png "Denetim günlükleri")
 
-## <a name="office-365-activity-logs"></a>Office 365 etkinlik günlükleri
+## <a name="microsoft-365-activity-logs"></a>Etkinlik günlüklerini Microsoft 365
 
-[Microsoft 365 Yönetim merkezinden](/office365/admin/admin-overview/about-the-admin-center)Office 365 etkinlik günlüklerini görüntüleyebilirsiniz. Office 365 etkinliği ve Azure AD etkinlik günlükleri birçok dizin kaynağını paylaşsa da, yalnızca Microsoft 365 Yönetim Merkezi, Office 365 etkinlik günlüklerinin tam görünümünü sağlar. 
+[Microsoft 365 Yönetim merkezinden](/office365/admin/admin-overview/about-the-admin-center)Microsoft 365 etkinlik günlüklerini görüntüleyebilirsiniz. Microsoft 365 etkinliği ve Azure AD etkinlik günlükleri birçok dizin kaynağını paylaşsa da, yalnızca Microsoft 365 Yönetim Merkezi Microsoft 365 etkinlik günlüklerinin tam görünümünü sağlar. 
 
-Office [365 Yönetim API 'lerini](/office/office-365-management-api/office-365-management-apis-overview)kullanarak da Office 365 etkinlik günlüklerine programlı bir şekilde erişebilirsiniz.
+Ayrıca, [Office 365 Yönetim API 'lerini](/office/office-365-management-api/office-365-management-apis-overview)kullanarak Microsoft 365 etkinlik günlüklerine programlı bir şekilde erişebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

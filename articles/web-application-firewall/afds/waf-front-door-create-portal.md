@@ -5,20 +5,20 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/10/2020
+ms.date: 09/15/2020
 ms.author: victorh
-ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7c7ea5297276ed9a1d1f2ca8f4190997dcab57c3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "79475850"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602226"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Öğretici: Azure ön kapıda Azure portal kullanarak Web uygulaması güvenlik duvarı ilkesi oluşturma
 
 Bu öğreticide, temel bir Azure Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturma ve Azure ön kapısının bir ön uç konağına uygulama işlemi gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * WAF ilkesi oluşturma
@@ -68,7 +68,7 @@ WAF 'yi eylemde görmek için, mod ayarlarını **algılamayı** **engelleme**ol
 
 Özel **kurallar** bölümünün altında **özel kural ekle** seçeneğini belirleyerek özel bir kural oluşturabilirsiniz. Bu, özel kural yapılandırma sayfasını başlatır. Sorgu dizesi **blok içeriyorsa,** bir isteği engellemek için özel bir kural yapılandırmanın bir örneği aşağıda verilmiştir.
 
-![WAF ilke modunu değiştir](../media/waf-front-door-create-portal/customquerystring2.png)
+![Özel kurallar](../media/waf-front-door-create-portal/customquerystring2.png)
 
 ### <a name="default-rule-set-drs"></a>Varsayılan kural kümesi (DRS)
 
@@ -76,8 +76,11 @@ Azure tarafından yönetilen varsayılan kural kümesi varsayılan olarak etkind
 
  ![WAF kural kümesini Değiştir](../media/waf-front-door-create-portal/managed2.png)
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Artık gerekli değilse, kaynak grubunu ve tüm ilgili kaynakları kaldırın.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Web uygulaması güvenlik duvarı](../overview.md) 
->  hakkında bilgi edinin [Azure ön kapısı hakkında daha fazla bilgi edinin](../../frontdoor/front-door-overview.md)
+> [Azure ön kapısı hakkında daha fazla bilgi edinin](../../frontdoor/front-door-overview.md)

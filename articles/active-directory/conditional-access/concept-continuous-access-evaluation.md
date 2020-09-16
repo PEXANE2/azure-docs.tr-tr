@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27aabac75516eed2c68b4f14c6593411d0141ef1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437250"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601767"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -48,26 +48,26 @@ Sürekli erişim değerlendirmesi, Exchange Online, SharePoint Online ve takıml
 - Yönetici, bir kullanıcı için tüm yenileme belirteçlerini açıkça iptal eder
 - Azure AD Kimlik Koruması tarafından algılanan yükseltilmiş kullanıcı riski
 
-Bu işlem, kullanıcıların kurumsal SharePoint Online dosyalarına, e-postaya, takvime veya görevlere erişimi kaybettiği senaryoya ve bu kritik olaylardan birini kullandıktan sonra dakika içinde O365 istemci uygulamalarından gelen takımlara izin vermez. 
+Bu işlem, kullanıcıların kurumsal SharePoint Online dosyalarına, e-postaya, takvime veya görevlere ve bu kritik olaylardan biri dakika içinde Microsoft 365 istemci uygulamalarından gelen takımlara erişimi kaybettiği senaryoya olanak sağlar. 
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>Koşullu erişim ilkesi değerlendirmesi (Önizleme)
 
 Exchange ve SharePoint, hizmet içinde değerlendirilebilecek şekilde anahtar koşullu erişim ilkelerini eşitlenebilir.
 
-Bu işlem, kullanıcıların ağ konumu değişikliklerinden hemen sonra O365 istemci uygulamalarından veya SharePoint Online 'dan kurumsal dosyalara, e-postaya, takvime veya görevlere erişimi kaybetmediği senaryoyu sağlar.
+Bu işlem, kullanıcıların ağ konumu değişikliklerinden hemen sonra Microsoft 365 istemci uygulamalarından veya SharePoint Online 'dan kurumsal dosyalara, e-postaya, takvime veya görevlere erişimi kaybetmediği senaryoyu sağlar.
 
 > [!NOTE]
 > Tüm uygulama ve kaynak sağlayıcısı birleşimi desteklenmez. Aşağıdaki tabloya bakın. Office, Word, Excel ve PowerPoint 'e başvurur
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | Desteklenir | Desteklenir | Desteklenmiyor | Desteklenmiyor | Desteklenir |
-| Exchange Online | Desteklenir | Desteklenir | Desteklenir | Desteklenir | Desteklenir |
+| **SharePoint Online** | Desteklenir | Desteklenir | Desteklenmiyor | Desteklenmiyor | Desteklenir |
+| **Exchange Online** | Desteklenir | Desteklenir | Desteklenir | Desteklenir | Desteklenir |
 
 | | Office Web uygulamaları | Office Win32 uygulamaları | İOS için Office | Android için Office | Mac için Office |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | Desteklenir | Desteklenir | Desteklenmiyor | Desteklenir | Desteklenir |
-| Exchange Online | Desteklenir | Desteklenir | Desteklenmiyor | Desteklenir | Desteklenir |
+| **SharePoint Online** | Desteklenir | Desteklenir | Desteklenmiyor | Desteklenir | Desteklenir |
+| **Exchange Online** | Desteklenir | Desteklenir | Desteklenmiyor | Desteklenir | Desteklenir |
 
 ### <a name="client-side-claim-challenge"></a>İstemci tarafı talebi sınaması
 
@@ -144,7 +144,7 @@ CAE için, yalnızca adlandırılmış IP tabanlı adlandırılmış konumlara i
 
 ### <a name="ip-address-configuration"></a>IP adresi yapılandırması
 
-Kimlik sağlayıcınız ve kaynak sağlayıcılarınız farklı IP adresleri görebilir. Bu uyumsuzluk, kuruluşunuzdaki ağ proxy uygulamaları veya kimlik sağlayıcınız ile kaynak sağlayıcınız arasında yanlış IPv4/IPv6 yapılandırması nedeniyle oluşabilir. Örneğin:
+Kimlik sağlayıcınız ve kaynak sağlayıcılarınız farklı IP adresleri görebilir. Bu uyumsuzluk, kuruluşunuzdaki ağ proxy uygulamaları veya kimlik sağlayıcınız ile kaynak sağlayıcınız arasında yanlış IPv4/IPv6 yapılandırması nedeniyle oluşabilir. Örnek:
 
 - Kimlik sağlayıcınız istemciden bir IP adresi görür.
 - Kaynak sağlayıcınız bir proxy üzerinden geçtikten sonra istemciden farklı bir IP adresi görür.

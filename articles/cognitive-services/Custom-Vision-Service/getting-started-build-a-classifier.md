@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 67632301b534f91c36de837bbfa12f9ec16ed58f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 44d5a4ae800e87404e5a207727c22a75f0fb75c8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551361"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602804"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme Sınıflandırıcısı oluşturma
 
-Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesi aracılığıyla bir sınıflandırıcı oluşturmayı öğreneceksiniz. Bir sınıflandırıcı modeli oluşturduktan sonra, görüntü sınıflandırması için Özel Görüntü İşleme hizmetini kullanabilirsiniz.
+Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesi aracılığıyla bir görüntü Sınıflandırıcısı oluşturmayı öğreneceksiniz. Bir model oluşturduktan sonra, yeni görüntülerle test edebilir ve sonuç olarak kendi görüntü tanıma yazılımınızla tümleştirebilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Sınıflandırıcınızı eğiten bir görüntü kümesi. Görüntüleri seçme hakkında ipuçları için aşağıya bakın.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure portal Özel Görüntü İşleme kaynakları oluşturma
+## <a name="create-custom-vision-resources"></a>Özel Görüntü İşleme kaynakları oluşturma
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +45,7 @@ Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvis
 1. Proje için bir ad ve açıklama girin. Ardından bir kaynak grubu seçin. Oturum açmış hesabınız bir Azure hesabıyla ilişkiliyse, kaynak grubu açılır listesi bir Özel Görüntü İşleme Hizmeti kaynağı içeren tüm Azure Kaynak gruplarınızı görüntüler. 
 
    > [!NOTE]
-   > Kullanılabilir kaynak grubu yoksa, lütfen [Azure Portal](https://portal.azure.com/)oturum açmak için kullandığınız hesapla [customvision.ai](https://customvision.ai) oturum açtığınızdan emin olun. Ayrıca, lütfen Özel Görüntü İşleme kaynaklarınızın bulunduğu Azure portal dizin olarak Özel Görüntü İşleme portalında aynı "Dizin" i seçtiğinizi onaylayın. Her iki sitede, ekranın sağ üst köşesindeki açılan hesap menüsünden dizininizi seçebilirsiniz. 
+   > Kullanılabilir kaynak grubu yoksa, lütfen [Azure Portal](https://portal.azure.com/)oturum açmak için kullandığınız hesapla [customvision.ai](https://customvision.ai) oturum açtığınızdan emin olun. Ayrıca, lütfen Özel Görüntü İşleme kaynaklarınızın bulunduğu Azure portal dizin olarak Özel Görüntü İşleme Web sitesinde aynı "Dizin" i seçtiğinizi onaylayın. Her iki sitede, ekranın sağ üst köşesindeki açılan hesap menüsünden dizininizi seçebilirsiniz. 
 
 1. __Proje türleri__altında __Sınıflandırmayı__ seçin. Daha sonra, __sınıflandırma türleri__altında, kullanım durumunuza bağlı olarak **MultiLabel** veya **birden çok sınıf**seçeneklerinden birini belirleyin. Çok etiketli sınıflandırma bir görüntüye (sıfır veya daha fazla) etiket uygular, ancak birden çok Lass sınıflandırması görüntüleri tek kategorilere göre sıralar (gönderdiğiniz her görüntü, en olası etiket ile sıralanır). İsterseniz sınıflandırma türünü daha sonra değiştirebileceksiniz.
 
@@ -120,3 +120,4 @@ Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesini kullanarak bir
 > [!div class="nextstepaction"]
 > [Modeli test etme ve yeniden eğitme](test-your-model.md)
 
+* [Özel Görüntü İşleme nedir?](./overview.md)

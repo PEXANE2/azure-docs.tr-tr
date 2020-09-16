@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/24/2020
+ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea8bf2407fb533870495dc501a2d740bff9ee968
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567359"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600730"
 ---
 # <a name="start-using-privileged-identity-management"></a>Privileged Identity Management'ı kullanmaya başlama
 
@@ -27,7 +27,7 @@ Bu makalede Privileged Identity Management (PıM) etkinleştirmeyi ve kullanmaya
 
 Azure Active Directory (Azure AD) kuruluşunuzda erişimi yönetmek, denetlemek ve izlemek için Privileged Identity Management (PıM) kullanın. PıM ile Azure kaynakları, Azure AD kaynakları ve Microsoft 365 veya Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler için gerekli ve anında erişim sağlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Privileged Identity Management kullanmak için aşağıdaki lisanslardan birine sahip olmanız gerekir:
 
@@ -35,6 +35,14 @@ Privileged Identity Management kullanmak için aşağıdaki lisanslardan birine 
 - Enterprise Mobility + Security (EMS) E5
 
 Daha fazla bilgi için bkz. [Privileged Identity Management kullanılacak lisans gereksinimleri](subscription-requirements.md).
+
+> [!Note]
+> Premium P2 lisansına sahip bir Azure AD kuruluşunda ayrıcalıklı bir rolde etkin olan bir Kullanıcı, Azure AD 'deki **rollere ve yöneticilere** gider ve bir rol seçer (ya da yalnızca Privileged Identity Management):
+>
+> - Kuruluş için PıM 'yi otomatik olarak etkinleştirdik
+> - Deneyim artık "normal" rol ataması veya uygun rol ataması atayabilecekleri
+>
+> PıM etkin olduğunda, kuruluşunuz üzerinde endişelenmeniz gereken başka bir etkiye sahip değildir. Bu, başlangıç ve bitiş zamanı ile uygun etkin vs. gibi ek atama seçenekleri sunar. PıM Ayrıca, yönetim birimleri ve özel roller kullanarak rol atamaları için kapsam tanımlamanızı sağlar. Genel yönetici veya ayrıcalıklı rol yöneticisiyseniz, PıM haftalık Özeti gibi birkaç ek e-posta almaya başlayabilirsiniz. Ayrıca, rol atamasıyla ilgili denetim günlüğünde MS-PıM hizmet sorumlusu ' nı da görebilirsiniz. Bu, iş akışınız üzerinde hiçbir etkisi olmaması gereken beklenen bir değişiklik.
 
 ## <a name="prepare-pim-for-azure-ad-roles"></a>Azure AD rolleri için PıM 'yi hazırlama
 
@@ -72,7 +80,7 @@ Privileged Identity Management kurulduktan sonra, bunun nasıl yapılacağını 
 
 Privileged Identity Management açmayı kolaylaştırmak için Azure portal panonuza bir PıM kutucuğu ekleyin.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. **Tüm hizmetler** ' i seçin ve **Azure AD Privileged Identity Management** hizmeti bulun.
 

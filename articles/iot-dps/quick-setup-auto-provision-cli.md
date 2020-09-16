@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 313dfe930dec5233f96b89fdebf978a41fdcdf80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 64250863e5bab4776c129935e56db190e5bd36ee
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497673"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602703"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile IoT Hub cihaz sağlama hizmetini ayarlama
 
@@ -84,7 +84,11 @@ echo $hubConnectionString
 ```
 
 > [!NOTE]
-> Bu iki komut, Bash altında çalışan konaklar için geçerlidir. Yerel bir Windows/CMD kabuğu veya PowerShell konağı kullanıyorsanız, söz konusu ortama yönelik doğru söz dizimini kullanacak şekilde komutları değiştirmeniz gerekir.
+> Bu iki komut, Bash altında çalışan konaklar için geçerlidir.
+> 
+> Yerel bir Windows/CMD kabuğu veya bir PowerShell ana bilgisayarı kullanıyorsanız, komutları bu ortam için doğru söz dizimini kullanacak şekilde değiştirin.
+>
+> Azure Cloud Shell kullanıyorsanız, kabuk penceresinin sol tarafındaki ortam açılır penceresinin **Bash**olduğunu kontrol edin.
 >
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>IoT hub ile cihaz sağlama hizmetini bağlama

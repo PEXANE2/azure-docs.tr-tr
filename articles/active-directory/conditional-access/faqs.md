@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5e75f7214e3a9aa5b44a763cc3448583b47185f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed6beec63114f1f157bb24354d77e50ecdaa8255
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253248"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601646"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Koşullu erişim SSS
 
@@ -59,7 +59,7 @@ Daha fazla bilgi için, [koşullu erişim hizmeti bağımlılıkları](service-d
 
 Microsoft ekiplerinde kiracı üzerinde bazı koşullu erişim ilkelerini etkinleştirdikten sonra, bazı sekmeler artık beklendiği gibi masaüstü istemcisinde çalışmayabilir. Ancak, Microsoft ekipleri Web istemcisi kullanılırken etkilenen sekmeler çalışır. Etkilenen sekmeler Power BI, Forms, VSTS, PowerApps ve SharePoint listesi içerebilir.
 
-Etkilenen sekmeleri görmek için, Windows 10 hesapları uzantısı yüklü olan uç, Internet Explorer veya Chrome 'da takımlar Web istemcisini kullanmanız gerekir. Bazı sekmeler, koşullu erişim etkinleştirildiğinde Microsoft ekipleri masaüstü istemcisinde çalışmayan Web kimlik doğrulamasına bağımlıdır. Microsoft bu senaryoları etkinleştirmek için iş ortaklarıyla çalışmaktadır. Bu tarihten sonra, planlayıcısı, OneNote ve Stream içeren manzara iOS 'u etkinleştirdik.
+Etkilenen sekmeleri görmek için, Windows 10 hesapları uzantısı yüklü olan uç, Internet Explorer veya Chrome 'da takımlar Web istemcisini kullanmanız gerekir. Bazı sekmeler, koşullu erişim etkinleştirildiğinde Microsoft ekipleri masaüstü istemcisinde çalışmayan Web kimlik doğrulamasına bağımlıdır. Microsoft bu senaryoları etkinleştirmek için iş ortaklarıyla çalışmaktadır. Bu tarihten sonra Planner, OneNote ve Stream ile ilgili senaryoları etkinleştirdik.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

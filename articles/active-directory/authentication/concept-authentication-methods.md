@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: dcbfd05df84e32423df425f3bdd231a26e4f3bca
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d4b44deda1bd17e65c3e2c2a9c46dddccd411996
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527062"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602055"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
@@ -36,21 +36,18 @@ Kuruluşunuzda Azure Multi-Factor Authentication gibi özellikler dağıttığı
 
 Aşağıdaki tabloda, kullanılabilir kimlik doğrulama yöntemlerine yönelik güvenlik konuları özetlenmektedir. Kullanılabilirlik, kullanıcının Azure AD 'de hizmet kullanılabilirliğini değil, kimlik doğrulama yöntemini kullanabildiğinin bir göstergesidir:
 
-| Kimlik doğrulama yöntemi       | Güvenlik | Kullanılabilirlik | Phislenebilir mi? | Kanal jackable? | Kullanılabilirlik |
-|-----------------------------|:--------:|:---------:|:---------:|:-----------------:|:------------:|
-| FIDO2 güvenlik anahtarı          | Yüksek     | Yüksek      | Hayır        | Hayır                | Yüksek         |
-| Microsoft Authenticator uygulaması | Yüksek     | Yüksek      | Yes       | Hayır <sup>1</sup>   | Yüksek         |
-| İş İçin Windows Hello  | Yüksek     | Yüksek      | Hayır        | Hayır                | Yüksek         |
-| Donanım OATH belirteçleri        | Orta   | Orta    | Yes       | Hayır                | Yüksek         |
-| Yazılım OATH belirteçleri        | Orta   | Orta    | Yes       | <sup>2</sup> yok   | Yüksek         |
-| SMS                         | Orta   | Yüksek      | Yes       | Yes               | Orta       |
-| Ses                       | Orta   | Orta    | Yes       | Yes               | Orta       |
-| Parola                    | Düşük      | Yüksek      | Yes       | Yes               | Yüksek         |
+| Kimlik doğrulama yöntemi          | Güvenlik | Kullanılabilirlik | Kullanılabilirlik |
+|--------------------------------|:--------:|:---------:|:------------:|
+| İş İçin Windows Hello     | Yüksek     | Yüksek      | Yüksek         |
+| Microsoft Authenticator uygulaması    | Yüksek     | Yüksek      | Yüksek         |
+| FIDO2 güvenlik anahtarı (Önizleme)   | Yüksek     | Yüksek      | Yüksek         |
+| OATH Donanım belirteçleri (Önizleme) | Orta   | Orta    | Yüksek         |
+| OATH yazılım belirteçleri           | Orta   | Orta    | Yüksek         |
+| SMS                            | Orta   | Yüksek      | Orta       |
+| Ses                          | Orta   | Orta    | Orta       |
+| Parola                       | Düşük      | Yüksek      | Yüksek         |
 
-<sup>1</sup> , passwordless modunda, uygulama belirli bir cihaza kaydedildiğinde<br />
-<sup>2</sup> uygulamanın kilidini açmak için bir cihaz PIN 'i gerektirdiğini varsayarsak
-
-Güvenlik Açıkları ve saldırı vektörleri hakkında daha fazla bilgi için bkz. [Kanal-Jacking ve gerçek zamanlı kimlik avı](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
+Güvenlik hakkında daha fazla bilgi için bkz. [kimlik doğrulama güvenlik açıkları ve saldırı vektörleri](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
 
 > [!TIP]
 > Esneklik ve kullanılabilirlik için Microsoft Authenticator uygulamasını kullanmanızı öneririz. Bu kimlik doğrulama yöntemi, en iyi kullanıcı deneyimini ve passwordless, MFA anında iletme bildirimleri ve OATH kodları gibi birden çok modu sağlar.
@@ -63,24 +60,24 @@ Aşağıdaki tabloda, bir oturum açma olayı sırasında bir kimlik doğrulama 
 
 | Yöntem                         | Birincil kimlik doğrulama | İkincil kimlik doğrulaması  |
 |--------------------------------|:----------------------:|:-------------------------:|
-| FIDO2 güvenlik anahtarları (Önizleme)  | Yes                    | MFA                       |
-| Microsoft Authenticator uygulaması    | Evet (Önizleme)          | MFA ve SSPR              |
 | İş İçin Windows Hello     | Yes                    | MFA                       |
-| OATH Donanım belirteçleri (Önizleme) | Hayır                     | MFA                       |
-| OATH yazılım belirteçleri           | Hayır                     | MFA                       |
+| Microsoft Authenticator uygulaması    | Evet (Önizleme)          | MFA ve SSPR              |
+| FIDO2 güvenlik anahtarı (Önizleme)   | Yes                    | MFA                       |
+| OATH Donanım belirteçleri (Önizleme) | No                     | MFA                       |
+| OATH yazılım belirteçleri           | No                     | MFA                       |
 | SMS                            | Evet (Önizleme)          | MFA ve SSPR              |
-| Sesli arama                     | Hayır                     | MFA ve SSPR              |
+| Sesli arama                     | No                     | MFA ve SSPR              |
 | Parola                       | Yes                    |                           |
 
 Bu kimlik doğrulama yöntemlerinin tümü Azure portal yapılandırılabilir ve [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)aracılığıyla giderek giderek daha da yönetilebilir.
 
 Her bir kimlik doğrulama yönteminin nasıl çalıştığı hakkında daha fazla bilgi edinmek için aşağıdaki ayrı kavramsal makalelere göz atın:
 
-* [FIDO2 güvenlik anahtarları (Önizleme)](concept-authentication-passwordless.md#fido2-security-keys)
-* [Microsoft Authenticator uygulaması](concept-authentication-authenticator-app.md)
 * [İş İçin Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)
-* [OATH yazılım belirteçleri](concept-authentication-oath-tokens.md#oath-software-tokens)
+* [Microsoft Authenticator uygulaması](concept-authentication-authenticator-app.md)
+* [FIDO2 güvenlik anahtarı (Önizleme)](concept-authentication-passwordless.md#fido2-security-keys)
 * [OATH Donanım belirteçleri (Önizleme)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+* [OATH yazılım belirteçleri](concept-authentication-oath-tokens.md#oath-software-tokens)
 * SMS [oturum açma (Önizleme)](howto-authentication-sms-signin.md) ve [doğrulama](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Sesli arama doğrulaması](concept-authentication-phone-options.md)
 * Parola

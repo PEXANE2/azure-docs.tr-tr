@@ -8,26 +8,28 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/15/2020
-ms.openlocfilehash: f042c171c120b7b5dd9b011bca2c2243be664767
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e4cee699bf18b340d0bb1cbe783bdedcca537db6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530633"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602957"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
-Azure Bilişsel Arama ([eskiden "Azure Search" olarak bilinirdi](whats-new.md#new-service-name)), Web, mobil ve kurumsal uygulamalardaki özel, heterojen içerik üzerine zengin bir arama deneyimi eklemeye yönelik geliştiricilere API 'ler ve araçlar sağlayan bir bulut arama hizmetidir.
+Azure Bilişsel Arama ([eskiden "Azure Search" olarak bilinirdi](whats-new.md#new-service-name)), geliştiriciler için Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerinde zengin arama deneyimi oluşturmaya yönelik API 'ler ve araçlar sağlayan bir bulut arama hizmetidir.
 
-Bilişsel Arama, dizin oluşturma ve sorgu altyapısı ve arama dizinlerinin kalıcı olarak depolanması sağlar. İçerik katkıda bulunan dış veri depoları arasında ve sorgu istekleri gönderen ve yanıtları işleyen bir istemci uygulaması arasında uyar. Bir arama hizmetinin iki birincil iş yükü *Dizin oluşturma* ve *sorgulama*içerir.
+Bir Bilişsel Arama hizmeti oluşturduğunuzda, bir dizin oluşturma ve sorgu altyapısı, oluşturduğunuz ve yönettiğiniz arama dizinlerinin kalıcı olarak depolanması ve basit ve karmaşık sorgular oluşturmaya yönelik bir sorgu dili elde edersiniz. Bir arama hizmeti, Azure veri kaynaklarından veri alımı/alımı otomatikleştiren *Dizin oluşturucular* ve görüntü ve metin analizi gibi bilişsel hizmetlerden AI *Işleme ekleyen diğer* Azure hizmetleriyle tümleşir.
 
 ![Azure Bilişsel Arama mimarisi](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Bilişsel Arama mimarisi")
 
-Dizin oluşturma, kodunuz veya bir aracınız bir dizin şeması tanımladığında ve verileri arama hizmetinize yüklediğinde olur. İsteğe bağlı olarak, AI süreçlerini uygulamak için dizin oluşturma sırasında bilişsel yetenekler ekleyebilirsiniz. Bunun yapılması, arama ve bilgi araştırma senaryolarında yararlı olan yeni bilgi ve yapılar oluşturabilir.
+Mimari türsel olarak, bir arama hizmeti, verilerinizi içeren dış veri depoları arasında ve sorgu istekleri gönderen ve yanıtları işleyen bir istemci uygulaması arasında yer alır. Bir arama hizmetinin iki birincil iş yükü *dizine* alınır ve *sorgulama*yapılır.
 
-Bir dizin varsa, istemci uygulamanız istekleri bir arama hizmetine gönderir ve yanıtları işler. Arama deneyimi, Azure Bilişsel Arama API 'Leri kullanarak istemciniz içinde, oluşturduğunuz, sahip olduğunuz ve hizmetinize depoladığınız bir arama dizini üzerinde sorgu yürütme ile tanımlanmıştır.
+Dizin oluşturma, arama hizmetinize içerik ekler ve aranabilir hale gelir. Dahili olarak, gelen metinler belirteçlerde işlenir ve hızlı eşleştirme için ters dizinler halinde depolanır. Bir dizin şeması Aranabilir içeriğin yapısını belirler. Dizin oluşturma sırasında Microsoft 'un veya oluşturduğunuz özel becerilerin önceden tanımlanmış olduğu bilişsel *yetenekler*ekleme seçeneğiniz vardır. Elde edilen analiz ve dönüştürmeler, daha önce mevcut olmayan yeni bilgi ve yapılar oluşturabilir ve birçok arama ve bilgi araştırma senaryosu için yüksek yardımcı program sağlar.
 
-Bilgi alma sürecinin karmaşıklığını maskeleyen basit bir [REST API’si](/rest/api/searchservice/) veya [.NET SDK’sı](search-howto-dotnet-sdk.md) aracılığıyla bu işlev sunulur. Ayrıca, hizmet yönetimi ve içerik yönetimi için Azure portal, prototiplerinizi prototip oluşturma ve dizinlerinizi sorgulama araçları ile de kullanabilirsiniz. Hizmet bulutta çalıştığından, altyapı ve kullanılabilirlik Microsoft tarafından yönetilir.
+Bir dizin aranabilir verilerle doldurulduktan sonra, istemci uygulamanız bir arama hizmetine sorgu istekleri gönderir ve yanıtları işler. Arama deneyimi, Azure Bilişsel Arama API 'Leri kullanarak istemcinizde tanımlanmıştır ve ilgi ayarlama, otomatik tamamlama, eş anlamlı eşleştirme, belirsiz eşleştirme, model eşleştirme, filtre ve sıralama içerebilir.
+
+Bilgi alma sürecinin karmaşıklığını maskeleyen basit bir [REST API’si](/rest/api/searchservice/) veya [.NET SDK’sı](search-howto-dotnet-sdk.md) aracılığıyla bu işlev sunulur. Ayrıca, hizmet yönetimi ve içerik yönetimi için Azure portal kullanarak, prototiplerinizi prototip ve becerileri sorgulama ve dizin oluşturma araçları da kullanabilirsiniz. Hizmet bulutta çalıştığından, altyapı ve kullanılabilirlik Microsoft tarafından yönetilir.
 
 ## <a name="when-to-use-cognitive-search"></a>Ne zaman kullanılacağı Bilişsel Arama
 
@@ -37,7 +39,7 @@ Azure Bilişsel Arama aşağıdaki uygulama senaryoları için uygundur:
 
 + Aramayla ilgili özelliklerin kolay uygulanması. Arama API 'Leri sorgu oluşturmayı, çok yönlü gezintiyi, filtreleri (coğrafi uzamsal arama dahil), eş anlamlı eşleme, otomatik tamamlama ve ilgi ayarlamayı basitleştirir. Yerleşik özellikleri kullanarak, ticari Web araması altyapılarına benzer bir arama deneyimine yönelik son kullanıcı beklentilerini karşılamasını sağlayabilirsiniz.
 
-+ Ham içerik, Azure Blob depolamada veya Cosmos DB depolanan büyük metin veya görüntü dosyaları ya da uygulama dosyalarıdır. Metin ayıklamak, yapı oluşturmak veya çevrilmiş metin ya da varlıklar gibi yeni bilgiler oluşturmak için dizin oluşturma sırasında bilişsel [becerileri](cognitive-search-concept-intro.md) uygulayabilirsiniz.
++ Ham içerik, Azure Blob depolamada veya Cosmos DB depolanan büyük metin veya görüntü dosyaları ya da uygulama dosyalarıdır. Metin tanımlamak ve ayıklamak, yapı oluşturmak veya çevrilmiş metin veya varlıklar gibi yeni bilgiler oluşturmak için dizin oluşturma sırasında bilişsel [becerileri](cognitive-search-concept-intro.md) uygulayabilirsiniz.
 
 + İçerik dile veya özel metin çözümlemesine ihtiyaç duyuyor. Ingilizce olmayan içeriğiniz varsa Azure Bilişsel Arama hem Lucene Çözümleyicileri hem de Microsoft 'un doğal dil işlemcilerini destekler. Ayrıca, vurguları, aksanların filtrelenmesi veya dizelerde desenler tanınması veya korunması gibi ham içeriğin özel işlemesini elde etmek için de yapılandırabilirsiniz.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77185919"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601665"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Koşullu erişim klasik ilke geçişi
 
@@ -73,9 +73,9 @@ Aşağıdaki yönleri bir ilke birleştirme bağlamında önemlidir:
    - Senaryonuz için gerekliyse birden çok koşulu birleştirin. 
    - Erişim denetimi olarak birkaç verme gereksinimi seçin ve bunları mantıksal *veya* (seçili denetimlerden birini gerektir) ya da mantıksal *ve* (seçili denetimlerin tümünü gerektir) ile birleştirin.
 
-### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
+### <a name="exchange-online"></a>Exchange Online
 
-İstemci uygulamaları gibi **Exchange Active Sync** içeren **Office 365 Exchange Online** için klasik ilkeleri geçirmek istiyorsanız, bunları yeni bir ilkede birleştirmeyebilirsiniz. 
+İstemci uygulamaları gibi **Exchange Active Sync** içeren **Exchange Online** için klasik ilkeleri geçirmek istiyorsanız, bunları yeni bir ilke halinde birleştiremeyebilirsiniz. 
 
 Bu, örneğin, tüm istemci uygulama türlerini desteklemek istiyorsanız, bu durumda olur. İstemci uygulamaları olarak **Exchange Active Sync** olan yeni bir ilkede, diğer istemci uygulamalarını seçemezsiniz.
 
@@ -89,7 +89,7 @@ Klasik ilkeleriniz çeşitli koşullar içeriyorsa, tek bir yeni ilkeye birleşt
 
 ![Koşullu erişim koşulları](./media/policy-migration/16.png)
  
-İstemci uygulamaları koşulu olarak **Exchange Active Sync** içeren Office 365 Exchange Online için uygulama tabanlı klasik ilkeler **desteklenen** ve **Desteklenmeyen** cihaz platformlarına izin verir. İlişkili yeni ilkede ayrı cihaz platformları yapılandıramamanıza karşın, desteği yalnızca [desteklenen cihaz platformlarıyla](concept-conditional-access-conditions.md#device-platforms) sınırlayabilirsiniz. 
+Exchange Online için, istemci uygulamaları koşulu olarak **Exchange Active Sync** içeren, **desteklenen** ve **Desteklenmeyen** cihaz platformlarına izin veren uygulama tabanlı klasik ilkeler. İlişkili yeni ilkede ayrı cihaz platformları yapılandıramamanıza karşın, desteği yalnızca [desteklenen cihaz platformlarıyla](concept-conditional-access-conditions.md#device-platforms) sınırlayabilirsiniz. 
 
 ![Koşullu erişim Exchange ActiveSync seçin](./media/policy-migration/65.png)
 

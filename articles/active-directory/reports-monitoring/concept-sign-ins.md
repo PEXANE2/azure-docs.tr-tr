@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228775"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603603"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
 
 Bu makale, oturum açma raporuna genel bir bakış sunar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 
@@ -124,7 +124,7 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
 **Konum** -bağlantının başlatıldığı konum:
 
-- City
+- Şehir
 
 - Eyalet/Il
 
@@ -147,13 +147,13 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 |Kimliği doğrulanmış SMTP| |POP ve IMAP istemci tarafından e-posta iletileri göndermek için kullanılır.|
 |Otomatik bulma| |Outlook ve EAS istemcileri tarafından Exchange Online 'daki posta kutularını bulmak ve bağlamak için kullanılır.|
 |Exchange ActiveSync| |Bu filtre, EAS protokolünün denendiği tüm oturum açma girişimlerini gösterir.|
-|Tarayıcı|![İşaretli](./media/concept-sign-ins/check.png)|Web tarayıcıları kullanan kullanıcıların tüm oturum açma girişimlerini gösterir|
-|Exchange ActiveSync| | Exchange Online 'a bağlanmak için Exchange Acticessync kullanan kullanıcılardan istemci uygulamalarına yönelik tüm oturum açma girişimlerini gösterir|
+|Tarayıcı|![Onay işareti](./media/concept-sign-ins/check.png)|Web tarayıcıları kullanan kullanıcıların tüm oturum açma girişimlerini gösterir|
+|Exchange ActiveSync| | Exchange Online 'a bağlanmak için Exchange ActiveSync kullanan kullanıcılardan istemci uygulamalarına yönelik tüm oturum açma girişimlerini gösterir|
 |Exchange Online PowerShell| |Exchange Online 'a uzak PowerShell ile bağlanmak için kullanılır. Exchange Online PowerShell için temel kimlik doğrulamasını engellerseniz, bağlanmak için Exchange Online PowerShell modülünü kullanmanız gerekir. Yönergeler için bkz. [Multi-Factor Authentication kullanarak Exchange Online PowerShell 'e bağlanma](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
 |Exchange Web Hizmetleri| |Outlook, Mac için Outlook ve üçüncü taraf uygulamalar tarafından kullanılan bir programlama arabirimi.|
 |IMAP4| |E-posta almak için IMAP kullanan eski bir posta istemcisi.|
 |HTTP üzerinden MAPI| |Outlook 2010 ve üzeri tarafından kullanılır.|
-|Mobil uygulamalar ve Masaüstü istemcileri|![İşaretli](./media/concept-sign-ins/check.png)|Mobil uygulamalar ve Masaüstü istemcileri kullanan kullanıcılardan gelen tüm oturum açma girişimlerini gösterir.|
+|Mobil uygulamalar ve Masaüstü istemcileri|![Mavi onay işareti](./media/concept-sign-ins/check.png)|Mobil uygulamalar ve Masaüstü istemcileri kullanan kullanıcılardan gelen tüm oturum açma girişimlerini gösterir.|
 |Çevrimdışı adres defteri| |Outlook tarafından indirilen ve kullanılan adres listesi koleksiyonlarının bir kopyası.|
 |Her yerde Outlook (HTTP üzerinden RPC)| |Outlook 2016 ve öncesi tarafından kullanılır.|
 |Outlook hizmeti| |Windows 10 için posta ve takvim uygulaması tarafından kullanılır.|
@@ -269,11 +269,11 @@ Uygulama kullanımı grafiğinde bir güne tıkladığınızda, oturum açma etk
 
 **Oturum açma işlemleri** seçeneği, size tüm uygulamalarınıza ait oturum açma olaylarına genel bir bakış sunar.
 
-## <a name="office-365-activity-logs"></a>Office 365 etkinlik günlükleri
+## <a name="microsoft-365-activity-logs"></a>Etkinlik günlüklerini Microsoft 365
 
-[Microsoft 365 Yönetim merkezinden](/office365/admin/admin-overview/about-the-admin-center)Office 365 etkinlik günlüklerini görüntüleyebilirsiniz. Office 365 etkinliği ve Azure AD etkinlik günlüklerinin, dizin kaynaklarının önemli bir sayısını paylaştığı noktayı göz önünde bulundurun. Yalnızca Microsoft 365 Yönetim Merkezi, Office 365 etkinlik günlüklerinin tam görünümünü sağlar. 
+[Microsoft 365 Yönetim merkezinden](/office365/admin/admin-overview/about-the-admin-center)Microsoft 365 etkinlik günlüklerini görüntüleyebilirsiniz. Microsoft 365 etkinlik ve Azure AD etkinlik günlüklerinin çok sayıda dizin kaynağını paylaştığı noktayı göz önünde bulundurun. Yalnızca Microsoft 365 Yönetim Merkezi Microsoft 365 etkinlik günlüklerinin tam görünümünü sağlar. 
 
-Office [365 Yönetim API 'lerini](/office/office-365-management-api/office-365-management-apis-overview)kullanarak da Office 365 etkinlik günlüklerine programlı bir şekilde erişebilirsiniz.
+Ayrıca, [Office 365 Yönetim API 'lerini](/office/office-365-management-api/office-365-management-apis-overview)kullanarak Microsoft 365 etkinlik günlüklerine programlı bir şekilde erişebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

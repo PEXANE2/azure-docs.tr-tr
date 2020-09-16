@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d0ea9259e701e2ad9a4026401f5aef39c0ecfa51
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042488"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601835"
 ---
 # <a name="conditional-access-conditions"></a>Koşullu erişim: koşullar
 
@@ -149,27 +149,27 @@ Bu ayar, aşağıdaki mobil uygulamalardan ve Masaüstü istemcilerinden yapıla
 | İstemci uygulamaları | Hedef hizmet | Platform |
 | --- | --- | --- |
 | Dynamics CRM uygulaması | Dynamics CRM | Windows 10, Windows 8.1, iOS ve Android |
-| Posta/Takvim/Kişiler uygulaması, Outlook 2016, Outlook 2013 (modern kimlik doğrulaması ile)| Office 365 Exchange Online | Windows 10 |
+| Posta/Takvim/Kişiler uygulaması, Outlook 2016, Outlook 2013 (modern kimlik doğrulaması ile)| Exchange Online | Windows 10 |
 | Uygulamalar için MFA ve konum ilkesi. Cihaz tabanlı ilkeler desteklenmez.| Tüm Apps App Service | Android ve iOS |
 | Microsoft ekipleri Hizmetleri-bu, Microsoft ekiplerini ve tüm Istemci uygulamalarını (Windows Masaüstü, iOS, Android, WP ve Web istemcisi) destekleyen tüm hizmetleri denetler | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android ve macOS |
-| Office 2016 uygulamaları, Office 2013 (modern kimlik doğrulaması ile), [OneDrive eşitleme istemcisi](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
-| Office 2016 uygulamaları, evrensel Office uygulamaları, Office 2013 (modern kimlik doğrulaması ile), [OneDrive eşitleme istemcisi](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
-| Office 2016 (Word, Excel, PowerPoint, yalnızca OneNote). | Office 365 SharePoint Online | macOS |
-| Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
-| Office mobil uygulamaları | Office 365 SharePoint Online | Android, iOS |
-| Office Yammer uygulaması | Office 365 Yammer | Windows 10, iOS, Android |
-| Outlook 2019 | Office 365 SharePoint Online | Windows 10, macOS |
-| Outlook 2016 (macOS için Office) | Office 365 Exchange Online | macOS |
-| Outlook 2016, Outlook 2013 (modern kimlik doğrulaması ile), Skype Kurumsal (modern kimlik doğrulaması ile) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
-| Outlook mobil uygulaması | Office 365 Exchange Online | Android, iOS |
+| Office 2016 uygulamaları, Office 2013 (modern kimlik doğrulaması ile), [OneDrive eşitleme istemcisi](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1, Windows 7 |
+| Office 2016 uygulamaları, evrensel Office uygulamaları, Office 2013 (modern kimlik doğrulaması ile), [OneDrive eşitleme istemcisi](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
+| Office 2016 (Word, Excel, PowerPoint, yalnızca OneNote). | SharePoint | macOS |
+| Office 2019| SharePoint | Windows 10, macOS |
+| Office mobil uygulamaları | SharePoint | Android, iOS |
+| Office Yammer uygulaması | Yammer | Windows 10, iOS, Android |
+| Outlook 2019 | SharePoint | Windows 10, macOS |
+| Outlook 2016 (macOS için Office) | Exchange Online | macOS |
+| Outlook 2016, Outlook 2013 (modern kimlik doğrulaması ile), Skype Kurumsal (modern kimlik doğrulaması ile) | Exchange Online | Windows 8.1, Windows 7 |
+| Outlook mobil uygulaması | Exchange Online | Android, iOS |
 | Power BI uygulaması | Power BI hizmeti | Windows 10, Windows 8.1, Windows 7, Android ve iOS |
-| Skype Kurumsal | Office 365 Exchange Online| Android, iOS |
+| Skype Kurumsal | Exchange Online| Android, iOS |
 | Visual Studio Team Services uygulaması | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS ve Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync istemcileri
 
 - Kuruluşlar kullanıcılara veya gruplara ilke atarken yalnızca Exchange ActiveSync istemcileri seçebilir. Tüm **Kullanıcılar**, tüm **Konuk ve dış kullanıcılar**ya da **Dizin rolleri** , tüm kullanıcıların engellenmesine neden olur.
-- Exchange ActiveSync istemcilerine atanan bir ilke oluştururken, **Office 365 Exchange Online** , ilkeye atanmış tek bulut uygulaması olmalıdır. 
+- Exchange ActiveSync istemcilerine atanan bir ilke oluştururken, **Exchange Online** , ilkeye atanmış tek bulut uygulaması olmalıdır. 
 - Kuruluşlar, cihaz platformları koşulunu kullanarak bu ilkenin kapsamını belirli platformlara **daraltabilirler** .
 
 İlkeye atanan erişim denetimi **onaylanan istemci uygulaması gerektir**' i kullanıyorsa, Kullanıcı Outlook Mobil istemcisini yüklemek ve kullanmak üzere yönlendirilir. **Multi-Factor Authentication** gerekli olduğunda, temel kimlik doğrulaması çok faktörlü kimlik doğrulamasını desteklemediğinden, etkilenen kullanıcılar engellenir.

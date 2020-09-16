@@ -1,15 +1,15 @@
 ---
 title: Desteklenen Azure Resource Manager kaynak türleri
 description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Azure Resource Manager kaynak türlerinin bir listesini sağlayın.
-ms.date: 09/04/2020
+ms.date: 09/15/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: b81ffcdde074978a9a72c5ab651ec2c5556870bd
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a52378422c6ee740f30f155cdfb0839a3f281abe
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488329"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600611"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -63,6 +63,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. aadihar/azureadölçümlerini
 - Microsoft. aadihar/privatelinkforazuread
 - Microsoft. aadihar/kiracılar
+- Microsoft. agkdplatform/farmtempts
 - Microsoft. aisupercomputer/accounts
 - Microsoft. aisupercomputer/accounts/jobgroups
 - Microsoft. aisupercomputer/accounts/jobgroups/Jobs
@@ -80,6 +81,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Automation/automationaccounts
 - Microsoft. Automation/automationaccounts/Configurations
 - Microsoft. Automation/automationaccounts/runbook 'lar
+- Microsoft. autonomousdevelopmentplatform/accounts
 - Microsoft. autonomoussystems/çalışma alanları
 - Microsoft. AVS/privatebulutlar
 - Microsoft. azconfig/configurationmağazaları
@@ -94,6 +96,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. azuredata/sqlserverınstances
 - Microsoft. azuredata/sqlserverkayıtları
 - Microsoft. azurestack/edgesubscriptions
+- Microsoft. azurestack/linkedabonelikleri
 - Microsoft. azurestack/kayıtları
 - Microsoft. azurestackhcı/kümeler
 - Microsoft. baremetal/consoleconnections
@@ -168,6 +171,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Containerservice/containerservices
 - Microsoft. Containerservice/managedkümeler
 - Microsoft. Containerservice/openshiftmanagedclusters
+- Microsoft. contoso/kümeler
 - Microsoft. contoso/çalışanlar
 - Microsoft. costmanagement/bağlayıcıları
 - Microsoft. customproviders/resourceproviders
@@ -250,6 +254,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. hybridnetwork/Devices
 - Microsoft. hybridnetwork/virtualnetworkfunctions
 - Microsoft. ımportexport/işler
+- Microsoft. industrydatalifecycle/basemodeller
 - Microsoft. industrydatalifecycle/custodıanişbiratlar
 - Microsoft. industrydatalifecycle/derivedmodeller
 - Microsoft. industrydatalifecycle/memberişbiratlar
@@ -265,6 +270,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Insights/notificationgroups
 - Microsoft. Insights/notificationrules
 - Microsoft. Insights/privatelinkscopes
+- Microsoft. Insights/querypack
 - Microsoft. Insights/scheduledqueryrules
 - Microsoft. Insights/webtests
 - Microsoft. Insights/çalışma kitapları
@@ -414,6 +420,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. resources/templatespec/sürümler
 - Microsoft. SaaS/uygulamalar
 - Microsoft. Scheduler/jobcollections
+- Microsoft. SCVMM/vmmservers
 - Microsoft. Search/searchservices
 - Microsoft. Security/Automations
 - Microsoft. Security/ıotsecuritysolutions
@@ -523,6 +530,8 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - wandisco. Fusion/fusiongroups/managedonpremzones
 - wandisco. Fusion/fusiongroups/onpremzones
 - wandisco. Fusion/fusiongroups/replicationrules
+- wandisco. Fusion/migrators
+- wandisco. Fusion/migrators/hedefler
 
 ## <a name="securityresources"></a>securityresources
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: 18de210d817ee309ac4970ecea6b62f6ef03ef02
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530412"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600662"
 ---
 # <a name="common-questions"></a>Sık sorulan sorular
 
@@ -90,6 +90,9 @@ Kaynak taşıyıcısı tarafından yönetilen kimliğin gerekli rolü yok. | ' K
 Kaynak taşıyıcısı yönetilen kimliği *none*olarak sıfırlandı. | Taşıma koleksiyonunda sistem tarafından atanan bir kimliği yeniden etkinleştirin > **kimliği**. Alternatif olarak, kaynağı Ekle ' ye aynı şeyi sağlayan **kaynakları**yeniden ekleyin.  
 Abonelik farklı bir kiracıya taşındı. | Taşıma koleksiyonu için yönetilen kimliği devre dışı bırakıp etkinleştirin.
 
+### <a name="how-can-i-do-multiple-moves-together"></a>Birden çok daha fazla hareketi nasıl yapabilirim?
+
+Portalda Değiştir seçeneğini kullanarak kaynak/hedef birleşimleri gerektiği gibi değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: ddb1c68ab417390987ac4873a16b89757ec24789
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058742"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602294"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure bölgeleri arasında Azure VM 'Leri taşıma desteği
 
@@ -114,6 +114,10 @@ Uzantılar | Desteklenmez | Uzantılar hedef bölgedeki sanal makineye kopyalanm
 ## <a name="supported-vm-storage-settings"></a>Desteklenen VM depolama ayarları
 
 Bu tabloda, Azure VM işletim sistemi diski, veri diski ve geçici disk için destek özetlenmektedir. Tüm performans sorunlarını önlemek için, [Linux](../virtual-machines/linux/disk-scalability-targets.md) ve [WINDOWS](../virtual-machines/windows/disk-scalability-targets.md) VM 'lerinin VM disk sınırlarını ve hedeflerini gözlemlemek önemlidir.
+
+> [!NOTE]
+> Hedef VM boyutu, kaynak VM 'den büyük veya bu değere eşit olmalıdır. Doğrulama için kullanılan parametreler: veri diskleri sayısı, NIC sayısı, kullanılabilir CPU 'Lar, GB cinsinden bellek. Bir hata verilmemişse.
+
 
 **Bileşen** | **Destek** | **Ayrıntılar**
 --- | --- | ---

@@ -5,20 +5,20 @@ description: Azure VPN istemci profillerini dağıtmak için bir Intune özel pr
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5a754a14cada1547a83e29d474e9b77aed7a2728
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: fba8433a7964b10901527894eee98722ece970ec
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024358"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602202"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>VPN istemci profillerini dağıtmak için bir Intune profili oluşturma
 
 Microsoft Intune kullanarak, Azure VPN istemcileri (Windows 10) için profilleri dağıtabilirsiniz. Bu makale, özel ayarları kullanarak bir Intune profili oluşturmanıza yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Cihazlar zaten Intune MDM 'ye kayıtlı.
 * Windows 10 için Azure VPN Istemcisi, istemci makinesine zaten dağıtıldı.
@@ -54,17 +54,7 @@ Desteklenen diğer seçenekler için [VPNV2 CSP](https://docs.microsoft.com/wind
     </VPNProfile>
    ```
 1. İle ve arasındaki girişi ```<ServerUrlList>``` , ```</ServerUrlList>``` indirilen profilinizdeki girdiyle değiştirin (azurevpnconfig.xml). "TrustedNetworkDetection" FQDN 'sini ortamınıza uyacak şekilde değiştirin.
-1. İndirilen Azure profilini (azurevpnconfig.xml) açın ve metni vurgulayarak ve + C tuşlarına basarak içeriği panoya kopyalayın <ctrl> . aşağıdaki azvpnprofile satırlarıyla her şeyi kopyalayın, ancak AzVPNProfile satırlarını kopyalamayın:
-
-   ```
-   <AzVpnProfile xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/">
-     <any xmlns:d2p1="http://schemas.datacontract.org/2004/07/System.Xml"
-       i:nil="true" />
-
-   For example - copy the text in your xml that is located here.
-
-   </AzVpnProfile>
-   ```
+1. Azure indirilen profilini açın (azurevpnconfig.xml) ve metni vurgulayarak ve (Ctrl) + C tuşlarına basarak tüm içeriği panoya kopyalayın. 
 1. Önceki adımdaki kopyalanmış metni Etiketler arasında 2. adımda oluşturduğunuz dosyaya yapıştırın ```<CustomConfiguration>  </CustomConfiguration>``` . Dosyayı bir xml uzantısıyla kaydedin.
 1. Etiketlerin içindeki değeri yazın ```<name>  </name>``` . Bu, profilin adıdır. Profili Intune 'da oluştururken bu ada ihtiyacınız olacaktır. Dosyayı kapatın ve kaydedildiği konumu hatırlayın.
 

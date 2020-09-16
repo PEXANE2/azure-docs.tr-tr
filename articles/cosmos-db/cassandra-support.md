@@ -1,29 +1,29 @@
 ---
 title: Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri
 description: Azure Cosmos DB Cassandra API'sinde Apache Cassandra özellik desteği hakkında bilgi edinin
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
-ms.date: 09/24/2018
-ms.openlocfilehash: e7384237f91bf3af8ccad1a97b27fb62a1845a88
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 09/14/2020
+ms.openlocfilehash: 9fe149fb026aabcb50a595061d3ba57df7812563
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118993"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602821"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Azure Cosmos DB Cassandra API'si ile, Cassandra Sorgu Dili (CQL) v4 [kablo protokolü](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) uyumlu açık kaynak Cassandra istemci [sürücüleri](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) aracılığıyla iletişim kurabilirsiniz. 
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. CQL Ikili protokol v4 [kablo protokolü](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) ile uyumlu açık kaynaklı Cassandra istemci [sürücüleri](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)aracılığıyla Azure Cosmos DB Cassandra API ile iletişim kurabilirsiniz. 
 
-Azure Cosmos DB Cassandra API’sini kullanarak Apache Cassandra API’leri avantajlarının yanı sıra Azure Cosmos DB’nin sunduğu kurumsal özelliklerin keyfini çıkarabilirsiniz. [Genel dağıtım](distribute-data-globally.md), [otomatik ölçek genişletme bölümlemesi](partition-data.md), kullanılabilirlik ve gecikme süresi garantileri, REST’te şifreleme, yedeklemeler ve çok daha fazlası kurumsal özelliklere dahildir.
+Azure Cosmos DB Cassandra API’sini kullanarak Apache Cassandra API’leri avantajlarının yanı sıra Azure Cosmos DB’nin sunduğu kurumsal özelliklerin keyfini çıkarabilirsiniz. [Genel dağıtım](distribute-data-globally.md), [otomatik ölçek genişletme bölümlemesi](cassandra-partitioning.md), kullanılabilirlik ve gecikme süresi garantileri, REST’te şifreleme, yedeklemeler ve çok daha fazlası kurumsal özelliklere dahildir.
 
 ## <a name="cassandra-protocol"></a>Cassandra protokolü 
 
-Azure Cosmos DB Cassandra API'si CQL’nin **v4** sürümüyle uyumludur. Desteklenen CQL komutları, araçlar, sınırlamalar ve özel durumlar aşağıda listelenmiştir. Bu protokolleri anlayan bir istemci sürücüsü Azure Cosmos DB Cassandra API'sine bağlanabilir.
+Azure Cosmos DB Cassandra API, Cassandra sorgu dili (CQL) v 3.11 API 'siyle uyumludur (sürüm 2. x ile geriye dönük olarak uyumludur). Desteklenen CQL komutları, araçlar, sınırlamalar ve özel durumlar aşağıda listelenmiştir. Bu protokolleri anlayan bir istemci sürücüsü Azure Cosmos DB Cassandra API'sine bağlanabilir.
 
 ## <a name="cassandra-driver"></a>Cassandra sürücü
 
@@ -37,61 +37,149 @@ Cassandra sürücülerinin aşağıdaki sürümleri, Azure Cosmos DB Cassandra A
 * [PHP 1.3](https://github.com/datastax/php-driver)  
 * [Gocql](https://github.com/gocql/gocql)  
  
+
 ## <a name="cql-data-types"></a>CQL veri türleri 
 
 Azure Cosmos DB Cassandra API'si aşağıdaki CQL veri türlerini destekler:
 
-* ascii  
-* bigint  
-* blob  
-* boole  
-* counter  
-* date  
-* decimal  
-* double  
-* float  
-* frozen  
-* inet  
-* int  
-* list  
-* set  
-* smallint  
-* metin  
-* time  
-* timestamp  
-* timeuuid  
-* tinyint  
-* tuple  
-* uuid  
-* varchar  
-* varint  
-* tuples  
-* udts  
-* map  
+|Komut  |Desteklenir |
+|---------|---------|
+| ascii  | Yes |
+| bigint  | Yes |
+| blob  | Yes |
+| boolean  | Yes |
+| counter  | Yes |
+| tarih  | Yes |
+| decimal  | Yes |
+| double  | Yes |
+| float  | Yes |
+| frozen  | Yes |
+| inet  | Yes |
+| int  | Yes |
+| list  | Yes |
+| set  | Yes |
+| smallint  | Yes |
+| metin  | Yes |
+| time  | Yes |
+| timestamp  | Yes |
+| timeuuid  | Yes |
+| tinyint  | Yes |
+| tuple  | Yes |
+| uuid  | Yes |
+| varchar  | Yes |
+| varint  | Yes |
+| tuples | Yes | 
+| udts  | Yes |
+| map | Yes |
 
 ## <a name="cql-functions"></a>CQL işlevleri
 
 Azure Cosmos DB Cassandra API'si aşağıdaki CQL işlevlerini destekler:
 
-* Belirteç  
-* Toplama işlevleri
-  * Min, Max, AVG, Count
-* Blob dönüşüm işlevleri 
-  * typeAsBlob(value)  
-  * blobAsType(value)
-* UUID ve timeuuid işlevleri 
-  * dateOf()  
-  * now()  
-  * minTimeuuid()  
-  * unixTimestampOf()  
-  * toDate(timeuuid)  
-  * toTimestamp(timeuuid)  
-  * toUnixTimestamp(timeuuid)  
-  * toDate(timestamp)  
-  * toUnixTimestamp(timestamp)  
-  * toTimestamp(date)  
-  * toUnixTimestamp(date) 
+|Komut  |Desteklenir |
+|---------|---------|
+| Simgesinde | Yes |
+| ttl | Yes |
+| WriteTime | Yes |
+| atama | No |
+
+\* Cassandra API, belirteci bir izdüşüm/seçici olarak destekler ve yalnızca bir where yan tümcesinin sol tarafında belirtece (PK) izin verir. Örneğin, `WHERE token(pk) > 1024` desteklenir, ancak `WHERE token(pk) > token(100)` desteklenmez.
+
+
+Toplama işlevleri:
+
+|Komut  |Desteklenir |
+|---------|---------|
+| dk | Yes |
+| max | Yes |
+| cin | Yes |
+| count | Yes |
+
+Blob dönüştürme işlevleri:
+ 
+|Komut  |Desteklenir |
+|---------|---------|
+| typeAsBlob(value)   | Yes |
+| blobAsType(value) | Yes |
+
+
+UUID ve timeuuıd işlevleri:
+ 
+|Komut  |Desteklenir |
+|---------|---------|
+| dateOf()  | Yes |
+| now()  | Yes |
+| minTimeuuid()  | Yes |
+| unixTimestampOf()  | Yes |
+| toDate(timeuuid)  | Yes |
+| toTimestamp(timeuuid)  | Yes |
+| toUnixTimestamp(timeuuid)  | Yes |
+| toDate(timestamp)  | Yes |
+| toUnixTimestamp(timestamp)  | Yes |
+| toTimestamp(date)  | Yes |
+| toUnixTimestamp(date) | Yes |
+
+
   
+## <a name="cql-commands"></a>CQL komutları
+
+Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutlarını destekler.
+
+|Komut  |Desteklenir |
+|---------|---------|
+| FILTRELEMEYE IZIN VER | Yes |
+| ANAHTAR ALANıNı DEĞIŞTIR | Yok (PaaS hizmeti, çoğaltma dahili olarak yönetilen)|
+| GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ DEĞIŞTIR | No |
+| ROLÜ DEĞIŞTIR | No |
+| ALTER TABLE | Yes |
+| DEĞIŞTIRME TÜRÜ | No |
+| KULLANıCı DEĞIŞTIR | No |
+| IŞLEMINI | Evet (yalnızca günlüğe kaydedilen Batch)|
+| COMPACT STORAGE | Yok (PaaS hizmeti) |
+| TOPLAMA OLUŞTUR | No | 
+| ÖZEL DIZIN OLUŞTURMA (SASı) | No |
+| CREATE INDEX | Evet ( [Dizin adı belirtmeden](cassandra-secondary-index.md), kümeleme anahtarlarındaki dizinler veya tam dondurulmuş koleksiyon desteklenmez) |
+| IŞLEV OLUŞTUR | No |
+| ANAHTAR alanı oluştur (çoğaltma ayarları yoksayıldı) | Yes |
+| GERÇEKLEŞTIRILMIŞ GÖRÜNÜM OLUŞTUR | No |
+| CREATE TABLE | Yes |
+| TETIKLEYICI OLUŞTUR | No |
+| OLUŞTURMA TÜRÜ | Yes |
+| ROL OLUŞTUR | No |
+| Kullanıcı oluştur (yerel Apache Cassandra 'da kullanım dışı) | No |
+| DELETE | Yes |
+| SIL (IF KOŞULUNDA hafif işlemler)| Yes |
+| BıRAKMA TOPLAMı | No |
+| DROP IŞLEVI | No |
+| DROP INDEX | Yes |
+| ANAHTAR UZAYıNı BıRAK | Yes |
+| GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ BıRAK | No |
+| ROLÜ BıRAK | No |
+| TABLOYU BıRAK | Yes |
+| TETIKLEYICIYI BıRAK | No | 
+| BıRAKMA TÜRÜ | Yes |
+| KULLANıCıYı bırak (yerel Apache Cassandra 'da kullanım dışı) | No |
+| SEMANTIĞI | No |
+| INSERT | Yes |
+| Ekle (If koşulu ile hafif işlemler)| Yes |
+| IZINLERI LISTELE | No |
+| ROLLERI LISTELE | No |
+| KULLANıCıLARı LISTELEME (yerel Apache Cassandra 'da kullanım dışı) | No |
+| HEDEFINI | No |
+| SELECT | Yes |
+| Seç (IF KOŞULUNDA hafif işlemler)| No |
+| UPDATE | Yes |
+| GÜNCELLEŞTIR (If koşulu ile hafif işlemler)| No |
+| KESILEMEDI | No |
+| USE | Yes |
+
+## <a name="json-support"></a>JSON desteği
+|Komut  |Desteklenir |
+|---------|---------|
+| JSON SEÇIN | Yes |
+| JSON EKLE | Yes |
+| fromJson () | No |
+| toJson () | No |
 
 
 ## <a name="cassandra-api-limits"></a>Cassandra API limitleri
@@ -108,9 +196,12 @@ Azure Cosmos DB Cassandra API'si bir yönetilen hizmet platformudur. Kümeyi yö
 
 Barındırılan yerel Cassandra kabuğunu (CDıSH v 5.0.1) doğrudan [Azure Portal](data-explorer.md) veya [Azure cosmos Gezgini](https://cosmos.azure.com/)'ndeki Veri Gezgini açabilirsiniz. CQL kabuğu 'nu etkinleştirmeden önce hesabınızdaki [Not defterleri özelliğini etkinleştirmeniz](enable-notebooks.md) gerekir (henüz etkinleştirilmemişse, üzerine tıklandığınızda sorulur `Open Cassandra Shell` ). Desteklenen Azure bölgeleri için [Azure Cosmos DB hesapları için not defterlerini etkinleştirme](enable-notebooks.md) bölümünde vurgulanan nota bakın.
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CSQLSH":::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CSQLSH 'i aç":::
 
 Ayrıca, bir yerel makinede yüklü olan CSQLSH kullanarak Azure Cosmos DB Cassandra API bağlayabilirsiniz. Bu, Apache Cassandra 3.1.1 ile birlikte gelir ve ortam değişkenlerini ayarlayarak kutudan çıkar. Aşağıdaki bölümler, Windows veya Linux 'ta, CSQLSH kullanarak Azure Cosmos DB ' de Cassandra API yüklemek, yapılandırmak ve kurmak için yönergeler içerir.
+
+> [!NOTE]
+> Azure Cosmos DB Cassandra API bağlantıları, CÖNSH 'in DataStax Enterprise (DSE) sürümleriyle çalışmaz. Lütfen Cassandra API bağlanırken CSQLSH 'in açık kaynaklı Apache Cassandra sürümlerini kullandığınızdan emin olun. 
 
 **Pencerelerin**
 
@@ -142,22 +233,6 @@ export SSL_VALIDATE=false
 cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl
 
 ```
-
-## <a name="cql-commands"></a>CQL komutları
-
-Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutlarını destekler.
-
-* ANAHTAR alanı oluştur (Bu komutun çoğaltma ayarları yoksayılır)
-* CREATE TABLE 
-* DIZIN oluşturma (Dizin adı belirtmeden ve tam dondurulmuş dizinler henüz desteklenmiyor)
-* FILTRELEMEYE IZIN VER
-* ALTER TABLE 
-* USE 
-* INSERT 
-* SELECT 
-* UPDATE 
-* BATCH- Yalnızca günlüğe kaydedilmemiş komutlar desteklenir 
-* DELETE
 
 CQL v4 uyumlu SDK aracılığıyla yürütülen tüm CRUD işlemleri, hata ve tüketilen istek birimleri hakkında ek bilgiler döndürür. Sağlanan aktarım hızını en verimli şekilde kullanmasını sağlamak için, DELETE ve UPDATE komutları dikkate alınması gereken kaynak yönetimi ile birlikte işlenmelidir.
 

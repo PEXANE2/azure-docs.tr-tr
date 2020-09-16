@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321727"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601373"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
 
@@ -95,7 +95,7 @@ Kötü aktörlerin ortamınıza erişim kazanmasını engellemek için kendileri
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>Şirket içi kesinti kimlik doğrulama dayanıklılığı
 
-Basitlik avantajlarının yanı sıra, Azure AD Parola karması eşitleme (PHS) ve Azure MFA, kullanıcıların SaaS uygulamalarına ve Office 365 ' de [Notpetya gibi Sife](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)nedeniyle Şirket içi kesintiler artma erişmesini sağlar. Ayrıca, Federasyonla birlikte da PHS 'yi etkinleştirmek mümkündür. Fes 'nin etkinleştirilmesi, Federasyon Hizmetleri kullanılabilir olmadığında kimlik doğrulamanın geri yüklenmesine izin verir.
+Basitlik avantajları ve sızdırılan kimlik bilgisi algılamayı etkinleştirmenin yanı sıra, Azure AD Parola karması eşitleme (PHS) ve Azure MFA, kullanıcıların SaaS uygulamalarına erişmesine ve [Notpetya gibi Sife](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)nedeniyle Şirket içi kesintiler artma içinde Microsoft 365 olanak tanır. Ayrıca, Federasyonla birlikte da PHS 'yi etkinleştirmek mümkündür. Fes 'nin etkinleştirilmesi, Federasyon Hizmetleri kullanılabilir olmadığında kimlik doğrulamanın geri yüklenmesine izin verir.
 
 Şirket içi kuruluşunuzda bir kesinti dayanıklılık stratejisi yoksa veya Azure AD ile tümleştirilmiş olmayan bir sorun varsa, Azure AD PHS 'yi dağıtmanız ve PHS içeren bir olağanüstü durum kurtarma planı tanımlamanız gerekir. Azure AD PHS 'in etkinleştirilmesi, kullanıcıların Azure AD 'de kimlik doğrulamasından geçmesini sağlar ve şirket içi Active Directory kullanılamaz hale gelmelidir.
 
@@ -249,7 +249,7 @@ Koşullu erişim, kuruluşunuzun güvenlik duruşunu iyileştirmek için gereken
 - Birden çok uygulama için uygulanabilecek küçük bir çekirdek ilke kümesine sahiptir
 - Boş özel durum gruplarını tanımlayın ve özel durum stratejisi sağlamak için bunları ilkelere ekleyin
 - MFA denetimleri olmadan [kesme camı](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) hesaplarını planlayın
-- Office 365 istemci uygulamalarında tutarlı bir deneyim sağlayın. Örneğin, takımlar, OneDrive Iş, Outlook vb.) Exchange Online ve SharePoint Online gibi hizmetler için aynı denetim kümesini uygulayarak
+- Microsoft 365 istemci uygulamaları genelinde (takımlar, OneDrive, Outlook vb.) tutarlı bir deneyim sağlayın. Exchange Online ve SharePoint Online gibi hizmetler için aynı denetim kümesini uygulayarak
 - İlkelere atama, bireyler değil, gruplar aracılığıyla uygulanmalıdır
 - İlkelerde kullanılan özel durum gruplarını, kullanıcıların güvenlik sonrası çıkış süresini sınırlandırmak için düzenli olarak gözden geçirin. Azure AD P2 sahibiyseniz, işlemi otomatikleştirmek için erişim gözden geçirmeleri kullanabilirsiniz
 
@@ -302,14 +302,14 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 
 | Kaynak | İzin |
 | :- | :- |
-| Office 365 Exchange Online | Olduğundan. AccessAsUser. All |
+| Exchange Online | Olduğundan. AccessAsUser. All |
 | | EWS. AccessAsUser. All |
 | | Mail. Read |
 | Microsoft Graph API | Mail. Read |
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örneğin:
+- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örnek:
 
 |Kaynak | İzin |
 | :- | :- |
@@ -339,7 +339,7 @@ Aşağıda açık bir işletme gereksinimi yoksa kilitlenebilen Kullanıcı ve g
 
 #### <a name="group-settings"></a>Grup ayarları
 
-**Self Servis Grup Yönetimi/kullanıcıları, güvenlik grupları/O365 grupları oluşturabilir.** Bulutta gruplar için geçerli self servis girişimi yoksa, müşteriler bu özelliği kullanmaya hazırlanana kadar devre dışı bırakma kararı verebilir.
+**Self Servis Grup Yönetimi/kullanıcıları, güvenlik grupları/Microsoft 365 grupları oluşturabilir.** Bulutta gruplar için geçerli self servis girişimi yoksa, müşteriler bu özelliği kullanmaya hazırlanana kadar devre dışı bırakma kararı verebilir.
 
 #### <a name="groups-recommended-reading"></a>Okumanız önerilen gruplar
 

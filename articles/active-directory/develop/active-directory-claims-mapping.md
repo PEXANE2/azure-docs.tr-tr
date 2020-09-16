@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068652"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601478"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -44,7 +44,7 @@ Talep eşleme ilkesi, belirli uygulamalar için verilen belirteçlerde yayılan 
 
 Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepler kümesi vardır.
 
-| Talep kümesi | Açıklama |
+| Talep kümesi | Description |
 |---|---|
 | Çekirdek talep kümesi | , İlkeden bağımsız olarak her belirteçte bulunur. Bu talepler de kısıtlı olarak değerlendirilir ve değiştirilemez. |
 | Temel talep kümesi | Belirteçleri için varsayılan olarak yayılan talepleri içerir (çekirdek talep kümesine ek olarak). Talepler eşleme ilkelerini kullanarak temel talepleri atlayabilir veya değiştirebilirsiniz. |
@@ -285,7 +285,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tablo 3: kaynak başına geçerli KIMLIK değerleri
 
-| Kaynak | ID | Açıklama |
+| Kaynak | ID | Description |
 |-----|-----|-----|
 | Kullanıcı | surname | Aile adı |
 | Kullanıcı | givenname | Verilen Ad |
@@ -301,7 +301,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | tadı| Organizasyon Adı |
 | Kullanıcı | StreetAddress | Adres |
 | Kullanıcı | PostalCode | Posta Kodu |
-| Kullanıcı | preferredlanguange | Tercih edilen dil |
+| Kullanıcı | PreferredLanguage | Tercih edilen dil |
 | Kullanıcı | onpremisesuserprincipalname | Şirket içi UPN |*
 | Kullanıcı | mailNickname | Posta takma adı |
 | Kullanıcı | extensionattribute1 | Uzantı özniteliği 1 |
@@ -321,7 +321,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | extensionattribute15 | Uzantı özniteliği 15 |
 | Kullanıcı | diğer posta | Diğer posta |
 | Kullanıcı | ülke | Ülke/Bölge |
-| Kullanıcı | city | City |
+| Kullanıcı | city | Şehir |
 | Kullanıcı | state | Durum |
 | Kullanıcı | JobTitle | İş Unvanı |
 | Kullanıcı | çalışan | Çalışan Numarası |
@@ -362,7 +362,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tablo 4: dönüştürme yöntemleri ve beklenen girişler ve çıktılar
 
-|Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Açıklama|
+|Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Description|
 |-----|-----|-----|-----|
 |Birleştir|dize1, dize2, ayırıcı|outputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: " foo@bar.com ", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|E-posta veya UPN|ayıklanan dize|ExtensionAttributes 1-15 veya Kullanıcı için bir UPN ya da e-posta adresi değeri depolayan diğer şema uzantıları gibi johndoe@contoso.com . Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: " foo@bar.com " outputClaim sonucu: "foo". Hiçbir \@ işaret yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
@@ -388,7 +388,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tablo 5: SAML NameID için veri kaynağı olarak izin verilen öznitelikler
 
-|Kaynak|ID|Açıklama|
+|Kaynak|ID|Description|
 |-----|-----|-----|
 | Kullanıcı | posta|E-posta Adresi|
 | Kullanıcı | userPrincipalName|Kullanıcı Asıl Adı|

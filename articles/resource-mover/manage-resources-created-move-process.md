@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 4ff1905eb164d004af69ce5b0df3278bf3a46884
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 6d6f56fb47bfdaadc6704e2a13ebcf0e893b8b1c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670772"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602362"
 ---
 # <a name="manage-resources-created-for-the-vm-move"></a>VM taşıma için oluşturulan kaynakları yönetme
 
@@ -24,7 +24,7 @@ VM 'Leri bölgeler arasında taşıdıktan sonra, kaynak taşıyıcısı tarafı
 
 Taşıma koleksiyonunu el ile silin ve VM taşıma için oluşturulan kaynakları Site Recovery.
 
-1. VM 'Leri taşıdığınız kaynak bölgede, kaynak grubundaki kaynakları gözden geçirin ```RegionMoveRG-<sourceregion>-<target-region>``` .
+1. Kaynak grubundaki kaynakları gözden geçirin ```ResourceMoverRG-<sourceregion>-<target-region>``` .
 2. Taşıma koleksiyonundaki VM 'nin ve diğer tüm kaynak kaynaklarının taşındığını/silindiğini kontrol edin. Bu, bunları kullanan beklemedeki kaynaklar olmamasını sağlar.
 2. Bu kaynakları silin.
 

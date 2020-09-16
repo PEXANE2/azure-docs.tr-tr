@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3fbb06355772794fbe3fab5cdf3c8622c2baf4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 7cb62d3b7ebe3ba6f4551602c7867575e74dca70
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948836"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601529"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için yönetilen cihazlar gerektirme
 
@@ -98,7 +98,7 @@ Uyumlu olarak işaretlenen bir cihaz için şunları varsayabilirsiniz:
 
 ### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>Senaryo: iOS ve Android cihazlar için cihaz kaydı gerektir
 
-Contoso, bu senaryoda, Office 365 kaynaklarına yönelik tüm mobil erişimin kayıtlı bir cihaz kullanması gerektiğini kararmıştır. Tüm kullanıcıları Azure AD kimlik bilgileriyle oturum açın ve bunlara Azure AD Premium P1 veya P2 ve Microsoft Intune içeren lisanslar atanır.
+Bu senaryoda, Contoso tüm mobil erişiminin Microsoft 365 kaynaklara kayıtlı bir cihaz kullanması gerektiğini kararmıştır. Tüm kullanıcıları Azure AD kimlik bilgileriyle oturum açın ve bunlara Azure AD Premium P1 veya P2 ve Microsoft Intune içeren lisanslar atanır.
 
 Kuruluşlar, kayıtlı bir mobil cihazın kullanımını gerektirmek için aşağıdaki adımları tamamlamalıdır.
 
@@ -108,7 +108,7 @@ Kuruluşlar, kayıtlı bir mobil cihazın kullanımını gerektirmek için aşa�
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 (Önizleme)** öğesini seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.

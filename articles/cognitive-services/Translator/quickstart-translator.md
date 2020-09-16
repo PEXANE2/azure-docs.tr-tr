@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Çevirmen, çevirmen hizmeti, çevirme metni, alfabedeki metin, dil algılama
-ms.openlocfilehash: 1cffe99389b3e3e782c53aeae8c29fbc8f55b6a0
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 65f16c9689984a493e3fed041545557688fbc279
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530684"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602260"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Hızlı başlangıç: çevirmenle çalışmaya başlama
 
@@ -102,7 +102,7 @@ Translator hizmetini REST aracılığıyla çağırırken, her istek için aşa�
 
 <table width="100%">
   <th width="20%">Üst Bilgiler</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>Kimlik doğrulama üst bilgisi</td>
     <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
@@ -120,6 +120,10 @@ Translator hizmetini REST aracılığıyla çağırırken, her istek için aşa�
     <td><em>Isteğe bağlı</em>.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. Adlı sorgu parametresini kullanarak izleme KIMLIĞINI sorgu dizesine eklerseniz, bu üstbilgiyi atlayabilirsiniz <code>ClientTraceId</code> .</td>
   </tr>
 </table> 
+
+## <a name="keys-and-endpoints"></a>Anahtarlar ve uç noktalar
+
+Bu sayfadaki örnekler basitlik için sabit kodlanmış anahtarlar ve uç noktalar kullanır. **İşiniz bittiğinde kodu koddan kaldırmayı**unutmayın ve **hiçbir zaman herkese açık bir şekilde nakletmeyin**. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
 
 ## <a name="translate-text"></a>Metin çevirme 
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: bbe813b46b41bf0e2b8bf9c6b3fe3e3e843204ed
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319756"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601257"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Tüm uygulamalarınızı Azure AD ile tümleştirmek için beş adım
 
@@ -70,7 +70,7 @@ Bulma işleminiz sırasında, BT departmanı tarafından izlenmeyen, verileriniz
 
 İş ve uygulama sahiplerini algılayan ve ilgilendiğiniz bir [poster](https://aka.ms/AppOnePager) ve [sunum](https://aka.ms/AppGuideline) dahil olmak üzere, uygulamaları Azure AD ile tümleştirme iş sürecini yönetmeye yönelik bir kılavuz yayınladık. Bu örnekleri kendi markanızla değiştirebilir ve bu işlemi tamamlamada kullandığınız gibi şirket portalı, bülteninizi veya diğer ortamınız aracılığıyla kuruluşunuzda yayımlayabilirsiniz.
 
-Active Directory Federasyon Hizmetleri (AD FS) (ADFS) kullanımını değerlendirerek başlamak iyi bir yerdir. Birçok kuruluş SaaS uygulamaları, özel Iş kolu uygulamaları ve Office 365 ve Azure AD tabanlı uygulamalar ile kimlik doğrulaması için ADFS kullanır:
+Active Directory Federasyon Hizmetleri (AD FS) (ADFS) kullanımını değerlendirerek başlamak iyi bir yerdir. Birçok kuruluş SaaS uygulamaları, özel Iş kolu uygulamaları ve Microsoft 365 ve Azure AD tabanlı uygulamalar ile kimlik doğrulaması için ADFS kullanır:
 
 ![Diyagramda, şirket içi uygulamalar, iş kolu uygulamaları, SaaS uygulamaları ve Azure AD aracılığıyla Office 365, Active Directory ve AD FS noktalı çizgilerle bağlantı kurarak.](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 

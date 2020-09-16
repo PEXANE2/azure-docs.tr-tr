@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7e394c4227be9ead491fe77457b466b1f62468
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279338"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600806"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory ile güçlü bir kimlik temeli için dört adım
 
@@ -46,7 +46,7 @@ Azure AD, yöneticilerin [Azure Portal](https://portal.azure.com/)kurumsal uygul
 Uygulamalar Azure AD galerisine eklendikten sonra, kullanıcılar bunlara atanan uygulamaları görebilir ve gerektiğinde diğer uygulamaları arayabilir ve talep edebilir. Azure AD, kullanıcıların uygulamalarına erişmesi için [çeşitli yöntemler](../manage-apps/end-user-experiences.md) sağlar:
 
 * Erişim paneli/uygulamalarım
-* Office 365 uygulama başlatıcısı
+* Microsoft 365 uygulama başlatıcısı
 * Birleştirilmiş uygulamalarda doğrudan oturum açma
 * Doğrudan oturum açma bağlantıları
 
@@ -115,7 +115,7 @@ Birincil Azure AD Connect sunucunuzun çevrimdışı olması durumunda yüksek k
 
 Azure AD 'de şirket içi dizin nesnelerinde bulut kimlik doğrulamasını etkinleştirmek için en basit ve önerilen yöntem, [Parola karması eşitlemesini](./how-to-connect-password-hash-synchronization.md) (PHS) etkinleştirmektir. Alternatif olarak, bazı kuruluşlar [doğrudan kimlik doğrulamayı](./how-to-connect-pta-quick-start.md) (PTA) etkinleştirmeyi düşünebileceğiniz bir işlem olabilir.
 
-PHS veya PTA seçeneklerinden birini tercih etmeksizin, kullanıcıların kurumsal ağınızda Windows 7 ve 8 cihazları kullanırken kullanıcı adını ve parolasını sürekli olarak girmeden buluta erişmelerini sağlamak için [sorunsuz çoklu oturum açmayı](./how-to-connect-sso.md) unutmayın. Çoklu oturum açma olmadan, kullanıcıların uygulamaya özgü parolaları hatırlamaları ve her uygulamada oturum açması gerekir. Benzer şekilde, BT personelinin Office 365, Box ve Salesforce gibi her uygulama için Kullanıcı hesapları oluşturması ve güncelleştirmesi gerekir. Kullanıcıların parolalarını hatırlamaları ve her uygulamada oturum açma süresini harcaması gerekir. Tüm kuruluş için standartlaştırılmış bir çoklu oturum açma mekanizması sağlamak, en iyi kullanıcı deneyimi, risk azaltma, rapor verme ve idare açısından önemlidir.
+PHS veya PTA seçeneklerinden birini tercih etmeksizin, kullanıcıların kurumsal ağınızda Windows 7 ve 8 cihazları kullanırken kullanıcı adını ve parolasını sürekli olarak girmeden buluta erişmelerini sağlamak için [sorunsuz çoklu oturum açmayı](./how-to-connect-sso.md) unutmayın. Çoklu oturum açma olmadan, kullanıcıların uygulamaya özgü parolaları hatırlamaları ve her uygulamada oturum açması gerekir. Benzer şekilde, BT personelinin Microsoft 365, Box ve Salesforce gibi her uygulama için Kullanıcı hesapları oluşturması ve güncelleştirmesi gerekir. Kullanıcıların parolalarını hatırlamaları ve her uygulamada oturum açma süresini harcaması gerekir. Tüm kuruluş için standartlaştırılmış bir çoklu oturum açma mekanizması sağlamak, en iyi kullanıcı deneyimi, risk azaltma, rapor verme ve idare açısından önemlidir.
 
 Zaten AD FS veya başka bir şirket içi kimlik doğrulama sağlayıcısı kullanan kuruluşlar için, kimlik sağlayıcınız olarak Azure AD 'ye geçilmesi karmaşıklığı azaltabilir ve kullanılabilirliği iyileştirebilir. Federasyonu kullanmaya yönelik özel kullanım çalışmalarınız yoksa, daha az şirket içi bir kaplama ve bulut tarafından geliştirilmiş Kullanıcı deneyimleriyle ilgili avantajların avantajlarından yararlanmak için federal kimlik doğrulamasından ve sorunsuz SSO 'LARA ya da PTA ve sorunsuz SSO 'ya geçiş yapmanızı öneririz. Daha fazla bilgi için bkz. [Azure Active Directory için Federasyondan Parola karması eşitlemesine geçiş](./plan-migrate-adfs-password-hash-sync.md).
 
@@ -156,7 +156,7 @@ Kullanıcıların uygulamalara atanması en iyi şekilde, gruplar kullanılırke
 * Dinamik grup üyeliği kullanılarak öznitelik tabanlı
 * Uygulama sahiplerine yetkilendirme
 
-Azure AD, güvenlik gruplarını ve Office 365 gruplarını kullanarak kaynaklara erişimi yönetme olanağı sağlar. Bu gruplar, üyelik isteklerini onaylayabilecek veya reddedebilen ve grup üyeliği denetimini atayan bir grup sahibi tarafından yönetilebilir. [Self servis grup yönetimi](../users-groups-roles/groups-self-service-management.md)olarak bilindiğinde, bu özellik, yönetim rolü atanmamış Grup sahiplerinin, isteklerini işlemek üzere yöneticilere güvenmeksizin grupları oluşturup yönetmesine izin vererek zamandan tasarruf sağlar.
+Azure AD, güvenlik grupları ve Microsoft 365 grupları kullanarak kaynaklara erişimi yönetme olanağı sağlar. Bu gruplar, üyelik isteklerini onaylayabilecek veya reddedebilen ve grup üyeliği denetimini atayan bir grup sahibi tarafından yönetilebilir. [Self servis grup yönetimi](../users-groups-roles/groups-self-service-management.md)olarak bilindiğinde, bu özellik, yönetim rolü atanmamış Grup sahiplerinin, isteklerini işlemek üzere yöneticilere güvenmeksizin grupları oluşturup yönetmesine izin vererek zamandan tasarruf sağlar.
 
 ## <a name="step-4---operationalize-your-insights"></a>4. adım-öngörülerinizi çalıştırma
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672653"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601394"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Güvenli, Azure tarafından yönetilen iş istasyonlarını anlayın
 
@@ -64,7 +64,7 @@ Tüm kullanıcılar ve işleçler, güvenli bir iş istasyonu kullanırken fayda
 * SWIFT ödeme terminali gibi son derece hassas iş istasyonu
 * İş istasyonu ticari gizli dizileri işliyor
 
-Riski azaltmak için, bu hesapları kullanan ayrıcalıklı iş istasyonları için yükseltilmiş güvenlik denetimleri uygulamalısınız. Daha fazla bilgi için bkz. [Azure Active Directory özelliği dağıtım kılavuzu](../fundamentals/active-directory-deployment-checklist-p2.md), [Office 365 yol haritası](https://aka.ms/o365secroadmap)ve [ayrıcalıklı erişim yol haritasını güvenlik](https://aka.ms/sparoadmap).
+Riski azaltmak için, bu hesapları kullanan ayrıcalıklı iş istasyonları için yükseltilmiş güvenlik denetimleri uygulamalısınız. Daha fazla bilgi için bkz. [Azure Active Directory özelliği dağıtım kılavuzu](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 yol haritası](https://aka.ms/o365secroadmap)ve [ayrıcalıklı erişim yol haritasını güvenlik](https://aka.ms/sparoadmap).
 
 ## <a name="why-use-dedicated-workstations"></a>Adanmış iş istasyonlarını neden kullanmalısınız?
 
@@ -73,7 +73,7 @@ Mevcut bir cihaza güvenlik eklemek mümkün olsa da, güvenli bir temel ile ba�
 E-posta ve Web 'e göz atma aracılığıyla büyüyen çok sayıda saldırı vektörü, bir cihazın güvenilir olmasını zorlaştırır. Bu kılavuzda, adanmış bir iş istasyonunun standart üretkenlik, göz atma ve e-posta ile yalıtılmış olduğu varsayılır. Bir cihazdan üretkenlik, Web 'e göz atma ve e-postaların kaldırılması üretkenlik üzerinde olumsuz bir etkiye sahip olabilir. Bununla birlikte, bu koruma genellikle iş görevlerinin açıkça gerektirmeyen senaryolar için kabul edilebilir ve güvenlik olayının riski yüksek olur.
 
 > [!NOTE]
-> Burada Web 'e göz atma, yüksek riskli bir etkinlik olabilen rastgele Web sitelerine genel erişime başvurur. Bu tür göz atma, Azure, Office 365, diğer bulut sağlayıcıları ve SaaS uygulamaları gibi hizmetler için çok sayıda iyi bilinen Yönetim Web sitesine erişmek üzere bir Web tarayıcısı kullanmaktan oldukça farklıdır.
+> Burada Web 'e göz atma, yüksek riskli bir etkinlik olabilen rastgele Web sitelerine genel erişime başvurur. Bu tür göz atma, Azure, Microsoft 365, diğer bulut sağlayıcıları ve SaaS uygulamaları gibi hizmetlerde çok sayıda iyi bilinen Yönetim Web sitesine erişmek için bir Web tarayıcısı kullanmaktan oldukça farklıdır.
 
 Kapsama stratejileri, bir saldırganın hassas varlıklara erişim sağlamasını yapan denetimlerin sayısını ve türünü artırarak güvenliği güçlendir. Bu makalede açıklanan model katmanlı ayrıcalık tasarımını kullanır ve yönetim ayrıcalıklarını belirli cihazlarla kısıtlar.
 

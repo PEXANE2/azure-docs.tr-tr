@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049273"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601597"
 ---
 # <a name="conditional-access-block-access"></a>Koşullu erişim: erişimi engelle
 
@@ -40,7 +40,7 @@ Koşullu erişim ilkeleri güçlü araçlardır ve ilkenizde aşağıdaki hesapl
 
 Aşağıdaki adımlar, kullanıcılar güvenilir bir ağda değilse [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) hariç tüm uygulamalara erişimi engellemek Için koşullu erişim ilkeleri oluşturmanıza yardımcı olur. Bu ilkeler, yöneticilerin mevcut kullanıcılar üzerinde sahip olacağı etkiyi belirleyebilmeleri için, [yalnızca rapor modunda](howto-conditional-access-insights-reporting.md) başlatılır. Yöneticiler ilkelerin sizin için uygun olduğundan emin olduğunda, bunları **Açık**olarak değiştirebilir.
 
-İlk ilke, güvenilir bir konumda değilse Office 365 uygulamaları hariç tüm uygulamalara erişimi engeller.
+İlk ilke, güvenilir bir konumda değilse Microsoft 365 uygulamalar haricinde tüm uygulamalara erişimi engeller.
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
@@ -49,7 +49,7 @@ Aşağıdaki adımlar, kullanıcılar güvenilir bir ağda değilse [Office 365]
 1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemler**altında aşağıdaki seçenekleri belirleyin:
    1. **Ekle**' nin altında **tüm bulut uygulamaları**' nı seçin.
    1. **Dışla**altında **Office 365 (Önizleme)** öğesini seçin, **Seç**' i seçin ve **bitti**' yi seçin.
@@ -58,20 +58,20 @@ Aşağıdaki adımlar, kullanıcılar güvenilir bir ağda değilse [Office 365]
       1. **Yapılandır** 'ı **Evet** olarak ayarla
       1. **Dahil et**altında **herhangi bir konum**seçin.
       1. **Hariç tut**altında **tüm güvenilen konumlar**' ı seçin.
-      1. **Bitti**'yi seçin.
+      1. **Bitti** seçeneğini belirleyin.
    1. **İstemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi ve **bitti ' yi seçin.**
 1. **Erişim denetimleri**  >  **izni**altında, **erişimi engelle**' yi seçin ve ardından **Seç**' i seçin.
 1. Ayarlarınızı onaylayın ve **ilkeyi** **yalnızca rapor**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 
-Office 365 kullanıcıları için Multi-Factor Authentication veya uyumlu bir cihaz istemek üzere aşağıda ikinci bir ilke oluşturulur.
+Microsoft 365 kullanıcılarına çok faktörlü kimlik doğrulaması veya uyumlu bir cihaz istemek için aşağıda ikinci bir ilke oluşturulur.
 
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemler**  >  **Include**altında, **Uygulama Seç**' i seçin, **Office 365 (Önizleme)** seçeneğini belirleyin ve **Seç**' i ve sonra **Tamam**' ı seçin.
 1. **Erişim denetimleri**  >  **izni**altında, **erişim ver**' i seçin.
    1. **Multi-Factor Authentication gerektir** ' i seçin ve **cihazın uyumlu olarak işaretlenmesini gerektir** ' **i seçin.**

@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231172"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600509"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory portalında riskli olarak işaretlenmiş kullanıcıları düzeltme
 
@@ -42,9 +42,9 @@ Risk işaretli kullanıcılar raporu için, her kullanıcı için aşağıdaki e
 
 Daha fazla bilgi için bkz. [risk için Işaretlenen kullanıcılar güvenlik raporu](../identity-protection/overview-identity-protection.md).
 
-### <a name="azure-ad-subscription-for-office-365-customers"></a>Office 365 müşterileri için Azure AD aboneliği
+### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Microsoft 365 müşterileri için Azure AD aboneliği
 
-**Azure yönetim merkezine**erişmek için Office 365 kimlik bilgilerinizi de kullanabilirsiniz. Azure AD’ye erişiminizi etkinleştirdikten sonra, Azure AD portalına yeniden yönlendirilirsiniz. Temel abonelik düzeyinde, raporlarda sağlanan ayrıntı miktarı sınırlıdır. Ek veriler ve analizler, Azure Premium abonelerine sağlanır.
+**Azure yönetim merkezine**erişmek için Microsoft 365 kimlik bilgilerinizi de kullanabilirsiniz. Azure AD’ye erişiminizi etkinleştirdikten sonra, Azure AD portalına yeniden yönlendirilirsiniz. Temel abonelik düzeyinde, raporlarda sağlanan ayrıntı miktarı sınırlıdır. Ek veriler ve analizler, Azure Premium abonelerine sağlanır.
 
 Microsoft 365 Yönetim merkezinde **risk raporları için Işaretlenen kullanıcılara** erişmek için:
 
@@ -79,7 +79,7 @@ Etkilenen hesapları düzeltmeye ve ortamınızın güvenliğini sağlamaya yard
 
     h. Yöneticinin gözden geçirmesi için bir denetim günlüğü oluşturun.
 
-4. Office 365 kiracınızı ve diğer BT altyapısını inceleyin; bunun için tüm kiracı ayarlarını, kullanıcı hesaplarını ve olası değişiklikler için kullanıcı başına yapılandırma ayarlarını gözden geçirin. Kalıcılık yöntemi göstergelerini, ayrıca yetkisiz erişim sağlayan birinin VPN kimlik bilgilerini almak veya diğer kurumsal kaynaklara erişmek için ilk tutunma noktasına işaret edebilecek göstergeleri arayın. 
+4. Microsoft 365 kiracınızı ve diğer BT altyapınızı araştırın. Bu, tüm kiracı ayarlarını, Kullanıcı hesaplarını ve olası değişiklikler için Kullanıcı başına yapılandırma ayarlarını gözden geçirin. Kalıcılık yöntemi göstergelerini, ayrıca yetkisiz erişim sağlayan birinin VPN kimlik bilgilerini almak veya diğer kurumsal kaynaklara erişmek için ilk tutunma noktasına işaret edebilecek göstergeleri arayın. 
 
 5.  Araştırmanızın bir parçası olarak, hukuk zorlaması dahil olmak üzere devlet yetkililerine bildirimde bulundurmanız gerekip gerekmediğini göz önünde bulundurun.
 

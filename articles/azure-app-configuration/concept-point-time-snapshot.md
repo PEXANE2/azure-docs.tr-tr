@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: b1d559d82cb22d8a787785c6d8c6a5101d89793a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586639"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601087"
 ---
 # <a name="point-in-time-snapshot"></a>Belirli bir noktanın anlık görüntüsü
 
@@ -23,31 +23,29 @@ Azure Uygulama yapılandırması, anahtar değerlerinde yapılan değişiklikler
 
 Azure portal veya CLı 'yi, geçmiş anahtar değerlerini almak için kullanabilirsiniz. Azure CLı 'de, `az appconfig revision list` gerekli değerleri almak için uygun parametreler ekleyerek öğesini kullanın.  Mağaza adını ( `--name <app-config-store-name>` ) ya da bir bağlantı dizesini () kullanarak Azure uygulama yapılandırma örneğini belirtin `--connection-string <your-connection-string>` . Zaman içinde belirli bir nokta ( `--datetime` ) belirterek ve döndürülecek en fazla öğe sayısını () belirterek çıktıyı kısıtlayın `--top` .
 
-Azure CLı yerel olarak yüklü değilse, isteğe bağlı olarak Azure Cloud Shell kullanabilirsiniz.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Azure CLı yerel olarak yüklü değilse, isteğe bağlı olarak [Azure Cloud Shell](/azure/cloud-shell/overview)kullanabilirsiniz.
 
 Anahtar değerinizdeki tüm kayıtlı değişiklikleri alın.
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name>.
 ```
 
 Anahtar ve Etiketler için kaydedilen tüm değişiklikleri alın `environment` `test` `prod` .
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment --label test,prod
 ```
 
 Hiyerarşik anahtar alanındaki tüm kayıtlı değişiklikleri alın `environment:prod` .
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment:prod:* 
 ```
 
 Belirli bir noktadaki anahtar için kaydedilen tüm değişiklikleri alın `color` .
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --connection-string <your-app-config-connection-string> --key color --datetime "2019-05-01T11:24:12Z" 
 ```
 

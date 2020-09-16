@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e8aa5515bf8ae8e842a98656167f4198ac652981
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642393"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603348"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Çoklu oturum açma dağıtımını planlama
 
@@ -28,7 +28,7 @@ ms.locfileid: "88642393"
 
 Çoklu oturum açma (SSO), kullanıcılar Azure Active Directory (Azure AD) içinde uygulamalarda oturum açtığında güvenlik ve kolaylık sağlar. 
 
-Birçok kuruluş, son kullanıcı üretkenliği için Office 365, Box ve Salesforce gibi hizmet olarak yazılım (SaaS) uygulamalarını kullanır. Geçmişte, BT personeli her bir SaaS uygulamasında kullanıcı hesaplarını tek tek oluşturmak ve güncelleştirmek için gereklidir ve kullanıcıların her biri için bir parolayı anımsamasını gerekiyordu.
+Birçok kuruluş, son kullanıcı üretkenliği için Microsoft 365, Box ve Salesforce gibi hizmet olarak yazılım (SaaS) uygulamalarını kullanır. Geçmişte, BT personeli her bir SaaS uygulamasında kullanıcı hesaplarını tek tek oluşturmak ve güncelleştirmek için gereklidir ve kullanıcıların her biri için bir parolayı anımsamasını gerekiyordu.
 
 Azure Marketi, önceden tümleştirilmiş SSO bağlantıları olan 3000 uygulamasına sahiptir ve bunları kiracınızda tümleştirmeyi kolaylaştırır.
 
@@ -118,7 +118,7 @@ Erişim incelemelerini ayarlarken planlama için plan yapılacak bazı önemli k
 
 Azure AD, [Teknik ve iş öngörüleri içeren raporlar](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)sağlar. 
 
-Güvenlik ve etkinlik raporlarının her ikisi de mevcuttur. Güvenlik raporları, risk için işaretlenen kullanıcıları ve riskli oturum açma işlemlerini gösterir. etkinlik raporları, oturum açma etkinliğini ayrıntılandıran ve tüm oturum açma işlemleri için denetim izleri sağlayan kuruluşunuzdaki kullanıcıların davranışını anlamanıza yardımcı olur. Riskleri yönetmek, üretkenliği artırmak ve uyumluluğu izlemek için raporları kullanabilirsiniz.
+Güvenlik ve etkinlik raporlarının her ikisi de mevcuttur. Güvenlik raporları, risk için işaretlenen kullanıcıları ve riskli oturum açma işlemlerini gösterir. Etkinlik raporları, oturum açma etkinliğini ayrıntılandıran ve tüm oturum açma işlemleri için denetim izleri sağlayan kuruluşunuzdaki kullanıcıların davranışını anlamanıza yardımcı olur. Riskleri yönetmek, üretkenliği artırmak ve uyumluluğu izlemek için raporları kullanabilirsiniz.
 
 | Rapor türü | Erişim gözden geçirmesi | Güvenlik raporları | Oturum açma raporu |
 |-------------|---------------|------------------|----------------|
@@ -285,7 +285,7 @@ Aşağıdaki bağlantılar sorun giderme senaryolarını sunar. Destek personeli
 
 - [Özel portaldan oturum açma sorunları](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
 
-- [Uygulamalarımın oturum açtığı sorunlar](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [Uygulamalarım'dan oturum açma sorunları](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
 
 - [Uygulama oturum açma sayfasında hata](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
 

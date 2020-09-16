@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321676"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601324"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory kimlik ve erişim yönetimi işlemleri başvuru kılavuzu
 
@@ -35,8 +35,8 @@ Azure Active Directory Yönetimi, önemli işlem görevlerinin ve bir dağıtım
 | :- | :- |
 | Azure abonelikleri oluşturma işlemini tanımlama | Kuruluşa göre farklılık gösterir |
 | Kimlerin Enterprise Mobility + Security Lisans aldığından karar verme | IAM Işlemler ekibi |
-| Office 365 lisanslarını kimin alan olduğuna karar verme | Üretkenlik ekibi |
-| Diğer lisansları kimin almasını istediğinize karar verin, örneğin, Dynamics, VSO | Uygulama sahibi |
+| Kimlerin Microsoft 365 lisans aldığından karar verme | Üretkenlik ekibi |
+| Dynamics, Visual Studio Codespaces gibi başka lisanslar kimin kime alan hakkında karar verme | Uygulama sahibi |
 | Lisans atama | IAM Işlemler ekibi |
 | Lisans atama hatalarını giderin ve düzeltin | IAM Işlemler ekibi |
 | Azure AD 'de uygulamalara kimlik sağlama | IAM Işlemler ekibi |
@@ -140,7 +140,7 @@ Aşırı karmaşık kurallar kullanıyorsanız karmaşıklık için nedenleri ar
 
 Azure Active Directory, Microsoft bulut hizmetleri için [grup tabanlı lisanslama](./active-directory-licensing-whatis-azure-portal.md) aracılığıyla lisansların yönetimini kolaylaştırır. Bu şekilde, ıAM grup altyapısını ve bu grupların kurumlardaki uygun takımlara Temsilcili olarak yönetilmesini sağlar. Azure AD 'de grupların üyeliğini ayarlamak için çeşitli yollar vardır; örneğin:
 
-- Şirket **içi gruplardan eşitlendiğinde** şirket içi dizinlerden, Office 365 ' de lisans atamak üzere genişletilebilen Grup Yönetimi işlemlerine sahip kuruluşlar için uygun olabilecek bir işlem olabilir.
+- Şirket **içi dizinlerden eşitlenmiş** , şirket içi dizinlerden gelebilir ve bu, Microsoft 365 lisans atamak üzere genişletilebilen Grup Yönetimi işlemlerine sahip kuruluşlara iyi bir uyum sağlayabilir.
 
 - **Öznitelik tabanlı/dinamik** gruplar, Kullanıcı özniteliklerine dayalı bir ifadeye göre bulutta oluşturulabilir, örneğin, departman "Sales" değerine eşittir. Azure AD, grup üyelerini korur, bu, tanımlanan ifadeyle tutarlı kalmasını sağlar. Lisans ataması için bu tür bir grup kullanılması, dizinde yüksek veri kalitesi olan kuruluşlara uygun olan öznitelik tabanlı bir lisans atamasını mümkün hale getiriyor.
 
@@ -188,7 +188,7 @@ Kuruluşunuzdaki değişikliklerin hacminin anlaşılması ve tahmin edilebilir 
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect için önerilen okuma sorunlarını giderme
 
-- [Iddüzeltilme aracını kullanarak Dizin özniteliklerini Office 365 ile eşitleme için hazırlama-Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [Iddüzeltmesini aracını kullanarak Microsoft 365 ile eşitleme için Dizin özniteliklerini hazırlama](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect: eşitleme sırasında oluşan sorunları giderme](../hybrid/tshoot-connect-sync-errors.md)
 
 ## <a name="summary"></a>Özet

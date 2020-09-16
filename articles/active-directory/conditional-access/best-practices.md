@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 161b02ec962df5c5e1c8dee7e124ef78b3ca4db3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948462"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601988"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 'de koşullu erişim için en iyi yöntemler
 
@@ -97,13 +97,13 @@ Her oturum açma için, Azure Active Directory tüm ilkeleri değerlendirir ve k
 
 Evet, Exchange ActiveSync 'i koşullu erişim ilkesinde kullanabilirsiniz.
 
-SharePoint Online ve Exchange Online gibi bazı bulut uygulamaları da eski kimlik doğrulama protokollerini destekler. Bir istemci uygulaması bir bulut uygulamasına erişmek için eski bir kimlik doğrulama protokolü kullanabilir, Azure AD bu erişim denemesinde koşullu erişim ilkesini zorunlu kılamaz. Bir istemci uygulamasının ilkelerin uygulanmasını atlamasını engellemek için, etkilenen bulut uygulamalarında yalnızca modern kimlik doğrulamayı etkinleştirip etkinleştiremeyeceğinizi denetlemeniz gerekir.
+SharePoint ve Exchange Online gibi bazı bulut uygulamaları da eski kimlik doğrulama protokollerini destekler. Bir istemci uygulaması bir bulut uygulamasına erişmek için eski bir kimlik doğrulama protokolü kullanabilir, Azure AD bu erişim denemesinde koşullu erişim ilkesini zorunlu kılamaz. Bir istemci uygulamasının ilkelerin uygulanmasını atlamasını engellemek için, etkilenen bulut uygulamalarında yalnızca modern kimlik doğrulamayı etkinleştirip etkinleştiremeyeceğinizi denetlemeniz gerekir.
 
-### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Office 365 uygulamalarıyla koşullu erişimi nasıl yapılandırmanız gerekir?
+### <a name="how-should-you-configure-conditional-access-with-microsoft-365-apps"></a>Microsoft 365 uygulamalarla koşullu erişimi nasıl yapılandırmanız gerekir?
 
-Office 365 uygulamaları birbirine bağlı olduğundan, ilke oluştururken yaygın olarak kullanılan uygulamaların birlikte atanmasını öneririz.
+Microsoft 365 uygulamalar birbirine bağlı olduğundan, ilke oluştururken yaygın olarak kullanılan uygulamaların birlikte atanmasını öneririz.
 
-Yaygın bağlantılı uygulamalar Microsoft Flow, Microsoft Planner, Microsoft ekipleri, Office 365 Exchange Online, Office 365 SharePoint Online ve Office 365 Yammer içerir.
+Yaygın bağlantılı uygulamalar Microsoft Flow, Microsoft Planner, Microsoft ekipleri, Exchange Online, SharePoint ve Yammer ' ı kapsar.
 
 Erişim, bir oturumun veya görevin başlangıcında denetleniyorsa, çok faktörlü kimlik doğrulaması gibi kullanıcı etkileşimi gerektiren ilkeler için önemlidir. Aksi takdirde, kullanıcılar bir uygulama içindeki bazı görevleri tamamlayamaz. Örneğin, yönetilmeyen cihazlarda SharePoint 'e erişmek için çok faktörlü kimlik doğrulamasının olması, ancak e-postaya erişmesi gerekiyorsa, e-postasında çalışan kullanıcılar, bir iletiye SharePoint dosyaları iliştiremez. Makalede, [koşullu erişim Azure Active Directory hizmet bağımlılıkları nelerdir?](service-dependencies.md)makalesinde daha fazla bilgi bulunabilir.
 

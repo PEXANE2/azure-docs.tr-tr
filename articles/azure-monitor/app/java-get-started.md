@@ -6,16 +6,20 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: 464bf650cbcaa99e947a21f5a87a5872f7b11178
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326928"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602474"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Hızlı başlangıç: Java Web projesinde Application Insights ile çalışmaya başlama
 
-Bu hızlı başlangıçta, isteği otomatik olarak işaretlemek, bağımlılıkları izlemek ve performans sayaçlarını toplamak, performans sorunlarını ve özel durumları tanılamak ve uygulamanızdaki kullanıcıların neler yaptığını izlemek için kod yazmak üzere Application Insights kullanırsınız.
+
+> [!IMPORTANT]
+> Java uygulamalarını izlemek için önerilen yaklaşım, kodu değiştirmeden otomatik izleme kullanmaktır. Lütfen [Application Insights Java 3,0 Aracısı](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)için yönergeleri izleyin.
+
+Bu hızlı başlangıçta, isteği işaretlemek, bağımlılıkları izlemek ve performans sayaçlarını toplamak, performans sorunlarını ve özel durumları tanılamak ve uygulamanızdaki kullanıcıların neler yaptığını izlemek için kod yazmak üzere Application Insights SDK 'sını kullanırsınız.
 
 Application Insights, web geliştiricileri için canlı uygulamanızın performansını ve kullanımını anlamanıza yardımcı olan genişletilebilir bir analiz hizmetidir. Application Insights; Linux, Unix veya Windows üzerinde çalışan Java uygulamalarını destekler.
 
@@ -26,7 +30,7 @@ Application Insights, web geliştiricileri için canlı uygulamanızın performa
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Application Insights izleme anahtarı edinme
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Azure portalındabir Application Insights kaynağı oluşturun. Uygulama türünü Java web uygulaması olarak ayarlayın.
 
 3. Yeni kaynağın izleme anahtarını bulun. Bu anahtarı hemen kod projenize yapıştırmalısınız.
@@ -77,9 +81,9 @@ Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yeniley
 
 ### <a name="questions"></a>Sorular
 * *Ve bileşenleri arasındaki ilişki nedir `-web-auto` `-web` `-core` ?*
-  * `applicationinsights-web-auto`, çalışma zamanında Application Insights servlet filtresini otomatik olarak kaydederek HTTP servlet istek sayısını ve yanıt sürelerini izleyen ölçümleri sağlar.
-  * `applicationinsights-web`Ayrıca, HTTP servlet istek sayısını ve yanıt sürelerini izleyen ölçümleri de verir, ancak uygulamanızda Application Insights servlet filtresi 'nin el ile kaydedilmesini gerektirir.
-  * `applicationinsights-core`, örneğin, uygulamanız servlet tabanlı değilse yalnızca tam API 'yi sağlar.
+  * `applicationinsights-web-auto` , çalışma zamanında Application Insights servlet filtresini otomatik olarak kaydederek HTTP servlet istek sayısını ve yanıt sürelerini izleyen ölçümleri sağlar.
+  * `applicationinsights-web` Ayrıca, HTTP servlet istek sayısını ve yanıt sürelerini izleyen ölçümleri de verir, ancak uygulamanızda Application Insights servlet filtresi 'nin el ile kaydedilmesini gerektirir.
+  * `applicationinsights-core` , örneğin, uygulamanız servlet tabanlı değilse yalnızca tam API 'yi sağlar.
   
 * *SDK’yı en son sürüme nasıl güncelleştirmeliyim?*
   * Gradle veya Maven kullanıyorsanız...
@@ -193,22 +197,10 @@ Artık uygulamanızı sunucuya yayımlayın, herkesin kullanmasını sağlayın 
 
     (Bu bileşen, performans sayaçlarını etkinleştirir.)
 
-## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config (Spring Boot)
+## <a name="azure-app-service-aks-vms-config"></a>Azure App Service, AKS, VM yapılandırması
 
-Windows üzerinde çalışan Spring Boot uygulamaları, Azure Uygulama Hizmetleri 'nde çalışması için ek yapılandırma gerektirir. **web.config** değiştirin ve aşağıdaki yapılandırmayı ekleyin:
+Azure Kaynak sağlayıcılarının hiçbirinde çalışan uygulamalarınızı izlemek için en iyi ve en kolay yaklaşım, [Java 3,0 Aracısı](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)aracılığıyla Application Insights otomatik izleme kullanmaktır.
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <system.webServer>
-        <handlers>
-            <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
-        </handlers>
-        <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar &quot;%HOME%\site\wwwroot\AzureWebAppExample-0.0.1-SNAPSHOT.jar&quot;">
-        </httpPlatform>
-    </system.webServer>
-</configuration>
-```
 
 ## <a name="exceptions-and-request-failures"></a>Özel durumlar ve istek hataları
 İşlenmemiş özel durumlar ve istek arızaları Application Insights Web filtresi tarafından otomatik olarak toplanır.
@@ -259,7 +251,7 @@ Toplanacak ek performans sayaçları belirtebilirsiniz.
 * `displayName` – Application Insights portalında görüntülenen ad.
 * `objectName` – JMX nesne adı.
 * `attribute` – Getirilecek JMX nesne adının özniteliği
-* `type`(isteğe bağlı)-JMX nesnesinin özniteliğinin türü:
+* `type` (isteğe bağlı)-JMX nesnesinin özniteliğinin türü:
   * Varsayılan: int veya long gibi basit bir tür.
   * `composite`: performans sayacı verileri 'Attribute.Data' biçimindedir
   * `tabular`: performans sayacı verileri tablo satırı biçimindedir
@@ -309,7 +301,7 @@ Kullanıma hazır ve düzgün yanıt verdiğini denetlemek için Application Ins
 * [Unix Performans sayaçlarını izleme](java-collectd.md)
 * Sayfa yükleme sürelerini, AJAX çağrılarını ve tarayıcı özel durumlarını izlemek için [web sayfalarınıza izleme ekleyin](javascript.md).
 * Tarayıcıda veya sunucuda kullanımı izlemek için [özel telemetri](./api-custom-events-metrics.md) yazın.
-* Uygulamanızdan telemetri üzerinde güçlü sorgular için [analiz](../log-query/log-query-overview.md) kullanın
+* Uygulamanızdan telemetri üzerinde güçlü sorgular için  [analiz](../log-query/log-query-overview.md) kullanın
 * Daha fazla bilgi için bkz. [Java geliştiricileri için Azure](/java/azure).
 
 <!--Link references-->

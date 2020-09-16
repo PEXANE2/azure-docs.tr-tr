@@ -3,12 +3,12 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67111ecb215f4976dd8d3bbe0b901e68c3ef10ec
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564075"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602396"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -48,13 +48,13 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 [Azure yay](../../azure-arc/index.yml):
 
-- Karma sunucuları ölçekte yönetme- [sunucular Için Azure yayı (Önizleme)](../../azure-arc/servers/overview.md):
-  - Azure 'daki [Windows Server veya Linux makinelerini](../../azure-arc/servers/onboard-portal.md) , Azure 'daki abonelik ve/veya kaynak grupları için temsilci olarak bağlayın
+- Karma sunucuları ölçekte yönetme- [Azure Arc etkin sunucular (Önizleme)](../../azure-arc/servers/overview.md):
+  - Azure [dışındaki Windows Server veya Linux makinelerini](../../azure-arc/servers/onboard-portal.md) , Azure 'daki Temsilcili aboneliklere ve/veya kaynak gruplarına bağlı olarak yönetin
   - Azure Ilkesi ve etiketleme gibi Azure yapılarını kullanarak bağlı makineleri yönetme
   - Müşterilerin karma ortamları arasında aynı ilke kümesinin uygulandığından emin olun
   - Müşterilerin karma ortamları arasında uyumluluğu izlemek için Azure Güvenlik Merkezi 'ni kullanma
 - Karma Kubernetes kümelerini ölçekte yönetme- [Azure Arc etkin Kubernetes (Önizleme)](../../azure-arc/kubernetes/overview.md):
-  - Azure 'da [bir Kubernetes kümesini Azure 'A bağlamak](../../azure-arc/kubernetes/connect-cluster.md) için Azure 'daki abonelik ve/veya kaynak gruplarına bağlama
+  - Azure 'da Temsilcili aboneliklere ve/veya kaynak gruplarına [bağlı Kubernetes kümelerini yönetme](../../azure-arc/kubernetes/connect-cluster.md)
   - Bağlı kümeler için [Gilar kullanma](../../azure-arc/kubernetes/use-gitops-connected-cluster.md)
   - Bağlı kümeler arasında ilkeleri zorunlu kıl
 

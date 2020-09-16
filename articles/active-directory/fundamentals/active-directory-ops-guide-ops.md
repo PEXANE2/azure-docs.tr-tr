@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321965"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601325"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory genel işlemler Kılavuzu başvurusu
 
@@ -125,9 +125,9 @@ Kuruluşunuzda, kimlik güvenli puandaki değişiklikleri izlemek için şu anda
 
 ### <a name="notifications"></a>Bildirimler
 
-Microsoft, hizmette çeşitli değişiklikleri, gereken yapılandırma güncelleştirmelerini ve yönetici müdahalesini gerektiren hataları bilgilendirmek için yöneticilere e-posta iletişimleri gönderir. Müşterilerin bildirim e-posta adreslerini, bildirimlerin tüm bildirimleri kabul edebilen ve üzerinde işlem yapacak uygun takım üyelerine gönderilmesi önemlidir. [Office 365 Ileti merkezine](/office365/admin/manage/message-center) birden çok alıcı eklemenizi ve bu bildirimlerin (Azure AD Connect Health bildirimleri dahil) bir dağıtım listesine veya paylaşılan posta kutusuna gönderilmesini istemeniz önerilir. Yalnızca bir e-posta adresi olan bir genel yönetici hesabınız varsa, en az iki e-posta özellikli hesabı yapılandırmayı unutmayın.
+Microsoft, hizmette çeşitli değişiklikleri, gereken yapılandırma güncelleştirmelerini ve yönetici müdahalesini gerektiren hataları bilgilendirmek için yöneticilere e-posta iletişimleri gönderir. Müşterilerin bildirim e-posta adreslerini, bildirimlerin tüm bildirimleri kabul edebilen ve üzerinde işlem yapacak uygun takım üyelerine gönderilmesi önemlidir. [Ileti merkezine](/office365/admin/manage/message-center) birden çok alıcı eklemenizi ve bu bildirimlerin (Azure AD Connect Health bildirimleri dahil) bir dağıtım listesine veya paylaşılan posta kutusuna gönderilmesini istemeniz önerilir. Yalnızca bir e-posta adresi olan bir genel yönetici hesabınız varsa, en az iki e-posta özellikli hesabı yapılandırmayı unutmayın.
 
-Azure AD tarafından kullanılan iki "Kimden" adresi vardır: <o365mc@email2.microsoft.com> Office 365 Ileti merkezi bildirimleri gönderen ve ile <azure-noreply@microsoft.com> ilgili bildirimleri gönderen:
+Azure AD tarafından kullanılan iki "Kimden" adresi vardır: <o365mc@email2.microsoft.com> Ileti merkezi bildirimleri gönderen ve ile <azure-noreply@microsoft.com> ilgili bildirimleri gönderen:
 
 - [Azure AD erişim Incelemeleri](../governance/access-reviews-overview.md)
 - [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
@@ -141,14 +141,14 @@ Gönderilen bildirimlerin türünü ve bunların nerede kontrol edildiği hakkı
 | Bildirim kaynağı | Ne gönderilir | Denetlenecek yer |
 |:-|:-|:-|
 | Teknik iletişim | Eşitleme hataları | Azure portal-Özellikler dikey penceresi |
-| Office 365 İleti Merkezi | Kimlik hizmetleri ve O365 arka uç hizmetleri hakkında olay ve performans bildirimleri | Office portalı |
+| İleti Merkezi | Kimlik hizmetleri ve arka uç Hizmetleri Microsoft 365 olay ve düşme bildirimleri | Office portalı |
 | Kimlik koruması Haftalık Özet | Kimlik koruması Özeti | Azure AD Kimlik Koruması dikey pencere |
 | Azure AD Connect Health | Uyarı bildirimleri | Azure portal-Azure AD Connect Health dikey penceresi |
 | Kurumsal uygulama bildirimleri | Sertifikaların süre sonu ve sağlama hataları olduğunda bildirimler | Azure portal-kurumsal uygulama dikey penceresi (her uygulamanın kendi e-posta adresi ayarı vardır) |
 
 #### <a name="notifications-recommended-reading"></a>Okuma için önerilen bildirimler
 
-- [Kuruluşunuzun adresini, teknik kişinizi ve daha fazlasını değiştirin-Office 365](/office365/admin/manage/change-address-contact-and-more)
+- [Kuruluşunuzun adresini, teknik ilgili kişisini ve daha fazlasını değiştirin](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>İşletimsel yüzey alanı
 
