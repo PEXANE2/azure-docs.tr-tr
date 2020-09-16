@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543933"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705631"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD uygulama galerisinden bir OpenID/OAuth uygulaması yapılandırma
 
@@ -76,13 +76,13 @@ Azure AD, varsayılan olarak çok kiracılı uygulamalar yükseltir. Bunlar kuru
 ## <a name="consent-framework"></a>Onay çerçevesi
 
 Azure AD onay çerçevesini, çok kiracılı web ve yerel istemci uygulamaları geliştirmek için kullanabilirsiniz. Bu uygulamalar, bir Azure AD kiracısından Kullanıcı hesaplarına, uygulamanın kaydedildiği bilgisayardan farklı olarak oturum açma izni verir. Ayrıca, şunlar gibi Web API 'Lerine erişim de gerekebilir:
-- Office 365 ' deki Azure AD, Intune ve hizmetlere erişmek için Microsoft Graph API 'SI.
+- Microsoft 365 Azure AD, Intune ve hizmetlere erişmek için Microsoft Graph API 'SI.
 - Diğer Microsoft Hizmetleri API 'Leri.
 - Kendi Web API 'leriniz.
 
 Çerçeve, bir kullanıcıyı veya bir yöneticiyi temel alarak, dizinde kaydedilmesini isteyen bir uygulamaya onay verir. Kayıt, dizin verilerine erişmeyi gerektirebilir. Onay verildikten sonra istemci uygulaması, Microsoft Graph API 'sini Kullanıcı adına çağırabilir ve gerekli bilgileri kullanabilir.
 
-[Microsoft Graph API 'Si](https://developer.microsoft.com/graph/) Office 365 ' deki verilere erişim sağlar; örneğin:
+[Microsoft Graph API 'si](https://developer.microsoft.com/graph/) , şunun gibi Microsoft 365 verilere erişim sağlar:
 
 - Exchange 'den takvimler ve mesajlar.
 - SharePoint 'ten siteler ve listeler.
@@ -121,7 +121,7 @@ Aşağıdaki adımlarda, uygulama geliştiricisi ve Kullanıcı için onay deney
 
 3. Kullanıcının kimliği doğrulanmıyorsa, Azure AD/Yetkilendir uç noktası oturum açma için istemde bulunur.
 
-    ![Kimlik Doğrulaması](./media/openidoauth-tutorial/authentication.png)
+    ![Hesap için oturum açma isteminin ekran görüntüsü](./media/openidoauth-tutorial/authentication.png)
 
 4. Kullanıcı oturum açtıktan sonra, Azure AD kullanıcının bir onay sayfası gösterilmesi gerekip gerekmediğini belirler. Bu belirleme, kullanıcının (veya kuruluşun yöneticisinin) uygulama iznini zaten vermiş olup olmadığına bağlıdır.
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 104e1873a56d1ecf6e9f11a271344e9b4073e780
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 66d0874536b358b720b43780d6ecce879ac866ee
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033371"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708215"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak yeni bir Azure API Management hizmet örneği oluşturma
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıç, Azure portalını kullanarak yeni bir API Management ö
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-new-service"></a>Yeni hizmet oluşturma
 
@@ -56,7 +56,7 @@ Bu hızlı başlangıç, Azure portalını kullanarak yeni bir API Management ö
 3. **Oluştur**’u seçin.
 
     > [!TIP]
-    > Genellikle, bir API Management hizmeti oluşturmak ve etkinleştirmek için 20 ila 30 dakika arasında sürer. **Panoya Sabitle** öğesinin seçilmesi, yeni oluşturulan hizmetin bulunmasını kolaylaştırır.
+    > Bu katmanda bir API Management hizmeti oluşturmak ve etkinleştirmek için 30 ila 40 dakika sürebilir. **Panoya Sabitle** öğesinin seçilmesi, yeni oluşturulan hizmetin bulunmasını kolaylaştırır.
 
 [!INCLUDE [api-management-navigate-to-instance](../../includes/api-management-navigate-to-instance.md)]
 

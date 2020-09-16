@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77c673ec52873d854647cf49c0efcbd650fb6aa8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320657"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705495"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory kimlik güvenli puanı nedir?
 
@@ -102,7 +102,7 @@ Kısacası, hayır. Güvenli puan, ihlal alma olasıınızın mutlak bir ölçü
 
 Puan geçmişinizi görmek için [Microsoft 365 Güvenlik Merkezi](https://security.microsoft.com/) ' ne gidin ve genel Microsoft güvenli puanınızı gözden geçirin. Görünüm geçmişi ' ne tıklayarak genel güvenli puanınızın değişikliklerini gözden geçirebilirsiniz. Belirli bir tarih seçerek o gün hangi denetimlerin etkinleştirildiğini ve her birinden kaç puan kazandığınızı görün.
 
-### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>Kimlik güvenliği puanı ile Office 365 güvenlik puanı arasında nasıl bir ilişki vardır?
+### <a name="how-does-the-identity-secure-score-relate-to-the-microsoft-365-secure-score"></a>Kimlik güvenli puanı, Microsoft 365 güvenli puanı ile ilgilidir mi?
 
 [Microsoft güvenli puanı](/office365/securitycompliance/microsoft-secure-score) beş farklı denetim ve puan kategorisi içerir:
 

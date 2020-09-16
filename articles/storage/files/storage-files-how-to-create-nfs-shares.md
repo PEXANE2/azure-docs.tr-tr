@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: c265f404b2e2e2796baf0febb93997ef099f0844
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 2a848cb77336fc89172d55a6204d66b9e5be5976
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564948"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705240"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS paylaşma oluşturma
 
@@ -163,3 +163,5 @@ az storage share-rm create \
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Artık bir NFS paylaşma oluşturduğunuza göre, bunu kullanmak için Linux istemcinizle bağlamanız gerekir. Ayrıntılar için bkz. [NFS paylaşma bağlama](storage-files-how-to-mount-nfs-shares.md).
+
+Herhangi bir sorunla karşılaşırsanız bkz. [Azure NFS dosya paylaşımları sorunlarını giderme](storage-troubleshooting-files-nfs.md).

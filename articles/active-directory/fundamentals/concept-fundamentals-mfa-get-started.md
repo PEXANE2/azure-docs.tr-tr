@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13bb7782f6396466200fbb3e2df77158bb75d8a4
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554647"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705410"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Kuruluşunuz için Azure Multi-Factor Authentication genel bakış
 
@@ -34,10 +34,10 @@ Azure AD 'nin ücretsiz avantajlarından yararlanan müşteriler, ortamınızda 
 
 ## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 İş, E3 veya E5
 
-Office 365 ile müşteriler için iki seçenek vardır:
+Microsoft 365 olan müşteriler için iki seçenek vardır:
 
 * Tüm oturum açma olayları için Azure Multi-Factor Authentication, tüm kullanıcılar için etkin veya devre dışı bırakılmış. Yalnızca bir kullanıcı alt kümesi için veya yalnızca belirli senaryolarda Multi-Factor Authentication 'ı etkinleştirebilme özelliği yoktur. Yönetim, Office 365 portalından yapılır. 
-* Gelişmiş bir kullanıcı deneyimi için Azure AD Premium P1 veya P2 sürümüne yükseltin ve koşullu erişimi kullanın. Daha fazla bilgi için bkz. Multi-Factor Authentication ile güvenli Office 365 kaynakları.
+* Gelişmiş bir kullanıcı deneyimi için Azure AD Premium P1 veya P2 sürümüne yükseltin ve koşullu erişimi kullanın. Daha fazla bilgi için bkz. Multi-Factor Authentication ile güvenli Microsoft 365 kaynakları.
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
 

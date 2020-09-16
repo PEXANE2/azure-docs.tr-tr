@@ -1,6 +1,6 @@
 ---
 title: B2B işbirliği için SaaS uygulamalarını Yapılandırma-Azure AD
-description: Azure Active Directory B2B işbirliği için kod ve PowerShell örnekleri
+description: SaaS uygulamalarını Azure Active Directory B2B işbirliği için yapılandırmayı ve kullanılabilir ek kaynakları görüntülemeyi öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e0db5e609a5e6b7d74809810a50f86d72ae85675
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910227"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705519"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B işbirliği için SaaS uygulamalarını yapılandırma
 
@@ -105,5 +105,5 @@ Azure AD B2B işbirliği ile ilgili aşağıdaki makalelere bakın:
 - [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
 - [Dinamik Gruplar ve B2B işbirliği](use-dynamic-groups.md)
 - [B2B işbirliği Kullanıcı talepleri eşleme](claims-mapping.md)
-- [Office 365 dış paylaşım](o365-external-user.md)
+- [Dış paylaşım Microsoft 365](o365-external-user.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Office 365 dış paylaşım ve B2B işbirliği-Azure AD
-description: O365 ve Azure Active Directory B2B işbirliği kullanan dış iş ortaklarıyla kaynakları paylaşmayı açıklar.
+title: Dış paylaşım ve B2B işbirliği Microsoft 365-Azure AD
+description: Microsoft 365 ve Azure Active Directory B2B işbirliği kullanarak dış iş ortakları ile kaynakları paylaşmayı açıklar.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb407735cff5a0c43d3a584ff37a0eabc178381
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 563d925aa3e0d6922756ab037226f5a86534b19f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910052"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705444"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Office 365 dış paylaşım ve Azure Active Directory (Azure AD) B2B işbirliği
+# <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 dış paylaşım ve Azure Active Directory (Azure AD) B2B işbirliği
 
-Azure AD B2B işbirliği ve Office 365 dış paylaşımında (OneDrive, SharePoint Online, Birleşik Gruplar, vb.), dış kullanıcıların kimliği Azure AD B2B kullanılarak doğrulanır.
+Azure AD B2B işbirliği ve Microsoft 365 dış paylaşım (OneDrive, SharePoint Online, Birleşik Gruplar vb.) içinde, dış kullanıcıların kimliği Azure AD B2B kullanılarak doğrulanır.
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Azure AD B2B, SharePoint Online 'daki dış paylaşımlardan farklı midir?
 
@@ -37,7 +37,7 @@ OneDrive/SharePoint Online 'ın ayrı bir davet Yöneticisi vardır. OneDrive/Sh
 OneDrive/SharePoint Online 'da dış paylaşımı Azure AD B2B işbirliğiyle yönetmek için, OneDrive/SharePoint Online dış paylaşım ayarını **yalnızca kuruluşunuzun dizininde zaten var olan dış kullanıcılarla paylaşıma Izin verecek**şekilde ayarlayın. Kullanıcılar dışarıdan paylaşılan sitelere gidebilir ve yöneticinin eklediği dış ortak çalışanlarla seçim yapabilir. Yönetici, B2B işbirliği daveti API 'Leri aracılığıyla dış ortak çalışanları ekleyebilir.
 
 
-![OneDrive/SharePoint Online dış paylaşım ayarı](media/o365-external-user/odsp-sharing-setting.png)
+![OneDrive/SharePoint dış paylaşım ayarı](media/o365-external-user/odsp-sharing-setting.png)
 
 Dış paylaşımı etkinleştirdikten sonra, SharePoint Online (SPO) kişi seçicisindeki mevcut Konuk kullanıcıları arama özelliği, eski davranışa uyacak şekilde varsayılan olarak KAPALıDıR.
 
