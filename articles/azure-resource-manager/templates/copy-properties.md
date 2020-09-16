@@ -2,17 +2,19 @@
 title: Bir özelliğin birden çok örneğini tanımlama
 description: Bir kaynak üzerinde bir özellik oluştururken birden çok kez yinelemek için Azure Resource Manager şablonunda kopyalama işlemini kullanın.
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: f199872d5bb8a0333bf7bedb9501a6ca1b884691
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678469"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605252"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM şablonlarındaki Özellik yinelemesi
 
-Bu makalede, Azure Resource Manager (ARM) şablonunuzda bir özelliğin birden fazla örneğini nasıl oluşturacağınız gösterilmektedir. Şablonunuzda bir kaynağın Özellikler bölümüne **Copy** öğesini ekleyerek, dağıtım sırasında bir özelliğin öğe sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca, şablon söz dizimini yinelemek zorunda kalmaktan kaçının.
+Bu makalede, Azure Resource Manager şablonunuzda bir özelliğin birden fazla örneğini oluşturma (ARM şablonu) gösterilmektedir. Şablonunuzda bir kaynağın Özellikler bölümüne **Copy** öğesini ekleyerek, dağıtım sırasında bir özelliğin öğe sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca, şablon söz dizimini yinelemek zorunda kalmaktan kaçının.
+
+Bir özelliğe kopyalama uygulanırken bile, en üst düzey kaynaklarla kopyalama kullanabilirsiniz. Alt kaynağı bir üst düzey kaynakla değiştirme hakkında bilgi edinmek için bkz. [bir alt kaynak Için yineleme](copy-resources.md#iteration-for-a-child-resource).
 
 Ayrıca [kaynakları](copy-resources.md), [değişkenleri](copy-variables.md)ve [çıkışları](copy-outputs.md)kullanarak kopyalamayı kullanabilirsiniz.
 
@@ -252,7 +254,7 @@ Kaynak ve özellik yinelemesini birlikte kullanabilirsiniz. Özellik yinelemesin
 
 Aşağıdaki örnek, bir özellik için birden fazla değer oluşturmak için ortak bir senaryoyu gösterir.
 
-|Şablon  |Açıklama  |
+|Şablon  |Description  |
 |---------|---------|
 |[Değişken sayıda veri diskine sahip VM dağıtımı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Bir sanal makine ile birden fazla veri diski dağıtır. |
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 8333de5b0139323b352d43a9259bde9d3b514fbe
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ddd6e08d9be36035b2db02ec5feb3ae4e957ec49
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611792"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604453"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,18 +28,18 @@ Bu makalede, Azure sanal makinelerinde (VM) SQL Server ile Azure paylaşılan di
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
 - Azure aboneliği. [Ücretsiz](https://azure.microsoft.com/free/)olarak kullanmaya başlayın. 
-- [İki veya daha fazla Orta Batı ABD-](failover-cluster-instance-prepare-vm.md) aynı [kullanılabilirlik kümesindeki](../../../virtual-machines/linux/tutorial-availability-sets.md) Windows Azure sanal makineleri ve bir [yakınlık yerleşimi grubu](../../../virtual-machines/windows/co-location.md#proximity-placement-groups), hata etki alanı ile oluşturulan ve etki alanı **1**olarak ayarlanmış olan kullanılabilirlik kümesi. 
+- [İki veya daha fazla Windows Azure sanal makinesi](failover-cluster-instance-prepare-vm.md). [Kullanılabilirlik kümeleri](../../../virtual-machines/windows/tutorial-availability-sets.md) ve [yakınlık yerleştirme grupları](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPG 'ler) her ikisi de desteklenir. Bir PPG kullanırsanız, tüm düğümlerin aynı grupta mevcut olması gerekir.
 - Hem Azure sanal makinelerinde hem de Active Directory nesne oluşturma izinlerine sahip olan bir hesap.
 - En son [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)sürümü. 
 
 
 ## <a name="add-azure-shared-disk"></a>Azure Paylaşılan diski ekleme
-Paylaşılan disk özelliği etkinken yönetilen bir Premium SSD diski dağıtın. `maxShares`Diski her IKI FCı düğümünde paylaşılabilir hale getirmek için **2** olarak ayarlayın. 
+Paylaşılan disk özelliği etkinken yönetilen bir Premium SSD diski dağıtın. `maxShares`Diski tüm FCı düğümlerinde paylaşılabilir hale getirmek için **küme düğümü sayısıyla hizalı** olarak ayarlayın. 
 
 Aşağıdakileri yaparak bir Azure Paylaşılan diski ekleyin: 
 
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Bağlantı yapılandırma 
 
-Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](hadr-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 ve Windows Server 2016 (veya üzeri) kullanıyorsanız, [dağıtılmış ağ adı](hadr-distributed-network-name-dnn-configure.md) özelliğinin önizlemesini yapabilirsiniz. 
+Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](hadr-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 CU2 uygulamazsanız + ve Windows Server 2016 (veya üzeri) kullanıyorsanız, [dağıtılmış ağ adı](hadr-distributed-network-name-dnn-configure.md) özelliğinin önizlemesini yapabilirsiniz. 
 
 ## <a name="limitations"></a>Sınırlamalar
 

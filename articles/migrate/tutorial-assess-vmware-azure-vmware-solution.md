@@ -4,12 +4,12 @@ description: Azure geçişi sunucu değerlendirmesi ile AVS 'ye geçiş için VM
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 7bd0a4c6d4c447e0d872c2d40ad1f1990289fe84
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 29f7f824d96aedd80e490ba84c390be4d9493683
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108919"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604249"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Öğretici: AVS 'ye geçiş için VMware VM 'lerini değerlendirin
 
@@ -113,28 +113,37 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
 ## <a name="review-an-assessment"></a>Değerlendirmeyi gözden geçirme
 
-Bir değerlendirme şunları açıklar:
+Bir AVS değerlendirmesi şunları açıklar:
 
-- **AVS Için hazırlanma**: makine, Azure AVS 'ye, hiçbir değişiklik yapılmadan olduğu gibi geçirilebilir. Makine, tam AVS desteğiyle AVS 'de başlatılır.
-- **Koşullara göre**: makinenin geçerli vSphere sürümü ile uyumluluk sorunları olabilir. AVS 'de tam işlevselliğe sahip olmak için VMware araçlarının yüklü olması veya diğer ayarlar olması gerekebilir.
-- **AVS için hazırlanma**: VM, AVS 'de başlamaz. Örneğin, şirket içi bir VMware sanal makinesine bağlı bir dış cihaz (CD-ROM gibi) varsa ve VMware VMotion kullanıyorsanız, VMotion işlemi başarısız olur.
-- **Hazır olma bilinmiyor**: Azure geçişi, şirket içi ortamdan toplanan yetersiz meta veriler nedeniyle makine hazırlığını saptayamadık.
+- AVS hazırlığı: şirket içi VM 'Lerin Azure VMware çözümüne (AVS) geçiş için uygun olup olmadığı.
+- AVS düğüm sayısı: VM 'Leri çalıştırmak için gereken, tahmini AVS düğüm sayısı.
+- AVS düğümleri genelinde kullanım: tüm düğümlerde öngörülen CPU, bellek ve depolama kullanımı.
+- Aylık maliyet tahmini: şirket içi VM 'Leri çalıştıran tüm Azure VMware çözümü (AVS) düğümlerine yönelik tahmini aylık maliyetler.
+
+## <a name="view-an-assessment"></a>Değerlendirme görüntüleme
 
 Bir değerlendirmeyi görüntülemek için:
 
 1. **Sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde, **değerlendirmeler**' ın yanındaki sayıya tıklayın.
-2. **Değerlendirmede**, açmak için bir değerlendirme seçin. Örnek olarak (yalnızca Örneğin, tahminler ve maliyetler): 
-
-    ![Değerlendirme özeti](./media/tutorial-assess-vmware-azure-vm/assessment-summary.png)
-
+2. **Değerlendirmede**, açmak için bir değerlendirme seçin. 
 3. Değerlendirme özetini gözden geçirin. Ayrıca değerlendirme özelliklerini düzenleyebilir veya değerlendirmeyi yeniden hesaplayabilirsiniz.
  
- 
+
 ### <a name="review-readiness"></a>İnceleme hazırlığı
 
 1. **Azure hazırlığı**' ne tıklayın.
 2. **Azure hazırlığı**' nde VM durumunu gözden geçirin.
-3. Bir **Azure hazırlık** durumu seçin. VM hazırlığı ayrıntıları ' nı görüntüleyebilirsiniz. Ayrıca, işlem, depolama ve ağ ayarları dahil olmak üzere VM ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
+
+    - **AVS Için hazırlanma**: makine, Azure AVS 'ye, hiçbir değişiklik yapılmadan olduğu gibi geçirilebilir. Makine, tam AVS desteğiyle AVS 'de başlatılır.
+    - **Koşullara göre**: makinenin geçerli vSphere sürümü ile uyumluluk sorunları olabilir. AVS 'de tam işlevselliğe sahip olmak için VMware araçlarının yüklü olması veya diğer ayarlar olması gerekebilir.
+    - **AVS için hazırlanma**: VM, AVS 'de başlamaz. Örneğin, şirket içi bir VMware sanal makinesine bağlı bir dış cihaz (CD-ROM gibi) varsa ve VMware VMotion kullanıyorsanız, VMotion işlemi başarısız olur.
+ - **Hazır olma bilinmiyor**: Azure geçişi, şirket içi ortamdan toplanan yetersiz meta veriler nedeniyle makine hazırlığını saptayamadık.
+
+3. Önerilen aracı inceleyin.
+
+    - VMware HCX veya Enterprise: VMware makineleri Için VMWare karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. Daha fazla bilgi edinin.
+    - Bilinmiyor: CSV dosya yoluyla içeri aktarılan makinelerde, varsayılan geçiş aracı bilinmiyor. Ancak VMware makinelerinde, VMware karma bulut uzantısı (HCX) çözümünün kullanılması önerilir.
+4. AVS hazırlığı durumuna tıklayın. VM hazırlığı ayrıntılarını görüntüleyebilir ve işlem, depolama ve ağ ayarları dahil olmak üzere VM ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
 
 ### <a name="review-cost-estimates"></a>Tahmini maliyetleri gözden geçirme
 
@@ -142,11 +151,11 @@ Değerlendirme özeti, Azure 'da çalışan VM 'lerin tahmini işlem ve depolama
 
 1. Aylık toplam maliyetleri gözden geçirin. Ücretler, değerlendirilen gruptaki tüm VM 'Ler için toplanır.
 
-    - Maliyet tahminleri, bir makine, diskleri ve özellikleri için boyut önerilerini temel alır.
-    - İşlem ve depolama için tahmini aylık maliyetler gösterilir.
-    - Maliyet tahmini, Azure VM 'lerinde şirket içi VM 'Leri çalıştırmaya yöneliktir. Tahmin PaaS veya SaaS maliyetlerini göz önünde bulundurmaz.
+    - Maliyet tahminleri, toplam tüm VM 'lerin kaynak gereksinimlerini dikkate alarak gereken AVS düğüm sayısına bağlıdır.
+    - AVS 'nin fiyatı düğüm başına olduğunda, toplam maliyet işlem maliyeti ve depolama maliyeti dağıtımına sahip değildir.
+    - Maliyet tahmini, AVS 'de şirket içi VM 'Leri çalıştırmak içindir. Azure geçişi sunucu değerlendirmesi PaaS veya SaaS maliyetlerini göz önünde bulundurmaz.
 
-2. Aylık depolama maliyetlerini gözden geçirin. Görünüm, değerlendirilen grup için toplanan depolama maliyetlerini gösterir ve farklı türlerdeki depolama disklerinin üzerine bölünür. 
+2. Aylık depolama tahminlerini gözden geçirin. Görünüm, değerlendirilen grup için toplanan depolama maliyetlerini gösterir ve farklı türlerdeki depolama disklerinin üzerine bölünür. 
 3. Belirli VM 'Ler için maliyet ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
 
 ### <a name="review-confidence-rating"></a>Güvenilirlik derecelendirmesini gözden geçirme

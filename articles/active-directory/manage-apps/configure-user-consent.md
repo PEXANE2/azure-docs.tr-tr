@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 433ff5498baeb4c31473e43fc4a5d24f4ba9fd1c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763474"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605167"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Son kullanıcıların uygulamalara onay verme şeklini yapılandırma
 
@@ -32,7 +32,7 @@ Kullanıcılara uygulamalara izin verebilecekleri durumları denetlemek için, t
 
 * **Kullanıcı onayını devre dışı bırak** -kullanıcılar uygulamalara izin veremez. Kullanıcılar, daha önce kendilerine onaylı olan veya kendi adına yöneticiler tarafından onaylanan uygulamalar üzerinde oturum açmaya devam edebilir, ancak yeni izinler veya kendi kendilerine yeni uygulamalar için izin verilmez. Yalnızca izin verme iznini içeren bir dizin rolü verilen kullanıcılar, yeni izinleri veya yeni uygulamaları kabul edebilir.
 
-* **Kullanıcılar doğrulanan yayımcıların uygulamalarına izin verebilir, ancak yalnızca seçtiğiniz izinler için (Önizleme),** tüm kullanıcılar yalnızca [doğrulanmış bir yayımcı](../develop/publisher-verification-overview.md) ve kiracınızda kayıtlı uygulamalar tarafından yayımlanan uygulamalara izin verebilir. Kullanıcılar yalnızca "düşük etki" olarak sınıflandırdığınız izinleri kabul edebilir.
+* **Kullanıcılar doğrulanan yayımcıların uygulamalarına izin verebilir, ancak yalnızca seçtiğiniz izinler için (Önizleme),** tüm kullanıcılar yalnızca [doğrulanmış bir yayımcı](../develop/publisher-verification-overview.md) ve kiracınızda kayıtlı uygulamalar tarafından yayımlanan uygulamalara izin verebilir. Kullanıcılar yalnızca "düşük riskli" olarak sınıflandırılmış izinleri "düşük riskli" olarak da adlandırılabilen izinlere izin verebilir. Kullanıcı e-posta adresini görüntüleyen bir uygulama gibi bir kuruluş için düşük risk kabul edildiğinde, başka bir kuruluş için yüksek riskli olarak düşünülebilir. Bu nedenle, "düşük riskli" izinleri kiracının Yöneticisi tarafından ayarlanır.
 
   Kullanıcıların izin verdiği izinleri seçmek için [izinleri sınıflandırdığınızdan](#configure-permission-classifications-preview) emin olun.
 
@@ -56,7 +56,7 @@ Azure portal aracılığıyla Kullanıcı izin ayarlarını yapılandırmak içi
 
 ### <a name="configure-user-consent-settings-using-powershell"></a>PowerShell kullanarak Kullanıcı izin ayarlarını yapılandırma
 
-Uygulamalara yönelik Kullanıcı onayını hangi onay ilkesinin yöneteceğini seçmek için, en son Azure AD PowerShell önizleme modülünü [Azureadpreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)' i kullanabilirsiniz.
+Uygulamalara yönelik Kullanıcı onayını hangi onay ilkesinin yöneteceğini seçmek için, en son Azure AD PowerShell önizleme modülünü [Azureadpreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)' i kullanabilirsiniz.
 
 * **Kullanıcı onayını devre dışı** bırak-Kullanıcı onayını devre dışı bırakmak için, Kullanıcı onayını boş olacak şekilde belirleyen onay ilkelerini ayarlayın:
 
@@ -109,7 +109,7 @@ Bu örnekte, çoklu oturum açma için gereken en düşük izin kümesini sını
 
 ### <a name="classify-permissions-using-powershell"></a>PowerShell kullanarak izinleri sınıflandır
 
-İzinleri sınıflandırmak için en son Azure AD PowerShell önizleme modülünü [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)' i kullanabilirsiniz. İzin sınıflandırmaları, izinleri yayımlayan API 'nin **ServicePrincipal** nesnesinde yapılandırılır.
+İzinleri sınıflandırmak için en son Azure AD PowerShell önizleme modülünü [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)' i kullanabilirsiniz. İzin sınıflandırmaları, izinleri yayımlayan API 'nin **ServicePrincipal** nesnesinde yapılandırılır.
 
 #### <a name="to-read-the-current-permission-classifications-for-an-api"></a>Bir API için geçerli izin sınıflandırmalarını okumak için:
 
@@ -196,9 +196,9 @@ Bu örnekte, tüm Grup sahiplerinin grupların verilerine erişen uygulamalara i
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>PowerShell kullanarak Grup sahibi onayını yapılandırma
 
-Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine erişen uygulamalara izin verme özelliğini etkinleştirmek veya devre dışı bırakmak için Azure AD PowerShell önizleme modülünü ( [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)) kullanabilirsiniz.
+Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine erişen uygulamalara izin verme özelliğini etkinleştirmek veya devre dışı bırakmak için Azure AD PowerShell önizleme modülünü ( [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)) kullanabilirsiniz.
 
-1. [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modülünü kullandığınızdan emin olun. Hem [Azuread](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) modülünü hem de [azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modülünü yüklediyseniz bu adım önemlidir.
+1. [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modülünü kullandığınızdan emin olun. Hem [Azuread](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) modülünü hem de [azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modülünü yüklediyseniz bu adım önemlidir.
 
     ```powershell
     Remove-Module AzureAD
@@ -228,7 +228,7 @@ Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine eriş
 
 1. Ayar değerlerini anlayın. Bir uygulamanın grubun verilerine erişmesine izin veren kullanıcıları tanımlayan iki ayar değeri vardır:
 
-    | Ayar       | Tür         | Açıklama  |
+    | Ayar       | Tür         | Description  |
     | ------------- | ------------ | ------------ |
     | _Enablegroupspecificonayı_   | Boole | Grup sahiplerinin gruba özel izinler verip vermeyeceğini belirten bayrak. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | _Enablegroupspecificonay_ değeri "true" olarak ayarlanırsa ve bu değer bir grubun nesne kimliği olarak ayarlandıysa, tanımlı grubun üyelerinin sahip oldukları gruplara gruba özel izinler verme yetkisine sahip olur. |
@@ -280,13 +280,13 @@ Bu durumda, bir denetim olayı "ApplicationManagement" kategorisiyle, etkinlik t
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>PowerShell kullanarak risk tabanlı adım onayını devre dışı bırakma veya yeniden etkinleştirme
 
-Microsoft 'un riski algıladığı veya daha önce devre dışı bırakılmışsa yeniden etkinleştirebileceği durumlarda yönetici onayını gerekli hale getirebilirsiniz. Azure AD PowerShell önizleme modülünü [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)' ı kullanarak devre dışı bırakabilirsiniz.
+Microsoft 'un riski algıladığı veya daha önce devre dışı bırakılmışsa yeniden etkinleştirebileceği durumlarda yönetici onayını gerekli hale getirebilirsiniz. Azure AD PowerShell önizleme modülünü [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)' ı kullanarak devre dışı bırakabilirsiniz.
 
 Bunu, [PowerShell kullanarak Grup sahibi onayını yapılandırmak](#configure-group-owner-consent-using-powershell)için yukarıda gösterilen adımları kullanarak, ancak farklı bir ayar değeri yerine getirebilirsiniz. Adımlarda üç fark vardır: 
 
 1. Risk tabanlı adım onayı için ayar değerlerini anlayın:
 
-    | Ayar       | Tür         | Açıklama  |
+    | Ayar       | Tür         | Description  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Boole |  Riskli bir istek algılandığında Kullanıcı izninin engellenip engellenmediğini belirten bayrak. |
 

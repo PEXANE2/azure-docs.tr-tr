@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2c309340155bc626d4da94d74aee9be51bde510
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75927851"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606301"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Azure portalında bir ad alanı oluşturma
 Azure'da Service Bus mesajlaşma varlıklarını kullanmaya başlamak için öncelikle Azure'da benzersiz olan bir ad alanı oluşturmanız gerekir. Ad alanı, uygulamanızda bulunan Service Bus kaynaklarını adreslemek için içeriğin kapsamını belirleyen bir kapsayıcı sunar.
 
 Ad alanı oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [Azure portalda](https://portal.azure.com) oturum açma
 2. Portalın sol gezinti bölmesinde **+ kaynak oluştur**' u seçin, **tümleştirme**' i seçin ve ardından **Service Bus**' yi seçin.
 
     ![Kaynak > tümleştirme oluşturma-> Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
@@ -33,7 +33,7 @@ Ad alanı oluşturmak için:
     4. **Abonelik**için, ad alanını oluşturmak Için bir Azure aboneliği seçin.
     5. **Kaynak grubu**için, ad alanının etkin olacağı mevcut bir kaynak grubunu seçin veya yeni bir tane oluşturun.      
     6. **Konum**için, ad alanınızı barındırılacak bölgeyi seçin.
-    7. **Oluştur**'u seçin. Artık sistem ad alanınızı oluşturur ve kullanıma açar. Sistem, hesabınıza yönelik kaynakları sağlarken birkaç dakika beklemeniz gerekebilir.
+    7. **Oluştur**’u seçin. Artık sistem ad alanınızı oluşturur ve kullanıma açar. Sistem, hesabınıza yönelik kaynakları sağlarken birkaç dakika beklemeniz gerekebilir.
    
         ![Ad alanı oluşturma](./media/service-bus-create-namespace-portal/create-namespace.png)
 4. Service Bus ad alanının başarıyla dağıtıldığını doğrulayın. Bildirimleri görmek için araç çubuğundaki **zil simgesini (Uyarılar)** seçin. Görüntüde gösterildiği gibi bildirimde **kaynak grubunun adını** seçin. Service Bus ad alanını içeren kaynak grubunu görürsünüz.
@@ -53,10 +53,10 @@ Yeni bir ad alanı oluşturulduğunda, her biri ad alanının tüm yönleri üze
 2. Ad alanı penceresinde **Paylaşılan erişim ilkeleri**'ne tıklayın.
 3. **Paylaşılan erişim ilkeleri** ekranında **RootManageSharedAccessKey** seçeneğine tıklayın.
    
-    ![bağlantı bilgisi](./media/service-bus-create-namespace-portal/connection-info.png)
+    ![Ekran görüntüsü, ilke vurgulanmış şekilde paylaşılan erişim ilkeleri penceresini gösterir.](./media/service-bus-create-namespace-portal/connection-info.png)
 4. **İlke: RootManageSharedAccessKey** penceresinde, **birincil bağlantı dizesi**' nin yanındaki Kopyala düğmesine tıklayın ve bağlantı dizesini daha sonra kullanmak üzere panonuza kopyalayın. Bu değeri Not Defteri veya başka bir geçici konuma yapıştırın.
    
-    ![bağlantı dizesi](./media/service-bus-create-namespace-portal/connection-string.png)
+    ![Ekran görüntüsünde, anahtarlar ve bağlantı dizeleri içeren RootManageSharedAccessKey adlı bir s İlkesi gösterilir.](./media/service-bus-create-namespace-portal/connection-string.png)
 5. Önceki adımı tekrarlayarak **birincil anahtar** değerini kopyalayarak ve daha sonra kullanmak üzere geçici bir konuma yapıştırmayı.
 
 <!--Image references-->

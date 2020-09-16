@@ -4,6 +4,8 @@
   href: debug-rendering.md
 - name: Hiyerarşik durumu geçersiz kılma
   href: override-hierarchical-state.md
+- name: Kamera
+  href: camera.md
 - name: Aşama alanı
   href: stage-space.md
 - name: Geç aşama yeniden projeksiyonu

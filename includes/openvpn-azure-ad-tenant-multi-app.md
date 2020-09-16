@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/21/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2eb2dbc43c59f4f6301c7f5073a73462639d35b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8172e0e208d9a780c7676d7cb0e77dbc1c16f493
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797147"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606716"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. Azure AD kiracısı oluşturma
 
@@ -77,7 +77,7 @@ VPN istemcisini Azure AD kiracısına kaydettirin.
 
 6. İstendiğinde **kabul et** ' i seçin.
 
-    ![Kabul Et](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
+    ![Ekran görüntüsünde, kuruluşunuz için kabul edilen ileti Izinlerinin ve istekle ilgili bilgilerin bulunduğu bir pencere görüntülenir.](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
 7. Azure AD 'nizin altında, **Kurumsal uygulamalarda**, **Azure VPN** ' yi listelenmiş görürsünüz.
 
@@ -136,6 +136,6 @@ Kullanıcıları uygulamalarınıza atayın.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user3.png)
 
-3. **Atama Ekle**altında **Kullanıcılar ve gruplar**' a tıklayın. Bu VPN uygulamasına erişebilmesini istediğiniz kullanıcıları seçin. **Seç**' e tıklayın.
+3. **Atama Ekle**altında **Kullanıcılar ve gruplar**' a tıklayın. Bu VPN uygulamasına erişebilmesini istediğiniz kullanıcıları seçin. **Seç**’e tıklayın.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user4.png)

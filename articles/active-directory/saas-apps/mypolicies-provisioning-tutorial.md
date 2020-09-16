@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ea9a0e52ce424459b6c402eb136d06dd370bab7d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe85dfb39a9787376221cb9beeea11bec35293f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548058"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604470"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için myPolicies yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Kullanıcı ve/veya grupları myPolicies 'e otomatik ol
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -101,7 +101,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre myPolicie
 
 4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
-    ![Sağlama sekmesi](common/provisioning-automatic.png)
+    ![Sağlama sekmesi otomatik olarak](common/provisioning-automatic.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, `https://<myPoliciesCustomDomain>.mypolicies.com/scim` mypolicies özel etki alanınız olan **kiracı URL 'sine** giriş yapın `<myPoliciesCustomDomain>` . MyPolicies müşteri etki alanınızı URL 'nizden elde edebilirsiniz.
 Örnek: `<demo0-qa>` . mypolicies.com.
@@ -122,7 +122,18 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre myPolicie
 
 10. **Öznitelik eşleme** bölümünde, Azure AD 'Den mypolicies ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için mypolicies içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![myPolicies Kullanıcı eşlemeleri](media/mypolicies-provisioning-tutorial/userattribute.png)
+   |Öznitelik|Tür|
+   |---|---|
+   |userName|Dize|
+   |bkz|Boole|
+   |e-postalar [tür EQ "iş"]. değer|Dize|
+   |ad.|Dize|
+   |Name. familyName|Dize|
+   |ad. biçimlendirildi|Dize|
+   |externalID|Dize|
+   |adresler [tür EQ "iş"]. ülke|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Başvuru|
+
 
 11. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
@@ -146,6 +157,10 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 * myPolicies her zaman **Kullanıcı adı**, **e-posta** ve **externalId**gerektirir.
 * myPolicies, Kullanıcı öznitelikleri için sabit silmeleri desteklemez.
+
+## <a name="change-log"></a>Değişiklik günlüğü
+
+* 09/15/2020-kullanıcılar için "Country" özniteliği için destek eklendi.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 034f5c487750600910cb32f73bcc6ea243b3ec6f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: e75cb7d13fb74d32191ab7f076d73ad66976503d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563464"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90606710"
 ---
 Azure dosyaları, kendi senaryolarınızın performans ve fiyat gereksinimlerine yönelik olarak paylaşımlarınızı uyarlamanızı sağlamak için dört farklı depolama, Premium, işlem için iyileştirilmiş, sık erişimli ve seyrek katman katmanları sunar:
 
@@ -24,6 +24,6 @@ Azure dosyaları, kendi senaryolarınızın performans ve fiyat gereksinimlerine
 
 Premium dosya paylaşımları yalnızca sağlanan faturalandırma modelinde kullanılabilir. Premium dosya paylaşımları için sağlanan faturalandırma modeli hakkında daha fazla bilgi için bkz. [Premium dosya paylaşımları için sağlamayı anlama](../articles/storage/files/storage-files-planning.md#understanding-provisioning-for-premium-file-shares). İşlem için iyileştirilmiş, sık ve seyrek erişimli dosya paylaşımları dahil olmak üzere standart dosya paylaşımları, Kullandıkça Öde faturalandırmasıyla sunulmaktadır.
 
-Sık erişimli ve seyrek erişimli dosya paylaşımları, tüm Azure genel bölgelerinde kullanılabilir. İşlem için iyileştirilmiş dosya paylaşımları, Ulusal bulut bölgeleri dahil olmak üzere tüm Azure bölgelerinde kullanılabilir.
+Sık erişimli ve seyrek erişimli dosya paylaşımları, tüm Azure Kamu ve Azure Kamu bölgelerinde kullanılabilir. İşlem için iyileştirilmiş dosya paylaşımları, Azure Çin ve Azure Almanya bölgeleri dahil olmak üzere tüm Azure bölgelerinde kullanılabilir.
 
 Sık erişimli veya seyrek erişimli bir dosya paylaşma dağıtmak için bkz. sık erişimli veya seyrek erişimli [dosya paylaşma oluşturma](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share). 

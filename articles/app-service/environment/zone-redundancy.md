@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961576"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605082"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>App Service ortamları için kullanılabilirlik alanı desteği
 
@@ -29,11 +29,15 @@ Bu makalede açıklanan adımlar izlenmediği takdirde ıLB ASEs, bir şekilde o
 
 Aşağıdaki bölgelerde zonal ıLB ASEs oluşturulabilir:
 
+- Doğu Avustralya
+- Brezilya Güney
+- Orta Kanada
 - Central US
 - Doğu ABD
 - Doğu ABD 2
 - Doğu ABD 2 (EUAP)
 - Orta Fransa 
+- Almanya Orta Batı
 - Doğu Japonya
 - Kuzey Avrupa
 - West Europe

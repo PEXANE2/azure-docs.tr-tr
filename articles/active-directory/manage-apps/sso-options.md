@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: ab4d150d79b2c53ad23d892efacef6a848d97854
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 5c02733167db5071b1f2a9c5e04dc05a069fda3c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469822"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604215"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD 'de çoklu oturum açma seçenekleri
 
@@ -24,7 +24,7 @@ ms.locfileid: "89469822"
 
 - **Çoklu oturum açma ile**kullanıcılar, etki alanına katılmış cihazlara, şirket kaynaklarına, hizmet olarak yazılım (SaaS) uygulamalarına ve Web uygulamalarına erişmek için bir hesapla bir kez oturum açabilirler. Oturum açtıktan sonra Kullanıcı Office 365 portalından veya uygulamalarım aracılığıyla uygulama başlatabilir. Yöneticiler kullanıcı hesabı yönetimini merkezileştirmek ve grup üyeliğine göre uygulamalara Kullanıcı erişimini otomatik olarak ekleyebilir veya kaldırabilir.
 
-- **Çoklu oturum açma olmadan**, kullanıcıların uygulamaya özgü parolaları hatırlamaları ve her uygulamada oturum açması gerekir. BT personelinin, Office 365, Box ve Salesforce gibi her uygulama için Kullanıcı hesapları oluşturması ve güncelleştirmesi gerekir. Kullanıcıların parolalarını hatırlamaları ve her uygulamada oturum açma süresini harcaması gerekir.
+- **Çoklu oturum açma olmadan**, kullanıcıların uygulamaya özgü parolaları hatırlamaları ve her uygulamada oturum açması gerekir. BT personelinin Microsoft 365, Box ve Salesforce gibi her uygulama için Kullanıcı hesapları oluşturması ve güncelleştirmesi gerekir. Kullanıcıların parolalarını hatırlamaları ve her uygulamada oturum açma süresini harcaması gerekir.
 
 Çoklu oturum açma hakkında daha fazla bilgi edinmek için bkz. [Çoklu oturum açma nedir?](what-is-single-sign-on.md).
 
@@ -137,7 +137,7 @@ Bağlantılı oturum açma, Azure AD 'nin, zaten başka bir hizmette çoklu otur
 
 ### <a name="linked-sign-on-for-application-migration"></a>Uygulama geçişi için bağlantılı oturum açma
 
-Bağlantılı oturum açma, uygulamaları bir süre boyunca geçirirken tutarlı bir kullanıcı deneyimi sağlayabilir. Uygulamaları Azure Active Directory geçiriyorsanız, geçiş yapmak istediğiniz tüm uygulamaların bağlantılarını hızlıca yayımlamak için bağlantılı oturum açma ' yı kullanabilirsiniz.  Kullanıcılar, [Uygulamaps portalındaki](../user-help/active-directory-saas-access-panel-introduction.md) veya [Office 365 uygulama başlatıcısı](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)'ndaki tüm bağlantıları bulabilir. Kullanıcılar, bağlı bir uygulamaya veya geçirilen uygulamaya erişeceğimizi bilmez.  
+Bağlantılı oturum açma, uygulamaları bir süre boyunca geçirirken tutarlı bir kullanıcı deneyimi sağlayabilir. Uygulamaları Azure Active Directory geçiriyorsanız, geçiş yapmak istediğiniz tüm uygulamaların bağlantılarını hızlıca yayımlamak için bağlantılı oturum açma ' yı kullanabilirsiniz.  Kullanıcılar, [Uygulamaps portalındaki](../user-help/active-directory-saas-access-panel-introduction.md) veya [Microsoft 365 uygulama](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)başlatıcısında bulunan tüm bağlantıları bulabilir. Kullanıcılar, bağlı bir uygulamaya veya geçirilen uygulamaya erişeceğimizi bilmez.  
 
 Bir kullanıcının kimliği, bağlantılı bir uygulamayla doğrulandıktan sonra, Son Kullanıcı çoklu oturum açma erişimi sağlanmadan önce bir hesap kaydının oluşturulması gerekir. Bu hesap kaydının sağlanması otomatik olarak yapılabilir veya bir yönetici tarafından el ile gerçekleşebilir.
 

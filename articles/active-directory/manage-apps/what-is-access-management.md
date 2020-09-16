@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: d9dd03ec349daf2312b7d803e16e3c5fb41ecf0c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639928"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604113"
 ---
 # <a name="managing-access-to-apps"></a>Uygulamalara erişimi yönetme
 
@@ -54,11 +54,11 @@ Bazı uygulamalarda, Kullanıcı Ataması gerektirme seçeneği uygulamanın öz
 Azure AD, kuruluşunuzdaki son kullanıcılara [uygulama dağıtmak için çeşitli özelleştirilebilir yollar](end-user-experiences.md) sağlar:
 
 * Azure AD uygulamalarım
-* Office 365 uygulama başlatıcısı
+* Uygulama başlatıcısı Microsoft 365
 * Federasyon uygulamalarında doğrudan oturum açma (Service-PR)
 * Birleştirilmiş, parola tabanlı veya var olan uygulamalara yönelik ayrıntılı bağlantılar
 
-Bir kurumsal uygulamaya atanan kullanıcıların bu dosyayı Uygulamalarım ve Office 365 uygulama başlatıcısı 'nda göremeyeceğini belirleyebilirsiniz.
+Bir kurumsal uygulamaya atanan kullanıcıların bunu uygulamamda Microsoft 365 ve uygulama başlatıcısı 'nda göremeyeceğini belirleyebilirsiniz.
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>Örnek: Azure AD ile karmaşık uygulama ataması
 Salesforce gibi bir uygulamayı düşünün. Birçok kuruluşta Salesforce öncelikle pazarlama ve satış ekipleri tarafından kullanılır. Genellikle, pazarlama ekibinin üyelerinin Salesforce erişimine son derece ayrıcalıklı erişimi vardır, ancak satış ekibinin üyeleri sınırlı erişime sahip olur. Birçok durumda, büyük bir bilgi çalışanı popülasyonu uygulamaya erişimi kısıtlamıştır. Bu kuralların özel durumları önemli bir şekilde karmaşıklaştırır. Genellikle pazarlama veya satış liderlik ekiplerinin, Kullanıcı erişimi vermek veya rollerini bu genel kurallardan bağımsız olarak değiştirmesi için Prerogative.
@@ -78,17 +78,17 @@ Yöneticiler, belirli roller için erişim ilkeleri ayarlamak üzere [Azure AD k
 
 ## <a name="access-to-microsoft-applications"></a>Microsoft uygulamalarına erişim
 
-Microsoft uygulamaları (Office 365 Exchange, SharePoint, Yammer vb. gibi), üçüncü taraf SaaS uygulamalarından veya çoklu oturum açma için Azure AD ile tümleştirmiş olduğunuz diğer uygulamalardan farklı bir şekilde atanır ve yönetilir.
+Microsoft uygulamaları (Exchange, SharePoint, Yammer vb. gibi), üçüncü taraf SaaS uygulamalarından veya çoklu oturum açma için Azure AD ile tümleştirmiş olduğunuz diğer uygulamalardan farklı bir şekilde atanır ve yönetilir.
 
 Bir kullanıcının Microsoft tarafından yayımlanan bir uygulamaya erişebileceği üç ana yol vardır.
 
-- Office 365 veya diğer ücretli paketlerde bulunan uygulamalarda, kullanıcılara doğrudan kendi kullanıcı hesaplarına veya grup tabanlı lisans atama becerimizi kullanan bir **Grup aracılığıyla erişim** izni verilir.
+- Microsoft 365 veya diğer ücretli paketlerde bulunan uygulamalar için, kullanıcılara doğrudan kullanıcı hesaplarına veya grup tabanlı lisans atama becerimizi kullanan bir grup aracılığıyla **Lisans ataması** üzerinden erişim verilir.
 - Microsoft veya 3. taraf herkes tarafından kullanılmak üzere ücretsiz olarak yayımlayan uygulamalar için [Kullanıcı izni](configure-user-consent.md)aracılığıyla kullanıcılara erişim izni verilebilir. Bu, Azure AD Iş veya okul hesabıyla uygulamada oturum açtıklarında ve hesabın hesabında sınırlı miktarda veri kümesine erişmesine izin veren anlamına gelir.
 - Microsoft 'un veya bir üçüncü taraf tarafından herkes tarafından kullanılabilecek uygulamalar için, kullanıcılara [yönetici izni](manage-consent-requests.md)aracılığıyla da erişim izni verilebilir. Bu, bir yöneticinin uygulamayı kuruluştaki herkes tarafından kullanılabileceğini, böylece bir genel yönetici hesabıyla uygulamada oturum açmasını ve kuruluştaki herkese erişim vermesini belirlediği anlamına gelir.
 
-Bazı uygulamalar bu yöntemleri birleştirir. Örneğin, bazı Microsoft uygulamaları Office 365 aboneliğinin bir parçasıdır, ancak yine de onay gerektirir.
+Bazı uygulamalar bu yöntemleri birleştirir. Örneğin, bazı Microsoft uygulamaları Microsoft 365 aboneliğin bir parçasıdır, ancak yine de onay gerektirir.
 
-Kullanıcılar Office 365 uygulamalarına Office 365 portalları aracılığıyla erişebilir. Ayrıca, dizininizdeki Office 365 uygulamalarını, dizininizin **Kullanıcı ayarlarındaki** [Office 365 görünürlüğü arasında](hide-application-from-user-portal.md) gösterebilir veya gizleyebilirsiniz. 
+Kullanıcılar, Office 365 portalları aracılığıyla Microsoft 365 uygulamalarına erişebilir. Ayrıca, dizininizdeki Microsoft 365 uygulamaları, dizininizin **Kullanıcı ayarlarındaki** [Office 365 görünürlüğü](hide-application-from-user-portal.md) ile gösterebilir veya gizleyebilirsiniz. 
 
 Kurumsal uygulamalarda olduğu gibi, kullanıcıları Azure portal aracılığıyla belirli Microsoft uygulamalarına [atayabilir](assign-user-or-group-access-portal.md) veya Portal seçeneği kullanılabilir değilse PowerShell 'i kullanabilirsiniz.
 

@@ -12,22 +12,22 @@ ms.date: 03/28/2019
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1cce42cdb63fcfcb9a5841f2f2199daf2bb92304
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285909"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604181"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanın
 
-Güvenliği vurguladığınız büyük kuruluşlar, Office 365 gibi bulut hizmetlerine geçmek ister, ancak kullanıcıların yalnızca onaylanan kaynaklara erişip erişebileceklerini bilmeleri gerekir. Geleneksel olarak, şirketler erişimi yönetmek istediklerinde etki alanı adlarını veya IP adreslerini kısıtlar. Bu yaklaşım, hizmet olarak yazılım (veya SaaS) uygulamalarının ortak bir bulutta barındırıldığı, [Outlook.Office.com](https://outlook.office.com/) ve [login.microsoftonline.com](https://login.microsoftonline.com/)gibi paylaşılan etki alanı adlarında çalıştırılan bir dünyada başarısız olur. Bu adreslerin engellenmesi, kullanıcıların Web üzerinde Outlook 'U yalnızca onaylanan kimlikler ve kaynaklarla kısıtlamak yerine tamamen web üzerinde erişimini engeller.
+Güvenliği vurguladığınız büyük kuruluşlar, Microsoft 365 gibi bulut hizmetlerine geçmek ister, ancak kullanıcıların yalnızca onaylanan kaynaklara erişip erişebileceklerini bilmeleri gerekir. Geleneksel olarak, şirketler erişimi yönetmek istediklerinde etki alanı adlarını veya IP adreslerini kısıtlar. Bu yaklaşım, hizmet olarak yazılım (veya SaaS) uygulamalarının ortak bir bulutta barındırıldığı, [Outlook.Office.com](https://outlook.office.com/) ve [login.microsoftonline.com](https://login.microsoftonline.com/)gibi paylaşılan etki alanı adlarında çalıştırılan bir dünyada başarısız olur. Bu adreslerin engellenmesi, kullanıcıların Web üzerinde Outlook 'U yalnızca onaylanan kimlikler ve kaynaklarla kısıtlamak yerine tamamen web üzerinde erişimini engeller.
 
-Bu zorluk Azure Active Directory (Azure AD) çözümü, kiracı kısıtlamaları adlı bir özelliktir. Kuruluşlar, kiracı kısıtlamaları ile, uygulamalar çoklu oturum açma için kullanılan Azure AD kiracısına göre SaaS bulut uygulamalarına erişimi denetleyebilir. Örneğin, kuruluşunuzun Office 365 uygulamalarına erişime izin vermek, ancak aynı uygulamaların diğer kuruluşların örneklerine erişimi engellemek isteyebilirsiniz.  
+Bu zorluk Azure Active Directory (Azure AD) çözümü, kiracı kısıtlamaları adlı bir özelliktir. Kuruluşlar, kiracı kısıtlamaları ile, uygulamalar çoklu oturum açma için kullanılan Azure AD kiracısına göre SaaS bulut uygulamalarına erişimi denetleyebilir. Örneğin, kuruluşunuzun Microsoft 365 uygulamalarına erişime izin vermek isteyebilirsiniz, bu da aynı uygulamalardaki diğer kuruluşların örneklerine erişimi önler.  
 
 Kiracı kısıtlamalarıyla kuruluşlar, kullanıcılarının erişmelerine izin verilen kiracılar listesini belirtebilir. Azure AD bundan sonra yalnızca izin verilen kiracılar için erişim izni verir.
 
-Bu makale, Office 365 için kiracı kısıtlamalarına odaklanır, ancak özelliği çoklu oturum açma için Azure AD ile modern kimlik doğrulama protokolleri kullanan tüm SaaS bulut uygulamaları ile birlikte çalışmalıdır. Office 365 tarafından kullanılan kiracıdan farklı bir Azure AD kiracısıyla SaaS uygulamaları kullanıyorsanız, gerekli tüm kiracılara izin olduğundan emin olun. SaaS bulut uygulamaları hakkında daha fazla bilgi için bkz. [market Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
+Bu makale Microsoft 365 için kiracı kısıtlamalarına odaklanır, ancak bu özellik, Azure AD ile çoklu oturum açma için modern kimlik doğrulama protokolleri kullanan tüm SaaS bulut uygulamaları ile birlikte çalışmalıdır. Microsoft 365 tarafından kullanılan kiracıdan farklı bir Azure AD kiracısıyla SaaS uygulamaları kullanıyorsanız, gerekli tüm kiracılara izin olduğundan emin olun. SaaS bulut uygulamaları hakkında daha fazla bilgi için bkz. [market Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
@@ -37,11 +37,11 @@ Genel çözüm aşağıdaki bileşenleri içerir:
 
 2. **Şirket içi proxy sunucu altyapısı**: Bu altyapı, aktarım katmanı GÜVENLIĞI (TLS) denetimi yapabilen bir ara sunucu aygıtıdır. Azure AD 'ye yönelik trafiğe izin verilen kiracılar listesini içeren üstbilgiyi eklemek için proxy 'yi yapılandırmanız gerekir.
 
-3. **İstemci yazılımı**: kiracı kısıtlamalarını desteklemek için, istemci yazılımlarının belirteçleri doğrudan Azure AD 'den istemesi gerekir, bu sayede proxy altyapısının trafiği ele geçirebilir. Tarayıcı tabanlı Office 365 uygulamaları, modern kimlik doğrulaması kullanan Office istemcileri gibi (OAuth 2,0 gibi) Şu anda kiracı kısıtlamalarını desteklemektedir.
+3. **İstemci yazılımı**: kiracı kısıtlamalarını desteklemek için, istemci yazılımlarının belirteçleri doğrudan Azure AD 'den istemesi gerekir, bu sayede proxy altyapısının trafiği ele geçirebilir. Tarayıcı tabanlı Microsoft 365 uygulamalar, modern kimlik doğrulaması kullanan Office istemcileri gibi (OAuth 2,0 gibi), şu anda kiracı kısıtlamalarını desteklemektedir.
 
-4. **Modern kimlik doğrulaması**: bulut Hizmetleri, kiracı kısıtlamalarını kullanmak ve izin verilmeyen tüm kiracılara erişimi engellemek için modern kimlik doğrulaması kullanmalıdır. Office 365 Bulut Hizmetleri 'ni, modern kimlik doğrulama protokollerini varsayılan olarak kullanacak şekilde yapılandırmanız gerekir. Modern kimlik doğrulaması için Office 365 desteğiyle ilgili en son bilgiler için, [Güncelleştirilmiş Office 365 modern kimlik doğrulaması](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)makalesini okuyun.
+4. **Modern kimlik doğrulaması**: bulut Hizmetleri, kiracı kısıtlamalarını kullanmak ve izin verilmeyen tüm kiracılara erişimi engellemek için modern kimlik doğrulaması kullanmalıdır. Microsoft 365 bulut hizmetlerini, varsayılan olarak modern kimlik doğrulama protokollerini kullanacak şekilde yapılandırmanız gerekir. Modern kimlik doğrulaması için Microsoft 365 destek hakkında en son bilgiler için, [Güncelleştirilmiş Office 365 modern kimlik doğrulamasını](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)okuyun.
 
-Aşağıdaki diyagramda, üst düzey trafik akışı gösterilmektedir. Kiracı kısıtlamaları, Office 365 bulut hizmetlerine değil, yalnızca Azure AD trafiği için TLS incelemesi gerektirir. Azure AD kimlik doğrulaması için trafik hacmi, Exchange Online ve SharePoint Online gibi SaaS uygulamalarına Trafik biriminden çok daha düşük olduğundan bu ayrım önemlidir.
+Aşağıdaki diyagramda, üst düzey trafik akışı gösterilmektedir. Kiracı kısıtlamaları, Microsoft 365 bulut hizmetlerine değil, yalnızca Azure AD trafiği için TLS incelemesi gerektirir. Azure AD kimlik doğrulaması için trafik hacmi, Exchange Online ve SharePoint Online gibi SaaS uygulamalarına Trafik biriminden çok daha düşük olduğundan bu ayrım önemlidir.
 
 ![Kiracı kısıtlamaları trafik akışı-diyagram](./media/tenant-restrictions/traffic-flow.png)
 
@@ -63,7 +63,7 @@ Proxy altyapınız aracılığıyla kiracı kısıtlamalarını etkinleştirmek 
 
 - İstemciler, TLS iletişimleri için proxy tarafından sunulan sertifika zincirine güvenmelidir. Örneğin, bir iç [ortak anahtar altyapısı (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) sertifikaları kullanılırsa, iç veren kök sertifika yetkilisi sertifikası güvenilir olmalıdır.
 
-- Bu özellik Office 365 aboneliklerine dahildir, ancak diğer SaaS uygulamalarına erişimi denetlemek için kiracı kısıtlamalarını kullanmak istiyorsanız, Azure AD Premium 1 lisans gerekir.
+- Bu özellik Microsoft 365 aboneliklerine dahildir, ancak diğer SaaS uygulamalarına erişimi denetlemek için kiracı kısıtlamalarını kullanmak istiyorsanız, Azure AD Premium 1 lisans gerekir.
 
 #### <a name="configuration"></a>Yapılandırma
 
@@ -129,16 +129,16 @@ Azure portal diğer raporlar gibi, raporunuzun kapsamını belirtmek için filtr
 - **Konum**
 - **Hedef kiracı KIMLIĞI**
 
-## <a name="office-365-support"></a>Office 365 desteği
+## <a name="microsoft-365-support"></a>Microsoft 365 desteği
 
-Office 365 uygulamaları, kiracı kısıtlamalarını tam olarak desteklemek için iki ölçütü karşılamalıdır:
+Microsoft 365 uygulamaların kiracı kısıtlamalarını tam olarak desteklemesi için iki ölçütü karşılaması gerekir:
 
 1. Kullanılan istemci modern kimlik doğrulamasını destekler.
 2. Modern kimlik doğrulaması, bulut hizmeti için varsayılan kimlik doğrulama protokolü olarak etkinleştirilir.
 
 Office istemcilerinin Şu anda modern kimlik doğrulamasını desteklediği en son bilgiler için bkz. [güncelleştirilmiş office 365 modern kimlik doğrulaması](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) . Bu sayfada Ayrıca belirli Exchange Online ve Skype Kurumsal Çevrimiçi kiracılarında modern kimlik doğrulamayı etkinleştirmeye yönelik yönergelerin bağlantıları yer alır. SharePoint Online, varsayılan olarak modern kimlik doğrulamaya zaten izin tanıyor.
 
-Office 365 tarayıcı tabanlı uygulamalar (Office portalı, Yammer, SharePoint siteleri, Web 'de Outlook ve daha fazlası) Şu anda kiracı kısıtlamalarını desteklemektedir. Kalın istemciler (Outlook, Skype Kurumsal, Word, Excel, PowerPoint ve daha fazlası) yalnızca modern kimlik doğrulaması kullanırken kiracı kısıtlamalarını zorlayabilir.  
+Microsoft 365 tarayıcı tabanlı uygulamalar (Office portalı, Yammer, SharePoint siteleri, Web 'de Outlook ve daha fazlası) Şu anda kiracı kısıtlamalarını desteklemektedir. Kalın istemciler (Outlook, Skype Kurumsal, Word, Excel, PowerPoint ve daha fazlası) yalnızca modern kimlik doğrulaması kullanırken kiracı kısıtlamalarını zorlayabilir.  
 
 Modern kimlik doğrulamasını destekleyen Outlook ve Skype Kurumsal istemcileri, modern kimlik doğrulamasının etkinleştirilmediği, kiracı kısıtlamalarını etkin bir şekilde atlayarak eski protokollerde hala eski protokolleri kullanabiliyor olabilir. Kiracı kısıtlamaları, kimlik doğrulaması sırasında login.microsoftonline.com, login.microsoft.com veya login.windows.net ile iletişim kurduklarında eski protokolleri kullanan uygulamaları engelleyebilirler.
 

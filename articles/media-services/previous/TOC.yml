@@ -318,33 +318,16 @@
               href: hybrid-design-drm-sybsystem.md
             - name: Başvuru çoklu DRM tasarımı
               href: media-services-cenc-with-multidrm-access-control.md
-    - name: Çözümleme
-      href: media-services-analytics-overview.md
-      items:
-        - name: Azure portalını kullanarak medyayı çözümleme
-          href: media-services-portal-analyze.md
-        - name: Dizin Oluşturucu 2 ile işleme
-          href: media-services-process-content-with-indexer2.md
         - name: Dizin Oluşturucu ile işleme
           href: media-services-index-content.md
           items:
             - name: Görev ön ayarı
               href: indexer-task-preset.md
-        - name: Yüz Algılayıcısı ile işleme
-          href: media-services-face-and-emotion-detection.md
-        - name: Hareket Algılayıcısı ile işleme
-          href: media-services-motion-detection.md
         - name: Face Redactor ile işleme
           href: media-services-face-redaction.md
           items:
             - name: Face Redactor için izlenecek yol
               href: media-services-redactor-walkthrough.md
-        - name: Video küçük resimleri ile işleme
-          href: media-services-video-summarization.md
-        - name: OCR ile işleme
-          href: media-services-video-optical-character-recognition.md
-        - name: Content Moderator ile işleme
-          href: media-services-content-moderation.md
     - name: Telemetriyi yapılandırma
       href: media-services-telemetry-overview.md
       items:

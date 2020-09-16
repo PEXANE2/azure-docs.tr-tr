@@ -4,12 +4,12 @@ description: Azure geçişi sunucu değerlendirmesi aracı ile şirket içi VMwa
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 55a7f15233d32f5ee60a57ad34e8b0177ca29ff3
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: cbe1561f58af8f65285ffb005b0232bff8225d3b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90064573"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604062"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile VMware VM 'lerini bulma
 
@@ -124,121 +124,146 @@ Yeni bir Azure geçişi projesi ayarlayın.
 
 ## <a name="set-up-the-appliance"></a>Gereci ayarlama
 
-Bu öğreticide bir VMware VM 'si üzerindeki gereç ayarlanır.
-- Gereç şablonunu indirip vCenter Server gereç sanal makinesini oluşturmak için içeri aktarabilirsiniz.
-- Gereci oluşturduktan sonra ilk kez ayarlayın ve Azure geçişi projesine kaydedin.
+Bir OVA şablonunu kullanarak gereci ayarlamak için:
+- Portalda bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun
+- Bir OVA şablon dosyasını indirip vCenter Server içe aktarın.
+- Gereci oluşturun ve Azure geçişi sunucu değerlendirmesi 'ne bağlanıp bağlanamadığından emin olun.
+- Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
 
 > [!NOTE]
 > Bir nedenden dolayı, şablonu kullanarak gereci ayarlayamazsınız, bunu bir PowerShell betiği kullanarak ayarlayabilirsiniz. [Daha fazla bilgi edinin](deploy-appliance-script.md#set-up-the-appliance-for-vmware).
 
 
-### <a name="download-the-ova-template"></a>OVA şablonunu indirin
+### <a name="deploy-with-ova"></a>OVA ile dağıtma
+
+Bir OVA şablonunu kullanarak gereci ayarlamak için:
+- Portalda bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun
+- Bir OVA şablon dosyasını indirip vCenter Server içe aktarın.
+- Gereci oluşturun ve Azure geçişi sunucu değerlendirmesi 'ne bağlanıp bağlanamadığından emin olun.
+- Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
+
+### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
 
 1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
-2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet '** i seçin.
-3. OVA şablon dosyasını indirmek için **İndir** ' i seçin.
+2. Makinelerde **bulunan makinelerde**  >  **makineler sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet '** i seçin.
+3. **1: Azure geçişi proje anahtarı oluştur**' da, Azure geçiş gereci VMware VM 'leri bulmak için ayarlayacaksınız. ad, 14 karakter veya daha kısa olmalıdır.
+1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynakları oluşturma sırasında makineleri keşfet sayfasını kapatmayın.
+1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Azure geçişi proje anahtarı** oluşturulur.
+1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
 
-   ![OVA dosyasını indirmek için seçim](./media/tutorial-discover-vmware/download-ova.png)
+### <a name="download-the-ova-template"></a>OVA şablonunu indirin
+
+**2: Azure geçişi yükleme gereci indirin**, öğesini seçin. OVA dosyası ve **İndir**' e tıklayın. 
 
 
-### <a name="deploy-the-appliance-vm"></a>Gereç sanal makinesini dağıtma
+### <a name="verify-security"></a>Güvenliği doğrulama
 
-İndirilen dosyayı içeri aktarın ve bir VM oluşturun:
+Dağıtım yapmadan önce OVA dosyasının güvenli olup olmadığını denetleyin:
 
-1. Oluşturduğunuz vCenter hesabını kullanarak vSphere Istemci konsolunda oturum açın.
-2. **Sanal makineler** sekmesi > **Eylemler** menüsünde **ovf**şablonu Dağıt ' ı seçerek ovf şablonu Dağıtma Sihirbazı ' nı açın.
-3. **BIR OVF şablonu seçin**bölümünde **yerel dosya**' yı seçin ve indirme şablonuna gidin. 
-   ![OVF şablonu dağıtmak için vSphere menü komutu](./media/tutorial-discover-vmware/deploy-ovf.png)
-3. Sihirbaz Ayarları Sihirbazı 'nın geri kalanını belirtin, dağıtım konumunu, sanal makinenin çalıştırılacağı konak/kümeyi ve depolama/ağ ayarlarını da içerir.
-4. **Tamamlamaya hazırlanma**bölümünde **son**' a tıklayın. Sistem şablonu içeri aktarır ve dağıtır. 
-5. Dağıtımdan sonra, Gereç VM 'si **sanal makineler** sekmesinde görünür.
-6. **> sanal**makineyi seçin.
-7. VMware uzak konsolunda **Lisans koşullarını**>, lisans koşullarını gözden geçirip kabul edin.
-8. **Ayarları Özelleştir**' de, Kullanıcı hesabı için bir parola ayarlayın.
+1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
+2. OVA dosyasının karmasını oluşturmak için aşağıdaki komutu çalıştırın:
+  
+   ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+   
+   Örnek kullanım: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+
+3. En son gereç sürümlerini ve karma değerlerini doğrulayın:
+
+    - Azure genel bulutu için:
+    
+        **Algoritma** | **İndir** | **SHA256**
+        --- | --- | ---
+        VMware (11,6 GB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+
+    - Azure Kamu için:
+    
+        **Algoritma** | **İndir** | **SHA256**
+        --- | --- | ---
+        VMware (85 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140337) | 47179f47eba2842337bbe533c424dd1da56baccdcf68b1d87b71a5a4280108c2
+
+
+
+
+### <a name="create-the-appliance-vm"></a>Gereç VM 'sini oluşturma
+
+İndirilen dosyayı içeri aktarın ve bir VM oluşturun.
+
+1. VSphere istemci konsolunda, **File**  >  **ovf şablonu dosya dağıt**' a tıklayın.
+2. OVF şablonu Dağıtma Sihirbazı > **kaynak**bölümünde ova dosyasının konumunu belirtin.
+3. **Ad** ve **konum**bölümünde VM için bir kolay ad belirtin. VM 'nin barındırıldığı envanter nesnesini seçin.
+5. **Konakta/kümede**, sanal makinenin çalıştırılacağı konağı veya kümeyi belirtin.
+6. **Depolama**alanında VM için depolama hedefini belirtin.
+7. **Disk Biçimi**’nde disk türünü ve boyutunu belirtin.
+8. **Ağ eşlemesinde**, sanal makinenin bağlanacağı ağı belirtin. Ağ, Azure geçişi sunucu değerlendirmesi 'ne meta veri göndermek için internet bağlantısı gerektirir.
+9. Ayarları gözden geçirip onayladıktan sonra **Son**’a tıklayın.
 
 
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
-Gereç VM erişimini denetleyin.
+Gereç sanal makinesinin, [kamu](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
 
-1. VM 'nin Azure 'a bağlanıp bağlanamadan emin olun.
-    - Ortak bulutta, Gereç makinesi bu [URL 'lere](migrate-appliance.md#public-cloud-urls)bağlanabilmelidir.
-    - Kamu bulutunda, VM 'nin bu [kamu URL 'lerine](migrate-appliance.md#government-cloud-urls)bağlanabilmesi gerekir.
-2. Bu bağlantı noktalarının gereç makinesinde açık olduğundan emin olun:
-
-    - TCP bağlantı noktası 3389 üzerinde gelen bağlantılara, Gereç ile Uzak Masaüstü bağlantılarına izin vermek için izin verin.
-    - 44368 numaralı bağlantı noktası üzerinde gelen bağlantılara izin ver: https://<gereç-IP-veya-adı>:44368 ' yi kullanarak gereç Web uygulamasına uzaktan erişin.
-    - Bağlantı noktası 443 ' de (HTTPS) giden bağlantılara izin vermek için Azure geçişi 'ne bulma ve performans meta verileri gönderme.
 
 ### <a name="configure-the-appliance"></a>Gereci yapılandırma
 
 Gereci ilk kez ayarlayın.
 
-1. Gereç sanal makinesinde oturum açın. 
-    - Gereç Web uygulaması bir tarayıcıda otomatik olarak açılır.
-    - Alternatif olarak, uygulamayı gereç masaüstünden uygulama kısayoluyla açabilirsiniz.
-2. Azure geçiş gereci Web uygulamasını > **önkoşulları ayarlayın**, lisans koşullarını gözden geçirip kabul edin ve üçüncü taraf bilgilerini okuyun.
-3. Gereç, sanal makinenin internet erişimi olup olmadığını ve VM 'deki sürenin internet saatine eşit olduğunu denetler.
-    - Ara sunucu kullanıyorsanız, **proxy 'Yi ayarla** ' ya tıklayın ve proxy adresini ve bağlantı noktasını (veya biçiminde) belirtin http://ProxyIPAddress http://ProxyFQDN) . 
-    - Ara sunucu kimlik doğrulaması gerektiriyorsa kimlik bilgilerini belirtin. Yalnızca HTTP proxy’si desteklenir.
-4. Gereç, en son Azure geçiş güncelleştirmelerini yüklüyor ve VMWare vSphere sanal disk geliştirme seti 'nin (VDDK) yüklü olup olmadığını denetler.
-5. VDDK 6,7 ' ü yüklemek için, VMware 'den indirmek için **İndir** ' e tıklayın ve indirilen ZIP dosyası içeriğini gereç üzerinde belirtilen konuma ayıklayın. Ardından **Doğrula ve Install**öğesine tıklayın.
+> [!NOTE]
+> Gereci, indirilen OVA yerine bir [PowerShell betiği](deploy-appliance-script.md) kullanarak ayarlarsanız, bu yordamın ilk iki adımı ilgili değildir.
 
-    ![Gereç dağıtımı için Internet erişimini ve ayarlarını doğrulamak üzere Önkoşullar sayfası](./media/tutorial-discover-vmware/prerequisites.png)
-  
-3. VDDK yüklendikten sonra ayarları gözden geçirin ve **devam**' a tıklayın.
+1. VSphere Istemci konsolunda VM 'ye sağ tıklayın ve ardından **Konsolu Aç**' ı seçin.
+2. Gereç için dil, saat dilimi ve parola sağlayın.
+3. VM 'ye bağlanabilecek herhangi bir makinede bir tarayıcı açın ve gereç Web uygulamasının URL 'sini açın: **https://*Gereç adı veya IP adresi*: 44368**.
 
-### <a name="register-the-appliance"></a>Gereci Kaydet 
+   Alternatif olarak, uygulama kısayolunu seçerek uygulamayı gereç masaüstünden açabilirsiniz.
+1. **Lisans koşullarını**kabul edin ve üçüncü taraf bilgilerini okuyun.
+1. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
+   - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
+     - Proxy adresini belirtmek için **proxy ayarla** ' ya tıklayın (formdaki http://ProxyIPAddress veya http://ProxyFQDN) dinleme bağlantı noktasında).
+     - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
+     - Yalnızca HTTP proxy’si desteklenir.
+     - Proxy ayrıntıları eklediyseniz veya proxy ve/veya kimlik doğrulamasını devre dışı bırakırsanız, bağlantıyı tetiklemek için **Kaydet** 'e tıklayarak bağlantı denetimini yeniden başlatın.
+   - **Zaman eşitleme**: bulmanın düzgün çalışması için gereç üzerindeki zaman internet ile eşitlenmiş olmalıdır.
+   - **Güncelleştirmeleri yükleme**: gereç en son güncelleştirmelerin yüklü olmasını sağlar. Denetim tamamlandıktan sonra gereç **hizmetlerini görüntüle** ' ye tıklayarak gereç üzerinde çalışan bileşenlerin durumunu ve sürümlerini görebilirsiniz.
+   - **VDDK 'Yi yükleme**: gereç, VMware vSphere sanal disk geliştirme seti 'nın (VDDK) yüklü olduğunu denetler. Yüklü değilse, VMware 'den VDDK 6,7 ' i indirin ve indirilen ZIP içeriğini **yükleme yönergelerindeki**belirtilen konuma ayıklayın.
 
-1. **Azure geçişi Ile kaydolun**bölümünde **oturum aç**' ı seçin. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
+     Azure geçişi sunucu geçişi, Azure 'a geçiş sırasında makineleri çoğaltmak için VDDK 'yi kullanır. 
+1. İsterseniz, gerecin tüm önkoşulları karşılayıp karşılamadığını denetlemek için gereç yapılandırması sırasında dilediğiniz zaman **Önkoşulları yeniden çalıştırabilirsiniz** .
 
-    ![Gereci kaydetmeye başlamak için oturum aç ' a tıklayın](./media/tutorial-discover-vmware/register.png)
+### <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
-1. **Oturum aç** sayfasında, Azure Kullanıcı adı ve parolanızla oturum açın. PIN ile oturum açma desteklenmez.
+1. Portaldan kopyalanmış **Azure geçişi proje anahtarını** yapıştırın. Anahtarınız yoksa, sunucu değerlendirmesi ' ne gidin **> var olan gereçlerini keşfet> yönetin**, anahtar oluşturma sırasında verdiğiniz gereç adını seçin ve ilgili anahtarı kopyalayın.
+1. **Oturum**aç ' a tıklayın. Yeni bir tarayıcı sekmesinde bir Azure oturum açma istemi açar. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
+1. Yeni sekmesinde, Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
+   
+   PIN ile oturum açma desteklenmez.
+3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün. 
+4. Günlüğe kaydetme için kullanılan Azure Kullanıcı hesabının, anahtar üretimi sırasında oluşturulan Azure kaynakları üzerinde doğru [izinleri](tutorial-prepare-vmware.md#prepare-azure) varsa, Gereç kaydı başlatılır.
+1. Gereç başarıyla kaydedildikten sonra, **Ayrıntıları görüntüle**' ye tıklayarak kayıt ayrıntılarına bakabilirsiniz.
 
-    ![Gereci kaydetmek için oturum aç düğmesi](./media/tutorial-discover-vmware/sign-in.png)
-1. Başarıyla oturum açtıktan sonra uygulamaya geri dönün.
-1. **Azure geçişi Ile kaydolun**bölümünde, Azure geçişi projesinin oluşturulduğu aboneliği seçin ve ardından projeyi seçin.
-1. Gereç için bir ad belirtin. Ad 14 karakter veya daha kısa bir harf olmalıdır.
-3. **Kaydet**’i seçin. Sonra **devam**' a tıklayın. Bir ileti başarıyla kaydı gösterir.
 
-    ![Abonelik, proje ve gereç adını doldur ve gereci Kaydet](./media/tutorial-discover-vmware/success-register.png)
 
 ## <a name="start-continuous-discovery"></a>Sürekli bulmayı Başlat
 
-Gereç, VM 'Leri bulmaya yönelik vCenter Server bağlanmalıdır.
+Gerecin, VM 'lerin yapılandırma ve performans verilerini bulması için vCenter Server 'e bağlanması gerekir.
 
-### <a name="connect-to-vcenter-server"></a>vCenter Server Bağlan
+1. **1. Adım: vCenter Server kimlik**bilgilerini belirtin bölümünde kimlik bilgileri için kolay bir ad belirtmek üzere **kimlik bilgileri ekle** ' ye tıklayın, gerecin vCenter Server örneğindeki VM 'leri bulması için kullanacağı vCenter Server hesabı Için **Kullanıcı adı** ve **parola** ekleyin.
+    - [Önceki öğreticide](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)gerekli izinlere sahip bir hesap ayarlamış olmanız gerekir.
+    - Bulma işlemini belirli VMware nesneleri (vCenter Server veri merkezleri, kümeler, bir küme klasörü, konaklar, bir konaklar klasörü veya ayrı VM 'Ler) olarak atamak istiyorsanız, Azure geçişi tarafından kullanılan hesabı kısıtlamak için [Bu makaledeki](set-discovery-scope.md) yönergeleri gözden geçirin.
+1. **2. Adım: vCenter Server ayrıntıları belirtin**bölümünde, açılan listeden kimlik bilgileri için kolay ad seçmek üzere **bulma kaynağı Ekle** ' ye tıklayın, vCenter Server ÖRNEĞININ **IP adresini/FQDN** 'sini belirtin. **Bağlantı noktasını** varsayılan (443) olarak bırakabilir veya vCenter Server dinlediği ve **Kaydet**' e tıklayarak özel bir bağlantı noktası belirtebilirsiniz.
+1. Kaydet 'e tıklanınca, Gereç vCenter Server bağlantısını doğrulamayı dener ve tablodaki **doğrulama durumunu** vCenter Server IP ADRESINE/FQDN 'ye göre gösterir.
+1. Bulmayı başlatmadan önce vCenter Server bağlantıyı **yeniden doğrulayabilirsiniz** .
+1. **3. Adım: yüklü uygulamaları bulmaya ve aracısız bağımlılık eşlemesi gerçekleştirmeye YÖNELIK VM kimlik bilgilerini sağlayın**, kimlik bilgileri **Ekle**' ye tıklayın ve kimlik bilgilerinin sağlandığı işletim sistemini, kimlik bilgileri Için kolay adı ve **Kullanıcı** adını ve **parolayı**belirtin. Ardından **Kaydet**' e tıklayın.
 
-Gereç, VM 'Leri bulmaya yönelik vCenter Server bağlanmalıdır.
+    - [Uygulama bulma özelliği](how-to-discover-applications.md)veya [aracısız bağımlılık Analizi özelliği](how-to-create-group-machine-dependencies-agentless.md)için kullanmak üzere bir hesap oluşturduysanız, isteğe bağlı olarak burada kimlik bilgileri eklersiniz.
+    - Bu özellikleri kullanmak istemiyorsanız, adımı atlamak için kaydırıcıya tıklayabilirsiniz. Amacınızı daha sonra dilediğiniz zaman tersine çevirebilirsiniz.
+    - [Uygulama bulma](migrate-support-matrix-vmware.md#application-discovery-requirements)veya [aracısız bağımlılık Analizi](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)için gereken kimlik bilgilerini gözden geçirin.
 
-1. **VCenter Server belirtin**bölümünde vCenter Server adı (FQDN) veya IP adresini belirtin.
-2. Varsayılan bağlantı noktasını bırakın veya vCenter Server dinlediği özel bir bağlantı noktası belirtin.
-3. **Kullanıcı adı** ve **parola**' da, gerecin vCenter Server VM 'leri bulması için kullanacağı vCenter Server hesabı kimlik bilgilerini belirtin.
-3. Gerecin vCenter Server bağlanabildiğini sağlamak için **bağlantıyı doğrula**' yı seçin. 
+5. VM bulmayı **başlatmak için bulmayı Başlat**' a tıklayın. Bulma işlemi başarılı bir şekilde başlatıldıktan sonra, tablodaki vCenter Server IP adresine/FQDN 'ye karşı bulma durumunu kontrol edebilirsiniz.
 
-    ![vCenter Server bağlantısını doğrulamak için vCenter Server ayrıntıları ve düğmesi](./media/tutorial-discover-vmware/vcenter.png)
-
-1. **VM 'lerde uygulamaları ve bağımlılıkları bul**' da, **kimlik bilgileri ekle**' ye tıklayın.
-1. Uygulama bulma ve bağımlılık analizi için kullanmakta olduğunuz Windows/Linux kimlik bilgisini belirtin.
-1. Bulma işlemini **başlatmak Için Kaydet ve bulmayı Başlat**' a tıklayın.
-
-    ![Uygulama bulma ve bağımlılık analizi için kimlik bilgileri ekleyin ve sürekli bulma işlemini başlatın. ](./media/tutorial-discover-vmware/start-discovery.png)
-
-
-Bulma başladıktan sonra:
-
+Bulma işlemi aşağıdaki gibi çalışmaktadır:
 - Keşfedilen VM meta verilerinin portalda görünmesi 15 dakika içinde sürer.
-- Uygulama bulma işlemi biraz zaman alır. Süre, bulunan VM sayısına bağlıdır. 500 VM 'Ler için, uygulama envanterinin Azure geçişi portalında görünmesi yaklaşık bir saat sürer.
+- Yüklenen uygulamaların, rollerin ve özelliklerin bulunması biraz zaman alır. Süre, bulunan VM sayısına bağlıdır. 500 VM 'Ler için, uygulama envanterinin Azure geçişi portalında görünmesi yaklaşık bir saat sürer.
 
-
-
-## <a name="verify-discovered-vms-in-the-portal"></a>Portalda bulunan VM 'Leri doğrulama
-
-Bulmadan sonra, VM 'Lerin Azure portal göründüğünü doğrulayabilirsiniz:
-
-1. Azure geçişi panosunu açın.
-2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucuların**sayısını gösteren simgeyi seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

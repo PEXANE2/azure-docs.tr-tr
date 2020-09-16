@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 594ad352d5fd8431ffaf6d681c891c967cf9d32a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371792"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606753"
 ---
 Bir cihaz tünelini başarıyla kurmak için aşağıdaki gereksinimlerin karşılanması gerekir:
 
@@ -123,18 +123,18 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
+   ![Ekran görüntüsü, PowerShell 'in 64 bitlik sürümünü başlatacak komut istemi penceresini gösterir.](./media/vpn-gateway-vwan-always-on-device/powershell.png)
 1. PowerShell 'de **devicecert.ps1** ve **VPNProfile.xml** bulunduğu klasöre geçin ve aşağıdaki komutu çalıştırın:
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
-   ![Machineccerttest](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
+   ![Ekran görüntüsü, devicesert betiği kullanarak Machineccerttest çalıştıran bir PowerShell penceresini gösterir.](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
 1. **RASPHONE**çalıştırın.
 
-   ![belirlen](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
+   ![Ekran görüntüsü RASPHONE seçiliyken Çalıştır iletişim kutusunu gösterir.](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
 1. **Machineccerttest** girişini bulun ve **Bağlan**' a tıklayın.
 
-   ![Bağlan](./media/vpn-gateway-vwan-always-on-device/connect.png)
+   ![Ekran görüntüsünde, Machineccerttest seçiliyken bir ağ bağlantıları iletişim kutusu ve bir Bağlan düğmesi gösterilir.](./media/vpn-gateway-vwan-always-on-device/connect.png)
 1. Bağlantı başarılı olursa, bilgisayarı yeniden başlatın. Tünel otomatik olarak bağlanır.

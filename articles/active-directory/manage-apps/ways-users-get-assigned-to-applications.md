@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 243e5ece0d0a14cb7e3ade409ee68510cef64a9c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 411e9a6e059075dfc2928ed09c0c604d600fd9be
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397109"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604164"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>Kullanıcıların Azure Active Directory ' de uygulamalara nasıl atandığını anlayın
 Bu makale, kullanıcıların kiracınızdaki bir uygulamaya nasıl atandığını anlamanıza yardımcı olur.
@@ -28,14 +28,14 @@ Bir kullanıcının bir uygulamaya erişmesi için öncelikle kendisine bir şek
     * Şirket içinden eşitlenen bir grup
     * Bulutta oluşturulan statik bir güvenlik grubu
     * Bulutta oluşturulan [dinamik bir güvenlik grubu](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)
-    * Bulutta oluşturulan bir Office 365 Grubu
+    * Bulutta oluşturulan bir Microsoft 365 Grubu
     * [Tüm kullanıcılar](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) grubu
 *  Bir yönetici, bir kullanıcının [uygulamalarımı](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) kullanarak uygulama eklemesine izin vermek için [self servis uygulamasına erişimi](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) , **iş onayı olmadan** **uygulama ekleme özelliği sağlar**
-*  Bir yönetici, [self servis uygulama erişiminin](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) , [uygulamalar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **uygulama ekleme** özelliği kullanarak bir uygulama eklemesine izin verir, ancak**Seçilen iş onaylayanlardan yalnızca daha önce onaylanmak** üzere
+*  Bir yönetici, [self servis uygulama erişimi](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) 'Ni, [uygulamalarımı](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **uygulama ekleme** özelliği kullanarak bir uygulama eklemesine izin verir, ancak yalnızca **Seçili bir iş onaylayanlardan daha önce onay** sağlar
 *  Bir yönetici, bir kullanıcıya **iş onayı olmadan** bir uygulamanın atandığı bir gruba katılmasına izin vermek için [self servis grup yönetimine](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) olanak tanır
 *  Bir yönetici, bir kullanıcının bir uygulamanın atandığı bir gruba katılmasına izin vermek için [self servis grup yönetimine](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) olanak tanır, ancak yalnızca **Seçili iş onaylayanlardan önceki onay ile**
-*  Yönetici, [Microsoft Office 365](https://products.office.com/) gibi bir ilk taraf uygulama için kullanıcıya doğrudan bir lisans atar
-*  Bir yönetici, kullanıcının ilk taraf uygulamaya üye olduğu bir gruba lisans atar, örneğin [Microsoft Office 365](https://products.office.com/)
+*  Yönetici, [Microsoft 365](https://products.office.com/) gibi bir ilk taraf uygulama için kullanıcıya doğrudan bir lisans atar.
+*  Bir yönetici, kullanıcının ilk taraf bir uygulamaya üye olduğu bir gruba lisans atar, örneğin [Microsoft 365](https://products.office.com/)
 *  Yönetici, tüm kullanıcılar tarafından kullanılacak bir [uygulamaya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) onay verir ve ardından bir kullanıcı uygulamada oturum açar
 * Bir kullanıcı uygulamada oturum açarak [bir uygulamaya sahip olacak](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
 

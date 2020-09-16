@@ -1,34 +1,38 @@
 ---
-title: Azure geçişi sunucu değerlendirmesi ile içeri aktarılan bir CSV dosyası kullanarak şirket içi sunucuları bulma
+title: Azure geçişi sunucu değerlendirmesi ile içeri aktarılan bir CSV dosyası kullanarak şirket içi sunucuları değerlendirme
 description: Azure geçişi sunucu değerlendirmesi ' nde içeri aktarılan CSV dosyası kullanarak Azure 'a geçiş için şirket içi sunucuların nasıl keşfedileceğini açıklar
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 6526961df225e4f347216428141e8217043161df
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 743f18ce72e3f14fe54e0bbadff254ea03fc6278
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90064520"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604232"
 ---
-# <a name="tutorial-discover-servers-using-an-imported-csv-file"></a>Öğretici: içeri aktarılan bir CSV dosyası kullanarak sunucuları bulma
+# <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Öğretici: içeri aktarılan bir CSV dosyası kullanarak sunucuları değerlendirme
 
 Azure 'a geçiş sürecinizin bir parçası olarak şirket içi envanterinizi ve iş yüklerinizi keşfedeceksiniz. 
 
-Bu öğreticide, içeri aktarılan bir virgülle ayrılmış değerler (CSV) dosyası kullanarak Azure geçişi: Sunucu değerlendirmesi aracı ile şirket içi VMware sanal makinelerini (VM) nasıl keşfedebileceğiniz gösterilmektedir. 
+Bu öğreticide, içeri aktarılan bir virgülle ayrılmış değerler (CSV) dosyası kullanarak Azure geçişi: Sunucu değerlendirmesi aracı ile şirket içi makineleri değerlendirme gösterilmektedir. 
 
-Bir CSV dosyası kullanıyorsanız, sunucuları bulmaya yönelik Azure geçişi gereci ayarlamanız gerekmez. Dosya içinde paylaştığınız verileri denetleyebilir ve verilerin büyük bölümü isteğe bağlıdır. Bu yöntem şu durumlarda yararlı olur:
+Bir CSV dosyası kullanıyorsanız, sunucuları bulup değerlendirmek için Azure geçişi gereci ayarlamanız gerekmez. Dosya içinde paylaştığınız verileri denetleyebilir ve verilerin büyük bölümü isteğe bağlıdır. Bu yöntem şu durumlarda yararlı olur:
 
 - Gereci dağıtmadan önce hızlı, ilk değerlendirme oluşturmak istersiniz.
 - Azure geçişi gerecini kuruluşunuza dağıtamazsınız.
 - Şirket içi sunuculara erişime izin veren kimlik bilgilerini paylaşamazsınız.
 - Güvenlik kısıtlamaları, Gereç tarafından toplanan verileri Azure 'a toplamayı ve göndermeyi önler.
 
+> [!NOTE]
+> CSV dosyası kullanılarak içeri aktarılan sunucuları geçiremezsiniz.
+
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure hesabı ayarlama
-> * Bir Azure geçişi projesi ayarlayın.
+> * Azure geçişi projesi ayarlama
 > * CSV dosyası hazırlama
-> * Dosyayı içeri aktarın.
+> * Dosyayı içeri aktarma
+> * Sunucuları değerlendir
 
 > [!NOTE]
 > Öğreticiler senaryo denemek için en hızlı yolu gösterir ve mümkün olan yerlerde varsayılan seçenekleri kullanır. 
@@ -43,7 +47,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prepare-an-azure-user-account"></a>Azure Kullanıcı hesabı hazırlama
 
-Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için, şu bir hesaba sahip olmanız gerekir:
+Bir Azure geçişi projesi oluşturmak için şunları içeren bir hesap gerekir:
 - Azure aboneliğinde katkıda bulunan veya sahip izinleri.
 - Azure Active Directory uygulamaları kaydetme izinleri.
 
@@ -73,7 +77,7 @@ Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olu
 
 ## <a name="set-up-a-project"></a>Proje ayarlama
 
-Yeni bir Azure geçişi projesi ayarlayın.
+Yoksa yeni bir Azure geçişi projesi ayarlayın.
 
 1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
 2. **Hizmetler** altında **Azure Geçişi**’ni seçin.
@@ -157,7 +161,7 @@ Değerlendirme, belirli işletim sistemi adlarını tanır. Belirttiğiniz ad, [
 
 ## <a name="import-the-server-information"></a>Sunucu bilgilerini içeri aktarma
 
-CSV şablonuna bilgi ekledikten sonra sunucuları sunucu değerlendirmesi içine aktarın.
+CSV şablonuna bilgi ekledikten sonra, CSV dosyasını sunucu değerlendirmesi içine aktarın.
 
 1. Azure geçişi 'nde, **bulma makineler**bölümünde, tamamlanan şablona gidin.
 2. **İçeri aktar**'ı seçin.
@@ -169,7 +173,7 @@ CSV şablonuna bilgi ekledikten sonra sunucuları sunucu değerlendirmesi içine
         1. Artık hata ayrıntılarını içeren CSV 'yi indirin.
         1. Hataları gözden geçirin ve gerektiği şekilde çözün. 
         1. Değiştirilen dosyayı yeniden karşıya yükleyin.
-4. İçeri aktarma durumu **tamamlandığında**, sunucu bilgileri içeri aktarılır.
+4. İçeri aktarma durumu **tamamlandığında**, sunucu bilgileri içeri aktarılır. İçeri aktarma işleminin tamamlanmamış gibi görünmediğini yenileyin.
 
 ## <a name="update-server-information"></a>Sunucu bilgilerini güncelleştir
 

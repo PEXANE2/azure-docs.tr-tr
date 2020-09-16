@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 7957c6a3fdc8cb798292d03092ee1442b2c0a6bc
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: fd541e551102b205acff28b6bc06bc88abd14763
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004519"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605116"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM 'lerini Kullanılabilirlik Alanları içine taşıyın
 
@@ -28,7 +28,7 @@ Sanal makinelerinizin belirli bir bölgeye *tek bir örnek* olarak dağıtıldı
 - Bir kullanılabilirlik kümesindeki VM 'Leri hedef bölgedeki Kullanılabilirlik Alanları taşıyın
 
 > [!IMPORTANT]
-> Azure VM 'lerini farklı bir bölge bölgesindeki bir kullanılabilirlik bölgesine taşımak için artık [Azure Kaynak taşıyıcısı](../resource-mover/move-region-availability-zone.md)kullanmanızı öneririz. Kaynak taşıyıcısı genel önizlemede bulunur ve şunları sağlar:
+> Azure VM 'lerini farklı bir bölgedeki bir kullanılabilirlik bölgesine taşımak için artık [Azure Kaynak taşıyıcısı](../resource-mover/move-region-availability-zone.md)kullanmanızı öneririz. Kaynak taşıyıcısı genel önizlemede bulunur ve şunları sağlar:
 > - Kaynakları bölgeler arasında taşımak için tek bir hub.
 > - Daha az taşıma süresi ve karmaşıklığı. İhtiyacınız olan her şey tek bir konumda.
 > - Farklı türlerde Azure kaynaklarını taşımak için basit ve tutarlı bir deneyim.

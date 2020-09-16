@@ -2,14 +2,14 @@
 title: Özel görüntü havuzu oluşturmak için paylaşılan görüntü galerisini kullanma
 description: Özel görüntü havuzları, toplu iş yüklerinizi çalıştırmak için işlem düğümlerini yapılandırmanın etkili bir yoludur.
 ms.topic: conceptual
-ms.date: 07/01/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aad8b279ce821496d4c947bc7f9c707243468f07
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852421"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605201"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Özel görüntü havuzu oluşturmak için paylaşılan görüntü galerisini kullanma
 
@@ -43,7 +43,9 @@ Senaryonuz için yapılandırılmış paylaşılan bir görüntünün kullanılm
 - **Paylaşılan görüntü Galerisi görüntüsü**. Paylaşılan bir görüntü oluşturmak için, yönetilen bir görüntü kaynağınız olması veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır.
 
 > [!NOTE]
-> Paylaşılan görüntünüz Batch hesabıyla aynı abonelikte olmalıdır. Görüntü, Batch hesabınızla aynı bölgede çoğaltmalar olduğu sürece farklı bölgelerde olabilir.
+> Paylaşılan görüntü, Batch hesabıyla aynı abonelikte değilse, bu abonelik için [Microsoft.Batch kaynak sağlayıcısını kaydetmeniz](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) gerekir. İki abonelik aynı Azure AD kiracısında olmalıdır.
+>
+> Görüntü, Batch hesabınızla aynı bölgede çoğaltmalar olduğu sürece farklı bir bölgede olabilir.
 
 Paylaşılan görüntü Galerisi görüntüsüne sahip özel bir görüntü havuzu oluşturmak için bir Azure AD uygulaması kullanıyorsanız, bu uygulamaya paylaşılan görüntüye erişim sağlayan bir [Azure yerleşik rolü](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) verilmiş olmalıdır. Paylaşılan görüntüye gidip, **erişim denetimi (IAM)** seçeneğini belirleyerek ve uygulama için bir rol ataması ekleyerek Azure Portal bu erişime izin verebilirsiniz.
 
@@ -87,7 +89,7 @@ Yönetilen görüntünüzü başarıyla oluşturduktan sonra, özel görüntün�
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Azure CLı kullanarak paylaşılan görüntüden havuz oluşturma
 
-Azure CLı kullanarak paylaşılan Görüntinizden bir havuz oluşturmak için `az batch pool create` komutunu kullanın. Alanda paylaşılan görüntü KIMLIĞINI belirtin `--image` . İşletim sistemi türü ve SKU 'sunun, tarafından belirtilen sürümlerle eşleştiğinden emin olun`--node-agent-sku-id`
+Azure CLı kullanarak paylaşılan Görüntinizden bir havuz oluşturmak için `az batch pool create` komutunu kullanın. Alanda paylaşılan görüntü KIMLIĞINI belirtin `--image` . İşletim sistemi türü ve SKU 'sunun, tarafından belirtilen sürümlerle eşleştiğinden emin olun `--node-agent-sku-id`
 
 > [!NOTE]
 > Azure AD 'yi kullanarak kimlik doğrulaması yapmanız gerekir. Paylaşılan anahtar kimlik doğrulaması kullanırsanız, bir kimlik doğrulama hatası alırsınız.  

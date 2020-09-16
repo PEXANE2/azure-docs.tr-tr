@@ -1,22 +1,24 @@
 ---
-title: 'Hızlı başlangıç: Özel Görüntü İşleme istemci kitaplığı ile nesne algılaması oluşturma'
-description: 'Hızlı başlangıç: Özel Görüntü İşleme istemci kitaplığını kullanarak bir proje oluşturun, Etiketler ekleyin, görüntü yükleyin, projenize eğitme yapın ve nesneleri algılayın.'
+title: 'Hızlı başlangıç: Özel Görüntü İşleme istemci kitaplığı ile nesne algılama'
+titleSuffix: Azure Cognitive Services
+description: 'Hızlı başlangıç: Özel Görüntü İşleme istemci kitaplığını kullanarak bir nesne algılama projesi oluşturun, Etiketler ekleyin, görüntüler yükleyin, projenize eğitme yapın ve nesneleri algılayın.'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/17/2020
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.date: 09/14/2020
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: Özel Vizyon
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 404e76ec8fe4d874695c77ee18542c7db6665796
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4efbc76053d96dbd9bdb00c0449e325ca967f49e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919344"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604884"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>Hızlı başlangıç: Özel Görüntü İşleme SDK ile nesne algılama projesi oluşturma
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-client-library"></a>Hızlı başlangıç: Özel Görüntü İşleme istemci kitaplığıyla bir nesne algılama projesi oluşturma
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-tutorial-od.md)]

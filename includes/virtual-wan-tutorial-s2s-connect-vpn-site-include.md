@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 897e36a6c5165549d7809512d0298fa2cfed2fa8
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "75450857"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606926"
 ---
 1. **Siteleri BAĞLAN** sayfasını açmak Için **VPN sitelerini bağla** ' yı seçin.
 
-    ![bağlanabilmeniz](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "bağlanmaya")
+    ![Ekran görüntüsünde, Önceden paylaşılan anahtar ve ilişkili ayarları için sanal HUB 'A yönelik bağlı siteler bölmesi görüntülenir.](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "bağlanmaya")
 
    Aşağıdaki alanları doldurun:
 
@@ -28,7 +28,7 @@ ms.locfileid: "75450857"
 2. **Bağlan**’ı seçin.
 3. Birkaç dakika içinde, site bağlantının ve bağlantı durumunun gösterilmesi gerekir.
 
-   ![durumlarına](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "durum")
+   ![Ekran görüntüsü, site bağlantısı ve bağlantı durumu için bir V P N sitesini gösterir.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "durum")
 
    **Bağlantı durumu:** Bu, VPN sitesini Azure hub 'ının VPN Gateway 'e bağlayan bağlantı için Azure kaynağının durumudur. Bu denetim düzlemi işlemi başarılı olduktan sonra, Azure VPN ağ geçidi ve şirket içi VPN cihazı bağlantı kurmaya devam eder.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: dbfe18c84217c741f8dd64481901747d068fcdd3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640523"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604147"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Uzak kullanıcılar için şirket içi uygulamalar yayımlamak üzere Azure AD Uygulama Ara Sunucusu kullanma
 
@@ -29,7 +29,7 @@ Ağınızın dışından iç uygulamalara güvenli bir şekilde erişme özelli�
 
 Birçok kuruluş, kaynakların şirket ağlarının sınırları dahilinde olduğu durumlarda denetim halinde olduğunu ve koruduğuna inanmaktadır. Ancak bugünün dijital çalışma alanında, bu sınır, bulutta yönetilen mobil cihazlar ve kaynaklar ve hizmetler ile genişletilir. Artık kullanıcılarınızın ve uygulamalarında depolanan kimliklerini ve verilerini koruma karmaşıklığını yönetmeniz gerekir.
 
-Belki de şirket içinde barındırılan Web uygulamalarının yanı sıra Office 365 ve diğer SaaS uygulamalarına erişmesi gereken buluttaki kullanıcıları yönetmek için zaten Azure AD kullanıyor olabilirsiniz. Zaten Azure AD 'niz varsa, şirket içi uygulamalarınıza sorunsuz ve güvenli erişim sağlamak için bunu bir denetim düzlemi olarak kullanabilirsiniz. Ya da yine de buluta geçiş şablonu oluşturmaya devam ediyor olabilirsiniz. Bu durumda, uygulama proxy 'Si uygulayarak ve güçlü bir Identity Foundation oluşturmaya yönelik ilk adımı gerçekleştirerek, yolculuğa buluta başlayabilirsiniz.
+Belki de şirket içinde barındırılan Web uygulamalarının yanı sıra Microsoft 365 ve diğer SaaS uygulamalarına erişmesi gereken buluttaki kullanıcıları yönetmek için zaten Azure AD kullanıyor olabilirsiniz. Zaten Azure AD 'niz varsa, şirket içi uygulamalarınıza sorunsuz ve güvenli erişim sağlamak için bunu bir denetim düzlemi olarak kullanabilirsiniz. Ya da yine de buluta geçiş şablonu oluşturmaya devam ediyor olabilirsiniz. Bu durumda, uygulama proxy 'Si uygulayarak ve güçlü bir Identity Foundation oluşturmaya yönelik ilk adımı gerçekleştirerek, yolculuğa buluta başlayabilirsiniz.
 
 Kapsamlı olmasa da aşağıdaki listede, karma bir birlikte bulunma senaryosunda uygulama proxy 'Si uygulayarak etkinleştirebileceğiniz bazı şeyler gösterilmektedir:
 
@@ -53,7 +53,7 @@ Daha önce, uzak kullanıcıların erişimini kolaylaştırırken saldırganlar�
 * Çevre ağındaki Web sunucuları için kullanıcıların kimliğini doğrulama
 * VPN istemci yazılımının dağıtımı ve yapılandırması ile uzak kullanıcılara VPN erişimini koruma. Ayrıca, dış saldırılara karşı savunmasız olabilecek DMZ etki alanına katılmış sunucuları koruma.
 
-Günümüzün bulutta birinci dünyada Azure AD, ağınızı kimin ve ne olduğunu denetlemek için idealdir. Azure AD Uygulama Ara Sunucusu, SaaS uygulamaları ve kimlik sağlayıcıları gibi modern kimlik doğrulaması ve bulut tabanlı teknolojilerle tümleştirilir. Bu tümleştirme, kullanıcıların uygulamalara her yerden erişmelerini sağlar. Artık App proxy, günümüzün dijital çalışma alanı için daha güvenli değildir; VPN ve ters proxy çözümlerinin daha güvenlidir ve uygulama daha kolay olur. Uzak kullanıcılar, şirket içi uygulamalarınıza O365 ve Azure AD ile tümleştirilmiş diğer SaaS uygulamalarına erişen şekilde erişebilirler. Uygulama Ara Sunucusu ile çalışması için uygulamanızı değiştirmeniz veya güncelleştirmeniz gerekmez. Ayrıca, uygulama proxy 'Si, gelen bağlantıları güvenlik duvarınız aracılığıyla açmanızı gerektirmez. Uygulama proxy 'Si ile onu ayarlamanız ve unutmanız yeterlidir.
+Günümüzün bulutta birinci dünyada Azure AD, ağınızı kimin ve ne olduğunu denetlemek için idealdir. Azure AD Uygulama Ara Sunucusu, SaaS uygulamaları ve kimlik sağlayıcıları gibi modern kimlik doğrulaması ve bulut tabanlı teknolojilerle tümleştirilir. Bu tümleştirme, kullanıcıların uygulamalara her yerden erişmelerini sağlar. Artık App proxy, günümüzün dijital çalışma alanı için daha güvenli değildir; VPN ve ters proxy çözümlerinin daha güvenlidir ve uygulama daha kolay olur. Uzak kullanıcılar, şirket içi uygulamalarınıza Microsoft ve Azure AD ile tümleştirilmiş diğer SaaS uygulamalarına erişen şekilde erişebilirler. Uygulama Ara Sunucusu ile çalışması için uygulamanızı değiştirmeniz veya güncelleştirmeniz gerekmez. Ayrıca, uygulama proxy 'Si, gelen bağlantıları güvenlik duvarınız aracılığıyla açmanızı gerektirmez. Uygulama proxy 'Si ile onu ayarlamanız ve unutmanız yeterlidir.
 
 ## <a name="the-future-of-remote-access"></a>Uzaktan erişim 'in geleceği
 
@@ -72,7 +72,7 @@ Azure AD, uygulama proxy 'Si ile şirket içinde ve bulutta yayınlanan web uygu
 
 ### <a name="an-overview-of-how-app-proxy-works"></a>Uygulama proxy 'Sinin nasıl çalıştığına genel bakış
 
-Uygulama proxy 'Si, Azure portal yapılandırdığınız bir Azure AD hizmetidir. Azure bulutunda, kuruluşunuzda bir iç uygulama sunucusu URL 'sine bağlanan bir dış genel HTTP/HTTPS URL uç noktası yayımlamanıza olanak sağlar. Bu şirket içi web uygulamaları, çoklu oturum açmayı desteklemek için Azure AD ile tümleştirilebilir. Son kullanıcılar daha sonra şirket içi Web uygulamalarına Office 365 ve diğer SaaS uygulamalarına erişen şekilde erişebilir.
+Uygulama proxy 'Si, Azure portal yapılandırdığınız bir Azure AD hizmetidir. Azure bulutunda, kuruluşunuzda bir iç uygulama sunucusu URL 'sine bağlanan bir dış genel HTTP/HTTPS URL uç noktası yayımlamanıza olanak sağlar. Bu şirket içi web uygulamaları, çoklu oturum açmayı desteklemek için Azure AD ile tümleştirilebilir. Son kullanıcılar daha sonra şirket içi Web uygulamalarına Microsoft 365 ve diğer SaaS uygulamalarına erişen şekilde erişebilir.
 
 Bu özelliğin bileşenleri, bulutta çalışan uygulama proxy hizmeti 'ni, şirket içi sunucuda çalışan hafif bir aracı olan uygulama proxy bağlayıcısını ve kimlik sağlayıcısı olan Azure AD ' yi içerir. Her üç bileşen birlikte çalışarak, kullanıcıya şirket içi Web uygulamalarına erişmek için çoklu oturum açma deneyimi sağlar.
 
@@ -179,7 +179,7 @@ Bağlayıcılarınızın nereye yükleneceğini ve ağınızı iyileştirerek ku
 
 ## <a name="other-use-cases"></a>Diğer kullanım örnekleri
 
-Bu noktaya kadar, tüm bulut ve şirket içi uygulamalarınız için çoklu oturum açmayı etkinleştirirken şirket içi uygulamaları dışarıdan yayımlamak için uygulama ara sunucusu 'nu kullanmaya odaklandık. Ancak, uygulama proxy 'Si için gereken başka kullanım örnekleri de vardır. Bu ölçümler şunlardır:
+Bu noktaya kadar, tüm bulut ve şirket içi uygulamalarınız için çoklu oturum açmayı etkinleştirirken şirket içi uygulamaları dışarıdan yayımlamak için uygulama ara sunucusu 'nu kullanmaya odaklandık. Ancak, uygulama proxy 'Si için gereken başka kullanım örnekleri de vardır. Bunlara aşağıdakiler dahildir:
 
 * **REST API 'Leri güvenli bir şekilde yayımlayın**. Şirket içinde çalışan veya buluttaki sanal makinelerde barındırılan iş mantığı veya API 'Ler olduğunda, uygulama proxy 'SI API erişimi için genel bir uç nokta sağlar. API uç noktası erişimi, gelen bağlantı noktalarına gerek kalmadan kimlik doğrulama ve yetkilendirmeyi denetlemenize olanak tanır. Intune kullanan masaüstleri, iOS, MAC ve Android cihazlar için Multi-Factor Authentication ve cihaz tabanlı koşullu erişim gibi Azure AD Premium özellikler aracılığıyla ek güvenlik sağlar. Daha fazla bilgi edinmek için bkz. [yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama](application-proxy-configure-native-client-application.md) ve [Azure Active Directory ve API Management ile OAUTH 2,0 kullanarak API 'yi koruma](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad).
 * **Uzak Masaüstü Hizmetleri** **(RDS)**. Standart RDS dağıtımları açık gelen bağlantılar gerektirir. Ancak, [uygulama proxy 'si Ile RDS dağıtımı](application-proxy-integrate-with-remote-desktop-services.md) , bağlayıcı hizmetini çalıştıran sunucudan kalıcı bir giden bağlantıya sahiptir. Bu şekilde, Uzak Masaüstü Hizmetleri aracılığıyla şirket içi uygulamaları yayımlayarak son kullanıcılara daha fazla uygulama sunabilirsiniz. Ayrıca, RDS 'ye sınırlı bir iki adımlı doğrulama ve koşullu erişim denetimi kümesiyle dağıtımın saldırı yüzeyini de azaltabilirsiniz.
@@ -195,8 +195,8 @@ Azure AD 'yi kullanarak bir karma birlikte bulunma senaryosunda kullanıcıları
 Kuruluşlar, aşağıdaki avantajlardan yararlanmak için bugün uygulama proxy 'den yararlanmaya başlamalıdır:
 
 * Geleneksel VPN veya diğer şirket içi Web yayımlama çözümlerini ve DMZ yaklaşımını koruma ile ilişkili ek yük olmadan şirket içi uygulamaları dışarıdan yayımlayın
-* Tüm uygulamalarda çoklu oturum açma, Office 365 veya diğer SaaS uygulamaları ve şirket içi uygulamalar dahil olmak üzere.
-* Azure AD 'nin yetkisiz erişimi engellemek için Office 365 telemetrisinden faydalendirilen bulut ölçeği güvenliği
+* Tüm uygulamalarda çoklu oturum açma, Microsoft 365 veya diğer SaaS uygulamaları ve şirket içi uygulamalar dahil olmak üzere.
+* Azure AD 'nin yetkisiz erişimi engellemek için telemetri Microsoft 365 yararlandığından bulut ölçeğinde güvenlik
 * Şirket trafiğinin kimlik doğrulamasının yapıldığından emin olmak için Intune tümleştirmesi
 * Merkezileşmeyi Kullanıcı hesabı yönetimi
 * En son güvenlik düzeltme eklerine sahip olduğunuzdan emin olmak için otomatik güncelleştirmeler

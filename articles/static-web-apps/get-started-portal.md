@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434814"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604096"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal ilk statik Web uygulamanızı oluşturma
 
@@ -65,7 +65,7 @@ GitHub ile oturum açtıktan sonra depo bilgilerini girin.
     # <a name="no-framework"></a>[Çerçeve yok](#tab/vanilla-javascript)
 
     1. _Derleme ön ayarları_ açılır listesinden **özel** ' i seçin
-    1. _Uygulama konumu_ kutusunda varsayılan değeri temizle
+    1. Varsayılan değeri _uygulama konumu_ kutusunda tut
     1. _API konum_ kutusundan varsayılan değeri temizle
     1. _Uygulama yapıtı konum_ kutusunu boş bırakın
 
@@ -92,7 +92,7 @@ GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 
     ---
 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
     :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="İnceleme oluştur düğmesi":::
 

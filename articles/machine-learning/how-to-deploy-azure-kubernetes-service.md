@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: da6554ae3b7df9962e1f57ac652567c282227d64
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bfc285f68e8a44b6b09fc63d9b2775a047955a37
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661657"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604674"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtma
 - Dağıtılan hizmetin __Otomatik ölçeklendirilmesi__
 - __Günlüğe kaydetme__
 - __Model veri koleksiyonu__
-- __Kimlik doğrulaması__
+- __Kimlik Doğrulaması__
 - __TLS sonlandırma__
 - GPU ve alan-programlanabilir kapı dizileri (FPGA) gibi __donanım hızlandırma__ seçenekleri
 
@@ -38,7 +38,7 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 >
 > Azure Machine Learning - [Yerel Not Defterine Dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) konusuna da bakabilirsiniz
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -60,6 +60,39 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 
     - Modelleri GPU düğümlerine veya FPGA düğümlerine (ya da belirli bir SKU) dağıtmak istiyorsanız, belirli SKU 'ya sahip bir küme oluşturmanız gerekir. Mevcut bir kümede ikincil düğüm havuzu oluşturma ve ikincil düğüm havuzunda modelleri dağıtma desteği yoktur.
 
+## <a name="understand-the-deployment-processes"></a>Dağıtım süreçlerini anlama
+
+"Dağıtım" sözcüğü hem Kubernetes hem de Azure Machine Learning için kullanılır. "Dağıtım" Bu iki bağlamda farklı anlamlara sahiptir. Kubernetes içinde, `Deployment` bildirim temelli YAML dosyası ile belirtilen somut bir varlıktır. Bir Kubernetes `Deployment` , ve gibi diğer Kubernetes varlıklarına tanımlı bir yaşam döngüsüne ve somut ilişkilerine `Pods` sahiptir `ReplicaSets` . Kubernetes nedir [?,](https://aka.ms/k8slearning)docs ve videolardan Kubernetes hakkında bilgi edinebilirsiniz.
+
+Azure Machine Learning, "dağıtım" kullanılabilir hale getirme ve proje kaynaklarınızı temizleme konusunda genel anlamda kullanılır. Azure Machine Learning dağıtımın bir parçasını dikkate alan adımlar şunlardır:
+
+1. . Amlignore veya. gitignore içinde belirtilen dosyaları yoksayarak proje klasörünüzdeki dosyaları zipden gönderin
+1. İşlem kümenizi ölçeklendirme (Kubernetes ile Ilgilidir)
+1. Dockerfile 'ı işlem düğümüne derleme veya indirme (Kubernetes ile Ilgilidir)
+    1. Sistem bir karma değerini hesaplar: 
+        - Temel görüntü 
+        - Özel Docker adımları (bkz. [özel bir Docker temel görüntüsü kullanarak model dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - Conda tanımı YAML (bkz. [oluşturma & yazılım ortamlarını Azure Machine Learning kullanma](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. Sistem bu karmayı, çalışma alanının aramasında anahtar olarak kullanır Azure Container Registry (ACR)
+    1. Bulunmazsa, genel ACR 'de bir eşleşme arar
+    1. Bulunamadıysanız, sistem yeni bir görüntü oluşturur (önbelleğe alınır ve çalışma alanına gönderilir ACR)
+1. Daraltılmış proje dosyanızı işlem düğümündeki geçici depolamaya indirme
+1. Proje dosyasının sıkıştırması kaldırılıyor
+1. Yürütülen işlem düğümü `python <entry script> <arguments>`
+1. Günlükler, model dosyaları ve `./outputs` çalışma alanıyla ilişkili depolama hesabına yazılan diğer dosyalar kaydediliyor
+1. Geçici depolamayı kaldırma dahil olmak üzere ölçeği azaltma işlemi (Kubernetes ile Ilgilidir)
+
+### <a name="azure-ml-router"></a>Azure ML yönlendiricisi
+
+Gelen çıkarım isteklerini dağıtılan hizmetlere yönlendiren ön uç bileşeni (azureml-Fe) gerektiği şekilde otomatik olarak ölçeklendirilir. Azureml-Fe ölçeklendirme, AKS kümesi amacını ve boyutunu (düğüm sayısı) temel alır. Küme amacı ve düğümleri [BIR AKS kümesi oluşturduğunuzda veya](how-to-create-attach-kubernetes.md)eklediğinizde yapılandırılır. Her küme için birden çok sayıda pods üzerinde çalışan bir azureml-FE hizmeti vardır.
+
+> [!IMPORTANT]
+> __Geliştirme-test__olarak yapılandırılmış bir küme kullanılırken, kendi kendine **devre dışı bırakılır**.
+
+Azureml-Fe, daha fazla çekirdekler kullanmak için hem yukarı (dikey) hem de (yatay olarak) daha fazla yer kullanır. Ölçeği artırma kararı verirken, gelen çıkarım isteklerini yönlendirmek için gereken süre kullanılır. Bu süre eşiği aşarsa, bir ölçek oluşur. Gelen istekleri yönlendirme süresi eşiği aşmaya devam ederse, bir genişleme meydana gelir.
+
+Ölçeği, ve içinde ölçeklendirirken CPU kullanımı kullanılır. CPU kullanım eşiği karşılanıyorsa ön uç öncelikle aşağı ölçeklendirilir. CPU kullanımı, ölçek genişletme eşiğine düşerse, bir ölçeklendirme işlemi gerçekleşir. Ölçeği artırma ve genişletme yalnızca yeterli kullanılabilir küme kaynağı varsa oluşur.
+
 ## <a name="deploy-to-aks"></a>AKS’ye dağıtma
 
 Azure Kubernetes hizmetine bir model dağıtmak için, gereken işlem kaynaklarını açıklayan bir __dağıtım yapılandırması__ oluşturun. Örneğin, çekirdek ve bellek sayısı. Ayrıca, modeli ve Web hizmetini barındırmak için gereken ortamı açıklayan bir __çıkarım yapılandırmasına__ihtiyacınız vardır. Çıkarım yapılandırmasını oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
@@ -67,7 +100,9 @@ Azure Kubernetes hizmetine bir model dağıtmak için, gereken işlem kaynaklar�
 > [!NOTE]
 > Dağıtılacak model sayısı, dağıtım başına 1.000 modellerle sınırlıdır (kapsayıcı başına).
 
-### <a name="using-the-sdk"></a>SDK’yı kullanarak
+<a id="using-the-cli"></a>
+
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
@@ -91,7 +126,7 @@ Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fa
 * [Model. deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
 * [WebService. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>CLı 'yi kullanma
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 CLı kullanarak dağıtmak için aşağıdaki komutu kullanın. `myaks`AKS işlem hedefinin adıyla değiştirin. `mymodel:1`Kayıt, kayıtlı modelin adı ve sürümü ile değiştirin. `myservice`Bu hizmete verilecek adla değiştirin:
 
@@ -103,36 +138,57 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 Daha fazla bilgi için, [az ml model dağıtım](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın.
 
-### <a name="using-vs-code"></a>VS Code'u kullanma
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 VS Code kullanımı hakkında bilgi için bkz. [vs Code uzantısı aracılığıyla AKS 'e dağıtma](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model).
 
 > [!IMPORTANT]
 > VS Code aracılığıyla dağıtmak, AKS kümesinin önceden oluşturulmasını veya çalışma alanınıza eklenmesini gerektirir.
 
-### <a name="understand-the-deployment-processes"></a>Dağıtım süreçlerini anlama
+---
 
-"Dağıtım" sözcüğü hem Kubernetes hem de Azure Machine Learning için kullanılır. "Dağıtım" Bu iki bağlamda farklı anlamlara sahiptir. Kubernetes içinde, `Deployment` bildirim temelli YAML dosyası ile belirtilen somut bir varlıktır. Bir Kubernetes `Deployment` , ve gibi diğer Kubernetes varlıklarına tanımlı bir yaşam döngüsüne ve somut ilişkilerine `Pods` sahiptir `ReplicaSets` . Kubernetes nedir [?,](https://aka.ms/k8slearning)docs ve videolardan Kubernetes hakkında bilgi edinebilirsiniz.
+### <a name="autoscaling"></a>Otomatik ölçeklendirme
 
-Azure Machine Learning, "dağıtım" kullanılabilir hale getirme ve proje kaynaklarınızı temizleme konusunda genel anlamda kullanılır. Azure Machine Learning dağıtımın bir parçasını dikkate alan adımlar şunlardır:
+Azure ML model dağıtımları için otomatik ölçeklendirmeyi işleyen bileşen, bir akıllı istek yönlendiricisi olan azureml-Fe ' dir. Tüm çıkarım istekleri üzerinden gezindiğinden, dağıtılan modelleri otomatik olarak ölçeklendirmek için gerekli veriler vardır.
 
-1. . Amlignore veya. gitignore içinde belirtilen dosyaları yoksayarak proje klasörünüzdeki dosyaları zipden gönderin
-1. İşlem kümenizi ölçeklendirme (Kubernetes ile Ilgilidir)
-1. Dockerfile 'ı işlem düğümüne derleme veya indirme (Kubernetes ile Ilgilidir)
-    1. Sistem bir karma değerini hesaplar: 
-        - Temel görüntü 
-        - Özel Docker adımları (bkz. [özel bir Docker temel görüntüsü kullanarak model dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
-        - Conda tanımı YAML (bkz. [oluşturma & yazılım ortamlarını Azure Machine Learning kullanma](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
-    1. Sistem bu karmayı, çalışma alanının aramasında anahtar olarak kullanır Azure Container Registry (ACR)
-    1. Bulunmazsa, genel ACR 'de bir eşleşme arar
-    1. Bulunamadıysanız, sistem yeni bir görüntü oluşturur (önbelleğe alınır ve çalışma alanı ACR 'ye kaydedilir)
-1. Daraltılmış proje dosyanızı işlem düğümündeki geçici depolamaya indirme
-1. Proje dosyasının sıkıştırması kaldırılıyor
-1. Yürütülen işlem düğümü `python <entry script> <arguments>`
-1. Günlükler, model dosyaları ve `./outputs` çalışma alanıyla ilişkili depolama hesabına yazılan diğer dosyalar kaydediliyor
-1. Geçici depolamayı kaldırma dahil olmak üzere ölçeği azaltma işlemi (Kubernetes ile Ilgilidir)
+> [!IMPORTANT]
+> * **Model dağıtımları Için Kubernetes yatay Pod otomatik Scaler (HPA)**' i etkinleştirmeyin. Bunun yapılması, iki otomatik ölçeklendirme bileşeninin birbirleriyle yarışmasına neden olur. Azureml-Fe, Azure ML tarafından dağıtılan modelleri otomatik ölçeklendirmek üzere tasarlanmıştır. burada HPA, CPU kullanımı veya özel ölçüm yapılandırması gibi genel bir ölçüden model kullanımını tahmin etmek veya yaklaşık olarak tahmin etmek zorunda olacaktır.
+> 
+> * **Azureml-Fe, BIR AKS kümesindeki düğümlerin sayısını ölçeklendirmez**çünkü bu, beklenmeyen maliyet artışına yol açabilir. Bunun yerine, fiziksel küme sınırları içindeki **modelin çoğaltma sayısını ölçeklendirir** . Küme içindeki düğüm sayısını ölçeklendirmeniz gerekiyorsa, kümeyi el ile ölçeklendirebilir veya [aks kümesi otomatik Scaler 'ı yapılandırabilirsiniz](/azure/aks/cluster-autoscaler).
 
-AKS kullanırken, işlemin ölçeğini artırma ve azaltma, yukarıda açıklandığı şekilde oluşturulan veya bulunan dockerfile kullanılarak Kubernetes tarafından denetlenir. 
+Otomatik ölçeklendirme `autoscale_target_utilization` ,, `autoscale_min_replicas` ve `autoscale_max_replicas` aks Web hizmeti için ayarlanarak denetlenebilir. Aşağıdaki örnek, otomatik ölçeklendirmeyi nasıl etkinleştireceğinizi göstermektedir:
+
+```python
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True, 
+                                                autoscale_target_utilization=30,
+                                                autoscale_min_replicas=1,
+                                                autoscale_max_replicas=4)
+```
+
+Ölçeği artırma/azaltma kararları, geçerli kapsayıcı çoğaltmalarının kullanımına dayanır. Meşgul olan çoğaltma sayısı (bir isteği işleme) geçerli çoğaltmanın toplam sayısına bölünmüş geçerli kullanımdır. Bu sayı aşarsa `autoscale_target_utilization` , daha fazla çoğaltma oluşturulur. Daha düşükse çoğaltmalar azalır. Varsayılan olarak, hedef kullanımı %70 ' dir.
+
+Çoğaltmaları ekleme kararları, ekip ve hızlı (1 saniye içinde). Çoğaltmaları kaldırma kararları (yaklaşık 1 dakika).
+
+Aşağıdaki kodu kullanarak gerekli çoğaltmaları hesaplayabilirsiniz:
+
+```python
+from math import ceil
+# target requests per second
+targetRps = 20
+# time to process the request (in seconds)
+reqTime = 10
+# Maximum requests per container
+maxReqPerContainer = 1
+# target_utilization. 70% in this example
+targetUtilization = .7
+
+concurrentRequests = targetRps * reqTime / targetUtilization
+
+# Number of container replicas
+replicas = ceil(concurrentRequests / maxReqPerContainer)
+```
+
+, Ve ayarı hakkında daha fazla bilgi için, `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` bkz. [akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modül başvurusu.
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Denetimli dağıtımı kullanarak AKS 'e model dağıtma (Önizleme)
 
@@ -223,7 +279,6 @@ endpoint.wait_for_deployment(true)
 endpoint.delete_version(version_name="versionb")
 
 ```
-
 
 ## <a name="web-service-authentication"></a>Web hizmeti kimlik doğrulaması
 

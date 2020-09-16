@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1570f4a8c4fb23b885c1de68c2c8d2440c4f6aae
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018450"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604079"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -159,7 +159,7 @@ Bu düzeltme derlemesi, **' ın ad-grup birleşimi** kuralından klonlanmış ve
 ### <a name="release-status"></a>Yayın durumu
 12/9/2019: indirme için yayın. Otomatik yükseltme ile kullanılamaz.
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
-- Azure AD Domain Services için Parola karması eşitlemesini, Kerberos karmalarının doldurmaya yönelik doğru hesaba göre güncelleştirdik.  Bu, Azue AD 'den Azure AD Domain Services 'e parola eşitleme sırasında bir performans geliştirmesi sağlar.
+- Azure AD Domain Services için Parola karması eşitlemesini, Kerberos karmalarının doldurmaya yönelik doğru hesaba göre güncelleştirdik.  Bu, Azure AD 'den Azure AD Domain Services 'ye parola eşitleme sırasında bir performans geliştirmesi sağlar.
 - Kimlik doğrulama Aracısı ve Service Bus arasındaki güvenilir oturumlar için destek ekledik.
 - Bu sürüm, kimlik doğrulama Aracısı ve bulut hizmetleri arasındaki iletişim için TLS 1,2 zorlar.
 - Kimlik doğrulama Aracısı ve bulut hizmetleri arasında WebSocket bağlantıları için bir DNS önbelleği ekledik.
@@ -208,13 +208,13 @@ Yedek karakterleri doğru bir şekilde işlemeyen Eşitleme hataları sıkışt�
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 - Yeni sorun giderme araçları, "kullanıcının eşitlemesine yönelik", "Grup eşitlenmiyor" veya "grup üyesi eşitlenmiyor" senaryolarındaki sorunları gidermeye yardımcı olur.
-- Azure AD Connect sorun giderme betikteki Ulusal bulutlar için destek ekleme 
+- Azure AD Connect sorun giderme betiğine National bulutlar desteği ekleyin.
 - Müşteriler MIIS_Service için kullanımdan kaldırılan WMI bitiş noktaları kaldırılmıştır. Tüm WMI işlemleri artık PS cmdlet 'leri aracılığıyla yapılmalıdır.
-- AZUREADSSOACC nesnesinde kısıtlanmış temsilciyi sıfırlayarak güvenlik iyileştirmesi
+- AZUREADSSOACC nesnesinde kısıtlanmış temsilciyi sıfırlayarak güvenlik iyileştirmesi.
 - Bir eşitleme kuralı eklerken/düzenlenirken, kuralda bağlayıcı şemasında bulunan ancak bağlayıcıya eklenmemiş öznitelikler varsa, bu öznitelikler otomatik olarak bağlayıcıya eklenir. Kuralın etkilediği nesne türü için de aynı değer geçerlidir. Bağlayıcıya herhangi bir şey eklenirse, bağlayıcı sonraki eşitleme döngüsüne tam içeri aktarma işlemi için işaretlenir.
 - Yeni Azure AD Connect dağıtımlarında, bağlayıcı hesabı olarak bir kuruluş veya etki alanı yöneticisi kullanmak artık desteklenmemektedir. Bağlayıcı hesabı olarak bir kuruluş veya etki alanı Yöneticisi kullanan geçerli Azure AD Connect dağıtımları Bu sürümden etkilenmez.
 - Eşitleme yöneticisinde, kural oluşturma/düzenleme/silme üzerinde tam eşitleme çalıştırılır. Tam içeri aktarma veya tam eşitleme çalışmaya devam ederseniz, kullanıcıya bildiren bir açılan pencere, herhangi bir kural değişikliği görünür.
-- Parola hatalarının "bağlayıcılar > Özellikler > bağlantı" sayfasına yönelik risk azaltma adımları eklendi
+- Parola hatalarının "bağlayıcılar > Özellikler > bağlantı" sayfasına yönelik risk azaltma adımları eklendi.
 - Bağlayıcı Özellikleri sayfasında Sync Service Manager için kullanımdan kaldırma uyarısı eklendi. Bu uyarı, kullanıcıya Azure AD Connect Sihirbazı aracılığıyla değişiklikler yapılması gerektiğini bildirir.
 - Kullanıcının parola ilkesiyle ilgili sorunlar için yeni hata eklendi.
 - Etki alanı ve OU filtrelerine göre grup filtrelemesinin yanlış yapılandırılmasını önleyin. Girilen grubun etki alanı/OU 'su zaten filtrelenirse ve sorun çözümlenene kadar kullanıcının ileri doğru hareket etmesini önlemek için Grup filtreleme bir hata gösterir.
@@ -233,7 +233,7 @@ Yedek karakterleri doğru bir şekilde işlemeyen Eşitleme hataları sıkışt�
 - Yardım açılanları şimdi klavye odağında gösteriliyor.
 - Otomatik yükseltme için, 6 saatten daha fazla çakışan uygulama çalışıyorsa, sonlandırın ve yükseltmeye devam edin.
 - Dizin uzantıları seçerken bir müşterinin nesne başına 100 ' i seçmesi için öznitelik sayısını sınırlayın. Bu, Azure 'un nesne başına en fazla 100 uzantı özniteliklerine sahip olduğu için hata verme sırasında oluşmasını engeller.
-- AD bağlantı betiğini daha sağlam hale getirmek için bir hata düzeltildi
+- AD bağlantı betiğini daha sağlam hale getirmek için bir hata düzeltildi.
 - Mevcut bir adlandırılmış yöneltme WCF hizmetini daha sağlam bir makineye yüklemek Azure AD Connect bir hata düzeltildi.
 - İlk yüklendiğinde ADSync hizmetine izin verilmeyen Grup ilkeleri etrafında geliştirilmiş Tanılamalar ve sorun giderme.
 - Bir Windows bilgisayarı için görünen adın yanlış yazıldığı bir hata düzeltildi.
@@ -246,9 +246,9 @@ Yedek karakterleri doğru bir şekilde işlemeyen Eşitleme hataları sıkışt�
 >[!IMPORTANT]
 >Daha önceki bir sürümden Azure AD Connect yükseltirken, Microsoft 365 portalın Azure AD Connect başarıyla yükseltilmesine rağmen güncelleştirilmiş sürümü yansıtmadığından oluşan bilinen bir sorun vardır.
 >
-> Bu sorunu gidermek için **ADSync** modülünü içeri aktarmanız ve sonra `Set-ADSyncDirSyncConfiguration` Azure AD Connect sunucusunda PowerShell cmdlet 'ini çalıştırmanız gerekir.  Aşağıdaki adımları kullanabilirsiniz:
+> Bu sorunu çözmek için **ADSync** modülünü içeri aktarmanız ve sonra `Set-ADSyncDirSyncConfiguration` Azure AD Connect sunucusunda PowerShell cmdlet 'ini çalıştırmanız gerekir.  Aşağıdaki adımları kullanabilirsiniz:
 >
->1. PowerShell 'i erişiminizin engellenmediğinden modunda açın.
+>1. PowerShell 'i yönetici modunda açın.
 >2. `Import-Module "ADSync"` öğesini çalıştırın.
 >3. `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` öğesini çalıştırın.
  

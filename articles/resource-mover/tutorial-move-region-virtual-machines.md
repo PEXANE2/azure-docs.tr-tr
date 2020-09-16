@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d00557e2279d236ff96a73c3a090097fbe6e5f1b
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061792"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603977"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Öğretici: Azure VM 'lerini bölgeler arasında taşıma
 
@@ -68,6 +68,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Taşımak istediğiniz kaynakları seçin.
 
 - Seçili kaynak bölgesi içindeki kaynak gruplarındaki tüm desteklenen kaynak türleri görüntülenir.
+- Bölgeler arasında taşıma için önceden eklenmiş olan kaynaklar gösterilmez.
 - Kaynakları kaynak bölgeyle aynı abonelikte yer alan bir hedef bölgeye taşırsınız. Aboneliği değiştirmek istiyorsanız, kaynaklar taşındıktan sonra bunu yapabilirsiniz.
 
 1. Azure portal, *kaynak taşıyıcısı*için arama yapın. Ardından, **Hizmetler**' ın altında **Azure Kaynak taşıyıcısı**' ı seçin.
@@ -89,7 +90,7 @@ Taşımak istediğiniz kaynakları seçin.
     ![Taşınacak VM 'Leri seçmek için sayfa](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  **Taşınacak kaynaklar**bölümünde **İleri**' ye tıklayın.
-9. **Gözden geçir + Ekle**bölümünde kaynak ve hedef ayarlarını kontrol edin. Taşıma hakkındaki meta verilerin, meta veri bölgesinde bu amaçla oluşturulmuş bir kaynak grubunda depolandığını anladığınızdan emin olun.
+9. **Gözden geçir + Ekle**bölümünde kaynak ve hedef ayarlarını kontrol edin. 
 
     ![Ayarları gözden geçirmek ve taşımaya devam etmek için sayfa](./media/tutorial-move-region-virtual-machines/review.png)
 10. Kaynakları eklemeye başlamak için **devam**' a tıklayın.
@@ -234,7 +235,8 @@ Taşıma işlemini tamamlamak istiyorsanız, taşımayı yürütün.
 
 ## <a name="configure-settings-after-the-move"></a>Taşıma işleminden sonra ayarları Yapılandır
 
-Mobility hizmeti VM 'lerden otomatik olarak kaldırılmaz. El ile kaldırın veya sunucuyu yeniden taşımayı planlıyorsanız bırakın.
+- Mobility hizmeti VM 'lerden otomatik olarak kaldırılmaz. El ile kaldırın veya sunucuyu yeniden taşımayı planlıyorsanız bırakın.
+- Taşıma işleminden sonra Azure rol tabanlı erişim denetimi (Azure RBAC) kurallarını değiştirme.
 
 ## <a name="delete-source-resources-after-commit"></a>İşlemeden sonra kaynak kaynaklarını Sil
 

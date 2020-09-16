@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 443649826e821014e0e9918526a363a944b5eceb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660003"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604419"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
@@ -33,6 +33,10 @@ Güvenlik duvarınızda, bu makaledeki adreslere ve adreslere giden trafiğe izi
 >
 > Azure Güvenlik duvarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure Güvenlik duvarını dağıtma ve yapılandırma](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule).
 
+## <a name="routes"></a>Yollar
+
+Azure Machine Learning kaynakları içeren alt ağın giden yolunu yapılandırırken, eğitim ortamının güvenliğini sağlamak için [Zorlamalı tünel](how-to-secure-training-vnet.md#forced-tunneling) bölümündeki kılavuzu kullanın.
+
 ## <a name="microsoft-hosts"></a>Microsoft Konakları
 
 Doğru yapılandırılmamışsa, güvenlik duvarı çalışma alanınızı kullanarak sorunlara yol açabilir. Azure Machine Learning çalışma alanı tarafından her ikisi de kullanılan birçok konak adı vardır.
@@ -41,6 +45,8 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 
 | **Ana bilgisayar adı** | **Amaç** |
 | ---- | ---- |
+| **login.microsoftonline.com** | Kimlik Doğrulaması |
+| **management.azure.com** | Çalışma alanı bilgilerini almak için kullanılır |
 | **\*. batchai.core.windows.net** | Eğitim kümeleri |
 | **ml.azure.com** | Azure Machine Learning Studio |
 | **default.exp-tas.com** | Azure Machine Learning Studio tarafından kullanılır |
@@ -59,13 +65,16 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 | **\*. notebooks.azure.net** | Azure Machine Learning Studio 'daki Not defterleri için gereklidir. |
 | **graph.windows.net** | Not defterleri için gerekli |
 
+> [!TIP]
+> Federal Kimlik kullanmayı planlıyorsanız [Active Directory Federasyon Hizmetleri (AD FS) makalenin güvenliğini sağlamak Için en iyi uygulamaları](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) izleyin.
+
 ## <a name="python-hosts"></a>Python Konakları
 
 Bu bölümdeki konaklar, Python paketlerini yüklemek için kullanılır. Geliştirme, eğitim ve dağıtım sırasında gereklidir. 
 
 | **Ana bilgisayar adı** | **Amaç** |
 | ---- | ---- |
-| **anaconda.com** | Varsayılan paketleri yüklemek için kullanılır. |
+| **anaconda.com**</br>**\*. anaconda.com** | Varsayılan paketleri yüklemek için kullanılır. |
 | **\*. anaconda.org** | Depo verilerini almak için kullanılır. |
 | **pypi.org** | Varsa, varsayılan dizinden bağımlılıkları listelemek için kullanılır ve dizin, Kullanıcı ayarları tarafından üzerine yazılmaz. Dizinin üzerine yazılırsa, ** \* . pythonhosted.org**de izin vermeniz gerekir. |
 

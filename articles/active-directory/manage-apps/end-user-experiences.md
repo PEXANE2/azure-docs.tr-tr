@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: d3b7dbbb9aab29e083795025ad5bf7381a4fa0ee
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231223"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605133"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory uygulamalar için son kullanıcı deneyimleri
 
 Azure Active Directory (Azure AD), kuruluşunuzdaki son kullanıcılara uygulama dağıtmak için çeşitli özelleştirilebilir yollar sağlar:
 
 * Azure AD uygulamalarım
-* Office 365 uygulama başlatıcısı
+* Uygulama başlatıcısı Microsoft 365
 * Birleştirilmiş uygulamalarda doğrudan oturum açma
 * Birleştirilmiş, parola tabanlı veya var olan uygulamalara yönelik ayrıntılı bağlantılar
 
@@ -35,13 +35,13 @@ Konumundaki uygulamalarım https://myapps.microsoft.com , Azure AD yöneticisi t
 
 Varsayılan olarak, tüm uygulamalar tek bir sayfada birlikte listelenir. Ancak, koleksiyonları kullanarak ilgili uygulamaları gruplandırabilir ve bunları ayrı bir sekmede sunabilir, daha kolay bulunmalarını sağlayabilirsiniz. Örneğin, koleksiyonları, belirli iş rolleri, görevler, projeler vb. için mantıksal uygulama gruplandırmaları oluşturmak üzere kullanabilirsiniz. Bilgi için bkz. [uygulamalarım portalındaki koleksiyonlar oluşturma](access-panel-collections.md). 
 
-Uygulamalarım Azure portal ayrıdır ve kullanıcıların bir Azure aboneliğine veya Office 365 aboneliğine sahip olmasını gerektirmez.
+Uygulamalarım Azure portal ayrıdır ve kullanıcıların bir Azure aboneliğine veya Microsoft 365 aboneliğine sahip olmasını gerektirmez.
 
 Azure AD My Apps hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="office-365-application-launcher"></a>Office 365 uygulama başlatıcısı
+## <a name="microsoft-365-application-launcher"></a>Uygulama başlatıcısı Microsoft 365
 
-Office 365 ' i dağıtmış olan kuruluşlar için, Azure AD aracılığıyla kullanıcılara atanan uygulamalar, konumundaki Office 365 portalında da görünür [https://portal.office.com/myapps](https://portal.office.com/myapps) . Bu, bir kuruluştaki kullanıcıların ikinci bir portal kullanmak zorunda kalmadan uygulamalarını başlatmasını kolaylaştırır ve Office 365 kullanan kuruluşlar için önerilen uygulama başlatma çözümüdür.
+Microsoft 365 dağıtılan kuruluşlar için, Azure AD aracılığıyla kullanıcılara atanan uygulamalar, konumundaki Office 365 portalında da görünür [https://portal.office.com/myapps](https://portal.office.com/myapps) . Bu, bir kuruluştaki kullanıcıların ikinci bir portal kullanmak zorunda kalmadan uygulamalarını başlatmasını kolaylaştırır ve Microsoft 365 kullanan kuruluşlar için önerilen uygulama başlatma çözümüdür.
 
 Office 365 uygulama Başlatıcısı hakkında daha fazla bilgi için bkz. [uygulamanızın Office 365 uygulama başlatıcısı 'nda görünmesini sağlamak](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher).
 
@@ -53,7 +53,7 @@ SAML 2,0, WS-Federation veya OpenID Connect 'i destekleyen çoğu Federasyon uyg
 
 Azure AD Ayrıca, parola tabanlı çoklu oturum açma, bağlantılı çoklu oturum açma ve herhangi bir Federasyon çoklu oturum açma biçimini destekleyen tek tek uygulamalara doğrudan çoklu oturum açma bağlantılarını destekler.
 
-Bu bağlantılar, bir kullanıcıyı Azure AD My Apps veya Office 365 ' den başlatmaya gerek kalmadan belirli bir uygulama için Azure AD oturum açma işlemi aracılığıyla gönderen özel olarak hazırlanmış URL 'lardır. Bu **Kullanıcı erişimi URL 'leri** , kullanılabilir kurumsal uygulamaların özellikleri altında bulunabilir. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Uygulamayı seçin ve ardından **Özellikler**' i seçin.
+Bu bağlantılar, kullanıcının Azure AD My Apps veya Microsoft 365 tarafından başlatılmasını gerektirmeden belirli bir uygulama için Azure AD oturum açma işlemi aracılığıyla bir Kullanıcı gönderen özel olarak hazırlanmış URL 'lardır. Bu **Kullanıcı erişimi URL 'leri** , kullanılabilir kurumsal uygulamaların özellikleri altında bulunabilir. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Uygulamayı seçin ve ardından **Özellikler**' i seçin.
 
 ![Twitter özelliklerindeki Kullanıcı erişimi URL 'SI örneği](media/end-user-experiences/direct-sign-on-link.png)
 
@@ -67,7 +67,7 @@ Uygulamalarım için kuruluşa özgü URL 'Lere benzer şekilde, *myapps.Microso
 
 Yetkili bir Kullanıcı bu uygulamaya özgü bağlantılardan birine tıkladığında, önce kurumsal oturum açma sayfasını (henüz oturum açmamış olduğunu varsayarak) görür ve oturum açma işleminden önce uygulamamda durdurulmadan önce bu uygulamalara yönlendirilir. Kullanıcı, uygulamaya erişmek için parola tabanlı tek imza tarayıcısı uzantısı gibi önkoşulların önkoşulları eksikse, bağlantı kullanıcıdan eksik uzantıyı yüklemesini ister. Uygulamanın çoklu oturum açma yapılandırması değişirse bağlantı URL 'SI de sabit kalır.
 
-Bu bağlantılar, Uygulamalarım ve Office 365 ile aynı erişim denetimi mekanizmalarını kullanır ve yalnızca Azure portal uygulamaya atanmış olan kullanıcılar veya gruplar başarıyla kimlik doğrulayabilecektir. Ancak yetkilendirilmemiş olan her Kullanıcı, erişim verilmediğini belirten bir ileti görür ve uygulamalarımı, erişimleri olan kullanılabilir uygulamaları görüntülemek için yükleme bağlantısı verildiğini görürsünüz.
+Bu bağlantılar, Uygulamalarım ve Microsoft 365 aynı erişim denetimi mekanizmalarını kullanır ve yalnızca Azure portal uygulamaya atanmış olan kullanıcılar veya gruplar başarıyla kimlik doğrulayabilecektir. Ancak yetkilendirilmemiş olan her Kullanıcı, erişim verilmediğini belirten bir ileti görür ve uygulamalarımı, erişimleri olan kullanılabilir uygulamaları görüntülemek için yükleme bağlantısı verildiğini görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

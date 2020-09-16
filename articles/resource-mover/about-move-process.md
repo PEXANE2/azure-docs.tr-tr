@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
-ms.openlocfilehash: c397f0b6a203c39961bc2f6299eefc7e003df8c6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 4d520f51717aa11dba55697d63852b17e0ba9cf0
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89653606"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604504"
 ---
 # <a name="about-the-move-process"></a>Taşıma işlemi hakkında
 
@@ -66,7 +66,7 @@ Taşıma sürecinde ilerlemeniz durumunda şu durumlarda bağımlılıkları do�
 
 ### <a name="remove-resources"></a>Kaynakları kaldır
 
-Bir kaynağı taşımak istemiyorsanız, taşıma koleksiyonundan kaldırabilirsiniz. Genel olarak, kaynak, çoğaltma veya saklı şablonlar gibi ilişkili eylemler veya nesnelerle birlikte koleksiyondan silinir. Bir kaynağı kaldırdığınızda ne olacağı, kaynağın türüne ve kaynağı sildiğinizde kaynağın durumuna bağlıdır.  
+Bir kaynağı taşımak istemiyorsanız, taşıma koleksiyonundan kaldırabilirsiniz. Genel olarak, kaynak, çoğaltma veya saklı şablonlar gibi ilişkili eylemler veya nesnelerle birlikte koleksiyondan silinir. Bir kaynağı kaldırdığınızda ne olacağı, kaynağın türüne ve kaynağı sildiğinizde kaynağın durumuna bağlıdır. [Daha fazla bilgi edinin](remove-move-resources.md).
 
 ## <a name="move-impact"></a>Taşıma etkisi
 

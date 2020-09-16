@@ -1,6 +1,6 @@
 - name: Video Indexer Belgeleri
   href: ./index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Video Indexer nedir?
       href: video-indexer-overview.md
@@ -13,6 +13,8 @@
       href: invite-users.md
 - name: Öğreticiler
   items:
+    - name: Azure'a Bağlanma
+      href: connect-to-azure.md
     - name: Video Indexer API'sini kullanma
       href: video-indexer-use-apis.md
     - name: Logic Apps bağlayıcısı

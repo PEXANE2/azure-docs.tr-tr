@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244678"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604300"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Öğretici: Görsel durumları raporlamak için IoT cihazındaki Özel Görüntü İşleme kullanma
 
@@ -52,11 +52,11 @@ IoT görsel uyarıları uygulaması sürekli bir döngüde çalışarak dört fa
 * **Eğitilen model bekleniyor**: Bu durumda uygulama, hedef projenin eğitilen bir yineleme içerip içermediğini denetlemek için her sanıye özel görüntü işleme API 'sini çağırır. Bir tane bulduğunda, karşılık gelen ONNX modelini yerel bir dosyaya indirir ve **Puanlama** durumuna geçirir.
 * **Puanlama**: Bu durumda, uygulama, kameradan yerel onnx modeline karşı tek bir çerçeveyi değerlendirmek IÇIN Windows ml 'yi kullanır. Ortaya çıkan görüntü sınıflandırması ekranda görüntülenir ve IoT Hub ileti olarak gönderilir. Daha sonra uygulama, yeni bir görüntü Puanlama yapmadan önce bir saniye boyunca uyku moduna geçer.
 
-## <a name="understand-the-code-structure"></a>Kod yapısını anlama
+## <a name="examine-the-code-structure"></a>Kod yapısını İnceleme
 
 Aşağıdaki dosyalar uygulamanın ana işlevlerini işler.
 
-| Dosya | Açıklama |
+| Dosya | Description |
 |-------------|-------------|
 | [MainPage. xaml](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Bu dosya XAML Kullanıcı arabirimini tanımlar. Web Kamerası denetimini barındırır ve durum güncelleştirmeleri için kullanılan etiketleri içerir.|
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Bu kod, XAML kullanıcı arabirimi 'nin davranışını denetler. Durum makine işleme kodunu içerir.|
@@ -98,13 +98,13 @@ Uygulama görüntüleri yakalarken, kamerayı, algılamak istediğiniz görsel d
 
 ## <a name="train-the-custom-vision-model"></a>Özel Görüntü İşleme modelini eğitme
 
-Uygulama görüntüleri yakalamayı tamamladıktan sonra, bunları karşıya yükler ve ardından **eğitilen model** durumuna geçer. Bu noktada, [özel görüntü işleme portalına](https://www.customvision.ai/) gitmeniz ve yeni eğitim görüntülerini temel alan bir model oluşturmanız gerekir. Aşağıdaki animasyon bu işleme bir örnek gösterir.
+Uygulama görüntüleri yakalamayı tamamladıktan sonra, bunları karşıya yükler ve ardından **eğitilen model** durumuna geçer. Bu noktada, [özel görüntü işleme Web sitesine](https://www.customvision.ai/) gitmeniz ve yeni eğitim görüntülerini temel alan bir model derlemeniz gerekir. Aşağıdaki animasyon bu işleme bir örnek gösterir.
 
 ![Animasyon: muzlar 'in birden çok görüntüsünü etiketleme](./media/iot-visual-alerts-tutorial/labeling.gif)
 
 Bu işlemi kendi senaryoınızla yinelemek için:
 
-1. [Özel görüntü işleme portalında](http://customvision.ai)oturum açın.
+1. [Özel görüntü işleme web sitesinde](http://customvision.ai)oturum açın.
 1. Artık uygulamanın karşıya yüklediği tüm eğitim görüntülerini içermelidir hedef projenizi bulun.
 1. Tanımlamak istediğiniz her görsel durum için uygun görüntüleri seçin ve etiketi el ile uygulayın.
     * Örneğin, hedefiniz bir boş oda ve içindeki kişilerle bir oda arasında ayrım yapmak ise, kişilerle birlikte beş veya daha fazla görüntüyü yeni bir sınıf, **kişi**ve kişiler olmadan beş veya daha fazla görüntü etiketlemesini öneririz. **Negative** Bu, modelin iki durum arasında ayrım yapmanıza yardımcı olur.

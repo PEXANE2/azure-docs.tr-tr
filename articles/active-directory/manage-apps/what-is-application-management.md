@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 293aa80336b259a760a835e3ece56d50287f06ed
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299890"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604130"
 ---
 # <a name="what-is-application-management"></a>Uygulama yönetimi nedir?
 
@@ -49,7 +49,7 @@ Kuruluşların çoğu zaman kullanıcıların işlerini yapmak için bağımlı 
 
 ## <a name="how-does-azure-ad-work-with-applications"></a>Azure AD, uygulamalarla nasıl çalışır?
 
-Azure AD, bulut ve şirket içi uygulamalarınız için tek bir kimlik sistemi sağlayarak uygulamalarınızı yönetmenin yolunu basitleştirir. Hizmet olarak yazılım (SaaS) uygulamaları, şirket içi uygulamalar ve iş kolu (LOB) uygulamalarını Azure AD 'ye ekleyebilirsiniz. Ardından kullanıcılar bir kez oturum açarak Office 365 ve Microsoft 'un diğer iş uygulamalarıyla birlikte bu uygulamalara güvenli ve sorunsuz bir şekilde erişin. [Kullanıcı sağlamayı otomatikleştirerek](../app-provisioning/user-provisioning.md)yönetim maliyetlerini azaltabilirsiniz. Ayrıca, güvenli uygulama erişimi sağlamak için Multi-Factor Authentication ve koşullu erişim ilkelerini de kullanabilirsiniz.
+Azure AD, bulut ve şirket içi uygulamalarınız için tek bir kimlik sistemi sağlayarak uygulamalarınızı yönetmenin yolunu basitleştirir. Hizmet olarak yazılım (SaaS) uygulamaları, şirket içi uygulamalar ve iş kolu (LOB) uygulamalarını Azure AD 'ye ekleyebilirsiniz. Daha sonra kullanıcılar, Microsoft 'un Microsoft 365 ve diğer iş uygulamalarıyla birlikte bu uygulamalara güvenli ve sorunsuz bir şekilde erişmek için bir kez oturum açabilirler. [Kullanıcı sağlamayı otomatikleştirerek](../app-provisioning/user-provisioning.md)yönetim maliyetlerini azaltabilirsiniz. Ayrıca, güvenli uygulama erişimi sağlamak için Multi-Factor Authentication ve koşullu erişim ilkelerini de kullanabilirsiniz.
 
 ![Azure AD aracılığıyla federe olan uygulamaları gösteren diyagram](media/what-is-application-management/app-management-overview.png)
 
@@ -59,7 +59,7 @@ Azure AD, bulut ve şirket içi uygulamalarınız için tek bir kimlik sistemi s
 
 - Azure AD **Galeri uygulamaları** – Azure AD, Azure AD ile çoklu oturum açma için önceden tümleştirilmiş binlerce uygulamayı içeren bir galeriye sahiptir. Galeride kuruluşunuzun kullandığı uygulamaların bazıları da mevcuttur. [Uygulama tümleştirmenizi planlama](plan-an-application-integration.md)veya [SaaS uygulama öğreticilerinde](https://docs.microsoft.com/azure/active-directory/saas-apps/)tek tek uygulamalar için ayrıntılı tümleştirme adımları alma hakkında bilgi edinin.
 
-- **Uygulama proxy 'si ile şirket içi uygulamalar** – Azure AD uygulama ara sunucusu ile şirket içi Web UYGULAMALARıNıZı Azure AD ile tümleştirebilir ve çoklu oturum açma desteği sağlayabilirsiniz. Ardından, son kullanıcılar şirket içi Web uygulamalarınıza Office 365 ve diğer SaaS uygulamalarına erişen şekilde erişebilir, bkz. [Azure AD 'Nin uygulama proxy 'si aracılığıyla şirket içi uygulamalara uzaktan erişim sağlama](application-proxy.md).
+- **Uygulama proxy 'si ile şirket içi uygulamalar** – Azure AD uygulama ara sunucusu ile şirket içi Web UYGULAMALARıNıZı Azure AD ile tümleştirebilir ve çoklu oturum açma desteği sağlayabilirsiniz. Ardından, son kullanıcılar şirket içi Web uygulamalarınıza Microsoft 365 ve diğer SaaS uygulamalarına erişen şekilde erişebilir, bkz. [Azure AD 'Nin uygulama proxy 'si aracılığıyla şirket içi uygulamalara uzaktan erişim sağlama](application-proxy.md).
 
 - **Özel geliştirmiş uygulamalar** – kendi iş kolu uygulamalarınızı oluştururken, çoklu oturum açmayı desteklemek Için BUNLARı Azure AD ile tümleştirebilirsiniz. Uygulamanızı Azure AD 'ye kaydederek, uygulamanın kimlik doğrulama ilkesi üzerinde denetiminiz vardır. Daha fazla bilgi için bkz. [geliştiricilere yönelik kılavuz](developer-guidance-for-integrating-applications.md).
 
@@ -77,7 +77,7 @@ Azure AD, bulut ve şirket içi uygulamalarınız için tek bir kimlik sistemi s
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Çoklu oturum açma ile üretkenliği artırma
 
-Uygulamalar ve Office 365 arasında çoklu oturum açma (SSO) etkinleştirildiğinde, oturum açma istemleri azaltılarak veya ortadan kaldırılarak mevcut kullanıcılar için üstün bir oturum açma deneyimi sağlanır. Birden çok istem veya birden çok parolayı yönetme gereksinimi olmadan kullanıcının ortamı çok daha bütünlüklü ve daha az rahatsız edici olur. İş grubu, self servis ve dinamik üyelik aracılığıyla erişimi yönetebilir ve onaylayabilir. İşletmede doğru kişilerin bir uygulamaya erişmesine izin verilmesi, kimlik sisteminin güvenliğini artırır.
+Uygulamalar ve Microsoft 365 arasında çoklu oturum açma (SSO) özelliğinin etkinleştirilmesi, oturum açma istemlerini azaltarak veya ortadan kaldırarak mevcut kullanıcılara yönelik bir üstün oturum açma deneyimi sağlar. Birden çok istem veya birden çok parolayı yönetme gereksinimi olmadan kullanıcının ortamı çok daha bütünlüklü ve daha az rahatsız edici olur. İş grubu, self servis ve dinamik üyelik aracılığıyla erişimi yönetebilir ve onaylayabilir. İşletmede doğru kişilerin bir uygulamaya erişmesine izin verilmesi, kimlik sisteminin güvenliğini artırır.
 
 SSO, güvenliği artırır. *Çoklu oturum açma olmadan* yöneticilerin her bir bireysel uygulama için kullanıcı hesapları oluşturması ve güncelleştirmesi gerekir; bu da zaman alır. Ayrıca kullanıcıların uygulamalarına erişmek için birden çok kimlik bilgisini izlemesi gerekir. Sonuç olarak kullanıcılar, parolalarını yazma veya başka parola yönetim çözümlerini kullanma eğilimindedir; bu da veri güvenliği riskleri oluşturur. [Çoklu oturum açma hakkında daha fazla bilgi edinin](what-is-single-sign-on.md).
 

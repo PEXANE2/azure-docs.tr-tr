@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1790ac666d77f14ccadfde56f7b86e05b2c563dd
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130139"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604691"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Yeniden çalışma için bir Linux ana hedef sunucusu yükleme
 Sanal makinelerinizin yükünü Azure 'a devretmek için sanal makineleri şirket içi siteye geri alabilirsiniz. Yeniden yük devretmek için sanal makineyi Azure 'dan şirket içi siteye yeniden korumanız gerekir. Bu işlem için, trafiği almak için bir şirket içi ana hedef sunucusuna ihtiyacınız vardır. 
@@ -48,16 +48,7 @@ Ana hedefi aşağıdaki boyutlandırma yönergelerine uygun olarak oluşturun:
 - **Işletim sistemi disk boyutu**: 100 GB veya daha fazla (işletim sistemini yüklemek için)
 - **Bekletme sürücüsü Için ek disk boyutu**: 1 TB
 - **CPU çekirdekleri**: 4 çekirdek veya daha fazla
-
-Aşağıdaki Ubuntu çekirdekler desteklenir.
-
-
-|Çekirdek serisi  |Destek  |
-|---------|---------|
-|4.4      |4.4.0-81-genel         |
-|4,8      |4.8.0-56-genel         |
-|4,10     |4.10.0-24-genel        |
-
+- **Çekirdek**: 4,16. *
 
 ## <a name="deploy-the-master-target-server"></a>Ana hedef sunucuyu dağıtma
 

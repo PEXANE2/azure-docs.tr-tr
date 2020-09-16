@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 19f4e7b340f0b1ceb64d04a2704a4f6667e1e14a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: de6cd4ee2c9800757399b7e32b59d903b817c657
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053584"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604402"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -42,17 +42,21 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-BH` | Arapça (Bahreyn), modern standart | Dil modeli                                    |
 | `ar-EG` | Arapça (Mısır)                    | Dil modeli                                    |
 | `ar-IL` | Arapça (Israil)                   | No                                                |
+| `ar-IQ` | Arapça (Irak)                     | No                                                |
 | `ar-JO` | Arapça (Ürdün)                   | No                                                |
 | `ar-KW` | Arapça (Kuveyt)                   | No                                                |
 | `ar-LB` | Arapça (Lübnan)                  | No                                                |
+| `ar-OM` | Arapça (Umman)                     | No                                                |
 | `ar-PS` | Arapça (Filistin Yönetimi)                | No                                                |
 | `ar-QA` | Arapça (Qtor)                    | No                                                |
 | `ar-SA` | Arapça (Suudi Arabistan)             | No                                                |
 | `ar-SY` | Arapça (Suriye)                    | Dil modeli                                    |
-| `ca-ES` | Katalanca                           | Dil modeli                                    |
+| `bg-BG` | Bulgarca (Bulgaristan)              | Dil modeli                                    |
+| `ca-ES` | Katalanca (İspanya)                   | Dil modeli                                    |
 | `cs-CZ` | Çekçe (Çek Cumhuriyeti)            | Dil modeli                                    | 
 | `da-DK` | Danca (Danimarka)                  | Dil modeli                                    |
 | `de-DE` | Almanca (Almanya)                  | Akustik model<br>Dil modeli<br>İşi |
+| `el-GR` | Yunanca (Yunanistan)                    | Dil modeli                                    |
 | `en-AU` | İngilizce (Avustralya)               | Akustik model<br>Dil modeli                  |
 | `en-CA` | İngilizce (Kanada)                  | Akustik model<br>Dil modeli                  |
 | `en-GB` | İngilizce (İngiltere)          | Akustik model<br>Dil modeli<br>İşi |
@@ -84,23 +88,32 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `es-SV` | İspanyolca (El Salvador)             | Dil modeli                                    | 
 | `es-US` | İspanyolca (ABD)                     | Dil modeli                                    | 
 | `es-UY` | İspanyolca (Uruguay)                 | Dil modeli                                    | 
-| `es-VE` | İspanyolca (Venezuela)               | Dil modeli                                    | 
+| `es-VE` | İspanyolca (Venezuela)               | Dil modeli                                    |
+| `et-EE` | Estonya dili (Estonya)                 | Dil modeli                                    | 
 | `fi-FI` | Fince (Finlandiya)                 | Dil modeli                                    |
 | `fr-CA` | Fransızca (Kanada)                   | Akustik model<br>Dil modeli                  |
 | `fr-FR` | Fransızca (Fransa)                   | Akustik model<br>Dil modeli<br>İşi |
+| `ga-IE` | İrlanda dili (Irlanda)                    | Dil modeli                                    |
 | `gu-IN` | Gucerat dili (Hindistan)                 | Dil modeli                                    |
 | `hi-IN` | Hintçe (Hindistan)                     | Akustik model<br>Dil modeli                  |
+| `hr-HR` | Hırvatça (Hırvatistan)                | Dil modeli                                    |
 | `hu-HU` | Macarca (Macaristan)               | Dil modeli                                    | 
 | `it-IT` | İtalyanca (İtalya)                   | Akustik model<br>Dil modeli<br>İşi |
 | `ja-JP` | Japonca (Japonya)                  | Dil modeli                                    |
 | `ko-KR` | Korece (Kore)                    | Dil modeli                                    |
+| `lt-LT` | Litvanca (Litvanya)            | Dil modeli                                    |
+| `lv-LV` | Letonca (Letonya)                  | Dil modeli                                    |
 | `mr-IN` | Marathi dili (Hindistan)                   | Dil modeli                                    |
+| `mt-MT` | Malta dili (Malta)                    | Dil modeli                                    |
 | `nb-NO` | Norveççe (Bokmål) (Norveç)       | Dil modeli                                    |
 | `nl-NL` | Felemenkçe (Hollanda)               | Dil modeli                                    |
 | `pl-PL` | Lehçe (Polonya)                   | Dil modeli                                    |
 | `pt-BR` | Portekizce (Brezilya)               | Akustik model<br>Dil modeli<br>İşi |
 | `pt-PT` | Portekizce (Portekiz)             | Dil modeli                                    |
+| `ro-RO` | Rumence (Romanya)                | Dil modeli                                    |
 | `ru-RU` | Rusça (Rusya)                  | Akustik model<br>Dil modeli                  |
+| `sk-SK` | Slovakça (Slovakya)                 | Dil modeli                                    |
+| `sl-SI` | Slovence (Slovenya)              | Dil modeli                                    |
 | `sv-SE` | İsveççe (İsviçre)                  | Dil modeli                                    |
 | `ta-IN` | Tamil dili (Hindistan)                     | Dil modeli                                    |
 | `te-IN` | Telugu dili (Hindistan)                    | Dil modeli                                    |
