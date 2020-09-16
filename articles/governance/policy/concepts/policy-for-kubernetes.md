@@ -470,7 +470,7 @@ Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure
 
   1. Ana sayfada, **eklentiyi devre dışı bırak** düğmesini seçin.
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="' Azure Kubernetes Services (bir K S) için Azure 'a ekleme sayfasına "eklentiyi devre dışı bırak" düğmesinin ekran görüntüsü." border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Azure Kubernetes Services (bir K S) için Azure a ekleme sayfasına eklentiyi devre dışı bırak düğmesinin ekran görüntüsü." border="false":::
 
 - Azure CLI
 
