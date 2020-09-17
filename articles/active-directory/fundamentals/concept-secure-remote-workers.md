@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0e0ad9086a7945201b1752126253f12eb751bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320044"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705376"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure Active Directory ile güvenli kimliklere hızla yanıt verme
 
@@ -34,7 +34,7 @@ Bu denetim listesi, aşağıdaki adımları izleyerek kuruluşunuzu hemen koruma
 - Bulut zekası kullanın.
 - Son Kullanıcı self servis hizmetini etkinleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzda yalnızca bulutunuzun veya karma kimliklerinin Azure AD 'de zaten kurulduğu varsayılmaktadır. Kimlik türünü seçme konusunda yardım için, [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin](../hybrid/choose-ad-authn.md) . 
 
@@ -42,13 +42,12 @@ Bu kılavuzda yalnızca bulutunuzun veya karma kimliklerinin Azure AD 'de zaten 
 
 Güvenli bir kimlik altyapısının birçok yönü vardır, ancak bu denetim listesi, kullanıcıların uzaktan çalışmasını sağlayan güvenli ve güvenli bir kimlik altyapısına odaklanır. Kimliğinizi güvenli hale getirmenin güvenlik hikayenizi yalnızca bir parçası, verileri, uygulamaları ve cihazları korumanın de dikkate alınması gerekir.
 
-### <a name="guidance-for-azure-ad-free-or-office-365-customers"></a>Azure AD Ücretsiz veya Office 365 müşterileri için rehberlik.
+### <a name="guidance-for-azure-ad-free-office-365-or-microsoft-365-customers"></a>Azure AD Ücretsiz, Office 365 veya Microsoft 365 müşterileri için rehberlik.
 
-Azure AD Ücretsiz veya Office 365 uygulama müşterilerinin Kullanıcı kimliklerini korumalarına yönelik olması gereken birkaç öneri vardır: Aşağıdaki tablo, aşağıdaki lisans abonelikleri için önemli eylemleri vurgulamaya yöneliktir:
+Azure AD Ücretsiz, Office 365 veya Microsoft 365 uygulama müşterilerinin Kullanıcı kimliklerini korumalarına yönelik olması gereken birkaç öneri vardır: Aşağıdaki tablo, aşağıdaki lisans abonelikleri için önemli eylemleri vurgulamaya yöneliktir:
 
-- Office 365 (O365 E1, E3, E5, F1, a1, a3, A5)
-- Office 365 Business (Essentials, Business, Business Premium)
-- Microsoft 365 (M365 Business, a1)
+- Office 365 (Office 365 E1, E3, E5, F1, a1, a3, A5)
+- Microsoft 365 (Iş temel, Iş için uygulamalar, Iş standardı, Iş Premium, a1)
 - Azure AD Ücretsiz (Azure, Dynamics 365, Intune ve güç platformu ile birlikte)
 
 | Önerilen eylem | Ayrıntı |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267250"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705733"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory Enterprise State Roaming ayarları sorunlarını giderme
 
@@ -78,9 +78,9 @@ Enterprise State Roaming, cihazın Azure AD 'ye kaydedilmesini gerektirir. Enter
 
 Bazı koşullar altında, Enterprise State Roaming Azure Multi-Factor Authentication yapılandırılmışsa verileri eşitleyemeyebilir. Bu belirtiler hakkında daha fazla bilgi için bkz. destek belgesi [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Olası sorun**: cihazınız Azure Active Directory portalında Multi-Factor Authentication gerektirecek şekilde yapılandırıldıysa, parolayı kullanarak bir Windows 10 cihazında oturum açarken ayarları eşitleyemeyebilirsiniz. Bu tür Multi-Factor Authentication yapılandırma, bir Azure yönetici hesabını korumak için tasarlanmıştır. Yönetici kullanıcılar Windows 10 cihazlarında İş için Microsoft Passport PIN 'i ile oturum açarak veya Office 365 gibi diğer Azure hizmetlerine erişirken Multi-Factor Authentication tamamlayarak eşitleme yapabilir.
+**Olası sorun**: cihazınız Azure Active Directory portalında Multi-Factor Authentication gerektirecek şekilde yapılandırıldıysa, parolayı kullanarak bir Windows 10 cihazında oturum açarken ayarları eşitleyemeyebilirsiniz. Bu tür Multi-Factor Authentication yapılandırma, bir Azure yönetici hesabını korumak için tasarlanmıştır. Yönetici kullanıcılar Windows 10 cihazlarında İş için Microsoft Passport PIN 'i ile oturum açarak veya Microsoft 365 gibi diğer Azure hizmetlerine erişirken Multi-Factor Authentication tamamlayarak eşitleme yapabilir.
 
-**Olası sorun**: yönetici Active Directory Federasyon Hizmetleri (AD FS) Multi-Factor Authentication koşullu erişim ilkesi ve cihazdaki erişim belirtecinin süresi dolarsa eşitleme başarısız olabilir. Office 365 gibi diğer Azure hizmetlerine erişirken İş için Microsoft Passport PIN 'ı kullanarak oturum açıp oturumunuzu kapatıp açmanız ve Multi-Factor Authentication tamamlantığınızdan emin olun.
+**Olası sorun**: yönetici Active Directory Federasyon Hizmetleri (AD FS) Multi-Factor Authentication koşullu erişim ilkesi ve cihazdaki erişim belirtecinin süresi dolarsa eşitleme başarısız olabilir. Microsoft 365 gibi diğer Azure hizmetlerine erişirken İş için Microsoft Passport PIN 'ı kullanarak oturum açıp oturumunuzu kapatıp Multi-Factor Authentication.
 
 ### <a name="event-viewer"></a>Olay Görüntüleyicisi
 

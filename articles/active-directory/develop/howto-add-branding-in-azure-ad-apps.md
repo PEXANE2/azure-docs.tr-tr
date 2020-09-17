@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226650"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706209"
 ---
 # <a name="branding-guidelines-for-applications"></a>Uygulamalar için markalama yönergeleri
 
@@ -36,7 +36,7 @@ Bu makalede şunları yapacaksınız:
 Microsoft, iki tür kullanıcı hesabı yönetir:
 
 - **Kişisel hesaplar** (eski adıyla Windows Live ID olarak da bilinir). Bu hesaplar, *bireysel* kullanıcılar ile Microsoft arasındaki ilişkiyi temsil eder ve tüketici cihazlarına ve Microsoft hizmetlerine erişmek üzere kullanılır. Bu hesaplar, kişisel kullanım için tasarlanmıştır.
-- **İş veya okul hesapları.** Bu hesaplar, Azure Active Directory kullanan kuruluşlar adına Microsoft tarafından yönetilir. Bu hesaplar, Office 365 ve diğer Microsoft iş hizmetlerinde oturum açmak için kullanılır.
+- **İş veya okul hesapları.** Bu hesaplar, Azure Active Directory kullanan kuruluşlar adına Microsoft tarafından yönetilir. Bu hesaplar, Microsoft 'un Microsoft 365 ve diğer iş hizmetlerinde oturum açmak için kullanılır.
 
 Microsoft iş veya okul hesapları genel olarak kuruluşlar (şirket, okul, devlet kurumu) tarafından son kullanıcılara (çalışanlar, öğrenciler, kamu çalışanları) atanır. Bu hesaplar doğrudan bulutta (Azure AD platformunda) veya Windows Server Active Directory gibi şirket içi bir dizinden Azure AD ile eşitlenir. Microsoft iş veya okul hesaplarının *koruyucusudur* ancak hesapların mülkiyeti ve denetimi kuruluşa aittir.
 
@@ -49,7 +49,7 @@ Microsoft, son kullanıcılara Azure veya Active Directory marka adlarını gös
 
 ## <a name="user-account-pictogram"></a>Kullanıcı hesabı piktogramı
 
-Bu yönergelerin daha önceki bir sürümünde “mavi rozet” piktogramı kullanılmasını önermiştik. Kullanıcı ve geliştirici geri bildirimleri doğrultusunda şu anda bunun yerine Microsoft logosunun kullanılmasını öneriyoruz. Microsoft logosu, kullanıcıların uygulamanızda oturum açmak için Office 365 veya diğer Microsoft iş hizmetleri ile kullandıkları hesabı yeniden kullanabileceklerini anlamalarına yardımcı olacaktır.
+Bu yönergelerin daha önceki bir sürümünde “mavi rozet” piktogramı kullanılmasını önermiştik. Kullanıcı ve geliştirici geri bildirimleri doğrultusunda şu anda bunun yerine Microsoft logosunun kullanılmasını öneriyoruz. Microsoft logosu, kullanıcıların uygulamanızda oturum açmak için Microsoft 365 veya diğer Microsoft iş hizmetleri ile kullandıkları hesabı yeniden kullanabileceğini anlamalarına yardımcı olur.
 
 ## <a name="signing-up-and-signing-in-with-azure-ad"></a>Azure AD ile kaydolma ve oturum açma
 
@@ -63,13 +63,13 @@ Uygulamanız kaydolma ve oturum açma için ayrı yollar sunabilir. Aşağıdaki
 
 “Uygulamayı al” bağlantınızın, Microsoft tarafından barındırılan kuruluş verilerine erişmek üzere bir kuruluş yöneticisinin uygulamanızı yetkilendirmesine izin vermek için kullanıcıyı Azure AD erişim verme (yetkilendirme) sayfasına yeniden yönlendirmesi gerekir. Nasıl erişim talep edileceğine ilişkin ayrıntılar [Integrating Applications with Azure Active Directory (Uygulamaları Azure Active Directory ile Tümleştirme)](./quickstart-register-app.md) makalesinde açıklanmaktadır.
 
-Yönetici uygulamanıza eklendikten sonra, bunu kullanıcıların Office 365 uygulama başlatıcısı deneyimine (waffle ve kaynağından erişilebilir) eklemeyi seçebilirler [https://portal.office.com/myapps](https://portal.office.com/myapps) . Bu özelliği tanıtmak istiyorsanız “Bu uygulamayı kuruluşunuza ekleyin” gibi ifadeler kullanabilir ve aşağıdaki gibi bir düğme görüntüleyebilirsiniz:
+Yönetici, uygulamanıza izin verdikten sonra, Kullanıcı Microsoft 365 uygulama başlatıcısı deneyimine (waffle ve kaynağından erişilebilir) eklemeyi seçebilirler [https://portal.office.com/myapps](https://portal.office.com/myapps) . Bu özelliği tanıtmak istiyorsanız “Bu uygulamayı kuruluşunuza ekleyin” gibi ifadeler kullanabilir ve aşağıdaki gibi bir düğme görüntüleyebilirsiniz:
 
 ![Microsoft logosu ve "kuruluşuma Ekle" metinlerinin gösterildiği düğme](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örneğin:
 
-> *Zaten Microsoft 'tan Office 365 veya diğer iş Hizmetleri kullanıyorsanız, kuruluşunuzun verilerine> your_app_name <verebilirsiniz. Bu, kullanıcılarınızın mevcut iş hesaplarıyla> <your_app_name erişmesine izin verir.*
+> *Zaten Microsoft 'tan Microsoft 365 veya başka bir iş hizmeti kullanıyorsanız, kuruluşunuzun verilerine <your_app_name> erişim izni verebilirsiniz. Bu, kullanıcılarınızın mevcut iş hesaplarıyla> <your_app_name erişmesine izin verir.*
 
 Uygulamanızda kullanmak üzere resmi Microsoft logosunu indirmek için, kullanmak istediğiniz logoya sağ tıklayın ve ardından bilgisayarınıza kaydedin.
 
@@ -102,7 +102,7 @@ Uygulamanızda kullanmak üzere resmi görüntüleri indirmek için kullanmak is
 
 **YAPIN**: Son kullanıcıların kullanıp kullanamayacaklarını anlamalarına yardımcı olmak üzere ek açıklama sağlamak için “Microsoft ile Oturum Aç” düğmesi ile birlikte “iş veya okul hesabı” ifadesini kullanın. **YAPMAYIN**: “Kuruluş hesabı”, “iş hesabı” veya “kurumsal hesap” gibi başka ifadeler kullanmayın.”
 
-**YAPMAYIN**: “Office 365 ID” veya “Azure ID” kullanmayın. Office 365 aynı zamanda Microsoft’un tüketicilere yönelik bir teklifinin adıdır ve kimlik doğrulama için Azure AD kullanmaz.
+"Microsoft 365 ID" veya "Azure ID **" kullanmayın.** Microsoft 365 Ayrıca, kimlik doğrulaması için Azure AD kullanmayan Microsoft tarafından sunulan bir tüketici sunumunun adıdır.
 
 **YAPMAYIN**: Microsoft logosunu değiştirmeyin.
 

@@ -6,14 +6,20 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: 2fbdf4e267e0f9a479a89d6f31e72f09d9e11bb0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b4042e65fb9f7dbff6566bd497f782c3e6d591cb
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322576"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707858"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK ile mikro ölçüm kullanma
+
+> [!NOTE]
+> Application Insights Java SDK, Spring Webflox 'i desteklemez. 
+>
+> Hem Webflox hem de mikro ölçüm, hiçbir izleme gerektirmeyen [Application Insights Java 3,0 aracısında](https://docs.microsoft.com/azure/azure-monitor/app/java-on-premises) desteklenir. 
+
 Mikro ölçüm uygulama izleme, JVM tabanlı uygulama kodu için ölçümleri ölçer ve verileri en sevdiğiniz izleme sistemlerine aktarmanıza olanak tanır. Bu makale, hem Spring Boot hem de Spring Boot uygulamaları için Application Insights ile mikro ölçer 'i nasıl kullanacağınızı öğretir.
 
 ## <a name="using-spring-boot-15x"></a>Spring Boot 1.5 x kullanma

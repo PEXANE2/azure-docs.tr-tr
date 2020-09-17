@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8f599860b6095e1bab90e8e29818d8079e89a9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184950"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705546"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de eski cihazları yönetme
 
@@ -175,9 +175,9 @@ Farklı türler hakkında daha fazla bilgi edinmek için, bkz. [Cihaz yönetimin
 
 Cihazın Azure AD'de kimliğini doğrulaması için kullanılan tüm kimlik doğrulamaları reddedilir. Sık karşılaşılan örnekler:
 
-- **Karma Azure AD 'ye katılmış cihaz** -kullanıcılar, şirket içi etki alanında oturum açmak için cihazı kullanabilir. Bununla birlikte, Office 365 gibi Azure AD kaynaklarına erişemez.
+- **Karma Azure AD 'ye katılmış cihaz** -kullanıcılar, şirket içi etki alanında oturum açmak için cihazı kullanabilir. Ancak, Microsoft 365 gibi Azure AD kaynaklarına erişemez.
 - **Azure AD'ye katılan cihaz** - Kullanıcılar cihazı oturum açmak için kullanamaz. 
-- **Mobil cihazlar** - Kullanıcılar Office 365 gibi Azure AD kaynaklarına erişemez. 
+- **Mobil cihazlar** -Kullanıcı Microsoft 365 gıbı Azure AD kaynaklarına erişemez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

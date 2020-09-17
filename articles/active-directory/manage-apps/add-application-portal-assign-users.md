@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 9d396c0787798c783b44748dc2461c073334cc7e
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 5a0a158f91695bb0aba07aa412f5ba234906d493
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322509"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707705"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Hızlı başlangıç: Azure AD 'yi kimlik sağlayıcısı olarak kullanan bir uygulamaya Kullanıcı atama
 
@@ -38,7 +38,7 @@ Kullanıcıları Azure AD kiracınıza eklediğiniz bir uygulamaya atamak için 
 1. Azure AD portalında **Kurumsal uygulamalar**' ı seçin. Ardından, yapılandırmak istediğiniz uygulamayı bulun ve seçin.
 2. Sol gezinti menüsünde **Kullanıcılar ve gruplar**' ı seçin.
    > [!NOTE]
-   > Microsoft 365 ve Office 365 uygulamalarından bazıları PowerShell kullanımını gerektirir. 
+   > Microsoft 365 uygulamalardan bazıları PowerShell kullanımını gerektirir. 
 3. **Kullanıcı Ekle** düğmesini seçin.
 4. **Atama Ekle** bölmesinde **Kullanıcılar ve gruplar**' ı seçin.
 5. Uygulamaya atamak istediğiniz kullanıcıyı veya grubu seçin. Ayrıca arama kutusuna kullanıcı veya grup adını yazmaya başlayabilirsiniz. Birden çok kullanıcı ve grup seçebilirsiniz ve seçimleriniz **Seçili öğeler**altında görünür.
@@ -46,7 +46,7 @@ Kullanıcıları Azure AD kiracınıza eklediğiniz bir uygulamaya atamak için 
     > Bir uygulamaya bir grup atadığınızda, yalnızca gruptaki kullanıcıların erişimi olur. Atama, iç içe gruplar olarak basamaklanmıyor.
 
     > [!NOTE]
-    > Grup tabanlı atama Azure Active Directory Premium P1 veya P2 Edition gerektirir. Grup tabanlı atama yalnızca güvenlik grupları için desteklenir. İç içe geçmiş grup üyelikleri ve Office 365 grupları Şu anda desteklenmemektedir. Bu makalede ele alınan özelliklerin daha fazla lisanslama gereksinimi için [Azure Active Directory fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/active-directory)bakın. 
+    > Grup tabanlı atama Azure Active Directory Premium P1 veya P2 Edition gerektirir. Grup tabanlı atama yalnızca güvenlik grupları için desteklenir. İç içe grup üyelikleri ve Microsoft 365 grupları Şu anda desteklenmemektedir. Bu makalede ele alınan özelliklerin daha fazla lisanslama gereksinimi için [Azure Active Directory fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/active-directory)bakın. 
 6. İşiniz bittiğinde **Seç**' i seçin.
    ![Uygulamaya Kullanıcı veya Grup atama](./media/assign-user-or-group-access-portal/assign-users.png)
 7. **Kullanıcılar ve gruplar** bölmesinde, listeden bir veya daha fazla Kullanıcı veya grup seçin ve ardından bölmenin altındaki **Seç** düğmesini seçin.

@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 1cc7d7755d22568b9b66216709dc0c3765d58657
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 719890447b976903e1c2419382ac9c9f81b4ae4a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300162"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707722"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için özellikleri yapılandırma
 
 Önceki hızlı başlangıçta, Azure Active Directory (Azure AD) kiracınıza bir uygulama eklediniz. Bir uygulama eklediğinizde, Azure AD kiracınıza uygulamanın kimlik sağlayıcısı olduğunu bildirmek için izin vermiş olursunuz. Artık uygulama için özelliklerden bazılarını yapılandıracaksınız.
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD kiracınızdaki bir uygulamanın özelliklerini yapılandırmak için şunlar gerekir:
 
@@ -47,7 +47,7 @@ Uygulama özelliklerini düzenlemek için:
 3. Yapılandırmak için kullanılabilen seçenekleri anlamak için bir dakikanızı ayırın:
     - **Kullanıcıların oturum açması Için etkinleştirildi mi?** uygulamaya atanan kullanıcıların oturum açıp açamayacağını belirler.
     - **Kullanıcı Ataması gerekli mi?** uygulamaya atanmamış kullanıcıların oturum açıp açamayacağını belirler.
-    - **Kullanıcılara görünebilir mi?** bir uygulamaya atanan kullanıcıların bu dosyayı [uygulamalarım](https://myapps.microsoft.com) ve Office 365 uygulama başlatıcısı 'nda göremeyeceğini belirler. (Office 365 veya Microsoft 365 web sitesinin sol üst köşesindeki waffle menüsüne bakın.)
+    - **Kullanıcılara görünebilir mi?** bir uygulamaya atanan kullanıcıların bu uygulamayı [uygulamamda](https://myapps.microsoft.com) Microsoft 365 ve uygulama başlatıcısı 'nda göremeyeceğini belirler. (Microsoft 365 web sitesinin sol üst köşesindeki waffle menüsüne bakın.)
     
     > [!TIP]
     > Kullanıcıları atamak, gezinme 'nin **Kullanıcılar ve gruplar** bölümünde gerçekleşir.
@@ -95,4 +95,4 @@ Hızlı başlangıç serisine devam edemeyecekseniz, test kiracınızı temizlem
 
 Uygulamaya Kullanıcı atamayı öğrenmek için bir sonraki makaleye ilerleyin.
 > [!div class="nextstepaction"]
-> [Bir uygulamaya Kullanıcı atama](add-application-portal-assign-users.md)
+> [Kullanıcıları bir role atama](add-application-portal-assign-users.md)

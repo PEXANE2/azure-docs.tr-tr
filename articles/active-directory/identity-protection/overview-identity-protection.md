@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b8b19b8e928a220efa8a445ff033582e0f13c6de
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437709"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707739"
 ---
 # <a name="what-is-identity-protection"></a>Kimlik Koruması nedir?
 
@@ -47,7 +47,7 @@ Microsoft 'un kimlik güvenliği ve koruma ekibine bakmakta olan Ekim 2018 Alex 
 
 Kimlik koruması, riskleri aşağıdaki sınıflandırmalarla tanımlar:
 
-| Risk algılama türü | Açıklama |
+| Risk algılama türü | Description |
 | --- | --- |
 | Olağandışı yolculuk | Kullanıcının en son oturum açma işlemlerini temel alarak sıradan bir konumdan oturum açın. |
 | Anonim IP adresi | Anonim bir IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Ler). |
@@ -91,8 +91,8 @@ Kimlik koruması, kullanıcıların erişebilmeleri için bir güvenlik okuyucus
 | --- | --- | --- |
 | Genel yönetici | Kimlik korumasına tam erişim |   |
 | Güvenlik yöneticisi | Kimlik korumasına tam erişim | Kullanıcı parolasını sıfırlama |
-| Güvenlik operatörü | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin <br><br> Kullanıcı riskini kapatın, güvenli oturum açma 'yı onaylayın, güvenliği tehlikeye atabilir | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarı yapılandırma |
-| Güvenlik okuyucusu | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarı yapılandırma <br><br> Algılamalar hakkında geri bildirimde bulunun |
+| Güvenlik operatörü | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin <br><br> Kullanıcı riskini kapatın, güvenli oturum açma 'yı onaylayın, güvenliği tehlikeye atabilir | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarıları yapılandırma |
+| Güvenlik okuyucusu | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarıları yapılandırma <br><br> Algılamalar hakkında geri bildirimde bulunun |
 
 Şu anda güvenlik operatörü rolü riskli oturum açma işlemleri raporuna erişemez.
 
@@ -102,16 +102,16 @@ Koşullu erişim yöneticileri Ayrıca, bir koşul olarak oturum açma riskini g
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Özellik | Ayrıntılar  | Azure AD Ücretsiz/Office 365 uygulamaları | Azure AD Premium P1|Azure AD Premium P2 |
+| Özellik | Ayrıntılar  | Azure AD Ücretsiz/Microsoft 365 uygulamalar | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Risk ilkeleri | Kullanıcı risk ilkesi (kimlik koruması aracılığıyla)  | Hayır | Hayır |Evet | 
-| Risk ilkeleri | Oturum açma risk ilkesi (kimlik koruması veya koşullu erişim aracılığıyla)  | Hayır |  Hayır |Evet |
-| Güvenlik raporları | Genel Bakış |  Hayır | Hayır |Evet |
+| Risk ilkeleri | Kullanıcı risk ilkesi (kimlik koruması aracılığıyla)  | Hayır | Hayır |Yes | 
+| Risk ilkeleri | Oturum açma risk ilkesi (kimlik koruması veya koşullu erişim aracılığıyla)  | Hayır |  Hayır |Yes |
+| Güvenlik raporları | Genel bakış |  Hayır | Hayır |Yes |
 | Güvenlik raporları | Riskli kullanıcılar  | Sınırlı bilgi | Sınırlı bilgi | Tam erişim|
 | Güvenlik raporları | Riskli oturum açma işlemleri  | Sınırlı bilgi | Sınırlı bilgi | Tam erişim|
-| Güvenlik raporları | Risk algılamaları   | Hayır | Sınırlı bilgi| Tam erişim|
-| Bildirimler | Risk altındaki kullanıcılar uyarılar tespit etti  | Hayır | Hayır |Evet |
-| Bildirimler | Haftalık Özet| Hayır | Hayır | Evet | 
+| Güvenlik raporları | Risk algılamaları   | No | Sınırlı bilgi| Tam erişim|
+| Bildirimler | Risk altındaki kullanıcılar uyarılar tespit etti  | Hayır | Hayır |Yes |
+| Bildirimler | Haftalık Özet| Hayır | Hayır | Yes | 
 | | Çok faktörlü kimlik doğrulaması kayıt ilkesi | Hayır | Hayır | Evet |
 
 ## <a name="next-steps"></a>Sonraki adımlar

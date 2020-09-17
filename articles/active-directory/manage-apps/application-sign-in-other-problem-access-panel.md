@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a5201d0e31eb6d3b06316b74463dc2b68b33008c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563922"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707977"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD uygulamalarımın bir uygulamada oturum açma sorunlarını giderme
 
@@ -27,7 +27,7 @@ Azure AD 'yi bir uygulama için kimlik sağlayıcısı olarak kullanma hakkında
 Bu uygulamalar, Azure AD portalındaki Kullanıcı adına yapılandırılır. Uygulama, uygulama için düzgün şekilde yapılandırılmalı ve Kullanıcı veya Kullanıcı üyesi olan bir gruba atanmış olmalıdır. 
 
 Bir kullanıcının görebilecekleri uygulamaların türü aşağıdaki kategorilere ayrılır:
--   Microsoft 365 ve Office 365 uygulamaları
+-   Microsoft 365 uygulamalar
 -   Federasyon tabanlı SSO ile yapılandırılan Microsoft ve üçüncü taraf uygulamalar
 -   Parola tabanlı SSO uygulamaları
 -   Var olan SSO çözümlerini içeren uygulamalar
@@ -163,7 +163,7 @@ Bir kullanıcıya lisans atamak için aşağıdaki adımları izleyin:
 11. Bu lisansları bu kullanıcıya atamak için **ata** düğmesini seçin.
 
 ## <a name="troubleshooting-deep-links"></a>Derin bağlantılar sorunlarını giderme
-Derin bağlantılar veya Kullanıcı erişimi URL 'Leri, kullanıcılarınızın parola SSO uygulamalarına doğrudan tarayıcıların URL çubuklarından erişmek için kullanabileceği bağlantılardır. Bu bağlantıya giderek kullanıcılar önce uygulamalarıma gitmek zorunda kalmadan otomatik olarak uygulamada oturum açanlar. Bağlantı, kullanıcıların Office 365 uygulama Başlatıcısı ' ndan bu uygulamalara erişmek için kullandığı aynı.
+Derin bağlantılar veya Kullanıcı erişimi URL 'Leri, kullanıcılarınızın parola SSO uygulamalarına doğrudan tarayıcıların URL çubuklarından erişmek için kullanabileceği bağlantılardır. Bu bağlantıya giderek kullanıcılar önce uygulamalarıma gitmek zorunda kalmadan otomatik olarak uygulamada oturum açanlar. Bağlantı, kullanıcıların Microsoft 365 uygulama başlatıcıdan bu uygulamalara erişmek için kullandığı aynı bir uygulamadır.
 
 ### <a name="checking-the-deep-link"></a>Derin bağlantı denetleniyor
 

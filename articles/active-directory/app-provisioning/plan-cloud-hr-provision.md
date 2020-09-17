@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235714"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706362"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
 
@@ -50,7 +50,7 @@ Azure AD Kullanıcı sağlama ile bulut HR uygulaması tümleştirmesi ideal ola
 - Bulut HR uygulamasından Active Directory veya Azure AD 'ye doğrudan kullanıcı sağlamayı gerektir.
 - Kullanıcılardan bulut HR uygulamasından elde edilen verileri kullanarak sağlanması gerekir.
 - Yalnızca bulut HR uygulamasında algılanan değişiklik bilgilerini temel alan bir veya daha fazla Active Directory ormanlara, etki alanına ve OU 'Lara katılmayı zorunlu kılın.
-- E-posta için Office 365 kullanın.
+- E-posta için Microsoft 365 kullanın.
 
 ## <a name="learn"></a>Learn
 
@@ -61,14 +61,14 @@ Kullanıcı hazırlama devam eden kimlik yönetimi için bir temel oluşturur. Y
 Bu makale aşağıdaki terimleri kullanır:
 
 - **Kaynak sistem**: Azure AD tarafından sağlanan kullanıcıların Havuzu. Örnek olarak, Workday veya başarılı etmenler gibi bir bulut HR uygulamasıdır.
-- **Hedef sistem**: Azure AD tarafından sağlanan kullanıcıların deposu. Örnekler şunlardır Active Directory, Azure AD, Office 365 veya diğer SaaS uygulamaları.
+- **Hedef sistem**: Azure AD tarafından sağlanan kullanıcıların deposu. Örnekler şunlardır Active Directory, Azure AD, Microsoft 365 veya diğer SaaS uygulamaları.
 - **Birleştiriciler-Taşımacılar**: BIR bulut HR uygulamasını bir kayıt sistemi olarak kullanarak yeni Hires, aktarımlar ve sonlandırma için kullanılan bir terim. Hizmet, hedef sisteme gerekli öznitelikleri başarıyla sağlarken işlem tamamlanır.
 
 ### <a name="key-benefits"></a>Önemli avantajlar
 
 Bu HR-odaklı BT sağlama özelliği, aşağıdaki önemli iş avantajlarını sunmaktadır:
 
-- **Üretkenliği artırın:** Artık Kullanıcı hesaplarının ve Office 365 lisanslarının atamasını otomatikleştirebilir ve anahtar gruplarına erişim sağlayabilirsiniz. Atamaları otomatik hale getirmek, iş araçlarına yeni bir anında erişim sağlar ve üretkenliği artırır.
+- **Üretkenliği artırın:** Artık Kullanıcı hesaplarının ve Microsoft 365 lisansların atanmasını otomatikleştirebilir ve anahtar gruplarına erişim sağlayabilirsiniz. Atamaları otomatik hale getirmek, iş araçlarına yeni bir anında erişim sağlar ve üretkenliği artırır.
 - **Riski yönetin:** Bulut HR uygulamasından gelen verilerle akan çalışanların durum veya grup üyeliklerine göre değişiklikleri otomatikleştirerek güvenliği artırabilirsiniz. Değişikliklerin otomatikleştirilmesi, kullanıcılar kuruluştan geçiş yaparken veya kuruluştan ayrıldığınızda, anahtar uygulamalarına yönelik kullanıcı kimliklerinin ve erişimin otomatik olarak güncelleştirilmesini sağlar.
 - **Adres uyumluluğu ve idare:** Azure AD, hem kaynak hem de hedef sistemlerin uygulamaları tarafından gerçekleştirilen Kullanıcı hazırlama istekleri için yerel denetim günlüklerini destekler. Denetimle, tek bir ekrandan uygulamalara kimlerin erişebileceğini izleyebilirsiniz.
 - **Maliyeti yönetme:** Otomatik sağlama, el ile sağlama ile ilişkili verimsizlikleri ve insan hatasından kaçınarak maliyetleri azaltır. Eski ve süresi geçmiş platformlar kullanılarak zaman içinde oluşturulmuş özel geliştirmiş Kullanıcı sağlama çözümleri gereksinimini azaltır.
@@ -257,7 +257,7 @@ Varsayılan olarak, sağlama bağlayıcı uygulaması, Kullanıcı hesabının e
 
 Birleştiriciler-sızıntı sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
 
-| İşlem | Gereksinimler |
+| İşleme | Gereksinimler |
 | - | - |
 | **Birleştiriciler** | Kimlik yaşam döngüsü perspektifinden, yeniden oluşturma işlemlerinin nasıl yapılacağını nasıl işleyeceğinizi? Eski çalışan kimliklerini saklayın mi? |
 | | Gelecekteki ilerletlerinizi mi işletin, yoksa Active Directory hesapları mı oluşturdunuz? Bu hesaplar etkin veya devre dışı durumda mı oluşturulmuş? |
@@ -276,7 +276,7 @@ Her bir bulut HR uygulaması, eşlemeleri Active Directory için varsayılan bul
 
 Birleştiriciler-Taşımacılar sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
 
-| İşlem | Gereksinimler |
+| İşleme | Gereksinimler |
 | - | - |
 | **Birleştiriciler** | Active Directory hesabı oluşturma işlemi el ile, otomatikleştirilmiş veya kısmen otomatikleştirilebilir mi? |
 | | Bulut HR uygulamasından Active Directory 'e özel öznitelikler yaymaya planlansın mı? |

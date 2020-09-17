@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 662bda03fc2d389ed316bd2c7141d5e6a30cef1a
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 40d299049a0a1bbff81c412a5beb84f28e64ff46
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814651"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706311"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
@@ -35,7 +35,7 @@ Bu makalede, Azure Active Directory (Azure AD) uygulama galerisinde bir uygulama
 - Karşılıklı müşteriler, adım adım bir yapılandırma öğreticisini alır.
 - Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Federasyon uygulamaları (açık KIMLIK ve SAML/WS-beslenir) için, uygulamanın Azure AD uygulama galerisinde listelenen hizmet olarak yazılım (SaaS) modelini desteklemesi gerekir. Kurumsal Galeri uygulamaları, belirli bir müşteriyi değil birden çok müşteri yapılandırmasını desteklemelidir.
 - Açık KIMLIK bağlantısı için, uygulamanın çok kiracılı olması ve [Azure AD onay çerçevesinin](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) uygulama için uygun şekilde uygulanması gerekir. Kullanıcı, herhangi bir müşterinin uygulamaya onay sağlayabilmesi için, oturum açma isteğini ortak bir uç noktaya gönderebilir. Kullanıcı erişimini, kiracı KIMLIĞINE ve Kullanıcı belirtecine göre belirteçte alınan UPN 'yi kontrol edebilirsiniz.
@@ -124,7 +124,7 @@ Kullanıcı sağlaması istemek için aşağıdaki görüntüde gösterilen işl
 
 ## <a name="update-or-remove-an-existing-listing"></a>Mevcut bir listeyi güncelleştirme veya kaldırma
 
-Azure AD uygulama galerisinde mevcut bir uygulamayı güncelleştirmek veya kaldırmak için, önce isteği [uygulama ağ portalında](https://microsoft.sharepoint.com/teams/apponboarding/Apps)göndermeniz gerekir. Office 365 hesabınız varsa, Bu portalda oturum açmak için bu hesabı kullanın. Aksi takdirde, oturum açmak için Outlook veya Hotmail gibi Microsoft hesabı kullanın.
+Azure AD uygulama galerisinde mevcut bir uygulamayı güncelleştirmek veya kaldırmak için, önce isteği [uygulama ağ portalında](https://microsoft.sharepoint.com/teams/apponboarding/Apps)göndermeniz gerekir. Bir iş veya okul hesabınız varsa, Bu portalda oturum açmak için bu hesabı kullanın. Aksi takdirde, oturum açmak için Outlook veya Hotmail gibi Microsoft hesabı kullanın.
 
 - Aşağıdaki görüntüde gösterildiği gibi uygun seçeneği belirleyin.
 

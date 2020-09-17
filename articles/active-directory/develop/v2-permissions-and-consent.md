@@ -1,6 +1,6 @@
 ---
 title: Microsoft Identity platform kapsamları, izinleri ve onayı
-description: Microsoft Identity platform uç noktasındaki kapsamlar, izinler ve onay dahil olmak üzere yetkilendirme açıklaması.
+description: Kapsamlar, izinler ve onay dahil olmak üzere Microsoft Identity platform uç noktasındaki yetkilendirme hakkında bilgi edinin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d513dbd8449dad1d34117e06970f0c0881462aa3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263236"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705699"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft kimlik platformu uç noktasında izinler ve onay
 
@@ -27,12 +27,12 @@ Microsoft Identity platformu ile tümleştirilen uygulamalar, kullanıcılara ve
 
 Microsoft Identity platformu, [OAuth 2,0](active-directory-v2-protocols.md) yetkilendirme protokolünü uygular. OAuth 2,0, bir üçüncü taraf uygulamanın bir kullanıcı adına Web 'de barındırılan kaynaklara erişebileceği bir yöntemdir. Microsoft Identity platformu ile tümleştirilen Web 'de barındırılan herhangi bir kaynağın bir kaynak tanımlayıcısı veya *uygulama kimliği URI 'si*vardır. Örneğin, Microsoft 'un web 'de barındırılan kaynaklarından bazıları şunlardır:
 
-* Microsoft Graph:`https://graph.microsoft.com`
-* Office 365 posta API 'SI:`https://outlook.office.com`
-* Azure Key Vault:`https://vault.azure.net`
+* Microsoft Graph: `https://graph.microsoft.com`
+* Microsoft 365 mail API 'SI: `https://outlook.office.com`
+* Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
-> Office 365 posta API 'SI vb. yerine Microsoft Graph kullanmanızı kesinlikle öneririz.
+> Microsoft 365 mail API vb. yerine Microsoft Graph kullanmanızı kesinlikle öneririz.
 
 Aynı değer, Microsoft Identity platformu ile tümleştirilmiş olan tüm üçüncü taraf kaynakları için de geçerlidir. Bu kaynakların herhangi biri aynı zamanda söz konusu kaynağın işlevselliğini daha küçük parçalara bölmek için kullanılabilecek bir izinler kümesi tanımlayabilir. Örnek olarak [Microsoft Graph](https://graph.microsoft.com) , diğerleri arasında aşağıdaki görevleri yapmak için tanımlı izinlere sahiptir:
 
@@ -44,9 +44,9 @@ Bu tür izinleri tanımlayarak, kaynak, verileri üzerinde ayrıntılı denetime
 
 OAuth 2,0 ' de, bu tür izinler *kapsam*olarak adlandırılır. Bunlar da genellikle *izinler*olarak adlandırılır. Bir izin, Microsoft Identity platformunda bir dize değeri olarak temsil edilir. Microsoft Graph örnekle devam edildiğinde, her izin için dize değeri:
 
-* Kullanarak bir kullanıcının takvimini okuma`Calendars.Read`
-* Kullanarak bir kullanıcının takvimine yazma`Calendars.ReadWrite`
-* İle Kullanıcı olarak posta gönder`Mail.Send`
+* Kullanarak bir kullanıcının takvimini okuma `Calendars.Read`
+* Kullanarak bir kullanıcının takvimine yazma `Calendars.ReadWrite`
+* İle Kullanıcı olarak posta gönder `Mail.Send`
 
 Bu izinleri en yaygın olarak, Microsoft Identity platform yetkilendirme uç noktası isteklerindeki kapsamları belirterek ister. Ancak, belirli yüksek ayrıcalık izinleri yalnızca yönetici onayı üzerinden verilebilir ve [Yönetici onay uç noktası](v2-permissions-and-consent.md#admin-restricted-permissions)kullanılarak istenir/verilir. Daha fazla bilgi edinmek için okumaya devam edin.
 
@@ -134,9 +134,9 @@ Ayrıca, uygulamalar uygulama Izinleri istemek için yönetici onay uç noktası
 
 Microsoft ekosistemindeki bazı yüksek ayrıcalıklı izinler, *Yönetici kısıtlı*olarak ayarlanabilir. Bu tür izinlere örnek olarak şunlar verilebilir:
 
-* Kullanarak tüm kullanıcıların tam profillerini okuyun`User.Read.All`
-* Kullanarak bir kuruluşun dizinine veri yazma`Directory.ReadWrite.All`
-* Kullanarak bir kuruluşun dizinindeki tüm grupları okuma`Groups.Read.All`
+* Kullanarak tüm kullanıcıların tam profillerini okuyun `User.Read.All`
+* Kullanarak bir kuruluşun dizinine veri yazma `Directory.ReadWrite.All`
+* Kullanarak bir kuruluşun dizinindeki tüm grupları okuma `Groups.Read.All`
 
 Bir tüketici kullanıcısı bu tür verilere erişim izni verebilir, ancak kuruluş kullanıcılarının aynı hassas şirket verileri kümesine erişim izni verilmesi kısıtlıdır. Uygulamanız bir kuruluş kullanıcısının bu izinlerinden birine erişim isterse, kullanıcı uygulamanızın izinlerini kabul etmek için yetkilendirilmediğini bildiren bir hata iletisi alır.
 
@@ -283,7 +283,7 @@ Bu örnekte, istemci ve Microsoft Graph arasında Kullanıcı için hiçbir onay
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>Örnek 3: Kullanıcı onaylı ve istemci ek kapsamlar istediğinde
 
-Bu örnekte, Kullanıcı istemcisi için zaten bir daha onayladı `mail.read` . İstemci, kaydında kapsama kaydoldu `contacts.read` . İstemci bir belirteci kullanarak bir belirteç isteği yaptığında `scope=https://graph.microsoft.com/.default` ve aracılığıyla onay istediğinde `prompt=consent` , Kullanıcı, uygulama tarafından kaydedilen izinlerin tümü (ve yalnızca) için bir onay ekranı görür. `contacts.read`onay ekranında mevcut olacaktır, ancak olmayacaktır `mail.read` . Döndürülen belirteç Microsoft Graph olur ve `mail.read` ve içerir `contacts.read` .
+Bu örnekte, Kullanıcı istemcisi için zaten bir daha onayladı `mail.read` . İstemci, kaydında kapsama kaydoldu `contacts.read` . İstemci bir belirteci kullanarak bir belirteç isteği yaptığında `scope=https://graph.microsoft.com/.default` ve aracılığıyla onay istediğinde `prompt=consent` , Kullanıcı, uygulama tarafından kaydedilen izinlerin tümü (ve yalnızca) için bir onay ekranı görür. `contacts.read` onay ekranında mevcut olacaktır, ancak olmayacaktır `mail.read` . Döndürülen belirteç Microsoft Graph olur ve `mail.read` ve içerir `contacts.read` .
 
 ### <a name="using-the-default-scope-with-the-client"></a>İstemcisiyle//varsayılan kapsamını kullanma
 

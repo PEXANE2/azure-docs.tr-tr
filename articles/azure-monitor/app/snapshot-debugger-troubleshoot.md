@@ -2,18 +2,18 @@
 title: Azure Application Insights Snapshot Debugger sorunlarını giderme
 description: Bu makalede, Application Insights Snapshot Debugger etkinleştirme veya kullanmada sorun yaşayan geliştiricilere yardımcı olacak sorun giderme adımları ve bilgiler sunulmaktadır.
 ms.topic: conceptual
-author: brahmnes
+author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 935e1832629827b0286a79ab8ea6d1dfbb143e1c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671418"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707841"
 ---
-# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>Application Insights Snapshot Debugger etkinleştirme veya anlık görüntüleri görüntüleme sorunlarını giderme
-Uygulamanız için Application Insights Snapshot Debugger etkinleştirdiyseniz, ancak özel durumlar için anlık görüntüler görmüyorsanız, bu yönergeleri kullanarak sorun giderme yapabilirsiniz. Anlık görüntülerin üretilmesinin pek çok farklı nedeni olabilir. Olası yaygın nedenlerin bazılarını belirlemek için anlık görüntü sistem durumu denetimini çalıştırabilirsiniz.
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger etkinleştirme veya anlık görüntüleri görüntüleme sorunlarını giderme
+Uygulamanız için Application Insights Snapshot Debugger etkinleştirdiyseniz, ancak özel durumlar için anlık görüntüler görmüyorsanız, bu yönergeleri kullanarak sorun giderme yapabilirsiniz. Anlık görüntülerin oluşturulmamasının birçok farklı nedeni olabilir. Olası yaygın nedenlerin bazılarını belirlemek için anlık görüntü sistem durumu denetimini çalıştırabilirsiniz.
 
 ## <a name="use-the-snapshot-health-check"></a>Anlık görüntü durumu denetimini kullanma
 Yaygın olarak karşılaşılan bazı sorunlar açık hata ayıklama anlık görüntüsüne neden görünmüyor. Güncel olmayan Snapshot Collector kullanma, örneğin; günlük karşıya yükleme sınırına ulaşıyor; ya da anlık görüntünün karşıya yüklenmesi uzun zaman almazdır. Sık karşılaşılan sorunları gidermek için anlık görüntü durum denetimini kullanın.
@@ -32,13 +32,37 @@ Bu sorunu çözmezse, aşağıdaki el ile sorun giderme adımlarına bakın.
 
 Yayımlanmış uygulamanızda doğru izleme anahtarını kullandığınızdan emin olun. Genellikle, izleme anahtarı ApplicationInsights.config dosyasından okunurdur. Değerin portalda gördüğünüz Application Insights kaynağı için izleme anahtarıyla aynı olduğunu doğrulayın.
 
+## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>SSL istemci ayarlarını denetle (ASP.NET)
+
+Bir sanal makinede Azure App Service veya IIS 'de barındırılan bir ASP.NET uygulamanız varsa, uygulamanız eksik bir SSL güvenlik protokolü nedeniyle Snapshot Debugger hizmetine bağlanamaz.
+[Snapshot Debugger uç noktası TLS sürüm 1,2 gerektirir](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json). SSL güvenlik protokolleri kümesi, web.config System. Web bölümündeki httpRuntime targetFramework değeri tarafından etkinleştirilen olağandışı bir bölümdür. HttpRuntime targetFramework 4.5.2 veya düşükse, varsayılan olarak TLS 1,2 dahil değildir.
+
+> [!NOTE]
+> HttpRuntime targetFramework değeri, uygulamanızı oluştururken kullanılan hedef çerçeveden bağımsızdır.
+
+Ayarı denetlemek için web.config dosyanızı açın ve System. Web bölümünü bulun. ' `targetFramework` `httpRuntime` In 4,6 veya üzeri olarak ayarlandığından emin olun.
+
+   ```xml
+   <system.web>
+      ...
+      <httpRuntime targetFramework="4.7.2" />
+      ...
+   </system.web>
+   ```
+
+> [!NOTE]
+> HttpRuntime targetFramework değerini değiştirmek, uygulamanıza uygulanan çalışma zamanı süslerinizi değiştirir ve diğer, hafif davranış değişikliklerine neden olabilir. Bu değişikliği yaptıktan sonra uygulamanızı iyice test ettiğinizden emin olun. Uyumluluk değişikliklerinin tam listesi için lütfen bkz. https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility#retargeting-changes
+
+> [!NOTE]
+> TargetFramework 4,7 veya üzeri ise, Windows kullanılabilir protokolleri belirler. Azure App Service, TLS 1,2 kullanılabilir. Ancak, kendi sanal makinenizi kullanıyorsanız, işletim sisteminde TLS 1,2 ' i etkinleştirmeniz gerekebilir.
+
 ## <a name="preview-versions-of-net-core"></a>.NET Core 'un önizleme sürümleri
 Uygulama .NET Core 'un önizleme sürümünü kullanıyorsa ve Snapshot Debugger portalda [Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) aracılığıyla etkinleştirildiyse Snapshot Debugger başlatılamayabilir. [Diğer ortamlar için Snapshot Debugger etkinleştir](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) bölümündeki yönergeleri izleyerek, [Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)aracılığıyla etkinleştirmenin ***yanı sıra*** [Microsoft. ApplicationInsights. snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini uygulamaya ekleyin.
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>NuGet paketinin en son sürümüne yükseltin
 
-Snapshot Debugger [portalda Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)aracılığıyla etkinleştirildiyse, uygulamanız zaten en son NuGet paketini çalıştırıyor olmalıdır. Snapshot Debugger [Microsoft. ApplicationInsights. snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini ekleyerek etkinleştirilmişse, Microsoft. ApplicationInsights. snapshotcollector 'ın en son sürümünü kullandığınızdan emin olmak Için Visual Studio 'Nun NuGet paket yöneticisini kullanın. Sürüm notlarını şurada bulabilirsiniz:https://github.com/Microsoft/ApplicationInsights-Home/issues/167
+Snapshot Debugger [portalda Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)aracılığıyla etkinleştirildiyse, uygulamanız zaten en son NuGet paketini çalıştırıyor olmalıdır. Snapshot Debugger [Microsoft. ApplicationInsights. snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini ekleyerek etkinleştirilmişse, Microsoft. ApplicationInsights. snapshotcollector 'ın en son sürümünü kullandığınızdan emin olmak Için Visual Studio 'Nun NuGet paket yöneticisini kullanın. Sürüm notlarını şurada bulabilirsiniz: https://github.com/Microsoft/ApplicationInsights-Home/issues/167
 
 ## <a name="check-the-uploader-logs"></a>Uploader günlüklerini denetleyin
 
@@ -84,7 +108,7 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 Önceki örnekte, izleme anahtarı olur `c12a605e73c44346a984e00000000000` . Bu değer, uygulamanız için izleme anahtarıyla eşleşmelidir.
 Mini döküm, KIMLIĞI olan bir anlık görüntü ile ilişkilendirilir `139e411a23934dc0b9ea08a626db16c5` . Application Insights Analytics 'te ilişkili özel durum telemetrisini bulmak için bu KIMLIĞI daha sonra kullanabilirsiniz.
 
-Yükleyici, 15 dakikada bir daha yeni pdb 'leri tarar. İşte bir örnek:
+Yükleyici, 15 dakikada bir daha yeni pdb 'leri tarar. Aşağıda bir örnek verilmiştir:
 
 ```
 SnapshotUploader.exe Information: 0 : PDB rescan requested.
@@ -140,7 +164,7 @@ Bulut hizmeti rolünüzü anlık görüntüler için ayrılmış bir yerel kayna
    }
    ```
 
-3. Rolün ApplicationInsights.config dosyasını, tarafından kullanılan geçici klasör konumunu geçersiz kılmak üzere güncelleştirin`SnapshotCollector`
+3. Rolün ApplicationInsights.config dosyasını, tarafından kullanılan geçici klasör konumunu geçersiz kılmak üzere güncelleştirin `SnapshotCollector`
    ```xml
    <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4e09637a7d990e1555b5443b9931cf8ff8c271b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 57325363909664bb527c2e2101505641858c4285
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718875"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706277"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
 
@@ -102,7 +102,7 @@ Faturalandırma, ayda iki adımlı doğrulama gerçekleştirdiklerinden bağıms
 
 Kullanıcı başına veya kimlik doğrulaması başına MFA sağlayıcısı oluşturduğunuzda, kuruluşunuzun Azure aboneliği kullanım için aylık olarak faturalandırılır. Bu Faturalandırma modeli, Azure 'un sanal makineler ve Web Apps kullanımı ile benzerdir.
 
-Azure Multi-Factor Authentication için bir abonelik satın aldığınızda, kuruluşunuz yalnızca her bir kullanıcı için yıllık lisans ücretini ödersiniz. MFA lisansları ve Office 365, Azure AD Premium veya Enterprise Mobility + Security paketleri bu şekilde faturalandırılır.
+Azure Multi-Factor Authentication için bir abonelik satın aldığınızda, kuruluşunuz yalnızca her bir kullanıcı için yıllık lisans ücretini ödersiniz. MFA lisansları ve Microsoft 365, Azure AD Premium veya Enterprise Mobility + Security paketleri bu şekilde faturalandırılır.
 
 Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication alma](concept-mfa-licensing.md).
 

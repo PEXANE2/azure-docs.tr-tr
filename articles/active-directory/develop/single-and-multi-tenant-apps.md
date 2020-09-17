@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: ec59383f9ca2b71ec9f4b6df3ab2e24c6b52473b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb9cb80bdcd2854a3ddd5b273806fbcdda916b0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881375"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705648"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory kiracı
 
@@ -35,8 +35,8 @@ Azure portal, hedef kitleyi aşağıdaki gibi ayarlayarak uygulamanızı tek kir
 | Hedef kitle | Tek/çok kiracılı | Kimler oturum açabilir | 
 |----------|--------| ---------|
 | Yalnızca bu dizindeki hesaplar | Tek kiracılı | Dizininizdeki tüm kullanıcılar ve Konuk hesapları, uygulamanızı veya API 'nizi kullanabilir.<br>*Hedef hedef kitlesi kuruluşunuzda dahili ise bu seçeneği kullanın.* |
-| Herhangi bir Azure AD dizinindeki hesaplar | Çok Kiracılı | Microsoft 'un iş veya okul hesabına sahip tüm kullanıcılar ve konukları, uygulamanızı veya API 'nizi kullanabilir. Bu, Office 365 kullanan okullar ve işletmeler içerir.<br>*Hedef kitleniz iş veya Eğitim müşterileri ise bu seçeneği kullanın.* |
-| Herhangi bir Azure AD dizinindeki hesaplar ve kişisel Microsoft hesapları (Skype, Xbox, Outlook.com gibi) | Çok Kiracılı | İş veya okul veya kişisel Microsoft hesabı olan tüm kullanıcılar uygulamanızı veya API 'nizi kullanabilir. Bu, Xbox ve Skype gibi hizmetlerde oturum açmak için kullanılan kişisel hesapların yanı sıra Office 365 ' i kullanan okullar ve işletmeler içerir.<br>*En geniş Microsoft hesabı kümesini hedeflemek için bu seçeneği kullanın.* | 
+| Herhangi bir Azure AD dizinindeki hesaplar | Çok kiracılı | Microsoft 'un iş veya okul hesabına sahip tüm kullanıcılar ve konukları, uygulamanızı veya API 'nizi kullanabilir. Bu, Microsoft 365 kullanan okullar ve işletmeler içerir.<br>*Hedef kitleniz iş veya Eğitim müşterileri ise bu seçeneği kullanın.* |
+| Herhangi bir Azure AD dizinindeki hesaplar ve kişisel Microsoft hesapları (Skype, Xbox, Outlook.com gibi) | Çok kiracılı | İş veya okul veya kişisel Microsoft hesabı olan tüm kullanıcılar uygulamanızı veya API 'nizi kullanabilir. Bu, Xbox ve Skype gibi hizmetlerde oturum açmak için kullanılan kişisel hesapların yanı sıra Microsoft 365 kullanan okullar ve işletmeler içerir.<br>*En geniş Microsoft hesabı kümesini hedeflemek için bu seçeneği kullanın.* | 
 
 ## <a name="best-practices-for-multi-tenant-apps"></a>Çok kiracılı uygulamalar için en iyi uygulamalar
 

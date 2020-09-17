@@ -7,19 +7,19 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 16491e36e0196bc3dabee17daf905d9a5204f8cd
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: a899927166d7e1294ad89d48e5c646e6abb5ed76
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564262"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707620"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows 'da Azure dosyaları sorunlarını giderme (SMB)
 
 Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak Için azfilediagnostics 'i de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Bu bilgileri Azure dosya [paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) de bulabilirsiniz. Bu bilgiler, Azure dosya paylaşımlarını bağlama/eşleme/bağlama sorunları konusunda size yardımcı olacak adımlar sağlar.
 
 > [!IMPORTANT]
-> Bu makalenin içeriği yalnızca SMB paylaşımları için geçerlidir.
+> Bu makalenin içeriği yalnızca SMB paylaşımları için geçerlidir. NFS paylaşımları hakkında daha fazla bilgi için bkz. [Azure NFS dosya paylaşımları sorunlarını giderme](storage-troubleshooting-files-nfs.md).
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Bir Azure dosya paylaşımından bağlama yaparken hata 5

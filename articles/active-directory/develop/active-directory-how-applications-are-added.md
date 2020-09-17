@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115773"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706192"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Azure AD 'ye uygulamaların nasıl ve neden eklendiği
 
@@ -70,9 +70,9 @@ Uygulama nesneleri gibi, hizmet sorumluları da dahil olmak üzere birden çok y
 
 * Kullanıcılar Azure AD ile tümleştirilmiş bir üçüncü taraf uygulamasında oturum açtığında
   * Oturum açma sırasında kullanıcılardan, profiline ve diğer izinlerine erişmesi için uygulamaya izin vermesi istenir. İzin veren ilk kişi, dizine eklenecek uygulamayı temsil eden bir hizmet sorumlusuna neden olur.
-* Kullanıcılar [Office 365](https://products.office.com/) gibi Microsoft Çevrimiçi Hizmetler oturum açtığında
-  * Office 365 ' e abone olduğunuzda veya bir denemeye başladığınızda, Office 365 ile ilişkili tüm işlevleri teslim etmek için kullanılan çeşitli hizmetleri temsil eden dizinde bir veya daha fazla hizmet sorumlusu oluşturulur.
-  * SharePoint gibi bazı Office 365 Hizmetleri, iş akışları da dahil olmak üzere bileşenler arasında güvenli iletişime izin vermek için sürekli olarak hizmet sorumluları oluşturur.
+* Kullanıcılar [Microsoft 365](https://products.office.com/) gibi Microsoft Çevrimiçi Hizmetler oturum açtığında
+  * Microsoft 365 abone olduğunuzda veya bir denemeye başladığınızda, dizin içinde, Microsoft 365 ilişkili tüm işlevleri teslim etmek için kullanılan çeşitli hizmetleri temsil eden bir veya daha fazla hizmet sorumlusu oluşturulur.
+  * SharePoint gibi bazı Microsoft 365 Hizmetleri, iş akışları da dahil olmak üzere bileşenler arasında güvenli iletişime izin vermek için sürekli olarak hizmet sorumluları oluşturur.
 * Yönetici, uygulama galerisinden bir uygulama eklediğinde (Ayrıca bu, temel bir uygulama nesnesi oluşturur)
 * [Azure AD uygulama ara sunucusu](../manage-apps/application-proxy.md) kullanmak için uygulama ekleme
 * SAML veya parola kullanarak çoklu oturum açma için bir uygulamayı bağlama çoklu oturum açma (SSO)
@@ -116,7 +116,7 @@ Uygulamalar, aşağıdakileri içeren bir veya daha fazla hizmetten yararlanmak 
 * Federasyon veya parola kullanan SSO
 * Kullanıcı hazırlama ve eşitleme
 * Rol tabanlı erişim denetimi-bir uygulamada rol tabanlı yetkilendirme denetimleri gerçekleştirmek için uygulama rollerini tanımlamak üzere dizini kullanın
-* OAuth yetkilendirme hizmetleri-Office 365 ve diğer Microsoft uygulamaları tarafından API 'Ler/kaynaklara erişim yetkisi vermek için kullanılır
+* OAuth yetkilendirme Hizmetleri-API/kaynaklara erişim yetkisi vermek için Microsoft 365 ve diğer Microsoft uygulamaları tarafından kullanılır
 * Uygulama yayımlama ve proxy-özel bir ağdan internet 'e uygulama yayımlama
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Azure AD örneğinize uygulama ekleme izni var mı?

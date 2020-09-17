@@ -13,22 +13,22 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 75d848c8d4459e5534e2954a11612bdf44f6d1ce
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: e9780332ad6279deef63910c7e6ba95e1ccf43bd
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141559"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706141"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory onay çerçevesi
 
-Azure Active Directory (Azure AD) onay çerçevesi, çok kiracılı web ve yerel istemci uygulamaları geliştirmeyi kolaylaştırır. Bu uygulamalar, bir Azure AD kiracısından, uygulamanın kaydedildiği bilgisayardan farklı olan kullanıcı hesaplarına oturum açma izni verir. Ayrıca, kendi Web API 'lerinize ek olarak, Microsoft Graph API (Office 365 ' deki Azure AD, Intune ve hizmetlere erişmek için) ve diğer Microsoft Hizmetleri ' API 'Leri gibi Web API 'Lerine erişim de gerekebilir.
+Azure Active Directory (Azure AD) onay çerçevesi, çok kiracılı web ve yerel istemci uygulamaları geliştirmeyi kolaylaştırır. Bu uygulamalar, bir Azure AD kiracısından, uygulamanın kaydedildiği bilgisayardan farklı olan kullanıcı hesaplarına oturum açma izni verir. Ayrıca, kendi Web API 'lerinize ek olarak, Microsoft Graph API 'SI (Microsoft 365 Azure AD, Intune ve hizmetlere erişmek için) ve diğer Microsoft Hizmetleri API 'Leri gibi Web API 'Lerine erişim de gerekebilir.
 
-Çerçeve, dizin verilerine erişmeyi gerektirebilecek, kendi dizinine kaydedilmesini isteyen bir uygulamaya onay veren bir kullanıcı veya yöneticiye dayalıdır. Örneğin, bir Web istemcisi uygulamasının Office 365 kullanıcısı hakkındaki takvim bilgilerini okuması gerekiyorsa, bu kullanıcının önce istemci uygulamaya onay verilmesi gerekir. Onay verildikten sonra, istemci uygulaması kullanıcı adına Microsoft Graph API 'sini çağırabilir ve gerektiğinde takvim bilgilerini kullanabilir. [MICROSOFT Graph API](https://developer.microsoft.com/graph) , Office 365 ' deki verilere erişim sağlar (takvimler ve Exchange 'deki Iletiler, SharePoint 'teki siteler ve listeler, OneDrive 'daki belgeler, Microsoft 'un Not defterleri, Planner 'daki görevler ve Excel 'deki çalışma kitapları) ve diğer Microsoft bulut hizmetlerinden diğer veri nesnelerinden gelen kullanıcılar ve gruplar.
+Çerçeve, dizin verilerine erişmeyi gerektirebilecek, kendi dizinine kaydedilmesini isteyen bir uygulamaya onay veren bir kullanıcı veya yöneticiye dayalıdır. Örneğin, bir Web istemcisi uygulamasının kullanıcı hakkındaki takvim bilgilerini Microsoft 365 okuması gerekiyorsa, önce bu kullanıcının istemci uygulamaya onay verilmesi gerekir. Onay verildikten sonra, istemci uygulaması kullanıcı adına Microsoft Graph API 'sini çağırabilir ve gerektiğinde takvim bilgilerini kullanabilir. [Microsoft Graph API 'si](https://developer.microsoft.com/graph) , Microsoft 365 verileri (örneğin, Exchange 'deki takvimler ve Iletiler, SharePoint 'ten gelen siteler ve listeler, OneDrive 'daki belgeler, Microsoft 'un Not defterleri, planlayıcılardan görevler ve Excel 'deki çalışma kitapları) ve diğer Microsoft bulut hizmetlerinden diğer veri nesnelerinden gelen kullanıcılar ve gruplar gibi erişim sağlar.
 
 Onay çerçevesi, OAuth 2,0 ' de ve yetkilendirme kodu verme ve istemci kimlik bilgileri gibi çeşitli akışlarda, genel veya gizli istemciler kullanılarak oluşturulmuştur. Azure AD, OAuth 2,0 kullanarak bir telefon, tablet, sunucu veya Web uygulaması gibi birçok farklı türde istemci uygulaması oluşturmayı mümkün kılar ve gerekli kaynaklara erişim elde edebilir.
 
-Onay çerçevesini OAuth 2.0 yetkilendirmesi ile kullanma hakkında daha fazla bilgi için bkz. [Azure AD Için](./authentication-vs-authorization.md) [OAuth 2,0 ve Azure AD ve kimlik doğrulama senaryolarını kullanarak Web uygulamalarına erişim yetkisi verme](v2-oauth2-auth-code-flow.md) . Microsoft Graph aracılığıyla Office 365 yetkilendirme erişimi alma hakkında bilgi için bkz. [Microsoft Graph Ile uygulama kimlik doğrulaması](/graph/).
+Onay çerçevesini OAuth 2.0 yetkilendirmesi ile kullanma hakkında daha fazla bilgi için bkz. [Azure AD Için](./authentication-vs-authorization.md) [OAuth 2,0 ve Azure AD ve kimlik doğrulama senaryolarını kullanarak Web uygulamalarına erişim yetkisi verme](v2-oauth2-auth-code-flow.md) . Microsoft Graph üzerinden Microsoft 365 yetki erişimi alma hakkında bilgi için bkz. [Microsoft Graph Ile uygulama kimlik doğrulaması](/graph/).
 
 ## <a name="consent-experience---an-example"></a>Onay deneyimi-bir örnek
 

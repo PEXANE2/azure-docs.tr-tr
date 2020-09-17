@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 479e74f9c36864e041685393d35972e7365260da
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119456"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705869"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Ulusal bir bulut ortamında MSAL kullanma
 
@@ -34,7 +34,7 @@ Genel bulut dahil, Azure Active Directory (Azure AD) aşağıdaki Ulusal bulutla
 
 Bu kılavuzda, iş ve okul hesaplarında oturum açma, erişim belirteci alma ve [Azure Kamu bulut](https://azure.microsoft.com/global-infrastructure/government/) ORTAMıNDA Microsoft Graph API 'sini çağırma işlemlerinin nasıl yapılacağı gösterilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, bu önkoşulları karşıladığınızdan emin olun.
 
@@ -42,7 +42,7 @@ Başlamadan önce, bu önkoşulları karşıladığınızdan emin olun.
 
 [Azure Kamu](../../azure-government/index.yml) uygulamaları, kullanıcıların kimliğini doğrulamak IÇIN Azure AD kamu kimliklerini ve Azure AD ortak kimliklerini kullanabilir. Bu kimliklerden herhangi birini kullanabilmeniz için senaryonuz için hangi yetkili uç noktasını seçmeniz gerektiğine karar vermeniz gerekir:
 
-- Azure AD Genel: genellikle Kuruluşunuzda Office 365 (genel veya GCC) veya başka bir uygulamayı desteklemek için bir Azure AD Genel kiracısı zaten varsa kullanılır.
+- Azure AD Genel: genellikle kuruluşunuzun Microsoft 365 (public veya GCC) veya başka bir uygulamayı desteklemesi için bir Azure AD ortak kiracıya sahip olması halinde kullanılır.
 - Azure AD kamu: genellikle Kuruluşunuzda Office 365 (GCC High veya DoD) desteği için bir Azure AD kamu kiracısı zaten varsa veya Azure AD kamu 'da yeni bir kiracı oluşturmak için kullanılır.
 
 Karar verdikten sonra, uygulama kaydınızı gerçekleştirdiğiniz özel bir noktadır. Azure Kamu uygulamanız için Azure AD ortak kimlikleri ' ni seçerseniz, uygulamayı Azure AD Genel kiracınıza kaydetmeniz gerekir.
@@ -70,7 +70,7 @@ Bağımsız bulutları için MSAL.js uygulamanızı etkinleştirmek için:
 
 ### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 
-1. [Azure portalında](https://portal.azure.us/) oturum açın.
+1. [Azure Portal](https://portal.azure.us/) oturum açın.
 
    Diğer ulusal bulutlar için Azure portal uç noktaları bulmak için bkz. [uygulama kayıt uç noktaları](authentication-national-cloud.md#app-registration-endpoints).
 
@@ -122,8 +122,8 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
 Bu kodda:
 
-- `Enter_the_Application_Id_here`, kaydettiğiniz uygulamanın **uygulama (istemci) kimlik** değeridir.
-- `Enter_the_Tenant_Info_Here`Aşağıdaki seçeneklerden birine ayarlanır:
+- `Enter_the_Application_Id_here` , kaydettiğiniz uygulamanın **uygulama (istemci) kimlik** değeridir.
+- `Enter_the_Tenant_Info_Here` Aşağıdaki seçeneklerden birine ayarlanır:
     - Uygulamanız **bu kuruluş dizinindeki hesapları**destekliyorsa, bu DEĞERI Kiracı kimliği veya kiracı adı (örneğin, contoso.Microsoft.com) ile değiştirin.
     - Uygulamanız **herhangi bir kuruluş dizinindeki hesapları**destekliyorsa, bu değeri ile değiştirin `organizations` .
 
@@ -132,7 +132,7 @@ Bu kodda:
     > [!NOTE]
     > Kişisel Microsoft hesapları Ulusal bulutlarda desteklenmez.
 
-- `graphEndpoint`, ABD kamu için Microsoft bulutu 'nın Microsoft Graph uç noktasıdır.
+- `graphEndpoint` , ABD kamu için Microsoft bulutu 'nın Microsoft Graph uç noktasıdır.
 
    Tüm ulusal bulutlar için Microsoft Graph uç noktaları bulmak için bkz. [National bulutlar içindeki Microsoft Graph uç noktaları](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 

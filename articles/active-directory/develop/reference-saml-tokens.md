@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 254fa03310bac9c5c478d9297145f88773c1a7b0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6dda32bb2bab4123ede0133b31625c499380fd59
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648622"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705716"
 ---
 # <a name="saml-token-claims-reference"></a>SAML belirteci talep başvurusu
 
@@ -33,7 +33,7 @@ Microsoft Identity platformu, her kimlik doğrulama akışının işlenmesinde b
 > | Kimlik Doğrulaması Anı | |Kimlik doğrulamasının gerçekleştiği tarihi ve saati kaydeder. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
 > |Kimlik Doğrulama Yöntemi | `amr` |Belirtecin konusunun nasıl doğrulandığını tanımlar. | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |Ad | `given_name` |Azure AD Kullanıcı nesnesinde ayarlandığı gibi, kullanıcının ilk veya "verilen" adını sağlar. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
-> |Gruplar | `groups` |Konunun grup üyeliklerini temsil eden nesne kimliklerini sağlar. Bu değerler benzersizdir (bkz. nesne KIMLIĞI) ve bir kaynağa erişmek için Yetkilendirmeyi zorlama gibi erişimi yönetmek için güvenli bir şekilde kullanılabilir. Gruplar talebine dahil olan gruplar uygulama bildiriminin "Groupmembershipclaim" özelliği aracılığıyla uygulama başına temelinde yapılandırılır. Null değeri tüm grupları dışlayacak, "SecurityGroup" değeri yalnızca Active Directory güvenlik grubu üyeliklerini içerir ve "All" değeri hem güvenlik gruplarını hem de Office 365 dağıtım listelerini içerir. <br><br> **Notlar**: <br> Kullanıcının sayısı bir sınırı (SAML için 150 200, JWT için) üzerine gittiğinde, fazla kullanım talebi, Kullanıcı için Grup listesini içeren grafik uç noktasına işaret eden talep kaynaklarını da eklenecektir. 'ndaki. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
+> |Gruplar | `groups` |Konunun grup üyeliklerini temsil eden nesne kimliklerini sağlar. Bu değerler benzersizdir (bkz. nesne KIMLIĞI) ve bir kaynağa erişmek için Yetkilendirmeyi zorlama gibi erişimi yönetmek için güvenli bir şekilde kullanılabilir. Gruplar talebine dahil olan gruplar uygulama bildiriminin "Groupmembershipclaim" özelliği aracılığıyla uygulama başına temelinde yapılandırılır. Null değeri tüm grupları dışlayacak, "SecurityGroup" değeri yalnızca Active Directory güvenlik grubu üyeliklerini içerir ve "All" değeri hem güvenlik gruplarını hem de Microsoft 365 dağıtım listelerini içerir. <br><br> **Notlar**: <br> Kullanıcının sayısı bir sınırı (SAML için 150 200, JWT için) üzerine gittiğinde, fazla kullanım talebi, Kullanıcı için Grup listesini içeren grafik uç noktasına işaret eden talep kaynaklarını da eklenecektir. 'ndaki. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
 > | Gruplar fazla kullanım göstergesi | `groups:src1` | Uzunluğu sınırlı olmayan ancak belirteç için çok büyük olan belirteç istekleri için, Kullanıcı için tam gruplar listesine bir bağlantı dahil edilir. SAML için bu, talebin yerine yeni bir talep olarak eklenir `groups` . | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |Kimlik Sağlayıcı | `idp` |Belirtecin öznesinin kimliğini doğrulayan kimlik sağlayıcısını kaydeder. Bu değer, Kullanıcı hesabı verenden farklı bir kiracıda olmadığı takdirde veren talebinin değeriyle aynıdır. | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |Issuedat | `iat` |Belirtecin verildiği saati depolar. Genellikle belirtecin yeniliği ölçmek için kullanılır. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |

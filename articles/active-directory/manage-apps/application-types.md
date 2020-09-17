@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 955efe45be27fa2f4e738066bb3b69b3604be33a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5229b123986149903d562bc0b3d6902c0136f647
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400730"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707892"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Kimlik yönetimi için Azure AD kiracınızı kullanarak uygulamaları görüntüleme
 [Uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md) size temel bilgileri gösterir. Bu durumda, kimlik yönetimi için Azure AD kiracınızı kullanarak tüm uygulamaları görüntülemeyi öğreneceksiniz. Bu makale, bulacağınız uygulama türlerinin biraz daha ayrıntılı bir şekilde bir bölümünü ele alır.
@@ -27,7 +27,7 @@ ms.locfileid: "89400730"
    - **Azure AD-uygulama kayıtları** : Azure ad portalındaki **uygulama kayıtları** seçeneği kullanılarak kiracınıza eklenen uygulamalar. Genellikle açık KIMLIK Connect ve OAuth standartlarını kullanan özel geliştirmiş uygulamalar.
    - **Uygulama proxy 'Si uygulamaları** – dışarıdan güvenli çoklu oturum açma sağlamak istediğiniz şirket içi ortamınızda çalışan bir uygulamadır
 - İçin kaydolurken veya ' de oturum açarken, Azure Active Directory ile tümleştirilmiş üçüncü taraf bir uygulama. [Smartsheet](https://app.smartsheet.com/b/home) veya [Docusign](https://www.docusign.net/member/MemberLogin.aspx)bir örnektir.
-- Microsoft 365 veya Office 365 gibi Microsoft uygulamaları.
+- Microsoft 365 gibi Microsoft uygulamaları.
 - [Uygulama kayıt defteri](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration) 'ni kullanarak özel olarak geliştirilmiş bir uygulama oluşturarak yeni bir uygulama kaydı eklediğinizde
 - [V 2.0 uygulama kayıt portalını](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration) kullanarak özel olarak geliştirilmiş bir uygulama oluşturarak yeni bir uygulama kaydı eklediğinizde
 - Bir uygulama eklediğinizde, Visual Studio 'nun [ASP.NET kimlik doğrulama yöntemlerini](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) veya [bağlı hizmetleri](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) kullanarak geliştirdiğinizi

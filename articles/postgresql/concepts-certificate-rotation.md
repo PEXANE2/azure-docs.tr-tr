@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: ce1ef0257f2003c3af01d71b7da3924ebd9ed44f
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 5b46dc0197022aa72b6ca4c206d1da4369234167
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603926"
+ms.locfileid: "90707688"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı 'nın tek sunucu değişikliği için kök CA 'daki değişiklikleri anlama
 
@@ -28,10 +28,9 @@ Yeni sertifika 26 Ekim 2020 (10/26/2020) tarihinden itibaren kullanılacaktır. 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Nasıl yaparım? Veritabanımın etkilenip etkilenmediğini öğrensin mi?
 
 SSL/TLS kullanan tüm uygulamalar ve kök sertifikanın kök sertifikayı güncelleştirmesi gerekir. Bağlantı dizenizi inceleyerek bağlantılarınızın kök sertifikayı doğrulayıp doğrulamayıp belirleyemeyeceğini belirleyebilirsiniz.
--   Bağlantı dizeniz `sslmode=verify-ca` veya ' ' içeriyorsa
--   Bağlantı dizeniz içeriyorsa `sslmode=disable` , sertifikaları güncelleştirmeniz gerekmez.
--   Bağlantı dizeniz `sslmode=allow` , veya içerdiğinde, `sslmode=prefer` `sslmode=require` sertifikaları güncelleştirmeniz gerekmez. 
--   Bağlantı dizeniz belirli bir sslmode değilse, sertifikaları güncelleştirmeniz gerekmez.
+-   Bağlantı dizeniz veya içeriyorsa `sslmode=verify-ca` `sslmode=verify-full` , sertifikayı güncelleştirmeniz gerekir.
+-   Bağlantı dizeniz,, `sslmode=disable` veya içerdiğinde, `sslmode=allow` `sslmode=prefer` `sslmode=require` sertifikaları güncelleştirmeniz gerekmez. 
+-   Bağlantı dizeniz sslmode belirtmezse, sertifikaları güncelleştirmeniz gerekmez.
 
 Bağlantı dizesini soyutlayan bir istemci kullanıyorsanız, sertifikaları doğrulayıp doğrulamadığını anlamak için istemci belgelerini gözden geçirin.
 

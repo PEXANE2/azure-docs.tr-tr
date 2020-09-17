@@ -16,18 +16,18 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80dafda39c0b37b1a7477b93d7f649fa1beeade
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 0126c5348a2acaebea0400a94ca0a1d14a1bf6ff
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783646"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707552"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde yeni bir erişim paketi oluşturma
 
 Erişim paketi, erişim paketinin ömrü boyunca erişimi otomatik olarak yöneten kaynak ve ilkelerin bir kerelik kurulumunu yapmanızı sağlar. Bu makalede, yeni bir erişim paketinin nasıl oluşturulacağı açıklanır.
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Tüm erişim paketleri, Katalog adlı bir kapsayıcıya yerleştirilmelidir. Katalog, erişim paketinize ekleyebileceğiniz kaynakları tanımlar. Bir katalog belirtmezseniz, erişim paketiniz genel kataloğa konur. Şu anda, var olan bir erişim paketini farklı bir kataloğa taşıyamazsınız.
 
@@ -57,7 +57,7 @@ Yeni bir erişim paketi oluşturmak için üst düzey adımlar aşağıda verilm
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -99,7 +99,7 @@ Yeni bir erişim paketi oluşturmak için üst düzey adımlar aşağıda verilm
 
     Erişim paketini mevcut bir katalogda oluşturuyorsanız, zaten katalogda olan herhangi bir kaynağı sahip olmadan seçebilirsiniz.
 
-    Genel yönetici, bir Kullanıcı Yöneticisi veya katalog sahibiyseniz, sahip olduğunuz kaynakları seçmek için henüz katalogda olmayan ek bir seçeneğe sahip olursunuz. Seçili katalogda mevcut olmayan kaynakları seçerseniz, bu kaynaklar diğer katalog yöneticilerinin ile erişim paketleri oluşturması için kataloğa da eklenecektir. Yalnızca seçili katalogda olan kaynakları seçmek istiyorsanız, Seç bölmesinin en üstündeki **tek gör** onay kutusunu işaretleyin.
+    Genel yönetici, bir Kullanıcı Yöneticisi veya katalog sahibiyseniz, sahip olduğunuz kaynakları seçmek için henüz katalogda olmayan ek bir seçeneğe sahip olursunuz. Seçili katalogda mevcut olmayan kaynakları seçerseniz, bu kaynaklar diğer katalog yöneticilerinin ile erişim paketleri oluşturması için kataloğa da eklenecektir. Kataloğa eklenebilecek tüm kaynakları görmek için, seçme bölmesinin üst tarafındaki **Tüm** onay kutularını işaretleyin. Yalnızca seçili katalogda olan kaynakları seçmek istiyorsanız, **onay kutusunun işaretini** işaretsiz (varsayılan durum) olarak bırakın.
 
 1. Kaynakları seçtikten sonra, **rol** listesinde, kullanıcıların kaynak için atanmasını istediğiniz rolü seçin.
 
@@ -135,11 +135,11 @@ Bu erişim paketini isteyebilmek istediğinize bağlı olarak, aşağıdaki böl
 
 Ayrıca, Microsoft Graph kullanarak bir erişim paketi de oluşturabilirsiniz.  Temsilci izni olan bir uygulamayla uygun bir roldeki kullanıcı `EntitlementManagement.ReadWrite.All` , API 'yi çağırabilir
 
-1. [Katalogda accesspackageresoresources listesini listeleyin](/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) ve henüz katalogda olmayan kaynaklar Için [bir accessPackageResourceRequest oluşturun](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) .
-1. Bir accessPackageCatalog içindeki her accessPackageResource 'ın [accessPackageResourceRoles](/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) ' i listeleyin. Daha sonra bu roller listesi, daha sonra bir accessPackageResourceRoleScope oluştururken bir rol seçmek için kullanılacaktır.
-1. [Bir accessPackage oluşturun](/graph/api/accesspackage-post?view=graph-rest-beta).
-1. [Accesspackageatamailkesi oluşturun](/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
-1. Erişim paketinde gereken her kaynak rolü için [bir accessPackageResourceRoleScope oluşturun](/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) .
+1. [Katalogda accesspackageresoresources listesini listeleyin](https://docs.microsoft.com/graph/api/accesspackagecatalog-list?view=graph-rest-beta&tabs=http) ve henüz katalogda olmayan kaynaklar Için [bir accessPackageResourceRequest oluşturun](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&tabs=http) .
+1. Bir accessPackageCatalog içindeki her accessPackageResource 'ın [accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackage-list-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) ' i listeleyin. Daha sonra bu roller listesi, daha sonra bir accessPackageResourceRoleScope oluştururken bir rol seçmek için kullanılacaktır.
+1. [Bir accessPackage oluşturun](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
+1. [Accesspackageatamailkesi oluşturun](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta&tabs=http).
+1. Erişim paketinde gereken her kaynak rolü için [bir accessPackageResourceRoleScope oluşturun](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

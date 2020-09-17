@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 09/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4fb616860cb1e85c6249329f3679de0d29b72e61
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: e6e6c802da212294594f45d0545c6cf07694760b
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018841"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707926"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Blok Blobları için nesne çoğaltmasını yapılandırma
 
@@ -150,9 +150,11 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 Azure CLı ile bir çoğaltma ilkesi oluşturmak için önce Azure CLı sürüm 2.11.1 veya üstünü yüklemeniz gerekir. Daha fazla bilgi için bkz. [Azure CLI kullanmaya başlama](/cli/azure/get-started-with-azure-cli).
 
-Sonra, kaynak ve hedef depolama hesaplarında blob sürüm oluşturmayı etkinleştirin ve kaynak hesapta değişiklik akışını etkinleştirin. Açılı ayraçlar içindeki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
+Ardından, kaynak ve hedef depolama hesaplarında blob sürüm oluşturmayı etkinleştirin ve [az Storage Account blob-Service-Properties Update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) komutunu çağırarak kaynak hesapta değişiklik akışını etkinleştirin. Açılı ayraçlar içindeki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli
+az login
+
 az storage account blob-service-properties update \
     --resource-group <resource-group> \
     --account-name <source-storage-account> \
@@ -174,24 +176,24 @@ Kaynak ve hedef kapsayıcıları ilgili depolama hesaplarında oluşturun.
 ```azurecli
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container3 \
+    --name source-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container4 \
+    --name source-container-2 \
     --auth-mode login
 
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container3 \
+    --name dest-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container4 \
+    --name dest-container-1 \
     --auth-mode login
 ```
 
-Hedef hesapta yeni bir çoğaltma ilkesi ve ilişkili kurallar oluşturun.
+[Az Storage Account veya-Policy Create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create)yöntemini çağırarak hedef hesapta yeni bir çoğaltma ilkesi ve ilişkili bir kural oluşturun.
 
 ```azurecli
 az storage account or-policy create \
@@ -199,21 +201,26 @@ az storage account or-policy create \
     --resource-group <resource-group> \
     --source-account <source-storage-account> \
     --destination-account <dest-storage-account> \
-    --source-container source-container3 \
-    --destination-container dest-container3 \
-    --min-creation-time '2020-05-10T00:00:00Z' \
+    --source-container source-container-1 \
+    --destination-container dest-container-1 \
+    --min-creation-time '2020-09-10T00:00:00Z' \
     --prefix-match a
 
+```
+
+Azure depolama, yeni ilkenin oluşturulduğu sırada ilke KIMLIĞINI ayarlar. İlkeye ek kurallar eklemek için [az Storage Account veya-Policy kuralını](/cli/azure/storage/account/or-policy/rule#az_storage_account_or_policy_rule_add) çağırın ve ilke kimliğini sağlayın.
+
+```azurecli
 az storage account or-policy rule add \
     --account-name <dest-storage-account> \
-    --destination-container dest-container4 \
-    --policy-id <policy-id> \
     --resource-group <resource-group> \
-    --source-container source-container4 \
+    --source-container source-container-2 \
+    --destination-container dest-container-2 \
+    --policy-id <policy-id> \
     --prefix-match b
 ```
 
-İlkeyi, ilke KIMLIĞINI kullanarak kaynak hesapta oluşturun.
+Sonra, ilke KIMLIĞINI kullanarak ilkeyi kaynak hesapta oluşturun.
 
 ```azurecli
 az storage account or-policy show \
@@ -229,16 +236,16 @@ az storage account or-policy show \
 
 ### <a name="configure-object-replication-when-you-have-access-only-to-the-destination-account"></a>Yalnızca hedef hesaba erişiminiz olduğunda nesne çoğaltmasını yapılandırma
 
-Kaynak depolama hesabı için izinleriniz yoksa, hedef hesapta nesne çoğaltmasını yapılandırabilir ve kaynak hesapta aynı ilkeyi oluşturmak için başka bir kullanıcıya ilke tanımını içeren bir JSON dosyası sağlayabilirsiniz. Örneğin, kaynak hesap hedef hesaptan farklı bir Azure AD kiracısında ise, nesne çoğaltmasını yapılandırmak için bu yaklaşımı kullanın. 
+Kaynak depolama hesabı için izinleriniz yoksa, hedef hesapta nesne çoğaltmasını yapılandırabilir ve kaynak hesapta aynı ilkeyi oluşturmak için başka bir kullanıcıya ilke tanımını içeren bir JSON dosyası sağlayabilirsiniz. Örneğin, kaynak hesap hedef hesaptan farklı bir Azure AD kiracısında ise, nesne çoğaltmasını yapılandırmak için bu yaklaşımı kullanabilirsiniz.
 
 İlkeyi oluşturmak için, hedef depolama hesabı düzeyine veya daha yüksek Azure Resource Manager **katkıda bulunan** rolün atanması gerektiğini unutmayın. Daha fazla bilgi için bkz. Azure rol tabanlı Access Control (RBAC) belgelerindeki [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md) .
 
-Aşağıdaki tabloda, her senaryodaki JSON dosyasındaki ilke KIMLIĞI için hangi değerlerin kullanılacağı özetlenmektedir.
+Aşağıdaki tabloda, her senaryodaki JSON dosyasındaki ilke KIMLIĞI ve kural kimlikleri için hangi değerlerin kullanılacağı özetlenmektedir.
 
-| Bu hesap için JSON dosyasını oluştururken... | İlke KIMLIĞINI bu değere ayarlayın... |
+| Bu hesap için JSON dosyasını oluştururken... | İlke KIMLIĞI ve kural kimliklerini bu değere ayarlayın... |
 |-|-|
-| Hedef hesap | *Varsayılan*dize değeri. Azure depolama, ilke KIMLIĞINI sizin için oluşturur. |
-| Kaynak hesap | Hedef hesapta tanımlanan kuralları içeren bir JSON dosyası indirdiğinizde döndürülen ilke KIMLIĞI. |
+| Hedef hesap | *Varsayılan*dize değeri. Azure depolama, ilke KIMLIĞI ve kural kimliklerini sizin için oluşturur. |
+| Kaynak hesap | Hedef hesapta tanımlı ilkeyi JSON dosyası olarak indirdiğinizde döndürülen ilke KIMLIĞI ve kural kimliklerinin değerleri. |
 
 Aşağıdaki örnek, *b* önekiyle eşleşen tek bir kuralla hedef hesapta bir çoğaltma ilkesi tanımlar ve çoğaltılacak Bloblar için en düşük oluşturma süresini ayarlar. Açılı ayraçlar içindeki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
 
@@ -307,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-Kaynak hesapta PowerShell ile çoğaltma ilkesini tanımlamak için JSON dosyasını kullanmak için yerel dosyayı alın ve JSON 'dan bir nesneye dönüştürün. Ardından, aşağıdaki örnekte gösterildiği gibi, ilkeyi kaynak hesapta yapılandırmak için [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) komutunu çağırın. Açılı ayraçlar ve dosya yolundaki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
+Kaynak hesapta PowerShell ile çoğaltma ilkesini yapılandırmak üzere JSON dosyasını kullanmak için yerel dosyayı alın ve JSON 'dan bir nesneye dönüştürün. Ardından, aşağıdaki örnekte gösterildiği gibi, ilkeyi kaynak hesapta yapılandırmak için [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) komutunu çağırın. Açılı ayraçlar ve dosya yolundaki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
@@ -321,7 +328,24 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Yok
+Hedef hesabın çoğaltma ilkesi tanımını Azure CLı 'dan bir JSON dosyasına yazmak için [az Storage Account veya-Policy komutunu ya](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_show) da bir dosyaya çıktıyı göster komutunu çağırın.
+
+Aşağıdaki örnek, ilke tanımını *policy.js*ADLı bir JSON dosyasına yazar. Açılı ayraçlar ve dosya yolundaki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
+
+```azurecli
+az storage account or-policy show \
+    --account-name <dest-account-name> \
+    --policy-id  <policy-id> > policy.json
+```
+
+Azure CLı ile kaynak hesapta çoğaltma ilkesini yapılandırmak üzere JSON dosyasını kullanmak için, [az Storage Account veya-Policy Create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create) komutunu çağırın ve dosyadaki *policy.js* başvurun. Açılı ayraçlar ve dosya yolundaki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
+
+```azurecli
+az storage account or-policy create \
+    -resource-group <resource-group> \
+    --source-account <source-account-name> \
+    --policy @policy.json
+```
 
 ---
 
@@ -360,12 +384,12 @@ Bir çoğaltma ilkesini kaldırmak için, ilkeyi kaynak hesaptan ve hedef hesapt
 
 ```azurecli
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <source-storage-account> \
     --resource-group <resource-group>
 
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <dest-storage-account> \
     --resource-group <resource-group>
 ```

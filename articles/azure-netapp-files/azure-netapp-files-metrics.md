@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 09/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 7e6ab90010d4379c1640f73a8deeba874e601daf
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 1690a844ff700a2975be8e972fd90ba71eeb937c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513817"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707790"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files için ölçümler
 
@@ -27,20 +27,18 @@ Azure NetApp Files, ayrılan depolama, gerçek depolama alanı kullanımı, haci
 
 ## <a name="usage-metrics-for-capacity-pools"></a><a name="capacity_pools"></a>Kapasite havuzları için kullanım ölçümleri
 
-<!-- 
-- *Pool Provisioned Size*  
-    The logical space (GiB) the capacity pool is provisioned with.  
-    This size is the size you selected during capacity pool creation. 
---> 
+- *Havuza ayrılan boyut*   
+    Havuzun sağlanan boyutu.
+
 - *Birim boyutuna ayrılan havuz*  
     Belirli bir kapasite havuzundaki birim kotasının (GiB) toplamı (diğer bir deyişle, kapasite havuzundaki birimlerin sağlanan boyutlarının toplamı).  
     Bu boyut, birim oluşturma sırasında seçtiğiniz boyutudur.  
+
 - *Kullanılan havuz boyutu*  
     Bir kapasite havuzundaki birimlerde kullanılan mantıksal alan toplamı (GiB).  
-<!-- 
-- *Pool Consumed Snapshot Size*  
-    The total of logical space (GiB) used by snapshots across all volumes in a capacity pool. 
--->
+
+- *Havuzun toplam anlık görüntü boyutu*    
+    Havuzdaki tüm birimlerin anlık görüntü boyutu toplamı.
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>Birimler için kullanım ölçümleri
 
@@ -57,14 +55,37 @@ Azure NetApp Files, ayrılan depolama, gerçek depolama alanı kullanımı, haci
 
 ## <a name="performance-metrics-for-volumes"></a>Birimler için performans ölçümleri
 
-- *AverageReadLatency*   
+- *Ortalama okuma gecikmesi*   
     Birimdeki ortalama okuma süresi (milisaniye).
-- *AverageWriteLatency*   
+- *Ortalama yazma gecikmesi*   
     Birimdeki ortalama yazma süresi (milisaniye).
-- *ReadIops*   
+- *IOPS 'yi oku*   
     Birime saniye başına okuma sayısı.
-- *Writeıops*   
+- *IOPS yaz*   
     Birime saniye başına yazma sayısı.
+
+## <a name="volume-replication-metrics"></a><a name="replication"></a>Birim çoğaltma ölçümleri
+
+- *Birim çoğaltma durumu sağlıklı*   
+    Çoğaltma ilişkisinin koşulu. 
+
+- *Birim çoğaltma aktarılıyor*    
+    Birim çoğaltmasının durumunun ' aktarma ' olup olmadığı. 
+ 
+- *Birim çoğaltma gecikme süresi*   
+    Yansıtmadaki verilerin kaynağın arkasında olduğu sürenin saniye cinsinden miktarı. 
+
+- *Birim çoğaltma son aktarım süresi*   
+    Son aktarımın tamamlanması için geçen saniye cinsinden süre. 
+
+- *Birim çoğaltma son aktarım boyutu*    
+    Son aktarımın bir parçası olarak aktarılan toplam bayt sayısı. 
+
+- *Birim çoğaltma ilerleme durumu*    
+    Geçerli aktarım işlemi için aktarılan toplam veri miktarı. 
+
+- *Birim çoğaltma toplam aktarımı*   
+    İlişki için aktarılan birikmeli baytlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

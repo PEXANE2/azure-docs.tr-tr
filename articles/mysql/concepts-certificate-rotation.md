@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: dd009542adffed2f459534c943e3a873678ecd35
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 971554443e5b420cf759f86013445a6ff9069dea
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604929"
+ms.locfileid: "90706864"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'ndaki kök CA 'daki değişiklikleri anlama
 
@@ -28,10 +28,9 @@ Yeni sertifika 26 Ekim 2020 (10/26/2020) tarihinden itibaren kullanılacaktır. 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Nasıl yaparım? Veritabanımın etkilenip etkilenmediğini öğrensin mi?
 
 SSL/TLS kullanan tüm uygulamalar ve kök sertifikanın kök sertifikayı güncelleştirmesi gerekir. Bağlantı dizenizi inceleyerek bağlantılarınızın kök sertifikayı doğrulayıp doğrulamayıp belirleyemeyeceğini belirleyebilirsiniz.
--   Bağlantı dizeniz `sslmode=verify-ca` veya ' ' içeriyorsa
--   Bağlantı dizeniz içeriyorsa `sslmode=disable` , sertifikaları güncelleştirmeniz gerekmez.
--   Bağlantı dizeniz `sslmode=allow` , veya içerdiğinde, `sslmode=prefer` `sslmode=require` sertifikaları güncelleştirmeniz gerekmez. 
--   Bağlantı dizeniz belirli bir sslmode değilse, sertifikaları güncelleştirmeniz gerekmez.
+-   Bağlantı dizeniz veya içeriyorsa `sslmode=verify-ca` `sslmode=verify-full` , sertifikayı güncelleştirmeniz gerekir.
+-   Bağlantı dizeniz,, `sslmode=disable` veya içerdiğinde, `sslmode=allow` `sslmode=prefer` `sslmode=require` sertifikaları güncelleştirmeniz gerekmez. 
+-   Bağlantı dizeniz sslmode belirtmezse, sertifikaları güncelleştirmeniz gerekmez.
 
 Bağlantı dizesini soyutlayan bir istemci kullanıyorsanız, sertifikaları doğrulayıp doğrulamadığını anlamak için istemci belgelerini gözden geçirin.
 MySQL için Azure veritabanı ' nın sslmode ' i anlamak için [SSL modu açıklamalarını](concepts-ssl-connection-security.md#ssl-default-settings)gözden geçirin.

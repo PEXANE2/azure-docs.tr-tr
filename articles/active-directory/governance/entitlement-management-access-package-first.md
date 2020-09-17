@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b79a631ba82d0b4a420ef27684e5a62571ddf85a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034585"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707501"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde ilk erişim paketinizi oluşturma
 
@@ -41,6 +41,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 İlk erişim paketinizi oluşturma da dahil olmak üzere Azure Active Directory yetkilendirme yönetimi dağıtma işleminin adım adım bir gösterimi için aşağıdaki videoyu görüntüleyin:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
+
+Ayrıca, Microsoft Graph kullanarak programlı bir şekilde erişim paketi oluşturabilirsiniz. Programlı olarak bir erişim paketi oluşturmayı gösteren bir öğretici için bkz. [Yetkilendirme yönetim API 'si](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -106,7 +108,7 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
 
 9. Grupları seçin bölmesinde, daha önce oluşturduğunuz **Pazarlama Kaynakları** grubunu bulun ve seçin.
 
-    Varsayılan olarak, **genel** kataloğun içinde ve dışında gruplar görürsünüz. **Genel** kataloğun dışında bir grup seçtiğinizde, **genel** kataloğa eklenir.
+     Varsayılan olarak, genel kataloğun içinde gruplar görürsünüz. Genel kataloğun dışında bir grup seçtiğinizde, **Tümünü göster** onay kutusunu işaretlerseniz, bu genel kataloğa eklenir.
 
     ![Yeni erişim paketi-kaynak rolleri sekmesi](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 

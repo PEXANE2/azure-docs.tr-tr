@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 363068b74bf7639460da4fa80f0e661f3b8a88b9
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5d585ac57a369c994df9871bf731157de7b23212
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568821"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707637"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory varsayılan kullanıcı izinleri nelerdir?
 Azure Active Directory'de (Azure AD) tüm kullanıcılara varsayılan olarak belirli izinler verilir. Kullanıcının erişimi, Kullanıcı türünden, [rol atamalarından](active-directory-users-assign-role-azure-portal.md)ve ayrı nesnelerin sahiplerinden oluşur. Bu makalede bu varsayılan izinler ve açıklanmakta ve üye ile konuk varsayılan değerleri karşılaştırılmaktadır. Varsayılan Kullanıcı izinleri yalnızca Azure AD 'deki Kullanıcı ayarları ' nda değiştirilebilir.
@@ -36,7 +36,7 @@ Kullanıcılar ve ilgili kişiler | <ul><li>Kullanıcıların ve kişilerin tüm
 Gruplar | <ul><li>Güvenlik grubu oluşturma<li>Microsoft 365 grupları oluşturma<li>Grupların tüm özelliklerini okuma<li>Gizli olmayan grup üyeliklerini okuma<li>Birleştirilmiş grup için gizli Microsoft 365 grup üyeliklerini oku<li>Kullanıcının sahip olduğu grupların özelliklerini, sahipliğini ve üyeliğini yönetme<li>Sahip olunan gruplara konuk ekleme<li>Dinamik üyelik ayarlarını yönetme<li>Sahip olunan grupları silme<li>Sahip olunan Microsoft 365 gruplarını geri yükleme</li></ul> | <ul><li>Üyelik ve sahiplik (hatta katılmamış gruplar) dahil tüm gizli olmayan grupların özelliklerini okuyun<li>Birleştirilmiş gruplar için gizli Microsoft 365 grup üyeliklerini oku<li>Grupları görünen ada veya ObjectID 'ye göre ara (izin veriliyorsa)</li></ul> | İzin yok
 Uygulamalar | <ul><li>Yeni uygulama kaydetme (oluşturma)<li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma<li>Sahip olunan uygulamaların uygulama özelliklerini, atamalarını ve kimlik bilgilerini yönetme<li>Kullanıcı için uygulama parolasını oluşturma veya silme<li>Sahip olunan uygulamaları silme<li>Sahip olunan uygulamaları geri yükleme</li></ul> | <ul><li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma</li></ul> | <ul><li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma
 Cihazlar</li></ul> | <ul><li>Cihazların tüm özelliklerini okuma<li>Sahip olunan cihazların tüm özelliklerini yönetme</li></ul> | İzin yok | İzin yok
-Dizin | <ul><li>Tüm şirket bilgilerini okuma<li>Tüm etki alanlarını okuma<li>Tüm iş ortağı sözleşmelerini okuma</li></ul> | <ul><li>Görünen ad ve onaylı etki alanlarını okuma</li></ul> | <ul><li>Görünen ad ve onaylı etki alanlarını okuma</li></ul>
+Dizin | <ul><li>Tüm şirket bilgilerini okuma<li>Tüm etki alanlarını okuma<li>Tüm iş ortağı sözleşmelerini okuma</li></ul> | <ul><li>Şirket görünen adını oku<li>Tüm etki alanlarını okuma</li></ul> | <ul><li>Şirket görünen adını oku<li>Tüm etki alanlarını okuma</li></ul>
 Roller ve Kapsamlar | <ul><li>Tüm yönetim rollerini ve üyelikleri okuma<li>Tüm yönetim birimlerinin özelliklerini ve üyeliklerini okuma</li></ul> | İzin yok | İzin yok
 Abonelikler | <ul><li>Tüm abonelikleri okuma<li>Hizmet Planı Üyesini etkinleştirme</li></ul> | İzin yok | İzin yok
 İlkeler | <ul><li>İlkelerin tüm özelliklerini okuma<li>Sahip olunan ilkelerin tüm özelliklerini yönetme</li></ul> | İzin yok | İzin yok

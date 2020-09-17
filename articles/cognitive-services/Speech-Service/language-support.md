@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: de6cd4ee2c9800757399b7e32b59d903b817c657
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9a1745aa0e78dafca70ea90d4a5ac92f340312b3
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604402"
+ms.locfileid: "90706932"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -38,18 +38,18 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Yerel Ayar  | Dil                          | Özelleştirmeler                                    |
 |---------|-----------------------------------|---------------------------------------------------|
-| `ar-AE` | Arapça (UAE)                      | No                                                |
+| `ar-AE` | Arapça (Birleşik Arap Emirlikleri)     | Dil modeli                                    |
 | `ar-BH` | Arapça (Bahreyn), modern standart | Dil modeli                                    |
 | `ar-EG` | Arapça (Mısır)                    | Dil modeli                                    |
 | `ar-IL` | Arapça (Israil)                   | No                                                |
-| `ar-IQ` | Arapça (Irak)                     | No                                                |
-| `ar-JO` | Arapça (Ürdün)                   | No                                                |
-| `ar-KW` | Arapça (Kuveyt)                   | No                                                |
-| `ar-LB` | Arapça (Lübnan)                  | No                                                |
-| `ar-OM` | Arapça (Umman)                     | No                                                |
-| `ar-PS` | Arapça (Filistin Yönetimi)                | No                                                |
-| `ar-QA` | Arapça (Qtor)                    | No                                                |
-| `ar-SA` | Arapça (Suudi Arabistan)             | No                                                |
+| `ar-IQ` | Arapça (Irak)                     | Dil modeli                                    |
+| `ar-JO` | Arapça (Ürdün)                   | Dil modeli                                    |
+| `ar-KW` | Arapça (Kuveyt)                   | Dil modeli                                    |
+| `ar-LB` | Arapça (Lübnan)                  | Dil modeli                                    |
+| `ar-OM` | Arapça (Umman)                     | Dil modeli                                    |
+| `ar-PS` | Arapça (Filistin Yönetimi devleti)       | No                                                |
+| `ar-QA` | Arapça (Qtor)                    | Dil modeli                                    |
+| `ar-SA` | Arapça (Suudi Arabistan)             | Dil modeli                                    |
 | `ar-SY` | Arapça (Suriye)                    | Dil modeli                                    |
 | `bg-BG` | Bulgarca (Bulgaristan)              | Dil modeli                                    |
 | `ca-ES` | Katalanca (İspanya)                   | Dil modeli                                    |
@@ -117,7 +117,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `sv-SE` | İsveççe (İsviçre)                  | Dil modeli                                    |
 | `ta-IN` | Tamil dili (Hindistan)                     | Dil modeli                                    |
 | `te-IN` | Telugu dili (Hindistan)                    | Dil modeli                                    |
-| `th-TH` | Tayca (Tayland)                   | No                                                |
+| `th-TH` | Tayca (Tayland)                   | Dil modeli                                    |
 | `tr-TR` | Türkçe (Türkiye)                  | Dil modeli                                    |
 | `zh-CN` | Çince (Mandarin, Basitleştirilmiş)    | Akustik model<br>Dil modeli                  |
 | `zh-HK` | Çince (Cantoneo, geleneksel)  | Dil modeli                                    |

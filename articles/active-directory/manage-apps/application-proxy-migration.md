@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd98cab50c3239d3202e6feabe18f45a4240293
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: cccabaf069a3027e615892e36e218f865a6c983a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641186"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706660"
 ---
 # <a name="compare-remote-access-solutions"></a>Uzaktan erişim çözümlerini karşılaştırın
 
@@ -32,7 +32,7 @@ Azure Active Directory Uygulama Ara Sunucusu, Microsoft 'un sunduğu iki uzaktan
 
 Tehdit yönetimi ağ geçidi (TMG), Birleşik erişim ağ geçidi (UAG), Web uygulaması ara sunucusu (WAP) ve Azure AD Uygulama Ara Sunucusu (AP) birbirleriyle nasıl karşılaştırılacağını anlamak için bu tabloyu kullanın.
 
-| Özellik | TMG | UAG | WAP | AP |
+| Öne çıkan özelliği | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
 | Sertifika kimlik doğrulaması | Yes | Yes | - | - |
 | Tarayıcı uygulamalarını seçmeli olarak yayınla | Yes | Yes | Yes | Yes |
@@ -59,7 +59,7 @@ Azure AD Uygulama Ara Sunucusu, benzer ürünlerle karşılaştırıldığında 
    - Koşullu erişim ve Multi-Factor Authentication gibi özelliklerin etkinleştirilmesi kolaydır
 - Sivilleştirilmiş bölgede bileşen yok
 - Gelen bağlantı gerekli değil
-- Kullanıcılarınızın O365, Azure AD Tümleşik SaaS uygulamaları ve şirket içi Web uygulamalarınız dahil tüm uygulamalarına gidebilmeleri için bir uygulamalarım sayfası. 
+- Kullanıcılarınızın Microsoft 365, Azure AD Tümleşik SaaS uygulamaları ve şirket içi Web uygulamalarınız dahil tüm uygulamalarına gidebilmeleri için bir uygulamalarım sayfası. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

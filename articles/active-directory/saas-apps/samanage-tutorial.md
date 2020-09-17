@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Samanage ile tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Samanage arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: SolarWinds Service Desk ile tümleştirme Azure Active Directory (daha önce Samanage) | Microsoft Docs'
+description: Azure Active Directory ve SolarWinds Service Desk (daha önce Samanage) arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,28 +11,28 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 56018ff0be07a48cf9448b9b92de5694ebac18bc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8d4c19e1ce10ed618cda167cd6fa7efedf4111d0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543542"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707586"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Öğretici: Samanage ile tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>Öğretici: SolarWinds Service Desk ile tümleştirme Azure Active Directory (daha önce Samanage)
 
-Bu öğreticide, Samanage 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Samanage 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, SolarWinds 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+SolarWinds Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Azure AD 'de Samanage erişimi olan ' i denetleyebilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* SolarWinds 'e erişimi olan Azure AD 'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla SolarWinds (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini Samanage ile yapılandırmak için aşağıdaki öğeler gereklidir:
+Azure AD tümleştirmesini SolarWinds Service Desk (daha önce Samanage) ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
 * Çoklu oturum açma etkin aboneliğini sayönet
@@ -41,15 +41,15 @@ Azure AD tümleştirmesini Samanage ile yapılandırmak için aşağıdaki öğe
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Samanage **SP** tarafından başlatılan SSO 'yu destekler
+* SolarWinds **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-samanage-from-the-gallery"></a>Galeriden Samanage ekleme
+## <a name="adding-solarwinds-from-the-gallery"></a>Galeriden SolarWinds ekleme
 
-Samanage 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Sayönet eklemeniz gerekir.
+SolarWinds tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden SolarWinds yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-**Galeriden Samanage eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden SolarWinds eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesini seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
@@ -61,31 +61,31 @@ Samanage 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Samanage**yazın, sonuç panelinden **sayönet** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Solarwinds**yazın, sonuç panelinden **Solarwinds** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuçlar listesinde Samanage](common/search-new-app.png)
+     ![Sonuç listesinde SolarWinds](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Samanage ile yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Solarwinds ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve SolarWinds 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD çoklu oturum açma 'yı Samanage ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD çoklu oturum açmayı SolarWinds ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Çoklu oturum açmayı yapılandırma](#configure-samanage-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırma.
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Solarwinds Service Desk çoklu oturum açmayı yapılandırın](#configure-solarwinds-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcı Azure AD gösterimine bağlı olan Samanage 'da Britta Simon 'a sahip olmak için **[Samanage test kullanıcısı oluşturun](#create-samanage-test-user)** .
+5. **[Solarwinds Service Desk test kullanıcısı oluşturun](#create-solarwinds-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Solarwinds Service Desk 'Te Britta Simon 'a sahip olmak için.
 6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
 Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD çoklu oturum açmayı Samanage ile yapılandırmak için aşağıdaki adımları uygulayın:
+Azure AD çoklu oturum açmayı SolarWinds ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **sayönet** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Solarwinds** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -112,7 +112,7 @@ Azure AD çoklu oturum açmayı Samanage ile yapılandırmak için aşağıdaki 
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. **Sayönet ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
+6. **Solarwinds ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
@@ -122,9 +122,11 @@ Azure AD çoklu oturum açmayı Samanage ile yapılandırmak için aşağıdaki 
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-samanage-single-sign-on"></a>Sayönet çoklu oturum açmayı yapılandırma
+<a name="configure-solarwinds-single-sign-on"></a>
 
-1. Farklı bir Web tarayıcısı penceresinde, Samanage şirket sitenizde yönetici olarak oturum açın.
+### <a name="configure-solarwinds-service-desk-single-sign-on"></a>SolarWinds Service Desk çoklu oturum açmayı yapılandırma
+
+1. Farklı bir Web tarayıcısı penceresinde, SolarWinds şirket sitenizde yönetici olarak oturum açın.
 
 2. **Pano** ' ya tıklayın ve sol gezinti bölmesinde **Kurulum** ' u seçin.
    
@@ -150,7 +152,7 @@ Azure AD çoklu oturum açmayı Samanage ile yapılandırmak için aşağıdaki 
  
     f. Not defteri 'nde Azure portal indirilen Base-64 kodlu sertifikanızı açın, bu içeriği panonuza kopyalayın ve ardından **kimlik sağlayıcısını aşağıdaki** metin kutusuna yapıştırın.
  
-    örneğin: **Samanage 'de yoksa kullanıcı oluştur**' a tıklayın.
+    örneğin: **Solarwinds içinde yoksa kullanıcı oluştur**' a tıklayın.
  
     h. **Güncelleştir**’e tıklayın.
 
@@ -181,15 +183,13 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Samanage 'a erişim izni vererek Britta Simon 'u etkinleştirin.
+Bu bölümde, SolarWinds 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **sayönet**' i seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Solarwinds**' yi seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Sayönet**' i seçin.
-
-    ![Uygulamalar listesindeki Samanage bağlantısı](common/all-applications.png)
+2. Uygulamalar listesinde **Solarwinds**' yi seçin.
 
 3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
@@ -205,14 +205,14 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Samanage 'a eri�
 
 7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-samanage-test-user"></a>Samanage test kullanıcısı oluştur
+### <a name="create-solarwinds-test-user"></a>SolarWinds test kullanıcısı oluştur
 
-Azure AD kullanıcılarının Samanage 'ta oturum açmasını sağlamak için bunların Samanage 'a sağlanması gerekir.  
-Samanage, sağlama durumunda el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının SolarWinds 'de oturum açmasını sağlamak için, SolarWinds ' a sağlanması gerekir.  
+SolarWinds durumunda sağlama, el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Samanage şirket sitenizde yönetici olarak oturum açın.
+1. SolarWinds şirket sitenizde yönetici olarak oturum açın.
 
 2. **Pano** ' ya tıklayın ve sol gezinti kaydırma bölmesinde **Kurulum** ' u seçin.
    
@@ -231,13 +231,13 @@ Samanage, sağlama durumunda el ile gerçekleştirilen bir görevdir.
     ![Kullanıcı Oluştur](./media/samanage-tutorial/tutorial_samanage_008.png "Kullanıcı Oluştur")
    
    >[!NOTE]
-   >Azure Active Directory hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını onaylamak için bir bağlantıyı izler. Azure Active Directory Kullanıcı hesapları sağlamak için Samanage tarafından sunulan diğer tüm Samanage Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
+   >Azure Active Directory hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını onaylamak için bir bağlantıyı izler. Azure Active Directory Kullanıcı hesapları sağlamak için, SolarWinds tarafından sunulan diğer tüm SolarWinds Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Samanage kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Samanage ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde SolarWinds kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız SolarWinds için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 

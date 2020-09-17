@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117797"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706260"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Nasıl yapılır: Azure Access Control Service geçirme
 
@@ -26,7 +26,7 @@ ms.locfileid: "88117797"
 
 Microsoft Azure Access Control Service (ACS), bir Azure Active Directory (Azure AD) hizmeti 7 Kasım 2018 tarihinde kullanımdan kaldırılacaktır. Şu anda Access Control kullanan uygulamalar ve hizmetler, daha sonra farklı bir kimlik doğrulama mekanizmasına tamamen geçirilmesi gerekir. Bu makalede, Access Control kullanımını kullanımdan kaldırmayı planladığınız için geçerli müşterilere yönelik öneriler açıklanır. Şu anda Access Control kullanmıyorsanız, herhangi bir işlem yapmanız gerekmez.
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Access Control, Web uygulamalarınıza ve hizmetlerinize erişim için kullanıcıların kimliğini doğrulamak ve yetkilendirmek için kolay bir yol sunan bir bulut kimlik doğrulama hizmetidir. Kimlik doğrulaması ve yetkilendirmenin pek çok özelliğinin kodunuzla bir şekilde oluşturulmasına izin verir. Access Control, öncelikle Microsoft .NET istemcilerinin, ASP.NET Web uygulamalarının ve Windows Communication Foundation (WCF) Web hizmetlerinin geliştiriciler ve mimarları tarafından kullanılır.
 
@@ -99,9 +99,9 @@ Bu bölümdeki adımları izleyerek, hangi uygulamalarınızdan ACS kullanımdan
 
 ### <a name="check-which-applications-will-be-impacted"></a>Hangi uygulamaların etkilendiğini denetleyin
 
-1. Önceki adımda bulunan ad alanını kullanın ve şuraya gidin`https://<namespace>.accesscontrol.windows.net`
+1. Önceki adımda bulunan ad alanını kullanın ve şuraya gidin `https://<namespace>.accesscontrol.windows.net`
 
-    Örneğin, ad alanlarından biri contoso-test ise şuraya gidin`https://contoso-test.accesscontrol.windows.net`
+    Örneğin, ad alanlarından biri contoso-test ise şuraya gidin `https://contoso-test.accesscontrol.windows.net`
 
 2. **Güven ilişkileri**altında, ACS kullanımdan kaldırma tarafından etkilenecek uygulamaların listesini görmek Için **bağlı olan taraf uygulamaları** ' nı seçin.
 3. Sahip olduğunuz diğer tüm ACS ad alanı (ler) için 1-2 adımlarını yineleyin.
@@ -148,7 +148,7 @@ Access Control tarafından verilen belirteçleri kabul eden her bir Microsoft bu
 
 SharePoint 2013, 2016 ve SharePoint Online müşterileri, bulutta, şirket içinde ve hibrit senaryolarında kimlik doğrulama amacıyla ACS 'yi uzun süredir kullandı. Bazı SharePoint özellikleri ve kullanım durumları, ACS kullanımdan kaldırılırken etkilenir, diğerleri bu durumdan etkilenmez. Aşağıdaki tabloda, ACS 'den yararlanan en popüler SharePoint özelliklerinden bazıları için geçiş kılavuzu özetlenmektedir:
 
-| Özellik | Rehber |
+| Öne çıkan özelliği | Rehber |
 | ------- | -------- |
 | Azure AD 'de kullanıcıların kimliğini doğrulama | Daha önce Azure AD, kimlik doğrulaması için SharePoint için gereken SAML 1,1 belirteçlerini desteklemediğinden ACS, SharePoint 'in Azure AD belirteç biçimleriyle uyumlu hale getirilen bir aracı olarak kullanılmıştı. Artık [SharePoint 'i şirket içi uygulama Azure AD uygulaması Galeri kullanarak doğrudan Azure AD 'ye bağlayabilirsiniz](../saas-apps/sharepoint-on-premises-tutorial.md). |
 | [Şirket içi SharePoint 'te sunucudan sunucuya kimlik doğrulaması & uygulama kimlik doğrulaması](/SharePoint/security-for-sharepoint-server/authentication-overview) | ACS emekliliğinizi etkilemez; değişiklik gerekmiyor. | 
@@ -173,7 +173,7 @@ Ne yazık ki, bu eşdeğer yeteneklerin tümünü sunan bir hizmet yok. Hangi Ac
 
 #### <a name="migrate-to-azure-active-directory"></a>Azure Active Directory geçir
 
-Göz önünde bulundurulması gereken bir yol, uygulamalarınızı ve hizmetlerinizi doğrudan Azure AD ile tümleştirmenizi sağlar. Azure AD, Microsoft iş veya okul hesapları için bulut tabanlı kimlik sağlayıcıdır. Azure AD, Office 365, Azure ve çok daha fazlası için kimlik sağlayıcıdır. Access Control için benzer federe kimlik doğrulama özellikleri sağlar, ancak tüm Access Control özelliklerini desteklemez. 
+Göz önünde bulundurulması gereken bir yol, uygulamalarınızı ve hizmetlerinizi doğrudan Azure AD ile tümleştirmenizi sağlar. Azure AD, Microsoft iş veya okul hesapları için bulut tabanlı kimlik sağlayıcıdır. Azure AD, Microsoft 365, Azure ve çok daha fazlası için kimlik sağlayıcıdır. Access Control için benzer federe kimlik doğrulama özellikleri sağlar, ancak tüm Access Control özelliklerini desteklemez. 
 
 Birincil örnek, Facebook, Google ve Yahoo gibi sosyal kimlik sağlayıcılarının bulunduğu bir federasyondır. Kullanıcılarınız bu kimlik bilgileri türleriyle oturum açtığında, Azure AD sizin için çözüm değildir. 
 
@@ -316,7 +316,7 @@ Access Control içindeki hizmet kimlikleri genellikle sunucudan sunucuya kimlik 
 
 #### <a name="migrate-to-azure-active-directory"></a>Azure Active Directory geçir
 
-Bu tür bir kimlik doğrulama akışına yönelik önerimiz [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/)geçirilecek. Azure AD, Microsoft iş veya okul hesapları için bulut tabanlı kimlik sağlayıcıdır. Azure AD, Office 365, Azure ve çok daha fazlası için kimlik sağlayıcıdır. 
+Bu tür bir kimlik doğrulama akışına yönelik önerimiz [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/)geçirilecek. Azure AD, Microsoft iş veya okul hesapları için bulut tabanlı kimlik sağlayıcıdır. Azure AD, Microsoft 365, Azure ve çok daha fazlası için kimlik sağlayıcıdır. 
 
 Ayrıca, Azure AD 'yi, OAuth istemci kimlik bilgileri verme 'nin Azure AD uygulamasını kullanarak sunucudan sunucuya kimlik doğrulaması için de kullanabilirsiniz. Aşağıdaki tabloda, sunucu-sunucu kimlik doğrulamasında Access Control özellikleri Azure AD 'de kullanılabilir olanlarla karşılaştırılır.
 

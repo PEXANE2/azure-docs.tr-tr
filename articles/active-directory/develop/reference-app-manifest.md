@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 554e5a022dcb49cd861ad7198a2c375634db6d10
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115076"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705754"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory uygulama bildirimi
 
@@ -82,7 +82,7 @@ Kullanılan uç nokta, v 1.0 veya v 2.0, istemci tarafından seçilir ve yalnız
 | :--- | :--- |
 | Eklentileri | Koleksiyon |
 
-Bir tüketen hizmetin belirli bağlamlarda uygulama çağırmak için kullanabileceği özel davranışı tanımlar. Örneğin, dosya akışlarını işleyebilen uygulamalar `addIns` özelliği "FileHandler" işlevselliği için ayarlayabilir. Bu parametre, Office 365 gibi hizmetlerin uygulamayı kullanıcının üzerinde çalıştığı bir belge bağlamında çağırmasını sağlar.
+Bir tüketen hizmetin belirli bağlamlarda uygulama çağırmak için kullanabileceği özel davranışı tanımlar. Örneğin, dosya akışlarını işleyebilen uygulamalar `addIns` özelliği "FileHandler" işlevselliği için ayarlayabilir. Bu parametre, uygulamayı kullanıcının üzerinde çalıştığı bir belge bağlamında çağırmak Microsoft 365 gibi hizmetlere izin verir.
 
 Örnek:
 
@@ -193,8 +193,8 @@ Desteklenmez.
 `groups`Uygulamanın beklediği bir kullanıcı veya OAuth 2,0 erişim belirtecinde verilen talebi yapılandırır. Bu özniteliği ayarlamak için aşağıdaki geçerli dize değerlerinden birini kullanın:
 
 - `"None"`
-- `"SecurityGroup"`(güvenlik grupları ve Azure AD rolleri için)
-- `"All"`(Bu, oturum açan kullanıcının üyesi olduğu tüm güvenlik gruplarını, dağıtım gruplarını ve Azure AD dizin rollerini alır.
+- `"SecurityGroup"` (güvenlik grupları ve Azure AD rolleri için)
+- `"All"` (Bu, oturum açan kullanıcının üyesi olduğu tüm güvenlik gruplarını, dağıtım gruplarını ve Azure AD dizin rollerini alır.
 
 Örnek:
 
@@ -433,8 +433,8 @@ OAuth 2,0 belirteç isteklerinin bir parçası olarak, Azure AD 'nin istekleri a
 | :--- | :--- |
 | parentalControlSettings | Dize |
 
-- `countriesBlockedForMinors`uygulamanın minors için engellediği ülkeleri/bölgeleri belirtir.
-- `legalAgeGroupRule`uygulamanın kullanıcıları için geçerli olan geçerli yaş grubu kuralını belirtir. ,,, `Allow` Veya olarak `RequireConsentForPrivacyServices` ayarlanabilir `RequireConsentForMinors` `RequireConsentForKids` `BlockMinors` .
+- `countriesBlockedForMinors` uygulamanın minors için engellediği ülkeleri/bölgeleri belirtir.
+- `legalAgeGroupRule` uygulamanın kullanıcıları için geçerli olan geçerli yaş grubu kuralını belirtir. ,,, `Allow` Veya olarak `RequireConsentForPrivacyServices` ayarlanabilir `RequireConsentForMinors` `RequireConsentForKids` `BlockMinors` .
 
 Örnek:
 
@@ -555,8 +555,8 @@ Daha fazla bilgi için bkz. [Replyurl kısıtlamaları ve sınırlamaları](./re
 
 Dinamik onay ile, `requiredResourceAccess` Yönetici onay deneyimini ve statik onay kullanan kullanıcılar için Kullanıcı onay deneyimini de yürütür. Ancak, bu parametre genel durum için Kullanıcı onay deneyimini değil.
 
-- `resourceAppId`, uygulamanın erişmesi gereken kaynak için benzersiz tanıtıcıdır. Bu değer, hedef kaynak uygulamasında belirtilen uygulama kimliğine eşit olmalıdır.
-- `resourceAccess`, belirtilen kaynaktan uygulamanın gerektirdiği OAuth 2.0 izin kapsamlarını ve uygulama rollerini listeleyen bir dizidir. `id` `type` Belirtilen kaynakların ve değerlerini içerir.
+- `resourceAppId` , uygulamanın erişmesi gereken kaynak için benzersiz tanıtıcıdır. Bu değer, hedef kaynak uygulamasında belirtilen uygulama kimliğine eşit olmalıdır.
+- `resourceAccess` , belirtilen kaynaktan uygulamanın gerektirdiği OAuth 2.0 izin kapsamlarını ve uygulama rollerini listeleyen bir dizidir. `id` `type` Belirtilen kaynakların ve değerlerini içerir.
 
 Örnek:
 
@@ -609,10 +609,10 @@ Uygulamanın giriş sayfasına yönelik URL 'YI belirtir.
 | Signınkitci | Dize |
 
 Geçerli uygulama için hangi Microsoft hesaplarının desteklendiğini belirtir. Desteklenen değerler şunlardır:
-- `AzureADMyOrg`-Kuruluşumun Azure AD kiracısında bir Microsoft iş veya okul hesabı olan kullanıcılar (örneğin, tek kiracılı)
-- `AzureADMultipleOrgs`-Herhangi bir kuruluşun Azure AD kiracısında bir Microsoft iş veya okul hesabı olan kullanıcılar (örneğin, çok kiracılı)
-- `AzureADandPersonalMicrosoftAccount`-Kişisel Microsoft hesabı olan veya herhangi bir kuruluşun Azure AD kiracısındaki bir iş veya okul hesabı olan kullanıcılar
-- `PersonalMicrosoftAccount`-Xbox ve Skype gibi hizmetlerde oturum açmak için kullanılan kişisel hesaplar.
+- `AzureADMyOrg` -Kuruluşumun Azure AD kiracısında bir Microsoft iş veya okul hesabı olan kullanıcılar (örneğin, tek kiracılı)
+- `AzureADMultipleOrgs` -Herhangi bir kuruluşun Azure AD kiracısında bir Microsoft iş veya okul hesabı olan kullanıcılar (örneğin, çok kiracılı)
+- `AzureADandPersonalMicrosoftAccount` -Kişisel Microsoft hesabı olan veya herhangi bir kuruluşun Azure AD kiracısındaki bir iş veya okul hesabı olan kullanıcılar
+- `PersonalMicrosoftAccount` -Xbox ve Skype gibi hizmetlerde oturum açmak için kullanılan kişisel hesaplar.
 
 Örnek:
 

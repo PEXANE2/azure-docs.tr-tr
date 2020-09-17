@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45e1e516986c32e203837f79c83290cc99049e7a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 23ce2f02ef96a88b6bf4471377ce97a529dbd1a9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526978"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706345"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile şirket içi kaynaklarda passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin
 
@@ -57,7 +57,7 @@ Kuruluşların Ayrıca aşağıdaki yazılım gereksinimlerini karşılaması ge
 
 Senaryo, aşağıdaki senaryolardan her ikisinde de çoklu oturum açmayı (SSO) destekler:
 
-- Office 365 ve diğer SAML özellikli uygulamalar gibi bulut kaynakları için.
+- Microsoft 365 ve diğer SAML özellikli uygulamalar gibi bulut kaynakları için.
 - Şirket içi kaynaklar ve Web sitelerine Windows tümleşik kimlik doğrulaması için. Kaynaklar, IIS kimlik doğrulaması gerektiren Web siteleri ve SharePoint siteleri ve/veya NTLM kimlik doğrulaması kullanan kaynaklar içerebilir.
 
 ### <a name="unsupported-scenarios"></a>Desteklenmeyen senaryolar

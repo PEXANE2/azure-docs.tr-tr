@@ -1,7 +1,7 @@
 ---
 title: Uygulama rolleri ekleme ve bir belirteçten edinme | Mavisi
 titleSuffix: Microsoft identity platform
-description: Azure Active Directory kayıtlı bir uygulamaya uygulama rolleri ekleme, bu rollere Kullanıcı ve Grup atama ve bunları `roles` belirteçteki talepte alma hakkında bilgi edinin.
+description: Azure Active Directory kayıtlı bir uygulamaya uygulama rolleri ekleme, bu rollere Kullanıcı ve Grup atama ve bunları belirteçteki ' Roller ' talebinde alma hakkında bilgi edinin.
 services: active-directory
 author: kalyankrishna1
 manager: CelesteDG
@@ -9,125 +9,98 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 09/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5a2acb08971bc0878c943047c42c9dc2a9525794
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 02fe3c1ebc893dea259abcda3ea1d13ab96d68d5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141440"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706022"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma
 
 Rol tabanlı erişim denetimi (RBAC), uygulamalarda yetkilendirmeyi zorlamak için popüler bir mekanizmadır. RBAC kullanılırken, yönetici, bireysel kullanıcılara veya gruplara değil, rollere izinler verir. Yönetici daha sonra, hangi içeriğe ve işlevlere kimlerin erişebileceğini denetlemek için farklı kullanıcılara ve gruplara roller atayabilir.
 
-Uygulama rolleri ve rol talepleri ile RBAC kullanarak, geliştiriciler uygulamalarında daha az çaba harcayacak şekilde yetkilendirmeyi güvenli bir şekilde uygulayabilir.
+Uygulama rolleri ve rol talepleri ile RBAC kullanarak, geliştiriciler uygulamalarında daha az çabayla yetkilendirmeyi güvenli bir şekilde uygulayabilir.
 
-Diğer bir yaklaşım ise, [WebApp-Groupclaim-DotNet](https://github.com/Azure-Samples/WebApp-GroupClaims-DotNet)bölümünde gösterildiği gıbı Azure AD gruplarını ve grup taleplerini kullanmaktır. Azure AD grupları ve uygulama rollerinin hiçbir şekilde birbirini dışlamalı olması gerekmez; daha da ayrıntılı erişim denetimi sağlamak için birlikte kullanılabilir.
+Diğer bir yaklaşım, GitHub 'daki [WebApp-Groupclaim-DotNet](https://github.com/Azure-Samples/WebApp-GroupClaims-DotNet) kod örneğinde gösterildiği gıbı Azure AD gruplarını ve grup taleplerini kullanmaktır. Azure AD grupları ve uygulama rolleri birbirini dışlamalı değildir; daha da ayrıntılı erişim denetimi sağlamak için birlikte kullanılabilir.
 
 ## <a name="declare-roles-for-an-application"></a>Bir uygulama için roller bildirme
 
-Bu uygulama rolleri, uygulamanın kayıt bildiriminde [Azure Portal](https://portal.azure.com) tanımlanır.  Kullanıcı uygulamada oturum açtığında Azure AD, `roles` her rol için kullanıcıya tek tek ve grup üyeliğinden ayrı olarak verilen bir talep yayar.  Kullanıcılara ve grupların rollere atanması, portalın kullanıcı arabiriminden ya da program aracılığıyla [Microsoft Graph](/graph/azuread-identity-access-management-concept-overview)kullanılarak yapılabilir.
+Uygulama rolleri [Azure Portal](https://portal.azure.com)tanımlanmıştır.  Kullanıcı uygulamada oturum açtığında Azure AD, `roles` her rol için kullanıcıya tek tek ve grup üyeliğinden ayrı olarak verilen bir talep yayar.  Kullanıcılara ve grupların rollere atanması, portalın kullanıcı arabiriminden ya da program aracılığıyla [Microsoft Graph](/graph/azuread-identity-access-management-concept-overview)kullanılarak yapılabilir.
 
-### <a name="declare-app-roles-using-azure-portal"></a>Azure portal kullanarak uygulama rolleri bildirme
+Uygulama rolü oluşturmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin.
-1. **Sık Kullanılanlar** veya **tüm dizinler** listesinde, uygulamanızı kaydetmek istediğiniz Active Directory kiracıyı seçin.
-1. Azure portal, araması yapın ve **Azure Active Directory**seçin.
-1. **Azure Active Directory** bölmesinde, tüm uygulamalarınızın listesini görüntülemek için **uygulama kayıtları** ' ı seçin.
-1. İçinde uygulama rollerini tanımlamak istediğiniz uygulamayı seçin. Ardından **bildirim**' ı seçin.
-1. `appRoles`Ayarı bularak ve tüm uygulama rollerinizi ekleyerek uygulama bildirimini düzenleyin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Üst menüdeki **Dizin + abonelik** filtresi ' ni seçin ve ardından uygulama rolü eklemek istediğiniz uygulama kaydını içeren Azure Active Directory kiracıyı seçin.
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet**' in altında **uygulama kayıtları**' yi seçin ve ardından uygulama rollerini tanımlamak istediğiniz uygulamayı seçin.
+1. **Uygulama rollerini seçin | Önizleme**yapın ve ardından **uygulama rolü oluştur**' u seçin.
 
-     > [!NOTE]
-     > Bu Bildirimdeki her uygulama rolü tanımı, özelliği için bildirim bağlamı içinde farklı bir GUID içermelidir `id` .
-     >
-     > `value`Her uygulama rolü tanımının özelliği, uygulamadaki kodda kullanılan dizelerle tam olarak eşleşmelidir. `value`Özellik boşluk içeremez. Bunu yaparsanız, bildirimi kaydettiğinizde bir hata alırsınız.
+   :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-overview-pane.png" alt-text="Azure portal bir uygulama kaydının uygulama rolleri bölmesi":::
+1. **Uygulama rolü oluştur** bölmesinde, rolün ayarlarını girin. Görüntüyü izleyen tablo her bir ayarı ve parametrelerini açıklar.
 
-1. Bildirimi kaydedin.
+    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Uygulama kaydının uygulama rolleri Azure portal bağlam bölmesi oluşturma":::
 
-### <a name="examples"></a>Örnekler
+    | Alan | Açıklama | Örnek |
+    |-------|-------------|---------|
+    | **Görünen ad** | Yönetici onayı ve uygulama atama deneyimlerinde görünen uygulama rolü için görünen ad. Bu değer boşluk içerebilir.  | `Survey Writer` |
+    | **İzin verilen üye türleri** | Bu uygulama rolünün kullanıcılara, uygulamalara veya her ikisine de atanıp atanamayacağını belirtir. | `Users/Groups` |
+    | **Değer** | Uygulamanın belirteçte beklediği rol talebinin değerini belirtir. Değer, uygulamanın kodunda başvurulan dize ile tam olarak eşleşmelidir. Değer boşluk içeremez. | `Survey.Create` |
+    | **Açıklama** | Yönetici uygulama atama ve onay deneyimleri sırasında görünen uygulama rolünün daha ayrıntılı bir açıklaması. | `Writers can create surveys.` |
+    | **Bu uygulama rolünü etkinleştirmek istiyor musunuz?** | Uygulama rolünün etkin olup olmadığı. Bir uygulama rolünü silmek için bu onay kutusunun işaretini kaldırın ve silme işlemini denemeden önce değişikliği uygulayın. | *Edildikten* |
 
-Aşağıdaki örnek, atayabileceğiniz öğesini gösterir `appRoles` `users` .
-
-> [!NOTE]
->`id`Benzersiz BIR GUID olmalıdır.
-
-```Json
-"appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
-"appRoles": [
-    {
-      "allowedMemberTypes": [
-        "User"
-      ],
-      "displayName": "Writer",
-      "id": "d1c2ade8-98f8-45fd-aa4a-6d06b947c66f",
-      "isEnabled": true,
-      "description": "Writers Have the ability to create tasks.",
-      "value": "Writer"
-    }
-  ],
-"availableToOtherTenants": false,
-```
+1. Yaptığınız değişiklikleri kaydetmek için **Apply**'ı (Uygula) seçin.
 
 > [!NOTE]
->`displayName`Boşluk içerebilir.
+> Eklediğiniz rol sayısı, bir uygulama bildirimi için tanımlanan sınırlara doğru sayılır. Bu sınırlamalar hakkında daha fazla bilgi için [Azure Active Directory uygulama bildirimi başvurusunun](reference-app-manifest.md) [bildirim sınırları](./reference-app-manifest.md#manifest-limits) bölümüne bakın.
 
-Hedef `users` , `applications` veya her ikisini de hedeflemek için uygulama rolleri tanımlayabilirsiniz. İçin kullanılabilir olduğunda `applications` , uygulama rolleri **Yönet** bölümünde uygulama izinleri olarak görünür > API **Izinleri > API 'Lerim > bir ızın ekleyin > bir API > uygulama izinleri seçin**. Aşağıdaki örnekte, öğesine hedeflenmiş bir uygulama rolü gösterilmektedir `Application` .
+## <a name="assign-users-and-groups-to-roles"></a>Rollere Kullanıcı ve Grup atama
 
-```Json
-"appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
-"appRoles": [
-    {
-      "allowedMemberTypes": [
-        "Application"
-      ],
-      "displayName": "ConsumerApps",
-      "id": "47fbb575-859a-4941-89c9-0f7a6c30beac",
-      "isEnabled": true,
-      "description": "Consumer apps have access to the consumer data.",
-      "value": "Consumer"
-    }
-  ],
-"availableToOtherTenants": false,
-```
+Uygulamanıza uygulama rolleri ekledikten sonra, rollere kullanıcılar ve gruplar atayabilirsiniz.
 
-Tanımlanan rol sayısı, uygulama bildiriminin sahip olduğu limitleri etkiler. [Bildirim limitleri](./reference-app-manifest.md#manifest-limits) sayfasında ayrıntılı olarak ele alınmıştır.
-
-### <a name="assign-users-and-groups-to-roles"></a>Rollere Kullanıcı ve Grup atama
-
-Uygulamanıza uygulama rolleri ekledikten sonra, bu rollere kullanıcılar ve gruplar atayabilirsiniz.
-
-1. **Azure Active Directory** bölmesinde, **Azure Active Directory** sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' ı seçin.
+1. Azure portal **Azure Active Directory** ' de, sol taraftaki gezinti menüsünde **Kurumsal uygulamalar** ' ı seçin.
 1. Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
 
-     Burada görünmesini istediğiniz uygulamayı görmüyorsanız, listeyi kısıtlamak için **tüm uygulamalar** listesinin en üstündeki çeşitli filtreleri kullanın veya uygulamanızı bulmak için listeyi aşağı kaydırın.
+     Uygulamanız listede görünmezse, listeyi kısıtlamak için **tüm uygulamalar** listesinin en üstündeki filtreleri kullanın veya uygulamanızı bulmak için listeyi aşağı kaydırın.
 
 1. Rollere kullanıcı veya güvenlik grubu atamak istediğiniz uygulamayı seçin.
-1. Uygulamanın sol taraftaki gezinti menüsünde **Kullanıcılar ve gruplar** bölmesini seçin.
-1. **Kullanıcılar ve gruplar** listesinin en üstünde, **atama Ekle** bölmesini açmak için **Kullanıcı Ekle** düğmesini seçin.
+1. **Yönet** bölümünde **Kullanıcılar ve gruplar**'ı seçin.
+1. **Atama Ekle** bölmesini açmak Için **Kullanıcı Ekle** ' yi seçin.
 1. **Atama Ekle** bölmesinden **Kullanıcılar ve gruplar** seçicisini seçin.
 
-     Kullanıcı ve güvenlik gruplarının listesi, belirli bir kullanıcı veya grubu aramak ve bulmak için bir metin kutusuyla birlikte gösterilir. Bu ekran, tek bir go içinde birden çok kullanıcı ve grup seçmenizi sağlar.
+     Kullanıcıların ve güvenlik gruplarının listesi görüntülenir. Belirli bir kullanıcı veya grup için arama yapabilir ve listede görünen birden çok kullanıcı ve grubu seçebilirsiniz.
 
-1. Kullanıcıları ve grupları seçmeyi tamamladıktan sonra, sonraki bölüme geçmek için alt kısımdaki **Seç** düğmesine basın.
-1. **Atama Ekle** bölmesinden **rol seçicisini Seç ' i** seçin. Uygulama bildiriminde daha önce belirtilen tüm roller görünür.
-1. Bir rol seçin ve **Seç** düğmesine basın.
-1. Uygulamanın kullanıcı ve grupların atamalarını sona erdirmeyi sağlamak için alt kısımdaki **ata** düğmesine basın.
-1. Eklediğiniz kullanıcı ve grupların, güncelleştirilmiş **Kullanıcılar ve gruplar** listesinde görüntülendiğini doğrulayın.
+1. Kullanıcılar ve gruplar ' ı seçtikten sonra, devam etmek için **Seç** düğmesini seçin.
+1. **Atama Ekle** bölmesinde **Rol Seç** ' i seçin. Uygulama için tanımladığınız tüm roller görüntülenir.
+1. Bir rol seçin ve **Seç** düğmesini seçin.
+1. Kullanıcılara ve grupların uygulamaya atanmasını tamamlayacak **ata** düğmesini seçin.
+1. Eklediğiniz kullanıcı ve grupların **Kullanıcılar ve gruplar** listesinde göründüğünü doğrulayın.
 
-### <a name="receive-roles-in-tokens"></a>Belirteçlerde rolleri alma
+## <a name="receive-roles-in-tokens"></a>Belirteçlerde rolleri alma
 
 Çeşitli uygulama rollerine atanan kullanıcılar uygulamada oturum açtığında, belirteçlerinin talep içinde kendilerine atanmış rolleri olur `roles` .
 
-## <a name="more-information"></a>Daha fazla bilgi
+## <a name="web-api-application-permissions"></a>Web API uygulama izinleri
 
-- [Uygulama rollerini kullanarak yetkilendirme ekleme ASP.NET Core Web uygulaması için rol talepleri &](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [Microsoft Identity platform (video) ile uygulamalarınızda yetkilendirme uygulama](https://www.youtube.com/watch?v=LRoc-na27l0)
-- [Azure Active Directory, artık grup talepleri ve uygulama rolleriyle birlikte](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
+**Kullanıcıları/grupları**, **uygulamaları**veya **her ikisini de**hedefleyen uygulama rollerini tanımlayabilirsiniz. **Uygulamalar** ' ı veya **her ikisini de**seçtiğinizde, uygulama rolü bir istemci uygulamasının **API izinlerinde**bir uygulama izni olarak görünür.
+
+**Uygulamaları** veya **her ikisini de**hedefleyen bir rol tanımladıktan sonra bir istemci uygulaması kaydında uygulama iznini seçmek için:
+
+1. Azure portal **Azure Active Directory** ' de, **uygulama kayıtları**' yı seçin ve ardından istemci uygulamasının kaydını seçin.
+1. **Yönet**altında **API izinleri**' ni seçin.
+1. **İzin Ekle**  >  **API 'lerim**' i seçin.
+1. Uygulama rolünü eklediğiniz uygulamayı seçin ve ardından **Uygulama izinleri**' ni seçin.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Aşağıdaki kaynaklarla uygulama rolleri hakkında daha fazla bilgi edinin:
+
+- Kod örneği: [uygulama rollerini kullanarak yetkilendirme ekleme ASP.NET Core bir Web uygulamasına (GitHub) rol talepleri &](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
+- Video: [Microsoft Identity platform (1:01:15) ile uygulamalarınızda yetkilendirme uygulama](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [Azure Active Directory uygulama bildirimi](./reference-app-manifest.md)
-- [AAD erişim belirteçleri](access-tokens.md)
-- [AAD`id_tokens`](id-tokens.md)
+- [Azure AD erişim belirteçleri](access-tokens.md)
+- [Azure AD `id_tokens`](id-tokens.md)

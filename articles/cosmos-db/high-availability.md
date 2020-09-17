@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8bae89e68e5a016dbdc10c763f1ea2daedece3c8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605334"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706805"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB ile yüksek kullanılabilirlik
 
@@ -62,7 +62,7 @@ Bölgesel kesintiden nadir durumlar için Azure Cosmos DB veritabanınızın her
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Tek bir yazma bölgesi olan çok bölgeli hesaplar (okuma bölgesi kesintisi)
 
 - Bir okuma bölgesi kesintisi sırasında, herhangi bir tutarlılık düzeyi veya üç veya daha fazla okuma bölgesi ile güçlü tutarlılık kullanan Azure Cosmos hesapları, okuma ve yazma işlemleri için yüksek oranda kullanılabilir olmaya devam edecektir.
-- İki veya daha az okuma bölgesi (okuma & yazma bölgesini içerir) ile güçlü tutarlılık kullanan Azure Cosmos hesapları, okuma bölgesi kesintisi sırasında yazma kullanılabilirliğini kaybeder, ancak kalan bölgeler için okuma kullanılabilirliğini korur.
+- İki veya daha az okuma bölgesi (okuma & yazma bölgesini içerir) ile güçlü tutarlılık kullanan Azure Cosmos hesapları, okuma bölgesi kesintisi sırasında okuma yazma kullanılabilirliğini kaybeder.
 - Etkilenen bölgenin bağlantısı otomatik olarak kesilir ve çevrimdışı olarak işaretlenir. [Azure Cosmos DB SDK 'ları](sql-api-sdk-dotnet.md) , okuma çağrılarını tercih edilen bölge listesindeki bir sonraki kullanılabilir bölgeye yönlendirir.
 - Tercih edilen bölge listesindeki bölgelerin hiçbiri kullanılabilir durumda değilse çağrılar otomatik olarak geçerli yazma bölgesine döner.
 - Okuma bölgesi kesintisi 'nı işlemek için uygulama kodunuzda değişiklik yapılması gerekmez. Etkilenen okuma bölgesi yeniden çevrimiçi olduğunda, otomatik olarak geçerli yazma bölgesiyle eşitlenir ve okuma isteklerine hizmeti sağlamak için yeniden kullanılabilir hale gelir.
@@ -144,5 +144,5 @@ Daha sonra aşağıdaki makaleleri okuyabilirsiniz:
 - [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)
 - [Sağlanan aktarım hızını küresel olarak ölçeklendirme](scaling-throughput.md)
 - [Genel dağıtım - başlık altında](global-dist-under-the-hood.md)
-- [Azure Cosmos DB 'deki tutarlılık düzeyleri](consistency-levels.md)
+- [Azure Cosmos DB'deki tutarlılık düzeyleri](consistency-levels.md)
 - [Cosmos hesabınızı birden çok yazma bölgesi ile yapılandırma](how-to-multi-master.md)

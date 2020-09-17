@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 81e02bdc483c4b68901d7e81b29f3a7f423480d9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 48009246dd491ca3f4080cf85036c66605a73272
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537609"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707000"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>Öğretici: Adobe Creative Cloud ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -31,7 +31,7 @@ Bu öğreticide, Adobe Creative Cloud Azure Active Directory (Azure AD) ile tüm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -95,14 +95,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki Adobe Creative Cloud uygulama, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     |----- | --------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
     | E-posta | Kullanıcı. Mail |
 
     > [!NOTE]
-    > Kullanıcı, SAML yanıtında doldurulacak e-posta talebi değeri için geçerli bir Office 365 ExO lisansına sahip olmalıdır.
+    > Kullanıcı, SAML yanıtında doldurulacak bir e-posta talebi değeri için geçerli bir Microsoft 365 ExO lisansına sahip olmaları gerekir.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon veri XML**'i bulun ve ardından **İndir** ' i seçerek xml meta veri dosyasını indirin ve bilgisayarınıza kaydedin.
 

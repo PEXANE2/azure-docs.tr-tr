@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: be5d86fe690d60f687622243a2f1d7771b8af7d0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: d47b9b5882b25ee030ca813abbaf77805b2df0f5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604030"
+ms.locfileid: "90707773"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -87,7 +87,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
    > [!IMPORTANT]
    > Son erişim zamanı izleme önizlemesi yalnızca üretim dışı kullanım için geçerlidir. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
    
-   **Son erişilen** seçenek hakkında daha fazla bilgi için bkz. [son erişme tarihine göre verileri taşıma (Önizleme)](#move-data-based-on-last-accessed-date-preview).
+   **Son erişme** seçeneğini kullanmak Için Azure Portal **yaşam döngüsü yönetimi** sayfasında **erişim izleme etkin** ' i seçin. **Son erişilen** seçenek hakkında daha fazla bilgi için bkz. [son erişme tarihine göre verileri taşıma (Önizleme)](#move-data-based-on-last-accessed-date-preview).
 
 1. **Ayrıntılar** sayfasındaki **filtrelerle blob 'ları sınırla** ' yı seçtiyseniz, isteğe bağlı bir filtre eklemek için **filtre ayarla** ' yı seçin. Aşağıdaki örnek, *mylifecyclecontainer* kapsayıcısında "log" ile başlayan bloblarda filtre uygular.
 
@@ -376,6 +376,8 @@ Blob 'unuza son okuma veya yazma yapıldığında bir kaydı tutmak için son er
 
 > [!IMPORTANT]
 > Son erişim zamanı izleme önizlemesi yalnızca üretim dışı kullanım için geçerlidir. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
+
+**Son erişme** seçeneğini kullanmak Için Azure Portal **yaşam döngüsü yönetimi** sayfasında **erişim izleme etkin** ' i seçin.
 
 #### <a name="how-last-access-time-tracking-works"></a>Son erişim zamanı izleme nasıl kullanılır
 

@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178833"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706005"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform geliştirici sözlüğü
 
@@ -154,7 +154,7 @@ Erişim belirteçlerinden farklı olarak, yenileme belirteçleri iptal edilebili
 
 [OAuth2 yetkilendirme çerçevesi][OAuth2-Role-Def]tarafından tanımlandığı gibi, korumalı kaynakları barındıran bir sunucu, bir [erişim belirteci](#access-token)sunan [istemci uygulamalarına](#client-application) göre korunan kaynak isteklerini kabul edip yanıt verebilir. Korumalı kaynak sunucu veya kaynak uygulama olarak da bilinir.
 
-Kaynak sunucu API 'Leri kullanıma sunar ve OAuth 2,0 yetkilendirme çerçevesini kullanarak [kapsamlar](#scopes) ve [Roller](#roles)aracılığıyla korunan kaynaklarına erişimi zorlar. Örnek olarak, Azure AD kiracı verilerine erişim sağlayan [MICROSOFT Graph API][Microsoft-Graph] ve posta ve takvim gibi verilere erişim sağlayan Office 365 API 'leri bulunur.
+Kaynak sunucu API 'Leri kullanıma sunar ve OAuth 2,0 yetkilendirme çerçevesini kullanarak [kapsamlar](#scopes) ve [Roller](#roles)aracılığıyla korunan kaynaklarına erişimi zorlar. Örnek olarak, Azure AD kiracı verilerine erişim sağlayan [MICROSOFT Graph API][Microsoft-Graph] ve posta ve takvim gibi verilere erişim sağlayan Microsoft 365 API 'ler bulunur.
 
 Bir istemci uygulaması gibi, kaynak uygulamanın kimlik yapılandırması da bir Azure AD kiracısında [kayıt](#application-registration) yoluyla oluşturulur ve hem uygulama hem de hizmet sorumlusu nesnesi sağlanır. Microsoft Graph API 'SI gibi bazı Microsoft tarafından sağlanan API 'Ler, sağlama sırasında tüm kiracılarda önceden kaydedilmiş hizmet sorumlularına sahip olarak kullanılabilir hale getirilir.
 
@@ -172,7 +172,7 @@ Microsoft Graph API tarafından kullanıma sunulan uygulama rollerinin ayrıntı
 
 Kapsamlar, kaynağın [uygulama bildirimi](#application-manifest)aracılığıyla [Azure Portal][AZURE-portal] yönetilen ve kaynağın [oauth2Permissions özelliğinde][Graph-Sp-Resource]depolanan kaynak tanımlı dizelerdir (örneğin, "posta. Read", "Directory. ReadWrite. All"). Azure portal Ayrıca, bir kapsama erişmek için istemci uygulaması için [temsilci izinleri](#permissions) yapılandırmak üzere kullanılır.
 
-En iyi yöntem adlandırma kuralı, "Resource. Operation. Constraint" biçimini kullanmaktır. Microsoft Graph API tarafından sunulan kapsamlar hakkında ayrıntılı bir tartışma için bkz. [Graph API Izin kapsamları][Graph-Perm-Scopes]. Office 365 hizmetleri tarafından sunulan kapsamlar için bkz. [office 365 API izinleri başvurusu][O365-Perm-Ref].
+En iyi yöntem adlandırma kuralı, "Resource. Operation. Constraint" biçimini kullanmaktır. Microsoft Graph API tarafından sunulan kapsamlar hakkında ayrıntılı bir tartışma için bkz. [Graph API Izin kapsamları][Graph-Perm-Scopes]. Microsoft 365 Services tarafından sunulan kapsamlar için bkz. [MICROSOFT 365 API izinleri başvurusu][O365-Perm-Ref].
 
 ## <a name="security-token"></a>güvenlik belirteci
 
@@ -202,7 +202,7 @@ Azure AD dizininin bir örneği Azure AD kiracısı olarak adlandırılır. Aşa
 * Kullanıcı hesaplarının ve kayıtlı uygulamaların kimlik doğrulaması
 * [Yetkilendirme uç noktası](#authorization-endpoint), [belirteç uç](#token-endpoint) noktası ve [çok kiracılı uygulamalar](#multi-tenant-application)tarafından kullanılan "ortak" uç noktası da dahil olmak üzere OAuth2 ve SAML DAHIL çeşitli protokolleri desteklemek için gereken REST uç noktaları.
 
-Azure AD kiracılar kayıt sırasında Azure ve Office 365 abonelikleri tarafından oluşturulur/ilişkilendirilir ve abonelik için kimlik & erişim yönetimi özellikleri sağlar. Azure abonelik yöneticileri Azure portal aracılığıyla ek Azure AD kiracıları da oluşturabilir. Bir kiracıya erişim sağlamak için kullanabileceğiniz çeşitli yollarla ilgili ayrıntılar için bkz. [Azure Active Directory kiracı alma][AAD-How-To-Tenant] . Abonelikler ve bir Azure AD kiracısı arasındaki ilişki hakkındaki ayrıntılar ve bir Azure AD kiracısına nasıl bir abonelik ilişkilendirileceğini veya bir aboneliğin ilişkilendirilmesi hakkındaki yönergeler için bkz. [Azure Active Directory kiracınıza Azure aboneliği ilişkilendirme veya ekleme][AAD-How-Subscriptions-Assoc] .
+Azure AD kiracılar, kayıt sırasında Azure ve Microsoft 365 abonelikleri ile ilişkilendirilir ve abonelik için kimlik & erişim yönetimi özellikleri sağlar. Azure abonelik yöneticileri Azure portal aracılığıyla ek Azure AD kiracıları da oluşturabilir. Bir kiracıya erişim sağlamak için kullanabileceğiniz çeşitli yollarla ilgili ayrıntılar için bkz. [Azure Active Directory kiracı alma][AAD-How-To-Tenant] . Abonelikler ve bir Azure AD kiracısı arasındaki ilişki hakkındaki ayrıntılar ve bir Azure AD kiracısına nasıl bir abonelik ilişkilendirileceğini veya bir aboneliğin ilişkilendirilmesi hakkındaki yönergeler için bkz. [Azure Active Directory kiracınıza Azure aboneliği ilişkilendirme veya ekleme][AAD-How-Subscriptions-Assoc] .
 
 ## <a name="token-endpoint"></a>belirteç uç noktası
 

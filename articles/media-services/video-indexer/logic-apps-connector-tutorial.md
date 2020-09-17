@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 16a28ee01606fa9067c279183ca6c02b2857bcd7
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: fbd86b34bd6f7da8c9f49e212e397d003b71fab5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563854"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707943"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Öğretici: mantıksal uygulama ve güç otomatikleştirme ile Video Indexer kullanma
 
@@ -21,12 +21,15 @@ Azure Media Services [video Indexer v2 REST API](https://api-portal.videoindexer
 
 Tümleştirmeyi daha da kolay hale getirmek için, [Logic Apps](https://azure.microsoft.com/services/logic-apps/)   API 'imizde uyumlu olan Logic Apps ve [Güç otomatikleştirme](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)   bağlayıcılarını destekliyoruz. Tek bir kod satırı yazmadan büyük miktarda video ve ses dosyasından öngörüleri etkin bir şekilde indekslemek ve ayıklamak üzere özel iş akışları ayarlamak için bağlayıcıları kullanabilirsiniz. Ayrıca, tümleştirmenize yönelik bağlayıcılar kullanılması, iş akışınızın sistem durumu ve hata ayıklamanın kolay bir yolu hakkında daha iyi görünürlük sağlar.  
 
-Video Indexer bağlayıcılarıyla hızlıca çalışmaya başlamanıza yardımcı olması için, kullanabileceğiniz örnek bir mantıksal uygulama ve Power otomatikleştirmede izlenecek yol göstereceğiz. 
+Video Indexer bağlayıcılarıyla hızlıca çalışmaya başlamanıza yardımcı olması için, kullanabileceğiniz örnek bir mantıksal uygulama ve Power otomatikleştirmede izlenecek yol göstereceğiz. Bu öğreticide, Logic Apps kullanarak akışların nasıl ayarlanacağı gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide ele alınan "videonuzu otomatik olarak karşıya yükle ve dizine yükle" senaryosu birlikte çalışan iki farklı akıştan oluşur. 
+* Azure depolama hesabında bir blob eklendiğinde veya değiştirildiğinde ilk akış tetiklenir. Dizin oluşturma işlemi tamamlandıktan sonra bir bildirim göndermek için geri çağırma URL 'SI ile Video Indexer yeni dosyayı karşıya yükler. 
+* İkinci akış geri çağırma URL 'SI temel alınarak tetiklenir ve ayıklanan Öngörüler Azure Storage 'daki bir JSON dosyasına geri kaydedilir. Bu iki Flow yaklaşımı, zaman uyumsuz karşıya yükleme ve daha büyük dosyaların dizinlenmesini desteklemek için kullanılır. 
+
+Bu öğretici, nasıl yapılacağını göstermek için mantıksal uygulama kullanıyor.
 
 > [!div class="checklist"]
-> * Videonuzu otomatik olarak karşıya yükleyin ve dizine yükleyin
 > * Karşıya dosya yükleme akışını ayarlama
 > * JSON ayıklama akışını ayarlama
 
@@ -34,19 +37,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-İle başlamak için API anahtarı aracılığıyla API 'lere erişim ile birlikte bir Video Indexer hesabınızın olması da gerekir. 
+* İle başlamak için [API anahtarı aracılığıyla API 'lere erişim](video-indexer-use-apis.md)ile birlikte video Indexer bir hesaba ihtiyacınız olacaktır. 
+* Ayrıca, bir Azure depolama hesabınızın olması gerekir. Depolama hesabınızın erişim anahtarını aklınızda bulundurun. İçinde Video Indexer tarafından oluşturulan öngörüleri depolamak için bir tane olmak üzere iki kapsayıcı oluşturun.  
+* Sonra, Logic Apps veya güç otomatikleştirmede (kullandığınız bağlı olarak) iki ayrı akış açmanız gerekir. 
 
-Ayrıca, bir Azure depolama hesabınızın olması gerekir. Depolama hesabınızın erişim anahtarını aklınızda bulundurun. İçinde Video Indexer tarafından oluşturulan öngörüleri depolamak için bir tane olmak üzere iki kapsayıcı oluşturun.  
+## <a name="set-up-the-first-flow---file-upload"></a>İlk akış dosyası karşıya yüklemeyi ayarlama   
 
-Sonra, Logic Apps veya güç otomatikleştirmede (kullandığınız bağlı olarak) iki ayrı akış açmanız gerekir.  
-
-## <a name="upload-and-index-your-video-automatically"></a>Videonuzu otomatik olarak karşıya yükleyin ve dizine yükleyin 
-
-Bu senaryo birlikte çalışan iki farklı akışdan oluşur. Azure depolama hesabında bir blob eklendiğinde veya değiştirildiğinde ilk akış tetiklenir. Dizin oluşturma işlemi tamamlandıktan sonra bir bildirim göndermek için geri çağırma URL 'SI ile Video Indexer yeni dosyayı karşıya yükler. İkinci akış geri çağırma URL 'SI temel alınarak tetiklenir ve ayıklanan Öngörüler Azure Storage 'daki bir JSON dosyasına geri kaydedilir. Bu iki Flow yaklaşımı, zaman uyumsuz karşıya yükleme ve daha büyük dosyaların dizinlenmesini desteklemek için kullanılır. 
-
-### <a name="set-up-the-file-upload-flow"></a>Karşıya dosya yükleme akışını ayarlama 
-
-Azure depolama kapsayıcıınızda her bir blob eklendiğinde ilk akış tetiklenir. Tetiklendikten sonra, Video Indexer videoyu karşıya yüklemek ve dizinlemek için kullanabileceğiniz bir SAS URI 'SI oluşturur. Aşağıdaki akışı oluşturarak başlayın. 
+Azure depolama kapsayıcıınızda her bir blob eklendiğinde ilk akış tetiklenir. Tetiklendikten sonra, Video Indexer videoyu karşıya yüklemek ve dizinlemek için kullanabileceğiniz bir SAS URI 'SI oluşturur. Bu bölümde, aşağıdaki akışı oluşturacaksınız. 
 
 ![Karşıya dosya yükleme akışı](./media/logic-apps-connector-tutorial/file-upload-flow.png)
 
@@ -56,11 +53,13 @@ Azure depolama kapsayıcıınızda her bir blob eklendiğinde ilk akış tetikle
 
 ![Bağlantı adı ve API anahtarı](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-Azure depolama ve Video Indexer hesaplarına bağlanarak, "bir blob eklendiğinde veya değiştirildiğinde) tetikleyicisine gidin ve video dosyalarınızı yerleştireceğiniz kapsayıcıyı seçin. 
+Azure depolama 'ya ve Video Indexer hesaplarına bağlanıp **Logic Apps tasarımcısında**"bir blob eklendiğinde veya değiştirildiğinde" tetikleyicisi ' ni bulun ve seçin. Video dosyalarınızı yerleştireceğiniz kapsayıcıyı seçin. 
 
 ![Ekran görüntüsü bir blob eklendiğinde veya değiştirildiğinde bir kapsayıcı seçebileceğiniz bir iletişim kutusu gösterir.](./media/logic-apps-connector-tutorial/container.png)
 
-Sonra, "yola göre SAS URI 'SI oluştur" eylemine gidin ve dinamik içerik seçeneklerinden dosya yolu listesi ' ni seçin.  
+Sonra, "yola göre SAS URI 'SI oluştur" eylemini bulup seçin. Eylem için iletişim kutusunda dinamik içerik seçeneklerinden dosya yolu listesi ' ni seçin.  
+
+Ayrıca, yeni bir "paylaşılan erişim Protokolü" parametresi ekleyin. Parametrenin değeri için HttpsOnly öğesini seçin.
 
 ![Yola göre SAS URI 'si](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
@@ -78,7 +77,7 @@ Diğer parametreler için varsayılan değeri kullanabilir veya gereksinimlerini
 
 Karşıya yükleme ve dizin oluşturma işlemi tamamlandıktan sonra, "Kaydet" e tıklayın ve ikinci akışı yapılandırmak için, öngörüleri ayıklamak üzere geçiş yapalım. 
 
-## <a name="set-up-the-json-extraction-flow"></a>JSON ayıklama akışını ayarlama 
+## <a name="set-up-the-second-flow---json-extraction"></a>İkinci akışı ayarlama-JSON ayıklama  
 
 İlk akıştan karşıya yükleme ve dizin oluşturma işleminin tamamlanması, ikinci akışı tetiklemek için doğru geri çağırma URL 'sine sahip bir HTTP isteği gönderir. Daha sonra, Video Indexer tarafından oluşturulan öngörüleri alır. Bu örnekte, dizin oluşturma işinizin çıkışını Azure Storage 'da depolayacaktır.  Bununla birlikte, çıktıyla yapabilecekleriniz size kadar sürer.  
 
@@ -104,7 +103,7 @@ Bu ifade, Bağlayıcısı 'ın, tetikleyicinizin çıktısından video kimliğin
 
 Bu ifade, bu akıştan "video dizini Al" eyleminin çıkışını alır. 
 
-"Akışı Kaydet" e tıklayın. 
+**Akışı kaydet**' e tıklayın. 
 
 Akış kaydedildikten sonra, tetikleyicide bir HTTP POST URL 'SI oluşturulur. Tetikleyiciden URL 'YI kopyalayın. 
 

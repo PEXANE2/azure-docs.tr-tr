@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 966149cf1a4f40ccc565b22e9d5afdd599997b4e
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141375"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705903"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Nasıl yapılır: Çok kiracılı uygulama desenini kullanarak istediğiniz bir Azure Active Directory kullanıcısıyla oturum açma
 
@@ -141,7 +141,7 @@ Uygulamanızın her biri Azure AD 'de kendi kaydıyla temsil edilen birden çok 
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Tek bir kiracıda birden çok katman
 
-Mantıksal uygulamanız iki veya daha fazla uygulama kaydı içeriyorsa (örneğin, ayrı bir istemci ve kaynak) Bu bir sorun olabilir. İlk olarak kaynağı Müşteri kiracısına nasıl alabilirim? Azure AD, istemci ve kaynağın tek bir adımda toplanmasına olanak tanıyarak bu durumu ele alır. Kullanıcı, izin sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplam toplamını görür. Bu davranışı etkinleştirmek için, kaynağın uygulama kaydı, uygulamanın uygulama KIMLIĞINI `knownClientApplications` [uygulama bildiriminde][AAD-App-Manifest]bir olarak içermelidir. Örnek:
+Mantıksal uygulamanız iki veya daha fazla uygulama kaydı içeriyorsa (örneğin, ayrı bir istemci ve kaynak) Bu bir sorun olabilir. İlk olarak kaynağı Müşteri kiracısına nasıl alabilirim? Azure AD, istemci ve kaynağın tek bir adımda toplanmasına olanak tanıyarak bu durumu ele alır. Kullanıcı, izin sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplam toplamını görür. Bu davranışı etkinleştirmek için, kaynağın uygulama kaydı, uygulamanın uygulama KIMLIĞINI `knownClientApplications` [uygulama bildiriminde][AAD-App-Manifest]bir olarak içermelidir. Örneğin:
 
 ```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
@@ -153,7 +153,7 @@ Bu makalede, bu makalenin sonundaki [ilgili içerik](#related-content) bölümü
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>Birden çok kiracıda birden çok katman
 
-Benzer bir durum, uygulamanın farklı katmanları farklı kiracılarda kayıtlıysa meydana gelir. Örneğin, Office 365 Exchange Online API 'sini çağıran bir yerel istemci uygulaması oluşturma durumunu göz önünde bulundurun. Yerel uygulamayı geliştirmek ve daha sonra yerel uygulamanın bir müşterinin kiracısında çalışması için, Exchange Online hizmet sorumlusu mevcut olmalıdır. Bu durumda, geliştirici ve müşterinin kiracılarında oluşturulacak hizmet sorumlusu için Exchange Online satın alması gerekir.
+Benzer bir durum, uygulamanın farklı katmanları farklı kiracılarda kayıtlıysa meydana gelir. Örneğin, Exchange Online API 'sini çağıran bir yerel istemci uygulaması oluşturma durumunu göz önünde bulundurun. Yerel uygulamayı geliştirmek ve daha sonra yerel uygulamanın bir müşterinin kiracısında çalışması için, Exchange Online hizmet sorumlusu mevcut olmalıdır. Bu durumda, geliştirici ve müşterinin kiracılarında oluşturulacak hizmet sorumlusu için Exchange Online satın alması gerekir.
 
 Microsoft dışında bir kuruluş tarafından oluşturulan bir API ise, API 'nin geliştiricisi, müşterilerinin müşterilerinin kiracılarına uygulamayı onaylaması için bir yol sağlamalıdır. Önerilen tasarım, üçüncü taraf geliştiricisinin, oturum açma işlemi için bir Web istemcisi olarak işlev uygulayabilen API 'yi oluşturması için de kullanılır. Bunu yapmak için:
 
@@ -181,7 +181,7 @@ Bir yönetici bir Kiracıdaki tüm kullanıcılar için bir uygulamaya onay veri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, herhangi bir Azure AD kiracısından bir kullanıcının oturum açmasını sağlayan bir uygulama oluşturmayı öğrendiniz. Uygulamanız ile Azure AD arasında çoklu oturum açma (SSO) etkinleştirildikten sonra, uygulamanızı Office 365 gibi Microsoft kaynakları tarafından sunulan API 'Lere erişmek için de güncelleştirebilirsiniz. Bu, uygulamanızda, profil resmi veya bir sonraki takvim randevusu gibi bağlamsal bilgileri göstermek gibi kişiselleştirilmiş bir deneyim sunmanızı sağlar. Exchange, SharePoint, OneDrive, OneNote gibi Azure AD ve Office 365 hizmetlerine yönelik API çağrıları yapma hakkında daha fazla bilgi edinmek için [MICROSOFT Graph API][MSFT-Graph-overview]adresini ziyaret edin.
+Bu makalede, herhangi bir Azure AD kiracısından bir kullanıcının oturum açmasını sağlayan bir uygulama oluşturmayı öğrendiniz. Uygulamanız ile Azure AD arasında çoklu oturum açma (SSO) etkinleştirildikten sonra, uygulamanızı Microsoft 365 gibi Microsoft kaynakları tarafından sunulan API 'Lere erişmek için de güncelleştirebilirsiniz. Bu, uygulamanızda, profil resmi veya bir sonraki takvim randevusu gibi bağlamsal bilgileri göstermek gibi kişiselleştirilmiş bir deneyim sunmanızı sağlar. Azure AD 'ye yönelik API çağrılarını ve Exchange, SharePoint, OneDrive, OneNote gibi Microsoft 365 hizmetleri ve daha fazlasını yapma hakkında daha fazla bilgi edinmek için [MICROSOFT Graph API][MSFT-Graph-overview]adresini ziyaret edin.
 
 ## <a name="related-content"></a>İlgili içerik
 

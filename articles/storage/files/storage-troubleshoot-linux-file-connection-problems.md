@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e4aa0cb2cc3ff623929222d83a560f66198f13c0
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564279"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707654"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux 'ta Azure dosyaları sorunlarını giderme (SMB)
 
@@ -21,7 +21,7 @@ Bu makalede, Linux istemcilerinden bağlandığınızda Azure dosyalarıyla ilgi
 Bu makaledeki sorun giderme adımlarına ek olarak, Linux istemcisinin doğru önkoşullara sahip olduğundan emin olmak için [Azfilediagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) 'i kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunun algılanmasını otomatikleştirir. En iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Ayrıca, bu bilgileri [Azure dosya paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)bulabilirsiniz. Sorun giderici, Azure dosya paylaşımlarını bağlama, eşleme ve bağlama ile ilgili sorunları gidermenize yardımcı olacak adımları sağlar.
 
 > [!IMPORTANT]
-> Bu makalenin içeriği yalnızca SMB paylaşımları için geçerlidir.
+> Bu makalenin içeriği yalnızca SMB paylaşımları için geçerlidir. NFS paylaşımları hakkında daha fazla bilgi için bkz. [Azure NFS dosya paylaşımları sorunlarını giderme](storage-troubleshooting-files-nfs.md).
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Azure dosya paylaşımında bağlantı veya bağlama yapılamaz
 

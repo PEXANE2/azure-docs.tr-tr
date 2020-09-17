@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7e6b4524523d0659126bcd6cbe1294d700e79ed9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017556"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707824"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Öğretici: Google Cloud (G Suite) Bağlayıcısı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -72,9 +72,9 @@ Bu öğreticideki adımları test etmek için aşağıdaki önerileri izlemeniz 
 
     E-posta özniteliği, geçerli bir Exchange lisansına sahip herhangi bir kullanıcı için oto doldurulur. Kullanıcı e-posta etkin değilse bu hata, uygulamanın erişim vermek için bu özniteliğin alınması gerektiği için alınır.
 
-    Yönetici hesabıyla portal.office.com adresine giderek Yönetim Merkezi, faturalandırma, abonelikler ' e tıklayabilir, Office 365 aboneliğinizi seçin ve ardından kullanıcılara ata ' ya tıklayabilirsiniz, aboneliklerini denetlemek istediğiniz kullanıcıları seçebilir ve sağ bölmede lisansları Düzenle ' ye tıklayın.
+    Yönetici hesabıyla portal.office.com adresine giderek Yönetim Merkezi, faturalandırma, abonelikler ' e tıklayabilir, Microsoft 365 aboneliğinizi seçin ve ardından kullanıcılara ata ' ya tıklayabilir, aboneliklerini denetlemek istediğiniz kullanıcıları seçebilir ve sağ bölmede lisansları Düzenle ' ye tıklayın.
 
-    O365 lisansı atandıktan sonra uygulanması birkaç dakika sürebilir. Bundan sonra, Kullanıcı. mail özniteliği yeniden doldurulur ve sorun çözümlenmelidir.
+    Microsoft 365 lisansı atandıktan sonra, uygulanması birkaç dakika sürebilir. Bundan sonra, Kullanıcı. mail özniteliği yeniden doldurulur ve sorun çözümlenmelidir.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -240,7 +240,7 @@ Bu bölümde, Google Cloud (G Suite) bağlayıcısına erişim izni vererek Azur
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Google Cloud (G Suite) bağlayıcı test kullanıcısı oluşturma
 
-Bu bölümün amacı, [Google Cloud (G Suite) Bağlayıcısı 'Nda](https://support.google.com/a/answer/33310?hl=en) B. Simon adlı bir Kullanıcı oluşturmaktır. Kullanıcı Google Cloud (G Suite) Bağlayıcısı 'nda el ile oluşturulduktan sonra, Kullanıcı artık Office 365 oturum açma kimlik bilgilerini kullanarak oturum açabilir.
+Bu bölümün amacı, [Google Cloud (G Suite) Bağlayıcısı 'Nda](https://support.google.com/a/answer/33310?hl=en) B. Simon adlı bir Kullanıcı oluşturmaktır. Kullanıcı Google Cloud (G Suite) Bağlayıcısı 'nda el ile oluşturulduktan sonra, Kullanıcı Microsoft 365 oturum açma kimlik bilgilerini kullanarak oturum açabilir.
 
 Google Cloud (G Suite) Bağlayıcısı otomatik Kullanıcı sağlamayı da destekler. Otomatik Kullanıcı sağlamayı yapılandırmak için, önce [Google Cloud (G Suite) bağlayıcısını otomatik Kullanıcı sağlaması için yapılandırmanız](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)gerekir.
 

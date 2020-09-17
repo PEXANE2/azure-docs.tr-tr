@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 65e1b1b5e84c3344a082b73b7768935d788a3394
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377871"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707416"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu aracılığıyla şirket içi uygulamalara uzaktan erişim
 
@@ -24,7 +24,7 @@ Azure Active Directory uygulama proxy 'Si, şirket içi Web uygulamalarına güv
 
 Azure AD Uygulama Ara Sunucusu şu özelliklere sahiptir:
 
-- **Kullanımı basittir**. Kullanıcılar, şirket içi uygulamalarınıza O365 ve Azure AD ile tümleştirilmiş diğer SaaS uygulamalarına erişen şekilde erişebilirler. Uygulama Ara Sunucusu ile çalışması için uygulamanızı değiştirmeniz veya güncelleştirmeniz gerekmez.
+- **Kullanımı basittir**. Kullanıcılar şirket içi uygulamalarınıza Microsoft 365 ve Azure AD ile tümleştirilmiş diğer SaaS uygulamalarına erişen şekilde erişebilirler. Uygulama Ara Sunucusu ile çalışması için uygulamanızı değiştirmeniz veya güncelleştirmeniz gerekmez.
 
 - **Güvenli**. Şirket içi uygulamalar, Azure 'un yetkilendirme denetimlerini ve güvenlik analizlerini kullanabilir. Örneğin, şirket içi uygulamalar koşullu erişim ve iki adımlı doğrulama kullanabilir. Uygulama proxy 'Si, gelen bağlantıları güvenlik duvarınız aracılığıyla açmanızı gerektirmez.
 
