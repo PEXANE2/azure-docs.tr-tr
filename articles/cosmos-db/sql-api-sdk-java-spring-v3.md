@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b2d474f25209034034db092ca971bff6b78d73a
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 9e5b92918d93109183740be555bb805877862407
+ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068754"
+ms.lasthandoff: 09/19/2020
+ms.locfileid: "90817879"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Yay verileri Azure Cosmos DB v3 for Core (SQL) API: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -67,22 +67,10 @@ Spring Data Azure Cosmos DB, [Azure Spring Cloud](https://azure.microsoft.com/se
 
 ### <a name="configure-dependencies"></a>Bağımlılıkları yapılandırma
 
-İki Spring Data Azure Cosmos DB sürüm 3 Maven yapıtları mevcuttur.
-
-- Spring Data Framework sürüm 2,2 ' ye bağlı olan yapıt:
   ```xml
   <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-spring-data-2-2-cosmos</artifactId>
-      <version>latest</version>
-  </dependency>
-  ```
-
-- Spring Data Framework sürüm 2,3 ' ye bağlı olan yapıt:
-  ```xml
-  <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-spring-data-2-3-cosmos</artifactId>
+      <artifactId>azure-spring-data-cosmos</artifactId>
       <version>latest</version>
   </dependency>
   ```
@@ -93,7 +81,7 @@ Spring Data Azure Cosmos DB, [Azure Spring Cloud](https://azure.microsoft.com/se
 
 Azure Cosmos DB hesabı ve kapsayıcı ayrıntılarını belirtin. Spring Data Azure Cosmos DB istemciyi otomatik olarak oluşturur ve kapsayıcıya bağlar.
 
-[Application. Properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-2-cosmos-java-getting-started/src/main/resources/application.properties):
+[Application. Properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-cosmos-java-getting-started/src/main/resources/application.properties):
 ```
 cosmos.uri=${ACCOUNT_HOST}
 cosmos.key=${ACCOUNT_KEY}
@@ -108,30 +96,46 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="document-operations"></a>Belge işlemleri
 
-[Oluşturma](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Create)]
+Oluştur:
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Create":::
 
-[Sil](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Delete)]
+Sil:
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Delete":::
 
 # <a name="query"></a>[Sorgu](#tab/queries)
 
-[Sorgu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Query)]
+Sorgu:
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Query":::
 
 ---
 
 ## <a name="resources"></a>Kaynaklar
 
-| Kaynak | Spring Data Framework 2,2 | Spring Data Framework 2,3 |
-|---|---|
-| **SDK indirmesi** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
-|**SDK 'ya katkıda bulunma** | [Spring Data Azure Cosmos DB GitHub 'da depo](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [Spring Data Azure Cosmos DB GitHub 'da depo](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
-|**Öğretici**| [GitHub 'da Spring Data Azure Cosmos DB öğreticisi](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [GitHub 'da Spring Data Azure Cosmos DB öğreticisi](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
+* **SDK 'Ya katkıda bulunun**: [Spring Data Azure Cosmos DB GitHub 'da depo](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)
+
+* **Öğretici**: [Spring Data Azure Cosmos DB GitHub 'da eğitim](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
 
 ## <a name="release-history"></a>Yayın geçmişi
 
-### <a name="300-beta2-unreleased"></a>3.0.0-Beta. 2 (serbest bırakılmamış)
+### <a name="300-beta2-september-17-2020"></a>3.0.0-Beta. 2 (17 Eylül 2020)
+
+#### <a name="new-features"></a>Yeni özellikler
+
+* Yapıt kimliği ile güncelleştirildi `azure-spring-data-cosmos` .
+* Azure-Cosmos bağımlılığı güncelleştirildi `4.5.0` .
+* `Query Annotation` Yerel sorgular için destek.
+* Java 11 desteği.
+* `partitionKeyPath`Ek açıklama içindeki alanı açığa çıkararak Iç Içe bölüm anahtarı için destek eklendi `@Container` .
+* `limit` `top` Depo API 'leri tanımlarken kullanılmasına izin veren ve bu sorgu türü için destek eklendi `first` .
+
+#### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
+
+* Ek açıklamayla kullanıldığında, iç içe geçmiş bölüm anahtarı hatası düzeltildi `@GeneratedValue` .
 
 ### <a name="300-beta1-august-17-2020"></a>3.0.0-Beta. 1 (17 Ağustos 2020)
+
 #### <a name="new-features"></a>Yeni özellikler
+
 * Grup KIMLIĞINI ile güncelleştirir `com.azure` .
 * Yapıt KIMLIĞINI ile güncelleştirir `azure-spring-data-2-3-cosmos` .
 * Azure-Cosmos SDK bağımlılığını güncelleştirir `4.3.2-beta.2` .
@@ -143,7 +147,9 @@ cosmos.queryMetricsEnabled=true
 * `CosmosClientBuilder`Azure Cosmos DB SDK 'dan, sınıfa Spring çekirdeklere olarak sunar `@Configuration` .
 * `CosmosConfig`Sorgu ölçümleri ve yanıt tanılama işlemcisi uygulamasını içerecek güncelleştirmeler.
 * `Optional`Tek sonuç sorguları için veri türünü döndürmeye yönelik destek ekler.
+
 #### <a name="renames"></a>Onların
+
 * `CosmosDbFactory``CosmosFactory`.
 * `CosmosDBConfig``CosmosConfig`.
 * `CosmosDBAccessException``CosmosAccessException`.
@@ -151,7 +157,9 @@ cosmos.queryMetricsEnabled=true
 * `DocumentIndexingPolicy` ek açıklamanın ek açıklaması `CosmosIndexingPolicy` .
 * `DocumentQuery``CosmosQuery`.
 * Application. Properties bayrağı `populateQueryMetrics` `queryMetricsEnabled` .
+
 #### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
+
 * `Parallel`Netty g/ç iş parçacıklarını engellemeyi önlemek için tanılama günlüğü görevinin iş parçacıklarına zamanlaması.
 * Silme işleminde iyimser kilitlemeyi düzeltir.
 * Yan tümce için kaçış sorgularıyla sorunu düzeltir `IN` .
@@ -161,9 +169,11 @@ cosmos.queryMetricsEnabled=true
 * Kapsayıcılar otomatik olarak oluşturulduğunda, varsayılan istek birimi değeri olan 4.000 ' i kaldırır.
 
 ## <a name="faq"></a>SSS
+
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)hakkında daha fazla bilgi edinin.
 
 [Spring Framework](https://spring.io/projects/spring-framework)hakkında daha fazla bilgi edinin.

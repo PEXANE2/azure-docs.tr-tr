@@ -340,8 +340,16 @@
           href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: Ölçek kümeleri için ağ oluşturma
           href: virtual-machine-scale-sets-networking.md
-        - name: Otomatik işletim sistemi yükseltmeleri
-          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: İşletim sistemi görüntüsüne yönelik yükseltmeler
+          items:
+            - name: Otomatik işletim sistemi yükseltmeleri
+              href: virtual-machine-scale-sets-automatic-upgrade.md
+            - name: Bakım denetimi
+              items:
+                - name: Genel Bakış (Önizleme)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (Önizleme)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control-powershell.md
         - name: Otomatik örnek onarımları
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Örnek koruması

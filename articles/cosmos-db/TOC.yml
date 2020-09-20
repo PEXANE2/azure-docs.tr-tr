@@ -1,10 +1,10 @@
 - name: Azure Cosmos DB belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Cosmos DB’ye hoş geldiniz
       href: introduction.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Cosmos DB kaynaklarını oluşturma
@@ -1072,6 +1072,8 @@
               href: troubleshoot-not-found.md
             - name: Yetkisizlik sorunlarını giderme
               href: troubleshoot-unauthorized.md
+            - name: Çok bölgeli ortamlarda SDK kullanılabilirliği
+              href: troubleshoot-sdk-availability.md
         - name: .NET
           items:
             - name: Genel Sorun Giderme .NET SDK

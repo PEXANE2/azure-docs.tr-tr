@@ -17,7 +17,7 @@
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
     - name: Kapsayıcı örneğini dağıtma - Docker CLI
-      href: container-instances-quickstart-docker-cli.md
+      href: quickstart-docker-cli.md
 - name: Öğreticiler
   items:
     - name: Kapsayıcı görüntüsü oluşturma ve dağıtma
@@ -34,6 +34,8 @@
           href: container-instances-multi-container-yaml.md
         - name: Kapsayıcı grubu dağıtma - Resource Manager
           href: container-instances-multi-container-group.md
+        - name: Kapsayıcı grubu dağıtma - Docker Compose
+          href: tutorial-docker-compose.md
     - name: Azure Hizmetleri ile tümleştirme
       items:
         - name: Azure İşlevleri'yle tetikleme

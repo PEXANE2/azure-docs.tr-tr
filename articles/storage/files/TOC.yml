@@ -27,6 +27,8 @@
       items:
         - name: Azure Dosyaları dağıtımı planlama
           href: storage-files-planning.md
+        - name: Kullanılabilir dosya paylaşım protokolleri
+          href: storage-files-compare-protocols.md
         - name: Kimlik tabanlı doğrulama ve yetkilendirme
           href: storage-files-active-directory-overview.md
         - name: Doğrudan erişim için ağ konusunda dikkat edilmesi gerekenler
@@ -79,12 +81,14 @@
   items:
     - name: Oluştur
       items:
-        - name: Dosya paylaşımı oluşturma
+        - name: SMB dosya paylaşımı oluşturma
           href: storage-how-to-create-file-share.md
         - name: Büyük dosya paylaşımına olanak tanıma
           href: storage-files-how-to-create-large-file-share.md
         - name: Premium dosya paylaşımı oluşturma
           href: storage-how-to-create-premium-fileshare.md
+        - name: NFS paylaşımı oluşturma
+          href: storage-files-how-to-create-nfs-shares.md
     - name: Dağıtma
       items:
         - name: Azure Dosyaları’nı dağıtma
@@ -95,11 +99,13 @@
           href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Bağlama
       items:
-        - name: Azure Dosyaları'nı Windows ile kullanma
+        - name: SMB dosya paylaşımını Windows’a bağlama
           href: storage-how-to-use-files-windows.md
-        - name: Azure Dosyaları'nı Linux ile kullanma
+        - name: SMB dosya paylaşımını Linux’a bağlama
           href: storage-how-to-use-files-linux.md
-        - name: Azure Dosyaları'nı macOS ile kullanma
+        - name: NFS dosya paylaşımını Linux’a bağlama
+          href: storage-files-how-to-mount-nfs-shares.md
+        - name: NFS dosya paylaşımını macOS’a bağlama
           href: storage-how-to-use-files-mac.md
     - name: Ağ
       items:
@@ -269,12 +275,14 @@
           href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Sorun giderme
       items:
-        - name: Windows’ta Azure Dosyaları Sorunlarını Giderme
+        - name: Windows’da Azure Dosyalar sorunlarını giderme (SMB)
           href: storage-troubleshoot-windows-file-connection-problems.md
-        - name: Linux’ta Azure Dosyaları Sorunlarını Giderme
+        - name: Linux’ta Azure Dosyalar sorunlarını giderme (SMB)
           href: storage-troubleshoot-linux-file-connection-problems.md
         - name: Azure Dosyaları performans sorunlarının çözümü
           href: storage-troubleshooting-files-performance.md
+        - name: Linux’ta Azure Dosyalar sorunlarını giderme (NFS)
+          href: storage-troubleshooting-files-nfs.md
         - name: Azure Dosya Eşitleme ile ilgili sorunları giderme
           href: storage-sync-files-troubleshoot.md
         - name: Azure Dosyalarını Silme Sorunlarını Giderme

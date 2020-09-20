@@ -1,6 +1,6 @@
 - name: Azure Lighthouse belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Lighthouse nedir?
       displayName: 'management at scale, service providers'
@@ -53,6 +53,9 @@
     - name: Temsilci erişimini kaldırma
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
+    - name: Azure Arc tümleştirmesi
+      displayName: 'server, kubernetes, hybrid, infrastructure'
+      href: ./how-to/manage-hybrid-infrastructure-arc.md
     - name: Azure İzleyici tümleştirmesi
       items:
         - name: Büyük ölçekte Azure İzleyici Günlükleri’ni kullanma
@@ -81,7 +84,7 @@
           href: ./how-to/view-service-provider-activity.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/managedservices
     - name: Azure PowerShell
       href: /powershell/module/az.managedservices#managed_services

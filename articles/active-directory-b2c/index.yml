@@ -12,122 +12,134 @@ metadata:
   author: msmimart
   ms.author: mimart
   ms.date: 01/28/2020
-  ms.openlocfilehash: fe0fc7f20a81d9b887a61ca382dafcb69fc420d2
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 34cb40d385b007f8a41a6700448a1591b714c096
+  ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78187721"
+  ms.lasthandoff: 09/15/2020
+  ms.locfileid: "90562766"
 landingContent:
-- title: Temel bilgileri öğrenin
+- title: Azure AD B2C
   linkLists:
   - linkListType: overview
     links:
     - text: Azure AD B2C nedir?
       url: overview.md
+    - text: Dış Kimlikler’e yönelik çözümleri karşılaştırma
+      url: https://docs.microsoft.com/azure/active-directory/b2b/compare-with-b2c?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Azure AD B2C’yi kullanmaya başlama
+      url: tutorial-create-tenant.md
     - text: Tekniğe ve özelliklere genel bakış
       url: technical-overview.md
-  - linkListType: get-started
-    links:
-    - text: Azure AD B2C kiracısı oluşturma
-      url: tutorial-create-tenant.md
-    - text: Bir uygulamayı kaydetme
-      url: tutorial-register-applications.md
-    - text: Kullanıcı akışlarını ayarlama
-      url: tutorial-create-user-flows.md
-  - linkListType: video
-    links:
-    - text: Azure AD B2C nedir? (9:35)
-      url: https://www.youtube.com/watch?v=GmBKlXED9Ug
-- title: ASP.NET uygulamalarına kimlik ekleme
+    - text: Fiyatlandırma
+      url: https://azure.microsoft.com/pricing/details/active-directory-b2c/
+- title: Temel Bilgiler
   linkLists:
-  - linkListType: quickstart
+  - linkListType: learn
     links:
-    - text: Oturum açmayı ayarlama
-      url: quickstart-web-app-dotnet.md
-  - linkListType: tutorial
-    links:
-    - text: Bir .NET web uygulaması için kullanıcıların kimliklerini doğrulama
-      url: tutorial-web-app-dotnet.md
-    - text: Bir .NET web uygulamasına API erişimi verme
-      url: tutorial-web-api-dotnet.md
-    - text: Kurumsal ve sosyal ağlarda oturum açmaya olanak tanıma
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: Web uygulamaları ve API'ler için kod örnekleri
-      url: code-samples.md#web-apps-and-apis
-- title: Tek sayfalı uygulamalara kimlik ekleme
+    - text: Kimlik doğrulaması ve yetkilendirme
+      url: https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Belirteçler
+      url: https://docs.microsoft.com/azure/active-directory/develop/security-tokens?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Protokoller
+      url: https://docs.microsoft.com/azure/active-directory/develop/v2-app-types?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Kimlik doğrulaması kitaplığı
+      url: https://docs.microsoft.com/azure/active-directory/develop/msal-overview?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: 'Web sitesi oluşturma: HTML, CSS, JavaScript'
+      url: https://docs.microsoft.com/learn/modules/build-simple-website/
+- title: Genel kullanım örnekleri
   linkLists:
-  - linkListType: quickstart
+  - linkListType: how-to-guide
     links:
-    - text: Oturum açmayı ayarlama
-      url: quickstart-single-page-app.md
-  - linkListType: tutorial
-    links:
-    - text: Tek sayfalı bir uygulamada kullanıcıların kimliklerini doğrulama
-      url: tutorial-single-page-app.md
-    - text: Tek sayfalı bir uygulamaya API erişimi verme
-      url: tutorial-single-page-app-webapi.md
-    - text: Kurumsal ve sosyal ağlarda oturum açmaya olanak tanıma
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: Tek sayfalı uygulamalar için kod örnekleri
-      url: code-samples.md#single-page-apps
-- title: Masaüstü uygulamalarına kimlik ekleme
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Oturum açmayı ayarlama
-      url: quickstart-native-app-desktop.md
-  - linkListType: tutorial
-    links:
-    - text: Yerel istemcilerde kullanıcıların kimliklerini doğrulama
-      url: tutorial-desktop-app.md
-    - text: Yerel istemcilere API erişimi verme
-      url: tutorial-desktop-app-webapi.md
-    - text: Kurumsal ve sosyal ağlarda oturum açmaya olanak tanıma
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: Mobil ve masaüstü uygulamalar için kod örnekleri
-      url: code-samples.md
-- title: Ortak kimlik senaryolarını yapılandırma
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Kullanıcı akışlarına giriş
+    - text: Self servis oturum açmayı etkinleştirme
       url: user-flow-overview.md
+    - text: 'Sosyal kimlikler ve iş kimlikleri ekleme: OIDC/OAuth2/SAML'
+      url: tutorial-add-identity-providers.md
+    - text: Çoklu oturum açmayı etkinleştir (SSO)
+      url: session-overview.md
+    - text: Kullanıcı arabiriminizi/kullanıcı deneyiminizi özelleştirme
+      url: customize-ui-overview.md
+    - text: Kullanıcı ve uygulama geçişi
+      url: user-migration.md
+- title: Uygulamalarınıza oturum açma bilgileri ekleme
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: 'Hızlı Başlangıç: Web uygulaması'
+      url: quickstart-web-app-dotnet.md
+    - text: Yerel/mobil uygulama
+      url: code-samples.md#mobile-and-desktop-apps
+    - text: Tek sayfalı uygulama
+      url: code-samples.md#single-page-apps
+    - text: Web uygulaması
+      url: code-samples.md#web-apps-and-apis
+- title: 'Yetkilendirme: API’lerinizi çağırma ve bunların güvenliğini sağlama'
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Kullanıcıları kaydetme ve oturumlarını açma
-      url: tutorial-create-user-flows.md
-    - text: Kullanıcı arabirimini özelleştirme
-      url: customize-ui-overview.md
-    - text: Facebook ile oturum açmayı etkinleştirme
-      url: identity-provider-facebook.md
-  - linkListType: video
-    links:
-    - text: Temel ilkeleri yapılandırma (9:41)
-      url: https://www.youtube.com/watch?v=nWJ3m82536A
-- title: Gelişmiş kimlik senaryoları oluşturma
+    - text: Erişim belirteci isteme
+      url: access-tokens.md
+    - text: API’nizi kaydetme ve bunun güvenliğini sağlama
+      url: tutorial-web-api-dotnet.md
+    - text: "Örnekler: Web uygulamaları ve API'leri"
+      url: code-samples.md#web-apps-and-apis
+    - text: API ağ geçidiyle tümleştirme
+      url: secure-api-management.md?tabs=app-reg-ga
+- title: Güvenlik, gizlilik ve uyumluluk
   linkLists:
   - linkListType: concept
     links:
-    - text: Özel ilkelere giriş
-      url: custom-policy-overview.md
+    - text: Tehditleri yönetme
+      url: threat-management.md
+    - text: Kullanıcı verilerinin nerede depolandığını öğrenme
+      url: data-residency.md
+    - text: Düzenlemeler
+      url: overview.md
+    - text: Kullanıcı erişimi ve kullanım koşulları
+      url: manage-user-access.md
+- title: Operations
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Kullanıcıları kaydetme ve oturumlarını açma
-      url: custom-policy-get-started.md
-    - text: Kullanıcı arabirimini özelleştirme
-      url: custom-policy-ui-customization.md
-    - text: Azure AD çoklu kiracı ile oturum açmayı etkinleştirme
-      url: identity-provider-azure-ad-multi-tenant-custom.md
-    - text: REST API’leri ile kendi iş mantığınızı ekleme
-      url: custom-policy-rest-api-claims-validation.md
-  - linkListType: video
+    - text: CI/CD işlem hattı
+      url: deploy-custom-policies-devops.md
+    - text: İzleme
+      url: azure-monitor.md
+    - text: Yöneticiler için rol tabanlı erişim
+      url: overview.md
+    - text: Kullanıcı yönetimi
+      url: manage-user-accounts-graph-api.md
+    - text: Sorun giderme
+      url: troubleshoot-custom-policies.md?tabs-app-reg-ga
+    - text: En iyi deneyimler
+      url: best-practices.md
+- title: Kaynaklar
+  linkLists:
+  - linkListType: overview
     links:
-    - text: Azure AD B2C ile gelişmiş kullanım örnekleri (4:54)
-      url: https://www.youtube.com/watch?v=-ZmPBuMZY-Y
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework
+    - text: GitHub
+      url: https://github.com/azure-ad-b2c/samples
+    - text: YouTube
+      url: https://www.youtube.com/results?search_query=azure+ad+b2c
+    - text: Eğitim
+      url: solution-articles.md
+    - text: Hizmet güncelleştirmeleri
+      url: https://azure.microsoft.com/updates/?product=active-directory-b2c
+    - text: Sık sorulan sorular
+      url: faq.md
+    - text: Microsoft desteği
+      url: support-options.md
+- title: Yaygın tümleştirmeler
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 'Azure İzleyici: Günlüklerinizi koruma ve analiz etme'
+      url: azure-monitor.md
+    - text: 'Azure DevOps Services: CI/CD işlem hattınızı oluşturma'
+      url: deploy-custom-policies-devops.md
+    - text: 'Application Insights: Sorun giderme ve kullanıcı içgörülerinizi alma'
+      url: troubleshoot-with-application-insights.md
+    - text: Teknoloji iş ortaklarımızla tümleştirme
+      url: partner-gallery.md

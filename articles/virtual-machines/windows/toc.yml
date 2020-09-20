@@ -592,7 +592,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Disk şifrelemesi hakkında SSS
               href: disk-encryption-faq.md
-            - name: Disk şifrelemesi - önceki sürüm (AAD)
+            - name: Disk şifrelemesi - önceki sürüm (Azure AD)
               items:
                 - name: Genel Bakış
                   href: disk-encryption-overview-aad.md
@@ -670,7 +670,7 @@
           href: nested-virtualization.md
         - name: Otomatik VM konuk düzeltme eki uygulama (önizleme)
           href: automatic-vm-guest-patching.md
-    - name: Platform bakımı
+    - name: Bakım denetimi
       items:
         - name: Bakım bildirimleri
           items:
@@ -682,7 +682,7 @@
               href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Bakım denetimi
+        - name: Platform bakımı
           items:
             - name: Genel Bakış
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -696,6 +696,16 @@
           href: scheduled-events.md
         - name: Windows zamanlanmış olay hizmeti
           href: scheduled-event-service.md
+        - name: Sanal makine ölçek kümesi İşletim Sistemi görüntüsüne yönelik yükseltmeler
+          items:
+            - name: Otomatik işletim sistemi yükseltmeleri
+              href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Bakım denetimi
+              items:
+                - name: Genel Bakış (Önizleme)
+                  href: ../virtual-machine-scale-sets-maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell (Önizleme)
+                  href: ../virtual-machine-scale-sets-maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: VM’leri izleme
       items:
         - name: Aracılar
@@ -932,7 +942,7 @@
           href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Bağlantı noktalarını VM’ye açma
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: nsg-quickstart-portal.md
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md
@@ -1039,7 +1049,7 @@
   href: ../troubleshooting/index.yml
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

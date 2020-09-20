@@ -1,14 +1,14 @@
 ---
 title: CAF Geçişi giriş bölgesi şema örneğine genel bakış
 description: Azure Geçişi giriş bölgesi şema örneği için Bulut Benimseme Çerçevesi’ne (CAF) genel bakış ve mimari.
-ms.date: 04/15/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 6deb671070a742448560309b1b1a3572f5aa082d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6b8e3484690d263a43d3824c054b28344ea07fb1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852319"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531687"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Azure Geçişi giriş bölgesi şema örneği için Microsoft Bulutu Benimseme Çerçevesine genel bakış
 
@@ -20,7 +20,9 @@ Azure Geçişi giriş bölgesi şeması için Microsoft Bulutu Benimseme Çerçe
 
 CAF Geçişi giriş bölgesi şema örneği, kuruluşlar tarafından aboneliklerini sanal makinelerin geçişine hazırlamak amacıyla kullanılabilen Azure’daki temel altyapı kaynaklarını dağıtır. Ayrıca, bulut varlıklarını yönetmek için gerekli idari denetimleri belirlemelerine de yardımcı olur. Bu örnek, bir kuruluşun Azure’ı güvenle kullanmaya başlamasını sağlayacak kaynakları, ilkeleri ve şablonları dağıtıp uygular.
 
-:::image type="content" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="CAF Geçişi giriş bölgesi görüntüsü, ilk giriş bölgesi için CAF rehberi kapsamında neyin yüklendiğini tanımlar" border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="CAF Geçişi giriş bölgesi görüntüsü, ilk giriş bölgesi için CAF rehberi kapsamında neyin yüklendiğini tanımlar." border="false":::
+   CAF geçiş şemasını dağıtarak elde edilen bir Azure mimarisini tanımlar.  Günlükleri kaydetmek için bir Azure sanal ağı, depolama hesabı ve depolama hesabında depolanmak üzere yapılandırılmış bir Log Analytics’in yer aldığı, kaynak gruplarına sahip bir abonelik için geçerlidir.  Burada, yapılandırılmış Azure Key Vault ve ilk kurulumu oluşturulmuş Azure Geçişi de gösterilmektedir.  Tüm bu temel altyapılara Azure Active Directory kullanılarak erişilebilir.     
+:::image-end:::
 
 Bu ortam, güvenli, tam olarak izlenen, kurumsal kullanıma hazır yönetim sağlamak amacıyla kullanılan çeşitli Azure hizmetlerinden oluşur. Bu ortam şunlardan oluşur:
 

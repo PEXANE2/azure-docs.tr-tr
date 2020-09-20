@@ -1,14 +1,14 @@
 ---
 title: Şema örnekleri dizini
 description: Azure Blueprints ile ortamlar, ilkeler ve Bulut Benimseme Çerçevesi temelleri dağıtmak için uyumluluk ve standart örnek dizini.
-ms.date: 09/11/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 7ac95dee88cb244ecb4b60738daae26bb0d8831a
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: def5e51a3db7e0733e0d7e1ef5c6895aedb7128d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031883"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530990"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints örnekleri
 
@@ -42,7 +42,8 @@ Aşağıdaki tabloda Azure Blueprints'e ait örneklerin bağlantıları yer alı
 
 ## <a name="samples-strategy"></a>Örnek stratejisi
 
-:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="Şema örnekleri stratejisi" border="false":::
+:::image type="complex" source="../media/blueprint-samples-strategy.png" alt-text="Mimari karmaşıklık ile uyumluluk gereksinimleri karşılaştırmasında Şema örneklerinin yerini gösteren diyagram." border="false":::
+   Mimari karmaşıklığın X ekseninde, uyumluluk gereksinimlerinin Y ekseninde olduğu bir koordinat sistemini tanımlar.  Mimari karmaşıklık ve uyumluluk gereksinimleri arttıkça, E bölgesinde belirtilen portaldaki standart Şema örneklerini benimseyin. Azure’ı kullanmaya başlayan müşteriler, A ve B bölgesi tarafından belirtilen Bulut Benimseme Çerçevesi (CAF) tabanlı Foundation ve Giriş Bölgesi şemalarından yararlanır. Kalan alan, iş ortakları olan müşteriler tarafından C, D ve F bölgeleri için oluşturulan özel şemalara ayrılmıştır. :::image-end:::
 
 CAF Foundation ve CAF Geçişi giriş bölgesi şemalarında, müşterinin şirket içi varlıkları ve iş yüklerini Azure’a geçirmek amacıyla mevcut bir temiz tek abonelik hazırladığı varsayılır.
 (Şekilde A ve B bölgesi).  

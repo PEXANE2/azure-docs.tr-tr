@@ -1,14 +1,14 @@
 ---
 title: CAF Foundation şema örneğine genel bakış
 description: Azure Foundation şema örneği için Bulut Benimseme Çerçevesi’ne (CAF) genel bakış ve mimari.
-ms.date: 04/15/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852353"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531704"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Azure Foundation şema örneği için Microsoft Bulutu Benimseme çerçevesine genel bakış
 
@@ -18,7 +18,9 @@ Azure Foundation şeması için Microsoft Bulutu Benimseme Çerçevesi (CAF), ü
 
 CAF Foundation şema örneği, kuruluşların bulut varlıklarını yönetmek için gerekli olan temel denetimleri belirlemek üzere kullanılabileceği, Azure’da önerilen altyapı kaynaklarını dağıtır. Bu örnek, bir kuruluşun Azure’ı güvenle kullanmaya başlamasını sağlayacak kaynakları, ilkeleri ve şablonları dağıtıp uygular.
 
-:::image type="content" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="CAF Foundation görüntüsü, Azure’ı kullanmaya başlamak amacıyla temel oluşturmaya yönelik CAF rehberliğinin bir parçası olarak yüklenenleri tanımlar" border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="CAF Foundation görüntüsü, Azure’ı kullanmaya başlamak amacıyla temel oluşturmaya yönelik CAF rehberliğinin bir parçası olarak yüklenenleri tanımlar." border="false":::
+   CAF Foundation şemasını dağıtarak elde edilen bir Azure mimarisini tanımlar.  Günlükleri kaydetmek için bir depolama hesabı ve depolama hesabında depolanmak üzere yapılandırılmış bir Log Analytics’in yer aldığı, kaynak gruplarına sahip bir abonelik için geçerlidir. Burada, Azure Güvenlik Merkezi standart kurulumuyla yapılandırılmış bir Azure Key Vault da gösterilmektedir. Tüm bu temel altyapılara Azure Active Directory kullanılarak erişilebilir ve bunlar Azure İlkesi kullanılarak zorunlu kılınabilir.     
+:::image-end:::
 
 Bu uygulama, güvenli, tam olarak izlenen, kurumsal kullanıma hazır bir temel sağlamak amacıyla kullanılan çeşitli Azure hizmetlerinden oluşur. Bu ortam şunlardan oluşur:
 

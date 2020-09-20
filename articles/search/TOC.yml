@@ -1,11 +1,13 @@
 - name: Azure Bilişsel Arama Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   expanded: true
   items:
-    - name: Azure Bilişsel Arama nedir?
+    - name: Bilişsel Arama nedir?
       href: search-what-is-azure-search.md
-    - name: Yenilikler
+    - name: Bilişsel Arama’daki özellikler
+      href: search-features-list.md
+    - name: Bilişsel Arama’daki yenilikler
       href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:
@@ -394,7 +396,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search
@@ -413,25 +415,27 @@
     - name: .NET
       items:
         - name: Arama API’si
-          href: /dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search.documents-readme
         - name: Yönetim API'si
-          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search/management
     - name: Java
       items:
+        - name: Arama API’si
+          href: /java/api/overview/azure/search-documents-readme
         - name: Yönetim API'si
-          href: /java/api/overview/azure/search/management?view=azure-java-stable
+          href: /java/api/overview/azure/search/management
     - name: JavaScript
       items:
         - name: Arama API’si
-          href: /javascript/api/overview/azure/search-documents-readme?view=azure-node-latest
+          href: /javascript/api/overview/azure/search-documents-readme
         - name: Yönetim API'si
-          href: /javascript/api/overview/azure/search/management?view=azure-node-latest
+          href: /javascript/api/overview/azure/search/management
     - name: Python
       items:
         - name: Arama API’si
-          href: /python/api/overview/azure/search-documents-readme?view=azure-python
+          href: /python/api/overview/azure/search-documents-readme
         - name: Yönetim API'si
-          href: /python/api/overview/azure/search/management?view=azure-python
+          href: /python/api/overview/azure/search/management
     - name: OData dil başvurusu
       items:
         - name: Genel Bakış

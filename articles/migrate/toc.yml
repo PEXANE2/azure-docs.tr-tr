@@ -28,8 +28,6 @@
           href: tutorial-discover-physical.md
         - name: AWS örneklerini bulma
           href: tutorial-discover-aws.md
-        - name: İçeri aktarılan sunucuları bulma
-          href: tutorial-discover-import.md
     - name: Değerlendirme
       items:
         - name: VMware VM’lerini Azure VM’lerine geçiş için değerlendirme
@@ -42,6 +40,8 @@
           href: tutorial-assess-physical.md
         - name: AWS örneklerini Azure’a geçiş için değerlendirme
           href: tutorial-assess-aws.md
+        - name: İçeri aktarılan sunucuları değerlendirme
+          href: tutorial-discover-import.md
     - name: Geçiş
       items:
         - name: VMware VM’leri geçirme

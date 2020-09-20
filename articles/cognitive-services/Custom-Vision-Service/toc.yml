@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Özel Görüntü İşleme nedir?
-      href: home.md
+      href: overview.md
     - name: Yenilikler
       href: whats-new.md
 - name: Hızlı Başlangıçlar
@@ -49,7 +49,11 @@
           href: custom-vision-onnx-windows-ml.md
         - name: Python’da TensorFlow modelini çalıştırma
           href: export-model-python.md
-    - name: Hesap verilerini dışarı aktarma veya silme
+    - name: Depolama bildirimlerini tümleştirme
+      href: storage-integration.md
+    - name: Projeleri kopyalama ve taşıma
+      href: copy-move-projects.md
+    - name: Hesap verilerini görüntüleme veya silme
       href: ./export-delete-data.md
     - name: Uygulamanızı 3.0 API’sine güncelleştirin
       href: ./update-application-to-3.0-sdk.md

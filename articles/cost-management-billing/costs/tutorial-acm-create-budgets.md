@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: fab6422300dd3db7dd0d02055721bd57354668bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 32aad7bc350c2ee8ca55d340623c3c3e44820d43
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322288"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527148"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
@@ -106,7 +106,7 @@ Bütçe tutarını yapılandırdıktan sonra bütçe uyarılarını yapılandır
 
 E-posta almak istiyorsanız, e-postaların önemsiz e-posta klasörünüze gitmemesi için azure-noreply@microsoft.com adresini onaylı gönderenler listenize ekleyin. Bildirimleri hakkında daha fazla bilgi için, bkz. [Maliyeti uyarılarını kullanma](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md).
 
-Aşağıdaki örnekte, bütçenin %90'ına ulaşıldığında bir e-posta uyarısı oluşturulmuştur. Bütçeler API'si ile bütçe oluşturduğunuzda kullanıcılara uyarı gönderilmesi için roller de atayabilirsiniz. Kişilere rol atama işlemi Azure portalında gerçekleştirilemez. Azure Bütçeler API'si hakkında daha fazla bilgi için bkz. [Bütçeler API'si](/rest/api/consumption/budgets).
+Aşağıdaki örnekte, bütçenin %90'ına ulaşıldığında bir e-posta uyarısı oluşturulmuştur. Bütçeler API'si ile bütçe oluşturduğunuzda kullanıcılara uyarı gönderilmesi için roller de atayabilirsiniz. Kişilere rol atama işlemi Azure portalında gerçekleştirilemez. Azure Bütçeler API'si hakkında daha fazla bilgi için bkz. [Bütçeler API'si](/rest/api/consumption/budgets). Farklı bir dilde yazılmış bir e-posta uyarısı göndermek istiyorsanız bkz. [Bütçe uyarısı e-postaları için desteklenen yerel ayarlar](manage-automation.md#supported-locales-for-budget-alert-emails).
 
 Uyarı sınırları, sağladığınız bütçe eşiğinin %0,01’i ile %1000'i arasındaki değerleri destekler.
 

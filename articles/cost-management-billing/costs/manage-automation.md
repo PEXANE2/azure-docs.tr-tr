@@ -3,17 +3,17 @@ title: Otomasyon ile Azure maliyetlerini yönetme
 description: Bu makalede, otomasyon ile Azure maliyetlerini nasıl yönetebileceğiniz açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/19/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: adwise
-ms.openlocfilehash: a5ab84794884cc0c87bd766be7a0fa2fe4c52aa9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.reviewer: matrive
+ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684414"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526655"
 ---
 # <a name="manage-costs-with-automation"></a>Otomasyon ile maliyetleri yönetme
 
@@ -161,6 +161,70 @@ Bütçeler API’sine yapılan bir GET çağrısı, Maliyet Analizi’nde göste
 ### <a name="automate-budget-creation"></a>Bütçe oluşturmayı otomatikleştirme
 
 [Bütçeler API’sini](/rest/api/consumption/budgets) kullanarak bütçe oluşturmayı otomatikleştirebilirsiniz. Ayrıca, [bütçe şablonuyla](quick-create-budget-template.md) bir bütçe oluşturabilirsiniz. Şablonlar, maliyet denetiminizin düzgün yapılandırılıp zorlanmasını sağlarken Azure dağıtımlarınızı standart hale getirmenize yönelik kolay bir yöntem sağlar.
+
+#### <a name="supported-locales-for-budget-alert-emails"></a>Bütçe uyarısı e-postaları için desteklenen yerel ayarlar
+
+Bütçeler sayesinde, maliyetleriniz belirli bir eşiği açtığında uyarı alırsınız. Bütçe başına en fazla beş e-posta alıcısı ayarlayabilirsiniz. Bütçe eşiği aşıldıktan sonraki 24 saat içinde alıcılara e-posta gönderilir. Ancak, alıcınızın farklı bir dilde e-posta alması gerekebilir. Bütçe API’siyle aşağıdaki dil kültür kodlarını kullanabilirsiniz. Kültür kodunu, aşağıdaki örneğe benzer şekilde `locale` parametresiyle ayarlayın.
+
+```json
+{
+  "eTag": "\"1d681a8fc67f77a\"",
+  "properties": {
+    "timePeriod": {
+      "startDate": "2020-07-24T00:00:00Z",
+      "endDate": "2022-07-23T00:00:00Z"
+    },
+    "timeGrain": "BillingMonth",
+    "amount": 1,
+    "currentSpend": {
+      "amount": 0,
+      "unit": "USD"
+    },
+    "category": "Cost",
+    "notifications": {
+      "actual_GreaterThan_10_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 20,
+        "locale": "en-us",
+        "contactEmails": [
+          "user@contoso.com"
+        ],
+        "contactRoles": [],
+        "contactGroups": [],
+        "thresholdType": "Actual"
+      }
+    }
+  }
+}
+
+```
+
+Kültür koduyla desteklenen diller:
+
+| Kültür kodu| Dil |
+| --- | --- |
+| tr-tr | İngilizce (ABD) |
+| ja-jp | Japonca (Japonya) |
+| zh-cn | Çince (Yalın, Çin) |
+| de-de | Almanca (Almanya) |
+| es-es | İspanyolca (İspanya, Uluslararası) |
+| fr-fr | Fransızca (Fransa) |
+| it-it | İtalyanca (İtalya) |
+| ko-kr | Korece (Kore) |
+| pt-br | Portekizce (Brezilya) |
+| ru-ru | Rusça (Rusya) |
+| zh-tw | Çince (Geleneksel, Tayvan) |
+| cs-cz | Çekçe (Çek Cumhuriyeti) |
+| pl-pl | Lehçe (Polonya) |
+| tr-tr | Türkçe (Türkiye) |
+| da-dk | Danca (Danimarka) |
+| dn-gb | İngilizce (İngiltere) |
+| hu-hu | Macarca (Macaristan) |
+| nb-bo | Norveççe (Bokmal) (Norveç) |
+| nl-nl | Felemenkçe (Hollanda) |
+| pt-pt | Portekizce (Portekiz) |
+| sv-se | İsveççe (İsviçre) |
 
 #### <a name="common-budgets-api-configurations"></a>Yaygın Bütçeler API’si yapılandırmaları
 

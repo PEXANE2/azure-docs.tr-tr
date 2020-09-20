@@ -33,6 +33,12 @@
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp Files ağ planlaması yönergeleri
       href: azure-netapp-files-network-topologies.md
+    - name: Bölgeler arası çoğaltma
+      items:
+        - name: Bölgeler arası çoğaltmayı anlama
+          href: cross-region-replication-introduction.md
+        - name: Bölgeler arası çoğaltma gereksinimleri ve bu konuda dikkate alınması gerekenler
+          href: cross-region-replication-requirements-considerations.md
     - name: Çözümler
       items:
         - name: Azure NetApp Files kullanan çözüm mimarileri
@@ -81,6 +87,16 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: Birimin hizmet düzeyini dinamik olarak değiştirme
       href: dynamic-change-volume-service-level.md
+    - name: Bölgeler arası çoğaltmayı yönetme
+      items:
+        - name: Çoğaltma eşlemesi oluşturma
+          href: cross-region-replication-create-peering.md
+        - name: Çoğaltma ilişkisinin uygunluk durumunu görüntüleme
+          href: cross-region-replication-display-health-status.md
+        - name: Olağanüstü durum kurtarmayı yönetme
+          href: cross-region-replication-manage-disaster-recovery.md
+        - name: Çoğaltmaları silme
+          href: cross-region-replication-delete.md
     - name: Geliştirme
       items:
         - name: REST API
@@ -91,6 +107,10 @@
           href: azure-netapp-files-sdk-cli.md
         - name: Azure NetApp Files Kaynak Sağlayıcısı hatalarını giderme
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
+    - name: Sorun giderme
+      items:
+        - name: Bölgeler arası çoğaltma sorunlarını giderme
+          href: troubleshoot-cross-region-replication.md
 - name: Başvuru
   items:
     - name: REST

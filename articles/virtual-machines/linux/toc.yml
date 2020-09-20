@@ -619,7 +619,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Disk şifrelemesi hakkında SSS
               href: disk-encryption-faq.md
-            - name: Disk şifrelemesi - önceki sürüm (AAD)
+            - name: Disk şifrelemesi - önceki sürüm (Azure AD)
               items:
                 - name: Genel Bakış
                   href: disk-encryption-overview-aad.md
@@ -691,7 +691,7 @@
         - name: Uzak Masaüstü kullanma
           href: use-remote-desktop.md
         - name: VM’yi Azure Active Directory’e ekleme
-          displayName: AAD
+          displayName: Azure AD
           items:
             - name: Red Hat Enterprise Linux
               href: ../../active-directory-domain-services/join-rhel-linux-vm.md
@@ -717,7 +717,7 @@
           href: instance-metadata-service.md
         - name: REST ile kullanım ölçümleri alma
           href: metrics-vm-usage-rest.md
-    - name: Platform bakımı
+    - name: Bakım denetimi
       items:
         - name: Bakım bildirimleri
           items:
@@ -729,7 +729,7 @@
               href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: Bakım denetimi
+        - name: Platform bakımı
           items:
             - name: Genel Bakış
               href: ../maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -741,6 +741,16 @@
               href: ../maintenance-control-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Zamanlanmış olaylar
           href: scheduled-events.md
+        - name: Sanal makine ölçek kümesi İşletim Sistemi görüntüsüne yönelik yükseltmeler
+          items:
+            - name: Otomatik işletim sistemi yükseltmeleri
+              href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Bakım denetimi
+              items:
+                - name: Genel Bakış (Önizleme)
+                  href: ../virtual-machine-scale-sets-maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: PowerShell (Önizleme)
+                  href: ../virtual-machine-scale-sets-maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: VM’leri izleme
       items:
         - name: Aracılar
