@@ -38,6 +38,8 @@
       href: concepts-upgrades.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Azure VMware Çözümü etkinleştirme
+      href: enable-azure-vmware-solution.md
     - name: Geçiş değerlendirmesi
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - name: HCX’i ayarlama
