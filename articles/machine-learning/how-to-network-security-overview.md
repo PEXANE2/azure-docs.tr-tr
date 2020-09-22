@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 57746b833e238bbd0cc99ba103f710a9239ee5ba
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89665160"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893182"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Sanal ağ yalıtımı ve gizliliği genel bakış
 
@@ -28,7 +28,7 @@ Bu serideki diğer makaleler şunlardır:
 
 **1. VNET 'e genel bakış**  >  [2. Çalışma alanı](how-to-secure-workspace-vnet.md)3 ' ü güvenli hale getirin  >  [. Eğitim ortamının](how-to-secure-training-vnet.md)4 ' ü koruyun  >  [. Invenli ortam](how-to-secure-inferencing-vnet.md)5 ' i güvenli hale getirin  >  [. Studio işlevselliğini etkinleştir](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, aşağıdaki konularda bilginiz olduğunu varsaymaktadır:
 + [Azure sanal ağları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
@@ -63,22 +63,6 @@ Sonraki beş bölümde yukarıda açıklanan ağ senaryosunun güvenliğini sağ
 1. [**İkinci dereceden sınırlama ortamının**](#secure-the-inferencing-environment)güvenliğini sağlama.
 1. İsteğe bağlı: [**Studio işlevselliğini etkinleştirin**](#optional-enable-studio-functionality).
 1. [ **Güvenlik Duvarı ayarlarını** yapılandırma](#configure-firewall-settings)
-
-> [!TIP]
->  Bazı sanal ağ ve Azure hizmetleri birleşimleri, Enterprise Edition çalışma alanı gerektirir. Hangi senaryoların Enterprise Edition gerektirdiğini anlamak için aşağıdaki tabloyu kullanın:
->
-> | Senaryo | Enterprise</br>Edition | Temel</br>Edition |
-> | ----- |:-----:|:-----:| 
-> | Sanal ağ veya özel bağlantı yok | ✔ | ✔ |
-> | Özel bağlantı olmadan çalışma alanı. Bir sanal ağdaki diğer kaynaklar (Azure Container Registry hariç) | ✔ | ✔ |
-> | Özel bağlantı olmadan çalışma alanı. Özel bağlantısı olan diğer kaynaklar | ✔ | |
-> | Özel bağlantılı çalışma alanı. Bir sanal ağdaki diğer kaynaklar (Azure Container Registry hariç) | ✔ | ✔ |
-> | Çalışma alanı ve özel bağlantısı olan diğer kaynaklar | ✔ | |
-> | Özel bağlantılı çalışma alanı. Özel bağlantı veya sanal ağ içermeyen diğer kaynaklar | ✔ | ✔ |
-> | Bir sanal ağda Azure Container Registry | ✔ | |
-> | Çalışma alanı için müşteri tarafından yönetilen anahtarlar | ✔ | |
->
-
 
 ## <a name="secure-the-workspace-and-associated-resources"></a>Çalışma alanının ve ilişkili kaynakların güvenliğini sağlama
 

@@ -3,12 +3,12 @@ title: Canlı videoyu herhangi bir kayıt olmadan çözümleme-Azure
 description: Bir medya grafiği, bir canlı video akışından gelen analizi, bir kenara veya buluta kaydetmeye gerek kalmadan ayıklamak için kullanılabilir. Bu makalede bu kavram ele alınmaktadır.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: d59e2e9e309f0ed6a65e001557dcd9dd8af90da2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5dda18b68cb19d29623f2120fe07d7cc617f0c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566771"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893017"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>Canlı videoyu herhangi bir kayıt olmadan çözümleme
 
@@ -40,7 +40,7 @@ Bu medya grafiğinde, çerçeve hızı filtre işlemcisi düğümü, gelen canl�
 Bu örnek için bir geliştirme, çerçeve hızı filtresi işlemci düğümündeki bir hareket algılayıcısı işlemcisini kullanmaktır. Bu, yalnızca videoda bir hareket etkinliği olduğunda kullanıldığından, çıkarım hizmetindeki yükü azaltır.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/custom-model.png" alt-text="Dış ınlaç modülü aracılığıyla hareket algılanan çerçeveleri temel alan canlı video analizi":::
+> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="Dış ınlaç modülü aracılığıyla hareket algılanan çerçeveleri temel alan canlı video analizi":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

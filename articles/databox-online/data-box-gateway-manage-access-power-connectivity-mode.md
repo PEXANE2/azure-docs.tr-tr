@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 98431e7a451aa54dfdee2126d4ce94b8b0b0fb84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1035b0afee9821020673acbc813b31cba3e2fd90
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339221"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893954"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Azure Data Box Gateway için erişimi, güç ve bağlantı modunu yönetme
 
@@ -57,16 +57,16 @@ Sıfırlama iş akışı, kullanıcının eski parolayı geri çekemesini gerekt
 
 ## <a name="manage-resource-access"></a>Kaynak erişimini yönetme
 
-Azure Stack Edge/Data Box Gateway, IoT Hub ve Azure depolama kaynağını oluşturmak için, bir kaynak grubu düzeyinde katkıda bulunan veya daha yüksek izinlere sahip olmanız gerekir. Ayrıca, kaydedilecek ilgili kaynak sağlayıcılarının da olması gerekir. Etkinleştirme anahtarı ve kimlik bilgilerini içeren tüm işlemler için Azure Active Directory Graph API izinleri de gereklidir. Bunlar aşağıdaki bölümlerde açıklanmıştır.
+Azure Stack Edge Pro/Data Box Gateway, IoT Hub ve Azure depolama kaynağını oluşturmak için, bir kaynak grubu düzeyinde katkıda bulunan veya daha yüksek izinlere sahip olmanız gerekir. Ayrıca, kaydedilecek ilgili kaynak sağlayıcılarının da olması gerekir. Etkinleştirme anahtarı ve kimlik bilgilerini içeren tüm işlemler için Azure Active Directory Graph API izinleri de gereklidir. Bunlar aşağıdaki bölümlerde açıklanmıştır.
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API izinlerini yönetme
 
-Azure Stack Edge cihazının etkinleştirme anahtarını oluştururken veya kimlik bilgileri gerektiren işlemler gerçekleştirirken, Microsoft Graph API 'sine yönelik izinlere ihtiyacınız vardır. Kimlik bilgileri gerektiren işlemler şunlar olabilir:
+Azure Stack Edge Pro cihazı için etkinleştirme anahtarını oluştururken veya kimlik bilgileri gerektiren işlemler gerçekleştirirken, Microsoft Graph API 'sine yönelik izinlere ihtiyacınız vardır. Kimlik bilgileri gerektiren işlemler şunlar olabilir:
 
 -  İlişkili bir depolama hesabıyla bir paylaşma oluşturuluyor.
 -  Cihazdaki paylaşımlara erişebilen bir Kullanıcı oluşturma.
 
-`User`Active Directory kiracısında yapabilmeniz için bir erişiminizin olması gerekir `Read all directory objects` . Bir Konuk Kullanıcı, izinleri olmadığı için bu kullanıcı olamaz `Read all directory objects` . Bir konuğunuzda, bir etkinleştirme anahtarı oluşturma, Azure Stack Edge cihazınızda bir paylaşımın oluşturulması gibi işlemler, bir kullanıcının oluşturulması başarısız olur.
+`User`Active Directory kiracısında yapabilmeniz için bir erişiminizin olması gerekir `Read all directory objects` . Bir Konuk Kullanıcı, izinleri olmadığı için bu kullanıcı olamaz `Read all directory objects` . Bir konuğunuzda, bir etkinleştirme anahtarı oluşturma, Azure Stack Edge Pro cihazınızda bir paylaşımın oluşturulması gibi işlemler, Kullanıcı oluşturma işlemi başarısız olur.
 
 API Microsoft Graph için kullanıcılara erişim sağlama hakkında daha fazla bilgi için, bkz. [Microsoft Graph izinleri başvurusu](https://docs.microsoft.com/graph/permissions-reference).
 
@@ -89,7 +89,7 @@ Geçerli abonelikteki kayıtlı kaynak sağlayıcılarının bir listesini almak
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Azure Stack Edge cihazında kayıtlı olmalıdır `Microsoft.DataBoxEdge` . Kaydolmak için `Microsoft.DataBoxEdge` , abonelik Yöneticisi aşağıdaki komutu çalıştırmalıdır:
+Azure Stack Edge Pro cihazı için `Microsoft.DataBoxEdge` kayıtlı olmalıdır. Kaydolmak için `Microsoft.DataBoxEdge` , abonelik Yöneticisi aşağıdaki komutu çalıştırmalıdır:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -123,7 +123,7 @@ Cihaz modunu değiştirmek için şu adımları izleyin:
 
 ## <a name="manage-power"></a>Güç yönetimi
 
-Yerel Web Kullanıcı arabirimini kullanarak sanal cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce konaktaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bu eylem, herhangi bir veri bozulması olasılığını en aza indirir.
+Yerel Web Kullanıcı arabirimini kullanarak sanal cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce konaktaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bu eylem veri bozulması olasılığını en aza indirir.
 
 1. Yerel Web Kullanıcı arabiriminde **bakım > güç ayarları**' na gidin.
 2. Ne yapmak istediğinize bağlı olarak, **kapalı** veya **yeniden başlatma** ' ya tıklayın.

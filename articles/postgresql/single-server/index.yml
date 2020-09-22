@@ -1,0 +1,127 @@
+### YamlMime:Landing
+title: PostgreSQL için Azure Veritabanı Tek Sunucu belgeleri
+summary: PostgreSQL için Azure Veritabanı, açık kaynak Postgres veritabanı altyapısını temel alan ilişkisel bir veritabanı hizmetidir.  Tek Sunucu, bir postgres sunucusu oluşturmaya yönelik çeşitli dağıtım seçeneklerinden biridir. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle Tek Sunucu’yu kullanmayı öğrenin.
+metadata:
+  description: PostgreSQL için Azure Veritabanı, açık kaynak PostgreSQL veritabanı altyapısını temel alan, Microsoft bulutunda geliştiriciler için oluşturulmuş ilişkisel bir veritabanı hizmetidir.
+  author: rachel-msft
+  ms.author: raagyema
+  ms.date: 09/20/2020
+  ms.service: postgresql
+  ms.topic: landing-page
+  ms.openlocfilehash: 833b35b7a2f597186c69d95fc4ab8f2704b59c91
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90929009"
+landingContent:
+- title: Tek Sunucu hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Tek Sunucu nedir?
+      url: ../concepts-servers.md
+  - linkListType: whats-new
+    links:
+    - text: Blogumuza göz atın
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: Kullanmaya başlayın
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Portal kullanarak sunucu oluşturma
+      url: ../quickstart-create-server-database-portal.md
+    - text: Azure CLI kullanarak sunucu oluşturma
+      url: ../quickstart-create-server-database-azure-cli.md
+  - linkListType: learn
+    links:
+    - text: 'Öğrenme modülü: PostgreSQL için Azure Veritabanı sunucusu oluşturma'
+      url: /learn/modules/create-azure-db-for-postgresql-server/
+  - linkListType: concept
+    links:
+    - text: Fiyatlandırma katmanları
+      url: ../concepts-pricing-tiers.md
+    - text: Sınırlar
+      url: ../concepts-limits.md
+    - text: PostgreSQL sürümleri
+      url: ../concepts-supported-versions.md
+    - text: PostgreSQL uzantıları - tek sunucu
+      url: ../concepts-extensions.md
+  - linkListType: tutorial
+    links:
+    - text: Tek Sunucu’da Veritabanı Tasarlama
+      url: ../tutorial-design-database-using-azure-portal.md
+    - text: Python kullanarak bir Web Uygulaması oluşturma (Django)
+      url: ../../app-service/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+- title: Bağlanma ve sorgulama
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Güvenlik duvarını anlama
+      url: ../concepts-firewall-rules.md
+  - linkListType: how-to-guide
+    links:
+    - text: Güvenlik duvarı kuralları oluşturma
+      url: ../howto-manage-firewall-using-portal.md
+    - text: TLS’yi yapılandırma
+      url: ../howto-tls-configurations.md
+  - linkListType: get-started
+    links:
+    - text: Python kullanarak bağlanma
+      url: ../connect-python.md
+    - text: Node.js kullanarak bağlanma
+      url: ../connect-nodejs.md
+    - text: Java kullanarak bağlanma
+      url: ../connect-java.md
+    - text: Ruby kullanarak bağlanma
+      url: ../connect-ruby.md
+    - text: PHP kullanarak bağlanma
+      url: ../connect-php.md
+    - text: .NET kullanarak bağlanma
+      url: ../connect-csharp.md
+    - text: Go kullanarak bağlanma
+      url: ../connect-go.md
+- title: Yönetme ve geçirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sanal Ağları anlama
+      url: ../concepts-data-access-and-security-vnet.md
+    - text: Hizmeti izleme ve ayarlama
+      url: ../tutorial-monitor-and-tune.md
+  - linkListType: how-to-guide
+    links:
+    - text: pg_dump ve pg_restore kullanarak veritabanını geçirme
+      url: ../howto-migrate-using-dump-and-restore.md
+    - text: pg_dump ve psql kullanarak veritabanını geçirme
+      url: ../howto-migrate-using-export-and-import.md
+    - text: Data Migration Hizmeti’ni kullanarak geçirme
+      url: ../howto-migrate-online.md
+- title: İş Sürekliliği
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: İş sürekliliği
+      url: ../concepts-business-continuity.md
+    - text: Yedekleme ve geri yükleme
+      url: ../concepts-backup.md
+  - linkListType: how-to-guide
+    links:
+    - text: Okuma amaçlı çoğaltma oluşturma
+      url: ../howto-read-replicas-portal.md
+    - text: Sunucuyu geri yükleme
+      url: ../howto-restore-server-portal.md
+- title: Başvuru
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Ortak görevler için Azure CLI betikleri
+      url: /azure/postgresql/sample-scripts-azure-cli
+  - linkListType: reference
+    links:
+    - text: Azure CLI geliştirici başvurusu
+      url: /rest/api/postgresql/
+    - text: REST API geliştirici başvurusu
+      url: /cli/azure/postgres
+    - text: Azure Resource Manager şablonları
+      url: /azure/templates/microsoft.dbforpostgresql/allversions

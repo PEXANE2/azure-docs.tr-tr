@@ -2,19 +2,18 @@
 title: Azure Service Bus sık sorulan sorular (SSS) | Microsoft Docs
 description: Bu makalede Azure Service Bus hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 09/16/2020
+ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080822"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894532"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-sık sorulan sorular (SSS)
 
 Bu makalede Microsoft Azure Service Bus hakkında sık sorulan bazı sorular açıklanmaktadır. Ayrıca, genel Azure fiyatlandırması ve destek bilgileri için [Azure desteği SSS](https://azure.microsoft.com/support/faq/) ' ni de ziyaret edebilirsiniz.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus ilgili genel sorular
 ### <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
@@ -36,6 +35,9 @@ Bölümlenmiş varlıklar kullanılırken sıralama değildir. Bir bölümün ku
 
  Bölümlenmiş varlıklar artık [Premium SKU 'sunda](service-bus-premium-messaging.md)desteklenmez. 
 
+### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Azure Service Bus müşteri verilerini nerede depolar?
+Azure Service Bus müşteri verilerini depolar. Bu veriler tek bir bölgede Service Bus tarafından otomatik olarak depolanır. bu nedenle bu hizmet, [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler de dahil olmak üzere bölge verileri 'nin gereksinimlerini otomatik olarak karşılar.
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Güvenlik duvarında hangi bağlantı noktalarını açmalıyım? 
 Aşağıdaki protokolleri, ileti göndermek ve almak için Azure Service Bus ile birlikte kullanabilirsiniz:
 
@@ -48,7 +50,7 @@ Azure Event Hubs ile iletişim kurmak için bu protokolleri kullanmak üzere aç
 | Protokol | Bağlantı noktaları | Ayrıntılar | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 ve 5672 | Bkz. [AMQP protokol Kılavuzu](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350 9354 | Bkz. [bağlantı modu](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| SBMP | 9350 9354 | Bkz. [bağlantı modu](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet&preserve-view=true) |
 | HTTP, HTTPS | 80, 443 | 
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>İzin verilenler listesine hangi IP adreslerini eklemem gerekir?
@@ -59,9 +61,9 @@ Bağlantılarınızın izin verilenler listesine eklenecek doğru IP adreslerini
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . Bu IP adresi statiktir. Aynı zamanda, ad alanını farklı bir kümeye geri yüklemeniz durumunda değişir.
+2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . 
 
-Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapmanız gerekir: 
+Ad alanınız için **bölge yedekliliği** kullanırsanız, birkaç ek adım yapmanız gerekir: 
 
 1. İlk olarak, ad alanında Nslookup ' ı çalıştırırsınız.
 
@@ -77,12 +79,15 @@ Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapman
     ```
 3. Her biri için S1, S2 ve S3 sonekleri ile her biri için Nslookup ' ı çalıştırarak üç kullanılabilirlik alanında çalışan üç örnek için IP adreslerini alın. 
 
+    > [!NOTE]
+    > Komut tarafından döndürülen IP adresi `nslookup` statik BIR IP adresi değil. Ancak, temeldeki dağıtım silinene veya farklı bir kümeye taşınana kadar sabit kalır.
+
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Bir ad alanına/bir ad alanından gönderilen/alınan iletilerin IP adresini nerede bulabilirim? 
 Ad alanınızı/onlardan ileti gönderen veya alan istemcilerin IP adreslerini günlüğe almadık. Yalnızca izin verilen kullanıcıların veya uygulamaların ad alanına erişebildiğinden emin olmak için, mevcut tüm istemcilerin kimlik doğrulaması yapamaması ve rol tabanlı erişim denetimi ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) ayarlarını gözden geçirebilmesi için anahtarları yeniden oluşturun. 
 
 **Premium** ad alanı kullanıyorsanız, ad alanına erişimi sınırlandırmak için [IP filtrelemesi](service-bus-ip-filtering.md), [sanal ağ hizmeti uç noktaları](service-bus-service-endpoints.md)ve [Özel uç noktalar](private-link-service.md) kullanın. 
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure Service Bus en iyi uygulamalar nelerdir?
 [Service Bus kullanarak performans iyileştirmeleri Için en iyi uygulamalar][Best practices for performance improvements using Service Bus] bölümüne bakın – bu makalede ileti alışverişi sırasında performansın nasıl iyileştirileceği açıklanır.
 

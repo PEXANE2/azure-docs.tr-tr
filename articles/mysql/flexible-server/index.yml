@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: Esnek Sunucu belgeleri
+summary: MySQL için Azure Veritabanı - Esnek Sunucu kritik iş yüklerini teslim edebilen, tahmin edilebilir performans ve dinamik ölçeklenebilirlik sunan, tam olarak yönetilen bir MySQL hizmet olarak veritabanıdır. MySQL için Azure Veritabanı ile açık kaynak araçları ve seçtiğiniz platformu kullanarak uygulamalar geliştirin. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle, MySQL için Azure Veritabanı’nı kullanmayı öğrenin.
+metadata:
+  description: MySQL için Azure Veritabanı - Esnek Sunucu, MySQL Community Edition tarafından desteklenen, Microsoft bulutunda geliştiriciler için oluşturulmuş bir ilişkisel veritabanı hizmetidir.
+  author: mksuni
+  ms.author: sumuth
+  ms.date: 09/21/2020
+  ms.service: mysql
+  ms.topic: landing-page
+  ms.openlocfilehash: 09086af6cee517f9e30657802934d0f7fb1b14a9
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928913"
+landingContent:
+- title: Esnek Sunucu (Önizleme) hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Esnek Sunucu nedir?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Esnek sunucu oluşturma
+      url: quickstart-create-server-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Esnek sunucu ile bir PHP uygulaması oluşturma
+      url: tutorial-php-database-app.md
+  - linkListType: whats-new
+    links:
+    - text: Blogumuza göz atın
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: Yönetme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: İşlem ve depolama seçenekleri
+      url: concepts-compute-storage.md
+    - text: MySQL sürümleri
+      url: concepts-supported-versions.md
+    - text: Ağ
+      url: concepts-networking.md
+    - text: İzleme
+      url: concepts-monitoring.md
+    - text: Denetim günlükleri
+      url: concepts-audit-logs.md
+  - linkListType: how-to-guide
+    links:
+    - text: Sunucuyu yönetme
+      url: how-to-manage-server-portal.md
+    - text: Sunucuyu Başlatma/Durdurma
+      url: how-to-stop-start-server-portal.md
+    - text: Günlükleri yapılandırma ve bunlara erişme
+      url: how-to-configure-slow-query-logs-portal.md
+    - text: Bakım zamanlama
+      url: how-to-maintenance-portal.md
+- title: İş sürekliliği
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: İş sürekliliğine genel bakış
+      url: concepts-business-continuity.md
+    - text: Yüksek kullanılabilirlik
+      url: concepts-high-availability.md
+    - text: Yedekleme ve geri yükleme
+      url: concepts-backup-restore.md
+  - linkListType: how-to-guide
+    links:
+    - text: Sunucuyu geri yükleme
+      url: how-to-restore-server-portal.md
+- title: Bağlan
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: PHP kullanarak bağlanma
+      url: connect-php.md
+    - text: MySQL Workbench kullanarak bağlanma
+      url: connect-workbench.md
+    - text: Python kullanarak bağlanma
+      url: connect-python.md
+  - linkListType: tutorial
+    links:
+    - text: Sanal ağdaki Web Uygulamasını bağlama
+      url: tutorial-webapp-server-vnet.md
+- title: Geçiş
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Çevrimiçi geçirme
+      url: ../howto-migrate-online.md
+- title: Başvuru
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI geliştirici başvurusu
+      url: /cli/azure/mysql
+    - text: REST API geliştirici başvurusu
+      url: /rest/api/mysql/
+    - text: Azure Resource Manager şablonları
+      url: /azure/templates/microsoft.dbformysql/allversions

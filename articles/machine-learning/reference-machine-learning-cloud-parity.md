@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 886e45e92fb3a882de167b5c59a9b5ee09a9c430
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657582"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892986"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning sogeign bulut eşliği
 
@@ -49,9 +49,9 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 | Azure ML SDK 'sını kullanarak işlem hattı uç noktaları oluşturma                           | GA                   | EVET                | EVET         |
 | Azure ML SDK 'sını kullanarak zamanlanan işlem hattı çalıştırmalarını oluşturma, düzenleme ve silme | GA                   | Yes               | Yes        |
 | Studio 'da işlem hattı çalıştırma ayrıntılarını görüntüleme                                        | GA                   | EVET                | EVET         |
-| Azure ML tasarımcısında işlem hatları oluşturma, çalıştırma, görselleştirme ve yayımlama          | Genel Önizleme       | EVET                | EVET         |
+| Azure ML tasarımcısında işlem hatları oluşturma, çalıştırma, görselleştirme ve yayımlama          | GA      | EVET                | EVET         |
 | ML işlem hattı ile tümleştirme Azure Databricks                             | GA                   | NO                 | NO          |
-| Azure ML tasarımcısında işlem hattı uç noktaları oluşturma                             | Genel Önizleme       | EVET                | EVET         |
+| Azure ML tasarımcısında işlem hattı uç noktaları oluşturma                             | GA      | EVET                | EVET         |
 | **Tümleşik Not defterleri** |   |  | | 
 | Çalışma alanı Not defteri ve dosya paylaşımı                                        | GA                   | EVET                | EVET         |
 | R ve Python desteği                                                       | GA                   | EVET                | EVET         |
@@ -162,9 +162,9 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 | Azure ML SDK 'sını kullanarak işlem hattı uç noktaları oluşturma                           | GA               | EVET       | Yok        |
 | Azure ML SDK 'sını kullanarak zamanlanan işlem hattı çalıştırmalarını oluşturma, düzenleme ve silme | GA               | EVET       | Yok        |
 | Studio 'da işlem hattı çalıştırma ayrıntılarını görüntüleme                                        | GA               | EVET       | Yok        |
-| Azure ML tasarımcısında işlem hatları oluşturma, çalıştırma, görselleştirme ve yayımlama          | Genel Önizleme   | EVET       | Yok        |
+| Azure ML tasarımcısında işlem hatları oluşturma, çalıştırma, görselleştirme ve yayımlama          | GA  | EVET       | Yok        |
 | ML işlem hattı ile tümleştirme Azure Databricks                             | GA               | NO        | Yok        |
-| Azure ML tasarımcısında işlem hattı uç noktaları oluşturma                             | Genel Önizleme   | EVET       | Yok        |
+| Azure ML tasarımcısında işlem hattı uç noktaları oluşturma                             | GA   | EVET       | Yok        |
 | **Tümleşik Not defterleri** |   | | |
 | Çalışma alanı Not defteri ve dosya paylaşımı                                        | GA               | EVET       | Yok        |
 | R ve Python desteği                                                       | GA               | EVET       | Yok        |

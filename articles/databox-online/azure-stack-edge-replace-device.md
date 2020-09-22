@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge cihazınızı değiştirme | Microsoft Docs
-description: Değiştirme Azure Stack Edge cihazının nasıl alınacağını açıklar.
+title: Azure Stack Edge Pro cihazınızı değiştirme | Microsoft Docs
+description: Bir değiştirme Azure Stack Edge Pro cihazının nasıl alınacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 5d5e8cc3a959c7800019107d2c682e144449b46c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec16a2b42b818e96399b8fdbad4a0951f84ef825
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100118"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893904"
 ---
-# <a name="replace-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızı değiştirme
+# <a name="replace-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızı değiştirme
 
-Bu makalede, değiştirme Azure Stack Edge cihazının nasıl alınacağı açıklanır. Mevcut cihazda bir donanım arızası olduğunda veya bir yükseltme gerektiğinde bir değiştirme cihazı gerekir. 
+Bu makalede, Azure Stack Edge Pro cihazının yerini alma işleminin nasıl yapılacağı açıklanır. Mevcut cihazda bir donanım arızası olduğunda veya bir yükseltme gerektiğinde bir değiştirme cihazı gerekir. 
 
 
 Bu makalede şunları öğreneceksiniz:
@@ -31,9 +31,9 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="open-a-support-ticket"></a>Bir destek bileti açın
 
-Mevcut cihazınızda bir donanım arızası varsa, bir destek bileti açın. Microsoft Desteği, bu örnek için bir alan değiştirme birimi (FRU) bulunmadığını veya cihazın bir donanım yükseltmesine ihtiyacı olduğunu belirlemektir. Her iki durumda da destek, bir değiştirme cihazını sıraya alır.
+Mevcut cihazınızda bir donanım arızası varsa, bir destek bileti açın. Microsoft Desteği Alan Değiştirme Biriminin (FRU) bu örnekte kullanılamadığını veya cihazın donanım yükseltmesine ihtiyacı olduğunu belirleyecektir. Her iki durumda da destek, bir değiştirme cihazını sıraya alır.
 
-1. Cihazı döndürmek istediğinizi belirten Microsoft Desteği bir destek bileti açın. **Azure Stack Edge donanımı**olarak sorun türünü seçin.
+1. Cihazı döndürmek istediğinizi belirten Microsoft Desteği bir destek bileti açın. **Azure Stack Edge Pro donanımı**olarak sorun türünü seçin.
 
     ![Destek bileti açma](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
@@ -47,7 +47,7 @@ Kaynak oluşturmak için aşağıdaki adımları izleyin.
 
 1. Değiştirme cihazı için kaynak oluşturmak üzere [Yeni kaynak oluşturma](azure-stack-edge-deploy-prep.md#create-a-new-resource) bölümündeki adımları izleyin. 
 
-2. **Azure Stack Edge cihazım olmasına**karşı onay kutusunu seçtiğinizden emin olun. 
+2. **Azure Stack Edge Pro cihazım olmasına**karşı onay kutusunu seçtiğinizden emin olun. 
 
     ![Değiştirme cihazının kaynağı](media/azure-stack-edge-replace-device/replace-resource-1.png)  
 
@@ -71,4 +71,4 @@ Değiştirme cihazını yüklemek ve etkinleştirmek için aşağıdaki adımlar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stack Edge cihazını döndürmeyi](azure-stack-edge-return-device.md)öğrenin.
+- [Azure Stack Edge Pro cihazının nasıl döneceğinizi](azure-stack-edge-return-device.md)öğrenin.

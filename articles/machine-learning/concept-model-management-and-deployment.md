@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 680fd298f3d772ecb9a4787342d22bf44e74ec78
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651080"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893572"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
@@ -184,7 +184,7 @@ Genellikle, yeni bilgi aldığınızda modelinizi doğrulamak, güncelleştirmek
 - Yeni modelinizin çıkışlarını eski modelinizle karşılaştırın
 - Eski modelinizi değiştirip değiştiremeyeceğini seçmek için önceden tanımlı ölçütleri kullanın 
 
-Yukarıdaki adımların bir teması, yeniden eğitimin geçici bir şekilde değil otomatik hale gelmelidir. [Azure Machine Learning işlem hatları](concept-ml-pipelines.md) , veri hazırlama, eğitim, doğrulama ve dağıtımla ilgili iş akışları oluşturmak için iyi bir yanıttır. İşlem hatlarının ve Azure Machine Learning tasarımcısının bir yeniden eğitim senaryosuna nasıl uyduğunu görmek için [Azure Machine Learning Designer ile modelleri yeniden eğitme (Önizleme)](how-to-retrain-designer.md) makalesini okuyun. 
+Yukarıdaki adımların bir teması, yeniden eğitimin geçici bir şekilde değil otomatik hale gelmelidir. [Azure Machine Learning işlem hatları](concept-ml-pipelines.md) , veri hazırlama, eğitim, doğrulama ve dağıtımla ilgili iş akışları oluşturmak için iyi bir yanıttır. İşlem hatlarının ve Azure Machine Learning tasarımcısının yeniden eğitim senaryosuna nasıl uyduğunu görmek için [Azure Machine Learning Designer ile modelleri yeniden eğitme](how-to-retrain-designer.md) . 
 
 ## <a name="automate-the-ml-lifecycle"></a>ML yaşam döngüsünü otomatikleştirin 
 

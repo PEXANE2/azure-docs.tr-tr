@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276771"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894727"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
@@ -50,8 +50,8 @@ Bilinen güvenli uygulamalar listesini tanımlayarak ve başka bir şey yürüt�
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Genel kullanılabilirlik|
-|Fiyat|Standart katmanı|
+|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Desteklenen makineler:|![Evet ](./media/icons/yes-icon.png) Azure ve Windows ve Linux çalıştıran Azure dışı makineler<br>![Evet ](./media/icons/yes-icon.png) [Azure yay](https://docs.microsoft.com/azure/azure-arc/) makineleri|
 |Gerekli roller ve izinler:|**Güvenlik okuyucu** ve **okuyucu** rolleri hem grupları hem de bilinen güvenli uygulamaların listesini görüntüleyebilir<br>**Katkıda bulunan** ve **Güvenlik yönetici** rolleri, grupları ve bilinen güvenli uygulamaların listesini düzenleyebilir|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
@@ -65,7 +65,9 @@ Güvenlik Merkezi, aboneliklerinizde düzenli olarak benzer bir uygulama kümesi
 
 Öneriyi seçin ya da Uyarlamalı uygulama denetimleri sayfasını açarak önerilen bilinen güvenli uygulamalar ve makine gruplarının listesini görüntüleyin.
 
-1. Güvenlik Merkezi 'nin menüsünde, **Uyarlamalı uygulama denetimleri**' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri**' ni seçin.
+
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Azure panosundan Uyarlamalı uygulama denetimleri açma" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     **Uyarlamalı uygulama denetimleri** sayfası, VM 'leriniz aşağıdaki sekmelerde gruplandırılarak açılır:
 
@@ -86,7 +88,7 @@ Güvenlik Merkezi, aboneliklerinizde düzenli olarak benzer bir uygulama kümesi
       - Bu, bir GPO veya yerel güvenlik ilkesi tarafından etkinleştirilen önceden var olan [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) ilkesi olan bir Windows makinesidir
 
       > [!TIP]
-      > Güvenlik Merkezi 'nin makine grubu başına benzersiz önerilerini tanımlamak için en az iki haftalık veri olması gerekir. Kısa süre önce oluşturulmuş olan veya standart katmanla en son etkinleştirilen aboneliklere ait olan makineler, **öneri yok** sekmesi altında görünür.
+      > Güvenlik Merkezi 'nin makine grubu başına benzersiz önerilerini tanımlamak için en az iki haftalık veri olması gerekir. Kısa süre önce oluşturulmuş olan veya Azure Defender ile yalnızca son etkinleştirilen aboneliklere ait olan makineler, **öneri yok** sekmesi altında görünür.
 
 
 1. **Önerilen** sekmeyi açın. Önerilen izin verilenler listelerine sahip makine grupları görüntülenir.
@@ -121,7 +123,7 @@ Kuruluşunuzdaki bilinen değişiklikler nedeniyle bir makine grubu için izin v
 
 Bir makine grubunun kurallarını düzenlemek için:
 
-1. Güvenlik Merkezi 'nin menüsünde, **Uyarlamalı uygulama denetimleri**' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri**' ni seçin.
 
 1. **Yapılandırılan** sekmesinden, düzenlemek istediğiniz kurala sahip grubu seçin.
 
@@ -169,7 +171,7 @@ Sorunları düzeltmek için:
 
 ## <a name="audit-alerts-and-violations"></a>Denetim uyarıları ve ihlalleri
 
-1. Güvenlik Merkezi 'nin menüsünde, **Uyarlamalı uygulama denetimleri**' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri**' ni seçin.
 
 1. Son uyarıları olan makineleri içeren grupları görmek için, **yapılandırılan** sekmede listelenen grupları gözden geçirin.
 
@@ -184,6 +186,8 @@ Sorunları düzeltmek için:
 ## <a name="move-a-machine-from-one-group-to-another"></a>Bir makineyi bir gruptan diğerine taşıma
 
 Bir makineyi bir gruptan diğerine taşıdığınızda, uygulanan uygulama denetim ilkesi, onu taşıdığınız grubun ayarlarına değişir. Ayrıca, bir makineyi yapılandırılmış bir gruptan yapılandırılmamış bir gruba taşıyabilirsiniz, böylece makineye uygulanan uygulama denetim kuralları da kaldırılır.
+
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri**' ni seçin.
 
 1. **Uyarlamalı uygulama denetimleri** sayfasında, **yapılandırılan** sekmesinden, taşınacak makineyi içeren grubu seçin.
 

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6af23f566e8768dd1213095402b7af029d494476
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076043"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892553"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure yay bulut olağanüstü durum kurtarma
+
+**Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
 Bu makalede, Azure Spring Cloud uygulamalarınızı kapalı kalma süresi yaşamadan korumak için kullanabileceğiniz bazı stratejiler açıklanmaktadır.  Bölgesel felaketlerden kaynaklanan hiçbir bölge veya veri merkezi kesinti yaşar, ancak dikkatli bir planlama, müşterilerinizin etkilerini hafifletmeye başlayabilir.
 
@@ -44,14 +46,14 @@ Birden çok bölgede Azure Spring Cloud uygulamalarınız varsa, her bölgedeki 
 | Hizmet Adı | Konum | Uygulama |
 |--|--|--|
 | hizmet-örnek-a | Doğu ABD | Ağ Geçidi/kimlik doğrulama-hizmet/hesap-hizmet |
-| hizmet-örnek-b | Batı Avrupa | Ağ Geçidi/kimlik doğrulama-hizmet/hesap-hizmet |
+| hizmet-örnek-b | West Europe | Ağ Geçidi/kimlik doğrulama-hizmet/hesap-hizmet |
 
 2. Hizmet için özel etki alanı ayarla özel etki alanı [belgeyi](spring-cloud-tutorial-custom-domain.md) izleyerek bu iki mevcut hizmet örneği için özel etki alanı ayarlayın. Başarılı olduktan sonra, her iki hizmet örneği de özel etki alanına bağlanır: bcdr-test.contoso.com
 
 3. Traffic Manager ve iki uç nokta oluşturma: [Azure Portal kullanarak Traffic Manager profili oluşturun](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
 
 Traffic Manager profili aşağıda verilmiştir:
-* Traffic Manager DNS adı:`http://asc-bcdr.trafficmanager.net`
+* Traffic Manager DNS adı: `http://asc-bcdr.trafficmanager.net`
 * Uç nokta profilleri: 
 
 | Profil | Tür | Hedef | Öncelik | Özel üstbilgi ayarları |
@@ -62,3 +64,8 @@ Traffic Manager profili aşağıda verilmiştir:
 4. DNS bölgesinde bir CNAME kaydı oluşturun: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net. 
 
 5. Artık ortam tamamen ayarlanmıştır. Müşteriler uygulamaya şu yolla erişebilmelidir: bcdr-test.contoso.com
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın](spring-cloud-quickstart.md)
+ 

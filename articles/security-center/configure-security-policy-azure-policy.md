@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a81b3016f86c6fd7de646ccbdbf533685471ac3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77430950"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894790"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Azure Ilkesinde REST API kullanarak bir güvenlik ilkesi yapılandırma
 
@@ -115,7 +115,7 @@ Bu örnek, bir atamanın nasıl kaldırılacağını gösterir:
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
  ```
 
-## <a name="policy-names-reference"></a>İlke adları başvurusu<a name="policy-names"></a>
+## <a name="policy-names-reference"></a>İlke adları başvurusu <a name="policy-names"></a>
 
 |Güvenlik Merkezi 'nde ilke adı|Azure Ilkesinde görünen ilke adı |İlke etkisi parametre adı|
 |----|----|----|
@@ -124,7 +124,7 @@ Bu örnek, bir atamanın nasıl kaldırılacağını gösterir:
 |Sistem güncelleştirmeleri |Azure Güvenlik Merkezi 'nde eksik sistem güncelleştirmelerini izleme |systemUpdatesMonitoringEffect|
 |Depolama şifrelemesi |Depolama hesapları için eksik blob şifrelemesini denetle |storageEncryptionMonitoringEffect|
 |JıT ağ erişimi |Azure Güvenlik Merkezi 'nde olası ağ tam zamanında (JıT) erişimi izleme |jitNetworkAccessMonitoringEffect |
-|Uyarlamalı uygulama denetimleri |Azure Güvenlik Merkezi 'nde olası uygulama beyaz listesini izleme |adaptiveApplicationControlsMonitoringEffect|
+|Uyarlamalı uygulama denetimleri |Azure Güvenlik Merkezi 'nde olası uygulama izin verme listelerini izle |adaptiveApplicationControlsMonitoringEffect|
 |Ağ güvenlik grupları |Azure Güvenlik Merkezi 'nde izin veren ağ erişimini izleme |networkSecurityGroupsMonitoringEffect| 
 |Güvenlik yapılandırmaları |Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını izleme |systemConfigurationsMonitoringEffect| 
 |Endpoint protection |Azure Güvenlik Merkezi 'nde eksik Endpoint Protection izleme |endpointProtectionMonitoringEffect |

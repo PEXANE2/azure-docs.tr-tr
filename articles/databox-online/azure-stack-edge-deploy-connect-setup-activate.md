@@ -1,6 +1,6 @@
 ---
-title: Azure portal 'de Azure Stack Edge cihazını bağlama, yapılandırma, etkinleştirme öğreticisi | Microsoft Docs
-description: Azure Stack Edge dağıtımı öğreticisi, fiziksel cihazınızı bağlanmanızı, ayarlamanıza ve etkinleştirmenizi sağlar.
+title: Azure portal 'de Azure Stack Edge Pro cihazını bağlama, yapılandırma, etkinleştirme öğreticisi | Microsoft Docs
+description: Azure Stack Edge Pro 'Yu dağıtmaya yönelik öğretici, fiziksel cihazınızı bağlanmanızı, ayarlamanıza ve etkinleştirmenizi sağlar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 5a89125edf6082bbbcbaf139a648c9edc2debf81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84608443"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894254"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>Öğretici: Azure Stack Edge 'i bağlama, ayarlama ve etkinleştirme 
+# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>Öğretici: Azure Stack Edge Pro 'Yu bağlama, ayarlama ve etkinleştirme 
 
-Bu öğreticide, yerel Web Kullanıcı arabirimini kullanarak Azure Stack Edge cihazınızı nasıl bağlayabileceğinizi, ayarlayabileceğinizi ve etkinleştireceğinize ilişkin yönergeler açıklanmaktadır.
+Bu öğreticide, yerel Web Kullanıcı arabirimini kullanarak Azure Stack Edge Pro cihazınızı nasıl bağlayabileceğinizi, ayarlayabileceğinizi ve etkinleştirebileceğiniz açıklanmaktadır.
 
 Kurulum ve etkinleştirme işleminin tamamlanması 20 dakika sürebilir.
 
@@ -29,34 +29,34 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Fiziksel bir cihaza bağlanma
 > * Fiziksel cihazı ayarlama ve etkinleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure Stack Edge cihazınızı yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
+Azure Stack Edge Pro cihazınızı yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
-* Fiziksel cihazı [yükleme Azure Stack Edge](azure-stack-edge-deploy-install.md)bölümünde ayrıntılı olarak yüklediniz.
-* Azure Stack Edge cihazını yönetmek için oluşturduğunuz Azure Stack Edge hizmetinden etkinleştirme anahtarınız vardır. Daha fazla bilgi için, [Azure Stack Edge dağıtmaya hazırlanma](azure-stack-edge-deploy-prep.md)bölümüne gidin.
+* Fiziksel cihazı [yükleme Azure Stack Edge Pro](azure-stack-edge-deploy-install.md)' da ayrıntılı olarak yüklediniz.
+* Azure Stack Edge Pro cihazını yönetmek için oluşturduğunuz Azure Stack Edge hizmetinden etkinleştirme anahtarınız vardır. Daha fazla bilgi için, [Azure Stack Edge Pro 'yu dağıtmaya hazırlanma](azure-stack-edge-deploy-prep.md)bölümüne gidin.
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Yerel Web Kullanıcı arabirimi kurulumuna bağlanma
 
-1. Bilgisayarınızda Ethernet bağdaştırıcısını, 192.168.100.5 ve alt ağ 255.255.255.0 statik IP adresiyle Azure Stack Edge cihazına bağlanacak şekilde yapılandırın.
+1. Bilgisayarınızda Ethernet bağdaştırıcısını, 192.168.100.5 ve alt ağ 255.255.255.0 statik IP adresiyle Azure Stack Edge Pro cihazına bağlanacak şekilde yapılandırın.
 
 2. Bilgisayarınızı cihazınızda bağlantı noktası 1 ' e bağlayın. Cihazınızda bağlantı noktası 1 ' i tanımlamak için aşağıdaki çizimi kullanın.
 
     ![Kabloları takılmış bir cihazın arka yüzü](./media/azure-stack-edge-deploy-install/backplane-cabled.png)
 
-3. Bir tarayıcı penceresi açın ve konumundaki cihazın yerel Web Kullanıcı arabirimine erişin `https://192.168.100.10` .  
-    Bu eylem, cihazı etkinleştirdikten sonra birkaç dakika sürebilir.
+3. Tarayıcı penceresini açın ve `https://192.168.100.10` adresinden cihazın yerel web kullanıcı arabirimine erişin.  
+    Siz cihazı açtıktan sonra bu eylem birkaç dakika sürebilir.
 
-    Bir hata veya Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu belirten bir uyarı görürsünüz.
+    Web sitesinin güvenlik sertifikasında sorun olduğunu belirten bir hata veya uyarı görürsünüz.
    
     ![Web sitesi güvenlik sertifikası hata iletisi](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
 
 4. **Bu Web sayfasına devam et**' i seçin.  
-    Bu adımlar, kullanmakta olduğunuz tarayıcıya bağlı olarak farklılık gösterebilir.
+    Bu adımlar kullandığınız tarayıcıya bağlı olarak değişebilir.
 
-5. Cihazınızın Web Kullanıcı arabiriminde oturum açın. Varsayılan parola *Parola1*' dir. 
+5. Cihazınızın web kullanıcı arabiriminde oturum açın. Varsayılan parola *Parola1*' dir. 
    
-    ![Azure Stack Edge cihaz oturum açma sayfası](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
+    ![Azure Stack Edge Pro cihaz oturum açma sayfası](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. İstem sırasında cihaz yönetici parolasını değiştirin.  
     Yeni parola 8 ile 16 arasında karakter içermelidir. Şu karakterlerden üçünü içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler.
@@ -75,18 +75,18 @@ Panonuz fiziksel cihazı Azure Stack Edge hizmeti ile yapılandırmak ve kaydetm
     ![Yerel Web Kullanıcı arabirimi "Cihaz adı" sayfası](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
 2. Seçim Sol bölmede **ağ ayarları** ' nı seçin ve ardından ayarları yapılandırın.  
-    Fiziksel cihazınızda altı ağ arabirimi vardır. Bağlantı noktası 1 ve bağlantı noktası 2 1 GB/sn ağ arabirimlerdir. Bağlantı noktası 3, bağlantı noktası 4, bağlantı noktası 5 ve bağlantı noktası 6, 10 Gbps ağ arabirimi olarak da kullanılabilen tüm 25 Gbps ağ arabirimlerdir. BAĞLANTı noktası 1 otomatik olarak yalnızca yönetim bağlantı noktası olarak yapılandırılır ve bağlantı noktası 6 ' dan bağlantı noktası 6 ' dan tüm veri bağlantı noktaları bulunur. **Ağ ayarları** sayfası aşağıda gösterildiği gibidir.
+    Fiziksel cihazınızda altı ağ arabirimi vardır. PORT 1 ve PORT 2, 1 Gb/sn'lik ağ arabirimleridir. Bağlantı noktası 3, bağlantı noktası 4, bağlantı noktası 5 ve bağlantı noktası 6, 10 Gbps ağ arabirimi olarak da kullanılabilen tüm 25 Gbps ağ arabirimlerdir. BAĞLANTı noktası 1 otomatik olarak yalnızca yönetim bağlantı noktası olarak yapılandırılır ve bağlantı noktası 6 ' dan bağlantı noktası 6 ' dan tüm veri bağlantı noktaları bulunur. **Ağ ayarları** sayfası aşağıda gösterildiği gibidir.
     
     ![Yerel Web Kullanıcı arabirimi "ağ ayarları" sayfası](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
-    Ağ ayarlarını yapılandırırken şunları göz önünde bulundurun:
+    Ağ ayarlarını yapılandırırken şunları aklınızda bulundurun:
 
    - Ortamınızda DHCP etkinse, ağ arabirimleri otomatik olarak yapılandırılır. IP adresi, alt ağ, ağ geçidi ve DNS otomatik olarak atanır.
    - DHCP etkinleştirilmemişse, gerekirse statik IP 'Ler atayabilirsiniz.
    - Ağ arabiriminizi IPv4 olarak yapılandırabilirsiniz.
 
      >[!NOTE] 
-     > Cihaza bağlanmak için başka bir IP adresiniz yoksa, ağ arabiriminin yerel IP adresini static 'ten DCHP 'e geçmenizi öneririz. Bir ağ arabirimi kullanılıyorsa ve DHCP 'ye geçerseniz, DHCP adresini belirlemenin bir yolu yoktur. Bir DHCP adresine geçiş yapmak istiyorsanız, cihaz hizmete kaydolduktan sonra bekleyin ve sonra değiştirin. Daha sonra, hizmetinize yönelik Azure portal **cihaz özelliklerindeki** tüm bağdaştırıcıların IP 'lerini görüntüleyebilirsiniz.
+     > Cihaza bağlanmak için başka bir IP adresiniz yoksa, ağ arabiriminin yerel IP adresini statikten DCHP’ye değiştirmeniz önerilmez. Tek bir ağ arabirimi kullanıyorsanız ve DHCP’ye geçiyorsanız, DHCP adresini belirlemenin hiçbir yolu yoktur. DHCP adresini değiştirmek istiyorsanız cihazın hizmete kaydolmasını bekleyin ve ondan sonra değiştirin. Daha sonra, hizmetinize yönelik Azure portal **cihaz özelliklerindeki** tüm bağdaştırıcıların IP 'lerini görüntüleyebilirsiniz.
 
 3. Seçim Sol bölmede **Web proxy ayarları**' nı seçin ve ardından Web Proxy sunucunuzu yapılandırın. Web proxy yapılandırması isteğe bağlı olsa da, bir Web Proxy kullanıyorsanız, bunu yalnızca bu sayfada yapılandırabilirsiniz.
    
@@ -94,9 +94,9 @@ Panonuz fiziksel cihazı Azure Stack Edge hizmeti ile yapılandırmak ve kaydetm
    
    **Web proxy ayarları** sayfasında, aşağıdakileri yapın:
    
-   a. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://host-IP address or FQDN:Port number` . HTTPS URL 'Leri desteklenmez.
+   a. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://host-IP address or FQDN:Port number` . HTTPS URL'leri desteklenmez.
 
-   b. **Kimlik doğrulaması**altında **hiçbiri** veya **NTLM**' yi seçin. İşlem ' ı etkinleştirip Azure Stack Edge cihazınızda IoT Edge modülünü kullanacaksanız, Web proxy kimlik doğrulamasını **none**olarak ayarlamanızı öneririz. **NTLM** desteklenmiyor.
+   b. **Kimlik doğrulaması**altında **hiçbiri** veya **NTLM**' yi seçin. İşlem ve Azure Stack Edge Pro cihazınızda IoT Edge modülü kullanıyorsanız, Web proxy kimlik doğrulamasını **none**olarak ayarlamanızı öneririz. **NTLM** desteklenmiyor.
 
    c. Kimlik doğrulaması kullanıyorsanız, bir Kullanıcı adı ve parola girin.
 
@@ -104,8 +104,8 @@ Panonuz fiziksel cihazı Azure Stack Edge hizmeti ile yapılandırmak ve kaydetm
 
    > [!NOTE]
    > Proxy-otomatik yapılandırma (PAC) dosyaları desteklenmez. PAC dosyası, Web tarayıcılarının ve diğer Kullanıcı aracılarının belirli bir URL 'YI getirmek için uygun proxy sunucusunu (erişim yöntemi) otomatik olarak nasıl seçebileceğini tanımlar.
-   > Ara sunucunun sertifikası güvenilir olmadığından, tüm trafiği kesmeye ve okumaya (sonra her şeyi kendi sertifikalarıyla yeniden imzalamaya) yönelik proxy 'ler uyumlu değildir.
-   > Genellikle saydam proxy 'ler Azure Stack Edge ile iyi çalışır.
+   > Tüm trafiği kesmeye ve okumaya (sonra da kendi sertifikasıyla yeniden imzalamaya) çalışan ara sunucular uyumlu değildir çünkü ara sunucunun sertifikası güvenilir değildir.
+   > Genellikle saydam proxy 'ler Azure Stack Edge Pro ile iyi çalışır.
 
 4. Seçim Sol bölmede **zaman ayarları**' nı seçin ve ardından cihazınız için saat dilimini ve birincil ve ikincil NTP sunucularını yapılandırın.  
     Cihazınızın bulut hizmeti sağlayıcılarınız ile kimlik doğrulaması yapabilmesi için zaman eşitlemesini gerektiğinden NTP sunucuları gereklidir.
@@ -133,7 +133,7 @@ Panonuz fiziksel cihazı Azure Stack Edge hizmeti ile yapılandırmak ve kaydetm
 
 6. Sol bölmede **bulut ayarları**' nı seçin ve ardından Azure Portal Azure Stack Edge hizmeti ile cihazınızı etkinleştirin.
     
-    1. **Etkinleştirme anahtarı** kutusuna Azure Stack Edge için [etkinleştirme anahtarını al](azure-stack-edge-deploy-prep.md#get-the-activation-key) bölümünde aldığınız etkinleştirme anahtarını girin.
+    1. **Etkinleştirme anahtarı** kutusuna Azure Stack Edge Pro için [etkinleştirme anahtarını al](azure-stack-edge-deploy-prep.md#get-the-activation-key) ' da aldığınız etkinleştirme anahtarını girin.
     2. **Uygula**’yı seçin.
        
         ![Yerel Web Kullanıcı arabirimi "bulut ayarları" sayfası](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
@@ -158,7 +158,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Fiziksel bir cihaza bağlanma
 > * Fiziksel cihazı ayarlama ve etkinleştirme
 
-Azure Stack Edge cihazınızla veri aktarmayı öğrenmek için bkz.:
+Azure Stack Edge Pro cihazınızla veri aktarmayı öğrenmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge ile veri aktarın](./azure-stack-edge-deploy-add-shares.md).
+> [Azure Stack Edge Pro ile veri aktarma](./azure-stack-edge-deploy-add-shares.md).

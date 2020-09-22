@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 6d9d9f2d7363217ef4e9b13b44d3665af33cb8ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661795"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893556"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
 
@@ -41,7 +41,7 @@ Git CLı 'nın nasıl kullanılacağına ilişkin bir kılavuz için [burada bur
 
 Python SDK 'dan veya CLı Machine Learning bir eğitim çalıştırması gönderdiğinizde, modeli eğitmek için gereken dosyalar çalışma alanınıza yüklenir. `git`Komut geliştirme ortamınızda kullanılabiliyorsa, karşıya yükleme işlemi, dosyaların bir git deposunda saklanıp saklanmadığını denetlemek için onu kullanır. Bu durumda, git deponuzdaki bilgiler, eğitim çalıştırmasının bir parçası olarak da yüklenir. Bu bilgiler, eğitim çalışması için aşağıdaki özelliklerde depolanır:
 
-| Özellik | Değeri almak için kullanılan git komutu | Description |
+| Özellik | Değeri almak için kullanılan git komutu | Açıklama |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Deponuzdan kopyalanan URI. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Deponuzdan kopyalanan URI. |
@@ -70,12 +70,10 @@ Git bilgileri bir eğitim çalışmasının özelliklerinde depolanır. Azure po
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin.
+1. [Studio portalından](https://ml.azure.com), çalışma alanınızı seçin.
 1. __Denemeleri__öğesini seçin ve denemeleri birini seçin.
 1. __Çalıştırma numarası__ sütunundan çalıştırmaların birini seçin.
-1. __Günlükler__' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __ ### \_ Azure__ile başlayan bağlantıyı seçin.
-
-    ![Portalda # # #_azure girişi](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
+1. __Çıktılar + Günlükler__' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __ ### \_ Azure__ile başlayan bağlantıyı seçin.
 
 Günlüğe kaydedilen bilgiler aşağıdaki JSON 'a benzer bir metin içerir:
 
