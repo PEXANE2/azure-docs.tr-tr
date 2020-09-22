@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2551a3c860dbdf27e7c9473e88c3a3293f575faa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769802"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883952"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama
 
@@ -28,7 +28,7 @@ Bu konu başlığı altında, kaynaklarınızı korumak için aldığınız uyar
 * Güvenlik Merkezi 'nin nasıl uyarı üretdiğine ilişkin genel bakış için bkz. [Azure Güvenlik Merkezi 'nin tehditleri nasıl algıladığı ve yanıt verdiği](security-center-alerts-overview.md).
 
 > [!NOTE]
-> Gelişmiş algılamaları etkinleştirmek için Azure Güvenlik Merkezi Standart sürümüne yükseltme yapın. Ücretsiz deneme sürümü mevcuttur. Yükseltmek için [Güvenlik İlkesi](tutorial-security-policy.md)'nde Fiyatlandırma Katmanı’nı seçin. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi fiyatlandırması](security-center-pricing.md).
+> Gelişmiş algılamaları etkinleştirmek için Azure Defender 'ı etkinleştirin. Ücretsiz deneme sürümü mevcuttur. Yükseltmek için [Güvenlik İlkesi](tutorial-security-policy.md)'nde Fiyatlandırma Katmanı’nı seçin. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi fiyatlandırması](security-center-pricing.md).
 
 ## <a name="what-are-security-alerts"></a>Güvenlik uyarıları nedir?
 Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları azaltmak için Azure kaynaklarınızdan, ağınızdan ve güvenlik duvarı ve uç nokta koruma çözümleri gibi bağlı iş ortağı çözümlerinden günlük verilerini otomatik olarak toplar, çözümler ve tümleştirir. Öncelikli güvenlik uyarıları listesi, sorunu hızlıca araştırmanız gereken bilgiler ve saldırıyı düzeltme hakkındaki önerilerle birlikte Güvenlik Merkezi'nde gösterilir.
@@ -38,7 +38,7 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
 
 ## <a name="manage-your-security-alerts"></a>Güvenlik uyarılarınızı yönetme
 
-1. Güvenlik Merkezi panosunda, uyarıları görüntülemek ve genel bakış için **tehdit koruması** kutucuğuna bakın.
+1. Güvenlik Merkezi panosunda, uyarıları görüntülemek ve genel bakış için  **tehdit koruması** kutucuğuna bakın.
 
     ![Güvenlik Merkezi'nde güvenlik uyarıları kutucuğu](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
 
@@ -64,7 +64,7 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
      
     ![Güvenlik uyarıları hakkında ne yapacaklarıyla ilgili öneriler](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    Sağ bölmedeki **eylem al** sekmesi de bulunur. güvenlik uyarısıyla ilgili daha fazla eylem gerçekleştirmek için bu sekmeyi kullanın. Şöyle eylemler:
+    Sağ bölmedeki **eylem al** sekmesi de bulunur. Güvenlik uyarısıyla ilgili daha fazla eylem gerçekleştirmek için bu sekmeyi kullanın. Şöyle eylemler:
     - *Tehdidi azaltma* -bu güvenlik uyarısı için el ile düzeltme adımları sağlar
     - *Gelecekteki saldırıları önleme* -saldırı yüzeyini azaltmaya, güvenlik duruşunu artırmaya ve bu nedenle gelecekteki saldırıları önlemeye yardımcı olmak için güvenlik önerileri sağlar
     - *Otomatik yanıtı Tetikle* -bu güvenlik uyarısı için bir mantıksal uygulamayı bir yanıt olarak tetikleme seçeneği sağlar

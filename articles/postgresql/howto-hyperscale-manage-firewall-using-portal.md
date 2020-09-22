@@ -7,40 +7,41 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
-ms.openlocfilehash: 35d5b101f4ad5fe4498c0566227c5f0a9d102b60
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d369614357bd62dc13073f650fbe5ce358d6dc6e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032584"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884333"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nın güvenlik duvarı kurallarını yönetme-hiper ölçek (Citus)
 Sunucu düzeyinde güvenlik duvarı kuralları, belirtilen IP adreslerinden veya IP adresi aralığından bir Hyperscale (Citus) düzenleyici düğümüne erişimi yönetmek için kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - Bir sunucu grubu [PostgreSQL Için Azure veritabanı – Hyperscale (Citus) sunucu grubu oluşturun](quickstart-create-hyperscale-portal.md).
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure portalında sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 
 > [!NOTE]
-> Bu ayarlar, PostgreSQL için Azure veritabanı-hiper ölçek (Citus) sunucu grubu oluşturma sırasında da erişilebilir. **Ağ** sekmesinde, **ortak erişim**' e tıklayın.
-> ![Azure portal-ağ sekmesi](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
+> Bu ayarlar, PostgreSQL için Azure veritabanı-hiper ölçek (Citus) sunucu grubu oluşturma sırasında da erişilebilir. **Ağ** sekmesinde, **genel uç nokta**' ı tıklatın.
+
+> :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png" alt-text="Azure portal-ağ sekmesi":::
 
 1. PostgreSQL sunucu grubu sayfasında, güvenlik başlığı altında, güvenlik duvarı kurallarını açmak için **ağ** ' ı tıklatın.
 
-   ![Azure portal-ağ ' a tıklayın](./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure portal-ağ ' a tıklayın":::
 
 2. Azure sistemi tarafından algılanan şekilde, bilgisayarınızın genel IP adresiyle bir güvenlik duvarı kuralı oluşturmak için **geçerli ISTEMCI IP adresi ekle** ' ye tıklayın.
 
-   ![Azure portal-istemci IP 'si Ekle ' ye tıklayın](./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure portal-istemci IP 'si Ekle ' ye tıklayın":::
 
 Alternatif olarak, **+ 0.0.0.0-255.255.255.255** (B seçeneğinin sağında) öğesine TıKLADıĞıNıZDA yalnızca IP 'niz olamaz, ancak düzenleyici düğümünün 5432 numaralı bağlantı noktasına erişmek için internet 'in tamamına izin verir. Bu durumda, istemcilerin kümeyi kullanmak için yine de doğru Kullanıcı adı ve parolayla oturum açması gerekir. Bununla birlikte, yalnızca kısa süreler için ve yalnızca üretim dışı veritabanları için dünya genelindeki erişime izin vermeyi öneririz.
 
 3. Yapılandırmayı kaydetmeden önce IP adresinizi doğrulayın. Bazı durumlarda Azure portal tarafından gözlenen IP adresi, internet ve Azure sunucularına erişirken kullanılan IP adresinden farklıdır. Bu nedenle, kural işlevini beklendiği gibi yapmak için başlangıç IP 'sini ve bitiş IP 'sini değiştirmeniz gerekebilir.
    Kendi IP adresinizi denetlemek için bir arama altyapısı veya başka bir çevrimiçi araç kullanın. Örneğin, "IP nedir?" ifadesini aratın.
 
-   ![IP 'im nedir için Bing arama](./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="IP 'im nedir için Bing arama":::
 
 4. Ek adres aralıkları ekleyin. Güvenlik duvarı kurallarında, tek bir IP adresi veya bir adres aralığı belirtebilirsiniz. Kuralı tek bir IP adresiyle sınırlandırmak istiyorsanız, başlangıç IP 'si ve bitiş IP 'si için alana aynı adresi yazın. Güvenlik duvarının açılması, yöneticilerin, kullanıcıların ve uygulamaların 5432 numaralı bağlantı noktasındaki düzenleyici düğümüne erişmesine olanak sağlar.
 

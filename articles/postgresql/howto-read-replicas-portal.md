@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 623b9c1eccefe5d7e6027ddbed61c89720d98e9a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274552"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884486"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme-tek sunucu Azure portal
 
@@ -41,20 +41,20 @@ Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması g
 
 3. Azure çoğaltma desteği en az **çoğaltma**olarak ayarlanmamışsa, ayarlayın. **Kaydet**’i seçin.
 
-   ![PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet](./media/howto-read-replicas-portal/set-replica-save.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
 
 4. **Evet**' i seçerek değişikliği uygulamak için sunucuyu yeniden başlatın.
 
-   ![PostgreSQL için Azure veritabanı-çoğaltma-yeniden başlatmayı Onayla](./media/howto-read-replicas-portal/confirm-restart.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-restart.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-yeniden başlatmayı Onayla":::
 
 5. İşlem tamamlandıktan sonra iki Azure portal bildirimi alacaksınız. Sunucu parametresini güncelleştirmek için bir bildirim vardır. Sunucu yeniden başlatması için hemen sonraki bir bildirim daha vardır.
 
-   ![Başarı bildirimleri](./media/howto-read-replicas-portal/success-notifications.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/success-notifications.png" alt-text="Başarı bildirimleri":::
 
 6. Çoğaltma araç çubuğunu güncelleştirmek için Azure portal sayfasını yenileyin. Artık bu sunucu için okuma çoğaltmaları oluşturabilirsiniz.
    
 
-## <a name="create-a-read-replica"></a>Okuma çoğaltması oluşturma
+## <a name="create-a-read-replica"></a>Okuma amaçlı çoğaltma oluşturma
 Bir okuma çoğaltması oluşturmak için aşağıdaki adımları izleyin:
 
 1. Ana sunucu olarak kullanılacak PostgreSQL için mevcut bir Azure veritabanı sunucusu seçin. 
@@ -63,15 +63,15 @@ Bir okuma çoğaltması oluşturmak için aşağıdaki adımları izleyin:
 
 3. **Çoğaltma ekle**' yi seçin.
 
-   ![Çoğaltma ekleme](./media/howto-read-replicas-portal/add-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/add-replica.png" alt-text="Çoğaltma ekleme":::
 
 4. Okuma çoğaltması için bir ad girin. 
 
-    ![Çoğaltmayı adlandırın](./media/howto-read-replicas-portal/name-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/name-replica.png" alt-text="Çoğaltmayı adlandırın":::
 
 5. Çoğaltma için bir konum seçin. Varsayılan konum, ana sunucu ile aynıdır.
 
-    ![Bir konum seçin](./media/howto-read-replicas-portal/location-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="Bir konum seçin":::
 
    > [!NOTE]
    > İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
@@ -80,7 +80,7 @@ Bir okuma çoğaltması oluşturmak için aşağıdaki adımları izleyin:
 
 Okuma çoğaltması oluşturulduktan sonra **çoğaltma** penceresinden görüntülenebilir:
 
-![Çoğaltma penceresinde yeni çoğaltmayı görüntüleme](./media/howto-read-replicas-portal/list-replica.png)
+:::image type="content" source="./media/howto-read-replicas-portal/list-replica.png" alt-text="Çoğaltma penceresinde yeni çoğaltmayı görüntüleme":::
  
 
 > [!IMPORTANT]
@@ -102,15 +102,15 @@ Azure portal bir ana sunucu ile okuma çoğaltması arasında çoğaltmayı durd
 
 3. Çoğaltmanın durdurulacağı çoğaltma sunucusunu seçin.
 
-   ![Çoğaltmayı seçin](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Çoğaltmayı seçin":::
  
 4. **Çoğaltmayı durdur**' u seçin.
 
-   ![Çoğaltmayı Durdur ' u seçin](./media/howto-read-replicas-portal/select-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-stop-replication.png" alt-text="Çoğaltmayı Durdur ' u seçin":::
  
 5. Çoğaltmayı durdurmak için **Tamam ' ı** seçin.
 
-   ![Çoğaltmayı durdurmayı Onayla](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-stop-replication.png" alt-text="Çoğaltmayı durdurmayı Onayla":::
  
 
 ## <a name="delete-a-master-server"></a>Ana sunucuyu silme
@@ -125,11 +125,11 @@ Azure portal bir sunucuyu silmek için şu adımları izleyin:
 
 2. Sunucunun **genel bakış** sayfasını açın. **Sil**’i seçin.
 
-   ![Sunucu genel bakış sayfasında ana sunucuyu silmek için seçin](./media/howto-read-replicas-portal/delete-server.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-server.png" alt-text="Sunucu genel bakış sayfasında ana sunucuyu silmek için seçin":::
  
 3. Silinecek ana sunucunun adını girin. Ana sunucuyu silmeyi onaylamak için **Sil** ' i seçin.
 
-   ![Ana sunucuyu Silmeyi Onayla](./media/howto-read-replicas-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete.png" alt-text="Ana sunucuyu Silmeyi Onayla":::
  
 
 ## <a name="delete-a-replica"></a>Bir çoğaltmayı sil
@@ -137,7 +137,7 @@ Bir ana sunucuyu silme işlemine benzer bir okuma çoğaltmasını silebilirsini
 
 - Azure portal, okuma çoğaltması için **genel bakış** sayfasını açın. **Sil**’i seçin.
 
-   ![Çoğaltmaya genel bakış sayfasında, çoğaltmayı silmek için seçin](./media/howto-read-replicas-portal/delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-replica.png" alt-text="Çoğaltmaya genel bakış sayfasında, çoğaltmayı silmek için seçin":::
  
 Ayrıca, aşağıdaki adımları izleyerek **çoğaltma** penceresinde okuma çoğaltmasını silebilirsiniz:
 
@@ -147,15 +147,15 @@ Ayrıca, aşağıdaki adımları izleyerek **çoğaltma** penceresinde okuma ço
 
 3. Silinecek okuma çoğaltmasını seçin.
 
-   ![Silinecek çoğaltmayı seçin](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Silinecek çoğaltmayı seçin":::
  
 4. **Çoğaltmayı Sil**' i seçin.
 
-   ![Çoğaltmayı Sil ' i seçin](./media/howto-read-replicas-portal/select-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-delete-replica.png" alt-text="Çoğaltmayı Sil ' i seçin":::
  
 5. Silinecek çoğaltmanın adını girin. Çoğaltmanın silinmesini onaylamak için **Sil** ' i seçin.
 
-   ![Te çoğaltmasını Silmeyi Onayla](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete-replica.png" alt-text="Te çoğaltmasını Silmeyi Onayla":::
  
 
 ## <a name="monitor-a-replica"></a>Bir çoğaltmayı izleme
@@ -168,7 +168,7 @@ Okuma çoğaltmalarını izlemek için iki ölçüm mevcuttur.
 
 2.  **Ölçümler**’i seçin. **Ölçümler** penceresinde **çoğaltmalar genelinde en fazla gecikme**' yı seçin.
 
-    ![Çoğaltmalar genelinde en fazla gecikme 'yi izleme](./media/howto-read-replicas-portal/select-max-lag.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/select-max-lag.png" alt-text="Çoğaltmalar genelinde en fazla gecikme 'yi izleme":::
  
 3.  Toplamadır **,** **en fazla**' yı seçin.
 
@@ -180,7 +180,7 @@ Okuma çoğaltmalarını izlemek için iki ölçüm mevcuttur.
 
 2. **Ölçümler**’i seçin. **Ölçümler** penceresinde **çoğaltma gecikmesi**' nı seçin.
 
-   ![Çoğaltma gecikmesini izleme](./media/howto-read-replicas-portal/select-replica-lag.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica-lag.png" alt-text="Çoğaltma gecikmesini izleme":::
  
 3. Toplamadır **,** **en fazla**' yı seçin. 
  

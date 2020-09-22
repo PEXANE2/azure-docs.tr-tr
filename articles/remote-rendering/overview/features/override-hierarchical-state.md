@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3f032ca973a188bf294155c73de3ca84f6ee30f
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: c098dc6b1d3b41a41246857f8a353dd4f5dfcef1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024409"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884171"
 ---
 # <a name="hierarchical-state-override"></a>Hiyerarşik durumu geçersiz kılma
 
@@ -45,6 +45,10 @@ Geçersiz kılınabilen sabit durumlar kümesi şunlardır:
   ![Seçili parçayı vurgulamak için kullanılan ana hat seçeneği](./media/selection-outline.png)
 
 * **`DisableCollision`**: Geometri, [uzamsal sorgulardan](spatial-queries.md)muaf tutulur. **`Hidden`** Bayrak, çakışma durumu bayrağını etkilemez, bu nedenle bu iki bayrak genellikle birlikte ayarlanır.
+
+* **`UseCutPlaneFilterMask`**: Kesme düzlemi seçimini denetlemek için tek bir filtre bit maskesi kullanın. Bu bayrak, tek tek filtre maskesinin kullanılması veya üst öğesinden devralınıp alınmayacağını belirler. Filtre bit maskesinin kendisi özelliği aracılığıyla ayarlanır `CutPlaneFilterMask` . Filtrelemenin nasıl çalıştığı hakkında ayrıntılı bilgi için, [Seçmeli kesme düzlemleri paragrafına](cut-planes.md#selective-cut-planes)bakın.
+![Seçmeli kesme düzlemleri](./media/selective-cut-planes.png)
+
 
 > [!TIP]
 > Tam bir alt grafiğin görünürlük ve uzamsal sorgularını kapatmaya alternatif olarak, `enabled` bir oyun nesnesinin durumu değiştirilebilir. Bir hiyerarşi devre dışıysa, bunun üzerinde tercih vardır `HierarchicalStateOverrideComponent` .

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 7683d3472d382707de538874035c8448f589bf82
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9ff62a568af4f60318ba0e5bdf2144bb43c9d2b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110819"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884307"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal kullanarak, PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme-tek sunucu
 
@@ -28,7 +28,7 @@ Sunucu oluşturma sırasında, **fiyatlandırma katmanı** penceresinde yerel ol
 
 Azure portal aracılığıyla bir sunucu oluştururken, **fiyatlandırma katmanı** penceresi sunucunuz Için **yerel olarak yedekli** veya **coğrafi olarak yedekli** yedeklemeleri seçtiğiniz yerdir. Bu pencere Ayrıca, **yedekleme bekletme dönemini** (gün sayısı cinsinden) sunucu yedeklemelerinin ne kadar süreyle depolandığını seçtiğiniz yerdir.
 
-   ![Fiyatlandırma Katmanı-yedek yedeklilik seçin](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
 
 Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı sunucu hızlı başlangıç](quickstart-create-server-database-portal.md).
 
@@ -37,7 +37,7 @@ Bir sunucunun yedekleme saklama süresi aşağıdaki adımlarla değiştirilebil
 2. PostgreSQL için Azure Veritabanı sunucunuzu seçin. Bu eylem **genel bakış** sayfasını açar.
 3. Menüde, **Ayarlar**' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
 Aşağıdaki ekran görüntüsünde 34 güne yükselmiştir.
-![Yedekleme bekletme süresi arttı](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Yedekleme bekletme süresi arttı":::
 
 4. Değişikliği onaylamak için **Tamam** ' ı tıklatın.
 
@@ -53,11 +53,11 @@ Aşağıdaki adımlar örnek sunucuyu bir zaman noktasına geri yükler:
 
 2. Sunucunun **genel bakış** sayfasının araç çubuğunda **geri yükle**' yi seçin.
 
-   ![PostgreSQL için Azure veritabanı-genel bakış-geri yükleme düğmesi](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="PostgreSQL için Azure veritabanı-genel bakış-geri yükleme düğmesi":::
 
 3. Geri yükleme formunu gereken bilgilerle doldurun:
 
-   ![PostgreSQL için Azure veritabanı-geri yükleme bilgileri](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="PostgreSQL için Azure veritabanı-geri yükleme bilgileri":::
    - **Geri yükleme noktası**: geri yüklemek istediğiniz zaman noktasını seçin.
    - **Hedef sunucu**: yeni sunucu için bir ad sağlayın.
    - **Konum**: bölgeyi seçemezsiniz. Varsayılan olarak, kaynak sunucu ile aynıdır.
