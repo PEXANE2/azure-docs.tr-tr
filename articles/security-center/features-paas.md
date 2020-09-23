@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 77bf0f4cd60ba6e85763334a4d864975945ec2c3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042365"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894774"
 ---
-# <a name="feature-coverage-for-azure-paas-services"></a>Azure PaaS hizmetleri için özellik kapsamı<a name="paas-services"></a>
+# <a name="feature-coverage-for-azure-paas-services"></a>Azure PaaS hizmetleri için özellik kapsamı <a name="paas-services"></a>
 
 Aşağıdaki tabloda, desteklenen Azure PaaS kaynakları için Azure Güvenlik Merkezi özelliklerinin kullanılabilirliği gösterilmektedir.
 
-|Hizmet|Öneriler (ücretsiz)|Güvenlik uyarıları (Standart)|Güvenlik açığı değerlendirmesi (Standart)|
+|Hizmet|Öneriler (ücretsiz)|Güvenlik uyarıları (Azure Defender)|Güvenlik açığı değerlendirmesi (Azure Defender)|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
 |Azure Otomasyonu hesabı|✔|-|-|
@@ -41,7 +41,7 @@ Aşağıdaki tabloda, desteklenen Azure PaaS kaynakları için Azure Güvenlik M
 |PostgreSQL için Azure veritabanı *|✔|✔|-|
 |Azure Event Hubs ad alanı|✔|-|-|
 |Azure İşlevleri uygulaması|✔|-|-|
-|Azure Key Vault|✔|✔ *|-|
+|Azure Key Vault|✔|✔|-|
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
@@ -54,6 +54,6 @@ Aşağıdaki tabloda, desteklenen Azure PaaS kaynakları için Azure Güvenlik M
 |Azure Aboneliği|✔ **|✔|-|
 |Azure Sanal Ağ</br> (alt ağlar, NIC 'ler ve ağ güvenlik grupları dahil)|✔|-|-|
 
-\*Bu özellikler Şu anda önizlemede destekleniyor.
+\* Bu özellikler Şu anda önizlemede destekleniyor.
 
-\*\*Azure Active Directory (Azure AD) önerileri yalnızca standart abonelikler için kullanılabilir.
+\*\* Azure Active Directory (Azure AD) önerileri yalnızca Azure Defender 'ın etkinleştirildiği abonelikler için kullanılabilir.

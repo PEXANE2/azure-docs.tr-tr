@@ -12,15 +12,15 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6d0d626fe0720500b436aea73d6df7c8bb08e004
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fc9dee3d4ace5f70c4238cdce5c57696b131bfa9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649380"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897320"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true), [Machine Learning CLI](reference-azure-machine-learning-cli.md)ve [Azure Machine Learning Studio](https://ml.azure.com) , eğitim ve deneme için çalıştırmalarını izlemek, düzenlemek ve yönetmek için çeşitli yöntemler sağlar.
 
@@ -31,7 +31,7 @@ Bu makalede aşağıdaki görevlerin örnekleri gösterilmektedir:
 * Alt çalıştırmalar oluşturun.
 * Etiket ve bulma çalıştırmaları.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki öğeler gerekir:
 
@@ -110,7 +110,7 @@ Denemenizin çalışmasını başlatmak için aşağıdaki adımları kullanın:
 
 ### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'yu kullanma
 
-Tasarımcı 'da (Önizleme) bir işlem hattı çalıştırması başlatmak için aşağıdaki adımları kullanın:
+Tasarımcıda bir işlem hattı çalıştırması göndermeye başlamak için aşağıdaki adımları kullanın:
 
 1. İşlem hatlarınız için varsayılan bir işlem hedefi ayarlayın.
 
@@ -384,7 +384,7 @@ list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"
 
 #### <a name="using-the-cli"></a>CLı 'yi kullanma
 
-Azure CLı, özellikleri ve etiketleri temel alarak çalıştırmaları filtrelemek için kullanılabilen [Jmespath](http://jmespath.org) sorgularını destekler. Azure CLı ile JMESPath sorgusu kullanmak için, `--query` parametresini parametresiyle belirtin. Aşağıdaki örneklerde Özellikler ve Etiketler kullanılarak temel sorgular gösterilmektedir:
+Azure CLı, özellikleri ve etiketleri temel alarak çalıştırmaları filtrelemek için kullanılabilen [Jmespath](http://jmespath.org) sorgularını destekler. Azure CLı ile JMESPath sorgusu kullanmak için, `--query` parametresini parametresiyle belirtin. Aşağıdaki örneklerde Özellikler ve Etiketler kullanılarak bazı sorgular gösterilmektedir:
 
 ```azurecli-interactive
 # list runs where the author property = 'azureml-user'

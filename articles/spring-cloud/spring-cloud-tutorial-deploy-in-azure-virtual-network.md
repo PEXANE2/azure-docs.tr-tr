@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: f7817a596a38c6bb259a048e3dfea11abfd14d82
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006440"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892886"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Öğretici: Azure sanal ağ 'da Azure yay bulutu dağıtma (VNet ekleme)
+
+**Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
 Bu öğreticide, sanal ağınızda bir Azure Spring Cloud Service örneğinin nasıl dağıtılacağı açıklanmaktadır. Buna bazen VNet ekleme denir.  
 
@@ -55,7 +57,7 @@ Azure yay bulut hizmeti örneğini barındıracak bir sanal ağınız zaten vars
     |-----------------|--------------------------------------------------|
     |Abonelik     |Aboneliğinizi seçin.                         |
     |Kaynak grubu   |Kaynak grubunuzu seçin veya yeni bir tane oluşturun.  |
-    |Name             |*Azure-Spring-Cloud-VNET* girin                   |
+    |Ad             |*Azure-Spring-Cloud-VNET* girin                   |
     |Konum         |**Doğu ABD** seçin                                |
 
 1. Ileri ' ye tıklayın **: IP adresleri >**. 
@@ -120,7 +122,7 @@ az role assignment create \
 
     |Ayar                                |Değer                                             |
     |---------------------------------------|--------------------------------------------------|
-    |Kendi sanal ağınıza dağıtın     |**Evet** ' i seçin                                    |
+    |Kendi sanal ağınıza dağıtın     |**Evet**’i seçin                                    |
     |Sanal ağ                        |*Azure-Spring-Cloud-VNET* seçin                  |
     |Hizmet çalışma zamanı alt ağı                 |*Hizmet-çalışma zamanı-alt ağ* seçin                   |
     |Spring Boot mikro hizmet uygulamaları alt ağı   |*Uygulamaları seçin-alt ağ*                              |

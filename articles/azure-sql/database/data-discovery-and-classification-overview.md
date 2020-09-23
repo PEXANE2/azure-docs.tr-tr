@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004112"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886495"
 ---
 # <a name="data-discovery--classification"></a>Veri Bulma ve Sınıflandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,8 +30,6 @@ En hassas verileriniz arasında işletme, finans, sağlık hizmetleri veya kişi
 - Veri gizliliği ve yasal uyumluluk gereksinimleri için standartları karşılamanıza yardımcı olma.
 - Hassas verilere yönelik anormal erişimlerde izleme (denetim) ve uyarı verme gibi çeşitli güvenlik senaryoları.
 - Son derece hassas veriler içeren veritabanlarının güvenliğine erişimi denetleme ve güvenliği artırma.
-
-Veri bulma & sınıflandırması, gelişmiş Azure SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [Gelişmiş veri güvenliği](advanced-data-security.md) sunumunun bir parçasıdır. Azure portal Merkezi **SQL gelişmiş veri güvenliği** bölümü aracılığıyla veri bulma & sınıflandırmasına erişip yönetebilirsiniz.
 
 > [!NOTE]
 > Şirket içi SQL Server hakkında daha fazla bilgi için bkz. [SQL veri bulma & sınıflandırması](https://go.microsoft.com/fwlink/?linkid=866999).
@@ -79,31 +77,23 @@ Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kull
 
 1. [Azure portalına](https://portal.azure.com) gidin.
 
-2. Azure SQL veritabanı bölmesinizdeki **güvenlik** başlığı altında **Gelişmiş veri güvenliği** ' ne gidin. **Gelişmiş veri güvenliği**' ni seçin ve ardından **veri bulma & sınıflandırma** kartını seçin.
+1. Azure SQL veritabanı bölmesinizdeki güvenlik başlığı altında bulunan **veri bulma & sınıflandırmasına** gidin. Genel Bakış sekmesi, veritabanının geçerli sınıflandırma durumunun bir özetini içerir. Özet, yalnızca belirli şema parçalarını, bilgi türlerini ve etiketleri göstermek üzere filtreleyebileceğiniz tüm sınıflandırılan sütunların ayrıntılı bir listesini içerir. Herhangi bir sütunu henüz sınıflandırılmamış [4. adıma atlayın](#step-4).
 
-   ![Azure portal gelişmiş veri güvenliği bölmesi](./media/data-discovery-and-classification-overview/data_classification.png)
+1. Excel biçiminde bir rapor indirmek için bölmenin üst menüsünde **dışarı aktar** ' ı seçin.
 
-3. **Veri bulma & sınıflandırması** sayfasında, **genel bakış** sekmesi veritabanının geçerli sınıflandırma durumunun bir özetini içerir. Özet, yalnızca belirli şema parçalarını, bilgi türlerini ve etiketleri göstermek üzere filtreleyebileceğiniz tüm sınıflandırılan sütunların ayrıntılı bir listesini içerir. Hiçbir sütunu henüz sınıflandırmadıysanız [5. adıma atlayın](#step-5).
-
-   ![Geçerli sınıflandırma durumunun özeti](./media/data-discovery-and-classification-overview/2_data_classification_overview_dashboard.png)
-
-4. Excel biçiminde bir rapor indirmek için bölmenin üst menüsünde **dışarı aktar** ' ı seçin.
-
-5. <a id="step-5"></a>Verilerinizi **sınıflandırmayla** başlamak Için **veri bulma & sınıflandırma** sayfasında sınıflandırma sekmesini seçin.
+1. <a id="step-4"></a>Verilerinizi **sınıflandırmayla** başlamak Için **veri bulma & sınıflandırma** sayfasında sınıflandırma sekmesini seçin.
 
     Sınıflandırma Altyapısı, veritabanınızı potansiyel olarak hassas veriler içeren sütunlar için tarar ve önerilen sütun sınıflandırmalarının bir listesini sağlar.
 
-6. Sınıflandırma önerilerini görüntüleyin ve uygulayın:
+1. Sınıflandırma önerilerini görüntüleyin ve uygulayın:
 
    - Önerilen sütun sınıflandırmalarının listesini görüntülemek için bölmenin alt kısmındaki öneriler panelini seçin.
 
    - Belirli bir sütunun önerisini kabul etmek için ilgili satırın sol sütunundaki onay kutusunu seçin. Tüm önerileri kabul edildi olarak işaretlemek için, öneriler tablosu üstbilgisindeki en soldaki onay kutusunu seçin.
 
-       ![Sınıflandırma önerileri listesini gözden geçirin ve seçin](./media/data-discovery-and-classification-overview/6_data_classification_recommendations_list.png)
-
    - Seçili önerileri uygulamak için **Seçili önerileri kabul et**' i seçin.
 
-7. Sütunları, alternatif olarak veya öneri tabanlı sınıflandırmanın yanı sıra el ile de sınıflandırabilirsiniz:
+1. Sütunları, alternatif olarak veya öneri tabanlı sınıflandırmanın yanı sıra el ile de sınıflandırabilirsiniz:
 
    1. Bölmenin üst menüsünde **Sınıflandırma Ekle** ' yi seçin.
 
@@ -111,9 +101,7 @@ Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kull
 
    1. Bağlam penceresinin alt kısmında **Sınıflandırma Ekle** ' yi seçin.
 
-      ![Sınıflamak için bir sütun seçin](./media/data-discovery-and-classification-overview/9_data_classification_manual_classification.png)
-
-8. Sınıflandırmanızı ve kalıcı olarak etiketlemesini (etiketleyerek) Yeni sınıflandırma meta verileri ile veritabanı sütunlarını kullanarak, pencerenin üst menüsünde **Kaydet** ' i seçin.
+1. Sınıflandırmanızı ve kalıcı olarak etiketlemesini (etiketleyerek) Yeni sınıflandırma meta verileri ile veritabanı sütunlarını kullanarak, pencerenin üst menüsünde **Kaydet** ' i seçin.
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Gizli verilere erişimi denetleme
 
@@ -191,6 +179,5 @@ Sınıflandırmaları ve önerileri programlı bir şekilde yönetmek için REST
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Sonraki adımlar
 
-- [Gelişmiş veri güvenliği](advanced-data-security.md)hakkında daha fazla bilgi edinin.
 - Sınıflandırılan gizli verilerinize erişimi izlemek ve denetlemek için [Azure SQL denetimini](../../azure-sql/database/auditing-overview.md) yapılandırmayı düşünün.
 - Veri bulma & sınıflandırması içeren bir sunum için bkz. [SQL verilerini koruma, sınıflandırma ve etiketleme & | Veriler kullanıma sunuldu](https://www.youtube.com/watch?v=itVi9bkJUNc).

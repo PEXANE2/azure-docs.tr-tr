@@ -5,24 +5,46 @@ author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 08/03/2020
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 47f74b551919177b13f5a72d6eedeae3c77b9f14
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 639672bdeff2f833c280a041e497197286c9ff24
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951915"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885709"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Hızlı başlangıç: Azure yay bulut yapılandırması sunucusunu ayarlama
 
+Azure Spring Cloud config Server, dağıtılmış sistemler için merkezi bir yapılandırma hizmetidir. Şu anda yerel depolama, git ve alt sürümü destekleyen bir takılabilir depo katmanı kullanır. Bu hızlı başlangıçta, bir git deposundan veri almak için yapılandırma sunucusunu ayarlarsınız.
+
+::: zone pivot="programming-language-csharp"
+
+## <a name="prerequisites"></a>Önkoşullar
+
+* Bu serideki önceki hızlı başlangıcı doldurun: [Azure Spring Cloud Service sağla](spring-cloud-quickstart-provision-service-instance.md).
+
+## <a name="azure-spring-cloud-config-server-procedures"></a>Azure yay bulut yapılandırması sunucu yordamları
+
+Aşağıdaki komutu çalıştırarak yapılandırma-sunucunuzu projenin git deposunun konumuyla ayarlayın. `<service instance name>`Daha önce oluşturduğunuz hizmetin adıyla değiştirin. Önceki hızlı başlangıçta ayarladığınız hizmet örneği adı için varsayılan değer bu komutla birlikte çalışmaz.
+
+```azurecli
+az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples --search-paths steeltoe-sample/config
+```
+
+Bu komut yapılandırma sunucusuna, örnek uygulama deposunun [steeltoe-Sample/config](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/steeltoe-sample/config) klasöründe yapılandırma verilerini bulmasını söyler. Yapılandırma verilerini alacak uygulamanın adı olduğundan `planet-weather-provider` , kullanılacak dosya [Planet-Weather-Provider. yıml](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/steeltoe-sample/config/planet-weather-provider.yml)olacaktır.
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
 Azure Spring Cloud config Server, dağıtılmış sistemler için merkezi bir yapılandırma hizmetidir. Şu anda yerel depolama, git ve alt sürümü destekleyen bir takılabilir depo katmanı kullanır.  Mikro hizmet uygulamalarını Azure Spring Cloud 'a dağıtmak için yapılandırma sunucusunu ayarlayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [JDK 8 ' i yükler](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
+* [JDK 8 ' i yükler](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
-* Seçim [Azure CLI sürüm 2.0.67 veya üstünü yükleyip](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Azure Spring Cloud uzantısını şu komutla birlikte yüklersiniz: `az extension add --name spring-cloud`
+* Seçim [Azure CLI sürüm 2.0.67 veya üstünü yükleyip](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) Azure Spring Cloud uzantısını şu komutla birlikte yüklersiniz: `az extension add --name spring-cloud`
 * Seçim [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) ve [oturum açmayı](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) yükleyip
 
 ## <a name="azure-spring-cloud-config-server-procedures"></a>Azure yay bulut yapılandırması sunucu yordamları
@@ -50,7 +72,25 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ```
 
 ---
+::: zone-end
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu serideki bir sonraki hızlı başlangıca devam etmek istiyorsanız, bu adımı atlayın.
+
+Bu hızlı başlangıçlarda, abonelikleriniz varsa ücretlendirmeye devam edecek Azure kaynakları oluşturdunuz. Sonraki hızlı başlangıca devam etmeyi düşünmüyorsanız ve gelecekte bu kaynaklara ihtiyaç duymazsanız, portalı kullanarak veya Cloud Shell aşağıdaki komutu çalıştırarak kaynak grubunu silin:
+
+```azurecli
+az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
+```
+
+Daha önceki bir hızlı başlangıçta, varsayılan kaynak grubu adını da ayarlarsınız. Sonraki hızlı başlangıca devam etmeyi planlamıyorsanız, aşağıdaki CLı komutunu çalıştırarak bu varsayılanı kaldırın:
+
+```azurecli
+az configure --defaults group=
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 > [!div class="nextstepaction"]
 > [Uygulama oluşturma ve dağıtma](spring-cloud-quickstart-deploy-apps.md)

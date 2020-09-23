@@ -11,15 +11,15 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: eb28ee0adb3c23a44936cbc940ee9bcddfd11141
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6b239ab14437083b74f4501eabb588e929152431
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647421"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897246"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python 'da Azure Machine Learning işlem hattında otomatik ML kullanma
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning otomatikleştirilmiş ML özelliği, mümkün olan her yaklaşımı yeniden uygulamadan yüksek performanslı modelleri keşfetmenize yardımcı olur. Azure Machine Learning işlem hatlarında, verileriniz için en uygun algoritmayı hızlı bir şekilde keşfedelebilecek dağıtılabilir iş akışları oluşturabilirsiniz. Bu makalede, bir veri hazırlama adımını otomatik bir ML adımına nasıl verimli bir şekilde katılacaksınız gösterilmektedir. Otomatikleştirilmiş ML, verilerinize en uygun algoritmayı hızlıca bulabilir. bu sırada, işlem hatlarıyla birlikte MLOps ve model yaşam döngüsü için yol üzerine getirme yapabilirsiniz.
 
@@ -29,7 +29,7 @@ Azure Machine Learning otomatikleştirilmiş ML özelliği, mümkün olan her ya
 
 * Azure Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).  
 
-* Azure 'un [otomatik makine öğrenimi](concept-automated-ml.md) ve [makine öğrenimi ARDıŞıK düzenleri](concept-ml-pipelines.md) ve SDK ile temel benzerlik.
+* Azure 'un [otomatik makine öğrenimi](concept-automated-ml.md) ve [makine öğrenimi ardışık düzenleri](concept-ml-pipelines.md) ve SDK 'sı hakkında bilgi sahibi.
 
 ## <a name="review-automated-mls-central-classes"></a>Otomatik ML 'nin merkezi sınıflarını gözden geçirin
 
@@ -368,7 +368,7 @@ Bu örnekte, otomatik ML işlemi üzerinde çapraz doğrulamalar gerçekleştire
 
 ## <a name="register-the-model-generated-by-automated-ml"></a>Otomatik ML tarafından oluşturulan modeli Kaydet 
 
-Temel bir ML işlem hattının son adımı oluşturulan modeli kaydediyor. Modeli çalışma alanının model kayıt defterine ekleyerek portalda kullanılabilir ve sürümlenebilir. Modeli kaydetmek için, çıktısını alan bir tane yazın `PythonScriptStep` `model_data` `AutoMLStep` .
+Basit bir ML işlem hattının son adımı oluşturulan modeli kaydediyor. Modeli çalışma alanının model kayıt defterine ekleyerek portalda kullanılabilir ve sürümlenebilir. Modeli kaydetmek için, çıktısını alan bir tane yazın `PythonScriptStep` `model_data` `AutoMLStep` .
 
 ### <a name="write-the-code-to-register-the-model"></a>Modeli kaydetmek için kodu yazın
 

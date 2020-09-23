@@ -11,15 +11,14 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 37253ccfb249eb8b510af5e314c3167ddd979a87
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661964"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898091"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da model eğitimi ve dağıtımı için işlem hedefleri oluşturma
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Machine Studio 'da işlem hedefleri oluşturmayı ve yönetmeyi öğrenin.  Ayrıca, ile işlem hedefleri oluşturup bunları yönetebilirsiniz:
 
@@ -28,7 +27,7 @@ Bu makalede, Azure Machine Studio 'da işlem hedefleri oluşturmayı ve yönetme
 * Azure Machine Learning için [vs Code uzantısı](how-to-manage-resources-vscode.md#compute-clusters) .
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
@@ -130,7 +129,7 @@ Büyük ölçekli ikinci kullanım için bir Azure Kubernetes hizmeti (AKS) küm
 |---------|---------|
 |İşlem adı     |  <li>Ad gereklidir. Ad, 2 ila 16 karakter arasında olmalıdır. </li><li>Geçerli karakterler büyük ve küçük harfler, rakamlar ve  **-** karakterdir.</li><li>Ad bir harfle başlamalıdır</li><li>Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz</li><li>**-** Karakter kullanılıyorsa, daha sonra adının sonunda en az bir harf gelmelidir</li>     |
 |Kubernetes Hizmeti | **Yeni oluştur** ' u seçin ve formun geri kalanını doldurun.  Veya **var olanı kullan** ' ı seçin ve ardından aboneliğinizden mevcut bir aks kümesi seçin.
-|Bölge |  Kümenin oluşturulacağı bölgeyi seçin |
+|Region |  Kümenin oluşturulacağı bölgeyi seçin |
 |Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
 |Küme amacı  | **Üretim** veya **geliştirme testi** seçin |
 |Düğüm sayısı | Sanal makinenin çekirdek sayısıyla (vCPU 'Lar) çarpıldığı düğüm sayısı 12 ' den büyük veya buna eşit olmalıdır. |

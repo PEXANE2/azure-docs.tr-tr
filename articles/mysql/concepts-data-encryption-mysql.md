@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 8fca0195c2941e4ed1a859c3201adfc2a4a0a2ed
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 71657d45ce9c4cc6fb103b61235a282b3005b924
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067452"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884921"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi
 
@@ -44,7 +44,7 @@ KEKs ile şifrelenen DEKs 'ler ayrı olarak depolanır. Yalnızca KEK erişimi o
 
 ## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>Müşteri tarafından yönetilen anahtar çalışma ile veri şifreleme
 
-![Kendi Anahtarını Getir bir genel bakış gösteren diyagram](media/concepts-data-access-and-security-data-encryption/mysqloverview.png)
+:::image type="content" source="media/concepts-data-access-and-security-data-encryption/mysqloverview.png" alt-text="Kendi Anahtarını Getir bir genel bakış gösteren diyagram":::
 
 Bir MySQL sunucusunun, DEK ' de şifreleme için Key Vault depolanan müşteri tarafından yönetilen anahtarları kullanması için, bir Key Vault Yöneticisi sunucuya aşağıdaki erişim haklarını verir:
 
@@ -80,7 +80,7 @@ Müşteri tarafından yönetilen bir anahtar kullanarak veri şifrelemeyi kullan
 * MySQL için Key Vault ve Azure veritabanı 'nın aynı bölgede bulunduğundan emin olun ve bu DEK sarmalama için daha hızlı bir erişim sağlayın ve sarmalama işlemlerini geri sarın.
 * Azure Keykasasını yalnızca **Özel uç nokta ve seçili ağlarda** kilitleyin ve yalnızca *Güvenilen Microsoft* hizmetlerinin kaynakları güvenli hale getirmeye izin verin.
 
-    ![Güvenilen-hizmet-AKV](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Güvenilen-hizmet-AKV":::
 
 Müşteri tarafından yönetilen anahtarı yapılandırmaya yönelik öneriler aşağıda verilmiştir:
 

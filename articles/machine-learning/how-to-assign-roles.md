@@ -11,15 +11,14 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 235135cbbcc7c622f4dd23c2e4f29cc3636dc1ea
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661919"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893403"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Machine Learning çalışma alanına erişimi yönetmeyi öğreneceksiniz. Azure [rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview) , Azure kaynaklarına erişimi yönetmek için kullanılır. Azure Active Directory kullanıcılara, kaynaklara erişim izni veren belirli roller atanır. Azure, yerleşik roller ve özel roller oluşturma yeteneği sağlar.
 
@@ -135,7 +134,6 @@ Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en 
 | Etkinlik | Abonelik düzeyi kapsamı | Kaynak grubu düzeyi kapsamı | Çalışma alanı düzeyi kapsamı |
 | ----- | ----- | ----- | ----- |
 | Yeni çalışma alanı oluştur | Gerekli değil | Sahip veya katkıda bulunan | Yok (oluşturulduktan sonra sahip olur veya daha yüksek kapsam rolünü devralır) |
-| Çalışma alanının sürümünü Güncelleştir | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `/workspaces/write` |
 | Abonelik düzeyi Amlcompute kotası iste veya çalışma alanı düzeyi kotasını ayarla | Sahip veya katkıda bulunan veya özel rol </br>enlere `/locations/updateQuotas/action`</br> Abonelik kapsamında | Yetkilendirilmemiş | Yetkilendirilmemiş |
 | Yeni işlem kümesi oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `/workspaces/computes/write` |
 | Yeni işlem örneği oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `/workspaces/computes/write` |
@@ -301,7 +299,6 @@ Aşağıda, kendi özel rollerinizi tanımlamak için temel olarak kullanabilece
 
     * Yeni bir çalışma alanı oluşturma
     * Abonelik veya çalışma alanı düzeyinde kotalar atama
-    * Çalışma alanının sürümü yükseltiliyor
 
     Çalışma alanı yöneticisi de yeni bir rol oluşturamaz. Yalnızca mevcut yerleşik veya özel rolleri, çalışma alanının kapsamı içinde atayabilir:
 
@@ -415,11 +412,7 @@ Yeni rol tanımınızın tüm kapsamındaki izinlere sahip olmanız gerekir. Ör
 
 > [!NOTE]
 > Rol güncelleştirmelerinin, bu kapsamdaki tüm rol atamaları üzerinde uygulanması 15 dakika ila saat arasında sürebilir.
-### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>S. Çalışma alanı sürümünün güncelleştirilmesini engelleyen bir rol tanımlayabilir miyim? 
 
-Evet, çalışma alanı sürümünün güncelleştirilmesini engelleyen bir rol tanımlayabilirsiniz. Çalışma alanı güncelleştirmesi, çalışma alanı nesnesi üzerinde bir yama çağrısı olduğundan, bunu `"NotActions"` JSON tanımınızdaki diziye aşağıdaki eylemi koyarak yapabilirsiniz: 
-
-`"Microsoft.MachineLearningServices/workspaces/write"`
 
 ### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>S. Bir çalışma alanında kota işlemleri gerçekleştirmek için hangi izinler gereklidir? 
 

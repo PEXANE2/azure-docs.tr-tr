@@ -1,6 +1,6 @@
 ---
-title: GPU ile Azure Stack Edge sorunlarını gidermek için Azure portal kullanma | Microsoft Docs
-description: Azure Stack Edge GPU sorunlarını nasıl giderebileceğinizi açıklar.
+title: GPU ile Azure Stack Edge Pro sorunlarını gidermek için Azure portal kullanma | Microsoft Docs
+description: Azure Stack Edge Pro GPU sorunlarını nasıl giderebileceğinizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b82631ca78826dd927c6773c47072038eb4ab1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9deb10336d959a3f706cfc0ba970c3b83d5cd0a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290132"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891549"
 ---
-# <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazındaki sorunları giderme 
+# <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki sorunları giderme 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu makalede Azure Stack Edge GPU cihazınızdaki sorunların nasıl giderileceği açıklanmaktadır. 
+Bu makalede Azure Stack Edge Pro GPU cihazınızdaki sorunların nasıl giderileceği açıklanır. 
 
 
 ## <a name="run-diagnostics"></a>Tanılama çalıştırma
@@ -55,7 +55,7 @@ Destek paketi toplamak için aşağıdaki adımları gerçekleştirin.
 
 ## <a name="gather-advanced-security-logs"></a>Gelişmiş güvenlik günlükleri toplayın
 
-Gelişmiş güvenlik günlükleri, Azure Stack Edge cihazınız için yazılım veya donanıma yönelik erişim günlükleri olabilir.
+Gelişmiş güvenlik günlükleri, Azure Stack Edge Pro cihazınız için yazılım veya donanıma yönelik erişim günlükleri olabilir.
 
 ### <a name="software-intrusion-logs"></a>Yazılım erişim günlükleri
 
@@ -67,7 +67,7 @@ Yazılım yetkisiz erişimi veya varsayılan güvenlik duvarı günlükleri gele
 
 - Belirli bir içerme seçeneği sağlanmazsa, destek paketinde varsayılan olarak güvenlik duvarı günlüğü eklenir.
 
-- Destek paketinde güvenlik duvarı günlüğü, `pfirewall.log` kök klasörde bulunur ve olur. Azure Stack Edge cihazının yazılım yetkisiz giriş günlüğüne bir örnek aşağıda verilmiştir. 
+- Destek paketinde güvenlik duvarı günlüğü, `pfirewall.log` kök klasörde bulunur ve olur. Azure Stack Edge Pro cihazı için yazılım yetkisiz giriş günlüğüne bir örnek aşağıda verilmiştir. 
 
     ```
     #Version: 1.5
@@ -101,7 +101,7 @@ Cihazda herhangi bir donanımı izinsiz olarak belirlemek için, şu anda kasa a
 
 - Belirli bir içerme seçeneği sağlanmazsa, donanım yetkisiz giriş günlüğü destek paketinde varsayılan olarak dahil edilir.
 
-- Destek paketinde, donanım yetkisiz giriş günlüğü, `HWIntrusion.txt` kök klasörde bulunur ve olur. Azure Stack Edge cihazının donanımla ilgili giriş günlüğüne bir örnek aşağıda verilmiştir. 
+- Destek paketinde, donanım yetkisiz giriş günlüğü, `HWIntrusion.txt` kök klasörde bulunur ve olur. Azure Stack Edge Pro cihazı için bir donanım yetkisiz giriş günlüğüne bir örnek aşağıda verilmiştir. 
 
     ```
     09/04/2019 15:51:23 system Critical The chassis is open while the power is off.
@@ -143,7 +143,7 @@ Cihazınıza erişmek için Azure Resource Manager yapılandırması sırasında
 | **Sorun/hatalar** |  **Çözünürlük** | 
 |------------|-----------------|
 |Genel sorunlar|<li>[Sınır cihazının düzgün şekilde yapılandırıldığını doğrulayın](#verify-the-device-is-configured-properly).<li> [İstemcinin düzgün yapılandırıldığını doğrulama](#verify-the-client-is-configured-properly)|
-|Add-AzureRmEnvironment: istek gönderilirken bir hata oluştu.<br>Şu satırda: 1 char: 1<br>+ Add-AzureRmEnvironment-Name Az3-Ermenistan Dpoint " https://management.dbe ...|Bu hata Azure Stack Edge cihazlarınızın erişilebilir olmadığı veya düzgün şekilde yapılandırılmadığı anlamına gelir. Sınır cihazının ve istemcisinin doğru şekilde yapılandırıldığını doğrulayın. Rehberlik için, bu tablodaki **genel sorunlar** satırına bakın.|
+|Add-AzureRmEnvironment: istek gönderilirken bir hata oluştu.<br>Şu satırda: 1 char: 1<br>+ Add-AzureRmEnvironment-Name Az3-Ermenistan Dpoint " https://management.dbe ...|Bu hata, Azure Stack Edge Pro cihazınızın ulaşılamaz veya düzgün şekilde yapılandırılmadığı anlamına gelir. Sınır cihazının ve istemcisinin doğru şekilde yapılandırıldığını doğrulayın. Rehberlik için, bu tablodaki **genel sorunlar** satırına bakın.|
 |Hizmet hata döndürdü. Daha fazla ayrıntı için InnerException öğesine bakın: temel alınan bağlantı kapatıldı: SSL/TLS güvenli kanalı için güven ilişkisi kurulamadı. |   Bu hata, büyük olasılıkla kendi sertifika adımlarınızı bir veya daha fazla getirme işlemi yanlış gerçekleştirdi. Kılavuza [buradan](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-connect-resource-manager#step-2-create-and-install-certificates)ulaşabilirsiniz. |
 |İşlem geçersiz bir durum kodu döndürdü ' ServiceUnavailable ' <br> Yanıt durum kodu başarılı olduğunu göstermiyor: 503 (hizmet kullanılamıyor). | Bu hata, bu koşullardan herhangi birinin sonucu olabilir.<li>ArmStsPool durdurulmuş durumda.</li><li>Azure Resource Manager/güvenlik belirteci Hizmetleri Web sitelerinden biri çalışmıyor.</li><li>Azure Resource Manager küme kaynağı çalışmıyor.</li><br><strong>Note:</strong> Gereci yeniden başlatmak sorunu çözebilir, ancak daha fazla hata ayıklayabilmeniz için destek paketini toplamanız gerekir.|
 |AADSTS50126: Geçersiz Kullanıcı adı veya parola.<br>İzleme KIMLIĞI: 29317dav9-52fc-4ba0-9778-446ae5625e5a<br>Bağıntı KIMLIĞI: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Zaman damgası: 2019-11-15 09:21:57Z: uzak sunucu bir hata döndürdü: (400) hatalı Istek.<br>Şu satırda: 1 char: 1 |Bu hata, bu koşullardan herhangi birinin sonucu olabilir.<li>Geçersiz Kullanıcı adı ve parola için, [buradaki](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-set-azure-resource-manager-password) adımları izleyerek ve ardından doğru parolayı kullanarak müşterinin Azure Portal parolayı değiştirdiğini doğrulayın.<li>Geçersiz bir kiracı KIMLIĞI için kiracı KIMLIĞI sabit bir GUID 'dir ve şu şekilde ayarlanmalıdır `c0257de7-538f-415c-993a-1b87a031879d`</li>|
@@ -167,7 +167,7 @@ Cihazınıza erişmek için Azure Resource Manager yapılandırması sırasında
 
 2. Doğru PowerShell modüllerinin [burada](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)bahsedilen şekilde yüklendiğini doğrulayın.
 
-3. Azure Resource Manager ve oturum açma uç noktalarına erişilebildiğini doğrulayın. Uç noktalara ping yapmayı deneyebilirsiniz. Örneğin:
+3. Azure Resource Manager ve oturum açma uç noktalarına erişilebildiğini doğrulayın. Uç noktalara ping yapmayı deneyebilirsiniz. Örnek:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
@@ -182,7 +182,7 @@ Cihazınıza erişmek için Azure Resource Manager yapılandırması sırasında
 
 ## <a name="blob-storage-on-device"></a>Cihazda BLOB depolama alanı 
 
-Azure Stack Edge/Data Box Gateway cihazında BLOB depolama ile ilgili hatalar aşağıda verilmiştir.
+Azure Stack Edge Pro/Data Box Gateway cihazında blob depolamayla ilgili hatalar aşağıda verilmiştir.
 
 | **Sorun/hatalar** |  **Çözünürlük** | 
 |--------------------|-----------------|
@@ -196,8 +196,8 @@ Azure Stack Edge/Data Box Gateway cihazında BLOB depolama ile ilgili hatalar a�
 |AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Şu adreste bulunan Hosts dosyasına eklendiğinden emin olun: `/etc/hosts` .|
 |AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor: `Error parsing source location… The SSL connection could not be established` .|Cihazınızın SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için bkz. [sertifikayı indirme](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
 |HTTP başlıklarındaki bir değer doğru biçimde değil.|Python için Microsoft Azure Depolama kitaplığının yüklü sürümü Data Box tarafından desteklenmiyor. Desteklenen sürümler için Azure Data Box BLOB depolama gereksinimleri bölümüne bakın.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Python 'u çalıştırmadan önce, REQUESTS_CA_BUNDLE ortam değişkenini Base64 kodlamalı SSL sertifika dosyasının yoluna ayarlayın (bkz. [sertifikayı indirme](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate). Örneğin:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternatif olarak, sertifikayı sistemin sertifika deposuna ekleyin ve bu ortam değişkenini bu deponun yoluna ayarlayın. Örneğin, Ubuntu üzerinde:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
-|Bağlantı zaman aşımına uğrar.|Azure Stack kenarından oturum açın ve kilidinin açık olduğundan emin olun. Cihaz her yeniden başlatıldığında, birisi oturum açana kadar kilitli kalır.|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Python 'u çalıştırmadan önce, REQUESTS_CA_BUNDLE ortam değişkenini Base64 kodlamalı SSL sertifika dosyasının yoluna ayarlayın (bkz. [sertifikayı indirme](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate). Örnek:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternatif olarak, sertifikayı sistemin sertifika deposuna ekleyin ve bu ortam değişkenini bu deponun yoluna ayarlayın. Örneğin, Ubuntu üzerinde:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
+|Bağlantı zaman aşımına uğrar.|Azure Stack Edge Pro 'da oturum açın ve sonra kilidinin açık olup olmadığını kontrol edin. Cihaz her yeniden başlatıldığında, birisi oturum açana kadar kilitli kalır.|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

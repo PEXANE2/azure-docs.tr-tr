@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170267"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883237"
 ---
 # <a name="train-pytorch-model"></a>PyTorch Modelini eğitme
 
-Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learning tasarımcısında (Önizleme) **Pytorch model** modülünün nasıl kullanılacağı açıklanır. Bir modeli tanımladıktan ve parametrelerini ayarladıktan sonra ve etiketli veriler gerektirdiğinde eğitim gerçekleşir. 
+Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learning Designer 'da **Pytorch model** modülünün nasıl kullanılacağı açıklanır. Bir modeli tanımladıktan ve parametrelerini ayarladıktan sonra ve etiketli veriler gerektirdiğinde eğitim gerçekleşir. 
 
 ## <a name="how-to-use-train-pytorch-model"></a>Pytorch modeliyle eğitme kullanma 
 
@@ -70,7 +70,7 @@ Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learni
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Dönemler        | >0               | Tamsayı | 5       | Etiket veya sonuç sütununu içeren sütunu seçin |
 | Toplu iş boyutu    | >0               | Tamsayı | 16      | Bir toplu işte eğiten örnek sayısı   |
-| Öğrenme oranı | >= Double. Upsilon | Float   | 0,001   | Stochastic gradyanı ilgili iyileştiricinin ilk öğrenme oranı. |
+| Öğrenme oranı | >= Double. Upsilon | Float   | 0.001   | Stochastic gradyanı ilgili iyileştiricinin ilk öğrenme oranı. |
 | Rastgele çekirdek   | Herhangi biri              | Tamsayı | 1       | Model tarafından kullanılan rastgele sayı oluşturucusunun çekirdek. |
 | Beklediğiniz      | >0               | Tamsayı | 3       | Eğitimin erken durdurulması için kaç dönemler   |
 

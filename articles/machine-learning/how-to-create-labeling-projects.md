@@ -8,16 +8,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a86a7ee600d7443e5ba8cb4f30db0c48c8170327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612179"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897989"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Machine Learning projelerinde Voluminous verilerinin etiketlenmesi genellikle bir headache 'dir. Görüntü sınıflandırması veya nesne algılama gibi bir bilgisayar vizyonu bileşeni olan projeler genellikle binlerce görüntü için Etiketler gerektirir.
  
@@ -144,13 +144,7 @@ Sınırlayıcı kutular için, önemli sorular şunlardır:
 >[!NOTE]
 > Etiketleyiciler 1-9 numaralı anahtarları kullanarak ilk 9 etiketi seçebileceğini unutmayın.
 
-## <a name="use-ml-assisted-labeling-preview"></a>ML yardımlı etiketleme (Önizleme) kullanma
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
-
-> [!IMPORTANT]
-> ML yardımlı etiketleme Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="use-ml-assisted-labeling"></a>ML yardımlı etiketleme kullanma
 
 **Ml yardımlı etiketleme** sayfası etiketleme görevini hızlandırmak için otomatik makine öğrenimi modellerini tetiklemenizi sağlar. Etiketleme projenizin başlangıcında, görüntüler potansiyel bir farkı azaltmak için rastgele bir sıraya bölünür. Ancak, veri kümesinde bulunan herhangi bir sapmaları eğitilen modele yansıtılır. Örneğin, görüntülerinizin %80 ' u tek bir sınıfta ise, modeli eğitmek için kullanılan verilerin yaklaşık %80 ' i o sınıfa ait olacaktır. Bu eğitim, etkin öğrenimi içermez.
 
@@ -175,9 +169,6 @@ Kümeleme aşaması, nesne algılama modelleri için görüntülenmez.
 Yeterli resim etiketi gönderildikten sonra, görüntü etiketlerini tahmin etmek için bir sınıflandırma modeli kullanılır. Ya da bir nesne algılama modeli, sınırlayıcı kutuları tahmin etmek için kullanılır. Etiketleyici artık her görüntüde önceden tahmin edilen etiketler içeren sayfaları görüyor. Nesne algılama için tahmin edilen kutular da gösterilir. Görev daha sonra bu tahminleri gözden geçirdikten sonra sayfayı göndermeden önce, yanlış etiketlenmiş görüntüleri düzeltir.  
 
 Bir makine öğrenimi modelinin el ile etiketlendiği veriler üzerinde eğitilene kadar, model el ile etiketlenmiş bir test kümesi üzerinde değerlendirilir ve farklı güven eşiklerinde doğruluğu tespit edilir. Bu değerlendirme işlemi, modelin, ön etiketleri göstermek için yeterince doğru olduğu bir güven eşiğini belirlemede kullanılır. Model daha sonra etiketli olmayan verilere karşı değerlendirilir. Tahmine dayalı olarak bu eşikten daha güvenli olan görüntüler, önceden etiketleme için kullanılır.
-
-> [!NOTE]
-> ML yardımlı etiketleme **yalnızca** Enterprise Edition çalışma alanlarında kullanılabilir.
 
 ## <a name="initialize-the-labeling-project"></a>Etiketleme projesini başlatma
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning tasarımcısını (önizleme) kullanarak toplu tahminleri çalıştırma
+title: Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
 titleSuffix: Azure Machine Learning
 description: Tasarımcıyı kullanarak bir modeli eğitme ve Batch tahmini işlem hattı ayarlama hakkında bilgi edinin. İşlem hattını, herhangi bir HTTP kitaplığından tetiklenebilecek parametreli bir Web hizmeti olarak dağıtın.
 services: machine-learning
@@ -10,15 +10,15 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: e4ca191e50f4ca8aa5a11a36ec44e737cc2ef6bc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661521"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883088"
 ---
-# <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısını (önizleme) kullanarak toplu tahminleri çalıştırma
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
+
 
 Bu makalede, bir Batch tahmin işlem hattı oluşturmak için tasarımcıyı nasıl kullanacağınızı öğreneceksiniz. Toplu tahmin, herhangi bir HTTP kitaplığından tetiklenebilecek bir Web hizmeti kullanarak isteğe bağlı olarak büyük veri kümelerini sürekli olarak puanlamanızı sağlar.
 
@@ -31,7 +31,7 @@ Bu nasıl yapılır, aşağıdaki görevleri yapmayı öğrenirsiniz:
 
 SDK 'yı kullanarak Batch Puanlama hizmetlerini ayarlamayı öğrenmek için bkz. [ile ilgili nasıl yapılır](how-to-run-batch-predictions.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır, zaten bir eğitim ardışık düzenine sahip olduğunuzu varsayar. Tasarımcıya yönelik Kılavuzlu giriş için [Tasarımcı öğreticisinin birinci kısmını](tutorial-designer-automobile-price-train-score.md)doldurun. 
 

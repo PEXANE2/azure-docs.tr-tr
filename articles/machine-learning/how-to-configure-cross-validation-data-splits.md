@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 7a7b603efe376250607b4a48ff3ef2833f40a2bd
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3e2711243d7c093d3ab8aa5f0e7ebac0a5ec95f9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650730"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886203"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Otomatik makine öğreniminde veri bölmelerini ve çapraz doğrulamayı yapılandırma
 
@@ -31,7 +31,7 @@ Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studi
 > [!NOTE]
 > Studio şu anda eğitim/doğrulama veri bölmelerini ve çapraz doğrulama seçeneklerini desteklemektedir, ancak doğrulama kümesi için bireysel veri dosyalarının belirtilmesini desteklemez. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İhtiyacınız olan bu makalede,
 

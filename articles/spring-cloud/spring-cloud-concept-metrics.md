@@ -4,15 +4,16 @@ description: Azure Spring Cloud 'da ölçümleri incelemeyi öğrenin
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 4a12658eada3d2660cde86b3eb80e332416ea7a3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046859"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892648"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure yay bulutu için ölçümleri anlama
 
@@ -89,13 +90,13 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 
 ### <a name="error"></a>Hata
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
 >| Tomcat. Global. Error | Tomcat. Global. Error | Count | İşlenen isteklerde oluşan hata sayısı |
 
 ### <a name="performance"></a>Performans
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
 >| System. CPU. Usage | System. CPU. Usage | Yüzde | Tüm sistem için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, izlenen son süre boyunca tüm CPU 'ların boşta kaldığı, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin %100 ' i etkin bir şekilde çalıştırdığı anlamına gelir.|
 >| Process. CPU. Usage | Uygulama CPU kullanım yüzdesi | Yüzde | Java Sanal Makinesi işlemi için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, en son geçen süre boyunca JVM işlemindeki iş parçacıklarını hiçbir CPU 'nun çalıştırmadığı anlamına gelir, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin% JVM 100% ' den etkin bir şekilde çalıştığı anlamına gelir. JVM 'deki iş parçacıkları, uygulama iş parçacıklarını ve JVM iç iş parçacıklarını içerir.|
@@ -109,18 +110,60 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 >| JVM. GC. Pause. Total. Count | JVM. GC. Pause (Toplam-sayı) | Count | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere toplam GC sayısı. |
 >| JVM. GC. Pause. Total. Time | JVM. GC. Pause (Toplam süre) | Mayacak | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere tüketilen toplam GC süresi. |
 
+::: zone pivot="programming-language-csharp"
+### <a name="performance-net"></a>Performans (.NET)
+
+>[!div class="mx-tdCol2BreakAll"]
+>| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>|------|-----------------------------|------|---------|
+>| CPU kullanımı       | CPU kullanımı      | Mayacak | İşlemin CPU 'YU kullandığı süre miktarı. |
+>| Çalışma kümesi     | çalışma kümesi    | TI    | İşlem tarafından kullanılan çalışma kümesi miktarı. |
+>| GC yığın boyutu    | GC-yığın boyutu   | TI    | Çöp toplayıcı tarafından bildirilen toplam yığın boyutu. |
+>| Gen 0 GC sayısı  | Gen-0-GC-Count | Count        | Saniye başına kuşak 0 çöp koleksiyonlarının sayısı. |
+>| Gen 1 GC sayısı  | Gen-1-GC-sayısı | Count        | Saniye başına 1. nesil atık koleksiyonları sayısı. |
+>| Gen 2 GC sayısı  | Gen-2-GC-sayım | Count        | Saniye başına 2. nesil atık toplama sayısı. |
+>| Gen 0 yığın boyutu | Gen-0-boyut     | Bayt        | Nesil 0 yığın boyutu. |
+>| Gen 1 yığın boyutu | Gen-1-boyut     | Bayt        | 1. nesil yığın boyutu. |
+>| Gen 2 yığın boyutu | Gen-2 boyutu     | Bayt        | 2. nesil yığın boyutu. |
+>| LOH yığın boyutu   | Loh-boyut       | Bayt        | Büyük nesne yığın yığın boyutu. |
+>| Ayırma oranı | ayırma oranı     | Bayt        | Saniye başına ayrılan bayt sayısı. |
+>| Derleme sayısı  | derleme sayısı | Count        | Yüklenen derleme sayısı. |
+>| Özel durum sayısı | özel durum-sayı | Count       | Saniye başına özel durum sayısı. |
+>| İş parçacığı havuzu iş parçacığı sayısı      | ThreadPool-thread-Count              | Count | İş parçacığı havuzu iş parçacıklarının sayısı. |
+>| Kilit çakışması sayısını izle | Monitor-Lock-çekişme-Count        | Count | Bir izleyicinin kilidi alınmaya çalışılırken, saniye başına çekişme sayısı. |
+>| İş parçacığı havuzu sıra uzunluğu      | ThreadPool-kuyruk uzunluğu              | Count | İş parçacığı havuzu iş öğeleri sıra uzunluğu. |
+>| İş parçacığı havuzu tamamlanan öğe sayısı | ThreadPool-tamamlanan-öğe sayısı | Count | İş parçacığı havuzu tamamlanan iş öğesi sayısı. |
+>| Etkin zamanlayıcılar sayısı               | etkin-zamanlayıcı-sayısı               | Count | Şu anda etkin olan zamanlayıcılar sayısı. Etkin bir zamanlayıcı, gelecekte bir noktada Tick 'e kayıtlı ve henüz iptal edilmemiş bir zamanlayıcıya sahiptir. |
+
+Daha fazla bilgi için bkz. [DotNet sayaçları](/dotnet/core/diagnostics/dotnet-counters).
+::: zone-end
+
 ### <a name="request"></a>İstek
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
 >| Tomcat. Global. gönderildi | Tomcat. Global. gönderildi | Bayt | Gönderilen veri miktarı Tomcat Web sunucusu |
 >| Tomcat. Global. alındı | Tomcat. Global. alındı | Bayt | Alınan veri miktarı Tomcat Web sunucusu |
 >| Tomcat. Global. Request. Total. Count | Tomcat. Global. Request (Toplam sayı) | Count | Toplam Tomcat Web sunucusu işlenen istek sayısı |
 >| Tomcat. Global. Request. Max | Tomcat. Global. Request. Max | Mayacak | Bir isteği işlemek için en fazla Tomcat Web sunucusu süresi |
 
+::: zone pivot="programming-language-csharp"
+### <a name="request-net"></a>İstek (.NET)
+
+>[!div class="mx-tdCol2BreakAll"]
+>| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>|------|-----------------------------|------|---------|
+>| Saniyedeki istek | saniye başına istek sayısı | Count | İstek hızı. |
+>| Toplam istek sayısı | toplam istek sayısı | Count | Toplam istek sayısı. |
+>| Geçerli istekler | geçerli istekler | Count | Geçerli istek sayısı. |
+>| Başarısız istekler | başarısız-istekler | Count | Başarısız istek sayısı. |
+
+Daha fazla bilgi için bkz. [DotNet sayaçları](/dotnet/core/diagnostics/dotnet-counters).
+::: zone-end
+
 ### <a name="session"></a>Oturum
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
 >| Tomcat. Sessions. Active. Max | Tomcat. Sessions. Active. Max | Count | Aynı anda etkin olan en fazla oturum sayısı |
 >| Tomcat. Sessions. canlı. Max | Tomcat. Sessions. canlı. Max | Mayacak | Süresi biten bir oturumun etkin olduğu en uzun süre (saniye cinsinden) |
@@ -130,6 +173,7 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 >| Tomcat. Sessions. ACTIVE. Current | Tomcat. Sessions. ACTIVE. Current | Count | Tomcat oturumu etkin sayısı |
 
 ## <a name="see-also"></a>Ayrıca bkz.
+
 * [Hızlı başlangıç: Günlükler, ölçümler ve izleme ile Azure yay bulut uygulamalarını Izleme](spring-cloud-quickstart-logs-metrics-tracing.md)
 
 * [Azure Ölçüm Gezgini'ni kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
@@ -137,7 +181,7 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 * [Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Öğretici: uyarıları ve eylem gruplarını kullanarak yay bulut kaynaklarını Izleme](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
 
 * [Azure yay bulutu için kotalar ve hizmet planları](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
-

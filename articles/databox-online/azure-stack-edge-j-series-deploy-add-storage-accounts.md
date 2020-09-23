@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU ile verileri depolama hesabına aktarma öğreticisi | Microsoft Docs
-description: Azure Stack Edge GPU cihazındaki yerel ve uç depolama hesaplarına nasıl ekleneceğini ve bağlanalabileceğinizi öğrenin.
+title: Azure Stack Edge Pro GPU ile verileri depolama hesabına aktarma öğreticisi | Microsoft Docs
+description: Azure Stack Edge Pro GPU cihazındaki yerel ve uç depolama hesaplarına nasıl ekleneceğini ve bağlanalabileceğinizi öğrenin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 66c09b7fa0eb8fbf709441da5996fb2237b3e284
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256405"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891066"
 ---
-# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-gpu"></a>Öğretici: Azure Stack Edge GPU ile depolama hesapları aracılığıyla veri aktarımı 
+# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>Öğretici: Azure Stack Edge Pro GPU ile depolama hesapları aracılığıyla veri aktarımı 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu öğreticide, Azure Stack Edge cihazınıza depolama hesaplarının nasıl ekleneceği ve bağlanacağı açıklanmaktadır. Depolama hesapları eklendikten sonra Azure Stack Edge verileri Azure 'a aktarabilir.
+Bu öğreticide, Azure Stack Edge Pro cihazınıza depolama hesaplarının nasıl ekleneceğini ve bu hesapların nasıl bağlanacağı açıklanmaktadır. Depolama hesapları eklendikten sonra Azure Stack Edge Pro, verileri Azure 'a aktarabilir.
 
 Bu yordamın tamamlanması yaklaşık 30 dakika sürebilir.
 
@@ -31,13 +31,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Depolama hesabına Bağlan
 
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure Stack Edge 'e depolama hesapları eklemeden önce şunları yaptığınızdan emin olun:
+Azure Stack Edge Pro 'ya depolama hesapları eklemeden önce şunları yaptığınızdan emin olun:
 
-- Fiziksel cihazınızı [yükleme Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md)bölümünde açıklandığı gibi yüklediniz.
+- Fiziksel cihazınızı [yükleme Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md)' da anlatıldığı şekilde yüklediniz.
 
-- Fiziksel cihazı, [Azure Stack kenarını etkinleştirme](azure-stack-edge-gpu-deploy-activate.md)bölümünde açıklandığı gibi etkinleştirdiniz.
+- Fiziksel cihazı, [Azure Stack Edge Pro 'Yu etkinleştirme](azure-stack-edge-gpu-deploy-activate.md)bölümünde açıklandığı gibi etkinleştirdiniz.
 
 
 ## <a name="add-an-edge-storage-account"></a>Edge depolama hesabı ekleme
@@ -135,7 +135,7 @@ Bu adımların her biri aşağıdaki bölümlerde açıklanmıştır.
 
 ### <a name="get-certificate"></a>Sertifika Al
 
-Blob depolamaya HTTPS üzerinden erişmek için, cihaz için bir SSL sertifikası gerekir. Ayrıca, bu sertifikayı Azure Stack Edge cihazınıza iliştirilmiş bir özel anahtara sahip *. pfx* dosyası olarak yükleyebilirsiniz. Oluşturma hakkında daha fazla bilgi için (yalnızca test ve dev amaçları için) ve bu sertifikaları Azure Stack Edge cihazınıza yükleyin, şuraya gidin:
+Blob depolamaya HTTPS üzerinden erişmek için, cihaz için bir SSL sertifikası gerekir. Ayrıca, bu sertifikayı Azure Stack Edge Pro cihazınıza iliştirilmiş bir özel anahtara sahip *. pfx* dosyası olarak yükleyebilirsiniz. Oluşturma hakkında daha fazla bilgi için (yalnızca test ve dev amaçları için) ve bu sertifikaları Azure Stack Edge Pro cihazınıza yükleyin, şuraya gidin:
 
 - [BLOB uç noktası sertifikası oluşturun](azure-stack-edge-j-series-manage-certificates.md#create-certificates-optional).
 - [BLOB uç noktası sertifikasını karşıya yükleyin](azure-stack-edge-j-series-manage-certificates.md#upload-certificates).
@@ -167,15 +167,15 @@ Azure Depolama Gezgini sertifikaları içeri aktarmak için aşağıdaki adımla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, aşağıdaki Azure Stack Edge konuları hakkında bilgi edindiniz:
+Bu öğreticide, aşağıdaki Azure Stack Edge Pro konuları hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
 > * Depolama hesabı ekleme
 > * Depolama hesabına Bağlan
 
-Azure Stack Edge kullanarak verilerinizi nasıl dönüştürebileceğinizi öğrenmek için sonraki öğreticiye ilerleyin:
+Azure Stack Edge Pro 'Yu kullanarak verilerinizi nasıl dönüştürebileceğinizi öğrenmek için sonraki öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge ile veri dönüştürme](./azure-stack-edge-j-series-deploy-configure-compute.md)
+> [Azure Stack Edge Pro ile veri dönüştürme](./azure-stack-edge-j-series-deploy-configure-compute.md)
 
 

@@ -9,12 +9,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/17/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2232aa46b0586ca62e80c8b9002271a67e4021c1
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b0217766c92ddcd1907eca2c6702d91b02e06c03
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651128"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893646"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları nelerdir?
 
@@ -95,7 +95,7 @@ Bir Azure ML işlem hattı, bir Azure Machine Learning çalışma alanıyla ili�
 
 ### <a name="a-simple-python-pipeline"></a>Basit bir Python işlem hattı
 
-Bu kod parçacığı, temel bir oluşturmak ve çalıştırmak için gereken nesneleri ve çağrıları gösterir `Pipeline` :
+Bu kod parçacığı, oluşturmak ve çalıştırmak için gereken nesneleri ve çağrıları gösterir `Pipeline` :
 
 ```python
 ws = Workspace.from_config() 
@@ -141,7 +141,7 @@ Görsel tasarım yüzeyini tercih eden geliştiriciler, işlem hatları oluştur
 
 Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel avantajları şunlardır:
 
-|Önemli avantaj|Description|
+|Önemli avantaj|Açıklama|
 |:-------:|-----------|
 |**Katılımsız &nbsp; çalıştırmalar**|Adımları güvenilir ve katılımsız bir şekilde paralel veya sırayla çalışacak şekilde zamanlayın. Veri hazırlama ve modelleme son günler veya haftadır ve işlem hatları, işlem çalışırken diğer görevlere odaklanabilmenize olanak tanır. |
 |**Heterojen işlem**|Heterojen ve ölçeklenebilir işlem kaynakları ve depolama konumları genelinde güvenilir bir şekilde koordine edilen birden çok işlem hattı kullanın. HDInsight, GPU veri bilimi VM 'Leri ve Databricks gibi farklı işlem hedeflerinde bireysel ardışık düzen adımlarını çalıştırarak kullanılabilir işlem kaynaklarının verimli bir şekilde kullanılmasını sağlayın.|
@@ -152,7 +152,7 @@ Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure ML işlem hatları, erken geliştirme aşamalarında değer sunmaya başlayan güçlü bir olanaklardır. Takım ve proje büyüdükçe değer artar. Bu makalede, işlem hatlarının Azure Machine Learning Python SDK ile nasıl belirtildiği ve Azure 'da düzenlendiği açıklanmaktadır. Bazı temel kaynak kodlarını gördünüz ve `PipelineStep` kullanılabilir sınıfların bazılarına sunulmuştur. Azure ML işlem hatlarını ne zaman kullanacağınızı ve Azure 'un nasıl çalıştığını anlamalısınız. 
+Azure ML işlem hatları, erken geliştirme aşamalarında değer sunmaya başlayan güçlü bir olanaklardır. Takım ve proje büyüdükçe değer artar. Bu makalede, işlem hatlarının Azure Machine Learning Python SDK ile nasıl belirtildiği ve Azure 'da düzenlendiği açıklanmaktadır. Bazı basit kaynak kodları gördünüz ve `PipelineStep` kullanılabilir sınıfların bazılarına sunuldu. Azure ML işlem hatlarını ne zaman kullanacağınızı ve Azure 'un nasıl çalıştığını anlamalısınız. 
 
 
 + [İlk işlem hattınızı oluşturmayı](how-to-create-your-first-pipeline.md)öğrenin.

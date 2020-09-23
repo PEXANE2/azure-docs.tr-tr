@@ -1,6 +1,6 @@
 ---
-title: Modül erişimi için Azure Stack Edge 'de işlem ağını yönetme | Microsoft Docs
-description: Bir dış IP aracılığıyla modüllere erişmek için Azure Stack kenarınızdan işlem ağının nasıl genişletileceğini açıklar.
+title: İşlem ağını Azure Stack Edge Pro 'da modüllere erişim için yönetme | Microsoft Docs
+description: Azure Stack Edge Pro 'daki işlem ağının bir dış IP aracılığıyla modüllere erişim için nasıl genişletileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,31 +8,31 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 01b0eae7d2e5d1078c0761838081a2379a724a97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84342995"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894121"
 ---
-# <a name="enable-compute-network-on-your-azure-stack-edge"></a>Azure Stack Kenarunuzda işlem ağını etkinleştirin
+# <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzda işlem ağını etkinleştirin
 
-Bu makalede, Azure Stack Edge üzerinde çalışan modüllerin cihazda etkin olan işlem ağına nasıl erişebileceği açıklanmaktadır.
+Bu makalede, Azure Stack Edge Pro 'da çalışan modüllerin cihazda etkin olan işlem ağına nasıl erişebileceği açıklanır.
 
 Ağı yapılandırmak için aşağıdaki adımları uygulayın:
 
-- İşlem için Azure Stack Edge cihazınızda bir ağ arabirimini etkinleştirme
-- Azure Stack Edge 'de işlem ağına erişmek için bir modül ekleyin
+- İşlem için Azure Stack Edge Pro cihazınızda bir ağ arabirimini etkinleştirme
+- Azure Stack Edge Pro 'unuzda işlem ağına erişmek için bir modül ekleyin
 - Modülün etkin ağ arabirimine erişebileceğini doğrulayın
 
 Bu öğreticide, senaryoyu göstermek için bir Web sunucusu uygulama modülünü kullanacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yapmanız gerekir:
 
-- Cihaz kurulumuna sahip bir Azure Stack Edge cihazı tamamlandı.
-- Öğreticiye göre **işlem adımını yapılandırmayı** tamamladınız: cihazınızdaki [Azure Stack Edge ile veri dönüştürme](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute) . Cihazınızın ilişkili bir IoT Hub kaynağına, IoT cihazına ve bir IoT Edge cihazına sahip olması gerekir.
+- Cihaz kurulumu ile bir Azure Stack Edge Pro cihazı tamamlandı.
+- Öğreticiye göre **işlem adımını yapılandırmayı** tamamladınız: cihazınızda [Azure Stack Edge Pro ile veri dönüştürme](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute) . Cihazınızın ilişkili bir IoT Hub kaynağına, IoT cihazına ve bir IoT Edge cihazına sahip olması gerekir.
 
 ## <a name="enable-network-interface-for-compute"></a>İşlem için ağ arabirimini etkinleştir
 
@@ -55,10 +55,10 @@ Cihazınızda çalışan modüllerle bir dış ağ aracılığıyla erişmek iç
 
 ## <a name="add-webserver-app-module"></a>Web sunucusu uygulama modülünü Ekle
 
-Azure Stack Edge cihazınıza bir Web sunucusu uygulama modülü eklemek için aşağıdaki adımları uygulayın.
+Azure Stack Edge Pro cihazınıza bir Web sunucusu uygulama modülü eklemek için aşağıdaki adımları uygulayın.
 
-1. Azure Stack Edge aygıtınızla ilişkili IoT Hub kaynağına gidin ve **IoT Edge cihaz**' ı seçin.
-2. Azure Stack Edge cihazlarınızın ilişkilendirildiği IoT Edge cihazını seçin. **Cihaz ayrıntıları**' nın **Modül ayarla**' yı seçin. **Modül Ekle**' de **+ Ekle** ' yi seçin ve ardından **IoT Edge modülü**' nü seçin.
+1. Azure Stack Edge Pro aygıtınızla ilişkili IoT Hub kaynağına gidin ve **IoT Edge cihaz**' ı seçin.
+2. Azure Stack Edge Pro cihazınıza ilişkin IoT Edge cihazını seçin. **Cihaz ayrıntıları**' nın **Modül ayarla**' yı seçin. **Modül Ekle**' de **+ Ekle** ' yi seçin ve ardından **IoT Edge modülü**' nü seçin.
 3. **IoT Edge özel modüller** dikey penceresinde:
 
     1. Web sunucusu uygulaması modülünüzün dağıtmak istediğiniz bir **ad** belirtin.
@@ -83,7 +83,7 @@ Azure Stack Edge cihazınıza bir Web sunucusu uygulama modülü eklemek için a
 
         ![IoT Edge özel modül dikey penceresinde bağlantı noktası bilgilerini belirtin](media/azure-stack-edge-extend-compute-access-modules/module-information.png)
 
-    4. **Kaydet**'i seçin.
+    4. **Kaydet**’i seçin.
 
 ## <a name="verify-module-access"></a>Modül erişimini doğrula
 

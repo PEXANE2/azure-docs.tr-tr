@@ -11,21 +11,21 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-ms.date: 02/05/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 07a39edcb7a5605759ae70a014549863a038de1c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 0f0dde0da69ad225e39292681fc079aba4b81203
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437063"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885137"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics için Gelişmiş tehdit koruması
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure [SQL veritabanı](sql-database-paas-overview.md)Için Gelişmiş tehdit koruması, [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) , veritabanları için olağandışı ve potansiyel olarak zararlı girişimleri belirten anormal etkinlikleri algılar.
 
-Gelişmiş tehdit koruması, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [Gelişmiş veri güvenliği](advanced-data-security.md) sunumunun bir parçasıdır. Gelişmiş Tehdit Koruması'na merkezi SQL ADS portalı yoluyla erişilebilir ve yönetilebilir.
+Gelişmiş tehdit koruması, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [SQL teklifi Için Azure Defender](azure-defender-for-sql.md) 'ın bir parçasıdır. Gelişmiş tehdit korumasına, SQL Portal için merkezi Azure Defender aracılığıyla erişilebilir ve yönetebilirsiniz.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -55,19 +55,15 @@ Anormal veritabanı etkinliklerinin algılanmasıyla bir e-posta bildirimi alır
 
 ## <a name="explore-alerts-in-the-azure-portal"></a>Azure portal uyarıları araştırma
 
-Gelişmiş tehdit koruması, uyarılarını [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleştirir. Veritabanı ve SQL REKLAMLARı dikey penceresinde canlı SQL Gelişmiş tehdit koruması kutucukları, etkin tehditler durumunu izlemek Azure portal.
+Gelişmiş tehdit koruması, uyarılarını [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleştirir. Veritabanı içindeki canlı SQL Gelişmiş tehdit koruması kutucukları ve Azure portal Defender Blade SQL Azure etkin tehditler durumunu izler.
 
 **Gelişmiş tehdit koruması uyarısı** ' na tıklayarak Azure Güvenlik Merkezi uyarıları sayfasını başlatın ve veritabanında ALGıLANAN etkin SQL tehditleri hakkında genel bir bakış alın.
-
-   ![Gelişmiş tehdit koruması uyarısı](./media/threat-detection-overview/threat_detection_alert.png)
-
-   ![Gelişmiş tehdit koruması alert2](./media/threat-detection-overview/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure [Synapse & Azure SQL veritabanı 'Nda Gelişmiş tehdit koruması](threat-detection-configure.md)hakkında daha fazla bilgi edinin.
 - [Azure SQL yönetilen örneği 'Nde Gelişmiş tehdit koruması](../managed-instance/threat-detection-configure.md)hakkında daha fazla bilgi edinin.
-- [Gelişmiş veri güvenliği](advanced-data-security.md)hakkında daha fazla bilgi edinin.
+- [SQL Için Azure Defender](azure-defender-for-sql.md)hakkında daha fazla bilgi edinin.
 - [Azure SQL veritabanı denetimi](../../azure-sql/database/auditing-overview.md) hakkında daha fazla bilgi edinin
 - [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin
 - Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/)  

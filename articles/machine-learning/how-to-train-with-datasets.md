@@ -12,21 +12,21 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1db62b77f3b9b1bcfc524a68b52c4aef5c16d851
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7a3f839a676723942af2e669839457ed3246aabd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648187"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885891"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning veri kümeleriyle eğitme
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu makalede, eğitim denemeleri [Azure Machine Learning veri kümeleriyle](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true) nasıl çalışacağınızı öğreneceksiniz.  Bağlantı dizeleri veya veri yolları hakkında endişelenmeden, yerel veya uzaktan işlem Hedefinizdeki veri kümelerini kullanabilirsiniz.
 
 Azure Machine Learning veri kümeleri, [Scriptrun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py&preserve-view=true), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true), [hiper sürücü](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py&preserve-view=true) ve [Azure Machine Learning işlem hatları](how-to-create-your-first-pipeline.md)gibi Azure Machine Learning eğitim ürünleriyle sorunsuz bir tümleştirme sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Veri kümeleri oluşturup eğitmeniz için şunlar gerekir:
 

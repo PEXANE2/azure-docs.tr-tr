@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
-ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477451"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898208"
 ---
 # <a name="summarize-data"></a>Verileri Özetleme
 
-Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
+Bu makalede bir Azure Machine Learning Designer modülü açıklanmaktadır.
 
 Giriş tablosundaki her bir sütunu tanımlayan bir dizi standart istatistiksel ölçü oluşturmak için veri özetleme modülünü kullanın.
 
@@ -54,7 +54,7 @@ Modülden rapor aşağıdaki istatistikleri içerebilir.
 |**Eksik değer sayısı**|Sütundaki benzersiz değer sayısı|
 |**Min**|Sütundaki en düşük değer|  
 |**Biçimlendir**|Sütundaki en yüksek değer|
-|**Ortası**|Tüm sütun değerlerinin ortalaması|
+|**Ortalama**|Tüm sütun değerlerinin ortalaması|
 |**Ortalama sapma**|Sütun değerlerinin ortalama sapması|
 |**1. DÖRTTEBİRLİK**|İlk dörttebir değer|
 |**Ortanca**|Ortanca sütun değeri|

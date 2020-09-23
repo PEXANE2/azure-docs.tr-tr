@@ -1,7 +1,7 @@
 ---
 title: Sık sorulan sorular (SSS)
 titleSuffix: Azure SQL Managed Instance
-description: Azure SQL yönetilen örnek hakkında sık sorulan sorular (SSS)
+description: Azure SQL Yönetilen Örneği hakkında sık sorulan sorular (SSS)
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab
-ms.date: 03/17/2020
-ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.reviewer: sstein
+ms.date: 09/21/2020
+ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661427"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887386"
 ---
-# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL yönetilen örnek hakkında sık sorulan sorular (SSS)
+# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Yönetilen Örneği hakkında sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Bu makale, [Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md)hakkında en sık sorulan soruları içerir.
@@ -102,7 +102,7 @@ Evet, yazabilirsiniz. Yönergeler için bkz. [kaynakları bölgeler arasında ta
 
 **Yönetilen örnekten nasıl silebilirim?**
 
-Yönetilen örnekleri Azure portalı, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), [azure CLı](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) veya [Kaynak Yöneticisi REST API 'leri](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)aracılığıyla silebilirsiniz.
+Yönetilen örnekleri Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), [Azure CLı](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) veya [Kaynak Yöneticisi REST API 'leri](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)aracılığıyla silebilirsiniz.
 
 **Bir örneği oluşturmak veya güncelleştirmek ya da bir veritabanını geri yüklemek için ne kadar süre sürer?**
 
@@ -326,7 +326,7 @@ Yönetim ve Dağıtım Hizmetleri, bir dış yük dengeleyiciye eşlenen bir [Y�
 
 **Yönetilen örnek veritabanlarındaki verilere erişmek için genel uç noktasını kullanabilir miyim?**
 
-Evet. Müşterinin, [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)PowerShell/ARM 'den ortak uç nokta veri erişimini etkinleştirmesi  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) ve NSG 'yi, veri bağlantı noktasına (bağlantı noktası numarası 3342) erişimi kilitleyecek şekilde yapılandırması gerekir. Daha fazla bilgi için bkz. [Azure SQL yönetilen örneği 'nde ortak uç noktayı yapılandırma](public-endpoint-configure.md) ve [genel uç noktayla GÜVENLI şekilde Azure SQL yönetilen örneği kullanma](public-endpoint-overview.md). 
+Evet. Müşterinin, [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)PowerShell/ARM 'den ortak uç nokta veri erişiminin etkinleştirilmesi  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) ve NSG 'yi, veri bağlantı noktasına (bağlantı noktası numarası 3342) erişimi kilitleyecek şekilde yapılandırması gerekir. Daha fazla bilgi için bkz. [Azure SQL yönetilen örneği 'nde ortak uç noktayı yapılandırma](public-endpoint-configure.md) ve [genel uç noktayla GÜVENLI şekilde Azure SQL yönetilen örneği kullanma](public-endpoint-overview.md). 
 
 **SQL Data Endpoint için özel bir bağlantı noktası belirtebilir miyim?**
 
@@ -350,7 +350,7 @@ Herhangi bir veri savunma riskini azaltmak için müşterilerin bir dizi güvenl
 - Düşük ayrıcalıklı bir DBA hesabıyla örneğe erişin.
 - Sysadmin hesabı için JıT atlama kutusu erişimini yapılandırın.
 - [SQL denetimini](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)açın ve uyarı mekanizmalarıyla tümleştirin.
-- [Tehdit algılamayı](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) [Gelişmiş VERI güvenliği (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) paketinden açın.
+- [Azure Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) Suite 'Ten [tehdit algılamayı](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) açın.
 
 ## <a name="dns"></a>DNS
 
@@ -450,7 +450,7 @@ Yedekleme Bekletme dönemi kümesinden bağımsız olarak satın alınan ayrılm
 
 **Yedekleme depolama tüketimin fatura maliyetini nasıl izleyebilirim?**
 
-Azure Portal aracılığıyla yedekleme depolama maliyetini izleyebilirsiniz. Yönergeler için bkz. [otomatik yedeklemeler Için izleme maliyetleri](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=managed-instance#monitor-costs). 
+Yedekleme depolama maliyetini Azure portal aracılığıyla izleyebilirsiniz. Yönergeler için bkz. [otomatik yedeklemeler Için izleme maliyetleri](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=managed-instance#monitor-costs). 
 
 **Yönetilen örnekteki yedekleme depolama maliyetlerimi nasıl iyileştirebilirim?**
 

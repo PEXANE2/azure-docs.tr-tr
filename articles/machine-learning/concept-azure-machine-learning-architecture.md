@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c24e9f58154b1523496a82761a8c48ba06dea46c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651256"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886317"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -33,7 +33,7 @@ ms.locfileid: "89651256"
 * Azure Machine Learning kullandığınızda oluşturduğunuz varlıkları depolama, aşağıdakiler dahil:
   * [Ortamlar](#environments)
   * [Denemeler](#experiments)
-  * [Pipelines](#ml-pipelines)
+  * [İşlem hatları](#ml-pipelines)
   * [Veri kümeleri](#datasets-and-datastores)
   * [Modeller](#models)
   * [Uç Noktalar](#endpoints)
@@ -193,7 +193,7 @@ Bir modeli Web hizmeti olarak dağıtmaya ilişkin bir örnek için, bkz. [Azure
 
 #### <a name="real-time-endpoints"></a>Gerçek zamanlı uç noktalar
 
-Tasarımcı 'da (Önizleme) eğitilen bir model dağıttığınızda, [modeli gerçek zamanlı bir uç nokta olarak dağıtabilirsiniz](tutorial-designer-automobile-price-deploy.md). Gerçek zamanlı bir uç nokta, genellikle REST uç noktası aracılığıyla tek bir istek alır ve gerçek zamanlı bir tahmin döndürür. Bu, aynı anda birden çok değeri işleyen ve bir veri deposuna tamamlandığında sonuçları kaydeden toplu işleme karşıtlığına karşılık gelir.
+Tasarımcıda eğitilen bir model dağıttığınızda, [modeli gerçek zamanlı bir uç nokta olarak dağıtabilirsiniz](tutorial-designer-automobile-price-deploy.md). Gerçek zamanlı bir uç nokta, genellikle REST uç noktası aracılığıyla tek bir istek alır ve gerçek zamanlı bir tahmin döndürür. Bu, aynı anda birden çok değeri işleyen ve bir veri deposuna tamamlandığında sonuçları kaydeden toplu işleme karşıtlığına karşılık gelir.
 
 #### <a name="pipeline-endpoints"></a>Ardışık düzen uç noktaları
 
@@ -229,7 +229,7 @@ Machine Learning işlem [hatlarını](concept-ml-pipelines.md) kullanarak makine
 
 Ayrıca, Azure Machine Learning parçası olan etkileşimli araçlara de erişebilirsiniz:
 
-+ Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcı (Önizleme)](concept-designer.md)
++ Kod yazmadan iş akışı adımlarını gerçekleştirmek için [tasarımcı Azure Machine Learning](concept-designer.md)
 + [Otomatik makine öğrenimi](concept-automated-ml.md) için Web deneyimi
 + Tümleşik Jupyter Not defteri sunucularında kendi kodunuzu yazmak ve çalıştırmak için [not defterlerini Azure Machine Learning](how-to-run-jupyter-notebooks.md) .
 + Verilerinizi etiketleyerek projeler oluşturmak, yönetmek ve izlemek için [veri etiketleme projeleri](how-to-create-labeling-projects.md)
@@ -242,6 +242,7 @@ Ayrıca, Azure Machine Learning parçası olan etkileşimli araçlara de erişeb
 
 +  [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
 + [R için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Önizleme) ile herhangi bir r ortamındaki hizmetle etkileşime geçin.
++ Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcısını](concept-designer.md) kullanın. 
 + Otomasyon için [Azure MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) kullanın.
 + [Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmenize, çalıştırmanıza ve yönetmenize olanak sağlar.
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: bd2f7798ca02f4d6eab6d6d78d158a48bcccc010
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206067"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882561"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yüksek kullanılabilirlik
 MySQL için Azure veritabanı hizmeti, [% 99,99](https://azure.microsoft.com/support/legal/sla/mysql) çalışma süresi için mali olarak desteklenen hizmet düzeyi SÖZLEŞMESI (SLA) ile garantili yüksek düzeyde kullanılabilirlik sağlar. MySQL için Azure veritabanı, Kullanıcı tarafından sağlanan ölçek işlem işlemi gibi planlı olaylar sırasında ve ayrıca temel alınan donanım, yazılım veya ağ başarısızlığı gibi planlanmamış olaylar gerçekleştiğinde yüksek kullanılabilirlik sağlar. MySQL için Azure veritabanı en kritik durumlardan hızlı bir şekilde kurturabilir ve bu hizmeti kullanırken neredeyse hiçbir uygulama süresi olmamasını sağlar.
@@ -29,7 +29,7 @@ MySQL için Azure veritabanı, yüksek çalışma süresi gerektiren görev aç�
 ## <a name="planned-downtime-mitigation"></a>Planlanmış kapalı kalma süresi hafifletme
 MySQL için Azure veritabanı, planlanan kapalı kalma işlemleri sırasında yüksek kullanılabilirlik sağlamak üzere tasarlanmıştır. 
 
-![Azure MySQL 'de elastik ölçeklendirmeyi görüntüleme](./media/concepts-high-availability/elastic-scaling-mysql-server.png)
+:::image type="content" source="./media/concepts-high-availability/elastic-scaling-mysql-server.png" alt-text="Azure MySQL 'de elastik ölçeklendirmeyi görüntüleme":::
 
 Aşağıda bazı planlı bakım senaryoları verilmiştir:
 
@@ -46,7 +46,7 @@ Aşağıda bazı planlı bakım senaryoları verilmiştir:
 Planlanmamış kapalı kalma süresi, temel alınan donanım hatası, ağ sorunları ve yazılım hataları da dahil olmak üzere öngörülemeyen hataların sonucu olarak gerçekleşebilir. Veritabanı sunucusu beklenmedik şekilde kapanıyorsa, saniye cinsinden yeni bir veritabanı sunucusu otomatik olarak sağlanır. Uzak depolama, yeni veritabanı sunucusuna otomatik olarak eklenir. MySQL altyapısı, WAL ve veritabanı dosyalarını kullanarak kurtarma işlemini gerçekleştirir ve istemcilerin bağlanmasına izin vermek için veritabanı sunucusunu açar. İşlenmemiş işlemler kaybolur ve uygulama tarafından yeniden denenmeleri gerekir. Planlanmamış kapalı kalma süresini önlemeden, MySQL için Azure veritabanı, insan müdahalesine gerek kalmadan hem veritabanı sunucusunda hem de depolama katmanlarında kurtarma işlemlerini otomatik olarak gerçekleştirerek kapalı kalma süresini azaltır. 
 
 
-![Azure MySQL 'de yüksek kullanılabilirlik görünümü](./media/concepts-high-availability/availability-for-mysql-server.png)
+:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Azure MySQL 'de yüksek kullanılabilirlik görünümü":::
 
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Planlanmamış kapalı kalma süresi: hata senaryoları ve hizmet kurtarma
 Burada bazı hata senaryoları ve MySQL için Azure veritabanı 'nın otomatik olarak nasıl kurtarıldığında:
@@ -60,8 +60,8 @@ Kurtarmak için Kullanıcı eylemi gerektiren bazı hata senaryoları şunlardı
 
 | **Senaryo** | **Kurtarma planı** |
 | ---------- | ---------- |
-| <b>Bölge hatası | Bölge arızası nadir bir olaydır. Ancak, bir bölge hatasından korumaya ihtiyacınız varsa, diğer bölgelerde olağanüstü durum kurtarma (DR) için bir veya daha fazla okuma çoğaltması yapılandırabilirsiniz. (Ayrıntılar için okuma çoğaltmaları oluşturma ve yönetme ile ilgili [Bu makaleye](howto-read-replicas-portal.md) bakın). Bölge düzeyinde bir hata olması durumunda, diğer bölgede yapılandırılan okuma çoğaltmasını üretim veritabanı sunucunuz olacak şekilde el ile yükseltebilirsiniz. |
-| <b>Mantıksal/Kullanıcı hataları | Yanlışlıkla bırakılan tablolar veya yanlış güncelleştirilmiş veriler gibi Kullanıcı hatalarından kurtarma, hata oluşmadan hemen önce geçen zamana kadar verileri geri yükleyerek ve kurtararak bir [zaman içinde kurtarma](concepts-backup.md) (sür) gerçekleştirmeyi içerir.<br> <br>  Veritabanı sunucusundaki tüm veritabanları yerine veritabanlarının yalnızca bir alt kümesini veya belirli tabloları geri yüklemek isterseniz, veritabanı sunucusunu yeni bir örneğe geri yükleyebilir, tabloları [mysqldump](concepts-migrate-dump-restore.md)aracılığıyla dışarı aktarabilir ve ardından [geri yükleme](concepts-migrate-dump-restore.md#restore-your-mysql-database-using-command-line-or-mysql-workbench) kullanarak bu tabloları veritabanınıza geri yükleyebilirsiniz. |
+| <b> Bölge hatası | Bölge arızası nadir bir olaydır. Ancak, bir bölge hatasından korumaya ihtiyacınız varsa, diğer bölgelerde olağanüstü durum kurtarma (DR) için bir veya daha fazla okuma çoğaltması yapılandırabilirsiniz. (Ayrıntılar için okuma çoğaltmaları oluşturma ve yönetme ile ilgili [Bu makaleye](howto-read-replicas-portal.md) bakın). Bölge düzeyinde bir hata olması durumunda, diğer bölgede yapılandırılan okuma çoğaltmasını üretim veritabanı sunucunuz olacak şekilde el ile yükseltebilirsiniz. |
+| <b> Mantıksal/Kullanıcı hataları | Yanlışlıkla bırakılan tablolar veya yanlış güncelleştirilmiş veriler gibi Kullanıcı hatalarından kurtarma, hata oluşmadan hemen önce geçen zamana kadar verileri geri yükleyerek ve kurtararak bir [zaman içinde kurtarma](concepts-backup.md) (sür) gerçekleştirmeyi içerir.<br> <br>  Veritabanı sunucusundaki tüm veritabanları yerine veritabanlarının yalnızca bir alt kümesini veya belirli tabloları geri yüklemek isterseniz, veritabanı sunucusunu yeni bir örneğe geri yükleyebilir, tabloları [mysqldump](concepts-migrate-dump-restore.md)aracılığıyla dışarı aktarabilir ve ardından [geri yükleme](concepts-migrate-dump-restore.md#restore-your-mysql-database-using-command-line-or-mysql-workbench) kullanarak bu tabloları veritabanınıza geri yükleyebilirsiniz. |
 
 
 

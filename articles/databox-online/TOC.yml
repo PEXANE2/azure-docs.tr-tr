@@ -1,11 +1,11 @@
-- name: Azure Stack Edge ve Data Box Gateway Belgeleri
+- name: Azure Stack Edge Pro ve Data Box Gateway Belgeleri
   href: /azure/databox-online/
   expanded: true
-- name: GPU ile Azure Stack Edge (Önizleme)
+- name: Azure Stack Edge Pro - GPU
   items:
     - name: Genel Bakış
       items:
-        - name: GPU ile Azure Stack Edge nedir?
+        - name: GPU ile Azure Stack Edge Pro nedir?
           href: azure-stack-edge-gpu-overview.md
     - name: Öğreticiler
       items:
@@ -45,7 +45,7 @@
               href: azure-stack-edge-gpu-technical-specifications-compliance.md
             - name: Güç kablosu belirtimleri
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
-        - name: Kubernetes'i anlama
+        - name: Kubernetes’i anlama (Önizleme)
           items:
             - name: Kubernetes nedir?
               href: azure-stack-edge-gpu-kubernetes-overview.md
@@ -67,7 +67,7 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: Market aracılığıyla GPU modülü
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-        - name: Kubernetes iş yüklerini dağıtma
+        - name: Kubernetes iş yüklerini dağıtma (Önizleme)
           items:
             - name: kubectl yoluyla
               items:
@@ -83,13 +83,13 @@
               items:
                 - name: Durum bilgisi olmayan uygulama
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-            - name: Azure Arc yoluyla
+            - name: Azure Arc aracılığıyla (Önizleme)
               items:
                 - name: Kubernetes kümesinde Arc'ı etkinleştirme
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: GitOps yoluyla durum bilgisi olmayan uygulamayı dağıtma
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
-        - name: Azure Resource Manager'ı yapılandırma
+        - name: Azure Resource Manager’ı yapılandırma (Önizleme)
           items:
             - name: Azure PowerShell yoluyla bağlanma
               href: azure-stack-edge-j-series-connect-resource-manager.md
@@ -97,7 +97,7 @@
               href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
             - name: İstemci TLS ayarlarını yapılandırma
               href: azure-stack-edge-j-series-configure-tls-settings.md
-        - name: VM’leri dağıtma
+        - name: VM’leri dağıtma (Önizleme)
           items:
             - name: VM'leri dağıtma - Şablonlar
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
@@ -136,7 +136,7 @@
         - name: Cihaz yönetme
           items:
             - name: 'Güç, erişim, bağlantı'
-              href: azure-stack-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-gpu-manage-access-power-connectivity-mode.md
             - name: PowerShell aracılığıyla
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: Güncelleştirme uygulama
@@ -161,7 +161,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Sürüm notları
       items:
-        - name: 2008 - Sürüm notları
+        - name: 2009 - Genel Kullanılabilirlik
+          href: azure-stack-edge-gpu-2009-release-notes.md
+        - name: 2008 - Önizleme
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: Başvuru
       items:
@@ -171,11 +173,11 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
-- name: FPGA ile Azure Stack Edge
+- name: Azure Stack Edge Pro - FPGA
   items:
     - name: Genel Bakış
       items:
-        - name: FPGA ile Azure Stack Edge nedir?
+        - name: FPGA ile Azure Stack Edge Pro nedir?
           href: azure-stack-edge-overview.md
     - name: Öğreticiler
       items:
@@ -259,6 +261,18 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Azure Stack Edge Pro R
+  items:
+    - name: Genel Bakış
+      items:
+        - name: Azure Stack Edge Pro R nedir?
+          href: azure-stack-edge-j-series-overview.md
+- name: Azure Stack Edge Mini R
+  items:
+    - name: Genel Bakış
+      items:
+        - name: Azure Stack Edge Mini R nedir?
+          href: azure-stack-edge-k-series-overview.md
 - name: Data Box Gateway
   items:
     - name: Genel Bakış
@@ -323,9 +337,9 @@
           href: data-box-gateway-release-notes.md
 - name: Kaynaklar
   items:
-    - name: Azure Stack Edge C# modülü örnekleri (.NET)
+    - name: Azure Stack Edge Pro C# modülü örnekleri (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Azure Stack Edge/Data Box Gateway ürünü
+    - name: Azure Stack Edge Pro/Data Box Gateway ürünü
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

@@ -2,13 +2,13 @@
 title: Sık sorulan sorular-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs ve yanıtları hakkında sık sorulan soruların (SSS) bir listesi sunulmaktadır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/16/2020
+ms.openlocfilehash: b852af961327fbecb773c0608dfb823093e17267
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89288976"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883387"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs sık sorulan sorular
 
@@ -55,6 +55,9 @@ Depolama hesabınızdaki yakalanan veriler için saklama süresini yapılandıra
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Event Hubs izleme Nasıl yaparım??
 Event Hubs kaynaklarınızın durumunu [Azure izleyici](../azure-monitor/overview.md)'ye sağlayan ayrıntılı ölçümleri yayar. Ayrıca, yalnızca ad alanı düzeyinde değil, varlık düzeyinde de Event Hubs hizmetin genel durumunu değerlendirmenize imkan tanır. [Azure Event Hubs](event-hubs-metrics-azure-monitor.md)için hangi izlemenin sunulmakta olduğunu öğrenin.
 
+### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure Event Hubs müşteri verilerini nerede depolar?
+Azure Event Hubs, müşteri verilerini depolar. Bu veriler tek bir bölgede Event Hubs tarafından otomatik olarak depolanır. bu nedenle bu hizmet, [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler de dahil olmak üzere bölge verileri 'nin gereksinimlerini otomatik olarak karşılar.
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Güvenlik duvarında hangi bağlantı noktalarını açmalıyım? 
 Aşağıdaki protokolleri, ileti göndermek ve almak için Azure Service Bus ile birlikte kullanabilirsiniz:
 
@@ -78,9 +81,9 @@ Bağlantılarınızın izin verilen listesine eklenecek doğru IP adreslerini bu
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . Aynı zamanda, ad alanını farklı bir kümeye geri yüklemeniz durumunda değişir.
+2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . 
 
-Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapmanız gerekir: 
+Ad alanınız için **bölge yedekliliği** kullanırsanız, birkaç ek adım yapmanız gerekir: 
 
 1. İlk olarak, ad alanında Nslookup ' ı çalıştırırsınız.
 
@@ -94,9 +97,12 @@ Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapman
     <name>-s2.cloudapp.net
     <name>-s3.cloudapp.net
     ```
+
+    > [!NOTE]
+    > Komut tarafından döndürülen IP adresi `nslookup` statik BIR IP adresi değil. Ancak, temeldeki dağıtım silinene veya farklı bir kümeye taşınana kadar sabit kalır.
 3. Her biri için S1, S2 ve S3 sonekleri ile her biri için Nslookup ' ı çalıştırarak üç kullanılabilirlik alanında çalışan üç örnek için IP adreslerini alın. 
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>Ad alanım 'dan istemci IP 'si gönderme veya alma iletisi bulabilirim?
+### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Ad alanım 'a ileti gönderen veya iletiyi alan istemci IP 'yi nerede bulabilirim?
 İlk olarak, ad alanında [IP filtrelemeyi](event-hubs-ip-filtering.md) etkinleştirin. 
 
 Ardından [tanılama günlüklerini etkinleştirme](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)' deki yönergeleri izleyerek [Event Hubs sanal ağ bağlantı olayları](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) için tanılama günlüklerini etkinleştirin. Bağlantının reddedildiği IP adresini görürsünüz.
@@ -197,7 +203,7 @@ Sonuçlar, adanmış bir Event Hubs kümesiyle neler elde edilebileceklerini siz
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Nasıl yaparım? bir Event Hubs Ayrılmış kümesi mi oluşturulsun?
 Bir [Kota artışı destek isteği](https://portal.azure.com/#create/Microsoft.Support) göndererek veya [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurarak Event Hubs adanmış bir küme oluşturursunuz. Genellikle, kümenin dağıtımını yapmak için iki hafta sürer ve sizin tarafınızdan kullanılmak üzere kullanıma alınır. Bu işlem, Azure portal aracılığıyla tam bir self servis olana kadar geçicidir.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 ### <a name="how-many-partitions-do-i-need"></a>Kaç bölüme ihtiyacım var?
 Bölüm sayısı, oluşturma sırasında belirtilir ve 2 ile 32 arasında olmalıdır. Bölüm sayısı değiştirilemez olmadığından, bölüm sayısını ayarlarken uzun vadeli ölçeği dikkate almanız gerekir. Bölümler, tüketen uygulamalarda gerekli aşağı akış paralelliğiyle ilişkili bir veri düzenleme mekanizmasıdır. Bir olay hub'ındaki bölüm sayısı, sahip olmayı beklediğiniz eşzamanlı okuyucu sayısıyla doğrudan ilgilidir. Bölümler hakkında daha fazla bilgi için bkz. [bölümler](event-hubs-features.md#partitions).

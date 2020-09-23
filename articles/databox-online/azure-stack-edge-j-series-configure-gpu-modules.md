@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge GPU cihazında GPU modülünü çalıştırma | Microsoft Docs
-description: Azure portal aracılığıyla bir Azure Stack Edge cihazında GPU üzerinde bir modülün nasıl yapılandırılacağını ve çalıştırılacağını açıklar.
+title: Microsoft Azure Stack Edge Pro GPU cihazında GPU modülünü çalıştırma | Microsoft Docs
+description: Azure portal aracılığıyla bir Azure Stack Edge Pro cihazında GPU üzerinde bir modülün nasıl yapılandırılacağını ve çalıştırılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 419b8beb866711e80b4366df4398eb248256021b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266961"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891457"
 ---
-# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-device"></a>Azure Stack Edge cihazında GPU üzerinde bir modül yapılandırma ve çalıştırma
+# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazında GPU 'da modül yapılandırma ve çalıştırma
 
-Azure Stack Edge cihazınız bir veya daha fazla grafik Işleme birimi (GPU) içerir. GPU 'Lar, paralel işleme özellikleri sundukları ve merkezi Işleme birimlerinden (CPU) görüntü işlemeye daha hızlı bir şekilde, AI hesaplamaları için popüler bir seçimdir. Azure Stack Edge cihazında bulunan GPU hakkında daha fazla bilgi için [Azure Stack Edge cihazı teknik özellikleri](azure-stack-edge-gpu-technical-specifications-compliance.md)' ne gidin.
+Azure Stack Edge Pro cihazınız bir veya daha fazla grafik Işleme birimi (GPU) içerir. GPU 'Lar, paralel işleme özellikleri sundukları ve merkezi Işleme birimlerinden (CPU) görüntü işlemeye daha hızlı bir şekilde, AI hesaplamaları için popüler bir seçimdir. Azure Stack Edge Pro cihazınızda bulunan GPU hakkında daha fazla bilgi için [Azure Stack Edge Pro cihaz teknik özellikleri](azure-stack-edge-gpu-technical-specifications-compliance.md)' ne gidin.
 
-Bu makalede, Azure Stack Edge cihazınızda GPU üzerinde bir modülün nasıl yapılandırılacağı ve çalıştırılacağı açıklanır. Bu makalede, NVIDIA T4 GPU 'ları için yazılmış genel olarak kullanılabilir kapsayıcı modülü **basamaklarını** kullanacaksınız. Bu yordam, bu GPU 'Lar için NVIDIA tarafından yayımlanan diğer modülleri yapılandırmak üzere kullanılabilir.
+Bu makalede, Azure Stack Edge Pro cihazınızda GPU üzerinde bir modülün nasıl yapılandırılacağı ve çalıştırılacağı açıklanır. Bu makalede, NVIDIA T4 GPU 'ları için yazılmış genel olarak kullanılabilir kapsayıcı modülü **basamaklarını** kullanacaksınız. Bu yordam, bu GPU 'Lar için NVIDIA tarafından yayımlanan diğer modülleri yapılandırmak üzere kullanılabilir.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-1. GPU etkin 1 düğümlü Azure Stack Edge cihazına erişirsiniz. Bu cihaz Azure 'da bir kaynakla etkinleştirildi.  
+1. GPU etkin 1 düğümlü Azure Stack Edge Pro cihazına erişirsiniz. Bu cihaz Azure 'da bir kaynakla etkinleştirildi.  
 
 ## <a name="configure-module-to-use-gpu"></a>Modülü GPU 'YU kullanacak şekilde yapılandırma
 
-Modül çalıştırmak için Azure Stack Edge cihazınızda GPU 'YU kullanmak üzere bir modül yapılandırmak için aşağıdaki adımları izleyin.
+Modül çalıştırmak için Azure Stack Edge Pro cihazınızda GPU 'YU kullanmak üzere bir modül yapılandırmak için aşağıdaki adımları izleyin.
 
 1. Azure portal, aygıtınızla ilişkili kaynağa gidin. 
 
@@ -54,7 +54,7 @@ Modül çalıştırmak için Azure Stack Edge cihazınızda GPU 'YU kullanmak ü
 
     ![Modülü GPU 6 kullanacak şekilde yapılandırma](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
 
-    Sağ bölmede, Azure Stack Edge cihazlarınızın ilişkilendirildiği IoT Edge cihazını görürsünüz. Bu, IoT Hub kaynağı oluştururken önceki adımda oluşturduğunuz IoT Edge cihazına karşılık gelir. 
+    Sağ bölmede, Azure Stack Edge Pro cihazınıza ilişkin IoT Edge cihazı görürsünüz. Bu, IoT Hub kaynağı oluştururken önceki adımda oluşturduğunuz IoT Edge cihazına karşılık gelir. 
     
 6. Bu cihaz IoT Edge seçin.
 

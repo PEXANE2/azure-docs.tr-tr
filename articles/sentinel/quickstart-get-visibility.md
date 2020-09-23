@@ -8,14 +8,14 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
-ms.date: 09/23/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 304f80dcb2da4ed60bd94e9fb4d71d985da87cc2
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fe2a632901b32993d46e723ab73fce045bfa9f84
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661990"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889132"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı başlangıç: Azure Sentinel ile çalışmaya başlama
 
@@ -44,7 +44,6 @@ Genel Bakış sayfasının ana gövdesi, çalışma alanınızın güvenlik duru
 
    ![Kötü amaçlı trafik Haritası](./media/qs-get-visibility/map.png)
 
-
 - **Son olaylar**: son olaylarınızı, bunların önem derecesini ve olayla ilişkili uyarı sayısını görüntülemek için. Belirli bir uyarı türünde ani Tepe olarak görüyorsanız, çalışmakta olan etkin bir saldırı olduğu anlamına gelebilir. Örneğin, kimlik için Microsoft Defender 'dan (eski adıyla Azure ATP) en fazla 20 geçiş karma olay uygulamanız varsa, birisi şu anda sizi saldırılara çalışıyor olabilir.
 
 - **Veri kaynağı Anomali**: Microsoft 'un veri analistleri için veri kaynaklarınızdan verileri sürekli olarak arama modellerini oluşturdu. Herhangi bir sorun yoksa, hiçbir şey görüntülenmez. Bozukluklar algılanırsa, ne olduğunu görmek için bunlara ayrıntılı bir bakış uygulamanız gerekir. Örneğin, Azure 'da ani artış ' a tıklayın. Ne zaman meydana geldiğini görmek için **grafiğe** tıklayabilir ve sonra ne olduğunu görmek için o zaman diliminde gerçekleşen etkinliklere filtre uygulayabilirsiniz.
@@ -67,7 +66,7 @@ Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemes
       ![Palo Alto panosu](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Ana sorgu sorgusu düzenleme düğmesini düzenleyerek çalışma kitaplarını özelleştirebilirsiniz ![ ](./media/qs-get-visibility/edit-query-button.png) . ![ ](./media/qs-get-visibility/go-to-la-button.png) [Sorguyu düzenlemek için Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek üzere düğme günlüğü Analizi düğmesine tıklayabilir ve üç nokta (...) simgesini seçip **kutucuk verilerini Özelleştir**' i seçerek ana saat filtresini düzenlemenizi veya belirli kutucukları çalışma kitabından kaldırmanızı sağlayabilirsiniz.
+Ana sorgu sorgusu düzenleme düğmesini düzenleyerek çalışma kitaplarını özelleştirebilirsiniz ![ ](./media/qs-get-visibility/edit-query-button.png) . ![ ](./media/qs-get-visibility/go-to-la-button.png) [Sorguyu düzenlemek için Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek üzere düğme Log Analytics düğmesine tıklayabilir ve üç nokta (...) simgesini seçip, ana saat filtresini düzenlemenizi veya belirli kutucukları çalışma kitabından kaldırmanızı sağlayan **kutucuk verilerini Özelleştir**' i seçebilirsiniz.
 
 Sorgularla çalışma hakkında daha fazla bilgi için bkz [. Öğretici: Log Analytics Içindeki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

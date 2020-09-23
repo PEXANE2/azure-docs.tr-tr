@@ -1,6 +1,6 @@
 ---
 title: Algoritma ve modül başvurusu
-description: Azure Machine Learning tasarımcısında kullanılabilen modüller hakkında bilgi edinin (Önizleme)
+description: Azure Machine Learning tasarımcısında kullanılabilen modüller hakkında bilgi edinin
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: a588c58c74ab9632f3c3c61e223dd37704103714
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a2e21696409c320b89d1fed54fefad953b955e1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048101"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886398"
 ---
-# <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer için algoritma & modül başvurusu (Önizleme)
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı için algoritma & modül başvurusu
 
-Bu başvuru içeriği, Azure Machine Learning tasarımcısında bulunan her makine öğrenimi algoritması ve modülleriyle ilgili teknik arka plan sağlar (Önizleme).
+Bu başvuru içeriği, Azure Machine Learning tasarımcısında bulunan her makine öğrenimi algoritmalarından ve modüllerine ilişkin teknik arka plan sağlar.
 
 Her modül, gerekli girişler verildiğinde bağımsız olarak çalışabilen ve makine öğrenimi görevi gerçekleştiren bir kod kümesini temsil eder. Bir modül belirli bir algoritma içerebilir veya eksik değer değiştirme veya istatistiksel analiz gibi makine öğrenimi için önemli bir görev gerçekleştirebilir.
 
@@ -43,16 +43,16 @@ Algoritma seçme konusunda yardım için bkz.
 
 | İşlev | Açıklama | Modül |
 | --- |--- | --- |
-| Regresyon | Bir değer tahmin edin. | [Artırmalı Karar Ağacı Regresyonu](boosted-decision-tree-regression.md) <br/> [Karar Ormanı Regresyonu](decision-forest-regression.md) <br/> [Hızlı orman Quantile gerileme](fast-forest-quantile-regression.md)  <br/> [Çizgisel Regresyon](linear-regression.md)  <br/> [Sinir Ağı Regresyonu](neural-network-regression.md)  <br/> [Poisson gerileme](poisson-regression.md)  <br/>|
-| Kümeleniyor | Verileri birlikte gruplandırın.| [K Ortalamaları Kümeleme](k-means-clustering.md)
+| Regresyon | Bir değer tahmin edin. | [Artırmalı Karar Ağacı Regresyonu](boosted-decision-tree-regression.md) <br/> [Karar Ormanı Regresyonu](decision-forest-regression.md) <br/> [Hızlı Orman Dağılım Dilimi Regresyonu](fast-forest-quantile-regression.md)  <br/> [Çizgisel Regresyon](linear-regression.md)  <br/> [Sinir Ağı Regresyonu](neural-network-regression.md)  <br/> [Poisson Regresyonu](poisson-regression.md)  <br/>|
+| Kümeleme | Verileri birlikte gruplandırın.| [K Ortalamaları Kümeleme](k-means-clustering.md)
 | Sınıflandırma | Bir sınıfı tahmin edin.  İkili (iki sınıf) veya birden çok sınıf algoritmalarından birini seçin.| [Çok Sınıflı Artırmalı Karar Ağacı](multiclass-boosted-decision-tree.md) <br/> [Çok Sınıflı Karar Ormanı](multiclass-decision-forest.md) <br/> [Çok Sınıflı Lojistik Regresyon](multiclass-logistic-regression.md)  <br/> [Çok Sınıflı Sinir Ağı](multiclass-neural-network.md) <br/> [Bir - Tüm Çok Sınıflılık Karşılaştırması](one-vs-all-multiclass.md) <br/> [İki Sınıflı Ortalaması Alınmış Perceptron](two-class-averaged-perceptron.md) <br/>  [İki Sınıflı Artırmalı Karar Ağacı](two-class-boosted-decision-tree.md)  <br/> [İki Sınıflı Karar Ormanı](two-class-decision-forest.md) <br/>  [Çift Sınıflı Lojistik Regresyon](two-class-logistic-regression.md) <br/> [İki Sınıflı Sinir Ağı](two-class-neural-network.md) <br/> [İki Sınıflı Destek Vektör Makinesi](two-class-support-vector-machine.md) | 
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Model oluşturma ve değerlendirme için modüller
 
 | İşlev | Açıklama | Modül |
 | --- |--- | --- |
-| Model eğitimi | Algoritmayı kullanarak verileri çalıştırın. |  [Kümeleme Modeli Eğitme](train-clustering-model.md) <br/> [Model Eğitme](train-model.md) <br/> [Pytorch modelini eğitme](train-pytorch-model.md) <br/> [Model Hiper Parametrelerini Ayarlama](tune-model-hyperparameters.md) |
-| Model Puanlama ve değerlendirme | Eğitilen modelin doğruluğunu ölçün. | [Dönüşüm Uygulama](apply-transformation.md) <br/> [Kümelere Veri Atama](assign-data-to-clusters.md) <br/> [Modeli Çapraz Doğrulama](cross-validate-model.md) <br/> [Modeli Değerlendirme](evaluate-model.md) <br/> [Görüntü Modelini Puanlama](score-image-model.md) <br/> [Modeli Puanlama](score-model.md) |
+| Model eğitimi | Algoritmayı kullanarak verileri çalıştırın. |  [Kümeleme Modelini Eğitme](train-clustering-model.md) <br/> [Model Eğitme](train-model.md) <br/> [Pytorch modelini eğitme](train-pytorch-model.md) <br/> [Model Hiper Parametrelerini Ayarlama](tune-model-hyperparameters.md) |
+| Model Puanlama ve değerlendirme | Eğitilen modelin doğruluğunu ölçün. | [Dönüşüm Uygulama](apply-transformation.md) <br/> [Kümelere Veri Atama](assign-data-to-clusters.md) <br/> [Modeli Çapraz Doğrulama](cross-validate-model.md) <br/> [Modeli Değerlendirme](evaluate-model.md) <br/> [Görüntü Modelini Puanlama](score-image-model.md) <br/> [Puanlama Modeli](score-model.md) |
 | Python dili | Kod yazıp bir modüle katıştırın ve Python 'u işlem hattınızla tümleştirin. | [Python Modeli Oluşturma](create-python-model.md) <br/> [Python Betiği Yürütme](execute-python-script.md) |
 | R dili | Kod yazın ve bir modüle ekleyin ve bunu işlem hattınızla birlikte tümleştirin. | [R Betiği yürütme](execute-r-script.md) |
 | Metin Analizi | Yapılandırılmış ve yapılandırılmamış metinle çalışmak için özelleştirilmiş hesaplama araçları sağlar. |  [Sözcüğü Vektöre Dönüştürme](convert-word-to-vector.md) <br/> [Metinden N-Gram Özelliklerini Ayıklama](extract-n-gram-features-from-text.md) <br/> [Özellik Karma](feature-hashing.md) <br/> [Metni Ön İşleme](preprocess-text.md) <br/> [Görünmeyen Dirichlet Ayırması](latent-dirichlet-allocation.md) <br/> [Vowpal Wabbit Modelini Puanlama](score-vowpal-wabbit-model.md) <br/> [Vowpal Wabbit Modelini Eğitme](train-vowpal-wabbit-model.md)|

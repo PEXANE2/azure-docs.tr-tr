@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
