@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014600"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982964"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -156,7 +156,8 @@ Azure uzaktan Işleme, video ile çerçeve oluşturmayı ve yeniden projeksiyonu
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Dama tahtası stili, model yüklendikten sonra işlenir
 
-İşlenmiş görüntü şuna benzer: ![ dama tahtası ](../reference/media/checkerboard.png) daha sonra [Standart yapılandırma boyutu için Çokgen sınırlarına](../reference/vm-sizes.md)rastlanıyor. Azaltmak için, **Premium** yapılandırma boyutuna geçin veya görünür çokgenler sayısını azaltın.
+İşlenmiş resim şuna benziyorsa: ![ ekran görüntüsü, bir Araçlar menüsü ile siyah ve beyaz karelerin bir kılavuzunu gösterir.](../reference/media/checkerboard.png)
+ardından, işleyici [Standart yapılandırma boyutu için Çokgen sınırlarını](../reference/vm-sizes.md)isabetler. Azaltmak için, **Premium** yapılandırma boyutuna geçin veya görünür çokgenler sayısını azaltın.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity 'de işlenen görüntü, baş aşağı
 
@@ -216,7 +217,7 @@ Yukarıdaki adımlar tükenirse ve kalan z mücadele kabul edilemez ise, z 'nin 
 
 ARR, yüzeylerin z-Fige olup olmadığını belirlemek için bir özelliğe sahiptir: [dama tahtası vurgulama](../overview/features/z-fighting-mitigation.md). Ayrıca, z 'ye ne neden olduğunu görsel olarak belirleyebilirsiniz. Aşağıdaki ilk animasyon, uzaklığa göre derinlemesine bir duyarlık kaybı örneği gösterir ve ikincisi neredeyse coplanar yüzeylerinin bir örneğini gösterir:
 
-![Derinlik-duyarlık-z-Fighting](./media/depth-precision-z-fighting.gif)  ![coplanar-z-Fighting](./media/coplanar-z-fighting.gif)
+![Animasyon, uzaklığa göre derinlemesine bir duyarlık kaybı örneği gösterir.](./media/depth-precision-z-fighting.gif)  ![Animasyon, neredeyse coplanar yüzeylerine bir örnek gösterir.](./media/coplanar-z-fighting.gif)
 
 Nedeni öğrenmek için bu örnekleri z ile karşılaştırın ya da isteğe bağlı olarak bu adım adım iş akışını izleyin:
 

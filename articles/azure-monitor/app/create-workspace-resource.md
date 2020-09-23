@@ -4,15 +4,15 @@ description: Yeni Azure Izleyici Application Insights çalışma alanı tabanlı
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783850"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894543"
 ---
-# <a name="workspace-based-application-insights-resources-preview"></a>Çalışma alanı tabanlı Application Insights kaynakları (Önizleme)
+# <a name="workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynakları
 
 Çalışma alanı tabanlı kaynaklar Application Insights ve Log Analytics arasında tam tümleştirmeyi destekler. Artık Application Insights telemetrinizi ortak bir Log Analytics çalışma alanına göndermenizi seçebilirsiniz. Bu, uygulama, altyapı ve platform günlüklerinin tek bir birleştirilmiş konumda tutulması sırasında tüm Log Analytics özelliklerine tam erişim sağlar.
 
@@ -21,7 +21,19 @@ Bu Ayrıca, kaynaklarınız genelinde ortak rol tabanlı Access Control (RBAC) s
 > [!NOTE]
 > Çalışma alanı tabanlı Application Insights kaynakları için veri alımı ve saklama, verilerin bulunduğu Log Analytics çalışma alanı üzerinden faturalandırılır. Çalışma alanı tabanlı Application Insights kaynakları için faturalandırma hakkında [daha fazla bilgi edinin]( ./pricing.md#workspace-based-application-insights) .
 
-Yeni deneyimi test etmek için [Azure Portal](https://portal.azure.com)oturum açın ve bir Application Insights kaynağı oluşturun:
+## <a name="new-capabilities"></a>Yeni özellikler
+
+Çalışma alanı tabanlı Application Insights, Azure Izleyici 'nin en son özelliklerini ve aşağıdakiler dahil Log Analytics yararlanmanızı sağlar:
+
+* [Müşteri tarafından yönetilen anahtarlar (CMK)](../platform/customer-managed-keys.md) , yalnızca erişiminiz olan şifreleme anahtarlarıyla verileriniz için bekleyen şifreleme sağlar.
+* [Azure özel bağlantı](../platform/private-link-security.md) , Özel uç noktaları kullanarak Azure PaaS hizmetlerini sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir.
+* [Profil Oluşturucu Için kendi depolama alanınızı (BYOS) getirin ve Snapshot Debugger](./profiler-bring-your-own-storage.md) , bekleyen şifreleme ilkesi, ömür yönetimi ilkesi ve Application Insights Profiler ve Snapshot Debugger ilişkili tüm veriler için ağ erişimi üzerinde tam denetim sağlar. 
+* [Kapasite ayırma katmanları](../platform/manage-cost-storage.md#pricing-model) , Kullandıkça Öde fiyatına kıyasla %25 ' e kadar tasarruf sağlar. 
+* Log Analytics akışı alımı aracılığıyla daha hızlı veri alma.
+
+## <a name="create-workspace-based-resource"></a>Çalışma alanı tabanlı kaynak oluştur
+
+[Azure Portal](https://portal.azure.com)oturum açın ve bir Application Insights kaynağı oluşturun:
 
 ![Çalışma alanı tabanlı Application Insights kaynağı](./media/create-workspace-resource/create-workspace-based.png)
 
@@ -36,7 +48,7 @@ Kaynağınız oluşturulduktan sonra **genel bakış** bölmesinde ilgili çalı
 Mavi bağlantı metnine tıkladığınızda, yeni Birleşik çalışma alanı sorgu ortamından yararlanabilmeniz için ilgili Log Analytics çalışma alanına gidecektir.
 
 > [!NOTE]
-> Application Insights deneyiminde Application Insights klasik kaynak sorguları, çalışma kitapları ve günlük tabanlı uyarılarınız için de tam geriye doğru uyumluluk sağlıyoruz. [Yeni çalışma alanı tabanlı tablo yapısına/şemasına](apm-tables.md) karşı sorgu/görünüm için öncelikle Log Analytics çalışma alanınıza gitmeniz gerekir. Önizleme sırasında, Application Insights bölmeleri içinden **günlüklerin** seçilmesi, klasik Application Insights sorgu deneyimine erişmenizi sağlayacaktır.
+> Application Insights deneyiminde Application Insights klasik kaynak sorguları, çalışma kitapları ve günlük tabanlı uyarılarınız için de tam geriye doğru uyumluluk sağlıyoruz. [Yeni çalışma alanı tabanlı tablo yapısına/şemasına](apm-tables.md) karşı sorgu/görünüm için öncelikle Log Analytics çalışma alanınıza gitmeniz gerekir. Application Insights bölmeleri içinden **Günlükler (Analiz)** seçilmesi, klasik Application Insights sorgu deneyimine erişmenizi sağlayacaktır.
 
 ## <a name="copy-the-connection-string"></a>Bağlantı dizesini kopyalayın
 
@@ -185,14 +197,6 @@ Bu komutla ilgili tam Azure CLı belgeleri için [Azure CLI belgelerine](/cli/az
 
 ```
 
-## <a name="new-capabilities"></a>Yeni özellikler
-
-Çalışma alanı tabanlı Application Insights, aşağıdakiler dahil olmak üzere Azure Izleyici 'nin tüm en son özellikleri avantajlarından yararlanmanızı sağlar:
-
-* [Müşteri tarafından yönetilen anahtarlar (CMK)](../platform/customer-managed-keys.md) , yalnızca erişiminiz olan şifreleme anahtarlarıyla verileriniz için bekleyen şifreleme sağlar.
-* [Azure özel bağlantı](../platform/private-link-security.md) , Özel uç noktaları kullanarak Azure PaaS hizmetlerini sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir.
-* [Profil Oluşturucu Için kendi depolama alanınızı (BYOS) getirin ve Snapshot Debugger](./profiler-bring-your-own-storage.md) , bekleyen şifreleme ilkesi, ömür yönetimi ilkesi ve Application Insights Profiler ve Snapshot Debugger ilişkili tüm veriler için ağ erişimi üzerinde tam denetim sağlar. 
-
 ## <a name="modifying-the-associated-workspace"></a>İlişkili çalışma alanını değiştirme
 
 Çalışma alanı tabanlı bir Application Insights kaynağı oluşturulduktan sonra, ilişkili Log Analytics çalışma alanını değiştirebilirsiniz.
@@ -207,8 +211,3 @@ Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynakla
 
 * [Ölçümleri keşfetme](../platform/metrics-charts.md)
 * [Analytics sorguları yazma](../log-query/log-query-overview.md)
-
-[api]: ./api-custom-events-metrics.md
-[diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
-[start]: ./app-insights-overview.md

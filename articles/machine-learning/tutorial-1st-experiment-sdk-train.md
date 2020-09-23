@@ -1,233 +1,403 @@
 ---
-title: "Öğretici: Python 'da ilk Azure ML modelinizi eğitme"
+title: 'Öğretici: ilk makine öğrenimi modelinizi eğitme-Python'
 titleSuffix: Azure Machine Learning
-description: Bu öğreticide Azure Machine Learning temel tasarım düzenlerini öğrenir ve diabetes veri kümesine bağlı olarak basit bir scikit-öğrenme modeli eğitirsiniz.
+description: Azure Machine Learning kullanmaya başlama serisinin 3. bölümü, makine öğrenimi modelinin nasıl eğitede olduğunu gösterir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.author: sgilley
-author: sdgilley
-ms.date: 08/25/2020
+author: aminsaied
+ms.author: amsaied
+ms.reviewer: sgilley
+ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7052617eb83dbd07c2d6938dcbb7a38ba19f3aad
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: a267231dd447b114c69e6ead20c8ab5252f85d0e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536247"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896747"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>Öğretici: ilk ML modelinizi eğitme
+# <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Öğretici: ilk makine öğrenimi modelinizi eğitme (Bölüm 3/4)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+Bu öğreticide, Azure Machine Learning bir makine öğrenimi modelinin nasıl eğiteyapılacağı gösterilmektedir.
 
-Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölümüdür**. Önceki öğreticide [bir çalışma alanı oluşturdunuz ve bir geliştirme ortamı seçtiniz](tutorial-1st-experiment-sdk-setup.md). Bu öğreticide Azure Machine Learning temel tasarım düzenlerini öğrenir ve diabetes veri kümesine bağlı olarak basit bir scikit-öğrenme modeli eğitirsiniz. Bu Öğreticiyi tamamladıktan sonra, daha karmaşık denemeleri ve iş akışları geliştirmek üzere ölçeklenebilmeniz için SDK 'nın pratik bilgisine sahip olursunuz.
+Bu öğretici, Azure 'da Azure Machine Learning ve iş tabanlı makine öğrenimi görevlerinin temellerini öğrendiğiniz **dört bölümden oluşan bir öğretici serisinin üçüncü bölümüdür** . Bu öğretici, [1. Bölüm: ayarlama](tutorial-1st-experiment-sdk-setup-local.md) ve [Bölüm 2: "Merhaba Dünya" serisini çalıştıran](tutorial-1st-experiment-hello-world.md) işi oluşturur.
 
-Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
+Bu öğreticide, bir makine öğrenimi modelini gösteren bir komut dosyası göndererek sonraki adıma geçin. Bu örnek, yerel hata ayıklama ve uzak çalıştırmalar arasında Azure Machine Learning tutarlı davranışı nasıl bir şekilde hareket eder.
+
+Bu öğreticide şunları yapabilirsiniz:
 
 > [!div class="checklist"]
-> * Çalışma alanınızı bağlayın ve bir deneme oluşturun
-> * Veri yükleme ve scikit 'i eğitme-modelleri öğrenme
-> * Eğitim sonuçlarını Studio 'da görüntüleme
-> * En iyi modeli alma
+> * Eğitim betiği oluşturun.
+> * Azure Machine Learning ortamını tanımlamak için Conda kullanın.
+> * Denetim betiği oluştur.
+> * Azure Machine Learning sınıfları anlayın (ortam, çalıştırma, ölçümler).
+> * Eğitim betiğinizi gönder ve Çalıştır.
+> * Kod çıktılarınızı bulutta görüntüleyin.
+> * Azure Machine Learning için günlük ölçümleri.
+> * Ölçümünüzü bulutta görüntüleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanını](tutorial-1st-experiment-sdk-setup.md)çalıştırmanın bir parçasıdır.
+* Azure Machine Learning bir çalışma alanınız yoksa, [Bölüm 1 ' i](tutorial-1st-experiment-sdk-setup-local.md) doldurun.
+* Python dili ve makine öğrenimi iş akışlarının giriş bilgisi.
+* Yerel geliştirme ortamı. Bu, Visual Studio Code, Jupyıter veya Pydüğme ile sınırlı değildir.
+* Python (sürüm 3.5-3.7).
 
-Öğreticinin bu bölümünde, birinci bölüm sonunda açılan örnek Jupyter Not defteri *öğreticileri/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-train. ipynb* 'de kodu çalıştırın. Bu makalede, not defterindeki aynı koda adım adım yol gösterilir.
+## <a name="create-training-scripts"></a>Eğitim betikleri oluşturma
 
-## <a name="open-the-notebook"></a>Not defterini açın
+İlk olarak, sinir ağ mimarisini bir dosyada tanımlarsınız `model.py` . Tüm eğitim kodunuz, `src` dahil olmak üzere alt dizine gider `model.py` .
 
-1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
-
-1. [Bir kısım](tutorial-1st-experiment-sdk-setup.md#open)içinde gösterildiği gibi, klasörünüzde **-1. deneme-SDK-tren. ipynb öğreticisini** açın.
-
-Jupyter arabiriminde *Yeni* bir Not **defteri oluşturmayın!** Bu öğretici için **gereken tüm kod ve verileri** içeren Not defteri *öğreticileri/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-train. ipynb* .
-
-## <a name="connect-workspace-and-create-experiment"></a>Çalışma alanını bağlama ve deneme oluşturma
-
-<!-- nbstart https://raw.githubusercontent.com/Azure/MachineLearningNotebooks/master/tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb -->
-
-> [!TIP]
-> Öğretici içeriği _-1. deneme-SDK-eğitme. ipynb_. Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin. Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
-
-
-Sınıfını içeri aktarın `Workspace` ve `config.json` Bu işlevi kullanarak abonelik bilgilerinizi `from_config().` Varsayılan olarak geçerli dizindeki json dosyasını arar, ancak kullanarak dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz `from_config(path="your/file/path")` . Bu Not defterini çalışma alanınızdaki bir bulut Not defteri sunucusunda çalıştırıyorsanız, dosya otomatik olarak kök dizinde olur.
-
-Aşağıdaki kod ek kimlik doğrulaması isterse, bağlantıyı bir tarayıcıya yapıştırmanız ve kimlik doğrulama belirtecini girmeniz yeterlidir. Ayrıca, Kullanıcı ile bağlantılı birden fazla kiracı varsa, aşağıdaki satırları eklemeniz gerekir:
+Aşağıdaki kod, PyTorch kaynağından [Bu giriş örneğinde](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html) alınır. Azure Machine Learning kavramların yalnızca PyTorch değil, herhangi bir makine öğrenimi kodu için uygulanacağını unutmayın.
 
 ```python
-from azureml.core.authentication import InteractiveLoginAuthentication
-interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+# tutorial/src/model.py
+import torch.nn as nn
+import torch.nn.functional as F
+
+
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.conv1 = nn.Conv2d(3, 6, 5)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = x.view(-1, 16 * 5 * 5)
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
 ```
 
-Kimlik doğrulaması hakkında daha fazla bilgi için bkz [Azure Machine Learning kimlik doğrulaması](https://aka.ms/aml-notebook-auth)
+Daha sonra eğitim betiğini tanımlarsınız. Bu betik, PyTorch API 'lerini kullanarak CIFAR10 veri kümesini indirir `torchvision.dataset` , içinde tanımlanan ağı ayarlar `model.py` ve standart SGD ve çapraz entropi kaybını kullanarak iki dönemler için bunu yapar.
 
+`train.py`Alt dizinde bir betik oluşturun `src` :
 
 ```python
+# tutorial/src/train.py
+import torch
+import torch.optim as optim
+import torchvision
+import torchvision.transforms as transforms
+
+from model import Net
+
+# download CIFAR 10 data
+trainset = torchvision.datasets.CIFAR10(
+    root="./data",
+    train=True,
+    download=True,
+    transform=torchvision.transforms.ToTensor(),
+)
+trainloader = torch.utils.data.DataLoader(
+    trainset, batch_size=4, shuffle=True, num_workers=2
+)
+
+if __name__ == "__main__":
+
+    # define convolutional network
+    net = Net()
+
+    # set up pytorch loss /  optimizer
+    criterion = torch.nn.CrossEntropyLoss()
+    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+
+    # train the network
+    for epoch in range(2):
+
+        running_loss = 0.0
+        for i, data in enumerate(trainloader, 0):
+            # unpack the data
+            inputs, labels = data
+
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+            # forward + backward + optimize
+            outputs = net(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+
+            # print statistics
+            running_loss += loss.item()
+            if i % 2000 == 1999:
+                loss = running_loss / 2000
+                print(f"epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}")
+                running_loss = 0.0
+
+    print("Finished Training")
+
+```
+
+Artık aşağıda belirtilen dizin yapısına sahipsiniz:
+
+```txt
+tutorial
+└──.azureml
+|  └──config.json
+└──src
+|  └──hello.py
+|  └──model.py
+|  └──train.py
+└──01-create-workspace.py
+└──02-create-compute.py
+└──03-run-hello.py
+```
+
+## <a name="define-a-python-environment"></a>Python ortamı tanımlama
+
+Tanıtım amacıyla bir Conda ortamı kullanacağız (bir PIP sanal ortamının adımları neredeyse aynıdır).
+
+Gizli dizinde adlı bir dosya oluşturun `pytorch-env.yml` `.azureml` :
+
+```yml
+# tutorial/.azureml/pytorch-env.yml
+name: pytorch-env
+channels:
+    - defaults
+    - pytorch
+dependencies:
+    - python=3.6.2
+    - pytorch
+    - torchvision
+```
+
+Bu ortam, modelinize ve eğitim betiğinizin gerektirdiği tüm bağımlılıklara sahiptir. Azure Machine Learning Python SDK 'sının bağımlılığı olmadığına dikkat edin.
+
+## <a name="test-locally"></a>Yerel olarak test etme
+
+Bu ortamı kullanarak komut dosyanızı yerel olarak test edin:
+
+```bash
+conda env create -f .azureml/pytorch-env.yml    # create conda environment
+conda activate pytorch-env             # activate conda environment
+python src/train.py                    # train model
+```
+
+Bu betiği çalıştırdıktan sonra adlı bir dizine indirilen verileri görürsünüz `tutorial/data` .
+
+## <a name="create-the-control-script"></a>Denetim betiğini oluşturma
+
+Aşağıdaki denetim betiğine ve "Merhaba Dünya" göndermek için kullanılan fark, ortamı ayarlamak için bir dizi ek satır eklemektir.
+
+Adlı dizinde yeni bir Python dosyası oluşturun `tutorial` `04-run-pytorch.py` :
+
+```python
+# tutorial/04-run-pytorch.py
 from azureml.core import Workspace
-ws = Workspace.from_config()
-```
-
-Şimdi çalışma alanınızda bir deneme oluşturun. Deneme, deneme koleksiyonunu temsil eden başka bir temel bulut kaynağıdır (bireysel model çalıştırmaları). Bu öğreticide, çalıştırma oluşturmak ve Azure Machine Learning Studio 'daki model öğreticinizi izlemek için denemeyi kullanırsınız. Parametreler, çalışma alanı başvurunuz ve deneme için bir dize adı içerir.
-
-
-```python
 from azureml.core import Experiment
-experiment = Experiment(workspace=ws, name="diabetes-experiment")
+from azureml.core import Environment
+from azureml.core import ScriptRunConfig
+
+if __name__ == "__main__":
+    ws = Workspace.from_config()
+    experiment = Experiment(workspace=ws, name='day1-experiment-train')
+    config = ScriptRunConfig(source_directory='src', script='train.py', compute_target='cpu-cluster')
+
+    # set up pytorch environment
+    env = Environment.from_conda_specification(name='pytorch-env', file_path='.azureml/pytorch-env.yml')
+    config.run_config.environment = env
+
+    run = experiment.submit(config)
+
+    aml_url = run.get_portal_url()
+    print(aml_url)
 ```
 
-## <a name="load-data-and-prepare-for-training"></a>Veri yükleme ve eğitim için hazırlanma
+### <a name="understand-the-code-changes"></a>Kod değişikliklerini anlayın
 
-Bu öğreticide, diabetes ilerlemesini tahmin etmek için Age, cinsiyet ve BMI gibi özellikleri kullanan diabetes veri kümesini kullanırsınız. [Azure Open DataSet](https://azure.microsoft.com/services/open-datasets/) sınıfından verileri yükleyin ve kullanarak eğitim ve test kümelerine ayırın `train_test_split()` . Bu işlev, modeli aşağıdaki eğitimin test edilmesi için kullanılacak görülmeyen verileri içerecek şekilde ayırır.
+:::row:::
+   :::column span="":::
+      `env = Environment.from_conda_specification( ... )`
+   :::column-end:::
+   :::column span="2":::
+      Azure Machine Learning, denemeleri çalıştırmaya yönelik tekrarlanabilir, sürümlü bir Python ortamını temsil eden bir [ortam](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) kavramı sağlar. Yerel bir Conda veya PIP ortamından ortam oluşturmak kolaydır.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      `config.run_config.environment = env`
+   :::column-end:::
+   :::column span="2":::
+      Ortamı [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)'e ekler.
+   :::column-end:::
+:::row-end:::
 
+## <a name="submit-run-to-azure-machine-learning"></a>Azure Machine Learning çalışmayı gönder
+
+Yerel ortamları geçtiyseniz, Azure Machine Learning Python SDK 'nın yüklü olduğu bir ortama geri geçdiğinizden emin olun ve şunu çalıştırın:
+
+```bash
+python 04-run-pytorch.py
+```
+
+>[!NOTE] 
+> Bu betiği ilk kez çalıştırdığınızda Azure Machine Learning, PyTorch ortamınızdan yeni bir Docker görüntüsü oluşturacak. Tüm çalıştırmanın tamamlanması 5-10 dakika sürebilir. Azure Machine Learning Studio Docker Derleme günlüklerini görebilirsiniz: Machine Learning Studio bağlantısını Izleyin > "çıktılar + Günlükler" sekmesini seçin > seçin `20_image_build_log.txt` .
+Bu görüntü gelecek çalışmalarda daha hızlı çalışmasını sağlayacak şekilde yeniden kullanılacaktır.
+
+Görüntünüz oluşturulduktan sonra `70_driver_log.txt` eğitim betiğiniz çıktıyı görmek için seçin.
+
+```txt
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
+...
+Files already downloaded and verified
+epoch=1, batch= 2000: loss 2.19
+epoch=1, batch= 4000: loss 1.82
+epoch=1, batch= 6000: loss 1.66
+epoch=1, batch= 8000: loss 1.58
+epoch=1, batch=10000: loss 1.52
+epoch=1, batch=12000: loss 1.47
+epoch=2, batch= 2000: loss 1.39
+epoch=2, batch= 4000: loss 1.38
+epoch=2, batch= 6000: loss 1.37
+epoch=2, batch= 8000: loss 1.33
+epoch=2, batch=10000: loss 1.31
+epoch=2, batch=12000: loss 1.27
+Finished Training
+```
+
+> [!WARNING]
+> Bir hata görürseniz `Your total snapshot size exceeds the limit` `data` `source_directory` , dizinin ' de kullanılan içinde bulunduğunu gösterir `ScriptRunConfig` .
+> Dışında hareket ettiğinizden emin olun `data` `src` .
+
+Ortamlar, ile bir çalışma alanına kaydedilebilir `env.register(ws)` , bu da kolayca paylaşılabilir, yeniden kullanılabilir ve sürümü oluşturulmuş olabilir. Ortamlar, önceki sonuçları yeniden oluşturulmasını ve ekibinizle işbirliği yapmayı kolaylaştırır.
+
+Azure Machine Learning Ayrıca, seçkin ortamların bir koleksiyonunu tutar. Bu ortamlar ortak makine öğrenimi senaryolarını kapsar ve önbelleğe alınmış Docker görüntüleri tarafından desteklenir. Önbelleğe alınmış Docker görüntüleri, ilk uzak çalıştırmayı daha hızlı hale getirir.
+
+Kısacası, kayıtlı ortamların kullanılması zamandan tasarruf edebilir! [Ortamlar belgelerinde](./how-to-use-environments.md) daha fazla ayrıntı bulabilirsiniz
+
+## <a name="log-training-metrics"></a>Günlük eğitimi ölçümleri
+
+Artık Azure Machine Learning bir model eğitimine sahip olduğunuza göre bazı performans ölçümlerini izlemeye başlayın.
+Geçerli eğitim betiği, ölçümleri terminalden yazdırır. Azure Machine Learning, ölçümleri daha fazla işlevle günlüğe kaydetmek için bir mekanizma sağlar. Birkaç satır kod ekleyerek, Studio 'daki ölçümleri görselleştirme ve birden çok çalıştırma arasında ölçümleri karşılaştırma imkanına sahip olursunuz.
+
+### <a name="modify-trainpy-to-include-logging"></a>`train.py`Günlüğe kaydetmeyi dahil etmek için değiştirin
+
+`train.py`Betiğinizi, ek iki satır kodu içerecek şekilde değiştirin:
 
 ```python
-from azureml.opendatasets import Diabetes
-from sklearn.model_selection import train_test_split
+# train.py
+import torch
+import torch.optim as optim
+import torchvision
+import torchvision.transforms as transforms
 
-x_df = Diabetes.get_tabular_dataset().to_pandas_dataframe().dropna()
-y_df = x_df.pop("Y")
-
-X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
-```
-
-## <a name="train-a-model"></a>Modeli eğitme
-
-Basit bir scikit-eğitim modeli, küçük ölçekli eğitim için kolayca yerel olarak yapılabilir, ancak onlarca farklı özellik bilimiyle ve hiper parametre ayarları sayesinde çok sayıda yineleme eğitmeniz halinde, eğitilen modelleri ve bunları nasıl eğititireceğinizi kolayca kaybetmezsiniz. Aşağıdaki tasarım modelinde, bulutta öğreticinizi kolayca izlemek için SDK 'nın nasıl kullanılacağı gösterilmektedir.
-
-Farklı hiper parametre alfa değerleri aracılığıyla bir döngüdeki modelleri gösteren bir betik oluşturun.
-
-
-```python
-from sklearn.linear_model import Ridge
-from sklearn.metrics import mean_squared_error
-from sklearn.externals import joblib
-import math
-
-alphas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
-
-for alpha in alphas:
-    run = experiment.start_logging()
-    run.log("alpha_value", alpha)
-    
-    model = Ridge(alpha=alpha)
-    model.fit(X=X_train, y=y_train)
-    y_pred = model.predict(X=X_test)
-    rmse = math.sqrt(mean_squared_error(y_true=y_test, y_pred=y_pred))
-    run.log("rmse", rmse)
-    
-    model_name = "model_alpha_" + str(alpha) + ".pkl"
-    filename = "outputs/" + model_name
-    
-    joblib.dump(value=model, filename=filename)
-    run.upload_file(name=model_name, path_or_stream=filename)
-    run.complete()
-```
-
-Yukarıdaki kod şunları gerçekleştirir:
-
-1. Dizideki her Alfa hiper parametre değeri için `alphas` , deneme içinde yeni bir çalıştırma oluşturulur. Alfa değeri, her çalıştırma arasında ayrım yapmak için günlüğe kaydedilir.
-1. Her çalıştırmada, bir Ridge modeli örneği oluşturulur, eğitilmiş ve tahmin çalıştırmaları için kullanılır. Kök-ortalama-kare-hatası, fiili ve tahmin edilen değerler için hesaplanır ve ardından çalıştırmaya kaydedilir. Bu noktada, çalışma için hem alfa değeri hem de rmo doğruluğu için eklenmiş meta veriler vardır.
-1. Ardından, her bir çalıştırmaya ait model serileştirilir ve çalıştırmaya yüklenir. Bu, model dosyasını Studio 'daki çalıştırağından indirmelerini sağlar.
-1. Her yinelemenin sonunda çalıştırma, çağırarak tamamlanır `run.complete()` .
-
-Eğitim tamamlandıktan sonra, `experiment` Studio 'da deneme için bir bağlantı getirmek üzere değişkenini çağırın.
-
-```python
-experiment
-```
-
-<table style="width:100%"><tr><th>Name</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure Machine Learning Studio 'ya bağlantı</td><td>Belge bağlantısı</td></tr></table>
-
-## <a name="view-training-results-in-studio"></a>Studio 'da eğitim sonuçlarını görüntüleme
-
-**Azure Machine Learning Studio bağlantısını** takip etmek sizi ana deneme sayfasına götürür. İşte denemenize ait tüm bireysel çalıştırmaları görürsünüz. Tüm özel günlüğe kaydedilmiş değerler ( `alpha_value` ve `rmse` Bu durumda) her çalıştırma için alanlar olur ve grafikler için kullanılabilir hale gelir. Günlüğe kaydedilmiş ölçüm içeren yeni bir grafik çizmek için, ' grafik Ekle ' düğmesine tıklayın ve çizdirmek istediğiniz ölçümü seçin.
-
-Eğitim modelleri, yüzlerce ve binlerce ayrı çalıştırma üzerinde ölçeklendirirseniz, Bu sayfa, eğitilen her modeli, özellikle eğitilen ve benzersiz ölçümlerinizin zaman içinde nasıl değiştiğini görmenizi kolaylaştırır.
-
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Studio 'da ana deneme sayfası.":::
-
-
-`RUN NUMBER`Tek bir çalıştırmanın sayfasını görmek için sütununda bir çalıştırma numarası bağlantısı seçin. Varsayılan sekme **ayrıntıları** , her çalıştırma hakkında daha ayrıntılı bilgi gösterir. **Çıktılar + Günlükler** sekmesine gidin ve `.pkl` her eğitim yinelemesi sırasında çalıştırmaya yüklenmiş olan modele ait dosyayı görürsünüz. Burada, model dosyasını el ile yeniden eğitmek yerine indirebilirsiniz.
-
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Studio 'da Ayrıntılar sayfasını çalıştırın.":::
-
-## <a name="get-the-best-model"></a>En iyi modeli al
-
-Model dosyalarını Studio 'daki denemeden indirebilmenin yanı sıra, programlama yoluyla da indirebilirsiniz. Aşağıdaki kod, denemenin her bir çalıştırmasında yinelenir ve hem günlüğe kaydedilen çalışma ölçümlerine hem de çalıştırma ayrıntılarına (run_id içeren) erişir. Bu, en iyi çalışmayı izler, bu durumda en düşük kök-ortalama-kare-hatası ile çalıştırılır.
-
-```python
-minimum_rmse_runid = None
-minimum_rmse = None
-
-for run in experiment.get_runs():
-    run_metrics = run.get_metrics()
-    run_details = run.get_details()
-    # each logged metric becomes a key in this returned dict
-    run_rmse = run_metrics["rmse"]
-    run_id = run_details["runId"]
-    
-    if minimum_rmse is None:
-        minimum_rmse = run_rmse
-        minimum_rmse_runid = run_id
-    else:
-        if run_rmse < minimum_rmse:
-            minimum_rmse = run_rmse
-            minimum_rmse_runid = run_id
-
-print("Best run_id: " + minimum_rmse_runid)
-print("Best run_id rmse: " + str(minimum_rmse))    
-```
-```output
-Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
-Best run_id rmse: 57.234760283951765
-```
-
-Deneme nesnesiyle birlikte oluşturucuyu kullanarak bireysel çalıştırmayı getirmek için en iyi çalıştırma KIMLIĞINI kullanın `Run` . Sonra `get_file_names()` Bu çalıştırınızdan yüklenebilecek tüm dosyaları görmek için çağırın. Bu durumda, yalnızca eğitim sırasında her çalıştırma için bir dosya karşıya yüklenir.
-
-
-```python
+from model import Net
 from azureml.core import Run
-best_run = Run(experiment=experiment, run_id=minimum_rmse_runid)
-print(best_run.get_file_names())
+
+
+# ADDITIONAL CODE: get Azure Machine Learning run from the current context
+run = Run.get_context()
+
+# download CIFAR 10 data
+trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=torchvision.transforms.ToTensor())
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
+
+if __name__ == "__main__":
+
+    # define convolutional network
+    net = Net()
+
+    # set up pytorch loss /  optimizer
+    criterion = torch.nn.CrossEntropyLoss()
+    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+
+    # train the network
+    for epoch in range(2):
+
+        running_loss = 0.0
+        for i, data in enumerate(trainloader, 0):
+            # unpack the data
+            inputs, labels = data
+
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+            # forward + backward + optimize
+            outputs = net(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+
+            # print statistics
+            running_loss += loss.item()
+            if i % 2000 == 1999:
+                loss = running_loss / 2000
+                run.log('loss', loss) # ADDITIONAL CODE: log loss metric to Azure Machine Learning
+                print(f'epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}')
+                running_loss = 0.0
+
+    print('Finished Training')
 ```
 
-```output
-['model_alpha_0.1.pkl']
-```
+#### <a name="understand-the-additional-two-lines-of-code"></a>Kodun ek iki satırını anlayın
 
-`download()`Çalıştır nesnesinde, indirilecek model dosyası adını belirterek çağırın. Varsayılan olarak, bu işlev geçerli dizine indirir.
-
+' De `train.py` , yöntemini kullanarak, çalıştırma nesnesine eğitim betiğinin _içinden_ erişin `Run.get_context()` ve ölçümleri günlüğe kaydetmek için kullanın:
 
 ```python
-best_run.download_file(name="model_alpha_0.1.pkl")
+# in train.py
+run = Run.get_context()
+
+...
+
+run.log('loss', loss)
 ```
-<!-- nbend -->
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+Azure Machine Learning ölçümler şunlardır:
 
-Diğer Azure Machine Learning öğreticileri çalıştırmayı planlıyorsanız, bu bölümü tamamlamayın.
+- Deneme ve çalıştırma tarafından düzenlenmiştir, böylece ölçümleri takip etmek ve karşılaştırmak kolaydır.
+- , Studio 'da eğitim performansını görselleştirebilmeniz için bir kullanıcı arabirimi ile donatılmış.
+- Ölçeklendirilmesi için tasarlanan, yüzlerce denemeleri çalıştırırken bu avantajları de koruyabilirsiniz.
 
-### <a name="stop-the-compute-instance"></a>İşlem örneğini durdur
+### <a name="update-the-conda-environment-file"></a>Conda ortam dosyasını güncelleştirme
 
-[!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]
+`train.py`Komut dosyası yeni bir bağımlılık almış `azureml.core` . `pytorch-env.yml`Bu değişikliği yansıtacak şekilde güncelleştirin:
 
-### <a name="delete-everything"></a>Her şeyi sil
+```yaml
+# tutorial/.azureml/pytorch-env.yml
+name: pytorch-env
+channels:
+    - defaults
+    - pytorch
+dependencies:
+    - python=3.6.2
+    - pytorch
+    - torchvision
+    - pip
+    - pip:
+        - azureml-sdk
+```
 
-[!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
+### <a name="submit-run-to-azure-machine-learning"></a>Azure Machine Learning çalışmayı gönder
+Bu betiği bir kez daha gönder:
 
-Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve **Sil**' i seçin.
+```bash
+python 04-run-pytorch.py
+```
+
+Bu kez, Studio 'yu ziyaret ettiğinizde, artık model eğitimi kaybından canlı güncelleştirmeleri görebileceğiniz "ölçümler" sekmesine gidin!
+
+:::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Ölçümler sekmesindeki eğitim kaybı grafiği":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, aşağıdaki görevleri yaptınız:
+Bu oturumda, temel bir "Hello World!" üzerinden yükselttiniz belirli bir Python ortamının çalışmasını gerektiren daha gerçekçi bir eğitim betiğinin betiği. Azure Machine Learning ortamları ile buluta yerel bir Conda ortamını nasıl alacağınızı gördünüz. Son olarak, Azure Machine Learning ölçümleri günlüğe kaydetmek için birkaç satır kod satırını gördünüz.
 
-> [!div class="checklist"]
-> * Çalışma alanınızı bağladınız ve bir deneme oluşturdunuz
-> * Yüklenen veriler ve eğitimli scikit-modelleri öğrenme
-> * Eğitim sonuçları Studio 'ya ve alınan modellere göre görüntülenir
+Azure Machine Learning ortamları oluşturmak için, [bir PIP requirements.txt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-)veya [var olan bir yerel Conda ortamından](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-)da dahil olmak üzere başka yollar vardır.
 
-[Modelinizi](tutorial-deploy-models-with-aml.md) Azure Machine Learning ile dağıtın.
-[Otomatik makine öğrenimi](tutorial-auto-train-models.md) denemeleri geliştirmeyi öğrenin.
+Bir sonraki oturumda, CIFAR10 veri kümesini Azure 'a yükleyerek Azure Machine Learning verilerle nasıl çalışacaksınız görürsünüz.
+
+> [!div class="nextstepaction"]
+> [Öğretici: kendi verilerinizi getirin](tutorial-1st-experiment-bring-data.md)
+
+>[!NOTE] 
+> Öğretici serisini burada bitirebilmeniz ve bir sonraki adımda ilerlemeniz istiyorsanız lütfen [kaynaklarınızı temizlemeyi](tutorial-1st-experiment-bring-data.md#clean-up-resources) unutmayın

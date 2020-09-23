@@ -1,23 +1,23 @@
 ---
-title: Key Vault için Azure Izleyici ile Key Vault izleme (Önizleme) | Microsoft Docs
+title: Key Vault için Azure Izleyici ile Key Vault izleme | Microsoft Docs
 description: Bu makalede, Anahtar kasaları için Azure Izleyicisi açıklanmaktadır.
 services: azure-monitor
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/13/2019
-ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.date: 09/10/2020
+ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069807"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894512"
 ---
-# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Key Vault için Azure Izleyici ile Anahtar Kasası hizmetinizi izleme (Önizleme)
-Key Vault için Azure Izleyici (Önizleme), Key Vault isteklerinizin, performanlarınızın, hatalarından ve gecikmelerinden oluşan Birleşik bir görünüm sunarak anahtar kasalarınızın kapsamlı bir şekilde izlenmesini sağlar.
-Bu makale, Key Vault için Azure Izleyici deneyiminin nasıl ekleneceğini ve özelleştirildiğini anlamanıza yardımcı olur (Önizleme).
+# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Key Vault için Azure Izleyici ile Anahtar Kasası hizmetinizi izleme
+Key Vault için Azure Izleyici, Key Vault isteklerinizin, performanlarınızın, hatalarından ve gecikmelerinden oluşan Birleşik bir görünüm sunarak anahtar kasalarınızın kapsamlı bir şekilde izlenmesini sağlar.
+Bu makale, Key Vault için Azure Izleyici deneyiminin nasıl ekleneceğini ve özelleştirildiğini anlamanıza yardımcı olur.
 
-## <a name="introduction-to-azure-monitor-for-key-vault-preview"></a>Key Vault için Azure Izleyici 'ye giriş (Önizleme)
+## <a name="introduction-to-azure-monitor-for-key-vault"></a>Key Vault için Azure Izleyici 'ye giriş
 
 Deneyimle karşılaşmadan önce, bilgileri nasıl sunduklarını ve görselleştirir.
 -    Gecikme, hataların dökümünü ve işlemlere ve gecikme süresine göre performansının anlık görüntü görünümünü gösteren **Ölçek perspektifinde** .
@@ -49,7 +49,7 @@ Tüm aboneliklerinizde anahtar kasalarınızın kullanımını ve işlemlerini g
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın
 
-2. Azure portal sol bölmeden **izleyici** ' yi seçin ve Içgörüler bölümünde **Anahtar Kasası (Önizleme)** öğesini seçin.
+2. Azure portal sol bölmeden **izleyici** ' yi seçin ve Öngörüler bölümünde, **Anahtar kasaları**' nı seçin.
 
 ![Birden çok grafik içeren genel bakış deneyiminin ekran görüntüsü](./media/key-vaults-insights-overview/overview.png)
 
@@ -83,7 +83,7 @@ Key Vault için Azure Izleyici 'ye doğrudan bir anahtar kasasından erişmek i�
 
 1. Azure portal, Anahtar kasaları ' nı seçin.
 
-2. Listeden bir Anahtar Kasası seçin. İzleme bölümünde Öngörüler ' i (Önizleme) seçin.
+2. Listeden bir Anahtar Kasası seçin. İzleme bölümünde Öngörüler ' i seçin.
 
 Bu görünümlere, Azure Izleyici düzeyi çalışma kitabından bir anahtar kasasının kaynak adı seçilerek de erişilebilir.
 
@@ -140,7 +140,7 @@ En üstteki araç çubuğundan **Özelleştir** düğmesini seçerek düzenleme 
 
 Aşağıdaki adımları gerçekleştirerek, çoklu abonelik ve Anahtar Kasası genel bakış ya da çalışma kitaplarını her çalıştırmada belirli bir aboneliğe veya anahtar kasalarına göre yapılandırabilirsiniz:
 
-1. Portalda **izleyici** ' yi seçin ve ardından sol bölmedeki anahtar kasalarını **(Önizleme)** seçin.
+1. Portaldan **izleme** ' yi seçin ve ardından sol bölmedeki **Anahtar kasaları** ' nı seçin.
 2. **Genel bakış** çalışma kitabında, komut çubuğundan **Düzenle**' yi seçin.
 3. **Abonelikler** açılan listesinden, varsayılan olarak yo kullanmak istediğiniz bir veya daha fazla aboneliği seçin. Çalışma kitabının toplam 10 aboneliği seçmeyi desteklediğini unutmayın.
 4. **Anahtar kasaları** açılan listesinden, varsayılan olarak kullanmak istediğiniz bir veya daha fazla hesabı seçin. Çalışma kitabının toplam 200 depolama hesabı seçmeyi desteklediğini unutmayın.
@@ -150,11 +150,11 @@ Aşağıdaki adımları gerçekleştirerek, çoklu abonelik ve Anahtar Kasası g
 
 Genel sorun giderme kılavuzu için, adanmış çalışma kitabı tabanlı Öngörüler [sorun giderme makalesine](troubleshoot-workbooks.md)bakın.
 
-Bu bölüm, Key Vault için Azure Izleyicisi 'ni (Önizleme) kullanırken karşılaşabileceğiniz yaygın sorunlardan bazılarının tanılama ve sorunlarını gidermenize yardımcı olur. Belirli sorununuzla ilgili bilgileri bulmak için aşağıdaki listeyi kullanın.
+Bu bölüm, Key Vault için Azure Izleyicisi 'ni kullanırken karşılaşabileceğiniz bazı yaygın sorunları tanılamada ve sorun gidermeye yardımcı olur. Belirli sorununuzla ilgili bilgileri bulmak için aşağıdaki listeyi kullanın.
 
 ### <a name="resolving-performance-issues-or-failures"></a>Performans sorunlarını veya başarısızlıklarını çözme
 
-Key Vault (Önizleme) için Azure Izleyici ile belirttiğiniz anahtar kasasıyla ilgili sorunları gidermeye yardımcı olmak için [Azure Key Vault belgelerine](../../key-vault/index.yml)bakın.
+Key Vault için Azure Izleyici ile belirttiğiniz anahtar kasasıyla ilgili sorunları gidermeye yardımcı olmak için [Azure Key Vault belgelerine](../../key-vault/index.yml)bakın.
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Neden yalnızca 200 anahtar kasalarını görebilirim?
 

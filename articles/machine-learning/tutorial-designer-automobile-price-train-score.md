@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: tasarımcı ile otomobil fiyatlarını tahmin etme (Önizleme)'
+title: 'Öğretici: tasarımcı ile otomobil fiyatlarını tahmin etme'
 titleSuffix: Azure Machine Learning
 description: Bir sürükle ve bırak arabirimi kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma hakkında bilgi edinin. Bu öğretici, doğrusal regresyon kullanarak otomobil fiyatlarını tahmin etmeye yönelik iki bölümlü bir serinin bir parçasıdır.
 author: peterclu
@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 9d25d9e13cc7f3dba0f4254cda6e1119ff9e2e68
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659823"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896699"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: tasarımcı ile otomobil fiyatını tahmin etme (Önizleme)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Öğretici: tasarımcı ile otomobil fiyatlarını tahmin etme
+
 
 Bu iki bölümden oluşan öğreticide, her bir otomobil fiyatını tahmin eden bir makine öğrenimi modelini eğitme ve dağıtma için Azure Machine Learning tasarımcısını nasıl kullanacağınızı öğreneceksiniz. Tasarımcı, tek bir kod satırı olmadan makine öğrenimi modelleri oluşturmanıza olanak sağlayan bir sürükle ve bırak aracıdır.
 
@@ -49,10 +49,6 @@ Azure Machine Learning bir işlem hattı oluşturmak için bir Azure Machine Lea
 ### <a name="create-a-new-workspace"></a>Yeni çalışma alanı oluşturma
 
 Tasarımcıyı kullanmak için önce bir Azure Machine Learning çalışma alanına ihtiyacınız vardır. Çalışma alanı Azure Machine Learning için en üst düzey kaynaktır, Azure Machine Learning içinde oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar.
-
-Enterprise sürümü olan bir Azure Machine Learning çalışma alanınız varsa, [sonraki bölüme atlayın](#create-the-pipeline).
-
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>İşlem hattını oluşturma
 

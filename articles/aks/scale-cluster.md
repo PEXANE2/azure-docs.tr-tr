@@ -2,16 +2,14 @@
 title: Azure Kubernetes Service (AKS) kümesini ölçeklendirme
 description: Azure Kubernetes Service (AKS) kümesindeki düğümlerin sayısını ölçeklendirmeyi öğrenin.
 services: container-service
-author: iainfoulds
 ms.topic: article
-ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 55d7a00a0a8c0b655f06810f8bcea7126bb9167f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/16/2020
+ms.openlocfilehash: d5686a74ffe138af51d2319c839a3a5c5887f992
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79368426"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902940"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesindeki düğüm sayısını ölçeklendirme
 
@@ -41,7 +39,7 @@ Aşağıdaki örnek çıktı, *adının* *nodepool1*olduğunu gösterir:
 ]
 ```
 
-Küme düğümlerini ölçeklendirmek için [az aks Scale][az-aks-scale] komutunu kullanın. Aşağıdaki örnek, *Myakscluster* adlı bir kümeyi tek bir düğüme ölçeklendirir. *Nodepool1*gibi önceki komuttan kendi *--nodepool-adınızı* sağlayın:
+Küme düğümlerini ölçeklendirmek için [az aks Scale][az-aks-scale] komutunu kullanın. Aşağıdaki örnek, *Myakscluster* adlı bir kümeyi tek bir düğüme ölçeklendirir. `--nodepool-name` *Nodepool1*gibi önceki komuttan kendinizinkini sağlayın:
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
@@ -69,6 +67,20 @@ Aşağıdaki örnek çıktı, *Agentpoolprofiles* bölümünde gösterildiği gi
 }
 ```
 
+
+## <a name="scale-user-node-pools-to-0"></a>`User`Düğüm havuzlarını 0 olarak Ölçeklendir
+
+`System`Her zaman çalışan düğümler gerektiren düğüm havuzlarının aksine, `User` düğüm havuzları 0 ' a ölçeklenmenize izin verir. Sistem ve Kullanıcı düğümü havuzları arasındaki farklılıklar hakkında daha fazla bilgi edinmek için bkz. [sistem ve Kullanıcı düğümü havuzları](use-system-pools.md).
+
+Bir Kullanıcı havuzunu 0 olarak ölçeklendirmek için yukarıdaki komuta alternatif olarak [az aks nodepool ölçeğini][az-aks-nodepool-scale] kullanabilir `az aks scale` ve düğüm sayımının 0 olarak ayarlanmasını sağlayabilirsiniz.
+
+
+```azurecli-interactive
+az aks nodepool scale --name <your node pool name> --cluster-name myAKSCluster --resource-group myResourceGroup  --node-count 0 
+```
+
+Ayrıca `User` , `--min-count` [küme otomatik](cluster-autoscaler.md) ölçeklendirme parametresini 0 olarak ayarlayarak düğüm havuzlarını 0 düğümlere otomatik olarak dönüştürebilirsiniz.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, düğüm sayısını artırmak veya azaltmak için bir AKS kümesini el ile ölçeklendirmeniz gerekir. Kümenizi otomatik olarak ölçeklendirmek için [cluster otomatik Scaler öğesini][cluster-autoscaler] de kullanabilirsiniz.
@@ -81,3 +93,4 @@ Bu makalede, düğüm sayısını artırmak veya azaltmak için bir AKS kümesin
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [cluster-autoscaler]: cluster-autoscaler.md
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale&preserve-view=true

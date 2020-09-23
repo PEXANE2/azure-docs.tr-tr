@@ -1,14 +1,14 @@
 ---
 title: İlke uyumluluk verilerini al
 description: Azure Ilke değerlendirmeleri ve etkileri uyumluluğu tespit edin. Azure kaynaklarınızın uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
-ms.date: 08/10/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 57e508048b5e628911db90b0b6835f88b5ebd8fb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648353"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895433"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -30,11 +30,13 @@ Tamamlanmış bir değerlendirme döngüsünün sonuçları, `Microsoft.PolicyIn
 
 Atanan ilkelerin ve girişimlerin değerlendirmeleri çeşitli olayların sonucu olarak gerçekleşir:
 
-- Bir ilke veya girişim yeni bir kapsama atanır. Atamanın tanımlanan kapsama uygulanması 30 dakika içinde sürer. Bu bir kez uygulandıktan sonra, değerlendirme çevrimi, bu kapsamdaki kaynaklar için yeni atanan ilke veya girişim ile başlar ve ilke ya da girişim tarafından kullanılan etkilere bağlı olarak, kaynaklar uyumlu veya uyumlu değil olarak işaretlenir. Büyük bir kaynak kapsamı için değerlendirilen büyük bir ilke veya girişim zaman alabilir. Bu nedenle, değerlendirme döngüsünün tamamlandığı zaman önceden tanımlı bir beklentisi yoktur. İşlem tamamlandıktan sonra portalda ve SDK 'larda güncelleştirilmiş uyumluluk sonuçları bulunur.
+- Bir ilke veya girişim yeni bir kapsama atanır. Atamanın tanımlanan kapsama uygulanması 30 dakika içinde sürer. Uygulandıktan sonra, değerlendirme çevrimi, bu kapsamdaki kaynaklar için yeni atanan ilke veya girişim ile başlar ve ilke ya da girişim tarafından kullanılan etkilere bağlı olarak, kaynaklar uyumlu, uyumlu değil veya muaf olarak işaretlenir. Büyük bir kaynak kapsamı için değerlendirilen büyük bir ilke veya girişim zaman alabilir. Bu nedenle, değerlendirme döngüsünün tamamlandığı zaman önceden tanımlı bir beklentisi yoktur. İşlem tamamlandıktan sonra portalda ve SDK 'larda güncelleştirilmiş uyumluluk sonuçları bulunur.
 
 - Bir kapsama zaten atanmış olan bir ilke veya girişim güncellenir. Bu senaryonun değerlendirme çevrimi ve zamanlaması, bir kapsama yönelik yeni atama ile aynıdır.
 
 - Bir kaynak, Azure Resource Manager, REST API veya desteklenen bir SDK aracılığıyla atama ile bir kapsam içine dağıtılır veya güncelleştirilir. Bu senaryoda, tek tek kaynak için etkinlik olayı (ekleme, denetim, reddetme, dağıtma) ve uyumlu durum bilgileri portalda ve bu süre içinde 15 dakika daha sonra SDK 'larda kullanılabilir hale gelir. Bu olay diğer kaynakların değerlendirilmesine neden olmaz.
+
+- [İlke muafiyeti](../concepts/exemption-structure.md) oluşturulur, güncellenir veya silinir. Bu senaryoda, ilgili atama tanımlanan muafiyet kapsamı için değerlendirilir.
 
 - Standart uyumluluk değerlendirme çevrimi. Her 24 saatte bir, atamalar otomatik olarak yeniden değerlendirilecektir. Çok sayıda kaynak için büyük bir ilke veya girişim zaman alabilir, bu nedenle değerlendirme döngüsünün tamamlandığı zaman önceden tanımlanmış bir beklentisi yoktur. İşlem tamamlandıktan sonra portalda ve SDK 'larda güncelleştirilmiş uyumluluk sonuçları bulunur.
 
@@ -127,8 +129,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>Uyumluluk nasıl işe yarar?
 
-Bir atamada, ilke veya girişim kurallarını takip etmez bir kaynak **uyumlu** değildir.
-Aşağıdaki tabloda, farklı ilke efektlerinin, sonuçta elde edilen uyumluluk durumu için koşul değerlendirmesiyle nasıl çalıştığı gösterilmektedir:
+Bir atamada, ilke veya girişim kurallarını takip etmez ve _muaf tutulmazsa_bir kaynak **uyumlu** değildir. Aşağıdaki tabloda, farklı ilke efektlerinin, sonuçta elde edilen uyumluluk durumu için koşul değerlendirmesiyle nasıl çalıştığı gösterilmektedir:
 
 | Kaynak durumu | Etki | İlke değerlendirmesi | Uyumluluk durumu |
 | --- | --- | --- | --- |
@@ -137,8 +138,7 @@ Aşağıdaki tabloda, farklı ilke efektlerinin, sonuçta elde edilen uyumluluk 
 | Yeni | Audit, AuditIfNotExist\* | Doğru | Uyumlu değil |
 | Yeni | Audit, AuditIfNotExist\* | Yanlış | Uyumlu |
 
-\* Append, DeployIfNotExist ve AuditIfNotExist etkileri IF deyiminin TRUE olmasını gerektirir.
-Etkiler ayrıca varlık koşulunun uyumlu olmaması için FALSE olmasını gerektirir. TRUE olduğunda, IF koşulu ilgili kaynaklar için varlık koşulunun değerlendirilmesini tetikler.
+\* Modify, Append, DeployIfNotExist ve Auditınotexist etkileri, IF ifadesinin TRUE olmasını gerektirir. Etkiler ayrıca varlık koşulunun uyumlu olmaması için FALSE olmasını gerektirir. TRUE olduğunda, IF koşulu ilgili kaynaklar için varlık koşulunun değerlendirilmesini tetikler.
 
 Örneğin, ortak ağlara sunulan bazı depolama hesaplarıyla (kırmızı renkle vurgulanmış) bir kaynak grubunuz olduğunu varsayalım.
 
@@ -146,22 +146,23 @@ Etkiler ayrıca varlık koşulunun uyumlu olmaması için FALSE olmasını gerek
    Contoso R G kaynak grubundaki beş depolama hesabının görüntülerini gösteren diyagram.  Depolama hesapları bir ve üçü mavi, ancak iki, dört ve beş depolama hesabı kırmızı.
 :::image-end:::
 
-Bu örnekte, güvenlik riskleri konusunda dikkatli olmanız gerekir. Artık bir ilke ataması oluşturduğunuza göre, ContosoRG kaynak grubundaki tüm depolama hesapları için değerlendirilir. Bu, uyumlu olmayan üç depolama hesabını denetler, sonuç olarak durumlarını **uyumlu değil** olarak değiştirir.
+Bu örnekte, güvenlik riskleri konusunda dikkatli olmanız gerekir. Artık bir ilke ataması oluşturduğunuza göre, ContosoRG kaynak grubundaki tüm dahil edilmiş ve muaf olmayan depolama hesapları için değerlendirilir. Bu, uyumlu olmayan üç depolama hesabını denetler, sonuç olarak durumlarını **uyumlu değil** olarak değiştirir.
 
 :::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Contoso R G kaynak grubundaki depolama hesabı uyumluluğu diyagramı." border="false":::
    Contoso R G kaynak grubundaki beş depolama hesabının görüntülerini gösteren diyagram. Şu anda bir ve üç depolama hesabının altında yeşil onay işaretleri vardır. iki, dört ve beş depolama hesabı artık bunların altında kırmızı uyarı işaretlerine sahiptir.
 :::image-end:::
 
-**Uyumlu** ve **uyumlu olmayan**, ilkelerin ve kaynakların yanında üç farklı durum vardır:
+**Uyumlu** ve **uyumsuz**, ilkelerin ve kaynakların yanı sıra diğer dört durum da vardır:
 
-- **Çakışıyor**: çakışan kurallara sahip iki veya daha fazla ilke var. Örneğin, iki ilke aynı etiketi farklı değerlerle yeniden ekleniyor.
+- **Muaf**: kaynak atama kapsamıdır, ancak [tanımlı bir istisna](../concepts/exemption-structure.md)vardır.
+- **Çakışıyor**: çakışan kurallarla iki veya daha fazla ilke tanımı var. Örneğin, iki tanım aynı etiketi farklı değerlerle birlikte ekler.
 - **Başlamadı**: ilke veya kaynak için değerlendirme çevrimi başlatılmadı.
 - **Kayıtlı değil**: Azure Ilke kaynak sağlayıcısı kayıtlı değil veya oturum açmış hesabın uyumluluk verilerini okuma izni yok.
 
-Azure Ilkesi, bir kaynağın eşleşme olup olmadığını anlamak için tanımdaki **tür** ve **ad** alanlarını kullanır. Kaynak eşleştiğinde, geçerli kabul edilir ve durumu **uyumlu** veya **uyumsuz**olarak değerlendirilir. Her iki **tür** veya **ad** tanımdaki tek özelliktir, tüm kaynaklar uygulanabilir kabul edilir ve değerlendirilir.
+Azure Ilkesi, bir kaynağın eşleşme olup olmadığını anlamak için tanımdaki **tür** ve **ad** alanlarını kullanır. Kaynak eşleştiğinde, uygulanabilir kabul edilir ve **uyumlu**, **uyumsuz**ya da **muaf**bir duruma sahip olur. Her iki **tür** veya **ad** tanımdaki tek özelliktir, dahil edilen ve muaf olmayan tüm kaynaklar uygulanabilir kabul edilir ve değerlendirilir.
 
-Uyumluluk yüzdesi, **uyumlu** kaynakları _Toplam kaynağa_bölerek belirlenir.
-_Toplam kaynak_ , **uyumlu**, **uyumlu olmayan**ve **Çakışan** kaynakların toplamı olarak tanımlanır. Genel uyumluluk numaraları, tüm ayrı kaynakların **toplamına ayrılan ayrı** kaynakların toplamıdır. Aşağıdaki görüntüde, uygulanabilir ve yalnızca bir tane **uyumlu olmayan**20 farklı kaynak vardır. Genel kaynak uyumluluğu %95 ' dir (19/20).
+Uyumluluk yüzdesi, **uyumlu** ve **muaf** kaynakları _Toplam kaynağa_bölerek belirlenir. _Toplam kaynak_ , **uyumlu**, **uyumlu olmayan**, **muaf**ve **Çakışan** kaynakların toplamı olarak tanımlanır. Genel uyumluluk numaraları, tüm ayrı kaynakların toplamına göre **uyumlu** veya **muaf tutulan** ayrı kaynakların toplamıdır. Aşağıdaki görüntüde, uygulanabilir ve yalnızca bir tane **uyumlu olmayan**20 farklı kaynak vardır.
+Genel kaynak uyumluluğu %95 ' dir (19/20).
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Uyumluluk sayfasından ilke uyumluluğu ayrıntılarının ekran görüntüsü." border="false":::
 

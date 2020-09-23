@@ -4,12 +4,12 @@ description: Azure Relay kullanarak, şirket içi WCF hizmetini bulutta bir Web 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: d6299899ee45bbad8b5e5fdbca01805604794d62
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922557"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983883"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Azure Relay kullanarak bir şirket içi WCF hizmetini bulutta bir Web uygulamasına sunun
 
@@ -344,7 +344,7 @@ Bu bölümde, ürün hizmetinizden alınan verileri görüntüleyen basit bir AS
 
 Uygulamanız, bir tarayıcıda çalışıyor olarak görüntülenmelidir.
 
-![Web uygulaması][21]
+![Ekran görüntüsünde, URL vurgulanmış bir tarayıcıda çalıştırılan uygulamanın bir örneği gösterilir.][21]
 
 ## <a name="put-the-pieces-together"></a>Parçaları bir araya getirme
 

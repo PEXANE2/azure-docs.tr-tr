@@ -4,11 +4,11 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: juliako
-ms.openlocfilehash: ead8b68030d1f0df1a774acfe5ecd4534d29cfff
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 3de260e0e5fc68f1495e7a37def06a2289b548c7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89464250"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025318"
 ---
-![Ana](../media/banner/banner.svg)
+![11 Haziran 2020’de Microsoft, insan haklarına dayalı etkili düzenlemeler yapılmadığı sürece ABD’deki polis departmanlarına yüz tanıma teknolojisi satmayacağını duyurmuştur. Bu nedenle, müşteriler yüz tanıma özelliklerini ya da yüz veya Video Indexer gibi Azure hizmetlerinde yer alan işlevselliği veya bir müşteri varsa ya da için Birleşik Devletler bir polis departmanı olan bu hizmetlerin kullanılmasına izin vermeyi kullanamaz.](../media/banner/banner.svg)
