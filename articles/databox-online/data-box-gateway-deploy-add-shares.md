@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 6db2d8fa6e957a63a4410f17b09a9f106bfba6e6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4e54f5254d38bca9c8ff30d5b7cefbe3fde69576
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923484"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904369"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Öğretici: Azure Data Box Gateway veri aktarma
 
@@ -57,7 +57,7 @@ Bir paylaşma oluşturmak için aşağıdaki yordamı uygulayın:
 
     3. Paylaşımın bulunacağı bir depolama hesabı sağlayın. Zaten bir kapsayıcı yoksa, depolama hesabında yeni oluşturulan paylaşma adıyla oluşturulur. Kapsayıcı zaten varsa, o kapsayıcı kullanılır.
        > [!IMPORTANT]
-       > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge veya Data Box Gateway cihazından yararlanarak, bu sunucuda ayarlanmış bir şekilde kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+       > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge Pro veya Data Box Gateway cihazından yararlanarak bu sunucuda ayarlanmış bir değişiklik olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
     
     4. Blok blobundan, sayfa blobundan veya dosyadan **Depolama hizmeti**'ni seçin. Seçilen hizmetin türü, verilerin Azure'da hangi biçimde tutulmasını istediğinize bağlıdır. Örneğin, buradaki örnekte biz verilerin Azure'da blob blokları olarak tutulmasını istediğimiz için Blok Blobunu seçtik. Sayfa Blobunu seçerseniz, verilerinizi 512 bayt hizalı olduğundan emin olmalısınız. Örneğin VHDX her zaman 512 bayt hizalıdır.
    
@@ -107,7 +107,7 @@ Data Box Gateway bağlı Windows Server istemcisinde, komutları girerek bir SMB
 
 
 2. Klavyenizde Windows + R ' yi seçin. 
-3. **Çalıştır** penceresinde, öğesini belirtip Tamam ' `\\<device IP address>` ı seçin. **OK** Dosya Gezgini açılır. Artık, klasör olarak oluşturduğunuz paylaşımları görüntüleyebilmelisiniz. Dosya Gezgini 'nde, içeriği görüntülemek için bir paylaşıma (klasör) çift tıklayın.
+3. **Çalıştır** penceresinde, öğesini belirtip Tamam ' `\\<device IP address>` ı seçin. **OK** Dosya Gezgini açılır. Artık oluşturduğunuz paylaşımları klasörler olarak görüntüleyebiliyor olmalısınız. İçeriğini görüntülemek için Dosya Gezgini'nde paylaşıma (klasöre) çift tıklayın.
  
     ![SMB paylaşımına bağlanma](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 
@@ -115,13 +115,13 @@ Data Box Gateway bağlı Windows Server istemcisinde, komutları girerek bir SMB
 
 ### <a name="connect-to-an-nfs-share"></a>NFS paylaşımına bağlanma
 
-Azure Stack Edge cihazınıza bağlı Linux istemciniz için aşağıdaki yordamı uygulayın:
+Azure Stack Edge Pro cihazınıza bağlı Linux istemciniz için aşağıdaki yordamı uygulayın:
 
 1. İstemcide NFSv4 istemcisinin yüklü olduğundan emin olun. NFS istemcisini yüklemek için aşağıdaki komutu kullanın:
 
    `sudo apt-get install nfs-common`
 
-    Daha fazla bilgi için [NFSv4 istemcisini yükleme](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client) konusuna gidin.
+    Daha fazla bilgi için [Install NFSv4 Client](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client)bölümüne gidin.
 
 2. NFS istemcisi yüklendikten sonra, Data Box Gateway cihazınızda oluşturduğunuz NFS paylaşımını bağlamak için aşağıdaki komutu kullanın:
 

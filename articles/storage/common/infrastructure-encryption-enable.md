@@ -5,40 +5,33 @@ description: Verilerin güvenliğini sağlamaya yönelik daha yüksek düzeyde g
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/08/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: references_regions
-ms.openlocfilehash: edeb184af1c1260a456ed3de7064805526629de8
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 3164de9c3e44001d58d46eab9f823041b440960b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225368"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984179"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>Verilerin çift şifrelenmesi için altyapı şifrelemesi etkinleştirilmiş bir depolama hesabı oluşturma
 
 Azure depolama, hizmet düzeyindeki bir depolama hesabındaki tüm verileri otomatik olarak 256 bit AES şifrelemesi kullanarak şifreler, en güçlü blok şifrelemeleri kullanılabilir ve FIPS 140-2 uyumludur. Verilerin güvenliğini sağlamaya yönelik daha yüksek düzeyde güvence gerektiren müşteriler, Azure depolama altyapısı düzeyinde 256 bit AES şifrelemesini de etkinleştirebilir. Altyapı şifrelemesi etkinleştirildiğinde, bir depolama hesabındaki veriler, &mdash; hizmet düzeyinde iki kez ve altyapı düzeyinde &mdash; iki farklı şifreleme algoritmalarıyla bir kez şifrelenir. Azure depolama verilerinin çift şifrelemesi, şifreleme algoritmalarından veya anahtarlardan birinin tehlikeye girdiği bir senaryoya karşı koruma sağlar. Bu senaryoda, ek şifreleme katmanı verilerinizi korumaya devam eder.
 
-Hizmet düzeyi şifreleme, Azure Key Vault ile Microsoft tarafından yönetilen anahtarların veya müşteri tarafından yönetilen anahtarların kullanımını destekler. Altyapı düzeyinde şifreleme, Microsoft tarafından yönetilen anahtarları kullanır ve her zaman ayrı bir anahtar kullanır. Azure depolama şifrelemesi ile anahtar yönetimi hakkında daha fazla bilgi için bkz. [şifreleme anahtarı yönetimi hakkında](storage-service-encryption.md#about-encryption-key-management).
+Hizmet düzeyi şifreleme, Azure Key Vault veya Key Vault yönetilen donanım güvenlik modeli (HSM) (Önizleme) ile Microsoft tarafından yönetilen anahtarların veya müşteri tarafından yönetilen anahtarların kullanılmasını destekler. Altyapı düzeyinde şifreleme, Microsoft tarafından yönetilen anahtarları kullanır ve her zaman ayrı bir anahtar kullanır. Azure depolama şifrelemesi ile anahtar yönetimi hakkında daha fazla bilgi için bkz. [şifreleme anahtarı yönetimi hakkında](storage-service-encryption.md#about-encryption-key-management).
 
 Verilerinizi daha da şifrelemek için, önce altyapı şifrelemesi için yapılandırılmış bir depolama hesabı oluşturmanız gerekir. Bu makalede, altyapı şifrelemesini sağlayan bir depolama hesabının nasıl oluşturulacağı açıklanır.
 
-## <a name="about-the-feature"></a>Özelliği hakkında
+## <a name="register-to-use-infrastructure-encryption"></a>Altyapı şifrelemesini kullanmak için kaydolun
 
-Altyapı Şifrelemesi etkin olan bir depolama hesabı oluşturmak için, önce bu özelliği Azure ile kullanmak üzere kaydolmanız gerekir. Sınırlı kapasite nedeniyle, erişim isteklerinin onaylanabilmesi için birkaç ay sürebileceğinden emin olun.
+Altyapı Şifrelemesi etkin olan bir depolama hesabı oluşturmak için, önce PowerShell veya Azure CLı kullanarak bu özelliği Azure ile kullanmak üzere kaydolmanız gerekir.
 
-Aşağıdaki bölgelerde altyapı şifrelemesi etkinleştirilmiş bir depolama hesabı oluşturabilirsiniz:
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-- Doğu ABD
-- Orta Güney ABD
-- Batı ABD 2
-
-### <a name="register-to-use-infrastructure-encryption"></a>Altyapı şifrelemesini kullanmak için kaydolun
-
-Azure depolama ile altyapı şifrelemeyi kullanmak için kaydolmak üzere PowerShell veya Azure CLı kullanın.
+Yok
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -47,6 +40,19 @@ PowerShell 'e kaydolmak için [register-AzProviderFeature](/powershell/module/az
 ```powershell
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName AllowRequireInfraStructureEncryption
+```
+
+Kayıt durumunuzu PowerShell 'e göre denetlemek için [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) komutunu çağırın.
+
+```powershell
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowRequireInfraStructureEncryption
+```
+
+Kaydınız onaylandıktan sonra Azure depolama kaynak sağlayıcısı 'nı yeniden kaydetmeniz gerekir. Kaynak sağlayıcıyı PowerShell ile yeniden kaydetmek için [register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) komutunu çağırın.
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -58,27 +64,6 @@ az feature register --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-# <a name="template"></a>[Şablon](#tab/template)
-
-Yok
-
----
-
-### <a name="check-the-status-of-your-registration"></a>Kaydlarınızın durumunu denetleyin
-
-Altyapı şifrelemesiyle ilgili kaydın durumunu denetlemek için PowerShell veya Azure CLı kullanın.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Kayıt durumunuzu PowerShell 'e göre denetlemek için [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) komutunu çağırın.
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowRequireInfraStructureEncryption
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
 Azure CLı ile kaydlarınızın durumunu denetlemek için [az Feature](/cli/azure/feature#az-feature-show) komutunu çağırın.
 
 ```azurecli
@@ -86,27 +71,7 @@ az feature show --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-# <a name="template"></a>[Şablon](#tab/template)
-
-Yok
-
----
-
-### <a name="re-register-the-azure-storage-resource-provider"></a>Azure depolama kaynak sağlayıcısı 'nı yeniden kaydetme
-
-Kaydınız onaylandıktan sonra Azure depolama kaynak sağlayıcısı 'nı yeniden kaydetmeniz gerekir. Kaynak sağlayıcıyı yeniden kaydetmek için PowerShell veya Azure CLı kullanın.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Kaynak sağlayıcıyı PowerShell ile yeniden kaydetmek için [register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) komutunu çağırın.
-
-```powershell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Kaynak sağlayıcısını Azure CLı ile yeniden kaydetmek için [az Provider Register](/cli/azure/provider#az-provider-register) komutunu çağırın.
+Kaydınız onaylandıktan sonra Azure depolama kaynak sağlayıcısı 'nı yeniden kaydetmeniz gerekir. Kaynak sağlayıcısını Azure CLı ile yeniden kaydetmek için [az Provider Register](/cli/azure/provider#az-provider-register) komutunu çağırın.
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
@@ -120,9 +85,20 @@ Yok
 
 ## <a name="create-an-account-with-infrastructure-encryption-enabled"></a>Altyapı Şifrelemesi etkin bir hesap oluşturma
 
-Bir depolama hesabını, hesabı oluşturduğunuz sırada altyapı şifrelemesini kullanacak şekilde yapılandırmanız gerekir. Hesap oluşturulduktan sonra altyapı şifrelemesi etkinleştirilemez veya devre dışı bırakılamaz.
+Bir depolama hesabını, hesabı oluşturduğunuz sırada altyapı şifrelemesini kullanacak şekilde yapılandırmanız gerekir. Depolama hesabının genel amaçlı v2 türünde olması gerekir.
 
-Depolama hesabının genel amaçlı v2 türünde olması gerekir. Depolama hesabı oluşturabilir ve PowerShell, Azure CLı veya bir Azure Resource Manager şablonu kullanarak altyapı şifrelemeyi etkinleştirecek şekilde yapılandırabilirsiniz.
+Hesap oluşturulduktan sonra altyapı şifrelemesi etkinleştirilemez veya devre dışı bırakılamaz.
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+PowerShell kullanarak altyapı Şifrelemesi etkin bir depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
+
+1. Azure portal **depolama hesapları** sayfasına gidin.
+1. Yeni bir genel amaçlı v2 depolama hesabı eklemek için **Ekle** düğmesini seçin.
+1. **Gelişmiş** sekmesinde **altyapı** şifrelemesini bulun ve **etkin**' i seçin.
+1. Depolama hesabı oluşturma işleminin bitmesini istiyorsanız **gözden geçir + oluştur** ' u seçin.
+
+    :::image type="content" source="media/infrastructure-encryption-enable/create-account-infrastructure-encryption-portal.png" alt-text="Hesap oluştururken altyapı şifrelemesini etkinleştirmeyi gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -197,9 +173,18 @@ Aşağıdaki JSON örneği, Okuma Erişimli Coğrafi olarak yedekli depolama (RA
 
 ## <a name="verify-that-infrastructure-encryption-is-enabled"></a>Altyapı şifrelemesinin etkinleştirildiğini doğrulama
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Altyapı şifrelemesinin Azure portal bir depolama hesabı için etkinleştirildiğini doğrulamak için şu adımları izleyin:
+
+1. Azure portalda depolama hesabınıza gidin.
+1. **Ayarlar**altında **şifreleme**' yi seçin.
+
+    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="Hesap için altyapı şifrelemesinin etkin olduğunu nasıl doğrulayabildiğinizi gösteren ekran görüntüsü":::
+
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Bir depolama hesabı için altyapı şifrelemesinin etkinleştirildiğini doğrulamak için [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) komutunu çağırın. Bu komut, bir depolama hesabı özellikleri kümesi ve değerlerini döndürür. `RequireInfrastructureEncryption`Özelliğin içindeki alanı alın `Encryption` ve olarak ayarlandığını doğrulayın `True` .
+PowerShell ile bir depolama hesabı için altyapı şifrelemesinin etkinleştirildiğini doğrulamak için [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) komutunu çağırın. Bu komut, bir depolama hesabı özellikleri kümesi ve değerlerini döndürür. `RequireInfrastructureEncryption`Özelliğin içindeki alanı alın `Encryption` ve olarak ayarlandığını doğrulayın `True` .
 
 Aşağıdaki örnek, özelliğinin değerini alır `RequireInfrastructureEncryption` . Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
@@ -211,7 +196,7 @@ $account.Encryption.RequireInfrastructureEncryption
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bir depolama hesabı için altyapı şifrelemesinin etkinleştirildiğini doğrulamak üzere [az Storage Account Show](/cli/azure/storage/account#az-storage-account-show) komutunu çağırın. Bu komut, bir depolama hesabı özellikleri kümesi ve değerlerini döndürür. `requireInfrastructureEncryption`Özelliğin içindeki alanı bulun `encryption` ve olarak ayarlandığını doğrulayın `true` .
+Azure CLı ile bir depolama hesabı için altyapı şifrelemesinin etkinleştirildiğini doğrulamak üzere [az Storage Account Show](/cli/azure/storage/account#az-storage-account-show) komutunu çağırın. Bu komut, bir depolama hesabı özellikleri kümesi ve değerlerini döndürür. `requireInfrastructureEncryption`Özelliğin içindeki alanı bulun `encryption` ve olarak ayarlandığını doğrulayın `true` .
 
 Aşağıdaki örnek, özelliğinin değerini alır `requireInfrastructureEncryption` . Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
@@ -230,4 +215,4 @@ Yok
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bekleyen veri için Azure Depolama şifrelemesi](storage-service-encryption.md)
-- [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](encryption-customer-managed-keys.md)
+- [Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarlar](customer-managed-keys-overview.md)

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ce5bc3b4e5ccd26ec3f6b35c995ebe2274042c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ff647581447ad4436daf6c8b1d2ecbf817f7f8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749715"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983635"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure sanal WAN günlükleri ve ölçümleri
 
@@ -62,7 +62,7 @@ Aşağıdaki adımlar ölçümleri bulmanıza ve görüntülemenize yardımcı o
 
 3. **Ölçümler**’i seçin.
 
-   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="ölçümler":::
+   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="Ekran görüntüsünde, Azure Izleyici 'de Görünüm ' ün bulunduğu siteden siteye V P N bölmesi görüntülenir.":::
 
 4. **Ölçümler** sayfasında, ilgilendiğiniz ölçümleri görebilirsiniz.
 

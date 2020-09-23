@@ -1,6 +1,6 @@
 ---
-title: Geçmiş verilerini bekletme ilkesiyle yönetme-Azure SQL Edge (Önizleme)
-description: Azure SQL Edge 'de bekletme ilkesiyle geçmiş verileri yönetmeyi öğrenin (Önizleme)
+title: Geçmiş verilerini bekletme ilkesiyle yönetme-Azure SQL Edge
+description: Azure SQL Edge 'de bekletme ilkesiyle geçmiş verileri yönetmeyi öğrenin
 keywords: SQL Edge, veri saklama
 services: sql-edge
 ms.service: sql-edge
@@ -9,22 +9,21 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9acec467819f159623176edf2f3f763a55019eb4
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550761"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888135"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>Geçmiş verilerini bekletme ilkesiyle yönetme
 
 Veri saklama, veritabanında ve temel alınan tablolardan birinde etkinleştirilebilir ve kullanıcıların tabloları ve veritabanları için esnek eskime kuralları oluşturmalarına olanak tanır. Veri bekletmenin uygulanması basittir: tablo oluşturma sırasında veya alter table işleminin bir parçası olarak yalnızca bir parametre ayarlanmasını gerektirir. 
 
-Veri saklama ilkesi bir veritabanı ve temel alınan tablo için devre dışı olduktan sonra, bir arka plan zaman Zamanlayıcı görevi, veri saklama için etkin olan tablodan kullanılmayan kayıtları kaldırmak üzere çalışır. Eşleşen satırların tanımlanması ve tablodan kaldırılması, sistem tarafından zamanlanan ve çalıştırılan arka plan görevinde saydam bir şekilde gerçekleşir. Tablo satırları için yaş koşulu, tablo tanımında olarak kullanılan sütuna göre denetlenir `filter_column` . Örneğin, saklama dönemi bir hafta olarak ayarlandıysa, temizleme için uygun tablo satırları aşağıdaki koşulu karşılar: 
+Veri saklama ilkesi bir veritabanı ve temel alınan tablo için devre dışı olduktan sonra, bir arka plan zaman Zamanlayıcı görevi, veri saklama için etkin olan tablodan kullanılmayan kayıtları kaldırmak üzere çalışır. Eşleşen satırların tanımlanması ve tablodan kaldırılması, sistem tarafından zamanlanan ve çalıştırılan arka plan görevinde saydam bir şekilde gerçekleşir. Tablo satırları için yaş koşulu, tablo tanımında olarak kullanılan sütuna göre denetlenir `filter_column` . Örneğin, saklama dönemi bir hafta olarak ayarlanırsa, temizleme için uygun tablo satırları aşağıdaki koşullardan birini karşılar: 
 
-```sql
-filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())
-```
+- Filtre sütunu DATETIMEOFFSET veri türü kullanıyorsa, koşul `filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())`
+- Bundan sonra koşul `filter_column < DATEADD(WEEK, -1, SYSDATETIME())`
 
 ## <a name="data-retention-cleanup-phases"></a>Veri bekletme Temizleme aşamaları
 
@@ -37,7 +36,7 @@ Veri saklama Temizleme işlemi iki aşamadan oluşur.
 
 ## <a name="manual-cleanup"></a>El ile temizlik
 
-Bir tablodaki veri bekletme ayarlarına ve veritabanındaki iş yükünün yapısına bağlı olarak, otomatik temizleme iş parçacığı çalışma sırasında tüm eski satırları tamamen kaldıramayabilir. Bu sorun için yardımcı olmak ve kullanıcıların eski satırları el ile kaldırmasına izin vermek için, `sys.sp_cleanup_data_retention` saklı yordam Azure SQL Edge 'de (Önizleme) tanıtılmıştır. 
+Bir tablodaki veri bekletme ayarlarına ve veritabanındaki iş yükünün yapısına bağlı olarak, otomatik temizleme iş parçacığı çalışma sırasında tüm eski satırları tamamen kaldıramayabilir. Bu sorun için yardımcı olmak ve kullanıcıların eski satırları el ile kaldırmasına izin vermek için, `sys.sp_cleanup_data_retention` saklı yordam Azure SQL Edge 'de tanıtılmıştır. 
 
 Bu saklı yordam üç parametre alır. 
     - Şema adı-tablo için sahip olan şemanın adı. Bu gerekli bir parametredir. 
@@ -67,7 +66,7 @@ Mükemmel veri sıkıştırma ve verimli bekletme Temizleme, iş yükünüz hız
 
 ## <a name="monitoring-data-retention-cleanup"></a>Veri bekletme temizleme işlemini izleme
 
-Veri bekletme ilkesi temizleme işlemleri, Azure SQL Edge 'de (Önizleme) genişletilmiş olaylar (XEvents) kullanılarak izlenebilir. Genişletilmiş olaylar hakkında daha fazla bilgi için bkz. [XEvents genel bakış](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events).
+Veri bekletme ilkesi temizleme işlemleri, Azure SQL Edge 'de genişletilmiş olaylar (XEvents) kullanılarak izlenebilir. Genişletilmiş olaylar hakkında daha fazla bilgi için bkz. [XEvents genel bakış](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events). 
 
 Aşağıdaki altı genişletilmiş olay Temizleme işlemlerinin durumunu izlemeye yardımcı olur. 
 
@@ -78,7 +77,9 @@ Aşağıdaki altı genişletilmiş olay Temizleme işlemlerinin durumunu izlemey
 | data_retention_task_exception  | Saklama ilkesi içeren tabloların temizlenmesi için arka plan görevi, tablosuna özgü bekletme Temizleme işlemi dışında başarısız olduğunda gerçekleşir. |
 | data_retention_cleanup_started  | Veri saklama ilkesi başladığında tablo işlemini Temizleme işlemi başladığında gerçekleşir. |
 | data_retention_cleanup_exception  | Bekletme ilkesi olan tablonun Temizleme işlemi başarısız olur. |
-| data_retention_cleanup_completed  | Veri saklama ilkesi sona erdiğinde tablo işlemini Temizleme işlemi tamamlandığında gerçekleşir. |
+| data_retention_cleanup_completed  | Veri saklama ilkesi sona erdiğinde tablo işlemini Temizleme işlemi tamamlandığında gerçekleşir. |  
+
+Ayrıca, `RING_BUFFER_DATA_RETENTION_CLEANUP` sys. dm_os_ring_buffers dinamik yönetim görünümüne adlandırılmış yeni bir halka arabelleği türü eklenmiştir. Bu görünüm veri bekletme temizleme işlemlerini izlemek için kullanılabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar

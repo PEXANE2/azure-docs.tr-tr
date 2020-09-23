@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ce4c44ef17f456a776fde3addc5ec4ed29c8ebbd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434461"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983696"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
@@ -67,7 +67,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Note:* Bu etiketin **AzureActiveDirectory**, **Azurefrontkapı. ön uç** ve **Azurefrontkapısı. firstpartisi** etiketlerine bağımlılığı vardır. | Outbound | Hayır | Hayır |
 | **AzureIoTHub** | Azure IoT Hub. | Outbound | Hayır | Hayır |
 | **AzureKeyVault** | Azure Key Vault.<br/><br/>*Note:* Bu etiketin **AzureActiveDirectory** etiketine bağımlılığı vardır. | Outbound | Yes | Yes |
-| **AzureLoadBalancer** | Azure altyapı yük dengeleyici. Etiketi, Azure sistem durumu araştırmalarının gerçekleştiği [konağın sanal IP adresine](security-overview.md#azure-platform-considerations) (168.63.129.16) çevirir. Bu, Azure Load Balancer kaynağına giden trafiği içermez. Azure Load Balancer kullanmıyorsanız, bu kuralı geçersiz kılabilirsiniz. | Her ikisi | Hayır | Hayır |
+| **AzureLoadBalancer** | Azure altyapı yük dengeleyici. Etiketi, Azure sistem durumu araştırmalarının gerçekleştiği [konağın sanal IP adresine](security-overview.md#azure-platform-considerations) (168.63.129.16) çevirir. Bu, arka uç kaynağınızın gerçek trafiğini değil yalnızca araştırma trafiği içerir. Azure Load Balancer kullanmıyorsanız, bu kuralı geçersiz kılabilirsiniz. | Her ikisi | Hayır | Hayır |
 | **AzureMachineLearning** | Azure Machine Learning. | Her ikisi | Hayır | Yes |
 | **AzureMonitor** | Log Analytics, Application Insights, AzMon ve özel ölçümler (GB uç noktaları).<br/><br/>*Note:* Log Analytics için, bu etiketin **depolama** etiketine bağımlılığı vardır. | Outbound | Hayır | Yes |
 | **AzureOpenDatasets** | Azure veri kümelerini açın.<br/><br/>*Note:* Bu etiketin **Azurefrontkapısı. ön uç** ve **depolama** etiketine bağımlılığı vardır. | Outbound | Hayır | Hayır |

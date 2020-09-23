@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 10d253b3e470ea009944d4ccd756d4bbbe3766e7
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5b1a5da688b162c85d2be8580e29dc6ee9db6d40
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029826"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906475"
 ---
 # <a name="server-group-size"></a>Sunucu grubu boyutu
 
@@ -42,7 +42,7 @@ PostgreSQL için Azure veritabanı-Hyperscale (Citus), daha fazla yük ile başa
 
 Düğüm eklemek için, Hyperscale (Citus) sunucu grubundaki **işlem + depolama** sekmesine gidin.  **Çalışan düğümü sayısı** için kaydırıcıyı sürüklemek değeri değiştirir.
 
-![Kaynak sürgüleri](./media/howto-hyperscale-scaling/01-sliders-workers.png)
+:::image type="content" source="./media/howto-hyperscale-scaling/01-sliders-workers.png" alt-text="Kaynak sürgüleri":::
 
 Değiştirilen değerin etkili olması için **Kaydet** düğmesine tıklayın.
 

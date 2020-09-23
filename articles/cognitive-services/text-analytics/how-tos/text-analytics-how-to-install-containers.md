@@ -11,19 +11,20 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a83fd67a9ad5e5a36555fcbaed65b1d76936c33d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545667"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906046"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Metin Analizi kapsayıcılarını yükleme ve çalıştırma
 
 > [!NOTE]
 > * V3 Yaklaşım Analizi kapsayıcısı genel kullanıma sunulmuştur. Anahtar ifade ayıklama ve dil algılama kapsayıcıları engelsiz genel önizleme olarak sağlanır.
 > * Varlık bağlama ve NER Şu anda bir kapsayıcı olarak kullanılamıyor.
-> * Şu anda Sistem Durumu için Metin Analizi kapsayıcı kullanımı için ücretlendirilmezsiniz.
+> * Sistem durumu kapsayıcısı için Metin Analizi erişilmesi bir [istek formu](https://aka.ms/cognitivegate)gerektirir. Şu anda kullanım için faturalandırılmaz.
+> * Kapsayıcı görüntüsü konumları yakın zamanda değişmiş olabilir. Bu kapsayıcının güncelleştirilmiş konumunu görmek için bu makaleyi okuyun.
 
 Kapsayıcılar Metin Analizi API'lerini kendi ortamınızda çalıştırabilmenize olanak tanır. Bunlar belirli güvenlik ve veri idaresi gereksinimleriniz için çok kullanışlıdır. Metin Analizi kapsayıcıları ham metin üzerinde gelişmiş doğal dil işleme sağlar ve üç ana işlev içerir: yaklaşım analizi, anahtar ifade ayıklama ve dil algılama. 
 
@@ -32,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 > [!IMPORTANT]
 > Ücretsiz hesap, ayda 5.000 işlem ile sınırlıdır ve kapsayıcılar için yalnızca **ücretsiz** ve **Standart** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">fiyatlandırma katmanları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> geçerlidir. İşlem isteği ücretleri hakkında daha fazla bilgi için bkz. [veri limitleri](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Metin Analizi kapsayıcılarından herhangi birini çalıştırmak için konak bilgisayar ve kapsayıcı ortamları olmalıdır.
 

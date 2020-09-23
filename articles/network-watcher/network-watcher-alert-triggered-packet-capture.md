@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738065"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975060"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Uyarılar ve Azure Işlevleri ile öngörülü ağ izleme için paket yakalamayı kullanma
 
@@ -30,12 +30,12 @@ Azure 'da dağıtılan kaynaklar 24/7 çalıştırın. Siz ve çalışanlarını
 
 Azure ekosistemi içinden ağ Izleyicisi, uyarı ve işlevleri kullanarak ağınızdaki sorunları çözümlemek için veri ve araçlarla proaktif olarak yanıt verebilirsiniz.
 
-![Senaryo][scenario]
+![Diyagram, Ağ İzleyicisi uzantısına akan ağ izleyicisine akan > 100 hatası gönderen ve Azure Işlevleri 'ne akan bir T C P segmentine akan bir sanal makinede ağ Izleyicisi uzantısını gösterir.][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure PowerShell](/powershell/azure/install-Az-ps)en son sürümü.
 * Var olan bir ağ Izleyicisi örneği. Henüz bir tane yoksa, [Ağ İzleyicisi 'nin bir örneğini oluşturun](network-watcher-create.md).
@@ -81,7 +81,7 @@ Bu senaryo şunları yapar:
     |**Kaynak Grubu**|PacketCaptureRG|İşlev uygulamasını içerecek kaynak grubu.|
     |**Barındırma Planı**|Tüketim Planı| İşlev uygulamanızın kullandığı planın türü. Seçenekler, tüketim veya Azure App Service planlardır. |
     |**Konum**|Orta ABD| İşlev uygulamasının oluşturulacağı bölge.|
-    |**Depolama Hesabı**|otomatik olarak oluşturulan| Azure Işlevlerinin genel amaçlı depolama için ihtiyaç duyacağı depolama hesabı.|
+    |**Depolama hesabı**|otomatik olarak oluşturulan| Azure Işlevlerinin genel amaçlı depolama için ihtiyaç duyacağı depolama hesabı.|
 
 3. **Packetcaptureexample işlevi uygulamalar** dikey penceresinde **işlevler**  >  **özel işlev**' i seçin  > **+** .
 
@@ -138,7 +138,7 @@ Ağ Izleyicisi PowerShell cmdlet 'lerini kullanmak için, işlev uygulamasına e
 
 1. **Az. Network** alt klasörüne sağ tıklayın ve ardından **dosyaları karşıya yükle**' yi seçin. 
 
-6. Azure modülleriniz sayfasına gidin. Yerel **az. Network** klasöründe klasöründeki tüm dosyalar ' ı seçin. Sonra **Tamam**’ı seçin. 
+6. Azure modülleriniz sayfasına gidin. Yerel **az. Network** klasöründe klasöründeki tüm dosyalar ' ı seçin. Ardından **Tamam**'ı seçin. 
 
 7. **Az. Accounts** ve **az. resources**için bu adımları tekrarlayın.
 
@@ -344,11 +344,11 @@ Var olan bir sanal makineye gidin ve bir uyarı kuralı ekleyin. Uyarıları yap
 
   |**Ayar** | **Değer** | **Ayrıntılar** |
   |---|---|---|
-  |**Adı**|TCP_Segments_Sent_Exceeded|Uyarı kuralının adı.|
+  |**Ad**|TCP_Segments_Sent_Exceeded|Uyarı kuralının adı.|
   |**Açıklama**|Gönderilen TCP kesimleri eşiği aştı|Uyarı kuralının açıklaması.|
   |**Ölçüm**|Gönderilen TCP kesimleri| Uyarıyı tetiklemek için kullanılacak ölçüm. |
-  |**Koşul**|Büyüktür| Ölçüm değerlendirilirken kullanılacak koşul.|
-  |**Eşiği**|100| Uyarıyı tetikleyen ölçümün değeri. Bu değer, ortamınız için geçerli bir değer olarak ayarlanmalıdır.|
+  |**Condition**|Büyüktür| Ölçüm değerlendirilirken kullanılacak koşul.|
+  |**Eşik**|100| Uyarıyı tetikleyen ölçümün değeri. Bu değer, ortamınız için geçerli bir değer olarak ayarlanmalıdır.|
   |**Dönem**|Son beş dakika boyunca| Ölçüm üzerindeki eşiğin aranacağı süreyi belirler.|
   |**Web Kancası**|[işlev uygulamasından Web kancası URL 'SI]| Önceki adımlarda oluşturulan işlev uygulamasındaki Web kancası URL 'SI.|
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e6fb2f09200e42f7ad7781716bb83ab418134509
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 089c53c72ae2c4cf6216937e8977b64a7abf80fc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516150"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983211"
 ---
 # <a name="azure-activity-log"></a>Azure etkinlik günlüğü
 Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform Günlüğliğidir](platform-logs-overview.md) . Bu, bir kaynağın değiştirildiği veya bir sanal makinenin başlatıldığı zaman gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Ek işlevsellik için, etkinlik günlüğü 'nü Azure [Izleyici günlüklerine](data-platform-logs.md), Azure Event Hubs Azure 'da veya arşivleme Için Azure depolama 'ya iletecek şekilde göndermek üzere bir tanılama ayarı oluşturmanız gerekir. Bu makale, etkinlik günlüğünü görüntüleme ve farklı hedeflere gönderme hakkında ayrıntılar sağlar.
@@ -156,7 +156,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
 Her PT1H.json blobu, blob URL’sinde belirtilen saat (örneğin, h=12) içinde gerçekleşen bir JSON olay blobu içerir. Mevcut saat boyunca, olaylar meydana geldikçe PT1H.json dosyasına eklenir. Kaynak günlüğü olayları saat başına ayrı blob 'lara bölündüğü için, dakika değeri (e = 00) her zaman 00 ' dır.
 
-Her olay, ortak bir en üst düzey şemayı kullanan, ancak her kategori için [etkinlik günlüğü şeması](activity-log-schema.md)' nda açıklandığı gibi benzersiz olan aşağıdaki biçimdeki PT1H.jsdosya üzerinde depolanır.
+Her olay, ortak bir en üst düzey şemayı kullanan, ancak her kategori için  [etkinlik günlüğü şeması](activity-log-schema.md)' nda açıklandığı gibi benzersiz olan aşağıdaki biçimdeki PT1H.jsdosya üzerinde depolanır.
 
 ``` JSON
 { "time": "2020-06-12T13:07:46.766Z", "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/MV-VM-01", "correlationId": "0f0cb6b4-804b-4129-b893-70aeeb63997e", "operationName": "Microsoft.Resourcehealth/healthevent/Updated/action", "level": "Information", "resultType": "Updated", "category": "ResourceHealth", "properties": {"eventCategory":"ResourceHealth","eventProperties":{"title":"This virtual machine is starting as requested by an authorized user or process. It will be online shortly.","details":"VirtualMachineStartInitiatedByControlPlane","currentHealthStatus":"Unknown","previousHealthStatus":"Unknown","type":"Downtime","cause":"UserInitiated"}}}
@@ -202,11 +202,11 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmalı v
     | Özellik | Gerekli | Açıklama |
     | --- | --- | --- |
     | Ad |Yes |Günlük profilinizin adı. |
-    | Storageaccountıd |No |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
-    | Servicebusruleıd |No |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimde bir dizedir: `{service bus resource ID}/authorizationrules/{key name}` . |
+    | Storageaccountıd |Hayır |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
+    | Servicebusruleıd |Hayır |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimde bir dizedir: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Konum |Evet |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin virgülle ayrılmış listesi. |
     | Retentionındays |Yes |Depolama hesabında olayların saklanacağı gün sayısı (1 ile 365 arasında). Sıfır değeri, günlükleri süresiz olarak depolar. |
-    | Kategori |No |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _yazma_, _silme_ve _eylem_. |
+    | Kategori |Hayır |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _yazma_, _silme_ve _eylem_. |
 
 ### <a name="example-script"></a>Örnek betik
 Aşağıda, etkinlik günlüğünü hem depolama hesabına hem de Olay Hub 'ına yazan bir günlük profili oluşturmak için örnek bir PowerShell betiği verilmiştir.
@@ -259,7 +259,7 @@ Etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için e
 1. Çalışma alanının menüsündeki **çalışma alanı veri kaynakları** bölümünde **Azure etkinlik günlüğü**' nü seçin.
 1. Bağlanmak istediğiniz aboneliğe tıklayın.
 
-    ![Çalışma alanları](media/activity-log-collect/workspaces.png)
+    ![Ekran görüntüsünde bir Azure etkinlik günlüğü seçiliyken Log Analytics çalışma alanı görüntülenir.](media/activity-log-collect/workspaces.png)
 
 1. Abonelikteki etkinlik günlüğünü seçili çalışma alanına bağlamak için **Bağlan** ' a tıklayın. Abonelik zaten başka bir çalışma alanına bağlıysa bağlantıyı kesmek için önce **bağlantıyı kes** ' e tıklayın.
 

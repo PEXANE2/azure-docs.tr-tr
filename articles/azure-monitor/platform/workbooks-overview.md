@@ -1,6 +1,6 @@
 ---
 title: Azure İzleyici Çalışma Kitapları’na Genel Bakış
-description: Önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın
+description: Çalışma kitaplarının veri analizi ve Azure portal zengin görsel raporların oluşturulması için nasıl esnek bir tuval sağladığını öğrenin.
 author: mrbullwinkle
 manager: carmonm
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 18e757ccac56d2165a1b46bb73a698ac754177b7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d6ac552640b4a557c51b674624e6a4493241e0ed
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657957"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977568"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Izleyici çalışma kitapları
 
@@ -53,7 +53,7 @@ Ancak çalışma kitaplarının gerçek gücü, farklı kaynaklardaki verileri t
 
 ![Örnek çalışma kitabı görselleştirmeleri](./media/workbooks-overview/visualizations.png)
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Çalışma kitapları deneyimini araştırmak için öncelikle Azure Izleyici hizmetine gidin. Bu, Azure portal arama kutusuna **izleyici** yazılarak yapılabilir.
 

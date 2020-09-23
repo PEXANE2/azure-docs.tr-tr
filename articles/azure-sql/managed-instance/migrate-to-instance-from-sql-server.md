@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: douglas, carlrab
+ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: a54cf2ed228a166ea3d87c14515f41d5b0e7aed9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090236"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887660"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL yönetilen örneğine örnek geçişi SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -198,7 +198,7 @@ Geçiş sırasında yönetilen örnekte bazı değişiklikler yapmasanız bile, 
 
 Örneğin, yönetilen örnek üzerinde yedeklemeler oluşturmanız gerekmez; hizmet yedeklemeleri sizin için otomatik olarak gerçekleştirir. Yedeklemeleri zamanlama, alma ve yönetme konusunda artık endişelenmeniz gerekmez. SQL yönetilen örneği, bu bekletme döneminde zaman içindeki herhangi bir noktaya geri yükleme olanağını, zaman içindeki bir [noktaya kurtarma (sür)](../database/recovery-using-backups.md#point-in-time-restore)kullanarak sağlar. Ayrıca [, yüksek kullanılabilirlik yerleşik olarak oluşturulduğu](../database/high-availability-sla.md) için yüksek kullanılabilirlik ayarlama konusunda endişelenmeniz gerekmez.
 
-Güvenliği güçlendirmek için [Azure Active Directory kimlik doğrulaması](../database/security-overview.md), [Denetim](auditing-configure.md), [tehdit algılama](../database/advanced-data-security.md), [satır düzeyi güvenlik](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)ve [dinamik veri maskeleme](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)kullanmayı göz önünde bulundurun.
+Güvenliği güçlendirmek için [Azure Active Directory kimlik doğrulaması](../database/security-overview.md), [Denetim](auditing-configure.md), [tehdit algılama](../database/azure-defender-for-sql.md), [satır düzeyi güvenlik](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)ve [dinamik veri maskeleme](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)kullanmayı göz önünde bulundurun.
 
 Yönetilen bir örnek, gelişmiş yönetim ve güvenlik özelliklerine ek olarak, [iş yükünüzü izlemenize ve ayarlamanıza](../database/monitor-tune-overview.md)yardımcı olabilecek bir dizi gelişmiş araç sağlar. [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) , büyük bir yönetilen örnek kümesini izlemenizi ve çok sayıda örnek ve veritabanının izlenmesini merkezileştirmenizi sağlar. Yönetilen örneklerde [otomatik ayarlama](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) , SQL planı yürütme istatistiklerinizin performansını sürekli olarak izler ve belirlenen performans sorunlarını otomatik olarak düzeltir.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84a262cae17a4e26724ab06da397e699e09468db
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260195"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969193"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Sanal makine tarafından yönetilen kimlikler uzantısını kullanmayı durdurma ve Azure Instance Metadata Service kullanmaya başlama
 
@@ -37,8 +37,8 @@ Bir sonraki bölümde özetlenen çeşitli sınırlamalar nedeniyle, yönetilen 
 
 Bir sanal makineyi veya sanal makine ölçek kümesini yönetilen bir kimliğe sahip olacak şekilde yapılandırdığınızda, isteğe bağlı olarak `-Type` [set-Azvmexgercmdlet](/powershell/module/az.compute/set-azvmextension) 'Teki parametresini kullanarak Azure kaynakları VM uzantısı için Yönetilen kimlikler sağlamayı tercih edebilirsiniz. `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` Sanal makine türüne bağlı olarak ya da ' i geçirebilir ve parametresini kullanarak adını verebilirsiniz `-Name` . `-Settings`Parametresi, OAuth belirteci bitiş noktası tarafından belirteç alımı için kullanılan bağlantı noktasını belirtir:
 
-```powershell
-   $settings = @{ "port" = 50342 }
+```azurepowershell-interactive
+$settings = @{ "port" = 50342 }
    Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
 ```
 
@@ -68,7 +68,7 @@ Aşağıdaki JSON 'ı `resources` şablona ekleyerek ( `ManagedIdentityExtension
     
 Sanal makine ölçek kümeleriyle çalışıyorsanız, [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet 'Ini kullanarak Azure kaynakları sanal makine ölçek kümesi uzantısı için Yönetilen kimlikler de sağlayabilirsiniz. `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` Sanal makine ölçek kümesinin türüne bağlı olarak ya da ' i geçirebilir ve parametresini kullanarak adını verebilirsiniz `-Name` . `-Settings`Parametresi, OAuth belirteci bitiş noktası tarafından belirteç alımı için kullanılan bağlantı noktasını belirtir:
 
-   ```powershell
+   ```azurepowershell-interactive
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
    Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
@@ -106,7 +106,7 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
 ```
 
-```powershell
+```azurepowershell-interactive
 Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
 ```
 
@@ -162,7 +162,7 @@ Content-Type: application/json
 
 Windows ve Linux 'un belirli sürümlerinde, uzantı durdurulduğunda aşağıdaki cmdlet 'i el ile yeniden başlatmak için kullanılabilir:
 
-```powershell
+```azurepowershell-interactive
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 10c0200aae5ffa432c2da037d58d455fc28e8acd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3214ce260fa4981b8ac970bdf3520ecd7de59e18
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904925"
+ms.locfileid: "90985566"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 
@@ -86,7 +86,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
             
         **İleri ' yi seçin.**
 
-    1. **Ayrıntıları Onayla** formu, daha önce **temel bilgi** ve **Ayarlar ve önizleme** formlarında doldurulmuş bilgilerin bir özetidir. Ayrıca, profil oluşturma etkinleştirilmiş bir işlem kullanarak veri kümeniz için bir veri profili oluşturma seçeneğiniz de vardır. [Veri profili oluşturma](#profile)hakkında daha fazla bilgi edinin.
+    1. **Ayrıntıları Onayla** formu, daha önce **temel bilgi** ve **Ayarlar ve önizleme** formlarında doldurulmuş bilgilerin bir özetidir. Ayrıca, profil oluşturma etkinleştirilmiş bir işlem kullanarak veri kümeniz için bir veri profili oluşturma seçeneğiniz de vardır. [Veri profili oluşturma](how-to-connect-data-ui.md#profile)hakkında daha fazla bilgi edinin.
 
         **İleri**’yi seçin.
 1. Yeni oluşturduğunuz veri kümenizi göründüğünde seçin. Ayrıca, veri kümesinin ve örnek istatistiklerin önizlemesini de görüntüleyebilirsiniz. 
@@ -111,7 +111,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
     **Oluştur**’u seçin. Yeni bir işlem oluşturmak birkaç dakika sürebilir.
 
     >[!NOTE]
-    > İşlem adınız, seçtiğiniz işlem *profil oluşturma*/oluşturma işleminin etkin olup olmadığını gösterir. (Daha fazla ayrıntı için bkz. [veri profili oluşturma](#profile) bölümü).
+    > İşlem adınız, seçtiğiniz işlem *profil oluşturma*/oluşturma işleminin etkin olup olmadığını gösterir. (Daha fazla ayrıntı için bkz. [veri profili oluşturma](how-to-connect-data-ui.md#profile) bölümü).
 
     **İleri**’yi seçin.
 
@@ -144,32 +144,6 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 1. Seçim Özelliği görüntüleme ayarları: **ek yapılandırma ayarları** formunda **Otomatik** özelliği etkinleştirmeyi seçerseniz, varsayılan özellikler uygulanır. Görünüm özelliği **ayarları** ' nda bu Varsayılanları değiştirebilir ve uygun şekilde özelleştirebilirsiniz. [Korturleri özelleştirmeyi](#customize-featurization)öğrenin. 
 
     ![Azure Machine Learning Studio görev türü formu](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
-
-<a name="profile"></a>
-
-## <a name="data-profiling--summary-stats"></a>Veri profili oluşturma & Özet istatistikleri
-
-Veri ayarlanmış olup olmadığını doğrulamak için veri kümesi genelinde çok sayıda Özet istatistiği alabilir. Sayısal olmayan sütunlarda yalnızca min, Max ve Error Count gibi temel istatistikler bulunur. Sayısal sütunlarda, istatistiksel ve tahmini quantiles değerlerini de gözden geçirebilirsiniz. Veri profiliniz özellikle şunları içerir:
-
->[!NOTE]
-> İlgisiz türler içeren özellikler için boş girdiler görüntülenir.
-
-İstatistik|Açıklama
-------|------
-Öne çıkan özelliği| Özetlenen sütunun adı.
-Profil| Çıkarılan türe göre satır içi görselleştirme. Örneğin, dizeler, Boole değerleri ve tarihler değer sayılarına sahip olacaktır, ancak Ondalıklar (Numerics) de yaklaşık histogramlar olur. Bu, verilerin dağıtımını hızlı bir şekilde anlayabilmeniz için size izin verir.
-Tür dağılımı| Bir sütun içindeki türlerin satır içi değer sayısı. Null değerler kendi türlerdir, bu nedenle bu görselleştirme tek veya eksik değerleri algılamak için yararlıdır.
-Tür|Sütunun Çıkarsanan türü. Olası değerler şunlardır: dizeler, Boole değerleri, tarihler ve ondalıklar.
-Min| Sütunun minimum değeri. Boş girdiler, türü bir devralınan sıralamaya (örn. Boolean) sahip olmayan özellikler için görünür.
-En yüksek değer| Sütunun en büyük değeri. 
-Count| Sütundaki eksik ve eksik olmayan girdilerin toplam sayısı.
-Eksik sayı yok| Sütundaki eksik girdi sayısı. Boş dizeler ve hatalar değer olarak değerlendirilir ve bu nedenle "eksik sayısı" öğesine katkıda bulunmazlar.
-Dağılım Dilimleri| Verilerin dağıtılması hakkında bir fikir sağlamak için her bir satışla yaklaşık değerler.
-Ortalama| Sütunun aritmetik ortalaması veya ortalaması.
-Standart sapma| Bu sütun verisinin dağılım veya değişim miktarının ölçümü.
-Varyans| Bu sütunun verilerinin ne kadar yayıldığı, ortalama değerinden oluşan ölçüdür. 
-Eğrilikleri| Bu sütun verilerinin normal bir dağılıma göre ne kadar farklı olduğunu gösteren ölçü.
-Sıklık| Bu sütun verilerinin ne kadar süden bir normal dağıtımla karşılaştırıldığı ölçüdür.
 
 ## <a name="customize-featurization"></a>Özelleştirmeleri özelleştirme
 

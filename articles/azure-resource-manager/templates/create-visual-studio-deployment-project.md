@@ -3,12 +3,12 @@ title: Visual Studio kaynak grubu projelerini oluşturma & dağıtma
 description: Azure Kaynak grubu projesi oluşturmak ve kaynakları Azure 'a dağıtmak için Visual Studio 'Yu kullanın.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76152740"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985250"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio aracılığıyla Azure kaynak grupları oluşturma ve dağıtma
 
@@ -23,7 +23,7 @@ Bu bölümde, bir **Web uygulaması** şablonuyla bir Azure Kaynak grubu projesi
 1. Visual Studio 'da **Dosya** > **Yeni** > **Proje**' yi seçin.
 1. **Azure Kaynak grubu** proje şablonunu ve Ileri ' **yi**seçin.
 
-    ![Proje oluşturma](./media/create-visual-studio-deployment-project/create-project.png)
+    ![Ekran görüntüsünde, Azure Kaynak grubu ile yeni bir proje oluştur penceresi ve sonraki düğme vurgulandığını gösterir.](./media/create-visual-studio-deployment-project/create-project.png)
 
 1. Projenize bir ad verin. Diğer varsayılan ayarlar muhtemelen iyidir, ancak ortamınız için çalışmak üzere bunları gözden geçirin. İşiniz bittiğinde **Oluştur**’u seçin.
 
@@ -53,7 +53,7 @@ Bu bölümde, bir **Web uygulaması** şablonuyla bir Azure Kaynak grubu projesi
 
 Dağıtım projesini, dağıtmak istediğiniz kaynakları açıklayan Kaynak Yöneticisi şablonunu değiştirerek özelleştirebilirsiniz. Resource Manager şablonu bileşenleri hakkında daha fazla bilgi edinmek için [Azure Resource Manager şablonları yazma](template-syntax.md).
 
-1. Şablonunuzda çalışmak için **üzerindeWebSite.js**açın.
+1. Şablonunuzda çalışmak için ** üzerindeWebSite.js**açın.
 
 1. Visual Studio düzenleyicisi, Resource Manager şablonu düzenleme konusunda size yardımcı olan araçlar sağlar. **JSON Ana Hattı** penceresi, şablonunuzda tanımlanan bileşenleri görmenizi kolaylaştırır.
 
@@ -65,7 +65,7 @@ Dağıtım projesini, dağıtmak istediğiniz kaynakları açıklayan Kaynak Yö
 
 1. JSON Ana Hattı penceresinin üst tarafında bulunan **Kaynak Ekle** düğmesini seçerek veya **kaynaklar**’a sağ tıklayıp **Yeni Kaynak Ekle**’yi seçerek yeni kaynak ekleyebilirsiniz.
 
-   ![Kaynak Ekle](./media/create-visual-studio-deployment-project/add-resource.png)
+   ![Ekran görüntüsü, yeni kaynak ekle seçeneğinin vurgulandığı JSON ana hat penceresini gösterir.](./media/create-visual-studio-deployment-project/add-resource.png)
 
 1. **Depolama hesabı** ' nı seçin ve bir ad verin. 11 karakterden uzun olmayan ve yalnızca sayı ile küçük harf içeren bir ad belirtin.
 
@@ -103,7 +103,7 @@ Dağıtım projesini, dağıtmak istediğiniz kaynakları açıklayan Kaynak Yö
    }
    ```
 
-1. WebSite.parameters.jsdosya **üzerinde** açın. Dağıtım sırasında dağıtılan kaynağı özelleştiren değerleri geçirmek için parametreler dosyasını kullanın. Barındırma planına bir ad verin ve dosyayı kaydedin.
+1. WebSite.parameters.jsdosya ** üzerinde** açın. Dağıtım sırasında dağıtılan kaynağı özelleştiren değerleri geçirmek için parametreler dosyasını kullanın. Barındırma planına bir ad verin ve dosyayı kaydedin.
 
    ```json
    {
@@ -189,7 +189,7 @@ Bu noktada, uygulamanız için altyapı dağıttınız, ancak proje ile dağıt�
 
 1. Bundan böyle kaynak grubu projenizin yeni projeyi tanıdığından emin olmanız gerekir. Kaynak grubu projenize (ExampleAppDeploy) geri dönün. **Başvurular**’a sağ tıklayın ve **Başvuru Ekle**’yi seçin.
 
-    ![Başvuru ekleme](./media/create-visual-studio-deployment-project/add-new-reference.png)
+    ![Ekran görüntüsü, başvuru Ekle seçeneğinin vurgulandığı örnek AppDeploy menüsünü gösterir.](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
 1. Oluşturduğunuz web uygulaması projesini seçin.
 
@@ -364,7 +364,7 @@ Yalnızca Visual Studio arabirimi aracılığıyla kullanılabilir olan kaynakla
 
 1. Dağıtım tamamlandıktan sonra panonuzu portalda görüntüleyin. **Panoyu** seçin ve dağıttığınız bir tane seçin.
 
-   ![Özel Pano](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
+   ![Ekran görüntüsü, örnek özel bir panonun vurgulandığı Pano sayfasını gösterir.](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
 
 1. Özelleştirilmiş panoyu görürsünüz.
 

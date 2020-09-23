@@ -3,12 +3,12 @@ title: Azure Application Insights Docker uygulamalarını izleme | Microsoft Doc
 description: Docker performans sayaçları, olaylar ve özel durumlar, Kapsayıcılı uygulamalardaki telemetri ile birlikte Application Insights ' de görüntülenebilir.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 272b4e8af7b1ed3d01d8af0979b56954585f795d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324429"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977576"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Application Insights (kullanım dışı) Docker uygulamalarını izleme
 
@@ -61,7 +61,7 @@ Uygulamanız [Java için Application Insights SDK 'sı](./java-get-started.md)il
     <Add type="com.microsoft.applicationinsights.extensibility.initializer.docker.DockerContextInitializer"/> 
 ```
 
-Bu, uygulamanızdan gönderilen her telemetri öğesine kapsayıcı ve ana bilgisayar kimliği gibi Docker bilgilerini ekler.
+Bu, uygulamanızdan gönderilen her telemetri öğesine kapsayıcı ve ana bilgisayar KIMLIĞI gibi Docker bilgilerini ekler.
 
 ## <a name="view-your-telemetry"></a>Telemetrinizi görüntüleme
 Azure portal Application Insights kaynağına geri dönün.
@@ -71,12 +71,12 @@ Docker kutucuğuna tıklayın.
 Özellikle de Docker altyapınız üzerinde çalışan başka kapsayıcılarınız varsa Docker uygulamasından gelen verileri görürsünüz.
 
 ### <a name="docker-container-events"></a>Docker kapsayıcı olayları
-![örnek](./media/docker/13.png)
+![Ekran görüntüsünde, özel bir olaydan özel verileri içeren bir pencereye işaret eden bir oka sahip bir tanılama arama sonuçları penceresi olan arama ' yı seçme gösterilmektedir.](./media/docker/13.png)
 
 Ayrı olayları araştırmak için [Ara](./diagnostic-search.md)' ya tıklayın. İstediğiniz olayları bulmak için arama yapın ve filtre uygulayın. Daha ayrıntılı bilgi almak için herhangi bir olaya tıklayın.
 
 ### <a name="exceptions-by-container-name"></a>Kapsayıcı adına göre özel durumlar
-![örnek](./media/docker/14.png)
+![Ekran görüntüsünde grafiğin seçildiği Ölçüm Gezgini sayfası ve sağ tarafta grafik ayrıntıları penceresi açılır.](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>Uygulama telemetrisine Docker bağlamı eklendi
 AI SDK ile işaretlenmiş uygulamadan gönderilen istek telemetrisi, Docker bağlam bilgileriyle uyumlu.

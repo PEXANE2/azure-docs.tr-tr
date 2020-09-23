@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 07/6/2020
-ms.openlocfilehash: d62fd0a23a5f5553f27c7a399eb17d06d427a6f3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c6c878aa0e4a9d5caa22f7cd94c438f22a81d2ab
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108796"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881877"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics nedir?
 
@@ -57,7 +57,7 @@ Tüm Stream Analytics çıktıları listesi için bkz. [Azure Stream Analytics �
 
 ## <a name="programmer-productivity"></a>Programcı verimliliği
 
-Azure Stream Analytics, hareket halindeki verileri çözümlemek için güçlü bir zamana bağlı kısıtlamalarla genişletilmiş basit bir SQL tabanlı sorgu dili kullanır. İş dönüşümlerini tanımlamak için, basit SQL yapıları kullanarak karmaşık geçici sorgular ve analizler yazmanıza olanak tanıyan basit, bildirim temelli bir [Stream Analytics sorgu dili](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanırsınız. Stream Analytics sorgu dili SQL diline uygun olduğundan, SQL 'e alışkın olan işleri oluşturmaya başlamak yeterlidir. Azure PowerShell, [Visual Studio araçları Stream Analytics](stream-analytics-tools-for-visual-studio-install.md), [Stream Analytics Visual Studio Code uzantısı](quick-create-vs-code.md)veya Azure Resource Manager şablonları gibi geliştirici araçlarını kullanarak da işler oluşturabilirsiniz. Geliştirici araçlarının kullanılması, çevrimdışı ortamda dönüşüm sorguları geliştirmenize ve [CI/CD işlem hattı](stream-analytics-tools-for-visual-studio-cicd.md) kullanarak Azure’a iş göndermenize olanak tanır.
+Azure Stream Analytics, hareket halindeki verileri çözümlemek için güçlü bir zamana bağlı kısıtlamalarla genişletilmiş basit bir SQL tabanlı sorgu dili kullanır. İş dönüşümlerini tanımlamak için, basit SQL yapıları kullanarak karmaşık geçici sorgular ve analizler yazmanıza olanak tanıyan basit, bildirim temelli bir [Stream Analytics sorgu dili](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanırsınız. Stream Analytics sorgu dili SQL diline uygun olduğundan, SQL 'e alışkın olan işleri oluşturmaya başlamak yeterlidir. Azure PowerShell, [Visual Studio araçları Stream Analytics](stream-analytics-tools-for-visual-studio-install.md), [Stream Analytics Visual Studio Code uzantısı](quick-create-visual-studio-code.md)veya Azure Resource Manager şablonları gibi geliştirici araçlarını kullanarak da işler oluşturabilirsiniz. Geliştirici araçlarının kullanılması, çevrimdışı ortamda dönüşüm sorguları geliştirmenize ve [CI/CD işlem hattı](stream-analytics-tools-for-visual-studio-cicd.md) kullanarak Azure’a iş göndermenize olanak tanır.
 
 Stream Analytics sorgu dili, akış verilerini analiz etmek ve işlemek için geniş bir işlevler dizisi sunar. Bu sorgu dili basit veri işleme, toplama ve analiz işlevlerini, [Jeo uzamsal işlevleri](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions), [model eşleştirmeyi](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics) ve [anomali algılamayı](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection)destekler. Portalda sorguları düzenleyebilir ve canlı bir akıştan ayıklanan örnek verileri kullanarak test edebilirsiniz.
 
@@ -106,4 +106,4 @@ Azure Stream Analytics’e genel bakışı gördünüz. Bundan sonra derinlere i
 * [Azure portalını kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-portal.md).
 * [Azure PowerShell kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-powershell.md).
 * [Visual Studio 'yu kullanarak bir Stream Analytics Işi oluşturun](stream-analytics-quick-create-vs.md).
-* [Visual Studio Code kullanarak Stream Analytics bir Iş oluşturun](quick-create-vs-code.md).
+* [Visual Studio Code kullanarak Stream Analytics bir Iş oluşturun](quick-create-visual-studio-code.md).

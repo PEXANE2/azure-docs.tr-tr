@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge 'i yapılandırma (Önizleme)
-description: Azure SQL Edge 'i (Önizleme) yapılandırma hakkında bilgi edinin.
+title: Azure SQL Edge 'i yapılandırma
+description: Azure SQL Edge 'i yapılandırma hakkında bilgi edinin.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -8,15 +8,15 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/22/2020
+ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816890"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888392"
 ---
-# <a name="configure-azure-sql-edge-preview"></a>Azure SQL Edge 'i yapılandırma (Önizleme)
+# <a name="configure-azure-sql-edge"></a>Azure SQL Edge 'i yapılandırma
 
 Azure SQL Edge, yapılandırmayı aşağıdaki iki seçenekten biri aracılığıyla destekler:
 
@@ -30,6 +30,15 @@ Azure SQL Edge, yapılandırmayı aşağıdaki iki seçenekten biri aracılığ�
 
 Azure SQL Edge, SQL Edge kapsayıcısını yapılandırmak için kullanılabilecek çeşitli farklı ortam değişkenlerini kullanıma sunar. Bu ortam değişkenleri, Linux üzerinde SQL Server için kullanılabilir olanların bir alt kümesidir. Linux üzerinde SQL Server ortam değişkenleri hakkında daha fazla bilgi için bkz. [ortam değişkenleri](/sql/linux/sql-server-linux-configure-environment-variables/).
 
+Aşağıdaki yeni ortam değişkenleri Azure SQL Edge 'e eklenmiştir. 
+
+| Ortam değişkeni | Açıklama | Değerler |     
+|-----|-----| ---------- |   
+| **MSSQL_TELEMETRY_ENABLED** | Kullanım ve tanılama veri toplamayı etkinleştirin veya devre dışı bırakın. | TRUE veya FALSE |  
+| **MSSQL_TELEMETRY_DIR** | Kullanım ve tanılama veri toplama denetim dosyaları için hedef dizini ayarlar. | SQL Edge kapsayıcısı içindeki klasör konumu. Bu klasör, bağlama noktaları veya veri birimleri kullanılarak bir konak birimi ile eşleştirilebilir. | 
+| **MSSQL_PACKAGE** | Dağıtılacak dacpac veya bacpac paketinin konumunu belirtir. | Dacpac veya bacpac paketlerini içeren klasör, dosya veya SAS URL 'SI. Daha fazla bilgi için [SQL Edge 'de SQL veritabanı DACPAC ve BACPAC paketleri dağıtma](deploy-dacpac.md)konusuna bakın. |
+
+
 Şu Linux üzerinde SQL Server ortam değişkeni Azure SQL Edge için desteklenmiyor. Tanımlandıysa, bu ortam değişkeni kapsayıcı başlatma sırasında yok sayılır.
 
 | Ortam değişkeni | Açıklama |
@@ -38,9 +47,6 @@ Azure SQL Edge, SQL Edge kapsayıcısını yapılandırmak için kullanılabilec
 
 > [!IMPORTANT]
 > SQL Edge için **MSSQL_PID** ortam değişkeni, geçerli değerler olarak yalnızca **Premium** ve **Geliştirici** kabul eder. Azure SQL Edge, bir ürün anahtarı kullanarak başlatmayı desteklemez.
-
-> [!NOTE]
-> Azure SQL Edge için [Microsoft yazılımı lisans koşulları](https://go.microsoft.com/fwlink/?linkid=2128283) 'nı indirin.
 
 ### <a name="specify-the-environment-variables"></a>Ortam değişkenlerini belirtin
 
@@ -53,6 +59,9 @@ Hizmeti [Azure Portal](deploy-portal.md)aracılığıyla dağıtırken SQL Edge 
 **Kapsayıcı oluşturma seçeneklerinde**değer ekleyin.
 
 ![Kapsayıcı oluşturma seçeneklerini kullanarak ayarlama](media/configure/set-environment-variables-using-create-options.png)
+
+> [!NOTE]
+> Bağlantısı kesilmiş dağıtım modunda, ortam değişkenleri, `-e` veya `--env` `--env-file` komutunun seçeneği kullanılarak belirtilebilir `docker run` .
 
 ## <a name="configure-by-using-an-mssqlconf-file"></a>MSSQL. conf dosyası kullanarak yapılandırma
 
@@ -70,6 +79,13 @@ Azure SQL Edge, Linux üzerinde SQL Server gibi [MSSQL-conf yapılandırma yard�
       }
     }
 ```
+
+Azure SQL Edge için aşağıdaki yeni MSSQL. conf seçenekleri eklenmiştir. 
+
+|Seçenek|Açıklama|
+|:---|:---|
+|**CustomerFeedback** | SQL Server Microsoft 'a geri bildirim gönderip göndermediğini seçin. Daha fazla bilgi için bkz. [kullanım ve tanılama veri toplamayı devre dışı bırakma](usage-and-diagnostics-data-configuration.md#disable-usage-and-diagnostic-data-collection)|      
+|**userrequestedlocalauditdirectory** | Kullanım ve tanılama veri toplama denetim dosyaları için hedef dizini ayarlar. Daha fazla bilgi için bkz. [kullanım ve Tanılama verileri toplama Için yerel denetim](usage-and-diagnostics-data-configuration.md#local-audit-of-usage-and-diagnostic-data-collection) |        
 
 Aşağıdaki MSSQL. conf seçenekleri SQL Edge için geçerli değildir:
 
@@ -116,7 +132,7 @@ traceflag2 = 1204
 
 ## <a name="run-azure-sql-edge-as-non-root-user"></a>Azure SQL Edge 'i kök olmayan kullanıcı olarak çalıştır
 
-Azure SQL Edge CTP 2.2 ile başlayarak, SQL Edge kapsayıcıları kök olmayan kullanıcı/grup ile çalışabilir. Azure Marketi aracılığıyla dağıtıldığında, farklı bir Kullanıcı/Grup belirtilmedikçe, SQL Edge kapsayıcıları MSSQL (kök olmayan) Kullanıcı olarak başlar. Dağıtım sırasında farklı bir kök olmayan kullanıcı belirtmek için `*"User": "<name|uid>[:<group|gid>]"*` kapsayıcı oluşturma seçenekleri altına anahtar-değer çiftini ekleyin. SQL Edge aşağıdaki örnekte Kullanıcı olarak başlatılacak şekilde yapılandırılmıştır `*IoTAdmin*` .
+Varsayılan olarak, Azure SQL Edge kapsayıcıları kök olmayan kullanıcı/grup ile çalışır. Azure Marketi aracılığıyla (veya Docker Run kullanılarak) dağıtıldığında, farklı bir Kullanıcı/Grup belirtilmediği sürece SQL Edge kapsayıcıları MSSQL (kök olmayan) Kullanıcı olarak başlatılır. Dağıtım sırasında farklı bir kök olmayan kullanıcı belirtmek için `*"User": "<name|uid>[:<group|gid>]"*` kapsayıcı oluşturma seçenekleri altına anahtar-değer çiftini ekleyin. SQL Edge aşağıdaki örnekte Kullanıcı olarak başlatılacak şekilde yapılandırılmıştır `*IoTAdmin*` .
 
 ```json
 {
@@ -140,7 +156,7 @@ chown -R 10001:0 <database file dir>
 
 ### <a name="upgrading-from-earlier-ctp-releases"></a>Önceki CTP sürümlerinden yükseltme
 
-Azure SQL Edge 'in önceki CTP, kök kullanıcılar olarak çalışacak şekilde yapılandırılmıştır. Önceki CTP 'lerden yükseltirken aşağıdaki seçenekler mevcuttur
+Azure SQL Edge 'in önceki tanıtıcısı, kök kullanıcılar olarak çalışacak şekilde yapılandırılmıştır. Önceki CTPs 'lerden yükseltme yaparken aşağıdaki seçenekler mevcuttur.
 
 - Kök kullanıcıyı kullanmaya devam et-kök kullanıcıyı kullanmaya devam etmek Için `*"User": "0:0"*` kapsayıcı oluşturma seçenekleri altına anahtar-değer çiftini ekleyin.
 - Varsayılan MSSQL kullanıcısını kullanın-varsayılan MSSQL kullanıcısını kullanmak Için aşağıdaki adımları izleyin
@@ -154,7 +170,7 @@ Azure SQL Edge 'in önceki CTP, kök kullanıcılar olarak çalışacak şekilde
     sudo chmod -R g=u /var/lib/docker/volumes/kafka_sqldata/
     ```
 - Farklı bir kök olmayan kullanıcı hesabı kullanın-kök olmayan farklı bir kullanıcı hesabı kullanmak Için
-  - Kapsayıcı `*"User": "user_name | user_id*` oluşturma seçenekleri altında anahtar-değer çifti Ekle öğesini belirtmek için kapsayıcı oluşturma seçeneklerini güncelleştirin. Lütfen user_name veya user_id, Docker konağından gerçek user_name veya user_id değiştirin. 
+  - Kapsayıcı `*"User": "user_name | user_id*` oluşturma seçenekleri altında anahtar-değer çifti Ekle öğesini belirtmek için kapsayıcı oluşturma seçeneklerini güncelleştirin. User_name veya user_id, Docker konağından gerçek user_name veya user_id değiştirin. 
   - Dizin/bağlama birimi üzerindeki izinleri değiştirin.
 
 ## <a name="persist-your-data"></a>Verilerinizi kalıcı hale getirme
@@ -169,11 +185,11 @@ Kapsayıcısını ve ile yeniden başlatsanız bile, Azure SQL Edge yapılandır
 İlk seçenek, ana bilgisayarınızda bir dizini bir veri birimi olarak kapsayıcınıza bağlamasıdır. Bunu yapmak için, `docker run` bayrağıyla komutunu kullanın `-v <host directory>:/var/opt/mssql` . Bu, verilerin kapsayıcı yürütmeler arasında geri yüklenmesine izin verir.
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 Bu teknik Ayrıca, ana bilgisayardaki dosyaları Docker dışında paylaşmanıza ve görüntülemenize olanak sağlar.
@@ -189,11 +205,11 @@ Bu teknik Ayrıca, ana bilgisayardaki dosyaları Docker dışında paylaşmanız
 İkinci seçenek, bir veri birimi kapsayıcısı kullanmaktır. Parametresi ile bir konak dizini yerine bir birim adı belirterek bir veri birimi kapsayıcısı oluşturabilirsiniz `-v` . Aşağıdaki örnek, **sqlvolume**adlı bir paylaşılan veri birimi oluşturur.
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 > [!NOTE]

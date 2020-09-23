@@ -7,19 +7,22 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 0c092052e05f355838f3853fa7376b46ef743de7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: bff98ea3470110bc29f75361fb3a2adc685e2602
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299654"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888570"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Azure yay bulut uygulaması için sistem tarafından atanan yönetilen kimliği etkinleştirme
+
+**Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
+
 Azure kaynakları için Yönetilen kimlikler, Azure Spring Cloud uygulamanız gibi bir Azure kaynağına Azure Active Directory otomatik olarak yönetilen bir kimlik sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz.
 
 Bu makalede, Azure portal ve CLı (Version 0.2.4 'ten ulaşılabilir) kullanılarak bir Azure yay bulutu uygulaması için sistem tarafından atanan yönetilen kimliklerin nasıl etkinleştirileceği ve devre dışı bırakılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure kaynakları için Yönetilen kimlikler hakkında bilgi sahibi değilseniz bkz. [genel bakış bölümü](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 Dağıtılmış bir Azure yay bulutu örneğine ihtiyacınız olacak. [Azure CLI kullanarak dağıtmak Için hızlı](spring-cloud-quickstart.md)başlangıcı izleyin.
 
@@ -81,7 +84,8 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Java SDK ile yönetilen kimlikler kullanma](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
+
 * [Spring Boot Starter 'da yönetilen kimliklerle Azure Key Vault erişme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
 * [Azure kaynakları için Yönetilen kimlikler hakkında daha fazla bilgi edinin](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
+* [Java SDK ile yönetilen kimlikler kullanma](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0896df301718c74e63a9e18c74615130fa80c952
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807677"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986249"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Açık kaynak araçları kullanarak Azure Ağ İzleyicisi NSG akış günlüklerini görselleştirme
 
@@ -29,7 +29,7 @@ Bu akış günlüklerinin el ile ayrıştırılması ve öngörüleri elde edilm
 
 Bu makalede, esnek yığını kullanarak ağ güvenlik grubu akış günlüklerini görselleştirmenizi sağlayacak bir çözüm ayarlayacağız.  Logstash giriş eklentisi akış günlüklerini, akış günlüklerini içerecek şekilde yapılandırılan depolama blobundan doğrudan elde eder. Daha sonra elastik yığını kullanarak, akış günlüklerinin dizini oluşturulur ve bilgileri görselleştirmek üzere bir kibana panosu oluşturmak için kullanılır.
 
-![senaryo][scenario]
+![Diyagramda, esnek yığını kullanarak ağ güvenlik grubu akış günlüklerini görselleştirmenize olanak tanıyan bir senaryo gösterilir.][scenario]
 
 ## <a name="steps"></a>Adımlar
 
@@ -193,7 +193,7 @@ Bu eklenti hakkında daha fazla bilgi için [belgelerine](https://github.com/Azu
    ./bin/kibana
    ```
 
-3. Kibana Web arabiriminizi görüntülemek için şuraya gidin`http://localhost:5601`
+3. Kibana Web arabiriminizi görüntülemek için şuraya gidin `http://localhost:5601`
 4. Bu senaryoda, akış günlükleri için kullanılan dizin deseninin "NSG-Flow-Logs" olması gerekir. Logstash. conf dosyanızın "çıktı" bölümünde Dizin modelini değiştirebilirsiniz.
 5. Kibana panosunu uzaktan görüntülemek istiyorsanız, **5601 numaralı bağlantı noktasına**erişime izin veren bir gelen NSG kuralı oluşturun.
 
@@ -215,27 +215,27 @@ Kendi görselleştirmelerinizle ilgili ölçümleriniz doğrultusunda kendi gör
 
 1. Zaman aralığı boyunca akış sayısını gösteren zaman zaman serisi grafiklerde kararına/yönlendirmeye göre akar. Bu görselleştirmelerin zaman ve Aralık birimini düzenleyebilirsiniz. Kararlara göre akışlar, yapılan, izin verme veya reddetme kararlarının oranını gösterir. bu sırada akışlara göre akışlar gelen ve giden trafiğin oranını gösterir. Bu görsellerle zaman içinde trafik eğilimlerini inceleyebilir ve tüm ani veya olağandışı desenleri arayabilirsiniz.
 
-   ![Şekil 2][2]
+   ![Ekran görüntüsünde, zaman içindeki kararlara ve zamana göre akışlara sahip örnek bir pano gösterilir.][2]
 
 2. Hedef/kaynak bağlantı noktasına göre akışlar – akış dökümlerinin ilgili bağlantı noktalarına dökümünü gösteren pasta grafikler. Bu görünümle, en sık kullanılan bağlantı noktalarınızı görebilirsiniz. Pasta grafiğinin içindeki belirli bir bağlantı noktasına tıkladığınızda panonun geri kalanı bu bağlantı noktasının akışlarına göre filtreedilir.
 
-   ![figure3][3]
+   ![Ekran görüntüsünde, hedefe ve kaynak bağlantı noktasına göre akışlara sahip bir örnek Pano gösterilir.][3]
 
 3. Akış sayısı ve en erken günlük zamanı – kaydedilen akış sayısını ve yakalanan en erken günlüğün tarihini gösteren ölçümler.
 
-   ![figure4][4]
+   ![Ekran görüntüsünde, akış sayısı ve en erken günlük saati içeren örnek bir pano gösterilir.][4]
 
 4. NSG ve kurala göre akar: her NSG içindeki akışların dağıtımını ve her NSG içinde kuralların dağıtımını gösteren bir çubuk grafiği. Buradan, hangi NSG 'lerin ve kuralların en iyi şekilde oluşturulduğunu görebilirsiniz.
 
-   ![figure5][5]
+   ![Ekran görüntüsünde, N S G ve kuralına göre akış içeren örnek bir pano gösterilir.][5]
 
 5. İlk 10 kaynak/hedef IP 'Leri – ilk 10 kaynak ve hedef IP 'Leri gösteren çubuk grafikler. Bu grafikleri, daha fazla veya daha az üst IP gösterecek şekilde ayarlayabilirsiniz. Burada, en yaygın olarak gerçekleşen IP 'Lerin yanı sıra her IP 'ye yönelik trafik kararı (izin verme veya reddetme) görebilirsiniz.
 
-   ![figure6][6]
+   ![Ekran görüntüsünde, ilk on kaynak ve hedef ı P adresine göre akış içeren örnek bir pano gösterilir.][6]
 
 6. Akış Başlıkları – bu tabloda, her bir akış grubu içinde yer alan bilgiler ve ilgili NGS ve kuralları gösterilmektedir.
 
-   ![figure7][7]
+   ![Ekran görüntüsü, bir tablodaki akış tanımlama gruplarını gösterir.][7]
 
 Panonun üst kısmındaki sorgu çubuğunu kullanarak, pano KIMLIĞI, kaynak grupları, kural veya herhangi bir ilgi alanı gibi herhangi bir parametreye göre Pano 'ya filtre uygulayabilirsiniz. Kibana 'in sorguları ve filtreleri hakkında daha fazla bilgi için [resmi belgelere](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html) bakın
 
