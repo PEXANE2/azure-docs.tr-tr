@@ -1,0 +1,636 @@
+---
+author: mikben
+ms.service: azure-communication-services
+ms.topic: include
+ms.date: 9/1/2020
+ms.author: mikben
+ms.openlocfilehash: c0213b050745712a5c77d4861b9cfba4fc953dfd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90941907"
+---
+## <a name="prerequisites"></a>Önkoşullar
+
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Dağıtılan bir Iletişim Hizmetleri kaynağı. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
+- Bir `User Access Token` çağrı istemcisini etkinleştirmek için. [Nasıl yapılır `User Access Token` ](../../access-tokens.md) hakkında daha fazla bilgi edinmek için
+- İsteğe bağlı: [uygulamanıza çağrı ekleme ile çalışmaya](../getting-started-with-calling.md) başlama için hızlı başlangıcı doldurun
+
+## <a name="setting-up"></a>Ayarlanıyor
+
+### <a name="install-the-package"></a>Paketi yükler
+
+<!-- TODO: update with instructions on how to download, install and add package to project -->
+Proje seviyesi Build. Gradle ' i bulun ve `mavenCentral()` altındaki depolar listesine eklediğinizden emin olun. `buildscript``allprojects`
+```groovy
+buildscript {
+    repositories {
+    ...
+        mavenCentral()
+    ...
+    }
+}
+```
+
+```groovy
+allprojects {
+    repositories {
+    ...
+        mavenCentral()
+    ...
+    }
+}
+```
+Ardından, modül düzeyi derlemenize. Gradle aşağıdaki satırları bağımlılıklar bölümüne ekleyin
+
+```groovy
+dependencies {
+    ...
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    ...
+}
+
+```
+
+## <a name="object-model"></a>Nesne modeli
+
+Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Iletişim Hizmetleri 'nin bazı önemli özelliklerinden bazılarını işler:
+
+| Ad                                  | Açıklama                                                  |
+| ------------------------------------- | ------------------------------------------------------------ |
+| CallClient| CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.|
+| CallAgent | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır. |
+| CommunicationUserCredential | CommunicationUserCredential, CallAgent örneğini oluşturmak için belirteç kimlik bilgileri olarak kullanılır.|
+
+## <a name="initialize-the-callclient-create-a-callagent-and-access-the-devicemanager"></a>CallClient 'ı başlatın, bir CallAgent oluşturun ve DeviceManager 'a erişin
+
+Örnek oluşturmak için `CallAgent` `createCallAgent` bir örnek üzerinde yöntemini çağırmanız gerekir `CallClient` . Bu, zaman uyumsuz bir `CallAgent` örnek nesnesi döndürüyor.
+`createCallAgent`Yöntemi bir `CommunicationUserCredential` [erişim belirtecini](../../access-tokens.md)kapsülleyen bir bağımsız değişken olarak alır.
+Öğesine erişmek için `DeviceManager` önce bir callAgent örneği oluşturulmalıdır, sonra `CallClient.getDeviceManager` devicemanager 'ı almak için yöntemini kullanabilirsiniz.
+
+```java
+String userToken = '<user token>';
+CallClient callClient = new CallClient();
+CommunicationUserCredential tokenCredential = new CommunicationUserCredential(userToken);
+android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
+CallAgent callAgent = await callClient.createCallAgent((appContext, tokenCredential).get();
+DeviceManage deviceManager = await callClient.getDeviceManager().get();
+```
+
+## <a name="place-an-outgoing-call-and-join-a-group-call"></a>Bir giden çağrı yerleştirip bir grup çağrısına katın
+
+Bir çağrı oluşturmak ve başlatmak için, `CallClient.call()` yöntemini çağırmanız ve `Identifier` Aranan (ler) i sağlamanız gerekir.
+Bir grup çağrısına katılabilmek için, `CallClient.join()` yöntemini çağırmanız ve GroupID sağlamalısınız. Grup kimlikleri GUID veya UUID biçiminde olmalıdır.
+
+Çağrı oluşturma ve başlatma zaman uyumludur. Çağrı örneği, çağrısındaki tüm olaylara abone olmanızı sağlar.
+
+### <a name="place-a-11-call-to-a-user"></a>Kullanıcıya 1:1 çağrısı yerleştir
+Başka bir Iletişim Hizmetleri kullanıcısına çağrı yerleştirmek için, `call` yöntemi çağırın `callAgent` ve anahtar ile bir nesne geçirin `communicationUserId` .
+```java
+StartCallOptions startCallOptions = new StartCallOptions();
+Context appContext = this.getApplicationContext();
+CommunicationUser acsUserId = new CommunicationUser(<USER_ID>);
+CommunicationUser participants[] = new CommunicationUser[]{ acsUserId };
+call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
+```
+
+### <a name="place-a-1n-call-with-users-and-pstn"></a>Kullanıcılar ve PSTN ile 1: n çağrısı yerleştir
+> [!WARNING]
+> Şu anda PSTN çağrısı, bir kullanıcıya 1: n çağrısı ve bir PSTN numarası yerleştirmek Için kullanılabilir değil. Aranan telefon numarasını belirtmeniz gerekir.
+Iletişim Hizmetleri kaynağınız, PSTN çağırmaya izin verecek şekilde yapılandırılmalıdır:
+```java
+CommunicationUser acsUser1 = new CommunicationUser(<USER_ID>);
+PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
+CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
+StartCallOptions startCallOptions = new StartCallOptions();
+Context appContext = this.getApplicationContext();
+Call groupCall = callClient.call(participants, startCallOptions);
+```
+
+### <a name="place-a-11-call-with-with-video-camera"></a>Video kamera ile 1:1 çağrısı yerleştirme
+> [!WARNING]
+> Şu anda yalnızca bir giden yerel video akışı, bir video ile çağrı yerleştirmek Için desteklenir ve API 'yi kullanarak yerel kameraları listeleyebilirsiniz `deviceManager` `getCameraList` .
+İstenen bir kamerayı seçtikten sonra bir `LocalVideoStream` örnek oluşturmak ve dizideki bir öğe olarak bir yönteme geçirmek için onu kullanın `videoOptions` `localVideoStream` `call` .
+Çağrı bağlandıktan sonra, seçili kameradan diğer katılımcılara otomatik olarak bir video akışı göndermeye başlar.
+```java
+Context appContext = this.getApplicationContext();
+VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
+LocalVideoStream currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
+VideoOptions videoOptions = new VideoOptions(currentVideoStream);
+
+CommunicationUser[] participants = new CommunicationUser[]{ new CommunicationUser("<acs user id>") };
+StartCallOptions startCallOptions = new StartCallOptions();
+startCallOptions.setVideoOptions(videoOptions);
+Call call = callAgent.call(context, participants, startCallOptions);
+```
+
+### <a name="join-a-group-call"></a>Grup çağrısına katılır
+Yeni bir grup çağrısı başlatmak veya devam eden bir grup çağrısına katmak için, ' JOIN ' metodunu çağırmanız ve bir özelliği olan bir nesne geçirmeniz gerekir `groupId` . Değer bir GUID olmalıdır.
+```java
+Context appContext = this.getApplicationContext();
+GroupCallContext groupCallContext = new groupCallContext("<GUID>");
+JoinCallOptions joinCallOptions = new JoinCallOptions();
+
+call = callAgent.join(context, groupCallContext, joinCallOptions);
+```
+
+## <a name="push-notification"></a>Anında iletme bildirimi
+
+### <a name="overview"></a>Genel Bakış
+Mobil anında iletme bildirimi, bir mobil cihazda aldığınız açılır bildirimdir. Çağırmak için VoIP (Internet Protokolü üzerinden ses) anında iletme bildirimleri üzerine odaklanacağız. Anında iletme bildirimi için kaydolmak, anında iletme bildirimini işlemek ve anında iletme bildirimlerinin kaydını silmek için size bu özellikleri sunuyoruz.
+
+### <a name="prerequisite"></a>Önkoşul
+
+Bu öğretici, bulut mesajlaşma (FCM) özellikli bir Firebase hesabı kurulumuna sahip olduğunuz ve Firebase Cloud Messaging 'in bir Azure Notification Hub (ANH) örneğine bağlı olduğunu varsayar. Daha fazla bilgi için bkz. [Firebase 'ı Azure 'A bağlama](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) .
+Ayrıca öğreticide, uygulamanızı derlemek için Android Studio sürüm 3,6 veya üstünü kullandığınızı varsaymaktadır.
+
+FCM 'den bildirim iletileri alabilmesi için Android uygulaması için bir izinler kümesi gereklidir. AndroidManifest.xml dosyanızda, *<manifest... >* veya etiketin altında bulunan aşağıdaki izin kümesini ekleyin *</application>*
+
+```XML
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+```
+
+### <a name="register-for-push-notification"></a>Anında Iletme bildirimi için kaydolun
+
+- Anında iletme bildirimi için kaydolmak üzere, uygulamanın bir cihaz kayıt belirtecine sahip bir *Callagent* örneği üzerinde registerPushNotification () çağrısı yapması gerekir.
+
+- Cihaz kayıt belirtecini edinme
+1. Aşağıdaki satırları henüz yoksa *Bağımlılıklar* bölümüne ekleyerek, Firebase istemci kitaplığını uygulama modülünüzün *Build. Gradle* dosyasına eklediğinizden emin olun:
+```
+    // Add the client library for Firebase Cloud Messaging
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-messaging:20.2.4'
+```
+
+2. Proje düzeyinin *Build. Gradle* dosyasında, zaten orada değilse *Bağımlılıklar* bölümüne aşağıdakini ekleyin
+```
+    classpath 'com.google.gms:google-services:4.3.3'
+```
+
+3. Zaten orada değilse, dosyanın başlangıcına aşağıdaki eklentiyi ekleyin
+```
+apply plugin: 'com.google.gms.google-services'
+```
+
+4. Araç çubuğunda *Şimdi Eşitle* ' yi seçin
+
+5. İstemci uygulaması örneği için FCM istemci kitaplığı tarafından oluşturulan cihaz kayıt belirtecini almak için aşağıdaki kod parçacığını ekleyin 
+- Bu içeri aktarmayı örneğin ana etkinliğinin üstbilgisine ekleyin. Bu kod parçacığı, belirteci almak için gereklidir
+```
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+```
+- Belirteci almak için bu kod parçacığını ekleyin
+```
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        String deviceToken = task.getResult().getToken();
+                        // Log
+                        Log.d(TAG, "Device Registration token retrieved successfully");
+                    }
+                });
+```
+6. Gelen çağrılar anında Iletme bildirimleri için cihaz kayıt belirtecini çağıran hizmetler istemci kitaplığıyla kaydetme
+
+```java
+String deviceRegistrationToken = "some_token";
+try {
+    callAgent.registerPushNotification(deviceRegistrationToken).get();
+}
+catch(Exception e) {
+    System.out.println("Something went wrong while registering for Incoming Calls Push Notifications.")
+}
+```
+
+### <a name="push-notification-handling"></a>Anında iletme bildirimi Işleme
+
+- Gelen çağrı anında iletme bildirimlerini almak için, bir *Callagent* örneğinde yük Ile *handlepushnotification ()* çağırın.
+
+1. FCM yükünü elde etmek için aşağıdaki adımları izleyin:
+- *Firebasemessagingservice* Firebase istemci kitaplığı sınıfını genişleten yeni bir hizmet (dosya > yeni > Service > Service) oluşturun ve *onMessageReceived* yöntemini geçersiz kıldığınızdan emin olun. Bu yöntem, FCM uygulamasına anında iletme bildirimi teslim edildiğinde çağrılan olay işleyicisidir.
+
+```java
+public class MyFirebaseMessagingService extends FirebaseMessagingService {
+    private java.util.Map<String, String> pushNotificationMessageData;
+
+    @Override
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+        // Check if message contains a notification payload.
+        if (remoteMessage.getNotification() != null) {
+            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+        }
+        else {
+            pushNotificationMessageData = serializeDictionaryAsJson(remoteMessage.getData());
+        }
+    }
+}
+```
+- Ayrıca, aşağıdaki hizmet tanımını etiketinin içindeki AndroidManifest.xml dosyasına ekleyin <application> .
+
+```
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+```
+
+- Yük alındıktan sonra, bir *Callagent* örneği üzerinde *handlepushnotification* yöntemi çağırarak işlenecek *iletişim hizmetleri* istemci kitaplığına geçirilebilir.
+
+```java
+java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
+try {
+    callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
+}
+catch(Exception e) {
+    System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
+}
+```
+Anında Iletme bildirimi iletisi işleme başarılı olduğunda ve tüm olay işleyicileri düzgün şekilde kaydedildiğinde, uygulama halkasını hallecektir.
+
+### <a name="unregister-push-notification"></a>Anında Iletme bildiriminin kaydını sil
+
+- Uygulamalar, anında iletme bildiriminin kaydını dilediğiniz zaman açabilir. Yalnızca `unregisterPushNotification()` callAgent üzerinde yöntemi çağırın.
+
+```java
+try {
+    callAgent.unregisterPushNotifications().get();
+}
+catch(Exception e) {
+    System.out.println("Something went wrong while un-registering for all Incoming Calls Push Notifications.")
+}
+```
+
+## <a name="call-management"></a>Arama Yönetimi
+Arama özelliklerine erişebilir ve video ve sesle ilgili ayarları yönetme çağrısı sırasında çeşitli işlemler gerçekleştirebilirsiniz.
+
+### <a name="call-properties"></a>Çağrı özellikleri
+* Bu çağrının benzersiz kimliğini alın.
+```java
+String callId = call.getCallId();
+```
+
+* Örnekteki çağrı İnceleme koleksiyonundaki diğer katılımcılar hakkında bilgi edinmek için `remoteParticipant` `call` :
+```java
+List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
+```
+
+* Çağrı gelen, çağıran kimliği.
+```java
+CommunicationIdentifier callerId = call.getCallerId();
+```
+
+* Çağrının durumunu alın.
+```java
+CallState callState = call.getState();
+```
+Bir çağrının reprensting geçerli durumunu döndürür:
+* ' None '-ilk çağrı durumu
+* ' Gelen '-çağrının gelen olduğunu, kabul edildiğini veya reddedildiğini belirtir
+* ' Bağlanıyor '-çağrı yerleştirildiğinde veya kabul edildiğinde ilk geçiş durumu
+* ' Çalıyor '-giden bir çağrı için-uzak katılımcılar için bir çağrının çaldırdığını belirtir; Bu, ' gelen ' tarafı
+* ' EarlyMedia '-çağrı bağlanmadan önce bir duyurusu yürütüldüğü durumu gösterir
+* ' Connected '-çağrı bağlı
+* ' Hold '-çağrı beklemeye koyuyor, Yerel uç nokta ve uzak katılımcı arasında medya akışı yok
+* Çağrının ' bağlantısı kesildi ' durumuna geçmeden önce ' bağlantısı kesiliyor '-geçiş durumu
+* ' Bağlantısı kesildi '-son çağrı durumu
+
+
+* Çağrının bitiş nedenini öğrenmek için, özelliği inceleyin `callEndReason` .
+Kod/alt kod içerir (belgelere yapılacak bağlantı)
+```java
+CallEndReason callEndReason = call.getCallEndReason();
+int code = callEndReason.getCode();
+int subCode = callEndReason.getSubCode();
+```
+
+* Geçerli çağrının gelen bir çağrı olup olmadığını görmek için, özelliği araştırın `isIncoming` :
+```java
+boolean isIncoming = call.getIsIncoming();
+```
+
+*  Geçerli mikrofonun kapalı olup olmadığını görmek için `muted` özelliği inceleyin:
+```java
+boolean muted = call.getIsMicrophoneMuted();
+```
+
+* Etkin video akışlarını denetlemek için, koleksiyonu kontrol edin `localVideoStreams` :
+```java
+List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
+```
+
+### <a name="mute-and-unmute"></a>Sessiz ve aç
+Yerel uç noktanın sesini kapatmak veya sesini açmak için `mute` ve `unmute` zaman uyumsuz API 'leri kullanabilirsiniz:
+```java
+call.mute().get();
+call.unmute().get();
+```
+
+### <a name="start-and-stop-sending-local-video"></a>Yerel video göndermeyi başlatma ve durdurma
+Bir videoyu başlatmak için nesne üzerindeki API 'yi kullanarak kameraları numaralandırabilirsiniz gerekir `getCameraList` `deviceManager` .
+Ardından istenen kamerayı geçirmeye yönelik yeni bir örnek oluşturun `LocalVideoStream` ve `startVideo` API 'de bir bağımsız değişken olarak geçirin
+```java
+VideoDeviceInfo desiredCamera = <get-video-device>;
+Context appContext = this.getApplicationContext();
+currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
+videoOptions = new VideoOptions(currentVideoStream);
+Future startVideoFuture = call.startVideo(currentVideoStream);
+startVideoFuture.get();
+```
+
+Videoyu göndermeye başarıyla başladığınızda, `LocalVideoStream` `localVideoStreams` çağrı örneğindeki koleksiyona bir örnek eklenecektir.
+```java
+currentVideoStream == call.getLocalVideoStreams().get(0);
+```
+
+Yerel videoyu durdurmak için, `localVideoStream` örneği koleksiyonda kullanılabilir olarak geçirin `localVideoStreams` :
+```java
+call.stopVideo(localVideoStream).get();
+```
+
+Bir örneği çağırarak video gönderilirken farklı bir kamera cihazına geçiş yapabilirsiniz `switchSource` `localVideoStream` :
+```java
+localVideoStream.switchSource(source).get();
+```
+
+## <a name="remote-participants-management"></a>Uzak katılımcılar yönetimi
+
+Tüm uzak katılımcılar türe göre temsil edilir `RemoteParticipant` ve `remoteParticipants` bir çağrı örneğindeki koleksiyon üzerinden kullanılabilir.
+
+### <a name="list-participants-in-a-call"></a>Bir çağrıda katılımcıları listeleme
+`remoteParticipants`Koleksiyon verilen çağrıda uzak katılımcılar listesini döndürür:
+```java
+List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants(); // [remoteParticipant, remoteParticipant....]
+```
+
+### <a name="remote-participant-properties"></a>Uzak katılımcı özellikleri
+Verilen herhangi bir uzak katılımcının, kendisiyle ilişkili bir özellikler ve koleksiyonlar kümesi vardır:
+
+* Bu uzak katılımcının tanımlayıcısını alın.
+Kimlik, ' Identifier ' türlerinden biridir
+```java
+CommunicationIdentifier participantIdentity = remoteParticipant.getId();
+```
+
+* Bu uzak katılımcının durumunu alın.
+```java
+ParticipantState state = remoteParticipant.getState();
+```
+Durum aşağıdakilerden biri olabilir
+* ' Boşta '-ilk durum
+* Katılımcı çağrıya bağlanırken ' bağlanıyor '-geçiş durumu
+* ' Connected '-katılımcı çağrıya bağlı
+* ' Hold '-katılımcı beklemeye açık
+* ' EarlyMedia '-katılımcı çağrıya bağlanmadan önce annoulama yürütülür
+* ' Bağlantısı kesildi '-son durum-katılımcının çağrı bağlantısı kesildi
+
+
+* Bir katılımcının çağrıyı neden bıraktı olduğunu öğrenmek için, `callEndReason` Özelliği araştırın:
+```java
+CallEndReason callEndReason = remoteParticipant.getCallEndReason();
+```
+
+* Bu uzak katılımcının kapalı olup olmadığını denetlemek için, `isMuted` özelliği inceleyin:
+```java
+boolean isParticipantMuted = remoteParticipant.getIsMuted();
+```
+
+* Bu uzak katılımcının konuşuyor olup olmadığını denetlemek için, `isSpeaking` özelliği inceleyin:
+```java
+boolean isParticipantSpeaking = remoteParticipant.getIsSpeaking();
+```
+
+* Belirli bir katılımcının Bu çağrıda gönderdiği tüm video akışlarını denetlemek için, koleksiyonu kontrol edin `videoStreams` :
+```java
+List<RemoteVideoStream> videoStreams = remoteParticipant.getVideoStreams(); // [RemoteVideoStream, RemoteVideoStream, ...]
+```
+
+
+### <a name="add-a-participant-to-a-call"></a>Çağrıya katılımcı ekleme
+
+Çağrıya (bir kullanıcı veya telefon numarası) bir katılımcı eklemek için, çağırabilirsiniz `addParticipant` . Bu, uzak katılımcı örneğini zaman uyumlu olarak döndürür.
+
+```java
+const acsUser = new CommunicationUser("<acs user id>");
+const acsPhone = new PhoneNumber("<phone number>");
+RemoteParticipant remoteParticipant1 = call.addParticipant(acsUser);
+RemoteParticipant remoteParticipant2 = call.addParticipant(acsPhone);
+```
+
+### <a name="remove-participant-from-a-call"></a>Katılımcıyı bir çağrıdan kaldır
+Bir katılımcıyı bir çağrıdan (Kullanıcı veya telefon numarası) kaldırmak için, çağırabilirsiniz `removeParticipant` .
+Katılımcı çağrıdan kaldırıldıktan sonra bu işlem zaman uyumsuz olarak çözümlenir.
+Katılımcı de `remoteParticipants` Koleksiyondan kaldırılacak.
+```java
+RemoteParticipant remoteParticipant = call.getParticipants().get(0);
+call.removeParticipant(acsUser).get();
+call.removeParticipant(acsPhone).get();
+```
+
+## <a name="render-remote-participant-video-streams"></a>Uzak katılımcı video akışlarını işle
+Uzak katılımcıların video akışlarını ve ekran paylaşım akışlarını listelemek için, `videoStreams` koleksiyonları inceleyin:
+```java
+RemoteParticipant remoteParticipant = call.getRemoteParticipants().get(0);
+RemoteVideoStream remoteParticipantStream = remoteParticipant.getVideoStreams().get(0);
+MediaStreamType streamType = remoteParticipantStream.getType(); // of type MediaStreamType.Video or MediaStreamType.ScreenSharing
+```
+ 
+Bir uzak katılımcıdan bir oluşturmak için bir `RemoteVideoStream` olaya abone olmanız gerekir `OnVideoStreamsUpdated` .
+Bu olay içinde, `isAvailable` özelliğin true olarak değiştirilmesi, uzak katılımcının Şu anda bir akış gönderdiğini, yeni bir örneğini oluşturmasını, `Renderer` sonra da `RendererView` zaman uyumsuz API kullanarak yeni bir oluşturma `createView` ve `view.target` uygulamanızın kullanıcı arabirimi içinde herhangi bir yere iliştirdiğini gösterir.
+Bir uzak akış değişikliklerinin kullanılabilirliği her kullanıldığında, tüm oluşturucuyu yok edebilir veya tek tek seçebilirsiniz `RendererView` , ancak bu, boş video çerçevesinin görüntülenmesine neden olur.
+
+```java
+Renderer remoteVideoRenderer = new Renderer(remoteParticipantStream, appContext);
+View uiView = remoteVideoRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+layout.addView(uiView);
+
+remoteParticipant.addOnVideoStreamsUpdatedListener(e -> onRemoteParticipantVideoStreamsUpdated(p, e));
+
+void onRemoteParticipantVideoStreamsUpdated(RemoteParticipant participant, RemoteVideoStreamsEvent args) {
+    for(RemoteVideoStream stream : args.getAddedRemoteVideoStreams()) {
+        if(stream.getIsAvailable()) {
+            startRenderingVideo();
+        } else {
+            renderer.dispose();
+        }
+    }
+}
+```
+
+### <a name="remote-video-stream-properties"></a>Uzak video akışı özellikleri
+Uzak video akışında birkaç özellik vardır
+
+* `Id` -Uzak video akışının kimliği
+```java
+int id = remoteVideoStream.getId();
+```
+
+* `MediaStreamType` -' Video ' veya ' ScreenSharing ' olabilir
+```java
+MediaStreamType type = remoteVideoStream.getType();
+```
+
+* `isAvailable` -Uzak katılımcı uç noktasının akışı etkin bir şekilde gönderiyor olduğunu belirtir
+```java
+boolean availability = remoteVideoStream.getIsAvailable();
+```
+
+### <a name="renderer-methods-and-properties"></a>İşleyici yöntemleri ve özellikleri
+API 'Leri izleyen işleyici nesnesi
+
+* `RendererView`Uzak video akışını işlemek için uygulama kullanıcı arabirimine daha sonra eklenebilecek bir örnek oluşturun.
+```java
+// Create a view for a video stream
+renderer.createView()
+```
+* Dispose oluşturucuyu ve `RendererView` Bu işleyiciyle ilişkili tümü
+```java
+renderer.dispose()
+```
+
+* `StreamSize` -uzak video akışının boyutu (genişlik/yükseklik)
+```java
+StreamSize renderStreamSize = remoteVideoStream.getSize();
+int width = renderStreamSize.getWidth();
+int height = renderStreamSize.getHeight();
+```
+
+
+### <a name="rendererview-methods-and-properties"></a>RendererView yöntemleri ve özellikleri
+Bir oluştururken `RendererView` , `scalingMode` `mirrored` Bu görünüme uygulanacak ve özelliklerini belirtebilirsiniz: ölçeklendirme modu ' Esnetme ' olabilir | ' Kırp ' | ' Fit ' `mirrored` olarak ayarlanırsa `true` , işlenen akış dikey olarak çevrilcektir.
+
+```java
+Renderer remoteVideoRenderer = new Renderer(remoteVideoStream, appContext);
+RendererView rendererView = remoteVideoRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+```
+
+Oluşturulan RendererView daha sonra aşağıdaki kod parçacığı kullanılarak uygulama kullanıcı arabirimine iliştirilebilir:
+```java
+layout.addView(rendererView);
+```
+
+Daha sonra, `updateScalingMode` ScalingMode. Esnetden birine sahip RendererView nesnesinde API 'yi çağırarak ölçeklendirme modunu güncelleştirebilirsiniz | ScalingMode. Kırp | ScalingMode. bağımsız değişken olarak sığdırma.
+```java
+// Update the scale mode for this view.
+rendererView.updateScalingMode(ScalingMode.Crop)
+```
+
+
+## <a name="device-management"></a>Cihaz yönetimi
+
+`DeviceManager` ses/video akışlarınızı iletmek için bir çağrıda kullanılabilecek yerel cihazları listelemenizi sağlar. Ayrıca, yerel tarayıcı API 'sini kullanarak bir kullanıcıdan mikrofona ve kameraya erişim izni talep etmenizi sağlar.
+
+`deviceManager`Yöntemini çağırarak erişim sağlayabilirsiniz `callClient.getDeviceManager()` .
+> [!WARNING]
+> Şu anda `callAgent` DeviceManager 'a erişim kazanmak için önce bir nesne örneği oluşturulmalıdır
+
+```java
+DeviceManager deviceManager = callClient.getDeviceManager().get();
+```
+
+### <a name="enumerate-local-devices"></a>Yerel cihazları listeleme
+
+Yerel cihazlara erişmek için Aygıt Yöneticisi numaralandırma yöntemlerini kullanabilirsiniz. Sabit listesi, zaman uyumlu bir işlemdir.
+
+```java
+//  Get a list of available video devices for use.
+List<VideoDeviceInfo> localCameras = deviceManager.getCameraList(); // [VideoDeviceInfo, VideoDeviceInfo...]
+
+// Get a list of available microphone devices for use.
+List<AudioDeviceInfo> localMicrophones = deviceManager.getMicrophoneList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+
+// Get a list of available speaker devices for use.
+List<AudioDeviceInfo> localSpeakers = deviceManager.getSpeakerList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+```
+
+### <a name="set-default-microphonespeaker"></a>Varsayılan mikrofonu/konuşmacıyı ayarla
+
+Aygıt Yöneticisi, bir çağrı başlatılırken kullanılacak varsayılan bir cihaz ayarlamanıza olanak sağlar.
+İstemci Varsayılanları ayarlanmamışsa, Iletişim Hizmetleri işletim sistemi varsayılanlarına geri döner.
+
+```java
+
+// Get the microphone device that is being used.
+AudioDeviceInfo defaultMicrophone = deviceManager.getMicrophoneList().get(0);
+
+// Set the microphone device to use.
+deviceManager.setMicrophone(defaultMicrophone);
+
+// Get the speaker device that is being used.
+AudioDeviceInfo defaultSpeaker = deviceManager.getSpeakerList().get(0);
+
+// Set the speaker device to use.
+deviceManager.setSpeaker(defaultSpeaker);
+```
+
+### <a name="local-camera-preview"></a>Yerel kamera önizlemesi
+
+`DeviceManager` `Renderer` Yerel kameranızdan akışları işlemeye başlamak için ve kullanabilirsiniz. Bu akış diğer katılımcılara gönderilmez; Bu, yerel bir önizleme akışımıza sahiptir. Bu, zaman uyumsuz bir eylemdir.
+
+```java
+VideoDeviceInfo videoDevice = <get-video-device>;
+Context appContext = this.getApplicationContext();
+currentVideoStream = new LocalVideoStream(videoDevice, appContext);
+videoOptions = new VideoOptions(currentVideoStream);
+
+Renderer previewRenderer = new Renderer(currentVideoStream, appContext);
+View uiView previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+
+// Attach the renderingSurface to a viewable location on the app at this point
+layout.addView(uiView);
+```
+
+## <a name="eventing-model"></a>Olay modeli
+Değerler değiştiğinde bildirilmesi için özelliklerin ve koleksiyonların çoğuna abone olabilirsiniz.
+
+### <a name="properties"></a>Özellikler
+Olaylara abone olmak için `property changed` :
+
+```java
+// subscribe
+PropertyChangedListener callStateChangeListener = new PropertyChangedListener()
+{
+    @Override
+    public void onPropertyChanged(PropertyChangedEvent args)
+    {
+        Log.d("The call state has changed.");
+    }
+}
+call.addOnCallStateChangedListener(callStateChangeListener);
+
+//unsubscribe
+call.removeOnCallStateChangedListener(callStateChangeListener);
+```
+
+### <a name="collections"></a>Koleksiyonlar
+Olaylara abone olmak için `collection updated` :
+
+```java
+LocalVideoStreamsChangedListener localVideoStreamsChangedListener = new LocalVideoStreamsChangedListener()
+{
+    @Override
+    public void onLocalVideoStreamsUpdated(LocalVideoStreamsEvent localVideoStreamsEventArgs) {
+        Log.d(localVideoStreamsEventArgs.getAddedStreams().size());
+        Log.d(localVideoStreamsEventArgs.getRemovedStreams().size());
+    }
+}
+call.addOnLocalVideoStreamsChangedListener(localVideoStreamsChangedListener);
+// To unsubscribe
+call.removeOnLocalVideoStreamsChangedListener(localVideoStreamsChangedListener);
+```

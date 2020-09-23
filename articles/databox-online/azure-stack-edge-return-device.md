@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge cihazınızı döndürme | Microsoft Docs
-description: Verileri silme ve Azure Stack Edge cihazınızı döndürme hakkında bilgi edinin ve ardından cihazla ilişkili kaynağı silin.
+title: Azure Stack Edge Pro cihazınızı geri döndürme | Microsoft Docs
+description: Verileri silme ve Azure Stack Edge Pro cihazınızı döndürme hakkında bilgi edinin ve ardından cihazla ilişkili kaynağı silin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,23 +8,23 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: aa917361ad3c967a697421e86d232e1a206c403e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923960"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903669"
 ---
-# <a name="return-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızı döndürün
+# <a name="return-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızı döndürün
 
-Bu makalede, verileri silme ve sonra Azure Stack Edge cihazınızı döndürme açıklanmaktadır. Cihazı geri aldıktan sonra cihazla ilişkili kaynağı da silebilirsiniz.
+Bu makalede, verileri silme ve sonra Azure Stack Edge Pro cihazınızı döndürme açıklanmaktadır. Cihazı geri aldıktan sonra cihazla ilişkili kaynağı da silebilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 >
 > * Cihazdaki veri disklerinin verileri silme
-> * Azure portal cihaz dönüşü başlatma
+> * Azure portalda cihaz iadesi başlatma
 > * Cihazı paketleme ve bir toplama zamanlama
 > * Azure portal kaynağı silme
 
@@ -59,7 +59,7 @@ Alternatif olarak, cihazın PowerShell arabirimine bağlanın ve `Reset-HcsAppli
 
 Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
 
-1. Azure portal Azure Stack Edge/Data Box Gateway kaynağına gidin. **Genel**görünümde, sağ bölmedeki komut çubuğuna gidin ve **cihazı geri döndür**' ü seçin. 
+1. Azure portal Azure Stack Edge Pro/Data Box Gateway kaynağına gidin. **Genel**görünümde, sağ bölmedeki komut çubuğuna gidin ve **cihazı geri döndür**' ü seçin. 
 
     ![Cihazı geri dön 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -90,11 +90,11 @@ Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
 
     ![Geri dönüş aygıtı 4](media/azure-stack-edge-return-device/return-device-4.png) 
 
-6. Cihazınızın geri dönüş ayrıntıları yakalandıktan sonra Azure Stack Edge işlemleri ekibine bir e-posta ile bildirim gönderebilirsiniz. E-posta uygulamanızın yüklü ve yapılandırılmış olduğu varsayıldığında e-posta uygulamanızı kullanabilirsiniz. Ayrıca, bir e-posta oluşturup göndermek için verileri kopyalayabilirsiniz.
+6. Cihazınızın geri dönüş ayrıntıları yakalandıktan sonra, Azure Stack Edge Pro işlemler ekibine bir e-posta ile bildirim gönderebilirsiniz. E-posta uygulamanızın yüklü ve yapılandırılmış olduğu varsayıldığında e-posta uygulamanızı kullanabilirsiniz. Ayrıca, bir e-posta oluşturup göndermek için verileri kopyalayabilirsiniz.
 
     ![Geri dönüş aygıtı 5](media/azure-stack-edge-return-device/return-device-5.png) 
 
-7. Azure Stack Edge işlemler ekibi e-postayı aldıktan sonra, size ters Sevkiyat Etiketi gönderilir. Bu etiketi aldığınızda, taşıyıcı ile cihaz alımı zamanlayabilirsiniz. 
+7. Azure Stack Edge Pro işlemler ekibi e-postayı aldıktan sonra, size bir ters Sevkiyat Etiketi gönderilir. Bu etiketi aldığınızda, taşıyıcı ile cihaz alımı zamanlayabilirsiniz. 
 
 ## <a name="schedule-a-pickup"></a>Çekme zamanlaması
 
@@ -111,20 +111,20 @@ Bir toplama zamanlamak için aşağıdaki adımları uygulayın.
     2. Çağrınızda, basılı etiketinizde gösterildiği gibi ters Sevkiyat izleme numarasını tırnak içine edin.
     3. İzleme numarası tırnak işareti yoksa, UPS toplama sırasında ek ücret ödemeniz gerekir.
 
-    Toplama zamanlamak yerine, en yakın bırakma konumundaki Azure Stack ucunu da kapatabilirsiniz.
+    Toplama zamanlamak yerine, en yakın bırakma konumundaki Azure Stack Edge Pro 'Yu da kapatabilirsiniz.
 
 ## <a name="delete-the-resource"></a>Kaynağı Sil
 
 Cihaz Azure veri merkezinde alındıktan sonra, cihaz hasar veya herhangi bir değişiklik işareti için denetlenir.
 
-- Cihaz bozulmadan ve iyi bir şekilde yer alıyorsa, faturalandırma ölçümü o kaynak için de duraklar. Azure Stack Edge işlemler ekibi, cihazın döndürüldüğünden emin olmak için sizinle iletişim kuracaktır. Daha sonra Azure portal cihazla ilişkili kaynağı silebilirsiniz.
+- Cihaz bozulmadan ve iyi bir şekilde yer alıyorsa, faturalandırma ölçümü o kaynak için de duraklar. Azure Stack Edge Pro işlemler ekibi, cihazın döndürüldüğünden emin olmak için sizinle iletişim kuracaktır. Daha sonra Azure portal cihazla ilişkili kaynağı silebilirsiniz.
 - Cihaz önemli ölçüde hasar görmüşse, cezaları uygulanabilir. Ayrıntılar için bkz. [kayıp veya hasarlı cihaz](https://azure.microsoft.com/pricing/details/databox/edge/) ve [ürün hizmet koşulları](https://www.microsoft.com/licensing/product-licensing/products)hakkında SSS.  
 
 
 Azure portal cihazı silebilirsiniz:
 
 - Siparişi yerleştirdikten ve cihaz Microsoft tarafından hazırlanmadan önce.
-- Cihazı Microsoft 'a döndürdüyseniz, Azure veri merkezinde fiziksel incelemeyi geçirir ve Azure Stack uç işlemler ekibi, cihazın döndürüldüğünü doğrulamak için çağırır.
+- Cihazı Microsoft 'a döndürdüyseniz, Azure veri merkezinde fiziksel İnceleme ve Azure Stack Edge Pro Operations Team çağrılarını, cihazın döndürüldüğünü doğrulamak üzere geçirir.
 
 Cihazı başka bir abonelik veya konuma karşı etkinleştirdiyseniz, Microsoft siparişinizi bir iş günü içinde yeni abonelik veya konuma taşır. Sipariş taşındıktan sonra bu kaynağı silebilirsiniz.
 
@@ -144,4 +144,4 @@ Cihaz ve ilişkili kaynak başarıyla silindikten sonra size bildirimde bulunulu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Değiştirme Azure Stack Edge cihazını nasıl alabileceğinizi](azure-stack-edge-replace-device.md)öğrenin.
+- [Azure Stack Edge Pro cihazının yerini almayı](azure-stack-edge-replace-device.md)öğrenin.

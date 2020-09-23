@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge bant genişliği zamanlamalarını yönetme | Microsoft Docs
-description: Azure Stack Kenarunuzdaki bant genişliği zamanlamalarını yönetmek için Azure portal nasıl kullanılacağını açıklar.
+title: Azure Stack Edge Pro bant genişliği zamanlamalarını yönetme | Microsoft Docs
+description: Azure Stack Edge Pro 'unuzda bant genişliği zamanlamalarını yönetmek için Azure portal nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e5361c1082424a76699affee653b4b9fc798116
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9247ae6e6cfc276c871689df826935c519620573
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339766"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908141"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge"></a>Azure Stack Kenarunuzdaki bant genişliği zamanlamalarını yönetmek için Azure portal kullanın  
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzdaki bant genişliği zamanlamalarını yönetmek için Azure portal kullanma  
 
-Bu makalede Azure Stack kenardaki kullanıcıların nasıl yönetileceği açıklanır. Bant genişliği zamanlamaları, ağ bant genişliği kullanımını birden çok zamanlamaya göre yapılandırmanızı sağlar. Bu zamanlamalar, cihazınızla bulut arasında gerçekleştirilen yükleme ve indirme işlemlerine uygulanabilir.
+Bu makalede Azure Stack Edge Pro 'daki kullanıcıların nasıl yönetileceği açıklanır. Bant genişliği zamanlamaları, ağ bant genişliği kullanımını birden çok zamanlamaya göre yapılandırmanızı sağlar. Bu zamanlamalar, cihazınızla bulut arasında gerçekleştirilen yükleme ve indirme işlemlerine uygulanabilir.
 
-Azure Stack Kenarlarınızın bant genişliği zamanlamalarını Azure portal aracılığıyla ekleyebilir, değiştirebilir veya silebilirsiniz.
+Azure Stack Edge Pro için bant genişliği zamanlamalarını Azure portal aracılığıyla ekleyebilir, değiştirebilir veya silebilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -40,11 +40,11 @@ Bir zamanlama eklemek için Azure portal aşağıdaki adımları uygulayın.
 
 3. **Zamanlama ekle** sayfasında: 
 
-   1. Zamanlamanın **Başlangıç günü**, **Bitiş günü**, **Başlangıç saati** ve **Bitiş saati** değerlerini belirleyin.
+   1. **Başlangıç gününü**, **bitiş gününü**, **başlangıç saatini**ve zamanlamanın **bitiş saatini** belirtin.
    2. Bu zamanlamanın her gün çalışması gerekiyorsa, **tüm gün** seçeneğini işaretleyin.
-   3. **Bant genişliği hızı**, cihazınızda gerçekleştirilen bulutla ilgili işlemler (yükleme ve indirme) için kullanılan bant genişliğidir ve saniye başına megabit (Mb/sn) cinsinden ölçülür. Bu alan için 20 ile 1.000.000.007 arasında bir sayı girin.
+   3. **Bant genişliği oranı** , bulut ile ilgili işlemlerde (her ikisi de karşıya yükleme ve indirme) kullanılan bit/sn (Mbps) cinsinden bant genişliğidir. Bu alana 20 ile 1.000.000.007 arasında bir sayı girin.
    4. Veri yükleme ve indirme işlemlerini kısıtlamak istemiyorsanız **Sınırsız** bant genişliğini seçin.
-   5. **Ekle**'yi seçin.
+   5. **Ekle**’yi seçin.
 
       ![Zamanlama Ekle](media/azure-stack-edge-manage-bandwidth-schedules/add-schedule-2.png)
 
@@ -71,7 +71,7 @@ Bir bant genişliği zamanlamasını düzenlemek için aşağıdaki adımları g
 
 ## <a name="delete-a-schedule"></a>Zamanlamayı silme
 
-Azure Stack Edge cihazlarınız ile ilişkili bir bant genişliği zamanlamasını silmek için aşağıdaki adımları uygulayın.
+Azure Stack Edge Pro aygıtınızla ilişkili bir bant genişliği zamanlamasını silmek için aşağıdaki adımları uygulayın.
 
 1. Azure portal, Azure Stack Edge kaynağına gidin ve ardından **bant genişliğine**gidin.  
 

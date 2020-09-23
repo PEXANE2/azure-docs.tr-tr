@@ -1,18 +1,18 @@
 ---
 title: Bağlı makine Windows aracısına genel bakış
-description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucular (Önizleme) aracısına yönelik ayrıntılı bir genel bakış sunulmaktadır.
-ms.date: 08/06/2020
+description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucu aracısına sunulan ayrıntılı bir genel bakış sunulmaktadır.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 990b5999a8483c6417049ac5ab965843c2b13659
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212981"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908173"
 ---
-# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a>Azure Arc etkin sunucuları (Önizleme) aracısına genel bakış
+# <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
 
-Azure Arc etkin sunucular (Önizleme) bağlı makine Aracısı, kurumsal ağınızda veya diğer bulut sağlayıcıınızda Azure dışında barındırılan Windows ve Linux makinelerinizi yönetmenizi sağlar. Bu makalede Aracı, sistem ve ağ gereksinimleri ve farklı dağıtım yöntemlerine ilişkin ayrıntılı bir genel bakış sunulmaktadır.
+Azure Arc etkin sunucular bağlı makine Aracısı, kurumsal ağınızda veya diğer bulut sağlayıcıınızda Azure dışında barındırılan Windows ve Linux makinelerinizi yönetmenizi sağlar. Bu makalede Aracı, sistem ve ağ gereksinimleri ve farklı dağıtım yöntemlerine ilişkin ayrıntılı bir genel bakış sunulmaktadır.
 
 ## <a name="agent-component-details"></a>Aracı bileşeni ayrıntıları
 
@@ -40,22 +40,18 @@ Windows ve Linux için Azure bağlı makine Aracısı paketini aşağıda listel
 
 Windows ve Linux için Azure bağlı makine Aracısı, gereksinimlerinize bağlı olarak, en son sürüme el ile veya otomatik olarak yükseltilebilir. Daha fazla bilgi için [buraya](manage-agent.md)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure bağlı makine Aracısı için desteklenir: 
 
 - Windows Server 2012 R2 ve üzeri (Windows Server Core dahil)
-- Ubuntu 16,04 ve 18,04 (x64)
+- Ubuntu 16,04 ve 18,04 LTS (x64)
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
-
->[!NOTE]
->Windows için bağlı makine aracısının bu önizleme sürümü yalnızca Ingilizce dilini kullanmak üzere yapılandırılmış Windows Server 'ı destekler.
->
 
 ### <a name="required-permissions"></a>Gerekli izinler
 
@@ -65,7 +61,7 @@ Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
 
-Makinelerinizi Azure Arc etkin sunucularıyla (Önizleme) yapılandırmadan önce, bağlanacak makine sayısını planlamak için Azure Resource Manager [abonelik sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) ve [kaynak grubu sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) gözden geçirin.
+Makinelerinizi Azure Arc etkin sunucularıyla yapılandırmadan önce, bağlanacak makine sayısını planlamak için Azure Resource Manager [abonelik sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) ve [kaynak grubu sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) gözden geçirin.
 
 ### <a name="transport-layer-security-12-protocol"></a>Aktarım Katmanı Güvenliği 1,2 Protokolü
 
@@ -105,7 +101,7 @@ Hizmetlerin çoğu şu anda bir hizmet etiketi kaydına sahip olmadığından, �
 
 ### <a name="register-azure-resource-providers"></a>Azure Kaynak sağlayıcılarını kaydetme
 
-Azure Arc etkin sunucular (Önizleme), bu hizmeti kullanabilmeniz için aboneliğinizde aşağıdaki Azure Kaynak sağlayıcılarına bağımlıdır:
+Azure Arc etkin sunucuları, bu hizmeti kullanabilmeniz için aboneliğinizde aşağıdaki Azure Kaynak sağlayıcılarına bağımlıdır:
 
 * **Microsoft. HybridCompute**
 * **Microsoft. GuestConfiguration**
@@ -174,14 +170,14 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur.
 
-    |Name |Varsayılan değer |Açıklama |
+    |Ad |Varsayılan değer |Açıklama |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Log |Açıklama |
+    |Günlük |Açıklama |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
@@ -225,7 +221,7 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Log |Açıklama |
+    |Günlük |Açıklama |
     |----|------------|
     |/var/seçenek/azcmagent/log/hımds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |/var/seçenek/azcmagent/log/azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
@@ -236,7 +232,7 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur. Bu değişkenler ' de ayarlanır `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Varsayılan değer |Açıklama |
+    |Ad |Varsayılan değer |Açıklama |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -248,4 +244,4 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Arc etkin sunucularını (Önizleme) değerlendirmeye başlamak için, [Azure Portal Azure 'a karma makineler bağlama](onboard-portal.md)makalesini izleyin.
+Azure Arc etkin sunucularını değerlendirmeye başlamak için, [Azure Portal aracılığıyla karma makineleri Azure 'A bağlama](onboard-portal.md)makalesini izleyin.

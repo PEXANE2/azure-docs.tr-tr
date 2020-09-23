@@ -1,6 +1,6 @@
 ---
-title: Kubernetes durum bilgisiz olmayan uygulamayı kubectl kullanarak Azure Stack Edge GPU cihazında dağıtma | Microsoft Docs
-description: Microsoft Azure Stack Edge cihazında kubectl kullanarak bir Kubernetes durum bilgisiz uygulama dağıtımını oluşturmayı ve yönetmeyi açıklar.
+title: Kubernetes durum bilgisiz uygulamasını Azure Stack Edge Pro GPU cihazında kubectl kullanarak dağıtma | Microsoft Docs
+description: Microsoft Azure Stack Edge Pro cihazında kubectl kullanarak bir Kubernetes durum bilgisiz uygulama dağıtımını oluşturmayı ve yönetmeyi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 27502c58481444a9dc14120bf447d4614d051ccc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268868"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890734"
 ---
-# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınızda kubectl aracılığıyla bir Kubernetes durum bilgisiz uygulaması dağıtma
+# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızdan kubectl aracılığıyla bir Kubernetes durum bilgisiz uygulaması dağıtma
 
 Bu makalede, var olan bir Kubernetes kümesinde kubectl komutları kullanılarak durum bilgisiz bir uygulamanın nasıl dağıtılacağı açıklanır. Bu makale ayrıca durum bilgisiz uygulamanızda Pod oluşturma ve ayarlama sürecinde size yol gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Kubernetes kümesi oluşturabilmeniz ve `kubectl` komut satırı aracını kullanabilmeniz için önce aşağıdakileri yapmanız gerekir:
 
-- 1 düğümlü Azure Stack Edge cihazında oturum açma kimlik bilgileriniz var.
+- 1 düğümlü Azure Stack Edge Pro cihazı için oturum açma kimlik bilgileriniz vardır.
 
-- Windows PowerShell 5,0 veya üzeri bir sürümü Windows istemci sisteminde Azure Stack Edge cihazına erişmek için yüklenir. Desteklenen bir işletim sistemine sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
+- Windows PowerShell 5,0 veya üzeri bir Windows istemci sisteminde Azure Stack Edge Pro cihazına erişmek için yüklenir. Desteklenen bir işletim sistemine sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
 
-- Azure Stack Edge cihazında işlem etkindir. İşlem ' ı etkinleştirmek için, cihazın yerel kullanıcı arabirimindeki **işlem** sayfasına gidin. Sonra, işlem için etkinleştirmek istediğiniz bir ağ arabirimi seçin. **Etkinleştir**’i seçin. İşlem, bu ağ arabirimindeki cihazınızda sanal anahtar oluşturulmasına neden olur. Daha fazla bilgi için bkz. [Azure Stack kenarunuzda işlem ağını etkinleştirme](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
+- Azure Stack Edge Pro cihazında işlem etkindir. İşlem ' ı etkinleştirmek için, cihazın yerel kullanıcı arabirimindeki **işlem** sayfasına gidin. Sonra, işlem için etkinleştirmek istediğiniz bir ağ arabirimi seçin. **Etkinleştir**’i seçin. İşlem, bu ağ arabirimindeki cihazınızda sanal anahtar oluşturulmasına neden olur. Daha fazla bilgi için bkz. [Azure Stack Edge Pro 'da işlem ağını etkinleştirme](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 
-- Azure Stack Edge cihazınız, sürüm v 1.9 veya sonraki bir sürümü çalıştıran bir Kubernetes küme sunucusuna sahiptir. Daha fazla bilgi için [Microsoft Azure Stack Edge cihazında bir Kubernetes kümesi oluşturma ve yönetme](azure-stack-edge-gpu-create-kubernetes-cluster.md)konusuna bakın.
+- Azure Stack Edge Pro cihazınız, sürüm v 1.9 veya üzeri olan bir Kubernetes kümesi sunucusuna sahiptir. Daha fazla bilgi için [Microsoft Azure Stack Edge Pro cihazında bir Kubernetes kümesi oluşturma ve yönetme](azure-stack-edge-gpu-create-kubernetes-cluster.md)konusuna bakın.
 
 - Yüklediniz `kubectl` .
 
@@ -43,7 +43,7 @@ Başlamadan önce şunları yapmalısınız:
 4. Kullanıcı Yapılandırması ' ye kaydedildi `C:\Users\<username>\.kube` .
 5. Yüklendi `kubectl` .
 
-Artık Azure Stack Edge cihazında durum bilgisiz uygulama dağıtımlarını çalıştırmaya ve yönetmeye başlayabilirsiniz. Kullanmaya başlamadan önce `kubectl` , doğru sürümüne sahip olduğunuzu doğrulamanız gerekir `kubectl` .
+Artık Azure Stack Edge Pro cihazında durum bilgisiz uygulama dağıtımlarını çalıştırmaya ve yönetmeye başlayabilirsiniz. Kullanmaya başlamadan önce `kubectl` , doğru sürümüne sahip olduğunuzu doğrulamanız gerekir `kubectl` .
 
 ### <a name="verify-you-have-the-correct-version-of-kubectl-and-set-up-configuration"></a>Doğru bir kubectl sürümüne sahip olduğunuzu ve yapılandırmayı ayarlabildiğinizi doğrulayın
 
@@ -109,7 +109,7 @@ Pod, bir Kubernetes uygulamasının temel yürütme birimidir, oluşturduğunuz 
 
 Oluşturduğunuz durum bilgisiz uygulamanın türü bir NGINX web sunucusu dağıtımdır.
 
-Durum bilgisiz uygulama dağıtımlarını oluşturmak ve yönetmek için kullandığınız tüm kubectl komutlarının yapılandırmayla ilişkili ad alanını belirtmesi gerekir. [Microsoft Azure Stack Edge cihazında bir Kubernetes kümesi oluşturma ve yönetme](azure-stack-edge-gpu-create-kubernetes-cluster.md) öğreticisindeki Azure Stack Edge cihazında kümeye bağlıyken ad alanını oluşturdunuz `New-HcsKubernetesNamespace` .
+Durum bilgisiz uygulama dağıtımlarını oluşturmak ve yönetmek için kullandığınız tüm kubectl komutlarının yapılandırmayla ilişkili ad alanını belirtmesi gerekir. [Microsoft Azure Stack Edge Pro cihaz öğreticisindeki bir Kubernetes kümesi oluşturma ve yönetme konusunda](azure-stack-edge-gpu-create-kubernetes-cluster.md) Azure Stack Edge Pro cihazında kümeye bağlıyken ad alanını oluşturdunuz `New-HcsKubernetesNamespace` .
 
 Bir kubectl komutunda ad alanını belirtmek için kullanın `kubectl <command> -n <namespace-string>` .
 

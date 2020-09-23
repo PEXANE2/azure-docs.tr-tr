@@ -1,0 +1,143 @@
+### YamlMime:Landing
+title: Tek Sunucu belgeleri
+summary: MySQL için Azure Veritabanı - Tek Sunucu, MySQL Community Edition tarafından desteklenen bir ilişkisel veritabanı hizmetidir.  Bu, kritik iş yüklerini teslim edebilen, tahmin edilebilir performans ve dinamik ölçeklenebilirlik sunan, tam olarak yönetilen bir hizmet olarak veritabanıdır. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle Tek Sunucu’yu kullanmayı öğrenin.
+metadata:
+  description: MySQL için Azure Veritabanı - Tek Sunucu, MySQL Community Edition tarafından desteklenen, Microsoft bulutunda geliştiriciler için oluşturulmuş bir ilişkisel veritabanı hizmetidir.
+  author: mksuni
+  ms.author: sumuth
+  ms.date: 09/20/2020
+  ms.service: mysql
+  ms.topic: landing-page
+  ms.openlocfilehash: a9ddd354a97578c5b83455fc6d709d5c2d60494f
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928945"
+landingContent:
+- title: Tek Sunucu hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Tek Sunucu nedir?
+      url: ../concepts-servers.md
+  - linkListType: whats-new
+    links:
+    - text: Blogumuza göz atın
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: Kullanmaya başlayın
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Portal kullanarak sunucu oluşturma
+      url: ../quickstart-create-mysql-server-database-using-azure-portal.md
+    - text: Azure CLI kullanarak sunucu oluşturma
+      url: ../quickstart-create-mysql-server-database-using-azure-cli.md
+  - linkListType: concept
+    links:
+    - text: Fiyatlandırma katmanlarını anlama
+      url: ../concepts-pricing-tiers.md
+    - text: Sınırları anlama
+      url: ../concepts-limits.md
+    - text: Desteklenen MySQL sürümlerini anlama
+      url: ../concepts-supported-versions.md
+    - text: Yüksek kullanılabilirlik planı
+      url: ../concepts-high-availability.md
+  - linkListType: tutorial
+    links:
+    - text: Tek Sunucu için Veritabanı Tasarlama
+      url: ../tutorial-design-database-using-portal.md
+    - text: MySQL ile Kapsayıcılar için Web Uygulaması’na WordPress’i dağıtma
+      url: ../../app-service/tutorial-multi-container-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+    - text: MySQL ile PHP (Laravel) Web Uygulaması oluşturma
+      url: ../../app-service/tutorial-php-mysql-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+- title: Bağlanma ve sorgulama
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Güvenlik duvarını anlama
+      url: ../concepts-firewall-rules.md
+    - text: SSL’yi anlama
+      url: ../concepts-ssl-connection-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Güvenlik duvarı kuralları oluşturma
+      url: ../howto-manage-firewall-using-portal.md
+    - text: SSL bağlantısını yapılandırma
+      url: ../howto-configure-ssl.md
+    - text: Bağlantı sorunlarını giderme
+      url: ../howto-troubleshoot-common-connection-issues.md
+  - linkListType: get-started
+    links:
+    - text: MySQL Workbench kullanarak bağlanma
+      url: ../connect-workbench.md
+    - text: PHP kullanarak bağlanma
+      url: ../connect-php.md
+    - text: Java kullanarak bağlanma
+      url: ../connect-java.md
+    - text: .NET kullanarak bağlanma
+      url: ../connect-csharp.md
+    - text: Python kullanarak bağlanma
+      url: ../connect-python.md
+    - text: Node.js kullanarak bağlanma
+      url: ../connect-nodejs.md
+- title: Verileri yönetme ve geçirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sunucu parametrelerini anlama
+      url: ../concepts-server-parameters.md
+    - text: Sanal Ağları anlama
+      url: ../concepts-data-access-and-security-vnet.md
+    - text: İzlemeyi etkinleştirme
+      url: ../concepts-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: Sunucu parametrelerini yapılandırma
+      url: ../howto-server-parameters.md
+    - text: Data Migration Hizmeti’ni kullanarak geçirme
+      url: ../howto-migrate-online.md
+    - text: Döküm ve geri yükleme kullanarak geçirme
+      url: ../concepts-migrate-dump-restore.md
+    - text: İçeri ve dışarı aktarma kullanarak geçirme
+      url: ../concepts-migrate-import-export.md
+- title: İş Sürekliliği
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: İş sürekliliği
+      url: ../concepts-business-continuity.md
+    - text: Yedekleme ve geri yükleme
+      url: ../concepts-backup.md
+    - text: Veri içinde çoğaltma
+      url: ../concepts-data-in-replication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Veri içinde çoğaltmayı yapılandırma
+      url: ../howto-data-in-replication.md
+    - text: Azure portalı kullanarak sunucuyu geri yükleme
+      url: ../howto-restore-server-portal.md
+    - text: Azure portalı kullanarak sunucuyu geri yükleme
+      url: ../howto-restore-server-cli.md
+- title: Başvuru
+  linkLists:
+  - linkListType: download
+    links:
+    - text: MySQL Workbench
+      url: https://www.mysql.com/products/workbench
+    - text: MySQL .NET Bağlayıcısı
+      url: https://dev.mysql.com/doc/connector-net/en/
+  - linkListType: deploy
+    links:
+    - text: Ortak görevler için Azure CLI betikleri
+      url: /azure/mysql/sample-scripts-azure-cli
+    - text: Azure Resource Manager şablonları
+      url: /azure/templates/microsoft.dbformysql/allversions
+  - linkListType: reference
+    links:
+    - text: Azure CLI geliştirici başvurusu
+      url: /cli/azure/mysql
+    - text: REST API geliştirici başvurusu
+      url: /rest/api/mysql/
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.mysql

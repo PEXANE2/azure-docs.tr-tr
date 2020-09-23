@@ -1,6 +1,6 @@
 ---
 title: Ayrılmış HSM nedir? -Azure ayrılmış HSM | Microsoft Docs
-description: Azure adanmış HSM 'ye genel bakış, Azure 'da FIPS 140-2 düzey 3 sertifikasını karşılayan anahtar depolama olanakları sağlar
+description: Azure adanmış HSM 'nin Azure 'da şifreleme anahtar depolaması sağlayan bir Azure hizmeti olduğunu öğrenin.
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70881084"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970205"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Azure Ayrılmış HSM nedir?
 
@@ -60,7 +60,7 @@ Azure ayrılmış HSM, belirli bir büyük ölçekli kuruluş türü için benze
 
 ### <a name="best-fit"></a>En iyi sığdırma
 
-Azure adanmış HSM, en çok HSM cihazlarına doğrudan ve tek erişimli erişimi gerektiren "yükseltme ve-kaydırma" senaryoları için uygundur. Örneklere şunlar dahildir:
+Azure adanmış HSM, en çok HSM cihazlarına doğrudan ve tek erişimli erişimi gerektiren "yükseltme ve-kaydırma" senaryoları için uygundur. Örnekler şunları içerir:
 
 - Şirket içinden Azure sanal makinelerine uygulama geçirme
 - AWS bulut HSM klasik hizmetini kullanan sanal makinelere (Amazon, bu hizmeti yeni müşterilere sunmadığından), Amazon AWS EC2 'tan uygulama geçirme

@@ -1,6 +1,6 @@
 ---
-title: Windows PowerShell arabirimi aracılığıyla Microsoft Azure Stack Edge cihazını bağlama ve yönetme | Microsoft Docs
-description: Windows PowerShell arabirimi aracılığıyla Azure Stack Edge 'e bağlanmayı ve bunu yönetmeyi açıklar.
+title: Windows PowerShell arabirimi aracılığıyla Microsoft Azure Stack Edge Pro cihazını bağlama ve yönetme | Microsoft Docs
+description: Windows PowerShell arabirimi aracılığıyla Azure Stack Edge Pro 'Yu nasıl bağlayabileceğinizi ve daha sonra yönetmenizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 973c618b46d1b6be902d9629ca63ee120cae6855
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313210"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894419"
 ---
-# <a name="manage-an-azure-stack-edge-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge cihazını yönetme
+# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge Pro cihazını yönetme
 
-Azure Stack Edge çözümü, verileri işlemenize ve ağ üzerinden Azure 'a göndermenize olanak tanır. Bu makalede Azure Stack Edge cihazınız için yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Cihazınızı yönetmek için Azure portal, yerel Web Kullanıcı arabirimini veya Windows PowerShell arabirimini kullanabilirsiniz.
+Azure Stack Edge Pro çözümü, verileri işlemenize ve ağ üzerinden Azure 'a göndermenize olanak tanır. Bu makalede Azure Stack Edge Pro cihazınız için yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Cihazınızı yönetmek için Azure portal, yerel Web Kullanıcı arabirimini veya Windows PowerShell arabirimini kullanabilirsiniz.
 
 Bu makale, PowerShell arabirimini kullanarak yaptığınız görevlere odaklanır. 
 
 Bu makale aşağıdaki yordamları içerir:
 
-- PowerShell arabirimine bağlanma
+- PowerShell arabirimine bağlanın
 - Destek paketi oluşturma
 - Sertifikayı karşıya yükleme
 - Cihazı sıfırlama
@@ -31,7 +31,7 @@ Bu makale aşağıdaki yordamları içerir:
 - İşlem günlüklerini al
 - İşlem modüllerini izleme ve sorun giderme
 
-## <a name="connect-to-the-powershell-interface"></a>PowerShell arabirimine bağlanma
+## <a name="connect-to-the-powershell-interface"></a>PowerShell arabirimine bağlanın
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
@@ -43,7 +43,7 @@ Bu makale aşağıdaki yordamları içerir:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-Ayrıca, IoT Edge cihazınız ile bağlanabilir olan aşağı akış cihazları arasında güvenli bir bağlantı sağlamak için IoT Edge sertifikaları karşıya yükleyebilirsiniz. Yüklemeniz gereken üç IoT Edge sertifikası (*. pek* biçimi) vardır:
+Ayrıca IoT Edge cihazınızla ona bağlanabilecek aşağı akış cihazları arasında güvenli bir bağlantıya olanak sağlamak için IoT Edge sertifikalarını da karşıya yükleyebilirsiniz. Yüklemeniz gereken üç IoT Edge sertifikası (*. pek* biçimi) vardır:
 
 - Kök CA sertifikası veya sahip CA
 - Cihaz CA sertifikası
@@ -94,4 +94,4 @@ Uzak PowerShell oturumundan çıkmak için PowerShell penceresini kapatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure portal [Azure Stack Edge](azure-stack-edge-deploy-prep.md) dağıtın.
+- Azure portal [Azure Stack Edge Pro 'yu](azure-stack-edge-deploy-prep.md) dağıtın.

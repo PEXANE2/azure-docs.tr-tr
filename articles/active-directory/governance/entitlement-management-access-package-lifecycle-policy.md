@@ -1,6 +1,6 @@
 ---
 title: Azure AD Yetkilendirme Yönetimi 'nde erişim paketi için yaşam döngüsü ayarlarını değiştirme-Azure Active Directory
-description: Azure Active Directory yetkilendirme yönetimindeki bir erişim paketi için yaşam döngüsü ayarlarını değiştirmeyi öğrenin.
+description: Azure Active Directory yetkilendirme yönetimindeki bir erişim paketinin istek sahibi bilgilerini & yaşam döngüsü ayarlarını değiştirmeyi öğrenin.
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,18 +16,21 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c628c3c1f11cb973176e7a689856b64177036c9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4fd119238476b842a4dba1efeec86544ca263920
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798707"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980112"
 ---
 # <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimindeki bir erişim paketi için yaşam döngüsü ayarlarını değiştirme
 
 Bir erişim paketi Yöneticisi olarak, mevcut bir ilkeyi düzenleyerek, erişim paketinin yaşam döngüsü ayarlarını dilediğiniz zaman değiştirebilirsiniz. Bir ilkenin sona erme tarihini değiştirirseniz, zaten bekleyen bir onaylama veya onaylanan durumda olan isteklerin sona erme tarihi değişmez.
 
 Bu makalede, var olan bir erişim paketinin yaşam döngüsü ayarlarının nasıl değiştirileceği açıklanır.
+
+## <a name="open-requestor-information"></a>İstek sahibi bilgilerini aç
+Kullanıcıların bir erişim paketine doğru erişimi olduğundan emin olmak için özel sorular, kullanıcılardan belirli erişim paketlerine erişim isteğinde bulunma istemek için yapılandırılabilir. Yapılandırma seçenekleri şunlardır: yerelleştirme, gerekli/isteğe bağlı ve metin/çoklu seçim yanıtı biçimleri. İstek sahipleri paket istediklerinde bu soruları görür ve onaylayanlar, kararlarına yardımcı olmak için soruların yanıtlarını görür. Bir erişim paketindeki soruları yapılandırmak için aşağıdaki adımları kullanın:
 
 ## <a name="open-lifecycle-settings"></a>Yaşam döngüsü ayarlarını açma
 

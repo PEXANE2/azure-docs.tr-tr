@@ -1,6 +1,6 @@
 - name: SQL Edge Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: SQL Edge nedir?
       href: overview.md
@@ -15,10 +15,15 @@
   items:
     - name: SQL Edge dağıtma
       href: deploy-portal.md
+    - name: Docker ile dağıtma
+      href: disconnected-deployment.md
     - name: SQL Edge’de ONNX Modelleri dağıtma
       href: deploy-onnx.md
 - name: Öğreticiler
+  expanded: true
   items:
+    - name: Kubernetes’te dağıtma
+      href: deploy-kubernetes.md
     - name: Azure Data Factory ile verileri eşitleme
       href: tutorial-sync-data-factory.md
     - name: SQL Data Sync ile verileri eşitleme
@@ -31,36 +36,42 @@
           href: tutorial-set-up-iot-edge-modules.md
         - name: SQL Edge’e model dağıtma
           href: tutorial-run-ml-model-on-sql-edge.md
-- name: Nasıl yapılır
-  items:
-    - name: Stream Analytics işlerini dağıtma
-      href: stream-analytics.md
-    - name: Çoğaltmayı yapılandırma
-      href: configure-replication.md
-    - name: Veri değişikliklerini izleme
-      href: track-data-changes.md
-    - name: T-SQL akış işlerini yönetme
-      href: create-stream-analytics-job.md
-    - name: SQL Edge’e bağlanma
-      href: connect.md
-    - name: SQL Edge’i yapılandırma
-      href: configure.md
-    - name: DAC paketi dağıtma
-      href: deploy-dacpac.md
 - name: Kavramlar
   items:
-    - name: ONNX ile makine öğrenmesi ve yapay zeka
-      href: onnx-overview.md
-    - name: Yedekleme ve geri yükleme
-      href: backup-restore.md
-    - name: SQL Edge’de Veri Akışı
+    - name: Dağıtma
+      items:
+        - name: Azure portalını kullanarak dağıtma
+          href: deploy-portal.md
+        - name: Docker ile dağıtma
+          href: disconnected-deployment.md
+        - name: Kubernetes’te dağıtma
+          href: deploy-kubernetes.md
+        - name: SQL araçları
+          href: 'https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?toc=/azure/azure-sql-edge/toc.json'
+    - name: Makine öğrenimi
+      items:
+        - name: ONNX ile makine öğrenmesi ve yapay zeka
+          href: onnx-overview.md
+        - name: ONNX modellerini dağıtma
+          href: deploy-onnx.md
+    - name: Performans
+      items:
+        - name: Performans yönergeleri
+          href: performance-best-practices.md
+    - name: İş sürekliliğini yapılandırma
+      items:
+        - name: Yedekleme ve geri yükleme
+          href: backup-restore.md
+        - name: Kapsayıcılar için yüksek kullanılabilirlik
+          href: high-availability-sql-edge-containers.md
+    - name: Veri Akışı
       items:
         - name: Veri akışı yapma
           href: stream-data.md
+        - name: Akış işleri oluşturma ve yönetme
+          href: create-stream-analytics-job.md
         - name: Dış Akış Oluşturma (Transact-SQL)
           href: create-external-stream-transact-sql.md
-        - name: Dış Akışı Değiştirme (Transact-SQL)
-          href: alter-external-stream-transact-sql.md
         - name: Dış Akışı Bırakma (Transact-SQL)
           href: drop-external-stream-transact-sql.md
         - name: Akış görünümleri ve DMV’ler
@@ -69,14 +80,20 @@
               href: streaming-catalog-views.md
             - name: sys.external_job_streams (Transact-SQL)
               href: sys-external-job-streams.md
-            - name: sys.external-streaming_jobs (Transact-SQL)
+            - name: sys.external_streaming_jobs (Transact-SQL)
               href: sys-external-streaming-jobs.md
             - name: sys.external_streams (Transact-SQL)
               href: sys-external-streams.md
     - name: Zaman serisi verilerini işleme
       items:
-        - name: Date_Bucket (Transact-SQL)
+        - name: Zaman boşlukları ve eksik değerler
+          href: imputing-missing-values.md
+        - name: DATE_BUCKET (Transact-SQL)
           href: date-bucket-tsql.md
+        - name: FIRST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+        - name: LAST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
         - name: Veri saklama ve temizleme
           items:
             - name: Veri saklamaya genel bakış
@@ -85,3 +102,43 @@
               href: data-retention-enable-disable.md
             - name: Veri saklamayı temizleme
               href: data-retention-cleanup.md
+            - name: sys.sp_cleanup_data_retention (Transact-SQL)
+              href: sys-sp-cleanup-data-retention.md
+    - name: Güvenlik
+      items:
+        - name: Güvenliğe genel bakış
+          href: security-overview.md
+        - name: Güvenlik özellikleri
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started?toc=/azure/azure-sql-edge/toc.json'
+        - name: Bağlantıları şifreleme
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-encrypted-connections?toc=/azure/azure-sql-edge/toc.json'
+        - name: IoT için Azure Güvenlik Merkezi
+          href: 'https://docs.microsoft.com/azure/asc-for-iot/overview?toc=/azure/azure-sql-edge/toc.json&bc=/azure/azure-sql-edge/breadcrumb/toc.json'
+- name: Nasıl yapılır
+  items:
+    - name: SQL Edge’i yapılandırma
+      items:
+        - name: Ortam değişkenlerini kullanarak yapılandırma
+          href: configure.md#configure-by-using-environment-variables
+        - name: mssql.conf dosyasını kullanarak yapılandırma
+          href: configure.md#configure-by-using-an-mssqlconf-file
+        - name: Kök olmayan kullanıcı olarak çalıştırma
+          href: configure.md#run-azure-sql-edge-as-non-root-user
+        - name: Kalıcı veriler
+          href: configure.md#persist-your-data
+        - name: Çoğaltmayı yapılandırma
+          href: configure-replication.md
+    - name: SQL Edge’e bağlanma
+      href: connect.md
+    - name: DAC paketi dağıtma
+      href: deploy-dacpac.md
+    - name: Veri değişikliklerini izleme
+      href: track-data-changes.md
+    - name: T-SQL akış işlerini yönetme
+      href: create-stream-analytics-job.md
+    - name: Dağıtım sorunlarını giderme
+      href: troubleshoot.md
+- name: Başvuru
+  items:
+    - name: Transact-SQL (T-SQL) Başvurusu
+      href: 'https://docs.microsoft.com/sql/t-sql/language-reference'

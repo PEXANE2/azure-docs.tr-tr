@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b160f0aa50c30f7856bc09b88b3eb305f32d6f98
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0aa0393544f5744c6aaf428ca4b4c27922a0c287
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961933"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987838"
 ---
 # <a name="back-up-your-app-in-azure"></a>Uygulamanızı Azure’a yedekleme
 [Azure App Service](overview.md) yedekleme ve geri yükleme özelliği, uygulama yedeklemelerini el ile veya bir zamanlamaya göre kolayca oluşturmanızı sağlar. Yedeklemeleri sınırsız bir zaman miktarına kadar tutulacak şekilde yapılandırabilirsiniz. Mevcut uygulamanın üzerine yazarak veya başka bir uygulamaya geri yükleyerek uygulamayı önceki bir anlık görüntüye geri yükleyebilirsiniz.
@@ -60,7 +60,7 @@ Aşağıdaki veritabanı çözümleri yedekleme özelliği ile desteklenir:
     > [!NOTE]
     > Aşağıdaki iletiyi görürseniz, yedeklemelere devam edebilmeniz için App Service planınızı yükseltmek üzere tıklayın.
     > Daha fazla bilgi için bkz. [Azure 'da bir uygulamayı ölçeklendirme](manage-scale-up.md).
-    > ![Depolama hesabı seçin](./media/manage-backup/upgrade-plan.png)
+    > :::image type="content" source="./media/manage-backup/upgrade-plan.png" alt-text="Yedekleme ve geri yükleme özelliğine erişmek üzere App Service planını yükseltmek için ileti içeren bir başlığın ekran görüntüsü.":::
     > 
     > 
 
@@ -70,13 +70,13 @@ Aşağıdaki veritabanı çözümleri yedekleme özelliği ile desteklenir:
 
 3. **Yedekleme yapılandırması** sayfasında depolama hesabı yapılandırmak için **yapılandırılmamış** ' a tıklayın.
 
-    ![Depolama hesabı seçin](./media/manage-backup/configure-storage.png)
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Depolama Yapılandırılmadı ayarı seçiliyken yedekleme depolama bölümünün ekran görüntüsü.":::
 
 4. Bir **depolama hesabı** ve **kapsayıcı**seçerek yedekleme hedefini seçin. Depolama hesabı, yedeklemek istediğiniz uygulamayla aynı aboneliğe ait olmalıdır. İsterseniz, ilgili sayfalarda yeni bir depolama hesabı veya yeni bir kapsayıcı oluşturabilirsiniz. İşiniz bittiğinde **Seç**' e tıklayın.
 
 5. Hala açık olan **yedekleme yapılandırması** sayfasında, **yedekleme veritabanını**yapılandırabilir ve ardından yedeklemelere eklemek Istediğiniz veritabanlarını (SQL veritabanı veya MySQL) seçip **Tamam**' a tıklayın.
 
-    ![Depolama hesabı seçin](./media/manage-backup/configure-database.png)
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Yedekleme seçimine dahil olan yedekleme veritabanı bölümünün ekran görüntüsü.":::
 
     > [!NOTE]
     > Bu listede bir veritabanının görünmesi için, uygulamanızın **uygulama ayarları** sayfasının **bağlantı dizeleri** bölümünde bağlantı dizesinin bulunması gerekir. 

@@ -1,6 +1,6 @@
 - name: Azure Lighthouse belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Lighthouse nedir?
       displayName: 'management at scale, service providers'
@@ -84,7 +84,7 @@
           href: ./how-to/view-service-provider-activity.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/managedservices
     - name: Azure PowerShell
       href: /powershell/module/az.managedservices#managed_services
@@ -101,6 +101,8 @@
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: ./samples/policy-reference.md
+    - name: Terraform
+      href: 'https://www.terraform.io/docs/providers/azurerm/r/lighthouse_assignment.html'
 - name: Kaynaklar
   items:
     - name: Azure Lighthouse için Microsoft Soru-Cevap

@@ -1,7 +1,7 @@
 ---
 title: Hızlı başlangıç-Java-Bing yerel Iş araması kullanarak API 'ye bir sorgu gönderme
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın.
+description: Java 'daki istekleri Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine göndermeye başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 8780caae20b779997e32750ed7829afd7d969a02
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b35e8e11c93ad7f48dc24d8bd13fcd7dc706acb9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320247"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970381"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Hızlı başlangıç: Java kullanarak Bing yerel Iş Arama API 'sine bir sorgu gönderme
 

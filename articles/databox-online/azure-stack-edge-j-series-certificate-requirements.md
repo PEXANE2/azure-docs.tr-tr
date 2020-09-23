@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge ile sertifika gereksinimleri ve sorun giderme | Microsoft Docs
-description: Azure Stack Edge cihazındaki sertifika gereksinimlerini ve sorun giderme hatalarını açıklar.
+title: Azure Stack Edge Pro ile sertifika gereksinimleri ve sorun giderme | Microsoft Docs
+description: Azure Stack Edge Pro cihazındaki sertifika gereksinimlerini ve sorun giderme sorunlarını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: b24b745a53b632ce32cda37058363bf974d400b3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268271"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891385"
 ---
 # <a name="certificate-requirements"></a>Sertifika gereksinimleri
 
-Bu makalede, sertifikaların Azure Stack Edge cihazınıza yüklenebilmesi için karşılanması gereken sertifika gereksinimleri açıklanmaktadır. Bu gereksinimler PFX sertifikaları, verme yetkilisi, sertifika konu adı ve konu alternatif adı ve desteklenen sertifika algoritmalarıyla ilgilidir.
+Bu makalede, sertifikaların Azure Stack Edge Pro cihazınıza yüklenebilmesi için karşılanması gereken sertifika gereksinimleri açıklanmaktadır. Bu gereksinimler PFX sertifikaları, verme yetkilisi, sertifika konu adı ve konu alternatif adı ve desteklenen sertifika algoritmalarıyla ilgilidir.
 
 ## <a name="certificate-issuing-authority"></a>Sertifika verme yetkilisi
 
@@ -64,13 +64,13 @@ Sertifikalar aşağıdaki konu adına ve konu alternatif adı gereksinimlerine s
     
 ## <a name="pfx-certificate"></a>PFX sertifikası
 
-Azure Stack Edge cihazınıza yüklenmiş PFX sertifikalarının aşağıdaki gereksinimleri karşılaması gerekir:
+Azure Stack Edge Pro cihazınıza yüklü PFX sertifikaları aşağıdaki gereksinimleri karşılamalıdır:
 
 * Sertifikalarınızı SSL yetkilisinden aldığınızda, sertifikaların tam imzalama zincirini aldığınızdan emin olur.
 
 * Bir PFX sertifikasını dışarı aktardığınızda, **Mümkünse, zincirdeki tüm sertifikaları dahil et** seçeneğini seçtiğinizden emin olun.
 
-* Azure Stack Edge için hem ortak hem de özel anahtarlar gerektiği için uç nokta, yerel UI, düğüm, VPN ve Wi-Fi için PFX sertifikası kullanın. Özel anahtarın yerel makine anahtarı özniteliği ayarlanmış olmalıdır.
+* Azure Stack Edge Pro için hem ortak hem de özel anahtarlar gerektiği için uç nokta, yerel UI, düğüm, VPN ve Wi-Fi için PFX sertifikası kullanın. Özel anahtarın yerel makine anahtarı özniteliği ayarlanmış olmalıdır.
 
 * Sertifikanın PFX şifrelemesi 3DES olmalıdır. Bu, bir Windows 10 istemcisinden veya Windows Server 2016 sertifika deposundan dışarı aktarılırken kullanılan varsayılan şifrelemedir. 3DES ile ilgili daha fazla bilgi için bkz. [Üçlü des](https://en.wikipedia.org/wiki/Triple_DES).
 
@@ -78,7 +78,7 @@ Azure Stack Edge cihazınıza yüklenmiş PFX sertifikalarının aşağıdaki ge
 
 * Sertifika PFX dosyaları, *Gelişmiş anahtar kullanımı* alanında *sunucu kimlik doğrulaması (1.3.6.1.5.5.7.3.1)* ve *istemci kimlik doğrulaması (1.3.6.1.5.5.7.3.2)* değerlerini içermelidir.
 
-* Azure Stack hazırlık Denetleyicisi aracını kullanıyorsanız, tüm sertifika PFX dosyalarının parolalarının dağıtım sırasında aynı olması gerekir. Daha fazla bilgi için bkz. [Azure Stack hub hazırlık Denetleyicisi aracını kullanarak Azure Stack Edge için sertifika oluşturma](azure-stack-edge-j-series-create-certificates-tool.md).
+* Azure Stack hazırlık Denetleyicisi aracını kullanıyorsanız, tüm sertifika PFX dosyalarının parolalarının dağıtım sırasında aynı olması gerekir. Daha fazla bilgi için bkz. [Azure Stack hub hazırlık Denetleyicisi aracı kullanarak Azure Stack Edge Pro için sertifika oluşturma](azure-stack-edge-j-series-create-certificates-tool.md).
 
 * Sertifika PFX parolasının parolası karmaşık bir parola olmalıdır. Dağıtım parametresi olarak kullanıldığı için bu parolayı bir yere unutmayın.
 
@@ -86,9 +86,9 @@ Daha fazla bilgi için bkz. [özel ANAHTARLA PFX sertifikalarını dışarı akt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack Edge ile sertifikaları kullanma](azure-stack-edge-j-series-manage-certificates.md)
+[Azure Stack Edge Pro ile sertifika kullanma](azure-stack-edge-j-series-manage-certificates.md)
 
-[Azure Stack hub hazırlık Denetleyicisi aracını kullanarak Azure Stack Edge için sertifikalar oluşturma](azure-stack-edge-j-series-create-certificates-tool.md)
+[Azure Stack hub hazırlık Denetleyicisi aracını kullanarak Azure Stack Edge Pro için sertifikalar oluşturma](azure-stack-edge-j-series-create-certificates-tool.md)
 
 [Özel anahtarla PFX sertifikalarını dışarı aktar](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)
 

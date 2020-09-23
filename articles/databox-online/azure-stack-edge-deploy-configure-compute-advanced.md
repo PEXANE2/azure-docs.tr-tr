@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge 'de işlem ile gelişmiş dağıtıma yönelik verileri filtreleme, analiz etme öğreticisi | Microsoft Docs
-description: Azure Stack Edge üzerinde işlem rolünü yapılandırmayı ve Azure 'a göndermeden önce gelişmiş dağıtım akışına yönelik verileri dönüştürmek için kullanmayı öğrenin.
+title: Azure Stack Edge Pro 'da işlem ile gelişmiş dağıtıma yönelik verileri filtreleme, analiz etme öğreticisi | Microsoft Docs
+description: Azure Stack Edge Pro 'da işlem rolünü yapılandırmayı ve Azure 'a göndermeden önce gelişmiş dağıtım akışına yönelik verileri dönüştürmek için kullanmayı öğrenin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: f62eec29aebdcc98569134e0c3b75457467bc014
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86080490"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903690"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>Öğretici: gelişmiş dağıtım akışı için Azure Stack Edge ile veri dönüştürme
+# <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Öğretici: gelişmiş dağıtım akışı için Azure Stack Edge Pro ile veri dönüştürme
 
-Bu öğreticide, Azure Stack Edge cihazınızda gelişmiş bir dağıtım akışı için bir işlem rolünün nasıl yapılandırılacağı açıklanmaktadır. İşlem rolünü yapılandırdıktan sonra Azure Stack Edge, verileri Azure 'a göndermeden önce dönüştürebilir.
+Bu öğreticide, Azure Stack Edge Pro cihazınızda gelişmiş bir dağıtım akışı için bir işlem rolünün nasıl yapılandırılacağı açıklanmaktadır. İşlem rolünü yapılandırdıktan sonra Azure Stack Edge Pro, verileri Azure 'a göndermeden önce dönüştürebilir.
 
 İşlem, cihazınızda basit veya gelişmiş dağıtım akışı için yapılandırılabilir.
 
@@ -41,16 +41,16 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Veri dönüştürme işlemini doğrulama ve verileri aktarma
 
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure Stack Edge cihazınızda bir işlem rolü ayarlamadan önce şunları yaptığınızdan emin olun:
+Azure Stack Edge Pro cihazınızda bir işlem rolü ayarlamadan önce şunları yaptığınızdan emin olun:
 
-- Azure Stack Edge cihazınızı [, bağlanma, ayarlama ve Azure Stack Edge 'i etkinleştirme](azure-stack-edge-deploy-connect-setup-activate.md)bölümünde açıklandığı gibi etkinleştirdiniz.
+- Azure Stack Edge Pro cihazınızı [, Azure Stack Edge Pro 'Yu bağlama, ayarlama ve etkinleştirme](azure-stack-edge-deploy-connect-setup-activate.md)bölümünde açıklandığı gibi etkinleştirdiniz.
 
 
 ## <a name="configure-compute"></a>İşlem yapılandırma
 
-Azure Stack Edge 'de işlem yapılandırmak için bir IoT Hub kaynağı oluşturacaksınız.
+Azure Stack Edge Pro ortamınızda işlem yapılandırmak için bir IoT Hub kaynağı oluşturacaksınız.
 
 1. Azure Stack Edge kaynağınızın Azure portal **Genel Bakış ' a**gidin. Sağ bölmede, **işlem** kutucuğunda **başlayın**' ı seçin.
 
@@ -65,7 +65,7 @@ Azure Stack Edge 'de işlem yapılandırmak için bir IoT Hub kaynağı oluştur
    
     |Alan  |Değer  |
     |---------|---------|
-    |IoT Hub     | **Yeni** veya **mevcut**seçeneklerinden birini belirleyin. <br> Varsayılan olarak, bir IoT kaynağı oluşturmak için standart bir katman (S1) kullanılır. Ücretsiz bir IoT kaynağı kullanmak için, bir tane oluşturun ve ardından mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
+    |IoT Hub     | **Yeni** veya **mevcut**seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
     |Ad     |IoT Hub kaynağınız için bir ad girin.         |
 
     ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
@@ -133,7 +133,7 @@ Bu öğreticide gelişmiş dağıtım için iki paylaşım gerekir: bir kenar pa
     |Alan  |Değer  |
     |---------|---------|
     |Tetikleyici adı     | Tetikleyiciniz için benzersiz bir ad.         |
-    |Tetikleyici türü     | **Dosya** tetikleyicisi ' ni seçin. Dosya tetikleyicisi, giriş paylaşımında bir dosya gibi bir dosya olayı gerçekleştiğinde tetiklenir. Diğer yandan zamanlanan bir tetikleyici sizin tarafınızdan tanımlanan bir zamanlamaya göre ateşlenir. Bu örnekte, bir dosya tetikleyicisine ihtiyacımız var.    |
+    |Tetikleyici türü     | **Dosya** tetikleyicisi ' ni seçin. Dosya tetikleyicisi, giriş paylaşımına dosya yazılması gibi bir dosya olayı gerçekleştiğinde tetiklenir. Diğer yandan zamanlanan bir tetikleyici sizin tarafınızdan tanımlanan bir zamanlamaya göre ateşlenir. Bu örnekte, bir dosya tetikleyicisine ihtiyacımız var.    |
     |Giriş paylaşma     | Bir giriş paylaşma seçin. Edge Yerel paylaşma, bu durumda giriş paylaşımıdır. Burada kullanılan modül, dosyaları uç yerel paylaşımından buluta yüklendikleri bir kenar paylaşımıyla taşıırlar.        |
 
     ![Tetikleyici ekleme](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
@@ -150,9 +150,9 @@ Bu öğreticide gelişmiş dağıtım için iki paylaşım gerekir: bir kenar pa
 
 ## <a name="add-a-module"></a>Modül Ekle
 
-Bu Edge cihazında özel modül yok. Özel veya önceden oluşturulmuş bir modül ekleyebilirsiniz. Özel bir modül oluşturmayı öğrenmek için [Azure Stack Edge cihazınız Için C# modülü geliştirme](azure-stack-edge-create-iot-edge-module.md)bölümüne gidin.
+Bu Edge cihazında özel modül yok. Özel veya önceden oluşturulmuş bir modül ekleyebilirsiniz. Özel bir modül oluşturmayı öğrenmek için [Azure Stack Edge Pro cihazınız Için C# modülü geliştirme](azure-stack-edge-create-iot-edge-module.md)bölümüne gidin.
 
-Bu bölümde, [Azure Stack kenarlarınızın C# modülünü geliştirme](azure-stack-edge-create-iot-edge-module.md)bölümünde oluşturduğunuz IoT Edge cihazına özel bir modül eklersiniz. Bu özel modül, uç cihazdaki bir uç yerel paylaşımından dosya alır ve bunları cihazdaki bir kenar (bulut) paylaşımıyla taşımalıdır. Ardından bulut paylaşımından, dosyaları bulut paylaşımıyla ilişkili Azure depolama hesabına iter.
+Bu bölümde, [Azure Stack Edge Pro Için C# modülü geliştirme](azure-stack-edge-create-iot-edge-module.md)bölümünde oluşturduğunuz IoT Edge cihazına özel bir modül eklersiniz. Bu özel modül, uç cihazdaki bir uç yerel paylaşımından dosya alır ve bunları cihazdaki bir kenar (bulut) paylaşımıyla taşımalıdır. Ardından bulut paylaşımından, dosyaları bulut paylaşımıyla ilişkili Azure depolama hesabına iter.
 
 1. **Edge compute >** başlayın ' a gidin. **Modül Ekle** kutucuğunda, senaryo türünü **Gelişmiş**olarak seçin. **IoT Hub git**' i seçin.
 
@@ -175,7 +175,7 @@ Bu bölümde, [Azure Stack kenarlarınızın C# modülünü geliştirme](azure-s
 4. **Modül Ekle**' nin altında aşağıdakileri yapın:
 
     1. Özel modülün kapsayıcı kayıt defteri ayarları için ad, adres, Kullanıcı adı ve parola girin.
-    Ad, adres ve listelenen kimlik bilgileri, eşleşen bir URL 'ye sahip modülleri almak için kullanılır. Bu modülü dağıtmak için **Dağıtım modülleri** sayfasında **IoT Edge modülü**'nü seçin. Bu IoT Edge modülü, Azure Stack Edge cihazınızda ilişkili IoT Edge cihazına dağıtabileceğiniz bir Docker kapsayıcısıdır.
+    Ad, adres ve listelenen kimlik bilgileri, eşleşen bir URL 'ye sahip modülleri almak için kullanılır. Bu modülü dağıtmak için **Dağıtım modülleri** sayfasında **IoT Edge modülü**'nü seçin. Bu IoT Edge modülü, Azure Stack Edge Pro cihazınızda ilişkili IoT Edge cihazına dağıtabileceğiniz bir Docker kapsayıcısıdır.
 
         ![Modülleri ayarla sayfası](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-4.png) 
  
@@ -183,7 +183,7 @@ Bu bölümde, [Azure Stack kenarlarınızın C# modülünü geliştirme](azure-s
      
         |Alan  |Değer  |
         |---------|---------|
-        |Ad     | Modül için benzersiz bir ad. Bu modül, Azure Stack kenarınızda ilişkili IoT Edge cihaza dağıtabileceğiniz bir Docker kapsayıcısıdır.        |
+        |Ad     | Modül için benzersiz bir ad. Bu modül, Azure Stack Edge Pro ile ilişkili IoT Edge cihazına dağıtabileceğiniz bir Docker kapsayıcısıdır.        |
         |Görüntü URI 'SI     | Modülün karşılık gelen kapsayıcı görüntüsü için görüntü URI 'SI.        |
         |Kimlik bilgileri gerekli     | İşaretliyse, Kullanıcı adı ve parola, eşleşen bir URL ile modülleri almak için kullanılır.        |
     
@@ -270,7 +270,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * İşlem modülü ekleme
 > * Veri dönüştürme işlemini doğrulama ve verileri aktarma
 
-Azure Stack Edge cihazınızı yönetmeyi öğrenmek için bkz.:
+Azure Stack Edge Pro cihazınızı yönetme hakkında bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Azure Stack ucunu yönetmek için yerel Web Kullanıcı arabirimini kullanma](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [Azure Stack Edge Pro 'Yu yönetmek için yerel Web Kullanıcı arabirimini kullanma](azure-stack-edge-manage-access-power-connectivity-mode.md)

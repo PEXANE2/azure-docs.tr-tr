@@ -1,0 +1,94 @@
+### YamlMime:Landing
+title: PostgreSQL için Azure Veritabanı’nda - Hiper Ölçek (Citus) belgeleri
+summary: PostgreSQL için Azure Veritabanı, açık kaynak Postgres ilişkisel veritabanı altyapısını temel alan ve tam olarak yönetilen bir hizmet olarak veritabanıdır. Hiper Ölçek (Citus) dağıtım seçeneği, daha büyük ölçek ve performans gerektiren uygulamalara hizmet vermek için parçalamayı kullanarak sorguları birden çok makine arasında ölçeklendirir.
+metadata:
+  description: PostgreSQL için Azure Veritabanı, açık kaynak PostgreSQL veritabanı altyapısını temel alan, Microsoft bulutunda geliştiriciler için oluşturulmuş ilişkisel bir veritabanı hizmetidir.
+  author: jonels-msft
+  ms.author: jonels
+  ms.date: 09/27/2020
+  ms.service: postgresql
+  ms.subservice: hyperscale-citus
+  ms.topic: landing-page
+  ms.openlocfilehash: 20e99db5f380ee24cf88987a7884292ca47f7e1e
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90929026"
+landingContent:
+- title: Kullanmaya başlayın
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Portal’ı kullanarak sunucu grubu oluşturma
+      url: ../quickstart-create-hyperscale-portal.md
+  - linkListType: concept
+    links:
+    - text: Sunucu grubu düğümleri ve tablolar
+      url: ../concepts-hyperscale-nodes.md
+  - linkListType: tutorial
+    links:
+    - text: Çok kiracılı bir veritabanı tasarlama
+      url: ../tutorial-design-database-hyperscale-multi-tenant.md
+    - text: Gerçek zamanlı bir analiz panosu tasarlama
+      url: ../tutorial-design-database-hyperscale-realtime.md
+- title: Bağlanma ve sorgulama
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Güvenlik duvarını anlama
+      url: ../concepts-hyperscale-firewall-rules.md
+    - text: TLS’yi yapılandırma
+      url: ../concepts-hyperscale-ssl-connection-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Güvenlik duvarı kuralları
+      url: ../howto-hyperscale-manage-firewall-using-portal.md
+    - text: Bağlantı sorunlarını giderme
+      url: ../howto-hyperscale-troubleshoot-common-connection-issues.md
+- title: Ölçek
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Düğümler ve tablolar
+      url: ../concepts-hyperscale-nodes.md
+    - text: Dağıtım sütunlarını seçme
+      url: ../concepts-hyperscale-choose-distribution-column.md
+  - linkListType: how-to-guide
+    links:
+    - text: Sunucu grubu boyutu
+      url: ../howto-hyperscale-scaling.md
+    - text: Tabloları dağıtma
+      url: ../howto-hyperscale-modify-distributed-tables.md
+    - text: Ölçümler üzerinde uyarı oluşturma
+      url: ../howto-hyperscale-alert-on-metric.md
+- title: Yönet
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Yedekleme ve geri yükleme
+      url: ../concepts-hyperscale-backup.md
+    - text: İzleme ve ayarlama
+      url: ../concepts-hyperscale-monitoring.md
+    - text: Yüksek kullanılabilirlik
+      url: ../concepts-hyperscale-high-availability.md
+    - text: Ayrılmış kapasite
+      url: ../concepts-hyperscale-reserved-pricing.md
+  - linkListType: how-to-guide
+    links:
+    - text: Veritabanı kullanıcıları oluşturma
+      url: ../howto-hyperscale-create-users.md
+    - text: Yüksek kullanılabilirliği yapılandırma
+      url: ../howto-hyperscale-high-availability.md
+    - text: Veritabanı günlüklerine erişme
+      url: ../howto-hyperscale-logging.md
+- title: Başvuru
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: SQL API işlevleri
+      url: ../reference-hyperscale-functions.md
+    - text: Sunucu parametreleri
+      url: ../reference-hyperscale-parameters.md
+    - text: Sistem tabloları
+      url: ../reference-hyperscale-metadata.md

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: e3ef202a1a98b8193b55bcc4c2cb616d4a2000d8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037772"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892859"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>Azure Spring Cloud’da uygulama durumunu anlama
+
+**Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
 Azure yay bulutu Kullanıcı arabirimi, çalışan uygulamaların durumu hakkında bilgi sunar.  Abonelik içindeki her kaynak grubu için uygulama türlerinin genel durumunu görüntüleyen bir **uygulamalar** seçeneği vardır.  Her uygulama türü için **uygulama örnekleri**görüntülenir.
 
@@ -32,7 +34,7 @@ Bir uygulama türünün genel durumunu görüntülemek için bir kaynak grubunun
 
 | Sabit listesi | Tanım |
 |:--:|:----------------:|
-| Çalışıyor | Dağıtım çalışıyor olmalıdır. |
+| Çalışma | Dağıtım çalışıyor olmalıdır. |
 | Durduruldu | Dağıtım durdurulmalıdır. |
 
 **Sağlama durumuna yalnızca CLı 'den erişilebilir.  Aşağıdaki değerlerden biri olarak bildirilir:**
@@ -58,7 +60,7 @@ Dağıtılan bir uygulamanın belirli bir örneğinin durumunu görüntülemek i
 | Sabit listesi | Tanım |
 |:--:|:----------------:|
 | Başlatılıyor | İkili dosya, verilen örneğe başarıyla dağıtıldı. Jar düzgün şekilde çalışmadığından, JAR dosyasını önyüklenmekte örnek başarısız olabilir. |
-| Çalışıyor | Örnek işe yarar. |
+| Çalışma | Örnek işe yarar. |
 | Başarısız | Uygulama örneği birkaç yeniden denemeden sonra kullanıcının ikilisini başlatamadı. |
 | Eriyor | Uygulama örneği kapatılıyor. |
 
@@ -72,4 +74,4 @@ Dağıtılan bir uygulamanın belirli bir örneğinin durumunu görüntülemek i
 
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama](spring-cloud-tutorial-prepare-app-deployment.md)
+* [Azure yay bulutu 'nda dağıtım için bahar veya Steeltoe uygulaması hazırlama](spring-cloud-tutorial-prepare-app-deployment.md)

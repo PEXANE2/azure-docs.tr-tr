@@ -10,23 +10,22 @@ author: saachigopal
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2289a761d4e266c305c2868e9f234871624ae528
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d90b56366cb22e80162983c982e861de608e4e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661313"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893111"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak bir modeli eğitme
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Machine Learning modelleriyle eğitim yaparken özel bir Docker görüntüsü kullanmayı öğrenin. 
 
 Bu makaledeki örnek betikler, bir evsel sinir ağı oluşturarak Evcil hayvan görüntülerini sınıflandırmak için kullanılır. 
 
-Azure Machine Learning varsayılan bir Docker temel görüntüsü sağlarken, korunan [Azure ML taban görüntülerinin](https://github.com/Azure/AzureML-Containers) veya kendi [özel görüntünüzün](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)bir kümesi gibi belirli bir temel görüntü belirtmek için Azure Machine Learning ortamlarını de kullanabilirsiniz. Özel temel görüntüler, kendi bağımlılıklarınızı yakından yönetmenize ve eğitim işleri yürütürken bileşen sürümleri üzerinde daha sıkı bir denetim sürdürmenize imkan tanır. 
+Azure Machine Learning varsayılan bir Docker temel görüntüsü sağlarken, korunan [Azure ML taban görüntülerinin](https://github.com/Azure/AzureML-Containers) veya kendi [özel görüntünüzün](how-to-deploy-custom-docker-image.md#create-a-custom-base-image)bir kümesi gibi belirli bir temel görüntü belirtmek için Azure Machine Learning ortamlarını de kullanabilirsiniz. Özel temel görüntüler, kendi bağımlılıklarınızı yakından yönetmenize ve eğitim işleri yürütürken bileşen sürümleri üzerinde daha sıkı bir denetim sürdürmenize imkan tanır. 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 Bu kodu şu ortamlardan birinde çalıştırın:
 * Azure Machine Learning işlem örneği-indirme veya yükleme gerekli değil
     * Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .
@@ -101,11 +100,11 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
 
 ### <a name="create-or-attach-existing-amlcompute"></a>Mevcut AmlCompute oluşturun veya ekleyin
-Modelinize eğitim için bir [işlem hedefi](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#compute-target) oluşturmanız gerekecektir. Bu öğreticide, eğitim işlem kaynağınız olarak AmlCompute oluşturursunuz.
+Modelinize eğitim için bir [işlem hedefi](concept-azure-machine-learning-architecture.md#compute-targets) oluşturmanız gerekecektir. Bu öğreticide, eğitim işlem kaynağınız olarak AmlCompute oluşturursunuz.
 
 AmlCompute oluşturma işlemi yaklaşık 5 dakika sürer. Bu ada sahip AmlCompute zaten çalışma alanınızda varsa, bu kod oluşturma işlemini atlar.
 
-Diğer Azure hizmetlerinde olduğu gibi, Azure Machine Learning hizmetiyle ilişkili belirli kaynaklarda (ör. AmlCompute) sınırlamalar vardır. Lütfen [Bu makaleyi](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas) varsayılan sınırlarda okuyun ve nasıl daha fazla kota isteneceğini öğrenin. 
+Diğer Azure hizmetlerinde olduğu gibi, Azure Machine Learning hizmetiyle ilişkili belirli kaynaklarda (ör. AmlCompute) sınırlamalar vardır. Lütfen [Bu makaleyi](how-to-manage-quotas.md) varsayılan sınırlarda okuyun ve nasıl daha fazla kota isteneceğini öğrenin. 
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -132,7 +131,7 @@ print(compute_target.get_status().serialize())
 ```
 
 ### <a name="create-a-scriptrunconfig"></a>ScriptRunConfig oluşturma
-Bu ScriptRunConfig, işinizi istenen [işlem hedefinde](https://docs.microsoft.com/azure/machine-learning/how-to-set-up-training-targets#compute-targets-for-training)yürütmek üzere yapılandırır.
+Bu ScriptRunConfig, işinizi istenen [işlem hedefinde](how-to-set-up-training-targets.md)yürütmek üzere yapılandırır.
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -160,4 +159,4 @@ Python ortamınızı özelleştirme hakkında daha fazla bilgi için bkz. [oluş
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, özel bir Docker görüntüsü kullanarak bir model eğitiliniz. Azure Machine Learning hakkında daha fazla bilgi edinmek için bu makaleye bakın.
 * Eğitim sırasında [çalıştırma ölçümlerini izleyin](how-to-track-experiments.md)
-* Özel bir Docker görüntüsü kullanarak [bir model dağıtın](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image) .
+* Özel bir Docker görüntüsü kullanarak [bir model dağıtın](how-to-deploy-custom-docker-image.md) .

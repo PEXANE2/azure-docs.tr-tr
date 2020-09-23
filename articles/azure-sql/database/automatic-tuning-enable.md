@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373513"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981465"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Sorguları izlemek ve iş yükü performansını geliştirmek için Azure portal otomatik ayarlamayı etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Sunucu düzeyinde, otomatik ayarlama yapılandırmasını "Azure Varsayılanlar�
 
 Azure SQL veritabanı 'nda bir [sunucuda](logical-servers.md) otomatik ayarlamayı etkinleştirmek için Azure Portal sunucuya gidin ve sonra menüdeki **otomatik ayarlama** ' yı seçin.
 
-![Sunucu](./media/automatic-tuning-enable/server.png)
+![Ekran görüntüsü, Azure portal bir sunucu için seçenekler uygulayabileceğiniz, otomatik ayarlamayı gösterir.](./media/automatic-tuning-enable/server.png)
 
 > [!NOTE]
 > Lütfen şu anda **DROP_INDEX** seçeneğinin bölüm değiştirme ve Dizin ipuçları kullanan uygulamalarla uyumlu olmadığından ve bu durumlarda etkinleştirilmemelidir. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez.
@@ -77,7 +77,7 @@ Azure SQL veritabanı, her bir veritabanı için otomatik ayarlama yapılandırm
 
 Bireysel otomatik ayarlama ayarları her veritabanı için ayrı olarak yapılandırılabilir. Tek bir otomatik ayarlama seçeneğini el ile yapılandırabilir veya bir seçeneğin ayarlarını sunucudan devralmasını belirtebilirsiniz.
 
-![Veritabanı](./media/automatic-tuning-enable/database.png)
+![Ekran görüntüsü Azure portal otomatik ayarlamayı gösterir; burada tek bir veritabanı için seçenekler uygulayabilirsiniz.](./media/automatic-tuning-enable/database.png)
 
 Lütfen şu anda DROP_INDEX seçeneğinin bölüm değiştirme ve Dizin ipuçları kullanan uygulamalarla uyumlu olmadığına ve bu durumlarda etkinleştirilmemelidir.
 

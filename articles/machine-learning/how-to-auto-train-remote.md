@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 58fedfe794f86a4a453614b09fcce6e803eb887f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 57108bed97b59513309213d55a0654f4405d509c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651536"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893318"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Otomatik makine öğrenmesi ile modelleri bulutta eğitin
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning, modelinizi yönettiğiniz farklı türlerde işlem kaynakları üzerinde eğitebilirsiniz. İşlem hedefi, bulutta yerel bir bilgisayar veya bir kaynak olabilir.
 
