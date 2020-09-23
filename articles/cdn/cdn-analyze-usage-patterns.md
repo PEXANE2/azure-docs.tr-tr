@@ -1,6 +1,6 @@
 ---
 title: Verizon 'dan çekirdek raporlar | Microsoft Docs
-description: "Aşağıdaki raporları kullanarak CDN 'niz için kullanım düzenlerini görüntüleyebilirsiniz: bant genişliği, aktarılan veri, Isabet sayısı, önbellek durumları, Isabetli önbellek okuması oranı, ıPV4/ıPV6 verileri aktarıldı."
+description: Verizon profilleri için yönetim portalı aracılığıyla Verizon çekirdek raporlarına erişme ve görüntüleme hakkında bilgi edinin.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888446"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985538"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon Çekirdek Raporları
 
@@ -77,7 +77,7 @@ Bu rapor, içeriğiniz için istek durum kodlarının dağıtımını açıklar.
 Bu rapor, istemci istekleri için önbellek isabetlerinin ve önbellek isabetlerinin dağıtımını açıklar. Önbellek isabetlerinin en hızlı performans sonuçları nedeniyle, veri teslimi hızlarını en iyi hale getirerek önbellek isabetsizliği ve süre dolma isabetli önbellek isabetlerinin en aza 
 
 Önbellek isabetsizliği azaltmak için, aşağıdakilerin kullanımını en aza indirmek üzere kaynak sunucunuzu yapılandırın: 
- * `no-cache`Yanıt üst bilgileri
+ * `no-cache` Yanıt üst bilgileri
  * Query-String Caching, kesinlikle gerekmedikçe  
  * Önbelleklenmemiş yanıt kodları
 
@@ -132,6 +132,6 @@ Bu rapor, ıPV4 vs ıPV6 'daki trafik kullanım dağıtımını gösterir.
 
 ![Aktarılan ıPV4/ıPV6 verileri](./media/cdn-reports/cdn-ipv4-ipv6.png)
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Raporlar yalnızca son 18 ay içinde oluşturulabilir.
 

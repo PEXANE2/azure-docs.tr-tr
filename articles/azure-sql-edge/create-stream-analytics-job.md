@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge 'de T-SQL akış işi oluşturma (Önizleme)
-description: Azure SQL Edge (Önizleme) içinde Stream Analytics işleri oluşturma hakkında bilgi edinin.
+title: Azure SQL Edge 'de T-SQL akış işi oluşturma
+description: Azure SQL Edge 'de Stream Analytics işleri oluşturma hakkında bilgi edinin.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,19 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 346a59f085e766fef09d73b9e7baa03dad510148
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0fcdf7aab5f43a0412cd28a1c15188b19770dc6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321726"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888107"
 ---
-# <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de Azure Stream Analytics işi oluşturma (Önizleme) 
+# <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Azure SQL Edge 'de veri akışı işi oluşturma 
 
-Bu makalede, Azure SQL Edge 'de (Önizleme) bir T-SQL akış işi oluşturma işlemi açıklanmaktadır. Dış akış giriş ve çıkış nesnelerini oluşturup akış işi oluşturma işlemini akış işi oluşturma işleminin bir parçası olarak tanımlarsınız.
-
-> [!NOTE]
-> Azure SQL Edge 'de T-SQL akış özelliğini etkinleştirmek için, TF 11515 ' i başlangıç seçeneği olarak etkinleştirin veya [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) komutunu kullanın. Bir MSSQL. conf dosyası kullanarak izleme bayraklarını etkinleştirme hakkında daha fazla bilgi için bkz. [MSSQL. conf dosyası kullanarak yapılandırma](configure.md#configure-by-using-an-mssqlconf-file).
+Bu makalede, Azure SQL Edge 'de bir T-SQL akış işi oluşturma işlemi açıklanmaktadır. Dış akış giriş ve çıkış nesnelerini oluşturup akış işi oluşturma işlemini akış işi oluşturma işleminin bir parçası olarak tanımlarsınız.
 
 ## <a name="configure-the-external-stream-input-and-output-objects"></a>Dış akış giriş ve çıkış nesnelerini yapılandırma
 
@@ -255,5 +252,5 @@ Akış işi aşağıdaki durumlardan herhangi birine sahip olabilir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure SQL Edge 'de akış işleriyle ilişkili meta verileri görüntüleme (Önizleme)](streaming-catalog-views.md) 
+- [Azure SQL Edge 'de akış işleriyle ilişkili meta verileri görüntüleme](streaming-catalog-views.md) 
 - [Dış akış oluşturma](create-external-stream-transact-sql.md)

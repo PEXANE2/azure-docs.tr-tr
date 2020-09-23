@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Statik Web Uygulamaları belgeleri
-summary: Azure Statik Web Uygulamaları, GitHub’da yapılan değişikliklerden otomatik olarak yayımlanan JavaScript web uygulamaları oluşturmanıza olanak tanır.
+summary: Azure Static Web Apps, GitHub’da yapılan değişikliklerden otomatik olarak yayımlanan modern web uygulamaları oluşturmanıza olanak tanır.
 metadata:
   title: Azure Statik Web Uygulamaları belgeleri
-  description: Azure Statik Web Uygulamaları, GitHub’da yapılan değişikliklerden otomatik olarak yayımlanan JavaScript web uygulamaları oluşturmanıza olanak tanır.
+  description: Azure Static Web Apps, GitHub’da yapılan değişikliklerden otomatik olarak yayımlanan modern web uygulamaları oluşturmanıza olanak tanır.
   ms.topic: landing-page
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 04/09/2020
-  ms.openlocfilehash: f70a746c948038b5bd67f4645e8dbd3df71b8b8a
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.openlocfilehash: a72c9ab1dfcaf6fd95ac706bc0f0a7b8adb17c0f
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86528664"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90905362"
 landingContent:
 - title: Statik Web Uygulamaları hakkında
   linkLists:
@@ -22,7 +22,7 @@ landingContent:
     links:
     - text: Statik Web Uygulamaları nedir?
       url: overview.md
-- title: Kullanmaya başlayın
+- title: başlarken
   linkLists:
   - linkListType: quickstart
     links:
@@ -54,6 +54,8 @@ landingContent:
       url: publish-vuepress.md
     - text: Jekyll’dan yayımlama
       url: publish-jekyll.md
+    - text: Blazor’dan dağıtma
+      url: deploy-blazor.md
     - text: Next.js’den dağıtma
       url: deploy-nextjs.md
     - text: Nuxt.js’den dağıtma

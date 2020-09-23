@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ea04633708e866b6f200bef0eb6e331c06873e9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 20efae411ae4d2fae9bf3b5e69dbfdd98da1603a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948246"
+ms.locfileid: "90985633"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Azure Stack Edge Mini R nedir?
 
@@ -35,7 +35,7 @@ Azure Stack Edge Mini R aşağıdaki yeteneklere sahiptir:
 |Hızlandırılmış AI ınkrii| Intel Movidius Myriad X VPU tarafından etkinleştirilir.|
 |Kablolu ve kablosuz | Kablolu ve kablosuz veri aktarımlarına izin verir.|
 |Veri erişimi     | Bulutta ek veri işleme için bulut API'lerini kullanarak Azure Depolama Blobları ve Azure Dosyaları'ndan doğrudan veri erişimi. Cihazdaki yerel önbellek, en son kullanılan dosyalara hızlı erişim için kullanılır.|
-|Bağlantısı kesik mod| Cihaz ve hizmet, isteğe bağlı olarak Azure Stack aracılığıyla yönetilebilir. <br> Uygulamaları çevrimdışı modda dağıtın, çalıştırın, yönetin. <br> Bağlantısız mod, çevrimdışı karşıya yükleme senaryolarını destekler.|
+|Bağlantısı kesik mod|  Cihaz ve hizmet, isteğe bağlı olarak Azure Stack hub 'ı aracılığıyla yönetilebilir. Uygulamaları çevrimdışı modda dağıtın, çalıştırın, yönetin. <br> Bağlantısız mod, çevrimdışı karşıya yükleme senaryolarını destekler.|
 |Desteklenen protokoller     |Veri alımı için standart SMB, NFS ve REST protokollerini destekler. <br> Desteklenen sürümler hakkında daha fazla bilgi için [Azure Stack Edge Mini R sistem gereksinimleri](azure-stack-edge-gpu-system-requirements.md)' ne gidin.|
 |Veri yenileme     | Yerel dosyaları buluttaki en son sürümle yenileme olanağı.|
 |Çift şifreleme    | Kendi kendine şifrelenen sürücü kullanımı, ilk şifreleme katmanını sağlar. VPN ikinci şifreleme katmanını sağlar. Verileri yerel olarak şifrelemek ve *https* üzerinden buluta veri aktarımını güvenli hale getirmek için BitLocker desteği.|

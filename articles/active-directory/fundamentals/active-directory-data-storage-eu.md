@@ -9,26 +9,30 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 874df2cc17e291cb6811ca07d01237f01b523860
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565047"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985919"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory Avrupa müşterileri için kimlik veri depolaması
 Kimlik verileri, Azure AD tarafından, Microsoft 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Kimlik verilerinizin nerede depolandığı hakkında bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde bulabilirsiniz.
 
 Avrupa 'da adres sağlayan müşteriler için Azure AD, Avrupa veri merkezlerindeki kimlik verilerinin çoğunu tutar. Bu belge, Azure AD Hizmetleri tarafından Avrupa dışında depolanan veriler hakkında bilgi sağlar.
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure Multi-Factor Authentication (MFA)
-    
-- Telefon görüşmeleri veya SMS kullanan tüm iki öğeli kimlik doğrulama ABD veri merkezlerinden kaynaklanıyorsa ve ayrıca küresel sağlayıcılar tarafından da yönlendirilir.
-- Microsoft Authenticator uygulamasını kullanarak anında iletme bildirimleri ABD veri merkezlerinden kaynaklarından geliyor. Buna ek olarak, cihaz satıcısına özgü hizmetler de oynatma halinde gelebilir ve bu hizmetler Avrupa dışında olabilir.
-- OATH kodları her zaman ABD'de doğrulanır. 
+## <a name="microsoft-azure-multi-factor-authentication"></a>Microsoft Azure Multi-Factor Authentication
+
+Bulut tabanlı Azure Multi-Factor Authentication için, kimlik doğrulaması kullanıcıya en yakın veri merkezinde tamamlanmıştır. Azure Multi-Factor Authentication için veri merkezleri Kuzey Amerika, Avrupa ve Asya Pasifik mevcuttur.
+
+* Telefon çağrılarını kullanan Multi-Factor Authentication ABD veri merkezlerinden kaynaklanarak küresel sağlayıcılar tarafından yönlendirilir.
+* SMS kullanarak çok faktörlü kimlik doğrulaması genel sağlayıcılar tarafından yönlendirilir.
+* AB veri merkezlerinden kaynaklanan Microsoft Authenticator uygulama anında iletme bildirimleri kullanan Multi-Factor Authentication istekleri, AB veri merkezlerinde işlenir.
+    * Apple Anında Iletme bildirimleri gibi cihaz satıcısına özgü hizmetler Avrupa dışında olabilir.
+* AB veri merkezlerinden kaynaklanan OATH kodlarını kullanan Multi-Factor Authentication istekleri, AB 'de onaylanır.
 
 Azure Multi-Factor Authentication Sunucusu (MFA sunucusu) ve bulut tabanlı Azure MFA tarafından hangi kullanıcı bilgilerinin toplandığı hakkında daha fazla bilgi için bkz. [azure Multi-Factor Authentication Kullanıcı verileri koleksiyonu](../authentication/howto-mfa-reporting-datacollection.md).
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c9da25a7d7521108195d3183f52b914e13105e8d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2bdfdd31e2cc9bc964abc040d0631c4760fca283
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082293"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984879"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory Azure SQL yönetilen örneğini SQL Server Integration Services (SSIS) ile kullanın
 
@@ -115,7 +115,7 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
         |---|---|---|---|---|---|
         | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 |SQL yönetilen örneği 'ne giden trafiğe izin verin. Bağlantı ilkesi **yeniden yönlendirme**yerine **Ara sunucu** olarak ayarlandıysa, yalnızca bağlantı noktası 1433 gerekir. |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | Sanal ağdaki Azure-SSIS IR düğümleri Azure depolama ve Azure Event Hubs gibi Azure hizmetlerine erişmek için bu bağlantı noktasını kullanır. |
-        | TCP | VirtualNetwork | * | Internet | 80 | Seçim Sanal ağdaki Azure-SSIS IR düğümleri Internet 'ten bir sertifika iptal listesi indirmek için bu bağlantı noktasını kullanır. Bu trafiği engellerseniz, IR 'yi başlatır ve sertifika kullanımı için sertifika iptal listesini denetleme yeteneğini kaybederseniz performansı indirgeyede karşılaşabilirsiniz. Hedefi belirli FQDN 'lere daraltmak istiyorsanız [Azure ExpressRoute veya Kullanıcı tanımlı yol (UDR) kullanma](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#route)bölümüne bakın.|
+        | TCP | VirtualNetwork | * | İnternet | 80 | Seçim Sanal ağdaki Azure-SSIS IR düğümleri Internet 'ten bir sertifika iptal listesi indirmek için bu bağlantı noktasını kullanır. Bu trafiği engellerseniz, IR 'yi başlatır ve sertifika kullanımı için sertifika iptal listesini denetleme yeteneğini kaybederseniz performansı indirgeyede karşılaşabilirsiniz. Hedefi belirli FQDN 'lere daraltmak istiyorsanız [Azure ExpressRoute veya Kullanıcı tanımlı yol (UDR) kullanma](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#route)bölümüne bakın.|
         | TCP | VirtualNetwork | * | Depolama | 445 | Seçim Bu kural yalnızca Azure dosyalarında depolanan SSIS paketini yürütmek istediğinizde gereklidir. |
         |||||||
 
@@ -141,7 +141,7 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
 
     Ortak uç nokta ana bilgisayar adı, <mi_name>. public. <dns_zone>. database.windows.net ve bağlantı için kullanılan bağlantı noktasının 3342 olduğu biçimde gelir.  
 
-    ![Katalog-ortak uç nokta](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
+    ![Ekran görüntüsü, oluşturma ve Katalog veritabanı sunucu uç noktası girildiğinde tümleştirme çalışma zamanı kurulumunu gösterir.](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
 
 1. Geçerli olduğunda Azure AD kimlik doğrulaması ' nı seçin.
 
@@ -157,7 +157,7 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
 
     Azure-SSIS IR bir sanal ağa nasıl katılalacağı hakkında daha fazla bilgi için bkz. [Azure-SSIS tümleştirme çalışma zamanını bir sanal ağa ekleme](join-azure-ssis-integration-runtime-virtual-network.md).
 
-    ![JOIN-Virtual-Network](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
+    ![Ekran görüntüsü, çalışma zamanının katılması için bir sanal ağ seçebileceğiniz tümleştirme çalışma zamanı kurulumu gelişmiş ayarlarını gösterir.](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
 
 Azure-SSIS IR oluşturma hakkında daha fazla bilgi için, bkz. [Azure Data Factory Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime).
 

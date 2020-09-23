@@ -11,16 +11,16 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 07/09/2020
-ms.openlocfilehash: 2182c9bc7588947ece5a309018359a8bcfa3ff41
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 355d96fe5a617effab89fbd038f7f1785215f88f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320213"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897687"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning 'de değişiklik gizliliğini kullanın (Önizleme)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Whitenoıse Python paketlerini kullanarak Azure Machine Learning modellere yönelik fark gizliliği en iyi yöntemlerini nasıl uygulayacağınızı öğrenin.
 
@@ -152,11 +152,11 @@ Birden fazla mekanizma, istatistikler ve yardımcı program işlevleriyle daha k
 | Count         | Gauss   | Cast       |
 | Histogram     | Geometrik  | Clamping   |
 | Ortalama          | Laplace    | Dijitalleştirerek   |
-| Quantiles     |            | Filtre     |
+| Dağılım Dilimleri     |            | Filtre     |
 | Toplam           |            | Dayanak |
 | Varyans/Kovaryans |      | Dönüşüm  |
 
-Daha fazla bilgi için bkz. [temel veri analizi Not defteri](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
+Daha fazla bilgi için bkz. [veri analizi Not defteri](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
 
 ## <a name="approximate-utility-of-differentially-private-releases"></a>Farklı özel sürümlerin yaklaşık bir yardımcı programı
 

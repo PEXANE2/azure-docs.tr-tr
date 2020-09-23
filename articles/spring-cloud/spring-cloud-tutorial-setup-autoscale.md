@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e4494762c4652d3db66940dddebb13c3ab03af3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87451047"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905380"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Öğretici: mikro hizmet uygulamaları için otomatik ölçeklendirmeyi ayarlama
+
+**Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
+
 Otomatik ölçeklendirme, mikro hizmet uygulamalarının talep değiştiğinde en iyi şekilde çalışmasına yardımcı olan Azure Spring Cloud 'ın yerleşik bir özelliğidir. Bu, sanal CPU 'ların, belleğin ve uygulama örneklerinin sayısını değiştirmeyi içerir. Bu makalede, Microsoft Azure portal veya Azure CLı kullanarak uygulamalarınız için otomatik ölçeklendirme ayarlarının nasıl ayarlanacağı açıklanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -27,7 +30,7 @@ Bu yordamları izlemek için şunlar gerekir:
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Azure portal otomatik ölçeklendirme sayfasına gidin
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Azure Spring Cloud **genel bakış** sayfasına gidin.
 3. Hizmetinizi içeren kaynak grubunu seçin.
 4. Sol gezinti bölmesindeki menüde **Ayarlar** ' ın altında **uygulamalar** sekmesini seçin.
@@ -68,4 +71,4 @@ Temel katmandadır ve bu limitlerden biri veya daha fazlası ile kısıtlanıyor
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Microsoft Azure otomatik ölçeklendirmeyi genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Azure CLı Izleme otomatik ölçeklendirme](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest)
+* [Azure CLı Izleme otomatik ölçeklendirme](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)

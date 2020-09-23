@@ -1,6 +1,6 @@
 ---
-title: SQL Data Sync kullanarak Azure SQL Edge 'den (Önizleme) veri eşitleme
-description: Azure SQL Data Sync kullanarak Azure SQL Edge 'den (Önizleme) veri eşitleme hakkında bilgi edinin
+title: SQL Data Sync kullanarak Azure SQL Edge 'ten veri eşitleme
+description: Azure SQL Data Sync kullanarak Azure SQL Edge 'ten veri eşitleme hakkında bilgi edinin
 keywords: SQL Edge, SQL Edge 'ten veri eşitleme, SQL Edge veri eşitleme
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6c0518e12a2c654b8f971db3a6733b0e64f80a1f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5830cedfdce54c4cd91eb60a5cd2145309e965b0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85254059"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904109"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Öğretici: SQL Data Sync kullanarak SQL Edge 'den Azure SQL veritabanı 'na veri eşitleme
 
@@ -22,7 +22,7 @@ Bu öğreticide, Azure SQL Edge 'ten Azure SQL veritabanı 'na artımlı olarak 
 
 SQL Edge, [SQL Server veritabanı altyapısının](/sql/sql-server/sql-server-technical-documentation/)en son sürümlerinde oluşturulduğundan, bir SQL Server örneği için geçerli olan herhangi bir veri eşitleme mekanizması, bir kenar cihazında çalışan bir SQL Edge örneğinden veya buradan veri eşitlemek için de kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, [Azure SQL Data Sync Için veri eşitleme aracısıyla](../azure-sql/database/sql-data-sync-agent-overview.md)yapılandırılmış bir Windows bilgisayarı gerektirir.
 

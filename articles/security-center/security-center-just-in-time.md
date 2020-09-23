@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 88f1924f69aed350b39f953cb7503a0dde9ca9ad
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 5b2446aa62b16dcf9773c367d87faac65d79fa0b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056323"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904866"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Tam zamanında erişimli yönetim bağlantı noktalarınızı güvenli hale getirin
 
@@ -33,15 +33,15 @@ Bu sayfa, güvenlik programınıza JıT ekleme hakkında öğretir. Şunları ö
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Genel kullanılabilirlik|
-|Fiyat|Standart katmanı|
+|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Desteklenen VM 'Ler:|![](./media/icons/yes-icon.png)Azure Resource Manager aracılığıyla dağıtılan Evet VM 'leri.<br>![](./media/icons/no-icon.png)Klasik dağıtım modelleriyle dağıtılan VM yok. [Bu dağıtım modelleri hakkında daha fazla bilgi edinin](../azure-resource-manager/management/deployment-models.md).<br>![Azure ](./media/icons/no-icon.png) [güvenlik duvarı Yöneticisi](https://docs.microsoft.com/azure/firewall-manager/overview) tarafından denetlenen Azure Güvenlik duvarları tarafından korunan VM yok|
 |Gerekli roller ve izinler:|**Reader** ve **securityreader** ROLLERININ her ikisi de JIT durumunu ve parametrelerini görüntüleyebilir.<br>JıT ile çalışan özel Roller oluşturmak için bkz. JıT 'i [yapılandırmak ve kullanmak Için hangi izinler gereklidir?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Bir VM 'ye JıT erişimi istemesi ve başka bir JıT işlemi gerçekleştirihtiyacı olmayan kullanıcılar için en az ayrıcalıklı bir rol oluşturmak üzere, güvenlik merkezi GitHub topluluk sayfalarından [set-Jleastprivilegedrole betiğini](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) kullanın.|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
-## <a name="enable-jit-vm-access"></a>JıT VM erişimini etkinleştir<a name="jit-configure"></a>
+## <a name="enable-jit-vm-access"></a>JıT VM erişimini etkinleştir <a name="jit-configure"></a>
 
 Güvenlik Merkezi veya programlama yoluyla bir veya daha fazla VM için kendi özel seçeneklerinizde JıT VM erişimini etkinleştirebilirsiniz. 
 
@@ -51,13 +51,13 @@ Bu seçeneklerin her biri aşağıdaki ayrı bir sekmede açıklanmıştır.
 
 ### <a name="azure-security-center"></a>[**Azure Güvenlik Merkezi**](#tab/jit-config-asc)
 
-### <a name="enable-jit-on-your-vms-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden sanal makinelerinizde JıT 'i etkinleştirin<a name="jit-asc"></a>
+### <a name="enable-jit-on-your-vms-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden sanal makinelerinizde JıT 'i etkinleştirin <a name="jit-asc"></a>
 
-![Azure Güvenlik Merkezi 'nde JıT VM erişimini yapılandırma](./media/security-center-just-in-time/jit-config-security-center.gif)
+:::image type="content" source="./media/security-center-just-in-time/jit-config-security-center.gif" alt-text="Azure Güvenlik Merkezi 'nde JıT VM erişimini yapılandırma":::
 
 Güvenlik Merkezi 'nden JıT VM erişimini etkinleştirebilir ve yapılandırabilirsiniz.
 
-1. Güvenlik Merkezi menüsünde, **tam ZAMANıNDA VM erişimi**' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **tam ZAMANıNDA VM erişimi**' ni seçin.
 
     **Tam ZAMANıNDA VM erişimi** sayfası, VM 'leriniz aşağıdaki sekmelerde gruplandırılarak açılır:
 
@@ -101,13 +101,13 @@ Güvenlik Merkezi 'nden JıT VM erişimini etkinleştirebilir ve yapılandırabi
 
 
 
-### <a name="edit-the-jit-configuration-on-a-jit-enabled-vm-using-security-center"></a>Güvenlik Merkezi 'ni kullanarak JıT yapılandırmasını JıT etkin bir VM üzerinde düzenleme<a name="jit-modify"></a>
+### <a name="edit-the-jit-configuration-on-a-jit-enabled-vm-using-security-center"></a>Güvenlik Merkezi 'ni kullanarak JıT yapılandırmasını JıT etkin bir VM üzerinde düzenleme <a name="jit-modify"></a>
 
 Bu VM için koruma için yeni bir bağlantı noktası ekleyip yapılandırarak veya zaten korumalı bir bağlantı noktasıyla ilgili diğer ayarları değiştirerek bir sanal makinenin tam zamanında yapılandırmasını değiştirebilirsiniz.
 
 Bir VM için mevcut JıT kurallarını düzenlemek için:
 
-1. Güvenlik Merkezi menüsünde, **tam ZAMANıNDA VM erişimi**' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri**' ni seçin.
 
 1. **Yapılandırılmış** sekmesinden, bağlantı noktası eklemek istediğiniz sanal makineye sağ tıklayın ve Düzenle ' yi seçin. 
 
@@ -241,7 +241,7 @@ Bu seçeneklerin her biri aşağıdaki ayrı bir sekmede açıklanmıştır.
 
 Bir sanal makinede JıT etkin olduğunda, bu sunucuya bağlanmak için erişim istemeniz gerekir. JıT 'i etkinleştirmenizin ne olursa olsun, desteklenen yollarla erişim isteğinde buluntırabilirsiniz.
 
-![Güvenlik Merkezi 'nden JıT erişimi isteme](./media/security-center-just-in-time/jit-request-security-center.gif)
+:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Güvenlik Merkezi 'nden JıT erişimi isteme":::
 
 1. **Tam ZAMANıNDA VM erişimi** sayfasında, **yapılandırılan** sekmesini seçin.
 
@@ -365,7 +365,7 @@ Günlük aramasını kullanarak VM etkinlikleri hakkında öngörüler elde edeb
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, tam zamanında VM erişimini ayarlama ve kullanma hakkında öğrenirsiniz. JıT 'in kullanılması gerekip gerekmediğini öğrenmek için, karşı savunma yaptığı tehditleri açıklayan kavram makalesini okuyun:
+Bu makalede, tam zamanında VM erişimi ayarlamayı ve kullanmayı öğrendiniz. JıT 'in kullanılması gerekip gerekmediğini öğrenmek için, karşı savunma yaptığı tehditleri açıklayan kavram makalesini okuyun:
 
 > [!div class="nextstepaction"]
 > [JıT açıklanmıştı](just-in-time-explained.md)

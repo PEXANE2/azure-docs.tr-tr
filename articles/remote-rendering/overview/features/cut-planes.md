@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d5de8374f58eaf8dc83f54f05557b0a125191c34
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 468d21abc861e905472d1d15405b1c8ba9e5be74
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613720"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904871"
 ---
 # <a name="cut-planes"></a>Düzlemleri kesme
 
@@ -19,16 +19,6 @@ ms.locfileid: "89613720"
 Aşağıdaki görüntüde etkisi gösterilmektedir. Sol, sağ taraftaki orijinal kafesi gösterdiği gibi, kafesin içinde görünür:
 
 ![Düzlemi kes](./media/cutplane-1.png)
-
-## <a name="limitations"></a>Sınırlamalar
-
-* Azure uzaktan Işleme, şu anda **en fazla sekiz etkin kesme düzlemleri**destekler. Daha fazla kesme bileşeni oluşturabilirsiniz, ancak aynı anda daha fazlasını etkinleştirmeyi denerseniz, etkinleştirme yok sayılacak. Hangi bileşenin sahneyi etkileyeceğini değiştirmek istiyorsanız, önce diğer düzlemleri devre dışı bırakın.
-* Her bir kesim, tüm uzaktan işlenen nesneleri etkiler. Şu anda belirli nesneleri veya kafes parçalarını hariç tutma yolu yoktur.
-* Düzlemleri kesin bir görsel özelliktir, bu, [uzamsal sorguların](spatial-queries.md)sonucunu etkilemez. Bir kes açık bir ağ içine ışın dönüştürmek istiyorsanız, ışın başlangıç noktasını kes düzlede olacak şekilde ayarlayabilirsiniz. Bu şekilde, ışın yalnızca görünür bölümler alabilir.
-
-## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
-
-Her etkin kesilen düzlem, işleme sırasında küçük bir maliyet doğurur. Gerekli olmadığında kesilen düzlemleri devre dışı bırakın veya silin.
 
 ## <a name="cutplanecomponent"></a>CutPlaneComponent
 
@@ -67,6 +57,40 @@ Aşağıdaki özellikler kesilmiş bir düzlem bileşeni üzerinde kullanıma su
 * `FadeColor` ve `FadeLength` :
 
   *FadeColor* Alpha değeri sıfır değilse, kesme düzlemine yakın olan pikseller FADECOLOR 'in RGB bölümüne doğru bir şekilde görünür. Alfa kanalının kuvveti, silinme rengine tamamen veya kısmen doğru bir şekilde mi solacağını belirler. *FadeLength* , bu belirme mesafesinin ne kadar olacağını tanımlar.
+
+* `ObjectFilterMask`: Kesme düzleminden etkilenen geometriyi belirleyen bir filtre bit maskesi. Ayrıntılı bilgi için bkz. sonraki paragraf.
+
+### <a name="selective-cut-planes"></a>Seçmeli kesme düzlemleri
+
+Yalnızca belirli geometriyi etkileyecek şekilde ayrı ayrı düzlemleri yapılandırmak mümkündür. Aşağıdaki resimde bu kurulumun uygulamada nasıl görünebileceği gösterilmektedir:
+
+![Seçmeli kesme düzlemleri](./media/selective-cut-planes.png)
+
+Filtreleme, kesilmiş düzlem tarafındaki bir bit maskesi ve geometri üzerinde ayarlanan ikinci bir bit maskesi arasında **mantıksal bit maskesi karşılaştırması** aracılığıyla işe yarar. Maskeler arasındaki mantıksal bir işlemin sonucu `AND` sıfır değilse, kesilen düzlem geometriyi etkiler.
+
+* Kesim düzeyi bileşenindeki bit maskesi, özelliği ile ayarlanır `ObjectFilterMask`
+* Geometri alt hiyerarşisindeki bit maskesi [HierarchicalStateOverrideComponent](override-hierarchical-state.md#features) aracılığıyla ayarlanır.
+
+Örnekler:
+
+| Düzlem filtresi maskesini kes | Geometri filtresi maskesi  | Mantıksal bir sonuç `AND` | Kesme düzlemi geometriyi etkiler mi?  |
+|--------------------|-------------------|-------------------|:----------------------------:|
+| (0000 0001) = = 1   | (0000 0001) = = 1  | (0000 0001) = = 1  | Yes |
+| (1111 0000) = = 240 | (0001 0001) = = 17 | (0001 0000) = = 16 | Yes |
+| (0000 0001) = = 1   | (0000 0010) = = 2  | (0000 0000) = = 0  | Hayır |
+| (0000 0011) = = 3   | (0000 1000) = = 8  | (0000 0000) = = 0  | Hayır |
+
+>[!TIP]
+> Kesme düzlemi 0 ' a ayarlandığında `ObjectFilterMask` , mantıksal değer hiçbir şekilde null olmadığı için hiçbir geometriyi etkilemez `AND` . İşleme sistemi bu düzlemleri ilk yerinde kabul etmeyecek, bu yüzden tek tek kesme düzlemleri devre dışı bırakmak için basit bir yöntemdir. Bu kesilen düzlemler da 8 etkin düzlemler sınırına göre sayılmaz.
+
+## <a name="limitations"></a>Sınırlamalar
+
+* Azure uzaktan Işleme **, en fazla sekiz etkin kesme düzlemleri**destekler. Daha fazla kesme bileşeni oluşturabilirsiniz, ancak aynı anda daha fazlasını etkinleştirmeyi denerseniz, etkinleştirme yok sayılacak. Hangi bileşenlerin sahneyi etkileyeceğini değiştirmek istiyorsanız, önce diğer düzlemleri devre dışı bırakın.
+* Kesin olmayan düzler tamamen görsel bir özelliktir, [uzamsal sorguların](spatial-queries.md)sonucunu etkilemez. Bir kes açık bir ağ içine ışın dönüştürmek istiyorsanız, ışın başlangıç noktasını kes düzlede olacak şekilde ayarlayabilirsiniz. Bu şekilde, ışın yalnızca görünür bölümler alabilir.
+
+## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
+
+Her etkin kesilen düzlem, işleme sırasında küçük bir maliyet doğurur. Gerekli olmadığında kesilen düzlemleri devre dışı bırakın veya silin.
 
 ## <a name="api-documentation"></a>API belgeleri
 

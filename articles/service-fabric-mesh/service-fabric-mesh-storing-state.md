@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01c54c8baa411e7d57698c626b098dc19e66be4e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246835"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984119"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric ile durum yönetimi
 
@@ -22,7 +22,7 @@ Service Fabric ağ ile, kolayca yeni bir uygulamayı dağıtabilir ve Azure 'da 
 
 Kapsayıcılar genellikle geçici diskleri kullanır. Ancak geçici diskler kısa ömürlü olduğundan, yeni bir geçici disk alır ve bir kapsayıcı kilitlenirse bilgileri kaybedersiniz. Ayrıca, diğer kapsayıcılarla geçici disklerde bilgi paylaşmak da zordur. Birimler, durumu kalıcı hale getirmek için kullanabileceğiniz kapsayıcı örneklerinizin içine bağlanmış olan dizinlerdir. Birimler, genel amaçlı dosya depolaması sağlar ve normal disk g/ç dosya API 'Lerini kullanarak dosyaları okumanızı/yazmanızı sağlar. Birim kaynağı, bir dizinin nasıl bağlanacağını ve hangi depolamanın kullanılacağını açıklar. Verileri depolamak için Azure dosya depolama veya Service Fabric birim diski seçebilirsiniz.
 
-![Birimler][image3]
+![Diyagramda, her ikisi de çoğaltılan bir yerel diskte Service Fabric güvenilir birimde ve ağ depolamada bulunan Azure dosyaları biriminde akan bir birimi akışa akan hizmet gösterilmektedir.][image3]
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric güvenilir birim
 

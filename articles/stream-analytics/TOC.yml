@@ -1,11 +1,11 @@
 - name: Azure Stream Analytics belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Stream Analytics nedir?
       href: stream-analytics-introduction.md
-    - name: Uçtan uca çözüm desenleri
-      href: stream-analytics-solution-patterns.md
+    - name: Stream Analytics Kümesi
+      href: cluster-overview.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -23,7 +23,11 @@
         - name: Visual Studio
           href: stream-analytics-quick-create-vs.md
         - name: Visual Studio Code
-          href: quick-create-vs-code.md
+          href: quick-create-visual-studio-code.md
+    - name: Küme oluşturma
+      items:
+        - name: Azure portal
+          href: create-cluster.md
 - name: Öğreticiler
   items:
     - name: 1 - İş oluşturma / yönetme
@@ -42,6 +46,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: Kavramlar
   items:
+    - name: Uçtan uca çözüm desenleri
+      href: stream-analytics-solution-patterns.md
     - name: Akış analiz teknolojisi seçme
       href: streaming-technologies.md
     - name: İş geliştirme aracı seçme
@@ -145,6 +151,14 @@
   items:
     - name: Yönetme
       items:
+        - name: Kümeler
+          items:
+            - name: Özel uç noktaları oluşturma ve silme
+              href: private-endpoints.md
+            - name: İşleri ekleme ve kaldırma
+              href: manage-jobs-cluster.md
+            - name: Küme ölçeklendirme boyutu
+              href: scale-cluster.md
         - name: İşleri otomatik ölçeklendirme
           href: stream-analytics-autoscale.md
         - name: Kimlik bilgilerini güncelleştirme
@@ -234,6 +248,14 @@
           href: stream-analytics-cicd-api.md
         - name: Azure Resource Manager ile dışarı aktarma ve dağıtma
           href: resource-manager-export.md
+    - name: Sürekli tümleştirme ve dağıtım
+      items:
+        - name: CI/CD’ye genel bakış
+          href: cicd-overview.md
+        - name: 'PowerShell ile oluşturma, test etme ve dağıtma'
+          href: cicd-tools.md
+        - name: Azure DevOps ile işlem hattı ayarlama
+          href: set-up-cicd-pipeline.md
     - name: Visual Studio
       items:
         - name: Araçları yükleme
@@ -260,8 +282,6 @@
           href: visual-studio-code-local-run-live-input.md
         - name: İş diyagramını kullanarak sorgularda hata ayıklama
           href: debug-locally-using-job-diagram-vs-code.md
-        - name: CI/CD işlem hattı ayarlama
-          href: setup-cicd-vs-code.md
         - name: İşleri keşfetme
           href: visual-studio-code-explore-jobs.md
         - name: JobConfig.json alanları

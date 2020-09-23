@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307208"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897567"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme 
 
@@ -78,13 +78,13 @@ Makine öğrenimi algoritmaları tetiklenebilir. Bu algoritmalar projenizde etki
 
 Özellikle etiketleme projesinde daha önce, makine öğrenimi modeli yalnızca küçük bir resim alt kümesini etiketlemek için yeterince doğru olabilir. Bu görüntülerin etiketlenmesi halinde etiketleme projesi, model eğitiminin bir sonraki turunda daha fazla veri toplamak için el ile etiketlemeye geri döner. Zamanla, model daha yüksek bir görüntü oranında daha emin olur ve daha sonra projede daha sonra daha fazla etiket görevi elde eder.
 
-## <a name="tag-images-for-multi-class-classification"></a>Birden çok sınıf sınıflandırması için resimleri etiketleme
+## <a name="tag-images-for-multi-class-classification"></a>Çok sınıflı sınıflandırma için resimleri etiketleme
 
 Projeniz "Image Classification Multi-Class" türünde ise, tüm görüntüye tek bir etiket atarsınız. Yönergeleri istediğiniz zaman gözden geçirmek için, **yönergeler** sayfasına gidin ve **ayrıntılı yönergeleri görüntüle**' yi seçin.
 
 Bir resme etiket atadıktan sonra bir hata yaptık, bu hatayı çözebilirsiniz. Etiketi temizlemek için görüntünün altında görüntülenen etikette "**X**" işaretini seçin. Veya resmi seçip başka bir sınıf seçin. Yeni seçilen değer, daha önce uygulanan etiketin yerine geçecek.
 
-## <a name="tag-images-for-multi-label-classification"></a>Çok etiketli sınıflandırmanın resimlerini etiketleme
+## <a name="tag-images-for-multi-label-classification"></a>Çok etiketli sınıflandırma için resimleri etiketleme
 
 "Görüntü sınıflandırması çoklu etiketi" türünde bir proje üzerinde çalışıyorsanız, bir görüntüye bir *veya daha fazla* etiket uygularsınız. Projeye özgü yönleri görmek için **yönergeler** ' i seçin ve **ayrıntılı yönergeleri görüntüleyin**.
 
@@ -103,7 +103,7 @@ Bir hata düzeltmek için "**X**" düğmesine tıklayarak tek bir etiketi temizl
 Azure yalnızca, her görüntüye en az bir etiket uyguladıktan sonra **Gönder** düğmesini etkinleştirir. Çalışmanızı kaydetmek için **Gönder** ' i seçin.
 
 
-## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Resimleri etiketleme ve nesne algılaması için sınırlayıcı kutuları belirtme
+## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Nesne silme işlemi için resimleri etiketleme ve sınırlayıcı kutuları belirtme
 
 Projeniz "nesne kimliği (sınırlayıcı kutular)" türündedir, görüntüde bir veya daha fazla sınırlayıcı kutu belirtip her kutuya bir etiket uygularsınız. Görüntülerde, her biri tek etiketli birden çok sınırlayıcı kutusu olabilir. Projenizde birden fazla sınırlayıcı kutunun kullanıldığını öğrenmek için **ayrıntılı yönergeleri görüntüle** ' i kullanın.
 
@@ -111,7 +111,7 @@ Projeniz "nesne kimliği (sınırlayıcı kutular)" türündedir, görüntüde b
 1. **Dikdörtgen kutu** aracı ![ dikdörtgen kutusu aracını seçin ](./media/how-to-label-images/rectangular-box-tool.png) veya "R" seçeneğini belirleyin.
 3. Kaba bir sınırlayıcı kutu oluşturmak için, Hedefinizdeki çapraz doğrultuda tıklayın ve sürükleyin. Sınırlayıcı kutuyu ayarlamak için kenarları veya köşeleri sürükleyin.
 
-![Bir ekran görüntüsü temel sınırlayıcı kutusu oluşturmayı gösterir.](./media/how-to-label-images/bounding-box-sequence.png)
+![Sınırlama kutusu oluşturma](./media/how-to-label-images/bounding-box-sequence.png)
 
 Bir sınırlayıcı kutuyu silmek için, oluşturulduktan sonra sınırlayıcı kutunun yanında görünen X şeklindeki hedefe tıklayın.
 

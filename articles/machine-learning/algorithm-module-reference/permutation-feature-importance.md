@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: e4511cf4393172e7d2b1ab8a985c76d8f98d4015
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecf739ea838ad3742612eab7a1b42ac8c8ac455a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456072"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905277"
 ---
 # <a name="permutation-feature-importance"></a>Permütasyon Özelliği Önem Derecesi
 
-Bu makalede, veri kümeniz için bir özellik önem puanlarının bir kümesini hesaplamak üzere Azure Machine Learning Tasarımcısı 'nda (Önizleme) permütasyon özelliği önem derecesi 'nin nasıl kullanılacağı açıklanır. Bu puanları, bir modelde kullanılacak en iyi özellikleri belirlemenize yardımcı olması için kullanabilirsiniz.
+Bu makalede, veri kümeniz için bir özellik önem puanlarını hesaplamak üzere Azure Machine Learning tasarımcısında permütasyon özelliği önem derecesi ' nin nasıl kullanılacağı açıklanır. Bu puanları, bir modelde kullanılacak en iyi özellikleri belirlemenize yardımcı olması için kullanabilirsiniz.
 
 Bu modülde, özellik değerleri tek seferde bir sütun olacak şekilde rastgele karıştırılır. Modelin performansı, ve sonrasında ölçülür. Performansı ölçmek için Standart ölçülerden birini seçebilirsiniz.
 

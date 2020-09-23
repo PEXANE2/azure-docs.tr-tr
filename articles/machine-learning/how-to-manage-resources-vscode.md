@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 09/03/2020
-ms.openlocfilehash: 06fc929e0149c48aa75aa87a12e3747ef1df1bf2
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440127"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897396"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code Uzantısı ile Azure Machine Learning kaynaklarını yönetme (Önizleme)
 
@@ -24,7 +24,7 @@ Azure Machine Learning kaynaklarını VS Code uzantısıyla yönetmeyi öğrenin
 
 ![Azure Machine Learning VS Code uzantısı](media/how-to-manage-resources-vscode/azure-machine-learning-vscode-extension.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Bir hesabınız yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)denemek için kaydolun.
 - Visual Studio Code. Bunu yapmazsanız, [yükleyebilirsiniz](https://code.visualstudio.com/docs/setup/setup-overview).
@@ -44,7 +44,6 @@ Daha fazla bilgi için bkz. [çalışma alanları](concept-workspace.md).
     1. Azure aboneliğinizi seçme
     1. Çalışma alanını sağlamak için yeni bir kaynak grubu seçin veya oluşturun
     1. Çalışma alanının sağlanacağı konumu seçin.
-    1. *Temel* ve *Kurumsal* sürüm arasında seçim yapın. Farklı [Azure Machine Learning sürümleri](concept-editions.md)hakkında daha fazla bilgi edinin.
 
 Çalışma alanı oluşturmak için alternatif yöntemler şunlardır:
 

@@ -4,12 +4,12 @@ description: Application Insights’ta web testleri ayarlayın. Web sitesi kulla
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310285"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986039"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Herhangi bir Web sitesinin kullanılabilirliğini izleme
 
@@ -78,7 +78,7 @@ Kullanılabilirlik testi sonuçları hem çizgi hem de dağılım çizim görün
 
 Birkaç dakika sonra, test sonuçlarınızı görmek için **Yenile** ' ye tıklayın.
 
-![Satır görünümü](./media/monitor-web-app-availability/availability-refresh-002.png)
+![Ekran görüntüsü, Yenile düğmesinin vurgulandığı kullanılabilirlik sayfasını gösterir.](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 Dağınık terçiz görünümü, tanılama testi adım ayrıntıları olan test sonuçlarının örneklerini gösterir. Test altyapısı, hata içeren testler için tanılama ayrıntılarını depolar. Başarılı testlerde, yürütmelerin bir alt kümesi için tanılama ayrıntıları depolanır. Test, test adı ve konumu görmek için yeşil/kırmızı noktalardan herhangi birinin üzerine gelin.
 

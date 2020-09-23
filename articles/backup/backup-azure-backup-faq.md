@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 16ee9fa94f8c6d5ee97c35833b4cee908750bc0a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 26d833dfea214c5f29b77c2ac34a5f8863c7fbc0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017745"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986414"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -45,7 +45,7 @@ Evet. Kurtarma Hizmetleri kasasını taşımak için bu [makaleye](backup-azure-
 
 Hayır. Kasada depolanan yedek veriler farklı bir kasaya taşınamaz.
 
-### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>Yedekleme sonrasında GRS'den LRS'ye geçebilir miyim?
+### <a name="can-i-change-the-storage-redundancy-setting-after-a-backup"></a>Yedeklemeden sonra depolama artıklığı ayarını değiştirebilir miyim?
 
 Depolama çoğaltma türü varsayılan olarak coğrafi olarak yedekli depolama (GRS) olarak ayarlanır. Yedeklemeyi yapılandırdıktan sonra, değiştirme seçeneği devre dışı bırakılır ve değiştirilemez.
 
@@ -108,7 +108,7 @@ Boyut sınırları şöyledir:
 İşletim sistemi/makine | Veri kaynağının boyut sınırı
 --- | ---
 Windows 8 veya üzeri | 54.400 GB
-Windows 7 |1700 GB
+Windows 7 |1700 GB
 Windows Server 2012 veya üzeri | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
 Azure VM | Bkz. [Azure VM yedeklemesi için destek matrisi](./backup-support-matrix-iaas.md#vm-storage-support)

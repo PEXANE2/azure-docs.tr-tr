@@ -10,20 +10,17 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: a244372168cb34f190bd584634bf108f2b5215a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092309"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896681"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile talep tahmini
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 Bu öğreticide, bir bisiklet paylaşma hizmeti için Kiralama taleplerini tahmin etmek üzere bir zaman serisi tahmin modeli oluşturmak için Azure Machine Learning Studio 'da otomatik makine öğrenimi veya otomatik ML 'yi kullanırsınız.
-
->[!IMPORTANT]
-> Azure Machine Learning Studio 'daki otomatik ML deneyimi önizlemededir. Bazı özellikler desteklenmeyebilir veya sınırlı özelliklere sahip olabilir.
 
 Bir sınıflandırma modeli örneği için bkz. [öğretici: Azure Machine Learning OTOMATIK ml ile sınıflandırma modeli oluşturma](tutorial-first-experiment-automated-ml.md).
 
@@ -38,8 +35,8 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Enterprise Edition Azure Machine Learning çalışma alanı. Bir çalışma alanınız yoksa, [Enterprise Edition çalışma alanı oluşturun](how-to-manage-workspace.md). 
-    * Azure Machine Learning Studio 'da otomatik makine öğrenimi yalnızca Enterprise Edition çalışma alanları için kullanılabilir. 
+* Azure Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md). 
+
 * [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) veri dosyasını indirin
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da çalışmaya başlama
@@ -88,7 +85,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
 
     1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. 
     
-        1. Bu örnekte, **sıradan** ve **kayıtlı** sütunları yok saymayı seçin. Bu sütunlar, **sayisi** sütununun bir dökümününüdir, bu nedenle bunları dahil ettik.
+        1. Bu örnekte, **sıradan** ve **kayıtlı** sütunları yok saymayı seçin. Bu sütunlar,  **sayisi** sütununun bir dökümününüdir, bu nedenle bunları dahil ettik.
 
         1. Ayrıca, bu örnek için, **Özellikler** ve **tür**için varsayılan değerleri bırakın. 
         
@@ -107,7 +104,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
 Verilerinizi yükleyip yapılandırdıktan sonra, uzaktan işlem hedefini ayarlayın ve verilerinizde tahmin etmek istediğiniz sütunu seçin.
 
 1. **Yapılandırma çalıştırması** formunu aşağıdaki gibi doldurun:
-    1. Deneme adı girin:`automl-bikeshare`
+    1. Deneme adı girin: `automl-bikeshare`
 
     1. Hedef sütun olarak **sayisi** , ne tahmin etmek istediğinizi seçin. Bu sütun, toplam Bisiklet paylaşma sayısını gösterir.
 
@@ -152,11 +149,11 @@ Machine Learning görev türünü ve yapılandırma ayarlarını belirterek otom
     Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 5
     Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 6
     
-    **Kaydet**'i seçin.
+    **Kaydet**’i seçin.
 
 ## <a name="run-experiment"></a>Deneme Çalıştır
 
-Denemenizi çalıştırmak için **son**' u seçin. Çalıştırma **ayrıntıları** ekranı, çalışma numarasının yanında bulunan **çalıştırma durumuyla** birlikte açılır. Deneme ilerledikçe bu durum güncellenir.
+Denemenizi çalıştırmak için **son**' u seçin. Çalıştırma **ayrıntıları**  ekranı, çalışma numarasının yanında bulunan **çalıştırma durumuyla** birlikte açılır. Deneme ilerledikçe bu durum güncellenir.
 
 >[!IMPORTANT]
 > Hazırlık, deneme çalıştırmasının hazırlanmasına **10-15 dakika** sürer.
@@ -196,7 +193,7 @@ Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yakl
     Dağıtım adı| bıkespaylaş-dağıt
     Dağıtım açıklaması| Bisiklet payı talep dağıtımı
     İşlem türü | Azure Işlem örneği (acı) seçin
-    Kimlik doğrulamasını etkinleştir| Dıı. 
+    Kimlik doğrulamayı etkinleştir| Dıı. 
     Özel dağıtım varlıklarını kullanma| Dıı. Devre dışı bırakmak varsayılan sürücü dosyası (Puanlama betiği) ve ortam dosyasının yeniden oluşturulmasına izin verir. 
     
     Bu örnekte, *Gelişmiş* menüsünde belirtilen Varsayılanları kullanırız. 

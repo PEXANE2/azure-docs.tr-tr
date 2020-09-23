@@ -1,7 +1,7 @@
 ---
-title: Verileri tasarımcıya aktarma (Önizleme)
+title: Verileri tasarımcıya aktarma
 titleSuffix: Azure Machine Learning
-description: Çeşitli veri kaynaklarından verileri Azure Machine Learning tasarımcı 'ya (Önizleme) aktarmayı öğrenin.
+description: Çeşitli veri kaynaklarından verileri Azure Machine Learning tasarımcısına aktarmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: a7d0a1604b3bea1f11532639dbbc5102f4a243a6
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006993"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985600"
 ---
-# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısına veri aktarma (Önizleme)
+# <a name="import-data-into-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısına veri aktarma
 
 Bu makalede, özel çözümler oluşturmak için kendi verilerinizi tasarımcıda nasıl içeri aktaracağınızı öğreneceksiniz. Verileri tasarımcıya içeri aktarabilmeniz için kullanabileceğiniz iki yol vardır: 
 
@@ -32,7 +32,7 @@ Verileri tasarımcıya aktarmak için veri [kümelerini](concept-data.md#dataset
 
 ### <a name="register-a-dataset"></a>Veri kümesini kaydetme
 
-Var olan veri kümelerini [SDK ile program aracılığıyla](how-to-create-register-datasets.md#datasets-sdk) veya [Azure Machine Learning Studio 'da görsel olarak](how-to-create-register-datasets.md#datasets-ui)kaydedebilirsiniz.
+Var olan veri kümelerini [SDK ile program aracılığıyla](how-to-create-register-datasets.md#datasets-sdk) veya [Azure Machine Learning Studio 'da görsel olarak](how-to-connect-data-ui.md#create-datasets)kaydedebilirsiniz.
 
 Ayrıca, herhangi bir tasarımcı modülünün çıkışını bir veri kümesi olarak kaydedebilirsiniz.
 
@@ -68,7 +68,7 @@ Verileri içeri aktarmak için veri kümelerini kullanmanızı öneririz, ayrıc
 Veri alma modülünü kullanma hakkında ayrıntılı bilgi için bkz. [veri başvurusunu Içeri aktarma sayfası](algorithm-module-reference/import-data.md).
 
 > [!NOTE]
-> Veri kümenizin çok fazla sütunu varsa, aşağıdaki hatayla karşılaşabilirsiniz: "boyut sınırlaması nedeniyle doğrulama başarısız oldu". Bunu önlemek için [veri kümesini veri kümeleri arabirimine kaydedin](how-to-create-register-datasets.md#datasets-ui).
+> Veri kümenizin çok fazla sütunu varsa, aşağıdaki hatayla karşılaşabilirsiniz: "boyut sınırlaması nedeniyle doğrulama başarısız oldu". Bunu önlemek için [veri kümesini veri kümeleri arabirimine kaydedin](how-to-connect-data-ui.md#create-datasets).
 
 ## <a name="supported-sources"></a>Desteklenen kaynaklar
 
@@ -107,4 +107,4 @@ Tasarlayıcıdaki modüller, işlem hedefinin boyutuyla sınırlıdır. Daha bü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Öğreticiyle tasarımcı 'nın temellerini öğrenin [: tasarımcı ile otomobil fiyatını tahmin](tutorial-designer-automobile-price-train-score.md)edin.
+Bu öğreticiyle tasarımcı temellerini öğrenin [: tasarımcı ile otomobil fiyatını tahmin](tutorial-designer-automobile-price-train-score.md)edin.
