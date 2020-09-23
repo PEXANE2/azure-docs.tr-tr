@@ -11,21 +11,21 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5c7568b0914b5e60d1a47971424f1f04f41745da
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e984c0c43dcc47c3e11a36f3d5c32bf2ddb9973a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646950"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902328"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Azure Machine Learning eğitim çalışmalarından kimlik doğrulama kimlik bilgileri gizli dizilerini kullanın
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu makalede, eğitimin nasıl gizli bir şekilde çalıştığını öğrenirsiniz. Kullanıcı adınız ve parolanız gibi kimlik doğrulama bilgileri gizli dizilerlerdir. Örneğin, eğitim verilerini sorgulamak için bir dış veritabanına bağlanıyorsanız, Kullanıcı adınızı ve parolanızı uzak çalışma bağlamına geçirmeniz gerekir. Bu tür değerleri şifresiz metin olarak kodlamak, gizli dizi sergilediğinden güvenli değildir. 
 
 Bunun yerine, Azure Machine Learning çalışma alanınızın [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)adlı ilişkili bir kaynağı vardır. Gizli dizileri Azure Machine Learning Python SDK 'sında bir dizi API aracılığıyla güvenli bir şekilde geçirmek için bu Key Vault kullanın.
 
-Gizli dizileri kullanmak için temel akış:
+Gizli dizileri kullanmak için standart akış:
  1. Yerel bilgisayarda Azure 'da oturum açın ve çalışma alanınıza bağlanın.
  2. Yerel bilgisayarda Key Vault çalışma alanında bir gizli dizi belirleyin.
  3. Uzaktan çalıştırma gönder.

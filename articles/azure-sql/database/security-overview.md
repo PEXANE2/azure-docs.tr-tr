@@ -10,21 +10,21 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
-ms.reviewer: vanto, carlrab, emlisa
-ms.date: 05/14/2019
-ms.openlocfilehash: a9e563f32f2b8f38af7ab86be82cd18ef1c2309c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.reviewer: vanto, emlisa
+ms.date: 09/21/2020
+ms.openlocfilehash: f3ae5e1ef4dc2968724daeafb32f26cf445b0d2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088417"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885297"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu makalede, [Azure SQL veritabanı](sql-database-paas-overview.md) ve [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)kullanılarak bir uygulamanın veri katmanını güvenli hale getirmenin temelleri özetlenmektedir. Açıklanan güvenlik stratejisi aşağıdaki resimde gösterildiği gibi katmanlı derinlemesine savunma yaklaşımını takip eder ve dışarıdan şu şekilde gider:
 
-![sql-security-layer.png](./media/security-overview/sql-security-layer.png)
+![SQL güvenlik layer.png](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Ağ güvenliği
 
@@ -77,7 +77,7 @@ En iyi uygulama olarak, gerektiğinde özel roller oluşturun. Kullanıcıları,
 
 Satır düzeyi güvenlik, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre denetlemesini sağlar (örneğin, Grup üyeliği veya yürütme bağlamı). Satır düzeyi güvenlik, özel etiket tabanlı güvenlik kavramlarını uygulamak için de kullanılabilir. Daha fazla bilgi için bkz. [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security).
 
-![azure-database-rls.png](./media/security-overview/azure-database-rls.png)
+![Azure veritabanı rls.png](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Tehdit koruması
 
@@ -91,7 +91,7 @@ SQL veritabanı ve SQL yönetilen örnek denetimi, veritabanı etkinliklerini m�
 
 Gelişmiş tehdit koruması, olağan dışı davranışları ve veritabanlarına erişme ya da yararlanmaya yönelik olabilecek olası girişimleri algılamak için günlüklerinizi analiz etmeyi sağlar. SQL ekleme, olası veri girişi ve deneme yanılma saldırıları gibi şüpheli etkinlikler için uyarılar oluşturulur ve erişim desenlerine yönelik olarak ayrıcalık yürüyen istekleri ve ihlal edilen kimlik bilgileri kullanımını yakalayın. Uyarılar, şüpheli etkinliklerin ayrıntılarının sağlandığı ve tehdidi hafifletmek için eylemlerle birlikte daha fazla araştırma önerileri sunan  [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)' nden görüntülenir. Gelişmiş tehdit koruması, sunucu başına ek bir ücret karşılığında etkinleştirilebilir. Daha fazla bilgi için bkz. [SQL veritabanı Gelişmiş tehdit koruması ile çalışmaya başlama](threat-detection-configure.md).
 
-![azure-database-td.jpg](./media/security-overview/azure-database-td.jpg)
+![Azure veritabanı td.jpg](./media/security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>Bilgi koruması ve şifreleme
 
@@ -122,13 +122,13 @@ Azure 'da, yeni oluşturulan tüm veritabanları varsayılan olarak şifrelenir 
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (kullanımda olan şifreleme)
 
-![azure-database-ae.png](./media/security-overview/azure-database-ae.png)
+![Azure veritabanı ae.png](./media/security-overview/azure-database-ae.png)
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) , belirli veritabanı sütunlarında depolanan hassas verileri erişimden korumak için tasarlanmış bir özelliktir (örneğin, kredi kartı numaraları, ulusal kimlik numaraları veya tek _yapmanız gereken_ veriler). Bu, veritabanı yöneticilerini veya yönetim görevlerini gerçekleştirmek üzere veritabanına erişim yetkisi olan diğer ayrıcalıklı kullanıcıları içerir, ancak şifrelenmiş sütunlardaki belirli verilere erişmesi gereken iş gerektirmez. Veriler her zaman şifrelenir. Bu, şifrelenmiş verilerin yalnızca şifreleme anahtarına erişimi olan istemci uygulamaları tarafından işlenmek üzere şifresinin çözülmesi anlamına gelir. Şifreleme anahtarı hiçbir şekilde SQL veritabanı veya SQL yönetilen örneği için gösterilmez ve [Windows sertifika deposunda](always-encrypted-certificate-store-configure.md) veya [Azure Key Vault](always-encrypted-azure-key-vault-configure.md)depolanabilir.
 
 ### <a name="dynamic-data-masking"></a>Dinamik veri maskeleme
 
-![azure-database-ddm.png](./media/security-overview/azure-database-ddm.png)
+![Azure veritabanı ddm.png](./media/security-overview/azure-database-ddm.png)
 
 Dinamik veri maskeleme, hassas verileri ayrıcalıksız kullanıcılarla maskeleyerek kısıtlar. Dinamik veri maskeleme, Azure SQL veritabanı ve SQL yönetilen örneği 'nde potansiyel olarak hassas verileri otomatik olarak bulur ve uygulama katmanında en az etkiyle bu alanları maskelemek için eylem yapılabilir öneriler sağlar. Bu özellik, hassas verileri belirlenen veritabanı alanlarına yapılan sorgunun sonuç kümesinde karartır ancak veritabanındaki veriler değişmez. Daha fazla bilgi için bkz. [SQL veritabanı ve SQL yönetilen örnek dinamik veri maskeleme 'yi kullanmaya başlama](dynamic-data-masking-overview.md).
 
@@ -136,7 +136,7 @@ Dinamik veri maskeleme, hassas verileri ayrıcalıksız kullanıcılarla maskele
 
 ### <a name="vulnerability-assessment"></a>Güvenlik açığı değerlendirmesi
 
-[Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) , genel veritabanı güvenliğini önceden iyileştirmek amacıyla hedefe yönelik olası veritabanı güvenlik açıklarını keşfettirecek, izleyebilen ve düzeltmeye yardımcı olabilecek bir hizmeti kolayca yapılandırabilir. Güvenlik açığı değerlendirmesi (VA), gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan gelişmiş veri güvenliği sunumunun bir parçasıdır. Güvenlik açığı değerlendirmesi, merkezi SQL gelişmiş veri güvenlik portalı aracılığıyla erişilebilir ve yönetilebilir.
+[Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) , genel veritabanı güvenliğini önceden iyileştirmek amacıyla hedefe yönelik olası veritabanı güvenlik açıklarını keşfettirecek, izleyebilen ve düzeltmeye yardımcı olabilecek bir hizmeti kolayca yapılandırabilir. Güvenlik açığı değerlendirmesi (VA), gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan SQL teklifi için Azure Defender 'ın bir parçasıdır. Güvenlik açığı değerlendirmesi, SQL Portal için merkezi Azure Defender aracılığıyla erişilebilir ve yönetilebilir.
 
 ### <a name="data-discovery-and-classification"></a>Veri bulma ve sınıflandırma
 

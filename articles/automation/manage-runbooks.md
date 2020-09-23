@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 62b60afb7dc4adb70a0963984ee7848ab056e823
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447822"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987586"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda runbook 'ları yönetme
 
@@ -268,7 +268,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
 
-## <a name="schedule-a-runbook-in-the-azure-portal"></a>Azure portal runbook 'u zamanlama
+## <a name="schedule-a-runbook-in-the-azure-portal"></a>Azure portalda runbook zamanlama
 
 Runbook 'u yayımlandığında, işlem için zamanlayabilirsiniz:
 
@@ -293,7 +293,7 @@ Azure Automation 'da iş işleme ayrıntıları [işler](automation-runbook-exec
 
 Kutucuğa tıkladığınızda, yürütülen tüm işlerin özetlenen listesini içeren Işler sayfası sunulmaktadır. Bu sayfada her iş için durum, Runbook adı, başlangıç saati ve tamamlanma zamanı gösterilir.
 
-![Otomasyon hesabı Işleri sayfası](./media/manage-runbooks/automation-account-jobs-status-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-account-jobs-status-blade.png" alt-text="Işler sayfasının ekran görüntüsü.":::
 
 İş listesini **filtre işleri**' ni seçerek filtreleyebilirsiniz. Belirli bir runbook 'u, iş durumunu veya açılan listeden bir seçimi filtreleyin ve arama için zaman aralığını belirtin.
 
@@ -301,7 +301,7 @@ Kutucuğa tıkladığınızda, yürütülen tüm işlerin özetlenen listesini i
 
 Alternatif olarak, belirli bir runbook için iş Özeti ayrıntılarını Otomasyon hesabınızdaki runbook 'Lar sayfasından seçip **işler**' i seçerek görüntüleyebilirsiniz. Bu eylem Işler sayfasını gösterir. Buradan, ayrıntılarını ve çıktısını görüntülemek için bir iş kaydına tıklayabilirsiniz.
 
-![Otomasyon hesabı Işleri sayfası](./media/manage-runbooks/automation-runbook-job-summary-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Hatalar düğmesinin vurgulandığı Işler sayfasının ekran görüntüsü.":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>PowerShell kullanarak iş durumlarını alma
 

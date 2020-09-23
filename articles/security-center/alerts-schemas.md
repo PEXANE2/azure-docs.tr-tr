@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85126221"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901338"
 ---
 # <a name="security-alerts-schemas"></a>Güvenlik uyarıları şemaları
 
-Güvenlik Merkezi, kaynakları için tehditler algıladığında, Azure Güvenlik Merkezi 'nin standart katmanının kullanıcıları güvenlik uyarıları alır.
+Aboneliğiniz Azure Defender 'ı etkinleştirmişse Güvenlik Merkezi, kaynakları için tehditler algıladığında güvenlik uyarıları alırsınız.
 
 Bu güvenlik uyarılarını Azure Güvenlik Merkezi 'nin **tehdit koruması** sayfalarında veya gibi dış araçlarla görüntüleyebilirsiniz:
 
@@ -143,19 +143,19 @@ Uyarı etkinleştir olayını gösterildiği gibi arayarak etkinlik günlüğün
 |Alan|Açıklama|
 |----|----|
 |**lardan**|Sabit, "Işlem"|
-|**correlationId**|Azure Güvenlik Merkezi uyarı KIMLIĞI|
+|**ID**|Azure Güvenlik Merkezi uyarı KIMLIĞI|
 |**açıklaması**|Uyarının açıklaması|
 |**Eventdataıd**|Bkz. CorrelationId|
 |**eventName**|Value ve localizedValue alt alanları, uyarı görünen adını içerir|
 |**alan**|Value ve localizedValue alt alanları sabittir-"güvenlik"|
 |**eventTimestamp**|Uyarının oluşturulduğu zamana ilişkin UTC zaman damgası|
-|**numarasını**|Tam olarak nitelenmiş uyarı KIMLIĞI|
+|**id**|Tam olarak nitelenmiş uyarı KIMLIĞI|
 |**düzey**|Sabit, "bilgilendirme"|
 |**operationId**|Bkz. CorrelationId|
 |**operationName**|Değer alanı sabittir-"Microsoft. Security/Locations/Alerts/Activate/Action" ve yerelleştirilmiş değer "uyarıyı etkinleştir" (büyük olasılıkla Kullanıcı yerel ayarı için yerelleştirilmiş olabilir) olacaktır|
 |**resourceGroupName**|Kaynak grubu adını dahil eder|
 |**resourceProviderName**|Value ve localizedValue alt alanları sabittir-"Microsoft. Security"|
-|**resourceType**|Value ve localizedValue alt alanları sabittir-"Microsoft. Security/Locations/Alerts"|
+|**Kaynak**|Value ve localizedValue alt alanları sabittir-"Microsoft. Security/Locations/Alerts"|
 |**RESOURCEID**|Tam Azure Kaynak KIMLIĞI|
 |**durumlarına**|Value ve localizedValue alt alanları sabittir-"etkin"|
 |**Dosya**|Value ve localizedValue alt alanları boş|

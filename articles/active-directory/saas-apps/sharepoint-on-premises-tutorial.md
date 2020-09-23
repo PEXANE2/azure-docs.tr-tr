@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2020
-ms.author: miguego
-ms.openlocfilehash: 996668751ee93d14b18e399035fd345f32c58fbe
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/10/2020
+ms.author: jeedes
+ms.openlocfilehash: a3a5834cd63351b9bf61dc97c8d6e14d430b6284
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552182"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979712"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Öğretici: SharePoint şirket içi ile çoklu oturum açma tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,7 @@ Bu öğreticide, SharePoint şirket içi Azure Active Directory (Azure AD) ile t
 * Kullanıcılarınızın Azure AD hesaplarıyla şirket içi SharePoint 'te otomatik olarak oturum açmalarına olanak sağlayın.
 * Azure portal hesaplarınızı yönetin.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şirket içi SharePoint ile Azure AD tümleştirmesini yapılandırmak için şu öğelere ihtiyacınız vardır:
 
@@ -45,7 +43,7 @@ SharePoint 'in şirket içi tümleştirmesini Azure AD ile yapılandırmak için
 
 Galeriden SharePoint şirket içi eklemek için:
 
-1. [Azure Portal](https://portal.azure.com)en soldaki bölmede **Azure Active Directory**' i seçin.
+1. Azure portal en soldaki bölmede **Azure Active Directory**' i seçin.
 
    > [!NOTE]
    > Öğe kullanılamıyorsa, en sol bölmenin üst kısmındaki **tüm hizmetler** bağlantısı aracılığıyla da açabilirsiniz. Aşağıdaki genel bakışta, **Azure Active Directory** bağlantısı **kimlik** bölümünde bulunur. Filtre kutusunu kullanarak da arama yapabilirsiniz.
@@ -72,7 +70,7 @@ Bu bölümde, Azure AD SSO 'yu şirket içi SharePoint ile yapılandırırsını
 
 Azure AD SSO 'yu şirket içi SharePoint ile yapılandırmak ve test etmek için şu yapı taşlarını doldurun:
 
-- Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD çoklu oturum açmayı yapılandırın](#configure-azure-ad-single-sign-on) .
+- Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso) .
 - Uygulama tarafında SSO ayarlarını yapılandırmak için [SharePoint şirket içi 'ı yapılandırın](#configure-sharepoint-on-premises) .
 - SSO için Azure AD 'de yeni bir kullanıcı oluşturmak üzere [Azure Portal Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user-in-the-azure-portal) .
 - SSO için Azure AD 'de yeni bir güvenlik grubu oluşturmak üzere [Azure Portal Azure AD güvenlik grubu oluşturun](#create-an-azure-ad-security-group-in-the-azure-portal) .
@@ -81,13 +79,13 @@ Azure AD SSO 'yu şirket içi SharePoint ile yapılandırmak ve test etmek için
 - Şirket içi SharePoint için Azure AD 'de Konuk hesabına izin vermek üzere [Azure Portal şirket Içi SharePoint 'e bir Konuk hesabı erişimi verin](#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal) .
 - Birden çok Web uygulaması için [güvenilen kimlik sağlayıcısını](#configure-the-trusted-identity-provider-for-multiple-web-applications) , birden çok Web uygulaması için aynı güvenilir kimlik sağlayıcısını kullanacak şekilde yapılandırın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Bu bölümde, Azure portal Azure AD SSO 'yu etkinleştirirsiniz.
 
 Azure AD SSO 'yu SharePoint şirket içi ile yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com/) **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
+1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
 
 1. **Çoklu oturum açma yöntemi seç** iletişim kutusunda, SSO 'yu etkinleştirmek için **SAML** modunu seçin.
  
@@ -205,7 +203,7 @@ Bu senaryoyu kişiler seçiciyle düzeltmek için, [Azurecp](https://yvand.githu
   > [!NOTE]
   > AzureCP olmadan, Azure AD grubunun KIMLIĞINI ekleyerek gruplar ekleyebilirsiniz, ancak bu yöntem Kullanıcı dostu ve güvenilir değildir. Şöyle görünür:
   > 
-  >![SharePoint grubuna bir Azure AD grubu ekleme](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
+  >![KIMLIĞE göre SharePoint grubuna bir Azure AD grubu ekleme](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
   
 ### <a name="grant-permissions-to-an-azure-ad-group-in-sharepoint-on-premises"></a>SharePoint 'te şirket içi Azure AD grubuna izin verme
 
@@ -244,7 +242,7 @@ UPN şimdi değiştirildiğinden, SharePoint sitenize bir Konuk hesabına erişi
 
 1. **Kaynak özniteliği** özelliğini **User. localuserprincipalname**değeri olarak değiştirin ve **Kaydet**' i seçin.
 
-    ![Kullanıcı öznitelikleri & talepler ilk](./media/sharepoint-on-premises-tutorial/manage-claim.png)
+    ![Kullanıcı öznitelikleri & talepler ilk kaynak özniteliği](./media/sharepoint-on-premises-tutorial/manage-claim.png)
 
 1. Şeriti kullanarak **SAML tabanlı oturum açma**'ya geri dönün. Artık **Kullanıcı öznitelikleri & talepler** bölümü şöyle görünür: 
 
@@ -287,9 +285,6 @@ Yapılandırma tek bir Web uygulaması için çalışıyor, ancak birden çok We
 
 İç kullanıcılarınız için SharePoint şirket içi örneğine erişim vermek istediğiniz başka senaryolar olabilir. Bu senaryo için, şirket içi kullanıcılarınızı Azure AD ile eşitlemeye izin vermek üzere Microsoft Azure Active Directory Connect dağıtmanız gerekir. Bu kurulum, başka bir makalede ele alınmıştır.
 
-## <a name="additional-resources"></a>Ek kaynaklar
+## <a name="next-steps"></a>Sonraki Adımlar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-- [Azure Active Directory ile karma kimlik nedir?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
+SharePoint 'i şirket içinde yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 615e8c80d194bb37feac1c09af22d2aa5d4aa3fc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 872daf3a208452e8b7ec27b2326e394b416a1c5f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142720"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902034"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda TLS bağlantısını yapılandırma-tek sunucu
 
@@ -33,7 +33,7 @@ Benzer şekilde, Azure portal sunucunuz altındaki "bağlantı dizeleri" ayarlar
 
 PostgreSQL için Azure veritabanı sunucunuzu ziyaret edin ve **bağlantı güvenliği**' ne tıklayın. **SSL bağlantısını zorla** ayarını etkinleştirmek veya devre dışı bırakmak için iki durumlu düğmeyi kullanın. Ardından **Kaydet**' e tıklayın.
 
-![Bağlantı güvenliği-TLS/SSL uygulanmasını devre dışı bırak](./media/concepts-ssl-connection-security/1-disable-ssl.png)
+:::image type="content" source="./media/concepts-ssl-connection-security/1-disable-ssl.png" alt-text="Bağlantı güvenliği-TLS/SSL uygulanmasını devre dışı bırak":::
 
 **SSL zorlama durumu** göstergesini görmek Için **genel bakış** sayfasını görüntüleyerek ayarı doğrulayabilirsiniz.
 

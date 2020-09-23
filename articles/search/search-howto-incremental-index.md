@@ -9,17 +9,18 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: c432b89574949b31612aeba862ece7687c12dde4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922846"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971609"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme için önbelleğe alma yapılandırma
 
 > [!IMPORTANT] 
-> Artımlı zenginleştirme Şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [2019-05-06-Preview ve 2020-06-30-preview REST API sürümleri](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
+> Artımlı zenginleştirme Şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> [REST API önizleme sürümleri](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
 Bu makalede, her seferinde yeniden derlemek zorunda kalmadan adımları artımlı olarak değiştirmek için bir zenginleştirme ardışık düzenine nasıl önbelleğe alma ekleyeceğiniz gösterilmektedir. Varsayılan olarak, bir beceri durum bilgisiz değildir ve kompozisyonunun herhangi bir bölümünü değiştirmek, dizin oluşturucunun tam yeniden çalıştırma işlemini gerektirir. Artımlı zenginleştirme ile, Dizin Oluşturucu, belge ağacının hangi bölümlerinin beceri veya Dizin Oluşturucu tanımlarında algılanan değişikliklere göre yenilenmesi gerektiğini belirleyebilir. Mevcut işlenen çıktı korunur ve mümkün olan yerlerde yeniden kullanılabilir. 
 

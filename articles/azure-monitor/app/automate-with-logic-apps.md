@@ -3,12 +3,12 @@ title: Logic Apps kullanarak Azure Application Insights süreçlerini otomatikle
 description: Mantıksal uygulamanıza Application Insights bağlayıcısını ekleyerek tekrarlanabilir işlemleri nasıl hızlı bir şekilde otomatikleştirebileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: d023d774c130a9db513fbcf9452b05fa030a967a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323205"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970871"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps kullanarak Application Insights süreçlerini otomatikleştirin
 
@@ -26,7 +26,7 @@ Ek eylemleri de ekleyebilirsiniz. Azure App Service Logic Apps özelliği yüzle
 Bu öğreticide, bir Web uygulamasının verilerinde öznitelikleri gruplandırmak için Analytics oto kümesi algoritmasını kullanan bir mantıksal uygulama oluşturmayı öğreneceksiniz. Akış, sonuçları otomatik olarak e-posta ile gönderir ve Application Insights analizlerini nasıl kullanabileceğinizi ve Logic Apps birlikte nasıl kullanabileceğinizi gösteren bir örnektir. 
 
 ### <a name="step-1-create-a-logic-app"></a>1. Adım: mantıksal uygulama oluşturma
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Kaynak oluştur ' a**tıklayın, **Web ve mobil**' yi seçin ve ardından **mantıksal uygulama**' yı seçin.
 
     ![Yeni mantıksal uygulama penceresi](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -53,7 +53,7 @@ Bu öğreticide, bir Web uygulamasının verilerinde öznitelikleri gruplandırm
 
 Bu adımı gerçekleştirmek için, kaynağınız için bir uygulama KIMLIĞI ve bir API anahtarı gerekir. Aşağıdaki diyagramda gösterildiği gibi bunları Azure portal alabilirsiniz:
 
-![Azure portal uygulama KIMLIĞI](./media/automate-with-logic-apps/5apiaccess.png)
+![Ekran görüntüsü, API tuşu oluştur düğmesi seçili Azure portal API erişimi sayfasını gösterir.](./media/automate-with-logic-apps/5apiaccess.png)
 
 ![Azure portal uygulama KIMLIĞI](./media/automate-with-logic-apps/6apikey.png)
 
@@ -103,7 +103,7 @@ Kendi sorgularınızı oluştururken, bunları akışınıza eklemeden önce ana
     
    d. **Yeni parametre Ekle** açılan düğmesine tıklayın ve ekler ' i ve HTML ' yi seçin.
 
-      ![Office 365 Outlook yapılandırması](./media/automate-with-logic-apps/10emailbody.png)
+      ![Ekran görüntüsü, gövde kutusu vurgulanmış bir e-posta gönder penceresi ve sağ tarafta vurgulanan gövde ile dinamik içerik menüsü gösterir.](./media/automate-with-logic-apps/10emailbody.png)
 
       ![Office 365 Outlook yapılandırması](./media/automate-with-logic-apps/11emailparameter.png)
 

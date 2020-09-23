@@ -12,15 +12,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: df254e0766a755754aabcfb8c98a8c140b43cb20
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 548113a5f775595caf3a798d7b35eddfbc80674e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650848"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886095"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning denemeleri için dosya kaydetme ve yazma
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu makalede, giriş dosyalarının nereye kaydedileceğini ve depolama sınırı hatalarını ve deneme gecikmesini engellemek için denemeleri 'dan çıktı dosyalarının nereye yazılacağını öğrenirsiniz.
 

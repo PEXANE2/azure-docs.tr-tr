@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 9ac30bdcb137afb26a8461f98a36b568ebe179b0
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6a90a4ad44bff392b5fe6cd0af13313bd98ce2a6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459020"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988365"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -74,15 +74,17 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
     Bkz. AD siteleri ve hizmetleriyle ilgili [site topolojisini tasarlama](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) . 
     
-<!--
-* Azure NetApp Files supports DES, Kerberos AES 128, and Kerberos AES 256 encryption types (from the least secure to the most secure). The user credentials used to join Active Directory must have the highest corresponding account option enabled that matches the capabilities enabled for your Active Directory.   
+* Bir SMB birimi için, [birleşimi Active Directory](#create-an-active-directory-connection) penceresindeki **AES şifreleme** kutusunu işaretleyerek, AES şifrelemesini etkinleştirebilirsiniz. Azure NetApp Files DES, Kerberos AES 128 ve Kerberos AES 256 şifreleme türlerini (en az güvenli olan en az güvenli) destekler. AES şifrelemesini etkinleştirirseniz Active Directory birleştirmek için kullanılan Kullanıcı kimlik bilgileri, Active Directory için etkinleştirilen yetenekler ile eşleşen en yüksek karşılık gelen hesap seçeneğine sahip olmalıdır.    
 
-    For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
+    Örneğin, Active Directory yalnızca AES-128 özelliğine sahipse, Kullanıcı kimlik bilgileri için AES-128 hesabı seçeneğini etkinleştirmeniz gerekir. Active Directory AES-256 özelliğine sahipse, AES-256 hesabı seçeneğini etkinleştirmeniz gerekir (Bu da AES-128 ' i destekler). Active Directory herhangi bir Kerberos şifreleme özelliği yoksa, Azure NetApp Files varsayılan olarak DES kullanır.  
 
-    You can enable the account options in the properties of the Active Directory Users and Computers Microsoft Management Console (MMC):   
+    Active Directory Kullanıcıları ve Bilgisayarları Microsoft Yönetim Konsolu (MMC) ' nin özelliklerinde Hesap seçeneklerini etkinleştirebilirsiniz:   
 
-    ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
--->
+    ![Active Directory Kullanıcıları ve bilgisayarları MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
+
+* Azure NetApp Files, Azure NetApp Files hizmeti ve hedeflenen [Active Directory etki alanı denetleyicileri](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)arasında LDAP trafiğinin güvenli aktarımını sağlayan [LDAP imzalamayı](https://docs.microsoft.com/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server)destekler. LDAP imzalama için Microsoft Danışmanlık [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) ' nin kılavuzunu takip ediyorsanız, [Birleştir Active Directory](#create-an-active-directory-connection) penceresindeki **LDAP imzalama** kutusunu işaretleyerek Azure NetApp Files ' de LDAP imzalama özelliğini etkinleştirmeniz gerekir. 
+
+    [LDAP kanalı bağlama](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) yapılandırmasının Azure NetApp Files hizmeti üzerinde hiçbir etkisi yoktur. 
 
 Ek AD bilgileri hakkında Azure NetApp Files [SMB SSS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) bölümüne bakın. 
 
@@ -160,8 +162,56 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
 
         Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, kuruluş birimi yolu, `OU=AADDC Computers` NetApp hesabınız için Active Directory yapılandırdığınızda olur.
 
+    ![Active Directory Birleştir](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+
+    * **AES şifrelemesi**   
+        SMB birimi için AES şifrelemesini etkinleştirmek üzere bu onay kutusunu seçin. Gereksinimler için [Active Directory bağlantılara yönelik gereksinimlere](#requirements-for-active-directory-connections) bakın. 
+
+        ![Active Directory AES şifrelemesi](../media/azure-netapp-files/active-directory-aes-encryption.png)
+
+        **AES şifreleme** özelliği şu anda önizlemededir. Bu özelliği ilk kez kullanıyorsanız, özelliği kullanmadan önce kaydedin: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
+        ```
+
+        Özellik kaydının durumunu denetleyin: 
+
+        > [!NOTE]
+        > **Registrationstate** , ' a `Registering` değiştirilmeden önce 60 dakikaya kadar bir durumda olabilir `Registered` . Devam etmeden önce durum **kaydoluncaya** kadar bekleyin.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
+        ```
+        
+        Ayrıca, [Azure CLI komutlarını](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+
+    * **LDAP Imzalama**   
+        LDAP imzalamayı etkinleştirmek için bu onay kutusunu seçin. Bu işlev, Azure NetApp Files hizmeti ve Kullanıcı tarafından belirtilen [Active Directory Domain Services etki alanı denetleyicileri](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services)arasında güvenli LDAP aramaları sunar. Daha fazla bilgi için bkz. [ADV190023 | LDAP kanalı bağlamayı ve LDAP IMZALAMAYı etkinleştirmek için Microsoft Kılavuzu](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
+
+        ![LDAP imzalamayı Active Directory](../media/azure-netapp-files/active-directory-ldap-signing.png) 
+
+        **LDAP imzalama** özelliği şu anda önizlemededir. Bu özelliği ilk kez kullanıyorsanız, özelliği kullanmadan önce kaydedin: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
+        ```
+
+        Özellik kaydının durumunu denetleyin: 
+
+        > [!NOTE]
+        > **Registrationstate** , ' a `Registering` değiştirilmeden önce 60 dakikaya kadar bir durumda olabilir `Registered` . Devam etmeden önce durum **kaydoluncaya** kadar bekleyin.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
+        ```
+        
+        Ayrıca, [Azure CLI komutlarını](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+
      * **Yedekleme ilkesi kullanıcıları**  
         Azure NetApp Files ile kullanım için oluşturulan bilgisayar hesabına yükseltilmiş ayrıcalıklar gerektiren ek hesaplar ekleyebilirsiniz. Belirtilen hesapların dosya veya klasör düzeyinde NTFS izinlerini değiştirmesine izin verilir. Örneğin, Azure NetApp Files bir SMB dosya paylaşımında veri geçirmek için kullanılan ayrıcalıklı olmayan bir hizmet hesabı belirtebilirsiniz.  
+
+        ![Active Directory yedekleme ilkesi kullanıcıları](../media/azure-netapp-files/active-directory-backup-policy-users.png)
 
         **Yedekleme ilkesi kullanıcıları** özelliği şu anda önizlemededir. Bu özelliği ilk kez kullanıyorsanız, özelliği kullanmadan önce kaydedin: 
 
@@ -178,11 +228,11 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        Ayrıca, Azure CLı komutlarını kullanarak [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+        Ayrıca, [Azure CLI komutlarını](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
 
     * **Kullanıcı adınız** ve **Parolanız** dahil kimlik bilgileri
 
-    ![Active Directory Birleştir](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+        ![Active Directory kimlik bilgileri](../media/azure-netapp-files/active-directory-credentials.png)
 
 3. **Katıl**’a tıklayın.  
 

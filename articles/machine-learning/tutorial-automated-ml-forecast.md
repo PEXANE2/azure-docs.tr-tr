@@ -10,12 +10,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896681"
+ms.locfileid: "90979086"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile talep tahmini
 
@@ -236,7 +236,7 @@ Yeni dağıtılan Web hizmetinizin tüketimini kolaylaştırmak için Power BI d
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
 + Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesi.
 + [Korleştirme](how-to-configure-auto-features.md#featurization)hakkında daha fazla bilgi edinin.
-+ [Veri profili oluşturma](how-to-use-automated-ml-for-ml-models.md#profile)hakkında daha fazla bilgi edinin.
++ [Veri profili oluşturma](how-to-connect-data-ui.md#profile)hakkında daha fazla bilgi edinin.
 
 >[!NOTE]
 > Bu bisiklet payı veri kümesi, bu öğretici için değiştirilmiştir. Bu veri kümesi, bir [kale yarışmanın](https://www.kaggle.com/c/bike-sharing-demand/data) bir parçası olarak sunulmuştur ve başlangıçta [büyük bikespaylaşımı](https://www.capitalbikeshare.com/system-data)aracılığıyla sunuldu. Ayrıca, [uMachine Learning veritabanı](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset)'nda da bulunabilir.<br><br>

@@ -11,15 +11,15 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 69987210d69855b0fcaa676e406ec6a1c02a4d85
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2b944f6207ecc47df4176a512a900e08e6b0d643
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650611"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885947"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Tahmin aracı kullanarak modelleri Azure Machine Learning eğitme
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning, bir [RunConfiguration nesnesi](how-to-set-up-training-targets.md#whats-a-run-configuration) ve bir [ScriptRunConfig nesnesi](how-to-set-up-training-targets.md#submit)kullanarak eğitim betiğinizi [çeşitli işlem hedeflerine](how-to-set-up-training-targets.md)kolayca gönderebilirsiniz. Bu model size çok fazla esneklik ve en yüksek denetim sağlar.
 

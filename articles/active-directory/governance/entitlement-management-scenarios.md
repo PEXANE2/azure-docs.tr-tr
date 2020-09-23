@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b66511720966ff978c8460b9ac69ad133b7501
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 7f8a8f76ce7d46c0a44dd86ef1490c1c74a7992a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707229"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979495"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yaygın senaryolar
 
@@ -119,24 +119,24 @@ Kuruluşunuz için yetkilendirme yönetimini yapılandırabileceğiniz çeşitli
 1. [Videoyu izleyin: günlük yönetim: öğeler değişti](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. Erişim paketini açın
 1. [Yaşam döngüsü ayarlarını açın](entitlement-management-access-package-lifecycle-policy.md#open-lifecycle-settings)
-1. [Süre sonu ayarlarını Güncelleştir](entitlement-management-access-package-lifecycle-policy.md#lifecycle)
+1. [Süre sonu ayarlarını Güncelleştir](entitlement-management-access-package-lifecycle-policy.md#lifecycle) 
 
 ### <a name="access-package-manager-update-how-access-is-approved-for-a-project"></a>Paket Yöneticisi 'ne erişim: bir proje için erişimin nasıl onaylandığını güncelleştirme
 
 1. [Videoyu izleyin: günlük yönetim: öğeler değişti](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
-1. [İstek ve onay ayarlarının mevcut bir ilkesini açın](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
-1. [Onay ayarlarını Güncelleştir](entitlement-management-access-package-request-policy.md#approval)
+1. [İstek ayarlarının mevcut bir ilkesini açın](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
+1. [Onay ayarlarını Güncelleştir](entitlement-management-access-package-approval-policy.md#change-approval-settings-of-an-existing-access-package)
 
 ### <a name="access-package-manager-update-the-people-for-a-project"></a>Paket Yöneticisi 'ne erişim: bir proje için kişileri güncelleştirme
 
 1. [Videoyu izleyin: günlük yönetim: öğeler değişti](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. [Artık erişmesi gerekmeyen kullanıcıları kaldırma](entitlement-management-access-package-assignments.md)
-1. [İstek ve onay ayarlarının mevcut bir ilkesini açın](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [İstek ayarlarının mevcut bir ilkesini açın](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [Erişmesi gereken kullanıcıları ekleyin](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)
 
 ### <a name="access-package-manager-directly-assign-specific-users-to-an-access-package"></a>Access Package Manager: belirli kullanıcıları doğrudan bir erişim paketine ata
 
-1. [Kullanıcıların farklı yaşam döngüsü ayarlarına ihtiyacı varsa, erişim paketine yeni bir ilke ekleyin](entitlement-management-access-package-request-policy.md#add-a-new-policy-of-request-and-approval-settings)
+1. [Kullanıcıların farklı yaşam döngüsü ayarlarına ihtiyacı varsa, erişim paketine yeni bir ilke ekleyin](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [Erişim paketine doğrudan belirli kullanıcıları ata](entitlement-management-access-package-assignments.md#directly-assign-a-user)
 
 ## <a name="assignments-and-reports"></a>Atamalar ve raporlar

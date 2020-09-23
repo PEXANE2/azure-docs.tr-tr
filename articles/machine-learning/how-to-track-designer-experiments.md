@@ -1,5 +1,5 @@
 ---
-title: Tasarımcıda günlük ölçümleri (Önizleme)
+title: Tasarımcıda günlük ölçümleri
 titleSuffix: Azure Machine Learning
 description: Azure ML tasarımcı denemeleri izleyin. Python betik modülünü Yürüt ' ü kullanarak günlüğe kaydetmeyi etkinleştirin ve günlüğe kaydedilen sonuçları Studio 'da görüntüleyin.
 services: machine-learning
@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 20845a6f1238095b40c9b05b5f5d8d85217b6db5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: bffbf32cf5faa936a00444f1f39facaf226b8ef2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950417"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885982"
 ---
-# <a name="enable-logging-in-azure-machine-learning-designer-preview-pipelines"></a>Azure Machine Learning tasarımcı (Önizleme) işlem hatlarında günlüğe kaydetmeyi etkinleştirme
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Azure Machine Learning tasarımcı işlem hatları 'nda günlüğü etkinleştir
+
 
 Bu makalede, tasarımcı işlem hatlarına günlük kodu eklemeyi öğreneceksiniz. Ayrıca, bu günlükleri Azure Machine Learning Studio Web portalını kullanarak görüntülemeyi de öğreneceksiniz.
 
@@ -78,5 +78,6 @@ Verileri günlüğe kaydetmek için Python SDK 'nın nasıl kullanılacağı hak
 
 Bu makalede, tasarımcıda günlükleri nasıl kullanacağınızı öğrendiniz. Sonraki adımlar için bu ilgili makalelere bakın:
 
-* Tasarımcı işlem hatlarında sorun gidermeyi öğrenin, bkz. ML işlem hatları [sorunlarını giderme &](how-to-debug-pipelines.md#logging-in-azure-machine-learning-designer-preview).
+
+* Tasarımcı işlem hatlarında sorun gidermeyi öğrenin, bkz. ML işlem hatları [sorunlarını giderme &](how-to-debug-pipelines.md#azure-machine-learning-designer).
 * SDK yazma deneyiminde ölçümleri günlüğe kaydetmek için Python SDK 'yı nasıl kullanacağınızı öğrenin. bkz. [Azure ML eğitim çalıştırmaları 'nda günlüğü etkinleştirme](how-to-track-experiments.md).

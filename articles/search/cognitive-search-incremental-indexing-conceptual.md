@@ -8,17 +8,18 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935390"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971627"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme ve önbelleğe alma
 
 > [!IMPORTANT] 
-> Artımlı zenginleştirme Şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [2019-05-06-Preview ve 2020-06-30-preview REST API sürümleri](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
+> Artımlı zenginleştirme Şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> [REST API önizleme sürümleri](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
 *Artımlı zenginleştirme* , [becerileri](cognitive-search-working-with-skillsets.md)hedefleyen bir özelliktir. Daha sonra bir zenginleştirme işlem hattı tarafından oluşturulan işleme çıkışını gelecekteki Dizin Oluşturucu çalıştırmalarının yeniden kullanmak üzere kaydetmek için Azure depolama 'dan yararlanır. Mümkün olan yerlerde, Dizin Oluşturucu halen geçerli olan önbelleğe alınmış çıktıyı yeniden kullanır. 
 
@@ -166,7 +167,7 @@ REST API sürüm `2020-06-30-Preview` , Dizin oluşturucularda ek özellikler ar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artımlı zenginleştirme, değişiklik izlemeyi becerileri ve AI zenginleştirme olarak genişleten güçlü bir özelliktir. Aıncreesrichment, Beceri tasarımı üzerinde yineleme yaparken var olan işlenmiş içeriğin yeniden kullanılmasını mümkün.
+Artımlı zenginleştirme, değişiklik izlemeyi becerileri ve AI zenginleştirme olarak genişleten güçlü bir özelliktir. Artımlı zenginleştirme, Beceri tasarımı üzerinde yineleme yaparken var olan işlenmiş içeriğin yeniden kullanılmasını mümkün.
 
 Sonraki adım olarak, var olan bir dizin oluşturucuda önbelleğe almayı etkinleştirin veya yeni bir Dizin Oluşturucu tanımlarken bir önbellek ekleyin.
 

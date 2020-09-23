@@ -10,15 +10,15 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3803b9770d3caf3f45f109b62145677a38c5bcc2
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 794e2c8b436b6a6dfa736bef59eb2ad0bda83bc2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657200"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893133"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>& Azure Machine Learning için CLı uzantısını kullanın
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning CLı, Azure platformu için platformlar arası komut satırı arabirimi olan [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)'nin bir uzantısıdır. Bu uzantı Azure Machine Learning ile çalışmaya yönelik komutlar sağlar. Machine Learning etkinliklerinizi otomatikleştirmenize olanak tanır. Aşağıdaki listede CLı uzantısıyla yapabileceğiniz bazı örnek eylemler verilmiştir:
 
@@ -30,7 +30,7 @@ Azure Machine Learning CLı, Azure platformu için platformlar arası komut sat�
 
 CLı Azure Machine Learning SDK 'sının yerini almaz. Otomasyonuna uygun olan yüksek parametreli görevleri işlemek için optimize edilmiş, tamamlayıcı bir araçtır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * CLı 'yi kullanmak için bir Azure aboneliğinizin olması gerekir. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -110,9 +110,6 @@ Aşağıdaki komutlar, Azure Machine Learning tarafından kullanılan kaynaklar�
     ```azurecli-interactive
     az ml workspace create -w myworkspace -g myresourcegroup
     ```
-
-    > [!TIP]
-    > Bu komut, temel bir sürüm çalışma alanı oluşturur. Kurumsal çalışma alanı oluşturmak için, `--sku enterprise` komutuyla anahtarını kullanın `az ml workspace create` . Azure Machine Learning sürümleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning nedir](overview-what-is-azure-ml.md#sku).
 
     Daha fazla bilgi için bkz. [az ml çalışma alanı oluştur](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create).
 
@@ -412,7 +409,7 @@ Aşağıdaki komutlarda, çalışma alanınız için Azure Machine Learning [ort
 
 Aşağıdaki tabloda JSON dosyasındaki her üst düzey alan, türü ve bir açıklama ayrıntıları verilmiştir. Bir nesne türü Python SDK 'dan bir sınıfa bağlanmışsa, Python sınıfında her bir JSON alanı ve genel değişken adı arasında gevşek bir 1:1 eşleşmesi vardır. Bazı durumlarda alan, sınıf değişkeni yerine bir Oluşturucu bağımsız değişkenine de eşlenir. Örneğin, `environmentVariables` alanı `environment_variables` sınıfındaki değişkenle eşlenir [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true) .
 
-| JSON alanı | Tür | Description |
+| JSON alanı | Tür | Açıklama |
 |---|---|---|
 | `name` | `string` | Ortamın adı. **Microsoft** veya **AzureML**ile ad başlatma. |
 | `version` | `string` | Ortamın sürümü. |

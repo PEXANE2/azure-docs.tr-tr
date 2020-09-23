@@ -6,20 +6,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 08/01/2020
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 788b3f5e9f4012e418ece691ebb5fbc5d2f866af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931871"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979585"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
 
 ## <a name="feature-announcements-in-2020"></a>2020 sürümündeki Özellik Duyuruları
+
+### <a name="september-2020"></a>Eylül 2020
+
+Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve ardından Azure veri kaynaklarına yönelik salt okuma izinleri vermek için RBAC izinlerini kullanın. İsteğe bağlı olarak, IP kuralları bir seçenek değilse, [Güvenilen hizmet özel durum](search-indexer-howto-access-trusted-service-exception.md) özelliğini seçin.
+
+
+|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
+|------------------------------|----------|-------------|---------------|
+| [Yönetilen hizmet kimliği](search-howto-managed-identities-data-sources.md) | Dizin oluşturucular, güvenlik | Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve Azure veri kaynaklarına erişim sağlamak için RBAC izinlerini kullanın. Bu yaklaşım bağlantı dizesinde kimlik bilgileri gereksinimini ortadan kaldırır. <br><br>Yönetilen hizmet kimliğini kullanmanın ek bir yolu, IP kurallarının bir seçenek olmaması durumunda [güvenilir bir hizmet özel durumdur](search-indexer-howto-access-trusted-service-exception.md) . | Genel olarak kullanılabilir. Portalı kullanırken bu özelliğe erişin veya API-Version = 2020-06-30 ile [veri kaynağı (REST) oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-data-source) . |
+| [Özel bağlantı kullanan giden istekler](search-indexer-howto-access-private.md) | Dizin oluşturucular, güvenlik | Dizin oluşturucularının Azure özel bağlantısı tarafından güvenliği sağlanmış Azure kaynaklarına erişirken kullanabileceği bir paylaşılan özel bağlantı kaynağı oluşturun. Dizin Oluşturucu bağlantılarını güvenli hale getirmek için kullanabileceğiniz tüm yollar hakkında daha fazla bilgi için bkz. [Azure ağ güvenliği özelliklerini kullanarak Dizin Oluşturucu kaynakları güvenli hale getirme](search-indexer-securing-resources.md). | Genel olarak kullanılabilir. Portal veya [paylaşılan özel bağlantı kaynağını](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) api-Version = 2020-08-01 ile kullanırken bu özelliğe erişin. |
+| [Yönetim REST API (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Yeni kararlı REST API, paylaşılan özel bağlantı kaynakları oluşturmak için destek ekler. | Genel olarak kullanılabilir. |
+| [Yönetim REST API (2020-08-01-Önizleme)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Azure Işlevleri için paylaşılan özel bağlantı kaynağı ve MySQL için Azure SQL veritabanları ekler. | Genel Önizleme. |
+| [Yönetim .NET SDK 4,0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | 2020-08-01 sürümünü hedefleyen Yönetim SDK 'Sı için Azure SDK güncelleştirmesi REST API. | Genel olarak kullanılabilir. |
 
 ### <a name="august-2020"></a>Ağustos 2020
 
@@ -31,9 +44,9 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documstalar istemci kitaplığı](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | .NET için Azure SDK | Azure SDK ekibi tarafından yayınlanan ve diğer .NET istemci kitaplıkları ile tutarlılık için tasarlanan .NET istemci kitaplığı. <br/><br/>Sürüm 11, arama REST API-Version = 2020-06-30 ' ı hedefler, ancak henüz bilgi deposu, Jeo-uzamsal türler veya [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet)'ı desteklemez. <br/><br/>Daha fazla bilgi için bkz.  [hızlı başlangıç: Dizin oluşturma](search-get-started-dotnet.md) ve [Azure.Search.Documtları yükseltme (v11)](search-dotnet-sdk-migration-version-11.md). | Genel olarak kullanılabilir. </br> [Azure.Search.Documstaları paketini](https://www.nuget.org/packages/Azure.Search.Documents/) NuGet 'ten yüklersiniz. |
-| [azure.search.documstalar istemci kitaplığı](/python/api/overview/azure/search-documents-readme?view=azure-python)  | Python için Azure SDK| Azure SDK ekibi tarafından yayınlanan Python istemci kitaplığı, diğer Python istemci kitaplıkları ile tutarlılık için tasarlanmıştır. <br/><br/>Sürüm 11 ' de arama REST API 'si-sürüm = 2020-06-30 hedefdedir. | Genel olarak kullanılabilir. </br> Pypı 'den [Azure-Search-Documents paketini](https://pypi.org/project/azure-search-documents/) yükler. |
-| [@azure/search-documents istemci kitaplığı](/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | JavaScript için Azure SDK | Azure SDK ekibi tarafından yayınlanan JavaScript istemci kitaplığı, diğer JavaScript istemci kitaplıkları ile tutarlılık için tasarlanmıştır. <br/><br/>Sürüm 11 ' de arama REST API 'si-sürüm = 2020-06-30 hedefdedir. | Genel olarak kullanılabilir. </br> [ @azure/search-documents Paketi](https://www.npmjs.com/package/@azure/search-documents) NPM 'den yükleyeceksiniz. |
+| [Azure.Search.Documstalar istemci kitaplığı](/dotnet/api/overview/azure/search.documents-readme) | .NET için Azure SDK | Azure SDK ekibi tarafından yayınlanan ve diğer .NET istemci kitaplıkları ile tutarlılık için tasarlanan .NET istemci kitaplığı. <br/><br/>Sürüm 11, arama REST API-Version = 2020-06-30 ' ı hedefler, ancak henüz bilgi deposu, Jeo-uzamsal türler veya [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder)'ı desteklemez. <br/><br/>Daha fazla bilgi için bkz.  [hızlı başlangıç: Dizin oluşturma](search-get-started-dotnet.md) ve [Azure.Search.Documtları yükseltme (v11)](search-dotnet-sdk-migration-version-11.md). | Genel olarak kullanılabilir. </br> [Azure.Search.Documstaları paketini](https://www.nuget.org/packages/Azure.Search.Documents/) NuGet 'ten yüklersiniz. |
+| [azure.search.documstalar istemci kitaplığı](/python/api/overview/azure/search-documents-readme)  | Python için Azure SDK| Azure SDK ekibi tarafından yayınlanan Python istemci kitaplığı, diğer Python istemci kitaplıkları ile tutarlılık için tasarlanmıştır. <br/><br/>Sürüm 11 ' de arama REST API 'si-sürüm = 2020-06-30 hedefdedir. | Genel olarak kullanılabilir. </br> Pypı 'den [Azure-Search-Documents paketini](https://pypi.org/project/azure-search-documents/) yükler. |
+| [@azure/search-documents istemci kitaplığı](/javascript/api/overview/azure/search-documents-readme)  | JavaScript için Azure SDK | Azure SDK ekibi tarafından yayınlanan JavaScript istemci kitaplığı, diğer JavaScript istemci kitaplıkları ile tutarlılık için tasarlanmıştır. <br/><br/>Sürüm 11 ' de arama REST API 'si-sürüm = 2020-06-30 hedefdedir. | Genel olarak kullanılabilir. </br> [ @azure/search-documents Paketi](https://www.npmjs.com/package/@azure/search-documents) NPM 'den yükleyeceksiniz. |
 
 ### <a name="june-2020"></a>Haziran 2020
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: c9f0f496bfdb31e0c7cb45a07c87ea238d031e34
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 24e631b3ddb25cc8bed20b432ff2ba31fd331f37
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928777"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979607"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Bilişsel Arama güvenlik-genel bakış
 
@@ -94,7 +94,7 @@ Arama hizmetinize erişimi daha fazla denetlemek için, belirli IP adreslerine v
 
 [Gelen erişimi yapılandırmak](service-configure-firewall.md)için portalı kullanabilirsiniz.
 
-Alternatif olarak, yönetim REST API 'Lerini de kullanabilirsiniz. API sürüm 2020-03-13, [ıprule](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) parametresi ile, tek tek veya bir aralıkta, arama hizmetinize erişim vermek istediğiniz IP adreslerini tanımlayarak hizmetinize erişimi kısıtlamanıza olanak sağlar.
+Alternatif olarak, yönetim REST API 'Lerini de kullanabilirsiniz. API sürüm 2020-03-13 ' den başlayarak, [ıprule](/rest/api/searchmanagement/services/createorupdate#iprule) parametresi ile, arama hizmetinize erişim vermek istediğiniz tek tek veya BIR aralıktaki IP adreslerini tanımlayarak hizmetinize erişimi kısıtlayabilirsiniz.
 
 ### <a name="private-endpoint-no-internet-traffic"></a>Özel uç nokta (Internet trafiği yok)
 
@@ -123,7 +123,7 @@ Arama sonuçları üzerinde ayrıntılı, Kullanıcı başına denetim istiyorsa
 | Yaklaşım | Açıklama |
 |----------|-------------|
 |[Kimlik filtrelerine göre güvenlik kırpması](search-security-trimming-for-azure-search.md)  | Kullanıcı kimliği erişim denetimi uygulamak için temel iş akışını belgeler. Bir dizine güvenlik tanımlayıcıları eklenmesini ve sonra yasaklanmış içeriğin sonuçlarını kırpmak için bu alana karşı filtrelemeyi açıklar. |
-|[Azure Active Directory kimliklerine göre güvenlik kırpması](search-security-trimming-for-azure-search-with-aad.md)  | Bu makale, Azure bulut platformunda [ücretsiz hizmetlerden](https://azure.microsoft.com/free/) biri olan Azure ACTIVE DIRECTORY (AAD) ' den kimlik alma adımlarını sağlayan önceki makaleye genişletilir. |
+|[Azure Active Directory kimliklerine göre güvenlik kırpması](search-security-trimming-for-azure-search-with-aad.md)  | Bu makalede, Azure bulut platformunda [ücretsiz hizmetlerden](https://azure.microsoft.com/free/) biri olan Azure Active Directory (Azure AD) ' den kimlik alma adımları sağlayan önceki makalede genişletilir. |
 
 ## <a name="administrative-rights"></a>Yönetim hakları
 

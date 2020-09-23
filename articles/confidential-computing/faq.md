@@ -8,20 +8,20 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: bb821d00a168e3b8f0636b93696376dc8b5d492e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83772907"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988001"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure gizli bilgi Işlem için sık sorulan sorular
 
-Bu makalede, [Azure 'da gizli bilgi işlem iş yüklerini](overview.md)çalıştırmaya ilişkin en yaygın soruların yanıtları sunulmaktadır.
+Bu makalede, [Azure sanal makinelerinde gizli bilgi işlem iş yüklerini](overview.md)çalıştırmaya ilişkin en yaygın soruların yanıtları sağlanmaktadır.
 
 Azure sorununuz bu makalede giderilmemişse, [MSDN ve Stack Overflow](https://azure.microsoft.com/support/forums/)Azure forumlarını ziyaret edin. Sorununuzu bu forumlara gönderebilir veya [ @AzureSupport Twitter 'da](https://twitter.com/AzureSupport)ilan edebilirsiniz. Ayrıca, bir Azure destek isteği de gönderebilirsiniz. Destek isteği göndermek için [Azure Desteği sayfasında](https://azure.microsoft.com/support/options/)destek al ' ı seçin.
 
-## <a name="confidential-computing-virtual-machines"></a>Gizli Bilgi Işlem sanal makineleri<a id="vm-faq"></a>
+## <a name="confidential-computing-virtual-machines"></a>Gizli Bilgi Işlem sanal makineleri <a id="vm-faq"></a>
 
 **Azure 'da DCsv2 serisi VM 'Leri nasıl dağıtırım?**
 
@@ -51,7 +51,7 @@ VM 'nin yanındaki bilgi kabarcığa göre gerçekleştirilecek farklı eylemler
 
 **DCsv2 serisi ve DC Serisi VM 'Ler arasındaki fark nedir?**
 
-DC Serisi VM 'Ler, Intel SGX ile daha az toplam bellek, daha az şifreleme sayfa önbelleği (EPC) belleğine sahiptir ve yalnızca iki bölgede (ABD Doğu ve Standard_DC2s ve Standard_DC4s boyutlarda Avrupa Batı) kullanılabilir. Bu VM 'Lerin genel kullanıma açık hale getirilmesi planlanmamaktadır ve üretim kullanımı için önerilmez. Bu VM 'Leri dağıtmak için [Gizli Bilgi Işlem DC-SERIES VM [Önizleme]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Market örneğini kullanın.
+DC Serisi VM 'Ler, Intel SGX ile daha az toplam bellek, daha az şifreleme sayfa önbelleği (EPC) belleğine sahiptir ve yalnızca iki bölgede (ABD Doğu ve Standard_DC2s ve Standard_DC4s boyutlarda Avrupa Batı) kullanılabilir. Bu VM 'Lerin genel kullanıma açık hale getirilmesi planlanmamaktadır ve üretim kullanımı için önerilmez. Bu VM 'Leri dağıtmak için  [Gizli Bilgi Işlem DC-SERIES VM [Önizleme]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Market örneğini kullanın.
 
 **DCsv2 sanal makineleri küresel olarak kullanılabilir mi?**
 

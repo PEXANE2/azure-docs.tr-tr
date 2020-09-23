@@ -1,25 +1,22 @@
 ---
-title: Yönetilen kimlik (Önizleme) kullanarak Cosmos DB hesabıyla bağlantı kurma
+title: Yönetilen kimlik kullanarak Cosmos DB hesabıyla bağlantı kurma
 titleSuffix: Azure Cognitive Search
-description: Yönetilen kimlik (Önizleme) kullanarak Cosmos DB hesaba Dizin Oluşturucu bağlantısı ayarlamayı öğrenin
+description: Yönetilen kimlik kullanarak Cosmos DB hesaba Dizin Oluşturucu bağlantısı ayarlamayı öğrenin
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: df37b7f1c5b1ed35b6c3779eea470b2fb0936ecf
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: b295c4f8380d59d8824049e8050605cb66fbae65
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936665"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971656"
 ---
-# <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>Yönetilen kimlik (Önizleme) kullanarak Cosmos DB veritabanına Dizin Oluşturucu bağlantısı kurma
-
-> [!IMPORTANT] 
-> Yönetilen kimlik kullanarak bir veri kaynağına bağlantı ayarlama desteği şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
+# <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Yönetilen kimlik kullanarak Cosmos DB veritabanına Dizin Oluşturucu bağlantısı kurma
 
 Bu sayfada, veri kaynağı nesne bağlantı dizesinde kimlik bilgileri sağlamak yerine yönetilen kimlik kullanarak bir Azure Cosmos DB veritabanına Dizin Oluşturucu bağlantısının nasıl ayarlanacağı açıklanır.
 
@@ -57,7 +54,7 @@ Bu adımda, Azure Bilişsel Arama hizmetine, Cosmos DB veritabanınızdaki veril
 
 ### <a name="3---create-the-data-source"></a>3-veri kaynağını oluşturma
 
-[REST API](/rest/api/searchservice/create-data-source), Azure Portal ve [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) , yönetilen kimlik bağlantı dizesini destekler. Aşağıda, [REST API](/rest/api/searchservice/create-data-source) ve yönetilen kimlik bağlantı dizesi kullanılarak Cosmos DB veri dizini oluşturmak için bir veri kaynağı oluşturma örneği verilmiştir. Yönetilen kimlik bağlantı dizesi biçimi REST API, .NET SDK ve Azure portal için aynıdır.
+[REST API](/rest/api/searchservice/create-data-source), Azure Portal ve [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) , yönetilen kimlik bağlantı dizesini destekler. Aşağıda, [REST API](/rest/api/searchservice/create-data-source) ve yönetilen kimlik bağlantı dizesi kullanılarak Cosmos DB veri dizini oluşturmak için bir veri kaynağı oluşturma örneği verilmiştir. Yönetilen kimlik bağlantı dizesi biçimi REST API, .NET SDK ve Azure portal için aynıdır.
 
 Kimlik doğrulaması için Yönetilen kimlikler kullanıldığında, **kimlik bilgileri** hesap anahtarı içermez.
 
@@ -87,7 +84,7 @@ api-key: [Search service admin key]
 | **ada** | Gereklidir. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
 |**türüyle**| Gereklidir. Olmalıdır `cosmosdb` . |
 |**Credentials** | Gereklidir. <br/><br/>Yönetilen bir kimlik kullanılarak bağlanırken, **kimlik bilgileri** biçimi şu şekilde olmalıdır: *veritabanı = [veritabanı-adı]; RESOURCEID = [kaynak-kimliği-dize];(Apıkind = [api-Kind];)*<br/> <br/>RESOURCEID biçimi: *RESOURCEID =/Subscriptions/**abonelik kimliği**/ResourceGroups/**kaynak grubu adı**/Providers/Microsoft.DocUmentdb/databaseaccounts/**Cosmos DB hesabınızın adı**/;*<br/><br/>SQL koleksiyonları için bağlantı dizesi bir ApiKind gerektirmez.<br/><br/>MongoDB koleksiyonları için bağlantı dizesine **Apikind = MongoDb** ekleyin. <br/><br/>Gremlin grafikleri ve Cassandra tablolarında, önizlemeye erişim sağlamak için [geçitli Dizin Oluşturucu önizlemesine](https://aka.ms/azure-cognitive-search/indexer-preview) kaydolun ve kimlik bilgilerini biçimlendirme hakkında bilgi alın.<br/>|
-| **kapsayıcı** | Aşağıdaki öğeleri içerir: <br/>**ad**: gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: isteğe bağlı. Rastgele bir JSON belgesini, Azure Bilişsel Arama 'in dizinetarafından kullanılabilecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB API 'SI, Gremlin API ve Cassandra API için sorgular desteklenmez. |
+| **container (kapsayıcı)**  | Aşağıdaki öğeleri içerir: <br/>**ad**: gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: isteğe bağlı. Rastgele bir JSON belgesini, Azure Bilişsel Arama 'in dizinetarafından kullanılabilecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB API 'SI, Gremlin API ve Cassandra API için sorgular desteklenmez. |
 | **dataChangeDetectionPolicy** | Önerilen |
 |**dataDeletionDetectionPolicy** | İsteğe Bağlı |
 

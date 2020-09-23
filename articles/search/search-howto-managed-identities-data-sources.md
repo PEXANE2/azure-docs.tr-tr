@@ -1,25 +1,22 @@
 ---
-title: Yönetilen kimlik (Önizleme) kullanarak bir veri kaynağıyla bağlantı kurma
+title: Yönetilen kimlik kullanarak bir veri kaynağına bağlantı ayarlama
 titleSuffix: Azure Cognitive Search
-description: Yönetilen kimlik (Önizleme) kullanarak bir veri kaynağına Dizin Oluşturucu bağlantısı ayarlamayı öğrenin
+description: Yönetilen kimlik kullanarak bir veri kaynağına Dizin Oluşturucu bağlantısı ayarlamayı öğrenin
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: a057c0d35a465447cc0be99b574ffeebb671115a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936597"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971540"
 ---
-# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Yönetilen kimlik (Önizleme) kullanarak bir veri kaynağına Dizin Oluşturucu bağlantısı kurma
-
-> [!IMPORTANT] 
-> Yönetilen kimlik kullanarak bir veri kaynağına bağlantı ayarlama desteği şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
+# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Yönetilen kimlik kullanarak veri kaynağına bir Dizin Oluşturucu bağlantısı kurma
 
 Azure Bilişsel Arama 'de [Dizin Oluşturucu](search-indexer-overview.md) , veri kaynağınızdan Azure bilişsel arama veri çekmek için bir yol sağlayan bir gezgin. Dizin Oluşturucu, oluşturduğunuz veri kaynağı nesnesinden bir veri kaynağı bağlantısı edinir. Veri kaynağı nesnesi genellikle hedef veri kaynağı için kimlik bilgilerini içerir. Örneğin, bir BLOB depolama kapsayıcısından veri indekslemek istiyorsanız veri kaynağı nesnesi bir Azure depolama hesabı anahtarı içerebilir.
 

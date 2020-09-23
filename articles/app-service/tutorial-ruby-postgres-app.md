@@ -5,18 +5,18 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 77892cc9a05c569e431fb9c66c2f6eb92068b3af
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c3fd06e2ac399fa18b588b1db5e154eaf013753b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084736"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979483"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service Ruby ve Postgres uygulaması oluşturma
 
 [Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu öğreticide, bir Ruby uygulamasının nasıl oluşturulacağı ve bir PostgreSQL veritabanına nasıl bağlanacağı gösterilmektedir. İşiniz bittiğinde, Linux üzerinde App Service’te çalışan bir [Ruby on Rails](https://rubyonrails.org/) uygulamasına sahip olacaksınız.
 
-![Azure App Service'te çalışan Ruby on Rails uygulaması](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
+:::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Ruby on rayın ekran görüntüsü görevler başlıklı uygulama örneği.":::
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -237,7 +237,7 @@ git commit -m "database.yml updates"
 
 Uygulamanız dağıtılmaya hazırdır.
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure’a dağıtın
 
 Bu adımda, Postgres'e bağlı Rails uygulamasını Azure App Service'e dağıtırsınız.
 
@@ -255,7 +255,7 @@ Bu adımda, Postgres'e bağlı Rails uygulamasını Azure App Service'e dağıt�
 
 ### <a name="configure-database-settings"></a>Veritabanı ayarlarını yapılandırma
 
-App Service’te, Cloud Shell'de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanarak ortam değişkenlerini _uygulama ayarları_ olarak ayarlayabilirsiniz.
+App Service’te, Cloud Shell'de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) komutunu kullanarak ortam değişkenlerini _uygulama ayarları_ olarak ayarlayabilirsiniz.
 
 Aşağıdaki Cloud Shell komutu `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` ve `DB_PASSWORD` uygulama ayarlarını yapılandırır. _ &lt; Appname>_ ve _ &lt; Postgres-Server-Name>_ yer tutucularını değiştirin.
 
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 `http://<app-name>.azurewebsites.net` listesine göz atın ve listeye birkaç görev ekleyin.
 
-![Azure App Service'te çalışan Ruby on Rails uygulaması](./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png)
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Listeye eklenen görevleri gösteren görevler adlı Azure uygulaması örneği ekran görüntüsü.":::
 
 Tebrikler, Azure App Service'te veri temelli bir Ruby on Rails uygulaması çalıştırıyorsunuz.
 

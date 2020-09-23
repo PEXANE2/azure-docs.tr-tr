@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 07fb91f081719a2e51cff45be67bbe9f362123f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066065"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971781"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps dağıtımını otomatikleştirmek için Azure Resource Manager şablonu oluşturma
 
@@ -60,14 +60,14 @@ Bu örnekler Azure Resource Manager şablonları kullanarak Logic Apps oluşturm
 
 1. [PowerShell Galerisi](https://www.powershellgallery.com/packages/LogicAppTemplate)LogicAppTemplate modülünü yüklemenin en kolay yolu için şu komutu çalıştırın:
 
-   ```text
-   PS> Install-Module -Name LogicAppTemplate
+   ```powershell
+   Install-Module -Name LogicAppTemplate
    ```
 
    En son sürüme güncelleştirmek için şu komutu çalıştırın:
 
-   ```text
-   PS> Update-Module -Name LogicAppTemplate
+   ```powershell
+   Update-Module -Name LogicAppTemplate
    ```
 
 Veya el ile yüklemek için, [mantıksal uygulama şablonu Oluşturucu](https://github.com/jeffhollan/LogicAppTemplateCreator)için GitHub 'daki adımları izleyin.
@@ -80,28 +80,43 @@ LogicAppTemplate modülünün herhangi bir Azure kiracı ve abonelik erişim bel
 
 ### <a name="generate-template-with-powershell"></a>PowerShell ile şablon oluşturma
 
-LogicAppTemplate modülünü ve [Azure CLI](/cli/azure/?view=azure-cli-latest)yükledikten sonra şablonunuzu oluşturmak Için Şu PowerShell komutunu çalıştırın:
+LogicAppTemplate modülünü ve [Azure CLI](/cli/azure/)yükledikten sonra şablonunuzu oluşturmak Için Şu PowerShell komutunu çalıştırın:
 
-```text
-PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    Token = (az account get-access-token | ConvertFrom-Json).accessToken
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 [Azure Resource Manager istemci aracından](https://github.com/projectkudu/ARMClient)bir belirteçte boru 'a yönelik öneriyi Izlemek için `$SubscriptionId` Azure abonelik kimliğiniz olduğu yerine bu komutu çalıştırın:
 
-```text
-PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+armclient token $SubscriptionId | Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 Ayıkladıktan sonra, bu komutu çalıştırarak şablonınızdan bir parametreler dosyası oluşturabilirsiniz:
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
+```powershell
+Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
 ```
 
 Azure Key Vault başvurularla ayıklama için (yalnızca statik), şu komutu çalıştırın:
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
+```powershell
+Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
 | Parametreler | Gerekli | Açıklama |
