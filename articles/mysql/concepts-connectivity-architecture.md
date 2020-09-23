@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 440007767835de4641fb828b41d572f35997acd2
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 73178a9707d35fe7337210b11e76504794bc93ed
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064477"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896399"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MySQL için Azure veritabanı bağlantı mimarisinin yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden gelen MySQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -19,7 +19,7 @@ Bu makalede, MySQL için Azure veritabanı bağlantı mimarisinin yanı sıra tr
 ## <a name="connectivity-architecture"></a>Bağlantı mimarisi
 MySQL için Azure veritabanı 'na bağlantı, gelen bağlantıları kümelerimize ait fiziksel konuma yönlendirmekten sorumlu bir ağ geçidiyle oluşturulur. Aşağıdaki diyagramda trafik akışı gösterilmektedir.
 
-![Bağlantı mimarisine genel bakış](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+:::image type="content" source="./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png" alt-text="Bağlantı mimarisine genel bakış":::
 
 İstemci veritabanına bağlandığında, ağ geçidine bağlanan bir bağlantı dizesi alırlar. Bu ağ geçidinin 3306 numaralı bağlantı noktasını dinleyen bir genel IP adresi vardır. Veritabanı kümesi içinde trafik, MySQL için uygun Azure veritabanına iletilir. Bu nedenle, şirket ağları gibi sunucunuza bağlanmak için, giden trafiğin ağ geçitlerimize ulaşmasını sağlamak üzere istemci tarafı güvenlik duvarını açmanız gerekir. Aşağıda, bölge başına ağ geçitlerimiz tarafından kullanılan IP adreslerinin tamamen bir listesini bulabilirsiniz.
 
@@ -35,7 +35,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı G
 | Brezilya Güney | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Orta Kanada |40.85.224.249  |
 | Doğu Kanada | 40.86.226.166    |
-| Central US | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
+| Orta ABD | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | Doğu Çin | 139.219.130.35    |
 | Çin Doğu 2 | 40.73.82.1  |
 | Kuzey Çin | 139.219.15.17    |

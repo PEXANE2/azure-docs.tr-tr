@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416409"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984887"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Amazon S3 'ten Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
 
@@ -37,7 +37,7 @@ ADF, farklı düzeylerde paralellik sağlayan sunucusuz bir mimari sunar ve bu s
 
 Müşteriler, 2 GBps ve üzeri bir işlem hacmi sunan, Amazon S3 'den Azure Blob depolama alanına kadar yüzlerce milyonlarca dosyadan oluşan verileri petabaytlarca başarıyla geçirdiniz. 
 
-![performans](media/data-migration-guidance-s3-to-azure-storage/performance.png)
+![Diyagramda birçok dosya bölümü, ilişkili kopyalama eylemleri olan bir W S S3 deposunda, Azure Blob depolama A D L S Gen2 gösterilmektedir.](media/data-migration-guidance-s3-to-azure-storage/performance.png)
 
 Yukarıdaki resimde, farklı paralellik seviyeleri aracılığıyla harika veri taşıma hızına nasıl ulaşabileceğiniz gösterilmektedir:
  
@@ -61,7 +61,7 @@ Alternatif olarak, verilerin genel Internet üzerinden aktarılmasını istemiyo
 
 Verileri genel Internet üzerinden geçirme:
 
-![çözüm-mimari-genel-ağ](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
+![Diyagram, D F Azure ile Azure Storage arasında Azure Integration Runtime aracılığıyla bir W S S3 mağazasından Internet üzerinden geçişi gösterir. Çalışma zamanının Data Factory olan bir denetim kanalı vardır.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
 
 - Bu mimaride, veriler genel Internet üzerinden HTTPS kullanılarak güvenli bir şekilde aktarılır. 
 - Hem kaynak Amazon S3 hem de hedef Azure Blob depolama veya Azure Data Lake Storage 2. tüm ağ IP adreslerinden gelen trafiğe izin verecek şekilde yapılandırılmıştır.  Belirli IP aralığına ağ erişimini nasıl kısıtlayabileceğini gösteren ikinci mimariye bakın. 
@@ -70,7 +70,7 @@ Verileri genel Internet üzerinden geçirme:
 
 Verileri özel bağlantı üzerinden geçir: 
 
-![çözüm-mimari-özel-ağ](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
+![Diyagram, Azure sanal makinelerinde şirket içinde barındırılan tümleştirme çalışma zamanı aracılığıyla bir W S S3 deposundan özel bir eşleme bağlantısı üzerinden Azure depolama 'ya geçiş gösterir. Çalışma zamanının Data Factory olan bir denetim kanalı vardır.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
 
 - Bu mimaride veri geçişi, AWS doğrudan Connect ve Azure Express Route arasında özel bir eşleme bağlantısı üzerinden yapılır, bu da veriler hiçbir zaman ortak Internet üzerinden hiçbir zaman geçmez.  AWS VPC ve Azure sanal ağının kullanılması gerekir. 
 - Bu mimariye ulaşmak için Azure sanal ağınızdaki bir Windows sanal makinesine ADF şirket içinde barındırılan tümleştirme çalışma zamanı 'nı yüklemeniz gerekir.  Ağınızı ve depolama ıOPS/bant genişliğinizi tamamen kullanabilmeniz için otomatik olarak barındırılan IR sanal makinelerinizi el ile ölçeklendirebilir veya birden çok VM 'ye (4 düğüme kadar) ölçeklendirebilirsiniz. 
@@ -122,7 +122,7 @@ ADF kopyalama etkinliği tarafından bildirilen azaltma hatalarıyla karşılaş
 
 S3 'ten Azure Blob Storage 'a veri geçirmek için oluşturulan aşağıdaki işlem hattını göz önünde bulundurun: 
 
-![fiyatlandırma-işlem hattı](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
+![Diyagram, verileri geçirmek için bir işlem hattı gösterir ve bu arama için el ile tetikleyici akışı, saklı yordama kopyalama akışını içeren her bölüm için bir alt işlem hattına akar. Işlem hattının dışında, saklı yordam, arama yapılacak Azure SQL D B 'ye akar, bu da blob depolamaya akan, kopyalamak üzere bir W S S3 akışı olur.](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
 
 Şunları kabul edelim: 
 
@@ -135,7 +135,7 @@ S3 'ten Azure Blob Storage 'a veri geçirmek için oluşturulan aşağıdaki iş
 
 Yukarıdaki varsayımlar temelinde tahmini fiyat aşağıda verilmiştir: 
 
-![fiyatlandırma-tablo](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
+![Bir tablonun ekran görüntüsü tahmini bir fiyat gösterir.](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>Ek başvurular 
 - [Amazon basit depolama hizmeti Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)

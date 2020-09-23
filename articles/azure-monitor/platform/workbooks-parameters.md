@@ -1,6 +1,6 @@
 ---
 title: Azure Izleyici çalışma kitapları parametreleri oluşturma
-description: Önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın
+description: Parametrelerin, çalışma kitabı yazarlarının tüketicilerden giriş toplamasına nasıl izin vereceğinizi ve çalışma kitabının diğer bölümlerinde nasıl başvurulacağını öğrenin.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3e7dda85f1f890d5ae0eb4722c3e028b373fdcab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8be7dd170d5e4e3bddb09bc1b163fba7a841a6b7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658226"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984573"
 ---
 # <a name="workbook-parameters"></a>Çalışma kitabı parametreleri
 
@@ -40,8 +40,8 @@ Bu parametre değerlerine, çalışma kitaplarının diğer bölümlerinde bağl
 4. Açılır yeni parametre bölmesinde şunu girin:
     1. Parametre adı: `TimeRange` *(parametre __adlarının__ boşluk veya özel karakter **içeremediğini** unutmayın)*
     2. Görünen ad: `Time Range` *(ancak __görünen adlar__ boşluk, özel karakterler, emoji, vb. içerebilir)*  
-    2. Parametre türü:`Time range picker`
-    3. Gerekli:`checked`
+    2. Parametre türü: `Time range picker`
+    3. Gerekli: `checked`
     4. Kullanılabilir zaman aralıkları: son saat, son 12 saat, son 24 saat, son 48 saat, son 3 gün, son 7 gün ve özel zaman aralığı seçimine Izin ver
 5. Parametresini oluşturmak için araç çubuğundan ' Kaydet ' seçeneğini belirleyin.
 
@@ -62,7 +62,7 @@ Bu, çalışma kitabının "Pills" stilinde okuma modunda nasıl görüneceğine
 
 ### <a name="in-kql"></a>KQL 'de
 1. Çalışma kitabına bir sorgu denetimi ekleyin ve bir Application Insights kaynağı seçin.
-2. KQL 'de, parametresini kullanarak bir zaman kapsamı filtresi girin:`| where timestamp {TimeRange}`
+2. KQL 'de, parametresini kullanarak bir zaman kapsamı filtresi girin: `| where timestamp {TimeRange}`
 3. Bu, `| where timestamp > ago(1d)` parametresinin zaman aralığı değeri olan sorgu değerlendirmesi süresini genişletir.
 4. Sonuçları görmek için sorguyu çalıştırın
 
@@ -70,7 +70,7 @@ Bu, çalışma kitabının "Pills" stilinde okuma modunda nasıl görüneceğine
 
 ### <a name="in-text"></a>Metinde 
 1. Çalışma kitabına bir metin denetimi ekleyin.
-2. Markaşağı içinde şunu girin`The chosen time range is {TimeRange:label}`
+2. Markaşağı içinde şunu girin `The chosen time range is {TimeRange:label}`
 3. _Düzenle bitti_ 'yi seçin
 4. Metin denetimi metin gösterecektir: _Seçilen zaman aralığı son 24 saat_
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4ce14b9d467e4badc833a1e1e4d8e1d08d232b1a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f88960207188779949560218b298fd36d6a8f25e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085519"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985236"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure App Service'te Node.js web uygulaması oluşturma
 
@@ -19,7 +19,7 @@ ms.locfileid: "88085519"
 
 Visual Studio Code kullanarak yerel olarak bir Node.js/Express uygulaması oluşturarak ve sonra uygulamayı buluta dağıtarak Azure App Service kullanmaya başlayın. Ücretsiz bir App Service katmanı kullandığınız için, bu hızlı başlangıcı tamamlamaya yönelik bir ücret ödeirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
 - [Node.js ve npm](https://nodejs.org). `node --version`Node.js yüklendiğini doğrulamak için komutunu çalıştırın.
@@ -65,11 +65,11 @@ Bu bölümde, VS Code ve Azure App Service uzantısı aracılığıyla Node.js u
 
 1. **Azure uygulama hizmeti** Gezginini göstermek için vs Code etkinlik çubuğunda Azure logosu ' nu seçin. **Azure 'Da oturum aç...** ' ı seçin ve yönergeleri izleyin. (Hata halinde çalıştırırsanız bkz. [Azure oturum açma sorunlarını giderme](#troubleshooting-azure-sign-in) .) Oturum açıldıktan sonra gezgin, Azure aboneliğinizin adını göstermelidir.
 
-    ![Azure’da oturum açma](media/quickstart-nodejs/sign-in.png)
+    ![Azure'da oturum açma](media/quickstart-nodejs/sign-in.png)
 
 1. VS Code **Azure App SERVICE** Gezgini ' nde, uygulamanızı Azure 'a dağıtmak için mavi yukarı ok simgesini seçin. (' Web uygulamasına**Ctrl**Dağıt ' yazıp **Command Palette** + **Shift** + **Azure App Service: Web uygulamasına dağıt**) seçeneğini belirleyerek komut paletinden aynı komutu da çağırabilirsiniz (CTRL SHIFT**P**).
 
-    ![Web uygulamasına dağıtma](media/quickstart-nodejs/deploy.png)
+    :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Azure App Service 'in seçili mavi ok simgesini gösteren VS Code ekran görüntüsü.":::
         
 1. *NodeJS-docs-Hello-World* klasörünü seçin.
 
@@ -141,7 +141,7 @@ Günlük çıktısını (çağrıları `console.log` ) uygulamadan doğrudan vs 
 
 1. İstendiğinde, günlüğü etkinleştirmeyi ve uygulamayı yeniden başlatmayı seçin. Uygulama yeniden başlatıldıktan sonra VS Code çıkış penceresi, günlük akışı bağlantısıyla açılır. 
 
-    ![Günlüğe kaydetmeyi etkinleştirme ve yeniden başlatma](media/quickstart-nodejs/enable-restart.png)
+    :::image type="content" source="media/quickstart-nodejs/enable-restart.png" alt-text="Günlüğe kaydetmeyi etkinleştirmek için Visual Studio Code isteminin ekran görüntüsü ve Evet düğmesi seçili olarak uygulamayı yeniden başlatın.":::
 
 1. Birkaç saniye sonra çıkış penceresinde, günlük akış hizmetine bağlı olduğunuzu belirten bir ileti gösterilir. Tarayıcıdaki sayfayı yenileyerek daha fazla çıkış etkinliği oluşturabilirsiniz.
 
@@ -176,7 +176,7 @@ Ya da Azure Uzantı paketi [Için düğüm paketini](https://marketplace.visuals
 ::: zone-end
 
 ::: zone pivot="platform-linux"  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure hesabınız yoksa, herhangi bir hizmet birleşimini denemek için bugün Azure kredilerine $200 ile ücretsiz bir hesap için [kaydolun](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension) .
 
@@ -184,7 +184,7 @@ Node.js Paket Yöneticisi [Node.js ve NPM](https://nodejs.org/en/download)ile bi
 
 Ayrıca, bir hizmet olarak Azure platformunda (PaaS) Linux Web Apps oluşturmak, yönetmek ve dağıtmak için kullanabileceğiniz [Azure App Service uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)yüklemeniz gerekir.
 
-### <a name="sign-in"></a>Oturum açma
+### <a name="sign-in"></a>Oturum açın
 
 Uzantı yüklendikten sonra Azure hesabınızda oturum açın. **Azure uygulama hizmeti** Gezginini göstermek Için etkinlik çubuğunda Azure logosu ' nu seçin. **Azure 'Da oturum aç...** ' ı seçin ve yönergeleri izleyin.
 
@@ -249,7 +249,7 @@ npm start
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure’a dağıtın
 
 Bu bölümde, VS Code ve Azure App Service uzantısını kullanarak Node.js uygulamanızı dağıtırsınız. Bu hızlı başlangıç, uygulamanızın sıkıştırılması ve Linux üzerinde bir Azure Web uygulamasına dağıtıldığı en temel dağıtım modelini kullanır.
 
@@ -263,7 +263,7 @@ code .
 
 **Azure App SERVICE** Gezgini ' nde, uygulamanızı Azure 'a dağıtmak için mavi yukarı ok simgesini seçin.
 
-![Web uygulamasına dağıtma](./media/quickstart-nodejs/deploy.png)
+:::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="Mavi dağıtım oku seçiliyken Visual Studio Code Azure App Service menüsünün ekran görüntüsü.":::
 
 > [!TIP]
 > Ayrıca, **komut paletinden** (CTRL + SHIFT + P) ' Web uygulamasına Dağıt ' yazarak ve **Azure App Service: Web uygulamasına dağıt** komutunu çalıştırarak dağıtım yapabilirsiniz.
@@ -280,11 +280,11 @@ code .
 
 1. Yapılandırmanızı hedef sunucuda çalışacak şekilde güncellemek isteyip istemediğiniz sorulduğunda **Evet** ' i seçin `npm install` . Uygulamanız daha sonra dağıtılır.
 
-    ![Yapılandırılmış dağıtım](./media/quickstart-nodejs/server-build.png)
+    :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="Hedef sunucuda yapılandırmanızı güncelleştirmek için Evet düğmesi seçili olan komut isteminin ekran görüntüsü.":::
 
 1. Dağıtım başladığında, daha sonraki dağıtımlar aynı App Service Web uygulamasını otomatik olarak hedefleyecek şekilde çalışma alanınızı güncelleştirmeniz istenir. Değişikliklerinizin doğru uygulamaya dağıtıldığından emin olmak için **Evet** ' i seçin.
 
-    ![Yapılandırılmış dağıtım](./media/quickstart-nodejs/save-configuration.png)
+    :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="Çalışma alanınızı Evet düğmesi seçili olarak güncelleştirme isteminin ekran görüntüsü.":::
 
 > [!TIP]
 > Uygulamanızın bağlantı noktası ortam değişkeni tarafından belirtilen bağlantı noktasında dinleme yaptığını doğrulayın: `process.env.PORT` .
@@ -314,7 +314,7 @@ VS Code çıkış penceresi, günlük akışı bağlantısıyla açılır.
 
 ![Akış günlüklerini görüntüle](./media/quickstart-nodejs/view-logs.png)
 
-![Günlüğe kaydetmeyi etkinleştirme ve yeniden başlatma](./media/quickstart-nodejs/enable-restart.png)
+:::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="Dosya günlüğünü etkinleştirmek ve Evet düğmesi seçili olarak Web uygulamasını yeniden başlatmak için VS Code isteminin ekran görüntüsü.":::
 
 Birkaç saniye sonra, günlük akış hizmetine bağlı olduğunuzu belirten bir ileti görürsünüz. Daha fazla etkinlik görmek için sayfayı birkaç kez yenileyin.
 

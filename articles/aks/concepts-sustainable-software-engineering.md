@@ -4,18 +4,18 @@ description: Azure Kubernetes Service (AKS) ' de sürdürülebilirlik yazılım 
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: bc2240b3cb8508109f6dd25c4c80ff31ba197cfd
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087163"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984977"
 ---
-# <a name="sustainable-software-engineering-principals-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde sürdürülebilir Yazılım Mühendisliği sorumluları
+# <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde sürdürülebilir Yazılım Mühendisliği ilkeleri
 
-Sürdürülebilir Yazılım Mühendisliği sorumluları, sürdürülebilir uygulamalar tanımlamanıza, oluşturmanıza ve çalıştırmanıza yardımcı olan bir uzmanlık kümesidir. Genel amaç, uygulamanızın her yönüyle karbon izi azaltmaktır. [İlkeler. yeşil proje][principals-green] , sürdürülebilir yazılım mühendisliğinin ilkelerine genel bir bakış içerir.
+Sürdürülebilir Yazılım Mühendisliği ilkeleri, sürdürülebilir uygulamalar tanımlamanıza, oluşturmanıza ve çalıştırmanıza yardımcı olan bir uzmanlık kümesidir. Genel amaç, uygulamanızın her yönüyle karbon izi azaltmaktır. [İlkeler. yeşil proje][principles-green] , sürdürülebilirlik yazılım mühendisliğinin ilkelerine genel bir bakış içerir.
 
-Yazılım mühendisliğinin, önceliklerin ve odaklanmanın bir vardiyası olduğunu anlamak için önemli bir fikir. Çoğu durumda, yazılım, hızlı performans ve düşük gecikme süresine odaklanan bir biçimde tasarlanır ve çalışır. Sürdürülebilir Yazılım Mühendisliği, mümkün olduğunca fazla bilgi azaltmada odaklanır. Bazı durumlarda, sürdürülebilir Yazılım Mühendisliği sorumlularını uygulamak, toplam ağ yolculuğu gibi daha hızlı performans veya daha düşük gecikme süresi sağlayabilir. Diğer durumlarda, bilgi azaltma düşük öncelikli iş yüklerini erteleyerek daha yavaş performans veya daha fazla gecikme süresine neden olabilir. Uygulamanıza sürdürülebilir Yazılım Mühendisliği sorumlularını uygulamayı düşünmeden önce, uygulamanızın önceliklerini, ihtiyaçlarını ve dengelerini gözden geçirin.
+Yazılım mühendisliğinin, önceliklerin ve odaklanmanın bir vardiyası olduğunu anlamak için önemli bir fikir. Çoğu durumda, yazılım, hızlı performans ve düşük gecikme süresine odaklanan bir biçimde tasarlanır ve çalışır. Sürdürülebilir Yazılım Mühendisliği, mümkün olduğunca fazla bilgi azaltmada odaklanır. Bazı durumlarda, sürdürülebilir Yazılım Mühendisliği ilkelerini uygulamak, toplam ağ yolculuğu gibi daha hızlı performans veya daha düşük gecikme süresi sağlayabilir. Diğer durumlarda, bilgi azaltma düşük öncelikli iş yüklerini erteleyerek daha yavaş performans veya daha fazla gecikme süresine neden olabilir. Uygulamanıza sürdürülebilir Yazılım Mühendisliği ilkeleri uygulamayı düşünmeden önce, uygulamanızın önceliklerini, ihtiyaçlarını ve dengeliğini gözden geçirin.
 
 ## <a name="measure-and-optimize"></a>Ölçme ve iyileştirme
 
@@ -74,4 +74,4 @@ Bu makalede bahsedilen AKS özellikleri hakkında daha fazla bilgi edinin:
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principals-green]: https://principles.green/
+[principles-green]: https://principles.green/

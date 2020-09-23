@@ -1,32 +1,29 @@
 ---
-title: Blok Blobları için noktadan noktaya geri yüklemeyi etkinleştirin ve yönetin (Önizleme)
+title: Blok Blobu verilerinde bir zaman içinde geri yükleme gerçekleştirin
 titleSuffix: Azure Storage
-description: Bir blok Blobları kümesini önceki bir duruma geri yüklemek için zaman noktası geri yükleme (Önizleme) özelliğini nasıl kullanacağınızı öğrenin.
+description: Belirli bir noktada bir blok Blobları kümesini önceki durumlarına geri yüklemek için noktadan noktaya geri yüklemeyi nasıl kullanacağınızı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 09/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 140e1203a29dcebec9d6483e73e906591b2213fb
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 226e35452e4b266c3c0a698505d47ab9a53b9761
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068542"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984375"
 ---
-# <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Blok Blobları için noktadan noktaya geri yüklemeyi etkinleştirin ve yönetin (Önizleme)
+# <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Blok Blobu verilerinde bir zaman içinde geri yükleme gerçekleştirin
 
-Blok Blobları kümesini önceki bir duruma geri yüklemek için zaman noktası geri yükleme (Önizleme) kullanabilirsiniz. Bu makalede, PowerShell ile bir depolama hesabı için noktadan noktaya geri yüklemenin nasıl etkinleştirileceği açıklanır. Ayrıca PowerShell ile geri yükleme işleminin nasıl gerçekleştirileceğini gösterir.
+Blok bloblarının bir veya daha fazla kümesini önceki bir duruma geri yüklemek için zaman noktası geri yüklemesi kullanabilirsiniz. Bu makalede, bir depolama hesabı için noktadan noktaya geri yüklemenin nasıl etkinleştirileceği ve geri yükleme işleminin nasıl gerçekleştirileceği açıklanır.
 
-Daha fazla bilgi edinmek ve önizlemeye nasıl kaydolacağınızı öğrenmek için bkz. [blok Blobları Için noktadan noktaya geri yükleme (Önizleme)](point-in-time-restore-overview.md).
+Noktadan noktaya geri yükleme hakkında daha fazla bilgi edinmek için bkz. [blok Blobları Için noktadan noktaya geri yükleme](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Zaman içinde geri yükleme, yalnızca blok Bloblarındaki işlemleri geri yüklemeyi destekler. Kapsayıcılardaki işlemler geri yüklenemez. Bir kapsayıcıyı, zaman içinde geri yükleme önizlemesi sırasında [kapsayıcıyı silme](/rest/api/storageservices/delete-container) işlemini çağırarak depolama hesabından silerseniz, o kapsayıcı geri yükleme işlemiyle geri yüklenemez. Önizleme sırasında, bir kapsayıcıyı silmek, geri yüklemek istiyorsanız ayrı blob 'ları silin.
-
-> [!IMPORTANT]
-> Zaman içinde geri yükleme önizlemesi yalnızca üretim dışı kullanım için tasarlanmıştır.
+> Zaman içinde geri yükleme, yalnızca blok Bloblarındaki işlemleri geri yüklemeyi destekler. Kapsayıcılardaki işlemler geri yüklenemez. [Kapsayıcıyı silme](/rest/api/storageservices/delete-container) işlemini çağırarak depolama hesabından bir kapsayıcıyı silerseniz, o kapsayıcı geri yükleme işlemiyle geri yüklenemez. Bir kapsayıcıyı silmek istiyorsanız, bir kapsayıcıyı silmek için tek tek Blobları silin.
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Zaman içinde nokta geri yüklemeyi etkinleştirme ve yapılandırma
 
@@ -35,6 +32,9 @@ Zaman içinde nokta geri yüklemeyi etkinleştirmeden ve yapılandırmadan önce
 - [Bloblar için geçici silmeyi etkinleştirme](soft-delete-enable.md)
 - [Değişiklik akışını etkinleştirme ve devre dışı bırakma](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [Blob sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md)
+
+> [!IMPORTANT]
+> Geçici silme, akışı değiştirme ve BLOB sürümü oluşturma özelliğinin etkinleştirilmesi ek ücretler oluşmasına neden olabilir. Daha fazla bilgi için bkz. [Bloblar Için geçici silme](soft-delete-blob-overview.md), [Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md)ve [BLOB sürümü oluşturma](versioning-overview.md).
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -52,23 +52,9 @@ Aşağıdaki görüntüde, yedi gün önce geri yükleme noktası içeren bir za
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell ile noktadan noktaya geri yüklemeyi yapılandırmak için önce az. Storage Preview Module sürüm 1.14.1-Preview veya Preview modülünün sonraki bir sürümünü yükleyin. Az. Storage modülünün diğer sürümlerini kaldırın.
+PowerShell ile noktadan noktaya geri yüklemeyi yapılandırmak için önce [az. Storage](https://www.powershellgallery.com/packages/Az.Storage) Module sürüm 2.6.0 veya üstünü yükleyin. Ardından, depolama hesabı için noktadan noktaya geri yüklemeyi etkinleştirmek üzere Enable-AzStorageBlobRestorePolicy komutunu çağırın.
 
-PowerShellGet 'in 2.2.4.1 veya sonraki bir sürümünü yüklediğinizden emin olun. Şu anda yüklü olan sürümü belirlemek için aşağıdaki komutu çalıştırın:
-
-```powershell
-Get-InstalledModule PowerShellGet
-```
-
-Sonra, az. Storage Preview modülünü Install. Aşağıdaki komut, az. Storage modülünün sürüm [2.5.2 Parallel sections-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.5.2-preview) sürümünü yüklüyor:
-
-```powershell
-Install-Module -Name Az.Storage -RequiredVersion 2.5.2-preview -AllowPrerelease
-```
-
-Azure PowerShell yükleme hakkında daha fazla bilgi için bkz. [PowerShellGet](/powershell/scripting/gallery/installing-psget) ve [Install Azure PowerShell PowerShellGet ile](/powershell/azure/install-az-ps)yükleme.
-
-Azure 'un anında yüklemesini PowerShell ile yapılandırmak için Enable-AzStorageBlobRestorePolicy komutunu çağırın. Aşağıdaki örnek, geçici silme ve geçici silme bekletme süresini ayarlar, akışı Değiştir ' i ve sonra da zaman içinde geri yüklemeyi sunar. Örneği çalıştırmadan önce, blob sürüm oluşturmayı etkinleştirmek için Azure portal veya bir Azure Resource Manager şablonunu kullanın.
+Aşağıdaki örnek, geçici silme ve geçici silme bekletme süresini ayarlar, akışı Değiştir ' i ve sonra da zaman içinde geri yüklemeyi sunar. Örneği çalıştırmadan önce, blob sürüm oluşturmayı etkinleştirmek için Azure portal veya bir Azure Resource Manager şablonunu kullanın.
 
 Örneği çalıştırırken, açılı ayraçlar içindeki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
 
@@ -116,7 +102,7 @@ Bir lexıgraf aralığında joker karakterler desteklenmez. Herhangi bir joker k
 
 `$root` `$web` Geri yükleme işlemine geçirilen bir aralığa açıkça belirtilerek ve kapsayıcılardaki Blobları geri yükleyebilirsiniz. `$root`Ve `$web` kapsayıcıları yalnızca açık olarak belirtilmişse geri yüklenir. Diğer sistem kapsayıcıları geri yüklenemez.
 
-Yalnızca blok Blobları geri yüklenir. Sayfa Blobları ve ekleme Blobları geri yükleme işlemine dahil edilmez. Ekleme Blobları ile ilgili sınırlamalar hakkında daha fazla bilgi için bkz. [bilinen sorunlar](#known-issues).
+Yalnızca blok Blobları geri yüklenir. Sayfa Blobları ve ekleme Blobları geri yükleme işlemine dahil edilmez. Ekleme Blobları ile ilgili sınırlamalar hakkında daha fazla bilgi için bkz. [blok Blobları Için noktadan noktaya geri yükleme](point-in-time-restore-overview.md).
 
 > [!IMPORTANT]
 > Geri yükleme işlemi gerçekleştirdiğinizde, Azure depolama, işlem süresince geri yüklenen aralıklardaki bloblarda veri işlemlerini engeller. Birincil konumda okuma, yazma ve silme işlemleri engellenir. Bu nedenle, Azure portal kapsayıcıları gibi işlemler geri yükleme işlemi devam ederken beklendiği gibi gerçekleştirilemeyebilir.
@@ -141,13 +127,30 @@ Depolama hesabındaki tüm kapsayıcıları ve Blobları Azure portal geri yükl
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Depolama hesabındaki tüm kapsayıcıları ve Blobları PowerShell ile geri yüklemek için, parametresini atlayarak **restore-AzStorageBlobRange** komutunu çağırın `-BlobRestoreRange` . Aşağıdaki örnek, depolama hesabındaki kapsayıcıları, mevcut andan önceki durumuna 12 saat öncesine geri yükler:
+Depolama hesabındaki tüm kapsayıcıları ve Blobları PowerShell ile geri yüklemek için **restore-AzStorageBlobRange** komutunu çağırın. Varsayılan olarak **restore-AzStorageBlobRange** komutu zaman uyumsuz olarak çalışır ve geri yükleme işleminin durumunu denetlemek Için kullanabileceğiniz **PSBlobRestoreStatus** türünde bir nesne döndürür.
+
+Aşağıdaki örnek, depolama hesabındaki kapsayıcıları, mevcut andan önce 12 saat öncesine zaman uyumsuz olarak geri yükler ve geri yükleme işleminin bazı özelliklerini denetler:
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
-Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+$restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -TimeToRestore (Get-Date).AddHours(-12)
+
+# Get the status of the restore operation.
+$restoreOperation.Status
+# Get the ID for the restore operation.
+$restoreOperation.RestoreId
+# Get the restore point in UTC time.
+$restoreOperation.Parameters.TimeToRestore
+```
+
+Geri yükleme işlemini zaman uyumlu olarak çalıştırmak için, komutuna **-waitfortam** parametresini ekleyin. **-Waitfortamamlana** parametresi mevcut olduğunda, PowerShell işlemin GERI yükleme kimliğini içeren bir ileti görüntüler ve ardından geri yükleme işlemi tamamlanana kadar yürütmeyi engeller. Geri yükleme işlemi için gereken süre uzunluğunun geri yüklenecek veri miktarına bağlı olduğunu ve büyük bir geri yükleme işleminin tamamlanması bir saate kadar sürebileceğini aklınızda bulundurun.
+
+```powershell
+Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -TimeToRestore (Get-Date).AddHours(-12) -WaitForComplete
 ```
 
 ---
@@ -184,18 +187,18 @@ Görüntüde gösterilen geri yükleme işlemi aşağıdaki eylemleri gerçekle�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Tek bir blob aralığını geri yüklemek için **restore-AzStorageBlobRange** komutunu çağırın ve parametresi için bir lexıgraf kapsayıcı ve BLOB adı belirtin `-BlobRestoreRange` . Örneğin, blob 'ları *örnek kapsayıcı*adlı tek bir kapsayıcıda geri yüklemek için *örnek kapsayıcla* başlayan ve *örnek-kapsayıcı1*ile biten bir Aralık belirtebilirsiniz. Başlangıç ve bitiş aralıklarında adlı kapsayıcılar için bir gereksinim yok. Aralığın sonu özel olduğundan, depolama hesabı *Sample-kapsayıcı1*adlı bir kapsayıcı içerse bile, yalnızca *örnek kapsayıcı* adlı kapsayıcı geri yüklenecek:
+Tek bir blob aralığını geri yüklemek için **restore-AzStorageBlobRange** komutunu çağırın ve parametresi için bir lexıgraf kapsayıcı ve BLOB adı belirtin `-BlobRestoreRange` . Örneğin, *kapsayıcı1*adlı tek bir kapsayıcıdaki Blobları geri yüklemek için, *kapsayıcı1* ile başlayan ve *container2*ile biten bir Aralık belirleyebilirsiniz. Başlangıç ve bitiş aralıklarında adlı kapsayıcılar için bir gereksinim yok. Aralığın sonu dışlamalı olduğundan, depolama hesabı *container2*adlı bir kapsayıcı içerse de, yalnızca *kapsayıcı1* adlı kapsayıcı geri yüklenecektir:
 
 ```powershell
-$range = New-AzStorageBlobRangeToRestore -StartRange sample-container `
-    -EndRange sample-container1
+$range = New-AzStorageBlobRangeToRestore -StartRange container1 `
+    -EndRange container2
 ```
 
 Geri yüklenecek bir kapsayıcıdaki Blobların bir alt kümesini belirtmek için, blob öneki düzeninden kapsayıcı adını ayırmak için bir eğik çizgi (/) kullanın. Örneğin, aşağıdaki Aralık, adları *d* ile *f*ile başlayan tek bir kapsayıcıdaki Blobları seçer:
 
 ```powershell
-$range = New-AzStorageBlobRangeToRestore -StartRange sample-container/d `
-    -EndRange sample-container/g
+$range = New-AzStorageBlobRangeToRestore -StartRange container1/d `
+    -EndRange container1/g
 ```
 
 Ardından, **geri yükleme-AzStorageBlobRange** komutuna olan aralığı belirtin. Parametre için bir UTC **Tarih saat** değeri sağlayarak geri yükleme noktasını belirtin `-TimeToRestore` . Aşağıdaki örnek, belirtilen aralıktaki Blobları mevcut andan 3 güne geri yükler:
@@ -208,7 +211,15 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -TimeToRestore (Get-Date).AddDays(-3)
 ```
 
-Blok bloblarının birden çok aralığını geri yüklemek için, parametre için bir Aralık dizisi belirtin `-BlobRestoreRange` . Aşağıdaki örnek, *kapsayıcı1* ve *container4*' nin tüm içeriğini geri yüklemek için iki aralığı belirtir:
+Varsayılan olarak **restore-AzStorageBlobRange** komutu zaman uyumsuz olarak çalışır. Bir geri yükleme işlemini zaman uyumsuz olarak başlattığınızda, PowerShell hemen işlem için bir özellik tablosu görüntüler:  
+
+```powershell
+Status     RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges
+------     ---------                            ------------- ------------------------     ---------------------
+InProgress 459c2305-d14a-4394-b02c-48300b368c63               2020-09-15T23:23:07.1490859Z ["container1/d" -> "container1/g"]
+```
+
+Blok bloblarının birden çok aralığını geri yüklemek için, parametre için bir Aralık dizisi belirtin `-BlobRestoreRange` . Aşağıdaki örnek, *kapsayıcı1* ve *container4* ' nin tüm içeriğini 24 saat önce geri yüklemek için iki aralığı belirtir ve sonucu bir değişkene kaydeder:
 
 ```powershell
 # Specify a range that includes the complete contents of container1.
@@ -218,43 +229,26 @@ $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 `
 $range2 = New-AzStorageBlobRangeToRestore -StartRange container4 `
     -EndRange container5
 
-Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+$restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddMinutes(-30) `
+    -TimeToRestore (Get-Date).AddHours(-24) `
     -BlobRestoreRange @($range1, $range2)
+
+# Get the status of the restore operation.
+$restoreOperation.Status
+# Get the ID for the restore operation.
+$restoreOperation.RestoreId
+# Get the blob ranges specified for the operation.
+$restoreOperation.Parameters.BlobRanges
 ```
+
+Geri yükleme işlemini eşzamanlı olarak çalıştırmak ve tamamlanana kadar yürütmeyi engellemek için, komutuna **-waitfortam** parametresini ekleyin.
 
 ---
 
-### <a name="restore-block-blobs-asynchronously-with-powershell"></a>Blok bloblarını PowerShell ile zaman uyumsuz olarak geri yükleme
-
-Geri yükleme işlemini zaman uyumsuz olarak çalıştırmak için, `-AsJob` **geri yükleme-AzStorageBlobRange** öğesine yapılan çağrıya parametreyi ekleyin ve çağrının sonucunu bir değişkende depolayın. **Restore-AzStorageBlobRange** komutu, **AzureLongRunningJob**türünde bir nesne döndürür. Geri yükleme işleminin tamamlanıp tamamlanmadığını anlamak için bu nesnenin **durum** özelliğini kontrol edebilirsiniz. **Durum** özelliğinin değeri **çalışıyor** veya **tamamlanmış**olabilir.
-
-Aşağıdaki örnek, bir geri yükleme işleminin zaman uyumsuz olarak nasıl çağrılacağını göstermektedir:
-
-```powershell
-$job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
-    -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddMinutes(-5) `
-    -AsJob
-
-# Check the state of the job.
-$job.State
-```
-
-Geri yükleme işleminin tamamlanmasından sonra tamamlanmasını beklemek için, aşağıdaki örnekte gösterildiği gibi [wait-Job](/powershell/module/microsoft.powershell.core/wait-job) komutunu çağırın:
-
-```powershell
-$job | Wait-Job
-```
-
-## <a name="known-issues"></a>Bilinen sorunlar
-
-Ekleme Blobları bulunan geri yükleme işlemlerinin bir alt kümesi için geri yükleme işlemi başarısız olur. Microsoft hesapta ekleme Blobları varsa, önizleme sırasında bir zaman içinde geri yükleme gerçekleştirmenizi önerir.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Blok Blobları için noktadan noktaya geri yükleme (Önizleme)](point-in-time-restore-overview.md)
+- [Blok Blobları için noktadan noktaya geri yükleme](point-in-time-restore-overview.md)
 - [Geçici silme](soft-delete-overview.md)
-- [Akışı Değiştir (Önizleme)](storage-blob-change-feed.md)
+- [Akışı Değiştir](storage-blob-change-feed.md)
 - [Blob sürümü oluşturma](versioning-overview.md)

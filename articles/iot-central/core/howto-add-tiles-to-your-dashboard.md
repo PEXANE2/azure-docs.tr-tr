@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 892bdcc08bd19b92c8b3d32d2954583f80005e87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: beeb771ea5053dd0ad867a7568aa64bbb2d0b4ed
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022921"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985303"
 ---
 # <a name="configure-the-application-dashboard"></a>Uygulama panosunu yapılandırma
 
@@ -56,7 +56,7 @@ Aşağıdaki tabloda, bir panoya ekleyebileceğiniz farklı kutucuk türleri aç
 | Markdown         | Markın kutucukları, markaşağı kullanarak biçimlendirilen bir başlık ve açıklama metnini görüntüleyen tıklatılabilir kutucuklardır. URL, uygulamadaki başka bir sayfanın göreli bağlantısı veya dış siteye mutlak bir bağlantı olabilir.|
 | Görüntü            | Görüntü kutucukları özel bir görüntü görüntüler ve tıklatılabilir olabilir. URL, uygulamadaki başka bir sayfanın göreli bağlantısı veya dış siteye mutlak bir bağlantı olabilir.|
 | Etiketle            | Etiket kutucukları, bir panoda özel metin görüntüler. Metnin boyutunu seçebilirsiniz. İlgili bilgileri panoya, iletişim ayrıntılarına veya yardım 'a eklemek için bir etiket kutucuğu kullanın.|
-| Sayı            | Sayı kutucukları bir cihaz grubundaki cihaz sayısını görüntüler.|
+| Count            | Sayı kutucukları bir cihaz grubundaki cihaz sayısını görüntüler.|
 | Harita              | Harita kutucukları bir haritadaki bir veya daha fazla cihazın konumunu görüntüler. Ayrıca, bir cihazın konum geçmişinin en fazla 100 noktasını görüntüleyebilirsiniz. Örneğin, bir cihazın geçen hafta içinde bulunduğu yerin örneklendiği yolunu görüntüleyebilirsiniz.|
 | KPI              |  KPI kutucukları, bir veya daha fazla cihazın bir zaman diliminde toplam telemetri değerlerini görüntüler. Örneğin, son bir saat içinde bir veya daha fazla cihaz için en fazla sıcaklık ve basınç sınırına ulaşılmayı göstermek için bunu kullanabilirsiniz.|
 | Çizgi grafik       | Çizgi grafik kutucukları bir veya daha fazla cihaz için bir zaman dilimi için bir veya daha fazla toplama telemetri değeri çizdir. Örneğin, son bir saat için bir veya daha fazla cihazın ortalama sıcaklığını ve basıncını çizmek üzere bir çizgi grafik görüntüleyebilirsiniz.|
@@ -79,7 +79,19 @@ Toplam değerleri görüntüleyen kutucuklar için, toplamayı seçmek üzere **
 
 Dize özelliklerini veya telemetri değerlerini gösteren kutucuklar için metnin nasıl görüntüleneceğini seçebilirsiniz. Örneğin, cihaz bir URL 'YI dize özelliğinde depoluyorsa, bunu tıklatılabilir bir bağlantı olarak gösterebilirsiniz. URL bir resme başvuruyorsa, görüntüyü bilinen son bir değer veya özellik kutucuğunda işleyebilirsiniz. Bir dizenin nasıl görüntüleneceğini değiştirmek için, kutucuk yapılandırmasında telemetri türü veya özelliğin yanındaki dişli simgesini seçin:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Bir dizenin bir kutucukta nasıl görüntüleneceğini chanz":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Bir kutucukta bir dizenin nasıl görüntüleneceğini değiştirme":::
+
+Sayısal **KPI**, **bilinen son değer**ve **özellik** kutucukları için, geçerli değerine göre kutucuğun rengini özelleştirmek üzere koşullu biçimlendirme kullanabilirsiniz. Koşullu biçimlendirme eklemek için kutucukta **Yapılandır** ' ı seçin ve ardından özelleştireceğiniz değerin yanındaki **koşullu biçimlendirme** simgesini seçin:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Bir kutucuk için yapılandırma seçeneğinin nasıl bulunacağını ve sonra koşullu biçimlendirme simgesini gösteren ekran görüntüsü":::
+
+Koşullu biçimlendirme kurallarınızı ekleyin:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Ortalama akış için koşullu biçimlendirme kurallarını gösteren ekran görüntüsü. Üç kural vardır-daha az Tha 20 yeşil, 50 ' den az sarı ve 50 ' den fazla şey kırmızıdır":::
+
+Aşağıdaki ekran görüntüsünde koşullu biçimlendirme kuralının etkisi gösterilmektedir:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Ortalama su akışı kutucuğunda sarı arka plan rengini gösteren ekran görüntüsü. Kutucuktaki sayı 40,84 ' dir":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

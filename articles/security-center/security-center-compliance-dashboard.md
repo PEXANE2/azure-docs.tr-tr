@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: a636acab42d14925f507568e8a9fff4693c8f71c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7f235f9255df49c096e224e1754ad2bbdf664423
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519652"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895825"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Öğretici: mevzuata uyumluluğunuzu geliştirme
 ---
@@ -35,8 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide ele alınan özellikler arasında ilerlemek için Güvenlik Merkezi 'nin standart fiyatlandırma katmanına sahip olmanız gerekir. Güvenlik Merkezi Standart 'ı ücretsiz olarak deneyebilirsiniz.
-Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](https://docs.microsoft.com/azure/security-center/security-center-get-started) başlıklı hızlı başlangıçta Standart katmanına nasıl yükseltebileceğiniz adım adım açıklanmıştır.
+Bu öğreticide ele alınan özellikler arasında ilerlemek için [Azure Defender](azure-defender.md) etkinleştirilmelidir. Azure Defender 'ı 30 gün boyunca ücretsiz olarak deneyebilirsiniz.
 
 ##  <a name="assess-your-regulatory-compliance"></a>Mevzuata uyumluluğunuzu değerlendirin
 
@@ -72,13 +71,13 @@ Yasal uyumluluk panosundaki bilgiler verildiğinde, önerileri doğrudan pano i�
 
 1.  Daha fazla ayrıntı görüntülemek ve söz konusu kaynak için öneriyi çözümlemek üzere belirli bir kaynağı seçebilirsiniz. <br>Örneğin, **Azure CIS standart** sekmesinde, **depolama hesabına güvenli aktarım gerektir**önerisi ' ne tıklayabilirsiniz.
 
-    ![Uyumluluk önerisi](./media/security-center-compliance-dashboard/compliance-recommendation.png)
+    ![Öneriyi seçme * * depolama hesabına güvenli aktarım gerektir * *](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
 1. Öneri bilgilerine tıklayıp sağlıksız bir kaynağı seçtiğinizde, Azure portal içinde **güvenli depolama aktarımını** etkinleştirme deneyimine doğrudan yol açar.
 
     Önerilerin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini uygulama](security-center-recommendations.md).
 
-    ![Uyumluluk önerisi](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
+    ![Depolama hesabı yapılandırması](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
 1.  Önerileri çözümlemek için eylem gerçekleştirdikten sonra uyumluluk puanınız artdığından uyumluluk panosu raporundaki etkiyi görürsünüz.
 

@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fec959ee34f9491b6510390d4b390e652690897e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 351c7e21bfe59b22f451adddad8fed220c218358
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547095"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983132"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Jive 'yi yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den Jive 'ye Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Jive ve Azure AD 'de gerçekleştirmeniz gereken adımları gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 *   Azure Active Directory kiracısı.
 *   Bir Jive çoklu oturum açma etkin aboneliği.
@@ -61,9 +61,9 @@ Bu yordamın bir parçası olarak, Jive.com ' den istemeniz gereken bir Kullanı
 
 1. Jive örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-1. **Sağlama modunu** **Otomatik**olarak ayarlayın. 
+1. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın. 
 
-    ![alınıyor](./media/jive-provisioning-tutorial/provisioning.png)
+    ![Ekran görüntüsü, sağlama modu otomatik ve ayarlayabileceğiniz diğer değerlere ayarlanmış olan Jive sağlama sayfasını gösterir.](./media/jive-provisioning-tutorial/provisioning.png)
 
 1. **Yönetici kimlik bilgileri** bölümünde aşağıdaki yapılandırma ayarlarını sağlayın:
    
@@ -97,6 +97,6 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 * [Çoklu oturum açmayı yapılandırma](jive-tutorial.md)

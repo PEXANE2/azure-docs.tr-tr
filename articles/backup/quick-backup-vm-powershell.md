@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 4a97a084b11b34f97e0c020f367ec730d8dfb079
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5e83c599ceed76927f2a313f78c83638d708f1bb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075741"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985138"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>PowerShell ile Azure'daki bir sanal makineyi yedekleme
 
@@ -46,7 +46,7 @@ Kasayı oluştururken:
 
 - Kaynak grubu ve konum için, yedeklemek istediğiniz sanal makinenin kaynak grubunu ve konumunu belirtin.
 - VM oluşturmak için bu [örnek betiği](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) kullandıysanız kaynak grubu **myresourcegroup**, VM ***myvm**ve kaynaklar **westeurope** bölgedeyse.
-- Azure Backup, yedeklenen veriler için depolamayı otomatik olarak işler. Kasa, varsayılan olarak [coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanır. Coğrafi yedeklilik, yedeklenen verilerin birincil bölgeden yüzlerce mil uzakta olan ikincil bir Azure bölgesine çoğaltılmasını sağlar.
+- Azure Backup, yedeklenen veriler için depolamayı otomatik olarak işler. Kasa, varsayılan olarak [coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)kullanır. Coğrafi yedeklilik, yedeklenen verilerin birincil bölgeden yüzlerce mil uzakta olan ikincil bir Azure bölgesine çoğaltılmasını sağlar.
 
 Şimdi bir kasa oluşturun:
 

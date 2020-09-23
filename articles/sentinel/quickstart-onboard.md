@@ -9,18 +9,18 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0e0530432fd72335a9ed9ab4d53ca5bc80c7c6da
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: e9d7c99a123bd92bf55a33c8d1faaf7da55d3e36
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661976"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889032"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Hızlı başlangıç: yerleşik Azure Sentinel
 
 Bu hızlı başlangıçta, yerleşik Azure Sentinel 'i nasıl yapacağınızı öğrenin. 
 
-Azure Sentinel 'de, ilk olarak Azure Sentinel 'i etkinleştirmeniz ve sonra veri kaynaklarınızı bağlamanız gerekir. Azure Sentinel, Microsoft çözümleri için çok sayıda bağlayıcı sunar ve Microsoft 365 Defender (eski adıyla Microsoft tehdit koruması) çözümleri, Microsoft 365 kaynakları (Office 365 dahil), Azure AD, kimlik için Microsoft Defender (eskiden Azure ATP), Microsoft Cloud App Security ve daha fazlasını içeren gerçek zamanlı tümleştirme sağlar. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar vardır. Veri kaynaklarınızı Azure Sentinel 'e bağlamak için ortak olay biçimi (CEF), syslog veya REST API 'yi de kullanabilirsiniz.  
+Azure Sentinel 'de, ilk olarak Azure Sentinel 'i etkinleştirmeniz ve sonra veri kaynaklarınızı bağlamanız gerekir. Azure Sentinel, Microsoft çözümleri için çok sayıda bağlayıcı sunar ve Microsoft 365 Defender (eski adıyla Microsoft tehdit koruması) çözümleri, Microsoft 365 kaynakları (Office 365 dahil), Azure AD, Microsoft Cloud App Security kimlik için Microsoft Defender, Azure Güvenlik Merkezi 'ndeki Azure Defender uyarıları ve daha fazlasını içeren gerçek zamanlı tümleştirme sağlar. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar vardır. Veri kaynaklarınızı Azure Sentinel 'e bağlamak için ortak olay biçimi (CEF), syslog veya REST API 'yi de kullanabilirsiniz. 
 
 Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertly oluşturulan çalışma kitapları galerisinden seçim yapın. Bu çalışma kitapları, gereksinimlerinize kolayca özelleştirilebilir.
 
@@ -41,20 +41,20 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
  
 ## <a name="enable-azure-sentinel"></a>Azure Sentinel 'i etkinleştirme <a name="enable"></a>
 
-1. Azure portalında oturum açın. Azure Sentinel 'in oluşturulduğu aboneliğin seçildiğinden emin olun.
+1. Azure Portal’da oturum açın. Azure Sentinel 'in oluşturulduğu aboneliğin seçildiğinden emin olun.
 
 1. **Azure Sentinel**' i arayıp seçin.
 
    ![Hizmet arama](./media/quickstart-onboard/search-product.png)
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. Kullanmak istediğiniz çalışma alanını seçin veya yeni bir tane oluşturun. Azure Sentinel 'i birden fazla çalışma alanında çalıştırabilirsiniz, ancak veriler tek bir çalışma alanına yalıtılmış olur.
 
    ![Çalışma alanı seçin](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
-   > - Azure Defender (eski adıyla Azure Güvenlik Merkezi) tarafından oluşturulan varsayılan çalışma alanları listede görünmez; Azure Sentinel 'i bunlara yükleyemezsiniz.
+   > - Azure Güvenlik Merkezi tarafından oluşturulan varsayılan çalışma alanları listede görünmez; Azure Sentinel 'i bunlara yükleyemezsiniz.
    > - Azure Sentinel, Çin ve Almanya (Sovereign) bölgeleri hariç Log Analytics herhangi bir [ga bölgesindeki](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) çalışma alanlarında çalıştırılabilir. Azure Sentinel tarafından oluşturulan (olaylar, yer işaretleri ve uyarı kuralları gibi) veriler, bu çalışma alanlarından birinde bulunan bazı müşteri verilerini içeren Avrupa (Avrupa 'da bulunan çalışma alanları için), Avustralya (Avustralya 'da bulunan çalışma alanları için) veya Doğu ABD (diğer bölgelerde bulunan çalışma alanları için).
 
    >[!IMPORTANT]
@@ -64,7 +64,6 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
    >   Çalışma alanını zaten taşıdıysanız, **analiz** altındaki tüm etkin kuralları devre dışı bırakın ve beş dakika sonra yeniden etkinleştirin. Bu durum çoğu durumda etkili olmalıdır, ancak yeniden yinelemek için, bu, sizin sorumluluğunuzdadır ve riski size aittir.
 
 1. **Azure Sentinel Ekle**' yi seçin.
-  
 
 ## <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
 

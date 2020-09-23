@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge cihazınızı izleme | Microsoft Docs
-description: Azure Stack kenarını izlemek için Azure portal ve yerel Web Kullanıcı arabiriminin nasıl kullanılacağını açıklar.
+title: Azure Stack Edge Pro cihazınızı izleme | Microsoft Docs
+description: Azure Stack Edge Pro 'Yu izlemek için Azure portal ve yerel Web Kullanıcı arabiriminin nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e4050a4a75432e8bcc840a2406660dce268c5a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd75eb0f7de602979f2233a873c01ef742471e37
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339561"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904399"
 ---
-# <a name="monitor-your-azure-stack-edge"></a>Azure Stack kenarını izleyin
+# <a name="monitor-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'Yu izleyin
 
-Bu makalede Azure Stack Kenarlarınızın nasıl izleneceği açıklanır. Cihazınızı izlemek için Azure portal veya yerel Web Kullanıcı arabirimi ' ni kullanabilirsiniz. Cihaz olaylarını görüntülemek, uyarıları yapılandırmak ve yönetmek ve ölçümleri görüntülemek için Azure portal kullanın. Çeşitli cihaz bileşenlerinin donanım durumunu görüntülemek için fiziksel cihazınızda yerel Web Kullanıcı arabirimini kullanın.
+Bu makalede Azure Stack Edge Pro 'Nun nasıl izleneceği açıklanır. Cihazınızı izlemek için Azure portal veya yerel Web Kullanıcı arabirimi ' ni kullanabilirsiniz. Cihaz olaylarını görüntülemek, uyarıları yapılandırmak ve yönetmek ve ölçümleri görüntülemek için Azure portal kullanın. Çeşitli cihaz bileşenlerinin donanım durumunu görüntülemek için fiziksel cihazınızda yerel Web Kullanıcı arabirimini kullanın.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -34,9 +34,9 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="view-hardware-status"></a>Donanım durumunu görüntüleme
 
-Cihaz bileşenlerinizin donanım durumunu görüntülemek için yerel Web Kullanıcı arabiriminde aşağıdaki adımları uygulayın.
+Cihaz bileşenlerinizin donanım durumunu görüntülemek için yerel web kullanıcı arabiriminde aşağıdaki adımları izleyin.
 
-1. Cihazınızın yerel Web Kullanıcı arabirimine bağlanın.
+1. Cihazınızın yerel web kullanıcı arabirimine bağlanın.
 2. **Bakım > donanım durumu**' na gidin. Çeşitli cihaz bileşenlerinin sistem durumunu görüntüleyebilirsiniz.
 
     ![Donanım durumunu görüntüleme](media/azure-stack-edge-monitor/view-hardware-status.png)

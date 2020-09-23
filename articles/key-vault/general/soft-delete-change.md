@@ -10,17 +10,19 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: c5509d6a284ab7afe827f67b79b7be027e76f66c
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: bf758a07cff248fc0da3f279e68a14e88797e382
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068855"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984600"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Geçici silme, tüm anahtar kasaları üzerinde etkinleştirilecek
 
 > [!WARNING]
 > **Son değişiklik**: geçici silme işlemini devre dışı bırakma özelliği, yılın sonuna kadar kullanım dışı olacaktır ve tüm anahtar kasaları için otomatik olarak geçici silme koruması açılır.  Azure Key Vault kullanıcılar ve Yöneticiler, anahtar kasalarında doğrudan geçici silme olanağı sağlamalıdır.
+>
+> Yönetilen HSM için geçici silme varsayılan olarak etkindir ve devre dışı bırakılamaz.
 
 Gizli dizi koruması olmayan bir anahtar kasasından gizli dizi silindiğinde, gizli dizi kalıcı olarak silinir. Kullanıcılar şu anda Anahtar Kasası oluşturma sırasında geçici silme işlemini kapatabilir, ancak gizli dizileri bir kullanıcı tarafından yanlışlıkla veya kötü amaçlı olarak silinmeye karşı korumak için, Microsoft yakında **Tüm** Anahtar kasaları üzerinde geçici silme korumasını etkinleştirir ve kullanıcılar artık devre dışı bırakma veya etkinleştirme seçeneğine sahip olmayacaktır.
 

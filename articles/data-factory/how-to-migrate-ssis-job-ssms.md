@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b95162d34b706b0bbb3e2940ea214e5a662655d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82627594"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984908"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SSMS ile SQL Server Agent işleri ADF 'ye geçirme
 
@@ -46,7 +46,7 @@ Bu makalede açıklanan özellik SQL Server Management Studio sürüm 18,5 veya 
 ## <a name="migrate-ssis-jobs-to-adf"></a>SSIS işlerini ADF 'ye geçirme
 
 1. SSMS 'de, Nesne Gezgini SQL Server Agent ' i seçin, Işler ' i seçin, ardından sağ tıklayıp **SSIS IŞLERINI ADF 'ye geçir**' i seçin.
-![Menü](media/how-to-migrate-ssis-job-ssms/menu.png)
+![Ekran görüntüsü SQL Server Management Studio Nesne Gezgini gösterir, burada Işler ' i seçebilir ve sonra s s I Işleri bir D F 'ye geçirebilirsiniz.](media/how-to-migrate-ssis-job-ssms/menu.png)
 
 1. Azure 'Da oturum açın, Azure aboneliği, Data Factory ve Integration Runtime seçin. ' Nin geçirilmesi gereken SSIS dosya sistemi paketlerine sahip olması durumunda, paket konumu eşleme adımında kullanılan Azure depolama isteğe bağlıdır.
 ![Menü](media/how-to-migrate-ssis-job-ssms/step1.png)
@@ -57,28 +57,28 @@ Bu makalede açıklanan özellik SQL Server Management Studio sürüm 18,5 veya 
     1. Kaynak klasör yolunu güncelleştirme. Geçerli yollar, paketlerin klasör yolları veya üst klasör yollarıdır.
     1. Hedef klasör yolunu güncelleştirme. Varsayılan, 1. adımda seçilen varsayılan depolama hesabının göreli yoludur.
     1. Seçili eşlemeyi **silme eşlemesi**aracılığıyla silin.
-![Step2 ](media/how-to-migrate-ssis-job-ssms/step2.png)
- ![ Step2-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![Ekran görüntüsü, eşleme ekleyebileceğiniz, harita s s paket ve yapılandırma yolları sayfasını gösterir. ](media/how-to-migrate-ssis-job-ssms/step2.png)
+ ![ Ekran görüntüsünde, kaynak ve hedef klasör yollarını güncelleştirebileceğiniz harita s s paketi ve yapılandırma yolları görüntülenir.](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. Geçirilecek geçerli işleri seçin ve ilgili *yürütülen SSIS paketi etkinliğinin*ayarlarını yapılandırın.
 
     - *Varsayılan ayar*, varsayılan olarak seçilen tüm adımlar için geçerlidir. Her özellik hakkında daha fazla bilgi için, paket konumu *dosya sistemi (paket)* olduğunda [SSIS paketi yürütme etkinliğinin](how-to-invoke-ssis-package-ssis-activity.md) *Ayarlar sekmesi* bölümüne bakın.
-    ![Step3-1](media/how-to-migrate-ssis-job-ssms/step3-1.png)
+    ![Ekran görüntüsü, ilgili yürütülen SSIS paketi etkinliğinin ayarlarını yapılandırabileceğiniz, S s I Işleri Seç sayfasını gösterir.](media/how-to-migrate-ssis-job-ssms/step3-1.png)
     - *Adım ayarı*, seçili bir adım için ayarı yapılandırın.
         
         **Varsayılan ayarı uygula**: varsayılan seçilidir. Ayarı yalnızca seçilen adım için yapılandırmak üzere seçimini kaldırın.  
         Diğer özellikler hakkında daha fazla bilgi için, paket konumu *dosya sistemi (paket)* olduğunda [SSIS paketi yürütme etkinliğinin](how-to-invoke-ssis-package-ssis-activity.md) *Ayarlar sekmesi* bölümüne bakın.
-    ![Step3-2](media/how-to-migrate-ssis-job-ssms/step3-2.png)
+    ![Ekran görüntüsü, varsayılan ayarları uygulayabileceğiniz, S s I Işleri Seç sayfasını gösterir.](media/how-to-migrate-ssis-job-ssms/step3-2.png)
 
 1. ARM şablonu oluşturun ve dağıtın.
     1. Geçirilen ADF işlem hatlarının ARM şablonlarının çıkış yolunu seçin veya girin. Klasör yoksa, otomatik olarak oluşturulur.
     2. **ARM şablonlarını veri fabrikanıza dağıtma**seçeneğini belirleyin:
         - Varsayılan değer seçilmemiş. Oluşturulan ARM şablonlarını daha sonra el ile dağıtabilirsiniz.
         - Oluşturulan ARM şablonlarını Data Factory 'ye doğrudan dağıtmayı seçin.
-    ![step4](media/how-to-migrate-ssis-job-ssms/step4.png)
+    ![Ekran görüntüsü geçişi Yapılandır sayfasını gösterir; burada, geçirilen ADF işlem hatlarının ARM şablonlarının çıkış yolunu seçebilir veya girebilirsiniz ve veri fabrikanıza ARM şablonları dağıtma seçeneğini belirleyebilirsiniz.](media/how-to-migrate-ssis-job-ssms/step4.png)
 
 1. Geçirin ve sonuçları denetleyin.
-![step5](media/how-to-migrate-ssis-job-ssms/step5.png)
+![Ekran görüntüsü, geçişin ilerlemesini görüntüleyen geçiş sonucu sayfasını gösterir.](media/how-to-migrate-ssis-job-ssms/step5.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

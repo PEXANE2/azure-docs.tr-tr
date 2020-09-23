@@ -1,6 +1,6 @@
 ---
 title: Gerçekleştirilmiş görünümlerle performans ayarı
-description: Sorgu performansınızı geliştirmek için gerçekleştirilmiş görünümleri kullanırken bilmeniz gereken öneriler ve önemli noktalar.
+description: Sorgu performansınızı geliştirmek için gerçekleştirilmiş görünümleri kullanırken bilmeniz gereken öneriler ve noktalar hakkında bilgi edinin.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: ddab106e11340dd040b99d1e8abf9d93e9338ab7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441213"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984110"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Gerçekleştirilmiş görünümlerle performans ayarı
 
@@ -38,7 +38,7 @@ Standart görünümde gereksinimlerin çoğu, gerçekleştirilmiş bir görünü
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor
 |Karmaşık sorgulardan Görünüm verilerini alma hızı     | Yavaş                                         | Hızlı  
 |Ek depolama                   | Hayır                                           | Yes
-|Syntax                          | GÖRÜNÜM OLUŞTUR                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
+|Sözdizimi                          | GÖRÜNÜM OLUŞTUR                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
 
 ## <a name="benefits-of-using-materialized-views"></a>Gerçekleştirilmiş görünümleri kullanmanın avantajları
 
@@ -58,7 +58,7 @@ Diğer veri ambarı sağlayıcılarıyla karşılaştırıldığında, Azure SYN
 - Geniş kapsamlı toplama işlevi desteği. Bkz. [Select (Transact-SQL) olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 - Sorguya özgü gerçekleştirilmiş görünüm önerisi için destek.  Bkz. [açıkla (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="common-scenarios"></a>Genel senaryolar  
+## <a name="common-scenarios"></a>Yaygın senaryolar  
 
 Gerçekleştirilmiş görünümler genellikle aşağıdaki senaryolarda kullanılır:
 
@@ -115,7 +115,7 @@ Gerçekleştirilmiş görünümlerin sayısını azaltma seçenekleri:
 
 - Az kullanım veya artık gerekli olmayan gerçekleştirilmiş görünümleri bırakın.  Devre dışı gerçekleştirilmiş bir görünüm korunmaz, ancak depolama maliyeti hala buna neden olur.  
 
-- Verileri örtüşmese de aynı veya benzer temel tablolarda oluşturulan gerçekleştirilmiş görünümleri birleştirin.  Gerçekleştirilmiş görünümleri birleştirmek, farklı görünümlerin toplamından daha büyük bir görünüm oluşmasına neden olabilir, ancak görünüm bakım maliyeti azaltılmalıdır.  Örneğin:
+- Verileri örtüşmese de aynı veya benzer temel tablolarda oluşturulan gerçekleştirilmiş görünümleri birleştirin.  Gerçekleştirilmiş görünümleri birleştirmek, farklı görünümlerin toplamından daha büyük bir görünüm oluşmasına neden olabilir, ancak görünüm bakım maliyeti azaltılmalıdır.  Örnek:
 
 ```sql
 

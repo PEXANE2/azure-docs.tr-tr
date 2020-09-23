@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: de39789a45856211421e3ec5638a2df94d49976c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958720"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983009"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure App Service uygulama sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
@@ -70,15 +70,15 @@ Genellikle bir Web projesini, `customErrors` Web.config dosyasında olarak ayarl
 
 **'/' Uygulamasında sunucu hatası:**
 
-![Faydalı olmayan hata sayfası](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="Bir Web tarayıcısında '/' uygulama hatası içinde sunucu hatası gösteren ekran görüntüsü.":::
 
 **Bir hata oluştu:**
 
-![Faydalı olmayan hata sayfası](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="Web tarayıcısında oluşan genel bir hata örneğini gösteren ekran görüntüsü.":::
 
 **Web sitesi sayfayı görüntüleyemiyor**
 
-![Faydalı olmayan hata sayfası](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Web sitesini gösteren ekran görüntüsü, sayfa hatasını bir Web tarayıcısında görüntüleyemez.":::
 
 Genellikle hatanın nedenini bulmanın en kolay yolu, önceki ekran görüntülerinin ilk olarak nasıl yapılacağını açıklayan ayrıntılı hata iletilerini etkinleştirmektir. Bu, dağıtılan Web.config dosyasında bir değişiklik yapılmasını gerektirir. Projedeki *Web.config* dosyasını düzenleyebilir ve projeyi yeniden dağıtabilir ya da bir [Web.config dönüştürme](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) ve bir hata ayıklama derlemesi dağıtabilirsiniz, ancak daha hızlı bir yol vardır: **Çözüm Gezgini**, uzak uygulamadaki dosyaları *Uzaktan görünüm* özelliğini kullanarak doğrudan görüntüleyebilir ve düzenleyebilirsiniz.
 
@@ -139,7 +139,7 @@ Bu bölümde [, Azure App Service ' de bir ASP.NET uygulaması oluşturma](quick
 
 1. **Sunucu Gezgini**, uygulamanıza sağ tıklayın ve ardından **hata ayıklayıcı Ekle**' ye tıklayın.
 
-    ![Hata ayıklayıcı Ekle](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="Seçili uygulamayı gösteren Sunucu Gezgini penceresinin ekran görüntüsü ve hata ayıklayıcı Ekle ' ye tıklayın.":::
 
     Tarayıcı, Azure 'da çalışan giriş sayfanıza otomatik olarak açılır. Azure sunucuyu hata ayıklama için ayarlarken 20 saniye beklemeniz gerekebilir. Bu gecikme yalnızca, 48 saatlik bir dönemde bir uygulamada hata ayıklama modunda ilk kez çalıştırdığınızda gerçekleşir. Aynı dönemde hata ayıklamaya yeniden başladığınızda bir gecikme yoktur.
 
@@ -192,7 +192,7 @@ Uzaktan hata ayıklama yalnızca sürekli WebJobs ile kullanılabilir. Zamanlanm
 
 8. **Hata ayıklayıcı Ekle**' ye tıklayın.
 
-    ![Hata ayıklayıcı Ekle](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="Açılan menü ve hata ayıklayıcı ekle seçili ContosoAdsWebJob gösteren Sunucu Gezgini ekran görüntüsü.":::
 
     Tarayıcı, Azure 'da çalışan giriş sayfanıza otomatik olarak açılır. Azure sunucuyu hata ayıklama için ayarlarken 20 saniye beklemeniz gerekebilir. Bu gecikme yalnızca, 48 saatlik bir dönemde bir uygulamada hata ayıklama modunda ilk kez çalıştırdığınızda gerçekleşir. Aynı dönemde hata ayıklamaya yeniden başladığınızda bir gecikme yoktur.
 
@@ -340,11 +340,11 @@ WebJobs 'larda uygulama günlükleri oluşturma hakkında daha fazla bilgi için
 1. Tarayıcı penceresinin Adres çubuğunda, URL 'ye *Trace. axd* ekleyin ve ardından ENTER tuşuna basın (URL şuna benzer `http://localhost:53370/trace.axd` ).
 1. **Uygulama izleme** sayfasında, Ilk satırdaki **Ayrıntıları görüntüle** ' ye tıklayın (browserlink satırına değil).
 
-    ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="İlk satırda seçili görünüm ayrıntılarını gösteren bir Web tarayıcısında uygulama Izleme sayfasının ekran görüntüsü.":::
 
     **Istek ayrıntıları** sayfası görüntülenir ve **izleme bilgileri** bölümünde, yöntemine eklediğiniz izleme deyimlerinin çıktısını görürsünüz `Index` .
 
-    ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="Izleme bilgileri bölümünde vurgulanan bir iletiyi gösteren bir Web tarayıcısında Istek ayrıntıları sayfasının ekran görüntüsü.":::
 
     Varsayılan olarak `trace.axd` yalnızca yerel olarak kullanılabilir. Bir uzak uygulamadan kullanılabilir hale getirmek isterseniz, `localOnly="false"` `trace` Aşağıdaki örnekte gösterildiği gibi *Web.config* dosyasındaki öğesine ekleyebilirsiniz:
 
@@ -361,11 +361,12 @@ WebJobs 'larda uygulama günlükleri oluşturma hakkında daha fazla bilgi için
     Visual Studio, güncelleştirmenizi yayımladıktan sonra, giriş sayfanız için bir tarayıcı penceresi açar ( **bağlantı** SEKMESINDE **hedef URL** 'yi temizlemediğiniz varsayılır).
 3. **Sunucu Gezgini**, uygulamanıza sağ tıklayın ve **akış günlüklerini görüntüle**' yi seçin.
 
-    ![Akış günlüklerini bağlam menüsünde görüntüle](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="Uygulamanıza sağ tıkladıktan sonra yeni bir pencerede akış günlüklerini görüntüle seçiliyken Sunucu Gezgini ekran görüntüsü.":::
 
     **Çıkış** penceresi, günlük akış hizmetine bağlı olduğunu gösterir ve bir günlük görüntülemesi gerekmeden her dakikada bir bildirim satırı ekler.
 
-    ![Akış günlüklerini bağlam menüsünde görüntüle](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="Bildirim satırlarıyla bir günlük akış hizmetine bağlantı örneği gösteren çıkış penceresinin ekran görüntüsü.":::
+
 4. Uygulama giriş sayfanızı gösteren tarayıcı penceresinde, **iletişim**' e tıklayın.
 
     Birkaç saniye içinde, yönteme eklediğiniz hata düzeyi izlemenin çıktısı `Contact` **Çıkış** penceresinde görüntülenir.
@@ -393,7 +394,7 @@ WebJobs 'larda uygulama günlükleri oluşturma hakkında daha fazla bilgi için
 ### <a name="output-window-features"></a>Çıkış penceresi özellikleri
 **Çıkış** penceresinin **Microsoft Azure logs** sekmesinde birkaç düğme ve bir metin kutusu vardır:
 
-![Günlükler sekmesi düğmeleri](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="Çıkış penceresindeki Microsoft Azure günlükleri sekmesinin düğme ve metin kutusunu gösteren ekran görüntüsü.":::
 
 Bunlar aşağıdaki işlevleri gerçekleştirir:
 
@@ -457,14 +458,15 @@ Ayrıntılı hata günlükleri hata yanıt kodlarına (400 veya üzeri) neden ol
 
 1. **Çıkış** penceresinde, **akış günlüklerini indir**' e tıklayın.
 
-    ![Günlükler sekmesi düğmeleri](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="Akış günlüklerini Indir düğmesinin vurgulandığını gösteren çıkış penceresinin ekran görüntüsü.":::
 
     Dosya Gezgini, indirilen dosya seçiliyken *indirmeler* klasörünüze açılır.
 
-    ![İndirilen dosya](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="Dosya Gezgini 'nde indirilen bir dosya seçiliyken Indirmeler klasörünün ekran görüntüsü.":::
+
 2. *. Zip* dosyasını ayıklayın ve aşağıdaki klasör yapısını görürsünüz:
 
-    ![İndirilen dosya](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="Dosya ayıklandıktan sonra. zip dosya klasörü yapısının ekran görüntüsü.":::
 
    * Uygulama izleme günlükleri, *logfiles\application* klasöründeki *. txt* dosyalarıdır.
    * Web sunucusu günlükleri, *Logfiles\http\rawlogs* klasöründeki *. log* dosyalarıdır. Bu dosyaları görüntülemek ve işlemek için [günlük ayrıştırıcısı](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) gibi bir araç kullanabilirsiniz.

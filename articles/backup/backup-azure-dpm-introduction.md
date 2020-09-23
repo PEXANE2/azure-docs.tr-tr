@@ -3,12 +3,12 @@ title: DPM sunucusunu iş yüklerini yedekleyecek şekilde hazırlama
 description: Bu makalede, Azure Backup hizmetini kullanarak System Center Data Protection Manager (DPM) yedeklemelerini Azure 'a nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021043"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975459"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM ile iş yüklerini Azure 'a yedeklemeye hazırlanma
 
@@ -61,7 +61,7 @@ Coğrafi olarak yedekli depolama ve yerel olarak yedekli depolama arasında seç
 
 - Varsayılan olarak, kasanız coğrafi olarak yedekli depolamaya sahiptir.
 - Kasa birincil yedeklemenizin varsa, seçeneği coğrafi olarak yedekli depolama olarak ayarlayın. Gerçekten dayanıklı olmayan bir ucuz seçeneği istiyorsanız yerel olarak yedekli depolamayı yapılandırmak için aşağıdaki yordamı kullanın.
-- [Azure depolama](../storage/common/storage-redundancy.md)ve [coğrafi](../storage/common/storage-redundancy.md) olarak yedekli ve [yerel olarak yedekli](../storage/common/storage-redundancy.md) depolama seçenekleri hakkında bilgi edinin.
+- [Azure depolama](../storage/common/storage-redundancy.md)ve [coğrafi](../storage/common/storage-redundancy.md#geo-redundant-storage)olarak yedekli, [yerel olarak yedekli](../storage/common/storage-redundancy.md#locally-redundant-storage) ve [bölge yedekli](../storage/common/storage-redundancy.md#zone-redundant-storage) depolama seçenekleri hakkında bilgi edinin.
 - Depolama ayarlarını ilk yedeklemeden önce değiştirin. Zaten bir öğe yedeklediyseniz, depolama ayarlarını değiştirmeden önce kasada yedeklemeyi durdurun.
 
 Depolama çoğaltma ayarını düzenlemek için:
@@ -97,7 +97,7 @@ Kimlik bilgilerini almak için kasa kimlik bilgileri dosyasını Azure portal g�
 
 Kasa kimlik bilgileri dosyasını aşağıdaki gibi bir yerel makineye indirin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. DPM sunucusunu kaydetmek istediğiniz kasayı açın.
 3. **Ayarlar**' da **Özellikler**' i seçin.
 
@@ -165,7 +165,7 @@ Azure Backup tarafından yedeklenen her makinede Yedekleme aracısı (Ayrıca, M
 
 7. DPM sunucusunu kasaya kaydetmek için **Kaydet** ' i seçin.
 
-Sunucu kasada başarıyla kaydedildikten sonra, Microsoft Azure yedeklemeye başlamaya hazırsınız demektir. İş yüklerini Azure 'a yedeklemek için DPM konsolundaki koruma grubunu yapılandırmanız gerekir. Koruma gruplarını dağıtmayı [öğrenin](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) .
+Sunucu kasada başarıyla kaydedildikten sonra, Microsoft Azure yedeklemeye başlamaya hazırsınız demektir. İş yüklerini Azure 'a yedeklemek için DPM konsolundaki koruma grubunu yapılandırmanız gerekir. Koruma gruplarını dağıtmayı [öğrenin](/system-center/dpm/create-dpm-protection-groups) .
 
 ## <a name="troubleshoot-vault-credentials"></a>Kasa kimlik bilgileri sorunlarını giderme
 

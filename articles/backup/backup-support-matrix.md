@@ -4,12 +4,12 @@ description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaları
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892193"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985004"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -113,10 +113,10 @@ Azure Backup, geçiş sırasında ve bekleyen veriler için şifrelemeyi destekl
 
 **Makine** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-**DPM/MABS olmayan şirket içi Windows makineleri** | ![Evet][green] | ![Evet][green]
-**Azure VM’leri** | ![Evet][green] | ![Evet][green]
-**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
-**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
+**DPM/MABS olmayan şirket içi Windows makineleri** | ![Yes][green] | ![Yes][green]
+**Azure VM’leri** | ![Yes][green] | ![Yes][green]
+**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
+**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Sıkıştırma desteği
 
@@ -129,7 +129,7 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 --- | --- | ---
 **Şirket içi Windows makinelerini doğrudan yedekleme** | NA | ![Yes][green]
 **VM uzantısı kullanarak Azure VM 'lerini yedekleme** | NA | NA
-**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Evet][green] | ![Evet][green]
+**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Yes][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Bekletme sınırları
 
@@ -149,9 +149,9 @@ Azure Backup, veri kullanılabilirliğini ve dayanıklılık özelliğini güçl
 
 | Yedekleme yönetimi türü | Desteklenir                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri.  |
-| MARS Aracısı/şirket içi | Hayır                                                           | Yok               |
-| SQL/SAP HANA          | Hayır                                                           | Yok               |
+| Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri ve bağımsız bulutlar.  |
+| SQL/SAP HANA | Yes                                                          | Tüm Azure ortak bölgeleri ve bağımsız bulutlar.             |
+| MARS Aracısı/şirket içi  | Hayır                                                           | Yok               |
 | 'Nın                    | Hayır                                                           | Yok               |
 
 ## <a name="next-steps"></a>Sonraki adımlar

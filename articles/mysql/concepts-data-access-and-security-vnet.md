@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 77980541049740c5f706d54d289472a076103137
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: f114dd4d4f0a9a26a8aab1f8aeecd4d29678a8d2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461910"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896290"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>MySQL için Azure Veritabanı ile Sanal Ağ hizmet uç noktalarını ve kuralları kullanma
 
@@ -19,7 +19,7 @@ ms.locfileid: "89461910"
 
 Bir sanal ağ kuralı oluşturmak için öncelikle kuralın başvurması için bir [sanal ağ][vm-virtual-network-overview] (VNet) ve bir [sanal ağ hizmeti uç noktası][vm-virtual-network-service-endpoints-overview-649d] olmalıdır. Aşağıdaki resimde, bir sanal ağ hizmeti uç noktasının MySQL için Azure veritabanı ile nasıl çalıştığı gösterilmektedir:
 
-![VNet hizmeti uç noktasının nasıl çalıştığı hakkında örnek](media/concepts-data-access-and-security-vnet/vnet-concept.png)
+:::image type="content" source="media/concepts-data-access-and-security-vnet/vnet-concept.png" alt-text="VNet hizmeti uç noktasının nasıl çalıştığı hakkında örnek":::
 
 > [!NOTE]
 > Bu özellik, MySQL için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş sunucular için dağıtıldığı tüm Azure bölgelerinde kullanılabilir.

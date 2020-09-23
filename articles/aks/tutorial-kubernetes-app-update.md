@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
-ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e9981f9df31f6de21262aedc9790dbf1a7725fc7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77593385"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985359"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) bir uygulamayı güncelleştirme
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 Güncelleştirilmiş kapsayıcı görüntüsünde yaptığınız değişikliklerin göründüğünü doğrulamak için yerel web tarayıcısında `http://localhost:8080` adresine gidin.
 
-![Azure’da Kubernetes kümesinin görüntüsü](media/container-service-kubernetes-tutorials/vote-app-updated.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Yerel bir Web tarayıcısı ve yerel ana bilgisayar ile açılan güncelleştirilmiş kapsayıcı görüntüsü Azure oylama uygulaması örneğini gösteren ekran görüntüsü.":::
 
 *Config_file. cfg* dosyasında belirtilen güncelleştirilmiş değerler, çalışan uygulamanızda görüntülenir.
 
@@ -145,7 +145,7 @@ kubectl get service azure-vote-front
 
 Şimdi, hizmetinizin IP adresine yerel bir Web tarayıcısı açın:
 
-![Azure’da Kubernetes kümesinin görüntüsü](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Yerel bir Web tarayıcısında açılan güncelleştirilmiş uygulama Azure oylama uygulaması örneğini gösteren ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

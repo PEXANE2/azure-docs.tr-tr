@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge limitleri | Microsoft Docs
-description: Hizmet sınırları, cihaz limitleri ve depolama sınırları dahil olmak üzere Azure Stack Edge 'i dağıtırken ve işletirken sınırlar ve önerilen Boyutlar hakkında bilgi edinin.
+title: Azure Stack Edge Pro limitleri | Microsoft Docs
+description: Hizmet sınırları, cihaz limitleri ve depolama sınırları dahil olmak üzere Azure Stack Edge Pro 'Yu dağıtırken ve işletirken sınırlar ve önerilen Boyutlar hakkında bilgi edinin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: e21f5a89d9f1f21eb99071a141794f99c07a8dfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f3c39ce7334145d3ffc1d54badb1f7b766da70f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079821"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904455"
 ---
-# <a name="azure-stack-edge-limits"></a>Azure Stack Edge sınırları
+# <a name="azure-stack-edge-pro-limits"></a>Azure Stack Edge Pro sınırları
 
-Microsoft Azure Stack Edge çözümünüzü dağıtırken ve işletirken bu limitleri göz önünde bulundurun. 
+Microsoft Azure Stack Edge Pro çözümünüzü dağıtırken ve işletirken bu limitleri göz önünde bulundurun. 
 
 ## <a name="azure-stack-edge-service-limits"></a>Azure Stack Edge hizmeti limitleri
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="azure-stack-device-limits"></a>Cihaz sınırlarını Azure Stack
+## <a name="azure-stack-edge-device-limits"></a>Azure Stack Edge cihaz limitleri
 
-Aşağıdaki tablo Azure Stack Edge cihazının sınırlarını açıklamaktadır. 
+Aşağıdaki tablo Azure Stack Edge Pro cihazının sınırlarını açıklamaktadır. 
 
 | Açıklama | Değer |
 |---|---|
@@ -53,4 +53,4 @@ Aşağıdaki tablo Azure Stack Edge cihazının sınırlarını açıklamaktadı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stack Edge dağıtmaya hazırlanma](azure-stack-edge-deploy-prep.md)
+- [Azure Stack Edge Pro 'Yu dağıtmaya hazırlanma](azure-stack-edge-deploy-prep.md)

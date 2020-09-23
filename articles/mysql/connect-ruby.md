@@ -8,28 +8,28 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 15bbce208475a85e7be6efbadebcb4e43c2d8d17
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 8bedb7177c93eecd13f64d151c56baf5a394e0c2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029112"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896273"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Ruby kullanma
 
 Bu hızlı başlangıçta, Windows, Ubuntu Linux ve Mac platformlarından bir [Ruby](https://www.ruby-lang.org) uygulaması ve [mysql2](https://rubygems.org/gems/mysql2) gem kullanılarak MySQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu konuda, Ruby kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
 - [Azure portalını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Azure CLI aracını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Bağlanmakta olduğunuz IP adresinin [Azure Portal](./howto-manage-firewall-using-portal.md) veya [Azure CLI](./howto-manage-firewall-using-cli.md) kullanarak sunucunun güvenlik duvarı kurallarını eklendiğinden emin olun
 
 ## <a name="install-ruby"></a>Ruby’yi yükleme
-Kendi bilgisayarınıza Ruby, Gem ve MySQL2 kitaplığı yükleyin. 
+Kendi bilgisayarınıza Ruby, Gem ve MySQL2 kitaplığı yükleyin.
 
 ### <a name="windows"></a>Windows
 1. [Ruby](https://rubyinstaller.org/downloads/)'nin 2.3 sürümünü indirip yükleyin.
@@ -61,9 +61,9 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
 2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
 3. Sunucunun adına tıklayın.
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
- ![MySQL için Azure Veritabanı sunucu adı](./media/connect-ruby/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-ruby/1_server-overview-name-login.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
 
-## <a name="run-ruby-code"></a>Ruby kodunu çalıştırma 
+## <a name="run-ruby-code"></a>Ruby kodunu çalıştırma
 1. Aşağıdaki bölümde bulunan Ruby kodunu metin dosyalarına yapıştırın ve dosyaları .rb uzantısıyla bir proje klasörüne kaydedin (örneğin, `C:\rubymysql\createtable.rb` veya `/home/username/rubymysql/createtable.rb`).
 2. Kodu çalıştırmak için komut istemi veya Bash kabuğu başlatın. Dizini değiştirerek, proje klasörünüze geçin (`cd rubymysql`)
 3. Sonra uygulamayı çalıştırmak için Ruby komutunu ve ardından `ruby createtable.rb` örneğindeki gibi dosya adını yazın.
@@ -72,9 +72,9 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
 ## <a name="connect-and-create-a-table"></a>Bağlanma ve tablo oluşturma
 **CREATE TABLE** SQL deyimini kullanarak bir tabloyu bağlamak ve oluşturmak ve ardından **INSERT INTO** SQL deyimlerini kullanarak tabloya satırlar eklemek için aşağıdaki kodu kullanın.
 
-Kod, [mysql2::client](https://www.rubydoc.info/gems/mysql2) sınıfı .new() yöntemini kullanarak MySQL için Azure Veritabanıyla bağlantı kurar. Ardından DROP, CREATE TABLE ve INSERT INTO komutlarını çalıştırmak için birkaç kez [query()](https://www.rubydoc.info/gems/mysql2#Usage) yöntemini çağırır. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) yöntemini çağırır.
+Kod, MySQL sunucusuna bağlanmak için bir [mysql2:: Client](https://www.rubydoc.info/gems/mysql2) sınıfı kullanır. Ardından ```query()``` Drop, create table ve INSERT INTO komutlarını çalıştırmak için yöntemini çağırır. Son olarak, ```close()``` sonlandırmadan önce bağlantıyı kapatmak için öğesini çağırın.
 
-`host`, `database`, `username` ve `password` dizelerini kendi değerlerinizle değiştirin. 
+`host`, `database`, `username` ve `password` dizelerini kendi değerlerinizle değiştirin.
 ```ruby
 require 'mysql2'
 
@@ -115,11 +115,11 @@ end
 ```
 
 ## <a name="read-data"></a>Verileri okuma
-Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. 
+Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın.
 
-Kod, [mysql2::client](https://www.rubydoc.info/gems/mysql2) class.new() yöntemini kullanarak MySQL için Azure Veritabanı’yla bağlantı kurar. Ardından SELECT komutlarını çalıştırmak için [query()](https://www.rubydoc.info/gems/mysql2#Usage) yöntemini çağırır. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) yöntemini çağırır.
+Kod, yöntemi ile MySQL için Azure veritabanı 'na bağlanmak için bir [mysql2:: Client](https://www.rubydoc.info/gems/mysql2) sınıfı kullanır ```new()``` . Ardından ```query()``` Select komutlarını çalıştırmak için yöntemini çağırır. Ardından, ```close()``` sonlandırmadan önce bağlantıyı kapatmak için yöntemini çağırır.
 
-`host`, `database`, `username` ve `password` dizelerini kendi değerlerinizle değiştirin. 
+`host`, `database`, `username` ve `password` dizelerini kendi değerlerinizle değiştirin.
 
 ```ruby
 require 'mysql2'
@@ -156,9 +156,9 @@ end
 ## <a name="update-data"></a>Verileri güncelleştirme
 Bağlanmak ve bir **UPDATE** SQL deyimi kullanarak verileri güncelleştirmek için aşağıdaki kodu kullanın.
 
-Kod, [mysql2::client](https://www.rubydoc.info/gems/mysql2) sınıfı .new() yöntemini kullanarak MySQL için Azure Veritabanıyla bağlantı kurar. Ardından UPDATE komutlarını çalıştırmak için [query()](https://www.rubydoc.info/gems/mysql2#Usage) yöntemini çağırır. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) yöntemini çağırır.
+Kod, [mysql2::client](https://www.rubydoc.info/gems/mysql2) sınıfı .new() yöntemini kullanarak MySQL için Azure Veritabanıyla bağlantı kurar. Sonra ```query()```  Update komutlarını çalıştırmak için yöntemini çağırır. Ardından, ```close()``` sonlandırmadan önce bağlantıyı kapatmak için yöntemini çağırır.
 
-`host`, `database`, `username` ve `password` dizelerini kendi değerlerinizle değiştirin. 
+`host`, `database`, `username` ve `password` dizelerini kendi değerlerinizle değiştirin.
 
 ```ruby
 require 'mysql2'
@@ -191,11 +191,11 @@ end
 
 
 ## <a name="delete-data"></a>Verileri silme
-Bağlanmak ve **DELETE** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. 
+Bağlanmak ve **DELETE** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın.
 
-Kod, [mysql2::client](https://www.rubydoc.info/gems/mysql2) sınıfı .new() yöntemini kullanarak MySQL için Azure Veritabanıyla bağlantı kurar. Ardından DELETE komutlarını çalıştırmak için [query()](https://www.rubydoc.info/gems/mysql2#Usage) yöntemini çağırır. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) yöntemini çağırır.
+Kod, MySQL sunucusuna bağlanmak için bir [mysql2:: Client](https://rubygems.org/gems/mysql2/) sınıfı KULLANıR, DELETE komutunu çalıştırın ve ardından sunucu bağlantısını kapatın.
 
-`host`, `database`, `username` ve `password` dizelerini kendi değerlerinizle değiştirin. 
+`host`, `database`, `username` ve `password` dizelerini kendi değerlerinizle değiştirin.
 
 ```ruby
 require 'mysql2'
@@ -228,4 +228,8 @@ end
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Dışarı Aktarma ve İçeri Aktarma seçeneğini kullanarak veritabanınızı geçirme](./concepts-migrate-import-export.md)
+> [Dışarı Aktarma ve İçeri Aktarma seçeneğini kullanarak veritabanınızı geçirme](./concepts-migrate-import-export.md) <br/>
+
+> [!div class="nextstepaction"]
+> [MySQL2 istemcisi hakkında daha fazla bilgi edinin](https://www.rubydoc.info/gems/mysql2) <br/>
+

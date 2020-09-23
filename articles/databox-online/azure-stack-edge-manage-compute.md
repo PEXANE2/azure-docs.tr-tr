@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge işlem yönetimi | Microsoft Docs
-description: Tetikleyici, modüller, işlem yapılandırmasını görüntüleme gibi kenar işlem ayarlarının nasıl yönetileceğini, Azure Stack kenarınızdan Azure portal aracılığıyla yapılandırmayı kaldırmayı açıklar.
+title: Azure Stack Edge Pro işlem yönetimi | Microsoft Docs
+description: Tetikleyici, modüller, işlem yapılandırmasını görüntüleme gibi kenar işlem ayarlarının nasıl yönetileceğini, Azure Stack Edge Pro 'daki Azure portal aracılığıyla yapılandırmayı kaldırmayı açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 9d34bd1750b798407b493dcde01b04118d66a2d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00e5f8dc067d91e6ea6fed688d72b357d1d50678
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339850"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904429"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge"></a>Azure Stack Edge 'de işlem yönetme
+# <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzda işlem yönetme
 
-Bu makalede Azure Stack Edge 'de işlem yönetimi açıklanmaktadır. Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla işlem yönetebilirsiniz. Modül, Tetikleyiciler ve işlem yapılandırmasını yönetmek için Azure portal kullanın ve işlem ayarlarını yönetmek için yerel Web Kullanıcı arabirimini kullanın.
+Bu makalede Azure Stack Edge Pro 'da işlem yönetimi açıklanmaktadır. Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla işlem yönetebilirsiniz. Modül, Tetikleyiciler ve işlem yapılandırmasını yönetmek için Azure portal kullanın ve işlem ayarlarını yönetmek için yerel Web Kullanıcı arabirimini kullanın.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -28,7 +28,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="manage-triggers"></a>Tetikleyicileri yönetme
 
-Olaylar, bulut ortamınızda veya cihazınızda işlem yapmak isteyebileceğiniz bir işlemdir. Örneğin, bir paylaşımda bir dosya oluşturulduğunda bu bir olaydır. Tetikler olayları yükseltir. Azure Stack Edge için Tetikleyiciler, dosya olaylarına veya bir zamanlamaya yanıt olarak olabilir.
+Olaylar, bulut ortamınızda veya cihazınızda gerçekleşen ve üzerinde işlem yapmak isteyebileceğiniz şeylerdir. Örneğin paylaşımda bir dosya oluşturulduğunda, bu bir olaydır. Tetikleyiciler olayları başlatır. Azure Stack Edge Pro, Tetikleyiciler dosya olaylarına veya bir zamanlamaya yanıt verebilir.
 
 - **Dosya**: Bu Tetikleyiciler, bir dosyanın oluşturulması, bir dosyanın değiştirilmesi gibi dosya olaylarına yanıt olarak yapılır.
 - **Zamanlandı**: Bu Tetikleyiciler, bir başlangıç tarihi, başlangıç zamanı ve yineleme aralığı ile tanımlayabileceğiniz bir zamanlamaya yanıt olarak yapılır.
@@ -82,7 +82,7 @@ Tetikleyicilerin listesi, silme işlemini yansıtacak şekilde güncelleştirili
 
 ## <a name="manage-compute-configuration"></a>İşlem yapılandırmasını yönetme
 
-İşlem yapılandırmasını görüntülemek, var olan bir işlem yapılandırmasını kaldırmak veya Azure Stack Kenarlarınızın IoT cihazının ve IoT Edge cihaz için erişim anahtarlarını eşitlemek üzere işlem yapılandırmasını yenilemek için Azure portal kullanın.
+İşlem yapılandırmasını görüntülemek, mevcut bir işlem yapılandırmasını kaldırmak veya Azure Stack Edge Pro için IoT cihazının ve IoT Edge cihazının erişim anahtarlarını eşitlemek üzere işlem yapılandırmasını yenilemek için Azure portal kullanın.
 
 ### <a name="view-compute-configuration"></a>İşlem yapılandırmasını görüntüle
 
@@ -111,11 +111,11 @@ Cihazınızın mevcut Edge işlem yapılandırmasını kaldırmak için Azure po
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IoT cihazını ve IoT Edge cihaz erişim anahtarlarını eşitleyin
 
-Azure Stack Edge 'de işlem yapılandırdığınızda, bir IoT cihazı ve bir IoT Edge cihaz oluşturulur. Bu cihazlara otomatik olarak simetrik erişim anahtarları atanır. En iyi güvenlik uygulaması olarak, bu anahtarlar IoT Hub hizmeti aracılığıyla düzenli olarak döndürülür.
+Azure Stack Edge Pro 'unuzda işlem yapılandırdığınızda, bir IoT cihazı ve bir IoT Edge cihaz oluşturulur. Bu cihazlara otomatik olarak simetrik erişim anahtarları atanır. En iyi güvenlik uygulaması olarak, bu anahtarlar IoT Hub hizmeti aracılığıyla düzenli olarak döndürülür.
 
 Bu anahtarları döndürmek için, oluşturduğunuz IoT Hub hizmetine gidebilir ve IoT cihazını veya IoT Edge cihazını seçebilirsiniz. Her cihazda birincil erişim anahtarı ve ikincil erişim anahtarları bulunur. Birincil erişim anahtarını ikincil erişim anahtarına atayın ve ardından birincil erişim anahtarını yeniden oluşturun.
 
-IoT cihazınız ve IoT Edge cihaz anahtarlarınız döndürülürse, en son erişim anahtarlarını almak için Azure Stack Kenarunuzdaki yapılandırmayı yenilemeniz gerekir. Eşitleme, cihazın IoT cihazınız ve IoT Edge cihazınız için en son anahtarları almasını sağlar. Azure Stack Edge yalnızca birincil erişim anahtarlarını kullanır.
+IoT cihazınız ve IoT Edge cihaz anahtarlarınız döndürülürse, en son erişim anahtarlarını almak için Azure Stack Edge Pro 'unuzda yapılandırmayı yenilemeniz gerekir. Eşitleme, cihazın IoT cihazınız ve IoT Edge cihazınız için en son anahtarları almasını sağlar. Azure Stack Edge Pro yalnızca birincil erişim anahtarlarını kullanır.
 
 Cihazınızın erişim anahtarlarını eşitlemek için Azure portal aşağıdaki adımları uygulayın.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge cihaz erişimi, güç ve bağlantı modu | Microsoft Docs
-description: Azure 'a veri aktarmaya yardımcı olan Azure Stack Edge cihazı için erişim, güç ve bağlantı modunun nasıl yönetileceğini açıklar
+title: Azure Stack Edge Pro cihaz erişimi, güç ve bağlantı modu | Microsoft Docs
+description: Azure 'a veri aktarmaya yardımcı olan Azure Stack Edge Pro cihazı için erişim, güç ve bağlantı modunun nasıl yönetileceğini açıklar
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 75e7a43d545bea63d553ad01836ed5c6ebc2dcc9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e0e2ac43ce0157b4917e9c45f6a02ace63432137
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079804"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904425"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Azure Stack Edge için erişimi, gücü ve bağlantı modunu yönetme
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro için erişim, güç ve bağlantı modunu yönetme
 
-Bu makalede Azure Stack Edge için erişim, güç ve bağlantı modunun nasıl yönetileceği açıklanmaktadır. Bu işlemler yerel Web Kullanıcı arabirimi veya Azure portal aracılığıyla gerçekleştirilir.
+Bu makalede Azure Stack Edge Pro için erişim, güç ve bağlantı modunun nasıl yönetileceği açıklanmaktadır. Bu işlemler yerel Web Kullanıcı arabirimi veya Azure portal aracılığıyla gerçekleştirilir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -29,7 +29,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="manage-device-access"></a>Cihaz erişimini yönetme
 
-Azure Stack Edge cihazınıza erişim, bir cihaz parolasının kullanımı ile denetlenir. Parolayı yerel Web Kullanıcı arabirimi aracılığıyla değiştirebilirsiniz. Ayrıca Azure portal cihaz parolasını sıfırlayabilirsiniz.
+Azure Stack Edge Pro cihazınıza erişim, bir cihaz parolasının kullanımı ile denetlenir. Parolayı yerel Web Kullanıcı arabirimi aracılığıyla değiştirebilirsiniz. Ayrıca Azure portal cihaz parolasını sıfırlayabilirsiniz.
 
 ### <a name="change-device-password"></a>Cihaz parolasını değiştirme
 
@@ -61,12 +61,12 @@ Azure Stack Edge/Data Box Gateway, IoT Hub ve Azure depolama kaynağını oluşt
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API izinlerini yönetme
 
-Azure Stack Edge cihazının etkinleştirme anahtarını oluştururken veya kimlik bilgileri gerektiren herhangi bir işlem gerçekleştirirken, Azure Active Directory Graph API izinlerinizin olması gerekir. Kimlik bilgileri gerektiren işlemler şunlar olabilir:
+Azure Stack Edge Pro cihazı için etkinleştirme anahtarını oluştururken veya kimlik bilgileri gerektiren işlemler gerçekleştirirken, Azure Active Directory Graph API izinlerinizin olması gerekir. Kimlik bilgileri gerektiren işlemler şunlar olabilir:
 
 -  İlişkili bir depolama hesabıyla bir paylaşma oluşturuluyor.
 -  Cihazdaki paylaşımlara erişebilen bir Kullanıcı oluşturma.
 
-`User`Active Directory kiracısında yapabilmeniz için bir erişiminizin olması gerekir `Read all directory objects` . Bir Konuk Kullanıcı, izinleri olmadığı için bu kullanıcı olamaz `Read all directory objects` . Bir konuğunuzda, bir etkinleştirme anahtarı oluşturma, Azure Stack Edge cihazınızda bir paylaşımın oluşturulması, Kullanıcı oluşturma, sınır hesaplama rolü yapılandırması, cihaz parolasının sıfırlanması gibi işlemler başarısız olur.
+`User`Active Directory kiracısında yapabilmeniz için bir erişiminizin olması gerekir `Read all directory objects` . Bir Konuk Kullanıcı, izinleri olmadığı için bu kullanıcı olamaz `Read all directory objects` . Bir konuğunuzda, bir etkinleştirme anahtarı oluşturma, Azure Stack Edge Pro cihazınızda bir paylaşımın oluşturulması, bir kullanıcının oluşturulması, sınır hesaplama rolü yapılandırması, cihaz parolasının tümünün başarısız olması gibi işlemler başarısız olur.
 
 API Microsoft Graph için kullanıcılara erişim sağlama hakkında daha fazla bilgi için, bkz. [Microsoft Graph izinleri başvurusu](https://docs.microsoft.com/graph/permissions-reference).
 
@@ -89,7 +89,7 @@ Geçerli abonelikteki kayıtlı kaynak sağlayıcılarının bir listesini almak
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Azure Stack Edge cihazında kayıtlı olmalıdır `Microsoft.DataBoxEdge` . Kaydolmak için `Microsoft.DataBoxEdge` , abonelik Yöneticisi aşağıdaki komutu çalıştırmalıdır:
+Azure Stack Edge Pro cihazı için `Microsoft.DataBoxEdge` kayıtlı olmalıdır. Kaydolmak için `Microsoft.DataBoxEdge` , abonelik Yöneticisi aşağıdaki komutu çalıştırmalıdır:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

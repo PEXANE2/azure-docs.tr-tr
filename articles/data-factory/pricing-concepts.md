@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 5110f5fd09e360d1435e26312dd2ee2db6891cbb
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087193"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983616"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Örneklerle Data Factory fiyatlandırmasını anlama
 
@@ -38,7 +38,7 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 
 3. İşlem hattını her saat yürütmek için bir zamanlama tetikleyicisi.
 
-   ![Scenario1](media/pricing-concepts/scenario1.png)
+   ![Diyagram, bir zamanlama tetikleyicisi ile bir işlem hattı gösterir. İşlem hattında, bir W S S3 bağlantılı hizmetine ve kopyalama etkinliğine akan bir giriş veri kümesine etkinlik akışlarını kopyalayın, ayrıca bir Azure depolama bağlı hizmetine akan bir çıkış veri kümesine akar.](media/pricing-concepts/scenario1.png)
 
 | **İşlemler** | **Türler ve birimler** |
 | --- | --- |
@@ -69,7 +69,7 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 2. Veri dönüştürme için bir Azure Databricks etkinliği.
 3. Her saat ardışık düzeni yürütmek için bir zamanlama tetikleyicisi.
 
-![Scenario2](media/pricing-concepts/scenario2.png)
+![Diyagram, bir zamanlama tetikleyicisi ile bir işlem hattı gösterir. İşlem hattında, etkinlik akışlarını bir giriş veri kümesine, bir çıkış veri kümesine ve Azure Databricks üzerinde çalışan bir DataBricks etkinliğine kopyalayın. Giriş veri kümesi, bir W S S3 bağlantılı hizmetine akar. Çıkış veri kümesi, Azure depolama bağlı hizmetine akar.](media/pricing-concepts/scenario2.png)
 
 | **İşlemler** | **Türler ve birimler** |
 | --- | --- |
@@ -103,7 +103,7 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 3. Veri dönüştürme için bir Azure Databricks etkinliği.
 4. Her saat ardışık düzeni yürütmek için bir zamanlama tetikleyicisi.
 
-![Scenario3](media/pricing-concepts/scenario3.png)
+![Diyagram, bir zamanlama tetikleyicisi ile bir işlem hattı gösterir. İşlem hattında, etkinlik akışlarını bir giriş veri kümesine, bir çıkış veri kümesine ve Azure Databricks üzerinde çalışan bir DataBricks etkinliğine akan arama etkinliğine kopyalayın. Giriş veri kümesi, bir W S S3 bağlantılı hizmetine akar. Çıkış veri kümesi, Azure depolama bağlı hizmetine akar.](media/pricing-concepts/scenario3.png)
 
 | **İşlemler** | **Türler ve birimler** |
 | --- | --- |

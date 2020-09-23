@@ -3,12 +3,12 @@ title: Azure Relay ad alanı için IP güvenlik duvarını yapılandırma
 description: Bu makalede, belirli IP adreslerinden Azure Relay ad alanlarına bağlantılara izin vermek için Güvenlik Duvarı kurallarının nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e47c5071a5fc7207d4eabc162fcb24ab6ad57d28
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 250158aff2ceb89e2823b711717f1d3a1cad438c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141865"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976018"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Azure Relay ad alanı için IP güvenlik duvarını yapılandırma
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, geçiş ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz.
@@ -29,7 +29,7 @@ Bu bölümde, bir ad alanı için IP güvenlik duvarı kuralları oluşturmak ü
 1. [Azure Portal](https://portal.azure.com) **geçiş ad alanına** gidin.
 2. Sol taraftaki menüden **ağ** seçeneği ' ni seçin. **Erişime Izin ver** bölümünde **tüm ağlar** seçeneğini belirlerseniz, geçiş ad alanı herhangi bir IP adresinden gelen bağlantıları kabul eder. Bu ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir. 
 
-    ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/ip-firewall/all-networks-selected.png)
+    ![Ekran görüntüsü ağ sayfasını tüm ağlar seçeneğinin seçili olduğunu gösterir.](./media/ip-firewall/all-networks-selected.png)
 1. Belirli ağlara ve IP adreslerine erişimi kısıtlamak için **Seçili ağlar** seçeneğini belirleyin. **Güvenlik duvarı** bölümünde şu adımları izleyin:
     1. Geçerli istemci IP 'nize ad alanına erişim sağlamak için **ISTEMCI IP adresi ekle** seçeneğini belirleyin. 
     2. **Adres aralığı**IÇIN, CIDR gösteriminde belirli bir IPv4 adresi veya bir IPv4 adresi aralığı girin. 
