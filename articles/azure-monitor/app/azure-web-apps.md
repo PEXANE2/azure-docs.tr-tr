@@ -4,12 +4,12 @@ description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafi
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript, devx-track-dotnet
-ms.openlocfilehash: 1e06aacaa12a428b42090ecb8e8ae89ae1e5ad76
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 952cd9669ecc3fb5ff1326d15aef25e1a1524ca5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933809"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979435"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -55,17 +55,17 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
 
 2. Hangi kaynağı kullanacağınızı belirttikten sonra, Application Insights 'ın uygulamanız için her platform için veri toplamasını nasıl istediğinizi seçebilirsiniz. ASP.NET uygulama izleme iki farklı koleksiyon düzeyiyle varsayılan olarak yapılır.
 
-    ![Platform başına seçenekleri belirleyin](./media/azure-web-apps/choose-options-new.png)
+    ![Ekran görüntüsü, yeni kaynak Oluştur seçiliyken Application Insights site uzantıları sayfasını gösterir.](./media/azure-web-apps/choose-options-new.png)
  
  Her yol için toplanan verilerin bir özeti aşağıda verilmiştir:
         
 | Veriler | .NET temel koleksiyonu | Önerilen .NET koleksiyonu |
 | --- | --- | --- |
-| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Evet |Evet |
-| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Evet |Evet |
-| Ana işlem tarafından işlenmeyen özel durumları toplar | Evet |Evet |
-| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Evet |Evet |
-| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Evet |
+| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Yes |Yes |
+| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Yes |Yes |
+| Ana işlem tarafından işlenmeyen özel durumları toplar | Yes |Yes |
+| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Yes |Yes |
+| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Yes |
 
 3. Daha önce applicationinsights.config dosyası aracılığıyla denetleyebilmeniz gereken örnekleme gibi ayarları yapılandırmak için artık karşılık gelen bir ön ek ile uygulama ayarları aracılığıyla aynı ayarlarla etkileşime geçebilirsiniz. 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central Azure IoT Edge bir cihaz ekleme | Microsoft Docs
-description: Bir operatör olarak, Azure IoT Central uygulamanıza Azure IoT Edge bir cihaz ekleyin
+title: Öğretici-Azure IoT Central Azure IoT Edge bir cihaz ekleme | Microsoft Docs
+description: Öğretici-bir operatör olarak Azure IoT Central uygulamanıza Azure IoT Edge bir cihaz ekleyin
 author: rangv
 ms.author: rangv
 ms.date: 05/29/2020
@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: cc612d5dc21594da855799ed965effeb4b547d00
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018671"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987016"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanıza Azure IoT Edge bir cihaz ekleme
 
@@ -286,14 +286,14 @@ IoT Edge VM ile çalışmaya devam etmeyi planlıyorsanız, bu öğreticide kull
 * IoT Edge sanal makinesini ve ilişkili kaynaklarını silmek için Azure portal **contoso-Edge-RG** kaynak grubunu silin.
 * IoT Central uygulamasını silmek için uygulamanın **Yönetim** bölümünde **uygulama** sayfanıza gidin ve **Sil**' i seçin.
 
+Bir çözüm geliştiricisi veya işletmeni olarak, artık IoT Central IoT Edge cihazları ile nasıl çalışabileceğinizi öğrendiğinize göre, önerilen bir sonraki adım şunları yapmanız gerekir:
+
+> [!div class="nextstepaction"]
+> [Cihaz telemetrisini analiz etmek için cihaz gruplarını kullanma](./tutorial-use-device-groups.md)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bir cihaz geliştiricisi olarak, artık IoT Central IoT Edge cihazlarıyla nasıl çalışabileceğinizi öğrendiğinize göre, önerilen bir sonraki adım okunmalıdır:
 
 > [!div class="nextstepaction"]
 > [IoT Edge modülleri geliştirme](../../iot-edge/tutorial-develop-for-linux.md)
-
-Bir çözüm geliştiricisi veya işletmeni olarak, artık IoT Central IoT Edge cihazları ile nasıl çalışabileceğinizi öğrendiğinize göre, önerilen bir sonraki adım şunları yapmanız gerekir:
-
-> [!div class="nextstepaction"]
-> [Cihaz telemetrisini analiz etmek için cihaz gruplarını kullanma](./tutorial-use-device-groups.md)

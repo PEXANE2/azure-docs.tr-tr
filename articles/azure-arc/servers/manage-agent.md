@@ -1,18 +1,40 @@
 ---
-title: Azure yay etkin sunucular (Önizleme) aracısını yönetme
-description: Bu makalede, Azure Arc etkin sunucularının (Önizleme) bağlı makine aracısının yaşam döngüsü boyunca genellikle gerçekleştirdiğiniz farklı yönetim görevleri açıklanmaktadır.
-ms.date: 07/30/2020
+title: Azure Arc etkin sunucular Aracısı 'nı yönetme
+description: Bu makalede, Azure Arc etkin sunucular bağlı makine aracısının yaşam döngüsü boyunca genellikle gerçekleştirdiğiniz farklı yönetim görevleri açıklanır.
+ms.date: 09/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6066226cea224b1e13262763b626c8c646a397d7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 146d5e3595e95df3b59b9cb4c0c05f9cc478eb82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213140"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902532"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
 
-Windows veya Linux için Azure Arc etkin sunucularının (Önizleme) bağlı makine aracısının ilk dağıtımından sonra, aracıyı yeniden yapılandırmanız, yükseltmeniz veya yaşam döngüsünün kullanımdan kaldırılması aşamasına ulaştıysa bilgisayardan kaldırmanız gerekebilir. Bu rutin bakım görevlerini el ile veya Otomasyon aracılığıyla kolayca yönetebilirsiniz, bu da hem işlemsel hata hem de giderleri azaltır.
+Windows veya Linux için, Azure Arc etkinleştirilmiş sunuculara bağlı makine aracısının ilk dağıtımından sonra, aracıyı yeniden yapılandırmanız, yükseltmeniz veya yaşam döngüsünün kullanımdan kaldırılması aşamasına ulaştıysa bilgisayardan kaldırmanız gerekebilir. Bu rutin bakım görevlerini el ile veya Otomasyon aracılığıyla kolayca yönetebilirsiniz, bu da hem işlemsel hata hem de giderleri azaltır.
+
+## <a name="before-uninstalling-agent"></a>Aracıyı kaldırmadan önce
+
+Bağlı makine aracısını Arc etkin sunucunuzda kaldırmadan önce, Azure faturanızda beklenmeyen sorunları veya maliyetleri önlemek için aşağıdakileri göz önünde bulundurun:
+
+* Azure VM uzantılarını etkin bir sunucuya dağıttıysanız ve bağlı makine aracısını kaldırırsanız veya kaynak grubundaki yay etkin sunucuyu temsil eden kaynağı silerseniz, bu uzantılar çalışmaya devam eder ve normal işlemlerini gerçekleştirir.
+
+* Kaynak grubunuzda yay etkin sunucuyu temsil eden kaynağı silerseniz, ancak VM uzantılarını kaldırmazsanız, makineyi yeniden kaydettiğinizde, yüklü VM uzantılarını yönetemezsiniz.
+
+Artık Azure Arc etkin sunucularıyla yönetmek istemediğiniz sunucular veya makineler için, yönetimi başarıyla durdurmak üzere bu adımları izlemeniz gerekir:
+
+1. VM uzantılarını makineden veya sunucudan kaldırın. Adımlar aşağıda verilmiştir.
+
+2. Aşağıdaki yöntemlerden birini kullanarak makinenin Azure Arc bağlantısını kesin:
+
+    * `azcmagent disconnect`Makinede veya sunucuda komut çalıştırılıyor.
+
+    * Azure portal, üst çubuktan **Sil** ' i seçerek seçili kayıtlı yay etkin sunucusundan.
+
+    * [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) veya [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource)kullanma. Parametresi için `ResourceType` kullanın `Microsoft.HybridCompute/machines` .
+
+3. Aracıyı makineden veya sunucudan kaldırın. Aşağıdaki adımları izleyin.
 
 ## <a name="upgrading-agent"></a>Aracı yükseltiliyor
 
@@ -120,7 +142,7 @@ Paketlerin yüklenmesi ve kaldırılması gibi [zypper](https://en.opensuse.org/
 
 ## <a name="about-the-azcmagent-tool"></a>Azcmagent aracı hakkında
 
-Azcmagent Aracı (Azcmagent.exe), yükleme sırasında bağlı Azure yay özellikli sunucular (Önizleme) makine aracısını yapılandırmak veya yükleme sonrasında aracının başlangıç yapılandırmasını değiştirmek için kullanılır. Azcmagent.exe aracıyı özelleştirmek ve durumunu görüntülemek için komut satırı parametreleri sağlar:
+Azcmagent Aracı (Azcmagent.exe), yükleme sırasında Azure Arc etkin sunucular bağlı makine aracısını yapılandırmak veya yükleme sonrasında aracının başlangıç yapılandırmasını değiştirmek için kullanılır. Azcmagent.exe aracıyı özelleştirmek ve durumunu görüntülemek için komut satırı parametreleri sağlar:
 
 * **Bağlan** -makineyi Azure yaya bağlamak için
 
@@ -136,16 +158,16 @@ Azcmagent Aracı (Azcmagent.exe), yükleme sırasında bağlı Azure yay özelli
 
 * **-v veya--verbose** -ayrıntılı günlüğü etkinleştir
 
-Etkileşimli olarak oturum açtığınızda bir **bağlanma**, **bağlantısını kesme**ve el ile **yeniden bağlanma** gerçekleştirebilir veya birden çok aracı eklemek için kullandığınız hizmet sorumlusunu veya Microsoft Identity Platform [erişim belirtecini](../../active-directory/develop/access-tokens.md)kullanarak otomatik hale getirebilirsiniz. Makineyi Azure Arc etkin sunucularla (Önizleme) kaydetmek için bir hizmet sorumlusu kullanmıyorsanız, hizmet sorumlusu oluşturmak için aşağıdaki [makaleye](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bakın.
+Etkileşimli olarak oturum açtığınızda bir **bağlanma**, **bağlantısını kesme**ve el ile **yeniden bağlanma** gerçekleştirebilir veya birden çok aracı eklemek için kullandığınız hizmet sorumlusunu veya Microsoft Identity Platform [erişim belirtecini](../../active-directory/develop/access-tokens.md)kullanarak otomatik hale getirebilirsiniz. Makineyi Azure Arc etkin sunucularla kaydetmek için bir hizmet sorumlusu kullanmıyorsanız, hizmet sorumlusu oluşturmak için aşağıdaki [makaleye](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bakın.
 
 >[!NOTE]
 >**Azcmagent**çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
 
 ### <a name="connect"></a>Bağlan
 
-Bu parametre, makinenin Azure 'da oluşturulduğunu temsil eden Azure Resource Manager bir kaynak belirtir. Kaynak, belirtilen abonelikte ve kaynak grubunda bulunur ve makineyle ilgili veriler, bu ayar tarafından belirtilen Azure bölgesinde saklanır `--location` . Belirtilmemişse, varsayılan kaynak adı bu makinenin ana bilgisayar adıdır.
+Bu parametre, makinenin Azure 'da oluşturulduğunu temsil eden Azure Resource Manager bir kaynak belirtir. Kaynak, belirtilen abonelikte ve kaynak grubunda bulunur ve makineyle ilgili veriler, bu ayar tarafından belirtilen Azure bölgesinde saklanır `--location` . Varsayılan kaynak adı, belirtilmemişse makinenin ana bilgisayar adıdır.
 
-Makinenin sistem tarafından atanan kimliğine karşılık gelen bir sertifika indirilir ve yerel olarak depolanır. Bu adım tamamlandıktan sonra Azure bağlı makine Metadata Service ve konuk yapılandırma Aracısı, Azure Arc etkin sunucuları (Önizleme) ile eşitlemeye başlar.
+Makinenin sistem tarafından atanan kimliğine karşılık gelen bir sertifika indirilir ve yerel olarak depolanır. Bu adım tamamlandıktan sonra Azure bağlı makine Metadata Service ve konuk yapılandırma Aracısı, Azure Arc etkin sunucularıyla eşitlemeye başlar.
 
 Hizmet sorumlusu kullanarak bağlanmak için aşağıdaki komutu çalıştırın:
 
@@ -161,7 +183,10 @@ Yükseltilmiş oturum açma kimlik bilgilerinizle (etkileşimli) bağlanmak içi
 
 ### <a name="disconnect"></a>Bağlantıyı kes
 
-Bu parametre, Azure 'da makinenin silindiğini temsil eden Azure Resource Manager bir kaynak belirtir. Aracıyı makineden silmez, bu işlem ayrı bir adım olarak yapılmalıdır. Makinenin bağlantısı kesildikten sonra, Azure Arc etkin sunucuları (Önizleme) ile yeniden kaydetmek istiyorsanız, `azcmagent connect` Azure 'da bunun için yeni bir kaynak oluşturulmasını kullanın.
+Bu parametre, Azure 'da makinenin silindiğini temsil eden Azure Resource Manager bir kaynak belirtir. Aracıyı makineden silmez, bu işlem ayrı bir adım olarak yapılmalıdır. Makinenin bağlantısı kesildikten sonra, Azure Arc etkin sunucularıyla yeniden kaydetmek istiyorsanız, `azcmagent connect` Azure 'da bunun için yeni bir kaynak oluşturulmasını kullanın.
+
+> [!NOTE]
+> Arc etkin sunucunuza bir veya daha fazla Azure VM Uzantısı dağıttıysanız ve kaydını Azure 'da sildiğinizde, uzantılar hala yüklüdür. Yüklü uzantıya bağlı olarak, kendi işlevini etkin bir şekilde gerçekleştiriyor olduğunu anlamak önemlidir. Devre dışı bırakılması veya artık Arc etkin sunucularla yönetilmemesi amaçlanan makineler, Azure 'dan kayıt kaldırılmadan önce uzantıları kaldırmalıdır.
 
 Hizmet sorumlusu kullanarak bağlantıyı kesmek için aşağıdaki komutu çalıştırın:
 
@@ -180,7 +205,7 @@ Yükseltilmiş oturum açma kimlik bilgilerinizle (etkileşimli) bağlantıyı k
 > [!WARNING]
 > `reconnect`Komut kullanım dışıdır ve kullanılmamalıdır. Komut gelecekteki bir aracı sürümünde kaldırılacak ve mevcut aracılar yeniden bağlanma isteğini tamamlayamayacak. Bunun yerine makinenizin [bağlantısını kesip](#disconnect) yeniden [bağlayın](#connect) .
 
-Bu parametre, zaten kayıtlı veya bağlı makineyi Azure Arc etkin sunucularla (Önizleme) yeniden bağlar. Bu, makinenin süresi en az 45 gün, sertifikanın süresi dolduğunda gerekli olabilir. Bu parametre, bu makineyi temsil eden Azure Resource Manager kaynağına karşılık gelen yeni kimlik bilgilerini almak için belirtilen kimlik doğrulama seçeneklerini kullanır.
+Bu parametre, zaten kayıtlı veya bağlı olan makinenin Azure Arc etkin sunucularıyla yeniden bağlanmasını ister. Bu, makinenin süresi en az 45 gün, sertifikanın süresi dolduğunda gerekli olabilir. Bu parametre, bu makineyi temsil eden Azure Resource Manager kaynağına karşılık gelen yeni kimlik bilgilerini almak için belirtilen kimlik doğrulama seçeneklerini kullanır.
 
 Bu komut, [Azure bağlı makine ekleme](agent-overview.md#required-permissions) rolünden daha yüksek ayrıcalıklar gerektirir.
 
@@ -198,7 +223,7 @@ Yükseltilmiş oturum açma kimlik bilgilerinizle (etkileşimli) yeniden bağlan
 
 ## <a name="remove-the-agent"></a>Aracıyı Kaldırma
 
-Windows veya Linux bağlı makine aracısını makineden kaldırmak için aşağıdaki yöntemlerden birini gerçekleştirin. Aracıyı kaldırmak, yayın özellikli sunucular (Önizleme) ile makinenin kaydını kaldırmaz, bu, artık makineyi Azure 'da yönetmeniz gerekmiyorsa gerçekleştirdiğiniz ayrı bir işlemdir.
+Windows veya Linux bağlı makine aracısını makineden kaldırmak için aşağıdaki yöntemlerden birini gerçekleştirin. Aracının kaldırılması, sanal makinenin Arc özellikli sunucularla kaydını kaldırmaz veya yüklü Azure VM uzantılarını kaldırmaz. Bu adımları, artık Azure 'da makineyi yönetmeniz gerekmiyorsa ayrı olarak gerçekleştirmeniz gerekir ve aracı kaldırılmadan önce bunların tamamlanması gerekir.
 
 ### <a name="windows-agent"></a>Windows aracısı
 
@@ -267,9 +292,9 @@ Linux aracısını kaldırmak için, kullanılacak komut Linux işletim sistemin
 
 ## <a name="unregister-machine"></a>Makinenin kaydını sil
 
-Makinenin Azure 'da destekleyici hizmetlerle yönetilmesini durdurmayı planlıyorsanız, yayın etkin sunucularla (Önizleme) makinenin kaydını silmek için aşağıdaki adımları gerçekleştirin. Bu adımları, bağlı makine aracısını makineden kaldırdıktan önce veya sonra yapabilirsiniz.
+Makinenin Azure 'da destekleyici hizmetler ile yönetilmesini durdurmayı planlıyorsanız, yayın etkin sunucularla makinenin kaydını silmek için aşağıdaki adımları gerçekleştirin. Bu adımları, bağlı makine aracısını makineden kaldırdıktan önce veya sonra yapabilirsiniz.
 
-1. [Azure Portal](https://aka.ms/hybridmachineportal)giderek Azure Arc etkin sunucularını (Önizleme) açın.
+1. [Azure Portal](https://aka.ms/hybridmachineportal)giderek Azure Arc etkin sunucularını açın.
 
 2. Listeden makineyi seçin, üç nokta (**...**) simgesini seçin ve **Sil**' i seçin.
 
@@ -317,4 +342,4 @@ sudo azcmagent_proxy remove
 
 - VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'lerle Azure izleyici](../../azure-monitor/insights/vminsights-enable-policy.md)ile izlemeyi etkinleştirme ve çok daha birçok şey için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
 
-- [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Makinede çalışan işletim sistemi ve iş yüklerini önceden izlemek, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi özellikleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics aracısı gereklidir.
+- [[Log Analytics Aracısı]](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Windows ve Linux için Log Analytics Aracısı, işletim sistemi ve iş yükü izleme verilerini toplamak, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi özellikleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde gereklidir.

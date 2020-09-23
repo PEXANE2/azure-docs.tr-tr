@@ -10,16 +10,16 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 97119f3ec370894183c4aee44ff8a5bd6e5ea93b
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: d3a7b04e6169df21ad30017b72f70ff667429b23
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647150"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902380"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 > [!NOTE]
 > Azure Machine Learning pekiştirmeye dayalı Learning Şu anda bir önizleme özelliğidir. Şu anda yalnızca Ray ve RLlib çerçeveleri destekleniyor.
@@ -36,7 +36,7 @@ Bu makalede, şunları nasıl yapacağınızı öğreneceksiniz:
 
 Bu makale, Azure Machine Learning Not defteri [GitHub deposunda](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)bulunan [Rllib Pong örneğini](https://aka.ms/azureml-rl-pong) temel alır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangıç deneyimi için Azure Machine Learning işlem örneğini denemenizi öneririz. Pekiştirmeye dayalı örnek Not defterleri, Azure Machine Learning işlem örneğinde hızlı bir şekilde klonlamak ve çalıştırmak için kullanılabilir.
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456259"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907929"
 ---
 # <a name="feature-hashing-module-reference"></a>Özellik karma modülü başvurusu
 
-Bu makalede Azure Machine Learning tasarımcısında (Önizleme) bulunan bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bulunan bir modül açıklanmaktadır.
 
 Ingilizce metin akışını bir tamsayı özellikleri kümesine dönüştürmek için özellik karma modülünü kullanın. Daha sonra bu karma özellik kümesini bir makine öğrenimi algoritmasına geçirebilirsiniz ve bir metin analizi modelini eğitebilirsiniz.
 
@@ -39,7 +39,7 @@ Bu modülde sunulan özellik karma işlevselliği nimbusml çerçevesini temel a
 
 Dahili olarak, özellik karma modülü n-gram sözlüğü oluşturur. Örneğin, bu veri kümesi için bigram listesi şuna benzer olacaktır:
 
-|Terim (bigram)|Sıklık|
+|Terim (bigram)|Frequency|
 |------------|---------------|
 |Bu kitap|3|
 |Sevdim|1|
@@ -48,7 +48,7 @@ Dahili olarak, özellik karma modülü n-gram sözlüğü oluşturur. Örneğin,
 
 N **-gram özelliğini kullanarak** n-gram boyutunu kontrol edebilirsiniz. Bigram seçerseniz, tek tek gram da hesaplanır. Sözlük aşağıdaki gibi tek terimleri de içerir:
 
-|Terim (tek gram)|Sıklık|
+|Terim (tek gram)|Frequency|
 |------------|---------------|
 |Kitap|3|
 |I|3|
@@ -111,7 +111,7 @@ Sayısal çıktılar Ayrıca sınıflandırma, kümeleme ve bilgi alma dahil olm
 
 Dönüştürülmüş veri kümesini oluşturduktan sonra, bunu eğitme modeli modülüne giriş olarak kullanabilirsiniz.
  
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 Aşağıdaki en iyi yöntemler, özellik karma modülünden en iyi şekilde yararlanmanıza yardımcı olabilir:
 

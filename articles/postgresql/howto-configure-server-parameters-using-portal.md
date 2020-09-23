@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/28/2018
-ms.openlocfilehash: 7a7a98818ba565aad9f2404c77682171514c7573
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a2410328b068be6bc5af358fa72ee20eead4c8ed
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117993"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907463"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nda sunucu parametrelerini Yapılandırma-Azure portal aracılığıyla tek sunucu 
 Azure portal aracılığıyla bir PostgreSQL için Azure veritabanı sunucusu için yapılandırma parametrelerini listeleyebilir, gösterebilir ve güncelleştirebilirsiniz.
@@ -21,27 +21,27 @@ Bu nasıl yapılır kılavuzunda adım adım yönergeler için şunlar gerekir:
 - [PostgreSQL için Azure veritabanı sunucusu](quickstart-create-server-database-portal.md)
 
 ## <a name="viewing-and-editing-parameters"></a>Parametreleri görüntüleme ve görüntüleme
-1. [Azure Portal](https://portal.azure.com)açın.
+1. [Azure portalını](https://portal.azure.com) açın.
 
 2. PostgreSQL için Azure Veritabanı sunucunuzu seçin.
 
 3. **Ayarlar** bölümünde **sunucu parametreleri**' ni seçin. Sayfa, parametrelerin, değerlerinin ve açıklamalarının listesini gösterir.
-![Parametreler için genel bakış sayfası](./media/howto-configure-server-parameters-in-portal/3-overview-of-parameters.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/3-overview-of-parameters.png" alt-text="Parametreler için genel bakış sayfası":::
 
 4. Client_min_messages gibi numaralandırılmış tür parametrelerinin olası değerlerini görmek için **açılan** düğmeyi seçin.
-![Açılan listesini numaralandır](./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png" alt-text="Açılan listesini numaralandır":::
 
 5. Cpu_index_tuple_cost gibi sayısal parametrelerin olası değerlerinin aralığını görmek için **ı** (bilgi) düğmesini seçin veya üzerine gelin.
-![bilgi düğmesi](./media/howto-configure-server-parameters-in-portal/4-information-button.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-information-button.png" alt-text="bilgi düğmesi":::
 
 6. Gerekirse, belirli bir parametreye daraltmak için **arama kutusunu** kullanın. Arama, parametrelerin adı ve açıklamasıdır.
-![Arama sonuçları](./media/howto-configure-server-parameters-in-portal/5-search.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/5-search.png" alt-text="Arama sonuçları":::
 
 7. Ayarlamak istediğiniz parametre değerlerini değiştirin. Bir oturumda yaptığınız tüm değişiklikler mor renkle vurgulanır. Değerleri değiştirdikten sonra **Kaydet**' i seçebilirsiniz. Ya da değişikliklerinizi **atabilirsiniz** .
-![Değişiklikleri kaydetme veya atma](./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png" alt-text="Değişiklikleri kaydetme veya atma":::
 
 8. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla**' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
-![Tümünü Varsayılana sıfırla](./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png" alt-text="Tümünü Varsayılana sıfırla":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şunları öğrenin:

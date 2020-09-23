@@ -3,12 +3,12 @@ title: Azure Application Insights Power BI dışa aktarma | Microsoft Docs
 description: Analiz sorguları Power BI ' de görüntülenebilir.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324378"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979155"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights akış Power BI
 [Power BI](https://www.powerbi.com/) , verileri çözümlemenize ve öngörüleri paylaşmanıza yardımcı olan bir iş araçları paketidir. Her cihazda zengin panolar bulunur. [Azure Application Insights](./app-insights-overview.md)Analytics sorguları dahil olmak üzere birçok kaynaktaki verileri birleştirebilirsiniz.
@@ -67,11 +67,11 @@ Application Insights sorgunuzu içeri aktarmak için, Power BI Masaüstü sürü
 
    Dışarıya aktarılmış e-dil betiğini Gelişmiş Düzenleyici yapıştırın. 
 
-   ![Gelişmiş Düzenleyici vurgulanmış Power BI Desktop ekran görüntüsü](./media/export-power-bi/advancedquery.png)
+   ![Ekran görüntüsünde Gelişmiş Düzenleyici vurgulanmış olan Power BI Desktop gösterilir](./media/export-power-bi/advancedquery.png)
 
 4. Sorgudaki öğeleri seçin ve bir huni görselleştirmesi seçin.
 
-   ![Görselleştirme seçeneklerinin Power BI Desktop ekran görüntüsü](./media/export-power-bi/selectsequence.png)
+   ![Ekran görüntüsü Power BI Desktop huni görselleştirme seçeneklerini gösterir](./media/export-power-bi/selectsequence.png)
 
 5. Başlığı, anlamlı olacak şekilde değiştirin ve raporunuzu Power BI bulut çalışma alanınıza yayımlayın. 
 
@@ -86,7 +86,7 @@ Yenileme belirteciniz güncellenmemişse bu durum oluşabilir. Hala erişiminizi
 
 1. Azure portal oturum açın ve kaynağa erişebildiğinizden emin olun.
 2. Panonun kimlik bilgilerini yenilemeyi deneyin.
-3. PowerBI Desktop 'ınızdan önbelleği temizlemeye çalışın.
+3. Power BI Desktop önbelleği temizlemeye çalışın.
 
 
    Erişiminiz varsa ve kimlik bilgilerini yenilediğinizde, lütfen bir destek bileti açın.
@@ -121,14 +121,14 @@ Bu yöntem, sizin için telemetri için tamamen bir pano oluşturur. İlk veri k
 1. [Power BI](https://app.powerbi.com/)'da oturum açın.
 2. **Get Data** ![ Sol alt köşedeki hizmetler ' in veri al ekran görüntüsünü açın ](./media/export-power-bi/001.png) . **Services**
 
-    ![Application Insights veri kaynağından al 'ın ekran görüntüleri](./media/export-power-bi/002.png)
+    ![Ekran görüntüleri Hizmetler penceresinde Al düğmesini gösterir.](./media/export-power-bi/002.png)
 
 3. Application Insights altında **Şimdi al** ' ı seçin.
 
    ![Application Insights veri kaynağından al 'ın ekran görüntüleri](./media/export-power-bi/003.png)
 4. Application Insights kaynağınızın ayrıntılarını girip **oturum açın**.
 
-    ![Application Insights veri kaynağından al 'ın ekran görüntüsü](./media/export-power-bi/005.png)
+    ![Ekran görüntüsünde Application Insights penceresine Bağlan görüntülenir.](./media/export-power-bi/005.png)
 
      Bu bilgiler Application Insights Genel Bakış bölmesinde bulunabilir:
 

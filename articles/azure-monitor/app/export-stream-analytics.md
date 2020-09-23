@@ -3,12 +3,12 @@ title: Azure Application Insights Stream Analytics kullanarak dışarı aktarma 
 description: Stream Analytics, Application Insights dışarı aktarma yaptığınız verileri sürekli olarak dönüştürebilir, filtreleyebilir ve yönlendirebilir.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e90daf2516b00f7a27ac47e34cfc4ace03fee6e2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324361"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979180"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights gelen verileri işlemek için Stream Analytics kullanma
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) , [Application Insights aktarılmış](export-telemetry.md)verileri işlemeye yönelik ideal bir araçtır. Stream Analytics, çeşitli kaynaklardan veri çekebilir. Verileri dönüştürebilir ve filtreleyebilir ve sonra çeşitli alıcılara yönlendirebilir.
@@ -97,10 +97,10 @@ Yol ön eki deseninin, Stream Analytics depolama alanındaki giriş dosyaların�
 
 Bu örnekte:
 
-* `webapplication27`Application Insights kaynağın adı **tüm küçük bir durumdur**.
-* `1234...`Application Insights kaynağın izleme anahtarıdır ve **tireler hariç**olur. 
-* `PageViews`, çözümlemek istediğiniz veri türüdür. Kullanılabilir türler, sürekli dışarı aktarma sırasında ayarladığınız filtreye bağlıdır. Dışarı aktarılmış verileri inceleyerek diğer kullanılabilir türleri görüntüleyin ve [veri aktarma modelini](export-data-model.md)görüntüleyin.
-* `/{date}/{time}`, harfine yazılmış bir örüntü.
+* `webapplication27` Application Insights kaynağın adı **tüm küçük bir durumdur**.
+* `1234...` Application Insights kaynağın izleme anahtarıdır ve **tireler hariç**olur. 
+* `PageViews` , çözümlemek istediğiniz veri türüdür. Kullanılabilir türler, sürekli dışarı aktarma sırasında ayarladığınız filtreye bağlıdır. Dışarı aktarılmış verileri inceleyerek diğer kullanılabilir türleri görüntüleyin ve [veri aktarma modelini](export-data-model.md)görüntüleyin.
+* `/{date}/{time}` , harfine yazılmış bir örüntü.
 
 > [!NOTE]
 > Yolu doğru aldığınızdan emin olmak için depolamayı inceleyin.
@@ -196,7 +196,7 @@ FROM flat
 
 Artık bu veri kümesini, [Power BI](https://powerbi.microsoft.com)raporlarında ve panolarda kullanabilirsiniz.
 
-![Power BI, veri kümenizi ve alanlarınızı seçin.](./media/export-stream-analytics/210.png)
+![Ekran görüntüsünde, Power BI bir veri kümesinden yapılan rapor örneği gösterilmektedir.](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>Veri yok mu?
 * Tarih biçimini YYYY-AA-GG olarak (tireler ile) doğru olarak [ayarlayıp ayarlayamadığını](#set-path-prefix-pattern) kontrol edin.

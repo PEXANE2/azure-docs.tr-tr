@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 3cae2902385eb82f65243c631745df5ca48825f3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c72825f4645919468f8b59bbc4b9d9498fe11009
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719247"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979403"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central ile perakende çözümleri oluşturma
 
@@ -41,9 +41,9 @@ Bağlı bir lojistik çözümünün avantajları şunlardır:
 
 Aşağıdaki ekran görüntüleri, uygulama şablonundaki kullanıma hazır panoyu gösterir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir:
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Bağlı lojistik panosu":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Bağlı lojistik işlemleri panosunun üst yarısını gösteren ekran görüntüsü":::
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Bağlı lojistik panosu":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Bağlı lojistik işlemleri panosunun alt yarısını gösteren ekran görüntüsü":::
 
 Daha fazla bilgi edinmek için bkz. [dağıtım ve bağlı bir lojistik uygulama şablonu](./tutorial-iot-central-connected-logistics.md) öğreticisini gözden geçir.
 

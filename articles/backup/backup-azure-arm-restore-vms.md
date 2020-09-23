@@ -1,15 +1,15 @@
 ---
 title: Azure portal kullanarak VM 'Leri geri yükleme
-description: Azure portal kullanarak bir Azure sanal makinesini bir kurtarma noktasından geri yükleme
+description: Çapraz bölge geri yükleme özelliği de dahil olmak üzere Azure portal kullanarak bir Azure sanal makinesini kurtarma noktasından geri yükleyin.
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 582ec3e5409e5ada6f98a0c2db77c0bb73eaed18
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050429"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986536"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
@@ -138,18 +138,21 @@ Disk geri yüklendikten sonra, özelleştirmek ve yeni bir VM oluşturmak için 
 
 Önizleme sırasında özelliğe eklemek için [başlamadan önce bölümünü](./backup-create-rs-vault.md#set-cross-region-restore)okuyun.
 
-CRR 'nin etkin olup olmadığını görmek için [çapraz bölge geri yükleme 'Yi yapılandırma](backup-create-rs-vault.md#configure-cross-region-restore) bölümündeki yönergeleri izleyin.
+CRR 'nin etkin olup olmadığını görmek için [çapraz bölge geri yüklemeyi yapılandırma](backup-create-rs-vault.md#configure-cross-region-restore)bölümündeki yönergeleri izleyin.
 
 ### <a name="view-backup-items-in-secondary-region"></a>İkincil bölgedeki yedekleme öğelerini görüntüle
 
 CRR etkinse, yedekleme öğelerini ikincil bölgede görüntüleyebilirsiniz.
 
-1. Portaldan **Kurtarma Hizmetleri Kasası**  >  **yedekleme öğeleri** ' ne gidin
+1. Portaldan **Kurtarma Hizmetleri Kasası**  >  **yedekleme öğeleri**' ne gidin.
 1. İkincil bölgedeki öğeleri görüntülemek için **Ikincil bölge** ' yi seçin.
 
-    ![İkincil bölgedeki sanal makineler](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+>[!NOTE]
+>Yalnızca CRR özelliğini destekleyen yedekleme yönetim türleri listede gösterilir. Şu anda yalnızca ikincil bölge verilerinin bir ikincil bölgeye geri yüklenmesi için desteğe izin verilir.
 
-    ![Ikincil bölge seçin](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
+![İkincil bölgedeki sanal makineler](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+
+![Ikincil bölge seçin](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
 
 ### <a name="restore-in-secondary-region"></a>İkincil bölgede geri yükleme
 

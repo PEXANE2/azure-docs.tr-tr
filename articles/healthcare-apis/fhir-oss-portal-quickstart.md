@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 7fa119db0c974c93aff667060d153b21b8de16bb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 57ab6bca820c4c25a9a56e4a801aa7d917d317ec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843496"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978584"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak açık kaynak FHıR sunucusunu dağıtma
 
@@ -25,17 +25,17 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [GitHub dağıtım sayfasına](https://github.com/Microsoft/fhir-server/blob/master/docs/DefaultDeployment.md) gidin ve "Azure 'a dağıt" düğmelerini bulun:
 
-![Kaynak dağıtım sayfasını aç](media/quickstart-oss-portal/deployment-page-oss.png)
+>[!div class="mx-imgBorder"]
+>![Kaynak dağıtım sayfasını aç](media/quickstart-oss-portal/deployment-page-oss.png)
 
 Dağıtım düğmesine tıklayın ve Azure portal açılır.
 
 ## <a name="fill-in-deployment-parameters"></a>Dağıtım parametrelerini doldur
 
-Yeni bir kaynak grubu oluşturmayı seçip bir ad verin. Hizmetin adı yalnızca diğer gerekli parametredir.
+Yeni bir kaynak grubu oluşturmayı seçip bir ad verin. Yalnızca diğer gerekli parametreler, hizmet ve SQL yönetici parolası için bir addır.
 
-![Özel dağıtım parametreleri](media/quickstart-oss-portal/deployment-custom-parameters.png)
-
-Dağıtımın kaynak kodu GitHub 'daki açık kaynaklı depodan doğrudan çekeceğini unutmayın. Depoyu kullandıysanız, için kendi kendinize ve belirli bir dala işaret edebilirsiniz.
+>[!div class="mx-imgBorder"]
+>![Özel dağıtım parametreleri](media/quickstart-oss-portal/deployment-custom-parameters.png)
 
 Ayrıntıları doldurduktan sonra dağıtımı başlatabilirsiniz.
 

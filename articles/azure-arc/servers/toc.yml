@@ -47,12 +47,12 @@
       items:
         - name: Aracı bağlantı sorunları
           href: troubleshoot-agent-onboard.md
-    - name: Başvuru
-      items:
-        - name: Bölge kullanılabilirliği ve veri yerleşikliği
-          href: data-residency.md
-        - name: REST
-          href: /rest/api/hybridcompute
-        - name: Azure İlkesi yerleşik ilkeler
-          displayName: 'samples, policies, definitions'
-          href: policy-reference.md
+- name: Başvuru
+  items:
+    - name: Veri yerleşimi
+      href: data-residency.md
+    - name: REST
+      href: /rest/api/hybridcompute
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md
