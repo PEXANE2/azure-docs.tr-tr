@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4150f850263aed7b8aa4317028386dc285f06ade
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927156"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905341"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -115,7 +115,7 @@ Sistemin kararlılığını korumak ve özel giriş denetleyicilerinin kuin sist
 
 Özel giriş Web kancasının kapsamında olmasını istediğiniz bir şeyin Kuto sistemine dağıtılması için kritik bir kullanım örneğine sahipseniz, Admissions Enforcer bunu yok sayabilmesi için aşağıdaki etiketi veya ek açıklamayı ekleyebilirsiniz.
 
-Etiket: ```"admissions.enforcer/disabled": "true"``` veya ek açıklama:```"admissions.enforcer/disabled": true```
+Etiket: ```"admissions.enforcer/disabled": "true"``` veya ek açıklama: ```"admissions.enforcer/disabled": true```
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS ile tümleşik Azure Key Vault mı?
 
@@ -163,7 +163,7 @@ AKS kümenizi ve ilişkili kaynaklarını taşıma veya yeniden adlandırma dest
 
 Hayır, yükseltmeden önce lütfen başarısız durumundaki düğümleri silin/kaldırın veya kümeden kaldırın.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Bir küme silme çalıştırdım, ancak hataya bakın`[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Bir küme silme çalıştırdım, ancak hataya bakın `[Errno 11001] getaddrinfo failed` 
 
 En yaygın olarak, bunun nedeni bir veya daha fazla ağ güvenlik grubu (NSG) hala kullanımda ve kümeyle ilişkili olan kullanıcılardır.  Lütfen bunları kaldırın ve silmeyi yeniden deneyin.
 
@@ -173,7 +173,11 @@ Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Kümem çalışıyor, ancak aniden LoadBalancers, bağlama PVC 'leri vb. sağlayamaz. 
 
-Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](./kubernetes-service-principal.md) ve [aks güncelleştirme kimlik bilgileri](./update-credentials.md).
+Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](./kubernetes-service-principal.md)  ve [aks güncelleştirme kimlik bilgileri](./update-credentials.md).
+
+## <a name="can-i-scale-my-aks-cluster-to-zero"></a>AKS kümemi sıfıra ölçeklendirebiliyor miyim?
+[Çalışan BIR AKS kümesini tümüyle durdurabilir](start-stop-cluster.md)ve ilgili işlem maliyetlerine kaydedebilirsiniz. Ayrıca, yalnızca gerekli küme yapılandırmasını korumak üzere [tüm veya belirli `User` düğüm havuzlarını ölçeklendirmeye veya Otomatik ölçeklendirmeye](scale-cluster.md#scale-user-node-pools-to-0) de seçebilirsiniz.
+[Sistem düğüm havuzlarını](use-system-pools.md) doğrudan 0 olarak ölçeklendirebilirsiniz.
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Sanal makine ölçek kümesi API 'Lerini el ile ölçeklendirmek için kullanabilir miyim?
 

@@ -1,14 +1,14 @@
 ---
 title: Azure Kaynak Durumu genel bakış
-description: Azure Kaynak Durumu genel bakış
+description: Azure Kaynak Durumu Azure kaynaklarınızı etkileyen hizmet sorunlarını tanılamanıza ve destek almanıza nasıl yardımcı olduğunu öğrenin.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041584"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967878"
 ---
 # <a name="resource-health-overview"></a>Kaynak Durumu genel bakış
  

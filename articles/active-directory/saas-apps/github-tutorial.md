@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 7153a1279785cfe79d23b2b5ba843ec9f5cd4965
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 007f4d0c0e56051c369d8d06cdd40c9251647673
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550755"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985903"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Öğretici: GitHub ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -27,7 +27,7 @@ Bu öğreticide, GitHub 'ı Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini GitHub ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -194,7 +194,7 @@ Bu bölümün amacı, GitHub 'da Britta Simon adlı bir Kullanıcı oluşturmakt
 
 2. **Kişiler**' e tıklayın.
 
-    ![People](./media/github-tutorial/people.png "People")
+    ![Ekran görüntüsü, seçili kişileri içeren GitHub sitesini gösterir.](./media/github-tutorial/people.png "People")
 
 3. **Üyeyi davet et**' e tıklayın.
 

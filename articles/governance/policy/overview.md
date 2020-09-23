@@ -1,25 +1,24 @@
 ---
 title: Azure İlkesine Genel Bakış
 description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
-ms.date: 06/17/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044201"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905989"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
 
-Azure Ilkesi, kurumsal standartları zorunlu kılmaya ve üstün ölçekli uyumluluğu değerlendirmenize yardımcı olur. Uyumluluk panosu sayesinde, ortamın genel durumunu değerlendirmek için, kaynak başına, ilke başına ayrıntı düzeyi ile ayrıntıya gitme olanağı sunan bir toplu görünüm sağlar. Ayrıca, mevcut kaynaklar için toplu düzeltme ve yeni kaynaklar için otomatik düzeltme aracılığıyla kaynaklarınızı uyumluluğa getirmeye yardımcı olur.
+Azure İlkesi, kuruluş standartlarının uygulanmasına ve büyük ölçekte uyumluluk değerlendirmesi yapılmasına yardımcı olur. Uyumluluk panosu sayesinde, ortamın genel durumunu değerlendirmek için, kaynak başına, ilke başına ayrıntı düzeyi ile ayrıntıya gitme olanağı sunan bir toplu görünüm sağlar. Ayrıca, mevcut kaynaklar için toplu düzeltme ve yeni kaynaklar için otomatik düzeltme aracılığıyla kaynaklarınızı uyumluluğa getirmeye yardımcı olur.
 
 Azure Ilkesi için genel kullanım örnekleri, kaynak tutarlılığı, mevzuata uyumluluk, güvenlik, maliyet ve yönetim için idare uygulamayı içerir. Bu yaygın kullanım örnekleri için ilke tanımları, Azure ortamınızda, başlamanıza yardımcı olacak yerleşik olarak zaten kullanılabilir.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Ilkesi, Azure 'daki kaynakları, bu kaynakların özelliklerini iş kurallarıyla karşılaştırarak değerlendirir. [JSON biçiminde](./concepts/definition-structure.md)açıklanan bu iş kuralları [ilke tanımları](#policy-definition)olarak bilinir. Yönetimi basitleştirmek için, bir [ilke girişimi](#initiative-definition) (bazen _policyset_olarak adlandırılır) oluşturmak üzere çeşitli iş kuralları birlikte gruplandırılabilir. İş kurallarınız oluşturulduktan sonra, [Yönetim grupları](../management-groups/overview.md), abonelikler, [kaynak grupları](../../azure-resource-manager/management/overview.md#resource-groups)veya tek tek kaynaklar gibi Azure tarafından desteklenen herhangi bir kaynak kapsamına ilke tanımı veya girişimi [atanır](#assignments) . Atama, bu atamanın [kapsamındaki](../../azure-resource-manager/management/overview.md#understand-scope) tüm kaynaklar için geçerlidir.
-Gerekirse alt kapsamlar dışarıda bırakılabilirler.
+Azure Ilkesi, Azure 'daki kaynakları, bu kaynakların özelliklerini iş kurallarıyla karşılaştırarak değerlendirir. [JSON biçiminde](./concepts/definition-structure.md)açıklanan bu iş kuralları [ilke tanımları](#policy-definition)olarak bilinir. Yönetimi basitleştirmek için, bir [ilke girişimi](#initiative-definition) (bazen _policyset_olarak adlandırılır) oluşturmak üzere çeşitli iş kuralları birlikte gruplandırılabilir. İş kurallarınız oluşturulduktan sonra, [Yönetim grupları](../management-groups/overview.md), abonelikler, [kaynak grupları](../../azure-resource-manager/management/overview.md#resource-groups)veya tek tek kaynaklar gibi Azure tarafından desteklenen herhangi bir kaynak kapsamına ilke tanımı veya girişimi [atanır](#assignments) . Atama, bu atamanın [Kaynak Yöneticisi kapsamındaki](../../azure-resource-manager/management/overview.md#understand-scope) tüm kaynaklar için geçerlidir. Gerekirse alt kapsamlar dışarıda bırakılabilirler. Daha fazla bilgi için bkz. [Azure Ilkesinde kapsam](./concepts/scope.md).
 
 Azure Ilkesi, değerlendirmenin bir kaynağın uyumlu olup olmadığını belirlemede kullandığı mantığı oluşturmak için bir [JSON biçimi](./concepts/definition-structure.md) kullanır. Tanımlar meta veriler ve ilke kuralı içerir. Tanımlı kural, tam olarak istediğiniz senaryoyu eşleştirmek için işlevleri, parametreleri, mantıksal işleçleri, koşulları ve özellik [diğer adlarını](./concepts/definition-structure.md#aliases) kullanabilir. İlke kuralı, atama kapsamındaki hangi kaynakların değerlendirildiğini belirler.
 
@@ -56,7 +55,7 @@ Aşağıdaki Azure İlkesi genel bakış videosu Build 2018 etkinliğinde kayded
 
 > [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 ### <a name="azure-policy-and-rbac"></a>Azure Ilkesi ve RBAC
 
@@ -71,7 +70,7 @@ RBAC ve Azure Ilkesinin birleşimi Azure 'da tam kapsam denetimi sağlar.
 Azure İlkesi iki Kaynak Sağlayıcısı’nda işlemler olarak bilinen bazı izinlere sahiptir:
 
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
-- [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
+- [Microsoft. Poliyelei](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
 Birçok Yerleşik rol Azure İlkesi kaynaklarına izin verir. **Kaynak Ilkesi katılımcısı** rolü çoğu Azure ilke işlemini içerir. **Sahibinin** tam hakları vardır. **Katkıda bulunan** ve **okuyucunun** _tüm Azure_ ilke işlemlerine erişimi vardır. **Katkıda bulunan** kaynak düzeltmesini tetikleyebilir, ancak tanımları veya atamaları _oluşturamaz_ .
 
@@ -106,7 +105,7 @@ Göz önünde bulundurmanız gereken birkaç işaretçi ve ipucu aşağıda veri
 
 Azure İlkesi'nde bir ilke oluşturmak ve uygulamak için önce ilke tanımını oluşturmanız gerekir. Her ilke tanımında, üzerinde zorlanan koşullar vardır. Ve koşullar karşılanıyorsa, tanımlanmış bir etkiye sahiptir.
 
-Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örneğin:
+Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örnek:
 
 - **Izin verilen depolama hesabı SKU 'ları** (reddetme): dağıtılmakta olan bir depolama HESABıNıN bir SKU boyutları kümesi içinde olup olmadığını belirler. Etkisi, tanımlı SKU boyutları kümesine bağlı olmayan tüm depolama hesaplarını reddetmektir.
 - **Izin verilen kaynak türü** (reddetme): dağıtabileceğiniz kaynak türlerini tanımlar. Etkisi, bu tanımlı listenin parçası olmayan tüm kaynakları reddetmektir.

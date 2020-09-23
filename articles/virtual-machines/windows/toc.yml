@@ -1,6 +1,6 @@
 - name: Windows VM’leri ile İlgili Belgeler
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
@@ -872,6 +872,8 @@
               href: attach-disk-ps.md
             - name: Azure portal
               href: attach-managed-disk-portal.md
+        - name: Disk katmanını değiştirme
+          href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Disk ayırma
           href: detach-disk.md
         - name: ARM şablonu ile diskleri dağıtma
@@ -1049,7 +1051,7 @@
   href: ../troubleshooting/index.yml
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

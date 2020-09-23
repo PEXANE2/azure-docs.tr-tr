@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1f0a0dff4eb8a1aad0cd5e142959a636827a541
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477519"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898490"
 ---
 # <a name="partition-and-sample-module"></a>Bölüm ve örnek modül
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Bir veri kümesinde örnekleme gerçekleştirmek veya veri kümesinizden bölümler oluşturmak için bölüm ve örnek modülünü kullanın.
 
@@ -71,7 +71,7 @@ Bu seçenek, basit rastgele örnekleme veya düzensiz rastgele örneklemeyi dest
 
 1. İşlem hattınızı **bölüm ve örnek** modülünü ekleyin ve veri kümesini bağlayın.
 
-1. **Bölüm veya örnek modu**: **örnekleme**için bu seçeneği ayarlayın.
+1. **Bölüm veya örnek modu**:  **örnekleme**için bu seçeneği ayarlayın.
 
 1. **Örnekleme oranı**: 0 ile 1 arasında bir değer girin. Bu değer, kaynak veri kümesinden çıktı veri kümesine dahil edilecek satırların yüzdesini belirtir.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU cihazınızda Azure Resource Manager parola ayarlama
-description: Azure PowerShell kullanarak Azure Stack Edge GPU 'unuzda çalışan Azure Resource Manager nasıl bağlanabileceğinizi açıklar.
+title: Azure Stack Edge Pro GPU cihazınızda Azure Resource Manager parola ayarlama
+description: Azure PowerShell kullanarak Azure Stack Edge Pro GPU 'unuzda çalışan Azure Resource Manager nasıl bağlanabileceğinizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6a59510b342f7ebd3969a4bb4fcfd75fffd04804
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254160"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904481"
 ---
-# <a name="set-azure-resource-manager-password-on-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazında Azure Resource Manager parolayı ayarla
+# <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazında Azure Resource Manager parola ayarlama
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -122,7 +122,7 @@ Azure portal veya PowerShell cmdlet 'lerini kullanmanıza bağlı olarak parolay
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    Parolayı sıfırlamak için yukarıdaki oluşturulan güvenli dizeleri set-AzDataBoxEdgeUser cmdlet 'inde parametre olarak kullanın. Azure Stack Edge/Data Box Gateway kaynağını oluştururken kullandığınız kaynak grubunu kullanın.
+    Parolayı sıfırlamak için yukarıdaki oluşturulan güvenli dizeleri set-AzDataBoxEdgeUser cmdlet 'inde parametre olarak kullanın. Azure Stack Edge Pro/Data Box Gateway kaynağını oluştururken kullandığınız kaynak grubunu kullanın.
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key

@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 76c2cf7164c3e2d683a9294cb500ed05381811b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c421c730321213a9adbf0a0043874a21ba26bb05
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043538"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906237"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics işi Azure Resource Manager şablonu dışarı aktarma
 
@@ -28,7 +28,7 @@ Bir işi yerel bir projeye aktarmak için, Azure portal **Stream Analytics Gezgi
 
 ![Visual Studio Code Stream Analytics işi aç](./media/resource-manager-export/open-job-vs-code.png)
 
-Stream Analytics işleri yönetmek için Visual Studio Code kullanma hakkında daha fazla bilgi için [Visual Studio Code hızlı başlangıç](quick-create-vs-code.md)başlığına bakın.
+Stream Analytics işleri yönetmek için Visual Studio Code kullanma hakkında daha fazla bilgi için [Visual Studio Code hızlı başlangıç](quick-create-visual-studio-code.md)başlığına bakın.
 
 ## <a name="compile-the-script"></a>Betiği derle 
 

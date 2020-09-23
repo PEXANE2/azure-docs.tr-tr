@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: db0e2f90ee45d4e1c0173cbc037084793a66e149
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c18c24ae9a8eb4c1fd54c1f8530e126a40b004
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450650"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898514"
 ---
 # <a name="densenet"></a>DenseNet
 
-Bu makalede, Densenet algoritmasını kullanarak bir görüntü sınıflandırma modeli oluşturmak için Azure Machine Learning Designer 'da (Önizleme) **densenet** modülünün nasıl kullanılacağı açıklanır.  
+Bu makalede, Densenet algoritmasını kullanarak bir görüntü sınıflandırma modeli oluşturmak için Azure Machine Learning tasarımcısında **densenet** modülünün nasıl kullanılacağı açıklanır.  
 
 Bu sınıflandırma algoritması denetimli bir öğrenme yöntemidir ve etiketli bir veri kümesi gerektirir. Etiketli görüntü dizini alma hakkında daha fazla yönerge için bkz. [görüntü dizini modülüne dönüştürme](convert-to-image-directory.md) . Bir modeli ve etiketli görüntü dizinini, [Pytorch modelinin Eğiteine](train-pytorch-model.md)giriş olarak sağlayarak modeli eğitebilirsiniz. Eğitilen model daha sonra, yeni giriş örneklerine ilişkin değerleri [Puanlama görüntü modeli](score-image-model.md)kullanılarak tahmin etmek için kullanılabilir.
 
@@ -49,15 +49,15 @@ Daha fazla ayrıntı için, daha [seyrek bağlantılı](https://arxiv.org/abs/16
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Name             | Aralık | Tür    | Varsayılan     | Açıklama                              |
+| Ad             | Aralık | Tür    | Varsayılan     | Açıklama                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Model adı       | Herhangi biri   | Mod    | densenet201 | Belirli bir densenet yapısının adı     |
-| Önceden eğitilen       | Herhangi biri   | Boole | True        | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
-| Bellek etkin | Herhangi biri   | Boole | False       | Çok daha fazla bellek ve daha yavaş olan checkişaret kullanılıp kullanılmayacağını belirtir |
+| Önceden eğitilen       | Herhangi biri   | Boole | Doğru        | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
+| Bellek etkin | Herhangi biri   | Boole | Yanlış       | Çok daha fazla bellek ve daha yavaş olan checkişaret kullanılıp kullanılmayacağını belirtir |
 
-###  <a name="output"></a>Çıktı  
+###  <a name="output"></a>Çıkış  
 
-| Name            | Tür                    | Açıklama                              |
+| Ad            | Tür                    | Açıklama                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Eğitilen model | Untraınedmodeldirectory | Pytorch modelini eğitebilmeniz için bağlanmayan eğitilen bir model. |
 

@@ -1,40 +1,38 @@
 ---
 title: Azure Güvenlik Merkezi 'nde yanlış pozitifleri veya diğer istenmeyen güvenlik uyarılarını gizlemek için uyarı gizleme kurallarını kullanma.
-description: Bu makalede, istenmeyen güvenlik uyarılarını gizlemek için Azure Güvenlik Merkezi 'nin gizleme kurallarının nasıl kullanılacağı açıklanmaktadır.
+description: Bu makalede, istenmeyen Azure Defender uyarılarını gizlemek için Azure Güvenlik Merkezi 'nin gizleme kurallarının nasıl kullanılacağı açıklanmaktadır
 author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 05/04/2020
+ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 341373c9a8429f335f3064db7a94973d34e0ca1c
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 0d4c2ddc6b18d2f6767fb3a2761bc6a247e101a1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042509"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904901"
 ---
-# <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gösterme
+# <a name="suppress-alerts-from-azure-defender"></a>Azure Defender 'dan uyarıları gösterme
 
-Bu sayfada, Azure Güvenlik Merkezi 'nde yanlış pozitifleri veya diğer istenmeyen güvenlik uyarılarını gizlemek için uyarı gizleme kurallarını nasıl kullanabileceğiniz açıklanmaktadır.
+Bu sayfada, Azure Defender 'daki hatalı pozitif durumları veya diğer istenmeyen güvenlik uyarılarını gizlemek için uyarı gizleme kurallarını nasıl kullanabileceğiniz açıklanmaktadır.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
 |Görünüş|Ayrıntılar|
 |----|:----|
 |Yayın durumu:|Önizleme|
-|Fiyat|Ücretsiz katmanı<br>(Çoğu güvenlik uyarısı yalnızca Standart katman için geçerlidir)|
+|Fiyat|Ücretsiz<br>(Çoğu güvenlik uyarısı yalnızca Azure Defender ile kullanılabilir)|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi** ve **sahibi** kuralları oluşturabilir/silebilir.<br>**Güvenlik okuyucu** ve **okuyucu** , kuralları görüntüleyebilir.|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
-
-
 ## <a name="what-are-suppression-rules"></a>Gizleme kuralları nelerdir?
 
-Azure Güvenlik Merkezi 'nin tehdit koruması bileşenleri, ortamınızın herhangi bir alanındaki tehditleri algılar ve güvenlik uyarıları oluşturur.
+Çeşitli Azure Defender planları ortamınızın herhangi bir alanındaki tehditleri algılar ve güvenlik uyarıları oluşturur.
 
 Tek bir uyarı ilgi çekici veya ilgili olmadığında bunu el ile kapatabilirsiniz. Alternatif olarak, daha sonra benzer uyarıları otomatik olarak kapatmak için gizleme kuralları özelliğini kullanın. Genellikle bir gizleme kuralı kullanarak şunları yapabilirsiniz:
 
@@ -45,16 +43,15 @@ Tek bir uyarı ilgi çekici veya ilgili olmadığında bunu el ile kapatabilirsi
 Gizleme kurallarınız, uyarıların otomatik olarak hangi ölçütlere göre kapatılacağını tanımlar.
 
 > [!CAUTION]
-> Güvenlik uyarılarını gizleme Güvenlik Merkezi 'nin tehdit korumasını azaltır. Herhangi bir gizleme kuralının olası etkisini dikkatle denetlemeniz ve zaman içinde izlemeniz gerekir.
+> Güvenlik uyarılarını gizleme, Azure Defender 'ın tehdit koruması verimliliğini azaltır. Herhangi bir gizleme kuralının olası etkisini dikkatle denetlemeniz ve zaman içinde izlemeniz gerekir.
 
-![Uyarı gizleme kuralı oluştur](media\alerts-suppression-rules\create-suppression-rule.gif)
+:::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="Uyarı gizleme kuralı oluştur":::
 
 ## <a name="create-a-suppression-rule"></a>Gizleme kuralı oluşturma
 
 İstenmeyen güvenlik uyarılarını bastırmak için kurallar oluşturabileceğiniz birkaç yol vardır:
 
 - Yönetim grubu düzeyinde uyarıları gizlemek için Azure Ilkesi 'ni kullanın
-
 - Uyarıları abonelik düzeyinde gizlemek için, aşağıda açıklandığı gibi Azure portal veya REST API kullanabilirsiniz
 
 Gizleme kuralları yalnızca seçili aboneliklerde zaten tetiklenen uyarıları kapatabilir.
@@ -72,39 +69,32 @@ Azure portal doğrudan bir kural oluşturmak için:
         ![Yeni gizleme kuralı oluştur * * düğmesi](media/alerts-suppression-rules/create-new-suppression-rule.png)
 
 1. Yeni gizleme kuralı bölmesinde yeni kuralınızın ayrıntılarını girin.
-
-    - Kuralınız, daha sonra bu gibi bir uyarı alabilmek için **tüm kaynaklardaki** uyarıları kapatabilir. 
-    
+    - Kuralınız, daha sonra bu gibi bir uyarı alabilmek için **tüm kaynaklardaki** uyarıları kapatabilir.     
     - Kuralınız belirli bir **ölçütte** uyarıyı kapatabilir; belırlı bir IP adresi, işlem adı, Kullanıcı hesabı, Azure kaynağı veya konum ile ilgilidir.
 
     > [!TIP]
     > Yeni kural sayfasını belirli bir uyarıdan açtıysanız, uyarı ve abonelik yeni kuralınızdan otomatik olarak yapılandırılır. **Yeni gizleme kuralı oluştur** bağlantısını kullandıysanız, seçili abonelikler portaldaki geçerli filtreyle eşleşir.
 
     [![Kural oluşturma bölmesinin gizleme](media/alerts-suppression-rules/new-suppression-rule-pane.png)](media/alerts-suppression-rules/new-suppression-rule-pane.png#lightbox)
-
 1. Kuralın ayrıntılarını girin:
-
     - **Ad** -kural için bir ad. Kural adları bir harf veya sayı ile başlamalı, 2 ila 50 karakter arasında olmalıdır ve tire (-) veya alt çizgi (_) dışında bir sembol içermemelidir. 
     - **Durum** -etkin veya devre dışı.
     - **Neden** -gereksinimlerinizi karşılamıyorsa, yerleşik nedenlerden birini veya ' diğer ' seçeneğini belirleyin.
     - **Sona erme tarihi** -kuralın bitiş tarihi ve saati. Kurallar, altı aya kadar çalışabilir.
-
 1. İsteğe bağlı olarak, bu kural etkin olduğunda kaç uyarı kapatılacağını görmek için **Benzetim** düğmesini kullanarak kuralı test edin.
-
 1. Kuralı kaydedin. 
+
 
 ## <a name="edit-a-suppression-rules"></a>Gizleme kurallarını Düzenle
 
 Oluşturduğunuz kuralları düzenlemek için gizleme kuralları sayfasını kullanın.
 
 1. Güvenlik Merkezi 'nin güvenlik uyarıları sayfasında, sayfanın üst kısmındaki **gizleme kuralları** bağlantısını seçin.
-
 1. Gizleme kuralları sayfası, seçili abonelikler için tüm kurallarla birlikte açılır.
 
     [![Gizleme kuralları listesi](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
 1. Tek bir kuralı düzenlemek için, kural için üç nokta menüsünü (...) açın ve **Düzenle**' yi seçin.
-
 1. Gerekli değişiklikleri yapın ve **Uygula**' yı seçin. 
 
 ## <a name="delete-a-suppression-rule"></a>Gizleme kuralını Sil
@@ -112,13 +102,9 @@ Oluşturduğunuz kuralları düzenlemek için gizleme kuralları sayfasını kul
 Oluşturduğunuz bir veya daha fazla kuralı silmek için gizleme kuralları sayfasını kullanın.
 
 1. Güvenlik Merkezi 'nin güvenlik uyarıları sayfasında, sayfanın üst kısmındaki **gizleme kuralları** bağlantısını seçin.
-
 1. Gizleme kuralları sayfası, seçili abonelikler için tüm kurallarla birlikte açılır.
-
 1. Tek bir kuralı silmek için, kural için üç nokta menüsünü (...) açın ve **Sil**' i seçin.
-
 1. Birden çok kuralı silmek için, kuralların silineceği onay kutularını seçin ve **Sil**' i seçin.
-
     ![Bir veya daha fazla gizleme kuralını silme](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
 ## <a name="view-suppressed-alerts"></a>Gizlenen Uyarıları görüntüle
@@ -160,7 +146,6 @@ Tam ayrıntılar ve kullanım örnekleri için [API belgelerine](https://docs.mi
 
 Bu makalede, Azure Güvenlik Merkezi 'nde istenmeyen uyarıları otomatik olarak kapatmak için gizleme kuralları açıklanmaktadır.
 
-Azure Güvenlik Merkezi 'ndeki güvenlik uyarıları hakkında daha fazla bilgi için aşağıdaki sayfalara bakın:
+Azure Defender güvenlik uyarıları hakkında daha fazla bilgi için aşağıdaki sayfalara bakın:
 
-- [Güvenlik uyarıları ve amaç sonlandırma zinciri](alerts-reference.md) -Azure Güvenlik Merkezi 'Nin tehdit koruması modülünde görebileceğiniz güvenlik uyarıları için bir başvuru kılavuzu.
-- [Azure Güvenlik Merkezi 'Nde tehdit koruması](threat-protection.md) -ortamınızın Azure Güvenlik Merkezi 'Nin tehdit koruması modülü tarafından izlenen birçok yönü hakkında bir açıklama.
+- [Güvenlik uyarıları ve amaç sonlandırma zinciri](alerts-reference.md) -Azure Defender 'dan alabileceğiniz güvenlik uyarılarına yönelik bir başvuru kılavuzu.

@@ -10,18 +10,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278148"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905481"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarıları
 
 Azure Güvenlik Merkezi 'nde birçok farklı kaynak türü için çeşitli uyarılar vardır. Güvenlik Merkezi, Azure 'da dağıtılan ve ayrıca şirket içi ve hibrit bulut ortamlarında dağıtılan kaynaklar için uyarı oluşturur.
 
-Güvenlik uyarıları, gelişmiş algılamalar tarafından tetiklenir ve yalnızca Azure Güvenlik Merkezi 'nin standart katmanında kullanılabilir. Ücretsiz deneme sürümü mevcuttur. **Fiyatlandırma & ayarları** sayfasından yükseltebilirsiniz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/)hakkında daha fazla bilgi edinin.
+Güvenlik uyarıları, gelişmiş algılamalar tarafından tetiklenir ve yalnızca Azure Defender ile kullanılabilir. Ücretsiz deneme sürümü mevcuttur. **Fiyatlandırma & ayarları** sayfasından yükseltebilirsiniz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/)hakkında daha fazla bilgi edinin.
 
 ## <a name="respond-to-todays-threats"></a>Bugünün tehditlerine <a name="respond-threats"> </a> yanıt verme
 
@@ -45,7 +45,7 @@ Güvenlik Merkezi, olayları kullanarak bir saldırı kampanyasının ve tüm il
 
 ## <a name="how-does-security-center-detect-threats"></a>Güvenlik Merkezi tehditleri nasıl algılar? <a name="detect-threats"> </a>
 
-Microsoft güvenlik araştırmacıları sürekli olarak tehditleri araştırmaktadır. Microsoft 'un bulutta ve şirket içinde küresel olup olmadığı için, bir dizi telemetri kümesine erişebilirler. Geniş ve çok sayıda veri kümesi, yeni saldırı desenlerinin ve eğilimler ile şirket içi tüketici ve kurumsal ürünlerin yanı sıra çevrimiçi hizmetler. Sonuç olarak, saldırganlar yeni ve giderek karmaşık hale gelen sömürülerini ortaya çıkardıkça Güvenlik Merkezi algılama algoritmalarını hızlı bir şekilde güncelleştirebilmektedir. Bu yaklaşık hızlı hareket eden bir ortama ayak uydurmanıza yardımcı olmaktadır.
+Microsoft güvenlik araştırmacıları sürekli olarak tehditleri araştırmaktadır. Bulutta ve şirket içinde küresel varlığımız nedeniyle, expantik bir telemetri kümesine eriştik. Geniş çaplı ve farklı veri kümeleri koleksiyonu, şirket içi tüketicimiz ve Kurumsal Ürünlerimiz genelinde yeni saldırı desenleri ve eğilimleri bulmamızı ve çevrimiçi hizmetler. Sonuç olarak, saldırganlar yeni ve giderek karmaşık hale gelen sömürülerini ortaya çıkardıkça Güvenlik Merkezi algılama algoritmalarını hızlı bir şekilde güncelleştirebilmektedir. Bu yaklaşık hızlı hareket eden bir ortama ayak uydurmanıza yardımcı olmaktadır.
 
 Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları azaltmak için Azure kaynaklarınızdan ve ağınızdan gelen günlük verilerini toplar, çözümler ve tümleştirir. Ayrıca, güvenlik duvarı ve uç nokta koruma çözümleri gibi bağlı iş ortağı çözümleri ile de birlikte kullanılabilir. Güvenlik Merkezi, tehditleri belirlemek için genellikle birden çok kaynaktan gelen bilgileri ilişkilendirmek üzere bu bilgileri analiz eder.
 
@@ -90,6 +90,5 @@ Bu Birleşik çabalar, anında yararlanabilmeniz için yeni ve geliştirilmiş A
 
 Bu makalede, güvenlik merkezi 'nde bulunan farklı Uyarı türleri hakkında bilgi edindiniz. Daha fazla bilgi için bkz.
 
-* Azure Güvenlik Merkezi 'nde, Azure Güvenlik Merkezi tarafından gösterilecek güvenlik uyarılarının kaynaklarının kısa bir açıklaması için [Azure Güvenlik Merkezi 'Nde tehdit koruması](threat-protection.md) 
-* **Azure etkinlik günlüğündeki güvenlik uyarıları** -Azure Portal veya programlı olarak, güvenlik uyarıları ve olayları [Azure etkinlik günlüğünde](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)olay olarak denetlenir. Olay şeması hakkında daha fazla bilgi için bkz. [Azure etkinlik günlüğündeki güvenlik uyarıları](https://go.microsoft.com/fwlink/?linkid=2114113)
+- **Azure etkinlik günlüğündeki güvenlik uyarıları** -Azure Portal veya programlı olarak, güvenlik uyarıları ve olayları [Azure etkinlik günlüğünde](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)olay olarak denetlenir. Olay şeması hakkında daha fazla bilgi için bkz. [Azure etkinlik günlüğündeki güvenlik uyarıları](https://go.microsoft.com/fwlink/?linkid=2114113)
 

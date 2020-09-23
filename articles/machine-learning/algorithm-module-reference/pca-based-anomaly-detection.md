@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 0498823e1b730db6425d255b6de4b826dd05a6a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749495"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898454"
 ---
 # <a name="pca-based-anomaly-detection-module"></a>PCA tabanlı anomali algılama modülü
 
-Bu makalede, sorumlu bileşen analizine (PCA) dayalı bir anomali algılama modeli oluşturmak için Azure Machine Learning tasarımcısında (Önizleme) PCA tabanlı anomali algılama modülünün nasıl kullanılacağı açıklanır.
+Bu makalede, sorumlu bileşen analizine (PCA) dayalı bir anomali algılama modeli oluşturmak için Azure Machine Learning tasarımcısında PCA tabanlı anomali algılama modülünün nasıl kullanılacağı açıklanır.
 
 Bu modül, geçerli işlemler gibi bir sınıftan eğitim verilerini almanın ve hedeflenen anomali örneklere yeterli örnek almak zor olan senaryolarda bir model oluşturmanıza yardımcı olur. 
 
@@ -109,4 +109,4 @@ Anomali algılayıcısı, her yeni giriş için ilk olarak eigenvektörlerin pro
 
 Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
 
-Tasarımcı modüllerine özgü hataların listesi için bkz. [Tasarımcı Için özel durumlar ve hata kodları (Önizleme)](designer-error-codes.md) .
+Tasarımcı modüllerine özgü hataların listesi için bkz. [Tasarımcı Için özel durumlar ve hata kodları](designer-error-codes.md) .

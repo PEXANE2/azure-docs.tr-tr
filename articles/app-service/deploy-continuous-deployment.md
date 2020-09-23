@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: fa30c6c2c3ecd9c9c119fee80b7ef90999e42d30
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962630"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984406"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service için sürekli dağıtım
 
@@ -23,7 +23,7 @@ Kaynak denetim hizmetleri hakkında daha fazla bilgi için bkz. [depo oluşturma
 
 ## <a name="authorize-azure-app-service"></a>Azure App Service yetkilendir 
 
-Azure Repos kullanmak için Azure DevOps kuruluşunuzun Azure aboneliğinize bağlı olduğundan emin olun. Daha fazla bilgi için bkz. bir [Azure DevOps Services hesabını bir Web uygulamasına dağıtabilmesi Için ayarlama](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+Azure Repos kullanmak için Azure DevOps kuruluşunuzun Azure aboneliğinize bağlı olduğundan emin olun. Daha fazla bilgi için bkz. bir [Azure DevOps Services hesabını bir Web uygulamasına dağıtabilmesi Için ayarlama](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true).
 
 Bitbucket veya GitHub için Azure App Service, deponuza bağlanmak üzere yetkilendirin. Yalnızca bir kaynak denetim hizmetiyle bir kez yetkilendirme yapmanız gerekir. 
 
@@ -58,7 +58,7 @@ Yerleşik kudu App Service derleme sunucusunu, GitHub, Bitbucket veya Azure Repo
 1. **Dağıtım Merkezi** sayfasında yetkili Kaynak denetimi sağlayıcınızı seçin ve **devam**' ı seçin. GitHub veya Bitbucket için, yetkili hesabı değiştirmek üzere **hesabı Değiştir** ' i de seçebilirsiniz. 
    
    > [!NOTE]
-   > Azure Repos kullanmak için Azure DevOps Services kuruluşunuzun Azure aboneliğinize bağlı olduğundan emin olun. Daha fazla bilgi için bkz. bir [Azure DevOps Services hesabını bir Web uygulamasına dağıtabilmesi Için ayarlama](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+   > Azure Repos kullanmak için Azure DevOps Services kuruluşunuzun Azure aboneliğinize bağlı olduğundan emin olun. Daha fazla bilgi için bkz. bir [Azure DevOps Services hesabını bir Web uygulamasına dağıtabilmesi Için ayarlama](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true).
    
 1. GitHub veya Azure Repos için, **Yapı sağlayıcısı** sayfasında **App Service derleme hizmeti**' ni seçin ve ardından **devam**' ı seçin. Bitbucket her zaman App Service derleme hizmetini kullanır.
    
@@ -76,7 +76,7 @@ Yerleşik kudu App Service derleme sunucusunu, GitHub, Bitbucket veya Azure Repo
    - Azure Repos için, sürekli olarak dağıtmak istediğiniz **Azure DevOps organizasyonu**, **Proje**, **Depo**ve **dalı** seçin.
      
      > [!NOTE]
-     > Azure DevOps kuruluşunuz listelenmiyorsa, Azure aboneliğinize bağlı olduğundan emin olun. Daha fazla bilgi için bkz. bir [Azure DevOps Services hesabını bir Web uygulamasına dağıtmak Için ayarlama](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+     > Azure DevOps kuruluşunuz listelenmiyorsa, Azure aboneliğinize bağlı olduğundan emin olun. Daha fazla bilgi için bkz. bir [Azure DevOps Services hesabını bir Web uygulamasına dağıtmak Için ayarlama](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true).
      
 1. **Devam**’ı seçin.
    
@@ -110,11 +110,11 @@ Azure Pipelines kullanarak sürekli teslim oluşturmak Azure App Service için, 
 
 1. **Dağıtım Merkezi** sayfasında, kaynak denetimi sağlayıcısı olarak **GitHub** ' ı seçin ve **devam**' ı seçin. **GitHub**için, yetkili hesabı değiştirmek üzere **hesabı Değiştir** ' i seçebilirsiniz.
 
-    ![Kaynak denetimi](media/app-service-continuous-deployment/deployment-center-src-control.png)
+    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="App Service Deployment Center sayfasının ekran görüntüsü.":::
    
 1. **Yapı sağlayıcısı** sayfasında **Azure Pipelines (Önizleme)** öğesini seçin ve ardından **devam**' ı seçin.
 
-    ![derleme sağlayıcısı](media/app-service-continuous-deployment/select-build-provider.png)
+    :::image type="content" source="media/app-service-continuous-deployment/select-build-provider.png" alt-text="Azure Pipelines (Önizleme) ile birlikte Dağıtım Merkezi sayfasını gösteren ekran görüntüsü.":::
    
 1. **Yapılandırma** sayfasında, **kod** bölümünde, sürekli olarak dağıtmak istediğiniz **kuruluş**, **Depo**ve **dalı** seçin ve **devam**' ı seçin.
      
@@ -123,11 +123,11 @@ Azure Pipelines kullanarak sürekli teslim oluşturmak Azure App Service için, 
        
     **Build** bölümünde, Azure Pipelines derleme görevlerini çalıştırmak için kullanması gereken Azure DevOps organizasyonu, proje, dil çerçevesini belirtin ve ardından **devam**' ı seçin.
 
-   ![derleme sağlayıcısı](media/app-service-continuous-deployment/build-configure.png)
+   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="Alanlara örnek metin içeren derleme bölümünün ekran görüntüsü.":::
 
 1. Yapı sağlayıcısını yapılandırdıktan sonra, **Özet** sayfasındaki ayarları gözden geçirin ve ardından **son**' u seçin.
 
-   ![derleme sağlayıcısı](media/app-service-continuous-deployment/summary.png)
+   :::image type="content" source="media/app-service-continuous-deployment/summary.png" alt-text="Yenileme düğmesi vurgulanmış işlemeler ve dağıtımları gösteren Dağıtım Merkezi sayfasının ekran görüntüsü.":::
    
 1. Seçili depodaki ve daldaki yeni işlemeler artık App Service sürekli olarak dağıtılır. Yürütmeleri ve dağıtımları **Dağıtım Merkezi** sayfasında izleyebilirsiniz.
    
@@ -141,11 +141,11 @@ Azure Pipelines kullanarak sürekli teslim oluşturmak Azure App Service için, 
 
 1. **Dağıtım Merkezi** sayfasında kaynak denetimi sağlayıcısı olarak **Azure Repos** seçin ve **devam**' ı seçin.
 
-    ![Kaynak denetimi](media/app-service-continuous-deployment/deployment-center-src-control.png)
+    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="Sürekli dağıtım (CI/CD) seçimlerini gösteren Dağıtım Merkezi sayfasının ekran görüntüsü.":::
 
 1. **Yapı sağlayıcısı** sayfasında **Azure Pipelines (Önizleme)** öğesini seçin ve ardından **devam**' ı seçin.
 
-    ![Kaynak denetimi](media/app-service-continuous-deployment/azure-pipelines.png)
+    :::image type="content" source="media/app-service-continuous-deployment/azure-pipelines.png" alt-text="Azure Pipelines (Önizleme) gösteren dağıtım merkezinin ekran görüntüsü.":::
 
 1. **Yapılandırma** sayfasında, **kod** bölümünde, sürekli olarak dağıtmak istediğiniz **kuruluş**, **Depo**ve **dalı** seçin ve **devam**' ı seçin.
 
@@ -154,11 +154,11 @@ Azure Pipelines kullanarak sürekli teslim oluşturmak Azure App Service için, 
 
    **Build** bölümünde, Azure Pipelines derleme görevlerini çalıştırmak için kullanması gereken Azure DevOps organizasyonu, proje, dil çerçevesini belirtin ve ardından **devam**' ı seçin.
 
-   ![derleme sağlayıcısı](media/app-service-continuous-deployment/build-configure.png)
+   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="Azure DevOps kuruluşunun ve proje alanlarının örneklerle doldurulmuş olarak gösterildiği Build bölümünün ekran görüntüsü.":::
 
 1. Yapı sağlayıcısını yapılandırdıktan sonra, **Özet** sayfasındaki ayarları gözden geçirin ve ardından **son**' u seçin.  
      
-   ![derleme sağlayıcısı](media/app-service-continuous-deployment/summary-azure-pipelines.png)
+   :::image type="content" source="media/app-service-continuous-deployment/summary-azure-pipelines.png" alt-text="Özet sayfasında seçili ayarları gösteren ekran görüntüsü.":::
 
 1. Seçili depodaki ve daldaki yeni işlemeler artık App Service sürekli olarak dağıtılır. Yürütmeleri ve dağıtımları **Dağıtım Merkezi** sayfasında izleyebilirsiniz.
 

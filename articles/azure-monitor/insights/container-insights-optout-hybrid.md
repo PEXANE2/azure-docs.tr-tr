@@ -3,12 +3,12 @@ title: Karma Kubernetes kümenizi izlemeyi durdurma | Microsoft Docs
 description: Bu makalede, kapsayıcı için Azure Izleyici ile karma Kubernetes kümenizi izlemeyi nasıl durdurulabileceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 8369c82b83cfbaa7128383c6203aaf584916cae9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091207"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986041"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Karma kümenizi izlemeyi durdurma
 
@@ -58,7 +58,7 @@ Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Held, 
 
 ## <a name="how-to-stop-monitoring-on-arc-enabled-kubernetes"></a>Yay etkin Kubernetes üzerinde izlemeyi durdurma
 
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell’i kullanma
 
 1. Aşağıdaki komutları kullanarak betiği, izleme eklentisi ile kümenizi yapılandıran yerel bir klasöre yükleyin ve kaydedin:
 
@@ -83,6 +83,25 @@ Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Held, 
     ```powershell
     .\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext
     ```
+
+#### <a name="using-service-principal"></a>Hizmet sorumlusu kullanma
+Betik *disable-monitoring.ps1* etkileşimli cihaz oturum açma bilgilerini kullanır. Etkileşimli olmayan oturum açma tercih ediyorsanız, mevcut bir hizmet sorumlusunu kullanabilir veya [Önkoşullar](container-insights-enable-arc-enabled-clusters.md#prerequisites)bölümünde açıklandığı gibi gerekli izinlere sahip yeni bir tane oluşturabilirsiniz. Hizmet sorumlusu kullanmak için $servicePrincipalClientId, $servicePrincipalClientSecret ve $tenantId parametrelerini, komut dosyası enable-monitoring.ps1 için kullanmayı amaçladığınız hizmet sorumlusu değerleriyle geçirmeniz gerekir.
+
+```powershell
+$subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
+$servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
+
+$servicePrincipalClientId =  $servicePrincipal.ApplicationId.ToString()
+$servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $servicePrincipal.Secret).Password
+$tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
+```
+
+Örnek:
+
+```powershell
+\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId
+```
+
 
 ### <a name="using-bash"></a>Bash kullanma
 
@@ -117,6 +136,24 @@ Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Held, 
     ```bash
     bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext
     ```
+
+#### <a name="using-service-principal"></a>Hizmet sorumlusu kullanma
+Bash betiği *Disable-Monitoring.sh* etkileşimli cihaz oturum açma bilgilerini kullanır. Etkileşimli olmayan oturum açma tercih ediyorsanız, mevcut bir hizmet sorumlusunu kullanabilir veya [Önkoşullar](container-insights-enable-arc-enabled-clusters.md#prerequisites)bölümünde açıklandığı gibi gerekli izinlere sahip yeni bir tane oluşturabilirsiniz. Hizmet sorumlusu 'nı kullanmak için, *Enable-Monitoring.sh* Bash betiğine kullanmayı amaçladığı hizmet sorumlusu için--istemci kimliği,--istemci-gizli ve--Kiracı kimliği değerlerini geçirmeniz gerekir.
+
+```bash
+subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
+servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${subscriptionId}")
+servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
+
+servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
+tenantId=$(echo $servicePrincipal | jq -r '.tenant')
+```
+
+Örnek:
+
+```bash
+bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

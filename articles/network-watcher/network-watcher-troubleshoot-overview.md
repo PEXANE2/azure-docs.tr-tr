@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 675038189fdc9c9626fee409a90e17341cf9b6cd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 95edcee32c1917d23e4808e805f947d18d2fa7f4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207366"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986241"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde kaynak sorunlarını gidermeye giriş
 
 Sanal ağ geçitleri, şirket içi kaynaklar ve Azure 'daki diğer sanal ağlar arasında bağlantı sağlar. Ağ geçitlerinin ve bağlantılarının izlenmesi, iletişimin kesilmemesini güvence altına alma açısından kritik önem taşır. Ağ Izleyicisi ağ geçitlerinin ve bağlantıların sorunlarını giderme yeteneği sağlar. Bu özellik Portal, PowerShell, Azure CLı veya REST API aracılığıyla çağrılabilir. Çağrıldığında, ağ Izleyicisi ağ geçidinin veya bağlantının sistem durumunu tanılar ve uygun sonuçları döndürür. İstek, uzun süre çalışan bir işlemdir. Tanı tamamlandıktan sonra sonuçlar döndürülür.
 
-![portal][2]
+![Ekran görüntüsü ağ Izleyicisi V P N tanılamayı gösterir.][2]
 
 ## <a name="results"></a>Sonuçlar
 
@@ -57,8 +57,8 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 | PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
 | ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
 | Noconnectionsdökümforgateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| Hayır|
-| ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Evet|
-| Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Evet |
+| ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Yes|
+| Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Yes |
 
 ### <a name="connection"></a>Bağlantı
 
@@ -71,12 +71,12 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 | VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | Hayır |
 | ConnectionEntityNotFound | Bağlantı yapılandırması eksik | Hayır |
 | Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |Hayır|
-| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |
-| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Evet|
-| Kimlik doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Evet|
-| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Evet|
-| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Evet|
-| WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|
+| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
+| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
+| Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|
+| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
+| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
+| WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
 
 ## <a name="supported-gateway-types"></a>Desteklenen ağ geçidi türleri
 

@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes hizmeti için yerleşik ilke tanımları
 description: Azure Kubernetes hizmeti için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 72c04993b08186e333f79bff0f3110b394ab61e3
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: d9910cff487ba6df42730fe7134361902441cd08
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007783"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983909"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Azure Policy Azure Kubernetes hizmeti için yerleşik tanımlar
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: c4f3ccce03f91b0567980d55b59bfb15d6985bb7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: db0c5890add303d85bdec76e00b8377567226a38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299754"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904708"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -28,23 +28,23 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 
 ### <a name="windows-machines"></a>[**Windows makineleri**](#tab/features-windows)
 
-|**Özellik**|**Azure Sanal Makineler**|**Azure Sanal Makine Ölçek Kümeleri**|**Azure dışı makineler**|**Fiyatlandırma**
+|**Özellik**|**Azure Sanal Makineler**|**Azure Sanal Makine Ölçek Kümeleri**|**Azure dışı makineler**|**Azure Defender gerekli**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Standart|
-|[Sanal makine davranış analizi (ve güvenlik uyarıları)](threat-protection.md)|✔|✔|✔|Standart|
-|[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|✔|✔|✔|Standart|
-|[Ağ tabanlı güvenlik uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
-|[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standart|
-|[Yerel güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standart|
-|[Dosya bütünlüğünü izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standart|
-|[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Standart|
-|[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Standart|
-|[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Standart|
-|[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Standart|
-|Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|-|-|-|Standart|
-|Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: ücretsiz<br><br>Azure dışı: Standart|
-|Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: ücretsiz<br><br>Azure dışı: Standart|
-|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: ücretsiz<br><br>Azure dışı: Standart|
+|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Yes|
+|[Sanal makine davranış analizi (ve güvenlik uyarıları)](alerts-reference.md)|✔|✔|✔|Yes|
+|[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|✔|✔|✔|Yes|
+|[Ağ tabanlı güvenlik uyarıları](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
+|[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Yes|
+|[Yerel güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
+|[Dosya bütünlüğünü izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
+|[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Yes|
+|[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
+|[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
+|[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
+|Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|-|-|-|Yes|
+|Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: ücretsiz<br><br>Azure dışı: Evet|
+|Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
+|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
 |Disk şifrelemesi değerlendirmesi|✔|✔|-|Ücretsiz|
 |Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|Ücretsiz|
 |[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Ücretsiz|
@@ -52,22 +52,22 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 
 ### <a name="linux-machines"></a>[**Linux makineleri**](#tab/features-linux)
 
-|**Özellik**|**Azure Sanal Makineler**|**Azure Sanal Makine Ölçek Kümeleri**|**Azure dışı makineler**|**Fiyatlandırma**
+|**Özellik**|**Azure Sanal Makineler**|**Azure Sanal Makine Ölçek Kümeleri**|**Azure dışı makineler**|**Azure Defender gerekli**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|-|-|-|Standart|
-|[Sanal makine davranış analizi (ve güvenlik uyarıları)](security-center-alerts-iaas.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Standart|
-|[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|-|-|-|Standart|
-|[Ağ tabanlı güvenlik uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
-|[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standart|
-|[Yerel güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standart|
-|[Dosya bütünlüğünü izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standart|
-|[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Standart|
-|[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Standart|
-|[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Standart|
-|[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Standart|
-|Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|✔|✔|✔|Standart|
-|Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: ücretsiz<br><br>Azure dışı: Standart|
-|Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: ücretsiz<br><br>Azure dışı: Standart|
+|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|-|-|-|Yes|
+|[Sanal makine davranış analizi (ve güvenlik uyarıları)](security-center-alerts-iaas.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Yes|
+|[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|-|-|-|Yes|
+|[Ağ tabanlı güvenlik uyarıları](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
+|[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Yes|
+|[Yerel güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
+|[Dosya bütünlüğünü izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
+|[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Yes|
+|[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
+|[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
+|[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
+|Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|✔|✔|✔|Yes|
+|Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: ücretsiz<br><br>Azure dışı: Evet|
+|Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: ücretsiz<br><br>Azure dışı: Evet|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ücretsiz|
 |Disk şifrelemesi değerlendirmesi|✔|✔|-|Ücretsiz|
 |Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|Ücretsiz|
@@ -77,7 +77,7 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 
 
 > [!TIP]
->Yalnızca standart fiyatlandırma katmanında bulunan özelliklerle denemeler yapmak için ücretsiz katman kullanıcıları 30 günlük bir denemeye kaydolabilir. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+>Yalnızca Azure Defender ile kullanılabilen özelliklerle denemeler yapmak için 30 günlük bir denemeye kayıt yapabilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 
 ## <a name="supported-endpoint-protection-solutions"></a>Desteklenen Endpoint Protection çözümleri <a name="endpoint-supported"></a>
@@ -96,8 +96,8 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 | Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Yes |
 | Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Yes |
 | McAfee v10+ | Windows Server Ailesi  | Hayır | Yes |
-| McAfee v10+ | Linux sunucu ailesi  | No | Yes **\*** |
-| Sophos v9 +| Linux sunucu ailesi  | No | Yes  **\***  |
+| McAfee v10+ | Linux sunucu ailesi  | Hayır | Yes **\*** |
+| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes  **\***  |
 
  **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
 

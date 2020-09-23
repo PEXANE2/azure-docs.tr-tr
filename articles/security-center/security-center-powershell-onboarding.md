@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: e6dfc0eb704b0b35ab4e181076d8f97fd3e8c9d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e367851c4d709acbc0eb94a47d7e20d4d3c1cc46
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080770"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904816"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell kullanarak Azure Güvenlik Merkezi 'Ni otomatik olarak ekleme
 
@@ -29,9 +29,9 @@ PowerShell kullanarak Azure Güvenlik Merkezi 'ni ekleme, Azure kaynaklarınız�
 
 Bu makalede, aboneliklerinizde Güvenlik Merkezi 'ni kullanıma almak için ortamınızda değiştirilebilen ve kullanılabilecek örnek bir PowerShell betiği sunulmaktadır. 
 
-Bu örnekte, KIMLIĞI: d07c0080-170c-4c24-861d-9c817742786c olan bir abonelikte güvenlik merkezini etkinleştireceğiz ve Gelişmiş tehdit koruması ve algılama yetenekleri sağlayan güvenlik merkezi 'nin standart katmanını uygulayarak yüksek düzeyde koruma sağlayan önerilen ayarları uygulayacağız:
+Bu örnekte, KIMLIĞI: d07c0080-170c-4c24-861d-9c817742786c olan bir abonelikte Güvenlik Merkezi 'ni etkinleştireceğiz ve Gelişmiş tehdit koruması ve algılama yetenekleri sağlayan Azure Defender 'ı etkinleştirerek yüksek düzeyde koruma sağlayan önerilen ayarları uygulayacağız:
 
-1. [Güvenlik Merkezi Standart koruma düzeyini](https://azure.microsoft.com/pricing/details/security-center/)ayarlayın. 
+1. [Azure Defender 'ı](azure-defender.md)etkinleştirin. 
  
 2. Log Analytics aracısının, abonelikle ilişkili VM 'lerde topladığı verileri göndereceği Log Analytics çalışma alanını (Bu örnekte, var olan bir Kullanıcı tanımlı çalışma alanı (myWorkspace) ayarlayın.
 
@@ -61,7 +61,7 @@ Güvenlik Merkezi cmdlet 'lerini çalıştırmadan önce Bu adımlar gerçekleş
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-1. İsteğe bağlı: aboneliklerin kapsam düzeyini (Fiyatlandırma Katmanı) ayarlayın (tanımlı değilse, fiyatlandırma katmanı boş olarak ayarlanır):
+1. İsteğe bağlı: aboneliklerin kapsam düzeyini (Azure Defender açık/kapalı) ayarlayın. Tanımsız ise, Defender kapalıdır:
 
     ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 

@@ -5,16 +5,19 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 01/20/2019
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076011"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888787"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>GitHub eylemlerinde Key Vault Azure Spring Cloud kimlik doğrulaması yapma
+
+**Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
+
 Anahtar Kasası, anahtarları depolamak için güvenli bir yerdir. Kurumsal kullanıcıların, denetdukları kapsamdaki CI/CD ortamları için kimlik bilgilerini depolaması gerekir. Anahtar kasasındaki kimlik bilgilerini almak için gereken anahtar, kaynak kapsamıyla sınırlı olmalıdır.  Azure kapsamının tamamına değil yalnızca Anahtar Kasası kapsamına erişebilir. Yalnızca bir binadaki tüm kapıları açan bir ana anahtar olmayan güçlü bir kutuyu açan bir anahtar gibidir. Bir CICD iş akışında yararlı olan başka bir anahtarla anahtar almanın bir yoludur. 
 
 ## <a name="generate-credential"></a>Kimlik bilgisi oluştur
@@ -43,7 +46,7 @@ Ardından, [GitHub deponuzu ayarlama ve Azure ile kimlik doğrulama](./spring-cl
 ## <a name="add-access-policies-for-the-credential"></a>Kimlik bilgileri için erişim Ilkeleri ekleme
 Yukarıda oluşturduğunuz kimlik bilgileri, depoladığı içeriklerle değil Key Vault hakkında yalnızca genel bilgileri alabilir.  Key Vault depolanan gizli dizileri almak için kimlik bilgisi için erişim ilkeleri ayarlamanız gerekir.
 
-Azure portal **Key Vault** panosuna gidin, **erişim denetim** menüsüne tıklayın ve ardından **rol atamaları** sekmesini açın. **tür** için **uygulamalar** ve `This resource` **kapsam**için seçin.  Önceki adımda oluşturduğunuz kimlik bilgisini görmeniz gerekir:
+Azure portal **Key Vault** panosuna gidin, **erişim denetim** menüsüne tıklayın ve ardından **rol atamaları** sekmesini açın. **Tür** ve kapsam için **uygulamalar** ' ı seçin `This resource` . **scope**  Önceki adımda oluşturduğunuz kimlik bilgisini görmeniz gerekir:
 
  ![Erişim ilkesini ayarla](./media/github-actions/key-vault1.png)
 

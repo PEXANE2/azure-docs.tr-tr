@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: aac6f833985a708c7ed65542e314b65fa1039ef7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 347c539abbe90119a74394eeb748af12d30d0b15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569059"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904682"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Güvenliği artırmaya yönelik Azure Güvenlik Merkezi önerileri
 
@@ -41,7 +41,7 @@ Contoso BT güvenliği 'nin sunduğu David, güvenlik açıklarını engellemek 
 
 Güvenlik Merkezi, contoso 'nun Azure kaynaklarının güvenlik durumunu otomatik olarak analiz eder ve varsayılan güvenlik ilkelerini uygular. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, güvenlik ilkesinde ayarlanan denetimlere göre **öneriler** oluşturur. 
 
-David, sunulan tüm öneriler ve güvenlik özellikleri paketini almak için tüm aboneliklerinde Azure Güvenlik standardı katmanını çalıştırır. Jeff Ayrıca, [Windows](quick-onboard-windows-computer.md) ve [Linux](quick-onboard-linux-computer.md) sunucularında Güvenlik Merkezi 'nin karma desteğinden yararlanmasını sağlamak için henüz buluta geçirmemiş olan mevcut şirket içi sunucuların tümünü de onpanolar.
+David tüm aboneliklerinde Azure Güvenlik 'i Azure Defender etkinleştirilmiş olarak çalıştırır ve sunulan tüm öneriler ve güvenlik özellikleri paketini alır. Jeff Ayrıca, [Windows ve Linux sunucularında](quickstart-onboard-machines.md)Güvenlik Merkezi 'nin karma desteğinden yararlanmasını sağlamak için henüz buluta geçirmemiş olan mevcut şirket içi sunucuların tümünü de onpanolar.
 
 Jeff, bir bulut iş yükü sahibidir. Jeff, contoso güvenlik ilkelerine uygun olarak güvenlik denetimlerini uygulamaktan sorumludur. 
 
@@ -60,9 +60,9 @@ Günlük izleme etkinliklerinin bir parçası olarak, Jeff Azure 'da oturum aça
 
 3. Jeff, ilk olarak hangi önerilerin işleneceğini belirlemek için gerekir. Jeff, güvenli puan ' i tıklatır ve [güvenli puanı](secure-score-security-controls.md)ne kadar geliştirdiğine göre önerileri işlemeye başlar.
 
-4. Jeff, çok sayıda bağlı VM ve sunucu içerdiğinden, Jeff **işlem ve uygulamalara**odaklanmaya karar verir.
+4. Jeff 'in birçok bağlı sanal makinesi olduğundan, Jeff [varlık envanterinde](asset-inventory.md)makinelere odaklanmaya karar verir.
 
-5. Jeff, **işlem ve uygulamaları**tıklattığında, önerilerin bir listesini görür ve bunları güvenli Puanlama etkisine göre işler.
+5. Jeff, varlık envanterini açtığında önerilerin bir listesi görüntülenir. Jeff, bunları güvenli puan etkisine göre işler.
 
 6. Jeff, Internet 'e yönelik çok sayıda sanal makineye sahiptir ve bağlantı noktaları kullanıma sunulduğundan, bir saldırganın sunucular üzerinde denetim kazanmasını sağlayacağından endişelenirler. Bu nedenle Jeff [**, tam ZAMANıNDA VM erişimi**](security-center-just-in-time.md)kullanmayı seçer.
 

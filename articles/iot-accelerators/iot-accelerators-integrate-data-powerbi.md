@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74184235"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975994"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI kullanarak uzaktan Izleme verilerini görselleştirin
 
 Bu öğreticide, CosmosDB 'den Power BI 'e uzaktan Izleme çözümü verilerinizi nasıl taktığınız açıklanmaktadır. Bu bağlantı kurulduunda, kendi özel panolarınızı oluşturabilir ve bunları uzaktan Izleme çözümü panonuza geri ekleyebilirsiniz. Bu iş akışı, daha fazla özelleşmiş grafiklerin oluşturulmasına izin verir. Daha sonra bu öğreticiyi kullanarak diğer veri akışlarıyla tümleştirebilir veya uzaktan Izleme çözümünüzün dışında tüketilen özel panolar oluşturabilirsiniz. Power BI panoları oluşturmak, belirli parçalar seçerken her bir paneli birbirleriyle etkileşime giremeyeceğiniz anlamına gelir. Örneğin, yalnızca sanal stoklarınızla ilgili bilgileri gösteren bir filtreniz olabilir ve panonuzun her parçası yalnızca sanal kamyon bilgilerini gösterecek şekilde etkileşime girebilir. Power BI dışında bir araç kullanmak istiyorsanız, bu adımları tercih ettiğiniz Görselleştirme aracını kullanmak için genişletebilir ve Cosmos veritabanına veya bir tane ayarladıysanız özel veritabanına bağlayabilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Şu anda çalışan bir uzaktan Izleme çözümünüz olması gerekir
 - IoT Hub ve çözümünün çalıştığı [Azure Portal](https://portal.azure.com) ve aboneliğiniz için erişiminizin olması gerekir
@@ -45,7 +45,7 @@ Bu öğreticide, CosmosDB 'den Power BI 'e uzaktan Izleme çözümü verileriniz
    - URI
    - Birincil Anahtar
 
-     ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
+     ![Ekran görüntüsünde, anahtarlar öğesi seçili olan bir Azure Cosmos D hesabı görüntülenir.](./media/iot-accelerators-integrate-data-powerbi/keys.png)
 
 ## <a name="setting-up-the-stream-in-power-bi"></a>Akışı Power BI ayarlama
   

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c6afdae275b98a86eba14b920a6969c967c5a7db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 057cbd5d42eafaa693abc418de62c3ae03a6b995
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508245"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984586"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Öğretici: Windows sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
 
@@ -36,7 +36,7 @@ Güvenlik Merkezi panosuna erişmek için Azure portalındaki menüde **Güvenli
 
 Güvenlik Merkezi, algıladığı sorunlara yönelik öneriler sağlamak için veri keşfinin ötesinde işlev sunar. Örneğin, bir sanal makine, ağ güvenliği grubu eklenmemiş şekilde dağıtıldıysa Güvenlik Merkezi, uygulayabileceğiniz düzeltme adımlarıyla birlikte bir öneri görüntüler. Güvenlik Merkezi bağlamından çıkmadan otomatik düzeltme elde edersiniz.  
 
-![Öneriler](./media/tutorial-azure-security/recommendations.png)
+![Ekran görüntüsü bir açıklama, kaynak, durum ve önerilerin önem derecesi içeren öneriler sayfasını gösterir.](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>Veri toplamayı ayarlama
 

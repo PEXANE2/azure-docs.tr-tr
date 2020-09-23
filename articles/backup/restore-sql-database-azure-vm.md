@@ -1,16 +1,16 @@
 ---
 title: Azure VM 'de SQL Server veritabanlarını geri yükleme
-description: Bu makalede, bir Azure VM üzerinde çalışan ve Azure Backup yedeklenen SQL Server veritabanlarının nasıl geri yükleneceği açıklanmaktadır.
+description: Bu makalede, bir Azure VM üzerinde çalışan ve Azure Backup yedeklenen SQL Server veritabanlarının nasıl geri yükleneceği açıklanmaktadır. Veritabanlarınızı ikincil bir bölgeye geri yüklemek için çapraz bölge geri yükleme özelliğini de kullanabilirsiniz.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: afb3ef7ac1d161c073ef715a9f7b1ec83bd8410a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377990"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985436"
 ---
-# <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 'lerinde SQL Server veritabanlarını geri yükleme
+# <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını geri yükleme
 
 Bu makalede, [Azure Backup](backup-overview.md) hizmetinin bir Azure Backup kurtarma hizmetleri kasasına yedeklemiş olduğu bir Azure sanal MAKINESINDE (VM) çalışan SQL Server bir veritabanının nasıl geri yükleneceği açıklanmaktadır.
 
@@ -23,14 +23,14 @@ Azure Backup, Azure VM 'lerinde çalışan SQL Server veritabanlarını şu şek
 - İşlem günlüğü yedeklerini kullanarak belirli bir tarih veya saate (ikinci olarak) geri yükleyin. Azure Backup, uygun tam değişiklik yedeklemesini ve seçilen saate göre geri yüklemek için gereken günlük yedeklemeleri zincirini otomatik olarak belirler.
 - Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesini geri yükleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir veritabanını geri yüklemeden önce aşağıdakileri göz önünde bulabilirsiniz:
 
 - Veritabanını aynı Azure bölgesindeki bir SQL Server örneğine geri yükleyebilirsiniz.
 - Hedef sunucu, kaynakla aynı kasada kayıtlı olmalıdır.
 - Bir TDE şifreli veritabanını başka bir SQL Server geri yüklemek için öncelikle [sertifikayı hedef sunucuya geri yüklemeniz](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)gerekir.
-- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-ver15) etkin veritabanlarının [dosya olarak geri yükle](#restore-as-files) seçeneği kullanılarak geri yüklenmesi gerekir.
+- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) etkin veritabanlarının [dosya olarak geri yükle](#restore-as-files) seçeneği kullanılarak geri yüklenmesi gerekir.
 - "Ana" veritabanını geri yüklemeden önce, **-ı AzureWorkloadBackup**başlangıç seçeneğini kullanarak SQL Server örneğini tek kullanıcılı modda başlatın.
   - **-D** değeri, istemcinin adıdır.
   - Bağlantıyı yalnızca belirtilen istemci adı açabilir.
@@ -168,6 +168,51 @@ Geri yükleme türü olarak **tam & türev** seçtiyseniz şunları yapın:
 Bir veritabanındaki dosyaların toplam dize boyutu [belirli bir sınırdan](backup-sql-server-azure-troubleshoot.md#size-limit-for-files)fazlaysa, Azure Backup veritabanı dosyalarının listesini farklı bir pit bileşeninde depolar, böylece geri yükleme işlemi sırasında hedef geri yükleme yolunu ayarlayamazsınız. Bu dosyalar yerine SQL varsayılan yoluna geri yüklenir.
 
   ![Veritabanını büyük dosyayla geri yükleme](./media/backup-azure-sql-database/restore-large-files.jpg)
+
+## <a name="cross-region-restore"></a>Çapraz bölge geri yükleme
+
+Geri yükleme seçeneklerinden biri olan çapraz bölge geri yükleme (CRR), Azure sanal makinelerinde barındırılan SQL veritabanlarını bir Azure eşlenmiş bölgesi olan ikincil bir bölgede geri yüklemenize olanak tanır.
+
+Önizleme sırasında özelliğe eklemek için [başlamadan önce bölümünü](./backup-create-rs-vault.md#set-cross-region-restore)okuyun.
+
+CRR 'nin etkin olup olmadığını görmek için [çapraz bölge geri yükleme 'Yi yapılandırma](backup-create-rs-vault.md#configure-cross-region-restore) bölümündeki yönergeleri izleyin.
+
+### <a name="view-backup-items-in-secondary-region"></a>İkincil bölgedeki yedekleme öğelerini görüntüle
+
+CRR etkinse, yedekleme öğelerini ikincil bölgede görüntüleyebilirsiniz.
+
+1. Portaldan **Kurtarma Hizmetleri Kasası**  >  **yedekleme öğeleri**' ne gidin.
+1. İkincil bölgedeki öğeleri görüntülemek için **Ikincil bölge** ' yi seçin.
+
+>[!NOTE]
+>Yalnızca CRR özelliğini destekleyen yedekleme yönetim türleri listede gösterilir. Şu anda yalnızca ikincil bölge verilerinin bir ikincil bölgeye geri yüklenmesi için desteğe izin verilir.
+
+![İkincil bölgedeki yedekleme öğeleri](./media/backup-azure-sql-database/backup-items-secondary-region.png)
+
+![İkincil bölgedeki veritabanları](./media/backup-azure-sql-database/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>İkincil bölgede geri yükleme
+
+İkinci bölge geri yükleme kullanıcı deneyimi, birincil bölge geri yükleme kullanıcı deneyimiyle benzerdir. Geri yüklemeyi yapılandırmak için geri yükleme yapılandırma bölmesindeki Ayrıntılar yapılandırılırken yalnızca ikincil bölge parametreleri sağlamanız istenir.
+
+![Nereye ve nasıl geri yükleneceği](./media/backup-azure-sql-database/restore-secondary-region.png)
+
+>[!NOTE]
+>İkincil bölgedeki sanal ağın benzersiz olarak atanması gerekir ve bu kaynak grubundaki diğer VM 'Ler için kullanılamaz.
+
+![Geri yükleme tetikleme devam ediyor bildirimi](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>- Geri yükleme tetiklendikten ve veri aktarımı aşamasında geri yükleme işi iptal edilemez.
+>- İkincil bölgeye geri yüklemek için gereken Azure rolleri, birincil bölgeyle aynı olanlardır.
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>İkincil bölge geri yükleme işlerini izleme
+
+1. Portaldan **Kurtarma Hizmetleri Kasası**  >  **yedekleme işleri** ' ne gidin
+1. İkincil bölgedeki öğeleri görüntülemek için **Ikincil bölge** ' yi seçin.
+
+    ![Filtrelenen yedekleme işleri](./media/backup-azure-sql-database/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,21 +11,21 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 006aab66eb220c3bb74794ba78bf1495583b653e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 0dcede7e6c15fbc0bae39370431d14696cb4026e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648315"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905667"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Mevcut modelinize Azure Machine Learning dağıtın
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu makalede, Azure Machine Learning dışında eğitilen bir makine öğrenimi modelini kaydetmeyi ve dağıtmayı öğreneceksiniz. Bir Web hizmeti veya IoT Edge bir cihaza dağıtabilirsiniz.  Dağıtıldıktan sonra modelinizi izleyebilir ve Azure Machine Learning veri kayması tespit edebilirsiniz. 
 
 Bu makaledeki kavramlar ve terimler hakkında daha fazla bilgi için bkz. [Machine Learning modellerini yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
   + Python örnekleri, `ws` değişkenin Azure Machine Learning çalışma alanınıza ayarlandığını varsayar. Çalışma alanına bağlanma hakkında daha fazla bilgi için lütfen [Python için Azure MACHINE LEARNING SDK belgelerine](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=trueworkspace)başvurun.
@@ -274,7 +274,7 @@ Dağıtım hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekil
 
 ## <a name="request-response-consumption"></a>İstek-yanıt tüketimi
 
-Dağıtımdan sonra Puanlama URI 'SI görüntülenir. Bu URI, istemciler tarafından hizmete istek göndermek için kullanılabilir. Aşağıdaki örnek, hizmete veri gönderen ve yanıtı görüntüleyen temel bir Python istemcisine sahiptir:
+Dağıtımdan sonra Puanlama URI 'SI görüntülenir. Bu URI, istemciler tarafından hizmete istek göndermek için kullanılabilir. Aşağıdaki örnek, hizmete veri gönderen ve yanıtı görüntüleyen basit bir Python istemcsahiptir:
 
 ```python
 import requests

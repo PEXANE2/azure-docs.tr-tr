@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 6be2805cab1bcaadb7878be69399e14ffe59d7b0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5c67f517ffd3704644fbe8041f3ac1e7b0d1f09c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659737"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904550"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security verileri bağlama 
 
 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) Bağlayıcısı, MCAS 'deki uyarıları ve [Cloud Discovery günlüklerini](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) Azure Sentinel 'e aktarmanıza olanak tanır. Bu, bulut uygulamalarınıza ilişkin görünürlük elde etmeniz, siber tehditleri belirleyip öğrenme konusunda gelişmiş analizler elde etmeniz ve verilerinizin nasıl ele alınacağını denetlemenizi sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kullanıcı çalışma alanında okuma ve yazma izinlerine sahip olmalıdır.
 - Kullanıcılarınızın, çalışma alanının kiracısında genel yönetici veya Güvenlik Yöneticisi izinlerine sahip olması gerekir.
@@ -48,7 +48,7 @@ Cloud App Security dağıtılırsa ve verileriniz geri alıyorsa, uyarı veriler
 
 1. **Değişiklikleri Uygula**' ya tıklayın.
 
-1. Azure Defender 'daki uyarıların (eski adıyla Azure Güvenlik Merkezi) Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. **Olayları oluştur**altında, otomatik olarak uyarılardan olayları oluşturan varsayılan analiz kuralını açmak için **etkin** ' i seçin. Daha sonra bu kuralı, **etkin kurallar** sekmesinde **analiz**altında düzenleyebilirsiniz.
+1. Azure Defender uyarıları 'nın Azure Güvenlik Merkezi 'nden Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. **Olayları oluştur**altında, otomatik olarak uyarılardan olayları oluşturan varsayılan analiz kuralını açmak için **etkin** ' i seçin. Daha sonra bu kuralı, **etkin kurallar** sekmesinde **analiz**altında düzenleyebilirsiniz.
 
 1. Log Analytics Cloud App Security uyarılar için ilgili şemayı kullanmak için, `SecurityAlert` sorgu penceresine yazın. Cloud Discovery logs şeması için, yazın `McasShadowItReporting` .
 

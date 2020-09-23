@@ -1,6 +1,6 @@
 ---
 title: Karma kimlik tasarımı-Multi-Factor Authentication gereksinimleri Azure | Microsoft Docs
-description: Koşullu erişim denetimi ile, kullanıcının kimliğini doğrularken ve uygulamaya erişim izni vermeden önce seçtiğiniz belirli koşulları denetler Azure Active Directory. Bu koşullar karşılandığında, kullanıcının kimliği doğrulanır ve uygulamaya erişim izni verilir.
+description: Koşullu erişim denetimi ile, Azure AD, kullanıcının kimliğini doğrularken ve uygulamaya erişim izni vermeden önce seçtiğiniz belirli koşulları doğrular.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d8ddf372e234bab242e4b28ba53dce7dd68cc89
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109303"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976052"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için Multi-Factor Authentication gereksinimlerini belirleme
 Bu Mobility dünyasında, bulutta ve herhangi bir cihazdan veri ve uygulamalara erişen kullanıcılar, bu bilgilerin güvenliğini sağlamak, Paramount hale geldi.  Her gün güvenlik ihlali hakkında yeni bir başlık bulunur.  Bu tür ihlaller, çok faktörlü kimlik doğrulamasıyla karşı garanti yoktur, ancak bu ihlaller önlemeye yardımcı olmak için ek bir güvenlik katmanı sağlar.
