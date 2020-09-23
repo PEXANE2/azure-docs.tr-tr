@@ -9,14 +9,17 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9b7abc39bf50a61b7b52bc4027c6d845728c3874
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: b80b3cf1712fab17b8f626bae5fef97849e44e20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419274"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972255"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Azure rol tabanlı erişim denetimi (Önizleme) ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama
+
+> [!NOTE]
+> Key Vault kaynak sağlayıcısı iki kaynak türünü destekler: **kasa** ve **yönetilen HSM**'ler. Bu makalede açıklanan erişim denetimi yalnızca kasaların için **geçerlidir**. Yönetilen HSM için erişim denetimi hakkında daha fazla bilgi edinmek için bkz. [YÖNETILEN HSM erişim denetimi](../managed-hsm/access-control.md).
 
 Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynakları üzerinde ayrıntılı erişim yönetimi sağlayan [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) yerleşik bir yetkilendirme sistemidir.
 
@@ -43,7 +46,7 @@ Azure Key Vault yönetim yönergeleri hakkında daha fazla bilgi için bkz.:
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Key Vault veri düzlemi işlemleri için Azure yerleşik rolleri (Önizleme)
 
-| Yerleşik rol | Description | ID |
+| Yerleşik rol | Açıklama | ID |
 | --- | --- | --- |
 | Key Vault Yöneticisi (Önizleme) | Tüm veri düzlemi işlemlerini bir anahtar kasasında ve içindeki tüm nesneleri (sertifikalar, anahtarlar ve gizli diziler dahil) gerçekleştirin. Anahtar Kasası kaynakları yönetemez veya rol atamaları yönetilemez. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
 | Key Vault sertifikaları Müdürü (Önizleme) | İzinleri Yönet dışında bir anahtar kasasının sertifikaları üzerinde herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | a4417e6f-fecd-4de8-b567-7b0420556985 |
@@ -61,10 +64,6 @@ Azure yerleşik rol tanımları hakkında daha fazla bilgi için bkz. [Azure yer
 Anahtar Kasası için yeni Azure RBAC izin modeli, kasa erişimi ilkesi izin modeli için alternatif sağlar. 
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Key Vault Azure RBAC izinlerini etkinleştirme
-
-Önizleme sırasında yeni izin modeli seçeneklerini görmek için Azure RBAC özelliği etiketini (Microsoft_Azure_KeyVault_RBACEnabled = true) kullanmanız gerekir.
-
-https://portal.azure.com/?Microsoft_Azure_KeyVault_RBACEnabled=true#home
 
 > [!IMPORTANT]
 > Azure RBAC izin modelinin ayarlanması tüm erişim ilkeleri izinlerini geçersiz kılar. Eşdeğer Azure rolleri atanmadığı zaman kesintilere neden olabilir.

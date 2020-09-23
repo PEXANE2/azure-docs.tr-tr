@@ -1,0 +1,168 @@
+---
+title: İşlem ve depolama seçenekleri-MySQL için Azure veritabanı-esnek sunucu
+description: Bu makalede, MySQL için Azure veritabanı-esnek sunucusu 'nda işlem ve depolama seçenekleri açıklanmaktadır.
+author: ajlam
+ms.author: andrela
+ms.service: mysql
+ms.topic: conceptual
+ms.date: 9/21/2020
+ms.openlocfilehash: 67c924c350fa2bc69f724d44a1b43c7e878e493a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90942058"
+---
+# <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı 'nda işlem ve depolama seçenekleri-esnek sunucu (Önizleme)
+
+> [!IMPORTANT] 
+> MySQL için Azure veritabanı-esnek sunucu şu anda genel önizlemededir.
+
+Üç farklı işlem katmanlarından birinde MySQL için Azure veritabanı esnek sunucusu oluşturabilirsiniz: Burstable, Genel Amaçlı ve bellek için Iyileştirilmiş. İşlem katmanları, B serisi, D serisi ve E Serisi kullanılan temel sanal makine SKU 'SU tarafından farklılaştırılabilir. İşlem katmanı ve boyut seçimi, sunucuda bulunan bellek ve sanal çekirdekleri belirler. Aynı depolama teknolojisi tüm işlem katmanlarında kullanılır. Tüm kaynaklar MySQL sunucu düzeyinde sağlanır. Sunucuda bir veya daha fazla veritabanı olabilir.
+
+| Kaynak/katman | **Burstable** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
+|:---|:----------|:--------------------|:---------------------|
+| VM serisi| B serisi | Ddsv4 serisi | Edsv4 serisi|
+| Sanal çekirdek | 1, 2 | 2, 4, 8, 16, 32, 64 | 2, 4, 8, 16, 32, 48, 64 |
+| Sanal çekirdek başına bellek | Değişken | 4 GiB | 8 GiB * |
+| Depolama boyutu | 5 GiB ile 16 TiB | 5 GiB ile 16 TiB | 5 GiB ile 16 TiB |
+| Veritabanı yedekleme saklama süresi | 1-35 gün | 1-35 gün | 1-35 gün |
+
+\* 504 GB bellek içeren E64ds_v4 (bellek için Iyileştirilmiş) SKU 'SU ile
+
+Bir işlem katmanını seçmek için, başlangıç noktası olarak aşağıdaki tabloyu kullanın.
+
+| İşlem Katmanı | Hedef iş yükleri |
+|:-------------|:-----------------|
+| Burstable | Her zaman sürekli olarak tam CPU gerektirmeyen iş yükleri için idealdir. |
+| Genel Amaçlı | Ölçeklenebilir g/ç aktarım hızı ile dengeli işlem ve bellek gerektiren iş yüklerinin çoğu. Örnek olarak web uygulamalarını, mobil uygulamaları ve diğer kurumsal uygulamaları barındıran sunucular verilebilir.|
+| Bellek İçin İyileştirilmiş | Daha hızlı işlem işleme ve daha yüksek eşzamanlılık için bellek içi performans gerektiren yüksek performanslı veritabanı iş yükleri. Örnek olarak gerçek zamanlı verileri işleyen ve yüksek performanslı işlem tabanlı ya da analiz uygulamalarının sunucuları verilebilir.|
+
+Bir sunucu oluşturduktan sonra, işlem katmanı, işlem boyutu ve depolama boyutu değişmiştir. İşlem ölçekleme için yeniden başlatma gerekir ve 60-120 saniye arasında sürer, ancak depolama ölçeklendirmesinin yeniden başlatılması gerekmez. Ayrıca, yedekleme bekletme süresini yukarı veya aşağı bağımsız olarak ayarlayabilirsiniz. Daha fazla bilgi için bkz. [kaynakları ölçeklendirme](#scale-resources) bölümü.
+
+## <a name="compute-tiers-size-and-server-types"></a>İşlem katmanları, boyutu ve sunucu türleri
+
+İşlem kaynakları katman ve boyuta göre seçilebilir. Bu, sanal çekirdekleri ve bellek boyutunu belirler. Sanal çekirdekler, temel alınan donanımın mantıksal CPU 'sunu temsil eder.
+
+Kullanılabilir sunucu türlerinin ayrıntılı özellikleri şunlardır:
+
+| İşlem boyutu         | Sanal çekirdek | Bellek boyutu (GiB) | 
+|----------------------|--------|-------------------|
+| **Burstable**        |        |                   | 
+| B1S                  | 1      | 1                 |  
+| B1ms                 | 1      | 2                 | 
+| B2s                  | 2      | 4                 |  
+| **Genel Amaçlı**  |        |                   | 
+| D2ds_v4              | 2      | 8                 |  
+| D4ds_v4              | 4      | 16                | 
+| D8ds_v4              | 8      | 32                | 
+| D16ds_v4             | 16     | 64                | 
+| D32ds_v4             | 32     | 128               |  
+| D48ds_v4             | 48     | 192               |  
+| D64ds_v4             | 64     | 256               | 
+| **Bellek için Iyileştirilmiş** |        |                   |
+| E2ds_v4              | 2      | 16                |
+| E4ds_v4              | 4      | 32                |
+| E8ds_v4              | 8      | 64                |
+| E16ds_v4             | 16     | 128               |
+| E32ds_v4             | 32     | 256               |
+| E48ds_v4             | 48     | 384               |
+| E64ds_v4             | 64     | 504               |
+
+Kullanılabilir işlem serisi hakkında daha fazla bilgi edinmek için bkz. [Burstable (B-serisi)](../../virtual-machines/sizes-b-series-burstable.md), [genel amaçlı (Ddsv4-Series)](../../virtual-machines/ddv4-ddsv4-series.md)ve [bellek için iyileştirilmiş (Edsv4-Series)](../../virtual-machines/edv4-edsv4-series.md)için Azure VM belgeleri.
+
+## <a name="storage"></a>Depolama
+
+Sağladığınız depolama alanı, esnek sunucunuz için kullanılabilen depolama kapasitesi miktarıdır. Depolama, veritabanı dosyaları, geçici dosyalar, işlem günlükleri ve MySQL Server günlükleri için kullanılır. Tüm işlem katmanlarında, desteklenen minimum depolama alanı 5 GiB ve maksimum değer 16 TiB 'dir. Depolama, 1 GiB artışlarına göre ölçeklendirilir ve sunucu oluşturulduktan sonra ölçeklendirilebilir.
+
+>[!NOTE]
+> Depolama yalnızca yukarı ölçeklenebilen, aşağı doğru değil.
+
+Depolama alanı kullanımınızı, depolama sınırı, depolama yüzdesi ve depolama kullanılan ölçümleri kullanarak Azure portal (Azure Izleyici ile) izleyebilirsiniz. Ölçümler hakkında bilgi edinmek için [İzleme makalesine](./concepts-monitoring.md) bakın. 
+
+### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşıyor
+
+Sunucuda tüketilen depolama alanı sağlanan sınıra ulaşılmaya yakın olduğunda, sunucu üzerinde kayıp yazma işlemlerini korumak için sunucu salt okuma moduna konur. 100 GiB 'tan daha az kaynak sağlanmış depolama alanı, sağlanan depolama boyutunun %5 ' inden daha az olduğunda salt okunurdur olarak işaretlenir. 100 ' den fazla GiB tarafından sağlanan depolama alanı, boş depolama 5 GiB 'den az olduğunda salt yazılır olarak işaretlenir.
+
+Örneğin, 110 GiB depolama alanı sağladıysanız ve gerçek kullanım 105 GiB üzerine gittiğinde, sunucu salt okunurdur olarak işaretlenir. Alternatif olarak, 5 GiB depolama alanı sağladıysanız, ücretsiz depolama 256 MB 'tan az kaldığında sunucu salt okunurdur olarak işaretlenir.
+
+Hizmet sunucuyu salt okunur duruma getirdiğinde tüm yeni yazma işlemi istekleri engellenir ve var olan etkin işlemler yürütülmeye devam eder. Sunucu salt okunur olarak ayarlandığında sonraki tüm yazma girişimleri ve işlemler başarısız olur. Okuma sorguları kesintisiz olarak çalışmaya devam eder. 
+
+Sunucuyu salt okuma modundan almak için sunucuda sağlanan depolamayı artırmanız gerekir. Bu, Azure portal veya Azure CLı kullanılarak yapılabilir. Arttırıldıktan sonra sunucu, yazma işlemlerini yeniden kabul etmeye hazırlanacaktır.
+
+Salt okuma durumuna ulaşmaktan kaçınmak için, sunucu depoağınızın eşiğe yaklaştığı durumlarda size bildirimde bulunan bir uyarı ayarlamanızı öneririz. Kullanılabilir ölçümler hakkında bilgi edinmek için [İzleme makalesine](./concepts-monitoring.md) bakın. 
+
+Yapmanız önerilir <!--turn on storage auto-grow or to--> Sunucu depoağınızın eşiğe yaklaştığı durumlarda size bildirimde bulunan bir uyarı ayarlayın, böylece salt okuma durumuna ulaşabilirsiniz. Daha fazla bilgi için uyarıyı [ayarlama hakkında](how-to-alert-on-metric.md)uyarı belgeleri hakkındaki belgelere bakın.
+
+### <a name="storage-auto-grow"></a>Depolama otomatik büyüme
+
+Depolama otomatik büyüme, MySQL için Azure veritabanı esnek sunucusu için henüz kullanılamıyor.
+
+## <a name="iops"></a>IOPS
+En düşük etkin ıOPS, tüm işlem boyutlarında 100, en fazla etkin ıOPS ise aşağıdaki özniteliklerin her ikisine birden belirlenir: 
+- İşlem: en fazla etkin ıOPS, seçilen işlem boyutu için kullanılabilir maksimum ıOPS ile sınırlı olabilir.
+- Depolama: tüm işlem katmanlarında ıOPS, sağlanan depolama boyutuyla 3:1 oranında ölçeklendirilir.
+
+Sağlanan depolamayı arttırarak veya daha büyük bir işlem boyutuna taşıyarak (ıOPS 'niz işlem ile sınırlıysa) kullanılabilir etkin ıOPS 'yi ölçeklendirebilirsiniz. Önizleme aşamasında desteklenen en büyük etkin ıOPS 20.000 ıOPS 'dir.
+
+İşlem boyutu başına en fazla etkin ıOPS hakkında daha fazla bilgi edinmek için, hem işlem hem de depolamanın birleşimini kullanarak aşağıda gösterilmektedir: 
+
+| İşlem boyutu         | Maksimum etkin ıOPS  | 
+|----------------------|---------------------|
+| **Burstable**        |                     |
+| B1S                  | 320                 |
+| B1ms                 | 640                 |
+| B2s                  | 1280                | 
+| **Genel Amaçlı**  |                     |
+| D2ds_v4              | 3200                |
+| D4ds_v4              | 6400                |
+| D8ds_v4              | 12800               |
+| D16ds_v4             | 20000               |
+| D32ds_v4             | 20000               |
+| D48ds_v4             | 20000               | 
+| D64ds_v4             | 20000               | 
+| **Bellek için Iyileştirilmiş** |                     | 
+| E2ds_v4              | 3200                | 
+| E4ds_v4              | 6400                | 
+| E8ds_v4              | 12800               | 
+| E16ds_v4             | 20000               | 
+| E32ds_v4             | 20000               | 
+| E48ds_v4             | 20000               | 
+| E64ds_v4             | 20000               |  
+
+En yüksek etkin ıOPS, işlem boyutu başına kullanılabilir maksimum ıOPS 'ye bağımlıdır. Aşağıdaki formüle bakın ve [B serisi](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-Series](../../virtual-machines/ddv4-ddsv4-series.md)ve [Edsv4 serisi](../../virtual-machines/edv4-edsv4-series.md) belgelerinde *MAKSIMUM önbelleğe alınmamış disk aktarım hızı: IOPS/Mbps* sütununa bakın.
+
+**Maksimum ETKIN IOPS** = MINIMUM (*"önbelleğe alınmış maksimum disk aktarım hızı: IOPS/Mbps"* Işlem boyutu, gib * 3 ' te sağlanan depolama)
+
+G/ç tüketiminizi, Azure portal (Azure Izleyici ile) üzerinde [GÇ yüzdesi](./concepts-monitoring.md) ölçümünü kullanarak izleyebilirsiniz. Daha fazla ıOPS gerekiyorsa, işlem boyutu veya sağlanan depolama alanı tarafından kısıtlanıp kısıtlanmayacağını anlamanız gerekir. Sunucunuzun işlem veya depolama alanı için uygun şekilde ölçeklendirme yapın.
+
+## <a name="backup"></a>Backup
+
+Hizmet, sunucunuzun yedeklerini otomatik olarak alır. 1 ile 35 gün arasında bir bekletme dönemi seçebilirsiniz. [Yedekleme ve geri yükleme kavramlarını yükleme makalesindeki](concepts-backup-restore.md)yedeklemeler hakkında daha fazla bilgi edinin.
+
+## <a name="scale-resources"></a>Kaynakları ölçeklendirme
+
+Sunucunuzu oluşturduktan sonra, işlem katmanını, işlem boyutunu (Vçekirdekler ve bellek) ve depolama miktarını ve yedekleme saklama süresini bağımsız olarak değiştirebilirsiniz. İşlem boyutu yukarı veya aşağı ölçeklendirilebilir. Yedekleme saklama süresi 1 ile 35 gün arasında ölçeklendirilebilir veya azaltılabilir. Depolama boyutu yalnızca artırılabilir. Kaynakların ölçeklendirilmesi portal veya Azure CLı aracılığıyla yapılabilir.
+
+> [!NOTE]
+> Depolama boyutu yalnızca artırılabilir. Artdıktan sonra daha küçük bir depolama boyutuna dönemezsiniz.
+
+İşlem katmanını veya işlem boyutunu değiştirdiğinizde, yeni sunucu türünün etkili olması için sunucu yeniden başlatılır. Sistem yeni sunucuya geçerken yeni bağlantı kurulamaz ve tüm işlenmemiş işlemler geri alınır. Bu pencere farklılık gösterir, ancak çoğu durumda 60-120 saniye arasındadır. 
+
+Depolamanın ölçeklendirilmesi ve yedekleme saklama süresinin değiştirilmesi çevrimiçi işlemlerdir ve sunucu yeniden başlatması gerektirmez.
+
+## <a name="pricing"></a>Fiyatlandırma
+
+En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/MySQL/). İstediğiniz yapılandırmanın maliyetini görmek için [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) , seçtiğiniz seçeneklere göre **işlem + depolama** sekmesindeki aylık maliyeti gösterir. Azure aboneliğiniz yoksa, tahmini bir fiyat almak için Azure Fiyatlandırma hesaplayıcısı ' nı kullanabilirsiniz. [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) Web sitesinde, **öğe Ekle**' yi seçin, **veritabanları** kategorisini genişletin, **MySQL için Azure veritabanı**' nı seçin ve seçenekleri özelleştirmek için dağıtım türü olarak **esnek sunucu** ' yı seçin.
+
+Sunucu maliyetini iyileştirmek isterseniz, aşağıdaki ipuçlarını göz önünde bulundurun:
+
+- İşlem az kullanılıyorsa işlem katmanınızı veya işlem boyutunu (Vçekirdekler) ölçeklendirin.
+- İş yükünüz, Genel Amaçlı ve bellek için Iyileştirilmiş katmanlardan sürekli olarak tam işlem kapasitesine ihtiyaç duymazsa, Burstable işlem katmanına geçmeyi düşünün.
+- Kullanımda olmadığında sunucuyu durdurun.
+- Yedeklemenin daha uzun tutulması gerekmiyorsa, yedekleme saklama süresini azaltın.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Portalda MySQL sunucusu oluşturmayı](quickstart-create-server-portal.md)öğrenin.
+- [Hizmet sınırlamaları](concepts-limitations.md)hakkında bilgi edinin.

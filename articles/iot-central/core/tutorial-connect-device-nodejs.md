@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 - devx-track-javascript
-ms.openlocfilehash: c7717416e58e772bee4ec8bf655d1341187a96e6
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 7eba6adffcdd3dab3263e82faf51ac90bae79b89
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019402"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968159"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Öğretici: Azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama (Node.js)
 
@@ -338,12 +338,12 @@ Aygıtın komutlara ve özellik güncelleştirmelerine nasıl yanıt verdiğini 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir cihaz geliştiricisi olarak, Node.js kullanarak bir cihazın nasıl oluşturulacağı hakkında temel bilgileri öğrendiğinize göre, önerilen bazı sonraki adımlar şunlardır:
-
-* Cihaz kodunuzu uygularken cihaz şablonlarının rolü hakkında daha fazla bilgi edinmek için cihaz [şablonu nedir?](./concepts-device-templates.md) makalesini okuyun.
-* Cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarının güvenliğini IoT Central sağlama hakkında daha fazla bilgi edinmek için [Azure IoT Central 'ye](./concepts-get-connected.md) bağlanın.
-
 IoT Central öğreticiler kümesine devam etmeyi tercih ediyorsanız ve bir IoT Central çözümü oluşturma hakkında daha fazla bilgi edinmek istiyorsanız, bkz.:
 
 > [!div class="nextstepaction"]
 > [Ağ geçidi cihaz şablonu oluşturma](./tutorial-define-gateway-device-type.md)
+
+Bir cihaz geliştiricisi olarak, Node.js kullanarak bir cihazın nasıl oluşturulacağı hakkında temel bilgileri öğrendiğinize göre, önerilen bazı sonraki adımlar şunlardır:
+
+* Cihaz kodunuzu uygularken cihaz şablonlarının rolü hakkında daha fazla bilgi edinmek için cihaz [şablonu nedir?](./concepts-device-templates.md) makalesini okuyun.
+* Cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarının güvenliğini IoT Central sağlama hakkında daha fazla bilgi edinmek için [Azure IoT Central 'ye](./concepts-get-connected.md) bağlanın.

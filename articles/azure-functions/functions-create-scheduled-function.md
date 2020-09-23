@@ -5,18 +5,18 @@ ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: be539efdb66b0a9bda583960484f40fae1e18235
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e542c493c02174364072f91d092f05ad9ec69cf
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123505"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973096"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure’da bir zamanlayıcı tarafından tetiklenen bir işlev oluşturma
 
 Azure Işlevleri 'ni kullanarak, tanımladığınız bir zamanlamaya göre çalışan [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir işlev oluşturma hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -44,11 +44,11 @@ Yeni işlev uygulamanız kullanıma hazırlanıyor. Ardından, yeni işlev uygul
 
 1. Yeni tetikleyiciyi görüntünün altındaki tabloda belirtilen ayarlarla yapılandırın ve ardından **Işlev oluştur**' u seçin.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Azure portal süreölçer tetikleyicisini seçin." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Ekran görüntüsü, süreölçer tetikleyici şablonunun seçili olduğu yeni Işlev sayfasını gösterir." border="true":::
     
     | Ayar | Önerilen değer | Açıklama |
     |---|---|---|
-    | **Adı** | Varsayılan | Zamanlayıcı ile tetiklenen işlevinizin adını tanımlar. |
+    | **Ad** | Varsayılan | Zamanlayıcı ile tetiklenen işlevinizin adını tanımlar. |
     | **Zamanla** | 0 \* /1 \* \* \*\* | İşlevinizi her dakika çalışacak şekilde zamanlayan altı haneli bir [CRON ifadesi](functions-bindings-timer.md#ncrontab-expressions). |
 
 ## <a name="test-the-function"></a>İşlevi test etme

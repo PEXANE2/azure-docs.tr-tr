@@ -2,13 +2,13 @@
 title: Uzantı kaynak türleri
 description: Azure Kaynak türleri, diğer kaynak türlerinin yeteneklerini genişletmek için kullanılır.
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 84de9b66f9001985b8c7b92882f03ff8c7cbf431
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 09/22/2020
+ms.openlocfilehash: 8b80c63d361f3ad8199fd669178f7bf88dabe02e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374023"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969738"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Diğer kaynakların özelliklerini genişleten kaynak türleri
 
@@ -21,6 +21,8 @@ Uzantı kaynağı, başka bir kaynağın özelliklerine ekleyen bir kaynaktır. 
 - Microsoft. Advisor/suppressions
 - Microsoft. AlertsManagement/uyarılar
 - Microsoft. AlertsManagement/alertsSummary
+- Microsoft. Authorization/Accessbelgeno Scheduledefinitions
+- Microsoft. Authorization/Accessbelgeayarlarý Schedulesettings
 - Microsoft. Authorization/checkAccess
 - Microsoft. Authorization/Denyasatamaları
 - Microsoft. Authorization/Findorphanroleatamalar
@@ -34,6 +36,7 @@ Uzantı kaynağı, başka bir kaynağın özelliklerine ekleyen bir kaynaktır. 
 - Microsoft. Authorization/Roleatamalar
 - Microsoft. Authorization/Roleatamasussusageölçümleri
 - Microsoft. Authorization/roleDefinitions
+- Microsoft. oto Yönet/Configurationprofileatamalar
 - Microsoft. faturalandırma/Billingdönemler
 - Microsoft. faturalandırma/billingPermissions
 - Microsoft. faturalandırma/Billingroleatamaları
@@ -47,24 +50,24 @@ Uzantı kaynağı, başka bir kaynağın özelliklerine ekleyen bir kaynaktır. 
 - Microsoft. tüketim/bütçeler
 - Microsoft. tüketim/ücretler
 - Microsoft. tüketim/CostTags
+- Microsoft. tüketim/krediler
+- Microsoft. tüketim/olaylar
 - Microsoft. tüketim/tahminler
+- Microsoft. tüketim/lotlar
 - Microsoft. tüketim/pazar yerleri
 - Microsoft. tüketim/OperationResults
 - Microsoft. tüketim/OperationStatus
 - Microsoft. tüketim/Pricesheets
+- Microsoft. tüketim/ürünler
 - Microsoft. tüketim/Rezervationdetails
 - Microsoft. tüketim/ReservationRecommendationDetails
 - Microsoft. tüketim/Rezervationönerilere
 - Microsoft. tüketim/Rezervationözetler
 - Microsoft. tüketim/Rezervationtransactions
 - Microsoft. tüketim/Etiketler
+- Microsoft. tüketim/kiracılar
 - Microsoft. tüketim/koşullar
 - Microsoft. tüketim/UsageDetails
-- Microsoft. tüketim/krediler
-- Microsoft. tüketim/olaylar
-- Microsoft. tüketim/lotlar
-- Microsoft. tüketim/ürünler
-- Microsoft. tüketim/kiracılar
 - Microsoft. Containerınstance/serviceAssociationLinks
 - Microsoft. CostManagement/uyarılar
 - Microsoft. CostManagement/bütçeleri
@@ -73,6 +76,7 @@ Uzantı kaynağı, başka bir kaynağın özelliklerine ekleyen bir kaynaktır. 
 - Microsoft. CostManagement/dışarı aktarmalar
 - Microsoft. CostManagement/Externalabonelikleri
 - Microsoft. CostManagement/tahmin
+- Microsoft. CostManagement/Insights
 - Microsoft. CostManagement/Query
 - Microsoft. CostManagement/Reportconfigs
 - Microsoft. CostManagement/Reports
@@ -93,17 +97,19 @@ Uzantı kaynağı, başka bir kaynağın özelliklerine ekleyen bir kaynaktır. 
 - Microsoft. Insights/diagnosticSettingsCategories
 - Microsoft. Insights/eventTypes
 - Microsoft. Insights/extendedDiagnosticSettings
+- Microsoft. Insights/generateLiveToken
 - Microsoft. Insights/guestDiagnosticSettingsAssociation
 - Microsoft. Insights/logDefinitions
 - Microsoft. Insights/Günlükler
+- Microsoft. Insights/metrictemeller
 - Microsoft. Insights/metricDefinitions
 - Microsoft. Insights/metricNamespaces
-- Microsoft. Insights/metrictemeller
 - Microsoft. Insights/ölçümler
 - Microsoft. Insights/Mykitaplarında
 - Microsoft. Insights/topoloji
 - Microsoft. Insights/işlemler
 - Microsoft. Insights/vmInsightsOnboardingStatuses
+- Microsoft. KubernetesConfiguration/uzantıları
 - Microsoft. KubernetesConfiguration/sourceControlConfigurations
 - Microsoft. Maintenance/applyUpdates
 - Microsoft. Maintenance/Configurationatamalar
@@ -128,20 +134,22 @@ Uzantı kaynağı, başka bir kaynağın özelliklerine ekleyen bir kaynaktır. 
 - Microsoft. ResourceHealth/bildirimleri
 - Microsoft. resources/Links
 - Microsoft. resources/etiketleri
-- Microsoft. Security/Zorluslar
-- Microsoft. Security/ınformationprotectionpolicies
 - Microsoft. Security/adaptiveNetworkHardenings
 - Microsoft. Security/advancedThreatProtectionSettings
 - Microsoft. Security/assessmentMetadata
 - Microsoft. Security/değerlendirmeleri
 - Microsoft. Security/Karmaşıkanceresults
+- Microsoft. Security/Zorluslar
 - Microsoft. Security/dataCollectionAgents
 - Microsoft. Security/deviceSecurityGroups
+- Microsoft. Security/ınformationprotectionpolicies
+- Microsoft. Security/ıotalgılayıcılar
 - Microsoft. Security/Jpolicies
 - Microsoft. Security/serversecurity, açıklıkları
+- Microsoft. Security/Sqlgüvenlik açılar,
 - Microsoft. Securityınsights/toplamalar
-- Microsoft. Securityınsights/Alertrutatemplates
 - Microsoft. Securityınsights/alertRules
+- Microsoft. Securityınsights/Alertrutatemplates
 - Microsoft. Securityınsights/automationRules
 - Microsoft. Securityınsights/yer işaretleri
 - Microsoft. Securityınsights/durumlar
@@ -153,6 +161,7 @@ Uzantı kaynağı, başka bir kaynağın özelliklerine ekleyen bir kaynaktır. 
 - Microsoft. Securityınsights/officeConsents
 - Microsoft. Securityınsights/ayarlar
 - Microsoft. Securityınsights/Threatıntelligence
+- Microsoft. Securityınsights/Watchlists
 - Microsoft. SoftwarePlan/Hybriduseavantajlar
 - Microsoft. Subscription/CreateSubscription
 - Microsoft. support/supportbiletleri

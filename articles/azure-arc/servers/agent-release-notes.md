@@ -1,18 +1,18 @@
 ---
-title: Azure Arc etkin sunucular (Önizleme) aracısındaki yenilikler
-description: Bu makalede, Azure Arc etkin sunucular (Önizleme) Aracısı için sürüm notları bulunur. Özetlenen birçok sorun için ek ayrıntıların bağlantıları vardır.
+title: Azure Arc etkin sunucular aracısındaki yenilikler
+description: Bu makalede, Azure Arc etkin sunucular aracısına yönelik sürüm notları bulunur. Özetlenen birçok sorun için ek ayrıntıların bağlantıları vardır.
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: 3b739401603f6dc18b9f48fb3cb6e28023a051ab
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/16/2020
+ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532180"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908164"
 ---
-# <a name="whats-new-with-azure-arc-enabled-servers-preview-agent"></a>Azure Arc etkin sunucular (Önizleme) aracısındaki yenilikler
+# <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısındaki yenilikler
 
-Azure Arc etkin sunucular (Önizleme) bağlı makine Aracısı, iyileştirmeleri sürekli olarak alır. En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmektedir:
+Azure Arc etkin sunucular bağlı makine Aracısı, iyileştirmeleri sürekli olarak alır. En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmektedir:
 
 - En son yayınlar
 - Bilinen sorunlar
@@ -60,4 +60,4 @@ Linux aracısının eski bir sürümünü kullanıyorsanız ve bunu bir ara sunu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Birden çok karma makinede yay etkin sunucuları (Önizleme) değerlendirmeden veya etkinleştirmeden önce, gereksinimleri anlamak için [bağlı makine aracısına genel bakış](agent-overview.md) ' ı ve aracı hakkındaki teknik ayrıntıları ve dağıtım yöntemlerini gözden geçirin.
+Birden çok karma makinede yay etkin sunucuları değerlendirmeden veya etkinleştirmeden önce, gereksinimleri anlamak için [bağlı makine aracısına genel bakış](agent-overview.md) ' ı ve aracı hakkındaki teknik ayrıntıları ve dağıtım yöntemlerini gözden geçirin.

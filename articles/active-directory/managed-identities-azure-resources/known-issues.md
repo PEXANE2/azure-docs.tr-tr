@@ -17,12 +17,12 @@ ms.date: 08/06/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4bcd36a1ce38d4d9eb6a0faec470f7427852894b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 0d8c835cdc501061607dc05d0b40ebf95deb36a8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260229"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969143"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimliklerle ilgili SSS ve bilinen sorunlar
 
@@ -33,15 +33,13 @@ ms.locfileid: "89260229"
 > [!NOTE]
 > Azure kaynakları için yönetilen kimlikler, Yönetilen Hizmet Kimliği (MSI) olarak bilinen hizmetin yeni adıdır.
 
-
 ### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>Yönetilen bir kimliğe sahip kaynakları nasıl bulabilirsiniz?
 
 Aşağıdaki Azure CLı komutunu kullanarak, sistem tarafından atanan yönetilen kimliğe sahip kaynakların listesini bulabilirsiniz: 
 
-`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
-
-
-
+```azurecli-interactive
+az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
+```
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>Yönetilen kimliklerin bir yedekleme uygulaması nesnesi var mı?
 
@@ -72,8 +70,6 @@ Kimliğin güvenlik sınırı, eklendiği kaynaktır. Örneğin, Azure kaynaklar
 - Sistem tarafından atanan yönetilen kimlik etkin değilse ve yalnızca bir Kullanıcı yönetilen kimlik varsa, ıSE 'ler varsayılan olarak bu tek kullanıcı tarafından atanan yönetilen kimlik olur. 
 - Sistem tarafından atanan yönetilen kimlik etkinleştirilmemişse ve birden çok kullanıcı atanmış Yönetilen kimlikler varsa, istekte yönetilen bir kimlik belirtilmesi gerekir.
 
-
-
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Bir aboneliği başka bir dizine taşıdığımda, Yönetilen kimlikler otomatik olarak yeniden oluşturulur mi?
 
 Hayır. Bir aboneliği başka bir dizine taşırsanız, bunları el ile yeniden oluşturmanız ve Azure rol atamalarını yeniden sağlamanız gerekir.
@@ -88,7 +84,6 @@ Hayır. Yönetilen kimlikler Şu anda çapraz dizin senaryolarını desteklemez.
 
 - Sistem tarafından atanan yönetilen kimlik: kaynak üzerinde yazma izinlerine sahip olmanız gerekir. Örneğin sanal makineler için Microsoft.Compute/virtualMachines/write iznine ihtiyaç duyulur. Bu eylem, [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)gibi kaynağa özgü yerleşik rollere dahildir.
 - Kullanıcı tarafından atanan yönetilen kimlik: kaynak üzerinde yazma izinlerine sahip olmanız gerekir. Örneğin sanal makineler için Microsoft.Compute/virtualMachines/write iznine ihtiyaç duyulur. Yönetilen kimliğe göre [yönetilen kimlik operatörü](../../role-based-access-control/built-in-roles.md#managed-identity-operator) rolü atamaya ek olarak.
-
 
 
 ## <a name="known-issues"></a>Bilinen sorunlar
@@ -112,7 +107,7 @@ Bir VM 'yi çalışır durumda taşırsanız, taşıma sırasında çalışmaya 
 Azure kaynakları için yönetilen kimliklerin doğru değerlerini kullanabilmesi için VM 'de bir güncelleştirme tetikleyin. Azure kaynak kimliği için yönetilen kimliklerin başvurusunu güncelleştirmek üzere bir VM özelliği değişikliği yapabilirsiniz. Örneğin, aşağıdaki komutla sanal makinede yeni bir etiket değeri ayarlayabilirsiniz:
 
 ```azurecli-interactive
- az  vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
+az vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
 ```
  
 Bu komut, VM 'de 1 değeri ile yeni bir "fixVM" etiketi ayarlar. 
@@ -124,8 +119,6 @@ VM başlatıldıktan sonra, etiket aşağıdaki komut kullanılarak kaldırılab
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
-
-
 
 ### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Azure AD dizinleri arasında abonelik aktarma
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a7502a77f8dca526c95e92302f0ca0a06a1dd32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77016571"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970436"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>IoT Central ile enerji sektörü çözümleri oluşturma 
 
@@ -62,7 +62,6 @@ Uygulamayı dağıttıktan sonra, aşağıdaki panoda gösterildiği gibi, sanal
 
 > [!div class="mx-imgBorder"]
 > ![Solar paneli uygulama panosu](media/overview-iot-central-energy/solar-panel-app-dashboard.png)
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Enerji çözümü oluşturmaya başlamak için:

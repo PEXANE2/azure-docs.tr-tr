@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: b32e0a60e099b5ad184f8919be3f93646c3a68b3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 817bc7624bb3a6b69d56265e40681287b7fc09fa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018153"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969592"
 ---
 # <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Rol tabanlı erişim denetimini uzaktan Izleme çözüm hızlandırıcısında yapılandırma
 
@@ -28,20 +28,20 @@ Uzaktan Izleme çözümünü ilk dağıttığınızda, iki rol vardır: **yönet
 
 | İzin            | Yönetici | Salt Okunur |
 |----------------       |-------|-----------|
-| Çözümü görüntüle         | Evet   | Evet       |
-| Uyarıları Güncelleştir         | Evet   | Hayır        |
-| Alarmları Sil         | Evet   | Hayır        |
-| Cihaz oluşturma        | Evet   | Hayır        |
-| Cihazları güncelleştirme        | Evet   | Hayır        |
-| Cihazları Sil        | Evet   | Hayır        |
-| Cihaz grupları oluşturma  | Evet   | Hayır        |
-| Cihaz gruplarını güncelleştirme  | Evet   | Hayır        |
-| Cihaz gruplarını silme  | Evet   | Hayır        |
-| Kural oluşturma          | Evet   | Hayır        |
-| Güncelleştirme kuralları          | Evet   | Hayır        |
-| Kuralları Sil          | Evet   | Hayır        |
-| İş oluşturma           | Evet   | Hayır        |
-| SIM yönetimini Güncelleştir | Evet   | Hayır        |
+| Çözümü görüntüle         | Yes   | Yes       |
+| Uyarıları Güncelleştir         | Yes   | Hayır        |
+| Alarmları Sil         | Yes   | Hayır        |
+| Cihaz oluşturma        | Yes   | Hayır        |
+| Cihazları güncelleştirme        | Yes   | Hayır        |
+| Cihazları Sil        | Yes   | Hayır        |
+| Cihaz grupları oluşturma  | Yes   | Hayır        |
+| Cihaz gruplarını güncelleştirme  | Yes   | Hayır        |
+| Cihaz gruplarını silme  | Yes   | Hayır        |
+| Kural oluşturma          | Yes   | Hayır        |
+| Güncelleştirme kuralları          | Yes   | Hayır        |
+| Kuralları Sil          | Yes   | Hayır        |
+| İş oluşturma           | Yes   | Hayır        |
+| SIM yönetimini Güncelleştir | Yes   | Hayır        |
 
 Varsayılan olarak, çözümü dağıtan Kullanıcı otomatik olarak **yönetici** rolüne atanır ve bir Azure Active Directory Uygulama sahibidir. Bir uygulama sahibi olarak, Azure portal aracılığıyla diğer kullanıcılara roller atayabilirsiniz. Başka bir kullanıcının çözümde rol atamasını istiyorsanız, Ayrıca, Azure portal bir uygulama sahibi olarak da ayarlanmalıdır.
 
@@ -52,7 +52,7 @@ Varsayılan olarak, çözümü dağıtan Kullanıcı otomatik olarak **yönetici
 
 Azure Active Directory bir uygulama sahibi olarak, uzaktan Izleme çözümünün bir rolüne kullanıcı eklemek veya bir rolü kaldırmak için Azure portal kullanabilirsiniz. Aşağıdaki adımlar, uzaktan Izleme çözümünü dağıtırken oluşturulan [Azure Active Directory Kurumsal uygulamayı](../active-directory/manage-apps/view-applications-portal.md) kullanır.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Kullanıcının kullanmakta olduğunuz [dizinde olduğunu](../active-directory/fundamentals/add-users-azure-active-directory.md) denetleyin. [Microsoft Azure IoT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com/Accelerators) sitesinde oturum açtığınızda kullanılacak dizini seçtiniz. Dizin adı [sayfanın](https://www.azureiotsolutions.com/Accelerators)sağ üst köşesinde görünür.
 
@@ -62,7 +62,7 @@ Azure Active Directory bir uygulama sahibi olarak, uzaktan Izleme çözümünün
 
 1. Uygulamaya tıklayıp **sahipler**' e tıklayarak uygulamanın sahibi olduğunuzu kontrol edin. Aşağıdaki ekran görüntüsünde, **contoso Yöneticisi** **contoso-RM4** uygulamasının sahibidir:
 
-    ![Sahipler](media/iot-accelerators-remote-monitoring-rbac/owners.png)
+    ![Ekran görüntüsü, contoso r m 4 uygulamasının sahibini görüntüleyen seçili sahipleri Yönet seçeneğinin seçili olduğunu gösterir.](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
     Bir sahip değilseniz, mevcut bir sahibinden sizi listeye eklemesini istemek gerekir. Yalnızca sahipler **yönetici** gibi uygulama rollerini atayabilir veya diğer kullanıcılara **salt okunurdur** .
 

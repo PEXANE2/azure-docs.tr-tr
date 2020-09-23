@@ -7,17 +7,75 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ff76c38031ac367bf81f6d152642a4d9a209bb7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294008"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908296"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud ile dağıtılmış izleme kullanma
 
 Azure Spring Cloud 'daki dağıtılmış izleme araçlarıyla, karmaşık sorunları kolayca ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) [yay bulutuna](https://spring.io/projects/spring-cloud-sleuth) karşı tümleşir. Bu tümleştirme Azure portal güçlü dağıtılmış izleme yeteneği sağlar.
 
+::: zone pivot="programming-language-csharp"
+Bu makalede, bir .NET Core Steeltoe uygulamasının dağıtılmış izlemeyi kullanmak üzere nasıl etkinleştirileceğini öğreneceksiniz.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Bu yordamları izlemek için, [Azure Spring Cloud 'a dağıtım için hazırlanmış](spring-cloud-tutorial-prepare-app-deployment.md)bir Steeltoe uygulamasına ihtiyacınız vardır.
+
+## <a name="dependencies"></a>Bağımlılıklar
+
+Aşağıdaki NuGet paketlerini yükler
+
+* [Steeltoe. Management. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
+* [Steeltoe. Management. ExporterCore](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/)
+
+## <a name="update-startupcs"></a>Startup.cs Güncelleştir
+
+1. `ConfigureServices`Yönteminde `AddDistributedTracing` ve `AddZipkinExporter` yöntemlerini çağırın.
+
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddDistributedTracing(Configuration);
+       services.AddZipkinExporter(Configuration);
+   }
+   ```
+
+1. `Configure`Yönteminde `UseTracingExporter` yöntemini çağırın.
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+   {
+        app.UseTracingExporter();
+   }
+   ```
+
+## <a name="update-configuration"></a>Güncelleştirme yapılandırması
+
+Aşağıdaki ayarları, uygulama Azure yay bulutu 'nda çalıştırıldığında kullanılacak yapılandırma kaynağına ekleyin:
+
+1. `management.tracing.alwaysSample` değerini true olarak ayarlayın.
+
+2. Eureka sunucusu, yapılandırma sunucusu ve kullanıcı uygulamaları arasında gönderilen izlenen yayılmaları görmek isterseniz: `management.tracing.egressIgnorePattern` "/api/v2/birleþi |/v2/Apps/" olarak ayarlayın.* /Permissions |/Eureka/.*| /OAuth/. * ".
+
+Örneğin, *appsettings.js* , aşağıdaki özellikleri içerir:
+ 
+```json
+"management": {
+    "tracing": {
+      "alwaysSample": true,
+      "egressIgnorePattern": "/api/v2/spans|/v2/apps/.*/permissions|/eureka/.*|/oauth/.*"
+    }
+  }
+```
+
+.NET Core Steeltoe uygulamalarında dağıtılmış izleme hakkında daha fazla bilgi için bkz. Steeltoe belgelerinde [Dağıtılmış izleme](https://steeltoe.io/docs/3/tracing/distributed-tracing) .
+::: zone-end
+::: zone pivot="programming-language-java"
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
@@ -26,10 +84,10 @@ Bu makalede şunları öğreneceksiniz:
 > * Mikro hizmet uygulamalarınız için bağımlılık haritalarını görüntüleyin.
 > * Farklı filtrelerle izleme verilerinde arama yapın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu yordamları izlemek için, zaten sağlanmış ve çalışan bir Azure yay bulut hizmetine ihtiyacınız vardır. Azure yay bulut hizmeti sağlamak ve çalıştırmak için [Azure CLI aracılığıyla uygulama dağıtma hızlı](spring-cloud-quickstart.md) başlangıcını doldurun.
-    
+Bu yordamları izlemek için, zaten sağlanmış ve çalışan bir Azure yay bulut hizmetine ihtiyacınız vardır. Azure yay bulut hizmeti sağlamak ve çalıştırmak için [Ilk Azure yay bulutu uygulaması](spring-cloud-quickstart.md) hızlı başlangıç adımlarını gerçekleştirin.
+
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 
 1. Aşağıdaki satırı Application. Properties dosyasına ekleyin:
@@ -73,6 +131,7 @@ spring.sleuth.sampler.probability=0.5
 ```
 
 Zaten bir uygulama oluşturup dağıttıysanız, örnek hızı değiştirebilirsiniz. Önceki satırı Azure CLı veya Azure portal bir ortam değişkeni olarak ekleyerek bunu yapın.
+::: zone-end
 
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 

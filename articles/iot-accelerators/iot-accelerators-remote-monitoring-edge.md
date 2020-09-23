@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 43ba14845765230b9a54c2b34dbc7ccd53af950b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "66117695"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970006"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Öğretici: uzaktan Izleme çözümü hızlandırıcısına sahip olan anormallikleri Algıla
 
@@ -26,7 +26,7 @@ Contoso, sıcaklık bozuklularını algılayan yağ pompa jakına akıllı bir s
 
 Aşağıdaki diyagramda, öğretici senaryosunda anahtar bileşenleri gösterilmektedir:
 
-![Genel Bakış](media/iot-accelerators-remote-monitoring-edge/overview.png)
+![Diyagramda, telemetri ve komutlar için I T uç cihazında g o t Edge Stream Analytics modülüne bağlı yağ pompa jakı gösterilmektedir. Filtrelenmiş telemetri, bulutta uzaktan izleme çözüm hızlandırıcısında g o T uç cihazına gider. Bulut Ayrıca dağıtım ve paket içerir. Dağıtım, cihazda g o T Edge çalışma zamanını dağıtır.](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
 Bu öğreticide şunları yaptınız:
 
@@ -98,7 +98,7 @@ Bir cihazı uzaktan Izleme çözüm hızlandırıcısında IoT Hub 'ına kaydett
     | ------- | ----- |
     | Ad    | OilPumps |
     | Alan   | Tags. ısoilpompa |
-    | İşleç | = Eşittir |
+    | Operatör | = Eşittir |
     | Değer    | Y |
     | Tür     | Metin |
 

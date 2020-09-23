@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 93ae0b634969f2329a45f333437588f16d0a187d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4403d5470f96ead861196f7c9bcb0b9b6af088b0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528981"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973107"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>Öğretici: Cisco AnyConnect ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,7 @@ Bu öğreticide, Cisco AnyConnect 'i Azure Active Directory (Azure AD) ile tüml
 * Kullanıcılarınızın Azure AD hesaplarıyla Cisco AnyConnect 'e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -40,24 +38,23 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Cisco AnyConnect, **IDP** tarafından başlatılan SSO 'yu destekler
-* Cisco AnyConnect 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin bir kısmını gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-cisco-anyconnect-from-the-gallery"></a>Galeriden Cisco AnyConnect ekleme
 
 Cisco AnyConnect 'in Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden Cisco AnyConnect 'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Cisco AnyConnect** yazın.
 1. Sonuçlar panelinden **Cisco AnyConnect** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-cisco-anyconnect"></a>Cisco AnyConnect için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-cisco-anyconnect"></a>Cisco AnyConnect için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Cisco AnyConnect ile yapılandırın ve test edin. SSO 'nun çalışması için, Cisco AnyConnect 'te bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Cisco AnyConnect ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Cisco AnyConnect ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -70,7 +67,7 @@ Azure AD SSO 'yu Cisco AnyConnect ile yapılandırmak ve test etmek için aşağ
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Cisco AnyConnect** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Cisco AnyConnect** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -115,15 +112,9 @@ Bu bölümde, Cisco AnyConnect 'e erişim vererek Azure çoklu oturum açma öze
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Cisco AnyConnect**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-cisco-anyconnect-sso"></a>Cisco AnyConnect SSO 'yu yapılandırma
@@ -181,25 +172,15 @@ Bu bölümde, Cisco AnyConnect 'e erişim vererek Azure çoklu oturum açma öze
 
 ### <a name="create-cisco-anyconnect-test-user"></a>Cisco AnyConnect test kullanıcısı oluşturma
 
-Bu bölümde, Cisco AnyConnect 'te Britta Simon adlı bir Kullanıcı oluşturacaksınız. Cisco AnyConnect platformunda kullanıcıları eklemek için [Cisco AnyConnect destek ekibi](https://www.cisco.com/c/en/us/support/index.html) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Cisco AnyConnect 'te Britta Simon adlı bir Kullanıcı oluşturacaksınız. Cisco AnyConnect platformunda kullanıcıları eklemek için [Cisco AnyConnect destek ekibi](https://www.cisco.com/c/en/us/support/index.html) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-Erişim panelinde Cisco AnyConnect kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Cisco AnyConnect ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız Cisco AnyConnect ' de otomatik olarak oturum açmış olmanız gerekir
+* Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Cisco AnyConnect kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Cisco AnyConnect ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek kaynaklar
+## <a name="next-steps"></a>Sonraki Adımlar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Azure AD ile Cisco AnyConnect 'i deneyin](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Gelişmiş görünürlük ve denetimlerle Cisco AnyConnect 'i koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+Cisco AnyConnect 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

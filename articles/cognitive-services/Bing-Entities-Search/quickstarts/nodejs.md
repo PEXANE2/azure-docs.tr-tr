@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Node.js REST API kullanarak bir arama isteği gönderme Bing Varlık Arama'
 titleSuffix: Azure Cognitive Services
-description: C# kullanarak Bing Varlık Arama REST API isteği göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
+description: Node.js kullanarak REST API Bing Varlık Arama bir istek göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 82bdd8f3890f1685aa442463287fe72bde08d518
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: a3e09a26593911e7f8f113ee0db41aa99390b14d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405968"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970568"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Hızlı başlangıç: Bing Varlık Arama REST API Node.js kullanarak bir arama isteği gönderme
 
@@ -24,7 +24,7 @@ Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görünt
 
 Bu uygulama JavaScript 'e yazılsa da, API çoğu programlama dili ile uyumlu olan yeniden yazılmış bir Web hizmetidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
 

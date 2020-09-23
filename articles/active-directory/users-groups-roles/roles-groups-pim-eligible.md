@@ -1,6 +1,6 @@
 ---
 title: Azure AD 'de Privileged Identity Management kullanarak bir gruba rol atama | Microsoft Docs
-description: Kimlik yönetimi temsilcisi seçme için özel Azure AD rollerini önizleyin. Azure portal, PowerShell veya Graph API Azure rollerini yönetin.
+description: Azure AD Privileged Identity Management (PıM) kullanarak bir Azure Active Directory (Azure AD) rolünü bir gruba nasıl atayabileceğinizi öğrenin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343da87048cf43c04a137376e9a7f24270ce729a
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476222"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971174"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Privileged Identity Management kullanarak bir gruba rol atama
 
@@ -104,6 +104,6 @@ https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequest
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Rol atamalarını yönetmek için bulut gruplarını kullanma](roles-groups-concept.md)
-- [Bulut gruplarına atanan rol sorunlarını giderme](roles-groups-faq-troubleshooting.md)
+- [Bulut gruplarına atanan rollerle ilgili sorunları giderme](roles-groups-faq-troubleshooting.md)
 - [Privileged Identity Management 'de Azure AD yönetici rolü ayarlarını yapılandırma](../privileged-identity-management/pim-how-to-change-default-settings.md)
 - [Privileged Identity Management Azure Kaynak rolleri atama](../privileged-identity-management/pim-resource-roles-assign-roles.md)

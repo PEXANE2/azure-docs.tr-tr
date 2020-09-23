@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eaf17281fef32d682a2dac17b379faf7ec23a53
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73839158"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970086"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Video Indexer düzenleyicisini kullanarak projeler oluşturma
 
@@ -51,7 +51,7 @@ Bu makalede, sıfırdan bir proje oluşturma ve hesabınızdaki bir videodan bir
     
     Örneğin, aşağıdaki görüntüde "GitHub" ile ilgili videoları arıyoruz.
     
-    ![GitHub](./media/video-indexer-view-edit/github.png)
+    ![Ekran görüntüsü, GitHub ile iki sonuçla oluşan videoları aramayı gösterir.](./media/video-indexer-view-edit/github.png)
 
     Sonuçları **Filtrele ' i**seçerek sonuçlarınızı daha fazla filtreleyebilirsiniz. Belirli bir kişiye sahip olan videoları göstermek veya yalnızca belirli bir dilde olan veya belirli bir sahibe sahip olan video sonuçlarını görmek istediğinizi belirtmek için filtre uygulayabilirsiniz. <br/> Sorgunuzun kapsamını da belirtebilirsiniz. Örneğin, OCR 'de "GitHub" öğesini aramak istiyorsanız **görsel metin**' i seçin.
 
@@ -63,7 +63,7 @@ Bu makalede, sıfırdan bir proje oluşturma ve hesabınızdaki bir videodan bir
 
     Video sırasını sürükleyip bırakarak veya liste menü düğmesini seçip **aşağı taşı** veya **Yukarı taşı**' yı seçerek yeniden düzenleyebilirsiniz. Liste menüsünde, bu projeden videoyu da kaldırabileceksiniz. 
 
-    ![Düzenlemenize](./media/video-indexer-view-edit/rearrange.png)
+    ![Ekran görüntüsünde, bir videoyu kaldırmak, seçimi temizlemek veya aşağı taşımak için bir bağlam menüsü ile birlikte Video Indexer gösterilmektedir.](./media/video-indexer-view-edit/rearrange.png)
     
     Bu projeye **video ekle**seçeneğini belirleyerek istediğiniz zaman daha fazla video ekleyebilirsiniz. Ayrıca, projenize aynı videonun birden fazla örneğini de ekleyebilirsiniz. Bir videodan klip ve sonra başka bir klibin bir kırpından sonra ilk videodan başka bir klip göstermek istiyorsanız bunu yapmak isteyebilirsiniz. 
 
@@ -81,7 +81,7 @@ Her videonun sağ tarafındaki aşağı oka tıklarsanız, videoda zaman damgala
 
     Örneğin, Donovan kahverengi ekranda olduğu sürece GitHub 'ın belirtildiği klipleri görmek isteyebilirsiniz. Bunun için, öngörü türü olarak "kişiler" içeren bir "içerme" filtresi eklemeniz gerekir. Ardından, filtrenin arama kutusuna "Donovan kahverengi" yazmanız gerekir.
     
-    ![Şunları Dahil Et:](./media/video-indexer-view-edit/include.png)
+    ![Ekran görüntüsü, içerme filtresi için seçili kişileri Video Indexer gösterir.](./media/video-indexer-view-edit/include.png)
     
     Donovan kahverengi, ekranda _olmadığı_ sürece GitHub 'ın belirtildiği küçük resimleri istiyorsanız, açılan menüyü kullanarak "içerme" filtresini bir "hariç tut" filtresine değiştirmelisiniz. 
 
@@ -96,7 +96,7 @@ Her videonun sağ tarafındaki aşağı oka tıklarsanız, videoda zaman damgala
 > [!TIP]
 > Kliplerinizi seçip sıralamayı yaparken, sayfanın sağ tarafındaki Player 'da videoyu önizleyebilirsiniz. 
 
-![Önizleme](./media/video-indexer-view-edit/preview.png)
+![Ekran görüntüsünde, pencerenin sağ tarafındaki videonun önizlemesiyle birlikte Video Indexer gösterilmektedir.](./media/video-indexer-view-edit/preview.png)
 
 **Projeyi kaydet**' i seçerek projenizi kaydetmeyi unutmayın. 
 
@@ -107,7 +107,7 @@ Her videonun sağ tarafındaki aşağı oka tıklarsanız, videoda zaman damgala
 
 1. İşiniz bittiğinde projenizin kaydedildiğinden emin olun. Artık bu projeyi işleyebilirsiniz. **İşle ve İndir '** i seçin. 
 
-    ![Kaydet](./media/video-indexer-view-edit/save.png)
+    ![Ekran görüntüsünde, projenizi Işleme ve indirme seçeneği ile birlikte Video Indexer gösterilmektedir.](./media/video-indexer-view-edit/save.png)
 
     Video dizin oluşturucunun bir dosyayı işlemesini ve ardından indirme bağlantısının e-postanıza gönderileceğini söyleyen bir açılan pencere görüntülenir. Devam ' ı seçin. 
     

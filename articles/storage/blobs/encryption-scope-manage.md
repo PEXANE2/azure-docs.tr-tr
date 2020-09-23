@@ -4,21 +4,21 @@ description: Blob verilerini kapsayıcı veya blob düzeyinde yalıtmak için bi
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/25/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 32b46d21228bcd84fc3da11cc6ed42c740fece39
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 9210c54305427c82d5666d68573fd3af41e8cef7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870264"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972200"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Şifreleme kapsamları oluşturma ve yönetme (Önizleme)
 
-Şifreleme kapsamları (Önizleme), tek bir blob veya kapsayıcı düzeyinde şifrelemeyi yönetmenizi sağlar. Şifreleme kapsamı, blob verilerini bir depolama hesabındaki güvenli bir kuşatmada yalıtır. Aynı depolama hesabında bulunan ancak farklı müşterilere ait olan veriler arasında güvenli sınırlar oluşturmak için şifreleme kapsamlarını kullanabilirsiniz. Şifreleme kapsamları hakkında daha fazla bilgi için bkz. [BLOB depolama (Önizleme) Için şifreleme kapsamları](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview).
+Şifreleme kapsamları (Önizleme), tek bir blob veya kapsayıcı düzeyinde şifrelemeyi yönetmenizi sağlar. Şifreleme kapsamı, blob verilerini bir depolama hesabındaki güvenli bir kuşatmada yalıtır. Aynı depolama hesabında bulunan ancak farklı müşterilere ait olan veriler arasında güvenli sınırlar oluşturmak için şifreleme kapsamlarını kullanabilirsiniz. Şifreleme kapsamları hakkında daha fazla bilgi için bkz. [BLOB depolama (Önizleme) Için şifreleme kapsamları](encryption-scope-overview.md).
 
 Bu makalede, bir şifreleme kapsamının nasıl oluşturulacağı gösterilmektedir. Ayrıca bir blob veya kapsayıcı oluştururken bir şifreleme kapsamının nasıl gösterileceğini gösterir.
 
@@ -26,7 +26,7 @@ Bu makalede, bir şifreleme kapsamının nasıl oluşturulacağı gösterilmekte
 
 ## <a name="create-an-encryption-scope"></a>Şifreleme kapsamı oluşturma
 
-Microsoft tarafından yönetilen bir anahtarla veya Azure Key Vault depolanan, müşteri tarafından yönetilen bir anahtarla şifreleme kapsamları oluşturabilirsiniz. Müşteri tarafından yönetilen bir anahtarla bir şifreleme kapsamı oluşturmak için, önce bir Azure Anahtar Kasası oluşturmanız ve kapsam için kullanmayı düşündüğünüz anahtarı eklemeniz gerekir. Anahtar kasasının hem **geçici silme** hem de **Temizleme koruma** özelliklerinin etkinleştirilmiş olması ve depolama hesabıyla aynı bölgede olması gerekir. Daha fazla bilgi için bkz. [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../common/encryption-customer-managed-keys.md).
+Microsoft tarafından yönetilen bir anahtarla veya Azure Key Vault veya Azure Key Vault yönetilen donanım güvenlik modeli (HSM) (Önizleme) içinde depolanan, müşteri tarafından yönetilen bir anahtarla bir şifreleme kapsamı oluşturabilirsiniz. Müşteri tarafından yönetilen anahtarla bir şifreleme kapsamı oluşturmak için, önce bir Anahtar Kasası veya yönetilen HSM oluşturmanız ve kapsam için kullanmayı düşündüğünüz anahtarı eklemeniz gerekir. Anahtar Kasası veya yönetilen HSM 'nin Temizleme koruması etkinleştirilmiş olması ve depolama hesabıyla aynı bölgede olması gerekir.
 
 Bir şifreleme kapsamı, oluşturduğunuzda otomatik olarak etkinleştirilir. Şifreleme kapsamını oluşturduktan sonra, bir blob oluştururken belirtebilirsiniz. Ayrıca, kapsayıcıdaki tüm Bloblar için otomatik olarak uygulanan bir kapsayıcı oluşturduğunuzda varsayılan bir şifreleme kapsamı belirtebilirsiniz.
 
@@ -41,11 +41,9 @@ Azure portal bir şifreleme kapsamı oluşturmak için aşağıdaki adımları i
 1. **Şifreleme kapsamı** oluştur bölmesinde, yeni kapsam için bir ad girin.
 1. **Microsoft tarafından yönetilen anahtarlar** veya **müşteri tarafından yönetilen anahtarlar**için şifreleme türünü seçin.
     - **Microsoft tarafından yönetilen anahtarlar**' ı seçtiyseniz, şifreleme kapsamını oluşturmak için **Oluştur** ' a tıklayın.
-    - **Müşteri tarafından yönetilen anahtarlar**' ı seçtiyseniz, aşağıdaki görüntüde gösterildiği gibi, bu şifreleme kapsamı için kullanılacak bir Anahtar Kasası, anahtar ve anahtar sürümü belirtin.
+    - **Müşteri tarafından yönetilen anahtarlar**' ı seçtiyseniz, aşağıdaki görüntüde gösterildiği gibi, bu şifreleme kapsamı için kullanılacak bir Anahtar Kasası veya yönetilen HSM, anahtar ve anahtar sürümü belirtin.
 
     :::image type="content" source="media/encryption-scope-manage/create-encryption-scope-customer-managed-key-portal.png" alt-text="Azure portal 'de şifreleme kapsamı oluşturmayı gösteren ekran görüntüsü":::
-
-Azure depolama şifrelemesi için Azure Key Vault ile müşteri tarafından yönetilen anahtarları yapılandırma hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault Ile yapılandırma](../common/storage-encryption-keys-portal.md).
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -76,9 +74,9 @@ New-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 ### <a name="create-an-encryption-scope-protected-by-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla korunan bir şifreleme kapsamı oluşturun
 
-Azure Key Vault ile müşteri tarafından yönetilen anahtarlarla korunan yeni bir şifreleme kapsamı oluşturmak için önce depolama hesabı için müşteri tarafından yönetilen anahtarları yapılandırın. Depolama hesabına yönetilen bir kimlik atamanız ve ardından, depolama hesabının bu hesaba erişim izinleri olması için Anahtar Kasası için erişim ilkesini yapılandırmak üzere yönetilen kimliği kullanmanız gerekir. Daha fazla bilgi için bkz. [PowerShell kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma](../common/storage-encryption-keys-powershell.md).
+Anahtar kasasında veya yönetilen HSM 'de depolanan, müşteri tarafından yönetilen anahtarlarla korunan yeni bir şifreleme kapsamı oluşturmak için önce depolama hesabı için müşteri tarafından yönetilen anahtarları yapılandırın. Depolama hesabına yönetilen bir kimlik atamanız ve ardından, depolama hesabının bu hesaba erişim izinleri olması için Anahtar Kasası veya yönetilen HSM için erişim ilkesini yapılandırmak üzere yönetilen kimliği kullanmanız gerekir.
 
-Müşteri tarafından yönetilen anahtarları bir şifreleme kapsamıyla kullanılmak üzere yapılandırmak için, anahtar kasasında hem **geçici silme** hem de **Temizleme koruma** özelliklerinin etkinleştirilmiş olması gerekir. Anahtar Kasası, depolama hesabıyla aynı bölgede olmalıdır. Daha fazla bilgi için bkz. [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../common/encryption-customer-managed-keys.md).
+Müşteri tarafından yönetilen anahtarları bir şifreleme kapsamıyla kullanılmak üzere yapılandırmak için, anahtar kasasında veya yönetilen HSM 'de Temizleme korumasının etkinleştirilmesi gerekir. Anahtar Kasası veya yönetilen HSM, depolama hesabı ile aynı bölgede olmalıdır.
 
 Örnekteki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
@@ -132,9 +130,9 @@ az storage account encryption-scope create \
 
 Microsoft tarafından yönetilen anahtarlarla korunan yeni bir şifreleme kapsamı oluşturmak için, parametresini olarak belirterek [az Storage Account ENCRYPTION Create](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-create) komutunu çağırın `--key-source` `Microsoft.Storage` . Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
-Azure Key Vault ile müşteri tarafından yönetilen anahtarlarla korunan yeni bir şifreleme kapsamı oluşturmak için önce depolama hesabı için müşteri tarafından yönetilen anahtarları yapılandırın. Depolama hesabına yönetilen bir kimlik atamanız ve ardından, depolama hesabının bu hesaba erişim izinleri olması için Anahtar Kasası için erişim ilkesini yapılandırmak üzere yönetilen kimliği kullanmanız gerekir. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure Key Vault müşteri tarafından yönetilen anahtarları yapılandırma](../common/storage-encryption-keys-cli.md).
+Bir anahtar kasasında veya yönetilen HSM 'de müşteri tarafından yönetilen anahtarlarla korunan yeni bir şifreleme kapsamı oluşturmak için önce depolama hesabı için müşteri tarafından yönetilen anahtarları yapılandırın. Depolama hesabına yönetilen bir kimlik atamanız ve ardından, depolama hesabının bu hesaba erişim izinleri olması için Anahtar Kasası için erişim ilkesini yapılandırmak üzere yönetilen kimliği kullanmanız gerekir. Daha fazla bilgi için bkz. [Azure depolama şifrelemesi Için müşteri tarafından yönetilen anahtarlar](../common/customer-managed-keys-overview.md).
 
-Müşteri tarafından yönetilen anahtarları bir şifreleme kapsamıyla kullanılmak üzere yapılandırmak için, anahtar kasasında hem **geçici silme** hem de **Temizleme koruma** özelliklerinin etkinleştirilmiş olması gerekir. Anahtar Kasası, depolama hesabıyla aynı bölgede olmalıdır. Daha fazla bilgi için bkz. [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../common/encryption-customer-managed-keys.md).
+Müşteri tarafından yönetilen anahtarları bir şifreleme kapsamıyla kullanılmak üzere yapılandırmak için, anahtar kasasında veya yönetilen HSM 'de Temizleme korumasının etkinleştirilmesi gerekir. Anahtar Kasası veya yönetilen HSM, depolama hesabı ile aynı bölgede olmalıdır.
 
 Örnekteki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
@@ -173,6 +171,8 @@ az storage account encryption-scope create \
 
 ---
 
+Azure depolama şifrelemesini bir anahtar kasasındaki müşteri tarafından yönetilen anahtarlarla yapılandırma hakkında bilgi edinmek için bkz. [Azure Key Vault 'de depolanan müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma](../common/customer-managed-keys-configure-key-vault.md). Yönetilen bir HSM 'de müşteri tarafından yönetilen anahtarları yapılandırmak için, bkz. [YÖNETILEN HSM 'de depolanan Azure Key Vault, müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma (Önizleme)](../common/customer-managed-keys-configure-key-vault-hsm.md).
+
 ## <a name="list-encryption-scopes-for-storage-account"></a>Depolama hesabı için şifreleme kapsamlarını Listele
 
 # <a name="portal"></a>[Portal](#tab/portal)
@@ -183,14 +183,14 @@ Azure portal bir depolama hesabının şifreleme kapsamlarını görüntülemek 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell ile bir depolama hesabı için kullanılabilir şifreleme kapsamlarını listelemek için Get-AzStorageEncryptionScope komutunu çağırın. Örnekteki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+PowerShell ile bir depolama hesabı için kullanılabilir şifreleme kapsamlarını listelemek için **Get-AzStorageEncryptionScope** komutunu çağırın. Örnekteki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```powershell
 Get-AzStorageEncryptionScope -ResourceGroupName $rgName `
     -StorageAccountName $accountName
 ```
 
-Bir kaynak grubundaki tüm şifreleme kapsamlarını depolama hesabına göre listelemek için aşağıdaki gibi ardışık düzen sözdizimini kullanın:
+Depolama hesabına göre bir kaynak grubundaki tüm şifreleme kapsamlarını listelemek için ardışık düzen söz dizimini kullanın:
 
 ```powershell
 Get-AzStorageAccount -ResourceGroupName $rgName | Get-AzStorageEncryptionScope
@@ -210,6 +210,10 @@ az storage account encryption-scope list \
 
 ## <a name="create-a-container-with-a-default-encryption-scope"></a>Varsayılan şifreleme kapsamıyla kapsayıcı oluşturma
 
+Bir kapsayıcı oluşturduğunuzda, varsayılan bir şifreleme kapsamı belirtebilirsiniz. Bu kapsayıcıdaki Bloblar, varsayılan olarak bu kapsamı kullanacaktır.
+
+Kapsayıcı tüm Blobların varsayılan kapsamını kullanmasını gerektirecek şekilde yapılandırılmadığı takdirde, tek bir blob kendi şifreleme kapsamı ile oluşturulabilir.
+
 # <a name="portal"></a>[Portal](#tab/portal)
 
 Azure portal varsayılan şifreleme kapsamıyla bir kapsayıcı oluşturmak için, önce şifreleme kapsamı [oluşturma](#create-an-encryption-scope)bölümünde açıklandığı gibi şifreleme kapsamını oluşturun. Sonra, kapsayıcıyı oluşturmak için aşağıdaki adımları izleyin:
@@ -225,7 +229,7 @@ Azure portal varsayılan şifreleme kapsamıyla bir kapsayıcı oluşturmak içi
 
 PowerShell ile varsayılan şifreleme kapsamıyla bir kapsayıcı oluşturmak için, parametresinin kapsamını belirterek [New-AzRmStorageContainer](/powershell/module/az.storage/new-azrmstoragecontainer) komutunu çağırın `-DefaultEncryptionScope` . **New-AzRmStorageContainer** komutu, şifreleme kapsamlarını ve diğer kaynak yönetimi işlemlerini yapılandırmaya Izin veren Azure depolama kaynak sağlayıcısı 'nı kullanarak bir kapsayıcı oluşturur.
 
-Kapsayıcı tüm Blobların varsayılan kapsamını kullanmasını gerektirecek şekilde yapılandırılmadığı takdirde, tek bir blob kendi şifreleme kapsamı ile oluşturulabilir. Bir kapsayıcıdaki tüm Blobları kapsayıcının varsayılan kapsamını kullanacak şekilde zorlamak için `-PreventEncryptionScopeOverride` parametresini olarak ayarlayın `true` .
+Bir kapsayıcıdaki tüm Blobları kapsayıcının varsayılan kapsamını kullanacak şekilde zorlamak için `-PreventEncryptionScopeOverride` parametresini olarak ayarlayın `true` .
 
 ```powershell
 $containerName1 = "container1"
@@ -241,7 +245,7 @@ New-AzRmStorageContainer -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Azure CLı ile varsayılan şifreleme kapsamıyla bir kapsayıcı oluşturmak için, parametresinin kapsamını belirterek [az Storage Container Create](/cli/azure/storage/container#az-storage-container-create) komutunu çağırın `--default-encryption-scope` . Kapsayıcı tüm Blobların varsayılan kapsamını kullanmasını gerektirecek şekilde yapılandırılmadığı takdirde, tek bir blob kendi şifreleme kapsamı ile oluşturulabilir. Bir kapsayıcıdaki tüm Blobları kapsayıcının varsayılan kapsamını kullanacak şekilde zorlamak için `--prevent-encryption-scope-override` parametresini olarak ayarlayın `true` .
+Azure CLı ile varsayılan şifreleme kapsamıyla bir kapsayıcı oluşturmak için, parametresinin kapsamını belirterek [az Storage Container Create](/cli/azure/storage/container#az-storage-container-create) komutunu çağırın `--default-encryption-scope` . Bir kapsayıcıdaki tüm Blobları kapsayıcının varsayılan kapsamını kullanacak şekilde zorlamak için `--prevent-encryption-scope-override` parametresini olarak ayarlayın `true` .
 
 Aşağıdaki örnek, kapsayıcıyı oluşturma işlemini yetkilendirmek için Azure AD hesabınızı kullanır. Hesap erişim anahtarını da kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md).
 
@@ -261,7 +265,7 @@ Bir istemci, bir blobu varsayılan şifreleme kapsamına sahip bir kapsayıcıya
 
 ## <a name="upload-a-blob-with-an-encryption-scope"></a>Şifreleme kapsamına sahip bir blobu karşıya yükleme
 
-Bir blobu karşıya yüklediğinizde, o blob için bir şifreleme kapsamı belirtebilir veya bir tane belirtilmişse kapsayıcı için varsayılan şifreleme kapsamını kullanabilirsiniz. 
+Bir blobu karşıya yüklediğinizde, o blob için bir şifreleme kapsamı belirtebilir veya bir tane belirtilmişse kapsayıcı için varsayılan şifreleme kapsamını kullanabilirsiniz.
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
@@ -309,6 +313,8 @@ az storage blob upload \
 
 ## <a name="change-the-encryption-key-for-a-scope"></a>Bir kapsamın şifreleme anahtarını değiştirme
 
+Bir şifreleme kapsamını Microsoft tarafından yönetilen anahtardan müşteri tarafından yönetilen bir anahtarla koruyan anahtarı değiştirmek için, önce depolama hesabı için Azure Key Vault veya Key Vault HSM ile müşteri tarafından yönetilen anahtarları etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure Key Vault depolanan müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma](../common/customer-managed-keys-configure-key-vault.md) veya [Azure Key Vault depolanan müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma](../common/customer-managed-keys-configure-key-vault.md).
+
 # <a name="portal"></a>[Portal](#tab/portal)
 
 Azure portal bir kapsamı koruyan anahtarı değiştirmek için şu adımları izleyin:
@@ -329,7 +335,7 @@ Update-AzStorageEncryptionScope -ResourceGroupName $rgName `
     -StorageEncryption
 ```
 
-Bir şifreleme kapsamını Microsoft tarafından yönetilen anahtardan müşteri tarafından yönetilen bir anahtarla koruyan anahtarı değiştirmek için, önce depolama hesabı için Azure Key Vault ile müşteri tarafından yönetilen anahtarları etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [PowerShell kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma](../common/storage-encryption-keys-powershell.md). Ardından, **Update-AzStorageEncryptionScope** komutunu çağırın ve `-KeyUri` ve `-KeyvaultEncryption` parametrelerini geçirin:
+Ardından, **Update-AzStorageEncryptionScope** komutunu çağırın ve `-KeyUri` ve `-KeyvaultEncryption` parametrelerini geçirin:
 
 ```powershell
 Update-AzStorageEncryptionScope -ResourceGroupName $rgName `
@@ -351,7 +357,7 @@ az storage account encryption-scope update \
     --key-source Microsoft.Storage
 ```
 
-Bir şifreleme kapsamını Microsoft tarafından yönetilen anahtardan müşteri tarafından yönetilen bir anahtarla koruyan anahtarı değiştirmek için, önce depolama hesabı için Azure Key Vault ile müşteri tarafından yönetilen anahtarları etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure Key Vault müşteri tarafından yönetilen anahtarları yapılandırma](../common/storage-encryption-keys-cli.md). Ardından, **az Storage Account ENCRYPTION-Scope Update** komutunu çağırın, `--key-uri` parametresini geçirin ve `--key-source` parametresini şu değerle geçirin `Microsoft.KeyVault` :
+Ardından, **az Storage Account ENCRYPTION-Scope Update** komutunu çağırın, `--key-uri` parametresini geçirin ve `--key-source` parametresini şu değerle geçirin `Microsoft.KeyVault` :
 
 ```powershell
 az storage account encryption-scope update \
@@ -365,6 +371,8 @@ az storage account encryption-scope update \
 ---
 
 ## <a name="disable-an-encryption-scope"></a>Şifreleme kapsamını devre dışı bırakma
+
+Bir şifreleme kapsamı devre dışı bırakıldığında, artık bu için faturalandırılırsınız. Gereksiz ücretlerden kaçınmak için gerekli olmayan tüm şifreleme kapsamlarını devre dışı bırakın. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../common/storage-service-encryption.md).
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
@@ -398,4 +406,5 @@ az storage account encryption-scope update \
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bekleyen veri için Azure Depolama şifrelemesi](../common/storage-service-encryption.md)
-- [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../common/encryption-customer-managed-keys.md)
+- [BLOB depolama için şifreleme kapsamları (Önizleme)](encryption-scope-overview.md)
+- [Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarlar](../common/customer-managed-keys-overview.md)
