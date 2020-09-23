@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: a4c2051a3f52ae363d8dc704aef790d8ce77efbd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bc731f6f6a5a60bce0851bf8fe5874f7149f3899
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116208"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901458"
 ---
 # <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda sorgu istatistikleri toplamayı iyileştirme-tek sunucu
 Bu makalede, bir PostgreSQL için Azure veritabanı sunucusu üzerinde sorgu istatistikleri koleksiyonunun nasıl iyileştirileceği açıklanır.
@@ -27,7 +27,7 @@ Ayarlamak için `pg_stat_statements.track = NONE` :
 
 - Azure portal, [PostgreSQL kaynak yönetimi sayfasına gidin ve sunucu parametreleri dikey penceresini seçin](howto-configure-server-parameters-using-portal.md).
 
-  ![PostgreSQL sunucu parametresi dikey penceresi](./media/howto-optimize-query-stats-collection/pg_stats_statements_portal.png)
+  :::image type="content" source="./media/howto-optimize-query-stats-collection/pg_stats_statements_portal.png" alt-text="PostgreSQL sunucu parametresi dikey penceresi":::
 
 - [Azure CLI](howto-configure-server-parameters-using-cli.md) az Postgres Server yapılandırma kümesini olarak kullanın `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value NONE` .
 
@@ -38,5 +38,5 @@ PostgreSQL için Azure veritabanı 'ndaki [sorgu depolama](concepts-query-store.
 `pg_stat_statements.track = NONE` [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)kullanarak ayarlamayı göz önünde bulundurun.
 
 Daha fazla bilgi için bkz. 
-- [Sorgu Deposu kullanım senaryoları](concepts-query-store-scenarios.md) 
-- [Sorgu Deposu en iyi yöntemleri](concepts-query-store-best-practices.md) 
+- [Sorgu deposu kullanım senaryoları](concepts-query-store-scenarios.md) 
+- [Sorgu deposu en iyi yöntemleri](concepts-query-store-best-practices.md) 

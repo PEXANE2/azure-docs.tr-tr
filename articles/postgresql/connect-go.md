@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: e8a44de5b6da4c9a125b5c035d0344115930cfe2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 21ae18b239eaa5f9e894d76bc143161b2d536638
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182910"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902019"
 ---
 # <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için go dilini kullanma-tek sunucu
 
@@ -61,7 +61,7 @@ Makinenize [Go](https://golang.org/doc/install)’yu ve [Pure Go Postgres sürü
    ```
 
 ### <a name="apple-macos"></a>Apple macOS
-1. Platformunuzla eşleşen [yükleme yönergelerine](https://golang.org/doc/install) göre go 'yu indirip yükleyin. 
+1. Platformunuzla eşleşen [yükleme yönergelerine](https://golang.org/doc/install)  göre go 'yu indirip yükleyin. 
 2. Bash kabuğunu başlatın. 
 3. Giriş dizininizde projeniz için `mkdir -p ~/go/src/postgresqlgo/` gibi bir klasör oluşturun.
 4. Dizini değiştirerek klasöre geçin; örneğin, `cd ~/go/src/postgresqlgo/`.
@@ -83,7 +83,7 @@ PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgi
 2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
 3. Sunucunun adına tıklayın.
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
- ![PostgreSQL için Azure Veritabanı sunucu adı](./media/connect-go/1-connection-string.png)
+ :::image type="content" source="./media/connect-go/1-connection-string.png" alt-text="PostgreSQL için Azure Veritabanı sunucu adı":::
 
 ## <a name="build-and-run-go-code"></a>Go kodunu derleme ve çalıştırma 
 1. Golang kodlarını yazmak için Microsoft Windows’da Not Defteri, Ubuntu’da [VI](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) veya [Nano](https://www.nano-editor.org/), macOS’da TextEdit gibi düz metin düzenleyicilerini kullanabilirsiniz. Daha zengin bir etkileşimli geliştirme ortamını tercih ediyorsanız (IDE), JetBrains, Microsoft veya [atom](https://atom.io/)tarafından [Visual Studio Code](https://code.visualstudio.com/) için [golantıd](https://www.jetbrains.com/go/) 'yi deneyin.

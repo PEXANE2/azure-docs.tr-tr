@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 035b13140ee1fb7a48d0cea9a3611eac145d9f8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921223"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970687"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Performans önerilerini bulma ve uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,13 +29,13 @@ Performans önerilerini görüntülemek ve uygulamak için Azure 'da doğru [Azu
 
 Azure portal performans önerilerini bulmak için aşağıdaki adımları kullanın:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Tüm hizmetler**  >  **SQL veritabanlarına**gidin ve veritabanınızı seçin.
 3. Seçilen veritabanı için kullanılabilir önerileri görüntülemek için **performans önerisi** ' ne gidin.
 
 Performans önerileri aşağıdaki şekilde gösterildiği gibi tabloda gösterilmiştir:
 
-![Öneriler](./media/database-advisor-find-recommendations-portal/recommendations.png)
+![Ekran görüntüsü, eylem ve öneri açıklamasıyla bir tablodaki performans önerilerini gösterir.](./media/database-advisor-find-recommendations-portal/recommendations.png)
 
 Öneriler, performans üzerindeki olası etkileriyle aşağıdaki kategorilere göre sıralanır:
 

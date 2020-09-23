@@ -1,27 +1,27 @@
 ---
-title: SYNAPSE SQL 'de CETAS
-description: SYNAPSE SQL ile CETAS kullanma
+title: SYNAPSE SQL 'de SELECT (CETAS) olarak dış tablo oluşturma
+description: SYNAPSE SQL ile CREATE EXTERNAL TABLE AS SELECT (CETAS) kullanma
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 18f472da30b34fcacd70bba9ea7371b56f1a7abf
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d33403f49429398d9bc006187c23bb8091d9b4a1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032920"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885352"
 ---
 # <a name="cetas-with-synapse-sql"></a>SYNAPSE SQL ile CETAS
 
-SQL havuzunda veya isteğe bağlı SQL 'de (Önizleme), aşağıdaki görevleri gerçekleştirmek için CREATE EXTERNAL TABLE AS SELECT (CETAS) kullanabilirsiniz:  
+Aşağıdaki görevleri gerçekleştirmek için SQL havuzunda veya SQL isteğe bağlı (Önizleme) içinde dış tablo oluştur (CETAS) SEÇENEĞINI kullanabilirsiniz:  
 
 - Dış tablo oluşturma
-- Bir Transact-SQL SELECT ifadesinin sonuçlarını paralel olarak dışa aktarın
+- Bir Transact-SQL SELECT ifadesinin sonuçlarını paralel olarak dışarı aktarın:
 
   - Hadoop
   - Azure Depolama Blobu
@@ -29,11 +29,12 @@ SQL havuzunda veya isteğe bağlı SQL 'de (Önizleme), aşağıdaki görevleri 
 
 ## <a name="cetas-in-sql-pool"></a>SQL havuzunda CETAS 'lar
 
-SQL havuzu, CETAS kullanımı ve sözdizimi için [dış tablo oluştur 'U seçin](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) makalesini denetleyin. Ek olarak, SQL havuzunu kullanarak CTAS hakkında rehberlik için, [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) makalesine bakın.
+SQL havuzu CETAS kullanımı ve sözdizimi için bkz. [dış tablo oluşturma seçeneğini belirleyin](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . Ek olarak, SQL havuzunu kullanarak CTAS hakkında rehberlik için, [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) makalesine bakın.
+SQL havuzu CETAS kullanımı ve sözdizimi için bkz. [dış tablo oluşturma seçeneğini belirleyin](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . Ek olarak, SQL havuzunu kullanarak CTAS hakkında rehberlik için, [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) makalesine bakın.
 
 ## <a name="cetas-in-sql-on-demand"></a>İsteğe bağlı SQL 'de CETAS
 
-SQL isteğe bağlı kaynağı kullanılırken, CETAS, dış tablo oluşturmak ve sorgu sonuçlarını Azure Depolama Blobu veya Azure Data Lake Storage 2. dışarı aktarmak için kullanılır.
+İsteğe bağlı SQL ' i kullanırken CETAS, dış tablo oluşturmak ve sorgu sonuçlarını Azure Depolama Blobu veya Azure Data Lake Storage 2. dışarı aktarmak için kullanılır.
 
 ## <a name="syntax"></a>Söz dizimi
 
@@ -68,22 +69,22 @@ Dış verilerin depolanacağı konumu içeren dış veri kaynağı nesnesinin ad
 
 FILE_FORMAT = *external_file_format_name*
 
-Dış veri dosyası biçimini içeren harici dosya biçim nesnesinin adını belirtir. Dış dosya biçimi oluşturmak için [dış dosya biçimi oluşturma (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format)kullanın. Şu anda yalnızca FORMAT = ' PARQUET ' olan harici dosya biçimleri destekleniyor.
+Dış veri dosyası biçimini içeren harici dosya biçim nesnesinin adını belirtir. Dış dosya biçimi oluşturmak için [dış dosya biçimi oluşturma (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format)kullanın. Yalnızca FORMAT_TYPE = PARQUET ve FORMAT_TYPE = DELIMITEDTEXT içeren harici dosya biçimleri desteklenir.
 
 *<common_table_expression>*
 
-Ortak tablo ifadesi (CTE) olarak bilinen geçici bir adlandırılmış sonuç kümesini belirtir. Daha fazla bilgi için bkz. [common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ortak tablo ifadesi (CTE) olarak bilinen geçici bir adlandırılmış sonuç kümesini belirtir. Daha fazla bilgi için bkz. [common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 <select_criteria SEÇIN>
 
-Yeni tabloyu bir SELECT deyimindeki sonuçlarla doldurur. *select_criteria* , yeni tabloya hangi verilerin KOPYALANACAĞıNı belirleyen SELECT ifadesinin gövdesidir. SELECT deyimleri hakkında daha fazla bilgi için bkz. [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Yeni tabloyu bir SELECT deyimindeki sonuçlarla doldurur. *select_criteria* , yeni tabloya hangi verilerin KOPYALANACAĞıNı belirleyen SELECT ifadesinin gövdesidir. SELECT deyimleri hakkında daha fazla bilgi için bkz. [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 > [!NOTE]
-> CETAS 'ın SELECT bölümündeki ORDER BY yan tümcesi desteklenmiyor.
+> SELECT içindeki ORDER BY yan tümcesi CETAS için desteklenmez.
 
 ## <a name="permissions"></a>İzinler
 
-CETAS 'ın çalışması için klasör içeriğini listeleme ve konum klasörüne yazma izinlerinizin olması gerekir.
+Klasör içeriğini listelemek ve CETAS 'ın çalışması için konum klasörüne yazmak için izinlerinizin olması gerekir.
 
 ## <a name="examples"></a>Örnekler
 
@@ -112,7 +113,7 @@ FROM
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 
@@ -132,7 +133,7 @@ FROM census_external_table
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 
@@ -144,7 +145,7 @@ CETAS, sonuç kümelerini aşağıdaki SQL veri türleriyle depolamak için kull
 - ikili
 - char
 - varchar
-- date
+- tarih
 - time
 - datetime2
 - decimal
@@ -173,4 +174,4 @@ Aşağıdaki veri türleri, CETAS 'ın SELECT bölümünde kullanılamaz:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure SYNAPSE dış tabloları için Apache Spark](develop-storage-files-spark-tables.md)sorgulamayı deneyebilirsiniz.
+[Azure SYNAPSE dış tabloları için Apache Spark](develop-storage-files-spark-tables.md)sorgulamayı deneyin.

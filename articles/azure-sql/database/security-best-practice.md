@@ -8,14 +8,14 @@ ms.custom: sqldbrb=2
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 02/20/2020
+ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: e720a95007ff06a954affe03f43f386be3bed39f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442114"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885170"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,7 +62,7 @@ Aksi belirtilmedikçe, ilgili hedefi veya gereksinimi elde etmek için her böl�
 
 Burada listelenen öneriler ve en iyi uygulamalar güncelleştirilmeye devam ediyor. Bu makalenin altındaki **geri bildirim** bağlantısını kullanarak bu belge için giriş veya herhangi bir düzeltme sağlayın.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL veritabanı ve SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:
 
@@ -647,7 +647,7 @@ Gelişmiş tehdit koruması, anormal etkinliklerde güvenlik uyarıları sunarak
 
 **En iyi uygulamalar**:
 
-- Belirli bir sunucu veya yönetilen örnek için [Gelişmiş veri güvenliği (ADS)](advanced-data-security.md#getting-started-with-ads)yapılandırın   . Ayrıca, [Azure Güvenlik Merkezi Standart katmanına](../../security-center/security-center-pricing.md)geçerek bir abonelikteki tüm sunucular ve yönetilen örnekler için reklamları yapılandırabilirsiniz.
+- Belirli bir sunucu veya yönetilen bir örnek için [SQL Için Azure Defender 'ı](azure-defender-for-sql.md)yapılandırın   . Ayrıca, [Azure Güvenlik Merkezi Standart katmanına](../../security-center/security-center-pricing.md)geçerek bir abonelikteki tüm sunucular ve yönetilen örnekler Için Azure Defender 'ı yapılandırabilirsiniz.
 
 - Tam araştırma deneyimi için, [SQL veritabanı denetimini](../../azure-sql/database/auditing-overview.md)etkinleştirmeniz önerilir. Denetimle, veritabanı olaylarını izleyebilir ve bunları bir Azure depolama hesabındaki veya Azure Log Analytics çalışma alanındaki bir denetim günlüğüne yazabilirsiniz.
 

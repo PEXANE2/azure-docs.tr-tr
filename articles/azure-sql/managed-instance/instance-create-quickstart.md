@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: b2d43e970012209acb6ed7fbbaafbb1719617280
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1899baa927bffdaedd1d7ee00f442c449480fc04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533878"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986855"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Hızlı başlangıç: yönetilen SQL yönetilen örneği oluşturma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -95,7 +95,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
    | ------ | --------------- | ----------- |
    | **Harmanlama** | Yönetilen örneğiniz için kullanmak istediğiniz harmanlamayı seçin. SQL Server veritabanlarını geçirirseniz, kullanarak kaynak harmanlamasını denetleyin `SELECT SERVERPROPERTY(N'Collation')` ve bu değeri kullanın.| Harmanlamalar hakkında daha fazla bilgi için bkz. [sunucu harmanlamasını ayarlama veya değiştirme](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
    | **Saat dilimi** | Yönetilen örneğin gözleneceği saat dilimini seçin.|Daha fazla bilgi için bkz. [saat dilimleri](timezones-overview.md).|
-   | **Yük devretme ikincili olarak kullan** | **Evet**’i seçin. | Yönetilen örneği yük devretme grubu ikincil olarak kullanmak için bu seçeneği etkinleştirin.|
+   | **Yük devretme ikincili olarak kullan** | **Evet** seçeneğini belirleyin. | Yönetilen örneği yük devretme grubu ikincil olarak kullanmak için bu seçeneği etkinleştirin.|
    | **BIRINCIL SQL yönetilen örneği** ( **Yük devretme Ikincili olarak kullan** **Evet**olarak ayarlanırsa) | Oluşturmakta olduğunuz yönetilen örnekle aynı DNS bölgesine katılacak mevcut bir birincil yönetilen örnek seçin. | Bu adım, yük devretme grubunun oluşturma sonrası yapılandırmasını etkinleştirecektir. Daha fazla bilgi için bkz. [öğretici: bir yük devretme grubuna yönetilen örnek ekleme](failover-group-add-instance-tutorial.md).|
 
 ## <a name="review--create"></a>Gözden geçirme ve oluşturma
@@ -124,7 +124,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
 > 3. Sürmekte olan SQL yönetilen örnek dağıtım işlemini seçin.
 
 > [!IMPORTANT]
-> - SQL yönetilen örneğinin oluşturulması, belirli koşullara bağlı olarak, bir seferde birkaç saat sürebilecek uzun süreli bir işlemdir. Tipik oluşturma süreleri için bkz. [yönetim işlemleri süresi](management-operations-overview.md#management-operations-duration) .
+> - SQL yönetilen örneğinin oluşturulması, belirli koşullara bağlı olarak, bir seferde birkaç saat sürebilecek uzun süreli bir işlemdir. Tipik oluşturma süreleri için bkz. [yönetim işlemleri süresi](management-operations-overview.md#duration) .
 > - Aynı alt ağdaki diğer yönetilen örneklerde uzun süre çalışan geri yükleme veya ölçeklendirme işlemleri olduğunda, SQL yönetilen örnek oluşturma 'nın başlatılması, diğer etkileyen işlemler varsa geciktirilebilir. Daha fazla bilgi için bkz. [yönetim işlemleri çapraz etkisi](management-operations-overview.md#management-operations-cross-impact).
 > - Yönetilen örnek oluşturma durumunu alabilmeniz için, kaynak grubu üzerinde **Okuma izinlerine** sahip olmanız gerekir. Yönetilen örnek oluşturma işlemi sırasında bu izne sahip değilseniz veya dosyayı iptal ederseniz, bu, SQL yönetilen örneğinin kaynak grubu dağıtımları listesinde görünmemesine neden olabilir.
 >
@@ -161,7 +161,7 @@ Yönetilen bir örneğin başarıyla dağıtılması sırasında, oluşturulan k
 > SQL yönetilen örneği için genel bir uç nokta yapılandırdıysanız, genel İnternet 'ten SQL yönetilen örneği bağlantılarına izin vermek için bağlantı noktalarını açmanız gerekir. Daha fazla bilgi için bkz. [SQL yönetilen örneği için genel uç nokta yapılandırma](public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group) .
 >
 
-## <a name="retrieve-connection-details-to-sql-managed-instance"></a>SQL yönetilen örneği 'ne bağlantı ayrıntılarını al
+## <a name="retrieve-connection-details-to-sql-managed-instance"></a>SQL Yönetilen Örneği'ne bağlantı ayrıntılarını alma
 
 SQL yönetilen örneğine bağlanmak için, ana bilgisayar adını ve tam etki alanı adını (FQDN) almak için aşağıdaki adımları izleyin:
 

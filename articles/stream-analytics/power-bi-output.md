@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0fc4e9a794429e7f1c1609fac287e67dabb3c878
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875945"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892000"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışı Power BI
 
@@ -20,7 +20,7 @@ Analiz sonuçlarına yönelik zengin bir görselleştirme deneyimi sağlamak üz
 
 Stream Analytics çıkış Power BI Şu anda Azure Çin 21Vianet ve Azure Almanya (T-Systems Uluslararası) bölgelerinde kullanılamıyor.
 
-## <a name="ouput-configuration"></a>Ouput yapılandırması
+## <a name="output-configuration"></a>Çıkış yapılandırması
 
 Aşağıdaki tablo Power BI çıktlarınızı yapılandırmak için özellik adlarını ve açıklamalarını listelemektedir.
 
@@ -82,4 +82,4 @@ Tarih saat | Dize | Dize |  Tarih saat | Dize
 * [Hızlı başlangıç: ARM şablonu kullanarak Azure Stream Analytics işi oluşturma](quick-create-azure-resource-manager.md)
 * [Hızlı başlangıç: Azure PowerShell kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-powershell.md)
 * [Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
-* [Hızlı başlangıç: Visual Studio Code Azure Stream Analytics iş oluşturma](quick-create-vs-code.md)
+* [Hızlı başlangıç: Visual Studio Code Azure Stream Analytics iş oluşturma](quick-create-visual-studio-code.md)

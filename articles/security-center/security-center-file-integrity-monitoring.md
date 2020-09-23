@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 910d98558e5b949a76202cce48c2a210531d5c35
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9e8bd56655adfa1f7cdb769ac6cd282193b1bcf2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459802"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901369"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde Dosya Bütünlüğü İzleme
 Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü Izleme (FIM) yapılandırma hakkında bilgi edinin.
@@ -28,10 +28,10 @@ Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü Izlem
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Genel olarak kullanılabilir|
-|Fiyat|Standart katmanı|
+|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|**Çalışma alanı sahıbı** FIM 'yi etkinleştirebilir/devre dışı bırakabilir (daha fazla bilgi için bkz. [Log Analytics için Azure rolleri](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)).<br>**Okuyucu** , sonuçları görüntüleyebilir.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 
@@ -50,7 +50,7 @@ Güvenlik Merkezi 'nin dosya bütünlüğü Izleme, Windows dosyaları, Windows 
 Güvenlik Merkezi, içinde FIM 'yi kolayca etkinleştirebilmeniz için varlıkların izlenmesini öneriyor. Ayrıca, izlemek üzere kendi FIM ilkelerinizi veya varlıklarınızı tanımlayabilirsiniz. Bu izlenecek yol size nasıl yapılacağını gösterir.
 
 > [!NOTE]
-> Dosya bütünlüğü Izleme (FIM) özelliği, Windows ve Linux bilgisayarları ve VM 'Leri için çalışarak Güvenlik Merkezi 'nin standart katmanında kullanılabilir. Güvenlik Merkezi’nin fiyatlandırma katmanları hakkında daha fazla bilgi almak için bkz. [Fiyatlandırma](security-center-pricing.md). FIM Log Analytics çalışma alanına veri yükler. Veri ücretleri, karşıya yüklediğiniz veri miktarına bağlı olarak uygulanır. Daha fazla bilgi için bkz. [Log Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/) .
+> Dosya bütünlüğü Izleme (FIM) özelliği, Windows ve Linux bilgisayarları ve VM 'Leri için geçerlidir ve yalnızca, **sunucular Için Azure Defender** etkinleştirildiğinde kullanılabilir. Daha fazla bilgi için bkz. [fiyatlandırma](security-center-pricing.md) . FIM Log Analytics çalışma alanına veri yükler. Veri ücretleri, karşıya yüklediğiniz veri miktarına bağlı olarak uygulanır. Daha fazla bilgi için bkz. [Log Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/) .
 
 FIM, ortamınızdaki değişiklikleri izlemek ve tanımlamak için Azure Değişiklik İzleme çözümünü kullanır. Dosya bütünlüğü Izleme etkinleştirildiğinde, **çözüm**türünde bir **değişiklik izleme** kaynağınız olur. Veri toplama sıklığı ayrıntılarını, Azure Değişiklik İzleme için [Değişiklik izleme verileri toplama ayrıntıları](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) konusunda bulabilirsiniz.
 
@@ -94,13 +94,18 @@ Güvenlik Merkezi, bilinen saldırı desenlerine göre izlemek için önerilen �
 |||Hklm\system\currentcontrolset\services\sharedaccess\parameters\firewallilkepublicprofile|
 |||Hklm\system\currentcontrolset\services\sharedaccess\parameters\firewallilkestandardprofile|
 
-## <a name="using-file-integrity-monitoring"></a>Dosya bütünlüğü Izlemeyi kullanma
-1. **Güvenlik Merkezi** panosunu açın.
-2. **Gelişmiş bulut savunması**altındaki sol bölmede **Dosya bütünlüğü izleme**' yi seçin.
-![Güvenlik Merkezi panosu][1]
 
-**Dosya bütünlüğü izleme** açılır.
-  ![Güvenlik Merkezi panosu][2]
+## <a name="using-file-integrity-monitoring"></a>Dosya bütünlüğü Izlemeyi kullanma
+
+1. **Azure Defender** panosunu açın.
+
+1. **Gelişmiş koruma** alanından **Dosya bütünlüğü izleme**' yi seçin.
+
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="FIM başlatılıyor" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
+
+
+    **Dosya bütünlüğü izleme** açılır.
+    ![Güvenlik Merkezi panosu][2]
 
 Her çalışma alanı için aşağıdaki bilgiler sağlanır:
 
@@ -112,26 +117,28 @@ Her çalışma alanı için aşağıdaki bilgiler sağlanır:
 Bir çalışma alanı için aşağıdaki düğmeler de görüntülenebilir:
 
 - ![Simgeyi etkinleştir][3] FIM 'nin çalışma alanı için etkinleştirilmediğini belirtir. Çalışma alanının seçilmesi, çalışma alanının altındaki tüm makinelerde FIM 'yi etkinleştirmenizi sağlar.
-- ![Planı Yükselt simgesi ][4] , çalışma alanının veya aboneliğin Güvenlik Merkezi 'nin standart katmanı altında çalışmadığını gösterir. FIM özelliğini kullanmak için aboneliğinizin standart çalıştırması gerekir.  Çalışma alanının seçilmesi standart sürümüne yükseltmenizi sağlar. Standart katman ve yükseltme hakkında daha fazla bilgi edinmek için bkz. [Güvenlik Merkezi 'nin standart katmanını gelişmiş güvenlik Için yükseltme](security-center-pricing.md).
+- ![Yükseltme planı simgesi][4] Çalışma alanının veya aboneliğin Azure Defender tarafından korunmadığını gösterir. FIM özelliğini kullanmak için aboneliğinizin Azure Defender tarafından korunması gerekir.  Çalışma alanının seçilmesi, yükseltmenize olanak sağlar.
 - Boş (düğme yok), FIM 'nin çalışma alanında zaten etkinleştirildiği anlamına gelir.
 
-**Dosya bütünlüğü izleme**altında, söz konusu çalışma alanı için FIM 'yi etkinleştirmek üzere bir çalışma alanı seçebilir, bu çalışma alanı Için dosya bütünlüğü izleme panosunu görüntüleyebilir veya çalışma alanını standart olarak [yükseltebilirsiniz](security-center-pricing.md) .
+**Dosya bütünlüğü izleme**altında, söz konusu çalışma alanı için FIM 'yi etkinleştirmek üzere bir çalışma alanı seçebilir, bu çalışma alanı Için dosya bütünlüğü izleme panosunu görüntüleyebilir veya çalışma alanını Azure Defender 'ı kullanacak şekilde [yükseltebilirsiniz](security-center-pricing.md) .
 
 ## <a name="enable-fim"></a>FIM 'yi etkinleştir
 Bir çalışma alanında FIM 'yi etkinleştirmek için:
 
 1. **Dosya bütünlüğü izleme**altında **Etkinleştir** düğmesine sahip bir çalışma alanı seçin.
-2. **Dosya bütünlüğü Izlemeyi etkinleştirme** , çalışma alanındaki Windows ve Linux makinelerin sayısını görüntüleyerek açılır.
+
+1. **Dosya bütünlüğü Izlemeyi etkinleştirme** , çalışma alanındaki Windows ve Linux makinelerin sayısını görüntüleyerek açılır.
 
    ![Dosya bütünlüğünü izlemeyi etkinleştir][5]
 
    Windows ve Linux için önerilen ayarlar da listelenir.  Önerilen öğelerin tam listesini görmek için **Windows dosyaları**, **kayıt defteri**ve **Linux dosyalarını** genişletin.
 
-3. FIM 'yi uygulamak istemediğiniz tüm önerilen varlıkların işaretini kaldırın.
-4. FIM 'yi etkinleştirmek için **Dosya bütünlüğü Izlemeyi Uygula** ' yı seçin.
+1. FIM 'yi uygulamak istemediğiniz tüm önerilen varlıkların işaretini kaldırın.
+
+1. FIM 'yi etkinleştirmek için **Dosya bütünlüğü Izlemeyi Uygula** ' yı seçin.
 
 > [!NOTE]
-> Ayarları dilediğiniz zaman değiştirebilirsiniz. Daha fazla bilgi edinmek için aşağıda izlenen varlıkları düzenleme bölümüne bakın.
+> Ayarları dilediğiniz zaman değiştirebilirsiniz. Daha fazla bilgi edinmek için aşağıda [izlenen varlıkları düzenleme](#edit-monitored-entities) bölümüne bakın.
 
 
 ## <a name="view-the-fim-dashboard"></a>FIM panosunu görüntüleme

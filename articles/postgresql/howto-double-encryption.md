@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 6612fe38adcd3c8002dd4a11122b5bb2e797a4dd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 362c051cf1dd7e97430bd6afaf4821a9c960b71d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102183"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901547"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı için altyapı Çift şifreleme
 
@@ -29,19 +29,19 @@ Azure portal altyapı çift şifrelemesi ile bir MySQL için Azure veritabanı s
 
 2. **Veritabanları**  >  **PostgreSQL için Azure veritabanı**' nı seçin. Hizmeti bulmak için arama kutusuna PostgreSQL ' i de girebilirsiniz. **Tek sunuculu** dağıtım seçeneği etkinleştirildi.
 
-   ![Menüdeki "PostgreSQL için Azure veritabanı"](./media/quickstart-create-database-portal/1-create-database.png)
+   :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
 3. Sunucunun temel bilgilerini sağlayın. Parametreyi ayarlamak için **ek ayarlar** ' ı seçin ve **altyapı Çift şifreleme** onay kutusunu etkin yapın.
 
-    ![PostgreSQL için Azure veritabanı seçimleri](./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png)
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png" alt-text="PostgreSQL için Azure veritabanı seçimleri":::
 
 4. Sunucuyu sağlamak için **gözden geçir + oluştur** ' u seçin.
 
-    ![PostgreSQL için Azure veritabanı Özeti](./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png)
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png" alt-text="PostgreSQL için Azure veritabanı Özeti":::
 
 5. Sunucu oluşturulduktan sonra, **veri şifreleme** sunucusu dikey penceresinde durumu denetleyerek altyapıyı çift şifrelemeyi doğrulayabilirsiniz.
 
-    ![MySQL için Azure veritabanı doğrulaması](./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png)
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png" alt-text="MySQL için Azure veritabanı doğrulaması":::
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---cli"></a>Altyapı çift şifrelemesi ile PostgreSQL için Azure veritabanı sunucusu oluşturma-CLı
 

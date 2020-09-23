@@ -6,24 +6,24 @@ author: mamccrea
 ms.author: mamccrea
 ms.date: 05/15/2019
 ms.topic: how-to
-ms.openlocfilehash: 00705e40ca17959701af325ed52a4c3754d35122
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4b4ddd7db4891c642ec2002bbe992314fe67a20f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039067"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891975"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Visual Studio Code ile Azure Stream Analytics araştırma (Önizleme)
 
 Visual Studio Code uzantısının Azure Stream Analytics geliştiricilere Stream Analytics işlerini yönetmek için hafif bir deneyim sunar. Windows, Mac ve Linux 'ta kullanılabilir. Azure Stream Analytics uzantısıyla şunları yapabilirsiniz:
 
-- İşleri [oluşturma](quick-create-vs-code.md), başlatma ve durdurma
+- İşleri [oluşturma](quick-create-visual-studio-code.md), başlatma ve durdurma
 - Mevcut işleri yerel bir projeye aktar
 - İşleri listeleme ve iş varlıklarını görüntüleme
 
 ## <a name="export-a-job-to-a-local-project"></a>Yerel bir projeye bir işi dışarı aktarma
 
-Bir işi yerel bir projeye aktarmak için, Visual Studio Code **Stream Analytics Gezgininde** dışarı aktarmak istediğiniz işi bulun. Ardından projeniz için bir klasör seçin. Proje, seçtiğiniz klasöre aktarıldığından Visual Studio Code işi yönetmeye devam edebilirsiniz. Stream Analytics işleri yönetmek için Visual Studio Code kullanma hakkında daha fazla bilgi için Visual Studio Code [hızlı başlangıç](quick-create-vs-code.md)başlığına bakın.
+Bir işi yerel bir projeye aktarmak için, Visual Studio Code **Stream Analytics Gezgininde** dışarı aktarmak istediğiniz işi bulun. Ardından projeniz için bir klasör seçin. Proje, seçtiğiniz klasöre aktarıldığından Visual Studio Code işi yönetmeye devam edebilirsiniz. Stream Analytics işleri yönetmek için Visual Studio Code kullanma hakkında daha fazla bilgi için Visual Studio Code [hızlı başlangıç](quick-create-visual-studio-code.md)başlığına bakın.
 
 ![Visual Studio Code ASA işini dışarı aktarma](./media/vscode-explore-jobs/export-job.png)
 
@@ -44,4 +44,4 @@ Visual Studio 'dan Azure Stream Analytics işlerle etkileşim kurmak için iş g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Visual Studio Code Azure Stream Analytics bulut işi oluşturma (Önizleme)](quick-create-vs-code.md)
+* [Visual Studio Code Azure Stream Analytics bulut işi oluşturma (Önizleme)](quick-create-visual-studio-code.md)

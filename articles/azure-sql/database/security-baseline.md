@@ -4,15 +4,15 @@ description: Azure SQL veritabanı ve Azure SQL yönetilen örneği için Azure 
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ce297b436ce79a4a0a14d0f6e9ad900de61a8dc9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231036"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885211"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği için Azure Güvenlik temeli
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -285,15 +285,15 @@ https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-porta
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: anormal etkinlik için uyarıları etkinleştir
 
-**Kılavuz**: Azure Güvenlik Merkezi Gelişmiş tehdit koruması 'Nı Azure SQL veritabanı için, anormal etkinlikleri izlemek ve uyarmak üzere kullanın. SQL veritabanlarınız için gelişmiş veri güvenliğini etkinleştirin. Gelişmiş veri güvenliği, hassas verileri bulma ve sınıflandırma, olası veritabanı güvenlik açıklarını ortaya koymasının yanı sıra veritabanınıza yönelik bir tehdit oluşturabilecek anormal etkinlikleri algılayarak ilgili işlevsellik içerir.
+**Kılavuz**: Azure Güvenlik Merkezi Gelişmiş tehdit koruması 'Nı Azure SQL veritabanı için, anormal etkinlikleri izlemek ve uyarmak üzere kullanın. SQL veritabanlarınız için SQL için Azure Defender 'ı etkinleştirin. SQL için Azure Defender, ortaya çıkabilecek ve olası veritabanı güvenlik açıklarını azaltmaya yönelik işlevsellik içerir ve veritabanınıza yönelik bir tehdit oluşturabilecek anormal etkinlikleri algılamaktır.
 
 Azure SQL veritabanı için Gelişmiş tehdit koruması ve uyarı vermeyi anlayın:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
-Azure SQL veritabanı için gelişmiş veri güvenliğini etkinleştirme:
+Azure SQL veritabanı için Azure Defender 'ı etkinleştirme:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Azure Güvenlik Merkezi 'nde uyarıları yönetme:
 
@@ -333,7 +333,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
 
-**Rehberlik**: Azure ACTIVE DIRECTORY (AAD) açıkça atanması ve sorgulanabilir olması gereken yerleşik roller içerir. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için AAD PowerShell modülünü kullanın.
+**Rehberlik**: Azure Active Directory (Azure AD), açıkça atanması ve sorgulanabilir olması gereken yerleşik roller içerir. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın.
 
 Azure AD 'de PowerShell ile dizin rolü alma:
 
@@ -381,7 +381,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: tüm Azure Active Directory tabanlı erişim için Multi-Factor Authentication kullanın
 
-**Rehberlik**: Azure ACTIVE DIRECTORY (AAD) MULTI-Factor AUTHENTICATION (MFA) etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin.
+**Rehberlik**: Azure Active Directory (Azure AD) MULTI-Factor AUTHENTICATION (MFA) etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin.
 
 Azure 'da MFA 'yı etkinleştirme:
 
@@ -445,13 +445,13 @@ Azure 'da adlandırılmış konumlar nasıl yapılandırılır: https://docs.mic
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
 
-**Rehberlik**: sunucunuz için bir Azure ACTIVE DIRECTORY (AAD) Yöneticisi oluşturun.
+**Rehberlik**: sunucunuz için Azure Active Directory (Azure AD) Yöneticisi oluşturun.
 
 Azure SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme:
 
 https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
-AAD örneği oluşturma ve yapılandırma:
+Azure AD örneği oluşturma ve yapılandırma:
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
@@ -461,7 +461,7 @@ https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-creat
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: Kullanıcı erişimini düzenli olarak gözden geçirin ve karşılaştırın
 
-**Rehberlik**: Azure ACTIVE DIRECTORY (AAD) eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi incelemelerini kullanın. Kullanıcıların erişimi, yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için düzenli aralıklarla gözden geçirilebilir.
+**Rehberlik**: Azure Active Directory (Azure AD) eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi incelemelerini kullanın. Kullanıcıların erişimi, yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için düzenli aralıklarla gözden geçirilebilir.
 
 Azure kimlik erişimi Incelemelerini kullanma:
 
@@ -473,7 +473,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: devre dışı bırakılmış hesaplara erişme girişimlerini izleme
 
-**Rehberlik**: Azure ACTIVE DIRECTORY (AAD) kimlik DOĞRULAMASıNı Azure SQL ile yapılandırma ve Azure Active Directory Kullanıcı Hesapları Için Tanılama ayarları oluşturma, Denetim günlüklerini ve oturum açma günlüklerini bir Log Analytics çalışma alanına gönderme. Log Analytics çalışma alanı içinde istenen uyarıları yapılandırın.
+**Rehberlik**: Azure Active Directory (Azure AD) kimlik DOĞRULAMASıNı Azure SQL ile yapılandırma ve Azure Active Directory Kullanıcı Hesapları Için Tanılama ayarları oluşturma, Denetim günlüklerini ve oturum açma günlüklerini bir Log Analytics çalışma alanına gönderme. Log Analytics çalışma alanı içinde istenen uyarıları yapılandırın.
 
 Azure SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme:
 
@@ -489,7 +489,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: hesap oturum açma davranışı sapmasından uyar
 
-**Rehberlik**: Azure ACTIVE DIRECTORY (AAD) kimlik koruması ve risk algılamalarını kullanarak otomatik yanıtları, Kullanıcı kimlikleriyle ilgili şüpheli eylemler tespit edin. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
+**Rehberlik**: Azure Active Directory (Azure AD) kimlik koruması ve risk algılamalarını kullanarak otomatik yanıtları, Kullanıcı kimlikleriyle ilgili şüpheli eylemleri tespit etmek üzere yapılandırın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
 Azure AD risk oturum açma işlemlerini görüntüleme:
 
@@ -599,7 +599,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-cl
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Kılavuz**: Azure SQL veritabanı örneklerine erişimi kimlik doğrulaması ve denetleme için Azure ACTIVE DIRECTORY (AAD) kullanın.
+**Kılavuz**: Azure SQL veritabanı örneklerine erişimi kimlik doğrulaması ve denetlemeye yönelik Azure Active Directory (Azure AD) kullanın.
 
 Azure SQL veritabanı 'nı kimlik doğrulaması için Azure Active Directory tümleştirme:
 
@@ -655,15 +655,15 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: otomatikleştirilmiş güvenlik açığı tarama araçlarını çalıştırma
 
-**Kılavuz**: Azure SQL veritabanı Için gelişmiş veri güvenliğini etkinleştirin ve sunucularınızda güvenlik açığı değerlendirmelerinin gerçekleştirilmesi Için Azure Güvenlik Merkezi 'ndeki önerileri izleyin.
+**Kılavuz**: Azure IÇIN Azure SQL veritabanı Için Azure Defender 'ı etkinleştirin ve sunucularınızda güvenlik açığı değerlendirmesi gerçekleştirerek Azure Güvenlik Merkezi 'nden öneriler uygulayın.
 
 Azure SQL veritabanı 'nda güvenlik açığı değerlendirmeleri nasıl çalıştırılır:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
-Gelişmiş veri güvenliğini etkinleştirme:
+SQL için Azure Defender 'ı etkinleştirme:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama:
 
@@ -993,7 +993,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: kimlikleri güvenli ve otomatik olarak yönetme
 
-**Rehberlik**: Azure ACTIVE DIRECTORY (AAD) ' de otomatik olarak yönetilen kimlik ile Azure hizmetleri sağlamak Için Yönetilen kimlikler kullanın. Yönetilen kimlikler, kodunuzda kimlik bilgileri olmadan Azure Key Vault dahil olmak üzere AAD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmanıza olanak sağlar.
+**Rehberlik**: Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen bir kimlik ile Azure hizmetleri sağlamak Için Yönetilen kimlikler kullanın. Yönetilen kimlikler, kodunuzda kimlik bilgileri olmadan Azure Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmanıza olanak sağlar.
 
 Öğretici: Azure SQL 'e erişmek için Windows VM sistem tarafından atanan bir yönetilen kimlik kullanın:
 

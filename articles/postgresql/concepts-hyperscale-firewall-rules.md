@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 127840738d8fb8db00a7efc0b0d8fe393138488d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 559c5eca6fa8a6eceb37ade003d4f1983c0a1a1b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580919"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902087"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları-hiper ölçek (Citus)
 PostgreSQL için Azure veritabanı sunucu güvenlik duvarı, hangi bilgisayarların izne sahip olduğunu belirtene kadar Hyperscale (Citus) düzenleyici düğümüne tüm erişimi engeller. Güvenlik Duvarı, her isteğin kaynak IP adresini temel alarak sunucuya erişim izni verir.
@@ -24,7 +24,7 @@ Güvenlik duvarınızı yapılandırmak için kabul edilebilir IP adreslerinin a
 Koordinatör düğümünüz için tüm veritabanı erişimi, güvenlik duvarı tarafından varsayılan olarak engellenir. Sunucunuzu başka bir bilgisayardan kullanmaya başlamak için, sunucunuza erişimi etkinleştirmek üzere bir veya daha fazla sunucu düzeyi güvenlik duvarı kuralı belirtmeniz gerekir. Internet 'ten izin verilecek IP adresi aralıklarını belirtmek için güvenlik duvarı kurallarını kullanın. Azure portal web sitesinin kendisi için erişim, güvenlik duvarı kurallarından etkilenmez.
 Internet 'ten ve Azure 'dan gelen bağlantı girişimleri, aşağıdaki diyagramda gösterildiği gibi ilk olarak, PostgreSQL veritabanınıza ulaşabilmesi için önce güvenlik duvarından geçmesi gerekir:
 
-![Güvenlik duvarının nasıl çalıştığına ilişkin örnek akış](media/concepts-hyperscale-firewall-rules/1-firewall-concept.png)
+:::image type="content" source="media/concepts-hyperscale-firewall-rules/1-firewall-concept.png" alt-text="Güvenlik duvarının nasıl çalıştığına ilişkin örnek akış":::
 
 ## <a name="connecting-from-the-internet-and-from-azure"></a>Internet 'ten ve Azure 'dan bağlanma
 

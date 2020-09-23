@@ -1,14 +1,14 @@
 ---
 title: DOD etkisi düzey 5 şema örneği
 description: '\ Print yapıt parametresi ayrıntıları dahil DOD etkisi düzeyi 5 şema örneği için adımları dağıtın.'
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 9267ed0de35107b8f6582d852ab925b4dbbbdba4
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: deb6ffa0f886cc6a4a9bea10a38d7cd82e7df8f1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85802685"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978230"
 ---
 # <a name="deploy-the-dod-impact-level-5-blueprint-sample"></a>DOD etkisi düzeyi 5 şema örneğini dağıtma
 

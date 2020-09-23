@@ -7,24 +7,25 @@ author: dylankil
 manager: guillasi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-javascript
 ms.author: dylankil
-ms.openlocfilehash: 63a7e7756eee80b8d57c168890ba3613bbd11f01
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 572bd35a916ed97ab0c846e2b8d561bd27b145cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602271"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978317"
 ---
-[Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
+[Modern okuyucu](https://www.onenote.com/learningtools) , yeni okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştirmek üzere kanıtlanmış teknikler uygulayan, benzer şekilde tasarlanmış bir araçtır. Uygulamalarınızı odaklamak üzere metin yalıtmak, yaygın olarak kullanılan sözcüklerin resimlerini göstermek, konuşma parçalarını vurgulamak, seçili metni sesli okumak, sözcükleri ve tümceleri gerçek zamanlı olarak çevirmek ve daha fazlasını yapmak için uygulamalarınızda modern okuyucu kullanabilirsiniz.
 
 Bu hızlı başlangıçta, sıfırdan bir Android uygulaması oluşturup tam ekran okuyucuyu tümleştirin. Bu hızlı başlangıçta tam çalışma örneği [GitHub ' da](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android)kullanılabilir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](../../how-to-create-immersive-reader.md) izleyin. Ortam özelliklerini yapılandırırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 * [Git](https://git-scm.com/).
 * [Modern Okuyucu SDK 'sı](https://github.com/microsoft/immersive-reader-sdk).
@@ -34,27 +35,27 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Android Studio yeni bir proje başlatın. Bu örnek için kaynak kodu, [tam ekran okuyucu SDK 'sının](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android)bir parçası olarak kullanılabilir.
 
-![Yeni proje](../../media/android/java/android-studio-create-project.png)
+![Yeni proje-Android](../../media/android/java/android-studio-create-project.png)
 
 **Projeyi seçin** penceresinde **boş etkinlik**' i seçin ve ardından **İleri**' yi seçin.
 
-![Boş etkinlik projesi](../../media/android/java/android-studio-empty-activity.png)
+![Boş etkinlik projesi-Android](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Projeyi yapılandırma
 
 Projeyi **Quickstartjava**olarak adlandırın ve kaydedilecek bir konum seçin. Programlama dili olarak **Java** ' yı seçin ve ardından **son**' u seçin.
 
-![Projeyi yapılandırma](../../media/android/java/android-studio-configure-project.png)
+![Projeyi yapılandırma-Android](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Varlıkları ve kimlik doğrulamasını ayarlama
 
 Yeni bir **/varlıklar** klasörü oluşturun.
 
-![Yeni varlıklar klasörü oluştur](../../media/android/java/android-studio-assets-folder.png)
+![Yeni varlıklar klasörü oluşturma-Android](../../media/android/java/android-studio-assets-folder.png)
 
  Varlıklar klasörünün içinde **env** adlı bir dosya oluşturun. Aşağıdaki adları ve değerleri ekleyin ve değerleri uygun şekilde sağlayın. Ortak yapılmaması gereken gizli dizileri içerdiğinden, bu env dosyasını kaynak denetimine teslim etmeyin.
 
-![Yeni bir env dosyası oluşturma](../../media/android/java/android-studio-create-env-file.png)
+![Yeni bir env dosyası oluşturma-Android](../../media/android/java/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -81,13 +82,13 @@ dependencies {
 }
 ```
 
-![App Gradle uygulamaları](../../media/android/java/android-studio-build-gradle.png)
+![App Gradle uygulamaları-Android](../../media/android/java/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>Uygulama dizelerini ve düzen kaynaklarını Güncelleştir
 
 **Res/Strings/strings.xml** içindeki içeriği uygulamada kullanılacak aşağıdaki dizelerle değiştirin.
 
-![Uygulama strings.xml](../../media/android/java/android-studio-strings.png)
+![Uygulama strings.xml-Android](../../media/android/java/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -97,7 +98,7 @@ dependencies {
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -105,7 +106,7 @@ dependencies {
 
 **Res/Layout/activity_main.xml** içindeki içeriği uygulamada kullanılacak aşağıdaki XML ile değiştirin. Bu XML, uygulamanın kullanıcı arabirimi yerleşimidir.
 
-![Uygulama activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
+![Uygulama activity_main.xml-Android](../../media/android/java/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -206,9 +207,9 @@ dependencies {
 
 **Res/Layout/** klasöründe yeni bir düzen kaynak dosyası oluşturun ve **activity_immersive_reader**adlandırın. Ardından içeriğini aşağıdaki XML ile değiştirin. Bu XML, sonraki bir adımda oluşturulacak ıractivity Java kodu tarafından kullanılacak WebView bileşenini ekler. Şimdilik, tanımsız ve hatalara neden olacak.
 
-![Yeni düzen kaynak dosyası oluştur](../../media/android/java/android-studio-new-layout-resource.png)
+![Yeni düzen kaynak dosyası oluşturma-Android](../../media/android/java/android-studio-new-layout-resource.png)
 
-![Yeni düzen kaynağını yapılandırma](../../media/android/java/android-studio-activity-immersive-reader.png)
+![Yeni düzen kaynağını yapılandırma-Android](../../media/android/java/android-studio-activity-immersive-reader.png)
 
 ```activity_immersive_reader.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -235,7 +236,7 @@ dependencies {
 
 **/Java/com.example.quickstartjava** klasöründe, var olan bir **MainActivity. Java** Java sınıf dosyası görürsünüz. Bu klasör, uygulama mantığının yazıldığı yerdir.
 
-![MainActivity](../../media/android/java/android-studio-main-activity-java.png)
+![MainActivity-Android](../../media/android/java/android-studio-main-activity-java.png)
 
 **MainActivity. Java** içeriğini aşağıdaki kodla değiştirin. Henüz mevcut olmayan ve daha sonra oluşturulacak kodda başvurulan birkaç sınıf vardır.
 
@@ -292,7 +293,7 @@ public class MainActivity extends Activity {
 
 Yeni bir **ImmersiveReader. Java** Java sınıf dosyası oluşturmak için, Android Studio klasörü üzerinde sağ tıklayın, **Yeni**' yi seçin ve ardından **Java sınıfı**' nı seçin. Bu yöntemi, oluşturduğunuz her yeni Java sınıfı dosyası için Java sınıf dosyaları oluşturmak üzere kullanacaksınız.
 
-![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
+![ImmersiveReader-Android](../../media/android/java/android-studio-immersivereader-java.png)
 
 **ImmersiveReader. Java** içeriğini şu kodla değiştirin:
 
@@ -376,7 +377,7 @@ public class ImmersiveReader {
 
 Yeni bir **ıractivity. Java** Java sınıf dosyası oluşturun.
 
-![Iractivity](../../media/android/java/android-studio-iractivity-java.png)
+![Iractivity-Android](../../media/android/java/android-studio-iractivity-java.png)
 
 **Iractivity. Java** içeriğini şu kodla değiştirin:
 
@@ -460,7 +461,7 @@ public class ImmersiveReader {
 
 Yeni bir **ırerror. Java** Java sınıf dosyası oluşturun.
 
-![Irerror](../../media/android/java/android-studio-irerror-java.png)
+![Irerror-Android](../../media/android/java/android-studio-irerror-java.png)
 
 **IError. Java** içeriğini şu kodla değiştirin:
 
@@ -539,7 +540,7 @@ public class IRError implements Parcelable {
 
 Yeni bir **Error. Java** Java sınıf dosyası oluşturun.
 
-![Hata](../../media/android/java/android-studio-error-java.png)
+![Hata-Android](../../media/android/java/android-studio-error-java.png)
 
 **Error. Java** içeriğini aşağıdaki kodla değiştirin:
 
@@ -570,7 +571,7 @@ public class Error {
 
 Yeni bir **Readablecontent. Java** Java sınıf dosyası oluşturun.
 
-![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
+![ReadableContent-Android](../../media/android/java/android-studio-readablecontent-java.png)
 
 **Readablecontent. Java** içeriğini şu kodla değiştirin:
 
@@ -614,7 +615,7 @@ public class ReadableContent {
 
 Yeni bir **ReadableTextChunk. Java** Java sınıf dosyası oluşturun.
 
-![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
+![ReadableTextChunk-Android](../../media/android/java/android-studio-readabletextchunk-java.png)
 
 **ReadableTextChunk. Java** içeriğini şu kodla değiştirin:
 
@@ -646,7 +647,7 @@ public class ReadableTextChunk {
 
 Yeni bir **ırdataş. Java** Java sınıf dosyası oluşturun.
 
-![Irdataş](../../media/android/java/android-studio-irdataholder-java.png)
+![Irdataş-Android](../../media/android/java/android-studio-irdataholder-java.png)
 
 **Irdataş. Java** içeriğini şu kodla değiştirin:
 
@@ -711,7 +712,7 @@ public class IRDataHolder {
 
 Yeni bir **Irak kimlik doğrulayıcısının. Java** Java sınıf dosyası oluşturun.
 
-![Irak kimlik doğrulayıcısının](../../media/android/java/android-studio-irauthenticator-java.png)
+![Irak kimlik doğrulayıcısının-Android](../../media/android/java/android-studio-irauthenticator-java.png)
 
 Irak ıkimlik **doğrulayıcısının. Java** içeriğini şu kodla değiştirin:
 
@@ -822,7 +823,7 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
 
 Yeni bir **ırlauncher. Java** Java sınıfı dosyası oluşturun.
 
-![Irlauncher](../../media/android/java/android-studio-irlauncher-java.png)
+![Irlauncher-Android](../../media/android/java/android-studio-irlauncher-java.png)
 
 **Irlauncher. Java** içeriğini şu kodla değiştirin:
 
@@ -1015,7 +1016,7 @@ public class IRLauncher {
 
 Yeni bir **ırstore. Java** Java sınıf dosyası oluşturun.
 
-![Irstore](../../media/android/java/android-studio-irstore-java.png)
+![Irstore-Android](../../media/android/java/android-studio-irstore-java.png)
 
 **Irstore. Java** içeriğini şu kodla değiştirin:
 
@@ -1097,7 +1098,7 @@ public class AuthenticationTask extends AsyncTask<Void, Void, String> {
 
 Yeni bir **öbek. Java** Java sınıf dosyası oluşturun.
 
-![Öbek](../../media/android/java/android-studio-chunk-java.png)
+![Öbek-Android](../../media/android/java/android-studio-chunk-java.png)
 
 **Öbek. Java** içeriğini şu kodla değiştirin:
 
@@ -1134,7 +1135,7 @@ public class Chunk {
 
 Yeni bir **Content. Java** Java sınıf dosyası oluşturun.
 
-![İçerik](../../media/android/java/android-studio-content-java.png)
+![İçerik-Android](../../media/android/java/android-studio-content-java.png)
 
 **Content. Java** içeriğini şu kodla değiştirin:
 
@@ -1170,7 +1171,7 @@ public class Content {
 
 Yeni bir **Options. Java** Java sınıf dosyası oluşturun.
 
-![Seçenekler](../../media/android/java/android-studio-options-java.png)
+![Seçenekler-Android](../../media/android/java/android-studio-options-java.png)
 
 **Options. Java** içeriğini aşağıdaki kodla değiştirin:
 
@@ -1204,7 +1205,7 @@ public class Options {
 
 Yeni bir **Message. Java** Java sınıf dosyası oluşturun.
 
-![İleti](../../media/android/java/android-studio-message-java.png)
+![İleti-Android](../../media/android/java/android-studio-message-java.png)
 
 **Message. Java** içeriğini şu kodla değiştirin:
 
@@ -1242,7 +1243,7 @@ public class Message {
 
 Yeni bir **Webappınterface. Java** Java sınıf dosyası oluşturun.
 
-![Webappınterface](../../media/android/java/android-studio-webappinterface-java.png)
+![Webappınterface-Android](../../media/android/java/android-studio-webappinterface-java.png)
 
 **Webappınterface. Java** içeriğini şu kodla değiştirin:
 
@@ -1293,9 +1294,9 @@ public class WebAppInterface {
 
 Web görünümü uygulamasının çalışması için HTML gerekir. **/Varlıklar** klasörüne sağ tıklayın, yeni bir dosya oluşturun ve **immersiveReader.html**olarak adlandırın.
 
-![Yeni bir HTML dosyası oluştur](../../media/android/java/android-studio-immersive-reader-html.png)
+![Yeni bir HTML dosyası oluşturma-Android](../../media/android/java/android-studio-immersive-reader-html.png)
 
-![HTML varlık konumu](../../media/android/java/android-studio-immersive-reader-html-assets.png)
+![HTML varlık konumu-Android](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
 Aşağıdaki HTML ve JavaScript 'ı ekleyin. Bu kod, modern Okuyucu SDK 'sını uygulamaya ekler ve yazdığımız uygulama kodunu kullanarak tam ekran okuyucuyu açmak için kullanır.
 
@@ -1352,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>Uygulama izinlerini ayarlama
 
-![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
+![AndroidManifest-Android](../../media/android/java/android-studio-android-manifest-xml.png)
 
 Uygulamanın çalışması için tam ekran okuyucu SDK 'sına ağ çağrıları yapması gerektiğinden, uygulama izinlerinin ağ erişimine izin verecek şekilde yapılandırıldığından emin olunması gerekir. **/Manifests/AndroidManifest.xml** IÇERIĞINI aşağıdaki XML ile değiştirin:
 
@@ -1389,7 +1390,7 @@ Uygulamanın çalışması için tam ekran okuyucu SDK 'sına ağ çağrıları 
 
 Uygulamayı bir cihaz öykünücüsünde çalıştırmak için Android Studio kullanın. **Tam ekran okuyucu**' u seçtiğinizde, modern okuyucu uygulamadaki içerikle açılır.
 
-![Tam Ekran Okuyucu](../../media/android/java/android-studio-device-emulator.png)
+![Modern Okuyucu-Android](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

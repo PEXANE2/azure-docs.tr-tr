@@ -5,15 +5,16 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 09/24/2019
-ms.openlocfilehash: 5d97f7b976ef1dfcf0493a8bef6ddcdd2cd63960
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/22/2020
+ms.openlocfilehash: f86c2f9500f7512c6ba3337b6fac2839bbd91976
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116378"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901471"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Dışarı aktarma ve içeri aktarma kullanarak PostgreSQL veritabanınızı geçirme
+[!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
 Bir PostgreSQL veritabanını bir betik dosyasına ve [psql](https://www.postgresql.org/docs/current/static/app-psql.html) ' i bu dosyadaki hedef veritabanına aktarmak üzere bir komut dosyası dosyasına ayıklamak için [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -26,6 +27,7 @@ PostgreSQL veritabanınızı dışa ve içe aktarmak için aşağıdaki adımlar
 
 ## <a name="create-a-script-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Yüklenecek verileri içeren pg_dump kullanarak bir betik dosyası oluşturma
 Mevcut PostgreSQL veritabanınızı şirket içinde veya bir VM 'de bir SQL betik dosyasına aktarmak için, mevcut ortamınızda aşağıdaki komutu çalıştırın:
+
 ```bash
 pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<database>.sql
 ```
@@ -36,14 +38,24 @@ pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sq
 
 ## <a name="import-the-data-on-target-azure-database-for-postgresql"></a>Hedef PostgreSQL için Azure veritabanı 'ndaki verileri içeri aktarın
 PostgreSQL için Azure veritabanı sunucusuna verileri içeri aktarmak ve SQL dosyasından verileri yüklemek için psql komut satırını ve--dbname parametresini (-d) kullanabilirsiniz.
+
 ```bash
-psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
+psql --file=<database>.sql --host=<server name> --port=5432 --username=<user> --dbname=<target database name>
 ```
 Bu örnek, **mydemoserver.Postgres.Database.Azure.com**hedef sunucuda **mypgsqldb** veritabanına veri aktarmak için psql yardımcı programını ve önceki adımdan **TestDB. SQL** adlı bir betik dosyasını kullanır.
+
+**Tek sunucu**için bu komutu kullanın 
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb
 ```
 
+**Esnek sunucu**için bu komutu kullanın  
+```bash
+psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin --dbname=mypgsqldb
+```
+
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 - Döküm ve geri yükleme kullanarak bir PostgreSQL veritabanını geçirmek için bkz. [döküm ve geri yükleme kullanarak PostgreSQL veritabanınızı geçirme](howto-migrate-using-dump-and-restore.md).
-- Veritabanını PostgreSQL için Azure veritabanı 'na geçirme hakkında daha fazla bilgi için bkz. [veritabanı geçiş kılavuzu](https://aka.ms/datamigration). 
+- Veritabanını PostgreSQL için Azure veritabanı 'na geçirme hakkında daha fazla bilgi için bkz. [veritabanı geçiş kılavuzu](https://aka.ms/datamigration).
