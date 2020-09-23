@@ -4,15 +4,16 @@ description: Bu makalede, Azure Spring Cloud hakkında sık sorulan sorular yan�
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322050"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888719"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -61,9 +62,11 @@ Azure Spring Cloud ile ilgili herhangi bir sorunla karşılaşırsanız bir [Azu
 
 Azure Spring Cloud ile çalışmaya başlamanın en hızlı yolu için [hızlı başlangıç: Azure Portal kullanarak bir Azure Spring Cloud uygulaması başlatma](spring-cloud-quickstart.md)' daki yönergeleri izleyin.
 
+::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure yay bulutu hangi Java çalışma zamanına destekler?
 
 Azure yay bulutu, Java 8 ve 11 ' i destekler. Bkz. [Java çalışma zamanı ve işletim sistemi sürümleri](#java-runtime-and-os-versions)
+::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Yay bulutu uygulama Günlüklerimi ve ölçümlerini nereden görüntüleyebilirim?
 
@@ -75,12 +78,14 @@ Azure Spring Cloud, Azure depolama, EventHub ve [Log Analytics](https://docs.mic
 
 Evet. Daha fazla bilgi için bkz. [öğretici: Azure Spring Cloud Ile dağıtılmış Izleme kullanma](spring-cloud-tutorial-distributed-tracing.md).
 
+::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>Hizmet bağlama hangi kaynak türlerini destekler?
 
 Şu anda üç hizmet desteklenmektedir:
 * Azure Cosmos DB
 * MySQL için Azure Veritabanı
 * Redsıs için Azure önbelleği.
+::: zone-end
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Uygulamalarım içinden kalıcı birimleri görüntüleyebilir, ekleyebilir veya taşıyabilir miyim?
 
@@ -96,6 +101,7 @@ Azure CLı kullanarak Spring Cloud 'ın tanılama ayarlarını silebilirsiniz:
  az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
 ```
 
+::: zone pivot="programming-language-java"
 ## <a name="java-runtime-and-os-versions"></a>Java çalışma zamanı ve işletim sistemi sürümleri
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure Spring Cloud 'da hangi Java çalışma zamanı sürümleri desteklenir?
@@ -136,10 +142,11 @@ Azure desteği ile bir destek bileti açabilirsiniz.  Bkz. [Azure destek isteği
 
 En son Ubuntu LTS sürümü kullanılır; Şu anda [ubuntu 20,04 LTS (odak)](https://releases.ubuntu.com/focal/) varsayılan işletim sistemi.
 
-### <a name="how-often-will-os-security-patches-be-applied"></a>İşletim sistemi güvenlik düzeltme eklerinin ne sıklıkta uygulanması gerekir?
+### <a name="how-often-are-os-security-patches-applied"></a>İşletim sistemi güvenlik düzeltme ekleri ne sıklıkta uygulandı?
 
-Azure Spring Cloud için geçerli olan güvenlik düzeltme ekleri, aylık olarak üretime alınacaktır.
+Azure Spring Cloud için geçerli olan güvenlik düzeltme ekleri üretime aylık olarak dağıtılır.
 Azure Spring Cloud için geçerli olan kritik güvenlik düzeltme ekleri (CVE puanı >= 9), mümkün olan en kısa sürede kullanıma sunulacaktır.
+::: zone-end
 
 ## <a name="deployment"></a>Dağıtım
 
@@ -158,6 +165,7 @@ Evet. Daha fazla bilgi için bkz. [Spring Cloud uygulamanızı kaynak koddan ba�
 
 Hayır.
 
+::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Mevcut yay bulutu mikro hizmetlerini Azure Spring Cloud 'a geçirmek için en iyi uygulamalar nelerdir?
 
 Mevcut yay bulutu mikro hizmetlerini Azure Spring buluta geçirirken, aşağıdaki en iyi yöntemleri gözlemlemek iyi bir fikirdir:
@@ -168,8 +176,22 @@ Mevcut yay bulutu mikro hizmetlerini Azure Spring buluta geçirirken, aşağıda
 * Resmi, kararlı özette yay kitaplıklarını kullanmanızı öneririz. Özet Ilkelerin kitaplıklarının resmi olmayan, beta veya çatallı sürümlerinin hizmet düzeyi anlaşması (SLA) desteği yoktur.
 
 Geçişten sonra, uygulama örneklerinin uygun şekilde ölçeklendirdiğinden emin olmak için CPU/RAM ölçümleri ve ağ trafiğinizi izleyin.
+::: zone-end
 
-## <a name="trouble-shooting"></a>Sorun giderme
+::: zone pivot="programming-language-csharp"
+## <a name="net-core-versions"></a>.NET Core sürümleri
+
+### <a name="which-net-core-versions-are-supported"></a>Hangi .NET Core sürümleri destekleniyor?
+
+.NET Core 3,1 ve sonraki sürümleri.
+
+### <a name="how-long-will-net-core-31-be-supported"></a>.NET Core 3,1 ne kadar desteklenecek?
+
+3 Aralık 2022 ' a kadar. Bkz. [.NET Core destek ilkesi](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+::: zone-end
+
+
+## <a name="troubleshooting"></a>Sorun giderme
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Hizmet kayıt defterinin etkileri nadiren kullanılamıyor mu?
 

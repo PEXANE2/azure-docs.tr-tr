@@ -1,6 +1,6 @@
 ---
-title: Konuma göre Microsoft Azure Stack Edge güç kablosu teknik belirtimleri | Microsoft Docs
-description: Azure Stack Edge güç larınızın teknik belirtimleri hakkında bilgi edinin.
+title: Konum temelinde Microsoft Azure Stack Edge Pro güç kablosu teknik belirtimleri | Microsoft Docs
+description: Azure Stack Edge Pro güç larınızın teknik özellikleri hakkında bilgi edinin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 34f5b578581c5a11b3dbfba76f68819c2ed706d0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 76d8c84fd1dd403c88e8261cf49e3620f3a6ec14
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055937"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903618"
 ---
-# <a name="azure-stack-edge-power-cord-specifications"></a>Azure Stack Edge güç kablosu belirtimleri
+# <a name="azure-stack-edge-pro-power-cord-specifications"></a>Azure Stack Edge Pro güç kablosu belirtimleri
 
-Azure Stack Edge cihazınız, Azure bölgenize göre değişiklik gösteren bir güç kablosu gerekecektir.
+Azure Stack Edge Pro cihazınız, Azure bölgenize göre değişiklik gösteren bir güç kablosu gerekecektir.
 
 ## <a name="supported-power-cords"></a>Desteklenen güç kablosu
 
@@ -158,4 +158,4 @@ Bölgenize yönelik doğru kablo belirtimlerini bulmak için aşağıdaki tabloy
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack Edge teknik özellikleri](data-box-edge-technical-specifications-compliance.md)
+[Azure Stack Edge Pro Teknik özellikleri](data-box-edge-technical-specifications-compliance.md)

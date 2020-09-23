@@ -6,23 +6,24 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/30/2020
+ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 1a46cba6e3b74a2f8d4b63ab631830569c521291
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 6f1c016efb300dea2cdef91c84bb901cffd09fa0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246287"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025180"
 ---
 .NET için anomali algılayıcı istemci kitaplığını kullanmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Anomali algılayıcı hizmeti, sektör, senaryo veya veri hacminin ne olursa olsun, üzerinde en iyi şekilde sığdırma modellerini kullanarak zaman serisi verilerinizde yer alan anormallikleri bulmanıza olanak sağlar.
 
 .NET için anomali algılayıcı istemci kitaplığını kullanarak şunları yapın:
 
-* Toplu istek olarak zaman serisi veri kümeniz genelinde anomali algılama
+* Bir toplu istek olarak zaman serisi veri kümesi genelinde anomali algılama
 * Zaman serinizdeki en son veri noktasının anomali durumunu Algıla
+* Veri kümesindeki eğilim değişiklik noktalarını tespit edin.
 
-[Kitaplık başvuru belgeleri](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/)  |  [GitHub 'da kodu bulma](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
+[Kitaplık başvuru belgeleri](https://aka.ms/anomaly-detector-dotnet-ref)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2)  |  [GitHub 'da kodu bulma](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -65,7 +66,7 @@ Build succeeded.
 Uygulama dizini içinde, aşağıdaki komutla .NET için anomali algılayıcı istemci Kitaplığı ' nı bir daha yükleyeceksiniz:
 
 ```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0.8.0-preview
+dotnet add package Azure.AI.AnomalyDetector --version 3.0.0-preview.2
 ```
 
 Proje dizininden *program.cs* dosyasını açın ve aşağıdakileri kullanarak aşağıdakileri ekleyin `directives` :
@@ -78,11 +79,11 @@ Uygulamanın `main()` yönteminde, kaynağınızın Azure konumu ve anahtarını
 
 ## <a name="object-model"></a>Nesne modeli
 
-Anomali algılayıcı istemcisi, anahtarınızı içeren [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials)kullanarak Azure 'da kimlik doğrulaması yapan bir [anorivtorclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) nesnesidir. İstemci, iki anomali algılama yöntemi sağlar: [Entiredetectasync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync)kullanan tüm veri kümelerinde ve [lastdetectasync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync)kullanan en son veri noktasında.
+Anomali algılayıcı istemcisi, anahtarınızı içeren [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials)kullanarak Azure 'da kimlik doğrulaması yapan bir [anorivtorclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) nesnesidir. İstemci, [Entiredetectasync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync)kullanarak bir veri kümesinin tamamında veya [lastdetectasync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync)kullanan en son veri noktasında anomali algılama yapabilir. [Changepointdetectasync](https://aka.ms/anomaly-detector-dotnet-ref) yöntemi, bir eğilim içindeki değişiklikleri işaretleyen noktaları algılar.
 
 Zaman serisi verileri, [istek](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request) nesnesinde bir dizi [işaret](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) olarak gönderilir. `Request`Nesnesi, verileri (örneğin,[ayrıntı düzeyi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity) ) ve anomali algılama parametrelerini tanımlayacak özellikler içerir.
 
-Anomali algılayıcısı yanıtı, kullanılan yönteme bağlı olarak bir [Entiredetectresponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse) veya [lastdetectresponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse) nesnesidir.
+Anomali algılayıcısı yanıtı, kullanılan yönteme bağlı olarak bir [Entiredetectresponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse), [lastdetectresponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse)veya [changepointdetectresponse](https://aka.ms/anomaly-detector-dotnet-ref) nesnesidir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -92,6 +93,7 @@ Bu kod parçacıkları, .NET için anomali algılayıcı istemci kitaplığı il
 * [Bir dosyadan zaman serisi veri kümesi yükleme](#load-time-series-data-from-a-file)
 * [Tüm veri kümesindeki anormallikleri Algıla](#detect-anomalies-in-the-entire-data-set)
 * [En son veri noktasının anomali durumunu Algıla](#detect-the-anomaly-status-of-the-latest-data-point)
+* [Veri kümesindeki değişiklik noktalarını Algıla](#detect-change-points-in-the-data-set)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
@@ -125,6 +127,12 @@ Bir `Request` nesneyi işaret dizisine ve `Granularity.Daily` veri noktalarını
 İstemcinin [Lastdetectasync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_LastDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) yöntemini `Request` nesnesiyle çağırmak ve yanıtı bir [lastdetectresponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-dotnet-preview) nesnesi olarak beklemek için bir yöntem oluşturun. Gönderilen en son veri noktasının bir anomali olup olmadığını öğrenmek için yanıtın [IsAnomaly](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse.isanomaly?view=azure-dotnet-preview) özniteliğini denetleyin.
 
 [!code-csharp[LastDetectSampleAsync() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=latestPointExample)]
+
+## <a name="detect-change-points-in-the-data-set"></a>Veri kümesindeki değişiklik noktalarını Algıla
+
+İstemcinin [Detectchangepointasync](https://aka.ms/anomaly-detector-dotnet-ref) metodunu `Request` nesnesiyle çağırmak ve yanıtı [changepointdetectresponse](https://aka.ms/anomaly-detector-dotnet-ref) nesnesi olarak beklemek için bir yöntem oluşturun. Yanıtın ıschangepoint değerlerini denetleyin ve bunları yazdırın `true` . Bu değerler, varsa eğilim değişiklik noktalarına karşılık gelir.
+
+[!code-csharp[DetectChangePoint() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=changePointExample)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 

@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: af4353e5b0991f7ce2f6fe8ff940e916717b0579
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 130e23c290ce493d3fb92f6dd0be4cd7c61a86fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650476"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888054"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Azure SQL Edge kullanımı ve tanılama veri yapılandırması
 
@@ -61,6 +61,9 @@ group by data_source_type
 
 Azure SQL Edge 'de kullanım ve tanılama veri toplama, aşağıdaki yöntemlerden biri kullanılarak devre dışı bırakılabilir.
 
+> [!NOTE]
+> Geliştirici sürümü için kullanım ve Tanılama verileri devre dışı bırakılamaz.
+
 ### <a name="disable-usage-and-diagnostics-using-environment-variables"></a>Ortam değişkenlerini kullanarak kullanımı ve tanılamayı devre dışı bırakma
 
 Azure SQL Edge 'de kullanım ve tanılama veri toplamayı devre dışı bırakmak için aşağıdaki ortam değişkenini ekleyin ve değerini olarak ayarlayın `*False*` . Ortam değişkenlerini kullanarak Azure SQL Edge 'i yapılandırma hakkında daha fazla bilgi için bkz. [ortam değişkenlerini kullanarak yapılandırma](configure.md#configure-by-using-environment-variables).
@@ -68,7 +71,7 @@ Azure SQL Edge 'de kullanım ve tanılama veri toplamayı devre dışı bırakma
 `MSSQL_TELEMETRY_ENABLED = TRUE | FALSE`
 
 - TRUE-kullanım ve tanılama verilerinin toplanmasını mümkün. Bu, varsayılan yapılandırmadır.
-- FALSE-kullanım ve tanılama verilerinin toplanmasını devre dışı bırakır
+- FALSE-kullanım ve tanılama verilerinin toplanmasını devre dışı bırakır.
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>MSSQL. conf dosyasını kullanarak kullanımı ve tanılamayı devre dışı bırakma
 

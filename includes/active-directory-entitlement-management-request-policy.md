@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 12c9b1226e3ba928a4062049c7839d4e46ef727d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156733"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024824"
 ---
 ## <a name="for-users-in-your-directory"></a>Dizininizdeki kullanıcılar için
 
@@ -207,3 +207,33 @@ Kişiler veya kişi gruplarını onaylayan ve alternatif onaylayanlar olacak şe
     ![Erişim paketi-Ilke-ilke ayarını etkinleştir](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. **İleri**’ye tıklayın.
+
+## <a name="add-requestor-information-preview-to-an-access-package"></a>Bir erişim paketine Istek sahibi bilgilerini (Önizleme) ekleme
+
+1. **Istek sahibi bilgileri** sekmesine gidin ve **sorular** alt sekmesine tıklayın.
+ 
+1. **Soru** kutusundaki soru için, istek sahibine, görüntüleme dizesi olarak da bilinen olarak da bilinen yazın.
+
+    ![Erişim paketi-Ilke-Istek sahibi bilgilerini etkinleştir ayarı](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
+
+1. Kendi yerelleştirme seçeneklerinizi eklemek isterseniz, **Yerelleştirme Ekle**' ye tıklayın.
+    1. **Soru için yerelleştirmeler Ekle** bölmesinde, soruyu yerelleştirçalıştığınız dilin **dil kodunu** seçin.
+    1. Yapılandırdığınız dilde soruyu **yerelleştirilmiş metin** kutusuna yazın.
+    1. Gerekli tüm yerelleştirmeleri ekledikten sonra **Kaydet**' e tıklayın.
+
+    ![Erişim paketi-Ilke-yerelleştirilmiş metni yapılandırın](./media/active-directory-entitlement-management-request-policy/add-localization-question.png)
+
+1. İstek sahipleri 'ın yanıtlamasını istediğiniz **Yanıt biçimini** seçin. Yanıt biçimleri şunlardır: *kısa metin*, *Çoklu seçim*ve *uzun metin*.
+ 
+    ![Erişim paketi-Ilke-birden çok seçim yanıtı biçimini görüntüle ve Düzenle ' yi seçin](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
+ 
+1. Birden çok seçim seçilirse, yanıt seçeneklerini yapılandırmak için **görüntüle ve Düzenle** düğmesine tıklayın.
+    1. Görüntüleme ve düzenleme sorusunu seçtikten sonra, **görünüm/düzenleme sorusu** bölmesini açar.
+    1. **Yanıt değerleri** kutularında soruyu yanıtlarken istek sahibine vermek istediğiniz yanıt seçeneklerini yazın.
+    1. İhtiyaç duyduğunuz sayıda yanıtı yazın ve **Kaydet**' e tıklayın.
+    
+    ![Erişim paketi-Ilke-birden çok seçim seçeneği girin](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
+  
+1. Bir erişim paketine erişim isteğinde bulunmalarını talep etmek için **gerekli**onay kutusuna tıklayın.
+
+1. İleri’ye tıklayın

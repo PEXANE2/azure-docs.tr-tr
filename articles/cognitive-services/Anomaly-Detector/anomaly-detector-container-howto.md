@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0ae3b66d8093c0498011d9f93cd8d869b85f9003
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530718"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903545"
 ---
-# <a name="install-and-run-anomaly-detector-containers-preview"></a>Anomali algılayıcı kapsayıcılarını (Önizleme) yükleyip çalıştırın
+# <a name="install-and-run-anomaly-detector-containers"></a>Anomali Algılayıcısı kapsayıcılarını yükleme ve çalıştırma 
+
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
 Anomali Algılayıcısı'nın aşağıdaki kapsayıcı özelliği işlevselliği vardır:
 
 | İşlev | Özellikler |
 |--|--|
-| Anomali algılayıcısı | <li> Gerçek zamanlı olarak gerçekleştikleri gibi bozukluklar algılar. <li> Veri kümesinin tamamında bir toplu iş olarak oluşan bozukluklar algılar. <li> Verilerinizin beklenen normal aralığını haller. <li> Verilerinize daha iyi uyum sağlamak için anomali algılama duyarlılığı ayarlamayı destekler. |
+| Anomali algılayıcısı | <li> Gerçek zamanlı olarak gerçekleştikleri gibi bozukluklar algılar. <li> Veri kümesinin tamamında bir toplu iş olarak oluşan bozukluklar algılar. <li> Veri kümesindeki eğilim değişiklik noktalarını toplu olarak algılar.<li> Verilerinizin beklenen normal aralığını haller. <li> Verilerinize daha iyi uyum sağlamak için anomali algılama duyarlılığı ayarlamayı destekler. |
 
 API 'Ler hakkında ayrıntılı bilgi için lütfen bkz:
 * [Anomali algılayıcı API hizmeti hakkında daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -67,7 +69,7 @@ Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
 
 | Kapsayıcı | Depo |
 |-----------|------------|
-| bilişsel hizmetler-anomali-algılayıcı | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
+| bilişsel hizmetler-anomali-algılayıcı | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -95,7 +97,7 @@ Komut [örnekleri](anomaly-detector-container-configuration.md#example-docker-ru
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -177,7 +179,7 @@ Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapıland
 Bu makalede, anomali algılayıcı kapsayıcılarını indirmek, yüklemek ve çalıştırmak için kavramlar ve iş akışı öğrendiniz. Özet:
 
 * Anomali algılayıcısı, Docker için bir Linux kapsayıcısı, toplu iş vs akışı, beklenen Aralık çıkarımı ve duyarlık ayarlama ile Kapsülleyici algılama sağlar.
-* Kapsayıcı görüntüleri, kapsayıcılar önizlemesi için adanmış bir özel Azure Container Registry indirilir.
+* Kapsayıcı görüntüleri, kapsayıcılar için ayrılmış özel bir Azure Container Registry indirilir.
 * Kapsayıcı görüntüleri Docker 'da çalışır.
 * Kapsayıcının ana bilgisayar URI 'sini belirterek anomali algılayıcı kapsayıcılarındaki işlemleri çağırmak için REST API veya SDK kullanabilirsiniz.
 * Bir kapsayıcıyı örnekledikten sonra faturalandırma bilgilerini belirtmeniz gerekir.

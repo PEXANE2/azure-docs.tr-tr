@@ -1,6 +1,6 @@
 ---
 title: ONNX ile tahmine dayalı hale getirin ve bu tahminleri yapın
-description: Bir modeli eğitme, ONNX 'e dönüştürme, Azure SQL Edge (Önizleme) veya Azure SQL yönetilen örneği 'ne (Önizleme) dağıtma hakkında bilgi edinin ve ardından karşıya yüklenen ONNX modelini kullanarak verileri yerel tahmın etmeye çalıştırın.
+description: Bir modeli eğitme, ONNX 'e dönüştürme, Azure SQL Edge veya Azure SQL yönetilen örneği 'ne (Önizleme) dağıtma hakkında bilgi edinin ve ardından karşıya yüklenen ONNX modelini kullanarak verileri yerel olarak tahmın edin.
 keywords: SQL Edge dağıtma
 ms.prod: sql
 ms.technology: machine-learning
@@ -8,22 +8,22 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: eeb50f682c8b3b225c6574b5276722b79465a511
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1e70b48e4c28cdc74c5079e492b0266ea60900ad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718790"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886818"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Bir ONNX modeliyle tahmine dayalı dağıtım ve dağıtım yapma
 
-Bu hızlı başlangıçta, bir modeli eğitme, ONNX 'e dönüştürme, [Azure SQL Edge (Önizleme)](onnx-overview.md) veya [Azure SQL yönetilen örneği 'ne (Önizleme)](../azure-sql/managed-instance/machine-learning-services-overview.md)dağıtma hakkında bilgi edineceksiniz ve ardından karşıya yüklenen onnx modelini kullanarak verileri yerel olarak tahmin etmeye çalışacaktır.
+Bu hızlı başlangıçta, bir modeli eğitme, ONNX 'e dönüştürme, [Azure SQL Edge](onnx-overview.md) veya [Azure SQL yönetilen örneği 'ne (Önizleme)](../azure-sql/managed-instance/machine-learning-services-overview.md)dağıtma hakkında bilgi edineceksiniz ve ardından karşıya yüklenen onnx MODELINI kullanarak verileri yerel tahmin etmeye nasıl çalıştıracağınızı öğreneceksiniz.
 
 Bu hızlı başlangıç, **scikit-** ' i öğrenin ve [Boston Muhafazası veri kümesini](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)kullanır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Azure SQL Edge kullanıyorsanız ve bir Azure SQL Edge modülü dağıtmadıysanız, [Azure Portal kullanarak SQL Edge (Önizleme) dağıtma](deploy-portal.md)adımlarını izleyin.
+* Azure SQL Edge kullanıyorsanız ve bir Azure SQL Edge modülü dağıtmadıysanız, [Azure Portal kullanarak SQL Edge dağıtma](deploy-portal.md)adımlarını izleyin.
 
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download)'i yükler.
 

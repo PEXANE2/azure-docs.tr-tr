@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f38a973611cb1ab18eead4ec51e6be91ada2cc40
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: abd1bc9b53c303d094d74683da0d6e3fad4d715f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85318650"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887478"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ONNX kullanarak Azure SQL Edge 'de ML modeli dağıtma 
 
@@ -225,4 +225,4 @@ Azure Data Studio not defterine aşağıdaki python kodunu girin ve çalıştır
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure SQL Edge 'de ONNX modellerini kullanma hakkında daha fazla bilgi için bkz. [SQL Edge 'de onnx Ile makine öğrenimi ve AI (Önizleme)](onnx-overview.md).
+Azure SQL Edge 'de ONNX modellerini kullanma hakkında daha fazla bilgi için bkz. [SQL Edge 'de onnx Ile Machine Learning ve AI](onnx-overview.md).

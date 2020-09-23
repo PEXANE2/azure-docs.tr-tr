@@ -3,34 +3,21 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/18/2020
-ms.openlocfilehash: 66bd78c94e6c54d26959778cc059730c13d02629
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 08/31/2020
+ms.openlocfilehash: 1c374429ca910afeb9972841204bd3e51dcc8306
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698543"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888321"
 ---
-Form, siz, şirketiniz ve kapsayıcısını kullanacağınız kullanıcı senaryosu hakkında bilgi ister. Formu gönderdikten sonra, Azure bilişsel hizmetler ekibi, özel kapsayıcı kayıt defterine erişim ölçütlerini karşıladığınızdan emin olmak için bunu inceler.
+Form, siz, şirketiniz ve kapsayıcısını kullanacağınız kullanıcı senaryosu hakkında bilgi ister. Formu gönderdikten sonra, Azure bilişsel hizmetler ekibi bunu gözden geçirir ve bir karar vererek size e-posta ile gönderilir.
 
 > [!IMPORTANT]
-> Formunda bir Microsoft hesabı (MSA) veya Azure Active Directory (Azure AD) hesabıyla ilişkili bir e-posta adresi kullanmanız gerekir.
+> * Formunda, bir Azure aboneliği KIMLIĞIYLE ilişkili bir e-posta adresi kullanmanız gerekir.
+> * Kapsayıcıyı çalıştırmak için kullandığınız Azure kaynağının, onaylanan Azure abonelik KIMLIĞIYLE oluşturulmuş olması gerekir. 
+> * Microsoft 'tan uygulamanızın durumuyla ilgili güncelleştirmeler için e-postanızı (hem gelen kutusu hem de önemsiz klasörler) denetleyin.
 
-İsteğiniz onaylanırsa, kimlik bilgilerinizin nasıl alınacağını ve özel kapsayıcı kayıt defterine nasıl erişebileceğini açıklayan yönergeler içeren bir e-posta alırsınız.
+Onaylandıktan sonra, makalenin ilerleyen kısımlarında açıklanan Microsoft Container Registry (MCR) dosyasından indirdikten sonra kapsayıcıyı çalıştırabileceksiniz. 
 
-## <a name="log-in-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterinde oturum açma
-
-Bilişsel hizmetler kapsayıcıları için özel kapsayıcı kayıt defteriyle kimlik doğrulamanın birkaç yolu vardır. [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)kullanarak komut satırı yöntemini kullanmanızı öneririz.
-
-Bilişsel hizmetler kapsayıcıları için özel kapsayıcı kayıt defteri olan oturumu açmak için aşağıdaki örnekte gösterildiği gibi [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) komutunu kullanın `containerpreview.azurecr.io` . Kullanıcı adını, Azure bilişsel hizmetler takımınızdan aldığınız kimlik bilgilerinde belirtilen parola ile Kullanıcı adı ve * \< parola \> * *ile değiştirin. \< \> *
-
-```
-docker login containerpreview.azurecr.io -u <username> -p <password>
-```
-
-Kimlik bilgilerinizi bir metin dosyasında güvenli hale getirebilirsiniz, bu metin dosyasının içeriğini `docker login` komutuna birleştirebilirsiniz. `cat`Aşağıdaki örnekte gösterildiği gibi komutunu kullanın. * \< PasswordFile \> * değerini parolayı içeren metin dosyasının yolu ve adıyla değiştirin. Kullanıcı adını kimlik bilgilerinizle belirtilen kullanıcı *adıyla değiştirin. \< \> *
-
-```
-cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
-```
-
+Azure aboneliğiniz onaylanmamışsa kapsayıcıyı çalıştıramayacağız.

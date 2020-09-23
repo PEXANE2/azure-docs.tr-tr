@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: b5e024536cdd0829435b9676501b21bc99fff49a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6c1cc658708a8429e635d23a058a784f6fc4ef05
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020057"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904005"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için .NET (C#) kullanma
 
@@ -49,7 +49,7 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
 2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
 3. Sunucunun adına tıklayın.
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
- ![MySQL için Azure Veritabanı sunucu adı](./media/connect-csharp/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-csharp/1_server-overview-name-login.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
 
 ## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme
 `CREATE TABLE` ve `INSERT INTO` SQL deyimlerini kullanarak verilere bağlanmak ve verileri yüklemek için aşağıdaki kodu kullanın. Kod, [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metoduyla birlikte `MySqlConnection` sınıfını kullanarak MySQL ile bağlantı kurar. Ardından kod [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) yöntemini kullanarak CommandText özelliğini ayarlar ve [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metodunu çağırarak veritabanı komutlarını çalıştırır. 

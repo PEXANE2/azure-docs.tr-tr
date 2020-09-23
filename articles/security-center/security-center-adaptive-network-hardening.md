@@ -13,15 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 1f69fe027772dc2d008a567723a5b3c04f3ee51b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e8aea9b8abb5926fdb73df7c140ecfec1114f7a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378211"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894757"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma
 Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma yapılandırma hakkında bilgi edinin.
+
+## <a name="availability"></a>Kullanılabilirlik
+|Görünüş|Ayrıntılar|
+|----|:----|
+|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
+|Gerekli roller ve izinler:|Makinenin NSG 'leri üzerinde yazma izinleri|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Uyarlamalı ağ sağlamlaştırma nedir?
 Kaynaklara/kaynaklardan gelen trafiği filtrelemek için [ağ güvenlik grupları (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) uygulama, ağ güvenlik duruşunuzu geliştirir. Ancak, NSG üzerinden akan gerçek trafiğin, tanımlanan NSG kurallarının bir alt kümesi olduğu bazı durumlar da olabilir. Bu durumlarda, güvenlik duruşunu artırmak, gerçek trafik desenlerine bağlı olarak NSG kurallarını sağlamlaştırma yoluyla elde edilebilir.
@@ -37,15 +46,6 @@ Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak i�
 ![Ağ sağlamlaştırma görünümü](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 
-## <a name="availability"></a>Kullanılabilirlik
-
-|Görünüş|Ayrıntılar|
-|----|:----|
-|Yayın durumu:|Genel kullanılabilirlik|
-|Fiyat|Standart katmanı|
-|Gerekli roller ve izinler:|Makinenin NSG 'leri üzerinde yazma izinleri|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
-|||
 
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Uyarlamalı ağ sağlamlaştırma uyarılarını ve kurallarını görüntüle
@@ -56,7 +56,7 @@ Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak i�
    * **Taranmamış kaynaklar**: aşağıdaki nedenlerden biri nedeniyle Uyarlamalı ağ sağlamlaştırma algoritması üzerinde çalıştırılamaz VM 'ler:
       * **Sanal makineler klasik VM**'ler: yalnızca Azure Resource Manager VM 'ler desteklenir.
       * **Yeterli veri**yok: doğru trafik sağlamlaştırma önerilerini oluşturmak Için, güvenlik merkezi 'nin en az 30 günlük trafik verisi olması gerekir.
-      * **VM, ASC standardı tarafından korunmuyor**: yalnızca güvenlik merkezi 'nin standart fiyatlandırma katmanına ayarlanmış olan VM 'ler bu özellik için uygun değildir.
+      * **VM, Azure Defender tarafından korunmuyor**: yalnızca [sunucular için Azure Defender](defender-for-servers-introduction.md) ile korunan VM 'ler bu özellik için uygundur.
 
      ![sağlıksız kaynaklar](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
@@ -69,7 +69,7 @@ Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak i�
 
 1. **Sağlıksız kaynaklar** SEKMESINDEN bir VM seçin. Uyarılar ve önerilen sağlamlaştırma kuralları listelenir.
 
-     ![sağlamlaştırma kuralları](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+     ![Sağlamlaştırma kuralları](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
 
    > [!NOTE]
    > **Kurallar** sekmesi, uyarlamalı ağ sağlamlaştırma 'in eklemenizi önerdiği kuralları listeler. **Uyarılar** sekmesi, trafik nedeniyle oluşturulan uyarıları, önerilen kurallarda ızın verilen IP aralığı içinde olmayan kaynağa akan şekilde listeler.
@@ -106,14 +106,14 @@ Uyarlamalı ağ sağlamlaştırma kuralını değiştirmek için bazı önemli y
 
 1. Bir kuralın parametrelerinden bazılarını değiştirmek için, **kurallar** sekmesinde, kuralın satırının sonundaki üç noktaya (...) tıklayın ve **Düzenle**' ye tıklayın.
 
-   ![Kuralı Düzenle](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
+   ![S kuralını Düzenle](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
 1. **Kural düzenleme** penceresinde, değiştirmek istediğiniz ayrıntıları güncelleştirin ve **Kaydet**' e tıklayın.
 
    > [!NOTE]
-   > **Kaydet**'e tıkladıktan sonra kuralı başarıyla değiştirdiniz. *Ancak, bunu NSG 'ye uyguladınız.* Bunu uygulamak için listeden kuralı seçmeniz ve **Uygula** ' yı (sonraki adımda açıklandığı gibi) seçmeniz gerekir.
+   > **Kaydet**'e tıkladıktan sonra kuralı başarıyla değiştirdiniz. *Ancak, bunu NSG 'ye uyguladınız.* Bunu uygulamak için listeden kuralı seçmeniz ve **Uygula** ' yı seçmeniz gerekir (sonraki adımda açıklandığı gibi).
 
-   ![Kuralı Düzenle](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+   ![Kaydet seçiliyor](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
 3. Güncelleştirilmiş kuralı uygulamak için listeden, güncelleştirilmiş kuralı seçin ve **Uygula**' ya tıklayın.
 
@@ -150,4 +150,4 @@ Gerektiğinde, geçerli oturum için önerilen bir kuralı silebilirsiniz. Örne
 
 1. **Kurallar** sekmesinde, kuralın satırının sonundaki üç noktaya (...) tıklayın ve **Sil**' e tıklayın.  
 
-    ![sağlamlaştırma kuralları](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
+    ![Bir kuralı silme](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)

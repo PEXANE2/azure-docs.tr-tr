@@ -1,20 +1,20 @@
 ---
-title: Redin için Azure önbelleği için Azure Izleyici (Önizleme) | Microsoft Docs
+title: Redsıs için Azure önbelleği için Azure Izleyici | Microsoft Docs
 description: Bu makalede, performans ve kullanım sorunlarını hızlı bir şekilde anlamak için önbellek sahipleri sağlayan Azure Redis Cache özelliği için Azure Izleyicisi açıklanmaktadır.
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/21/2020
-ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/10/2020
+ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045863"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887006"
 ---
-# <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Redsıs için Azure önbelleği için Azure Izleyicisini keşfet (Önizleme)
+# <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Azure Izleyicisini keşfet
 
-Redsıs kaynaklarına yönelik Azure önbelleğinizin tümünde, redin (Önizleme) için Azure önbelleği için Azure Izleyici, birleştirilmiş ve etkileşimli bir görünüm sağlar:
+Redsıs kaynaklarına yönelik tüm Azure önbelleğiniz için, redde Azure önbelleği için Azure Izleyici, birleştirilmiş ve etkileşimli bir görünüm sağlar:
 
 - Genel performans
 - Hatalar
@@ -44,13 +44,13 @@ Bu özellik, herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı ger
 
 Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve performansını görüntülemek için aşağıdaki adımları uygulayın:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **İzleyici**araması yapın ve **izleyici**' yi seçin.
 
     !["Monitor" sözcüğünün ve hızölçer simgesiyle "Monitor" ifadesini gösteren Hizmetler Arama sonucuyla arama kutusu](./media/cosmosdb-insights-overview/search-monitor.png)
 
-1. **Redin (Önizleme) Için Azure önbelleği**' ni seçin. Bu seçenek mevcut değilse **More**  >  **redsıs için diğer Azure önbelleği**' ni seçin.
+1. **Redsıs Için Azure önbelleği**' ni seçin. Bu seçenek mevcut değilse **More**  >  **redsıs için diğer Azure önbelleği**' ni seçin.
 
 ### <a name="overview"></a>Genel Bakış
 
@@ -79,7 +79,7 @@ Mavi renkle vurgulanmış Redsıs kaynak adı için Azure önbelleğini seçtiğ
 - **İsabetsiz Önbellek Okuma Sayısı**
 - **Hata Sayısı (En Fazla)**
 
-### <a name="operations"></a>Operations
+### <a name="operations"></a>İşlemler
 
 Sayfanın üst kısmında **işlemler** ' i seçtiğinizde, çalışma kitabı şablonunun **işlemler** tablosu açılır. Şu sütunları gösterir:
 
@@ -128,9 +128,9 @@ Redo bir kaynaktan doğrudan Azure önbelleği için Azure Izleyicisi 'ne erişm
 
 1. Azure portal Redsıs için Azure önbelleği ' ni seçin.
 
-2. Listeden, Redsıs kaynağı için tek bir Azure önbelleği seçin. İzleme bölümünde Öngörüler ' i (Önizleme) seçin.
+2. Listeden, Redsıs kaynağı için tek bir Azure önbelleği seçin. İzleme bölümünde Öngörüler ' i seçin.
 
-    !["Öngörüler (Önizleme)" kelimesinin kırmızı kutuda vurgulandığı menü seçeneklerinin ekran görüntüsü](./media/redis-cache-insights-overview/insights.png)
+    ![Kırmızı kutuda vurgulanan "Öngörüler" keliimiyle menü seçeneklerinin ekran görüntüsü](./media/redis-cache-insights-overview/insights.png)
 
 Bu görünümlere Ayrıca, Azure Izleyici düzeyi çalışma kitabından Redsıs kaynağı için bir Azure önbelleğinin kaynak adı seçilerek erişilebilir.
 
@@ -168,7 +168,7 @@ Verilerinizi bir Excel biçiminde dışarı aktarmak için raptiye simgesinin so
 
 ![Vurgulanan Genişlet-çalışma kitabı simgesi](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cache-for-redis-preview"></a>Redsıs için Azure önbelleği için Azure Izleyicisini özelleştirme (Önizleme)
+## <a name="customize-azure-monitor-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Azure Izleyicisini özelleştirme
 
 Bu deneyim, en üstteki Azure izleyici çalışma kitabı şablonları olduğundan, **Customize**  >  **Edit**  >  değiştirilmiş sürümünüzün bir kopyasını özel bir çalışma kitabına kaydetmek için**Kaydet** Düzenle 'yi Özelleştir ' i seçebilirsiniz.
 
