@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge 'e çoğaltmayı yapılandırma (Önizleme)
-description: Azure SQL Edge (Önizleme) için çoğaltmayı yapılandırma hakkında bilgi edinin.
+title: Azure SQL Edge 'e çoğaltmayı yapılandırma
+description: Azure SQL Edge 'e çoğaltmayı yapılandırma hakkında bilgi edinin.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282781"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888429"
 ---
-# <a name="configure-replication-to-azure-sql-edge-preview"></a>Azure SQL Edge 'e çoğaltmayı yapılandırma (Önizleme) 
+# <a name="configure-replication-to-azure-sql-edge"></a>Azure SQL Edge 'e çoğaltmayı yapılandırma 
 
 Azure SQL Edge 'in bir örneğini, tek yönlü işlem çoğaltması veya anlık görüntü çoğaltması için anında iletme abonesi olarak yapılandırabilirsiniz. Bu örnek, bir işlem çoğaltma yapılandırması için yayımcı veya dağıtıcı olarak çalışamaz. Azure SQL Edge 'in birleştirme çoğaltmasını, eşler arası çoğaltmayı veya Oracle yayımlamasını desteklemediğini unutmayın.
 

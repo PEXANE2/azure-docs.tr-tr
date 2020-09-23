@@ -10,15 +10,15 @@ author: jpe316
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ce052fa80d8aa0d30d1de7268b82e727c952cab1
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7b63ef36d7df43168ed132a740bab026e6e00f3f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648196"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897224"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Derleme scikit-Azure Machine Learning uygun ölçekte modeller öğrenin
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu makalede, Azure Machine Learning ile scikit-eğitim komut dosyalarını nasıl çalıştıracağınızı öğrenin.
 
@@ -26,7 +26,7 @@ Bu makaledeki örnek betikler, ırikit-öğrenme için [Iris veri kümesini](htt
 
 Bir makine öğrenimi scikit-bir modeli baştan sona öğreniyor olun veya var olan bir modeli buluta getiriyor, elastik bulut bilgi işlem kaynaklarını kullanarak açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz. Azure Machine Learning ile üretim sınıfı modellerini oluşturabilir, dağıtabilir, sürüm ve izleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
  - Azure Machine Learning işlem örneği-indirme veya yükleme gerekli değil

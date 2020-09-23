@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 4618bb4ba65c48808bc738b51c90a6fd04f0eca3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659629"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895796"
 ---
 # <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
 
@@ -38,6 +38,7 @@ Azure Sentinel etkinleştirildikten sonra yapmanız gereken ilk şey, veri kayna
 
    ![Bağlayıcılar için sonraki adımlar](./media/collect-data/data-insights.png)
  
+
 ## <a name="data-connection-methods"></a>Veri bağlantısı yöntemleri
 
 Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklenir:
@@ -49,7 +50,7 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
     - [Azure AD Kimlik Koruması](connect-azure-ad-Identity-protection.md)
     - [Kimlik Için Microsoft Defender](connect-azure-atp.md) (eski adıyla Azure Gelişmiş tehdit koruması)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Defender](connect-azure-security-center.md) (eski adıyla Azure Güvenlik Merkezi)
+    - [Azure Güvenlik Merkezi](connect-azure-security-center.md) -Azure Defender çözümlerindeki uyarılar
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Etki alanı adı sunucusu](connect-dns.md)
     - [Office 365](connect-office-365.md)
@@ -135,7 +136,7 @@ Alternatif olarak, aracıyı mevcut bir Azure VM 'de, başka bir buluttaki VM 'd
 | WindowsFirewall | [Windows güvenlik duvarını bağlama](connect-windows-firewall.md) | &#10003; | |
 | AADıP SecurityAlert  | [Azure AD Kimlik Koruması bağlantısı kurma](connect-azure-ad-identity-protection.md)  | &#10003; | |
 | AATP SecurityAlert  | [Kimlik Için Microsoft Defender 'ı bağlama](connect-azure-atp.md) (eski ADıYLA Azure ATP) | &#10003; | |
-| ASC SecurityAlert  | [Azure Defender 'ı bağlama](connect-azure-security-center.md) (eski adıyla Azure Güvenlik Merkezi)  | &#10003; | |
+| ASC SecurityAlert  | Azure Güvenlik Merkezi 'nden [Azure Defender uyarılarını bağlama](connect-azure-security-center.md)  | &#10003; | |
 | MCAS SecurityAlert  | [Microsoft Cloud App Security Bağlan](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (olay) | [Sysmon bağlama](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows olaylarını bağlama](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon ayrıştırıcısına ulaşın](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Sysmon koleksiyonu, sanal makinelerde varsayılan olarak yüklü değildir. Sysmon aracısının nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |

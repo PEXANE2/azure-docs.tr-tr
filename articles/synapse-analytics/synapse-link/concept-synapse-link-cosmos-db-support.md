@@ -6,15 +6,15 @@ author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: synapse-link
-ms.date: 04/21/2020
+ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7fbc7b1cb8119a6ee9403bf0139380aa5dcd0613
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 336409b8b6f804b224b87d5fb11fded0654b8619
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089133"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895523"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Desteklenen Azure Cosmos DB özellikler için Azure SYNAPSE link (Önizleme)
 
@@ -24,30 +24,30 @@ Bu makalede Azure Cosmos DB için Azure Synapse Link'te desteklenen işlevler an
 
 Azure Cosmos DB iki tür kapsayıcı vardır:
 * HTAP kapsayıcısı-SYNAPSE bağlantısı etkinleştirilmiş bir kapsayıcı. Bu kapsayıcıda hem işlem deposu hem de analitik depo vardır. 
-* OLTP kapsayıcısı-yalnızca işlem deposuna sahip bir kapsayıcı; SYNAPSE bağlantısı etkin değil. 
+* OLTP kapsayıcısı-Synaspe bağlantısı olan bir kapsayıcı etkin değil. Bu kapsayıcıda yalnızca işlem deposu vardır ve analitik depo yoktur.
 
 > [!IMPORTANT]
-> Azure Cosmos DB için Azure SYNAPSE bağlantısı şu anda yönetilen sanal ağ etkin olmayan çalışma alanlarında destekleniyor. 
+> Azure Cosmos DB için Azure SYNAPSE bağlantısı şu anda yönetilen sanal ağ etkinleştirilmemiş SYNAPSE çalışma alanlarında destekleniyor. 
 
-SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına bağlanabilirsiniz, bu durumda yalnızca işlem deposuna okuma/yazma yapabilirsiniz. Azure Cosmos DB için SYNAPSE link içindeki şu anda desteklenen özelliklerin bir listesi aşağıdadır. 
+SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına bağlanabilirsiniz, bu durumda yalnızca işlem deposuna okuma/yazma yapabilirsiniz. Aşağıda, Azure Cosmos DB için SYNAPSE link içindeki şu anda desteklenen özelliklerin listesi verilmiştir. 
 
 | Kategori              | Açıklama |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL sunucusuz](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
-| -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| **Çalışma zamanı desteği** |Azure SYNAPSE çalışma zamanına göre okuma veya yazma desteği| ✓ | [Bize Ulaşın](mailto:AskSynapse@microsoft.com?subject=[Enable%20Preview%20Feature]%20SQL%20serverless%20for%20Cosmos%20DB)|
-| **Azure Cosmos DB API desteği** |SYNAPSE bağlantısı olarak API desteği| SQL/MongoDB | SQL/MongoDB |
-| **Nesne**  |Oluşturulabilen ve Azure Cosmos DB kapsayıcıya işaret eden bir tablo gibi nesneler| Görünüm, tablo | Görüntüle |
-| **Okuma**    |Azure Cosmos DB kapsayıcısından verileri okuma| OLTP/HTAP | HTAP  |
-| **Yazarken**   |Çalışma zamanından Azure Cosmos DB kapsayıcısına veri yazma| OLTP | yok |
+| -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
+| **Çalışma zamanı desteği** |Azure Cosmos DB erişmek için desteklenen Azure SYNAPSE çalışma zamanı| ✓ | [Bizimle iletişime geçin](mailto:cosmosdbsynapselink@microsoft.com?subject=[Enable%20Preview%20Feature]%20SQL%20serverless%20for%20Cosmos%20DB) |
+| **Azure Cosmos DB API desteği** | Desteklenen Azure Cosmos DB API türü | SQL/MongoDB | SQL/MongoDB |
+| **Nesne**  |Oluşturulabilen ve Azure Cosmos DB kapsayıcıya işaret eden bir tablo gibi nesneler| Veri çerçevesi, görünüm, tablo | Görüntüle |
+| **Okuyamaz**    | Okunabilecek Azure Cosmos DB kapsayıcısı türü | OLTP/HTAP | HTAP  |
+| **Yazarken**   | Azure Cosmos DB kapsayıcısına veri yazmak için Azure SYNAPSE çalışma zamanı kullanılabilir | Yes | Hayır |
 
-* Spark 'tan bir Azure Cosmos DB kapsayıcısına veri yazarsanız, bu işlem Azure Cosmos DB işlem deposu aracılığıyla gerçekleşir ve Istek birimleri tüketerek Azure Cosmos DB işlem performansını etkiler.
-* Dış tablolar aracılığıyla SQL havuzu tümleştirmesi Şu anda desteklenmiyor.
+* Spark 'tan bir Azure Cosmos DB kapsayıcısına veri yazarsanız, bu, Azure Cosmos DB işlem deposundan oluşur ve Azure Cosmos DB ve Istek birimlerindeki işlem iş yüklerinin performansını etkiler.
+* Dış tablolar aracılığıyla SYNAPSE SQL havuzu tümleştirmesi Şu anda desteklenmiyor.
 
 ## <a name="supported-code-generated-actions-for-spark"></a>Spark için desteklenen kod tarafından oluşturulan eylemler
 
 | Hareket              | Açıklama |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
-| **DataFrame 'e yükle** |Spark DataFrame 'e veri yükleme ve verileri okuma |X| ✓ |
-| **Spark tablosu oluşturma** |Azure Cosmos DB kapsayıcısına işaret eden tablo oluşturma|X| ✓ |
+| **DataFrame 'e yükle** |Spark DataFrame 'e veri yükleme ve verileri okuma |✓| ✓ |
+| **Spark tablosu oluşturma** |Azure Cosmos DB kapsayıcısına işaret eden tablo oluşturma|✓| ✓ |
 | **Veri çerçevesini kapsayıcıya yaz** |Bir kapsayıcıya veri yazma|✓| ✓ |
 | **Kapsayıcıdan akış veri çerçevesini yükleme** |Azure Cosmos DB değişiklik akışını kullanarak veri akışı|✓| ✓ |
 | **Akış veri çerçevesini kapsayıcıya yaz** |Azure Cosmos DB değişiklik akışını kullanarak veri akışı|✓| ✓ |
@@ -58,8 +58,9 @@ SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına 
 
 | Hareket              | Açıklama |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
-| **En üstteki 100 seçin** |Bir kapsayıcıdan ilk 100 öğe önizleme|X| ✓ |
-| **Görünüm Oluştur** |SYNAPSE SQL aracılığıyla doğrudan bir kapsayıcıda bı erişimine sahip olmak için bir görünüm oluşturma|X| ✓ |
+| **Verileri inceleme** |Tanıdık T-SQL söz dizimi ve otomatik Şema çıkarımı ile bir kapsayıcıdaki verileri araştırma|X| ✓ |
+| **Görünümler oluşturma ve bı raporları oluşturma** |BI ile SYNAPSE SQL sunucusuz için bir kapsayıcıya doğrudan erişim sağlamak üzere bir SQL görünümü oluşturun |X| ✓ |
+| **Cosmos DB verilerle birlikte farklı veri kaynaklarını birleştirin** | Azure Blob depolama 'daki verilerle birlikte Cosmos DB kapsayıcılarından ve CETAS kullanarak Azure Data Lake Storage veri okuma sonuçlarını depolayın |X| ✓ |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

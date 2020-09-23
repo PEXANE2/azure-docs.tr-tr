@@ -11,12 +11,12 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: e7dca9224fd213178aa9cee3a284f1eba39fb4fc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8d11fada41d0152b44be6cb0cdef41e68808689b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001182"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967513"
 ---
 # <a name="secure-access-to-application-data"></a>Uygulama verilerine güvenli erişim
 
@@ -160,7 +160,7 @@ Yukarıdaki görevde, aşağıdaki sınıflar, özellikler ve yöntemler kullan�
 
 [Azure depolama şifrelemesi](../common/storage-service-encryption.md) , bekleyen verileri şifreleyerek ve şifreleme ve şifre çözme işlemlerini gerçekleştirerek verilerinizi korumanıza ve korumanıza yardımcı olur. Verilerin tamamı, mevcut en güçlü blok şifreleme özelliklerinden biri olan 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) ile şifrelenir.
 
-Microsoft 'un şifreleme anahtarlarını yönetmesine veya Azure Key Vault ile müşteri tarafından yönetilen anahtarlarla kendi anahtarlarınızı getirebileceğini seçebilirsiniz. Daha fazla bilgi için bkz. [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../common/encryption-customer-managed-keys.md).
+Microsoft 'un şifreleme anahtarlarını yönetmesini seçebilirsiniz veya Azure Key Vault veya Key Vault yönetilen donanım güvenlik modeli (HSM) (Önizleme) içinde depolanan müşteri tarafından yönetilen anahtarlarla kendi anahtarlarınızı getirebilirsiniz. Daha fazla bilgi için bkz. [Azure depolama şifrelemesi Için müşteri tarafından yönetilen anahtarlar](../common/customer-managed-keys-overview.md).
 
 Azure depolama şifrelemesi, tüm performans katmanlarında (Standart ve Premium) verileri, tüm dağıtım modellerini (Azure Resource Manager ve klasik) ve tüm Azure depolama hizmetlerini (blob, kuyruk, tablo ve dosya) otomatik olarak şifreler.
 

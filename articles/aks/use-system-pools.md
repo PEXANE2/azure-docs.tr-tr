@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8d985587dc436d55e17c69e25295b5a58cb15b0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2cb6ed265d3e94c2c162381dfb80ba0c5427a71f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647507"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888945"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) sistem düğüm havuzlarını yönetme
 
-Azure Kubernetes hizmeti 'nde (AKS), aynı yapılandırmanın düğümleri *düğüm havuzlarında*birlikte gruplandırılır. Düğüm havuzları, uygulamalarınızı çalıştıran temel VM 'Leri içerir. Sistem düğüm havuzları ve Kullanıcı düğümü havuzları, AKS kümeleriniz için iki farklı düğüm havuzu modudur. Sistem düğüm havuzları, CoreDNS ve tunnelfront gibi kritik sistem yığınlarını barındırmanın birincil amacını sunar. Kullanıcı düğümü havuzları, uygulama yığınlarınızı barındırmanın birincil amacını sunar. Ancak, aks kümenizde yalnızca bir havuza sahip olmak istiyorsanız, uygulama Pod 'leri sistem düğüm havuzlarında zamanlanabilir. Her bir AKS kümesi en az bir düğümü olan en az bir sistem düğüm havuzu içermelidir.
+Azure Kubernetes hizmeti 'nde (AKS), aynı yapılandırmanın düğümleri *düğüm havuzlarında*birlikte gruplandırılır. Düğüm havuzları, uygulamalarınızı çalıştıran temel VM 'Leri içerir. Sistem düğüm havuzları ve Kullanıcı düğümü havuzları, AKS kümeleriniz için iki farklı düğüm havuzu modudur. Sistem düğüm havuzları, ve gibi kritik sistem yığınlarını barındırmanın birincil amacını sunar `CoreDNS` `metrics-server` . Kullanıcı düğümü havuzları, uygulama yığınlarınızı barındırmanın birincil amacını sunar. Ancak, aks kümenizde yalnızca bir havuza sahip olmak istiyorsanız, uygulama Pod 'leri sistem düğüm havuzlarında zamanlanabilir. Her bir AKS kümesi en az bir düğümü olan en az bir sistem düğüm havuzu içermelidir.
 
 > [!Important]
 > Bir üretim ortamında AKS kümeniz için tek bir sistem düğüm havuzu çalıştırırsanız, düğüm havuzu için en az üç düğüm kullanmanızı öneririz.
@@ -164,7 +164,7 @@ az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 > [!Note]
 > API sürüm 2020-03-02 ' den önceki AKS kümelerinde sistem düğüm havuzlarını kullanmak için yeni bir sistem düğümü havuzu ekleyin, sonra özgün varsayılan düğüm havuzunu silin.
 
-Daha önce bir AKS kümesindeki ilk varsayılan düğüm havuzu olan sistem düğüm havuzunu silemezsiniz. Artık kümelerinizdeki düğüm havuzlarını silme esnekliği vardır. AKS kümeleri en az bir sistem düğüm havuzu gerektirdiğinden, bunlardan birini silebilmeniz için AKS kümenizde en az iki sistem düğüm havuzu olması gerekir.
+Bunlardan birini silebilmek için, AKS kümenizde en az iki sistem düğüm havuzunuz olmalıdır.
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool

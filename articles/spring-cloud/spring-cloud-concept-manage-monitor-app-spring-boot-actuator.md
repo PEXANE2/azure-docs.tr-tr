@@ -7,18 +7,20 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c1ea19c22d003ed1aa7c3d3191ff20a69513bc5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 93fd286aa76a0409a515abbf8c9dabd88a9a65c4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299516"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904289"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Azure Spring Boot Actuator ile uygulama yönetme ve izleme
 
+**Bu makale şu şekilde geçerlidir:** ✔️ Java
+
 Uygulamanıza yeni ikili dağıttıktan sonra, işlevleri denetlemek ve çalışan uygulamanız hakkındaki bilgileri görmek isteyebilirsiniz. Bu makalede, Azure Spring Cloud tarafından sunulan bir test uç noktasından API 'ye nasıl erişebileceğiniz ve uygulamanız için üretime yönelik kullanıma sunma özelliklerinin nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, Azure yay bulut hizmetinde başarıyla dağıtılabilecek ve önyüklenebilecek bir Spring Boot 2. x uygulamasına sahip olduğunuz varsayılır.  Bkz [. hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart.md)
 
 ## <a name="verify-app-through-test-endpoint"></a>Test uç noktası aracılığıyla uygulamayı doğrulama
@@ -73,5 +75,7 @@ Artık uygulamaya genel bakış bölmesine dönüp sağlama durumu "başarılı"
 Yerleşik tüm uç noktaları görüntülemek için bkz. [uç noktaları gösterme](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints)
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Azure yay bulutu için ölçümleri anlama](spring-cloud-concept-metrics.md)
-* [Azure Spring Cloud 'da uygulama durumunu anlama](spring-cloud-concept-app-status.md)
+* [Azure Spring Cloud’da uygulama durumunu anlama](spring-cloud-concept-app-status.md)
+

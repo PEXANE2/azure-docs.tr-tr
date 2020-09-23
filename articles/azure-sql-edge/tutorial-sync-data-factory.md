@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak Azure SQL Edge 'den (Önizleme) veri eşitleme
-description: Verileri Azure SQL Edge (Önizleme) ile Azure Blob depolama arasında eşitleme hakkında bilgi edinin
+title: Azure Data Factory kullanarak Azure SQL Edge 'ten veri eşitleme
+description: Verileri Azure SQL Edge ve Azure Blob depolama arasında eşitleme hakkında bilgi edinin
 keywords: SQL Edge, SQL Edge veri fabrikasından veri eşitleme
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 672c9f0d5403ae27a26d58617dca44f0f1121411
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85255441"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904163"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak SQL Edge 'den Azure Blob depolama 'ya veri eşitleme
 

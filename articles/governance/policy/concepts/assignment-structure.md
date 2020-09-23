@@ -1,14 +1,14 @@
 ---
 title: İlke atama yapısının ayrıntıları
 description: Değerlendirme için kaynaklarla ilke tanımlarını ve parametreleri ilişkilendirmek üzere Azure Ilkesi tarafından kullanılan ilke atama tanımını açıklar.
-ms.date: 08/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 969274d72724c8d0a8f10f86f614fe2c50d066f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e930e9ddcc04846a35c8db7784a349007c71580b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520722"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904078"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure İlkesi atama yapısı
 
@@ -70,7 +70,10 @@ Bu özellik aşağıdaki değerlere sahiptir:
 
 ## <a name="excluded-scopes"></a>Dışlanan kapsamlar
 
-Atamanın **kapsamı** tüm alt kaynak kapsayıcılarını ve alt kaynakları içerir. Bir alt kaynak kapsayıcısına veya alt kaynağa tanım uygulanmazsa, **Notscopes**ayarları ayarlanarak her biri değerlendirmeden dışlanabilirler. Bu özellik bir veya daha fazla kaynak kapsayıcısının veya kaynağın değerlendirmesinden DIŞLANMASINI sağlamak için bir dizidir. **Notscopes** , ilk atama oluşturulduktan sonra eklenebilir veya güncelleştirilir.
+Atamanın **kapsamı** tüm alt kaynak kapsayıcılarını ve alt kaynakları içerir. Bir alt kaynak kapsayıcısına veya alt kaynağa tanım uygulanmazsa, **Notscopes**ayarları ayarlanarak her biri değerlendirmeden _dışlanabilirler_ . Bu özellik bir veya daha fazla kaynak kapsayıcısının veya kaynağın değerlendirmesinden DIŞLANMASINI sağlamak için bir dizidir. **Notscopes** , ilk atama oluşturulduktan sonra eklenebilir veya güncelleştirilir.
+
+> [!NOTE]
+> _Dışlanan_ bir kaynak, _muaf tutulan_ bir kaynaktan farklıdır. Daha fazla bilgi için bkz. [Azure ilkesinde kapsamı anlama](./scope.md).
 
 ## <a name="policy-definition-id"></a>İlke tanımı KIMLIĞI
 

@@ -1,19 +1,19 @@
 ---
-title: 'Öğretici: SQL veritabanı ile ASP.NET Core'
-description: Azure App Service’te çalışan ve bir SQL Veritabanı’na bağlantısı olan bir .NET Core uygulamasını nasıl edinebileceğinizi öğrenin.
+title: 'Öğretici: Azure SQL veritabanı ile ASP.NET Core'
+description: Azure SQL veritabanı ile bağlantı ile Azure App Service çalışan bir .NET Core uygulamasını nasıl alabileceğinizi öğrenin.
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 27b01a86d1bc44b5adb977f10339a0f2d56a64d4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: b83dfbd715a6b27491fd5f5efd41213210092325
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958567"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982894"
 ---
-# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Öğretici: Azure App Service ASP.NET Core ve SQL veritabanı uygulaması oluşturma
+# <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Öğretici: Azure App Service ASP.NET Core ve Azure SQL veritabanı uygulaması oluşturma
 
 ::: zone pivot="platform-windows"  
 
@@ -482,7 +482,7 @@ az webapp log tail --name <app-name> --resource-group myResourceGroup
 
 Günlük akışı başladıktan sonra bazı web trafiği almak için tarayıcıda Azure uygulamasını yenileyin. Artık konsol günlüklerinin terminale yöneltildiğini görebilirsiniz. Konsol günlüklerini hemen görmüyorsanız, 30 saniye içinde yeniden kontrol edin.
 
-Günlük akışını istediğiniz zaman durdurmak için, yazın `Ctrl` + `C` .
+Günlük akışını dilediğiniz zaman durdurmak için `Ctrl`+`C` yazın.
 
 ASP.NET Core günlüklerini özelleştirme hakkında daha fazla bilgi için bkz. [ASP.NET Core oturum açma](/aspnet/core/fundamentals/logging).
 

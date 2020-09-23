@@ -761,7 +761,7 @@
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure Tanılama uzantısı
               items:
-                - name: Genel bakış
+                - name: Genel Bakış
                   href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: Linux tanılama uzantısı
                   items:
@@ -955,6 +955,8 @@
               href: add-disk.md
             - name: Azure portal
               href: attach-disk-portal.md
+        - name: Disk katmanını değiştirme
+          href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Disk ayırma
           href: detach-disk.md
         - name: ARM şablonu ile diskleri dağıtma

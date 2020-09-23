@@ -1,25 +1,37 @@
 ---
-title: Azure Key Vault anahtarları hakkında-Azure Key Vault
+title: Anahtarlar hakkında-Azure Key Vault
 description: Anahtarlar için Azure Key Vault REST arabirimine ve geliştirici ayrıntılarına genel bakış.
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 76e9c342f87a3aa1d04a8f4be4065af73e6ba9f2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651305"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967553"
 ---
-# <a name="about-azure-key-vault-keys"></a>Azure Key Vault anahtarları hakkında
+# <a name="about-keys"></a>Anahtarlar hakkında
 
-Azure Key Vault birden çok anahtar türünü ve algoritmaları destekler ve yüksek değerli anahtarlar için donanım güvenlik modüllerinin (HSM) kullanılmasını mümkün değildir.
+Azure Key Vault, şifreleme anahtarlarını depolamak ve yönetmek için iki tür kaynak sağlar:
+
+|Kaynak türü|Anahtar koruma yöntemleri|Veri düzlemi uç noktası temel URL 'SI|
+|--|--|--|
+| **Kasalar** | Yazılım korumalı<br/><br/>ve<br/><br/>HSM korumalı (Premium SKU ile)</li></ul> | https://{kasa-adı}. kasa. Azure. net |
+| **Yönetilen HSM havuzları** | HSM korumalı | https://{HSM-adı}. managedhsm. Azure. net |
+||||
+
+- **Vaults** Kasaların kasalarına göre düşük maliyetli, kolay bir dağıtım, çok kiracılı, bölge açısından dayanıklı (kullanılabilir yerlerde), en yaygın bulut uygulaması senaryoları için uygun olan yüksek düzeyde kullanılabilir anahtar yönetimi çözümü sağlar.
+- **Yönetilen hsms** tarafından yönetilen HSM, şifreleme anahtarlarınızı depolamak ve yönetmek için tek kiracılı, bölge dayanıklı (kullanılabilir), yüksek oranda kullanılabilir HSM 'ler sağlar. Yüksek değerli anahtarları işleyen uygulamalar ve kullanım senaryoları için en uygun. Ayrıca, en sıkı güvenlik, uyumluluk ve mevzuat gereksinimlerini karşılamanıza yardımcı olur. 
+
+> [!NOTE]
+> Kasalar, şifreleme anahtarlarının yanı sıra gizli dizileri, sertifikaları ve depolama hesabı anahtarlarını gibi çeşitli nesne türlerini depolamanıza ve yönetmenize de olanak tanır.
 
 Key Vault içindeki şifreleme anahtarları JSON Web anahtarı [JWK] nesneleri olarak gösterilir. JavaScript Nesne Gösterimi (JSON) ve JavaScript nesne Imzalama ve şifreleme (Joo) belirtimleri şunlardır:
 
@@ -28,30 +40,49 @@ Key Vault içindeki şifreleme anahtarları JSON Web anahtarı [JWK] nesneleri o
 -   [JSON Web algoritmaları (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON Web Imzası (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-Temel JWK/JWA belirtimleri de Key Vault uygulamasına özgü anahtar türlerini etkinleştirmek üzere genişletilir. Örneğin, HSM satıcıya özgü paketleme kullanarak anahtarları içeri aktarmak, yalnızca Key Vault HSM 'lerde kullanılabilecek anahtarların güvenli bir şekilde aktarılmasına izin verebilir. 
+Temel JWK/JWA belirtimleri, Azure Key Vault ve yönetilen HSM uygulamalarına özgü anahtar türlerini etkinleştirmek için de genişletilir. 
 
-Azure Key Vault hem yazılım korumalı hem de HSM korumalı anahtarları destekler:
+HSM korumalı anahtarlar (HSM anahtarları olarak da adlandırılır) bir HSM 'de (donanım güvenlik modülü) işlenir ve her zaman HSM koruma sınırı kalır. 
 
-- **Yazılım korumalı anahtarlar**: yazılımda Key Vault tarafından işlenen, ancak bir HSM 'deki bir sistem anahtarı kullanılarak, bekleyen olarak şifrelenen bir anahtar. İstemciler mevcut bir RSA veya EC (Eliptik Eğri) anahtarını içeri aktarabilir veya Key Vault oluşturmak isteyebilir.
-- **HSM-potesiyonu olmayan anahtarlar**: bir HSM 'de işlenen anahtar (donanım güvenlik modülü). Bu anahtarlar Key Vault HSM güvenlik dünyasının birinde korunur (yalıtımı sürdürmek için coğrafya başına bir güvenlik dünyası vardır). İstemciler, yazılım korumalı biçimde veya uyumlu bir HSM cihazından dışarı aktararak bir RSA veya EC anahtarı alabilir. İstemciler bir anahtar oluşturmak için Key Vault da isteyebilir. Bu anahtar türü, HSM anahtar malzemesini taşımak için key_hsm özniteliğini JWK alma 'ya ekler.
+- Kasaların paylaşılan HSM arka uç altyapısında HSM anahtarlarını korumak için **fıps 140-2 düzey 2** doğrulanan HSM 'leri kullanın. 
+- Yönetilen HSM havuzları, anahtarlarınızı korumak için **fıps 140-2 düzey 3** doğrulanan HSM modüllerini kullanır. Her HSM havuzu, aynı donanım altyapısını paylaşan diğer tüm HSM havuzlarından tam şifreleme yalıtımı sağlayan kendi [güvenlik etki alanı](../managed-hsm/security-domain.md) ile yalıtılmış bir tek kiracılı örneğidir.
 
-Coğrafi sınırlar hakkında daha fazla bilgi için bkz. [Microsoft Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/privacy/)  
+Bu anahtarlar tek kiracılı HSM havuzları halinde korunur. Bir RSA, EC ve simetrik anahtarı, yumuşak biçimde veya desteklenen bir HSM cihazından dışarı aktararak içeri aktarabilirsiniz. Ayrıca HSM havuzlarında anahtarlar da oluşturabilirsiniz. , [BYok (kendi anahtarını getir) belirtiminde](../keys/byok-specification.md)açıklanan yöntemi kullanarak, anahtarları kullanarak HSM anahtarlarını içeri aktardığınızda, güvenli ulaşım anahtar MALZEMESINI yönetilen HSM havuzlarına dönüştürür. 
 
-## <a name="cryptographic-protection"></a>Şifreleme koruması
+Coğrafi sınırlar hakkında daha fazla bilgi için bkz. [Microsoft Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/privacy/)
 
-Key Vault yalnızca RSA ve eliptik eğri tuşlarını destekler. 
+## <a name="key-types-protection-methods-and-algorithms"></a>Anahtar türleri, koruma yöntemleri ve algoritmaları
 
--   **EC**: Yazılım korumalı eliptik eğri anahtarı.
--   **EC-HSM**: "Hard" eliptik eğri anahtarı.
--   **RSA**: Yazılım korumalı RSA anahtarı.
--   **RSA-HSM**: "Hard" RSA anahtarı.
+Key Vault RSA, EC ve simetrik anahtarları destekler. 
 
-Key Vault, 2048, 3072 ve 4096 boyutlarının RSA anahtarlarını destekler. Key Vault, P-256, P-384, P-521 ve P-256K (SECP256K1) eliptik eğri anahtar türlerini destekler.
+### <a name="hsm-protected-keys"></a>HSM ile korunan anahtarlar
 
-Key Vault kullandığı şifreleme modülleri, HSM veya yazılımın FIPS (Federal bilgi Işleme standartları) tarafından doğrulanıp onaylanmayacağı. FIPS modunda çalıştırmak için özel bir şey yapmanız gerekmez. HSM korumalı olarak **oluşturulan** veya **içeri AKTARıLAN** anahtarlar, FIPS 140-2 düzey 2 olarak doğrulanan bir HSM içinde işlenir. Yazılım korumalı olarak **oluşturulan** veya **IÇERI aktarılan** anahtarlar FIPS 140-2 düzey 1 ' e doğrulanan şifreleme modülleri içinde işlenir.
+|Anahtar türü|Kasa (yalnızca Premium SKU)|Yönetilen HSM havuzları|
+|--|--|--|--|
+**EC-HSM**: eliptik eğri tuşu|FIPS 140-2 düzey 2 HSM|FIPS 140-2 düzey 3 HSM
+**RSA-HSM**: RSA anahtarı|FIPS 140-2 düzey 2 HSM|FIPS 140-2 düzey 3 HSM
+**EKI HSM**: simetrik|Desteklenmez|FIPS 140-2 düzey 3 HSM
+||||
+
+### <a name="software-protected-keys"></a>Yazılım korumalı anahtarlar
+
+|Anahtar türü|Kasalar|Yönetilen HSM havuzları|
+|--|--|--|--|
+**RSA**: "yazılım KORUMALı" RSA anahtarı|FIPS 140-2 düzey 1|Desteklenmez
+**EC**: "Yazılım korumalı" eliptik eğri anahtarı|FIPS 140-2 düzey 1|Desteklenmez
+||||
+
+### <a name="supported-algorithms"></a>Desteklenen algoritmalar
+
+|Anahtar türleri/boyutları/eğrileri| Şifreleme/şifre çözme<br>(Sarmalama/sarmalama) | İmzala/doğrula | 
+| --- | --- | --- |
+|EC-P256, EC-P256K, EC-P384, EC-521|NA|ES256<br>ES256K<br>ES384<br>ES512|
+|RSA 2K, 3K, 4K| RSA1_5<br>RSA-OAEP<br>RSA-OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
+|AES 128 bit, 256 bit| AES-KW<br>AES-GCM<br>AES-CBC| NA| 
+|||
 
 ###  <a name="ec-algorithms"></a>EC algoritmaları
- Aşağıdaki algoritma tanımlayıcıları Key Vault içindeki EC ve EC-HSM anahtarları ile desteklenir. 
+ Aşağıdaki algoritma tanımlayıcıları EC-HSM anahtarlarıyla desteklenir
 
 #### <a name="curve-types"></a>Eğri türleri
 
@@ -68,12 +99,13 @@ Key Vault kullandığı şifreleme modülleri, HSM veya yazılımın FIPS (Feder
 -   SHA-512 özetleri için **ES512** -ECDSA ve P-521 eğrisi ile oluşturulan anahtarlar. Bu algoritma [RFC7518](https://tools.ietf.org/html/rfc7518)adresinde açıklanmaktadır.
 
 ###  <a name="rsa-algorithms"></a>RSA algoritmaları  
- Aşağıdaki algoritma tanımlayıcıları Key Vault içindeki RSA ve RSA-HSM anahtarları ile desteklenir.  
+ Aşağıdaki algoritma tanımlayıcıları RSA ve RSA-HSM anahtarları ile desteklenir  
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, ŞIFRELEME/ŞIFRE ÇÖZME
 
 -   **RSA1_5** -rsaes-PKCS1-V1_5 [RFC3447] anahtar şifrelemesi  
 -   **Rsa-oaep** -bir. 2.1 bölümünde RFC 3447 tarafından belirtilen varsayılan parametrelerle En Iyi asimetrik şifreleme dolgusu (OAEP) [RFC3447] kullanılarak rsaes. Bu varsayılan parametreler, SHA-1 ' in bir karma işlevini ve MGF1 'in bir SHA-1 ile bir maske oluşturma işlevini kullanıyor.  
+-  **RSA-OAEP-256** – bir sha-256 karma Işlevi Ile En Iyi asimetrik şifreleme DOLDURMAYı ve sha-256 MGF1 'in bir maske oluşturma işlevini kullanarak rsaes
 
 #### <a name="signverify"></a>IMZALA/DOĞRULA
 
@@ -83,11 +115,19 @@ Key Vault kullandığı şifreleme modülleri, HSM veya yazılımın FIPS (Feder
 -   **RS256** -RSASSA-PKCS-v1_5 SHA-256 kullanılarak. Uygulamanın sağladığı Özet değeri SHA-256 kullanılarak hesaplanmalıdır ve 32 bayt uzunluğunda olmalıdır.  
 -   **RS384** -RSASSA-PKCS-v1_5 SHA-384 kullanılarak. Uygulamanın sağladığı Özet değeri SHA-384 kullanılarak hesaplanmalıdır ve 48 bayt uzunluğunda olmalıdır.  
 -   **RS512** -RSASSA-PKCS-v1_5 SHA-512 kullanılarak. Uygulamanın sağladığı Özet değeri SHA-512 kullanılarak hesaplanmalıdır ve 64 bayt uzunluğunda olmalıdır.  
--   **Rsnull** : belirli TLS senaryolarını etkinleştirmek için özel kullanım örneği olan [RFC2437].  
+-   **Rsnull** -belirli TLS senaryolarını etkinleştirmek için özel bir kullanım örneği olan [RFC2437](https://tools.ietf.org/html/rfc2437)bakın.  
+
+###  <a name="symmetric-key-algorithms"></a>Simetrik anahtar algoritmaları
+- **AES-kW** -AES anahtar sarması ([RFC3394](https://tools.ietf.org/html/rfc3394)).
+- Galos sayaç modunda **AES-GCM** -AES şifrelemesi ([NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
+- **AES-CBC** -AES şifrelemesi, Şifre blok zincirleme modunda ([NIST SP800-38A](https://csrc.nist.gov/publications/sp800))
+
+> [!NOTE] 
+> Geçerli AES-GCM uygulama ve ilgili API 'Ler deneysel. Uygulama ve API 'Ler, gelecekteki yinelemelerde önemli ölçüde değişebilir. 
 
 ##  <a name="key-operations"></a>Anahtar işlemleri
 
-Key Vault, anahtar nesnelerinde aşağıdaki işlemleri destekler:  
+Yönetilen HSM, anahtar nesnelerinde aşağıdaki işlemleri destekler:  
 
 -   **Oluştur**: bir istemcinin Key Vault bir anahtar oluşturmasına izin verir. Anahtarın değeri Key Vault tarafından oluşturulur ve depolanır ve istemciye serbest bırakılır. Asimetrik anahtarlar Key Vault oluşturulabilir.  
 -   **Içeri aktarma**: bir istemcinin mevcut bir anahtarı Key Vault içeri aktarmasını sağlar. Asimetrik anahtarlar, bir JWK yapısı içinde çok sayıda farklı paketleme yöntemi kullanılarak Key Vault içeri aktarılabilir. 
@@ -142,8 +182,8 @@ Diğer olası öznitelikler hakkında daha fazla bilgi için bkz. [JSON Web anah
 
 Etiketler biçiminde uygulamaya özgü ek meta verileri belirtebilirsiniz. Key Vault, her birinin 256 karakter adı ve 256 karakter değeri olabilen en fazla 15 etiketi destekler.  
 
->[!Note]
->Bu nesne türü (anahtarlar, gizlilikler veya sertifikalar) için *liste* veya *Al* izni varsa, Etiketler bir çağıran tarafından okunabilir.
+> [!NOTE] 
+> Etiketler, bu anahtara bir *liste* veya *Al* izni varsa, bir arayan tarafından okunabilir.
 
 ##  <a name="key-access-control"></a>Anahtar erişim denetimi
 
@@ -176,10 +216,10 @@ Bir kasadaki anahtarlar erişim denetimi girişinde, Kullanıcı başına/hizmet
 Anahtarlarla çalışma hakkında daha fazla bilgi için bkz. [Key Vault REST API başvurusu Içindeki anahtar işlemleri](/rest/api/keyvault). İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
 - [Key Vault Hakkında](../general/overview.md)
-- [Anahtarlar, gizli diziler ve sertifikalar hakkında](../general/about-keys-secrets-certificates.md)
+- [Yönetilen HSM hakkında](../managed-hsm/overview.md)
 - [Gizli diziler hakkında](../secrets/about-secrets.md)
 - [Sertifikalar hakkında](../certificates/about-certificates.md)
+- [Key Vault REST API genel bakış](../general/about-keys-secrets-certificates.md)
 - [Kimlik doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)
 - [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)

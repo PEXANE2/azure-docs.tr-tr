@@ -10,19 +10,19 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cd9b891212010d7e61c4a4eb64d8bf0660bbd69a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cd9af35e5b616f3f4d72405078782e1e88414c98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661631"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897355"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu makalede, Azure CLı kullanarak Azure Machine Learning çalışma alanı oluşturmayı öğreneceksiniz. Azure CLı, Azure kaynaklarını yönetmeye yönelik komutlar sağlar. CLı 'ya makine öğrenimi uzantısı, Azure Machine Learning kaynaklarıyla çalışmaya yönelik komutlar sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -35,7 +35,7 @@ Bu makalede, Azure CLı kullanarak Azure Machine Learning çalışma alanı olu�
 > [!IMPORTANT]
 > Azure Cloud Shell kullanıyorsanız, bu bölümü atlayabilirsiniz. Cloud Shell, Azure aboneliğinizde oturum açmak için kullandığınız hesabı kullanarak sizin için otomatik olarak kimlik doğrular.
 
-CLı 'dan Azure aboneliğinizde kimlik doğrulayabilmeniz için çeşitli yollar vardır. En temel, bir tarayıcı kullanarak etkileşimli olarak kimlik doğrulaması yapmak için kullanılır. Etkileşimli olarak kimlik doğrulaması yapmak için bir komut satırı veya terminali açın ve aşağıdaki komutu kullanın:
+CLı 'dan Azure aboneliğinizde kimlik doğrulayabilmeniz için çeşitli yollar vardır. En basit, bir tarayıcı kullanarak etkileşimli olarak kimlik doğrulaması yapmak için kullanılır. Etkileşimli olarak kimlik doğrulaması yapmak için bir komut satırı veya terminali açın ve aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az login
@@ -109,9 +109,6 @@ Kaynak gruplarıyla çalışma hakkında daha fazla bilgi için bkz. [az Group](
 
 __Hizmetlerin otomatik olarak oluşturulduğu__yeni bir çalışma alanı oluşturmak için aşağıdaki komutu kullanın:
 
-> [!TIP]
-> Bu bölümdeki komutlar temel bir sürüm çalışma alanı oluşturur. Kurumsal çalışma alanı oluşturmak için, `--sku enterprise` komutuyla anahtarını kullanın `az ml workspace create` . Azure Machine Learning sürümleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning nedir](overview-what-is-azure-ml.md#sku).
-
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
@@ -161,7 +158,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 
 Varsayılan olarak, çalışma alanının ölçümleri ve meta verileri Microsoft 'un koruduğu bir Azure Cosmos DB örneğine depolanır. Bu veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
 
-Azure Machine Learning __Kurumsal__ bir sürümünü oluşturuyorsanız kendi anahtarınızı sağlayın ' i kullanabilirsiniz. Bunun yapılması, ölçümleri ve meta verileri Azure aboneliğinizde depolayan Azure Cosmos DB örneğini oluşturur. `--cmk-keyvault`Anahtarı içeren Azure Key Vault belirtmek ve `--resource-cmk-uri` KASADAKI anahtarın URL 'sini belirtmek için parametresini kullanın.
+Microsoft tarafından yönetilen anahtarı kullanmak yerine kendi anahtarınızı sağlayın ' i kullanabilirsiniz. Bunun yapılması, ölçümleri ve meta verileri Azure aboneliğinizde depolayan Azure Cosmos DB örneğini oluşturur. `--cmk-keyvault`Anahtarı içeren Azure Key Vault belirtmek ve `--resource-cmk-uri` KASADAKI anahtarın URL 'sini belirtmek için parametresini kullanın.
 
 > [!IMPORTANT]
 > `--cmk-keyvault`Ve parametrelerini kullanmadan önce `--resource-cmk-uri` , önce aşağıdaki eylemleri gerçekleştirmeniz gerekir:

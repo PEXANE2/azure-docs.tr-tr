@@ -1,14 +1,14 @@
 ---
 title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81e08e07236d445a4ca351a7d93e7851cad69ace
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648722"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895370"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -206,8 +206,10 @@ Bir girişim veya ilke oluştururken, tanım konumunu belirtmeniz gerekir. Tanı
 
 Tanım konumu bir ise:
 
-- Yalnızca **abonelik** kapsamındaki kaynaklara ilke atanabilir.
-- **Yönetim grubu** -yalnızca alt yönetim grupları ve alt abonelikler içindeki kaynaklara ilke atanabilir. İlke tanımını birkaç aboneliğe uygulamayı planlıyorsanız, konum abonelik içeren bir yönetim grubu olmalıdır.
+- **Abonelik** -yalnızca bu abonelikte yer alan kaynaklara ilke tanımı atanabilir.
+- **Yönetim grubu** -yalnızca alt yönetim grupları ve alt abonelikler içindeki kaynaklara ilke tanımı atanabilir. İlke tanımını birkaç aboneliğe uygulamayı planlıyorsanız, konum her bir aboneliği içeren bir yönetim grubu olmalıdır.
+
+Daha fazla bilgi için bkz. [Azure ilkesinde kapsamı anlama](./scope.md#definition-location).
 
 ## <a name="policy-rule"></a>İlke kuralı
 
@@ -576,16 +578,16 @@ Tüm [Kaynak Yöneticisi şablonu işlevleri](../../../azure-resource-manager/te
 Aşağıdaki işlev bir ilke kuralında kullanılabilir, ancak bir Azure Resource Manager şablonunda (ARM şablonu) kullanımı farklıdır:
 
 - `utcNow()` -ARM şablonundan farklı olarak, bu özellik _DefaultValue_dışında kullanılabilir.
-  - Universal ISO 8601 DateTime biçimindeki ' yyyy-aa-ddTHH: mm: ss. fffffffZ ' içinde geçerli tarih ve saate ayarlanmış bir dize döndürür
+  - Evrensel ISO 8601 tarih saat biçiminde geçerli tarih ve saate ayarlanmış bir dize döndürür `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
 
 Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **DateTime**: [Required] Universal ISO 8601 DateTime biçiminde dize dizesi ' yyyy-mm-ddTHH: mm: ss. fffffffZ '
-  - **Numberofdaystoadd**: [gerekli] tamsayı-eklenecek gün sayısı
+  - **DateTime**: [Required] Universal ISO 8601 DateTime biçiminde dize dizesi `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
+  - **Numberofdaystoadd**: [gerekli] tamsayı-eklenecek gün sayısı.
 - `field(fieldName)`
   - **Alanadı**: [gerekli] dize-alınacak [alanın](#fields) adı
-  - If koşulu tarafından değerlendirilen kaynaktaki bu alanın değerini döndürür
+  - If koşulu tarafından değerlendirilen kaynaktaki bu alanın değerini döndürür.
   - `field` Öncelikle, değerlendirilen kaynaktaki alanlara başvurmak için **Auditınotexists** ve **deployifnotexists** ile birlikte kullanılır. Bu kullanım örneği, [Deployifnotexists örneğinde](effects.md#deployifnotexists-example)görülebilir.
 - `requestContext().apiVersion`
   - İlke değerlendirmesini tetikleyen isteğin API sürümünü döndürür (örnek: `2019-09-01` ).
@@ -679,7 +681,7 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
 
 ### <a name="understanding-the--alias"></a>[*] Diğer adını anlama
 
-Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ona eklenmiş bir sürümüne sahiptir **\[\*\]** . Örneğin:
+Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ona eklenmiş bir sürümüne sahiptir **\[\*\]** . Örnek:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

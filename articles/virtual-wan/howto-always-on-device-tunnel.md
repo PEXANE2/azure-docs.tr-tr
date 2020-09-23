@@ -6,20 +6,20 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7adeb9682336b19cc87d8c73a7f9ad8bda5e7828
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e814487cb4dab9c8c19daab2ea3bb81391d4a98f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564070"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983685"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>Sanal WAN için Always on VPN cihaz tüneli yapılandırma
 
 [!INCLUDE [intro](../../includes/vpn-gateway-vwan-always-on-intro.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Noktadan siteye yapılandırma oluşturmanız ve sanal hub atamasını düzenlemeniz gerekir. Yönergeler için aşağıdaki bölümlere bakın:
 
@@ -34,7 +34,7 @@ Noktadan siteye yapılandırma oluşturmanız ve sanal hub atamasını düzenlem
 
 Profili kaldırmak için aşağıdaki komutu çalıştırın:
 
-![Temizleme](./media/howto-always-on-device-tunnel/cleanup.png)
+![Ekran görüntüsünde, Remove-VpnConnection-Name Machineccerttest komutunu çalıştıran bir PowerShell penceresi gösterilir.](./media/howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

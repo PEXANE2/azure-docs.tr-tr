@@ -8,20 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: b8741d17c55a786d7a90d1c311039f2855adf43b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f007ddf2625bf9e8b9d4365902ac1511ea95fa81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530667"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904098"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videolar, blog gönderileri ve diğer bilgi türleri olabilir. Hizmette güncel kalmak için bu sayfaya yer işareti ekleyin.
 
 ## <a name="september-2020"></a>Eylül 2020
+
+### <a name="spatial-analysis-container-preview"></a>Uzamsal analiz kapsayıcısı önizlemesi
+
+[Uzamsal analiz kapsayıcısı](spatial-analysis-container.md) artık önizlemededir. Görüntü İşleme uzamsal analiz özelliği, kişiler ve fiziksel ortamlar aracılığıyla taşınanlar arasındaki uzamsal ilişkileri anlamak için gerçek zamanlı akış videosunu analiz etmenizi sağlar. Uzamsal analiz, şirket içinde kullanabileceğiniz bir Docker kapsayıcısıdır. 
 
 ### <a name="read-api-v31-public-preview-adds-ocr-for-japanese"></a>Okuma API v 3.1 Genel Önizleme Japonca için OCR ekler
 Görüntü İşleme Read API v 3.1 Genel önizlemesi şu özellikleri ekler:

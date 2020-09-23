@@ -51,6 +51,10 @@
         - name: HTTP uzantısı aracılığıyla OVMS ile
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: Özel Görüntü İşleme’yi kullanma
+          href: custom-vision-tutorial.md
+        - name: Uzamsal Analiz’i kullanma
+          href: spatial-analysis-tutorial.md
 - name: Örnekler
   items:
     - name: C# Doğrudan Yöntem örnekleri
@@ -89,6 +93,8 @@
       href: manage-recording-policy-how-to.md
     - name: Portalda doğrudan yöntem çağırma
       href: use-azure-portal-to-invoke-direct-methods.md
+    - name: Azure Stack Edge’de dağıtma
+      href: deploy-azure-stack-edge-how-to.md
     - name: Sorun giderme
       href: troubleshoot-how-to.md
 - name: Başvuru

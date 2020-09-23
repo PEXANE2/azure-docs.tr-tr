@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükler
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533487"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975312"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS aracısını yükler
 
@@ -42,10 +42,10 @@ Yedekleme için kullanılabilen veriler, aracının yüklü olduğu yere bağlı
 
 ## <a name="modify-storage-replication"></a>Depolama çoğaltmasını değiştirme
 
-Varsayılan olarak, [kasalar coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanır.
+Varsayılan olarak, [kasalar coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)kullanır.
 
 * Kasa birincil yedekleme mekanizmanız ise GRS kullanmanızı öneririz.
-* Azure depolama maliyetlerini azaltmak için [yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) kullanabilirsiniz.
+* Azure depolama maliyetlerini azaltmak için [yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) kullanabilirsiniz.
 
 Depolama çoğaltma türünü değiştirmek için:
 
@@ -131,18 +131,18 @@ Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümü
 
     ![Kasa kimlik bilgilerini indirme](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-1. **Kaydet**'i seçin. Dosya, Indirmeler klasörünüze indirilir. Kasa kimlik bilgileri dosyasını açamazsınız.
+1. **Kaydet**’i seçin. Dosya, Indirmeler klasörünüze indirilir. Kasa kimlik bilgileri dosyasını açamazsınız.
 
 ## <a name="install-and-register-the-agent"></a>Aracıyı yükleme ve kaydetme
 
 1. Yedeklemek istediğiniz makinelerde *MARSagentinstaller.exe* dosyasını çalıştırın.
-1. MARS Aracısı kurulum sihirbazında, **yükleme ayarları**' nı seçin. Burada, aracının yükleneceği yeri seçin ve önbellek için bir konum seçin. Sonra **İleri**’yi seçin.
+1. MARS Aracısı kurulum sihirbazında, **yükleme ayarları**' nı seçin. Burada, aracının yükleneceği yeri seçin ve önbellek için bir konum seçin. Ardından **İleri**’yi seçin.
    * Azure Backup, veri anlık görüntülerini Azure 'a göndermeden önce depolamak için önbelleği kullanır.
    * Önbellek konumunda, yedeklediğiniz verilerin boyutunun en az %5 ' i kadar boş alan olmalıdır.
 
     ![MARS Aracısı kurulum sihirbazında yükleme ayarlarını seçin](./media/backup-configure-vault/mars1.png)
 
-1. **Ara sunucu yapılandırması**Için, Windows makinesinde çalışan aracının internet 'e nasıl bağlanacağını belirtin. Sonra **İleri**’yi seçin.
+1. **Ara sunucu yapılandırması**Için, Windows makinesinde çalışan aracının internet 'e nasıl bağlanacağını belirtin. Ardından **İleri**’yi seçin.
 
    * Özel bir proxy kullanıyorsanız, gerekli tüm proxy ayarlarını ve kimlik bilgilerini belirtin.
    * Aracının [belirli URL 'lere](#before-you-start)erişmesi gerektiğini unutmayın.
@@ -151,7 +151,7 @@ Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümü
 
 1. **Yükleme**için önkoşulları gözden geçirin ve **yükleme**' yi seçin.
 1. Aracı yüklendikten sonra, **kayda devam et**' i seçin.
-1. **Sunucu kaydetme Sihirbazı**  >  **kasa kimliği**' nde, indirdiğiniz kimlik bilgileri dosyasına gidin ve seçin. Sonra **İleri**’yi seçin.
+1. **Sunucu kaydetme Sihirbazı**  >  **kasa kimliği**' nde, indirdiğiniz kimlik bilgileri dosyasına gidin ve seçin. Ardından **İleri**’yi seçin.
 
     ![Sunucu kaydetme Sihirbazı 'Nı kullanarak kasa kimlik bilgileri ekleme](./media/backup-configure-vault/register1.png)
 

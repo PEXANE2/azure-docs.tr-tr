@@ -11,15 +11,15 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141134"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897419"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning sahip kaynaklara yönelik kotaları yönetme & artırma
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu makalede, [Azure Machine Learning](overview-what-is-azure-ml.md) aboneliğiniz ve yönetebileceğiniz kotalar için Azure kaynakları üzerinde önceden yapılandırılmış sınırlar hakkında bilgi edineceksiniz. Bu sınırlar, sahtekarlık nedeniyle yapılan bütçeyi önlemek ve Azure kapasite kısıtlamalarını kabul etmek için yerinde konur. 
 
@@ -99,8 +99,6 @@ Belirli bir abonelikte her bölge için depolama hesabı sayısı sınırı vard
 
 
 > [!NOTE]
-> Bu yalnızca bir Enterprise Edition özelliğidir. Aboneliğinizde hem [temel hem de Enterprise Edition](overview-what-is-azure-ml.md#sku) çalışma alanınız varsa, bunu yalnızca kurumsal çalışma alanınızdaki kotaları ayarlamak için kullanabilirsiniz. Temel çalışma alanlarınız, varsayılan davranış olan abonelik düzeyi kotasına sahip olmaya devam edecektir.
->
 > Çalışma alanı düzeyinde kota ayarlamak için abonelik düzeyi izinlerine sahip olmanız gerekir. Bu, tek bir çalışma alanı sahibinin kotalarını düzenleyememesi veya artırmaması ve başka bir çalışma alanı için ayrılan kaynakları encroaching başlatması için zorlanır. Bu nedenle, abonelik Yöneticisi bu kotaları ayırmak ve çalışma alanları genelinde dağıtmak için idealdir.
 
 
@@ -137,7 +135,7 @@ Sınırlar, tablolarda gösterilen en büyük sınır değerinin üzerinde olama
 Kota artışı istediğinizde, kotayı artırmak için istediğiniz hizmeti seçmeniz gerekir, bu, Machine Learning hizmet kotası, kapsayıcı örnekleri veya depolama kotası gibi hizmetler olabilir. Azure Machine Learning Işlem için ek olarak, yukarıdaki adımları izleyerek kotayı görüntülerken kota **iste** düğmesine tıklayabilirsiniz.
 
 > [!NOTE]
-> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. [Ücretsiz bir deneme aboneliğiniz](https://azure.microsoft.com/offers/ms-azr-0044p)varsa, bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) aboneliğine yükseltebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme sürümünü Kullandıkça Öde](../billing/billing-upgrade-azure-subscription.md) ve [ücretsiz deneme aboneliği hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
+> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. [Ücretsiz bir deneme aboneliğiniz](https://azure.microsoft.com/offers/ms-azr-0044p)varsa, bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) aboneliğine yükseltebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme sürümünü Kullandıkça Öde](../billing/billing-upgrade-azure-subscription.md) ve  [ücretsiz deneme aboneliği hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

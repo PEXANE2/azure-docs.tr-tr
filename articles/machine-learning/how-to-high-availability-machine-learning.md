@@ -10,16 +10,16 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/16/2020
-ms.openlocfilehash: abb24ef1cc6a693acbaf6561a185fd5ae536a66d
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 64665c0b1e32970f29233f5abdd6b2d2d020a6b2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89668787"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897516"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>Azure Machine Learning dayanıklılığı artırın
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu makalede, yüksek kullanılabilirliğe sahip yapılandırmaların kullanılmasıyla Microsoft Azure Machine Learning kaynaklarınızın nasıl daha dayanıklı hale alınacağını öğreneceksiniz. Azure Machine Learning yüksek kullanılabilirlik için bağlı olan Azure hizmetlerini yapılandırabilirsiniz. Bu makalede, yüksek kullanılabilirlik için yapılandırabileceğiniz hizmetler ve bu kaynakları yapılandırmayla ilgili ek bilgilere bağlantılar tanımlanmaktadır.
 

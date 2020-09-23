@@ -4,15 +4,16 @@ description: Azure yay bulutu için sorun giderme kılavuzu
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b34bd51e9d84629682565592c733b23a320597aa
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: d3094a8cca317e53dd3b8bc8e9b32b956c89a376
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669755"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904200"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Yaygın Azure Spring Cloud sorunlarını giderme
 
@@ -20,6 +21,7 @@ Bu makalede, Azure Spring Cloud geliştirme sorunlarını gidermeye yönelik yö
 
 ## <a name="availability-performance-and-application-issues"></a>Kullanılabilirlik, performans ve uygulama sorunları
 
+::: zone pivot="programming-language-java"
 ### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>Uygulamam başlatılamıyor (örneğin, uç nokta bağlanamaz veya birkaç yeniden denemeden sonra bir 502 döndürür)
 
 Günlükleri Azure Log Analytics dışarı aktarın. Yay uygulama günlüklerinin tablosu *Appplatformlogsforspring*olarak adlandırılır. Daha fazla bilgi edinmek için bkz. [Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme](diagnostic-services.md).
@@ -67,6 +69,7 @@ Uygulama kilitlenmelerinden hata ayıklaması yaparken, uygulamanın çalışma 
 
 
 Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Uygulamam yüksek CPU kullanımı veya yüksek bellek kullanımıyla karşılaşıyor
 
@@ -90,6 +93,7 @@ Tüm örnekler çalışıyor ve çalışıyorsa, uygulama günlüklerinizi sorgu
 
 Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). [Kusto sorgu dilini](https://docs.microsoft.com/azure/kusto/query/)kullanarak günlükleri sorgulayın.
 
+::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Spring uygulamanızı Azure Spring Cloud 'a dağıtmaya yönelik denetim listesi
 
 Uygulamanızı eklemeden önce, aşağıdaki ölçütlere uyduğundan emin olun:
@@ -101,6 +105,7 @@ Uygulamanızı eklemeden önce, aşağıdaki ölçütlere uyduğundan emin olun:
 * JVM parametrelerinin beklenen değerleri vardır.
 * Katıştırılmış _yapılandırma sunucusu_ ve _Spring Service kayıt defteri_ hizmetlerini uygulama paketinden devre dışı bırakmanız veya kaldırmanız önerilir.
 * _Hizmet Bağlama_ aracılığıyla bağlanacak Azure kaynakları varsa, hedef kaynakların çalıştığından emin olun.
+::: zone-end
 
 ## <a name="configuration-and-management"></a>Yapılandırma ve Yönetim
 
@@ -119,6 +124,17 @@ Azure yay bulut hizmeti örneğini Kaynak Yöneticisi şablonunu kullanarak ayar
 
 Azure Spring Cloud Service örneğinin adı, altında bir alt etki alanı adı istemek için kullanılır, bu `azureapps.io` nedenle ad var olan bir adla çakışırsa kurulum başarısız olur. Etkinlik günlüklerinde daha fazla ayrıntı bulabilirsiniz.
 
+::: zone pivot="programming-language-java"
+### <a name="i-cant-deploy-a-net-core-app"></a>.NET Core uygulamasını dağıtamıyorum
+
+.NET Core Steeltoe uygulamasının bir *. zip* dosyasını Azure portal veya Kaynak Yöneticisi şablonunu kullanarak karşıya yükleyemezsiniz.
+
+[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)kullanarak uygulama paketinizi dağıttığınızda, Azure CLI dağıtım ilerlemesini düzenli aralıklarla yoklar ve sonunda dağıtım sonucunu görüntüler.
+
+Uygulamanızın doğru *. zip* dosya biçiminde paketlendiğinden emin olun. Doğru paketlenmemişse, işlem askıda kalır veya bir hata iletisi alırsınız.
+::: zone-end
+
+::: zone pivot="programming-language-java"
 ### <a name="i-cant-deploy-a-jar-package"></a>JAR paketini dağıtamıyorum
 
 Java arşiv dosyası (JAR)/Source paketini Azure portal veya Kaynak Yöneticisi şablonunu kullanarak karşıya yükleyemezsiniz.
@@ -216,3 +232,8 @@ Uygulama paketinizdeki _JMX_ 'in etkin olduğunu görmek için işaretleyin. Bu 
 ```
 
 Uygulama günlüklerinizin bir depolama hesabına arşivlenmesi, ancak Azure Log Analytics 'e gönderilmemesi durumunda, [çalışma alanınızı doğru şekilde ayarlayıp ayarlamadığını](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)kontrol edin. Ücretsiz bir Azure Log Analytics katmanı kullanıyorsanız, [ücretsiz katmanın bir hizmet düzeyi sözleşmesi (SLA) sağlamayacağını](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)unutmayın.
+::: zone-end
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Azure Spring Cloud 'da sorunları kendi kendine tanılama ve çözme](spring-cloud-howto-self-diagnose-solve.md)

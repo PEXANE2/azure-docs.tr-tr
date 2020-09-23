@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d60a6f9032a39ab4889ce0db154739c5cb3b540b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 726be3f0f8402404d0154336aaf7d5f09fefec10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070505"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967466"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Tablolar ve kuyruklar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturun
 
-Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, kuyruk depolama ve tablo depolama, hizmet kapsamındaki ve Microsoft tarafından yönetilen bir anahtar kullanır. Ayrıca, kuyruk veya tablo verilerini şifrelemek için müşteri tarafından yönetilen anahtarlar kullanmayı da tercih edebilirsiniz. Müşteri tarafından yönetilen anahtarları kuyruklar ve tablolarla birlikte kullanmak için, öncelikle hesap kapsamında olan ve hizmet yerine, bir şifreleme anahtarı kullanan bir depolama hesabı oluşturmanız gerekir. Kuyruk ve tablo verileri için hesap şifreleme anahtarını kullanan bir hesap oluşturduktan sonra, müşteri tarafından yönetilen anahtarları bu depolama hesabı için Azure Key Vault ile yapılandırabilirsiniz.
+Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, kuyruk depolama ve tablo depolama, hizmet kapsamındaki ve Microsoft tarafından yönetilen bir anahtar kullanır. Ayrıca, kuyruk veya tablo verilerini şifrelemek için müşteri tarafından yönetilen anahtarlar kullanmayı da tercih edebilirsiniz. Müşteri tarafından yönetilen anahtarları kuyruklar ve tablolarla birlikte kullanmak için, öncelikle hesap kapsamında olan ve hizmet yerine, bir şifreleme anahtarı kullanan bir depolama hesabı oluşturmanız gerekir. Kuyruk ve tablo verileri için hesap şifreleme anahtarını kullanan bir hesap oluşturduktan sonra, bu depolama hesabı için müşteri tarafından yönetilen anahtarları yapılandırabilirsiniz.
 
 Bu makalede, hesap kapsamındaki bir anahtara dayanan bir depolama hesabının nasıl oluşturulacağı açıklanır. Hesap ilk oluşturulduğunda, Microsoft hesap anahtarını hesaptaki verileri şifrelemek için kullanır ve Microsoft bu anahtarı yönetir. Daha sonra, kendi anahtarlarınızı sağlamak, anahtar sürümünü güncelleştirmek, anahtarları döndürmek ve erişim denetimlerini iptal etmek dahil olmak üzere bu avantajlardan yararlanmak için hesap için müşteri tarafından yönetilen anahtarları yapılandırabilirsiniz.
 
@@ -215,11 +215,7 @@ Aşağıdaki JSON örneği, Okuma Erişimli Coğrafi olarak yedekli depolama (RA
 
 ---
 
-Hesap şifreleme anahtarına dayanan bir hesap oluşturduktan sonra, müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırmak için aşağıdaki makalelerden birine bakın:
-
-- [Azure portalı kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](storage-encryption-keys-portal.md)
-- [PowerShell kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma](storage-encryption-keys-powershell.md)
-- [Azure CLı kullanarak, müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](storage-encryption-keys-cli.md)
+Hesap şifreleme anahtarına dayanan bir hesap oluşturduktan sonra, Azure Key Vault veya Key Vault yönetilen donanım güvenlik modeli (HSM) (Önizleme) içinde depolanan müşteri tarafından yönetilen anahtarları yapılandırabilirsiniz. Müşteri tarafından yönetilen anahtarları bir anahtar kasasında nasıl depolayacağınızı öğrenmek için, bkz. [Azure Key Vault depolanan müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma](customer-managed-keys-configure-key-vault.md). Yönetilen bir HSM 'de müşteri tarafından yönetilen anahtarların nasıl depolanacağını öğrenmek için bkz. [Azure Key Vault YÖNETILEN HSM 'de depolanan müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma (Önizleme)](customer-managed-keys-configure-key-vault-hsm.md).
 
 ## <a name="verify-the-account-encryption-key"></a>Hesap şifreleme anahtarını doğrulama
 
@@ -254,5 +250,6 @@ Yok
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bekleyen veri için Azure Depolama şifrelemesi](storage-service-encryption.md) 
+- [Bekleyen veri için Azure Depolama şifrelemesi](storage-service-encryption.md)
+- [Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarlar](customer-managed-keys-overview.md)
 - [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

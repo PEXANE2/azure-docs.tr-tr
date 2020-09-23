@@ -8,17 +8,17 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75354428"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903838"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Öğretici: Azure Pipelines kullanarak CI/CD ile Azure Stream Analytics işi dağıtma
 Bu öğreticide, Azure Pipelines kullanarak bir Azure Stream Analytics işi için sürekli tümleştirme ve dağıtımın nasıl ayarlanacağı açıklanır. 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Projenize kaynak denetimi ekleme
@@ -26,8 +26,12 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Azure Pipelines’da yayın işlem hattı oluşturma
 > * Uygulamayı otomatik olarak dağıtma ve yükseltme
 
+> [!NOTE]
+> CI/CD NuGet kullanım dışı bırakılıyor. En son NPM 'ye geçiş hakkında daha fazla bilgi için bkz. [sürekli tümleştirme ve dağıtıma genel bakış](cicd-overview.md)
+
 ## <a name="prerequisites"></a>Önkoşullar
-Başlamadan önce şunlara sahip olduğunuzdan emin olun:
+
+Başlamadan önce, aşağıdaki adımları gerçekleştirdiğinizden emin olun:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * [Visual Studio](stream-analytics-tools-for-visual-studio-install.md)’yu ve **Azure geliştirme** veya **Veri Depolama ve İşleme** iş yüklerini yükleyin.
@@ -63,9 +67,9 @@ Derlemeler oluşturabilmek için uygulamanızın kaynak dosyalarını Azure DevO
     Depoyu yayımlamak, kuruluşunuzda yerel depoyla aynı ada sahip yeni bir proje oluşturur. Mevcut bir projede depoyu oluşturmak için **Depo adı**' nın yanındaki **Gelişmiş** ' e tıklayın ve bir proje seçin. **Web üzerinde görüntüleyin**’i seçerek kodunuzu tarayıcıda görüntüleyebilirsiniz.
  
 ## <a name="configure-continuous-delivery-with-azure-devops"></a>Azure DevOps ile sürekli teslimi yapılandırma
-Azure Pipelines derleme işlem hattı, sırayla yürütülen derleme adımlarından oluşturulmuş bir iş akışını açıklar. [Azure Pipelines derleme işlem hatları](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) hakkında daha fazla bilgi edinin. 
+Azure Pipelines derleme işlem hattı, sırayla yürütülen derleme adımlarından oluşturulmuş bir iş akışını açıklar. [Azure Pipelines derleme işlem hatları](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav&preserve-view=true) hakkında daha fazla bilgi edinin.
 
-Bir Azure Pipelines yayın işlem hattı, kümeye uygulama paketi dağıtan bir iş akışını açıklar. Derleme işlem hattı ve yayın işlem hattı birlikte kullanıldığında kaynak dosyalarla başlayan ve kümenizde çalışan bir uygulamayla biten iş akışının tamamını yürütür. Azure Pipelines [yayın işlem hatları](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) hakkında daha fazla bilgi edinin.
+Bir Azure Pipelines yayın işlem hattı, kümeye uygulama paketi dağıtan bir iş akışını açıklar. Derleme işlem hattı ve yayın işlem hattı birlikte kullanıldığında kaynak dosyalarla başlayan ve kümenizde çalışan bir uygulamayla biten iş akışının tamamını yürütür. Azure Pipelines [yayın işlem hatları](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts&preserve-view=true) hakkında daha fazla bilgi edinin.
 
 ### <a name="create-a-build-pipeline"></a>Derleme işlem hattı oluşturma
 Bir web tarayıcısı açın ve [Azure DevOps](https://app.vsaex.visualstudio.com/)’da az önce oluşturduğunuz projeye gidin. 
@@ -121,7 +125,7 @@ Bir web tarayıcısı açın ve [Azure DevOps](https://app.vsaex.visualstudio.co
     |Kaynak Grubu  |  Kaynak grubu adı girin.   |
     |Şablon  | [Çözüm yolunuz]\bin\Debug\Deploy\\[Projenizin adı].JobTemplate.json   |
     |Şablon parametreleri  | [Çözüm yolunuz]\bin\Debug\Deploy\\[Projenizin adı].JobTemplate.parameters.json   |
-    |Şablon parametrelerini geçersiz kılma  | Metin kutusunda geçersiz kılmak için şablon parametrelerini yazın. Örneğin, –storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre). Bu özellik isteğe bağlı olsa da, anahtar parametreleriniz geçersiz kılınmamışsa derlemeniz hatalı bitecektir.    |
+    |Şablon parametrelerini geçersiz kılma  | Metin kutusunda geçersiz kılmak için şablon parametrelerini yazın. Örnek, `–storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre)` . Bu özellik isteğe bağlı olsa da, anahtar parametreleriniz geçersiz kılınmamışsa derlemeniz hatalı bitecektir.    |
     
     ![Azure Kaynak grubu dağıtımı için özellikleri ayarla](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deployment-properties.png)
 
@@ -158,7 +162,7 @@ Artık gerekli olmadığında kaynak grubunu, akış işini ve tüm ilgili kayna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Visual Studio için Azure Stream Analytics araçlarını kullanarak sürekli tümleştirme ve dağıtım işlemi ayarlama hakkında daha fazla bilgi edinmek için, CI/CD işlem hattını ayarlama makalesiyle devam edin:
+Visual Studio için Azure Stream Analytics araçları 'nı kullanarak sürekli tümleştirme ve dağıtım süreci ayarlama hakkında daha fazla bilgi edinmek için, CI/CD işlem hattı kurulumu makalesine ilerleyin:
 
 > [!div class="nextstepaction"]
 > [Stream Analytics araçlarıyla sürekli tümleştirme ve geliştirme](stream-analytics-tools-for-visual-studio-cicd.md)

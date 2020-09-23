@@ -1,77 +1,68 @@
 ---
 title: Genel Bakış-MySQL için Azure veritabanı
 description: Microsoft bulutundaki MySQL Community sürümünü temel alan ilişkisel bir veritabanı hizmeti olan MySQL için Azure veritabanı hizmeti hakkında bilgi edinin.
-author: ajlam
+author: savjani
 ms.service: mysql
-ms.author: andrela
+ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: 37bc99d9f83f185a5372fd45634351987b85e20b
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 2a44896ff7cabb9e44c02be9f3dba201298d4794
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763669"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903951"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>MySQL için Azure Veritabanı nedir?
 
 MySQL için Azure veritabanı, [MySQL Community Edition](https://www.mysql.com/products/community/) 'Da (GPLv2 License) veritabanı altyapısı, sürüm 5,6, 5,7 ve 8,0 temel alınarak Microsoft bulutundaki bir ilişkisel veritabanı hizmetidir. MySQL için Azure veritabanı şunları sağlar:
 
-- Ek ücret ödemeden yerleşik yüksek kullanılabilirlik.
-- Kapsamlı kullandıkça öde fiyatlandırması kullanılarak öngörülebilir performans.
-- Saniyeler içinde gerektiği gibi ölçeklendirin.
-- Bekleyen ve hareket halindeki hassas verileri korumaya yönelik güvenlik.
-- Otomatik yedeklemeler ve 35 güne kadar belirli bir noktaya geri yükleme.
-- Kurumsal düzeyde güvenlik ve uyumluluk.
+- Yerleşik yüksek kullanılabilirlik.
+- Otomatik yedeklemeler ve en çok 35 güne kadar bir noktadan sonra geri yükleme kullanarak veri koruma.
+- Hizmeti güvenli ve güncel tutmak için temel alınan donanım, işletim sistemi ve veritabanı altyapısı için otomatik bakım.
+- Kullandıkça öde fiyatlandırması ile tahmin edilebilir performans.
+- Saniyeler içinde elastik ölçekleme.
+- Sunucuyu durdurma/başlatma yeteneğine sahip maliyet iyileştirme denetimleri. 
+- Önemli verileri REST ve hareket halindeyken korumak için kurumsal düzeyde güvenlik ve sektör lideri uyumluluk.
+- Büyük ölçekli dağıtımlar için yönetimi ve izlemeyi basitleştirmek üzere izleme ve otomatikleştirme.
+- Sektör lideri destek deneyimi.
 
 Bu özellikler neredeyse hiç yönetim gerektirmez ve tümüyle ek ücret ödemeden sağlanır. Bunlar sayesinde değerli zamanınızı ve kaynaklarınızı sanal makine ve altyapı yönetimi yerine hızlı uygulama geliştirmeye ve piyasaya sunma sürenizi kısaltmaya ayırabilirsiniz. Buna ek olarak, kendi seçtiğiniz açık kaynak araçları ve platformuyla uygulamanızı geliştirmeye devam edebilir, böylelikle yeni beceriler edinmek zorunda kalmadan işlerinizin gerektirdiği hızla ve verimlilikle kullanıma sunabilirsiniz.
 
-![MySQL için Azure veritabanı kavramsal diyagramı](media/overview/1-azure-db-for-mysql-conceptual-diagram.png)
+:::image type="content" source="media/overview/1-azure-db-for-mysql-conceptual-diagram.png" alt-text="MySQL için Azure veritabanı kavramsal diyagramı":::
 
-Bu makalede, ayrıntıları keşfetmeye yönelik bağlantılarla birlikte, MySQL için Azure veritabanı temel kavramları ve özellikleri ve performans, ölçeklenebilirlik ve yönetilebilirlik ile ilgili özellikler açıklanır. Başlamanıza yardımcı olacak şu hızlı başlangıçlara bakın:
+## <a name="deployment-models"></a>Dağıtım modelleri
 
-- [Azure portalını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Azure CLI aracını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-cli.md)
+MySQL Community Edition tarafından desteklenen MySQL için Azure veritabanı, iki dağıtım modunda sunulmaktadır:
+- Tek sunucu 
+- Esnek Sunucu (Önizleme)
+  
+### <a name="azure-database-for-mysql---single-server"></a>MySQL için Azure veritabanı-tek sunucu
 
-Azure CLI örnekleri için bkz:
+MySQL için Azure veritabanı tek sunucu, veritabanı özelleştirmeleri için en az gereksinimle tam olarak yönetilen bir veritabanı hizmetidir. Tek sunucu platformu, düzeltme eki uygulama, yedekleme, yüksek kullanılabilirlik, en az Kullanıcı Yapılandırması ve denetimiyle güvenlik gibi veritabanı yönetim işlevlerinin çoğunu işleyecek şekilde tasarlanmıştır. Mimari, tek kullanılabilirlik bölgesinde% 99,99 kullanılabilirlik ile yerleşik yüksek kullanılabilirlik için iyileştirilmiştir. MySQL 5,6, 5,7 ve 8,0 topluluk sürümünü destekler. Hizmet, günümüzde çok çeşitli [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/services/)kullanılabilir.
 
-- [MySQL için Azure Veritabanı’na yönelik Azure CLI örnekleri](sample-scripts-azure-cli.md)
+Tek sunuculu dağıtım seçeneği üç fiyatlandırma katmanı sunar: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Her katman veritabanı iş yükünüzü desteklemek için farklı kaynak özellikleri sunar. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesini sağlar. Yalnızca ihtiyacınız olan kaynaklar için ve yalnızca bunlara ihtiyacınız olduğunda ödeme yaparsınız. Ayrıntılar için bkz. [Fiyatlandırma katmanları](concepts-pricing-tiers.md).
 
-## <a name="automated-patching"></a>Otomatik düzeltme eki uygulama
-Hizmet, temel alınan donanım, işletim sistemi ve veritabanı altyapısının otomatik düzeltme eki uygular. Düzeltme eki uygulama, temel alınan donanım, işletim sistemi ve veritabanı altyapısı için güvenlik ve yazılım güncelleştirmelerini içerir. MySQL altyapısı için, ikincil sürüm yükseltmeleri otomatik ve düzeltme eki uygulama sürümünün bir parçası olarak dahil edilmiştir. Topluluk bir ikincil sürüm yayınlarsa, hizmet için test döngüsünün bir parçası olarak otomatik olarak tümleştirilir. İkincil sürümün testi, MySQL için bazı kurallı iş yükleri üzerinde gerçekleştirilir. MySQL altyapısının ikincil sürüm sürümü güvenilirlik (kilitlenme yok), kullanılabilirlik, güvenlik ve performans için değerlendirilir. Tüm alt sürümler hizmette üretime yayınlanmaz, ancak hata düzeltmelerinin ve yeni artımlı değerin önemi temel alınarak evaluted. Bu, yeni artımlı değer arasındaki doğru dengeyi ve kararlılık için sistemdeki değişkenleri en aza indirmenizi sağlar. Düzeltme için gereken kullanıcı eylemi veya yapılandırma ayarları yoktur. Düzeltme eki uygulama, yükün önem derecesine göre hizmet tarafından yönetilmektedir. Genel olarak, hizmet sürekli tümleştirme ve yayının bir parçası olarak aylık yayın zamanlamasını izler. Kullanıcılar, olaydan önce yaklaşan bakım 72 saati hakkında bildirim almak için [Planlı bakım bildirimine](concepts-monitoring.md) abone olabilir.
+Tek sunucular, düzeltme eki uygulama ve özel MySQL yapılandırma ayarları üzerinde ayrıntılı denetim gereksinimi olmadan otomatik düzeltme eki uygulamayı işleyecek şekilde tasarlanan bulut Yerel uygulamaları için idealdir. 
 
-## <a name="adjust-performance-and-scale-within-seconds"></a>Saniyeler içinde performansı ve ölçeği ayarlama
-MySQL için Azure veritabanı hizmeti, birkaç hizmet katmanı sunar: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Her katman, hafiften ağıra kadar tüm iş yüklerini desteklemek üzere farklı performans ve özellikler getirir. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesini sağlar. Yalnızca ihtiyacınız olan kaynaklar için ve yalnızca bunlara ihtiyacınız olduğunda ödeme yaparsınız. Ayrıntılar için bkz. [fiyatlandırma katmanları](concepts-service-tiers.md) .
+Tek sunuculu dağıtım moduna yönelik ayrıntılı genel bakış için [tek sunucuya genel bakış](single-server-overview.md)konusuna bakın.
 
-## <a name="monitoring-and-alerting"></a>İzleme ve uyarı
-Ne zaman artırılacağına ve ne zaman azaltılacağını nasıl karar verirsiniz? Yerleşik performans izleme ve uyarı özelliklerini, sanal çekirdekleri temel alan performans değerlendirmeleriyle birlikte kullanırsınız. Bu araçları kullanarak geçerli veya projeye özgü performans ihtiyaçlarınıza göre sanal çekirdeklerin ölçeğini büyütme veya küçültme işlemlerinin etkisini hızla değerlendirebilirsiniz. Ayrıntılar için bkz. [Uyarılar](howto-alert-on-metric.md).
+### <a name="azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme)
 
-## <a name="keep-your-app-and-business-running"></a>Uygulamanızın ve işinizin hiç kesintiye uğramamasını sağlayın
-Azure'ın Microsoft yönetimindeki veri merkezlerinin küresel bir ağı tarafından desteklenen ve endüstri lideri niteliğinde %99,99'luk bir kullanılabilirlik oranı sunan hizmet düzeyi sözleşmesi (SLA), uygulamanızın 7/24 kesintiye uğramamasına yardımcı olur. Her MySQL için Azure veritabanı sunucusunda, satın almanız veya tasarlamanız, oluşturmanız ve yönetmeniz gereken yerleşik güvenlik, hataya dayanıklılık ve veri korumasından yararlanabilirsiniz. MySQL için Azure veritabanı ile, bir sunucuyu daha önceki bir duruma geri yüklemek için, 35 gün olarak geri yükleme yapabilirsiniz.
+MySQL için Azure veritabanı esnek sunucu, veritabanı yönetim işlevleri ve yapılandırma ayarları üzerinde daha ayrıntılı denetim ve esneklik sağlamak için tasarlanmış, tam olarak yönetilen bir veritabanı hizmetidir. Genel olarak, hizmet kullanıcı gereksinimlerine göre daha fazla esneklik ve özelleştirmeler sağlar. Esnek sunucu mimarisi, kullanıcıların tek kullanılabilirlik bölgesinde ve birden çok kullanılabilirlik alanında yüksek kullanılabilirliği kabul etmesine olanak tanır. Esnek sunucular, sürekli olarak tam işlem kapasitesi gerektirmeyen iş yükleri için ideal olan sunucu ve Burstable işlem katmanını durdurma/başlatma yeteneğine sahip daha iyi maliyet iyileştirme denetimleri sağlar. Hizmet şu anda MySQL 5,7 'in topluluk sürümünü yakında daha yeni sürümler eklemeye yönelik planlar ile desteklemektedir. Hizmet şu anda genel önizleme aşamasındadır ve çok çeşitli [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/services/)kullanılabilir.
 
-## <a name="secure-your-data"></a>Verilerinizin güvenliğini sağlama
-Azure veritabanı Hizmetleri, MySQL için Azure veritabanı 'nın, erişimi sınırlayan, verileri REST ve hareket halindeyken koruyan özelliklerle ve etkinliği izlemenize yardımcı olan bir gelenek veri güvenliği içerir. Azure'ın platform güvenliği hakkında bilgi edinmek için [Azure Güven Merkezi](https://www.microsoft.com/trustcenter/security)'ni ziyaret edin. MySQL için Azure veritabanı güvenlik özellikleri hakkında daha fazla bilgi için bkz. [Güvenliğe genel bakış](concepts-security.md).
+Esnek sunucular için en uygun 
+- Daha iyi denetim ve özelleştirmeler gerektiren uygulama geliştirmeleri.
+- Bölge yedekli yüksek kullanılabilirlik
+- Yönetilen bakım pencereleri
 
-## <a name="contacts"></a>Kişiler
-MySQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, MySQL için Azure veritabanı ekibine bir e-posta gönderin ([ @Ask MySQL IÇIN Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)). Bu e-posta adresi bir teknik destek diğer adı değil.
-
-Buna ek olarak, aşağıdaki iletişim noktalarını uygun şekilde göz önünde bulundurun:
-
-- Azure Desteği ile iletişim kurmak için [Azure portaldan bir bilet oluşturun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Hesabınızla ilgili bir sorun gidermek için Azure portalda bir [destek isteği](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) oluşturun.
-- Görüş bildirmek veya yeni özellikler istemek için [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) aracılığıyla bir giriş oluşturun.
+Esnek sunucu dağıtım moduna ayrıntılı genel bakış için bkz. [esnek sunucuya genel bakış](flexible-server/overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık MySQL için Azure veritabanı 'na giriş okuduğunuzu ve "MySQL için Azure veritabanı nedir?" sorusunu yanıtladığınıza göre şunları yapmaya hazırsınız:
 
-- Maliyet karşılaştırmaları ve hesaplayıcıları için fiyatlandırma sayfasına bakın. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/mysql/)
-- İlk sunucunuzu oluşturarak başlayın. [Azure portalını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-portal.md)
-- Tercih ettiğiniz dili kullanarak ilk uygulamanızı oluşturun:
-  - [Python](./connect-python.md)
-  - [Node.JS](./connect-nodejs.md)
-  - [Java](./connect-java.md)
-  - [Ruby](./connect-ruby.md)
-  - [PHP](./connect-php.md)
-  - [.NET (C#)](./connect-csharp.md)
-  - [Git](./connect-go.md)
+MySQL için Azure veritabanı 'nın iki dağıtım modu hakkında daha fazla bilgi edinin ve gereksinimlerinize göre doğru seçenekleri seçin.
+
+- [Tek sunucu](single-server/index.yml)
+- [Esnek sunucu](flexible-server/index.yml)
+- [İş yükünüz için doğru MySQL dağıtım seçeneğini belirleyin](select-right-deployment-type.md)

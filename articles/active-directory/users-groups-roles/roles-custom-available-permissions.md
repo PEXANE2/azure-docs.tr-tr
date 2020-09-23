@@ -1,6 +1,6 @@
 ---
-title: Kullanılabilir özel yönetici rolü izinleri-Azure AD | Microsoft Docs
-description: Kimlik yönetimi temsilcisi için özel yönetici rolü izinleri.
+title: Uygulama kaydı için özel rol izinleri-Azure AD | Microsoft Docs
+description: Uygulama kayıtlarını yönetmek için özel yönetici rolü izinleri verme.
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,27 +8,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c11723efe3fac236fce49c1f92fa338d4e58b59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 624489033097c0da4d85488b7ae376c5e0f3a56b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732115"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967696"
 ---
-# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kaydı alt türleri ve izinleri
+# <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory özel roller için uygulama kaydı izinleri
 
 Bu makale, Azure Active Directory (Azure AD) içindeki özel rol tanımları için şu anda kullanılabilir olan uygulama kayıt izinlerini içerir.
 
-## <a name="permissions-for-managing-single-directory-applications"></a>Tek dizin uygulamalarını yönetme izinleri
+## <a name="permissions-for-managing-single-tenant-applications"></a>Tek kiracılı uygulamaları yönetme izinleri
 
-Özel rolünüzün izinlerini seçerken, yalnızca tek dizin uygulamalarını yönetmek için erişim izni verme seçeneğiniz vardır. Tek dizin uygulamaları yalnızca uygulamanın kaydedildiği Azure AD kuruluşundaki kullanıcılar tarafından kullanılabilir. Tek dizin uygulamaları **Desteklenen hesap türleri** "yalnızca bu kuruluş dizininde hesaplar" olarak ayarlanmış şekilde tanımlanır. Graph API, tek dizin uygulamalarında Signınaudience özelliği "AzureADMyOrg" olarak ayarlanmıştır.
+Özel rolünüzün izinlerini seçerken, yalnızca tek kiracılı uygulamaları yönetmek için erişim verme seçeneğiniz vardır. tek kiracılı uygulamalar yalnızca uygulamanın kaydedildiği Azure AD kuruluşundaki kullanıcılar tarafından kullanılabilir. tek kiracılı uygulamalar **Desteklenen hesap türleri** "yalnızca bu kuruluş dizininde hesaplar" olarak ayarlanmış şekilde tanımlanır. Graph API, tek kiracılı uygulamalarda Signınaudience özelliği "AzureADMyOrg" olarak ayarlanmıştır.
 
-Yalnızca tek dizin uygulamalarını yönetmek üzere erişim vermek için, aşağıdaki izinleri kullanın, **uygulamalar. Myorganwıth**alt türü. Örneğin, Microsoft. Directory/Applications. Myorganleştirme/temel/güncelleştirme.
+Yalnızca tek kiracılı uygulamaları yönetmek üzere erişim vermek için, aşağıdaki izinleri **uygulamalar. Myorgantors**alt türü ile kullanın. Örneğin, Microsoft. Directory/Applications. Myorganleştirme/temel/güncelleştirme.
 
 Genel terimler alt türünün, izninin ve özellik kümesinin ne anlama geldiğini öğrenmek için [özel rollere genel bakış ' a](roles-custom-overview.md) bakın. Aşağıdaki bilgiler uygulama kayıtlarına özgüdür.
 
@@ -95,7 +95,7 @@ Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/Applications/sta
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>Microsoft. Directory/uygulamalar/allProperties/Update
 
-Tek dizin ve çoklu Dizin uygulamalarında tüm özellikleri güncelleştirebilme.
+Tek kiracılı ve çok kiracılı uygulamalardaki tüm özellikleri güncelleştirebilme.
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>Microsoft. Directory/Applications. Myorganleştirme/allProperties/Update
 
@@ -103,7 +103,7 @@ Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/Applications/all
 
 #### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>Microsoft. Directory/uygulamalar/hedef kitle/güncelleştirme
 
-Tek dizin ve çoklu Dizin uygulamalarında desteklenen hesap türü (Signınaudience) özelliğini güncelleştirme özelliği.
+Tek kiracılı ve çok kiracılı uygulamalarda desteklenen hesap türü (Signınaudience) özelliğini güncelleştirme özelliği.
 
 ![Bu izin, kimlik doğrulama sayfasında uygulama kaydı desteklenen hesap türü özelliğine erişim verir](./media/roles-custom-available-permissions/supported-account-types.png)
 
@@ -139,7 +139,7 @@ Tek kiracılı ve çok kiracılı uygulamalardaki sertifikaları ve istemci gizl
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>Microsoft. Directory/Applications. Myorganleştirme/kimlik bilgileri/güncelleştirme
 
-Yalnızca tek dizin uygulamaları için Microsoft. Directory/uygulamalar/kimlik bilgileri/güncelleştirme ile aynı izinleri verir.
+Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/uygulamalar/kimlik bilgileri/güncelleştirme ile aynı izinleri verir.
 
 #### <a name="microsoftdirectoryapplicationsownersupdate"></a>Microsoft. Directory/uygulamalar/sahipler/güncelleştirme
 

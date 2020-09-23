@@ -10,21 +10,21 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 808f71ae138922b93e3742f7ff2f526e419cf58c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8a3a82e091791b39ddf36e39987590dcddea320f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645891"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897503"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Uyarılar ve hata ayıklama için Application Insights makine öğrenimi ardışık düzen günlük dosyalarını toplayın
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 [Opencensus](https://opencensus.io/quickstart/python/) Python kitaplığı, günlükleri betiklerinizde Application Insights yönlendirmek için kullanılabilir. İşlem hattı çalıştırmalarının tek bir yerde toplamı toplama, sorgular oluşturmanıza ve sorunları tanılamanıza olanak sağlar. Application Insights kullanmak zaman içinde günlükleri izlemenize ve işlem hattı günlüklerini çalışma genelinde karşılaştırmanıza imkan tanır.
 
 Günlüklerinizin bir yerde olması, özel durumların ve hata iletilerinin geçmişini sağlar. Application Insights Azure uyarıları ile tümleştirilebildiğinden, Application Insights sorgularını temel alan uyarılar da oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning](./how-to-manage-workspace.md) çalışma alanı oluşturma ve [ilk işlem hattınızı oluşturma](./how-to-create-your-first-pipeline.md) adımlarını izleyin
 * Azure Machine Learning SDK 'Yı yüklemek için [geliştirme ortamınızı yapılandırın](./how-to-configure-environment.md) .

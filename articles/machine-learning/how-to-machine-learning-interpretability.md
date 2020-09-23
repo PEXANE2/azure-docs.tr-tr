@@ -11,15 +11,15 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: d30fe5f8adccba81baf8bfe1070f95a890d1dc7a
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 757646a1630443f297d4b7c538721e9facdc130c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649439"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897433"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning model yorumlenebilirliği (Önizleme)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 ## <a name="overview-of-model-interpretability"></a>Model yorumlenebilirliğini genel bakış
 
@@ -71,7 +71,7 @@ Desteklenen yorumlenebilirlik teknikleri, desteklenen makine öğrenimi modeller
 
  `azureml-interpret` , eğitim yorumlanmış ve kara kutu AI sistemlerinin açıklanmasına yardımcı olmak üzere açık kaynaklı bir Python paketi olan [yorumlama-topluluk](https://github.com/interpretml/interpret-community/)' da geliştirilmiş yorumlanmış teknikleri kullanır. [Yorumlama-topluluk](https://github.com/interpretml/interpret-community/) , bu SDK 'nın desteklenen explainers ana bilgisayarı olarak görev yapar ve şu anda aşağıdaki yorumlamış teknikleri destekler:
 
-|Yorumlenebilirlik tekniği|Description|Tür|
+|Yorumlenebilirlik tekniği|Açıklama|Tür|
 |--|--|--------------------|
 |SHAP ağacı açıklama| Ağaç **ve Kümelemeler**ağaçlarına özgü polinom zaman hızlı Shap değer tahmini algoritmasına odaklanan [Shap](https://github.com/slundberg/shap)'nin Tree açıklama.|Modele özgü|
 |SHAP derin açıklama| SHAP 'nin açıklamasına göre, derin açıklama ", Shap [NıP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)'Lerde açıklanan ayrıntılı bir bağlantı üzerinde bağlantı kurulan derin öğrenme MODELLERINDEKI Shap değerleri için yüksek hızda bir yaklaşık algoritmadır. TensorFlow arka ucunu kullanan **TensorFlow** modelleri ve **keras** modelleri desteklenir (Ayrıca, pytorch için de ön destek vardır) ".|Modele özgü|

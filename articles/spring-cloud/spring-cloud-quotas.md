@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 7d47311385848f96a12a50c1dcf8b8284869c71d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7c4c832819f61d208d0722823d0a74354960f182
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260365"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904260"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure yay bulutu için kotalar ve hizmet planları
+
+**Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
 Tüm Azure Hizmetleri, kaynaklar ve özellikler için varsayılan limitleri ve kotaları ayarlar.   Azure yay bulutu iki fiyatlandırma katmanı sunar: temel ve standart. Bu makaledeki her iki katmanda da limitleri ayrıntılandıracağız.
 

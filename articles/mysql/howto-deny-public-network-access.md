@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: f8156b01244012d78214f2ba8c49ed76dbceed6d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eb5c4e4c4dfb73b2f7c9dc9f2629296790790885
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118792"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896138"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda genel ağ erişimini reddetme
 
@@ -33,13 +33,13 @@ MySQL Server 'ın ortak ağ erişimini reddetme Iznini ayarlamak için şu adım
 
 1. **Ortak ağ erişimini engelle**' de, MySQL sunucunuz için genel erişimi Reddet ' i etkinleştirmek için **Evet** ' i seçin.
 
-    ![MySQL için Azure veritabanı ağ erişimini reddetme](./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG)
+    :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG" alt-text="MySQL için Azure veritabanı ağ erişimini reddetme":::
 
 1. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
 1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
 
-    ![MySQL için Azure veritabanı ağ erişimini reddetme başarısı](./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png)
+    :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png" alt-text="MySQL için Azure veritabanı ağ erişimini reddetme başarısı":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

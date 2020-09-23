@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 08/10/2020
-  ms.openlocfilehash: 66095427637b52d9bc220cba911c3099fd8f397c
-  ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 175c01423b9d7ae987b38913b0376c333f5c9ea9
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/12/2020
-  ms.locfileid: "88135955"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90904064"
 landingContent:
 - title: Azure İlkesi hakkında
   linkLists:
@@ -27,8 +27,12 @@ landingContent:
       url: ./concepts/effects.md
     - text: Tanım yapısı
       url: ./concepts/definition-structure.md
+    - text: Kapsam
+      url: ./concepts/scope.md
     - text: Atama yapısı
       url: ./concepts/assignment-structure.md
+    - text: Muafiyet yapısı
+      url: ./concepts/exemption-structure.md
   - linkListType: video
     links:
     - text: 2018 Derlemesinde Azure İlkesi
@@ -91,6 +95,8 @@ landingContent:
       url: ./how-to/get-compliance-data.md
     - text: Uyumsuzluk nedenlerini belirleme
       url: ./how-to/determine-non-compliance.md
+    - text: Kaynakları muaf tutma
+      url: ./concepts/exemption-structure.md
     - text: Uyumlu olmayan kaynakları düzeltme
       url: ./how-to/remediate-resources.md
 - title: Dahil olun

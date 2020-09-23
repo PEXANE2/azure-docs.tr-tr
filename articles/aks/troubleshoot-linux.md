@@ -1,19 +1,19 @@
 ---
 title: Linux performans araçları
 titleSuffix: Azure Kubernetes Service
-description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
+description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygın sorunları gidermek ve çözmek için Linux performans araçları 'nı nasıl kullanacağınızı öğrenin.
 services: container-service
 author: alexeldeib
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
-ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74f65780594c7bc938ed6d59437473c4363e5848
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77925611"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982031"
 ---
 # <a name="linux-performance-troubleshooting"></a>Linux performans sorunlarını giderme
 
@@ -62,7 +62,7 @@ $ dmesg --level=err | tail
 
 dmesg, çekirdek arabelleğini döker. Oomkıll gibi olaylar çekirdek arabelleğine bir giriş ekleyin. Dmesg günlüklerinde Oomkıll veya diğer kaynak tükenme iletilerinin bulunması bir sorunun güçlü göstergesidir.
 
-### <a name="top"></a>üst
+### <a name="top"></a>top
 
 ```
 $ top
@@ -78,13 +78,13 @@ KiB Swap:        0 total,        0 free,        0 used. 62739060 avail Mem
      ...
 ```
 
-`top`geçerli sistem durumuna ilişkin kapsamlı bir genel bakış sağlar. Üst bilgiler bazı yararlı toplu bilgiler sağlar:
+`top` geçerli sistem durumuna ilişkin kapsamlı bir genel bakış sağlar. Üst bilgiler bazı yararlı toplu bilgiler sağlar:
 
 - görevlerin durumu: çalışıyor, Uyuyan, durduruldu.
 - Bu durumda çoğunlukla boşta kalma süresini gösteren CPU kullanımı.
 - Toplam, ücretsiz ve kullanılan sistem belleği.
 
-`top`kısa süreli süreçler kaçırmayabilir; benzeri yöntemler `htop` ve `atop` Bu eksiklikleri düzelterek benzer arabirimler sağlar.
+`top` kısa süreli süreçler kaçırmayabilir; benzeri yöntemler `htop` ve `atop` Bu eksiklikleri düzelterek benzer arabirimler sağlar.
 
 ## <a name="cpu"></a>CPU
 
@@ -108,7 +108,7 @@ Linux 4.15.0-1064-azure (aks-main-10212767-vmss000001)  02/10/20        _x86_64_
 19:49:04       7    1.98    0.00    0.99    0.00    0.00    0.00    0.00    0.00    0.00   97.03
 ```
 
-`mpstat`benzer CPU bilgilerini üste yazdırır, ancak CPU iş parçacığı tarafından bölünür. Tüm çekirdekleri aynı anda görmek, yüksek oranda kullanılabilir CPU kullanımını algılamak için faydalı olabilir. Örneğin, tek bir iş parçacıklı uygulama bir çekirdekli %100 kullanım aşamasında bir çekirdek kullanır. Bu sorun, sistemdeki tüm CPU 'Larda Toplandığınızda daha zor olabilir.
+`mpstat` benzer CPU bilgilerini üste yazdırır, ancak CPU iş parçacığı tarafından bölünür. Tüm çekirdekleri aynı anda görmek, yüksek oranda kullanılabilir CPU kullanımını algılamak için faydalı olabilir. Örneğin, tek bir iş parçacıklı uygulama bir çekirdekli %100 kullanım aşamasında bir çekirdek kullanır. Bu sorun, sistemdeki tüm CPU 'Larda Toplandığınızda daha zor olabilir.
 
 ### <a name="vmstat"></a>vmstat
 
@@ -119,7 +119,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  2  0      0 43300372 545716 19691456    0    0     3    50    3    3  2  1 95  1  0
 ```
 
-`vmstat`benzer bilgiler `mpstat` ve `top` , CPU (r sütunu), bellek istatistikleri ve her iş durumunda harcanan CPU zamanının yüzde sayısını numaralandırma sağlar.
+`vmstat` benzer bilgiler `mpstat` ve `top` , CPU (r sütunu), bellek istatistikleri ve her iş durumunda harcanan CPU zamanının yüzde sayısını numaralandırma sağlar.
 
 ## <a name="memory"></a>Bellek
 
@@ -134,7 +134,7 @@ Mem:          64403        2338       42485           1       19579       61223
 Swap:             0           0           0
 ```
 
-`free`Toplam belleğin yanı sıra kullanılan ve boş bellek hakkındaki temel bilgileri sunar. `vmstat`, sıralı çıkış sağlayabilme özelliği nedeniyle temel bellek analizi için bile daha kullanışlı olabilir.
+`free` Toplam belleğin yanı sıra kullanılan ve boş bellek hakkındaki temel bilgileri sunar. `vmstat` , sıralı çıkış sağlayabilme özelliği nedeniyle temel bellek analizi için bile daha kullanışlı olabilir.
 
 ## <a name="disk"></a>Disk
 
@@ -157,14 +157,14 @@ sda               0.00    56.00    0.00   65.00     0.00   504.00    15.51     0
 scd0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
 
-`iostat`disk kullanımı hakkında ayrıntılı öngörüler sağlar. Bu çağrı, `-x` `-y` önyüklemeden bu yana ilk çıktıyı yazdırma sistem ortalamaları 'nı atlamak ve `1 1` bir çıkış blobundan sonra sona ermek üzere 1 saniyelik zaman aralığını belirtmek için genişletilmiş istatistikleri geçer. 
+`iostat` disk kullanımı hakkında ayrıntılı öngörüler sağlar. Bu çağrı, `-x` `-y` önyüklemeden bu yana ilk çıktıyı yazdırma sistem ortalamaları 'nı atlamak ve `1 1` bir çıkış blobundan sonra sona ermek üzere 1 saniyelik zaman aralığını belirtmek için genişletilmiş istatistikleri geçer. 
 
-`iostat`birçok yararlı istatistik sunar:
+`iostat` birçok yararlı istatistik sunar:
 
-- `r/s`ve saniye başına `w/s` okuma ve yazma işlemleri. Bu değerlerin toplamı ıOPS 'dir.
-- `rkB/s`ve `wkB/s` saniye başına kilobayt okuma/yazma. Bu değerlerin toplamı üretilen iş sayısıdır.
-- `await`, kuyruğa alınan istekler için milisaniye olarak ortalama ıowaıt süresi.
-- `avgqu-sz`, belirtilen Aralık üzerinde ortalama sıra boyutudur.
+- `r/s` ve saniye başına `w/s` okuma ve yazma işlemleri. Bu değerlerin toplamı ıOPS 'dir.
+- `rkB/s` ve `wkB/s` saniye başına kilobayt okuma/yazma. Bu değerlerin toplamı üretilen iş sayısıdır.
+- `await` , kuyruğa alınan istekler için milisaniye olarak ortalama ıowaıt süresi.
+- `avgqu-sz` , belirtilen Aralık üzerinde ortalama sıra boyutudur.
 
 Bir Azure VM 'de:
 
@@ -199,10 +199,10 @@ $ sar -n DEV [interval]
 22:36:58    azvdbf16b0b2fc      9.00     19.00      3.36      1.18      0.00      0.00      0.00      0.00
 ```
 
-`sar`, çok çeşitli analizler için güçlü bir araçtır. Bu örnekte ağ istatistiklerini ölçme özelliği kullanılırken, CPU ve bellek tüketimini ölçmek için eşit derecede güçlüdür. Bu örnek `sar` `-n` `DEV` , (ağ aygıtı) anahtar sözcüğünü belirtmek için bayrağıyla çağırır ve ağ aktarım hızını cihaza göre görüntüler.
+`sar` , çok çeşitli analizler için güçlü bir araçtır. Bu örnekte ağ istatistiklerini ölçme özelliği kullanılırken, CPU ve bellek tüketimini ölçmek için eşit derecede güçlüdür. Bu örnek `sar` `-n` `DEV` , (ağ aygıtı) anahtar sözcüğünü belirtmek için bayrağıyla çağırır ve ağ aktarım hızını cihaza göre görüntüler.
 
 - Ve toplamı, `rxKb/s` `txKb/s` belirli bir cihaz için toplam aktarım hızı. Bu değer, sağlanan Azure NIC 'in sınırını aştığında, makinedeki iş yükleri daha fazla ağ gecikmesi yaşar.
-- `%ifutil`belirli bir cihaz için kullanımı ölçer. Bu değer %100 yaklaşırsa, iş yükleri artan ağ gecikmesi ile karşılaşacaktır.
+- `%ifutil` belirli bir cihaz için kullanımı ölçer. Bu değer %100 yaklaşırsa, iş yükleri artan ağ gecikmesi ile karşılaşacaktır.
 
 ```
 $ sar -n TCP,ETCP [interval]
@@ -323,4 +323,4 @@ IpExt:
     InECT0Pkts: 14
 ```
 
-`netstat`, burada Özet çıktı ile çağrılan çok çeşitli ağ istatistiklerini introspect sağlayabilir. Soruna bağlı olarak burada çok sayıda yararlı alan vardır. TCP bölümündeki bir faydalı alan "başarısız bağlantı denemeleri" olur. Bu, SNAT bağlantı noktası tükenmesi veya giden bağlantılar oluşturma sorunları hakkında bir gösterge olabilir. Yüksek oranda yeniden aktarılan parçaların (TCP bölümünde de) paket tesliminde sorunlar olduğunu gösterebilir. 
+`netstat` , burada Özet çıktı ile çağrılan çok çeşitli ağ istatistiklerini introspect sağlayabilir. Soruna bağlı olarak burada çok sayıda yararlı alan vardır. TCP bölümündeki bir faydalı alan "başarısız bağlantı denemeleri" olur. Bu, SNAT bağlantı noktası tükenmesi veya giden bağlantılar oluşturma sorunları hakkında bir gösterge olabilir. Yüksek oranda yeniden aktarılan parçaların (TCP bölümünde de) paket tesliminde sorunlar olduğunu gösterebilir. 

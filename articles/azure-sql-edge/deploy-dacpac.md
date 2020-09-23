@@ -1,6 +1,6 @@
 ---
-title: SQL veritabanı DACPAC ve BACPAC paketlerini kullanma-Azure SQL Edge (Önizleme)
-description: Azure SQL Edge 'de DACPACs ve BacPacs kullanma hakkında bilgi edinin (Önizleme)
+title: SQL veritabanı DACPAC ve BACPAC paketlerini kullanma-Azure SQL Edge
+description: Azure SQL Edge 'de DACPACs ve BacPacs kullanma hakkında bilgi edinin
 keywords: SQL Edge, SqlPackage
 services: sql-edge
 ms.service: sql-edge
@@ -9,37 +9,29 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 52c8e9586d8ee53cdaac28cb1c48d2927d82c2ed
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6c8be6e67b1d7b919d6ea221c473c8975e559658
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462768"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887479"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>SQL Edge 'de SQL veritabanı DACPAC ve BACPAC paketleri
 
-Azure SQL Edge (Önizleme), IoT ve Edge dağıtımları için iyileştirilmiş bir ilişkisel veritabanı altyapısıdır. Bu, sektör lideri performans, güvenlik ve sorgu işleme özellikleri sağlayan Microsoft SQL Server veritabanı altyapısının en son sürümlerinde oluşturulmuştur. Azure SQL Edge, SQL Server sektör lideri ilişkisel veritabanı yönetim özelliklerinin yanı sıra gerçek zamanlı analiz ve karmaşık olay işleme için yerleşik akış özelliği sağlar.
+Uç Cihazlar için Azure SQL, IoT ve uç dağıtımları için ayarlanan, iyileştirilmiş bir ilişkisel veritabanı altyapısıdır. Bu, Microsoft SQL veritabanı altyapısının, sektör lideri performans, güvenlik ve sorgu işleme özellikleri sağlayan en son sürümlerine kurulmuştur. Azure SQL Edge, SQL Server sektör lideri ilişkisel veritabanı yönetim özelliklerinin yanı sıra gerçek zamanlı analiz ve karmaşık olay işleme için yerleşik akış özelliği sağlar.
 
-Azure SQL Edge, SQL Edge dağıtımı sırasında bir [SQL veritabanı DACPAC ve BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) paketi dağıtmanızı sağlayan SqlPackage.exe yerel bir uygulamasını da sağlar. SQL veritabanı DACPACs, SQL Edge modülünün seçeneği aracılığıyla ortaya çıkarılan SqlPackage parametresi kullanılarak SQL Edge 'e dağıtılabilir `module twin's desired properties` :
+Azure SQL Edge, SQL Edge dağıtımı sırasında bir [SQL veritabanı DACPAC ve BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) paketi dağıtmanızı sağlayan SqlPackage.exe yerel bir uygulamasını da sağlar. 
 
-```json
-{
-    "properties.desired":
-    {
-        "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-        "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-    }
-}
-```
-
-|Alan | Açıklama |
-|------|-------------|
-| SqlPackage | SQL veritabanı DAC veya BACPAC paketini içeren *. zip* dosyası Için Azure Blob depolama URI 'si. ZIP dosyası, hem birden çok dac paketi hem de bacpac dosyası içerebilir.
-| Aşama Jobınfo | ASA Edge işi için Azure Blob depolama URI 'SI.
+SQL veritabanı dacpac ve bacpac paketleri, ortam değişkeni kullanılarak SQL Edge 'e dağıtılabilir `MSSQL_PACKAGE` . Ortam değişkeni aşağıdakilerden biriyle yapılandırılabilir.  
+- Dacpac ve bacpac dosyalarını içeren SQL kapsayıcısı içindeki yerel bir klasör konumu. Bu klasör, bağlama noktaları veya veri birimi kapsayıcıları kullanılarak bir konak hacimleriyle eşleştirilebilir. 
+- SQL kapsayıcısı içindeki bir yerel dosya yolu, dacpac veya bacpac dosyası eşlemesi. Bu dosya yolu, bağlama noktaları veya veri birimi kapsayıcıları kullanılarak bir konak hacimleriyle eşleştirilebilir. 
+- SQL kapsayıcısı içindeki yerel bir dosya yolu, dacpac veya bacpac dosyalarını içeren bir zip dosyası ile eşleniyor. Bu dosya yolu, bağlama noktaları veya veri birimi kapsayıcıları kullanılarak bir konak hacimleriyle eşleştirilebilir. 
+- Dacpac ve bacpac dosyalarını içeren bir ZIP dosyasının Azure Blob SAS URL 'SI.
+- Bir dacpac veya bacpac dosyasına bir Azure Blob SAS URL 'SI. 
 
 ## <a name="use-a-sql-database-dac-package-with-sql-edge"></a>SQL Edge ile SQL veritabanı DAC paketi kullanma
 
-SQL veritabanı DAC paketini `(*.dacpac)` veya BACPAC dosyasını `(*.bacpac)` SQL Edge ile kullanmak için şu adımları izleyin:
+`(*.dacpac)` `(*.bacpac)` Azure Blob depolama ve bir zip dosyası kullanarak bir SQL veritabanı DAC PAKETINI veya bacpac dosyasını dağıtmak (veya içeri aktarmak) için aşağıdaki adımları izleyin. 
 
 1. Bir DAC paketi oluşturun/ayıklayın veya aşağıda bahsedilen mekanizmayı kullanarak bacpac dosyasını dışarı aktarın. 
     - Bir SQL veritabanı DAC paketi oluşturun veya ayıklayın. Mevcut bir SQL Server veritabanı için DAC paketi oluşturma hakkında bilgi için bkz. [bir VERITABANıNDAN dac ayıklama](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) .
@@ -59,34 +51,22 @@ SQL veritabanı DAC paketini `(*.dacpac)` veya BACPAC dosyasını `(*.bacpac)` S
 
     4. Cihaz cihazı **IoT Edge** sayfasında, **modülü ayarla**' yı seçin.
 
-    5. **Modülleri ayarla** sayfasında SQL Edge modülüne göre **Yapılandır** ' ı seçin.
+    5. **Modülleri ayarla** sayfasında, Azure SQL Edge modülüne tıklayın.
 
-    6. **IoT Edge özel modüller** bölmesinde, **module ikizi 'ın istenen özelliklerini ayarla**' yı seçin. `SQLPackage`Aşağıdaki örnekte gösterildiği gibi, SEÇENEĞININ URI 'sini dahil etmek için istenen özellikleri güncelleştirin.
+    6. **IoT Edge modülü Güncelleştir** bölmesinde **ortam değişkenleri**' ni seçin. Ortam değişkenini ekleyin `MSSQL_PACKAGE` ve yukarıdaki 3. adımda oluşturulan SAS URL 'sini ortam değişkeninin değeri olarak belirtin. 
 
-        > [!NOTE]
-        > Aşağıdaki JSON 'daki SAS URI 'SI yalnızca bir örnektir. URI 'yi dağıtımınızdaki gerçek URI ile değiştirin.
+    7. **Güncelleştir**’i seçin.
 
-        ```json
-            {
-                "properties.desired":
-                {
-                    "SqlPackage": "<<<SAS URL for the *.zip file containing the dacpac and/or the bacpac files",
-                }
-            }
-        ```
+    8. **Modülleri ayarla** sayfasında, **gözden geçir + oluştur**' u seçin.
 
-    7. **Kaydet**’i seçin.
+    9. **Modülleri ayarla** sayfasında **Oluştur**' u seçin.
 
-    8. **Modülleri ayarla** sayfasında, **İleri**' yi seçin.
+5. Modül güncelleştirildikten sonra, paket dosyaları indirilir, sıkıştırıldı ve SQL Edge örneğine göre dağıtılır.
 
-    9. **Modülleri ayarla** sayfasında, **İleri** ' yi ve ardından **Gönder**' i seçin.
-
-5. Modül güncelleştirildikten sonra, paket dosyası indirilir, sıkıştırıldı ve SQL Edge örneğine göre dağıtılır.
-
-Azure SQL Edge kapsayıcısının her yeniden başlatıldığında `*.dacpac` dosya paketi indirilir ve değişiklikler için değerlendirilir. Dacpac dosyasının yeni bir sürümüne karşılaşılırsa, değişiklikler veritabanına SQL Edge 'de dağıtılır. Bacpac dosyaları 
+Azure SQL Edge kapsayıcısının her yeniden başlatıldığında, SQL Edge daraltılmış dosya paketini indirmeye çalışır ve değişiklikleri değerlendirebilir. Dacpac dosyasının yeni bir sürümüne karşılaşılırsa, değişiklikler veritabanına SQL Edge 'de dağıtılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Portal ÜZERINDEN SQL Edge dağıtın](deploy-portal.md).
 - [Akış verileri](stream-data.md)
-- [SQL Edge 'de ONNX ile Machine Learning ve AI (Önizleme)](onnx-overview.md)
+- [SQL Edge 'de ONNX ile makine öğrenimi ve AI](onnx-overview.md)
