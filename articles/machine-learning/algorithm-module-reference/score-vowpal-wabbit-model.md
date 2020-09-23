@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 02f4fe4f97d3e976675757835e3931666d1c6410
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 23dfee7b78f2606c54525391e1260af69a9b0779
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857759"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898404"
 ---
 # <a name="score-vowpal-wabbit-model"></a>Vowpal Wabbit Modelini Puanlama
-Bu makalede, var olan bir eğitimcal Wabbit modelini kullanarak bir giriş verileri kümesinin puanlarını oluşturmak için Azure Machine Learning tasarımcısında **Vowpal Wabbit model** modülünün nasıl kullanılacağı açıklanır.  
+Bu makalede, var olan bir eğitimcal Wabbit modelini kullanarak bir giriş verileri kümesinin puanlarını oluşturmak için Azure Machine Learning tasarımcısında **Vowpal Wabbit modeli** modülünün nasıl kullanılacağı açıklanır.  
 
 Bu modül Vowpal Wabbit Framework 'ün en son sürümünü (sürüm 8.8.1) sağlar. Bu modülü, VW sürüm 8 biçiminde kaydedilmiş eğitilen bir model kullanarak verileri öğrenmek için kullanın.  
 
@@ -74,7 +74,7 @@ Vowpal Wabbit, algoritma seçme ve ayarlama için birçok komut satırı seçene
 
 Aşağıdaki parametreler Azure Machine Learning Studio (klasik) içinde desteklenmez.  
 
--   İçinde belirtilen giriş/çıkış seçenekleri[https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
+-   İçinde belirtilen giriş/çıkış seçenekleri [https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
   
      Bu özellikler modül tarafından zaten otomatik olarak yapılandırılmıştır.  
   

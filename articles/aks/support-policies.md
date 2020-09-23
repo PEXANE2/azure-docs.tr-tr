@@ -2,20 +2,18 @@
 title: Azure Kubernetes hizmeti (AKS) için destek ilkeleri
 description: Önizleme aşamasında olan Azure Kubernetes hizmeti (AKS) destek ilkeleri, paylaşılan sorumluluk ve özellikler hakkında bilgi edinin (veya Alpha veya beta).
 services: container-service
-author: jnoller
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: jenoller
-ms.openlocfilehash: c51b5c4d9cd7362aeda0a0998d8031d0ba358ce1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/18/2020
+ms.openlocfilehash: 188416d9ef6f8e7568b10e8ccbb405be0bff315d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012356"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888986"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için destek ilkeleri
 
-Bu makalede, Azure Kubernetes Service (AKS) için teknik destek ilkeleri ve sınırlamaları hakkında ayrıntılar sağlanmaktadır. Makalede, çalışan düğüm yönetimi, yönetilen denetim düzlemi bileşenleri, üçüncü taraf açık kaynaklı bileşenler ve güvenlik ya da yama yönetimi de ayrıntılı olarak anlatılmaktadır.
+Bu makalede, Azure Kubernetes Service (AKS) için teknik destek ilkeleri ve sınırlamaları hakkında ayrıntılar sağlanmaktadır. Makalede ayrıca Aracı düğüm yönetimi, yönetilen denetim düzlemi bileşenleri, üçüncü taraf açık kaynaklı bileşenler ve güvenlik ya da düzeltme eki yönetimi de ayrıntılı olarak açıklanır.
 
 ## <a name="service-updates-and-releases"></a>Hizmet güncelleştirmeleri ve yayınlar
 
@@ -24,9 +22,9 @@ Bu makalede, Azure Kubernetes Service (AKS) için teknik destek ilkeleri ve sın
 
 ## <a name="managed-features-in-aks"></a>AKS 'deki yönetilen özellikler
 
-İşlem veya ağ bileşenleri gibi bir hizmet olarak altyapı (IaaS) bulut bileşenleri, kullanıcılara alt düzey denetimler ve özelleştirme seçenekleri erişimi sağlar. Buna karşılık, AKS, müşterilere ihtiyaç duydukları ortak yapılandırma ve yetenekler kümesini veren bir anahtar oluşturma Kubernetes dağıtımı sağlar. AKS müşterilerinin özelleştirme, dağıtım ve diğer seçeneklere sınırlı bir şekilde sahip olması gerekir. Bu müşterilerin Kubernetes kümelerini doğrudan veya yönetmesi gerekmez.
+İşlem veya ağ bileşenleri gibi temel altyapı hizmet olarak altyapı (IaaS) bulut bileşenleri, alt düzey denetimlere ve özelleştirme seçeneklerine erişmenize izin verir. Buna karşılık, AKS, kümeniz için ihtiyaç duyduğunuz ortak yapılandırma ve özellik kümesini sağlayan bir anahtar oluşturma Kubernetes dağıtımı sağlar. Bir AKS kullanıcısı olarak, özelleştirme ve dağıtım seçenekleriniz sınırlı olacaktır. Exchange 'de, Kubernetes kümelerini doğrudan veya yönetmeniz gerekmez.
 
-AKS ile müşteri, tam olarak yönetilen bir *Denetim düzlemi*alır. Denetim düzlemi, müşterinin çalışması ve son kullanıcılara Kubernetes kümeleri sağlaması için ihtiyaç duyacağı tüm bileşenleri ve hizmetleri içerir. Tüm Kubernetes bileşenleri Microsoft tarafından korunur ve çalıştırılır.
+AKS ile tam olarak yönetilen bir *Denetim düzlemi*alırsınız. Denetim düzlemi, çalıştırmak ve son kullanıcılara Kubernetes kümeleri sağlamak için ihtiyacınız olan tüm bileşenleri ve hizmetleri içerir. Tüm Kubernetes bileşenleri Microsoft tarafından korunur ve çalıştırılır.
 
 Microsoft, Denetim bölmesi aracılığıyla aşağıdaki bileşenleri yönetir ve izler:
 
@@ -34,122 +32,118 @@ Microsoft, Denetim bölmesi aracılığıyla aşağıdaki bileşenleri yönetir 
 * Hizmet kalitesi (QoS), ölçeklenebilirlik ve çalışma zamanı sağlayan, etcd veya uyumlu bir anahtar-değer deposu
 * DNS hizmetleri (örneğin, KUIN-DNS veya CoreDNS)
 * Kubernetes proxy veya ağ
+* Kuin-System ad alanında çalışan ek eklenti veya sistem bileşeni
 
-AKS tamamen yönetilen bir küme çözümüdür. Çalışan düğümleri gibi bazı bileşenler, kullanıcıların AKS kümesini korumanızda yardımcı olması gereken, *paylaşılan sorumluluğa*sahiptir. Kullanıcı girişi, örneğin bir çalışan düğümü işletim sistemi (OS) güvenlik düzeltme eki uygulamak için gereklidir.
+AKS, bir hizmet olarak platform (PaaS) çözümü değildir. Aracı düğümleri gibi bazı bileşenlerin, kullanıcıların AKS kümesini sürdürmeleri gereken *paylaşılan sorumluluğu*vardır. Kullanıcı girişi, örneğin, bir aracı düğümü işletim sistemi (OS) güvenlik düzeltme eki uygulamak için gereklidir.
 
 Hizmetler, Microsoft 'un ve AKS ekibinin hizmet kullanılabilirliği ve işlevleri dağıttığı, çalıştığı ve sorumlu olduğu konusunda bir şekilde *yönetilir* . Müşteriler bu yönetilen bileşenleri değiştiremezler. Microsoft, tutarlı ve ölçeklenebilir bir kullanıcı deneyimi sağlamak için özelleştirmeyi kısıtlar. Tamamen özelleştirilebilir bir çözüm için bkz. [aks motoru](https://github.com/Azure/aks-engine).
 
 ## <a name="shared-responsibility"></a>Paylaşılan sorumluluk
 
-Bir küme oluşturulduğunda müşteri, AKS 'in oluşturduğu Kubernetes çalışan düğümlerini tanımlar. Müşteri iş yükleri bu düğümlerde yürütülür. Müşteriler, çalışan düğümlerini görüntüleyebilir ve değiştirebilir.
+Bir küme oluşturulduğunda, AKS 'nin oluşturduğu Kubernetes aracı düğümlerini tanımlarsınız. İş yükleriniz bu düğümlerde yürütülür.
 
-Müşteri kümesi düğümleri özel kodu yürüttiğinden ve hassas verileri depoladığı için Microsoft Desteği bunlara yalnızca sınırlı bir şekilde erişebilir. Microsoft Desteği, ' de oturum açamaz, içindeki komutları yürütemiyor veya Express Müşteri izni veya yardımı olmadan bu düğümlere ait günlükleri görüntüleyemez.
+Aracı düğümleriniz özel kod yürüttiğinden ve hassas verileri depoladığı için Microsoft Desteği bunlara yalnızca çok sınırlı bir şekilde erişebilir. Microsoft Desteği, Express izniniz veya yardımınız olmadan oturum açamaz, içindeki komutları yürütebilir veya bu düğümlere ait günlükleri görüntüleyemez.
 
-Çalışan düğümleri hassas olduğundan, Microsoft, arka plan yönetimini sınırlandırmaya yönelik harika bir fikir alıyor. Çoğu durumda, Kubernetes ana düğümleri, etcd ve diğer Microsoft tarafından yönetilen bileşenler başarısız olsa bile iş yükünüz çalışmaya devam edecektir. Gereksiz şekilde değiştirilen çalışan düğümleri veri ve iş yüklerinin zararına neden olabilir ve küme tarafından desteklenmeyen bir şekilde oluşturulabilir.
+IaaS API 'Lerinden herhangi birini kullanan doğrudan aracı düğümlerine yapılan herhangi bir değişiklik, küme tarafından desteklenmeyen tablo oluşturur. Aracı düğümlerinde yapılan herhangi bir değişiklik, gibi Kubernetes-Native mekanizmaları kullanılarak yapılmalıdır `Daemon Sets` .
+
+Benzer şekilde, küme ve düğümlere Etiketler ve Etiketler gibi herhangi bir meta veri ekleyebilirsiniz, ancak sistem tarafından oluşturulan meta verilerin herhangi birini değiştirmek, kümeyi desteklenmeyen şekilde işleyebilir.
 
 ## <a name="aks-support-coverage"></a>AKS Destek kapsamı
 
-Microsoft aşağıdakiler için teknik destek sağlar:
-
-> [!NOTE]
-> Microsoft/AKS tarafından gerçekleştirilen herhangi bir küme eylemi, yerleşik bir Kubernetes rolü `aks-service` ve yerleşik rol bağlama altında Kullanıcı onayı ile yapılır `aks-service-rolebinding` . Bu rol, AKS 'in küme sorunlarını giderme ve tanılama, ancak izinleri değiştiremeyeceği ya da roller ya da rol bağlamaları ya da diğer yüksek ayrıcalıklı eylemler oluşturmalarına olanak sağlar. Rol erişimi yalnızca, tam zamanında (JıT) erişime sahip etkin destek biletleri altında etkinleştirilir.
+Microsoft aşağıdaki örnekler için teknik destek sağlar:
 
 * Kubernetes hizmetinin API sunucusu gibi sağladığı ve desteklediği tüm Kubernetes bileşenlerine bağlantı.
-* Kubernetes denetim düzlemi Hizmetleri 'nin yönetimi, çalışma süresi, QoS ve işlemleri (örneğin, Kubernetes Master Nodes, API Server, etcd ve Kuto-DNS).
-* Etcd. Destek, olağanüstü durum planlama ve küme durumu geri yüklemesi için her 30 dakikada bir tüm etcd verilerine yönelik otomatik, saydam yedeklemeler içerir. Bu yedeklemeler doğrudan müşteriler veya kullanıcılar tarafından kullanılamaz. Veri güvenilirliğini ve tutarlılığını güvence altına alırlar. Etcd. isteğe bağlı geri alma veya geri yükleme özelliği olarak desteklenmez.
+* Kubernetes denetim düzlemi Hizmetleri (örneğin, Kubernetes denetim düzlemi, API sunucusu, etcd ve coreDNS) yönetimi, çalışma süresi, QoS ve işlemler.
+* Etcd veri deposu. Destek, olağanüstü durum planlama ve küme durumu geri yüklemesi için her 30 dakikada bir tüm etcd verilerine yönelik otomatik, saydam yedeklemeler içerir. Bu yedeklemeler sizin veya herhangi bir kullanıcı için doğrudan kullanılamaz. Veri güvenilirliğini ve tutarlılığını güvence altına alırlar. Etcd. isteğe bağlı geri alma veya geri yükleme özelliği olarak desteklenmez.
 * Kubernetes için Azure bulut sağlayıcısı sürücüsünde herhangi bir tümleştirme noktası. Bunlar, yük dengeleyiciler, kalıcı birimler veya ağ (Kubernetes ve Azure CNı) gibi diğer Azure hizmetleriyle tümleştirmeler içerir.
-* Kubernetes API Server, etcd ve Kuto-DNS gibi denetim düzlemi bileşenlerinin özelleştirilmesi hakkında sorular veya sorunlar.
+* Kubernetes API Server, etcd ve coreDNS gibi denetim düzlemi bileşenlerinin özelleştirilmesi hakkındaki sorular veya sorunlar.
 * Azure CNı, kubenet gibi ağ ile ilgili sorunlar veya diğer ağ erişimi ve işlevsellik sorunları. Sorunlar DNS çözümlemesi, paket kaybı, yönlendirme vb. içerebilir. Microsoft çeşitli ağ senaryolarını destekler:
-  * Küme içindeki kubenet (temel) ve gelişmiş ağ (Azure CNı) ve ilişkili bileşenler
+  * Kubenet ve Azure CNı, yönetilen sanal ağlar veya özel (kendi kendi alt ağlarınızı getir) kullanarak.
   * Diğer Azure hizmetlerine ve uygulamalarına yönelik bağlantı
   * Giriş denetleyicileri ve giriş veya yük dengeleyici yapılandırması
   * Ağ performansı ve gecikme süresi
 
-Microsoft aşağıdakiler için teknik destek sağlamaz:
+
+> [!NOTE]
+> Microsoft/AKS tarafından gerçekleştirilen herhangi bir küme eylemi, yerleşik bir Kubernetes rolü `aks-service` ve yerleşik rol bağlama altında Kullanıcı onayı ile yapılır `aks-service-rolebinding` . Bu rol, AKS 'in küme sorunlarını giderme ve tanılama, ancak izinleri değiştiremeyeceği ya da roller ya da rol bağlamaları ya da diğer yüksek ayrıcalıklı eylemler oluşturmalarına olanak sağlar. Rol erişimi yalnızca, tam zamanında (JıT) erişime sahip etkin destek biletleri altında etkinleştirilir.
+
+Microsoft aşağıdaki örnekler için teknik destek sağlamaz:
 
 * Kubernetes 'i kullanma hakkında sorular. Örneğin, Microsoft Desteği özel giriş denetleyicileri oluşturma, uygulama iş yüklerini kullanma veya üçüncü taraf ya da açık kaynaklı yazılım paketlerini veya araçları uygulama hakkında öneri sağlamaz.
   > [!NOTE]
   > Microsoft Desteği, AKS kümesi işlevselliği, özelleştirmesi ve ayarlama (örneğin, Kubernetes işlemleri ve yordamları) konusunda öneri verebilir.
 * Kubernetes denetim düzlemi kapsamında sağlanmayan veya AKS kümeleriyle dağıtılan üçüncü taraf açık kaynaklı projeler. Bu projeler, Istio, Helm, Envoy veya diğerleri içerebilir.
   > [!NOTE]
-  > Microsoft, Held ve Kured gibi üçüncü taraf açık kaynaklı projeler için en iyi desteği sağlayabilir. Üçüncü taraf açık kaynak aracının, Kubernetes Azure bulut sağlayıcısıyla veya diğer AKS ile ilgili hatalarla tümleştirildiği durumlarda Microsoft, Microsoft belgelerindeki örnekleri ve uygulamaları destekler.
+  > Microsoft, Held gibi üçüncü taraf açık kaynaklı projeler için en iyi desteği sağlayabilir. Üçüncü taraf açık kaynak aracının, Kubernetes Azure bulut sağlayıcısıyla veya diğer AKS ile ilgili hatalarla tümleştirildiği durumlarda Microsoft, Microsoft belgelerindeki örnekleri ve uygulamaları destekler.
 * Üçüncü taraf kapalı kaynaklı yazılım. Bu yazılım, güvenlik tarama araçları ve ağ aygıtlarını veya yazılımlarını içerebilir.
-* Birden çok yüksek veya çok satıcılı derleme hakkında sorunlar. Örneğin, Microsoft, bir Federasyon çoğulublik bulut satıcısı çözümünü çalıştırmaya ilişkin sorunları desteklemez.
-* [Aks belgelerinde](./index.yml)listelenenler dışındaki ağ özelleştirmeleri.
-  > [!NOTE]
-  > Microsoft, ağ güvenlik grupları (NSG 'ler) ile ilgili sorunları ve hataları destekler. Örneğin Microsoft Desteği, bir NSG hatası veya beklenmeyen NSG veya yük dengeleyici davranışı hakkındaki soruları yanıtlayabilir.
+* [Aks belgelerinde](./index.yml)listelenenlerden farklı ağ özelleştirmeleri.
 
-## <a name="aks-support-coverage-for-worker-nodes"></a>Çalışan düğümleri için AKS Destek kapsamı
 
-### <a name="microsoft-responsibilities-for-aks-worker-nodes"></a>AKS çalışan düğümleri için Microsoft sorumlulukları
+## <a name="aks-support-coverage-for-agent-nodes"></a>Aracı düğümleri için AKS Destek kapsamı
 
-Microsoft ve müşterileri, Kubernetes çalışan düğümlerinin sorumluluğunu şu durumlarda paylaşır:
+### <a name="microsoft-responsibilities-for-aks-agent-nodes"></a>AKS aracı düğümleri için Microsoft sorumlulukları
+
+Microsoft ve kullanıcılar, Kubernetes aracı düğümlerinin sorumluluğunu burada paylaşır:
 
 * Temel işletim sistemi görüntüsünün gerekli eklemeleri (izleme ve ağ aracıları gibi) vardır.
-* Çalışan düğümleri işletim sistemi düzeltme eklerini otomatik olarak alır.
-* Çalışan düğümlerinde çalışan Kubernetes denetim düzlemi bileşenleriyle ilgili sorunlar otomatik olarak düzeltildi. Bileşenler şunlardır:
-  * Kube-proxy
+* Aracı düğümleri, işletim sistemi düzeltme eklerini otomatik olarak alır.
+* Aracı düğümlerinde çalışan Kubernetes denetim düzlemi bileşenleriyle ilgili sorunlar otomatik olarak düzeltildi. Bu bileşenler şunlardır:
+  * `Kube-proxy`
   * Kubernetes ana bileşenlerine iletişim yolları sağlayan ağ tünelleri
-  * Kubelet
-  * Docker veya Moby Daemon
+  * `Kubelet`
+  * `Moby` veya `ContainerD`
 
 > [!NOTE]
-> Bir çalışan düğümünde, bir denetim düzlemi bileşeni çalışır durumda değilse, AKS ekibinin tek tek bileşenleri veya tüm çalışan düğümünü yeniden başlatması gerekebilir. Bu yeniden başlatma işlemleri otomatikleştirilir ve genel sorunlar için otomatik düzeltme sağlar. Bu önyüklemeler, acil bir bakım veya kesinti olmadığı takdirde küme değil yalnızca _düğüm_ düzeyinde gerçekleşir.
+> Bir aracı düğümü çalışır durumda değilse, AKS tek tek bileşenleri veya tüm aracı düğümünü yeniden başlatabilir. Bu yeniden başlatma işlemleri otomatikleştirilir ve genel sorunlar için otomatik düzeltme sağlar. Otomatik Düzeltme mekanizmaları hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [düğüm otomatik onarma](node-auto-repair.md)
 
-### <a name="customer-responsibilities-for-aks-worker-nodes"></a>AKS çalışan düğümleri için müşteri sorumlulukları
+### <a name="customer-responsibilities-for-aks-agent-nodes"></a>AKS aracı düğümleri için müşteri sorumlulukları
 
-Microsoft, işletim sistemi düzeyi düzeltme eklerini uygulamak için çalışan düğümlerini otomatik olarak yeniden başlatır. İşletim sistemi düzeltme ekleri çalışan düğümlerine teslim edilse de, *Müşteri* , değişiklikleri uygulamak için çalışan düğümlerin yeniden başlatılması sorumludur. Daemon 'ları, katı hal karma sürücü (SSHD) gibi paylaşılan kitaplıklar ve sistem veya IŞLETIM sistemi düzeyindeki diğer bileşenler otomatik olarak düzeltme eki uygulanır.
+Microsoft, görüntü düğümleriniz için, haftalık düzeltme ekleri ve yeni görüntüler sağlar, ancak otomatik olarak bunları varsayılan olarak kullanmaz. Aracı düğümünüz işletim sistemi ve çalışma zamanı bileşenlerinizi düzeltme eki uygulamak için, normal bir [düğüm görüntüsü yükseltme](node-image-upgrade.md) zamanlaması tutmanız veya otomatikleştirmeniz gerekir.
 
-Müşteriler, Kubernetes yükseltmelerini yürütmekten sorumludur. Azure Denetim Masası veya Azure CLı aracılığıyla yükseltmeleri yürütebilirler. Bu, Kubernetes için güvenlik veya işlevsellik iyileştirmeleri içeren güncelleştirmeler için geçerlidir.
+Benzer şekilde, AKS 'ler düzenli olarak yeni Kubernetes yamaları ve ikincil sürümlerini yayınlar. Bu güncelleştirmeler Kubernetes için güvenlik veya işlev geliştirmeleri içerebilir. Kümelerinizin Kubernetes sürümünü, [aks Kubernetes destek sürümü ilkesine](supported-kubernetes-versions.md)göre güncel tutmanız ve bu sürümden sorumlu olursunuz.
 
-#### <a name="user-customization-of-worker-nodes"></a>Çalışan düğümlerinin Kullanıcı özelleştirmesi
+#### <a name="user-customization-of-agent-nodes"></a>Aracı düğümlerinin Kullanıcı özelleştirmesi
 > [!NOTE]
-> AKS çalışan düğümleri Azure portal normal Azure IaaS kaynakları olarak görünür. Ancak bu sanal makineler özel bir Azure Kaynak grubuna dağıtılır (MC \\ * önekli). AKS çalışan düğümlerini temel yapılandırmalarından artırmak mümkündür. Örneğin, AKS çalışan düğümlerini normal sanal makineleri değiştirdiğiniz şekilde değiştirmek için Secure Shell (SSH) kullanabilirsiniz. Ancak, temel işletim sistemi görüntüsünü değiştiremezsiniz. Herhangi bir özel değişiklik, yükseltme, ölçeklendirme, güncelleştirme veya yeniden başlatma aracılığıyla kalıcı olmayabilir. **Ancak**, *aks API 'sinin bant dışı ve kapsam dışında* değişiklikler yapmak aks kümesinin desteklenmeyen hale gelmesine neden oluyor. Microsoft Desteği değişiklik yapmaya yönlendirmedikleri takdirde çalışan düğümlerini değiştirmekten kaçının.
+> AKS aracı düğümleri Azure portal normal Azure IaaS kaynakları olarak görünür. Ancak bu sanal makineler özel bir Azure Kaynak grubuna dağıtılır (genellikle MC_ önekli \* ). IaaS API 'Lerini veya kaynaklarını kullanarak, temel işletim sistemi görüntüsünü değiştiremez veya bu düğümlere doğrudan özelleştirmeler yapabilirsiniz. AKS API 'SI aracılığıyla gerçekleştirilen özel değişiklikler, yükseltme, ölçeklendirme, güncelleştirme veya yeniden başlatma aracılığıyla devam etmez. Microsoft Desteği, değişiklikler yapmaya yönlendirmedikleri takdirde aracı düğümlerinde değişiklik yapmaktan kaçının.
 
-Yukarıda tanımlanan, tüm aracı düğümlerinin bant dışında ayırmayı kaldırma gibi desteklenmeyen işlemler verme, kümeyi desteklenmeyen şekilde işler. AKS, 30 güne eşit ve daha fazla uzatılmış dönemler için destek yönergelerinden daha fazla yapılandırılmış olan denetim düzlemleri Arşivi saklı tutar. AKS, küme etcd meta verilerinin yedeklerini tutar ve kümeyi kolayca yeniden tahsis edebilir. Bu yeniden ayırma, bir yükseltme ya da etkin aracı düğümlerine ölçeklendirilmesi gibi, kümeyi tekrar desteğe getiren herhangi bir PUT işlemi tarafından başlatılabilir.
-
-AKS, çalışan düğümlerinin yaşam döngüsünü ve işlemlerini müşteriler adına yönetir. çalışan düğümleriyle ilişkili IaaS kaynaklarını değiştirme **desteklenmez**. Desteklenmeyen bir işleme bir örnek, VMSS portalı veya VMSS API aracılığıyla VMSS yapılandırmasını el ile değiştirerek bir düğüm havuzu VM Ölçek kümesini özelleştirmektir.
+AKS aracı düğümlerinin yaşam döngüsünü ve işlemlerini sizin adınıza yönetmektedir. aracı düğümleriyle ilişkili IaaS kaynaklarını değiştirme **desteklenmez**. Desteklenmeyen bir işlem örneği, sanal makine ölçek kümesi portalı veya API 'SI aracılığıyla yapılandırma el ile değiştirilerek bir düğüm havuzu sanal makine ölçek kümesini özelleştirmektir.
  
-İş yüküne özgü yapılandırma veya paketler için AKS, [Kubernetes daemonsets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)kullanmayı önerir.
+İş yüküne özgü yapılandırmalarda veya paketlerde AKS, [Kubernetes `daemon sets` ](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)kullanmayı önerir.
 
-Kubernetes ayrıcalıklı daemonsets ve init kapsayıcıları kullanmak, müşterilerin küme çalışan düğümlerinde üçüncü taraf yazılımları ayarlamanıza/değiştirmesine veya yüklemesine olanak sağlar. Bu tür özelleştirmeler örnekleri, özel güvenlik taraması yazılımı eklemeyi veya sysctl ayarlarını güncelleştirmeyi içerir.
+Kubernetes ayrıcalıklı `daemon sets` ve init kapsayıcıları kullanmak, küme Aracısı düğümlerinde üçüncü taraf yazılımları ayarlamanıza/değiştirmenize veya yüklemenize olanak sağlar. Bu tür özelleştirmeler örnekleri, özel güvenlik taraması yazılımı eklemeyi veya sysctl ayarlarını güncelleştirmeyi içerir.
 
-Yukarıdaki gereksinimler uygunsa, bu önerilen bir yoldur, AKS Mühendisliği ve desteği, bozuk/işlevsel değişikliklere veya bir müşterinin dağıtıldığı daemonset nedeniyle kullanılamayan düğümü işlemeye yönelik sorunları gidermeye veya tanılamaya yardımcı olabilir.
-
-> [!NOTE]
-> *Yönetilen bir hizmet* olarak aks, hizmet yönetiminin daha kapsamlı ve uygulamalı hale getirmek için düzeltme ekleri, güncelleştirmeler ve günlük toplama sorumluluğunu kaldırma gibi son hedeflere sahiptir. Hizmetin uçtan uca yönetim kapasitesi arttıkça, gelecek sürümler bazı işlevleri (örneğin, düğüm yeniden başlatma ve otomatik düzeltme eki uygulama) atlayabilir.
+Yukarıdaki gereksinimlerin uygulanması durumunda bu yol önerilse de, AKS Mühendisliği ve desteği, özel olarak dağıtılan bir nedenle, düğümü işleyen değişiklikleri tanılamada veya sorunları gidermeye yardımcı olamaz `daemon set` .
 
 ### <a name="security-issues-and-patching"></a>Güvenlik sorunları ve düzeltme eki uygulama
 
-AKS 'nin bir veya daha fazla bileşeninden güvenlik kusuru bulunursa, AKS ekibi, sorunu azaltmak için etkilenen tüm kümeleri yayacaktır. Alternatif olarak, takım kullanıcılara Yükseltme Kılavuzu sağlayacaktır.
+AKS 'nin yönetilen bileşenlerinden birinde bir veya daha fazlası varsa, AKS ekibi, sorunu azaltmak için etkilenen tüm kümeleri yayacaktır. Alternatif olarak, takım kullanıcılara Yükseltme Kılavuzu sağlayacaktır.
 
-Bir güvenlik kusuru etkilediği çalışan düğümleri için, sıfır kesinti yaması varsa, AKS ekibi bu düzeltme ekini uygular ve bu değişikliği kullanıcılara bildirir.
-
-Bir güvenlik düzeltme eki çalışan düğümü yeniden başlatmaları gerektirdiğinde, Microsoft bu gereksinimin müşterilerine bildirim gönderir. Müşteri, küme düzeltme ekini almak için yeniden başlatma veya güncelleştirme sorumludur. Kullanıcılar, AKS yönergelerine göre düzeltme eklerini uygulamayamıyorsanız, bunların kümesi güvenlik sorunundan etkilenmeye devam edecektir.
+Bir güvenlik sorunundan etkilenen aracı düğümleri için, Microsoft sizi etkiyle ilgili ayrıntıları ve güvenlik sorununu düzeltme ya da azaltma adımlarını (normalde bir düğüm görüntüsü yükseltmesi veya bir küme düzeltme eki yükseltmesi) bilgilendirecek.
 
 ### <a name="node-maintenance-and-access"></a>Düğüm bakımı ve erişimi
 
-Çalışan düğümleri paylaşılan bir sorumluluktur ve müşterilere aittir. Bu nedenle, müşteriler, çalışan düğümlerinde oturum açma ve çekirdek güncelleştirmeleri ve paketleri yükleme veya kaldırma gibi zararlı olabilecek değişiklikler yapabilirler.
-
-Müşteriler bozucu değişiklikler yapar veya denetim düzlemi bileşenlerinin çevrimdışı olmasına veya işlevsel olmasına neden olursa, AKS bu hatayı algılar ve çalışan düğümünü otomatik olarak önceki çalışma durumuna geri yükler.
-
-Müşteriler, çalışan düğümlerinde oturum açıp değiştirebilse de, değişiklikler küme tarafından desteklenmeyen bir tablo yapabildiğinden bunun yapılması önerilmez.
+' De oturum açıp aracı düğümlerinde değişiklik yapabilseniz de, değişiklikler küme tarafından desteklenmeyen bir tablo yapabildiğinden bu işlem önerilmez.
 
 ## <a name="network-ports-access-and-nsgs"></a>Ağ bağlantı noktaları, erişim ve NSG 'ler
 
-Yönetilen bir hizmet olarak, AKS 'nin belirli ağ ve bağlantı gereksinimleri vardır. Bu gereksinimler normal IaaS bileşenleri gereksinimlerinden daha az esnektir. AKS 'de, NSG kurallarını özelleştirme, belirli bir bağlantı noktasını engelleme (örneğin, giden bağlantı noktası 443 ' i engelleyen güvenlik duvarı kuralları kullanma) ve bir izin verilenler listesine URL ekleme gibi işlemler, kümenizin desteklenemez olmasını sağlayabilir.
+Yalnızca özel alt ağlardaki NSG 'leri özelleştirebilirsiniz. Yönetilen alt ağlarda veya aracı düğümlerinin NIC düzeyinde NSG 'leri özelleştiremeyebilirsiniz. AKS 'in belirli uç noktalara çıkış gereksinimleri vardır, çıkışı denetlemek ve gerekli bağlantıları sağlamak için bkz. [çıkış trafiğini sınırlandırma](limit-egress-traffic.md).
 
-> [!NOTE]
-> Şu anda AKS, çıkış trafiğini kümenizdeki tamamen kilitlemenize izin vermez. Kümenizin giden trafik için kullanabileceği URL 'Lerin ve bağlantı noktalarının listesini denetlemek için,  [çıkış trafiğini sınırla](limit-egress-traffic.md)' ya bakın.
+## <a name="stopped-or-de-allocated-clusters"></a>Durdurulmuş veya serbest ayrılmış kümeler
+
+Yukarıdaki şekilde, tüm küme düğümlerinin IaaS API 'Leri/CLı/Portal aracılığıyla el ile serbest tahsisi, kümeyi destek dışında oluşturur.
+Tüm düğümü durdurmak/serbest bırakmak için desteklenen tek yol [aks kümesini durdurmak ve bu, küme durumunu 12 aya kadar koruyacak.
+
+12 aydan uzun süre durdurulan kümeler artık durumu korumaz. 
+
+AKS API 'Lerinden de ayrılmış kümelerin durum koruması garantisi yoktur. Bu durumdaki kümelerin denetim düzlemleri 30 gün sonra arşivlenecek ve 12 aydan sonra silinir.
+
+AKS, 30 güne eşit ve daha fazla uzatılmış dönemler için destek yönergelerinden daha fazla yapılandırılmış olan denetim düzlemleri Arşivi saklı tutar. AKS, küme etcd meta verilerinin yedeklerini tutar ve kümeyi kolayca yeniden tahsis edebilir. Bu yeniden ayırma, bir yükseltme ya da etkin aracı düğümlerine ölçeklendirilmesi gibi, kümeyi tekrar desteğe getiren herhangi bir PUT işlemi tarafından başlatılabilir.
+
+Aboneliğiniz askıya alındı veya silinirse, kümenizin denetim düzlemi ve durumu 90 gün sonra silinir.
 
 ## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Desteklenmeyen Alfa ve Beta Kubernetes özellikleri
 
-AKS yalnızca yukarı akış Kubernetes projesi içindeki kararlı özellikleri destekler. Aksi belirtilmedikçe, AKS, yukarı akış Kubernetes projesinde bulunan Alpha ve Beta özelliklerini desteklemez.
-
-İki senaryoda, Alfa veya beta özellikleri genel kullanıma açılmadan önce kullanıma alınmış olabilir:
-
-* Müşteriler, AKS ürünü, destek veya mühendislik ekipleriyle karşılanır ve bu yeni özellikleri denemeleri istendi.
-* Bu özellikler [bir özellik bayrağı tarafından etkinleştirildi](https://awesomeopensource.com/projects/aks?categoryPage=11). Müşteriler bu özellikleri kullanmak için açıkça kabul etmelidir.
+AKS yalnızca yukarı akış Kubernetes projesi içindeki kararlı ve Beta özelliklerini destekler. Aksi belirtilmedikçe, AKS, yukarı akış Kubernetes projesinde bulunan herhangi bir Alfa özelliğini desteklemez.
 
 ## <a name="preview-features-or-feature-flags"></a>Önizleme özellikleri veya özellik bayrakları
 
@@ -157,21 +151,18 @@ Genişletilmiş test ve Kullanıcı geri bildirimi gerektiren özellikler ve iş
 
 Önizleme özellikleri veya özellik bayrağı özellikleri üretime yönelik değildir. API 'lerde ve davranıştaki devam eden değişiklikler, hata düzeltmeleri ve diğer değişiklikler kararsız kümeler ve kapalı kalma süresine yol açabilir.
 
-Genel önizlemede bulunan özellikler, bu özellikler önizleme aşamasındadır ve üretime yönelik değildir ve yalnızca iş saatleri boyunca AKS teknik destek ekipleri tarafından desteklenmeye yöneliktir. Daha fazla bilgi için lütfen bkz.
+Genel önizlemede bulunan özellikler, bu özellikler önizleme aşamasındadır ve üretime yönelik değildir ve yalnızca iş saatleri boyunca AKS teknik destek ekipleri tarafından desteklenmeye yöneliktir. Daha fazla bilgi için bkz.
 
 * [Azure desteği SSS](https://azure.microsoft.com/support/faq/)
 
-> [!NOTE]
-> Önizleme özellikleri Azure *abonelik* düzeyinde etkili olur. Önizleme özelliklerini bir üretim aboneliğine yüklemeyin. Bir üretim aboneliğinde, Önizleme özellikleri varsayılan API davranışını değiştirebilir ve normal işlemleri etkileyebilir.
-
 ## <a name="upstream-bugs-and-issues"></a>Yukarı akış hataları ve sorunları
 
-Yukarı akış Kubernetes projesinde geliştirme hızı verildiğinde, hatalar bağımsız olarak ortaya çıkar. Bu hataların bazıları, AKS sisteminde düzeltme eki uygulanabilir veya bu hataların içinde çalışılmaz. Bunun yerine, hata düzeltmeleri yukarı akış projelerine (Kubernetes, düğüm veya çalışan işletim sistemleri ve kernels gibi) daha büyük yamalar gerektirir. Microsoft 'un sahip olduğu bileşenler (örneğin, Azure bulut sağlayıcısı), AKS ve Azure personeli, topluluk içindeki sorunları gidermeye yönelik olarak işlenir.
+Yukarı akış Kubernetes projesinde geliştirme hızı verildiğinde, hatalar bağımsız olarak ortaya çıkar. Bu hataların bazıları, AKS sisteminde düzeltme eki uygulanabilir veya bu hataların içinde çalışılmaz. Bunun yerine, hata düzeltmeleri yukarı akış projelerine (Kubernetes, düğüm veya aracı işletim sistemleri ve çekirdek gibi) daha fazla düzeltme eki gerektirir. Microsoft 'un sahip olduğu bileşenler (örneğin, Azure bulut sağlayıcısı), AKS ve Azure personeli, topluluk içindeki sorunları gidermeye yönelik olarak işlenir.
 
 Teknik destek sorunu bir veya daha fazla yukarı akış hatasından kaynaklandığında, AKS desteği ve mühendislik ekipleri şunları yapar:
 
 * Bu sorunun kümenizi veya iş yükünüzü neden etkilediğinin açıklanmasına yardımcı olmak için, tüm destekleyici ayrıntılarla yukarı akış hatalarını belirleyip bağlayın. Müşteriler, sorunları izlemek ve yeni bir sürümün düzeltmeler sağlayabilmesi için gerekli depoların bağlantılarını alırlar.
-* Olası geçici çözümler veya azaltmaları sağlar. Sorun azaltılyabilirse, bilinen bir [sorun](https://github.com/Azure/AKS/issues?q=is%3Aissue+is%3Aopen+label%3Aknown-issue) aks deposunda dosyalanır. Bilinen sorun sorunu şunları açıklar:
+* Olası geçici çözümler veya hafifletme sağlar. Sorun azaltılyabilirse, bilinen bir [sorun](https://github.com/Azure/AKS/issues?q=is%3Aissue+is%3Aopen+label%3Aknown-issue) aks deposunda dosyalanır. Bilinen sorun sorunu şunları açıklar:
   * Bu sorun, yukarı akış hatalarının bağlantıları da dahil olmak üzere.
   * Geçici çözüm ve bir yükseltme veya çözümün başka bir kalıcılığı ile ilgili ayrıntılar.
   * Yukarı akış sürümü temposunda temel alınarak sorunun dahil edilmesi için kaba zaman çizelgeleri.

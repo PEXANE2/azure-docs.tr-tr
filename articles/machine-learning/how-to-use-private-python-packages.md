@@ -10,15 +10,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 2af6749565a7fefd2892b82bcd5dff203eccdedc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0f6f5d0ca757b10a16b31864124f1bcf1190674a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661215"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896930"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Azure Machine Learning ile özel Python paketleri kullanma
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu makalede, Azure Machine Learning içinde özel Python paketlerini güvenli bir şekilde kullanmayı öğrenin. Özel Python paketleri için kullanım örnekleri şunları içerir:
 
@@ -29,7 +29,7 @@ Bu makalede, Azure Machine Learning içinde özel Python paketlerini güvenli bi
 
 Özel paketler, [ortam](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment) sınıfı aracılığıyla kullanılır. Bir ortam içinde, özel olanlar dahil olmak üzere hangi Python paketlerinin kullanılacağını bildirirsiniz. Azure Machine Learning ortam hakkında genel bilgi edinmek için bkz. [ortamları kullanma](how-to-use-environments.md). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
  * [Python için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
  * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)

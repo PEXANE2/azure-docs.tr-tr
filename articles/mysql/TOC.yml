@@ -1,4 +1,4 @@
-- name: MySQL için Azure Veritabanı belgeleri
+- name: MySQL için Azure Veritabanı Belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
@@ -10,322 +10,510 @@
       items:
         - name: SSL kök sertifikasının süresi doluyor
           href: concepts-certificate-rotation.md
-- name: Hızlı Başlangıçlar
+- name: Paylaşılan belgeler
+  items:
+    - name: Geçiş
+      items:
+        - name: mysqldump veya phpmyadmin ile verileri geçirme
+          href: concepts-migrate-dump-restore.md
+          displayName: 'migrate, mysqldump'
+        - name: MySQL Workbench ile verileri geçirme
+          href: concepts-migrate-import-export.md
+          displayName: 'import , migrate, export'
+        - name: DMS ile en düşük kapalı kalma süresiyle geçiş
+          href: howto-migrate-online.md
+          displayName: 'migrate, dms, database migration service'
+    - name: Veritabanları ve kullanıcılar oluşturma
+      href: howto-create-users.md
+      displayName: users
+    - name: Veritabanı bozulmasını azaltma
+      href: how-to-fix-corrupt-database.md
+      displayName: corrupt data
+- name: Tek sunucu
   expanded: true
   items:
-    - name: DB oluşturma
+    - name: Tek Sunucu belgeleri
+      href: single-server/index.yml
+      displayName: single server
+    - name: Genel Bakış
       items:
-        - name: DB Oluşturma - Portal
-          href: quickstart-create-mysql-server-database-using-azure-portal.md
-        - name: DB Oluşturma - Azure CLI
-          href: quickstart-create-mysql-server-database-using-azure-cli.md
-        - name: DB Oluşturma - Azure CLI up komutu
-          href: quickstart-create-server-up-azure-cli.md
-        - name: DB Oluşturma - Azure PowerShell
-          href: quickstart-create-mysql-server-database-using-azure-powershell.md
-        - name: DB oluşturma - ARM şablonu
-          href: quickstart-create-mysql-server-database-using-arm-template.md
-          displayName: deploy azure resource manager template
-    - name: Bağlanma ve sorgulama
+        - name: Tek Sunucu nedir?
+          href: single-server-overview.md
+    - name: Hızlı Başlangıçlar
+      expanded: true
       items:
-        - name: PHP
-          href: connect-php.md
-        - name: Java
-          href: connect-java.md
-        - name: Spring Data JDBC ile Java
-          href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-        - name: Spring Data JPA ile Java
-          href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-        - name: Spring Data R2DBC ile Java
-          href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-        - name: .NET
-          href: connect-csharp.md
-        - name: Python
-          href: connect-python.md
-        - name: Node.js
-          href: connect-nodejs.md
-        - name: Ruby
-          href: connect-ruby.md
-        - name: C++
-          href: connect-cpp.md
-        - name: Başlayın
-          href: connect-go.md
-        - name: MySQL Workbench
-          href: connect-workbench.md
-- name: Öğreticiler
-  items:
-    - name: 1 - Veritabanı Tasarlama
+        - name: Sunucu oluşturma
+          items:
+            - name: Azure portal
+              href: quickstart-create-mysql-server-database-using-azure-portal.md
+              displayName: 'portal, create, server'
+            - name: Azure CLI
+              href: quickstart-create-mysql-server-database-using-azure-cli.md
+              displayName: 'cli, create, server'
+            - name: Azure CLI up komutu
+              href: quickstart-create-server-up-azure-cli.md
+              displayName: 'cli, up command, create, server'
+            - name: Azure PowerShell
+              href: quickstart-create-mysql-server-database-using-azure-powershell.md
+              displayName: 'powershell, create, server'
+            - name: ARM şablonu
+              href: quickstart-create-mysql-server-database-using-arm-template.md
+              displayName: deploy azure resource manager template
+        - name: Bağlanma ve sorgulama
+          items:
+            - name: MySQL Workbench
+              href: connect-workbench.md
+            - name: PHP
+              href: connect-php.md
+            - name: Java
+              href: connect-java.md
+            - name: Spring Data JDBC ile Java
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: Spring Data JPA ile Java
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: Spring Data R2DBC ile Java
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: .NET
+              href: connect-csharp.md
+            - name: Python
+              href: connect-python.md
+            - name: Node.js
+              href: connect-nodejs.md
+            - name: Ruby
+              href: connect-ruby.md
+            - name: C++
+              href: connect-cpp.md
+            - name: Başlayın
+              href: connect-go.md
+    - name: Öğreticiler
       items:
-        - name: Azure portal
-          href: tutorial-design-database-using-portal.md
+        - name: Veritabanı tasarlama
+          items:
+            - name: Azure portal
+              href: tutorial-design-database-using-portal.md
+            - name: Azure CLI
+              href: tutorial-design-database-using-cli.md
+            - name: Azure PowerShell
+              href: tutorial-design-database-using-powershell.md
+            - name: Azure Resource Manager şablonu
+              href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
+        - name: MySQL ile PHP web uygulaması oluşturma
+          items:
+            - name: MySQL ile kapsayıcılarda Wordpress
+              href: ../app-service/containers/tutorial-multi-container-app.md
+              maintainContext: true
+            - name: MySQL ile PHP
+              href: ../app-service/app-service-web-tutorial-php-mysql.md
+              maintainContext: true
+    - name: Örnekler
+      items:
         - name: Azure CLI
-          href: tutorial-design-database-using-cli.md
-        - name: Azure PowerShell
-          href: tutorial-design-database-using-powershell.md
-        - name: Azure Resource Manager şablonu
-          href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
-    - name: 2 Web Uygulaması Oluşturma
-      items:
-        - name: MySQL ile kapsayıcılarda Wordpress
-          href: ../app-service/tutorial-multi-container-app.md
-          maintainContext: true
-        - name: MySQL ile PHP
-          href: ../app-service/tutorial-php-mysql-app.md
-          maintainContext: true
-- name: Örnekler
-  items:
-    - name: Azure CLI
-      href: sample-scripts-azure-cli.md
-    - name: Java bağlantı havuzu
-      href: sample-scripts-java-connection-pooling.md
-- name: Kavramlar
-  items:
-    - name: DB ve Sunucular
+          href: sample-scripts-azure-cli.md
+        - name: Java bağlantı havuzu
+          href: sample-scripts-java-connection-pooling.md
+        - name: Azure İlkesi yerleşik ilkeler
+          href: ./policy-samples.md
+    - name: Kavramlar
       items:
         - name: Sunucular
           href: concepts-servers.md
         - name: Desteklenen sürümler
           href: concepts-supported-versions.md
-        - name: Yüksek kullanılabilirlik
-          href: concepts-high-availability.md
-    - name: Kaynaklar
-      items:
-        - name: Fiyatlandırma katmanları
-          href: concepts-pricing-tiers.md
-        - name: Ayrılmış kapasite için ön ödeme yapma
-          href: concept-reserved-pricing.md
         - name: Sınırlamalar
           href: concepts-limits.md
-    - name: Veri erişimi ve güvenlik
-      items:
-        - name: Güvenliğe genel bakış
-          href: concepts-security.md
-        - name: SSL’i Yapılandırma
-          href: concepts-ssl-connection-security.md
-        - name: Bağlantı mimarisi
-          href: concepts-connectivity-architecture.md
-        - name: Güvenlik duvarı kuralları
-          href: concepts-firewall-rules.md
-        - name: Sanal Ağ
-          href: concepts-data-access-and-security-vnet.md
-        - name: Gelişmiş Tehdit Koruması
-          href: concepts-data-access-and-security-threat-protection.md
-        - name: Özel Bağlantı
-          href: concepts-data-access-security-private-link.md
-        - name: Veri Şifrelemesi
-          href: concepts-data-encryption-mysql.md
-        - name: Azure AD kimlik doğrulaması
-          href: concepts-azure-ad-authentication.md
-        - name: Altyapıyı çift şifreleme
-          href: concepts-infrastructure-double-encryption.md
-        - name: Azure İlkesi’ne göre güvenlik denetimleri
-          displayName: 'regulatory, compliance, standards, domains'
-          href: ./security-controls-policy.md
-        - name: Güvenlik temeli
-          href: security-baseline.md
-    - name: İş sürekliliği
-      items:
-        - name: İş sürekliliğine giriş
-          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
-          href: concepts-business-continuity.md
-        - name: Yedekleme ve geri yükleme
-          href: concepts-backup.md
-    - name: İzleme ve ayarlama
-      items:
+        - name: Fiyatlandırma Katmanları
+          items:
+            - name: Fiyatlandırma katmanları
+              href: concepts-pricing-tiers.md
+            - name: Ayrılmış kapasite için ön ödeme yapma
+              href: concept-reserved-pricing.md
+        - name: Ağ
+          items:
+            - name: Sanal Ağ (VNET) Kullanma
+              href: concepts-data-access-and-security-vnet.md
+            - name: Özel Bağlantı ile özel erişimi etkinleştirme
+              href: concepts-data-access-security-private-link.md
+        - name: Güvenlik
+          items:
+            - name: Güvenliğe genel bakış
+              href: concepts-security.md
+            - name: SSL’i Yapılandırma
+              href: concepts-ssl-connection-security.md
+            - name: Bağlantı mimarisi
+              href: concepts-connectivity-architecture.md
+            - name: Güvenlik duvarı kuralları
+              href: concepts-firewall-rules.md
+            - name: Gelişmiş Tehdit Koruması
+              href: concepts-data-access-and-security-threat-protection.md
+            - name: Veri Şifrelemesi
+              href: concepts-data-encryption-mysql.md
+            - name: Azure AD kimlik doğrulaması
+              href: concepts-azure-ad-authentication.md
+            - name: Altyapıyı çift şifreleme
+              href: concepts-infrastructure-double-encryption.md
+            - name: Güvenlik temeli
+              href: security-baseline.md
+        - name: İş sürekliliği
+          items:
+            - name: İş sürekliliğine giriş
+              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
+              href: concepts-business-continuity.md
+            - name: Yüksek kullanılabilirlik
+              href: concepts-high-availability.md
+              displayName: 'backup, restore,high availability'
+            - name: Yedekleme ve geri yükleme
+              href: concepts-backup.md
+              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
         - name: İzleme ve ayarlama
-          href: concepts-monitoring.md
-        - name: Yavaş sorgu günlükleri
-          href: concepts-server-logs.md
-        - name: Denetim günlükleri
-          href: concepts-audit-logs.md
-        - name: Sorgu Deposu
-          href: concepts-query-store.md
-        - name: Sorgu Performansı İçgörüleri
-          href: concepts-query-performance-insight.md
-        - name: Performans Önerileri
-          href: concepts-performance-recommendations.md
-        - name: Sunucu parametreleri
-          href: concepts-server-parameters.md
-    - name: Geliştirme
-      items:
-        - name: Uygulama en iyi deneyimleri
-          href: app-development-best-practices.md
-        - name: Sürücü ve araç uyumluluğu
-          href: concepts-compatibility.md
+          items:
+            - name: İzlemeye genel bakış
+              href: concepts-monitoring.md
+              displayName: 'monitor, alerts, audit log, slow query log'
+            - name: Sunucu parametreleri
+              href: concepts-server-parameters.md
+              displayName: server parameters
+            - name: Yavaş sorgu günlükleri
+              href: concepts-server-logs.md
+              displayName: 'monitor, slow query log, alert'
+            - name: Denetim günlükleri
+              href: concepts-audit-logs.md
+              displayName: 'monitor, alerts, audit log'
+            - name: Sorgu Deposu
+              href: concepts-query-store.md
+              displayName: 'performance, query store'
+            - name: Sorgu performansı içgörüleri
+              href: concepts-query-performance-insight.md
+              displayName: query performance insights
+            - name: Performans önerileri
+              href: concepts-performance-recommendations.md
+              displayName: recommendation
         - name: Uygulama geliştirme
-          href: concepts-database-application-development.md
-        - name: Bağlantı dayanıklılığı
-          href: concepts-connectivity.md
-        - name: Azure Kubernetes Service (AKS) ile geliştirme
-          href: concepts-aks.md
-        - name: Java
           items:
-            - name: Java ve JDBC kullanma
-              href: connect-java.md
-            - name: Spring Verilerini Kullanma JDBC
-              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-            - name: Spring Data JPA kullanma
-              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-            - name: Spring Data R2DBC’yi kullanma
-              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-    - name: Çoğaltma
-      items:
-        - name: Veri içinde çoğaltma
-          href: concepts-data-in-replication.md
-        - name: Okuma amaçlı çoğaltmalar
-          href: concepts-read-replicas.md
-- name: Nasıl yapılır kılavuzları
-  items:
-    - name: Sunucu yönetme
-      items:
-        - name: Azure portal
-          href: howto-create-manage-server-portal.md
-    - name: Güvenlik duvarı kuralları
-      items:
-        - name: Azure portal
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: Sunucuyu geri yükleme
-      items:
-        - name: Azure portal
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-        - name: Azure PowerShell
-          href: howto-restore-server-powershell.md
-    - name: Veritabanını geçirme
-      items:
-        - name: Döküm ve geri yükleme
-          href: concepts-migrate-dump-restore.md
-        - name: İçeri ve dışarı aktarma
-          href: concepts-migrate-import-export.md
-        - name: En düşük kapalı kalma süresiyle geçiş
-          href: howto-migrate-online.md
-    - name: Uygulamaları bağlama
-      items:
-        - name: Kullanıcı oluşturma
-          href: howto-create-users.md
-        - name: Bağlantı dizeleri
+            - name: Uygulama geliştirmeye genel bakış
+              href: concepts-database-application-development.md
+            - name: Sürücü ve araç uyumluluğu
+              href: concepts-compatibility.md
+              displayName: 'drivers, tools'
+            - name: Uygulama en iyi deneyimleri
+              href: app-development-best-practices.md
+              displayName: application
+            - name: Bağlantı dayanıklılığı
+              href: concepts-connectivity.md
+              displayName: 'connection, resiliency'
+        - name: Çoğaltma
           items:
-            - name: Uygulamaları bağlama
-              href: howto-connection-string.md
+            - name: Veri içinde çoğaltma
+              href: concepts-data-in-replication.md
+              displayName: 'replication, read replica'
+            - name: Okuma amaçlı çoğaltmalar
+              href: concepts-read-replicas.md
+              displayName: 'replication, read replica'
+    - name: Nasıl yapılır kılavuzları
+      items:
+        - name: Sunucu yönetme ve ölçeklendirme
+          items:
+            - name: Azure portal
+              href: howto-create-manage-server-portal.md
+              displayName: 'manage, reset password, scale'
+            - name: Azure CLI
+              href: how-to-manage-single-server-cli.md
+              displayName: 'manage, reset password, scale'
+            - name: Güvenlik duvarı kuralları
+              items:
+                - name: Azure portal
+                  href: howto-manage-firewall-using-portal.md
+                  displayName: firewall
+                - name: Azure CLI
+                  href: howto-manage-firewall-using-cli.md
+                  displayName: firewall
+        - name: Kimlik Doğrulaması
+          items:
+            - name: Azure AD tümleştirmesini yapılandırma
+              href: howto-configure-sign-in-azure-ad-authentication.md
+              displayName: active directory
+            - name: Yönetilen kimlik ile bağlanma
+              href: howto-connect-with-managed-identity.md
+              displayName: 'managed identity, msi'
+        - name: Sunucuyu geri yükleme
+          items:
+            - name: Azure portal
+              href: howto-restore-server-portal.md
+              displayName: 'restore server,backup'
+            - name: Azure CLI
+              href: howto-restore-server-cli.md
+              displayName: 'restore server, backup'
             - name: Azure PowerShell
-              href: howto-connection-string-powershell.md
-        - name: SSL yapılandırma
-          href: howto-configure-ssl.md
-        - name: TLS’yi yapılandırma
-          href: howto-tls-configurations.md
-        - name: Web uygulamaları
-          href: howto-connect-webapp.md
-        - name: Yeniden yönlendirme ile bağlanma
-          href: howto-redirection.md
-    - name: Sunucu parametrelerini yapılandırma
-      items:
-        - name: Azure portal
-          href: howto-server-parameters.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-        - name: Azure PowerShell
-          href: howto-configure-server-parameters-using-powershell.md
-    - name: Otomatik büyüyen depolama alanı
-      items:
-        - name: Azure portal
-          href: howto-auto-grow-storage-portal.md
-        - name: Azure CLI
-          href: howto-auto-grow-storage-cli.md
-        - name: Azure PowerShell
-          href: howto-auto-grow-storage-powershell.md
-    - name: Sunucu günlüklerine erişme
-      items:
+              href: howto-restore-server-powershell.md
+              displayName: 'restore server, backup, geo-restore powershell'
+        - name: Uygulamaları bağlama
+          items:
+            - name: SSL yapılandırma
+              href: howto-configure-ssl.md
+              displayName: 'ssl, security, application'
+            - name: TLS’yi yapılandırma
+              href: howto-tls-configurations.md
+              displayName: 'TLS, security, developement'
+            - name: Bağlanma ve sorgulama kılavuzu
+              href: how-to-connect-overview-single-server.md
+              displayName: 'connect , query , libraries, TLS, runtime'
+            - name: Web uygulamaları
+              href: howto-connect-webapp.md
+              displayName: 'azure web app, security, web app, app service'
+            - name: Yeniden yönlendirme ile bağlanma
+              href: howto-redirection.md
+              displayName: 'development, redirection , php'
+        - name: Sunucu parametrelerini yapılandırma
+          items:
+            - name: Azure portal
+              href: howto-server-parameters.md
+              displayName: server parameters
+            - name: Azure CLI
+              href: howto-configure-server-parameters-using-cli.md
+              displayName: 'server parameters, cli'
+            - name: Azure PowerShell
+              href: howto-configure-server-parameters-using-powershell.md
+              displayName: 'server parameters, powershell'
+        - name: Otomatik büyüyen depolama alanı
+          items:
+            - name: Azure portal
+              href: howto-auto-grow-storage-portal.md
+              displayName: 'storage, business continuity , downtime, portal'
+            - name: Azure CLI
+              href: howto-auto-grow-storage-cli.md
+              displayName: 'storage, business continuity , downtime, cli'
+            - name: Azure PowerShell
+              href: howto-auto-grow-storage-powershell.md
+              displayName: 'storage, business continuity , downtime, powershell'
         - name: Yavaş sorgu günlükleri
           items:
             - name: Azure portal
               href: howto-configure-server-logs-in-portal.md
+              displayName: 'debug, slow query log , performance'
             - name: Azure CLI
               href: howto-configure-server-logs-in-cli.md
+              displayName: 'debug, slow query log , performance'
         - name: Denetim günlükleri
           items:
             - name: Azure portal
               href: howto-configure-audit-logs-portal.md
+              displayName: 'debug, audit log'
             - name: Azure CLI
               href: howto-configure-audit-logs-cli.md
-    - name: İzleme
+              displayName: 'debug, audit log'
+        - name: İzleme
+          items:
+            - name: Ölçümler üzerinde uyarı oluşturma
+              href: howto-alert-on-metric.md
+              displayName: 'debug, monitor, alerts, metrics'
+        - name: Çoğaltma
+          items:
+            - name: Veri içinde çoğaltmayı yapılandırma
+              href: howto-data-in-replication.md
+              displayName: 'data-in replication, replica, failover'
+            - name: Azure portalda okuma amaçlı çoğaltma oluşturma
+              href: howto-read-replicas-portal.md
+              displayName: 'data-in replication, replica, failover'
+            - name: 'Azure CLI, REST API okuma amaçlı çoğaltma oluşturma'
+              href: howto-read-replicas-cli.md
+              displayName: 'data-in replication, replica, failover'
+            - name: Azure PowerShell’de okuma amaçlı çoğaltma oluşturma
+              href: howto-read-replicas-powershell.md
+              displayName: 'data-in replication, replica, failover'
+            - name: Sorun giderme
+              items:
+                - name: Bağlantı hatalarını giderme
+                  href: howto-troubleshoot-common-connection-issues.md
+                  displayName: 'debug, connection issues, connectivity, cannot connect'
+                - name: Sorgu performansı sorunlarını giderme
+                  href: howto-troubleshoot-query-performance.md
+                  displayName: 'debug, performance issues, query performance'
+                - name: Sys şemasında görünümleri kullanma
+                  href: howto-troubleshoot-sys-schema.md
+                  displayName: 'sys schema, views'
+                - name: Veri şifreleme sorunlarını giderme
+                  href: howto-data-encryption-troubleshoot.md
+                  displayName: 'encryption, security'
+        - name: Gelişmiş tehdit koruması
+          items:
+            - name: Azure portal
+              href: howto-database-threat-protection-portal.md
+              displayName: 'atp, advanced thread, security'
+            - name: Sanal Ağ
+              items:
+                - name: Azure portal
+                  href: howto-manage-vnet-using-portal.md
+                  displayName: 'vnet, virtual network, service endpoint'
+                - name: Azure CLI
+                  href: howto-manage-vnet-using-cli.md
+                  displayName: 'vnet, virtual network, service endpoint'
+        - name: Özel bağlantı
+          items:
+            - name: Azure portal
+              href: howto-configure-privatelink-portal.md
+              displayName: 'private link, private endpoint'
+            - name: Azure CLI
+              href: howto-configure-privatelink-cli.md
+              displayName: 'private link, private endpoint'
+        - name: Veri şifrelemesi
+          items:
+            - name: Azure portal
+              href: howto-data-encryption-portal.md
+              displayName: 'encryption, security'
+            - name: Azure CLI
+              href: howto-data-encryption-cli.md
+              displayName: 'encryption, security'
+            - name: Veri şifreleme doğrulaması
+              href: howto-data-encryption-validation.md
+              displayName: 'encryption, security'
+        - name: Altyapıyı çift şifreleme
+          items:
+            - name: Altyapı çift şifrelemeyi yapılandırma
+              href: howto-double-encryption.md
+              displayName: 'infrastructure encryption, security'
+        - name: Genel Ağ Erişimini engelleme
+          items:
+            - name: Azure portal
+              href: howto-deny-public-network-access.md
+              displayName: 'security, public access'
+        - name: Sunucuyu yeniden başlatma
+          items:
+            - name: Azure portal
+              href: howto-restart-server-portal.md
+              displayName: restart
+            - name: Azure CLI
+              href: howto-restart-server-cli.md
+              displayName: restart
+            - name: Azure PowerShell
+              href: howto-restart-server-powershell.md
+              displayName: restart
+        - name: Bölgeler arasında taşıma
+          items:
+            - name: Azure portal
+              href: howto-move-regions-portal.md
+              displayName: move servers across regions
+- name: Esnek Sunucu (Önizleme)
+  items:
+    - name: Esnek Sunucu belgeleri
+      href: flexible-server/index.yml
+    - name: Genel Bakış
       items:
-        - name: Ölçümler üzerinde uyarı oluşturma
-          href: howto-alert-on-metric.md
-    - name: Çoğaltma
+        - name: Esnek Sunucu nedir?
+          href: flexible-server/overview.md
+    - name: Hızlı Başlangıçlar
+      expanded: true
       items:
-        - name: Veri içinde çoğaltmayı yapılandırma
-          href: howto-data-in-replication.md
-        - name: Azure portalda okuma amaçlı çoğaltma oluşturma
-          href: howto-read-replicas-portal.md
-        - name: 'Azure CLI, REST API okuma amaçlı çoğaltma oluşturma'
-          href: howto-read-replicas-cli.md
-        - name: Azure PowerShell’de okuma amaçlı çoğaltma oluşturma
-          href: howto-read-replicas-powershell.md
-    - name: Sorun giderme
+        - name: Sunucu oluşturma
+          expanded: true
+          items:
+            - name: Azure portal
+              href: flexible-server/quickstart-create-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/quickstart-create-server-cli.md
+            - name: ARM şablonu
+              href: flexible-server/quickstart-create-arm-template.md
+        - name: Bağlanma ve sorgulama
+          items:
+            - name: PHP
+              href: flexible-server/connect-php.md
+            - name: MySQL Workbench
+              href: flexible-server/connect-workbench.md
+            - name: Python
+              href: flexible-server/connect-python.md
+    - name: Öğreticiler
       items:
-        - name: Sık karşılaşılan hataları giderme
-          href: howto-troubleshoot-common-errors.md
-        - name: Bağlantı hatalarını giderme
-          href: howto-troubleshoot-common-connection-issues.md
-        - name: Sorgu performansı sorunlarını giderme
-          href: howto-troubleshoot-query-performance.md
-        - name: Sys şemasında görünümleri kullanma
-          href: howto-troubleshoot-sys-schema.md
-        - name: Veri şifreleme sorunlarını giderme
-          href: howto-data-encryption-troubleshoot.md
-    - name: Gelişmiş Tehdit Koruması
+        - name: Veritabanı ile PHP (Laravel) uygulaması oluşturma
+          href: flexible-server/tutorial-php-database-app.md
+        - name: Özel web uygulamasıyla bağlanma
+          href: flexible-server/tutorial-webapp-server-vnet.md
+    - name: Kavramlar
       items:
-        - name: Azure portal
-          href: howto-database-threat-protection-portal.md
-    - name: Sanal Ağ
+        - name: Sunucular
+          href: flexible-server/concept-servers.md
+        - name: Desteklenen sürümler
+          href: flexible-server/concepts-supported-versions.md
+        - name: Sınırlamalar
+          href: flexible-server/concepts-limitations.md
+        - name: İşlem ve depolama
+          href: flexible-server/concepts-compute-storage.md
+        - name: Ağ
+          href: flexible-server/concepts-networking.md
+          displayName: 'virtual network, IP address, public access'
+        - name: Bakım
+          href: flexible-server/concepts-maintenance.md
+        - name: İş sürekliliği
+          items:
+            - name: İş sürekliliğine genel bakış
+              href: flexible-server/concepts-business-continuity.md
+            - name: Yedekleme ve geri yükleme
+              href: flexible-server/concepts-backup-restore.md
+            - name: Yüksek kullanılabilirlik
+              href: flexible-server/concepts-high-availability.md
+        - name: İzleme ve Günlükler
+          items:
+            - name: Yavaş sorgu günlükleri
+              href: flexible-server/concepts-slow-query-logs.md
+            - name: Denetim günlükleri
+              href: flexible-server/concepts-audit-logs.md
+            - name: Ölçümler
+              href: flexible-server/concepts-monitoring.md
+    - name: Nasıl yapılır kılavuzları
       items:
-        - name: Azure portal
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
-    - name: Özel Bağlantı
-      items:
-        - name: Azure portal
-          href: howto-configure-privatelink-portal.md
-        - name: Azure CLI
-          href: howto-configure-privatelink-cli.md
-    - name: Veri Şifrelemesi
-      items:
-        - name: Azure portal
-          href: howto-data-encryption-portal.md
-        - name: Azure CLI
-          href: howto-data-encryption-cli.md
-        - name: Veri şifreleme doğrulaması
-          href: howto-data-encryption-validation.md
-    - name: Altyapıyı çift şifreleme
-      items:
-        - name: Altyapı çift şifrelemeyi yapılandırma
-          href: howto-double-encryption.md
-    - name: Azure AD tümleştirmesi
-      items:
-        - name: Azure AD tümleştirmesini yapılandırma
-          href: howto-configure-sign-in-azure-ad-authentication.md
-        - name: Yönetilen Kimlik ile bağlanma
-          href: howto-connect-with-managed-identity.md
-    - name: Genel Ağ Erişimini engelleme
-      items:
-        - name: Azure portal
-          href: howto-deny-public-network-access.md
-    - name: Sunucuyu yeniden başlatma
-      items:
-        - name: Azure portal
-          href: howto-restart-server-portal.md
-        - name: Azure CLI
-          href: howto-restart-server-cli.md
-        - name: Azure PowerShell
-          href: howto-restart-server-powershell.md
-    - name: Bölgeler arasında taşıma
-      items:
-        - name: Azure portal
-          href: howto-move-regions-portal.md
+        - name: Sunucu yönetme
+          items:
+            - name: Azure portal
+              href: flexible-server/how-to-manage-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-manage-server-cli.md
+        - name: Bakım
+          items:
+            - name: Azure portal
+              href: flexible-server/how-to-maintenance-portal.md
+        - name: Sunucuyu başlatma/durdurma
+          items:
+            - name: Azure portal
+              href: flexible-server/how-to-stop-start-server-portal.md
+        - name: Sunucuyu geri yükleme
+          items:
+            - name: Azure portal
+              href: flexible-server/how-to-restore-server-portal.md
+        - name: Yüksek Kullanılabilirlik
+          items:
+            - name: Azure portal
+              href: flexible-server/how-to-configure-high-availability.md
+        - name: Ağ
+          items:
+            - name: Özel erişim (Sanal Ağ Tümleştirmesi)
+              items:
+                - name: Azure portal
+                  href: flexible-server/how-to-manage-virtual-network-portal.md
+                - name: Azure CLI
+                  href: flexible-server/how-to-manage-virtual-network-cli.md
+            - name: Genel erişim (izin verilen IP adresleri)
+              items:
+                - name: Azure portal
+                  href: flexible-server/how-to-manage-firewall-portal.md
+                - name: Azure CLI
+                  href: flexible-server/how-to-manage-firewall-cli.md
+            - name: TLS/SSL
+              items:
+                - name: TLS/SSL kullanarak bağlantı kurma
+                  href: flexible-server/how-to-connect-tls-ssl.md
+        - name: İzleme ve Günlükler
+          items:
+            - name: Ölçümler üzerinde uyarı oluşturma
+              href: flexible-server/how-to-alert-on-metric.md
+            - name: Yavaş sorgu günlükleri
+              items:
+                - name: Azure portal
+                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
+            - name: Denetim günlükleri
+              items:
+                - name: Azure portal
+                  href: flexible-server/how-to-configure-audit-logs-portal.md
+        - name: Sorun giderme
+          items:
+            - name: Bağlantı hataları
+              href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Başvuru
   items:
     - name: Azure CLI
@@ -336,9 +524,6 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: Yönetim saklı yordamları
       href: reference-stored-procedures.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Dağıtım şablonları
@@ -363,8 +548,6 @@
               href: 'https://aka.ms/mysql-migrate-vid'
             - name: Web Apps oluşturma ve dağıtma
               href: 'https://aka.ms/mysql-webapps-vid'
-            - name: OSBA kullanarak kapsayıcılara bağlanma
-              href: 'https://aka.ms/mysql-osba-vid'
     - name: Özellik isteme
       href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
     - name: Bölge kullanılabilirliği

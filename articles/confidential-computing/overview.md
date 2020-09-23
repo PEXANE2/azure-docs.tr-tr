@@ -6,22 +6,22 @@ author: JBCook
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: overview
-ms.date: 04/06/2020
+ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 4e92f974ce7d6c03143276808c4ca4d09d607a84
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 16f45c39a329998f4b4da4ea89315683a0fab790
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835825"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967583"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 'da gizli bilgi işlem
 
-Azure gizli bilgi işlem, bulutta işlendiği sırada hassas verilerinizi yalıtmanızı sağlar. Birçok sektör, verilerini korumak için gizli bilgi işlem kullanır. Bu iş yükleri şunları içerir:
+Azure gizli bilgi işlem, bulutta işlendiği sırada hassas verilerinizi yalıtmanızı sağlar. Birçok sektör, aşağıdakileri yapmak için gizli bilgi işlem kullanarak verilerini korumak için gizli bilgi işlem kullanır:
 
-- Finansal verilerin güvenliğini sağlama
+- Finansal verileri güvenli hale getirme
 - Hasta bilgilerini koruma
-- Hassas bilgiler üzerinde makine öğrenimi süreçlerini çalıştırma
+- Hassas bilgiler üzerinde makine öğrenimi süreçlerini Çalıştır
 - Birden çok kaynaktan şifrelenmiş veri kümelerinde algoritmalar gerçekleştirme
 
 
@@ -39,78 +39,62 @@ Bulut verilerinizin güvenliğini güvenli hale getirmenin önemli olduğunu bil
 
 Microsoft Azure, saldırı yüzeyinizi daha güçlü veri koruma kazanmak için en aza indirmenize yardımcı olur Azure, istemci tarafı şifreleme ve sunucu tarafı şifreleme gibi modellerle [**bekleyen verileri**](../security/fundamentals/encryption-atrest.md) korumak için zaten birçok araç sunmaktadır. Ayrıca, Azure, [**iletim içindeki VERILERI**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit) TLS ve https gibi güvenli protokoller aracılığıyla şifrelemek için mekanizmalar sunar. Bu sayfada veri şifrelemenin üçüncü bir tarafı tanıtılmıştır. **Kullanımdaki verilerin**şifrelenmesi.
 
+## <a name="introduction-to-confidential-computing"></a>Gizli bilgi işlem konusuna giriş 
 
-## <a name="introduction-to-confidential-computing"></a>Gizli bilgi işlem konusuna giriş<a id="intro to acc"></a>
+Gizli bilgi işlem, gizli bilgi işlem [Consortium](https://confidentialcomputing.io/) (CCC) tarafından tanımlanan bir sektör terimidir. Bu, gizli bilgi işlem benimsemeyi tanımlamaya ve hızlandırmaya ayrılmış bir temel hizmettir. CCC, donanım tabanlı bir güvenilir yürütme ortamında (t) hesaplamalar gerçekleştirerek kullanılan verilerin korunması gibi gizli bilgi işlem işlemlerini tanımlar.
 
-Gizli bilgi işlem, gizli bilgi işlem [Consortium](https://confidentialcomputing.io/) (CCC) tarafından tanımlanan bir sektör terimidir. Bu, gizli bilgi işlem benimsemeyi tanımlamaya ve hızlandırmaya ayrılmış bir temel hizmettir. CCC, donanım tabanlı bir güvenilir yürütme ortamında (t) hesaplamalar gerçekleştirerek kullanılan verilerin korunması olarak gizli bilgi işlem tanımlar.
+T, yalnızca yetkili kodun yürütülmesini zorlayan bir ortamdır. T 'deki herhangi bir veri, bu ortamın dışındaki herhangi bir kodla okunamaz veya üzerinde oynanamaz. 
 
-T, yalnızca yetkili kodun yürütülmesini zorlayan bir ortamdır. T 'deki herhangi bir veri, bu ortamın dışındaki herhangi bir kodla okunamaz veya üzerinde oynanamaz.
-
-### <a name="enclaves"></a>Kuşkukları
-
-Kuşanın güvenliği, donanım işlemcisinin ve belleğinin güvenli bir kısımındadır. Bir hata ayıklayıcı ile birlikte, şifreleme içinde veri veya kod görüntülemenin bir yolu yoktur. Güvenilmeyen kod, şifreleme belleğindeki içeriği değiştirme girişiminde bulunursa ortam devre dışı bırakılır ve işlemler reddedilir.
-
-Uygulama geliştirirken, kodunuzun ve verilerinizin parçalarını kuşkuya içinde korumak için [yazılım araçlarını](#oe-sdk) kullanabilirsiniz. Bu araçlar, kodunuzun ve verilerinizin güvenilir ortam dışındaki kimseler tarafından görüntülenememesini veya değiştirilmesini güvence altına alacak. 
-
-Temelde, güvenli bir kutu olarak bir şifreleme düşünün. Şifrelenmiş kod ve verileri kutuya yerleştirebilirsiniz. Kutunun dışından, hiçbir şey göremezsiniz. Şifreleme, verilerin şifresini çözmek için bir anahtar verirsiniz, daha sonra veriler, kuşdan gönderilmeden önce işlenir ve yeniden şifrelenir.
-
-### <a name="attestation"></a>Kanıtlama
-
-Güvenilir ortamınızın güvenli olduğunu doğrulama ve doğrulama almak isteyeceksiniz. Bu doğrulama, kanıtlama işlemidir. 
-
-Kanıtlama, bağlı olan tarafın yazılımın (1) bir kuşsa ve (2) tarafından güncel ve güvenli olduğunu arttığı güvenlere erişmesini sağlar. Örneğin, bir kuşatma, temeldeki donanımın platformda bulunduğu kanıtı içeren bir kimlik bilgisi oluşturmasını ister. Rapor daha sonra raporun aynı platformda oluşturulduğunu doğrulayan ikinci bir kuşya verilebilir.
-
-Kanıtlama, sistem yazılımıyla ve Silicon ile uyumlu olan güvenli bir kanıtlama hizmeti kullanılarak uygulanmalıdır. [Intel 'in kanıtlama ve sağlama hizmetleri](https://software.intel.com/sgx/attestation-services) , Azure gizli bilgi işlem sanal makineleri ile uyumludur.
+### <a name="lessen-the-need-for-trust"></a>Güven gereksinimini azaltır
+Bulutta çalışan iş yükleri için güven gerekir. Bu güveni, uygulamanızın farklı bileşenlerini etkinleştiren çeşitli sağlayıcılara verirsiniz.
 
 
-## <a name="using-azure-for-cloud-based-confidential-computing"></a>Bulut tabanlı gizli bilgi işlem için Azure kullanma<a id="cc-on-azure"></a>
+**Uygulama yazılım satıcıları**: açık kaynak kullanarak veya şirket içi uygulama yazılımı oluşturarak şirket içinde dağıtımı yaparak yazılıma güvenin.
 
-Azure gizli bilgi işlem, sanallaştırılmış bir ortamda gizli bilgi işlem özelliklerinden yararlanmanızı sağlar. Artık güvenli donanımın üzerine derlemek için araçlar, yazılımlar ve bulut altyapısını kullanabilirsiniz. 
+**Donanım satıcıları**: şirket içi donanım veya şirket içi donanım kullanarak donanıma güvenin. 
 
-### <a name="virtual-machines"></a>Sanal Makineler
+**Altyapı sağlayıcıları**: bulut sağlayıcılarına güvenin veya kendi şirket içi veri merkezlerinizi yönetin.
 
-Azure, sanallaştırılmış bir ortamda gizli bilgi işlem olanağı sunan ilk bulut sağlayıcıdır. Donanım ve uygulamanız arasında bir soyutlama katmanı görevi gören sanal makineler geliştirdik. İş yüklerini ölçekli ve artıklık ve kullanılabilirlik seçenekleriyle çalıştırabilirsiniz.  
 
-#### <a name="intel-sgx-enabled-virtual-machines"></a>Intel SGX özellikli sanal makineler
+Azure gizli bilgi işlem, işlem bulutu altyapısının çeşitli yönleri genelinde güven gereksinimini azaltarak bulut sağlayıcısına güvenmeyi kolaylaştırır. Azure gizli bilgi işlem, konak işletim sistemi çekirdeği, hiper yönetici, VM Yöneticisi ve konak Yöneticisi için güveni en aza indirir.
 
-Azure gizli bilgi işlem sanal makinelerinde, CPU 'nun bir parçası, uygulamanızdaki kod ve verilerin bir bölümü için ayrılmıştır. Bu kısıtlı bölüm kuşkudır. 
+### <a name="reducing-the-attack-surface"></a>Saldırı yüzeyini azaltma
+Güvenilir bilgi işlem tabanı (TCB), sistemin güvenli bir ortam sağlayan tüm donanım, bellenim ve yazılım bileşenlerine başvurur. TCB 'nin içindeki bileşenler "kritik" olarak değerlendirilir. TCB 'nin içindeki bir bileşen tehlikeye girerse, tüm sistem güvenliği de tehlikeye girebilir. 
 
-![VM modeli](media/overview/hardware-backed-enclave.png)
+Daha düşük bir TCB daha yüksek güvenlik anlamına gelir. Çeşitli güvenlik açıklarına, kötü amaçlı yazılımlara, saldırılara ve kötü amaçlı insanlarla etkilenme riski daha düşüktür. TEEs sunarak bulut iş yükleriniz için TCB 'yi düşürmek üzere Azure gizli bilgi işlem verileri. TEEs, güvenilir çalışma zamanı ikili dosyalarına, koduna ve kitaplıklara TCB 'yi küçültün. Gizli bilgi işlem için Azure altyapı ve hizmetlerini kullandığınızda, tüm Microsoft 'u TCB 'nizden kaldırabilirsiniz.
 
-Azure gizli bilgi işlem altyapısı şu anda çok sayıda sanal makinenin (VM) bir SKU 'sundan oluşur. Bu VM 'Ler Software Guard uzantısı (Intel SGX) ile Intel işlemcilerde çalışır. [INTEL SGX](https://intel.com/sgx) , gizli bilgi işlem ile daha iyi koruma sağlayan bir bileşendir. 
 
-Günümüzde Azure, donanım tabanlı şifreleme oluşturma için Intel SGX teknolojisini temel alan [DCsv2 serisi](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) sunmaktadır. Uygulama verilerinizi ve kullanımda olan kodları korumak için DCsv2 serisi VM 'lerde çalışacak güvenli şifreleme tabanlı uygulamalar oluşturabilirsiniz. 
+## <a name="using-azure-for-cloud-based-confidential-computing"></a>Bulut tabanlı gizli bilgi işlem için Azure kullanma <a id="cc-on-azure"></a>
 
-Azure gizli bilgi işlem sanal makinelerini donanım tabanlı güvenilen şifrelerle dağıtma hakkında [daha fazla](virtual-machine-solutions.md) bilgi edinebilirsiniz.
+Azure gizli bilgi işlem, sanallaştırılmış bir ortamda gizli bilgi işlem özelliklerinden yararlanmanızı sağlar. Artık güvenli donanımın üzerine derlemek için araçlar, yazılımlar ve bulut altyapısını kullanabilirsiniz.  
 
-## <a name="application-development"></a>Uygulama geliştirme<a id="application-development"></a>
+**Yetkisiz erişimi engelleyin**: bulutta hassas verileri çalıştırın. Azure 'un şimdiye kadar en iyi veri korumasını sağladığı güvenle, bugüne kadar çok değişiklik yapılmamaktadır.
 
-Şifreleme ve yalıtılmış ortamların gücünden yararlanmak için, gizli bilgi işlem desteği olan araçları kullanmanız gerekir. Şifreleme uygulaması geliştirmeyi destekleyen çeşitli araçlar vardır. Örneğin, bu açık kaynaklı çerçeveleri kullanabilirsiniz: 
+**Mevzuata uyumluluğu**: kişisel bilgileri korumak ve kurumsal IP güvenliğini sağlamak için kuruluşa geçiş yapın ve kamu düzenlemelerine uygun şekilde tam denetim sağlayın.
 
-- [Açık şifreleme yazılım geliştirme seti (SDK)](https://github.com/openenclave/openenclave)
-- [Gizli konsorsiyum çatısı (CCF)](https://github.com/Microsoft/CCF)
+**Güvenli ve güvenilmeyen işbirliği**: büyük veri analizlerinin ve daha derin Öngörüler 'in kilidini açmak için kuruluşlar genelinde, hatta rakipler genelinde sektör genelinde iş ölçeğinde sorunları ortadan kaldırır.
 
-### <a name="overview"></a>Genel Bakış
+**Yalıtılmış işleme**: özel veriler üzerinde, görme engelli bir yükümlülüğün sorumluluğun kaldırılması için yeni bir ürün dalgası sunun. Kullanıcı verileri, hizmet sağlayıcısı tarafından bile alınamaz. 
 
-Şifreleme ile oluşturulmuş bir uygulama iki şekilde bölümlenir:
-1. "Güvenilmeyen" bir bileşen (konak)
-1. "Güvenilir" bir bileşen (şifreleme)
+## <a name="get-started"></a>Başlarken
+### <a name="azure-compute"></a>Azure İşlem
+Azure 'da gizli bilgi işlem IaaS tekliflerinin üzerine uygulamalar oluşturun.
+- Sanal makineler (VM): [DCsv2-Series](confidential-computing-enclaves.md)
+- Azure Kubernetes (AKS): [gizli kapsayıcıları](confidential-nodes-aks-overview.md) düzenleyin
 
-**Ana bilgisayar** , şifreleme uygulamanızın en üstünde çalıştığı ve güvenilmeyen bir ortam olduğu yerdir. Konakta dağıtılan şifreleme koduna konak tarafından erişilemiyor. 
+### <a name="azure-security"></a>Azure Güvenlik 
+Doğrulama yöntemleri ve donanımla sınırlı anahtar yönetimi sayesinde iş yüklerinizin güvende olduğundan emin olun. 
+- Kanıtlama: [kanıtlama Microsoft Azure (Önizleme)](https://docs.microsoft.com/azure/attestation/overview)
+- Anahtar yönetimi: Managed-HSM (Önizleme)
 
-**Şifreleme,** uygulama kodunun ve önbelleğe alınmış verilerinin/belleğin çalıştırıldığı yerdir. Güvenli hesaplamalar, gizli dizileri ve hassas verileri sağlamak için kuşlar halinde gerçekleşmelidir, korumalı kalır. 
-
-Uygulama tasarımı sırasında, uygulamanın hangi bölümünün kuşkuta çalıştırılması gerektiğini belirlemek ve belirlemek önemlidir. Güvenilen bileşene yerleştirilmesi için seçtiğiniz kod uygulamanızın geri kalanından yalıtılmıştır. Şifreleme başlatıldıktan ve kod belleğe yüklendikten sonra, bu kod güvenilmeyen bileşenlerden okunamaz veya değiştirilemez. 
-
-### <a name="open-enclave-software-development-kit-oe-sdk"></a>Açık şifreleme yazılım geliştirme seti (OE SDK)<a id="oe-sdk"></a>
-
-Bir kuşın içinde çalışan bir kod yazmak istiyorsanız, sağlayıcınız tarafından desteklenen bir kitaplık veya çerçeveyi kullanın. [Open Enclave SDK](https://github.com/openenclave/openenclave) (OE SDK), farklı gizli bilgi işlem özellikli donanımlar üzerinde soyutlama sağlayan açık KAYNAKLı bir SDK 'dir. 
-
-OE SDK 'Sı, herhangi bir CSP üzerinde herhangi bir donanım üzerinde tek bir soyutlama katmanı olacak şekilde oluşturulmuştur. OE SDK 'Sı, Azure gizli bilgi işlem sanal makinelerinin en üstünde, en üstte uygulamalar oluşturmak ve çalıştırmak için kullanılabilir.
+### <a name="develop"></a>Geliştirme
+Şifreleme ile uyumlu uygulamalar geliştirmeyi ve gizli INVEN çatı çerçevesini kullanarak gizli algoritmalar dağıtmayı kullanmaya başlayın.
+- DCsv2 VM 'lerde çalıştırılacak uygulamaları yazın: [Open-Enclave SDK](https://github.com/openenclave/openenclave)
+- ONNX çalışma zamanında gizli ML modelleri: [gizli ınzonde (Beta)](https://aka.ms/confidentialinference)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 DCsv2 serisi bir sanal makine dağıtın ve bu makineye OE SDK 'Yı yükler.
 
 > [!div class="nextstepaction"]
-> [Azure Marketi 'nde gizli bilgi Işlem VM 'si dağıtma](quick-create-marketplace.md)
+> [Azure Marketi 'nde gizli bilgi işlem VM 'si dağıtma](quick-create-marketplace.md)

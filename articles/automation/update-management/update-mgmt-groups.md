@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20e6d26808964c8e697c694bd796af2851e7ca48
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 61339a22fc3823325ff5356112c2df8a800010a0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450863"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985204"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Güncelleştirme Yönetimi ile dinamik grupları kullanma
 
@@ -45,7 +45,7 @@ Dinamik grup sorgunuzun sonuçlarını önizlemek için **Önizleme**' ye tıkla
 
 Azure dışı makineler için dinamik bir grup, bilgisayar grupları olarak da adlandırılan kaydedilmiş aramaları kullanır. Kayıtlı bir aramanın nasıl oluşturulduğunu öğrenmek için bkz. [bilgisayar grubu oluşturma](../../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Kayıtlı aramanız oluşturulduktan sonra, Azure portal **güncelleştirme yönetiminde** kayıtlı aramalar listesinden seçebilirsiniz. Kayıtlı aramada bilgisayarları önizlemek için **Önizleme** ' ye tıklayın.
 
-![Grupları seçin](./media/update-mgmt-groups/select-groups-2.png)
+![Ekran görüntüsü, Azure olmayan (Önizleme) ve sağ taraftaki Önizleme bölmesi için Grup Seç sayfasını gösterir.](./media/update-mgmt-groups/select-groups-2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

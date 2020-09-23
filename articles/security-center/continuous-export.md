@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cf8fdd8d91c035d374277c4752fb761c0c4e72c7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433950"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905624"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Güvenlik uyarılarını ve önerilerini dışarı aktarma
 
@@ -33,8 +33,8 @@ Bu araçları kullanarak şunları yapabilirsiniz:
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Genel olarak kullanılabilir|
-|Fiyat|Ücretsiz katmanı|
+|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|Kaynak grubunda (veya **sahip**) **Güvenlik Yöneticisi rolü**<br>Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Çin gov (Olay Hub 'ına), diğer gov|
 |||
@@ -89,7 +89,7 @@ API, Azure portal kullanılamayan ek işlevler sağlar, örneğin:
 * **Daha odaklı kapsam** -API, dışa aktarma yapılandırmalarınızın kapsamı için daha ayrıntılı bir düzey sağlar. API ile bir dışarı aktarma tanımlarken, bunu kaynak grubu düzeyinde yapabilirsiniz. Güvenlik Merkezi 'nin Portal Kullanıcı arabiriminde **sürekli dışarı aktarma** sayfasını kullanıyorsanız, bunu abonelik düzeyinde tanımlamanız gerekir.
 
     > [!TIP]
-    > API kullanarak birden çok dışarı aktarma yapılandırması ayarladıysanız veya yalnızca API parametreleri kullandıysanız, bu ek özellikler Güvenlik Merkezi Kullanıcı arabiriminde gösterilmez. Bunun yerine, diğer yapılandırmaların var olduğunu bildiren bir başlık görüntülenir.
+    > API kullanarak birden çok dışa aktarma yapılandırması ayarladıysanız veya yalnızca API parametreleri kullandıysanız, bu ek özellikler Güvenlik Merkezi Kullanıcı arabiriminde gösterilmez. Bunun yerine, diğer yapılandırmaların var olduğunu bildiren bir başlık görüntülenir.
 
 [REST API belgelerindeki](https://docs.microsoft.com/rest/api/securitycenter/automations)akışlarını otomatikleştirin API 'si hakkında daha fazla bilgi edinin.
 
@@ -125,11 +125,11 @@ Ayrıca, sürekli olarak dışarıya aktarılmış verileri otomatik olarak yap�
 
 Azure Güvenlik Merkezi verilerini bir Log Analytics çalışma alanı içinde çözümlemek veya Azure uyarılarını Güvenlik Merkezi ile birlikte kullanmak istiyorsanız, Log Analytics çalışma alanınıza sürekli dışarı aktarma ayarlayın.
 
-Log Analytics çalışma alanına aktarmak için, güvenlik merkezi 'nin çalışma alanınızda etkin olan Log Analytics çözümlerinin etkinleştirilmiş olması gerekir. Azure portal kullanıyorsanız, sürekli dışarı aktarmayı etkinleştirdiğinizde güvenlik merkezi 'nin ücretsiz katman çözümü otomatik olarak etkinleştirilir. Ancak, sürekli dışa aktarma ayarlarınızı programlama yoluyla yapılandırıyorsanız, gerekli çalışma alanı için **fiyatlandırma & ayarları**içinden ücretsiz veya standart fiyatlandırma katmanını el ile seçmeniz gerekir.  
+Log Analytics çalışma alanına aktarmak için, güvenlik merkezi 'nin çalışma alanınızda etkin olan Log Analytics çözümlerinin etkinleştirilmiş olması gerekir. Azure portal kullanıyorsanız, sürekli dışarı aktarmayı etkinleştirdiğinizde güvenlik merkezi 'nin ücretsiz çözümü otomatik olarak etkinleştirilir. Ancak, sürekli dışa aktarma ayarlarınızı programlama yoluyla yapılandırıyorsanız, Azure Defender 'ı **fiyatlandırma & ayarları** sayfasında el ile açmanız veya kapatmanız gerekir.
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics tabloları ve şemaları
 
-Güvenlik uyarıları ve önerileri sırasıyla *Securityalert* ve *securityöneriler* tablolarında depolanır. Bu tabloları içeren Log Analytics çözümünün adı, ücretsiz veya Standart katmanda olup olmadığına bağlıdır (bkz. [fiyatlandırma](security-center-pricing.md)): güvenlik (' güvenlik ve denetim ') veya securitycenterfree.
+Güvenlik uyarıları ve önerileri sırasıyla *Securityalert* ve *securityöneriler* tablolarında depolanır. Bu tabloları içeren Log Analytics çözümünün adı, Azure Defender 'ın etkin olup olmamasına bağlıdır: güvenlik (' Güvenlik ve Denetim ') veya SecurityCenterFree.
 
 ![Log Analytics içindeki * SecurityAlert * tablosu](./media/continuous-export/log-analytics-securityalert-solution.png)
 

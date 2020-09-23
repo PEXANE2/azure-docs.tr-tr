@@ -372,6 +372,8 @@
       href: /azure/cloud-adoption-framework/get-started/
     - name: Mimari merkezi
       href: /azure/architecture/
+    - name: Azure Hibrit Avantajı
+      href: azure-hybrid-benefit-linux.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: VM oluşturma

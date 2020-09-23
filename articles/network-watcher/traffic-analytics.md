@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747524"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967503"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -65,13 +65,13 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 * Doğu ABD 2
 * Orta Kuzey ABD
 * Orta Güney ABD
-* Orta ABD
+* Central US
 * Batı ABD
 * Batı ABD 2
 * Orta Fransa
-* Batı Avrupa
+* West Europe
 * Kuzey Avrupa
-* Güney Brezilya
+* Brezilya Güney
 * Batı Birleşik Krallık
 * Güney Birleşik Krallık
 * Doğu Avustralya
@@ -95,14 +95,14 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * Doğu ABD 2
 * Orta Kuzey ABD
 * Orta Güney ABD
-* Orta ABD
+* Central US
 * Batı ABD
 * Batı ABD 2
 * Orta ABD
 * Orta Fransa
-* Batı Avrupa
+* West Europe
 * Kuzey Avrupa
-* Güney Brezilya
+* Brezilya Güney
 * Batı Birleşik Krallık
 * Güney Birleşik Krallık
 * Doğu Avustralya
@@ -115,7 +115,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * US Gov Virginia
 * Çin Doğu 2
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="user-access-requirements"></a>Kullanıcı erişimi gereksinimleri
 
@@ -192,7 +192,7 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 > [!NOTE]
 >Trafik Analizi çözümünü barındıran Log Analytics çalışma alanının ve NSG 'lerin aynı bölgede olması gerekmez. Örneğin, Batı Avrupa bölgesindeki bir çalışma alanında trafik analizlerinin olması, Doğu ABD ve Batı ABD NSG 'lerinizin olması olabilir. Aynı çalışma alanında birden çok NSG yapılandırılabilir.
 
-8. **Kaydet**'i seçin.
+8. **Kaydet**’i seçin.
 
     ![Depolama hesabı, Log Analytics çalışma alanı ve Trafik Analizi etkinleştirme seçimi](./media/traffic-analytics/ta-customprocessinginterval.png)
 
@@ -339,7 +339,7 @@ Uygulama ağ geçidi başına trafik dağıtımı & Load Balancer, topoloji, en 
  - Hangi alt ağın hangi uygulama ağ geçidine veya Load Balancer söylenediğinin bilinmesi. Beklenmedik konuşmaları gözlemlerseniz, yapılandırmanızı düzeltebilirsiniz.
  - Standart dışı ağlarda bir uygulama ağ geçidi veya Load Balancer söyleşiyor ise, standart dışı ağları engellemek için NSG kurallarını yapılandırarak bunu düzeltebilirsiniz. 
 
-    ![alt ağ-topoloji-showp---to-to-to-Application-Gateway-subnet------------](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![Ekran görüntüsü, akışlarla ilgili olarak bir Application Gateway alt ağına trafik dağıtımı olan bir alt ağ topolojisini gösterir.](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>İnternet 'ten trafik alan bağlantı noktalarını ve sanal makineleri görüntüleme
 

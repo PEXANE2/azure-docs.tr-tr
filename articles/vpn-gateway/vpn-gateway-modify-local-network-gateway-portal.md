@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 09/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 57288d49fdfa193e9ebebe5f2ce4d24327997980
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: af3513c4a4f3b3187e85c65de51ad2e6e2d7279c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392485"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983194"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Azure portalını kullanarak yerel ağ geçidi ayarlarını değiştirme
 
@@ -27,18 +27,63 @@ Bağlantıyı silmeden önce, tanımlanan PSK 'yi almak için bağlanan cihazlar
 >
 >
 
+## <a name="local-network-gateway-configuration"></a><a name="configure-lng"></a>Yerel ağ geçidi yapılandırması
+
+Aşağıdaki ekran görüntüsünde, genel IP adresi uç noktası kullanılarak yerel ağ geçidi kaynağının **yapılandırma** sayfası gösterilmektedir:
+
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/ip-address.png" alt-text="Yerel ağ geçidi yapılandırma-IP adresi":::
+
+Bu, bir FQDN uç noktası ile aynı yapılandırma sayfasıdır:
+
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/fqdn.png" alt-text="Yerel ağ geçidini yapılandırma-FQDN":::
+
+## <a name="modify-the-gateway-ip-address"></a><a name="ip"></a>Ağ geçidi IP adresini değiştirme
+
+Bağlanmak istediğiniz VPN cihazının genel IP adresi değiştiyse, yerel ağ geçidini bu değişikliği yansıtacak şekilde değiştirmeniz gerekir.
+
+1. Yerel ağ geçidi kaynağında, **Ayarlar** bölümünde **yapılandırma**' ya tıklayın.
+2. **IP adresi** kutusunda, IP adresini değiştirin.
+3. Ayarları kaydetmek için **Kaydet**’e tıklayın.
+
+## <a name="modify-the-gateway-fqdn"></a><a name="fqdn"></a>Ağ Geçidi FQDN 'sini değiştirme
+
+Bağlanmak istediğiniz VPN cihazı FQDN 'sini (tam etki alanı adı) değiştirmemişse, yerel ağ geçidini bu değişikliği yansıtacak şekilde değiştirmeniz gerekir.
+
+1. Yerel ağ geçidi kaynağında, **Ayarlar** bölümünde **yapılandırma**' ya tıklayın.
+2. **FQDN** kutusunda, etki alanı adını değiştirin.
+3. Ayarları kaydetmek için **Kaydet**’e tıklayın.
+
+> ! NOTUN FQDN bitiş noktası ve IP adresi uç noktası arasında yerel ağ geçidini değiştiremezsiniz. Bu yerel ağ geçidi ile ilişkili tüm bağlantıları silmeniz, yeni uç nokta (IP adresi veya FQDN) ile yeni bir tane oluşturmanız ve ardından bağlantıları yeniden oluşturmanız gerekir.
 
 ## <a name="modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>IP adresi öneklerini değiştirme
 
-IP adresi öneklerini değiştirirken, izleyeceğiniz adımlar Yerel Ağ geçidinizde bir bağlantı olup olmadığına bağlıdır.
+### <a name="to-add-additional-address-prefixes"></a>Başka adres ön ekleri eklemek için:
 
-[!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
+1. Yerel ağ geçidi kaynağında, **Ayarlar** bölümünde **yapılandırma**' ya tıklayın.
+2. IP adresi alanını *ek adres aralığı Ekle* kutusuna ekleyin.
+3. Ayarlarınızı kaydetmek için **Kaydet** ' e tıklayın.
 
-## <a name="modify-the-gateway-ip-address"></a><a name="gwip"></a>Ağ geçidi IP adresini değiştirme
+### <a name="to-remove-address-prefixes"></a>Adres ön eklerini kaldırmak için:
 
-Bağlanmak istediğiniz VPN cihazının genel IP adresi değiştiyse, yerel ağ geçidini bu değişikliği yansıtacak şekilde değiştirmeniz gerekir. Genel IP adresini değiştirdiğinizde, izleyeceğiniz adımlar yerel ağ geçidinize bir bağlantı olup olmadığına bağlıdır.
+1. Yerel ağ geçidi kaynağında, **Ayarlar** bölümünde **yapılandırma**' ya tıklayın.
+2. Kaldırmak istediğiniz öneki içeren satırdaki **'... '** düğmesine tıklayın.
+3. **Kaldır**’a tıklayın.
+4. Ayarlarınızı kaydetmek için **Kaydet** ' e tıklayın.
 
-[!INCLUDE [modify gateway IP](../../includes/vpn-gateway-modify-lng-gateway-ip-portal-include.md)]
+## <a name="modify-bgp-settings"></a><a name="bgp"></a>BGP ayarlarını değiştir
+
+### <a name="to-add-or-update-bgp-settings"></a>BGP ayarlarını eklemek veya güncelleştirmek için:
+
+1. Yerel ağ geçidi kaynağında, **Ayarlar** bölümünde **yapılandırma**' ya tıklayın.
+2. Bu yerel ağ geçidi için BGP yapılandırmalarının görüntülenmesini veya güncelleştirilmesini sağlamak üzere **"BGP ayarlarını yapılandır"** ı seçin
+3. Karşılık gelen alanlara otonom sistem numarasını veya BGP eş IP adresini ekleme veya güncelleştirme
+4. Ayarlarınızı kaydetmek için **Kaydet** ' e tıklayın.
+
+### <a name="to-remove-bgp-settings"></a>BGP ayarlarını kaldırmak için:
+
+1. Yerel ağ geçidi kaynağında, **Ayarlar** bölümünde **yapılandırma**' ya tıklayın.
+2. Mevcut BGP ASN ve BGP eşi IP adresini kaldırmak için **"BGP ayarlarını yapılandır"** seçimini kaldırın
+3. Ayarlarınızı kaydetmek için **Kaydet** ' e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

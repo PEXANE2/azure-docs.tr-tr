@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 6682d9426ed3fe011fe5c493ec34fcdf0a2b35b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099786"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905247"
 ---
-# <a name="poisson-regression"></a>Poisson gerileme
+# <a name="poisson-regression"></a>Poisson Regresyonu
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Bir işlem hattında Poisson regresyon modeli oluşturmak için bu modülü kullanın. POISSON regresyon, sayısal değerleri tahmin etmek için, genellikle sayımlar için tasarlanmıştır. Bu nedenle, yalnızca tahmin etmeye çalıştığınız değerler aşağıdaki koşullara uyması durumunda regresyon modelinizi oluşturmak için bu modülü kullanmanız gerekir:
 
@@ -49,7 +49,7 @@ Yanıt değişkeninin bir Poisson dağılımı olduğundan, model, en az kareler
 
 ## <a name="how-to-configure-poisson-regression"></a>Poisson gerilemesini yapılandırma
 
-1. İşlem hattınızı tasarımcı 'da (Önizleme) **Poisson regresyon** modülünü ekleyin. Bu modülü, **regresyon** kategorisinde **Machine Learning algoritmalarda**bulabilirsiniz.
+1. İşlem hattınızı tasarımcı 'da **Poisson regresyon** modülünü ekleyin. Bu modülü, **regresyon** kategorisinde **Machine Learning algoritmalarda**bulabilirsiniz.
 
 2. Doğru türdeki eğitim verilerini içeren bir veri kümesi ekleyin. 
 

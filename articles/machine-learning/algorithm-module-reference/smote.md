@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: ed6d9e86143c3a5d6c97c4bd92a07c258bbd1bbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 501f3e8946023d28d67a33fbbfca661afbc6306d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477468"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898268"
 ---
 # <a name="smote"></a>SMOTE
 
-Bu makalede, makine öğrenimi için kullanılan bir veri kümesindeki eksik temsil edilen durumların sayısını artırmak için Azure Machine Learning tasarımcısında (Önizleme) SMOTE modülünün nasıl kullanılacağı açıklanır. IÇGÖRÜME, yalnızca mevcut durumları çoğaltmaktan nadir durum sayısını artırmanın daha iyi bir yoludur.  
+Bu makalede, makine öğrenimi için kullanılan bir veri kümesindeki eksik temsil edilen durumların sayısını artırmak için Azure Machine Learning tasarımcısında SMOTE modülünün nasıl kullanılacağı açıklanır. IÇGÖRÜME, yalnızca mevcut durumları çoğaltmaktan nadir durum sayısını artırmanın daha iyi bir yoludur.  
 
 SMOTE modülünü *imdengeli*bir veri kümesine bağlayabilirsiniz. Bir veri kümesinin dengesde olmasının pek çok nedeni olabilir. Örneğin, hedeflediğiniz kategori nüfusda nadir olabilir veya verilerin toplanması zor olabilir. Genellikle, analiz etmek istediğiniz *sınıf* daha fazla temsil edildiğinde Smote kullanırsınız. 
   
@@ -44,7 +44,7 @@ Durum sayısını artırmak için, aşağıdaki gibi 100 katları kullanarak **S
 |-|-------------|-------------|-----------|  
 |Özgün veri kümesi<br /><br /> ( **Smote yüzdesine**  =  eşdeğer **0**)|570<br /><br /> %76|178<br /><br /> 24|748|  
 |**Smote yüzdesi**  =  **100**|570<br /><br /> %62|356<br /><br /> %38|926|  
-|**Smote yüzdesi**  =  **200**|570<br /><br /> %52|534<br /><br /> %48|1.104|  
+|**Smote yüzdesi**  =  **200**|570<br /><br /> %52|534<br /><br /> %48|1\.104|  
 |**Smote yüzdesi**  =  **300**|570<br /><br /> %44|712<br /><br /> %56|1.282|  
   
 > [!WARNING]
@@ -62,7 +62,7 @@ Durum sayısını artırmak için, aşağıdaki gibi 100 katları kullanarak **S
   
 4.  SMOTE modülü etiket sütunundaki minınlık sınıfını otomatik olarak tanımlar ve ardından minınlık sınıfı için tüm örnekleri alır. Tüm sütunlarda NaN değer bulunamaz.
   
-5.  **Smote yüzdesi** seçeneğinde, çıkış veri kümesindeki minınlık durumlarının hedef yüzdesini gösteren bir tamsayı girin. Örneğin:  
+5.  **Smote yüzdesi** seçeneğinde, çıkış veri kümesindeki minınlık durumlarının hedef yüzdesini gösteren bir tamsayı girin. Örnek:  
   
     - **0**girersiniz. SMOTE modülü, giriş olarak belirttiğiniz veri kümesini tam olarak döndürür. Yeni bir minınlık durumu ekler. Bu veri kümesinde, sınıf oranı değişmemiştir.  
   

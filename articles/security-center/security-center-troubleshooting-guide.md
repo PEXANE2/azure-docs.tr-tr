@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: f5e71697ca6ce9e2585bbb903ad8c46744e05e13
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e2922d19dbcad7da2808a86896e39d21420e73d5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462403"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904739"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Güvenlik Merkezi Sorun Giderme Kılavuzu
 
@@ -81,7 +81,7 @@ Log Analytics aracısını bilgisayarınıza yüklerken farklı sonuçlar ürete
 
 **İzleme durumu**, Güvenlik Merkezi’nin otomatik sağlama için başlatılmış VM’leri ve bilgisayarları neden başarıyla izleyemediğini tanımlar. Aşağıdaki tabloda **İzleme durumu** değerleri, açıklamaları ve çözüm adımları gösterilmektedir.
 
-| İzleme durumu | Description | Çözüm adımları |
+| İzleme durumu | Açıklama | Çözüm adımları |
 |---|---|---|
 | Bekleyen aracı yüklemesi | Log Analytics Aracısı yüklemesi hala çalışıyor.  Yükleme birkaç saat sürebilir. | Otomatik yükleme işlemi tamamlanana kadar bekleyin. |
 | Güç durumu kapalı | VM durduruldu.  Log Analytics Aracısı yalnızca çalıştıran bir VM 'ye yüklenebilir. | VM’yi yeniden başlatın. |
@@ -132,7 +132,7 @@ Güvenlik Merkezi panosunu yüklemeyle ilgili sorun yaşıyorsanız, aboneliği 
 
 ## <a name="contacting-microsoft-support"></a>Microsoft Destek ile iletişim kurma
 
-Bu makalede sunulan yönergeler kullanılarak bazı sorunlar belirlenebilir, diğer kişiler de güvenlik merkezi genel [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-security-center.html)açıklanabilecek şekilde bulunabilir. Ancak, daha fazla sorun giderme bilgisi gerekirse, **Azure portalında** aşağıda gösterildiği gibi yeni bir destek isteği oluşturabilirsiniz:
+Bu makalede sunulan yönergeler kullanılarak bazı sorunlar belirlenebilir, diğer bir deyişle, güvenlik merkezi genel [Microsoft Q&bir sayfada](https://docs.microsoft.com/answers/topics/azure-security-center.html)belgelendiği diğer kişiler de bulabilirsiniz. Ancak, daha fazla sorun giderme bilgisi gerekirse, **Azure portalında** aşağıda gösterildiği gibi yeni bir destek isteği oluşturabilirsiniz:
 
 ![Microsoft Destek](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

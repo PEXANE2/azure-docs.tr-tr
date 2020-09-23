@@ -3,12 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 29895c0358547679a9db7b2f4da203e2b546d67f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145663"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986507"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -41,10 +41,11 @@ Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
 
 ### <a name="modify-storage-replication"></a>Depolama çoğaltmasını değiştirme
 
-Varsayılan olarak, [kasalar coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanır.
+Varsayılan olarak, [kasalar coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)kullanır.
 
 * Kasa birincil yedekleme mekanizmanız ise GRS kullanmanızı öneririz.
-* Bir ucuz seçeneği için [yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) kullanabilirsiniz.
+* Bir ucuz seçeneği için [yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) kullanabilirsiniz.
+* Bölgesel olarak [yedekli depolama (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) , verilerinizi [kullanılabilirlik bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)çoğaltır, bu da aynı bölgedeki veri fazlalığını ve dayanıklılığı garanti ediyor.
 
 Depolama çoğaltma türünü aşağıdaki gibi değiştirin:
 
@@ -80,7 +81,7 @@ Kasa için bir yedekleme ilkesi yapılandırın.
 
       ![Sanal makine Ekle](./media/backup-azure-arm-vms-prepare/add-virtual-machines.png)
 
-1. **Sanal makineler Seç** bölmesi açılır. İlkeyi kullanarak yedeklemek istediğiniz VM 'Leri seçin. Ardından **Tamam**’ı seçin.
+1. **Sanal makineler Seç** bölmesi açılır. İlkeyi kullanarak yedeklemek istediğiniz VM 'Leri seçin. Ardından **Tamam**'ı seçin.
 
    * Seçilen VM 'Ler doğrulanacak.
    * Yalnızca kasala aynı bölgedeki VM 'Leri seçebilirsiniz.
@@ -128,7 +129,7 @@ Yeni bir yedekleme ilkesi oluşturmayı seçtiyseniz, ilke ayarlarını girin.
 2. **Yedekleme öğeleri**' nde **Azure sanal makine**' yi seçin.
 3. **Yedekleme öğeleri** listesinde üç nokta (...) simgesini seçin.
 4. **Şimdi Yedekle**' yi seçin.
-5. **Şimdi Yedekle**' de, kurtarma noktasının tutulacağı son günü seçmek için Takvim denetimini kullanın. Ardından **Tamam**’ı seçin.
+5. **Şimdi Yedekle**' de, kurtarma noktasının tutulacağı son günü seçmek için Takvim denetimini kullanın. Ardından **Tamam**'ı seçin.
 6. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri**  >  **devam**ediyor. VM’nizin boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
 
 ## <a name="verify-backup-job-status"></a>Yedekleme işinin durumunu doğrulama

@@ -3,12 +3,12 @@ title: Azure Service Bus Premium ve Standart katmanlar
 description: Bu makalede, Azure Service Bus standart ve Premium katmanları açıklanmaktadır. Bu katmanları karşılaştırır ve teknik farklılıklar sağlar.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386359"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90966786"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium ve Standart Mesajlaşma katmanları
 
@@ -72,7 +72,7 @@ Mimariniz için Mesajlaşma Birimi sayısına karar verirken dikkate alınması 
     - CPU kullanımı ***%20***' nin altındaysa, ad alanınız için ayrılan mesajlaşma birimi sayısını ***ölçeklendirebilirsiniz*** .
     - CPU kullanımı ***%70 üzerinde***ise, uygulamanız ad alanınız için ayrılan mesajlaşma birimlerinin sayısını ***ölçeklendirmeden*** yarar sağlar.
 
-Bir Service Bus ad alanına ayrılan kaynakları ölçeklendirme işlemi, [Azure Otomasyonu runbook 'ları](../automation/automation-quickstart-create-runbook.md)kullanılarak otomatikleştirilebilir.
+Bir Service Bus ad alanını otomatik olarak ölçeklendirmek (ileti birimlerini artırma veya azaltma) için yapılandırma hakkında bilgi edinmek için bkz. [mesajlaşma birimlerini otomatik olarak güncelleştirme](automate-update-messaging-units.md).
 
 > [!NOTE]
 > Ad alanına ayrılan kaynakların **ölçeklendirilmesi** preemptive veya reaktif olabilir.
@@ -96,10 +96,9 @@ Ayrıca [Azure Resource Manager şablonlarını kullanarak premium ad alanları]
 
 Service Bus Mesajlaşma hizmeti hakkında daha fazla bilgi edinmek için aşağıdaki bağlantılara bakın:
 
-* [Azure Service Bus Premium mesajlaşma tanıtımı (blog gönderisi)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Azure Service Bus Premium mesajlaşma tanıtımı (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [Service Bus mesajlaşmaya genel bakış](service-bus-messaging-overview.md)
-* [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)
+- [Mesajlaşma birimlerini otomatik olarak güncelleştir](automate-update-messaging-units.md).
+- [Azure Service Bus Premium mesajlaşma tanıtımı (blog gönderisi)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+- [Azure Service Bus Premium mesajlaşma tanıtımı (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 
 <!--Image references-->
 

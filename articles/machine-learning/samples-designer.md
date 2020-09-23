@@ -1,5 +1,5 @@
 ---
-title: Tasarımcı için veri kümeleri & örnek işlem hatları (Önizleme)
+title: Tasarımcı için veri kümeleri & örnek işlem hatları
 titleSuffix: Azure Machine Learning
 description: Makine öğrenimi işlem hatlarınızı atlayaöğrenmek için Azure Machine Learning tasarımcısında örnekleri kullanın.
 services: machine-learning
@@ -10,21 +10,21 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2020
 ms.custom: designer
-ms.openlocfilehash: cbeb37599d28241dac3829af3891b2810cca4dce
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662122"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889756"
 ---
-# <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer için veri kümeleri & örnek işlem hatları (Önizleme)
+# <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning Designer için veri kümeleri & örnek işlem hatları
 
 Kendi makine öğrenimi işlem hatlarınızı oluşturmaya hemen başlamak için Azure Machine Learning tasarımcısında yerleşik örnekleri kullanın. Azure Machine Learning Designer [GitHub deposu](https://github.com/Azure/MachineLearningDesigner) , bazı yaygın makine öğrenimi senaryolarını anlamanıza yardımcı olacak ayrıntılı belgeler içerir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
-* Kurumsal SKU 'SU olan bir Azure Machine Learning çalışma alanı.
+* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun
+* Azure Machine Learning çalışma alanı 
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
@@ -138,5 +138,5 @@ Azure Machine Learning tasarımcısında yeni bir işlem hattı oluşturduğunuz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Öğretici ile tahmine dayalı analiz ve makine öğrenimi hakkında temel bilgileri öğrenin [: tasarımcı ile otomobil fiyatlarını tahmin](tutorial-designer-automobile-price-train-score.md) etme
+Öğretici ile tahmine dayalı analiz ve makine öğrenimi temellerini öğrenin [: tasarımcı ile otomobil fiyatlarını tahmin](tutorial-designer-automobile-price-train-score.md) etme
 
