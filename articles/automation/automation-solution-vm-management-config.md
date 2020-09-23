@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266725"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987209"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur Yapılandır
 
@@ -139,17 +139,17 @@ VM'leri çalışma saatleri dışında başlat/durdur dağıtıldıktan sonra e-
 
 1. Azure portal **izleyici**' ye ve ardından **eylem grupları**' na gidin. **StartStop_VM_Notication**adlı eylem grubunu seçin.
 
-    ![Otomasyon Güncelleştirme Yönetimi sayfası](media/automation-solution-vm-management/azure-monitor.png)
+    :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text="Izleyici-eylem grupları sayfasının ekran görüntüsü.":::
 
 2. StartStop_VM_Notification **sayfasında Ayrıntılar ' ın**altındaki **Ayrıntıları Düzenle** ' ye tıklayın. Bu, e-posta/SMS/Push/ses sayfasını açar. E-posta adresini güncelleştirip **Tamam** ' a tıklayarak değişikliklerinizi kaydedin.
 
-    ![Otomasyon Güncelleştirme Yönetimi sayfası](media/automation-solution-vm-management/change-email.png)
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Güncelleştirilmiş örnek bir e-posta adresi gösteren e-posta/SMS/Push/ses sayfasının ekran görüntüsü.":::
 
     Alternatif olarak, eylem grubu hakkında daha fazla bilgi edinmek için eylem grubuna ek eylemler ekleyebilirsiniz, eylem [grupları](../azure-monitor/platform/action-groups.md) konusuna bakın
 
 Aşağıda, özelliği sanal makineleri kapattığında gönderilen örnek bir e-posta verilmiştir.
 
-![Otomasyon Güncelleştirme Yönetimi sayfası](media/automation-solution-vm-management/email.png)
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Özellik sanal makineleri kapattığında gönderilen örnek bir e-postanın ekran görüntüsü.":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>VM 'Leri ekleme veya dışlama
 

@@ -1,21 +1,21 @@
 ### YamlMime:Landing
-title: Azure SQL Edge (Önizleme) belgeleri
+title: Uç Cihazlar için Azure SQL belgeleri
 summary: Uç Cihazlar için Azure SQL, IoT ve uç dağıtımları için ayarlanan, iyileştirilmiş bir ilişkisel veritabanı altyapısıdır.
 metadata:
-  title: Azure SQL Edge (Önizleme) belgeleri
-  meta.description: Learn how to use Azure SQL Edge (Preview).
+  title: Uç Cihazlar için Azure SQL belgeleri
+  meta.description: Learn how to use Azure SQL Edge.
   services: sql-edge
   ms.service: sql-edge
   ms.topic: landing-page
   author: stevestein
   ms.author: sstein
   ms.date: 05/19/2020
-  ms.openlocfilehash: 97595cd74fa5a584d5d1943ed88ac617fc742569
-  ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+  ms.openlocfilehash: 3a043b3e29352abd44d1b880f366d9fa8ccea4d2
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 05/31/2020
-  ms.locfileid: "84233192"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90894467"
 landingContent:
 - title: SQL Edge
   linkLists:
@@ -25,8 +25,14 @@ landingContent:
       url: overview.md
   - linkListType: deploy
     links:
-    - text: SQL Edge dağıtma
+    - text: Portalı kullanarak Uç Cihazlar için SQL’i dağıtma
       url: deploy-portal.md
+    - text: Docker ile Uç Cihazlar için SQL’i dağıtma
+      url: disconnected-deployment.md
+  - linkListType: tutorial
+    links:
+    - text: Kubernetes’te dağıtma
+      url: deploy-kubernetes.md
 - title: Veri eşitleme
   linkLists:
   - linkListType: tutorial
@@ -43,6 +49,8 @@ landingContent:
       url: stream-data.md
     - text: Sistem kataloğu akışı
       url: streaming-catalog-views.md
+    - text: Akış işleri oluşturma ve yönetme
+      url: create-stream-analytics-job.md
 - title: Makine öğrenimi
   linkLists:
   - linkListType: concept
@@ -53,3 +61,21 @@ landingContent:
     links:
     - text: SQL Edge’de ONNX dağıtma
       url: deploy-onnx.md
+- title: Zaman serisi verilerini işleme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Eksik değerleri verme
+      url: imputing-missing-values.md
+    - text: Veri saklama ilkesi
+      url: data-retention-overview.md
+    - text: Date_Bucket (Transact-SQL)
+      url: date-bucket-tsql.md
+- title: SQL Edge’i yapılandırma
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SQL Edge’i yapılandırma
+      url: configure.md
+    - text: Çoğaltmayı yapılandırma
+      url: configure-replication.md

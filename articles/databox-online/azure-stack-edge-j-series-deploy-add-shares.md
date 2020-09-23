@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU ile paylaşımlara veri aktarma öğreticisi | Microsoft Docs
-description: Azure Stack Edge GPU cihazında paylaşımlara ekleme ve bunların nasıl bağlanacağınızı öğrenin.
+title: Azure Stack Edge Pro GPU ile paylaşımlara veri aktarma öğreticisi | Microsoft Docs
+description: Azure Stack Edge Pro GPU cihazındaki paylaşımlara ekleme ve bunların nasıl bağlanacağınızı öğrenin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 4d7453ba34a7bc1dd26d0201f604c9028974c1a2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 3c0a72c9daa72cffcfe2e5e45bbb6214a13e0a7f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268936"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891106"
 ---
-# <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-gpu"></a>Öğretici: Azure Stack Edge GPU ile paylaşımlar aracılığıyla veri aktarımı
+# <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Öğretici: Azure Stack Edge Pro GPU 'SU ile paylaşımlar aracılığıyla veri aktarımı
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu öğretici, Azure Stack Edge cihazınızda paylaşımların nasıl ekleneceğini ve bu cihazlarda nasıl bağlanabileceğinizi açıklamaktadır. Paylaşımlar eklendikten sonra Azure Stack Edge verileri Azure 'a aktarabilir.
+Bu öğretici, Azure Stack Edge Pro cihazınızda paylaşımların nasıl ekleneceğini ve bu cihazlarda nasıl bağlanabileceğinizi açıklamaktadır. Paylaşımlar eklendikten sonra Azure Stack Edge Pro, verileri Azure 'a aktarabilir.
 
 Bu yordamın tamamlanması 10 dakika kadar sürebilir.
 
@@ -31,13 +31,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Paylaşım ekleme
 > * Paylaşıma bağlanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure Stack Edge 'e paylaşımlar eklemeden önce şunları yaptığınızdan emin olun:
+Azure Stack Edge Pro 'ya paylaşımlar eklemeden önce şunları yaptığınızdan emin olun:
 
-* Fiziksel cihazınızı [yükleme Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md)bölümünde açıklandığı gibi yüklediniz.
+* Fiziksel cihazınızı [yükleme Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md)' da anlatıldığı şekilde yüklediniz.
 
-* Fiziksel cihazı, [Azure Stack kenarını etkinleştirme](azure-stack-edge-gpu-deploy-activate.md)bölümünde açıklandığı gibi etkinleştirdiniz.
+* Fiziksel cihazı, [Azure Stack Edge Pro 'Yu etkinleştirme](azure-stack-edge-gpu-deploy-activate.md)bölümünde açıklandığı gibi etkinleştirdiniz.
 
 ## <a name="add-a-share"></a>Paylaşım ekleme
 
@@ -66,13 +66,13 @@ Bir paylaşma oluşturmak için aşağıdaki yordamı uygulayın:
     Seçtiğiniz hizmetin türü, verilerin Azure 'da kullanmasını istediğiniz biçime bağlıdır. Bu örnekte, verileri Azure 'da blok Blobları olarak depolamak istiyoruz, **Blok Blobu**seçtik. **Sayfa Blobu**' nı seçerseniz, verilerinizin 512 bayt hizalı olduğundan emin olun. Örneğin VHDX her zaman 512 bayt hizalıdır.
 
    > [!IMPORTANT]
-   > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge veya Data Box Gateway cihazından yararlanarak, bu sunucuda ayarlanmış bir şekilde kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge Pro veya Data Box Gateway cihazından yararlanarak bu sunucuda ayarlanmış bir değişiklik olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
     e. Yeni bir blob kapsayıcısı oluşturun veya açılan listeden mevcut bir tane kullanın. Blob kapsayıcısı oluşturuyorsanız bir kapsayıcı adı sağlayın. Zaten bir kapsayıcı yoksa, depolama hesabında yeni oluşturulan paylaşma adıyla oluşturulur.
    
     f. Bir SMB veya NFS paylaşımının oluşturulup oluşturulmayacağını bağlı olarak, aşağıdaki adımlardan birini yapın: 
      
-    - **SMB paylaşma**: **tüm ayrıcalık yerel kullanıcısı**' nın altında, **Yeni oluştur** ' u seçin veya **var olanı kullanın**. Yeni bir yerel kullanıcı oluşturursanız, bir Kullanıcı adı ve parola girin ve parolayı onaylayın. Bu eylem, yerel kullanıcıya izinler atar. İzinleri buraya atadıktan sonra, dosya Gezgini 'ni kullanarak bunları değiştirebilirsiniz.
+    - **SMB paylaşma**: **tüm ayrıcalık yerel kullanıcısı**' nın altında, **Yeni oluştur** ' u seçin veya **var olanı kullanın**. Yeni yerel kullanıcı oluşturuyorsanız kullanıcı adı ve parola girin, sonra da parolayı onaylayın. Bu eylem yerel kullanıcıya izinleri atar. Burada izinleri atadıktan sonra, Dosya Gezgini'ni kullanarak bunlarda değişiklik yapabilirsiniz.
     Bu paylaşma verileri için **yalnızca okuma Işlemlerine Izin ver** onay kutusunu seçerseniz, salt okunurdur kullanıcıları belirtebilirsiniz.
     
         ![SMB paylaşımı ekleme](./media/azure-stack-edge-j-series-deploy-add-shares/add-share-smb-1.png)
@@ -120,7 +120,7 @@ Cihaza bağlanmak için kullandığınız Windows istemcisinde aşağıdaki adı
 
 ### <a name="connect-to-an-smb-share"></a>SMB paylaşımına bağlanma
 
-Azure Stack Edge cihazınıza bağlı Windows Server istemcisinde, komutları girerek bir SMB paylaşımıyla bağlantı kurmak:
+Azure Stack Edge Pro cihazınıza bağlı Windows Server istemcisinde şu komutları girerek bir SMB paylaşımıyla bağlantı edin:
 
 
 1. Bir komut penceresinde, şunu yazın:
@@ -130,7 +130,7 @@ Azure Stack Edge cihazınıza bağlı Windows Server istemcisinde, komutları gi
     > [!NOTE]
     > Cihaz IP adresi aracılığıyla değil, yalnızca cihaz adıyla bir SMB paylaşımıyla bağlantı yapabilirsiniz.
 
-2. İstendiğinde, paylaşımın parolasını girin.  
+2. İstendiğinde paylaşımın parolasını girin.  
    Burada, bu komutun örnek çıkışı gösterilir.
 
     ```powershell
@@ -150,7 +150,7 @@ Azure Stack Edge cihazınıza bağlı Windows Server istemcisinde, komutları gi
 
     ![Windows çalıştırma iletişim kutusu](media/azure-stack-edge-j-series-deploy-add-shares/run-window-1.png)
 
-   Dosya Gezgini açılır. Artık, klasör olarak oluşturduğunuz paylaşımları görüntüleyebilmelisiniz. Dosya Gezgini 'nde, içeriği görüntülemek için bir paylaşıma (klasör) çift tıklayın.
+   Dosya Gezgini açılır. Artık oluşturduğunuz paylaşımları klasörler olarak görüntüleyebiliyor olmalısınız. İçeriğini görüntülemek için Dosya Gezgini'nde paylaşıma (klasöre) çift tıklayın.
  
     ![SMB paylaşımına bağlanma](./media/azure-stack-edge-j-series-deploy-add-shares/file-explorer-smbshare-1.png)
 
@@ -158,15 +158,15 @@ Azure Stack Edge cihazınıza bağlı Windows Server istemcisinde, komutları gi
 
 ### <a name="connect-to-an-nfs-share"></a>NFS paylaşımına bağlanma
 
-Azure Stack Edge cihazınıza bağlı Linux istemciniz için aşağıdaki yordamı uygulayın:
+Azure Stack Edge Pro cihazınıza bağlı Linux istemciniz için aşağıdaki yordamı uygulayın:
 
 1. İstemcide NFSv4 istemcisinin yüklü olduğundan emin olun. NFS istemcisini yüklemek için aşağıdaki komutu kullanın:
 
    `sudo apt-get install nfs-common`
 
-    Daha fazla bilgi için [NFSv4 istemcisini yükleme](https://help.ubuntu.com/community/NFSv4Howto) konusuna gidin.
+    Daha fazla bilgi için [Install NFSv4 Client](https://help.ubuntu.com/community/NFSv4Howto)bölümüne gidin.
 
-2. NFS istemcisi yüklendikten sonra, aşağıdaki komutu kullanarak Azure Stack Edge cihazınızda oluşturduğunuz NFS payını bağlayın:
+2. NFS istemcisi yüklendikten sonra, aşağıdaki komutu kullanarak Azure Stack Edge Pro cihazınızda oluşturduğunuz NFS payını bağlayın:
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
 
@@ -176,7 +176,7 @@ Azure Stack Edge cihazınıza bağlı Linux istemciniz için aşağıdaki yordam
     > `sync`Paylaşım paylaşımları, büyük dosyaların aktarım hızlarını geliştirir.
     > Paylaşma 'yı bağlamadan önce, yerel bilgisayarınızda bağlama noktası olarak görev yapacak dizinlerin zaten oluşturulduğundan emin olun. Bu dizinler herhangi bir dosya veya alt klasör içermemelidir.
 
-    Aşağıdaki örnek, Azure Stack Edge cihazınızda bir paylaşıma NFS aracılığıyla nasıl bağlanılacağını gösterir. Cihaz IP adresi: `10.10.10.60`. `mylinuxshare2` paylaşımı ubuntuVM öğesine bağlanmış. Paylaşımı bağlama noktası: `/home/azurestackedgeubuntuhost/edge`.
+    Aşağıdaki örnek, Azure Stack Edge Pro cihazınızda bir paylaşıma NFS aracılığıyla nasıl bağlanılacağını gösterir. Cihaz IP adresi: `10.10.10.60`. `mylinuxshare2` paylaşımı ubuntuVM öğesine bağlanmış. Paylaşımı bağlama noktası: `/home/azurestackedgeubuntuhost/edge`.
 
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/azurestackedgeubuntuhost/Edge`
 
@@ -188,15 +188,15 @@ Azure Stack Edge cihazınıza bağlı Linux istemciniz için aşağıdaki yordam
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, aşağıdaki Azure Stack Edge konuları hakkında bilgi edindiniz:
+Bu öğreticide, aşağıdaki Azure Stack Edge Pro konuları hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
 > * Paylaşım ekleme
 > * Paylaşıma bağlanma
 
-Azure Stack Edge kullanarak verilerinizi nasıl dönüştürebileceğinizi öğrenmek için sonraki öğreticiye ilerleyin:
+Azure Stack Edge Pro 'Yu kullanarak verilerinizi nasıl dönüştürebileceğinizi öğrenmek için sonraki öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge ile veri dönüştürme](./azure-stack-edge-j-series-deploy-configure-compute.md)
+> [Azure Stack Edge Pro ile veri dönüştürme](./azure-stack-edge-j-series-deploy-configure-compute.md)
 
 

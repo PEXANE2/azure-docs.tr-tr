@@ -7,12 +7,12 @@ ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5ad261064adf34945a600983296cb3e0ceaa5247
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75431545"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901068"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalını kullanarak Stream Analytics işi oluşturma
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta bir Stream Analytics işini oluşturmaya nasıl başla
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)oluşturun.
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 * [Azure Portal](https://portal.azure.com/) oturum açın.
 
@@ -30,15 +30,15 @@ Stream Analytics işini tanımlamadan önce, giriş verilerini hazırlamanız ge
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2.  > **IoT Hub****nesnelerin interneti** **kaynak** > oluştur ' u seçin.
+2. IoT Hub **nesnelerin interneti kaynak oluştur**' u seçin  >  **Internet of Things**  >  **IoT Hub**.
 
 3. **IoT Hub** bölmesinde aşağıdaki bilgileri girin:
    
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
-   |Abonelik  | \<Aboneliğiniz\> |  Kullanmak istediğiniz Azure aboneliğini seçin. |
+   |Abonelik  | \<Your subscription\> |  Kullanmak istediğiniz Azure aboneliğini seçin. |
    |Kaynak grubu   |   asaquickstart-resourcegroup  |   **Yeni Oluştur**’u seçin ve hesabınız için yeni bir kaynak grubu adı girin. |
-   |Bölge  |  \<Kullanıcılarınıza en yakın bölgeyi seçin\> | IoT Hub barındırabileceğiniz coğrafi bir konum seçin. Kullanıcılarınıza en yakın konumu kullanın. |
+   |Region  |  \<Select the region that is closest to your users\> | IoT Hub barındırabileceğiniz coğrafi bir konum seçin. Kullanıcılarınıza en yakın konumu kullanın. |
    |IoT Hub adı  | MyASAIoTHub  |   IoT Hub için bir ad seçin.   |
 
    ![IoT Hub'ı oluşturma](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
@@ -49,7 +49,7 @@ Stream Analytics işini tanımlamadan önce, giriş verilerini hazırlamanız ge
 
    ![IoT Hub boyutlandırın ve ölçeklendirin](./media/stream-analytics-quick-create-portal/iot-hub-size-and-scale.png)
 
-6. **İncele ve oluştur**’u seçin. IoT Hub bilgilerinizi gözden geçirin ve **Oluştur**' a tıklayın. IoT Hub oluşturulması birkaç dakika sürebilir. İlerleme durumunu **Bildirimler** bölmesinden izleyebilirsiniz.
+6. **Gözden geçir ve oluştur**’u seçin. IoT Hub bilgilerinizi gözden geçirin ve **Oluştur**' a tıklayın. IoT Hub oluşturulması birkaç dakika sürebilir. İlerleme durumunu **Bildirimler** bölmesinden izleyebilirsiniz.
 
 7. IoT Hub gezinti menüsünde **IoT cihazları**altında **Ekle** ' ye tıklayın. Bir **CIHAZ kimliği** ekleyin ve **Kaydet**' e tıklayın.
 
@@ -61,7 +61,7 @@ Stream Analytics işini tanımlamadan önce, giriş verilerini hazırlamanız ge
 
 ## <a name="create-blob-storage"></a>BLOB depolama oluştur
 
-1. Azure Portal sol üst köşesinden **kaynak** > **depolama** > **depolama hesabı**oluştur ' u seçin.
+1. Azure Portal sol üst köşesinden **kaynak**  >  **depolama**  >  **depolama hesabı**oluştur ' u seçin.
 
 2. **Depolama hesabı oluştur** bölmesinde, bir depolama hesabı adı, konum ve kaynak grubu girin. Oluşturduğunuz IoT Hub aynı konum ve kaynak grubunu seçin. Ardından hesabı oluşturmak için **gözden geçir + oluştur** ' a tıklayın.
 
@@ -81,16 +81,16 @@ Stream Analytics işini tanımlamadan önce, giriş verilerini hazırlamanız ge
 
 2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.  
 
-3. Sonuçlar listesinden **analiz** > **Stream Analytics işi** ' ni seçin.  
+3. Sonuçlar listesinden **analiz**  >  **Stream Analytics işi** ' ni seçin.  
 
 4. Stream Analytics işi sayfasını aşağıdaki bilgilerle doldurun:
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
    |İş adı   |  MyASAJob   |   Stream Analytics işinizi tanımlamak için bir ad girin. Stream Analytics işinin adı yalnızca alfasayısal karakter, kısa çizgi ve alt çizgi içerebilir ve 3 ila 63 karakter uzunluğunda olmalıdır. |
-   |Abonelik  | \<Aboneliğiniz\> |  Bu iş için kullanmak istediğiniz Azure aboneliğini seçin. |
+   |Abonelik  | \<Your subscription\> |  Bu iş için kullanmak istediğiniz Azure aboneliğini seçin. |
    |Kaynak grubu   |   asaquickstart-resourcegroup  |   IoT Hub aynı kaynak grubunu seçin. |
-   |Konum  |  \<Kullanıcılarınıza en yakın bölgeyi seçin\> | Stream Analytics işinizi barındırabileceğiniz coğrafi konumu seçin. Daha iyi performans elde etmek ve veri aktarımı maliyetini azaltmak için kullanıcılarınıza en yakın konumu seçin. |
+   |Konum  |  \<Select the region that is closest to your users\> | Stream Analytics işinizi barındırabileceğiniz coğrafi konumu seçin. Daha iyi performans elde etmek ve veri aktarımı maliyetini azaltmak için kullanıcılarınıza en yakın konumu seçin. |
    |Akış birimleri  | 1  |   Akış birimleri, bir işin yürütülmesi için gereken bilgi işlem kaynaklarını temsil eder. Varsayılan olarak, bu değer 1 olarak ayarlanır. Akış birimlerini ölçeklendirme hakkında bilgi edinmek için [akış birimlerini anlama ve ayarlama](stream-analytics-streaming-unit-consumption.md) başlıklı makaleye bakın.   |
    |Barındırma ortamı  |  Bulut  |   Stream Analytics işleri buluta veya uca dağıtılabilir. Bulut, Azure bulutuna dağıtmanıza olanak tanır ve Edge bir IoT Edge cihazına dağıtmanıza olanak tanır. |
 
@@ -106,14 +106,14 @@ Bu bölümde, Stream Analytics işine IoT Hub bir cihaz girişi yapılandıracak
 
 1. Stream Analytics işinize gidin.  
 
-2. **Giriş** > **IoT Hub****akış girişi** > Ekle ' yi seçin.  
+2. **Giriş**  >  **IoT Hub akış girişi Ekle**' yi seçin  >  **IoT Hub**.  
 
 3. **IoT Hub** sayfasını aşağıdaki değerlerle doldurun:
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
    |Girdi diğer adı  |  Iothubınput   |  İşin girdisini tanımlamak için bir ad girin.   |
-   |Abonelik   |  \<Aboneliğiniz\> |  Oluşturduğunuz depolama hesabını içeren Azure aboneliğini seçin. Depolama hesabı, aynı veya farklı bir abonelikte olabilir. Bu örnekte, aynı abonelikte depolama hesabı oluşturduğunuz varsayılır. |
+   |Abonelik   |  \<Your subscription\> |  Oluşturduğunuz depolama hesabını içeren Azure aboneliğini seçin. Depolama hesabı, aynı veya farklı bir abonelikte olabilir. Bu örnekte, aynı abonelikte depolama hesabı oluşturduğunuz varsayılır. |
    |IoT Hub  |  MyASAIoTHub |  Önceki bölümde oluşturduğunuz IoT Hub adını girin. |
 
 4. Diğer seçenekleri varsayılan değerlerinde bırakın ve ayarları kaydetmek **Kaydet**’i seçin.  
@@ -124,14 +124,14 @@ Bu bölümde, Stream Analytics işine IoT Hub bir cihaz girişi yapılandıracak
 
 1. Daha önce oluşturduğunuz Stream Analytics işine gidin.  
 
-2. **Çıkışları** > **Add** > **BLOB depolama**Ekle ' yi seçin.  
+2. **Çıkışları**  >  **Add**  >  **BLOB depolama**Ekle ' yi seçin.  
 
 3. **Blob depolama** sayfasını aşağıdaki değerlerle doldurun:
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
    |Çıktı diğer adı |   BlobOutput   |   İşin çıktısını tanımlamak için bir ad girin. |
-   |Abonelik  |  \<Aboneliğiniz\>  |  Oluşturduğunuz depolama hesabını içeren Azure aboneliğini seçin. Depolama hesabı, aynı veya farklı bir abonelikte olabilir. Bu örnekte, aynı abonelikte depolama hesabı oluşturduğunuz varsayılır. |
+   |Abonelik  |  \<Your subscription\>  |  Oluşturduğunuz depolama hesabını içeren Azure aboneliğini seçin. Depolama hesabı, aynı veya farklı bir abonelikte olabilir. Bu örnekte, aynı abonelikte depolama hesabı oluşturduğunuz varsayılır. |
    |Depolama hesabı |  asaquickstartstorage |   Depolama hesabının adını seçin veya girin. Depolama hesabı adları aynı abonelikte oluşturulursa otomatik olarak algılanır.       |
    |Kapsayıcı |   kapsayıcı1  |  Depolama hesabınızda oluşturduğunuz mevcut kapsayıcıyı seçin.   |
 
@@ -162,7 +162,7 @@ Bu bölümde, Stream Analytics işine IoT Hub bir cihaz girişi yapılandıracak
 
 2. 15. satırdaki yer tutucusunu, önceki bölümde kaydettiğiniz Azure IoT Hub cihaz bağlantı dizesiyle değiştirin.
 
-3. **Çalıştır**’a tıklayın. Çıktıda, IoT Hub gönderilen algılayıcı verileri ve iletileri gösterilmelidir.
+3. **Çalıştır**'a tıklayın. Çıktıda, IoT Hub gönderilen algılayıcı verileri ve iletileri gösterilmelidir.
 
    ![Raspberry Pi Azure IoT Çevrimiçi Simülatörü](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 
@@ -186,7 +186,7 @@ Artık gerekli değilse, kaynak grubunu, Stream Analytics işini ve tüm ilgili 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta Azure portalı kullanarak basit bir Stream Analytics işi dağıttınız. Ayrıca [PowerShell](stream-analytics-quick-create-powershell.md), [Visual Studio](stream-analytics-quick-create-vs.md)ve [Visual Studio Code](quick-create-vs-code.md)kullanarak Stream Analytics işleri dağıtabilirsiniz.
+Bu hızlı başlangıçta Azure portalı kullanarak basit bir Stream Analytics işi dağıttınız. Ayrıca [PowerShell](stream-analytics-quick-create-powershell.md), [Visual Studio](stream-analytics-quick-create-vs.md)ve [Visual Studio Code](quick-create-visual-studio-code.md)kullanarak Stream Analytics işleri dağıtabilirsiniz.
 
 Diğer girdi kaynaklarını yapılandırma ve gerçek zamanlı algılama hakkında bilgi almak için aşağıdaki makaleye geçin:
 

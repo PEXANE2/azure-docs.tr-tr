@@ -9,17 +9,42 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/04/2020
-ms.openlocfilehash: a2d27f892e79d99f515032b72e1ec090ab1f6a31
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/22/2020
+ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500360"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900593"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge sürüm notları 
 
 Bu makalede, yenilikler ve her yeni Azure SQL Edge derlemesi ile nelerin değiştiğini açıklanmaktadır.
+
+## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge-1.0.0 (RTM)
+
+### <a name="sql-engine-build-number---15020001549"></a>SQL altyapısı derleme numarası-15.0.2000.1549
+
+### <a name="whats-new"></a>Yenilikler
+1. Ubuntu 18,04 tabanlı kapsayıcı görüntüleri. 
+2. Ve `IGNORE NULL` `RESPECT NULL` işlevleri ile ilgili ve sözdizimi desteği `LAST_VALUE()` `FIRST_VALUE()` . 
+3. ONNX ile tahmın için güvenilirlik iyileştirmeleri.
+4. Veri bekletme ilkesi tabanlı temizleme desteği.      
+   - Kümelenmiş columnstore dizinleri için iyileştirilmiş temizleme desteği.
+5. Yeni özellik desteği 
+   - Hızlı kurtarma
+   - Sorguların otomatik olarak ayarlanması
+
+### <a name="fixes"></a>Düzeltmeler
+1. TSQL akış işlemlerinde sorun gidermeye yönelik ek hata iletileri ve ayrıntılar. 
+2. Pil ömrünü boşta modda korumanıza yönelik geliştirmeler. 
+3. TSQL akış altyapısı düzeltmeleri: 
+   - Durdurulan akış işi için Temizleme 
+   - Yerelleştirme ve Unicode işleme iyileştirmeleri için düzeltmeler
+4. Veri bekletme ilkesi tabanlı Temizleme
+   - Bekletme ilkesi oluşturma ve Temizleme senaryolarına yönelik düzeltmeler.
+5. Düşük güç modundaki güç tasarrufunu artırmak için arka plan Zamanlayıcı görevlerine yönelik düzeltmeler.
+
 
 ## <a name="ctp-23"></a>CTP 2,3
 ### <a name="sql-engine-build-number---15020001549"></a>SQL altyapısı derleme numarası-15.0.2000.1549
@@ -33,7 +58,7 @@ Bu makalede, yenilikler ve her yeni Azure SQL Edge derlemesi ile nelerin değiş
 
 ### <a name="fixes"></a>Düzeltmeler
 1. TSQL akış işlemlerinde sorun gidermeye yönelik ek hata iletileri ve ayrıntılar. 
-2. Boşta modunda pil ömrünü korumak için ımporvements. 
+2. Pil ömrünü boşta modda korumanıza yönelik geliştirmeler. 
 3. TSQL akış altyapısı düzeltmeleri: 
    - Alt akışlı atlamalı penceresiyle takılı olmayan filigran sorununu giderme 
    - Kullanıcı eylem yapılabilir hatası olarak toplandığından emin olmak için Framework özel durum işlemesini onarın

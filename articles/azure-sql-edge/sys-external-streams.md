@@ -1,6 +1,6 @@
 ---
-title: sys. external_streams (Transact-SQL)-Azure SQL Edge (Önizleme)
-description: Azure SQL Edge 'de sys. external_streams kullanma hakkında bilgi edinin (Önizleme)
+title: sys. external_streams (Transact-SQL)-Azure SQL Edge
+description: Azure SQL Edge 'de sys. external_streams kullanma hakkında bilgi edinin
 keywords: sys. external_streams, SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 8200d1814537a76db357704d6baf3bf482c587e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04950f01c06bc3c8ed3bb11a790310c2319a0579
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84235119"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900305"
 ---
 # <a name="sysexternal_streams-transact-sql"></a>sys.external_streams (Transact-SQL)
 
@@ -23,10 +23,10 @@ Veritabanı kapsamında oluşturulan her dış akış nesnesi için bir satır d
 |Sütun adı|Veri türü|Açıklama|  
 |-----------------|---------------|-----------------|
 |**ada**|**döndürmeli**|Akışın adı. Veritabanı içinde benzersizdir.|
-|**object_id**|**int**|Stream nesnesi için nesne kimlik numarası. Veritabanı içinde benzersizdir.|
-|**principal_id**|**int**|Bu derlemeye sahip olan sorumlunun KIMLIĞI|
-|**schema_id**|**int**| Nesneyi içeren şemanın KIMLIĞI.|
-|**parent_object_id**|**numarasını**| Bu akış için üst nesne için nesne kimlik numarası. Geçerli uygulamada, bu değer her zaman null olur|
+|**object_id**|**'tir**|Stream nesnesi için nesne kimlik numarası. Veritabanı içinde benzersizdir.|
+|**principal_id**|**'tir**|Bu derlemeye sahip olan sorumlunun KIMLIĞI|
+|**schema_id**|**'tir**| Nesneyi içeren şemanın KIMLIĞI.|
+|**parent_object_id**|**id**| Bu akış için üst nesne için nesne kimlik numarası. Geçerli uygulamada, bu değer her zaman null olur|
 |**türüyle**|**karakter (2)**|Nesne türü. Stream nesneleri için, tür her zaman ' ES ' olur|
 |**type_desc**|**nvarchar (60)**| Nesne türünün açıklaması. Stream nesneleri için, türü her zaman ' EXTERNAL_STREAM ' olur|
 |**create_date**|**datetime**| Nesnenin oluşturulduğu tarih.|
@@ -36,8 +36,8 @@ Veritabanı kapsamında oluşturulan her dış akış nesnesi için bir satır d
 |**is_schema_published**|**bit**|Yalnızca nesnenin şeması yayımlanır.|
 |**max_column_id_used**|**bit**| Bu sütun, iç amaçlar için kullanılır ve gelecekte kaldırılacaktır|  
 |**uses_ansi_nulls**|**bit**| Stream nesnesi, ÜZERINDE ANSI_NULLS veritabanı ayarla seçeneği ile oluşturuldu|
-|**data_source_id**|**int**| Stream nesnesi tarafından temsil edilen dış veri kaynağının nesne KIMLIĞI |  
-|**file_format_id**|**int**| Stream nesnesi tarafından kullanılan dış dosya biçiminin nesne KIMLIĞI. Dış dosya biçimi, bir dış akış tarafından başvurulan verilerin gerçek yerleşimini belirtmek için gereklidir| 
+|**data_source_id**|**'tir**| Stream nesnesi tarafından temsil edilen dış veri kaynağının nesne KIMLIĞI |  
+|**file_format_id**|**'tir**| Stream nesnesi tarafından kullanılan dış dosya biçiminin nesne KIMLIĞI. Dış dosya biçimi, bir dış akış tarafından başvurulan verilerin gerçek yerleşimini belirtmek için gereklidir| 
 |**konumuna**|**varchar(maks.)**| Dış akış nesnesi için hedef. Daha fazla bilgi için [dış akış oluşturma](overview.md) konusuna bakın |
 |**input_option**|**varchar(maks.)**| Dış akışın oluşturulması sırasında kullanılan giriş seçenekleri. Daha fazla bilgi için [dış akış oluşturma](overview.md) konusuna bakın |
 |**output_option**|**varchar(maks.)**| Dış akışın oluşturulması sırasında kullanılan çıkış seçenekleri. Daha fazla bilgi için [dış akış oluşturma](overview.md) konusuna bakın | 

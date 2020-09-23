@@ -6,19 +6,19 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: c6a35d9ba2d2f1c762f44b3792792401565c4804
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421093"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902781"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu yedekleme ve geri yükleme
 
 ## <a name="backup-happens-automatically"></a>Yedekleme otomatik olarak gerçekleşir
 MySQL için Azure veritabanı sunucuları, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MySQL Için Azure veritabanı sunucusu ve veritabanı](quickstart-create-mysql-server-database-using-azure-portal.md)
 
@@ -32,7 +32,7 @@ Sunucu oluşturma sırasında, **fiyatlandırma katmanı** penceresinde yerel ol
 
 Azure portal aracılığıyla bir sunucu oluştururken, **fiyatlandırma katmanı** penceresi sunucunuz Için **yerel olarak yedekli** veya **coğrafi olarak yedekli** yedeklemeleri seçtiğiniz yerdir. Bu pencere Ayrıca, **yedekleme bekletme dönemini** (gün sayısı cinsinden) sunucu yedeklemelerinin ne kadar süreyle depolandığını seçtiğiniz yerdir.
 
-   ![Fiyatlandırma Katmanı-yedek yedeklilik seçin](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
 
 Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için bkz. [MySQL Için Azure veritabanı sunucusu hızlı başlangıç](quickstart-create-mysql-server-database-using-azure-portal.md).
 
@@ -41,7 +41,7 @@ Yedekleme saklama süresi bir sunucuda aşağıdaki adımlarla değiştirilebili
 2. MySQL için Azure veritabanı sunucunuzu seçin. Bu eylem **genel bakış** sayfasını açar.
 3. Menüde, **Ayarlar**' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
 Aşağıdaki ekran görüntüsünde 34 güne yükselmiştir.
-![Yedekleme bekletme süresi arttı](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Yedekleme bekletme süresi arttı":::
 
 4. Değişikliği onaylamak için **Tamam** ' ı tıklatın.
 
@@ -57,11 +57,11 @@ Aşağıdaki adımlar örnek sunucuyu bir zaman noktasına geri yükler:
 
 2. Sunucunun **genel bakış** sayfasının araç çubuğunda **geri yükle**' yi seçin.
 
-   ![MySQL için Azure veritabanı-genel bakış-geri yükleme düğmesi](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="MySQL için Azure veritabanı-genel bakış-geri yükleme düğmesi":::
 
 3. Geri yükleme formunu gereken bilgilerle doldurun:
 
-   ![MySQL için Azure veritabanı-geri yükleme bilgileri](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="MySQL için Azure veritabanı-geri yükleme bilgileri":::
    - **Geri yükleme noktası**: geri yüklemek istediğiniz zaman noktasını seçin.
    - **Hedef sunucu**: yeni sunucu için bir ad sağlayın.
    - **Konum**: bölgeyi seçemezsiniz. Varsayılan olarak, kaynak sunucu ile aynıdır.

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 0a025ad7857594b3117b1703a0e19ae47407d0fd
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018110"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974364"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -373,7 +373,7 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
 1. Aracının yüklenmesini doğrulayın ve "Hizmetler" eklentisini açıp "Microsoft Azure AD Connect sağlama Aracısı" adlı hizmeti arayın ve çalıştığından emin olun.
 
    >[!div class="mx-imgBorder"]
-   >![Hizmetlerde çalışan Microsoft Azure AD Connect sağlama aracısının ekran görüntüsü](./media/workday-inbound-tutorial/services.png)
+   >![Hizmetler 'de çalışan Microsoft Azure AD Connect sağlama aracısının ekran görüntüsü.](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>3. kısım: sağlama uygulamasında, Workday ve Active Directory bağlantısını yapılandırın
 Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz. 
@@ -390,8 +390,8 @@ Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz.
    
      | URL biçimi | WWS API sürümü kullanıldı | XPATH değişiklikleri gerekiyor |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Hayır |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Hayır |
      | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
@@ -1154,7 +1154,7 @@ Azure AD sağlama hizmeti, veri bekletmeye göre rapor oluşturmaz, analiz uygul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 * [Workday ve Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin](workday-tutorial.md)
 * [Diğer SaaS uygulamalarını Azure Active Directory ile tümleştirmeyi öğrenin](tutorial-list.md)
 * [Sağlama yapılandırmalarının yönetimi için Microsoft Graph API 'Lerini nasıl kullanacağınızı öğrenin](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

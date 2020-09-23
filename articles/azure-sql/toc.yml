@@ -51,8 +51,8 @@
               href: database/security-baseline.md
             - name: Güvenlik öznitelikleri
               href: database/security-controls.md
-            - name: Gelişmiş Veri Güvenliği
-              href: database/advanced-data-security.md
+            - name: SQL için Azure Defender
+              href: database/azure-defender-for-sql.md
             - name: Gelişmiş Tehdit Koruması
               href: database/threat-detection-overview.md
             - name: Veri bulma ve sınıflandırma
@@ -712,6 +712,10 @@
           items:
             - name: Genel Bakış
               href: managed-instance/management-operations-overview.md
+            - name: İşlemleri izleme
+              href: managed-instance/management-operations-monitor.md
+            - name: İşlemleri iptal etme
+              href: managed-instance/management-operations-cancel.md
             - name: API başvurusu
               href: managed-instance/api-references-create-manage-instance.md
         - name: Machine Learning Services

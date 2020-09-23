@@ -1,6 +1,6 @@
 ---
-title: GPU ile Azure Stack Edge ile sertifika sorunlarını giderme | Microsoft Docs
-description: Azure Stack Edge GPU cihazındaki sertifika hatalarını giderme işlemini açıklar.
+title: GPU ile Azure Stack Edge Pro ile sertifika sorunlarını giderme | Microsoft Docs
+description: Azure Stack Edge Pro GPU cihazındaki sertifika hatalarını giderme işlemini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 05338fb70bfa390ff3bd9e14e938edeb40938aeb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269446"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891330"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Sertifika hatalarını giderme
 
-Makale, Azure Stack Edge cihazınıza sertifika yüklerken ortak sertifika hatalarıyla ilgili sorun giderme sağlar.
+Makale, Azure Stack Edge Pro cihazınıza sertifika yüklerken ortak sertifika hatalarıyla ilgili sorun giderme sağlar.
 
 ## <a name="common-certificate-errors"></a>Ortak sertifika hataları
 

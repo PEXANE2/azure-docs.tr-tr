@@ -14,16 +14,16 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76834697"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987171"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak ağlar arasında bir iletişim sorununu tanılama
 
-Sanal ağ geçidi, bir Azure sanal ağını şirket içine ya da diğer sanal ağa bağlar. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Sanal ağ geçidi, bir Azure sanal ağını şirket içine ya da diğer sanal ağa bağlar. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ağ İzleyicisi'nin VPN tanılama özelliği ile bir sanal ağ geçidi sorununu tanılama
@@ -45,7 +45,7 @@ Betiğin bir VPN ağ geçidi oluşturması yaklaşık bir saat sürer. Kalan ad�
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="enable-network-watcher"></a>Ağ İzleyicisini etkinleştirme
 
@@ -73,12 +73,12 @@ Doğu ABD bölgesinde etkinleştirilmiş bir ağ izleyicisi zaten varsa [Ağ ge�
 8. Test çalışırken, önceki resimde **Başlatılmadı** ifadesinin gösterildiği **SORUN GİDERME DURUMU** sütununda **Çalışıyor** ifadesi görünür. Testin çalışması birkaç dakika sürebilir.
 9. Tamamlanmış bir testin durumunu görüntüleyin. Aşağıdaki resimde, tamamlanmış bir tanılama testinin durum sonuçları gösterilmiştir:
 
-    ![Durum](./media/diagnose-communication-problem-between-networks/status.png)
+    ![Ekran görüntüsü, bir tanılama testinin durum sonuçlarını, bu örnekte Özet ve ayrıntı dahil sağlıksız olduğunu gösterir.](./media/diagnose-communication-problem-between-networks/status.png)
 
     **SORUN GİDERME DURUMU**’nun **Sağlıksız** olduğunu ve ayrıca **Durum** sekmesinde sorunla ilgili bir **Özet** ve **Ayrıntı** seçeneğinin bulunduğunu görebilirsiniz.
 10. **Eylem** sekmesini seçtiğinizde VPN tanılama, ek bilgiler sağlar. Aşağıdaki resimde gösterilen örnekte, VPN tanılama işlemi her bir bağlantının durumunu denetlemeniz gerektiğini bildirir:
 
-    ![Eylem](./media/diagnose-communication-problem-between-networks/action.png)
+    ![Ekran görüntüsü, size ek bilgi sağlayan eylem sekmesini gösterir.](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Ağ geçidi bağlantısı tanılama
 
@@ -86,7 +86,7 @@ Ağ geçidi bir ağ geçidi bağlantısı üzerinden diğer ağlara bağlanır. 
 
 1. [Ağ geçidi tanılama](#diagnose-a-gateway) bölümündeki 7. adımı, bu kez bir bağlantı seçerek tekrar tamamlayın. Aşağıdaki örnekte, **VNet1toSite1** adlı bir bağlantı test edilmiştir:
 
-    ![Bağlantı](./media/diagnose-communication-problem-between-networks/connection.png)
+    ![Ekran görüntüsü seçili bir bağlantı için nasıl sorun gidermeye başlayakullanacağınızı gösterir.](./media/diagnose-communication-problem-between-networks/connection.png)
 
     Test birkaç dakika boyunca çalışır.
 2. Bağlantı testi tamamlandıktan sonra **Durum** ve **Eylem** sekmelerinde aşağıdaki resimlerde gösterilen sonuçlara benzer sonuçlar alırsınız:

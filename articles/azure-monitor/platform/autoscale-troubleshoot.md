@@ -4,12 +4,12 @@ description: Service Fabric, sanal makineler, Web Apps ve bulut hizmetlerinde ku
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751342"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979040"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure otomatik ölçeklendirme sorunlarını giderme
  
@@ -47,7 +47,7 @@ Bir sanal makine ölçek kümesi için şu şekilde basit bir otomatik ölçekle
 
 Otomatik ölçeklendirme hizmetindeki ölçümleri gözden geçirelim.
  
-![Sanal makine ölçek kümesi yüzde CPU örneği](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
+![Ekran görüntüsü bir sanal makine ölçek kümesi yüzde CPU örneği gösterir.](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
 
 ![Sanal makine ölçek kümesi yüzde CPU örneği](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
@@ -72,7 +72,7 @@ Bir sanal makine ölçek kümesi kaynağının kendi ölçüm **giden akışlar�
 
 Bu durumda, otomatik ölçeklendirme motorunun gözlemlenen ölçüm değeri, gerçek ölçüm değeri olarak örnek sayısına bölünür. Gözlemlenen ölçüm değeri eşikten küçükse, ölçek genişletme eylemi başlatılmaz. 
  
-![Sanal makine ölçek kümesi otomatik ölçeklendirme ölçümleri grafikleri örneği](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
+![Ekran görüntüsü, bir sanal makine ölçek kümesi otomatik ölçeklendirme ölçümleri grafiklerine örnek içeren ortalama giden akışlar sayfasını gösterir.](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
 
 ![Sanal makine ölçek kümesi otomatik ölçeklendirme ölçümleri grafikleri örneği](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 

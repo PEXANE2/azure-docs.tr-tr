@@ -1,6 +1,6 @@
 ---
 title: SSS-SAP Çözümleri için Azure Izleyicisi | Microsoft Docs
-description: Bu makale, SAP Çözümleri için Azure izleyici hakkında sık sorulan soruların yanıtlarını sağlar
+description: Bu makalede, SAP Çözümleri için Azure izleyici hakkında sık sorulan sorular (SSS) hakkında yanıtları öğrenin.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: cf0366300c4fab18a0f6231a97ca050eddd50132
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f70aa684a089e0f21cb50932e212b71f77df0e01
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852435"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987236"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>SAP Çözümleri için Azure izleyici SSS (Önizleme)
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
