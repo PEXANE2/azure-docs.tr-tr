@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 01a256e17b1101782eaee9bebd85f5e7093773d3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1dfc8d473d0cfe663569d2508404bf190f2da841
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287783"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901572"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Azure portal kullanarak PostgreSQL için Azure veritabanı 'nda genel ağ erişimini reddetme
 
@@ -33,13 +33,13 @@ PostgreSQL için tek sunuculu ortak ağ erişimini reddet ' i ayarlamak için ş
 
 1. **Ortak ağ erişimini engelle**' de, PostgreSQL tek sunucunuz için genel erişimi Reddet ' i etkinleştirmek için **Evet** ' i seçin.
 
-    ![PostgreSQL için Azure veritabanı tek sunucu ağ erişimini reddet](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
+    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access.PNG" alt-text="PostgreSQL için Azure veritabanı tek sunucu ağ erişimini reddet":::
 
 1. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
 1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
 
-    ![PostgreSQL için Azure veritabanı tek sunuculu ağ erişimini reddetme başarılı](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
+    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access-success.png" alt-text="PostgreSQL için Azure veritabanı tek sunuculu ağ erişimini reddetme başarılı":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

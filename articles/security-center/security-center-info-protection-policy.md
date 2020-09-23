@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7586cca21d470bcb0cf637ca0370f5dfcb59406
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711094"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901112"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Güvenlik Merkezi 'nde SQL Information Protection ilkesini özelleştirme (Önizleme)
  
@@ -50,13 +50,13 @@ Azure kiracınız için Information Protection ilkesini özelleştirmek üzere [
  
 1. Varolan herhangi bir etiketi düzenleyebilir veya silebilir veya yeni bir etiket ekleyebilirsiniz. Varolan bir etiketi düzenlemek için, bu etiketi seçin ve sonra üstteki ya da sağdaki bağlam menüsünde **Yapılandır**' a tıklayın. Yeni bir etiket eklemek için üstteki menü çubuğunda veya Etiketler tablosunun en altında **etiket oluştur** ' a tıklayın.
 2. **Duyarlılık etiketini Yapılandır** ekranında, etiket adı ve açıklamasını oluşturabilir veya değiştirebilirsiniz. Ayrıca, **etkin** anahtarı değiştirerek veya devre dışı bırakmak için etiketin etkin veya devre dışı olduğunu da ayarlayabilirsiniz. Son olarak, etiketle ilişkili bilgi türlerini ekleyebilir veya kaldırabilirsiniz. Bu bilgi türüyle eşleşen tüm veriler, sınıflandırma önerilerine ilişkili duyarlılık etiketini otomatik olarak dahil eder.
-3. **Tamam**'a tıklayın.
+3. **Tamam**’a tıklayın.
  
    ![Duyarlılık etiketini Yapılandır](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
 4. Etiketler, artan duyarlılık sırasına göre listelenmiştir. Etiketler arasındaki derecelendirmeyi değiştirmek için etiketleri tablo içinde yeniden sıralamak üzere sürükleyin veya sıralamayı değiştirmek için **yukarı** taşı ve **aşağı taşı** düğmelerini kullanın. 
  
-    ![Bilgi koruma ilkesini yapılandırma](./media/security-center-info-protection-policy/move-up.png)
+    ![Etiket listesi](./media/security-center-info-protection-policy/move-up.png)
  
 5. İşiniz bittiğinde ekranın en üstündeki **Kaydet** ' e tıkladığınızdan emin olun.
  
@@ -66,7 +66,7 @@ Azure kiracınız için Information Protection ilkesini özelleştirmek üzere [
 1. Bilgi türlerini **Yönet**' i tıklatarak bilgi türlerini yönetebilir ve özelleştirebilirsiniz.
 2. Yeni bir **bilgi türü**eklemek için üst menüde **bilgi türü oluştur** ' u seçin. **Bilgi türü**için bir ad, açıklama ve arama deseninin dizelerini yapılandırabilirsiniz. Arama desenli dizeler, isteğe bağlı olarak joker karakterlerle ('% ' karakterini kullanarak) anahtar sözcükleri kullanabilir ve bu da otomatik bulma altyapısının, veritabanınızdaki gizli verileri, sütunların meta verilerine göre belirlemek için kullanır.
  
-    ![Bilgi koruma ilkesini yapılandırma](./media/security-center-info-protection-policy/info-types.png)
+    ![Bilgi türü oluştur](./media/security-center-info-protection-policy/info-types.png)
  
 3. Ayrıca, ek arama model dizeleri ekleyerek, var olan dizelerin bazılarını devre dışı bırakarak veya açıklamayı değiştirerek yerleşik **bilgi türlerini** yapılandırabilirsiniz. Yerleşik **bilgi türlerini** silemez veya adlarını düzenleyemezsiniz. 
 4. **Bilgi türleri** , artan bulma derecelendirmesi sırasına göre listelenmiştir, yani listede daha yüksek olan türlerin birinciden eşleştirmeye çalışır. Bilgi türleri arasındaki derecelendirmeyi değiştirmek için, türleri tablodaki doğru noktaya sürükleyin veya sıralamayı değiştirmek için **Yukarı taşı** ve **aşağı taşı** düğmelerini kullanın. 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU ile sertifika kullanma | Microsoft Docs
-description: Azure Stack Edge GPU cihazındaki sertifikaların kullanımını, hangi türleri ve cihazınızdaki sertifikaların nasıl yükleneceğini açıklar.
+title: Azure Stack Edge Pro GPU 'SU ile sertifika kullanma | Microsoft Docs
+description: Azure Stack Edge Pro GPU cihazındaki sertifikaların kullanımını açıklar ve bu, hangi türleri ve cihazınıza sertifika yükleme işleminin nasıl yapılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268885"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890748"
 ---
-# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazındaki sertifikaları kullanma
+# <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki sertifikaları kullanma
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu makalede Azure Stack Edge cihazınıza yüklenebilen sertifika türleri açıklanmaktadır. Makalede ayrıca, her sertifika türünün ayrıntıları ve sona erme tarihini yüklemek ve tanımlamak için olan yordamlar da yer alır. 
+Bu makalede Azure Stack Edge Pro cihazınıza yüklenebilen sertifika türleri açıklanmaktadır. Makalede ayrıca, her sertifika türünün ayrıntıları ve sona erme tarihini yüklemek ve tanımlamak için olan yordamlar da yer alır. 
 
 ## <a name="about-certificates"></a>Sertifikalar hakkında
 
 Bir sertifika, güvenilir bir üçüncü taraf (örneğin, bir **sertifika yetkilisi**) tarafından **imzalanmış** (doğrulanmış) bir **ortak anahtar** ve bir varlık (örneğin, etki alanı adı) arasında bir bağlantı sağlar.  Bir sertifika, güvenilir ortak şifreleme anahtarları dağıtmanın kolay bir yolunu sağlar. Sertifikalar bundan sonra iletişiminizin güvenilir olmasını ve doğru sunucuya şifreli bilgiler gönderdiğinizden emin olmanızı sağlar. 
 
-Azure Stack Edge cihazınız ilk yapılandırıldığında otomatik olarak imzalanan sertifikalar otomatik olarak oluşturulur. İsteğe bağlı olarak, kendi sertifikalarınızı getirebilirsiniz. Kendi sertifikalarınızı getirmeyi planlıyorsanız izlemeniz gereken yönergeler vardır.
+Azure Stack Edge Pro cihazınız ilk yapılandırıldığında otomatik olarak imzalanan sertifikalar otomatik olarak oluşturulur. İsteğe bağlı olarak, kendi sertifikalarınızı getirebilirsiniz. Kendi sertifikalarınızı getirmeyi planlıyorsanız izlemeniz gereken yönergeler vardır.
 
 ## <a name="types-of-certificates"></a>Sertifika türleri
 
-Azure Stack Edge cihazınızda kullanılan çeşitli sertifika türleri şunlardır: 
+Azure Stack Edge Pro cihazınızda kullanılan çeşitli sertifika türleri şunlardır: 
 - İmzalama sertifikaları
     - Kök CA
     - Orta
@@ -68,7 +68,7 @@ Bu sertifikalar kök sertifikalar veya ara sertifikalar olabilir. Kök sertifika
 
 ## <a name="node-certificates"></a>Düğüm sertifikaları
 
-<!--Your Azure Stack Edge device could be a 1-node device or a 4-node device.--> Cihazdaki tüm düğümler sürekli olarak birbirleriyle iletişim kuruyor ve bu nedenle bir güven ilişkisine sahip olması gerekir. Düğüm sertifikaları, bu güveni oluşturmak için bir yol sağlar. Ayrıca, https üzerinden uzak bir PowerShell oturumu kullanarak cihaz düğümüne bağlandığınızda, düğüm sertifikaları da oynar.
+<!--Your Azure Stack Edge Pro device could be a 1-node device or a 4-node device.--> Cihazdaki tüm düğümler sürekli olarak birbirleriyle iletişim kuruyor ve bu nedenle bir güven ilişkisine sahip olması gerekir. Düğüm sertifikaları, bu güveni oluşturmak için bir yol sağlar. Ayrıca, https üzerinden uzak bir PowerShell oturumu kullanarak cihaz düğümüne bağlandığınızda, düğüm sertifikaları da oynar.
 
 ### <a name="caveats"></a>Uyarılar
 
@@ -121,9 +121,9 @@ Cihazınızın yerel Web Kullanıcı arabirimine bir tarayıcı aracılığıyla
 
 ## <a name="iot-edge-device-certificates"></a>IoT Edge cihaz sertifikaları
 
-Azure Stack Edge cihazınız Ayrıca, kendisine bağlı bir IoT Edge cihaz tarafından etkinleştirilen bir IoT aygıtıdır. Bu IoT Edge cihaz ile buna bağlanabilecek aşağı akış cihazları arasındaki güvenli iletişim için IoT Edge sertifikaları da yükleyebilirsiniz. 
+Azure Stack Edge Pro cihazınız Ayrıca, kendisine bağlı bir IoT Edge cihaz tarafından etkinleştirilen bir IoT cihazdır. Bu IoT Edge cihaz ile buna bağlanabilecek aşağı akış cihazları arasındaki güvenli iletişim için IoT Edge sertifikaları da yükleyebilirsiniz. 
 
-Cihaz ile yalnızca işlem senaryosunu kullanmak istiyorsanız, cihazda kullanılabilecek otomatik olarak imzalanan sertifikalar vardır. Azure Stack Edge cihazı ancak aşağı akış cihazlarına bağlandıysa, kendi sertifikalarınızı almanız gerekir.
+Cihaz ile yalnızca işlem senaryosunu kullanmak istiyorsanız, cihazda kullanılabilecek otomatik olarak imzalanan sertifikalar vardır. Azure Stack Edge Pro cihazı, ancak aşağı akış cihazlarına bağlandıysa, kendi sertifikalarınızı almanız gerekir.
 
 Bu güven ilişkisini etkinleştirmek için yüklemeniz gereken üç IoT Edge sertifika vardır:
 
@@ -140,7 +140,7 @@ IoT Edge sertifikaları hakkında daha fazla bilgi için bkz. [Azure IoT Edge se
 
 ## <a name="support-session-certificates"></a>Oturum sertifikalarını destekleme
 
-Azure Stack Edge cihazınız herhangi bir sorunla karşılaşıyorsa, bu sorunları gidermek için cihazda bir uzak PowerShell destek oturumu açılabilir. Bu destek oturumu üzerinden güvenli, şifreli bir iletişim sağlamak için bir sertifika yükleyebilirsiniz.
+Azure Stack Edge Pro cihazınızda herhangi bir sorun yaşıyorsanız, bu sorunları gidermek için cihazda bir uzak PowerShell destek oturumu açılabilir. Bu destek oturumu üzerinden güvenli, şifreli bir iletişim sağlamak için bir sertifika yükleyebilirsiniz.
 
 ### <a name="caveats"></a>Uyarılar
 
@@ -155,7 +155,7 @@ Azure Stack Edge cihazınız herhangi bir sorunla karşılaşıyorsa, bu sorunla
 
 <!--## VPN certificates
 
-If VPN is configured on your Azure Stack Edge device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
+If VPN is configured on your Azure Stack Edge Pro device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
 
 ### Caveats
 
@@ -262,7 +262,7 @@ $DeviceSerial = "HWDC1T2"
 New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSerial.$domain","management.$AppName.$domain","login.$AppName.$domain","*.blob.$AppName.$domain" -Subject "CN=$AppName.$domain" -KeyExportPolicy Exportable  -HashAlgorithm sha256 -KeyLength 2048  -CertStoreLocation "Cert:\LocalMachine\My" -Signer $cert -KeySpec KeyExchange -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")
 ```
 
-Sertifikalar oluşturulduktan sonra, bir sonraki adım Azure Stack Edge cihazınıza sertifika yükleme
+Sertifikalar oluşturulduktan sonra, bir sonraki adım Azure Stack Edge Pro cihazınıza sertifika yükleme
 
 
 ## <a name="upload-certificates"></a>Sertifikaları karşıya yükle 
@@ -401,7 +401,7 @@ Bir Windows makinesinde özel anahtarla SSL sertifikasını dışarı aktarmak i
 
 ## <a name="supported-certificate-algorithms"></a>Desteklenen sertifika algoritmaları
 
- Azure Stack Edge cihazınız ile yalnızca Rivest – Shamir – Adtaman (RSA) sertifikaları desteklenir. Eliptik Eğri dijital Imza algoritması (ECDSA) sertifikaları kullanılıyorsa, cihaz davranışı belirsiz olur.
+ Azure Stack Edge Pro cihazınız ile yalnızca Rivest – Shamir – Adtaman (RSA) sertifikaları desteklenir. Eliptik Eğri dijital Imza algoritması (ECDSA) sertifikaları kullanılıyorsa, cihaz davranışı belirsiz olur.
 
  RSA ortak anahtarı içeren sertifikalara RSA sertifikaları denir. Eliptik Eğri Şifreleme (ECC) ortak anahtarı içeren sertifikalara ECDSA (Eliptik Eğri dijital Imza algoritması) sertifikaları denir. 
 
@@ -418,4 +418,4 @@ Cihazınızın yerel Web Kullanıcı arabirimindeki **Sertifikalar** sayfasında
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack Edge cihazınızı dağıtma](azure-stack-edge-gpu-deploy-prep.md)
+[Azure Stack Edge Pro cihazınızı dağıtma](azure-stack-edge-gpu-deploy-prep.md)

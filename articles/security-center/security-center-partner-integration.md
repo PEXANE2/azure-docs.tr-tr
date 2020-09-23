@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180856"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883927"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki tümleşik güvenlik çözümleri
 Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini yönetmenize ve yenilerini eklemenize yardımcı olur.
@@ -35,11 +35,11 @@ Güvenlik Merkezi, Azure'daki tümleşik güvenlik çözümlerini etkinleştirme
 > [!NOTE]
 > Güvenlik Merkezi, çoğu güvenlik satıcısı, gereçlerinde çalışan dış aracıları yasakladığından, Log Analytics aracısını iş ortağı sanal gereçlerine yüklemez.
 
-Standart katman müşterilerine sunulan yerleşik bir tarayıcı dahil olmak üzere Qualys 'ten güvenlik açığı tarama araçlarının tümleştirilmesi hakkında daha fazla bilgi edinmek için bkz. [Azure sanal makineleriniz için güvenlik açığı değerlendirmeleri](deploy-vulnerability-assessment-vm.md).
+Azure Defender müşterilerinin kullanabildiği yerleşik bir tarayıcı dahil olmak üzere Qualys 'ten güvenlik açığı tarama araçlarının tümleştirilmesi hakkında daha fazla bilgi edinmek için bkz. [Azure sanal makineleriniz için güvenlik açığı değerlendirmeleri](deploy-vulnerability-assessment-vm.md).
 
 Güvenlik Merkezi, için güvenlik açığı analizini de sunmaktadır:
 
-* SQL veritabanları-bkz [. güvenlik açığı değerlendirme panosundaki güvenlik açığı değerlendirmesi raporlarını inceleyin](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports)
+* SQL veritabanları-bkz [. güvenlik açığı değerlendirme panosundaki güvenlik açığı değerlendirmesi raporlarını inceleyin](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
 * Azure Container Registry görüntüleri-bkz. [Güvenlik Merkezi ile Azure Container Registry tümleştirmesi (Önizleme)](azure-container-registry-integration.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Güvenlik çözümlerinin tümleştirilme şekli
@@ -88,7 +88,7 @@ Ek bilgi ve seçenekler için **Görünüm** ' ü seçin:
 Güvenlik Merkezi, Azure 'da çalışan ancak güvenlik merkezi 'ne bağlı olmayan güvenlik çözümlerini otomatik olarak bulur ve **bulunan çözümler** bölümünde çözümleri görüntüler. Bu çözümler [Azure AD kimlik koruması](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)ve iş ortağı çözümleri gibi Azure çözümlerini içerir.
 
 > [!NOTE]
-> Güvenlik Merkezi 'nin standart katmanı, bulunan çözümler özelliğinin abonelik düzeyinde gereklidir. Fiyatlandırma katmanları hakkında daha fazla bilgi için bkz. [fiyatlandırma](security-center-pricing.md) .
+> Bulunan çözümler özelliği için abonelik düzeyinde **Azure Defender 'ı** etkinleştirin. Fiyatlandırma katmanları hakkında daha fazla bilgi için bkz. [fiyatlandırma](security-center-pricing.md) .
 >
 
 Güvenlik Merkezi ile tümleştirilecek ve güvenlik uyarıları hakkında bildirim almak için bir çözüm altında **Bağlan** ' ı seçin.

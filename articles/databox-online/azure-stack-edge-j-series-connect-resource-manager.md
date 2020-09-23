@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU cihazınızda Azure Resource Manager bağlanma
-description: Azure PowerShell kullanarak Azure Stack Edge GPU 'unuzda çalışan Azure Resource Manager nasıl bağlanabileceğinizi açıklar.
+title: Azure Stack Edge Pro GPU cihazınızda Azure Resource Manager bağlanma
+description: Azure PowerShell kullanarak Azure Stack Edge Pro GPU 'unuzda çalışan Azure Resource Manager nasıl bağlanabileceğinizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cf57d81c2ef56662abbd529a5de90e03c00e091a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269820"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891256"
 ---
-# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızda Azure Resource Manager bağlama
+# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızda Azure Resource Manager bağlanma
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Azure Resource Manager, Azure aboneliğinizde kaynak oluşturmanıza, güncelleştirmenize ve silmenizi sağlayan bir yönetim katmanı sağlar. Azure Stack Edge cihazı, yerel bir abonelikte VM 'Ler oluşturmak, güncelleştirmek ve silmek için aynı Azure Resource Manager API 'Leri destekler. Bu destek, cihazı bulutla tutarlı bir şekilde yönetmenizi sağlar. 
+Azure Resource Manager, Azure aboneliğinizde kaynak oluşturmanıza, güncelleştirmenize ve silmenizi sağlayan bir yönetim katmanı sağlar. Azure Stack Edge Pro cihazı, yerel bir abonelikte VM 'Ler oluşturmak, güncelleştirmek ve silmek için aynı Azure Resource Manager API 'Leri destekler. Bu destek, cihazı bulutla tutarlı bir şekilde yönetmenizi sağlar. 
 
-Bu öğretici, Azure PowerShell kullanarak Azure Resource Manager aracılığıyla Azure Stack Edge cihazınızdan yerel API 'lere nasıl bağlanabileceğinizi açıklar.
+Bu öğreticide, Azure PowerShell kullanarak Azure Resource Manager aracılığıyla Azure Stack Edge Pro cihazınızdan yerel API 'lere nasıl bağlanabileceği açıklanmaktadır.
 
 ## <a name="about-azure-resource-manager"></a>Azure Resource Manager hakkında
 
-Azure Resource Manager, Azure Stack Edge cihaz API 'sini çağırmak ve VM oluşturma, güncelleştirme ve silme gibi işlemleri gerçekleştirmek için tutarlı bir yönetim katmanı sağlar. Azure Resource Manager mimarisi aşağıdaki diyagramda ayrıntılıdır.
+Azure Resource Manager, Azure Stack Edge Pro cihaz API 'sini çağırmak ve VM oluşturma, güncelleştirme ve silme gibi işlemleri gerçekleştirmek için tutarlı bir yönetim katmanı sağlar. Azure Resource Manager mimarisi aşağıdaki diyagramda ayrıntılıdır.
 
 ![Azure Resource Manager diyagramı](media/azure-stack-edge-j-series-connect-resource-manager/edge-device-flow.svg)
 
 
-## <a name="endpoints-on-azure-stack-edge-device"></a>Azure Stack Edge cihazında uç noktalar
+## <a name="endpoints-on-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazındaki uç noktalar
 
 Aşağıdaki tabloda, cihazınızda sunulan çeşitli uç noktalar, desteklenen protokoller ve bu uç noktalara erişmek için bağlantı noktaları özetlenmektedir. Makalenin tamamında, bu uç noktalara yönelik başvuruları bulacaksınız.
 
@@ -47,7 +47,7 @@ Azure Resource Manager kullanarak cihazın yerel API 'Lerine bağlanma işlemi a
 
 | Indan # | Bu adımı gerçekleştirirsiniz... | .. Bu konumda. |
 | --- | --- | --- |
-| 1. | [Azure Stack Edge cihazınızı yapılandırma](#step-1-configure-azure-stack-edge-device) | Yerel Web Kullanıcı arabirimi |
+| 1. | [Azure Stack Edge Pro cihazınızı yapılandırma](#step-1-configure-azure-stack-edge-pro-device) | Yerel Web Kullanıcı arabirimi |
 | 2. | [Sertifika oluşturma ve yüklemeyi](#step-2-create-and-install-certificates) | Windows istemcisi/yerel Web Kullanıcı arabirimi |
 | 3. | [Önkoşulları gözden geçirin ve yapılandırın](#step-3-install-powershell-on-the-client) | Windows istemcisi |
 | 4. | [İstemcide Azure PowerShell ayarlama](#step-4-set-up-azure-powershell-on-the-client) | Windows istemcisi |
@@ -57,15 +57,15 @@ Azure Resource Manager kullanarak cihazın yerel API 'Lerine bağlanma işlemi a
 
 Aşağıdaki bölümler Azure Resource Manager bağlanmada yukarıdaki adımların her birini ayrıntılandırır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, Azure Resource Manager aracılığıyla cihaza bağlanmak için kullanılan istemcinin TLS 1,2 kullanmasını sağlayın. Daha fazla bilgi için bkz. [Windows ISTEMCISINDE TLS 1,2 yapılandırma Azure Stack Edge cihazına erişme](azure-stack-edge-j-series-configure-tls-settings.md).
+Başlamadan önce, Azure Resource Manager aracılığıyla cihaza bağlanmak için kullanılan istemcinin TLS 1,2 kullanmasını sağlayın. Daha fazla bilgi için [Windows ISTEMCISINDE TLS 1,2 yapılandırma Azure Stack Edge Pro cihazına erişme](azure-stack-edge-j-series-configure-tls-settings.md)bölümüne gidin.
 
-## <a name="step-1-configure-azure-stack-edge-device"></a>1. Adım: Azure Stack Edge cihazını yapılandırma 
+## <a name="step-1-configure-azure-stack-edge-pro-device"></a>1. Adım: Azure Stack Edge Pro cihazını yapılandırma 
 
-Azure Stack Edge cihazınızın yerel Web Kullanıcı arabiriminde aşağıdaki adımları uygulayın.
+Azure Stack Edge Pro cihazınızın yerel Web Kullanıcı arabiriminde aşağıdaki adımları uygulayın.
 
-1. Azure Stack Edge cihazınız için ağ ayarlarını doldurun. 
+1. Azure Stack Edge Pro cihazınız için ağ ayarlarını doldurun. 
 
     ![Yerel Web Kullanıcı arabirimi "ağ ayarları" sayfası](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
 
@@ -83,7 +83,7 @@ Azure Stack Edge cihazınızın yerel Web Kullanıcı arabiriminde aşağıdaki 
 
 ## <a name="step-2-create-and-install-certificates"></a>2. Adım: sertifika oluşturma ve yüklemeyi
 
-Sertifikalar, iletişiminizin güvenilir olmasını güvence altına aldığından emin olur. Azure Stack Edge cihazında, otomatik olarak imzalanan gereç, blob ve Azure Resource Manager sertifikaları otomatik olarak oluşturulur. İsteğe bağlı olarak, kendi imzalı Blobun ve Azure Resource Manager sertifikaları da alabilirsiniz.
+Sertifikalar, iletişiminizin güvenilir olmasını güvence altına aldığından emin olur. Azure Stack Edge Pro cihazında, otomatik olarak imzalanan gereç, blob ve Azure Resource Manager sertifikaları otomatik olarak oluşturulur. İsteğe bağlı olarak, kendi imzalı Blobun ve Azure Resource Manager sertifikaları da alabilirsiniz.
 
 Kendi imzalı bir sertifikayı aldığınızda, sertifikanın karşılık gelen imzalama zinciri de gereklidir. Cihazdaki imzalama zinciri, Azure Resource Manager ve BLOB sertifikaları için, istemci makinesinde karşılık gelen sertifikalara da kimlik doğrulaması ve cihazla iletişim kurmak için ihtiyaç duyarsınız.
 
@@ -319,7 +319,7 @@ Azure Resource Manager ortamını ayarlayın ve cihazınızın Azure Resource Ma
     AzDBE https://management.dbe-n6hugc2ra.microsoftdatabox.com https://login.dbe-n6hugc2ra.microsoftdatabox.com/adfs/
     ```
 
-2. Ortamı Azure Stack Edge ve Azure Resource Manager çağrıları için kullanılacak bağlantı noktasını 443 olarak ayarlayın. Ortamı iki şekilde tanımlarsınız:
+2. Ortamı Azure Stack Edge Pro ve Azure Resource Manager çağrıları için kullanılacak bağlantı noktasını 443 olarak ayarlayın. Ortamı iki şekilde tanımlarsınız:
 
     - Ortamı ayarlayın. Aşağıdaki komutu yazın:
 
@@ -329,7 +329,7 @@ Azure Resource Manager ortamını ayarlayın ve cihazınızın Azure Resource Ma
     
     Daha fazla bilgi için [set-AzureRMEnvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)adresine gidin.
 
-    - Yürütmeniz gereken her cmdlet için ortamı satır içi olarak tanımlayın. Bu, tüm API çağrılarının doğru ortamda gezinmesini sağlar. Varsayılan olarak, çağrılar Azure genel kullanıma açıktır, ancak bunların Azure Stack Edge cihazı için ayarladığınız ortamda gitmesini istersiniz.
+    - Yürütmeniz gereken her cmdlet için ortamı satır içi olarak tanımlayın. Bu, tüm API çağrılarının doğru ortamda gezinmesini sağlar. Varsayılan olarak, çağrılar Azure genel kullanıma açıktır, ancak bunların Azure Stack Edge Pro cihazı için ayarladığınız ortamda gitmesini istersiniz.
 
     - [Azurerd ortamlarını değiştirme](#switch-environments)hakkında daha fazla bilgi için bkz..
 
@@ -376,7 +376,7 @@ Azure Resource Manager ortamını ayarlayın ve cihazınızın Azure Resource Ma
 
 
 > [!IMPORTANT]
-> Azure Resource Manager bağlantı her 1,5 saatte bir dolar veya Azure Stack Edge cihazınız yeniden başlatılır. Bu durumda, çalıştırdığınız tüm cmdlet 'ler artık Azure 'a bağlı olmayan etkiye hata iletileri döndürür. Yeniden oturum açmanız gerekecektir.
+> Azure Resource Manager bağlantı her 1,5 saatte bir dolar veya Azure Stack Edge Pro cihazınız yeniden başlatılır. Bu durumda, çalıştırdığınız tüm cmdlet 'ler artık Azure 'a bağlı olmayan etkiye hata iletileri döndürür. Yeniden oturum açmanız gerekecektir.
 
 ## <a name="switch-environments"></a>Ortamları değiştirme
 
@@ -460,4 +460,4 @@ ExtendedProperties : {}
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack Edge cihazınızda VM 'Leri dağıtın](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+[Azure Stack Edge Pro cihazınızda VM 'Leri dağıtın](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

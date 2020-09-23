@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
@@ -19,12 +19,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı oluşturma-hiper ölçek (Citus)
 
 PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uygulayın:
-1. Azure portal sol üst köşesinde bulunan **kaynak oluştur ' a** tıklayın.
+1. Azure portal sol üst köşesinde bulunan **kaynak oluştur ' a**  tıklayın.
 2. **Yeni** sayfasından **Veritabanları**’nı seçin ve **Veritabanları** sayfasından **PostgreSQL için Azure Veritabanı**’nı seçin.
 3. Dağıtım seçeneği için, **Hyperscale (Citus) sunucu grubu** altında **Oluştur** düğmesine tıklayın.
 4. Yeni sunucu ayrıntıları formunu aşağıdaki bilgilerle doldurun:

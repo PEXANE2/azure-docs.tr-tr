@@ -4,15 +4,15 @@ description: Azure 'da yüksek oranda kullanılabilir ve dayanıklı uygulamalar
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 09/18/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: cf1fc81ea63db21d2e864c00e1987eec3d376b59
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d7a158d91295aedc14f1f913ae152c496066fab5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853169"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891694"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Azure 'da Kullanılabilirlik Alanları destekleyen bölgeler
 
@@ -24,36 +24,36 @@ Her bölgede kullanılabilir olan hizmetler, kullanılabilirlik için yaklaşan 
 
 ## <a name="americas"></a>Kuzey ve Güney Amerika
 
-| Hizmet | Central US | Doğu ABD | Doğu ABD 2 | Batı ABD 2 |
-| --- | :---: | :---: | :---: | :---: |
+| Hizmet | Central US | Doğu ABD | Doğu ABD 2 | Batı ABD 2 | Orta Kanada
+| --- | :---: | :---: | :---: | :---: | :---: |
 | **İşlem** |  |  |  |  |
-| Linux Sanal Makineleri             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Windows Sanal Makineleri           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Sanal Makine Ölçek Kümeleri         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure App Service ortamları ıLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Linux Sanal Makineleri             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Windows Sanal Makineleri           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Sanal Makine Ölçek Kümeleri         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure App Service ortamları ıLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Depolama** |  |  |  |  |
-| Yönetilen Diskler                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Bölgesel olarak yedekli depolama             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Yönetilen Diskler                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Bölgesel olarak yedekli depolama             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Ağ** |  |  |  |  |
-| Standart IP adresi                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Standart Load Balancer             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| ExpressRoute Ağ Geçidi               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Application Gateway (v2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Güvenlik Duvarı                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Standart IP adresi                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Standart Load Balancer             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| ExpressRoute Ağ Geçidi               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Application Gateway (v2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Güvenlik Duvarı                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Veritabanları** |  |  |  |  |
-| Azure Veri Gezgini                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| SQL Veritabanı                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | : heavy_check_mark: (Önizleme) |
-| Redis için Azure Önbelleği              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Veri Gezgini                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| SQL Veritabanı                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | : heavy_check_mark: (Önizleme) | :heavy_check_mark: |
+| Redis için Azure Önbelleği              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analiz** |  |  |  |  |
-| Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Tümleştirme** |  |  |  |  |
-| Service Bus (yalnızca Premium katman)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Service Bus (yalnızca Premium katman)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Kimlik** |  |  |  |  |
-| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |   |
 
 ## <a name="europe"></a>Avrupa
 
@@ -86,7 +86,7 @@ Her bölgede kullanılabilir olan hizmetler, kullanılabilirlik için yaklaşan 
 | Service Bus (yalnızca Premium katman)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Kimlik** |  |  |  |  |
-| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 
 ## <a name="asia-pacific"></a>Asya Pasifik
 
@@ -96,8 +96,8 @@ Her bölgede kullanılabilir olan hizmetler, kullanılabilirlik için yaklaşan 
 | Linux Sanal Makineleri             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Windows Sanal Makineleri           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Sanal Makine Ölçek Kümeleri         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure App Service ortamları ıLB | :heavy_check_mark: | :heavy_check_mark: |  |
-| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: |  |
+| Azure App Service ortamları ıLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Depolama** |  |  |  |
 | Yönetilen Diskler                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Bölgesel olarak yedekli depolama             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -107,17 +107,17 @@ Her bölgede kullanılabilir olan hizmetler, kullanılabilirlik için yaklaşan 
 | VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | ExpressRoute Ağ Geçidi               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Application Gateway (v2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Güvenlik Duvarı                     | :heavy_check_mark: | :heavy_check_mark: |  |
+| Azure Güvenlik Duvarı                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Veritabanları** |  |  |  |
-| Azure Veri Gezgini                | :heavy_check_mark: | :heavy_check_mark: |  |
+| Azure Veri Gezgini                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | SQL Veritabanı                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Redis için Azure Önbelleği              | :heavy_check_mark: | :heavy_check_mark: |  |
+| Redis için Azure Önbelleği              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analiz** |  |  |  |
 | Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Tümleştirme** |  |  |  |
 | Service Bus (yalnızca Premium katman)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: |  |
+| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Kimlik** |  |  |  |
 | Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: |  |
 
@@ -128,9 +128,8 @@ Azure ayrıca aşağıdaki bölgelerde Kullanılabilirlik Alanları destek sunar
 - US Gov Virginia
 - Güney Afrika Kuzey
 - Orta Güney ABD
-- Orta Kanada
 
-Bu dört bölgede Kullanılabilirlik Alanları destek hakkında daha fazla bilgi edinmek için Microsoft Sales veya müşteri temsilcinizle iletişim kurun veya bir teknik destek isteği açın.
+Bu üç bölgede Kullanılabilirlik Alanları destek hakkında daha fazla bilgi edinmek için Microsoft Sales veya müşteri temsilcinizle iletişim kurun veya bir teknik destek isteği açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

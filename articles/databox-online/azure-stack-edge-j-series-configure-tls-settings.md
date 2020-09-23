@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU cihazına erişen Windows istemcilerinde TLS 1,2 yapılandırma
-description: Azure Stack Edge GPU cihazına erişen Windows istemcilerinde TLS 1,2 ' nin nasıl yapılandırılacağı açıklanmaktadır.
+title: Windows istemcilerinde TLS 1,2 'yi Yapılandırma Azure Stack Edge Pro GPU cihazına erişme
+description: Windows istemcilerinde Azure Stack Edge Pro GPU cihazına erişen TLS 1,2 ' nin nasıl yapılandırılacağı açıklanmaktadır.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf6b591ef3158a5944b1ebeb37dd0ef5935f7215
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268511"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891177"
 ---
-# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-device"></a>Azure Stack Edge cihazına erişen Windows istemcilerinde TLS 1,2 yapılandırma
+# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazına erişen Windows istemcilerinde TLS 1,2 yapılandırma
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Azure Stack Edge cihazınıza erişmek için bir Windows istemcisi kullanıyorsanız, istemcinizin TLS 1,2 ' i yapılandırmanız gerekir. Bu makalede, Windows istemcisinde TLS 1,2 ' i yapılandırmaya yönelik kaynaklar ve yönergeler sağlanmaktadır. 
+Azure Stack Edge Pro cihazınıza erişmek için bir Windows istemcisi kullanıyorsanız, istemcinizin TLS 1,2 ' i yapılandırmanız gerekir. Bu makalede, Windows istemcisinde TLS 1,2 ' i yapılandırmaya yönelik kaynaklar ve yönergeler sağlanmaktadır. 
 
 Burada sunulan yönergeler, Windows Server 2016 çalıştıran bir istemcide gerçekleştirilen teste dayalıdır.
 

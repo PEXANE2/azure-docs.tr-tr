@@ -3,12 +3,12 @@ title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
 description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: c7e5efa19c27c3f56f9653ed933c7ad290d18408
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568056"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884935"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
@@ -84,6 +84,9 @@ Azure IoT araçları uzantısını kullanarak IoT Hub 'ınıza bağlanmak için 
 Bağlantı başarılı olursa Edge cihazlarının listesi görüntülenir. **LVA-Sample-Device**adlı en az bir cihaz görmeniz gerekir. Artık IoT Edge cihazlarınızı yönetebilir ve bağlam menüsü aracılığıyla Azure IoT Hub etkileşim kurabilirsiniz. Sınır cihazında dağıtılan modülleri görüntülemek için, **LVA-örnek-cihaz**altında **modüller** düğümünü genişletin.
 
 ![LVA-örnek-cihaz düğümü](./media/quickstarts/lva-sample-device-node.png)
+
+> [!TIP]
+> Canlı video analizlerini bir sınır cihazında (örn. bir ARM64 cihaz) [IoT Edge yourselves üzerinde el ile dağıttıysanız](deploy-iot-edge-device.md) , modülün bu cihazın altında, Azure IoT Hub altında görünür olduğunu görürsünüz. Bu modülü seçebilir ve aşağıdaki adımların geri kalanını takip edebilirsiniz.
 
 ## <a name="use-direct-method-calls"></a>Doğrudan Yöntem çağrılarını kullanın
 

@@ -6,54 +6,54 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
-ms.openlocfilehash: 1b2268426b66ddb9ffdd48d6901ab991e76cb95c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037452"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892113"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Visual Studio Code kullanarak canlı akış girişine göre Stream Analytics sorguları yerel olarak test edin
 
 Stream Analytics işlerinizi canlı akış girişine karşı yerel olarak test etmek için Visual Studio Code Azure Stream Analytics araçları kullanabilirsiniz. Giriş, Azure Event Hubs veya Azure IoT Hub gibi bir kaynaktan gelebilir. Çıktı sonuçları, projenizdeki **Localrunçıktılar**adlı BIR klasöre JSON dosyaları olarak gönderilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download) yükleyip Visual Studio Code yeniden başlatın.
 
-* Visual Studio Code kullanarak Stream Analytics işi oluşturmayı öğrenmek için [Bu hızlı](quick-create-vs-code.md) başlangıcı kullanın.
+* Visual Studio Code kullanarak Stream Analytics işi oluşturmayı öğrenmek için [Bu hızlı](quick-create-visual-studio-code.md) başlangıcı kullanın.
 
 ## <a name="define-a-live-stream-input"></a>Canlı akış girişi tanımlama
 
 1. Stream Analytics projenizdeki **girişler** klasörüne sağ tıklayın. Ardından **asa: bağlam menüsünden giriş Ekle** öğesini seçin.
 
-   ![Girişler klasöründen giriş ekleme](./media/quick-create-vs-code/add-input-from-inputs-folder.png)
+   ![Girişler klasöründen giriş ekleme](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
    Ayrıca, **CTRL + SHIFT + P** ' yi seçerek komut paletini açabilir ve **asa: giriş Ekle**' yi girebilirsiniz.
 
-   ![Visual Studio Code Stream Analytics girişi ekleme](./media/quick-create-vs-code/add-input.png)
+   ![Visual Studio Code Stream Analytics girişi ekleme](./media/quick-create-visual-studio-code/add-input.png)
 
 2. Açılan listeden bir giriş kaynak türü seçin.
 
-   ![Giriş seçeneği olarak IoT Hub 'ı seçin](./media/quick-create-vs-code/iot-hub.png)
+   ![Giriş seçeneği olarak IoT Hub 'ı seçin](./media/quick-create-visual-studio-code/iot-hub.png)
 
 3. Girişi komut paletinden eklediyseniz, girişi kullanacak Stream Analytics sorgu betiğini seçin. **MyASAproj. aşama QL**dosya yoluyla otomatik olarak doldurulmalıdır.
 
-   ![Visual Studio Code bir Stream Analytics betiği seçin](./media/quick-create-vs-code/asa-script.png)
+   ![Visual Studio Code bir Stream Analytics betiği seçin](./media/quick-create-visual-studio-code/asa-script.png)
 
 4. Açılır menüden **Azure aboneliklerinizden Seç ' i** seçin.
 
-    ![Aboneliklerden Seç](./media/quick-create-vs-code/add-input-select-subscription.png)
+    ![Aboneliklerden Seç](./media/quick-create-visual-studio-code/add-input-select-subscription.png)
 
 5. Yeni oluşturulan JSON dosyasını yapılandırın. CodeLens özelliğini kullanarak bir dize girmenize, açılan listeden seçim yapmanıza veya metnin doğrudan dosyada değiştirilmesini sağlayabilirsiniz. Aşağıdaki ekran görüntüsünde bir örnek olarak **aboneliklerinizden seçim** gösterilmektedir.
 
-   ![Visual Studio Code girişi yapılandırma](./media/quick-create-vs-code/configure-input.png)
+   ![Visual Studio Code girişi yapılandırma](./media/quick-create-visual-studio-code/configure-input.png)
 
 ## <a name="preview-input"></a>Önizleme girişi
 
 Giriş verilerinin geldiğinden emin olmak için, en üstteki satırdaki canlı giriş yapılandırma dosyanızda **Verileri Önizle** ' yi seçin. Bazı giriş verileri bir IoT Hub 'ından gelir ve önizleme penceresinde gösterilir. Önizlemenin görünmesi birkaç saniye sürebilir.
 
- ![Canlı giriş önizlemesi](./media/quick-create-vs-code/preview-live-input.png)
+ ![Canlı giriş önizlemesi](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="run-queries-locally"></a>Sorguları yerel olarak çalıştır
 
