@@ -5,12 +5,12 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
-ms.openlocfilehash: 4039a70bf90bc8f4b7932dbf40d8369e9773abf3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6a596eff70bfc20b5a6752ef47398bd14d527c97
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321828"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973325"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ FIKRINI kullanarak ARM şablonları oluşturma ve dağıtma
 
@@ -60,13 +60,13 @@ Sıfırdan şablon oluşturmak yerine, [Azure Hızlı Başlangıç Şablonları]
 
 ## <a name="edit-and-update-an-existing-deployment"></a>Mevcut bir dağıtımı düzenleyin ve güncelleştirin
 
-1. Sağ tıklama menüsünde **dağıtımı Düzenle** ' yi veya daha önce özellikleri göster görünümünü seçin. Azure üzerinde dağıtım için şablon ve parametre dosyalarını gösteren başka bir sekme görünümü açılır. Bu dosyaları yerel olarak kaydetmek için, **şablon dosyasını dışarı aktar** veya **parametre dosyalarını dışarı aktar**' a tıklayabilirsiniz.
+1. Sağ tıklama menüsünde **dağıtımı Düzenle** ' yi veya daha önce özellikleri göster görünümünü seçin. Azure üzerinde dağıtım için şablon ve parametre dosyalarını gösteren başka bir sekme görünümü açılır. Bu dosyaları yerel olarak kaydetmek için, **şablon dosyasını dışarı aktar**  veya **parametre dosyalarını dışarı aktar**' a tıklayabilirsiniz.
 
     ![Kaynak Yöneticisi şablonu dağıtım düzenleme](./media/create-templates-use-intellij/resource-manager-edit-deployment.png)
 
 1. Bu sayfadaki iki dosyayı düzenleyebilir ve değişiklikleri Azure 'a dağıtabilirsiniz. Burada, parametresi dosyalarındaki **Storageaccounttype** değerini ' dan ' a değiştirirsiniz `Standard_LRS` `Standard_GRS` . Ardından, alt kısımdaki **güncelleştirme dağıtımı** ' na tıklayın ve güncelleştirmeyi onaylayın.
 
-    ![Kaynak Yöneticisi şablonu dağıtım düzenleme](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
+    ![Ekran görüntüsü, güncelleştirme dağıtımı istemiyle gösterilen Kaynak Yöneticisi şablonunu gösterir.](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
 1. Güncelleştirme dağıtımı tamamlandıktan sonra, portalda oluşturulan depolama hesabının değiştiğini doğrulayabilirsiniz `Standard_GRS` .
 

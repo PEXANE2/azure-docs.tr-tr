@@ -1,6 +1,6 @@
 ---
 title: Azure Izleyici çalışma kitapları kaynak parametreleri
-description: Önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın
+description: Çalışma kitaplarında kaynakların çekilmeye izin vermek için kaynak parametrelerini nasıl kullanacağınızı öğrenin. Verilerin alınacağı kapsamı ayarlamak için kaynak parametrelerini kullanın.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: b5822c1af4f3bc5d9519af93054a01c3cdc82001
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a4d4e095e065e9f505ba1b9b46f0d31fb1783eb2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505000"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972855"
 ---
 # <a name="workbook-resource-parameters"></a>Çalışma kitabı kaynak parametreleri
 
@@ -27,12 +27,12 @@ Kaynak seçicileri değerleri, çalışma kitabı bağlamından, statik listeden
 2. Çalışma kitabı içindeki bağlantılardan _parametre Ekle_ ' yi seçin.
 3. Mavi _parametre Ekle_ düğmesine tıklayın.
 4. Açılır yeni parametre bölmesinde şunu girin:
-    1. Parametre adı:`Applications`
-    2. Parametre türü:`Resource picker`
-    3. Gerekli:`checked`
-    4. Çoklu seçimlere izin ver:`checked`
-5. Veri al:`Workbook Resources`
-6. Yalnızca kaynak türlerini içer:`Application Insights`
+    1. Parametre adı: `Applications`
+    2. Parametre türü: `Resource picker`
+    3. Gerekli: `checked`
+    4. Çoklu seçimlere izin ver: `checked`
+5. Veri al: `Workbook Resources`
+6. Yalnızca kaynak türlerini içer: `Application Insights`
 7. Parametresini oluşturmak için araç çubuğundan ' Kaydet ' seçeneğini belirleyin.
 
 ![Çalışma kitabı kaynaklarını kullanarak bir kaynak parametresinin oluşturulmasını gösteren resim](./media/workbooks-resources/resource-create.png)
@@ -42,13 +42,13 @@ Kaynak seçicileri değerleri, çalışma kitabı bağlamından, statik listeden
 2. Çalışma kitabı içindeki bağlantılardan _parametre Ekle_ ' yi seçin.
 3. Mavi _parametre Ekle_ düğmesine tıklayın.
 4. Açılır yeni parametre bölmesinde şunu girin:
-    1. Parametre adı:`Applications`
-    2. Parametre türü:`Resource picker`
-    3. Gerekli:`checked`
-    4. Çoklu seçimlere izin ver:`checked`
-5. Veri al:`Query`
-    1. Sorgu türü:`Azure Resource Graph`
-    2. Aboneliklerin`Use default subscriptions`
+    1. Parametre adı: `Applications`
+    2. Parametre türü: `Resource picker`
+    3. Gerekli: `checked`
+    4. Çoklu seçimlere izin ver: `checked`
+5. Veri al: `Query`
+    1. Sorgu türü: `Azure Resource Graph`
+    2. Aboneliklerin `Use default subscriptions`
     3. Sorgu denetiminde, bu kod parçacığını ekleyin
     ```kusto
     where type == 'microsoft.insights/components'
@@ -68,11 +68,11 @@ Kaynak seçicileri değerleri, çalışma kitabı bağlamından, statik listeden
 2. Çalışma kitabı içindeki bağlantılardan _parametre Ekle_ ' yi seçin.
 3. Mavi _parametre Ekle_ düğmesine tıklayın.
 4. Açılır yeni parametre bölmesinde şunu girin:
-    1. Parametre adı:`Applications`
-    2. Parametre türü:`Resource picker`
-    3. Gerekli:`checked`
-    4. Çoklu seçimlere izin ver:`checked`
-5. Veri al:`JSON`
+    1. Parametre adı: `Applications`
+    2. Parametre türü: `Resource picker`
+    3. Gerekli: `checked`
+    4. Çoklu seçimlere izin ver: `checked`
+5. Veri al: `JSON`
     1. İçerik denetiminde, bu JSON kod parçacığını ekleyin
     ```json
     [

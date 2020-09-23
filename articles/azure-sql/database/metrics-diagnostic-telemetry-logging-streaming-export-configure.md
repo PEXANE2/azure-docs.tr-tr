@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 51d86e51d89bdaf83be4a722d0350b35d2146cff
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085625"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973051"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL veritabanı ve SQL yönetilen örnek tanılama telemetrisine akış vermeyi yapılandırma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,17 +37,17 @@ Akıllı İçgörüler günlüğünün dışa aktarılmasını akışa ek olarak
 
 | Veritabanları için tanılama telemetrisi | Azure SQL veritabanı desteği | Azure SQL Yönetilen Örneği desteği |
 | :------------------- | ----- | ----- |
-| [Temel ölçümler](#basic-metrics): DTU/CPU YÜZDESI, DTU/CPU sınırı, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, başarılı/başarısız/engellenen güvenlik duvarı bağlantıları, oturum yüzdesi, çalışan yüzdesi, depolama, depolama alanı yüzdesi ve XTP depolama yüzdesi içerir. | Evet | Hayır |
-| [Örnek ve uygulama gelişmiş](#advanced-metrics): tempdb sistem veritabanı verilerini ve günlük dosyası boyutunu ve kullanılan tempdb yüzde günlük dosyasını içerir. | Evet | Hayır |
-| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): CPU kullanımı ve sorgu süresi istatistikleri gibi sorgu çalışma zamanı istatistikleri hakkındaki bilgileri içerir. | Yes | Evet |
-| [Querystorewaitstatistics](#query-store-wait-statistics): CPU, günlük ve kilitleme gibi sorgu bekleme istatistikleri (sorgularınızın ne kadar bekledikleriniz) hakkındaki bilgileri içerir. | Yes | Evet |
-| [Hatalar](#errors-dataset): BIR veritabanındaki SQL hatalarıyla ilgili bilgileri içerir. | Yes | Evet |
-| [Databasewaitstatistics](#database-wait-statistics-dataset): bir veritabanının farklı bekleme türlerini beklerken ne kadar zaman harcadığını gösteren bilgiler içerir. | Evet | Hayır |
-| [Zaman aşımları](#time-outs-dataset): bir veritabanındaki zaman aşımları hakkında bilgi içerir. | Evet | Hayır |
-| [Bloklar](#blockings-dataset): bir veritabanındaki olayları engelleme hakkında bilgi içerir. | Evet | Hayır |
-| [Kilitlenmeler](#deadlocks-dataset): bir veritabanındaki kilitlenme olayları hakkında bilgi içerir. | Evet | Hayır |
-| Otomatik [ayarlama: bir](#automatic-tuning-dataset)veritabanı için otomatik ayarlama önerileri hakkındaki bilgileri içerir. | Evet | Hayır |
-| [Sqlinsıghts](#intelligent-insights-dataset): bir veritabanının performansına akıllı içgörüler içerir. Daha fazla bilgi için bkz. [akıllı içgörüler](intelligent-insights-overview.md). | Yes | Evet |
+| [Temel ölçümler](#basic-metrics): DTU/CPU YÜZDESI, DTU/CPU sınırı, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, başarılı/başarısız/engellenen güvenlik duvarı bağlantıları, oturum yüzdesi, çalışan yüzdesi, depolama, depolama alanı yüzdesi ve XTP depolama yüzdesi içerir. | Yes | Hayır |
+| [Örnek ve uygulama gelişmiş](#advanced-metrics): tempdb sistem veritabanı verilerini ve günlük dosyası boyutunu ve kullanılan tempdb yüzde günlük dosyasını içerir. | Yes | Hayır |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): CPU kullanımı ve sorgu süresi istatistikleri gibi sorgu çalışma zamanı istatistikleri hakkındaki bilgileri içerir. | Yes | Yes |
+| [Querystorewaitstatistics](#query-store-wait-statistics): CPU, günlük ve kilitleme gibi sorgu bekleme istatistikleri (sorgularınızın ne kadar bekledikleriniz) hakkındaki bilgileri içerir. | Yes | Yes |
+| [Hatalar](#errors-dataset): BIR veritabanındaki SQL hatalarıyla ilgili bilgileri içerir. | Yes | Yes |
+| [Databasewaitstatistics](#database-wait-statistics-dataset): bir veritabanının farklı bekleme türlerini beklerken ne kadar zaman harcadığını gösteren bilgiler içerir. | Yes | Hayır |
+| [Zaman aşımları](#time-outs-dataset): bir veritabanındaki zaman aşımları hakkında bilgi içerir. | Yes | Hayır |
+| [Bloklar](#blockings-dataset): bir veritabanındaki olayları engelleme hakkında bilgi içerir. | Yes | Hayır |
+| [Kilitlenmeler](#deadlocks-dataset): bir veritabanındaki kilitlenme olayları hakkında bilgi içerir. | Yes | Hayır |
+| Otomatik [ayarlama: bir](#automatic-tuning-dataset)veritabanı için otomatik ayarlama önerileri hakkındaki bilgileri içerir. | Yes | Hayır |
+| [Sqlinsıghts](#intelligent-insights-dataset): bir veritabanının performansına akıllı içgörüler içerir. Daha fazla bilgi için bkz. [akıllı içgörüler](intelligent-insights-overview.md). | Yes | Yes |
 
 > [!NOTE]
 > Tanılama ayarları, ana, msdb, model, kaynak ve tempdb veritabanları gibi **sistem veritabanları**için yapılandırılamaz.
@@ -72,7 +72,7 @@ Bu tanılama telemetrisi, analiz için aşağıdaki Azure kaynaklarından birine
 
 Bu hedeflerin birine akan bu tanılama telemetrisi, daha kolay performans izleme için kaynak kullanımını ve sorgu yürütme istatistiklerini ölçmek için kullanılabilir.
 
-![Mimari](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
+![Diyagramda, bilgileri Azure SQL Analytics, Olay Hub 'ına ve depolamaya ileten Azure Tanılama telemetri gönderen yönetilen örneklerde birçok SQL veritabanı ve veritabanı gösterilmektedir.](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
 
 ## <a name="enable-and-configure-the-streaming-export-of-diagnostic-telemetry"></a>Tanılama telemetrinin akış dışa aktarılmasını etkinleştirin ve yapılandırın
 
@@ -96,7 +96,7 @@ Tanılama telemetrinin akışını etkinleştirmek ve yapılandırmak için Azur
 
 Azure portal tanılama telemetrinin akış dışa aktarılmasını yapılandırmaya yönelik adım adım yönergeler ve PowerShell ve Azure CLı ile aynı şekilde çalışmak için betikler için aşağıdaki sekmelerden birini seçin.
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 ### <a name="elastic-pools-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik havuzlar
 
@@ -127,7 +127,7 @@ Esnek havuz kaynağı için tanılama telemetrinin akışını etkinleştirmek i
 7. Elastik havuz tanılama telemetrisi için onay kutusunu seçin: **temel** ölçümler.
    ![Elastik havuzlar için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-elasticpool-selection.png)
 
-8. **Kaydet**'i seçin.
+8. **Kaydet**’i seçin.
 9. Ayrıca, sonraki bölümde açıklanan adımları izleyerek izlemek istediğiniz elastik havuzda bulunan her bir veritabanı için tanılama telemetrinin akışını yapılandırın.
 
 > [!IMPORTANT]
@@ -156,7 +156,7 @@ Tek veya havuza alınmış bir veritabanı için tanılama telemetrinin akışı
 8. Gelişmiş, tek dakikalık tabanlı izleme deneyimi için **temel** ölçümler onay kutusunu seçin.
 
    ![Azure SQL veritabanı için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-sql-selection.png)
-9. **Kaydet**'i seçin.
+9. **Kaydet**’i seçin.
 10. İzlemek istediğiniz her veritabanı için bu adımları tekrarlayın.
 
 > [!TIP]
@@ -192,7 +192,7 @@ Yönetilen örnek kaynağı için tanılama telemetrinin akışını etkinleşti
 
    ![Yönetilen örnek için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-mi-selection.png)
 
-8. **Kaydet**'i seçin.
+8. **Kaydet**’i seçin.
 9. Ayrıca, sonraki bölümde açıklanan adımları izleyerek, izlemek istediğiniz yönetilen örnek içindeki her örnek veritabanı için tanılama telemetrinin akışını yapılandırın.
 
 > [!IMPORTANT]
@@ -220,7 +220,7 @@ Bir örnek veritabanı için tanılama telemetrinin akışını etkinleştirmek 
 5. Akış Tanılama verileri için bir hedef kaynak seçin: **depolama hesabına Arşivle**, **bir olay hub 'ına akış**veya **Log Analytics gönderme**.
 6. Veritabanı tanılama telemetrisi için onay kutularını seçin: **Sqlinsıghts**, **QueryStoreRuntimeStatistics**, **Querystorewaitstatistics**ve **hatalar**.
    ![Örnek veritabanları için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-mi-selection.png)
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 8. İzlemek istediğiniz her örnek veritabanı için bu adımları tekrarlayın.
 
 > [!TIP]
@@ -482,7 +482,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |Kaynak|Kaynağın adı |
 |ResourceType|Kaynak türünün adı. Always: MANAGEDıNSTANCES |
 |kaynak grubundaki|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Yönetilen örnek adı |
 |ResourceId|Kaynak URI 'SI |
 |SKU_s|SQL yönetilen örnek Ürün SKU 'SU |
@@ -504,11 +504,11 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |Tür|Always: AzureDiagnostics |
 |ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
 |Kategori|Kategorinin adı. Always: QueryStoreRuntimeStatistics |
-|ThrottledRequests|İşlemin adı. Always: QueryStoreRuntimeStatisticsEvent |
+|OperationName|İşlemin adı. Always: QueryStoreRuntimeStatisticsEvent |
 |Kaynak|Kaynağın adı |
 |ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
 |kaynak grubundaki|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -555,11 +555,11 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |Tür|Always: AzureDiagnostics |
 |ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
 |Kategori|Kategorinin adı. Always: QueryStoreWaitStatistics |
-|ThrottledRequests|İşlemin adı. Always: QueryStoreWaitStatisticsEvent |
+|OperationName|İşlemin adı. Always: QueryStoreWaitStatisticsEvent |
 |Kaynak|Kaynağın adı |
 |ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
 |kaynak grubundaki|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -593,11 +593,11 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |Tür|Always: AzureDiagnostics |
 |ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
 |Kategori|Kategorinin adı. Always: hatalar |
-|ThrottledRequests|İşlemin adı. Always: ErrorEvent |
+|OperationName|İşlemin adı. Always: ErrorEvent |
 |Kaynak|Kaynağın adı |
 |ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
 |kaynak grubundaki|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -605,7 +605,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |İleti|Düz metinde hata iletisi |
 |user_defined_b|Hata Kullanıcı tanımlı biti |
 |error_number_d|Hata kodu |
-|Severity|Hatanın önem derecesi |
+|Önem Derecesi|Hatanın önem derecesi |
 |state_d|Hatanın durumu |
 |query_hash_s|Varsa, başarısız sorgunun sorgu karması |
 |query_plan_hash_s|Varsa, başarısız sorgunun sorgu planı karması |
@@ -622,11 +622,11 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |Tür|Always: AzureDiagnostics |
 |ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
 |Kategori|Kategorinin adı. Always: DatabaseWaitStatistics |
-|ThrottledRequests|İşlemin adı. Always: DatabaseWaitStatisticsEvent |
+|OperationName|İşlemin adı. Always: DatabaseWaitStatisticsEvent |
 |Kaynak|Kaynağın adı |
 |ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
 |kaynak grubundaki|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -651,11 +651,11 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |Tür|Always: AzureDiagnostics |
 |ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
 |Kategori|Kategorinin adı. Always: zaman aşımları |
-|ThrottledRequests|İşlemin adı. Always: TimeoutEvent |
+|OperationName|İşlemin adı. Always: TimeoutEvent |
 |Kaynak|Kaynağın adı |
 |ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
 |kaynak grubundaki|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -674,11 +674,11 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |Tür|Always: AzureDiagnostics |
 |ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
 |Kategori|Kategorinin adı. Always: bloklar |
-|ThrottledRequests|İşlemin adı. Always: BlockEvent |
+|OperationName|İşlemin adı. Always: BlockEvent |
 |Kaynak|Kaynağın adı |
 |ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
 |kaynak grubundaki|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -698,11 +698,11 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |Tür|Always: AzureDiagnostics |
 |ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
 |Kategori|Kategorinin adı. Always: kilitlenmeler |
-|ThrottledRequests|İşlemin adı. Always: DeadlockEvent |
+|OperationName|İşlemin adı. Always: DeadlockEvent |
 |Kaynak|Kaynağın adı |
 |ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
 |kaynak grubundaki|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -722,7 +722,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |Kaynak|Kaynağın adı |
 |ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
 |kaynak grubundaki|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |LogicalDatabaseName_s|Veritabanının adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
@@ -748,7 +748,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 Günlüğe kaydetmeyi etkinleştirme ve çeşitli Azure hizmetleri tarafından desteklenen ölçümleri ve günlük kategorilerini anlama hakkında bilgi edinmek için bkz.:
 
 - [Microsoft Azure ölçümlerine genel bakış](../../azure-monitor/platform/data-platform.md)
-- [Azure platformu günlüklerine genel bakış](../../azure-monitor/platform/platform-logs-overview.md)
+- [Azure platform günlüklerine genel bakış](../../azure-monitor/platform/platform-logs-overview.md)
 
 Event Hubs hakkında bilgi edinmek için şunu okuyun:
 

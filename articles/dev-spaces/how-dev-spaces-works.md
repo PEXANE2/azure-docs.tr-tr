@@ -5,12 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Güç Azure Dev Spaces olan süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 48bde5f3cc6f397d51a31f80f41ab299ba8866ee
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212541"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981274"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces nasıl çalışır?
 
@@ -22,9 +22,9 @@ Azure Dev Spaces, Kubernetes uygulamalarını hızla yinelemek ve hata ayıklama
 
 Azure Dev Spaces, Kubernetes uygulamanızı geliştirme, test etme ve AKS kümeniz bağlamında yineleme çabaları azaltır. Çabadaki Bu azalma, geliştiricilerin kendi uygulamalarının iş mantığına odaklanmasını ve hizmetlerini Kubernetes 'de çalışacak şekilde yapılandırmamasını sağlar.
 
-### <a name="local-process-with-kubernetes"></a>Kubernetes ile Yerel İşlem
+### <a name="bridge-to-kubernetes"></a>Kubernetes 'e köprü oluşturma
 
-Kubernetes ile yerel Işlem sayesinde, geliştirme bilgisayarınızı Kubernetes kümenize bağlanarak, geliştirme bilgisayarınızda küme üzerinde çalışıyor gibi kod çalıştırmanıza ve hata ayıklamanıza olanak sağlayabilirsiniz. Azure Dev Spaces, kuruluşunuzda geliştirme bilgisayarınız ve küme arasında trafiği yeniden yönlendirmek için uzak bir aracı görevi gören bir pod çalıştırarak bağlı kümeniz arasında trafiği yeniden yönlendirir. Bu trafik yeniden yönlendirme, kümenizde çalışan geliştirme bilgisayarınızdaki ve hizmetinizdeki kodların aynı kümelemiş gibi iletişim kurmasına olanak tanır. Geliştirme bilgisayarınızı bir Kubernetes kümesine bağlama hakkında daha fazla bilgi için, [Kubernetes Ile yerel Işlemin nasıl çalıştığı hakkında][how-it-works-local-process-kubernetes]daha fazla bilgi için bkz..
+Kubernetes Köprüsü sayesinde, geliştirme bilgisayarınızı Kubernetes kümenize bağlanarak, geliştirme bilgisayarınızda küme üzerinde çalışıyor gibi kod çalıştırmanıza ve hata ayıklamanıza olanak sağlayabilirsiniz. Kubernetes Köprüsü, kümenizde geliştirme bilgisayarınız ile küme arasında trafiği yeniden yönlendirmek için uzak bir aracı görevi gören bir pod çalıştırarak bağlı kümeniz arasında trafiği yeniden yönlendirir. Bu trafik yeniden yönlendirme, kümenizde çalışan geliştirme bilgisayarınızdaki ve hizmetinizdeki kodların aynı kümelemiş gibi iletişim kurmasına olanak tanır. Geliştirme bilgisayarınızı bir Kubernetes kümesine bağlama hakkında daha fazla bilgi için bkz. [Kubernetes Köprüsü nasıl kullanılır][how-it-works-bridge-to-kubernetes].
 
 ### <a name="run-your-code-in-aks"></a>Kodunuzu AKS 'de çalıştırın
 
@@ -47,8 +47,8 @@ Ayrıca, birleştirme işleminden önce doğrudan kümenizdeki bir çekme isteğ
 Yerel geliştirme bilgisayarınızı AKS kümenize bağlamaya başlamak için bkz. [geliştirme bilgisayarınızı BIR aks kümesine bağlama][connect].
 
 
-[connect]: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
+[connect]: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+[how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

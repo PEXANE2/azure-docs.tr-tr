@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ac087a7ba241534c08c4e5737973861727ab01ca
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 46234f3b4bfd467db9b5754b5590603ff3d42915
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069587"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974539"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma
 Azure [Tanılama uzantısı](diagnostics-extension-overview.md) , Azure izleyici 'de Konuk işletim sisteminden ve Azure sanal makinelerinin ve diğer işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Windows Tanılama uzantısı 'nı yükleme ve yapılandırma hakkında ayrıntılar ve verilerin ve Azure depolama hesabında nasıl depolandığı hakkında bir açıklama sağlanmaktadır.
@@ -51,7 +51,7 @@ Tanılama uzantısını, yapılandırma ile doğrudan çalışmaktan farklı bir
 
 6. **Günlükler** sekmesinde, sanal makineden toplanacak günlükleri seçin. Günlükler depolama veya Olay Hub 'larına gönderilebilir, ancak Azure Izleyici 'ye gönderilemez. Azure Izleyici 'de Konuk günlüklerini toplamak için [Log Analytics aracısını](log-analytics-agent.md) kullanın.
 
-   ![Günlükler](media/diagnostics-extension-windows-install/logs.png)
+   ![Ekran görüntüsü, bir sanal makine için farklı Günlükler seçili olan Günlükler sekmesini gösterir.](media/diagnostics-extension-windows-install/logs.png)
 
 7. **Kilitlenme dökümleri** sekmesinde, kilitlenme sonrasında bellek dökümlerini toplamak için herhangi bir işlem belirtin. Veriler, tanılama ayarı için depolama hesabına yazılır ve isteğe bağlı olarak bir blob kapsayıcısı belirtebilirsiniz.
 
@@ -59,7 +59,7 @@ Tanılama uzantısını, yapılandırma ile doğrudan çalışmaktan farklı bir
 
 8. **Havuzlar** sekmesinde, verileri Azure depolama dışındaki konumlara göndermek isteyip istemediğinizi belirtin. **Azure izleyici**' yi seçerseniz, konuk performans verileri Azure Izleyici ölçümlerine gönderilir. Azure portal kullanarak Olay Hub 'ları havuzunu yapılandıramazsınız.
 
-   ![Yapma](media/diagnostics-extension-windows-install/sinks.png)
+   ![Ekran görüntüsü, Azure 'a Tanılama verileri gönder seçeneğinin etkin olduğu havuzlar sekmesini gösterir.](media/diagnostics-extension-windows-install/sinks.png)
    
    Sanal makineniz için yapılandırılmış bir sistem tarafından atanan kimliği etkinleştirmediyseniz, Azure Izleyici havuzu ile bir yapılandırmayı kaydettiğinizde aşağıdaki uyarıyı görebilirsiniz. Sistem tarafından atanan kimliği etkinleştirmek için başlık üzerine tıklayın.
    
@@ -67,7 +67,7 @@ Tanılama uzantısını, yapılandırma ile doğrudan çalışmaktan farklı bir
 
 9. **Aracıda**, depolama hesabını değiştirebilir, disk kotasını ayarlayabilir ve tanılama altyapısı günlüklerinin toplanmasını isteyip istemediğinizi belirtebilirsiniz.  
 
-   ![Aracı](media/diagnostics-extension-windows-install/agent.png)
+   ![Ekran görüntüsü, depolama hesabını ayarlama seçeneğiyle Aracı sekmesini gösterir.](media/diagnostics-extension-windows-install/agent.png)
 
 10. Yapılandırmayı kaydetmek için **Kaydet** ' e tıklayın. 
 
@@ -204,7 +204,7 @@ Aşağıdaki tabloda, tanılama uzantısından toplanan farklı veri türleri ve
 | Özel | Blob | Tanılama İzleyicisi tarafından izlenen dizinleri yapılandırmaya dayalı özel bir kapsayıcı.  Bu blob kapsayıcısının adı WADDirectoriesTable içinde belirtilecektir. |
 
 ## <a name="tools-to-view-diagnostic-data"></a>Tanılama verilerini görüntülemek için Araçlar
-Verileri depolama alanına aktarıldıktan sonra görüntülemek için kullanabileceğiniz çeşitli araçlar vardır. Örneğin:
+Verileri depolama alanına aktarıldıktan sonra görüntülemek için kullanabileceğiniz çeşitli araçlar vardır. Örnek:
 
 * Visual Studio 'da Sunucu Gezgini-Azure araçlarını Microsoft Visual Studio yüklediyseniz, Azure depolama hesaplarınızdan salt okunurdur blob ve tablo verilerini görüntülemek için Sunucu Gezgini Azure Storage düğümünü kullanabilirsiniz. Yerel depolama öykünücü hesabınızdan ve ayrıca Azure için oluşturduğunuz depolama hesaplarından verileri görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [Sunucu Gezgini Ile depolama kaynaklarına göz atma ve yönetme](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Microsoft Azure Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md) , Windows, OSX ve Linux 'Ta Azure Depolama verileriyle kolayca çalışabilmenizi sağlayan tek başına bir uygulamadır.

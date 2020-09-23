@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Güç Azure Dev Spaces ve yönlendirmenin nasıl çalıştığına ilişkin süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: abdd8a573b7e120c5494b8878c2eb19813fc9507
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6987bbaaebe342b571d5b19fe0e37bebd5b8b6e1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213403"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981305"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Yönlendirmenin nasıl çalıştığı Azure Dev Spaces
 
@@ -64,11 +64,7 @@ Türetilmiş geliştirme alanı Ayrıca, kendi uygulamaları ve üst öğesinden
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Dev Spaces, Hızlı yineleme ve geliştirme sağlamak üzere yönlendirmeyi nasıl kullandığını görmek için, [Kubernetes Ile yerel Işlemin nasıl çalıştığı][how-it-works-local-process-kubernetes], [Azure dev Spaces ile kodunuzda uzaktan hata ayıklamanın][how-it-works-remote-debugging]yanı sıra [Azure Kubernetes hizmeti & GitHub eylemleriyle][pr-flow]ilgili bazı örnekler bulabilirsiniz.
+Azure Dev Spaces, Hızlı yineleme ve geliştirme sağlamak üzere yönlendirmeyi nasıl kullandığını gösteren bir örnek görmek için bkz. [Azure dev Spaces ile kodunuzda uzaktan hata ayıklama nasıl?][how-it-works-remote-debugging].
 
 
-[helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
-[pr-flow]: how-to/github-actions.md
-[troubleshooting]: troubleshooting.md

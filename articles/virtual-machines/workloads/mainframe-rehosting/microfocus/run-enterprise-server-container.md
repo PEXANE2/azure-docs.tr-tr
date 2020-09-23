@@ -1,6 +1,6 @@
 ---
 title: Azure 'daki bir Docker kapsayıcısında mikro odak kurumsal sunucu 5,0 ' i çalıştırın | Microsoft Docs
-description: Azure sanal makinelerinde (VM) mikro odak geliştirme ve test ortamını kullanarak IBM z/OS ana bilgisayar iş yüklerinizi yeniden barındırın.
+description: Bu makalede, Microsoft Azure 'de bir Docker kapsayıcısında Micro Focus Enterprise Server 5,0 ' i nasıl çalıştıracağınızı öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
 author: maggsl
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: d266dbd0ee908c41a7d29ddbb6d9c73fcfdc7c9e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c4afc6c0adb8d499e38abf3d709a951774dda4e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083472"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974070"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Azure 'daki bir Docker kapsayıcısında mikro odak kurumsal sunucu 5,0 ' i çalıştırın
 
@@ -105,7 +105,7 @@ Bu noktada, VM çalışır ve RDP aracılığıyla iliştirilir. Oturumunuz aç�
 3.  Dizini değiştirmek için şunu yazın:  
     **CD \\ Korumalı \\ alan \_ sunucu \_ dockerfile 'ları destekliyor \_ 5,0 \_ Windows \\ enterpriseserver**.
 
-4.  İlk temel görüntü için derleme işlemini başlatmak üzere **IAcceptEulabld.bat** yazın. Bu işlemin çalışması için birkaç dakika bekleyin. Sonuçlarda, biri x64 ve diğeri x86 için oluşturulmuş iki resme dikkat edin:
+4.  İlk temel görüntü için derleme işlemini başlatmak üzere ** IAcceptEulabld.bat** yazın. Bu işlemin çalışması için birkaç dakika bekleyin. Sonuçlarda, biri x64 ve diğeri x86 için oluşturulmuş iki resme dikkat edin:
 
     ![Görüntüleri gösterme Komut penceresi](./media/run-image-3.png)
 
@@ -137,7 +137,7 @@ Bu noktada, VM çalışır ve RDP aracılığıyla iliştirilir. Oturumunuz aç�
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ~~~
 
-    Örneğin:
+    Örnek:
 
     ~~~
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"

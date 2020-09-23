@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962647"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981124"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service 'de TLS/SSL bağlaması ile özel bir DNS adının güvenliğini sağlama
 
@@ -108,7 +108,7 @@ Yapmanız gereken iki değişiklik olabilir:
 
 Çeşitli tarayıcılarda, `https://<your.custom.domain>` uygulamanızı hizmet ettiğini doğrulamak için öğesine gidin.
 
-![Azure uygulamasına portal gezintisi](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Contoso.com URL 'SI vurgulanmış şekilde özel etki alanına gözatmaya yönelik bir örnek gösteren ekran görüntüsü.":::
 
 Uygulama kodunuz, "x-appservice-proto" üst bilgisi aracılığıyla Protokolü inceleyebilir. Üst bilgi, veya değerine sahip olacaktır `http` `https` . 
 
@@ -133,7 +133,7 @@ Uygulama sayfanızda, sol gezinti bölmesinde **SSL ayarları**' nı seçin. Ard
 
 ![HTTPS'yi zorunlu tutma](./media/configure-ssl-bindings/enforce-https.png)
 
-İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örneğin:
+İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örnek:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`

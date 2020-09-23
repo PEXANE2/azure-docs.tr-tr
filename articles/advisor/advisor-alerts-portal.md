@@ -3,12 +3,12 @@ title: Azure portal kullanarak yeni öneriler için Azure Advisor uyarıları ol
 description: Yeni öneri için Azure Advisor uyarıları oluşturma
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507225"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973653"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Azure portal kullanarak yeni önerilerle Azure Advisor uyarıları oluşturun 
 
@@ -63,8 +63,7 @@ Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları o
 
 8. Uyarı ayrıntıları bölümünde, uyarıya bir ad ve kısa açıklama verin. Uyarınızın etkinleştirilmesini istiyorsanız, **oluşturma seçimi sonrasında kuralı etkinleştir** ' i **Evet**olarak ayarlayın. Ardından, uyarılarınızın kaydedileceği kaynak grubunu seçin. Bu işlem, önerinin hedefleme kapsamını etkilemez. 
 
-    ![Azure Danışmanı başlığı](./media/advisor-alerts/create8.png)
-
+    :::image type="content" source="./media/advisor-alerts/create8.png" alt-text="Uyarı ayrıntıları bölümünün ekran görüntüsü.":::
 
 
 ## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Web kancası kullanmak için öneri uyarılarını yapılandırma
@@ -188,11 +187,11 @@ Azure Advisor 'da, öneriler uyarılarınızı düzenleyebilir, silebilir veya d
 
 1. **Portalda** **Azure Danışmanı**' nı seçin.
 
-    ![Azure Danışmanı başlığı](./media/advisor-alerts/create1.png)
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Azure Advisor 'ın seçili olduğunu gösteren Azure portal menüsünün ekran görüntüsü.":::
 
 2. Sol menünün **izleme** bölümünde **Uyarılar**' ı seçin.
 
-    ![Azure Danışmanı başlığı](./media/advisor-alerts/create2.png)
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Seçili uyarıların gösterildiği Azure portal menüsünün ekran görüntüsü.":::
 
 3. Bir uyarıyı düzenlemek için uyarı adına tıklayarak uyarıyı açın ve düzenlemek istediğiniz alanları düzenleyin.
 

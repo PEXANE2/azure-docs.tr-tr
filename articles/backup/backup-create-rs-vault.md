@@ -1,15 +1,15 @@
 ---
 title: Kurtarma Hizmetleri kasaları oluşturma ve yapılandırma
-description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurtarma hizmetleri kasalarını oluşturma ve yapılandırma hakkında bilgi edinin.
+description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurtarma hizmetleri kasalarını oluşturma ve yapılandırma hakkında bilgi edinin. İkincil bir bölgede geri yüklemek için çapraz bölge geri yükleme 'yi nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81c6fd47ccea2ea17a20535df04931727c23be6f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177202"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981494"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası oluşturma ve yapılandırma
 
@@ -30,34 +30,45 @@ Azure Backup kasa için depolamayı otomatik olarak işler. Bu depolamanın nas�
 
 1. Depolama çoğaltma türünü seçin ve **Kaydet**' i seçin.
 
-     ![Yeni kasa için depolama yapılandırması ayarlama](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![Yeni kasa için depolama yapılandırması ayarlama](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
    - Azure 'u birincil yedek depolama uç noktası olarak kullanıyorsanız, varsayılan **coğrafi olarak yedekli** ayarını kullanmaya devam edebilirsiniz.
    - Azure’u birincil yedek depolama uç noktası olarak kullanmıyorsanız, Azure depolama maliyetlerini azaltan **Yerel olarak yedekli** seçeneğini belirleyin.
-   - [Coğrafi](../storage/common/storage-redundancy.md) ve [Yerel](../storage/common/storage-redundancy.md) artıklık hakkında daha fazla bilgi edinin.
+   - [Coğrafi](../storage/common/storage-redundancy.md#geo-redundant-storage) ve [Yerel](../storage/common/storage-redundancy.md#locally-redundant-storage) artıklık hakkında daha fazla bilgi edinin.
+   - Bir bölgede kesinti olmadan veri kullanılabilirliğine ihtiyaç duyuyorsanız, veri fazlalığını garanti edin, sonra [bölge yedekli depolama](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage)' yı seçin.
 
 >[!NOTE]
 >Kasa için depolama çoğaltma ayarları, geçerli çözüm bağlı olduğu için Azure dosya paylaşma yedeğine uygun değildir ve kasaya hiçbir veri aktarılmaz. Anlık görüntüler, yedeklenen dosya paylaşımıyla aynı depolama hesabında depolanır.
 
 ## <a name="set-cross-region-restore"></a>Çapraz bölge geri yüklemeyi ayarla
 
-Geri yükleme seçeneklerinden biri olan çapraz bölge geri yükleme (CRR), Azure sanal makinelerini bir [Azure eşlenmiş bölgesi](../best-practices-availability-paired-regions.md)olan ikincil bir bölgeye geri yüklemenize olanak tanır. Bu seçenek şunları yapmanıza olanak sağlar:
+**Çapraz bölge geri yükleme (CRR)** geri yükleme seçeneği, verileri Ikincil, [Azure eşlenmiş bir bölgeye](../best-practices-availability-paired-regions.md)geri yüklemenize olanak tanır.
+
+Aşağıdaki veri kaynaklarını destekler:
+
+- Azure VM’leri
+- Azure VM 'lerinde barındırılan SQL veritabanları
+- Azure VM 'lerinde barındırılan SAP HANA veritabanları
+
+Çapraz bölge geri yükleme kullanmak şunları yapmanıza olanak sağlar:
 
 - Denetim veya uyumluluk gereksinimi olduğunda ayrıntıya ait ayrıntıları yürütün
-- Birincil bölgede bir olağanüstü durum varsa VM 'yi veya diskini geri yükleyin.
+- Birincil bölgede bir olağanüstü durum varsa verileri geri yükleme
+
+Bir VM 'yi geri yüklerken VM 'yi veya diskini geri yükleyebilirsiniz. Azure VM 'lerinde barındırılan SQL/SAP HANA veritabanlarından geri yükleme yapıyorsanız veritabanlarını veya dosyalarını geri yükleyebilirsiniz.
 
 Bu özelliği seçmek için **yedekleme yapılandırması** bölmesinden **çapraz bölge geri yüklemeyi etkinleştir** ' i seçin.
 
-Bu işlem için, depolama düzeyinde olduğu kadar fiyatlandırma etkileri vardır.
+Bu işlem depolama düzeyinde olduğundan, [fiyatlandırma etkileri](https://azure.microsoft.com/pricing/details/backup/)vardır.
 
 >[!NOTE]
 >Başlamadan önce:
 >
 >- Desteklenen yönetilen türlerin ve bölgelerin listesi için [destek matrisini](backup-support-matrix.md#cross-region-restore) gözden geçirin.
->- Çapraz bölge geri yükleme (CRR) özelliği artık tüm Azure genel bölgelerinde önizlenebilir.
+>- Çapraz bölge geri yükleme (CRR) özelliği artık tüm Azure ortak bölgelerinde ve bağımsız bulutlarda önizlenebilir.
 >- CRR, herhangi bir GRS Kasası için kasa düzeyi katılım özelliğidir (varsayılan olarak kapalıdır).
 >- Bu işlem yapıldıktan sonra, yedekleme öğelerinin ikincil bölgelerde kullanılabilmesi 48 saat kadar sürebilir.
->- Şu anda CRR yalnızca yedekleme yönetimi türü ARM Azure VM için desteklenir (klasik Azure VM desteklenmez).  Ek yönetim türleri CRR 'yi desteklediklerinde, bunlar **otomatik olarak** kaydedilir.
+>- Azure VM 'Leri için şu anda CRR yalnızca Azure Resource Manager Azure VM 'Leri için desteklenir. Klasik Azure VM 'Leri desteklenmez.  Ek yönetim türleri CRR 'yi desteklediklerinde, bunlar **otomatik olarak** kaydedilir.
 >- Koruma ilk kez başlatıldığında çapraz bölge geri yüklemesi şu anda GRS veya LRS 'ye geri döndürülemez.
 
 ### <a name="configure-cross-region-restore"></a>Çapraz bölge geri yüklemeyi yapılandırma
@@ -69,15 +80,13 @@ GRS yedekliliği ile oluşturulan bir kasa, çapraz bölge geri yükleme özelli
 1. Portaldan kurtarma hizmetleri Kasası > ayarlar > Özellikler ' e gidin.
 2. İşlevselliği etkinleştirmek için **Bu kasada çapraz bölge geri yüklemeyi etkinleştir '** i seçin.
 
-   ![Bu kasada çapraz bölge geri yüklemeyi etkinleştir ' i seçmeden önce](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![Çapraz bölge geri yüklemeyi etkinleştir](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 
-   ![Bu kasada çapraz bölge geri yüklemeyi etkinleştir ' i seçtikten sonra](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+CRR ile yedekleme ve geri yükleme hakkında daha fazla bilgi için şu makalelere bakın:
 
-[İkincil bölgedeki yedekleme öğelerini görüntülemeyi](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region)öğrenin.
-
-[İkincil bölgede geri yüklemeyi](backup-azure-arm-restore-vms.md#restore-in-secondary-region)öğrenin.
-
-[İkincil bölge geri yükleme işlerini izlemeyi](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs)öğrenin.
+- [Azure VM 'Leri için çapraz bölge geri yükleme](backup-azure-arm-restore-vms.md#cross-region-restore)
+- [SQL veritabanları için çapraz bölge geri yükleme](restore-sql-database-azure-vm.md#cross-region-restore)
+- [SAP HANA veritabanları için çapraz bölge geri yükleme](sap-hana-db-restore.md#cross-region-restore)
 
 ## <a name="set-encryption-settings"></a>Şifreleme ayarlarını ayarla
 
@@ -99,7 +108,7 @@ Bu adımların her birine ilişkin yönergeler, [Bu makalede](encryption-at-rest
 
 ## <a name="modifying-default-settings"></a>Varsayılan ayarları değiştirme
 
-Kasadaki yedeklemeleri yapılandırmadan önce **depolama çoğaltma türü** ve **güvenlik ayarları** için varsayılan ayarları incelemenizi kesinlikle öneririz.
+Kasada yedekleme yapılandırmadan önce **Depolama çoğaltma türü** ve **Güvenlik ayarları** için varsayılan değerleri mutlaka gözden geçirmeniz önerilir.
 
 - **Depolama çoğaltma türü** varsayılan olarak **coğrafi olarak yedekli** (GRS) olarak ayarlanır. Yedeklemeyi yapılandırdıktan sonra, değiştirme seçeneği devre dışı bırakılır.
   - Yedeklemeyi henüz yapılandırmadıysanız, ayarları gözden geçirmek ve değiştirmek için [aşağıdaki adımları izleyin](#set-storage-redundancy) .
