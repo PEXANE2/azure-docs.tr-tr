@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a548a1aa6b7c6382d00e218f1b61347002df2b38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420898"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907778"
 ---
 # <a name="train-wide--deep-recommender"></a>Geniş kapsamlı & öneren eğitimi
-Bu makalede, bir öneri modelini eğmek için Azure Machine Learning tasarımcısında **eğitme & derin öneren** modülünün (Önizleme) nasıl kullanılacağı açıklanır. Bu modül, Google tarafından önerilen geniş & derinlemesine öğrenmeyi temel alır.
+Bu makalede, bir öneri modelini eğmek için Azure Machine Learning tasarımcısında **eğitme geniş & derin öneren** modülünün nasıl kullanılacağı açıklanır. Bu modül, Google tarafından önerilen geniş & derinlemesine öğrenmeyi temel alır.
 
 **Eğitme geniş & derin öneren** modülü, Kullanıcı-öğe derecelendirmesi ve isteğe bağlı olarak, bazı Kullanıcı ve öğe özelliklerinin bir veri kümesini okur. Eğitilen geniş bir & derin öneren döndürür.  Daha sonra eğitilen modeli, [puan ve derin öneren](score-wide-and-deep-recommender.md) modülünü kullanarak derecelendirme tahminleri veya önerileri oluşturmak için kullanabilirsiniz.  
 
@@ -84,7 +84,7 @@ Bir örnek için, öğe özelliklerinin tipik bir kümesi şöyle görünebilir:
 
 ### <a name="train-the-model"></a>Modeli eğitme
 
-1.  Tasarımcı (Önizleme) içinde denemenize **geniş ve derin öneren** modülünü ekleyin ve eğitim veri kümesine bağlayın.  
+1.  Tasarımcıdaki denemenize **geniş ve derin öneren** modülünü ekleyin ve eğitim veri kümesine bağlayın.  
   
 2. Kullanıcı özellikleri ve/veya öğe özelliklerinin ayrı bir veri kümeniz varsa, bunları **eğime ve derin öneren** modülüne bağlayın.  
   

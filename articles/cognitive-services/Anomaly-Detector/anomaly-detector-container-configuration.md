@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: 29e790959e941abc133f95297dc09c951152a503
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0bf08ae0b2d26b2f4992181d2e300e9dbeed818
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593316"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903528"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomali Algılayıcısı kapsayıcılarını yapılandırma
 
@@ -29,7 +29,7 @@ Bu kapsayıcı aşağıdaki yapılandırma ayarlarına sahiptir:
 |--|--|--|
 |Yes|[ApiKey](#apikey-configuration-setting)|Faturalandırma bilgilerini izlemek için kullanılır.|
 |Hayır|[ApplicationInsights](#applicationinsights-setting)|, Kapsayıcınıza [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetri desteği eklemenize olanak tanır.|
-|Yes|[Faturalama](#billing-configuration-setting)|Azure üzerindeki hizmet kaynağının uç nokta URI 'sini belirtir.|
+|Yes|[Faturalandırma](#billing-configuration-setting)|Azure üzerindeki hizmet kaynağının uç nokta URI 'sini belirtir.|
 |Yes|[Sözleşmesi](#eula-setting)| Kapsayıcının lisansını kabul ettiğinizi gösterir.|
 |Hayır|[Fluentd](#fluentd-settings)|Günlük ve isteğe bağlı olarak ölçüm verilerini Floentd sunucusuna yazın.|
 |Hayır|[Http proxy 'Si](#http-proxy-credentials-settings)|Giden istekler oluşturmak için bir HTTP proxy 'si yapılandırın.|
@@ -57,11 +57,11 @@ Bu `Billing` ayar, kapsayıcının fatura bilgilerini ölçmek için kullanılan
 
 Bu ayar aşağıdaki yerde bulunabilir:
 
-* Azure portal: **anomali algılayıcısının** genel bakış, etiketli`Endpoint`
+* Azure portal: **anomali algılayıcısının** genel bakış, etiketli `Endpoint`
 
-|Gerekli| Name | Veri türü | Açıklama |
+|Gerekli| Ad | Veri türü | Açıklama |
 |--|------|-----------|-------------|
-|Yes| `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](anomaly-detector-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
+|Evet| `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](anomaly-detector-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>EULA ayarı
 
@@ -88,7 +88,7 @@ Anomali algılayıcı kapsayıcıları, eğitim veya hizmet verilerini depolamak
 
 Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](anomaly-detector-container-howto.md#the-host-computer)bağlama konumu erişilebilir olmayabilir. 
 
-|İsteğe Bağlı| Name | Veri türü | Açıklama |
+|İsteğe Bağlı| Ad | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
 |İzin verilmiyor| `Input` | Dize | Anomali algılayıcı kapsayıcıları bunu kullanmaz.|
 |İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -121,7 +121,7 @@ Aşağıdaki Docker örnekleri anomali algılayıcı kapsayıcısı içindir.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -131,7 +131,7 @@ Aşağıdaki Docker örnekleri anomali algılayıcı kapsayıcısı içindir.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information

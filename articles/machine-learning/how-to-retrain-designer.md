@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning tasarımcısını kullanarak modelleri yeniden eğitme (Önizleme)
+title: Azure Machine Learning tasarımcısını kullanarak modelleri yeniden eğitme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning tasarımcısında yayımlanmış işlem hatlarına sahip modelleri yeniden eğitme hakkında bilgi edinin (Önizleme).
+description: Azure Machine Learning tasarımcısında yayımlanmış işlem hatlarına sahip modelleri yeniden eğitme hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661622"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905678"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) ile modelleri yeniden eğitme
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile modelleri yeniden eğitme
+
 
 Bu nasıl yapılır makalesinde, bir makine öğrenimi modelini yeniden eğitmek için Azure Machine Learning tasarımcısını kullanmayı öğreneceksiniz. İş akışınızı otomatikleştirmek için yayımlanmış işlem hatlarını kullanacaksınız ve modelinizi yeni verilerde eğtirecek parametreleri ayarlayacaksınız. 
 
@@ -30,14 +30,14 @@ Bu makalede şunları öğreneceksiniz:
 > * Eğitim işlem hattınızı yayımlayın.
 > * Modelinize yeni parametrelerle yeniden eğitme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Kurumsal SKU 'SU olan bir Azure Machine Learning çalışma alanı.
-* Bu nasıl yapılır serisinin 1. bölümünü, [tasarımcıda verileri dönüştürür](how-to-designer-transform-data.md).
+* Azure Machine Learning çalışma alanı
+* Bu nasıl yapılır serisinin 1. kısmını, [tasarımcıda veri dönüştürme](how-to-designer-transform-data.md)
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
-Bu makalede ayrıca, tasarımcıda işlem hatları oluşturmak için temel bilgiye sahip olduğunuz varsayılır. Kılavuzlu bir giriş için [öğreticiyi](tutorial-designer-automobile-price-train-score.md)izleyin. 
+Bu makalede ayrıca tasarımcı 'da işlem hattı oluşturma hakkında bilgi sahibi olduğunuz varsayılır. Kılavuzlu bir giriş için [öğreticiyi](tutorial-designer-automobile-price-train-score.md)izleyin. 
 
 ### <a name="sample-pipeline"></a>Örnek işlem hattı
 

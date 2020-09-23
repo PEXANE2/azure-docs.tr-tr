@@ -11,15 +11,14 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: e718ed13cfd67092b50b42584d861a2bcf5dacc5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4dc1f86ce7dbb060c747c4433f0c2b871ce5582d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89665140"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907654"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning çalışma alanının güvenliğini sağlama
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, bir sanal ağda Azure Machine Learning çalışma alanının ve ilişkili kaynakların güvenliğini nasıl sağlayacağınızı öğreneceksiniz.
 
@@ -38,7 +37,7 @@ Bu makalede, bir sanal ağda aşağıdaki çalışma alanı kaynaklarını nası
 > - Azure Key Vault
 > - Azure Container Registry
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -173,8 +172,6 @@ Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yete
 
 Bir sanal ağ içinde Azure Container Registry kullanmak için aşağıdaki gereksinimleri karşılamanız gerekir:
 
-* Azure Machine Learning çalışma alanınız Enterprise Edition olmalıdır. Yükseltme hakkında bilgi için bkz. [Enterprise Edition 'A yükseltme](how-to-manage-workspace.md#upgrade).
-
 * Azure Container Registry Premium sürüm olmalıdır. Yükseltme hakkında daha fazla bilgi için bkz. [SKU 'Ları değiştirme](/azure/container-registry/container-registry-skus#changing-skus).
 
 * Azure Container Registry, eğitim veya çıkarım için kullanılan depolama hesabı ve işlem hedefleri ile aynı sanal ağ ve alt ağ içinde olmalıdır.
@@ -256,8 +253,8 @@ Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirm
             "type": "SystemAssigned"
         },
         "sku": {
-            "tier": "enterprise",
-            "name": "enterprise"
+            "tier": "basic",
+            "name": "basic"
         },
         "properties": {
             "sharedPrivateLinkResources":

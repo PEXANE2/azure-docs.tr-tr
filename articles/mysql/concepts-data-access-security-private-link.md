@@ -6,23 +6,23 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 6391b21faaf6cd2a61dbe84af50ae12e4289dff9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e49fd0d2b4d8fc801372dbc766c2fdc7beb21b10
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837298"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905913"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için özel bağlantı
 
-Özel bağlantı, Azure 'daki çeşitli PaaS hizmetlerine özel bir uç nokta aracılığıyla bağlanmanızı sağlar. Azure özel bağlantısı temel olarak Azure hizmetlerini özel sanal ağınız (VNet) içinde sunar. PaaS kaynaklarına, sanal ağ üzerindeki diğer kaynaklar gibi özel IP adresi kullanılarak erişilebilir.
+Özel Bağlantı Azure’daki çeşitli PaaS hizmetlerine özel bir uç nokta üzerinden bağlanmanızı sağlar. Azure Özel Bağlantı, Azure hizmetlerini özel sanal ağınıza (VNet) getirir. Sanal ağdaki diğer kaynaklar gibi PaaS kaynaklarına da özel IP adresini kullanarak erişebilirsiniz.
 
 Özel bağlantı işlevselliğini destekleyen PaaS hizmetlerinin listesi için özel bağlantı [belgelerini](https://docs.microsoft.com/azure/private-link/index)gözden geçirin. Özel uç nokta, belirli bir [sanal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ağ ve alt ağ içindeki özel bir IP adresidir.
 
 > [!NOTE]
 > Özel bağlantı özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında MySQL için Azure veritabanı sunucuları için kullanılabilir. Veritabanı sunucusunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
-## <a name="data-exfiltration-prevention"></a>Veri kaybı önleme
+## <a name="data-exfiltration-prevention"></a>Veri sızdırmayı önleme
 
 Veri EX-MySQL için Azure veritabanı 'nda, bir veritabanı yöneticisi gibi yetkili bir Kullanıcı, bir sistemden veri ayıklayabilip onu kuruluşun dışında başka bir konuma veya sisteme taşıyabildikdedir. Örneğin, Kullanıcı, verileri üçüncü tarafa ait bir depolama hesabına taşıtır.
 
@@ -68,25 +68,25 @@ Ağ Yöneticisi özel uç nokta (PE) oluşturduğunda, MySQL yöneticisi özel u
     * Tüm özel uç nokta bağlantılarının (lar) bir listesini gösterir
     * Karşılık gelen özel uç nokta (PE) oluşturuldu
 
-![Özel uç nokta portalını seçin](media/concepts-data-access-and-security-private-link/select-private-link-portal.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-portal.png" alt-text="Özel uç nokta portalını seçin":::
 
 * Listeden tek bir PEC seçin.
 
-![onay bekleyen özel uç noktayı seçin](media/concepts-data-access-and-security-private-link/select-private-link.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="onay bekleyen özel uç noktayı seçin":::
 
 * MySQL Server Yöneticisi bir PEC 'i onaylamayı veya reddetmeyi seçebilir ve isteğe bağlı olarak kısa bir metin yanıtı ekleyebilir.
 
-![Özel uç nokta iletisini seçin](media/concepts-data-access-and-security-private-link/select-private-link-message.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="Özel uç nokta iletisini seçin":::
 
 * Onay veya reddetme sonrasında, liste, yanıt metniyle birlikte uygun durumu yansıtır
 
-![Özel uç nokta son durumunu seçin](media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="Özel uç nokta son durumunu seçin":::
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nın özel bağlantı durumlarını kullanın
 
 İstemciler aynı VNet 'ten özel uç noktaya, aynı bölgedeki eşlenmiş VNet 'e veya bölgeler arasında VNet-VNet bağlantısı aracılığıyla bağlanabilir. Ayrıca, istemciler ExpressRoute, özel eşleme veya VPN tüneli kullanarak şirket içinden bağlanabilir. Aşağıda, yaygın kullanım durumlarını gösteren basitleştirilmiş bir diyagram bulunur.
 
-![Özel uç noktaya genel bakış ' ı seçin](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Özel uç noktaya genel bakış ' ı seçin":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Eşlenen sanal ağdaki (VNet) bir Azure VM 'den bağlanma
 Eşlenen VNet 'teki bir Azure VM 'den MySQL için Azure veritabanı 'na bağlantı kurmak üzere [VNET eşlemesini](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) yapılandırın.

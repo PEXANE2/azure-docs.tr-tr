@@ -1,6 +1,6 @@
 ---
-title: Şablonlar aracılığıyla Azure Stack Edge cihazınızda VM 'Leri dağıtma
-description: Şablonları kullanarak bir Azure Stack Edge cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
+title: Şablonlar aracılığıyla Azure Stack Edge Pro cihazınızda sanal makineler dağıtma
+description: Şablonları kullanarak bir Azure Stack Edge Pro cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 4f5fb02239fa48d96b0b779af7c970fc67fbcb99
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419835"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899710"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Azure Stack Edge GPU cihazınızda VM 'Leri şablonlar aracılığıyla dağıtma
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Şablonlar aracılığıyla Azure Stack Edge Pro GPU cihazınızda sanal makineler dağıtma
 
-Bu öğreticide, şablonları kullanarak Azure Stack Edge cihazınızda bir sanal makinenin nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. Bu şablonlar, VM 'niz için altyapıyı ve yapılandırmayı tanımlayan JavaScript Nesne Gösterimi (JSON) dosyalarıdır. Bu şablonlarda, dağıtılacak kaynakları ve bu kaynakların özelliklerini belirtirsiniz.
+Bu öğreticide, şablonları kullanarak Azure Stack Edge Pro cihazınızda bir sanal makinenin nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. Bu şablonlar, VM 'niz için altyapıyı ve yapılandırmayı tanımlayan JavaScript Nesne Gösterimi (JSON) dosyalarıdır. Bu şablonlarda, dağıtılacak kaynakları ve bu kaynakların özelliklerini belirtirsiniz.
 
 Çalışma zamanında parametreleri bir dosyadan giriş olarak götürebilecekleri için şablonlar farklı ortamlarda esnektir. Standart adlandırma yapısı `TemplateName.json` şablon ve `TemplateName.parameters.json` Parametreler dosyası içindir. ARM şablonları hakkında daha fazla bilgi için [Azure Resource Manager şablonlar nelerdir?](../azure-resource-manager/templates/overview.md)bölümüne bakın.
 
@@ -25,7 +25,7 @@ Bu öğreticide, kaynak oluşturmak için önceden yazılmış örnek şablonlar
 
 ## <a name="vm-deployment-workflow"></a>VM dağıtımı iş akışı
 
-Birçok cihaza Azure Stack Edge VM 'Leri dağıtmak için, tam Fleet 'niz için tek bir Sysprep uygulanmış VHD 'yi, dağıtım için de aynı şablonu kullanabilirsiniz ve bu şablonda her dağıtım konumu için yalnızca parametrelere küçük değişiklikler yapabilirsiniz (Bu değişiklikler, burada yaptığımız veya programlı bir şekilde, el ile olabilir.) 
+Birçok cihaza Azure Stack Edge Pro VM 'Leri dağıtmak için, tam Fleet için tek bir Sysprep uygulanmış VHD 'yi, dağıtım için aynı şablonu ve yalnızca her dağıtım konumu için söz konusu şablona yönelik parametrelere küçük değişiklikler yapmanız gerekir (Bu değişiklikler, burada yaptığımız veya programlı bir şekilde gerçekleştiğimiz için bu değişiklikleri el ile yapabilirsiniz.) 
 
 Şablonları kullanarak dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 
@@ -57,13 +57,13 @@ Birçok cihaza Azure Stack Edge VM 'Leri dağıtmak için, tam Fleet 'niz için 
 
 ## <a name="device-prerequisites"></a>Cihaz önkoşulları
 
-Azure Stack Edge cihazınızda bu önkoşulları yapılandırın.
+Azure Stack Edge Pro cihazınızda bu önkoşulları yapılandırın.
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 ## <a name="client-prerequisites"></a>İstemci önkoşulları
 
-İstemcinizdeki Azure Stack Edge cihazına erişmek için kullanılacak önkoşulları yapılandırın.
+İstemcinizdeki Azure Stack Edge Pro cihazına erişmek için kullanılacak önkoşulları yapılandırın.
 
 1. Bir VHD 'YI karşıya yüklemek için kullanıyorsanız [Depolama Gezgini indirin](https://azure.microsoft.com/features/storage-explorer/) . Alternatif olarak, bir VHD 'yi karşıya yüklemek için AzCopy 'i de indirebilirsiniz. AzCopy 'in eski sürümlerini çalıştırıyorsanız istemci makinenizde TLS 1,2 ' i yapılandırmanız gerekebilir. 
 1. [VM şablonlarını ve parametreleri dosyalarını](https://aka.ms/ase-vm-templates) Istemci makinenize indirin. Bu dosyayı, çalışma dizini olarak kullanacağınız bir dizine ayıklayın.
@@ -108,7 +108,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Yalnızca yerel olarak yedekli depolama (Standard_LRS veya Premium_LRS) gibi yerel depolama hesapları Azure Resource Manager aracılığıyla oluşturulabilir. Katmanlı depolama hesapları oluşturmak için, [Azure Stack kenarlarınızdaki depolama hesaplarına bağlanma, ekleme](azure-stack-edge-j-series-deploy-add-storage-accounts.md)bölümündeki adımlara bakın.
+> Yalnızca yerel olarak yedekli depolama (Standard_LRS veya Premium_LRS) gibi yerel depolama hesapları Azure Resource Manager aracılığıyla oluşturulabilir. Katmanlı depolama hesapları oluşturmak için, [Azure Stack Edge Pro 'unuzdaki depolama hesaplarına bağlanma,](azure-stack-edge-j-series-deploy-add-storage-accounts.md)bkz. ekleme adımları.
 
 Örnek çıktı aşağıda gösterilmiştir.
 
@@ -145,7 +145,7 @@ BLOB depolama alanına bağlanmak için kullandığınız istemcinin Hosts dosya
 
 `<Device IP> <storage account name>.blob.<Device name>.<DNS domain>`
 
-Tipik bir ortamda, DNS 'niz, tüm depolama hesaplarının bir girişi olan Azure Stack Edge cihazına işaret edebilmesi için yapılandırılır `*.blob.devicename.domainname.com` .
+Tipik bir ortamda, DNS 'niz, tüm depolama hesaplarının bir girdiyle Azure Stack Edge Pro cihazına işaret edebilmesi için yapılandırılır `*.blob.devicename.domainname.com` .
 
 ### <a name="optional-install-certificates"></a>Seçim Sertifikaları yükler
 
@@ -215,7 +215,7 @@ Sonraki adımda karşıya yüklemek için kullanabileceğiniz bir sanal disk yan
 
 <!--### Use AzCopy for upload
 
-Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge device.
+Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
 
 
 ```powershell
@@ -269,7 +269,7 @@ Dosya `CreateImageAndVnet.parameters.json` aşağıdaki parametreleri alır:
     }
 ```
 
-`CreateImageAndVnet.parameters.json`Azure Stack Edge cihazınız için aşağıdakileri dahil etmek üzere dosyayı düzenleyin:
+`CreateImageAndVnet.parameters.json`Azure Stack Edge Pro cihazınız için aşağıdakileri dahil etmek üzere dosyayı düzenleyin:
 
 1. Karşıya yükleyeceğiniz VHD 'ye karşılık gelen işletim sistemi türünü sağlayın. İşletim sistemi türü Windows veya Linux olabilir.
 
@@ -341,7 +341,7 @@ Dosya `CreateImageAndVnet.parameters.json` aşağıdaki parametreleri alır:
 Şablonu dağıtın `CreateImageAndVnet.json` . Bu şablon, sonraki adımda VM 'Ler oluşturmak için kullanılacak VNet ve resim kaynaklarını dağıtır.
 
 > [!NOTE]
-> Bir kimlik doğrulama hatası alırsanız şablonu dağıttığınızda, bu oturum için Azure kimlik bilgilerinizin geçerliliği geçmiş olabilir. `login-AzureRM`Azure Stack Edge cihazındaki Azure Resource Manager tekrar bağlanmak için komutu yeniden çalıştırın.
+> Bir kimlik doğrulama hatası alırsanız şablonu dağıttığınızda, bu oturum için Azure kimlik bilgilerinizin geçerliliği geçmiş olabilir. `login-AzureRM`Azure Stack Edge Pro cihazınızda Azure Resource Manager bağlanmak için komutu yeniden çalıştırın.
 
 1. Şu komutu çalıştırın: 
     
@@ -437,7 +437,7 @@ Bir VM oluşturmak için `CreateVM.parameters.json` parametre dosyasını kullan
         }
 ```    
 
-Azure Stack Edge cihazınız için ' de uygun parametreleri atayın `CreateVM.parameters.json` .
+`CreateVM.parameters.json`Azure Stack Edge Pro cihazınız için ' de uygun parametreleri atayın.
 
 1. Benzersiz bir ad, ağ arabirimi adı ve ipconfig adı sağlayın. 
 1. Bir Kullanıcı adı, parola ve desteklenen bir VM boyutu girin.
@@ -594,7 +594,7 @@ Bir Linux sanal makinesine bağlanmak için bu adımları izleyin.
 
 <!--## Manage VM
 
-The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge device.
+The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge Pro device.
 
 [!INCLUDE [azure-stack-edge-gateway-manage-vm](../../includes/azure-stack-edge-gateway-manage-vm.md)]-->
 
@@ -609,9 +609,9 @@ Uzantılar, ölçek kümeleri, kullanılabilirlik kümeleri, anlık görüntüle
 
 <!--## Configure AzCopy
 
-When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge device.
+When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge Pro device.
 
-On the client used to access your Azure Stack Edge device, set up a global variable to match the blob storage REST API version.
+On the client used to access your Azure Stack Edge Pro device, set up a global variable to match the blob storage REST API version.
 
 ### On Windows client 
 

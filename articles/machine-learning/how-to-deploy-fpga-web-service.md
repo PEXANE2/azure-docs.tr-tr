@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: a5f56beb179f7c72fe66c7423999201f3460b143
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7637cc911ea2fbb950a18c2c8d91f5c3eaf02c23
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646293"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905074"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Alan-programlanabilir kapı dizileri (FPGA) ve dağıtma
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu makale, alan-programlanabilir kapı dizileri (FPGA) ile bir giriş sağlar ve Azure FPGA 'ye [Azure Machine Learning](overview-what-is-azure-ml.md) kullanarak modellerinizi nasıl dağıtacağınızı gösterir.
 
@@ -30,7 +30,7 @@ FPGA’lar programlanabilen bir mantık blokları dizisi ve yeniden yapılandır
 
 ![Azure Machine Learning FPGA karşılaştırması diyagramı](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|İşlemci| Kısaltma |Description|
+|İşlemci| Kısaltma |Açıklama|
 |---|:-------:|------|
 |Uygulamaya özgü tümleşik devreler|ASICS|Google 'ın TensorFlow Işlemci birimleri (TPU) gibi özel devreler en yüksek verimliliği sağlar. Gereksinimleriniz değiştikçe bu değişiklikler yeniden yapılandırılamaz.|
 |Alan-programlanabilir kapı dizileri|FPGA'lar|Azure 'da kullanılabilir olanlar gibi FPGAs 'ler, ASICs performansına yakın performans sağlar. Ayrıca, yeni mantık uygulamak için zaman içinde esnek ve yeniden yapılandırılabilir.|

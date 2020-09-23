@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 08859eb87431b59e8be68369ce8f3876aa7d9f21
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 3c2934c92be668d4b4c05f97a98395e2e219b7dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530310"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907613"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code ile etkileşimli hata ayıklama
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Visual Studio Code (VS Code) ve [depugpy](https://github.com/microsoft/debugpy/)kullanarak Azure Machine Learning işlem hatları ve dağıtımlara etkileşimli olarak hata ayıklama yapmayı öğrenin.
 
@@ -109,7 +109,7 @@ Hata ayıklamayı etkinleştirmek için, ML işlem hattınızdaki adımlar taraf
         print(f'Debugger attached = {debugpy.is_client_connected()}')
     ```
 
-Aşağıdaki Python örneği, `train.py` hata ayıklamayı sağlayan temel bir dosya göstermektedir:
+Aşağıdaki Python örneği, `train.py` hata ayıklamayı sağlayan basit bir dosya göstermektedir:
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.

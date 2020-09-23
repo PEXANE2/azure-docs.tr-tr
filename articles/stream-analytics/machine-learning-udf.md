@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e9496dc70d847d0e9e830a216e8f435b1c48d878
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543444"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900972"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics Azure Machine Learning ile tümleştirme (Önizleme)
 
@@ -33,23 +33,39 @@ Machine Learning modelini Stream Analytics işinize bir işlev olarak eklemeden 
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>İşinize bir makine öğrenme modeli ekleyin
 
-Stream Analytics işinize doğrudan Azure portal Azure Machine Learning işlevleri ekleyebilirsiniz.
+Stream Analytics işinize doğrudan Azure portal veya Visual Studio Code Azure Machine Learning işlevleri ekleyebilirsiniz.
 
-1. Azure portal Stream Analytics işinize gidin ve **iş topolojisi**altında **işlevler** ' i seçin. Ardından, + açılan menü **Ekle** menüsünden **Azure ML hizmeti** ' ni seçin.
+### <a name="azure-portal"></a>Azure portal
 
-   ![Azure ML UDF ekleme](./media/machine-learning-udf/add-azureml-udf.png)
+1. Azure portal Stream Analytics işinize gidin ve **iş topolojisi**altında **işlevler** ' i seçin. Ardından, + açılan menü **Ekle** menüsünden **Azure Machine Learning hizmet** ' i seçin.
+
+   ![Azure Machine Learning UDF ekleyin](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
 2. **Azure Machine Learning hizmeti işlev** formunu aşağıdaki özellik değerleriyle doldur:
 
-   ![Azure ML UDF 'yi yapılandırma](./media/machine-learning-udf/configure-azureml-udf.png)
+   ![Azure Machine Learning UDF yapılandırma](./media/machine-learning-udf/configure-azure-machine-learning-udf.png)
 
-Aşağıdaki tabloda Stream Analytics içindeki Azure ML hizmeti işlevlerinin her bir özelliği açıklanmaktadır.
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+1. Stream Analytics projenizi Visual Studio Code açın ve **işlevler** klasörüne sağ tıklayın. Sonra **Işlev Ekle**' yi seçin. Açılan listeden **MACHINE LEARNING UDF** ' i seçin.
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="VS Code UDF ekleme":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="VS Code Azure Machine Learning UDF ekleyin":::
+
+2. İşlev adını girin ve CodeLens 'teki **aboneliklerinizden Seç** ' i kullanarak yapılandırma dosyasındaki ayarları doldurabilirsiniz.
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="VS Code Azure Machine Learning UDF seçin":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="VS Code Azure Machine Learning UDF yapılandırma":::
+
+Aşağıdaki tabloda, Stream Analytics Azure Machine Learning hizmet işlevlerinin her bir özelliği açıklanmaktadır.
 
 |Özellik|Açıklama|
 |--------|-----------|
 |İşlev diğer adı|Sorgunuzun işlevini çağırmak için bir ad girin.|
 |Abonelik|Azure aboneliğiniz..|
-|Azure ML çalışma alanı|Modelinizi bir Web hizmeti olarak dağıtmak için kullandığınız Azure Machine Learning çalışma alanı.|
+|Azure Machine Learning çalışma alanı|Modelinizi bir Web hizmeti olarak dağıtmak için kullandığınız Azure Machine Learning çalışma alanı.|
 |Dağıtımlar|Modelinizi barındıran Web hizmeti.|
 |İşlev imzası|API 'nin şema belirtiminden çıkarılan Web hizmetinizin imzası. İmzanız yüklenemezse, otomatik olarak şemayı oluşturmak için Puanlama betiğinizdeki örnek giriş ve çıkış sağladıysanız emin olun.|
 |Bölüm başına paralel istek sayısı|Bu, yüksek ölçekli üretilen işi iyileştirmek için gelişmiş bir yapılandırmadır. Bu sayı, işinizin her bir bölümünden Web hizmetine gönderilen eşzamanlı istekleri temsil eder. Altı akış birimi (SU) ve alt düzeyde olan işlerin bir bölümü vardır. 12 SUs içeren işlerin iki bölümü vardır, 18 SUs üç bölüme sahiptir ve bu şekilde devam eder.<br><br> Örneğin, işiniz iki bölümden oluşabilir ve bu parametreyi dört olarak ayarlarsanız, işiniz Web hizmetinize kadar olan sekiz eşzamanlı istek olacaktır. Bu genel önizleme sırasında, bu değerin varsayılan değeri 20 ' dir ve güncelleştirilemez.|
@@ -168,4 +184,3 @@ Bu gecikme süresini engellemek için, Azure Kubernetes hizmeti (AKS) kümenizin
 
 * [Öğretici: Azure Stream Analytics JavaScript kullanıcı tanımlı işlevleri](stream-analytics-javascript-user-defined-functions.md)
 * [Stream Analytics işinizi Azure Machine Learning Studio (klasik) işlevle ölçeklendirin](stream-analytics-scale-with-machine-learning-functions.md)
-

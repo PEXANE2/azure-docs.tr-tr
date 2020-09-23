@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU depolama hesabı yönetimi | Microsoft Docs
-description: Azure Stack Kenarunuzdaki depolama hesabını yönetmek için Azure portal nasıl kullanılacağını açıklar.
+title: Azure Stack Edge Pro GPU depolama hesabı yönetimi | Microsoft Docs
+description: Azure Stack Edge Pro 'unuzda depolama hesabını yönetmek için Azure portal nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 3b190a108651f4b127c2f009c383613922a59018
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a239b36a539cf7be3e880512b753d45ae4050bad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254313"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904537"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge"></a>Azure Stack kenarlarınızdaki kenar depolama hesaplarını yönetmek için Azure portal kullanın
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzdaki Edge depolama hesaplarını yönetmek için Azure portal kullanın
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu makalede, Azure Stack kenarlarınızda kenar depolama hesaplarının nasıl yönetileceği açıklanır. Azure Stack ucunu Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Cihazınızda Edge depolama hesaplarını eklemek veya silmek için Azure portal kullanın.
+Bu makalede Azure Stack Edge Pro 'unuzda Edge depolama hesaplarının nasıl yönetileceği açıklanır. Azure Stack Edge Pro 'Yu Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Cihazınızda Edge depolama hesaplarını eklemek veya silmek için Azure portal kullanın.
 
 ## <a name="about-edge-storage-accounts"></a>Edge depolama hesapları hakkında
 
-Azure Stack Edge cihazınızdan SMB, NFS veya REST protokolleri aracılığıyla veri aktarabilirsiniz. REST API 'Lerini kullanarak BLOB depolama alanına veri aktarmak için Azure Stack kenarınızdaki kenar depolama hesapları oluşturmanız gerekir. 
+Azure Stack Edge Pro cihazınızdan SMB, NFS veya REST protokolleri aracılığıyla veri aktarabilirsiniz. REST API 'Lerini kullanarak BLOB depolama alanına veri aktarmak için Azure Stack Edge Pro 'unuzda Edge depolama hesapları oluşturmanız gerekir. 
 
-Azure Stack Edge cihazına eklediğiniz Edge depolama hesapları Azure depolama hesaplarına eşlenir. Edge depolama hesaplarına yazılan tüm veriler otomatik olarak buluta gönderilir.
+Azure Stack Edge Pro cihazına eklediğiniz Edge depolama hesapları Azure depolama hesaplarına eşlenir. Edge depolama hesaplarına yazılan tüm veriler otomatik olarak buluta gönderilir.
 
 İki hesap türünü ve bu hesaplardan her birinden Azure 'a veri akışını ayrıntılarıyla açıklayan bir diyagram aşağıda gösterilmektedir:
 

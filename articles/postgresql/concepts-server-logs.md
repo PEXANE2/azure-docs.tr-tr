@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5515c21d89b01576bb6aae8c9d480b439dc1507
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392820"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902698"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'ndaki Günlükler-tek sunucu
 
@@ -23,7 +23,7 @@ Denetim günlüğü, bir Postgres uzantısı, pgaudit aracılığıyla kullanıl
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma 
 Günlük sunucusu parametrelerini kullanarak sunucunuzda Postgres standart günlüğünü yapılandırabilirsiniz. Her PostgreSQL için Azure veritabanı sunucusunda `log_checkpoints` ve `log_connections` Varsayılan olarak üzerinde bulunur. Günlük gereksinimlerinize uyacak şekilde ayarlayabileceğiniz ek parametreler vardır: 
 
-![PostgreSQL için Azure veritabanı-günlük parametreleri](./media/concepts-server-logs/log-parameters.png)
+:::image type="content" source="./media/concepts-server-logs/log-parameters.png" alt-text="PostgreSQL için Azure veritabanı-günlük parametreleri":::
 
 Postgres günlük parametreleri hakkında daha fazla bilgi edinmek için, ne [zaman günlüğe kaydedilir](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) ve Postgres belgelerinin [günlük](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) bölümlerini ziyaret edin. PostgreSQL için Azure veritabanı 'nda, tüm Postgres günlük oluşturma parametreleri de yapılandırılabilir.
 
@@ -103,18 +103,18 @@ Aşağıdaki tablo, **Postgrestablogs** türü için alanları açıklar. Seçti
 | TenantId | Kiracı KIMLIĞINIZ |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
-| Tür | Günlüğün türü. Her`AzureDiagnostics` |
+| Tür | Günlüğün türü. Her `AzureDiagnostics` |
 | kaynak grubundaki | Sunucunun ait olduğu abonelik için GUID |
-| ResourceGroup | Sunucunun ait olduğu kaynak grubunun adı |
-| ResourceProvider | Kaynak sağlayıcının adı. Her`MICROSOFT.DBFORPOSTGRESQL` |
+| adlı yönetilen örnek, | Sunucunun ait olduğu kaynak grubunun adı |
+| ResourceProvider | Kaynak sağlayıcının adı. Her `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Kaynak URI 'SI |
 | Kaynak | Sunucunun adı |
 | Kategori | `PostgreSQLLogs` |
-| ThrottledRequests | `LogEvent` |
+| OperationName | `LogEvent` |
 | Düzeyi | Günlüğe kaydetme düzeyi, örnek: günlük, hata, BILDIRIM |
 | İleti | Birincil günlük iletisi | 
-| Domain | Sunucu sürümü, örnek: Postgres-10 |
+| Etki alanı | Sunucu sürümü, örnek: Postgres-10 |
 | Ayrıntı | İkincil günlük iletisi (varsa) |
 | ColumnName | Sütunun adı (varsa) |
 | SchemaName | Şemanın adı (varsa) |

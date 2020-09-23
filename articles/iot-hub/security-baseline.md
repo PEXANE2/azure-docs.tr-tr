@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 314004d2b62d5616c1d7925b82fd9f050d0a1fd0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 31a3bfbc174ca9c4c46005a26cde65db1ff74b65
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441808"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906926"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Azure IoT Hub için Azure Güvenlik temeli
 
@@ -71,7 +71,7 @@ Azure DDoS koruması temel zaten etkinleştirilmiştir ve IoT Hub kapsamında ek
 
 - [IoT Hub IP filtresi](iot-hub-ip-filtering.md)
 
-- [IoT şüpheli IP adresi iletişimi için Azure Güvenlik Merkezi](../asc-for-iot/concept-security-alerts.md)
+- [IoT şüpheli IP adresi iletişimi için Azure Güvenlik Merkezi](../defender-for-iot/concept-security-alerts.md)
 
 - [Azure DDoS Protection Basic 'i yönetme](../virtual-network/ddos-protection-overview.md)
 
@@ -234,7 +234,7 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure IoT Hub sistem durumunu izleme](iot-hub-monitor-resource-health.md)
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
-- [IoT uyarıları için Azure Güvenlik Merkezi](../asc-for-iot/concept-security-alerts.md)
+- [IoT uyarıları için Azure Güvenlik Merkezi](../defender-for-iot/concept-security-alerts.md)
 
 - [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md)
 

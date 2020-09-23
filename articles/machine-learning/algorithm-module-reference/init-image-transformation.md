@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: f54dd09ac82ddefeb2528462c7131aa921592d2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa81987f9214870e248ef9b625e6afcd1093fe5d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84487959"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907880"
 ---
 # <a name="init-image-transformation"></a>Init Görüntü Dönüşümü
 
-Bu makalede, görüntünün nasıl dönüştürülmesini istediğinizi belirtmek üzere görüntü dönüşümünü başlatmak için Azure Machine Learning tasarımcısında (Önizleme) **Init görüntü dönüştürme** modülünün nasıl kullanılacağı açıklanır.
+Bu makalede, görüntünün nasıl dönüştürülmesini istediğinizi belirtmek için görüntü dönüşümünü başlatmak üzere Azure Machine Learning tasarımcısında **Init Image dönüştürme** modülünün nasıl kullanılacağı açıklanır.
 
 ## <a name="how-to-configure-init-image-transformation"></a>Init Image dönüşümünü yapılandırma
 
@@ -67,33 +67,33 @@ Dönüştürme tamamlandıktan sonra, [görüntü dönüştürme](apply-image-tr
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Name                    | Aralık   | Tür    | Varsayılan | Açıklama                              |
+| Ad                    | Aralık   | Tür    | Varsayılan | Açıklama                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
-| Yeniden boyutlandırma                  | Herhangi biri     | Boole | True    | Giriş PIL görüntüsünü verilen boyuta göre yeniden boyutlandır |
+| Yeniden boyutlandırma                  | Herhangi biri     | Boole | Doğru    | Giriş PIL görüntüsünü verilen boyuta göre yeniden boyutlandır |
 | Boyut                    | >= 1     | Tamsayı | 256     | İstenen çıkış boyutunu belirtin          |
-| Ortadan Kırp             | Herhangi biri     | Boole | True    | Verilen PIL görüntüsünü merkezden kırpar  |
+| Ortadan Kırp             | Herhangi biri     | Boole | Doğru    | Verilen PIL görüntüsünü merkezden kırpar  |
 | Kırpma boyutu               | >= 1     | Tamsayı | 224     | Kırpma için istenen çıkış boyutunu belirtin |
-| Pad                     | Herhangi biri     | Boole | False   | Verilen "Pad" değeri ile tüm kenarlarda verilen PIL görüntüsünü doldurur |
+| Pad                     | Herhangi biri     | Boole | Yanlış   | Verilen "Pad" değeri ile tüm kenarlarda verilen PIL görüntüsünü doldurur |
 | İç Boşluk                 | >= 0     | Tamsayı | 0       | Her kenarlıkta doldurma                   |
-| Renk değişimi            | Herhangi biri     | Boole | False   | Görüntünün parlaklığını, kontrastını ve doygunluğunu rastgele değiştirme |
-| Ölçeğe               | Herhangi biri     | Boole | False   | Görüntüyü gri tonlamaya Dönüştür               |
-| Rastgele yeniden boyutlandırılmış kırpma     | Herhangi biri     | Boole | False   | Verilen PIL görüntüsünü rastgele boyut ve en boy oranına göre kırpın |
+| Renk değişimi            | Herhangi biri     | Boole | Yanlış   | Görüntünün parlaklığını, kontrastını ve doygunluğunu rastgele değiştirme |
+| Ölçeğe               | Herhangi biri     | Boole | Yanlış   | Görüntüyü gri tonlamaya Dönüştür               |
+| Rastgele yeniden boyutlandırılmış kırpma     | Herhangi biri     | Boole | Yanlış   | Verilen PIL görüntüsünü rastgele boyut ve en boy oranına göre kırpın |
 | Rastgele boyut             | >= 1     | Tamsayı | 256     | Her kenarın beklenen çıkış boyutu        |
-| Rastgele kırpma             | Herhangi biri     | Boole | False   | Verilen PIL görüntüsünü rastgele bir konumda kırpın |
+| Rastgele kırpma             | Herhangi biri     | Boole | Yanlış   | Verilen PIL görüntüsünü rastgele bir konumda kırpın |
 | Rastgele kırpma boyutu        | >= 1     | Tamsayı | 224     | Kırpma için istenen çıktı boyutu          |
-| Rastgele yatay çevir  | Herhangi biri     | Boole | True    | Belirli bir olasılığa sahip verilen PIL görüntüsünü yatay olarak rastgele çevirin |
-| Rastgele Dikey Çevir    | Herhangi biri     | Boole | False   | Verilen PIL görüntüsünü belirli bir olasılığa göre dikey olarak ters çevirin |
-| Rastgele döndürme         | Herhangi biri     | Boole | False   | Görüntüyü açıda döndürün                |
+| Rastgele yatay çevir  | Herhangi biri     | Boole | Doğru    | Belirli bir olasılığa sahip verilen PIL görüntüsünü yatay olarak rastgele çevirin |
+| Rastgele Dikey Çevir    | Herhangi biri     | Boole | Yanlış   | Verilen PIL görüntüsünü belirli bir olasılığa göre dikey olarak ters çevirin |
+| Rastgele döndürme         | Herhangi biri     | Boole | Yanlış   | Görüntüyü açıda döndürün                |
 | Rastgele döndürme dereceleri | [0180] | Tamsayı | 0       | Seçilecek derece aralığı          |
-| Rastgele afin           | Herhangi biri     | Boole | False   | Görüntünün rastgele Afine dönüştürmesi, merkezi sabit tutma |
+| Rastgele afin           | Herhangi biri     | Boole | Yanlış   | Görüntünün rastgele Afine dönüştürmesi, merkezi sabit tutma |
 | Rastgele afin derecesi   | [0180] | Tamsayı | 0       | Seçilecek derece aralığı          |
-| Rastgele gri tonlamalı        | Herhangi biri     | Boole | False   | Olasılık 0,1 ile görüntüyü gri tonlamaya rastgele dönüştürün |
-| Rastgele perspektif      | Herhangi biri     | Boole | False   | Verilen PIL görüntüsünün perspektif dönüşümünü 0,5 olasılık ile rastgele gerçekleştirir |
-| Rastgele silme          | Herhangi biri     | Boole | False   | Görüntüde rastgele bir dikdörtgen bölgesi seçer ve 0,5 olasılığa sahip piksellerini siler |
+| Rastgele gri tonlamalı        | Herhangi biri     | Boole | Yanlış   | Olasılık 0,1 ile görüntüyü gri tonlamaya rastgele dönüştürün |
+| Rastgele perspektif      | Herhangi biri     | Boole | Yanlış   | Verilen PIL görüntüsünün perspektif dönüşümünü 0,5 olasılık ile rastgele gerçekleştirir |
+| Rastgele silme          | Herhangi biri     | Boole | Yanlış   | Görüntüde rastgele bir dikdörtgen bölgesi seçer ve 0,5 olasılığa sahip piksellerini siler |
 
-###  <a name="output"></a>Çıktı  
+###  <a name="output"></a>Çıkış  
 
-| Name                        | Tür                    | Açıklama                              |
+| Ad                        | Tür                    | Açıklama                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Çıkış görüntüsü dönüştürme | Dönüştürme Tiondirectory | **Görüntü dönüştürme modülünü uygulamak** için bağlanýlabilen çıkış resmi dönüştürmesi. |
 

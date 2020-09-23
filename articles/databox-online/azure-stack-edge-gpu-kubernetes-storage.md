@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge cihazında Kubernetes depolama yönetimini anlayın | Microsoft Docs
-description: Kubernetes depolama yönetiminin Azure Stack Edge cihazında nasıl oluştuğunu açıklar.
+title: Azure Stack Edge Pro cihazında Kubernetes depolama yönetimini anlayın | Microsoft Docs
+description: Kubernetes depolama yönetiminin Azure Stack Edge Pro cihazında nasıl oluştuğunu açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 57574b66ddb20e592a5979a4b827347f7c8e09af
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268100"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899260"
 ---
-# <a name="kubernetes-storage-management-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınızda Kubernetes depolama yönetimi
+# <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Kubernetes depolama yönetimi
 
-Azure Stack Edge cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes kümesi oluşturulduktan sonra kapsayıcılı uygulamalar, pods 'deki Kubernetes kümesine dağıtılabilir. Kubernetes kümenizdeki yığınlara depolama sağlamaya yönelik ayrı yollar vardır. 
+Azure Stack Edge Pro cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes kümesi oluşturulduktan sonra kapsayıcılı uygulamalar, pods 'deki Kubernetes kümesine dağıtılabilir. Kubernetes kümenizdeki yığınlara depolama sağlamaya yönelik ayrı yollar vardır. 
 
-Bu makalede, genel olarak bir Kubernetes kümesinde depolama sağlama yöntemleri ve özellikle de Azure Stack Edge cihazınızın bağlamı açıklanmaktadır. 
+Bu makalede, bir Kubernetes kümesi üzerinde depolama sağlama yöntemleri ve özellikle de Azure Stack Edge Pro cihazınızın bağlamı açıklanmaktadır. 
 
 ## <a name="storage-requirements-for-kubernetes-pods"></a>Kubernetes pod için depolama gereksinimleri
 
@@ -75,9 +75,9 @@ Aşağıdaki adımlar oluşur:
 1. **PVC 'yi kapsayıcıya bağlama**: PVC, BD 'e bağlandıktan sonra, PVC 'yi statik sağlama ve paylaşıma okuma ya da yazma ile aynı şekilde bir yola bağlayabilirsiniz.
 
 
-## <a name="storage-provisioning-on-azure-stack-edge"></a>Azure Stack Edge üzerinde depolama sağlama
+## <a name="storage-provisioning-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'da depolama sağlama
 
-Azure Stack Edge cihazında, statik olarak sağlanan `PersistentVolumes` cihaz depolama özellikleri kullanılarak oluşturulur. Bir paylaşma sağladığınızda ve **kenar işlem ile paylaşma** seçeneği etkinken bu eylem, Kubernetes kümesinde otomatik olarak bir BD kaynağı oluşturur.
+Azure Stack Edge Pro cihazında, statik olarak sağlanan `PersistentVolumes` cihaz depolama özellikleri kullanılarak oluşturulur. Bir paylaşma sağladığınızda ve **kenar işlem ile paylaşma** seçeneği etkinken bu eylem, Kubernetes kümesinde otomatik olarak bir BD kaynağı oluşturur.
 
 ![Statik sağlama için Azure portal yerel paylaşma oluşturma](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
@@ -85,7 +85,7 @@ Bulut katmanlaması kullanmak için, Edge işlem ile paylaşma seçeneğinin etk
 
 ![Statik sağlama için Azure portal bulut paylaşımının oluşturulması](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
-PVs 'yi Azure Stack Edge cihazını statik olarak sağlamak için hem SMB hem de NFS paylaşımları oluşturabilirsiniz. BD sağlandıktan sonra, bu depolama alanını talep etmek için bir PVC gönderilir. Aşağıda, `yaml` depolamayı talep eden ve sağladığınız paylaşımları kullanan BIR PVC dağıtımına örnek verilmiştir.
+PVs 'yi Azure Stack Edge Pro cihazını statik olarak sağlamak için hem SMB hem de NFS paylaşımları oluşturabilirsiniz. BD sağlandıktan sonra, bu depolama alanını talep etmek için bir PVC gönderilir. Aşağıda, `yaml` depolamayı talep eden ve sağladığınız paylaşımları kullanan BIR PVC dağıtımına örnek verilmiştir.
 
 
 ```yml
@@ -103,13 +103,13 @@ spec:
   storageClassName: ""
 ```
 
-Daha fazla bilgi için bkz. [kubectl aracılığıyla Azure Stack kenarınızda statik sağlama aracılığıyla durum bilgisi olan bir uygulama dağıtma](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
+Daha fazla bilgi için bkz. [Azure Stack Edge Pro 'da, kubectl aracılığıyla statik sağlama aracılığıyla durum bilgisi olan bir uygulamayı dağıtma](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 
-Azure Stack Edge `StorageClass` `ase-node-local` , Kubernetes düğümüne iliştirilmiş bir veri diski depolaması kullanan bir yerleşik olarak da bulunur. Bu, `StorageClass` dinamik sağlamayı destekler. `StorageClass`Pod uygulamalarında bir başvuru yapabilirsiniz ve bır BD sizin için otomatik olarak oluşturulur. Daha fazla bilgi için bkz. sorgu için [Kubernetes panosu](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) `ase-node-local StorageClass` .
+Azure Stack Edge Pro `StorageClass` `ase-node-local` , Kubernetes düğümüne iliştirilmiş bir veri diski depolaması kullanan bir yerleşik olarak da bulunur. Bu, `StorageClass` dinamik sağlamayı destekler. `StorageClass`Pod uygulamalarında bir başvuru yapabilirsiniz ve bır BD sizin için otomatik olarak oluşturulur. Daha fazla bilgi için bkz. sorgu için [Kubernetes panosu](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) `ase-node-local StorageClass` .
 
 ![Kubernetes panosundaki yerleşik depolama sınıfı](./media/azure-stack-edge-gpu-kubernetes-storage/dynamic-provisioning-builtin-storage-class-1.png)
 
-Daha fazla bilgi için bkz. [kuebctl aracılığıyla Azure Stack kenarınızda dinamik sağlama aracılığıyla durum bilgisi içeren bir uygulama dağıtma](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
+Daha fazla bilgi için bkz. [Azure Stack Edge Pro 'da kuebctl aracılığıyla dinamik sağlama aracılığıyla durum bilgisi olan bir uygulamayı dağıtma](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
 
 ## <a name="choose-storage-type"></a>Depolama türünü seçin
 
@@ -127,8 +127,8 @@ Erişim modları hakkında daha fazla bilgi için bkz. [Kubernetes birimleri eri
 
 Statik olarak nasıl sağlayabileceğinizi anlamak için `PersistentVolume` , bkz:
 
-- [Azure Stack kenarınızda, kubectl aracılığıyla statik sağlama aracılığıyla durum bilgisi olan bir uygulamayı dağıtın](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
+- [Bir durum bilgisi olan uygulamayı, kubectl aracılığıyla Azure Stack Edge Pro 'unuzda statik sağlama aracılığıyla dağıtın](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 
 Dinamik olarak nasıl sağlayabileceğinizi öğrenmek için `StorageClass` bkz.:
 
-- [Kuebctl aracılığıyla Azure Stack kenarınızda dinamik sağlama aracılığıyla durum bilgisi olan bir uygulamayı dağıtın](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
+- [Azure Stack Edge Pro 'yu kuebctl aracılığıyla dinamik sağlama aracılığıyla bir durum bilgisi olan uygulama dağıtın](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).

@@ -10,15 +10,15 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9e24a652bb4e577ff9b604b6b4f5284883723ee5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319278"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906713"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Öğretici: çok sınıflı görüntü sınıflandırması için etiketleme projesi oluşturma 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu öğreticide, makine öğrenimi modelleri oluşturmak için veri olarak kullanılacak etiketleme işleminin (etiketleme olarak da anılır) nasıl yönetileceği gösterilmektedir. Azure Machine Learning içindeki veri etiketleme genel önizlemede.
 
@@ -102,7 +102,7 @@ Etiketlenmesini istediğiniz verilere erişiminiz olduğuna göre etiketleme pro
 
 1. Veri **deposundan Create DataSet** form için aşağıdaki girişi kullanın:
 
-    1. **Temel bilgi** formunda bir ad ekleyin, burada **öğreticiyi görüntüler**.  İsterseniz bir açıklama ekleyin.  Sonra **İleri**’yi seçin.
+    1. **Temel bilgi** formunda bir ad ekleyin, burada **öğreticiyi görüntüler**.  İsterseniz bir açıklama ekleyin.  Ardından **İleri**’yi seçin.
     1. **Veri deposu seçim** formunda, **daha önce oluşturduğunuz veri deposunu**seçmek için açılan listeyi kullanın (örneğin, **tutorial_images (Azure Blob depolama)**
     1. Bundan sonra, **veri deposu seçim** formunda, git ' i seçin ve **birden çok Lass-DogsCats**' **yi seçin.**  Yol olarak **/birden çok Lass-DogsCats** kullanmak için **Kaydet** ' i seçin.
     1. Ayrıntıları onaylamak için **İleri** ' yi, sonra da **Oluştur** ' u seçerek veri kümesini oluşturun.
@@ -130,7 +130,7 @@ Devam etmek için **İleri** seçeneğini belirleyin.
 
 1. **İleri**’yi seçin.
 
-1. Kurumsal çalışma alanı kullanıyorsanız, bir **ml yardımlı etiketleme** bölümü görürsünüz.  Onay kutusunu işaretlenmemiş olarak bırakın. ML yardımlı etiketleme, bu öğreticide kullandığınızdan daha fazla veri gerektirir.
+1. **Ml yardımlı etiketleme** bölümünde onay kutusunu işaretlenmemiş olarak bırakın. ML yardımlı etiketleme, bu öğreticide kullandığınızdan daha fazla veri gerektirir.
 
 1. **Create project** (Proje oluştur) öğesini seçin.
 

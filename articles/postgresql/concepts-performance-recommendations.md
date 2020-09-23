@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ce3843752ebd6ed56281f6699783181b52fdc6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768478"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903875"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda performans önerileri-tek sunucu
 
@@ -27,13 +27,13 @@ Performans Önerileri özelliğini kullanarak analiz çalıştırmak için **Sah
 
 PostgreSQL sunucunuz için Azure portal sayfasındaki menü çubuğunun **akıllı performans** bölümünde **performans önerilerini** açın.
 
-![Performans Önerileri giriş sayfası](./media/concepts-performance-recommendations/performance-recommendations-page.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Performans Önerileri giriş sayfası":::
 
 **Çözümle** ' yi seçin ve analiz işlemini başlatmak için bir veritabanı seçin. İş yükünüze bağlı olarak, önce çözümlemenin tamamlanması birkaç dakika sürebilir. Analiz tamamlanınca portalda bir bildirim olur. Analiz, veritabanınızı ayrıntılı bir şekilde inceleme işlemini gerçekleştirir. Yoğun olmayan dönemler sırasında analiz gerçekleştirmenizi öneririz. 
 
 **Öneriler** penceresi, bulunursa önerilerin bir listesini gösterir.
 
-![Performans önerileri yeni sayfa](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Performans önerileri yeni sayfa":::
 
 Öneriler otomatik olarak uygulanmaz. Öneriyi uygulamak için, sorgu metnini kopyalayın ve tercih ettiğiniz istemciden çalıştırın. Öneriyi değerlendirmek için sınamayı ve izlemeyi unutmayın. 
 
@@ -47,7 +47,7 @@ PostgreSQL sunucunuz için Azure portal sayfasındaki menü çubuğunun **akıll
 ### <a name="drop-index-recommendations"></a>Dizin önerilerini bırak
 Eksik dizinlerin algılanmasının yanı sıra PostgreSQL için Azure veritabanı, mevcut dizinlerin performansını analiz eder. Bir dizin nadiren kullanılıyorsa veya yedekli ise, çözümleyici bunu bırakmayı önerir.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 * [Okuma çoğaltmaları](concepts-read-replicas.md)Için performans önerileri kullanılamaz.
 ## <a name="next-steps"></a>Sonraki adımlar
 - PostgreSQL için Azure Veritabanı’nda [izleme ve ayarlama](concepts-monitoring.md) hakkında daha fazla bilgi edinin.

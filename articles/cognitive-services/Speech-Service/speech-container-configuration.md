@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 0feeec3b5b87e415f25f4cb75e53d9001b022445
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319262"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900285"
 ---
 # <a name="configure-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yapılandırma
 
@@ -50,7 +50,7 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 - Azure portal: **konuşmaya** genel bakış, etiketli `Endpoint`
 
-| Gerekli | Name | Veri türü | Açıklama |
+| Gerekli | Ad | Veri türü | Açıklama |
 | -------- | ---- | --------- | ----------- |
 | Evet | `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](speech-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
 
@@ -78,7 +78,7 @@ Standart konuşma kapsayıcıları, eğitim veya hizmet verilerini depolamak iç
 
 Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](speech-container-howto.md#the-host-computer)bağlama konumu erişilebilir olmayabilir.
 
-| İsteğe Bağlı | Name | Veri türü | Açıklama |
+| İsteğe Bağlı | Ad | Veri türü | Açıklama |
 | -------- | ---- | --------- | ----------- |
 | İzin verilmiyor | `Input` | Dize | Standart konuşma kapsayıcıları bunu kullanmaz. Özel konuşma kapsayıcıları, [birim bağlama](#volume-mount-settings)kullanır.                                                                                    |
 | İsteğe Bağlı | `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output` |
@@ -136,7 +136,7 @@ Aşağıdaki Docker örnekleri konuşma kapsayıcısına yöneliktir.
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
-containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
+mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -146,7 +146,7 @@ ApiKey={API_KEY}
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
-containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} \
@@ -160,7 +160,7 @@ Logging:Console:LogLevel:Default=Information
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
 -v {VOLUME_MOUNT}:/usr/local/models \
-containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text \
 ModelId={MODEL_ID} \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -172,7 +172,7 @@ ApiKey={API_KEY}
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
 -v {VOLUME_MOUNT}:/usr/local/models \
-containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text \
 ModelId={MODEL_ID} \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -186,7 +186,7 @@ Logging:Console:LogLevel:Default=Information
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
-containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -196,7 +196,7 @@ ApiKey={API_KEY}
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
-containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} \
@@ -210,7 +210,7 @@ Logging:Console:LogLevel:Default=Information
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 -v {VOLUME_MOUNT}:/usr/local/models \
-containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech \
 ModelId={MODEL_ID} \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -222,7 +222,7 @@ ApiKey={API_KEY}
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 -v {VOLUME_MOUNT}:/usr/local/models \
-containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech \
 ModelId={MODEL_ID} \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -236,7 +236,7 @@ Logging:Console:LogLevel:Default=Information
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
-containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -246,7 +246,30 @@ ApiKey={API_KEY}
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
-containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+Logging:Console:LogLevel:Default=Information
+```
+
+## <a name="speech-language-detection"></a>[Konuşma Dil Algılama](#tab/lid)
+
+### <a name="basic-example-for-speech-language-detection"></a>Konuşma dili algılaması için temel örnek
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
+mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+### <a name="logging-example-for-speech-language-detection"></a>Konuşma dili algılaması için günlüğe kaydetme örneği
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
+mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} \

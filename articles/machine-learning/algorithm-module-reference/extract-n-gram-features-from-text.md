@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: efe09c1d516b37c23b024e07ae387772fa7e5992
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c21c63bdb64f7c15c049bfe4039ef47cea689922
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477621"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907965"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>Metin modül başvurusundan N-gram özelliklerini Ayıkla
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır. Yapılandırılmamış metin verilerini *korturleştirmek* için metin modülündeki N-gram özelliklerini Ayıkla ' yı kullanın. 
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır. Yapılandırılmamış metin verilerini *korturleştirmek* için metin modülündeki N-gram özelliklerini Ayıkla ' yı kullanın. 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Metin modülünden ayıklama N-gram özelliklerinin yapılandırması
 
@@ -125,7 +125,7 @@ Sözlük, çözümlemenin bir parçası olarak oluşturulan terim sıklığı pu
 + **Df**: özgün Corpus içindeki n-gram için sıklık puanı skoru.
 + **IDF**: özgün Corpus içindeki n-gram için ters belge sıklığı puanı.
 
-Bu veri kümesini el ile güncelleştirebilirsiniz, ancak hatalar ortaya çıkabilir. Örneğin:
+Bu veri kümesini el ile güncelleştirebilirsiniz, ancak hatalar ortaya çıkabilir. Örnek:
 
 * Modül, giriş sözlüğü 'nde aynı anahtarla yinelenen satırlar bulursa bir hata oluşur. Sözlük içindeki iki satırın aynı sözcüğe sahip olmadığından emin olun.
 * Sözlük veri kümelerinin giriş şemasının, sütun adları ve sütun türleri dahil olmak üzere tam olarak eşleşmesi gerekir. 

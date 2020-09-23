@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 2be89f9263c71b7c9d7bc32edd0b1fc7cb2cfbce
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cf22a165e9a6eadcd2e5d4cdb0efa301538be7e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118163"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907529"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>PostgreSQL için Azure veritabanı-tek sunuculu Günlükler Azure portal yapılandırma ve erişme
 
@@ -23,13 +23,13 @@ Bu makaledeki adımlarda [PostgreSQL Için Azure veritabanı sunucusu](quickstar
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
 Sorgu günlüklerine ve hata günlüklerine erişimi yapılandırın. 
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. PostgreSQL için Azure Veritabanı sunucunuzu seçin.
 
 3. Kenar çubuğu 'ndaki **izleme** bölümünde **sunucu günlükleri**' ni seçin. 
 
-   ![Sunucu günlüğü seçeneklerinin ekran görüntüsü](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="Sunucu günlüğü seçeneklerinin ekran görüntüsü":::
 
 4. Sunucu parametrelerini görmek için, **günlükleri etkinleştirmek ve günlük parametrelerini yapılandırmak için buraya tıklayın ' ı**seçin.
 
@@ -37,31 +37,31 @@ Sorgu günlüklerine ve hata günlüklerine erişimi yapılandırın.
 
    Parametreleri değiştirdikten sonra **Kaydet**' i seçin. Ya da değişikliklerinizi atabilirsiniz. 
 
-   ![Sunucu parametreleri seçeneklerinin ekran görüntüsü](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Sunucu parametreleri seçeneklerinin ekran görüntüsü":::
 
 **Sunucu parametreleri** sayfasında, sayfayı kapatarak Günlükler listesine geri dönebilirsiniz.
 
 ## <a name="view-list-and-download-logs"></a>Listeyi görüntüle ve günlükleri indir
 Günlüğe kaydetme başladıktan sonra, kullanılabilir günlüklerin bir listesini görüntüleyebilir ve günlük dosyalarını tek tek indirebilirsiniz. 
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 
 2. PostgreSQL için Azure Veritabanı sunucunuzu seçin.
 
 3. Kenar çubuğu 'ndaki **izleme** bölümünde **sunucu günlükleri**' ni seçin. Sayfa, günlük dosyalarınızın bir listesini gösterir.
 
-   ![Günlük listesi vurgulanmış şekilde sunucu günlükleri sayfasının ekran görüntüsü](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="Günlük listesi vurgulanmış şekilde sunucu günlükleri sayfasının ekran görüntüsü":::
 
    > [!TIP]
    > Günlüğün adlandırma kuralı **PostgreSQL-yyyy-aa-dd_hh0000. log**' dır. Dosya adında kullanılan tarih ve saat, günlüğün verildiği zaman. Günlük dosyaları her saat veya 100 MB döndürülür, hangisi önce gelir.
 
 4. Gerekirse, tarih ve saate göre belirli bir günlüğe hızlıca daraltmak için arama kutusunu kullanın. Arama günlüğün adı üzerinde.
 
-   ![Arama kutusuyla sonuçları vurgulanmış şekilde sunucu günlükleri sayfasının ekran görüntüsü](./media/howto-configure-server-logs-in-portal/5-search.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-search.png" alt-text="Arama kutusuyla sonuçları vurgulanmış şekilde sunucu günlükleri sayfasının ekran görüntüsü":::
 
 5. Ayrı günlük dosyalarını indirmek için tablo satırındaki her bir günlük dosyasının yanındaki aşağı ok simgesini seçin.
 
-   ![Aşağı ok simgesi vurgulanmış şekilde sunucu günlükleri sayfasının ekran görüntüsü](./media/howto-configure-server-logs-in-portal/6-download.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/6-download.png" alt-text="Aşağı ok simgesi vurgulanmış şekilde sunucu günlükleri sayfasının ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Günlüklerin programlı olarak nasıl indirileceği hakkında bilgi edinmek için bkz. [CLI 'daki sunucu günlüklerine erişim](howto-configure-server-logs-using-cli.md) .

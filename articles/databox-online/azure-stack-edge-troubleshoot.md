@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge sorunlarını gidermek için Azure portal kullanın | Microsoft Docs
-description: Azure Stack Kenarlarınızın sorunlarını nasıl giderebileceğinizi öğrenin. Tanılama çalıştırabilir, destek için bilgi toplayabilir ve günlükleri kullanarak sorun giderme yapabilirsiniz.
+title: Azure Stack Edge Pro sorunlarını gidermek için Azure portal kullanma | Microsoft Docs
+description: Azure Stack Edge Pro 'unuzda sorunları nasıl giderebileceğinizi öğrenin. Tanılama çalıştırabilir, destek için bilgi toplayabilir ve günlükleri kullanarak sorun giderme yapabilirsiniz.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: f9dabdfd9df77822f06c41fa4355a1657bceb76c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: bc4afa0d26f6ba256354d3802a0c4f9b9b04088e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134573"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903648"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-issues"></a>Azure Stack Edge sorunlarından sorun giderme
+# <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Azure Stack Edge Pro sorunlarınızı giderme
 
-Bu makalede Azure Stack Kenarlarınızın sorunlarını giderme işleminin nasıl giderileceği açıklanmaktadır. 
+Bu makalede Azure Stack Edge Pro ile ilgili sorunların nasıl giderileceği açıklanmaktadır. 
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -65,7 +65,7 @@ Yükleme ve yenileme işlemlerinde karşılaşılan hatalar ilgili hata dosyalar
 
       ![Paylaşılan içeriğe bağlanma ve içeriği görüntüleme](media/azure-stack-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. _Microsoft Azure Stack Edge klasörünü_seçin. Bu klasör iki alt klasör içerir:
+2. _Microsoft Azure Stack Edge Pro klasörünü_seçin. Bu klasör iki alt klasör içerir:
 
     * Karşıya yükleme hatalarının bulunduğu Upload klasörü.
     * Yenileme sırasında karşılaşılan hataların bulunduğu Refresh klasörü.
