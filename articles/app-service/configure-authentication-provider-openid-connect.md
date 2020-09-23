@@ -4,14 +4,14 @@ description: App Service veya Azure Işlevleri uygulamanız için bir OpenID Con
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: 89164061a968e37f928f8c21f5323c418e85361f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e8112f2dc20175e81cfa8388440b2d9aef6a419c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413927"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983866"
 ---
-# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>App Service veya Azure Işlevleri uygulamanızı bir OpenID Connect sağlayıcısı kullanarak oturum açmak üzere yapılandırma (Önizleme)
+# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>App Service veya Azure İşlevleri uygulamanızı OpenID Connect sağlayıcısını kullanarak yapılandırma (Önizleme)
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
@@ -53,7 +53,7 @@ Yapılandırma meta verileri belgesi kullanmıyorsanız, aşağıdaki değerleri
 Bu bölüm, yeni ıDP 'nizi dahil etmek için yapılandırmayı güncelleştirme konusunda size kılavuzluk eder. Örnek bir yapılandırma aşağıda verilmiştir.
 
 1. Nesne içinde `identityProviders` , `openIdConnectProviders` zaten yoksa bir nesne ekleyin.
-1. Nesnesi içinde `openIdConnectProviders` , yeni sağlayıcınız için bir anahtar ekleyin. Bu, yapılandırmanın geri kalanında sağlayıcıya başvurmak için kullanılan bir kolay addır. Örneğin, tüm isteklerin bu sağlayıcıda doğrulanmasını gerektirmek isterseniz, `globalValidation.unauthenticatedClientAction` "RedirectToLoginPage" olarak ayarlanır ve `globalValidation.unauthenticatedClientAction` aynı kolay ada ayarlanır.
+1. Nesnesi içinde `openIdConnectProviders` , yeni sağlayıcınız için bir anahtar ekleyin. Bu, yapılandırmanın geri kalanında sağlayıcıya başvurmak için kullanılan bir kolay addır. Örneğin, tüm isteklerin bu sağlayıcıda doğrulanmasını gerektirmek isterseniz, `globalValidation.unauthenticatedClientAction` "RedirectToLoginPage" olarak ayarlanır ve `redirectToProvider` aynı kolay ada ayarlanır.
 1. Bu anahtara bir nesne içinde bir nesne `registration` ve isteğe bağlı olarak bir nesnesi atayın `login` :
     
     ```json

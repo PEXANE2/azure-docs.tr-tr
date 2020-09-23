@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640846"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968394"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Izleyici Aracısı için veri toplamayı yapılandırma (Önizleme)
 Veri toplama kuralları (DCR), Azure Izleyici 'ye gelen verileri tanımlar ve nereye gönderileceğini belirtir. Bu makalede, Azure Izleyici Aracısı kullanılarak sanal makinelerden veri toplamak için bir veri toplama kuralının nasıl oluşturulacağı açıklanır.
@@ -26,7 +26,7 @@ Bir sanal makineye bir DCR uygulamak için, sanal makine için bir ilişki oluş
 
 Örneğin, bir iş kolu uygulaması çalıştıran bir sanal makine kümesi ve SQL Server çalıştıran bir ortam düşünün. Tüm sanal makineler için geçerli olan bir varsayılan veri toplama kuralınız ve özel olarak iş kolu uygulaması ve SQL Server için veri toplayacak ayrı veri toplama kuralları olabilir. Sanal makineler için veri toplama kurallarına ait ilişkilendirmeler Aşağıdaki diyagrama benzer şekilde görünür.
 
-![İçermektedir](media/data-collection-rule-azure-monitor-agent/associations.png)
+![Diyagram, iş kolu uygulaması ve SQL Server için merkezi-ı t-varsayılan ve s için lob-uygulaması adlı veri toplama kurallarıyla ilişkili SQL Server sanal makineleri gösterir.](media/data-collection-rule-azure-monitor-agent/associations.png)
 
 ## <a name="create-using-the-azure-portal"></a>Azure portalını kullanarak oluşturma
 Bir veri toplama kuralı oluşturmak ve aboneliğinizdeki sanal makineleri bu kurala ilişkilendirmek için Azure portal kullanabilirsiniz. Azure Izleyici Aracısı otomatik olarak yüklenir ve henüz yüklenmemiş sanal makineler için yönetilen bir kimlik oluşturulur.

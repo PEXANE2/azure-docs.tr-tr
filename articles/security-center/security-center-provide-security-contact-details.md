@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: dda61b81ee2c357ddac29701832fe4780ea06859
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9fbd63e1b46b837350be720fadf68777927f9bff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516308"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904759"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>Güvenlik uyarıları için e-posta bildirimleri ayarlama 
 
@@ -39,10 +39,10 @@ Uyarı fatıg ' y i önlemek için, güvenlik merkezi giden e-posta hacminin mik
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Genel olarak kullanılabilir|
-|Fiyat|Ücretsiz katmanı|
+|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi**<br>**Abonelik sahibi** |
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov (kısmi)<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov (kısmi)<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 

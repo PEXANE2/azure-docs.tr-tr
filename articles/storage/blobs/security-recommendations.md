@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 808cf713cc34f90224cb3d5ce8a714fbafdcedbc
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5b1e5c73f3d43ca2627729149256f3e9362d58c2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202941"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984256"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB depolama için güvenlik önerileri
 
@@ -30,7 +30,7 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | Azure Resource Manager dağıtım modelini kullanma | Üst erişim denetimi (RBAC) ve denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, gizli dizi Azure Key Vault erişimi, Azure depolama verilerine ve kaynaklarına erişim için Azure AD tabanlı kimlik doğrulaması ve yetkilendirme gibi önemli güvenlik geliştirmeleri için Azure Resource Manager dağıtım modelini kullanarak yeni depolama hesapları oluşturun. Mümkünse, Azure Resource Manager kullanmak için klasik dağıtım modelini kullanan mevcut depolama hesaplarını geçirin. Azure Resource Manager hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](/azure/azure-resource-manager/resource-group-overview). | - |
-| Tüm depolama hesaplarınız için Gelişmiş tehdit korumasını etkinleştirin | Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Güvenlik uyarıları, etkinlik gerçekleştiğinde Azure Güvenlik Merkezi 'nde tetiklenir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri araştırıp düzeltilmesi ile ilgili öneriler ile abonelik yöneticilerine e-posta aracılığıyla gönderilir. Daha fazla bilgi için bkz. [Azure depolama Için Gelişmiş tehdit koruması](../common/storage-advanced-threat-protection.md). | [Evet](../../security-center/security-center-sql-service-recommendations.md) |
+| Tüm depolama hesaplarınız için Azure Defender 'ı etkinleştirin | Azure depolama için Azure Defender, depolama hesaplarına yönelik olağan dışı ve zararlı olabilecek girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Güvenlik uyarıları, etkinlik gerçekleştiğinde Azure Güvenlik Merkezi 'nde tetiklenir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri araştırıp düzeltilmesi ile ilgili öneriler ile abonelik yöneticilerine e-posta aracılığıyla gönderilir. Daha fazla bilgi için bkz. Azure [Defender for Azure Storage 'ı yapılandırma](../common/azure-defender-storage-configure.md). | [Evet](../../security-center/security-center-sql-service-recommendations.md) |
 | Blob verileri için geçici silmeyi aç | Geçici silme, blob verilerini sildikten sonra kurtarmanızı sağlar. Geçici silme hakkında daha fazla bilgi için bkz. [Azure depolama Blobları Için geçici silme](storage-blob-soft-delete.md). | - |
 | İş açısından kritik verileri sabit bloblarda depolayın | Blob verilerini bir solucan içinde depolamak için yasal ayrı tutma ve zaman tabanlı bekletme ilkeleri yapılandırın (bir kez yaz, çok oku) durumu. Imune sürekliliği bulunan Bloblar okunabilir, ancak saklama aralığı süresince değiştirilemez veya silinemez. Daha fazla bilgi için bkz. [sabit depolamayla iş açısından kritik blob verilerini depolama](storage-blob-immutable-storage.md). | - |
 | Paylaşılan erişim imzası (SAS) belirteçlerini yalnızca HTTPS bağlantılarıyla sınırla | İstemci blob verilerine erişmek için SAS belirteci kullandığında HTTPS gerektirme, gizlice dinleme riskini en aza indirmenize yardımcı olur. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md). | - |

@@ -1,7 +1,7 @@
 ---
-title: Tasarımcıda verileri dönüştürme (Önizleme)
+title: Tasarımcıda veri dönüştürme
 titleSuffix: Azure Machine Learning
-description: Kendi veri kümelerinizi oluşturmak için Azure Machine Learning tasarımcısında (Önizleme) verileri dönüştürmeyi öğrenin.
+description: Kendi veri kümelerinizi oluşturmak için Azure Machine Learning tasarımcısında verileri dönüştürmeyi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 9124bbfc7300f3a5116c572d569b41e15356ab8f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87457830"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983836"
 ---
-# <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısında veri dönüştürme (Önizleme)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="transform-data-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında veri dönüştürme
+
 
 Bu makalede, Machine Learning için kendi verilerinizi hazırlayabilmeniz için Azure Machine Learning tasarımcısında veri kümelerini dönüştürmeyi ve kaydetmeyi öğreneceksiniz.
 
@@ -107,12 +107,12 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
     **Veri deposu**: mevcut bir veri deposunu seçin veya Şimdi bir tane oluşturmak Için "yeni veri deposu" seçeneğini belirleyin
 
-    **Yol**:`/data/us-income`
+    **Yol**: `/data/us-income`
 
     **Dosya biçimi**: CSV
 
     > [!NOTE]
-    > Bu makalede, geçerli Azure Machine Learning çalışma alanına kayıtlı bir veri deposuna erişiminizin olduğu varsayılır. Bir veri deposu ayarlama hakkında yönergeler için bkz. [Azure Storage Services 'A bağlanma](how-to-access-data.md#studio).
+    > Bu makalede, geçerli Azure Machine Learning çalışma alanına kayıtlı bir veri deposuna erişiminizin olduğu varsayılır. Bir veri deposu ayarlama hakkında yönergeler için bkz. [Azure Storage Services 'A bağlanma](how-to-connect-data-ui.md#create-datastores).
 
     Bir veri deposu yoksa, şimdi bir tane oluşturabilirsiniz. Örneğin, bu makalede veri kümeleri, çalışma alanıyla ilişkili varsayılan BLOB depolama hesabına kaydedilir. Veri kümelerini, `azureml` adlı yeni bir klasörde kapsayıcıya kaydeder `data` .
 
@@ -124,7 +124,7 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
     **Veri deposu**: Yukarıdaki ile aynı veri deposunu seçin
 
-    **Yol**:`/data/non-us-income`
+    **Yol**: `/data/non-us-income`
 
     **Dosya biçimi**: CSV
 

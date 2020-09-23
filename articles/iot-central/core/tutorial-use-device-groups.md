@@ -1,19 +1,19 @@
 ---
-title: Azure IoT Central uygulamanızda cihaz gruplarını kullanma | Microsoft Docs
-description: Bir operatör olarak, Azure IoT Central uygulamanızdaki cihazlardan telemetri çözümlemek için cihaz gruplarını nasıl kullanacağınızı öğrenin.
+title: Öğretici-Azure IoT Central uygulamanızda cihaz gruplarını kullanma | Microsoft Docs
+description: Öğretici-bir operatör olarak, Azure IoT Central uygulamanızdaki cihazlardan telemetri çözümlemek için cihaz gruplarını nasıl kullanacağınızı öğrenin.
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/12/2020
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 58fc71ab05c34e8acd252e7a1984c55996d1b3a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3192a9f121d4380a3e681747596fc91997662bf0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80999031"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967949"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Öğretici: cihaz telemetrisini çözümlemek için cihaz gruplarını kullanma
 
@@ -27,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Cihaz grubu oluşturma
 > * Cihaz telemetrisini çözümlemek için bir cihaz grubu kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, [Azure IoT Central oluşturma uygulamasını](./quick-deploy-iot-central.md) tamamlayıp [IoT Central uygulamanıza sanal bir cihaz ekleyerek](./quick-create-simulated-device.md) , birlikte çalışmak üzere **mxyonga IoT devkit** cihaz şablonunu oluşturmanız gerekir.
 
@@ -81,7 +81,7 @@ Bir cihaz grubunun telemetrisini çözümlemek için:
 
 1. Ortalama telemetri değerlerini görüntülemek için **Çözümle** ' yi seçin:
 
-    ![Analizi görüntüle](./media/tutorial-use-device-groups/view-analysis.png)
+    ![Analizi görüntüleme](./media/tutorial-use-device-groups/view-analysis.png)
 
     Görünümü özelleştirebilir, gösterilen zaman dilimini değiştirebilir ve verileri dışarı aktarabilirsiniz.
 

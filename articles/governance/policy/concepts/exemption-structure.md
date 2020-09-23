@@ -3,12 +3,12 @@ title: İlke muafiyet yapısının ayrıntıları
 description: Kaynakları veya tanımları değerlendirmesinden muaf tutmak için Azure Ilkesi tarafından kullanılan ilke muafiyet tanımını açıklar.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3e6a6c9bc7993161697187b6131994c1973b49d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941351"
+ms.locfileid: "90968044"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Ilke muafiyet yapısı
 
@@ -99,11 +99,12 @@ Bu alan, bir ilke atamasının ya da bir girişim atamasının tam yol adı olma
 
 , `policyAssignmentId` Bir girişim ataması için ise, özelliği, `policyDefinitionReferenceIds` Konu kaynağında hangi ilke tanımının bir istisna olduğunu belirtmek için kullanılabilir. Kaynak bir veya daha fazla dahil edilen ilke tanımlarından muaf tutulmayabilir, bu özellik bir _dizidir_. Değerlerin, alanlardaki girişim tanımındaki değerlerle eşleşmesi gerekir `policyDefinitions.policyDefinitionReferenceId` .
 
-## <a name="required-permissions"></a>Gerekli izinler
+## <a name="exemption-category"></a>Muafiyet kategorisi
 
-Ilke muafiyeti nesnelerini yönetmek için gereken Azure RBAC izinleri, `Microsoft.Authorization/policyExemptions` işlem grubunda. Yerleşik roller [kaynak Ilkesi katılımcısı](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) ve [Güvenlik Yöneticisi](../../../role-based-access-control/built-in-roles.md#security-admin) , hem Izinleri hem de `read` `write` [ilke öngörüleri veri yazıcısı (Önizleme)](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) `read` iznine sahiptir.
+İki muafiyet kategorisi vardır ve muafiyetleri gruplandırmak için kullanılır:
 
-Muafiyetler, bir istisna verme etkisi nedeniyle ek güvenlik önlemleri vardır. `Microsoft.Authorization/policyExemptions/write`Kaynak hiyerarşisinde veya tek bir kaynakta işlemin gerektirdiğinin ötesinde, bir istisna oluşturucusunun `exempt/Action` hedef atamada fiil olması gerekir.
+- **Azaltıldı**: ilke amacı başka bir yöntem aracılığıyla karşılandığından muafiyet verilir.
+- **Feragat aldığınız**: muafiyet, kaynağın uyumsuzluk durumu geçici olarak kabul edildiği için verilir. Bu kategoriyi kullanmanın başka bir nedeni, bir girişim içindeki bir veya daha fazla tanımından dışlanması gereken bir kaynak veya kaynak hiyerarşisine yöneliktir, ancak tüm girişimden dışlamamalıdır.
 
 ## <a name="expiration"></a>Bitiş tarihi
 
@@ -111,6 +112,12 @@ Bir kaynak hiyerarşisinin veya tek bir kaynağın bir atamaya artık _muaf_ olm
 
 > [!NOTE]
 > Tarihe ulaşıldığında ilke muafiyetleri silinmez `expiresOn` . Nesne kayıt tutulması için korunur, ancak muafiyet artık onaylanmaz.
+
+## <a name="required-permissions"></a>Gerekli izinler
+
+Ilke muafiyeti nesnelerini yönetmek için gereken Azure RBAC izinleri, `Microsoft.Authorization/policyExemptions` işlem grubunda. Yerleşik roller [kaynak Ilkesi katılımcısı](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) ve [Güvenlik Yöneticisi](../../../role-based-access-control/built-in-roles.md#security-admin) , hem Izinleri hem de `read` `write` [ilke öngörüleri veri yazıcısı (Önizleme)](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) `read` iznine sahiptir.
+
+Muafiyetler, bir istisna verme etkisi nedeniyle ek güvenlik önlemleri vardır. `Microsoft.Authorization/policyExemptions/write`Kaynak hiyerarşisinde veya tek bir kaynakta işlemin gerektirdiğinin ötesinde, bir istisna oluşturucusunun `exempt/Action` hedef atamada fiil olması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

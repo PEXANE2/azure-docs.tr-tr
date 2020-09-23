@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: c6a779deef3ed1dc0a4d5e83c38f483776adf6fe
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 132e21c861f50caca37fb6fc5df660ff413d07a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387379"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905487"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Güvenlik Merkezinde veri toplama
 Güvenlik Merkezi, Azure sanal makinelerinizden (VM), sanal makine ölçek kümelerinden, IaaS kapsayıcılarından ve Azure olmayan (Şirket içi) bilgisayarların yanı sıra güvenlik açıklarını ve tehditleri izlemek için veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Log Analytics Aracı kullanılarak toplanır. Bu verilere örnek olarak şunlar verilebilir: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açmış kullanıcı.
@@ -27,27 +27,30 @@ Bu makalede, bir Log Analytics aracısının nasıl yükleneceği ve toplanan ve
 > - Desteklenen platformların listesi için bkz. [Azure Güvenlik Merkezi 'Nde desteklenen platformlar](security-center-os-coverage.md).
 > - Yeni veya mevcut bir çalışma alanı kullanmanıza bakılmaksızın verileri Log Analytics depolama, veri depolama için ek ücretler gerektirebilir. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="enable-automatic-provisioning-of-the-log-analytics-agent"></a>Log Analytics aracısının otomatik sağlamasını etkinleştir<a name="auto-provision-mma"></a>
+## <a name="enable-automatic-provisioning-of-the-log-analytics-agent"></a>Log Analytics aracısının otomatik sağlamasını etkinleştir <a name="auto-provision-mma"></a>
 
 Makinelerden verileri toplamak için Log Analytics aracısının yüklü olması gerekir. Aracının yüklenmesi otomatik olarak yapılabilir (önerilir) veya aracıyı el ile yükleyebilirsiniz. Varsayılan olarak, otomatik sağlama kapalıdır.
 
 Otomatik sağlama açık olduğunda, Güvenlik Merkezi, desteklenen tüm Azure VM 'Lere ve oluşturulan tüm yeni sanal makinelere Log Analytics aracısını dağıtır. Otomatik sağlama önerilir, ancak gerekirse aracıyı el ile yükleyebilirsiniz (bkz. [Log Analytics aracısının el ile yüklenmesi](#manual-agent)).
 
 
+
 Log Analytics aracısının otomatik sağlamasını etkinleştirmek için:
-1. Portalda Güvenlik Merkezi 'nin menüsünde, **fiyatlandırma & ayarları**' nı seçin.
-2. Uygun aboneliği seçin.
 
-   ![Abonelik seçme][7]
+1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
+1. Uygun aboneliği seçin.
+1. **Veri toplama** sayfasında, **otomatik sağlamayı** **Açık**olarak ayarlayın.
+1. **Kaydet**’i seçin.
 
-3. **Veri toplamayı**seçin.
-4. Otomatik **sağlama altında,** otomatik sağlamayı etkinleştirmek için **Açık** ' ı seçin.
-5. **Kaydet**’i seçin. Aracı, 15 dakika içinde tüm VM 'Lere dağıtılır. 
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Log Analytics aracısının otomatik olarak sağlanması etkinleştiriliyor":::
 
 >[!TIP]
 > Bir çalışma alanının sağlanması gerekiyorsa, aracı yüklemesi 25 dakikaya kadar sürebilir.
 
-   ![Otomatik sağlamayı etkinleştirme][1]
+Makinelerinize dağıtılan Aracı, Güvenlik Merkezi, sistem güncelleştirme durumu, işletim sistemi güvenlik yapılandırması, uç nokta koruması ve ek güvenlik uyarıları oluşturma ile ilgili ek öneriler sağlayabilir.
+
+>[!NOTE]
+> Otomatik sağlamanın **kapalı** olarak ayarlanması, aracısının zaten sağlandığı Azure vm 'lerinden Log Analytics aracısını kaldırmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.
 
 >[!NOTE]
 > - Önceden var olan bir yüklemeyi sağlama hakkında yönergeler için, bkz. [Otomatik sağlama, önceden var olan aracı yüklemesi durumlarında](#preexisting).
@@ -78,7 +81,7 @@ Güvenlik Merkezi tarafından oluşturulan bir çalışma alanı seçmek için:
 1. Güvenlik Merkezi, abonelik için ayarlanan fiyatlandırma katmanı uyarınca çalışma alanında bir güvenlik merkezi çözümünü otomatik olarak etkinleştirir. 
 
 > [!NOTE]
-> Güvenlik Merkezi tarafından oluşturulan çalışma alanlarının Log Analytics fiyatlandırma katmanı, güvenlik merkezi faturalandırmasını etkilemez. Güvenlik Merkezi faturaları her zaman bir çalışma alanına yüklenmiş olan Güvenlik Merkezi ilkelerine ve çözümlerine göre belirlenir. Güvenlik Merkezi, Ücretsiz katmanında varsayılan çalışma alanında *SecurityCenterFree* çözümünü etkinleştirir. Güvenlik Merkezi, Standart katman için varsayılan çalışma alanında *güvenlik* çözümüne izin vermez.
+> Güvenlik Merkezi tarafından oluşturulan çalışma alanlarının Log Analytics fiyatlandırma katmanı, güvenlik merkezi faturalandırmasını etkilemez. Güvenlik Merkezi faturaları her zaman bir çalışma alanına yüklenmiş olan Güvenlik Merkezi ilkelerine ve çözümlerine göre belirlenir. Azure Defender olmayan abonelikler için Güvenlik Merkezi, varsayılan çalışma alanında *Securitycenterfree* çözümüne izin vermez. Güvenlik Merkezi, Azure Defender ile abonelikler için varsayılan çalışma alanında *güvenlik* çözümüne izin vermez.
 > Log Analytics veri depolama, veri depolama için ek ücretler gerektirebilir. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 Mevcut Log Analytics Hesapları hakkında daha fazla bilgi için bkz. [var olan Log Analytics müşterileri](./faq-azure-monitor-logs.md).
@@ -97,7 +100,7 @@ Mevcut bir Log Analytics çalışma alanını seçmek için:
 
 1. **Varsayılan çalışma alanı yapılandırması**altında **başka bir çalışma alanı kullan**' ı seçin.
 
-   ![Mevcut çalışma alanını seçin][2]
+   ![Başka bir çalışma alanı kullan][2]
 
 2. Açılan menüden, toplanan verileri depolamak için bir çalışma alanı seçin.
 
@@ -117,23 +120,28 @@ Mevcut bir Log Analytics çalışma alanını seçmek için:
    >
    >
 
-   - İşlemi iptal etmek için **Iptal 'i** seçin.
+   - İşlemi iptal etmek için **Iptal 'i**seçin.
 
-     ![Mevcut çalışma alanını seçin][3]
+     ![İzlenen VM 'Leri yeniden yapılandırma seçeneklerini gözden geçirin][3]
 
-5. Log Analytics aracısını ayarlamayı düşündüğünüz istenen çalışma alanı için fiyatlandırma katmanını seçin. <br>Mevcut bir çalışma alanını kullanmak için, çalışma alanının fiyatlandırma katmanını ayarlayın. Bu, bir güvenlik merkezi çözümünü zaten mevcut değilse çalışma alanına yükler.
+5. Çalışma alanında Azure Defender 'ın etkin olup olmayacağını seçin.
 
-    a.  Güvenlik Merkezi ana menüsünde, **fiyatlandırma & ayarları**' nı seçin.
+    Mevcut bir çalışma alanını kullanmak için, çalışma alanının fiyatlandırma katmanını ayarlayın. Bu, bir güvenlik merkezi çözümünü zaten mevcut değilse çalışma alanına yükler.
+
+    1. Güvenlik Merkezi ana menüsünde, **fiyatlandırma & ayarları**' nı seçin.
      
-    b.  Aracıyı bağlamayı planladığınız istediğiniz çalışma alanını seçin.
-        ![Çalışma alanı ][7] c 'yi seçin. Fiyatlandırma katmanını ayarlayın.
-        ![Fiyatlandırma katmanını seçin][9]
+    1. Aracıyı bağlanacağınız çalışma alanını seçin.
+
+    1. **Azure Defender** veya **Azure Defender kapalı**' yı seçin.
+
    
    >[!NOTE]
    >Çalışma alanında zaten bir **güvenlik** veya **securitycenterücretsiz** çözümü etkinse, fiyatlandırma otomatik olarak ayarlanır. 
 
+
 ## <a name="cross-subscription-workspace-selection"></a>Çapraz abonelik çalışma alanı seçimi
 Verilerinizin kaydedileceği bir çalışma alanı seçtiğinizde, tüm aboneliklerinizde tüm çalışma alanları kullanılabilir. Abonelikler arası çalışma alanı seçme özelliği sayesinde farklı aboneliklerde çalışan sanal makinelerden veri toplayabilir ve bunları istediğiniz çalışma alanında depolayabilirsiniz. Bu seçim, kuruluşunuzda merkezi bir çalışma alanı kullandığınızda ve bunu güvenlik veri koleksiyonu için de kullanmak istediğinizde kullanışlıdır. Çalışma alanlarını yönetme hakkında daha fazla bilgi için bkz. [çalışma alanı erişimini yönetme](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access).
+
 
 
 ## <a name="data-collection-tier"></a>Veri toplama katmanı
@@ -150,7 +158,7 @@ Azure Güvenlik Merkezi'nde seçtiğiniz veri koleksiyonu katmanı yalnızca gü
 
 
 > [!NOTE]
-> Bu güvenlik olayları kümeleri yalnızca güvenlik merkezi 'nin standart katmanında kullanılabilir. Güvenlik Merkezi’nin fiyatlandırma katmanları hakkında daha fazla bilgi almak için bkz. [Fiyatlandırma](security-center-pricing.md).
+> Bu güvenlik olayları kümeleri yalnızca Azure Defender ile kullanılabilir. Güvenlik Merkezi’nin fiyatlandırma katmanları hakkında daha fazla bilgi almak için bkz. [Fiyatlandırma](security-center-pricing.md).
 Bu kümeler tipik senaryolara yönelik olarak tasarlanmıştır. Uygulamadan önce ihtiyaçlarınıza uygun olanı değerlendirdiğinizden emin olun.
 >
 >
@@ -188,7 +196,7 @@ Filtreleme ilkenizi seçmek için:
 
    ![Filtreleme ilkesi seçin][5]
 
-### <a name="automatic-provisioning-in-cases-of-a-pre-existing-agent-installation"></a>Önceden var olan bir aracı yüklemesi durumlarında otomatik sağlama<a name="preexisting"></a> 
+### <a name="automatic-provisioning-in-cases-of-a-pre-existing-agent-installation"></a>Önceden var olan bir aracı yüklemesi durumlarında otomatik sağlama <a name="preexisting"></a> 
 
 Aşağıdaki kullanım örnekleri, zaten bir aracı veya uzantının yüklü olduğu durumlarda otomatik sağlama 'nın nasıl çalıştığını belirtir. 
 
@@ -210,7 +218,7 @@ Güvenlik Merkezi, Log Analytics aracı uzantısını mevcut Operations Manager 
     - Var olan uzantının hangi çalışma alanına veri gönderdiğini görmek için, [Azure Güvenlik Merkezi ile bağlantıyı doğrulamak](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)üzere testi çalıştırın. Alternatif olarak, Log Analytics çalışma alanlarını açabilir, bir çalışma alanı seçebilir, sanal makineyi seçebilir ve Log Analytics Aracı bağlantısına bakabilirsiniz. 
     - Log Analytics aracısının istemci iş istasyonlarında yüklü olduğu bir ortamınız varsa ve var olan bir Log Analytics çalışma alanına raporlama yaptıysanız, işletim sisteminizin desteklendiğinden emin olmak için [Azure Güvenlik Merkezi tarafından desteklenen işletim sistemlerinin](security-center-os-coverage.md) listesini gözden geçirin. Daha fazla bilgi için bkz. [var olan Log Analytics müşterileri](./faq-azure-monitor-logs.md).
  
-### <a name="turn-off-automatic-provisioning"></a>Otomatik sağlamayı devre dışı bırakma<a name="offprovisioning"></a>
+### <a name="turn-off-automatic-provisioning"></a>Otomatik sağlamayı devre dışı bırakma <a name="offprovisioning"></a>
 Log Analytics aracısının otomatik hazırlanmasını devre dışı bırakmak için:
 
 1. Portalda Güvenlik Merkezi 'nin menüsünde, **fiyatlandırma & ayarları**' nı seçin.
@@ -232,7 +240,7 @@ Daha önce aracılardan sonra otomatik sağlamayı devre dışı bırakırsanız
 >  Otomatik sağlamayı devre dışı bırakmak, aracının sağlandığı Azure VM 'lerinden Log Analytics aracısını kaldırmaz. OMS uzantısını kaldırma hakkında bilgi için, bkz. [Güvenlik Merkezi tarafından yüklenen OMS uzantılarını kaldırma nasıl yaparım?](faq-data-collection-agents.md#remove-oms).
 >
     
-## <a name="manual-agent-provisioning"></a>El ile aracı sağlama<a name="manual-agent"></a>
+## <a name="manual-agent-provisioning"></a>El ile aracı sağlama <a name="manual-agent"></a>
  
 Log Analytics aracısını el ile yüklemek için birkaç yol vardır. El ile yüklerken, otomatik sağlamayı devre dışı bıraktığınızdan emin olun.
 
@@ -244,19 +252,16 @@ Güvenlik Merkezi 'nin sanal makinelerinizden güvenlik verilerini toplayabilmes
 
 1. İsteğe bağlı olarak, bir çalışma alanı oluşturun.
 
-1. Log Analytics aracısını standart fiyatlandırma katmanına yüklemekte olduğunuz çalışma alanını ayarlayın:
+1. Log Analytics aracısını yüklemekte olduğunuz çalışma alanında Azure Defender 'ı etkinleştirin:
 
     1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
 
     1. Aracıyı yüklemekte olduğunuz çalışma alanını ayarlayın. Çalışma alanının, güvenlik merkezi 'nde kullandığınız abonelikte olduğundan ve çalışma alanında okuma/yazma izinlerine sahip olduğunuzdan emin olun.
 
-    1. Standart fiyatlandırma katmanını ayarlayın ve **Kaydet**' i seçin.
-
-        ![Çalışma alanını standart fiyatlandırma katmanına ayarlama](.\media\security-center-enable-data-collection\workspace-to-standard-tier.gif)
+    1. Azure Defender 'ı açık olarak ayarlayın ve **Kaydet**' i seçin.
 
        >[!NOTE]
        >Çalışma alanında zaten bir **güvenlik** veya **securitycenterücretsiz** çözümü etkinse, fiyatlandırma otomatik olarak ayarlanır. 
-   > 
 
 1. Aracıları Kaynak Yöneticisi şablonu kullanarak yeni VM 'lerde dağıtmak istiyorsanız, Log Analytics Aracısı 'nı yükleyebilirsiniz:
 
@@ -308,7 +313,6 @@ Bu makalede, güvenlik merkezi 'nde veri toplama ve otomatik sağlama işlemleri
 [2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
 [5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[6]: ./media/security-center-enable-data-collection/disable-data-collection.png
 [7]: ./media/security-center-enable-data-collection/select-subscription.png
 [8]: ./media/security-center-enable-data-collection/manual-provision.png
 [9]: ./media/security-center-enable-data-collection/pricing-tier.png

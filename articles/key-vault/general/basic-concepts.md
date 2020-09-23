@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: dfb1ca4fc8f550c8ed6955adaca9082f0b6b79e6
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379010"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983301"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault temel kavramlar
 
-Azure Key Vault, gizli dizilerin güvenli bir şekilde depolanması ve bunlara erişim sağlanması için tasarlanmış bir araçtır. Gizli dizi; API anahtarları, parolalar veya sertifikalar gibi erişimi sıkı bir şekilde denetlemek istediğiniz tüm öğelerdir. Kasa, mantıksal bir gizli dizi grubudur.
+Azure Key Vault, gizli dizileri güvenli bir şekilde depolamak ve bunlara erişmek için bir bulut hizmetidir. Gizli dizi, API anahtarları, parolalar, sertifikalar veya şifreleme anahtarları gibi erişimi sıkı şekilde denetlemek istediğiniz her şeydir. Key Vault hizmet iki tür kapsayıcıyı destekler: kasa ve yönetilen HSM havuzları. Kasalar, yazılım ve HSM destekli anahtarları, parolaları ve sertifikaları depolamayı destekler. Yönetilen HSM havuzları yalnızca HSM destekli anahtarları destekler. Tüm ayrıntılar için [Azure Key Vault REST API genel bakış](about-keys-secrets-certificates.md) bölümüne bakın.
 
 Diğer önemli terimler şunlardır:
 
@@ -28,6 +28,12 @@ Diğer önemli terimler şunlardır:
 - **Kasa sahibi**: Kasa sahibi, anahtar kasası oluşturabilir ve anahtar kasası üzerinde tam erişime ve denetime sahip olabilir. Kasa sahibi, gizli dizilere ve anahtarlara kimlerin eriştiğini günlüğe kaydetmek için belirli denetim özellikleri de ayarlayabilir. Yöneticiler anahtarların yaşam döngüsünü kontrol edebilir. Anahtarı yeni sürüme geçirebilir, yedekleyebilir ve ilgili görevleri gerçekleştirebilirler.
 
 - **Kasa tüketicisi**: Kasa tüketicisi, kasa sahibi tarafından tüketici erişimi sağlandığında, anahtar kasasındaki varlıklar üzerinde belirli eylemler gerçekleştirebilir. Kullanılabilen eylemler verilen izinlere bağlıdır.
+
+- **YÖNETILEN HSM yöneticileri**: yönetici rolüne atanan kullanıcıların, YÖNETILEN bir HSM havuzu üzerinde tamamen denetimi vardır. Diğer kullanıcılara denetimli erişim vermek için daha fazla rol ataması oluşturabilirler.
+
+- **YÖNETILEN HSM şifre Müdürü/Kullanıcı**: yönetilen HSM 'deki anahtarları kullanarak şifreleme işlemleri gerçekleştirecek kullanıcılara veya hizmet sorumlularına genellikle atanan yerleşik roller. Şifrelenmiş Kullanıcı yeni anahtarlar oluşturabilir, ancak anahtarları silemez.
+
+- **YÖNETILEN HSM şifre hizmeti şifrelemesi**: müşterinin yönettiği anahtarla bekleyen verilerin şifrelenmesi için genellikle bir hizmet hesabı yönetilen hizmet kimliğine (örn. depolama hesabı) atanan yerleşik rol.
 
 - **Kaynak**: Azure aracılığıyla kullanılan, yönetilebilir bir öğedir. Sanal makine, depolama hesabı, Web uygulaması, veritabanı ve sanal ağ örnekleri yaygın olarak verilebilir. Birçok daha vardır.
 
@@ -43,7 +49,7 @@ Diğer önemli terimler şunlardır:
 
     ![Azure kaynakları için yönetilen kimliklerin nasıl çalıştığı diyagramı](../media/key-vault-whatis/msi.png)
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 Key Vault tüm işlemleri yapmak için önce bu kimlik doğrulaması yapmanız gerekir. Key Vault doğrulamak için üç yol vardır:
 
 - [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md): Azure 'da bir sanal makinede uygulama dağıtırken, Key Vault erişimi olan sanal makinenize bir kimlik atayabilirsiniz. Ayrıca, [diğer Azure kaynaklarına](../../active-directory/managed-identities-azure-resources/overview.md)kimlik de atayabilirsiniz. Bu yaklaşımın avantajı, uygulamanın veya hizmetin ilk gizli dizi dönüşünü yönetmediğinde. Azure, kimliği otomatik olarak döndürür. En iyi uygulama olarak bu yaklaşımı öneririz. 
@@ -59,7 +65,7 @@ Geliştiricilerin ve güvenlik yöneticilerinin ihtiyaçlarını karşılamaya A
 | --- | --- | --- |
 | Bir Azure uygulaması geliştiricisi |"İmzalama ve şifreleme için anahtarları kullanan bir Azure uygulaması yazmak istiyorum. Ancak, çözümün coğrafi olarak dağıtılan bir uygulamaya uygun olması için bu anahtarların uygulamamın dışında olmasını istiyorum. <br/><br/>Kodu kendim yazmak zorunda kalmadan bu anahtarların ve parolaların korunmasını istiyorum. Ayrıca, bu anahtar ve gizli dizileri uygulamamın en iyi performansla kullanmasını istiyorum. " |√ Anahtarlar bir kasada depolanır ve gerektiğinde URI tarafından çağrılır.<br/><br/> √ Anahtarlar, endüstri standardında algoritmalar, anahtar uzunlukları ve donanım güvenliği modülleri kullanılarak Azure tarafından korunur.<br/><br/> √ Anahtarlar uygulamalarla aynı Azure veri merkezinde bulunan HSM'lerde işlenir. Bu yöntem, şirket içi gibi ayrı konumlarda bulunan anahtarlardan daha fazla güvenilirlik ve daha az gecikme sağlar. |
 | Hizmet olarak yazılım (SaaS) geliştiricisi |"Müşterilerimin kiracı anahtarları ve gizli dizileri için sorumluluk veya potansiyel sorumluluğun olmasını istemiyorum. <br/><br/>Müşterilerin, temel yazılım özelliklerini sağlayan en iyi ne yaptığına odaklanabilmesi için kendi anahtarlarını sahip olmasını ve yönetmesini istiyorum. " |√ Müşteriler kendi anahtarları Azure'a aktarabilir ve bunları yönetebilir. SaaS uygulamasının, müşterilerin anahtarlarını kullanarak şifreleme işlemleri gerçekleştirmesi gerektiğinde, Key Vault bu işlemleri uygulama adına yapar. Uygulama, müşterilerin anahtarlarını görmez. |
-| Güvenlik başkanı (CSO) |"Uygulamalarınızın, güvenli anahtar yönetimi için FIPS 140-2 düzey 2 HSM 'lerle uyumlu olduğunu bildirmek istiyorum. <br/><br/>Kuruluşumun anahtar yaşam döngüsü denetimine sahip olduğundan ve anahtar kullanımını izleyebildiğinden emin olmak istiyorum. <br/><br/>Birden çok Azure hizmeti ve kaynağı kullandığımızda, anahtarları Azure 'da tek bir konumdan yönetmek istiyorum. " |√ HSM'ler, FIPS 140-2 Düzey 2 doğrulanmasına sahiptir.<br/><br/>√ Anahtar Kasası, Microsoft anahtarlarınızı görmeyecek ve ayıklamayacak şekilde tasarlanmıştır.<br/><br/>√ Anahtar kullanımı neredeyse gerçek zamanlı olarak günlüğe kaydedilir.<br/><br/>√ Kasa, Azure'da kaç kasanız olduğuna, bunların hangi bölgeleri desteklediğine ve hangi uygulamaların bunları kullandığına bakmaksızın tek bir arabirim sağlar. |
+| Güvenlik başkanı (CSO) |"Uygulamalarınızın, güvenli anahtar yönetimi için FIPS 140-2 düzey 2 veya FIPS 140-2 düzey 3 HSM 'lerle uyumlu olduğunu bildirmek istiyorum. <br/><br/>Kuruluşumun anahtar yaşam döngüsü denetimine sahip olduğundan ve anahtar kullanımını izleyebildiğinden emin olmak istiyorum. <br/><br/>Birden çok Azure hizmeti ve kaynağı kullandığımızda, anahtarları Azure 'da tek bir konumdan yönetmek istiyorum. " |√ FIPS 140-2 düzey 2 doğrulanan HSM 'ler için **kasa** seçin.<br/>√ FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'ler için **yönetilen HSM havuzlarını** seçin.<br/><br/>√ Anahtar Kasası, Microsoft anahtarlarınızı görmeyecek ve ayıklamayacak şekilde tasarlanmıştır.<br/>√ Anahtar kullanımı neredeyse gerçek zamanlı olarak günlüğe kaydedilir.<br/><br/>√ Kasa, Azure'da kaç kasanız olduğuna, bunların hangi bölgeleri desteklediğine ve hangi uygulamaların bunları kullandığına bakmaksızın tek bir arabirim sağlar. |
 
 Bir Azure aboneliği olan herhangi biri, anahtar kasalarını oluşturabilir ve kullanabilir. Key Vault, geliştiricilerin ve güvenlik yöneticilerinin avantajları olsa da, diğer Azure hizmetlerini yöneten bir kuruluşun yöneticisi tarafından uygulanabilir ve yönetilebilir. Örneğin, bu yönetici bir Azure aboneliğiyle oturum açabilir, anahtar depolayabileceği kuruluş için bir kasa oluşturabilir ve ardından bunlar gibi işletimsel görevlerden sorumludur:
 
@@ -77,7 +83,8 @@ Geliştiriciler ayrıca anahtarları doğrudan API'lerini kullanarak yönetebili
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kasalarınızın güvenliğini](secure-your-key-vault.md)nasıl sağlayacağınızı öğrenin.
+- [Kasalarınızın güvenliğini](secure-your-key-vault.md)nasıl sağlayacağınızı öğrenin.
+- [YÖNETILEN HSM havuzlarınızı güvenli hale getirme](../managed-hsm/access-control.md) hakkında bilgi edinin
 
 <!--Image references-->
 [1]: ../media/key-vault-whatis/AzureKeyVault_overview.png

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: b14f3c241fd21d3d4f9c4e17ae95d8048139cec1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 12ab54e51b26c4b3d77f5518d4e4f44efe34affd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442880"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983318"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure portal kullanarak VNet-VNet VPN Gateway bağlantısı yapılandırma
 
@@ -178,7 +178,7 @@ Sonra, Ile vnet4 arasında ile VNet1 arasında bir bağlantı oluşturun. Portal
    ![Bağlantıları doğrula](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png "Bağlantıları doğrula")
 3. **Ad** sütununda, daha fazla bilgi görüntülemek için bağlantılardan birini seçin. Veriler akışa başladığında, **Içindeki verilerin** değerlerini ve **dışarı veri**akışını görürsünüz.
 
-   ![Durum](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "Durum")
+   ![Ekran görüntüsü, içindeki ve veri çıkışı için değerler içeren bir kaynak grubu gösterir.](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "Durum")
 
 ## <a name="add-additional-connections"></a>Ek bağlantı ekleme
 

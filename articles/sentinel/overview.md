@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel nedir? | Microsoft Docs
+title: Azure Sentinel nedir? | Microsoft Belgeleri
 description: Azure Sentinel, ölçeklenebilir, bulut Yerel güvenlik bilgileri olay yönetimi (SıEM) ve güvenlik Orchestration otomatik yanıtı (SOAR) çözümü hakkında bilgi edinin.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 1bd61341683148cfc6431d7ca4b1f9293e19e760
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 68ccd21af585d853592ab8cce24f251d810a4160
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662030"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889199"
 ---
 # <a name="what-is-azure-sentinel"></a>Azure Sentinel nedir?
 
 Microsoft Azure Sentinel, ölçeklenebilir, bulutta yerel, **güvenlik bilgileri olay yönetimi (SıEM)** ve **güvenlik Orchestration otomatik yanıtı (Soar)** çözümüdür. Azure Sentinel, bir uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı için tek bir çözüm sunarak kuruluş genelinde akıllı güvenlik Analizi ve tehdit bilgileri sunar. 
 
-Azure Sentinel, daha fazla gelişmiş saldırı elde etmek, uyarı hacimlerini artırmak ve uzun çözüm zaman çerçevelerinden elde hafifletmesini, kurumsal bir modern bakış görünümünüz.
+Azure Sentinel, çok daha fazla gelişmiş saldırı, uyarı hacimlerini artırma ve uzun çözüm süresi çerçevelerinden oluşan, kurumsal hafifletmesini, kuruluş genelinde büyük bir bakış görünümünüz.
 
 - Hem şirket içinde hem de birden çok bulutta, tüm kullanıcılar, cihazlar, uygulamalar ve altyapıda **bulut ölçeğinde veri toplayın** . 
 
@@ -43,7 +43,7 @@ Azure Sentinel, mevcut Azure hizmetlerinin tam aralığında oluşturma, Log Ana
 
 ## <a name="connect-to-all-your-data"></a>Tüm verilerinize bağlanın
 
-Azure Sentinel 'de, ilk olarak [güvenlik kaynaklarınıza bağlanmanız](connect-data-sources.md)gerekir. Azure Sentinel, Microsoft çözümleri için çok sayıda bağlayıcıyla sunulur ve Microsoft 365 Defender (eski adıyla Microsoft tehdit koruması) çözümleri ve Office 365, Azure AD, kimlik için Microsoft Defender (eski adıyla Azure ATP) ve Microsoft Cloud App Security gibi Microsoft 365 kaynakları dahil gerçek zamanlı tümleştirme sağlar. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar vardır. Ayrıca, veri kaynaklarınızı Azure Sentinel 'e bağlamak için ortak olay biçimi, syslog veya REST API de kullanabilirsiniz.  
+Azure Sentinel 'de, ilk olarak [güvenlik kaynaklarınıza bağlanmanız](connect-data-sources.md)gerekir. Azure Sentinel, Microsoft çözümleri için çok sayıda bağlayıcıyla sunulur ve Microsoft 365 Defender (eski adıyla Microsoft tehdit koruması) çözümleri ve Office 365, Azure AD, kimlik için Microsoft Defender (eski adıyla Azure ATP) ve Microsoft Cloud App Security gibi Microsoft 365 kaynakları dahil gerçek zamanlı tümleştirme sağlar. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar vardır. Ayrıca, veri kaynaklarınızı Azure Sentinel 'e bağlamak için ortak olay biçimi, syslog veya REST API de kullanabilirsiniz. 
 
 ![Veri Toplayıcılar](./media/collect-data/collect-data-page.png)
 

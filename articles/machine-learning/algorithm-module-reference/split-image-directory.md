@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 9673b3260425fd9244c635beaf77d367a14cac54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63ae7115f905523a3aac131fd7e77b56eb695243
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84810197"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890263"
 ---
 # <a name="split-image-directory"></a>Görüntü Dizinini Bölme
 
-Bu konu başlığı altında, bir görüntü dizininin görüntülerini iki ayrı küme içine bölmek için Azure Machine Learning Designer 'da (Önizleme) bölünmüş görüntü dizini modülünün nasıl kullanılacağı açıklanmaktadır.
+Bu konuda, bir görüntü dizininin görüntülerini iki ayrı kümesine bölmek için Azure Machine Learning tasarımcısında bölünmüş görüntü dizini modülünün nasıl kullanılacağı açıklanmaktadır.
 
 Bu modül, görüntü verilerini eğitim ve test kümelerine ayırmanız gerektiğinde özellikle yararlıdır. 
 
@@ -35,19 +35,19 @@ Bu modül, görüntü verilerini eğitim ve test kümelerine ayırmanız gerekti
 
 ### <a name="expected-inputs"></a>Beklenen girişler
 
-| Name                  | Tür           | Açıklama              |
+| Ad                  | Tür           | Açıklama              |
 | --------------------- | -------------- | ------------------------ |
 | Giriş resmi dizini | ImageDirectory | Bölünecek görüntü dizini |
 
 ### <a name="module-parameters"></a>Modül parametreleri
 
-| Name                                   | Tür  | Aralık | İsteğe Bağlı | Açıklama                            | Varsayılan |
+| Ad                                   | Tür  | Aralık | İsteğe Bağlı | Açıklama                            | Varsayılan |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
-| İlk çıktıda görüntülerin kesri | Float | 0-1   | Gerekli | İlk çıktıda görüntülerin kesri | 0.9     |
+| İlk çıktıda görüntülerin kesri | Float | 0-1   | Gerekli | İlk çıktıda görüntülerin kesri | 0,9     |
 
 ### <a name="outputs"></a>Çıkışlar
 
-| Name                    | Tür           | Açıklama                              |
+| Ad                    | Tür           | Açıklama                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | Çıkış resmi Directory1 | ImageDirectory | Seçili görüntüleri içeren görüntü dizini |
 | Çıkış resmi directory2 | ImageDirectory | Diğer tüm görüntüleri içeren görüntü dizini |

@@ -8,26 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a364588d77fb24e96c831ce541c5bb4e63d93e98
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a5a3757a33beebb6e688dbea13259723da9280cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922353"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904574"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Hızlı başlangıç: anomali algılayıcısının REST API ve C kullanarak zaman serisi verilerinizde bozukluklar algılama #
 
-Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup olmadığı konusunda anomali algılayıcı API 'sinin iki algılama modunu kullanmaya başlayın. Bu C# uygulaması JSON biçimli zaman serisi verilerini içeren iki API isteği gönderir ve yanıtları alır.
+Bu hızlı başlangıcı, zaman serisi verilerinizde bulunan anormallikleri algılamak için anomali algılayıcı API 'sini kullanmaya başlamak için kullanın. Bu C# uygulaması, JSON biçimli zaman serisi verilerini içeren API istekleri gönderir ve yanıtları alır.
 
 | API isteği                                        | Uygulama çıkışı                                                                                                                                         |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Bir toplu iş olarak anomali algılama                        | Zaman serisi verilerinde her bir veri noktasının anomali durumunu (ve diğer verileri) ve algılanan tüm anormalilerin konumlarını içeren JSON yanıtı. |
-| En son veri noktasının anomali durumunu Algıla | Zaman serisi verilerinde en son veri noktası için anomali durumunu (ve diğer verileri) içeren JSON yanıtı.                                        |
+| En son veri noktasının anomali durumunu Algıla | Zaman serisi verilerinde en son veri noktası için anomali durumunu (ve diğer verileri) içeren JSON yanıtı. |
+| Yeni veri eğilimlerini işaretleyen değişiklik noktalarını Algıla | Zaman serisi verilerinde algılanan değişiklik noktalarını içeren JSON yanıtı. |
 
- Bu uygulama C# dilinde yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu hızlı başlangıç için kaynak kodunu [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs)'da bulabilirsiniz.
+Bu uygulama C# dilinde yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu hızlı başlangıç için kaynak kodunu [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs)'da bulabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -61,6 +62,7 @@ Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup
     |------------------------------------|--------------------------------------------------|
     | Toplu iş algılama                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
     | En son veri noktasında algılama | `/anomalydetector/v1.0/timeseries/last/detect`   |
+    | Değişiklik noktası algılama | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
@@ -95,6 +97,18 @@ Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup
 
     [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
 
+## <a name="detect-change-points-in-the-data"></a>Verilerdeki değişiklik noktalarını Algıla
+
+1. Adlı yeni bir işlev oluşturun `detectChangePoints()` . İsteği oluşturun ve `Request()` işlevi uç noktanızla, Batch anomali algılama IÇIN URL 'yi, abonelik anahtarınızı ve zaman serisi verilerini çağırarak gönderin.
+
+2. JSON nesnesinin serisini kaldırma ve konsola yazma.
+
+3. Yanıt bir `code` alan içeriyorsa, hata kodunu ve hata iletisini yazdırın.
+
+4. Aksi takdirde, veri kümesindeki değişiklik noktalarının konumlarını bulun. Yanıtın `isChangePoint` alanı, her biri bir veri noktasının değişiklik noktası olarak tanımlanmış olup olmadığını gösteren bir Boole değerleri dizisi içerir. Bunu, yanıt nesnesinin işleviyle bir dize dizisine dönüştürün `ToObject<bool[]>()` . Dizi boyunca yineleyin ve herhangi bir değerin dizinini yazdırın `true` . Bu değerler, varsa, eğilim değişiklik noktalarının dizinlerine karşılık gelir.
+
+    [!code-csharp[Detect change points](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectChangePoints)]
+
 ## <a name="load-your-time-series-data-and-send-the-request"></a>Zaman serisi verilerinizi yükleyin ve isteği gönderin
 
 1. Uygulamanızın ana yönteminde, JSON zaman serisi verilerinizi ile yükleyin `File.ReadAllText()` .
@@ -108,5 +122,6 @@ Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup
 JSON biçiminde başarılı bir yanıt döndürülür. GitHub 'da JSON yanıtını görüntülemek için aşağıdaki bağlantılara tıklayın:
 * [Örnek toplu iş algılama yanıtı](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [Örnek en son nokta algılama yanıtı](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [Örnek değişim noktası algılama yanıtı](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

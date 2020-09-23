@@ -1,111 +1,141 @@
 ---
-title: Apache Spark ile analitik depo (Önizleme) Sorgula Azure Cosmos DB
-description: Azure SYNAPSE Analytics için Apache Spark ile analitik Azure Cosmos DB sorgulama
+title: Azure SYNAPSE link 'te Apache Spark kullanarak Azure Cosmos DB ile etkileşim kurma (Önizleme)
+description: Azure SYNAPSE link 'te Apache Spark kullanarak Azure Cosmos DB ile etkileşim kurma
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 05/06/2020
+ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7ee04c922e4373414dc27ed2b7c98be605280e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 663c07795926b17eb42ff185ca248454c5bc459c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089116"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881846"
 ---
-# <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Apache Spark analitik mağaza (Önizleme) Azure Cosmos DB sorgulama
+# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te Apache Spark kullanarak Azure Cosmos DB ile etkileşim kurma (Önizleme)
 
-Bu makalede, SYNAPSE hareketlerinden analitik depoyla nasıl etkileşime girebileceği hakkında örnekler verilmektedir. Hareketleri görmek için kapsayıcıya sağ tıklamanız gerekir. Hareketler sayesinde hızlı bir şekilde kod oluşturabilir ve ihtiyaçlarınıza göre düzenleyebilirsiniz. Hareketler ayrıca tek tıklamayla verileri keşfetmek için de idealdir.
+Bu makalede, SYNAPSE Apache Spark kullanarak Azure Cosmos DB nasıl etkileşim kuracağınızı öğreneceksiniz. Scala, Python, Mini SQL ve C# için tam destek sayesinde SYNAPSE Apache Spark, [Azure Cosmos DB Için Azure SYNAPSE bağlantısı](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)'ndaki analiz, veri Mühendisliği, veri bilimi ve veri araştırma senaryolarına yönelik olarak tasarlanmıştır.
 
-## <a name="load-to-dataframe"></a>DataFrame 'e yükle
+Aşağıdaki yetenekler Azure Cosmos DB etkileşimde desteklenirken desteklenir:
+* SYNAPSE Apache Spark, işlem iş yüklerinizin performansını etkilemeden neredeyse gerçek zamanlı olarak Azure SYNAPSE bağlantısı ile etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri analiz etmenizi sağlar. Spark 'dan Azure Cosmos DB [analitik depoyu](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) sorgulamak için aşağıdaki iki seçenek mevcuttur:
+    + Spark DataFrame 'e yükle
+    + Spark tablosu oluşturma
+* SYNAPSE Apache Spark ayrıca, Azure Cosmos DB verileri almanıza olanak sağlar. Verilerin her zaman işlemsel mağaza aracılığıyla Azure Cosmos DB kapsayıcılara alınıp gönderildiğine dikkat edin. SYNAPSE bağlantısı etkinleştirildiğinde, tüm yeni ekler, güncelleştirmeler ve silmeler otomatik olarak analitik depola eşitlenir.
+* SYNAPSE Apache Spark ayrıca, kaynak ve havuz olarak Azure Cosmos DB ile Spark yapısal akışını destekler. 
 
-Bu adımda, bir Spark veri çerçevesinde Azure Cosmos DB analitik deposundan verileri okuyacaksınız. ***SD***adlı veri çerçevesinin 10 satırını görüntüler. Verileriniz dataframe 'e girdikten sonra ek analiz gerçekleştirebilirsiniz.
+Aşağıdaki bölümler, yukarıdaki yetenekler söz diziminde size yol gösterir. Azure SYNAPSE Analytics çalışma alanındaki hareketler, kullanmaya başlamak için kullanımı kolay bir deneyim sunmak üzere tasarlanmıştır. SYNAPSE çalışma alanının **veri** sekmesindeki bir Azure Cosmos DB kapsayıcısına sağ tıkladığınızda hareketler görünür. Hareketler sayesinde hızlı bir şekilde kod oluşturabilir ve ihtiyaçlarınıza göre düzenleyebilirsiniz. Hareketler ayrıca tek tıklamayla verileri keşfetmek için de idealdir.
 
-Bu işlem, işlem deposunu etkilemez.
+## <a name="query-azure-cosmos-db-analytical-store"></a>Analitik depoyu sorgula Azure Cosmos DB
 
+Azure Cosmos DB analitik depoyu sorgulamak, Spark DataFrame 'e yüklemek ve Spark tablosu oluşturmak için kullanabileceğiniz iki olası seçenek hakkında bilgi edinmek için, bu deneyim deneyimdeki farklılıkları inceleyerek gereksinimlerinize göre çalışma seçeneğini seçebilmenizi sağlamaktır.
+
+Deneyimdeki fark, Azure Cosmos DB kapsayıcısında temel alınan veri değişikliklerinin Spark içinde gerçekleştirilen Analize otomatik olarak yansıtılmalıdır. Bir Spark DataFrame veya bir kapsayıcının analitik deposunda bir Spark tablosu oluşturulduğunda, analitik depodaki verilerin geçerli anlık görüntüsünün etrafındaki meta veriler, sonraki çözümlemenin etkili bir şekilde kapatılması için Spark 'a getirilir. Spark DataFrame üzerinde bir eylem çağrılmadığı veya Spark tablosunda bir mini SQL sorgusunun yürütülmediği durumlar olduğundan, Spark 'un bir yavaş değerlendirme ilkesini izlediğine dikkat edin. gerçek veriler, temel alınan kapsayıcının analitik deposundan getirilmez.
+
+**Spark dataframe 'e yükleme**durumunda, getirilen meta veriler Spark oturumunun kullanım ömrü boyunca önbelleğe alınır ve bu nedenle dataframe üzerinde çağrılan sonraki eylemler, dataframe oluşturma sırasında analitik deponun anlık görüntüsüne göre değerlendirilir.
+
+Diğer taraftan, **Spark tablosu oluşturma**durumunda, analitik depolama durumunun meta verileri Spark 'ta önbelleğe alınmaz ve Spark tablosuna göre her bir mini SQL sorgu yürütmesinde yeniden yüklenir.
+
+Bu nedenle, Spark veri çerçevesine yükleme arasında seçim yapabilir ve Spark analizinin analitik deponun sabit bir anlık görüntüsüne veya analiz mağazasının en son anlık görüntüsüne karşı değerlendirilmesini isteyip istememe yoluyla Spark tablosu oluşturabilirsiniz.
+
+> [!NOTE]
+> Mongo DB hesaplarının Azure Cosmos DB API 'sini sorgulamak için, analitik depodaki [tam uygunluk şeması gösterimi](../../cosmos-db/analytical-store-introduction.md#analytical-schema) ve kullanılacak genişletilmiş özellik adları hakkında daha fazla bilgi edinin.
+
+### <a name="load-to-spark-dataframe"></a>Spark DataFrame 'e yükle
+
+Bu örnekte, Azure Cosmos DB analitik deposuna işaret eden bir Spark DataFrame oluşturacaksınız. Daha sonra DataFrame 'e göre Spark eylemlerini çağırarak ek analiz gerçekleştirebilirsiniz. Bu işlem, işlem deposunu etkilemez.
+
+**Python** 'daki sözdizimi aşağıdaki gibi olacaktır:
 ```python
 # To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
 df = spark.read.format("cosmos.olap")\
-    .option("spark.synapse.linkedService", "INFERRED")\
-    .option("spark.cosmos.container", "INFERRED")\
+    .option("spark.synapse.linkedService", "<enter linked service name>")\
+    .option("spark.cosmos.container", "<enter container name>")\
     .load()
-
-df.show(10)
 ```
 
-**Scala** 'daki eşdeğer kod hareketi aşağıdaki kod olacaktır:
+**Scala** 'daki eşdeğer sözdizimi aşağıdaki gibi olacaktır:
 ```java
 // To select a preferred list of regions in a multi-region Azure Cosmos DB account, add option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
 val df_olap = spark.read.format("cosmos.olap").
-    option("spark.synapse.linkedService", "pySparkSamplesDb").
-    option("spark.cosmos.container", "trafficSourceColl").
+    option("spark.synapse.linkedService", "<enter linked service name>").
+    option("spark.cosmos.container", "<enter container name>").
     load()
 ```
 
-## <a name="create-spark-table"></a>Spark tablosu oluşturma
+### <a name="create-spark-table"></a>Spark tablosu oluşturma
 
-Bu hareket sırasında, seçtiğiniz kapsayıcıyı işaret eden bir Spark tablosu oluşturacaksınız. Bu işlem herhangi bir veri hareketine tabi değildir. Bu tabloyu silmeye karar verirseniz, temel alınan kapsayıcı (ve ilgili analitik depo) etkilenmez. 
+Bu örnekte, Azure Cosmos DB analitik deposunu işaret eden bir Spark tablosu oluşturacaksınız. Daha sonra tabloya karşı mini SQL sorguları çağırarak ek analizler gerçekleştirebilirsiniz. Bu işlem, işlem mağazasını etkilemez veya hiçbir veri hareketine neden olmaz. Bu Spark tablosunu silmeye karar verirseniz, temel alınan Azure Cosmos DB kapsayıcısı ve ilgili analitik depo etkilenmeyecektir. 
 
-Bu senaryo, üçüncü taraf araçlarla tabloları yeniden kullanmak ve çalışma zamanına ilişkin verilere erişilebilirlik sağlamak için uygundur.
+Bu senaryo, Spark tablolarının üçüncü taraf araçlar aracılığıyla yeniden kullanılması ve çalışma zamanı için temel alınan verilere erişilebilirlik sağlaması açısından kullanışlıdır.
 
+Spark tablosu oluşturma sözdizimi aşağıdaki gibidir:
 ```sql
 %%sql
 -- To select a preferred list of regions in a multi-region Azure Cosmos DB account, add spark.cosmos.preferredRegions '<Region1>,<Region2>' in the config options
 
 create table call_center using cosmos.olap options (
-    spark.synapse.linkedService 'INFERRED',
-    spark.cosmos.container 'INFERRED'
+    spark.synapse.linkedService '<enter linked service name>',
+    spark.cosmos.container '<enter container name>'
 )
 ```
 
-## <a name="write-dataframe-to-container"></a>Veri çerçevesini kapsayıcıya yaz
+> [!NOTE]
+> Temeldeki Azure Cosmos DB kapsayıcısının şemasının zaman içinde değiştiği senaryolar varsa; aynı şekilde, güncelleştirilmiş şemanın Spark tablosuna karşı sorgularda otomatik olarak yansıtılmasını isterseniz, bunu `spark.cosmos.autoSchemaMerge`  Spark tablosu seçeneklerinde seçeneğini olarak ayarlayarak elde edebilirsiniz `true` .
 
-Bu hareket halinde, bir kapsayıcıya bir veri çerçevesi yazacak. Bu işlem, işlem performansını etkiler ve Istek birimlerini tüketir. Azure Cosmos DB işlem performansı kullanmak yazma işlemleri için idealdir. **Veri çerçevesini** , geri yazmak istediğiniz dataframe ile değiştirdiğinizden emin olun.
 
+## <a name="write-spark-dataframe-to-azure-cosmos-db-container"></a>Spark veri çerçevesini Azure Cosmos DB kapsayıcısına yaz
+
+Bu örnekte, bir Azure Cosmos DB kapsayıcısına Spark DataFrame yazacaksınız. Bu işlem, işlem iş yüklerinin performansını etkiler ve Azure Cosmos DB kapsayıcısına veya paylaşılan veritabanına sağlanan istek birimlerini tüketir.
+
+**Python** 'daki sözdizimi aşağıdaki gibi olacaktır:
 ```python
 # Write a Spark DataFrame into an Azure Cosmos DB container
 # To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
-
 YOURDATAFRAME.write.format("cosmos.oltp")\
-    .option("spark.synapse.linkedService", "INFERRED")\
-    .option("spark.cosmos.container", "INFERRED")\
+    .option("spark.synapse.linkedService", "<enter linked service name>")\
+    .option("spark.cosmos.container", "<enter container name>")\
     .option("spark.cosmos.write.upsertEnabled", "true")\
     .mode('append')\
     .save()
 ```
 
-**Scala** 'daki eşdeğer kod hareketi aşağıdaki kod olacaktır:
+**Scala** 'daki eşdeğer sözdizimi aşağıdaki gibi olacaktır:
 ```java
 // To select a preferred list of regions in a multi-region Azure Cosmos DB account, add option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
 import org.apache.spark.sql.SaveMode
 
 df.write.format("cosmos.oltp").
-    option("spark.synapse.linkedService", "pySparkSamplesDb").
-    option("spark.cosmos.container", "trafficSourceColl"). 
+    option("spark.synapse.linkedService", "<enter linked service name>").
+    option("spark.cosmos.container", "<enter container name>"). 
     option("spark.cosmos.write.upsertEnabled", "true").
     mode(SaveMode.Overwrite).
     save()
 ```
 
-## <a name="load-streaming-dataframe-from-container"></a>Kapsayıcıdan akış veri çerçevesini yükleme
-Bu hareket halinde, bir kapsayıcıdan veri çerçevesine veri yüklemek için Spark akış özelliğini kullanacaksınız. Veriler, çalışma alanına bağladığınız birincil Data Lake hesabında (ve dosya sisteminde) depolanır. 
+> [!NOTE]
+> SYNAPSE Apache Spark dış kitaplıklara başvurmak istiyorsanız, [buradan](#external-library-management)daha fazla bilgi edinebilirsiniz. Örneğin, bir Spark veri çerçevesini Mongo DB için Cosmos DB API 'SI kapsayıcısına almak istiyorsanız Spark için Mongo DB bağlayıcısını [buradan](https://docs.mongodb.com/spark-connector/master/)kullanabilirsiniz.
 
-*/Localreadcheckpointfolder* klasörü oluşturulmadıysa, otomatik olarak oluşturulur. Bu işlem, Azure Cosmos DB işlem performansını etkiler.
+## <a name="load-streaming-dataframe-from-azure-cosmos-db-container"></a>Azure Cosmos DB kapsayıcısından akış veri çerçevesini yükleme
+Bu örnekte, Azure Cosmos DB akışı Değiştir işlevini kullanarak bir Azure Cosmos DB kapsayıcısından bir Spark akış veri çerçevesine veri yüklemek için Spark 'ın yapılandırılmış akış özelliğini kullanacaksınız. Spark tarafından kullanılan denetim noktası verileri, çalışma alanına bağladığınız birincil Data Lake hesabında (ve dosya sisteminde) depolanır.
 
+*/Localreadcheckpointfolder* klasörü oluşturulmadıysa (aşağıdaki örnekte) otomatik olarak oluşturulur. Bu işlem, işlem iş yüklerinin performansını etkiler ve Azure Cosmos DB kapsayıcısı veya paylaşılan veritabanında sağlanan Istek birimlerini kullanır.
+
+**Python** 'daki sözdizimi aşağıdaki gibi olacaktır:
 ```python
 # To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
 dfStream = spark.readStream\
     .format("cosmos.oltp")\
-    .option("spark.synapse.linkedService", "INFERRED")\
-    .option("spark.cosmos.container", "INFERRED")\
+    .option("spark.synapse.linkedService", "<enter linked service name>")\
+    .option("spark.cosmos.container", "<enter container name>")\
     .option("spark.cosmos.changeFeed.readEnabled", "true")\
     .option("spark.cosmos.changeFeed.startFromTheBeginning", "true")\
     .option("spark.cosmos.changeFeed.checkpointLocation", "/localReadCheckpointFolder")\
@@ -113,24 +143,25 @@ dfStream = spark.readStream\
     .load()
 ```
 
-**Scala** 'daki eşdeğer kod hareketi aşağıdaki kod olacaktır:
+**Scala** 'daki eşdeğer sözdizimi aşağıdaki gibi olacaktır:
 ```java
 // To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
 val dfStream = spark.readStream.
     format("cosmos.oltp").
-    option("spark.synapse.linkedService", "pySparkSamplesDb").
-    option("spark.cosmos.container", "trafficSourceColl").
+    option("spark.synapse.linkedService", "<enter linked service name>").
+    option("spark.cosmos.container", "<enter container name>").
     option("spark.cosmos.changeFeed.readEnabled", "true").
     option("spark.cosmos.changeFeed.startFromTheBeginning", "true").
     option("spark.cosmos.changeFeed.checkpointLocation", "/localReadCheckpointFolder").
-    option("spark.cosmos.changeFeed.queryName", "streamTestRevin2").
+    option("spark.cosmos.changeFeed.queryName", "streamQuery").
     load()
 ```
 
-## <a name="write-streaming-dataframe-to-container"></a>Akış veri çerçevesini kapsayıcıya yaz
-Bu hareket halinde, seçtiğiniz Azure Cosmos DB kapsayıcısına bir akış veri çerçevesi yazacaksınız. */Localreadcheckpointfolder* klasörü oluşturulmadıysa, otomatik olarak oluşturulur. Bu işlem, Azure Cosmos DB işlem performansını etkiler.
+## <a name="write-streaming-dataframe-to-azure-cosmos-db-container"></a>Akış veri çerçevesini Azure Cosmos DB kapsayıcısına yaz
+Bu örnekte, bir Azure Cosmos DB kapsayıcısına bir akış veri çerçevesi yazacaksınız. Bu işlem, işlem iş yüklerinin performansını etkiler ve Azure Cosmos DB kapsayıcısı veya paylaşılan veritabanında sağlanan Istek birimlerini kullanır. */Localwritecheckpointfolder* klasörü oluşturulmadıysa (aşağıdaki örnekte) otomatik olarak oluşturulur. 
 
+**Python** 'daki sözdizimi aşağıdaki gibi olacaktır:
 ```python
 # To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
@@ -139,15 +170,15 @@ streamQuery = dfStream\
         .format("cosmos.oltp")\
         .outputMode("append")\
         .option("checkpointLocation", "/localWriteCheckpointFolder")\
-        .option("spark.synapse.linkedService", "INFERRED")\
-        .option("spark.cosmos.container", "trafficSourceColl_sink")\
+        .option("spark.synapse.linkedService", "<enter linked service name>")\
+        .option("spark.cosmos.container", "<enter container name>")\
         .option("spark.cosmos.connection.mode", "gateway")\
         .start()
 
 streamQuery.awaitTermination()
 ```
 
-**Scala** 'daki eşdeğer kod hareketi aşağıdaki kod olacaktır:
+**Scala** 'daki eşdeğer sözdizimi aşağıdaki gibi olacaktır:
 ```java
 // To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
@@ -156,14 +187,30 @@ val query = dfStream.
             format("cosmos.oltp").
             outputMode("append").
             option("checkpointLocation", "/localWriteCheckpointFolder").
-            option("spark.synapse.linkedService", "pySparkSamplesDb").
-            option("spark.cosmos.container", "test2").
+            option("spark.synapse.linkedService", "<enter linked service name>").
+            option("spark.cosmos.container", "<enter container name>").
             option("spark.cosmos.connection.mode", "gateway").
             start()
 
 query.awaitTermination()
 ```
+
+## <a name="external-library-management"></a>Dış Kitaplık Yönetimi
+
+Bu örnekte, Synpade Apache Spark çalışma alanlarında Spark Not defterleri kullanırken JAR dosyalarından dış kitaplıklara nasıl başvurulacağını öğreneceksiniz. JAR dosyalarını, çalışma alanına bağladığınız birincil Data Lake hesabındaki bir kapsayıcıya yerleştirebilir ve ardından `%configure` Spark Not defterinize aşağıdaki ifadeyi ekleyebilirsiniz:
+
+```cmd
+%%configure -f
+{
+    "jars": [
+        "abfss://<storage container name>@<data lake account name>.dfs.core.windows.net/<path to jar>"
+    ]
+}
+```
+Uzaktan Spark iş tanımlarını bir Synapse Spark havuzuna göndermek istiyorsanız, bu [öğreticiyi](../spark/apache-spark-job-definitions.md)izleyerek dış kitaplıklara nasıl başvurulacağını öğrenebilirsiniz.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [SYNAPSE ve Azure Cosmos DB arasında nelerin desteklendiğini öğrenin](./concept-synapse-link-cosmos-db-support.md)
+* [GitHub 'da Azure SYNAPSE bağlantısı ile çalışmaya başlama örnekleri](https://aka.ms/cosmosdb-synapselink-samples)
+* [Azure Cosmos DB için Azure SYNAPSE bağlantısı 'nda nelerin desteklendiğini öğrenin](./concept-synapse-link-cosmos-db-support.md)
 * [Azure Cosmos DB için SYNAPSE bağlantısına Bağlan](../quickstart-connect-synapse-link-cosmos-db.md)

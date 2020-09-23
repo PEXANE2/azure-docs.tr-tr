@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: cc9cb06c2154202f319d57aa77700a356ffe19c1
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419580"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976221"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN Gateway yapılandırma ayarları hakkında
 
@@ -27,8 +27,6 @@ Bu makaledeki değerler VPN ağ geçitleri (-GatewayType VPN kullanan sanal ağ 
 * Bölge yedekli ağ geçitleri için bkz. bölgesel olarak [yedekli ağ geçitleri hakkında](about-zone-redundant-vnet-gateways.md).
 
 * Sanal WAN için bkz. [sanal WAN hakkında](../virtual-wan/virtual-wan-about.md).
-
-
 
 ## <a name="gateway-types"></a><a name="gwtype"></a>Ağ geçidi türleri
 
@@ -152,9 +150,9 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="local-network-gateways"></a><a name="lng"></a>Yerel ağ geçitleri
 
- Yerel ağ geçidi, bir sanal ağ geçidinden farklıdır. Bir VPN ağ geçidi yapılandırması oluştururken, yerel ağ geçidi genellikle şirket içi konumunuzu temsil eder. Klasik dağıtım modelinde, yerel ağ geçidi için Yerel Site olara ifade edilir.
+Yerel ağ geçidi, bir sanal ağ geçidinden farklıdır. Bir VPN ağ geçidi yapılandırması oluştururken, yerel ağ geçidi genellikle şirket içi ağınızı ve ilgili VPN cihazını temsil eder. Klasik dağıtım modelinde, yerel ağ geçidi için Yerel Site olara ifade edilir.
 
-Yerel ağ geçidine bir ad, şirket içi VPN cihazının genel IP adresi verirsiniz ve şirket içi konumda bulunan adres öneklerini belirtebilirsiniz. Azure, ağ trafiği için hedef adres öneklerine bakar, yerel ağ geçidiniz için belirttiğiniz yapılandırmaya bakar ve paketleri buna göre yönlendirir. Ayrıca, bir VPN Ağ Geçidi bağlantısı kullanan VNet-VNet yapılandırmalarına yönelik yerel ağ geçitleri de belirtirsiniz.
+Yerel ağ geçidine bir ad, genel IP adresi veya şirket içi VPN cihazının tam etki alanı adı (FQDN) verirsiniz ve şirket içi konumda bulunan adres öneklerini belirtebilirsiniz. Azure, ağ trafiği için hedef adres öneklerine bakar, yerel ağ geçidiniz için belirttiğiniz yapılandırmaya bakar ve paketleri buna göre yönlendirir. VPN cihazınızda Sınır Ağ Geçidi Protokolü (BGP) kullanıyorsanız, VPN cihazınızın BGP eşi IP adresini ve şirket içi ağınızın otonom sistem numarasını (ASN) sağlarsınız. Ayrıca, bir VPN Ağ Geçidi bağlantısı kullanan VNet-VNet yapılandırmalarına yönelik yerel ağ geçitleri de belirtirsiniz.
 
 Aşağıdaki PowerShell örneği yeni bir yerel ağ geçidi oluşturur:
 

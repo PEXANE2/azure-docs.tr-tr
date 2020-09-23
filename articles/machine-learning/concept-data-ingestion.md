@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 93401ee32da8218fa53568a3f46cae3805a5d939
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875328"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890172"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning iş akışları için veri alma seçenekleri
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Machine Learning sunulan veri alma seçeneklerinin avantajlar
 Aşağıdakilerden birini seçin:
 + Verileri ayıklamak, yüklemek ve dönüştürmek için özel olarak oluşturulan işlem hatları [Azure Data Factory](#azure-data-factory)
 
-+ Temel veri alma görevleri için özel kod çözümü sağlayan [Python SDK Azure Machine Learning](#azure-machine-learning-python-sdk).
++ Veri alma görevleri için özel kod çözümü sağlayan [Python SDK Azure Machine Learning](#azure-machine-learning-python-sdk).
 
 + her ikisinin birleşimi
 
@@ -70,7 +70,7 @@ Kendi Python betiklerinizi yapılandırma | Veri kaynağı değişikliği tetikl
 Her model eğitimi yürütmesinin parçası olarak veri hazırlama|Veri alma betiği oluşturmak için geliştirme becerileri gerektirir
 [Azure Machine Learning işlem](concept-compute-target.md#azure-machine-learning-compute-managed) dahil olmak üzere çeşitli işlem hedeflerinde veri hazırlama betiklerini destekler |Alma mekanizmasını oluşturmak için bir kullanıcı arabirimi sağlamaz
 
-Aşağıdaki diyagramda Azure Machine Learning işlem hattı iki adımdan oluşur: veri alımı ve model eğitimi. Veri alma adımı, Python kitaplıkları ve Python SDK kullanılarak gerçekleştirilebilen, yerel/Web kaynaklarından veri ayıklama ve eksik değer imputation gibi temel veri dönüştürmeleri gibi görevleri kapsar. Daha sonra eğitim adımı, makine öğrenimi modelinizi eğmek için hazırlanan verileri eğitim betiğe giriş olarak kullanır. 
+Aşağıdaki diyagramda Azure Machine Learning işlem hattı iki adımdan oluşur: veri alımı ve model eğitimi. Veri alma adımı, Python kitaplıkları ve Python SDK kullanılarak gerçekleştirilebilen, yerel/Web kaynaklarından veri ayıklama ve eksik değer imputation gibi veri dönüştürmeleri gibi görevleri kapsar. Daha sonra eğitim adımı, makine öğrenimi modelinizi eğmek için hazırlanan verileri eğitim betiğe giriş olarak kullanır. 
 
 ![Azure işlem hattı + SDK veri alımı](media/concept-data-ingestion/data-ingest-option-two.png)
 

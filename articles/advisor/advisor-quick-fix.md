@@ -4,12 +4,12 @@ description: Danışman 'de hızlı düzeltme kullanarak toplu düzeltme gerçek
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518071"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968581"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Danışman için hızlı düzeltme düzeltmesi
 **Hızlı düzeltme** , birden fazla kaynak üzerinde öneri için daha hızlı ve kolay bir düzeltme yolu sağlar. Bu, kaynaklar için toplu düzeltmeler sağlar ve kaynaklarınızın ölçeklendirilmesi ile aboneliklerinizi daha hızlı iyileştirmenize yardımcı olur.
@@ -20,13 +20,13 @@ ms.locfileid: "86518071"
 
 1. **Hızlı düzelme** etiketine sahip öneriler listesinden, öneriye tıklayın.
 
-   ![Danışman hızlı çözüm](./media/quick-fix-1.png)
+   :::image type="content" source="./media/quick-fix-1.png" alt-text="{Önerilerinde hızlı düzelme etiketlerini gösteren Azure Advisor 'ın ekran görüntüsü.}":::
    
    *Görüntüdeki fiyatlar yalnızca örnek amaçlıdır*
 
 2. Öneri ayrıntıları sayfasında, bu öneriyle ilgili kaynakların listesini görürsünüz. Öneri için düzeltmek istediğiniz tüm kaynakları seçin.
 
-   ![Danışman hızlı çözüm](./media/quick-fix-2.png)
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="Etkilenen kaynaklar penceresinin liste öğeleri ve hızlı düzelme düğmesi vurgulanmış ekran görüntüsü.":::
    
    *Görüntüdeki fiyatlar yalnızca örnek amaçlıdır*
 
@@ -44,7 +44,7 @@ ms.locfileid: "86518071"
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Danışman önerileri hakkında daha fazla bilgi için bkz.
-* [Azure Advisor 'a giriş](advisor-overview.md)
+* [Azure Danışmanı’na Giriş](advisor-overview.md)
 * [Danışman'ı kullanmaya başlama](advisor-get-started.md)
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)
 * [Advisor performans önerileri](advisor-performance-recommendations.md)

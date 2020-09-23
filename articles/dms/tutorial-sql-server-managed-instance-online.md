@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 08/04/2020
-ms.openlocfilehash: 5bd78f2db8ea1f2a26d26269822ec78978a3cfde
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ce63d86c3256646782775c84636c4d248e0a6735
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553317"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984330"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Öğretici: DMS kullanarak Azure SQL yönetilen örneği 'ne çevrimiçi SQL Server geçirme
 
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!IMPORTANT]
 > Azure veritabanı geçiş hizmeti 'ni kullanarak SQL Server ile SQL yönetilen örneğine çevrimiçi geçişler için, tam veritabanı yedeklemesini ve hizmetin veritabanlarınızı geçirmek için kullanabileceği SMB ağ paylaşımında sonraki günlük yedeklemelerini sağlamanız gerekir. Azure veritabanı geçiş hizmeti herhangi bir yedekleme başlatmaz ve bunun yerine, geçiş için olağanüstü durum kurtarma planınız kapsamında olabilecek mevcut yedeklemeleri kullanır.
-> [Sağlama toplamı seçeneğini kullanarak yedeklemeler](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)aldığınızdan emin olun. Ayrıca, birden çok yedeklemeyi (yani tam ve t-log) tek bir yedekleme medyasına eklemediğinizden emin olun; Her bir yedeklemeyi ayrı bir yedekleme dosyasında alın. Son olarak, büyük yedeklemeleri geçirmeye ilişkin olası sorunların oluşma olasılığını azaltmak için sıkıştırılmış yedeklemeleri kullanabilirsiniz.
+> [Sağlama toplamı seçeneğini kullanarak yedeklemeler](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017&preserve-view=true)aldığınızdan emin olun. Ayrıca, birden çok yedeklemeyi (yani tam ve t-log) tek bir yedekleme medyasına eklemediğinizden emin olun; Her bir yedeklemeyi ayrı bir yedekleme dosyasında alın. Son olarak, büyük yedeklemeleri geçirmeye ilişkin olası sorunların oluşma olasılığını azaltmak için sıkıştırılmış yedeklemeleri kullanabilirsiniz.
 
 > [!NOTE]
 > Çevrimiçi bir geçiş gerçekleştirmek için Azure veritabanı geçiş hizmeti 'nin kullanılması, Premium fiyatlandırma katmanını temel alan bir örnek oluşturulmasını gerektirir.
@@ -170,7 +170,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
    ![Kaynak Ayrıntıları](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
-3. **Kaydet**'i seçin.
+3. **Kaydet**’i seçin.
 
 4. **Kaynak veritabanlarını seçin** ekranında geçiş için **Adventureworks2012** veritabanını seçin.
 
@@ -179,7 +179,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
     > [!IMPORTANT]
     > SQL Server Integration Services (SSIS) kullanıyorsanız, DMS Şu anda SSIS projeleriniz/paketleriniz (SSıSDB) için katalog veritabanını SQL Server SQL yönetilen örneğine geçirmeyi desteklememektedir. Ancak, SSIS 'yi Azure Data Factory (ADF) olarak temin edebilir ve SSIS projelerinizi/paketlerinizi SQL yönetilen örneği tarafından barındırılan hedef SSıSDB 'ye yeniden dağıtabilirsiniz. SSIS paketlerini geçirme hakkında daha fazla bilgi için [SQL Server Integration Services paketlerini Azure 'A geçirme](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)makalesine bakın.
 
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 ## <a name="specify-target-details"></a>Hedef ayrıntılarını belirtme
 
@@ -195,7 +195,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
     ![Hedef seçme](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 ## <a name="select-source-databases"></a>Kaynak veritabanlarını seçme
 
@@ -203,7 +203,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
     ![Kaynak veritabanlarını seçme](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
 ## <a name="configure-migration-settings"></a>Geçiş ayarlarını yapılandırma
 
@@ -225,7 +225,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
     > [!IMPORTANT]
     > Geri döngü denetimi işlevselliği etkinse ve kaynak SQL Server ile dosya paylaşımı aynı bilgisayarındaysa, kaynak FQDN kullanılarak paylaşım dosyalarına erişemez. Bu sorunu onarmak için [buradaki](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)yönergeleri kullanarak geri döngü denetim işlevlerini devre dışı bırakın.
 
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
 ## <a name="review-the-migration-summary"></a>Geçiş özetini gözden geçirme
 
@@ -245,7 +245,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
     İlgili sunucu nesnelerinin geçiş durumunu izlemek için veritabanları ve oturum açma işlemleri kategorilerini genişletebilirsiniz.
 
-   ![Geçiş etkinliği sürüyor](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
+   ![Geçiş etkinliği durumu](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
 
 ## <a name="performing-migration-cutover"></a>Tam geçişi gerçekleştirme
 
@@ -264,7 +264,7 @@ Tam veritabanı yedeklemesi SQL yönetilen örneğinin hedef örneğine geri yü
     ![Tam geçişi tamamlamaya hazırlanma](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
     > [!IMPORTANT]
-    > Cutover 'den sonra, SQL yönetilen örneği 'nin İş Açısından Kritik hizmet katmanı ile kullanılabilirliği yalnızca, en az bir adet ikincil çoğaltmanın AlwaysOn yüksek kullanılabilirlik grubu için sunulması gereken Genel Amaçlı önemli ölçüde daha uzun sürebilir. Bu işlem süresi verilerin boyutuna bağlıdır, daha fazla bilgi için bkz. [yönetim işlemleri süresi](../azure-sql/managed-instance/management-operations-overview.md#management-operations-duration).
+    > Cutover 'den sonra, SQL yönetilen örneği 'nin İş Açısından Kritik hizmet katmanı ile kullanılabilirliği yalnızca, en az bir adet ikincil çoğaltmanın AlwaysOn yüksek kullanılabilirlik grubu için sunulması gereken Genel Amaçlı önemli ölçüde daha uzun sürebilir. Bu işlem süresi verilerin boyutuna bağlıdır, daha fazla bilgi için bkz. [yönetim işlemleri süresi](../azure-sql/managed-instance/management-operations-overview.md#duration).
 
 5. Veritabanı geçiş durumu **tamamlandı**olarak görüntülendiğinde, uygulamalarınızı SQL yönetilen örneği 'nin yeni hedef örneğine bağlayın.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85513313"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983407"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
 
@@ -26,7 +26,7 @@ Bu öğreticide, bazı denetim akışı özelliklerini gösteren bir Data Factor
 
 Bu grafik senaryoya genel bakış sağlar:
 
-![Genel Bakış](media/tutorial-control-flow/overview.png)
+![Diyagram, bir kopyanın hedefi olan Azure Blob depolamayı gösterir. Bu, başarı durumunda ayrıntıları içeren bir e-posta gönderir veya hata durumunda hata ayrıntıları içeren bir e-posta gönderir.](media/tutorial-control-flow/overview.png)
 
 Bu öğreticide, aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
 
@@ -44,7 +44,7 @@ Bu öğreticide .NET SDK kullanılır. Azure Data Factory etkileşimde bulunmak 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure depolama hesabı. BLOB depolama alanını kaynak veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, bkz. [depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 * Azure Depolama Gezgini. Bu aracı yüklemek için bkz. [Azure Depolama Gezgini](https://storageexplorer.com/).
@@ -764,4 +764,4 @@ Bu öğreticide aşağıdaki görevleri yaptınız:
 
 Artık Azure Data Factory hakkında daha fazla bilgi için kavramlar bölümüne devam edebilirsiniz.
 > [!div class="nextstepaction"]
->[İşlem hatları ve etkinlikler](concepts-pipelines-activities.md)
+>[İşlem hatları ve Etkinlikler](concepts-pipelines-activities.md)

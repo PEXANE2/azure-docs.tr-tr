@@ -95,6 +95,10 @@
       items:
         - name: Edge Zones nedir?
           href: ../networking/edge-zones-overview.md
+    - name: Azure Orbital Belgeleri
+      items:
+        - name: Azure Orbital nedir?
+          href: ../networking/azure-orbital-overview.md
 - name: Olağanüstü Durum Kurtarma
   items:
     - name: Azure Site Recovery’yi kullanma

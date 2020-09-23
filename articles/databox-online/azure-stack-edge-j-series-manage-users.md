@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU kullanıcıları yönetme | Microsoft Docs
-description: Azure Stack Edge GPU 'unuzda kullanıcıları yönetmek için Azure portal nasıl kullanılacağını açıklar.
+title: Azure Stack Edge Pro GPU kullanıcıları yönetme | Microsoft Docs
+description: Azure Stack Edge Pro GPU 'unuzda kullanıcıları yönetmek için Azure portal nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8400f134c7a2b9da32c04e15e42a54f697b9cea6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5f7e8c09a09084b28278667cdeaf94f7e38908cd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254194"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904500"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge"></a>Azure Stack Kenarunuzdaki kullanıcıları yönetmek için Azure portal kullanın
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzdaki kullanıcıları yönetmek için Azure portal kullanma
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu makalede Azure Stack kenardaki kullanıcıların nasıl yönetileceği açıklanır. Azure Stack ucunu Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Kullanıcı ekleme, değiştirme ve silme işlemleri için Azure portalı kullanın.
+Bu makalede Azure Stack Edge Pro 'daki kullanıcıların nasıl yönetileceği açıklanır. Azure Stack Edge Pro 'Yu Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Kullanıcı ekleme, değiştirme ve silme işlemleri için Azure portalı kullanın.
 
 Bu makalede şunları öğreneceksiniz:
 

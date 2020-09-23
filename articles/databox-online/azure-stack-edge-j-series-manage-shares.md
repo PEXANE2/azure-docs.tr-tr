@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU paylaşma yönetimi | Microsoft Docs
-description: Azure Stack Edge GPU 'unuzda paylaşımları yönetmek için Azure portal nasıl kullanılacağını açıklar.
+title: Azure Stack Edge Pro GPU paylaşma yönetimi | Microsoft Docs
+description: Azure Stack Edge Pro GPU 'unuzda paylaşımları yönetmek için Azure portal nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6448ac002482751052310532989278e3b88b5915
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268851"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904698"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>Azure Stack Kenarunuzdaki paylaşımları yönetmek için Azure portal kullanın
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzdaki paylaşımları yönetmek için Azure portal kullanın
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu makalede Azure Stack kenardaki paylaşımların nasıl yönetileceği açıklanır. Azure Stack ucunu Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Paylaşımlar ile ilişkili depolama hesabı için, paylaşımları eklemek, silmek, yenilemek veya eşitleme depolama anahtarını kullanmak için Azure portal kullanın.
+Bu makalede Azure Stack Edge Pro 'daki paylaşımların nasıl yönetileceği açıklanır. Azure Stack Edge Pro 'Yu Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Paylaşımlar ile ilişkili depolama hesabı için, paylaşımları eklemek, silmek, yenilemek veya eşitleme depolama anahtarını kullanmak için Azure portal kullanın.
 
 ## <a name="about-shares"></a>Paylaşımlar hakkında
 
-Azure 'a veri aktarmak için Azure Stack Kenarunuzda paylaşımlar oluşturmanız gerekir. Azure Stack Edge cihazına eklediğiniz paylaşımlar yerel paylaşımlar olabilir veya verileri buluta ititeden paylaşabilirsiniz.
+Azure 'a veri aktarmak için Azure Stack Edge Pro 'unuzda paylaşımlar oluşturmanız gerekir. Azure Stack Edge Pro cihazına eklediğiniz paylaşımlar yerel paylaşımlar olabilir veya verileri buluta ititeden paylaşabilirsiniz.
 
  - **Yerel paylaşımlar**: verilerin cihazda yerel olarak işlenmesini istiyorsanız bu paylaşımları kullanın.
  - **Paylaşımlar**: cihaz verilerinin buluttaki depolama hesabınıza otomatik olarak iletilmesini istediğinizde bu paylaşımları kullanın. **Yenileme** ve **eşitleme depolama anahtarları** gibi tüm bulut işlevleri paylaşımlar için geçerlidir.
@@ -74,7 +74,7 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 3. Paylaşım için **Tür** seçin. Bu tür SMB veya **NFS**, SMB 'nin varsayılan olarak **olması olabilir.** SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır. SMB paylaşımları mı yoksa NFS paylaşımları mı seçtiğinize bağlı olarak, gösterilen seçenekler biraz farklı olur.
 
    > [!IMPORTANT]
-   > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge veya Data Box Gateway cihazından yararlanarak, bu sunucuda ayarlanmış bir şekilde kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge Pro veya Data Box Gateway cihazından yararlanarak bu sunucuda ayarlanmış bir değişiklik olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 4. Sınır işlem modüllerindeki paylaşımlara kolayca erişmek için yerel bağlama noktasını kullanın. Sınır modülünün yerel bağlama noktasıyla işlem kullanabilmesi için **Edge COMPUTE ile paylaşma kullan** ' ı seçin.
 
@@ -96,7 +96,7 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 
 ## <a name="mount-a-share"></a>Bir paylaşma bağlama
 
-Azure Stack Edge cihazınızda işlem yapılandırmadan önce bir paylaşma oluşturduysanız, bu paylaşıma bağlamanız gerekir. Bir paylaşma bağlamak için aşağıdaki adımları uygulayın.
+Azure Stack Edge Pro cihazınızda işlem yapılandırmadan önce bir paylaşma oluşturduysanız, bu paylaşıma bağlamanız gerekir. Bir paylaşma bağlamak için aşağıdaki adımları uygulayın.
 
 
 1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin. Paylaşımlar listesinden bağlamak istediğiniz paylaşımı seçin. **İşlem Için kullanılan** sütunu, seçili paylaşımın durumunu **devre dışı** olarak gösterir.

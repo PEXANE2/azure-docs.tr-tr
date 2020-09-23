@@ -1,6 +1,6 @@
 ---
-title: Veri saklama ilkesine genel bakış-Azure SQL Edge (Önizleme)
-description: Azure SQL Edge 'de veri bekletme ilkesi hakkında bilgi edinin (Önizleme)
+title: Veri saklama ilkesine genel bakış-Azure SQL Edge
+description: Azure SQL Edge 'de veri bekletme ilkesi hakkında bilgi edinin
 keywords: SQL Edge, veri saklama
 services: sql-edge
 ms.service: sql-edge
@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 3649d4f77e5b57ab14accacd87fbaa867ba2742f
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: bb059a946c03f41e5b65944eec67070f84ee6b08
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550725"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976347"
 ---
-# <a name="data-retention-policy-overview"></a>Veri saklama ilkesine genel bakış
+# <a name="data-retention-overview"></a>Veri saklamaya genel bakış
 
 Bağlı IoT cihazlarındaki verilerin toplanması ve depolanması, işletimsel ve iş öngörülerini sağlamak için önemlidir. Ancak, bu cihazlardan kaynaklanan verilerin hacmi verildiğinde, kuruluşların sürdürmek istedikleri veri miktarını ve ayrıntı düzeyini dikkatle planlayıp planmaları önemli hale gelir. Tüm verilerin her ayrıntı düzeyinde bekletilmesini tercih ederken her zaman pratik değildir. Ayrıca, tutulabileceği veri hacmi, IoT veya uç cihazlarda bulunan depolama miktarı ile sınırlıdır. 
 
-Azure SQL Edge (Önizleme) CTP 2.3, veritabanı yöneticilerinin bir SQL Edge veritabanında ve temel aldığı tablolarda veri bekletme ilkesi tanımlamasına olanak sağlayan yeni bir özellik ekler. Veri saklama ilkesi tanımlandıktan sonra, Kullanıcı tablolarından kullanılmayan (eski) verileri temizlemek için bir arka plan sistem görevi çalıştırılır. 
+Azure SQL Edge veritabanı yöneticileri, bir SQL Edge veritabanında ve temel tablolarında veri bekletme ilkesi tanımlayabilir. Veri saklama ilkesi tanımlandıktan sonra, Kullanıcı tablolarından kullanılmayan (eski) verileri temizlemek için bir arka plan sistem görevi çalıştırılır. 
 
 > [!Note]
 > Tablodan Temizlenen veriler kurtarılamaz. Temizlenen verileri kurtarmanın mümkün olan tek yolu, veritabanını eski bir yedekten geri yüklemektir.
@@ -40,6 +40,7 @@ Veri saklama bir tablo için yapılandırıldıktan sonra bir arka plan görevi,
 
 - Veri saklama, etkinleştirilirse, veritabanı tam yedeklemeden geri yüklendiğinde veya yeniden iliştirilmediğinde otomatik olarak devre dışıdır. 
 - Zamana bağlı bir geçmiş tablosu için veri saklama etkinleştirilemez
+- Veri saklama filtresi koomn değiştirilemez. Sütunu değiştirmek için tabloda veri bekletmeyi devre dışı bırakın.  
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

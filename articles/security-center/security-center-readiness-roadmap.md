@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4a62520a9807cd99b5c353c32bb13058fc471a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771368"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904726"
 ---
-# <a name="azure-security-center-readiness-roadmap"></a>Azure Güvenlik Merkezi Hazırlığı Yol Haritası
+# <a name="azure-security-center-readiness-roadmap"></a>Azure Güvenlik Merkezi hazırlığı yol haritası
 Bu belge, Azure Güvenlik Merkezi ile çalışmaya başlamanıza yardımcı olacak bir hazırlık yol haritası sağlar.
 
 ## <a name="understanding-security-center"></a>Güvenlik Merkezi’ni anlama
@@ -29,12 +29,12 @@ Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalı
 Güvenlik Merkezi ile çalışmaya başlamak için aşağıdaki kaynakları kullanın.
 
 Makaleler
-* [Azure Güvenlik Merkezi'ne Giriş](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* [Azure Güvenlik Merkezi hızlı başlangıç kılavuzu](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Azure Güvenlik Merkezi'ne Giriş](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Azure Güvenlik Merkezi hızlı başlangıç kılavuzu](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 
 Videolar
-* [Hızlı Tanıtım Videosu](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
-* [Güvenlik Merkezi Önleme, Algılama ve Yanıt Özelliklerine Genel Bakış](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
+- [Hızlı Tanıtım Videosu](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
+- [Güvenlik Merkezi Önleme, Algılama ve Yanıt Özelliklerine Genel Bakış](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
 ## <a name="planning-and-operations"></a>Planlama ve işlemler
 
@@ -42,20 +42,16 @@ Güvenlik Merkezi'nin tüm avantajlarından yararlanabilmek için kurumunuzdaki 
 
 Planlama ve çalışma işlemleri sırasında size yardımcı olması için aşağıdaki kaynakları kullanın.
 
-Makale
-* [Azure Güvenlik Merkezi planlama ve işlemler kılavuzu](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Azure Güvenlik Merkezi planlama ve işlemler kılavuzu](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Güvenlik Merkezi’ne bilgisayar ekleme
-Güvenlik Merkezi, Güvenlik Merkezi Standart sürümü için etkinleştirilmemiş herhangi bir Azure aboneliğini veya çalışma alanını otomatik olarak algılar. Buna, Güvenlik Merkezi Ücretsiz sürümünü kullanan Azure abonelikleri ve etkin bir Güvenlik çözümü olmayan çalışma alanları dahildir.
+Güvenlik Merkezi, Azure Defender tarafından korunmayan tüm Azure aboneliklerini veya çalışma alanlarını otomatik olarak algılar. Bu, Güvenlik Merkezi Ücretsiz ve güvenlik çözümü etkinleştirilmemiş çalışma alanlarını kullanarak Azure abonelikleri içerir.
 
 Ekleme işlemleri sırasında size yardımcı olması için aşağıdaki kaynakları kullanın.
 
-Makale
-* [Gelişmiş güvenlik için Azure Güvenlik Merkezi Standart sürümüne ekleme](https://docs.microsoft.com/azure/security-center/security-center-onboarding)
-
-Video
-* [Azure Güvenlik Merkezi Karma - Genel Bakış](https://youtu.be/NMa4L_M597k)
+- [Azure dışı bilgisayarlar ekleme](quickstart-onboard-machines.md)
+- [Azure Güvenlik Merkezi Karma - Genel Bakış](https://youtu.be/NMa4L_M597k)
 
 ## <a name="mitigating-security-issues-using-security-center"></a>Güvenlik Merkezi'ni kullanarak güvenlik sorunlarını azaltma
 Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları azaltmak için Azure kaynaklarınızdan, ağınızdan ve güvenlik duvarı ve uç nokta koruma çözümleri gibi bağlı iş ortağı çözümlerinden günlük verilerini otomatik olarak toplar, çözümler ve tümleştirir.
@@ -63,14 +59,13 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
 Güvenlik uyarılarını yönetmenize ve kaynaklarınızı korumanıza yardımcı olması için aşağıdaki kaynakları kullanın.
 
 Makaleler    
-* [Azure Güvenlik Merkezi 'nde güvenlik durumu izleme](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)
-* [Azure Güvenlik Merkezi'nde ağınızı koruma](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [Azure Güvenlik Merkezi'nde Azure SQL hizmetini ve verilerini koruma](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+- [Azure Güvenlik Merkezi 'nde güvenlik durumu izleme](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
+- [Azure Güvenlik Merkezi'nde ağınızı koruma](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Azure Güvenlik Merkezi'nde Azure SQL hizmetini ve verilerini koruma](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 
 Video    
-* [Güvenlik Merkezi'ni Kullanarak Güvenlik Sorunlarını Azaltma](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
+- [Güvenlik Merkezi'ni Kullanarak Güvenlik Sorunlarını Azaltma](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>Olay yanıtlama için Güvenlik Merkezi
 Maliyetleri ve zararları azaltmak için bir saldırı gerçekleşmeden önce bir olay yanıt planının olması önemlidir. Bir olay yanıtının farklı aşamalarında Azure Güvenlik Merkezi’ni kullanabilirsiniz.
@@ -119,6 +114,4 @@ Makaleler
 ## <a name="community-resources"></a>Topluluk Kaynakları
 
 * [Güvenlik Merkezi UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [Microsoft Q&Güvenlik Merkezi için soru sayfası](https://docs.microsoft.com/answers/topics/azure-security-center.html)
-
-
+* [Soru-cevap Güvenlik Merkezi için bir sayfa&](https://docs.microsoft.com/answers/topics/azure-security-center.html)
