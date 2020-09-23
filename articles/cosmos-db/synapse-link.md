@@ -5,14 +5,14 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 4226676ed7fbaf5b2998306fa5240316c327d59c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814399"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891477"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB (Önizleme) için Azure SYNAPSE bağlantısı nedir?
 
@@ -21,7 +21,7 @@ ms.locfileid: "88814399"
 
 Azure Cosmos DB için Azure SYNAPSE bağlantısı, Azure Cosmos DB ' de işletimsel veriler üzerinde neredeyse gerçek zamanlı analizler çalıştırmanıza olanak tanıyan, bulut tabanlı bir karma işlem ve analitik işleme (HTAP) özelliğidir. Azure SYNAPSE link, Azure Cosmos DB ile Azure SYNAPSE Analytics arasında sıkı bir şekilde sorunsuz bir tümleştirme oluşturur.
 
-Tam yalıtılmış bir sütun deposu olan [Azure Cosmos DB analitik depo](analytical-store-introduction.md)kullanarak Azure SYNAPSE link, [Azure SYNAPSE Analytics](../synapse-analytics/overview-what-is.md) 'Te hiçbir ayıklama-dönüştürme-yükleme (ETL) analizinin ölçeğe karşı işletimsel verilerinize karşı izin vermez. İş analistleri, veri mühendisleri ve veri bilimcileri artık gerçek zamanlı iş zekası, analiz ve makine öğrenimi işlem hatlarını çalıştırmak için SYNAPSE Spark veya SYNAPSE SQL birbirinin yerine kullanabilir. Bunu, Azure Cosmos DB üzerindeki işlem iş yüklerinizin performansını etkilemeden elde edebilirsiniz. 
+Tam yalıtılmış bir sütun deposu olan [Azure Cosmos DB analitik depo](analytical-store-introduction.md)kullanarak Azure SYNAPSE link, [Azure SYNAPSE Analytics](../synapse-analytics/overview-what-is.md) 'Te hiçbir ayıklama-dönüştürme-yükleme (ETL) analizinin ölçeğe karşı işletimsel verilerinize karşı izin vermez. İş analistleri, veri mühendisleri ve veri bilimcileri artık gerçek zamanlı iş zekası, analiz ve makine öğrenimi işlem hatlarını çalıştırmak için SYNAPSE Spark veya SYNAPSE SQL birbirinin yerine kullanabilir. Bunu yaparken Azure Cosmos DB'deki işlem tabanlı iş yüklerinizin performansı etkilemez. 
 
 Aşağıdaki görüntüde Azure Cosmos DB ve Azure SYNAPSE Analytics ile Azure SYNAPSE bağlantısı tümleştirmesi gösterilmektedir: 
 
@@ -40,7 +40,6 @@ Azure SYNAPSE bağlantısı, karmaşık veri hareketi olmadan Azure SYNAPSE Anal
 ### <a name="near-real-time-insights-into-your-operational-data"></a>İşletimsel verileriniz hakkında neredeyse gerçek zamanlı Öngörüler
 
 Artık Azure SYNAPSE link kullanarak, neredeyse gerçek zamanlı olarak işletimsel verileriniz hakkında zengin Öngörüler elde edebilirsiniz. İşlem verilerini ayıklamak, dönüştürmek ve yüklemek için gereken birçok katman nedeniyle, ETL tabanlı sistemler, işletimsel verilerinizi analiz etmeye yönelik daha yüksek gecikme süresine sahiptir. Azure SYNAPSE Analytics ile Azure Cosmos DB analitik deponun yerel tümleştirmesiyle, işletimsel verileri neredeyse gerçek zamanlı olarak analiz ederek yeni iş senaryolarına olanak sağlayabilirsiniz. 
-
 
 ### <a name="no-impact-on-operational-workloads"></a>İşlemsel iş yükleri üzerinde hiçbir etkisi yoktur
 
@@ -91,7 +90,7 @@ Azure SYNAPSE Analytics tarafından desteklenen farklı analiz çalışma zamanl
 
 Bu tümleştirme, farklı kullanıcılar için aşağıdaki HTAP senaryolarına izin vermez:
 
-* Doğrudan SYNAPSE SQL üzerinden Azure Cosmos DB işletimsel verilere erişmek üzere bir rapor modellemek ve yayımlamak isteyen bir bı mühendisi.
+* Doğrudan SYNAPSE SQL aracılığıyla Azure Cosmos DB içindeki canlı işletimsel verilere erişmek üzere bir Power BI raporu modellemek ve yayınlamak isteyen bir bı mühendisi.
 
 * Bir Azure Cosmos DB kapsayıcısında işletimsel verilerden SYNAPSE SQL ile sorgulama yaparak Öngörüler elde etmek isteyen bir veri analisti, ölçekteki verileri okuyun ve bu bulguları diğer veri kaynaklarıyla birleştirin.
 
@@ -115,16 +114,15 @@ Bu gibi durumlarda, SYNAPSE link, işlem mağazalarınızın sağlanan verimini 
 
 Yüksek eşzamanlılık, iş yükü yönetimi ve birden çok veri kaynağında toplamaların sürekliliği gibi geleneksel veri ambarı gereksinimlerini arıyorsanız SYNAPSE bağlantısı önerilmez. Daha fazla bilgi için, [Azure Cosmos DB Için Azure SYNAPSE bağlantısı ile desteklenen genel senaryolar](synapse-link-use-cases.md)bölümüne bakın.
 
-
 ## <a name="limitations"></a>Sınırlamalar
 
-* Genel Önizleme sırasında Azure SYNAPSE link yalnızca Azure Cosmos DB SQL (Core) API 'SI için desteklenir. Azure Cosmos DB MongoDB & Cassandra API API 'sine yönelik destek şu anda geçitli bir önizleme aşamasındadır. Geçitli önizlemeye erişim istemek için [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com)e-posta gönderin.
+* Azure SYNAPSE link, Azure Cosmos DB SQL (Core) API 'SI ve Azure Cosmos DB MongoDB API 'SI için desteklenir. Cassandra API desteği şu anda geçitli bir önizleme aşamasındadır. Geçitli önizlemeye erişim istemek için [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com)e-posta gönderin.
 
-* Şu anda analitik depo yalnızca yeni kapsayıcılar için etkinleştirilebilir (hem yeni hem de mevcut Azure Cosmos DB hesaplarında).
-
-* Önizlemede, SYNAPSE link etkin veritabanı hesapları için, kapsayıcıları yedekleme ve geri yükleme desteklenmez. Yedekleme ve geri yükleme işlevselliği gerektiren üretim iş yükleriniz varsa, bu veritabanı hesaplarında SYNAPSE bağlantısının etkinleştirilmediğimiz için önerilmez. 
+* Şu anda analitik depo yalnızca yeni kapsayıcılar için etkinleştirilebilir. Mevcut kapsayıcılar için analitik depolama kullanmak için, [Azure Cosmos DB geçiş araçlarını](cosmosdb-migrationchoices.md)kullanarak mevcut kapsayıcılarınızdaki verileri yeni kapsayıcılara geçirin. Yeni ve mevcut Azure Cosmos DB hesaplarında SYNAPSE bağlantısı sağlayabilirsiniz.
 
 * SYNAPSE SQL sunucusuz ile Azure Cosmos DB analitik deposuna erişilmesi Şu anda geçitli önizleme aşamasındadır. Erişim istemek için [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com)e-posta gönderin.
+
+* Önizlemede, SYNAPSE link etkin veritabanı hesapları için, kapsayıcıları yedekleme ve geri yükleme desteklenmez. Yedekleme ve geri yükleme işlevselliği gerektiren iş yükleriniz varsa, bu veritabanı hesaplarında SYNAPSE bağlantısının etkinleştirilmediğimiz için önerilmez. 
 
 * Sağlanan SYNAPSE SQL ile Azure Cosmos DB Analytics deposuna erişim şu anda kullanılamıyor.
 

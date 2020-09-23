@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: e3dc2990e810096310617e468a533a65626008ff
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 72d5a722e6c1e6b936c6ec0386036317e887bb92
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542662"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969838"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL yönetilen örneğine bağlanmak için bir Azure VM yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -53,10 +53,10 @@ Aşağıdaki adımlar, Azure sanal makinesinin yönetilen örneğe bağlanabilme
    | ---------------- | ----------------- | ----------- |
    | **Ad** | Geçerli bir ad|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming).|
    | **Adres aralığı (CIDR bloğu)** | Geçerli bir Aralık | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Ağ güvenlik grubu** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Yol tablosu** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Ağ güvenlik grubu** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Yol tablosu** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
    | **Hizmet uç noktaları** | 0 seçili | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Alt ağ temsilcisi** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Alt ağ temsilcisi** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
 
    ![İstemci VM için yeni SQL yönetilen örnek alt ağı](./media/connect-vm-instance-configure/new-subnet.png)
 
@@ -85,7 +85,7 @@ Tüm gerekli araçlarla istemci sanal makinesi oluşturmanın en kolay yolu Azur
    | **Konum** | Kaynak grubunun konumu | Bu değer, seçili kaynak grubuna göre doldurulur. |
    | **Sanal makine adı**  | Geçerli bir ad | Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming).|
    |**Yönetici Kullanıcı adı**|Geçerli bir Kullanıcı adı|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). Ayrılmış sunucu düzeyi rol olan gibi "serveradmin" kullanmayın.<br>Bu Kullanıcı adını [, sanal makineye bağlandığınız](#connect-to-the-virtual-machine)her seferinde kullanırsınız.|
-   |**Parola**|Geçerli bir parola|Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.<br>Bu parolayı [, sanal makineye bağlandığınız](#connect-to-the-virtual-machine)her seferinde kullanırsınız.|
+   |**Parola**|Geçerli bir parola|Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.<br>Bu parolayı [, sanal makineye bağlandığınız](#connect-to-the-virtual-machine)her seferinde kullanırsınız.|
    | **Sanal makine boyutu** | Geçerli boyut | Bu **Standard_B2s** şablonundaki varsayılan değer bu hızlı başlangıç için yeterlidir. |
    | **Konum**|[resourceGroup (). Location].| Bu değeri değiştirmeyin. |
    | **Sanal ağ adı**|Yönetilen örneği oluşturduğunuz sanal ağ|
@@ -110,9 +110,9 @@ Aşağıdaki adımlarda, bir Uzak Masaüstü bağlantısı kullanarak yeni oluş
 
 1. Dağıtım tamamlandıktan sonra sanal makine kaynağına gidin.
 
-    ![VM](./media/connect-vm-instance-configure/vm.png)  
+    ![Ekran görüntüsü, seçilen bir sanal makine için genel bakış sayfasıyla Azure portal gösterir ve bir bağlantı vurgulanmıştır.](./media/connect-vm-instance-configure/vm.png)  
 
-2. **Bağlan**'ı seçin.
+2. **Bağlan**’ı seçin.
 
    Bir Uzak Masaüstü Protokolü dosya (. rdp dosyası) formu, sanal makinenin genel IP adresi ve bağlantı noktası numarasıyla birlikte görüntülenir.
 

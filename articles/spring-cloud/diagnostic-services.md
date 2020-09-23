@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 56f392210aac6045a9dc8cc3522d36092162f26c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086124"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892573"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme
+
+**Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
 Azure Spring Cloud 'ın tanılama işlevini kullanarak, aşağıdaki hizmetlerden herhangi biriyle günlükleri ve ölçümleri çözümleyebilirsiniz:
 
@@ -25,11 +27,11 @@ Azure Spring Cloud 'ın tanılama işlevini kullanarak, aşağıdaki hizmetlerde
 İzlemek istediğiniz günlük kategorisini ve ölçüm kategorisini seçin.
 
 > [!TIP]
-> Günlüklerinizi akışa almak mı istiyorsunuz? Bu [Azure CLI komutuna](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)göz atın!
+> Günlüklerinizi akışa almak mı istiyorsunuz? Bu [Azure CLI komutuna](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs)göz atın!
 
 ## <a name="logs"></a>Günlükler
 
-|Log | Açıklama |
+|Günlük | Açıklama |
 |----|----|
 | **ApplicationConsole** | Tüm müşteri uygulamalarının konsol günlüğü. |
 | **Sistem günlükleri** | Şu anda, bu kategoride yalnızca [Spring Cloud config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) kaydedilir. |
@@ -50,7 +52,7 @@ Başlamak için, bu hizmetlerden birini verileri alacak şekilde etkinleştirin.
     * **Log Analytics’e gönderme**
 
 1. İzlemek istediğiniz günlük kategorisini ve ölçüm kategorisini seçin ve ardından saklama süresini (gün cinsinden) belirtin. Saklama süresi yalnızca depolama hesabı için geçerlidir.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 > [!NOTE]
 > 1. Günlüklerin veya ölçümlerin ne zaman yayıldığını ve depolama hesabınızda, Olay Hub 'ında veya Log Analytics göründükleri zaman arasında 15 dakikalık bir boşluk olabilir.
@@ -106,7 +108,7 @@ Günlükleri ve ölçümleri aşağıdaki başlıklar altında açıklandığı 
     | limit 50
     ```
 > [!NOTE]
-> `==`büyük/küçük harfe duyarlıdır, ancak `=~` değildir.
+> `==` büyük/küçük harfe duyarlıdır, ancak `=~` değildir.
 
 Log Analytics 'de kullanılan sorgu dili hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlük sorguları](../azure-monitor/log-query/query-language.md).
 
@@ -203,3 +205,7 @@ AppPlatformLogsforSpring
 | extend Log = array_strcat(split(Log, '\\n'), '\n')
 ```
 Diğer Java günlük kitaplıkları için de aynı stratejiyi kullanabilirsiniz.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın](spring-cloud-quickstart.md)

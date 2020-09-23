@@ -8,15 +8,14 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 0725a97aecab5d03c2f5e3937c181a95a7b97c2a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: c90d11ba630dbb1e37054715855ae5547a8a034b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461519"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902711"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure açık veri kümelerinde Azure Machine Learning veri kümeleri oluşturma
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) veri kümeleri ve [Azure açık veri kümeleri](https://docs.microsoft.com/azure/open-datasets/)ile yerel veya uzak makine öğrenimi denemeleri nasıl seçeceğinizi öğreneceksiniz. 
 
@@ -38,7 +37,7 @@ Azure açık veri kümeleri, tahmine dayalı çözümlerinizi zenginleştirmek v
 Açık veri kümeleri bulutta Microsoft Azure ve hem [Azure Machine Learning Python SDK](#create-datasets-with-the-sdk) hem de [Azure Machine Learning Studio](#create-datasets-with-the-studio)'ya dahil edilmiştir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede şunlar gerekir:
 

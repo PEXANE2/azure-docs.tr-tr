@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU cihazınızda GPU modülünü dağıtma | Microsoft Docs
-description: İşlemin nasıl etkinleştirileceğini ve Azure Stack Edge cihazınızın, yerel kullanıcı arabirimi aracılığıyla işlem için nasıl hazırlanılacağını açıklar.
+title: Azure Stack Edge Pro GPU cihazınızda GPU modülünü dağıtma | Microsoft Docs
+description: İşlemin nasıl etkinleştirileceğini ve Azure Stack Edge Pro cihazının, yerel kullanıcı arabirimi aracılığıyla işlem için nasıl hazırlanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 5af86001d46bf194c9b61f325052a4cde0d86d5e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254568"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899724"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazında GPU özellikli IoT modülünü dağıtma
+# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazında GPU özellikli IoT modülünü dağıtma
 
-Bu makalede, Azure Stack Edge GPU cihazınızda GPU etkin bir IoT Edge modülünün nasıl dağıtılacağı açıklanır. 
+Bu makalede, Azure Stack Edge Pro GPU cihazınızda GPU özellikli bir IoT Edge modülünün nasıl dağıtılacağı açıklanır. 
 
 Bu makalede şunları öğreneceksiniz:
-  - GPU modülünü çalıştırmak için Azure Stack Edge 'i hazırlayın.
+  - Azure Stack Edge Pro 'YU bir GPU modülünü çalıştırmaya hazırlayın.
   - Örnek kodu bir git deposundan indirin ve yükleyin.
   - Çözümü oluşturun ve bir dağıtım bildirimi oluşturun.
-  - Çözümü Azure Stack Edge cihazına dağıtın.
+  - Çözümü Azure Stack Edge Pro cihazına dağıtın.
   - Modül çıkışını izleyin.
 
 
@@ -31,12 +31,12 @@ Bu makalede şunları öğreneceksiniz:
 
 Bu makaledeki GPU örnek modülü,, GPU 'ya karşı CPU için örnek kodu PyTorch ve TensorFlow benchişaretlemesini içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
-- GPU etkin 1 düğümlü Azure Stack Edge cihazına erişirsiniz. Bu cihaz Azure 'da bir kaynakla etkinleştirildi. Bkz. [cihazı etkinleştirme](azure-stack-edge-gpu-deploy-activate.md).
-- Bu cihazda işlem yapılandırdınız. Öğreticideki adımları izleyin [: Azure Stack Edge cihazınızda Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
+- GPU etkin 1 düğümlü Azure Stack Edge Pro cihazına erişirsiniz. Bu cihaz Azure 'da bir kaynakla etkinleştirildi. Bkz. [cihazı etkinleştirme](azure-stack-edge-gpu-deploy-activate.md).
+- Bu cihazda işlem yapılandırdınız. Öğreticideki adımları izleyin [: Azure Stack Edge Pro cihazınızda Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
 - Bir Azure Container Registry (ACR). **Erişim tuşları** dikey penceresine gidin ve ACR oturum açma sunucusunu, Kullanıcı adını ve parolayı bir yere getirin. Daha fazla bilgi için [hızlı başlangıç: Azure Portal kullanarak özel kapsayıcı kayıt defteri oluşturma](../container-registry/container-registry-get-started-portal.md#create-a-container-registry)sayfasına gidin.
 - Bir Windows istemcisinde aşağıdaki geliştirme kaynakları:
     - [Azure CLı 2,0 veya üzeri](https://aka.ms/installazurecliwindows)
@@ -144,9 +144,9 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
 1. VS Code komut paletinde **Azure IoT Hub: Select IoT Hub** komutunu çalıştırın.
 
-2. Yapılandırmak istediğiniz IoT Edge cihazını barındıran aboneliği ve IoT hub'ını seçin. Bu durumda, Azure Stack Edge cihazını dağıtmak için kullanılan aboneliği seçin ve Azure Stack Edge cihazınız için oluşturulan IoT Edge cihazı seçin. Bu, önceki adımlarda Azure portal aracılığıyla işlem yapılandırdığınızda oluşur.
+2. Yapılandırmak istediğiniz IoT Edge cihazını barındıran aboneliği ve IoT hub'ını seçin. Bu durumda, Azure Stack Edge Pro cihazını dağıtmak için kullanılan aboneliği seçin ve Azure Stack Edge Pro cihazınız için oluşturulan IoT Edge cihazı seçin. Bu, önceki adımlarda Azure portal aracılığıyla işlem yapılandırdığınızda oluşur.
 
-3. VS Code Gezgini ' nde Azure IoT Hub bölümünü genişletin. **Cihazlar**' ın altında, Azure Stack Edge cihazınıza karşılık gelen IoT Edge cihazını görmeniz gerekir. 
+3. VS Code Gezgini ' nde Azure IoT Hub bölümünü genişletin. **Cihazlar**' ın altında, Azure Stack Edge Pro cihazınıza karşılık gelen IoT Edge cihazını görmeniz gerekir. 
 
     1. Bu cihazı seçin, sağ tıklayın ve **yerleşik olay uç noktasını Izlemeye başla**' yı seçin.
   
@@ -156,7 +156,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
         ![IoT Hub modül](media/azure-stack-edge-gpu-deploy-sample-module/module-iot-hub-1.png)  
 
-    3. VS Code Terminal, Azure Stack Edge cihazınız için izleme çıktısı olarak IoT Hub olaylarını da göstermelidir.
+    3. VS Code Terminal, Azure Stack Edge Pro cihazınız için izleme çıktısı olarak IoT Hub olaylarını da göstermelidir.
 
         ![İzleme çıktısı](media/azure-stack-edge-gpu-deploy-sample-module/monitor-events-output-1.png) 
 

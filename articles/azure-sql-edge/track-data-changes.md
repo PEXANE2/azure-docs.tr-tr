@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge 'de veri değişikliklerini izleme (Önizleme)
-description: Azure SQL Edge 'de değişiklik izleme ve değişiklik verilerini yakalama hakkında bilgi edinin (Önizleme).
+title: Azure SQL Edge 'de veri değişikliklerini izleme
+description: Azure SQL Edge 'de değişiklik izleme ve değişiklik verilerini yakalama hakkında bilgi edinin.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6d0a081f2b0adb143a6b37a647a00014846f8fe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d5d5f74a816bf745faf5decf761cd453f40123
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669605"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900072"
 ---
-# <a name="track-data-changes-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de veri değişikliklerini izleme (Önizleme)
+# <a name="track-data-changes-in-azure-sql-edge"></a>Azure SQL Edge 'de veri değişikliklerini izleme
 
 Azure SQL Edge, bir veritabanındaki verilerde yapılan değişiklikleri izleyen iki SQL Server özelliğini destekler: [değişiklik izleme](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Tracking) ve [değişiklik verilerini yakalama](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Capture). Bu özellikler, uygulamaların bir veritabanındaki kullanıcı tablolarında yapılan veri değiştirme dili değişikliklerini (ekleme, güncelleştirme ve silme işlemleri) belirlemesine olanak sağlar. Değişiklik verilerini yakalama ve değişiklik izlemeyi aynı veritabanında etkinleştirebilirsiniz. Özel bir dikkat etmeniz gerekmez.
 
@@ -60,10 +60,10 @@ Daha fazla bilgi için bkz. zamana bağlı [Tablolar](https://docs.microsoft.com
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure SQL Edge 'de veri akışı (Önizleme)](stream-data.md)
-- [Azure SQL Edge 'de ONNX ile makine öğrenimi ve AI (Önizleme)](onnx-overview.md)
-- [Azure SQL Edge 'e çoğaltmayı yapılandırma (Önizleme)](configure-replication.md)
-- [Azure SQL Edge 'de veritabanlarını yedekleme ve geri yükleme (Önizleme)](backup-restore.md)
+- [Azure SQL Edge 'de veri akışı ](stream-data.md)
+- [Azure SQL Edge 'de ONNX ile makine öğrenimi ve AI ](onnx-overview.md)
+- [Azure SQL Edge 'e çoğaltmayı yapılandırma](configure-replication.md)
+- [Azure SQL Edge 'de veritabanlarını yedekleme ve geri yükleme](backup-restore.md)
 
 
 

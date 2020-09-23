@@ -10,24 +10,34 @@
       items:
         - name: Giriş
           href: get-started.md
+          displayName: 'get, started'
         - name: 1 Synapse çalışma alanı oluşturma
           href: get-started-create-workspace.md
+          displayName: 'get, started'
         - name: 2 SQL Havuzu kullanarak analiz etme
           href: get-started-analyze-sql-pool.md
+          displayName: 'get, started'
         - name: 3 Spark kullanarak analiz etme
           href: get-started-analyze-spark.md
+          displayName: 'get, started'
         - name: 4 İsteğe bağlı SQL kullanarak analiz etme
           href: get-started-analyze-sql-on-demand.md
+          displayName: 'get, started'
         - name: 5 Depolama hesabındaki verileri analiz etme
           href: get-started-analyze-storage.md
+          displayName: 'get, started'
         - name: 6 İşlem hatları ile düzenleme
           href: get-started-pipelines.md
+          displayName: 'get, started'
         - name: 7 Power BI ile görselleştirme
           href: get-started-visualize-power-bi.md
+          displayName: 'get, started'
         - name: 8 İzleme
           href: get-started-monitor.md
+          displayName: 'get, started'
         - name: 9 Bilgi Merkezi’ni keşfetme
           href: get-started-knowledge-center.md
+          displayName: 'get, started'
     - name: Kopya kağıdı
       href: overview-cheat-sheet.md
     - name: SSS
@@ -48,16 +58,16 @@
       href: quickstart-power-bi.md
     - name: Havuz oluşturma
       items:
-        - name: Web araçlarını kullanarak Apache Spark not defteri oluşturma
-          href: quickstart-apache-spark-notebook.md
-        - name: Azure portalını kullanarak Apache Spark havuzu oluşturma
-          href: quickstart-create-apache-spark-pool-portal.md
-        - name: Synapse Studio kullanarak Apache Spark havuzu oluşturma
-          href: quickstart-create-apache-spark-pool-studio.md
-        - name: Azure portal kullanarak SQL havuzu oluşturma
-          href: quickstart-create-sql-pool-portal.md
         - name: Synapse Studio kullanarak SQL havuzu oluşturma
           href: quickstart-create-sql-pool-studio.md
+        - name: Azure portal kullanarak SQL havuzu oluşturma
+          href: quickstart-create-sql-pool-portal.md
+        - name: Not defteri oluşturma
+          href: quickstart-apache-spark-notebook.md
+        - name: Azure portal ile Spark havuzu oluşturma
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Synapse Studio kullanarak Spark havuzu oluşturma
+          href: quickstart-create-apache-spark-pool-studio.md
     - name: SQL havuzlarıyla verileri yükleme
       items:
         - name: COPY ifadesi

@@ -1,0 +1,214 @@
+- name: Azure Arc özellikli veri hizmetleri belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure Arc özellikli veri hizmetleri nedir?
+      href: overview.md
+    - name: Sürüm notları
+      href: release-notes.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Veri denetleyicisi oluşturma
+      href: create-data-controller.md
+- name: Kavramlar
+  items:
+    - name: Bağlantı modları ve gereksinimler
+      href: connectivity.md
+    - name: Depolama yapılandırması
+      href: storage-configuration.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Araçları yükleme
+      items:
+        - name: İstemci araçlarını yükleme
+          href: install-client-tools.md
+        - name: azdata
+          items:
+            - name: Yükleme
+              href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: macOS
+              href: /sql/azdata/install/deploy-install-azdata-macos?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Windows
+              href: /sql/azdata/install/deploy-install-azdata-installer?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: apt ile Linux
+              href: /sql/azdata/install/deploy-install-azdata-linux-package?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: yum ile Linux
+              href: /sql/azdata/install/deploy-install-azdata-yum?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: zypper ile Linux
+              href: /sql/azdata/install/deploy-install-azdata-zypper?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Pip ile Linux
+              href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+    - name: Veri denetleyicisi oluşturma
+      items:
+        - name: Veri denetleyicisi oluşturma (Azure Data Studio)
+          href: create-data-controller-azure-data-studio.md
+        - name: Veri denetleyicisi kaynağı oluşturma (portal)
+          href: create-data-controller-resource-in-azure-portal.md
+        - name: Veri denetleyicisi oluşturma (azdata)
+          href: create-data-controller-using-azdata.md
+        - name: Kubernetes kullanarak veri denetleyicisi oluşturma
+          href: create-data-controller-using-k8s-native-tools.md
+    - name: Azure Arc özellikli veri hizmetlerindeki yaygın deneyimler
+      items:
+        - name: Panolar ile izleme (Azure Data Studio)
+          href: azure-data-studio-dashboards.md
+        - name: Faturalama verilerini görüntüleme (Azure)
+          href: view-billing-data-in-azure.md
+        - name: Veri denetleyicisini görüntüleme (portal)
+          href: view-data-controller-in-azure-portal.md
+        - name: Kaynakları silme
+          href: delete-azure-resources.md
+        - name: Azure Arc veri denetleyicisini kaldırma
+          href: uninstall-azure-arc-data-controller.md
+    - name: Yönetme
+      items:
+        - name: Grafana ve Kibana ile izleme
+          href: monitor-grafana-kibana.md
+        - name: Ölçümleri ve günlükleri karşıya yükleme
+          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: Stok veritabanı örnekleri
+          href: view-arc-data-services-inventory-in-azure-portal.md
+        - name: Veri denetleyicisi kullanıcı adı ve parolası alma
+          href: retrieve-the-username-password-for-data-controller.md
+    - name: Sorun giderme
+      items:
+        - name: Kılavuz
+          href: troubleshoot-guide.md
+        - name: Günlükleri alma
+          href: troubleshooting-get-logs.md
+- name: Azure Arc özellikli PostgreSQL Hiper Ölçek (önizleme)
+  items:
+    - name: Genel Bakış
+      items:
+        - name: Azure Arc özellikli PostgreSQL Hiper Ölçek nedir?
+          href: what-is-azure-arc-enabled-postgres-hyperscale.md
+    - name: Hızlı Başlangıçlar
+      items:
+        - name: Desteklenen sürümler
+          href: supported-versions-postgres-hyperscale.md
+        - name: Postgres Hiper Ölçek sunucu grubu oluşturma (CLI)
+          href: create-postgresql-hyperscale-server-group.md
+        - name: Postgres Hiper Ölçek sunucu grubu oluşturma (Azure Data Studio)
+          href: create-postgresql-hyperscale-server-group-azure-data-studio.md
+        - name: Bağlan
+          href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - name: Kavramlar
+      items:
+        - name: Verileri dağıtma
+          href: concepts-distributed-postgres-hyperscale.md
+        - name: Sunucu grubu yerleştirme
+          href: postgresql-hyperscale-server-group-placement-on-kubernetes-cluster-nodes.md
+    - name: Nasıl yapılır
+      items:
+        - name: Yönetme
+          items:
+            - name: Yedekleme ve geri yükleme
+              href: backup-restore-postgresql-hyperscale.md
+            - name: Yapılandırma ve ölçeklendirme
+              items:
+                - name: Yapılandırmayı gösterme
+                  href: show-configuration-postgresql-hyperscale-server-group.md
+                - name: Ölçeği genişletme - çalışan düğümleri ekleme
+                  href: scale-out-postgresql-hyperscale-server-group.md
+                - name: Ölçeği artırma/azaltma bellek ve sanal çekirdekler
+                  href: scale-up-down-postgresql-hyperscale-server-group-using-cli.md
+                - name: Sunucu parametrelerini yapılandırma
+                  href: configure-server-parameters-postgresql-hyperscale.md
+            - name: Sil
+              href: delete-postgresql-hyperscale-server-group.md
+            - name: Sunucu gruplarını listeleme
+              href: list-server-groups-postgres-hyperscale.md
+            - name: 'İzleme, günlük analizi, faturalama bilgileri, Azure portal'
+              href: monitoring-log-analytics-azure-portal-postgresql.md
+            - name: Güvenlik
+              href: configure-security-postgres-hyperscale.md
+            - name: Sunucu grubunu yönetme (Azure Data Studio)
+              href: manage-postgresql-hyperscale-server-group-with-azure-data-studio.md
+            - name: Postgres uzantılarını kullanma
+              href: using-extensions-in-postgresql-hyperscale-server-group.md
+        - name: Geçiş
+          items:
+            - name: PostgreSQL verilerini bir Postgres Hiper Ölçek sunucu grubuna geçirme
+              href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+            - name: Örnek veritabanı AdventureWorks’ü geri yükleme
+              href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+        - name: Sorun giderme
+          href: troubleshoot-postgresql-hyperscale-server-group.md
+- name: Azure Arc özellikli SQL Yönetilen Örneği (önizleme)
+  items:
+    - name: Genel Bakış
+      items:
+        - name: Azure Arc özellikli SQL Yönetilen Örneği nedir?
+          href: managed-instance-overview.md
+        - name: Özellikler
+          href: managed-instance-features.md
+    - name: Hızlı Başlangıçlar
+      items:
+        - name: SQL Yönetilen Örnek oluşturma
+          href: create-sql-managed-instance.md
+        - name: SQL Yönetilen Örneği oluşturma (Azure Data Studio)
+          href: create-sql-managed-instance-azure-data-studio.md
+        - name: Bağlan
+          href: connect-managed-instance.md
+    - name: Nasıl yapılır
+      items:
+        - name: Yönetme
+          items:
+            - name: Yapılandırma
+              href: configure-managed-instance.md
+            - name: 'İzleme, günlük analizi, faturalama bilgileri, Azure portal'
+              href: monitoring-log-analytics-azure-portal-managed-instance.md
+            - name: Sil
+              href: delete-managed-instance.md
+        - name: Geçiş
+          items:
+            - name: SQL Yönetilen Örneği’ne geçiş (Azure Arc)
+              href: migrate-to-managed-instance.md
+            - name: AdventureWorks’ü geri yükleme
+              href: restore-adventureworks-sample-db.md
+- name: Başvuru
+  items:
+    - name: azdata
+      items:
+        - name: azdata
+          href: /sql/azdata/reference/reference-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: notebook
+          href: /sql/azdata/reference/reference-azdata-notebook?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: postgres
+          href: /sql/azdata/reference/reference-azdata-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: sql
+          href: /sql/azdata/reference/reference-azdata-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: azdata-arc
+          href: /sql/azdata/reference/reference-azdata-arc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc
+          href: /sql/azdata/reference/reference-azdata-arc-dc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-config
+          href: /sql/azdata/reference/reference-azdata-arc-dc-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-debug
+          href: /sql/azdata/reference/reference-azdata-arc-dc-debug?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-endpoint
+          href: /sql/azdata/reference/reference-azdata-arc-dc-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-status
+          href: /sql/azdata/reference/reference-azdata-arc-dc-status?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres
+          href: /sql/azdata/reference/reference-azdata-arc-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-backup
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-endpoint
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server-backup
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server-config
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-resource
+          href: /sql/azdata/reference/reference-azdata-arc-resource?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-resource-kind
+          href: /sql/azdata/reference/reference-azdata-arc-resource-kind?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql
+          href: /sql/azdata/reference/reference-azdata-arc-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql-mi
+          href: /sql/azdata/reference/reference-azdata-arc-sql-mi?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql-mi-config
+          href: /sql/azdata/reference/reference-azdata-arc-sql-mi-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: e11d5b14bdf6b134fefea79a1f709ec73499bd20
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 0020efea69fc684ff6ebebf286718aa2a720910e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815717"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900793"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics Önizleme özellikleri
 
@@ -25,10 +25,6 @@ Aşağıdaki özellikler genel önizlemede. Günümüzde bu özelliklerden fayda
 ### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Yönetilen kimlikler ile SQL veritabanı çıktısına kimlik doğrulama
 
 Azure Stream Analytics, Azure SQL veritabanı çıkış havuzları için [yönetilen kimlik kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/overview.md) destekler. Yönetilen kimlikler, Kullanıcı tabanlı kimlik doğrulama yöntemlerinin, parola değişiklikleri nedeniyle yeniden kimlik doğrulaması ihtiyacı gibi sınırlamaları ortadan kaldırır. 
-
-### <a name="output-to-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'e çıkış
-
-Azure Stream Analytics işleri, [Azure SYNAPSE Analytics](https://azure.microsoft.com/services/synapse-analytics) 'TEKI bir SQL havuz tablosuna çıkış yapabilir ve işleme hızını 200 MB/sn 'ye kadar işleyebilir. Bu, raporlama ve oluşturma gibi iş yükleri için en zorlu gerçek zamanlı analiz ve etkin yol veri işleme ihtiyaçlarını destekler.  
 
 ### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Azure Machine Learning tarafından yönetilen özel ML modelleriyle gerçek zamanlı yüksek performans Puanlama
 
@@ -52,7 +48,7 @@ Azure Stream Analytics için Visual Studio Araçları, Olay Hub 'ı veya IoT Hub
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Stream Analytics için Visual Studio Code
 
-Azure Stream Analytics işleri Visual Studio Code olarak yazılabilir. [Vs Code kullanmaya başlama Öğreticimizi](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code)inceleyin.
+Azure Stream Analytics işleri Visual Studio Code olarak yazılabilir. [Vs Code kullanmaya başlama Öğreticimizi](https://docs.microsoft.com/azure/stream-analytics/quick-create-visual-studio-code)inceleyin.
 
 ### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Visual Studio Code içindeki canlı verilerle yerel test
 

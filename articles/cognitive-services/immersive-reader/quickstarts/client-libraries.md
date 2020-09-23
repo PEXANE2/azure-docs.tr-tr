@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: tam ekran okuyucusu istemci kitaplığını kullanma'
+title: 'Hızlı başlangıç: modern okuyucu istemci kitaplığı'
 titleSuffix: Azure Cognitive Services
-description: Modern okuyucu API 'SI, arama yeteneklerini uygulamalarınızın tümleştirmesini kolaylaştıran istemci kitaplıkları sunar. Arama istekleri göndermeye başlamak için bu hızlı başlangıcı kullanın ve sonuçları geri alın.
+description: Modern okuyucu istemci kitaplığı, okuma kavramasını geliştirmek için modern okuyucu hizmetini Web uygulamalarınızla tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta, metin seçimi için tam ekran okuyucuyu nasıl kullanacağınızı, konuşma parçalarını tanımayı, seçilen metnin sesli, çeviri ve daha fazlasını okumaktan öğrenirsiniz.
 services: cognitive-services
 author: nitinme
 manager: nitinme
@@ -9,17 +9,18 @@ zone_pivot_groups: programming-languages-set-twenty
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.custom: devx-track-csharp
-ms.openlocfilehash: c5f02c473fb4a44fb8c0235658d3c8f6e3279844
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.custom: cog-serv-seo-aug-2020
+keywords: görüntü resimleri, konuşma parçaları, seçilen metni oku, sözcükleri çevir, okumayı anlama
+ms.openlocfilehash: 621be6293b4ac487cafafc14498524c97fdc6d82
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505426"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978265"
 ---
-# <a name="quickstart-use-the-immersive-reader-client-library"></a>Hızlı başlangıç: tam ekran okuyucusu istemci kitaplığını kullanma
+# <a name="quickstart-get-started-with-immersive-reader"></a>Hızlı başlangıç: modern okuyucuyla çalışmaya başlama
 
 ::: zone pivot="programming-language-csharp"
 

@@ -1,7 +1,7 @@
 ---
-title: Tasarımcı (Önizleme) modülü hatalarında sorun giderme
+title: Tasarımcı modülü hatalarında sorun giderme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning tasarımcısında modül hata kodları sorunlarını giderme (Önizleme)
+description: Azure Machine Learning tasarımcısında modül hata kodları sorunlarını giderme
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 023a28c6f1d89d0975ff8ecac2466c51c05fa9da
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876929"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908085"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Tasarımcı için özel durumlar ve hata kodları (Önizleme)
+# <a name="exceptions-and-error-codes-for-the-designer"></a>Tasarımcı için özel durumlar ve hata kodları
 
-Bu makalede, Machine Learning işlem hatlarınızı gidermenize yardımcı olmak üzere Azure Machine Learning Designer 'daki (Önizleme) hata iletileri ve özel durum kodları açıklanmaktadır.
+Bu makalede, Machine Learning işlem hatlarınızı gidermenize yardımcı olmak üzere Azure Machine Learning tasarımcısında hata iletileri ve özel durum kodları açıklanmaktadır.
 
 Aşağıdaki adımları izleyerek tasarımcıda hata iletisini bulabilirsiniz:  
 
@@ -255,8 +255,8 @@ Model, özelleştirilmiş eğitim modüllerinden herhangi birini kullanarak eği
 
 |Model türü|Eğitim modülü| Puanlama modülü|
 |----|----|----|
-|herhangi bir sınıflandırıcı|[Model Eğitme](train-model.md) |[Modeli Puanlama](score-model.md)|
-|herhangi bir regresyon modeli|[Model Eğitme](train-model.md) |[Modeli Puanlama](score-model.md)|
+|herhangi bir sınıflandırıcı|[Model Eğitme](train-model.md) |[Puanlama Modeli](score-model.md)|
+|herhangi bir regresyon modeli|[Model Eğitme](train-model.md) |[Puanlama Modeli](score-model.md)|
 
 <!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
 | anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|
@@ -491,7 +491,7 @@ Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machi
 
 **Çözünürlüğüne**
 
-+ Hatayı oluşturan modülü açın ve bir etiket sütununun mevcut olup olmadığını saptayın. Sütunun adı veya veri türü, tahmin etmeye çalıştığınız tek bir sonuç (veya bağımlı değişken) içerdiği sürece önemi yoktur. Hangi sütunun etikete sahip olduğundan emin değilseniz, *Class* veya *target*gibi genel bir adı arayın. 
++ Hatayı oluşturan modülü açın ve bir etiket sütununun mevcut olup olmadığını saptayın. Sütunun adı veya veri türü, tahmin etmeye çalıştığınız tek bir sonuç (veya bağımlı değişken) içerdiği sürece önemi yoktur. Hangi sütunun etikete sahip olduğundan emin değilseniz,  *Class* veya *target*gibi genel bir adı arayın. 
 +  Veri kümesi bir etiket sütunu içermiyorsa, etiket sütununun açık olarak veya yanlışlıkla yukarı akış kaldırılmış olması mümkündür. Ayrıca, veri kümesi bir yukarı akış Puanlama modülünün çıkışı değildir.
 + Sütunu etiket sütunu olarak açıkça işaretlemek için, [meta veri düzenleme](edit-metadata.md) modülünü ekleyin ve veri kümesini bağlayın. Yalnızca etiket sütununu seçin ve **alanlar** açılan listesinden **etiket** ' i seçin. 
 + Etiket olarak yanlış sütun seçilirse, sütundaki meta verileri düzeltebilmeniz için alanlardan **etiketi temizle** ' yi **Fields** seçebilirsiniz. 

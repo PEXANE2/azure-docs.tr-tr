@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a5264c14294f84858cd489f5892b8cdd19e117d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79455919"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893621"
 ---
 # <a name="select-columns-transform"></a>Sütun Dönüştürmeyi Seçme
 
-Bu makalede, Azure Machine Learning tasarımcısında (Önizleme) sütun seçme dönüştürme modülünün nasıl kullanılacağı açıklanır. Sütunları seçin dönüştürme modülünün amacı, aşağı akış makine öğrenimi işlemlerinde öngörülebilir, tutarlı bir sütun kümesinin kullanılmasını sağlamaktır.
+Bu makalede Azure Machine Learning tasarımcısında sütunları seçme dönüştürme modülünün nasıl kullanılacağı açıklanır. Sütunları seçin dönüştürme modülünün amacı, aşağı akış makine öğrenimi işlemlerinde öngörülebilir, tutarlı bir sütun kümesinin kullanılmasını sağlamaktır.
 
 Bu modül, belirli sütunlar gerektiren Puanlama gibi görevler için yararlıdır. Kullanılabilir sütunlardaki değişiklikler işlem hattını bölebilir veya sonuçları değiştirebilir.
 

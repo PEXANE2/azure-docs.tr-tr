@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1211245786bbb734e0338be1b79030f5f9552793
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8649c9faf3905e69232cdc15bbba6607abe3e9c4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266400"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969504"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme
 
@@ -32,16 +32,39 @@ Bu makalede, Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetil
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- Henüz yapmadıysanız [Azure PowerShell en son sürümünü](/powershell/azure/install-az-ps) yükleyebilirsiniz.
-- PowerShell'i yerel ortamda çalıştırıyorsanız şunları da yapmanız gerekir: 
-    - Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
-    - [PowerShellGet'in en son sürümünü](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget) yükleyin.
-    - `Install-Module -Name PowerShellGet -AllowPrerelease` komutunu çalıştırarak `PowerShellGet` modülünün yayın öncesi sürümünü alın (`Az.ManagedServiceIdentity` modülünü yüklemek için bu komutu çalıştırdıktan sonra geçerli PowerShell oturumundan `Exit` ile çıkmanız gerekebilir).
-    - `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` `Az.ManagedServiceIdentity` Bu makalede Kullanıcı tarafından atanan yönetilen kimlik işlemlerini gerçekleştirmek üzere modülün ön sürümü sürümünü yüklemek için ' i çalıştırın.
+- Örnek betikleri çalıştırmak için iki seçeneğiniz vardır:
+    - Kod bloklarının sağ üst köşesindeki **It TRY** düğmesini kullanarak açabileceğiniz [Azure Cloud Shell](../../cloud-shell/overview.md)kullanın.
+    - Komut dosyalarını, sonraki bölümde açıklandığı gibi Azure PowerShell yerel olarak çalıştırın.
+
+### <a name="configure-azure-powershell-locally"></a>Azure PowerShell yerel olarak yapılandırma
+
+Bu makale için Azure PowerShell yerel olarak kullanmak için (Cloud Shell kullanmak yerine), aşağıdaki adımları izleyin:
+
+1. Henüz yapmadıysanız [Azure PowerShell en son sürümünü](/powershell/azure/install-az-ps) yükleyebilirsiniz.
+
+1. Azure 'da oturum açın:
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. [PowerShellGet'in en son sürümünü](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget) yükleyin.
+
+    ```azurepowershell
+    Install-Module -Name PowerShellGet -AllowPrerelease
+    ```
+
+    `Exit`Sonraki adımda bu komutu çalıştırdıktan sonra geçerli PowerShell oturumunun olması gerekebilir.
+
+1. `Az.ManagedServiceIdentity`Bu makalede Kullanıcı tarafından atanan yönetilen kimlik işlemlerini gerçekleştirmek için modülün ön sürümü sürümünü yükler:
+
+    ```azurepowershell
+    Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease
+    ```
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma
 

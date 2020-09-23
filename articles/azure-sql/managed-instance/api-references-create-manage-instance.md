@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 8cc2930422bf644f217737d0f0ba585c243575ee
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4627c094c3913d01f06c237b133e1ed0ea4ed2e0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503013"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969788"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için yönetilen API başvurusu
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,6 +44,8 @@ Azure PowerShell ile yönetilen örnekler oluşturup yönetmek için aşağıdak
 |[Get-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Yönetilen bir örnek hakkında bilgi döndürür.|
 |[Set-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Yönetilen bir örnek için özellikleri ayarlar.|
 |[Remove-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Yönetilen bir örneği kaldırır.|
+|[Get-Azsqlınstanceoperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation)|Yönetilen örnek veya belirli bir işlem üzerinde gerçekleştirilen yönetim işlemlerinin bir listesini alır.|
+|[Stop-Azsqlınstanceoperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation)|Yönetilen örnekte gerçekleştirilen belirli yönetim işlemini iptal eder.|
 |[New-Azsqlınstancedatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|SQL yönetilen örnek veritabanı oluşturur.|
 |[Get-Azsqlınstancedatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|SQL yönetilen örnek veritabanı hakkında bilgi döndürür.|
 |[Remove-Azsqlınstancedatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|SQL yönetilen örnek veritabanını kaldırır.|
@@ -63,6 +65,9 @@ Azure PowerShell ile yönetilen örnekler oluşturup yönetmek için aşağıdak
 |[az SQL mı Show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|Yönetilen bir örnek için ayrıntıları alır.|
 |[az SQL mı güncelleştirmesi](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Yönetilen bir örneği güncelleştirir.|
 |[az SQL mi Delete](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Yönetilen bir örneği kaldırır.|
+|[az SQL mı op List](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_list)|Yönetilen örnek üzerinde gerçekleştirilen yönetim işlemlerinin bir listesini alır.|
+|[az SQL mı op Show](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_show)|Yönetilen örnek üzerinde gerçekleştirilen belirli yönetim işlemini alır.|
+|[az SQL mı op Cancel](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|Yönetilen örnekte gerçekleştirilen belirli yönetim işlemini iptal eder.|
 |[az SQL mıdb Create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Yönetilen bir veritabanı oluşturur.|
 |[az SQL mıdb List](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Kullanılabilir yönetilen veritabanlarını listeler.|
 |[az SQL mıdb restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Yönetilen bir veritabanını geri yükler.|
@@ -80,8 +85,8 @@ Yönetilen örnek oluşturulduktan sonra örnek veritabanları oluşturup yapıl
 
 | Komut | Açıklama |
 | --- | --- |
-|[VERITABANı OLUŞTUR](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|SQL yönetilen örneği 'nde yeni bir örnek veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |SQL yönetilen örneğindeki bir örnek veritabanını değiştirir.|
+|[VERITABANı OLUŞTUR](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|SQL yönetilen örneği 'nde yeni bir örnek veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) |SQL yönetilen örneğindeki bir örnek veritabanını değiştirir.|
 
 ## <a name="rest-api-create-and-configure-managed-instances"></a>REST API: yönetilen örnekler oluşturma ve yapılandırma
 
@@ -95,6 +100,9 @@ Yönetilen örnekler oluşturmak ve yapılandırmak için bu REST API isteklerin
 |[Yönetilen örnekler-liste](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|Bir abonelikteki yönetilen örneklerin listesini döndürür.|
 |[Yönetilen örnekler-kaynak grubuna göre Listele](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Bir kaynak grubundaki yönetilen örneklerin listesini döndürür.|
 |[Yönetilen örnekler-güncelleştirme](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|Yönetilen bir örneği güncelleştirir.|
+|[Yönetilen örnek Işlemleri-yönetilen örneğe göre listeleme](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Yönetilen örnek üzerinde gerçekleştirilen yönetim işlemlerinin bir listesini alır.|
+|[Yönetilen örnek Işlemleri-Get](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|Yönetilen örnek üzerinde gerçekleştirilen belirli yönetim işlemini alır.|
+|[Yönetilen örnek Işlemleri-Iptal](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|Yönetilen örnekte gerçekleştirilen belirli yönetim işlemini iptal eder.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

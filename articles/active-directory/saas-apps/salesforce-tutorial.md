@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/17/2020
+ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 7228f4fbf348b8112654ece91aa5e9e831ac1201
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6d653594cce20439a6e1214f104d875ec76bf1a9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543576"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979867"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Öğretici: Salesforce ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,7 @@ Bu öğreticide Salesforce 'ı Azure Active Directory (Azure AD) ile tümleştir
 * Kullanıcılarınızın Azure AD hesaplarıyla Salesforce 'ta otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -46,24 +44,23 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * Salesforce **, tam zamanında** Kullanıcı sağlamayı destekler
 
 * Salesforce mobil uygulaması, artık SSO 'yu etkinleştirmek için Azure AD ile yapılandırılabilir. Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
-* Salesforce 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bir şekilde korunmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-salesforce-from-the-gallery"></a>Galeriden Salesforce ekleme
 
 Salesforce 'un Azure AD ile tümleştirilmesini yapılandırmak için, galerideki Salesforce 'ı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Salesforce** yazın.
 1. Sonuçlar panelinden **Salesforce** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-salesforce"></a>Salesforce için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-salesforce"></a>Salesforce için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Salesforce ile yapılandırın ve test edin. SSO 'nun çalışması için, Salesforce 'daki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Salesforce ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Salesforce ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -76,7 +73,7 @@ Azure AD SSO 'yu Salesforce ile yapılandırmak ve test etmek için aşağıdaki
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/) **Salesforce** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal **Salesforce** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -132,15 +129,9 @@ Bu bölümde, Salesforce 'a erişim vererek Azure çoklu oturum açma özelliği
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Salesforce**' u seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-salesforce-sso"></a>Salesforce SSO 'yu yapılandırma
@@ -157,46 +148,46 @@ Bu bölümde, Salesforce 'a erişim vererek Azure çoklu oturum açma özelliği
 
 1. Sayfanın sağ üst köşesindeki **Ayarlar simgesi** altında **Kurulum** ' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-tutorial/configure1.png)
+    ![Çoklu oturum açma ayarlarını yapılandırma simgesi](./media/salesforce-tutorial/configure1.png)
 
 1. Gezinti bölmesinde **Ayarlar** ' a gidin, ilgili bölümü genişletmek için **kimlik** ' e tıklayın. Ardından **Çoklu oturum açma ayarları**' na tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-tutorial/sf-admin-sso.png)
+    ![Çoklu oturum açma ayarlarını yapılandırma](./media/salesforce-tutorial/sf-admin-sso.png)
 
 1. **Çoklu oturum açma ayarları** sayfasında **Düzenle** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-tutorial/sf-admin-sso-edit.png)
+    ![Çoklu oturum açma düzenleme yapılandırma](./media/salesforce-tutorial/sf-admin-sso-edit.png)
 
     > [!NOTE]
     > Salesforce hesabınız için çoklu oturum açma ayarlarını etkinleştiremeyebilirsiniz [Salesforce istemci desteği ekibine](https://help.salesforce.com/support)başvurmanız gerekebilir.
 
 1. **SAML etkin**' i seçin ve ardından **Kaydet**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-tutorial/sf-enable-saml.png)
+    ![Çoklu oturum açma SAML 'Yi yapılandırma etkin](./media/salesforce-tutorial/sf-enable-saml.png)
 
 1. SAML çoklu oturum açma ayarlarınızı yapılandırmak için **meta veri dosyasından yeni**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-tutorial/sf-admin-sso-new.png)
+    ![Meta veri dosyasından yeni çoklu oturum açma yapılandırma](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
 1. Azure portal indirdiğiniz meta veri XML dosyasını karşıya yüklemek için **Dosya Seç** ' e tıklayın ve **Oluştur**' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-tutorial/xmlchoose.png)
+    ![Çoklu oturum açmayı yapılandırma dosya seçme](./media/salesforce-tutorial/xmlchoose.png)
 
 1. **SAML çoklu oturum açma ayarları** sayfasında, alanlar otomatik olarak doldurulur, **Kullanıcı sağlama etkin** ' i seçin ve ardından **Kaydet**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-tutorial/salesforcexml.png)
+    ![Çoklu oturum açma Kullanıcı sağlamasını yapılandırma etkin](./media/salesforce-tutorial/salesforcexml.png)
 
 1. Salesforce ' daki sol gezinti bölmesinde **Şirket ayarları** ' na tıklayarak ilgili bölümü genişletin ve **etki alanım**' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-tutorial/sf-my-domain.png)
+    ![Etki alanım 'Da çoklu oturum açma yapılandırma](./media/salesforce-tutorial/sf-my-domain.png)
 
 1. **Kimlik doğrulama yapılandırması** bölümüne gidin ve **Düzenle** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-tutorial/sf-edit-auth-config.png)
+    ![Çoklu oturum açma kimlik doğrulama yapılandırmasını yapılandırma](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
 1. **Kimlik doğrulama yapılandırması** bölümünde, SAML SSO yapılandırmanızın **kimlik doğrulama hizmeti** olarak **Azuresso** ' ı denetleyip **Kaydet**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-tutorial/sf-auth-config.png)
+    ![Çoklu oturum açma kimlik doğrulama hizmetini yapılandırma](./media/salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
     > Birden fazla kimlik doğrulama hizmeti seçilirse, kullanıcılardan Salesforce ortamınızda çoklu oturum açmayı başlatırken, hangi kimlik doğrulama hizmetini kullanarak oturum açmasını istediğinizi seçmeleri istenir. Bunun gerçekleşmesini istemiyorsanız, **diğer tüm kimlik doğrulama hizmetlerini işaretlenmemiş olarak bırakmalısınız**.
@@ -207,44 +198,36 @@ Bu bölümde, Salesforce 'ta B. Simon adlı bir Kullanıcı oluşturulur. Salesf
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde Salesforce kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Salesforce 'ta otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+1. Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Salesforce oturum açma URL 'sine yeniden yönlendirilir. 
+
+2. Doğrudan Salesforce oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
+
+3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Salesforce kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Salesforce 'ta otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="test-sso-for-salesforce-mobile"></a>Salesforce için test SSO 'SU (mobil)
 
 1. Salesforce mobil uygulamasını açın. Oturum aç sayfasında, **özel etki alanı kullan**' a tıklayın.
 
-    ![Salesforce mobil uygulaması](media/salesforce-tutorial/mobile-app1.png)
+    ![Salesforce mobil uygulaması özel etki alanı kullan](media/salesforce-tutorial/mobile-app1.png)
 
 1. **Özel etki alanı** metin kutusuna kayıtlı özel etki alanı adınızı girip **devam**' a tıklayın.
 
-    ![Salesforce mobil uygulaması](media/salesforce-tutorial/mobile-app2.png)
+    ![Salesforce mobil uygulaması özel etki alanı](media/salesforce-tutorial/mobile-app2.png)
 
 1. Salesforce uygulamasında oturum açmak için Azure AD kimlik bilgilerinizi girin ve **İleri**' ye tıklayın.
 
-    ![Salesforce mobil uygulaması](media/salesforce-tutorial/mobile-app3.png)
+    ![Salesforce mobil uygulaması Azure AD kimlik bilgileri](media/salesforce-tutorial/mobile-app3.png)
 
 1. Aşağıda gösterildiği gibi **erişime Izin ver** sayfasında, Salesforce uygulamasına erişim izni vermek Için **izin ver** ' e tıklayın.
 
-    ![Salesforce mobil uygulaması](media/salesforce-tutorial/mobile-app4.png)
+    ![Salesforce mobil uygulaması erişime Izin ver](media/salesforce-tutorial/mobile-app4.png)
 
 1. Son olarak, başarıyla oturum açtıktan sonra uygulama giriş sayfası görüntülenir.
 
-    ![Salesforce mobil uygulaması ](media/salesforce-tutorial/mobile-app5.png) ![ Salesforce mobil uygulaması](media/salesforce-tutorial/mobile-app6.png)
+    ![Salesforce mobil uygulama giriş sayfası ](media/salesforce-tutorial/mobile-app5.png) ![ Salesforce mobil uygulaması](media/salesforce-tutorial/mobile-app6.png)
 
-## <a name="additional-resources"></a>Ek kaynaklar
+## <a name="next-steps"></a>Sonraki Adımlar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Kullanıcı sağlamayı yapılandırma](salesforce-provisioning-tutorial.md)
-
-- [Azure AD ile Salesforce 'ı deneyin](https://aad.portal.azure.com)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Gelişmiş görünürlük ve denetimlerle Salesforce koruması](https://docs.microsoft.com/cloud-app-security/protect-salesforce)
+Salesforce 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

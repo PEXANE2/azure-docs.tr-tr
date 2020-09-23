@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4dc3c46b65bab48b8923af985f0c2c29fcddc53b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941218"
+ms.locfileid: "90973384"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Farklı veri kaynaklarından ölçüm Danışmanı 'na veri akışları ekleme
 
@@ -27,10 +27,10 @@ Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yöne
 | ---------------------|-------------|
 |**Temel** | Veri kaynaklarına erişmek için temel parametreleri sağlayabilmeniz gerekir. Örneğin bir bağlantı dizesi veya anahtar. Veri akışı yöneticileri bu kimlik bilgilerini görüntüleyebiliyor. |
 | **AzureManagedIdentity** | Azure kaynakları için [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) Azure Active Directory özelliğidir. Azure hizmetleri 'ni Azure AD 'de otomatik olarak yönetilen bir kimlikle sağlar. Kimliği, Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz.|
-| **Azuressqlconnectionstring**| AzureSQL Bağlantı dizenizi ölçüm Danışmanı 'nda bir **kimlik doğrulama varlığı** olarak depolayın ve ölçüm verilerini ekleme sırasında doğrudan bu her seferinde kullanın. Yalnızca kimlik doğrulama varlığının yöneticileri bu kimlik bilgilerini görüntüleyebilir, ancak yetkili görüntüleyicilerin kimlik bilgilerinin ayrıntılarını bilmeleri gerekmeden veri akışları oluşturmalarına olanak sağlar. |
-| **DataLakeGen2SharedKey**| Data Lake hesabı anahtarınızı, ölçüm Danışmanı 'nda bir **kimlik doğrulama varlığı** olarak depolayın ve ölçüm verilerini her seferinde doğrudan kullanın. Yalnızca kimlik doğrulama varlığının yöneticileri bu kimlik bilgilerini görüntüleyebilir, ancak yetkili görüntüleyicilerin kimlik bilgisi ayrıntılarını bilmeleri gerekmeden veri akışı oluşturmalarına olanak sağlar.|
-| **ServicePrincipal**| Hizmet sorumlunuzu ölçüm Danışmanı 'nda bir **kimlik doğrulama varlığı** olarak depolayın ve ölçüm verilerini her seferinde doğrudan kullanın. Yalnızca kimlik doğrulama varlığı yöneticileri kimlik bilgilerini görüntüleyebilir, ancak yetkili görüntüleyicilerin kimlik bilgisi ayrıntılarını bilmeleri gerekmeden veri akışı oluşturmalarına olanak sağlar.|
-| **Servicesprincipalınkeykasası**|Hizmet sorumlunuzu, ölçüm Danışmanı 'nda **kimlik doğrulama varlığı** olarak Anahtar Kasası 'nda depolayın ve ölçüm verilerini her seferinde doğrudan kullanın. Yalnızca **kimlik doğrulama varlığı** yöneticileri kimlik bilgilerini görüntüleyebilir, ancak aynı zamanda görüntüleyicilerin ayrıntılı kimlik bilgilerini bilmesi gerekmeden veri akışı oluşturabildiklerini de bırakabilir. |
+| **Azuressqlconnectionstring**| AzureSQL Bağlantı dizenizi ölçüm Danışmanı 'nda bir **kimlik bilgisi varlığı** olarak depolayın ve ölçüm verilerini her seferinde doğrudan kullanın. Yalnızca kimlik bilgileri varlığının yöneticileri bu kimlik bilgilerini görüntüleyebilir, ancak yetkili görüntüleyicilerin kimlik bilgileri için ayrıntıları bilmeleri gerekmeden veri akışları oluşturmalarına olanak sağlar. |
+| **DataLakeGen2SharedKey**| Data Lake hesabı anahtarınızı, ölçüm Danışmanı 'nda bir **kimlik bilgisi varlığı** olarak depolayın ve ölçüm verilerini her seferinde doğrudan kullanın. Yalnızca kimlik bilgisi varlığının yöneticileri bu kimlik bilgilerini görüntüleyebilir, ancak yetkili görüntüleyicilerin kimlik bilgisi ayrıntılarını bilmeleri gerekmeden veri akışı oluşturmalarına olanak sağlar.|
+| **Hizmet sorumlusu**| Hizmet sorumlunuzu ölçüm Danışmanı 'nda bir **kimlik bilgisi varlığı** olarak depolayın ve ölçüm verilerini her seferinde doğrudan kullanın. Yalnızca kimlik bilgisi varlığının yöneticileri kimlik bilgilerini görüntüleyebilir, ancak yetkili görüntüleyicilerin kimlik bilgisi ayrıntılarını bilmeleri gerekmeden veri akışı oluşturmalarına olanak sağlar.|
+| **Anahtar kasasından hizmet sorumlusu**|Hizmet sorumlunuzu, ölçüm Danışmanı 'nda **kimlik bilgisi varlığı** olarak bir anahtar kasasında depolayın ve ölçüm verilerini her seferinde doğrudan kullanın. Yalnızca bir **kimlik bilgisi varlığının** yöneticileri kimlik bilgilerini görüntüleyebilir, ancak aynı zamanda görüntüleyicilerin ayrıntılı kimlik bilgilerini bilmesi gerekmeden veri akışı oluşturabildiklerini de bırakabilir. |
 
 ## <a name="data-sources-supported-and-corresponding-authentication-types"></a>Desteklenen veri kaynakları ve ilgili kimlik doğrulama türleri
 
@@ -41,8 +41,8 @@ Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yöne
 |[**Azure Blob depolama (JSON)**](#blob) | Temel<br>Managedıdentity kimliğine|
 |[**Azure Cosmos DB (SQL)**](#cosmosdb) | Temel |
 |[**Azure Veri Gezgini (kusto)**](#kusto) | Temel<br>Managedıdentity kimliğine|
-|[**Azure Data Lake Storage Gen2**](#adl) | Temel<br>DataLakeGen2SharedKey<br>ServicePrincipal<br>Servicesprincipalınkeykasası<br> |
-|[**Azure SQL veritabanı/SQL Server**](#sql) | Temel<br>Managedıdentity kimliğine<br>ServicePrincipal<br>Servicesprincipalınkeykasası<br>Azuressqlconnectionstring
+|[**Azure Data Lake Storage Gen2**](#adl) | Temel<br>DataLakeGen2SharedKey<br>Hizmet sorumlusu<br>Anahtar kasasından hizmet sorumlusu<br> |
+|[**Azure SQL veritabanı/SQL Server**](#sql) | Temel<br>Managedıdentity kimliğine<br>Hizmet sorumlusu<br>Anahtar kasasından hizmet sorumlusu<br>Azuressqlconnectionstring
 |[**Azure Table Storage**](#table) | Temel | 
 |[**ElasticSearch**](#es) | Temel |
 |[**Http isteği**](#http) | Temel | 
@@ -51,7 +51,7 @@ Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yöne
 |[**MySQL**](#mysql) | Temel |
 |[**PostgreSQL**](#pgsql)| Temel|
 
-Bir **kimlik doğrulama varlığı** oluşturun ve veri kaynaklarınızda kimlik doğrulaması yapmak için kullanın. Aşağıdaki bölümler, *temel* kimlik doğrulaması için gereken parametreleri belirtir. 
+Bir **kimlik bilgisi varlığı** oluşturun ve veri kaynaklarınızda kimlik doğrulaması yapmak için kullanın. Aşağıdaki bölümler, *temel* kimlik doğrulaması için gereken parametreleri belirtir. 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 

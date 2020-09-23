@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 34caefba5bae660ca150f6e447b1d59b7174c768
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6bc9f69440be772910ea8200b5ccf7d5a5122ae6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857758"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907809"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Vowpal Wabbit Modelini Eğitme
-Bu makalede, Vowpal Wabbit kullanarak bir makine öğrenimi modeli oluşturmak için Azure Machine Learning tasarımcısında (Önizleme) **Vowpal Wabbit modeli** modülünün nasıl kullanılacağı açıklanır.  
+Bu makalede, Vowpal Wabbit kullanarak bir makine öğrenimi modeli oluşturmak için Azure Machine Learning tasarımcısında **Vowpal Wabbit modeli** modülünün nasıl kullanılacağı açıklanır.  
 
 Machine Learning için Vowpal Wabbit kullanmak için, girişinizi Vowpal Wabbit gereksinimlerine göre biçimlendirin ve verileri gerekli biçimde hazırlayın. Vowpal Wabbit komut satırı bağımsız değişkenlerini belirtmek için bu modülü kullanın. 
 
@@ -112,7 +112,7 @@ Genellikle, sınırlı bir bağımsız değişken kümesi desteklenir. Bağıms�
 
 Aşağıdaki parametreler desteklenmez:
 
--   İçinde belirtilen giriş/çıkış seçenekleri[https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
+-   İçinde belirtilen giriş/çıkış seçenekleri [https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
   
      Bu özellikler modül tarafından zaten otomatik olarak yapılandırılmıştır.  
   

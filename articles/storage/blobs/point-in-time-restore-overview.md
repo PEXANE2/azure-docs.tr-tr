@@ -1,27 +1,29 @@
 ---
-title: Blok Blobları için noktadan noktaya geri yükleme (Önizleme)
+title: Blok Blobları için noktadan noktaya geri yükleme
 titleSuffix: Azure Storage
 description: Blok Blobları için belirli bir noktaya geri yükleme, bir depolama hesabını belirli bir zamanda önceki durumuna geri yüklemenize olanak tanıyarak yanlışlıkla silinmeye veya bozulmalara karşı koruma sağlar.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 09/18/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1187b01fa623264055edecf21ea5c9d35d59a152
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 7fbebf21b79d2a533de0a872dfe6a10bc8f8e7e5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068311"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987035"
 ---
-# <a name="point-in-time-restore-for-block-blobs-preview"></a>Blok Blobları için noktadan noktaya geri yükleme (Önizleme)
+# <a name="point-in-time-restore-for-block-blobs"></a>Blok Blobları için noktadan noktaya geri yükleme
 
 Zaman içinde geri yükleme, Blok Blobu verilerini önceki bir duruma geri yüklemenize olanak tanıyarak yanlışlıkla silinmeye veya bozulmaya karşı koruma sağlar. Bir kullanıcının veya uygulamanın yanlışlıkla verileri sildiği veya bir uygulama hatasının verileri bozan senaryolarda, zaman içinde geri yükleme yararlı olur. Ayrıca, bir noktadan sonra geri yükleme, daha fazla testi çalıştırmadan önce bir veri kümesinin bilinen bir duruma geri döndürülmesi gereken test senaryolarına de olanak sağlar.
 
-Bir depolama hesabı için zaman içinde geri yükleme yapmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [blok Blobları (Önizleme) için noktadan noktaya geri yüklemeyi etkinleştirme ve yönetme](point-in-time-restore-manage.md).
+Tek noktaya geri yükleme yalnızca genel amaçlı v2 depolama hesapları için desteklenir. Yalnızca sık ve Seyrek Erişimli katmanlardaki veriler, zaman içinde geri yükleme ile geri yüklenebilir.
+
+Bir depolama hesabı için noktadan noktaya geri yüklemeyi etkinleştirme hakkında bilgi edinmek için bkz. [Blok Blobu verilerinde bir zaman içindeki bir noktaya geri yükleme gerçekleştirme](point-in-time-restore-manage.md).
 
 ## <a name="how-point-in-time-restore-works"></a>Zaman noktası geri yükleme nasıl çalışacaktır?
 
@@ -48,17 +50,15 @@ Geri yükleme işlemlerinde aşağıdaki sınırlamaları aklınızda bulundurun
 > Depolama hesabı coğrafi olarak çoğaltılırsa, ikincil konumdaki okuma işlemleri geri yükleme işlemi sırasında devam edebilir.
 
 > [!CAUTION]
-> Zaman içinde geri yükleme, yalnızca blok Bloblarındaki işlemleri geri yüklemeyi destekler. Kapsayıcılardaki işlemler geri yüklenemez. Bir kapsayıcıyı, zaman içinde geri yükleme önizlemesi sırasında [kapsayıcıyı silme](/rest/api/storageservices/delete-container) işlemini çağırarak depolama hesabından silerseniz, o kapsayıcı geri yükleme işlemiyle geri yüklenemez. Önizleme sırasında, bir kapsayıcıyı silmek, geri yüklemek istiyorsanız ayrı blob 'ları silin.
+> Zaman içinde geri yükleme, yalnızca blok Bloblarındaki işlemleri geri yüklemeyi destekler. Kapsayıcılardaki işlemler geri yüklenemez. [Kapsayıcıyı silme](/rest/api/storageservices/delete-container) işlemini çağırarak depolama hesabından bir kapsayıcıyı silerseniz, o kapsayıcı geri yükleme işlemiyle geri yüklenemez. Bir kapsayıcıyı silmek istiyorsanız, bir kapsayıcıyı silmek için tek tek Blobları silin.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Zaman içinde nokta geri yükleme önkoşulları
 
-Zaman içinde geri yükleme, aşağıdaki Azure depolama özelliklerinin etkinleştirilmesini gerektirir:
+Zaman içinde geri yükleme, zaman içinde nokta geri yüklemeyi etkinleştirebilmeniz için aşağıdaki Azure depolama özelliklerinin etkinleştirilmesini gerektirir:
 
 - [Geçici silme](soft-delete-overview.md)
-- [Akışı Değiştir (Önizleme)](storage-blob-change-feed.md)
+- [Akışı Değiştir](storage-blob-change-feed.md)
 - [Blob sürümü oluşturma](versioning-overview.md)
-
-Noktadan noktaya geri yüklemeyi etkinleştirmeden önce depolama hesabı için bu özellikleri etkinleştirin. Etkinleştirmeden önce değişiklik akışına ve BLOB sürüm önizlemesine kaydolduğunuzdan emin olun.
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Zaman içinde bir noktaya geri yükleme için bekletme süresi
 
@@ -72,83 +72,17 @@ Belirli bir noktaya geri yükleme için bekletme süresi, geçici silme için be
 
 Geri yükleme işlemini başlatmak için, bir istemcinin depolama hesabındaki tüm kapsayıcılar için yazma izinlerine sahip olması gerekir. Azure Active Directory (Azure AD) ile bir geri yükleme işlemini yetkilendirmek için izin vermek üzere depolama hesabı, kaynak grubu veya abonelik düzeyinde güvenlik sorumlusuna **depolama hesabı katılımcısı** rolünü atayın.
 
-## <a name="about-the-preview"></a>Önizleme hakkında
+## <a name="limitations-and-known-issues"></a>Sınırlamalar ve bilinen sorunlar
 
-Tek noktaya geri yükleme yalnızca genel amaçlı v2 depolama hesapları için desteklenir. Yalnızca sık ve Seyrek Erişimli katmanlardaki veriler, zaman içinde geri yükleme ile geri yüklenebilir.
+Blok Blobları için bir noktadan noktaya geri yükleme aşağıdaki sınırlamalara ve bilinen sorunlara sahiptir:
 
-Aşağıdaki bölgeler önizlemede bir noktaya geri yüklemeyi destekler:
-
-- Orta Kanada
-- Doğu Kanada
-- Orta Fransa
-
-Önizleme aşağıdaki sınırlamaları içerir:
-
-- Premium blok bloblarının geri yüklenmesi desteklenmez.
-- Arşiv katmanındaki blobları geri yükleme desteklenmez. Örneğin, sık erişim katmanındaki bir blob iki gün önce arşiv katmanına taşınmışsa ve geri yükleme işlemi üç gün önceki bir noktaya geri yüklüyorsa blob sık erişim katmanına geri yüklenmez.
+- Yalnızca standart bir genel amaçlı v2 depolama hesabındaki blok Bloblar, bir zaman noktası geri yükleme işleminin parçası olarak geri yüklenebilir. Ekleme Blobları, sayfa Blobları ve Premium blok Blobları geri yüklenmez. Saklama döneminde bir kapsayıcıyı sildiyseniz, bu kapsayıcı, zaman içinde geri yükleme işlemi ile geri yüklenmez. Kapsayıcıları silinmeye karşı koruma hakkında bilgi edinmek için bkz. [kapsayıcılar Için geçici silme (Önizleme)](soft-delete-container-overview.md).
+- Yalnızca sık veya seyrek katmanlardaki blok Blobları, bir zaman noktası geri yükleme işleminde geri yüklenebilir. Arşiv katmanındaki blok bloblarının geri yüklenmesi desteklenmiyor. Örneğin, sık erişim katmanındaki bir blob iki gün önce arşiv katmanına taşınmışsa ve geri yükleme işlemi üç gün önceki bir noktaya geri yüklüyorsa blob sık erişim katmanına geri yüklenmez. Arşivlenmiş bir blobu geri yüklemek için önce Arşiv katmanının dışına taşıyın.
+- Geri yüklenecek aralıktaki Blok Blobu etkin bir kira içeriyorsa, zaman içinde geri yükleme işlemi başarısız olur. Geri yükleme işlemini başlatmadan önce tüm etkin kiraları kesin.
 - Azure Data Lake Storage 2. düz ve hiyerarşik ad alanlarını geri yükleme desteklenmez.
-- Müşteri tarafından belirtilen anahtarlar kullanılarak depolama hesaplarının geri yüklenmesi desteklenmez.
 
 > [!IMPORTANT]
-> Zaman içinde geri yükleme önizlemesi yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
-
-### <a name="register-for-the-preview"></a>Önizlemeye kaydolun
-
-Önizlemeye kaydolmak için aşağıdaki komutları çalıştırın:
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-```powershell
-# Register for the point-in-time restore preview
-Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Microsoft.Storage
-
-# Register for change feed (preview)
-Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-
-# Register for Blob versioning
-Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name RestoreBlobRanges
-az feature register --namespace Microsoft.Storage --name Changefeed
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-registration-status"></a>Kayıt durumunu denetle
-
-Zaman içinde nokta geri yükleme kaydı otomatiktir ve 10 dakikadan kısa sürer. Kaydlarınızın durumunu denetlemek için aşağıdaki komutları çalıştırın:
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName RestoreBlobRanges
-
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Changefeed
-
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/RestoreBlobRanges')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Changefeed')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning')].{Name:name,State:properties.state}"
-```
-
----
+> Blok bloblarını 22 Eylül 2020 ' den önceki bir noktaya geri yüklerseniz, zaman içinde nokta geri yükleme için Önizleme sınırlamaları geçerli olur. Microsoft, genel kullanıma açık zaman noktası geri yükleme özelliğinden yararlanmak için 22 Eylül 2020 ' den veya sonraki bir sürüme eşit olan bir geri yükleme noktası seçmenizi önerir.
 
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
@@ -158,13 +92,9 @@ Geri yükleme işleminin maliyetini tahmin etmek için, geri yükleme döneminde
 
 Zaman içinde nokta geri yükleme fiyatlandırması hakkında daha fazla bilgi için bkz. [Blok Blobu fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="ask-questions-or-provide-feedback"></a>Soru sorun veya geri bildirim sağlayın
-
-Zaman içinde geri yükleme önizlemesi hakkında sorular sormak veya geri bildirim sağlamak için, Microsoft ile iletişim kurun pitrdiscussion@microsoft.com .
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Blok Blobları için noktadan noktaya geri yüklemeyi etkinleştirin ve yönetin (Önizleme)](point-in-time-restore-manage.md)
-- [Azure Blob depolamada akış desteğini değiştirme (Önizleme)](storage-blob-change-feed.md)
+- [Blok Blobu verilerinde bir zaman içinde geri yükleme gerçekleştirin](point-in-time-restore-manage.md)
+- [Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md)
 - [Bloblar için geçici silmeyi etkinleştirme](soft-delete-enable.md)
 - [Blob sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md)

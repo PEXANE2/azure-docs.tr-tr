@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228894"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971261"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>Veri alma işlem hattı için DevOps
 
@@ -168,11 +168,11 @@ labels = np.array(data['target'])
 
 Bu ad ***dev***, ***qa***, ***UAT***ve ***Üretim*** ortamları için farklıdır. Birden çok etkinliği olan karmaşık bir işlem hattında, birkaç özel özellik olabilir. Bu değerlerin tümünü tek bir yerde toplamak ve ardışık düzen ***değişkenleri***olarak tanımlamak iyi bir uygulamadır:
 
-![ADF-değişkenler](media/how-to-cicd-data-ingestion/adf-variables.png)
+![Ekran görüntüsünde, her biri bir ad, tür ve varsayılan değer olan yeni değişkenler ekleme seçeneğiyle birlikte, en üstte, her biri bir ad, tür ve varsayılan değer olan yeni değişkenler ekleme seçeneğiyle birlikte, aşağıdaki değişkenler sekmesi ile birlikte, PrepareData ve M L yürütme hattı adlı](media/how-to-cicd-data-ingestion/adf-variables.png)
 
 İşlem hattı etkinlikleri, gerçekten kullanılırken ardışık düzen değişkenlerine başvurabilir:
 
-![ADF-Not defteri-parametreler](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
+![Ekran görüntüsü, en üstte, aşağıda seçilen ayarlar sekmesi ile birlikte M.](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
 Azure Data Factory çalışma alanı, işlem hattı değişkenlerini varsayılan olarak Azure Resource Manager şablonları parametresi olarak ***kullanıma sunmaz.*** Çalışma alanı [varsayılan Parameterleştirme şablonunu](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) kullanır Azure Resource Manager şablon parametresi olarak hangi ardışık düzen özelliklerinin gösterilmesini gerektiğini dikte eder. Listeye işlem hattı değişkenleri eklemek için, `"Microsoft.DataFactory/factories/pipelines"` [varsayılan Parameterleştirme şablonunun](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) bölümünü aşağıdaki kod parçacığıyla güncelleştirin ve sonuç json dosyasını kaynak klasörün köküne yerleştirin:
 

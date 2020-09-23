@@ -15,21 +15,28 @@
 - name: Öğreticiler
   expanded: true
   items:
-    - name: Python SDK'sı
+    - name: Python (1. gün)
       expanded: true
       items:
-        - name: İlk ML denemesini oluşturma
-          items:
-            - name: 1. Çalışma alanını ve geliştirme ortamını ayarlama
-              href: tutorial-1st-experiment-sdk-setup.md
-            - name: 2. İlk modelinizi eğitme
-              href: tutorial-1st-experiment-sdk-train.md
+        - name: 1. Yerel bilgisayarı ayarlama
+          href: tutorial-1st-experiment-sdk-setup-local.md
+        - name: 2. Merhaba dünya
+          href: tutorial-1st-experiment-hello-world.md
+        - name: 3. Modeli eğitme
+          href: tutorial-1st-experiment-sdk-train.md
+        - name: 4. Kendi verilerinizi getirin
+          href: tutorial-1st-experiment-bring-data.md
+    - name: Jupyter Notebooks
+      expanded: true
+      items:
         - name: Görüntü sınıflandırması (MNIST verileri)
           items:
-            - name: 1. Modeli eğitme
+            - name: 1. İşlem örneği ayarlama
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. Modeli eğitme
               displayName: build modeling
               href: tutorial-train-models-with-aml.md
-            - name: 2. Model dağıtma
+            - name: 3. Model dağıtma
               href: tutorial-deploy-models-with-aml.md
         - name: Otomatikleştirilmiş ML ile regresyon (NYC Taxi verileri)
           items:
@@ -92,8 +99,6 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: Kavramlar
   items:
-    - name: Kurumsal ve Temel sürümlerin karşılaştırması
-      href: concept-editions.md
     - name: Maliyetleri planlama ve yönetme
       displayName: low priority VM
       href: concept-plan-manage-cost.md
@@ -201,6 +206,9 @@
         - name: Güvenli kodlama
           href: concept-secure-code-best-practice.md
           displayName: security threat
+        - name: Uyumluluğu denetleme ve yönetme
+          href: how-to-integrate-azure-policy.md
+          displayName: policy
     - name: Sorumlu makine öğrenmesi
       items:
         - name: Sorumlu makine öğrenmesine genel bakış
@@ -287,12 +295,15 @@
               href: how-to-designer-import-data.md
         - name: Verilere erişme
           items:
-            - name: Azure Depolama’ya bağlanma
+            - name: Azure Storage’a bağlanma (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
-            - name: Bir veri deposundan veri alma
+            - name: Bir veri deposundan veri alma (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
+            - name: Verilere bağlanma (Kullanıcı arabirimi)
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore, dataset, data set'
+              href: how-to-connect-data-ui.md
         - name: Verileri yönetme ve kullanma
           items:
             - name: Veri kümeleriyle eğitme
@@ -448,6 +459,9 @@
         - name: Profil modelleri
           displayName: profile resource requirement
           href: how-to-deploy-profile-model.md
+        - name: Tasarımcı modellerini dağıtma
+          displayName: 'designer, studio'
+          href: how-to-deploy-model-designer.md
         - name: (Önizleme) Kod dağıtımı yok
           displayName: no code
           href: how-to-deploy-no-code-deployment.md

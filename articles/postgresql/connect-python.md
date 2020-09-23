@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: a9303909eb98fc0ff2d7582fa7f5807a879e7958
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182691"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901824"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
 
@@ -46,7 +46,7 @@ PostgreSQL için Azure veritabanı veritabanına bağlanmak için tam sunucu ad�
    
    Yönetici parolanızla de ihtiyacınız vardır. Unutursanız, bu sayfadan sıfırlayabilirsiniz. 
    
-   ![PostgreSQL için Azure Veritabanı sunucu adı](./media/connect-python/1-connection-string.png)
+   :::image type="content" source="./media/connect-python/1-connection-string.png" alt-text="PostgreSQL için Azure Veritabanı sunucu adı":::
 
 ## <a name="how-to-run-the-python-examples"></a>Python örneklerini çalıştırma
 
@@ -55,9 +55,9 @@ Bu makaledeki her kod örneği için:
 1. Metin düzenleyicisinde yeni bir dosya oluşturun. 
    
 1. Kod örneğini dosyaya ekleyin. Kodda, şunu değiştirin:
-   - `<server-name>`ve `<admin-username>` Azure Portal kopyaladığınız değerlerle birlikte.
-   - `<admin-password>`Sunucu parolanızla birlikte.
-   - `<database-name>`PostgreSQL için Azure veritabanı veritabanınızın adı ile. Sunucunuzu oluştururken *Postgres* adlı varsayılan veritabanı otomatik olarak oluşturulmuştur. Bu veritabanını yeniden adlandırabilir veya SQL komutlarını kullanarak yeni bir veritabanı oluşturabilirsiniz. 
+   - `<server-name>` ve `<admin-username>` Azure Portal kopyaladığınız değerlerle birlikte.
+   - `<admin-password>` Sunucu parolanızla birlikte.
+   - `<database-name>` PostgreSQL için Azure veritabanı veritabanınızın adı ile. Sunucunuzu oluştururken *Postgres* adlı varsayılan veritabanı otomatik olarak oluşturulmuştur. Bu veritabanını yeniden adlandırabilir veya SQL komutlarını kullanarak yeni bir veritabanı oluşturabilirsiniz. 
    
 1. Dosyayı, *Postgres-insert.py*gibi bir *. Kopyala* uzantısıyla birlikte proje klasörünüze kaydedin. Windows için, dosyayı kaydettiğinizde UTF-8 kodlamasının seçildiğinden emin olun. 
    
@@ -105,7 +105,7 @@ conn.close()
 
 Kod başarıyla çalıştırıldığında, şu çıktıyı üretir:
 
-![Komut satırı çıkışı](media/connect-python/2-example-python-output.png)
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Komut satırı çıkışı":::
 
 ## <a name="read-data"></a>Verileri okuma
 Aşağıdaki kod örneği, PostgreSQL için Azure veritabanı veritabanınıza bağlanır ve verileri okumak için SQL **Select** ifadesiyle [cursor.exeşirin](http://initd.org/psycopg/docs/cursor.html#execute) kullanır. Bu işlev bir sorguyu kabul eder ve [Cursor. fetchAll ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall)kullanılarak yinelemek için bir sonuç kümesi döndürür. 

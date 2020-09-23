@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049788"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979378"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler etkinleştirme veya görüntüleme sorunlarını giderme
 
@@ -79,12 +79,12 @@ Profil oluşturucunun düzgün çalışması için:
    1. **Araçlar** menüsünde, **Web İşleri Panosu**' nu seçin.  
       **Web işleri** bölmesi açılır. 
    
-      ![Profil Oluşturucu-WebJob]   
+      ![Ekran görüntüsü, işlerin adını, durumunu ve son çalışma zamanını görüntüleyen WebJobs bölmesini gösterir.][profiler-webjob]   
    
    1. Web işi 'nin ayrıntılarını görüntülemek için, günlüğü de içeren **ApplicationInsightsProfiler3** bağlantısını seçin.  
      **Sürekli WebJob ayrıntıları** bölmesi açılır.
 
-      ![Profiler-WebJob-log]
+      ![Ekran görüntüsü sürekli WebJob ayrıntıları bölmesini gösterir.][profiler-webjob-log]
 
 Profil oluşturucunun neden sizin için çalışmadığını anlamak için günlüğü indirebilir ve yardım için ekibimize gönderebilirsiniz serviceprofilerhelp@microsoft.com . 
     
@@ -191,5 +191,5 @@ Uygulamanız bir ara sunucu veya güvenlik duvarı üzerinden Internet 'e bağla
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
-[Profil Oluşturucu-WebJob]:./media/profiler-troubleshooting/Profiler-webjob.png
-[Profiler-WebJob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
+[profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
+[profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png

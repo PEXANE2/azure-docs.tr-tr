@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: ae2d91233df25885bdfd765481f4bb6a1a36da37
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958737"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970045"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service için bir özel etki alanı adı satın alma
 
@@ -51,7 +51,7 @@ Uygulama sayfasının sol gezintisini **Ayarlar** bölümüne kaydırın ve **Ö
 
 Uygulamanın geçerli katmanı mavi kenarlıkla vurgulanmıştır. Uygulamanın **F1** katmanında olmadığından emin olun. **F1** katmanında özel DNS desteklenmez. 
 
-![Fiyatlandırma katmanını denetleyin](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text="Ölçek Genişletme (App Service planı) seçiliyken uygulama sayfasının sol gezinti menüsünün ekran görüntüsü.":::
 
 App Service planı **F1** katmanında değilse, **Ölçek artırma** sayfasını kapatın ve [etki alanını satın almak](#buy-the-domain)için atlayın.
 
@@ -61,7 +61,7 @@ App Service planı **F1** katmanında değilse, **Ölçek artırma** sayfasını
 
 **Uygula**’ya tıklayın.
 
-![Fiyatlandırma katmanını denetleyin](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Üretim kategorisindeki üretim sekmesindeki özel etki alanı fiyatlandırma katmanlarının ekran görüntüsü, B1 planı ve Uygula düğmesi vurgulanır.":::
 
 Aşağıdaki bildirimi gördüğünüzde, ölçeklendirme işlemi tamamlanmıştır.
 
@@ -168,7 +168,7 @@ Satın alınan etki alanının **App Service etki alanları** bölümünde liste
 **Konak adı ekle**'yi seçin.
 
 ### <a name="configure-hostname"></a>Ana bilgisayar adını Yapılandır
-Konak adı **Ekle** iletişim kutusunda, App Service etki alanınızın veya herhangi bir alt etki alanının tam etki alanı adını yazın. Örneğin:
+Konak adı **Ekle** iletişim kutusunda, App Service etki alanınızın veya herhangi bir alt etki alanının tam etki alanı adını yazın. Örnek:
 
 - kontoso.net
 - www \. kontoso.net
