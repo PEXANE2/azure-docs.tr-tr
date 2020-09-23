@@ -3,12 +3,12 @@ title: IoT Edge sürüm notlarında canlı video analizi-Azure
 description: Bu konu, IoT Edge sürümler, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar üzerine canlı video analizinin sürüm notlarını sağlar.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: feab7755dea69a932fe40df59e0dd35f3f826553
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 0bdf11cd99d99067dc53dde7d55fd37b96a382c9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645828"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882724"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge sürüm notlarında canlı video analizi
 
@@ -21,6 +21,31 @@ Bu makalede hakkında bilgi verilmektedir:
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
 
+<hr width=100%>
+
+## <a name="september-22-2020"></a>22 Eylül 2020
+
+Modülün Eylül 2020 yenilemesi için bu yayın etiketi:
+
+```
+mcr.microsoft.com/media/live-video-analytics:1.0.4
+```
+
+> [!NOTE]
+> Hızlı başlangıç ve öğreticiler bölümünde, dağıtım bildirimleri 1 (canlı-video-analiz: 1) etiketini kullanır. Bu nedenle, bu tür bildirimleri yeniden dağıtmak Edge > cihazlarınızda modülü güncellemelidir.
+
+### <a name="module-updates"></a>Modül güncelleştirmeleri
+
+* Yeni bir Graf uzantısı düğümü olan [MediaGraphCognitiveServicesVisionExtension](custom-vision-tutorial.md) , bilişsel hizmetler 'Den [uzamsal analiz modülü](spatial-analysis-tutorial.md)(Önizleme) ile tümleştirilebilen şekilde kullanılabilir.
+* Linux ARM64 cihazları için destek eklendi-bu tür cihazlara dağıtım için [el ile adımları](deploy-iot-edge-device.md) kullanın.
+
+### <a name="documentation-updates"></a>Belge güncelleştirmeleri
+
+* IoT Edge, Azure Stack Edge cihazlarındaki canlı video analizlerini kullanmaya yönelik [yönergeler](deploy-azure-stack-edge-how-to.md) sunulmaktadır.
+* [Özel görüntü işleme hizmetini](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) kullanarak senaryoya özgü bilgisayar görme modelleri geliştirmeye ve gerçek zamanlı olarak [Canlı videoyu analiz](custom-vision-tutorial.md) etmeye yönelik yeni öğretici.
+
+<hr width=100%>
+
 ## <a name="august-19-2020"></a>19 Ağustos 2020
 
 Modülün Ağustos 2020 yenilemesi için bu yayın etiketi:
@@ -32,7 +57,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 > [!NOTE]
 > Hızlı başlangıç ve öğreticiler bölümünde, dağıtım bildirimleri 1 (canlı-video-analiz: 1) etiketini kullanır. Bu nedenle, bu tür bildirimleri yeniden dağıtmak Edge > cihazlarınızda modülü güncellemelidir.
 
-### <a name="new-features"></a>Yeni özellikler 
+### <a name="module-updates"></a>Modül güncelleştirmeleri
 
 * Artık, gRPC çerçevesini kullanarak IoT Edge ve özel uzantınız üzerinde canlı video analizi arasında yüksek veri içeriği aktarım performansı alabilirsiniz. Başlamak için [bunu](analyze-live-video-use-your-grpc-model-quickstart.md) inceleyin.
 * Canlı video analizinin daha geniş bölgesel dağıtımı ve yalnızca bulut hizmeti güncelleştirilmiştir.  
@@ -43,6 +68,8 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 ### <a name="bug-fixes"></a>Hata düzeltmeleri 
 
 * Kurulum betikindeki kullanım dışı bırakılmış bir Azure uzantısının kullanımını kaldırma
+
+<hr width=100%>
 
 ## <a name="july-13-2020"></a>13 Temmuz 2020
 
@@ -55,11 +82,15 @@ mcr.microsoft.com/media/live-video-analytics:1.0.2
 > [!NOTE]
 > Hızlı başlangıç ve öğreticiler bölümünde, dağıtım bildirimleri 1 (canlı-video-analiz: 1) etiketini kullanır. Bu nedenle, bu tür bildirimleri yeniden dağıtmak Edge > cihazlarınızda modülü güncellemelidir.
 
-### <a name="new-features"></a>Yeni özellikler
+### <a name="module-updates"></a>Modül güncelleştirmeleri
+
 * Artık bir varlık havuzu düğümünün yanı sıra bir sinyal kapısı işlemcisi düğümünün bir dosya havuzu düğümü aşağı akış olan Graph topolojileri oluşturabilirsiniz. Bir [örnek için bkz](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) ..
 
 ### <a name="bug-fixes"></a>Hata düzeltmeleri
+
 * İstenen özellikleri doğrulamaya yönelik iyileştirmeler
+
+<hr width=100%>
 
 ## <a name="june-1-2020"></a>1 Haziran 2020
 
@@ -70,6 +101,7 @@ Bu sürüm, IoT Edge üzerindeki canlı video analizinin ilk genel önizleme sü
 ```
 
 ### <a name="supported-functionalities"></a>Desteklenen işlevler
+
 * Seçtiğiniz AI modüllerini kullanarak canlı video akışlarını çözümleyin ve isteğe bağlı olarak, uç cihazında veya bulutta video kaydedin
 * IoT Edge tarafından [desteklenen](../../iot-edge/support.md) Linux AMD64 işletim sistemlerinde kullanın
 * IoT Hub Azure portal veya Visual Studio Code kullanarak modül dağıtın ve yapılandırın
@@ -83,7 +115,6 @@ Bu sürüm, IoT Edge üzerindeki canlı video analizinin ilk genel önizleme sü
     *   Graphınstanceset
     *   Graphınstancedelete
     *   Graphınstancelist
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

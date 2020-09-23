@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2020
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: f4c631360417afda41b7f48a46b618e7a4328aef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fabf847b672f4dbf3e680a21bc7015655c612552
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660697"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906303"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Microsoft Güvenlik uyarılarından otomatik olarak olay oluştur
 
@@ -28,16 +28,16 @@ Azure Sentinel 'e bağlı Microsoft Güvenlik çözümlerinde tetiklenen uyarıl
 
 Azure Sentinel 'i, bağlı bir Microsoft Güvenlik çözümünde her uyarı tetiklendiğinde bu makaledeki yönergeleri uygulayarak otomatik olarak olaylar oluşturacak şekilde yapılandırabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Güvenlik hizmeti uyarılarından olay oluşturmayı etkinleştirmek için [Microsoft güvenlik çözümlerini bağlamanız](connect-data-sources.md#data-connection-methods) gerekir.
 
-## <a name="using-microsoft-security-incident-creation-analytic-rules"></a>Microsoft güvenlik olayı oluşturma analitik kurallarını kullanma
+## <a name="using-microsoft-security-incident-creation-analytics-rules"></a>Microsoft güvenlik olayı oluşturma analitik kurallarını kullanma
 
 Hangi bağlı Microsoft güvenlik çözümlerinin Azure Sentinel olaylarını otomatik olarak gerçek zamanlı olarak oluşturması gerektiğini seçmek için Azure Sentinel 'de bulunan yerleşik kuralları kullanın. Ayrıca, Microsoft güvenlik çözümü tarafından oluşturulan uyarıların Azure Sentinel 'de olay oluşturması gereken filtre için daha belirgin seçenekler tanımlamak üzere kuralları düzenleyebilirsiniz. Örneğin, yalnızca yüksek öneme sahip Azure Defender (eski adıyla Azure Güvenlik Merkezi) uyarılarından Azure Sentinel olaylarını otomatik olarak oluşturmayı tercih edebilirsiniz.
 
 1. Azure Sentinel altında Azure portal **analiz**' yı seçin.
 
-1. Tüm yerleşik analitik kuralları görmek için **kural şablonları** sekmesini seçin.
+1. Tüm yerleşik analiz kurallarını görmek için **kural şablonları** sekmesini seçin.
 
     ![Kural şablonları](media/incidents-from-alerts/rule-templates.png)
 
@@ -47,7 +47,7 @@ Hangi bağlı Microsoft güvenlik çözümlerinin Azure Sentinel olaylarını ot
 
 1. Kural ayrıntılarını değiştirebilir ve uyarı önem derecesine göre ya da uyarının adında bulunan metin ile olayları oluşturacak uyarıları filtrelemeye seçim yapabilirsiniz.  
       
-    Örneğin, **Microsoft güvenlik hizmeti** alanında **Azure Defender** ' ı (yine de Azure Güvenlik Merkezi olarak adlandırılabilir) ve **önem derecesine göre filtrele** alanında **yüksek** ' i seçerseniz, yalnızca yüksek önem derecesine sahip Azure Defender uyarıları otomatik olarak Azure Sentinel 'de olay oluşturur.  
+    Örneğin, **Microsoft güvenlik hizmeti** alanında **Azure Defender** ' ı (yine de *Azure Güvenlik Merkezi*olarak adlandırılabilir) ve **önem derecesine göre filtrele** alanında **yüksek** ' i seçerseniz, yalnızca yüksek önem derecesine sahip Azure Defender uyarıları otomatik olarak Azure Sentinel 'de olay oluşturur.  
 
     ![Kural oluşturma Sihirbazı](media/incidents-from-alerts/create-rule-wizard.png)
 
@@ -55,7 +55,7 @@ Hangi bağlı Microsoft güvenlik çözümlerinin Azure Sentinel olaylarını ot
 
     ![Olay oluşturma kuralı](media/incidents-from-alerts/incident-creation-rule.png)
 
-  **Microsoft güvenlik hizmeti** türü başına birden fazla **Microsoft Güvenlik** çözümleme kuralı oluşturabilirsiniz. Her kural bir filtre olarak kullanıldığından, bu yinelenen olaylar oluşturmaz. Bir uyarı birden fazla **Microsoft Güvenlik** analitik kuralıyla eşleşiyorsa bile, yalnızca bir Azure Sentinel olayı oluşturur.
+  Her **Microsoft güvenlik hizmeti** türü için birden fazla **Microsoft Güvenlik** Analizi kuralı oluşturabilirsiniz. Her kural bir filtre olarak kullanıldığından, bu yinelenen olaylar oluşturmaz. Bir uyarı birden fazla **Microsoft Güvenlik** Analizi kuralıyla eşleşiyorsa bile, yalnızca bir Azure Sentinel olayı oluşturur.
 
 ## <a name="enable-incident-generation-automatically-during-connection"></a>Bağlantı sırasında olay oluşturmayı otomatik olarak etkinleştir
  Bir Microsoft güvenlik çözümünü bağladığınızda, güvenlik çözümünden gelen uyarıların otomatik olarak Azure Sentinel 'de olay oluşturmasını isteyip istemediğinizi seçebilirsiniz.
@@ -64,7 +64,7 @@ Hangi bağlı Microsoft güvenlik çözümlerinin Azure Sentinel olaylarını ot
 
    ![Güvenlik Olayları oluştur](media/incidents-from-alerts/generate-security-incidents.png)
 
-1. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analitik kuralı etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar**altında düzenleyebilirsiniz.
+1. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analiz kuralını etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar**altında düzenleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

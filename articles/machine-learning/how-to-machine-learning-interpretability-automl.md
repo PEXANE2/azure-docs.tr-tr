@@ -10,16 +10,16 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 921132947fbf52fbd187941b96d8b75197763387
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7cb40df6a4619e11694e65020bfcb560cf695795
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419121"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897457"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Yorumlenebilirlik: otomatik makine öğreniminde model açıklamaları (Önizleme)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu makalede, Azure Machine Learning ' de otomatik makine öğrenimi (ML) açıklamalarını alma hakkında bilgi edineceksiniz. Otomatikleştirilmiş ML, uygulanan özellik önemini anlamanıza yardımcı olur. 
 
@@ -31,7 +31,7 @@ Bu makalede şunları öğreneceksiniz:
 - Veri ve açıklamaları desenlerdeki desenleri görmenizi sağlayacak görselleştirmeleri etkinleştirin.
 - Çıkarım veya Puanlama sırasında yorumlenebilirlik uygulayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yorumlenebilirlik özellikleri. `pip install azureml-interpret azureml-contrib-interpret`Gerekli paketleri almak için ' i çalıştırın.
 - Otomatik ML denemeleri oluşturma hakkında bilgi. Azure Machine Learning SDK 'sını kullanma hakkında daha fazla bilgi için, bu [regresyon modeli öğreticisini](tutorial-auto-train-models.md) doldurun veya [Otomatik ml denemeleri](how-to-configure-auto-train.md)'yi nasıl yapılandıracağınızı öğrenin.

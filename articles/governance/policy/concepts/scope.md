@@ -3,12 +3,12 @@ title: Azure Ilkesinde kapsamı anlayın
 description: Azure Resource Manager kapsamında kapsam kavramını ve Azure ilkesi 'nin hangi kaynaklarda değerlendirileceğini denetlemek için Azure Ilkesi 'nin nasıl uygulanacağını açıklar.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dee5d2bdbcb5aa86e293652af3bc5008f56b7877
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941931"
+ms.locfileid: "90984433"
 ---
 # <a name="understand-scope-in-azure-policy"></a>Azure Ilkesinde kapsamı anlayın
 
@@ -34,6 +34,8 @@ Atama, bir kapsam ayarlanmış çeşitli özelliklere sahiptir. Bu özelliklerin
 - Dahil-kaynak hiyerarşisi veya tek bir kaynak, tanım tarafından uyumluluk açısından değerlendirilmelidir. `properties.scope`Atama nesnesindeki özellik, uyumluluk için nelerin ekleneceğini ve değerlendirileceğini belirler. Daha fazla bilgi için bkz. [atama tanımı](./assignment-structure.md).
 
 - Dışlama-bir kaynak hiyerarşisi veya tek bir kaynak, tanım tarafından uyumluluk açısından değerlendirilmemelidir. `properties.notScopes`Atama nesnesindeki _Array_ özelliği, nelerin dışlanacağını belirler. Bu kapsamların içindeki kaynaklar değerlendirilmez veya uyumluluk sayısına dahil değildir. Daha fazla bilgi için bkz. [atama tanımı-dışlanan kapsamlar](./assignment-structure.md#excluded-scopes).
+
+İlke atamasındaki özelliklere ek olarak, [ilke muafiyet](./exemption-structure.md) nesnesi olur. Muafiyetler, bir atamanın bir kısmını değerlendirilmeyecek şekilde belirlemek için bir yöntem sağlayarak kapsam hikayesini geliştirir.
 
 - İstisna (**Önizleme özelliğinde ücretsiz** )-bir kaynak hiyerarşisi veya tek bir kaynak, tanım tarafından uyumluluk açısından değerlendirilmelidir, ancak feragat aldığınız veya başka bir yöntem aracılığıyla azaltılmaya yönelik bir nedenle değerlendirilmeyecektir. Bu durumdaki kaynaklar, izlenebilmeleri için uyumluluk raporlarında **muaf tutulur** . Muafiyet nesnesi, kaynak hiyerarşisinde veya ayrı bir kaynakta bir alt nesne olarak oluşturulur ve bu da muafiyet kapsamını belirler. Kaynak hiyerarşisi veya tek bir kaynak birden fazla atamalara muaf olabilir. Muafiyet, özelliği kullanılarak bir zamanlamaya göre sona ermek üzere yapılandırılabilir `expiresOn` . Daha fazla bilgi için bkz. [Muafiyet tanımı](./exemption-structure.md).
 

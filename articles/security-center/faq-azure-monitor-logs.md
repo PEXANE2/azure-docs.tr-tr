@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612835"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906367"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Zaten Azure Izleyici günlüklerini kullanan müşteriler için SSS<a name="existingloganalyticscust"></a>
 
@@ -32,10 +32,11 @@ Zaten mevcut değilse, veri toplama ekranında seçilen çalışma alanına bir 
 > Log Analytics Aracısı doğrudan VM 'ye (Azure uzantısı olarak değil) yüklenirse, güvenlik merkezi Log Analytics Aracısı 'nı yüklemez ve güvenlik izleme sınırlı olur.
 
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Güvenlik Merkezi, mevcut Log Analytics çalışma alanlarıma çözüm yüklesin mi? Faturalandırma etkileri nelerdir?
-Güvenlik Merkezi, bir sanal makinenin oluşturduğunuz bir çalışma alanına zaten bağlı olduğunu belirlediğinde, Güvenlik Merkezi, fiyatlandırma katmanınıza göre bu çalışma alanındaki çözümleri sağlar. Çözümler, [çözüm hedefleme](../operations-management-suite/operations-management-suite-solution-targeting.md)aracılığıyla yalnızca Ilgili Azure sanal makinelerine uygulanır, böylece faturalandırma aynı kalır.
+Güvenlik Merkezi, bir VM 'nin oluşturduğunuz bir çalışma alanına zaten bağlı olduğunu belirlediğinde, Güvenlik Merkezi, fiyatlandırma yapılandırmanıza göre bu çalışma alanındaki çözümleri sağlar. Çözümler, [çözüm hedefleme](../operations-management-suite/operations-management-suite-solution-targeting.md)aracılığıyla yalnızca Ilgili Azure sanal makinelerine uygulanır, böylece faturalandırma aynı kalır.
 
-- **Ücretsiz katman** : Güvenlik Merkezi, çalışma alanına ' SecurityCenterFree ' çözümünü yüklüyor. Ücretsiz katman için faturalandırılmaz.
-- **Standart katman** : Güvenlik Merkezi, çalışma alanına ' Güvenlik ' çözümünü yüklüyor.
+- **Azure Defender kapalı** : Güvenlik Merkezi, çalışma alanına ' SecurityCenterFree ' çözümünü yüklüyor. Faturalandırılmaz.
+- 
+- **Azure Defender on** -Security Center, çalışma alanına ' Güvenlik ' çözümünü yüklüyor.
 
    ![Varsayılan çalışma alanındaki çözümler](./media/security-center-platform-migration-faq/solutions.png)
 
@@ -45,4 +46,4 @@ Bir VM 'de zaten bir Azure uzantısı olarak yüklü Log Analytics Aracısı var
 Güvenlik Merkezi, VM 'Lere Log Analytics aracısını yüklediğinde, güvenlik merkezi mevcut bir çalışma alanına işaret yoksa Güvenlik Merkezi tarafından oluşturulan varsayılan çalışma alanlarını kullanır.
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Çalışma alanlarım üzerinde zaten güvenlik çözümüdür. Faturalandırma etkileri nelerdir?
-Güvenlik & denetim çözümü, Azure VM 'Leri için Güvenlik Merkezi Standart katmanı özelliklerini etkinleştirmek üzere kullanılır. Güvenlik & denetim çözümü bir çalışma alanında zaten yüklüyse, güvenlik merkezi mevcut çözümü kullanır. Faturalandırma sırasında değişiklik yapılmaz.
+Güvenlik & denetim çözümü, **sunucular Için Azure Defender 'ı**etkinleştirmek üzere kullanılır. Güvenlik & denetim çözümü bir çalışma alanında zaten yüklüyse, güvenlik merkezi mevcut çözümü kullanır. Faturalandırma sırasında değişiklik yapılmaz.
