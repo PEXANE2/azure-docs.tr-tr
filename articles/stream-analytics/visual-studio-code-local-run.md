@@ -6,22 +6,22 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
-ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0122e67714efb201584a52f1cb763528dbb0b925
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044371"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903785"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Visual Studio Code kullanarak örnek verilerle yerel olarak Stream Analytics sorguları test edin
 
 Visual Studio Code için Azure Stream Analytics araçları kullanarak, örnek verilerle Stream Analytics işlerinizi yerel olarak test edebilirsiniz. Sorgu sonuçlarını projenizin **Localrunçıktılar** klasöründe JSON dosyalarında bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [.NET Core SDK 'sını](https://dotnet.microsoft.com/download) yükleyip Visual Studio Code yeniden başlatın.
 
-* Visual Studio Code kullanarak Stream Analytics işi oluşturmayı öğrenmek için bu [hızlı](quick-create-vs-code.md) başlangıcı kullanın.
+* Visual Studio Code kullanarak Stream Analytics işi oluşturmayı öğrenmek için bu [hızlı](quick-create-visual-studio-code.md) başlangıcı kullanın.
 
 ## <a name="prepare-sample-data"></a>Örnek verileri hazırlama
 
@@ -31,17 +31,17 @@ Visual Studio Code için Azure Stream Analytics araçları kullanarak, örnek ve
 
 2. Veriler gösterildiğinde, verileri yerel bir dosyaya kaydetmek için **farklı kaydet** ' e tıklayın.
 
- ![Canlı giriş önizlemesi](./media/quick-create-vs-code/preview-live-input.png)
+ ![Canlı giriş önizlemesi](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="define-a-local-input"></a>Yerel giriş tanımlama
 
 1. Stream Analytics projenizdeki girişler klasörü altında **input.js** ' a tıklayın. Ardından en üstteki satırdan **yerel giriş Ekle** ' yi seçin.
 
-    ![Projeden yerel giriş Ekle](./media/quick-create-vs-code/add-input-from-project.png)
+    ![Projeden yerel giriş Ekle](./media/quick-create-visual-studio-code/add-input-from-project.png)
 
     Ayrıca, **CTRL + SHIFT + P** tuşlarını kullanarak komut paletini açabilir ve **asa: giriş Ekle**' ye girebilirsiniz.
 
-   ![VS Code Stream Analytics girişi ekleme](./media/quick-create-vs-code/add-input.png)
+   ![VS Code Stream Analytics girişi ekleme](./media/quick-create-visual-studio-code/add-input.png)
 
 2. **Yerel giriş**' i seçin.
 

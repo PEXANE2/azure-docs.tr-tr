@@ -2,28 +2,32 @@
 title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
-ms.date: 04/27/2020
-ms.openlocfilehash: 30a3bda4069bb8c07d7c9be3fd8a3a2b1171eba2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/09/2020
+ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526332"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887232"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
 Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 
+> [!NOTE]
+> ARM64 cihazlarına yönelik destek, IoT Edge yapılar ve daha yeni sürümlerde canlı video analizi 'nde bulunabilir `1.0.4` .
+> ARM64 cihazlarında Azure IoT Edge Runtime çalıştırmaya yönelik destek [genel önizlemededir](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Canlı video analizi için HW/SW kısıtlamalarını karşılayan bir Linux makinesi
+* [Desteklenen Linux işletim sistemlerinden](https://docs.microsoft.com/azure/iot-edge/support#operating-systems) birini çalıştıran bir x86-64 veya bir ARM64 cihazı
 * [Sahip olduğunuz ayrıcalıklara](../../role-based-access-control/built-in-roles.md#owner) sahip olduğunuz Azure aboneliği
 * [Oluşturma ve kurulum IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge cihazı kaydetme](../../iot-edge/how-to-register-device.md)
 * [Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Azure Media Services hesabı oluşturma](../latest/create-account-howto.md)
 
-    * Şu bölgelerden birini kullanın: Doğu ABD 2, Orta ABD, Orta Kuzey ABD, Japonya Doğu, Batı ABD 2, Orta Batı ABD, Kanada Doğu, UK Güney, Fransa Orta, Fransa Güney, İsviçre Kuzey, İsviçre Batı ve Japonya Batı.
+    * Şu bölgelerden birini kullanın: Doğu ABD 2, Doğu ABD, Orta ABD, Orta Kuzey ABD, Japonya Doğu, Batı ABD, Batı ABD 2, Orta Batı ABD, Kanada Doğu, UK Güney, Fransa orta, Fransa Güney, İsviçre Kuzey, İsviçre Batı ve Japonya Batı.
     * Genel amaçlı v2 (GPv2) depolama hesapları kullanmanız önerilir
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Canlı video analizlerini kullanmak için Azure kaynaklarını yapılandırma
@@ -81,7 +85,6 @@ sudo chown -R edgeuser /var/media
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>Canlı video analizi kenar modülünü dağıtma
 
-<!-- (To JuliaKo: this is similar to https://docs.microsoft.com/azure/iot-edge/how-to-deploy-blob)-->
 IoT Edge üzerindeki canlı video analizi, Module [ikizi yapılandırma şemasında](module-twin-configuration-schema.md)belgelenen modül ikizi özelliklerini kullanıma sunar. 
 
 ### <a name="deploy-using-the-azure-portal"></a>Azure portalını kullanarak dağıtma
@@ -252,4 +255,4 @@ Sonra, bir doğrudan yöntemi çağırarak örneği test etmenizi sağlar. LvaEd
 [Hızlı başlangıç: Başlarken-canlı video analizlerini deneme IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]
-> Komutta, sonra `device-id` varsayılan yerine uygulamanızı kullanacaksınız `lva-sample-device` .
+> Yukarıdaki hızlı başlangıç ile devam ederseniz, Visual Studio Code kullanarak doğrudan yöntemleri çağırırken, varsayılan yerine bu makale aracılığıyla IoT Hub eklenen cihazı kullanacaksınız `lva-sample-device` .

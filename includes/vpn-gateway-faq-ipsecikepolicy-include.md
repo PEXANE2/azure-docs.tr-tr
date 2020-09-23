@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f7134d0e8087d17e78a13c958298006e321bd192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 754a47b3692847957de7f3d666f4dc09dc309d25
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84346239"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025371"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Özel IPsec/IKE ilkesi tüm Azure VPN Gateway SKU’larında desteklenir mi?
 Özel IPSec/ıKE ilkesi, temel SKU dışında tüm Azure SKU 'Larında desteklenir.
@@ -31,7 +31,7 @@ Aşağıdaki tabloda, müşteriler tarafından yapılandırılabilecek şifrelem
 | ---              | ---                                                                           |
 | IKEv2 Şifrelemesi | AES256, AES192, AES128, DES3, DES                                             |
 | IKEv2 Bütünlüğü  | SHA384, SHA256, SHA1, MD5                                                     |
-| DH Grubu         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Hiçbiri |
+| DH Grubu         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Hiçbiri  |
 | IPsec Şifrelemesi | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, None      |
 | IPsec Bütünlüğü  | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
 | PFS Grubu        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Hiçbiri                              |
@@ -99,6 +99,9 @@ Evet, hem IPsec şirket içi ve dışı karışık bağlantılarda hem de Vnet-V
 
 ### <a name="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources"></a>Her iki VNet-VNet bağlantı kaynağında aynı ilkeyi belirtmem mi gerekir?
 Evet. VNet-VNet tüneli, her iki yön için birer tane olmak üzere Azure’daki iki bağlantı kaynağından oluşur. Her iki bağlantı kaynağının da aynı ilkeye sahip olduğundan emin olun, aksi takdirde VNet-VNet bağlantısı kurulamaz.
+
+### <a name="what-is-the-default-dpd-timeout-value-can-i-specify-a-different-dpd-timeout"></a>Varsayılan DPD zaman aşımı değeri nedir? Farklı bir DPD zaman aşımı belirtebilir miyim?
+Varsayılan DPD zaman aşımı 45 saniyedir. Her bir IPSec veya VNet-VNet bağlantısında 3600 saniye arasında farklı bir DPD zaman aşımı değeri belirtebilirsiniz.
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Özel IPsec/IKE ilkesi ExpressRoute bağlantısında çalışır mı?
 Hayır. IPsec/IKE ilkesi yalnızca Azure VPN ağ geçitleri aracılığıyla kurulan S2S VPN ve VNet-VNet bağlantılarında çalışır.

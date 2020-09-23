@@ -1,6 +1,6 @@
 ---
-title: Dış AKıŞ oluşturma (Transact-SQL)-Azure SQL Edge (Önizleme)
-description: Azure SQL Edge 'de dış AKıŞ oluşturma açıklaması hakkında bilgi edinin (Önizleme)
+title: Dış AKıŞ oluşturma (Transact-SQL)-Azure SQL Edge
+description: Azure SQL Edge 'de dış AKıŞ oluşturma açıklaması hakkında bilgi edinin
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 17783662ba91f227a7b0bf69203bf21dd8342277
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489553"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888160"
 ---
 # <a name="create-external-stream-transact-sql"></a>Dış AKıŞ oluşturma (Transact-SQL)
 
@@ -24,7 +24,7 @@ Ayrıca, bir dış AKıŞ, Olay Hub 'ı veya blob depolama gibi hizmetler için 
 
 Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aşağıdaki veri kaynaklarını destekler.
 
-| Veri kaynağı türü | Girdi | Çıktı | Description |
+| Veri kaynağı türü | Girdi | Çıktı | Açıklama |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub 'ı | Y | Y | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
 | SQL Veritabanı | H | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
@@ -100,7 +100,7 @@ WITH  ( <with_options> )
    - Azure Blob depolama akışı nesne konumu, blob kapsayıcısı içinde kullanılacak yol deseninin anlamına gelir. Bu özellik hakkında daha fazla bilgi için bkz. (/makalenles/Stream-Analtics/Stream-Analtics-define-Outputs.MD # blob-Storage-and-Azure-Data-Lake-Gen2)
 
 - **INPUT_OPTIONS**: Kafka gibi hizmetler için anahtar-değer çiftleri olarak seçenekleri belirtin, akış sorgularının girdileri olan IoT Edge hub
-    - BÖLÜMLER: bir konu için tanımlanan bölüm sayısı
+    - BÖLÜMLER: bir konu için tanımlanan bölüm sayısı. Kullanılabilecek en fazla bölüm sayısı 32 ile sınırlıdır.
       - Kafka giriş akışları için geçerlidir
     - CONSUMER_GROUP: olay ve IoT Hub 'Ları, bir tüketici grubundaki okuyucu sayısını sınırlar (5 ' e kadar). Bu alanı boş bırakmak, ' $Default ' tüketici grubunu kullanır.
       - Gelecekteki kullanım için ayrılmıştır. Azure SQL Edge için geçerlidir.  
@@ -247,6 +247,5 @@ WITH
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Dış akışı DEĞIŞTIRME (Transact-SQL)](alter-external-stream-transact-sql.md) 
 - [Dış akışı bırak (Transact-SQL)](drop-external-stream-transact-sql.md) 
 

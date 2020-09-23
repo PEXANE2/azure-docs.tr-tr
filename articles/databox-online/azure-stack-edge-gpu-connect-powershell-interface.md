@@ -1,23 +1,23 @@
 ---
-title: Windows PowerShell arabirimi aracılığıyla Microsoft Azure Stack Edge cihazını bağlama ve yönetme | Microsoft Docs
-description: Windows PowerShell arabirimi aracılığıyla Azure Stack Edge 'e bağlanmayı ve bunu yönetmeyi açıklar.
+title: Windows PowerShell arabirimi aracılığıyla Microsoft Azure Stack Edge Pro cihazını bağlama ve yönetme | Microsoft Docs
+description: Windows PowerShell arabirimi aracılığıyla Azure Stack Edge Pro 'Yu nasıl bağlayabileceğinizi ve daha sonra yönetmenizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b58c38dd0257a65bad6021b6152c14a37f905e0a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461842"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903524"
 ---
-# <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge GPU cihazını yönetme
+# <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazını yönetme
 
-Azure Stack Edge çözümü, verileri işlemenize ve ağ üzerinden Azure 'a göndermenize olanak tanır. Bu makalede Azure Stack Edge cihazınız için yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Cihazınızı yönetmek için Azure portal, yerel Web Kullanıcı arabirimini veya Windows PowerShell arabirimini kullanabilirsiniz.
+Azure Stack Edge Pro çözümü, verileri işlemenize ve ağ üzerinden Azure 'a göndermenize olanak tanır. Bu makalede Azure Stack Edge Pro cihazınız için yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Cihazınızı yönetmek için Azure portal, yerel Web Kullanıcı arabirimini veya Windows PowerShell arabirimini kullanabilirsiniz.
 
 Bu makale, cihazın PowerShell arabirimine ve bu arabirimi kullanarak gerçekleştirebileceğiniz görevlere nasıl bağlanabilirim. 
 
@@ -84,11 +84,11 @@ Cihazınızda işlem rolü yapılandırılmışsa, PowerShell arabirimi aracıl�
 
 ## <a name="enable-multi-process-service-mps"></a>Çok Işlem hizmeti 'ni (MPS) etkinleştir
 
-NVIDIA GPU 'larda çoklu Işlem hizmeti (MPS), her bir işin GPU kaynaklarının bir yüzdesi ayrıldığı birden çok iş tarafından paylaşılabilen bir mekanizma sağlar. Azure Stack Edge cihazınızda MPS 'yi etkinleştirmek için şu adımları izleyin:
+NVIDIA GPU 'larda çoklu Işlem hizmeti (MPS), her bir işin GPU kaynaklarının bir yüzdesi ayrıldığı birden çok iş tarafından paylaşılabilen bir mekanizma sağlar. MPS, Azure Stack Edge Pro GPU cihazınızda bir önizleme özelliğidir. Cihazınızda MP 'leri etkinleştirmek için şu adımları izleyin:
 
 1. Başlamadan önce şunları yaptığınızdan emin olun: 
 
-    1. [Azure Stack Edge cihazınızı](azure-stack-edge-gpu-deploy-activate.md) Azure 'Da Azure Stack edge/Data Box Gateway kaynağıyla yapılandırdık ve etkinleştirdiniz.
+    1. [Azure Stack Edge Pro cihazınızı](azure-stack-edge-gpu-deploy-activate.md) Azure 'Da Azure Stack Edge pro/Data Box Gateway kaynağıyla yapılandırdık ve etkinleştirdiniz.
     1. [Bu cihazda işlem Azure Portal yapılandırdınız](azure-stack-edge-deploy-configure-compute.md#configure-compute).
     
 1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
@@ -187,7 +187,7 @@ users:
 ```
 -->
 
-İşlem rolü yapılandırılmış bir Azure Stack Edge cihazında, iki farklı komut kümesi kullanarak cihazı sorun gidermeye veya izlemeye izleyebilirsiniz.
+İşlem rolü yapılandırılmış bir Azure Stack Edge Pro cihazında, iki farklı komut kümesi kullanarak cihazı sorun gidermeye veya izlemeye izleyebilirsiniz.
 
 - `iotedge`Komutları kullanma. Bu komutlar, cihazınız için temel işlemler için kullanılabilir.
 - `kubectl`Komutları kullanma. Bu komutlar, cihazınız için kapsamlı bir işlem kümesi için kullanılabilir.
@@ -212,7 +212,7 @@ Commands:
 
 Aşağıdaki tabloda, için kullanılabilen komutların kısa bir açıklaması verilmiştir `iotedge` :
 
-|command  |Description |
+|command  |Açıklama |
 |---------|---------|
 |`list`     | Modülleri listeleme         |
 |`logs`     | Modülün günlüklerini getirme        |
@@ -241,7 +241,7 @@ webserverapp           Running Up 10 days  nginx:stable                         
 
 ### <a name="use-kubectl-commands"></a>Kubectl komutlarını kullanma
 
-İşlem rolü yapılandırılmış bir Azure Stack Edge cihazında, `kubectl` modülleri izlemek veya sorunlarını gidermek için tüm komutlar kullanılabilir. Kullanılabilir komutların bir listesini görmek için `kubectl --help` komut penceresinden komutunu çalıştırın.
+İşlem rolü yapılandırılmış bir Azure Stack Edge Pro cihazında, tüm `kubectl` Komutlar modülleri izlemek veya sorunlarını gidermek için kullanılabilir. Kullanılabilir komutların bir listesini görmek için `kubectl --help` komut penceresinden komutunu çalıştırın.
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
@@ -433,4 +433,4 @@ Uzak PowerShell oturumundan çıkmak için PowerShell penceresini kapatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure portal [Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md) dağıtın.
+- Azure portal [Azure Stack Edge Pro 'yu](azure-stack-edge-gpu-deploy-prep.md) dağıtın.

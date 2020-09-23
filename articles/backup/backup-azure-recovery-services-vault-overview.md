@@ -1,14 +1,14 @@
 ---
 title: Kurtarma Hizmetleri kasalarına genel bakış
-description: Kurtarma Hizmetleri kasaları ve Azure Backup kasaları arasında genel bakış ve karşılaştırma.
+description: Kurtarma Hizmetleri kasalarına genel bakış.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889626"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975148"
 ---
 # <a name="recovery-services-vaults-overview"></a>Kurtarma Hizmetleri kasalarına genel bakış
 
@@ -30,7 +30,7 @@ Kurtarma Hizmetleri Kasası, zaman içinde oluşturulan yedeklemeleri ve kurtarm
 
 - Azure Backup kasa için depolamayı otomatik olarak işler. [Depolama ayarlarının nasıl değiştirilebiliyorsa](./backup-create-rs-vault.md#set-storage-redundancy)öğrenin.
 
-- Depolama artıklığı hakkında daha fazla bilgi edinmek için [coğrafi](../storage/common/storage-redundancy.md) ve [Yerel](../storage/common/storage-redundancy.md) artıklık üzerinde bu makalelere bakın.
+- Depolama artıklığı hakkında daha fazla bilgi edinmek için [coğrafi](../storage/common/storage-redundancy.md#geo-zone-redundant-storage), [Yerel](../storage/common/storage-redundancy.md#locally-redundant-storage) ve [zlik](../storage/common/storage-redundancy.md#zone-redundant-storage) yedekliliği hakkındaki bu makalelere bakın.
 
 ## <a name="encryption-settings-in-the-recovery-services-vault"></a>Kurtarma Hizmetleri kasasındaki şifreleme ayarları
 

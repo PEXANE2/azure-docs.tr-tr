@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 05435aae727c84a5f3eb886274f9d286627e399e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74774746"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895087"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Öğretici: PostgreSQL için Azure veritabanı 'nı Izleme ve ayarlama-tek sunucu
 
@@ -40,7 +40,7 @@ PostgreSQL sürüm 9.6 veya 10’un yüklü olduğu bir PostgreSQL için Azure V
 
 4. Sorgu performansı verilerini toplamaya başlamak için, **pg_qs.query_capture_mode** komutunu **TOP** olarak ayarlayın. Bekleme istatistiklerini toplamak için, **pgms_wait_sampling.query_capture_mode** komutunu **ALL** olarak ayarlayın. Kaydedin.
    
-   ![Query Store sunucusu parametreleri](./media/tutorial-performance-intelligence/query-store-parameters.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-store-parameters.png" alt-text="Query Store sunucusu parametreleri":::
 
 5. İlk toplu iş verilerinin **azure_sys** veritabanında kalıcı olması için 20 dakikaya izin verin.
 
@@ -52,7 +52,7 @@ Azure portaldaki [Sorgu Performansı İçgörüleri](concepts-query-performance-
 
 2. **Uzun süren sorgular** sekmesi, yürütme başına ortalama 15 dakikalık aralıklarla toplanan en iyi 5 sorguyu gösterir. 
    
-   ![Sorgu Performansı İçgörüleri giriş sayfası](./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="Sorgu Performansı İçgörüleri giriş sayfası":::
 
    **Sorgu Sayısı** açılır menüsünden seçerek, daha fazla sorgu görüntüleyebilirsiniz. Bunu yaptığınızda, grafik renkleri belirli bir Sorgu Kimliği için değişebilir.
 
@@ -64,7 +64,7 @@ Azure portaldaki [Sorgu Performansı İçgörüleri](concepts-query-performance-
 
 6. Sunucudaki beklemelerle ilgili görselleştirmeleri görüntülemek için **Bekleme İstatistikleri** sekmesini seçin.
    
-   ![Sorgu Performansı İçgörüleri bekleme istatistikleri](./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Sorgu Performansı İçgörüleri bekleme istatistikleri":::
 
 ### <a name="permissions"></a>İzinler
 Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya **Katkıda bulunan** izinleri gereklidir. **Okuyucu**, grafikleri ve tabloları görüntüleyebilir ancak metni sorgulayamaz.
@@ -75,7 +75,7 @@ Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya 
 
 1. PostgreSQL sunucunuzun Azure portalı sayfasındaki menü çubuğunun **Destek + sorun giderme** bölümünden **Performans Önerileri**’ni açın.
    
-   ![Performans Önerileri giriş sayfası](./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="Performans Önerileri giriş sayfası":::
 
 2. **Analiz**’i seçin ve bir veritabanı belirtin. Bu işlem analizi başlatır.
 
@@ -85,7 +85,7 @@ Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya 
 
 5. Bir öneri, ilgili **Veritabanı**, **Tablo**, **Sütun** ve **Dizin Boyutu** ile ilgili bilgileri gösterir.
 
-   ![Performans Önerileri sonucu](./media/tutorial-performance-intelligence/performance-recommendations-result.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Performans Önerileri sonucu":::
 
 6. Öneriyi uygulamak için, sorgu metnini kopyalayın ve seçtiğiniz istemciden çalıştırın.
 

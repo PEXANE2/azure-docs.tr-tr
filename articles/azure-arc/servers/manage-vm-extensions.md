@@ -1,24 +1,24 @@
 ---
-title: Azure Arc etkin sunucularla VM Uzantısı yönetimi (Önizleme)
-description: Azure Arc etkin sunucular (Önizleme), Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
-ms.date: 06/17/2020
+title: Azure Arc etkin sunucularıyla VM Uzantısı yönetimi
+description: Azure Arc etkin sunucuları, Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018170"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887759"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Azure Arc etkin sunucularla sanal makine uzantısı yönetimi (Önizleme)
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc etkin sunucularıyla sanal makine uzantısı yönetimi
 
 Sanal makine (VM) uzantıları, Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. Örneğin bir sanal makinede yazılım yüklemesi gerekiyorsa, virüsten koruma gerekiyorsa veya içinde bir betik çalıştırılacaksa VM uzantısı kullanılabilir.
 
-Azure Arc etkin sunucular (Önizleme), Azure VM uzantılarını Azure olmayan Windows ve Linux VM 'lerine dağıtmanıza olanak tanıdığından, karma makinenizin şirket içi, kenar ve diğer bulut ortamlarınızın yaşam döngülerinde yönetimini basitleştirir.
+Azure yay özellikli sunucular, Azure VM uzantılarını Azure olmayan Windows ve Linux VM 'lerine dağıtmanıza olanak tanıdığından, karma makinenizin şirket içi, kenar ve diğer bulut ortamlarının yaşam döngülerinde yönetimini basitleştirir.
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 
-Azure Arc etkin sunucular (Önizleme) VM uzantısı desteği aşağıdaki önemli avantajları sağlar:
+Azure Arc etkin sunucuları VM uzantısı desteği aşağıdaki önemli avantajları sağlar:
 
 * [Azure Otomasyonu durum yapılandırması](../../automation/automation-dsc-overview.md) ' nı kullanarak yapılandırmaları merkezi olarak depolar ve DSC VM Uzantısı aracılığıyla etkinleştirilen karma bağlı makinelerin istenen durumunu koruyun.
 
@@ -47,7 +47,7 @@ Bu önizlemede, Windows ve Linux makinelerinde aşağıdaki VM uzantılarını d
 |Log Analytics aracısı |Linux |Microsoft. EnterpriseCloud. Monitoring |[Linux için Log Analytics VM Uzantısı](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft bağımlılık Aracısı | Linux |Microsoft.Compute | [Linux için bağımlılık Aracısı sanal makine uzantısı](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-VM uzantıları, Azure portal veya Arc özellikli sunucular (Önizleme) tarafından yönetilen karma sunucularda Azure PowerShell Azure Resource Manager şablonlarla çalıştırılabilir.
+VM uzantıları, Azure portal veya Arc etkin sunucularla yönetilen karma sunucularda Azure PowerShell Azure Resource Manager şablonlarla çalıştırılabilir.
 
 Azure bağlı makine Aracısı paketi ve uzantı Aracısı bileşeni hakkındaki ayrıntılar hakkında bilgi edinmek için bkz. [aracıya genel bakış](agent-overview.md#agent-component-details).
 
@@ -75,13 +75,13 @@ Makinenizi gereken aracının sürümüne yükseltmek için bkz. [yükseltme Ara
 
 ## <a name="enable-extensions-from-the-portal"></a>Portaldan uzantıları etkinleştirme
 
-VM uzantıları, Azure portal aracılığıyla, sunucu (Önizleme) tarafından yönetilen bir makine için yay uygulamış olabilir.
+VM uzantıları, Azure portal aracılığıyla sunucu tarafından yönetilen makineye yönelik yaya uygulanabilir.
 
 1. Tarayıcınızdan [Azure Portal](https://aka.ms/arcserver-preview)gidin.
 
-2. Portalda **makineler-Azure Arc** ' a gidin ve listeden karma makinenizi seçin.
+2. Portalda, **sunucular-Azure Arc** ' a gidin ve listeden karma makinenizi seçin.
 
-3. **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin. Bu örnekte, Log Analytics VM uzantısını dağıtacağız. 
+3. **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin. Bu örnekte, Log Analytics VM uzantısını dağıtacağız.
 
     ![Seçilen makine için VM Uzantısı Seç](./media/manage-vm-extensions/add-vm-extensions.png)
 
@@ -98,7 +98,7 @@ VM uzantıları, Azure portal aracılığıyla, sunucu (Önizleme) tarafından y
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 
-VM uzantıları, bir Azure Resource Manager şablonuna eklenebilir ve şablonun dağıtımıyla birlikte yürütülür. Yay etkin sunucular (Önizleme) tarafından desteklenen VM uzantıları ile, Azure PowerShell kullanarak Linux veya Windows makinelerde desteklenen VM uzantısını dağıtabilirsiniz. Aşağıdaki her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
+VM uzantıları, bir Azure Resource Manager şablonuna eklenebilir ve şablonun dağıtımıyla birlikte yürütülür. Yay etkin sunucular tarafından desteklenen VM uzantıları ile, desteklenen VM uzantısını Azure PowerShell kullanarak Linux veya Windows makinelerde dağıtabilirsiniz. Aşağıdaki her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
 
 >[!NOTE]
 >Birden çok uzantı birlikte toplanmış ve işlenebilir olsa da, bunlar hizmet temelli olarak yüklenir. İlk uzantı yüklemesi tamamlandıktan sonra, sonraki uzantının yüklenmesi denenir.
@@ -707,6 +707,18 @@ Azure Izleyici bağımlılık Aracısı uzantısını kullanmak için, Windows v
 }
 ```
 
+## <a name="uninstall-extension"></a>Uzantıyı kaldır
+
+Bir yay özellikli bir sunucudan bir veya daha fazla uzantının kaldırılması, yalnızca Azure portal üzerinden gerçekleştirilebilir. Bir uzantıyı kaldırmak için aşağıdaki adımları gerçekleştirin.
+
+1. Tarayıcınızdan [Azure Portal](https://portal.azure.com)gidin.
+
+2. Portalda, **sunucular-Azure Arc** ' a gidin ve listeden karma makinenizi seçin.
+
+3. **Uzantılar**' ı seçin ve ardından yüklü uzantılar listesinden bir uzantı seçin.
+
+4. **Kaldır** ' ı seçin ve doğrulamanız istendiğinde, devam etmek için **Evet** ' i seçin.
+
 ## <a name="troubleshooting"></a>Sorun giderme
 
 Uzantı dağıtımlarının durumu hakkındaki veriler Azure portal alınabilir.
@@ -715,7 +727,7 @@ Aşağıdaki sorun giderme adımları tüm VM uzantıları için geçerlidir.
 
 1. Konuk Aracısı günlüğünü denetlemek için, uzantınızın `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` Windows için ve altında Linux için sağlanması durumunda etkinliğe bakın `/var/lib/GuestConfig/ext_mgr_logs` .
 
-2. Windows hakkında daha fazla ayrıntı için belirli bir uzantının uzantı günlüklerini denetleyin `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` . Uzantı çıkışı, Linux üzerinde yüklü her uzantı için bir dosyaya kaydedilir `/var/log/GuestConfig/extension_logs` .
+2. Windows hakkında daha fazla ayrıntı için belirli bir uzantının uzantı günlüklerini denetleyin `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` . Uzantı çıkışı, Linux üzerinde yüklü her uzantı için bir dosyaya kaydedilir `/var/lib/GuestConfig/extension_logs` .
 
 3. Hata kodları, bilinen sorunlar vb. için uzantıya özgü belge sorunlarını giderme bölümlerini denetleyin. Her uzantı için ek sorun giderme bilgileri, uzantının genel bakış konusunun **sorun giderme ve destek** bölümünde bulunabilir. Bu, günlüğe yazılan hata kodlarının açıklamasını içerir. Uzantı makaleleri, bu makalede daha önce bulunan [Uzantılar tablosuna](#extensions) bağlanır.
 
@@ -725,4 +737,4 @@ Aşağıdaki sorun giderme adımları tüm VM uzantıları için geçerlidir.
 
 - VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'lerle Azure izleyici](../../azure-monitor/insights/vminsights-enable-policy.md)ile izlemeyi etkinleştirme ve çok daha birçok şey için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
 
-- [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Makinede çalışan işletim sistemi ve iş yüklerini önceden izlemek, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi çözümleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics Aracısı gerekir.
+- [[Log Analytics Aracısı]](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Windows ve Linux için Log Analytics Aracısı, işletim sistemi ve iş yükü izleme verilerini toplamak, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi özellikleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde gereklidir.

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067180"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967216"
 ---
 # <a name="configure-the-model-conversion"></a>Model dönüştürmeyi yapılandırma
 
@@ -73,42 +73,48 @@ Dosyanın içeriği aşağıdaki JSON şemasını karşılamalıdır:
 
 ### <a name="geometry-parameters"></a>Geometri parametreleri
 
-* `scaling`-Bu parametre bir modeli bir arada ölçeklendirir. Ölçek, bir modeli büyütmek veya küçültmek için kullanılabilir, örneğin, bir tablo üst kısmında bir yapı modeli görüntüler.
+* `scaling` -Bu parametre bir modeli bir arada ölçeklendirir. Ölçek, bir modeli büyütmek veya küçültmek için kullanılabilir, örneğin, bir tablo üst kısmında bir yapı modeli görüntüler.
 İşleme altyapısı ölçüm gerektirdiğinden, bir model ölçüm dışındaki birimlerde tanımlandığında ölçekleme de önemlidir.
 Örneğin, bir model santimetre cinsinden tanımlanmışsa, 0,01 ölçeğini uygulamak modeli doğru boyutta işlemelidir.
 Bazı kaynak veri biçimleri (örneğin,. fbx) bir birim ölçekleme ipucu sağlar ve bu durumda dönüştürme, modeli ölçüm birimlerine dolaylı olarak ölçeklendirir. Kaynak biçimi tarafından sunulan örtük ölçekleme, ölçekleme parametresinin üzerine uygulanır.
 Son ölçeklendirme faktörü, geometri köşelerine ve sahne grafiği düğümlerinin yerel dönüşümlerine uygulanır. Kök varlığın dönüştürmesinin ölçeklendirilmesi değiştirilmemiş olarak kalır.
 
-* `recenterToOrigin`-Bir modelin, sınırlayıcı kutusunun kaynaktan ortalanmasını sağlamak için dönüştürülmesi gerektiğini belirtir.
+* `recenterToOrigin` -Bir modelin, sınırlayıcı kutusunun kaynaktan ortalanmasını sağlamak için dönüştürülmesi gerektiğini belirtir.
 Kaynak modelin kaynağı kaynaktan uzakta bulunuyorsa, kayan nokta duyarlık sorunları işleme yapıtlarına neden olabilir.
 Modelin ortalama olması bu durumda yardımcı olabilir.
 
-* `opaqueMaterialDefaultSidedness`-İşleme altyapısı, donuk malzemelerin çift taraflı olduğunu varsayar.
+* `opaqueMaterialDefaultSidedness` -İşleme altyapısı, donuk malzemelerin çift taraflı olduğunu varsayar.
 Bu varsayım belirli bir modelin doğru değilse, bu parametre "Singletaraflý" olarak ayarlanmalıdır. Daha fazla bilgi için bkz. [ :::no-loc text="single sided"::: işleme](../../overview/features/single-sided-rendering.md).
 
 ### <a name="material-overrides"></a>Malzeme geçersiz kılmaları
 
-* `material-override`-Bu parametre, maddelerin işlenmesine [dönüştürme sırasında özelleştirilmeye](override-materials.md)olanak tanır.
+* `material-override` -Bu parametre, maddelerin işlenmesine [dönüştürme sırasında özelleştirilmeye](override-materials.md)olanak tanır.
 
 ### <a name="material-de-duplication"></a>Malzeme Çoğaltma sırası
 
-* `deduplicateMaterials`-Bu parametre, aynı özellikleri ve dokuları paylaşan malzemelerin otomatik olarak yinelenmesine izin verebilir veya devre dışı bırakır. Serbest bırakma, malzeme geçersiz kılma işlemleri işlendikten sonra gerçekleşir. Varsayılan olarak etkindir.
+* `deduplicateMaterials` -Bu parametre, aynı özellikleri ve dokuları paylaşan malzemelerin otomatik olarak yinelenmesine izin verebilir veya devre dışı bırakır. Serbest bırakma, malzeme geçersiz kılma işlemleri işlendikten sonra gerçekleşir. Varsayılan olarak etkindir.
+
+* Bir modelde 65.535 ' den fazla malzeme serbest bırakılsa bile, hizmet, benzer özelliklerle malzemeleri birleştirmeye çalışır. Son çare olarak, sınırı aşan malzemeler kırmızı bir hata malzemesiyle değiştirilmeyecektir.
+
+![Görüntüde 68.921 renkli üçgenden oluşan iki küp gösterilmektedir.](media/mat-dedup.png?raw=true)
+
+68.921 renkli üçgenin iki küpü. Left: 68.921 renk malzemeleriyle yinelenenleri kaldırma Işleminden önce. Right: 64.000 renk malzemeleriyle yinelenenleri kaldırma Işleminden sonra. Sınır 65.535 malzemelerdir. (Bkz. [sınırlara](../../reference/limits.md)bakın.)
 
 ### <a name="color-space-parameters"></a>Renk alanı parametreleri
 
 İşleme altyapısı, renk değerlerinin doğrusal alanda olmasını bekler.
 Bir model gama alanı kullanılarak tanımlanmışsa, bu seçenekler true olarak ayarlanmalıdır.
 
-* `gammaToLinearMaterial`-Gama alanından doğrusal alana malzeme renkleri dönüştürün
-* `gammaToLinearVertex`- :::no-loc text="vertex"::: Gamma alanından doğrusal alana Renkleri Dönüştür
+* `gammaToLinearMaterial` -Gama alanından doğrusal alana malzeme renkleri dönüştürün
+* `gammaToLinearVertex` - :::no-loc text="vertex"::: Gamma alanından doğrusal alana Renkleri Dönüştür
 
 > [!NOTE]
 > FBX dosyaları için bu ayarlar `true` Varsayılan olarak olarak ayarlanır. Tüm diğer dosya türleri için varsayılan olarak ' dir `false` .
 
 ### <a name="scene-parameters"></a>Sahne parametreleri
 
-* `sceneGraphMode`-Kaynak dosyadaki sahne grafiğinin nasıl dönüştürüleceğini tanımlar:
-  * `dynamic`(varsayılan): dosyadaki tüm nesneler, API 'de [varlık](../../concepts/entities.md) olarak sunulur ve bağımsız olarak dönüştürülebilir. Çalışma zamanındaki düğüm hiyerarşisi, kaynak dosyadaki yapıyla aynı.
+* `sceneGraphMode` -Kaynak dosyadaki sahne grafiğinin nasıl dönüştürüleceğini tanımlar:
+  * `dynamic` (varsayılan): dosyadaki tüm nesneler, API 'de [varlık](../../concepts/entities.md) olarak sunulur ve bağımsız olarak dönüştürülebilir. Çalışma zamanındaki düğüm hiyerarşisi, kaynak dosyadaki yapıyla aynı.
   * `static`: Tüm nesneler API 'de kullanıma sunuldu ancak bağımsız olarak dönüştürülemez.
   * `none`: Sahne grafiği bir nesne olarak daraltılır.
 
@@ -123,27 +129,27 @@ Her mod farklı çalışma zamanı performansına sahiptir. `dynamic`Modunda, hi
 
 ### <a name="physics-parameters"></a>Fizik parametreleri
 
-* `generateCollisionMesh`-Bir modelde [uzamsal sorgular](../../overview/features/spatial-queries.md) için desteğe ihtiyacınız varsa, bu seçeneğin etkinleştirilmesi gerekir. En kötü durumda, bir çakışma ağı oluşturma, dönüştürme süresini iki katına alabilir. Çakışma kafesleri olan modellerin yüklenmesi daha uzun sürer ve bir `dynamic` sahne grafiği kullanılırken, ayrıca daha yüksek bir çalışma zamanı performans yükü vardır. Genel en iyi performans için, bu seçeneği, uzamsal sorgular gerektirmeyen tüm modeller üzerinde devre dışı bırakmanız gerekir.
+* `generateCollisionMesh` -Bir modelde [uzamsal sorgular](../../overview/features/spatial-queries.md) için desteğe ihtiyacınız varsa, bu seçeneğin etkinleştirilmesi gerekir. En kötü durumda, bir çakışma ağı oluşturma, dönüştürme süresini iki katına alabilir. Çakışma kafesleri olan modellerin yüklenmesi daha uzun sürer ve bir `dynamic` sahne grafiği kullanılırken, ayrıca daha yüksek bir çalışma zamanı performans yükü vardır. Genel en iyi performans için, bu seçeneği, uzamsal sorgular gerektirmeyen tüm modeller üzerinde devre dışı bırakmanız gerekir.
 
 ### <a name="unlit-materials"></a>Aydınlatılmamış malzemeler
 
-* `unlitMaterials`-Varsayılan olarak dönüştürme, [PBR malzemeleri](../../overview/features/pbr-materials.md)oluşturmayı tercih edecektir. Bu seçenek, dönüştürücünün tüm malzemeleri [renk malzemeleri](../../overview/features/color-materials.md) olarak görmesini söyler. Photogrammetri aracılığıyla oluşturulan modeller gibi, zaten aydınlatma içeren verileriniz varsa, bu seçenek her bir malzemenin tek tek [geçersiz kılınmasına](override-materials.md) gerek kalmadan, tüm malzemelerde doğru dönüştürmeyi hızlı bir şekilde zorlamanıza olanak sağlar.
+* `unlitMaterials` -Varsayılan olarak dönüştürme, [PBR malzemeleri](../../overview/features/pbr-materials.md)oluşturmayı tercih edecektir. Bu seçenek, dönüştürücünün tüm malzemeleri [renk malzemeleri](../../overview/features/color-materials.md) olarak görmesini söyler. Photogrammetri aracılığıyla oluşturulan modeller gibi, zaten aydınlatma içeren verileriniz varsa, bu seçenek her bir malzemenin tek tek [geçersiz kılınmasına](override-materials.md) gerek kalmadan, tüm malzemelerde doğru dönüştürmeyi hızlı bir şekilde zorlamanıza olanak sağlar.
 
 ### <a name="converting-from-older-fbx-formats-with-a-phong-material-model"></a>Bir Phong malzeme modeliyle eski FBX biçimlerinden dönüştürme
 
-* `fbxAssumeMetallic`-FBX biçiminin daha eski sürümleri, bir Phong malzeme modeli kullanarak materyalleri tanımlar. Dönüştürme işleminin, bu malzemelerin oluşturucunun [PBR modeliyle](../../overview/features/pbr-materials.md)nasıl eşlendiğini çıkarması gerekebilir. Genellikle bu iyi işe yarar, ancak bir malzemenin dokuya, yüksek yansımalı değerler ve gri olmayan bir Albedo rengine sahip olmadığı durumlarda belirsizlik ortaya çıkabilir. Bu durumda, dönüştürmenin yüksek yansımalı değerlerin önceliklerini belirleme, Albedo renginin çıkaran, yüksek oranda yansıtmalı, metalik bir malzeme tanımlama veya Albedo renginin ayırt ettiği, parçalı renkli plastik gibi bir şey tanımlama arasında seçim yapması gerekir. Varsayılan olarak, dönüştürme işlemi, yüksek oranda yansımalı değerlerin belirsizlik 'in uygulandığı durumlarda metalik bir malzeme olduğunu varsayar. Bu parametre `false` , ters geçiş için olarak ayarlanabilir.
+* `fbxAssumeMetallic` -FBX biçiminin daha eski sürümleri, bir Phong malzeme modeli kullanarak materyalleri tanımlar. Dönüştürme işleminin, bu malzemelerin oluşturucunun [PBR modeliyle](../../overview/features/pbr-materials.md)nasıl eşlendiğini çıkarması gerekebilir. Genellikle bu iyi işe yarar, ancak bir malzemenin dokuya, yüksek yansımalı değerler ve gri olmayan bir Albedo rengine sahip olmadığı durumlarda belirsizlik ortaya çıkabilir. Bu durumda, dönüştürmenin yüksek yansımalı değerlerin önceliklerini belirleme, Albedo renginin çıkaran, yüksek oranda yansıtmalı, metalik bir malzeme tanımlama veya Albedo renginin ayırt ettiği, parçalı renkli plastik gibi bir şey tanımlama arasında seçim yapması gerekir. Varsayılan olarak, dönüştürme işlemi, yüksek oranda yansımalı değerlerin belirsizlik 'in uygulandığı durumlarda metalik bir malzeme olduğunu varsayar. Bu parametre `false` , ters geçiş için olarak ayarlanabilir.
 
 ### <a name="coordinate-system-overriding"></a>Koordinat sistemi geçersiz kılma
 
-* `axis`-Koordinat sistem birimi vektörlerini geçersiz kılmak için. Varsayılan değerler şunlardır `["+x", "+y", "+z"]` . Teorik olarak, FBX biçiminde bu vektörler tanımlanmış ve dönüştürme söz konusu bilgileri sahneyi dönüştürmek için kullandığı bir üst bilgi vardır. GlTF biçimi de sabit bir koordinat sistemi tanımlar. Uygulamada, bazı varlıkların başlığında yanlış bilgiler var veya farklı bir koordinat sistemi kuralıyla kaydedilmiş. Bu seçenek, telafi sistemini dengelemek için geçersiz kılmanızı sağlar. Örneğin: `"axis" : ["+x", "+z", "-y"]` Z ekseni ve y eksenini değiş tokuş eder ve y ekseni yönünü tersine getirerek koordinat sistem hanliðini koruyun.
+* `axis` -Koordinat sistem birimi vektörlerini geçersiz kılmak için. Varsayılan değerler şunlardır `["+x", "+y", "+z"]` . Teorik olarak, FBX biçiminde bu vektörler tanımlanmış ve dönüştürme söz konusu bilgileri sahneyi dönüştürmek için kullandığı bir üst bilgi vardır. GlTF biçimi de sabit bir koordinat sistemi tanımlar. Uygulamada, bazı varlıkların başlığında yanlış bilgiler var veya farklı bir koordinat sistemi kuralıyla kaydedilmiş. Bu seçenek, telafi sistemini dengelemek için geçersiz kılmanızı sağlar. Örneğin: `"axis" : ["+x", "+z", "-y"]` Z ekseni ve y eksenini değiş tokuş eder ve y ekseni yönünü tersine getirerek koordinat sistem hanliðini koruyun.
 
 ### <a name="node-meta-data"></a>Düğüm meta verileri
 
-* `metadataKeys`-Dönüştürme sonucunda tutmak istediğiniz düğüm meta verileri özelliklerinin anahtarlarını belirtmenize izin verir. Tam anahtarları veya joker karakter anahtarlarını belirtebilirsiniz. Joker karakterler "ABC *" biçimindedir ve "ABC" ile başlayan herhangi bir anahtarla eşleşir. Desteklenen meta veri değer türleri `bool` , `int` , `float` ve `string` .
+* `metadataKeys` -Dönüştürme sonucunda tutmak istediğiniz düğüm meta verileri özelliklerinin anahtarlarını belirtmenize izin verir. Tam anahtarları veya joker karakter anahtarlarını belirtebilirsiniz. Joker karakterler "ABC *" biçimindedir ve "ABC" ile başlayan herhangi bir anahtarla eşleşir. Desteklenen meta veri değer türleri `bool` , `int` , `float` ve `string` .
 
     GLTF dosyaları için bu veriler [düğümlerdeki ekstralar nesnesinden](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)gelir. FBX dosyaları için bu veriler `Properties70` üzerindeki verilerden gelir `Model nodes` . Daha fazla ayrıntı için lütfen 3B varlık aracınızın belgelerine bakın.
 
-### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::formatını
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex"::: formatını
 
 :::no-loc text="vertex":::Bir kafesin biçimini, bellek tasarrufları için bir hassaslığına ayarlamak mümkündür. Daha düşük bir bellek kaplama daha büyük modeller yüklemenize veya daha iyi performans elde etmenize olanak tanır. Ancak verilerinize bağlı olarak, yanlış biçim işleme kalitesini önemli ölçüde etkileyebilir.
 
@@ -194,7 +200,7 @@ Bir bileşeni uygulamasına zorlayarak `NONE` , çıkış kafesinin ilgili akı�
 
 Biçimlerin bellek yazmalar aşağıdaki gibidir:
 
-| Biçimlendir | Açıklama | Bayt başına:::no-loc text="vertex"::: |
+| Biçimlendir | Açıklama | Bayt başına :::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|iki bileşen tam kayan nokta duyarlığı|8
 |16_16_FLOAT|iki bileşenden oluşan yarı kayan nokta duyarlığı|4
@@ -208,7 +214,7 @@ Biçimlerin bellek yazmalar aşağıdaki gibidir:
 * `position`: Azaltılmış doğruluk yeterlidir. **16_16_16_16_FLOAT** , küçük modeller için bile fark edilebilir quantileştirme yapıtları sunar.
 * `normal`, `tangent` , `binormal` : Genellikle bu değerler birlikte değiştirilir. Normal bir quantiktan kaynaklanan fark edilebilir ışık yapıtları olmadığı için, doğruluğunu arttırmanın bir nedeni yoktur. Ancak bazı durumlarda, bu bileşenler **none**olarak ayarlanabilir:
   * `normal`, `tangent` ve `binormal` yalnızca modeldeki en az bir malzemenin aydınlatılmış olması durumunda gereklidir. ARR 'de, modelde herhangi bir zamanda bir [PBR malzemesi](../../overview/features/pbr-materials.md) kullanıldığında bu durum söz konusu olur.
-  * `tangent`ve `binormal` yalnızca herhangi bir aydınlatma malzemelerinden biri normal harita dokusunu kullandığında gereklidir.
+  * `tangent` ve `binormal` yalnızca herhangi bir aydınlatma malzemelerinden biri normal harita dokusunu kullandığında gereklidir.
 * `texcoord0``texcoord1`: Doku koordinatları, değerleri aralıkta kaladığında ve**16_16_FLOAT**bahsedilen `[0; 1]` dokuların 2048 x 2048 piksellik en büyük boyuta sahip olduğunda, daha az doğruluk (16_16_FLOAT) kullanabilir. Bu sınırlar aşılırsa, doku eşlemenin kalitesi de düşer.
 
 #### <a name="example"></a>Örnek
@@ -241,9 +247,9 @@ Dönüştürme sırasında örnek bilgilerinin korunup korunmayacağını sınam
 
 ![3ds Max 'da kopyalama](./media/3dsmax-clone-object.png)
 
-* **`Copy`**: Bu modda, kafes klonlanmıştır, bu nedenle hiçbir örnek kullanılmaz ( `numMeshPartsInstanced` = 0).
-* **`Instance`**: İki nesne aynı kafesi paylaşır, bu nedenle örnek oluşturma ( `numMeshPartsInstanced` = 1) kullanılır.
-* **`Reference`**: Benzersiz değiştiriciler geometrilere uygulanabilir, bu nedenle dışarı aktarıcı bir koruyucu yaklaşım seçer ve örnek oluşturma ( `numMeshPartsInstanced` = 0) kullanmaz.
+* **`Copy`** : Bu modda, kafes klonlanmıştır, bu nedenle hiçbir örnek kullanılmaz ( `numMeshPartsInstanced` = 0).
+* **`Instance`** : İki nesne aynı kafesi paylaşır, bu nedenle örnek oluşturma ( `numMeshPartsInstanced` = 1) kullanılır.
+* **`Reference`** : Benzersiz değiştiriciler geometrilere uygulanabilir, bu nedenle dışarı aktarıcı bir koruyucu yaklaşım seçer ve örnek oluşturma ( `numMeshPartsInstanced` = 0) kullanmaz.
 
 
 ### <a name="depth-based-composition-mode"></a>Derinlik tabanlı bileşim modu
@@ -259,8 +265,8 @@ Bellek bir sorun oluşturacaksa, oluşturucuyu [derinlik tabanlı kompozisyon mo
 Senaryonun türüne bağlı olarak, doku verileri miktarı, ağ verileri için kullanılan belleği engelleyebilir. Photogrammetri modelleri adaylardır.
 Dönüştürme yapılandırması, dokuları otomatik olarak ölçeklendirmek için bir yol sağlamaz. Gerekirse, doku ölçeklendirmesinin bir istemci tarafı ön işleme adımı olarak yapılması gerekir. Dönüştürme adımı ancak uygun bir [doku sıkıştırma biçimi](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)seçer:
 
-* `BC1`donuk renk dokuları için
-* `BC7`alfa kanallı kaynak renk dokuları için
+* `BC1` donuk renk dokuları için
+* `BC7` alfa kanallı kaynak renk dokuları için
 
 Biçim `BC7` için bellek parmak izi iki kez karşılaştırıldığından `BC1` , giriş dokuların gereksiz bir şekilde alfa kanalı sağlamadıklarından emin olmak önemlidir.
 

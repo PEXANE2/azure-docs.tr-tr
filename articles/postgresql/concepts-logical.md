@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 363c003a915763a7ab1165c2e0d8f945bc3dd510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213695"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903893"
 ---
 # <a name="logical-decoding"></a>Mantıksal kod çözme
  
@@ -50,13 +50,13 @@ Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması g
 
 ### <a name="using-azure-portal"></a>Azure portalını kullanma
 
-1. Azure çoğaltma desteğini **mantıksal**olarak ayarlayın. **Kaydet**'i seçin.
+1. Azure çoğaltma desteğini **mantıksal**olarak ayarlayın. **Kaydet**’i seçin.
 
-   ![PostgreSQL için Azure veritabanı-çoğaltma-Azure çoğaltma desteği](./media/concepts-logical/replication-support.png)
+   :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-Azure çoğaltma desteği":::
 
 2. **Evet**' i seçerek değişikliği uygulamak için sunucuyu yeniden başlatın.
 
-   ![PostgreSQL için Azure veritabanı-çoğaltma-yeniden başlatmayı Onayla](./media/concepts-logical/confirm-restart.png)
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-yeniden başlatmayı Onayla":::
 
 
 ## <a name="start-logical-decoding"></a>Mantıksal kod çözmeyi Başlat
@@ -79,7 +79,7 @@ Aşağıdaki örnekte, SQL arabirimini wal2json eklentisi ile kullanıyoruz.
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. SQL komutları verin. Örneğin:
+2. SQL komutları verin. Örnek:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,

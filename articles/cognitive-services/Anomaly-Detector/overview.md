@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 12/18/2019
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9237e670dd8d43c4036f996c477948944718e3aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053708"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887504"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomali Algılayıcısı API'si nedir?
 
@@ -35,6 +35,7 @@ Anomali algılayıcısı sayesinde, zaman serisi verileriniz genelinde veya ger�
 |---------|---------|
 |Gerçek zamanlı olarak gerçekleştikleri gibi bozukluklar olup olmadığı tespit edin. | En son birinin bir anomali olup olmadığını belirlemek için daha önce görülmüş veri noktalarını kullanarak akış verilerinizde bozukluklar algılayın. Bu işlem, göndereceğiniz veri noktalarını kullanarak bir model oluşturur ve hedef noktanın bir anomali olup olmadığını belirler. Oluşturduğunuz her yeni veri noktasıyla API çağırarak, verileri oluşturulduğu gibi izleyebilirsiniz. |
 |Veri kümesinin tamamında bir toplu iş olarak, anormallikleri tespit edin. | Verilerinizin tamamında mevcut olabilecek tüm anormallikleri algılamak için zaman serinizi kullanın. Bu işlem, her bir noktanın aynı modelle çözümlenme işleminde, tüm zaman serisi verilerinizi kullanarak bir model oluşturur.         |
+|Veri kümesi genelinde bir toplu iş olarak değişiklik noktalarını tespit edin. | Verilerinizde bulunan tüm eğilim değişiklik noktalarını algılamak için zaman serinizi kullanın. Bu işlem, her bir noktanın aynı modelle çözümlenme işleminde, tüm zaman serisi verilerinizi kullanarak bir model oluşturur.    |
 | Verileriniz hakkında daha fazla bilgi alın. | Verileriniz ve beklenen değerler, anomali sınırları ve pozisyonları dahil tüm gözlemlenen bozukluklar hakkında yararlı Ayrıntılar alın. |
 | Anomali algılama sınırlarını ayarlayın. | Anomali algılayıcı API 'SI, anomali algılama için sınırları otomatik olarak oluşturur. Bu sınırları, API 'nin veri bozuklularındaki duyarlılığını artırmak veya azaltmak için ayarlayın ve verilerinize daha iyi uyum sağlar. |
 
@@ -45,7 +46,7 @@ Tanıtımı çalıştırmak için bir anomali algılayıcısı kaynağı oluştu
 
 ## <a name="notebook"></a>Not Defteri
 
-Anomali algılayıcı API 'sini çağırmayı öğrenmek için bu [Azure Not defterini](https://aka.ms/adNotebook)deneyin. Bu Web 'de barındırılan Jupyter Notebook, bir API isteğinin nasıl gönderileceğini ve sonucu görselleştirmeyi gösterir.
+Anomali algılayıcı API 'sini çağırmayı öğrenmek için bu [Not defterini](https://aka.ms/adNotebook)deneyin. Bu Jupyter Notebook, bir API isteğinin nasıl gönderileceğini ve sonucu görselleştirmeyi gösterir.
 
 Not defterini çalıştırmak için aşağıdaki adımları gerçekleştirin:
 
@@ -55,7 +56,7 @@ Not defterini çalıştırmak için aşağıdaki adımları gerçekleştirin:
 1. **Ücretsiz işlem sırasında Çalıştır 'a** tıklayın
 1. Not defterlerinden birini seçin.
 1. Geçerli anomali algılayıcısı API abonelik anahtarınızı `subscription_key` değişkenine ekleyin.
-1. `endpoint` Değişkeni bitiş noktanızla değiştirin. Örneğin, `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
+1. Değişkeni bitiş noktanızla değiştirin `endpoint` . Örnek: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. Üstteki menü çubuğunda **hücre**' ya ve ardından **Tümünü Çalıştır**' ı tıklatın.
 
 ## <a name="workflow"></a>İş akışı
@@ -92,4 +93,4 @@ Microsoft 'un geliştirdiği SR-CNN algoritmaları hakkında daha fazla bilgi ed
 
 * [Hızlı başlangıç: anomali algılayıcısının kullanıldığı zaman serisi verilerinizde bozukluklar Algıla REST API](quickstarts/detect-data-anomalies-csharp.md)
 * Anomali algılayıcı API 'SI [çevrimiçi tanıtımı](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
-* Anomali algılayıcısı [REST API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+* Anomali algılayıcısı [REST API başvurusu](https://aka.ms/anomaly-detector-rest-api-ref)

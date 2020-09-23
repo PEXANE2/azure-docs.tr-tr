@@ -7,13 +7,13 @@ services: security-center
 ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
-ms.topic: conceptual
-ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.topic: how-to
+ms.openlocfilehash: dfba8bc1713e14099413a6c01d0af8508ba0eb73
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181125"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895199"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Varlık envanteri ve yönetim araçlarıyla kaynaklarınızı bulun ve yönetin
 
@@ -25,22 +25,25 @@ Herhangi bir kaynakta bekleyen öneriler olduğunda, bu değişiklikler envanter
 
 Bu görünümü ve bu soruları şu şekilde ele almak için kullanın:
 
-- Standart katman aboneliklerimin hangi önerileri içerdiğinden emin misiniz?
+- Azure Defender 'ın etkinleştirildiği Aboneliklerim, bekleyen önerilere sahip mi?
 - ' Production ' etiketine sahip makinelerimin Log Analytics Aracısı yok mu?
-- Belirli bir etiketle etiketlenmiş olan makinelerimin sayısı, bekleyen önerilere sahip mi?
+- Belirli bir etiketle etiketlerimin kaç tane olması, bekleyen önerilere sahip mi?
 - Belirli bir kaynak grubundaki kaç kaynağın güvenlik açığı değerlendirme hizmetinden güvenlik bulguları var?
 
 Bu aracın varlık yönetimi olanakları önemli ölçüde artar ve büyümeye devam eder. 
+
+> [!TIP]
+> Güvenlik önerileri, **öneriler** sayfalıdakilerle aynıdır, ancak burada seçtiğiniz belirli kaynak türüne göre filtrelenmiştir. Önerilerin nasıl çözümleneceği hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini uygulama](security-center-recommendations.md).
 
 
 ## <a name="availability"></a>Kullanılabilirlik
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Önizleme|
+|Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|Tüm kullanıcılar|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -56,7 +59,7 @@ Envanter sayfası aşağıdaki araçları sağlar:
 
 - **Filtreler** -sayfanın en üstündeki birden çok filtre, yanıtlamaya çalıştığınız soruya göre kaynak listesini hızlı bir şekilde iyileştirmek için bir yol sağlar. Örneğin, *' Production ' etiketiyle makinelerimin Log Analytics Aracısı eksik* olduğu sorusuna yanıt vermek istiyorsanız, aşağıdaki küçük resimde gösterildiği gibi, **Aracı izleme** filtresini **Etiketler** filtresiyle birleştirebilirsiniz:
 
-    ![İzlenmeyen üretim kaynaklarına filtreleme](./media/asset-inventory/filtering-to-prod-unmonitored.gif)
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="İzlenmeyen üretim kaynaklarına filtreleme":::
 
     Filtreleri uyguladıktan hemen sonra Özet değerleri sorgu sonuçlarıyla ilişkilendirilecek şekilde güncelleştirilir. 
 
@@ -69,8 +72,9 @@ Envanter sayfası aşağıdaki araçları sağlar:
 
 - **Varlık yönetimi seçenekleri** -envanter, karmaşık bulma sorguları gerçekleştirmenize olanak tanır. Sorgularınızla eşleşen kaynakları bulduğunuz stok, şu gibi işlemler için kısayollar sağlar:
 
-    - Filtrelenmiş kaynaklara Etiketler atama-etiketlemek istediğiniz kaynakların yanındaki onay kutularını seçin
-    - Yeni sunucuları güvenlik merkezi 'ne **ekleme-Azure dışı sunucular Ekle** araç çubuğu düğmesini kullanma
+    - Filtrelenmiş kaynaklara Etiketler atama-etiketlemek istediğiniz kaynakların yanındaki onay kutularını seçin.
+    - Yeni sunucuları güvenlik merkezi 'ne **ekleme-Azure dışı sunucular Ekle** araç çubuğu düğmesini kullanın.
+    - Azure Logic Apps iş yüklerini otomatikleştirme-bir veya daha fazla kaynak üzerinde bir mantıksal uygulama çalıştırmak için **mantıksal uygulama tetikleme** düğmesini kullanın. Mantıksal uygulamalarınızın önceden hazırlanması ve ilgili Tetikleyici türünü (HTTP isteği) kabul etmesi gerekir. [Logic Apps hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 
 ## <a name="how-does-asset-inventory-work"></a>Varlık envanteri nasıl çalışır?
@@ -86,11 +90,11 @@ Varlık envanteri, [kusto sorgu dilini (KQL)](https://docs.microsoft.com/azure/d
 
 1. Güvenlik Merkezi 'nin kenar çubuğundan **Envanter**' ı seçin.
 
-1. İsteğe bağlı olarak, belirli bir kaynağı göstermek için ada **göre filtrele** kutusuna adı girin.
+1. Belirli bir kaynağı göstermek için **ada göre filtrele** kutusunu kullanın veya filtreleri aşağıda açıklandığı gibi kullanın.
 
 1. Yapmak istediğiniz belirli bir sorguyu oluşturmak için filtrelerdeki ilgili seçenekleri seçin.
 
-    ![Stokun filtreleri](./media/asset-inventory/inventory-filters.png)
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Stokun filtreleme seçenekleri" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     Varsayılan olarak, kaynaklar etkin güvenlik önerisi sayısına göre sıralanır.
 
@@ -106,19 +110,24 @@ Varlık envanteri, [kusto sorgu dilini (KQL)](https://docs.microsoft.com/azure/d
     > [!TIP]
     > **Güvenlik bulguları içerir** ve **Etiketler** filtreleri yalnızca tek bir değeri kabul eder. Birden fazla filtrelemek için, filtre **Ekle**' yi kullanın.
 
-1. **Fiyatlandırma katmanı** filtresini kullanmak için bir veya daha fazla seçenek (ücretsiz, kısmi veya standart) seçin:
+1. **Azure Defender** filtresini kullanmak için bir veya daha fazla seçenek (kapalı, açık veya kısmi) seçin:
 
-    - Ücretsiz fiyatlandırma katmanında yer alan **ücretsiz** kaynaklar
-    - Standart fiyatlandırma katmanındaki **Standart** kaynaklar
-    - **Kısmi** -bu, standart fiyatlandırma katmanındaki ancak bazı isteğe bağlı güvenlik planlarının devre dışı bırakıldığı abonelikler için geçerlidir. Örneğin, aşağıdaki abonelik Standart katmanda, ancak standart katmanın beş öğesi devre dışı bırakıldı. 
+    - **Kapalı** -bir Azure Defender planıyla korunmayan kaynaklar. Bunlardan birine sağ tıklayıp yükseltebilirsiniz:
 
-        ![Standart (kısmi) fiyatlandırma katmanında abonelik](./media/asset-inventory/pricing-tier-partial.png)
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Sağ tıklama ile bir kaynağı Azure Defender 'a yükseltme" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+
+    - **On** Azure Defender planı tarafından korunan kaynaklar
+    - **Kısmi** -bu, bazı Azure Defender planlarının devre dışı bırakılmayan **abonelikler** için geçerlidir. Örneğin, aşağıdaki abonelikte beş Azure Defender planı devre dışı bırakıldı. 
+
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Azure Defender 'da kısmen abonelik":::
 
 1. Sorgunuzun sonuçlarını daha ayrıntılı incelemek için ilgilendiğiniz kaynakları seçin.
 
-1. İsteğe bağlı olarak, kaynak Graph Explorer 'da sorguyu açmak için **Kaynak Grafiği Gezgininde görüntüle** ' yi seçin.
+1. Seçili geçerli filtre seçeneklerini kaynak grafik Gezgini 'nde bir sorgu olarak görüntülemek için **kaynak grafik Gezgini 'Nde görünüm**' ü seçin.
 
     ![Bağımsız değişken içinde envanter sorgusu](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
+
+1. Önceden tanımlanmış bir mantıksal uygulamayı ile çalıştırmak için 
 
 1. Bazı filtreler tanımladıysanız ve sayfayı açık bıraktıysanız, Güvenlik Merkezi, sonuçları otomatik olarak güncelleştirmez. Sayfayı el ile yeniden yüklemediğiniz veya **Yenile**seçeneğini belirleyemediğiniz takdirde kaynaklardaki değişiklikler, görüntülenecek sonuçları etkilemez.
 
@@ -127,22 +136,19 @@ Varlık envanteri, [kusto sorgu dilini (KQL)](https://docs.microsoft.com/azure/d
 
 ### <a name="why-arent-all-of-my-subscriptions-machines-storage-accounts-etc-shown"></a>Neden Aboneliklerim, makineler, depolama hesapları vb. gösterilmemektedir?
 
-Envanter görünümü, bir bulut güvenlik sonrası yönetimi (CSPM) perspektifinden kaynaklarınızı listeler. Filtreler ortamınızdaki her kaynağı döndürmez; yalnızca bekleyen (veya ' etkin ') önerilere sahip olanlar. 
+Envanter görünümü, bir bulut güvenlik sonrası yönetimi (CSPM) perspektifinden Güvenlik Merkezi 'Ne bağlı kaynaklarınızı listeler. Filtreler ortamınızdaki her kaynağı döndürmez; yalnızca bekleyen (veya ' etkin ') önerilere sahip olanlar. 
 
-Örneğin, dokuz aboneliğiniz varsa ancak şu anda yalnızca sekiz öneri varsa, **kaynak türü = abonelikler** 'e göre filtreleyerek yalnızca etkin önerilere sahip sekiz aboneliği görürsünüz:
+Örneğin, aşağıdaki ekran görüntüsünde 38 aboneliğine erişimi olan bir kullanıcı gösterilir, ancak şu anda yalnızca 10 öneri vardır. Bu nedenle, **kaynak türü = abonelikler**'e göre filtrelerse yalnızca envanterde etkin önerilere sahip olan 10 abonelik görünür:
 
-![Etkin öneri olmadığında tüm alt öğeleri döndürülmedi](./media/asset-inventory/filtered-subscriptions-some.png)
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Etkin öneri olmadığında tüm alt öğeleri döndürülmedi":::
 
-
-### <a name="why-do-some-of-my-resources-show-blank-values-in-the-pricing-or-agent-monitoring-columns"></a>Kaynaklarım neden fiyatlandırma veya aracı izleme sütunlarında boş değerler gösteriyor?
+### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>Kaynaklarım neden Azure Defender veya aracı izleme sütunlarında boş değerler gösteriyor?
 
 Güvenlik Merkezi tarafından izlenen tüm kaynakların aracıları yoktur. Örneğin, Azure depolama hesapları veya diskler, Logic Apps, Data Lake Analizi ve Olay Hub 'ı gibi PaaS kaynakları.
 
 Fiyatlandırma veya aracı izleme bir kaynak için uygun olmadığında, bu envanter sütunlarında hiçbir şey gösterilmez.
 
-![Bazı kaynaklar, aracı izleme veya fiyatlandırma sütunlarında boş bilgi gösterir](./media/asset-inventory/agent-pricing-blanks.png)
-
-
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Bazı kaynaklar, aracı izleme veya Azure Defender sütunlarında boş bilgi gösterir":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -151,5 +157,4 @@ Bu makalede, Azure Güvenlik Merkezi 'nin varlık Envanteri sayfası açıklanma
 İlgili araçlar hakkında daha fazla bilgi için aşağıdaki sayfalara bakın:
 
 - [Azure Kaynak Grafiği (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/)
-
 - [Kusto Sorgu Dili (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)

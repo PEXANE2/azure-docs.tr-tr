@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge sıralama sorunlarını gidermek için Azure portal kullanma | Microsoft Docs
-description: Azure Stack Edge sıralama sorunlarını nasıl giderebileceğinizi açıklar.
+title: Azure Stack Edge Pro sıralaması sorunlarını gidermek için Azure portal kullanma | Microsoft Docs
+description: Azure Stack Edge Pro sıralaması sorunlarını nasıl giderebileceğinizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 8c42ee867bdd20de64fa1c603de47b5f1e7bdb39
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055954"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903633"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Azure Stack Edge sıralama sorunlarınızı giderme
+# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Azure Stack Edge Pro sipariş sorunlarını giderme
 
-Bu makalede Azure Stack Edge sıralama sorunlarını giderme işleminin nasıl giderileceği açıklanmaktadır.
+Bu makalede Azure Stack Edge Pro sıralaması sorunlarını giderme işleminin nasıl giderileceği açıklanmaktadır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -59,7 +59,7 @@ Daha fazla bilgi için bkz. [kaynak sağlayıcılarını kaydetme](azure-stack-e
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>Abonelik için Microsoft. DataBoxEdge kaydedilmedi
 
-**Hata:** Azure portal, Azure Stack Edge veya Data Box Gateway için kullanılacak bir abonelik seçersiniz ve şu hatayı alırsınız:
+**Hata:** Azure portal, Azure Stack Edge Pro veya Data Box Gateway için kullanılacak bir abonelik seçersiniz ve şu hatayı alırsınız:
 
 *Kaynak sağlayıcıları: Microsoft. DataBoxEdge abonelik abonelik adı için kayıtlı değil &lt; &gt; ve abonelik &lt; abonelik adı &gt; için bir kaynak sağlayıcısı kaydetme izniniz*yok.
 
@@ -75,4 +75,4 @@ Daha fazla bilgi için bkz. [kaynak sağlayıcılarını kaydetme](azure-stack-e
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stack Edge sorunlarınızı giderme](azure-stack-edge-troubleshoot.md)hakkında daha fazla bilgi edinin.
+* [Azure Stack Edge Pro sorunlarınızı giderme](azure-stack-edge-troubleshoot.md)hakkında daha fazla bilgi edinin.

@@ -4,12 +4,12 @@ description: Azure portal, bir Azure Resource Manager şablonu ve Azure PowerShe
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7914f3ee57d014de2f34fca301b587c6297bebe3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322423"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983097"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme  
 
@@ -111,7 +111,7 @@ Bir etkinlik günlüğünde hangi uyarı kurallarının oluşturulabileceği ko�
 
 1. Azure Portal **izleme**  >  **uyarıları**' nı seçin. Pencerenin sol üst köşesindeki **Uyarı kurallarını yönet** ' i seçin.
 
-    ![Uyarı kurallarını yönetin](media/alerts-activity-log/manage-alert-rules.png)
+    ![Ekran görüntüsü, arama kutusuyla vurgulanan etkinlik günlüğünü gösterir.](media/alerts-activity-log/manage-alert-rules.png)
 
     Kullanılabilir kuralların listesi görüntülenir.
 
@@ -119,7 +119,7 @@ Bir etkinlik günlüğünde hangi uyarı kurallarının oluşturulabileceği ko�
 
     ![Etkinlik günlüğü uyarı kurallarında ara](media/alerts-activity-log/searth-activity-log-rule-to-edit.png)
 
-    Düzenlemek istediğiniz etkinlik kuralını bulmak için kullanılabilir filtreler, _abonelik_, _kaynak grubu_, _kaynak_, _sinyal türü_veya _durum_' u kullanabilirsiniz.
+    Düzenlemek istediğiniz etkinlik kuralını bulmak için kullanılabilir filtreler, _abonelik_, _kaynak grubu_,  _kaynak_, _sinyal türü_veya _durum_' u kullanabilirsiniz.
 
    > [!NOTE]
    > 

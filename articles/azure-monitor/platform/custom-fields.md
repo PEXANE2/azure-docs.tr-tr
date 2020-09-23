@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: c0f31ddb0e0aeabff06d14d40d254c2577b38b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906811"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974702"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Izleyici 'de Log Analytics çalışma alanında özel alanlar oluşturma (Önizleme)
 
@@ -23,7 +23,7 @@ ms.locfileid: "84906811"
 
 Azure Izleyici 'nin **özel alanlar** özelliği, kendi aranabilir alanlarınızı ekleyerek Log Analytics çalışma alanınızdaki mevcut kayıtları genişletmenizi sağlar.  Özel alanlar, aynı kayıttaki diğer özelliklerden ayıklanan verilerden otomatik olarak doldurulur.
 
-![Genel Bakış](media/custom-fields/overview.png)
+![Diyagramda, değiştirilmiş kayıttaki orijinal özelliğe eklenen özellik değeri çiftleri ile bir Log Analytics çalışma alanında değiştirilmiş bir kayıtla ilişkili bir özgün kayıt gösterilmektedir.](media/custom-fields/overview.png)
 
 Örneğin, aşağıdaki örnek kayıt, olay açıklamasında bulunan yararlı verilere sahiptir. Bu verilerin ayrı bir özelliğe ayıklanması, bu işlemleri sıralama ve filtreleme gibi işlemler için kullanılabilir hale getirir.
 
@@ -81,7 +81,7 @@ Aşağıdaki bölümde, özel bir alan oluşturma işleminin tamamı gösterilme
 
 Hizmet denetimi Yöneticisi 'nden, bir hizmetin başlamasını veya durdurulmasını belirten olay olan 7036 olay KIMLIĞINE sahip tüm olayları döndürmek için aşağıdaki sorguyu girin.
 
-![Sorgu](media/custom-fields/query.png)
+![Ekran görüntüsü bir olay kaynağı ve KIMLIĞI için bir sorgu gösterir.](media/custom-fields/query.png)
 
 Daha sonra olay KIMLIĞI 7036 olan kayıtları seçip genişlettik.
 

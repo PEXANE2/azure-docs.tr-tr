@@ -3,16 +3,16 @@ title: Ticari Market ilkeleri ve koşulları, Azure Marketi
 description: Microsoft ticari Market ilkeleri ve koşulları, Azure Marketi 'ndeki tüm Yayımcılar ve teklifler için geçerlidir.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: reference
+ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
-ms.openlocfilehash: cd936307eaacc7b2a46bac23c8fcfc9e2769135c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4ddf37d5f2e7f569e5447dfe321574e3f9ccc778
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006729"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974851"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Ticari market ilkeleri ve koşulları
 
@@ -25,12 +25,11 @@ Ticari Market 'teki teklifler, ilkeleriniz ve koşullarımızla uyumlu olmalıd�
 
 ## <a name="policies-and-terms"></a>İlkeler ve koşullar
 
-* [Ticari market sertifikasyon ilkeleri](https://docs.microsoft.com/legal/marketplace/certification-policies)
-
-* [Derecelendirme ve ilkeleri gözden geçirme](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
-
-* [Azure Market koşulları](https://docs.microsoft.com/legal/marketplace/terms)
+- [Ticari market sertifikasyon ilkeleri](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)
+- [Microsoft AppSource ve Azure Marketi İnceleme ilkeleri](/legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context)
+- [Azure Market katılım ilkeleri](/legal/marketplace/participation-policy?context=/azure/marketplace/context/context)
+- [Azure Market koşulları](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
 ## <a name="next-step"></a>Sonraki adım
 
-[Ticari Market Yayımlama Kılavuzu](./marketplace-publishers-guide.md) sayfasını ziyaret edin.
+[Ticari Market Yayımlama Kılavuzu](marketplace-publishers-guide.md) sayfasını ziyaret edin.
