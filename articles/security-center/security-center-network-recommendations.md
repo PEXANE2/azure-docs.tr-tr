@@ -13,42 +13,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 36118bb99da5f0c7f918009413394d931415886f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076381"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883902"
 ---
 # <a name="protect-your-network-resources"></a>Ağ kaynaklarınızı koruyun
 Azure Güvenlik Merkezi, ağ güvenliği en iyi uygulamaları için Azure kaynaklarınızın güvenlik durumunu sürekli olarak analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızı korumak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur.
-
-Bu makalede Güvenlik Merkezi 'nin kaynak güvenliği bölümünün **ağ** sayfası açıklanır.
 
 Ağ önerilerinin tam listesi için bkz. [ağ önerileri](recommendations-reference.md#recs-network).
 
 Bu makalede bir ağ güvenliği perspektifinden Azure kaynaklarınıza uygulanan öneriler ele alınmaktadır. Sonraki nesil güvenlik duvarları, ağ güvenlik grupları, JıT VM erişimi, aşırı izin veren gelen trafik kuralları ve daha fazlası etrafında ağ önerisi merkezi. Ağ önerileri ve düzeltme eylemlerinin bir listesi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](security-center-recommendations.md).
 
-> [!NOTE]
-> Ağ **iletişimi** sayfası, bir ağ perspektifinden Azure Kaynak sistem durumu hakkında ayrıntılı bilgi almanızı sağlar. Ağ eşlemesi ve Uyarlamalı ağ denetimleri yalnızca Azure Güvenlik Merkezi Standart katmanı için kullanılabilir. [Ücretsiz katmanı kullanıyorsanız, **eski ağı görüntülemek** ve ağ kaynağı önerilerini almak için düğmeye tıklayabilirsiniz](#legacy-networking).
->
+Güvenlik Merkezi 'nin **ağ** özellikleri şunlardır: 
 
-Ağ **kaynakları** hakkında daha fazla bilgi edinmek için, ağ kaynaklarınızın sistem durumu hakkında daha fazla bilgi almak üzere ayrıntılı olarak kullanabileceğiniz bölümlere genel bir bakış sağlar:
-
-- Ağ eşlemesi (yalnızca Azure Güvenlik Merkezi Standart katmanı)
-- Uyarlamalı Ağ Sağlamlaştırma
-- Ağ güvenlik önerileri.
-- Eski **ağ** dikey penceresi (önceki ağ dikey penceresi) 
+- Ağ eşlemesi (Azure Defender gerektirir)
+- [Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md) (Azure Defender gerekir)
+- Ağ güvenlik önerileri
  
-[![Ağ bölmesi](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
+## <a name="view-your-networking-resources-and-their-recommendations"></a>Ağ kaynaklarınızı ve bunların önerilerini görüntüleyin
+
+[Varlık envanteri sayfasında](asset-inventory.md), araştırmak istediğiniz ağ kaynaklarını seçmek için kaynak türü filtresini kullanın:
+
+:::image type="content" source="./media/security-center-network-recommendations/network-filters-inventory.png" alt-text="Varlık envanteri ağ kaynağı türleri" lightbox="./media/security-center-network-recommendations/network-filters-inventory.png":::
+
 
 ## <a name="network-map"></a>Ağ eşlemesi
+
 Etkileşimli ağ eşlemesi, ağ kaynaklarınızı sağlamlaştırma konusunda öneriler ve Öngörüler sağlayan güvenlik Yerpaylaşımları içeren grafik bir görünüm sağlar. Eşlemeyi kullanarak Azure iş yüklerinizin ağ topolojisini, sanal makineleriniz ile alt ağlarınızla bağlantıları ve haritalardan belirli kaynaklara detaya gitme özelliğini ve bu kaynaklara yönelik önerileri görebilirsiniz.
 
 Ağ haritasını açmak için:
 
-1. Güvenlik Merkezi 'nde, kaynak güvenliği Hygiene altında **ağ**' ı seçin.
-2. **Ağ Haritası** altında **topolojiyi göster**' e tıklayın.
+1. Güvenlik Merkezi 'nin menüsünde, Azure Defender panosunu açın ve **Ağ Haritası**' nı seçin.
+
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Azure Defender panosundan ağ haritasını açma" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+
+1. **Katmanlar** menüsünü seçin **topoloji**' yi seçin.
  
 Topoloji haritasının varsayılan görünümü şunu görüntüler:
 
@@ -114,31 +116,8 @@ Bir kaynağın detayına gitmek için:
 [![Ağ trafiği Haritası](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
-## <a name="legacy-networking"></a>Eski ağ<a name ="legacy-networking"></a>
-
-Güvenlik Merkezi Standart katmanınız yoksa, bu bölümde ücretsiz ağ önerilerini görüntüleme açıklanmaktadır.
-
-Bu bilgilere erişmek için, ağ dikey penceresinde **eski ağı görüntüle**' ye tıklayın. 
-
-[![Eski ağ](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
-
-### <a name="internet-facing-endpoints-section"></a>İnternet'e yönelik uç noktalar bölümü
-**İnternet 'e yönelik uç noktalar** bölümünde, şu anda internet 'e yönelik bir uç noktayla yapılandırılmış sanal makineleri ve durumunu görebilirsiniz.
-
-Bu tabloda uç nokta adı, Internet 'e yönelik IP adresi ve ağ güvenlik grubunun ve NGFW önerilerinin geçerli önem derecesi durumu bulunur. Tablo önem derecesine göre sıralanır.
-
-### <a name="networking-topology-section"></a>Ağ topolojisi bölümü
-**Ağ topolojisi** bölümünde kaynakların hiyerarşik bir görünümü bulunur.
-
-Bu tablo önem derecesine göre sıralanır (sanal makineler ve alt ağlar).
-
-Bu topoloji görünümünde, ilk düzey sanal ağları görüntüler. İkinci alt ağları görüntüler ve üçüncü düzey bu alt ağlara ait sanal makineleri görüntüler. Sağ sütunda bu kaynaklar için ağ güvenlik grubu önerilerinin geçerli durumu gösterilmektedir.
-
-Üçüncü düzey, daha önce açıklananlara benzer olan sanal makineleri görüntüler. Daha fazla bilgi edinmek veya gerekli güvenlik denetimini veya yapılandırmayı uygulamak için herhangi bir kaynağa tıklayabilirsiniz.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Diğer Azure kaynak türlerine uygulanan öneriler hakkında daha fazla bilgi edinmek için aşağıdakilere bakın:
 
-* [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)
-* [Azure Güvenlik Merkezi 'nde Azure SQL hizmetinizi koruma](security-center-sql-service-recommendations.md)
+- [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)

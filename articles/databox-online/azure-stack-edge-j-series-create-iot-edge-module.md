@@ -1,6 +1,6 @@
 ---
-title: GPU ile Azure Stack Edge için C# IoT Edge modülü | Microsoft Docs
-description: Azure Stack Edge GPU cihazınıza dağıtılabilecek bir C# IoT Edge modülünü geliştirmeyi öğrenin.
+title: GPU ile Azure Stack Edge Pro için C# IoT Edge modülü | Microsoft Docs
+description: Azure Stack Edge Pro GPU cihazınıza dağıtılabilecek bir C# IoT Edge modülünü geliştirmeyi öğrenin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,49 +8,49 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: c981208438529ec7c23ab3c3089f4d57d77c2714
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 628dec7f1ba44d81243aeff2657e2311119c566a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268970"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891187"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Dosyaları Azure Stack Edge üzerinde taşımak için C# IoT Edge modülünü geliştirme
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Dosyaları Azure Stack Edge Pro 'ya taşımak için C# IoT Edge modülünü geliştirme
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu makalede, Azure Stack Edge cihazınızdan dağıtım için IoT Edge modülü oluşturma adımları anlatılmaktadır. Azure Stack Edge, verileri işleyebilmeniz ve ağ üzerinden Azure 'a göndermenizi sağlayan bir depolama çözümüdür.
+Bu makalede, Azure Stack Edge Pro cihazınızdan dağıtım için IoT Edge modülü oluşturma adımları anlatılmaktadır. Azure Stack Edge Pro, verileri işleyebilmeniz ve ağ üzerinden Azure 'a göndermenizi sağlayan bir depolama çözümüdür.
 
-Azure Stack Kenarlarınızın Azure IoT Edge modüllerini kullanarak verileri Azure 'a taşındığını sağlayabilirsiniz. Bu makalede kullanılan modül, bir dosyayı yerel bir paylaşımdan Azure Stack Edge cihazınızdaki bir bulut paylaşımında kopyalama mantığını uygular.
+Azure Stack Edge Pro ile Azure IoT Edge modüllerini kullanarak verileri Azure 'a taşındığını sağlayabilirsiniz. Bu makalede kullanılan modül, bir dosyayı yerel bir paylaşımdan Azure Stack Edge Pro cihazınızdaki bir bulut paylaşımında kopyalama mantığını uygular.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Modüllerinizi depolamak ve yönetmek için bir kapsayıcı kayıt defteri oluşturun (Docker görüntüleri).
-> * Azure Stack Edge cihazınızda dağıtmak üzere bir IoT Edge modülü oluşturun.
+> * Azure Stack Edge Pro cihazınızda dağıtmak için bir IoT Edge modülü oluşturun.
 
 
 ## <a name="about-the-iot-edge-module"></a>IoT Edge modülü hakkında
 
-Azure Stack Edge cihazınız, IoT Edge modülleri dağıtabilir ve çalıştırabilir. Edge modülleri, bir cihazdan ileti alma, ileti dönüştürme veya bir IoT Hub ileti gönderme gibi belirli bir görevi gerçekleştiren Docker kapsayıcılarıdır. Bu makalede, dosyaları yerel bir paylaşımdan Azure Stack Edge cihazınızda bir bulut paylaşımıyla kopyalayan bir modül oluşturacaksınız.
+Azure Stack Edge Pro cihazınız, IoT Edge modülleri dağıtabilir ve çalıştırabilir. Edge modülleri, bir cihazdan ileti alma, ileti dönüştürme veya bir IoT Hub ileti gönderme gibi belirli bir görevi gerçekleştiren Docker kapsayıcılarıdır. Bu makalede, dosyaları yerel bir paylaşımdan Azure Stack Edge Pro cihazınızdaki bir bulut paylaşımıyla kopyalayan bir modül oluşturacaksınız.
 
-1. Dosyalar Azure Stack Edge cihazınızda yerel paylaşıma yazılır.
+1. Dosyalar, Azure Stack Edge Pro cihazınızda yerel paylaşıma yazılır.
 2. Dosya olay Oluşturucusu, yerel paylaşıma yazılan her dosya için bir dosya olayı oluşturur. Dosya olayları, bir dosya değiştirildiğinde de oluşturulur. Dosya olayları daha sonra IoT Edge hub 'ına gönderilir (IoT Edge çalışma zamanında).
 3. IoT Edge özel modül dosya olayını, dosya için göreli yol da içeren bir dosya olay nesnesi oluşturacak şekilde işler. Modül göreli dosya yolunu kullanarak mutlak bir yol oluşturur ve dosyayı yerel paylaşımdan bulut paylaşımıyla kopyalar. Modül daha sonra dosyayı yerel paylaşımdan siler.
 
-![Azure IoT Edge modülünün Azure Stack Edge üzerinde nasıl çalıştığı](./media/azure-stack-edge-j-series-create-iot-edge-module/how-module-works-1.png)
+![Azure IoT Edge modülünün Azure Stack Edge Pro 'da çalışması](./media/azure-stack-edge-j-series-create-iot-edge-module/how-module-works-1.png)
 
 Dosya bulut paylaşımından olduktan sonra otomatik olarak Azure depolama hesabınıza yüklenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
-- Çalıştıran bir Azure Stack Edge cihazı.
+- Çalıştıran bir Azure Stack Edge Pro cihazı.
 
     - Cihazda ayrıca ilişkili bir IoT Hub kaynağı vardır.
     - Cihazda sınır hesaplama rolü yapılandırıldı.
-    Daha fazla bilgi için Azure Stack Edge için [Işlem yapılandırma](azure-stack-edge-j-series-deploy-configure-compute.md#configure-compute) bölümüne gidin.
+    Daha fazla bilgi için Azure Stack Edge Pro için [Işlem yapılandırma](azure-stack-edge-j-series-deploy-configure-compute.md#configure-compute) bölümüne gidin.
 
 - Aşağıdaki geliştirme kaynakları:
 
@@ -278,4 +278,4 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu modülü Azure Stack Edge üzerinde dağıtmak ve çalıştırmak için, [modül ekleme](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module)içindeki adımlara bakın.
+Bu modülü Azure Stack Edge Pro 'da dağıtmak ve çalıştırmak için, [modül ekleme](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module)içindeki adımlara bakın.

@@ -4,12 +4,12 @@ description: Application Insights kullanmaya başlayın. Şirket içi veya Micro
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f84e1065f93fc2cca950f12d5df537b931faac8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323460"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987156"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web uygulamalarının performansını izleme
 
@@ -112,11 +112,11 @@ Web uygulamanızda yavaş gerçekleştirilen işlemleri gözden geçirmek için 
 
 Bu işleme yönelik kullanıcı deneyimlerinden daha iyi bir fikir almak için daha büyük bir zaman aralığı seçebilirsiniz. Daha sonra işlemin yavaş olduğu belirli bir zaman penceresinde de dar bir süre sonra daraltabiliriz. Aşağıdaki örnekte, varsayılan 24 saatlik zaman aralığından 7 gün zaman aralığına geçtik ve 12:47 9:47 sonra 12. ve 13.6. ve 13. Hem süre dağılımı hem de örnek ve profil oluşturucu izlemelerinin sayısı sağ tarafta güncelleştirilmiştir.
 
-![Zaman penceresi ile 7 gün aralığında müşterileri/ayrıntıları üç süre ani artışları alın](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![Ekran görüntüsü, zaman penceresi ile 7 gün aralığında üç süreli artışlar olan performansı (Önizleme) gösterir](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
 Yavaş deneyimler üzerinde daraltmak için, daha sonra 95 ' i ve 99. yüzdebirlik aralığında kalan süreleri yakınlaştırıyoruz. Bunlar, yavaş olan kullanıcı etkileşimlerinin %4 ' i temsil eder.
 
-![Zaman penceresi ile 7 gün aralığında müşterileri/ayrıntıları üç süre ani artışları alın](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![Ekran görüntüsü, bir zaman penceresi ile 7 gün aralığında müşterilerin/diğer üç sürenin ayrıntılarını alma hakkında bilgi gösterir.](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
 Artık, örnek düğmesine tıklayarak ya da profil oluşturucu izlemeleri düğmesine tıklayarak temsil eden profil oluşturucu izlemelerinde temsilci örneklerine bakabiliriz. Bu örnekte, zaman penceresinde müşterileri/ayrıntıları al için toplanan dört izleme vardır.
 
@@ -126,7 +126,7 @@ Bazen sorun kodunuzda olmaz, bunun yerine kodunuzun çağrı yaptığı bir bağ
 
 Performans araştırma deneyimi, odaklanmaya karar verdiğiniz örnek küme üzerinde ilgili öngörüleri gösterir. Tüm mevcut öngörülere baktığınızın en iyi yolu 30 günlük bir zaman aralığına geçiş yapmak ve sonra geçen aya ait tüm işlemlerde öngörüleri görmek için genel ' i seçbilmenizdir.
 
-![Zaman penceresi ile 7 gün aralığında müşterileri/ayrıntıları üç süre ani artışları alın](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![Ekran görüntüsü, genel pencere açık ve Öngörüler seçiliyken performansı (Önizleme) gösterir.](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar

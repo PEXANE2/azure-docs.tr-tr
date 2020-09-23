@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808465"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969527"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory sağlama, SAP başarılı faktörlerle nasıl tümleştirilir? 
 
@@ -63,7 +63,7 @@ Başarılı faktörlerdeki her kullanıcı için, Azure AD sağlama hizmeti aşa
 | 14 | FOJobCode                              | employmentNav/Jobınfonav/jobCodeNav  | Yalnızca `jobCode` veya `jobCodeId` özniteliği eşlenmişse |
 | 15 | Fopaygrad                             | employmentNav/Jobınfonav/payGradeNav  | Yalnızca `payGrade` özniteliği eşlenmişse |
 | 16 | Katmanma                             | employmentNav/Jobınfonav/locationNav  | Yalnızca `location` özniteliği eşlenmişse |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/Jobınfonav/addressNavDEFLT  | Eşleme aşağıdaki özniteliklerden birini içeriyorsa:`officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 17 | FOCorporateAddressDEFLT                | employmentNav/Jobınfonav/addressNavDEFLT  | Eşleme aşağıdaki özniteliklerden birini içeriyorsa: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
 | 18 | FOEventReason                          | employmentNav/Jobınfonav/eventReasonNav  | Yalnızca `eventReason` özniteliği eşlenmişse |
 | 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Yalnızca `assignmentType` eşlenmişse |
 | 20 | EmploymentType seçim listesi                | employmentNav/Jobınfonav/employmentTypeNav | Yalnızca `employmentType` eşlenmişse |
@@ -182,7 +182,7 @@ Varsayılan olarak, aşağıdaki özel öznitelikler Azure AD başarılı etmenl
 Diyelim ki, çalışan merkezi Örneğinizde, *Empjobınfo* 'daki *customString35* özniteliği konum açıklamasını depolar. Bu değeri Active Directory *physicalDeliveryOfficeName* özniteliğine akmasını istiyorsunuz. Bu senaryoya yönelik öznitelik eşlemesini yapılandırmak için aşağıda verilen adımları kullanın: 
 
 1. *EmpJobNavCustomString35*adlı yeni bir öznitelik eklemek Için başarılı etmenler öznitelik listesini düzenleyin.
-1. Bu öznitelik için JSONPath API ifadesini şu şekilde ayarlayın:`$.employmentNav.results[0].jobInfoNav.results[0].customString35`
+1. Bu öznitelik için JSONPath API ifadesini şu şekilde ayarlayın: `$.employmentNav.results[0].jobInfoNav.results[0].customString35`
 1. Eşleme değişikliğini Azure portal kaydedin ve yeniden yükleyin.  
 1. Öznitelik eşleme dikey penceresinde *empJobNavCustomString35* öğesini *physicalDeliveryOfficeName*olarak eşleyin.
 1. Eşlemeyi kaydedin.
@@ -199,20 +199,20 @@ Bu senaryo genişletiliyor:
 1. Aşağı kaydırın ve **Gelişmiş seçenekleri göster**' e tıklayın.
 1. Şema düzenleyicisini açmak için **şemanızın bağlantısını inceleyin** . 
 
-   >![İnceleme-şema](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
+   >![Ekran görüntüsünde, şema düzenleyicisini açan şemayı buraya gözden geçirin bağlantısı gösterilir.](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
 
 1. Düzenlemeden önce şemanın bir kopyasını kaydetmek için **indirme** bağlantısına tıklayın. 
 
-   >![indirme-şema](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
+   >![Ekran görüntüsü şemayı bir kopyasını kaydetmek için, Indirme ile şema düzenleyicisini gösterir.](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
 1. Şema düzenleyicisinde, CTRL-H tuşuna basarak Bul-Değiştir denetimini açın.
-1. Metin Bul kutusunda, değeri kopyalayın ve yapıştırın`$.employmentNav.results[0]`
+1. Metin Bul kutusunda, değeri kopyalayın ve yapıştırın `$.employmentNav.results[0]`
 1. Değiştir metin kutusuna değeri kopyalayın ve yapıştırın `$.employmentNav.results[?(@.userNav != null)]` . `!=`JSONPath ifadesinin başarılı işlenmesi için önemli olan işleci çevreleyen boşluğu dikkat edin. 
    >![Bul-Değiştir-dönüştürme](media/sap-successfactors-integration-reference/find-replace-conversion-scenario.png#lightbox)
 1. Şemayı güncelleştirmek için "Tümünü Değiştir" seçeneğine tıklayın. 
 1. Şemayı kaydedin. 
 1. Yukarıdaki işlem, tüm JSONPath ifadelerini aşağıdaki gibi güncelleştirir: 
-   * Eski JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Yeni JSONPath:`$.employmentNav.results[?(@.userNav != null)].jobInfoNav.results[0].departmentNav.name_localized`
+   * Eski JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Yeni JSONPath: `$.employmentNav.results[?(@.userNav != null)].jobInfoNav.results[0].departmentNav.name_localized`
 1. Sağlamayı yeniden başlatın. 
 
 ### <a name="handling-rehire-scenario"></a>Yeniden işe alma senaryosu işleniyor
@@ -230,13 +230,13 @@ Bu yeniden işe alma senaryosunu (2. seçenek) işlemek için, en son iş verile
 1. Şema düzenleyicisini açmak için **şemanızın bağlantısını inceleyin** .   
 1. Düzenlemeden önce şemanın bir kopyasını kaydetmek için **indirme** bağlantısına tıklayın.   
 1. Şema düzenleyicisinde, CTRL-H tuşuna basarak Bul-Değiştir denetimini açın.
-1. Metin Bul kutusunda, değeri kopyalayın ve yapıştırın`$.employmentNav.results[0]`
+1. Metin Bul kutusunda, değeri kopyalayın ve yapıştırın `$.employmentNav.results[0]`
 1. Değiştir metin kutusuna değeri kopyalayın ve yapıştırın `$.employmentNav.results[-1:]` . Bu JSONPath ifadesi en son *Empistihdam* kaydını döndürür.   
 1. Şemayı güncelleştirmek için "Tümünü Değiştir" seçeneğine tıklayın. 
 1. Şemayı kaydedin. 
 1. Yukarıdaki işlem, tüm JSONPath ifadelerini aşağıdaki gibi güncelleştirir: 
-   * Eski JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Yeni JSONPath:`$.employmentNav.results[-1:].jobInfoNav.results[0].departmentNav.name_localized`
+   * Eski JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Yeni JSONPath: `$.employmentNav.results[-1:].jobInfoNav.results[0].departmentNav.name_localized`
 1. Sağlamayı yeniden başlatın. 
 
 Bu şema değişikliği, çalışan dönüştürme senaryosunu da destekler. 
@@ -254,13 +254,13 @@ Standart atamaya ve genel atama Kullanıcı profiline ait öznitelikleri getirme
 1. Şema düzenleyicisini açmak için **şemanızın bağlantısını inceleyin** .   
 1. Düzenlemeden önce şemanın bir kopyasını kaydetmek için **indirme** bağlantısına tıklayın.   
 1. Şema düzenleyicisinde, CTRL-H tuşuna basarak Bul-Değiştir denetimini açın.
-1. Metin Bul kutusunda, değeri kopyalayın ve yapıştırın`$.employmentNav.results[0]`
+1. Metin Bul kutusunda, değeri kopyalayın ve yapıştırın `$.employmentNav.results[0]`
 1. Değiştir metin kutusuna değeri kopyalayın ve yapıştırın `$.employmentNav.results[?(@.assignmentClass == 'ST')]` . 
 1. Şemayı güncelleştirmek için "Tümünü Değiştir" seçeneğine tıklayın. 
 1. Şemayı kaydedin. 
 1. Yukarıdaki işlem, tüm JSONPath ifadelerini aşağıdaki gibi güncelleştirir: 
-   * Eski JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Yeni JSONPath:`$.employmentNav.results[?(@.assignmentClass == 'ST')].jobInfoNav.results[0].departmentNav.name_localized`
+   * Eski JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Yeni JSONPath: `$.employmentNav.results[?(@.assignmentClass == 'ST')].jobInfoNav.results[0].departmentNav.name_localized`
 1. Uygulamanın öznitelik eşleme dikey penceresini yeniden yükleyin. 
 1. Aşağı kaydırın ve **Gelişmiş seçenekleri göster**' e tıklayın.
 1. **Başarılı etmenler için öznitelik listesini düzenle**' ye tıklayın.
@@ -294,7 +294,7 @@ Bu bölümde, farklı geri yazma senaryoları ele alınmaktadır. E-posta ve tel
 | 1 | * İş e-postasını yalnızca birincil olarak ayarlayın. <br> * Telefon numaralarını ayarlama. | true | true | yanlış | \[Ayarlanmadı\] | \[Ayarlanmadı\] | 
 | 2 | * Başarılı etmenler, iş e-postası ve iş telefonu birincil <br> * Her zaman Azure AD telefon numarasını iş telefonuna ve cep telefonlarına cep telefonuna Flow. | true | true | yanlış | telephoneNumber 'dır | mobil | 
 | 3 | * Başarılı etkenlere, iş e-postasına ve cep telefonunun birincil <br> * Her zaman Azure AD telefon numarasını iş telefonuna ve cep telefonlarına cep telefonuna Flow | true | yanlış | true |  telephoneNumber 'dır | mobil | 
-| 4 | * Başarılı bir şekilde iş e-postası birincil <br> * Azure AD 'de iş telefonu numarasının mevcut olup olmadığını denetleyin, varsa, cep telefonu numarasını yalnızca cep telefonu numarası yoksa birincil olarak işaretleyin. | true | İfade eşlemeyi kullan:`IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | İfade eşlemeyi kullan:`IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber 'dır | mobil | 
+| 4 | * Başarılı bir şekilde iş e-postası birincil <br> * Azure AD 'de iş telefonu numarasının mevcut olup olmadığını denetleyin, varsa, cep telefonu numarasını yalnızca cep telefonu numarası yoksa birincil olarak işaretleyin. | true | İfade eşlemeyi kullan: `IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | İfade eşlemeyi kullan: `IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber 'dır | mobil | 
 | 5 | * Başarılı bir şekilde iş e-postası ve iş telefonu, birincil. <br> * Azure AD 'de mobil kullanılabiliyorsa iş telefonu olarak ayarlayın, aksi takdirde telephoneNumber kullanın. | true | true | yanlış | `IIF(IsPresent([mobile]), [mobile], [telephoneNumber])` | \[Ayarlanmadı\] | 
 
 * Sonradan yazma özniteliği eşlemesinde telefon numarası için bir eşleme yoksa, yalnızca e-posta geri yazmaya dahil edilir.

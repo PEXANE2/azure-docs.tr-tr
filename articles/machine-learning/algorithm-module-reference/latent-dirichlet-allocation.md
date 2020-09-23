@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
-ms.openlocfilehash: 2fa969b6dd89000b4d669bc5d42aa09b3cf3a2b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751689"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907854"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Latent Dirichlet ayırma modülü
 
-Bu makalede, Azure Machine Learning Tasarımcısı 'nda (Önizleme), aksi takdirde sınıflandırılabilen metni kategorilere ayırmak için (Önizleme), denetimçi Dirichlet ayırma modülünün nasıl kullanılacağı açıklanır. 
+Bu makalede, Azure Machine Learning tasarımcısında denetimsiz Dirichlet ayırma modülünün, diğer bir şekilde kategorilere ayrılmamış metin gruplandırmak için nasıl kullanılacağı açıklanır. 
 
 Latent Dirichlet ayırması (LDA), benzer metinleri bulmak için genellikle doğal dil işlemede kullanılır. Diğer bir yaygın terim, *Konu modellemesi*.
 
@@ -75,7 +75,7 @@ Bu modül, ham veya önceden işlenmiş bir metin sütunu içeren bir veri küme
     + Özellik konu matrisi içindeki değerler bir olasılık olarak temsil edilir `P(word|topic)` .
 
     > [!NOTE] 
-    > Azure Machine Learning tasarımcı 'da (Önizleme), scikit-öğren kitaplığı artık 0,19 sürümünden normalleştirilmiş olmayan *doc_topic_distr* çıktıyı desteklememektedir. Bu modülde, **normalize** parametresi yalnızca *özellik konu matrisi* çıktısına uygulanabilir. *Dönüştürülmüş veri kümesi* çıkışı her zaman normalleştirilmelidir.
+    > Azure Machine Learning tasarımcısında, scikit-öğren kitaplığı artık 0,19 sürümünden normalleştirilmiş olmayan *doc_topic_distr* çıktıyı desteklememektedir. Bu modülde, **normalize** parametresi yalnızca *özellik konu matrisi* çıktısına uygulanabilir. *Dönüştürülmüş veri kümesi* çıkışı her zaman normalleştirilmelidir.
 
 7. **Tüm seçenekleri göster**seçeneğini belirleyin ve ardından aşağıdaki Gelişmiş parametreleri ayarlamak Istiyorsanız bunu **true** olarak ayarlayın.
 
@@ -148,7 +148,7 @@ Genellikle, metni temizlemek, özetlemek ve basitleştirmek ya da kategorilere a
 
 Daha fazla bilgi için bkz. [preprocess Text](preprocess-text.md).
 
-Tasarımcıda metin işleme için R veya Python kitaplıklarını da kullanabilirsiniz: [r betiği Yürüt](execute-r-script.md), [Python betiğini Yürüt](execute-python-script.md).
+Tasarımcıda metin işleme için R veya Python kitaplıklarını da kullanabilirsiniz: [r betiği Yürüt](execute-r-script.md),  [Python betiğini Yürüt](execute-python-script.md).
 
 
 
@@ -181,24 +181,24 @@ Dizin terimi hesaplandıktan sonra, uzaklık tabanlı bir benzerlik ölçüsü, 
 
 ###  <a name="module-parameters"></a>Modül parametreleri
 
-|Name|Tür|Aralık|İsteğe Bağlı|Varsayılan|Açıklama|  
+|Ad|Tür|Aralık|İsteğe Bağlı|Varsayılan|Açıklama|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Hedef sütun (ler)|Sütun seçimi||Gerekli|StringFeature|Hedef sütun adı veya dizini.|  
 |Modeledilecek Konu sayısı|Tamsayı|[1; 1000]|Gerekli|5|Belge dağıtımını N konu başlıklarına göre modelleyin.|  
 |N-gram|Tamsayı|[1; 10]|Gerekli|2|Karma oluşturma sırasında oluşturulan N-gram sırası.|  
 |Normalleştir|Boole|True veya false|Gerekli|true|Çıktıyı olasılıklara normalleştirin.  Dönüştürülmüş veri kümesi P (konu&#124;belge) olur ve özellik konu matrisi P (Word&#124;konu başlığı) olur.|  
-|Tüm seçenekleri göster|Boole|True veya false|Gerekli|False|, Scikit 'e özgü ek parametreler sunar ve çevrimiçi LDA öğrenin.|  
-|Ro parametresi|Float|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,01|Önceki dağıtım konu başlığı.|  
-|Alpha parametresi|Float|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,01|Dağıtım öncesi belge konusu.|  
+|Tüm seçenekleri göster|Boole|True veya false|Gerekli|Yanlış|, Scikit 'e özgü ek parametreler sunar ve çevrimiçi LDA öğrenin.|  
+|Ro parametresi|Float|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0.01|Önceki dağıtım konu başlığı.|  
+|Alpha parametresi|Float|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0.01|Dağıtım öncesi belge konusu.|  
 |Tahmini belge sayısı|Tamsayı|[1; int. Değerini|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|1000|Tahmini belge sayısı. Parametresine karşılık gelir `total_samples` .|  
 |Toplu işin boyutu|Tamsayı|[1; 1024]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|32|Toplu işin boyutu.|  
 |Öğrenme oranı güncelleştirme zamanlaması 'nda kullanılan yinelemenin başlangıç değeri|Tamsayı|[0; int. Değerini|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0|Erken yinelemeler için öğrenme oranını aşağı doğru örneklerdeki ilk değer. Parametresine karşılık gelir `learning_offset` .|  
 |Güncelleştirmeler sırasında yinelemeye uygulanan güç|Float|[0.0; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,5|Öğrenme oranını denetlemek için yineleme sayısına güç uygulandı. Parametresine karşılık gelir `learning_decay` . |  
 |Eğitim yinelemesi sayısı|Tamsayı|[1; 1024]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|25|Eğitim yinelemesi sayısı.|  
-|Ngram sözlüğü oluşturma|Boole|True veya false|**Tüm seçenekleri göster** onay *kutusu seçili olmadığında* geçerlidir|True|Bilgi işlem bilmesinden önce Ngram sözlüğü oluşturur. Model İnceleme ve yorumu için faydalıdır.|  
+|Ngram sözlüğü oluşturma|Boole|True veya false|**Tüm seçenekleri göster** onay *kutusu seçili olmadığında* geçerlidir|Doğru|Bilgi işlem bilmesinden önce Ngram sözlüğü oluşturur. Model İnceleme ve yorumu için faydalıdır.|  
 |Ngram sözlüğünün en büyük boyutu|Tamsayı|[1; int. Değerini|**Ngram 'ın derleme sözlüğü** seçeneği **doğru** olduğunda geçerlidir|20000|Ngram sözlüğünün en büyük boyutu. Giriş içindeki belirteçlerin sayısı bu boyutu aşarsa, çakışmalar meydana gelebilir.|  
 |Özellik karma için kullanılacak bit sayısı.|Tamsayı|[1; 31]|**Tüm seçenekleri göster** onay *kutusu seçili olmadığında* ve **Ngram derleme sözlüğü** **false** olduğunda geçerlidir|12|Özellik karma için kullanılacak bit sayısı.| 
-|LDA öncesinde Ngram sözlüğü oluştur|Boole|True veya false|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|True|LDA ' dan önce Ngram sözlüğü oluşturur. Model İnceleme ve yorumu için faydalıdır.|  
+|LDA öncesinde Ngram sözlüğü oluştur|Boole|True veya false|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|Doğru|LDA ' dan önce Ngram sözlüğü oluşturur. Model İnceleme ve yorumu için faydalıdır.|  
 |Sözlükte en fazla Ngram sayısı|Tamsayı|[1; int. Değerini|**Tüm seçenekleri göster** onay kutusu seçildiğinde ve **Ngram oluşturma sözlüğü** seçeneği **doğru** olduğunda geçerlidir|20000|Sözlüğün en büyük boyutu. Giriş içindeki belirteçlerin sayısı bu boyutu aşarsa, çakışmalar meydana gelebilir.|  
 |Karma bitlerin sayısı|Tamsayı|[1; 31]|**Tüm seçenekleri göster** onay kutusu seçildiğinde ve **Ngram derleme sözlüğü** seçeneği **false** olduğunda geçerlidir|12|Özellik karması sırasında kullanılacak bit sayısı.|   
 

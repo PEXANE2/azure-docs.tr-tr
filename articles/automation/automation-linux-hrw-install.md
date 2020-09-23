@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda Linux karma runbook çalışanı dağıtma
 description: Bu makalede, yerel veri merkezinizdeki veya bulut ortamınızdaki Linux tabanlı makinelerde runbook 'ları çalıştırmak için bir Azure Otomasyonu karma Runbook Worker nasıl yükleneceği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f19aec65ed2616d757718116ac948473dd4b0ed
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448012"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987223"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -18,7 +18,7 @@ Runbook 'u doğrudan rolü barındıran makinede ve bu yerel kaynakları yönetm
 
 Runbook Worker 'ı başarıyla dağıttıktan sonra, runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatikleştirmek üzere nasıl yapılandıracağınızı öğrenmek için [karma Runbook Worker 'daki runbook 'Ları Çalıştır](automation-hrw-run-runbooks.md) ' ı inceleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -56,7 +56,7 @@ Karma Runbook Worker özelliği aşağıdaki dağıtımları destekler:
 * Red Hat Enterprise Linux Server 5, 6 ve 7 (x86/x64)
 * De, GNU/Linux 6, 7 ve 8 (x86/x64)
 * Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS ve 18,04 (x86/x64)
-* SUSE Linux Enterprise Server 11 ve 12 (x86/x64)
+* SUSE Linux Enterprise Server 12 (x86/x64)
 
 ### <a name="minimum-requirements"></a>Minimum gereksinimler
 
@@ -75,6 +75,12 @@ Linux karma Runbook Worker için en düşük gereksinimler şunlardır:
 |PAM | Eklenebilir Kimlik Doğrulaması Modülleri|
 | **İsteğe bağlı paket** | **Açıklama** | **En düşük sürüm**|
 | PowerShell Core | PowerShell runbook 'larını çalıştırmak için PowerShell Core 'un yüklenmesi gerekir. Yükleme hakkında bilgi edinmek için bkz. [Linux üzerinde PowerShell Core yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) . | 6.0.0 |
+
+## <a name="supported-linux-hardening"></a>Desteklenen Linux sağlamlaştırma
+
+Aşağıdakiler henüz desteklenmemektedir:
+
+* CI
 
 ## <a name="supported-runbook-types"></a>Desteklenen runbook türleri
 

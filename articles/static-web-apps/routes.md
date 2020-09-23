@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6653f8f26f90b6ea7f911efab40ec7a3e0c2a60
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518784"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906786"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede rotalar
 
@@ -32,7 +32,7 @@ Ayrıntılar için [örnek yol dosyasına](#example-route-file) bakın.
 
 Dosyadaki _routes.js_ , uygulamanın derleme yapıtı klasörünün kökünde bulunmalıdır. Web uygulamanız belirli bir klasörden yapı yapıtı klasörünüze oluşturulan dosyaları kopyalayan bir yapı adımı içeriyorsa, dosyadaki _routes.js_ söz konusu klasörde bulunması gerekir.
 
-Aşağıdaki tabloda, bir dizi ön uç JavaScript çerçevesi ve kitaplığı için _routes.js_ dosyaya yerleştirmek üzere uygun konum listelenmektedir.
+Aşağıdaki tabloda, bir dizi ön uç çerçeve ve kitaplığı için _routes.js_ dosyaya yerleştirmek üzere uygun konum listelenmektedir.
 
 |Çerçeve/kitaplık | Konum  |
 |---------|----------|
@@ -40,6 +40,9 @@ Aşağıdaki tabloda, bir dizi ön uç JavaScript çerçevesi ve kitaplığı i�
 | React   | _genel_  |
 | Svelte  | _genel_   |
 | Vue     | _genel_ |
+| Blazor  | _wwwroot_ |
+
+Yukarıdaki tabloda yalnızca Azure static Web Apps ile uyumlu birkaç çerçeve ve kitaplık temsilcisidir. Daha fazla bilgi için [ön uç çerçeveleri ve kitaplıkları yapılandırma](./front-end-frameworks.md) bölümüne bakın.
 
 ## <a name="defining-routes"></a>Rotaları tanımlama
 
@@ -48,9 +51,9 @@ Yollar dosyada _routes.js_ , özelliğindeki yol kuralları dizisi olarak tanım
 | Rule özelliği  | Gerekli | Varsayılan değer | Yorum                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
 | `route`        | Yes      | yok          | Çağıran tarafından istenen yol deseninin.<ul><li>[Joker karakterler](#wildcards) rota yollarının sonunda desteklenir. Örneğin, Route _admin/ \* _ , _yönetici_ yolu altındaki herhangi bir rota ile eşleşir.<li>Yolun varsayılan dosyası _index.html_'dir.</ul>|
-| `serve`        | No       | yok          | İstekten döndürülen dosyayı veya yolu tanımlar. Dosya yolu ve adı, istenen yoldan farklı olabilir. Bir `serve` değer tanımlanmamışsa, istenen yol kullanılır. QueryString parametreleri desteklenmiyor; `serve`değerler gerçek dosyalara işaret etmelidir.  |
-| `allowedRoles` | No       | deðeri     | Rol adları dizisi. <ul><li>Geçerli karakterler, `a-z` , `A-Z` `0-9` ve içerir `_` .<li>Yerleşik rol `anonymous` tüm kimliği doğrulanmamış kullanıcılar için geçerlidir.<li>Yerleşik rol, `authenticated` oturum açmış tüm kullanıcılar için geçerlidir.<li>Kullanıcılar en az bir role ait olmalıdır.<li>Roller bir _veya_ temelinde eşleştirilir. Bir Kullanıcı listelenen rollerden varsa erişim izni verilir.<li>Bireysel kullanıcılar, [davetlere](authentication-authorization.md)göre rollerle ilişkilendirilir.</ul> |
-| `statusCode`   | No       | 200           | İstek için [http durum kodu](https://wikipedia.org/wiki/List_of_HTTP_status_codes) yanıtı. |
+| `serve`        | Hayır       | yok          | İstekten döndürülen dosyayı veya yolu tanımlar. Dosya yolu ve adı, istenen yoldan farklı olabilir. Bir `serve` değer tanımlanmamışsa, istenen yol kullanılır. QueryString parametreleri desteklenmiyor; `serve` değerler gerçek dosyalara işaret etmelidir.  |
+| `allowedRoles` | Hayır       | deðeri     | Rol adları dizisi. <ul><li>Geçerli karakterler, `a-z` , `A-Z` `0-9` ve içerir `_` .<li>Yerleşik rol `anonymous` tüm kimliği doğrulanmamış kullanıcılar için geçerlidir.<li>Yerleşik rol, `authenticated` oturum açmış tüm kullanıcılar için geçerlidir.<li>Kullanıcılar en az bir role ait olmalıdır.<li>Roller bir _veya_ temelinde eşleştirilir. Bir Kullanıcı listelenen rollerden varsa erişim izni verilir.<li>Bireysel kullanıcılar, [davetlere](authentication-authorization.md)göre rollerle ilişkilendirilir.</ul> |
+| `statusCode`   | Hayır       | 200           | İstek için [http durum kodu](https://wikipedia.org/wiki/List_of_HTTP_status_codes) yanıtı. |
 
 ## <a name="securing-routes-with-roles"></a>Rollerle olan yolların güvenliğini sağlama
 
@@ -106,7 +109,7 @@ Yolları joker karakterlerle da güvenli hale getirebilirsiniz. Aşağıdaki _ö
 
 ## <a name="fallback-routes"></a>Geri dönüş yolları
 
-Ön uç JavaScript çerçeveleri veya kitaplıkları genellikle Web uygulaması gezintisi için istemci tarafı yönlendirmeye güvenir. Bu istemci tarafı yönlendirme kuralları, isteğin sunucuya geri dönmesi gerekmeden tarayıcının pencere konumunu güncelleştirir. Sayfayı yenilerseniz veya doğrudan istemci tarafı yönlendirme kuralları tarafından oluşturulan konumlara gittiğinizde, uygun HTML sayfasına ulaşmak için sunucu tarafı geri dönüş yolu gereklidir.
+Tek sayfalı uygulamalar, ön uç JavaScript çerçeveleri veya kitaplıklarını ya da Blazor gibi WebAssembly platformlarını kullanıp kullanmadığını, genellikle Web uygulaması gezintisi için istemci tarafı yönlendirmeye güvenir. Bu istemci tarafı yönlendirme kuralları, isteğin sunucuya geri dönmesi gerekmeden tarayıcının pencere konumunu güncelleştirir. Sayfayı yenilerseniz veya doğrudan istemci tarafı yönlendirme kuralları tarafından oluşturulan konumlara gittiğinizde, uygun HTML sayfasına ulaşmak için sunucu tarafı geri dönüş yolu gereklidir.
 
 Aşağıdaki örnekte ortak bir geri dönüş yolu gösterilmektedir:
 
@@ -186,6 +189,9 @@ Aşağıdaki önemli noktalar, MIME türleriyle çalışırken önemlidir:
 
 - Anahtarlar null veya boş olamaz ya da 50 karakterden uzun olamaz
 - Değerler null veya boş olamaz ya da 1000 karakterden uzun olamaz
+
+> [!NOTE]
+> Statik Web Apps, Blazor uygulamalarını ve ıSTREAM ve DLL dosyaları için beklenen MIME türlerini anladığından, bunlar için eşlemeler eklemeniz gerekmez.
 
 ## <a name="default-headers"></a>Varsayılan üstbilgiler
 

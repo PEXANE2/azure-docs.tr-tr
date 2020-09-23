@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell aracılığıyla Azure Stack Edge GPU cihazınızda VM 'Leri dağıtma
-description: Azure PowerShell kullanarak bir Azure Stack Edge cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
+title: Azure PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
+description: Azure PowerShell kullanarak bir Azure Stack Edge Pro cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,26 +8,26 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: ab303dd42d9064a9fa1392e27adc361d5b761cf0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256132"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890647"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell-script"></a>Azure PowerShell betiği aracılığıyla Azure Stack Edge GPU cihazınızda VM 'Leri dağıtma
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Azure PowerShell betiği aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu öğretici, bir Azure PowerShell betiği kullanarak Azure Stack Edge cihazınızda bir sanal makinenin nasıl oluşturulduğunu ve yönetileceğini açıklar.
+Bu öğretici, bir Azure PowerShell betiği kullanarak Azure Stack Edge Pro cihazınızda bir sanal makinenin nasıl oluşturulduğunu ve yönetileceğini açıklar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu betiği kullanarak Azure Stack Edge cihazınızda bir VM oluşturmaya ve yönetmeye başlamadan önce, aşağıdaki adımlarda listelenen önkoşulları tamamladığınızdan emin olmanız gerekir:
+Bu betiği kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşturmaya ve yönetmeye başlamadan önce, aşağıdaki adımlarda listelenen önkoşulları tamamladığınızdan emin olmanız gerekir:
 
-### <a name="for-azure-stack-edge-device-via-the-local-web-ui"></a>Yerel Web Kullanıcı arabirimi aracılığıyla Azure Stack Edge cihazı için
+### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>Yerel Web Kullanıcı arabirimi aracılığıyla Azure Stack Edge Pro cihazı için
 
-1. Azure Stack Edge cihazındaki ağ ayarlarını [Adım 1: yapılandırma Azure Stack Edge cihazını](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device)açıklandığı gibi tamamladınız.
+1. Azure Stack Edge Pro cihazınızdaki ağ ayarlarını [Adım 1: yapılandırma Azure Stack Edge Pro cihazı](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)bölümünde açıklandığı gibi tamamladınız.
 
 2. İşlem için bir ağ arabirimi etkinleştirildi. Bu ağ arabirimi IP 'si, VM dağıtımı için bir sanal anahtar oluşturmak üzere kullanılır. Aşağıdaki adımlar süreç boyunca size yol gösterir:
 
@@ -36,9 +36,9 @@ Bu betiği kullanarak Azure Stack Edge cihazınızda bir VM oluşturmaya ve yön
         > [!IMPORTANT] 
         > İşlem için yalnızca bir bağlantı noktası yapılandırabilirsiniz.
 
-    2. Ağ arabiriminde işlem etkinleştirin. Azure Stack Edge, bu ağ arabirimine karşılık gelen bir sanal anahtar oluşturur ve yönetir.
+    2. Ağ arabiriminde işlem etkinleştirin. Azure Stack Edge Pro, bu ağ arabirimine karşılık gelen bir sanal anahtar oluşturur ve yönetir.
 
-3. Azure Stack Edge cihazınızda ve istemcinizin güvenilen kök deposunda tüm sertifikaları oluşturdunuz ve yüklediniz. [2. Adım: sertifika oluşturma ve yüklemede](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)açıklanan yordamı izleyin.
+3. Azure Stack Edge Pro cihazınızda ve istemcinizin güvenilen kök deposunda tüm sertifikaları oluşturdunuz ve yüklediniz. [2. Adım: sertifika oluşturma ve yüklemede](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)açıklanan yordamı izleyin.
 
 ### <a name="for-your-windows-client"></a>Windows istemciniz için
 

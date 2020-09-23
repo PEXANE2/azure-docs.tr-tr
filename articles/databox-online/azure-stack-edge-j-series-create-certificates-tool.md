@@ -1,29 +1,29 @@
 ---
 title: Microsoft Azure Stack hub hazırlık Denetleyicisi aracını kullanarak sertifika oluşturma | Microsoft Docs
-description: Sertifika isteklerinin nasıl oluşturulacağını ve sonra Azure Stack hub hazırlık Denetleyicisi Aracı kullanılarak Azure Stack Edge GPU cihazınızdan sertifika alma ve yüklemeyi açıklar.
-services: Azure Stack Edge
+description: Sertifika isteklerinin nasıl oluşturulduğunu ve Azure Stack hub hazırlık Denetleyicisi Aracı kullanılarak Azure Stack Edge Pro GPU cihazınızdan sertifika alma ve yüklemeyi açıklar.
+services: Azure Stack Edge Pro
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7a6cf265f0be177aab436d544e694c5d59cfffd5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267386"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891088"
 ---
-# <a name="create-certificates-for-your-azure-stack-edge-using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack hub hazırlık Denetleyicisi aracını kullanarak Azure Stack Edge için sertifikalar oluşturma 
+# <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack hub hazırlık Denetleyicisi aracını kullanarak Azure Stack Edge Pro için sertifikalar oluşturma 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu makalede Azure Stack hub hazırlık Denetleyicisi Aracı kullanılarak Azure Stack Edge için nasıl sertifika oluşturacağınız açıklanır. 
+Bu makalede Azure Stack hub hazırlık Denetleyicisi Aracı kullanılarak Azure Stack Edge Pro için nasıl sertifika oluşturacağınız açıklanır. 
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack hub hazırlık Denetleyicisi aracını kullanma
 
-Bir Azure Stack Edge cihaz dağıtımı için sertifika Imzalama Istekleri (CSR) oluşturmak üzere Azure Stack hub hazırlık Denetleyicisi aracını kullanın. Bu istekleri, Azure Stack Edge cihazına sipariş ettikten sonra ve cihazın gelmesi için bekleyen bir şekilde oluşturabilirsiniz. 
+Bir Azure Stack Edge Pro cihaz dağıtımı için sertifika Imzalama Istekleri (CSR) oluşturmak üzere Azure Stack hub hazırlık Denetleyicisi aracını kullanın. Bu istekleri, Azure Stack Edge Pro cihazı için bir sipariş ettikten sonra ve cihazın gelmesini bekledikten sonra oluşturabilirsiniz. 
 
 > [!NOTE]
 > Bu aracı yalnızca, üretim cihazları için değil, test veya geliştirme amacıyla kullanın. 
@@ -37,12 +37,12 @@ Aşağıdaki sertifikaları istemek için Azure Stack hub hazırlık Denetleyici
 - VPN sertifikası
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure Stack Edge cihaz dağıtımı için CSR 'Ler oluşturmak için aşağıdakileri yaptığınızdan emin olun: 
+Azure Stack Edge Pro cihaz dağıtımı için CSR 'Ler oluşturmak üzere şunları yaptığınızdan emin olun: 
 
 - Windows 10 veya Windows Server 2016 veya sonraki bir sürümünü çalıştıran bir istemcdiniz. 
-- Microsoft Azure Stack hub hazırlık Denetleyicisi Aracı 1.2002.1133.85 Bu sistemdeki [PowerShell Galerisi](https://aka.ms/AzsReadinessChecker) indirdiniz. Bu paketi aramanız gerekebilir. Aracın yalnızca bu sürümü Azure Stack Edge cihazları için sertifika oluşturabilir.
+- Microsoft Azure Stack hub hazırlık Denetleyicisi Aracı 1.2002.1133.85 Bu sistemdeki [PowerShell Galerisi](https://aka.ms/AzsReadinessChecker) indirdiniz. Bu paketi aramanız gerekebilir. Aracın yalnızca bu sürümü Azure Stack Edge Pro cihazları için sertifika oluşturabilir.
 - Sertifikalar için aşağıdaki bilgilere sahipsiniz:
   - Cihaz adı
   - Düğüm seri numarası
@@ -50,7 +50,7 @@ Azure Stack Edge cihaz dağıtımı için CSR 'Ler oluşturmak için aşağıdak
 
 ## <a name="generate-certificate-signing-requests"></a>Sertifika imzalama istekleri oluşturma
 
-Azure Stack Edge cihaz sertifikalarını hazırlamak için aşağıdaki adımları kullanın:
+Azure Stack Edge Pro cihaz sertifikalarını hazırlamak için aşağıdaki adımları kullanın:
 
 1. PowerShell 'i yönetici olarak çalıştırın (5,1 veya üzeri).
 2. Azure Stack hub hazırlık Denetleyicisi aracını yükler. PowerShell isteminde şunu yazın: 
@@ -121,15 +121,15 @@ Azure Stack Edge cihaz sertifikalarını hazırlamak için aşağıdaki adımlar
     Ayrıca bir INF klasörü görürsünüz. Bu bir Management. <Edge-aygı> Information dosyası, sertifika ayrıntılarını açıklayan şifresiz metin olarak içerir.  
 
 
-6. Bu dosyaları sertifika yetkilinize (iç veya ortak) gönderebilirsiniz. Sertifika YETKILISININ, [düğüm sertifikaları](azure-stack-edge-j-series-manage-certificates.md#node-certificates), [uç nokta SERTIFIKALARı](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)ve [Yerel UI sertifikalarına](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)yönelik Azure Stack uç sertifika gereksinimlerini karşılayan üretilmiş isteğinizi kullanarak sertifika üretdiğinizden emin olun.
+6. Bu dosyaları sertifika yetkilinize (iç veya ortak) gönderebilirsiniz. Sertifika yetkilisinin, [düğüm sertifikaları](azure-stack-edge-j-series-manage-certificates.md#node-certificates), [uç nokta SERTIFIKALARı](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)ve [Yerel UI sertifikalarına](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)yönelik Azure Stack Edge Pro sertifikası gereksinimlerini karşılayan üretilmiş isteğinizi kullanarak sertifika üretdiğinizden emin olun.
 
 ## <a name="prepare-certificates-for-deployment"></a>Dağıtım için sertifikaları hazırlama
 
-Sertifika yetkilinizden (CA) aldığınız sertifika dosyaları içeri aktarılmalıdır ve Azure Stack Edge cihazının sertifika gereksinimleriyle eşleşen özelliklerle birlikte verilmelidir. Aşağıdaki adımları, sertifika imzalama isteklerini oluşturduğunuz sistemde doldurun.
+Sertifika yetkilinizden (CA) edindiğiniz sertifika dosyaları içeri aktarılmalıdır ve Azure Stack Edge Pro cihazının sertifika gereksinimleriyle eşleşen özelliklerle birlikte verilmelidir. Aşağıdaki adımları, sertifika imzalama isteklerini oluşturduğunuz sistemde doldurun.
 
-- Sertifikaları içeri aktarmak için [Azure Stack Edge cihazınıza erişen istemcilerde sertifikaları Içeri aktarma](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)' daki adımları izleyin.
+- Sertifikaları içeri aktarmak için [Azure Stack Edge Pro cihazınıza erişen istemcilerde sertifikaları Içeri aktarma](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)' daki adımları izleyin.
 
-- Sertifikaları dışarı aktarmak için [Azure Stack Edge cihazına erişen istemciden sertifikaları dışarı aktarma](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)' daki adımları izleyin.
+- Sertifikaları dışarı aktarmak için [Azure Stack Edge Pro cihazına erişen istemciden sertifikaları dışarı aktarma](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)' daki adımları izleyin.
 
 
 ## <a name="validate-certificates"></a>Sertifikaları doğrula
@@ -152,4 +152,4 @@ Sertifika yetkilinizden (CA) aldığınız sertifika dosyaları içeri aktarılm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack Edge cihazınızı dağıtma](azure-stack-edge-gpu-deploy-prep.md)
+[Azure Stack Edge Pro cihazınızı dağıtma](azure-stack-edge-gpu-deploy-prep.md)

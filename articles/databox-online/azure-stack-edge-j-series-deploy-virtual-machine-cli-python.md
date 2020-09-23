@@ -1,27 +1,27 @@
 ---
-title: Azure CLı ve Python aracılığıyla Azure Stack Edge cihaz GPU 'unuzda VM 'Leri dağıtma
-description: Azure CLı ve Python kullanarak bir Azure Stack Edge GPU cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
+title: Azure CLı ve Python aracılığıyla Azure Stack Edge Pro cihaz GPU 'unuzda sanal makineler dağıtma
+description: Azure CLı ve Python kullanarak bir Azure Stack Edge Pro GPU cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500241"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890718"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Azure CLı ve Python kullanarak Azure Stack Edge GPU cihazınızda sanal makineler dağıtma
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLı ve Python kullanarak Azure Stack Edge Pro GPU cihazınızda sanal makineler dağıtma
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]
 
-Bu öğretici, Azure komut satırı arabirimi (CLı) ve Python kullanarak Azure Stack Edge cihazınızda bir sanal makinenin nasıl oluşturulduğunu ve yönetileceğini açıklar.
+Bu öğreticide, Azure komut satırı arabirimi (CLı) ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşturma ve yönetme açıklanmaktadır.
 
 ## <a name="vm-deployment-workflow"></a>VM dağıtımı iş akışı
 
@@ -35,7 +35,7 @@ Dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 2. Kaynak grubu oluşturma
 3. Depolama hesabı oluşturma
 4. Ana bilgisayar dosyasına blob URI Ekle
-5. Sertifikaları yükler
+5. Sertifikaları yükleme
 6. VHD’yi karşıya yükleme
 7. VHD 'den yönetilen diskler oluşturma
 8. Görüntü yönetilen diskinden bir VM görüntüsü oluşturma
@@ -43,13 +43,13 @@ Dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 10. Sanal ağ oluşturma
 11. VNet alt ağ KIMLIĞINI kullanarak bir VNıC oluşturma
 
-İş akışı diyagramının ayrıntılı açıklaması için, bkz. [Azure PowerShell kullanarak Azure Stack Edge cihazınızda VM 'Leri dağıtma](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Azure Resource Manager bağlanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure Resource Manager bağlanma](azure-stack-edge-j-series-connect-resource-manager.md).
+İş akışı diyagramının ayrıntılı açıklaması için, bkz. [Azure PowerShell kullanarak Azure Stack Edge Pro cihazınızda VM dağıtma](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Azure Resource Manager bağlanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure Resource Manager bağlanma](azure-stack-edge-j-series-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturmaya ve yönetmeye başlamadan önce, aşağıdaki adımlarda listelenen önkoşulları tamamladığınızdan emin olmanız gerekir:
+Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşturmaya ve yönetmeye başlamadan önce, aşağıdaki adımlarda listelenen önkoşulları tamamladığınızdan emin olmanız gerekir:
 
-1. Azure Stack Edge cihazındaki ağ ayarlarını [Adım 1: yapılandırma Azure Stack Edge cihazını](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device)açıklandığı gibi tamamladınız.
+1. Azure Stack Edge Pro cihazınızdaki ağ ayarlarını [Adım 1: yapılandırma Azure Stack Edge Pro cihazı](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)bölümünde açıklandığı gibi tamamladınız.
 
 2. İşlem için bir ağ arabirimi etkinleştirildi. Bu ağ arabirimi IP 'si, VM dağıtımı için bir sanal anahtar oluşturmak üzere kullanılır. Aşağıdaki adımlar süreç boyunca size yol gösterir:
 
@@ -58,7 +58,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturma
         > [!IMPORTANT] 
         > İşlem için yalnızca bir bağlantı noktası yapılandırabilirsiniz.
 
-    2. Ağ arabiriminde işlem etkinleştirin. Azure Stack Edge, bu ağ arabirimine karşılık gelen bir sanal anahtar oluşturur ve yönetir.
+    2. Ağ arabiriminde işlem etkinleştirin. Azure Stack Edge Pro, bu ağ arabirimine karşılık gelen bir sanal anahtar oluşturur ve yönetir.
 
     <!--If you decide to use another network interface for compute, make sure that you:
 
@@ -68,9 +68,9 @@ Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturma
 
     - You can now enable another network interface for compute.-->
 
-3. Azure Stack Edge cihazınızda ve istemcinizin güvenilir deposunda tüm sertifikaları oluşturdunuz ve yüklediniz. [2. Adım: sertifika oluşturma ve yüklemede](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)açıklanan yordamı izleyin.
+3. Azure Stack Edge Pro cihazınızda ve istemcinizin güvenilir deposunda tüm sertifikaları oluşturdunuz ve yüklediniz. [2. Adım: sertifika oluşturma ve yüklemede](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)açıklanan yordamı izleyin.
 
-4. Azure Stack Edge cihazınız için Base-64 kodlamalı bir *. cer* sertifikası (pek biçimi) oluşturdunuz. Bu, cihazda imza zinciri olarak karşıya yüklenmiş ve istemcinizdeki güvenilir kök depoya yüklenmiş. Bu sertifika, Python 'un bu istemcide çalışması için *ped* biçiminde de gereklidir.
+4. Azure Stack Edge Pro cihazınız için Base-64 kodlamalı bir *. cer* sertifikası (pek biçimi) oluşturdunuz. Bu, cihazda imza zinciri olarak karşıya yüklenmiş ve istemcinizdeki güvenilir kök depoya yüklenmiş. Bu sertifika, Python 'un bu istemcide çalışması için *ped* biçiminde de gereklidir.
 
     Komutunu kullanarak bu sertifikayı ped biçimine dönüştürün `certutil` . Bu komutu, sertifikanızı içeren dizinde çalıştırmalısınız.
 
@@ -199,7 +199,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturma
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-### <a name="trust-the-azure-stack-edge-ca-root-certificate"></a>Azure Stack Edge CA kök sertifikasına güven
+### <a name="trust-the-azure-stack-edge-pro-ca-root-certificate"></a>Azure Stack Edge Pro CA kök sertifikasına güvenin
 
 1. Makinenizde sertifika konumunu bulun. Konum, yüklediğiniz yere bağlı olarak farklılık gösterebilir `az cli` . Windows PowerShell 'i yönetici olarak çalıştırın. `az cli`Yüklü Python: yoluna geçiş yapın `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe` .
 
@@ -219,7 +219,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturma
       
     Bu konumu daha sonra kullanacağınız gibi bir yere unutmayın. `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`
 
-2. Azure Stack Edge CA kök sertifikasına, var olan Python sertifikasına ekleyerek güvenin. PEK sertifikasını daha önce kaydettiğiniz yerin yolunu sağlarsınız.
+2. Azure Stack Edge Pro CA kök sertifikasına, var olan Python sertifikasına ekleyerek güvenin. PEK sertifikasını daha önce kaydettiğiniz yerin yolunu sağlarsınız.
 
     ```powershell
     $pemFile = "<Path to the pem format certificate>"
@@ -252,12 +252,12 @@ Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturma
     Write-Host "Adding the certificate content to Python Cert store"
     Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
     
-    Write-Host "Python Cert store was updated to allow the Azure Stack Edge CA root certificate"
+    Write-Host "Python Cert store was updated to allow the Azure Stack Edge Pro CA root certificate"
     ```
     
-### <a name="connect-to-azure-stack-edge"></a>Azure Stack Edge 'e bağlanma
+### <a name="connect-to-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'ya bağlanma
 
-1. Komutu çalıştırarak Azure Stack Edge ortamınızı kaydettirin `az cloud register` .
+1. Komutu çalıştırarak Azure Stack Edge Pro ortamınızı kaydettirin `az cloud register` .
 
     Bazı senaryolarda, doğrudan giden internet bağlantısı, SSL yakalaşmayı zorlayan bir ara sunucu veya güvenlik duvarı aracılığıyla yönlendirilir. Bu durumlarda, az Cloud Register komutu \" buluttan uç noktalar alınamıyor gibi bir hata vererek başarısız olabilir. \" Bu hatayı geçici olarak çözmek için, Windows PowerShell 'de aşağıdaki ortam değişkenlerini ayarlayın:
 
@@ -266,7 +266,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturma
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. Azure Resource Manager uç noktası için ortam değişkenlerini, kaynakların oluşturulduğu konumu ve kaynak VHD 'nin bulunduğu yolu ayarlayın. Kaynakların konumu tüm Azure Stack uç cihazlarda düzeltilir ve olarak ayarlanır `dbelocal` . Ayrıca adres öneklerini ve özel IP adresini belirtmeniz gerekir. Aşağıdaki ortam değişkenlerinin tümü, özel durumu olan değerleriniz temel alınarak değerlerdir `AZURE_RESOURCE_LOCATION` `"dbelocal"` .
+2. Azure Resource Manager uç noktası için ortam değişkenlerini, kaynakların oluşturulduğu konumu ve kaynak VHD 'nin bulunduğu yolu ayarlayın. Kaynakların konumu tüm Azure Stack Edge Pro cihazlarında düzeltilir ve olarak ayarlanır `dbelocal` . Ayrıca adres öneklerini ve özel IP adresini belirtmeniz gerekir. Aşağıdaki ortam değişkenlerinin tümü, özel durumu olan değerleriniz temel alınarak değerlerdir `AZURE_RESOURCE_LOCATION` `"dbelocal"` .
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -308,7 +308,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturma
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. Komutunu kullanarak Azure Stack Edge ortamınızda oturum açın `az login` . Azure Stack Edge ortamında Kullanıcı ya da [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)olarak oturum açabilirsiniz.
+4. Komutunu kullanarak Azure Stack Edge Pro ortamınızda oturum açın `az login` . Azure Stack Edge Pro ortamında Kullanıcı ya da [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)olarak oturum açabilirsiniz.
 
    *Kullanıcı*olarak oturum açmak için şu adımları izleyin:
 

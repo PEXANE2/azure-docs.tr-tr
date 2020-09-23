@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 9d83a9ffb9dc334ef959b7a8039b9a9c4a1fced7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a9b0ec0fc19b6b6efa0453d698a5a978dacabc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137472"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907834"
 ---
 # <a name="linear-regression-module"></a>Doğrusal regresyon modülü
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 İşlem hattında kullanılmak üzere doğrusal regresyon modeli oluşturmak için bu modülü kullanın.  Doğrusal regresyon bir veya daha fazla bağımsız değişken ile sayısal bir sonuç veya bağımlı değişken arasında doğrusal bir ilişki kurmaya çalışır. 
 
@@ -25,7 +25,7 @@ Bu modülü, doğrusal bir regresyon yöntemi tanımlamak ve sonra etiketli bir 
 
 ## <a name="about-linear-regression"></a>Doğrusal regresyon hakkında
 
-Doğrusal regresyon, Machine Learning 'de benimsenen yaygın istatistiksel bir yöntemdir ve satır ve ölçü hatasına yönelik birçok yeni yöntemle geliştirilmiştir. En basit anlamda, regresyon bir sayısal hedefin tahminini ifade eder. Temel bir tahmine dayalı görev için basit bir model istediğinizde doğrusal regresyon hala iyi bir seçimdir. Doğrusal regresyon, yüksek boyutlu, karmaşıklık olmayan seyrek veri kümeleri üzerinde iyi çalışma eğilimi gösterir.
+Doğrusal regresyon, Machine Learning 'de benimsenen yaygın istatistiksel bir yöntemdir ve satır ve ölçü hatasına yönelik birçok yeni yöntemle geliştirilmiştir. Yalnızca put, regresyon bir sayısal hedefin tahminini ifade eder. Temel bir tahmine dayalı görev için basit bir model istediğinizde doğrusal regresyon hala iyi bir seçimdir. Doğrusal regresyon, yüksek boyutlu, karmaşıklık olmayan seyrek veri kümeleri üzerinde iyi çalışma eğilimi gösterir.
 
 Azure Machine Learning, doğrusal gerileme ek olarak çeşitli gerileme modellerini destekler. Ancak, "gerileme" terimi gevşek olarak yorumlanamaz ve diğer araçlarda sunulan bazı gerileme türleri desteklenmez.
 

@@ -7,14 +7,18 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8cc8f347330904bfab980b79cf5c5f351ce16629
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa66f17c6f96ac7f70188c5a28c0b180ed2f03e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089490"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906892"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Azure Spring Cloud ile devre kesici panosunu kullanma
+
+**Bu makale şu şekilde geçerlidir:** ✔️ Java
+
+::: zone pivot="programming-language-java"
 Yay [bulutu Netflix Turbin](https://github.com/Netflix/Turbine) , birden çok [hyte x](https://github.com/Netflix/Hystrix) ölçüm akışını toplamak için yaygın olarak kullanılır. böylece, akışlar hyçabax Panosu kullanılarak tek bir görünümde izlenebilir. Bu öğreticide, Azure Spring Cloud 'da nasıl kullanılacağı gösterilmektedir.
 > [!NOTE]
 > Netflix Hyçabax birçok mevcut yay bulutu uygulamasında yaygın olarak kullanılır, ancak artık etkin bir geliştirme aşamasındadır. Yeni proje geliştiriyorsanız, bunun yerine [resilience4j](https://github.com/resilience4j/resilience4j)gibi Spring Cloud devre kesici uygulamalarını kullanın. Bu öğreticide gösterilen türbin 'ten farklı olarak, yeni yay bulutu devre kesici çerçevesi, ölçüm verileri işlem hattının tüm uygulamalarını mikro ölçüm olarak birleştirir. Azure Spring Cloud 'da mikro ölçüm 'i desteklemeye devam ediyoruz, bu nedenle bu öğretici bu öğreticide ele alınmayacak.
@@ -71,7 +75,7 @@ Turbin akış URL 'sini `https://<SERVICE-NAME>-hystrix-turbine.azuremicroservic
 > Üretimde, Hyçabax panosu ve ölçüm akışı Internet 'e sunulmamalıdır.
 
 ### <a name="using-private-test-endpoints"></a>Özel test uç noktalarını kullanma
-Hyçabax ölçüm akışlarına Ayrıca adresinden de erişilebilir `test-endpoint` . Bir arka uç hizmeti olarak, için genel bir uç noktası atamadık `recommendation-service` , ancak ölçümleri şurada test uç noktası ile gösterebiliriz:`https://primary:<KEY>@<SERVICE-NAME>.test.azuremicroservices.io/recommendation-service/default/actuator/hystrix.stream`
+Hyçabax ölçüm akışlarına Ayrıca adresinden de erişilebilir `test-endpoint` . Bir arka uç hizmeti olarak, için genel bir uç noktası atamadık `recommendation-service` , ancak ölçümleri şurada test uç noktası ile gösterebiliriz: `https://primary:<KEY>@<SERVICE-NAME>.test.azuremicroservices.io/recommendation-service/default/actuator/hystrix.stream`
 
 ![Hyçabax test-Endpoint Stream](media/spring-cloud-circuit-breaker/hystrix-test-endpoint-stream.png)
 
@@ -80,3 +84,4 @@ Bir Web uygulaması olarak Hyçabax panosu üzerinde çalışıyor olmalıdır `
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure CLı üzerinde bir hizmet örneği sağlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)
 * [Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+::: zone-end

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea0970a672ac8fb15c2e7c6bbb65edf33bd25f04
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186597"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987276"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tek başına Azure Otomasyonu hesabı oluşturma
 
@@ -33,7 +33,7 @@ Bir Otomasyon hesabı oluşturmak veya güncelleştirmek ve bu makalede açıkla
 * Bir Otomasyon hesabı oluşturmak için, Azure AD Kullanıcı hesabınızın, kaynaklar için sahip rolüne eşdeğer izinlere sahip bir role eklenmesi gerekir `Microsoft.Automation` . Daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda rol tabanlı Access Control](automation-role-based-access-control.md).
 * Azure Portal **Azure Active Directory**  >  **MANAGE**  >  **Kullanıcı ayarlarını**Yönet altında **uygulama kayıtları** **Evet**olarak ayarlanırsa, Azure AD kiracınızdaki yönetici olmayan kullanıcılar [Active Directory uygulamalarını kaydedebilir](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). **Uygulama kayıtları** **Hayır**olarak ayarlanırsa, bu EYLEMI gerçekleştiren kullanıcının Azure AD 'de en az bir uygulama geliştirici rolüne sahip olması gerekir.
 
-Aboneliğin genel yönetici/ortak yönetici rolüne eklenmeden önce aboneliğin Active Directory örneğinin bir üyesi değilseniz, konuk olarak Active Directory olarak eklendiniz. Bu senaryoda, bu iletiyi Otomasyon hesabı Ekle bölmesinde görürsünüz:`You do not have permissions to create.`
+Aboneliğin genel yönetici/ortak yönetici rolüne eklenmeden önce aboneliğin Active Directory örneğinin bir üyesi değilseniz, konuk olarak Active Directory olarak eklendiniz. Bu senaryoda, bu iletiyi Otomasyon hesabı Ekle bölmesinde görürsünüz: `You do not have permissions to create.`
 
 Önce genel yönetici/ortak yönetici rolüne bir Kullanıcı eklendiyse, kullanıcıyı aboneliğin Active Directory örneğinden kaldırabilirsiniz. Kullanıcıyı Active Directory kullanıcı rolüne yeniden ekleyebilirsiniz. Kullanıcı rollerini doğrulamak için:
 
@@ -59,7 +59,7 @@ Azure portal bir Azure Otomasyonu hesabı oluşturmak için aşağıdaki adımla
    > [!NOTE]
    > Otomasyon hesabı Ekle bölmesinde aşağıdaki iletiyi görürseniz, hesabınız abonelik yöneticileri rolünün bir üyesi ve aboneliğin ortak Yöneticisi değildir.
    >
-   > ![Otomasyon hesabı ekleme uyarısı](media/automation-create-standalone-account/create-account-without-perms.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text=""Azure Active Directory 'de farklı çalıştır hesabı oluşturma izniniz yok" isteminin ekran görüntüsü.":::
 
 1. Otomasyon hesabı Ekle bölmesinde, **ad** alanına yeni otomasyon hesabınız için bir ad girin. Bu adı seçtikten sonra değiştiremezsiniz. 
 
@@ -74,7 +74,7 @@ Azure portal bir Azure Otomasyonu hesabı oluşturmak için aşağıdaki adımla
    > [!NOTE]
    > **Azure farklı çalıştır hesabı oluştur**' **u seçerek farklı** Çalıştır hesabı oluşturmayı seçerseniz, Otomasyon hesabı Ekle bölmesinde bir ileti görüntülenir. Hesap Azure portal oluşturulsa da hesabın klasik dağıtım modeli aboneliğinizde veya Azure Resource Manager abonelik dizin hizmetinde ilgili bir kimlik doğrulama kimliği yoktur. Bu nedenle, Otomasyon hesabının aboneliğinizdeki kaynaklara erişimi yoktur. Bu, bu hesaba başvuran runbook 'ların bu dağıtım modellerindeki kaynaklara göre kimlik doğrulaması yapmasını ve görevler gerçekleştirmesini engeller.
    >
-   > ![Otomasyon hesabı ekleme uyarısı](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="' Bir farklı çalıştır hesabı oluşturmak için seçmediniz ' iletisi ile istem ekran görüntüsü.":::
    >
    > Hizmet sorumlusu oluşturulmadığında katkıda bulunan rolü atanmaz.
    >
@@ -105,4 +105,4 @@ Klasik farklı çalıştır hesapları artık bir Azure Otomasyonu hesabı oluş
 * PowerShell runbook 'larını kullanmaya başlamak için bkz. [öğretici: PowerShell runbook 'U oluşturma](learn/automation-tutorial-runbook-textual-powershell.md).
 * PowerShell Iş akışı runbook 'larını kullanmaya başlamak için bkz. [öğretici: PowerShell iş akışı runbook 'U oluşturma](learn/automation-tutorial-runbook-textual.md).
 * Python 2 runbook 'ları kullanmaya başlamak için bkz. [öğretici: Python 2 runbook oluşturma](learn/automation-tutorial-runbook-textual-python2.md).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).

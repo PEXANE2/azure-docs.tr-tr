@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/20/2019
-ms.openlocfilehash: 908a61a00f0e33016074a6f985271ac94157fdf4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 02a50a94b0b07d1755abe78c567df7ff5c7eda92
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854992"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907442"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>Azure portal kullanarak PostgreSQL için Azure veritabanı sunucusunu yönetme
 
@@ -19,7 +19,7 @@ Bu makalede PostgreSQL sunucuları için Azure veritabanınızı nasıl yönetec
 
 ## <a name="sign-in"></a>Oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-server"></a>Sunucu oluşturma
 
@@ -37,7 +37,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 
 2. Ölçeklendirdiğinize göre **genel amaçlı** veya **bellek için iyileştirilmiş**' u seçin.
 
-   ![PostgreSQL için Azure veritabanı 'nda temel, Genel Amaçlı veya bellek için Iyileştirilmiş katmanı seçme Azure portal ekran görüntüsü](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="PostgreSQL için Azure veritabanı 'nda temel, Genel Amaçlı veya bellek için Iyileştirilmiş katmanı seçme Azure portal ekran görüntüsü":::
 
    > [!NOTE]
    > Katmanların değiştirilmesi, sunucunun yeniden başlatılmasına neden olur.
@@ -50,7 +50,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 
 2. Kaydırıcıyı istediğiniz değere taşıyarak **Vcore** ayarını değiştirin.
 
-   ![PostgreSQL için Azure veritabanı 'nda vCore seçeneği seçme Azure portal ekran görüntüsü](./media/howto-create-manage-server-portal/scaling-compute.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="PostgreSQL için Azure veritabanı 'nda vCore seçeneği seçme Azure portal ekran görüntüsü":::
 
    > [!NOTE]
    > Sanal çekirdekleri ölçeklendirmek, sunucunun yeniden başlatılmasına neden olur.
@@ -63,7 +63,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 
 2. Kaydırıcıyı istediğiniz değere taşıyarak **depolama** ayarını değiştirin.
 
-   ![PostgreSQL için Azure veritabanı 'nda depolama ölçeğini seçme Azure portal ekran görüntüsü](./media/howto-create-manage-server-portal/scaling-storage.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="PostgreSQL için Azure veritabanı 'nda depolama ölçeğini seçme Azure portal ekran görüntüsü":::
 
    > [!NOTE]
    > Depolama alanı aşağı ölçeklendirilmez.
@@ -76,11 +76,11 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 
 1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Parolayı Sıfırla**' yı seçin.
 
-   ![PostgreSQL için Azure veritabanı 'nda parolayı sıfırlamaya yönelik Azure portal ekran görüntüsü](./media/howto-create-manage-server-portal/overview-reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="PostgreSQL için Azure veritabanı 'nda parolayı sıfırlamaya yönelik Azure portal ekran görüntüsü":::
 
 2. Yeni bir parola girin ve parolayı onaylayın. Metin kutusu sizden parola karmaşıklığı gereksinimlerini ister.
 
-   ![Parolanızı sıfırlama ve PostgreSQL için Azure veritabanı 'na kaydetme Azure portal ekran görüntüsü](./media/howto-create-manage-server-portal/reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Parolanızı sıfırlama ve PostgreSQL için Azure veritabanı 'na kaydetme Azure portal ekran görüntüsü":::
 
 3. Yeni parolayı kaydetmek için **Tamam ' ı** seçin.
 
@@ -90,11 +90,11 @@ Artık gerekmiyorsa, sunucunuzu silebilirsiniz.
 
 1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil**' i seçin.
 
-   ![PostgreSQL için Azure veritabanı 'nda sunucuyu silmek için Azure portal ekran görüntüsü](./media/howto-create-manage-server-portal/overview-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="PostgreSQL için Azure veritabanı 'nda sunucuyu silmek için Azure portal ekran görüntüsü":::
 
 2. Bu sunucunun silmek istediğiniz sunucu olduğunu onaylamak için, giriş kutusuna sunucunun adını yazın.
 
-   ![PostgreSQL için Azure veritabanı 'nda sunucu silmeyi onaylamak için Azure portal ekran görüntüsü](./media/howto-create-manage-server-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="PostgreSQL için Azure veritabanı 'nda sunucu silmeyi onaylamak için Azure portal ekran görüntüsü":::
 
    > [!NOTE]
    > Sunucu silindiğinde geri alınamaz.
