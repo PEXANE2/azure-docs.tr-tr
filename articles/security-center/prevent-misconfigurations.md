@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: ceafbe1fd1682fc5e92ab3048ed09866fb9ebbdf
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89570495"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906394"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Zorla/reddetme önerilerini kullanarak yanlış yapılandırma önleme
 
@@ -24,10 +24,9 @@ Bu özellik, iş yüklerinizi güvende tutmaya ve güvenli puanınızı sabitetm
 Belirli bir öneriye göre güvenli bir yapılandırma uygulamak, iki modda sunulur:
 
 - Azure Ilkesinin **reddetme** efektini kullanarak, sağlıksız kaynakların oluşturulmasını durdurabilirsiniz
-
 - **Uygula** seçeneğini kullanarak Azure Ilkesinin **Deployifnotexist** efektinin avantajlarından yararlanabilir ve oluşturma sırasında uyumlu olmayan kaynakları otomatik olarak düzeltebilirsiniz
- 
-Bu, seçilen güvenlik önerileri için kullanılabilir ve kaynak Ayrıntıları sayfasının en üstünde bulunabilir.
+
+Bu, seçilen güvenlik önerileri için kaynak Ayrıntıları sayfasının en üstünde bulunabilir (bkz. [reddetme/zorlama seçenekleriyle öneriler](#recommendations-with-denyenforce-options)).
 
 ## <a name="prevent-resource-creation"></a>Kaynak oluşturmayı engelle
 
@@ -57,7 +56,7 @@ Bu, seçilen güvenlik önerileri için kullanılabilir ve kaynak Ayrıntıları
 
 1. Kapsam, atama adı ve diğer ilgili seçenekleri ayarlayın.
 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
 ## <a name="recommendations-with-denyenforce-options"></a>Reddetme/zorlama seçenekleriyle ilgili öneriler
 

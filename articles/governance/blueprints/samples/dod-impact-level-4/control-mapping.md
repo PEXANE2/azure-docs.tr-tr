@@ -1,14 +1,14 @@
 ---
 title: DoD etki düzeyi 4 şema örnek denetimlerini Yazdır
 description: DOD etkisi düzeyi 4 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a704731f4fe8e810235507fd84c90b17571a8442
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9ee3214f8cdacd1d70a59bc5a23e4638cadb579d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923297"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978394"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DOD etkisi düzeyi 4 şema örneğinin denetim eşlemesi
 
@@ -102,11 +102,11 @@ Bu şema, veri güvenliği bildirimlerinin düzgün şekilde etkinleştirildiği
 Azure Izleyici tarafından toplanan günlük verileri, merkezi yapılandırma ve yönetimi sağlayan bir Log Analytics çalışma alanında depolanır. Bu şema, Azure sanal makinelerinde Log Analytics aracısının dağıtımını denetleyen ve zorlayacağı [Azure ilke](../../../policy/overview.md) tanımları atayarak olayların günlüğe kaydedilmesini sağlamanıza yardımcı olur.
 
 - \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- Sanal makine ölçek kümelerinde denetim Log Analytics Aracısı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- Linux sanal makine ölçek kümeleri için Log Analytics aracısı dağıtma
 - \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
-- \[Önizleme \] : WINDOWS VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- Windows sanal makine ölçek kümeleri için Log Analytics aracısı dağıtma
 - \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-denetim Işleme hatalarının 5 yanıtı
@@ -123,11 +123,11 @@ Bu şema, denetim ve olay günlüğü yapılandırmasını izleyen [Azure ilke](
 Azure Izleyici tarafından toplanan günlük verileri, merkezi raporlama ve analizi sağlayan bir Log Analytics çalışma alanında depolanır. Bu şema, Azure sanal makinelerinde Log Analytics aracısının dağıtımını denetleyen ve zorlayacağı [Azure ilke](../../../policy/overview.md) tanımları atayarak olayların günlüğe kaydedilmesini sağlamanıza yardımcı olur.
 
 - \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- Sanal makine ölçek kümelerinde denetim Log Analytics Aracısı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- Linux sanal makine ölçek kümeleri için Log Analytics aracısı dağıtma
 - \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
-- \[Önizleme \] : WINDOWS VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- Windows sanal makine ölçek kümeleri için Log Analytics aracısı dağıtma
 - \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) denetim Incelemesi, analiz ve raporlama | Tümleştirme/tarama ve Izleme özellikleri
@@ -144,7 +144,7 @@ Bu şema, sanal makinelerde, sanal makine ölçek kümelerinde, SQL veritabanı 
 - Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- Sanal makine ölçek kümelerinde denetim Log Analytics Aracısı dağıtımı-VM görüntüsü (OS) listelenmemiş
 
 ## <a name="au-12-audit-generation"></a>AU-12 denetim oluşturma
 
@@ -152,11 +152,11 @@ Bu şema, Azure sanal makinelerinde Log Analytics aracısının dağıtımını 
 Bu ilke tanımları Ayrıca Azure kaynakları içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlamak için tanılama günlüklerinin yapılandırmasını denetler. Ayrıca, denetim ve gelişmiş veri güvenliği SQL Server 'lar üzerinde yapılandırılır.
 
 - \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- Sanal makine ölçek kümelerinde denetim Log Analytics Aracısı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- Linux sanal makine ölçek kümeleri için Log Analytics aracısı dağıtma
 - \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
-- \[Önizleme \] : WINDOWS VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- Windows sanal makine ölçek kümeleri için Log Analytics aracısı dağıtma
 - \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 - Tanılama ayarını denetle
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
@@ -336,11 +336,8 @@ Bu şema, Azure Güvenlik Merkezi 'nde eksik sistem güncelleştirmelerini, işl
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) hata düzeltme | Önceki yazılım/bellenim sürümlerini kaldırma
 
-Bu şema, uygulamaların .NET Framework, HTTP, Java, PHP, Python ve TLS 'nin en son sürümünü kullanmasını sağlamanıza yardımcı olan ilke tanımları atar. Bu şema Ayrıca, Kubernetes hizmetlerinin güvenlik açığı olmayan sürüme yükseltilmesini sağlayan bir ilke tanımı atar.
+Bu şema, uygulamaların HTTP, Java, PHP, Python ve TLS 'in en son sürümünü kullandığından emin olmanıza yardımcı olan ilke tanımları atar. Bu şema Ayrıca, Kubernetes hizmetlerinin güvenlik açığı olmayan sürüme yükseltilmesini sağlayan bir ilke tanımı atar.
 
-- API uygulamasının bir parçası olarak kullanılıyorsa, ' .NET Framework ' sürümünün en son sürümü olduğundan emin olun
-- İşlev Uygulaması bir parçası olarak kullanılıyorsa, ' .NET Framework ' sürümünün en son sürümü olduğundan emin olun
-- Web uygulamasının bir parçası olarak kullanılıyorsa, ' .NET Framework ' sürümünün en son sürümü olduğundan emin olun
 - API uygulamasını çalıştırmak için kullanılmışsa ' HTTP Version ' nin en son sürümü olduğundan emin olun
 - Işlev uygulamasını çalıştırmak için kullanılmışsa ' HTTP Version ' nin en son sürümü olduğundan emin olun
 - Web uygulamasını çalıştırmak için kullanılıyorsa, ' HTTP Version ' ' ın en son sürümü olduğundan emin olun
@@ -348,7 +345,6 @@ Bu şema, uygulamaların .NET Framework, HTTP, Java, PHP, Python ve TLS 'nin en 
 - Işlev uygulamasının bir parçası olarak kullanılıyorsa ' Java sürümü ' nin en son sürümü olduğundan emin olun
 - Web uygulamasının bir parçası olarak kullanılıyorsa ' Java sürümü 'nin en son sürümü olduğundan emin olun
 - API uygulamasının bir parçası olarak kullanılıyorsa ' PHP Version ' öğesinin en son sürümü olduğundan emin olun
-- Işlev uygulamasının bir parçası olarak kullanılıyorsa, ' PHP Version ' öğesinin en son sürümü olduğundan emin olun
 - WEB uygulamasının bir parçası olarak kullanılıyorsa, ' PHP Version ' öğesinin en son sürümü olduğundan emin olun
 - API uygulamasının bir parçası olarak kullanılıyorsa ' Python sürümü 'nin en son bir sürüm olduğundan emin olun
 - Işlev uygulamasının bir parçası olarak kullanılıyorsa ' Python sürümü 'nin en son bir sürüm olduğundan emin olun
@@ -356,7 +352,7 @@ Bu şema, uygulamaların .NET Framework, HTTP, Java, PHP, Python ve TLS 'nin en 
 - API uygulamanızda en son TLS sürümü kullanılmalıdır
 - İşlev Uygulaması en son TLS sürümü kullanılmalıdır
 - Web uygulamanızda en son TLS sürümü kullanılmalıdır
-- \[Önizleme \] : Kubernetes Hizmetleri, güvenlik açığı olmayan bir Kubernetes sürümüne yükseltilmelidir
+- Kubernetes Hizmetleri, güvenlik açığı olmayan bir Kubernetes sürümüne yükseltilmelidir
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 kötü amaçlı kod koruması
 
@@ -378,11 +374,11 @@ Bu şema, Azure Güvenlik Merkezi 'ndeki sanal makinelerde eksik uç nokta korum
 Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyerek ve zorunlu tutarak sisteminizi izlemenize yardımcı olur. Özellikle, Log Analytics aracısının dağıtımını denetleme ve uygulamaya zorlama ve SQL veritabanları, depolama hesapları ve ağ kaynakları için gelişmiş güvenlik ayarları atanmış ilkeleridir. Bu yetenekler, uygun işlemleri yapabilmeniz için anormal davranışları ve saldırı göstergelerini tespit etmenize yardımcı olabilir.
 
 - \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- Sanal makine ölçek kümelerinde denetim Log Analytics Aracısı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- Linux sanal makine ölçek kümeleri için Log Analytics aracısı dağıtma
 - \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
-- \[Önizleme \] : WINDOWS VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- Windows sanal makine ölçek kümeleri için Log Analytics aracısı dağıtma
 - \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir

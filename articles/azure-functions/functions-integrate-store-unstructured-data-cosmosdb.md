@@ -4,12 +4,12 @@ description: Azure İşlevleri ve Cosmos DB’yi kullanarak yapılandırılmamı
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: a242f1ffc0a7738ce7cdf33aeeef214fb4f63e61
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2828bf14b6965e87ef9547020e870333c4e839af
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210883"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987973"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure İşlevleri ve Azure Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
 
@@ -20,7 +20,7 @@ ms.locfileid: "88210883"
 
 Azure İşlevleri’nde giriş ve çıkış bağlamaları, işlevinizden dış hizmet verilerine bağlanmanın bildirim temelli bir yöntemini sağlar. Bu makalede, yapılandırılmamış verileri bir Azure Cosmos DB belgesinde depolayan bir çıktı bağlaması eklemek için var olan bir işlevi güncelleştirme hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -54,7 +54,7 @@ Bu öğreticiyi tamamlamak için:
     | **Belge parametre adı** | taskDocument | Kodda Cosmos DB nesnesine başvuran ad. |
     | **Veritabanı adı** | taskDatabase | Belgelerin kaydedileceği veritabanının adı. |
     | **Koleksiyon adı** | taskCollection | Veritabanı koleksiyonunun adı. |
-    | **True ise, Cosmos DB veritabanı ve koleksiyonunu oluşturur** | Evet | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
+    | **True ise, Cosmos DB veritabanı ve koleksiyonunu oluşturur** | Yes | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
     | **Cosmos DB hesabı bağlantısı** | Yeni ayar | **Yeni**' yi ve ardından daha önce oluşturduğunuz **Azure Cosmos DB hesabı** ve **veritabanı hesabı** ' nı seçin ve ardından **Tamam**' ı seçin. Hesap bağlantınız için bir uygulama ayarı oluşturulur. Bu ayar bağlama tarafından veritabanı bağlantısı için kullanılır. |
 
 1. Bağlamayı oluşturmak için **Tamam ' ı** seçin.
@@ -143,7 +143,7 @@ Bu kod örneği, HTTP İsteği sorgu dizelerini okur ve `taskDocument` nesnesind
 
 1. **Çalıştır** ' ı seçin ve 200 durumunun döndürüldüğünü doğrulayın.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="İşlevi test edin." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="Ekran görüntüsü, Çalıştır seçildikten sonra 200 durumunun vurgulandığı HTTP yanıt kodunu gösterir." border="true":::
 
 
 1. Azure portal, araması yapın ve **Azure Cosmos DB**seçin.

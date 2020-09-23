@@ -464,27 +464,31 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Cosmos DB için Azure Synapse Link’e bağlanma
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Azure Synapse Analytics için Apache Spark ile Azure Cosmos DB analizleri mağazasında sorgu yapma
+            - name: Apache Spark ile Azure Cosmos DB analiz deposunu sorgulama
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Apache Spark kullanarak Synapse Link’ten bir SQL havuzuna veri kopyalama
               href: ./synapse-link/how-to-copy-to-sql-pool.md
+            - name: İsteğe bağlı SQL ile Azure Cosmos DB analiz deposunu sorgulama
+              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: Depolama alanındaki verileri sorgulama
+            - name: Dış verileri sorgulama
               items:
                 - name: Genel Bakış
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: CSV dosyasını sorgulama
+                - name: CSV dosyalarını sorgulama
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Parquet dosyalarını sorgulama
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Parquet iç içe türlerini sorgulama
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: JSON dosyalarını sorgulama
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Azure Cosmos DB'yi sorgulama
+                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: İç içe geçmiş türleri sorgulama
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Klasörleri ve birden çok dosyayı sorgulama
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dosya meta verilerini kullanma
+                - name: Dosya meta verilerini kullanarak bölümlenmiş dosyaları sorgulama
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Görünümleri oluşturma ve kullanma
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

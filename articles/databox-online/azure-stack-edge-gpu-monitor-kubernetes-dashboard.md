@@ -1,6 +1,6 @@
 ---
-title: Kubernetes panosu aracılığıyla Azure Stack Edge cihazınızı izleme | Microsoft Docs
-description: Azure Stack Edge cihazınızı izlemek için Kubernetes panosunu nasıl erişebileceğiniz ve kullanabileceğinizi açıklar.
+title: Kubernetes panosu aracılığıyla Azure Stack Edge Pro cihazınızı izleme | Microsoft Docs
+description: Azure Stack Edge Pro cihazınızı izlemek için Kubernetes panosunu nasıl erişebileceğiniz ve kullanabileceğinizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297873"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899203"
 ---
-# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınızı izlemek için Kubernetes panosunu kullanma
+# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızı izlemek için Kubernetes panosunu kullanma
 
-Bu makalede, Azure Stack Edge GPU cihazınızı izlemek için Kubernetes panosuna nasıl erişebileceğiniz ve kullanılacağı açıklanır. Cihazınızı izlemek için Azure portal grafikleri kullanabilir, Kubernetes panosunu görüntüleyebilir veya `kubectl` komutları cihazın PowerShell arabirimi aracılığıyla çalıştırabilirsiniz. 
+Bu makalede, Azure Stack Edge Pro GPU cihazınızı izlemek için Kubernetes panosuna nasıl erişebileceğiniz ve kullanılacağı açıklanmaktadır. Cihazınızı izlemek için Azure portal grafikleri kullanabilir, Kubernetes panosunu görüntüleyebilir veya `kubectl` komutları cihazın PowerShell arabirimi aracılığıyla çalıştırabilirsiniz. 
 
 Bu makale yalnızca Kubernetes panosunda gerçekleştirilebilecek izleme görevlerine odaklanır.
 
@@ -35,7 +35,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Kubernetes panosu, Kapsayıcılı uygulamalarınızın sorunlarını gidermek için kullanabileceğiniz web tabanlı bir kullanıcı arabirimidir. Kubernetes panosu, Kubernetes komut satırı için Kullanıcı arabirimi tabanlı bir alternatiftir `kubectl` . Daha fazla bilgi için bkz. [Kubernetes panosu](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
-Azure Stack Edge cihazınızda, Kubernetes panosunu *salt okunurdur* modunda kullanarak Azure Stack Edge cihazınızda çalışan uygulamalara bir genel bakış alabilir, Kubernetes küme kaynaklarının durumunu görüntüleyebilir ve cihazda oluşan tüm hataları görebilirsiniz.
+Azure Stack Edge Pro cihazınızda, Kubernetes panosunu *salt okuma* modunda kullanarak Azure Stack Edge Pro cihazınızda çalışan uygulamalara bir genel bakış alabilir, Kubernetes küme kaynaklarının durumunu görüntüleyebilir ve cihazda oluşan tüm hataları görebilirsiniz.
 
 ## <a name="access-dashboard"></a>Panoya erişin
 
@@ -54,19 +54,19 @@ Kubernetes panosu *salt okunurdur* ve 31000 numaralı bağlantı noktasında Kub
     1. Üç noktayı seçin **...**. `kubeconfig` Daha önce yerel sisteminizde indirdiğiniz öğesine gidin ve üzerine gelin. **Oturum aç**'ı seçin.
         ![Kubeconfig dosyasına gidin](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
-6. Artık Azure Stack Edge cihazınız için Kubernetes panosunu salt okunurdur modunda görüntüleyebilirsiniz.
+6. Artık Azure Stack Edge Pro cihazınız için Kubernetes panosunu salt okunurdur modunda görüntüleyebilirsiniz.
 
     ![Kubernetes panosu ana sayfası](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-main-page-1.png)
 
 ## <a name="view-module-status"></a>Modül durumunu görüntüle
 
-İşlem modülleri, iş mantığı uygulanmış kapsayıcılardır. Azure Stack Edge cihazınızda bir işlem modülünün başarıyla dağıtılıp dağıtılmadığını doğrulamak için panoyu kullanabilirsiniz.
+İşlem modülleri, iş mantığı uygulanmış kapsayıcılardır. Azure Stack Edge Pro cihazınızda bir işlem modülünün başarıyla dağıtılıp dağıtılmadığını doğrulamak için panoyu kullanabilirsiniz.
 
 Modül durumunu görüntülemek IÇIN panoda bu adımları izleyin:
 
 1. Panonun sol bölmesinde **ad alanı**' na gidin. IoT Edge modüllerinin görüntülendiği ad alanına göre filtreleyin, bu durumda **ıotedge**.
 1. Sol bölmede **Iş yükleri > dağıtımlar**' a gidin.
-1. Sağ bölmede, cihazınızda dağıtılan tüm modülleri görürsünüz. Bu durumda, Azure Stack Edge üzerinde bir GettingStartedWithGPU modülü dağıtılır. Modülün dağıtıldığını görebilirsiniz.
+1. Sağ bölmede, cihazınızda dağıtılan tüm modülleri görürsünüz. Bu durumda, Azure Stack Edge Pro 'da bir GettingStartedWithGPU modülü dağıtılmıştı. Modülün dağıtıldığını görebilirsiniz.
 
     ![Modül dağıtımını görüntüle](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-module-deployment-1.png)
 
@@ -81,7 +81,7 @@ IP adresini almak için panoda bu adımları izleyin:
 
 1. Panonun sol bölmesinde **ad alanı**' na gidin. Bir dış Hizmetin dağıtıldığı ad alanına göre filtreleyin, bu durumda **ıotedge**.
 1. Sol bölmede **bulma ve yük dengeleme > Hizmetleri**' ne gidin.
-1. Sağ bölmede, `iotedge` Azure Stack Edge cihazındaki ad alanında çalışan tüm hizmetleri görürsünüz.
+1. Sağ bölmede, `iotedge` Azure Stack Edge Pro cihazınızda ad alanında çalışan tüm hizmetleri görürsünüz.
 
     ![Dış hizmetler için IP al](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-get-ip-external-service-1.png)
 
@@ -104,7 +104,7 @@ Kapsayıcı günlüklerini görüntülemek için panoda bu adımları izleyin:
 
 ## <a name="view-cpu-memory-usage"></a>CPU, bellek kullanımı görüntüleme
 
-Azure Stack Edge cihazının Kubernetes panosunda, Kubernetes kaynakları genelinde CPU ve bellek kullanımını toplayan bir [ölçüm sunucusu eklentisi](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) de vardır.
+Azure Stack Edge Pro cihazının Kubernetes panosu, Kubernetes kaynakları genelinde CPU ve bellek kullanımını toplayan bir [ölçüm sunucusu eklentisi](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) de içerir.
  
 Örneğin, tüm ad alanlarındaki dağıtımlar genelinde tüketilen CPU ve belleği görüntüleyebilirsiniz. 
 

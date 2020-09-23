@@ -7,24 +7,23 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f3d694a1e1eb368a97d994ebe9885c279ff44463
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: fc3d5237fc795a2a828e886172e5d15acd9a9fb7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505420"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978247"
 ---
-[Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
+[Modern okuyucu](https://www.onenote.com/learningtools) , yeni okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştirmek üzere kanıtlanmış teknikler uygulayan, benzer şekilde tasarlanmış bir araçtır. Uygulamalarınızı odaklamak üzere metin yalıtmak, yaygın olarak kullanılan sözcüklerin resimlerini göstermek, konuşma parçalarını vurgulamak, seçili metni sesli okumak, sözcükleri ve tümceleri gerçek zamanlı olarak çevirmek ve daha fazlasını yapmak için uygulamalarınızda modern okuyucu kullanabilirsiniz.
 
-Bu hızlı başlangıçta, sıfırdan bir Web uygulaması oluşturur ve tam ekran okuyucu istemci kitaplığını kullanarak modern okuyucuyu tümleştirin. Bu hızlı başlangıç için tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)ulaşabilirsiniz.
+Bu hızlı başlangıçta, sıfırdan bir Web uygulaması oluşturacaksınız ve tam ekran okuyucu istemci kitaplığını kullanarak modern okuyucuyu tümleştirmeniz gerekir. Bu hızlı başlangıçta tam çalışma örneği [GitHub ' da](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)kullanılabilir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
+## <a name="prerequisites"></a>Önkoşullar
 
-## <a name="prerequisites"></a>Ön koşullar
-
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads)
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](../../how-to-create-immersive-reader.md) izleyin. Örnek proje özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 
@@ -32,17 +31,17 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Visual Studio 'da, yerleşik Model-View-Controller ve ASP.NET Core 2,1 ASP.NET Core Web uygulaması şablonunu kullanarak yeni bir proje oluşturun. Projeyi "QuickstartSampleWebApp" olarak adlandırın.
 
-![Yeni Proje](../../media/quickstart-csharp/1-createproject.png)
+![Yeni proje-C #](../../media/quickstart-csharp/1-createproject.png)
 
-![Yeni proje yapılandırma](../../media/quickstart-csharp/2-configureproject.png)
+![Yeni proje yapılandırma-C #](../../media/quickstart-csharp/2-configureproject.png)
 
-![Yeni ASP.NET Core Web uygulaması](../../media/quickstart-csharp/3-createmvc.png)
+![Yeni ASP.NET Core Web uygulaması-C #](../../media/quickstart-csharp/3-createmvc.png)
 
 ## <a name="set-up-authentication"></a>Kimlik doğrulamasını ayarlama
 
 ### <a name="configure-authentication-values"></a>Kimlik doğrulama değerlerini yapılandırma
 
-_Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet**' i seçin. Bu, _ üzerindesecrets.js_adlı bir dosya açar. Bu dosya kaynak denetimine iade edilmedi. [Burada](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) daha fazla bilgi edinin. Derinlikli okuyucu kaynağınızı oluştururken verilen değerleri sağlayarak, _ üzerindekisecrets.js_ içeriğini aşağıdaki şekilde değiştirin.
+_Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet**' i seçin. Bu, _ üzerindesecrets.js_adlı bir dosya açar. Bu dosya kaynak denetimine iade edilmedi. [Burada](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true) daha fazla bilgi edinin. Derinlikli okuyucu kaynağınızı oluştururken verilen değerleri sağlayarak, _ üzerindekisecrets.js_ içeriğini aşağıdaki şekilde değiştirin.
 
 ```json
 {
@@ -53,7 +52,7 @@ _Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yö
 }
 ```
 
-### <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>Microsoft. IdentityModel. clients. ActiveDirectory NuGet paketini ekleyin
+### <a name="install-active-directory"></a>Active Directory yüklensin
 
 Aşağıdaki kod, **Microsoft. IdentityModel. clients. ActiveDirectory** NuGet paketindeki nesneleri kullanarak projenizdeki bu pakete bir başvuru eklemeniz gerekir.
 
@@ -216,7 +215,7 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 
 Metnin tümünde, metnin dillerini açıklayan bir **lang** özniteliği olduğuna dikkat edin. Bu öznitelik, modern okuyucunun ilgili dil ve dil bilgisi özelliklerini sağlamasına yardımcı olur.
 
-## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>Derinlikli okuyucu başlatma tanıtıcısına JavaScript ekleme
+## <a name="add-javascript-to-handle-launching-immersive-reader"></a>Derinlikli okuyucu başlatma tanıtıcısına JavaScript ekleme
 
 Modern okuyucu kitaplığı, derinlikli okuyucu başlatma ve tam ekran okuyucu düğmelerini işleme gibi işlevler sağlar. [Burada](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference) daha fazla bilgi edinin.
 
@@ -296,18 +295,14 @@ Menü çubuğundan **hata ayıkla > hata ayıklamayı Başlat**' ı seçin veya 
 
 Tarayıcınızda şunları görmeniz gerekir:
 
-![Örnek uygulama](../../media/quickstart-csharp/4-buildapp.png)
+![Örnek uygulama-C #](../../media/quickstart-csharp/4-buildapp.png)
 
 ## <a name="launch-the-immersive-reader"></a>Tam ekran okuyucuyu başlatın
 
 "Modern okuyucu" düğmesine tıkladığınızda, sayfadaki içerikle birlikte modern okuyucu başlatılır.
 
-![Tam Ekran Okuyucu](../../media/quickstart-csharp/5-viewimmersivereader.png)
+![Modern okuyucu-C #](../../media/quickstart-csharp/5-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Node.js kullanarak tam ekran okuyucusu istemci kitaplığıyla neler yapabileceğinizi görmek için [Node.js hızlı](../../tutorial-nodejs.md) başlangıcı 'nı görüntüleyin.
-* Java ya da Android için Kotlin kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Android öğreticisini](../../tutorial-android.md) görüntüleyin
-* İOS için Swift kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [iOS öğreticisini](../../tutorial-ios.md) görüntüleyin
-* Python kullanarak tam ekran okuyucusu istemci kitaplığı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](../../tutorial-python.md) görüntüleyin
 * [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](../../reference.md) keşfet

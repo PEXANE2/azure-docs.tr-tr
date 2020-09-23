@@ -10,16 +10,16 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 330c7e01b33cfdf48687c492d09fb7aab8a5e779
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3a39b12afb715cf091ff1af1dcc7cc702769bed3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648750"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908024"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
-Bu makalede, Azure Machine Learning tasarımcısında Python betik modülünü yürütme (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında Python betiği yürütme modülü açıklanmaktadır.
 
 Python kodunu çalıştırmak için bu modülü kullanın. Python 'un mimari ve tasarım ilkeleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning tasarımcısında Python kodunu çalıştırma](../how-to-designer-python.md).
 

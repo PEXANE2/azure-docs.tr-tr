@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: da48b593b8f645566b2f9775fabc5d8e62e625b6
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 8b07d19ca88a2d680a4f9efbb85fcf60b895a2b3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661574"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907606"
 ---
 # <a name="submit-a-training-run-to-a-compute-target"></a>Bir işlem hedefine eğitim çalıştırması gönderme
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, makine öğrenimi modelinizi eğitebilmeniz için çeşitli eğitim ortamlarını ([işlem hedefleri](concept-compute-target.md)) nasıl kullanacağınızı öğreneceksiniz.
 
@@ -28,7 +26,7 @@ Eğitim sırasında yerel bilgisayarınızda başlamak yaygındır ve daha sonra
 
 Yapmanız gereken tek şey, bir **komut dosyası çalıştırma yapılandırması**içindeki her bir işlem hedefi için ortamı tanımlamaktır.  Daha sonra eğitim denemenizi farklı bir işlem hedefinde çalıştırmak istediğinizde, bu işlem için çalıştırma yapılandırmasını belirtin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 * [Python için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)

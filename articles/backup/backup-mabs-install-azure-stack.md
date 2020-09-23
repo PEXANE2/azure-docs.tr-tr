@@ -3,12 +3,12 @@ title: Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 description: Bu makalede, Azure Stack iş yüklerini korumak veya yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: a95ee42c3229e642bd48b812eb6bc01636af3ba2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018136"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970239"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 
@@ -107,7 +107,7 @@ Azure Backup Sunucusu her zaman bir etki alanına ekleyin. Azure Backup Sunucusu
 
 ### <a name="set-storage-replication"></a>Depolama Çoğaltmayı Ayarlama
 
-Kurtarma Hizmetleri Kasası depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama ve yerel olarak yedekli depolama arasında seçim yapmanıza olanak sağlar. Varsayılan olarak, kurtarma hizmetleri kasaları coğrafi olarak yedekli depolama kullanır. Bu kasa birincil kasanız, depolama seçeneğini coğrafi olarak yedekli depolama olarak ayarlayın. Daha az dayanıklı olan bir ucuz seçeneği istiyorsanız yerel olarak yedekli depolamayı seçin. [Azure Storage Çoğaltmaya genel bakış](../storage/common/storage-redundancy.md)bölümünde [coğrafi olarak yedekli](../storage/common/storage-redundancy.md) ve [yerel olarak yedekli](../storage/common/storage-redundancy.md) depolama seçenekleri hakkında daha fazla bilgi edinin.
+Kurtarma Hizmetleri Kasası depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama ve yerel olarak yedekli depolama arasında seçim yapmanıza olanak sağlar. Varsayılan olarak, kurtarma hizmetleri kasaları coğrafi olarak yedekli depolama kullanır. Bu kasa birincil kasanız, depolama seçeneğini coğrafi olarak yedekli depolama olarak ayarlayın. Daha az dayanıklı olan bir ucuz seçeneği istiyorsanız yerel olarak yedekli depolamayı seçin. [Azure Storage Çoğaltmaya genel bakış](../storage/common/storage-redundancy.md)bölümünde [coğrafi olarak yedekli](../storage/common/storage-redundancy.md#geo-redundant-storage), [yerel olarak yedekli](../storage/common/storage-redundancy.md#locally-redundant-storage)ve bölgesel olarak [yedekli depolama seçenekleri](../storage/common/storage-redundancy.md#zone-redundant-storage) hakkında daha fazla bilgi edinin.
 
 Depolama çoğaltma ayarını düzenlemek için:
 
@@ -129,7 +129,7 @@ Azure Backup Sunucusu yükleyicisini indirmenin iki yolu vardır. Azure Backup S
 
     ![Tüm Hizmetler iletişim kutusunda kurtarma hizmetleri yazın](./media/backup-mabs-install-azure-stack/all-services.png)
 
-    Abonelikteki kurtarma hizmetleri kasalarının listesi görüntülenir.
+    Abonelikteki Kurtarma Hizmetleri kasalarının listesi görünür.
 
 4. Kurtarma Hizmetleri kasaları listesinden, kendi panosunu açmak için kasanızı seçin.
 
@@ -243,7 +243,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
     ![Dosyaların yüklenmesi için konum belirtin](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Azure 'a yedeklemek için karalama konumu gereklidir. Karalama konumunun boyutunun Azure 'a yedeklenmek üzere planlandığı verilerin en az %5 ' ine eşit olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [veri depolamayı hazırlama](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
+    Azure 'a yedeklemek için karalama konumu gereklidir. Karalama konumunun boyutunun Azure 'a yedeklenmek üzere planlandığı verilerin en az %5 ' ine eşit olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [veri depolamayı hazırlama](/system-center/dpm/plan-long-and-short-term-data-storage).
 
 6. **Güvenlik ayarları** ekranında, kısıtlı yerel kullanıcı hesapları için güçlü bir parola girin ve **İleri ' yi**seçin.
 

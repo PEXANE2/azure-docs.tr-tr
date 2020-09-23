@@ -5,14 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 8c6ed19a585bc1ebae65045cd1cc4c442f113597
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.custom: references_regions
+ms.openlocfilehash: e3f9105037c049a53f1b7b99da96dd857070fcc7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651500"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987619"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach hakkında
 ExpressRoute, şirket içi ağlarınızı Microsoft Bulut bağlamak için özel ve dayanıklı bir yoldur. Azure ve Microsoft 365 gibi birçok Microsoft bulut hizmetine, özel veri merkezinizden veya şirket ağınızdan erişebilirsiniz. Örneğin, aynı şehirde bulunan bir ExpressRoute devresini içeren bir Expressvalley ve diğer şube ofisindeki bir ExpressRoute devresini içeren bir şube ofisiniz olabilir. Her iki şube ofisi ABD Batı ve UK Güney Azure kaynaklarıyla yüksek hızda bağlantı sağlar. Ancak, şube ofisleri birbirine bağlanamaz ve verileri birbiriyle doğrudan gönderemez. Diğer bir deyişle, 10.0.1.0/24, verileri 10.0.3.0/24 ve 10.0.4.0/24 ağına gönderebilir, ancak 10.0.2.0/24 ağ 'a vermez.
@@ -29,10 +30,27 @@ ExpressRoute Global Reach, hizmet sağlayıcınızın WAN uygulamasını tamamla
 ![Express Route Global Reach için kullanım durumunu gösteren diyagram.][3]
 
 ## <a name="availability"></a>Kullanılabilirlik 
-ExpressRoute Global Reach, ExpressRoute 'un şu anda desteklendiği birçok bölgede desteklenir. Desteklenen geçerli bölgeler için [ExpressRoute bağlantı sağlayıcılarına](expressroute-locations-providers.md#partners) başvurabilirsiniz. 
+ExpressRoute Global Reach aşağıdaki konumlarda desteklenir. 
 
 > [!NOTE] 
 > [Farklı geopolitik bölgeler](expressroute-locations-providers.md#locations)arasında expressroute Global Reach etkinleştirmek için, Devrelerinizin **Premium SKU 'su**olması gerekir.
+
+* Avustralya
+* Kanada
+* Fransa
+* Almanya
+* Hong Kong ÖİB
+* İrlanda
+* Japonya
+* Güney Kore
+* Hollanda
+* Yeni Zelanda
+* Norveç
+* Singapur
+* İsveç
+* İsviçre
+* Birleşik Krallık
+* Birleşik Devletler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Sss Global Reach](expressroute-faqs.md#globalreach)görüntüleyin.

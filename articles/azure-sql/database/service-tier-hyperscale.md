@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 655486d8273719e89187ebac0992cf83904d9b98
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3455503570d09daedc5e34cba0bf36d71ddcdcbc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120652"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988106"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -183,7 +183,7 @@ Etkin bölgeler:
 - Orta Avustralya
 - Brezilya Güney
 - Orta Kanada
-- Central US
+- Orta ABD
 - Çin Doğu 2
 - Çin Kuzey 2
 - Doğu Asya
@@ -228,7 +228,7 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 | Hyperscale 'e geçiş Şu anda tek yönlü bir işlemdir | Bir veritabanı hiper ölçeğe geçirildiğinde doğrudan Hyperscale olmayan bir hizmet katmanına geçirilemez. Mevcut olduğunda, bir veritabanını Hiperscale 'den hiper olmayan ölçeğe geçirmenin tek yolu bacpac dosyasını veya diğer veri taşıma teknolojilerini (toplu kopyalama, Azure Data Factory, Azure Databricks, SSIS, vb.) kullanarak dışarı ve içeri aktarmaya yönelik bir yoldur. [Yeni-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) veya [New-Azsqldatabaseımport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)kullanılarak PowerShell 'den, [az SQL DB Export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) ve [az SQL db import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import)kullanarak Azure CLI 'dan ve [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) desteklenmeyen bacpac dışarı aktarma/Azure Portal içeri aktarma. Daha küçük hiper ölçekli veritabanları için bacpac içeri/dışarı aktarma (200 GB 'a kadar) SSMS ve [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) sürüm 18,4 ve üzeri kullanılarak desteklenir. Daha büyük veritabanları için bacpac dışarı aktarma/içeri aktarma uzun sürebilir ve çeşitli nedenlerle başarısız olabilir.|
 | Bellek içi OLTP nesneleriyle veritabanlarının geçirilmesi | Hiper ölçek, bellek için iyileştirilmiş tablo türleri, tablo değişkenleri ve yerel koda derlenmiş modüller dahil olmak üzere bellek Içi OLTP nesnelerinin bir alt kümesini destekler. Ancak, geçirilmekte olan veritabanında herhangi bir tür bellek Içi OLTP nesnesi varsa, Premium ve İş Açısından Kritik hizmet katmanlarından hiper ölçeğe geçiş desteklenmez. Bu tür bir veritabanını hiper ölçeğe geçirmek için, tüm bellek Içi OLTP nesneleri ve bunların bağımlılıkları bırakılmalıdır. Veritabanı geçirildikten sonra, bu nesneler yeniden oluşturulabilir. Dayanıklı ve dayanıklı olmayan bellek için iyileştirilmiş tablolar, şu anda hiper ölçekte desteklenmez ve disk tabloları olarak yeniden oluşturulmalıdır.|
 | Coğrafi Çoğaltma  | Azure SQL veritabanı hiper ölçek için Coğrafi çoğaltmayı henüz yapılandıramazsınız. |
-| Veritabanı kopyalama | Azure SQL Hyperscale 'de yeni bir veritabanı oluşturmak için henüz veritabanı kopyasını kullanamazsınız. |
+| Veritabanı kopyalama | Hiperscale üzerinde veritabanı kopyalama işlemi artık genel önizlemeye sunuldu. |
 | TDE/AKV tümleştirmesi | Azure Key Vault kullanılarak Saydam veritabanı şifrelemesi (genellikle kendi anahtarını getir veya BYOK olarak adlandırılır) Şu anda önizleme aşamasındadır. |
 | Akıllı veritabanı özellikleri | "Plan zorla" seçeneğinin dışında, diğer tüm otomatik ayarlama seçenekleri henüz hiper ölçekte desteklenmez: seçenekler etkin gibi görünebilir, ancak hiçbir öneri veya eylem yapılmaz. |
 | Sorgu Performansı İçgörüleri | Sorgu performansı öngörüleri Şu anda hiper ölçekli veritabanları için desteklenmiyor. |

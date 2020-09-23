@@ -11,12 +11,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/02/2020
-ms.openlocfilehash: 22a9bec09652b6cbce02fe5a54a319694aaa6911
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 46fa489c5a72c3de923f5281cc9be205925dd42d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421314"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988091"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Spark bağlayıcısını kullanarak gerçek zamanlı büyük veri analizlerini hızlandırma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Veri akışı aşağıdaki gibidir:
 
 Aşağıdaki diyagramda veri akışı gösterilmektedir.
 
-   ![architecture](./media/spark-connector/architecture.png)
+   ![Diyagramda, doğrudan veritabanına bağlanan ve veritabanına bağlanan üç çalışan düğümüne bağlanan bir ana düğüm ile açıklanan akış gösterilir.](./media/spark-connector/architecture.png)
 
 ### <a name="build-the-spark-connector"></a>Spark bağlayıcısını oluşturma
 

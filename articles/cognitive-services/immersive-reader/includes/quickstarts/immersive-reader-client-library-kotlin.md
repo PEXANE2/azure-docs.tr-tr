@@ -7,24 +7,23 @@ author: dylankil
 manager: guillasi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 09/14/2020
 ms.author: dylankil
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0904694a461f57a1988444aea71ffe64bfa7e809
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c368964ca04662c8bf1dfe79db57f81c90f5699
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602213"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978296"
 ---
-[Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
+[Modern okuyucu](https://www.onenote.com/learningtools) , yeni okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştirmek üzere kanıtlanmış teknikler uygulayan, benzer şekilde tasarlanmış bir araçtır. Uygulamalarınızı odaklamak üzere metin yalıtmak, yaygın olarak kullanılan sözcüklerin resimlerini göstermek, konuşma parçalarını vurgulamak, seçili metni sesli okumak, sözcükleri ve tümceleri gerçek zamanlı olarak çevirmek ve daha fazlasını yapmak için uygulamalarınızda modern okuyucu kullanabilirsiniz.
 
 Bu hızlı başlangıçta, sıfırdan bir Android uygulaması oluşturup tam ekran okuyucuyu tümleştirin. Bu hızlı başlangıçta tam çalışma örneği [GitHub ' da](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin)kullanılabilir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
+## <a name="prerequisites"></a>Önkoşullar
 
-## <a name="prerequisites"></a>Ön koşullar
-
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](../../how-to-create-immersive-reader.md) izleyin. Ortam özelliklerini yapılandırırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 * [Git](https://git-scm.com/).
 * [Modern Okuyucu SDK 'sı](https://github.com/microsoft/immersive-reader-sdk).
@@ -34,27 +33,27 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Android Studio yeni bir proje başlatın. Bu örnek için kaynak kodu, [tam ekran okuyucu SDK 'sının](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin)bir parçası olarak kullanılabilir.
 
-![Yeni proje](../../media/android/kotlin/android-studio-create-project.png)
+![Yeni proje-Kotlin](../../media/android/kotlin/android-studio-create-project.png)
 
 **Projeyi seçin** penceresinde **boş etkinlik**' i seçin ve ardından **İleri**' yi seçin.
 
-![Boş etkinlik projesi](../../media/android/kotlin/android-studio-empty-activity.png)
+![Boş etkinlik projesi-Kotlin](../../media/android/kotlin/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Projeyi yapılandırma
 
 Projeyi **Quickstartkotlin**olarak adlandırın ve kaydedilecek bir konum seçin. Programlama dili olarak **Kotlin** ' ı seçin ve ardından **son**' u seçin.
 
-![Projeyi yapılandırma](../../media/android/kotlin/android-studio-configure-project.png)
+![Projeyi yapılandırma-Kotlin](../../media/android/kotlin/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Varlıkları ve kimlik doğrulamasını ayarlama
 
 Yeni bir **/varlıklar** klasörü oluşturun.
 
-![Yeni varlıklar klasörü oluştur](../../media/android/kotlin/android-studio-assets-folder.png)
+![Yeni varlıklar klasörü oluşturma-Kotlin](../../media/android/kotlin/android-studio-assets-folder.png)
 
  Varlıklar klasörünün içinde **env** adlı bir dosya oluşturun. Aşağıdaki adları ve değerleri ekleyin ve değerleri uygun şekilde sağlayın. Ortak yapılmaması gereken gizli dizileri içerdiğinden, bu env dosyasını kaynak denetimine teslim etmeyin.
 
-![Yeni bir env dosyası oluşturma](../../media/android/kotlin/android-studio-create-env-file.png)
+![Yeni bir env dosyası oluşturma-Kotlin](../../media/android/kotlin/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -62,7 +61,7 @@ CLIENT_ID=<YOUR_CLIENT_ID>
 CLIENT_SECRET=<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
-![Android Studio içindeki ortam değişkenleri](../../media/android/kotlin/android-studio-assets-and-env-file.png)
+![Android Studio-Kotlin içindeki ortam değişkenleri](../../media/android/kotlin/android-studio-assets-and-env-file.png)
 
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 
@@ -85,13 +84,13 @@ dependencies {
 }
 ```
 
-![App Gradle uygulamaları](../../media/android/kotlin/android-studio-build-gradle.png)
+![App Gradle uygulamaları-Kotlin](../../media/android/kotlin/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>Uygulama dizelerini ve düzen kaynaklarını Güncelleştir
 
 **Res/Strings/strings.xml** içindeki içeriği uygulamada kullanılacak aşağıdaki dizelerle değiştirin.
 
-![Uygulama strings.xml](../../media/android/kotlin/android-studio-strings.png)
+![Uygulama strings.xml-Kotlin](../../media/android/kotlin/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -101,7 +100,7 @@ dependencies {
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live.The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live.The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -109,7 +108,7 @@ dependencies {
 
 **Res/Layout/activity_main.xml** içindeki içeriği uygulamada kullanılacak aşağıdaki XML ile değiştirin. Bu XML, uygulamanın kullanıcı arabirimi yerleşimidir.
 
-![Uygulama activity_main.xml](../../media/android/kotlin/android-studio-activity-main-xml.png)
+![Uygulama activity_main.xml-Kotlin](../../media/android/kotlin/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -210,9 +209,9 @@ dependencies {
 
 **/Java/com.example.quickstartkotlin** klasöründe yeni bir Kotlin sınıfı oluşturun ve **webappınterface**olarak adlandırın. Ardından aşağıdaki kodu ekleyin. Bu kod, uygulamanın HTML 'de daha sonraki bir adımda eklenecek JavaScript işlevleriyle arabirim oluşturmasını sağlar.
 
-![com. example. quickstartkotlin klasörü](../../media/android/kotlin/android-studio-com-folder.png)
+![com. example. quickstartkotlin klasörü-Kotlin](../../media/android/kotlin/android-studio-com-folder.png)
 
-![Webappınterface](../../media/android/kotlin/android-studio-web-app-interface.png)
+![Webappınterface-Kotlin](../../media/android/kotlin/android-studio-web-app-interface.png)
 
 ```WebAppInterface.kt
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -524,9 +523,9 @@ class MainActivity : AppCompatActivity() {
 
 Web görünümü uygulamasının çalışması için HTML gerekir. **/Varlıklar** klasörüne sağ tıklayın, yeni bir dosya oluşturun ve **immersiveReader.html**olarak adlandırın.
 
-![Yeni bir HTML dosyası oluştur](../../media/android/kotlin/android-studio-immersive-reader-html.png)
+![Yeni bir HTML dosyası oluşturma-Kotlin](../../media/android/kotlin/android-studio-immersive-reader-html.png)
 
-![HTML varlık konumu](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
+![HTML varlık konumu-Kotlin](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
 
 Aşağıdaki HTML ve JavaScript 'ı ekleyin. Bu kod, modern Okuyucu SDK 'sını uygulamaya ekler ve yazdığımız uygulama kodunu kullanarak tam ekran okuyucuyu açmak için kullanır.
 
@@ -575,7 +574,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>Uygulama izinlerini ayarlama
 
-![AndroidManifest](../../media/android/kotlin/android-studio-android-manifest-xml.png)
+![AndroidManifest-Kotlin](../../media/android/kotlin/android-studio-android-manifest-xml.png)
 
 Uygulamanın çalışması için tam ekran okuyucu SDK 'sına ağ çağrıları yapması gerektiğinden, uygulama izinlerinin ağ erişimine izin verecek şekilde yapılandırıldığından emin olunması gerekir. **/Manifests/AndroidManifest.xml** IÇERIĞINI aşağıdaki XML ile değiştirin:
 
@@ -609,7 +608,7 @@ Uygulamanın çalışması için tam ekran okuyucu SDK 'sına ağ çağrıları 
 
 Uygulamayı bir cihaz öykünücüsünde çalıştırmak için Android Studio kullanın. **Tam ekran okuyucu**' u seçtiğinizde, modern okuyucu uygulamadaki içerikle açılır.
 
-![Tam Ekran Okuyucu](../../media/android/kotlin/android-studio-device-emulator.png)
+![Modern okuyucu-Kotlin](../../media/android/kotlin/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

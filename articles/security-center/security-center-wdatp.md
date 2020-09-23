@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: e1595d7e205c788f90177836f3c0370681b7747b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 28242341ddd21adea33e56c3e1f35f0677e5921a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569093"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907358"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması
 
@@ -28,11 +28,11 @@ Azure Güvenlik Merkezi, kapsamlı uç nokta algılama ve yanıt (EDR) özellikl
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|**Genel kullanılabilirlik**|
-|Fiyat|Standart katmanı|
+|Yayın durumu:|Genel olarak kullanılabilir (GA)|
+|Fiyat|[Azure Defender](security-center-pricing.md) gerektirir|
 |Desteklenen makineler:|![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure makineleri<br>![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure Arc makineleri|
 |Gerekli roller ve izinler:|Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi**veya **abonelik katılımcısı**|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar.<br>![No](./media/icons/no-icon.png) Ortak Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar.<br>![Hayır](./media/icons/no-icon.png) Ortak Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 
@@ -57,7 +57,7 @@ Defender ATP 'yi Azure Güvenlik Merkezi ile tümleştirerek aşağıdaki ek yet
 
 ## <a name="platform-support"></a>Platform desteği
 
-Güvenlik Merkezi 'ndeki Microsoft Defender ATP, Windows Server 2016, 2012 R2 ve 2008 R2 SP1 üzerinde algılamayı destekler. Azure VM 'Ler için Standart katman aboneliğine ve Azure dışı VM 'Ler için yalnızca çalışma alanı düzeyinde Standart katmana ihtiyacınız vardır.
+Güvenlik Merkezi 'ndeki Microsoft Defender ATP, Windows Server 2016, 2012 R2 ve 2008 R2 SP1 üzerinde algılamayı destekler. Azure sanal makineleri için aboneliğinizde Azure Defender 'ı etkinleştirmek ve Azure dışı VM 'Ler için, Azure Defender 'ın yalnızca çalışma alanı düzeyinde etkinleştirilmesi gerekir.
 
 Bu tümleştirme kullanılarak sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı.
 
@@ -74,24 +74,25 @@ Sunucuları güvenlik merkezi 'ne eklemek için **Azure Güvenlik Merkezi 'Ne gi
 
 1. **Ekleme** alanında, verileri depolamak için bir çalışma alanı seçin veya oluşturun.
 
-2. Tüm çalışma alanlarınızı göremiyorsanız, bunun nedeni izin olmaması olabilir, çalışma alanınızın Azure Güvenlik Standart fiyatlandırma katmanına ayarlandığından emin olun. Daha fazla bilgi için bkz. [Gelişmiş güvenlik Için Güvenlik Merkezi 'nin standart katmanına yükseltme](security-center-pricing.md).
+2. Tüm çalışma alanlarınızı göremiyorsanız, bunun nedeni izin olmaması olabilir, çalışma alanınızın Azure Defender tarafından korunduğundan emin olun.
     
 3. Log Analytics aracısının nasıl yükleneceğine ilişkin yönergeleri görüntülemek için **Sunucu Ekle** ' yi seçin. 
 
-4. Ekleme işleminden sonra, **işlem ve uygulamalar**altında makineleri izleyebilirsiniz.
+4. Ekleme işleminden sonra makineleri [varlık envanterinde](asset-inventory.md)izleyebilirsiniz.
 
    ![Yerleşik bilgisayarlar](media/security-center-wdatp/onboard-computers.png)
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Microsoft Defender ATP tümleştirmesini etkinleştir
 
-Microsoft Defender ATP tümleştirmesi 'nin etkin olup olmadığını görmek için **Güvenlik Merkezi**  >  **fiyatlandırma & ayarları** ' nı seçin > aboneliğinize tıklayın.
+Microsoft Defender ATP tümleştirmesi 'nin etkin olup olmadığını görmek için **Güvenlik Merkezi**  >  **fiyatlandırma & ayarlar** ' ı seçin > aboneliğinizi seçin.
+
 Burada, şu anda etkin olan entegrasyona bakabilirsiniz.
 
   ![Microsoft Defender ATP tümleştirmesi etkin olan Azure Güvenlik Merkezi tehdit algılama ayarları sayfası](media/security-center-wdatp/enable-integrations.png)
 
-- Sunucuları zaten Azure Güvenlik Merkezi Standart katmanına eklendi, başka bir işlem gerçekleştirmeniz gerekir. Azure Güvenlik Merkezi, sunucuları otomatik olarak Microsoft Defender ATP 'ye eklenecektir. Ekleme, 24 saate kadar sürebilir.
+- Azure Defender 'ı zaten etkinleştirdiyseniz, başka bir eylem gerekmez. Azure Güvenlik Merkezi, sunucuları otomatik olarak Microsoft Defender ATP 'ye eklenecektir. Ekleme, 24 saate kadar sürebilir.
 
-- Sunucuları hiçbir zaman Azure Güvenlik Merkezi Standart katmanına eklendi, bunları her zamanki gibi Azure Güvenlik Merkezi 'ne ekleyin.
+- Sunucuları hiçbir zaman Azure Güvenlik Merkezi 'ne eklendi, Azure Güvenlik Merkezi 'ne ekleyin ve her zamanki gibi Azure Defender 'ı etkinleştirin.
 
 - Sunucuları Microsoft Defender ATP aracılığıyla eklendi:
   - [Sunucu makinelerini nasıl boşaltıkılabileceğine](https://go.microsoft.com/fwlink/p/?linkid=852906)ilişkin yönergeler için belgelere bakın.

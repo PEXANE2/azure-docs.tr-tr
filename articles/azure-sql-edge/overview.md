@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge (Önizleme) nedir?
-description: Azure SQL Edge (Önizleme) hakkında bilgi edinin
+title: Azure SQL Edge nedir?
+description: Azure SQL Edge hakkında bilgi edinin
 keywords: SQL Edge 'e giriş, SQL Edge nedir, SQL Edge 'e genel bakış
 services: sql-edge
 ms.service: sql-edge
@@ -9,27 +9,31 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 20e709db9e6992f52b04934cb0f6eb65d3dcb44c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e34cd0907320f96f2846c1f424e678555381cccc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489536"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907121"
 ---
-# <a name="what-is-azure-sql-edge-preview"></a>Azure SQL Edge (Önizleme) nedir?
+# <a name="what-is-azure-sql-edge"></a>Azure SQL Edge nedir?
 
-Azure SQL Edge (Önizleme), IoT ve IoT Edge dağıtımlar için tasarlanmış, iyileştirilmiş bir ilişkisel veritabanı altyapısıdır. IoT uygulamaları ve çözümleri için yüksek performanslı veri depolama ve işleme katmanı oluşturma olanakları sağlar. Azure SQL Edge, çeşitli modern IoT uygulamaları için doğru seçim yapan, ilişkisel ve JSON, grafik ve zaman serisi verileri gibi ilişkisel olmayan verileri akışa almak, işlemek ve analiz etmek için yetenekler sağlar.
+Azure SQL Edge, IoT ve IoT Edge dağıtımları için iyileştirilmiş bir ilişkisel veritabanı altyapısıdır. IoT uygulamaları ve çözümleri için yüksek performanslı veri depolama ve işleme katmanı oluşturma olanakları sağlar. Azure SQL Edge, çeşitli modern IoT uygulamaları için doğru seçim yapan, ilişkisel ve JSON, grafik ve zaman serisi verileri gibi ilişkisel olmayan verileri akışa almak, işlemek ve analiz etmek için yetenekler sağlar.
 
-Azure SQL Edge, sektör lideri performans, güvenlik ve sorgu işleme yetenekleri sağlayan Microsoft SQL veritabanı altyapısının (/SQL/SQL-Server/SQL-Server-teknisyen al-documentation? TOC =/Azure/Azure-SQL-Edge/toc.json) en son sürümlerinde oluşturulmuştur. Azure SQL Edge, [SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json) ve [Azure SQL](https://docs.microsoft.com/azure/azure-sql/)ile aynı altyapıda oluşturulduğundan, uygulama ve çözümlerin geliştirilmesini daha kolay ve hızlı hale getiren T-SQL programlama yüzeyi alanını sağlar ve aynı zamanda uygulama taşınabilirliği, IoT Edge cihazlar, veri merkezleri ve bulut arasında doğrudan ileri sarma yapar.
+Azure SQL Edge, sektör lideri performans, güvenlik ve sorgu işleme olanakları sağlayan [SQL Server veritabanı altyapısının](/sql/sql-server/sql-server-technical-documentation)en son sürümlerinde oluşturulmuştur. Azure SQL Edge, [SQL Server](/sql/sql-server/sql-server-technical-documentation) ve [Azure SQL](https://docs.microsoft.com/azure/azure-sql/)ile aynı altyapıda oluşturulduğundan, uygulama ve çözümlerin geliştirilmesini daha kolay ve hızlı hale getiren Transact-SQL (T-SQL) programlama yüzeyi alanını sağlar ve IoT Edge cihazları, veri merkezleri ve bulut arasındaki uygulamaları doğrudan ileri sarma olarak oluşturur.
 
-> [!NOTE]
-> Azure SQL Edge Şu anda önizleme aşamasındadır ve bu nedenle üretim ortamlarında kullanılmamalıdır.
+Channel 9 ' da Azure SQL Edge videosu nedir:
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-SQL-Edge/player]
 
 ## <a name="deployment-models"></a>Dağıtım modelleri
 
-Azure SQL Edge, Azure Marketi 'nde kullanılabilir ve [Azure IoT Edge](../iot-edge/about-iot-edge.md)için bir modül olarak dağıtılabilir. Daha fazla bilgi için bkz. [Azure SQL Edge 'ı dağıtma](deploy-portal.md).<br>
+Azure SQL Edge iki dağıtım modunu destekler.
+
+- Azure IoT Edge aracılığıyla bağlı dağıtım: Azure SQL Edge, Azure Marketi 'nde kullanılabilir ve [Azure IoT Edge](../iot-edge/about-iot-edge.md)bir modül olarak dağıtılabilir. Daha fazla bilgi için bkz. [Azure SQL Edge 'ı dağıtma](deploy-portal.md).<br>
 
 ![SQL Edge genel bakış Diyagramı](media/overview/overview.png)
+
+- Bağlantısı kesik dağıtım: Azure SQL Edge kapsayıcı görüntüleri Docker Hub 'ından çekilir ve tek başına bir Docker kapsayıcısı veya bir Kubernetes kümesi olarak dağıtılabilir. Daha fazla bilgi için bkz. [Azure SQL Edge 'ı Docker Ile dağıtma](disconnected-deployment.md) ve [Kubernetes 'Te Azure SQL Edge kapsayıcısı dağıtma](deploy-kubernetes.md).
 
 ## <a name="editions-of-sql-edge"></a>SQL Edge sürümleri
 
@@ -42,7 +46,7 @@ SQL Edge, iki farklı sürüm veya yazılım planlarıyla kullanılabilir. Bu s�
 
 ## <a name="pricing-and-availability"></a>Fiyatlandırma ve kullanılabilirlik
 
-Azure SQL Edge Şu anda önizleme aşamasındadır. Fiyatlandırma ve kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/).
+Azure SQL Edge genel kullanıma sunulmuştur. Belirli bölgelerde fiyatlandırma ve kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/).
 
 > [!IMPORTANT]
 > Azure SQL Edge ve SQL Server arasındaki özellik farklarını ve farklı Azure SQL Edge seçenekleri arasındaki farkları anlamak için bkz. [Azure SQL Edge 'In desteklenen özellikleri](features.md).

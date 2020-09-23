@@ -1,6 +1,6 @@
 ---
-title: Kubectl 'yi kullanarak Kubernetes durum bilgisi olan bir uygulamayı Azure Stack Edge cihazında statik olarak sağlanan paylaşımda dağıtma | Microsoft Docs
-description: Bir Azure Stack Edge GPU cihazında kubectl kullanarak statik olarak sağlanan bir paylaşımdan Kubernetes durum bilgisi olan bir uygulama dağıtımının nasıl oluşturulduğunu ve yönetileceğini açıklar.
+title: Kubectl 'yi kullanarak Kubernetes durum bilgisi olan bir uygulamayı Azure Stack Edge Pro cihazında statik olarak sağlanan paylaşımda dağıtma | Microsoft Docs
+description: Bir Azure Stack Edge Pro GPU cihazında kubectl kullanarak statik olarak sağlanan bir paylaşımdan Kubernetes durum bilgisi olan bir uygulama dağıtımının nasıl oluşturulduğunu ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,50 +8,50 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: d9200b66d51292271f546eb111f3355649318b91
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8366c5b7a05b35891bcf87e446229357a5511359
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462726"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899533"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>Kubectl 'yi, Azure Stack Edge cihazınızda bir PersistentVolume ile bir Kubernetes durum bilgisi olan uygulama çalıştırmak için kullanın
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Kubectl 'yi, Azure Stack Edge Pro cihazınızda bir PersistentVolume ile bir Kubernetes durum bilgisi olan uygulama çalıştırmak için kullanın
 
 Bu makalede, bir PersistentVolume (BD) ve dağıtım kullanarak Kubernetes 'te tek örnekli bir durum bilgisi olan uygulamanın nasıl dağıtılacağı gösterilir. Dağıtım, `kubectl` var olan bir Kubernetes kümesinde komutlar kullanır ve MySQL uygulamasını dağıtır. 
 
-Bu yordam, [Azure Stack Edge cihazında Kubernetes depolamayı](azure-stack-edge-gpu-kubernetes-storage.md) Inceleyen ve [Kubernetes depolama](https://kubernetes.io/docs/concepts/storage/)kavramlarını öğrentiren kullanıcılara yöneliktir.
+Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes depolamayı](azure-stack-edge-gpu-kubernetes-storage.md) Inceleyen ve [Kubernetes depolama](https://kubernetes.io/docs/concepts/storage/)kavramlarını bildiğiniz kullanıcılara yöneliktir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi tamamladığınızdan emin olun:
 
 ### <a name="for-device"></a>Cihaz için
 
-- 1 düğümlü Azure Stack Edge cihazında oturum açma kimlik bilgileriniz var.
+- 1 düğümlü Azure Stack Edge Pro cihazı için oturum açma kimlik bilgileriniz vardır.
     - Cihaz etkinleştirilir. Bkz. [cihazı etkinleştirme](azure-stack-edge-gpu-deploy-activate.md).
     - Cihazda Azure portal aracılığıyla yapılandırılmış işlem rolü vardır ve bir Kubernetes kümesi vardır. Bkz. [Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
 
 ### <a name="for-client-accessing-the-device"></a>Cihaza erişen istemci için
 
-- Azure Stack Edge cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
+- Azure Stack Edge Pro cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
     - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
     
     - [Desteklenen bir işletim sistemine](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. 
     
-    - [Azure Stack Edge cihazında Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)bölümünde açıklanan yordamı tamamladınız. Şunları yapabilirsiniz:
+    - [Azure Stack Edge Pro cihazında Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)bölümünde açıklanan yordamı tamamladınız. Şunları yapabilirsiniz:
       - `userns1`Komutu aracılığıyla bir ad alanı oluşturuldu `New-HcsKubernetesNamespace` . 
       - `user1`Komutu aracılığıyla bir Kullanıcı oluşturuldu `New-HcsKubernetesUser` . 
       - `user1`Komutu aracılığıyla öğesine erişim verildi `userns1` `Grant-HcsKubernetesNamespaceAccess` .       
       - `kubectl`İstemcide yüklü ve `kubeconfig` dosyayı Kullanıcı yapılandırmasıyla C: \\ Users Kullanıcı \\ &lt; adı &gt; \\ . kuin olarak kaydetti. 
     
-    - `kubectl`İstemci sürümünün Azure Stack Edge cihazında çalışan Kubernetes ana sürümünden daha fazla sürüm olmadığından emin olun. 
+    - `kubectl`İstemci sürümünün, Azure Stack Edge Pro cihazınızda çalışan Kubernetes ana sürümünden birden fazla sürüm olmadığından emin olun. 
         - `kubectl version`İstemci üzerinde çalışan kubectl sürümünü denetlemek için kullanın. Tam sürümü bir yere unutmayın.
-        - Azure Stack Edge cihazınızın yerel kullanıcı arabiriminde **Genel Bakış ' a** gidin ve Kubernetes yazılım numarasına göz atın. 
+        - Azure Stack Edge Pro cihazınızın yerel kullanıcı arabiriminde **Genel Bakış ' a** gidin ve Kubernetes yazılım numarasına göz atın. 
         - Desteklenen Kubernetes sürümünde belirtilen eşlemenin uyumluluk için bu iki sürümü doğrulayın <!-- insert link-->. 
 
 
-Azure Stack Edge cihazınızda durum bilgisi olan bir uygulamayı dağıtmaya hazırlanıyor. 
+Azure Stack Edge Pro cihazınızda durum bilgisi olan bir uygulamayı dağıtmaya hazırlanıyor. 
 
 ## <a name="provision-a-static-pv"></a>Statik BD sağlama
 
@@ -102,7 +102,7 @@ Artık bir Kubernetes dağıtımı oluşturarak ve onu bir PersistentVolumeClaim
 
     Bu talep, önceki adımda paylaşma oluşturduğunuzda statik olarak sağlanan herhangi bir BD tarafından karşılanır. Cihazınızda, her bir paylaşıma yönelik büyük bir BD 32 TB oluşturulur. BD, PVC tarafından ayarlanan gereksinimleri karşılar ve PVC 'nin bu BD 'e bağlanması gerekir.
 
-    Aşağıdaki dosyayı kopyalayın ve `mysql-deployment.yml` Azure Stack Edge cihazına erişmek için kullandığınız Windows istemcisinde bir klasöre kaydedin.
+    Aşağıdaki dosyayı kopyalayın ve `mysql-deployment.yml` Windows istemcisinde Azure Stack Edge Pro cihazına erişmek için kullandığınız bir klasöre kaydedin.
     
     ```yml
     apiVersion: v1
@@ -354,4 +354,4 @@ PVC silindiği için BD artık PVC 'ye bağlanmadı. Bu, paylaşımın oluşturu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Depolama alanını dinamik olarak sağlamayı anlamak için, bkz. [Azure Stack Edge cihazında dinamik sağlama aracılığıyla durum bilgisi olan bir uygulamayı dağıtma](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)
+Depolama alanını dinamik olarak sağlamayı anlamak için, bkz. [Azure Stack Edge Pro cihazında dinamik sağlama aracılığıyla durum bilgisi olan bir uygulamayı dağıtma](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)

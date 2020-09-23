@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 5b46dc0197022aa72b6ca4c206d1da4369234167
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 576ff4eb3a189b27a4c7743966ced0676ec67a9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707688"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978901"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı 'nın tek sunucu değişikliği için kök CA 'daki değişiklikleri anlama
 
@@ -126,5 +126,8 @@ Bu güncelleştirme bir istemci tarafı değişikliği olduğundan, istemci Ço�
 ### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. SSL 'nin kullanıldığını doğrulamak için sunucu tarafı sorgumuz var mı?
 Sunucuya bağlanmak için SSL bağlantısı kullanıp kullandığınızı doğrulamak için [SSL doğrulaması](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity)' na başvurun.
 
-### <a name="13-what-if-i-have-further-questions"></a>13. daha fazla sorunuz varsa ne yapmalıyım?
+### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. sertifika dosyasında DigiCertGlobalRootG2 zaten varsa gerekli bir eylem var mı?
+Hayır. Sertifika dosyanızda zaten **DigiCertGlobalRootG2**varsa herhangi bir eylem gerekmez.
+
+### <a name="14-what-if-i-have-further-questions"></a>14. daha fazla sorunuz varsa ne yapmalıyım?
 Sorularınız varsa, [Microsoft Q&A](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)'daki topluluk uzmanlarının yanıtlarını alın. Destek planınız varsa ve teknik yardıma ihtiyacınız varsa  [bizimle iletişime geçin](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: b9cbb873066131264732d6f46320461bae8c3188
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: a9fe083818c5850ad05556b18911c19fe19e0e72
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84981770"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987403"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Windows 'da sesli Yardımcılar için Gizlilik yönergeleri
 
@@ -31,7 +31,7 @@ Windows üzerinde sesli yardımcılar oluşturan geliştiriciler, yardımcısın
 Windows kullanıcıları içindeki yardımcı uygulamalarının kullanılabilirliğini görebilir ve denetleyebilir **`Settings > Privacy > Voice activation`** .
 
  > [!div class="mx-imgBorder"]
- > [![Gizlilik-uygulama-listeleme](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Bir yardımcı uygulama için Windows Voice Activation gizlilik ayarı girdisi")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
+ > [![Ekran görüntüsü, Cortana 'nın kullanılabilirlik düzeyini denetleme seçeneklerini gösterir. ](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Bir yardımcı uygulama için Windows Voice Activation gizlilik ayarı girdisi")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
 
 Bu listeye eklenmek üzere uygun hale getirmek için, winvoiceassistants@microsoft.com kullanmaya başlamak üzere Microsoft 'a başvurun. Varsayılan olarak, kullanıcıların ' de **`Settings > Privacy > Voice Activation`** bir uygulamanın protokol bağlantısı olan ' de yeni bir Yardımcısı için ses etkinleştirmeyi açıkça etkinleştirmesi gerekir `ms-settings:privacy-voiceactivation` . Çalışma alanına izin verilen bir uygulama, çalıştırma ve API 'leri kullandıktan sonra listede görüntülenir `Windows.ApplicationModel.ConversationalAgent` . Uygulama kullanıcıdan mikrofon onayı aldıktan sonra, ses etkinleştirme ayarları değiştirilebilir olacak.
 

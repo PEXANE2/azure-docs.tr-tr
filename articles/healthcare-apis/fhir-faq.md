@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 252abcac6e9e39930593c1b110bf6d55ffdfc33f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843530"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978616"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>FHıR için Azure API 'SI hakkında sık sorulan sorular
 
@@ -48,6 +48,23 @@ Geliştirme açısından, her özellik ilk olarak Azure için açık kaynaklı M
 
 FHıR üzerinde akıllı (Substitutable tıbbi uygulamalar ve yeniden kullanılabilir teknoloji), iş ortağı uygulamalarını FHıR sunucularıyla ve elektronik sistem durumu kayıtları ve sistem durumu bilgileri değişimleri gibi diğer sistem durumu BT sistemleriyle tümleştirmeye yönelik bir dizi açık belirtimdir. FHıR uygulaması ile akıllı bir uygulama oluşturarak, uygulamanızın farklı sistemlerdeki bir plethora erişilebilir ve yararlanılabilir sağlayabilirsiniz.
 FHIR için kimlik doğrulaması ve Azure API. AKıLLı hakkında daha fazla bilgi edinmek için bkz. [Smart Health](https://smarthealthit.org/).
+
+### <a name="can-i-create-a-custom-fhir-resource"></a>Özel bir FHıR kaynağı oluşturabilir miyim?
+
+Özel FHıR kaynaklarına izin vermedik. Özel bir FHıR kaynağına ihtiyacınız varsa, uzantılara sahip [temel kaynağın](http://www.hl7.org/fhir/basic.html) üstünde özel bir kaynak oluşturabilirsiniz. 
+
+### <a name="are-extensions-supported-on-azure-api-for-fhir"></a>[Uzantılar](https://www.hl7.org/fhir/extensibility.html) , fhır IÇIN Azure API 'de destekleniyor mu?
+
+Geçerli bir FHıR JSON verilerini sunucuya yükleyebiliriz. Uzantıyı tanımlayan yapı tanımını depolamak istiyorsanız bunu bir yapı tanımı kaynağı olarak kaydedebilirsiniz. Şu anda, uzantılar üzerinde arama yapılamaz.
+
+### <a name="what-is-the-limit-on-_count"></a>_Count sınırı nedir?
+
+Count üzerindeki geçerli sınır 100 ' dir.
+
+### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>Grup dışarı aktarma işlevinde herhangi bir sınırlama var mı?
+
+Grup dışarı aktarma için, Grup [kaynağının](https://www.hl7.org/fhir/group.html)tüm özelliklerini değil yalnızca dahil edilen başvuruları gruptan dışarı aktardık.
+
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme)
 

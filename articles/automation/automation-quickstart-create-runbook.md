@@ -6,12 +6,12 @@ ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 0717a7ac3cc663ff68ba96864aa5d37732337ca5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 948ca820347c7cdcd560ade46e850f66b25bc88e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836745"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987299"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Otomasyonu runbook'u oluşturma
 
@@ -37,9 +37,9 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 
    ![Otomasyon runbook'unuz hakkındaki bilgileri sayfaya girin](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. **Oluştur**' a tıklayın. Runbook oluşturulur ve PowerShell Runbook'unu Düzenle sayfası açılır.
+1. **Oluştur**’a tıklayın. Runbook oluşturulur ve PowerShell Runbook'unu Düzenle sayfası açılır.
 
-    ![Runbook düzenleyicisinde PowerShell betiğini yazma](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png" alt-text="PowerShell runbook 'Unu Düzenle sayfasının ekran görüntüsü.":::
 
 1. Aşağıdaki kodu düzenleme bölmesine yazın veya kopyalayıp yapıştırın. Varsayılan değeri ile çağrılan isteğe bağlı bir giriş parametresi oluşturur `Name` `World` ve bu giriş değerini kullanan bir dize verir:
 
@@ -55,7 +55,7 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 
 1. Runbook 'un taslak kopyasını kaydetmek için **Kaydet** ' e tıklayın.
 
-    ![Runbook düzenleyicisinde PowerShell betiğini yazma](./media/automation-quickstart-create-runbook/automation-edit-runbook.png)
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="Sağ pencerede bir kod örneği içeren PowerShell runbook 'Unu Düzenle sayfasının ekran görüntüsü.":::
 
 ## <a name="test-the-runbook"></a>Runbook'u test etme
 
@@ -65,13 +65,13 @@ Runbook oluşturulduktan sonra, çalıştığını doğrulamak için Runbook 'u 
 
 1. **Ad** için bir değer girip **Başlat**'a tıklayın. Test işi başlar ve iş durumuyla çıkışı görüntülenir.
 
-    ![Runbook test işi](./media/automation-quickstart-create-runbook/automation-test-runbook.png)
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="Ad alanında örnek bir değere sahip test bölmesinin ekran görüntüsü.":::
 
 1. Sağ üst köşedeki **X** simgesine tıklayarak test bölmesini kapatın. Açılan pencerede **Tamam**'ı seçin.
 
 1. PowerShell Runbook'unu Düzenle sayfasında **Yayımla**'ya tıklayarak runbook'u hesaptaki runbook'un resmi sürümü olarak yayımlayın.
 
-   ![Runbook test işi](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="Yayımla düğmesinin seçili olduğunu gösteren PowerShell runbook 'Unu Düzenle sayfasının ekran görüntüsü.":::
 
 ## <a name="run-the-runbook"></a>Runbook'u çalıştırma
 
@@ -79,15 +79,15 @@ Runbook yayımlandıktan sonra genel bakış sayfası gösterilir.
 
 1. Runbook'un genel bakış sayfasında **Başlat**'a tıklayarak bu runbook'un Runbook'u Başlat yapılandırma sayfasını açın.
 
-   ![Runbook test işi](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="Runbook yapılandırması başlatma sayfasının ekran görüntüsü.":::
 
 1. Varsayılan değerin kullanılması için **Ad** alanın boş bırakıp **Tamam**'a tıklayın. Runbook işi gönderilir ve Iş sayfası görüntülenir.
 
-   ![Runbook test işi](./media/automation-quickstart-create-runbook/automation-job-page.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="Çıktı düğmesinin seçili olduğunu gösteren Iş sayfasının ekran görüntüsü.":::
 
 1. İş durumu `Running` veya olduğunda, çıkış `Completed` bölmesini açmak ve Runbook çıkışını görüntülemek için **Çıkış** ' a tıklayın.
 
-   ![Runbook test işi](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="Runbook çıkışını gösteren çıkış bölmesinin ekran görüntüsü.":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

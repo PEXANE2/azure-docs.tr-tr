@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8843f24f27f8973ad99989f743d1b3fae568679e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b37aabb39e19fa5ec53d2b006a7cbc1793adad72
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997158"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988048"
 ---
 # <a name="server-sizes"></a>Sunucu boyutları
 
@@ -23,7 +23,7 @@ Azure uzaktan Işleme iki sunucu yapılandırmasında kullanılabilir: `Standard
 
 ' Standart ' sunucu boyutundaki oluşturucunun bu sınırlamaya rastması durumunda, işlemeyi bir dama tahtası arka planına geçirir:
 
-![Tahtası](media/checkerboard.png)
+![Ekran görüntüsünde, bir Araçlar menüsü ile siyah ve beyaz karelerin bir Kılavuzu gösterilir.](media/checkerboard.png)
 
 ## <a name="specify-the-server-size"></a>Sunucu boyutunu belirtin
 
