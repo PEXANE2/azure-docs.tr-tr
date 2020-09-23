@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: e5ed84c6daaf01deb67d39bd13de1498dca131c5
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: d8779a25b7c6036f3b09badab67733fa55acfee7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750873"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907580"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde korleştirme
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Bu kılavuzda şunları öğrenirsiniz:
 
@@ -29,7 +29,7 @@ Bu kılavuzda şunları öğrenirsiniz:
 
 *Özellik Mühendisliği* , makine öğrenimi (ml) algoritmalarının daha iyi öğrenilmesine yardımcı olan özellikler oluşturmak için verilerin etki alanı bilgisini kullanma işlemidir. Azure Machine Learning, özellik Mühendisliği kolaylaştırmak için veri ölçekleme ve normalleştirme teknikleri uygulanır. Toplu olarak, bu teknikler ve bu özellik Mühendisliği otomatik makine öğrenimi veya *Otomatik ml*, denemeleri içinde *korleştirme* olarak adlandırılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, bir oto ml denemesinin nasıl yapılandırılacağı zaten bildiğiniz varsayılmaktadır. Yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -182,7 +182,7 @@ Bu liste, uygulanan tüm özellik adlarını içerir.
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
 
-Çıktı
+Çıkış
 
   ```
   [{'RawFeatureName': 'A',
@@ -207,7 +207,7 @@ Bu liste, uygulanan tüm özellik adlarını içerir.
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   |Çıktı|Tanım|
+   |Çıkış|Tanım|
    |----|--------|
    |RawFeatureName|Girilen veri kümesindeki giriş özelliği/sütun adı.|
    |Typedetesiyonu|Giriş özelliğinin veri türü algılandı.|

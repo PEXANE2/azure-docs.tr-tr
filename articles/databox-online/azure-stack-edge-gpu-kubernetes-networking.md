@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge cihazında Kubernetes ağını anlayın | Microsoft Docs
-description: Kubernetes ağının Azure Stack Edge cihazında nasıl çalıştığını açıklar.
+title: Azure Stack Edge Pro cihazında Kubernetes ağını anlayın | Microsoft Docs
+description: Kubernetes ağının Azure Stack Edge Pro cihazında nasıl çalıştığını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 001304ad6eda27db2285aaa9ad8b28929e2a04f8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268134"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899319"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazındaki Kubernetes ağı
+# <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki Kubernetes ağı
 
-Azure Stack Edge cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes kümesi oluşturulduktan sonra kapsayıcılı uygulamalar, pods 'deki Kubernetes kümesine dağıtılabilir. Kubernetes kümenizdeki pods için ağ için kullanılan farklı yollar vardır. 
+Azure Stack Edge Pro cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes kümesi oluşturulduktan sonra kapsayıcılı uygulamalar, pods 'deki Kubernetes kümesine dağıtılabilir. Kubernetes kümenizdeki pods için ağ için kullanılan farklı yollar vardır. 
 
-Bu makalede, genel olarak bir Kubernetes kümesinde ağ ve özellikle de Azure Stack Edge cihazınız bağlamında ağ açıklanmaktadır. 
+Bu makalede, genel olarak bir Kubernetes kümesinde ağ ve özellikle de Azure Stack Edge Pro cihazınız bağlamında ağ açıklanmaktadır. 
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
 
@@ -59,9 +59,9 @@ For discovery of applications within the cluster, Kubernetes cluster has a
 When an application or the end user would first use the IP address associated with the service of type load balancer to discover the service. Then it would use the label select `app = WS` to discover the pods associated with the application. The `kube-proxy` component would then distribute the traffic and ensure that it hits one of the web server application pods. If the web server app wanted to talk to the database app, then it would simply use the name of the service and using the name and the DNS server pod, resolve the name to an IP address. Again using labels and label selector, it would discover the pods associated with the database application. The `kube-proxy` would then distribute the traffic across each of the database app nodes.-->
 
 
-## <a name="kubernetes-networking-on-azure-stack-edge"></a>Azure Stack Edge üzerinde Kubernetes ağı
+## <a name="kubernetes-networking-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'da Kubernetes ağı
 
-Calıco, Metallb ve Core DNS, Azure Stack Kenarunuzda ağ için yüklenen tüm bileşenlerdir. 
+Calıco, Metallb ve Core DNS, Azure Stack Edge Pro 'unuzda ağ için yüklenen tüm bileşenlerdir. 
 
 - **Calıco** , özel bir IP aralığından her Pod 'A bir IP adresi atar ve bir düğümdeki Pod 'ın başka bir düğümdeki Pod ile iletişim kurabilmesi için bu FID 'lerin ağ iletişimini yapılandırır. 
 - **Metallb** , küme içi pod üzerinde çalışır ve IP adresini yük dengeleyici türündeki hizmetlere atar. Yük dengeleyici IP adresleri, yerel kullanıcı arabirimi aracılığıyla belirtilen hizmet IP aralığından seçilir. 
@@ -80,8 +80,8 @@ IP ataması şu şekilde olur:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Stack Edge 'de Kubernetes ağını yapılandırmak için bkz.:
+Azure Stack Edge Pro 'unuzda Kubernetes ağını yapılandırmak için bkz.:
 
-- [Durum bilgisi olmayan bir uygulamayı IoT Edge Azure Stack kenarınızdan dışarıdan kullanıma sunun](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
+- [Durum bilgisi olan bir uygulamayı, Azure Stack Edge Pro 'yu IoT Edge aracılığıyla dışarıdan kullanıma sunun](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
 
-- [Durum bilgisi olmayan bir uygulamayı kuebctl aracılığıyla Azure Stack kenarınızdan dışarıdan kullanıma sunun](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Durum bilgisi olmayan bir uygulamayı kuebctl aracılığıyla Azure Stack Edge Pro 'unuzda dışarıdan kullanıma sunun](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).

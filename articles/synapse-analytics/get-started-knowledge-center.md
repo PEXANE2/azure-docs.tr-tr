@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: c8aaef9c98e1fe44c73d4bd464bb1e52122e7a57
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: c01d1bcb682a5f711dcba3cc7b32ef69b2642ef6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90709692"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900757"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>SYNAPSE bilgi merkezini araştırma
 
@@ -45,7 +45,7 @@ Herhangi bir yöntemi seçin ve **bilgi merkezini**açın.
 1. İlk sorguya kaydırın (28-32 satırları) ve sorgu metnini seçin
 1. Çalıştır'a tıklayın. Seçtiğiniz metni çalıştıracaktır.
 
-## <a name="loading-the-more-nyc-taxi-data"></a>Diğer NYC TAXI verileri yükleniyor
+## <a name="loading-more-nyc-taxi-data"></a>Daha fazla NYC TAXI verisi yükleniyor
 
 1. **Bilgi Bankası merkezi**, **kullanılabilir örneklere gözatıp** ' ye tıklayın 
 1. Üstteki **SQL betikleri** sekmesini seçin

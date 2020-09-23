@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
-ms.date: 09/11/2020
-ms.openlocfilehash: 5818e57f29558cbb5a29592cd4e1d7ae2eebbec1
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.topic: tutorial
+ms.date: 10/20/2019
+ms.openlocfilehash: 0206c111be7cd6441d9de32af498e961833d214f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531551"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980701"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Öğretici: bağlı bir lojistik uygulama şablonunu dağıtma ve gözden geçir
 
@@ -23,6 +23,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bağlı bir lojistik uygulaması oluşturun.
 > * Uygulamadaki önemli özellikleri kullanın.
+> * Kritik lojistik cihaz işlemleri etkinliğini göstermek için panoyu kullanın.
+> * Cihaz şablonu kullan
+> * Kuralları izle
+> * Işleri kullanma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,6 +45,7 @@ Aşağıdaki adımları kullanarak uygulamayı oluşturun:
 
 3. **Uygulama oluştur** **Yeni uygulama** formunu açar. Şu ayrıntıları girin:
 
+
     * **Uygulama adı**: varsayılan önerilen adı kullanabilir veya kolay uygulamanızın adını girebilirsiniz.
     * **URL**: önerilen varsayılan URL 'yi kullanabilir veya kolay eşsiz bir URL 'yi girebilirsiniz. Daha sonra, zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. 7 günlük ücretsiz deneme fiyatlandırma planıyla başlayabilir ve ücretsiz izleme süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planına dönüştürmeyi tercih edebilirsiniz.
     * **Fatura bilgileri**: kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
@@ -52,11 +57,22 @@ Aşağıdaki adımları kullanarak uygulamayı oluşturun:
 
 ## <a name="walk-through-the-application"></a>Uygulamayı gözden geçir
 
-Aşağıdaki bölümler, uygulamanın temel özellikleri boyunca size yol gösterir:
+Bağlı lojistik uygulama şablonunun nasıl seçileceğini gösteren ekran görüntüsü aşağıda verilmiştir.
+
+> [!div class="mx-imgBorder"]
+> ![Bağlı lojistik uygulama şablonunun nasıl seçileceğini gösteren ekran görüntüsü](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
+
+Aşağıdaki bölümler, uygulamanın temel özellikleri boyunca size yol gösterir.
 
 ### <a name="dashboard"></a>Pano
 
 Uygulama şablonu dağıttıktan sonra, varsayılan panonuz bağlı bir lojistik operatör odaklı portaldır. Northwind Trader, deniz ve Land 'ta bir kargo filo 'i yöneten kurgusal bir lojistik sağlayıcıdır. Bu panoda, sevkiyatlardan telemetri sağlayan, ilişkili komutlar, işler ve eylemlerle birlikte iki farklı ağ geçidi görürsünüz.
+
+> [!div class="mx-imgBorder"]
+> ![Bağlı lojistik uygulama şablonundan uygulama oluşturmayı gösteren ekran görüntüsü](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+
+> [!div class="mx-imgBorder"]
+> ![Uygulamayı oluştururken faturalandırma seçeneklerini gösteren ekran görüntüsü](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
 
 Bu Pano, kritik lojistik cihaz işlemleri etkinliğini gösterecek şekilde önceden yapılandırılmıştır.
 
@@ -114,6 +130,8 @@ Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim**  >  **uygulaması a
 :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Şablon Temizleme":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-* [Bağlı lojistik kavramı](./architecture-connected-logistics.md) hakkında daha fazla bilgi edinin
+* Şu konular hakkında daha fazla bilgi edinin: 
+> [!div class="nextstepaction"]
+> [Bağlı lojistik kavramı](./architecture-connected-logistics.md)
 * Diğer [IoT Central perakende şablonları](./overview-iot-central-retail.md) hakkında daha fazla bilgi edinin
+* [IoT Central genel bakış](../core/overview-iot-central.md) hakkında daha fazla bilgi edinin

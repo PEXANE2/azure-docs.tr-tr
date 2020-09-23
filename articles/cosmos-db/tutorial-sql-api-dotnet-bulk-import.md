@@ -5,15 +5,15 @@ author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b16402f809da18588b26995e7129d2f27575b48d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019258"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981922"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK kullanarak verileri Azure Cosmos DB SQL API hesabına toplu olarak içeri aktarma
 
@@ -82,11 +82,11 @@ Hala uygulama dizininde, DotNet Add Package komutunu kullanarak .NET Core için 
 
 Örnek uygulamanın Azure Cosmos hesabınızda kimlik doğrulaması yapması gerekir. Kimlik doğrulaması yapmak için Azure Cosmos hesabı kimlik bilgilerini uygulamaya geçirmeniz gerekir. Aşağıdaki adımları izleyerek Azure Cosmos hesabı kimlik bilgilerinizi alın:
 
-1.  [Azure portalında](https://portal.azure.com/) oturum açın.
+1.  [Azure Portal](https://portal.azure.com/) oturum açın.
 1.  Azure Cosmos hesabınıza gidin.
 1.  **Anahtarlar** bölmesini açın ve hesabınızın **URI** ve **birincil anahtarını** kopyalayın.
 
-Azure Cosmos DB öykünücüsü kullanıyorsanız, [Bu makaledeki öykünücü kimlik bilgilerini](local-emulator.md#authenticating-requests)alın.
+Azure Cosmos DB öykünücüsü kullanıyorsanız, [Bu makaledeki öykünücü kimlik bilgilerini](local-emulator.md#authenticate-requests)alın.
 
 ## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>5. Adım: CosmosClient nesnesini toplu yürütme desteğiyle başlatın
 

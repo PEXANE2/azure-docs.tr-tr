@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052288"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970658"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication veri yerleşimi ve müşteri verileri
 
@@ -24,13 +24,12 @@ Müşteri verileri, Azure AD tarafından, Microsoft 365 ve Azure gibi bir Micros
 
 Bulut tabanlı Azure Multi-Factor Authentication ve Azure Multi-Factor Authentication Sunucusu işleme ve bazı kişisel verileri ve kurumsal verileri depolama. Bu makalede, verilerin depolandığı ve nerede saklandığı özetlenmektedir.
 
-Aşağıdaki Multi-Factor Authentication etkinlikleri Şu anda yukarıda belirtilenler dışında ABD veri merkezlerinden kaynaklanmakta:
+Azure Multi-Factor Authentication hizmetinde ABD, Avrupa ve Asya Pasifik veri merkezleri bulunur. Aşağıdaki etkinlikler, belirtilen durumlar dışında bölgesel veri merkezlerinden kaynaklanmalıdır:
 
-* Telefon çağrılarını veya SMS 'yi kullanan iki öğeli kimlik doğrulama genellikle ABD veri merkezlerinden kaynaklanarak küresel sağlayıcılar tarafından yönlendirilir.
-    * Avrupa veya Avustralya gibi diğer bölgelerden gelen genel amaçlı kullanıcı kimlik doğrulama istekleri şu anda ilgili bölgedeki veri merkezleri tarafından işlenir. Self servis parola sıfırlama, Azure B2C olayları ya da NPS uzantısı veya AD FS bağdaştırıcısı kullanan Karma senaryolar gibi diğer olaylar şu anda ABD veri merkezleri tarafından işlenir.
-* Microsoft Authenticator uygulamasını kullanarak anında iletme bildirimleri ABD veri merkezlerinden kaynaklarından geliyor. Buna ek olarak, cihaz satıcısına özgü hizmetler de farklı bölgelerden oynatabilir.
-* OATH kodları genellikle ABD 'de Şu anda onaylanır
-    * Bu durumda, Avrupa veya Avustralya gibi diğer bölgelerde yer alan genel amaçlı kullanıcı kimlik doğrulama olayları da söz konusu bölgedeki veri merkezleri tarafından işlenir. Diğer olaylar şu anda ABD veri merkezleri tarafından işlenir.
+* Telefon çağrılarını kullanan Multi-Factor Authentication ABD veri merkezlerinden kaynaklanarak küresel sağlayıcılar tarafından yönlendirilir.
+* Avrupa veya Avustralya gibi diğer bölgelerden gelen genel amaçlı kullanıcı kimlik doğrulama istekleri şu anda kullanıcının konumuna göre işlenir.
+* Microsoft Authenticator uygulamasını kullanarak anında iletme bildirimleri, kullanıcının konumuna bağlı olarak bölgesel veri merkezleri kaynağı.
+    * Apple Anında Iletme bildirimleri gibi cihaz satıcısına özgü hizmetler, kullanıcının konumunun dışında olabilir.
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication tarafından depolanan kişisel veriler
 

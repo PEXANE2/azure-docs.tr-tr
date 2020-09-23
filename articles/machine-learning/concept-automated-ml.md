@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: eef8abebde2578ac549b2facfc1317a90ecc7fb5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 83281a9dde0b29a9f8bfc2bd90114227bf9e769f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658561"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886383"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -78,8 +78,6 @@ Eğitim sırasında Azure Machine Learning, paralel olarak, sizin için farklı 
 
    * Sınırlı veya kod deneyimi için Azure Machine Learning Studio web deneyimini şurada deneyin: [https://ml.azure.com](https://ml.azure.com/)  
    * Python geliştiricileri için [Azure Machine Learning Python SDK 'sını](how-to-configure-auto-train.md) inceleyin 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
     
 1. **Etiketli eğitim verilerinin kaynak ve biçimini belirtin**: sayısal tuş takımı dizileri veya Pandas dataframe
 
@@ -118,7 +116,7 @@ Otomatik makine öğrenimi denemeleri için, korleştirme otomatik olarak uygula
 
 Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek için verileriniz otomatik olarak ölçeklendirilir veya normalleştirilir. Model eğitimi sırasında, her bir modele aşağıdaki ölçeklendirmeden veya normalleştirme tekniklerinden biri uygulanır. Oto ml 'nin modellerinizde [fazla sığdırma ve ıdengeli verilerin nasıl engellenmesine](concept-manage-ml-pitfalls.md) yardımcı olduğunu öğrenin.
 
-|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Description |
+|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Açıklama |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Ortalama ve ölçeklendirerek birim sapması arasındaki özellikleri standartlaştırın  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Her bir özelliği sütuna en düşük ve en yüksek düzeyde ölçeklendirerek özellikleri dönüştürür  |
@@ -172,25 +170,25 @@ Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz ön
 
 ### <a name="feature-availability"></a>Özellik kullanılabilirliği 
 
- Aşağıdaki tabloda gösterildiği gibi uzak işlem kullandığınızda daha fazla özellik mevcuttur. Bu özelliklerden bazıları yalnızca bir kurumsal çalışma alanında kullanılabilir.
+ Aşağıdaki tabloda gösterildiği gibi uzak işlem kullandığınızda daha fazla özellik mevcuttur. 
 
-| Öne çıkan özelliği                                                    | Uzak | Yerel | Gerektirmeyen <br>Kurumsal çalışma alanı |
-|------------------------------------------------------------|--------|-------|-------------------------------|
-| Veri akışı (büyük veri desteği, 100 GB 'a kadar)          | ✓      |       | ✓                             |
-| DNN-BERT tabanlı metin korleştirme ve eğitim             | ✓      |       | ✓                             |
-| Kullanıma hazır GPU desteği (eğitim ve çıkarım)        | ✓      |       | ✓                             |
-| Görüntü sınıflandırma ve etiketleme desteği                  | ✓      |       | ✓                             |
-| Tahmin için otomatik-ARıMA, Prophet ve Foreroı tcn modelleri | ✓      |       | ✓                             |
-| Paralel olarak birden çok çalıştırma/yineleme                       | ✓      |       | ✓                             |
-| Oto ml Studio Web deneyimi Kullanıcı arabiriminde yorumlenebilirliği olan modeller oluşturma      | ✓      |       | ✓                             |
-| Studio Web deneyimi Kullanıcı arabiriminde Özellik Mühendisliği özelleştirmesi                        | ✓      |       | ✓                              |
-| Azure ML hyperparameter ayarlaması                             | ✓      |       |                               |
-| Azure ML ardışık düzen iş akışı desteği                         | ✓      |       |                               |
-| Çalıştırmaya devam et                                             | ✓      |       |                               |
-| Tahmin etme                                                | ✓      | ✓     | ✓                             |
-| Not defterlerinde denemeleri oluşturma ve çalıştırma                    | ✓      | ✓     |                               |
-| Kullanıcı arabirimindeki deneyin bilgilerini ve ölçümlerini kaydetme ve görselleştirme | ✓      | ✓     |                               |
-| Veri, guardrayları                                            | ✓      | ✓     |                               |
+| Öne çıkan özelliği                                                    | Uzak | Yerel | 
+|------------------------------------------------------------|--------|-------|
+| Veri akışı (büyük veri desteği, 100 GB 'a kadar)          | ✓      |       | 
+| DNN-BERT tabanlı metin korleştirme ve eğitim             | ✓      |       |
+| Kullanıma hazır GPU desteği (eğitim ve çıkarım)        | ✓      |       |
+| Görüntü sınıflandırma ve etiketleme desteği                  | ✓      |       |
+| Tahmin için otomatik-ARıMA, Prophet ve Foreroı tcn modelleri | ✓      |       | 
+| Paralel olarak birden çok çalıştırma/yineleme                       | ✓      |       |
+| Oto ml Studio Web deneyimi Kullanıcı arabiriminde yorumlenebilirliği olan modeller oluşturma      | ✓      |       |
+| Studio Web deneyimi Kullanıcı arabiriminde Özellik Mühendisliği özelleştirmesi| ✓      |       |
+| Azure ML hyperparameter ayarlaması                             | ✓      |       |
+| Azure ML ardışık düzen iş akışı desteği                         | ✓      |       |
+| Çalıştırmaya devam et                                             | ✓      |       |
+| Tahmin etme                                                | ✓      | ✓     |
+| Not defterlerinde denemeleri oluşturma ve çalıştırma                    | ✓      | ✓     |
+| Kullanıcı arabirimindeki deneyin bilgilerini ve ölçümlerini kaydetme ve görselleştirme | ✓      | ✓     |
+| Veri, guardrayları                                            | ✓      | ✓     |
 
 ## <a name="many-models"></a>Birçok model 
 

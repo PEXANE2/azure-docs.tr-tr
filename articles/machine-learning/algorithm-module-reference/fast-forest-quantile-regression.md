@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 5f00164e90d625c5343103290e9272f15d164cd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d59d2fabb0b74ef12e33f55467b0ba68e0b7386
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100273"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907963"
 ---
-# <a name="fast-forest-quantile-regression"></a>Hızlı orman Quantile gerileme
+# <a name="fast-forest-quantile-regression"></a>Hızlı Orman Dağılım Dilimi Regresyonu
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Bir işlem hattındaki hızlı orman quantile regresyon modeli oluşturmak için bu modülü kullanın. Hızlı orman quantile gerileme, tek bir ortalama tahmin değeri almak yerine tahmin edilen değerin dağılımı hakkında daha fazla bilgi edinmek istiyorsanız faydalıdır. Bu yöntemde aşağıdakiler dahil birçok uygulama vardır:  
   
@@ -32,7 +32,7 @@ Bu regresyon algoritması **denetimli** bir öğrenme yöntemidir ve bu, etiket 
 
 ## <a name="more-about-quantile-regression"></a>Quantile gerileme hakkında daha fazla bilgi
 
-Birçok farklı gerileme türü vardır. En basit anlamda, regresyon, bir modeli sayısal bir vektör olarak ifade edilen hedefe ekleme anlamına gelir. Ancak İstatistikçilerin, gerileme için giderek daha fazla gelişmiş yöntem geliştirmiştir.
+Birçok farklı gerileme türü vardır. Yalnızca put, regresyon, bir modeli sayısal bir vektör olarak ifade edilen hedefe ekleme anlamına gelir. Ancak İstatistikçilerin, gerileme için giderek daha fazla gelişmiş yöntem geliştirmiştir.
 
 *Quantile* 'nın en basit tanımı, bir veri kümesini eşit boyutlu gruplara ayıran bir değerdir; Bu nedenle, quantile değerleri gruplar arasındaki sınırları işaretler. İstatistiksel olarak konuşmak, quantiles, rastgele bir değişkenin kümülatif dağıtım işlevinin (CDF) tersidir düzenli aralıklarla gerçekleştirilen değerlerdir.
 

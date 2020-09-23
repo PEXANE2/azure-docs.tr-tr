@@ -1,20 +1,20 @@
 ### YamlMime:Landing
-title: Azure Arc Sunucuları (önizleme)
-summary: Azure Arc Sunucuları
+title: Azure Arc özellikli sunucular
+summary: Azure Arc özellikli sunucular
 metadata:
-  title: Azure Arc Sunucuları
+  title: Azure Arc özellikli sunucular
   description: Azure'da şirket içi makineleri yönetmeyi öğrenin
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 9080f5bb770f5cb86284b5816c340a614843038c
-  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.openlocfilehash: f03e869e884fff8a1d196817b658c28bbdc55ca9
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/24/2020
-  ms.locfileid: "88763836"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90908107"
 landingContent:
 - title: Azure Arc özellikli sunucuları kullanarak makineleri Azure’a bağlama
   linkLists:
@@ -22,7 +22,7 @@ landingContent:
     links:
     - text: Azure Arc özellikli sunucular nedir?
       url: overview.md
-  - linkListType: quickstart
+  - linkListType: get-started
     links:
     - text: Makineleri Azure portalından Azure Arc’a bağlama
       url: onboard-portal.md
@@ -30,3 +30,9 @@ landingContent:
       url: onboard-service-principal.md
     - text: PowerShell DSC ile makineleri Azure’a bağlama
       url: onboard-dsc.md
+- title: 10 dakikalık hızlı başlangıçlar
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Arc özellikli sunucular aracısını dağıtma
+      url: ./learn/quick-enable-hybrid-vm.md

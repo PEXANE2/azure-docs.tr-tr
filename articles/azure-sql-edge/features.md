@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge 'in desteklenen özellikleri (Önizleme)
-description: Azure SQL Edge (Önizleme) tarafından desteklenen özelliklerin ayrıntıları hakkında bilgi edinin.
+title: Azure SQL Edge 'in desteklenen özellikleri
+description: Azure SQL Edge tarafından desteklenen özelliklerin ayrıntıları hakkında bilgi edinin.
 keywords: SQL Edge 'e giriş, SQL Edge nedir, SQL Edge 'e genel bakış
 services: sql-edge
 ms.service: sql-edge
@@ -9,21 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 87ccb28f527082dccee338396b460124652c0e76
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 646ce94587a9aa1bb8fd20a28b84658994b25cf1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462713"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886540"
 ---
-# <a name="supported-features-of-azure-sql-edge-preview"></a>Azure SQL Edge 'in desteklenen özellikleri (Önizleme) 
+# <a name="supported-features-of-azure-sql-edge"></a>Azure SQL Edge 'in desteklenen özellikleri 
 
-Azure SQL Edge, Linux üzerinde Microsoft SQL Server veritabanı altyapısının en son sürümü üzerine kurulmuştur. Linux üzerinde SQL Server 2019 ' de desteklenen özelliklerin bir alt kümesini destekler. Bu özellik, Linux üzerinde SQL Server 2019 ' de (veya Windows üzerinde SQL Server) desteklenmeyen veya mevcut bazı özelliklere ek olarak.
+Azure SQL Edge, SQL veritabanı altyapısının en son sürümü üzerine kurulmuştur. Linux üzerinde SQL Server 2019 ' de desteklenen özelliklerin bir alt kümesini destekler. Bu özellik, Linux üzerinde SQL Server 2019 ' de (veya Windows üzerinde SQL Server) desteklenmeyen veya mevcut bazı özelliklere ek olarak.
 
 Linux üzerinde SQL Server desteklenen özelliklerin kapsamlı bir listesi için bkz. [Linux üzerinde SQL Server 2019 'Nin sürümleri ve desteklenen özellikleri](https://docs.microsoft.com/sql/linux/sql-server-linux-editions-and-components-2019). Windows üzerinde SQL Server sürümleri ve desteklenen özellikleri için, bkz. [sürümler ve desteklenen özellikler SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15).
-
-> [!NOTE]
-> Azure SQL Edge Şu anda önizleme aşamasındadır ve bu nedenle üretim ortamlarında kullanılmamalıdır. Microsoft, dağıtımın doğrulanmasına ve kullanım örneği senaryolarınıza bağlı olarak üretim ortamlarında Azure SQL Edge 'i çalıştırmayı önerebilir.
 
 ## <a name="azure-sql-edge-editions"></a>Azure SQL Edge sürümleri
 
@@ -36,9 +33,7 @@ Azure SQL Edge, iki farklı sürüm veya yazılım planlarıyla kullanılabilir.
 
 ## <a name="operating-system"></a>İşletim sistemi
 
-Azure SQL Edge kapsayıcıları Şu anda Ubuntu 16,04 tabanlıdır ve bu nedenle yalnızca Ubuntu 16,04 LTS (önerilen) veya Ubuntu 18,04 LTS çalıştıran Docker konaklarında çalışmak üzere desteklenir. Azure SQL Edge kapsayıcılarını diğer işletim sistemi konaklarında çalıştırmak mümkündür. Örneğin, Linux veya Windows üzerinde (Docker CE veya Docker EE kullanarak) çalışabilir, ancak Microsoft bunu yapmanızı önermez, çünkü bu yapılandırma kapsamlı bir şekilde sınanmamıştır.
-
-Azure SQL Edge Şu anda yalnızca Azure IoT Edge aracılığıyla dağıtım için desteklenir. Daha fazla bilgi için bkz. [Azure IoT Edge desteklenen sistemler](https://docs.microsoft.com/azure/iot-edge/support).
+Azure SQL Edge kapsayıcıları Ubuntu 18,04 tabanlıdır ve bu nedenle yalnızca Ubuntu 18,04 LTS (önerilen) veya Ubuntu 20,04 LTS çalıştıran Docker konaklarında çalışmak üzere desteklenir. Azure SQL Edge kapsayıcılarını diğer işletim sistemi konaklarında çalıştırmak mümkündür. Örneğin, Linux veya Windows üzerinde (Docker CE veya Docker EE kullanarak) çalışabilir, ancak Microsoft bunu yapmanızı önermez, çünkü bu yapılandırma kapsamlı bir şekilde sınanmamıştır.
 
 Windows üzerinde Azure SQL Edge çalıştırmak için önerilen yapılandırma Windows konakta bir Ubuntu VM 'yi yapılandırmak ve ardından Linux sanal makinesi içinde Azure SQL Edge 'i çalıştırmaktır.
 
@@ -46,7 +41,7 @@ Azure SQL Edge için önerilen ve desteklenen dosya sistemi, EXT4 ve XFS 'dir. K
 
 ## <a name="hardware-support"></a>Donanım desteği
 
-Azure SQL Edge, en az bir adet işlemci ve konakta bir GB RAM ile 64 bitlik bir işlemci (x64 veya ARM64) gerektirir. Azure SQL Edge 'in başlangıç belleği parmak izi 500 MB 'a yakın olsa da, Edge cihazında çalışan diğer IoT Edge modüller için ek bellek gerekir. Azure SQL Edge için gerçek bellek ve CPU gereksinimleri, işlenen veri yükünün ve hacminin karmaşıklığına göre değişir. Çözümünüz için bir donanım seçerken, Microsoft, çözümünüz için gerekli performans özelliklerinin karşılanmasını sağlamak üzere kapsamlı performans testlerini çalıştırmanızı önerir.  
+Azure SQL Edge, en az bir adet işlemci ve konakta bir GB RAM ile 64 bitlik bir işlemci (x64 veya ARM64) gerektirir. Azure SQL Edge 'in başlangıç belleği parmak izi 450MB 'a yakın olsa da, uç cihazda çalışan diğer IoT Edge modüller veya süreçler için ek bellek gerekir. Azure SQL Edge için gerçek bellek ve CPU gereksinimleri, işlenen veri yükünün ve hacminin karmaşıklığına göre değişir. Çözümünüz için bir donanım seçerken, Microsoft, çözümünüz için gerekli performans özelliklerinin karşılanmasını sağlamak üzere kapsamlı performans testlerini çalıştırmanızı önerir.  
 
 ## <a name="azure-sql-edge-components"></a>Azure SQL Edge bileşenleri
 
@@ -76,6 +71,7 @@ Aşağıdaki listede, Azure SQL Edge 'de Şu anda desteklenmeyen Linux özellikl
 | &nbsp; | PolyBase. PolyBase 'de dış tablolar için Azure SQL Edge 'i bir hedef olarak yapılandırabileceğinizi unutmayın. |
 | &nbsp; | Java ve Spark ile dil genişletilebilirliği. |
 | &nbsp; | Active Directory tümleştirme. |
+| &nbsp; | Veritabanı otomatik küçültme. Bir veritabanı için Otomatik küçültme özelliği, komutu kullanılarak ayarlanabilir `ALTER DATABASE <database_name> SET AUTO_SHRINK ON` , ancak bu değişikliğin etkisi yoktur. Otomatik küçültme görevi veritabanına karşı çalışmaz. Kullanıcılar, ' DBCC ' komutlarını kullanarak veritabanı dosyalarını daraltabilir. |
 | &nbsp; | Veritabanı anlık görüntüleri. |
 | &nbsp; | Kalıcı bellek desteği. |
 | &nbsp; | Microsoft Dağıtılmış İşlem Düzenleyicisi. |
@@ -96,7 +92,7 @@ Aşağıdaki listede, Azure SQL Edge 'de Şu anda desteklenmeyen Linux özellikl
 | **SQL Server Agent** |  Alt sistemler: CmdExec, PowerShell, Queue Reader, SSIS, SSAS ve SSRS. |
 | &nbsp; | Larınız. |
 | &nbsp; | Yönetilen yedekleme. |
-| **Yüksek kullanılabilirlik** | Always on kullanılabilirlik grupları.  |
+| **Yüksek Kullanılabilirlik** | Always on kullanılabilirlik grupları.  |
 | &nbsp; | Temel kullanılabilirlik grupları. |
 | &nbsp; | Her zaman yük devretme kümesi örneği. |
 | &nbsp; | Veritabanı yansıtma. |

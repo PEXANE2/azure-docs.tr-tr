@@ -1,6 +1,6 @@
 ---
-title: Veri saklama ilkelerini etkinleştirme ve devre dışı bırakma-Azure SQL Edge (Önizleme)
-description: Azure SQL Edge 'de veri saklama ilkelerini etkinleştirme ve devre dışı bırakma hakkında bilgi edinin (Önizleme)
+title: Veri saklama ilkelerini etkinleştirme ve devre dışı bırakma-Azure SQL Edge
+description: Azure SQL Edge 'de veri saklama ilkelerini etkinleştirme ve devre dışı bırakma hakkında bilgi edinin
 keywords: SQL Edge, veri saklama
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9787f2cfa87a16d9e7dd1753e4389977c6753b81
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550726"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902492"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>Veri saklama ilkelerini etkinleştirme ve devre dışı bırakma
 
@@ -23,9 +23,6 @@ Bu konu, bir veritabanı ve tablo için veri saklama ilkelerinin nasıl etkinle�
 ## <a name="enable-data-retention-for-a-database"></a>Veritabanı için veri bekletmesini etkinleştirme
 
 Aşağıdaki örnekte, [alter database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)kullanılarak veri bekletmenin nasıl etkinleştirileceği gösterilmektedir.
-
-> [!NOTE]
-> Azure SQL Edge 'de (Önizleme) veri saklama özelliğini etkinleştirmek için, TF 12825 ' i başlangıç seçeneği olarak etkinleştirin veya DBCC TRACEON komutunu kullanın. Bir MSSQL. conf dosyası kullanarak izleme bayraklarını etkinleştirme hakkında daha fazla bilgi için bkz. [MSSQL. conf dosyası kullanarak yapılandırma](configure.md#configure-by-using-an-mssqlconf-file). 
 
 ```sql
 ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  ON;
@@ -61,10 +58,10 @@ CONSTRAINT [pk_current_data_retention_table] PRIMARY KEY CLUSTERED ([product_cod
 - FILTER_COLUMN-tablodaki sütununda, satırlar kullanımdan kalktı durumunda değil, bu sütun için kullanılacak ad. Filtre sütunu yalnızca aşağıdaki veri türlerine sahip bir sütun olabilir 
     - Tarih
     - Girişin
-    - Tarih-Saat
+    - DateTime
     - DateTime2
     - DateTimeOffset
-- RETENTION_PERIOD-bir tamsayı değer ve ardından bir birim tanımlayıcısı. İzin verilen birimler gün, hafta, ay ve yıl.
+- RETENTION_PERIOD-bir tamsayı değer ve ardından bir birim tanımlayıcısı. İzin verilen birimler gün, gün, hafta, hafta, ay, ay, yıl ve yıl.
 
 Aşağıdaki örnekte, [alter table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)kullanılarak tablo için veri bekletmenin nasıl etkinleştirileceği gösterilmektedir.  
 
@@ -98,9 +95,9 @@ Veritabanındaki ve tablodaki veri saklama ayarı, eski satırlar için oto temi
 |Veritabanı seçeneği | Tablo seçeneği | Davranış |
 |----------------|--------------|----------|
 | KAPALI | KAPALI | Veri bekletme ilkesi devre dışı bırakıldı ve eski kayıtların otomatik ve el ile temizlenmesi devre dışı bırakıldı.|
-| KAPALI | AÇIK  | Tablo için veri bekletme ilkesi etkinleştirilir, ancak eski kayıtlar otomatik ve el ile temizlik devre dışı bırakılır. |
+| KAPALI | AÇIK  | Tablo için veri bekletme ilkesi etkinleştirilir. Artık kullanılmayan kayıtları otomatik temizleme devre dışı, ancak artık kullanılmayan kayıtları temizlemek için el ile temizleme yöntemi kullanılabilir. |
 | AÇIK | KAPALI | Veri bekletme ilkesi veritabanı düzeyinde etkindir. Ancak, seçenek tablo düzeyinde devre dışı bırakıldığı için, eski satır için bekletme tabanlı temizlik yoktur.|
-| AÇIK | AÇIK | Veri saklama ilkesi hem veritabanı hem de tablolar için etkinleştirilmiştir. Eski kayıtları otomatik/el ile temizleme etkin |
+| AÇIK | AÇIK | Veri saklama ilkesi hem veritabanı hem de tablolar için etkinleştirilmiştir. Artık kullanılmayan kayıtları otomatik temizleme etkindir. |
 
 ## <a name="disable-data-retention-on-a-table"></a>Tabloda veri bekletmeyi devre dışı bırakma 
 

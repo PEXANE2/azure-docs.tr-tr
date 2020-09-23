@@ -5,20 +5,20 @@ author: avneet723
 ms.author: avneets
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 74deb4253a21445e21f7ef04f53f3bfe3f1fe0d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000542"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980545"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Öğretici: mikro Karşılama Merkezi uygulama şablonunu dağıtma ve gözden geçir
 
 Bu öğreticide, bir perakende çözümü oluşturmak için Azure IoT Central mikro Karşılama Merkezi uygulama şablonunu kullanırsınız. Şablonun nasıl dağıtılacağını, buna dahil edildiğini ve ileri bir sonraki ne yapmak isteyebileceğiniz hakkında bilgi edineceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğretici serisini tamamlayabilmeniz için bir Azure aboneliğine sahip olmanız gerekir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
 
 ## <a name="create-an-application"></a>Uygulama oluşturma 
@@ -62,11 +62,11 @@ Panodan şunları yapabilirsiniz:
    * Karşılama yapısında robot taşıyıcılar 'nın kat planını ve konumunu görüntüleyin.
    * Denetim sistemini sıfırlama, taşıyıcının bellenimini güncelleştirme ve ağı yeniden yapılandırma gibi tetikleyici komutları.
 
-     ![Northwind Traders Micro-Karşılama Merkezi panosunun ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Northwind Traders Micro-Karşılama Merkezi panosunun üst yarısındaki ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * Bir işlecin, yerine getirme Merkezi içindeki koşulları izlemek için kullanabileceği bir pano örneği görürsünüz. 
    * Karşılama Merkezi içindeki ağ geçidi cihazında çalışan yüklerin sistem durumunu izleyin.    
 
-     ![Northwind Traders Micro-Karşılama Merkezi panosunun ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Northwind Traders Micro-Karşılama Merkezi panosunun Botton yarısının ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>Cihaz şablonu
 Cihaz şablonları sekmesini seçerseniz, şablonun parçası olan iki farklı cihaz türü olduğunu görürsünüz: 
@@ -86,11 +86,14 @@ Cihaz grupları sekmesini seçerseniz, bu cihaz şablonlarının kendileri için
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam etmeyecekecekseniz uygulama şablonunu silin. **Yönetim** > **uygulaması ayarları**' na gidin ve **Sil**' i seçin.
+Bu uygulamayı kullanmaya devam etmeyecekecekseniz uygulama şablonunu silin. **Yönetim**  >  **uygulaması ayarları**' na gidin ve **Sil**' i seçin.
 
 ![Mikro-Karşılama Merkezi uygulama ayarları sayfasının ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Mikro Karşılama Merkezi Çözüm mimarisi](./architecture-micro-fulfillment-center.md)hakkında daha fazla bilgi edinin.
-* Diğer [Azure IoT Central perakende şablonları](./overview-iot-central-retail.md)hakkında daha fazla bilgi edinin.
-* [Azure IoT Central genel bakış](../preview/overview-iot-central.md)makalesini okuyun.
+
+Şu konular hakkında daha fazla bilgi edinin:
+> [!div class="nextstepaction"]
+> [Mikro-Karşılama Merkezi Çözüm mimarisi](./architecture-micro-fulfillment-center.md)
+* [Azure IoT Central perakende şablonları](./overview-iot-central-retail.md) hakkında daha fazla bilgi edinin
+* Diğer [Azure IoT Central genel bakış](../preview/overview-iot-central.md) hakkında daha fazla bilgi edinin
