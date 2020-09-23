@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 73e8f0de9f879498acb71e97fa47c81b3447252d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf35fada4233fbe43bc7f859c2414bfb8130714
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749605"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905725"
 ---
 # <a name="train-anomaly-detection-model-module"></a>Anomali algılama modeli modülünü eğitme
 
-Bu makalede, eğitilen bir algılama modeli oluşturmak için Azure Machine Learning tasarımcısında (Önizleme) anomali algılama modeli modülünün nasıl kullanılacağı açıklanır.
+Bu makalede, eğitilen bir algılama modeli oluşturmak için Azure Machine Learning tasarımcısında anomali algılama modeli modülünün nasıl kullanılacağı açıklanır.
 
 Modül, anomali algılama modeli için bir parametre kümesi ve etiketli olmayan bir veri kümesi olarak alır. Eğitim verileri için bir Etiketler kümesiyle birlikte eğitilen bir algılama modeli döndürür.  
 
@@ -53,5 +53,5 @@ Eğitim tamamlandıktan sonra:
 
 Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
 
-Tasarımcı modüllerine özgü hataların listesi için bkz. [Tasarımcı Için özel durumlar ve hata kodları (Önizleme)](designer-error-codes.md) .
+Tasarımcı modüllerine özgü hataların listesi için bkz. [Tasarımcı Için özel durumlar ve hata kodları](designer-error-codes.md) .
 '

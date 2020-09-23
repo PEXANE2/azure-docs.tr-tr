@@ -1,14 +1,14 @@
 ---
 title: Azure VM 'lerinde SAP HANA veritabanlarını geri yükleme
-description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarının nasıl geri yükleneceğini öğrenin.
+description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarının nasıl geri yükleneceğini öğrenin. Veritabanlarınızı ikincil bir bölgeye geri yüklemek için çapraz bölge geri yükleme özelliğini de kullanabilirsiniz.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375321"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986106"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanlarını geri yükleme
 
@@ -24,7 +24,7 @@ Azure Backup, Azure VM 'lerinde çalışan SAP HANA veritabanlarını şu şekil
 
 * Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesine geri yükleme yapın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir veritabanını geri yüklemeden önce aşağıdakilere göz önüne alın:
 
@@ -249,6 +249,51 @@ Geri yükleme türü olarak **tam & türev** seçtiyseniz şunları yapın:
 
     > [!NOTE]
     > Birden çok veritabanı kapsayıcısı (MDC), sistem DB bir hedef örneğe geri yüklendikten sonra, birinin ön kayıt betiğini yeniden çalıştırması gerekir. Yalnızca sonraki kiracı DB geri yüklemeleri başarılı olur. Daha fazla bilgi edinmek için [– MDC geri yükleme](backup-azure-sap-hana-database-troubleshoot.md#multiple-container-database-mdc-restore)bölümüne bakın.
+
+## <a name="cross-region-restore"></a>Çapraz bölge geri yükleme
+
+Geri yükleme seçeneklerinden biri olan çapraz bölge geri yükleme (CRR), Azure sanal makinelerinde barındırılan SAP HANA veritabanlarını bir Azure eşlenmiş bölgesi olan ikincil bir bölgede geri yüklemenize olanak tanır.
+
+Önizleme sırasında özelliğe eklemek için [başlamadan önce bölümünü](./backup-create-rs-vault.md#set-cross-region-restore)okuyun.
+
+CRR 'nin etkin olup olmadığını görmek için [çapraz bölge geri yükleme 'Yi yapılandırma](backup-create-rs-vault.md#configure-cross-region-restore) bölümündeki yönergeleri izleyin.
+
+### <a name="view-backup-items-in-secondary-region"></a>İkincil bölgedeki yedekleme öğelerini görüntüle
+
+CRR etkinse, yedekleme öğelerini ikincil bölgede görüntüleyebilirsiniz.
+
+1. Portaldan **Kurtarma Hizmetleri Kasası**  >  **yedekleme öğeleri**' ne gidin.
+1. İkincil bölgedeki öğeleri görüntülemek için **Ikincil bölge** ' yi seçin.
+
+>[!NOTE]
+>Yalnızca CRR özelliğini destekleyen yedekleme yönetim türleri listede gösterilir. Şu anda yalnızca ikincil bölge verilerinin bir ikincil bölgeye geri yüklenmesi için desteğe izin verilir.
+
+![İkincil bölgedeki yedekleme öğeleri](./media/sap-hana-db-restore/backup-items-secondary-region.png)
+
+![İkincil bölgedeki veritabanları](./media/sap-hana-db-restore/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>İkincil bölgede geri yükleme
+
+İkinci bölge geri yükleme kullanıcı deneyimi, birincil bölge geri yükleme kullanıcı deneyimiyle benzerdir. Geri yüklemeyi yapılandırmak için geri yükleme yapılandırma bölmesindeki Ayrıntılar yapılandırılırken yalnızca ikincil bölge parametreleri sağlamanız istenir.
+
+![Nereye ve nasıl geri yükleneceği](./media/sap-hana-db-restore/restore-secondary-region.png)
+
+>[!NOTE]
+>İkincil bölgedeki sanal ağın benzersiz olarak atanması gerekir ve bu kaynak grubundaki diğer VM 'Ler için kullanılamaz.
+
+![Geri yükleme tetikleme devam ediyor bildirimi](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>* Geri yükleme tetiklendikten ve veri aktarımı aşamasında geri yükleme işi iptal edilemez.
+>* İkincil bölgeye geri yüklemek için gereken Azure rolleri, birincil bölgeyle aynı olanlardır.
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>İkincil bölge geri yükleme işlerini izleme
+
+1. Portaldan **Kurtarma Hizmetleri Kasası**  >  **yedekleme işleri** ' ne gidin
+1. İkincil bölgedeki öğeleri görüntülemek için **Ikincil bölge** ' yi seçin.
+
+    ![Filtrelenen yedekleme işleri](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

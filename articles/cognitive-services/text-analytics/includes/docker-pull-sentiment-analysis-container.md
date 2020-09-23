@@ -9,19 +9,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: a3db0e2ffdd4a75f02634ca2227c3c41416d4f65
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 549ecf940c53267db6b3caa576c4c24db414337a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588433"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906035"
 ---
 #### <a name="docker-pull-for-the-sentiment-analysis-v3-container"></a>Yaklaşım Analizi v3 kapsayıcısı için Docker Pull
 
 Yaklaşım Analizi kapsayıcısı v3 kapsayıcısı, çeşitli dillerde kullanılabilir. Ingilizce kapsayıcısının kapsayıcısını indirmek için aşağıdaki komutu kullanın. 
 
 ```
-docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-en
+docker pull mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-en
 ```
 
 Kapsayıcıyı başka bir dile indirmek için `en` aşağıdaki dil kodlarından biriyle değiştirin. 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: b024010583ba1c6e0ffdf663f7335011ce212bf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414575"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905133"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimi karşılaştırması
 
@@ -26,7 +26,7 @@ Bu makale, derin öğrenme ile makine öğrenimini karşılaştırmanıza yardı
 
 Derin öğrenme ve makine öğrenimi vs. AI ' i anlamak için aşağıdaki tanımları göz önünde bulundurun:
 
-- **Derin öğrenme** , yapay sinir ağlarını temel alan makine öğrenmesinin bir alt kümesidir. Yapay sinir ağların yapısı birden çok giriş, çıkış ve gizli katmanlardan oluşuyorsa _öğrenme süreci_ _çok önemlidir._ Her katman, giriş verilerini bir sonraki katmanın belirli bir tahmine dayalı görev için kullanabileceği bilgilere dönüştüren birimleri içerir. Bu yapı sayesinde bir makine, kendi veri işleme aracılığıyla bilgi alabilir.
+- **Derin öğrenme** , yapay sinir ağlarını temel alan makine öğrenmesinin bir alt kümesidir. Yapay sinir ağların yapısı birden çok giriş, çıkış ve gizli katmanlardan oluşuyorsa _öğrenme süreci_ _çok önemlidir._ Her katman, giriş verilerini bir sonraki katmanın belirli bir tahmin görevi için kullanabileceği bilgilere dönüştüren birimler içerir. Bu yapı sayesinde bir makine, kendi veri işleme aracılığıyla bilgi alabilir.
 
 - **Makine öğrenimi** , makinelerin görevleri geliştirmek için deneyim kullanmasını sağlayan tekniklerin (derin öğrenme gibi) kullanıldığı yapay zekanın bir alt kümesidir. _Öğrenme süreci_ aşağıdaki adımlara dayalıdır:
 
@@ -96,7 +96,7 @@ Aşağıdaki bölümlerde en popüler yapay sinir Network typologies vardır.
 
 ### <a name="feedforward-neural-network"></a>Feedforward sinir ağı
 
-Feedforward sinir Network, yapay sinir Network 'ün en temel türüdür. Bir feedforward ağında, bilgiler giriş katmanından çıkış katmanına yalnızca bir yönde gider. Feedforward sinir Networks bir girişi bir dizi gizli katmana yerleştirerek bir girişi dönüştürür. Her katman bir dizi değilden oluşur ve her katman, daha önce katmandaki tüm neks 'e tam olarak bağlanır. Son tam bağlı katman (çıkış katmanı) oluşturulan tahminleri temsil eder.
+Feedforward sinir Network, yapay sinir Network 'ün en basit türüdür. Bir feedforward ağında, bilgiler giriş katmanından çıkış katmanına yalnızca bir yönde gider. Feedforward sinir Networks bir girişi bir dizi gizli katmana yerleştirerek bir girişi dönüştürür. Her katman bir dizi değilden oluşur ve her katman, daha önce katmandaki tüm neks 'e tam olarak bağlanır. Son tam bağlı katman (çıkış katmanı) oluşturulan tahminleri temsil eder.
 
 ### <a name="recurrent-neural-network"></a>Yinelenen sinir ağı
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: ecef318978194ac3773c54e2d9c960781086de65
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691874"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906355"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak belirli bir güvenlik uyarısına otomatik yanıt oluşturma (ARM şablonu)
 
@@ -62,7 +62,7 @@ Diğer Güvenlik Merkezi hızlı başlangıç şablonları için, bu [topluluğa
 
   - **Portal**:
 
-    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-securitycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
+    [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-securitycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
     Bu dağıtım seçeneği hakkında daha fazla bilgi edinmek için bkz. [GitHub deposundan şablon dağıtmak için dağıtım düğmesi kullanma](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button).
 
@@ -73,9 +73,7 @@ Diğer Güvenlik Merkezi hızlı başlangıç şablonları için, bu [topluluğa
 1. [Azure Portal](https://portal.azure.com), **Güvenlik Merkezi**'ni açın.
 1. Üst menü çubuğundan filtre simgesini seçin ve yeni iş akışı otomasyonunu dağıttığınız belirli bir abonelik seçin.
 1. Güvenlik Merkezi 'nin kenar çubuğundan, **iş akışı Otomasyonu 'nu** açın ve yeni Otomasyonunuzu denetleyin.
-
-    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Görüntü alt metni." lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
-
+    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Yapılandırılmış akışlarını otomatikleştirin listesi" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
     >[!TIP]
     > Aboneliğinizde çok sayıda iş akışı Otomasyonu varsa, **ada göre filtrele** seçeneğini kullanın. 
 
@@ -86,11 +84,9 @@ Artık gerekli değilse, Azure portal kullanarak iş akışı otomasyonunu silin
 1. [Azure Portal](https://portal.azure.com), **Güvenlik Merkezi**'ni açın.
 1. Üst menü çubuğundan filtre simgesini seçin ve yeni iş akışı otomasyonunu dağıttığınız belirli bir abonelik seçin.
 1. Güvenlik Merkezi 'nin kenar çubuğundan, **iş akışı Otomasyonu 'nu** açın ve silinecek Otomasyonu bulun.
-
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Görüntü alt metni." lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
-
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Bir iş akışı Otomasyonu kaldırma adımları" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. Silinecek öğe onay kutusunu seçin.
-1. Araç çubuğundan Sil ' i seçin.
+1. Araç çubuğundan **Sil**' i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

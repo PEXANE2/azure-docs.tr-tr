@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 21b207ece1a2a7fd6f218716912d4c4d2c2f1ee2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c2aa9023a7081387d38b9f7c6cfe8323300ad6e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753884"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898606"
 ---
 # <a name="convert-word-to-vector-module"></a>Kelimeyi vektör modülüne Dönüştür
 
-Bu makalede, bu görevleri yapmak için Azure Machine Learning Tasarımcısı 'nda (Önizleme) sözcüğü vector öğesine Dönüştür modülünün nasıl kullanılacağı açıklanmaktadır:
+Bu makalede, bu görevleri yapmak için Azure Machine Learning tasarımcısında sözcüğü vektör 'e dönüştürme modülünün nasıl kullanılacağı açıklanır:
 
 - Giriş olarak belirttiğiniz metnin yapı 'ları üzerinde çeşitli Word2Vec modellerini (Word2Vec, fasttext, Glove preeğitilen model) uygulayın.
 - Sözcük katıştırile bir sözlük oluşturun.
@@ -93,7 +93,7 @@ Modülün bir çıkışı vardır:
 
 + **Katıştırıla sahip sözlük**: oluşturulan sözlüğü, her sözcüğün gömülmesi ile birlikte içerir. Bir boyut bir sütun kaplar.
 
-Aşağıdaki örnek, sözcüğü vektör modülünün nasıl çalıştığını gösterir. Bu modülü, Azure Machine Learning (Önizleme) ' de belirtilen önceden işlenmiş Vil. LIB SP 500 veri kümesine varsayılan ayarlarla uygular.
+Aşağıdaki örnek, sözcüğü vektör modülünün nasıl çalıştığını gösterir. Bu modülü, Azure Machine Learning ' de sağlanmış olan, ön işlenmiş Vil. LIB SP 500 veri kümesine varsayılan ayarlarla uygular.
 
 ### <a name="source-dataset"></a>Kaynak veri kümesi
 
@@ -149,4 +149,4 @@ Bu bölüm, sık sorulan soruların ipuçlarını ve yanıtlarını içerir.
 
 Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
 
-Tasarımcı (Önizleme) modüllerine özgü hataların listesi için bkz. [Machine Learning hata kodları](designer-error-codes.md).
+Tasarımcı modüllerine özgü hataların listesi için bkz. [Machine Learning hata kodları](designer-error-codes.md).

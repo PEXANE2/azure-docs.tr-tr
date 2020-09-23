@@ -5,21 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: b78c2b93a9427105ce2cc0ad8bd5d2b995c834ae
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77209435"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976287"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir ExpressRoute ilişkilendirmesi oluşturma
 
 Bu öğreticide, Azure 'daki kaynaklarınıza bir ExpressRoute bağlantı hattı üzerinden bağlanmak için sanal WAN 'ın nasıl kullanılacağı gösterilmektedir. Sanal WAN ve sanal WAN kaynakları hakkında daha fazla bilgi için bkz. [sanal WAN 'A genel bakış](virtual-wan-about.md).
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Sanal WAN oluşturma
@@ -122,7 +122,7 @@ Bağlanmak için verdiğiniz yetkilendirme anahtarını ve devre URI 'sini kulla
 
 1. ExpressRoute sayfasında **+ kullan yetkilendirme anahtarı** ' na tıklayın.
 
-   ![dınız](./media/virtual-wan-expressroute-portal/redeem.png "dınız")
+   ![Ekran görüntüsünde, kullan yetkilendirme anahtarı seçili bir sanal hub için ExpressRoute gösterilmektedir.](./media/virtual-wan-expressroute-portal/redeem.png "dınız")
 2. Kullanma yetkilendirme anahtarı sayfasında, değerleri girin.
 
    ![anahtar değerlerini kullanma](./media/virtual-wan-expressroute-portal/redeemkey2.png "anahtar değerlerini kullanma")

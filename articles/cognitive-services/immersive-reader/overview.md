@@ -1,7 +1,7 @@
 ---
-title: Tam ekran okuyucu API nedir?
+title: Tam ekran okuyucu nedir?
 titleSuffix: Azure Cognitive Services
-description: Modern okuyucu API 'SI, kişileri öğrenme farklılığı veya yeni okuyucular ve dil öğrenimine yardımcı olmak için kullanılabilen bir araçtır.
+description: Modern okuyucu, öğrenme farkları olan kişilerin öğrenimine ve yeni okuyucular ve dil öğrenimine yardımcı olmak için tasarlanan bir araçtır.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,57 +10,72 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: b9efe70e8658e25d61decffbe44dec776890b17b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: cog-serv-seo-aug-2020
+keywords: okuyucular, dil öğrenenler, resim görüntüleme, okuma, okuma içeriği, çeviri
+ms.openlocfilehash: a537845c0256316f9c47317a8805fa989a624f60
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267282"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985749"
 ---
 # <a name="what-is-immersive-reader"></a>Tam Ekran Okuyucu nedir?
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+[Modern okuyucu](https://www.onenote.com/learningtools) , yeni okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştirmek üzere kanıtlanmış teknikler uygulayan, benzer şekilde tasarlanmış bir araçtır. Modern okuyucu istemci kitaplığı ile, Web uygulamalarınızı geliştirmek için Microsoft Word ve Microsoft One notunda kullanılan teknolojinin aynısını kullanabilirsiniz. 
 
-[Modern okuyucu](https://www.onenote.com/learningtools) , gelişmekte olan okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştiren, benzer şekilde tasarlanmış bir araçtır.
+## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>Modern okuyucu kullanarak okuma erişilebilirliği geliştirme 
 
-Tam Ekran Okuyucu SDK’sını kullanarak web uygulamanızda Tam Ekran Okuyucu’yu kullanabilirsiniz.
+Derinlikli okuyucu, okuma daha kolay ve herkes için daha erişilebilir hale getirmek için tasarlanmıştır. Daha basit bir okuyucu 'nın temel özelliklerine göz atalım.
 
-## <a name="what-does-immersive-reader-do"></a>Modern okuyucu ne yapar?
+### <a name="isolate-content-for-improved-readability"></a>İyileştirilmiş okunabilirlik için içerik yalıtma
 
-Derinlikli okuyucu herkes için daha fazla erişilebilir hale getirmek üzere tasarlanmıştır.
+Modern okuyucu, okunabilirliği artırmak için içeriği yalıtır. 
 
-* En küçük okuma görünümündeki içeriği gösterir
+  ![Modern okuyucuyla gelişmiş okunabilirlik için içerik yalıtma](./media/immersive-reader.png)
 
-  ![Tam Ekran Okuyucu](./media/immersive-reader.png)
+### <a name="display-pictures-for-common-words"></a>Ortak sözcüklerin resimlerini görüntüleme
 
-* Yaygın olarak kullanılan sözcüklerin resimlerini görüntüler
+Yaygın olarak kullanılan şartlar için, derinlikli okuyucu bir resim görüntüler.
 
-  ![Resim sözlüğü](./media/picture-dictionary.png)
+  ![Modern okuyucu ile resim sözlüğü](./media/picture-dictionary.png)
 
-* İsimler, fiiller, sıfatlar ve zarflara önemli noktalar
+### <a name="highlight-parts-of-speech"></a>Konuşma parçalarını Vurgula
 
-  ![Konuşma bölümleri](./media/parts-of-speech.png)
+Tam ekran okuyucu, fiilleri, isimleri, zamirler ve daha fazlasını vurgulayarak konuşma ve dilbilgisini anlamak için kullanılabilir.
 
-* İçeriğinizi sizin için sesli okur
+  ![Tam ekran okuyucu ile konuşma parçalarını göster](./media/parts-of-speech.png)
 
-  ![Sesli oku](./media/read-aloud.png)
+### <a name="read-content-aloud"></a>İçeriği sesli oku
 
-* İçeriğinizi başka bir dile çevirir
+Konuşma senmetini (veya metinden konuşmaya), okuyucularınızın sesli okunacak metin seçmesini sağlayan, derinlikli okuyucu hizmetine bakmış olur. 
 
-  ![Çeviri](./media/translation.png)
+  ![Tam ekran okuyucu ile metni sesli oku](./media/read-aloud.png)
 
-* Sözcükleri hecelere ayırır
+### <a name="translate-content-in-real-time"></a>İçeriği gerçek zamanlı olarak çevir
 
-  ![Heceye birleşme](./media/syllabification.png)
+Modern okuyucu, metni gerçek zamanlı olarak birçok dile çevirebilir. Bu, okuyucuların yeni bir dil öğreniminde daha fazla bilgi edinilmesine yardımcı olur.
+
+  ![Tam ekran okuyucu ile metin çevirme](./media/translation.png)
+
+### <a name="split-words-into-syllables"></a>Sözcükleri hecelere Böl
+
+Modern okuyucu sayesinde, okunabilirliği artırmak veya yeni sözcükleri kesmek için kelimeleri hecelere kesebilirsiniz.
+
+  ![Derinlikli okuyucu ile sözcükleri hecelere bölün](./media/syllabification.png)
 
 ## <a name="how-does-immersive-reader-work"></a>Modern okuyucu nasıl çalışır?
 
-Modern okuyucu, modern okuyucu JavaScript SDK 'Sı kullanılarak çağrıldığında, mevcut Web uygulamanızın en üstünde bir ile görüntülenen tek başına bir Web uygulamasıdır `iframe` . Modern okuyucuyu başlatmak için API 'YI çağırdığınızda, tam ekran okuyucusunda göstermek istediğiniz içeriği belirtin. SDK 'mız, `iframe` okuma ve metin okuma, çeviri vb. için içeriği işleyen, tam ekran okuyucu arka uç hizmeti ile iletişim oluşturma ve stillendirmeyi idare eder.
+Modern okuyucu, tek başına bir Web uygulamasıdır. Modern okuyucu istemci kitaplığı kullanılarak çağrıldığında, içindeki mevcut Web uygulamanızın üstünde görüntülenir `iframe` . WEP uygulamanız, derinlikli okuyucu hizmetini çağırdığında, okuyucunun gösterileceği içeriği belirlersiniz. Tam ekran okuyucusu istemci kitaplığı, `iframe` tam ekran okuyucusu arka uç hizmetiyle ve iletişimini oluşturma ve stillendirilmesini işler. Modern okuyucu hizmeti, konuşma parçaları, metin okuma, çeviri ve daha fazlasına ait içeriği işler.
+
+## <a name="get-started-with-immersive-reader"></a>Modern okuyucuyla çalışmaya başlama
+
+Tam ekran okuyucu istemci kitaplığı C#, JavaScript, Java (Android), Kotlin (Android) ve Swift (iOS) ile kullanılabilir. Kullanmaya başlayın:
+
+* [Hızlı başlangıç: tam ekran okuyucusu istemci kitaplığını kullanma](quickstarts/client-libraries.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tam Ekran Okuyucu’yu kullanmaya başlama:
 
-* [Hızlı](./quickstarts/client-libraries.md?pivots=programming-language-csharp) başlangıçlara atlayın
-* [GitHub 'Da modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) keşfet
-* [Tam ekran okuyucu SDK başvurusunu](./reference.md) okuyun
+* [Tam ekran okuyucusu istemci kitaplığı başvurusunu](./reference.md) okuyun
+* [GitHub 'Da modern okuyucu istemci kitaplığını](https://github.com/microsoft/immersive-reader-sdk) keşfet

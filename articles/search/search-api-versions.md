@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 73037ac3725ad1e7e9dd84597936c47406244630
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/22/2020
+ms.openlocfilehash: ca4dccb82ae6a907a2f7e944174b8ecc05a443b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949890"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986902"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Bilişsel Arama API sürümleri
 
@@ -53,7 +53,7 @@ Aşağıdaki tabloda, Arama Hizmeti REST API geçerli ve daha önce yayımlanmı
 
 Arama hizmetinde içerik oluşturun ve yönetin.
 
-| Sürüm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Durum | Geriye dönük uyumluluk sorunu |
+| Sürüm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Durum | Açıklama |
 |-------------------------|--------|------------------------------|
 | [Arama 2020-06-30](/rest/api/searchservice/index)| Dengeli | Arama REST API 'lerinin en yeni kararlı sürümü, ilgi Puanlama ve genellikle bilgi deposu için kullanılabilirlik ile yapılır.|
 | [Arama 2020-06-30-Preview](/rest/api/searchservice/index-preview)| Önizleme | Kararlı sürümle ilişkili önizleme sürümü. Birden çok [Önizleme özelliği](search-api-preview.md)içerir. |
@@ -72,12 +72,14 @@ Arama hizmetinde içerik oluşturun ve yönetin.
 
 Bir arama hizmeti oluşturup yapılandırın ve API anahtarlarını yönetin.
 
-| Sürüm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Durum | Geriye dönük uyumluluk sorunu |
+| Sürüm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Durum | Açıklama |
 |-------------------------|--------|------------------------------|
-| [Yönetim 13.03.2020](/rest/api/searchmanagement/) | Dengeli | Uç nokta korumasında ilerleme ile yönetim REST API 'lerinin en yeni kararlı sürümü. Özel bağlantı aracılığıyla özel [uç nokta](service-create-private-endpoint.md) ve yeni hizmetler IÇIN [ağ IP kuralları](service-configure-firewall.md) ekler. |
-| [Yönetim 2019-10-01-Preview](/rest/api/searchmanagement/index-2019-10-01-preview) | Önizleme  | Sürüm numarasına rağmen bu, hala yönetim REST API 'lerinin güncel önizleme sürümüdür. Şu anda önizleme özelliği yok. Tüm Önizleme özellikleri kısa bir süre önce genel kullanıma geçti. |
-| Yönetim 2015-08-19  | Dengeli | Yönetim REST API 'lerinin ilk genel olarak kullanılabilir sürümü. Hizmet sağlama, ölçek artırma ve API anahtar yönetimi sağlar. |
-| Yönetim 2015-08-19-Önizleme | Önizleme | Yönetim REST API 'lerinin ilk önizleme sürümü. |
+| [Yönetim 2020-08-01](https://docs.microsoft.com/rest/api/searchmanagement/) | Dengeli | Yönetim REST API 'lerinin en yeni kararlı sürümü. Önizleme sürümünde belirtilenler hariç tüm giden erişilen kaynaklar için genel kullanıma açık paylaşılan özel bağlantı kaynağı desteğini ekler |
+| [Yönetim 2020-08-01-Önizleme](https://docs.microsoft.com/rest/api/searchmanagement/index-preview) | Önizleme  | Şu anda önizlemede: Azure Işlevleri için paylaşılan özel bağlantı kaynağı ve MySQL için Azure veritabanı desteği. |
+| Yönetim 13.03.2020  | Dengeli | Özel bağlantı aracılığıyla özel [uç nokta](service-create-private-endpoint.md) ve yeni hizmetler IÇIN [ağ IP kuralları](service-configure-firewall.md) ekler. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01)bakın. |
+| Yönetim 2019-10-01-Preview | Önizleme  | Bu listede tanıtılan önizleme özelliği yoktu. Bu önizleme, işlevsel olarak 2020-03-13 ile eşdeğerdir. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview)bakın. |
+| Yönetim 2015-08-19  | Dengeli | Yönetim REST API 'lerinin ilk genel olarak kullanılabilir sürümü. Hizmet sağlama, ölçek artırma ve API anahtar yönetimi sağlar. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)bakın. |
+| Yönetim 2015-08-19-Önizleme  | Önizleme | Yönetim REST API 'lerinin ilk önizleme sürümü. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19-preview)bakın. |
 
 ## <a name="azure-sdk-for-net"></a>.NET için Azure SDK
 
@@ -85,19 +87,17 @@ Aşağıdaki tabloda, daha güncel SDK sürümlerinin bağlantıları verilmişt
 
 | SDK sürümü | Durum | Açıklama |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documstaları 11,0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2020-06-30 REST API, ancak henüz, coğrafi filtreler veya [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet)'ı desteklemez. |
+| [Azure.Search.Documstaları 11,0](/dotnet/api/overview/azure/search.documents-readme) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2020-06-30 REST API, ancak henüz, coğrafi filtreler veya [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder)'ı desteklemez. |
 | [Microsoft. Azure. Search 10,0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Dengeli | Yayınlanan 2019 Mayıs. Arama REST API-Version = 2019-05-06 ' i hedefler.|
-| [Microsoft. Azure. Search 8,0-Önizleme](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | Önizleme | Yayın tarihi 2019 Nisan. Arama REST API-Version = 2019-05 -06-Preview ' i hedefler.|
-| [Microsoft. Azure. Management. Search 3.0.0](/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler.  |
-
-Microsoft. Azure. Search 'ün önceki sürümleri hakkında daha fazla bilgi için, herhangi bir yayın için bir [NuGet paketi sayfasına](https://www.nuget.org/packages/Microsoft.Azure.Search/) gidin, **Sürüm geçmişine**doğru kaydırın ve sürümlerin tam listesini görüntülemek için bölümü genişletin.
+| [Microsoft. Azure. Management. Search 4.0.0](/dotnet/api/overview/azure/search/management) | Dengeli | Yönetim REST API-Version = 2020-08-01 ' i hedefler.  |
+| Microsoft. Azure. Management. Search 3.0.0 | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler.  |
 
 ## <a name="azure-sdk-for-java"></a>Java için Azure SDK
 
 | SDK sürümü | Durum | Açıklama  |
 |-------------|--------|------------------------------|
-| [Java Azure-Arama-belgeler 11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents/11.0.0/index.html) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
-| [Java yönetim Istemcisi 1.35.0](/java/api/overview/azure/search/management?view=azure-java-stable) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler. |
+| [Java Azure-Arama-belgeler 11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
+| [Java yönetim Istemcisi 1.35.0](/java/api/overview/azure/search/management) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler. |
 
 ## <a name="azure-sdk-for-javascript"></a>JavaScript için Azure SDK
 
@@ -110,5 +110,5 @@ Microsoft. Azure. Search 'ün önceki sürümleri hakkında daha fazla bilgi iç
 
 | SDK sürümü | Durum | Açıklama  |
 |-------------|--------|------------------------------|
-| [Python Azure-Arama-belgeler 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
-| [Python Azure-MGMT-arama 1,0](/python/api/overview/azure/search?view=azure-python) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler. |
+| [Python Azure-Arama-belgeler 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
+| [Python Azure-MGMT-arama 1,0](/python/api/overview/azure/search) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler. |

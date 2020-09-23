@@ -1,19 +1,19 @@
 ---
 title: 'P2S VPN istemci yapılandırma dosyaları oluşturun & install: sertifika kimlik doğrulaması'
 titleSuffix: Azure VPN Gateway
-description: P2S sertifikası kimlik doğrulaması için Windows, Linux, Linux (Strongswa) ve Mac OS X VPN istemci yapılandırma dosyaları oluşturun ve bunları yükler.
+description: P2S sertifikası kimlik doğrulaması için Windows, Linux, Linux (Strongswa) ve macOS X VPN istemci yapılandırma dosyaları oluşturun ve bunları yükler.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 17a9339fff27a0fbd7fa389933d21ef85e29248b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 3a7a9711f04a4b54459d57a05ae65b4eedf1d6b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420787"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986648"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Yerel Azure sertifikası kimlik doğrulaması P2S yapılandırmaları için VPN istemcisi yapılandırma dosyalarını oluşturma ve yükleme
 
@@ -96,7 +96,7 @@ Mac 'te sertifika kimlik doğrulaması için yerel VPN istemcisini yapılandırm
 
    **Arabirim** DEĞERI ' VPN ' ve **VPN türü** değeri ' Ikev2 '. **Hizmet adı** alanında profil için bir ad belirtin ve ardından **Oluştur** ' a tıklayarak VPN istemci bağlantı profilini oluşturun.
 
-   ![network](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![Ekran görüntüsü, bir arabirim seçme, VPN türü seçme ve hizmet adı girme seçeneğine sahip ağ penceresini gösterir.](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. **Genel** klasörde, **VpnSettings.xml** dosyasından, **VPNServer** etiket değerini kopyalayın. Bu değeri, profilin **sunucu adresine** ve **uzak kimlik** alanlarına yapıştırın.
 
    ![sunucu bilgileri](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -106,14 +106,14 @@ Mac 'te sertifika kimlik doğrulaması için yerel VPN istemcisini yapılandırm
 
    * Catalina için **hiçbiri** ' ni ve ardından **sertifika**' ı seçin. Doğru sertifikayı **seçin** :
    
-   ![Catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+   ![Ekran görüntüsü, kimlik doğrulama ayarları ve sertifika seçili için seçili olmayan ağ penceresini gösterir.](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
 
 6. **Seç...** öğesine tıklayın kimlik doğrulaması için kullanmak istediğiniz istemci sertifikasını seçmek için. Bu, adım 2 ' de yüklediğiniz sertifikadır.
 
-   ![sertifika](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
+   ![Ekran görüntüsü, bir sertifika seçebileceğiniz kimlik doğrulama ayarlarına sahip ağ penceresini gösterir.](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Bir kimlik seçin seçim** yapabileceğiniz sertifikaların listesini görüntüler. Doğru sertifikayı seçip **devam**' a tıklayın.
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![Ekran görüntüsü, uygun sertifikayı seçebileceğiniz bir kimlik seçin iletişim kutusu gösterir.](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. **Yerel kimlik** alanında, sertifikanın (adım 6 ' dan) adını belirtin. Bu örnekte, "ikev2Client.com" olur. Ardından, değişiklikleri kaydetmek için **Uygula** düğmesine tıklayın.
 
    ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
@@ -213,4 +213,4 @@ Ubuntu 18.0.4 üzerinde aşağıdaki yönergeler oluşturulmuştur. Ubuntu 16.0.
 P2S bağlantılarında sorun gidermek için aşağıdaki makalelere bakın:
 
   * [Azure Noktadan siteye bağlantıları sorunlarını giderme](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-  * [Mac OS X VPN istemcilerinden VPN bağlantıları sorunlarını giderme](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+  * [MacOS X VPN istemcilerinden VPN bağlantıları sorunlarını giderme](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)

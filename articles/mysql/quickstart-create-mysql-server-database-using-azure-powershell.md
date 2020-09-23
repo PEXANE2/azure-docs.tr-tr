@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: f32f6c4366aac1a39dbc1bc4af3b945e259b3280
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4444f86f094d46419d7ff4b2f80609da007c4594
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543546"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906140"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak MySQL için Azure veritabanı sunucusu oluşturma
 
@@ -75,7 +75,7 @@ Aşağıdaki tabloda, cmdlet 'inin yaygın olarak kullanılan parametrelerinin v
 
 **SKU** parametresi değeri, aşağıdaki örneklerde gösterildiği gibi **fiyatlandırma katmanı \_ işlem oluşturma \_ sanal çekirdeklerini** izler.
 
-- `-Sku B_Gen5_1`Temel, Gen 5 ve 1 sanal çekirdekle eşlenir. Bu seçenek, kullanılabilen en küçük SKU ' dır.
+- `-Sku B_Gen5_1` Temel, Gen 5 ve 1 sanal çekirdekle eşlenir. Bu seçenek, kullanılabilen en küçük SKU ' dır.
 - `-Sku GP_Gen5_32` Genel Amaçlı, Gen 5 ve 32 sanal çekirdekle eşleşir.
 - `-Sku MO_Gen5_2` Bellek için iyileştirilmiş, Gen 5 ve 2 sanal çekirdekle eşleşir.
 
@@ -201,13 +201,13 @@ Ek komutlar için bkz. [MySQL 5.7 Başvuru Kılavuzu - Bölüm 4.5.1](https://de
 
 1. **Setup New Connection** (Yeni Bağlantı Oluştur) iletişim kutusundaki **Parameters** (Parametreler) sekmesine aşağıdaki bilgileri girin:
 
-   ![yeni bağlantı oluştur](./media/quickstart-create-mysql-server-database-using-azure-powershell/setup-new-connection.png)
+   :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-powershell/setup-new-connection.png" alt-text="yeni bağlantı oluştur":::
 
     |    **Ayar**    |           **Önerilen değer**           |                      **Açıklama**                       |
     | ----------------- | --------------------------------------- | ---------------------------------------------------------- |
     | Bağlantı Adı   | Bağlantım                           | Bu bağlantı için bir etiket belirtin                        |
     | Bağlantı Yöntemi | Standart (TCP/IP)                       | MySQL için Azure veritabanı 'na bağlanmak için TCP/IP protokolünü kullanma |
-    | Ana Bilgisayar Adı          | `mydemoserver.mysql.database.azure.com` | Daha önce not ettiğiniz sunucu adı                           |
+    | Konak adı          | `mydemoserver.mysql.database.azure.com` | Daha önce not ettiğiniz sunucu adı                           |
     | Bağlantı noktası              | 3306                                    | MySQL için varsayılan bağlantı noktası                                 |
     | Kullanıcı adı          | myadmin@mydemoserver                    | Daha önce not ettiğiniz Sunucu Yöneticisi oturum açma bilgileri                |
     | Parola          | *************                           | Daha önce yapılandırdığınız Yönetici hesabı parolasını kullanın      |
@@ -237,4 +237,4 @@ Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [PowerShell ile bir bağlantı dizesi oluşturma-MySQL için Azure veritabanı](connect-powershell.md)
+> [PowerShell kullanarak MySQL için Azure veritabanı tasarlama](tutorial-design-database-using-powershell.md)

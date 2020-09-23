@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: f29f43234f1541abeb448e722d0b72ef7c0221c9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4a116d06f5feb3fe402e7f64b9bccd5531b210c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401733"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986579"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Kullanıma sunulan yolları izlemek için özel uyarılar yapılandırma
 
@@ -299,7 +299,7 @@ Yineleme zamanlaması tetikleyicisinde, zaman dilimini ve bu iş akışını yin
 
 İş akışı yapılandırmasının sonunda, iş akışını birkaç kez çalıştırarak ve sonra **çalıştırma geçmişinde**sonucu doğrulayarak yinelenme sıklığının tutarlılığını kontrol edebilirsiniz.
 
-:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="Yineleme" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="Ekran görüntüsü yineleme aralığı ve sıklık değerlerini gösterir." lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3. iş oluşturma
 
@@ -320,7 +320,7 @@ Mantıksal uygulama, bağlayıcılar ve diğer uygulamalara, hizmetlere ve platf
 
 5. **Iş oluştur** sayfasında, hizmet sorumlusu Otomasyon hesabını barındıran **kaynak grubunda** "okuyucu" rolüne ve **Otomasyon hesabında**"Otomasyon işi operatörü" ' ne sahip olmalıdır. Ayrıca, **runbook adını** yeni bir parametre olarak eklediğinizi doğrulayın.
 
-   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="Roller" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="Ekran görüntüsünde, runbook adını doğrulayabileceğiniz Tekrardaki iş değeri oluşturma işlemi gösterilir." lightbox="./media/custom-route-alert-portal/roles-expand.png":::
 
 ### <a name="4-get-the-job-output"></a><a name="output"></a>4. iş çıktısını alın
 
@@ -343,7 +343,7 @@ Mantıksal uygulama, bağlayıcılar ve diğer uygulamalara, hizmetlere ve platf
 
 3. **İçerik** kutusunun içine tıklayın. Dinamik içerik listesi göründüğünde **içerik**' i seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="İçerik" lightbox="./media/custom-route-alert-portal/content-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Ekran görüntüsünde Içerik seçili olan JSON ayrıştırma iletişim kutusu gösterilir." lightbox="./media/custom-route-alert-portal/content-expand.png":::
 
 4. JSON ayrıştırılırken bir şema olması gerekir. Şema, Automation runbook 'un çıktısı kullanılarak oluşturulabilir. Yeni bir Web tarayıcı oturumu açın, Otomasyon Runbook 'unu çalıştırın ve çıktıyı alın. **JSON veri işlemleri eylemini Logic Apps** döndürün. Sayfanın en altında, **şema oluşturmak için örnek yük kullan**' ı seçin.
 
@@ -363,7 +363,7 @@ Mantıksal uygulama, bağlayıcılar ve diğer uygulamalara, hizmetlere ve platf
 
 1. **İş çıkışı al eyleminin**altında **yeni adım**' ı seçin. Arama kutusunda **değişkenleri**bulun ve seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Değişkenler":::
+   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Ekran görüntüsü, arama kutusunda değişkenle ve seçilen değişkenlerde bir eylem Seç iletişim kutusunu gösterir.":::
 
 2. **Eylemler** listesinden **değişkeni Başlat** eylemini seçin.
 
@@ -371,7 +371,7 @@ Mantıksal uygulama, bağlayıcılar ve diğer uygulamalara, hizmetlere ve platf
 
 3. Değişkenin adını belirtin. **Tür**için **dize**' yi seçin. Değişkenin **değeri** daha sonra iş akışında atanır.
 
-   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="Dize" lightbox="./media/custom-route-alert-portal/string-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="Ekran görüntüsü, bir ad, tür ve değer girebileceğiniz başlatma değişkeniyle ilişkili JSON 'u gösterir." lightbox="./media/custom-route-alert-portal/string-expand.png":::
 
 ### <a name="7-create-a-for-each-action"></a><a name="cycles-json"></a>7. bir "for each" eylemi oluşturun
 
@@ -379,7 +379,7 @@ JSON bir kez ayrıştırıldıktan sonra **JSON veri Işlemini Ayrıştır** eyl
 
 1. **Değişken Başlat**altında **Eylem Ekle**' yi seçin. Arama kutusuna filtreniz olarak "for each" yazın.
 
-   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Denetim":::
+   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Ekran görüntüsü, arama kutusu ve Denetim seçili her biri için bir eylem Seç iletişim kutusunu gösterir.":::
 
 2. **Eylemler** listesinden **her denetim için**eylemi seçin.
 
@@ -387,7 +387,7 @@ JSON bir kez ayrıştırıldıktan sonra **JSON veri Işlemini Ayrıştır** eyl
 
 3. **Önceki adımlardan bir çıkış seçin** metin kutusunda tıklayın. **Dinamik içerik** listesi göründüğünde, ayrıştırılmış JSON 'dan çıktı olan **gövdeyi**seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="Gövde":::
+   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="Ekran görüntüsü, önceki adımlardan bir çıkış seçin metin kutusunda bulunan her biri Için ile ilişkili başlatılmış değişkeni gösterir.":::
 
 4. Her JSON gövdesi öğesi için bir koşul ayarlamak istiyoruz. Eylem grubundan **Denetim**' i seçin.
 

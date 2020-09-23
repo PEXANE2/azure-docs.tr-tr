@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge sistem gereksinimleri | Microsoft Docs
-description: Azure Stack Edge için yazılım ve ağ gereksinimleri hakkında bilgi edinin
+title: Microsoft Azure Stack Edge Pro sistem gereksinimleri | Microsoft Docs
+description: Azure Stack Edge Pro için yazılım ve ağ gereksinimleri hakkında bilgi edinin
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 921dcb05401c61a9fb581595c20112e67f696c5e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a1a0462b82629b16bd8ccbe269fb1a917357d542
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371320"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883510"
 ---
-# <a name="azure-stack-edge-system-requirements"></a>Azure Stack Edge sistem gereksinimleri
+# <a name="azure-stack-edge-pro-system-requirements"></a>Azure Stack Edge Pro sistem gereksinimleri
 
-Bu makalede Microsoft Azure Stack Edge çözümünüz ve Azure Stack Edge 'e bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Azure Stack kenarını dağıtmadan önce bilgileri dikkatlice incelemenizi öneririz. Dağıtım ve sonraki işlemler sırasında gerektiğinde bu bilgilere geri başvurabilirsiniz.
+Bu makalede Microsoft Azure Stack Edge Pro çözümünüz ve Azure Stack Edge Pro 'ya bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Azure Stack Edge Pro 'Yu dağıtmadan önce bilgileri dikkatlice incelemenizi öneririz. Dağıtım ve sonraki işlemler sırasında gerektiğinde bu bilgilere geri başvurabilirsiniz.
 
-Azure Stack Edge için sistem gereksinimleri şunlardır:
+Azure Stack Edge Pro için sistem gereksinimleri şunlardır:
 
 - **Konaklar Için yazılım gereksinimleri** -desteklenen platformları, yerel yapılandırma kullanıcı arabirimi için TARAYıCıLARı, SMB istemcilerini ve cihaza erişen istemciler için ek gereksinimleri açıklar.
 - **Cihaz Için ağ gereksinimleri** -fiziksel cihazın çalışması için tüm ağ gereksinimleri hakkında bilgi sağlar.
@@ -46,9 +46,9 @@ Azure Stack Edge için sistem gereksinimleri şunlardır:
 
 ## <a name="networking-port-requirements"></a>Ağ bağlantı noktası gereksinimleri
 
-### <a name="port-requirements-for-azure-stack-edge"></a>Azure Stack Edge için bağlantı noktası gereksinimleri
+### <a name="port-requirements-for-azure-stack-edge-pro"></a>Azure Stack Edge Pro için bağlantı noktası gereksinimleri
 
-Aşağıdaki tabloda SMB, bulut veya Yönetim trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* *içinde* , gelen istemci, cihazınıza erişim talep ettiği yöne başvurur. *Out* veya *Outbound* , Azure Stack Edge cihazınızın verileri dışarıdan gönderdiği yönü (örneğin, internet 'e giden) ifade eder.
+Aşağıdaki tabloda SMB, bulut veya Yönetim trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* *içinde* , gelen istemci, cihazınıza erişim talep ettiği yöne başvurur. *Out* veya *Outbound* , Azure Stack Edge Pro cihazınızın verileri dışarıdan gönderdiği yönü (örneğin, internet 'e giden) ifade eder.
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
@@ -66,9 +66,9 @@ Tüm bilgiler için [IoT Edge dağıtımı Için güvenlik duvarı ve bağlantı
 
 ## <a name="url-patterns-for-firewall-rules"></a>Güvenlik duvarı kuralları için URL desenleri
 
-Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL desenlerine göre gelişmiş güvenlik duvarı kuralları yapılandırabilir. Azure Stack Edge cihazınız ve hizmet, Azure Service Bus, Azure Active Directory Access Control, depolama hesapları ve Microsoft Update sunucuları gibi diğer Microsoft uygulamalarına bağımlıdır. Bu uygulamalarla ilişkili URL desenleri güvenlik duvarı kurallarını yapılandırmak için kullanılabilir. Bu uygulamalarla ilişkili URL desenlerinin değiştirebileceğini anlamak önemlidir. Bu değişiklikler, ağ yöneticisinin Azure Stack Edge için güvenlik duvarı kurallarını izlemek ve gerektiğinde güncelleştirilmesi gerekir.
+Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL desenlerine göre gelişmiş güvenlik duvarı kuralları yapılandırabilir. Azure Stack Edge Pro cihazınız ve hizmet, Azure Service Bus, Azure Active Directory Access Control, depolama hesapları ve Microsoft Update sunucuları gibi diğer Microsoft uygulamalarına bağımlıdır. Bu uygulamalarla ilişkili URL desenleri güvenlik duvarı kurallarını yapılandırmak için kullanılabilir. Bu uygulamalarla ilişkili URL desenlerinin değiştirebileceğini anlamak önemlidir. Bu değişiklikler, ağ yöneticisinin Azure Stack Edge Pro ve gerektiğinde güvenlik duvarı kurallarını izlemesini ve güncelleştirmesini gerektirir.
 
-Çoğu durumda serbest duran Azure Stack Edge sabit IP adreslerine bağlı olarak, giden trafiğe yönelik güvenlik duvarı kurallarınızı ayarlamanızı öneririz. Bununla birlikte, güvenli ortamlar oluşturmak için gerekli olan gelişmiş güvenlik duvarı kurallarını ayarlamak için aşağıdaki bilgileri kullanabilirsiniz.
+Çoğu durumda serbest olan Azure Stack Edge Pro sabit IP adreslerine bağlı olarak, giden trafiğe yönelik güvenlik duvarı kurallarınızı ayarlamanızı öneririz. Bununla birlikte, güvenli ortamlar oluşturmak için gerekli olan gelişmiş güvenlik duvarı kurallarını ayarlamak için aşağıdaki bilgileri kullanabilirsiniz.
 
 > [!NOTE]
 > - Cihaz (kaynak) IP 'Leri her zaman bulut özellikli tüm ağ arabirimlerine ayarlanmalıdır.
@@ -104,7 +104,7 @@ Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL dese
 
 ## <a name="compute-sizing-considerations"></a>İşlem boyutlandırma değerlendirmeleri
 
-Azure Stack Edge cihazınızda yeterli kapasiteye sahip olduğunuzdan emin olmak ve cihazınızdan en iyi performansı elde etmek için Çözümünüzü geliştirirken ve test ederken deneyiminizi kullanın.
+Azure Stack Edge Pro cihazınızda yeterli kapasiteye sahip olduğunuzdan emin olmak için Çözümünüzü geliştirirken ve test ederken deneyiminizi kullanın ve cihazınızdan en iyi performansı elde edin.
 
 Dikkate almanız gereken faktörler şunlardır:
 
@@ -123,16 +123,16 @@ Dikkate almanız gereken faktörler şunlardır:
 - Azure portal kullanılabilir işlem ölçümleri. Azure Stack Edge kaynağına giderek **izleme > ölçümleri**' ne gidin. Kullanılabilir kaynakları ve kaynakların nasıl tüketiğini anlamak için **Edge hesaplama-bellek kullanımı** ve **Edge hesaplama-yüzde CPU** bölümüne bakın.
 - Şu şekilde cihazın PowerShell arabirimi aracılığıyla kullanılabilen izleme komutları:
 
-    - `dkr`kapsayıcı kaynak kullanımı istatistiklerinin canlı akışını almak için istatistikler. Komut CPU, bellek kullanımı, bellek sınırı ve ağ GÇ ölçümlerini destekler.
-    - `dkr system df`kullanılan disk alanı miktarı hakkında bilgi almak için. 
-    - `dkr image [prune]`kullanılmayan görüntüleri temizlemek ve boş alan boşaltmak için.
-    - `dkr ps --size`çalışan bir kapsayıcının yaklaşık boyutunu görüntülemek için. 
+    - `dkr` kapsayıcı kaynak kullanımı istatistiklerinin canlı akışını almak için istatistikler. Komut CPU, bellek kullanımı, bellek sınırı ve ağ GÇ ölçümlerini destekler.
+    - `dkr system df` kullanılan disk alanı miktarı hakkında bilgi almak için. 
+    - `dkr image [prune]` kullanılmayan görüntüleri temizlemek ve boş alan boşaltmak için.
+    - `dkr ps --size` çalışan bir kapsayıcının yaklaşık boyutunu görüntülemek için. 
 
     Kullanılabilir komutlar hakkında daha fazla bilgi için, [izleme ve sorun giderme işlem modülleri](azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)bölümüne gidin.
 
-Son olarak, çözümünüzü veri kümeniz üzerinde doğruladığınızdan ve üretimde dağıtım yapmadan önce Azure Stack Edge performansını belirttiğinizden emin olun.
+Son olarak, çözümünüzü veri kümeniz üzerinde doğruladığınızdan ve üretimde dağıtım yapmadan önce Azure Stack Edge Pro performansını belirttiğinizden emin olun.
 
 
 ## <a name="next-step"></a>Sonraki adım
 
-- [Azure Stack kenarını dağıtın](azure-stack-edge-deploy-prep.md)
+- [Azure Stack Edge Pro 'Yu dağıtma](azure-stack-edge-deploy-prep.md)

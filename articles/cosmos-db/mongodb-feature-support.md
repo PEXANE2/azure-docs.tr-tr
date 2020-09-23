@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 7c5164a032e77d85c995384473935b134ff528e5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5db25f993fa006fa635ac12c1be5ff1c3eb92f68
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009316"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883453"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>MongoDB için Azure Cosmos DB’nin API’si (sürüm 3.2): desteklenen özellikler ve söz dizimi
 
@@ -25,7 +25,9 @@ MongoDB için Azure Cosmos DB API 'sini kullanarak, kullandığınız MongoDB 'n
 
 ## <a name="protocol-support"></a>Protokol desteği
 
-MongoDB için Azure Cosmos DB API 'sine yönelik tüm yeni hesaplar MongoDB sunucu sürümü **3,6**ile uyumludur. Bu makalede MongoDB sürüm 3.2 ele alınır. Desteklenen işleçler ve tüm sınırlamalar veya özel durumlar aşağıda listelenmiştir. Bu protokolleri anlayan tüm istemci sürücüleri MongoDB için Azure Cosmos DB’nin API’sine bağlanabilmesi gerekir.
+MongoDB için Azure Cosmos DB API 'sine yönelik tüm yeni hesaplar MongoDB sunucu sürümü **3,6**ile uyumludur. Bu makalede MongoDB sürüm 3.2 ele alınır. Desteklenen işleçler ve tüm sınırlamalar veya özel durumlar aşağıda listelenmiştir. Bu protokolleri anlayan tüm istemci sürücüleri MongoDB için Azure Cosmos DB’nin API’sine bağlanabilmesi gerekir. 
+
+MongoDB için Azure Cosmos DB API 'SI, uygun hesaplar için sorunsuz bir yükseltme deneyimi sunmaktadır. [MongoDB sürüm yükseltme Kılavuzu](mongodb-version-upgrade.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="query-language-support"></a>Sorgu dili desteği
 

@@ -1,6 +1,6 @@
 ---
-title: Veritabanlarını yedekleme ve geri yükleme-Azure SQL Edge (Önizleme)
-description: Azure SQL Edge 'de yedekleme ve geri yükleme özellikleri hakkında bilgi edinin (Önizleme).
+title: Veritabanlarını yedekleme ve geri yükleme-Azure SQL Edge
+description: Azure SQL Edge 'de yedekleme ve geri yükleme özellikleri hakkında bilgi edinin.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 92a37babbcc0bbba3845267ca2eb0f95b9fceafa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2cc8901ee3952f7d258d768e175412254ec5d1a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667871"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905952"
 ---
-# <a name="back-up-and-restore-databases-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de veritabanlarını yedekleme ve geri yükleme (Önizleme) 
+# <a name="back-up-and-restore-databases-in-azure-sql-edge"></a>Azure SQL Edge 'de veritabanlarını yedekleme ve geri yükleme 
 
-Azure SQL Edge, Linux üzerinde Microsoft SQL Server veritabanı altyapısının en son sürümlerinde oluşturulmuştur. Linux üzerinde SQL Server ve kapsayıcılarda çalışan SQL Server, benzer yedekleme ve geri yükleme veritabanı işlevlerini sağlar. Yedekleme ve geri yükleme bileşeni, Azure SQL Edge veritabanlarınızda depolanan verileri korumak için önemli bir koruma sağlar. 
+Azure SQL Edge, Microsoft SQL veritabanı altyapısının en son sürümlerinde oluşturulmuştur. Linux üzerinde SQL Server ve kapsayıcılarda çalışan SQL Server, benzer yedekleme ve geri yükleme veritabanı işlevlerini sağlar. Yedekleme ve geri yükleme bileşeni, Azure SQL Edge veritabanlarınızda depolanan verileri korumak için önemli bir koruma sağlar. 
 
 Veri kaybını tehlikeye atma riskini en aza indirmek için, verilerinizi düzenli aralıklarla yedeklemeniz gerekir. İyi planlanmış bir yedekleme ve geri yükleme stratejisi çeşitli sorunlardan kaynaklanan veri kaybına karşı veritabanlarını korumaya yardımcı olur. Bir yedekleme kümesini geri yükleyip veritabanınızı kurtararak, bir olağanüstü duruma etkin bir şekilde yanıt vermeye hazırlanmak için stratejinizi test edin.
 
@@ -75,7 +75,7 @@ Aşağıdaki örnekte, `BACKUP DATABASE` kapsayıcıda bir veritabanı yedekleme
 
 ### <a name="back-up-to-url"></a>URL 'ye yedekleme
 
-Azure SQL Edge, sayfa Blobları ve blok bloblarına yönelik yedeklemeleri destekler. Daha fazla bilgi için bkz. [Blok Blobu vs Sayfa Blobu 'Na yedekleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob). Aşağıdaki örnekte veritabanı *IronOreSilicaPrediction* bir blok blobuna yedeklenir. 
+Azure SQL Edge, sayfa Blobları ve blok bloblarına yönelik yedeklemeleri destekler. Daha fazla bilgi için bkz. [Blok Blobu vs Sayfa Blobu 'Na yedekleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob). Aşağıdaki örnekte veritabanı *IronOreSilicaPrediction* bir blok blobuna yedeklenir. 
 
 1. Yedeklemeleri bloblara engelleyecek şekilde yapılandırmak için, önce Azure SQL Edge 'de SQL Server kimlik bilgileri oluşturmak üzere kullanabileceğiniz bir paylaşılan erişim imzası (SAS) oluşturun. Betik, depolanan bir erişim ilkesiyle ilişkili bir SAS oluşturur. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları, 1. Bölüm: SAS modelini anlama](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/). Betik Ayrıca SQL Server kimlik bilgisini oluşturmak için gereken T-SQL komutunu da yazar. Aşağıdaki betik, bir depolama hesabı olan bir Azure aboneliğiniz olduğunu ve yedeklemeler için bir depolama kapsayıcısı olduğunu varsayar.
 
@@ -133,7 +133,10 @@ Azure SQL Edge, sayfa Blobları ve blok bloblarına yönelik yedeklemeleri deste
 
 ## <a name="restore-a-database-in-azure-sql-edge"></a>Azure SQL Edge 'de bir veritabanını geri yükleme
 
-Azure SQL Edge 'de yerel bir diskten, ağ konumundan veya Azure Blob Storage hesabından geri yükleme yapabilirsiniz. SQL Server ' de geri yükleme ve kurtarma hakkında daha fazla bilgi için bkz. [geri yükleme ve kurtarmaya genel bakış](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15). SQL Server basit kurtarma modeline genel bir bakış için bkz. [veritabanını geri yükleme (basit kurtarma modeli)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15).
+Azure SQL Edge 'de yerel bir diskten, ağ konumundan veya Azure Blob Storage hesabından geri yükleme yapabilirsiniz. SQL Server ' de geri yükleme ve kurtarma hakkında daha fazla bilgi için bkz. [geri yükleme ve kurtarmaya genel bakış](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server). SQL Server basit kurtarma modeline genel bir bakış için bkz. [veritabanını geri yükleme (basit kurtarma modeli)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model).
+
+> [!IMPORTANT] 
+> Azure SQL Edge 'de oluşturulan veritabanları Microsoft SQL Server veya Azure SQL örneğine geri yüklenemez. Ayrıca, Microsoft SQL Server veya Azure SQL üzerinde oluşturulan bir veritabanı Azure SQL Edge üzerinde geri yüklenebilir, çünkü veritabanı Azure SQL Edge tarafından desteklenmeyen özelliklerden hiçbirini içermez. 
 
 ### <a name="restore-from-a-local-disk"></a>Yerel diskten geri yükleme
 

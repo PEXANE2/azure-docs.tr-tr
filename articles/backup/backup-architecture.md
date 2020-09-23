@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e70fe13e895315763ae305b48a72d688f09931f0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824041"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986492"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -35,18 +35,22 @@ Makineleri ve verileri bir dizi yöntemi kullanarak yedekleyebilirsiniz:
 
 ## <a name="where-is-data-backed-up"></a>Veriler nerede yedeklenir?
 
-Azure Backup, bir kurtarma hizmetleri kasasında yedeklenen verileri depolar. Kasa, Azure 'da Yedekleme kopyaları, kurtarma noktaları ve yedekleme ilkeleri gibi verileri tutmak için kullanılan çevrimiçi bir depolama varlıktır.
+Azure Backup, yedeklenen verileri bir kasalarda depolar, hizmet kasalarını ve yedekleme kasalarını kurtarın. Kasa, Azure 'da Yedekleme kopyaları, kurtarma noktaları ve yedekleme ilkeleri gibi verileri tutmak için kullanılan çevrimiçi bir depolama varlıktır.
 
-Kurtarma Hizmetleri kasaları aşağıdaki özelliklere sahiptir:
+Kasaların aşağıdaki özellikleri vardır:
 
 - Kasaları, yedekleme verilerinizi düzenlemenizi kolaylaştırır, yönetim yükünü en aza indirir.
-- Her bir Azure aboneliğinde en fazla 500 kasa oluşturabilirsiniz.
 - Azure VM 'Leri ve şirket içi makineler dahil olmak üzere bir kasadaki yedeklenen öğeleri izleyebilirsiniz.
 - [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)ile kasa erişimini yönetebilirsiniz.
 - Kasadaki verilerin artıklık için nasıl çoğaltılacağı belirtirsiniz:
-  - **Yerel olarak yedekli depolama (LRS)**: bir veri merkezindeki hataya karşı korumak için LRS kullanabilirsiniz. LRS, verileri bir depolama ölçek birimine çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md).
-  - **Coğrafi olarak yedekli depolama (GRS)**: bölge genelinde kesintilere karşı koruma sağlamak için GRS kullanabilirsiniz. GRS, verilerinizi ikincil bir bölgeye çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md).
+  - **Yerel olarak yedekli depolama (LRS)**: bir veri merkezindeki hataya karşı korumak için LRS kullanabilirsiniz. LRS, verileri bir depolama ölçek birimine çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Coğrafi olarak yedekli depolama (GRS)**: bölge genelinde kesintilere karşı koruma sağlamak için GRS kullanabilirsiniz. GRS, verilerinizi ikincil bir bölgeye çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - Bölgesel olarak **yedekli depolama (ZRS)**: verileri [kullanılabilirlik bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)çoğaltır, bu da verileri, aynı bölgedeki veri fazlalığını ve dayanıklılığı garanti altına alır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Varsayılan olarak, kurtarma hizmetleri kasaları GRS kullanır.
+
+Kurtarma Hizmetleri kasaları aşağıdaki ek özelliklere sahiptir:
+
+- Her bir Azure aboneliğinde en fazla 500 kasa oluşturabilirsiniz.
 
 ## <a name="backup-agents"></a>Yedekleme aracıları
 
@@ -74,7 +78,7 @@ Aşağıdaki tabloda SQL Server veritabanları için kullanılan farklı yedekle
 **Yedekleme türü** | **Ayrıntılar** | **Kullanım**
 --- | --- | ---
 **Tam yedekleme** | Tam bir veritabanı yedeklemesi tüm veritabanını yedekler. Belirli bir veritabanındaki veya bir dosya grubu ya da dosya kümesindeki tüm verileri içerir. Tam yedekleme Ayrıca bu verileri kurtarmak için yeterli günlük içerir. | En çok, günde bir tam yedekleme tetikleyebilirsiniz.<br/><br/> Günlük veya haftalık aralıkta tam yedekleme yapmayı tercih edebilirsiniz.
-**Değişiklik yedeği** | Değişiklik yedeklemesi, en son, önceki tam veri yedeklemesini temel alır.<br/><br/> Yalnızca tam yedeklemeden bu yana değiştirilen verileri yakalar. |  En çok, her gün bir değişiklik yedeklemesi tetikleyebilirsiniz.<br/><br/> Tam yedekleme ve değişiklik yedeklemesini aynı günde yapılandıramazsınız.
+**Değişiklik yedeği** | Değişiklik yedeklemesi, en son, önceki tam veri yedeklemesini temel alır.<br/><br/> Yalnızca tam yedeklemeden bu yana değiştirilen verileri yakalar. |  En yüksek sıklıkta her gün bir değişiklik yedeği tetikleyebilirsiniz.<br/><br/> Tam yedekleme ve değişiklik yedeklemesini aynı günde yapılandıramazsınız.
 **İşlem günlüğü yedeklemesi** | Bir günlük yedeklemesi, belirli bir saniyeye kadar belirli bir noktaya geri yüklemeyi sağlar. | En çok, işlem günlüğü yedeklemelerini 15 dakikada bir yapılandırabilirsiniz.
 
 ### <a name="comparison-of-backup-types"></a>Yedekleme türlerini karşılaştırma

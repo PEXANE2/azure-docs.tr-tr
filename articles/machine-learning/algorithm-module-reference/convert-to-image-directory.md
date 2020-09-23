@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 677cf60ff3e614fd1486445786154fbf026b7cd9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171151"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898684"
 ---
 # <a name="convert-to-image-directory"></a>Görüntü Dizinine Dönüştürme
 
-Bu makalede görüntü veri kümesini ' görüntü dizini ' veri türüne dönüştürmeye yardımcı olmak üzere görüntü veri kümesini ' resim dizinine dönüştürme ' veya görüntü sınıflandırması (Önizleme) gibi görüntü Azure Machine Learning sınıflandırması gibi görüntüyle ilgili görevlere yönelik standart veri biçimi olan ' görüntü dizini ' için nasıl kullanılacağı açıklanır.
+Bu makalede görüntü veri kümesini ' görüntü dizini ' veri türüne dönüştürmeye yardımcı olması için görüntü veri kümesinin nasıl kullanılacağı açıklanır. Azure Machine Learning tasarımcısında görüntü sınıflandırması gibi görüntüyle ilgili görevlerde standartlaştırılmış veri biçimi.
 
 ## <a name="how-to-use-convert-to-image-directory"></a>Görüntü dizinine Dönüştür kullanımı  
 
@@ -62,7 +62,7 @@ Bu makalede görüntü veri kümesini ' görüntü dizini ' veri türüne dönü
 | ------------- | --------------------- | ------------- |
 | Giriş veri kümesi | AnyDirectory, ZipFile | Giriş veri kümesi |
 
-###  <a name="output"></a>Çıktı  
+###  <a name="output"></a>Çıkış  
 
 | Ad                   | Tür           | Açıklama            |
 | ---------------------- | -------------- | ---------------------- |

@@ -11,17 +11,17 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 0fb46f4b9fd29c47e9cd38920665b2791f678847
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8e8d0a13bc01e95311345154648ecb00b624c4bf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647228"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905604"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, büyük miktarlarda veriyi hızla değerlendirmek için Azure Machine Learning modelinizi paralel olarak nasıl çalıştırabileceğiniz gösterilmektedir. 
+
+Bu makalede Azure Machine Learning modelinizin paralel çalıştırılması ve büyük miktarlarda verinin hızla değerlendirilmesi gösterilir. 
 
 Büyük veri kümeleri üzerinde veya karmaşık modellerle sınırlama zaman alabilir. `ParallelRunStep`Sınıfı, genel sonuçları daha hızlı bir şekilde elde etmenizi sağlar. Tek bir değerlendirme çalıştırmak oldukça hızlı olsa da birçok senaryo (nesne algılama, video işleme, doğal dil işleme vb.) birçok değerlendirme çalıştırmayı içerir. 
 
