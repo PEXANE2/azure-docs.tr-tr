@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: ceb6285448df2a5d87dfa87ab249c99bf22c9928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/21/2020
+ms.openlocfilehash: d81550f5c6906e409675002fde670db3734de883
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686356"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885060"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde Gelişmiş tehdit koruması yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,21 +26,18 @@ ms.locfileid: "84686356"
 
 Algılanan tehditler hakkında [e-posta bildirimleri](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event) veya [Azure Portal](../database/threat-detection-overview.md#explore-alerts-in-the-azure-portal) ile ilgili bildirimler alabilirsiniz
 
-Gelişmiş [tehdit koruması](../database/threat-detection-overview.md) , gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [Gelişmiş veri güvenliği](../database/advanced-data-security.md) sunumunun bir parçasıdır. Gelişmiş Tehdit Koruması'na merkezi SQL ADS portalı yoluyla erişilebilir ve yönetilebilir.
+[Gelişmiş tehdit koruması](../database/threat-detection-overview.md) , gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [SQL teklifi için Azure Defender](../database/azure-defender-for-sql.md)  'ın bir parçasıdır. Gelişmiş tehdit korumasına, SQL Portal için merkezi Azure Defender aracılığıyla erişilebilir ve yönetebilirsiniz.
 
 ##  <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com)oturum açın. 
-2. Korumak istediğiniz SQL yönetilen örneği örneğinin yapılandırma sayfasına gidin. **Ayarlar** sayfasında **Gelişmiş veri güvenliği**' ni seçin.
-3. Gelişmiş veri güvenliği yapılandırma sayfasında
-   - Gelişmiş **veri** güvenliğini açın.
+2. Korumak istediğiniz SQL yönetilen örneği örneğinin yapılandırma sayfasına gidin. **Güvenlik**altında **Güvenlik Merkezi**' ni seçin.
+3. SQL için Azure Defender yapılandırma sayfasında
+   - SQL **için Azure Defender 'ı açın** .
    - Anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarıları almak için **e-posta listesini** yapılandırın.
    - Anormal tehdit denetim kayıtlarının kaydedildiği **Azure Storage hesabını** seçin.
    - Yapılandırmak istediğiniz **Gelişmiş tehdit koruması türlerini** seçin. [Gelişmiş tehdit koruması uyarıları](../database/threat-detection-overview.md)hakkında daha fazla bilgi edinin.
-4. Yeni veya güncelleştirilmiş gelişmiş veri güvenliği ilkesini kaydetmek için **Kaydet** ' e tıklayın.
-
-   ![Gelişmiş Tehdit Koruması](./media/threat-detection-configure/threat-detection.png)
-
+4. Yeni veya güncelleştirilmiş SQL için Azure Defender ilkesini kaydetmek için **Kaydet** ' e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

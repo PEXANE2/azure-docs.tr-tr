@@ -4,12 +4,12 @@ description: Özel ölçümler sayesinde web uygulamanızı gerçek zamanlı ola
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c12126c23ce1f1e2bd72f88eead5b8f34e4fd83d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1b8b4c43c559831810db9b92da6c2743556cd2ac
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142222"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973587"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Canlı Ölçüm Akışı: Izleme & Tanıla, 1 saniyelik gecikme
 
@@ -148,7 +148,7 @@ Varsayılan olarak, canlı olay akışı, başarısız isteklerin ve bağımlıl
 
 Canlı akıştaki bir öğenin ayrıntılarına tıklayarak bakınız. **Duraklat** ' a tıklayarak veya yalnızca aşağı kaydırarak ya da bir öğeye tıklayarak akışı duraklatabilirsiniz. Canlı akış, başa doğru kaydırdıktan veya duraklatıldığında toplanan öğe sayaçından tıklandıktan sonra sürdürülecek.
 
-![Örneklenmiş canlı arızalar](./media/live-stream/sample-telemetry.png)
+![Ekran görüntüsü, bir özel durum seçili olan örnek telemetri penceresini ve pencerenin alt kısmında gösterilen özel durum ayrıntılarını gösterir.](./media/live-stream/sample-telemetry.png)
 
 ## <a name="filter-by-server-instance"></a>Sunucu örneğine göre filtrele
 
@@ -180,7 +180,7 @@ applicationinsights.config dosyasında, QuickPulseTelemetryModule öğesine Auth
 </Add>
 ```
 
-### <a name="aspnet-core"></a>ASP.NET Çekirdeği
+### <a name="aspnet-core"></a>ASP.NET Core
 
 [ASP.NET Core](./asp-net-core.md) uygulamalar için aşağıdaki yönergeleri izleyin.
 
@@ -249,7 +249,7 @@ Bununla birlikte, tüm bağlı sunucuları tanıyor ve güveniyorsanız, kimlik 
 
 Temel ölçümler istek, bağımlılık ve özel durum oranını içerir. Performans ölçümleri (performans sayaçları) bellek ve CPU içerir. Örnek telemetri, başarısız istekler ve bağımlılıklar, özel durumlar, olaylar ve izlemelerle ilgili ayrıntılı bilgilerin akışını gösterir.
 
- \*PerfCounters desteği, .NET Core 'un .NET Framework hedefleyemediğinden biraz farklılık gösterir:
+ \* PerfCounters desteği, .NET Core 'un .NET Framework hedefleyemediğinden biraz farklılık gösterir:
 
 - PerfCounters ölçümleri, Windows için Azure App Service çalıştırılırken desteklenir. (AspNetCore SDK sürümü 2.4.1 veya üzeri)
 - Uygulama herhangi bir Windows makinesinde (VM veya bulut hizmeti ya da şirket içi vb.) çalışırken PerfCounters desteklenir. (AspNetCore SDK Version 2.7.1 veya üzeri), ancak .NET Core 2,0 veya üstünü hedefleyen uygulamalar için.

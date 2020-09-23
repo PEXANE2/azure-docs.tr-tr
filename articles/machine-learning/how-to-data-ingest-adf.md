@@ -12,12 +12,12 @@ ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b756e83f1d810007e9e9ef6cf2987c3cf60b7f7d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ad04566699b2eebb0cbd7a9f242de38bc75e2015
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852863"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986412"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Azure Data Factory ile veri alımı
 
@@ -35,7 +35,7 @@ Alma sırasında verileri dönüştürmek için Azure Data Factory kullanmanın 
 
 ## <a name="adf-with-azure-functions"></a>Azure işlevleri ile ADF
 
-![ADF-işlevi](media/how-to-data-ingest-adf/adf-function.png)
+![Diyagramda bir Azure Data Factory işlem hattı, Azure Işlevi ve M L işlem hattı ve bir Azure Machine Learning işlem hattı, eğitim modeli ile birlikte nasıl etkileşim kurdukları ve ham verilerle nasıl etkileşime gireceğini ve bu verilerin hazırlandığını gösterir](media/how-to-data-ingest-adf/adf-function.png)
 
 Azure Işlevleri, uygulama altyapısı hakkında endişelenmeden küçük kod parçalarını (işlevler) çalıştırmanıza olanak sağlar. Bu seçenekte, veriler bir Azure Işlevine Sarmalanan özel Python koduyla işlenir. 
 
@@ -51,7 +51,7 @@ Azure Işlevleri, uygulama altyapısı hakkında endişelenmeden küçük kod pa
 
 ## <a name="adf-with-custom-component-activity"></a>Özel bileşen etkinliği ile ADF
 
-![ADF-customcomponent](media/how-to-data-ingest-adf/adf-customcomponent.png)
+![Diyagramda bir Azure Data Factory işlem hattı, özel bir bileşen ve M L işlem hattı ve bir Azure Machine Learning işlem hattı, eğitim modeli ile birlikte nasıl etkileşim kurdukları ve ham verilerle nasıl etkileşime gireceğini gösterir.](media/how-to-data-ingest-adf/adf-customcomponent.png)
 
 Bu seçenekte, veriler yürütülebilir dosyaya sarmalanmış özel Python kodu ile işlenir. [ADF özel bileşeni etkinliğiyle](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)çağrılır. Bu yaklaşım, önceki tekniğinden daha büyük veriler için daha iyi bir uyum.
 
@@ -64,7 +64,7 @@ Bu seçenekte, veriler yürütülebilir dosyaya sarmalanmış özel Python kodu 
 
 ## <a name="adf-with-azure-databricks-python-notebook"></a>Azure Databricks Python Not defteri ile ADF
 
-![ADF-databricks](media/how-to-data-ingest-adf/adf-databricks.png)
+![Diyagramda Azure Data Factory işlem hattı, Azure Databricks Python ve M L işlem hattı ve bir Azure Machine Learning işlem hattı ve eğitim modeli ile birlikte nasıl etkileşim kurdukları ve ham verilerle nasıl etkileşime gireceğini ve bu verilerin hazırlandığını gösterir.](media/how-to-data-ingest-adf/adf-databricks.png)
 
 [Azure Databricks](https://azure.microsoft.com/services/databricks/) , Microsoft bulutundaki Apache Spark tabanlı bir analiz platformudur.
 
@@ -82,7 +82,7 @@ Bu teknikte, veri dönüştürme bir Azure Databricks kümesinde çalışan bir 
 
 ## <a name="consuming-data-in-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatlarında veri kullanma
 
-![AML-veri kümesi](media/how-to-data-ingest-adf/aml-dataset.png)
+![Diyagramda bir Azure Data Factory işlem hattı ve bir Azure Machine Learning işlem hattı ve bunların ham verilerle nasıl etkileşime gireceğini ve hazırlanan verileri gösterir. Data Factory işlem hattı, verileri, Machine Learning çalışma alanındaki veri kümelerini beslemelerini sağlayan, hazırlanan veri veritabanına akış akışı sağlar.](media/how-to-data-ingest-adf/aml-dataset.png)
 
 ADF işlem hattındaki dönüştürülmüş veriler veri deposuna (Azure Blob gibi) kaydedilir. Azure Machine Learning, veri [depoları](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores) ve veri [kümelerini](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)kullanarak bu verilere erişebilir.
 

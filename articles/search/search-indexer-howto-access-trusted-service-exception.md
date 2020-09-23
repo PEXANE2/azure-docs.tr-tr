@@ -7,20 +7,17 @@ author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f901833caf0623de643e0372c53658fa7da8c8be
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 09/22/2020
+ms.openlocfilehash: 1400f3c3d15698a5f1a145e8e0750ad7c4e9cec8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463910"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971419"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>Güvenilen hizmet özel durumu aracılığıyla depolama hesaplarındaki verilere güvenli bir şekilde erişme
 
 Depolama hesaplarında verilere erişen Dizin oluşturucular, verilere güvenli bir şekilde erişmek için [güvenilir hizmet özel durum](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) özelliğinden daha fazla kullanabilir. Bu mekanizma, [IP güvenlik duvarı kuralları aracılığıyla Dizin Oluşturucu erişimi](search-indexer-howto-access-ip-restricted.md) izni veren müşterileri, depolama hesaplarındaki verilere erişim için basit, güvenli ve ücretsiz bir alternatif sağlar.
-
-> [!NOTE]
-> Bir arama hizmetinin sistem tarafından atanan kimliği üzerinden depolama hesabına erişmek hala önizlemededir. Bu önizleme özelliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 
 ## <a name="step-1-configure-connection-to-the-storage-account-via-identity"></a>1. Adım: depolama hesabı ile bağlantıyı kimlik aracılığıyla yapılandırma
 

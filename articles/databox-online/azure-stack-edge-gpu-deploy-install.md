@@ -1,6 +1,6 @@
 ---
-title: Install-Unpack, rafı, kablo Azure Stack Edge GPU fiziksel cihaz | Microsoft Docs
-description: Azure Stack Edge GPU 'YU yüklemeyle ilgili ikinci öğretici, fiziksel cihazın paketini açmak, rafa eklemek ve kablosunu içerir.
+title: Install-Unpack, rafı, kablo Azure Stack Edge Pro GPU fiziksel cihazı | Microsoft Docs
+description: Azure Stack Edge Pro GPU 'YU yükleme hakkında ikinci öğretici, fiziksel cihazın paketini açmak, rafa eklemek ve kablosunu içerir.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 25bdf2fba67b3a2b42a24416a9de692cf3e992dd
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
+ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421382"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900019"
 ---
-# <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge 'i yükler
+# <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge Pro 'Yu yükler
 
-Bu öğreticide, GPU ile Azure Stack Edge fiziksel cihazının nasıl yükleneceği açıklanmaktadır. Yükleme yordamı, cihazı açmak, rafa monte etmek ve kablolama işlemini içerir. 
+Bu öğreticide, GPU ile Azure Stack Edge Pro fiziksel cihazının nasıl yükleneceği açıklanmaktadır. Yükleme yordamı, cihazı açmak, rafa monte etmek ve kablolama işlemini içerir. 
 
 Yüklemenin tamamlanması iki saat sürebilir.
 
@@ -37,12 +37,12 @@ Fiziksel bir cihazı yükleme önkoşulları şunlardır:
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-* [GPU ile Azure Stack Edge dağıtmaya hazırlanma](azure-stack-edge-gpu-deploy-prep.md)bölümündeki tüm adımları tamamladınız.
+* [Azure Stack Edge Pro 'YU GPU ile dağıtmaya hazırlama](azure-stack-edge-gpu-deploy-prep.md)bölümündeki tüm adımları tamamladınız.
     * Cihazınızı dağıtmak için bir Azure Stack Edge kaynağı oluşturdunuz.
     * Cihazınızı Azure Stack Edge kaynağıyla etkinleştirmek için etkinleştirme anahtarını oluşturdunuz.
 
  
-### <a name="for-the-azure-stack-edge-physical-device"></a>Azure Stack Edge fiziksel cihazı için
+### <a name="for-the-azure-stack-edge-pro-physical-device"></a>Azure Stack Edge Pro fiziksel cihazı için
 
 Cihazı dağıtmadan önce:
 
@@ -58,7 +58,7 @@ Cihazı dağıtmadan önce:
 
 Başlamadan önce:
 
-- Azure Stack Edge dağıtımı için ağ gereksinimlerini gözden geçirin ve veri merkezi ağını gereksinimlere göre yapılandırın. Daha fazla bilgi için bkz. [Edge ağ gereksinimleri Azure Stack](azure-stack-edge-system-requirements.md#networking-port-requirements).
+- Azure Stack Edge Pro 'Yu dağıtmaya yönelik ağ gereksinimlerini gözden geçirin ve veri merkezi ağını gereksinimlere göre yapılandırın. Daha fazla bilgi için bkz. [Edge Pro ağ gereksinimleri Azure Stack](azure-stack-edge-system-requirements.md#networking-port-requirements).
 
 - Cihazın en iyi şekilde çalışması için en düşük Internet bant genişliğinin 20 Mbps olduğundan emin olun.
 
@@ -70,7 +70,7 @@ Cihaz tek bir kutuda gönderilir. Cihazınızı kutusundan çıkarmak için aşa
 1. Kutuyu düz ve sabit bir yüzeye yerleştirin.
 2. Kutuda ve ambalajda ezik, kesik, su hasarı veya gözle görülür herhangi bir hasar olup olmadığını kontrol edin. Kutu veya paketleme ciddi hasar görmüşse bunu açmayın. Cihazın iyi durumda olup olmadığının değerlendirilmesi için Microsoft Desteği ile iletişim kurun.
 3. Kutuyu açın. Kutuyu açtıktan sonra aşağıdakilerin bulunduğundan emin olun:
-    - Tek bir kutu Azure Stack Edge cihazı
+    - Tek bir kutu Azure Stack Edge Pro cihazı
     - İki güç kablosu
     - Bir demiryolu seti derlemesi
     - Güvenlik, ortam ve mevzuat bilgileri kitapçık
@@ -83,7 +83,7 @@ Burada listelenen öğelerin tümünü almadıysanız [Microsoft desteği başvu
 Cihaz, standart 19 inç bir rafa yüklenmiş olmalıdır. Cihazınızı standart 19 inç bir rafa bağlamak için aşağıdaki yordamı kullanın.
 
 > [!IMPORTANT]
-> Azure Stack Edge cihazlarının uygun işlemler için rafa bağlı olması gerekir.
+> Azure Stack Edge Pro cihazlarının uygun işlemler için rafa bağlı olması gerekir.
 
 
 ### <a name="prerequisites"></a>Önkoşullar
@@ -157,11 +157,11 @@ Demiryolu Kit derlemesini yüklemek için bileşenleri bulun:
 
 ## <a name="cable-the-device"></a>Cihazın kablolarını bağlama
 
-Kabloları yönlendirin ve sonra cihazınızı bağlayın. Aşağıdaki yordamlarda Azure Stack Edge cihazınızın güç ve ağ için nasıl kablo yapılacağı açıklanmaktadır.
+Kabloları yönlendirin ve sonra cihazınızı bağlayın. Aşağıdaki yordamlarda Azure Stack Edge Pro cihazınızın güç ve ağ için nasıl kablo yapılacağı açıklanmaktadır.
 
 Cihazınızı kablolamayı başlatmaya başlamadan önce şunlar gerekir:
 
-- Azure Stack Edge fiziksel cihazınız, paketten çıkarılan ve takılabilir.
+- Azure Stack Edge Pro fiziksel cihazınız, paketten çıkarılan ve takılabilir.
 - İki güç kablosu.
 - Yönetim arabirimine bağlamak için en az bir 1-GbE RJ-45 ağ kablosu. Cihazda biri yönetim ve diğeri veri olmak üzere iki 1-GbE ağ arabirimi vardır.
 - Yapılandırılacak her veri ağı arabirimi için bir 25-GbE SFP+ bakır kablo. Bağlantı noktası 2, bağlantı noktası 3, bağlantı noktası 4, bağlantı noktası 5 veya bağlantı noktası 6 arasındaki en az bir veri ağı arabiriminin Internet 'e bağlanması gerekir (Azure bağlantısı ile).  
@@ -171,9 +171,9 @@ Cihazınızı kablolamayı başlatmaya başlamadan önce şunlar gerekir:
 > [!NOTE]
 > - Yalnızca bir veri ağı arabirimi bağlıyorsanız, Azure 'a veri göndermek için bağlantı noktası 3, bağlantı noktası 4, bağlantı noktası 5 veya bağlantı noktası 6 gibi bir 25/10-GbE ağ arabirimi kullanmanızı öneririz. 
 > - En iyi performansı elde etmek ve büyük miktarda veriyi işlemek için tüm veri bağlantı noktalarını bağlamak isteyebilirsiniz.
-> - Azure Stack Edge cihazının veri kaynağı sunucularından veri alabilmesi için veri merkezi ağına bağlı olması gerekir.
+> - Azure Stack Edge Pro cihazının veri kaynağı sunucularından veri alabilmesi için veri merkezi ağına bağlı olması gerekir.
 
-Azure Stack Edge cihazınızda:
+Azure Stack Edge Pro cihazınızda:
 
 - Ön panelde disk sürücüleri ve bir güç düğmesi bulunur.
 
@@ -232,7 +232,7 @@ Cihazınızı güç ve ağ için kablolu yapmak üzere aşağıdaki adımları u
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şu konularda nasıl yapılacağını Azure Stack öğrendiniz:
+Bu öğreticide, aşağıdaki gibi Edge Pro konuları Azure Stack hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
 > * Cihazı kutusundan çıkarma
@@ -242,4 +242,4 @@ Bu öğreticide, şu konularda nasıl yapılacağını Azure Stack öğrendiniz:
 Cihazınıza nasıl bağlanacağınızı öğrenmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge 'i bağlama](./azure-stack-edge-gpu-deploy-connect.md)
+> [Azure Stack Edge Pro 'Yu bağlama](./azure-stack-edge-gpu-deploy-connect.md)

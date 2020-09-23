@@ -1,14 +1,14 @@
 ---
 title: DOD etki düzeyi 5 şema örnek denetimleri
 description: DOD etkisi düzeyi 5 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a7d1439a73cf387cee773d558ced50ce1c07f6dc
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 456560a8042b239a4d53e1c309742650c00bfa6a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921325"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978362"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>DOD etkisi düzeyi 5 şema örneğinin denetim eşlemesi
 
@@ -307,11 +307,8 @@ Bu şema, Azure Güvenlik Merkezi 'nde eksik sistem güncelleştirmelerini, işl
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) hata düzeltme | Önceki yazılım/bellenim sürümlerini kaldırma
 
-Bu şema, uygulamaların .NET Framework, HTTP, Java, PHP, Python ve TLS 'nin en son sürümünü kullanmasını sağlamanıza yardımcı olan ilke tanımları atar. Bu şema Ayrıca, Kubernetes hizmetlerinin güvenlik açığı olmayan sürüme yükseltilmesini sağlayan bir ilke tanımı atar.
+Bu şema, uygulamaların HTTP, Java, PHP, Python ve TLS 'in en son sürümünü kullandığından emin olmanıza yardımcı olan ilke tanımları atar. Bu şema Ayrıca, Kubernetes hizmetlerinin güvenlik açığı olmayan sürüme yükseltilmesini sağlayan bir ilke tanımı atar.
 
-- API uygulamasının bir parçası olarak kullanılıyorsa ' .NET Framework ' sürümünün en son sürümü olduğundan emin olun
-- İşlev Uygulaması bir parçası olarak kullanılıyorsa ' .NET Framework ' sürümünün en son sürümü olduğundan emin olun
-- Web uygulamasının bir parçası olarak kullanılıyorsa ' .NET Framework ' sürümünün en son sürümü olduğundan emin olun
 - API uygulamasını çalıştırmak için kullanılmışsa ' HTTP Version ' nin en son sürümü olduğundan emin olun
 - Işlev uygulamasını çalıştırmak için kullanılmışsa ' HTTP Version ' nin en son sürümü olduğundan emin olun
 - Web uygulamasını çalıştırmak için kullanılıyorsa, ' HTTP Version ' ' ın en son sürümü olduğundan emin olun
@@ -319,7 +316,6 @@ Bu şema, uygulamaların .NET Framework, HTTP, Java, PHP, Python ve TLS 'nin en 
 - Işlev uygulamasının bir parçası olarak kullanılıyorsa ' Java sürümü ' nin en son sürümü olduğundan emin olun
 - Web uygulamasının bir parçası olarak kullanılıyorsa ' Java sürümü 'nin en son sürümü olduğundan emin olun
 - API uygulamasının bir parçası olarak kullanılıyorsa ' PHP Version ' öğesinin en son sürümü olduğundan emin olun
-- Işlev uygulamasının bir parçası olarak kullanılıyorsa, ' PHP Version ' öğesinin en son sürümü olduğundan emin olun
 - WEB uygulamasının bir parçası olarak kullanılıyorsa, ' PHP Version ' öğesinin en son sürümü olduğundan emin olun
 - API uygulamasının bir parçası olarak kullanılıyorsa ' Python sürümü 'nin en son bir sürüm olduğundan emin olun
 - Işlev uygulamasının bir parçası olarak kullanılıyorsa ' Python sürümü 'nin en son bir sürüm olduğundan emin olun

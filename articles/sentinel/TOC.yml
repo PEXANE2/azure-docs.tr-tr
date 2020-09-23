@@ -29,6 +29,10 @@
       href: fusion.md
     - name: Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: UEBA ile gelişmiş tehditleri belirleme
+      href: identify-threats-with-entity-behavior-analytics.md
+    - name: Tehdit analizini Azure Sentinel’e aktarma
+      href: import-threat-intelligence.md
     - name: Tablolardaki verilerinizi normalleştirme
       href: normalization.md
     - name: Güvenlik
@@ -162,6 +166,8 @@
           href: connect-threat-intelligence.md
         - name: Azure Stack VM’lerini bağlama
           href: connect-azure-stack.md
+    - name: Kullanıcı ve Varlık Davranışları Analizini etkinleştirme
+      href: enable-entity-behavior-analytics.md
     - name: Birden çok kiracı ile çalışma (MSSP)
       href: multiple-tenants-service-providers.md
     - name: Birden çok çalışma alanında olaylarla çalışma

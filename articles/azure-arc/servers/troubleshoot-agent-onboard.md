@@ -1,18 +1,18 @@
 ---
-title: Azure Arc etkin sunucular (Önizleme) Aracısı bağlantı sorunlarını giderme
-description: Bu makalede, hizmete bağlanmaya çalışırken Azure Arc etkin sunucuları (Önizleme) ile birlikte gelen bağlı makine aracısında sorunları gidermeye ve gidermeye nasıl çözüm yapılacağı açıklanır.
-ms.date: 07/20/2020
+title: Azure Arc etkin sunucu Aracısı bağlantı sorunlarını giderme
+description: Bu makalede, hizmete bağlanmaya çalışırken Azure Arc etkin sunucularıyla oluşan bağlı makine aracısında sorunları gidermeye ve gidermeye nasıl çözüm yapılacağı açıklanır.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213535"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900673"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Bağlı makine Aracısı bağlantı sorunlarını giderme
 
-Bu makalede, Azure Arc etkin sunucuları (Önizleme) Windows veya Linux için bağlı makine Aracısı 'nı yapılandırmaya çalışırken oluşabilecek sorunların giderilmesi ve çözümlenmesi hakkında bilgi sağlanır. Hizmetle bağlantı yapılandırılırken hem etkileşimli hem de ölçekli yükleme yöntemleri dahildir. Genel bilgiler için bkz. [Arc etkin sunucularına genel bakış](./overview.md).
+Bu makalede, Windows veya Linux için bağlı olan Azure Arc özellikli sunucular bağlı makine Aracısı 'nı yapılandırmaya çalışırken oluşabilecek sorunları giderme ve çözme hakkında bilgi verilmektedir. Hizmetle bağlantı yapılandırılırken hem etkileşimli hem de ölçekli yükleme yöntemleri dahildir. Genel bilgiler için bkz. [Arc etkin sunucularına genel bakış](./overview.md).
 
 ## <a name="agent-verbose-log"></a>Aracı ayrıntılı günlüğü
 

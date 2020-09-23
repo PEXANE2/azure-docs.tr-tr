@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU cihazında, Arc etkin Kubernetes üzerinde PHP Konuk defteri uygulaması dağıtma | Microsoft Docs
-description: Azure Stack Edge cihazınızın bir yay özellikli bir Kubernetes kümesinde Gile kullanarak, Redis ile PHP Konuk olmayan bir uygulamanın nasıl dağıtılacağını açıklar.
+title: Azure Stack Edge Pro GPU cihazında, Arc etkin Kubernetes üzerinde PHP Konuk defteri uygulaması dağıtma | Microsoft Docs
+description: Azure Stack Edge Pro cihazınızın bir yay özellikli bir Kubernetes kümesinde Gilar kullanarak, Redis ile PHP Konuk olmayan bir uygulamanın nasıl dağıtılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319301"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899562"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>Azure Stack Edge GPU üzerinde Kubernetes kümesi etkin olan Redis ile PHP Konuk olmayan bir uygulaması dağıtma
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'SU üzerinde Redis, Arc etkin Kubernetes kümesine sahip bir PHP Konuk defteri olmayan uygulaması dağıtma
 
 Bu makalede, Kubernetes ve Azure yay kullanılarak basit, çok katmanlı bir Web uygulaması oluşturma ve dağıtma işlemlerinin nasıl yapılacağı gösterilir. Bu örnek aşağıdaki bileşenlerden oluşur:
 
@@ -23,41 +23,41 @@ Bu makalede, Kubernetes ve Azure yay kullanılarak basit, çok katmanlı bir Web
 - Okuma hizmeti için birden çok çoğaltılan Redsıs örneği
 - Birden çok Web ön uç örneği
 
-Dağıtım, Azure Stack Edge cihazınızdan yay etkinleştirilmiş Kubernetes kümesinde Gilar kullanılarak yapılır. 
+Dağıtım, Azure Stack Edge Pro cihazınızdan yay etkinleştirilmiş Kubernetes kümesinde Gilar kullanılarak yapılır. 
 
-Bu yordam, [Azure Stack Edge cihazında Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) Inceleyen ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme) kavramlarının kavramlarını öğrendiklerine](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)yöneliktir.
+Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) gözden geçirdiklere yöneliktir ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)kavramlarını öğrenir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Durum bilgisiz uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi tamamladığınızdan emin olun:
 
 ### <a name="for-device"></a>Cihaz için
 
-1. 1 düğümlü Azure Stack Edge cihazında oturum açma kimlik bilgileriniz var.
+1. 1 düğümlü Azure Stack Edge Pro cihazı için oturum açma kimlik bilgileriniz vardır.
     1. Cihaz etkinleştirilir. Bkz. [cihazı etkinleştirme](azure-stack-edge-gpu-deploy-activate.md).
     1. Cihazda Azure portal aracılığıyla yapılandırılmış işlem rolü vardır ve bir Kubernetes kümesi vardır. Bkz. [Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
 
-1. Cihazınızda mevcut Kubernetes kümesinde Azure Arc 'ı etkinleştirdiniz ve Azure portal buna karşılık gelen bir Azure Arc kaynağınız var. Ayrıntılı adımlar için bkz. [Azure Stack Edge cihazında Azure yayı 'Yi etkinleştirme](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md).
+1. Cihazınızda mevcut Kubernetes kümesinde Azure Arc 'ı etkinleştirdiniz ve Azure portal buna karşılık gelen bir Azure Arc kaynağınız var. Ayrıntılı adımlar için bkz. [Azure Stack Edge Pro cihazında Azure yayı 'Yi etkinleştirme](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md).
 
 ### <a name="for-client-accessing-the-device"></a>Cihaza erişen istemci için
 
-1. Azure Stack Edge cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
+1. Azure Stack Edge Pro cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
   
     - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
     
     - [Desteklenen bir işletim sistemine](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. 
     
-1. [Azure Stack Edge cihazında Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)bölümünde açıklanan yordamı tamamladınız. Şunları yapabilirsiniz:
+1. [Azure Stack Edge Pro cihazında Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)bölümünde açıklanan yordamı tamamladınız. Şunları yapabilirsiniz:
     
     - `kubectl`İstemciye yüklendi  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - `kubectl`İstemci sürümünün Azure Stack Edge cihazında çalışan Kubernetes ana sürümünden daha fazla sürüm olmadığından emin olun. 
+    - `kubectl`İstemci sürümünün, Azure Stack Edge Pro cihazınızda çalışan Kubernetes ana sürümünden birden fazla sürüm olmadığından emin olun. 
       - `kubectl version`İstemci üzerinde çalışan kubectl sürümünü denetlemek için kullanın. Tam sürümü bir yere unutmayın.
-      - Azure Stack Edge cihazınızın yerel kullanıcı arabiriminde **Genel Bakış ' a** gidin ve Kubernetes yazılım numarasına göz atın. 
+      - Azure Stack Edge Pro cihazınızın yerel kullanıcı arabiriminde **Genel Bakış ' a** gidin ve Kubernetes yazılım numarasına göz atın. 
       - Desteklenen Kubernetes sürümünde belirtilen eşlemenin uyumluluk için bu iki sürümü doğrulayın <!--insert link-->.
 
-1. [Azure Arc dağıtımını çalıştırmak için kullanabileceğiniz bir gide yapılandırması](https://github.com/kagoyal/dbehaikudemo)vardır. Bu örnekte, `yaml` Azure Stack Edge cihazınıza dağıtmak için aşağıdaki dosyaları kullanacaksınız.
+1. [Azure Arc dağıtımını çalıştırmak için kullanabileceğiniz bir gide yapılandırması](https://github.com/kagoyal/dbehaikudemo)vardır. Bu örnekte, `yaml` Azure Stack Edge Pro cihazınıza dağıtmak için aşağıdaki dosyaları kullanacaksınız.
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->
@@ -176,4 +176,4 @@ C:\Users\user>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kubernetes panosunu Azure Stack Edge cihazınızdaki dağıtımları izlemek için](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) nasıl kullanacağınızı öğrenin
+[Kubernetes panosunu Azure Stack Edge Pro cihazınızdaki dağıtımları izlemek için](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) nasıl kullanacağınızı öğrenin

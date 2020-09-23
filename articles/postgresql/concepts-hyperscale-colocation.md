@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74967346"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884435"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda tablo bulundurma – hiper ölçek (Citus)
 
@@ -22,7 +22,7 @@ Birlikte bulundurma, ilgili bilgileri aynı düğümlerde depoladığını göst
 
 PostgreSQL için Azure veritabanı – hiper ölçek (Citus) içinde, dağıtım sütunundaki değerin karması parçanın karma aralığı içinde kalırsa bir satır parça içinde depolanır. Aynı karma aralığa sahip parçalar her zaman aynı düğüme yerleştirilir. Eşit dağıtım sütunu değerleri olan satırlar her zaman tablolar arasında aynı düğüm üzerinde bulunur.
 
-![Parçalar](media/concepts-hyperscale-colocation/colocation-shards.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-shards.png" alt-text="Parçalar":::
 
 ## <a name="a-practical-example-of-colocation"></a>Kolay bir birlikte bulundurma örneği
 
@@ -96,7 +96,7 @@ Daha sonra, iki adımdan elde edilecek sonuçların uygulama tarafından birleş
 
 Sorguları çalıştırmak, düğümler arasında dağılmış olan verileri parçalara sağlamalıdır.
 
-![Verimsiz sorgular](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Verimsiz sorgular":::
 
 Bu durumda, veri dağıtımı önemli bir sakıncalar oluşturuyor:
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 Tenant_id FILTER ve JOIN nedeniyle hiper ölçek (Citus), bu belirli bir kiracının verilerini içeren birlikte bulunan parçalı parçalar kümesi kullanılarak tüm sorgunun yanıtlandığını bilir. Tek bir PostgreSQL düğümü, sorguyu tek bir adımda yanıtlayabilir.
 
-![Daha iyi sorgu](media/concepts-hyperscale-colocation/colocation-better-query.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Daha iyi sorgu":::
 
 Bazı durumlarda, sorgular ve tablo şemaları, kiracı KIMLIĞINI benzersiz kısıtlamalara ve JOIN koşullarına dahil etmek için değiştirilmelidir. Bu değişiklik genellikle basittir.
 

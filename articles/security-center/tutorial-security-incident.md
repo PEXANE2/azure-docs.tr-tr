@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: dc19d74953db48ccf51d4731e2b9feccb2294041
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076395"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901095"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Öğretici: Güvenlik olaylarına yanıt verme
 Güvenlik Merkezi, kötü amaçlı etkinlikler konusunda sizi uyarmak için gelişmiş analiz ve tehdit zekasından yararlanarak hibrit bulut iş yüklerinizi sürekli olarak analiz eder. Buna ek olarak, diğer güvenlik ürünleri ve hizmetleri tarafından sağlanan uyarıları Güvenlik Merkezi ile tümleştirebilir ve kendi göstergelerinizi ya da zeka kaynaklarınızı temel alan özel uyarılar oluşturabilirsiniz. Bir uyarı oluşturulduktan sonra sorunun incelenip düzeltilmesi için hemen harekete geçilmesi gerekir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -32,7 +32,7 @@ Güvenlik Merkezi, kötü amaçlı etkinlikler konusunda sizi uyarmak için geli
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu öğreticide ele alınan özellikler arasında ilerlemek için, güvenlik merkezi 'nin standart fiyatlandırma katmanında olmanız gerekir. Güvenlik Merkezi Standart 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md) başlıklı hızlı başlangıçta Standart katmanına nasıl yükseltebileceğiniz adım adım açıklanmıştır.
+Bu öğreticide ele alınan özellikler arasında ilerlemek için Azure Defender 'ın etkinleştirilmiş olması gerekir. Azure Defender 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). [Güvenlik Merkezi](security-center-get-started.md) 'ni kullanmaya başlama hızlı başlangıç, nasıl yükselteceğiniz konusunda size yol gösterir.
 
 ## <a name="scenario"></a>Senaryo
 Contoso kısa süre önce bazı sanal makine tabanlı iş kolu iş yükleri ve SQL veritabanları dahil olmak üzere şirket içi kaynaklarından bazılarını Azure’a taşımıştır. Contoso'nun Çekirdek Bilgisayar Güvenliği Olay Yanıtı Ekibi (CSIRT) şu anda geçerli olay yanıtı araçlarıyla tümleşik güvenlik bilgileri olmadığı için güvenlik sorunlarını araştırmayla ilgili bir sorun yaşamaktadır. Bu tümleştirme eksikliği, Algılama aşamasında (çok sayıda hatalı pozitif sonuç) ve Değerlendirme ile Tanılama aşamalarında bir sorun oluşturmaktadır. Bu geçişin bir parçası olarak, bu sorunu gidermeye yardımcı olmak üzere Güvenlik Merkezi’ni kullanmaya karar verilmiştir.
@@ -68,13 +68,13 @@ Güvenlik Merkezi, tüm güvenlik uyarılarının birleşik bir görünümünü 
 
    ![Güvenlik uyarıları](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
-2. Çeşitli uyarıların birleşiminden oluşan bir güvenlik olayı hakkında daha fazla bilgi edinmek için uyarı listesinden ilgili olaya tıklayın. **Güvenlik olayı algılandı** ekranı açılır.
+2. Uyarılar listesinde, bu olay hakkında daha fazla bilgi edinmek için bir uyarı koleksiyonu olan bir güvenlik olayı seçin. **Güvenlik olayı algılandı** ekranı açılır.
 
-   ![Güvenlik olayı](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![Güvenlik olayı algılandı](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. Bu ekranın üst kısmında güvenlik olayının açıklaması, geri kalanında da bu olayın birer parçası olan uyarıların listesi yer alır. Daha fazla bilgi edinmek için daha iyi araştırmak istediğiniz uyarıya tıklayın.
 
-   ![Güvenlik olayı](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![Olaydan Uyarı ayrıntıları](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
    Uyarı türü değişkenlik gösterebilir, uyarı türü ve olası düzeltme adımları hakkında daha ayrıntılı bilgi için bkz. [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını anlama](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Güvenli bir şekilde kapatılabilen uyarılar için uyarıya sağ tıklayıp **Kapat**’ı seçebilirsiniz:
 
@@ -99,20 +99,19 @@ Arama gerçekleştirmek için **Güvenlik Merkezi** panosunu açın, sol gezinti
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, standart katmanı çalıştırmaya devam edin ve otomatik sağlamayı etkin tutun. Devam etmeyi planlamıyorsanız veya Ücretsiz katmanına dönmek istiyorsanız:
+Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıçlarla ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, otomatik sağlamayı ve Azure Defender 'ı devre dışı bırakın. Devam etmeyi planlamıyorsanız veya Azure Defender 'ı devre dışı bırakmak istiyorsanız:
 
-1. Güvenlik Merkezi ana menüsüne dönüp **Güvenlik İlkesi**’ni seçin.
-2. Ücretsiz katmanına döndürmek istediğiniz aboneliği veya ilkeyi seçin. **Güvenlik ilkesi** açılır.
-3. **İLKE BİLEŞENLERİ** altında **Fiyatlandırma katmanı**’nı seçin.
-4. Standart katmandan ücretsiz katmana abonelik değiştirmek için **ücretsiz** ' ı seçin.
-5. **Kaydet**'i seçin.
+1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma ve ayarlar**' ı seçin.
+1. Düşürme yapmak istediğiniz aboneliği seçin.
+1. **Azure Defender** 'ı kapalı olarak ayarlayın.
+1. **Kaydet**’i seçin.
 
 Otomatik sağlamayı devre dışı bırakmak istiyorsanız:
 
 1. Güvenlik Merkezi ana menüsüne dönüp **güvenlik ilkesi**' ni seçin.
 2. Otomatik sağlamayı hangi abonelik için devre dışı bırakmak istediğinizi belirtin.
 3. Otomatik sağlamayı kapatmak için **Güvenlik ilkesi – Veri Toplama** altındaki **Ekleme** bölümünden **Kapalı**’yı seçin.
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 >[!NOTE]
 > Otomatik sağlamayı devre dışı bırakmak, aracının sağlandığı Azure VM 'lerinden Log Analytics aracısını kaldırmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.
