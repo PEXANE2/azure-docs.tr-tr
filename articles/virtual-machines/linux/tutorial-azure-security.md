@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 24117e914afa0e443ce979ae71eb506156fa11b3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4fc8a0a4ea5063f52b6f9553018bddddd7bcf312
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830419"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974608"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Öğretici: Linux sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
 
@@ -41,7 +41,7 @@ Güvenlik Merkezi panosuna erişmek için Azure portalındaki menüde **Güvenli
 
 Güvenlik Merkezi, algıladığı sorunlara yönelik öneriler sağlamak için veri keşfinin ötesinde işlev sunar. Örneğin, bir sanal makine, ağ güvenliği grubu eklenmemiş şekilde dağıtıldıysa Güvenlik Merkezi, uygulayabileceğiniz düzeltme adımlarıyla birlikte bir öneri görüntüler. Güvenlik Merkezi bağlamından çıkmadan otomatik düzeltme elde edersiniz.  
 
-![Öneriler](./media/tutorial-azure-security/recommendations.png)
+![Ekran görüntüsü bir açıklama, kaynak, durum ve önerilerin önem derecesi içeren öneriler sayfasını gösterir.](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>Veri toplamayı ayarlama
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında-Azure Key Vault
+title: Azure Key Vault REST API genel bakış
 description: Anahtarlar, gizli diziler ve sertifikalar için Azure Key Vault REST arabirimine ve geliştirici ayrıntılarına genel bakış.
 services: key-vault
 author: msmbaldwin
@@ -9,23 +9,49 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cb8a29c5d2eff46eecb2cf977bfb492f28731e68
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b2d3753cd31b54c500b2757520f2634eb1b2794a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043639"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983281"
 ---
-# <a name="about-keys-secrets-and-certificates"></a>Anahtarlar, gizli diziler ve sertifikalar hakkında
+# <a name="azure-key-vault-rest-api-overview"></a>Azure Key Vault REST API genel bakış
 
-Azure Key Vault, Microsoft Azure uygulamaların ve kullanıcıların çeşitli türlerdeki gizli/anahtar verileri depolamasını ve kullanmasını sağlar:
+Azure Key Vault, Microsoft Azure uygulamaların ve kullanıcıların çeşitli türlerdeki gizli/anahtar verileri depolamasına ve kullanmasına olanak sağlar. Key Vault kaynak sağlayıcısı iki kaynak türünü destekler: kasa ve yönetilen HSM 'ler.
 
-- Şifreleme anahtarları: birden çok anahtar türünü ve algoritmaları destekler ve yüksek değerli anahtarlar için donanım güvenlik modüllerinin (HSM) kullanılmasını mümkün. Daha fazla bilgi için bkz. [anahtarlar hakkında](../keys/about-keys.md).
-- Gizlilikler: parolalar ve veritabanı bağlantı dizeleri gibi güvenli parolaların depolanmasını sağlar. Daha fazla bilgi için bkz. [gizlilikler hakkında](../secrets/about-secrets.md).
-- Sertifikalar: anahtarların ve parolaların üzerine inşa edilen sertifikaları destekler ve otomatik yenileme özelliği ekler. Daha fazla bilgi için bkz. [Sertifikalar hakkında](../certificates/about-certificates.md).
-- Azure depolama: bir Azure depolama hesabının anahtarlarını sizin için yönetebilir. Dahili olarak, Key Vault anahtarları Azure Storage hesabıyla listeleyebilir (eşitleyebilir) ve anahtarları düzenli olarak yeniden oluşturabilir (döndürün). Daha fazla bilgi için bkz. [Key Vault depolama hesabı anahtarlarını yönetme](../secrets/overview-storage-keys.md).
+## <a name="dns-suffixes-for-base-url"></a>Taban URL 'SI için DNS sonekleri
+ Aşağıdaki tabloda, çeşitli bulut ortamlarında kasa ve yönetilen HSM havuzları için veri düzlemi uç noktası tarafından kullanılan temel URL DNS son eki gösterilmektedir.
 
-Key Vault hakkında daha fazla genel bilgi için bkz. [Azure Key Vault hakkında](overview.md).
+Bulut ortamı | Kasa için DNS son eki | Yönetilen HSM 'ler için DNS son eki
+---|---|---
+Azure bulutu | . vault.azure.net | . managedhsm.azure.net
+Azure Çin bulutu | . vault.azure.cn | Desteklenmez
+Azure ABD Kamu | . vault.usgovcloudapi.net | Desteklenmez
+Azure Almanya bulutu | . vault.microsoftazure.de | Desteklenmez
+|||
+
+
+## <a name="object-types"></a>Nesne türleri
+ Aşağıdaki tabloda, taban URL 'sindeki nesne türleri ve bunların son ekleri gösterilmektedir.
+
+Nesne türü|URL son eki|Kasalar|Yönetilen HSM havuzları
+--|--|--|--
+**Şifreleme anahtarları**||
+HSM ile korunan anahtarlar|/Keys|Desteklenir|Desteklenir
+Yazılım korumalı anahtarlar|/Keys|Desteklenir|Desteklenmez
+**Diğer nesne türleri**||
+Gizli Diziler|/gizlilikler|Desteklenir|Desteklenmez
+Sertifikalar|/Certificates|Desteklenir|Desteklenmez
+Depolama hesabı anahtarları|/storageaccount|Desteklenir|Desteklenmez
+|||
+- **Şifreleme anahtarları**: birden çok anahtar türünü ve algoritmaları destekler ve yazılım KORUMALı ve HSM korumalı anahtarların kullanımını sunar. Daha fazla bilgi için bkz. [anahtarlar hakkında](../keys/about-keys.md).
+- **Gizlilikler**: parolalar ve veritabanı bağlantı dizeleri gibi güvenli parolaların depolanmasını sağlar. Daha fazla bilgi için bkz. [gizlilikler hakkında](../secrets/about-secrets.md).
+- **Sertifikalar**: anahtarların ve parolaların üzerine inşa edilen sertifikaları destekler ve otomatik yenileme özelliği ekler. Daha fazla bilgi için bkz. [Sertifikalar hakkında](../certificates/about-certificates.md).
+- **Azure depolama hesabı anahtarları**: sizin Için bir Azure depolama hesabı anahtarlarını yönetebilir. Dahili olarak, Key Vault anahtarları Azure Storage hesabıyla listeleyebilir (eşitleyebilir) ve anahtarları düzenli olarak yeniden oluşturabilir (döndürün). Daha fazla bilgi için bkz. [Key Vault depolama hesabı anahtarlarını yönetme](../secrets/overview-storage-keys.md).
+
+Key Vault hakkında daha fazla genel bilgi için bkz. [Azure Key Vault hakkında](overview.md). Yönetilen HSM havuzları hakkında daha fazla bilgi için bkz. [Azure Key Vault Managed HSM nedir?](../managed-hsm/overview.md)
+
 
 ## <a name="data-types"></a>Veri türleri
 
@@ -46,21 +72,26 @@ Anahtarlar, şifreleme ve imzalama için ilgili veri türleri için JOTE belirti
 
 Key Vault depolanan nesneler, bir nesnenin yeni bir örneği oluşturulduğunda sürümlüdür. Her sürüme benzersiz bir tanımlayıcı ve URL atanır. Bir nesne ilk oluşturulduğunda, benzersiz bir sürüm tanımlayıcısı verilir ve nesnenin geçerli sürümü olarak işaretlenir. Aynı nesne adına sahip yeni bir örnek oluşturmak, yeni nesneye benzersiz bir sürüm tanımlayıcısı sağlar ve bunun geçerli sürüm olmasına neden olur.  
 
-Key Vault nesneler, bir sürümü tanımlayarak veya nesnenin geçerli sürümündeki işlemler için sürüm dışarıda bırakarak çözülebilir. Örneğin, adı olan bir anahtar verildiğinde `MasterKey` , bir sürümü belirtmeden işlemleri gerçekleştirmek sistemin kullanılabilir en son sürümü kullanmasına neden olur. Sürüme özgü tanımlayıcıyla işlem gerçekleştirmek sistemin nesnenin o belirli sürümünü kullanmasına neden olur.  
+Key Vault nesneler, bir sürüm belirtilerek veya nesnenin geçerli sürümündeki işlemler için sürüm dışarıda bırakarak çözülebilir. Örneğin, adı olan bir anahtar verildiğinde `MasterKey` , bir sürüm belirtmeden işlemleri gerçekleştirmek sistemin kullanılabilir en son sürümü kullanmasına neden olur. Sürüme özgü tanımlayıcıyla işlem gerçekleştirmek sistemin nesnenin o belirli sürümünü kullanmasına neden olur.  
 
 Nesneler bir URL kullanarak Key Vault içinde benzersiz şekilde tanımlanır. Coğrafi konumdan bağımsız olarak sistemdeki iki nesne aynı URL 'ye sahip değildir. Bir nesnenin tüm URL 'SI, nesne tanımlayıcısı olarak adlandırılır. URL, Key Vault, nesne türü, Kullanıcı tarafından sağlanmış nesne adı ve bir nesne sürümü tanımlayan bir önekden oluşur. Nesne adı büyük/küçük harfe duyarlıdır ve sabittir. Nesne sürümünü içermeyen tanımlayıcılar temel tanımlayıcılar olarak adlandırılır.  
 
 Daha fazla bilgi için bkz. [kimlik doğrulaması, istekler ve yanıtlar](authentication-requests-and-responses.md)
 
-Bir nesne tanımlayıcısı aşağıdaki genel biçime sahiptir:  
+Bir nesne tanımlayıcısının aşağıdaki genel biçimi vardır (kapsayıcı türüne göre):  
 
-`https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
+- **Kasa için**: `https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
+
+- **YÖNETILEN HSM havuzları için**: `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
+
+> [!NOTE]
+> Her kapsayıcı türü tarafından desteklenen nesne türleri için bkz. [nesne türü desteği](#object-types) .
 
 Burada:  
 
 | Öğe | Açıklama |  
 |-|-|  
-|`keyvault-name`|Microsoft Azure Key Vault hizmetindeki bir anahtar kasasının adı.<br /><br /> Key Vault adlar Kullanıcı tarafından seçilir ve genel olarak benzersizdir.<br /><br /> Key Vault ad, yalnızca 0-9, a-z, A-Z ve-içeren bir 3-24 karakter dizesi olmalıdır.|  
+|`vault-name` veya `hsm-name`|Microsoft Azure Key Vault hizmetindeki bir kasanın veya yönetilen bir HSM havuzunun adı.<br /><br />Kasa adları ve yönetilen HSM havuzu adları Kullanıcı tarafından seçilir ve genel olarak benzersizdir.<br /><br />Kasa adı ve yönetilen HSM havuzu adı, yalnızca 0-9, a-z, A-Z ve-içeren bir 3-24 karakter dizesi olmalıdır.|  
 |`object-type`|Nesnenin türü, "anahtarlar", "gizlilikler" veya ' Certificates '.|  
 |`object-name`|`object-name`, İçin Kullanıcı tarafından sağlanmış bir addır ve bir Key Vault içinde benzersiz olmalıdır. Ad, bir harfle başlayan ve yalnızca 0-9, a-z, A-Z ve-içeren bir 1-127 karakter dizesi olmalıdır.|  
 |`object-version`|, `object-version` İsteğe bağlı olarak bir nesnenin benzersiz bir sürümünü ele almak için kullanılan, sistem tarafından oluşturulan 32 karakter dizesi tanımlayıcısıdır.|  

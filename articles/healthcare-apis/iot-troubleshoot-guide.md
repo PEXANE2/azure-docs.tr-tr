@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 088d1e409f14fdba02311d1ff17eb655f6e41ad3
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053465"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982994"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) sorun giderme kılavuzu
 
@@ -25,6 +25,34 @@ Dönüştürme ve arşivleme için JSON kopyalarını Azure portal dışında ku
 
 > [!TIP]
 > FHıR için Azure IoT Bağlayıcısı için bir [Azure teknik destek](https://azure.microsoft.com/support/create-ticket/) bileti açarsanız, sorun giderme işlemine yardımcı olmak için dönüştürme eşleme JSON 'larınızın kopyalarını eklediğinizden emin olun.
+
+## <a name="device-and-fhir-conversion-mapping-json-template-validations-for-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı için cihaz ve FHıR dönüştürme eşleme JSON şablonu doğrulamaları (Önizleme)
+Bu bölümde, FHıR için Azure IoT bağlayıcısının, kullanım için kaydedilmesine izin vermeden önce cihaz ve FHıR dönüştürme eşleme JSON şablonlarını doğrulamak üzere gerçekleştirdiği doğrulama süreci hakkında bilgi edineceksiniz.  Bu öğeler cihazda gereklidir ve FHıR dönüştürme eşlemesi JSON.
+
+**Cihaz eşleme**
+
+|Öğe|Gerekli|
+|:-------|:------|
+|TypeName|Doğru|
+|TypeMatchExpression|Doğru|
+|DeviceIdExpression|Doğru|
+|TimestampExpression|Doğru|
+|Values []. ValueName|Doğru|
+|Values []. ValueExpression|Doğru|
+
+> [!NOTE]
+> Values []. ValueName ve Values []. ValueExpression
+>
+> Bu öğeler yalnızca dizide bir değer girişi varsa gereklidir; hiçbir değer eşlenmediğinden geçerli değildir. Bu, gönderilen telemetri bir olay olduğunda kullanılır. Örneğin: takılabilir IoMT cihazı ne zaman konur veya kaldırılır. Bu öğe (ler), FHıR ile eşleşen ve yayan Azure IoT bağlayıcısının adı dışında herhangi bir değere sahip değildir. FHıR dönüştürmesinde, FHıR için Azure IoT Bağlayıcısı, anlam türünü temel alan kod uyumlu bir kavram ile eşler, hiçbir gerçek değer doldurulur.
+
+**FHıR eşleme**
+
+|Öğe|Gerekli|
+|:------|:-------|
+|TypeName|Doğru|
+
+> [!NOTE]
+> Bu, şu anda doğrulanan tek gereken FHıR eşleme öğesidir.
 
 ## <a name="error-messages-and-fixes-for-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı hata iletileri ve düzeltmeleri (Önizleme)
 
@@ -42,8 +70,8 @@ Dönüştürme ve arşivleme için JSON kopyalarını Azure portal dışında ku
 
 ##  <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Azure IoT Bağlayıcım, fhır için Azure API 'de görünmüyor.
 
-|Olası sorunlar  |Düzeltmeler            |
-|------------------|-----------------|
+|Olası sorunlar|Düzeltmeler|
+|----------------|-----|
 |Verilerin işlenmesi devam ediyor.|Veriler, toplu iş (YAKLAŞıK 15 dakikada bir) için Azure API 'sine yöneliktir.  Verilerin hala işlenmesine ve verilerin FHıR için Azure API 'sinde kalıcı olması için ek süre gerekebilir.|
 |Cihaz dönüştürme eşleme JSON 'ı yapılandırılmadı.|Uyumsuz cihaz dönüştürme eşlemesi JSON 'ı yapılandırın ve kaydedin.|
 |FHıR dönüştürme eşlemesi JSON yapılandırılmadı.|Uygun FHıR dönüştürme eşlemesi JSON 'ı yapılandırın ve kaydedin.|
@@ -67,22 +95,22 @@ Sorun gidermeye yardımcı olmak üzere bir destek bileti açılırken, eşleme 
 
 1. **"Eklentiler"** bölümünde FHIR kaynak panosu IÇIN Azure API 'sinin sol alt tarafındaki **"IoT Bağlayıcısı (Önizleme)"** öğesini seçin.
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-main-with-box.png" alt-text="IoT Bağlayıcısı" lightbox="media/iot-troubleshoot/map-files-main-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-main-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-main-with-box.png":::
 
 2. JSON dönüştürme eşlemesini içinden kopyalayacaksınız **"bağlayıcısını"** seçin.
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT Bağlayıcısı" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT Connector2" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
 > [!NOTE]
 > Bu işlem, **"FHıR eşlemesini yapılandırma"** JSON içeriğini kopyalamak ve kaydetmek için de kullanılabilir.
 
 3. **"Cihaz eşlemeyi Yapılandır"** ı seçin.
 
-    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT Bağlayıcısı" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
+    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT Connector3" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
 4. JSON içeriğini seçin ve bir kopyalama işlemi yapın (örneğin: Ctrl + c ' yi seçin). 
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT Bağlayıcısı" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT Connector4" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
 5. Bir düzenleyici içindeki yeni bir dosyaya (örneğin: Visual Studio Code, Notepad) bir yapıştırma işlemi yapın ve dosyayı bir *. JSON uzantısıyla kaydedin.
 

@@ -7,18 +7,109 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: f9f03c355e1e619d004c8ec8c1cc2f91932db744
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 96a97b9b141d434f201da4c7e36f6715186a652e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046842"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903053"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Hızlı başlangıç: Günlükler, ölçümler ve izleme ile Azure yay bulut uygulamalarını Izleme
 
+::: zone pivot="programming-language-csharp"
+Azure Spring Cloud 'daki yerleşik izleme özelliği sayesinde, karmaşık sorunları ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) [Şirket içinde dağıtılmış izlemeyi](https://steeltoe.io/docs/3/tracing/distributed-tracing) tümleştirmektedir. Bu tümleştirme, Azure portal güçlü Günlükler, ölçümler ve dağıtılmış izleme yeteneği sağlar.
+
+Aşağıdaki yordamlarda, önceki hızlı başlangıçlarda dağıttığınız örnek uygulamayla günlük akışı, Log Analytics, ölçüm ve dağıtılmış Izlemenin nasıl kullanılacağı açıklanmaktadır.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+* Bu serideki önceki hızlı başlangıçlarını doldurun:
+
+  * [Azure yay bulut hizmeti sağlayın](spring-cloud-quickstart-provision-service-instance.md).
+  * [Azure yay bulut yapılandırması sunucusunu ayarlayın](spring-cloud-quickstart-setup-config-server.md).
+  * [Uygulamalar oluşturun ve dağıtın](spring-cloud-quickstart-deploy-apps.md).
+
+## <a name="logs"></a>Günlükler
+
+Azure Spring Cloud 'da günlükleri görmenin iki yolu vardır: uygulama örneği başına gerçek zamanlı günlüklerin **günlüğünü** veya Gelişmiş sorgu özelliğine sahip toplanmış günlükler için **Log Analytics** .
+
+### <a name="log-streaming"></a>Günlük akışı
+
+Azure CLı 'de günlük akışını aşağıdaki komutla birlikte kullanabilirsiniz.
+
+```azurecli
+az spring-cloud app logs -n solar-system-weather -f
+```
+
+Aşağıdaki örneğe benzer bir çıktı görürsünüz:
+
+```output
+=> ConnectionId:0HM2HOMHT82UK => RequestPath:/weatherforecast RequestId:0HM2HOMHT82UK:00000003, SpanId:|e8c1682e-46518cc0202c5fd9., TraceId:e8c1682e-46518cc0202c5fd9, ParentId: => Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather)
+Executing action method Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather) - Validation state: Valid
+←[40m←[32minfo←[39m←[22m←[49m: Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController[0]
+
+=> ConnectionId:0HM2HOMHT82UK => RequestPath:/weatherforecast RequestId:0HM2HOMHT82UK:00000003, SpanId:|e8c1682e-46518cc0202c5fd9., TraceId:e8c1682e-46518cc0202c5fd9, ParentId: => Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather)
+Retrieved weather data from 4 planets
+←[40m←[32minfo←[39m←[22m←[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+
+=> ConnectionId:0HM2HOMHT82UK => RequestPath:/weatherforecast RequestId:0HM2HOMHT82UK:00000003, SpanId:|e8c1682e-46518cc0202c5fd9., TraceId:e8c1682e-46518cc0202c5fd9, ParentId: => Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather)
+Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]][]'.
+←[40m←[32minfo←[39m←[22m←[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+```
+
+> [!TIP]
+> `az spring-cloud app logs -h`Daha fazla parametre ve günlük akışı işlevini araştırmak için kullanın.
+
+### <a name="log-analytics"></a>Log Analytics
+
+1. **Hizmete git | Genel Bakış** sayfası ve **Izleme** bölümünde **Günlükler** ' i seçin. Azure yay bulutu için örnek sorgulardan birinde **Çalıştır** ' ı seçin.
+
+   [![Günlük Analizi girişi ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
+    
+1. Görüntüyü uyarı ve hata günlükleriyle sınırlayan WHERE yan tümcesini kaldırmak için sorguyu düzenleyin.
+
+1. Ardından `Run` öğesini seçin ve günlükleri görürsünüz. Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Log Analytics docs](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries) .
+
+   [![Günlük Analizi sorgusu-Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
+
+## <a name="metrics"></a>Ölçümler
+
+1. Azure portal **hizmete gidin | Genel Bakış** sayfası ve **Izleme** bölümünde **ölçümler** ' i seçin. `system.cpu.usage` **Ölçüm** için ' i seçerek ve `Avg` toplam CPU kullanımı için zaman çizelgesini görmek üzere **toplama** için ' i seçerek ilk ölçüsünü ekleyin.
+
+   [![Ölçüm girişi-Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
+    
+1. Araç çubuğunda **Filtre Ekle** ' ye tıklayın, `App=solar-system-weather` CPU kullanımını yalnızca **Solar-Sistem hava durumu** uygulaması için görmek üzere seçin.
+
+   [![Ölçülerde filtre kullanma-Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png#lightbox)
+
+1. Önceki adımda oluşturulan filtreyi kapatın, **bölmeyi Uygula**' yı seçin ve `App` farklı uygulamalar tarafından CPU kullanımını görmek için **değerler** ' i seçin.
+
+   [![Ölçümlere bölme Uygula-Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png#lightbox)
+
+## <a name="distributed-tracing"></a>Dağıtılmış izleme
+
+1. Azure portal **hizmete gidin | Genel Bakış** sayfası ve **Izleme** bölümünde **Dağıtılmış izleme** ' yi seçin. Ardından sağdaki **uygulama haritasını görüntüle** sekmesini seçin.
+
+   [![Dağıtılmış izleme girişi-Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
+
+1. Artık uygulamalar arasındaki çağrıların durumunu görebilirsiniz. 
+
+   [![Dağıtılmış izlemeye genel bakış-Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png#lightbox)
+    
+1. HTTP yöntemlerine göre en yavaş çağrılar gibi daha fazla ayrıntı görmek için **güneş-sistem durumu** ve **Planet-Hava durumu-sağlayıcı** arasındaki bağlantıyı seçin.
+
+   [![Dağıtılmış izleme-Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png#lightbox)
+    
+1. Son olarak, daha güçlü yerleşik performans analizini araştırmak için **performansı araştır** ' ı seçin.
+
+   [![Dağıtılmış izleme performansı-Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png#lightbox)
+::: zone-end
+
+::: zone pivot="programming-language-java"
 Azure Spring Cloud 'daki yerleşik izleme özelliği sayesinde, karmaşık sorunları ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) [yay bulutuna](https://spring.io/projects/spring-cloud-sleuth) karşı tümleşir. Bu tümleştirme, Azure portal güçlü Günlükler, ölçümler ve dağıtılmış izleme yeteneği sağlar. Aşağıdaki yordamlarda, dağıtılmış Plımetrik uygulamalarıyla günlük akışı, Log Analytics, ölçüm ve dağıtılmış izlemenin nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Önceki adımları doldurun: 
 
@@ -110,15 +201,17 @@ Azure Toolkit for IntelliJ kullanarak günlükleri almak için:
 
    [![Dağıtılmış izleme performansı ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png#lightbox)
 
+::: zone-end
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. Gelecekte bu kaynaklara ihtiyaç duymazsanız, kaynak grubunu portaldan silin veya Cloud Shell aşağıdaki komutu çalıştırın:
+Bu hızlı başlangıçlarda, abonelikleriniz varsa ücretlendirmeye devam edecek Azure kaynakları oluşturdunuz. Gelecekte bu kaynaklara ihtiyaç duymazsanız, portalı kullanarak veya Cloud Shell aşağıdaki komutu çalıştırarak kaynak grubunu silin:
 
 ```azurecli
-az group delete --name <your resource group name; for example: hellospring-1558400876966-rg> --yes
+az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
 ```
 
-Yukarıdaki adımlarda, varsayılan kaynak grubu adını da ayarlarsınız. Bu varsayılan seçimini kaldırmak için Cloud Shell aşağıdaki komutu çalıştırın:
+Daha önceki bir hızlı başlangıçta, varsayılan kaynak grubu adını da ayarlarsınız. Sonraki hızlı başlangıca devam etmeyi planlamıyorsanız, aşağıdaki CLı komutunu çalıştırarak bu varsayılanı kaldırın:
 
 ```azurecli
 az configure --defaults group=
@@ -126,9 +219,11 @@ az configure --defaults group=
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Spring Cloud için kullanıma hazır izleme özelliği hakkında daha fazla bilgi edinmek için bkz.:
+Azure Spring Cloud 'ın daha fazla izleme özelliğini araştırmak için bkz.:
 
 > [!div class="nextstepaction"]
-> [Tanılama Hizmetleri](diagnostic-services.md) 
->  [Dağıtılmış izleme](spring-cloud-tutorial-distributed-tracing.md) 
->  [Gerçek zamanlı akış günlükleri](spring-cloud-howto-log-streaming.md)
+> [Tanı hizmetleri](diagnostic-services.md)
+>
+> [Dağıtılmış izleme](spring-cloud-tutorial-distributed-tracing.md)
+>
+> [Gerçek zamanlı akış günlükleri](spring-cloud-howto-log-streaming.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning Studio nedir?
+title: Azure Machine Learning stüdyo nedir?
 description: Azure Machine Learning Studio, Azure Machine Learning çalışma alanları için bir Web portalıdır. Studio, kapsamlı bir veri bilimi platformu oluşturmak için kod içermeyen ve kod-ilk deneyimleri birleştirir.
 services: machine-learning
 ms.service: machine-learning
@@ -8,14 +8,14 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 4f6252ffbb880e347a89594cb267fb99d576dc7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89040474"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902930"
 ---
-# <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning Studio nedir?
+# <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning stüdyo nedir?
 
 Bu makalede, [Azure Machine Learning](overview-what-is-azure-ml.md)veri bilimi geliştiricileri için Web portalı olan Azure Machine Learning Studio hakkında bilgi edineceksiniz. Studio, kapsamlı bir veri bilimi platformu için kod içermez ve kod ilk deneyimlerini birleştirir.
 
@@ -34,13 +34,13 @@ Studio, tür projesine ve kullanıcı deneyiminin düzeyine bağlı olarak birde
 
   Doğrudan Studio 'da tümleştirilmiş olan yönetilen [Jupyter Notebook sunucularında](how-to-run-jupyter-notebooks.md) kendi kodunuzu yazın ve çalıştırın. 
 
-+ **Azure Machine Learning Tasarımcısı (Önizleme)**
++ **Azure Machine Learning tasarımcısı**
 
   Tasarımcı kullanarak makine öğrenimi modellerini herhangi bir kod yazmadan eğitme ve dağıtma. ML işlem hatları oluşturmak için veri kümelerini ve modülleri sürükleyip bırakın. [Tasarımcı öğreticisini](tutorial-designer-automobile-price-train-score.md)deneyin.
 
     ![Azure Machine Learning tasarımcı örneği](media/concept-designer/designer-drag-and-drop.gif)
 
-+ **Otomatik makine öğrenme Kullanıcı arabirimi (Önizleme)**
++ **Otomatik makine öğrenme Kullanıcı arabirimi**
 
   Kullanımı kolay bir arabirimle [OTOMATIK ml denemeleri](tutorial-first-experiment-automated-ml.md) oluşturma hakkında bilgi edinin. 
 
@@ -61,7 +61,7 @@ Makine öğrenimi varlıklarınızı doğrudan tarayıcınızda yönetin. Varlı
 - Notebooks
 - Denemeler
 - Günlükleri Çalıştır
-- Pipelines 
+- İşlem hatları 
 - Ardışık düzen uç noktaları
 
 Deneyimli bir geliştirici olsanız bile, Studio çalışma alanı kaynaklarını nasıl yönetebileceğinizi kolaylaştırabilir.
@@ -80,9 +80,9 @@ Yeni kullanıcıların, en son veri bilimi araçları aralığı için ML Studio
 
 Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki önemli farklılıkları özetler.
 
-| Özellik | ML Studio (klasik) | Azure Machine Learning |
+| Öne çıkan özelliği | ML Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
-| Sürükle ve bırak arabirimi | Klasik deneyim | Güncelleştirilmiş deneyim- [Azure Machine Learning Tasarımcısı (Önizleme)](concept-designer.md) <br/>(Kurumsal çalışma alanı gerektirir) | 
+| Sürükle ve bırak arabirimi | Klasik deneyim | Güncelleştirilmiş deneyim- [Azure Machine Learning Tasarımcısı](concept-designer.md)| 
 | Kod SDK 'Ları | Desteklenmeyen | [Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) ve [R](tutorial-1st-r-experiment.md) SDK 'leriyle tamamen tümleşik |
 | Deneme | Ölçeklenebilir (10 GB eğitim veri limiti) | İşlem hedefi ile ölçeklendirme |
 | Eğitim işlem hedefleri | Özel işlem hedefi, yalnızca CPU desteği | Geniş kapsamlı özelleştirilebilir [eğitim işlem hedefleri](concept-compute-target.md#train). GPU ve CPU desteği içerir | 

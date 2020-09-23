@@ -4,12 +4,12 @@ description: Azure Izleyici 'deki eylem kurallarının ne olduğunu ve bunların
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 083db4ad046ee586f139309b62eedf0fcc2ffa6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723da36093c895a3a4aefbe66c2d8ca2ac0cba32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045730"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983144"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (Önizleme)
 
@@ -21,7 +21,7 @@ Eylem kuralları herhangi bir Azure Resource Manager kapsamında (Azure aboneli�
 
 ### <a name="suppression-of-alerts"></a>Uyarıların gizlemesi
 
-Uyarıların oluşturduğu bildirimleri gizlemek için yararlı olduğu birçok senaryo vardır. Bu senaryolar, planlanan bir bakım penceresi sırasında çalışılmayan saatler sırasında gizlemenin gizlenme sürecinde değişir. Örneğin, **contosovm** 'den sorumlu olan ekip, **contosovm** planlanmış bakımda olduğundan yaklaşan hafta sonu için uyarı bildirimlerini bastırmak istiyor.
+Uyarıların oluşturduğu bildirimleri gizlemek için yararlı olduğu birçok senaryo vardır. Bu senaryolar, planlanan bir bakım penceresi sırasında çalışılmayan saatler sırasında gizlemenin gizlenme sürecinde değişir. Örneğin,  **contosovm** 'den sorumlu olan ekip, **contosovm** planlanmış bakımda olduğundan yaklaşan hafta sonu için uyarı bildirimlerini bastırmak istiyor.
 
 Ekip, **Contosovm** 'de yapılandırılmış olan her bir uyarı kuralını el ile devre dışı bırakabilse de (bakım sonrasında tekrar etkinleştirirseniz) basit bir işlem değildir. Eylem kuralları, göstermeme süresini esnek bir şekilde yapılandırma özelliği ile ölçeklendirerek uyarı gizleme tanımlamanıza yardımcı olur. Önceki örnekte, takım, **Contosovm** 'de, hafta sonu için tüm uyarı bildirimlerini gösteren bir eylem kuralı tanımlayabilir.
 
@@ -44,11 +44,11 @@ Azure Izleyici 'de **Uyarılar** giriş sayfasından **eylemleri Yönet** ' i se
 
 **+ Yeni eylem kuralı**' nı seçin.
 
-![Yeni eylem kuralı ekle](media/alerts-action-rules/action-rules-new-rule.png)
+![Ekran görüntüsü yeni eylem kuralı düğmesi vurgulanmış şekilde eylemleri Yönet sayfasını gösterir.](media/alerts-action-rules/action-rules-new-rule.png)
 
 Alternatif olarak, bir uyarı kuralı yapılandırırken bir eylem kuralı oluşturabilirsiniz.
 
-![Yeni eylem kuralı ekle](media/alerts-action-rules/action-rules-alert-rule.png)
+![Ekran görüntüsü, eylem kuralı oluştur düğmesi vurgulanmış şekilde kural oluştur sayfasını gösterir.](media/alerts-action-rules/action-rules-alert-rule.png)
 
 Artık eylem kuralları oluşturmak için akış sayfasını görmeniz gerekir. Aşağıdaki öğeleri yapılandırın:
 
@@ -103,7 +103,7 @@ Geçiş sırasında **eylem grubu** ' nu seçerseniz, var olan bir eylem grubu e
 ### <a name="action-rule-details"></a>Eylem kuralı ayrıntıları
 
 Son olarak, eylem kuralı için aşağıdaki ayrıntıları yapılandırın:
-* Name
+* Ad
 * Kaydedildiği kaynak grubu
 * Açıklama
 
@@ -117,13 +117,13 @@ Son olarak, eylem kuralı için aşağıdaki ayrıntıları yapılandırın:
 
    İsterseniz, bu makaledeki adımları tamamlayabilmeniz için Azure Cloud Shell de kullanabilirsiniz.  Azure Cloud Shell, tarayıcınız aracılığıyla kullandığınız etkileşimli bir kabuk ortamıdır.  Aşağıdaki yöntemlerden birini kullanarak Cloud Shell başlatın:
 
-   - Cloud Shell giderek açın[https://shell.azure.com](https://shell.azure.com)
+   - Cloud Shell giderek açın [https://shell.azure.com](https://shell.azure.com)
 
    - [Azure Portal](https://portal.azure.com) sağ üst köşedeki menü çubuğunda bulunan **Cloud Shell** düğmesini seçin
 
-1. Giriş yapın.
+1. Oturum açın.
 
-   CLı 'nın yerel bir yüklemesini kullanıyorsanız [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.  Kimlik doğrulama işlemini gerçekleştirmek için terminalinizde görünen adımları izleyin.
+   CLı 'nın yerel bir yüklemesini kullanıyorsanız [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.  Terminalinizde görüntülenen adımları uygulayarak kimlik doğrulama işlemini tamamlayın.
 
     ```azurecli
     az login
@@ -251,11 +251,11 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 * * *
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 [Sonuç sayısı](alerts-unified-log.md) seçeneği ile oluşturduğunuz günlük uyarıları, tüm arama sonucunu (birden çok bilgisayara yayılabilen) kullanarak tek bir uyarı örneği oluşturur. Bu senaryoda, bir eylem kuralı **Uyarı bağlamı (yük)** filtresini kullanıyorsa, eşleşme olduğu sürece uyarı örneği üzerinde işlem yapar. Daha önce açıklanan senaryo 2 ' de, oluşturulan günlük uyarısıyla ilgili arama sonuçları hem **bilgisayar-01** hem de **Bilgisayar-02**içeriyorsa, tüm bildirim bastırılır. **Bilgisayar-02** için hiçbir bildirim üretilmez.
 
-![Eylem kuralları ve günlük uyarıları (sonuç sayısı)](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
+![Diyagramda, tek bir uyarı örneğiyle vurgulanan eylem kuralları ve günlük uyarıları gösterilmektedir.](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
 Günlük uyarılarını eylem kuralları ile en iyi şekilde kullanmak için, [ölçüm ölçümü](alerts-unified-log.md) seçeneğiyle günlük uyarıları oluşturun. Ayrı uyarı örnekleri, tanımlı grup alanı temel alınarak bu seçenek tarafından oluşturulur. Ardından, Senaryo 2 ' de, **bilgisayar-01** ve **Bilgisayar-02**için ayrı uyarı örnekleri oluşturulur. Senaryoda açıklanan eylem kuralı nedeniyle yalnızca **bilgisayar-01** için bildirim bastırılır. **Bilgisayar-02** ' e yönelik bildirim normal olarak çalışmaya devam eder.
 
@@ -272,7 +272,7 @@ Bir eylem kuralı yapılandırırken bir kapsam tanımladıktan sonra, aynı kap
 * Bir üst küme: Örneğin, tanımladığınız eylem kuralı bir kaynak grubunda ve çakışan eylem kuralı kaynak grubunu içeren abonelikte bulunur.
 * Bir kesişim: Örneğin, tanımladığınız eylem kuralı **VM1** ve **VM2**ve çakışan eylem kuralı **VM2** ve **VM3**üzerinde.
 
-![Çakışan eylem kuralları](media/alerts-action-rules/action-rules-overlapping.png)
+![Ekran görüntüsü, aynı kapsam penceresinde tanımlanan eylem kurallarında çakışan eylem kurallarının gösterildiği yeni eylem kuralı sayfasını gösterir.](media/alerts-action-rules/action-rules-overlapping.png)
 
 ### <a name="while-im-configuring-an-alert-rule-is-it-possible-to-know-if-there-are-already-action-rules-defined-that-might-act-on-the-alert-rule-im-defining"></a>Bir uyarı kuralı yapılandırmadım, ancak tanımladığım uyarı kuralında işlem yapabilecek bir işlem kuralları olup olmadığını bilmelidir.
 

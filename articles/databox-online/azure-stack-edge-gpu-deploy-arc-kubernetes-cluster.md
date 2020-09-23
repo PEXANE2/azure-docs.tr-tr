@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU cihazında Kubernetes 'te Azure yayı 'yi etkinleştirme | Microsoft Docs
-description: Azure Stack Edge GPU cihazındaki mevcut bir Kubernetes kümesinde Azure Arc 'ın nasıl etkinleştirileceğini açıklar.
+title: Azure Stack Edge Pro GPU cihazında Kubernetes 'te Azure yayı 'yi etkinleştirme | Microsoft Docs
+description: Azure Stack Edge Pro GPU cihazındaki mevcut bir Kubernetes kümesinde Azure Arc 'ın nasıl etkinleştirileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,27 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 3405f28d5f306e8370bae72eb5f3f3c406235c3d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322033"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903203"
 ---
-# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınızda Kubernetes kümesinde Azure yayı 'yi etkinleştirme
+# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki Kubernetes kümesinde Azure yayı 'yi etkinleştirme
 
-Bu makalede, Azure Stack Edge cihazındaki mevcut bir Kubernetes kümesinde Azure Arc 'ı nasıl etkinleştireceğinizi gösterilmektedir. 
+Bu makalede, Azure Arc 'ın Azure Stack Edge Pro cihazınızdaki mevcut bir Kubernetes kümesinde nasıl etkinleştirileceği gösterilmektedir. 
 
-Bu yordam, [Azure Stack Edge cihazında Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) Inceleyen ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)ile ilgili kavramların öğrentiği kişilere yöneliktir.
+Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) Inceleyen ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)ile ilgili kavramlara yönelik kavramlar hakkında bilgi sahibi olmak için tasarlanmıştır.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Kubernetes kümesinde Azure Arc 'ı etkinleştirebilmeniz için, Azure Stack Edge cihazınızda ve cihaza erişmek için kullanacağınız istemcide aşağıdaki önkoşulları tamamladığınızdan emin olun:
+Kubernetes kümesinde Azure yayı etkinleştirebilmeniz için, Azure Stack Edge Pro cihazınızda ve cihaza erişmek için kullanacağınız istemcide aşağıdaki önkoşulları tamamladığınızdan emin olun:
 
 ### <a name="for-device"></a>Cihaz için
 
-1. 1 düğümlü Azure Stack Edge cihazında oturum açma kimlik bilgileriniz var.
+1. 1 düğümlü Azure Stack Edge Pro cihazı için oturum açma kimlik bilgileriniz vardır.
     1. Cihaz etkinleştirilir. Bkz. [cihazı etkinleştirme](azure-stack-edge-gpu-deploy-activate.md).
     1. Cihazda Azure portal aracılığıyla yapılandırılmış işlem rolü vardır ve bir Kubernetes kümesi vardır. Bkz. [Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
 
@@ -37,19 +37,19 @@ Kubernetes kümesinde Azure Arc 'ı etkinleştirebilmeniz için, Azure Stack Edg
 
 ### <a name="for-client-accessing-the-device"></a>Cihaza erişen istemci için
 
-1. Azure Stack Edge cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
+1. Azure Stack Edge Pro cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
   
     - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
     
     - [Desteklenen bir işletim sistemine](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. 
     
-1. [Azure Stack Edge cihazında Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)bölümünde açıklanan yordamı tamamladınız. Şunları yapabilirsiniz:
+1. [Azure Stack Edge Pro cihazında Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)bölümünde açıklanan yordamı tamamladınız. Şunları yapabilirsiniz:
     
     - `kubectl`İstemciye yüklendi  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - `kubectl`İstemci sürümünün Azure Stack Edge cihazında çalışan Kubernetes ana sürümünden daha fazla sürüm olmadığından emin olun. 
+    - `kubectl`İstemci sürümünün, Azure Stack Edge Pro cihazınızda çalışan Kubernetes ana sürümünden birden fazla sürüm olmadığından emin olun. 
       - `kubectl version`İstemci üzerinde çalışan kubectl sürümünü denetlemek için kullanın. Tam sürümü bir yere unutmayın.
-      - Azure Stack Edge cihazınızın yerel kullanıcı arabiriminde, **yazılım güncelleştirmesi** ' ne gidin ve Kubernetes sunucu sürüm numarasını aklınızda olun. 
+      - Azure Stack Edge Pro cihazınızın yerel kullanıcı arabiriminde, **yazılım güncelleştirmesi** ' ne gidin ve Kubernetes sunucu sürüm numarasını aklınızda edin. 
     
         ![Kubernetes sunucu sürüm numarasını doğrula](media/azure-stack-edge-gpu-connect-powershell-interface/verify-kubernetes-version-1.png)      
       
@@ -142,7 +142,7 @@ Azure Arc yönetimi için Kubernetes kümesini yapılandırmak için aşağıdak
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    Azure Stack Edge cihazında Azure Arc dağıtmak için, [Azure Arc Için desteklenen bir bölge](../azure-arc/kubernetes/overview.md#supported-regions)kullandığınızdan emin olun. Azure Arc Şu anda önizleme aşamasındadır. Komutunu kullanarak cmdlet 'te geçirilecek bölgenin tam adını da belirleyebilirsiniz `az account list-locations` .
+    Azure Arc 'ı Azure Stack Edge Pro cihazında dağıtmak için, [Azure Arc Için desteklenen bir bölge](../azure-arc/kubernetes/overview.md#supported-regions)kullandığınızdan emin olun. Azure Arc Şu anda önizleme aşamasındadır. Komutunu kullanarak cmdlet 'te geçirilecek bölgenin tam adını da belirleyebilirsiniz `az account list-locations` .
     
     Aşağıda bir örnek verilmiştir:
    
@@ -224,4 +224,4 @@ Azure Arc yönetimini kaldırmak için şu adımları izleyin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Arc dağıtımının nasıl çalıştırılacağını anlamak için, bkz. [Azure Stack Edge cihazında Gilar aracılığıyla durum bilgisiz olmayan php Konuk uygulaması dağıtma](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)
+Azure Arc dağıtımının nasıl çalıştırılacağını anlamak için bkz. [bir Azure Stack Edge Pro cihazında Gilar aracılığıyla durum bilgisiz olmayan php Konuk uygulaması dağıtma](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)

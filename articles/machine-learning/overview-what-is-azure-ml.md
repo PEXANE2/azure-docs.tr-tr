@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 72de3c45d0def7cf4a48884ee49be256179ac0a4
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f8be403a9aa095a24ec4802aad0364b535ed7c5a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659491"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902914"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -41,7 +41,7 @@ Makine öğreniminin öngörüleri veya tahminleri, uygulama ve cihazları daha 
 ## <a name="machine-learning-tools-to-fit-each-task"></a>Her göreve uyacak makine öğrenimi araçları 
 
 Azure Machine Learning, aşağıdakiler dahil olmak üzere makine öğrenimi iş akışları için gereken tüm araç geliştiricileri ve veri bilimcilerini sağlar:
-+ [Azure Machine Learning Tasarımcısı](tutorial-designer-automobile-price-train-score.md) (Önizleme): denemeleri 'nizi derlemek ve sonra işlem hatları dağıtmak için sürükleyip n-Bırak modüllerini sürükleyin.
++ [Azure Machine Learning Tasarımcısı](tutorial-designer-automobile-price-train-score.md): denemeleri 'nizi derlemek ve sonra işlem hatları dağıtmak için-n-Drop modüllerini sürükleyin.
 
 + Jupyter Not defterleri: makinenizde öğrendiğimiz <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python örnekleri Için SDK</a> 'ümüzden yararlanmak üzere [örnek Not defterlerimizi](https://github.com/Azure/MachineLearningNotebooks) kullanın veya kendi not defterlerinizi oluşturun. 
 
@@ -71,7 +71,7 @@ SDK kullanarak [model eğitimi ve ayarlamayı otomatik hale](tutorial-auto-train
 
 [Azure Machine Learning Studio](https://studio.azureml.net) , model eğitimi, dağıtımı ve varlık yönetimi için düşük kod ve kod içermeyen seçenekler için Azure Machine Learning bir Web portalıdır. Studio, sorunsuz bir deneyim için Azure Machine Learning SDK ile tümleşir. Daha fazla bilgi için bkz. [Azure Machine Learning Studio nedir?](overview-what-is-machine-learning-studio.md).
 
-+ **Azure Machine Learning Tasarımcısı (Önizleme)**
++ **Azure Machine Learning tasarımcısı**
 
   [Tasarımcı](concept-designer.md) kullanarak makine öğrenimi modellerini herhangi bir kod yazmadan eğitme ve dağıtma. Başlamak için [Tasarımcı öğreticisini](tutorial-designer-automobile-price-train-score.md) deneyin. 
 
@@ -124,15 +124,6 @@ Azure Machine Learning Azure platformunda diğer hizmetlerle çalışır ve ayr�
 ### <a name="secure-communications"></a>Güvenli iletişim
 
 Azure depolama hesabınız, işlem hedefleri ve diğer kaynaklarınız, modelleri eğitmek ve çıkarım gerçekleştirmek için bir sanal ağ içinde güvenli bir şekilde kullanılabilir. Daha fazla bilgi için bkz. [sanal ağ yalıtımı ve gizliliğe genel bakış](how-to-network-security-overview.md).
-
-## <a name="basic--enterprise-editions"></a><a name="sku"></a>Temel & Enterprise sürümleri
-
-Azure Machine Learning, Machine Learning gereksinimleriniz için tasarlanmış iki sürüm sunar:
-+ **Temel**: bir kod ilk deneyimiyle bulut ölçeğinde açık kaynaklı geliştirme için harika.
-
-+ **Enterprise**: tüm temel ve bir Web arabirimi (Studio) + güvenli ve tüm beceri düzeyleri IÇIN kapsamlı ml yaşam döngüsü yönetimi.
-
-Bu sürümler hakkında daha fazla bilgi edinmek ve hangi özellikleri kilitleyeceğinizi öğrenmek için, ["Azure Machine Learning sürümleri" makalesini](concept-editions.md)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

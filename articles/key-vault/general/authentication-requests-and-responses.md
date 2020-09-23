@@ -2,22 +2,40 @@
 title: Kimlik doğrulaması, istekler ve yanıtlar
 description: Azure Key Vault JSON ile biçimlendirilen istekleri ve yanıtları nasıl kullandığını ve anahtar kasası kullanmak için gereken kimlik doğrulamasını öğrenin.
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191788"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983268"
 ---
 # <a name="authentication-requests-and-responses"></a>Kimlik doğrulaması, istekler ve yanıtlar
+
+Azure Key Vault bulut uygulamalarınız için gizli dizileri depolamak ve yönetmek üzere iki tür kapsayıcı sağlar:
+
+|Kapsayıcı türü|Desteklenen nesne türleri|Veri düzlemi uç noktası|
+|--|--|--|
+| **Kasalar**|<ul><li>Yazılım korumalı anahtarlar</li><li>HSM korumalı anahtarlar (Premium SKU ile)</li><li>Sertifikalar</li><li>Depolama hesabı anahtarları</li></ul> | https://{kasa-adı}. kasa. Azure. net
+|**Yönetilen HSM** |<ul><li>HSM ile korunan anahtarlar</li></ul> | https://{HSM-adı}. managedhsm. Azure. net
+
+Her nesne türüne erişmek için kullanılan URL sonekleri aşağıda verilmiştir
+
+|Nesne türü|URL son eki|
+|--|--|
+|Yazılım korumalı anahtarlar| /Keys |
+|HSM ile korunan anahtarlar| /Keys |
+|Gizli Diziler|/gizlilikler|
+|Sertifikalar| /Certificates|
+|Depolama hesabı anahtarları|/storageaccounts
+||
 
 Azure Key Vault JSON biçimli istekleri ve yanıtları destekler. Azure Key Vault istekleri, URL parametreleri ve JSON kodlamalı istek ve yanıt gövdeleriyle HTTPS kullanılarak geçerli bir Azure Key Vault URL 'sine yönlendirilir.
 
@@ -36,7 +54,9 @@ Bu konu, Azure Key Vault hizmetinin özelliklerini içerir. Kimlik doğrulama/ye
 
 - Key Vault kullanımı içinde TESTKEY adlı bir anahtarı kullanarak bir özeti IMZALAMAK için `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  Bir Key Vault isteği için olan yetki her zaman aşağıdaki gibidir.  `https://{keyvault-name}.vault.azure.net/`  
+- Bir Key Vault isteği için olan yetki her zaman aşağıdaki gibidir.
+  - Kasa için: `https://{keyvault-name}.vault.azure.net/`
+  - Yönetilen HSM 'ler için: `https://{HSM-name}.managedhsm.azure.net/`
 
   Anahtarlar her zaman/Keys yolu altında depolanır, gizlilikler her zaman/gizlilikler yolu altında depolanır.  
 

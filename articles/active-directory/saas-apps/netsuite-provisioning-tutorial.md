@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 158b66d63292a1ffb503f3f87eddfd33a2b09b71
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b428ffc0122f13ef15f870ce734b54fe6707f582
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554490"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983955"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Netsuite yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den Netsuite 'e Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Netsuite OneWorld ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 *   Azure Active Directory kiracısı.
 *   Netsuite OneWorld aboneliği. Otomatik Kullanıcı hazırlama 'nın Şu anda yalnızca NetSuite OneWorld ile desteklendiğini unutmayın.
@@ -60,9 +60,9 @@ Bu bölümün amacı, Active Directory Kullanıcı hesaplarının Netsuite 'e Ku
 
 1. Netsuite örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-1. **Sağlama modunu** **Otomatik**olarak ayarlayın. 
+1. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın. 
 
-    ![alınıyor](./media/netsuite-provisioning-tutorial/provisioning.png)
+    ![Ekran görüntüsü, sağlama modu otomatik ve ayarlayabileceğiniz diğer değerlere ayarlanmış olan Netsuite sağlama sayfasını gösterir.](./media/netsuite-provisioning-tutorial/provisioning.png)
 
 1. **Yönetici kimlik bilgileri** bölümünde aşağıdaki yapılandırma ayarlarını sağlayın:
    
@@ -90,6 +90,6 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 * [Çoklu oturum açmayı yapılandırma](netsuite-tutorial.md)

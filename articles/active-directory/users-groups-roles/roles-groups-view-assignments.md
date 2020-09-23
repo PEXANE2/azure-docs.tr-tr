@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory bir gruba atanmış rolleri görüntüle | Microsoft Docs
-description: Kimlik yönetimi temsilcisi seçme için özel Azure AD rollerini önizleyin. Azure portal, PowerShell veya Graph API Azure rollerini yönetin.
+description: Bir gruba atanan rollerin Azure AD Yönetim Merkezi kullanılarak nasıl görüntülenebileceğini öğrenin. Grupları ve atanan rolleri görüntüleme varsayılan kullanıcı izinleridir.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7613fb70299a70e4389b97c2647a26cb7c3374
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 0c0a34b3861c82b3d2ef54a36108f9ea522d716d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476214"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983102"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>Azure Active Directory bir gruba atanan rolleri görüntüleme
 
@@ -63,4 +63,4 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$f
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Rol atamalarını yönetmek için bulut gruplarını kullanma](roles-groups-concept.md)
-- [Bulut gruplarına atanan rol sorunlarını giderme](roles-groups-faq-troubleshooting.md)
+- [Bulut gruplarına atanan rollerle ilgili sorunları giderme](roles-groups-faq-troubleshooting.md)

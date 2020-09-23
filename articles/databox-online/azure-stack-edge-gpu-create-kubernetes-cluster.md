@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU cihazında bir Kubernetes kümesi oluşturma ve yönetme | Microsoft Docs
-description: Windows PowerShell arabirimi aracılığıyla Azure Stack Edge GPU cihazında bir Kubernetes kümesinin nasıl oluşturulacağını ve yönetileceğini açıklar.
+title: Azure Stack Edge Pro GPU cihazında bir Kubernetes kümesi oluşturma ve yönetme | Microsoft Docs
+description: Windows PowerShell arabirimi aracılığıyla Azure Stack Edge Pro GPU cihazında bir Kubernetes kümesinin nasıl oluşturulacağını ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 95663553bc68d34eebd90be0d4032ee53900479b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267967"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903207"
 ---
-# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınızda kubectl aracılığıyla bir Kubernetes kümesine bağlanma ve bunları yönetme
+# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızdan kubectl aracılığıyla bir Kubernetes kümesine bağlanma ve bunları yönetme
 
-Azure Stack Edge cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes kümesi oluşturulduktan sonra, *kubectl*gibi yerel bir araç aracılığıyla bir istemci makinesinden kümeye bağlanabilir ve yerel olarak yönetim sağlayabilirsiniz.
+Azure Stack Edge Pro cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes kümesi oluşturulduktan sonra, *kubectl*gibi yerel bir araç aracılığıyla bir istemci makinesinden kümeye bağlanabilir ve yerel olarak yönetim sağlayabilirsiniz.
 
-Bu makalede, Azure Stack Edge cihazındaki bir Kubernetes kümesine bağlanmayı ve sonra da *kubectl*kullanarak yönetmeyi açıklanmaktadır. 
+Bu makalede, Azure Stack Edge Pro cihazınızda bir Kubernetes kümesine bağlanmayı ve sonra da *kubectl*kullanarak yönetmeyi açıklanmaktadır. 
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-1. Azure Stack Edge cihazına erişirsiniz.
+1. Azure Stack Edge Pro cihazına erişirsiniz.
 
-2. Azure Stack Edge cihazınızı [etkinleştirme Azure Stack Edge](azure-stack-edge-gpu-deploy-activate.md)bölümünde açıklandığı gibi etkinleştirdiniz.
+2. Azure Stack Edge Pro cihazınızı [etkinleştirme Azure Stack Edge Pro 'Yu etkinleştir](azure-stack-edge-gpu-deploy-activate.md)bölümünde açıklandığı gibi etkinleştirdiniz.
 
-3. Cihazda işlem rolünü etkinleştirdiniz. Cihazda, [Azure Stack Edge cihazınızda Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md)bölümündeki yönergelere göre işlem yapılandırdığınızda bir Kubernetes kümesi de oluşturulmuştur.
+3. Cihazda işlem rolünü etkinleştirdiniz. Cihazda, [Azure Stack Edge Pro cihazınızda Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md)bölümündeki yönergelere göre işlem yapılandırdığınızda bir Kubernetes kümesi de oluşturulmuştur.
 
 4. Cihaza erişmek için PowerShell 5,0 veya sonraki bir sürümü çalıştıran bir Windows istemci sistemine erişirsiniz. [Desteklenen bir işletim sistemine](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) sahip başka bir istemciniz de olabilir. 
 
@@ -48,7 +48,7 @@ Kubernetes kümesi oluşturulduktan sonra, ad alanları ve kullanıcılar oluşt
 
 Kubernetes kümesi oluşturulduktan sonra, kümeye erişmek için komut satırı aracılığıyla *kubectl* 'yi kullanabilirsiniz. 
 
-Bu yaklaşımda bir ad alanı ve Kullanıcı oluşturursunuz. Daha sonra kullanıcıyı ad alanıyla ilişkilendirirsiniz. Ayrıca, bir Kubernetes istemcisini, Azure Stack Edge cihazınızın PowerShell arabirimine bağlanabilmek gerekmeden doğrudan oluşturduğunuz Kubernetes kümesi ile konuşmanıza olanak tanıyan bir *yapılandırma* dosyası almanız gerekir.
+Bu yaklaşımda bir ad alanı ve Kullanıcı oluşturursunuz. Daha sonra kullanıcıyı ad alanıyla ilişkilendirirsiniz. Ayrıca, bir Kubernetes istemcisini, Azure Stack Edge Pro cihazınızın PowerShell arabirimine bağlanabilmek gerekmeden doğrudan oluşturduğunuz Kubernetes kümesi ile konuşmanıza olanak tanıyan bir *yapılandırma* dosyası almanız gerekir.
 
 1. Ad alanı oluşturun. Şunu yazın:
 
@@ -66,7 +66,7 @@ Bu yaklaşımda bir ad alanı ve Kullanıcı oluşturursunuz. Daha sonra kullan�
     `New-HcsKubernetesUser -UserName <string>`
 
     > [!NOTE]
-    > Azure Stack Edge için IoT ad alanıyla ilişkili bir varsayılan kullanıcı için ayrılmış olduğundan, *aseuser* Kullanıcı adı olarak kullanılamaz.
+    > Azure Stack Edge Pro için IoT ad alanıyla ilişkili bir varsayılan kullanıcı için ayrılmış olduğundan, *aseuser* Kullanıcı adı olarak kullanılamaz.
 
     Yapılandırma dosyasının örnek bir çıkışı aşağıda verilmiştir:
    
@@ -113,7 +113,7 @@ Bu yaklaşımda bir ad alanı ve Kullanıcı oluşturursunuz. Daha sonra kullan�
 
     `[10.100.10.10]: PS>Grant-HcsKubernetesNamespaceAccess -Namespace "myasetest1" -UserName "aseuser1"`
 
-    Yapılandırma dosyasına sahip olduktan sonra kümeye fiziksel erişime ihtiyacınız yoktur. İstemciniz Azure Stack Edge cihaz IP 'sini ping yapabiliyor ise, *kubectl* komutlarını kullanarak kümeyi yönlendirebilirsiniz.
+    Yapılandırma dosyasına sahip olduktan sonra kümeye fiziksel erişime ihtiyacınız yoktur. İstemciniz Azure Stack Edge Pro cihaz IP 'sini ping yapabiliyor ise, *kubectl* komutlarını kullanarak kümeyi yönlendirebilirsiniz.
 
 6. İstemcinizdeki yeni bir PowerShell oturumu başlatın. Cihaz arabirimine bağlı olmanız gerekmez. Artık `kubectl` aşağıdaki komutu kullanarak istemcinizi yükleyebilirsiniz:
 
@@ -125,7 +125,7 @@ Bu yaklaşımda bir ad alanı ve Kullanıcı oluşturursunuz. Daha sonra kullan�
     Örneğin, Kubernetes ana düğümü v 1.15.2 çalıştırıyorsa, istemciye v 1.15.2 ' yi yükler.
 
     > [!IMPORTANT]
-    > Ana bilgisayardan birden fazla alt sürüm olmayan bir istemciyi indirin. İstemci sürümü, ancak ana öğeyi bir alt sürüme kadar gösterebilir. Örneğin, bir v 1.3 yöneticisinin v 1.1, v 1.2 ve v 1.3 düğümleri ile çalışması ve v 1.2, v 1.3 ve v 1.4 istemcileri ile çalışması gerekir. Kubernetes istemci sürümü hakkında daha fazla bilgi için bkz. [Kubernetes sürümü ve sürüm eğriltme destek ilkesi](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). Azure Stack Edge üzerinde Kubernetes sunucu sürümü hakkında daha fazla bilgi için, Kubernetes sunucu sürümünü al bölümüne gidin.<!-- insert link-->
+    > Ana bilgisayardan birden fazla alt sürüm olmayan bir istemciyi indirin. İstemci sürümü, ancak ana öğeyi bir alt sürüme kadar gösterebilir. Örneğin, bir v 1.3 yöneticisinin v 1.1, v 1.2 ve v 1.3 düğümleri ile çalışması ve v 1.2, v 1.3 ve v 1.4 istemcileri ile çalışması gerekir. Kubernetes istemci sürümü hakkında daha fazla bilgi için bkz. [Kubernetes sürümü ve sürüm eğriltme destek ilkesi](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). Azure Stack Edge Pro 'da Kubernetes sunucu sürümü hakkında daha fazla bilgi için, Kubernetes sunucu sürümünü al bölümüne gidin.<!-- insert link-->
     > Bazen `kubectl` Docker for Windows veya başka araçlar çalıştırıyorsanız sisteminize önceden yüklenir. Bu `kubectl` bölümde belirtilen bu Kubernetes kümesiyle çalışmak için belirli sürümünü indirmek önemlidir. 
 
     Yükleme birkaç dakika sürer.
@@ -172,4 +172,4 @@ Ayrıntılı yönergeler için, [işlem yapılandırmasını kaldır](azure-stac
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stack kenarunuzda durum bilgisiz bir uygulama dağıtın](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Azure Stack Edge Pro 'unuzda durum bilgisiz bir uygulama dağıtın](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).

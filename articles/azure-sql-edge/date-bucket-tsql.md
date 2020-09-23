@@ -1,6 +1,6 @@
 ---
-title: Date_Bucket (Transact-SQL)-Azure SQL Edge (Önizleme)
-description: Azure SQL Edge 'de Date_Bucket kullanma hakkında bilgi edinin (Önizleme)
+title: Date_Bucket (Transact-SQL)-Azure SQL Edge
+description: Azure SQL Edge 'de Date_Bucket kullanma hakkında bilgi edinin
 keywords: Date_Bucket, SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 63b7ad84b0866c91e84007a188b82de65983790f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 896caae2dfd79c4678ffb34c531fb56835e9bd66
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458859"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886849"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -52,16 +52,16 @@ DATE_BUCKET (datePart, number, date, origin)
 
 Değer, *datePart* bağımsız değişkeniyle birleştirilmiş olan demet genişliğine karar veren tamsayı numarası. Bu, kaynak zamandan itibaren veri bölümü demetlerinin genişliğini temsil eder. **`This argument cannot be a negative integer value`**. 
 
-*güncel*
+*tarih*
 
 Aşağıdaki değerlerden birine çözümleyebilecek bir ifade:
 
-+ **güncel**
++ **tarih**
 + **datetime**
 + **türünde**
 + **datetime2**
 + **girişin**
-+ **ışınızda**
++ **time**
 
 *Tarih*için, `DATE_BUCKET` yukarıda belirtilen veri türlerine çözümlendiklerinde bir sütun ifadesi, ifade veya Kullanıcı tanımlı değişken kabul eder.
 
@@ -69,12 +69,12 @@ Aşağıdaki değerlerden birine çözümleyebilecek bir ifade:
 
 Aşağıdaki değerlerden birine çözümleyebilecek isteğe bağlı bir ifade:
 
-+ **güncel**
++ **tarih**
 + **datetime**
 + **türünde**
 + **datetime2**
 + **girişin**
-+ **ışınızda**
++ **time**
 
 İçin veri türü, `Origin` parametrenin veri türüyle eşleşmelidir `Date` . 
 

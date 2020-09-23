@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9b320c765b258473acd6fa553831b4f075cca9ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189929"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983235"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault müşteri verileri özellikleri
 
-Azure Key Vault, kasaların, anahtarların, parolaların, sertifikaların ve yönetilen depolama hesaplarının oluşturulması veya güncelleştirilmesi sırasında müşteri verilerini alır. Bu müşteri verileri doğrudan Azure portal ve REST API üzerinden görünür. Verileri içeren nesne güncelleştirilerek veya silinerek müşteri verileri düzenlenebilir veya silinebilir.
+Azure Key Vault, kasaların, yönetilen HSM havuzlarının, anahtarların, parolaların, sertifikaların ve yönetilen depolama hesaplarının oluşturulması veya güncelleştirilmesi sırasında müşteri verilerini alır. Bu müşteri verileri doğrudan Azure portal ve REST API üzerinden görünür. Verileri içeren nesne güncelleştirilerek veya silinerek müşteri verileri düzenlenebilir veya silinebilir.
 
 Sistem erişim günlükleri, bir kullanıcı veya uygulama Key Vault eriştiğinde oluşturulur. Ayrıntılı erişim günlükleri, Azure Insights kullanan müşteriler tarafından kullanılabilir.
 
@@ -52,7 +52,7 @@ Kişisel verileri içeren Azure Key Vault tanılama günlükleri, Kullanıcı Gi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Key Vault günlüğe kaydetme](logging.md))
+- [Günlüğe kaydetme Azure Key Vault](logging.md)
 
 - [Azure Key Vault geçici silmeye genel bakış](soft-delete-cli.md)
 

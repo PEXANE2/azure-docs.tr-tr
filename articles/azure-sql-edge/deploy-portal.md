@@ -1,6 +1,6 @@
 ---
-title: Azure portal kullanarak Azure SQL Edge (Önizleme) dağıtma
-description: Azure SQL Edge 'i (Önizleme) Azure portal kullanarak dağıtmayı öğrenin
+title: Azure portal kullanarak Azure SQL Edge dağıtma
+description: Azure portal kullanarak Azure SQL Edge 'i dağıtmayı öğrenin
 keywords: SQL Edge dağıtma
 services: sql-edge
 ms.service: sql-edge
@@ -8,27 +8,27 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 7af4264860f8d9950515cd5302f03822e7cbac39
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/22/2020
+ms.openlocfilehash: ffd967797a4e586387a0385169672220727f78a7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816873"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886748"
 ---
-# <a name="deploy-azure-sql-edge-preview"></a>Azure SQL Edge 'i dağıtma (Önizleme) 
+# <a name="deploy-azure-sql-edge"></a>Azure SQL Edge 'i dağıtma 
 
-Azure SQL Edge (Önizleme), IoT ve Azure IoT Edge dağıtımları için iyileştirilmiş bir ilişkisel veritabanı altyapısıdır. IoT uygulamaları ve çözümleri için yüksek performanslı veri depolama ve işleme katmanı oluşturma olanakları sağlar. Bu hızlı başlangıçta, Azure portal kullanarak Azure IoT Edge aracılığıyla Azure SQL Edge modülü oluşturmaya nasıl başlacağınız gösterilmektedir.
+Azure SQL Edge, IoT ve Azure IoT Edge dağıtımları için iyileştirilmiş bir ilişkisel veritabanı altyapısıdır. IoT uygulamaları ve çözümleri için yüksek performanslı veri depolama ve işleme katmanı oluşturma olanakları sağlar. Bu hızlı başlangıçta, Azure portal kullanarak Azure IoT Edge aracılığıyla Azure SQL Edge modülü oluşturmaya nasıl başlacağınız gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* [Azure portalında](https://portal.azure.com/) oturum açın.
+* [Azure Portal](https://portal.azure.com/) oturum açın.
 * [Azure IoT Hub](../iot-hub/iot-hub-create-through-portal.md)oluşturun.
 * Azure portal bir [IoT Edge cihazı](../iot-edge/how-to-register-device-portal.md)kaydedin.
 * [Azure portal IoT Edge modülünü dağıtmak](../iot-edge/how-to-deploy-modules-portal.md)üzere IoT Edge cihazı hazırlayın.
 
-> [!NOTE]
+> [!NOTE]   
 > Bir Azure Linux sanal makinesini IoT Edge bir cihaz olarak dağıtmak için bu [hızlı başlangıç kılavuzuna](../iot-edge/quickstart-linux.md)bakın.
 
 ## <a name="deploy-sql-edge-module-from-azure-marketplace"></a>Azure Marketi 'nden SQL Edge modülünü dağıtma
@@ -51,75 +51,73 @@ Azure Marketi, [IoT Edge modüller](https://azuremarketplace.microsoft.com/marke
    |IoT Hub   |  IoT Edge cihazının kaydedildiği IoT Hub adı ve sonra "bir cihaza dağıt" seçeneğini belirleyin|
    |IoT Edge cihaz adı  |  SQL Edge 'in dağıtılacağı IoT Edge cihazının adı |
 
-4. **Modülleri ayarla** sayfasında, dağıtım modülleri bölümüne gıdın ve SQL Edge modülüne göre **Yapılandır** ' a tıklayın. 
+4. **Cihazdaki modülleri ayarla:** sayfasında, **IoT Edge modüller**altında Azure SQL Edge modülüne tıklayın. Varsayılan modül adı *Azuresqledge*olarak ayarlanır. 
 
-5. **IoT Edge özel modüller** bölmesinde, ortam değişkenleri için istenen değerleri belirtin ve/veya modül için oluşturma seçeneklerini ve istenen özellikleri özelleştirin. Desteklenen ortam değişkenlerinin tüm listesi için [SQL Server kapsayıcı ortam değişkenlerine](/sql/linux/sql-server-linux-configure-environment-variables/)başvurabilirsiniz.
+5. **Güncelleştirme IoT Edge modülü** dikey penceresinin *modül ayarları* bölümünde *IoT Edge modül adı*için Istenen değerleri belirtin, ilke ve *istenen durum*' u *yeniden başlatın* . 
+
+   > [!IMPORTANT]    
+   > Modülün **görüntü URI** ayarlarını değiştirmeyin veya güncelleştirmeyin.
+
+6. **Güncelleştirme IoT Edge modülü** dikey penceresindeki *ortam değişkenleri* bölümünde, ortam değişkenleri için istenen değerleri belirtin. Azure SQL Edge ortam değişkenlerinin tüm listesi için [ortam değişkenlerini kullanarak yapılandırma](configure.md#configure-by-using-environment-variables)konusuna bakın. Aşağıdaki varsayılan ortam değişkenleri modül için tanımlanmıştır. 
 
    |**Parametre**  |**Açıklama**|
    |---------|---------|
-   | Name | Modülün adı. |
-   |SA_PASSWORD  | SQL Edge yönetici hesabı için güçlü bir parola belirtin. |
-   |MSSQL_LCID   | SQL Server için kullanılacak dil KIMLIĞINI ayarlar. Örneğin, 1036, Fransızca ' dır. |
-   |MSSQL_COLLATION | SQL Server için Varsayılan harmanlamayı ayarlar. Bu ayar, dil KIMLIĞI 'nin (LCıD) varsayılan eşlemesini harmanlama olarak geçersiz kılar. |
+   | Ad | Modülün adı. |
+   | MSSQL_SA_PASSWORD  | SQL Edge yönetici hesabı için güçlü bir parola belirtmek üzere varsayılan değeri değiştirin. |
+   | MSSQL_LCID   | İstenen dil KIMLIĞINI SQL Edge için kullanılacak şekilde ayarlamak için varsayılan değeri değiştirin. Örneğin, 1036, Fransızca ' dır. |
+   | MSSQL_COLLATION | Varsayılan değeri SQL Edge için Varsayılan harmanlamayı ayarlanacak şekilde değiştirin. Bu ayar, dil KIMLIĞI 'nin (LCıD) varsayılan eşlemesini harmanlama olarak geçersiz kılar. |
 
-   > [!NOTE]
-   > Lütfen **görüntü URI** 'sini veya modüldeki **ACCEPT_EULA** ayarlarını değiştirmeyin veya güncelleştirmeyin.
+   > [!IMPORTANT]    
+   > Modülün **ACCEPT_EULA** ortam değişkenini değiştirmeyin veya güncelleştirmeyin.
 
-6. **IoT Edge özel modüller** bölmesinde, **konak bağlantı noktası**için istediğiniz kapsayıcı oluşturma seçenekleri değerini güncelleştirin. Birden fazla SQL DB Edge modülü dağıtmanız gerekiyorsa lütfen, kalıcı birim için yeni bir kaynak & hedef çifti oluşturmak üzere bağlama seçeneğini güncelleştirdiğinizden emin olun. Bağlama ve birim hakkında daha fazla bilgi için Docker belgelerindeki [birimleri kullanma](https://docs.docker.com/storage/volumes/) konusuna bakın. 
-
-   ```json
-       {
-         "HostConfig": {
-           "Binds": [
-             "sqlvolume:/sqlvolume"
-           ],
-           "PortBindings": {
-             "1433/tcp": [
-               {
-                 "HostPort": "1433"
-               }
-             ]
-           },
-           "Mounts": [
-             {
-               "Type": "volume",
-               "Source": "sqlvolume",
-               "Target": "/var/opt/mssql"
-             }
-           ]
-         },
-         "Env": [
-           "MSSQL_AGENT_ENABLED=TRUE",
-           "MSSQL_PID=Developer"
-         ]
-       }
-   ```
-
-7. **IoT Edge özel modüller** BÖLMESINDE, SQL paketinin konumunu ve Stream Analytics iş bilgisini dahil etmek için *set Module ikizi 'ın istenen özelliklerini* güncelleştirin. Bu iki alan isteğe bağlıdır ve SQL Edge modülünü bir veritabanı ve akış işiyle dağıtmak istiyorsanız kullanılmalıdır.
+7. **Güncelleştirme IoT Edge modülü** dikey penceresinin *kapsayıcı oluşturma seçenekleri* bölümünde, aşağıdaki seçenekleri gereksinime göre güncelleştirin. 
+   - **Ana bilgisayar bağlantı noktası:** Belirtilen ana bilgisayar bağlantı noktasını kapsayıcıda bağlantı noktası 1433 (varsayılan SQL bağlantı noktası) ile eşleyin.
+   - **Bağlar** ve **bağlar:** birden fazla SQL Edge modülü dağıtmanız gerekiyorsa, kalıcı birim için yeni bir kaynak & hedef çifti oluşturmak üzere bağlama seçeneğini güncelleştirdiğinizden emin olun. Bağlama ve birim hakkında daha fazla bilgi için Docker belgelerindeki [birimleri kullanma](https://docs.docker.com/storage/volumes/) konusuna bakın. 
 
    ```json
-       {
-         "properties.desired":
-         {
-           "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-           "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-         }
-       }
+   {
+    "HostConfig": {
+        "CapAdd": [
+            "SYS_PTRACE"
+        ],
+        "Binds": [
+            "sqlvolume:/sqlvolume"
+        ],
+        "PortBindings": {
+            "1433/tcp": [
+                {
+                    "HostPort": "1433"
+                }
+            ]
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Source": "sqlvolume",
+                "Target": "/var/opt/mssql"
+            }
+        ]
+    },
+    "Env": [
+        "MSSQL_AGENT_ENABLED=TRUE",
+        "ClientTransportType=AMQP_TCP_Only",
+        "PlanId=asde-developer-on-iot-edge"
+    ]
+   }
    ```
-
-8. **IoT Edge özel modüller** bölmesinde, *Yeniden Başlat ilkesini* her zaman ve *istenen durum* ' a ayarlayın.
-9. **IoT Edge özel modüller** bölmesinde **Kaydet**' e tıklayın.
-10. **Modülleri ayarla** sayfasında **İleri**' ye tıklayın.
-11. **Modülleri ayarla** sayfasının **route (Isteğe bağlı) yolunu belirtin** sayfasında modüle modül veya modülle yönelik yolları IoT Edge hub iletişimi için belirtin [ve IoT Edge ' de yolları oluşturma '](../iot-edge/module-composition.md)ya bakın.
-12. **İleri**’ye tıklayın.
-13. **Gönder**' e tıklayın.
+   > [!IMPORTANT]    
+   > `PlanId`Oluşturma yapılandırması ayarında tanımlanan çalıştırılmaları değişkenini değiştirmeyin. Bu değer değiştirilirse Azure SQL Edge kapsayıcısı başlayamaz. 
+   
+8. **Güncelleştirme IoT Edge modülü** bölmesinde **Güncelleştir**' e tıklayın.
+9. **Cihazdaki modülleri ayarla** sayfasında ileri ' ye tıklayın. dağıtımınız için rotalar tanımlamanız gerekiyorsa **yollar >** . Aksi takdirde, **gözden geçir + oluştur**seçeneğine tıklayın. Yolları yapılandırma hakkında daha fazla bilgi için bkz. [IoT Edge modülleri dağıtma ve yolları oluşturma](../iot-edge/module-composition.md).
+11. **Güncelleştirme IoT Edge modülü** bölmesinde **Oluştur**' a tıklayın.
 
 ## <a name="connect-to-azure-sql-edge"></a>Azure SQL Edge 'e bağlanma
 
 Aşağıdaki adımlar, Azure SQL Edge 'e bağlanmak için kapsayıcının içindeki **sqlcmd**Azure SQL Edge komut satırı aracını kullanır.
 
-> [!NOTE]
-> sqlcmd Aracı, SQL Edge kapsayıcıları 'nın ARM64 sürümünde kullanılamaz.
+> [!NOTE]      
+> SQL komut satırı araçları (sqlcmd), Azure SQL Edge kapsayıcıları 'nın ARM64 sürümünde kullanılamaz.
 
 1. `docker exec -it`Çalışan kapsayıcının içinde etkileşimli bir bash kabuğu başlatmak için komutunu kullanın. Aşağıdaki örnekte, `azuresqledge` `Name` IoT Edge modülünüzün parametresi tarafından belirtilen addır.
 
@@ -133,14 +131,14 @@ Aşağıdaki adımlar, Azure SQL Edge 'e bağlanmak için kapsayıcının içind
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
    ```
 
-   > [!TIP]
+   > [!TIP]    
    > Komut satırında parolayı, girmeniz istenecek şekilde atlayabilirsiniz.
 
 3. Başarılı olursa bir **sqlcmd** komut istemine almalısınız: `1>` .
 
 ## <a name="create-and-query-data"></a>Veri oluşturma ve sorgulama
 
-Aşağıdaki bölümler, yeni bir veritabanı oluşturmak, veri eklemek ve basit bir sorgu çalıştırmak için **sqlcmd** ve Transact-SQL ' i kullanma konusunda size rehberlik sağlar.
+Aşağıdaki bölümler, yeni bir veritabanı oluşturmak, veri eklemek ve bir sorgu çalıştırmak için **sqlcmd** ve Transact-SQL ' i kullanma konusunda size rehberlik sağlar.
 
 ### <a name="create-a-new-database"></a>Yeni veritabanı oluşturma
 
@@ -222,6 +220,7 @@ Bu hızlı başlangıçta, bir IoT Edge cihazında SQL Edge modülü dağıttın
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [SQL Edge 'de ONNX ile Machine Learning ve yapay zeka](onnx-overview.md).
-- [IoT Edge kullanarak SQL Edge ile uçtan uca IoT çözümü oluşturma](tutorial-deploy-azure-resources.md).
+- [SQL Edge 'de ONNX ile Machine Learning ve yapay zeka](onnx-overview.md)
+- [IoT Edge kullanarak SQL Edge ile uçtan uca IoT çözümü oluşturma](tutorial-deploy-azure-resources.md)
 - [Azure SQL Edge 'de veri akışı](stream-data.md)
+- [Dağıtım hatalarını giderme](troubleshoot.md)

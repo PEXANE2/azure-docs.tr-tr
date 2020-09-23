@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325534"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983601"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure İzleyici’den verileri görselleştirme
 Bu makalede, Azure Izleyici 'de depolanan günlük ve ölçüm verilerini görselleştirmek için kullanılabilen yöntemlerin bir özeti sağlanmaktadır.
@@ -21,7 +21,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 ## <a name="workbooks"></a>Çalışma Kitapları
 [Çalışma kitapları](./platform/workbooks-overview.md) , ekip içinde verileriniz, araştırılması ve işbirliği hakkında ayrıntılı Öngörüler sağlayan etkileşimli belgelerdir. Çalışma kitaplarının yararlı olduğu belirli örnekler, sorun giderme kılavuzlarından ve olay postmordıtem.
 
-![Çalışma Kitabı](media/visualizations/workbook.png)
+![Diyagram, sayfa görünümlerinin çözümlenmesi, kullanımı ve sayfada harcanan süre dahil olmak üzere bir çalışma kitabından birkaç sayfanın ekran görüntülerini gösterir.](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Avantajlar
 - Hem ölçümleri hem de günlükleri destekler.
@@ -39,7 +39,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 ## <a name="azure-dashboards"></a>Azure Panoları
 [Azure panoları](../azure-portal/azure-portal-dashboards.md) , Azure için birincil kesik taslak teknolojisidir. Bunlar özellikle, önemli sorunları hızlı bir şekilde tanımanıza olanak tanıyacak şekilde, Azure altyapınız ve hizmetleriniz üzerinde tek bir cam bölmesi sağlamak için yararlıdır.
 
-![Pano](media/visualizations/dashboard.png)
+![Ekran görüntüsünde, özelleştirilebilir bilgiler içeren bir Azure panosu örneği gösterilmektedir.](media/visualizations/dashboard.png)
 
 Panolar oluşturmaya yönelik bir video kılavuzu aşağıda verilmiştir.
 
@@ -88,7 +88,7 @@ Panolar oluşturmaya yönelik bir video kılavuzu aşağıda verilmiştir.
 ## <a name="grafana"></a>Grafana
 [Grafana](https://grafana.com/) , işlemsel panolar içinde bulunan açık bir platformdur. İşlem olaylarını saptamak ve yalıtmak ve önceliklendirme için özellikle yararlıdır. Azure ölçüm verilerinizi görselleştirmesini sağlamak için Azure aboneliğinize [Grafana Azure izleyici veri kaynağı eklentisi](platform/grafana-plugin.md) ekleyebilirsiniz.
 
-![Grafana](media/visualizations/grafana.png)
+![Ekran görüntüsünde Grafana görselleştirmeler gösterilmektedir.](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>Avantajlar
 - Zengin görselleştirmeler.
@@ -117,10 +117,10 @@ Azure Izleyici 'deki günlük ve ölçüm verilerinde bulunan verilere, kendi ö
 > [!IMPORTANT]
 > Görünümler kullanım dışı bırakılıyor. Görünümleri çalışma kitaplarına dönüştürmeye yönelik yönergeler için bkz. [Azure izleyici Görünüm Tasarımcısı çalışma kitapları geçiş kılavuzu](platform/view-designer-conversion-overview.md) .
 
-[Azure izleyici 'de görünümler](platform/view-designer.md) , günlük verileriyle özel görselleştirmeler oluşturmanıza olanak sağlar. Bunlar, topladıkları verileri sunmak için [çözümler izlenerek](insights/solutions.md) kullanılır.
+[Azure izleyici 'de görünümler](platform/view-designer.md)  , günlük verileriyle özel görselleştirmeler oluşturmanıza olanak sağlar. Bunlar, topladıkları verileri sunmak için [çözümler izlenerek](insights/solutions.md) kullanılır.
 
 
-![Görüntüle](media/visualizations/view.png)
+![Ekran görüntüsünde bir kapsayıcı Izleme çözümü kutucuğu ve bunu seçtiğinizde açılan ayrıntılı Azure Izleyici görünümü gösterilmektedir.](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Avantajlar
 - Günlük verileri için zengin görselleştirmeler.

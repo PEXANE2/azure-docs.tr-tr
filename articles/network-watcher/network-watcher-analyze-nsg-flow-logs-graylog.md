@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 62f4a06ec729d896dc11a290bc7a5ccc7c321683
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497123"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984052"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Ağ Izleyicisi ve gri günlük kullanarak Azure 'da ağ güvenlik grubu akış günlüklerini yönetme ve çözümleme
 
@@ -175,10 +175,10 @@ Bu eklenti hakkında daha fazla bilgi için [belgelerine](https://github.com/Azu
 
 Logstash kullanarak akış günlüklerine bir bağlantı kurdığınıza ve bir gri günlük sunucusunu ayarlamaya göre, gelen günlük dosyalarını kabul etmek için, bir gri günlük yapılandırmanız gerekir.
 
-1. Sizin için yapılandırdığınız URL 'YI kullanarak, gri günlük sunucunuzun Web arabirimine gidin. Tarayıcınızı şu şekilde yönlendirerek arabirimine erişebilirsiniz`http://<graylog-server-ip>:9000/`
+1. Sizin için yapılandırdığınız URL 'YI kullanarak, gri günlük sunucunuzun Web arabirimine gidin. Tarayıcınızı şu şekilde yönlendirerek arabirimine erişebilirsiniz `http://<graylog-server-ip>:9000/`
 
 2. Yapılandırma sayfasına gitmek için sağ üst gezinti çubuğundan **sistem** açılan menüsünü seçin ve ardından **girişler**' e tıklayın.
-   Alternatif olarak, şuraya gidin`http://<graylog-server-ip>:9000/system/inputs`
+   Alternatif olarak, şuraya gidin `http://<graylog-server-ip>:9000/system/inputs`
 
    ![Kullanmaya başlama](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
@@ -186,7 +186,7 @@ Logstash kullanarak akış günlüklerine bir bağlantı kurdığınıza ve bir 
 
    Girişi, gri tonlamalı günlük sunucunuzu yapılandırdığınız IP 'ye bağladığınızdan emin olun. IP adresi, Logstash yapılandırma dosyasının UDP çıktısının **ana bilgisayar** alanıyla eşleşmelidir. Varsayılan bağlantı noktası *12201*olmalıdır. Bağlantı noktasının Logstash yapılandırma dosyasında belirlenen UDP çıkışındaki **bağlantı noktası** alanıyla eşleştiğinden emin olun.
 
-   ![Girişler](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![Ekran görüntüsünde, giriş başlatma ve bulma seçenekleri ile gri günlük girişleri gösterilmektedir.](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
    Girişi başlattıktan sonra, aşağıdaki resimde gösterildiği gibi **Yerel girişler** bölümünün altında göründüğünü görmeniz gerekir:
 
@@ -200,11 +200,11 @@ Logstash kullanarak akış günlüklerine bir bağlantı kurdığınıza ve bir 
 
 Bir süredir, bir gri günlük sunucunuzun iletileri toplaması için bir süre geçtikten sonra iletilerde arama yapabilirsiniz. Gri günlük sunucunuza gönderilen iletileri denetlemek için, **giriş** yapılandırma sayfasından oluşturduğunuz GELF UDP girişinin "**alınan iletileri göster**" düğmesine tıklayın. Aşağıdaki resme benzer bir ekrana yönlendirilirsiniz: 
 
-![Histogram](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
+![Ekran görüntüsü, arama sonucunu, histogramı ve Iletileri görüntüleyen bir gri günlük sunucusunu gösterir.](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
 Mavi "% {Message}" bağlantısına tıklanması her bir iletiyi aşağıdaki resimde gösterildiği gibi her bir akış tanımlama alanının parametrelerini gösterecek şekilde genişletir:
 
-![İletiler](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
+![Ekran görüntüsünde, gri günlük sunucusundan gelen ileti ayrıntısı gösterilmektedir.](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
 Arama yapmak için belirli bir ileti alanı seçmezseniz, varsayılan olarak tüm ileti alanları aramaya dahil edilir. Belirli iletileri aramak istiyorsanız (ör. – belirli bir kaynak IP 'den akış başlıkları) [belgelendiği](https://docs.graylog.org/en/2.2/pages/queries.html) gibi, gri günlük arama sorgu dilini kullanabilirsiniz
 
@@ -214,11 +214,11 @@ Bu durumda, daha sonra gri günlük verilerinizi daha iyi anlamak için bazı i�
 
 ### <a name="create-a-dashboard"></a>Pano oluşturma
 
-1. Üst gezinti çubuğunda **panolar** ' ı veya şuraya git ' i seçin.`http://<graylog-server-ip>:9000/dashboards/`
+1. Üst gezinti çubuğunda **panolar** ' ı veya şuraya git ' i seçin. `http://<graylog-server-ip>:9000/dashboards/`
 
 2. Buradan yeşil **Pano Oluştur** düğmesine tıklayın ve kısa formu, panonuzun başlığı ve açıklamasıyla doldurun. Yeni panoyu oluşturmak için **Kaydet** düğmesine basın. Aşağıdaki resme benzer bir pano görürsünüz:
 
-    ![Panolar](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
+    ![Ekran görüntüsü, panoları oluşturma ve düzenleme seçenekleriyle gri günlük sunucu panoları gösterir.](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
 ### <a name="add-widgets"></a>Pencere öğeleri ekle
 

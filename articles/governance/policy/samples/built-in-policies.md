@@ -1,15 +1,15 @@
 ---
 title: Yerleşik ilke tanımlarının listesi
 description: Azure Ilkesi için yerleşik ilke tanımlarını listeleyin. Kategoriler arasında Etiketler, mevzuat uyumluluğu, Key Vault, Kubernetes, Konuk yapılandırma ve daha fazlası bulunur.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 92d7c56e0867418097b3eead11c3a623fde3c2ab
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: ca8472c1ee4873977bac47a0b54925b892721a0b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005624"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982398"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Ilkesi yerleşik ilke tanımları
 
@@ -36,6 +36,10 @@ Azure portal içindeki ilke tanımına yapılan her bir yerleşik bağlantı ad�
 ## <a name="app-service"></a>App Service
 
 [!INCLUDE [azure-policy-reference-policies-app-service](../../../../includes/policy/reference/bycat/policies-app-service.md)]
+
+## <a name="automanage"></a>Oto Yönet
+
+[!INCLUDE [azure-policy-reference-policies-automanage](../../../../includes/policy/reference/bycat/policies-automanage.md)]
 
 ## <a name="automation"></a>Otomasyon
 
@@ -129,7 +133,7 @@ Azure portal içindeki ilke tanımına yapılan her bir yerleşik bağlantı ad�
 
 [!INCLUDE [azure-policy-reference-policies-network](../../../../includes/policy/reference/bycat/policies-network.md)]
 
-## <a name="search"></a>Arama
+## <a name="search"></a>Arayın
 
 [!INCLUDE [azure-policy-reference-policies-search](../../../../includes/policy/reference/bycat/policies-search.md)]
 

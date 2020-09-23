@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web uygulaması, Linux, Windows, Docker, kapsayıcı
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: df46d61ddfba5f4da977b19db3158691c78168f8
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fdc15ecd79a6672d2a46b4da284533965977d753
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958499"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982875"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Özel bir kapsayıcı kullanarak Azure App Service özel yazılım geçirme
 
@@ -56,7 +56,7 @@ Bu yazı tipi [Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Gr
 
 Uygulamayı hata ayıklaması yapılmadan çalıştırmak için `Ctrl+F5` yazın. Uygulama varsayılan tarayıcınızda görüntülenir. 
 
-![Yeni ASP.NET Projesi iletişim kutusu](media/tutorial-custom-container/local-app-in-browser.png)
+:::image type="content" source="media/tutorial-custom-container/local-app-in-browser.png" alt-text="Varsayılan tarayıcıda gösterilen uygulamayı gösteren ekran görüntüsü.":::
 
 Yüklenmiş olan bir yazı tipini kullandığından uygulama App Service korumalı alanında çalışmayacaktır. Ancak yazı tipini Windows kapsayıcısına yükleyebileceğiniz için uygulamayı Windows kapsayıcısı kullanarak dağıtabilirsiniz.
 
@@ -64,7 +64,7 @@ Yüklenmiş olan bir yazı tipini kullandığından uygulama App Service korumal
 
 Çözüm Gezgini'nde **CustomFontSample** projesine sağ tıklayıp **Ekle** > **Kapsayıcı Düzenleme Desteği**'ne tıklayın.
 
-![Yeni ASP.NET Projesi iletişim kutusu](media/tutorial-custom-container/enable-container-orchestration.png)
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="CustomFontSample projesi, ekleme ve kapsayıcı Orchestrator desteği menü öğelerini gösteren Çözüm Gezgini penceresinin ekran görüntüsü.":::
 
 **Docker Compose**  >  **Tamam ' ı**seçin.
 
@@ -98,13 +98,13 @@ _InstallFont.ps1_ dosyasını **CustomFontSample** projesinde bulabilirsiniz. Ya
 
 Çözüm Gezgini'nde **CustomFontSample** projesine sağ tıklayın ve **Yayımla**'yı seçin.
 
-![Yeni ASP.NET Projesi iletişim kutusu](media/tutorial-custom-container/open-publish-wizard.png)
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="CustomFontSample projesini gösteren Çözüm Gezgini ekran görüntüsü ve seçili yayımlama.":::
 
 ### <a name="create-registry-and-publish"></a>Kayıt defterini oluşturma ve yayımlama
 
 Yayımla sihirbazında **Container Registry**  >  **yeni Azure Container Registry oluştur**' u seçin  >  **Publish**.
 
-![Yeni ASP.NET Projesi iletişim kutusu](media/tutorial-custom-container/create-registry.png)
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Container Registry, yeni Azure Container Registry oluştur ve Yayımla düğmesi seçili olan Yayımla Sihirbazı ekran görüntüsü.":::
 
 ### <a name="sign-in-with-azure-account"></a>Azure hesabınızla oturum açın
 
@@ -211,7 +211,7 @@ Akışı yapılan günlükler şuna benzer:
 
 ::: zone pivot="container-linux"
 
-Azure App Service, hem yerleşik görüntüleri hem de özel görüntüleri barındırmak için Docker kapsayıcı teknolojisini kullanır. Yerleşik görüntülerin bir listesini görmek için, [' az WebApp List-çalışma zamanları--Linux '](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)Azure CLI komutunu çalıştırın. Bu görüntüler gereksinimlerinizi karşılamadığı takdirde, özel bir görüntü oluşturup dağıtabilirsiniz.
+Azure App Service, hem yerleşik görüntüleri hem de özel görüntüleri barındırmak için Docker kapsayıcı teknolojisini kullanır. Yerleşik görüntülerin bir listesini görmek için, [' az WebApp List-çalışma zamanları--Linux '](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-list-runtimes)Azure CLI komutunu çalıştırın. Bu görüntüler gereksinimlerinizi karşılamadığı takdirde, özel bir görüntü oluşturup dağıtabilirsiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -346,7 +346,7 @@ ENTRYPOINT ["init.sh"]
 
 Bu bölümde ve bundan sonra, görüntüyü gönderdiğiniz ve ardından Azure App Service bir kapsayıcı dağıttığınız Azure 'da kaynak temin edersiniz. Bu kaynakların tümünün toplanacağı bir kaynak grubu oluşturarak başlayın.
 
-Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) komutunu çalıştırın:
+Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create) komutunu çalıştırın:
 
 ```azurecli-interactive
 az group create --name AppSvc-DockerTutorial-rg --location westus2
@@ -358,7 +358,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
 
 Bu bölümde, görüntüyü App Service dağıtabilecek Azure Container Registry için gönderebilirsiniz.
 
-1. [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az-acr-create)Azure Container Registry oluşturmak için komutunu çalıştırın:
+1. [`az acr create`](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az-acr-create)Azure Container Registry oluşturmak için komutunu çalıştırın:
 
     ```azurecli-interactive
     az acr create --name <registry-name> --resource-group AppSvc-DockerTutorial-rg --sku Basic --admin-enabled true
@@ -366,7 +366,7 @@ Bu bölümde, görüntüyü App Service dağıtabilecek Azure Container Registry
     
     `<registry-name>`Kayıt defteriniz için uygun bir adla değiştirin. Ad yalnızca harf ve rakam içermeli ve tüm Azure genelinde benzersiz olmalıdır.
 
-1. [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az-acr-show)Kayıt defteri için kimlik bilgilerini almak için komutunu çalıştırın:
+1. [`az acr show`](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az-acr-show)Kayıt defteri için kimlik bilgilerini almak için komutunu çalıştırın:
 
     ```azurecli-interactive
     az acr credential show --resource-group AppSvc-DockerTutorial-rg --name <registry-name>
@@ -413,7 +413,7 @@ Bu bölümde, görüntüyü App Service dağıtabilecek Azure Container Registry
 
 Azure App Service bir kapsayıcı dağıtmak için, önce App Service üzerinde bir Web uygulaması oluşturun, ardından Web uygulamasını kapsayıcı kayıt defterine bağlayın. Web uygulaması başladığında, App Service görüntüyü otomatik olarak kayıt defterinden çeker.
 
-1. Komutunu kullanarak bir App Service planı oluşturun [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) :
+1. Komutunu kullanarak bir App Service planı oluşturun [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest&preserve-view=true#az-appservice-plan-create) :
 
     ```azurecli-interactive
     az appservice plan create --name AppSvc-DockerTutorial-plan --resource-group AppSvc-DockerTutorial-rg --is-linux
@@ -421,7 +421,7 @@ Azure App Service bir kapsayıcı dağıtmak için, önce App Service üzerinde 
 
     App Service planı, Web uygulamasını barındıran sanal makineye karşılık gelir. Varsayılan olarak, önceki komut ilk ay için ücretsiz olan pahalı bir [B1 fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/app-service/linux/) kullanır. Katmanı parametresiyle kontrol edebilirsiniz `--sku` .
 
-1. Şu komutla Web uygulamasını oluşturun [`az webpp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) :
+1. Şu komutla Web uygulamasını oluşturun [`az webpp create`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-create) :
 
     ```azurecli-interactive
     az webapp create --resource-group AppSvc-DockerTutorial-rg --plan AppSvc-DockerTutorial-plan --name <app-name> --deployment-container-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
@@ -429,7 +429,7 @@ Azure App Service bir kapsayıcı dağıtmak için, önce App Service üzerinde 
     
     `<app-name>`Web uygulaması için bir adla değiştirin. Bu, tüm Azure genelinde benzersiz olmalıdır. Ayrıca, `<registry-name>` önceki bölümde bulunan kayıt defterinizin adıyla değiştirin.
 
-1. [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) `WEBSITES_PORT` Ortam değişkenini uygulama kodu tarafından beklendiği gibi ayarlamak için kullanın: 
+1. [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) `WEBSITES_PORT` Ortam değişkenini uygulama kodu tarafından beklendiği gibi ayarlamak için kullanın: 
 
     ```azurecli-interactive
     az webapp config appsettings set --resource-group AppSvc-DockerTutorial-rg --name <app-name> --settings WEBSITES_PORT=8000
@@ -439,7 +439,7 @@ Azure App Service bir kapsayıcı dağıtmak için, önce App Service üzerinde 
     
     Bu ortam değişkeni hakkında daha fazla bilgi için örneğin [GitHub deposundaki Benioku dosyasına](https://github.com/Azure-Samples/docker-django-webapp-linux)bakın.
 
-1. Şu komutu kullanarak Web uygulaması için [yönetilen kimliği](./overview-managed-identity.md) etkinleştirin [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) :
+1. Şu komutu kullanarak Web uygulaması için [yönetilen kimliği](./overview-managed-identity.md) etkinleştirin [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest&preserve-view=true#az-webapp-identity-assign) :
 
     ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
@@ -449,7 +449,7 @@ Azure App Service bir kapsayıcı dağıtmak için, önce App Service üzerinde 
 
     Yönetilen kimlik, belirli kimlik bilgilerine gerek duymadan Web uygulamasına diğer Azure kaynaklarına erişim izni vermenizi sağlar.
 
-1. Bir [`az account show`](/cli/azure/account?view=azure-cli-latest#az-account-show) sonraki adımda ihtiyacınız olan komutuyla ABONELIK Kimliğinizi alın:
+1. Bir [`az account show`](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az-account-show) sonraki adımda ihtiyacınız olan komutuyla ABONELIK Kimliğinizi alın:
 
     ```azurecli-interactive
     az account show --query id --output tsv
@@ -472,7 +472,7 @@ Bu izinler hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim den
 
 Görüntü kapsayıcı kayıt defterine gönderildikten sonra App Service tam olarak sağlandıktan sonra bu adımları tamamlayabilirsiniz.
 
-1. [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)Kapsayıcı kayıt defterini ve Web uygulaması için dağıtılacak görüntüyü belirtmek için komutunu kullanın:
+1. [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest&preserve-view=true#az-webapp-config-container-set)Kapsayıcı kayıt defterini ve Web uygulaması için dağıtılacak görüntüyü belirtmek için komutunu kullanın:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-custom-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest --docker-registry-server-url https://<registry-name>.azurecr.io
@@ -559,7 +559,7 @@ Bu bölümde, Web uygulaması kodunda bir değişiklik yapar, kapsayıcıyı yen
     
     Konsol günlüklerini hemen görmüyorsanız, 30 saniye içinde yeniden kontrol edin.
 
-    Ayrıca, konumundaki tarayıcıdan günlük dosyalarını inceleyebilirsiniz `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
+    Ayrıca, tarayıcıdan `https://<app-name>.scm.azurewebsites.net/api/logs/docker` adresine giderek günlük dosyalarını inceleyebilirsiniz.
 
 1. Günlük akışını istediğiniz zaman durdurmak için **CTRL** + **C**yazın.
 
