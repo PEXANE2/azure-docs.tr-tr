@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
-ms.openlocfilehash: e2b4233f8f59a26e7da532fca48aecbb41857b66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7573abbbee479bfb0d1710beba3b95d084a5e657
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488639"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898885"
 ---
 # <a name="apply-transformation-module"></a>Dönüştürme modülünü Uygula
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Bir giriş veri kümesini önceden hesaplanan bir dönüşüme göre değiştirmek için bu modülü kullanın.
 

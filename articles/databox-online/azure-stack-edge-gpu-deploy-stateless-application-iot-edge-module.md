@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU üzerinde Kubernetes durum bilgisiz uygulamasını IoT Edge modül aracılığıyla dağıtma | Microsoft Docs
-description: Bir Kubernetes durum bilgisiz uygulamasının, bir dış IP aracılığıyla erişilen bir IoT Edge modülünü kullanarak Azure Stack Edge GPU cihazınızda nasıl dağıtılacağını açıklar.
+title: Kubernetes durum bilgisiz uygulamayı IoT Edge modül aracılığıyla Azure Stack Edge Pro GPU 'SU ile dağıtma | Microsoft Docs
+description: Bir Kubernetes durum bilgisiz uygulamasının, bir dış IP aracılığıyla erişilen bir IoT Edge modülünü kullanarak Azure Stack Edge Pro GPU cihazınızdan nasıl dağıtılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,42 +8,42 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254177"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899518"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınızda bir Kubernetes durum bilgisiz uygulaması çalıştırmak için IoT Edge modülünü kullanın
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Kubernetes durum bilgisiz olmayan bir uygulamayı çalıştırmak için IoT Edge modülünü kullanın
 
-Bu makalede, Azure Stack Edge cihazınızda durum bilgisiz bir uygulamayı dağıtmak için bir IoT Edge modülünü nasıl kullanabileceğiniz açıklanır.
+Bu makalede, Azure Stack Edge Pro cihazınızda durum bilgisiz bir uygulamayı dağıtmak için bir IoT Edge modülünü nasıl kullanabileceğiniz açıklanır.
 
 Durum bilgisiz uygulamayı dağıtmak için aşağıdaki adımları uygulayın:
 
 - IoT Edge modülünü dağıtmadan önce önkoşulların tamamlandığından emin olun.
-- Azure Stack Kenarunuzdaki işlem ağına erişmek için bir IoT Edge modülü ekleyin.
+- Azure Stack Edge Pro 'unuzdaki işlem ağına erişmek için bir IoT Edge modülü ekleyin.
 - Modülün etkin ağ arabirimine erişip erişebildiğini doğrulayın.
 
 Bu nasıl yapılır makalesinde, senaryoyu göstermek için bir Web sunucusu uygulama modülünü kullanacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yapmanız gerekir:
 
-- Azure Stack Edge cihazı. Şunlardan emin olun:
+- Azure Stack Edge Pro cihazı. Şunlardan emin olun:
 
     - İşlem ağ ayarları cihazda yapılandırılır.
     - [Öğretici: cihazınızı etkinleştirme](azure-stack-edge-gpu-deploy-activate.md)adımları uyarınca cihaz etkinleştirilir.
-- Öğreticiye göre **işlem adımını yapılandırmayı** tamamladınız: cihazınızdaki [Azure Stack Edge cihazında işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md) . Cihazınızın ilişkili bir IoT Hub kaynağına, IoT cihazına ve bir IoT Edge cihazına sahip olması gerekir.
+- Öğreticiye göre **işlem adımını yapılandırmayı** tamamladınız: cihazınızda [Azure Stack Edge Pro cihazınızda işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md) . Cihazınızın ilişkili bir IoT Hub kaynağına, IoT cihazına ve bir IoT Edge cihazına sahip olması gerekir.
 
 
 ## <a name="add-webserver-app-module"></a>Web sunucusu uygulama modülünü Ekle
 
-Azure Stack Edge cihazınıza bir Web sunucusu uygulama modülü eklemek için aşağıdaki adımları uygulayın.
+Azure Stack Edge Pro cihazınıza bir Web sunucusu uygulama modülü eklemek için aşağıdaki adımları uygulayın.
 
 1. Aygıtınızla ilişkili IoT Hub kaynağında, **otomatik cihaz yönetimi > IoT Edge**' ne gidin.
-1. Azure Stack Edge cihazlarınız ile ilişkili IoT Edge cihazı seçin ve tıklatın. 
+1. Azure Stack Edge Pro cihazınıza ilişkin IoT Edge cihazı seçin ve tıklatın. 
 
     ![IoT Edge cihaz seçin](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/select-iot-edge-device-1.png)  
 
@@ -74,11 +74,11 @@ Azure Stack Edge cihazınıza bir Web sunucusu uygulama modülü eklemek için a
         }
         ```
 
-        Bu yapılandırma, TCP bağlantı noktası 8080 ' de (varsayılan Web sunucusu bağlantı noktası 80 olan) *http* üzerinden Işlem ağı IP 'sini kullanarak modüle erişmenizi sağlar. **Add (Ekle)** seçeneğini belirleyin.
+        Bu yapılandırma, TCP bağlantı noktası 8080 ' de (varsayılan Web sunucusu bağlantı noktası 80 olan) *http* üzerinden Işlem ağı IP 'sini kullanarak modüle erişmenizi sağlar. **Ekle**’yi seçin.
 
         ![IoT Edge özel modül dikey penceresinde bağlantı noktası bilgilerini belirtin](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-module-status-1.png)
 
-    4. **Gözden geçir + oluştur**’u seçin. Modül ayrıntılarını gözden geçirin ve **Oluştur**' u seçin.
+    4. **Gözden geçir ve oluştur**’u seçin. Modül ayrıntılarını gözden geçirin ve **Oluştur**' u seçin.
 
 ## <a name="verify-module-access"></a>Modül erişimini doğrula
 

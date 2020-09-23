@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: dd01b8e85be52de898e6b22fb4da810e9184482d
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 1bedeb752a18d7a0212ede2b34526efb8ea09287
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055835"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905829"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na güvenli bir şekilde bağlanmak üzere uygulamanızda SSL bağlantısı yapılandırma
 
@@ -42,7 +42,7 @@ MySQL çalışma ekranı 'nı SSL üzerinden güvenli bir şekilde bağlanacak �
 
 1. **SSL CA dosyası:** alanına, **Baltimorecybertrustroot. CRT. ped**dosyasının konumunu girin.
 
-   ![SSL yapılandırmasını Kaydet](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+   :::image type="content" source="./media/howto-configure-ssl/mysql-workbench-ssl.png" alt-text="SSL yapılandırmasını Kaydet":::
 
 Mevcut bağlantılar için, bağlantı simgesine sağ tıklayıp Düzenle ' yi seçerek SSL 'yi bağlayabilirsiniz. Ardından **SSL** sekmesine gidin ve sertifika dosyasını bağlayın.
 
@@ -63,7 +63,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 
 Azure portal kullanarak MySQL için Azure veritabanı sunucunuzu ziyaret edin ve **bağlantı güvenliği**' ne tıklayın. **SSL bağlantısını zorla** ayarını etkinleştirmek veya devre dışı bırakmak için iki durumlu düğmeyi kullanın ve ardından **Kaydet**' e tıklayın. Microsoft, gelişmiş güvenlik için her zaman **SSL bağlantısını zorla** ayarını etkinleştirmenizi önerir.
 
-![MySQL için Azure veritabanı 'nda SSL bağlantılarını zorlamak için Azure portal ekran görüntüsü](./media/howto-configure-ssl/enable-ssl.png)
+:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="MySQL için Azure veritabanı 'nda SSL bağlantılarını zorlamak için Azure portal ekran görüntüsü":::
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 

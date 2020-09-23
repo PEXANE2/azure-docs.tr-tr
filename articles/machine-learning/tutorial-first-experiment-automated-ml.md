@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: f68867a7b24e9c5d8dafa0da65209e14eeae5210
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ebc3899c98a09b64443b129dde52cb597fac9eff
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896484"
+ms.locfileid: "90976643"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Öğretici: Azure Machine Learning otomatik ML ile sınıflandırma modeli oluşturma
 
@@ -242,7 +242,7 @@ Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluş
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
 + Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesi.
 + [Korleştirme](how-to-configure-auto-features.md#featurization)hakkında daha fazla bilgi edinin.
-+ [Veri profili oluşturma](how-to-use-automated-ml-for-ml-models.md#profile)hakkında daha fazla bilgi edinin.
++ [Veri profili oluşturma](how-to-connect-data-ui.md#profile)hakkında daha fazla bilgi edinin.
 
 
 >[!NOTE]

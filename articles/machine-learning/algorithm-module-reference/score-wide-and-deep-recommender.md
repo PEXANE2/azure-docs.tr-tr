@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/12/2020
-ms.openlocfilehash: 43dca9cd9f9000faae701e618e9a5fdf21d31ee3
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9a1a3892e6a47aabd9b5129ca551900494616bc8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192743"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905169"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Geniş ve Derin Öneren Puanlandırması
 
-Bu makalede, Google 'ın geniş & derinlemesine öğrenimine göre eğitilen bir öneri modelini temel alan Öngörüler oluşturmak için Azure Machine Learning tasarımcısında (Önizleme) **Score Wide ve derin öneren** modülünün nasıl kullanılacağı açıklanır.
+Bu makalede, Google 'ın geniş & derinlemesine öğrenimine göre eğitilen bir öneri modelini temel alan Öngörüler oluşturmak için Azure Machine Learning tasarımcısında **Score Wide ve derin öneren** modülünün nasıl kullanılacağı açıklanır.
 
 Geniş ve derin öneren iki farklı tahmin türü oluşturabilir:
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c39a07ceac4d36bf3ef7394927589b53da7d789
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 1a46b5bf6c4be4953e6cde9972aa143be71406a4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450897"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976996"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Güncelleştirme Yönetimi için uyarı oluşturma
 
@@ -56,7 +56,7 @@ Güncelleştirme dağıtımının durumunu bilmenizi sağlamak üzere uyarılar�
 
 9. Başarısız bir çalıştırma için başarılı bir çalıştırma veya **bilgilendirme (sev 1)** Için **önem derecesi** alanını **bilgilendirici (sev 2)** olarak ayarlayın.
 
-    ![Sinyal mantığını yapılandırma](./media/update-mgmt-manage-updates-for-vm/define-alert-details.png)
+    ![Ekran görüntüsü, uyarı kuralı adı, açıklaması ve önem derecesi alanları vurgulanmış şekilde uyarı ayrıntılarını tanımla bölümünü gösterir.](./media/update-mgmt-manage-updates-for-vm/define-alert-details.png)
 
 10. Uyarı kuralını etkinleştirmek için **Evet** ' i seçin.
 

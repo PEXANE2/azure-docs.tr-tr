@@ -11,14 +11,17 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: f5409fea1cdbbc35e9068fae6b3ba7fbc2a95580
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bec96f45de69ab2698f3f0cf26f08222e4595ea5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547401"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889504"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUSıS Docker kapsayıcılarını yükleyip çalıştırın
+
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
+
 
 Language Understanding (LUSıS) kapsayıcısı, eğitilen veya yayımlanmış Language Understanding modelinizi yükler. Bir [lusıs uygulaması](https://www.luis.ai)olarak Docker kapsayıcısı, kapsayıcının API uç noktalarından alınan sorgu tahminlere erişim sağlar. Sorgudan sorgu günlüklerini toplayabilir ve uygulamanın tahmin doğruluğunu artırmak için bunları Language Understanding uygulamasına geri yükleyebilirsiniz.
 
@@ -28,7 +31,7 @@ Aşağıdaki videoda Bu kapsayıcının kullanımı gösterilmektedir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Lusıs kapsayıcısını çalıştırmak için aşağıdaki önkoşullara göz önünde bulunur:
 
@@ -66,10 +69,10 @@ Aşağıdaki tabloda kapsayıcı ana bilgisayarı için en düşük ve önerilen
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al `docker pull`
 
-[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)Depodan bir kapsayıcı görüntüsü indirmek için komutunu kullanın `mcr.microsoft.com/azure-cognitive-services/luis` :
+[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)Depodan bir kapsayıcı görüntüsü indirmek için komutunu kullanın `mcr.microsoft.com/azure-cognitive-services/language/luis` :
 
 ```
-docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/language/luis:latest
 ```
 
 Yukarıdaki komutta kullanılan gibi kullanılabilir etiketlerin tam bir açıklaması için `latest` bkz. Docker Hub üzerinde [Luis](https://go.microsoft.com/fwlink/?linkid=2043204) .
@@ -206,7 +209,7 @@ docker run --rm -it -p 5000:5000 ^
 --cpus 2 ^
 --mount type=bind,src=c:\input,target=/input ^
 --mount type=bind,src=c:\output\,target=/output ^
-mcr.microsoft.com/azure-cognitive-services/luis ^
+mcr.microsoft.com/azure-cognitive-services/language/luis ^
 Eula=accept ^
 Billing={ENDPOINT_URI} ^
 ApiKey={API_KEY}

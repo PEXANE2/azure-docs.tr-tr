@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: Jupyter not defterlerinde deneme (Python)'
-titleSuffix: Machine Learning - Azure
-description: Bu öğreticide, Jupyıter not defterlerinde çalışan Azure Machine Learning Python SDK 'sını kullanmaya başlayacaksınız.  1. Bölüm 'de, denemeleri ve ML modellerini yönetebileceğiniz bir çalışma alanı oluşturursunuz.
+title: 'Öğretici: Jupyter Notebook (Python) ile çalışmaya başlama'
+titleSuffix: Azure Machine Learning
+description: Jupyter Notebook öğreticileri için kurulum.  Azure Machine Learning çalışma alanı oluşturun, Jupyıter not defterlerini çalışma alanına kopyalayın ve not defterlerini çalıştırdığınız bir işlem örneği oluşturun.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,44 +10,42 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ff23a42d9b96b8411d8b2f82ab8303e2a8a69953
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: de52013628f5d02bedcf72a99e0fad25cabe5d8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852727"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896876"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Öğretici: Python SDK ile ilk ML denemenizi oluşturmaya başlama
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Öğretici: Jupyter not defterlerinde Azure Machine Learning kullanmaya başlayın
 
-Bu öğreticide, Jupyıter not defterlerinde çalışan Azure Machine Learning Python SDK 'sını kullanmaya başlamak için uçtan uca adımları tamamlarız. Bu öğretici, **iki bölümden oluşan bir öğretici serisinin bir parçasıdır**ve Python ortamı kurulumu ve yapılandırmasını ve denemeleri ve makine öğrenimi modellerinizi yönetmek için bir çalışma alanı oluşturmayı içerir. Birden çok makine öğrenimi modeli eğitmek ve hem Azure Machine Learning Studio hem de SDK kullanarak model yönetimi işlemini tanıtmak için bu [**Iki bölümden oluşan iki**](tutorial-1st-experiment-sdk-train.md) derleme.
+Bu öğreticide, [yönetilen bulut tabanlı bir iş istasyonunda (işlem örneği)](concept-compute-instance.md)Jupyıter not defterlerini kullanarak Azure Machine Learning kullanmaya başlama adımlarını tamamlayabilirsiniz. Bu öğretici, diğer tüm Jupyter Notebook öğreticileri için bir precurör.
 
 Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
-> * Sonraki öğreticide kullanmak üzere bir [Azure Machine Learning çalışma alanı](concept-workspace.md) oluşturun.
+> * Diğer Jupyter Notebook öğreticilerde kullanmak üzere bir [Azure Machine Learning çalışma alanı](concept-workspace.md) oluşturun.
 > * Öğreticiler Not defterini çalışma alanındaki klasörünüze kopyalayın.
 > * Azure Machine Learning Python SDK yüklü ve önceden yapılandırılmış bir bulut tabanlı işlem örneği oluşturun.
-
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz, hizmette kolayca tüketilen bir nesne ile aynı olur. 
+Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz, hizmette kolayca tüketilen bir nesne ile aynı olur.
 
-Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure portal bir çalışma alanı oluşturursunuz. 
+Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure portal bir çalışma alanı oluşturursunuz.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 > **Çalışma alanınızı** ve **aboneliğinizi**bir yere göz atın. Denemenizin doğru yerde oluşturulmasını sağlamak için bunlara ihtiyacınız olacaktır. 
 
 ## <a name="run-notebook-in-your-workspace"></a><a name="azure"></a>Çalışma alanınızda Not defteri çalıştırma
 
-Bu öğretici, bir yüklemeden ücretsiz ve önceden yapılandırılmış bir deneyim için çalışma alanınızdaki bulut Not defteri sunucusunu kullanır. Ortamınız, paketler ve bağımlılıklarınız üzerinde denetim sahibi olmayı tercih ediyorsanız [kendi ortamınızı](how-to-configure-environment.md#local) kullanın.
+Azure Machine Learning, bir yüklemesi ücretsiz ve önceden yapılandırılmış bir deneyim için çalışma alanınızda bir bulut Not defteri sunucusu içerir. Ortamınız, paketler ve bağımlılıklarınız üzerinde denetim sahibi olmayı tercih ediyorsanız [kendi ortamınızı](tutorial-1st-experiment-sdk-setup-local.md) kullanın.
 
- Bu videoyla birlikte izleyin veya öğreticiyi çalışma alanınızdan çalıştırmak ve çalıştırmak için aşağıdaki ayrıntılı adımları kullanın. 
+ Bu videoyla birlikte izleyin veya eğitim Not defterini kopyalayıp çalışma alanınızdan çalıştırmak için aşağıdaki ayrıntılı adımları kullanın.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
@@ -80,12 +78,11 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
     > [!IMPORTANT]
     > Not defterlerini **örnekler** klasöründe görüntüleyebilirsiniz, ancak buradan Not defteri çalıştıramazsınız.  Bir not defteri çalıştırmak için, **Kullanıcı dosyaları** bölümünde Not defterinin kopyalanmış sürümünü çalıştırdığınızdan emin olun.
     
-1. **Öğreticiler/oluşturma-ilk-ml-deneme** klasörünüzdeki **öğretici-1-deneme-SDK-eğitme. ipynb** dosyasını seçin.
+1. **Öğreticiler/Image-Classification-mnist-Data** klasörünüzdeki **öğretici-1-deneme-SDK-eğitme. ipynb** dosyasını seçin.
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Öğreticiler klasörünü aç":::
 
-
-1. Üst kısımdaki çubukta, Not defterini çalıştırmak için kullanılacak bir işlem örneği seçin. Bu VM 'Ler [Azure Machine Learning çalıştırmanız gereken her şey](concept-compute-instance.md#contents)ile önceden yapılandırılmıştır. 
+1. Üst kısımdaki çubukta, Not defterini çalıştırmak için kullanılacak bir işlem örneği seçin. Bu VM 'Ler [Azure Machine Learning çalıştırmanız gereken her şey](concept-compute-instance.md#contents)ile önceden yapılandırılmıştır.
 
 1. Hiçbir VM bulunamazsa, işlem örneği VM oluşturmak için **+ Ekle** ' yi seçin. 
 
@@ -107,17 +104,11 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şu görevleri tamamladınız:
-
-* Azure Machine Learning çalışma alanı oluşturuldu.
-* Çalışma alanınızda bir bulut Not defteri sunucusu oluşturulup yapılandırıldı.
-
-Öğreticinin **ikinci bölümünde** , `tutorial-1st-experiment-sdk-train.ipynb` bir makine öğrenimi modelini eğitebilmeniz için kodu çalıştırırsınız. 
+Artık bir geliştirme ortamı ayarlamış olduğunuza göre, bir modeli Jupyter Notebook eğitme devam edin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: ilk modelinizi eğitme](tutorial-1st-experiment-sdk-train.md)
+> [Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-öğrenme](tutorial-train-models-with-aml.md)
 
-> [!IMPORTANT]
-> Bu öğreticinin veya diğer öğreticilerin 2. bölümünü planlamıyorsanız, maliyeti azaltmak için kullanmadığınız durumlarda [bulut Not defteri sunucu VM 'sini durdurmanız](tutorial-1st-experiment-sdk-train.md#clean-up-resources) gerekir.
+<a name="stop-compute-instance"></a> Şu anda başka öğreticiler de planlanmazsanız, maliyeti azaltmak için kullanmadığınız durumlarda bulut Not defteri sunucu VM 'sini durdurmanız gerekir:
 
-
+[!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]

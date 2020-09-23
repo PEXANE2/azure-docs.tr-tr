@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: d2b26016ec67f0eecd785e3bfb951fe5fd607545
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 785fcbbcde0c4efe3c2d1cd84bf19bd03371ab06
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079165"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883543"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Azure portalı kullanarak Azure Data Box Gateway paylaşımlarını yönetme 
 
@@ -50,7 +50,7 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 5. Blok blobundan, sayfa blobundan veya dosyadan **Depolama hizmeti**'ni seçin. Seçilen hizmetin türü, verilerin Azure'da hangi biçimde tutulmasını istediğinize bağlıdır. Örneğin, bu örnekte, verilerin Azure 'da blob blokları olarak bulunmasını istiyoruz, bu nedenle **Blok Blobu**seçiyoruz. **Sayfa Blobunu** seçerseniz, verilerinizi 512 bayt hizalı olduğundan emin olmalısınız. Örneğin VHDX her zaman 512 bayt hizalıdır.
 
    > [!IMPORTANT]
-   > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge veya Data Box Gateway cihazından yararlanarak, bu sunucuda ayarlanmış bir şekilde kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge Pro veya Data Box Gateway cihazından yararlanarak bu sunucuda ayarlanmış bir değişiklik olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 6. Bu adım SMB paylaşımı mı yoksa NFS paylaşımı mı oluşturduğunuza bağlıdır.
     - **BIR SMB paylaşımıyla karşılaşırsanız** , **tüm ayrıcalık Yerel Kullanıcı** alanında **Yeni oluştur** ' u seçin veya **var olanı kullanın**. Yeni bir yerel kullanıcı oluşturuyorsanız, **Kullanıcı adı**, **parola**ve parolayı onaylayın ' i belirtin. Bu, yerel kullanıcıya izinleri atar. Burada izinleri atadıktan sonra, Dosya Gezgini'ni kullanarak bu izinlerde değişiklik yapabilirsiniz.

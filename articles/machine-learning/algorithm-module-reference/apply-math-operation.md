@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 654b10a283c4dcf5a1a1866ec51799aad45a8893
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456752"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898901"
 ---
 # <a name="apply-math-operation"></a>Matematik İşlemi Uygulama
 
-Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
+Bu makalede bir Azure Machine Learning Designer modülü açıklanmaktadır.
 
 Giriş veri kümesindeki sayısal sütunlara uygulanan hesaplamalar oluşturmak için matematik Uygula Işlemini kullanın. 
 
@@ -251,7 +251,7 @@ Temel aritmetik işlemleri içerir: toplama ve çıkarma, bölme ve çarpma.  Ç
 
 Bölme ve çıkarma için sütunları seçme sırası, anlaşılır görünebilir; Ancak, sonuçların anlaşılması daha kolay hale getirmek için, sütun başlığı işlem adını ve sütunların kullanıldığı sırayı sağlar.
 
-Çalışma|Num1|Num2|Sonuç sütunu|Sonuç değeri|
+İşlem|Num1|Num2|Sonuç sütunu|Sonuç değeri|
 ----|----|----|----|----
 |Toplama|1|5|Ekle (Num2_Num1)| 4|
 |Çarpma|1|5|Birden çok (Num2_Num1)|5|
@@ -302,7 +302,7 @@ Azure Machine Learning tasarımcı, çeşitli yuvarlama işlemlerini destekler. 
 
 **Sütun kümesindeki**değerlerin kesirli kısmını belirtilen duyarlığa döndürür.  
 
-### <a name="quotient"></a>Üs
+### <a name="quotient"></a>Bölüm
 
 **Sütun kümesindeki**değerlerin kesirli kısmını belirtilen duyarlığa döndürür.  
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: c677b0278d29c499d4369967c1c76132a1ae9d21
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 63b3fd64526f45994919267a2f4ddc730d0b2fd7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519856"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882654"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>MySQL için Azure veritabanı sunucu güvenlik duvarı kuralları
 Güvenlik duvarları, hangi bilgisayarların izne sahip olduğunu belirtene kadar veritabanı sunucunuza tüm erişimi engeller. Güvenlik Duvarı, her isteğin kaynak IP adresini temel alarak sunucuya erişim izni verir.
@@ -25,7 +25,7 @@ MySQL için Azure veritabanı sunucunuza yönelik tüm veritabanı erişimi, var
 
 Internet 'ten ve Azure 'dan gelen bağlantı girişimleri, aşağıdaki diyagramda gösterildiği gibi, MySQL için Azure veritabanı veritabanınıza ulaşabilmesi için önce güvenlik duvarından geçmelidir:
 
-![Güvenlik duvarının nasıl çalıştığına ilişkin örnek akış](./media/concepts-firewall-rules/1-firewall-concept.png)
+:::image type="content" source="./media/concepts-firewall-rules/1-firewall-concept.png" alt-text="Güvenlik duvarının nasıl çalıştığına ilişkin örnek akış":::
 
 ## <a name="connecting-from-the-internet"></a>İnternet'ten bağlanma
 Sunucu düzeyinde güvenlik duvarı kuralları, MySQL için Azure veritabanı sunucusundaki tüm veritabanlarına uygulanır.
@@ -43,7 +43,7 @@ Azure hizmetiniz için sabit bir giden IP adresi yoksa, tüm Azure veri merkezi 
 > **Azure hizmetlerine erişime Izin ver** seçeneği, güvenlik duvarını diğer müşterilerin aboneliklerinden gelen bağlantılar da dahil olmak üzere Azure 'daki tüm bağlantılara izin verecek şekilde yapılandırır. Bu seçeneği belirlerken, oturum açma ve kullanıcı izinlerinizin erişimi yalnızca yetkili kullanıcılarla sınırladığından emin olun.
 > 
 
-![Portalda Azure hizmetlerine erişime Izin ver yapılandırma](./media/concepts-firewall-rules/allow-azure-services.png)
+:::image type="content" source="./media/concepts-firewall-rules/allow-azure-services.png" alt-text="Portalda Azure hizmetlerine erişime Izin ver yapılandırma":::
 
 ### <a name="connecting-from-a-vnet"></a>VNet 'ten bağlanma
 VNet 'ten MySQL için Azure veritabanı sunucusuna güvenli bir şekilde bağlanmak için [sanal ağ hizmet uç noktalarını](./concepts-data-access-and-security-vnet.md)kullanmayı göz önünde bulundurun. 
@@ -68,7 +68,7 @@ MySQL Server hizmetine yönelik Microsoft Azure veritabanına erişim beklendiğ
 
 * **Azure kaynağından izin VERILEN IP bağlantısı yapılamıyor:** **Microsoft. SQL** hizmet uç noktasının, bağlandığınız alt ağ için etkin olup olmadığını denetleyin. **Microsoft. SQL** etkinse, bu alt ağda yalnızca [VNET hizmet uç noktası kuralları](concepts-data-access-and-security-vnet.md) kullanmak istediğinizi belirtir.
 
-   Örneğin, **Microsoft. SQL** özellikli ancak karşılık gelen VNET kuralına sahip bir alt ağda Azure VM 'sinden bağlanıyorsanız aşağıdaki hatayı görebilirsiniz:`FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+   Örneğin, **Microsoft. SQL** özellikli ancak karşılık gelen VNET kuralına sahip bir alt ağda Azure VM 'sinden bağlanıyorsanız aşağıdaki hatayı görebilirsiniz:  `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

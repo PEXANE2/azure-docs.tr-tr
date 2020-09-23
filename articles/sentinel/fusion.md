@@ -10,327 +10,423 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/18/2020
+ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 1f415294c77b743996993f1f00be45e36f9d6002
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660662"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906274"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama
 
 
 > [!IMPORTANT]
-> Azure Sentinel 'teki bazı Fusion özellikleri şu anda genel önizlemededir.
+> Azure Sentinel 'teki bazı Fusion özellikleri şu anda **genel önizlemededir**.
 > Bu özellikler, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+Azure Sentinel, makine öğrenimine göre Fusion teknolojisini kullanarak çok aşamalı saldırıları otomatik olarak algılayabilir ve bu arada, sonlandırma zincirinin çeşitli aşamalarında gözlemlenen anormal davranışların ve şüpheli etkinliklerin birleşimlerini tanımlayarak otomatik olarak kullanılabilir. Bu bulmalar temelinde, Azure Sentinel, aksi takdirde yakalamak zor olan olaylar oluşturur. Bu olaylar iki veya daha fazla uyarıyı veya etkinliği kapsar. Tasarım yaparak, bu olaylar düşük hacimse, yüksek uygunlukta ve yüksek öneme sahiptir.
 
-
-Azure Sentinel, Machine Learning 'i temel alan Fusion teknolojisini kullanarak çok aşamalı saldırıları otomatik olarak algılayabilir ve bu da sonlandırma zincirinin çeşitli aşamalarında gözlemlenen anormal davranışları ve şüpheli etkinlikleri birleştirerek. Azure Sentinel, daha sonra yakalamak çok zor olan olaylar oluşturur. Bu olaylar iki veya daha fazla uyarıyı veya etkinliği büyük bir şekilde kaydeder. Tasarım yaparak, bu olaylar düşük hacimdir, yüksek uygunlukta ve yüksek öneme sahiptir.
-
-Ortamınız için özelleştirilmiş, bu algılama yalnızca hatalı pozitif oranları azaltmıyor ancak sınırlı veya eksik bilgilere sahip saldırıları tespit edebilir.
+Ortamınız için özelleştirilmiş olan bu algılama teknolojisi yalnızca hatalı pozitif oranları azaltmaz, sınırlı veya eksik bilgilere sahip saldırıları da algılayabilir.
 
 ## <a name="configuration-for-advanced-multistage-attack-detection"></a>Gelişmiş çok aşamalı saldırı algılamasını yapılandırma
 
-Bu algılama, Azure Sentinel 'de varsayılan olarak etkinleştirilmiştir. Durumu denetlemek veya birden çok uyarıyı temel alan olaylar oluşturmak için alternatif bir çözüm kullandığınız için belki de devre dışı bırakmak için aşağıdaki yönergeleri kullanın:
+Bu algılama, Azure Sentinel 'de varsayılan olarak etkinleştirilmiştir. Durumu denetlemek veya birden çok uyarıyı temel alan olaylar oluşturmak için alternatif bir çözüm kullandığınız olayda devre dışı bırakmak için aşağıdaki yönergeleri kullanın:
 
 1. Önceden yapmadıysanız, [Azure portal](https://portal.azure.com)da oturum açın
 
-2. **Azure Sentinel**  >  **yapılandırma**  >  **Analizi** ' ne gidin
+1. **Azure Sentinel**  >  **yapılandırma**  >  **Analizi** ' ne gidin
 
-3. **Etkin kurallar** ' ı seçin ve **ad** sütununda **Gelişmiş çok aşamalı saldırı algılamayı** bulun. Bu algılamanın etkin veya devre dışı olduğunu doğrulamak için **durum** sütununu kontrol edin.
+1. **Etkin kurallar**' ı seçin ve ardından **Fusion** kural türü Için listeyi filtreleyerek **ad** sütununda **Gelişmiş çok aşamalı saldırı algılamayı** bulun. Bu algılamanın etkin veya devre dışı olduğunu doğrulamak için **durum** sütununu kontrol edin.
 
-4. Durumu değiştirmek için bu girişi seçin ve **Gelişmiş çok aşamalı saldırı algılama** dikey penceresinde **Düzenle**' yi seçin.
+    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt-metin}":::
 
-5. **Kural oluşturma Sihirbazı** dikey penceresinde durum değişikliği sizin için otomatik olarak seçilir, bu nedenle **İleri**' yi seçin ve ardından **Kaydet**' i seçin. 
+1. Durumu değiştirmek için bu girişi seçin ve **Gelişmiş çok aşamalı saldırı algılama** dikey penceresinde **Düzenle**' yi seçin.
 
-Kural şablonları gelişmiş çok aşamalı saldırı algılama için geçerli değildir.
+1. **Kural oluşturma Sihirbazı** dikey penceresinde durum değişikliği sizin için otomatik olarak seçilir, bu nedenle **İleri**' yi seçin ve ardından **Kaydet**' i seçin. 
+
+ **Fusion** kural türü değiştirilemeyen tek bir kural içerdiğinden, kural şablonları bu kural türü için geçerli değildir.
 
 > [!NOTE]
 > Azure Sentinel, makine öğrenimi sistemlerini eğitmek için şu anda 30 günlük geçmiş veri kullanmaktadır. Bu veriler, makine öğrenimi ardışık düzeninde geçerken Microsoft 'un anahtarları kullanılarak her zaman şifrelenir. Ancak, Azure Sentinel çalışma alanınızda CMK 'yı etkinleştirdiyseniz eğitim verileri, [müşteri tarafından yönetilen anahtarlar (CMK)](customer-managed-keys.md) kullanılarak şifrelenmez. Fusion 'un devre dışı bırakılması için **Azure Sentinel**   \>  **yapılandırma**   \>  **Analizi \> etkin kurallar \> Gelişmiş çok aşamalı saldırı algılama** ' ya gidin ve **durum** sütununda **devre dışı bırak** ' ı seçin.
 
-## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Palo Alto ağlarını ve uç nokta için Microsoft Defender 'ı kullanarak Fusion (eski adıyla Microsoft Defender ATP)
+## <a name="attack-detection-scenarios"></a>Saldırı algılama senaryoları
 
-Bu senaryolar, Güvenlik analistleri tarafından kullanılan temel günlüklerin ikisini birleştirir: Palo Alto Networks ve uç nokta algılama günlüklerinden gelen güvenlik duvarı günlükleri uç nokta için Microsoft Defender. Aşağıda listelenen tüm senaryolarda, bir dış IP adresi içeren bitiş noktasında şüpheli bir etkinlik algılanır, ardından bu, dış IP adresinden güvenlik duvarından geri gelen anormal trafik tarafından izlenir. Palo Alto günlüklerinde, Azure Sentinel [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak değerlendirilir (şüpheli veriler, dosyalar, floods, paketler, taramalar, casus yazılım, URL 'ler, virüsler, güvenlik açıkları, yavalar, yavalar, yavalar).
+Aşağıdaki bölümde, Azure Sentinel 'in Fusion teknolojisini kullanarak aradığı, tehdit sınıflandırmasına göre gruplanan bağıntı senaryolarının türleri listelenmektedir.
 
-### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Anonim olarak çalışan hizmeti olan ağ isteği, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenir.
+Yukarıda belirtildiği gibi, Fusion gelişmiş çok aşamalı saldırıları algılamak için çeşitli ürünlerden birden çok güvenlik uyarısı içerdiğinden, başarılı Fusion algılamaları, **günlüklerdeki** **güvenlik uyarıları** tablosunda **Uyarı** olarak değil, Azure Sentinel **olayları** sayfasında **Fusion olayları** olarak sunulur.
 
-Bu senaryoda, Azure Sentinel, ilk olarak Microsoft Defender for Endpoint (daha önce ATP için Microsoft Defender), anormal etkinliklere yol açabilecek bir TOR anonim seçme hizmetine bir ağ isteği algıladığını algılar. Bu, {Account Name} hesabı altında {SID} SID KIMLIĞIYLE {Time} saatinde başlatıldı. Bağlantıya giden IP adresi {Kişiselleştiralip} idi.
-Daha sonra, {TimeGenerated} konumundaki Palo Alto Networks güvenlik duvarı tarafından olağandışı etkinlik algılandı. Bu, ağınıza girilen kötü amaçlı trafiğin, ağ trafiği için hedef IP adresinin {Destinationıp} olduğunu gösterir.
+Bu Fusion destekli saldırı algılama senaryolarına olanak tanımak için, listelenen tüm veri kaynakları ilişkili Azure Sentinel veri bağlayıcıları kullanılarak alınmalıdır.
 
-Bu senaryo şu anda genel önizlemededir.
+> [!NOTE]
+> Bu senaryolardan bazıları **genel önizlemede**. Bu şekilde belirtilecektir.
 
+## <a name="compute-resource-abuse"></a>İşlem kaynağı kötüye kullanımı
 
-### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenen şüpheli bir ağ bağlantısı yaptı.
+### <a name="multiple-vm-creation-activities-following-suspicious-azure-active-directory-sign-in"></a>Şüpheli Azure Active Directory oturum açma sonrasında birden çok VM oluşturma etkinliği
+Bu senaryo şu anda **genel önizlemededir**.
 
-Bu senaryoda, Azure Sentinel önce Endpoint için Microsoft Defender 'ın (daha önce ATP için Microsoft Defender), PowerShell 'in bir Palo Alto ağı güvenlik duvarı tarafından algılanan anormal etkinlikte şüpheli bir ağ bağlantısı yaptığını algıladığını algıladı. Bu, {Account Name} hesabı tarafından {SID} SID KIMLIĞIYLE {Time} saatinde başlatıldı. Bağlantıya giden IP adresi {Kişiselleştiralip} idi. Daha sonra, {TimeGenerated} konumundaki Palo Alto Networks güvenlik duvarı tarafından olağandışı etkinlik algılandı. Bu, kötü amaçlı trafiğin ağınıza girdiği anlamına gelir. Ağ trafiği için hedef IP adresi {Destinationıp}.
+**Mitre ATT&CK tactika:** İlk erişim, etki 
 
-Bu senaryo şu anda genel önizlemededir.
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), kaynak ele geçirme (T1496)
 
-### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenen, yetkisiz erişim girişimleri geçmişi ile IP 'ye giden bağlantı
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
 
-Bu senaryoda, Azure Sentinel uç nokta için Microsoft Defender 'ın (daha önce ATP için Microsoft Defender), Palo Alto Networks güvenlik duvarı tarafından algılanan anormal etkinliklere neden olan yetkisiz erişim denemelerinin geçmişini içeren bir IP adresine giden bağlantı algıladığını belirten bir uyarı algılar. Bu, {Account Name} hesabı tarafından {SID} SID KIMLIĞIYLE {Time} saatinde başlatıldı. Bağlantıya giden IP adresi {Kişiselleştiralip} idi. Bundan sonra, {TimeGenerated} konumundaki Palo Alto Networks güvenlik duvarı tarafından olağan dışı etkinlik algılandı. Bu, kötü amaçlı trafiğin ağınıza girdiği anlamına gelir. Ağ trafiği için hedef IP adresi {Destinationıp}.
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli oturum açma sonrasında tek bir oturumda anormal sayıda sanal makine oluşturulduğunu gösterir. Bu tür bir uyarı, Fusion olay açıklamasında belirtilen hesabın güvenliğinin aşıldığını ve şifre araştırma işlemlerini çalıştırma gibi yetkisiz amaçlar için yeni VM 'Ler oluşturmak üzere kullanılacağını yüksek ölçüde güvenle olduğunu gösterir. Birden çok VM oluşturma etkinliği uyarısına sahip şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:
 
-Bu senaryo şu anda genel önizlemededir.
+- **Birden çok VM oluşturma etkinliğine olağan bir konuma karşı önde gelen bir konum**
 
+- **Bilinmeyen bir konumdan birden çok VM oluşturma etkinliğine olan oturum açma olayı**
 
+- **Virüslü bir cihazdan birden çok VM oluşturma etkinliğine olan oturum açma etkinliği**
 
-## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Kimlik koruması ve Microsoft Cloud App Security kullanarak Fusion
+- **Anonim bir IP adresinden birden çok VM oluşturma etkinliğine kadar bir oturum açma olayı**
 
-Azure Sentinel, gelişmiş çok aşamalı saldırı algılama kullanarak, Azure Active Directory Kimlik Koruması ve Microsoft Cloud App Security anomali olaylarını birleştiren aşağıdaki senaryoları destekler:
+- **Sızdırılan kimlik bilgilerine sahip ve birden çok VM oluşturma etkinliğine sahip olan kullanıcının oturum açma olayı**
 
-- [Anormal Office 365 etkinliğinin ardından gelen bir konuma imkansız seyahat](#impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity)
-- [Bilinmeyen konum için oturum açma etkinliği ve anormal Office 365 etkinliği](#sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity)
-- [Virüslü cihazdan sonra gelen oturum açma etkinliği, anormal Office 365 etkinliği](#sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity)
-- [Anonim IP adresinden sonra, anormal Office 365 etkinliğinin oturum açma etkinliği](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
-- [Kullanıcı tarafından sızdırılan kimlik bilgilerine sahip ve anormal Office 365 etkinliğinin oturum açma etkinliği](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
+## <a name="data-exfiltration"></a>Veri sızdırma
 
-[Azure AD kimlik koruması Data Connector](connect-azure-ad-identity-protection.md) ve [Cloud App Security](connect-cloud-app-security.md) bağlayıcıları yapılandırılmış olmalıdır.
+### <a name="office-365-mailbox-exfiltration-following-a-suspicious-azure-ad-sign-in"></a>Office 365 posta kutusu şüpheli bir Azure AD oturum açma sonrasında
 
-Aşağıdaki açıklamalarda, Azure Sentinel, bu sayfada temsil edilen verilerinizde bulunan gerçek değeri köşeli ayraç içindeki değişken olarak görüntüler. Örneğin, yerine bir hesabın gerçek görünen adı \<*account name*> ve yerine gerçek sayı \<*number*> .
+**Mitre ATT&CK tactika:** İlk erişim, exfiltration, koleksiyon
 
-### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Anormal Office 365 etkinliğinin ardından gelen bir konuma imkansız seyahat
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), e-posta koleksiyonu (T1114), otomatik exfiltration (T1020)
 
-Microsoft Cloud App Security tarafından oluşturulan Azure AD Kimlik Koruması ve anormal Office 365 uyarılarından gelen olağan konuma karşı olası bir yolculuızı birleştiren yedi Azure Sentinel olayı vardır:
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
 
-- **Office 365 posta kutusu için önde gelen konumlara yönelik imkansız seyahat**
-    
-    Bu uyarı, bir \<*account name*> \<*location*> kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı tarafından, olağan dışı bir konuma kadar bir oturum açma olayının göstergesidir.
-    
-    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı, \<*account name*> gelen tüm e-postaları dış adrese ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş \<*email address*> .
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli oturum açma işlemi sonrasında bir kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralının ayarlandığını gösterir. Bu gösterge, Kullanıcı hesabının (Fusion olay açıklamasında belirtilen) tehlikeye girdiğinin ve doğru Kullanıcı bilgisi olmadan bir posta kutusu iletme kuralı etkinleştirerek kuruluşunuzun ağından verileri almak için kullanılan yüksek güvenilirlik sağlar. Office 365 posta kutusu nfiltration uyarısı ile şüpheli Azure AD oturum açma uyarılarının permütasyon 'leri şunlardır:
 
-- **Şüpheli bulut uygulaması yönetim etkinliğine yönelik olarak önde gelen konumlara imkansız seyahat**
-    
-    Bu uyarı, bir oturum açma olayının \<*account name*> , imkansız bir yolculuya bir sıradan bir konuma kadar olan bir göstergesidir \<*location*> .
-    
-    Ardından, hesap, \<*account name*> \<*number*> tek bir oturumda yönetim etkinlikleri üzerinden gerçekleştirilir.
+- **Office 365 posta kutusu için önde gelen bir konuma yönelik imkansız seyahat**
 
-- **Toplu dosya silmeye yönelik olarak önde gelen konumlara imkansız seyahat**
-    
-    Bu uyarı, genel bir konuma göre bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
-    
-    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyaları sildi.
-
-- **Toplu dosyanın indirileceği sıradan konumlara yönelik imkansız seyahat**
-    
-    Bu uyarı, bir oturum açma olayının \<*account name*> , imkansız bir yolculuya bir sıradan bir konuma kadar olan bir göstergesidir \<*location*> . 
-    
-    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden indirilir.
-
-- **Office 365 kimliğe bürünme için önde gelen konumlara imkansız seyahat**
-    
-    Bu uyarı, bir oturum açma olayının \<*account name*> , imkansız bir yolculuya bir sıradan bir konuma kadar olan bir göstergesidir \<*location*> . 
-    
-    Daha sonra hesap, \<*account name*> \<*number of activities*> tek bir oturumda kimliğe bürünme etkinliklerinin olağan dışı bir miktarını () gerçekleştirdi.
-
-- **Toplu dosya paylaşımına önde gelen konumlara imkansız seyahat**
-    
-    Bu uyarı, bir oturum açma olayının \<*account name*> , imkansız bir yolculuya bir sıradan bir konuma kadar olan bir göstergesidir \<*location*> . 
-    
-    Bundan sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden paylaşılır.
-
-- **Bulut uygulamasındaki fidye 'ya yönelik olarak önde gelen konumlara imkansız seyahat**
-    
-    Bu uyarı, bir oturum açma olayının \<*account name*> , imkansız bir yolculuya bir sıradan bir konuma kadar olan bir göstergesidir \<*location*> . 
-    
-    Ardından, hesap \<*account name*> dosyaları karşıya yükledi \<*number of*> ve toplam \<*number of*> Dosya sildi. 
-    
-    Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
-
-
-### <a name="sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity"></a>Bilinmeyen konum için oturum açma etkinliği ve anormal Office 365 etkinliği
-
-Azure AD Kimlik Koruması ve Microsoft Cloud App Security tarafından oluşturulan anormal Office 365 uyarılarından bilmediğiniz konum uyarıları için oturum açma etkinliğini birleştiren yedi Azure Sentinel olayı vardır.
-
-- **Bilinmeyen bir konumdan Exchange Online posta kutusu için bir oturum açma olayı lider**
-    
-    Bu uyarı, bilinmeyen bir konumdan, bir \<*account name*> \<*location*> kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı ayarlanmış olan bir oturum açma olayının göstergesidir.
-    
-    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı, \<*account name*> gelen tüm e-postaları dış adrese ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş \<*email address*> . 
-
-- **Bilinmeyen bir konumdan şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma olayı**
-    
-    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
-    
-    Ardından, hesap, \<*account name*> \<*number of*> tek bir oturumda yönetim etkinlikleri üzerinden gerçekleştirilir.
-
-- **Bilmediğiniz bir konumdan toplu dosya silmeye kadar olan oturum açma etkinliği**
-    
-    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
-    
-    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyaları sildi.
-
-- **Bilinmeyen bir konumdan yığın dosya indirme için bir oturum açma olayı**
-    
-    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
-    
-    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden indirilir.
-
-- **Bilmediğiniz bir konumdan Office 365 kimliğe bürünmeye önde gelen oturum açma olayı**
-    
-    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> .
-    
-    Daha sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki farklı hesapların kimliğine büründü.
-
-- **Bilinmeyen bir konumdan yığın dosya paylaşımına önde gelen oturum açma olayı**
-    
-    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
-    
-    Bundan sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden paylaşılır.
-
-- **Tanınmayan bir konumdan bulut uygulamasındaki fidye 'ya lider olarak oturum açma etkinliği**
-    
-    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
-    
-    Ardından, hesap \<*account name*> dosyaları karşıya yükledi \<*number of*> ve toplam \<*number of*> Dosya sildi. 
-    
-    Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
-
-### <a name="sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity"></a>Virüslü cihazdan sonra gelen oturum açma etkinliği, anormal Office 365 etkinliği
-
-Microsoft Cloud App Security tarafından oluşturulan Azure AD Kimlik Koruması ve anormal Office 365 uyarılarından etkilenen cihaz uyarılarından oturum açma etkinliğini birleştiren yedi Azure Sentinel olayı vardır:
+- **Bilmediğiniz bir konumdan Office 365 posta kutusu ile iletişim kurmak için oturum açma etkinliği**
 
 - **Virüslü bir cihazdan Office 365 posta kutusu için lider olarak oturum açma etkinliği**
-    
-    Bu uyarı, \<*account name*> kötü amaçlı yazılımlara karşı etkilenen bir cihazdan gelen ve bir kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı ayarlanmış olan bir oturum açma olayının göstergesidir.
-    
-    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı, \<*account name*> gelen tüm e-postaları dış adrese ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş \<*email address*> . 
-
-- **Virüslü bir cihazdan şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma etkinliği**
-    
-    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir.
-    
-    Ardından, hesap, \<*account name*> \<*number of*> tek bir oturumda yönetim etkinlikleri üzerinden gerçekleştirilir.
-
-- **Virüslü bir cihazdan toplu dosya silmeye kadar lider olan oturum açma olayı**
-    
-    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir. 
-    
-    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyaları sildi.
-
-- **Virüslü bir cihazdan toplu dosya indirme için lider olan oturum açma olayı**
-    
-    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir. 
-    
-    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden indirilir.
-
-- **Virüslü bir cihazdan Office 365 kimliğe bürünmeye önde gelen oturum açma etkinliği**
-    
-    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir. 
-    
-    Daha sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki farklı hesapların kimliğine büründü.
-
-- **Virüslü bir cihazdan toplu dosya paylaşımına lider olarak oturum açma etkinliği**
-    
-    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir. 
-    
-    Bundan sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden paylaşılır.
-
-- **Etkilenen bir cihazdan, bulut uygulamasındaki fidye 'ya lider olarak oturum açma etkinliği**
-    
-    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir. 
-    
-    Ardından, hesap \<*account name*> dosyaları karşıya yükledi \<*number of*> ve toplam \<*number of*> Dosya sildi. 
-    
-    Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
-
-### <a name="sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity"></a>Anonim IP adresinden sonra, anormal Office 365 etkinliğinin oturum açma etkinliği
-
-Microsoft Cloud App Security tarafından oluşturulan Azure AD Kimlik Koruması ve anormal Office 365 uyarılarından anonim IP adresi uyarılarından oturum açma etkinliğini birleştiren yedi Azure Sentinel olayı vardır:
 
 - **Anonim bir IP adresinden Office 365 posta kutusu için önde gelen oturum açma olayı**
-    
-    Bu uyarı, bir \<*account name*> \<*IP address*> kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı tarafından izlenen bir anonım Proxy IP adresinden gelen oturum açma olayının göstergesidir.
-    
-    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı, \<*account name*> gelen tüm e-postaları dış adrese ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş \<*email address*> . 
-
-- **Anonim bir IP adresinden, şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma olayı**
-    
-    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
-    
-    Ardından, hesap, \<*account name*> \<*number of*> tek bir oturumda yönetim etkinlikleri üzerinden gerçekleştirilir.
-
-- **Anonim bir IP adresinden toplu dosya silmeye kadar bir oturum açma olayı**
-    
-    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
-    
-    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyaları sildi.
-
-- **Anonim bir IP adresinden yığın dosya indirmelerine kadar bir oturum açma olayı**
-    
-    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
-    
-    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden indirilir.
-
-- **Anonim bir IP adresinden Office 365 kimliğe bürünmeye önde gelen oturum açma olayı**
-    
-    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
-    
-    Daha sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki farklı hesapların kimliğine büründü.
-
-- **Anonim bir IP adresinden yığın dosya paylaşımına önde gelen oturum açma olayı**
-    
-    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
-    
-    Bundan sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden paylaşılır.
-
-- **Bulut uygulamasındaki fidye 'ya anonim IP adresinden oturum açma olayı**
-    
-    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
-    
-    Ardından, hesap \<*account name*> dosyaları karşıya yükledi \<*number of*> ve toplam \<*number of*> Dosya sildi. 
-    
-    Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
-
-### <a name="sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity"></a>Kullanıcı tarafından sızdırılan kimlik bilgilerine sahip ve anormal Office 365 etkinliğinin oturum açma etkinliği
-
-Azure AD Kimlik Koruması ve Microsoft Cloud App Security tarafından oluşturulan anormal Office 365 uyarılarından sızdırılan kimlik bilgileri uyarıları olan kullanıcıdan oturum açma etkinliğini birleştiren yedi Azure Sentinel olayı vardır:
 
 - **Sızdırılan kimlik bilgilerine sahip kullanıcıdan Office 365 posta kutusu için oturum açma etkinliği**
-    
-    Bu uyarı, \<*account name*> kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı tarafından, sızdırılan kimlik bilgilerini kullanan oturum açma olayının ayarlandığını belirten bir göstergesidir. 
-    
-    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı, \<*account name*> gelen tüm e-postaları dış adrese ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş \<*email address*> . 
 
-- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan gelen oturum açma olayı, şüpheli bulut uygulaması yönetim etkinliğine**
-    
-    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir.
-    
-    Ardından, hesap, \<*account name*> \<*number of*> tek bir oturumda yönetim etkinlikleri üzerinden gerçekleştirilir.
+### <a name="mass-file-download-following-suspicious-azure-ad-sign-in"></a>Şüpheli Azure AD oturum açma sonrasında toplu dosya indirme
 
-- **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından yığın dosyası silinmeye birlikte oturum açma etkinliği**
-    
-    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir.
-    
-    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyaları sildi.
+**Mitre ATT&CK tactika:** İlk erişim, exfiltration
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078)
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli oturum açma sonrasında bir kullanıcı tarafından anormal sayıda dosya indirilip indirilmediğini belirtir. Bu gösterge, Fusion olay açıklamasında belirtilen hesabın tehlikeye girdiğinin ve kuruluşunuzun ağından verileri almak için kullanılan yüksek güvenirlik sağlar. Toplu dosya indirme uyarısıyla şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:  
+
+- **Toplu dosya indirme için normal bir konuma yönelik imkansız seyahat**
+
+- **Bilinmeyen bir konumdan yığın dosya indirme için bir oturum açma olayı**
+
+- **Virüslü bir cihazdan toplu dosya indirme için lider olan oturum açma olayı**
+
+- **Anonim bir IP 'nin lideri olan oturum açma olayı, toplu dosya indirme**
 
 - **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından yığın dosyası indirme için oturum açma etkinliği**
-    
-    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir.
-    
-    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden indirilir.
 
-- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan Office 365 kimliğe bürünme ile oturum açma etkinliği**
-    
-    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir. 
-    
-    Daha sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki farklı hesapların kimliğine büründü.
+### <a name="mass-file-sharing-following-suspicious-azure-ad-sign-in"></a>Aşağıdaki şüpheli Azure AD oturum açma bölümünde toplu dosya paylaşımı
+
+**Mitre ATT&CK tactika:** İlk erişim, exfiltration
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), Web hizmeti üzerinden Exfiltratıon (T1567)
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli oturum açma sonrasında, belirli bir eşiğin üzerindeki bir dosya sayısının diğer kişilerle paylaşıldığını gösterir. Bu gösterge, Fusion olay açıklamasında belirtilen hesabın güvenliğinin aşıldığına ve belgeler, elektronik tablolar, vb. gibi dosyaları paylaşarak kuruluşunuzun ağından verileri, kötü amaçlı kullanıcılara karşı paylaşmak için kullanılan yüksek güvenilirlik sağlar. Toplu dosya paylaşım uyarısıyla şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:  
+
+- **Toplu dosya paylaşımına önde gelen bir konum için imkansız seyahat**
+
+- **Bilinmeyen bir konumdan yığın dosya paylaşımına önde gelen oturum açma olayı**
+
+- **Virüslü bir cihazdan toplu dosya paylaşımına lider olarak oturum açma etkinliği**
+
+- **Anonim bir IP adresinden yığın dosya paylaşımına önde gelen oturum açma olayı**
 
 - **Sızdırılan kimlik bilgilerine sahip kullanıcıdan yığın dosya paylaşımına lider olarak oturum açma etkinliği**
-    
-    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir.
-    
-    Bundan sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden paylaşılır.
 
-- **Bulut uygulamasındaki fidye 'ya sızdırılan kimlik bilgilerine sahip kullanıcıdan oturum açma olayı**
-    
-    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir. 
-    
-    Ardından, hesap \<*account name*> dosyaları karşıya yükledi \<*number of*> ve toplam \<*number of*> Dosya sildi. 
-    
-    Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
+### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Şüpheli gelen kutusu düzenleme kuralları aşağıdaki şüpheli Azure AD oturum açma kurallarını ayarlar
+Bu senaryo, bu listedeki iki tehdit sınıflandırmalarına aittir: **veri ayıklanma** ve yan yana **taşıma**. Netlik açısından, her iki bölümde de görünür.
+
+Bu senaryo şu anda **genel önizlemededir**.
+
+**Mitre ATT&CK tactika:** İlk erişim, yan yana hareket, Exfilsyon
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), Iç Spear kimlik avı (T1534)
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli oturum açma sonrasında bir kullanıcının gelen kutusunda anormal gelen kutusu kurallarının ayarlandığını gösterir. Bu, Fusion olay açıklamasında belirtilen hesabın güvenliğinin aşıldığını ve kullanıcının e-posta gelen kutusu kurallarını kötü amaçlı amaçlarla işlemek için kullanıldığını yüksek güvenilirlikli bir gösterge sağlar. Bu, bir saldırgan tarafından kuruluşun ağından verileri düzenlemeye yönelik bir girişim olabilir. Alternatif olarak, saldırgan ek kullanıcı ve/veya ayrıcalıklı hesaplara erişim elde ederek kuruluş içinden kimlik avı e-postaları oluşturmaya çalışıyor (dış kaynaklardan e-postada hedeflenen kimlik avı algılama mekanizmalarını atlayarak). Şüpheli gelen kutusu düzenleme kuralları uyarısıyla şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:  
+
+- **Şüpheli gelen kutusu işleme kuralına olağan bir konum için imkansız seyahat**
+
+- **Bilmediğiniz bir konumdan şüpheli gelen kutusu işleme kuralına kadar olan oturum açma olayı**
+
+- **Virüslü bir cihazdan şüpheli gelen kutusu işleme kuralına kadar bir oturum açma olayı**
+
+- **Anonim bir IP adresinden şüpheli gelen kutusu işleme kuralına bir oturum açma olayı**
+
+- **Sızdırılan kimlik bilgileri ile şüpheli gelen kutusu işleme kuralına sahip kullanıcıdan oturum açma olayı**
+
+### <a name="multiple-power-bi-report-sharing-activities-following-suspicious-azure-ad-sign-in"></a>Şüpheli Azure AD oturum açma sonrasında birden çok Power BI raporu paylaşma etkinliği 
+Bu senaryo şu anda **genel önizlemededir**.
+
+**Mitre ATT&CK tactika:** İlk erişim, exfiltration 
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), Web hizmeti üzerinden Exfiltratıon (T1567)
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli bir oturum açma sonrasında tek bir oturumda, anormal sayıda Power BI raporun paylaşıldığını gösterir. Bu gösterge, Füzyon olay açıklamasında belirtilen hesabın güvenliğinin aşıldığına ve yetkisiz kullanıcılarla Power BI raporlarının paylaşılarak kuruluşunuzun ağından veri almak için kullanılan yüksek güvenilirlik sağlar. Birden çok Power BI rapor paylaşım etkinliği ile şüpheli Azure AD oturum açma uyarılarının permütasyon 'i şunlardır:  
+
+- **Birden çok Power BI rapor paylaşma etkinliğine yönelik olarak önde gelen bir konuma yönelik imkansız seyahat**
+
+- **Bilinmeyen bir konumdan birden çok Power BI rapor paylaşma etkinliğine yönelik oturum açma etkinliği**
+
+- **Virüslü bir cihazdan birden çok Power BI rapor paylaşma etkinliğine olan oturum açma etkinliği**
+
+- **Anonim bir IP adresinden, birden çok Power BI rapor paylaşma etkinliğine yönelik oturum açma olayı**
+
+- **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından birden çok Power BI rapor paylaşım etkinliğine yönelik oturum açma etkinliği**
+
+### <a name="suspicious-power-bi-report-sharing-following-suspicious-azure-ad-sign-in"></a>Şüpheli Power BI rapor paylaşımı şüpheli Azure AD oturum açma
+Bu senaryo şu anda **genel önizlemededir**.
+
+**Mitre ATT&CK tactika:** İlk erişim, exfiltration 
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), Web hizmeti üzerinden Exfiltratıon (T1567)
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli bir oturum açma sonrasında şüpheli Power BI rapor paylaşma etkinliğinin oluştuğunu belirtir. Power BI raporu, doğal dil işleme kullanılarak tanımlanan gizli bilgiler içerdiğinden ve bir dış e-posta adresiyle paylaşıldığından, Web 'de yayımlanmakta veya dışarıdan abone olunan bir e-posta adresine bir anlık görüntü olarak sunulırken, paylaşım etkinliği şüpheli olarak tanımlandı. Bu uyarı, Füzyon olay açıklamasında belirtilen hesabın güvenliğinin aşıldığına ve yetkisiz kullanıcılar tarafından kötü amaçlı amaçlarla Power BI raporları paylaşarak, önemli verileri kuruluşunuza göre düzenlemek için kullanılan yüksek güvenilirliğe sahip olduğunu gösterir. Şüpheli Power BI rapor paylaşımıyla şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:  
+
+- **Şüpheli Power BI Rapor paylaşımına önde gelen bir konuma yönelik imkansız seyahat**
+
+- **Bilinmeyen bir konumdan bir oturum açma olayı, şüpheli Power BI Rapor paylaşımına önde gelen**
+
+- **Virüslü bir cihazdan gelen oturum açma etkinliği, şüpheli Power BI Rapor paylaşımına**
+
+- **Anonim IP adresinden önde gelen oturum açma olayı, şüpheli Power BI rapor paylaşımı**
+
+- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan oturum açma olayı, şüpheli Power BI rapor paylaşımı**
+
+## <a name="data-destruction"></a>Veri yok etme
+
+### <a name="mass-file-deletion-following-suspicious-azure-ad-sign-in"></a>Şüpheli Azure AD oturum açma sonrasında toplu dosya silme
+
+**Mitre ATT&CK tactika:** İlk erişim, etki
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), veri yok etme (T1485)
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli bir oturum açma sonrasında anormal sayıda benzersiz dosyanın silindiğini gösterir. Bu, Fusion olay açıklamasında belirtilen hesabın tehlikede olduğunu ve kötü amaçlı olarak verileri bozmak için kullanıldığını belirten bir gösterge sağlar. Toplu dosya silme uyarısıyla şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:  
+
+- **Toplu dosya silmeye önde gelen bir konum için imkansız seyahat**
+
+- **Bilmediğiniz bir konumdan toplu dosya silmeye kadar olan oturum açma etkinliği**
+
+- **Virüslü bir cihazdan toplu dosya silmeye kadar lider olan oturum açma olayı**
+
+- **Anonim bir IP adresinden toplu dosya silmeye kadar bir oturum açma olayı**
+
+- **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından yığın dosyası silinmeye birlikte oturum açma etkinliği**
+
+### <a name="suspicious-email-deletion-activity-following-suspicious-azure-ad-sign-in"></a>Şüpheli Azure AD oturum açma sonrasında şüpheli e-posta silme etkinliği
+Bu senaryo şu anda **genel önizlemededir**.
+
+**Mitre ATT&CK tactika:** İlk erişim, etki 
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), veri yok etme (T1485)
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli bir oturum açma sonrasında tek bir oturumda anormal sayıda e-posta silindiğini gösterir. Bu, Fusion olay açıklamasında belirtilen hesabın tehlikede olduğunu ve kuruluşun güvenliğini sağlama ya da istenmeyen posta ile ilgili e-posta etkinliğini gizleme gibi kötü amaçlı amaçlarla veri yok etmek için kullanılmış olduğunu belirten bir gösterge sağlar. Şüpheli e-posta silme etkinliği uyarısına sahip şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:   
+
+- **Olağan olmayan bir konuma, şüpheli e-posta silme etkinliğine imkansız seyahat**
+
+- **Bilmediğiniz bir konumdan gelen ve şüpheli e-posta silme etkinliğine yönelik oturum açma etkinliği**
+
+- **Virüslü bir cihazdan şüpheli e-posta silme etkinliğine yönelik oturum açma etkinliği**
+
+- **Anonim IP adresinden gelen, şüpheli e-posta silme etkinliğine ait oturum açma olayı**
+
+- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan gelen oturum açma olayı, şüpheli e-posta silme etkinliğine**
+
+## <a name="denial-of-service"></a>Hizmet reddi
+
+### <a name="multiple-vm-delete-activities-following-suspicious-azure-ad-sign-in"></a>Şüpheli Azure AD oturum açma sonrasında birden çok VM silme etkinliği
+Bu senaryo şu anda **genel önizlemededir**.
+
+**Mitre ATT&CK tactika:** İlk erişim, etki
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), uç nokta hizmet reddi (T1499)
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli bir oturum açma sonrasında tek bir oturumda anormal sayıda sanal makine silinmekte olduğunu gösterir. Bu gösterge, Fusion olay açıklamasında belirtilen hesabın güvenliğinin aşıldığını ve kuruluşun bulut ortamını kesintiye uğratan veya yok etmeye çalışmak üzere kullanıldığının yüksek güvenilirliğe sahip olmanızı sağlar. Birden çok VM silme etkinliği ile şüpheli Azure AD oturum açma uyarılarının permütasyonları:  
+
+- **Birden çok VM silme etkinliğine yönelik genel bir konuma imkansız seyahat**
+
+- **Bilinmeyen bir konumdan birden çok VM silme etkinliğine yönelik oturum açma olayı**
+
+- **Virüslü bir cihazdan birden çok VM silme etkinliğine olan oturum açma etkinliği**
+
+- **Anonim IP adresinden birden çok VM silme etkinliğine yönelik oturum açma olayı**
+
+- **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından birden çok VM silme etkinliği ile oturum açma etkinliği**
+
+## <a name="lateral-movement"></a>Yana hareket
+
+### <a name="office-365-impersonation-following-suspicious-azure-ad-sign-in"></a>Office 365 kimliğe bürünme şüpheli Azure AD oturum açma
+
+**Mitre ATT&CK tactika:** İlk erişim, yan yana hareket
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), Iç Spear kimlik avı (T1534)
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabından gelen şüpheli bir oturum açma işleminden sonra anormal sayıda kimliğe bürünme eylemi oluştuğunu gösterir. Bazı yazılımda, kullanıcıların diğer kullanıcıları taklit etmesine izin veren seçenekler vardır. Örneğin, e-posta hizmetleri kullanıcıların diğer kullanıcılara kendi adına e-posta göndermesini yetkilendirmelerini sağlar. Bu uyarı, Fusion olay açıklamasında belirtilen hesabın tehlikede olduğunu ve kötü amaçlı yazılım dağıtımı veya yan yana hareket için kimlik avı e-postaları gönderme gibi kötü amaçlı olarak kimliğe bürünme etkinliklerini yürütmek için kullanıldığını gösterir. Office 365 kimliğe bürünme uyarısıyla şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:  
+
+- **Office 365 kimliğe bürünme için önde gelen bir konuma imkansız seyahat**
+
+- **Bilmediğiniz bir konumdan Office 365 kimliğe bürünmeye önde gelen oturum açma olayı**
+
+- **Virüslü bir cihazdan Office 365 kimliğe bürünmeye önde gelen oturum açma etkinliği**
+
+- **Anonim bir IP adresinden Office 365 kimliğe bürünmeye önde gelen oturum açma olayı**
+
+- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan Office 365 kimliğe bürünme ile oturum açma etkinliği**
+ 
+### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Şüpheli gelen kutusu düzenleme kuralları aşağıdaki şüpheli Azure AD oturum açma kurallarını ayarlar
+Bu senaryo, bu listedeki iki tehdit sınıflandırmalarına aittir: **yan yana hareket** ve **veri taşalımı**. Netlik açısından, her iki bölümde de görünür.
+
+Bu senaryo şu anda **genel önizlemededir**.
+
+**Mitre ATT&CK tactika:** İlk erişim, yan yana hareket, Exfilsyon
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), Iç Spear kimlik avı (T1534), otomatik exfiltration (T1020)
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli oturum açma sonrasında bir kullanıcının gelen kutusunda anormal gelen kutusu kurallarının ayarlandığını gösterir. Bu gösterge, Fusion olay açıklamasında belirtilen hesabın güvenliğinin aşıldığını ve kullanıcının e-posta gelen kutusu kurallarını kötü amaçlı amaçlarla işlemek için kullanıldığını yüksek güvenilirliğe olanak sağlar. Bu, bir saldırgan tarafından kuruluşun ağından verileri düzenlemeye yönelik bir girişim olabilir. Alternatif olarak, saldırgan ek kullanıcı ve/veya ayrıcalıklı hesaplara erişim elde ederek kuruluş içinden kimlik avı e-postaları oluşturmaya çalışıyor (dış kaynaklardan e-postada hedeflenen kimlik avı algılama mekanizmalarını atlayarak). Şüpheli gelen kutusu düzenleme kuralları uyarısıyla şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:
+
+- **Şüpheli gelen kutusu işleme kuralına olağan bir konum için imkansız seyahat**
+
+- **Bilmediğiniz bir konumdan şüpheli gelen kutusu işleme kuralına kadar olan oturum açma olayı**
+
+- **Virüslü bir cihazdan şüpheli gelen kutusu işleme kuralına kadar bir oturum açma olayı**
+
+- **Anonim bir IP adresinden şüpheli gelen kutusu işleme kuralına bir oturum açma olayı**
+
+- **Sızdırılan kimlik bilgileri ile şüpheli gelen kutusu işleme kuralına sahip kullanıcıdan oturum açma olayı**
+
+## <a name="malicious-administrative-activity"></a>Kötü amaçlı yönetim etkinliği
+
+### <a name="suspicious-cloud-app-administrative-activity-following-suspicious-azure-ad-sign-in"></a>Şüpheli Azure AD oturum açma sonrasında şüpheli bulut uygulaması yönetim etkinliği
+
+**Mitre ATT&CK tactika:** İlk erişim, kalıcılık, savunma Evasion, yan yana taşıma, koleksiyon, exfiltration ve etki
+
+**Mitre ATT&CK teknikleri:** yok
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, aynı hesaptan şüpheli bir Azure AD oturum açma işleminden sonra tek bir oturumda anormal sayıda yönetim etkinliği gerçekleştirildiğini gösterir. Bu, Fusion olay açıklamasında belirtilen hesabın tehlikede olduğunu ve kötü amaçlı olarak herhangi bir sayıda yetkisiz yönetim eylemi yapmak için kullanıldığını belirten bir gösterge sağlar. Bu Ayrıca, yönetici ayrıcalıklarına sahip bir hesabın tehlikede olduğunu gösterir. Şüpheli bulut uygulaması yönetim etkinliği uyarısına sahip şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:  
+
+- **Şüpheli bulut uygulaması yönetim etkinliğine karşı önde gelen bir konum için imkansız seyahat**
+
+- **Bilinmeyen bir konumdan şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma olayı**
+
+- **Virüslü bir cihazdan şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma etkinliği**
+
+- **Anonim bir IP adresinden, şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma olayı**
+
+- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan gelen oturum açma olayı, şüpheli bulut uygulaması yönetim etkinliğine**
+
+## <a name="malicious-execution-with-legitimate-process"></a>Yasal işlemle kötü amaçlı yürütme
+
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell şüpheli bir ağ bağlantısı yaptı ve bu, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenebilir.
+Bu senaryo şu anda **genel önizlemededir**.
+
+**Mitre ATT&CK tactika:** Yürütme
+
+**Mitre ATT&CK teknikleri:** Komut ve betik yorumlayıcısı (T1059)
+
+**Veri Bağlayıcısı kaynakları:** Uç nokta için Microsoft Defender (eski adıyla Microsoft Defender Gelişmiş tehdit koruması veya MDADTP), Palo Alto Networks 
+
+**Açıklama:** Bu türün Fusion olayları, bir PowerShell komutu aracılığıyla giden bir bağlantı isteğinin yapıldığını ve bu, Palo Alto Networks güvenlik duvarı tarafından anormal gelen etkinliğinin algılandığını gösterir. Bu, bir saldırganın ağınıza erişim kazandığı ve kötü amaçlı işlemler gerçekleştirmeye çalıştığı hakkında bir gösterge sağlar. Bu kalıbı izleyen PowerShell tarafından yapılan bağlantı girişimleri, kötü amaçlı yazılım komutu ve denetim etkinliği, ek kötü amaçlı yazılımların İndirilme istekleri veya bir saldırgan uzaktan etkileşimli erişim sağlayan bir bildirim olabilir. Tüm "Land kapalı" saldırılarıyla birlikte bu etkinlik, PowerShell 'in meşru bir kullanımı olabilir. Bununla birlikte, şüpheli gelen güvenlik duvarı etkinliğinin ardından gelen PowerShell komut yürütmesi, PowerShell 'in kötü amaçlı olarak kullanıldığı güveni artırır ve daha fazla araştırılması gerekir. Palo Alto günlüklerinde, Azure Sentinel [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak değerlendirilir (şüpheli veriler, dosyalar, floods, paketler, taramalar, casus yazılım, URL 'ler, virüsler, güvenlik açıkları, yavalar, yavalar, yavalar). Ayrıca, ek uyarı ayrıntıları için Fusion olay açıklamasında listelenen [tehdit/Içerik türüne](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) karşılık gelen Palo Alto tehdit günlüğüne başvurun.
+
+### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Şüpheli uzak WMI yürütme, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenir
+Bu senaryo şu anda **genel önizlemededir**.
+
+**Mitre ATT&CK tactika:** Yürütme, bulma
+
+**Mitre ATT&CK teknikleri:** Windows Yönetim Araçları (T1047)
+
+**Veri Bağlayıcısı kaynakları:** Uç nokta (eskiden MDADTP) için Microsoft Defender, Palo Alto Networks 
+
+**Açıklama:** Bu türün Fusion olayları, Windows Yönetim Arabirimi (WMI) komutlarının bir sistemde uzaktan yürütüldüğünü ve bu, Palo Alto Networks güvenlik duvarı tarafından şüpheli gelen etkinliğin algılandığını gösterir. Bu, bir saldırganın ağınıza erişim kazandığını ve geçici olarak taşımaya, ayrıcalıkların ilerleme ve/veya kötü amaçlı yükleri yürütmesine olanak sağladığını belirten bir bildirim sağlar. Tüm "Land kapalı" saldırılarıyla birlikte bu etkinlik, WMI 'nin meşru bir kullanımı olabilir. Ancak, şüpheli gelen güvenlik duvarı etkinliğinin ardından uzak WMI komut yürütmesi, WMI 'nın kötü amaçlı olarak kullanıldığı ve daha fazla Araştırılması gereken güveni artırır. Palo Alto günlüklerinde, Azure Sentinel [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak değerlendirilir (şüpheli veriler, dosyalar, floods, paketler, taramalar, casus yazılım, URL 'ler, virüsler, güvenlik açıkları, yavalar, yavalar, yavalar). Ayrıca, ek uyarı ayrıntıları için Fusion olay açıklamasında listelenen [tehdit/Içerik türüne](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) karşılık gelen Palo Alto tehdit günlüğüne başvurun.
+
+## <a name="malware-c2-or-download"></a>Kötü amaçlı yazılım C2 veya indirme
+
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Anonim olarak çalışan hizmeti olan ağ isteği, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenir.
+Bu senaryo şu anda **genel önizlemededir**.
+
+**Mitre ATT&CK tactika:** Komut ve denetim
+
+**Mitre ATT&CK teknikleri:** Şifreli kanal (T1573), proxy (T1090)
+
+**Veri Bağlayıcısı kaynakları:** Uç nokta (eskiden MDADTP) için Microsoft Defender, Palo Alto Networks 
+
+**Açıklama:** Bu türün Fusion olayları, Tor 'ın anonimleştirme hizmetine giden bir bağlantı isteğinin yapıldığını ve bu, Palo Alto Networks güvenlik duvarı tarafından anormal gelen etkinliğinin algılandığını gösterir. Bu, bir saldırganın ağınıza erişim kazandığını ve eylemlerini ve amacını gizleme denediğinin bir göstergesidir. Bu kalıbı izleyen TOR ağı bağlantıları, kötü amaçlı yazılım komutu ve denetim etkinliği, ek kötü amaçlı yazılımların indirileceği veya bir saldırganın uzaktan etkileşimli erişim kurma istekleri hakkında bir gösterge olabilir. Palo Alto günlüklerinde, Azure Sentinel [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak değerlendirilir (şüpheli veriler, dosyalar, floods, paketler, taramalar, casus yazılım, URL 'ler, virüsler, güvenlik açıkları, yavalar, yavalar, yavalar). Ayrıca, ek uyarı ayrıntıları için Fusion olay açıklamasında listelenen [tehdit/Içerik türüne](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) karşılık gelen Palo Alto tehdit günlüğüne başvurun.
+
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenen, yetkisiz erişim girişimleri geçmişi ile IP 'ye giden bağlantı
+Bu senaryo şu anda **genel önizlemededir**.
+
+**Mitre ATT&CK tactika:** Komut ve denetim
+
+**Mitre ATT&CK teknikleri:** Uygulanamaz
+
+**Veri Bağlayıcısı kaynakları:** Uç nokta (eskiden MDADTP) için Microsoft Defender, Palo Alto Networks 
+
+**Açıklama:** Bu türün Fusion olayları, bir IP adresine giden bağlantının yetkisiz erişim girişimleri geçmişine sahip bir bağlantı olduğunu ve bu şekilde Palo Alto Networks güvenlik duvarı tarafından anormal etkinliğin algılandığını gösterir. Bu, bir saldırganın ağınıza erişim kazandığını belirten bir bildirim sağlar. Bu kalıbı izleyen bağlantı girişimleri, kötü amaçlı yazılım komutu ve denetim etkinliği, ek kötü amaçlı yazılımın İndirilme istekleri veya bir saldırganın uzaktan etkileşimli erişim kurma istekleri olabilir. Palo Alto günlüklerinde, Azure Sentinel [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak değerlendirilir (şüpheli veriler, dosyalar, floods, paketler, taramalar, casus yazılım, URL 'ler, virüsler, güvenlik açıkları, yavalar, yavalar, yavalar). Ayrıca, ek uyarı ayrıntıları için Fusion olay açıklamasında listelenen [tehdit/Içerik türüne](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) karşılık gelen Palo Alto tehdit günlüğüne başvurun.
+
+## <a name="ransomware"></a>Fidye yazılımı
+
+### <a name="ransomware-execution-following-suspicious-azure-ad-sign-in"></a>Şüpheli Azure AD oturum açma sonrasında fidye yürütme
+
+**Mitre ATT&CK tactika:** İlk erişim, etki
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), etki için şifrelenmiş veriler (T1486)
+
+**Veri Bağlayıcısı kaynakları:** Microsoft Cloud App Security, Azure Active Directory Kimlik Koruması
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli oturum açma sonrasında bir fidye saldırı saldırısı olduğunu gösteren anormal Kullanıcı davranışının algılandığını gösterir. Bu gösterge, Fusion olay açıklamasında belirtilen hesabın güvenliğinin aşıldığını ve veri sahibini almak veya veri sahibinin verilerine erişimini reddetmek amacıyla verileri şifrelemek için kullanılan yüksek güvenirlik sağlar. Fidye yazılımı yürütme uyarısıyla şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:  
+
+- **Bulut uygulamasındaki fidye 'ya normal bir konuma karşı önde gelen bir konum**
+
+- **Tanınmayan bir konumdan bulut uygulamasındaki fidye 'ya lider olarak oturum açma etkinliği**
+
+- **Etkilenen bir cihazdan, bulut uygulamasındaki fidye 'ya lider olarak oturum açma etkinliği**
+
+- **Anonim bir IP adresinden, bulut uygulamasındaki fidye 'ya lider olarak oturum açma olayı**
+
+- **Bir kullanıcı tarafından, sızdırılan kimlik bilgilerine sahip, bulut uygulamasında fidye 'ya yönelik oturum açma olayı**
+
+## <a name="remote-exploitation"></a>Uzaktan yararlanma
+
+### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Palo Alto Networks güvenlik duvarı tarafından bayrak eklenmiş anormal trafik tarafından izlenen saldırı çerçevesinin şüpheli kullanımı
+Bu senaryo şu anda **genel önizlemededir**.
+
+**Mitre ATT&CK tactika:** İlk erişim, yürütme, yan yana taşıma, ayrıcalık yükseltme
+
+**Mitre ATT&CK teknikleri:** Genel kullanıma yönelik uygulama (T1190), Istemci yürütme (T1203), uzak hizmetlerden yararlanma (T1210), ayrıcalık yükseltme (T1068) ile yararlanılarak,
+
+**Veri Bağlayıcısı kaynakları:** Uç nokta (eskiden MDADTP) için Microsoft Defender, Palo Alto Networks 
+
+**Açıklama:** Bu türün Fusion olayları, standart olmayan protokollerin kullanımları olduğunu, Metasploit gibi saldırı çerçevelerinin kullanımına benzer olduğunu ve bu nedenle Palo Alto Networks güvenlik duvarı tarafından şüpheli gelen etkinlik algılandığını gösterir. Bu, bir saldırganın ağ kaynaklarınıza erişim kazanmak için bir hizmetin yararlandığını veya bir saldırganın zaten erişim kazandığını ve daha sonra da bu ayrıcalıkları daha sonra ve/veya ileri bir düzeye taşımak için kullanılabilir sistemlerden/hizmetlerden daha fazla yararlanmaya çalışıyor olduğunu gösteren bir başlangıç göstergesi olabilir. Palo Alto günlüklerinde, Azure Sentinel [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak değerlendirilir (şüpheli veriler, dosyalar, floods, paketler, taramalar, casus yazılım, URL 'ler, virüsler, güvenlik açıkları, yavalar, yavalar, yavalar). Ayrıca, ek uyarı ayrıntıları için Fusion olay açıklamasında listelenen [tehdit/Içerik türüne](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) karşılık gelen Palo Alto tehdit günlüğüne başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

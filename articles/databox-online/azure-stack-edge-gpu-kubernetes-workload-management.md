@@ -1,29 +1,29 @@
 ---
-title: Azure Stack Edge cihazında Kubernetes iş yükü yönetimini anlayın | Microsoft Docs
-description: Kubernetes iş yüklerinin Azure Stack Edge cihazında nasıl yönetilebileceğinizi açıklar.
+title: Azure Stack Edge Pro cihazında Kubernetes iş yükü yönetimini anlayın | Microsoft Docs
+description: Kubernetes iş yüklerinin Azure Stack Edge Pro cihazınızda nasıl yönetilebileceğinizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 53bd7a404e4635833b03507e8b5ae93ae40b1c61
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: f64f9b612ff47fb5c0b6e6202ad87f7660959100
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318990"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899176"
 ---
-# <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızda Kubernetes iş yükü yönetimi
+# <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızda Kubernetes iş yükü yönetimi
 
-Azure Stack Edge cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes kümesi oluşturulduktan sonra kapsayıcılı uygulamalar, pods 'deki Kubernetes kümesine dağıtılabilir. Kubernetes kümenizde iş yüklerini dağıtmanın farklı yolları vardır. 
+Azure Stack Edge Pro cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes kümesi oluşturulduktan sonra kapsayıcılı uygulamalar, pods 'deki Kubernetes kümesine dağıtılabilir. Kubernetes kümenizde iş yüklerini dağıtmanın farklı yolları vardır. 
 
-Bu makalede, Azure Stack Edge cihazınızda iş yüklerini dağıtmak için kullanılabilecek çeşitli yöntemler açıklanmaktadır.
+Bu makalede, Azure Stack Edge Pro cihazınızda iş yüklerini dağıtmak için kullanılabilecek çeşitli yöntemler açıklanmaktadır.
 
 ## <a name="workload-types"></a>İş yükü türleri
 
-Azure Stack Edge cihazınıza dağıtabileceğiniz iki ortak iş yükü türü durum bilgisiz uygulamalardır ve durum bilgisi olan uygulamalardır.
+Azure Stack Edge Pro cihazınıza dağıtabileceğiniz iki ortak iş yükü türü durum bilgisiz uygulamalardır ve durum bilgisi olan uygulamalardır.
 
 - **Durum bilgisiz uygulamalar** durumlarını korumaz ve kalıcı depolamaya veri kaydetmez. Tüm Kullanıcı ve oturum verileri istemcisiyle kalır. Durum bilgisi olmayan uygulamalara bazı örnekler NGINX gibi Web ön uçları ve diğer Web uygulamaları içerir.
 
@@ -35,7 +35,7 @@ Azure Stack Edge cihazınıza dağıtabileceğiniz iki ortak iş yükü türü d
 
 ## <a name="deployment-flow"></a>Dağıtım akışı
 
-Uygulamaları Azure Stack Edge cihazında dağıtmak için şu adımları izleyin: 
+Azure Stack Edge Pro cihazında uygulama dağıtmak için şu adımları izleyin: 
  
 1. **Erişimi yapılandırma**: ilk olarak, bir kullanıcı oluşturmak, bir ad alanı oluşturmak ve bu ad alanına kullanıcı erişimi vermek için PowerShell çalışma 'i kullanacaksınız.
 2. **Depolamayı yapılandırma**: bundan sonra, dağıtabileceğiniz durum bilgisi olan uygulamalar için statik veya dinamik sağlama kullanarak kalıcı birimler oluşturmak üzere Azure Portal Azure Stack Edge kaynağını kullanacaksınız.
@@ -47,11 +47,13 @@ Uygulamaları Azure Stack Edge cihazında dağıtmak için şu adımları izleyi
 
 ![Kubernetes iş yükü dağıtımı](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **Yerel dağıtım**: Bu dağıtım, `kubectl` Kubernetes 'i dağıtmanıza olanak sağlayan gibi komut satırı erişim aracıdır `yamls` . Kubernetes kümesine bir dosya aracılığıyla Azure Stack kenarınızdan erişirsiniz `kubeconfig` . Daha fazla bilgi için, [kubectl aracılığıyla bir Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)konusuna gidin.
+- **Yerel dağıtım**: Bu dağıtım, `kubectl` Kubernetes 'i dağıtmanıza olanak sağlayan gibi komut satırı erişim aracıdır `yamls` . Kubernetes kümesine Azure Stack Edge Pro 'Yu bir dosya aracılığıyla erişirsiniz `kubeconfig` . Daha fazla bilgi için, [kubectl aracılığıyla bir Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)konusuna gidin.
 
-- **IoT Edge dağıtımı**: Bu, Azure IoT Hub 'e bağlanan IoT Edge. Ad alanı aracılığıyla Azure Stack Edge cihazınızdan Kubernetes kümesine bağlanırsınız `iotedge` . Bu ad alanında dağıtılan IoT Edge aracıları Azure bağlantısı sağlanmasından sorumludur. `IoT Edge deployment.json`Yapılandırmayı Azure DevOps CI/CD kullanarak uygularsınız. Ad alanı ve IoT Edge yönetimi, bulut operatörü aracılığıyla yapılır.
+- **IoT Edge dağıtımı**: Bu, Azure IoT Hub 'e bağlanan IoT Edge. Ad alanı aracılığıyla Azure Stack Edge Pro cihazınızda Kubernetes kümesine bağlanırsınız `iotedge` . Bu ad alanında dağıtılan IoT Edge aracıları Azure bağlantısı sağlanmasından sorumludur. `IoT Edge deployment.json`Yapılandırmayı Azure DevOps CI/CD kullanarak uygularsınız. Ad alanı ve IoT Edge yönetimi, bulut operatörü aracılığıyla yapılır.
 
-- **Azure/Arc dağıtımı**: Azure Arc, Kubernetes kümelerinizde uygulamalar dağıtmanıza imkan tanıyan bir karma yönetim aracıdır. Kubernetes kümesini ile Azure Stack Edge cihazınıza bağlanırsınız `azure-arc namespace` . Aracılar, bu ad alanında Azure bağlantısının sorumlu olduğu bir şekilde dağıtılır. Dağıtım yapılandırmasını, Gilar tabanlı yapılandırma yönetimini kullanarak uygularsınız. Azure Arc, kümelerinizi görüntülemek ve izlemek için kapsayıcılar için Azure Izleyicisini kullanmanıza da imkan tanır. Daha fazla bilgi için [Azure-Arc etkin Kubernetes nedir?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)bölümüne bakın.
+- **Azure Arc etkin Kubernetes dağıtımı**: Azure Arc etkin Kubernetes, Kubernetes kümelerinizde uygulamalar dağıtmanıza imkan tanıyan bir karma yönetim aracıdır. İle Azure Stack Edge Pro cihazınızdan Kubernetes kümesine bağlanırsınız `azure-arc namespace` . Bu ad alanında dağıtılan aracılar Azure bağlantısının sorumluluğundadır. Dağıtım yapılandırmasını, Gilar tabanlı yapılandırma yönetimini kullanarak uygularsınız. 
+    
+    Azure Arc etkin Kubernetes, kümenizi görüntülemek ve izlemek için kapsayıcılar için Azure Izleyicisini kullanmanıza da imkan tanır. Daha fazla bilgi için, [Azure Arc etkin Kubernetes nedir?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)bölümüne bakın.
 
 ## <a name="choose-the-deployment-type"></a>Dağıtım türünü seçin
 
@@ -59,7 +61,7 @@ Uygulamaları dağıtma sırasında aşağıdaki bilgileri göz önünde bulundu
 
 - **Tek veya birden çok tür**: tek bir dağıtım seçeneği veya farklı dağıtım seçenekleri karışımı seçebilirsiniz.
 - **Bulutta yerel**olarak: uygulamalarınıza bağlı olarak, kubectl veya bulut dağıtımı aracılığıyla IoT Edge ve Azure Arc aracılığıyla yerel dağıtım seçeneğini belirleyebilirsiniz. 
-    - Yerel bir dağıtım seçtiğinizde, Azure Stack Edge cihazınızın dağıtıldığı ağla sınırlı olursunuz.
+    - Yerel bir dağıtım seçtiğinizde, Azure Stack Edge Pro cihazınızın dağıtıldığı ağla sınırlı olursunuz.
     - Dağıtabileceğiniz bir bulut aracınız varsa, bulut operatörüzü dağıtmanız ve bulut yönetimi kullanmanız gerekir.
 - **IoT vs Azure Arc**: dağıtım seçimi, ürün senaryolarınızın amacına de bağlıdır. IoT veya IoT ekosistemiyle daha derin tümleştirme sağlayan uygulamalar veya kapsayıcılar dağıtıyorsanız, uygulamalarınızı dağıtmak için IoT Edge seçin. Mevcut Kubernetes dağıtımlarınız varsa, Azure Arc tercih edilen seçenek olacaktır.
 
@@ -68,11 +70,11 @@ Uygulamaları dağıtma sırasında aşağıdaki bilgileri göz önünde bulundu
 
 Bir uygulamayı kubectl aracılığıyla yerel olarak dağıtmak için bkz.:
 
-- [Kubectl aracılığıyla Azure Stack kenarınızdan durum bilgisiz bir uygulamayı dağıtın](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Kubectl aracılığıyla Azure Stack Edge Pro 'unuzda durum bilgisiz bir uygulamayı dağıtın](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
 
 IoT Edge aracılığıyla bir uygulama dağıtmak için, bkz.:
 
-- [IoT Edge aracılığıyla Azure Stack kenarınızdan örnek bir modül dağıtın](azure-stack-edge-gpu-deploy-sample-module.md).
+- [IoT Edge aracılığıyla Azure Stack Edge Pro 'unuzda örnek bir modül dağıtın](azure-stack-edge-gpu-deploy-sample-module.md).
 
 Azure Arc aracılığıyla bir uygulama dağıtmak için, bkz.:
 

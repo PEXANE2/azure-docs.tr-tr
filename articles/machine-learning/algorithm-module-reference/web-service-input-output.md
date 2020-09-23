@@ -1,6 +1,6 @@
 ---
 title: 'Web hizmeti giriş/çıkış: modül başvurusu'
-description: Azure Machine Learning tasarımcısında Web hizmeti modülleri hakkında bilgi edinin (Önizleme)
+description: Azure Machine Learning tasarımcısında Web hizmeti modülleri hakkında bilgi edinin
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
-ms.openlocfilehash: ded976fc9090535f3c683b5c6351646a55265205
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a62f8aee0bd0a0d2b7009a48e9d5f00ea3c5155f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751114"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883218"
 ---
 # <a name="web-service-input-and-web-service-output-modules"></a>Web hizmeti giriş ve Web hizmeti çıkış modülleri
 
-Bu makalede, Azure Machine Learning tasarımcısında Web hizmeti giriş ve Web hizmeti çıkış modülleri (Önizleme) açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısında Web hizmeti giriş ve Web hizmeti çıkış modülleri açıklanmaktadır.
 
 Web hizmeti giriş modülü yalnızca **Dataframedirectory**türünde bir giriş bağlantı noktasına bağlanabilir. Web hizmeti çıkış modülü yalnızca **Dataframedirectory**türünde bir çıkış bağlantı noktasından bağlanabilir. Modül ağacında, **Web hizmeti** kategorisi altında iki modülü bulabilirsiniz. 
 

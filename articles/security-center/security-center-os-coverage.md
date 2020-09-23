@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: f02e45804234fc8f8aa2b966db7ddce5efc9cfd1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2092a1aa3d5157db0392397e86553c5cc9da9de2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998841"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883798"
 ---
 # <a name="supported-platforms"></a>Desteklenen platformlar 
 
@@ -55,7 +55,7 @@ Ayrıca, Azure Kubernetes (AKS), Azure Databricks ve daha fazlası gibi Azure ta
 
 Bulut hizmetinde çalışan sanal makineler de desteklenir. Yalnızca üretim yuvalarında çalışan Cloud Services Web ve çalışan rolleri izlenir. Bulut hizmetleri hakkında daha fazla bilgi edinmek için bkz. [Azure Cloud Services 'ye genel bakış](../cloud-services/cloud-services-choose-me.md).
 
-Azure Stack bulunan VM 'Ler için koruma de desteklenir. Güvenlik Merkezi 'nin Azure Stack tümleştirmesi hakkında daha fazla bilgi için, bkz. [Azure Stack sanal makinelerinizi Güvenlik Merkezi 'ne](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)ekleme.
+Azure Stack bulunan VM 'Ler için koruma de desteklenir. Güvenlik Merkezi 'nin Azure Stack tümleştirmesi hakkında daha fazla bilgi için, bkz. [Azure Stack sanal makinelerinizi Güvenlik Merkezi 'ne](quickstart-onboard-machines.md)ekleme. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central yeni bir ağ geçidi cihaz türü tanımlayın | Microsoft Docs
+title: Öğretici-Azure IoT Central yeni bir ağ geçidi cihaz türü tanımlama | Microsoft Docs
 description: Bu öğreticide, Azure IoT Central uygulamanızda yeni bir IoT Ağ Geçidi cihaz türünün nasıl tanımlanacağı, bir Oluşturucu olarak gösterilir.
 author: rangv
 ms.author: rangv
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81758137"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967908"
 ---
-# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda yeni bir IoT Ağ Geçidi cihaz türü tanımlama
+# <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Öğretici-Azure IoT Central uygulamanızda yeni bir IoT Ağ Geçidi cihaz türü tanımlama
 
 *Bu makale, çözüm oluşturucular ve cihaz geliştiricileri için geçerlidir.*
 
@@ -31,6 +31,9 @@ Aşağı akış cihazların IoT Central uygulamanızla iletişim kurmasını ola
 * Sıcaklık gibi kendi telemetrisini gönderin.
 * Bir operatör tarafından yapılan yazılabilir Özellik güncelleştirmelerine yanıt verir. Örneğin, bir işleç telemetri gönderme aralığını değiştiriyor.
 * Cihazı yeniden başlatma gibi komutları yanıtlayın.
+
+> [!div class="checklist"]
+> Aşağı akış cihaz şablonları oluşturma bir ağ geçidi cihaz şablonu oluşturma cihaz şablonunu yayımlama sanal cihazları oluşturma
 
 ## <a name="prerequisites"></a>Önkoşullar
 

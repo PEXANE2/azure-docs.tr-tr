@@ -1,6 +1,6 @@
 ---
-title: GPU teknik belirtimleri ve uyumluluğuyla Microsoft Azure Stack Edge | Microsoft Docs
-description: GPU ile Azure Stack Edge cihazınız için teknik belirtimler ve uyumluluk hakkında bilgi edinin
+title: GPU teknik belirtimleri ve uyumluluğuyla Microsoft Azure Stack Edge Pro | Microsoft Docs
+description: GPU ile Azure Stack Edge Pro cihazınız için teknik belirtimler ve uyumluluk hakkında bilgi edinin
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266672"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899024"
 ---
-# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>GPU ile Azure Stack Edge için teknik belirtimler ve uyumluluk 
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>GPU ile Azure Stack Edge Pro için teknik belirtimler ve uyumluluk 
 
-Birlikte bulunan bir grafik Işleme birimi (GPU) Azure Stack Kenarlarınızın donanım bileşenleri, bu makalede açıklanan teknik belirtimler ve yasal standartlar standartlarına uyar. Teknik belirtimler donanım, güç kaynağı birimleri (PSUs), depolama kapasitesi, kasaları ve çevresel standartları anlatmaktadır.
+Azure Stack Edge Pro 'nun, birlikte bulunan bir grafik Işleme birimi (GPU) ile donanım bileşenleri, bu makalede açıklanan teknik belirtimler ve yasal standartlar standartlarına uyar. Teknik belirtimler donanım, güç kaynağı birimleri (PSUs), depolama kapasitesi, kasaları ve çevresel standartları anlatmaktadır.
 
 ## <a name="compute-and-memory-specifications"></a>İşlem ve bellek belirtimleri
 
-Azure Stack Edge cihazının işlem ve bellek için aşağıdaki belirtimleri vardır:
+Azure Stack Edge Pro cihazı, işlem ve bellek için aşağıdaki belirtimlere sahiptir:
 
 | Belirtim           | Değer                  |
 |-------------------------|----------------------------|
@@ -31,7 +31,7 @@ Azure Stack Edge cihazının işlem ve bellek için aşağıdaki belirtimleri va
 
 ## <a name="compute-acceleration-specifications"></a>İşlem hızlandırma belirtimleri
 
-Grafik Işleme birimi (GPU), Kubernetes, derin öğrenme ve makine öğrenimi senaryolarına izin veren her bir Azure Stack Edge cihazına dahildir.
+Grafik Işleme birimi (GPU), Kubernetes, derin öğrenme ve makine öğrenimi senaryolarına izin veren her bir Azure Stack Edge Pro cihazına dahildir.
 
 | Belirtim           | Değer                  |
 |-------------------------|----------------------------|
@@ -40,7 +40,7 @@ Grafik Işleme birimi (GPU), Kubernetes, derin öğrenme ve makine öğrenimi se
 
 ## <a name="power-supply-unit-specifications"></a>Güç kaynağı birimi belirtimleri
 
-Azure Stack Edge cihazında, yüksek performanslı fanlarla iki 100-240 V güç kaynağı (PSUs) vardır. İki PSUs, yedekli bir güç yapılandırması sağlar. Bir PSU başarısız olursa, başarısız modül değiştirilinceye kadar cihaz normal olarak diğer PSU üzerinde çalışmaya devam eder. Aşağıdaki tabloda, PSUs teknik özellikleri listelenmektedir.
+Azure Stack Edge Pro cihazının yüksek performanslı fanlarla iki 100-240 V güç kaynağı (PSUs) vardır. İki PSUs, yedekli bir güç yapılandırması sağlar. Bir PSU başarısız olursa, başarısız modül değiştirilinceye kadar cihaz normal olarak diğer PSU üzerinde çalışmaya devam eder. Aşağıdaki tabloda, PSUs teknik özellikleri listelenmektedir.
 
 | Belirtim           | 750 W PSU                  |
 |-------------------------|----------------------------|
@@ -52,13 +52,13 @@ Azure Stack Edge cihazında, yüksek performanslı fanlarla iki 100-240 V güç 
 
 ## <a name="network-interface-specifications"></a>Ağ arabirimi belirtimleri
 
-Azure Stack Edge cihazınız altı ağ arabirimine sahiptir, PORT1-PORT6.
+Azure Stack Edge Pro cihazınız altı ağ arabirimine sahiptir, PORT1-PORT6.
 
 | Belirtim           | Açıklama                 |
 |-------------------------|----------------------------|
 |  Ağ arabirimleri    | **2 X 1 GbE arabirimler** – 1 yönetim arabirimi bağlantı noktası 1, ilk kurulum için kullanılır ve varsayılan olarak statiktir. İlk kurulum tamamlandıktan sonra, herhangi bir IP adresine sahip veriler için arabirimi kullanabilirsiniz. Ancak, sıfırlama sırasında Arabirim statik IP 'ye geri döner. <br>Diğer arabirim bağlantı noktası 2 Kullanıcı tarafından yapılandırılabilir, veri aktarımı için kullanılabilir ve varsayılan olarak DHCP 'dir. <br>**4 X 25 GbE arabirim** – bu veri arabirimleri, bağlantı noktası 6 ile bağlantı noktası 3, Kullanıcı tarafından DHCP (varsayılan) veya statik olarak yapılandırılabilir. Bunlar ayrıca 10 GbE arabirimi olarak da çalışabilir.  | 
 
-Azure Stack Edge cihazınız aşağıdaki ağ donanımlarına sahiptir:
+Azure Stack Edge Pro cihazınız aşağıdaki ağ donanımlarına sahiptir:
 
 * **Özel Microsoft Qlogic Cavium 25G NDC bağdaştırıcısı** -bağlantı noktası 4 ile bağlantı noktası 1.
 * **Mellanox Dual Port 25G ConnectX-4 kanal ağ bağdaştırıcısı** -bağlantı noktası 5 ve bağlantı noktası 6.
@@ -79,7 +79,7 @@ Bu ağ kartlarında desteklenen kabloların, anahtarların ve alıcı sayısın�
 
 ## <a name="storage-specifications"></a>Depolama belirtimleri
 
-Azure Stack Edge cihazlarında beş 2,5 "NVMe DC P4610 SSDs, her biri 1,6 TB kapasiteye sahiptir. Önyükleme sürücüsü 240 GB SATA SSD 'dir. Cihaz için kullanılabilen toplam kapasite kabaca 8,28 TB 'tır. Aşağıdaki tabloda, cihazın depolama kapasitesi listelenmektedir.
+Azure Stack Edge Pro cihazlarında beş 2,5 "NVMe DC P4610 SSDs, her biri 1,6 TB kapasiteye sahiptir. Önyükleme sürücüsü 240 GB SATA SSD 'dir. Cihaz için kullanılabilen toplam kapasite kabaca 8,28 TB 'tır. Aşağıdaki tabloda, cihazın depolama kapasitesi listelenmektedir.
 
 |     Belirtim                          |     Değer             |
 |--------------------------------------------|-----------------------|
@@ -97,7 +97,7 @@ Azure Stack Edge cihazlarında beş 2,5 "NVMe DC P4610 SSDs, her biri 1,6 TB kap
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
 
-Your Azure Stack Edge device also contains the following hardware:
+Your Azure Stack Edge Pro device also contains the following hardware:
 
 * iDRAC baseboard management
 * Performance fans
@@ -172,4 +172,4 @@ Bu bölümde sıcaklık, nem ve yükseklik gibi çevre duvarı ortamıyla ilgili
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack kenarını dağıtın](azure-stack-edge-gpu-deploy-prep.md)
+[Azure Stack Edge Pro 'Yu dağıtma](azure-stack-edge-gpu-deploy-prep.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU cihazına güncelleştirme yüklemeyi | Microsoft Docs
-description: Azure Stack Edge GPU cihazı için Azure portal ve yerel Web Kullanıcı arabirimi ve cihazdaki Kubernetes kümesi kullanılarak güncelleştirmelerin nasıl uygulanacağını açıklar.
+title: Azure Stack Edge Pro GPU cihazına güncelleştirme yüklemeyi | Microsoft Docs
+description: Azure Stack Edge Pro GPU cihazı için Azure portal ve yerel Web Kullanıcı arabirimi ve cihazdaki Kubernetes kümesi kullanılarak güncelleştirmelerin nasıl uygulanacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 6bafeeeda686dafadc3f5104240f8d018de83aeb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 107485277e28a44841b0d71fef686f0bcbf52216
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268253"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899505"
 ---
-# <a name="update-your-azure-stack-edge-with-gpu"></a>Azure Stack Edge 'i GPU ile güncelleştirme 
+# <a name="update-your-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro 'yu GPU ile güncelleştirme 
 
-Bu makalede, yerel Web Kullanıcı arabirimi aracılığıyla ve Azure portal aracılığıyla Azure Stack Edge ile güncelleştirme yüklemek için gereken adımlar açıklanmaktadır. Azure Stack Edge cihazınızı ve ilişkili Kubernetes 'i cihazın güncel kalmasını sağlamak için yazılım güncelleştirmelerini veya düzeltmeleri uygularsınız. 
+Bu makalede, yerel Web Kullanıcı arabirimi aracılığıyla ve Azure portal aracılığıyla GPU ile Azure Stack Edge Pro 'ya güncelleştirme yüklemek için gereken adımlar açıklanmaktadır. Azure Stack Edge Pro cihazınızı ve ilişkili Kubernetes 'i cihazın güncel kalmasını sağlamak için yazılım güncelleştirmelerini veya düzeltmeleri uygularsınız. 
 
 > [!IMPORTANT]
 > - Güncelleştirme **2008** , cihazınızdaki **2.1.1328.1904** yazılım sürümüne karşılık gelir. Bu güncelleştirme hakkında daha fazla bilgi için, [sürüm notları](azure-stack-edge-gpu-2008-release-notes.md)' na gidin.
 >
-> - Bir güncelleştirme veya Düzeltme yüklemenin cihazınızı yeniden başlatdığını aklınızda bulundurun. Bu güncelleştirme, iki güncelleştirmeyi sırayla uygulamanızı gerektirir. Önce cihaz yazılım güncelleştirmelerini ve sonra Kubernetes güncelleştirmelerini uygularsınız. Azure Stack Edge tek düğümlü bir cihaz olduğundan, sürmekte olan g/ç miktarı bozulur ve cihazınız, cihaz yazılım güncelleştirmesi için 30 dakikaya varan bir kesinti yaşar.
+> - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. Bu güncelleştirme, iki güncelleştirmeyi sırayla uygulamanızı gerektirir. Önce cihaz yazılım güncelleştirmelerini ve sonra Kubernetes güncelleştirmelerini uygularsınız. Azure Stack Edge Pro tek düğümlü bir cihaz olduğu için, devam eden g/ç miktarı bozulur ve cihazınız, cihaz yazılım güncelleştirmesi için 30 dakikaya varan bir kesinti yaşar.
 
 Güncelleştirmeleri cihazınıza yüklemek için önce güncelleştirme sunucusunun konumunu yapılandırmanız gerekir. Güncelleştirme sunucusu yapılandırıldıktan sonra, Azure portal Kullanıcı arabirimi veya yerel Web Kullanıcı arabirimi aracılığıyla güncelleştirmeleri uygulayabilirsiniz.
 
@@ -57,7 +57,7 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
 
 2. **Cihaz güncelleştirmeleri** dikey penceresinde, sürüm notlarındaki yeni özelliklerle ilişkili lisans koşullarını gözden geçirdiğinizden emin olun.
 
-    Güncelleştirmeleri **indirip yüklemeyi** veya yalnızca güncelleştirmeleri **indirmeyi** seçebilirsiniz. Daha sonra bu güncelleştirmeleri yüklemeyi tercih edebilirsiniz.
+    Güncelleştirmeleri **indirip yüklemeyi** veya yalnızca güncelleştirmeleri **indirmeyi** seçebilirsiniz. Daha sonra da bu güncelleştirmeleri yükleyebilirsiniz.
 
     ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-2a.png)    
 
@@ -82,7 +82,7 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
 
     ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
 
-    Yalnızca güncelleştirmeleri indirmeyi seçerseniz, **cihaz güncelleştirmeleri** dikey penceresini açmak için bildirimi seçin. **Yükle**’yi seçin.
+    Yalnızca güncelleştirmeleri indirmeyi seçerseniz, **cihaz güncelleştirmeleri** dikey penceresini açmak için bildirimi seçin. **Yükle**'yi seçin.
   
     ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 
@@ -159,9 +159,9 @@ Microsoft Update kataloğundan güncelleştirmeyi indirmek için aşağıdaki ad
 
     ![Katalogda arama](./media/azure-stack-edge-gpu-install-update/download-update-1.png)
 
-2. Microsoft Update kataloğunun arama kutusuna, indirmek istediğiniz güncelleştirme için düzeltme veya koşulların Bilgi Bankası (KB) numarasını girin. Örneğin **Azure Stack Edge**girin ve ardından **Ara**' ya tıklayın.
+2. Microsoft Update kataloğunun arama kutusuna, indirmek istediğiniz güncelleştirme için düzeltme veya koşulların Bilgi Bankası (KB) numarasını girin. Örneğin, **Azure Stack Edge Pro**yazın ve ardından **Ara**' ya tıklayın.
    
-    Güncelleştirme listesi **Azure Stack Edge 2006**olarak görüntülenir.
+    Güncelleştirme listesi **Azure Stack Edge Pro 2006**olarak görüntülenir.
    
     ![Katalogda arama](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
 
@@ -215,4 +215,4 @@ Bu yordamın tamamlandığı 20 dakika sürer. Güncelleştirmeyi veya düzeltme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack kenarını yönetme](azure-stack-edge-manage-access-power-connectivity-mode.md)hakkında daha fazla bilgi edinin.
+[Azure Stack Edge Pro 'yu yönetme](azure-stack-edge-manage-access-power-connectivity-mode.md)hakkında daha fazla bilgi edinin.

@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 2164f6d6b346eda185e8a38720677ad50f2e8c89
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f69ba6e1c5fdfc04fac6fed8487b246f9af72fa2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650679"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889941"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel bir Docker temel görüntüsü kullanarak model dağıtma
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning ile eğitilen modeller dağıttığınızda özel bir Docker temel görüntüsünü nasıl kullanacağınızı öğrenin.
 
@@ -42,7 +42,7 @@ Bu belge iki bölüme ayrılmıştır:
 * Özel bir temel görüntü oluşturma: özel görüntü oluşturma ve Azure CLı ve Machine Learning CLı kullanarak Azure Container Registry kimlik doğrulamasını yapılandırma konusunda yöneticilere ve DevOps 'a bilgi sağlar.
 * Özel bir temel görüntü kullanarak bir model dağıtma: Python SDK veya ML CLı 'dan eğitilen bir model dağıtırken özel görüntüler kullanma hakkında veri bilimcileri ve DevOps/ML mühendislerine yönelik bilgiler sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure Machine Learning çalışma grubu. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
@@ -184,7 +184,7 @@ Mevcut görüntüleri bir Azure Container Registry karşıya yükleme hakkında 
 
 Özel bir görüntü kullanmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
-* __Görüntü adı__. Örneğin, `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` Microsoft tarafından sunulan temel bir Docker görüntüsünün yoludur.
+* __Görüntü adı__. Örneğin, `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` Microsoft tarafından sunulan basit bir Docker görüntüsünün yoludur.
 
     > [!IMPORTANT]
     > Oluşturduğunuz özel görüntüler için görüntüyle birlikte kullanılan tüm etiketleri eklediğinizden emin olun. Örneğin, görüntünüz gibi belirli bir etiketle oluşturulduysa `:v1` . Görüntüyü oluştururken belirli bir etiket kullanmıyorsanız, bir etiketi `:latest` uygulandı.
@@ -200,9 +200,9 @@ Mevcut görüntüleri bir Azure Container Registry karşıya yükleme hakkında 
 
 Microsoft, bu bölümdeki adımlarla kullanılabilecek, herkese açık bir şekilde erişilebilir bir depoda çeşitli Docker görüntüleri sağlar:
 
-| Görüntü | Description |
+| Görüntü | Açıklama |
 | ----- | ----- |
-| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning için temel görüntü |
+| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning için çekirdek görüntü |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | CPU ınzoni için ONNX çalışma zamanını içerir |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | GPU için ONNX çalışma zamanını ve CUDA 'yı içerir |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | GPU için ONNX çalışma zamanını ve TensorRT 'yi içerir |

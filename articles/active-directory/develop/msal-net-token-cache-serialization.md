@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4edb0f356dd83ab1aa353e0791f619be497a9d91
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c44c99016f507214869e45a66bdd27c0a5efec75
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166034"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982914"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET içinde belirteç önbelleği serileştirme
 [Belirteç](msal-acquire-cache-tokens.md)alındıktan sonra, Microsoft kimlik doğrulama KITAPLıĞı (msal) tarafından önbelleğe alınır.  Uygulama kodu, başka bir yöntem tarafından belirteç almadan önce önbellekten bir belirteç almayı denemelidir.  Bu makalede, MSAL.NET içinde belirteç önbelleğinin varsayılan ve özel serileştirmesi açıklanmaktadır.
@@ -39,8 +39,8 @@ MSAL.NET ' de, bir bellek içi belirteç önbelleği varsayılan olarak sağlan�
 Aşağıdaki sınıflar ve arabirimler, belirteç önbelleği serileştirmesi içinde kullanılır:
 
 - `ITokenCache`, belirteç önbelleği serileştirme isteklerine abone olmak için olayları ve çeşitli biçimlerde (ADAL v 3.0, MSAL 2. x ve MSAL 3. x = ADAL v 5.0) önbelleğe alma veya seri hale getirme yöntemlerini tanımlar.
-- `TokenCacheCallback`, serileştirme işlemini işleyebilmeniz için olaylara geçirilmiş bir geri çağırma işlemi. Bunlar, türündeki bağımsız değişkenlerle çağırılır `TokenCacheNotificationArgs` .
-- `TokenCacheNotificationArgs`yalnızca `ClientId` uygulamanın ve belirtecin kullanılabildiği kullanıcıya bir başvuru sağlar.
+- `TokenCacheCallback` , serileştirme işlemini işleyebilmeniz için olaylara geçirilmiş bir geri çağırma işlemi. Bunlar, türündeki bağımsız değişkenlerle çağırılır `TokenCacheNotificationArgs` .
+- `TokenCacheNotificationArgs` yalnızca `ClientId` uygulamanın ve belirtecin kullanılabildiği kullanıcıya bir başvuru sağlar.
 
   ![Sınıf diyagramı](media/msal-net-token-cache-serialization/class-diagram.png)
 
@@ -333,5 +333,5 @@ Aşağıdaki örneklerde belirteç önbelleği serileştirmesi gösterilmektedir
 
 | Örnek | Platform | Açıklama|
 | ------ | -------- | ----------- |
-|[Active-Directory-DotNet-Desktop-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Masaüstü (WPF) | Microsoft Graph API 'sini çağıran Windows Masaüstü .NET (WPF) uygulaması. ![Topoloji](media/msal-net-token-cache-serialization/topology.png)|
+|[Active-Directory-DotNet-Desktop-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Masaüstü (WPF) | Microsoft Graph API 'sini çağıran Windows Masaüstü .NET (WPF) uygulaması. ![Diyagramda, bir belirteci etkileşimli bir şekilde alarak ve Microsoft Graph için Azure A 'da masaüstü uygulaması W P F TodoListClient ile bir topoloji gösterilmektedir.](media/msal-net-token-cache-serialization/topology.png)|
 |[Active-Directory-DotNet-v1--v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Masaüstü (konsol) | Azure AD v 1.0 uygulamalarının (ADAL.NET kullanarak) Microsoft Identity platform uygulamalarına (MSAL.NET kullanılarak) geçişini gösteren Visual Studio çözümleri kümesi. Özellikle, bkz. [belirteç önbelleği geçişi](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

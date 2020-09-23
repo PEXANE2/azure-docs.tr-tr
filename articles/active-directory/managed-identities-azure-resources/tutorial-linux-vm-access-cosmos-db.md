@@ -15,17 +15,16 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2006c44d68d9570af0bfa410cc7fe908502d2ba5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7b57fcc26a64ee766d2fd70ebaad36edb133566e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267998"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968810"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB'ye erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
-
 
 Bu öğreticide Azure Cosmos DB'ye erişmek amacıyla bir Linux sanal makinesi (VM) için sistem tarafından atanmış yönetilen bir kimliği nasıl kullanacağınız gösterilmektedir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -37,14 +36,13 @@ Bu öğreticide Azure Cosmos DB'ye erişmek amacıyla bir Linux sanal makinesi (
 > * Erişim belirteci alma ve bunu kullanarak Azure Resource Manager çağrısı yapma
 > * Cosmos DB çağrıları yapmak için Azure Resource Manager'dan erişim anahtarları alma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-Bu öğreticideki CLI betiği örneklerini çalıştırmak için iki seçeneğiniz vardır:
-
-- Azure portaldan veya her kod bloğunun sağ üst köşesinde yer alan **Deneyin** düğmesi aracılığıyla [Azure Cloud Shell](~/articles/cloud-shell/overview.md)'i kullanın.
-- Yerel bir CLI konsolu kullanmayı tercih ediyorsanız [en son CLI 2.0 sürümünü yükleyin](/cli/azure/install-azure-cli) (2.0.23 veya üstü).
+- Örnek betikleri çalıştırmak için iki seçeneğiniz vardır:
+    - Kod bloklarının sağ üst köşesindeki **It TRY** düğmesini kullanarak açabileceğiniz [Azure Cloud Shell](../../cloud-shell/overview.md)kullanın.
+    - [Azure CLI](/cli/azure/install-azure-cli)'nın en son sürümünü yükleyerek betikleri yerel olarak çalıştırın, sonra [az Login](/cli/azure/reference-index#az-login)kullanarak Azure 'da oturum açın. Kaynak oluşturmak istediğiniz Azure aboneliğiyle ilişkili bir hesap kullanın.
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB hesabı oluşturma 
 
@@ -82,8 +80,8 @@ Yanıt, sistem tarafından atanan yönetilen kimliğin ayrıntılarını içerir
     "tenantId": "733a8f0e-ec41-4e69-8ad8-971fc4b533f8",
     "type": "SystemAssigned"
  }
-
 ```
+
 ## <a name="grant-your-linux-vms-system-assigned-identity-access-to-the-cosmos-db-account-access-keys"></a>Linux VM sistem tarafından atanan yönetilen kimliğine Cosmos DB hesabı erişim anahtarları için erişim verme
 
 Cosmos DB Azure AD kimlik doğrulamayı yerel olarak desteklemez. Bununla birlikte, Kaynak Yöneticisi'nden Cosmos DB erişim anahtarını almak için bir yönetilen kimliği kullanabilir ve ardından anahtarı kullanarak Cosmos DB'ye erişebilirsiniz. Bu adımda, sistem tarafından atanan yönetilen kimliğinize Cosmos DB hesabının anahtarları için erişim verirsiniz.
@@ -159,7 +157,7 @@ CURL yanıtı Anahtarların listesini verir.  Örneğin, salt okuma anahtarları
 
 Artık Cosmos DB hesabı için erişim anahtarınız olduğundan, bunu Cosmos DB SDK'sına geçirebilir ve hesaba erişmek için çağrılar yapabilirsiniz.  Hızlı bir örnek olarak, erişim anahtarını Azure CLI'ye geçirebilirsiniz.  Azure portalındaki Cosmos DB hesabı dikey penceresinin **Genel Bakış** sekmesinden `<COSMOS DB CONNECTION URL>` değerini alabilirsiniz.  `<ACCESS KEY>` değerini yukarıda elde ettiğiniz değerle değiştirin:
 
-```azurecli
+```azurecli-interactive
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
 ```
 

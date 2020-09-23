@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge için günlük destek bileti, Azure Data Box Gateway | Microsoft Docs
-description: Azure Stack Edge veya Data Box Gateway emirleriyle ilgili sorunlar için destek isteğini günlüğe kaydetme hakkında bilgi edinin.
+title: Azure Stack Edge Pro için günlük destek bileti, Azure Data Box Gateway | Microsoft Docs
+description: Azure Stack Edge Pro veya Data Box Gateway emirleriniz ile ilgili sorunlar için destek isteğini günlüğe kaydetme hakkında bilgi edinin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 4d513471e288c1aadbf70b24ef367965a0b69a80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9df729277934e074e1e8cc92126e777336708586
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339918"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904520"
 ---
-# <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Azure Stack Edge ve Azure Data Box Gateway için bir destek bileti açın
+# <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Azure Stack Edge Pro ve Azure Data Box Gateway için bir destek bileti açın
 
-Bu makale, Azure Stack Edge/Azure Data Box Gateway hizmeti tarafından yönetilen Azure Stack Edge ve Azure Data Box Gateway için geçerlidir. Hizmetinize ilişkin herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Bu makalede izlenecek yol gösterilmektedir:
+Bu makale, Azure Stack Edge Pro/Azure Data Box Gateway hizmeti tarafından yönetilen Azure Stack Edge Pro ve Azure Data Box Gateway için geçerlidir. Hizmetinize ilişkin herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Bu makalede izlenecek yol gösterilmektedir:
 
 * Destek isteği oluşturma.
 * Portalın içinden destek isteği yaşam döngüsünü yönetme.
@@ -26,13 +26,13 @@ Bu makale, Azure Stack Edge/Azure Data Box Gateway hizmeti tarafından yönetile
 
 Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
-1. Azure Stack Edge veya Data Box Gateway sıralaması 'na gidin. **Destek + sorun giderme** Bölümü ' ne gidin ve **Yeni destek isteği**' ni seçin.
+1. Azure Stack Edge Pro veya Data Box Gateway sıraya gidin. **Destek + sorun giderme** Bölümü ' ne gidin ve **Yeni destek isteği**' ni seçin.
 
 2. **Yeni destek isteğinde**, **temel bilgiler** sekmesinde aşağıdaki adımları uygulayın:
 
     1. **Sorun türü** açılan listesinden **Teknik**' i seçin.
     2. **Aboneliğinizi**seçin.
-    3. **Hizmet**altında **hizmetlerimi**denetleyin. Açılan listeden **Azure Stack Edge ve Data Box Gateway**' i seçin.
+    3. **Hizmet**altında **hizmetlerimi**denetleyin. Açılan listeden **Azure Stack Edge Pro ve Data Box Gateway**öğesini seçin.
     4. Kaynağınızı seçin **.** Bu, siparişinizin adına karşılık gelir.
     5. Yaşadığınız sorunun kısa bir **özetini** sağlar. 
     6. **Sorun türünü**seçin.
@@ -57,7 +57,7 @@ Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
         ![Sorun](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
 
-4. **Gözden geçir + oluştur** sekmesinde destek bileti ile ilgili bilgileri gözden geçirin. **Oluştur**'u seçin. 
+4. **Gözden geçir + oluştur** sekmesinde destek bileti ile ilgili bilgileri gözden geçirin. **Oluştur**’u seçin. 
 
     ![Sorun](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
@@ -98,5 +98,5 @@ Bir destek bileti oluşturduktan sonra portal üzerinden bu biletin yaşam döng
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack Edge ile ilgili sorunları nasıl giderebileceğinizi](azure-stack-edge-troubleshoot.md)öğrenin.
+[Azure Stack Edge Pro ile ilgili sorunları nasıl giderebileceğinizi](azure-stack-edge-troubleshoot.md)öğrenin.
 [Data Box Gateway ilgili sorunları nasıl giderebileceğinizi](data-box-gateway-troubleshoot.md)öğrenin.

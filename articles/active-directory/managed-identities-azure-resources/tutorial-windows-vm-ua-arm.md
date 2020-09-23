@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 030f2b893cd429bfdb451d24e799689fdb8a3cf8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d26c7f544c9754f455b67aadf9e923344cda3fdf
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255724"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968689"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Öğretici: Azure Resource Manager erişmek için Windows VM üzerinde kullanıcı tarafından atanan yönetilen kimlik kullanma
 
@@ -39,28 +39,51 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-- [Azure portalda oturum açın](https://portal.azure.com)
+- [Azure portal oturum açın](https://portal.azure.com)
 
 - [Windows sanal makinesi oluşturma](../../virtual-machines/windows/quick-create-portal.md)
 
 - Bu öğreticideki gerekli kaynak oluşturma ve rol yönetimini adımlarını gerçekleştirmek için hesabınız uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "Sahip" izinlerini gerektiriyor. Rol atamayla ilgili yardıma ihtiyacınız varsa bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimi kullanma](../../role-based-access-control/role-assignments-portal.md).
-- [Azure PowerShell modülünün en son sürümünü yükler](/powershell/azure/install-az-ps). 
-- Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
-- [PowerShellGet'in en son sürümünü](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget) yükleyin.
-- `Install-Module -Name PowerShellGet -AllowPrerelease` komutunu çalıştırarak `PowerShellGet` modülünün yayın öncesi sürümünü alın (`Az.ManagedServiceIdentity` modülünü yüklemek için bu komutu çalıştırdıktan sonra geçerli PowerShell oturumundan `Exit` ile çıkmanız gerekebilir).
-- Bu makaledeki kullanıcı tarafından atanan kimlik işlemlerini gerçekleştirmek için `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` komutunu çalıştırarak `Az.ManagedServiceIdentity` modülünün yayın öncesi sürümünü yükleyin.
 
+- Örnek betikleri çalıştırmak için iki seçeneğiniz vardır:
+    - Kod bloklarının sağ üst köşesindeki **It TRY** düğmesini kullanarak açabileceğiniz [Azure Cloud Shell](../../cloud-shell/overview.md)kullanın.
+    - Komut dosyalarını, sonraki bölümde açıklandığı gibi Azure PowerShell yerel olarak çalıştırın.
+
+### <a name="configure-azure-powershell-locally"></a>Azure PowerShell yerel olarak yapılandırma
+
+Bu makale için Azure PowerShell yerel olarak kullanmak için (Cloud Shell kullanmak yerine), aşağıdaki adımları izleyin:
+
+1. Henüz yapmadıysanız [Azure PowerShell en son sürümünü](/powershell/azure/install-az-ps) yükleyebilirsiniz.
+
+1. Azure 'da oturum açın:
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. [PowerShellGet'in en son sürümünü](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget) yükleyin.
+
+    ```azurepowershell
+    Install-Module -Name PowerShellGet -AllowPrerelease
+    ```
+
+    `Exit`Sonraki adımda bu komutu çalıştırdıktan sonra geçerli PowerShell oturumunun olması gerekebilir.
+
+1. `Az.ManagedServiceIdentity`Bu makalede Kullanıcı tarafından atanan yönetilen kimlik işlemlerini gerçekleştirmek için modülün ön sürümü sürümünü yükler:
+
+    ```azurepowershell
+    Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease
+    ```
 
 ## <a name="enable"></a>Etkinleştir
 
 Kullanıcı tarafından atanan bir kimliğe dayalı bir senaryo için aşağıdaki adımları gerçekleştirmeniz gerekir:
 
 - Kimlik oluşturma
- 
 - Yeni oluşturulan kimliği ata
 
 ### <a name="create-identity"></a>Kimlik oluştur

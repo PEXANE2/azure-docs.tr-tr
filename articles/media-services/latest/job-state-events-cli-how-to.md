@@ -1,6 +1,6 @@
 ---
 title: CLı kullanarak Event Grid Azure Media Services olaylarını izleme | Microsoft Docs
-description: Bu makalede, Azure Media Services olaylarını izlemek için Event Grid nasıl abone olunacağı gösterilmektedir.
+description: Bu makalede, Azure CLı kullanarak Azure Media Services olaylarını izlemek için Event Grid nasıl abone olunacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b840f00f23db1590422bae853fee070c3c43f899
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 072bfb22eba82d7a39d985f72cbc78c0639a4795
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296765"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976827"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Azure CLı kullanarak Event Grid Media Services olaylar oluşturma ve izleme
 
@@ -27,7 +27,7 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu hizmet, olay il
 
 Bu makalede, Azure CLı kullanarak Azure Media Services hesabınıza yönelik olaylara abone olabilirsiniz. Ardından, sonucu görüntülemek için olayları tetiklersiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bu makalede, olayları toplayıp görüntüleyen bir Web uygulamasına gönderirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin bir Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 - CLı 'yi yerel olarak yükleyip kullanın, bu makale için Azure CLı 2,0 veya sonraki bir sürümü gerekir. Kullandığınız sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
@@ -72,7 +72,7 @@ az account set --subscription mySubscriptionId
     amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
     ```
 
-    Örneğin:
+    Örnek:
 
     ```
     amsResourceId=$(az ams account show --name amsaccount --resource-group amsResourceGroup --query id --output tsv)
@@ -87,7 +87,7 @@ az account set --subscription mySubscriptionId
     --endpoint <endpoint_URL>
     ```
 
-    Örneğin:
+    Örnek:
 
     ```
     az eventgrid event-subscription create --source-resource-id $amsResourceId --name amsTestEventSubscription --endpoint https://amstesteventgrid.azurewebsites.net/api/updates/

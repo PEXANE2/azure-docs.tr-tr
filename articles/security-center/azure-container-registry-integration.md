@@ -10,33 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 718f9a29b70dab34269c959ccd62452e56a32d72
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1335b1034304b7efe2b113f7ff2d2927fea41638
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056610"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977356"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>Azure Container Registry resim taramasını Güvenlik Merkezi 'Ne göre
 
 Azure Container Registry (ACR), Azure dağıtımları için kapsayıcı görüntülerinizi merkezi bir kayıt defterinde depolayan ve yöneten, yönetilen ve özel bir Docker kayıt defteri hizmetidir. Bu, açık kaynaklı Docker kayıt defteri 2,0 ' i temel alır.
 
-Azure Güvenlik Merkezi 'nin standart katmanı kullanıyorsanız, kapsayıcı kayıt defterleri paketini ekleyebilirsiniz. Bu isteğe bağlı özellik Azure Resource Manager tabanlı kayıt defterlerinden görüntülerin güvenlik açıklarına daha derin görünürlük getirir. Abonelik düzeyindeki paketi bir abonelikteki tüm kayıt defterlerini kapsayacak şekilde etkinleştirin veya devre dışı bırakın. Bu özellik, [fiyatlandırma sayfasında](security-center-pricing.md)gösterildiği gibi görüntü başına ücretlendirilir. Kapsayıcı kayıt defterleri paketini etkinleştirme, güvenlik merkezi 'nin kayıt defterine gönderilen görüntüleri taramaya hazırlanmasını sağlar. 
-
-## <a name="availability"></a>Kullanılabilirlik
-
-|Görünüş|Ayrıntılar|
-|----|:----|
-|Yayın durumu:|Genel kullanılabilirlik|
-|Fiyat|Standart katmanı|
-|Desteklenen kayıt defterleri ve görüntüler:|![](./media/icons/yes-icon.png)Genel İnternet 'ten erişilebilen Linux ile barındırılan ACR kayıt defterleri ve kabuk erişimi sağlar.<br>![](./media/icons/no-icon.png)Windows tarafından barındırılan BIR ACR kayıt defterleri yoktur.<br>![](./media/icons/no-icon.png)' Özel ' kayıt defterleri yok-Güvenlik Merkezi, kayıt defterlerinden genel İnternet 'ten erişilebilmesini gerektirir. Güvenlik Merkezi şu anda bir güvenlik duvarı, hizmet uç noktası veya Azure özel bağlantı gibi özel uç noktalar ile sınırlı erişimli kayıt defterlerine bağlanamaz veya bunları tarayamaz.<br>![](./media/icons/no-icon.png) [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüleri veya yalnızca bir uygulama ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk veya işletim sistemi olmadan Içeren "distrodaha az" görüntüler.|
-|Gerekli roller ve izinler:|**Güvenlik okuyucu** ve [Azure Container Registry okuyucu rolü](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
-|||
-
-
+Azure Resource Manager tabanlı kayıt defterlerinden görüntülerin güvenlik açıklarına daha derin görünürlük sağlamak için **Azure Defender 'ı kapsayıcı kayıt defterleri için** etkinleştirin. Abonelik düzeyindeki planı, bir abonelikteki tüm kayıt defterlerini kapsayacak şekilde etkinleştirin veya devre dışı bırakın. Bu özellik, [fiyatlandırma sayfasında](security-center-pricing.md)gösterildiği gibi görüntü başına ücretlendirilir. Azure Defender 'ı etkinleştirme, güvenlik merkezi 'nin kayıt defterine gönderilen görüntüleri taramaya hazırlanmasını sağlar. 
 
 
 ## <a name="when-are-images-scanned"></a>Görüntüler ne zaman taranır?
@@ -74,7 +61,7 @@ Yansıma taramaları her gönderim üzerinde tetiklenir.
 Evet. Sonuçlar [alt değerlendirmeler REST API 'si](/rest/api/securitycenter/subassessments/list/)altındadır. Ayrıca, tüm kaynaklarınız için kusto benzeri API olan Azure Kaynak Grafiği 'ni (ARG) kullanabilirsiniz: bir sorgu belirli bir taramayı getirebilir.
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Hangi kayıt defteri türleri taranır? Hangi türler faturalandırılır?
-[Kullanılabilirlik bölümü](#availability) , kapsayıcı kayıt defterleri paketi tarafından desteklenen kapsayıcı kayıt defterlerinin türlerini listeler. 
+Kullanılabilirlik bölümü, kapsayıcı kayıt defterleri için Azure Defender tarafından desteklenen kapsayıcı kayıt defterlerinin türlerini listeler. 
 
 Desteklenmeyen kayıt defterleri Azure aboneliğinize bağlı ise, bunlar taranmaz ve bu kişiler için faturalandırılmaz.
 
@@ -87,4 +74,4 @@ Güvenlik Merkezi 'nin kapsayıcı güvenlik özellikleri hakkında daha fazla b
 
 * [Azure Kubernetes Service ile tümleştirme](azure-kubernetes-service-integration.md)
 
-* [Sanal makine koruması](security-center-virtual-machine-protection.md) -Güvenlik Merkezi 'nin önerilerini açıklar
+

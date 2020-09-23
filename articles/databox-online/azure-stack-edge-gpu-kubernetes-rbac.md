@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge cihazında Kubernetes rol tabanlı Access Control anlayın | Microsoft Docs
-description: Bir Azure Stack Edge cihazında Kubernetes rol tabanlı Access Control nasıl oluştuğunu açıklar.
+title: Azure Stack Edge Pro cihazında Kubernetes rol tabanlı Access Control anlayın | Microsoft Docs
+description: Kubernetes rol tabanlı Access Control Azure Stack Edge Pro cihazında nasıl oluştuğunu açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318973"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899292"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Kubernetes rol tabanlı Access Control Azure Stack Edge GPU cihazınızda
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes rol tabanlı Access Control Azure Stack Edge Pro GPU cihazınıza
 
 
-Azure Stack Edge cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes rol tabanlı erişim denetimi 'ni (RBAC), cihazınızdaki küme kaynaklarıyla erişimi sınırlandırmak için kullanabilirsiniz.
+Azure Stack Edge Pro cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes rol tabanlı erişim denetimi 'ni (RBAC), cihazınızdaki küme kaynaklarıyla erişimi sınırlandırmak için kullanabilirsiniz.
 
-Bu makaleler, Kubernetes tarafından sağlanan RBAC sistemine genel bir bakış sağlar ve Azure Stack Edge cihazınızda Kubernetes RBAC 'in nasıl uygulandığını açıklar. 
+Bu makaleler, Kubernetes tarafından sağlanan RBAC sistemine genel bir bakış sağlar ve Azure Stack Edge Pro cihazınızda Kubernetes RBAC 'in nasıl uygulandığı. 
 
 ## <a name="rbac-for-kubernetes"></a>Kubernetes için RBAC
 
@@ -34,7 +34,7 @@ Pod ve dağıtımlar gibi Kubernetes kaynakları, mantıksal olarak bir ad alan�
 
 Ad alanları, birden çok takıma veya projeye yayılan birçok kullanıcı olan ortamlarda kullanılmak üzere tasarlanmıştır. Daha fazla bilgi için bkz. [Kubernetes ad alanları](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
-Azure Stack Edge cihazınız aşağıdaki ad alanlarına sahiptir:
+Azure Stack Edge Pro cihazınız aşağıdaki ad alanlarına sahiptir:
 
 - **Sistem ad alanı** -bu ad alanı, DNS ve proxy gibi ağ özellikleri veya Kubernetes panosu gibi çekirdek kaynakların bulunduğu yerdir. Genellikle kendi uygulamalarınızı bu ad alanına dağıtmazsınız. Kubernetes küme sorunlarını ayıklamak için bu ad alanını kullanın. 
 
@@ -73,9 +73,9 @@ Kubernetes, bir ad alanı düzeyinde ve bir küme düzeyinde Kullanıcı veya ka
 
 Bu yaklaşım, tek bir Kubernetes kümesini mantıksal olarak ayırt etmenizi sağlar, böylece kullanıcılar yalnızca atanan ad alanındaki uygulama kaynaklarına erişebilir. 
 
-## <a name="rbac-on-azure-stack-edge"></a>Azure Stack Edge üzerinde RBAC
+## <a name="rbac-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro üzerinde RBAC
 
-RBAC 'in geçerli uygulamasında Azure Stack Edge, kısıtlanmış bir PowerShell çalışma alanından aşağıdaki eylemleri almanıza olanak sağlar:
+RBAC 'in geçerli uygulamada Azure Stack Edge Pro, kısıtlanmış bir PowerShell çalışma alanından aşağıdaki eylemleri almanıza olanak sağlar:
 
 - Ad alanları oluşturun.  
 - Ek kullanıcılar oluşturun.
@@ -83,11 +83,11 @@ RBAC 'in geçerli uygulamasında Azure Stack Edge, kısıtlanmış bir PowerShel
 - `kubeconfig`Kubernetes kümesine erişmek için bilgileri içeren dosyayı alın.
 
 
-Azure Stack Edge cihazında birden çok sistem ad alanı vardır ve `kubeconfig` Bu ad alanlarına erişmek için dosyalarla birlikte Kullanıcı ad alanları oluşturabilirsiniz. Kullanıcılar bu ad alanları üzerinde tam denetime sahiptir ve Kullanıcı oluşturabilir veya değiştirebilir veya kullanıcılara erişim izni verebilir. Yalnızca küme yöneticisinin sistem ad alanları ve küme genelinde kaynaklara tam erişimi vardır. `aseuser`, Sistem ad alanlarına salt okuma erişimi vardır.
+Azure Stack Edge Pro cihazında birden çok sistem ad alanı vardır ve `kubeconfig` Bu ad alanlarına erişmek için dosyalarla birlikte Kullanıcı ad alanları oluşturabilirsiniz. Kullanıcılar bu ad alanları üzerinde tam denetime sahiptir ve Kullanıcı oluşturabilir veya değiştirebilir veya kullanıcılara erişim izni verebilir. Yalnızca küme yöneticisinin sistem ad alanları ve küme genelinde kaynaklara tam erişimi vardır. `aseuser`, Sistem ad alanlarına salt okuma erişimi vardır.
 
-İşte Azure Stack Edge cihazında RBAC uygulamasını gösteren bir diyagram.
+İşte Azure Stack Edge Pro cihazında RBAC uygulamasını gösteren bir diyagram.
 
-![Azure Stack Edge cihazında RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
+![Azure Stack Edge Pro cihazında RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
 
 Bu diyagramda, Gamze, Bob ve Chuck yalnızca atanan kullanıcı ad alanlarına erişebilir, bu durumda, `ns1` `ns2` ve `ns3` sırasıyla. Bu ad alanlarında yönetici erişimi vardır. Diğer yandan küme yöneticisinin sistem ad alanları ve küme genelinde kaynaklara yönetici erişimi vardır.
 
@@ -109,10 +109,10 @@ Bu diyagramda, Gamze, Bob ve Chuck yalnızca atanan kullanıcı ad alanlarına e
 
 5. `kubectl`Uygulamaları ' ye yükleyip dağıtmaya başlayın `kubectl` . 
 
-Ayrıntılı adım adım yönergeler için [Azure Stack kenarınızdan kuebctl aracılığıyla Kubernetes kümesine erişim](azure-stack-edge-gpu-create-kubernetes-cluster.md)bölümüne gidin.
+Ayrıntılı adım adım yönergeler için [Azure Stack Edge Pro 'da kuebctl aracılığıyla Kubernetes kümesine erişim](azure-stack-edge-gpu-create-kubernetes-cluster.md)bölümüne gidin.
 
 
-Azure Stack Edge cihazlarınızdaki ad alanları ve kullanıcılarla çalışırken aşağıdaki uyarılar geçerlidir:
+Azure Stack Edge Pro cihazlarınızda ad alanları ve kullanıcılarla çalışırken aşağıdaki uyarılar geçerlidir:
 
 - Sistem ad alanlarından herhangi biri için Kullanıcı oluşturma, Kullanıcı adına ad alanı erişimi verme veya iptal etme gibi işlemleri gerçekleştirmenize izin verilmez. Sistem ad alanları örnekleri şunlardır,,,, `kube-system` `metallb-system` `kubernetes-dashboard` `default` `kube-node-lease` , `kube-public` . Sistem ad alanları, `iotedge` (IoT Edge ad alanı) ve `azure-arc` (Azure Arc ad alanı) gibi dağıtım türleri için ayrılan ad alanlarını da içerir.
 - Kullanıcı ad alanları oluşturabilir ve bu ad alanları içinde ek kullanıcılar oluşturabilir ve bu kullanıcılara ad alanı erişimi verebilir veya iptal edebilirsiniz.

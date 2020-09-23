@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701819"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900046"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure bilişsel hizmetler kapsayıcıları sık sorulan sorular (SSS)
 
@@ -22,11 +22,16 @@ ms.locfileid: "83701819"
 
 **S: kullanılabilir nedir?**
 
-Y **:** Azure bilişsel hizmetler kapsayıcıları, geliştiricilerin Azure 'da kullanılabilen akıllı API 'Leri kullanmasına izin verir, ancak kapsayıcıların [avantajlarından](../cognitive-services-container-support.md#features-and-benefits) yararlanabilir. Bazı kapsayıcılar, bir uygulamanın erişimini gerektirebilecek bir geçişli önizleme olarak kullanılabilir. Diğer kapsayıcılar, geçişli olmayan önizleme olarak genel kullanıma sunulmuştur veya genel kullanıma sunulmuştur. Kapsayıcıların tam listesini ve bunların kullanılabilirliğini Azure bilişsel [Hizmetler makalesinde kapsayıcı desteği](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) ' nde bulabilirsiniz. 
+Y **:** Azure bilişsel hizmetler kapsayıcıları, geliştiricilerin Azure 'da kullanılabilen akıllı API 'Leri kullanmasına izin verir, ancak kapsayıcıların [avantajlarından](../cognitive-services-container-support.md#features-and-benefits) yararlanabilir. Bazı kapsayıcılar, bir uygulamanın erişimini gerektirebilecek bir geçişli önizleme olarak kullanılabilir. Diğer kapsayıcılar, geçişli olmayan önizleme olarak genel kullanıma sunulmuştur veya genel kullanıma sunulmuştur. Kapsayıcıların tam listesini ve bunların kullanılabilirliğini Azure bilişsel [Hizmetler makalesinde kapsayıcı desteği](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) ' nde bulabilirsiniz. Kapsayıcıları [Docker Hub 'ında](https://hub.docker.com/_/microsoft-azure-cognitive-services)da görüntüleyebilirsiniz.
 
 **S: bilişsel hizmetler bulutu ve kapsayıcılar arasında herhangi bir fark var mı?**
 
 Y **:** Bilişsel hizmetler kapsayıcıları bilişsel hizmetler bulutunun bir alternatifidir. Kapsayıcılar, karşılık gelen bulut hizmetleriyle aynı özellikleri sunar. Müşteriler, kapsayıcıları şirket içinde veya Azure 'da dağıtabilir. Temel AI teknolojisi, fiyatlandırma katmanları, API anahtarları ve API imzası, kapsayıcı ve ilgili bulut hizmetleri arasında aynıdır. Burada, bulut hizmeti eşdeğerini üzerinde kapsayıcılar seçmeye yönelik [Özellikler ve avantajlar](../cognitive-services-container-support.md#features-and-benefits) verilmiştir.
+
+**S: Nasıl yaparım? erişim ve geçişli bir önizleme kapsayıcısı kullanıyor musunuz?**
+
+Y **:** Daha önce, geçitli önizleme kapsayıcıları `containerpreview.azurecr.io` depoda barındırılıyor. 22 2020 ' den itibaren bu kapsayıcılar Microsoft Container Registry barındırılır ve indirme, Docker Login komutunu kullanmanızı gerektirmez. Azure kaynağınız onaylanan Azure abonelik KIMLIĞIYLE oluşturulduysa geçişli bir önizleme kapsayıcısını çalıştırabileceksiniz. Azure aboneliğiniz [istek formunu](https://aka.ms/csgate)tamamladıktan sonra onaylanmamışsa kapsayıcıyı çalıştıramazsınız.
+
 
 **S: tüm bilişsel hizmetler için kapsayıcılar kullanılabilir ve Beklendiğimiz bir sonraki kapsayıcı kümesi ne olur?**
 
@@ -77,6 +82,22 @@ OpenShift ile kapsayıcıları test etmedik, ancak bilişsel hizmetler kapsayıc
 
 Y **:** Müşterilerin sorunları herkese açık bir şekilde duymaları ve olası sorunların çakıştığı yerde aynısını yapmış olan diğerlerinin oyunu [oylamalarını](https://cognitive.uservoice.com/) sağlar. Kullanıcı sesli aracı hem ürün geri bildirimi hem de özellik önerileri için kullanılabilir.
 
+**S: bilişsel hizmetler kapsayıcıları tarafından hangi durum iletileri ve hatalar döndürülür?**
+
+Y **:** Durum iletilerinin ve hataların listesi için aşağıdaki tabloya bakın.
+
+|Durum  | Açıklama  |
+|---------|---------|
+| `Valid` | API anahtarınız geçerli, hiçbir eylem gerekmiyor. |
+| `Invalid` |   API anahtarınız geçersiz. Kapsayıcıyı çalıştırmak için geçerli bir API anahtarı sağlamanız gerekir. Azure portal Azure bilişsel hizmetler kaynağınız için **anahtarlar ve uç nokta** bölümünde API anahtarınızı ve hizmet bölgenizi bulun. |
+| `Mismatch` | Farklı bir bilişsel hizmetler kaynağı türü için bir API anahtarı veya uç nokta sağladınız. Azure bilişsel hizmetler kaynağınız için **anahtarlar ve uç nokta** bölümünde API anahtarınızı ve hizmet bölgenizi bulun. |
+| `CouldNotConnect` | Kapsayıcı, faturalama uç noktasına bağlanamadı. Daha `Retry-After` fazla istek yapmadan önce değeri denetleyip bu sürenin bitmesini bekleyin. |
+| `OutOfQuota` | API anahtarı kotayı tükendi. Fiyatlandırma katmanınızı yükseltebilir ya da ek kotanın kullanılabilir hale gelmesini bekleyebilirsiniz. Azure portal Azure bilişsel hizmet kaynağınızın **fiyatlandırma katmanı** bölümünde yer alarak katmanınızı bulun. |
+| `BillingEndpointBusy` | Faturalama uç noktası şu anda meşgul. Daha `Retry-After` fazla istek yapmadan önce değeri denetleyip bu sürenin bitmesini bekleyin. |
+| `ContainerUseUnauthorized` | Verilen API anahtarı bu kapsayıcı ile kullanım için yetkili değil. Muhtemelen kapılı bir kapsayıcı kullanıyorsunuz, bu nedenle [çevrimiçi bir istek](https://aka.ms/csgate)göndererek Azure abonelik kimliğinizin onaylandığından emin olun. |
+| `Unknown` | Sunucu şu anda faturalandırma isteklerini işleyemiyor. |
+
+
 **S: destek için kimler iletişim kuracağım?**
 
 Y **:** Müşteri desteği kanalları bilişsel hizmetler bulut teklifiyle aynıdır. Tüm bilişsel hizmetler kapsayıcıları, bize ve topluluk destek müşterilerine yardımcı olacak günlüğe kaydetme özelliklerini içerir. Ek destek için aşağıdaki seçeneklere bakın.
@@ -104,7 +125,7 @@ Y **:** Müşteriler, bilişsel hizmetler bulutuna benzer şekilde tüketimine g
 
 * [Anomali Algılayıcısı][ad-containers-billing]
 * [Görüntü İşleme][cv-containers-billing]
-* [Yüz][fa-containers-billing]
+* [Yüz Tanıma][fa-containers-billing]
 * [Form Tanıma][fr-containers-billing]
 * [Language Understanding (LUIS)][lu-containers-billing]
 * [Konuşma Hizmeti API’si][sp-containers-billing]
@@ -131,7 +152,7 @@ Y **:** Bilişsel hizmetler kapsayıcıları, x64 Linux Docker kapsayıcıların
 
 * [Anomali Algılayıcısı][ad-containers-recommendations]
 * [Görüntü İşleme][cv-containers-recommendations]
-* [Yüz][fa-containers-recommendations]
+* [Yüz Tanıma][fa-containers-recommendations]
 * [Form Tanıma][fr-containers-recommendations]
 * [Language Understanding (LUIS)][lu-containers-recommendations]
 * [Konuşma Hizmeti API’si][sp-containers-recommendations]

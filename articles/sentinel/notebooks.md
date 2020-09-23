@@ -9,13 +9,13 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 11/25/2019
-ms.openlocfilehash: bf63d5c8cb46fd791508af40dcefd7b39d4ba9de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/06/2020
+ms.openlocfilehash: ded332813a840892f640aa6f6e48debbfe381b4b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652019"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889240"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Güvenlik tehditleri aramak için Jupyıter not defterlerini kullanma
 
@@ -30,106 +30,109 @@ Tümleşik Jupyıter deneyimi, not defterlerini depolamak, paylaşmak ve yürüt
 Not defterlerinin iki bileşeni vardır:
 
 - Sorgu ve kod girip çalıştırdığınız ve yürütme sonuçlarının görüntülendiği tarayıcı tabanlı arabirim.
-- Kodu ayrıştırmaktan ve yürütmeden sorumlu bir *çekirdek* . 
+- Kodu ayrıştırmaktan ve yürütmeden sorumlu bir *çekirdek* .
 
-Azure Notebooks, varsayılan olarak, bu çekirdek Azure *ücretsiz bulut işlem ve depolama*üzerinde çalışır. Not defterleriniz karmaşık makine öğrenimi modelleri veya görselleştirmeler içeriyorsa, [veri bilimi sanal makineleri](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) (dsvm) gibi daha güçlü, ayrılmış işlem kaynakları kullanmayı düşünün. Hesabınızı paylaşmayı seçmediğiniz takdirde, hesabınızdaki Not defterleri özel tutulur.
+Azure Sentinel Not defteri 'nin çekirdeği bir Azure sanal makinesinde (VM) çalışır. Not defterleriniz karmaşık makine öğrenimi modelleri içeriyorsa, daha güçlü sanal makinelerden yararlanmak için çeşitli lisans seçenekleri mevcuttur.
 
 Azure Sentinel Not defterleri, Pandas, Matplotlib, bokeh ve diğerleri gibi birçok popüler Python kitaplıklarını kullanır. Arasından seçim yapabileceğiniz çok sayıda başka Python paketi vardır:
 
 - Görselleştirmeler ve grafikler
 - Veri işleme ve analiz
 - İstatistikler ve sayısal bilgi işlem
-- Machine Learning ve derin öğrenme
+- Makine öğrenmesi ve derin öğrenme
 
 Ayrıca, [msticter](https://github.com/Microsoft/msticpy/)adlı bir pakette bazı açık kaynaklı jupi güvenlik araçları da yayımladık. Bu paket, dahil edilen birçok Not defteri içinde kullanılır. Msticticizme araçları, araştırma ve araştırma için Not defteri oluşturma konusunda yardımcı olmak üzere tasarlanmıştır ve yeni özellikler ve geliştirmeler üzerinde etkin bir şekilde çalışıyoruz.
 
-İlk not defterleri şunları içerir:
-
-- **Kılavuzlu araştırma-Işlem uyarıları**: etkilenen konaktaki veya konaklardaki etkinlikleri çözümleyerek uyarıları hızlı bir şekilde önceliklendirmenize olanak tanır.
-- **Kılavuzlu arama-Windows konak Gezgini**: hesap etkinliğini, işlem yürütmelerini, ağ etkinliğini ve bir konaktaki diğer olayları incelemenize olanak sağlar.
-- **Kılavuzlu arama-Office365-keşfetme**: çok sayıda Office 365 veri kümesinde şüpheli Office 365 etkinliği için Hunt.
-
 [Azure Sentinel Community GitHub deposu](https://github.com/Azure/Azure-Sentinel) , Microsoft tarafından oluşturulan veya topluluk tarafından katkıda bulunulan, gelecek Azure Sentinel Not defterlerinin konumudur.
 
-Not defterlerini kullanmak için bir Azure Notebooks hesabınızın olması gerekir. Daha fazla bilgi için bkz. [hızlı başlangıç: oturum açın ve Azure Notebooks belgelerinden bir kullanıcı kimliği ayarlayın](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks) . Bu hesabı oluşturmak için **Azure Sentinel-Not defterleri**' nde komut çubuğundan **Azure Notebooks için kaydolun** seçeneğini kullanabilirsiniz:
+Not defterlerini kullanmak için, önce bir Azure Machine Learning (ML) çalışma alanı oluşturmanız gerekir.
+
+## <a name="create-an-azure-ml-workspace"></a>Azure ML çalışma alanı oluşturma
+
+1. Azure Portal **Azure Sentinel**  >  **tehdit yönetimi**  >  **Not defterleri** ' ne gidin ve ardından **Not defterini Başlat**' ı seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Azure ML çalışma alanını başlatmak için Not defterini Başlat](./media/notebooks/sentinel-notebooks-launch.png)
+
+1. **AzureML çalışma alanı**altında **Yeni oluştur**' u seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![çalışma alanı oluştur](./media/notebooks/sentinel-notebooks-azureml-create.png)
+
+1. **Machine Learning** sayfasında, aşağıdaki bilgileri sağlayın ve ardından **gözden geçir + oluştur**' u seçin.
+
+    |Alan|Açıklama|
+    |--|--|
+    |Abonelik|Kullanmak istediğiniz Azure aboneliğini seçin.|
+    |Kaynak grubu|Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte, **AzureMLRG**kullanacağız.|
+    |Çalışma alanı adı|Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte, **testworkspace1**kullanacağız. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.|
+    |Region|Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.|
+    |Çalışma alanı sürümü|Bu örnekte, çalışma alanı türü olarak **temel** ' yı seçin. Çalışma alanı türü (temel & kurumsal), erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler.|
+
+    > [!div class="mx-imgBorder"]
+    > ![çalışma alanı ayrıntıları sağla](./media/notebooks/sentinel-notebooks-azureml-basics.png)
+
+1. Bilgileri gözden geçirin, doğru olduğunu doğrulayın ve ardından **Oluştur** ' u seçerek çalışma alanınızın dağıtımını başlatın.
+
+    > [!div class="mx-imgBorder"]
+    > ![çalışma alanı ayrıntılarını gözden geçirme](./media/notebooks/sentinel-notebooks-azureml-review.png)
+
+    **Genel bakış** sayfasında geçerli dağıtım durumu görüntülendiği zaman, çalışma alanınızı bulutta oluşturmak birkaç dakika sürebilir.
+
+    > [!div class="mx-imgBorder"]
+    > ![çalışma alanı dağıtımı](./media/notebooks/sentinel-notebooks-azureml-deploy.png)
+
+Dağıtımınız tamamlandıktan sonra, yeni Azure ML çalışma alanınızda Not defterleri başlatabilirsiniz.
 
 > [!div class="mx-imgBorder"]
->![Azure Notebooks seçeneğe kaydolun](./media/notebooks/sentinel-azure-sign-up-azure-notebooks.png)
+> ![çalışma alanı dağıtımı başarılı oldu](./media/notebooks/sentinel-notebooks-azureml-complete.png)
 
-Azure Sentinel 'ten bir not defteri doğrudan çalıştırabilir veya tüm Azure Sentinel not defterlerini yeni bir Azure Notebooks projesine kopyalayabilirsiniz.
+## <a name="launch-a-notebook-using-your-azure-ml-workspace"></a>Azure ML çalışma alanınızı kullanarak bir not defteri başlatın
 
-## <a name="run-a-notebook-from-azure-sentinel"></a>Azure Sentinel 'den bir not defteri çalıştırma
- 
-1. Azure Portal **Azure Sentinel**  >  **tehdit yönetimi**  >  **Not defterleri**' ne giderek Azure Sentinel 'in sağladığı not defterlerini görebilirsiniz. 
+1. Azure Portal **Azure Sentinel**  >  **tehdit yönetimi**  >  **Not defterleri**' ne giderek Azure Sentinel 'in sağladığı not defterlerini görebilirsiniz.
 
-2. Açıklamalarını, gerekli veri türlerini ve veri kaynaklarını okumak için ayrı ayrı not defterlerini seçin. Örneğin:
-    
+    > [!TIP]
+    > **Kılavuzlar & geri bildirimde bulunan kılavuzlar** ' ı seçerek not defterlerine ek yardım ve yönergeler içeren bir bölme açın.
+    > ![Not defteri kılavuzlarını görüntüle](./media/notebooks/sentinel-azure-notebooks-guides.png)
+
+1. Açıklamalarını, gerekli veri türlerini ve veri kaynaklarını görüntülemek için ayrı ayrı not defterlerini seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Not defteri ayrıntılarını görüntüle](./media/notebooks/sentinel-azure-notebooks-view.png)
+
+1. Kullanmak istediğiniz Not defterini seçin ve ardından not defterini kopyalayıp Azure Sentinel çalışma alanınıza bağlanan yeni bir Azure Notebooks projesine kopyalamak ve yapılandırmak için **Not defterini Başlat** ' ı seçin. İşlem tamamlandığında, çalıştırmak için Not defteri Azure Notebooks içinde açılır.
+
+    > [!div class="mx-imgBorder"]
+    > ![Not defteri seçin](./media/notebooks/sentinel-azure-notebooks-select.png)
+
+1. AzureML çalışma alanı altında, Azure ML çalışma alanınızı seçin ve ardından **Başlat**' ı seçin.
+
     > [!div class="mx-imgBorder"]
     > ![Not defterini Başlat](./media/notebooks/sentinel-azure-notebooks-launch.png)
 
-3. Kullanmak istediğiniz Not defterini seçin ve ardından Not **defteri 'ni (Önizleme)** seçerek not defterini kopyalayın ve Azure Sentinel çalışma alanınıza bağlanan yeni bir Azure Notebooks projesine yapılandırın. İşlem tamamlandığında, çalıştırmak için Not defteri Azure Notebooks içinde açılır.
+1. Bir işlem örneği seçin. İşlem örneğiniz yoksa şunları yapın:
+    1. **Yeni işlem örneği** sihirbazını başlatmak için artı işaretini (+) seçin.
 
-## <a name="clone-azure-sentinel-notebooks-to-a-new-azure-notebooks-project"></a>Azure Sentinel not defterlerini yeni bir Azure Notebooks projesine kopyalayın
+        > [!div class="mx-imgBorder"]
+        > ![işlem örneği Sihirbazını Başlat](./media/notebooks/sentinel-azure-notebooks-compute-wizard.png)
 
-Bu yordam, sizin için Azure Sentinel not defterlerini içeren bir Azure Notebooks projesi oluşturur. Ardından, not defterlerini olduğu gibi çalıştırabilir veya bunlarda değişiklikler yapabilir ve bunları çalıştırabilirsiniz.
+    1. **Yeni işlem örneği** sayfasında, gerekli bilgileri sağlayın ve **Oluştur**' u seçin.
 
-1. Azure Portal **Azure Sentinel**  >  **tehdit yönetimi**  >  **Not defterleri** ' ne gidin ve ardından komut çubuğundan **not defterlerini Kopyala** ' yı seçin:
-  
+        > [!div class="mx-imgBorder"]
+        > ![işlem örneği oluştur](./media/notebooks/sentinel-azure-notebooks-compute-create.png)
+
+1. Not defteri sunucunuz oluşturulduktan sonra, her bir hücrede kod yürütme simgesini seçerek not defterlerinde kodu çalıştırın.
+
     > [!div class="mx-imgBorder"]
-    >![Not defterlerini Kopyala seçeneği](./media/notebooks/sentinel-azure-clone-notebooks.png)
-
-2. Aşağıdaki iletişim kutusu göründüğünde, GitHub deposunu Azure Notebooks projenize kopyalamak için **Içeri aktar** ' ı seçin. Mevcut bir Azure Notebooks hesabınız yoksa bir tane oluşturmanız ve oturum açmanız istenir.
-
-   ![Not Defteri al](./media/notebooks/sentinel-notebooks-clone.png)
-
-3. **GitHub deposunu karşıya yükle** iletişim kutusunda, bu seçenek bağlı GitHub depoları ' na başvurduğundan **özyinelemeli olarak Kopyala** ' yı seçmeyin. Proje adı için, varsayılan adı kullanın veya yeni bir ad yazın. Ardından **Içeri aktar** ' a tıklayarak GitHub içeriğini kopyalamaya başlayın, bu da tamamlanması birkaç dakika sürebilir.
-
-   ![Not Defteri al](./media/notebooks/sentinel-create-project.png)
-
-4. Yeni oluşturduğunuz projeyi açın ve not defterlerini görmek için **Not defterleri** klasörünü açın. Örneğin:
-
-   ![Depoyu içeri aktar](./media/notebooks/sentinel-open-notebook1.png)
-
-Daha sonra Azure Notebooks not defterlerini çalıştırabilirsiniz. Azure Sentinel 'deki bu not defterlerine geri dönmek için **Azure Sentinel-Not defterleri**' nde komut çubuğundan **not defterlerinize git** ' i seçin:
-
-> [!div class="mx-imgBorder"]
->![Not defterleri seçeneğine gidin](./media/notebooks/sentinel-azure-to-go-notebooks.png)
-
-
-## <a name="using-notebooks-to-hunt"></a>Araya için not defterlerini kullanma
-
-Her not defteri, bir Hunt veya araştırma gerçekleştirme adımlarında size yol gösterir. Kitaplıkları ve Not defteri için gereken diğer bağımlılıklar, Not defterinin kendisinden veya basit bir yapılandırma yordamıyla yüklenebilir. Not defteri projenizi Azure Sentinel aboneliğinize geri bağlayan yapılandırma, önceki adımlarda otomatik olarak sağlanır.
-
-1. Zaten Azure Notebooks değilseniz, **Azure Sentinel-Not defterleri**' nde komut çubuğundan **not defterlerinize git** seçeneğini kullanabilirsiniz:
-    
-    > [!div class="mx-imgBorder"]
-    >![Not defterleri seçeneğine gidin](./media/notebooks/sentinel-azure-to-go-notebooks.png)
-    
-    Azure Notebooks, **Projelerim**' nı, ardından Azure Sentinel not defterlerini ve son olarak **Not defterleri** klasörünü içeren projeyi seçin.
-    
-2. Bir not defteri açmadan önce, not defterlerini çalıştırmak için varsayılan olarak ücretsiz Işlem seçilidir:
-    
-   ![Not defteri seçin](./media/notebooks/sentinel-open-notebook2.png)
-    
-    Giriş bölümünde açıklanacak şekilde kullanmak üzere bir veri bilimi sanal makinesi (DSVM) yapılandırdıysanız, ilk not defterini açmadan önce DSVM 'yi seçin ve kimlik doğrulaması yapın. 
-
-3. Açmak için bir not defteri seçin.
-    
-    Bir not defterini ilk açışınızda bir çekirdek sürümü seçmeniz istenebilir. İstenirse **çekirdek**  >   **değişikliği çekirdeğinden**çekirdek sürümünü seçebilir ve en az 3,6 olan bir sürüm seçebilirsiniz. Seçilen çekirdek sürümü, Not defteri penceresinin sağ üst kısmında görüntülenir:
-    
-   ![Not defteri seçin](./media/notebooks/sentinel-select-kernel.png)
-
-4. İndirdiğiniz not defterinde herhangi bir değişiklik yapmadan önce, özgün not defterinin bir kopyasını oluşturmak ve kopyada çalışmak iyi bir fikirdir. Bunu yapmak için **Dosya**  >  **kopyasını oluştur**' u seçin. Kopyaların üzerinde çalışma, verilerinizin üzerine yazmadan, daha sonraki Not defteri sürümlerine güvenle güncelleştirme yapmanızı sağlar.
-    
-    Artık seçili Not defterini çalıştırmaya veya düzenlemeye hazırsınız.
+    > ![Not defterini çalıştır](./media/notebooks/sentinel-azure-notebooks-run.png)
 
 Öneri
 
-- Azure Sentinel 'de verileri sorgulamaya yönelik hızlı bir giriş için ana **Not defterleri** klasöründeki [getstarted](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/345cf9f7c8f6137f5af4593a3f9d7568acd6cbc2/DeprecatedNotebooks/Get%20Started.ipynb) not defterine bakın. 
+- Azure Sentinel 'de verileri sorgulamaya yönelik hızlı bir giriş için [Azure ML not defterlerine Başlarken ve Azure Sentinel](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/A%20Getting%20Started%20Guide%20For%20Azure%20Sentinel%20ML%20Notebooks.ipynb) kılavuzuna bakın.
 
-- **Örnek Not defterleri** alt klasöründe ek örnek Not defterleri bulacaksınız. Bu örnek Not defterleri verilerle birlikte kaydedildiğinden, amaçlanan çıktıyı görmeniz daha kolay olur. Bu not defterlerini [nbviewer](https://nbviewer.jupyter.org/)'da görüntülemeniz önerilir. 
+- [**Örnek Not defterleri**](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/Sample-Notebooks) GitHub alt klasöründe ek örnek Not defterleri bulacaksınız. Bu örnek Not defterleri verilerle birlikte kaydedildiğinden, amaçlanan çıktıyı görmeniz daha kolay olur. Bu not defterlerini [nbviewer](https://nbviewer.jupyter.org/)'da görüntülemeniz önerilir.
 
-- **HOWTOs** klasörü, örnek olarak açıklandığı gibi not defterlerini içerir, örneğin: varsayılan Python sürümünüzü ayarlama, dsvm yapılandırma, bir not defterinden Azure Sentinel yer işaretlerini oluşturma ve diğer konular.
+- [**HOWTOs**](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/HowTos) GitHub alt klasörü, örnek olarak açıklandığı gibi not defterlerini içerir, örneğin: varsayılan Python sürümünüzü ayarlama, dsvm yapılandırma, bir not defterinden Azure Sentinel yer işaretlerini oluşturma ve diğer konular.
 
 Sağlanan Not defterleri, kendi Not defterlerinizin geliştirilmesinde kullanabileceğiniz hem faydalı araçlar, hem de çizimler ve kod örnekleri olarak hazırlanmıştır.
 
