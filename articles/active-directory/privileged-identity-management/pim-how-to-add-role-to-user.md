@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/01/2020
+ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3370ea52c5bd189f929c0f81a0aa9b59cc77b97
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421391"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985175"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri atama
 
@@ -75,6 +75,30 @@ Bir kullanıcıyı Azure AD yöneticisi rolüne uygun hale getirmek için bu ad�
 
     ![Yeni atama-bildirim](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
+## <a name="assign-a-role-with-restricted-scope"></a>Kısıtlanmış kapsama sahip bir rol atama
+
+Belirli roller için, verilen izinlerin kapsamı, tek bir yönetici birimi, hizmet sorumlusu veya uygulamayla kısıtlanabilir. Bu yordam bir yönetim birimi kapsamına sahip bir rol atarken bir örnektir. Yönetim birimi aracılığıyla kapsamı destekleyen rollerin listesi için bkz. [bir yönetim birimine kapsamlı roller atama](../users-groups-roles/roles-admin-units-assign-roles.md). Bu özellik şu anda Azure AD kuruluşları için kullanıma alınıyor.
+
+1. [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) ayrıcalıklı rol yöneticisi izinleriyle oturum açın.
+
+1. **Azure Active Directory**  >  **Roller ve yöneticiler '** i seçin.
+
+1. **Kullanıcı Yöneticisi**' ni seçin.
+
+    ![Portalda bir rol açtığınızda atama Ekle komutu kullanılabilir](./media/pim-how-to-add-role-to-user/add-assignment.png)
+
+1. **Atama Ekle**' yi seçin.
+
+    ![Bir rol kapsamı destekliyorsa, bir kapsam seçebilirsiniz](./media/pim-how-to-add-role-to-user/add-scope.png)
+
+1. **Atama Ekle** sayfasında şunları yapabilirsiniz:
+
+   - Role atanacak bir kullanıcı veya grup seçin
+   - Rol kapsamını seçin (Bu durumda yönetim birimleri)
+   - Kapsam için bir yönetim birimi seçin
+
+Yönetim birimleri oluşturma hakkında daha fazla bilgi için bkz. [yönetim birimleri ekleme ve kaldırma](../users-groups-roles/roles-admin-units-manage.md).
+
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Var olan bir rol atamasını güncelleştirme veya kaldırma
 
 Varolan bir rol atamasını güncelleştirmek veya kaldırmak için bu adımları izleyin.
@@ -101,7 +125,7 @@ Bir kullanıcıyı Azure AD yöneticisi rolüne uygun hale getirmek için bu ad�
 
 1. **Rolleri** veya **üyeleri**seçin.
 
-    ![Azure AD rolleri](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![Azure AD rollerini açma](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. **Yönetilen üyeleri Ekle**' yi açmak Için **üye Ekle** ' yi seçin.
 
@@ -111,7 +135,7 @@ Bir kullanıcıyı Azure AD yöneticisi rolüne uygun hale getirmek için bu ad�
 
 1. **Üyeleri Seç**' i seçin, role atamak istediğiniz kullanıcıları seçin ve ardından **Seç**' i seçin.
 
-    ![Rol seçin](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![Atanacak bir kullanıcı veya grup seçin](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. **Yönetilen Üyeler Ekle**' de, kullanıcıyı role eklemek için **Tamam** ' ı seçin.
 
@@ -169,7 +193,7 @@ Belirli bir kullanıcıyı Azure AD yönetici rolünden kaldırmak için aşağ�
 
 1. Onaylamanızı isteyen iletide **Evet**' i seçin.
 
-    ![Rol kaldırma](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+    ![Kaldırmayı Onayla](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     Rol ataması kaldırılır.
 

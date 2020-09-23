@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell aracılığıyla Azure Stack Edge GPU cihazınızda VM 'Leri dağıtma
-description: Azure PowerShell kullanarak bir Azure Stack Edge GPU cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
+title: Azure PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
+description: Azure PowerShell kullanarak bir Azure Stack Edge Pro GPU cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: aa35111a2fa26b3e4fd5e80a8227b7c244f30e9f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: aa492acdedc2d131d28c894031de2181e87a2f3e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461723"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890700"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge GPU cihazınızda VM 'Leri dağıtma
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
 
 <!--[!INCLUDE [azure-stack-edge-gateway-deploy-vm-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]-->
 
-Bu öğretici, Azure PowerShell kullanarak Azure Stack Edge cihazınızda bir sanal makinenin nasıl oluşturulduğunu ve yönetileceğini açıklar.
+Bu öğreticide, Azure PowerShell kullanarak Azure Stack Edge Pro cihazınızda bir sanal makinenin nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
 
 ## <a name="vm-deployment-workflow"></a>VM dağıtımı iş akışı
 
@@ -27,7 +27,7 @@ Dağıtım iş akışı aşağıdaki diyagramda gösterilmiştir.
 
 ![VM dağıtımı iş akışı](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-vm-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
@@ -128,7 +128,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Yalnızca yerel olarak yedekli depolama (Standard_LRS veya Premium_LRS) gibi yerel depolama hesapları Azure Resource Manager aracılığıyla oluşturulabilir. Katmanlı depolama hesapları oluşturmak için, [Azure Stack kenarlarınızdaki depolama hesaplarına bağlanma, ekleme](azure-stack-edge-j-series-deploy-add-storage-accounts.md)bölümündeki adımlara bakın.
+> Yalnızca yerel olarak yedekli depolama (Standard_LRS veya Premium_LRS) gibi yerel depolama hesapları Azure Resource Manager aracılığıyla oluşturulabilir. Katmanlı depolama hesapları oluşturmak için, [Azure Stack Edge Pro 'unuzdaki depolama hesaplarına bağlanma,](azure-stack-edge-j-series-deploy-add-storage-accounts.md)bkz. ekleme adımları.
 
 Örnek çıktı aşağıda gösterilmiştir.
 
@@ -193,7 +193,7 @@ Blob URI 'sini, [uç nokta adı çözümlemesi için konak dosyası değiştirme
 
 Önceki adımlarda oluşturduğunuz yerel depolama hesabındaki sayfa Bloblarında kullanılacak tüm disk görüntülerini kopyalayın. Daha önceki adımlarda oluşturduğunuz depolama hesabına VHD 'yi yüklemek için [AzCopy](../storage/common/storage-use-azcopy-v10.md) gibi bir araç kullanabilirsiniz. 
 
-AzCopy kullanmadan önce, AzCopy 'ın Azure Stack Edge cihazlarınız ile kullandığınız BLOB depolama REST API sürümü ile kullanılmak üzere [doğru yapılandırıldığından](#configure-azcopy) emin olun.
+AzCopy kullanmadan önce, AzCopy 'ın Azure Stack Edge Pro cihazınıza kullandığınız BLOB depolama REST API sürümü ile kullanılmak üzere [doğru yapılandırıldığından](#configure-azcopy) emin olun.
 
 ```powershell
 AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
@@ -445,11 +445,11 @@ The public IP in this case will be the same as the private IP that you passed du
 
 ## <a name="manage-vm"></a>VM 'yi yönetme
 
-Aşağıdaki bölümde, Azure Stack Edge cihazınızda oluşturacağınız sanal makine çevresindeki bazı yaygın işlemler açıklanmaktadır.
+Aşağıdaki bölümde, Azure Stack Edge Pro cihazınızda oluşturacağınız sanal makine etrafındaki yaygın işlemlerden bazıları açıklanmaktadır.
 
 ### <a name="list-vms-running-on-the-device"></a>Cihazda çalışan VM 'Leri listeleyin
 
-Azure Stack Edge cihazınızda çalışan tüm VM 'lerin bir listesini döndürmek için aşağıdaki komutu çalıştırın.
+Azure Stack Edge Pro cihazınızda çalışan tüm VM 'lerin bir listesini döndürmek için aşağıdaki komutu çalıştırın.
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -502,7 +502,7 @@ Bu cmdlet hakkında daha fazla bilgi için [Remove-AzureRmVm cmdlet 'ine](https:
 
 VM boyutu, sanal makine için kullanılabilir hale getirilen CPU, GPU ve bellek gibi işlem kaynaklarının miktarını belirler. Sanal makinelerin iş yükü için uygun bir VM boyutu kullanılarak oluşturulması gerekir. Tüm makineler aynı donanımda çalışmaya rağmen, makine boyutları disk erişimi için farklı sınırlara sahiptir ve bu, VM 'leriniz genelinde genel disk erişimini yönetmenize yardımcı olabilir. İş yükü artarsa, mevcut sanal makine de yeniden boyutlandırılabilir.
 
-Azure Stack Edge cihazında oluşturma için aşağıdaki standart Dv2 serisi VM 'Ler desteklenir.
+Azure Stack Edge Pro cihazında oluşturma için aşağıdaki standart Dv2 serisi VM 'Ler desteklenir.
 
 ### <a name="dv2-series"></a>Dv2 Serisi
 |Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama (GiB)  | En yüksek işletim sistemi disk aktarım hızı (ıOPS) | En yüksek geçici depolama aktarım hızı (ıOPS) | Maksimum veri diski/aktarım hızı (ıOPS) | En fazla NIC |
@@ -547,9 +547,9 @@ Uzantı, ölçek kümeleri, kullanılabilirlik kümeleri, anlık görüntüler d
 
 ## <a name="configure-azcopy"></a>AzCopy yapılandırma
 
-AzCopy 'in en son sürümünü yüklediğinizde, AzCopy ' ı, Azure Stack Edge cihazınızın BLOB depolama REST API sürümü ile eşleştiğinden emin olmak için yapılandırmanız gerekir.
+AzCopy 'in en son sürümünü yüklediğinizde, AzCopy ' ı, Azure Stack Edge Pro cihazınızın BLOB depolama REST API sürümü ile eşleştiğinden emin olmak için yapılandırmanız gerekir.
 
-Azure Stack Edge cihazınıza erişmek için kullanılan istemcide, BLOB depolama REST API sürümüyle eşleşecek şekilde bir genel değişken ayarlayın.
+Azure Stack Edge Pro cihazınıza erişmek için kullanılan istemcide, BLOB depolama REST API sürümüyle eşleşecek şekilde bir genel değişken ayarlayın.
 
 ### <a name="on-windows-client"></a>Windows istemcisinde 
 

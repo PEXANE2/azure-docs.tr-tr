@@ -1,5 +1,5 @@
 ---
-title: Kapsayıcı desteği
+title: Azure bilişsel hizmetler kapsayıcıları
 titleSuffix: Azure Cognitive Services
 description: Docker Kapsayıcıları 'nin bilişsel Hizmetleri verilerinize daha yakın bir şekilde nasıl alabileceğinizi öğrenin.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 9/01/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 141b82467f2b437cfd4a8125d86618b85e48a6ef
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: bda6fae31e3f5ef63d2c917937d80b2c1ea4fc48
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89424659"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906980"
 ---
-# <a name="container-support-in-azure-cognitive-services"></a>Azure bilişsel hizmetler 'de kapsayıcı desteği
+# <a name="azure-cognitive-services-containers"></a>Azure bilişsel hizmetler kapsayıcıları
 
 > [!WARNING]
 > 11 Haziran 2020’de Microsoft, insan haklarına dayalı etkili düzenlemeler yapılmadığı sürece ABD’deki polis departmanlarına yüz tanıma teknolojisi satmayacağını duyurmuştur. Bu nedenle, müşteriler yüz tanıma özelliklerini ya da yüz veya Video Indexer gibi Azure hizmetlerinde yer alan işlevselliği veya bir müşteri varsa ya da için Birleşik Devletler bir polis departmanı olan bu hizmetlerin kullanılmasına izin vermeyi kullanamaz.
@@ -52,22 +52,23 @@ Bilişsel hizmetler kaynakları [Microsoft Azure](https://azure.microsoft.com)ku
 
 Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler 'deki hizmetlerden bir işlev alt kümesini içeren aşağıdaki Docker Kapsayıcıları kümesini sağlar:
 
-| Hizmet | Desteklenen Fiyatlandırma Katmanı | Kapsayıcı | Description |
+| Hizmet | Desteklenen Fiyatlandırma Katmanı | Kapsayıcı | Açıklama |
 |--|--|--|--|
-| [Anomali algılayıcısı][ad-containers] | F0, S0 | **Anomali-algılayıcı** | Anomali algılayıcı API 'SI, makine öğrenimi ile zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar.<br>[Erişim izni isteme][request-access] |
+| [Anomali algılayıcısı][ad-containers] | F0, S0 | **Anomali-algılayıcı** ([görüntü](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Anomali algılayıcı API 'SI, makine öğrenimi ile zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar.<br>[Erişim izni isteme][request-access] |
 | [Görüntü İşleme][cv-containers] | F0, S1 | **Okuyamaz** | Farklı yüzeylerden (örneğin, alındılar, posterleri ve iş kartları), çeşitli nesnelerin görüntülerinden yazdırılan metni ayıklar. Okuma kapsayıcısı resimlerde *el yazısı metinleri* de ALGıLAR ve PDF/TIFF/çok sayfalı destek sağlar.<br/><br/>**Önemli:** Okuma kapsayıcısı Şu anda yalnızca Ingilizce ile çalışmaktadır. |
 | [Yüz Tanıma][fa-containers] | F0, S0 | **Yüz Tanıma** | Görüntülerde insan yüzlerini algılar ve yüzleri (Nosi ve gözler gibi), cinsiyet, yaş ve diğer makine tarafından öngörülen yüz özellikleri dahil olmak üzere öznitelikleri tanımlar. Algılamanın yanı sıra, benzer bir veya aynı yüzün zaten mevcut olup olmadığını görmek için aynı görüntüde veya farklı görüntülerde iki yüzün aynı olup olmadığını denetleyebilir veya bir veritabanı ile yüzleri karşılaştırın. Ayrıca, paylaşılan görsel nitelikleri kullanarak benzer yüzeyleri gruplar halinde düzenleyebilir.<br>[Erişim izni isteme][request-access] |
 | [Form tanıyıcı][fr-containers] | F0, S0 | **Form Tanıma** | Form, formlardan anahtar-değer çiftlerini ve tabloları tanımlamak ve ayıklamak için makine öğrenimi teknolojisini uygular.<br>[Erişim izni isteme][request-access] |
 | [LUIS][lu-containers] | F0, S0 | **Lusıs** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Bir Docker kapsayıcısı olarak da bilinen eğitilen veya yayınlanan Language Understanding modelini bir Docker kapsayıcısına yükler ve kapsayıcının API uç noktalarından sorgu tahminlerine erişim sağlar. Kapsayıcıda sorgu günlüklerini toplayabilir ve uygulamanın tahmin doğruluğunu artırmak için bunları [Luo portalına](https://www.luis.ai) geri yükleyebilirsiniz. |
-| [Konuşma Hizmeti API’si][sp-containers-stt] | F0, S0 | **Konuşmayı metne dönüştürme** | Sürekli, gerçek zamanlı konuşmaları metne dönüştürür. |
-| [Konuşma Hizmeti API’si][sp-containers-cstt] | F0, S0 | **Özel Konuşma Tanıma metin** | Özel bir model kullanarak sürekli gerçek zamanlı konuşmayı metne dönüştürme. |
-| [Konuşma Hizmeti API’si][sp-containers-tts] | F0, S0 | **Metin okuma** | Metni, doğal sesli konuşmaya dönüştürür. |
-| [Konuşma Hizmeti API’si][sp-containers-ctts] | F0, S0 | **Özel metin okuma** | Özel bir model kullanarak metni doğal-sounkonuşmaya dönüştürür. |
-| [Konuşma Hizmeti API’si][sp-containers-ntts] | F0, S0 | **Sinir metin okuma** | Derin sinir ağ teknolojisini kullanarak metni doğal-sounding konuşmaya dönüştürür. Bu, doğal olarak birleştirilmiş konuşmaya olanak sağlar. |
+| [Konuşma Hizmeti API’si][sp-containers-stt] | F0, S0 | **Konuşmayı metne** dönüştürme ([görüntü](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Sürekli, gerçek zamanlı konuşmaları metne dönüştürür. |
+| [Konuşma Hizmeti API’si][sp-containers-cstt] | F0, S0 | **Özel konuşma tanıma metin** ([görüntü](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | Özel bir model kullanarak sürekli gerçek zamanlı konuşmayı metne dönüştürme. |
+| [Konuşma Hizmeti API’si][sp-containers-tts] | F0, S0 | **Metinden konuşmaya** ([görüntü](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | Metni, doğal sesli konuşmaya dönüştürür. |
+| [Konuşma Hizmeti API’si][sp-containers-ctts] | F0, S0 | **Özel metin okuma** ([görüntü](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | Özel bir model kullanarak metni doğal-sounkonuşmaya dönüştürür. |
+| [Konuşma Hizmeti API’si][sp-containers-ntts] | F0, S0 | **Sinir metin okuma** ([görüntü](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) | Derin sinir ağ teknolojisini kullanarak metni doğal-sounding konuşmaya dönüştürür. Bu, doğal olarak birleştirilmiş konuşmaya olanak sağlar. |
 | [Metin Analizi][ta-containers-keyphrase] | F0, S | **Anahtar ifade ayıklama** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Ana noktaları belirlemek için anahtar tümceleri ayıklar. Örneğin, "The food was delicious and there were wonderful staff" (Yemekler lezzetliydi ve personel harikaydı) giriş metni olduğunda API, "food" (yemek) ve "wonderful staff" (personel harikaydı) ana konuşma noktalarını döndürür. |
 | [Metin Analizi][ta-containers-language] | F0, S | **Dil algılama** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | 120 dilde dile kadar, giriş metninin hangi dilde yazıldığını algılar ve istekte gönderilen her belge için tek bir dil kodu bildirir. Dil kodu, puanın ağırlığını belirten bir puanla eşleştirilir. |
 | [Metin Analizi][ta-containers-sentiment] | F0, S | **Yaklaşım Analizi v3** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Olumlu veya negatif yaklaşım hakkında ipuçları için ham metni analiz eder. Bu yaklaşım analizinin bu sürümü, her belge ve tümce için yaklaşım etiketlerini (örneğin *pozitif* veya *negatif*) döndürür. |
 | [Metin Analizi][ta-containers-health] | F0, S | **Sistem durumu için Metin Analizi** | Yapılandırılmamış klinik metinden tıp bilgilerini ayıklayın. |
+| [Uzamsal analiz][spa-containers] | S0 | **Uzamsal analiz** | Yapılandırılmamış klinik metinden tıp bilgilerini ayıklayın. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -86,7 +87,7 @@ Azure bilişsel hizmetler kapsayıcıları Azure aboneliğiniz aracılığıyla 
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure bilişsel hizmetler kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
 
@@ -127,6 +128,7 @@ Azure bilişsel hizmetler 'de kapsayıcılar tarafından sunulan işlevleri yük
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
+[spa-containers]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container
 [sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts

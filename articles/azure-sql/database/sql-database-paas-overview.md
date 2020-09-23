@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
-ms.date: 04/08/2019
-ms.openlocfilehash: 9ee4070562e44d4f560230fa2fd069eb1fd57932
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.reviewer: ''
+ms.date: 09/21/2020
+ms.openlocfilehash: 38f52178ec9c736f3ee51839678401753365d48d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612088"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907047"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL Veritabanı nedir?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -165,11 +165,8 @@ SQL Veritabanı, uygulamanızın çeşitli güvenlik ve uyumluluk gereksinimleri
 
 ### <a name="advance-threat-protection"></a>Tehdit korumasını ilerlet
 
-Gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. Hassas verileri bulma ve sınıflandırma, veritabanınızın güvenlik açıklarını yönetme ve veritabanınıza yönelik bir tehdit oluşturabilecek anormal etkinlikleri algılama işlevlerini içerir. Bu özellikleri etkinleştirmek ve yönetmek için tek bir konum sağlar.
+SQL için Azure Defender, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. Veritabanı güvenlik açıklarını yönetme işlevlerini ve veritabanınıza yönelik bir tehdidi gösterebilen anormal etkinlikleri algılamamızı içerir. Bu özellikleri etkinleştirmek ve yönetmek için tek bir konum sağlar.
 
-- [Veri bulma ve sınıflandırma](data-discovery-and-classification-overview.md):
-
-  Bu özellik, veritabanlarınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve korumak için Azure SQL veritabanı 'nda yerleşik olarak bulunan yetenekler sağlar. Veritabanı sınıflandırma durumlarınızın görünürlüğünü sağlar ve veritabanı içindeki hassas verilere erişimi izler ve sınırlarının ötesine dönüştürür.
 - [Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md):
 
   Bu hizmet, olası veritabanı güvenlik açıklarını düzeltmenizi, izleyebilir ve yardımcı olabilir. Güvenlik durumunuz hakkında görünürlük sağlamasının yanı sıra güvenlik sorunlarınızı çözmek ve veritabanı güçlendirmelerinizi geliştirmek için eyleme dönüştürülebilir adımlar sunar.
@@ -185,6 +182,10 @@ Gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Bi
 
 SQL Veritabanı, şifreleme özelliği sayesinde verilerinizin güvenliğinin sağlanmasına yardımcı olur. Hareket halindeki veriler için [Aktarım Katmanı Güvenliği](https://support.microsoft.com/kb/3135244)kullanır. Bekleyen veriler için [Saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)kullanır. Kullanılan veriler için [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)kullanır.
 
+### <a name="data-discovery-and-classification"></a>Veri bulma ve sınıflandırma
+
+[Veri bulma ve sınıflandırma](data-discovery-and-classification-overview.md) , veritabanlarınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve korumak IÇIN Azure SQL veritabanı 'nda yerleşik olarak bulunan yetenekler sağlar. Veritabanı sınıflandırma durumlarınızın görünürlüğünü sağlar ve veritabanı içindeki hassas verilere erişimi izler ve sınırlarının ötesine dönüştürür.
+
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory tümleştirmesi ve çok faktörlü kimlik doğrulaması
 
 SQL Veritabanı, [Azure Active Directory tümleştirmesi](authentication-aad-overview.md) ile veritabanı kullanıcısı ve diğer Microsoft hizmetleri kimliklerini bir merkezden yönetmenizi sağlar. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory, çoklu bir oturum açma işlemini desteklerken, veri ve uygulama güvenliğini artırmak için [Multi-Factor Authentication](authentication-mfa-ssms-overview.md) 'ı destekler.
@@ -196,7 +197,7 @@ SQL Veritabanı uygulama oluşturma ve uygulamaların bakımını yapma işlemle
 |Araç|Açıklama|
 |:---|:---|
 |[Azure portal](https://portal.azure.com/)|Tüm Azure hizmetlerini yönetmek için Web tabanlı bir uygulama.|
-|[Azure Data Studio](/sql/azure-data-studio/)|Windows, MacOS ve Linux üzerinde çalışan platformlar arası bir veritabanı aracı.|
+|[Azure Data Studio](/sql/azure-data-studio/)|Windows, macOS ve Linux üzerinde çalışan platformlar arası bir veritabanı aracı.|
 |[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|SQL Server SQL veritabanı 'na kadar herhangi bir SQL altyapısını yönetmeye yönelik ücretsiz, indirilebilir bir istemci uygulaması.|
 |[Visual Studio 'da SQL Server Veri Araçları](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|SQL Server ilişkisel veritabanları, Azure SQL veritabanı 'ndaki veritabanları, Tümleştirme Hizmetleri paketleri, Analysis Services veri modelleri ve Raporlama Hizmetleri raporları geliştirmeye yönelik ücretsiz, indirilebilir bir istemci uygulaması.|
 |[Visual Studio Code](https://code.visualstudio.com/docs)|Windows, macOS ve Linux için ücretsiz, indirilebilir, açık kaynaklı bir kod Düzenleyicisi. Microsoft SQL Server, Azure SQL veritabanı ve Azure Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler.|

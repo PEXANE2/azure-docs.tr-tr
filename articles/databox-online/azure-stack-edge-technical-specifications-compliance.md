@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge teknik özellikleri ve uyumluluğu | Microsoft Docs
-description: Azure Stack Edge için teknik belirtimler ve uyumluluk hakkında bilgi edinin
+title: Microsoft Azure Stack Edge Pro Teknik özellikleri ve uyumluluğu | Microsoft Docs
+description: Azure Stack Edge Pro 'nun teknik belirtimleri ve uyumluluğu hakkında bilgi edinin
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652045"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883440"
 ---
-# <a name="azure-stack-edge-technical-specifications"></a>Azure Stack Edge teknik özellikleri
+# <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro Teknik özellikleri
 
-Microsoft Azure Stack Edge cihazınızın donanım bileşenleri, bu makalede açıklanan teknik belirtimlere ve mevzuata standartlarına bağlı kalmaktadır. Teknik belirtimler, güç kaynağı birimlerini (PSUs), depolama kapasitesini, kasaları ve çevresel standartları anlatmaktadır.
+Microsoft Azure Stack Edge Pro cihazınızın donanım bileşenleri, bu makalede açıklanan teknik belirtimlere ve mevzuata standartlarına bağlı kalmaktadır. Teknik belirtimler, güç kaynağı birimlerini (PSUs), depolama kapasitesini, kasaları ve çevresel standartları anlatmaktadır.
 
 ## <a name="compute-memory-specifications"></a>İşlem, bellek belirtimleri
 
-Azure Stack Edge cihazının işlem ve bellek için aşağıdaki belirtimleri vardır:
+Azure Stack Edge Pro cihazı, işlem ve bellek için aşağıdaki belirtimlere sahiptir:
 
 | Belirtim           | Değer                  |
 |-------------------------|----------------------------|
@@ -30,7 +30,7 @@ Azure Stack Edge cihazının işlem ve bellek için aşağıdaki belirtimleri va
 
 ## <a name="fpga-specifications"></a>FPGA belirtimleri
 
-Bir alan programlanabilir kapı dizisi (FPGA), Machine Learning (ML) senaryolarına izin veren her Azure Stack Edge cihazına dahildir.
+Bir alan programlanabilir kapı dizisi (FPGA), Machine Learning (ML) senaryolarına izin veren her Azure Stack Edge Pro cihazına dahildir.
 
 | Belirtim           | Değer                  |
 |-------------------------|----------------------------|
@@ -38,27 +38,27 @@ Bir alan programlanabilir kapı dizisi (FPGA), Machine Learning (ML) senaryolar�
 
 ## <a name="power-supply-unit-specifications"></a>Güç kaynağı birimi belirtimleri
 
-Azure Stack Edge cihazında, yüksek performanslı fanlarla iki 100-240 V güç kaynağı (PSUs) vardır. İki PSUs, yedekli bir güç yapılandırması sağlar. Bir PSU başarısız olursa, başarısız modül değiştirilinceye kadar cihaz normal olarak diğer PSU üzerinde çalışmaya devam eder. Aşağıdaki tabloda, PSUs teknik özellikleri listelenmektedir.
+Azure Stack Edge Pro cihazının yüksek performanslı fanlarla iki 100-240 V güç kaynağı (PSUs) vardır. İki PSUs, yedekli bir güç yapılandırması sağlar. Bir PSU başarısız olursa, başarısız modül değiştirilinceye kadar cihaz normal olarak diğer PSU üzerinde çalışmaya devam eder. Aşağıdaki tabloda, PSUs teknik özellikleri listelenmektedir.
 
 | Belirtim           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maksimum çıkış gücü    | 750 W                     |
-| Sıklık               | 50/60 Hz                   |
+| Frequency               | 50/60 Hz                   |
 | Voltaj aralığı seçimi | Otomatik olarak değişen: 100-240 V AC |
-| Etkin takılabilir           | Evet                        |
+| Etkin takılabilir           | Yes                        |
 
-### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Bölgeye göre Azure Stack Edge güç kablosu belirtimleri
+### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Bölgeye göre Edge Pro güç kablosu belirtimlerini Azure Stack
 
-Azure Stack Edge cihazınız, Azure bölgenize göre değişiklik gösteren bir güç kablosu gerektirir.
-Desteklenen tüm güç özelliklerinin teknik belirtimleri için, [bölgeye göre Azure Stack Edge güç kablosu belirtimlerini](azure-stack-edge-technical-specifications-power-cords-regional.md)inceleyin.
+Azure Stack Edge Pro cihazınız, Azure bölgenize göre değişiklik gösteren bir güç kablosu gerektirir.
+Desteklenen tüm güç özelliklerinin teknik belirtimleri için, [bölgeye göre Azure Stack Edge Pro güç kablosu belirtimlerini](azure-stack-edge-technical-specifications-power-cords-regional.md)inceleyin.
 
 <!--## Power consumption statistics
 
-The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge device.-->
+The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge Pro device.-->
 
 ## <a name="network-interface-specifications"></a>Ağ arabirimi belirtimleri
 
-Azure Stack Edge cihazınız 6 ağ arabirimine sahiptir, PORT1-PORT6.
+Azure Stack Edge Pro cihazınız 6 ağ arabirimine sahiptir, PORT1-PORT6.
 
 | Belirtim           | Açıklama                 |
 |-------------------------|----------------------------|
@@ -66,7 +66,7 @@ Azure Stack Edge cihazınız 6 ağ arabirimine sahiptir, PORT1-PORT6.
 
 ## <a name="storage-specifications"></a>Depolama belirtimleri
 
-Azure Stack Edge cihazlarında 9 X 2,5 "NVMe SSDs, her biri 1,6 TB kapasiteye sahiptir. Bu SSD 'Ler, 1 bir işletim sistemi diski ve diğer 8 ise veri disklerdir. Cihaz için kullanılabilen toplam kapasite kabaca 12,5 TB 'tır. Aşağıdaki tabloda, cihazın depolama kapasitesinin ayrıntıları verilmiştir.
+Azure Stack Edge Pro cihazlarında 9 X 2,5 "NVMe SSDs, her biri 1,6 TB kapasiteye sahiptir. Bu SSD 'Ler, 1 bir işletim sistemi diski ve diğer 8 ise veri disklerdir. Cihaz için kullanılabilen toplam kapasite kabaca 12,5 TB 'tır. Aşağıdaki tabloda, cihazın depolama kapasitesinin ayrıntıları verilmiştir.
 
 |     Belirtim                          |     Değer             |
 |--------------------------------------------|-----------------------|
@@ -88,7 +88,7 @@ Aşağıdaki tabloda, milimetre ve inç 'teki kutunun boyutları listelenmiştir
 |     Kutu     |     Milimetre     |     Cm     |
 |-------------------|---------------------|----------------|
 |    Height         |    44,45            |    1,75 "          |
-|    Genişlik          |    434,1           |    17,09 "          |
+|    Width          |    434,1           |    17,09 "          |
 |    Uzunluk          |    740,4           |    29,15 "          |
 
 Aşağıdaki tabloda, nakliye paketinin boyutları milimetre ve inç olarak listelenmektedir.
@@ -96,7 +96,7 @@ Aşağıdaki tabloda, nakliye paketinin boyutları milimetre ve inç olarak list
 |     Paket     |     Milimetre     |     Cm     |
 |-------------------|---------------------|----------------|
 |    Height         |    311,2            |    12,25 "          |
-|    Genişlik          |    642,8          |    25,31 "          |
+|    Width          |    642,8          |    25,31 "          |
 |    Uzunluk          |   1.051,1          |    41,38 "          |
 
 ### <a name="enclosure-weight"></a>Kasa ağırlığı
@@ -116,7 +116,7 @@ Bu bölümde sıcaklık, nem ve yükseklik gibi çevre duvarı ortamıyla ilgili
 
 |     Kutu         |     Çevresel sıcaklık aralığı     |     Çevresel göreli nem     |     En fazla Dew noktası     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    İşlemdeki        |    10 °C-35 °C (50 °F-86 °F)         |    %10-%80 yoğunlaşmayan.         |    29 °C (84 °F)            |
+|    Operasyonel        |    10 °C-35 °C (50 °F-86 °F)         |    %10-%80 yoğunlaşmayan.         |    29 °C (84 °F)            |
 |    İşlemsel olmayan    |    -40 °C ila 65 °C (-40 °F-149 °F)     |    %5-%95 yoğunlaşmayan.          |    33 °C (91 °F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Airflow, yükseklik, darbe, titreşim, yönlendirme, güvenlik ve EMC
@@ -146,4 +146,4 @@ Bu bölümde sıcaklık, nem ve yükseklik gibi çevre duvarı ortamıyla ilgili
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stack kenarını dağıtın](azure-stack-edge-deploy-prep.md)
+- [Azure Stack Edge Pro 'Yu dağıtma](azure-stack-edge-deploy-prep.md)

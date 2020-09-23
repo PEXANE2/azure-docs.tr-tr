@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c403398f7320cefa16a4a570645a6d7d750acc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297510"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906870"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Spring Mikro Hizmet Uygulamaları için Java ve Temel İşletim Sistemi
+
+**Bu makale şu şekilde geçerlidir:** ✔️ Java
+
 Aşağıda, Spring mikro hizmet uygulamalarına yönelik sağlıklı Java ve temel işletim sistemi bulundurma ilkeleri verilmiştir.
 ## <a name="principles-for-healthy-java-and-base-os"></a>Sağlıklı Java ve temel işletim sistemi ilkeleri
 * Katman genelinde aynı temel işletim sistemi olacaktır-temel | Standart | Premium.
@@ -52,5 +55,6 @@ Azul sistemleri, temel işletim sistemlerindeki değişiklikleri sürekli olarak
 > ![Varsayılan dağıtım](media/spring-cloud-principles/spring-cloud-default-deployment.png)
  
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Hızlı başlangıç: Azure portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart.md)
+
+* [Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın](spring-cloud-quickstart.md)
 * [Azure ve Azure Stack için uzun süreli Java desteği](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)

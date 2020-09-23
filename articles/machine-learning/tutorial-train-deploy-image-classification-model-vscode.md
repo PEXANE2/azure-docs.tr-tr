@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203555"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906696"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Azure Machine Learning Visual Studio Code uzantısı (Önizleme) kullanarak görüntü sınıflandırması TensorFlow modelini eğitme ve dağıtma
 
@@ -33,7 +33,7 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 > * Bir modeli kaydetme
 > * Model dağıtma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Bir hesabınız yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)denemek için kaydolun.
 - Hafif, platformlar arası bir kod Düzenleyicisi [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)yükler.
@@ -61,7 +61,7 @@ Azure Machine Learning bir uygulama oluşturmak için yapmanız gereken ilk şey
 1. **Yeni kaynak grubu oluştur**' u seçin. 
 1. Kaynak grubunuzu "TeamWorkspace-RG" olarak adlandırın ve **ENTER**'a basın. 
 1. Çalışma alanınız için bir konum seçin. Modelinizi dağıtmayı planladığınız konuma en yakın konumu seçmeniz önerilir. Örneğin, "Batı ABD 2".
-1. Çalışma alanı türünü seçmeniz **istendiğinde temel ' yı seçerek temel** bir çalışma alanı oluşturun. Farklı çalışma alanı teklifleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning genel bakış](./overview-what-is-azure-ml.md#sku).
+1. Çalışma alanı türünü seçmeniz istendiğinde **temel**' yı seçin.
 
 Bu noktada, hesabınızda yeni bir çalışma alanı oluşturmak için Azure isteği yapılır. Birkaç dakika sonra, abonelik düğümünde yeni çalışma alanı görüntülenir. 
 

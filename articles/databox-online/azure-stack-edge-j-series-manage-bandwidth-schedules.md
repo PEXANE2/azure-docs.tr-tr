@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU bant genişliği zamanlamalarını yönetme | Microsoft Docs
-description: Azure Stack Edge GPU 'unuzda bant genişliği zamanlamalarını yönetmek için Azure portal nasıl kullanılacağını açıklar.
+title: Azure Stack Edge Pro GPU bant genişliği zamanlamalarını yönetme | Microsoft Docs
+description: Azure Stack Edge Pro GPU 'unuzda bant genişliği zamanlamalarını yönetmek için Azure portal nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b9edb4f694a5ff7d15b06be41cc20db3b64b97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: faf78e9f7efb83c5f28538e18ed081378d120848
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265703"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890671"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-gpu"></a>Azure Stack Edge GPU 'unuzda bant genişliği zamanlamalarını yönetmek için Azure portal kullanma 
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'unuzda bant genişliği zamanlamalarını yönetmek için Azure portal kullanma 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu makalede Azure Stack Kenarlarınızın bant genişliği zamanlamalarının nasıl yönetileceği açıklanır. Bant genişliği zamanlamaları, ağ bant genişliği kullanımını birden çok zamanlamaya göre yapılandırmanızı sağlar. Bu zamanlamalar, cihazınızla bulut arasında gerçekleştirilen yükleme ve indirme işlemlerine uygulanabilir.
+Bu makalede Azure Stack Edge Pro 'unuzda bant genişliği zamanlamalarının nasıl yönetileceği açıklanır. Bant genişliği zamanlamaları, ağ bant genişliği kullanımını birden çok zamanlamaya göre yapılandırmanızı sağlar. Bu zamanlamalar, cihazınızla bulut arasında gerçekleştirilen yükleme ve indirme işlemlerine uygulanabilir.
 
-Azure Stack Kenarlarınızın bant genişliği zamanlamalarını Azure portal aracılığıyla ekleyebilir, değiştirebilir veya silebilirsiniz.
+Azure Stack Edge Pro için bant genişliği zamanlamalarını Azure portal aracılığıyla ekleyebilir, değiştirebilir veya silebilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -42,11 +42,11 @@ Bir zamanlama eklemek için Azure portal aşağıdaki adımları uygulayın.
 
 3. **Zamanlama ekle** sayfasında: 
 
-   1. Zamanlamanın **Başlangıç günü**, **Bitiş günü**, **Başlangıç saati** ve **Bitiş saati** değerlerini belirleyin.
+   1. **Başlangıç gününü**, **bitiş gününü**, **başlangıç saatini**ve zamanlamanın **bitiş saatini** belirtin.
    2. Bu zamanlamanın her gün çalışması gerekiyorsa, **tüm gün** seçeneğini işaretleyin.
-   3. **Bant genişliği hızı**, cihazınızda gerçekleştirilen bulutla ilgili işlemler (yükleme ve indirme) için kullanılan bant genişliğidir ve saniye başına megabit (Mb/sn) cinsinden ölçülür. Bu alan için 20 ile 2.147.483.647 arasında bir sayı girin.
+   3. **Bant genişliği oranı** , bulut ile ilgili işlemlerde (her ikisi de karşıya yükleme ve indirme) kullanılan bit/sn (Mbps) cinsinden bant genişliğidir. Bu alan için 20 ile 2.147.483.647 arasında bir sayı girin.
    4. Veri yükleme ve indirme işlemlerini kısıtlamak istemiyorsanız **Sınırsız** bant genişliğini seçin.
-   5. **Add (Ekle)** seçeneğini belirleyin.
+   5. **Ekle**’yi seçin.
 
       ![Zamanlama Ekle](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-2.png)
 
@@ -73,7 +73,7 @@ Bir bant genişliği zamanlamasını düzenlemek için aşağıdaki adımları g
 
 ## <a name="delete-a-schedule"></a>Zamanlamayı silme
 
-Azure Stack Edge cihazlarınız ile ilişkili bir bant genişliği zamanlamasını silmek için aşağıdaki adımları uygulayın.
+Azure Stack Edge Pro aygıtınızla ilişkili bir bant genişliği zamanlamasını silmek için aşağıdaki adımları uygulayın.
 
 1. Azure portal, Azure Stack Edge kaynağına gidin ve ardından **bant genişliğine**gidin.  
 

@@ -3,12 +3,12 @@ title: Rehberlik ve en iyi deneyimler
 description: Buluta ve şirket içi iş yükünü buluta yedeklemeye yönelik en iyi yöntemleri ve Kılavuzu bulun
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000371"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985529"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Buluta ve şirket içi iş yüklerini buluta yedekleyin
 
@@ -48,7 +48,7 @@ Azure Backup çeşitli iş yükleri (Şirket içi ve bulut) için veri koruması
 
 ### <a name="management-plane"></a>Yönetim düzlemi
 
-* **Erişim denetimi** – kurtarma hizmetleri Kasası, yönetim olanakları sağlar ve Azure Portal, SDK, CLI ve hatta REST API 'leri aracılığıyla erişilebilir. Ayrıca, yalnızca yetkili yedekleme yöneticilerine yönelik yedeklemelere erişimi kısıtlama seçeneği sunan bir RBAC sınırıdır.
+* **Erişim denetimi** – kaults (kurtarma hizmetleri ve yedekleme kasaları), yönetim olanakları sağlar ve Azure Portal, yedekleme merkezi, kasa PANOLARı, SDK, CLI ve hatta REST API 'leri aracılığıyla erişilebilir. Ayrıca, yalnızca yetkili yedekleme yöneticilerine yönelik yedeklemelere erişimi kısıtlama seçeneği sunan bir RBAC sınırıdır.
 
 * **İlke yönetimi** – her bir kasada yer alan Azure Backup ilkeler, yedeklemelerin ne zaman tetiklenmesi gerektiğini ve ne kadar süreyle tutulacağını tanımlar. Ayrıca, bu ilkeleri yönetebilir ve birden çok öğe arasında uygulayabilirsiniz.
 
@@ -58,7 +58,7 @@ Azure Backup çeşitli iş yükleri (Şirket içi ve bulut) için veri koruması
 
 ## <a name="vault-considerations"></a>Kasa konuları
 
-Azure Backup yedeklemeleri düzenlemek ve yönetmek için kurtarma hizmetleri kasalarını kullanır. Ayrıca, yedeklenen verileri depolamak için kasalarını kullanır. Etkin kasa tasarımı, kuruluşların iş önceliklerinizi destekleyecek şekilde Azure 'da yedekleme varlıklarını düzenlemek ve yönetmek için bir yapı kurmalarını sağlar. Bir kasa oluştururken aşağıdaki yönergeleri göz önünde bulundurun:  
+Azure Backup, yedeklemeleri düzenlemek ve yönetmek için kasalarını (kurtarma hizmetleri ve yedekleme kasaları) kullanır. Ayrıca, yedeklenen verileri depolamak için kasalarını kullanır. Etkin kasa tasarımı, kuruluşların iş önceliklerinizi destekleyecek şekilde Azure 'da yedekleme varlıklarını düzenlemek ve yönetmek için bir yapı kurmalarını sağlar. Bir kasa oluştururken aşağıdaki yönergeleri göz önünde bulundurun:  
 
 ### <a name="align-to-subscription-design-strategy"></a>Abonelik tasarım stratejisine Hizala
 
@@ -71,7 +71,8 @@ Yedeklemenizi düzenlemek ve yönetmek için tek bir kasa veya birden çok kasa 
 * İş yüklerinizin tümü tek bir abonelik ve tek bir kaynak tarafından yönetiliyorsa, yedeklemenizi izlemek ve yönetmek için tek bir kasa kullanabilirsiniz.
 
 * İş yükleriniz abonelikler arasında yayıldığında, abonelik başına bir veya daha fazla çoklu kasa oluşturabilirsiniz.
-  * Tüm kasalarda, aboneliklerde ve kiracılarda işlemsel etkinliklerin izlenmesini kolaylaştırmak için yedekleme Gezgini ve raporları kullanabilirsiniz. Toplu bir görünüm almak için [burada daha fazla bilgi edinin](monitor-azure-backup-with-backup-explorer.md) .
+  * Yedekleme merkezi, yedeklemeyle ilgili tüm görevleri yönetmek için tek bir cam bölmenizi sağlar. [Daha fazla bilgi edinin]().
+  * Çalışma kitabı şablonlarıyla görünümlerinizi özelleştirebilirsiniz. Yedekleme Gezgini, Azure VM 'Leri için bu tür bir şablondur. [Daha fazla bilgi edinin](monitor-azure-backup-with-backup-explorer.md).
   * Kasaların tamamında tutarlı ilke gerekiyorsa, yedekleme ilkesini birden çok kasa genelinde yaymak için Azure ilkesini kullanabilirsiniz. Bir yedekleme ilkesini birden çok kasa genelinde yaymak için [' deployifnotexists '](../governance/policy/concepts/effects.md#deployifnotexists) efektini kullanan özel bir [Azure ilke tanımı](../governance/policy/concepts/definition-structure.md) yazabilirsiniz. Bu Azure Ilke tanımını belirli bir kapsama (abonelik veya RG) [atayabilir](../governance/policy/assign-policy-portal.md) , böylece Azure ilke atamasının kapsamındaki tüm kurtarma hizmetleri kasalarına bir ' yedekleme İlkesi ' kaynağı dağıtılır. Yedekleme ilkesinin ayarları (örneğin, yedekleme sıklığı, bekletme vb.), Kullanıcı tarafından Azure Ilke atamasında parametre olarak belirtilmelidir.
 
 * Kurumsal parmak izi büyüdükçe, aşağıdaki nedenlerden dolayı iş yüklerini abonelikler arasında taşımak isteyebilirsiniz: yedekleme ilkesine göre hizalayın, kasaları birleştirin, düşük yedekliliğe kadar tasarruf edin (GRS 'den LRS 'ye geçiş yapın).  Azure Backup, kurtarma hizmetleri kasasının Azure aboneliklerine veya aynı abonelik içindeki başka bir kaynak grubuna taşınmasını destekler. [Daha fazla bilgi edinin](backup-azure-move-recovery-services-vault.md).

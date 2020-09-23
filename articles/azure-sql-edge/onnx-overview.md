@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge 'de ONNX ile makine öğrenimi ve AI (Önizleme)
-description: Azure SQL Edge 'de makine öğrenimi (Önizleme), Open sinir Network Exchange (ONNX) biçimindeki modelleri destekler. ONNX, çeşitli makine öğrenimi çerçeveleri ve araçları arasındaki modelleri değiş tokuş etmek için kullanabileceğiniz bir açık biçimdir.
+title: Azure SQL Edge 'de ONNX ile makine öğrenimi ve AI
+description: Azure SQL Edge 'de makine öğrenimi, Open sinir Network Exchange (ONNX) biçimindeki modelleri destekler. ONNX, çeşitli makine öğrenimi çerçeveleri ve araçları arasındaki modelleri değiş tokuş etmek için kullanabileceğiniz bir açık biçimdir.
 keywords: SQL Edge dağıtma
 services: sql-edge
 ms.service: sql-edge
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 2db6c728ac35c6fc2f1fee1a602725371e448104
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c040b0fad0211af413141a5b16b587d41d3b08
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368065"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907137"
 ---
-# <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>SQL Edge 'de ONNX ile Machine Learning ve AI (Önizleme)
+# <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>SQL Edge 'de ONNX ile makine öğrenimi ve AI
 
-Azure SQL Edge 'de makine öğrenimi (Önizleme), [Open sinir Network Exchange (ONNX)](https://onnx.ai/) biçimindeki modelleri destekler. ONNX, çeşitli [makine öğrenimi çerçeveleri ve araçları](https://onnx.ai/supported-tools)arasındaki modelleri değiş tokuş etmek için kullanabileceğiniz bir açık biçimdir.
+Azure SQL Edge 'de makine öğrenimi, [Open sinir Network Exchange (ONNX)](https://onnx.ai/) biçimindeki modelleri destekler. ONNX, çeşitli [makine öğrenimi çerçeveleri ve araçları](https://onnx.ai/supported-tools)arasındaki modelleri değiş tokuş etmek için kullanabileceğiniz bir açık biçimdir.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -36,7 +36,7 @@ ONNX biçiminde bir model elde etmek için:
    * [PyTorch](http://pytorch.org/docs/master/onnx.html)
    * [TensorFlow](https://github.com/onnx/tensorflow-onnx)
    * [Keras](https://github.com/onnx/keras-onnx)
-   * [Scikit-öğrenme](https://github.com/onnx/sklearn-onnx)
+   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
    * [CoreML](https://github.com/onnx/onnxmltools)
     
     Desteklenen çerçeveler ve örneklerin tam listesi için bkz. [ONNX biçimine dönüştürme](https://github.com/onnx/tutorials#converting-to-onnx-format).
@@ -55,4 +55,4 @@ Model girişleri, modeldeki her girdinin tablodaki tek bir sütuna karşılık g
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure portal üzerinden SQL Edge dağıtma](deploy-portal.md)
-- [Azure SQL Edge 'de ONNX modeli dağıtma (Önizleme)](deploy-onnx.md)
+- [Azure SQL Edge 'de ONNX modeli dağıtma ](deploy-onnx.md)

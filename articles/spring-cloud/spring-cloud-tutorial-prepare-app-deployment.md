@@ -1,21 +1,90 @@
 ---
-title: Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
-description: Bir Java Spring uygulamasının Azure Spring Cloud 'a dağıtılması için nasıl hazırlanacağını öğrenin.
+title: Azure Spring Cloud 'da bir uygulamayı dağıtım için hazırlama
+description: Bir uygulamayı Azure Spring Cloud 'a dağıtıma hazırlama hakkında bilgi edinin.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 59318cca33ba1607498546161764aa3aaaaea13e
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90014948"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906829"
 ---
-# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
+# <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud 'da bir uygulamayı dağıtıma hazırlama
 
+::: zone pivot="programming-language-csharp"
+Azure yay bulutu, bir Bueltoe uygulamasını barındırmak, izlemek, ölçeklendirmek ve güncelleştirmek için güçlü hizmetler sağlar. Bu makalede, mevcut bir Steeltoe uygulamasının Azure Spring Cloud 'a dağıtılması için nasıl hazırlanacağı gösterilmektedir. 
+
+Bu makalede, Azure yay bulutu 'nda .NET Core Steeltoe uygulaması çalıştırmak için gereken bağımlılıklar, yapılandırma ve kod açıklanmaktadır. Azure yay bulutuna bir uygulamanın nasıl dağıtılacağı hakkında bilgi için, bkz. [Ilk Azure Spring Cloud uygulamanızı dağıtma](spring-cloud-quickstart.md).
+
+>[!Note]
+> Azure yay bulutu için steeltoe desteği şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizlemeler sırasında destek hakkında daha fazla bilgi için bkz. [SSS](https://azure.microsoft.com/support/faq/) veya dosya a [destek isteği](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+
+##  <a name="supported-versions"></a>Desteklenen sürümler
+
+Azure yay bulutu şunları destekler:
+
+* .NET Core 3,1
+* Steeltoe 2,4
+
+## <a name="dependencies"></a>Bağımlılıklar
+
+[Microsoft. Azure. SpringCloud. Client](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) paketini yükler.
+
+## <a name="update-programcs"></a>Program.cs Güncelleştir
+
+Yönteminde, `Program.Main` `UseAzureSpringCloudService` yöntemini çağırın:
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        })
+        .UseAzureSpringCloudService();
+```
+
+## <a name="enable-eureka-server-service-discovery"></a>Eureka sunucu hizmeti bulmayı etkinleştir
+
+Uygulama Azure yay bulutu 'nda çalıştırıldığında kullanılacak yapılandırma kaynağında, `spring.application.name` projenin dağıtılacağı Azure yay bulutu uygulamasıyla aynı ada ayarlanır.
+
+Örneğin, bir Azure yay bulut uygulamasına adlı bir .NET projesi dağıtırsanız `EurekaDataProvider` `planet-weather-provider` , *appSettings.json* dosyası adlı BIR .NET projesi aşağıdaki JSON 'u içermelidir:
+
+```json
+"spring": {
+  "application": {
+    "name": "planet-weather-provider"
+  }
+}
+```
+
+## <a name="use-service-discovery"></a>Hizmet bulmayı kullan
+
+Eureka Server hizmet keşfini kullanarak bir hizmeti çağırmak için, `http://<app_name>` `app_name` hedef uygulamanın değeri olduğu yerde http istekleri yapın `spring.application.name` . Örneğin, aşağıdaki kod `planet-weather-provider` hizmeti çağırır:
+
+```csharp
+using (var client = new HttpClient(discoveryHandler, false))
+{
+    var responses = await Task.WhenAll(
+        client.GetAsync("http://planet-weather-provider/weatherforecast/mercury"),
+        client.GetAsync("http://planet-weather-provider/weatherforecast/saturn"));
+    var weathers = await Task.WhenAll(from res in responses select res.Content.ReadAsStringAsync());
+    return new[]
+    {
+        new KeyValuePair<string, string>("Mercury", weathers[0]),
+        new KeyValuePair<string, string>("Saturn", weathers[1]),
+    };
+}
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 Bu konu başlığı altında, mevcut bir Java Spring uygulamasının Azure Spring Cloud 'a dağıtılması için nasıl hazırlanacağı gösterilmektedir. Doğru yapılandırılmışsa, Azure yay bulutu, Java Spring Cloud uygulamanızı izlemek, ölçeklendirmek ve güncelleştirmek için güçlü hizmetler sunar.
 
 Bu örneği çalıştırmadan önce [temel hızlı](spring-cloud-quickstart.md)başlangıcı deneyebilirsiniz.
@@ -244,3 +313,4 @@ Dağıtılmış yapılandırmayı etkinleştirmek için, `spring-cloud-config-cl
 Bu konu başlığında, Java Spring uygulamanızı Azure Spring Cloud 'a dağıtmak üzere nasıl yapılandıracağınızı öğrendiniz. Bir yapılandırma sunucusu örneğini ayarlamayı öğrenmek için bkz. [bir yapılandırma sunucusu örneği ayarlama](spring-cloud-tutorial-config-server.md).
 
 GitHub 'da daha fazla örnek vardır: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).
+::: zone-end

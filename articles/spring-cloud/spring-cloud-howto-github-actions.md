@@ -5,22 +5,147 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 01/15/2019
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 3f004be0afc6c73fdabe57e568cd57b51e9abcc5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 9e635d606870d09e9aac82de7da32e074b124159
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299691"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906945"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub eylemleri ile Azure yay bulut CI/CD
 
 GitHub eylemleri otomatik yazılım geliştirme yaşam döngüsü iş akışını destekler. Azure Spring Cloud için GitHub eylemleri sayesinde deponuzda oluşturmak, test etmek, paketlemek, yayınlamak ve Azure 'a dağıtmak için iş akışları oluşturabilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
-Bu örnek, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerektirir.
+## <a name="prerequisites"></a>Önkoşullar
+Bu örnek, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerektirir.
 
+::: zone pivot="programming-language-csharp"
+## <a name="set-up-github-repository-and-authenticate"></a>GitHub deposunu ayarlama ve kimlik doğrulama
+Azure oturum açma eylemini yetkilendirmek için bir Azure hizmet sorumlusu kimlik bilgisine ihtiyacınız vardır. Azure kimlik bilgilerini almak için yerel makinenizde aşağıdaki komutları yürütün:
+
+```
+az login
+az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
+```
+
+Belirli bir kaynak grubuna erişmek için kapsamı azaltabilirsiniz:
+
+```
+az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
+```
+
+Komut bir JSON nesnesinin çıktısını almalıdır:
+
+```JSON
+{
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    ...
+}
+```
+
+Bu örnek, [GitHub 'daki steeltoe örneğini](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/steeltoe-sample)kullanır.  Depoyu çatalla, çatal için GitHub deposu sayfasını açın ve **Ayarlar** sekmesini seçin. **Gizlilikler** menüsünü açın ve **Yeni Gizlilik**' i seçin:
+
+ ![Yeni gizli dizi Ekle](./media/github-actions/actions1.png)
+
+Gizli adını `AZURE_CREDENTIALS` ve değerini, *GitHub deponuzu ayarlama ve kimlik doğrulama*altında bulduğunuz JSON dizesine ayarlayın.
+
+ ![Gizli verileri ayarlama](./media/github-actions/actions2.png)
+
+GitHub [eylemlerinde Key Vault Ile Azure Spring kimlik doğrulama konusunda](./spring-cloud-github-actions-key-vault.md)açıklandığı gibi, Azure oturum açma kimlik bilgilerini GitHub eylemleriyle Key Vault de alabilirsiniz.
+
+## <a name="provision-service-instance"></a>Hizmet örneği sağlama
+Azure Spring Cloud Service örneğinizi sağlamak için Azure CLı 'yı kullanarak aşağıdaki komutları çalıştırın.
+
+```azurecli
+az extension add --name spring-cloud
+az group create --location eastus --name <resource group name>
+az spring-cloud create -n <service instance name> -g <resource group name>
+az spring-cloud config-server git set -n <service instance name> --uri https://github.com/xxx/Azure-Spring-Cloud-Samples --label master --search-paths steeltoe-sample/config
+```
+
+## <a name="build-the-workflow"></a>İş akışını oluşturma
+İş akışı aşağıdaki seçenekler kullanılarak tanımlanır.
+
+### <a name="prepare-for-deployment-with-azure-cli"></a>Azure CLı ile dağıtıma hazırlanma
+
+Komut `az spring-cloud app create` Şu anda ıdempotent değil. Bir kez çalıştırdıktan sonra aynı komutu yeniden çalıştırırsanız bir hata alırsınız. Bu iş akışını mevcut Azure Spring Cloud Apps ve örnekleri üzerinde öneririz.
+
+Hazırlama için aşağıdaki Azure CLı komutlarını kullanın:
+```
+az configure --defaults group=<service group name>
+az configure --defaults spring-cloud=<service instance name>
+az spring-cloud app create --name planet-weather-provider
+az spring-cloud app create --name solar-system-weather
+```
+
+### <a name="deploy-with-azure-cli-directly"></a>Doğrudan Azure CLı ile dağıtma
+
+`.github/workflows/main.yml`Dosyayı depoda aşağıdaki içerikle oluşturun. `<your resource group name>`Ve `<your service name>` değerlerini doğru değerlerle değiştirin.
+
+```yaml
+name: Steeltoe-CD
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./steeltoe-sample
+      resource-group-name: <your resource group name>
+      service-name: <your service name>
+    
+    # Supported .NET Core version matrix.
+    strategy:
+      matrix:
+        dotnet: [ '3.1.x' ]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Set up .NET Core 3.1 SDK
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+          
+      # Set credential for az login
+      - uses: azure/login@v1.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: install Azure CLI extension
+        run: |
+          az extension add --name spring-cloud --yes
+      
+      - name: Build and package planet-weather-provider app
+        working-directory: ${{env.working-directory}}/src/planet-weather-provider
+        run: |
+          dotnet publish
+          az spring-cloud app deploy -n planet-weather-provider --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.PlanetWeatherProvider.dll --artifact-path ./publish-deploy-planet.zip -s ${{ env.service-name }} -g ${{ env.resource-group-name }}
+      - name: Build solar-system-weather app
+        working-directory: ${{env.working-directory}}/src/solar-system-weather
+        run: |
+          dotnet publish
+          az spring-cloud app deploy -n solar-system-weather --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.dll --artifact-path ./publish-deploy-solar.zip -s ${{ env.service-name }} -g ${{ env.resource-group-name }}
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub deposunu ayarlama ve kimlik doğrulama
 Azure oturum açma eylemini yetkilendirmek için bir Azure hizmet sorumlusu kimlik bilgisine ihtiyacınız vardır. Azure kimlik bilgilerini almak için yerel makinenizde aşağıdaki komutları yürütün:
 ```
@@ -42,7 +167,7 @@ Komut bir JSON nesnesinin çıktısını almalıdır:
 }
 ```
 
-Bu örnek GitHub 'da [Piggy ölçümler](https://github.com/Azure-Samples/piggymetrics) örneğini kullanır.  Örnek çatalla, GitHub deposu sayfasını açın ve **Ayarlar** sekmesi ' ne tıklayın. **Gizli** dizileri menüsünü açın ve **yeni gizli dizi Ekle**' ye tıklayın:
+Bu örnek, GitHub 'da [Pımetrimetrik](https://github.com/Azure-Samples/piggymetrics) örneğini kullanır.  Örnek çatalla, GitHub deposu sayfasını açın ve **Ayarlar** sekmesi ' ne tıklayın. **Gizli** dizileri menüsünü açın ve **yeni gizli dizi Ekle**' ye tıklayın:
 
  ![Yeni gizli dizi Ekle](./media/github-actions/actions1.png)
 
@@ -198,18 +323,22 @@ jobs:
         mvn azure-spring-cloud:deploy
 ```
 
+::: zone-end
+
 ## <a name="run-the-workflow"></a>İş akışını çalıştırma
+
 GitHub 'a gönderim yapıldıktan sonra GitHub **eylemleri** otomatik olarak etkinleştirilmelidir `.github/workflow/main.yml` . Yeni bir işleme gönderdiğinizde bu eylem tetiklenir. Bu dosyayı tarayıcıda oluşturursanız, eyleminiz zaten çalıştırılmış olmalıdır.
 
 Eylemin etkinleştirildiğini doğrulamak için GitHub Deposu sayfasında **Eylemler** sekmesi ' ne tıklayın:
 
- ![Etkin doğrulama eylemi](./media/github-actions/actions3.png)
+![Etkin doğrulama eylemi](./media/github-actions/actions3.png)
 
 Eylemleriniz hatada çalışıyorsa, örneğin, Azure kimlik bilgisini ayarlamadıysanız, hatayı düzelttikten sonra denetimleri yeniden çalıştırabilirsiniz. GitHub Deposu sayfasında, **Eylemler**' e tıklayın, belirli bir iş akışı görevini seçin ve **sonra denetimleri yeniden çalıştır düğmesine tıklayarak** denetimleri yeniden çalıştırın:
 
- ![Denetimleri yeniden çalıştır](./media/github-actions/actions4.png)
+![Denetimleri yeniden çalıştır](./media/github-actions/actions4.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Spring Cloud GitHub eylemleri için Key Vault](./spring-cloud-github-actions-key-vault.md)
-* [Hizmet sorumlularını Azure Active Directory](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
+* [Hizmet sorumlularını Azure Active Directory](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az-ad-sp-create-for-rbac)
 * [Azure için GitHub Actions](https://github.com/Azure/actions/)

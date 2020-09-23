@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 4315427598d004459862bcf12959e22e83c84d5d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 02772f153cdda7e3f3c866c727d589e755e19033
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299735"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906929"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Azure Spring Cloud’u Azure Load Balance Çözümleriyle tümleştirme
+
+**Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
 Azure Spring Cloud, Azure 'da mikro hizmetleri destekler.  İş artırma, birden fazla Azure yay bulutu örneğinin yönetimiyle birden çok veri merkezi gerektirebilir.
 
@@ -24,7 +26,7 @@ Azure zaten farklı Yük Dengeleme çözümleri sağlıyor. Azure yay bulutunu A
 2.  Azure yay bulutunu Azure uygulama ağ geçidi ile tümleştirme
 3.  Azure yay bulutunu Azure ön kapısına tümleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure yay bulutu: [Azure yay bulut hizmeti oluşturma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
 * Azure Traffic Manager: [Traffic Manager oluşturma](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)

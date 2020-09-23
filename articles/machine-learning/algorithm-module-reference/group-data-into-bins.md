@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: d3a9f88325f03d0252adf51c5bf221b131d7d33b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de9f4517d134b4a42603291110c6b19f69403412
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751713"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907038"
 ---
 # <a name="group-data-into-bins-module"></a>Verileri depo gözleri modülüne gruplandırma
 
-Bu makalede, sayıları gruplamak veya sürekli verilerin dağıtımını değiştirmek için Azure Machine Learning tasarımcısında (Önizleme) bulunan veri kümesi modülünün nasıl kullanılacağı açıklanır.
+Bu makalede, sayıları gruplamak veya sürekli verilerin dağıtımını değiştirmek için Azure Machine Learning tasarımcısında grup verileri yerleştirme modülünün nasıl kullanılacağı açıklanır.
 
 Verileri depo gözleri halinde gruplandırma modülü, verileri binme için birden çok seçeneği destekler. Bölme kenarlarının nasıl ayarlanacağını ve değerlerin depo gözlerine nasıl alınacağını özelleştirebilirsiniz. Örneğin, şunları yapabilirsiniz:  
 
@@ -50,7 +50,7 @@ Verileri gruplamak için pek çok yol olduğundan, tüm özelleştirilebilir, fa
 
 ## <a name="how-to-configure-group-data-into-bins"></a>Grup verilerini depo gözlerine yapılandırma
 
-1. Tasarımcı 'daki (Önizleme) işlem hattınızda **Grup verilerini depo gözleri** modülüne ekleyin. Bu modülü kategori **veri dönüşümünde**bulabilirsiniz.
+1. Tasarımcı 'daki işlem hattınızı **Grup verilerini depo gözleri** modülüne ekleyin. Bu modülü kategori **veri dönüşümünde**bulabilirsiniz.
 
 2. Sayısal verileri olan veri kümesini bin 'e bağlayın. Quantidileştirme yalnızca sayısal veri içeren sütunlara uygulanabilir. 
 

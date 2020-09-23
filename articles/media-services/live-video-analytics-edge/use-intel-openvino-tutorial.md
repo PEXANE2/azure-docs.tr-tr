@@ -4,18 +4,21 @@ description: Bu öğreticide, (benzetimli) bir IP kamerasından canlı video ak�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e620da1a4f0b7f782d478314fb0e2e83ab9a124a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567597"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906622"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Öğretici: OpenVINO™ model sunucusunu kullanarak canlı videoyu çözümleyin – Intel 'ten AI uzantısı 
 
-Bu öğreticide, (benzetimli) bir IP kamerasından canlı video akışını çözümlemek için, OpenVINO™ model sunucusu – AI uzantısının Intel 'ten nasıl kullanılacağı gösterilmektedir. Bu çıkarım sunucusunun nesneleri tespit etmek için modeller (bir kişi, araç veya bisiklet) ve araçlar sınıflandırma modeli için nasıl erişim sunacağını görürsünüz. Canlı video akışındaki çerçevelerin bir alt kümesi bu çıkarım sunucusuna gönderilir ve sonuçlar IoT Edge hub 'ına gönderilir. 
+Bu öğreticide, (benzetimli) bir IP kamerasından canlı video akışını çözümlemek için, OpenVINO™ model sunucusu – AI uzantısının Intel 'ten nasıl kullanılacağı gösterilmektedir. Bu çıkarım sunucusunun nesneleri tespit etmek için modeller (bir kişi, araç veya bisiklet) ve araçlar sınıflandırma modeli için nasıl erişim sunacağını görürsünüz. Canlı video akışındaki çerçevelerin bir alt kümesi bu çıkarım sunucusuna gönderilir ve sonuçlar IoT Edge hub 'ına gönderilir.
 
-Bu öğretici bir Azure VM 'yi IoT Edge bir cihaz olarak kullanır ve sanal bir canlı video akışı kullanır. C# dilinde yazılmış örnek koda dayalıdır ve [hareket ve yayma olaylarını Algıla](detect-motion-emit-events-quickstart.md) hızlı başlangıç bölümünde oluşturulur. 
+Bu öğretici bir Azure VM 'yi IoT Edge bir cihaz olarak kullanır ve sanal bir canlı video akışı kullanır. C# dilinde yazılmış örnek koda dayalıdır ve [hareket ve yayma olaylarını Algıla](detect-motion-emit-events-quickstart.md) hızlı başlangıç bölümünde oluşturulur.
+
+> [!NOTE]
+> Bu öğreticide, Edge cihazınız olarak bir x86-64 makinenin kullanılması gerekir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,7 +43,7 @@ Bu hızlı başlangıçta, IoT Edge üzerinde canlı video analizlerini kullanar
 ## <a name="overview"></a>Genel Bakış
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="Genel Bakış":::
+> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Genel bakış":::
 
 Bu diyagramda, sinyallerin bu hızlı başlangıçta nasıl akagösterdiği gösterilmektedir. [Edge modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , gerçek zamanlı akış protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetim yapar. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [çerçeve hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüne video çerçeveleri gönderir. Bu işlemci, [http uzantısı işlemci](media-graph-concept.md#http-extension-processor) düğümüne ulaşan video akışının kare oranını sınırlandırır. 
 
@@ -53,6 +56,7 @@ Bu öğreticide şunları yapacaksınız:
 1. Kaynakları temizleyin.
 
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>OpenVINO™ model sunucusu – Intel 'den AI uzantısı hakkında
+
 [Openvino™ Toolkit](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) 'in Intel® dağıtımı (açık görsel çıkarım ve sinir ağ iyileştirmesi), geliştiricilerin ve veri bilimcilerinin bilgisayar görme iş yüklerini hızlandırmasına, derin öğrenime ve dağıtımlara sahip olmasına ve gelişmiş, hafif bir şekilde yürütmeyi uçtan buluta kadar kolay ve heterojen bir şekilde® yürütmeyi etkinleştirmesine yardımcı olan ücretsiz bir yazılım setidir. Model iyileştirici ve çıkarım altyapısı ile Intel® derin öğrenme dağıtım araç setini ve 40 'den fazla iyileştirilmiş önceden eğitilen [modeli Içeren açık model Zoo](https://github.com/openvinotoolkit/open_model_zoo) deposunu içerir.
 
 Karmaşık, yüksek performanslı canlı video analizi çözümleri oluşturmak için IoT Edge modüldeki canlı video analizinin, kenardaki ölçeğe uygun bir güçlü çıkarım altyapısı ile eşleştirilmesi gerekir. Bu öğreticide, çıkarım istekleri, IoT Edge üzerinde canlı video analizi ile çalışmak üzere tasarlanan bir uç modülü olan [Intel, Openvino™ model sunucusuna – AI uzantısına](https://aka.ms/lva-intel-ovms)gönderilir. Bu çıkarım sunucu modülü, bilgisayar görme iş yükleri için çok iyileştirilmiş ve Intel® mimarileri için geliştirilen, OpenVINO™ araç seti tarafından desteklenen bir çıkarım sunucusu olan OpenVINO™ model sunucusunu (OVM 'ler) içerir. OVM 'lere, video çerçevelerinin ve canlı video analizine ilişkin IoT Edge modüldeki bir uzantı eklenmiştir ve bu sayede herhangi bir OpenVINO™ Toolkit desteklenen modeli ( [kodu](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)değiştirerek çıkarım sunucu modülünü özelleştirebilirsiniz) kullanabilirsiniz. Intel® donanımı tarafından sağlanan çok çeşitli hızlandırma mekanizmalarından daha fazla seçim yapabilirsiniz. Bunlara CPU 'Lar (Atom, çekirdek, Xeon), FPGAs, VPUs dahildir.

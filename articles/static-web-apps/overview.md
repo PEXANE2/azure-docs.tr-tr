@@ -1,5 +1,5 @@
 ---
-title: Azure Statik Web Uygulamaları nedir?
+title: Statik Web Uygulamaları nedir?
 description: Azure statik Web Apps 'nin temel özellikleri ve işlevleri.
 services: static-web-apps
 author: craigshoemaker
@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 086feb3aa7c9a38756fded58538eb22e094a5960
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565715"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906800"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi nedir?
 
@@ -24,7 +24,7 @@ Azure statik Web Apps iş akışı, geliştiricinin günlük iş akışına gör
 
 Bir Azure Statik Web Uygulamaları kaynağı oluşturduğunuzda Azure uygulamanın kaynak kodu deposunda bir GitHub Actions iş akışı ayarlar ve bu iş akışı seçtiğiniz dalı izler. Değişiklikleri izlenen dala her gönderişinizde veya çekme isteklerini kabul ettiğinizde, GitHub eylemi uygulamanızı ve API 'sini Azure 'a otomatik olarak oluşturur ve dağıtır.
 
-Statik web uygulamaları, Angular, React, Svelte veya Vue gibi kitaplıklar ve çerçeveler kullanılarak ortak olarak oluşturulur. Bu uygulamalar, uygulamayı oluşturan HTML, CSS, JavaScript ve görüntü varlıklarını içerir. Geleneksel bir Web sunucusu ile, bu varlıklar, gerekli tüm API uç noktaları ile birlikte tek bir sunucudan sunulur.
+Statik Web uygulamaları, genellikle angular, tepki, svelte, Vue veya Blazor gibi kitaplıklar ve çerçeveler kullanılarak oluşturulmuştur. Bu uygulamalar, uygulamayı oluşturan HTML, CSS, JavaScript ve görüntü varlıklarını içerir. Geleneksel bir Web sunucusu ile, bu varlıklar, gerekli tüm API uç noktaları ile birlikte tek bir sunucudan sunulur.
 
 Statik Web Apps, statik varlıklar geleneksel bir Web sunucusundan ayrılır ve bunun yerine dünyanın dört bir yanındaki coğrafi olarak dağıtılan noktalarından sunulur. Dosyalar son kullanıcılara fiziksel olarak daha yakında bulunduğu için bu dağıtım yöntemi dosyaların daha hızlı sunulmasına olanak tanır. Ayrıca, API uç noktaları [sunucusuz bir mimari](../azure-functions/functions-overview.md)kullanılarak barındırılır ve tamamen bir arka uç sunucusu gereksinimini ortadan kaldırır.
 
@@ -44,7 +44,7 @@ Statik Web Apps, statik varlıklar geleneksel bir Web sunucusundan ayrılır ve 
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Statik Web Apps ile yapabilecekleriniz
 
-- [Azure işlevleri](apis.md) arka ucu Ile [angular](getting-started.md?tabs=angular), [tepki](getting-started.md?tabs=react)verme, [svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/) [gibi çerçeveler](getting-started.md?tabs=react) ve kitaplıklar ile **modern JavaScript uygulamaları oluşturun** .
+- JavaScript çerçeveleri ve bir [Azure işlevleri](apis.md) arka ucu Ile WebAssembly uygulamaları [React](getting-started.md?tabs=react)oluşturmak Için [Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/) [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) [kullanma gibi](getting-started.md?tabs=angular)JavaScript [Vue](getting-started.md?tabs=react)çerçeveleri ve kitaplıkları ile **Modern Web uygulamaları** oluşturun.
 - [Gatsby](publish-gatsby.md), [kugo](publish-hugo.md), [vuepress](publish-vuepress.md)gibi çerçeveler ile **statik siteler yayımlayın** .
 - [Next.js](deploy-nextjs.md) ve [Nuxt.js](deploy-nuxtjs.md)gibi çerçeveler ile **Web uygulamaları dağıtın** .
 

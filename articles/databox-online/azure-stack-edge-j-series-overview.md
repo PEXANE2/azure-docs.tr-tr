@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 8bf9bb172d559dbb1f92b376b60a914ec24769d1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 265bc1bb86c7fe8424656aa9adb30ddbe847e6fc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948252"
+ms.locfileid: "90985650"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Azure Stack Edge Pro R nedir?
 
-Azure Stack Edge Pro R, bir hizmet olarak donanım çözümüdür. Microsoft, Azure 'a ağ veri aktarımı üzerinden için sürekli bir Rugged, sunucu sınıfı ve taşınabilir bir uç cihaz sağlar. Grafik Işleme birimi (GPU) ile donatılmış bu cihazlar AI, analiz ve sunucusuz bilgi işlem için iyileştirilmiştir. Rugged cihazları, en zorlu ortamlarda kullanım için uygundur.
+Azure Stack Edge Pro R, bir hizmet olarak donanım çözümüdür. Microsoft, size Azure 'a ağ veri aktarımı üzerinden yönelik dayanıklı bir Rugged, sunucu sınıfı ve uç cihaz gönderilir. Grafik Işleme birimi (GPU) ile donatılmış bu cihazlar AI, analiz ve sunucusuz bilgi işlem için iyileştirilmiştir. Rugged cihazları, Harsh ortamlarında kullanım için uygundur.
 
 Bu makalede, Azure Stack Edge Pro R çözümüne, önemli yeteneklere ve bu cihazı dağıtabileceğiniz senaryolara ilişkin bir genel bakış sunulmaktadır.
 
@@ -28,13 +28,13 @@ Azure Stack Edge Pro R aşağıdaki yeteneklere sahiptir:
 
 |Özellik |Açıklama  |
 |---------|---------|
-|Rugged, taşınabilir donanım| Rugged 85 lb. Server sınıfı donanım, en zorlu ortamlar için tasarlanmıştır. 2 kişi, büyük/küçük bir taşıma durumunda cihaz taşınabilir. |
+|Rugged donanımı| Rugged, Harsh ortamları için tasarlanan sunucu sınıfı donanımdır. 2 kişi, büyük/küçük bir taşıma durumunda cihaz taşınabilir. |
 |Bulutta yönetilen     |Cihaz ve hizmet, Azure portal aracılığıyla yönetilir.|
 |Edge işlem iş yükleri   |Verilerin analizine, işlenmesine, filtrelenmesine olanak tanır. VM 'Leri ve Kapsayıcılı iş yüklerini destekler.|
 |Hızlandırılmış AI ınkrii| NVIDIA T4 GPU tarafından etkinleştirildi.|
 |Yüksek performans | Yüksek performanslı işlem ve veri aktarımları.|
 |Veri erişimi     | Bulutta ek veri işleme için bulut API'lerini kullanarak Azure Depolama Blobları ve Azure Dosyaları'ndan doğrudan veri erişimi. Cihazdaki yerel önbellek, en son kullanılan dosyalara hızlı erişim için kullanılır.|
-|Bağlantısı kesik mod| Cihaz ve hizmet, isteğe bağlı olarak Azure Stack aracılığıyla yönetilebilir. <br> Uygulamaları çevrimdışı modda dağıtın, çalıştırın, yönetin. <br> Bağlantısız mod, çevrimdışı karşıya yükleme senaryolarını destekler.|
+|Bağlantısı kesik mod| Cihaz ve hizmet, isteğe bağlı olarak Azure Stack hub 'ı aracılığıyla yönetilebilir. Uygulamaları çevrimdışı modda dağıtın, çalıştırın, yönetin. <br> Bağlantısız mod, çevrimdışı karşıya yükleme senaryolarını destekler.|
 |Desteklenen protokoller     |Veri alımı için standart SMB, NFS ve REST protokolleri desteği. <br> Desteklenen sürümler hakkında daha fazla bilgi için [Azure Stack Edge Pro R sistem gereksinimleri](azure-stack-edge-gpu-system-requirements.md)' ne gidin.|
 |Veri yenileme     | Yerel dosyaları buluttaki en son sürümle yenileme olanağı.|
 |Çift şifreleme    | Otomatik olarak şifrelenen sürücülerin kullanımı, ilk şifreleme katmanını sağlar. VPN ikinci şifreleme katmanını sağlar. Verileri yerel olarak şifrelemek ve *https* üzerinden buluta veri aktarımını güvenli hale getirmek için BitLocker desteği.|
@@ -81,5 +81,5 @@ Azure Stack Edge Pro R fiziksel cihazı, Azure kaynağı ve veri aktarımı yapt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Stack Edge Pro R sistem gereksinimlerini](azure-stack-edge-gpu-system-requirements.md)gözden geçirin.
-- [Azure Stack Edge Pro R sınırlarını](azure-stack-edge-limits.md)anlayın.
+<!--- Understand the [Azure Stack Edge Pro R limits](azure-stack-edge-limits.md).-->
 

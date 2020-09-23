@@ -1,14 +1,9 @@
 - name: Tam Ekran Okuyucu Belgeleri
   href: index.yml
-- name: Genel Bakış
-  items:
-    - name: Tam Ekran Okuyucu nedir?
-      href: Overview.md
-- name: Hızlı Başlangıçlar
-  expanded: true
-  items:
-    - name: İstemci kitaplığını kullanma
-      href: ./quickstarts/client-libraries.md
+- name: Tam Ekran Okuyucu nedir?
+  href: Overview.md
+- name: Hızlı Başlangıç
+  href: ./quickstarts/client-libraries.md
 - name: Öğreticiler
   items:
     - name: Tam Ekran Okuyucu’yu Başlatma (Android)
