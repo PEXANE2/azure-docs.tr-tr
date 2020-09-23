@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 1490687e85d2f59b8cfa28712ef075b451363534
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564228"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987643"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Öğretici: grafik runbook 'u oluşturma
 
@@ -218,7 +218,7 @@ Abonelik KIMLIĞINI tutmak için bir değişkene sahip olduğunuza göre, runboo
 
 23. `Login to Azure`Şeklin altında bir daire görünene kadar üzerine gelin. Daireye tıklayın ve oku sürükleyin `Specify Subscription Id` . Runbook 'larınızın bu noktada aşağıdaki gibi görünmesi gerekir.
 
-    ![Runbook kimlik doğrulama yapılandırması](../media/automation-tutorial-runbook-graphical/runbook-auth-config.png)
+    :::image type="content" source="../media/automation-tutorial-runbook-graphical/runbook-auth-config.png" alt-text="Ok, ' abonelik KIMLIĞINI belirt ' öğesine sürüklendikten sonra runbook 'un ekran görüntüsü.":::
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>7. Adım - Sanal makineyi başlatmak üzere etkinlik ekleme
 

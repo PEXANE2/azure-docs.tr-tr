@@ -3,12 +3,12 @@ title: Windows Server 'ı Azure 'a yedeklemek için PowerShell 'i kullanma
 description: Bu makalede, PowerShell kullanarak Windows Server veya Windows istemcisinde Azure Backup ayarlama ve yedekleme ve kurtarmayı yönetme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 47c8fc39626d3bca3355c1d1e46f1634327748a8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892380"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987102"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell kullanarak Windows Server/Windows İstemcisi için Azure’a yedekleme dağıtma ve yönetme
 
@@ -42,7 +42,7 @@ Aşağıdaki adımlar, bir kurtarma hizmetleri Kasası oluşturma konusunda size
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. Kullanılacak depolama yedekliliği türünü belirtin. [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md) veya coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanabilirsiniz. Aşağıdaki örnek, *Testkasası* için **-BackupStorageRedundancy** seçeneğinin **geoyedekli**olarak ayarlandığını gösterir.
+4. Kullanılacak depolama yedekliliği türünü belirtin. [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) veya [bölge yedekli depolama (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)kullanabilirsiniz. Aşağıdaki örnek, *Testkasasının* **geoyedekli**olarak ayarlandığı **-BackupStorageRedundancy** seçeneğini gösterir.
 
    > [!TIP]
    > Çoğu Azure Backup cmdlet’i, girdi olarak Kurtarma Hizmetleri kasasını gerektirir. Bu nedenle, yedekleme kurtarma hizmetleri Kasası nesnesinin bir değişkende depolanması uygundur.

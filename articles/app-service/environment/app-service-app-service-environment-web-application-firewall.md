@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e40a42afc99d505dc48794d5ad919e4d682b7070
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961848"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973705"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service Ortamı için Web Uygulaması Güvenlik Duvarı (WAF) Yapılandırma
 ## <a name="overview"></a>Genel Bakış
@@ -26,7 +26,7 @@ Azure Application Gateway’e ek olarak, [Azure Market](https://azuremarketplace
 ## <a name="setup"></a>Kurulum
 Bu belgede, yalnızca WAF’den gelen trafiğin App Service Ortamına ulaşabilmesi ve DMZ’den erişilememesi için App Service Ortamını Barracuda WAF’nin yük dengelemesi yapılmış birden fazla örneğinin arkasında yapılandırıyoruz. Ayrıca, Azure veri merkezleri ve bölgeleri arasında yük dengelemek için Barracuda WAF örneklerinin önünde Azure Traffic Manager kullanıyoruz. Kurulumun yüksek düzey bir diyagramı aşağıdaki görüntü gibi görünür:
 
-![Mimari][Architecture] 
+![Diyagramda, Web uygulaması güvenlik duvarı örneklerine bağlanan, bir C L ağına bağlanan ve iki bölge için Web, P I ve mobil uygulama içeren bir App Service Ortamı güvenlik duvarından giden trafiğe izin veren isteğe bağlı bir Azure Traffic Manager gösterilmektedir.][Architecture] 
 
 > [!NOTE]
 > [App Service Ortamı için ILB desteğinin](app-service-environment-with-internal-load-balancer.md) kullanıma sunulmasıyla birlikte ASE’yi DMZ’den erişilemeyecek ve yalnızca özel ağda kullanılabilecek şekilde yapılandırabilirsiniz. 

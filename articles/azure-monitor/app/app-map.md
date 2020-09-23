@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: d4067b23c4ff365857c37d7dfdce6dc42e129989
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936614"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974023"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Uygulama Haritası: dağıtılmış uygulamaları önceliklendirme
 
@@ -34,7 +34,7 @@ Bu deneyim, bileşenlerin aşamalı keşfi ile başlar. Uygulama haritasını il
 
 Tüm bileşenlerin tek bir Application Insights kaynağı içinde rolleri varsa, bu bulma adımı gerekli değildir. Böyle bir uygulamanın ilk yükünün tüm bileşenleri olacaktır.
 
-![Uygulama Haritası ekran görüntüsü](media/app-map/app-map-001.png)
+![Ekran görüntüsünde bir uygulama Haritası örneği gösterilmektedir.](media/app-map/app-map-001.png)
 
 Bu deneyimle önemli amaçların biri, yüzlerce bileşen ile karmaşık topolojileri görselleştirebilmelidir.
 

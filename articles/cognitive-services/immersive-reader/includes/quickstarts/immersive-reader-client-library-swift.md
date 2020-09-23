@@ -7,23 +7,22 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.openlocfilehash: 2455297cd9dd77d2b5f605bf36ed46b6240b3f4d
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 7a298de40264a06e18aa4b7c77abfd622be4bb75
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505419"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978245"
 ---
-[Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
+[Modern okuyucu](https://www.onenote.com/learningtools) , yeni okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştirmek üzere kanıtlanmış teknikler uygulayan, benzer şekilde tasarlanmış bir araçtır. Uygulamalarınızı odaklamak üzere metin yalıtmak, yaygın olarak kullanılan sözcüklerin resimlerini göstermek, konuşma parçalarını vurgulamak, seçili metni sesli okumak, sözcükleri ve tümceleri gerçek zamanlı olarak çevirmek ve daha fazlasını yapmak için uygulamalarınızda modern okuyucu kullanabilirsiniz.
 
 Bu hızlı başlangıçta, sıfırdan bir iOS uygulaması oluşturup tam ekran okuyucuyu tümleştirin. Bu hızlı başlangıç için tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)ulaşabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
+## <a name="prerequisites"></a>Önkoşullar
 
-## <a name="prerequisites"></a>Ön koşullar
-
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](../../how-to-create-immersive-reader.md) izleyin. Örnek proje özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 
@@ -31,21 +30,21 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Xcode 'da yeni bir proje oluşturun.
 
-![Yeni Proje](../../media/ios/xcode-create-project.png)
+![Yeni proje-Swift](../../media/ios/xcode-create-project.png)
 
 **Tek görünüm uygulaması**' nı seçin.
 
-![Yeni tek görünüm uygulaması](../../media/ios/xcode-single-view-app.png)
+![Yeni tekli görünüm uygulaması-Swift](../../media/ios/xcode-single-view-app.png)
 
 ## <a name="set-up-authentication"></a>Kimlik doğrulamasını ayarlama
 
 Üstteki menüde **ürün > düzeni > düzeni Düzenle**' ye tıklayın...
 
-![Düzeni Düzenle](../../media/ios/quickstart-ios-edit-scheme.png)
+![Düzen düzenleme-Swift](../../media/ios/quickstart-ios-edit-scheme.png)
 
 **Çalıştır** görünümünde, **bağımsız değişkenler** sekmesine tıklayın.
 
-![Düzeni Düzenle](../../media/ios/quickstart-ios-env-vars.png)
+![Düzen ortamı değişkenlerini düzenleme-Swift](../../media/ios/quickstart-ios-env-vars.png)
 
 **Ortam değişkenleri** bölümünde, tam ekran okuyucuyu oluştururken verilen değerleri sağlayarak aşağıdaki adları ve değerleri ekleyin.
 
@@ -557,19 +556,19 @@ function sendContentToReader(message) {
 
 Bir simülatör veya cihaz hedefi seçerek Xcode 'da arşiv şemasını ayarlayın.
 
-![Arşiv şeması](../../media/ios/xcode-archive-scheme.png)
+![Arşiv şeması-Swift](../../media/ios/xcode-archive-scheme.png)
 
-![Hedef seçme](../../media/ios/xcode-select-target.png)
+![Hedef-Swift seçin](../../media/ios/xcode-select-target.png)
 
 Xcode 'da, projeyi çalıştırmak için **CTRL + R** tuşlarına basın veya oynat düğmesine tıklayın. Uygulamanın belirtilen simülatör veya cihazda başlatılması gerekir.
 
 Uygulamanızda şunları görmeniz gerekir:
 
-![Örnek uygulama](../../media/ios/sample-app-ipad.png)
+![Örnek uygulama-Swift](../../media/ios/sample-app-ipad.png)
 
 **Tam ekran okuyucu** düğmesine tıkladığınızda, modern okuyucu uygulamasının uygulama içeriğiyle birlikte başlatılan olduğunu görürsünüz.
 
-![Tam Ekran Okuyucu](../../media/ios/immersive-reader-ipad.png)
+![Modern okuyucu-Swift](../../media/ios/immersive-reader-ipad.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

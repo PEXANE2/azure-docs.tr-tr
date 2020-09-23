@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: b7ca679be0edb4177a883abfac361f9554f0d555
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2d19c061ad1e5cf033d2801df64a0ae37736c418
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941663"
+ms.locfileid: "90983026"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri ve sorun giderme
 
@@ -74,7 +74,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 "telegraf": { 
   "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/spatial-analysis/telegraf:1.0",
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
   "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
 },
 "type": "docker",
@@ -136,7 +136,7 @@ Uzamsal analiz, çalışma zamanı sorunlarını tanılamak için kullanabilece�
 ```json
 "diagnostics": {  
   "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/spatial-analysis/diagnostics:1.0",
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
   "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
   }
 ```    
@@ -306,6 +306,15 @@ Aşağıdaki tabloda sorgu yanıtında öznitelikler listelenmiştir.
 Bu ayarların daha iyi görünmesi ve günlükleri aynı filtreye sahip günlüklere itmesi için, bu ayarların ' ı ' ye doğru görünmesi durumunda getirme günlüğü satırları, zamanları ve boyutları ' nı işaretleyin ***DoPost*** `true` . 
 
 Sorunları giderirken Azure Blob depolamadan günlükleri dışarı aktarabilirsiniz. 
+
+## <a name="common-issues"></a>Genel sorunlar
+
+Modül günlüklerinde aşağıdaki iletiyi görürseniz, Azure aboneliğinizin onaylanması gerektiği anlamına gelebilir: 
+
+"Kapsayıcı geçerli bir durumda değil. Abonelik doğrulaması ' uyuşmazlık ' durumuyla başarısız oldu. API anahtarı, verilen kapsayıcı türü için tasarlanmamıştır. "
+
+Daha fazla bilgi için bkz. [kapsayıcıyı çalıştırmak için onay iste](spatial-analysis-container.md#request-approval-to-run-the-container). 
+
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Azure Stack Edge cihazında sorun giderme
 

@@ -3,12 +3,12 @@ title: Azure 'dan SQL 'e aktarma Application Insights | Microsoft Docs
 description: Application Insights verileri sürekli olarak SQL 'e Stream Analytics kullanarak dışarı aktarın.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311237"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979453"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>İzlenecek yol: Application Insights Stream Analytics kullanarak SQL 'e aktarma
 Bu makalede, [azure Application Insights][start] [sürekli dışa aktarma][export] ve [Azure Stream ANALYTICS](https://azure.microsoft.com/services/stream-analytics/)kullanarak telemetri verilerinizi Azure SQL veritabanı 'na nasıl taşıyacağınız gösterilmektedir. 
@@ -133,21 +133,21 @@ Bu örnekte, sayfa görünümlerindeki verileri kullanıyoruz. Mevcut diğer ver
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics örneği oluşturma
 [Azure Portal](https://portal.azure.com/), Azure Stream Analytics hizmetini seçin ve yeni bir Stream Analytics işi oluşturun:
 
-![Stream Analytics Ayarları](./media/code-sample-export-sql-stream-analytics/SA001.png)
+![Ekran görüntüsü oluştur düğmesi vurgulanmış şekilde Stream Analytics işi sayfasını gösterir.](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
 ![Yeni Stream Analytics işi](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 Yeni iş oluşturulduğunda **Kaynağa Git**' i seçin.
 
-![Stream Analytics Ayarları](./media/code-sample-export-sql-stream-analytics/SA003.png)
+![Ekran görüntüsü, dağıtım başarılı iletisini gösterir ve kaynak düğmesine gider.](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>Yeni giriş Ekle
 
-![Stream Analytics Ayarları](./media/code-sample-export-sql-stream-analytics/SA004.png)
+![Ekran görüntüsü Ekle düğmesinin seçili olduğu giriş sayfasını gösterir.](./media/code-sample-export-sql-stream-analytics/SA004.png)
 
 Sürekli dışarı aktarma blobundan giriş alacak şekilde ayarlayın:
 
-![Stream Analytics Ayarları](./media/code-sample-export-sql-stream-analytics/SA0005.png)
+![Ekran görüntüsü giriş diğer adı, kaynak ve depolama hesabı açılır menü seçeneklerinin seçildiği yeni giriş penceresini gösterir.](./media/code-sample-export-sql-stream-analytics/SA0005.png)
 
 Artık, daha önce not ettiğiniz depolama hesabınızdan birincil erişim anahtarı gerekir. Bunu depolama hesabı anahtarı olarak ayarlayın.
 
@@ -163,10 +163,10 @@ webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 Bu örnekte:
 
-* `webapplication27`Application Insights kaynağın adı, **hepsi küçük bir durumdur**. 
-* `1234...`, Application Insights kaynağın ana **çizgiler kaldırılmış olan**izleme anahtarıdır. 
-* `PageViews`analiz etmek istediğimiz veri türüdür. Kullanılabilir türler, sürekli dışarı aktarma sırasında ayarladığınız filtreye bağlıdır. Dışarı aktarılmış verileri inceleyerek diğer kullanılabilir türleri görüntüleyin ve [veri aktarma modelini](./export-data-model.md)görüntüleyin.
-* `/{date}/{time}`, harfine yazılmış bir örüntü.
+* `webapplication27` Application Insights kaynağın adı, **hepsi küçük bir durumdur**. 
+* `1234...` , Application Insights kaynağın ana **çizgiler kaldırılmış olan**izleme anahtarıdır. 
+* `PageViews` analiz etmek istediğimiz veri türüdür. Kullanılabilir türler, sürekli dışarı aktarma sırasında ayarladığınız filtreye bağlıdır. Dışarı aktarılmış verileri inceleyerek diğer kullanılabilir türleri görüntüleyin ve [veri aktarma modelini](./export-data-model.md)görüntüleyin.
+* `/{date}/{time}` , harfine yazılmış bir örüntü.
 
 Application Insights kaynağınızın adını ve Ikey değerini almak için, Genel Bakış sayfasında temel bilgiler ' i açın veya ayarları açın.
 

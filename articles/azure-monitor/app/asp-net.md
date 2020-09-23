@@ -3,12 +3,12 @@ title: Azure Application Insights ile ASP.NET Web uygulaması analizi ayarlama |
 description: Şirket içinde veya Azure 'da barındırılan ASP.NET Web siteniz için performans, kullanılabilirlik ve Kullanıcı davranışı analizi araçlarını yapılandırın.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c07e7c8e7bd710cb591719fe8d53a3bad6ca2ee0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475541"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973790"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET web siteniz için Application Insights'ı ayarlama
 
@@ -42,7 +42,7 @@ Application Insights Yapılandırması ekranı:
 
 **Kullanmaya**başlayın ' ı seçin.
 
-![Uygulamanızı Application Insights'a kaydedin sayfasının ekran görüntüsü](./media/asp-net/00004-start-free.png)
+![Ekran görüntüsünde Application Insights sayfası ve Başlarken düğmesi gösterilir.](./media/asp-net/00004-start-free.png)
 
 Verilerin depolandığı kaynak grubunu veya konumu ayarlamak isterseniz **Ayarları yapılandır**'a tıklayın. Kaynak grupları, verilere erişimi denetlemek için kullanılır. Örneğin aynı sistemin parçalarını oluşturan birden uygulamanız varsa bunların Application Insights verilerini aynı kaynak grubuna ekleyebilirsiniz.
 
@@ -56,7 +56,7 @@ Verilerin depolandığı kaynak grubunu veya konumu ayarlamak isterseniz **Ayarl
 > [!NOTE]
 > Hata ayıklama sırasında portala telemetri göndermek istemiyorsanız, uygulamanıza Application Insights SDK’sını ekleyin, ancak portalda bir kaynak yapılandırmayın. Hata ayıklama sırasında telemetri verilerini Visual Studio'da görebilirsiniz. Daha sonra bu yapılandırma sayfasına dönebilir veya uygulamanızı dağıtana kadar bekleyip [telemetriyi çalışma zamanında açabilirsiniz](./status-monitor-v2-overview.md).
 
-## <a name="step-2-run-your-app"></a><a name="run"></a>2. Adım: uygulamanızı çalıştırma
+## <a name="step-2-run-your-app"></a><a name="run"></a> 2. Adım: uygulamanızı çalıştırma
 F5 tuşuna basarak uygulamanızı çalıştırın. Farklı sayfalar açarak telemetri verileri oluşturun.
 
 Visual Studio'da günlüğe kaydedilmiş etkinliklerin sayısını görürsünüz.
@@ -104,7 +104,7 @@ Telemetrinizi tanılama araması ve [eğilimler](./visual-studio-trends.md) gibi
 >
 >
 
-## <a name="youre-all-set"></a><a name="land"></a>Hazırsınız
+## <a name="youre-all-set"></a><a name="land"></a> Hazırsınız
 
 Tebrikler! Application Insights paketini uygulamanıza yüklediniz ve Azure üzerinde Application Insights hizmetine telemetri gönderecek şekilde yapılandırdınız.
 

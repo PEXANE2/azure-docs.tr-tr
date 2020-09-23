@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: cb40252460fe62deb94ce495bb41d38c326f10e2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000591"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980748"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Öğretici: dijital bir dağıtım merkezi uygulama şablonunu dağıtma ve gözden geçir
 
@@ -24,7 +24,7 @@ Bu öğreticide,
 * Dijital dağıtım merkezi uygulaması oluştur 
 * Uygulamayı gözden geçir 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Bu uygulamayı dağıtmak için belirli bir ön koşul gerekmez
 * Azure aboneliğinin olması önerilir, ancak bunu yapmadan da deneyebilirsiniz
 
@@ -35,7 +35,7 @@ Aşağıdaki adımları kullanarak uygulama oluşturabilirsiniz
 1. Azure IoT Central uygulama Yöneticisi Web sitesine gidin. Sol taraftaki Gezinti çubuğundan **Oluştur** ' u seçin ve ardından **Perakende** sekmesine tıklayın.
 
     > [!div class="mx-imgBorder"]
-    > ![Dijital dağıtım merkezi](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > ![Dijital dağıtım merkezi uygulama şablonunun nasıl seçileceğini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
 2. **Perakende** sekmesini seçin ve **dijital dağıtım merkezi uygulaması** altında **uygulama oluştur** ' u seçin.
 
@@ -46,10 +46,10 @@ Aşağıdaki adımları kullanarak uygulama oluşturabilirsiniz
    **Oluştur**: uygulamanızı dağıtmak için sayfanın alt kısmındaki Oluştur ' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Dijital dağıtım merkezi](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > ![Dijital dağıtım merkezi uygulama şablonundan uygulama oluşturmayı gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-create.png)
 
     > [!div class="mx-imgBorder"]
-    > ![Dijital dağıtım faturalandırma bilgileri](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+    > ![Uygulamayı oluştururken faturalandırma seçeneklerini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>Uygulama panosu üzerinden ilerleme 
 
@@ -62,31 +62,31 @@ Pano, Azure IoT Ağ Geçidi ve IoT cihazının cihaz yönetimi yeteneklerini gö
    * Çözümün parçası olan tüm kameraları yönetin. 
 
 > [!div class="mx-imgBorder"]
-> ![Dijital dağıtım merkezi](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
+> ![Dijital dağıtım merkezi panosunu gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
 
 ## <a name="device-template"></a>Cihaz şablonu
 
 Cihaz şablonları sekmesine tıklayın ve ağ geçidi yetenek modelini görürsünüz. Yetenek modeli iki farklı arabirim etrafında yapılandırılır **Kamera** ve **dijital dağıtım ağ geçidi**
 
 > [!div class="mx-imgBorder"]
-> ![Dijital dağıtım merkezi](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![Uygulamadaki dijital dağıtım ağ geçidi cihaz şablonunu gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 **Kamera** -bu arabirim, kameraya özgü tüm komut yeteneklerini düzenler 
 
 > [!div class="mx-imgBorder"]
-> ![Dijital dağıtım merkezi](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![Dijital dağıtım ağ geçidi cihaz şablonunda kamera arabirimini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 **Dijital dağıtım ağ geçidi** -bu arabirim, kameradan gelen tüm Telemetriyi, bulut tanımlı cihaz ikizi özellikleri ve ağ geçidi bilgilerini temsil eder.
 
 > [!div class="mx-imgBorder"]
-> ![Dijital dağıtım merkezi](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![Dijital dağıtım ağ geçidi cihaz şablonundaki dijital dağıtım ağ geçidi arabirimini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 
 ## <a name="gateway-commands"></a>Ağ Geçidi komutları
 Bu arabirim tüm ağ geçidi komut yeteneklerini düzenler
 
 > [!div class="mx-imgBorder"]
-> ![Dijital dağıtım merkezi](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![Dijital dağıtım ağ geçidi cihaz şablonundaki ağ geçidi komutları arabirimini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 ## <a name="rules"></a>Kurallar
 Bu uygulama şablonunda bulunan iki farklı kuralı görmek için kurallar sekmesini seçin. Bu kurallar, daha fazla araştırma için işleçlere e-posta bildirimleri olarak yapılandırılmıştır.
@@ -96,7 +96,7 @@ Bu uygulama şablonunda bulunan iki farklı kuralı görmek için kurallar sekme
 **Büyük paket** -bu kural, kameranın kalite için incelenemeyecek çok büyük bir paket algıladığında tetiklenecek. 
 
 > [!div class="mx-imgBorder"]
-> ![Dijital dağıtım merkezi](./media/tutorial-iot-central-ddc/ddc-rules.png)
+> ![Dijital dağıtım merkezi uygulamasındaki kuralların listesini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-rules.png)
 
 ## <a name="jobs"></a>İşler
 Bu uygulama şablonunun bir parçası olarak var olan beş farklı işi görmek için işler sekmesini seçin: çözüm genelinde işlemler gerçekleştirmek için işler özelliğinden yararlanabilirsiniz. Burada dijital dağıtım merkezi işleri, gibi görevleri gerçekleştirmek için ikizi özelliğini & cihaz komutlarını kullanıyor.
@@ -105,15 +105,17 @@ Bu uygulama şablonunun bir parçası olarak var olan beş farklı işi görmek 
    * veri yüklemeyi yönetmek için telemetri aralığını değiştirme
 
 > [!div class="mx-imgBorder"]
-> ![Dijital dağıtım merkezi](./media/tutorial-iot-central-ddc/ddc-jobs.png)
+> ![Dijital dağıtım merkezi uygulamasındaki işlerin listesini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-jobs.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim** > **uygulaması ayarlarını** ziyaret ederek uygulama şablonunu silin ve **Sil**' e tıklayın.
+Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim**uygulaması ayarlarını ziyaret ederek uygulama şablonunu silin  >  **Application settings** ve **Sil**' e tıklayın.
 
 > [!div class="mx-imgBorder"]
-> ![Dijital dağıtım merkezi](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
+> ![Uygulamayı tamamladığınızda uygulamanın nasıl silineceğini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Dijital dağıtım merkezi çözüm mimarisi [dijital dağıtım merkezi kavramı](./architecture-digital-distribution-center.md) hakkında daha fazla bilgi edinin
+* Dijital dağıtım merkezi çözüm mimarisi hakkında daha fazla bilgi edinin 
+> [!div class="nextstepaction"]
+> [Dijital dağıtım merkezi kavramı](./architecture-digital-distribution-center.md)
 * Diğer [IoT Central perakende şablonları](./overview-iot-central-retail.md) hakkında daha fazla bilgi edinin
 * IoT Central hakkında daha fazla bilgi edinin [IoT Central genel bakış](../core/overview-iot-central.md)

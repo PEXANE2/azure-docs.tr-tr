@@ -1,29 +1,29 @@
 ---
-title: Azure IoT Central (Önizleme) verileri dışarı aktarma | Microsoft Docs
+title: Azure IoT Central verileri dışarı aktarma | Microsoft Docs
 description: Yeni veri dışa aktarma kullanarak IoT verilerinizi Azure 'a ve özel bulut hedeflerine aktarabilirsiniz.
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/02/2020
+ms.date: 09/15/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
-ms.openlocfilehash: 0a07d7e57ced5e2cd9457dc51ebcd355306fc48e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461944"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974398"
 ---
-# <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>Veri dışa aktarma kullanarak IoT verilerini bulut hedeflerine dışa aktarma (Önizleme)
+# <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Veri dışarı aktarma kullanarak IoT verilerini bulut hedeflerine dışarı aktarma
 
 > [!Note]
-> Bu makalede, IoT Central 'daki Önizleme verileri dışarı aktarma özellikleri açıklanmaktadır.
+> Bu makalede, IoT Central veri dışa aktarma özellikleri açıklanmaktadır.
 >
 > - Eski veri dışa aktarma özellikleri hakkında daha fazla bilgi için bkz. [veri dışa aktarma (eski) kullanarak IoT verilerini bulut hedeflerine dışa aktarma](./howto-export-data-legacy.md).
-> - Veri aktarma ve eski verileri dışarı aktarma özellikleri arasındaki farklar hakkında bilgi edinmek için aşağıdaki [karşılaştırma tablosuna](#comparison-of-legacy-data-export-and-preview-data-export) bakın.
+> - Veri dışa aktarma ve eski veri dışa aktarma özellikleri arasındaki farklar hakkında bilgi edinmek için aşağıdaki [karşılaştırma tablosuna](#comparison-of-legacy-data-export-and-data-export) bakın.
 
-Bu makalede, Azure IoT Central 'de yeni veri aktarma önizlemesi özelliğinin nasıl kullanılacağı açıklanır. IoT Central uygulamanızdan filtrelenmiş ve zenginleştirilmiş IoT verilerini sürekli dışa aktarmak için bu özelliği kullanın. Veri dışa aktarma, gerçek zamanlı Öngörüler, analiz ve depolama için bulut çözümünüzün diğer bölümlerine neredeyse gerçek zamanlı olarak değişiklikleri iter.
+Bu makalede, Azure IoT Central 'de yeni veri dışa aktarma özelliğinin nasıl kullanılacağı açıklanır. IoT Central uygulamanızdan filtrelenmiş ve zenginleştirilmiş IoT verilerini sürekli dışa aktarmak için bu özelliği kullanın. Veri dışa aktarma, gerçek zamanlı Öngörüler, analiz ve depolama için bulut çözümünüzün diğer bölümlerine neredeyse gerçek zamanlı olarak değişiklikleri iter.
 
 Örneğin, şunları yapabilirsiniz:
 
@@ -35,9 +35,9 @@ Bu makalede, Azure IoT Central 'de yeni veri aktarma önizlemesi özelliğinin n
 > [!Tip]
 > Veri dışarı aktarmayı açtığınızda, bu andan itibaren yalnızca verileri alırsınız. Şu anda veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için, verilerin dışarı aktarılmasını erken açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Önizleme verilerini dışa aktarma özelliklerini kullanmak için bir [v3 uygulamasına](howto-get-app-info.md)sahip olmanız ve [veri dışa aktarma](howto-manage-users-roles.md) izninizin olması gerekir.
+Veri dışa aktarma özelliklerini kullanmak için bir [v3 uygulamasına](howto-get-app-info.md)sahip olmanız ve [veri dışa aktarma](howto-manage-users-roles.md) izninizin olması gerekir.
 
 ## <a name="set-up-export-destination"></a>Dışarı aktarma hedefini ayarla
 
@@ -63,7 +63,12 @@ Uygulamasına dışarı aktarmak için mevcut bir Event Hubs ad alanınız yoksa
     - **Paylaşılan erişim ilkeleri > ayarlar**' ı seçin.
     - Yeni bir anahtar oluşturun veya **gönderme** izinleri olan varolan bir anahtarı seçin.
     - Birincil veya ikincil bağlantı dizesini kopyalayın. IoT Central yeni bir hedef ayarlamak için bu bağlantı dizesini kullanın.
-
+    - Alternatif olarak, tüm Event Hubs ad alanı için bir bağlantı dizesi oluşturabilirsiniz:
+        1. Azure portal Event Hubs ad alanına gidin.
+        2. **Ayarlar**altında, **paylaşılan erişim ilkeleri** ' ni seçin.
+        3. Yeni bir anahtar oluşturun veya **gönderme** izinleri olan varolan bir anahtarı seçin.
+        4. Birincil veya ikincil bağlantı dizesini kopyalayın
+        
 ### <a name="create-a-service-bus-queue-or-topic-destination"></a>Service Bus kuyruğu veya konu hedefi oluşturma
 
 Uygulamasına dışarı aktarmak için mevcut bir Service Bus ad alanınız yoksa, aşağıdaki adımları izleyin:
@@ -78,6 +83,11 @@ Uygulamasına dışarı aktarmak için mevcut bir Service Bus ad alanınız yoks
     - **Ayarlar/paylaşılan erişim ilkeleri**' ni seçin.
     - Yeni bir anahtar oluşturun veya **gönderme** izinleri olan varolan bir anahtarı seçin.
     - Birincil veya ikincil bağlantı dizesini kopyalayın. IoT Central yeni bir hedef ayarlamak için bu bağlantı dizesini kullanın.
+    - Alternatif olarak, tüm Service Bus ad alanı için bir bağlantı dizesi oluşturabilirsiniz:
+        1. Azure portal Service Bus ad alanına gidin.
+        2. **Ayarlar**altında, **paylaşılan erişim ilkeleri** ' ni seçin.
+        3. Yeni bir anahtar oluşturun veya **gönderme** izinleri olan varolan bir anahtarı seçin.
+        4. Birincil veya ikincil bağlantı dizesini kopyalayın
 
 ### <a name="create-an-azure-blob-storage-destination"></a>Azure Blob depolama hedefi oluşturma
 
@@ -109,10 +119,10 @@ Verilerinizi dışarı aktarmak için bir hedef olduğuna göre, IoT Central uyg
 
 1. IoT Central uygulamanızda oturum açın.
 
-1. Sol bölmede **veri dışa aktar (Önizleme)** seçeneğini belirleyin.
+1. Sol bölmede **veri dışa aktar**' ı seçin.
 
     > [!Tip]
-    > Sol bölmede **veri dışa aktarma (Önizleme)** seçeneğini görmüyorsanız, uygulamanızda veri dışarı aktarma yapılandırma izniniz yok demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
+    > Sol bölmede **veri dışa aktarma** 'yı görmüyorsanız, uygulamanızda veri dışarı aktarma yapılandırma izniniz yok demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
 
 1. **+ Yeni dışarı aktar**'ı seçin.
 
@@ -127,9 +137,10 @@ Verilerinizi dışarı aktarmak için bir hedef olduğuna göre, IoT Central uyg
 
 1. İsteğe bağlı olarak, dışarıya aktarılmış veri miktarını azaltmak için filtre ekleyin. Her bir veri dışa aktarma türü için farklı filtre türleri mevcuttur:
 
-    Telemetriyi filtrelemek için şunu kullanın:
+    Telemetriyi filtrelemek için şunları yapabilirsiniz:
 
-    - **Yetenek filtresi**: **ad** açılan listesinde bir telemetri öğesi seçerseniz, dışarıya eklenen akış yalnızca filtre koşulunu karşılayan telemetri içerir. **Ad** açılan listesinde bir cihaz veya bulut Özellik öğesi seçerseniz, bu akış yalnızca, filtre koşuluyla eşleşen özelliklere sahip cihazlardan telemetri içerir.
+    - Yalnızca cihaz adı, cihaz KIMLIĞI ve cihaz şablonu filtre koşulu ile eşleşen cihazlardan gelen telemetri dahil olmak üzere, dışarıya alınan akışı **filtreleyin** .
+    - Özellikleri **filtreleme** : **ad** açılan listesinde bir telemetri öğesi seçerseniz, bu akış yalnızca filtre koşulunu karşılayan telemetri içerir. **Ad** açılan listesinde bir cihaz veya bulut Özellik öğesi seçerseniz, bu akış yalnızca, filtre koşuluyla eşleşen özelliklere sahip cihazlardan telemetri içerir.
     - **İleti özelliği filtresi**: cihaz SDK 'larını kullanan cihazlar her telemetri iletisinde *ileti özellikleri* veya *uygulama özellikleri* gönderebilir. Özellikler, özel tanımlayıcılarla iletiyi etiketleyerek anahtar-değer çiftlerinin bir çantadir. İleti özellik filtresi oluşturmak için Aradığınız ileti özelliği anahtarını girip bir koşul belirtin. Yalnızca belirtilen filtre koşuluyla eşleşen özelliklere sahip telemetri iletileri verilir. Şu dize karşılaştırma işleçleri destekleniyor: eşittir, eşit değildir, içerir, içermez, yok, yok. [IoT Hub belgelerinden uygulama özellikleri hakkında daha fazla bilgi edinin](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
     Özellik değişikliklerini filtrelemek için bir **yetenek filtresi**kullanın. Açılan listede bir özellik öğesi seçin. İçe aktarılmış akış yalnızca seçili özellikte filtre koşulunu karşılayan değişiklikleri içerir.
@@ -143,8 +154,8 @@ Verilerinizi dışarı aktarmak için bir hedef olduğuna göre, IoT Central uyg
 
     - **Hedef adı**: IoT Central içindeki hedefin görünen adı.
     - **Hedef türü**: hedef türünü seçin. Hedefini henüz ayarlamadıysanız bkz. [dışarı aktarma hedefini ayarlama](#set-up-export-destination).
-    - Azure Event Hubs Azure Service Bus kuyruğu veya konusu için, kaynağınız için bağlantı dizesini yapıştırın.
-    - Azure Blob depolama için, kaynağınızın bağlantı dizesini yapıştırın ve büyük/küçük harfe duyarlı kapsayıcı adını girin.
+    - Azure Event Hubs, kuyruk veya konu Azure Service Bus için, kaynağınız için bağlantı dizesini yapıştırın ve gerekirse büyük/küçük harfe duyarlı Olay Hub 'ını, kuyruğunu veya konu adını girin.
+    - Azure Blob depolama için, kaynağınız için bağlantı dizesini yapıştırın ve gerekirse, büyük/küçük harfe duyarlı kapsayıcı adını girin.
     - Web kancası için, Web kancası uç noktanız için geri çağırma URL 'sini yapıştırın.
     - **Oluştur**’u seçin.
 
@@ -185,7 +196,7 @@ Her bir dışarıya gönderilen ileti, cihazın ileti gövdesinde gönderdiği t
 - `enrichments`: Dışa aktarma üzerinde herhangi bir zenginleştirme ayarlanır.
 - `messageProperties`: Cihazın iletiyle birlikte gönderdiği ek özellikler. Bu özellikler bazen *uygulama özellikleri*olarak adlandırılır. [IoT Hub belgelerinden daha fazla bilgi edinin](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
-Event Hubs ve Service Bus için IoT Central bir cihazdan iletiyi aldıktan sonra yeni bir iletiyi hızlı bir şekilde dışarı aktarır.
+Event Hubs ve Service Bus için IoT Central bir cihazdan iletiyi aldıktan sonra yeni bir iletiyi hızlı bir şekilde dışarı aktarır. Her iletinin Kullanıcı özelliklerinde (uygulama özellikleri olarak da anılır),, `iotcentral-device-id` `iotcentral-application-id` ve `iotcentral-message-source` otomatik olarak eklenir.
 
 BLOB depolama için, iletiler toplu ve dakikada bir kez verilir.
 
@@ -197,7 +208,7 @@ Aşağıdaki örnek, dışarıya aktarılmış bir telemetri iletisini gösterme
     "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
     "messageSource": "telemetry",
     "deviceId": "1vzb5ghlsg1",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:26:55.455Z",
     "telemetry": {
@@ -232,7 +243,7 @@ Her ileti veya kayıt, bir cihaz veya bulut özelliğindeki bir değişikliği t
 - `templateId`: Cihazla ilişkili cihaz şablonu KIMLIĞI.
 - `enrichments`: Dışa aktarma üzerinde herhangi bir zenginleştirme ayarlanır.
 
-Event Hubs ve Service Bus için, IoT Central yeni iletileri olay hub 'ınıza veya Service Bus kuyruğuna veya konuya neredeyse gerçek zamanlı olarak dışa aktarır.
+Event Hubs ve Service Bus için, IoT Central yeni iletileri olay hub 'ınıza veya Service Bus kuyruğuna veya konuya neredeyse gerçek zamanlı olarak dışa aktarır. Her iletinin Kullanıcı özelliklerinde (uygulama özellikleri olarak da anılır),,, `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` ve `iotcentral-message-type` otomatik olarak eklenir.
 
 BLOB depolama için, iletiler toplu ve dakikada bir kez verilir.
 
@@ -244,11 +255,11 @@ Aşağıdaki örnek, Azure Blob depolamada alınan bir ihraç özelliği değiş
     "messageSource": "properties",
     "messageType": "cloudPropertyChange",
     "deviceId": "18a985g1fta",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:37:32.942Z",
     "properties": [{
-        "fieldName": "MachineSerialNumber",
+        "name": "MachineSerialNumber",
         "value": "abc"
     }],
     "enrichments": {
@@ -257,9 +268,9 @@ Aşağıdaki örnek, Azure Blob depolamada alınan bir ihraç özelliği değiş
 }
 ```
 
-## <a name="comparison-of-legacy-data-export-and-preview-data-export"></a>Eski veri dışa aktarma ve önizleme verilerini dışa aktarma karşılaştırması
+## <a name="comparison-of-legacy-data-export-and-data-export"></a>Eski veri dışa aktarma ve veri dışa aktarma karşılaştırması
 
-Aşağıdaki tabloda, [eski veri dışa aktarma](howto-export-data-legacy.md) ve Önizleme verileri dışarı aktarma özellikleri arasındaki farklar gösterilmektedir:
+Aşağıdaki tabloda, [eski veri dışa aktarma](howto-export-data-legacy.md) ve yeni veri dışa aktarma özellikleri arasındaki farklar gösterilmektedir:
 
 | Özellikler  | Eski veri dışa aktarma | Yeni veri dışa aktarma |
 | :------------- | :---------- | :----------- |

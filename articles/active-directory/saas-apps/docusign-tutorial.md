@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4cea216b85e32ad9f739aff9a487909df74d14ad
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 51ad28319a372cd791575b5a3e67cc0fd6934be2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053744"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981637"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Öğretici: DocuSign ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, DocuSign 'ı Microsoft Azure Active Directory (Azure AD) ile t�
 * Kullanıcılarınız için Azure AD hesapları aracılığıyla otomatik oturum açmayı etkinleştirin.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -40,7 +40,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, aşağıdakileri doğrulamak için bir test ortamında Azure AD SSO 'yu yapılandırıp test edeceksiniz:
 
-* DocuSign, Service Provider (SP) tarafından başlatılan SSO 'yu destekler.
+* DocuSign, Service Provider **SP** tarafından başlatılan SSO 'yu destekler.
 
 * DocuSign **, tam zamanında** Kullanıcı sağlamayı destekler.
 

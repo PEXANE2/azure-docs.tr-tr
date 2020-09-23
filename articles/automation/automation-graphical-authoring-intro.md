@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186342"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987328"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda grafik runbook 'ları yazma
 
@@ -61,7 +61,7 @@ Yapılandırma dikey penceresinde özelliklerini ve parametrelerini yapılandır
 
 Bir parametre kümesi, belirli bir cmdlet için değerleri kabul eden zorunlu ve isteğe bağlı parametreleri tanımlar. Tüm cmdlet 'ler en az bir parametre kümesine sahiptir ve bazılarında birkaç küme vardır. Bir cmdlet birden çok parametre kümesine sahipse, parametreleri yapılandırmadan önce kullanılacak birini seçmeniz gerekir. Bir etkinlik tarafından kullanılan parametre kümesini **parametre kümesi** seçip başka bir küme seçerek değiştirebilirsiniz. Bu durumda, önceden yapılandırdığınız herhangi bir parametre değeri kaybedilir.
 
-Aşağıdaki örnekte, [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet 'inin üç parametre kümesi vardır. Örnek, bir kaynak grubundaki tüm sanal makineleri döndürmek için **Listvirtualmachineınresourcegroupparamset**adlı tek bir isteğe bağlı parametre içeren bir kümesi kullanır. Örnek, döndürülecek sanal makineyi belirtmek için **Getvirtualmachineınresourcegroupparamset** parametre kümesini de kullanır. Bu küme, iki zorunlu parametreye ve bir isteğe bağlı parametreye sahiptir.
+Aşağıdaki örnekte, [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) cmdlet 'inin üç parametre kümesi vardır. Örnek, bir kaynak grubundaki tüm sanal makineleri döndürmek için **Listvirtualmachineınresourcegroupparamset**adlı tek bir isteğe bağlı parametre içeren bir kümesi kullanır. Örnek, döndürülecek sanal makineyi belirtmek için **Getvirtualmachineınresourcegroupparamset** parametre kümesini de kullanır. Bu küme, iki zorunlu parametreye ve bir isteğe bağlı parametreye sahiptir.
 
 ![Parametre kümesi](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -69,7 +69,7 @@ Aşağıdaki örnekte, [Get-AzVM](/powershell/module/az.compute/get-azvm?view=az
 
 Bir parametre için bir değer belirttiğinizde, değerin nasıl belirtilceğini belirlemek için bir veri kaynağı seçersiniz. Belirli bir parametre için kullanılabilen veri kaynakları, bu parametre için geçerli değerlere bağlıdır. Örneğin, null değerlere izin verilmeyen bir parametre için null kullanılabilir bir seçenek değildir.
 
-| veri kaynağı | Açıklama |
+| Veri Kaynağı | Açıklama |
 |:--- |:--- |
 | Sabit değer |Parametre için bir değer yazın. Bu veri kaynağı yalnızca şu veri türleri için kullanılabilir: Int32, Int64, String, Boolean, DateTime, anahtar. |
 | Etkinlik çıkışı |İş akışındaki geçerli etkinlikten önce gelen bir etkinliğin çıkışını kullanın. Tüm geçerli etkinlikler listelenir. Parametre değeri için yalnızca çıktıyı üreten etkinliği kullanın. Etkinlik birden fazla özelliğe sahip bir nesne çıktıbulunursa, etkinlik seçildikten sonra belirli bir özelliğin adını yazabilirsiniz. |
@@ -91,11 +91,11 @@ Bir etkinlik için yeniden deneme işlevselliği, belirli bir koşul karşılana
 
 Bir etkinlik için yeniden denemeyi etkinleştirdiğinizde bir gecikme ve koşul belirleyebilirsiniz. Gecikme süresi, runbook 'un etkinliği yeniden çalıştırmadan önce bekleyeceği süredir (saniye veya dakika cinsinden ölçülür). Bir gecikme belirtmezseniz, etkinlik tamamlandıktan hemen sonra tekrar çalışır.
 
-![Etkinlik yeniden deneme gecikmesi](media/automation-graphical-authoring-intro/retry-delay.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-delay.png" alt-text="Yeniden deneme özelliği etkinleştirme ayarlarının ekran görüntüsü.":::
 
 Yeniden deneme koşulu, etkinlik her çalıştıktan sonra değerlendirilen bir PowerShell deyimidir. İfade true olarak çözümlenirse etkinlik yeniden çalışır. İfade false olarak çözümlenirse etkinlik yeniden çalıştırılmaz ve Runbook bir sonraki etkinliğe gider.
 
-![Etkinlik yeniden deneme gecikmesi](media/automation-graphical-authoring-intro/retry-condition.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Bu koşul doğru alana ve yeniden deneme koşulunda kullanılabilecek PowerShell ifadelerine örneklere kadar yeniden denemeyi gösteren ekran görüntüsü.":::
 
 Yeniden deneme koşulu, `RetryData` etkinlik yeniden denemeleri hakkında bilgilere erişim sağlayan adlı bir değişken kullanabilir. Bu değişken aşağıdaki tablodaki özelliklere sahiptir:
 
@@ -153,7 +153,7 @@ Yapılandırma dikey penceresinde özelliklerini yapılandırmak için bağlant�
 
 | Bağlantı türü | Açıklama |
 |:--- |:--- |
-| İşlem hattı |Hedef etkinlik, kaynak etkinlikten her nesne çıktısı için bir kez çalışır. Kaynak etkinlik hiçbir çıkış içermiyorsa, hedef etkinlik çalışmaz. Kaynak etkinlikten alınan çıkış bir nesne olarak kullanılabilir. |
+| İşlem Hattı |Hedef etkinlik, kaynak etkinlikten her nesne çıktısı için bir kez çalışır. Kaynak etkinlik hiçbir çıkış içermiyorsa, hedef etkinlik çalışmaz. Kaynak etkinlikten alınan çıkış bir nesne olarak kullanılabilir. |
 | Sequence |Hedef etkinlik, kaynak etkinlikten çıkış aldığında yalnızca bir kez çalışır. Kaynak etkinlikten alınan çıkış, nesne dizisi olarak kullanılabilir. |
 
 ### <a name="start-runbook-activity"></a>Runbook 'u Başlat etkinliği
@@ -435,4 +435,4 @@ Runbook 'un yayımlanmış sürümüne dönmek için seçeneğiniz vardır. Bu i
 * Grafik runbook 'larını kullanmaya başlamak için bkz. [öğretici: grafik runbook 'U oluşturma](learn/automation-tutorial-runbook-graphical.md).
 * Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu runbook türleri](automation-runbook-types.md).
 * Otomasyon farklı çalıştır hesabını kullanarak kimlik doğrulaması yapılacağını anlamak için bkz. [Farklı Çalıştır hesabı](automation-security-overview.md#run-as-account).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: dd9aee01edf45f89feb6a6010c8d958511bc3904
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 613ce41820dc5f388af441836bdb4a93e43e5d07
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185407"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987630"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>Öğretici: PowerShell Iş akışı runbook 'u oluşturma
 
@@ -22,7 +22,7 @@ Bu öğretici, Azure Automation’da bir [PowerShell İş Akışı runbook](../a
 > * Runbook işinin durumunu çalıştırma ve izleme
 > * Runbook parametreleri ile bir Azure sanal makinesini başlatmak için Runbook 'u güncelleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -109,17 +109,17 @@ Oluşturduğunuz runbook hala taslak modunda. Üretim ortamında çalıştırmad
 
 6. İş durumunun **Iş özetinde**gösterildiğini unutmayın. Bu durum, runbook 'u test ederken gördüğünüz durumlardan eşleşir.
 
-   ![İş Özeti](../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png" alt-text="Iş Özeti bölümünün vurgulandığını gösteren runbook Iş bölmesinin ekran görüntüsü.":::
 
 7. Runbook durumu tamamlandı olarak gösterildikten sonra **Çıkış**' a tıklayın. İletinizi görebileceğiniz çıkış sayfası açılır `Hello World` .
 
-   ![İş Özeti](../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Çıkış düğmesini vurgulanmış olan runbook Işi bölmesinin ekran görüntüsü.":::
 
 8. Çıkış sayfasını kapatın.
 
 9. Runbook işine ait Akışlar bölmesini açmak için **Tüm Günlükler**’e tıklayın. Yalnızca `Hello World` Çıkış akışında görmeniz gerekir. Akışlar bölmesinin, runbook 'a yazıyorsa ayrıntılı ve hata akışları gibi bir runbook işi için diğer akışları gösterebileceğini unutmayın.
 
-   ![İş Özeti](../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Tüm Günlükler düğmesinin vurgulandığını gösteren runbook Iş bölmesinin ekran görüntüsü.":::
 
 10. MyFirstRunbook sayfasına dönmek için akışlar bölmesini ve Iş bölmesini kapatın.
 

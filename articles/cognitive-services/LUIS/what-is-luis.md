@@ -1,24 +1,24 @@
 ---
 title: Language Understanding (LUIS) nedir?
 description: Language Understanding (LUSıS)-, anlam tahmin etmek ve bilgi ayıklamak için, doğal dilde makine öğrenimini kullanan bulut tabanlı bir API hizmetidir.
-keywords: Azure, yapay zeka, AI, doğal dil işleme, NLP, doğal dil anlama, NLU, AI konuşması, konuşma sohbet botu, sohbet botu Maker, LUO, NLP AI, lusıs AI, Azure LUL, doğal dil anlama
+keywords: Azure, yapay zeka, AI, doğal dil işleme, NLP, doğal dil anlama, NLU, LUO, konuşma, AI sohbet botu, NLP AI, Azure LUL
 ms.topic: overview
 ms.date: 09/02/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ff9aa2652fe8a1e503b5e2c93ca149112770b081
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 3a8905ca1b9e7d7b4b1e4f5add000def9e91f9c6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400951"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985858"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Language Understanding (LUIS), genel anlamı tahmin etmek ve ilgili, ayrıntılı bilgileri çekme amacıyla kullanıcının konuşmasına, doğal dil metnine özel makine öğrenimi zekası uygulayan bulut tabanlı API hizmetidir.
+Language Understanding (LUSıS), bir kullanıcının konuşma, genel anlamı tahmin etmek için doğal dil metnine özel makine öğrenimi zekası uygulayan ve ilgili ve ayrıntılı bilgileri kullanıma sunan bulut tabanlı bir konuşma hizmetidir.
 
-LUIS için istemci uygulaması, bir görevi tamamlamak için kullanıcıyla doğal dil kullanarak iletişim kuran konuşma uygulamasıdır. İstemci uygulamalarına örnek olarak sosyal medya uygulamaları, sohbet botları ve konuşma özellikli masaüstü uygulamaları verilebilir.
+LUIS için istemci uygulaması, bir görevi tamamlamak için kullanıcıyla doğal dil kullanarak iletişim kuran konuşma uygulamasıdır. Sosyal medya uygulamaları, AI chatbots ve konuşma özellikli masaüstü uygulamaları, istemci uygulamalarına örnek olarak verilebilir.
 
 ![Bilişsel hizmetler Language Understanding (LUSıS) ile çalışan 3 istemci uygulamasının kavramsal resmi](./media/luis-overview/luis-entry-point.png "Bilişsel hizmetler Language Understanding (LUSıS) ile çalışan 3 istemci uygulamasının kavramsal resmi")
 
@@ -26,7 +26,7 @@ LUIS için istemci uygulaması, bir görevi tamamlamak için kullanıcıyla doğ
 
 <a name="Accessing-LUIS"></a>
 
-LUIS uygulaması yayımlandıktan sonra istemci uygulaması konuşmaları (metni) LUIS doğal dil işleme uç noktası [API'sine][endpoint-apis] gönderir ve sonuçları JSON yanıtı olarak alır. Sık kullanılan LUIS istemci uygulamalarından biri, sohbet botudur.
+Azure LUO uygulaması yayımlandıktan sonra, bir istemci uygulama, LUSıS doğal dil işleme uç nokta [API][endpoint-apis] 'sine bir işlem (metin) gönderir ve sonuçları JSON yanıtları olarak alır. Sık kullanılan LUIS istemci uygulamalarından biri, sohbet botudur.
 
 
 ![Kullanıcı metnini doğal dil anlama (NLP) ile tahmin etmek için, lu](./media/luis-overview/LUIS-chat-bot-request-response.svg "Kullanıcı metnini doğal dil anlama ile tahmin etmek için, lu")
@@ -44,7 +44,7 @@ LUIS uygulaması, istemci uygulamasının akıllı seçimler yapabilmesi için g
 
 ## <a name="natural-language-understanding-nlu"></a>Doğal dil anlama (NLU)
 
-Luo, doğal dil işlemenin (NLP) bir alt kümesi olan NLU biçiminde [yapay zeka (AI) sağlar](artificial-intelligence.md "LUSıS yapay zeka (AI) sağlar") .
+Luz, doğal dil işleme AI 'nin bir alt kümesi olan NLU biçiminde [yapay zeka (AI) sağlar](artificial-intelligence.md "LUSıS yapay zeka (AI) sağlar") .
 
 LUSıS uygulamanız, etki alanına özgü doğal dil modeli içerir. LUIS uygulamasını önceden oluşturulmuş bir etki alanı modeliyle başlatabilir, kendi modelinizi oluşturabilir veya önceden oluşturulmuş etki alanının belirli bölümlerini kendi özel bilgilerinizle karıştırabilirsiniz.
 
@@ -52,7 +52,7 @@ LUSıS uygulamanız, etki alanına özgü doğal dil modeli içerir. LUIS uygula
 
 * **Özel model** LUO, amaçları ve varlıkları dahil kendi özel modellerinizi belirlemek için size çeşitli yollar sağlar. Varlıklar, makine öğrenimi varlıklarını, belirli veya değişmez varlıkları ve makine öğrenimi ve değişmez değer birleşimini içerir.
 
-[NLP](artificial-intelligence.md "NLP")hakkında daha fazla bilgi ve NLU 'ın Luo 'ya özgü alanı.
+[NLP AI](artificial-intelligence.md "NLP")hakkında daha fazla bilgi edinin ve NLU 'ın Luo 'ya özgü alanı.
 
 ## <a name="step-1-design-and-build-your-model"></a>1. Adım: modelinizi tasarlama ve oluşturma
 

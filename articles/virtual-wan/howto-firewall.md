@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: f20ed76a72eecce59a7b8795a42b033230a2f7e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 577340e485550e84941a33d82b58aa6ff1c933d3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753680"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983666"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>Sanal WAN hub 'ında Azure Güvenlik duvarını yapılandırma
 
@@ -32,20 +32,20 @@ Yeni bir sanal WAN ve yeni bir hub oluşturmak için aşağıdaki makalelerdeki 
 
 Sanal WAN 'nizin **genel bakış** sayfası, sanal hub 'ların ve güvenli hub 'ların listesini gösterir. Aşağıdaki şekilde, güvenli hub 'ları olmayan bir sanal WAN gösterilmektedir.
 
-[![genel bakış](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
+[![Ekran görüntüsünde, sanal hub 'ların listesini içeren bir sanal WAN Için genel bakış sayfası gösterilir.](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
 
 ## <a name="convert-to-secured-hub"></a>Güvenli hub 'a Dönüştür
 
 1. Sanal WAN 'nizin **genel bakış** sayfasında, güvenli bir hub 'a dönüştürmek istediğiniz hub 'ı seçin. Sanal hub sayfasında, bu hub 'a Azure Güvenlik Duvarı dağıtmak için iki seçenek görürsünüz. İki seçenekten birini seçin.
 
-   [![güvenlik](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
+   [![Ekran görüntüsü, sanal WAN 'ınız için güvenli hub 'a veya Azure Güvenlik Duvarı 'Na Dönüştür ' ü seçebileceğiniz genel bakış sayfasını gösterir.](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
 
 1. Seçeneklerden birini belirledikten sonra, **güvenli hub 'A Dönüştür** sayfasını görürsünüz. Dönüştürülecek bir hub seçin ve ardından Ileri ' yi seçin. sayfanın en altındaki **Azure Güvenlik Duvarı** .
 
    [![hub seçin](./media/howto-firewall/select-hub.png)](./media/howto-firewall/select-hub.png#lightbox)
 1. İş akışını tamamladıktan sonra **Onayla**' yı seçin.
 
-   [![Onayla](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
+   [![Ekran görüntüsü, seçili Onayla seçiliyken güvenli hub 'A Dönüştür bölmesini gösterir.](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
 
 1. Hub, güvenli bir hub 'a dönüştürüldükten sonra sanal WAN **genel bakış** sayfasında görüntüleyebilirsiniz.
 

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e52bd150f72ba663c504b81832ce83d3e38cbf04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005321"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986777"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Uygulama geliştiricilerinin Azure Kubernetes Service (AKS) içindeki kaynakları yönetmesi için en iyi uygulamalar
 
@@ -22,7 +22,7 @@ Bu en iyi yöntemler makalesi, bir uygulama geliştirici perspektifinden kümeni
 
 > [!div class="checklist"]
 > * Pod kaynak istekleri ve limitleri nelerdir?
-> * Geliştirme alanları ve Visual Studio Code uygulamalar geliştirme ve dağıtmaya yönelik yollar
+> * Kubernetes ve Visual Studio Code köprü ile uygulama geliştirme ve dağıtmaya yönelik yollar
 > * `kube-advisor`Dağıtımlarla ilgili sorunları denetlemek için aracı kullanma
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Pod kaynak isteklerini ve sınırlarını tanımlama
@@ -74,13 +74,13 @@ Kaynak ölçümleri ve atamaları hakkında daha fazla bilgi için bkz. [kapsay�
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>AKS kümesinde uygulama geliştirme ve hata ayıklama
 
-**En iyi yöntem kılavuzumuzu** geliştirme ekipleri, dev alanlarını kullanarak bir aks kümesine karşı dağıtım ve hata ayıklamalıdır. Bu geliştirme modeli, uygulama üretime dağıtılmadan önce rol tabanlı erişim denetimi (RBAC), ağ veya depolama gereksinimlerinizin uygulandığından emin olmanızı sağlar.
+**En iyi yöntem kılavuzunuzu** geliştirme ekipleri, Kubernetes ile Köprü kullanarak bir aks kümesine karşı dağıtım ve hata ayıklamalıdır.
 
-Azure Dev Spaces ile, uygulamaları doğrudan bir AKS kümesine karşı geliştirin, hata ayıklayın ve test edersiniz. Bir ekip içindeki geliştiriciler, uygulama yaşam döngüsü boyunca derleme ve test yapmak için birlikte çalışır. Visual Studio veya Visual Studio Code gibi mevcut araçları kullanmaya devam edebilirsiniz. Bir AKS kümesinde uygulamayı çalıştırma ve hata ayıklama seçeneği sunan dev alanları için bir uzantı yüklenir.
+Kubernetes Köprüsü sayesinde, uygulamaları doğrudan bir AKS kümesinde geliştirebilir, hatalarını ayıklayabilir ve test edebilirsiniz. Bir ekip içindeki geliştiriciler, uygulama yaşam döngüsü boyunca derleme ve test yapmak için birlikte çalışır. Visual Studio veya Visual Studio Code gibi mevcut araçları kullanmaya devam edebilirsiniz. Kubernetes Köprüsü için bir uzantı, bir AKS kümesinde doğrudan geliştirme yapmanıza olanak sağlar.
 
-Geliştirme alanları ile bu tümleşik geliştirme ve test süreci, [minikube][minikube]gibi yerel test ortamları gereksinimini azaltır. Bunun yerine, bir AKS kümesinde geliştirme ve test edersiniz. Bu küme güvenli hale getirilir ve bir kümeyi mantıksal olarak yalıtmak için ad alanları kullanmanın önceki bölümünde belirtildiği gibi yalıtılabilir. Uygulamalarınız üretime dağıtılmaya hazırsanız, geliştirmenin hepsi gerçek bir AKS kümesine karşı yapıldığından güvenle dağıtım yapabilirsiniz.
+Kubernetes Köprüsü ile bu tümleşik geliştirme ve test süreci, [minikube][minikube]gibi yerel test ortamları gereksinimini azaltır. Bunun yerine, bir AKS kümesinde geliştirme ve test edersiniz. Bu küme güvenli hale getirilir ve bir kümeyi mantıksal olarak yalıtmak için ad alanları kullanmanın önceki bölümünde belirtildiği gibi yalıtılabilir.
 
-Azure dev Spaces, Linux Pod ve düğümlerinde çalışan uygulamalarla kullanılmak üzere tasarlanmıştır.
+Kubernetes Köprüsü, Linux Pod ve düğümlerinde çalışan uygulamalarla kullanılmak üzere tasarlanmıştır.
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Kubernetes için Visual Studio Code uzantısını kullanma
 
@@ -106,7 +106,7 @@ Bu en iyi yöntemler, küme operatörü perspektifinden kümenizi ve iş yükler
 
 Bu en iyi uygulamalardan bazılarını uygulamak için aşağıdaki makalelere bakın:
 
-* [Dev Spaces ile geliştirme][dev-spaces]
+* [Kubernetes ile Köprü ile geliştirme][btk]
 * [Kuto Danışmanı ile ilgili sorunlar olup olmadığını denetleyin][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
@@ -117,7 +117,7 @@ Bu en iyi uygulamalardan bazılarını uygulamak için aşağıdaki makalelere b
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: /visualstudio/containers/overview-local-process-kubernetes
+[btk]: /visualstudio/containers/overview-bridge-to-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

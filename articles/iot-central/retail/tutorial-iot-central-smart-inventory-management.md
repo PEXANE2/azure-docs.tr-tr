@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 430f477422e040e0e7e28fd69a1cbc18bce7d656
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 827d571a6545d0aaffb0f96134fcf094eaa5f26b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000549"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980601"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Öğretici: akıllı envanter yönetimi uygulama şablonunu dağıtma ve yönetme
 
@@ -24,7 +24,7 @@ Bu öğreticide,
 * Akıllı envanter yönetimi uygulaması oluştur 
 * uygulamayı gözden geçir 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu uygulamayı dağıtmak için belirli bir ön koşul gerekmez
 * Azure aboneliğinin olması önerilir, ancak bunu yapmadan da deneyebilirsiniz
@@ -36,7 +36,7 @@ Aşağıdaki adımları kullanarak uygulama oluşturabilirsiniz
 1. Azure IoT Central uygulama Yöneticisi Web sitesine gidin. Sol taraftaki Gezinti çubuğundan **Oluştur** ' u seçin ve ardından **Perakende** sekmesine tıklayın.
 
     > [!div class="mx-imgBorder"]
-    > ![Akıllı envanter yönetimi panosu](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    > ![Smart Inventory managementapplication şablonunun nasıl seçileceğini gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
 
 2. **Perakende** sekmesini seçin ve **akıllı envanter yönetimi** altında **uygulama oluştur** ' u seçin.
 
@@ -47,10 +47,10 @@ Aşağıdaki adımları kullanarak uygulama oluşturabilirsiniz
    **Oluştur**: uygulamanızı dağıtmak için sayfanın alt kısmındaki Oluştur ' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Akıllı envanter yönetimi panosu](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    > ![Akıllı envanter managementapplication şablonundan uygulama oluşturmayı gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
 
     > [!div class="mx-imgBorder"]
-    > ![Smart Inventory Management faturalandırma bilgileri](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+    > ![Uygulamayı oluştururken faturalandırma seçeneklerini gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>Uygulamayı gözden geçir 
 
@@ -63,14 +63,14 @@ Pano, iki farklı ağ geçidi cihaz yönetim işlemi arasında mantıksal olarak
    * Ağ Geçidi konumunu, durum & ilgili ayrıntıları görüntüleyin 
 
 > [!div class="mx-imgBorder"]
-> ![Akıllı envanter yönetimi panosu](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
+> ![Smart Inventory managementdashboard 'in üst yarısını gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
 
    * Ağ geçitlerinin, etkin ve bilinmeyen etiketlerin toplam sayısını kolayca izleyebilirsiniz.
    * Üretici yazılımı güncelleştirme, algılayıcıyı devre dışı bırakma, algılayıcı etkinleştirme, algılayıcı eşiğini güncelleştirme, telemetri aralıklarını güncelleştirme & cihaz hizmeti sözleşmelerini güncelleştirme gibi cihaz yönetim işlemleri gerçekleştirebilirsiniz
    * Ağ Geçidi cihazları, tam veya artımlı tarama ile isteğe bağlı envanter yönetimi gerçekleştirebilir.
 
 > [!div class="mx-imgBorder"]
-> ![Akıllı envanter yönetimi panosu](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
+> ![Smart Inventory managementdashboard 'in alt yarısını gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
 
 ## <a name="device-template"></a>Cihaz şablonu
 Cihaz şablonları sekmesine tıklayın ve ağ geçidi yetenek modelini görürsünüz. Yetenek modeli iki farklı arabirim etrafında yapılandırılır **& özelliği** ve **ağ geçidi komutları**
@@ -78,13 +78,13 @@ Cihaz şablonları sekmesine tıklayın ve ağ geçidi yetenek modelini görürs
 **Ağ geçidi telemetrisi & özelliği** -bu arabirim, algılayıcı, konum, cihaz bilgileri ve ağ geçidi eşikleri ve güncelleştirme aralıkları gibi cihaz ikizi Özellik özellikleriyle ilgili tüm telemetrisi temsil eder.
 
 > [!div class="mx-imgBorder"]
-> ![Akıllı envanter yönetimi panosu](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
+> ![Uygulamadaki Inventory Gateway cihaz şablonunu gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
 
 
 **Ağ geçidi komutları** -bu arabirim tüm ağ geçidi komut yeteneklerini düzenler
 
 > [!div class="mx-imgBorder"]
-> ![Akıllı envanter yönetimi panosu](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
+> ![Inventory Gateway cihaz şablonundaki ağ geçidi komutları arabirimini gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
 
 ## <a name="rules"></a>Kurallar
 Bu uygulama şablonunda bulunan iki farklı kuralı görmek için kurallar sekmesini seçin. Bu kurallar, daha fazla araştırma için işleçlere e-posta bildirimleri olarak yapılandırılmıştır.
@@ -94,7 +94,7 @@ Bu uygulama şablonunda bulunan iki farklı kuralı görmek için kurallar sekme
 **Bilinmeyen Etiketler**: bir varlıkla ILIŞKILI her RFıD & ble etiketini izlemek önemlidir. Ağ Geçidi çok sayıda bilinmeyen etiketi tespit ediyorsanız, Etiketler kaynak kaynağı oluşturma ile ilgili eşitleme güçlüklerinin bir göstergesi vardır.
 
 > [!div class="mx-imgBorder"]
-> ![Akıllı envanter yönetimi panosu](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
+> ![Akıllı envanter managementapplication 'daki kuralların listesini gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
 
 ## <a name="jobs"></a>İşler
 Bu uygulama şablonunun bir parçası olarak var olan beş farklı işi görmek için işler sekmesini seçin: çözüm genelinde işlemler gerçekleştirmek için işler özelliğini kullanabilirsiniz. Burada stok yönetimi işleri, gibi görevleri gerçekleştirmek için cihaz komutlarını ve ikizi özelliğini kullanıyor.
@@ -103,16 +103,18 @@ Bu uygulama şablonunun bir parçası olarak var olan beş farklı işi görmek 
    * tüm çözüm genelinde talep üzerine envanter taraması gerçekleştirin.
 
 > [!div class="mx-imgBorder"]
-> ![Akıllı envanter yönetimi panosu](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
+> ![Akıllı envanter managementapplication 'daki işlerin listesini gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim** > **uygulaması ayarlarını** ziyaret ederek uygulama şablonunu silin ve **Sil**' e tıklayın.
+Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim**uygulaması ayarlarını ziyaret ederek uygulama şablonunu silin  >  **Application settings** ve **Sil**' e tıklayın.
 
 > [!div class="mx-imgBorder"]
-> ![Akıllı envanter yönetimi panosu](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
+> ![Uygulamayı tamamladığınızda uygulamanın nasıl silineceğini gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Akıllı envanter yönetimi [akıllı envanter yönetimi kavramı](./architecture-smart-inventory-management.md) hakkında daha fazla bilgi edinin
+* Akıllı envanter yönetimi hakkında daha fazla bilgi edinin 
+> [!div class="nextstepaction"]
+> [Akıllı envanter yönetimi kavramı](./architecture-smart-inventory-management.md)
 * Diğer [IoT Central perakende şablonları](./overview-iot-central-retail.md) hakkında daha fazla bilgi edinin
 * IoT Central hakkında daha fazla bilgi edinin [IoT Central genel bakış](../core/overview-iot-central.md)
