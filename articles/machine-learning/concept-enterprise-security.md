@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a3cd250e53fb30e07795b184b5c949505e3b20ae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905748"
+ms.locfileid: "90988077"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -361,6 +361,17 @@ Ayrıntılar aşağıda verilmiştir:
 * Telemetri ayrıca Microsoft/Azure aboneliğine de gönderilir.
 
 [![Çıkarım iş akışı](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
+
+## <a name="audit-and-manage-compliance"></a>Uyumluluğu denetleme ve yönetme
+
+[Azure ilkesi](/azure/governance/policy) , Azure kaynaklarının ilkelerinizle uyumlu olduğundan emin olmanızı sağlayan bir idare aracıdır. Azure Machine Learning, aşağıdaki ilkeleri atayabilirsiniz:
+
+* **Müşteri tarafından yönetilen anahtar**: çalışma alanlarının müşteri tarafından yönetilen anahtar kullanması gerekip gerekmediğini denetleyin veya zorlayın.
+* **Özel bağlantı**: çalışma alanlarının bir sanal ağla iletişim kurmak için özel uç nokta kullanıp kullanmadığını denetleyin.
+
+Azure Ilkesi hakkında daha fazla bilgi için bkz. [Azure ilkesi belgeleri](/azure/governance/policy/overview).
+
+Azure Machine Learning özgü ilkeler hakkında daha fazla bilgi için bkz. [Azure ilkesiyle uyumluluğu denetleme ve yönetme](how-to-integrate-azure-policy.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

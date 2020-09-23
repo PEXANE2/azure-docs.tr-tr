@@ -2,16 +2,16 @@
 title: Azure Cosmos öykünücüsü indirme ve sürüm notları
 description: Farklı sürümler ve indirme bilgileri için Azure Cosmos öykünücü sürüm notlarını alın.
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
-ms.date: 06/20/2019
-ms.openlocfilehash: 268470f846f31e3577b12c217ddcb3c128136101
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/21/2020
+ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086649"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988185"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos öykünücüsü-sürüm notları ve indirme bilgileri
 
@@ -26,25 +26,25 @@ Bu makalede, Azure Cosmos öykünücü sürüm notları her sürümde yapılan �
 
 ## <a name="release-notes"></a>Sürüm notları
 
-### <a name="2115-08232020"></a>2.11.5 (08/23/2020)
+### <a name="2115-23-august-2020"></a>2.11.5 (23 Ağustos 2020)
 
 Bu sürüm iki yeni Cosmos öykünücü başlatma seçeneği ekler: 
 
 * "/EnablePreview"-öykünücü için Önizleme özellikleri sunar. Hala geliştirme aşamasında olan ve bunlara CI ve örnek yazma aracılığıyla erişilebilen Önizleme özellikleri.
-* "/EnableAadAuthentication"-öykünücü, Azure Cosmos ana anahtarlarına alternatif olarak özel AAD belirteçlerini kabul etmesine olanak sağlar. Bu özellik hala geliştirme aşamasındadır; belirli rol atamaları ve diğer izinlerle ilgili ayarlar şu anda desteklenmemektedir.
+* "/EnableAadAuthentication"-öykünücü, Azure Cosmos ana anahtarlarına alternatif olarak özel Azure Active Directory belirteçlerini kabul etmesine olanak sağlar. Bu özellik hala geliştirme aşamasındadır; belirli rol atamaları ve diğer izinlerle ilgili ayarlar şu anda desteklenmemektedir.
 
-### <a name="2112-07072020"></a>2.11.2 (07/07/2020)
+### <a name="2112-07-july-2020"></a>2.11.2 (07 Temmuz 2020)
 
 - Bu sürüm, Cosmos öykünücüsünün sorunlarını giderirken ETL izlemelerinin toplanması için gereken değişiklikleri değiştirir. WPR (Windows performans çalışma zamanı araçları) artık, eski LOGMAN tabanlı yakalama kullanım dışı durumdayken ETL tabanlı izlemeleri yakalamaya yönelik varsayılan araçlardır. En son Windows güvenlik güncelleştirmelerinde, Cosmos öykünücüsü aracılığıyla yürütüldüğünde, LOGMAN 'in nasıl çalıştığı konusunda beklenmedik bir etkiye sahip olduğundan bu değişiklik kısmen zorunludur.
 
-### <a name="2111-06102020"></a>2.11.1 (06/10/2020)
+### <a name="2111-10-june-2020"></a>2.11.1 (10 Haziran 2020)
 
-- Bu sürüm, öykünücü Veri Gezgini ilgili birkaç hatayı düzeltir. Belirli durumlarda, öykünücü Veri Gezgini bir Web tarayıcısı aracılığıyla kullanılırken Cosmos öykünücü uç noktasına bağlanamaz ve veritabanı veya kapsayıcı oluşturma gibi ilgili tüm eylemler hata verir. Düzeltilen ikinci sorun, Veri Gezgini karşıya yükleme eylemini kullanarak bir JSON dosyasından bir öğe oluşturmakla ilgilidir.
+- Bu sürüm, öykünücü Veri Gezgini ilgili birkaç hatayı düzeltir. Bir Web tarayıcısı aracılığıyla öykünücü Veri Gezgini kullanılırken, Cosmos öykünücü uç noktasına bağlanamaz ve bir veritabanı ya da kapsayıcı oluşturma gibi tüm ilgili eylemler hataya neden olur. Düzeltilen ikinci sorun, Veri Gezgini karşıya yükleme eylemini kullanarak bir JSON dosyasından bir öğe oluşturmakla ilgilidir.
 
 ### <a name="2110"></a>2.11.0
 
 - Bu sürüm, otomatik ölçeklendirme sağlanan aktarım hızı için destek sunar. Bu yeni özellikler, istek birimleri (RU/s) içinde özel bir en yüksek sağlanan aktarım hızı düzeyi ayarlamanıza, mevcut veritabanlarında ve kapsayıcılarda otomatik ölçeklendirmeyi etkinleştirmesine ve Azure Cosmos DB SDK 'lar aracılığıyla programlı destek sağlanmasına olanak tanır.
-- Büyük miktarda belge (1GB fazla) ile sorgulama yaparken bir sorunu çözme, öykünücü iç hata durum kodu 500 ile başarısız olur.
+- Çok sayıda belge (1 GB üzerinde) sorgulanırken bir sorunu çözme, öykünücü iç hata durum kodu 500 ile başarısız olur.
 
 ### <a name="292"></a>2.9.2
 
@@ -64,11 +64,11 @@ Bu sürüm iki yeni Cosmos öykünücü başlatma seçeneği ekler:
 
 ### <a name="270"></a>2.7.0
 
-- Bu sürüm, .NET Core veya x86 .NET tabanlı istemcileri kullanırken kullanıcılardan SQL API hesabında sorgu yürütmesini önleyen bir gerileme düzeltir.
+- Bu sürüm, .NET Core veya x86 .NET tabanlı istemciler kullanılırken kullanıcıların öykünücü aracılığıyla SQL API hesabına karşı sorgu yürütmesini önleyen bir gerileme düzeltir.
 
 ### <a name="246"></a>2.4.6
 
-- Bu sürüm Azure Cosmos 2019 hizmetindeki özelliklerle birlikte Azure [Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)bölümünde belirtilen özel durumlar ile eşlik sağlar. Ayrıca, komut satırı ve doğrudan mod bağlantısı kullanan SDK istemcileri için iç IP adresi geçersiz kılmaları aracılığıyla çağrıldığında öykünücü kapatmaya ilişkin çeşitli hataları düzeltir.
+- Bu sürüm Azure Cosmos 2019 hizmetindeki özelliklerle birlikte Azure [Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)bölümünde belirtilen özel durumlar ile eşlik sağlar. Ayrıca, komut satırı ve doğrudan mod bağlantısı kullanan SDK istemcileri için iç IP adresi geçersiz kılmaları aracılığıyla çağrıldığında öykünücü kapanıyla ilgili çeşitli hataları düzeltir.
 
 ### <a name="243"></a>2.4.3
 
