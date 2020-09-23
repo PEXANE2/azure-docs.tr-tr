@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 527255653bf2779b36e0e463cd32a0b334c00f96
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798503"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979917"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketine erişim isteme
 
@@ -80,6 +80,12 @@ Access Portal 'da erişim paketini bulduktan sonra bir istek gönderebilirsiniz.
 Uygulanan birden çok ilkeye sahip bir erişim paketine erişim isteğinde karşılaşırsanız, bir ilke seçmeniz istenebilir. Örneğin, bir erişim paketi Yöneticisi iki dahili çalışan grubu için iki ilkeye sahip bir erişim paketi yapılandırabilir. İlk ilke 60 gün boyunca erişime izin verebilir ve onay gerektirebilir. İkinci ilke 2 gün boyunca erişime izin verebilir ve onay gerektirmez. Bu senaryoyla karşılaşırsanız, kullanmak istediğiniz ilkeyi seçmeniz gerekir.
 
 ![Erişim Portalı-erişim ıste-birden çok ilke](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+### <a name="fill-out-requestor-information"></a>İstek sahibi bilgilerini doldur
+
+Erişim paketine erişim vermeden önce iş gerekçesini ve ek istek sahibi bilgilerini gerektiren bir erişim paketine erişim isteyebilirsiniz. Erişim paketine erişmek için gereken tüm istek sahibi bilgilerini doldurun.
+
+![Erişim Portalı-erişim ISTEME-istek sahibi bilgilerini doldur](./media/entitlement-management-request-access/my-access-requestor-information.png)
 
 ## <a name="resubmit-a-request"></a>İsteği yeniden gönder
 

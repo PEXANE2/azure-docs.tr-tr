@@ -1,0 +1,68 @@
+### YamlMime:Landing
+title: Ölçüm Danışmanı belgeleri
+summary: Ölçüm Danışmanı makine öğrenmesi bilmeniz gerekmeden veri alımı, anomali algılama ve tanılamaya yönelik API’lerden oluşan bir küme sağlayan, zaman serisi izleme platformudur.
+metadata:
+  title: Ölçüm Danışmanı Belgeleri - Öğreticiler, API Başvuruları - Azure Bilişsel Hizmetler | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: Ölçüm Danışmanı makine öğrenmesi bilmeniz gerekmeden veri alımı, anomali algılama ve tanılamaya yönelik API’lerden oluşan bir küme sağlayan, zaman serisi izleme platformudur.
+  author: aahill
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.subservice: metrics-advisor
+  ms.topic: landing-page
+  ms.date: 08/13/2020
+  ms.author: aahi
+  ms.openlocfilehash: f30f45b8a683d9403973517ee4558be9cd4be664
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928993"
+landingContent:
+- title: Ölçüm Danışmanı hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ölçüm Danışmanı nedir?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Tanıtım sitesini keşfetme
+      url: quickstarts/explore-demo.md
+    - text: Web’de ilk ölçümünüzü izleme
+      url: quickstarts/web-portal.md
+    - text: Çözümünüzü özelleştirmek için REST API’leri kullanma
+      url: quickstarts/rest-api.md
+- title: Nasıl yapılır makaleleri
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verilerinizi ekleme
+      url: how-tos/onboard-your-data.md
+    - text: Farklı veri akışı kaynaklarını bağlama
+      url: data-feeds-from-different-sources.md
+    - text: Veri akışlarını yönetme
+      url: how-tos/manage-data-feeds.md
+    - text: Ölçümleri yapılandırma ve ince ayar algılama yapılandırması
+      url: how-tos/configure-metrics.md
+    - text: Kanca kullanarak uyarıları yapılandırma ve bildirimler alma
+      url: how-tos/alerts.md
+    - text: Olay tanılama
+      url: how-tos/diagnose-incident.md
+    - text: Geri bildirimi kullanarak anomali algılamayı ayarlama
+      url: how-tos/anomaly-feedback.md
+    - text: Ölçüm grafiği oluşturma
+      url: how-tos/metrics-graph.md
+- title: Başvuru
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sözlük
+      url: glossary.md
+    - text: Ölçüm Danışmanı API’si
+      url: https://go.microsoft.com/fwlink/?linkid=2141634
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest

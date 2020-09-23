@@ -4,21 +4,21 @@ description: Azure Cosmos DB işlemsel (satır tabanlı) ve analitik (sütun tab
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: fdaffef6c682bd1f9c81f14af6cd949816f7555a
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 17dce45e73a5620db2201534126900d8e571ec45
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505531"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900267"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB analitik depo (Önizleme) nedir?
 
 > [!IMPORTANT]
 > Analitik depolama Azure Cosmos DB Şu anda önizleme aşamasındadır. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Analitik depo Azure Cosmos DB, işlem iş yüklerinize herhangi bir etkisi olmadan, Azure Cosmos DB işletimsel verilere karşı, büyük ölçekli analiz sağlamak için tamamen yalıtılmış bir sütun deposudur.  
+Analitik depo Azure Cosmos DB, işlemsel iş yüklerinize herhangi bir etkisi olmadan, Azure Cosmos DB işletimsel verilere karşı büyük ölçekli analizler sağlamak için tam olarak yalıtılmış bir sütun deposudur.  
 
 ## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>İşletimsel verilerde büyük ölçekli analiz sorunları
 
@@ -30,11 +30,11 @@ ETL ardışık düzenleri, işletimsel verilere yapılan güncelleştirmeleri i�
 
 ## <a name="column-oriented-analytical-store"></a>Sütun odaklı analitik depo
 
-Azure Cosmos DB analitik depo, geleneksel ETL işlem hatları ile oluşan karmaşıklık ve gecikme süreli zorluklara yöneliktir. Azure Cosmos DB analitik depo, işletimsel verilerinizi otomatik olarak ayrı bir sütun deposuna eşitleyebilir. Sütun deposu biçimi, büyük ölçekli analitik sorguların en iyi duruma getirilmiş bir şekilde gerçekleştirilmesi için uygundur ve bu tür sorguların gecikme süresini artırır.
+Azure Cosmos DB analitik depo, geleneksel ETL işlem hatları ile oluşan karmaşıklık ve gecikme süreli zorluklara yöneliktir. Azure Cosmos DB analitik depo, işletimsel verilerinizi otomatik olarak ayrı bir sütun deposuna eşitleyebilir. Sütun deposu biçimi, büyük ölçekli analitik sorguların en iyi duruma getirilmiş bir şekilde gerçekleştirilmesi için uygundur, bu da bu sorguların gecikme süresini artırır.
 
 Azure SYNAPSE bağlantısı 'nı kullanarak artık SYNAPSE Analytics 'ten Azure Cosmos DB analitik depoya doğrudan bağlayarak hiçbir ETL HTAP çözümü oluşturabilirsiniz. İşletimsel verilerinizde neredeyse gerçek zamanlı büyük ölçekli analiz çalıştırmanızı sağlar.
 
-## <a name="analytical-store-details"></a>Analitik depo ayrıntıları
+## <a name="features-of-analytical-store"></a>Analitik depo özellikleri 
 
 Azure Cosmos DB kapsayıcısında analitik depoyu etkinleştirdiğinizde, yeni bir sütun deposu, kapsayıcıdaki işletimsel verilere göre dahili olarak oluşturulur. Bu sütun deposu, bu kapsayıcı için satır odaklı işlem deposundan ayrı olarak kalıcı hale getirilir. İşletimsel verilerinize ekler, güncelleştirmeler ve silmeler otomatik olarak analitik depola eşitlenir. Verileri eşitlemek için değişiklik akışına veya ETL 'ye ihtiyacınız yoktur.
 
@@ -70,35 +70,94 @@ Azure Cosmos DB işlem deposu, yatay bölümleme kullanarak depolama ve aktarım
 
 #### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Şema güncelleştirmelerini otomatik olarak işle
 
-Azure Cosmos DB işlemsel depolama şeması belirsiz ve şema veya dizin yönetimiyle uğraşmak zorunda kalmadan işlem uygulamalarınızda yineleme yapmanızı sağlar. Bunun aksine, analitik depolamanın, analitik sorgu performansını iyileştirmek için şema Azure Cosmos DB. Otomatik eşitleme özelliği ile, Azure Cosmos DB işlem deposundan en son güncelleştirmeler üzerinde şema çıkarımını yönetir.  Ayrıca, iç içe geçmiş veri türlerini işlemeyi içeren analitik depodaki şema gösterimini de yönetir.
+Azure Cosmos DB işlemsel depolama şeması belirsiz ve şema veya dizin yönetimiyle uğraşmak zorunda kalmadan işlem uygulamalarınızda yineleme yapmanızı sağlar. Bunun aksine, analitik depolamanın, analitik sorgu performansını iyileştirmek için şema Azure Cosmos DB. Otomatik eşitleme özelliğiyle, Azure Cosmos DB işlem deposundan en son güncelleştirmeler için şema çıkarımını yönetir.  Ayrıca, iç içe geçmiş veri türlerini işlemeyi içeren analitik depodaki şema gösterimini de yönetir.
 
-Zaman içinde yeni özelliklerin eklendiği bir şema evrimi varsa, analitik depo otomatik olarak, işlem deposundaki tüm geçmiş şemalar genelinde bir birleştirilmiş şema gösterir.
+Şemanız geliştikçe ve zaman içinde yeni özellikler eklendikçe, analitik depo otomatik olarak, işlem deposundaki tüm geçmiş şemalar genelinde bir birleştirilmiş şema sunar.
 
-Azure Cosmos DB ' deki tüm işletimsel veriler analiz için iyi tanımlanmış bir şemaya uyar, daha sonra şema otomatik olarak algılanır ve analitik depoda doğru şekilde gösterilir. Aşağıda tanımlandığı gibi analizler için iyi tanımlanmış şema bazı öğeler tarafından ihlal edilirse, bu, analitik depoya dahil edilmez. Analiz tanımının iyi tanımlanmış şeması nedeniyle senaryolar engellenirse [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com)e-posta gönderin.
+##### <a name="schema-constraints"></a>Şema kısıtlamaları
 
-Analiz için iyi tanımlanmış bir şema aşağıdaki noktalara göre tanımlanmıştır:
+Aşağıdaki kısıtlamalar, analitik depolamayı otomatik olarak göstermek ve şemayı doğru temsil etmek üzere etkinleştirdiğinizde Azure Cosmos DB işletimsel veriler üzerinde geçerlidir:
 
-* Bir özellik, birden çok öğe arasında her zaman aynı türe sahiptir
-
-  * Örneğin, `{"a":123} {"a": "str"}` `"a"` bazen bir dize ve bazen bir sayı olduğundan, iyi tanımlanmış bir şemaya sahip değildir. 
+* Şemada herhangi bir iç içe geçme düzeyinde en fazla 200 özellik ve en fazla iç içe geçme derinliği 5 ' i kullanabilirsiniz.
   
-    Bu durumda, analitik depo veri türünü `“a”` `“a”` kapsayıcının kullanım ömrü içinde ilk oluşan öğede veri türü olarak kaydeder. Veri türünün farklı olduğu öğeler `“a”` analitik depoya dahil edilmez.
+  * En üst düzeydeki 201 özelliklerine sahip bir öğe bu kısıtlamayı karşılamıyor ve bu nedenle analitik depoda temsil edilmez.
+  * Şemada beşten fazla iç içe geçmiş düzeyi olan bir öğe Ayrıca bu kısıtlamayı karşılamaz ve bu nedenle analitik depoda temsil edilmez. Örneğin, aşağıdaki öğe gereksinimini karşılamıyor:
+
+     `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
+
+* Durum insensitively karşılaştırılan Özellik adları benzersiz olmalıdır. Örneğin, aşağıdaki öğeler bu kısıtlamayı karşılamaz ve bu nedenle analitik deposunda gösterilmeyecektir:
+
+  `{"Name": "fred"} {"name": "john"}` – "Ad" ve "ad", büyük/küçük harfe duyarsız bir şekilde karşılaştırıldığında aynıdır.
+
+##### <a name="schema-representation"></a>Şema gösterimi
+
+Analitik depoda iki şema gösterimi modu vardır. Bu modlar, bir sütunlu temsilinin basitliği, çok biçimli şemaları işleme ve sorgu deneyiminin basitliği arasında dengelemeye sahiptir:
+
+* İyi tanımlanmış şema gösterimi
+* Tam uygunluk şeması temsili
+
+> [!NOTE]
+> SQL (çekirdek) API hesapları için, analitik depo etkinleştirildiğinde, analitik depodaki varsayılan şema gösterimi iyi tanımlanmıştır. MongoDB hesapları için Azure Cosmos DB API 'SI için, analitik depodaki varsayılan şema gösterimi tam bir uygunluk şeması gösterimidir. Bu API 'lerin her biri için varsayılan tekliften farklı bir şema temsili gerektiren senaryolar varsa, bunu etkinleştirmek için [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com) ulaşın.
+
+**İyi tanımlanmış şema gösterimi**
+
+İyi tanımlanmış şema gösterimi, işlem deposundaki şema belirsiz verilerin basit tablolu bir gösterimini oluşturur. İyi tanımlanmış şema gösterimi aşağıdaki noktalara dikkat edin:
+
+* Bir özellik, birden çok öğe arasında her zaman aynı türe sahiptir.
+
+  * Örneğin, `{"a":123} {"a": "str"}` `"a"` bazen bir dize ve bazen bir sayı olduğundan, iyi tanımlanmış bir şemaya sahip değildir. Bu durumda, analitik depo veri türünü `“a”` `“a”` kapsayıcının kullanım ömrü içinde ilk oluşan öğede veri türü olarak kaydeder. Veri türünün farklı olduğu öğeler `“a”` analitik depoya dahil edilmez.
   
     Bu koşul, null özellikler için uygulanmaz. Örneğin, `{"a":123} {"a":null}` hala iyi tanımlanmış.
 
-* Dizi türleri tek bir tekrarlanmış tür içermelidir
+* Dizi türleri tek bir tekrarlanmış tür içermelidir.
 
-  * Örneğin, `{"a": ["str",12]}` dizi tamsayı ve dize türleri karışımı içerdiğinden iyi tanımlanmış bir şema değildir
+  * Örneğin, `{"a": ["str",12]}` dizi tamsayı ve dize türleri karışımı içerdiğinden iyi tanımlanmış bir şema değildir.
 
-* Bir şemanın herhangi bir iç içe geçme düzeyinde en fazla 200 özellik ve en fazla iç içe geçme derinliği 5 olur
+> [!NOTE]
+> Azure Cosmos DB analitik depo iyi tanımlanmış şema gösterimini izliyorsa ve yukarıdaki belirtim belirli öğeler tarafından ihlal edilirse, bu öğeler analitik depoya dahil edilmez.
 
-  * En üst düzeyde 201 özelliklerine sahip bir öğenin iyi tanımlanmış bir şeması yok.
+**Tam uygunluk şeması temsili**
 
-  * Şemada beşten fazla iç içe geçmiş düzeyi olan bir öğe ayrıca iyi tanımlanmış bir şemaya sahip değildir. Örneğin, `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
+Tam uygunluk şeması temsili, şema belirsiz işlemsel verilerde çok biçimli şemaların tam kapsamını işlemek için tasarlanmıştır. Bu şema gösteriminde, iyi tanımlanmış şema kısıtlamaları (karışık veri türü alanları veya karışık veri türü dizileri olmayan) ihlal edildiğinde hiçbir öğe analitik depodan atılamaz.
 
-* Özellik adları, büyük/küçük harfe duyarsız bir şekilde karşılaştırıldığında benzersizdir
+Bu, işletimsel verilerin yaprak özelliklerinin, özelliğindeki değerlerin veri türüne göre ayrı sütunlara sahip analitik depoya çevrilirken elde edilir. Yaprak Özellik adları, analitik depo şemasında, belirsizlik olmadan sorgu olabilecek bir sonek olarak veri türleriyle genişletilir.
 
-  * Örneğin, aşağıdaki öğelerin iyi tanımlanmış bir şeması yoktur `{"Name": "fred"} {"name": "john"}` `"Name"` ve `"name"` büyük/küçük harfe duyarsız bir şekilde karşılaştırıldığında aynıdır
+Örneğin, işlem deposunda aşağıdaki örnek belgeyi ele alalım:
+
+```json
+{
+name: "John Doe",
+age: 32,
+profession: "Doctor",
+address: {
+  streetNo: 15850,
+  streetName: "NE 40th St.",
+  zip: 98052
+},
+salary: 1000000
+}
+```
+
+`streetName`İç içe yerleştirilmiş nesne içindeki yaprak özelliği, `address` analitik depo şemasında bir sütun olarak temsil edilir `address.object.streetName.int32` . Veri türü, sütuna bir sonek olarak eklenir. Bu şekilde, yaprak özelliğinin değerinin `streetNo` "123" olduğu (bir dize olduğunu notta), analitik deponun şeması, önceden yazılmış bir sütunun türünü değiştirmeden otomatik olarak gelişir. `address.object.streetName.string`Bu "123" değerinin depolandığı şekilde analitik depoya eklenen yeni bir sütun.
+
+**Sonek eşlemesine veri türü**
+
+Bu, tüm özellik veri türlerinin ve bunların son ek temsillerini analitik deposunda bir eşlemedir:
+
+|Özgün veri türü  |Önekini  |Örnek  |
+|---------|---------|---------|
+| Çift |  ". float64" |    24,99|
+| Dizi | ". Array" |    ["a", "b"]|
+|İkili | ". Binary" |0|
+|Boole    | ". bool"   |Doğru|
+|Int32  | ". Int32"  |123|
+|Int64  | ". Int64"  |255486129307|
+|Null   | ". null"   | null|
+|Dize|    ". String" | "ABC"|
+|Zaman damgası |    ". Timestamp" |  Zaman damgası (0, 0)|
+|DateTime   |". Date"    | Iztarihi ("2020-08-21T07:43:07.375 Z")|
+|ObjectId   |". ObjectID"    | ObjectID ("5f3f7b59330ec25c132623a2")|
+|Belge   |". Object" |    {"a": "a"}|
 
 ### <a name="cost-effective-archival-of-historical-data"></a>Geçmiş verilerin düşük maliyetli Arşivi
 
@@ -155,15 +214,17 @@ Bir kapsayıcıda analitik TTL, özelliği kullanılarak ayarlanır `AnalyticalS
 * Varsa ve değer bazı pozitif bir sayıya ayarlanırsa "n": öğelerin, işlem deposunda son değiştirilme zamanından sonraki "n" saniye içinde süresi dolacak. İşlemsel depodaki verilerin saklanması ne olursa olsun, işletimsel verilerinizi analitik depoda sınırlı bir süre boyunca saklamak isterseniz, bu ayar yararlanılabilir olabilir
 
 Dikkat edilmesi gereken bazı noktalar:
-*   Analitik depo bir analitik TTL değeri ile etkinleştirildikten sonra, daha sonra farklı bir geçerli değere güncelleştirilebilen olabilir 
-*   İşlem TTL 'SI kapsayıcı veya öğe düzeyinde ayarlanırken, analitik TTL yalnızca şu anda kapsayıcı düzeyinde ayarlanabilir
-*   Bir kapsayıcı düzeyinde analitik TTL >= işlem TTL ayarını yaparak, analitik depoda işletimsel verilerinizin daha uzun süre bekletmesini elde edebilirsiniz
-*   Analitik depo, analitik TTL = işlem TTL 'SI ayarlanarak işlem deposunu yansıtmak için yapılabilir
 
-Kapsayıcıda anaytical Store 'u etkinleştirdiğinizde:
- * Azure portalını kullanarak analitik TTL,-1 varsayılan değerine ayarlanır. Veri Gezgini altındaki kapsayıcı ayarlarına giderek bu değeri ' n ' saniye olarak değiştirebilirsiniz. 
+*   Analitik depo bir analitik TTL değeri ile etkinleştirildikten sonra, daha sonra farklı bir geçerli değere güncelleştirilebilen olabilir. 
+*   İşlem TTL 'SI kapsayıcı veya öğe düzeyinde ayarlanırken, analitik TTL yalnızca şu anda kapsayıcı düzeyinde ayarlanabilir.
+*   Analitik deposunda, kapsayıcı düzeyinde analitik TTL >= işlem TTL ayarını yaparak, işletimsel verilerinizin daha uzun süre bekletmesini elde edebilirsiniz.
+*   Analitik depo, analitik TTL = işlem TTL 'SI ayarlanarak işlem deposunu yansıtmak için yapılabilir.
+
+Bir kapsayıcıda analitik depoyu etkinleştirdiğinizde:
+
+* Azure portal, analitik TTL seçeneği-1 varsayılan değerine ayarlanır. Veri Gezgini altındaki kapsayıcı ayarlarına giderek bu değeri ' n ' saniye olarak değiştirebilirsiniz. 
  
- * Azure SDK veya PowerShell ya da CLı kullanarak, analitik TTL-1 veya ' n ' olarak ayarlanarak etkinleştirilebilir. 
+* Azure SDK veya PowerShell ya da CLı 'dan, analitik TTL seçeneği-1 veya ' n ' olarak ayarlanarak etkinleştirilebilir. 
 
 Daha fazla bilgi için bkz. [bir kapsayıcıda ANALITIK TTL yapılandırma](configure-synapse-link.md#create-analytical-ttl).
 

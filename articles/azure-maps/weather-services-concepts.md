@@ -1,23 +1,23 @@
 ---
-title: Hava durumu Hizmetleri kavramları | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure Maps Hava durumu Hizmetleri için uygulanan kavramlar hakkında bilgi edineceksiniz.
+title: Microsoft Azure haritalarda Hava durumu Hizmetleri kavramları
+description: Microsoft Azure Maps Hava durumu Hizmetleri için uygulanan kavramlar hakkında bilgi edinin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e8ecbd50aa4490bde705b386a67b8732bb8c02c9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132121"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972037"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure haritalar 'da Hava durumu Hizmetleri
 
-Bu makalede, [Azure Maps Hava durumu Hizmetleri](https://aka.ms/AzureMapsWeatherService)için uygulanan kavramlar tanıtılmaktadır. Hava durumu API 'Leri ile çalışmaya başlamadan önce bu makaleyi kullanmanızı öneririz. 
+Bu makalede, [Azure Maps Hava durumu Hizmetleri](https://aka.ms/AzureMapsWeatherService)için uygulanan kavramlar tanıtılmaktadır. Hava durumu API 'Leri ile çalışmaya başlamadan önce bu makaleyi kullanmanızı öneririz.
 
 ## <a name="unit-types"></a>Birim türleri
 
@@ -47,7 +47,7 @@ Hava durumu hizmeti API 'Lerinden bazıları, kullanıcının ölçümde veya ek
 |19      |Kelvin              |
 |20      |yüzdeyi             |
 |21      |float               |
-|22      |integer             |
+|22      |tamsayı             |
 
 
 ## <a name="weather-icons"></a>Hava durumu simgeleri
@@ -56,39 +56,39 @@ Bazı hava durumu hizmeti API 'Leri `iconCode` yanıt olarak ' i döndürür. , 
 
 | Simge numarası |Simge| Gün | Gerçekleştirilmiştir | Metin |
 |-------------|:----:|-----|-------|------|
-| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Evet |  Hayır    | Güneşli|
-| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Evet |  Hayır    | Çoğunlukla güneş|
-| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Evet |  Hayır    | Kısmi güneş|
-| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Evet |  Hayır    | Aralıklı bulutlar|
-| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Evet |  Hayır    | Hazlu güneş ışığı |
-| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Evet |  Hayır    | Genellikle Cloudy|
+| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Yes |  Hayır    | Güneşli|
+| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Yes |  Hayır    | Çoğunlukla güneş|
+| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Yes |  Hayır    | Kısmi güneş|
+| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Yes |  Hayır    | Aralıklı bulutlar|
+| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Yes |  Hayır    | Hazlu güneş ışığı |
+| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Yes |  Hayır    | Genellikle Cloudy|
 | 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Yes |  Yes   | Bulutlu |
 | 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Yes |  Yes   | Dreary (fazla atama)|
 | 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Yes |  Yes   | Sis|
 | 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Yes |  Yes   | Gösteri|
-| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Evet |  Hayır    | Genellikle, showers ile Cloudy|
-| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Evet |  Hayır    | Showers ile kısmen güneş|
+| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Yes |  Hayır    | Genellikle, showers ile Cloudy|
+| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Yes |  Hayır    | Showers ile kısmen güneş|
 | 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Yes |  Yes   | Thunderstorms|
-| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Evet |  Hayır    | Çoğunlukla Cloudy, thunderstorms ile|
-| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Evet |  Hayır    | Thunderstorms ile kısmen güneş|
+| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Yes |  Hayır    | Çoğunlukla Cloudy, thunderstorms ile|
+| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Yes |  Hayır    | Thunderstorms ile kısmen güneş|
 | 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Yes |  Yes   | Maktan|
 | 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Yes |  Yes   | Flurrıes|
-| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Evet |  Hayır    | Genellikle Flurrıes ile Cloudy|
-| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Evet |  Hayır    | Flurrıes ile kısmen güneş|
+| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Yes |  Hayır    | Genellikle Flurrıes ile Cloudy|
+| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Yes |  Hayır    | Flurrıes ile kısmen güneş|
 | 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Yes |  Yes   | Kar|
-| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Evet |  Hayır    | Genellikle kar ile Cloudy|     
+| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Yes |  Hayır    | Genellikle kar ile Cloudy|     
 | 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Yes |  Yes   | Ice |
 | 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Yes |  Yes   | Uyun|
 | 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Yes |  Yes   | Yağmur dondurma|
 | 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | Yes |  Yes   | Yağmur ve kar|
-| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Yes |  Yes   | Sık erişim|
+| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Yes |  Yes   | Sık Erişimli|
 | 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Yes |  Yes   | Soğuk|
 | 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Yes |  Yes   | Rüzgarlı|
-| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Hayır  |  Evet   | Temizle|
-| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Hayır  |  Evet   | Çoğunlukla temizle|
-| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Hayır  |  Evet   | Kısmi Cloudy|
-| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Hayır  |  Evet   | Aralıklı bulutlar|
-| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Hayır  |  Evet   | Hazik ma ışığı|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Hayır  |  Yes   | Temizle|
+| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Hayır  |  Yes   | Çoğunlukla temizle|
+| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Hayır  |  Yes   | Kısmi Cloudy|
+| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Hayır  |  Yes   | Aralıklı bulutlar|
+| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Hayır  |  Yes   | Hazik ma ışığı|
 | 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | Hayır  |  Yes   | Genellikle Cloudy|
 | 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | Hayır  |  Yes   | Showers ile kısmen Cloudy|
 | 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | Hayır  |  Yes   | Genellikle, showers ile Cloudy|
@@ -472,3 +472,169 @@ Kızılötesi uydu kutucukları için ayrıntılı renk paleti aşağıda göste
 |307,57  |#02555555     |
 |308     |#00525252     |
 |308     |#00525252     |
+
+## <a name="index-ids-and-index-groups-ids"></a>Dizin kimlikleri ve dizin grupları kimlikleri
+
+[Günlük dizinleri al API 'si](https://aka.ms/AzureMapsWeatherDailyIndices) , kullanıcıların döndürülen sonuçları belirli dizin türlerine veya dizin gruplarına kısıtlayasağlar.
+
+Aşağıda, kullanılabilir dizin kimlikleri, adları ve Aralık kümelerinin bir bağlantısı yer alan bir tablodur. Bu tablonun altında çeşitli dizin gruplarının listelendiği bir tablo bulunur.
+
+  Dizin adı |  ID  | Değer aralığı
+  -------------------------- |---|-----
+  İnce sorun             |21 | [Faydalı-aşırı risk](#beneficial-at-extreme-risk)
+  Asthma                     |23|  [Faydalı-aşırı risk](#beneficial-at-extreme-risk)
+  Plaj & havuzu               |10| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Bicycling                  |4| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Ortak soğuk                |25|  [Faydalı-aşırı risk](#beneficial-at-extreme-risk)
+  Birleşik                 |38| [Yetersiz mükemmel 1](#poor-excellent-1)
+  İnşaat               |14| [Yetersiz mükemmel 1](#poor-excellent-1)
+  KOPD                       |44|  [Faydalı-aşırı risk](#beneficial-at-extreme-risk)
+  Köpek yürüyen rahatlık        |43| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Sürüş                    |40|  [Yetersiz mükemmel 2](#poor-excellent-2)
+  Toz & Dander              |18| [Düşük-Extreme 1](#low-extreme-1)
+  Alan hazırlığı            |32| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Balıkçılık                    |13| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Uçuş gecikmeleri              |-3|  [Çok düşüktür-çok büyük olasılıkla 2](#very-unlikely-very-likely-2)
+  Grip                        |26|  [Faydalı-aşırı risk](#beneficial-at-extreme-risk)
+  Uçan seyahat dizini        |31| [Harika-zayıf](#excellent-poor)
+  Yakıt ekonomisi               |37| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Golf Hava durumu               |5| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Büyüyen çim              |33| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Saç Frizz                 |42| [Olası olmayan-acil durum](#unlikely-emergency)
+  Sağlıklı kalp uygunluk      |16| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Yürüyüşe                     |3| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Ana enerji verimliliği     |36| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Avlanma                    | 20| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Inkapılı etkinlik            | -2| [Yetersiz mükemmel 1](#poor-excellent-1)
+  İlişkilendirme                    |2| [Yetersiz mükemmel 1](#poor-excellent-1)
+  KITE uçan                |9| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Çim Mokanumu                |28| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Migraine headache          |27|  [Faydalı-aşırı risk](#beneficial-at-extreme-risk)
+  Sabah okul veri yolu         |35| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Mostito etkinliği          |17|[Düşük-Extreme 1](#low-extreme-1)
+  Dış etkinlik           |29| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Dış mekan Barbecue           |24| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Dış mekan Concert            |8| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Çalışma                    |1|  [Yetersiz mükemmel 1](#poor-excellent-1)
+  Tenis                     |6| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Üçüncü olarak                     |41| [Düşük-Extreme 2](#low-extreme-2)
+  Yelkenli                    |11| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Þ                   |39| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Sinus headache             |30|  [Faydalı-aşırı risk](#beneficial-at-extreme-risk)
+  Skatevimi              | 7| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Kayak Hava durumu                | 15| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Kar günü                  | 19| [Çok olası bir büyük olasılıkla](#very-unlikely-very-likely)
+  SOIL Moisture              | 34| [Yetersiz mükemmel 1](#poor-excellent-1)
+  Başlatılıyor                 | 12| [Yetersiz mükemmel 1](#poor-excellent-1)
+
+Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmiştir:
+
+  ID   | Grup Adı | Bu gruptaki dizinler |
+  -------- | ------------------|------
+  1       |Tümü | Tümü
+  2       |Alar ve Paıns 'ler | Arthritıı sorunları (21) </br> Migraine headache (27) </br> Sinus headache (30)
+  3       |Respırak | Asthma (23) </br> Ortak soğuk (25) </br> Flu Tahmini (26)
+  4       |Bahçe | Alan hazırlığı (32) </br> Çim Mokanat (28) </br> SOIL Moisture (34)</br>
+  5       |Ortam | Birleştirme (38) </br> Ana enerji verimliliği (36) </br> Yakıt ekonomisi (37)
+  6       |Açık Hava | Dış mekan Barbecue (24) </br> Mostito etkinliği (17)
+  7       |Plaj ve deniz mavisi | Plaj & Havuzu (10) </br> Balıkçılık (13) </br> Yelkenme (11)
+  8       |Sportsman | Balıkçılık (13) </br> Avlatma (20) </br> Dış etkinlik (29)</br>
+  9       |Tarım |  Alan hazırlığı (32) </br>  SOIL Moisture (34)
+  10      |Sağlık | Arthritıı sorunları (21) </br> Asthma (23) </br> Ortak soğuk (25) </br> Toz & Dander (18) </br> Flu (26) </br> Sağlıklı kalp uygunluk (16) </br> Migraine headache (27)
+  11      |Doğa | Dış mekan Barbecue (24) </br> Plaj & Havuzu (10) </br> Bicycling (4) </br> Dış mekan Concert (8) </br>  Alan hazırlığı (32) </br> Balıkçılık (13) </br> Golf Hava durumu (5) </br> Hıking (3) </br> Avlatma (20) </br> İlişkilendirme (2) </br> KITE uçan (9) </br> Mostito etkinliği (17)</br> Çim Mokanat (28) </br> Dış etkinlik (29) </br> Çalışıyor (1) </br> Yelkenme (11) </br> Skatetaslak (7) </br> Kayak Hava durumu (15) </br>  SOIL Moisture (34)</br> Başlatılıyor (12) </br> Tenis (6)
+  12      |Spor | Bicycling (4) </br> Golf Hava durumu (5) </br> Hıking (3) </br>  İlişkilendirme (2) </br> Çalışıyor (1) </br> Skatetaslak (7) </br> Kayak Hava durumu (15) </br>Tenis (6)
+  13      |Giriş Sayfası | Ana enerji verimliliği (36) </br> Yakıt ekonomisi (37) </br> Inkapılı etkinlik (-2)
+
+## <a name="daily-index-range-sets"></a>Günlük dizin aralığı kümeleri
+
+[Günlük dizinler al API 'si](https://aka.ms/AzureMapsWeatherDailyIndices) , her BIR dizin kimliği için ranşlı değeri ve ilişkili kategori adını döndürür. Aralık kümeleri tüm dizinler için aynı değildir. Aşağıdaki tablolarda, [Dizin kimlikleri ve dizin grupları kimliklerinde](#index-ids-and-index-groups-ids)listelenen desteklenen dizinler tarafından kullanılan çeşitli Aralık kümeleri gösterilmektedir. Hangi dizinlerin hangi Aralık kümelerini kullanacağınızı öğrenmek için, bu belgenin [Dizin kimlikleri ve dizin grupları kimlikleri](#index-ids-and-index-groups-ids) bölümüne gidin.
+
+### <a name="poor-excellent-1"></a>Yetersiz mükemmel 1
+
+  | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
+  ----------------|--------------|------------
+  Kötü              |  0 |                2,99
+  Yeterli              |  3  |               4,99
+  İyi              |  5  |              6,99
+  Çok iyi         |  7  |               8,99
+  Mükemmel         |  9  |               10
+
+### <a name="poor-excellent-2"></a>Yetersiz mükemmel 2
+
+ | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
+  ----------------|--------------|------------
+  Kötü           |0              |  3
+  Yeterli           |3,01           |  6
+  İyi           |6,01           |  7,5
+  Çok iyi      |7,51           |  8,99
+  Mükemmel      |9              |  10
+
+### <a name="excellent-poor"></a>Harika-zayıf
+
+ | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
+  ----------------|--------------|------------
+  Mükemmel      |     0.00        |    1,00
+  Çok iyi        |   1.01          |  3,00
+  İyi             |   3,01          |  5.00
+  Yeterli             |   5,01          |  7,00
+  Kötü             |   7,01          |  10,00
+
+### <a name="low-extreme-1"></a>Düşük-Extreme 1
+
+   | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
+  ----------------|--------------|------------
+  Düşük                |  0         |        1,99
+  Orta           |  2         |        3,99
+  Yüksek               |  4         |        5,99
+  Çok yüksek          |  6         |        7,99
+  Üst Düzey            |  8         |        10
+
+### <a name="low-extreme-2"></a>Düşük-Extreme 2
+
+   | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
+  ----------------|--------------|------------
+  Düşük                |  0            |      2,99
+  Orta           |  3            |      4,99
+  Yüksek               |  5            |      6,99
+  Çok yüksek          |  7            |      8,99
+  Üst Düzey            |  9            |      10
+
+### <a name="very-unlikely-very-likely"></a>Çok olası bir büyük olasılıkla
+
+ | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
+  ----------------|--------------|------------
+  Çok büyük olasılıkla      | 0     |           1,99
+  Düşüktür           | 2     |           3,99
+  Belki           | 4     |           5,99
+  Mesinden             | 6     |           7,99
+  Büyük olasılıkla        | 8     |           10
+
+### <a name="very-unlikely-very-likely-2"></a>Çok düşüktür-çok büyük olasılıkla 2
+
+ | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
+  ----------------|--------------|------------
+  Çok büyük olasılıkla      |  0.00     |         1,00
+  Düşüktür           |  1.01     |         3,00
+  Belki           |  3,01     |         5.00
+  Mesinden             |  5,01     |         7,00
+  Büyük olasılıkla        |  7,01     |         10,00
+
+### <a name="unlikely-emergency"></a>Olası olmayan-acil durum
+
+| Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
+  ----------------|--------------|------------
+  Düşüktür         |  0     |          2,99
+  İzle            |  3     |          4,99
+  Öneri         |  5     |          6,99
+  Uyarı          |  7     |          8,99
+  Durumlar        |  9     |          10
+
+### <a name="beneficial-at-extreme-risk"></a>Faydalı-aşırı risk
+
+| Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
+  ----------------|--------------|------------
+  Yükseltilmesi        |    0        |        1,99
+  Nötr           |    2        |        3,99
+  Tehlikede           |    4        |        5,99
+  Yüksek riskli      |    6        |        7,99
+  Aşırı riskli   |    8        |        10

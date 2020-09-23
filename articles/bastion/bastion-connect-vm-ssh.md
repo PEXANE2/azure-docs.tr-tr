@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 98f1f3d02d8433dd88fed844a587a961ea9f8c82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9bc06e58fcbd93fba0c92e91b51503239b5a951
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744298"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980781"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Azure savunma kullanarak bir Linux sanal makinesine SSH kullanarak bağlanma
 
@@ -23,7 +23,7 @@ SSH kullanarak bir Linux sanal makinesine bağlanmak için Azure savunma kullana
 * El ile girdiğiniz özel bir anahtar
 * Özel anahtar bilgilerini içeren bir dosya
 
-SSH özel anahtarı ile başlayan ve ile biten bir biçimde olmalıdır `"-----BEGIN RSA PRIVATE KEY-----"` `"-----END RSA PRIVATE KEY-----"` .
+SSH özel anahtarı ile başlayan ve ile biten bir biçimde olmalıdır  `"-----BEGIN RSA PRIVATE KEY-----"` `"-----END RSA PRIVATE KEY-----"` .
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -47,35 +47,35 @@ Linux VM 'sine SSH aracılığıyla bağlanmak için, VM 'niz üzerinde aşağı
 
 ## <a name="connect-using-username-and-password"></a><a name="username"></a>Bağlan: Kullanıcı adı ve parola kullanma
 
-1. [Azure Portal](https://portal.azure.com)açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
+1. [Azure portalını](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
 
-   ![Bağlan](./media/bastion-connect-vm-ssh/connect.png)
+   ![Ekran görüntüsünde, Connect seçiliyken Azure portal içindeki bir sanal makine için genel bakış gösterilmektedir.](./media/bastion-connect-vm-ssh/connect.png)
 1. Atlama ' ye tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
 
-   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
+   ![Ekran görüntüsü seçiliyken sanal makineye bağlan iletişim kutusunu gösterir.](./media/bastion-connect-vm-ssh/bastion.png)
 1. Sanal makinenize SSH için Kullanıcı adı ve parola girin.
 1. Anahtarı girdikten sonra **Bağlan** düğmesine tıklayın.
 
 ## <a name="connect-manually-enter-a-private-key"></a><a name="privatekey"></a>Bağlan: El Ile özel bir anahtar girin
 
-1. [Azure Portal](https://portal.azure.com)açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
+1. [Azure portalını](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
 
-   ![Bağlan](./media/bastion-connect-vm-ssh/connect.png)
+   ![Ekran görüntüsünde, Connect seçiliyken Azure portal içindeki bir sanal makine için genel bakış gösterilmektedir.](./media/bastion-connect-vm-ssh/connect.png)
 1. Atlama ' ye tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
 
-   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
+   ![Ekran görüntüsü seçiliyken sanal makineye bağlan iletişim kutusunu gösterir.](./media/bastion-connect-vm-ssh/bastion.png)
 1. Kullanıcı adını girin ve **SSH özel anahtarı**' nı seçin.
 1. Özel anahtarınızı **SSH özel anahtarı** metin alanına girin (veya doğrudan yapıştırın).
 1. Anahtarı girdikten sonra **Bağlan** düğmesine tıklayın.
 
 ## <a name="connect-using-a-private-key-file"></a><a name="ssh"></a>Bağlan: özel anahtar dosyası kullanma
 
-1. [Azure Portal](https://portal.azure.com)açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
+1. [Azure portalını](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
 
-   ![Bağlan](./media/bastion-connect-vm-ssh/connect.png)
+   ![Ekran görüntüsünde, Connect seçiliyken Azure portal içindeki bir sanal makine için genel bakış gösterilmektedir.](./media/bastion-connect-vm-ssh/connect.png)
 1. Atlama ' ye tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
 
-   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
+   ![Ekran görüntüsü seçiliyken sanal makineye bağlan iletişim kutusunu gösterir.](./media/bastion-connect-vm-ssh/bastion.png)
 1. Kullanıcı adını girin ve **yerel dosyadan SSH özel anahtarı**' nı seçin.
 1. (Yerel dosyadaki klasör simgesi **) düğmesine tıklayın** .
 1. Dosyaya gözatıp açın, sonra **Aç**' a tıklayın.

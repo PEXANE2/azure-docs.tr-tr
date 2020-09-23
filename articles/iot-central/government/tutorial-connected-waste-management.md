@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 53304f14286577bf0bc25b2a66442286527c5140
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77426369"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972423"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Öğretici: IoT Central bağlı bir çöp yönetimi uygulaması oluşturma
 
@@ -131,13 +131,13 @@ Cihaz şablonunu görüntülemek için:
 
 1. IoT Central ' de uygulamanızın sol bölmesindeki **cihaz şablonları** ' na tıklayın. 
 
-    ![Cihaz şablonu](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
+    ![Uygulamadaki cihaz şablonlarının listesini gösteren ekran görüntüsü](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
 2. Cihaz şablonları listesinde **bağlı çöp kutusu**' nu göreceksiniz. Ada tıklayarak açın.
 
 3. Cihaz şablonu özellikleri hakkında bilgi edinin. Bu konuda, *Fill level*, *oçi ölçümü*, *Ağırlık*, *konum*ve diğerleri gibi algılayıcılar tanımlanabileceğini görebilirsiniz.
 
-   ![Cihaz şablonu](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
+   ![Bağlı çöp kutusu cihaz şablonunun ayrıntılarını gösteren ekran görüntüsü](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
    
 
@@ -161,7 +161,7 @@ Aşağıdakileri özelleştirmeyi deneyin:
 
   ![Cihaz şablonu görünümleri](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
 
-### <a name="publish"></a>Yayımlama 
+### <a name="publish"></a>Yayımla 
 
 * Herhangi bir değişiklik yaptıysanız, cihaz şablonunu **yayımlamayı** unutmayın. 
 
@@ -265,8 +265,9 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla uygu
 1. IoT Central uygulamanızın sol bölmesindeki Yönetim sekmesini açın.
 2. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın.
 
-  
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bağlı çöp yönetimi kavramları](./concepts-connectedwastemanagement-architecture.md) hakkında daha fazla bilgi edinin
+* Hakkında daha fazla bilgi edinin
+ 
+> [!div class="nextstepaction"]
+> [Bağlı çöp yönetimi kavramları](./concepts-connectedwastemanagement-architecture.md)

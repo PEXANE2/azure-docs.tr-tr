@@ -7,14 +7,14 @@ ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
-ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.reviewer: sourabha, sstein
+ms.date: 09/22/2020
+ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84235031"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886482"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge modülleri ve bağlantıları ayarlama
 
@@ -22,39 +22,6 @@ Azure SQL Edge 'deki Iron ve yamallikleri tahmin etmek için üç bölümden olu
 
 - Azure SQL Edge
 - Veri Oluşturucu IoT Edge modülü
-
-## <a name="create-azure-stream-analytics-module"></a>Azure Stream Analytics modülü oluşturma
-
-Bu öğreticide kullanılacak bir Azure Stream Analytics modülü oluşturun. SQL Edge ile akış işlerini kullanma hakkında daha fazla bilgi için bkz. [SQL Edge ile akış Işlerini kullanma](stream-analytics.md).
-
-Azure Stream Analytics işi, uç olarak ayarlanan barındırma ortamı ile oluşturulduktan sonra öğretici için giriş ve çıkışları ayarlayın.
-
-1. **Girişi**oluşturmak için **+ akış girişi Ekle**' ye tıklayın. Ayrıntılar bölümünü aşağıdaki bilgileri kullanarak doldurabilirsiniz:
-
-   Alan|Değer
-   -----|-----
-   Olay serileştirme biçimi|JSON
-   Encoding|UTF-8
-   Olay sıkıştırma türü|Yok
-
-2. **Çıktıyı**oluşturmak Için **+ Ekle** ' ye tıklayın ve SQL veritabanı ' nı seçin. Aşağıdaki bilgileri kullanarak Ayrıntılar bölümünü girin.
-
-   > [!NOTE]
-   > Bu bölümde belirtilen parolanın, **"Azure SQL Edge modülünü dağıtma"** bölümünde SQL Edge modülünü DAĞıTıRKEN SQL sa parolası için belirtilmesi gerekir.
-
-   Alan|Değer
-   -----|-----
-   Veritabanı|IronOreSilicaPrediction
-   Sunucu adı|TCP:., 1433
-   Kullanıcı adı|sa
-   Parola|Güçlü bir parola belirtin
-   Tablo|IronOreMeasurements1
-
-3. **Sorgu** bölümüne gidin ve sorguyu aşağıdaki gibi ayarlayın:
-
-   `SELECT * INTO <name_of_your_output_stream> FROM <name_of_your_input_stream>`
-   
-4. **Yapılandır**altında **Yayımla**' yı seçin ve ardından **Yayınla** düğmesini seçin. SAS URI 'sini SQL veritabanı Edge modülüyle kullanılmak üzere kaydedin.
 
 ## <a name="specify-container-registry-credentials"></a>Kapsayıcı kayıt defteri kimlik bilgilerini belirtin
 
@@ -84,49 +51,157 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
   
 ## <a name="deploy-the-data-generator-module"></a>Veri Oluşturucu modülünü dağıtma
 
-1. **IoT Edge modüller** bölümünde **+ Ekle** ' ye tıklayın ve **IoT Edge modülü**' nü seçin.
+1. **Otomatik cihaz yönetimi**altındaki **IoT Edge** bölümünde **cihaz kimliği**' ne tıklayın. Bu öğreticide, KIMLIK `IronOrePredictionDevice` ve ardından **modülleri ayarla**' ya tıklayın.
 
-2. IoT Edge modül adı ve görüntü URI 'SI sağlayın.
-   Görüntü URI 'SI, kaynak grubundaki kapsayıcı kayıt defterinde bulunabilir. **Hizmetler**altında **depolar** bölümünü seçin. Bu öğretici için adlı depoyu seçin `silicaprediction` . Uygun etiketi seçin. Görüntü URI 'SI şu biçimde olacaktır:
+2.  **Cihazdaki modülleri ayarla:** sayfasındaki **IoT Edge modüller** bölümünde **+ ekle** ' ye tıklayın ve **IoT Edge modülü**' nü seçin.
+
+3. IoT Edge modülü için geçerli bir ad ve görüntü URI 'SI sağlayın.
+   Görüntü URI 'SI, Bu öğreticinin birinci kısmında oluşturulan kaynak grubundaki kapsayıcı kayıt defterinde bulunabilir. **Hizmetler**altında **depolar** bölümünü seçin. Bu öğretici için adlı depoyu seçin `silicaprediction` . Uygun etiketi seçin. Görüntü URI 'SI şu biçimde olacaktır:
 
    containerregistry 'nin oturum *açma sunucusu* / *Depo adı*:*etiket adı*
 
-   Örneğin:
+   Örnek:
 
    ```
    ASEdemocontregistry.azurecr.io/silicaprediction:amd64
    ```
 
-3. **Ekle**' ye tıklayın.
+4. *Yeniden başlatma ilkesini* ve *istenen durum* alanlarını olduğu gibi bırakın.
+
+5. **Ekle**'ye tıklayın.
+
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Azure SQL Edge modülünü dağıtma
 
-1. Azure SQL Edge modülünü dağıtma [(Önizleme)](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)bölümünde listelenen adımları IZLEYEREK Azure SQL Edge modülünü dağıtın.
+1. Azure SQL Edge modülünü **+ Ekle** ' ye ve ardından **Market modülü**' ne tıklayarak dağıtın. 
 
-2. Modül **Ayarla** ' nın **yolunu belirt** sayfasında, aşağıdaki gibi, modül için yol IoT Edge hub iletişimini belirtin. 
+2. **IoT Edge modülü marketi** dikey PENCERESINDE *Azure SQL Edge* ' i arayın ve *Azure SQL Edge geliştiricisi*' ni seçin. 
+
+3. Azure SQL Edge modülünü yapılandırmak için **IoT Edge modüller** altında yeni eklenen *Azure SQL Edge* modülüne tıklayın. Yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [Azure SQL Edge 'ı dağıtma](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal).
+
+4. `MSSQL_PACKAGE`Ortam değişkenini *Azure SQL Edge* modülü dağıtımına ekleyin ve bu öğreticiden [birinin](tutorial-deploy-azure-resources.md) 8. adımında oluşturulan VERITABANı dacpac dosyasının SAS URL 'sini belirtin.
+
+5. **Güncelleştir** 'e tıklayın
+
+6. **Cihazdaki modülleri ayarla** sayfasında, ileri ' ye tıklayın **: rotalar >**.
+
+7. **Cihazdaki modülleri ayarla** sayfasındaki rotalar bölmesinde, modül için aşağıdaki açıklandığı gibi IoT Edge hub iletişimi yolları belirtin. Aşağıdaki yol tanımlarında modül adlarını güncelleştirdiğinizden emin olun.
 
    ```
-   FROM /messages/modules/<your_data_generator_module>/outputs/<your_output_stream_name> INTO
-   BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/<your_input_stream_name>")
+   FROM /messages/modules/<your_data_generator_module>/outputs/IronOreMeasures INTO
+   BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/IronOreMeasures")
    ```
 
-   Örneğin:
+   Örnek:
 
    ```
-   FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/Input1")
+   FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/IronOreMeasures")
    ```
 
-3. **Module ikizi** ayarlarında, SqlPackage ve Asajonınfo ' ın daha önce öğreticide KAYDETTIĞINIZ Ilgili SAS URL 'leriyle güncelleştirildiğinden emin olun.
 
-   ```json
-       {
-         "properties.desired":
-         {
-           "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-           "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-         }
-       }
+7. **Cihazdaki modülleri ayarla** sayfasında, ileri ' ye tıklayın **: gözden geçir + oluştur >**
+
+8. **Cihazdaki modülleri ayarla** sayfasında **Oluştur** ' a tıklayın.
+
+## <a name="create-and-start-the-t-sql-streaming-job-in-azure-sql-edge"></a>T-SQL akış Işini Azure SQL Edge 'de oluşturun ve başlatın.
+
+1. Azure Data Studio'yu açın.
+
+2. **Hoş geldiniz** sekmesinde, aşağıdaki ayrıntılarla yeni bir bağlantı başlatın:
+
+   |_Alan_|_Değer_|
+   |-------|-------|
+   |Bağlantı türü| Microsoft SQL Server|
+   |Sunucu|Bu tanıtım için oluşturulan VM 'de belirtilen genel IP adresi|
+   |Kullanıcı adı|sa|
+   |Parola|Azure SQL Edge örneği oluşturulurken kullanılan güçlü parola|
+   |Veritabanı|Varsayılan|
+   |Sunucu grubu|Varsayılan|
+   |Ad (isteğe bağlı)|İsteğe bağlı bir ad sağlayın|
+
+3. **Bağlan** 'a tıklayın
+
+4. **Dosya** menüsü sekmesinde yeni bir not defteri açın veya CTRL + N klavye kısayolunu kullanın.
+
+5. Yeni sorgu penceresinde, T-SQL akış işini oluşturmak için aşağıdaki betiği yürütün. Betiği yürütmeden önce, aşağıdaki değişkenleri değiştirdiğinizden emin olun. 
+   - *SQL_SA_Password:* Azure SQL Edge modülünü dağıtırken belirtilen MSSQL_SA_PASSWORD değeri. 
+   
+   ```sql
+   Use IronOreSilicaPrediction
+   Go
+
+   Declare @SQL_SA_Password varchar(200) = '<SQL_SA_Password>'
+   declare @query varchar(max) 
+
+   /*
+   Create Objects Required for Streaming
+   */
+
+   CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'MyStr0ng3stP@ssw0rd';
+
+   If NOT Exists (select name from sys.external_file_formats where name = 'JSONFormat')
+   Begin
+      CREATE EXTERNAL FILE FORMAT [JSONFormat]  
+      WITH ( FORMAT_TYPE = JSON)
+   End 
+
+
+   If NOT Exists (select name from sys.external_data_sources where name = 'EdgeHub')
+   Begin
+      Create EXTERNAL DATA SOURCE [EdgeHub] 
+      With(
+         LOCATION = N'edgehub://'
+      )
+   End 
+
+   If NOT Exists (select name from sys.external_streams where name = 'IronOreInput')
+   Begin
+      CREATE EXTERNAL STREAM IronOreInput WITH 
+      (
+         DATA_SOURCE = EdgeHub,
+         FILE_FORMAT = JSONFormat,
+         LOCATION = N'IronOreMeasures'
+       )
+   End
+
+
+   If NOT Exists (select name from sys.database_scoped_credentials where name = 'SQLCredential')
+   Begin
+       set @query = 'CREATE DATABASE SCOPED CREDENTIAL SQLCredential
+                 WITH IDENTITY = ''sa'', SECRET = ''' + @SQL_SA_Password + ''''
+       Execute(@query)
+   End 
+
+   If NOT Exists (select name from sys.external_data_sources where name = 'LocalSQLOutput')
+   Begin
+      CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
+      LOCATION = 'sqlserver://tcp:.,1433',CREDENTIAL = SQLCredential)
+   End
+
+   If NOT Exists (select name from sys.external_streams where name = 'IronOreOutput')
+   Begin
+      CREATE EXTERNAL STREAM IronOreOutput WITH 
+      (
+         DATA_SOURCE = LocalSQLOutput,
+         LOCATION = N'IronOreSilicaPrediction.dbo.IronOreMeasurements'
+      )
+   End
+
+   EXEC sys.sp_create_streaming_job @name=N'IronOreData',
+   @statement= N'Select * INTO IronOreOutput from IronOreInput'
+
+   exec sys.sp_start_streaming_job @name=N'IronOreData'
    ```
+
+6. Veri oluşturma modülündeki verilerin veritabanına aktarılmakta olduğunu doğrulamak için aşağıdaki sorguyu kullanın. 
+
+   ```sql
+   Select Top 10 * from dbo.IronOreMeasurements
+   order by timestamp desc
+   ```
+
+
+Bu öğreticide, veri Oluşturucu modülünü ve SQL Edge modülünü dağıttık. Daha sonra veri oluşturma modülü tarafından oluşturulan verileri SQL 'e akışa almak için bir akış işi oluşturduk. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

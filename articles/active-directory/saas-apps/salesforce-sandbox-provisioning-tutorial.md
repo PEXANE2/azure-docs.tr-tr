@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 4666768d7e975e976601810bbbfadb1685fa91ff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5fa40e954c84d4d2d70974bc799a198c6bf7d3e9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543532"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979766"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Salesforce korumalı alanını yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den Salesforce korumalı alana Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Salesforce korumalı alanı ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 *   Azure Active Directory kiracısı.
 *   Iş için Salesforce korumalı alanı veya eğitim için Salesforce korumalı alanı için geçerli bir kiracı. Her iki hizmet için de ücretsiz bir deneme hesabı kullanabilirsiniz.
@@ -61,9 +61,9 @@ Bu bölümün amacı, Active Directory Kullanıcı hesaplarının Salesforce kor
 
 1. Salesforce korumalı alanı örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-1. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+1. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![alınıyor](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
+    ![Ekran görüntüsü, sağlama modu otomatik ve ayarlayabileceğiniz diğer değerlere ayarlanmış olan Salesforce korumalı alanı sağlama sayfasını gösterir.](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
 1. **Yönetici kimlik bilgileri** bölümünde aşağıdaki yapılandırma ayarlarını sağlayın:
    
@@ -107,6 +107,6 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 * [Çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)

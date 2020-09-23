@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 159691ee101e586419d2fd8df314947af28219dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1ed5a64a76d27f87b590573894e34f2560a5c2aa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77016519"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972301"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Azure IoT Central ile kamu çözümleri oluşturma
 
@@ -72,12 +72,10 @@ Bağlı çöp yönetimi uygulama şablonu önceden yapılandırılmış olarak o
 
 [Bağlı çöp yönetimi uygulaması öğreticisini](./tutorial-connected-waste-management.md)kullanmaya başlayın.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Ücretsiz [uygulama oluşturma](https://apps.azureiotcentral.com/build/government) Için IoT Central kamu uygulaması şablonlarından birini deneyin
 * [Su kalitesi izleme kavramları](./concepts-waterqualitymonitoring-architecture.md) hakkında bilgi edinin
 * [Su tüketim izleme kavramları](./concepts-waterconsumptionmonitoring-architecture.md) hakkında bilgi edinin
 * [Bağlı çöp yönetimi kavramları](./concepts-connectedwastemanagement-architecture.md) hakkında bilgi edinin  
-* IoT Central hakkında bilgi edinin, bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
- 
+* IoT Central hakkında bilgi edinin, bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) 

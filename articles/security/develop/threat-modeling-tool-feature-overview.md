@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540011"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980670"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool özelliğe genel bakış
 
@@ -39,7 +39,7 @@ Deneyim, diğer Microsoft ürünleriyle benzerdir. Üst düzey menü öğelerini
 
 ![Menü öğeleri](./media/threat-modeling-tool-feature-overview/menuitems.png)
 
-| Etiket                               | Ayrıntılar      |
+| Etiketle                               | Ayrıntılar      |
 | --------------------------------------- | ------------ |
 | **Dosya** | <ul><li>Dosyaları açma, kaydetme ve kapatma</li><li>OneDrive hesaplarının oturumunu açın ve oturumunuzu kapatın.</li><li>Bağlantıları paylaşma (görüntüleme ve düzenleme).</li><li>Dosya bilgilerini görüntüleyin.</li><li>Varolan modellere yeni bir şablon uygulayın.</li></ul> |
 | **Düzenle** | Eylemleri geri alın ve yeniden yapın, Ayrıca kopyalama, yapıştırma ve silme işlemlerini yapın. |
@@ -55,7 +55,7 @@ Simgeler, üst düzey menülere yönelik kısayollardır:
 | **Aç** | Yeni bir dosya açar. |
 | **Kaydet** | Geçerli dosyayı kaydeder. |
 | **Tasarım** | Model oluşturabileceğiniz **Tasarım** görünümünü açar. |
-| **Çözümleme** | Oluşturulan tehditleri ve bunların özelliklerini gösterir. |
+| **Analiz** | Oluşturulan tehditleri ve bunların özelliklerini gösterir. |
 | **Diyagram Ekle** | Yeni bir diyagram ekler (Excel 'deki yeni sekmelere benzer şekilde). |
 | **Diyagramı Sil** | Geçerli diyagramı siler. |
 | **Kopyala/Kes/Yapıştır** | Öğeleri kopyalar, keser ve yapıştırır. |
@@ -81,7 +81,7 @@ Seçtiğiniz şablona bağlı olarak, kullanıma sunulan tüm kalıpları bulabi
 
 | Şablon adı                               | Ayrıntılar      |
 | --------------------------------------- | ------------ |
-| **İşle** | Uygulamalar, tarayıcı eklentileri, iş parçacıkları, sanal makineler |
+| **İşleme** | Uygulamalar, tarayıcı eklentileri, iş parçacıkları, sanal makineler |
 | **Dış etkileşen** | Kimlik doğrulama sağlayıcıları, tarayıcılar, kullanıcılar, Web uygulamaları |
 | **Veri deposu** | Önbellek, depolama, yapılandırma dosyaları, veritabanları, kayıt defteri |
 | **Veri akışı** | İkili, ALPC, HTTP, HTTPS/TLS/SSL, ıOCTL, IPSec, adlandırılmış kanal, RPC/DCOM, SMB, UDP |
@@ -122,7 +122,7 @@ Uygulamayı açtığınızda, **hoş geldiniz** ekranını görürsünüz.
 
 **Geri bildirim, öneriler ve sorunlar**' ı SEÇTIĞINIZDE, SDL araçları Için MSDN forumuna gidebilirsiniz. Çözümler ve yeni fikirler de dahil olmak üzere diğer kişilerin araç hakkında söylediklerini okuyabilirsiniz.
 
-![Geri Bildirim](./media/threat-modeling-tool-feature-overview/feedback.png)
+![Ekran görüntüsünde, metin geri bildirimi, öneriler ve sorunlar içeren bir düğme gösterilir.](./media/threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>Tasarım görünümü
 
@@ -158,7 +158,7 @@ Kılavuza iki şekilde öğe ekleyebilirsiniz:
 
 Bir tehdit modeli oluşturur ve veri akışlarını öğelere bağlamayı unutursanız, bir bildirim alırsınız. İletiyi yoksayabilir veya sorunu gidermeye yönelik yönergeleri izleyebilirsiniz. 
 
-![İletiler](./media/threat-modeling-tool-feature-overview/messages.png)
+![Ekran görüntüsünde, bu sorunun neden olduğu iletiyle birlikte öğelere bağlı olmayan bir tehdit modeli Bağlayıcısı gösterilmektedir.](./media/threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>Notlar
 
@@ -174,7 +174,7 @@ Diyagramınızı oluşturduktan sonra, **analiz** görünümüne geçmek için k
 
 Bir tehdit seçtiğinizde üç farklı işlev kullanabilirsiniz:
 
-| Özellik                               | Bilgi      |
+| Öne çıkan özelliği                               | Bilgi      |
 | --------------------------------------- | ------------ |
 | **Göstergeyi oku** | <p>Tehdit okundu olarak işaretlenir ve bu, gözden geçirdiğinizi planladığınız öğeleri izlemenize yardımcı olur.</p><p>![Okuma/okunmamış gösterge](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Etkileşim odağı** | <p>Bir tehdide ait olan diyagramdaki etkileşim vurgulanmıştır.</p><p>![Etkileşim odağı](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
@@ -196,7 +196,7 @@ Oluşturulan her tehdit için öncelik düzeyini değiştirebilirsiniz. Farklı 
 
 Önceliklerin değiştirilmesini ve oluşturulan her bir tehdidin durumunu güncellemeyi tamamladıktan sonra, dosyayı kaydedebilir ve/veya bir raporu yazdırabilirsiniz. **Raporla**  >  **tam rapor oluştur**' a gidin. Raporu adlandırın ve aşağıdaki görüntüye benzer bir şey görmeniz gerekir:
 
-![Rapor](./media/threat-modeling-tool-feature-overview/report.png)
+![Ekran görüntüsünde Özet, diyagramlar ve diğer bilgiler de dahil olmak üzere örnek bir tehdit modelleme raporu gösterilmektedir.](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

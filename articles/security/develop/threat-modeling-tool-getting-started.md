@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539909"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980470"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool kullanmaya başlama
 
@@ -97,7 +97,7 @@ Ricardo, listedeki ilk öğeyi seçerek başlar. Şöyle olur:
 
 İlk olarak, iki kalıp arasındaki etkileşim geliştirilmiştir
 
-![Etkileşim](./media/threat-modeling-tool-getting-started/interaction.png)
+![Ekran görüntüsünde, iki kalıp ve bunları daha ağır bir çizgi ile bağlayan eğri oku gösterilmektedir.](./media/threat-modeling-tool-getting-started/interaction.png)
 
 İkinci olarak tehdit hakkında ek bilgiler tehdit Özellikler penceresi görünür.
 

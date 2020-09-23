@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b8e107fb377a30b35f0941b89c490e11fc458c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: cf6e02ebad2ac5150be4775ad0ff6069fe3db89f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783544"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980051"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde kaynakların kataloğunu oluşturma ve yönetme
 
@@ -100,6 +100,7 @@ Bir katalogdan kaynakları kaldırabilirsiniz. Bir kaynak, kataloğun erişim pa
 1. Kaldırmak istediğiniz kaynakları seçin.
 
 1. **Kaldır** ' a tıklayın (veya üç nokta (**...**) simgesine tıklayın ve ardından **kaynağı kaldır**' a tıklayın.
+
 
 ## <a name="add-additional-catalog-owners"></a>Ek katalog sahipleri ekleme
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 62716d5061d7c5e6ed8c64a0ce00a780f35c10be
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: e305795f4f45a0ea858eb8d74880aedca8ec538d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018008"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979843"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Öğretici: Kullanıcı sağlamasını Active Directory için SAP başarılı faktörleri yapılandırma 
 Bu öğreticinin amacı, kullanıcıları başarıyla Active Directory (AD) ve Azure AD 'ye, isteğe bağlı e-posta adresi olarak başarılı bir şekilde geri yazma işlemi ile Azure AD 'ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. 
@@ -234,7 +234,7 @@ Bu bölüm, tümleştirmenizi kapsamındaki her bir Active Directory etki alanı
    
 1. Aracının yüklenmesini doğrulayın ve "Hizmetler" eklentisini açıp "Microsoft Azure AD Connect sağlama Aracısı" adlı hizmeti arayın ve çalıştığından emin olun.
   
-   ![Hizmetlerde çalışan Microsoft Azure AD Connect sağlama aracısının ekran görüntüsü](./media/workday-inbound-tutorial/services.png)
+   ![Hizmetler 'de çalışan Microsoft Azure AD Connect sağlama aracısının ekran görüntüsü.](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>3. kısım: sağlama uygulamasında, başarılı etkenlere ve Active Directory bağlantı yapılandırın
 Bu adımda, başarılı faktörlerle bağlantı kurmaya ve Azure portal Active Directory. 
@@ -357,7 +357,7 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 
 * [Gelen sağlama için desteklenen başarılı etmenler öznitelikleri hakkında daha fazla bilgi edinin](../app-provisioning/sap-successfactors-attribute-reference.md)
 * [E-posta geri yazmanın başarılı etkenlere nasıl yapılandırılacağını öğrenin](sap-successfactors-writeback-tutorial.md)
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 * [Başarılı ve Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin](successfactors-tutorial.md)
 * [Diğer SaaS uygulamalarını Azure Active Directory ile tümleştirmeyi öğrenin](tutorial-list.md)
 * [Sağlama yapılandırmalarınızı dışarı ve içeri aktarma hakkında bilgi edinin](../app-provisioning/export-import-provisioning-configuration.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central sürekli hasta izleme mimarisi | Microsoft Docs
-description: Sürekli hasta izleme çözüm mimarisi hakkında bilgi edinin.
+description: Öğretici-sürekli hasta izleme çözüm mimarisi hakkında bilgi edinin.
 author: philmea
 ms.author: philmea
 ms.date: 09/14/2020
@@ -8,16 +8,18 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: bd0d2f3368f6a2c39b3a9e95c577d85dfe0d87d7
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: ffecd09d1084188195da83568ab3fe32ef2cdaac
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068089"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972235"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Sürekli hasta izleme mimarisi
 
 Bu makalede, **sürekli hasta izleme** uygulaması şablonundan oluşturulan bir çözümün mimarisi açıklanmaktadır:
+
+Sürekli hasta izleme çözümleri, sunulan uygulama şablonu kullanılarak oluşturulabilir ve aşağıdaki şekilde kılavuz olarak özetlenen mimari kullanılarak oluşturulabilir.
 
 :::image type="content" source="media/cpm-architecture.png" alt-text="Sürekli hasta izleme mimarisi":::
 

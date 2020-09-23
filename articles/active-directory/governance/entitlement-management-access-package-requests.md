@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 086623378b64aecb91c4e70e6e69bb13453f7681
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be03996f3f88efeb02893f815162a04d6a1e8aa6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078647"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979939"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim paketi isteklerini görüntüleme
 
@@ -29,7 +29,7 @@ Azure AD Yetkilendirme Yönetimi 'nde kimin erişim paketleri, ilkeleri ve durum
 
 ## <a name="view-requests"></a>İstekleri görüntüleme
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi, Paket Yöneticisi veya erişim paketi atama Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 

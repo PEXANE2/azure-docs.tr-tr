@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 66bba0d4825300a6cead2453a67518af631234b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: db94c868daecdd82bcf7749f17fc6fde86fac963
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543513"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979772"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Salesforce yapılandırma
 
 Bu öğreticinin amacı, Salesforce ve Azure AD 'de, Kullanıcı hesaplarını Salesforce 'a otomatik olarak sağlamak ve devre dışı bırakmak için gereken adımları gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 * Azure Active Directory kiracısı
 * Bir Salesforce.com kiracısı
@@ -65,9 +65,9 @@ Bu bölümün amacı, Salesforce 'a Active Directory Kullanıcı hesaplarının 
 
 3. Salesforce örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![alınıyor](./media/salesforce-provisioning-tutorial/provisioning.png)
+    ![Ekran görüntüsü, sağlama modu otomatik ve ayarlayabileceğiniz diğer değerlere ayarlanmış olan Salesforce sağlama sayfasını gösterir.](./media/salesforce-provisioning-tutorial/provisioning.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde aşağıdaki yapılandırma ayarlarını sağlayın:
 
@@ -129,6 +129,6 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 * [Çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

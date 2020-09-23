@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/29/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 0d918de4669e1b4bac6c1775a813eb1d224f39cf
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662018"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885837"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Azure Sentinel 'i çalışma alanınızdan kaldırma
 
@@ -48,13 +48,13 @@ Bağlantı kesilmesi tanımlandıktan sonra, çıkarma işlemi başlar.
 
 -   AWS
 
--   Microsoft Hizmetleri güvenlik uyarıları: kimlik için Microsoft Defender (*eskiden Azure ATP*) Microsoft Cloud App Security, Cloud DISCOVERY gölge BT raporlaması, Azure AD kimlik koruması, uç nokta Için Microsoft Defender (*eski ADıYLA Microsoft Defender ATP*), Azure Defender (*Eski adıyla Azure Güvenlik Merkezi*)
+-   Microsoft Hizmetleri güvenlik uyarıları: kimlik için Microsoft Defender (*Eski adıyla Azure ATP*) Microsoft Cloud App Security, Cloud DISCOVERY gölge BT raporlama, Azure AD kimlik koruması, uç nokta Için Microsoft Defender (*eski ADıYLA Microsoft Defender ATP*), Azure Güvenlik Merkezi 'ndeki Azure Defender uyarıları
 
 -   Tehdit Bilgisi
 
--   Ortak Güvenlik günlükleri (CEF tabanlı Günlükler, Barkcuda ve syslog dahil) (Azure Defender kullanıyorsanız, bu Günlükler toplanmaya devam eder.)
+-   Ortak Güvenlik günlükleri (CEF tabanlı Günlükler, Barkcuda ve syslog dahil) (Azure Defender uyarılarını Azure Güvenlik Merkezi 'nden alırsanız, bu Günlükler toplanmaya devam eder.)
 
--   Windows güvenlik olayları (Azure Defender kullanıyorsanız, bu Günlükler toplanmaya devam eder.)
+-   Windows güvenlik olayları (Azure Güvenlik Merkezi 'nden Azure Defender uyarıları alırsanız, bu Günlükler toplanmaya devam eder.)
 
 İlk 48 saat içinde veri ve analitik kuralları (gerçek zamanlı Otomasyon yapılandırması dahil) artık Azure Sentinel 'de erişilebilir veya sorgulanabilir olmayacaktır.
 

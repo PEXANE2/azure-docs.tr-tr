@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a80fe998c1ab241e35bee195b927846e264dec59
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82024481"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972365"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Öğretici: Azure IoT Central su kalitesinde izleme uygulaması oluşturma
 
@@ -256,4 +256,7 @@ Uygulamanızı kullanmaya devam etmeyecekecekseniz, uygulamayı aşağıdaki ad�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Su kalitesi izleme kavramları](./concepts-waterqualitymonitoring-architecture.md)hakkında daha fazla bilgi edinin.
+* Şu konular hakkında daha fazla bilgi edinin: 
+
+> [!div class="nextstepaction"]
+> [su kalitesi izleme kavramları](./concepts-waterqualitymonitoring-architecture.md).

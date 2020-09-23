@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Arc özellikli veri hizmetleri
+summary: Tercih ettiğiniz altyapı üzerinde Kubernetes’i kullanarak Azure veri hizmetlerini şirket içinde, uçta ve çok bulutlu ortamlarda çalıştırın.
+metadata:
+  title: Azure Arc özellikli veri hizmetleri (önizleme)
+  description: Tercih ettiğiniz altyapı üzerinde Kubernetes’i kullanarak Azure veri hizmetlerini şirket içinde, uçta ve çok bulutlu ortamlarda çalıştırın.
+  ms.service: azure-arc
+  ms.subservice: azure-arc-data
+  ms.topic: landing-page
+  author: MikeRayMSFT
+  ms.author: mikeray
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 3ef94bfc9d3870c4c91116fb2aaf26387999a8da
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928929"
+landingContent:
+- title: Hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Arc özellikli veri hizmetleri nedir?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Bağlantı modları ve gereksinimler
+      url: connectivity.md
+    - text: Depolama yapılandırması
+      url: storage-configuration.md
+- title: Kullanmaya başlayın
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Veri denetleyicisi oluşturma
+      url: create-data-controller.md
+    - text: İstemci araçlarını yükleme
+      url: install-client-tools.md
+- title: Azure Arc özellikli PostgreSQL Hiper Ölçek (önizleme)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Oluştur
+      url: create-postgresql-hyperscale-server-group.md
+    - text: Bağlan
+      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - text: Geçiş
+      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+    - text: Geri Yükleme
+      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+- title: Azure Arc özellikli SQL Yönetilen Örneği (önizleme)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Oluştur
+      url: create-sql-managed-instance.md
+    - text: Bağlan
+      url: connect-managed-instance.md
+    - text: Geçiş
+      url: migrate-to-managed-instance.md
+    - text: Geri Yükleme
+      url: restore-adventureworks-sample-db.md

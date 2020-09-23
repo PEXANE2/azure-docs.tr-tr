@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 400585d3e5908268708d93ceeefd26a4a5efdd49
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77122077"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972394"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Öğretici: Azure IoT Central su tüketim izleme uygulaması oluşturma
 
@@ -154,7 +154,7 @@ Su tüketim İzleyicisi cihaz şablonu önceden tanımlanmış görünümlerle g
 
   ![Cihaz şablonu görünümleri](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
 
-### <a name="publish"></a>Yayımlama
+### <a name="publish"></a>Yayımla
 
 Herhangi bir değişiklik yaptıysanız, cihaz şablonunu **yayımladığınızdan** emin olun.
 
@@ -256,4 +256,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Su tüketimi izleme kavramları](./concepts-waterconsumptionmonitoring-architecture.md)hakkında daha fazla bilgi edinin.
+* Şu konular hakkında daha fazla bilgi edinin: 
+
+> [!div class="nextstepaction"]
+> [Su tüketim izleme kavramları](./concepts-waterconsumptionmonitoring-architecture.md).

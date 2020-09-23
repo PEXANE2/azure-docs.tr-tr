@@ -1,0 +1,88 @@
+---
+title: PostgreSQL hiper ölçek sunucu grupları sorunlarını giderme
+description: Jupyter Notebook ile PostgreSQL hiper ölçek sunucu grupları sorunlarını giderme
+services: azure-arc
+ms.service: azure-arc
+ms.subservice: azure-arc-data
+author: TheJY
+ms.author: jeanyd
+ms.reviewer: mikeray
+ms.date: 09/22/2020
+ms.topic: how-to
+ms.openlocfilehash: 9c0d3d9c74be8dabaec20ff5d4c7e7cfc74d8eef
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90941563"
+---
+# <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>PostgreSQL hiper ölçek sunucu grupları sorunlarını giderme
+
+Not defterleri, yapılacak işlemleri ve nasıl yapılacağını açıklayan markaşağı içerik ekleyerek yordamları belge içinde görüntüleyebilir. Ayrıca, bir yordamı otomatikleştirmek için yürütülebilir kod de sağlayabilir.  Bu model, standart işletim yordamlarından sorun giderme kılavuzlarıyla ilgili her şey için yararlıdır.
+
+Örneğin, Azure Data Studio kullanarak bazı sorunlar olabilecek bir PostgreSQL hiper ölçek sunucu grubunun sorunlarını giderelim.
+
+[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="install-tools"></a>Araçları yükleme
+
+`kubectl` `azdata` Azure Data Studio ' de not defterini çalıştırmak için kullandığınız istemci makineye Azure Data Studio ve ' yi yükleyebilirsiniz. Bunu yapmak için lütfen [istemci araçları 'Nı yüklemek](install-client-tools.md) üzere yönergeleri izleyin
+
+## <a name="update-the-path-environment-variable"></a>PATH ortam değişkenini güncelleştirme
+
+Bu araçların bu istemci makinede herhangi bir yerden çağrılabileceğini doğrulayın. Örneğin, bir Windows istemci makinesinde, yol sistemi ortam değişkenini güncelleştirin ve kubectl 'yi yüklediğiniz klasörü ekleyin.
+
+## <a name="sign-in-with-azdata"></a>İle oturum açın `azdata`
+
+Arc veri denetleyicinizde bu istemci makinesinden ve Azure Data Studio başlamadan önce oturum açın. Bunu yapmak için aşağıdaki gibi bir komut çalıştırın:
+
+```console
+azdata login --endpoint https://<IP address>:<port>
+```
+
+`<IP address>`Kubernetes KÜMENIZIN IP adresiyle ve `<port>` Kubernetes 'in dinlediği bağlantı noktası ile değiştirin. Sizden Kullanıcı adı ve parola istenir. Daha fazla ayrıntı görmek için şunu çalıştırın: _
+
+```console
+azdata login --help
+```
+
+## <a name="log-into-your-kubernetes-cluster-with-kubectl"></a>Kubectl ile Kubernetes kümenizde oturum açma
+
+Bunu yapmak için, [Bu](https://blog.christianposta.com/kubernetes/logging-into-a-kubernetes-cluster-with-kubectl/) blog gönderisine sunulan örnek komutları kullanmak isteyebilirsiniz.
+Şunun gibi komutları çalıştırın:
+
+```console
+kubectl config view
+kubectl config set-credentials kubeuser/my_kubeuser --username=<your Arc Data Controller Admin user name> --password=<password>
+kubectl config set-cluster my_kubeuser --server=https://<IP address>:<port>
+kubectl config set-context default/my_kubeuser/ArcDataControllerAdmin --user=ArcDataControllerAdmin/my_kubeuser --namespace=arc --cluster=my_kubeuser
+kubectl config use-context default/my_kubeuser/ArcDataControllerAdmin
+```
+
+### <a name="the-troubleshooting-notebook"></a>Sorun giderme Not defteri
+
+Azure Data Studio başlatın ve sorun giderme Not defterini açın. 
+
+[033-Manage-Postgres-with-AzureDataStudio.MD](manage-postgresql-hyperscale-server-group-with-azure-data-studio.md) ' de açıklanan adımları uygulayın:
+
+1. Arc veri denetleyicinize bağlanma
+2. Postgres örneğinizi sağ seçin ve **[Yönet]** öğesini seçin
+3. **[Sorunları Tanıla ve çöz] panosunu** seçin
+4. **[Sorun gider] bağlantısını** seçin
+
+:::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook.jpg" alt-text="Azure Data Studio-PostgreSQL sorun giderme Not defteri":::
+
+**TSG100-Azure Arc etkin PostgreSQL hiper ölçek sorun giderici Not defteri** açılır: :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio-PostgreSQL sorun giderme Not defterini kullanma":::
+
+### <a name="run-the-scripts"></a>Betikleri çalıştırma
+Not defterini tek seferde yürütmek için en üstteki ' Tümünü Çalıştır ' düğmesini seçin veya her bir kod hücresini birer birer seçerek yürütün.
+
+Olası sorunlar için kod hücrelerinin yürütülmesindeki çıktıyı görüntüleyin.
+
+Yaygın sorunların nasıl tanınabileceği ve nasıl çözülecek hakkında zaman içindeki not defterine daha fazla ayrıntı ekleyeceğiz.
+
+## <a name="next-step"></a>Sonraki adım
+- [Azure Arc etkin veri Hizmetleri için günlükleri alma](troubleshooting-get-logs.md) hakkında bilgi edinin
+- [Kibana ile günlükleri arama](monitor-grafana-kibana.md) hakkında bilgi edinin
+- [Grafana ile izleme](monitor-grafana-kibana.md) hakkında bilgi edinin
+- Kendi not defterlerinizi oluşturma

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/28/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6490b3cf2d3813a2740c548f778e65f1df6e7b01
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: bcb3fdbe12a2704e585a9b13484c2528c9cdc559
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603667"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894439"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure bilişsel hizmetler nedir?
 
@@ -88,6 +88,7 @@ Yeni belgelerin geçerli listesi [bilişsel hizmetler](whats-new-docs.md)belgele
 |:-----------|:------------------|
 |[Anomali algılayıcısı](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomali Algılayıcısı") (Önizleme)|Anomali algılayıcısı, zaman serisi verilerinizde normalleştirimler izlemenize ve bunları algılamanıza olanak tanır.|
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator olası rahatsız edici, istenmeyen ve riskli içerik için izleme sağlar.|
+|[Ölçüm Danışmanı](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor) (Önizleme) | Ölçüm Danışmanı, çok değişkenli bir zaman serisi verilerinde özelleştirilebilir anomali algılama ve hizmeti kullanmanıza yardımcı olacak tam özellikli bir Web portalı sağlar.
 |[Kişiselleştirme](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Kişiselleştirme")|Kişiselleştirici, gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza göstermek için en iyi deneyimi seçmenize olanak sağlar.|
 
 ## <a name="learn-with-the-quickstarts"></a>Hızlı başlangıçlarla öğrenin
@@ -95,7 +96,7 @@ Yeni belgelerin geçerli listesi [bilişsel hizmetler](whats-new-docs.md)belgele
 Şunları kullanarak uygulamalı hızlı başlangıçlarla bilişsel hizmetler kaynağı oluşturma hakkında bilgi edinin:
 
 * [Azure Portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure portal")
-* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI’si")
+* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
 * [Azure SDK istemci kitaplıkları](cognitive-services-apis-create-account-cli.md?tabs=windows "bilişsel hizmetler-API 'ler-oluşturma-hesap-istemci-kitaplığı? özetleme = programlama-dil-CSharp")
 * [Azure Resource Manager (ARM) şablonları](resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) şablonları")
 

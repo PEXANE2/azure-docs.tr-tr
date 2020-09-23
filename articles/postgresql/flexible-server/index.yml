@@ -1,0 +1,110 @@
+### YamlMime:Landing
+title: Esnek Sunucu (Önizleme) belgeleri
+summary: PostgreSQL için Azure Veritabanı - Esnek Sunucu (Önizleme) kritik iş yüklerini teslim edebilen, tahmin edilebilir performans ve dinamik ölçeklenebilirlik sunan, tam olarak yönetilen bir PostgreSQL hizmet olarak veritabanıdır. PostgreSQL için Azure Veritabanı ile açık kaynak araçları ve seçtiğiniz platformu kullanarak uygulamalar geliştirin. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle Esnek sunucuları kullanmayı öğrenin.
+metadata:
+  title: PostgreSQL için Azure Veritabanı - Esnek Sunucu (Önizleme)
+  description: PostgreSQL için Azure Veritabanı - Esnek Sunucu (Önizleme), PostgreSQL topluluk sürümü tarafından desteklenen, Microsoft bulutunda geliştiriciler için oluşturulmuş bir ilişkisel veritabanı hizmetidir.
+  author: rachel-msft
+  ms.author: raagyema
+  ms.date: 09/22/2020
+  ms.service: postgresql
+  ms.topic: landing-page
+  ms.openlocfilehash: 7c214662a37083708b0a38148382e16b553145c4
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90929080"
+landingContent:
+- title: Esnek Sunucu (Önizleme) hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Esnek Sunucu nedir?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Esnek sunucu oluşturma
+      url: quickstart-create-server-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Esnek sunucu ile bir Django uygulaması oluşturma
+      url: tutorial-django-app-service-postgres.md
+  - linkListType: whats-new
+    links:
+    - text: Blogumuza göz atın
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: Yönetme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: İşlem ve depolama seçenekleri
+      url: concepts-compute-storage.md
+    - text: Ağ
+      url: concepts-networking.md
+    - text: Postgres sürümleri
+      url: concepts-supported-versions.md
+    - text: Uzantıları
+      url: concepts-extensions.md
+    - text: İzleme
+      url: concepts-monitoring.md
+    - text: Mantıksal çoğaltma
+      url: concepts-logical.md
+  - linkListType: how-to-guide
+    links:
+    - text: Sunucuyu yönetme
+      url: how-to-manage-server-portal.md
+    - text: Sunucuyu Başlatma/Durdurma
+      url: how-to-stop-start-server-portal.md
+    - text: Ölçeği artırma
+      url: how-to-scale-compute-storage-portal.md
+    - text: Sunucuyu yeniden başlatma
+      url: how-to-restart-server-portal.md
+    - text: Günlükleri yapılandırma ve bunlara erişme
+      url: howto-configure-and-access-logs.md
+    - text: Bakım zamanlama
+      url: how-to-maintenance-portal.md
+- title: İş sürekliliği
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: İş sürekliliğine genel bakış
+      url: concepts-business-continuity.md
+    - text: Yüksek kullanılabilirlik
+      url: concepts-high-availability.md
+    - text: Yedekleme ve geri yükleme
+      url: concepts-backup-restore.md
+  - linkListType: how-to-guide
+    links:
+    - text: Yüksek kullanılabilirliği yönetme
+      url: how-to-manage-high-availability-portal.md
+    - text: Sunucuyu geri yükleme
+      url: how-to-restore-server-portal.md
+- title: Bağlan
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Python kullanarak bağlanma
+      url: connect-python.md
+  - linkListType: tutorial
+    links:
+    - text: Sanal ağdaki Web Uygulamasını bağlama
+      url: tutorial-webapp-server-vnet.md
+- title: Geçiş
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: pg_dump ve pg_restore kullanarak veritabanını geçirme
+      url: ../howto-migrate-using-dump-and-restore.md
+    - text: Çevrimiçi geçirme
+      url: ../howto-migrate-online.md
+- title: Başvuru
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI geliştirici başvurusu
+      url: /cli/azure/postgres
+    - text: REST API geliştirici başvurusu
+      url: /rest/api/postgresql/
+    - text: Azure Resource Manager şablonları
+      url: /azure/templates/microsoft.dbforpostgresql/allversions

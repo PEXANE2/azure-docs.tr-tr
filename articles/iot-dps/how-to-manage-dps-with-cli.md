@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: devx-track-azurecli
 services: iot-dps
-ms.openlocfilehash: 72978636b878aac9120b356e7be5fe5c978d1738
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 237ca1f0041283bb86b24ad456ab781dc13eeb86
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499798"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980523"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>IoT Hub cihaz sağlama hizmetini yönetmek için Azure CLı ve IoT uzantısını kullanma
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) , IoT Edge gibi Azure kaynaklarını yönetmeye yönelik açık kaynaklı bir platformlar arası komut satırı aracıdır. Azure CLı, Windows, Linux ve MacOS 'ta kullanılabilir. Azure CLı, Azure IoT Hub kaynaklarını, cihaz sağlama hizmeti örneklerini ve bağlı hub 'ları kutudan dışarı yönetmenize olanak sağlar.
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) , IoT Edge gibi Azure kaynaklarını yönetmeye yönelik açık kaynaklı bir platformlar arası komut satırı aracıdır. Azure CLı, Windows, Linux ve macOS 'ta kullanılabilir. Azure CLı, Azure IoT Hub kaynaklarını, cihaz sağlama hizmeti örneklerini ve bağlı hub 'ları kutudan dışarı yönetmenize olanak sağlar.
 
 IoT uzantısı, Azure CLı 'yi cihaz yönetimi ve tam IoT Edge özelliği gibi özelliklerle zenginleştirir.
 
@@ -53,7 +53,7 @@ Başlamdan önce daha önce açıklanan yükleme adımlarını tamamlayın. Hen�
 az login
 ```
 
-![oturum aç](./media/how-to-manage-dps-with-cli/login.jpg)
+![Ekran görüntüsü az Login komutunu çalıştıran bir komut istemi penceresi gösterir.](./media/how-to-manage-dps-with-cli/login.jpg)
 
 ### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. eastus 'de IoTHubBlogDemo kaynak grubu oluşturma
 
