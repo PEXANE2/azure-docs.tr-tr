@@ -1,0 +1,80 @@
+- name: Yönetilen HSM Belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Yönetilen HSM hakkında
+      href: overview.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: CLI
+      href: quick-create-cli.md
+    - name: Azure Resource Manager şablonu
+      href: quick-create-template.md
+- name: Öğreticiler
+  items:
+    - name: Azure CLI ile yönetme
+      href: key-management.md
+    - name: Yönetilen HSM rol yönetimi
+      href: role-management.md
+    - name: Yönetilen HSM'nize güvenli erişim
+      href: secure-your-managed-hsm.md
+    - name: Yönetilen HSM için günlüğü ayarlama
+      href: logging.md
+    - name: Olağanüstü durum kurtarma
+      href: disaster-recovery-guide.md
+    - name: HSM korumalı anahtarları Yönetilen HSM’ye aktarma
+      href: hsm-protected-keys-byok.md
+    - name: Yedekleme ve geri yükleme
+      href: backup-restore.md
+- name: Kavramlar
+  items:
+    - name: Güvenlik etki alanı
+      href: security-domain.md
+    - name: Önerilen uygulamalar
+      href: best-practices.md
+    - name: Erişim Denetimi
+      href: access-control.md
+    - name: Yerel RBAC yerleşik rolleri
+      href: built-in-roles.md
+- name: Nasıl yapılır kılavuzları
+  items: null
+- name: Başvuru
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/distaster-recoveryeyvault/?view=azps-1.2.0#key_vault
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: Resource Manager şablonu
+      href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
+- name: Kaynaklar
+  items:
+    - name: Microsoft Learn ile becerilerinizi geliştirin
+      href: /learn/browse/?products=azure-key-vault
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: Bölge kullanılabilirliği
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: Hizmet Düzeyi Sözleşmesi (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: Hizmet sınırlamaları
+      href: ../general/service-limits.md
+    - name: Hizmet durumu
+      href: 'https://azure.microsoft.com/status/'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: Blog
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: Ürün Geri Bildirimi
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

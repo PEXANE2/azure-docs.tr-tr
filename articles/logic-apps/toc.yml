@@ -1,6 +1,6 @@
 - name: Azure Logic Apps belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Logic Apps nedir?
       href: logic-apps-overview.md
@@ -61,10 +61,14 @@
       items:
         - name: Önceden oluşturulmuş şablonlardan oluşturma
           href: logic-apps-create-logic-apps-from-templates.md
+        - name: Otomasyon görevleri oluşturarak Azure kaynaklarını yönetme
+          href: create-automation-tasks-azure-resources.md
         - name: BizTalk Services’dan geçirme
           href: logic-apps-move-from-mabs.md
         - name: Akışları Power Automate'ten dışarı aktarma ve Azure Logic Apps’e dağıtma
           href: export-from-microsoft-flow-logic-app-template.md
+        - name: Visual Studio Code’da durum bilgisi olan veya olmayan iş akışları oluşturma
+          href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: İş akışı yürütmeyi denetleme
           items:
             - name: Koşullu deyimler
@@ -166,8 +170,8 @@
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: EDIFACT dosyalarını UNH2.5 segmenti ile işleme
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
-        - name: RosettaNet iletileri gönderip alma
-          href: logic-apps-enterprise-integration-rosettanet.md
+            - name: RosettaNet iletileri gönderip alma
+              href: logic-apps-enterprise-integration-rosettanet.md
         - name: X12 iletilerini paylaşma
           href: logic-apps-enterprise-integration-x12.md
           items:
@@ -312,7 +316,7 @@
         - name: Mantıksal uygulamaları yönetme - Visual Studio
           href: manage-logic-apps-with-visual-studio.md
         - name: Tümleştirme hesaplarını yönetme
-          href: ./logic-apps-enterprise-integration-create-integration-account.md
+          href: logic-apps-enterprise-integration-create-integration-account.md
         - name: Tümleştirme hizmeti ortamlarını yönetme
           href: ise-manage-integration-service-environment.md
         - name: Mantıksal uygulama kaynaklarını taşıma

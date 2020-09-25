@@ -31,6 +31,8 @@
       href: connection-monitor-preview.md
     - name: VM ağ trafiği filtre sorunlarını tanılama
       href: network-watcher-ip-flow-verify-overview.md
+    - name: NSG kurallarını ve Trafik filtrelemeyi tanılama
+      href: network-watcher-network-configuration-diagnostics-overview.md
     - name: VM yönlendirme sorunlarını tanılama
       href: network-watcher-next-hop-overview.md
     - name: Giden VM iletişim sorunlarını tanılama

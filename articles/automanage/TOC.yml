@@ -1,0 +1,28 @@
+- name: Azure Otomatik Yönetimi
+  href: automanage-virtual-machines.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: Azure portaldaki VM’lerde etkinleştirme
+      href: quick-create-virtual-machines-portal.md
+- name: Kavramlar
+  expanded: true
+  items:
+    - name: Sanal makineler
+      href: automanage-virtual-machines.md
+    - name: VM’ler için en iyi deneyimler
+      href: virtual-machines-best-practices.md
+- name: Nasıl yapılır
+  expanded: true
+  items:
+    - name: Özel tercihler oluşturma
+      href: virtual-machines-custom-preferences.md
+    - name: Azure İlkesi aracılığıyla VM’lerde etkinleştirme
+      href: virtual-machines-policy-enable.md
+- name: Kaynaklar
+  expanded: true
+  items:
+    - name: SSS
+      href: faq.md
+    - name: Bulut Benimseme Çerçevesi
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management'

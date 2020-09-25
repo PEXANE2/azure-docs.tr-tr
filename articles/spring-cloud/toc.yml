@@ -13,7 +13,7 @@
     - name: Mikro hizmetler oluşturma ve çalıştırma
       expanded: true
       items:
-        - name: Örnek uygulamalara giriş
+        - name: Örnek uygulamaya giriş
           href: spring-cloud-quickstart-sample-app-introduction.md
         - name: Azure Spring Cloud hizmetini sağlama
           href: spring-cloud-quickstart-provision-service-instance.md
@@ -37,8 +37,6 @@
       href: spring-cloud-tutorial-circuit-breaker.md
     - name: Özel DNS adı
       href: spring-cloud-tutorial-custom-domain.md
-    - name: IntelliJ kullanarak Azure Spring Cloud uygulamalarını dağıtma
-      href: spring-cloud-tutorial-intellij-deploy-apps.md
     - name: Terrayform ile Azure Spring Cloud örneğini sağlama
       href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: Jenkins ile CI/CD

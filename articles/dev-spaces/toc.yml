@@ -11,6 +11,8 @@
           href: get-started-netcore-visualstudio.md
     - name: Kavramlar
       items:
+        - name: Kubernetes Köprüsü’ne Geçiş
+          href: migrate-to-bridge-to-kubernetes.md
         - name: Geliştirme Alanları nasıl çalışır?
           items:
             - name: Genel Bakış

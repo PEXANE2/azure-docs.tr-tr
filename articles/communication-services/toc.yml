@@ -1,0 +1,88 @@
+- name: Azure İletişim Hizmetleri Belgeleri
+  href: index.yml
+- name: Genel Bakış
+  expanded: true
+  items:
+    - name: Azure İletişim Hizmetleri nedir?
+      href: overview.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: İletişim Hizmetleri kaynağı oluşturma
+      href: quickstarts/create-communication-resource.md
+    - name: Erişim belirteçleri oluşturma ve yönetme
+      href: quickstarts/access-tokens.md
+    - name: Sohbet
+      items:
+        - name: Uygulamanıza sohbet ekleme
+          href: quickstarts/chat/get-started.md
+    - name: Telefon ve SMS
+      items:
+        - name: Telefon numarası alma
+          href: quickstarts/telephony-sms/get-phone-number.md
+        - name: SMS iletisi gönderme
+          href: quickstarts/telephony-sms/send.md
+        - name: SMS olaylarını işleme
+          href: quickstarts/telephony-sms/handle-sms-events.md
+    - name: Sesli ve görüntülü arama
+      items:
+        - name: Uygulamanıza sesli arama ekleme
+          href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: Arama istemci kitaplığını kullanma
+          href: quickstarts/voice-video-calling/calling-client-samples.md
+- name: Öğreticiler
+  expanded: false
+  items:
+    - name: Azure İşlevleri’ni kullanarak güvenilir bir kimlik doğrulama hizmeti oluşturma
+      href: tutorials/trusted-service-tutorial.md
+- name: Kavramlar
+  expanded: false
+  items:
+    - name: Sohbet
+      items:
+        - name: Sohbet istemci kitaplığına genel bakış
+          href: concepts/chat/sdk-features.md
+        - name: Sohbet kavramları
+          href: concepts/chat/concepts.md
+    - name: Telefon ve SMS
+      items:
+        - name: SMS istemci kitaplığına genel bakış
+          href: concepts/telephony-sms/sdk-features.md
+        - name: SMS kavramları
+          href: concepts/telephony-sms/concepts.md
+        - name: Telefon ve SMS çözümünüzü planlama
+          href: concepts/telephony-sms/plan-solution.md
+    - name: Sesli ve görüntülü arama
+      items:
+        - name: Arama istemci kitaplığına genel bakış
+          href: concepts/voice-video-calling/calling-sdk-features.md
+        - name: Ses ve görüntü kavramları
+          href: concepts/voice-video-calling/about-call-types.md
+    - name: İstemci ve sunucu mimarisi
+      href: concepts/client-and-server-architecture.md
+    - name: Arama akışları
+      href: concepts/call-flows.md
+    - name: İstemci kitaplıkları ve REST API’leri
+      href: concepts/sdk-options.md
+    - name: Fiyatlandırma modeli
+      href: concepts/pricing.md
+    - name: Kimlik Doğrulaması
+      href: concepts/authentication.md
+    - name: Olay işleme
+      href: concepts/event-handling.md
+    - name: Bildirimler
+      href: concepts/notifications.md
+- name: Örnekler
+  items:
+    - name: Grup araması hero örneği
+      href: samples/calling-hero-sample.md
+    - name: Grup sohbeti hero örneği
+      href: samples/chat-hero-sample.md
+- name: Başvurular
+  items:
+    - name: REST API belgeleri
+      href: 'https://docs.microsoft.com/rest/api/azure/'
+- name: Kaynaklar
+  items:
+    - name: Sürüm notları
+      href: release-notes.md

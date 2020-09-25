@@ -1,6 +1,6 @@
 ---
 title: Azure’da Cloudyn ile CSP İş Ortağı bilgilerini kullanarak kaydolma
-description: Bu hızlı başlangıçta bir Cloudyn deneme aboneliği oluşturmak ve Cloudyn portalında oturum açmak için gereken kayıt işlemleri açıklanmaktadır.
+description: Bir Cloudyn deneme aboneliği oluşturmak ve Cloudyn portalında oturum açmak için gereken kayıt işlemleri hakkında ayrıntılı bilgi edinin.
 author: bandersmsft
 ms.author: banders
 ms.date: 03/12/2020
@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 518d4d0f672ae0e83748dbf7dc0a87097ca7bbf7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 92d4c84cc73ea05f58912549674f76513e3faeb1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688173"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985503"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>CSP İş Ortağı programına kaydolun ve maliyetle ilgili verileri görüntüleyin
 

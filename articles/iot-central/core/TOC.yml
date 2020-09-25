@@ -109,7 +109,7 @@
           href: howto-run-a-job.md
     - name: Dönüşüm
       items:
-        - name: Bulut hedeflerine veri aktarma (önizleme)
+        - name: Verileri bulut hedeflerine aktarma
           href: howto-export-data.md
         - name: Verileri bulut hedeflerine dışarı aktarma (eski)
           href: howto-export-data-legacy.md

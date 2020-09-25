@@ -1,27 +1,65 @@
 - name: Azure gizli bilgi işlem
-  href: overview.md
+  href: ./index.yml
+- name: Genel Bakış
+  expanded: true
+  items:
+    - name: Azure gizli bilgi işleme hoş geldiniz
+      href: overview.md
+    - name: Kullanım örnekleri ve senaryolar
+      href: use-cases-scenarios.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Azure portalda oluşturma
-      href: quick-create-portal.md
-    - name: Market ile oluşturma
-      href: quick-create-marketplace.md
+    - name: Sanal makineler
+      items:
+        - name: Azure portalda oluşturma
+          href: quick-create-portal.md
+        - name: Market ile oluşturma
+          href: quick-create-marketplace.md
+    - name: Azure Kubernetes Services (AKS)
+      items:
+        - name: AKS Gizli düğümlere genel bakış
+          href: confidential-nodes-aks-overview.md
+        - name: Azure CLI ile gizli düğümler
+          href: confidential-nodes-aks-get-started.md
+        - name: AKS’de gizli düğümler hakkında SSS
+          href: confidential-nodes-aks-faq.md
 - name: Kavramlar
   expanded: true
   items:
-    - name: Sanal Makineler’e yönelik çözümler
-      href: virtual-machine-solutions.md
+    - name: Sanal makineler (VM)
+      items:
+        - name: Kapanım bilgisi olan sanal makineler
+          href: confidential-computing-enclaves.md
+        - name: Sanal makineler üzerindeki çözümler
+          href: virtual-machine-solutions.md
+        - name: Gizli bilgi işlem VM hakkında SSS
+          href: faq.md
+    - name: Kapsayıcı İşlem Kaynakları
+      expanded: true
+      items:
+        - name: Gizli kapsayıcılar (lift-and-shift)
+          items:
+            - name: Kullanmaya başlama
+              href: confidential-containers.md
+        - name: Kapanım bilgisi olan kapsayıcılar
+          items:
+            - name: Kullanmaya başlama
+              href: enclave-aware-containers.md
+    - name: Kanıtlama
+      href: attestation.md
+    - name: Uygulama geliştirme
+      href: application-development.md
 - name: Nasıl Yapılır
-  expanded: true
   items:
     - name: Fortanix Enclave Manager
       href: how-to-fortanix-enclave-manager.md
-- name: Kaynaklar
-  expanded: true
+- name: Başvurular
   items:
-    - name: SSS
-      href: faq.md
+    - name: SGX Teklif Yardımcısı Özelliği
+      href: confidential-nodes-out-of-proc-attestation.md
+- name: Kaynaklar
+  items:
     - name: Gizli bilgi işlem hakkında geri bildirim
       href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
     - name: StackOverflow

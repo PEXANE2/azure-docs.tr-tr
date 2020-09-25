@@ -8,18 +8,18 @@ tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/21/2020
 ms.author: banders
-ms.openlocfilehash: 6cfebc9cfbd856567fde3d6736c6ddc5f1a94b4d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e9ad580ae5e3ffe7a7f5781423f96897272a4844
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688717"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972068"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Microsoft Azure faturanızı ödeme
 
-Bu makale, Azure web sitesi üzerinden Azure’a kaydolan ve Microsoft Müşteri Sözleşmesi olan müşteriler için geçerlidir. [Microsoft Müşteri Sözleşmesi’ne erişiminizi denetleme](#check-access-to-a-microsoft-customer-agreement).
+Bu makale, Azure web sitesi üzerinden Azure’a kaydolan ve Microsoft Müşteri Sözleşmesi’ne (MCA) sahip müşteriler için geçerlidir. [Microsoft Müşteri Sözleşmesi’ne erişiminizi denetleme](#check-access-to-a-microsoft-customer-agreement).
 
 Faturalama profilinizin varsayılan ödeme yöntemi, kredi kartı veya çek/havale olabilir. Azure kredileriniz varsa bunlar her faturalama döneminde faturanıza otomatik olarak uygulanır. Çek/havale ile ödemeye uygun olmak için bkz. [faturayla ödeme](../manage/pay-by-invoice.md).
 
@@ -29,11 +29,11 @@ Varsayılan ödeme yönteminiz kredi kartıysa, fatura oluşturulduktan sonra he
 
 ## <a name="pay-now-in-the-azure-portal"></a>Şimdi Azure portalında ödeyin
 
-Azure portalında fatura ödemek için faturalama profili sahibi, katkıda bulunan veya fatura yöneticisi olmanız gerekir.
+Azure portalda faturaları ödemek için, faturalama hesabı yöneticisi olmanız gerekir. Faturalama Hesabı yöneticisi, ilk olarak MCA hesabı için kaydolan kullanıcıdır.
 
 1. [Azure portal](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
-1. Soldaki menüde "Faturalama" altındaki **Faturalar**’ı seçin.
+1. Soldaki menüde **Faturalama** altındaki **Faturalar**’ı seçin.
 1. Vadesi gelmiş veya geçmiş olan faturalarınız için mavi renkli **Şimdi ödeyin** bağlantısı görüntülenir. **Şimdi ödeyin**'i seçin.
 1. Yeni dikey pencerede, mevcut bir kredi kartını seçmek veya yenisini eklemek için **Bir ödeme yöntemi seçin** seçeneğine tıklayın.
 1. Ödeme yöntemi seçildikten sonra **Şimdi ödeyin** düğmesine tıklayın.
@@ -42,3 +42,7 @@ Faturalar dikey penceresinde fatura durumu, ödendi olarak güncelleştirilir.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- Çek/havale ile ödemeye uygun hale gelmek için bkz. [faturayla ödeme](../manage/pay-by-invoice.md)

@@ -60,7 +60,7 @@
               href: entitlement-management-catalog-create.md
             - name: Erişim paketi yöneticileri için temsilci seçme
               href: entitlement-management-delegate-managers.md
-        - name: Erişim paketi yöneticileri
+        - name: Erişim paketi yöneticileri ve Erişim paketi atama yöneticileri
           items:
             - name: Yeni erişim paketi oluşturma
               href: entitlement-management-access-package-create.md
@@ -68,8 +68,10 @@
               href: entitlement-management-access-package-settings.md
             - name: Kaynak rollerini değiştirme
               href: entitlement-management-access-package-resources.md
-            - name: Değişiklik isteği ve onay ayarları
+            - name: İstek ayarlarını değiştirme
               href: entitlement-management-access-package-request-policy.md
+            - name: Onay ayarlarını değiştirme
+              href: entitlement-management-access-package-approval-policy.md
             - name: Yaşam döngüsü ayarlarını değiştirme
               href: entitlement-management-access-package-lifecycle-policy.md
             - name: İstekleri görüntüleme

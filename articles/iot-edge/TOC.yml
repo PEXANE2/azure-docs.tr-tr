@@ -1,6 +1,6 @@
 - name: Azure IoT Edge Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure IoT Edge hakkında
       href: about-iot-edge.md
@@ -101,6 +101,8 @@
           href: iot-edge-security-manager.md
         - name: IoT Edge sertifikaları
           href: iot-edge-certs.md
+        - name: Gizli bilgi işlem
+          href: deploy-trusted-applications.md
     - name: Platform desteği
       href: support.md
     - name: Üretim dağıtımı denetim listesi

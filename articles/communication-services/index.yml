@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure İletişim Hizmetleri
+summary: Azure İletişim Hizmetleri, uygulamalarınıza ses, video, sohbet ve telefon özellikleri eklemenize olanak tanıyan bulut tabanlı bir iletişim hizmetidir. Azure İletişim Hizmetleri’nin şu anda genel önizleme aşamasında olduğunu unutmayın.
+metadata:
+  title: Azure İletişim Hizmetleri
+  description: Azure İletişim Hizmetleri, uygulamalarınıza ses, video, sohbet ve telefon özellikleri eklemenize olanak tanıyan bulut tabanlı bir iletişim hizmetidir. Azure İletişim Hizmetleri’nin şu anda genel önizleme aşamasında olduğunu unutmayın.
+  ms.service: azure-communication-services
+  ms.topic: landing-page
+  author: mikben
+  ms.author: mikben
+  ms.date: 08/10/2020
+  ms.openlocfilehash: 6081063605439982e29984cc4378ec3aee7ac08a
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90929044"
+landingContent:
+- title: Azure İletişim Hizmetleri hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure İletişim Hizmetleri nedir?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: İstemci kitaplığı seçenekleri
+      url: concepts/sdk-options.md
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: İletişim Hizmetleri kaynağı oluşturma
+      url: quickstarts/create-communication-resource.md
+    - text: Kullanıcı erişim belirteçleri oluşturma ve yönetme
+      url: quickstarts/access-tokens.md
+  - linkListType: concept
+    links:
+    - text: İstemci ve sunucu mimarisi
+      url: concepts/client-and-server-architecture.md
+    - text: Kimlik doğrulaması ve yetkilendirme
+      url: concepts/authentication.md
+    - text: Olay işleme
+      url: concepts/event-handling.md
+    - text: Bildirimler
+      url: concepts/notifications.md
+- title: Sesli ve görüntülü arama
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Uygulamanıza sesli ve görüntülü arama özelliği ekleyin
+      url: quickstarts/voice-video-calling/getting-started-with-calling.md
+    - text: Arama istemci kitaplığını kullanma
+      url: quickstarts/voice-video-calling/calling-client-samples.md
+  - linkListType: concept
+    links:
+    - text: Ses ve görüntü kavramları
+      url: concepts/voice-video-calling/about-call-types.md
+    - text: Arama istemci kitaplığına genel bakış
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: Arama akışları
+      url: concepts/call-flows.md
+- title: Telefon ve SMS
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Telefon numarası alma
+      url: quickstarts/telephony-sms/get-phone-number.md
+    - text: SMS iletisi gönderme
+      url: quickstarts/telephony-sms/send.md
+    - text: SMS olaylarını işleme
+      url: quickstarts/telephony-sms/handle-sms-events.md
+  - linkListType: concept
+    links:
+    - text: SMS kavramları
+      url: concepts/telephony-sms/concepts.md
+    - text: SMS istemci kitaplığına genel bakış
+      url: concepts/telephony-sms/sdk-features.md
+    - text: Aramaya genel bakış
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: Telefon ve SMS çözümünüzü planlama
+      url: concepts/telephony-sms/plan-solution.md
+- title: Sohbet
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Uygulamanıza sohbet ekleme
+      url: quickstarts/chat/get-started.md
+  - linkListType: concept
+    links:
+    - text: Sohbet kavramları
+      url: concepts/chat/concepts.md
+    - text: Sohbet istemci kitaplığına genel bakış
+      url: concepts/chat/sdk-features.md
+- title: Örnekler
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Grup Araması hero örneğini kullanmaya başlama
+      url: samples/calling-hero-sample.md
+    - text: Sohbet hero örneğini kullanmaya başlama
+      url: samples/chat-hero-sample.md

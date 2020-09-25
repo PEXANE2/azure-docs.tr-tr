@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Azure Key Vault Yönetilen HSM belgeleri
+summary: Yönetilen HSM hesabınızı kullanarak bulut kaynaklarınıza, uygulamalarınıza ve çözümlerinize erişen ve bunları şifreleyen anahtarlar oluşturma ve bunları koruma hakkında bilgi edinin. Öğreticiler, API başvuruları ve daha fazlası.
+metadata:
+  title: Azure Yönetilen HSM belgeleri
+  description: Hesabınızı kullanarak bulut kaynaklarınıza, uygulamalarınıza ve çözümlerinize erişen ve bunları şifreleyen anahtarlar oluşturma ve bunları koruma hakkında bilgi edinin. Öğreticiler, API başvuruları ve daha fazlası.
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/15/2020
+  ms.openlocfilehash: d17d119528c04b270e9dffe5b824bafcc89472dc
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90992018"
+landingContent:
+- title: Azure Key Vault Yönetilen HSM hakkında (önizleme)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Key Vault Yönetilen HSM nedir?
+      url: overview.md
+    - text: REST API’sine genel bakış
+      url: ../general/about-keys-secrets-certificates.md
+    - text: Desteklenen anahtarlar ve algoritmalar
+      url: ../keys/about-keys.md
+- title: Konsept
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Yönetilen HSM en iyi deneyimleri
+      url: best-practices.md
+    - text: Yönetilen HSM erişim denetimi
+      url: access-control.md
+    - text: Güvenlik etki alanı
+      url: security-domain.md
+    - text: Yerel RBAC yerleşik rolleri
+      url: built-in-roles.md
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure Resource Manager
+      url: quick-create-template.md
+- title: Nasıl Yapılır Kılavuzları
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLI ile yönetme
+      url: key-management.md
+    - text: Yönetilen HSM rol yönetimi
+      url: role-management.md
+    - text: Yönetilen HSM'nize güvenli erişim
+      url: secure-your-managed-hsm.md
+- title: Öğreticiler
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Yedekleme ve geri yükleme
+      url: backup-restore.md
+    - text: Olağanüstü durum kurtarma
+      url: disaster-recovery-guide.md
+    - text: HSM korumalı anahtarları içeri aktarma (genel bakış)
+      url: hsm-protected-keys-byok.md
+    - text: Yönetilen HSM’leriniz için günlüğe kaydetmeyi yapılandırma
+      url: logging.md
+- title: Anahtar Kasası hakkında daha fazla bilgi
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Anahtar Kasasına genel bakış
+      url: ../general/overview.md
+    - text: Anahtar kasası temel kavramları
+      url: ../general/basic-concepts.md
+    - text: Geçici silmeye genel bakış
+      url: ../general/soft-delete-overview.md
+    - text: Güvenliğe genel bakış
+      url: ../general/overview-security.md

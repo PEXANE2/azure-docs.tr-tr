@@ -1,6 +1,6 @@
 - name: Azure Maliyet Yönetimi ve Faturalandırma belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Maliyet Yönetimi ve Faturalandırma nedir?
       href: cost-management-billing-overview.md
@@ -180,6 +180,8 @@
               href: manage/grant-access-to-create-subscription.md
             - name: Abonelik bilgilerini dışarı aktarma
               href: manage/export-subscriptions.md
+            - name: Azure fatura ödeme yöntemini silme
+              href: manage/delete-azure-payment-method.md
             - name: Kredi kartını değiştirme
               href: manage/change-credit-card.md
             - name: Yöneticiyi değiştirme

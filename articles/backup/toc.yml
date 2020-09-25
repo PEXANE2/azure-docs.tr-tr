@@ -1,6 +1,6 @@
 - name: Azure Backup belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Backup’a genel bakış
       href: backup-overview.md
@@ -50,6 +50,8 @@
       items:
         - name: Azure Backup destek matrisi
           href: backup-support-matrix.md
+        - name: Yedekleme Merkezi destek matrisi
+          href: backup-center-support-matrix.md
         - name: Azure VM yedeklemesi destek matrisi
           href: backup-support-matrix-iaas.md
         - name: DPM/Azure Backup Sunucusu (MABS) destek matrisi
@@ -68,6 +70,8 @@
       items:
         - name: SSS-Kurtarma Hizmetleri kasası
           href: backup-azure-backup-faq.md
+        - name: SSS-Yedekleme Merkezi
+          href: backup-center-faq.md
         - name: SSS-Azure VM yedeklemesi
           href: backup-azure-vm-backup-faq.md
         - name: SSS-MARS aracısı
@@ -88,18 +92,36 @@
       href: guidance-best-practices.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Kurtarma Hizmetleri kasası
+    - name: Kasalar
+      items:
+        - name: Kurtarma Hizmetleri kasası
+          items:
+            - name: Genel Bakış
+              href: backup-azure-recovery-services-vault-overview.md
+            - name: Oluştur
+              href: backup-create-rs-vault.md
+            - name: Sil
+              href: backup-azure-delete-vault.md
+            - name: Taşı
+              href: backup-azure-move-recovery-services-vault.md
+            - name: Yönetme
+              href: backup-azure-manage-windows-server.md
+        - name: Yedekleme kasası
+          items:
+            - name: Genel Bakış
+              href: backup-vault-overview.md
+    - name: Yedekleme Merkezi
       items:
         - name: Genel Bakış
-          href: backup-azure-recovery-services-vault-overview.md
-        - name: Oluştur
-          href: backup-create-rs-vault.md
-        - name: Sil
-          href: backup-azure-delete-vault.md
-        - name: Taşı
-          href: backup-azure-move-recovery-services-vault.md
-        - name: Yönetme
-          href: backup-azure-manage-windows-server.md
+          href: backup-center-overview.md
+        - name: İzleme ve Çalıştırma
+          href: backup-center-monitor-operate.md
+        - name: İçgörüler edinme
+          href: backup-center-obtain-insights.md
+        - name: Ortamı yönetme
+          href: backup-center-govern-environment.md
+        - name: Eylem gerçekleştirme
+          href: backup-center-actions.md
     - name: Azure VM yedeklemesi
       items:
         - name: Genel Bakış
@@ -150,6 +172,10 @@
           href: restore-sql-database-azure-vm.md
         - name: Yönetme
           href: manage-monitor-sql-database-backup.md
+    - name: PostgreSQL için Azure Veritabanı yedeklemesi
+      items:
+        - name: Backup
+          href: backup-azure-database-postgresql.md
     - name: MARS aracısı kullanarak Windows’u yedekleme
       items:
         - name: Genel Bakış

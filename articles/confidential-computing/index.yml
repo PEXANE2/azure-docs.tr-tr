@@ -1,0 +1,115 @@
+### YamlMime:Landing
+title: Azure gizli bilgi işlem belgeleri
+summary: Azure gizli bilgi işlem, hassas verilerinizin bulutta işlendiği sırada yalıtımına olanak sağlayan çözümler sunar. Kavramları okuyarak, öğreticileri tamamlayarak ve kod örnekleriyle çalışarak, gizli bilgi işlem altyapısını temel alan uygulamalar oluşturmayı ve dağıtmayı öğrenin. İş yüklerinizi olabildiğince güvenli tutmak için gizli bilgi işlem üzerinde oluşturulmuş Microsoft ürünlerini kullanın.
+metadata:
+  title: Azure gizli bilgi işlem
+  description: Azure gizli bilgi işlemin kullanımda olan verileri nasıl koruduğunu öğrenin ve bulutta gizli iş yükleri oluşturma yollarını öğrenin.
+  ms.service: virtual-machines
+  ms.subservice: workloads
+  ms.topic: landing-page
+  author: JBCook
+  ms.author: jencook
+  ms.date: 09/22/2020
+  ms.openlocfilehash: abe5104ff5425103baaca72efdc960a34ffc6a73
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90992032"
+landingContent:
+- title: Azure gizli bilgi işlem hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure gizli bilgi işlem nedir?
+      url: overview.md
+    - text: Senaryolar
+      url: use-cases-scenarios.md
+  - linkListType: concept
+    links:
+    - text: Sanal makineler
+      url: confidential-computing-enclaves.md
+    - text: AKS üzerinde kapsayıcı işlemi
+      url: confidential-containers.md
+    - text: Uygulama Geliştirme
+      url: application-development.md
+    - text: Kanıtlama
+      url: attestation.md
+  - linkListType: reference
+    links:
+    - text: Intel SGX sanal makineleri
+      url: ../virtual-machines/dcv2-series.md
+- title: Sanal makineler
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Intel SGX sanal makineleri
+      url: confidential-computing-enclaves.md
+  - linkListType: concept
+    links:
+    - text: Sanal makineler üzerindeki çözümler
+      url: virtual-machine-solutions.md
+  - linkListType: quickstart
+    links:
+    - text: Azure Portal’da dağıtma
+      url: quick-create-portal.md
+    - text: Azure Market’te dağıtma
+      url: quick-create-marketplace.md
+  - linkListType: reference
+    links:
+    - text: Gizli bilgi işlem sanal makineleri hakkında SSS
+      url: faq.md
+    - text: Fiyatlandırma
+      url: https://azure.microsoft.com/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2
+    - text: Kullanılabilirlik
+      url: https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines
+- title: Kapsayıcı işlem kaynakları
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure Kubernetes Service (AKS) Gizli Bilgi İşlem Düğümleri (önizleme)
+      url: confidential-nodes-aks-overview.md
+  - linkListType: concept
+    links:
+    - text: Gizli kapsayıcılar
+      url: confidential-containers.md
+    - text: Kapanım bilgisi olan kapsayıcılar
+      url: enclave-aware-containers.md
+    - text: İşlemci dışı doğrulama
+      url: confidential-nodes-out-of-proc-attestation.md
+  - linkListType: quickstart
+    links:
+    - text: AKS üzerinde basit bir kapanım kapsayıcısı uygulaması
+      url: confidential-nodes-aks-get-started.md
+  - linkListType: sample
+    links:
+    - text: Gizli Kapsayıcı Örnekleri (SGX üzerinde değiştirilmemiş kapsayıcılar)
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: Kapanım Bilgisi Olan Kapsayıcı Örnekleri
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: AKS’de gizli düğümler hakkında SSS
+      url: confidential-nodes-aks-overview.md
+    - text: Azure Kubernetes Service (AKS) hakkında
+      url: ../aks/intro-kubernetes.md
+- title: Gizli bulut hizmetleri
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Microsoft Azure Doğrulama
+      url: ../attestation/overview.md
+    - text: Gizli Çıkarım ONNX Çalışma Zamanı
+      url: https://aka.ms/confidentialinference
+- title: Gizli bilgi işlem ile derleme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: AKS Üzerinde Gizli Sağlık Hizmetleri Tanıtımı
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: AKS Üzerinde Açık Kapanım ile Doğrulanan Karşılıklı TLS
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: Açık Kapanım (OE) SDK’sı
+      url: https://aka.ms/oesdkGitHubRepo
