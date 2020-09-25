@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259379"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287109"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -49,7 +49,7 @@ Aşağıdaki Windows dağıtımları Şu anda bu özelliğin önizlemesi sıras�
 - Windows 10 1809 ve üzeri
 
 > [!IMPORTANT]
-> Azure AD 'ye katılmış olan sanal makinelere uzak bağlantıya yalnızca Azure AD 'ye katılmış veya karma Azure AD olan Windows 10 bilgisayarlardan VM ile **aynı** dizine katılmış izin verilir. 
+> Azure AD 'ye katılmış olan sanal makinelere uzak bağlantıya yalnızca Azure AD kayıtlı (Windows 10 20 H1 ' den başlayarak), Azure AD 'ye katılmış veya hibrit Azure AD 'nin VM ile **aynı** dizine katılmış olduğu Windows 10 bilgisayarlardan izin verilir. 
 
 Şu Azure bölgeleri Şu anda bu özelliğin önizlemesi sırasında desteklenmektedir:
 
@@ -192,7 +192,7 @@ az role assignment create \
 Azure RBAC 'nin Azure abonelik kaynaklarınıza erişimini yönetmek için nasıl kullanılacağı hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-cli.md)
-- [Azure portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md)
+- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md)
 - [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="using-conditional-access"></a>Koşullu erişim kullanma

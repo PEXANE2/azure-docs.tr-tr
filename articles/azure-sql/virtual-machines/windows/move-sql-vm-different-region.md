@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 37f098bc28ee89bdad9e5bde213e3c2a6847b0bf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 4252528020dde731dd7bf14ae8f7a03467ba953a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851794"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298608"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>SQL Server VM Azure Site Recovery Azure içindeki başka bir bölgeye taşıma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -73,7 +73,7 @@ Taşıma için hem kaynak SQL Server VM hem de hedef bölgeyi hazırlayın.
 
 Aşağıdaki adımlarda, verileri hedef bölgeye kopyalamak için Azure Site Recovery nasıl kullanılacağı gösterilmektedir. Kurtarma Hizmetleri kasasını kaynak bölgesi dışında herhangi bir bölgede oluşturun. 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 1. Gezinti bölmesinin sol üst köşesinden **bir kaynak oluşturmayı** seçin. 
 1. **Yönetim araçları &** seçin ve ardından **Yedekle ve Site Recovery '** ı seçin. 
 1. **Temel bilgiler** sekmesinde, **proje ayrıntıları**' nın altında, hedef bölgede yeni bir kaynak grubu oluşturun veya hedef bölgede var olan bir kaynak grubunu seçin. 

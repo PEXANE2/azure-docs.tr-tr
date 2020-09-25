@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287398"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -48,7 +48,8 @@ Yeni konak havuzunuzu oluşturmaya başlamak için:
 
 1. [https://portal.azure.com](https://portal.azure.com/) adresinden Azure portalında oturum açın.
    
-   >! NOTUN US Gov portalında oturum açıyorsanız, [https://portal.azure.us/](https://portal.azure.us/) bunun yerine öğesine gidin.
+   >[!NOTE]
+   > US Gov portalında oturum açıyorsanız, [https://portal.azure.us/](https://portal.azure.us/) bunun yerine öğesine gidin.
 
 2. Arama çubuğuna **Windows sanal masaüstü 'nü** girin, ardından hizmetler altında **Windows sanal masaüstü** ' nü bulun ve seçin.
 

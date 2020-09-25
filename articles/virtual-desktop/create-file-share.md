@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287330"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure dosyaları ve AD DS bir profil kapsayıcısı oluşturun
 
@@ -29,7 +29,7 @@ Başlamadan önce, etki alanı denetleyicinizin Azure ile eşitlendiğinden ve o
 
 Bir depolama hesabı ayarlamak için:
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. Arama çubuğunda **depolama hesabı** araması yapın.
 
@@ -56,7 +56,7 @@ Dosya paylaşımı oluşturmak için:
 
 1. **Kaynağa git**’i seçin.
 
-2. Genel Bakış sayfasında **dosya paylaşımları**' nı seçin.
+2. Genel bakış sayfasından **Dosya paylaşımları**’nı seçin.
 
 3. **+ Dosya paylaşımları**' nı seçin, **profiller**adlı yeni bir dosya paylaşımı oluşturun, ardından uygun bir kota girin veya hiçbir kota olmaması için alanı boş bırakın.
 
@@ -154,7 +154,7 @@ NTFS izinlerinizi yapılandırmak için:
 2. Azure dosya paylaşımından bağlamak ve bir sürücü harfi atamak için aşağıdaki komutu çalıştırın:
 
      ```cmd
-     net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
+     net use <desired-drive-letter>: <UNC-path> <SA-key> /user:Azure\<SA-name>
      ```
 
 3. Azure dosya paylaşımının erişim izinlerini gözden geçirmek için aşağıdaki komutu çalıştırın:
@@ -179,7 +179,7 @@ NTFS izinlerinizi yapılandırmak için:
      - <bağlı sürücü harfi> sürücüyü eşlemek için kullandığınız sürücünün harfiyle değiştirin.
      - Kullanıcı-e-posta> <, paylaşıma erişim gerektirecek kullanıcıları içeren Kullanıcı veya Active Directory grubunun UPN 'si ile değiştirin.
 
-     Örnek:
+     Örneğin:
 
      ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)

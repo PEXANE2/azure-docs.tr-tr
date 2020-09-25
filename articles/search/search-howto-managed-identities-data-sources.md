@@ -9,14 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: a057c0d35a465447cc0be99b574ffeebb671115a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 787c7d7df5f013dd4477e466c02a2b323b4b59df
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971540"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275107"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Yönetilen kimlik kullanarak veri kaynağına bir Dizin Oluşturucu bağlantısı kurma
+
+> [!IMPORTANT] 
+> Yönetilen kimlik kullanarak bir veri kaynağına bağlantı kurulması, ücretsiz Azure Bilişsel Arama katmanında desteklenmez.
 
 Azure Bilişsel Arama 'de [Dizin Oluşturucu](search-indexer-overview.md) , veri kaynağınızdan Azure bilişsel arama veri çekmek için bir yol sağlayan bir gezgin. Dizin Oluşturucu, oluşturduğunuz veri kaynağı nesnesinden bir veri kaynağı bağlantısı edinir. Veri kaynağı nesnesi genellikle hedef veri kaynağı için kimlik bilgilerini içerir. Örneğin, bir BLOB depolama kapsayıcısından veri indekslemek istiyorsanız veri kaynağı nesnesi bir Azure depolama hesabı anahtarı içerebilir.
 

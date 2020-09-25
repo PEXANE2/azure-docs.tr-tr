@@ -40,8 +40,10 @@
       href: configuration.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/hpc-cache/hpc-cache
+    - name: Azure PowerShell
+      href: /powershell/module/Az.HPCCache
 - name: Kaynaklar
   items:
     - name: Destek bileti açma

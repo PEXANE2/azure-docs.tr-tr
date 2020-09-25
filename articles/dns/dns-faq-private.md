@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925014"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308444"
 ---
 # <a name="azure-private-dns-faq"></a>Azure Özel DNS hakkında SSS
 
@@ -28,7 +28,7 @@ Azure 'daki diğer iç DNS seçenekleri hakkında daha fazla bilgi için bkz. [V
 
 Evet. Özel bölgeler, Azure bölgelerindeki sanal ağlar arasındaki DNS çözümlemesi için desteklenir. Özel bölgeler, sanal ağları açıkça eşlemeye gerek kalmadan bile çalışmaktadır. Tüm sanal ağların özel DNS bölgesine bağlı olması gerekir.
 
-## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Özel bölgeler için gereken sanal ağlardan Internet bağlantısı var mı?
+## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Özel bölgeler için gereken sanal ağlardan internet bağlantısı var mı?
 
 Hayır. Özel bölgeler, sanal ağlarla birlikte çalışır. Sanal makineler veya sanal ağlar içindeki ve içindeki diğer kaynaklar için etki alanlarını yönetmek üzere bunları kullanabilirsiniz. Ad çözümlemesi için Internet bağlantısı gerekli değildir.
 
@@ -43,6 +43,14 @@ Evet. Sanal ağlarda ve özel DNS bölgesinde yazma işlemi izninizin olması ge
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>Sanal makineyi sildiğinizde özel bir bölgedeki otomatik olarak kaydettirilen sanal makine DNS kayıtları otomatik olarak silinir mi?
 
 Evet. Otomatik kayıt etkin olan bağlı bir sanal ağ içindeki bir sanal makineyi silerseniz, kayıtlı kayıtlar otomatik olarak silinir.
+
+## <a name="ive-reconfigured-the-os-in-my-virtual-machine-to-have-a-new-host-name-or-static-ip-address-why-dont-i-see-that-change-reflected-in-the-private-zone"></a>Sanal makinemdeki işletim sistemini yeni bir ana bilgisayar adı veya statik IP adresine sahip olacak şekilde yapılandırdım. Bu değişikliğin özel bölgede yansıtıldığını neden görmüyorum?
+
+Özel bölgenin kayıtları Azure DHCP hizmeti tarafından doldurulur; istemci kayıt iletileri yok sayılır. Statik bir IP adresi yapılandırarak VM 'de DHCP istemci desteğini devre dışı bırakırsanız, ana bilgisayar adı veya VM 'deki statik IP değişiklikleri bölgede yansıtılmaz.
+
+## <a name="i-have-configured-a-preferred-dns-suffix-in-my-windows-virtual-machine-why-are-my-records-still-registered-in-the-zone-linked-to-the-virtual-network"></a>Windows sanal makinmda tercih edilen bir DNS son eki yapılandırdım. Kayıtlarım neden hala sanal ağa bağlı bölgede kayıtlı?
+
+Azure DHCP hizmeti, özel DNS bölgesini kaydettiğinde DNS son ekini yoksayar. Örneğin, sanal makineniz `contoso.com` BIRINCIL DNS son eki olarak yapılandırılmışsa, ancak sanal ağ `fabrikam.com` özel DNS bölgesine bağlıysa, sanal makinenin kaydı `fabrikam.com` özel DNS bölgesinde görüntülenir.
 
 ## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>Bağlı bir sanal ağdan özel bir bölgede otomatik olarak kaydedilmiş bir sanal makine kaydı el ile silinebilir mi?
 

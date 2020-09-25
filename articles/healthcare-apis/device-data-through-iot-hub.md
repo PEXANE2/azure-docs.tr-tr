@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 04c732b857c06246bdc636f01afd2689c98c2b0d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831626"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308234"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Öğretici: Azure IoT Hub aracılığıyla cihaz verileri alma
 
@@ -48,10 +48,10 @@ Bu adım IoT Hub verileri yönlendiren bir uç nokta tanımlar. Bu uç noktayı,
 
 Aşağıda, bir uç nokta oluşturmak için komutuyla birlikte kullanılacak parametrelerin listesi verilmiştir:
 
-|PowerShell parametresi|CLı parametresi|Açıklama|
+|PowerShell parametresi|CLı parametresi|Description|
 |---|---|---|
 |ResourceGroupName|resource-group|IoT Hub kaynağınızın kaynak grubu adı.|
-|Ad|Hub-adı|IoT Hub kaynağınızın adı.|
+|Name|Hub-adı|IoT Hub kaynağınızın adı.|
 |Uçnoktaadı|uç nokta adı|Oluşturulan uç noktaya atamak istediğiniz bir ad kullanın.|
 |EndpointType|uç nokta türü|IoT Hub bağlantı kurmak için gereken uç nokta türü. PowerShell için "EventHub" ve CLı için "eventhub" değerlerini kullanın.|
 |EndpointResourceGroup|uç nokta-kaynak grubu|FHıR 'nin FHıR kaynağı için Azure API 'SI için Azure IoT bağlayıcınızın kaynak grubu adı. Bu değeri, FHıR için Azure API 'nin Genel Bakış sayfasından edinebilirsiniz.|
@@ -61,12 +61,12 @@ Aşağıda, bir uç nokta oluşturmak için komutuyla birlikte kullanılacak par
 ### <a name="add-a-message-route"></a>İleti yolu ekleme
 Bu adım, yukarıda oluşturulan uç noktayı kullanarak bir ileti yolunu tanımlar. Tercihinize göre [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell komutunu veya [az IoT Hub Route Create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI komutunu kullanarak bir yol oluşturun.
 
-Aşağıda, bir uç nokta oluşturmak için komutuyla birlikte kullanılacak parametrelerin listesi verilmiştir:
+İleti yolu eklemek için komutuyla birlikte kullanılacak parametrelerin listesi aşağıdadır:
 
-|PowerShell parametresi|CLı parametresi|Açıklama|
+|PowerShell parametresi|CLı parametresi|Description|
 |---|---|---|
 |ResourceGroupName|g|IoT Hub kaynağınızın kaynak grubu adı.|
-|Ad|Hub-adı|IoT Hub kaynağınızın adı.|
+|Name|Hub-adı|IoT Hub kaynağınızın adı.|
 |Uçnoktaadı|uç nokta adı|Yukarıda oluşturduğunuz bitiş noktasının adı.|
 |Routetablename|yol adı|Oluşturulan ileti yoluna atamak istediğiniz ad.|
 |Kaynak|Kaynak türü|Uç noktaya gönderilen veri türü. PowerShell için "DeviceMessages" değeri ve CLı için "devicemessages" değerlerini kullanın.|

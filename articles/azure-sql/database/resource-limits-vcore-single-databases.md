@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 07/21/2020
-ms.openlocfilehash: bb69d48fe4e65d0fc27db027aecab0f1a745e8d5
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: e67675d0d3fb5f96b35eba0085003b00595d8214
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566191"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325286"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modeli kullanıldığında tek veritabanları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -346,7 +346,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |:---| ---:|---:|---:|---:|---:|
 |İşlem oluşturma|Fsv2 serisi|Fsv2 serisi|Fsv2 serisi|Fsv2 serisi|Fsv2 serisi|
 |Sanal çekirdek|8|10|12|14|16|
-|Bellek (GB)|15,1|18,9|22,7|26,5|30,2|
+|Bellek (GB)|15,1|18,9|22.7|26,5|30,2|
 |Columnstore desteği|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|1024|1024|1024|1024|1536|

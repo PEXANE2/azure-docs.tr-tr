@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/07/2020
+ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1de7e98a9cb57f83b87589ceddedc3cdd80927
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b826c6a1fd5a60247f8c69cb10cd24e7e001fe71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335893"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD rolleri için bulma ve Öngörüler (Önizleme) (eski adıyla Güvenlik Sihirbazı)
 
@@ -29,13 +29,13 @@ Azure Active Directory (Azure AD) kuruluşunuzda Privileged Identity Management 
 
 Kuruluşunuz Privileged Identity Management kullanmaya başlamadan önce, tüm rol atamaları kalıcıdır. Kullanıcılar, ayrıcalıklarına gerek duymadığı durumlarda bile her zaman kendilerine atanan rollerdir. Önceki Güvenlik Sihirbazı 'Nın yerini alan bulma ve Öngörüler (Önizleme), ayrıcalıklı rollerin bir listesini ve şu anda bu rollerdeki Kullanıcı sayısını gösterir. Bir veya daha fazla bilginiz yoksa atanan kullanıcılar hakkında daha fazla bilgi edinmek için, bir rolün atamalarını listeleyebilirsiniz.
 
-: heavy_check_mark: **Microsoft** , oturum açarken Multi-Factor Authentication gerektirmeyen, genel yönetici rolüne kalıcı olarak atanmış 2 kesme camı hesabı tutmanızı önerir. Bunları herhangi bir kesme camı senaryosunda veya hiç kimse genel yönetici rolüne yükseltemez durumda kullanabilirsiniz.
+: heavy_check_mark: **Microsoft** , genel yönetici rolüne kalıcı olarak atanmış iki kesme camı hesabını tutmanızı önerir. Bu hesapların, [Azure AD 'de acil durum erişim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md)bölümünde açıklandığı gibi, oturum açmak için normal yönetim hesaplarınızla aynı Multi-Factor Authentication mekanizmasına gerek olmadığından emin olun.
 
-Ayrıca, bir Kullanıcı bir Microsoft hesabı (başka bir deyişle, Skype veya Outlook.com gibi Microsoft hizmetlerinde oturum açmak için kullandıkları bir hesap) varsa rol atamalarını kalıcı tutun. Bu tür bir rol için çok faktörlü kimlik doğrulamasının etkinleştirilmesini isterseniz, Kullanıcı kilitlenir.
+Ayrıca, bir Kullanıcı bir Microsoft hesabı (başka bir deyişle, Skype veya Outlook.com gibi Microsoft hizmetlerinde oturum açmak için kullandıkları bir hesap) varsa rol atamalarını kalıcı tutun. Rol atamasını etkinleştirmek üzere Microsoft hesabı olan bir kullanıcı için Multi-Factor Authentication gerekirse, Kullanıcı kilitlenir.
 
 ## <a name="open-discovery-and-insights-preview"></a>Keşif ve Öngörüler 'i açma (Önizleme)
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın.
 
@@ -49,7 +49,7 @@ Ayrıca, bir Kullanıcı bir Microsoft hesabı (başka bir deyişle, Skype veya 
 
 1. Genel yönetici rolü atamalarının listesini gözden geçirin.
 
-    ![Genel yöneticileri azalt-tüm üyeleri gösteren rol bölmesi](./media/pim-security-wizard/new-global-administrator-list.png)
+    ![Tüm genel yöneticileri gösteren genel Yöneticiler-roller bölmesini azaltma](./media/pim-security-wizard/new-global-administrator-list.png)
 
 1. **İleri** ' yi seçerek uygun hale getirmek istediğiniz kullanıcıları veya grupları seçin ve ardından **uygun yap** veya **Atamayı Kaldır**' ı seçin.
 

@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 48080bb4d1e24f7f98d3dfe1fd63b65ba46df35e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7259e1981f873c8385a02fe4f353dcdda495f823
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287431"
 ---
 ### <a name="property-limits"></a>Özellik sınırları
 
@@ -26,14 +26,13 @@ Azure Time Series Insights Özellik sınırları, Gen1 içinde en fazla 800 ' de
 | Gen1 (S1) | 600 özellikleri (sütun) |
 | Gen1 (S2) | 800 Özellikleri (sütun) |
 
-### <a name="event-sources"></a>Olay kaynakları
+### <a name="streaming-ingestion"></a>Akış Alımı
 
-Örnek başına en fazla iki olay kaynağı desteklenir.
+* Ortam başına en fazla iki [olay kaynağı](../articles/time-series-insights/concepts-streaming-ingestion-event-sources.md) vardır.
 
-* [Bir olay hub 'ı kaynağı eklemeyi](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)öğrenin.
-* [IoT Hub 'ı kaynağı](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)yapılandırın.
+* Olay kaynakları için en iyi uygulamalar ve genel rehberlik [burada](../articles/time-series-insights/concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) bulunabilir
 
-Varsayılan olarak, [Gen2 ortamları](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingress-throughput-limits) , **ortam başına en fazla 1 megabayt (MB/sn) saniye başına**giriş hızını destekler. Müşteriler, gerekirse ortamlarını **16 MB/sn** 'ye kadar ölçeklendirebilir. Bölüm başına **0,5 MB/sn**sınırı da vardır.
+* Varsayılan olarak, Azure Time Series Insights Gen2, gelen verileri **Azure Time Series Insights Gen2 ortamı başına saniyede 1 megabayta (Mbps) kadar**bir hızda alabilir. [Hub bölümü başına](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)ek sınırlamalar vardır. 8 MB/sn 'ye kadar olan ücretler Azure portal aracılığıyla bir destek bileti gönderilerek sağlayabilirsiniz. Daha fazla bilgi edinmek için [akış alma performansı sınırlarını](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md)okuyun.
 
 ### <a name="api-limits"></a>API sınırları
 
