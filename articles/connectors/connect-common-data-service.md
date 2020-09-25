@@ -7,12 +7,12 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284124"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334591"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Common Data Service kayıtları oluşturma ve yönetme
 
@@ -87,7 +87,7 @@ Bu örnek için yeni bir kayıt oluşturulduğunda harekete gelen Common Data Se
 
       ![Görev kaydında kullanmak için tetikleme çıkışlarını seçin](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Çıkışı Tetikle | Açıklama |
+      | Çıkışı Tetikle | Description |
       |----------------|-------------|
       | **Ad** | Görev kaydında birincil kişi olarak kullanılacak müşteri adayı kaydından ilk ad |
       | **Soyadı** | Görev kaydında birincil kişi olarak kullanılacak müşteri adayı kaydından soyadı |
@@ -108,7 +108,7 @@ Kayıtlar güncelleştirilirken çalışan Tetikleyiciler (örneğin, **bir kay�
 
 1. Tetikleyicide, **yeni parametre Ekle** listesinden **öznitelik filtreleri**' ni seçin.
 
-   !["Öznitelik filtreleri" özelliği Ekle](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
+   !["Bir kayıt güncelleştirilirken" eylemi ve "öznitelik filtreleri" özelliği seçiliyken açılan "yeni parametre Ekle" listesini gösteren ekran görüntüsü.](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
 1. Her **öznitelik filtresi öğesi**için, güncelleştirmeler için izlemek istediğiniz özniteliği seçin, örneğin:
 
@@ -122,7 +122,7 @@ Kayıtları **Listele** eylemi gibi kayıtları döndüren eylemler için, belir
 
    !["Filtre sorgusu" özelliği Ekle](./media/connect-common-data-service/list-records-action-filter-query.png)
 
-1. Eylemde şimdi görüntülenen **filtre sorgusu** ÖZELLIĞINDE şu OData filtre sorgusunu girin:`statuscode eq 1`
+1. Eylemde şimdi görüntülenen **filtre sorgusu** ÖZELLIĞINDE şu OData filtre sorgusunu girin: `statuscode eq 1`
 
    ![Kayıtları filtrelemek için ODATA filtre sorgusu girin](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
@@ -136,7 +136,7 @@ Kayıtları **Listele** eylemi gibi kayıtları döndüren eylemler için, belir
 
    !["Order by" özelliği Ekle](./media/connect-common-data-service/list-records-action-order-by.png)
 
-1. Eylemde Şu anda görüntülenen **order by** ÖZELLIĞINDE şu OData filtre sorgusunu girin:`name`
+1. Eylemde Şu anda görüntülenen **order by** ÖZELLIĞINDE şu OData filtre sorgusunu girin: `name`
 
    ![Kayıtları sıralamak için ODATA filtre sorgusu girin](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
@@ -151,7 +151,7 @@ Bu tabloda bazı alan türleri ve bu alanların değerleri için gereken veri t�
 | Alan | Veri türü | Açıklama |
 |-------|-----------|-------------|
 | Metin alanı | Tek satırlı metin | Metin veri türüne sahip tek satırlık bir metin veya dinamik içerik gerektirir, örneğin, bu özellikler: <p><p>- **Açıklaması** <br>- **Alan** |
-| Tamsayı alanı | Tam sayı | Tamsayı veri türüne sahip bir tamsayı veya dinamik içerik gerektirir, örneğin, bu özellikler: <p><p>- **Tamamlanma yüzdesi** <br>- **Sürenin** |
+| Tamsayı alanı | Tamsayı | Tamsayı veri türüne sahip bir tamsayı veya dinamik içerik gerektirir, örneğin, bu özellikler: <p><p>- **Tamamlanma yüzdesi** <br>- **Sürenin** |
 | Tarih alanı | Tarih ve Saat | AA/gg/YYY biçiminde veya tarih veri türüne sahip dinamik içerikte bir tarih gerektirir, örneğin, bu özellikler: <p><p>- **Oluşturulma tarihi** <br>- **Başlangıç tarihi** <br>- **Gerçek başlangıç** <br>- **Gerçek bitiş** <br>- **Son Tarih** |
 | Başka bir varlık kaydına başvuran alan | Birincil anahtar | GUID gibi bir kayıt KIMLIĞI ve bir arama türü gerektirir, bu da dinamik içerik listesindeki değerlerin, örneğin, bu özellikler gibi çalışmadıkları anlamına gelir: <p><p>- **Sahip**: geçerli BIR kullanıcı kimliği veya bir takım kayıt kimliği olmalıdır. <br>- **Sahip türü**: sırasıyla veya gibi bir arama türü olmalıdır `systemusers` `teams` . <p><p>- **İlgili**: hesap kimliği veya ilgili kışı kaydı kimliği gibi geçerli BIR kayıt kimliği olmalıdır. <br>- **Ilgili tür**: sırasıyla veya gibi bir arama türü olmalıdır `accounts` `contacts` . <p><p>- **Müşteri**: hesap kimliği veya ilgili kışı kaydı kimliği gibi geçerli BIR kayıt kimliği olmalıdır. <br>- **Müşteri türü**: sırasıyla veya gibi arama türü olmalıdır `accounts` `contacts` . |
 ||||

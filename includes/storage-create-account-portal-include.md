@@ -5,39 +5,32 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 09/24/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ea8ed75bf91850abb95ebe983923989375c0fcf5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 9eff9b5356f3201f151cc959a96b070d2afaa267
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76759866"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283470"
 ---
 Azure portalında genel amaçlı v2 bir depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portalı menüsünde **Tüm hizmetler**’i seçin. Kaynak listesinde **Depolama Hesapları** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Depolama hesapları**' nı seçin.
-2. Açılan **Depolama Hesapları** penceresinde **Ekle**'yi seçin.
-3. Depolama hesabının oluşturulacağı aboneliği seçin.
-4. **Kaynak grubu** alanı altında **Yeni oluştur**’u seçin. Aşağıdaki görüntüde gösterildiği gibi yeni kaynak grubunuz için bir ad girin.
+1. Açılan **Depolama Hesapları** penceresinde **Ekle**'yi seçin.
+1. **Temel bilgiler** sekmesinde, depolama hesabının oluşturulacağı aboneliği seçin.
+1. **Kaynak grubu** alanında, istediğiniz kaynak grubunu seçin veya yeni bir kaynak grubu oluşturun.  Azure Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../articles/azure-resource-manager/resource-group-overview.md).
+1. Ardından, depolama hesabınız için bir ad girin. Seçtiğiniz ad Azure genelinde benzersiz olmalıdır. Ad ayrıca 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakamlar ve küçük harfler içerebilir.
+1. Depolama hesabınız için bir konum seçin veya varsayılan konumu kullanın.
+1. Bir performans katmanı seçin. Varsayılan katman *standarttır*.
+1. **Hesap türü** alanını *Storage v2 (genel amaçlı v2)* olarak ayarlayın.
+1. Depolama hesabının nasıl çoğaltılacağı belirtin. Varsayılan çoğaltma seçeneği *Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)*' dir. Kullanılabilir çoğaltma seçenekleri hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](../articles/storage/common/storage-redundancy.md).
+1. Depolama hesabındaki bloblara yönelik erişim katmanını belirtin. Varsayılan katman çok *sıcak*. Blob erişim katmanları hakkında daha fazla bilgi için bkz. [Bloblar Için sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../articles/storage/blobs/storage-blob-storage-tiers.md).
+1. [Azure Data Lake Storage](/services/storage/data-lake-storage/)kullanmak Için, **Gelişmiş** sekmesini seçin ve ardından **hiyerarşik ad alanını** **etkin**olarak ayarlayın.
+1. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
+1. **Oluştur**’u seçin.
 
-    ![Portalda kaynak grubu oluşturmayı gösteren ekran görüntüsü](./media/storage-create-account-portal-include/create-resource-group-for-storage.png)
+Aşağıdaki görüntüde yeni bir depolama hesabı için **temel bilgiler** sekmesindeki ayarlar gösterilmektedir:
 
-5. Ardından, depolama hesabınız için bir ad girin. Seçtiğiniz ad Azure genelinde benzersiz olmalıdır. Ad ayrıca 3 - 24 karakter uzunluğunda olmalıdır ve yalnızca rakam ve küçük harf içerebilir.
-6. Depolama hesabınız için bir konum seçin veya varsayılan konumu kullanın.
-7. Bu alanları varsayılan değerlerine ayarlanmış olarak bırakın:
-
-   |Alan  |Değer  |
-   |---------|---------|
-   |Dağıtım modeli     |Resource Manager         |
-   |Performans     |Standart         |
-   |Hesap türü     |StorageV2 (genel amaçlı v2)         |
-   |Çoğaltma     |Okuma erişimli coğrafi olarak yedekli depolama (RA-GRS)         |
-   |Erişim katmanı     |Sık Erişimli         |
-
-8. [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmayı planlıyorsanız, **Gelişmiş** sekmesini seçin ve ardından **hiyerarşik ad alanını** **etkin**olarak ayarlayın.
-9. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
-10. **Oluştur**’u seçin.
-
-Depolama hesaplarının türleri ve diğer depolama hesabı ayarları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](https://docs.microsoft.com/azure/storage/common/storage-account-overview). Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 
+:::image type="content" source="media/storage-create-account-portal-include/account-create-portal.png" alt-text="Azure portalında depolama hesabının nasıl oluşturulduğunu gösteren ekran görüntüsü":::

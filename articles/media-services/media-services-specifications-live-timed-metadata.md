@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 665bb89d929433db5868eff1c2a5d182d7a94d54
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f826ee9ef3c9fff0b721a9c79d3c12e0adbd5f7f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800288"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336403"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Canlı akışta zamanlanmış meta verileri sinyal alma 
 
@@ -42,7 +42,7 @@ Bu belirtim, canlı akış sinyalleri içindeki zaman aşımına uğramış meta
 
 ## <a name="11-terms-used"></a>1,1 terim kullanıldı
 
-| Süre                | Tanım                                                                                                                                                                                                                                    |
+| Terim                | Tanım                                                                                                                                                                                                                                    |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Ad kesmesi            | Bir veya daha fazla reklamın teslim edilmek üzere zamanlanabileceği bir konum veya zaman noktası; kullanılabilir ve yerleştirme fırsatına benzer.                                                                                                                     |
 | Ad karar hizmeti | kullanıcıya hangi ad (ler) ve süreler gösterildiğine karar veren dış hizmet. Hizmetler genellikle bir iş ortağı tarafından sağlanır ve bu belgenin kapsamı dışındadır.                                                                    |
@@ -72,20 +72,20 @@ Aşağıdaki belgeler, bu metinde başvuru aracılığıyla bu belgenin sağlama
 | [Adobe-Primetime] | [Primetime dijital program ekleme sinyal belirtimi 1,2](https://www.adobe.com/content/dam/acom/en/devnet/primetime/PrimetimeDigitalProgramInsertionSignalingSpecification.pdf)                       |
 | [Adobe-Flash-AS]  | [FLASH ActionScript dil başvurusu](https://help.adobe.com/archive/en_US/as2/flashlite_2.x_3.x_aslr.pdf)                                                                                                   |
 | [AMF0]            | ["Eylem Iletisi biçimi AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)                                                                                                              |
-| [DASH-IF-ıOP]     | DASH sektör Forumu birlikte çalışma kılavuzu v 4,2[https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html)    |
-| [HLS-TMD]         | HTTP Canlı Akışı için zamanlanmış meta veriler-[https://developer.apple.com/streaming](https://developer.apple.com/streaming)                                                                                        |
+| [DASH-IF-ıOP]     | DASH sektör Forumu birlikte çalışma kılavuzu v 4,2 [https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html)    |
+| [HLS-TMD]         | HTTP Canlı Akışı için zamanlanmış meta veriler- [https://developer.apple.com/streaming](https://developer.apple.com/streaming)                                                                                        |
 | [CMAF-ıD3]        | [Ortak medya uygulaması biçiminde zamanlanmış meta veriler (CMAF)](https://github.com/AOMediaCodec/id3-emsg)                                                                                                        |
-| [ID3v2]           | ID3 etiket sürümü 2.4.0[http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure)                                                                                                                |
+| [ID3v2]           | ID3 etiket sürümü 2.4.0  [http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure)                                                                                                                |
 | [ISO-14496-12]    | ISO/ıEC 14496-12: Bölüm 12 ISO taban medya dosyası biçimi, Onthedition 2012-07-15                                                                                                                                 |
-| [MPEGDASH]        | Bilgi teknolojisi-HTTP üzerinden dinamik uyarlamalı akış (DASH)--1. Bölüm: medya sunusu açıklaması ve kesim biçimleri. 2014 Mayıs. Yayımladığı. 'DEKIhttps://www.iso.org/standard/65274.html         |
-| [MPEGCMAF]        | Bilgi teknolojisi--multimedya uygulama biçimi (MPEG-A)--Bölüm 19: kesimli medya için ortak medya uygulaması biçimi (CMAF). Ocak 2018. Yayımladığı. 'DEKIhttps://www.iso.org/standard/71975.html |
-| [MPEGCENC]        | Bilgi teknolojisi--MPEG sistemleri teknolojileri--6. Bölüm: ISO tabanlı medya dosyası biçim dosyalarında ortak şifreleme. 2016 Şubat. Yayımladığı. 'DEKIhttps://www.iso.org/standard/68042.html                   |
+| [MPEGDASH]        | Bilgi teknolojisi-HTTP üzerinden dinamik uyarlamalı akış (DASH)--1. Bölüm: medya sunusu açıklaması ve kesim biçimleri. 2014 Mayıs. Yayımladığı. 'DEKI https://www.iso.org/standard/65274.html         |
+| [MPEGCMAF]        | Bilgi teknolojisi--multimedya uygulama biçimi (MPEG-A)--Bölüm 19: kesimli medya için ortak medya uygulaması biçimi (CMAF). Ocak 2018. Yayımladığı. 'DEKI https://www.iso.org/standard/71975.html |
+| [MPEGCENC]        | Bilgi teknolojisi--MPEG sistemleri teknolojileri--6. Bölüm: ISO tabanlı medya dosyası biçim dosyalarında ortak şifreleme. 2016 Şubat. Yayımladığı. 'DEKI https://www.iso.org/standard/68042.html                   |
 | [MS-SSTR]         | ["Microsoft Kesintisiz Akış Protokolü", 15 Mayıs 2014](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
 | [MS-SSTR-ınest]  | [Azure Media Services parçalanmış MP4 canlı alma belirtimi](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | Sağ. Pantos, Ed.; W. Mayıs. HTTP Canlı Akışı. Ağustos 2017. Amaçlı. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
-| [RFC4648]         | Base16, Base32 ve Base64 veri kodlamaları-[https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
+| [RFC4648]         | Base16, Base32 ve Base64 veri kodlamaları- [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
 | RTMP            | ["Adobe 'un gerçek zamanlı mesajlaşma Protokolü", 21 Aralık 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
-| [SCTE-35-2019]    | SCTE 35:2019-kablo için dijital program ekleme Cueiletisi-https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
+| [SCTE-35-2019]    | SCTE 35:2019-kablo için dijital program ekleme Cueiletisi- https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
 | [SCTE-214-1]      | SCTE 214-1 2016 – IP tabanlı kablo hizmetleri için MPEG DASH 1. Bölüm: MPD kısıtlamaları ve uzantıları                                                                                                                 |
 | [SCTE-214-3]      | IP tabanlı kablo hizmetleri için SCTE 214-3 2015 MPEG DASH 3. Bölüm: DASH/FF profili                                                                                                                                  |
 | [SCTE-224]        | SCTE 224 2018r1 – olay zamanlama ve bildirim arabirimi                                                                                                                                                  |
@@ -208,7 +208,7 @@ Her 0,5 saniye (500ms) veya canlı akışla ilgili kararlılık sorunlarından d
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>Yerleşik desteklenen şema KIMLIĞI URI 'Leri
-| Şema KIMLIĞI URI 'SI                 | Açıklama                                                                                                                                                                                                                                          |
+| Şema KIMLIĞI URI 'SI                 | Description                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | https: \/ /aomedia.org/EMSG/ID3 | [ID3v2] meta verilerinin CMAF ile uyumlu [MPEGCMAF] parçalanmış MP4 içinde zaman aşımına uğramış bir meta veriler olarak nasıl taşınabilir açıklar. Daha fazla bilgi için bkz [. ortak medya uygulaması biçimindeki (CMAF) zaman aşımına uğrayan meta veriler](https://github.com/AOMediaCodec/id3-emsg) |
 
@@ -251,7 +251,7 @@ Aşağıdaki bölümde, HLS, DASH ve Microsoft Kesintisiz Akış istemci bildiri
 
 Bkz [. Adobe Simple modunu kullanarak örnek 3.3.2.1 MPEG Dash. mpd EventStream](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
 
-Bkz. [tek dönem ve Adobe Simple modundaki örnek 3.3.3.1 Dash bildirimi](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
+Bkz. [tek dönem ve Adobe Simple modundaki örnek 3.3.3.1 Dash bildirimi ](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
 
 #### <a name="example-hls-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Adobe RTMP basit modu kullanılırken örnek HLS bildirim çıkışı
 
@@ -306,7 +306,7 @@ Bu ad işaretçisi modu kullanıldığında, HLS bildirim çıktısı Adobe "Sim
 
 #### <a name="example-mpeg-dash-mpd-single-period-adobe-simple-mode-signals"></a>Örnek MPEG DASH MPD, tek dönem, Adobe basit mod sinyalleri
 
-~~~ xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <MPD xmlns="urn:mpeg:dash:schema:mpd:2011" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" profiles="urn:mpeg:dash:profile:isoff-live:2011" type="dynamic" publishTime="2020-01-07T18:58:03Z" minimumUpdatePeriod="PT0S" timeShiftBufferDepth="PT58M56S" availabilityStartTime="2020-01-07T17:44:47Z" minBufferTime="PT7S">
@@ -357,14 +357,13 @@ Bu ad işaretçisi modu kullanıldığında, HLS bildirim çıktısı Adobe "Sim
         </AdaptationSet>
     </Period>
 </MPD>
-~~~
-
+```
 
 #### <a name="example-hls-playlist-adobe-simple-mode-signals-using-ext-x-cue-tag-truncated--for-brevity"></a>Örnek HLS çalma listesi, Adobe basit mod, EXT-X-CUE etiketini (kesilen "...") kullanarak bildirir breçekimi için)
 
 Aşağıdaki örnek, Adobe "Simple" mod sinyallerini ve eski [Adobe Primetime] EXT-X-CUE etiketini kullanarak bir RTMP alma akışı için Media Services dinamik paketleyicisi çıktısını gösterir.  
 
-~~~
+```
 #EXTM3U
 #EXT-X-VERSION:8
 #EXT-X-MEDIA-SEQUENCE:0
@@ -401,8 +400,7 @@ Fragments(video=1583487999666666,format=m3u8-aapl-v8)
 #EXTINF:6.400000,no-desc
 Fragments(video=1583488022000000,format=m3u8-aapl-v8)
 ...
-
-~~~
+```
 
 ### <a name="216-cancellation-and-updates"></a>2.1.6 iptali ve güncelleştirmeleri
 
@@ -506,7 +504,7 @@ Seyrek ileti izlemeyi biçimlendirme hakkında ayrıntılı bilgi için bkz. sey
 StreamIndex bir "DATA" alt türüne sahip **olmalıdır** ve CustomAttributes Name = "Schema" ve value = "urn: scte: scte35:2013: bin" olan bir **özniteliği içermelidir.**
 
 #### <a name="smooth-client-manifest-example-showing-base64-encoded-scte35-splice_info_section"></a>Base64 kodlamalı [SCTE35] splice_info_section () gösteren kesintisiz Istemci bildirimi örneği
-~~~ xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" TimeScale="10000000" IsLive="true" Duration="0"
   LookAheadFragmentCount="2" DVRWindowLength="6000000000">
@@ -542,7 +540,7 @@ StreamIndex bir "DATA" alt türüne sahip **olmalıdır** ve CustomAttributes Na
     </c>
   </StreamIndex>
 </SmoothStreamingMedia>
-~~~
+```
 
 ## <a name="32-apple-hls-manifest-decoration"></a>3,2 Apple HLS bildirim dekorasyonu
 
@@ -567,7 +565,7 @@ The **RECOMMENDED** approach in Azure Media Services (version 3 API) is to follo
 
 Media Services dinamik Paketleyiciyi izleyen aşağıdaki örnek HLS bildirim çıktısı, SCTE35 modunda [Adobe Primetime] için EXT-X-CUE etiketini gösterir. 
 
-~~~
+```
 #EXTM3U
 #EXT-X-VERSION:8
 #EXT-X-MEDIA-SEQUENCE:0
@@ -719,7 +717,7 @@ Fragments(video=28513485,format=m3u8-aapl-v8)
 #EXTINF:1.501500,no-desc
 Fragments(video=28648620,format=m3u8-aapl-v8)
 
-~~~
+```
 
 
 <!---
@@ -935,7 +933,7 @@ Media Services (sürüm 2 ve 3 API), [Adobe-Primetime] "SCTE-35 modu" içinde ta
 | 'YU                | alıntılanmış dize                 | Gerekli                                  | [RFC4648] bölümünde açıklandığı gibi Base64 kodlamalı dize olarak kodlanmış ileti. [SCTE-35] iletileri için bu, Base64 kodlamalı splice_info_section ().                                                                                                                                      |
 | TÜR               | alıntılanmış dize                 | Gerekli                                  | İleti düzenini tanımlayan bir URN veya URL. [SCTE-35] iletileri için, tür "scte35" özel değerini alır.                                                                                                                                                                          |
 | ID                 | alıntılanmış dize                 | Gerekli                                  | Olay için benzersiz bir tanımlayıcı. İleti yapıldığında KIMLIK belirtilmezse Azure Media Services benzersiz bir kimlik oluşturulur.                                                                                                                                              |
-| SÜRENIN           | ondalık kayan nokta sayısı | Gerekli                                  | Etkinliğin süresi. Bilinmiyorsa **, değer 0 olmalıdır.** Birimler, saniyeler içinde yapılır.                                                                                                                                                                                           |
+| DURATION           | ondalık kayan nokta sayısı | Gerekli                                  | Etkinliğin süresi. Bilinmiyorsa **, değer 0 olmalıdır.** Birimler, saniyeler içinde yapılır.                                                                                                                                                                                           |
 | GEÇECEK            | ondalık kayan nokta sayısı | İsteğe bağlı, ancak kayan pencere için gerekli | Bir kayan sunu penceresini desteklemek için sinyal tekrarlandığında, bu alan, olayın başlamasından bu yana geçen sunum süresinin miktarı **olmalıdır** . Birimler kesirli saniyedir. Bu değer, splice veya segment için belirtilen özgün süreyi aşabilirler. |
 | TIME               | ondalık kayan nokta sayısı | Gerekli                                  | Etkinliğin sunum süresi. Birimler kesirli saniyedir.                                                                                                                                                                                                                        |
 
@@ -949,7 +947,7 @@ Aşağıdaki örnekte, Adobe Primetime EXT-X-CUE etiketini kullanarak HLS bildir
 --->
 
 
-~~~
+```
 #EXTM3U
 #EXT-X-VERSION:4
 #EXT-X-PLAYLIST-TYPE:VOD
@@ -1008,7 +1006,7 @@ Fragments(video=4011692972,format=m3u8-aapl)
 #EXTINF:8.008000,no-desc
 Fragments(video=4011702982,format=m3u8-aapl)
 
-~~~
+```
 
 ### <a name="324-hls-message-handling-for-adobe-primetime-ext-x-cue"></a>Adobe Primetime EXT-X-CUE için 3.2.4 HLS Ileti Işleme
 
@@ -1065,7 +1063,7 @@ EventStream öğesi aşağıdaki özniteliklere sahiptir:
 
 Aşağıdaki örnek, Adobe "basit" mod sinyalli bir RTMP akışı için Media Services dinamik Paketleyiciyi kullanarak bir alıntı EventStream gösterir.
 
-~~~ xml
+```xml
 <!-- Example EventStream element using "urn:com:adobe:dpi:simple:2015" Adobe simple signaling per [Adobe-Primetime] -->
     <EventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="simplesignal" timescale="10000000">
         <Event presentationTime="1583497601000000" duration="300000000" id="1085900"/>
@@ -1080,7 +1078,7 @@ Aşağıdaki örnek, Adobe "basit" mod sinyalli bir RTMP akışı için Media Se
         <Event presentationTime="1583527306666666" duration="300000000" id="4056466"/>
         <Event presentationTime="1583530607333333" duration="300000000" id="4386533"/>
     </EventStream>
-~~~
+```
 
 
 #### <a name="3322-example-mpeg-dash-mpd-manifest-signaling-of-an-rtmp-stream-using-adobe-scte-35-mode"></a>3.3.2.2 örnek MPEG DASH. mpd bildirim sinyali Adobe SCTE-35 modunu kullanarak bir RTMP akışı
@@ -1089,7 +1087,7 @@ Aşağıdaki örnek, Adobe SCTE-35 modu sinyali kullanan bir RTMP akışı için
 
 [SCTE-214-1] başına XML + bin stili sinyal kullanan örnek EventStream öğesi
 
-~~~ xml
+```xml
 
       <EventStream schemeIdUri="urn:scte:scte35:2014:xml+bin" value="scte35" timescale="10000000">
         <Event presentationTime="2595092444" duration="11011000" id="1002">
@@ -1103,7 +1101,7 @@ Aşağıdaki örnek, Adobe SCTE-35 modu sinyali kullanan bir RTMP akışı için
             </Signal>
         </Event>
       </EventStream>
-~~~
+```
 
 
 
@@ -1119,7 +1117,7 @@ Aşağıdaki örnek, Adobe SCTE-35 modu sinyali kullanan bir RTMP akışı için
 Aşağıdaki örnek, Adobe "basit" mod ad sinyal yöntemi kullanılarak bir kaynak RTMP akışı için Media Services dinamik Paketleyiciyi gösteren çıktıyı gösterir. Çıktı, "urn: com: Adobe: DPI: Simple: 2015" olarak ayarlanmış ve değer özelliği "simplesignal" olarak ayarlanmış bir EventStream 'i gösteren tek bir nokta bildirimidir.
 Her basit sinyal @presentationTime , @duration @id gelen basit sinyallere göre doldurulmuş,, ve özelliklerine sahip bir olay öğesinde sağlanır.
 
-~~~ xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <MPD xmlns="urn:mpeg:dash:schema:mpd:2011" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" profiles="urn:mpeg:dash:profile:isoff-live:2011" type="static" mediaPresentationDuration="PT28M1.680S" minBufferTime="PT3S">
@@ -1168,7 +1166,7 @@ Her basit sinyal @presentationTime , @duration @id gelen basit sinyallere göre 
     </Period>
 </MPD>
 
-~~~
+```
 
 <!---
 #### 3.3.3.2 Example MPEG DASH manifest (MPD) with multi-period, EventStream, using Adobe SCTE35 mode signaling
@@ -1322,10 +1320,10 @@ Aşağıdaki ayrıntılar, istemcinin [SCTE-214-3] ile uyumlu olması için ' EM
 
 
 #### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Adobe Simple modu için örnek InBandEvenStream varlığı
-~~~ xml
+```xml
 
       <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
-~~~
+```
 
 ### <a name="335-dash-message-handling"></a>3.3.5 DASH Ileti Işleme
 

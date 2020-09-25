@@ -1,15 +1,15 @@
 ---
 title: Kendi HTTP modelinizi kullanarak canlı videoyu çözümleyin-Azure
-description: Bu hızlı başlangıçta, (benzetimli) bir IP kamerasından canlı video akışını çözümlemek için bilgisayar vizyonu uygularsınız.
+description: Bu hızlı başlangıçta, kendi HTTP modelinizi kullanarak (benzetimli) bir IP kamerasından canlı video akışını çözümlemek için bilgisayar vizyonu uygularsınız.
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 5fd7f1a7db323e3aa7971c1ced6fc588d6e60e37
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 07661fb1e9496aacff6f108a840e0c357f068d41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684288"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336471"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>Hızlı başlangıç: kendi HTTP modelinizi kullanarak canlı videoyu çözümleyin
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıç, bir Azure VM 'yi IoT Edge bir cihaz olarak kullanır ve
 [!INCLUDE [header](includes/analyze-live-video-your-http-model-quickstart/python/header.md)]
 ::: zone-end
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/analyze-live-video-your-http-model-quickstart/csharp/prerequisites.md)]

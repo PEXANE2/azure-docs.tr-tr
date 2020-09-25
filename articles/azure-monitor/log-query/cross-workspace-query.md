@@ -6,27 +6,30 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 7cfa3d5652e13ddc88db70674049069a5b391297
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e2f9430ae039cc54c3e6180eb8ea76791d17f67f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322134"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285137"
 ---
-# <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Azure Izleyici 'de çapraz kaynak günlük sorguları gerçekleştirme  
+# <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Azure Izleyici 'de çalışma alanları ve uygulamalar arasında yayılan günlük sorgusu gerçekleştirme
+
+Azure Izleyici günlükleri aynı kaynak grubunda, başka bir kaynak grubunda veya başka bir abonelikte birden çok Log Analytics çalışma alanı ve Application Insights uygulaması arasında sorguyu destekler. Bu, verilerinizin sistem genelinde bir görünümünü sağlar.
+
+Birden çok çalışma alanında ve uygulamalarda depolanan verileri sorgulamak için iki yöntem vardır:
+1. Çalışma alanını ve uygulama ayrıntılarını belirterek açık olarak. Bu teknik, bu makalede ayrıntılı olarak açıklanmıştır.
+2. [Kaynak bağlamı sorgularını](../platform/design-logs-deployment.md#access-mode)örtük olarak kullanma. Belirli bir kaynak, kaynak grubu veya abonelik bağlamında sorgulama yaptığınızda ilgili veriler, bu kaynaklarla ilgili verileri içeren tüm çalışma alanlarından alınacaktır. Uygulamalarda depolanan Application Insights verileri getirilmeyecektir.
 
 > [!IMPORTANT]
 > [Çalışma alanı tabanlı Application Insights kaynak](../app/create-workspace-resource.md) telemetrisi kullanıyorsanız, diğer tüm günlük verileriyle birlikte bir Log Analytics çalışma alanında depolanır. Birden çok çalışma alanındaki uygulamayı içeren bir sorgu yazmak için log () ifadesini kullanın. Aynı çalışma alanındaki birden çok uygulama için, bir çapraz çalışma alanı sorgusuna gerek yoktur.
 
-Daha önce Azure Izleyici ile, verileri yalnızca geçerli çalışma alanından çözümleyebilirsiniz ve aboneliğinizde tanımlanan birden çok çalışma alanında sorgulama yeteneğinizi sınırlı olursunuz.  Ayrıca, yalnızca Application Insights veya Visual Studio 'dan Application Insights doğrudan Web tabanlı uygulamanızdan toplanan telemetri öğelerini arayabilirsiniz. Bu, işletimsel ve uygulama verilerinin birlikte yerel olarak analiz edilmesi için de bir zorluk yaptı.
-
-Artık yalnızca birden fazla Log Analytics çalışma alanında değil, aynı zamanda aynı kaynak grubundaki belirli bir Application Insights uygulamasından, başka bir kaynak grubunda veya başka bir abonelikte da sorgulama yapabilirsiniz. Bu, verilerinizin sistem genelinde bir görünümünü sağlar. Bu tür sorguları yalnızca [Log Analytics](./log-query-overview.md)için gerçekleştirebilirsiniz.
 
 ## <a name="cross-resource-query-limits"></a>Çapraz kaynak sorgu limitleri 
 
 * Tek bir sorguya dahil edebilirsiniz Application Insights kaynak ve Log Analytics çalışma alanlarının sayısı 100 ile sınırlıdır.
 * Görünüm tasarımcısında çapraz kaynak sorgusu desteklenmez. Log Analytics bir sorgu yazabilir ve [günlük sorgusunu görselleştirmek](../learn/tutorial-logs-dashboards.md)için Azure panosuna sabitleyebilirsiniz. 
-* Log uyarılarındaki çapraz kaynak sorgusu, yeni [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules)'sinde desteklenir. Azure Izleyici, [eski günlük uyarıları API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)'sinden geçiş yapmadığınız takdirde, varsayılan olarak, Azure Portal ' dan yeni günlük uyarı kuralları oluşturmak için [eskı Log Analytics uyarı API](../platform/api-alerts.md) 'sini kullanır. Anahtar sonrasında, yeni API Azure portal yeni uyarı kuralları için varsayılan olur ve çapraz kaynak sorgu günlüğü uyarı kuralları oluşturmanıza olanak sağlar. [Scheduledqueryrules API 'si için Azure Resource Manager şablonunu](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) kullanarak anahtarı yapmadan, çapraz kaynak sorgu günlüğü uyarı kuralları oluşturabilirsiniz, ancak bu uyarı kuralı Azure Portal değil, [SCHEDULEDQUERYRULES API 'si](/rest/api/monitor/scheduledqueryrules) ile yönetilebilir.
+* Günlük uyarılarındaki çapraz kaynak sorguları yalnızca geçerli [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules)'sinde desteklenir. Eski Log Analytics Uyarıları API 'sini kullanıyorsanız [GEÇERLI API 'ye geçmeniz](../platform/alerts-log-api-switch.md)gerekir.
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Log Analytics çalışma alanlarında ve Application Insights sorgulama
@@ -55,7 +58,7 @@ Bir çalışma alanının tanımlanması çeşitli yollarla gerçekleştirilebil
 
 * Azure Kaynak KIMLIĞI: çalışma alanının Azure tarafından tanımlanan benzersiz kimliği. Kaynak adı belirsiz olduğunda kaynak KIMLIĞI kullanılır.  Çalışma alanları için şu biçim: */Subscriptions/SubscriptionID/ResourceGroups/resourcegroup/Providers/Microsoft. Operationalınsights/çalışma alanları/componentName*.  
 
-    Örnek:
+    Örneğin:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -86,7 +89,7 @@ Application Insights ' de bir uygulamanın tanımlanması, *uygulama (tanımlay�
 
 * Azure Kaynak KIMLIĞI-uygulamanın Azure tarafından tanımlanan benzersiz kimliği. Kaynak adı belirsiz olduğunda kaynak KIMLIĞI kullanılır. Biçim: */Subscriptions/SubscriptionID/ResourceGroups/resourcegroup/Providers/Microsoft. Operationalınsights/bileşenler/componentName*.  
 
-    Örnek:
+    Örneğin:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
@@ -132,7 +135,7 @@ applicationsScoping
 ```
 
 >[!NOTE]
->Çalışma alanları ve uygulamalar dahil olmak üzere uyarı kuralı kaynaklarının erişim doğrulaması uyarı oluşturma sırasında gerçekleştirildiğinden, bu yöntem günlük uyarıları ile kullanılamaz. Uyarı oluşturulduktan sonra işleve yeni kaynaklar eklemek desteklenmez. Günlük uyarılarında kaynak kapsamı için işlev kullanmayı tercih ederseniz, kapsamdaki kaynakları güncelleştirmek için portalda veya bir Kaynak Yöneticisi şablonuyla uyarı kuralını düzenlemeniz gerekir. Alternatif olarak, günlük uyarısı sorgusuna kaynak listesini de ekleyebilirsiniz.
+> Çalışma alanları ve uygulamalar dahil olmak üzere uyarı kuralı kaynaklarının erişim doğrulaması uyarı oluşturma sırasında gerçekleştirildiğinden, bu yöntem günlük uyarıları ile kullanılamaz. Uyarı oluşturulduktan sonra işleve yeni kaynaklar eklemek desteklenmez. Günlük uyarılarında kaynak kapsamı için işlev kullanmayı tercih ederseniz, kapsamdaki kaynakları güncelleştirmek için portalda veya bir Kaynak Yöneticisi şablonuyla uyarı kuralını düzenlemeniz gerekir. Alternatif olarak, günlük uyarısı sorgusuna kaynak listesini de ekleyebilirsiniz.
 
 
 ![Timechart](media/cross-workspace-query/chart.png)

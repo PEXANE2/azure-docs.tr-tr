@@ -11,23 +11,23 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 4d29b1301f66f2834c974bdcd2675cf1a672c742
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b669ef7856628f7e5d698edf674eee0b84845295
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323541"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Druva yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Druva 'e otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Druva ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -99,7 +99,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıc
 
 ### <a name="to-configure-automatic-user-provisioning-for-druva-in-azure-ad"></a>Azure AD 'de Druva için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -107,13 +107,13 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıc
 
     ![Uygulamalar listesindeki Druva bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin.
+3. **Hazırlama** sekmesini seçin.
 
-    ![Sağlama sekmesi](common/provisioning.png)
+    ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![Sağlama sekmesi](common/provisioning-automatic.png)
+    ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5.  Yönetici kimlik bilgileri bölümünün altında, `https://apis.druva.com/insync/scim` **kiracı URL 'sini**girin. **Kimlik doğrulama belirteci** değerini **gizli belirteç**olarak girin. Azure AD 'nin Druva 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Druva hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
@@ -121,7 +121,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıc
 
 6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder**' i seçin.
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
 7. **Kaydet**’e tıklayın.
 
@@ -134,19 +134,19 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıc
     ![Druva Kullanıcı öznitelikleri](media/druva-provisioning-tutorial/userattribute.png)
 
 
-10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+10. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
 11. Druva için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
 12. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek Druva için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
     Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. Druva üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, ilerlemeyi izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 

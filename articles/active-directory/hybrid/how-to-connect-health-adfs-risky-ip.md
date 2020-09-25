@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660839"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306404"
 ---
 # <a name="risky-ip-report-public-preview"></a>Riskli IP raporu (Genel Önizleme)
 AD FS müşteriler, son kullanıcıların Microsoft 365 gibi SaaS uygulamalarına erişmesi için kimlik doğrulama hizmetleri sağlamak üzere internet 'e parola kimlik doğrulama uç noktaları sunabilir. Bu durumda kötü bir aktör, bir son kullanıcı parolasını tahmin etmek ve uygulama kaynaklarına erişmek amacıyla AD FS sisteminize karşı oturum açma girişimlerinde bulunabilir. AD FS, Windows Server 2012 R2'de AD FS’den itibaren bu tür saldırıları önlemek için extranet hesap kilitleme işlevselliği sağlamaktadır. Daha düşük bir sürüm kullanıyorsanız, AD FS sisteminizi Windows Server 2016’ya yükseltmeniz kesinlikle önerilir. <br />
@@ -39,7 +39,7 @@ Ayrıca, tek bir IP adresinin birden fazla kullanıcıya karşı birden çok otu
 > 
 
 ## <a name="what-is-in-the-report"></a>Raporda ne var?
-Başarısız oturum açma etkinliği istemci IP adresleri, Web uygulaması ara sunucuları aracılığıyla toplanır. Riskli IP raporundaki her bir öğe, belirlenmiş eşiği aşan başarısız AD FS oturum açma etkinlikleri hakkında toplu bilgiler gösterir. Şu bilgileri sağlar: ![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/report4a.png)
+Başarısız oturum açma etkinliği istemci IP adresleri, Web uygulaması ara sunucuları aracılığıyla toplanır. Riskli IP raporundaki her bir öğe, belirlenmiş eşiği aşan başarısız AD FS oturum açma etkinlikleri hakkında toplu bilgiler gösterir. Aşağıdaki bilgileri sağlar: ![ sütun başlıkları vurgulanmış riskli BIR IP raporu gösteren ekran görüntüsü.](./media/how-to-connect-health-adfs/report4a.png)
 
 | Rapor Öğesi | Description |
 | ------- | ----------- |
@@ -52,7 +52,7 @@ Başarısız oturum açma etkinliği istemci IP adresleri, Web uygulaması ara s
 
 Örneğin, aşağıdaki rapor öğesi 28.02.2018 tarihinde 18 ile 19 arasındaki saat penceresinde <i>104.2XX.2XX.9</i> IP adresinin parola hatası içermediğini ve 284 extranet kilitleme hatası içerdiğini gösterir. Ölçütler dahilinde 14 benzersiz kullanıcı etkilenmiştir. Etkinlik olayı, belirlenen saatlik rapor eşiğini aşmıştır. 
 
-![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/report4b.png)
+![Riskli bir IP rapor girişi örneği gösteren ekran görüntüsü.](./media/how-to-connect-health-adfs/report4b.png)
 
 > [!NOTE]
 > - Rapor listesinde yalnızca belirlenen eşiği aşan etkinlikler gösterilecektir. 
@@ -60,7 +60,7 @@ Başarısız oturum açma etkinliği istemci IP adresleri, Web uygulaması ara s
 > - Bu uyarı raporu, Exchange IP adreslerini veya özel IP adreslerini göstermez. Bunlar yine de dışarı aktarma listesine eklenir. 
 >
 
-![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/report4c.png)
+!["Indirme", "bildirim ayarları" ve "eşik ayarları" vurgulanmış riskli IP raporunu gösteren ekran görüntüsü.](./media/how-to-connect-health-adfs/report4c.png)
 
 ## <a name="load-balancer-ip-addresses-in-the-list"></a>Listedeki yük dengeleyici IP adresleri
 Yük dengeleyici, başarısız oturum açma etkinliklerini topladı ve uyarı eşiğine ulaştı. Yük dengeleyici IP adreslerini görüyorsanız, dış yük dengeleyicinizin Web Uygulaması Ara sunucusuna isteği geçirdiğinde istemci IP adresini göndermeme olasılığı yüksektir. Lütfen, iletme istemci IP adresini geçirmek için yük dengeleyicinizi doğru şekilde yapılandırın. 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 122cc6a2be17cb35e77b638a60fc5fa4f035c0d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601971"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266148"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişim ile Cloud App erişimi için onaylanan istemci uygulamaları gerektirme
 
@@ -47,7 +47,7 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmas
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Bitti** seçeneğini belirleyin.
-1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 (Önizleme)** öğesini seçin.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365**' i seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
    1. **Android** ve **iOS**dahil edin.

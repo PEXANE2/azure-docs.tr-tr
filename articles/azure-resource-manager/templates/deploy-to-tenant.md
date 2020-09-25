@@ -2,13 +2,13 @@
 title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 9b653f3fd4ed66f23521ea3ec8f9972e3b6cc09c
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.date: 09/24/2020
+ms.openlocfilehash: af75e4f0e51ac685986e57b3b92a23dd37174460
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468564"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284768"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Kiracı düzeyinde kaynaklar oluşturma
 
@@ -42,7 +42,7 @@ Maliyetleri yönetmek için şunu kullanın:
 * [yönergelerin](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [ınvoicesections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
-### <a name="schema"></a>Şema
+## <a name="schema"></a>Şema
 
 Kiracı dağıtımları için kullandığınız şema, kaynak grubu dağıtımları için şemadan farklıdır.
 
@@ -78,11 +78,23 @@ Azure Active Directory genel yöneticisinin rol atama izni otomatik olarak yoktu
 
 Asıl öğe artık şablonu dağıtmak için gerekli izinlere sahiptir.
 
+## <a name="deployment-scopes"></a>Dağıtım kapsamları
+
+Bir kiracıya dağıtım yaparken kiracıyı veya Yönetim gruplarını, abonelikleri ve kaynak gruplarını kiracıya hedefleyebilirsiniz. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
+
+Şablonun kaynaklar bölümünde tanımlanan kaynaklar kiracıya uygulanır.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-tenant.json" highlight="5":::
+
+Kiracıdaki bir yönetim grubunu hedeflemek için, iç içe geçmiş bir dağıtım ekleyin ve `scope` özelliğini belirtin.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
+
 ## <a name="deployment-commands"></a>Dağıtım komutları
 
 Kiracı dağıtımları komutları, kaynak grubu dağıtımları için komutlardan farklıdır.
 
-Azure CLı için [az Deployment Tenant Create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create)kullanın:
+Azure CLı için [az Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)kullanın:
 
 ```azurecli-interactive
 az deployment tenant create \
@@ -109,56 +121,6 @@ Kiracı düzeyinde dağıtımlar için dağıtım için bir konum sağlamanız g
 Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, ** üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
 
 Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
-
-## <a name="deployment-scopes"></a>Dağıtım kapsamları
-
-Kiracıya dağıtım yaparken, kiracının kiracı veya Yönetim gruplarını, abonelikleri ve kaynak gruplarını hedefleyebilirsiniz. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
-
-Şablonun kaynaklar bölümünde tanımlanan kaynaklar kiracıya uygulanır.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        tenant-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-Kiracıdaki bir yönetim grubunu hedeflemek için, iç içe geçmiş bir dağıtım ekleyin ve `scope` özelliğini belirtin.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
-        }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedMG",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resources-in-mg
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
 
 ## <a name="use-template-functions"></a>Şablon işlevlerini kullanma
 

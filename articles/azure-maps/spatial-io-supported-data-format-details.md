@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4b7c82e4650c7680709e809d9f563d79f068601f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310178"
 ---
 # <a name="supported-data-format-details"></a>Desteklenen veri biçimi ayrıntıları
 
@@ -52,7 +52,7 @@ Uzamsal GÇ modülü aşağıdaki KML öğelerini destekler.
 | `atom:author`        | evet     | evet     |                                                                                                                            |
 | `atom:link`          | evet     | evet     |                                                                                                                            |
 | `atom:name`          | evet     | evet     |                                                                                                                            |
-| `BalloonStyle`       | kısmi | kısmi | `displayMode`desteklenmez. Öğesine dönüştürüldü `PopupTemplate` . Yazmak için, yazmak istediğiniz özelliğin `popupTemplate` özelliği olarak bir özelliği ekleyin. |
+| `BalloonStyle`       | kısmi | kısmi | `displayMode` desteklenmez. Öğesine dönüştürüldü `PopupTemplate` . Yazmak için, yazmak istediğiniz özelliğin `popupTemplate` özelliği olarak bir özelliği ekleyin. |
 | `begin`              | evet     | evet     |                                                                                                                            |
 | `color`              | evet     | evet     | `#AABBGGRR`Ve içerir `#BBGGRR` . Bir CSS renk dizesine ayrıştırıldı                                                           |
 | `colorMode`          | evet     | hayır      |                                                                                                                            |
@@ -68,12 +68,12 @@ Uzamsal GÇ modülü aşağıdaki KML öğelerini destekler.
 | `extrude`            | kısmi | kısmi | Yalnızca çokgenler için desteklenir. Farklı yüksekliklerdeki çokgenler olan MultiGeometry, bireysel özelliklere göre parçalanacaktır. Çizgi stilleri desteklenmez. Yüksekliği 0 olan çokgenler düz bir çokgen olarak oluşturulur. Okurken, Dış halkadaki ilk koordinat yüksekliği, çokgenin Height özelliği olarak eklenir. Sonra, haritada çokgeni işlemek için ilk koordinat yüksekliği kullanılacaktır. |
 | `fill`               | evet     | evet     |                                                                                                                            |
 | `Folder`             | evet     | evet     |                                                                                                                            |
-| `GroundOverlay`      | evet     | evet     | `color`desteklenmiyor                                                                                                   |
+| `GroundOverlay`      | evet     | evet     | `color` desteklenmiyor                                                                                                   |
 | `heading`            | kısmi | hayır      | Ayrıştırılmış ancak tarafından işlenmiyor `SimpleDataLayer` . Yalnızca verilerin şeklin özelliğinde depolanıyorsa yazar.                 |
 | `hotSpot`            | evet     | kısmi | Yalnızca verilerin şeklin özelliğinde depolanıyorsa yazar. Birimler yalnızca "piksel" olarak silinir.                         |
 | `href`               | evet     | evet     |                                                                                                                            |
 | `Icon`               | kısmi | kısmi | Ayrıştırılmış ancak tarafından işlenmiyor `SimpleDataLayer` . Yalnızca bir URI verisi içeriyorsa şeklin Icon özelliğini yazar. Yalnızca `href` desteklenir. |
-| `IconStyle`          | kısmi | kısmi | `icon`, `heading` , `colorMode` , ve `hotspots` değerleri ayrıştırılır, ancak tarafından işlenmemektedir`SimpleDataLayer`         |
+| `IconStyle`          | kısmi | kısmi | `icon`, `heading` , `colorMode` , ve `hotspots` değerleri ayrıştırılır, ancak tarafından işlenmemektedir `SimpleDataLayer`         |
 | `innerBoundaryIs`    | evet     | evet     |                                                                                                                            |
 | `kml`                | evet     | evet     |                                                                                                                            |
 | `LabelStyle`         | hayır      | hayır      |                                                                                                                            |
@@ -81,7 +81,7 @@ Uzamsal GÇ modülü aşağıdaki KML öğelerini destekler.
 | `gx:LatLonQuad`      | evet     | evet     |                                                                                                                            |
 | `LinearRing`         | evet     | evet     |                                                                                                                            |
 | `LineString`         | evet     | evet     |                                                                                                                            |
-| `LineStyle`          | evet     | evet     | `colorMode`desteklenmez.                                                                                         |
+| `LineStyle`          | evet     | evet     | `colorMode` desteklenmez.                                                                                         |
 | `Link`               | evet     | hayır      | Yalnızca `href` özellik ağ bağlantıları için desteklenir.                                                                   |
 | `MultiGeometry`      | kısmi | kısmi | , Okuma sırasında ayrı ayrı özelliklerle ayrılabilir.                                                                     |
 | `name`               | evet     | evet     |                                                                                                                            |
@@ -92,14 +92,14 @@ Uzamsal GÇ modülü aşağıdaki KML öğelerini destekler.
 | `outerBoundaryIs`    | evet     | evet     |                                                                                                                            |
 | `outline`            | evet     | evet     |                                                                                                                            |
 | `overlayXY`          | hayır      | hayır      |                                                                                                                            |
-| `Pair`               | kısmi | hayır      | Yalnızca `normal` a içindeki stil `StyleMap` desteklenir. `highlight`desteklenmez.                                   |
+| `Pair`               | kısmi | hayır      | Yalnızca `normal` a içindeki stil `StyleMap` desteklenir. `highlight` desteklenmez.                                   |
 | `phoneNumber`        | evet     | evet     |                                                                                                                            |
 | `PhotoOverlay`       | hayır      | hayır      |                                                                                                                            |
 | `Placemark`          | evet     | evet     |                                                                                                                            |
 | `Point`              | evet     | evet     |                                                                                                                            |
 | `Polygon`            | evet     | evet     |                                                                                                                            |
 | `PolyStyle`          | evet     | evet     |                                                                                                                            |
-| `Region`             | kısmi | kısmi | `LatLongBox`Belge düzeyinde desteklenir.                                                                      |
+| `Region`             | kısmi | kısmi | `LatLongBox` Belge düzeyinde desteklenir.                                                                      |
 | `rotation`           | hayır      | hayır      |                                                                                                                            |
 | `rotationXY`         | hayır      | hayır      |                                                                                                                            |
 | `scale`              | hayır      | hayır      |                                                                                                                            |
@@ -111,7 +111,7 @@ Uzamsal GÇ modülü aşağıdaki KML öğelerini destekler.
 | `SimpleData`         | evet     | evet     |                                                                                                                            |
 | `SimpleField`        | evet     | evet     |                                                                                                                            |
 | `size`               | hayır      | hayır      |                                                                                                                            |
-| `Snippet`            | kısmi | kısmi | `maxLines`öznitelik yoksayıldı.                                                                                  |
+| `Snippet`            | kısmi | kısmi | `maxLines` öznitelik yoksayıldı.                                                                                  |
 | `south`              | evet     | evet     |                                                                                                                            |
 | `Style`              | evet     | evet     |                                                                                                                            |
 | `StyleMap`           | kısmi | hayır      | Yalnızca içindeki normal stil `StyleMap` desteklenir.                                                                        |
@@ -225,12 +225,12 @@ Uzamsal GÇ modülü aşağıdaki GML öğelerini destekler.
 | `gml:LineString`        | evet  | evet   |                                                                                        |
 | `gml:lineStringMember`  | evet  | evet   |                                                                                        |
 | `gml:lineStringMembers` | evet  | hayır    |                                                                                        |
-| `gml:MultiCurve`        | evet  | hayır    | Yalnızca `gml:LineString` üyeleri okur. Şöyle yazılmıştır`gml.MultiLineString`                  |
+| `gml:MultiCurve`        | evet  | hayır    | Yalnızca `gml:LineString` üyeleri okur. Şöyle yazılmıştır `gml.MultiLineString`                  |
 | `gml:MultiGeometry`     | kısmi  | kısmi   | Yalnızca Korturecollection olarak oku.                                              |
 | `gml:MultiLineString`   | evet  | evet   |                                                                                        |
 | `gml:MultiPoint`        | evet  | evet   |                                                                                        |
 | `gml:MultiPolygon`      | evet  | evet   |                                                                                        |
-| `gml:MultiSurface`      | evet  | hayır    | Yalnızca `gml:Polygon` üyeleri okur. Şöyle yazılmıştır`gml.MultiPolygon`                        |
+| `gml:MultiSurface`      | evet  | hayır    | Yalnızca `gml:Polygon` üyeleri okur. Şöyle yazılmıştır `gml.MultiPolygon`                        |
 | `gml:name`              | evet  | evet   |                                                                                        |
 | `gml:outerBoundaryIs`   | evet  | hayır    | Kullanılarak yazılmıştır `gml.exterior` .                                                          |
 | `gml:Point`             | evet  | evet   |                                                                                        |
@@ -246,7 +246,7 @@ Uzamsal GÇ modülü aşağıdaki GML öğelerini destekler.
 #### <a name="additional-notes"></a>Ek notlar
 
 - Üye öğeleri, alt öğeler içinde gömülmüş olabilecek bir geometri için aranır. Bu arama işlemi, GML 'den genişleyen çok sayıda XML biçimi bir geometri öğesinin doğrudan alt öğesi olarak bir geometrisi yerleştirmeyebilir.
-- `srsName`WGS84 koordinatları ve şu kodlar için kısmen desteklenir:[EPSG: 4326](https://epsg.io/4326)) ve Web Mercator ([EPSG: 3857](https://epsg.io/3857) veya alternatif kodlarından biri. Diğer koordinat sistemleri, WGS84 olduğu gibi ayrıştırılacaktır.
+- `srsName` WGS84 koordinatları ve şu kodlar için kısmen desteklenir:[EPSG: 4326](https://epsg.io/4326)) ve Web Mercator ([EPSG: 3857](https://epsg.io/3857) veya alternatif kodlarından biri. Diğer koordinat sistemleri, WGS84 olduğu gibi ayrıştırılacaktır.
 - Bir XML akışı okunurken belirtilmedikçe, eksen sırası XML akışındaki ipuçlarına göre belirlenir. "Enlem, Boylam" eksen sırası için bir tercih verilir.
 - Bir GML dosyasına yazılırken özellikler için özel bir GML ad alanı belirtilmediği takdirde, ek özellik bilgileri eklenmeyecektir.
 
@@ -410,7 +410,7 @@ Uzamsal verileri içeren ayrılmış bir dosyayı okurken, hangi sütunların ko
 #### <a name="dates"></a>Tarihler
 
 - EDM. DateTime
-- date
+- tarih
 - datetime
 
 #### <a name="geography"></a>Coğrafya
@@ -431,5 +431,4 @@ Uzamsal verileri içeren ayrılmış bir dosyayı okurken, hangi sütunların ko
 
 Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makalelere bakın:
 
-> [!div class="nextstepaction"]
-> [Uzamsal verileri okuma ve yazma](spatial-io-read-write-spatial-data.md)
+[Uzamsal verileri okuma ve yazma](spatial-io-read-write-spatial-data.md)

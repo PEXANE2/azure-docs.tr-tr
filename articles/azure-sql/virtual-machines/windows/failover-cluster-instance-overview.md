@@ -7,17 +7,17 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611626"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272536"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -138,7 +138,7 @@ Ayrıca, Azure ExpressRoute aracılığıyla bir Iscsı hedefi paylaşılan blok
 
 Microsoft iş ortaklarının paylaşılan depolama ve veri çoğaltma çözümleri için, yük devretmeyle ilgili verilere erişme hakkında herhangi bir sorun için satıcıya başvurun.
 
-## <a name="connectivity"></a>Bağlantı
+## <a name="connectivity"></a>Bağlanabilirlik
 
 Azure sanal makinelerinde SQL Server olan yük devretme kümesi örnekleri, şu anda kümelenmiş kaynaklara sahip olan düğümden bağımsız olarak trafiği SQL Server örneğine yönlendirmek için Azure Load Balancer ile bir [dağıtılmış ağ adı (DNN)](hadr-distributed-network-name-dnn-configure.md) veya bir [sanal ağ adı (vnn)](hadr-vnn-azure-load-balancer-configure.md) kullanır. SQL Server FCı ile belirli özellikleri ve DNN 'yi kullanırken dikkate alınması gereken ek durumlar vardır. Daha fazla bilgi edinmek için [SQL Server FCI Ile DNN birlikte çalışabilirliği](failover-cluster-instance-dnn-interoperability.md) bölümüne bakın. 
 

@@ -8,13 +8,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: 874e9dd0454fa4f0a0877d949a34058baa711b83
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: 65ced3812072bd2650fc36bbb7a7b0f3f75e0def
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420728"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336794"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Cihaz ikizlerini kullanmaya başlama (Node.js)
 
@@ -30,7 +30,7 @@ Bu öğreticinin sonunda iki Node.js konsol uygulamanız olacaktır:
 > [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md) makalesi, hem cihaz hem de arka uç uygulamaları oluşturmak Için kullanabileceğiniz Azure IoT SDK 'ları hakkında bilgi sağlar.
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -40,7 +40,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

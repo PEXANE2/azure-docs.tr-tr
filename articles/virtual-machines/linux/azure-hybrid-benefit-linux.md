@@ -3,34 +3,35 @@ title: Azure Hibrit Avantajı ve Linux VM 'Leri
 description: Azure Hibrit Avantajı, Azure üzerinde çalışan Linux sanal makinelerinizde para tasarrufu yapmanıza olanak sağlar.
 services: virtual-machines
 documentationcenter: ''
-author: asinn826
+author: mathapli
 manager: westonh
-editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: a9ea3b21908d1f461745ffe2689b36f8efcb6f89
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998088"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279782"
 ---
-# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hibrit Avantajı: Linux Sanal Makineleri için nasıl uygulanır
+# <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Önizleme: Azure Hibrit Avantajı – Linux Sanal Makineleri için nasıl uygulanır?
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Hibrit Avantajı, önceden var olan Red hat veya SUSE yazılım aboneliğinizi kullanarak şirket içi Red Hat Enterprise Linux (RHEL) ve SUSE Linux Enterprise (SLES) sunucunuzu Azure 'a daha kolay bir şekilde geçirmenize olanak sağlar. Bu avantajla, yazılım ücreti RHEL veya SLES Aboneliğiniz kapsamında olduğu için yalnızca sanal makinenizin altyapı maliyetleri için ödeme yaparsınız. Bu avantaj, tüm RHEL ve SLES Market (PAYG) görüntüleri için geçerlidir.
+Azure Hibrit Avantajı, önceden var olan Red hat veya SUSE yazılım aboneliğinizi kullanarak şirket içi Red Hat Enterprise Linux (RHEL) ve SUSE Linux Enterprise Server (SLES) sanal makinelerinizi (VM) Azure 'a daha kolay bir şekilde geçirebilmesini sağlar. Bu avantajla, yazılım ücreti RHEL veya SLES Aboneliğiniz kapsamında olduğu için yalnızca sanal makinenizin altyapı maliyetleri için ödeme yaparsınız. Bu avantaj, tüm RHEL ve SLES Market (PAYG) görüntüleri için geçerlidir.
+
+> [!IMPORTANT]
+> Linux VM 'Leri için Azure Hibrit Avantajı Şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="benefit-description"></a>Avantaj açıklaması
 
 Azure Hibrit Avantajı aracılığıyla, şirket içi RHEL ve SLES sunucularınızı, Azure 'da var olan RHEL ve SLES PAYG sanal makinelerini Azure 'a dönüştürerek kendi abonelik (KCG) faturanızı daha kolay hale getirebilirsiniz. Genellikle, Azure 'daki PAYG görüntülerinden dağıtılan VM 'Ler hem bir altyapı ücretini hem de yazılım ücretini ücretlendirir. Azure Hibrit Avantajı, PAYG VM 'Leri yeniden dağıtım olmadan bir KCG faturalandırma modeline dönüştürülebilir ve kapalı kalma riskini ortadan kaldırabilirsiniz.
 
-![Linux VM 'lerinde Azure Hibrit Avantajı maliyet görselleştirmesi](./media/ahb-linux/azure-hybrid-benefit-cost.png)
+:::image type="content" source="./media/ahb-linux/azure-hybrid-benefit-cost.png" alt-text="Linux VM 'lerinde Azure Hibrit Avantajı maliyet görselleştirmesi.":::
 
 Bir RHEL veya SLES VM 'de avantajı etkinleştirdikten sonra, genellikle bir PAYG VM 'si üzerinde tahakkuk eden ek yazılım ücreti için ücret ödemeyecektir. Bunun yerine, VM 'niz yalnızca işlem donanımı ücretini ve yazılım ücreti gerektirmeyen bir KCG ücreti yayacaktır.
 
@@ -115,7 +116,7 @@ Bir VM 'nin AHB durumunu üç şekilde görüntüleyebilirsiniz: portalda, Azure
 
 VM 'niz için, AHB 'nin etkin olup olmadığını görmek için yapılandırma dikey penceresini görüntüleyin ve lisanslama durumunu denetleyin.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 `az vm get-instance-view`Bu amaçla komut kullanılıyor olabilir. Yanıtta bir licenseType alanı bulun. LicenseType alanı varsa ve değer ' RHEL_BYOS ' veya ' SLES_BYOS ' ise, sanal makinenizin avantajı etkin olur.
 

@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: REST API ve Ruby-Bing Görsel Arama kullanarak görüntü öngörülerini alın'
 titleSuffix: Azure Cognitive Services
-description: Bing Görsel Arama API'si bir görüntüyü karşıya yüklemeyi ve ilgili öngörüleri nasıl alabileceğinizi öğrenin.
+description: Bing Görsel Arama API'si ve Ruby kullanarak bir görüntüyü karşıya yüklemeyi ve ardından görüntüyle ilgili öngörüleri almayı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ba5d07017c0244c370a8dc6945a7958beb0f224f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870353"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324578"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Ruby kullanarak görüntü öngörülerini alın
 
 Ruby programlama dilini kullanarak Bing Görsel Arama API'si ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. POST isteği bir görüntüyü API uç noktasına yükler. Sonuçlar, karşıya yüklenen görüntüye benzer görüntüler ve URL 'Ler hakkında açıklayıcı bilgiler içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Ruby 2,4 veya üstünü](https://www.ruby-lang.org/en/downloads/)yükler.
 * Abonelik anahtarı alın.

@@ -1,14 +1,16 @@
 ---
 title: Uygulamanızı planlayın-LUSıS
 description: İlgili uygulama amaçlarını ve varlıklarını ana hatlarıyla oluşturun ve ardından Language Understanding akıllı hizmetler (LUU) içinde uygulama planlarınızı oluşturun.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 38d80a77303e248ab137f87f8063b5cbc358f51a
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 69f2048da0b4690d9de72e96e296edbd55c4cd9f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892924"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309464"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>LUSıS uygulama şemanızı konu etki alanı ve veri ayıklama ile planlayın
 

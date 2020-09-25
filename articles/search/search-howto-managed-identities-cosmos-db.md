@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b295c4f8380d59d8824049e8050605cb66fbae65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971656"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275294"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Yönetilen kimlik kullanarak Cosmos DB veritabanına Dizin Oluşturucu bağlantısı kurma
 
@@ -82,7 +82,7 @@ api-key: [Search service admin key]
 | Alan   | Açıklama |
 |---------|-------------|
 | **ada** | Gereklidir. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
-|**türüyle**| Gereklidir. Olmalıdır `cosmosdb` . |
+|**tür**| Gereklidir. Olmalıdır `cosmosdb` . |
 |**Credentials** | Gereklidir. <br/><br/>Yönetilen bir kimlik kullanılarak bağlanırken, **kimlik bilgileri** biçimi şu şekilde olmalıdır: *veritabanı = [veritabanı-adı]; RESOURCEID = [kaynak-kimliği-dize];(Apıkind = [api-Kind];)*<br/> <br/>RESOURCEID biçimi: *RESOURCEID =/Subscriptions/**abonelik kimliği**/ResourceGroups/**kaynak grubu adı**/Providers/Microsoft.DocUmentdb/databaseaccounts/**Cosmos DB hesabınızın adı**/;*<br/><br/>SQL koleksiyonları için bağlantı dizesi bir ApiKind gerektirmez.<br/><br/>MongoDB koleksiyonları için bağlantı dizesine **Apikind = MongoDb** ekleyin. <br/><br/>Gremlin grafikleri ve Cassandra tablolarında, önizlemeye erişim sağlamak için [geçitli Dizin Oluşturucu önizlemesine](https://aka.ms/azure-cognitive-search/indexer-preview) kaydolun ve kimlik bilgilerini biçimlendirme hakkında bilgi alın.<br/>|
 | **container (kapsayıcı)**  | Aşağıdaki öğeleri içerir: <br/>**ad**: gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: isteğe bağlı. Rastgele bir JSON belgesini, Azure Bilişsel Arama 'in dizinetarafından kullanılabilecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB API 'SI, Gremlin API ve Cassandra API için sorgular desteklenmez. |
 | **dataChangeDetectionPolicy** | Önerilen |
@@ -136,6 +136,14 @@ Bu Dizin Oluşturucu her iki saatte bir çalışır (zamanlama aralığı "PT2H"
 Dizin Oluşturucu oluşturma API 'SI hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu oluştur](/rest/api/searchservice/create-indexer).
 
 Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için bkz. [Azure bilişsel arama için Dizin Oluşturucu zamanlama](search-howto-schedule-indexers.md).
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Cosmos DB verileri dizinlemeyebilirsiniz, aşağıdakileri göz önünde bulundurun:
+
+1. Cosmos DB hesap anahtarlarınızı kısa süre önce döndürüyorsunuz, yönetilen kimlik bağlantı dizesinin çalışması için 15 dakikaya kadar beklemeniz gerekir.
+
+1. Cosmos DB hesabının erişiminin ağ seçme ile sınırlı olup olmadığını denetleyin. Varsa, [Azure ağ güvenliği özelliklerini kullanarak veri kaynaklarına Dizin Oluşturucu erişimi](search-indexer-securing-resources.md)bölümüne bakın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

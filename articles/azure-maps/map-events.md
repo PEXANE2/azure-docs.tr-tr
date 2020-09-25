@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: e1cce536a9ec498304cbbc591fc56a0ee1b21b13
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 0621e0ecfbb91d151e3cc78d3b345ab92133695c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087278"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310382"
 ---
 # <a name="interact-with-the-map"></a>Harita ile etkileşim kurma
 
@@ -49,7 +49,7 @@ Aşağıdaki kod, bir HTML işaretine JavaScript harita olayları ekler. Ayrıca
 
 Aşağıdaki tabloda desteklenen tüm harita sınıfı olayları listelenmektedir.
 
-| Olay               | Açıklama |
+| Olay               | Description |
 |---------------------|-------------|
 | `boxzoomend`        | Bir "Box Zoom" etkileşimi sona erdiğinde tetiklenir.|
 | `boxzoomstart`      | Bir "Box Zoom" etkileşimi başladığında tetiklenir.|

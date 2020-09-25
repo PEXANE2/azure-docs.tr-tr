@@ -3,13 +3,13 @@ title: Azure Kubernetes hizmetinde (AKS) API sunucusu yetkilendirilmiş IP aral�
 description: Azure Kubernetes Service (AKS) ' de API sunucusuna erişim için bir IP adresi aralığı kullanarak kümenizin güvenliğini nasıl sağlayacağınızı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 11/05/2019
-ms.openlocfilehash: 404bd600f825a5da334811744132c6aa9b751566
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/21/2020
+ms.openlocfilehash: 5dbe5061253fb18222a476a88a1ec94a5ce4b0fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006902"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299672"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki yetkili IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim
 
@@ -17,18 +17,21 @@ Kubernetes 'de, API sunucusu, küme içinde kaynak oluşturmak veya düğüm say
 
 Bu makalede, API sunucusu yetkilendirilmiş IP adresi aralıklarının hangi IP adreslerinin ve Cıdrs 'nin denetim düzlemine erişebileceğini sınırlamak için nasıl kullanılacağı gösterilmektedir.
 
-> [!IMPORTANT]
-> API sunucusu yetkilendirilmiş IP adresi aralıklarının ön izleme 2019 ' de önizleme dışına taşındıktan sonra oluşturulan kümelerde, API sunucusu yetkilendirilmiş IP adresi aralıkları yalnızca *Standart* SKU yük dengeleyicide desteklenir. Yapılandırılmış *temel* SKU yük dengeleyiciye ve API sunucusu yetkilendirilmiş IP adresi aralıklarına sahip mevcut kümeler, olduğu gibi çalışmaya devam eder, ancak *Standart* bir SKU yük dengeleyiciye geçirilemez. Bu mevcut kümeler, Kubernetes sürümü veya denetim düzlemi yükseltildiyse de çalışmaya devam edecektir. API sunucusu yetkilendirilmiş IP adresi aralıkları özel kümeler için desteklenmez.
-
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Bu makalede, Azure CLı kullanarak bir AKS kümesinin nasıl oluşturulacağı gösterilmektedir.
 
 Azure CLı sürüm 2.0.76 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
+### <a name="limitations"></a>Sınırlamalar
+
+API sunucusu yetkilendirilmiş IP aralıkları özelliği aşağıdaki sınırlamalara sahiptir:
+- API sunucusu yetkilendirilmiş IP adresi aralıklarının ön izleme 2019 ' de önizleme dışına taşındıktan sonra oluşturulan kümelerde, API sunucusu yetkilendirilmiş IP adresi aralıkları yalnızca *Standart* SKU yük dengeleyicide desteklenir. Yapılandırılmış *temel* SKU yük dengeleyiciye ve API sunucusu yetkilendirilmiş IP adresi aralıklarına sahip mevcut kümeler, olduğu gibi çalışmaya devam eder, ancak *Standart* bir SKU yük dengeleyiciye geçirilemez. Bu mevcut kümeler, Kubernetes sürümü veya denetim düzlemi yükseltildiyse de çalışmaya devam edecektir. API sunucusu yetkilendirilmiş IP adresi aralıkları özel kümeler için desteklenmez.
+- Bu özellik, [düğüm düğüm havuzları önizleme özelliği başına genel IP](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview)kullanan kümelerle uyumlu değildir.
+
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API sunucusu yetkilendirilmiş IP aralıklarına genel bakış
 
-Kubernetes API sunucusu, temeldeki Kubernetes API 'Lerinin nasıl açığa çıkmasıdır. Bu bileşen, `kubectl` veya Kubernetes panosu gibi yönetim araçları için etkileşim sağlar. AKS, adanmış bir API sunucusuyla tek kiracılı bir Küme Yöneticisi sağlar. Varsayılan olarak, API sunucusuna bir genel IP adresi atanır ve rol tabanlı erişim denetimi (RBAC) kullanarak erişimi kontrol etmelisiniz.
+Kubernetes API sunucusu, temeldeki Kubernetes API 'Lerinin nasıl açığa çıkmasıdır. Bu bileşen, `kubectl` veya Kubernetes panosu gibi yönetim araçları için etkileşim sağlar. AKS, adanmış bir API sunucusuyla tek kiracılı bir küme denetim düzlemi sağlar. Varsayılan olarak, API sunucusuna bir genel IP adresi atanır ve rol tabanlı erişim denetimi (RBAC) kullanarak erişimi kontrol etmelisiniz.
 
 Genel olarak erişilebilen AKS denetim düzlemi/API sunucusuna erişimi güvenli hale getirmek için, yetkilendirilmiş IP aralıklarını etkinleştirebilir ve kullanabilirsiniz. Bu yetkili IP aralıkları yalnızca tanımlı IP adresi aralıklarının API sunucusuyla iletişim kurmasına izin verir. Bu yetkili IP aralıklarının parçası olmayan bir IP adresinden API sunucusuna yapılan istek engellenir. Kullanıcıları ve istediği eylemleri yetkilendirmek için RBAC kullanmaya devam edin.
 
@@ -66,7 +69,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Standart SKU yük dengeleyici için giden IP 'Leri belirtin
 
-Bir AKS kümesi oluştururken, küme için giden IP adreslerini veya öneklerini belirtirseniz, bu adreslere veya öneklere de izin verilir. Örnek:
+Bir AKS kümesi oluştururken, küme için giden IP adreslerini veya öneklerini belirtirseniz, bu adreslere veya öneklere de izin verilir. Örneğin:
 
 ```azurecli-interactive
 az aks create \
@@ -82,7 +85,7 @@ az aks create \
 
 Yukarıdaki örnekte, parametresinde belirtilen tüm IP 'lerde, *`--load-balancer-outbound-ip-prefixes`* parametresindeki IP 'ler ile birlikte izin verilir *`--api-server-authorized-ip-ranges`* .
 
-Alternatif olarak, *`--load-balancer-outbound-ip-prefixes`* giden yük DENGELEYICI IP öneklerine izin vermek için parametresini belirtebilirsiniz.
+Bunun yerine, *`--load-balancer-outbound-ip-prefixes`* giden yük DENGELEYICI IP öneklerine izin vermek için parametresini belirtebilirsiniz.
 
 ### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Standart SKU yük dengeleyicisinin yalnızca giden genel IP 'si için izin ver
 
@@ -118,7 +121,7 @@ Yalnızca standart SKU yük dengeleyicisinin genel IP 'sini belirtmek için para
 
 ## <a name="disable-authorized-ip-ranges"></a>Yetkili IP aralıklarını devre dışı bırak
 
-Yetkili IP aralıklarını devre dışı bırakmak için [az aks Update][az-aks-update] kullanın ve API sunucusu yetkilendirilmiş IP aralıklarını devre dışı bırakmak için boş bir Aralık belirtin. Örnek:
+Yetkili IP aralıklarını devre dışı bırakmak için [az aks Update][az-aks-update] kullanın ve API sunucusu yetkilendirilmiş IP aralıklarını devre dışı bırakmak için boş bir Aralık belirtin. Örneğin:
 
 ```azurecli-interactive
 az aks update \

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1013e7f7fa824a7fef0535b8ab599e2a4e786b40
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 95ee630c1190167227a4ab3514a0c36db0401e45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273373"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Coda yapılandırma
 
-Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Coda hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, kullanıcıları Azure AD sağlama hizmetini kullanarak [Coda](https://coda.io/) 'ya otomatik olarak sağlar ve hazırlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
+Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Coda hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, kullanıcıları Azure AD sağlama hizmetini kullanarak [Coda](https://coda.io/) 'ya otomatik olarak sağlar ve hazırlar. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../manage-apps/user-provisioning.md).
 
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
@@ -34,17 +34,17 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Coda h
 > * Azure AD ve Coda arasında kullanıcı özniteliklerinin eşitlenmiş olmasını sağlama
 > * CODA ['Da çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/coda-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
-* Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici).
+* Azure AD'de hazırlama [iznine](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici).
 * Bir [Coda kurumsal](https://help.coda.io/en/articles/3520174-getting-started-with-sso) yönetici hesabı.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
-1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
-2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
+1. [Hazırlama hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) hakkında bilgi edinin.
+2. [Hazırlık kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) dahil edilecek kullanıcıları seçin.
 3. [Azure AD ve Coda arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın.
 
 ## <a name="step-2-configure-coda-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için Coda yapılandırma
@@ -58,15 +58,15 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-3-add-coda-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Coda ekleme
 
-Azure AD uygulama galerisinden CODA ' yı ekleyerek Coda sağlama ' ya bir başlangıç yapın. Daha önceden SSO için Coda kurulumunu yaptıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin.
+Azure AD uygulama galerisinden CODA ' yı ekleyerek Coda sağlama ' ya bir başlangıç yapın. Daha önceden SSO için Coda kurulumunu yaptıysanız aynı uygulamayı kullanabilirsiniz. Ancak başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden uygulama ekleme hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) bakın.
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım: Sağlama kapsamında kim olacağını tanımlama
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım: Hazırlık kapsamına dahil edilecek kullanıcıları tanımlama
 
 Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı özniteliklerine göre sağlanacak olan kapsamınızı sağlar. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, kullanıcıları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca kullanıcının özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz.
 
-* CODA 'ya Kullanıcı atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan erişim rolüne sahip kullanıcılar sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, ek roller eklemek için [uygulama bildirimini güncelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) .
+* CODA 'ya Kullanıcı atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) daha fazla rol ekleyebilirsiniz.
 
-* Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı kümesiyle test edin. Sağlama kapsamı atanan kullanıcılara ayarlandığında, uygulamaya bir veya iki Kullanıcı atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılara ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz.
+* Başlangıçta kapsamı sınırlı tutun. Herkese sunulmadan önce küçük bir Kullanıcı kümesiyle test edin. Sağlama kapsamı atanan kullanıcılara ayarlandığında, uygulamaya bir veya iki Kullanıcı atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılara ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz.
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-coda"></a>5. Adım. CODA otomatik Kullanıcı sağlamasını yapılandırma
@@ -75,7 +75,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı atamaları
 
 ### <a name="to-configure-automatic-user-provisioning-for-coda-in-azure-ad"></a>Azure AD 'de Coda otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -83,21 +83,21 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı atamaları
 
     ![Uygulamalar listesindeki Coda bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin.
+3. **Hazırlama** sekmesini seçin.
 
-    ![Sağlama sekmesi](common/provisioning.png)
+    ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![Sağlama sekmesi](common/provisioning-automatic.png)
+    ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, 1. adımdaki Coda kiracı URL 'Nizi ve gizli anahtar belirtecinizi girin. Azure AD 'nin Coda 'ya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Coda hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![alınıyor](./media/coda-provisioning-tutorial/provisioning.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
+6. **Bildirim E-postası** alanına hazırlama hatası bildirimlerinin gönderilmesini istediğiniz kişinin veya grubun e-posta adresini yazıp **Hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
 7. **Kaydet**’i seçin.
 
@@ -108,39 +108,39 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı atamaları
    |Öznitelik|Tür|
    |---|---|
    |userName|Dize|
-   |bkz|Boole|
-   |ad.|Dize|
-   |Name. familyName|Dize|
+   |active|Boole|
+   |name.givenName|Dize|
+   |name.familyName|Dize|
 
 
-10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+10. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
 11. CODA Azure AD sağlama hizmetini etkinleştirmek için, **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
 12. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek Coda sağlamak istediğiniz kullanıcıları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm kullanıcıların ilk eşitleme döngüsünü başlatır. İlk döngü daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki Döngülerde yerine daha uzun sürer.
+Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm kullanıcıların ilk eşitleme döngüsünü başlatır. İlk döngünün tamamlanması, Azure AD hazırlama hizmetinin çalıştığı süre boyunca yaklaşık olarak 40 dakikada bir gerçekleştirilen sonraki döngülerden daha uzun sürer.
 
 ## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
-Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
+Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-1. Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
-2. Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
-3. Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.
+1. Hazırlama işlemi başarılı ve başarısız olan kullanıcıları belirlemek için [hazırlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
+2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) bakın
+3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../manage-apps/check-status-user-account-provisioning.md)

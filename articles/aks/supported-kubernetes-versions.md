@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: fb5b9c446ea5574970b14c683fac258c17199fef
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: a36eb588c7128f13fb21b368d308ed00171fbb4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565387"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335543"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -135,12 +135,11 @@ Son sürüm geçmişi için [buraya](https://en.wikipedia.org/wiki/Kubernetes#Hi
 
 |  K8s sürümü | Yukarı akış yayını  | AKS önizlemesi  | AKS GA  | Yaşam sonu |
 |--------------|-------------------|--------------|---------|-------------|
+| 1.16  | Eyl-19-19  | Ocak 2019   | Mar 2020  | 1,19 GA | 
 | 1,17  | Ara-09-19  | Ocak 2019   | 2020 Tem  | 1,20 GA | 
 | 1,18  | Mar-23-20  | Mayıs 2020   | Ağu 2020  | 1,21 GA | 
-| 1,19  | Ağu-04-20  | Ağu 2020   | Kas 2020  | 1,22 GA | 
-| 1.20  | * Kas 2020    | * Dec 2020   | * Jan 2021  | 1,23 GA | 
-
-\* Bekleyen yukarı akış Yayın tarihi onayı.
+| 1,19  | Ağu-04-20  | Eyl 2020   | Kas 2020  | 1,22 GA | 
+| 1.20  | Ara-08-20  | Ocak 2021   | Mar 2021  | 1,23 GA | 
 
 ## <a name="faq"></a>SSS
 

@@ -9,14 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300114"
 ---
-# <a name="create-a-synapse-workspace"></a>Synapse çalışma alanı oluşturma
+# <a name="prerequisites"></a>Önkoşullar
+
+Bu öğreticinin tüm adımlarını tamamlayabilmeniz için, **sahip** rolü atadığınız bir kaynak grubuna erişiminizin olması gerekir. Bu kaynak grubunda SYNAPSE çalışma alanını oluşturun.
+
+## <a name="create-a-synapse-workspace"></a>Synapse çalışma alanı oluşturma
 
 Bu öğreticide, bir Synapse çalışma alanı, bir SQL havuzu ve bir Apache Spark havuzu oluşturmayı öğreneceksiniz. 
 

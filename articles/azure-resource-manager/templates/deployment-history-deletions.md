@@ -3,12 +3,12 @@ title: Dağıtım geçmişi silme işlemleri
 description: Azure Resource Manager dağıtım geçmişinden dağıtımları otomatik olarak silme işlemini açıklar. Geçmiş 800 sınırını aşmaya yakın olduğunda dağıtımlar silinir.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 1d4f49fe6b90e672b65aa97971426186384da02f
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 0c5d972eea9bc9cf2bf8716b26cd0e07d0a07b82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284742"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Dağıtım geçmişinden otomatik silme işlemleri
 
@@ -16,7 +16,7 @@ Bir şablonu dağıttığınız her seferinde dağıtım hakkındaki bilgiler da
 
 Azure Resource Manager, sınıra yaklaştıklarında geçmişinizden dağıtımları otomatik olarak siler. Otomatik silme, geçmiş davranıştaki bir değişiklikten fazla. Daha önce, bir hatadan kaçınmak için dağıtımları dağıtım geçmişinden el ile silmeniz gerekiyordu. Bu değişiklik 6 Ağustos 2020 ' de uygulandı.
 
-**Otomatik silme işlemleri, kaynak grubu dağıtımları için desteklenir. Şu anda, [abonelik](deploy-to-subscription.md), [Yönetim grubu](deploy-to-management-group.md)ve [kiracı](deploy-to-tenant.md) dağıtımları için dağıtım geçmişindeki dağıtımlar silinmez.**
+**Otomatik silme işlemleri, kaynak grubu dağıtımları için desteklenir. Şu anda, [abonelik](deploy-to-subscription.md), [Yönetim grubu](deploy-to-management-group.md)ve [kiracı](deploy-to-tenant.md) dağıtımları geçmişindeki dağıtımlar otomatik olarak silinmez.**
 
 > [!NOTE]
 > Bir dağıtımı geçmişten silmek, dağıtılan kaynakların hiçbirini etkilemez.

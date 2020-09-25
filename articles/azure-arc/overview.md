@@ -1,14 +1,14 @@
 ---
 title: Azure Arc'a genel bakış
 description: Azure Arc 'ın ne olduğu ve müşterilerin karma kaynaklarını diğer Azure hizmetleri ve özellikleriyle yönetimi ve idare etmesine nasıl yardımcı olduğunu öğrenin.
-ms.date: 08/25/2020
+ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 46bd2089dbc2794d0fb98ceb9a5e97011e36d6ea
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e6dc052655bffae949399f77a26d7b76c5b0d13c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89052315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335407"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc'a genel bakış
 
@@ -34,7 +34,7 @@ Azure Arc 'ın temel özellikleri şunlardır:
 
 * Azure [VM uzantılarını](./servers/manage-vm-extensions.md) , sunucularınızı izlemek, güvenli hale getirmek ve güncelleştirmek için Azure Yönetim Hizmetleri 'ni kullanacak şekilde yapılandırın.
 
-* Kubernetes kümelerini ölçekte yönetin ve yönetir. 
+* Kubernetes kümelerini ölçekte yönetin ve yönetir.
 
 * GitHub gibi kaynak denetiminden doğrudan bir veya daha fazla küme arasında uygulama ve yapılandırma dağıtmak için, Gilar tabanlı yapılandırmayı kod yönetimi olarak kullanın.
 
@@ -50,7 +50,17 @@ Aşağıda, Azure Arc ile sunulan özelliklerin fiyatlandırma ayrıntıları ve
 
 ### <a name="arc-enabled-servers"></a>Arc özellikli sunucular
 
-Geçerli önizleme aşamasında, Azure Arc etkin sunucuları ek bir ücret ödemeden sunulur.
+Azure Arc denetim düzlemi işlevselliği ek bir ücret ödemeden sunulmaktadır.Buna aşağıdakiler dahildir:
+
+* Azure Yönetim grupları ve Etiketler aracılığıyla kaynak organizasyonu.
+
+* Azure Kaynak Grafiği aracılığıyla arama ve dizin oluşturma.
+
+* RBAC ve abonelikler aracılığıyla erişim ve güvenlik.
+
+* Şablonlar ve uzantılar aracılığıyla ortamlar ve otomasyon.
+
+* Güncelleştirme yönetimi
 
 Azure Güvenlik Merkezi veya Azure Izleyici gibi Arc etkin sunucularda kullanılan tüm Azure Hizmetleri, söz konusu hizmet için fiyatlandırmaya göre ücretlendirilir. Daha fazla bilgi için bkz. [Azure fiyatlandırma sayfası](https://azure.microsoft.com/pricing/).
 
@@ -58,7 +68,7 @@ Azure Güvenlik Merkezi veya Azure Izleyici gibi Arc etkin sunucularda kullanıl
 
 Geçerli önizleme aşamasında, Azure Arc etkin Kubernetes ek bir ücret ödemeden sunulmaktadır.
 
-### <a name="azure-arc-enabled-data-services"></a>Azure Arc etkin veri Hizmetleri
+### <a name="azure-arc-enabled-data-services"></a>Azure Arc özellikli veri hizmetleri
 
 Geçerli önizleme aşamasında, Azure Arc etkin veri Hizmetleri ek bir ücret ödemeden sunulmaktadır.
 

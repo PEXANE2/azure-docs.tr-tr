@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5170f1c2e6c72c684cb1afcf1bf9bf8d3ef6fff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284372"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Azure SQL veritabanı için Veritabanı Danışmanı performans önerileri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,10 +40,10 @@ Azure SQL veritabanı 'nda kullanılabilen performans önerisi seçenekleri şun
 
 | Performans önerisi | Tek veritabanı ve havuza alınmış veritabanı desteği | Örnek veritabanı desteği |
 | :----------------------------- | ----- | ----- |
-| **Dizin önerileri oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinlerin oluşturulmasını önerir. | Evet | Hayır |
-| **Dizin önerilerini bırakma** -benzersiz dizinler ve uzun süredir kullanılmamış dizinler dışında, yedekli ve yinelenen dizinlerin her gün kaldırılmasını önerir (>90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Evet | Hayır |
-| **Sorgu önerilerini Parametreleştirme (Önizleme)** -sürekli olarak yeniden derlenen ancak aynı sorgu yürütme planına sahip bir veya daha fazla sorgunuz varsa, bu durumlarda zorunlu Parametreleştirme önerilir. | Evet | Hayır |
-| **Şema sorunları önerilerini düzeltme (Önizleme)** -Azure SQL veritabanı, veritabanınızda gerçekleşen şemaya ilişkin SQL hatalarının sayısında bir anomali fark edildiğinde şema düzeltme için öneriler görüntülenir. Microsoft şu anda "şema sorununu çözme" önerilerini kullanımdan kaldıramamaktadır. | Evet | Hayır |
+| **Dizin önerileri oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinlerin oluşturulmasını önerir. | Yes | Hayır |
+| **Dizin önerilerini bırakma** -benzersiz dizinler ve uzun süredir kullanılmamış dizinler dışında, yedekli ve yinelenen dizinlerin her gün kaldırılmasını önerir (>90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Yes | Hayır |
+| **Sorgu önerilerini Parametreleştirme (Önizleme)** -sürekli olarak yeniden derlenen ancak aynı sorgu yürütme planına sahip bir veya daha fazla sorgunuz varsa, bu durumlarda zorunlu Parametreleştirme önerilir. | Yes | Hayır |
+| **Şema sorunları önerilerini düzeltme (Önizleme)** -Azure SQL veritabanı, veritabanınızda gerçekleşen şemaya ilişkin SQL hatalarının sayısında bir anomali fark edildiğinde şema düzeltme için öneriler görüntülenir. Microsoft şu anda "şema sorununu çözme" önerilerini kullanımdan kaldıramamaktadır. | Yes | Hayır |
 
 ![Azure SQL veritabanı için performans önerileri](./media/database-advisor-implement-performance-recommendations/performance-recommendations-annotated.png)
 
@@ -84,9 +84,9 @@ Bırakma dizini önerileri, Ayrıca, uygulamadan sonra doğrulama aracılığıy
 
 Bir yürütme planı oluşturmak için başlangıçta her sorgunun derlenmesi gerekir. Oluşturulan her plan plan önbelleğine eklenir. Aynı sorgunun sonraki yürütmeleri bu planı önbellekten yeniden kullanabilir ve bu da ek derleme ihtiyacını ortadan kaldırır.
 
-Parametreli olmayan değerlere sahip sorgular, parametreli olmayan değerler farklı olan her seferinde yürütme planı yeniden derlendiğinden performans yüküne neden olabilir. Çoğu durumda, farklı parametre değerlerine sahip aynı sorgular aynı yürütme planlarını oluşturur. Ancak, bu planlar hala plan önbelleğine ayrı olarak eklenir.
+Parametreleştirilmemiş değerler her değiştiğinde yürütme planı yeniden derlendiği için, parametreleştirilmemiş değerlere sahip sorgular performans ek yüküne neden olabilir. Çoğu durumda farklı parametre değerlerine sahip sorgular aynı yürütme planlarını oluşturur. Ancak bu planlar yine de plan önbelleğine ayrı ayrı eklenir.
 
-Yürütme planlarını yeniden derleme işlemi veritabanı kaynaklarını kullanır, sorgu süresi süresini artırır ve plan önbelleğinin dışına taşıyor. Bu olaylar, sırayla önbellekten çıkarılmasına neden olur. Bu davranış, veritabanında zorlanan Parametreleştirme seçeneği ayarlanarak değiştirilebilir.
+Yürütme planlarını yeniden derleme işlemi veritabanı kaynaklarını kullanır, sorgu süresini artırır ve plan önbelleğinde taşmaya yol açar. Bu olaylar da planların önbellekten çıkarılmasına neden olur. Bu davranış, veritabanında zorlanan Parametreleştirme seçeneği ayarlanarak değiştirilebilir.
 
 Bu önerinin etkisini tahmin etmenize yardımcı olmak için, gerçek CPU kullanımı ve öngörülen CPU kullanımı (öneri uygulanmış gibi) arasında bir karşılaştırma sağlanır. Bu öneri, CPU tasarrufu elde etmenize yardımcı olabilir. Ayrıca, plan önbelleğinin sorgu süresini ve ek yükünü azaltmanıza yardımcı olabilir. Bu, planlardan daha fazla planın önbellekte kalabileceği ve yeniden kullanılması anlamına gelir. **Uygula** komutunu seçerek bu öneriyi hızlıca uygulayabilirsiniz.
 

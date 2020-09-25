@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e03850dcc75e639c0436ceea339da5f2da5df4b3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277878"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Öğretici: Azure AD uygulamalarını kullanarak Azure AD kullanıcıları oluşturma
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Azure SQL veritabanı 'nda hizmet sorumlusu kullanıcısı oluşturma
 > - Azure AD hizmet sorumlusu kullanıcısını kullanarak SQL veritabanı 'nda farklı bir Azure AD kullanıcısı oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Mevcut bir [Azure SQL veritabanı](single-database-create-quickstart.md) veya [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) dağıtımı. Bu öğretici için çalışan bir SQL veritabanınız olduğunu varsayıyoruz.
 - Zaten var olan bir Azure Active Directory erişim.
@@ -167,11 +167,11 @@ SQL yönetilen örneği için **Dizin okuyucuları** izninin nasıl ayarlanacağ
 
     **Uygulama izinlerinin** yanı sıra **temsilci izinleri**de eklediğinizden emin olun.
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="aad-uygulamalar":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="Azure Active Directory için Uygulama kayıtları sayfasını gösteren ekran görüntüsü. AppSP görünen adına sahip bir uygulama vurgulanır.":::
 
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="api izinleri":::
 
-2. Oturum açmak için bir istemci parolası da oluşturmanız gerekir. [Oturum açmak için buradaki kılavuzu izleyerek bir sertifikayı karşıya yükleyin veya bir parola oluşturun](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in).
+2. Oturum açmak için bir istemci parolası da oluşturmanız gerekir. [Oturum açmak için buradaki kılavuzu izleyerek bir sertifikayı karşıya yükleyin veya bir parola oluşturun](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options).
 
 3. Uygulama kaydınızdan aşağıdakileri kaydedin. **Genel bakış** bölmesinizden erişilebilir olması gerekir:
     - **Uygulama Kimliği**

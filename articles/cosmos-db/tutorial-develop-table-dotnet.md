@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56198392f3c769837d8d672b861baa9b341d284e
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 760a3a194e181576acb3601aabc07c6900cb664e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419359"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276773"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK'sı ile Azure Cosmos DB Tablo API'si'ni ve Azure Tablo depolama alanını kullanmaya başlama
 
@@ -120,7 +120,7 @@ Bu kod, satır anahtarı olarak müşterinin adını ve bölüm anahtarı olarak
 
 ## <a name="insert-or-merge-an-entity"></a>Varlık ekleme veya birleştirme
 
-Aşağıdaki kod örneği bir varlık nesnesi oluşturur ve onu tabloya ekler. [Tableoperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfı Içindeki ınsertormerge yöntemi bir varlık eklemek veya birleştirmek için kullanılır. İşlemi yürütmek için [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) yöntemi çağırılır. 
+Aşağıdaki kod örneği bir varlık nesnesi oluşturur ve onu tabloya ekler. [Tableoperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfı Içindeki ınsertormerge yöntemi bir varlık eklemek veya birleştirmek için kullanılır. İşlemi yürütmek için [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet&preserve-view=true) yöntemi çağırılır. 
 
 Projenizin **Cosmostablesamples**öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **SamplesUtils.cs**adlı bir sınıf ekleyin. Bu sınıf, varlıklarda CRUD işlemleri gerçekleştirmek için gereken tüm kodu depolar. 
 
@@ -178,4 +178,4 @@ Artık Azure portal oturum açabilir ve verilerin tabloda var olduğunu doğrula
 Artık sonraki öğreticiye devam edebilir ve verileri Azure Cosmos DB Tablo API'si hesabına geçirmeyi öğrenebilirsiniz. 
 
 > [!div class="nextstepaction"]
->[Verileri sorgulama](../cosmos-db/table-import.md)
+>[Verileri Azure Comsos DB 'ye geçirme Tablo API'si](../cosmos-db/table-import.md)

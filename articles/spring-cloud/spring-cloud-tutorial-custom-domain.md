@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: cd10421ddcf752625b8040e1afa4e7b15f142ce2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885685"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326159"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
 
@@ -58,12 +58,12 @@ Ya da Azure 'da, Anahtar Kasası 'na Azure Spring Cloud erişimi sağlamak için
 
 Aşağıdaki komutla nesne kimliğini alın.
 ```
-az ad sp show --id 03b39d0f-4213-4864-a245-b1476ec03169 --query objectId
+az ad sp show --id <service principal id> --query objectId
 ```
 
 Azure Spring Cloud 'ın Anahtar Kasası 'na okuma erişimine izin verin, aşağıdaki komutta nesne kimliğini değiştirin.
 ```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list --secret-permissions get list
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list
 ``` 
 
 Sertifikayı Azure yay bulutuna aktarmak için:
@@ -93,7 +93,7 @@ Sertifikanızı başarıyla içeri aktardığınızda, **özel anahtar sertifika
 Veya, Azure CLı kullanarak sertifikaların bir listesini görüntüleyebilirsiniz:
 
 ```
-az spring-cloud certificate list
+az spring-cloud certificate list --resource-group <resource group name> --service <service name>
 ```
 
 > [!IMPORTANT] 
@@ -128,7 +128,7 @@ Uygulama sayfasına gidin.
 
 İsterseniz, özel bir etki alanı eklemek için Azure CLı 'yi de kullanabilirsiniz:
 ```
-az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> 
+az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 Bir uygulamanın birden çok etki alanı olabilir, ancak bir etki alanı yalnızca bir uygulamayla eşleşbir şekilde yapılandırılabilir. Özel etki alanınızı uygulamaya başarıyla eşledikten sonra özel etki alanı tablosunda görürsünüz.
@@ -137,7 +137,7 @@ Bir uygulamanın birden çok etki alanı olabilir, ancak bir etki alanı yalnız
 
 Ya da, özel etki alanlarının bir listesini göstermek için Azure CLı 'yi kullanabilirsiniz:
 ```
-az spring-cloud app custom-domain list --app <app name> 
+az spring-cloud app custom-domain list --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 > [!NOTE]
@@ -168,7 +168,7 @@ Uygulama sayfanızda, sol gezinti bölmesinde **özel etki alanı**' nı seçin.
 
 Veya, HTTPS 'yi zorlamak için Azure CLı 'yi kullanabilirsiniz:
 ```
-az spring-cloud app update -name <app-name> --https-only <true|false> -g <resource group> --service <service-name>
+az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 İşlem tamamlandığında, uygulamanızı işaret eden HTTPS URL 'Lerinden herhangi birine gidin. HTTP URL 'Lerinin çalışmadığına unutmayın.

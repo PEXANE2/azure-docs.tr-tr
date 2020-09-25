@@ -4,12 +4,12 @@ description: Azure geçişi sunucu değerlendirmesi ile AWS örneklerini bulmay�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: c2d91e0b2c2eaa2df8b01aca60e5a0e18e251fb8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e48d123a9317d35cd2bb8e38a29d23cae3b75eb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275464"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile AWS örneklerini bulma
 
@@ -47,7 +47,7 @@ Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için
 - Azure aboneliğinde katkıda bulunan veya sahip izinleri.
 - Azure Active Directory uygulamaları kaydetme izinleri.
 
-Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
+Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
 
 1. Azure portal, "abonelikler" araması yapın ve **Hizmetler**altında **abonelikler**' i seçin.
 
@@ -76,7 +76,18 @@ Gerecin AWS örneklerine erişmek için kullanabileceği bir hesap ayarlayın.
 
 - Windows sunucuları için, bulmaya dahil etmek istediğiniz tüm Windows sunucularında yerel bir kullanıcı hesabı ayarlayın. Kullanıcı hesabını aşağıdaki gruplara ekleyin:-uzaktan yönetim kullanıcıları-performans Izleyicisi kullanıcılar-performans günlüğü kullanıcıları.
  - Linux sunucuları için, bulmak istediğiniz Linux sunucularında bir kök hesabın olması gerekir.
-
+- Azure geçişi AWS örneklerini keşfederken parola kimlik doğrulamasını kullanır. AWS örnekleri varsayılan olarak parola kimlik doğrulamasını desteklemez. Örneği keşfedebilmeniz için önce parola kimlik doğrulamasını etkinleştirmeniz gerekir.
+    - Windows makineleri için WinRM bağlantı noktası 5985 (HTTP) izin verin. Bu, uzak WMI çağrılarına izin verir.
+    - Linux makineleri için:
+        1. Her bir Linux makinesinde oturum açın.
+        2. Sshd_config dosyasını açın: VI/etc/ssh/sshd_config
+        3. Dosyasında, **Passwordaduthentication** satırını bulun ve değeri **Evet**olarak değiştirin.
+        4. Dosyayı kaydedin ve kapatın. SSH hizmetini yeniden başlatın.
+    - Linux sanal makinelerinizi keşfettiğiniz bir kök Kullanıcı kullanıyorsanız, VM 'lerde kök oturum açmaya izin verildiğinden emin olun.
+        1. Her Linux makinesinde oturum açın
+        2. Sshd_config dosyasını açın: VI/etc/ssh/sshd_config
+        3. Dosyasında, **PermitRootLogin** satırını bulun ve değeri **Evet**olarak değiştirin.
+        4. Dosyayı kaydedin ve kapatın. SSH hizmetini yeniden başlatın.
 
 ## <a name="set-up-a-project"></a>Proje ayarlama
 
@@ -118,7 +129,7 @@ Gereci kurmak için şunları yapın:
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
 
-1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
+1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
 2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **fiziksel veya diğer (AWS, GCP, Xen, vb.)** öğesini seçin.
 3. **1: Azure geçişi proje anahtarı oluşturma**' da, Azure geçiş gereci için fiziksel veya sanal sunucu keşfi için ayarladığınız bir ad sağlayın. Ad 14 karakter veya daha kısa bir harf olmalıdır.
 1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynakları oluşturma sırasında makineleri keşfet sayfasını kapatmayın.
@@ -244,7 +255,7 @@ Bu, bulmayı başlatır. Sunucu başına, bulunan sunucunun meta verilerinin Azu
 
 Bulma işlemi tamamlandıktan sonra, sunucuların portalda göründüğünü doğrulayabilirsiniz.
 
-1. Azure geçişi panosunu açın.
+1. Azure Geçişi panosunu açın.
 2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -10,19 +10,19 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d14681e07518188deabd9f48a04b80a489d858b8
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 58bbda6d3b02042c6e512e03e108cd69fbd7ed51
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407940"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277334"
 ---
 # <a name="tutorial-single-page-web-app"></a>Öğretici: Tek sayfalı web uygulaması
 
 Bing Varlık Arama API’si, *varlıklar* ve *yerler* hakkındaki bilgiler için Web araması yapmanızı sağlar. Belirli bir sorguda bir sonuç türünü veya her ikisini de isteyebilirsiniz. Yerlerin ve varlıkların tanımları aşağıda sağlanmıştır.
 
-| Sonuç | Açıklama |
+| Sonuç | Description |
 |-|-|
 |Varlıklar|Ada göre bulduğunuz tanınmış kişiler, yerler ve nesneler|
 |Yerler|Ada *veya* türe (İtalyan restoranları) bulduğunuz restoranlar, oteller ve diğer yerel işletmeler|
@@ -142,7 +142,7 @@ HTML `<body>` etiketi, sayfanın yüklenmesi tamamlandığında `getSearchSubscr
 
 HTML formu aşağıdaki denetimleri içerir:
 
-| Denetim | Açıklama |
+| Denetim | Description |
 |-|-|
 |`where`|Aramada kullanılan pazarı (konum ve dil) seçmek için açılan menü.|
 |`query`|Arama terimlerinin girildiği metin alanı.|

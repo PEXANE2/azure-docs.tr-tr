@@ -8,17 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f5a3b48fd6be48d468b66009a77de100962be10d
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 783896c4266159b167a95a2f8e9a8bb9edd8e86c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277572"
 ---
 JavaScript için Bing Varlık Arama istemci kitaplığıyla varlıkları aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Varlık Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js)' da bulunabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
 

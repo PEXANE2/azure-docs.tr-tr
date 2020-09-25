@@ -1,26 +1,28 @@
 ---
 title: Kaynak denetimi ve geliştirme dalları-LUSıS
 description: Kaynak denetimi altında Language Understanding (LUSıS) uygulamanızı koruma. Bir geliştirme dalında çalışırken bir LUO uygulamasına güncelleştirmeleri uygulama.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 2d060fefbd32ecea1f91e6b062da7606699a63c4
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309515"
 ---
 # <a name="devops-practices-for-luis"></a>LUSıS için DevOps uygulamaları
 
 Language Understanding (LUU) uygulaması geliştiren yazılım mühendisleri, bu yönergeleri izleyerek [kaynak denetimi](luis-concept-devops-sourcecontrol.md), [Otomatik derlemeler](luis-concept-devops-automation.md), [Test](luis-concept-devops-testing.md)ve [Sürüm Yönetimi](luis-concept-devops-automation.md#release-management) etrafında DevOps uygulamaları uygulayabilir.
 
-## <a name="source-control-and-branch-strategies-for-luis"></a>LUSıS için kaynak denetimi ve dal stratejileri
+## <a name="source-control-and-branch-strategies-for-luis"></a>LUIS için kaynak denetimi ve dal stratejileri
 
 DevOps başarısının başarımının, [kaynak denetimi](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)olduğuna göre önemli faktörlerden biridir. Kaynak denetim sistemi, geliştiricilerin kod üzerinde işbirliği yapmasına ve değişiklikleri izlemesine olanak sağlar. Dalların kullanımı, geliştiricilerin kod tabanının farklı sürümleri arasında geçiş yapmasına ve takımın diğer üyelerinden bağımsız olarak çalışmasına izin verir. Geliştiriciler bir daldan diğerine güncelleştirme önermek üzere bir [çekme isteği](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) oluşturduğunda veya değişiklikler birleştirildiğinde, bu, [Otomatik derlemeler](luis-concept-devops-automation.md) için kod oluşturmak ve sürekli test etmek üzere tetikler olabilir.
 
 Bu belgede açıklanan kavramları ve yönergeleri kullanarak, bir kaynak denetim sistemindeki değişiklikleri izlerken bir LUO uygulaması geliştirebilir ve bu yazılım mühendisliği en iyi yöntemlerini takip edebilirsiniz:
 
-- **Kaynak denetimi**
+- **Kaynak Denetimi**
   - LUSıS uygulamanız için kaynak kodu, okunabilir bir biçimde.
   - Model, kaynaktan yinelenebilir bir biçimde oluşturulabilir.
   - Kaynak kodu bir kaynak kod deposu tarafından yönetilebilir.
@@ -32,7 +34,7 @@ Bu belgede açıklanan kavramları ve yönergeleri kullanarak, bir kaynak deneti
   - Yeniden temellendirme veya Merge aracılığıyla bir daldaki bir dalla yapılan değişiklikleri bir dalla bütünleştirmek mümkündür.
   - Geliştiriciler bir PR 'yi üst dala birleştirebilirler.
 
-- **Sürüm Oluşturma**
+- **Sürüm oluşturma**
   - Büyük bir uygulamadaki her bileşeni bağımsız olarak sürümlenmiş olmalıdır, böylece geliştiricilerin sürüm numarasına bakarak yalnızca önemli değişiklikleri veya güncelleştirmeleri algılamasına izin verir.
 
 - **Kod Incelemeleri**
@@ -40,7 +42,7 @@ Bu belgede açıklanan kavramları ve yönergeleri kullanarak, bir kaynak deneti
 
 ## <a name="source-control"></a>Kaynak denetimi
 
-Kaynak kod yönetimi sisteminde bir LUO uygulamasının [uygulama şeması tanımını](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) korumak için, uygulamanın [LUI biçimi ( `.lu` )](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0) gösterimini kullanın. `.lu`biçimlendirme `.json` , okunabilir olduğundan, PR 'ler 'de değişiklikleri daha kolay hale getirmek ve gözden geçirmek daha kolay hale getiren biçim için tercih edilir.
+Kaynak kod yönetimi sisteminde bir LUO uygulamasının [uygulama şeması tanımını](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) korumak için, uygulamanın [LUI biçimi ( `.lu` )](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  gösterimini kullanın. `.lu` biçimlendirme `.json` , okunabilir olduğundan, PR 'ler 'de değişiklikleri daha kolay hale getirmek ve gözden geçirmek daha kolay hale getiren biçim için tercih edilir.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>Luo uygulamasını Lui biçimini kullanarak kaydetme
 
@@ -66,7 +68,7 @@ Bir LUSıS uygulaması için kaynaktan *derleme* yapmak, kaynağı içeri aktara
 
 LUSıS uygulamanız için aşağıdaki dosya türleri kaynak denetimi altında tutulmalıdır:
 
-- `.lu`LUSıS uygulaması dosyası
+- `.lu` LUSıS uygulaması dosyası
 
 - [Birim testi tanım dosyaları](luis-concept-devops-testing.md#writing-tests) (utterslar ve beklenen sonuçlar)
 
@@ -179,7 +181,7 @@ LUO DevOps için test etme hakkında daha fazla bilgi için bkz. [Lufor DevOps I
 
 Luu biçimindeki bir LUO uygulaması, gözden geçirime uygun bir PR 'deki değişikliklerin iletişimini destekleyen insandır. Birim test dosyaları da Luaşağı biçiminde yazılır ve ayrıca bir PR 'de kolayca yeniden görüntülenebilir.
 
-## <a name="versioning"></a>Sürüm Oluşturma
+## <a name="versioning"></a>Sürüm oluşturma
 
 Bir uygulama, [Azure bot hizmetinde](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)çalışan bir bot, [soru-cevap oluşturma](https://www.qnamaker.ai/), [Azure konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)ve daha fazlası gibi işlemleri içerebilen birden çok bileşenden oluşur. Gevşek olarak bağlanmış uygulamaların amacını elde etmek için, bir uygulamanın her bileşeninin bağımsız olarak sürümü oluşturulmuş olması için [Sürüm denetimini](https://docs.microsoft.com/azure/devops/learn/git/what-is-version-control) kullanın, böylece geliştiricilerin sürüm numarasına bakarak, önemli değişiklikleri veya güncelleştirmeleri algılamasına izin vermiş olur. LUSıS uygulamanızı kendi depolarından korumak için diğer bileşenlerden bağımsız olarak kolayca yükleyebilirsiniz.
 

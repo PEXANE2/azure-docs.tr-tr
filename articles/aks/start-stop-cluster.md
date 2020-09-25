@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/18/2020
 author: palma21
-ms.openlocfilehash: a743a6c30d5ce8bcaf275bf1a658f8343de4d4fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 44c33aa018971cc2b2f5eb215597a63e8b55c853
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941166"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278575"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes hizmeti (AKS) kümesini durdurma ve başlatma (Önizleme)
 
@@ -69,7 +69,7 @@ az provider register --namespace Microsoft.ContainerService
 az aks stop --name myAKSCluster --resource-group myResourceGroup
 ```
 
-[Az aks Show] [az-aks-Show] komutunu kullanarak kümenizin ne zaman durdurulmuş olduğunu ve `powerState` aşağıdaki çıktıda gösterildiği gibi gösterir `Stopped` :
+[Az aks Show][az-aks-show] komutunu kullanarak kümenizin ne zaman durdurulmuş olduğunu ve `powerState` aşağıdaki çıktıda gösterildiği gibi gösterir `Stopped` :
 
 ```json
 {
@@ -100,7 +100,7 @@ Aşağıdaki örnek, *Myakscluster*adlı bir küme başlatır:
 az aks start --name myAKSCluster --resource-group myResourceGroup
 ```
 
-[Az aks Show] [az-aks-Show] komutunu kullanarak kümenizin başlatıldığı zaman ve `powerState` `Running` aşağıdaki çıktıda gösterildiği gibi gösterir:
+[Az aks Show][az-aks-show] komutunu kullanarak kümenizin başlatıldığı zaman ve `powerState` `Running` aşağıdaki çıktıda gösterildiği gibi gösterir:
 
 ```json
 {
@@ -136,3 +136,4 @@ Gösteriyorsa, `provisioningState` `Starting` kümeniz henüz tam olarak başlat
 [az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az_aks_show

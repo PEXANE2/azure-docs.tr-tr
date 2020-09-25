@@ -1,7 +1,7 @@
 ---
 title: Bing Otomatik Öneri API'si v5 'i v7 'ye yükseltme
 titleSuffix: Azure Cognitive Services
-description: Uygulamanızın 7 sürümünü kullanmak için güncelleştirmeniz gereken parçalarını tanımlar.
+description: Sürüm 7 ' yi kullanmak için güncelleştirmeniz gereken Bing Otomatik Öneri uygulamanızın parçalarını tanımlar.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5249a3a1f51eea2ecd0999d71c6b08fdacf37a34
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65498e25108a28183ae6596a8a7288c071ef1147
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68405404"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277521"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Otomatik öneri API Yükseltme Kılavuzu
 
@@ -25,19 +25,19 @@ Bu yükseltme Kılavuzu, sürüm 5 ve Bing Otomatik Öneri API'si sürüm 7 aras
 
 ### <a name="endpoints"></a>Uç Noktalar
 
-- Uç noktanın sürüm numarası, V5 'ten v7 'e değişti. Örneğin, https:\//api.Cognitive.Microsoft.com/Bing/\*\*v 7.0 * */mülations.
+- Uç noktanın sürüm numarası, V5 'ten v7 'e değişti. Örneğin, https: \/ /api.Cognitive.Microsoft.com/Bing/ \* \* v 7.0 * */Mülations.
 
 ### <a name="error-response-objects-and-error-codes"></a>Hata yanıtı nesneleri ve hata kodları
 
-- Tüm başarısız istekler yanıt gövdesine bir `ErrorResponse` nesne içermelidir.
+- Tüm başarısız istekler `ErrorResponse` Yanıt gövdesine bir nesne içermelidir.
 
-- `Error` Nesnesine aşağıdaki alanlar eklendi.  
+- Nesnesine aşağıdaki alanlar eklendi `Error` .  
   - `subCode`&mdash;Mümkünse hata kodunu farklı demetlere göre bölümler
-  - `moreDetails`&mdash;`message` Alanda açıklanan hata hakkında ek bilgiler
+  - `moreDetails`&mdash;Alanda açıklanan hata hakkında ek bilgiler `message`
 
 - V5 hata kodları aşağıdaki olası `code` ve `subCode` değerlerle değiştirilmiştir.
 
-|Kod|Alt|Açıklama
+|Kod|Alt|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing, alt kod koşullarından herhangi biri gerçekleştiğinde ServerError döndürür. HTTP durum kodu 500 ise yanıt bu hataları içerir.
 |Invalidrequest|ParameterMissing<br/>Parameterınvalidvalue<br/>HttpNotAllowed<br/>Engellendi|İsteğin herhangi bir bölümü geçerli değilse Bing, ınvalidrequest döndürüyor. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya Parameterınvalidvalue ise, HTTP durum kodu 400 ' dir.<br/><br/>Hataya HttpNotAllowed varsa HTTP durum kodu 410 ' dir.

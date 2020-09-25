@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: b4e085a4c81b44f721ddc8385d2dcd0f4a56f42a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7fc1225a37353e43f5fb17f3394df167fb795bf7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303342"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri C# SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -59,13 +59,14 @@ dotnet build
 Hala uygulama dizininde, komutunu kullanarak .NET için Azure Iletişim Hizmetleri SMS istemci Kitaplığı ' nı yükleyebilirsiniz `dotnet add package` .
 
 ```console
-dotnet add package Azure.Communication.Sms
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.1
 ```
 
 `using`Ad alanını eklemek için **program.cs** üst kısmına bir yönerge ekleyin `Azure.Communication` .
 
 ```csharp
 
+using Azure.Communication;
 using Azure.Communication.Sms;
 
 ```

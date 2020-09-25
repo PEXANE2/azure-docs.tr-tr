@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034d2410b97562946216815e5bdafd35fe1bc40b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265944"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Erişim Denetimi ile kimlik doğrulama oturum yönetimini yapılandırma
 
@@ -89,6 +89,8 @@ Koşullu erişim Azure AD Premium bir yetenektir ve Premium lisans gerektirir. K
 
 > [!WARNING]
 > Şu anda genel önizleme aşamasında olan [yapılandırılabilir belirteç yaşam süresi](../develop/active-directory-configurable-token-lifetimes.md) özelliğini kullanıyorsanız, lütfen aynı kullanıcı veya uygulama birleşimi için iki farklı ilke oluşturulmasını desteklemediğimiz, bu özelliğe ve diğeri yapılandırılabilir belirteç ömrü özelliğine sahip başka bir uygulamayla aynı şekilde desteklenmediğini unutmayın. Microsoft, yapılandırılabilir belirteç yaşam süresi özelliğini 1 Mayıs 2020 ' de devre dışı bırakmayı planlıyor ve koşullu erişim kimlik doğrulama oturumu Yönetimi özelliğiyle değiştirebilir.  
+>
+> Oturum açma sıklığını etkinleştirmeden önce, kiracınızda diğer yeniden kimlik doğrulama ayarlarının devre dışı bırakıldığından emin olun. "Güvenilen cihazlarda MFA 'yı anımsa" etkinse, bu iki ayarı birlikte kullanmak kullanıcıların beklenmedik şekilde sorulmasına yol açacağından, oturum açma sıklığını kullanmadan önce devre dışı bırakmayı unutmayın. Yeniden doğrulama istemleri ve oturum ömrü hakkında daha fazla bilgi edinmek için, bkz. yeniden [kimlik doğrulama Istemlerini iyileştirin ve Azure Multi-Factor Authentication oturum ömrünü anlayın](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
 ### <a name="policy-1-sign-in-frequency-control"></a>İlke 1: oturum açma sıklığı denetimi
 

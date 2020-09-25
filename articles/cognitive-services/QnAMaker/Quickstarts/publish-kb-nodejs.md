@@ -3,14 +3,14 @@ title: "Hızlı başlangıç: Node.js için REST API 'lerle Soru-Cevap Oluşturm
 description: Bu hızlı başlangıçta, Node.js için Soru-Cevap Oluşturma REST API 'Lerine nasıl başlacağınız gösterilmektedir. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27, devx-track-javascript
+ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: a891e806c54d8d88eea1021c95923ffdc90c36f9
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 67c4711d74bdeb970a706eabf795e8f9bdcbbded
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266434"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324612"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Hızlı başlangıç: Node.js için REST API 'Leri Soru-Cevap Oluşturma
 
@@ -29,7 +29,7 @@ Node.js için Soru-Cevap Oluşturma REST API 'Lerini kullanın:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Node.js](https://nodejs.org)geçerli sürümü.

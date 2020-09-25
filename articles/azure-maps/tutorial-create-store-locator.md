@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Maps kullanarak bir mağaza Bulucu uygulaması oluşturma | Microsoft Azure haritaları'
-description: Depo Konumlandırıcı Web uygulamaları oluşturmayı öğrenin. Web sayfası oluşturmak, arama hizmetini sorgulamak ve sonuçları bir haritada görüntülemek için Azure Maps web SDK 'sını kullanın.
+description: Depo Konumlandırıcı Web uygulamaları oluşturma hakkında öğretici. Web sayfası oluşturmak, arama hizmetini sorgulamak ve sonuçları bir haritada görüntülemek için Azure Maps web SDK 'sını kullanın.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/11/2020
@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 61c085cb721f9e1a8d9c44146a9d96cd5a08562c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085323"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335271"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
 
 Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıcı oluşturma sürecinde size rehberlik eder. Mağaza bulleyicileri ortaktır. Bu tür uygulamalarda kullanılan kavramların birçoğu, diğer birçok uygulama türü için geçerlidir. Müşterilere bir mağaza bulucunun teklif etmek, doğrudan tüketicilere satış yapan işletmelerin bir sunudur. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
-    
+
 > [!div class="checklist"]
 > * Azure Harita Denetimi API 'sini kullanarak yeni bir Web sayfası oluşturun.
 > * Bir dosyadan özel verileri yükleyin ve bir haritada görüntüleyin.
@@ -924,34 +924,21 @@ Tarayıcı penceresini 700 piksel genişliğinde veya uygulamayı bir mobil ciha
 
 ![Mağaza Konumlandırıcı 'nın küçük ekran sürümünün ekran görüntüsü](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
+Bu öğreticide, Azure haritalar 'ı kullanarak temel bir mağaza Konumlandırıcısı oluşturmayı öğrendiniz. Bu öğreticide oluşturduğunuz mağaza Bulucu, ihtiyacınız olan tüm işlevlere sahip olabilir. Mağaza bulucusinize özellikler ekleyebilir veya daha özel bir kullanıcı deneyimi için daha gelişmiş özellikler kullanabilirsiniz: 
+
+ * Arama kutusuna [yazarken önerileri](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) etkinleştirin.  
+ * [Birden çok dil için destek](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)ekleyin. 
+ * Kullanıcının [bir rota üzerinde konumları filtrelemesine](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)izin verin. 
+ * [Filtre ayarlama](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)özelliğini ekleyin. 
+ * Sorgu dizesi kullanarak bir ilk arama değeri belirtmek için destek ekleyin. Bu seçeneği mağaza bulucusınıza eklediğinizde, kullanıcılar aramaları yer işaretine ekleyebilir ve aramaları paylaşabilir. Ayrıca, bu sayfaya aramaları başka bir sayfadan iletmeniz için kolay bir yöntem sağlar.  
+ * Mağaza bulucuyu bir [Azure App Service Web uygulaması](https://docs.microsoft.com/azure/app-service/quickstart-html)olarak dağıtın. 
+ * Verilerinizi bir veritabanında depolayın ve yakındaki konumları arayın. Daha fazla bilgi edinmek için bkz. [SQL Server uzamsal veri türlerine genel bakış](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017&preserve-view=true) ve [en yakın komşu Için uzamsal verileri sorgulama](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017&preserve-view=true).
+
+[Tam kaynak kodu görüntüleyebilir](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), [canlı örneği görüntüleyebilir](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) ve [Yakınlaştırma düzeylerini ve kutucuk kılavuzunu](zoom-levels-and-tile-grid.md)kullanarak Azure haritalar 'ın kapsamı ve özellikleri hakkında daha fazla bilgi edinebilirsiniz. İş mantığınıza uygulamak için [veri odaklı stil ifadeleri de kullanabilirsiniz](data-driven-style-expressions-web-sdk.md) .
+
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Bu öğreticide, Azure haritalar 'ı kullanarak temel bir mağaza Konumlandırıcısı oluşturmayı öğreneceksiniz. Bu öğreticide oluşturduğunuz mağaza Bulucu, ihtiyacınız olan tüm işlevlere sahip olabilir. Mağaza bulucusinize özellikler ekleyebilir veya daha özel bir kullanıcı deneyimi için daha gelişmiş özellikler kullanabilirsiniz: 
-
-> [!div class="checklist"]
-> * Arama kutusuna [yazarken önerileri](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) etkinleştirin.  
-> * [Birden çok dil için destek](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)ekleyin. 
-> * Kullanıcının [bir rota üzerinde konumları filtrelemesine](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)izin verin. 
-> * [Filtre ayarlama](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)özelliğini ekleyin. 
-> * Sorgu dizesi kullanarak bir ilk arama değeri belirtmek için destek ekleyin. Bu seçeneği mağaza bulucusınıza eklediğinizde, kullanıcılar aramaları yer işaretine ekleyebilir ve aramaları paylaşabilir. Ayrıca, bu sayfaya aramaları başka bir sayfadan iletmeniz için kolay bir yöntem sağlar.  
-> * Mağaza bulucuyu bir [Azure App Service Web uygulaması](https://docs.microsoft.com/azure/app-service/quickstart-html)olarak dağıtın. 
-> * Verilerinizi bir veritabanında depolayın ve yakındaki konumları arayın. Daha fazla bilgi edinmek için bkz. [SQL Server uzamsal veri türlerine genel bakış](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview) ve [en yakın komşu Için uzamsal verileri sorgulama](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor).
-
-> [!div class="nextstepaction"]
-> [Tam kaynak kodunu görüntüle](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
-
-> [!div class="nextstepaction"]
-> [Canlı örneği görüntüle](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
-
-Azure Haritalar'ın kapsamı ve özellikleri hakkında daha fazla bilgi edinmek için:
-
-> [!div class="nextstepaction"]
-> [Yakınlaştırma düzeyleri ve kutucuk kılavuzu](zoom-levels-and-tile-grid.md)
 
 Daha fazla kod örneği ve etkileşimli bir kodlama deneyimi için:
 
 > [!div class="nextstepaction"]
 > [Harita denetimini kullanma](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [Veri temelli stil ifadeleri kullanma](data-driven-style-expressions-web-sdk.md)

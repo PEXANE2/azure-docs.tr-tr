@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services ile video dosyalarını akışa alma - .NET | Microsoft Docs
-description: Bu öğreticinin adımlarını izleyerek yeni bir Azure Media Services hesabı oluşturun, bir dosya kodlayın ve Azure Media Player için akışını yapın.
+description: Yeni bir Azure Media Services hesabı oluşturmak, bir dosya kodlamak ve Azure Media Player göndermek için .NET kullanmak üzere Bu öğreticinin adımlarını izleyin.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ec60f775fbeb176f9442aff11117c85c5028a81f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267097"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268698"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve videoyu akışa sunun-.NET
 
@@ -33,7 +33,7 @@ Bu konu başlığındaki örnek, bir HTTPS URL’si aracılığıyla erişilebil
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Visual Studio yüklü değilse, [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)’yi edinebilirsiniz.
 - [Media Services hesabı oluşturun](./create-account-howto.md).<br/>Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.
@@ -70,7 +70,7 @@ Uygulamayı çalıştırdığınızda, farklı protokolleri kullanarak videoyu k
 1. *EncodeAndStreamFiles* uygulamasını çalıştırmak için Ctrl+F5 tuşlarına basın.
 2. Apple’ın **HLS** protokolünü (*manifest(format=m3u8-aapl)* ile biter) seçin ve konsoldan akış URL’sini kopyalayın.
 
-![Çıktı](./media/stream-files-tutorial-with-api/output.png)
+![Visual Studio 'da, Azure Media Player kullanımı için üç akış URL 'Si gösteren EncodeAndStreamFiles uygulamasının çıktısının ekran görüntüsü.](./media/stream-files-tutorial-with-api/output.png)
 
 Örneğin [kaynak kodunda](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs), URL’nin nasıl oluşturulduğunu görebilirsiniz. Bunu derlemek için, akış uç noktasının ana bilgisayar adını ve akış bulucu yolunu birleştirmeniz gerekir.  
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdac9562ed9a83f49e074e7abd790e8e2819d6aa
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 9b225ccb0e607b073fd28f79d0151da0b77f5cdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527029"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266624"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
@@ -82,7 +82,7 @@ Parolasız oturum açma 'yı kullanmaya başlamak için aşağıdaki nasıl yap�
 
 ## <a name="fido2-security-keys"></a>FIDO2 güvenlik anahtarları
 
-FIDO (hızlı kimlik çevrimiçi) Birliği, açık kimlik doğrulama standartlarını yükseltmenize ve parolaların Kullanıcı kimliğini bir kimlik doğrulama formu olarak azaltmaya yardımcı olur. FIDO2, Web kimlik doğrulaması (WebAuthn) standardını içeren en son standarttır.
+FIDO (hızlı kimlik çevrimiçi) Birliği, açık kimlik doğrulama standartlarının yükseltilebilirliği ve parolaların kullanımını bir kimlik doğrulama formu olarak azaltmaya yardımcı olur. FIDO2, Web kimlik doğrulaması (WebAuthn) standardını içeren en son standarttır.
 
 FIDO2 güvenlik anahtarları, herhangi bir form faktöründe yer alan unphishable standartlara dayalı, passwordless kimlik doğrulama yöntemidir. Hızlı kimlik çevrimiçi (FIDO), passwordless kimlik doğrulaması için açık bir standarttır. FIDO, kullanıcıların ve kuruluşların, bir dış güvenlik anahtarı veya bir cihaza yerleşik bir platform anahtarı kullanarak bir Kullanıcı adı veya parola olmadan kendi kaynaklarında oturum açmasını sağlar.
 

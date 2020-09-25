@@ -11,19 +11,19 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: a83fd67a9ad5e5a36555fcbaed65b1d76936c33d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 27881d6271fbedfb5763b293d5145e2f87cd1c13
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906046"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309327"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Metin Analizi kapsayıcılarını yükleme ve çalıştırma
 
 > [!NOTE]
 > * V3 Yaklaşım Analizi kapsayıcısı genel kullanıma sunulmuştur. Anahtar ifade ayıklama ve dil algılama kapsayıcıları engelsiz genel önizleme olarak sağlanır.
 > * Varlık bağlama ve NER Şu anda bir kapsayıcı olarak kullanılamıyor.
-> * Sistem durumu kapsayıcısı için Metin Analizi erişilmesi bir [istek formu](https://aka.ms/cognitivegate)gerektirir. Şu anda kullanım için faturalandırılmaz.
+> * Sistem durumu kapsayıcısı için Metin Analizi erişilmesi bir [istek formu](https://aka.ms/csgate)gerektirir. Şu anda kullanım için faturalandırılmaz.
 > * Kapsayıcı görüntüsü konumları yakın zamanda değişmiş olabilir. Bu kapsayıcının güncelleştirilmiş konumunu görmek için bu makaleyi okuyun.
 
 Kapsayıcılar Metin Analizi API'lerini kendi ortamınızda çalıştırabilmenize olanak tanır. Bunlar belirli güvenlik ve veri idaresi gereksinimleriniz için çok kullanışlıdır. Metin Analizi kapsayıcıları ham metin üzerinde gelişmiş doğal dil işleme sağlar ve üç ana işlev içerir: yaklaşım analizi, anahtar ifade ayıklama ve dil algılama. 

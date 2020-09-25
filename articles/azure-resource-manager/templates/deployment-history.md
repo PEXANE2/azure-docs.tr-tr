@@ -3,13 +3,13 @@ title: Dağıtım geçmişi
 description: Portal, PowerShell, Azure CLı ve REST API Azure Resource Manager dağıtım işlemlerinin nasıl görüntüleneceğini açıklar.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284628"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager ile dağıtım geçmişini görüntüle
 
@@ -21,7 +21,7 @@ Belirli dağıtım hatalarını çözümlemede yardım için bkz. [Azure 'a kayn
 
 ## <a name="get-deployments-and-correlation-id"></a>Dağıtımları ve bağıntı KIMLIĞINI al
 
-Azure portal, PowerShell, Azure CLı veya REST API bir dağıtım hakkındaki ayrıntıları görüntüleyebilirsiniz. Her dağıtımda ilgili olayları izlemek için kullanılan bir bağıntı KIMLIĞI vardır. Bir dağıtımda sorun gidermeye yönelik teknik destekle çalışırken yararlı olabilir.
+Azure portal, PowerShell, Azure CLı veya REST API bir dağıtım hakkındaki ayrıntıları görüntüleyebilirsiniz. Her dağıtımda ilgili olayları izlemek için kullanılan bir bağıntı KIMLIĞI vardır. [Bir Azure destek isteği oluşturursanız](../../azure-portal/supportability/how-to-create-azure-support-request.md), destek sızden bağıntı kimliği isteyebilir. Destek, başarısız dağıtıma yönelik işlemleri tanımlamak için bağıntı KIMLIĞINI kullanır.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -61,13 +61,13 @@ Bağıntı KIMLIĞINI almak için şunu kullanın:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bir kaynak grubunun dağıtımını listelemek için [az Deployment Group List](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list)kullanın.
+Bir kaynak grubunun dağıtımını listelemek için [az Deployment Group List](/cli/azure/group/deployment#az-deployment-group-list)kullanın.
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-Belirli bir dağıtımı almak için [az Deployment Group Show](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show)' ı kullanın.
+Belirli bir dağıtımı almak için [az Deployment Group Show](/cli/azure/group/deployment#az-deployment-group-show)' ı kullanın.
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -81,7 +81,7 @@ az deployment group show --resource-group ExampleGroup --name ExampleDeployment 
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Bir kaynak grubunun dağıtımlarını listelemek için aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için bkz. [kaynak grubuna göre dağıtımlar-Listele](/rest/api/resources/deployments/listbyresourcegroup).
+Bir kaynak grubunun dağıtımlarını listelemek için aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için bkz.  [kaynak grubuna göre dağıtımlar-Listele](/rest/api/resources/deployments/listbyresourcegroup).
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}

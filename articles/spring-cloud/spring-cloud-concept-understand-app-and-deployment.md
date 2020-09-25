@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e909db0041979eb7bc4fc30bd9551382e83c488
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323646"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda uygulamayı ve dağıtımı anlama
 
@@ -29,11 +29,11 @@ Azure yay bulutu standart katmanı, bir uygulamanın bir üretim dağıtımına 
 ## <a name="app"></a>Uygulama
 Aşağıdaki özellikler/Özellikler uygulama düzeyinde tanımlanmıştır.
 
-| Sabit listesi | Tanım |
+| Özellikler | Description |
 |:--|:----------------|
 | Ortak</br>Uç Noktası | Uygulamaya erişmek için URL |
 | Özel</br>Etki alanı | Özel etki alanının güvenliğini sağlayan CNAME kaydı |
-| Hizmet</br>Bağlama | Dosyadaki function.jsve *Servicebustrigger* özniteliğinde ayarlanan bağlama yapılandırma özellikleri |
+| Hizmet</br>Bağlama | Diğer Azure hizmetleriyle kullanıma hazır bağlantı |
 | Yönetilen</br>Kimlik | Azure Active Directory tarafından yönetilen kimlik, uygulamanızın Azure Key Vault gibi diğer Azure AD korumalı kaynaklara kolayca erişmesini sağlar |
 | Kalıcı</br>Depolama | Verilerin uygulamanın yeniden başlatılmasının ötesinde kalıcı olmasını sağlayan ayar |
 
@@ -41,14 +41,14 @@ Aşağıdaki özellikler/Özellikler uygulama düzeyinde tanımlanmıştır.
 
 Aşağıdaki özellikler/özellikler dağıtım düzeyinde tanımlanmıştır ve üretim/hazırlama dağıtımı takas edildiğinde değiş tokuş edilir.
 
-| Sabit listesi | Tanım |
+| Özellikler | Açıklama |
 |:--|:----------------|
 | CPU | Uygulama örneği başına sanal çekirdek sayısı |
-| Bellek | Dağıtımları ölçeklendirmek veya genişletmek için bellek ayıran ayar |
+| Bellek | Uygulama örneği başına GB bellek|
 | Örnek</br>Count | Uygulama örneklerinin sayısı, el ile veya otomatik olarak ayarlanır |
 | Otomatik ölçeklendirme | Önceden tanımlanmış kurallara ve zamanlamaya göre örnek sayısını otomatik olarak Ölçeklendir |
-| JVM</br>Seçenekler | ayar: JAVA_OPTS |
-| Ortam</br>Değişkenler | Tüm Azure yay bulut ortamına uygulanan ayarlar |
+| JVM</br>Seçenekler | JVM seçeneklerini ayarlama  |
+| Ortam</br>Değişkenler | Ortam değişkenlerini ayarlama |
 | Çalışma Zamanı</br>Sürüm | Java 8/Java 11|
 
 ## <a name="restrictions"></a>Kısıtlamalar

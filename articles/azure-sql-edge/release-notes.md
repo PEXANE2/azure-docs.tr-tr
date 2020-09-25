@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900593"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284491"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge sürüm notları 
 
@@ -23,17 +23,23 @@ Bu makalede, yenilikler ve her yeni Azure SQL Edge derlemesi ile nelerin değiş
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge-1.0.0 (RTM)
 
-### <a name="sql-engine-build-number---15020001549"></a>SQL altyapısı derleme numarası-15.0.2000.1549
+### <a name="sql-engine-build-number---15020001552"></a>SQL altyapısı derleme numarası-15.0.2000.1552
 
 ### <a name="whats-new"></a>Yenilikler
 1. Ubuntu 18,04 tabanlı kapsayıcı görüntüleri. 
 2. Ve `IGNORE NULL` `RESPECT NULL` işlevleri ile ilgili ve sözdizimi desteği `LAST_VALUE()` `FIRST_VALUE()` . 
 3. ONNX ile tahmın için güvenilirlik iyileştirmeleri.
-4. Veri bekletme ilkesi tabanlı temizleme desteği.      
-   - Kümelenmiş columnstore dizinleri için iyileştirilmiş temizleme desteği.
+4. Veri bekletme ilkesi tabanlı temizleme desteği.
+   - Sorun giderme için bekletme temizleme görevi için halka arabelleği desteği.
 5. Yeni özellik desteği 
    - Hızlı kurtarma
    - Sorguların otomatik olarak ayarlanması
+   - Paralel yürütme senaryolarını etkinleştir
+6. Düşük güç modu için güç tasarrufu iyileştirmeleri
+7. Akış yeni özellik desteği 
+   - [Snapshot Windows](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) : yeni pencere türü, tam olarak aynı anda ulaşan olaylara göre gruplandırmanızı sağlar. 
+   - [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) ve [collecttop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) ' ı analitik Işlevi olarak etkinleştirin; bu, bir pencerenin parçası olmadan tercih ettiğiniz sütun tarafından sıralanan kayıtları döndürmeye izin verecektir. 
+   - [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)geliştirmeleri. 
 
 ### <a name="fixes"></a>Düzeltmeler
 1. TSQL akış işlemlerinde sorun gidermeye yönelik ek hata iletileri ve ayrıntılar. 
@@ -41,9 +47,13 @@ Bu makalede, yenilikler ve her yeni Azure SQL Edge derlemesi ile nelerin değiş
 3. TSQL akış altyapısı düzeltmeleri: 
    - Durdurulan akış işi için Temizleme 
    - Yerelleştirme ve Unicode işleme iyileştirmeleri için düzeltmeler
+   - Edge TSQL-streaming için hata ayıklama işlemini geliştirebilirsiniz, kullanıcıların get_streaming_job iş hatası hatalarını sorgulamasına izin verin.
 4. Veri bekletme ilkesi tabanlı Temizleme
    - Bekletme ilkesi oluşturma ve Temizleme senaryolarına yönelik düzeltmeler.
 5. Düşük güç modundaki güç tasarrufunu artırmak için arka plan Zamanlayıcı görevlerine yönelik düzeltmeler.
+
+### <a name="known-issues"></a>Bilinen Sorunlar 
+1. Date_Bucket T-SQL Işlevi, hesaplanan bir sütunda kullanılamaz.
 
 
 ## <a name="ctp-23"></a>CTP 2,3

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1346fed738bb9afa595b63c91064a481e2ee2b51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334893"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL veritabanı etkin coğrafi çoğaltma kullanarak bulut uygulamalarının sıralı yükseltmelerini yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Bu hedeflere ulaşmak için, Web Apps ortamlarını kullanmanın yanı sıra, et
 * Birincil bölgedeki birincil veritabanı (2)
 * Yedekleme bölgesindeki Web uygulamasının bekleme örneği (3)
 * Yedekleme bölgesindeki coğrafi çoğaltılan ikincil veritabanı (4)
-* Bir çevrimiçi uç noktası adlı Traffic Manager performans profili `contoso-1.azurewebsites.net` ve çevrimdışı bir uç nokta çağrıldı`contoso-dr.azurewebsites.net`
+* Bir çevrimiçi uç noktası adlı Traffic Manager performans profili `contoso-1.azurewebsites.net` ve çevrimdışı bir uç nokta çağrıldı `contoso-dr.azurewebsites.net`
 
 Yükseltmeyi geri almayı olanaklı kılmak için, uygulamanın tamamen eşitlenmiş kopyasıyla bir hazırlama ortamı oluşturmanız gerekir. Yükseltme işlemi sırasında çok zararlı bir hata oluşması durumunda uygulamanın hızlı bir şekilde kurtarılabileceğinden emin olmanız gerektiğinden, hazırlama ortamının da coğrafi olarak yedekli olması gerekir. Yükseltme için bir hazırlama ortamı oluşturmak için aşağıdaki adımlar gereklidir:
 

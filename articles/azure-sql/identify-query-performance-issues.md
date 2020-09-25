@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a7cd807de7e723d48faaa0944ea55b1887c9721
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345351"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284123"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL veritabanı 'nda sorgu performans sorunlarının algılanabilir türleri
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -58,7 +58,7 @@ SQL sorgu Iyileştiricisi tarafından oluşturulan bir alt plan planı, yavaş s
 
 Aşağıdaki bölümlerde, alt sorgu yürütme planına sahip sorguların nasıl çözümleneceği ele alınmıştır.
 
-### <a name="queries-that-have-parameter-sensitive-plan-psp-problems"></a><a name="ParamSniffing"></a>Parametreye duyarlı plan (PSP) sorunları olan sorgular
+### <a name="queries-that-have-parameter-sensitive-plan-psp-problems"></a><a name="ParamSniffing"></a> Parametreye duyarlı plan (PSP) sorunları olan sorgular
 
 Bir parametre duyarlı plan (PSP) sorunu, sorgu iyileştiricisi yalnızca belirli bir parametre değeri (veya değerler kümesi) için ideal olan bir sorgu yürütme planı oluşturduğunda ve önbelleğe alınmış plan daha sonra ardışık yürütmeler içinde kullanılan parametre değerleri için en iyi durumda değilse oluşur. En iyi durumda olmayan planlar sorgu performans sorunlarına neden olabilir ve genel iş yükü verimini düşürebilir.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: e3dd0a31e23418c5871ac3db80b2ba1543576fac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f1ad698ccacc2fee94c797a20a43744d4cafba76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555774"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305690"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Iş Dropbox 'ı yapılandırma
 
@@ -26,9 +26,9 @@ Bu öğreticinin amacı, Kullanıcı ve/veya grupları otomatik olarak sağlamak
 > Microsoft ve Dropbox, eski Dropbox tümleştirmesi etkin 04/01/2021 ' i kullanımdan kaldırır. Hizmetin kesintiye uğramaması için, grupları destekleyen yeni Dropbox tümleştirmesi ' ne geçiş yapmanızı öneririz. Yeni Dropbox tümleştirmesine geçiş yapmak için aşağıdaki adımları kullanarak Azure AD kiracınızda sağlama için yeni bir Dropbox örneği ekleyin ve yapılandırın. Yeni Dropbox tümleştirmesini yapılandırdıktan sonra, sağlama çakışmalarını önlemek için eski Dropbox tümleştirmesinde sağlamayı devre dışı bırakın.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -81,7 +81,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-dropbox-for-business-in-azure-ad"></a>Azure AD 'de Iş için Dropbox otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -89,15 +89,15 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Uygulamalar listesinde Iş için Dropbox bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin.
+3. **Hazırlama** sekmesini seçin.
 
-    ![Sağlama sekmesi](common/provisioning.png)
+    ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![Sağlama sekmesi](common/provisioning-automatic.png)
+    ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde **Yetkilendir**' e tıklayın. Yeni bir tarayıcı penceresinde Iş oturum açma iletişim kutusu açılır.
+5. **Yönetici Kimlik Bilgileri** bölümünde **Yetki Ver**'e tıklayın. Yeni bir tarayıcı penceresinde Iş oturum açma iletişim kutusu açılır.
 
     ![Sağlama ](common/provisioning-oauth.png)
 
@@ -111,7 +111,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
 9. **Kaydet**’e tıklayın.
 
@@ -131,19 +131,19 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Dropbox grubu öznitelikleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-attributes.png)
 
-14. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+14. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
 15. Dropbox için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
 16. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek Dropbox 'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-17. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+17. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek ve Dropbox 'ta Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna yönelik bağlantıları izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
@@ -155,10 +155,10 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Java kullanarak sanal bir X. 509.952 cihazını Azure IoT Hub sağlama
+title: Hızlı başlangıç-Java kullanarak sanal bir X. 509.440 cihazını Azure IoT Hub sağlama
 description: Azure hızlı başlangıç-IoT Hub cihaz sağlama hizmeti (DPS) için Java cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturun ve sağlayın. Bu hızlı başlangıç, bireysel kayıtları kullanır.
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: e36f026257563555013fa432a897f8458de22ab0
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0198a32800f364f921a2b9f64048166c48a14f7e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532486"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323898"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için Java cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
 

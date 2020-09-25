@@ -3,13 +3,13 @@ title: Öğretici-temel görüntü güncelleştirmesinde görüntü oluşturmay�
 description: Bu öğreticide, aynı kayıt defterinde bir temel görüntü güncelleştirildiği zaman buluttaki kapsayıcı görüntüsü yapılarını otomatik olarak tetiklemek üzere bir Azure Container Registry görevinin nasıl yapılandırılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: seodec18, mvc, devx-track-javascript
-ms.openlocfilehash: 0efac34d05dfaf8877efec2e66f1f95a19ca95be
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: seodec18, mvc, devx-track-js
+ms.openlocfilehash: 0b87f4ca138e0da76efd184e87f12bec32e3960e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408008"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262255"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Öğretici: Azure Container Registry 'de temel görüntü güncelleştirildiği zaman kapsayıcı görüntüsü derlemelerini otomatikleştirin 
 
@@ -133,7 +133,7 @@ docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-
 
 Tarayıcınızda `http://localhost:8080` adresine gidin; aşağıdakine benzer biçimde web sayfasında işlenmiş Node.js sürüm numarasını görüyor olmalısınız. Sonraki adımlardan birinde, sürüm dizesine bir "a" ekleyerek sürümü yükseltirsiniz.
 
-![Tarayıcıda oluşturulan örnek uygulamanın ekran görüntüsü][base-update-01]
+![Ekran görüntüsünde, tarayıcıda işlenen örnek bir uygulama gösterilmektedir.][base-update-01]
 
 Kapsayıcıyı durdurmak ve kaldırmak için aşağıdaki komutu çalıştırın:
 

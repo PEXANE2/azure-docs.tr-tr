@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4a753cd139db9dec23c82346704382979aeaa0de
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 314012467da532002529a3f561b192876602b46e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335441"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
@@ -59,7 +59,7 @@ Güncelleştirme Yönetimi, makinenin ne kadar güncel olduğunu, ile eşitlenec
 
 Zamanlanmış bir dağıtım oluşturarak güncelleştirmeleri gerektiren makinelere yazılım güncelleştirmeleri dağıtabilir ve yükleyebilirsiniz. İsteğe bağlı olarak sınıflandırılan güncelleştirmeler Windows makineler için dağıtım kapsamına dahil edilmez. Dağıtım kapsamında yalnızca gerekli güncelleştirmeler bulunur.
 
-Zamanlanan dağıtım, hangi hedef makinelerin geçerli güncelleştirmeleri alacağını tanımlar. Bu, belirli makineleri açıkça belirterek ya da belirli bir makine kümesinin (veya bir [Azure Query] Update-MGMT-View-logs.md) günlük aramalarını temel alan bir bilgisayar grubunu seçerek (veya belirtilen ölçütlere göre Azure VM 'Leri dinamik olarak seçen bir [bilgisayar grubu](../../azure-monitor/platform/computer-groups.md) ) seçerek yapılır. Bu gruplar, Güncelleştirme Yönetimi etkinleştirmek üzere yapılandırmayı alan makinelerin hedeflenmesini denetlemek için kullanılan [kapsam yapılandırmasından](../../azure-monitor/insights/solution-targeting.md)farklıdır. Bu, güncelleştirme uyumluluğunu gerçekleştirmenizi ve raporlamasını ve onaylanan gerekli güncelleştirmeleri yüklemenizi engeller.
+Zamanlanan dağıtım, hangi hedef makinelerin geçerli güncelleştirmeleri alacağını tanımlar. Bu, belirli makineleri açıkça belirterek ya da belirli bir makine kümesinin (ya da belirtilen ölçütlere göre dinamik olarak Azure VM 'Leri seçen bir [Azure sorgusundaki](update-mgmt-query-logs.md) ) günlük aramalarını temel alan bir [bilgisayar grubu](../../azure-monitor/platform/computer-groups.md) seçerek gerçekleştirir. Bu gruplar, Güncelleştirme Yönetimi etkinleştirmek üzere yapılandırmayı alan makinelerin hedeflenmesini denetlemek için kullanılan [kapsam yapılandırmasından](../../azure-monitor/insights/solution-targeting.md)farklıdır. Bu, güncelleştirme uyumluluğunu gerçekleştirmenizi ve raporlamasını ve onaylanan gerekli güncelleştirmeleri yüklemenizi engeller.
 
 Bir dağıtım tanımlarken, güncelleştirmelerin yüklenebileceği bir zaman aralığını onaylamak ve ayarlamak için bir zamanlama da belirtirsiniz. Bu döneme bakım penceresi denir. Bakım penceresinin 20 dakikalık bir yayılımı yeniden başlatmalar için ayrılmıştır, bir tane gereklidir ve uygun yeniden başlatma seçeneğini seçmiş olursunuz. Düzeltme Eki beklenenden uzun sürüyorsa ve bakım penceresinde 20 dakikadan kısa bir süre sonra yeniden başlatma gerçekleşmez.
 
@@ -164,7 +164,7 @@ Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi iç
 
 Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
-| Bağlı kaynak | Desteklenir | Açıklama |
+| Bağlı kaynak | Desteklenir | Description |
 | --- | --- | --- |
 | Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |

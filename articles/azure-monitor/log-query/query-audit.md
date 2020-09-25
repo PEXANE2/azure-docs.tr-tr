@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: bfaa9d8908d9401441d8811c3edcd087781b1d89
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: df937ba7f23f2789d929a043c7239ababb24374f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285069"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Azure Izleyici günlüklerinde denetim sorguları (Önizleme)
 Günlük sorgusu denetim günlükleri Azure Izleyici 'de çalıştırılan günlük sorguları hakkında telemetri sağlar. Bu, bir sorgunun ne zaman çalıştırıldığı, onu kimin çalıştırdığını, hangi aracın kullanıldığını, sorgu metnini ve sorgu yürütmesini açıklayan performans istatistiklerini içerir.
@@ -64,6 +64,7 @@ Bir sorgu her çalıştırıldığında bir denetim kaydı oluşturulur. Veriler
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
+- Sorgular yalnızca bir kullanıcı bağlamında yürütüldüğünde günlüğe kaydedilir. Azure 'da hizmetten hizmete hizmet kaydedilmez. Bu dışlamanın bu iki birincil sorgu kümesi, faturalandırma hesaplamalarında ve otomatik uyarı yürütmelerinin bir özetini kapsar. Uyarılar söz konusu olduğunda, yalnızca zamanlanmış uyarı sorgusunun kendisi günlüğe kaydedilmez; uyarı oluşturma ekranındaki uyarının ilk yürütülmesi bir kullanıcı bağlamında yürütülür ve denetim amacıyla kullanılabilir olacaktır. 
 - Azure Veri Gezgini proxy 'den gelen sorgularda performans istatistikleri kullanılamaz. Bu sorgulara ilişkin diğer tüm veriler yine de doldurulacak.
 - [Dize sabit değerlerini gizleme](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) dizelerindeki *h* ipucu sorgu denetim günlükleri üzerinde bir etkiye sahip olmayacaktır. Sorgular, bir dize belirsizlendirilemeden tamamen gönderildiği şekilde yakalanacaktır. Log Analytics çalışma alanlarında bulunan çeşitli RBAC modlarını kullanarak bu verileri görmek için yalnızca Uyumluluk haklarına sahip olan kullanıcıların bunu yapabilmesini sağlayabilirsiniz.
 - Birden çok çalışma alanındaki verileri içeren sorgular için, sorgu yalnızca kullanıcının erişimi olan çalışma alanlarında yakalanacaktır.

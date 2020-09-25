@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43edb9ba6cdd73ce195a8b4eb60071b6831b7223
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266505"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
@@ -40,7 +40,7 @@ Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - Azure AD Connect Sync sürüm 1.4.32.0 veya üzeri bir test ortamı
 - Eşitleme kapsamındaki bir OU veya grup ve pilot kullanılabilir. Küçük bir nesne kümesiyle başlamasını öneririz.
 - Sağlama aracısını barındıracak Windows Server 2012 R2 veya üstünü çalıştıran bir sunucu.  Bu, Azure AD Connect sunucusuyla aynı sunucu olamaz.
-- AAD Connect eşitlemesine ait kaynak bağlantısı, *Objectguıd* veya *MS-DS-ımdsguıd* olmalıdır
+- Azure AD Connect eşitleme için kaynak bağlantısı *Objectguıd* veya *MS-DS-ımosnguıd* olmalıdır
 
 ## <a name="update-azure-ad-connect"></a>Güncelleştirme Azure AD Connect
 
@@ -54,7 +54,7 @@ Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizd
 3.  `Set-ADSyncScheduler -SyncCycleEnabled $false` öğesini çalıştırın.
 
 >[!NOTE] 
->AAD Connect eşitleme için kendi özel zamanlayıcıyı çalıştırıyorsanız lütfen Zamanlayıcıyı devre dışı bırakın. 
+>Azure AD Connect eşitleme için kendi özel zamanlayıcınız çalıştırıyorsanız, lütfen Zamanlayıcıyı devre dışı bırakın. 
 
 ## <a name="create-custom-user-inbound-rule"></a>Özel Kullanıcı gelen kuralı oluştur
 
@@ -62,7 +62,7 @@ Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizd
  ![Eşitleme kuralı Düzenleyicisi menüsü](media/how-to-cloud-custom-user-rule/user8.png)</br>
  
  2. Yön için açılan listeden **gelen** ' ı seçin ve **Yeni kural ekle**' ye tıklayın.
- ![Özel kural](media/how-to-cloud-custom-user-rule/user1.png)</br>
+ !["Gelen" ve "yeni kural ekle" düğmesinin seçili olduğu "eşitleme kurallarınızı görüntüleme ve yönetme" penceresini gösteren ekran görüntüsü.](media/how-to-cloud-custom-user-rule/user1.png)</br>
  
  3. **Açıklama** sayfasında, aşağıdakileri girin ve **İleri**' ye tıklayın:
 
@@ -74,7 +74,7 @@ Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizd
     **Bağlantı türü:** Ayrılma<br>
     **Öncelik:** Sistemde benzersiz bir değer sağlayın<br>
     **Etiket:** Bunu boş bırakın<br>
-    ![Özel kural](media/how-to-cloud-custom-user-rule/user2.png)</br>
+    !["Gelen eşitleme kuralı-açıklama oluşturma" sayfasının girilen değerleri gösteren ekran görüntüsü.](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
  4. **Kapsam filtresi** sayfasında, pilot uygulamayı açmak istediğiniz OU veya güvenlik grubunu girin.  OU 'ya filtre uygulamak için, ayırt edici adın OU kısmını ekleyin. Bu kural, o OU 'da bulunan tüm kullanıcılara uygulanır.  Yani, DN "OU = CPUsers, DC = contoso, DC = com" ile sonlanıyorsa, bu filtreyi eklersiniz.  Ardından **İleri**'ye tıklayın. 
 
@@ -83,31 +83,31 @@ Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizd
     |Kapsamı bulunan OU|DEĞERI|ENDSWITH|OU 'nun ayırt edici adı.|
     |Kapsam grubu||ISMEMBEROF|Güvenlik grubunun ayırt edici adı.|
 
-    ![Özel kural](media/how-to-cloud-custom-user-rule/user3.png)</br>
+    ![Kapsam filtresi değeri girilmiş "gelen eşitleme kuralı eşleme Filtresi Oluştur" sayfasını gösteren ekran görüntüsü.](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Kural **Birleştir** sayfasında, **İleri**' ye tıklayın.
  6. **Dönüşümler** sayfasında, sabit bir dönüşüm ekleyin: cloudNoFlow özniteliğine akış doğru. **Ekle**'ye tıklayın.
- ![Özel kural](media/how-to-cloud-custom-user-rule/user4.png)</br>
+ !["Sabit dönüşüm" akışı eklenmiş "gelen eşitleme kuralı-dönüşümler oluşturma" sayfasını gösteren ekran görüntüsü.](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 Tüm nesne türleri için aynı adımların izlenmesi gerekir (Kullanıcı, Grup ve kişi). Yapılandırılmış AD Bağlayıcısı/AD Ormanı başına adımları yineleyin. 
 
 ## <a name="create-custom-user-outbound-rule"></a>Özel Kullanıcı giden kuralı oluştur
 
  1. Yön için açılan listeden **giden** ' ı seçin ve **Kural Ekle**' ye tıklayın.
- ![Özel kural](media/how-to-cloud-custom-user-rule/user5.png)</br>
+ !["Giden" yönünün seçili olduğunu ve "yeni kural ekle" düğmesinin vurgulandığını gösteren ekran görüntüsü.](media/how-to-cloud-custom-user-rule/user5.png)</br>
  
  2. **Açıklama** sayfasında, aşağıdakileri girin ve **İleri**' ye tıklayın:
 
     **Ad:** Kurala anlamlı bir ad verin<br>
     **Açıklama:** Anlamlı bir açıklama ekleyin<br>
-    **Bağlı sistem:** Özel eşitleme kuralını yazmakta olduğunuz AAD bağlayıcısını seçin<br>
+    **Bağlı sistem:** Özel eşitleme kuralı yazarken Azure AD bağlayıcısını seçin<br>
     **Bağlı sistem nesne türü:** Kullanıcısını<br>
     **Meta veri deposu nesne türü:** Kişiler<br>
     **Bağlantı türü:** JoinNoFlow<br>
     **Öncelik:** Sistemde benzersiz bir değer sağlayın<br>
     **Etiket:** Bunu boş bırakın<br>
     
-    ![Özel kural](media/how-to-cloud-custom-user-rule/user6.png)</br>
+    !["Açıklama" sayfasını, girilen özellikleri gösteren ekran görüntüsü.](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
  3. **Kapsam filtresi** sayfasında **cloudnoflow** eşittir **true**' ı seçin. Ardından **İleri**'ye tıklayın.
  ![Özel kural](media/how-to-cloud-custom-user-rule/user7.png)</br>
@@ -122,14 +122,14 @@ Tüm nesne türleri için aynı adımların izlenmesi gerekir (Kullanıcı, Grup
 2. [Burada](how-to-install.md#install-the-agent)özetlenen adımları kullanarak Azure AD Connect bulutu sağlama aracısını indirin.
 3. Azure AD Connect bulut sağlamasını çalıştırın (AADConnectProvisioningAgent. Installer)
 3. Giriş ekranında, lisans koşullarını **kabul edin** ve **yükler**' e tıklayın.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install1.png)</br>
+!["D Connect sağlama aracısını Microsoft Azure" Giriş ekranını gösteren ekran görüntüsü.](media/how-to-install/install1.png)</br>
 
 4. Bu işlem tamamlandıktan sonra Yapılandırma Sihirbazı başlatılır.  Azure AD Genel Yönetici hesabınızla oturum açın.
 5. **Bağlan Active Directory** ekranında, **Dizin Ekle** ' ye tıklayın ve Active Directory Yönetici hesabınızla oturum açın.  Bu işlem, şirket içi dizininizi ekleyecek.  **İleri**’ye tıklayın.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install3.png)</br>
+![Bir dizin değeri girilmiş "Connect Active Directory" ekranını gösteren ekran görüntüsü.](media/how-to-install/install3.png)</br>
 
 6. **Yapılandırma Tamam** ekranında **Onayla**' ya tıklayın.  Bu işlem aracıyı kaydedip yeniden başlatacak.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install4.png)</br>
+!["Onayla" düğmesinin seçili olduğu "Yapılandırma Tamam" ekranını gösteren ekran görüntüsü.](media/how-to-install/install4.png)</br>
 
 7. Bu işlem tamamlandıktan sonra, **başarıyla doğrulandığına** ilişkin bir uyarı görmeniz gerekir.  **Çıkış**' a tıklayabilirsiniz.</br>
 ![Hoş Geldiniz ekranı](media/how-to-install/install5.png)</br>
@@ -141,7 +141,7 @@ Aracı doğrulaması Azure portal ve aracıyı çalıştıran yerel sunucu üzer
 ### <a name="azure-portal-agent-verification"></a>Aracı doğrulama Azure portal
 Aracının Azure tarafından görüldüğünü doğrulamak için şu adımları izleyin:
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 2. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect** ' a tıklayın ve ardından **yönetimi sağlama (Önizleme)** seçeneğini belirleyin.</br>
 ![Azure portalda](media/how-to-install/install6.png)</br>
 

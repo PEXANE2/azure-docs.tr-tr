@@ -4,23 +4,27 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b62e5057d8f144fc56d0e35927d17de27a1c8863
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050316"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255272"
 ---
 Özelliği kolayca ayarlanabilir, ancak bu deneyim deneyiminizin ücretsiz olacağı anlamına gelmez. İstediğiniz uç noktaya erişmede sorun yaşarsanız, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamaınızdan kudu konsoluna ulaşmak için **Araçlar**  >  **kudu**' ye gidin. Ayrıca, Kudo konsoluna [SiteName]. scm. azurewebsites. net adresinden ulaşabilirsiniz. Web sitesi yüklendikten sonra, **hata ayıklama konsolu** sekmesine gidin. Uygulamanızdaki Azure Portal barındırılan konsola ulaşmak için **Araçlar**  >  **konsolu**' na gidin.
 
 #### <a name="tools"></a>Araçlar
-**Ping**, **nslookup**ve **tracert** araçları, güvenlik kısıtlamaları nedeniyle konsolda çalışmaz. Void öğesini dolduracak şekilde iki ayrı araç eklenir. DNS işlevselliğini test etmek için **nameresolver.exe**adlı bir araç ekledik. Söz dizimi aşağıdaki gibidir:
+Yerel Windows uygulamalarında, **ping**, **nslookup**ve **tracert** araçları güvenlik kısıtlamaları nedeniyle konsolda çalışmaz ( [özel Windows kapsayıcılarında](../articles/app-service/quickstart-custom-container.md)çalışırlar). Void öğesini dolduracak şekilde iki ayrı araç eklenir. DNS işlevselliğini test etmek için **nameresolver.exe**adlı bir araç ekledik. Söz dizimi aşağıdaki gibidir:
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
 ```
 
 Uygulamanızın bağımlı olduğu ana bilgisayar adlarını denetlemek için nameresolver kullanabilirsiniz. Bu şekilde, DNS 'niz ile yapılandırılmış herhangi bir şey varsa veya belki DNS sunucunuza erişiminiz yoksa test edebilirsiniz. WEBSITE_DNS_SERVER ve WEBSITE_DNS_ALT_SERVER ortam değişkenlerine bakarak uygulamanızın konsolunda kullandığı DNS sunucusunu görebilirsiniz.
+
+> [!NOTE]
+> nameresolver.exe Şu anda özel Windows kapsayıcılarında çalışmıyor.
+>
 
 Bir konak ve bağlantı noktası birleşimine TCP bağlantısını test etmek için bir sonraki aracı kullanabilirsiniz. Bu araca, **tcma** adı verilir ve sözdizimi şöyledir:
 

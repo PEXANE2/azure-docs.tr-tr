@@ -3,12 +3,12 @@ title: Azure sanal makine değerlendirmelerinde Azure geçişi sunucu değerlend
 description: Azure geçişi sunucu değerlendirmesinde değerlendirmeler hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261863"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275532"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Sunucu değerlendirmesi genel bakış (Azure VM 'lerine geçiş)
 
@@ -25,17 +25,17 @@ Sunucu değerlendirmesi aracı ile bir değerlendirme, hazırlığı ölçer ve 
 
 Azure geçişi: Sunucu değerlendirmesi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır.
 
-**Değerlendirme türü** | **Ayrıntılar**
+**Değerlendirme Türü** | **Ayrıntılar**
 --- | --- 
-**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz.
-**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirmeye yönelik değerlendirmeler. <br/><br/> Bu değerlendirme türünü kullanarak şirket içi ortamınızdaki [VMware VM'lerini](how-to-set-up-appliance-vmware.md), [Hyper-V VM'lerini](how-to-set-up-appliance-hyper-v.md) ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) Azure geçişi için değerlendirebilirsiniz.
+**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware Çözümü'ne (AVS)](../azure-vmware/introduction.md) geçirmeye yönelik değerlendirmeler. <br/><br/> Bu değerlendirme türünü kullanarak şirket içi ortamınızdaki [VMware VM'lerinizi](how-to-set-up-appliance-vmware.md) Azure VMware Çözümü (AVS) geçişi için değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, verilerin bir zaman noktası anlık görüntüsüdür. Sunucu değerlendirmesinde bir Azure VM değerlendirmesi iki boyutlandırma ölçütü seçeneği sağlar:
 
 **Değerlendirme türü** | **Ayrıntılar** | **Veriler**
 --- | --- | ---
-**Performans tabanlı** | Toplanan performans verilerine dayalı öneriler oluşturan değerlendirmeler | VM boyutu önerisi, CPU ve RAM kullanımı verilerine göre belirlenir.<br/><br/> Disk türü önerisi, saniye başına giriş/çıkış işlemi (ıOPS) ve şirket içi disklerin aktarım hızını temel alır. Disk türleri Azure Standart HDD, Azure Standart SSD ve Azure Premium disklerdir.
-**Şirket içi olarak** | Öneriler oluşturmak için performans verilerini kullanmayan değerlendirmeler | VM boyutu önerisi, şirket içi VM boyutunu temel alır.<br/><br> Önerilen disk türü, değerlendirme için seçilen depolama türünü temel alır.
+**Performans tabanlı** | Toplanan performans verilerine göre öneriler sunan değerlendirmeler | VM boyutu önerisi, CPU ve RAM kullanımı verilerine göre belirlenir.<br/><br/> Disk türü önerisi, saniye başına giriş/çıkış işlemi (ıOPS) ve şirket içi disklerin aktarım hızını temel alır. Disk türleri Azure Standart HDD, Azure Standart SSD ve Azure Premium disklerdir.
+**Şirket içinde olduğu gibi** | Öneriler oluşturmak için performans verilerini kullanmayan değerlendirmeler | VM boyutu önerisi, şirket içi VM boyutunu temel alır.<br/><br> Önerilen disk türü, değerlendirme için seçilen depolama türünü temel alır.
 
 ## <a name="how-do-i-run-an-assessment"></a>Nasıl yaparım? bir değerlendirme çalıştırmak istiyor musunuz?
 
@@ -80,7 +80,7 @@ Bu gereci bulma işlemi için kullanıyorsanız, aşağıdaki adımlarla işlem 
     - **Hyper-V VM 'leri**: bir örnek nokta, her 30 saniyede bir toplanır.
     - **Fiziksel sunucular**: beş dakikada bir örnek nokta toplanır.
 
-1. Gereç, her 10 dakikada bir tek bir veri noktası oluşturmak için örnek noktaları birleştirir. Veri noktasını oluşturmak için gereç tüm örneklerden tepe değerlerini seçer. Daha sonra veri noktasını Azure 'a gönderir.
+1. Gereç, VMware ve Hyper-V sunucuları için her 10 dakikada bir ve fiziksel sunucular için 5 dakikada bir tek bir veri noktası oluşturmak için örnek noktaları birleştirir. Veri noktasını oluşturmak için gereç tüm örneklerden tepe değerlerini seçer. Daha sonra veri noktasını Azure 'a gönderir.
 1. Sunucu değerlendirmesi, geçen ay için 10 dakikalık tüm veri noktalarını depolar.
 1. Bir değerlendirme oluşturduğunuzda sunucu değerlendirmesi, doğru bir şekilde kullanmak için kullanılacak uygun veri noktasını tanımlar. Kimlik, *performans geçmişi* ve *yüzdebirlik kullanımı*için yüzdebirlik değerlerini temel alır.
 
@@ -124,7 +124,7 @@ Sunucu değerlendirmesi 'nde bir Azure VM değerlendirmesi 'ne dahil edilmiştir
 **VM serisi** | Doğru hale getirmek için göz önünde bulundurulması istediğiniz Azure VM Serisi. Örneğin, Azure 'da bir serisi VM gerektiren bir üretim ortamınız yoksa, seri listesinden bir serisi dışarıda bırakabilirsiniz.
 **Konfor katsayısı** | Değerlendirme sırasında kullanılan arabellek. VM 'Ler için CPU, RAM, disk ve ağ verilerine uygulanır. Dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlar için BT hesapları.<br/><br/> Örneğin, %20 kullanımındaki bir 10 çekirdekli VM normalde iki çekirdekli bir VM ile sonuçlanır. 2,0, bir BT faktörü ile bunun yerine dört çekirdekli bir VM olur.
 **Teklif** | Kayıtlı olduğunuz [Azure teklifi](https://azure.microsoft.com/support/legal/offer-details/) . Sunucu değerlendirmesi, bu teklifin maliyetini tahmin eder.
-**Para birimi** | Hesabınız için faturalandırma para birimi.
+**Birimindeki** | Hesabınız için faturalandırma para birimi.
 **İndirim (%)** | Azure teklifinin üzerine aldığınız, aboneliğe özgü tüm indirimler. Varsayılan ayar, %0’dır.
 **VM çalışma süresi** | Sürekli olarak çalışmayan Azure VM 'Leri için her ay gün ve saat başına gün cinsinden süre. Maliyet tahminleri bu süreye göre hesaplanır.<br/><br/> Varsayılan değerler ayda 31 gün ve günde 24 saat değerlerdir.
 **Azure Hibrit Avantajı** | Yazılım Güvencesi olup olmadığını ve [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-use-benefit/)uygun olduğunu belirtir. Ayarın varsayılan değeri "Evet" ise, Windows dışındaki işletim sistemleri için Azure fiyatları Windows VM 'Leri olarak kabul edilir.

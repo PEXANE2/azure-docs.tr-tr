@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 1d974badd715d7966f552603a77d77aab95d70f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549979"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300067"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Öğretici: Kemp LoadMaster Azure AD tümleştirmesiyle SSO tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Kemp LoadMaster Azure AD tümleştirmesini Azure Active Directo
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -139,7 +139,7 @@ Bu bölümde, Kemp LoadMaster Azure AD tümleştirmesine erişim izni vererek Az
 
 ### <a name="create-a-virtual-service"></a>Sanal hizmet oluşturma 
 
-1. Kemp LoadMaster Azure AD tümleştirme yük ana Web Kullanıcı arabirimine git > sanal hizmetler > Yeni Ekle ' ye gidin.
+1. Kemp LoadMaster Azure AD tümleştirme LoadMaster Web Kullanıcı arabirimine gidin > sanal Hizmetleri > Yeni Ekle.
 
 1. Yeni Ekle ' ye tıklayın.
 
@@ -197,11 +197,11 @@ Bu bölümde, Kemp LoadMaster Azure AD tümleştirmesine erişim izni vererek Az
 
 ### <a name="ssl-acceleration"></a>SSL hızlandırma
  
-1. Sanal hizmetler > sanal hizmetler > Kemp Load ana Web Kullanıcı arabirimi ' ne gidin.
+1. Sanal hizmetler > > hizmetleri görüntüle/Değiştir ' e giderek Kemp LoadMaster Web Kullanıcı arabirimine gidin.
 
 1. Işlem altında Değiştir 'e tıklayın.
 
-1. TCP/x.x.x. için Özellikler: 443 (KIMLIK: 6)-katman 7 ' de çalışıyor, SSL özellikleri ' ne tıklayın.
+1. SSL özellikleri ' ne tıklayın (katman 7 ' de çalışır).
     
     ![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-3.png)
     

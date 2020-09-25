@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 05/11/2020
+ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 474e8152341aeb5e05af1859e531810f2be31e7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c8f93548443b043f26bdb3bd7d7d38e6efb39852
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322814"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334506"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Hızlı başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma
 
@@ -23,6 +23,7 @@ ms.locfileid: "87322814"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK’sı v4](create-sql-api-java.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -94,11 +95,11 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* `CosmosDatabase`oluşturulurken.
+* `CosmosDatabase` oluşturulurken.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosContainer`oluşturulurken.
+* `CosmosContainer` oluşturulurken.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -124,11 +125,11 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
 
-* `CosmosAsyncDatabase`oluşturulurken.
+* `CosmosAsyncDatabase` oluşturulurken.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosAsyncContainer`oluşturulurken.
+* `CosmosAsyncContainer` oluşturulurken.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -171,8 +172,8 @@ Bu adımda Azure portala dönerek bağlantı dizesi bilgilerinizi alın ve uç n
 
     Terminal penceresinde, FamilyDB veritabanının oluşturulduğunu belirten bir bildirim görüntülenir. 
     
-4. Uygulama, adında bir veritabanı oluşturur`AzureSampleFamilyDB`
-5. Uygulama, adı olan bir kapsayıcı oluşturur`FamilyContainer`
+4. Uygulama, adında bir veritabanı oluşturur `AzureSampleFamilyDB`
+5. Uygulama, adı olan bir kapsayıcı oluşturur `FamilyContainer`
 6. Uygulama, nesne kimliklerini ve bölüm anahtarı değerini (örneğimizde soyadı olan) kullanarak nokta okuma işlemleri gerçekleştirir. 
 7. Uygulama, içindeki soyadı (' Andersen ', ' Wakefield ', ' Johnson ') olan tüm aileleri almak için öğeleri sorgular.
 

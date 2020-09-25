@@ -10,15 +10,15 @@ keywords: azure media services, akış
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 901287a82ece873a572d7773dd53f80e1e8af716
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 38207ac47d2e58c689f1933a6ade6d5c86cd44ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267403"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268681"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve videoyu akışa Node.js
 
@@ -34,7 +34,7 @@ Bu makaledeki örnek, bir HTTPS URL 'SI aracılığıyla erişilebilir hale geti
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Node.js](https://nodejs.org/en/download/) yüklensin
 - [Media Services hesabı oluşturun](./create-account-howto.md).<br/>Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.
@@ -74,7 +74,7 @@ Projeyi indirdiğiniz [index.js](https://github.com/Azure-Samples/media-services
 
 Çalışmayı tamamladıktan sonra benzer bir çıktı görmeniz gerekir:
 
-![Çalıştır](./media/stream-files-nodejs-quickstart/run.png)
+![Yerel dizine indirilen üç dosyanın URL 'Lerini gösteren StreamFileSample örnek uygulamasının çıkışıyla çıkış içeren bir komut penceresinin ekran görüntüsü.](./media/stream-files-nodejs-quickstart/run.png)
 
 ## <a name="test-with-azure-media-player"></a>Azure Media Player ile test etme
 

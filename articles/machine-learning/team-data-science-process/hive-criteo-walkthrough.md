@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dc05722ee79f72b2931cb1fa6106f742c5bc0e15
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274212"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336658"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Ekip veri bilimi Işlemi, 1 TB 'lik bir veri kümesinde Azure HDInsight Hadoop kümesi kullanılarak yapılır.
 
@@ -67,7 +67,7 @@ Bu izlenecek yolda iki örnek tahmin sorunu giderilmiştir:
 
    * Adım 1 ' de oluşturulan depolama hesabını HDInsight kümenizin oluşturulduğu sırada bağlayın. Bu depolama hesabı, küme içinde işlenebilecek verilere erişmek için kullanılır.
    * Oluşturulduktan sonra kümenin baş düğümüne uzaktan erişimi etkinleştirin. Burada belirttiğiniz uzaktan erişim kimlik bilgilerini hatırlayın (küme oluşturulurken belirtilen kimlik bilgilerinden farklı): aşağıdaki yordamları uygulayın.
-3. [Azure Machine Learning Studio (klasik) çalışma alanı oluştur](../studio/create-workspace.md): Bu Azure Machine Learning çalışma alanı, HDInsight kümesindeki bir ilk veri araştırması ve azaltma örneklemesi sonrasında makine öğrenimi modelleri oluşturmak için kullanılır.
+3. [Azure Machine Learning Studio (klasik) çalışma alanı oluştur](../classic/create-workspace.md): Bu Azure Machine Learning çalışma alanı, HDInsight kümesindeki bir ilk veri araştırması ve azaltma örneklemesi sonrasında makine öğrenimi modelleri oluşturmak için kullanılır.
 
 ## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>Ortak bir kaynaktan veri edinme ve bunları kullanma
 Bağlantı kümesine tıklayarak, kullanım koşullarını kabul ederek ve bir ad sağlayarak [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) DataSet 'e erişilebilir. Burada bir anlık görüntü gösterilir:
@@ -98,7 +98,7 @@ Sol tarafta, veri araştırması için çalışmamız olan "Hadoop komut satır�
 
 Şimdi ayarladığınız ve ilk kez başlamaya hazırsınız: Hive kullanarak veri araştırması ve Azure Machine Learning için hazır veri alma.
 
-## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a>Hive veritabanı ve tabloları oluşturma
+## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> Hive veritabanı ve tabloları oluşturma
 Criteo veri kümeniz için Hive tabloları oluşturmak üzere baş düğümün masaüstündeki ***Hadoop komut satırını*** açın ve komutu girerek Hive dizinini girin
 
 ```console
@@ -208,7 +208,7 @@ criteo_train
 Time taken: 1.437 seconds, Fetched: 4 row(s)
 ```
 
-## <a name="data-exploration-in-hive"></a><a name="exploration"></a>Hive 'de veri araştırması
+## <a name="data-exploration-in-hive"></a><a name="exploration"></a> Hive 'de veri araştırması
 Artık Hive 'de bazı temel veri araştırması yapmaya hazırsınız. Tren ve test veri tablolarındaki örneklerin sayısını sayarak başlarsınız.
 
 ### <a name="number-of-train-examples"></a>Tren örnekleri sayısı
@@ -402,7 +402,7 @@ e5f3fd8d        a0aaffa6        792250
 Time taken: 560.22 seconds, Fetched: 15 row(s)
 ```
 
-## <a name="down-sample-the-datasets-for-azure-machine-learning"></a><a name="downsample"></a>Azure Machine Learning için veri kümelerini aşağı örnekle
+## <a name="down-sample-the-datasets-for-azure-machine-learning"></a><a name="downsample"></a> Azure Machine Learning için veri kümelerini aşağı örnekle
 Veri kümelerini keşfetme ve herhangi bir değişken (birleşimler dahil) için bu tür bir araştırma yapmak için, Azure Machine Learning içindeki modellerin derlenebilir olması için veri kümelerini aşağı doğru örnekle. Sorunun odağının: bir örnek öznitelikler kümesi (col2-Col40 ' den özellik değerleri) verildiğinde, Sütun1 'nin 0 (Hayır) veya 1 ' e (tıklasın) göre tahmin edilir.
 
 Örnek olarak, tren ve test veri kümelerini özgün boyutun %1 ' i ile örneklemek için Hive 'in yerel S_SAYI_ÜRET () işlevini kullanın. Sonraki betik, [örnek&#95;hive&#95;Criteo&#95;aşağı örnek&#95;eğitme&#95;veri kümesini eğitme. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) bunu eğitme veri kümesi için yapar:
@@ -471,7 +471,7 @@ Bu şekilde, Azure Machine Learning ' de modeller oluşturmak için, alt örnekl
 
 Azure Machine Learning 'e geçmeden önce son önemli bir bileşen vardır. Bu, sayı tablosu ile ilgilidir. Sonraki alt bölümde, Count tablosu bazı ayrıntılarla ele alınmıştır.
 
-## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a>Count tablosu hakkında kısa bir tartışma
+## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a> Count tablosu hakkında kısa bir tartışma
 Gördüğünüz gibi, çeşitli kategorik değişkenlerin yüksek boyutlılık vardır. İzlenecek yolda, bu değişkenleri verimli ve sağlam bir şekilde kodlamak için [sayımlar Ile öğrenme](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) adlı güçlü bir teknik sunulmaktadır. Bu teknik hakkında daha fazla bilgi, girilen bağlantıdır.
 
 >[!NOTE]
@@ -480,7 +480,7 @@ Gördüğünüz gibi, çeşitli kategorik değişkenlerin yüksek boyutlılık v
 
 Sayı verilerinde sayı tabloları oluşturmak için, ham/sayı klasöründeki verileri kullanın. Modelleme bölümünde, kullanıcılar kategorik özellikler için bu sayım tablolarının nasıl oluşturulacağını veya alternatif olarak, araştırmalar için önceden oluşturulmuş bir sayım tablosu kullanımını göstermiştir. Aşağıdaki şekilde, "önceden oluşturulmuş sayım tabloları" dendiğinde, sağlanmış olan Count tablolarını kullanırız. Bu tablolara erişme hakkında ayrıntılı yönergeler sonraki bölümde verilmiştir.
 
-## <a name="build-a-model-with-azure-machine-learning"></a><a name="aml"></a>Azure Machine Learning bir model oluşturun
+## <a name="build-a-model-with-azure-machine-learning"></a><a name="aml"></a> Azure Machine Learning bir model oluşturun
 Model oluşturma sürecimiz Azure Machine Learning şu adımları izler:
 
 1. [Hive tablolarından verileri Azure Machine Learning içine alın](#step1)
@@ -491,7 +491,7 @@ Model oluşturma sürecimiz Azure Machine Learning şu adımları izler:
 
 Artık Azure Machine Learning Studio 'da model oluşturmaya hazırsınız. Aşağı örneklenmiş verilerimiz, kümeye Hive tabloları olarak kaydedilir. Bu verileri okumak için Azure Machine Learning **veri alma** modülünü kullanın. Bu kümenin depolama hesabına erişmek için gereken kimlik bilgileri aşağıda verilmiştir.
 
-### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a>1. Adım: verileri Içeri aktarma modülünü kullanarak Hive Azure Machine Learning tablolarından veri alma ve makine öğrenimi denemesi için seçme
+### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a> 1. Adım: verileri Içeri aktarma modülünü kullanarak Hive Azure Machine Learning tablolarından veri alma ve makine öğrenimi denemesi için seçme
 **Yeni**bir  ->  **deneme**  ->  **boş deneme**seçerek başlayın. Ardından, sol üstteki **arama** kutusundan "verileri içeri aktar" ifadesini aratın. Veri erişimi modülünü kullanmak için **veri Içeri aktarma** modülünü deneme tuvaline (ekranın orta bölümü) sürükleyin ve bırakın.
 
 Yığın tablosundan veri alırken **Içeri aktarma verileri** şöyle görünür:
@@ -525,7 +525,7 @@ Makine öğrenimi denemesinde kullanılacak kaydedilmiş veri kümesini seçmek 
 >
 >
 
-### <a name="step-2-create-an-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a>2. Adım: tıklamaların tahmin edilmesi/tıklamaları tahmin etmek için Azure Machine Learning bir deneme oluşturma
+### <a name="step-2-create-an-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a> 2. Adım: tıklamaların tahmin edilmesi/tıklamaları tahmin etmek için Azure Machine Learning bir deneme oluşturma
 Azure Machine Learning Studio (klasik) denemeniz şöyle görünür:
 
 ![Machine Learning deneme](./media/hive-criteo-walkthrough/xRpVfrY.png)
@@ -602,7 +602,7 @@ Bu alıntı, üzerinde sayılan sütunlar için, her türlü ilgili geri alma ' 
 
 Artık bu dönüştürülmüş veri kümelerini kullanarak bir Azure Machine Learning modeli oluşturmaya hazırsınız. Sonraki bölümde bunun nasıl yapılacağını gösterir.
 
-### <a name="step-3-build-train-and-score-the-model"></a><a name="step3"></a>3. Adım: modeli oluşturma, eğitme ve Puanlama
+### <a name="step-3-build-train-and-score-the-model"></a><a name="step3"></a> 3. Adım: modeli oluşturma, eğitme ve Puanlama
 
 #### <a name="choice-of-learner"></a>Öğrenimi seçimi
 İlk olarak, bir öğrenici seçmeniz gerekir. Learner 'imiz olarak iki sınıf bir önceden maliyetli karar ağacı kullanın. Bu öğrenner için varsayılan seçenekler şunlardır:
@@ -621,7 +621,7 @@ Eğitilen bir modelle, test veri kümesi üzerinde puan almaya ve performansın�
 
 ![Score Model (Model Puanlama) modülü](./media/hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step-4-evaluate-the-model"></a><a name="step4"></a>4. Adım: modeli değerlendirme
+### <a name="step-4-evaluate-the-model"></a><a name="step4"></a> 4. Adım: modeli değerlendirme
 Son olarak, model performansını çözümlemeniz gerekir. Genellikle, iki sınıf (ikili) sınıflandırma sorunları için iyi bir ölçü, AUC 'dir. Bu eğriyi görselleştirmek için, **puan modeli** modülünü bir **değerlendirme modeli** modülüne bağlayın. **Modeli değerlendir** modülünde **Görselleştir** ' i tıklatmak aşağıdakine benzer bir grafik verir:
 
 ![Modül BDT modelini değerlendir](./media/hive-criteo-walkthrough/0Tl0cdg.png)
@@ -630,7 +630,7 @@ Son olarak, model performansını çözümlemeniz gerekir. Genellikle, iki sın�
 
 ![Model değerlendirme modülünü görselleştirin](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a>5. Adım: modeli Web hizmeti olarak yayımlama
+### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a> 5. Adım: modeli Web hizmeti olarak yayımlama
 Bir Azure Machine Learning modelini en az Fuss ile Web Hizmetleri olarak yayımlayabilme özelliği, yaygın olarak kullanılabilir hale getirilmesi için değerli bir özelliktir. Bu işlem yapıldıktan sonra herkes, tahmin gerektiren giriş verileriyle Web hizmetine çağrı yapabilir ve Web hizmeti bu tahminleri döndürmek için modeli kullanır.
 
 İlk olarak eğitilen modelimizi eğitilen model nesnesi olarak kaydederek eğitim **modeli modülüne sağ** tıklayıp **eğitilen model olarak kaydet** seçeneğini kullanın.
@@ -695,4 +695,3 @@ Varsayılan API anahtarı, Web hizmeti 'nin API anahtarımız ile değiştirilmi
 Python betiği JSON çerçevesinde istenen iki test örneği için, "puanlanmış Etiketler, puanlanmış olasılıklara" biçimindeki yanıtları geri alırsınız. Bu durumda, önceden oluşturulmuş kodun sağladığı varsayılan değerler seçilir (tüm sayısal sütunlar için 0 ve tüm kategorik sütunlar için "Value" dizesi).
 
 Sonuç olarak, izlenecek yol Azure Machine Learning kullanarak büyük ölçekli veri kümesinin nasıl işleneceğini gösterir. Terabaytlık bir veri ile başlayıp bir tahmin modeli oluşturup bulutta Web hizmeti olarak dağıttınız.
-

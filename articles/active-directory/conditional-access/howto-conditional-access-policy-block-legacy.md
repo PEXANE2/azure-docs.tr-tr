@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 09/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b4a0a411f51eed3a262ee59eb8e93b983755af3
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2499a89907eb63f01adbc80a6d206911c09c1259
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265961"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Koşullu erişim: eski kimlik doğrulamasını engelle
 
@@ -26,7 +26,7 @@ Eski kimlik doğrulama protokolleriyle ilişkili risk artışı nedeniyle, Micro
 
 Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur. Bu ilke, yöneticilerin var olan kullanıcılar üzerinde sahip olacağı etkiyi belirleyebilmeleri için, [yalnızca rapor moduna](howto-conditional-access-insights-reporting.md) konur. Yöneticiler ilkenin bu şekilde uygulanmaları konusunda rahatsızsa, belirli gruplar ekleyerek ve diğerlerini dışlayarak dağıtımı **Açık** veya aşamalı olarak değiştirebilir.
 
-1. **Azure portalında** genel yönetici olarak oturum açın.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.

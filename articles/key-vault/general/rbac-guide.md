@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b80b3cf1712fab17b8f626bae5fef97849e44e20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4f943b11830c19ebb69dd501827deb158cecadf0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972255"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336760"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Azure rol tabanlı erişim denetimi (Önizleme) ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama
 
@@ -45,8 +45,10 @@ Azure Key Vault yönetim yönergeleri hakkında daha fazla bilgi için bkz.:
 - [Hizmet sınırlarını Azure Key Vault](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Key Vault veri düzlemi işlemleri için Azure yerleşik rolleri (Önizleme)
+> [!NOTE]
+> `Key Vault Contributor` rol, anahtar kasalarını yönetmek için yönetim düzlemi işlemlerine yöneliktir. Anahtarlar, gizlilikler ve sertifikalara erişime izin vermez.
 
-| Yerleşik rol | Açıklama | ID |
+| Yerleşik rol | Description | ID |
 | --- | --- | --- |
 | Key Vault Yöneticisi (Önizleme) | Tüm veri düzlemi işlemlerini bir anahtar kasasında ve içindeki tüm nesneleri (sertifikalar, anahtarlar ve gizli diziler dahil) gerçekleştirin. Anahtar Kasası kaynakları yönetemez veya rol atamaları yönetilemez. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
 | Key Vault sertifikaları Müdürü (Önizleme) | İzinleri Yönet dışında bir anahtar kasasının sertifikaları üzerinde herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | a4417e6f-fecd-4de8-b567-7b0420556985 |

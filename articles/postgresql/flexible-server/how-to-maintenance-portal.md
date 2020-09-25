@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b06120437555ec71bc431cb1429120cb5e1987f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: be6040b8b84a4b86746d62bd2f1c07f0ffea0a3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941479"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336301"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-postgresql--flexible-server"></a>PostgreSQL için Azure veritabanı için zamanlanmış bakım ayarlarını yönetme – esnek sunucu
  
@@ -31,9 +31,9 @@ Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
  
 ## <a name="notifications-about-scheduled-maintenance-events"></a>Zamanlanmış bakım olayları hakkında bildirimler
  
-Azure hizmet durumu ' nu kullanarak, esnek sunucunuzda yaklaşan ve gerçekleştirilen zamanlanmış bakımla ilgili [bildirimleri görüntüleyebilirsiniz](/azure/service-health/service-notifications.md) . Ayrıca, bakım olayları hakkında bildirim almak için Azure hizmet durumu 'nda uyarılar [ayarlayabilirsiniz](/azure/service-health/resource-health-alert-monitor-guide.md) .
+Azure hizmet durumu ' nu kullanarak, esnek sunucunuzda yaklaşan ve gerçekleştirilen zamanlanmış bakımla ilgili [bildirimleri görüntüleyebilirsiniz](../../service-health/service-notifications.md) . Ayrıca, bakım olayları hakkında bildirim almak için Azure hizmet durumu 'nda uyarılar [ayarlayabilirsiniz](../../service-health/resource-health-alert-monitor-guide.md) .
  
 ## <a name="next-steps"></a>Sonraki adımlar  
  
 * [PostgreSQL Için Azure veritabanı – esnek sunucu 'da zamanlanmış bakım](concepts-maintenance.md) hakkında bilgi edinin
-* [Azure hizmet durumu](/azure/service-health/overview.md) hakkında yalın
+* [Azure hizmet durumu](../../service-health/overview.md) hakkında yalın

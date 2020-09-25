@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: isteğe bağlı SQL ile verileri çözümlemeye başlama'
+title: 'Öğretici: serverles SQL ile verileri çözümlemeye başlama'
 description: Bu öğreticide, Spark veritabanlarında bulunan verileri kullanarak verileri SQL isteğe bağlı olarak çözümlemeyi öğreneceksiniz.
 services: synapse-analytics
 author: saveenr
@@ -9,18 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 93ebc1c5e89e54f4813f270b9f8b7b13f672fbe3
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 8d26a03a8b61850dc17bc4efff5f8ca12dfca191
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300233"
 ---
 # <a name="analyze-data-with-sql-on-demand"></a>İsteğe bağlı SQL ile verileri analiz etme
 
-Bu öğreticide, Spark veritabanlarında bulunan verileri kullanarak verileri SQL isteğe bağlı olarak çözümlemeyi öğreneceksiniz. 
+Bu öğreticide, Spark veritabanlarında bulunan verileri kullanarak isteğe bağlı bir SQL havuzunu kullanarak sunucusuz SQL ile verileri çözümlemeyi öğreneceksiniz. 
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage--using-sql-on-demand"></a>İstek üzerine SQL kullanarak blob depolamada NYC TAXI verilerini çözümleme
+## <a name="analyze-nyc-taxi-data-in-blob-storage-using-sql-on-demand-pool"></a>SQL isteğe bağlı havuzu kullanarak blob depolamada NYC TAXI verilerini çözümleme
 
 1. **Bağlı**' ın altındaki **veri** hub 'ında Azure Blob Storage ' a sağ tıklayıp **> örnek veri kümeleri > nyc_tlc_yellow** ve **en üstteki 100 satırı seç** ' i seçin
 1. Bu, aşağıdaki kodla yeni bir SQL betiği oluşturur:

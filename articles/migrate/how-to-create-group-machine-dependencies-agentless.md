@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık an
 description: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlayın.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 2e6e562a18fa2ee0b89416ea67cc15394e760ada
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 164cc20632faa1d444d06da6688000e9b40d7e76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536447"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275600"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Makine bağımlılıklarını analiz etme (aracısız)
 
@@ -25,7 +25,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlı
 
 - Bağımlılık analizi görünümünde, şu anda bir gruptan bir sunucu ekleyemez veya kaldırabilirsiniz.
 - Bir sunucu grubu için bağımlılık eşlemesi Şu anda kullanılamıyor.
-- Bağımlılık verileri toplama, 400 sunucuları için aynı anda ayarlanabilir. 400 toplu işler halinde sıralama yaparak daha yüksek sayıda sunucu analiz etme sağlayabilirsiniz.
+- Bağımlılık verileri toplama, 1000 sunucuları için aynı anda ayarlanabilir. 1000 toplu işler halinde sıralama yaparak daha yüksek sayıda sunucu çözümleyebilirsiniz.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -57,7 +57,7 @@ Kullanıcı hesabını gereç öğesine ekleyin.
 
 ## <a name="start-dependency-discovery"></a>Bağımlılık bulmayı Başlat
 
-Üzerinde bağımlılık bulmayı etkinleştirmek istediğiniz makineleri seçin.
+Üzerinde bağımlılık bulmayı etkinleştirmek istediğiniz makineleri seçin. 
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
 2. **Bağımlılık Analizi** simgesine tıklayın.
@@ -68,7 +68,7 @@ Kullanıcı hesabını gereç öğesine ekleyin.
 
     ![Bağımlılık bulmayı Başlat](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
-Bağımlılık bulmayı başlattıktan sonra altı saat etrafında bağımlılıkları görselleştirebilirsiniz.
+Bağımlılık bulmayı başlattıktan sonra altı saat etrafında bağımlılıkları görselleştirebilirsiniz. Çeşitli makineleri etkinleştirmek istiyorsanız, [PowerShell](#start-or-stop-dependency-discovery-using-powershell) 'i kullanarak bunu yapabilirsiniz.
 
 ## <a name="visualize-dependencies"></a>Bağımlılıkları görselleştirin
 
@@ -125,7 +125,7 @@ Hedef bağlantı noktası | Hedef makinedeki bağlantı noktası numarası
 
 ## <a name="stop-dependency-discovery"></a>Bağımlılık bulmayı durdur
 
-Üzerinde bağımlılık bulmayı durdurmak istediğiniz makineleri seçin.
+Üzerinde bağımlılık bulmayı durdurmak istediğiniz makineleri seçin. 
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
 2. **Bağımlılık Analizi** simgesine tıklayın.
@@ -133,6 +133,114 @@ Hedef bağlantı noktası | Hedef makinedeki bağlantı noktası numarası
 3. **Sunucuları kaldır** sayfasında, bağımlılık bulmayı durdurmayı planladığınız VM 'leri bulmak **için gereken gereci** seçin.
 4. Makine listesinden makineleri seçin.
 5. **Sunucuları kaldır**' a tıklayın.
+
+Birden çok makinede bağımlılığı durdurmak istiyorsanız, [PowerShell](#start-or-stop-dependency-discovery-using-powershell) 'i kullanarak bunu yapabilirsiniz.
+
+
+### <a name="start-or-stop-dependency-discovery-using-powershell"></a>PowerShell kullanarak bağımlılık bulmayı başlatma veya durdurma
+
+GitHub 'daki [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) deposundan PowerShell modülünü indirin.
+
+
+#### <a name="log-in-to-azure"></a>Azure'da oturum açma
+
+1. Connect-AzAccount cmdlet 'ini kullanarak Azure aboneliğinizde oturum açın.
+
+    ```PowerShell
+    Connect-AzAccount
+    ```
+    Azure Kamu kullanıyorsanız, aşağıdaki komutu kullanın.
+    ```PowerShell
+    Connect-AzAccount -EnvironmentName AzureUSGovernment
+    ```
+
+2. Azure geçişi projesini oluşturduğunuz aboneliği seçin 
+
+    ```PowerShell
+    select-azsubscription -subscription "Fabrikam Demo Subscription"
+    ```
+
+3. İndirilen AzMig_Dependencies PowerShell modülünü içeri aktarma
+
+    ```PowerShell
+    Import-Module .\AzMig_Dependencies.psm1
+    ```
+
+#### <a name="enable-or-disable-dependency-data-collection"></a>Bağımlılık veri toplamayı etkinleştir veya devre dışı bırak
+
+1. Aşağıdaki komutları kullanarak, Azure geçişi projenizde bulunan VMware VM 'lerinin listesini alın. Aşağıdaki örnekte, proje adı FabrikamDemoProject ve ait olduğu kaynak grubu FabrikamDemoRG. Makinelerin listesi FabrikamDemo_VMs.csv ' de kaydedilecek
+
+    ```PowerShell
+    Get-AzMigDiscoveredVMwareVMs -ResourceGroupName "FabrikamDemoRG" -ProjectName "FabrikamDemoProject" -OutputCsvFile "FabrikamDemo_VMs.csv"
+    ```
+
+    Dosyasında, VM görünen adını, bağımlılık koleksiyonunun geçerli durumunu ve bulunan tüm VM 'lerin ARM KIMLIĞINI görebilirsiniz. 
+
+2. Bağımlılıkları etkinleştirmek veya devre dışı bırakmak için bir giriş CSV dosyası oluşturun. Dosyanın "ARM KIMLIĞI" üst bilgisine sahip bir sütunu olması gerekir. CSV dosyasındaki ek üstbilgiler yok sayılır. Önceki adımda oluşturulan dosyayı kullanarak CSV oluşturabilirsiniz. Bağımlılıkları etkinleştirmek veya devre dışı bırakmak istediğiniz VM 'Leri koruyarak dosyanın bir kopyasını oluşturun. 
+
+    Aşağıdaki örnekte, FabrikamDemo_VMs_Enable.csv giriş dosyasındaki VM 'Ler listesinde bağımlılık Analizi etkinleştiriliyor.
+
+    ```PowerShell
+    Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Enable.csv -Enable
+    ```
+
+    Aşağıdaki örnekte, FabrikamDemo_VMs_Disable.csv giriş dosyasındaki VM 'Ler listesinde bağımlılık Analizi devre dışı bırakılıyor.
+
+    ```PowerShell
+    Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Disable.csv -Disable
+    ```
+
+## <a name="visualize-network-connections-in-power-bi"></a>Power BI 'de ağ bağlantılarını görselleştirin
+
+Azure geçişi, aynı anda birçok sunucunun ağ bağlantılarını görselleştirmek ve işlem ve sunucuya göre filtrelemek için kullanabileceğiniz bir Power BI şablonu sunar. Görselleştirmek için, aşağıdaki yönergelere göre Power BI bağımlılık verileriyle yükleyin.
+
+1. GitHub 'daki [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) deposundan PowerShell modülünü ve Power BI şablonunu indirin.
+
+2. Aşağıdaki yönergeleri kullanarak Azure 'da oturum açın: 
+- Connect-AzAccount cmdlet 'ini kullanarak Azure aboneliğinizde oturum açın.
+
+    ```PowerShell
+    Connect-AzAccount
+    ```
+
+- Azure Kamu kullanıyorsanız, aşağıdaki komutu kullanın.
+
+    ```PowerShell
+    Connect-AzAccount -EnvironmentName AzureUSGovernment
+    ```
+
+- Azure geçişi projesini oluşturduğunuz aboneliği seçin 
+
+    ```PowerShell
+    select-azsubscription -subscription "Fabrikam Demo Subscription"
+    ```
+
+3. İndirilen AzMig_Dependencies PowerShell modülünü içeri aktarma
+
+    ```PowerShell
+    Import-Module .\AzMig_Dependencies.psm1
+    ```
+
+4. Aşağıdaki komutu çalıştırın. Bu komut, bir CSV 'deki bağımlılıklar verilerini indirir ve Power BI görselleştirme için kullanılabilecek benzersiz bağımlılıkların bir listesini oluşturmak üzere işler. Aşağıdaki örnekte, proje adı FabrikamDemoProject ve ait olduğu kaynak grubu FabrikamDemoRG. Bağımlılıklar, FabrikamAppliance tarafından bulunan makineler için indirilir. Benzersiz bağımlılıklar FabrikamDemo_Dependencies.csv kaydedilir
+
+    ```PowerShell
+    Get-AzMigDependenciesAgentless -ResourceGroup FabrikamDemoRG -Appliance FabrikamAppliance -ProjectName FabrikamDemoProject -OutputCsvFile "FabrikamDemo_Dependencies.csv"
+    ```
+
+5. İndirilen Power BI şablonunu açın
+
+6. Power BI indirilen bağımlılık verilerini yükleyin.
+    - Şablonu Power BI açın.
+    - Araç çubuğundan **veri al** ' a tıklayın. 
+    - Ortak veri kaynaklarından **metin/CSV** ' yi seçin.
+    - İndirilen bağımlılıklar dosyasını seçin.
+    - **Yükle**' ye tıklayın.
+    - CSV dosyasının adıyla bir tablo alındığını görürsünüz. Tabloyu sağ taraftaki alanlar çubuğunda görebilirsiniz. AzMig_Dependencies olarak yeniden adlandırın
+    - Araç çubuğundan Yenile ' ye tıklayın.
+
+    Ağ bağlantıları grafiği ve kaynak sunucu adı, hedef sunucu adı, kaynak işlem adı, hedef işlem adı Dilimleyicileri içeri aktarılan verilerle birlikte çalışır olmalıdır.
+
+7. Sunucu ve işlemlere göre filtreleme ağ bağlantılarının haritasını görselleştirin. Dosyanızı kaydedin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

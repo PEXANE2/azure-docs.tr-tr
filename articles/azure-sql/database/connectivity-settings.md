@@ -7,14 +7,14 @@ titleSuffix: Azure SQL Database and Azure Synapse Analytics (formerly SQL Data W
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: f664ffbfc9aa38dcf8eb7736b28613efb95bde63
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 431d7ff2631f9b4a0a20db82c40b512c41209b7e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325377"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL Bağlantı Ayarları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -31,7 +31,7 @@ Bağlantı ayarlarına aşağıdaki ekran görüntüsünde gösterildiği gibi *
 > [!NOTE]
 > Bu ayarlar uygulandıktan sonra, **hemen etkili olur** ve her bir ayar için gereksinimleri karşılamayan istemcileriniz için bağlantı kaybına neden olabilir.
 
-## <a name="deny-public-network-access"></a>Ortak ağ erişimini reddetme
+## <a name="deny-public-network-access"></a>Genel ağ erişimini engelleme
 
 **Ortak ağ erişimini reddet** ayarı **Evet**olarak ayarlandığında yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar **Hayır** (varsayılan) olarak ayarlandığında, istemciler genel uç noktaları (IP tabanlı güvenlik duvarı KURALLARı, VNET tabanlı güvenlik duvarı kuralları) veya özel uç noktalar (özel bağlantı kullanarak) [ağ erişimi genel bakış](network-access-controls-overview.md)bölümünde özetlenen şekilde bağlanabilir. 
 
@@ -76,7 +76,7 @@ Aşağıdaki PowerShell betiği, `Get` sunucu düzeyinde nasıl ve `Set` **genel
 # Update Public Network Access to Disabled
 $SecureString = ConvertTo-SecureString "password" -AsPlainText -Force
 
-Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString -PublicNetworkAccess "Enabled"
+Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString -PublicNetworkAccess "Disabled"
 ```
 
 ## <a name="change-public-network-access-via-cli"></a>CLı aracılığıyla ortak ağ erişimini değiştirme

@@ -1,6 +1,6 @@
 - name: FHIR için Azure API'si
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: FHIR için Azure API'si hakkında
       href: overview.md
@@ -80,7 +80,7 @@
     - name: Verileri dışarı aktarma
       expanded: false
       items:
-        - name: Tanımlanmamış dışarı aktarma
+        - name: Verileri dışarı aktarma
           href: export-data.md
     - name: Kimlik nesnesi kimliklerini bulma
       href: find-identity-object-ids.md

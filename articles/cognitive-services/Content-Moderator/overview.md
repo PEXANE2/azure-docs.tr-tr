@@ -8,24 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 82dc81c540115f08e57f87e63184e1e895c5e4fe
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: cog-serv-seo-aug-2020
+keywords: İçerik Aracı, Azure İçerik Yöneticisi, çevrimiçi Aracı, içerik filtreleme yazılımı, içerik denetleme hizmeti
+ms.openlocfilehash: d502f41a79500b80e1891219b54bde30eb3cd8ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834550"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309663"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Content Moderator, zararlı olabilecek, riskli veya başka türlü istenmeyen malzemeler için metin, resim ve video içeriğini denetleyen bir bilişsel hizmettir. Bu malzeme bulunduğunda hizmet, içeriğe uygun Etiketler (bayraklar) uygular. Uygulamanız da bu bayraklı içeriği dikkate alarak düzenlemelere uygunluk ya da kullanıcılar için istenen ortamın oluşturulması amacıyla işlem gerçekleştirebilir. Farklı içerik bayraklarının ne belirtdiklerine ilişkin daha fazla bilgi edinmek için [denetleme API 'leri](#moderation-apis) bölümüne bakın.
+Azure Content Moderator, rahatsız edici, riskli veya başka türlü istenmeyen içerikleri işlemenize imkan tanıyan bir AI hizmetidir. Metin, resim ve videoları tarayan ve içerik bayraklarını otomatik olarak uygulayan AI destekli içerik denetleme hizmetini ve ayrıca, bir insan gözden geçirenler ekibi için çevrimiçi bir moderatör ortamı olan gözden geçirme aracını içerir.
+
+Yönetmeliklere uymak veya kullanıcılarınız için amaçlanan ortamı sürdürmek üzere uygulamanıza içerik filtreleme yazılımı oluşturmak isteyebilirsiniz.
 
 ## <a name="where-its-used"></a>Kullanıldığı yer
 
-Aşağıda bir yazılım geliştirme uzmanının veya ekibinin Content Moderator özelliklerinden faydalanmak isteyebileceği birkaç senaryo verilmiştir:
+Aşağıda, bir yazılım geliştiricisi veya takımının bir içerik denetleme hizmeti gerektirdiği bazı senaryolar verilmiştir:
 
 - Çevrimiçi Pazar, bu orta düzey ürün kataloglarını ve diğer Kullanıcı tarafından oluşturulan içeriği koyar.
 - Kullanıcı tarafından oluşturulan oyun yapıtları ve sohbet odalarını kullanan oyun şirketleri.
@@ -33,7 +37,7 @@ Aşağıda bir yazılım geliştirme uzmanının veya ekibinin Content Moderator
 - İçerikleri için merkezi denetleme uygulayan kurumsal medya şirketleri.
 - K-12 Eğitim çözüm sağlayıcıları öğrenciler ve eğitimciler için uygun olmayan içeriği filtreleyerek.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Geçersiz alt düzey yararlanma görüntülerini algılamak için Content Moderator kullanamazsınız. Ancak nitelikli kuruluşlar, bu tür bir içerik için [PhotoDNA bulut hizmetini](https://www.microsoft.com/photodna "Microsoft PhotoDNA bulut hizmeti") kullanabilir.
 
 ## <a name="what-it-includes"></a>Neleri içerir
@@ -48,7 +52,7 @@ Content Moderator hizmeti, uygunsuz veya sakıncalı olabilecek malzemelere yön
 
 Aşağıdaki tabloda farklı denetleme API 'Leri açıklanmaktadır.
 
-| API grubu | Açıklama |
+| API grubu | Description |
 | ------ | ----------- |
 |[**Metin denetimi**](text-moderation-api.md)| Saldırgan içeriği, cinsel açık veya müstehcen içerik, küfür ve kişisel veriler için metin tarar.|
 |[**Özel terim listeleri**](try-terms-list-api.md)| Metni, yerleşik koşullarla birlikte özel bir terim listesine karşı tarar. İçerik ilkelerinize göre içerik engellemek veya izin vermek için özel listeler kullanabilirsiniz.|  
@@ -77,4 +81,4 @@ Tüm bilişsel hizmetlerde olduğu gibi, Content Moderator hizmetini kullanan ge
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Web üzerinde Try Content moderator](quick-start.md)yönergelerini izleyerek Content moderator hizmetini kullanmaya başlayın.
+Web portalında Content Moderator kullanmaya başlamak için [Web üzerinde Content moderator deneyin](quick-start.md)' i izleyin. Ya da, kodda temel senaryoları uygulamak için bir [istemci kitaplığı hızlı](client-libraries.md) başlangıcını tamamlayabilirsiniz.
