@@ -1,20 +1,20 @@
 ---
-title: 'Öğretici: Android uygulaması geçirme | Microsoft Azure haritaları'
-description: Android uygulamasını Google Maps 'tan Microsoft Azure Maps 'a geçirme.
+title: Android uygulamasını geçirme | Microsoft Azure haritaları
+description: Android uygulamasını Google Maps 'tan Microsoft Azure Maps 'a geçirme
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 08/19/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fe67364ef51248d04cbc6095eb691ffe255fa02c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 96f68bdf58d9cc98815e4ae76ae01da87c38dc88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085884"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319648"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Google Maps 'tan Android uygulaması geçirme
 
@@ -30,35 +30,35 @@ Azure haritalar tarafından Android SDK ile geliştirme hakkında daha fazla bil
 
 Google veya Azure Maps kullanarak bir Android uygulamasına harita yükleme, benzer adımlardan oluşur. SDK kullanırken, şunları yapmanız gerekir:
 
-- Her iki platforma de erişmek için bir API veya abonelik anahtarı alın.
-- Haritanın nerede işleneceğini ve nasıl düzenleneceğini belirtmek için bir etkinliğe bazı XML ekleyin.
-- Eşleme görünümünü içeren etkinlikten tüm yaşam döngüsü yöntemlerini Map sınıfında karşılık gelen yöntemlere geçersiz kılın. Özellikle, aşağıdaki yöntemleri geçersiz kılmanız gerekir:
-    - `onCreate(Bundle)`
-    - `onStart()`
-    - `onResume()`
-    - `onPause()`
-    - `onStop()`
-    - `onDestroy()`
-    - `onSaveInstanceState(Bundle)`
-    - `onLowMemory()`
-- Eşlemeye ve programa erişmeye çalışmadan önce haritanın hazırlanmaya başlamasını bekleyin.
+* Her iki platforma de erişmek için bir API veya abonelik anahtarı alın.
+* Haritanın nerede işleneceğini ve nasıl düzenleneceğini belirtmek için bir etkinliğe bazı XML ekleyin.
+* Eşleme görünümünü içeren etkinlikten tüm yaşam döngüsü yöntemlerini Map sınıfında karşılık gelen yöntemlere geçersiz kılın. Özellikle, aşağıdaki yöntemleri geçersiz kılmanız gerekir:
+    * `onCreate(Bundle)`
+    * `onStart()`
+    * `onResume()`
+    * `onPause()`
+    * `onStop()`
+    * `onDestroy()`
+    * `onSaveInstanceState(Bundle)`
+    * `onLowMemory()`
+* Eşlemeye ve programa erişmeye çalışmadan önce haritanın hazırlanmaya başlamasını bekleyin.
 
-**Önce: Google Maps**
+### <a name="before-google-maps"></a>Önce: Google Maps
 
 Android için Google Maps SDK 'sını kullanarak bir Haritayı göstermek için aşağıdaki adımlar yapılır:
 
-1.  Google Play hizmetlerinin yüklü olduğundan emin olun.
-2.  Google Maps hizmeti için modülün **Gradle. Build** dosyasına bir bağımlılık ekleyin: 
+1. Google Play hizmetlerinin yüklü olduğundan emin olun.
+2. Google Maps hizmeti için modülün  **Gradle. Build** dosyasına bir bağımlılık ekleyin:
 
     `implementation 'com.google.android.gms:play-services-maps:17.0.0'`
 
-1.  Google Maps  ** \_ \_api.xml** dosyasının uygulama bölümünde Google Maps API anahtarı ekleyin:
-    
+3. Google Maps  ** \_ \_api.xml** dosyasının uygulama bölümünde Google Maps API anahtarı ekleyin:
+
     ```xml
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_GOOGLE_MAPS_KEY"/>
     ```
 
-1.  Ana etkinliğe bir harita parçası ekleyin:
+4. Ana etkinliğe bir harita parçası ekleyin:
 
     ```xml
     <com.google.android.gms.maps.MapView
@@ -67,13 +67,13 @@ Android için Google Maps SDK 'sını kullanarak bir Haritayı göstermek için 
             android:layout_height="match_parent"/>
     ```
 
-1.  **MainActivity. Java** dosyasında Google Maps SDK 'sını içeri aktarmanız gerekir. Harita görünümünü içeren etkinlikten tüm yaşam döngüsü yöntemlerini Map sınıfındaki ilgili olanlarla iletin. `MapView`Yöntemini kullanarak harita parçasındaki bir örnek alın `getMapAsync(OnMapReadyCallback)` . , `MapView` Haritalar sistemini ve görünümünü otomatik olarak başlatır. **MainActivity. Java** dosyasını aşağıdaki gibi düzenleyin:
+5. **MainActivity. Java** dosyasında Google Maps SDK 'sını içeri aktarmanız gerekir. Harita görünümünü içeren etkinlikten tüm yaşam döngüsü yöntemlerini Map sınıfındaki ilgili olanlarla iletin. `MapView`Yöntemini kullanarak harita parçasındaki bir örnek alın `getMapAsync(OnMapReadyCallback)` . , `MapView` Haritalar sistemini ve görünümünü otomatik olarak başlatır. **MainActivity. Java** dosyasını aşağıdaki gibi düzenleyin:
 
     ```java
     import com.google.android.gms.maps.GoogleMap;
     import com.google.android.gms.maps.MapView;
     import com.google.android.gms.maps.OnMapReadyCallback;
-    
+ 
     import android.support.v7.app.AppCompatActivity;
     import android.os.Bundle;
     
@@ -144,11 +144,9 @@ Android için Google Maps SDK 'sını kullanarak bir Haritayı göstermek için 
 
 Bir uygulamayı çalıştırdığınızda, eşleme denetimi aşağıdaki görüntüde olduğu gibi yüklenir.
 
-<center>
+![Basit Google haritaları](media/migrate-google-maps-android-app/simple-google-maps.png)
 
-![Basit Google haritaları](media/migrate-google-maps-android-app/simple-google-maps.png)</center>
-
-**Sonrasında: Azure Maps**
+### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için aşağıdaki adımların gerçekleştirilmesi gerekir:
 
@@ -161,7 +159,7 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
     ```
 
 2. **Uygulamanızı/Build. Gradle** öğesini güncelleştirin ve aşağıdaki kodu buna ekleyin:
-    
+
     1. Projenizin **Minsdkversion** özelliğinin API 21 veya daha yüksek olduğundan emin olun.
 
     2. Aşağıdaki kodu Android bölümüne ekleyin:
@@ -172,6 +170,7 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
+
     3. Bağımlılıklar bloğunu güncelleştirin. En son Azure Maps Android SDK için yeni bir uygulama bağımlılığı satırı ekleyin:
 
         ```java
@@ -180,10 +179,11 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
 
         > [!Note]
         > Azure Haritalar Android SDK düzenli olarak yükseltilir ve geliştirilir. En son Azure haritaları sürüm numarasını almak için [Android eşleme ile çalışmaya başlama denetimini](how-to-use-android-map-control-library.md) görebilirsiniz. Ayrıca, kodunuzun her zaman en son sürümü göstermesi için "0,2" olan sürüm numarasını "0 +" olarak ayarlayabilirsiniz.
-    
+
     4. Araç çubuğunda **dosyasına** gidin ve ardından **projeyi Gradle dosyalarıyla Eşitle**' ye tıklayın.
-3. Ana etkinliğe bir harita parçası ekleyin (kaynaklar \> Düzen \> etkinliği \_main.xml):
-    
+
+3. Ana etkinliğe bir harita parçası ekleyin (kaynaklar PWD \> Düzen \> etkinliği \_main.xml):
+
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
@@ -202,7 +202,7 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
     ```
 
 4. **MainActivity. Java** dosyasında şunları yapmanız gerekir:
-    
+
     * Azure Haritalar SDK 'sını içeri aktarır
     * Azure haritalar kimlik doğrulama bilgilerinizi ayarlama
     * **OnCreate** yönteminde Map denetim örneğini al
@@ -221,7 +221,7 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
     * `onLowMemory()`
 
     **MainActivity. Java** dosyasını aşağıdaki gibi düzenleyin:
-    
+
     ```java
     package com.example.myapplication;
 
@@ -234,7 +234,7 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
 
     public class MainActivity extends AppCompatActivity {
-        
+     
         static {
             AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
@@ -303,9 +303,8 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
 
 Uygulamanızı çalıştırırsanız, eşleme denetimi aşağıdaki görüntüde olduğu gibi yüklenir.
 
-<center>
 
-![Basit Azure haritaları](media/migrate-google-maps-android-app/simple-azure-maps.png)</center>
+![Basit Azure haritaları](media/migrate-google-maps-android-app/simple-azure-maps.png)
 
 Azure haritalar denetiminin daha fazla yakınlaştırmayı desteklediğini ve bir dünya görünümü daha fazlasını sağladığını unutmayın.
 
@@ -316,7 +315,7 @@ Azure haritalar denetiminin daha fazla yakınlaştırmayı desteklediğini ve bi
 
 Hedef kitleniz birden fazla ülkeye/bölgeye yayıldığında veya farklı dillerde konuşyayıldığında yerelleştirme önemlidir.
 
-**Önce: Google Maps**
+### <a name="before-google-maps"></a>Önce: Google Maps
 
 `onCreate`Eşleme dilini ayarlamak için yöntemine aşağıdaki kodu ekleyin. Haritanın bağlam görünümü ayarlamadan önce kodun eklenmesi gerekir. "Fr" dil kodu, dili Fransızca olarak sınırlandırır.
 
@@ -332,11 +331,9 @@ getBaseContext().getResources().updateConfiguration(config,
 
 Dilde "fr" olarak ayarlanan Google Maps örneğine bir örnek aşağıda verilmiştir.
 
-<center>
+![Google Haritalar yerelleştirme](media/migrate-google-maps-android-app/google-maps-localization.png)
 
-![Google Haritalar yerelleştirme](media/migrate-google-maps-android-app/google-maps-localization.png)</center>
-
-**Sonrasında: Azure Maps**
+### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Azure haritalar, eşlemenin dilini ve bölgesel görünümünü ayarlamak için üç farklı yol sunar. İlk seçenek, dil ve bölgesel görünüm bilgilerini sınıfa geçirmektir `AzureMaps` . Bu seçenek, `setLanguage` `setView` genel olarak statik ve yöntemleri kullanır. Anlamı, varsayılan dil ve bölgesel görünüm, uygulamanızda yüklü olan tüm Azure haritalar denetimleri arasında ayarlanır. Bu örnek, "fr-FR" dil kodunu kullanarak Fransızca ayarlar.
 
@@ -376,9 +373,7 @@ mapControl.onReady(map -> {
 
 Bu dilin "fr-FR" olarak ayarlandığı Azure Maps örneği aşağıda verilmiştir.
 
-<center>
-
-![Azure haritalar yerelleştirme](media/migrate-google-maps-android-app/azure-maps-localization.png)</center>
+![Azure haritalar yerelleştirme](media/migrate-google-maps-android-app/azure-maps-localization.png)
 
 [Desteklenen dillerin](supported-languages.md)tüm listesini gözden geçirin.
 
@@ -386,7 +381,7 @@ Bu dilin "fr-FR" olarak ayarlandığı Azure Maps örneği aşağıda verilmişt
 
 Azure haritalar ve Google Maps içindeki dinamik haritalar, uygun yöntemleri çağırarak program aracılığıyla yeni coğrafi konumlara taşınabilir. Haritada uydu havadan görüntüleme, Haritayı koordinatlarla bir konum üzerine ortalayın ve yakınlaştırma düzeyini değiştirin. Bu örnekte, Enlem: 35,0272, Boylam:-111,0225 ve 15 ' in yakınlaştırma düzeyini kullanacağız.
 
-**Önce: Google Maps**
+### <a name="before-google-maps"></a>Önce: Google Maps
 
 Google Maps harita denetimi Kamerası, yöntemi kullanılarak programlı bir şekilde taşınabilir `moveCamera` . `moveCamera`Yöntemi, haritanın merkezini ve yakınlaştırma düzeyini belirtmenize olanak tanır. `setMapType`Yöntemi, harita türünü görüntülenecek şekilde değiştirir.
 
@@ -400,14 +395,12 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
-
-![Google Maps kümesi görünümü](media/migrate-google-maps-android-app/google-maps-set-view.png)</center>
+![Google Maps kümesi görünümü](media/migrate-google-maps-android-app/google-maps-set-view.png)
 
 > [!NOTE]
-> Azure haritalar daha büyük bir 512 piksel kutucuğu kullandığında, Google Maps boyutlarda 256 piksel olan kutucukları kullanır. Bu, Google Maps ile aynı harita alanını yüklemek için Azure haritalar tarafından gerek duyulan ağ isteklerinin sayısını azaltır. Google Maps 'lerdeki aynı görüntülenebilen alanı bir eşleme olarak elde etmek için, Google Maps 'ta kullanılan yakınlaştırma düzeyini Azure haritalar kullanırken bir tane olarak çıkarmanız gerekir. 
+> Azure haritalar daha büyük bir 512 piksel kutucuğu kullandığında, Google Maps boyutlarda 256 piksel olan kutucukları kullanır. Bu, Google Maps ile aynı harita alanını yüklemek için Azure haritalar tarafından gerek duyulan ağ isteklerinin sayısını azaltır. Google Maps 'lerdeki aynı görüntülenebilen alanı bir eşleme olarak elde etmek için, Google Maps 'ta kullanılan yakınlaştırma düzeyini Azure haritalar kullanırken bir tane olarak çıkarmanız gerekir.
 
-**Sonrasında: Azure Maps**
+### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Daha önce belirtildiği gibi, Azure Maps 'ta aynı görüntülenebilir alan elde etmek için Google Maps 'ta kullanılan yakınlaştırma düzeyini bir tane olarak çıkar. Bu durumda, 14 yakınlaştırma düzeyi kullanın.
 
@@ -437,19 +430,17 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure haritalar kümesi görünümü](media/migrate-google-maps-android-app/azure-maps-set-view.png)</center>
+![Azure haritalar kümesi görünümü](media/migrate-google-maps-android-app/azure-maps-set-view.png)
 
 **Ek kaynaklar:**
 
-- [Desteklenen eşleme stilleri](supported-map-styles.md)
+* [Desteklenen eşleme stilleri](supported-map-styles.md)
 
 ## <a name="adding-a-marker"></a>İşaretleyici ekleme
 
 Nokta verileri genellikle haritadaki bir görüntü kullanılarak işlenir. Bu görüntüler işaretçiler, Pushpin, pin veya semboller olarak adlandırılır. Aşağıdaki örneklerde, nokta verileri, eşleme üzerinde, Enlem: 51,5, Boylam:-0,2 konumunda işaretçiler olarak işlenir.
 
-**Önce: Google Maps**
+### <a name="before-google-maps"></a>Önce: Google Maps
 
 Google Maps ile işaretçiler, Maps yöntemi kullanılarak eklenir `addMarker` .
 
@@ -462,11 +453,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Haritalar işaretçisi](media/migrate-google-maps-android-app/google-maps-marker.png)
 
-![Google Haritalar işaretçisi](media/migrate-google-maps-android-app/google-maps-marker.png)</center>
-
-**Sonrasında: Azure Maps**
+### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Azure haritalar 'da, önce verileri bir veri kaynağına ekleyerek haritada nokta verileri işleme. Ardından, bu veri kaynağını bir sembol katmanına bağlama. Veri kaynağı, harita denetimindeki uzamsal verilerin yönetimini iyileştirir. Sembol katmanı, nokta verilerinin görüntü veya metin olarak kullanılarak nasıl işleneceğini belirtir.
 
@@ -484,9 +473,7 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure haritalar işaretleyicisi](media/migrate-google-maps-android-app/azure-maps-marker.png)</center>
+![Azure haritalar işaretleyicisi](media/migrate-google-maps-android-app/azure-maps-marker.png)
 
 ## <a name="adding-a-custom-marker"></a>Özel işaretleyici ekleme
 
@@ -499,7 +486,7 @@ yellow-pushpin.png</center>
 
 Her iki örnekte de yukarıdaki görüntü, uygulamalar kaynaklarının çizilebilir klasörüne eklenir.
 
-**Önce: Google Maps**
+### <a name="before-google-maps"></a>Önce: Google Maps
 
 Google Maps ile, işaretçiler için özel görüntüler kullanılabilir. İşaretleyici seçeneğini kullanarak özel görüntüleri yükleyin `icon` . Görüntünün noktasını koordinatya hizalamak için `anchor` seçeneğini kullanın. Tutturucu, görüntünün boyutlarına göredir. Bu durumda, bağlayıcı 0,2 birim genişliğinde ve 1 birim yüksekliğinde olur.
 
@@ -514,11 +501,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps özel işaretçisi](media/migrate-google-maps-android-app/google-maps-custom-marker.png)
 
-![Google Maps özel işaretçisi](media/migrate-google-maps-android-app/google-maps-custom-marker.png)</center>
-
-**Sonrasında: Azure Maps**
+### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Azure haritalar 'daki sembol katmanları özel görüntüleri destekler, ancak önce görüntünün harita kaynaklarına yüklenmesi ve benzersiz bir KIMLIK atanması gerekir. Ardından, sembol katmanının bu KIMLIĞE başvurması gerekir. Seçeneği kullanarak görüntüdeki doğru noktaya hizalamak için simgeyi kaydırın `iconOffset` . Simge boşluğu piksel cinsinden olur. Varsayılan olarak, fark görüntünün alt merkezine göredir, ancak bu fark değeri seçeneği kullanılarak ayarlanabilir `iconAnchor` . Bu örnek `iconAnchor` seçeneğini olarak ayarlar `"center"` . Bir simge sapmasını kullanarak, raptiye görüntüsünün noktasıyla hizalamak için görüntüyü beş piksel sağa ve 15 piksele taşıyın.
 
@@ -542,15 +527,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure haritalar özel işaretçisi](media/migrate-google-maps-android-app/azure-maps-custom-marker.png)</center>
+![Azure haritalar özel işaretçisi](media/migrate-google-maps-android-app/azure-maps-custom-marker.png)
 
 ## <a name="adding-a-polyline"></a>Çoklu çizgi ekleme
 
 Polylines, haritada bir çizgiyi veya yolu göstermek için kullanılır. Aşağıdaki örneklerde, haritada kesik çizgili bir çoklu çizginin nasıl oluşturulacağı gösterilmektedir.
 
-**Önce: Google Maps**
+### <a name="before-google-maps"></a>Önce: Google Maps
 
 Google Maps ile sınıfını kullanarak bir çoklu çizgi işleme koyun `PolylineOptions` . Yöntemini kullanarak, çoklu çizgiyi haritaya ekleyin `addPolyline` . Seçeneğini kullanarak kontur rengini ayarlayın `color` . Seçeneğini kullanarak kontur genişliğini ayarlayın `width` . Seçeneğini kullanarak bir vuruş tire dizisi ekleyin `pattern` .
 
@@ -574,11 +557,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Haritalar çoklu çizgi](media/migrate-google-maps-android-app/google-maps-polyline.png)
 
-![Google Haritalar çoklu çizgi](media/migrate-google-maps-android-app/google-maps-polyline.png)</center>
-
-**Sonrasında: Azure Maps**
+### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Azure haritalar 'da çoklu çizgilerin çizgisini, `LineString` veya nesneleri olarak adlandırılır `MultiLineString` . Bu nesneleri bir veri kaynağına ekleyin ve çizgi katmanı kullanarak bunları işleme koyun. Seçeneğini kullanarak kontur genişliğini ayarlayın `strokeWidth` . Seçeneğini kullanarak bir vuruş tire dizisi ekleyin `strokeDashArray` .
 
@@ -607,15 +588,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure haritalar çoklu çizgi](media/migrate-google-maps-android-app/azure-maps-polyline.png)</center>
+![Azure haritalar çoklu çizgi](media/migrate-google-maps-android-app/azure-maps-polyline.png)
 
 ## <a name="adding-a-polygon"></a>Çokgen ekleme
 
 Çokgenler, haritadaki bir alanı temsil etmek için kullanılır. Sonraki örneklerde bir çokgen oluşturma gösterilmektedir. Bu Çokgen haritanın orta koordinasyonu temelinde bir üçgen oluşturur.
 
-**Önce: Google Maps**
+### <a name="before-google-maps"></a>Önce: Google Maps
 
 Google Maps ile sınıfı kullanarak bir çokgen işleme `PolygonOptions` . Yöntemini kullanarak çokgeni haritaya ekleyin `addPolygon` . Sırasıyla ve seçeneklerini kullanarak Fill ve Stroke renklerini `fillColor` ayarlayın `strokeColor` . Seçeneğini kullanarak kontur genişliğini ayarlayın `strokeWidth` .
 
@@ -639,11 +618,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Haritalar Çokgen](media/migrate-google-maps-android-app/google-maps-polygon.png)
 
-![Google Haritalar Çokgen](media/migrate-google-maps-android-app/google-maps-polygon.png)</center>
-
-**Sonrasında: Azure Maps**
+### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Azure Maps ' de `Polygon` `MultiPolygon` bir veri kaynağına nesneler ekleyin ve bunları katman kullanarak haritada işleme koyun. Çokgen katmanındaki bir çokgen alanını işleme. Bir çizgi katmanını kullanarak bir çokgen ana hattını işleme. Ve seçeneklerini kullanarak kontur rengini ve genişliğini ayarlayın `strokeColor` `strokeWidth` .
 
@@ -676,10 +653,7 @@ mapControl.onReady(map -> {
         strokeWidth(2f)));
 });
 ```
-
-<center>
-
-![Azure haritalar Çokgen](media/migrate-google-maps-android-app/azure-maps-polygon.png)</center>
+![Azure haritalar Çokgen](media/migrate-google-maps-android-app/azure-maps-polygon.png)
 
 ## <a name="overlay-a-tile-layer"></a>Döşeme katmanını kaplama
 
@@ -687,7 +661,7 @@ mapControl.onReady(map -> {
 
 Aşağıdaki örnekler, Iowa çevresel Mesonet of Iowa çevre bir hava durumu radar kutucuk katmanını kaplamış. Kutucuklar 256 piksel boyutlardır.
 
-**Önce: Google Maps**
+### <a name="before-google-maps"></a>Önce: Google Maps
 
 Google Maps ile, bir döşeme katmanı haritanın üstünde yer alabilir. Sınıfını kullanın `TileOverlayOptions` . Yöntemi kullanarak haritaya kutucuk katmanını ekleyin `addTileLauer` . Kutucukları yarı saydam hale getirmek için, `transparency` seçenek 0,2 olarak veya %20 saydam olarak ayarlanır.
 
@@ -716,11 +690,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps kutucuk katmanı](media/migrate-google-maps-android-app/google-maps-tile-layer.png)
 
-![Google Maps kutucuk katmanı](media/migrate-google-maps-android-app/google-maps-tile-layer.png)</center>
-
-**Sonrasında: Azure Maps**
+### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Bir kutucuk katmanı, diğer herhangi bir katmanda benzer bir şekilde haritaya eklenebilir. X, y ve zoom yer tutucuları olan biçimli bir URL; `{x}`, `{y}` `{z}` sırasıyla katmana nerede erişacaklarını bildirmek için kullanılır. Ayrıca, Azure haritalar 'daki döşeme katmanları `{quadkey}` , `{bbox-epsg-3857}` ve `{subdomain}` yer tutucuları destekler. Kutucuk katmanını yarı şeffaf hale getirmek için 0,8 opaklık değeri kullanılır. Opaklık ve saydamlık, benzer olmasına karşın ters çevrilmiş değerler kullanır. Her iki seçenek arasında dönüştürmek için, değerlerini bir sayıdan çıkarın.
 
@@ -738,15 +710,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure haritalar kutucuk katmanı](media/migrate-google-maps-android-app/azure-maps-tile-layer.png)</center>
+![Azure haritalar kutucuk katmanı](media/migrate-google-maps-android-app/azure-maps-tile-layer.png)
 
 ## <a name="show-traffic"></a>Trafiği gösterme
 
 Hem Azure Maps hem de Google Maps, trafik verilerinin yer paylaşımı için seçeneklere sahiptir.
 
-**Önce: Google Maps**
+### <a name="before-google-maps"></a>Önce: Google Maps
 
 Google Maps ile trafik akışı verileri haritanın en üstünde, eşlemenin yöntemine doğru geçirerek kaplama bulunabilir `setTrafficEnabled` .
 
@@ -759,11 +729,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Haritalar trafiği](media/migrate-google-maps-android-app/google-maps-traffic.png)
 
-![Google Haritalar trafiği](media/migrate-google-maps-android-app/google-maps-traffic.png)</center>
-
-**Sonrasında: Azure Maps**
+### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Azure haritalar, trafiği görüntülemek için çeşitli farklı seçenekler sağlar. Yol kapanışları ve kazalardan dolayı gibi trafik olayları haritada simgeler olarak görüntülenebilir. Trafik akışı ve renk kodlu yollar haritada yer alabilir. Renkler, normal beklenen gecikmeye veya mutlak gecikmeye göre, postalanan hız sınırına göre görüntülenecek şekilde değiştirilebilir. Azure haritalar 'daki olay verileri dakikada bir güncelleştirilir ve akış verileri her iki dakikada bir güncelleştirilir.
 
@@ -775,13 +743,8 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure haritalar trafiği](media/migrate-google-maps-android-app/azure-maps-traffic.png)</center>
-
-## <a name="next-steps"></a>Sonraki adımlar
+![Azure haritalar trafiği](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
 Azure Haritalar Android SDK hakkında daha fazla bilgi edinin.
 
-> [!div class="nextstepaction"]
-> [Android harita denetimini kullanma](how-to-use-android-map-control-library.md)
+[Android harita denetimini kullanma](how-to-use-android-map-control-library.md)

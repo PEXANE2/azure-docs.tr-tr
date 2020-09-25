@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell ile Genelleştirilmiş görüntüden ölçek kümesi oluşturma
-description: Paylaşılan görüntü galerisinde genelleştirilmiş bir görüntü kullanarak ölçek kümesi oluşturma.
+description: PowerShell kullanarak paylaşılan görüntü galerisinde genelleştirilmiş bir görüntü kullanarak bir ölçek kümesi oluşturun.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3b8c9d46a5bc5dde3e39bfa5673247ca752d2a89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22bd1ed88f61689eec9312392f7f58d137f703e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077569"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331531"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>Genelleştirilmiş görüntüden ölçek kümesi oluşturma
+# <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>PowerShell kullanarak Genelleştirilmiş görüntüden ölçek kümesi oluşturma 
 
 [Paylaşılan görüntü galerisinde](shared-image-galleries.md)depolanan Genelleştirilmiş görüntü sürümünden bir VM oluşturun. Özelleştirilmiş bir görüntü kullanarak ölçek kümesi oluşturmak istiyorsanız, bkz. [özelleştirilmiş görüntüden ölçek kümesi örnekleri oluşturma](instance-specialized-image-version-powershell.md).
 
@@ -181,4 +181,4 @@ Ayrıca, şablonlar kullanarak paylaşılan görüntü Galerisi kaynağı da olu
 - [Paylaşılan Görüntü Galerisinde Görüntü Tanımı Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Paylaşılan Görüntü Galerisinde Görüntü Sürümü Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-Paylaşılan görüntü galerileri hakkında daha fazla bilgi için bkz. [genel bakış](shared-image-galleries.md). Sorunlarla karşılaşırsanız bkz. [paylaşılan görüntü galerilerine sorun giderme](troubleshooting-shared-images.md).
+Paylaşılan görüntü galerileri hakkında daha fazla bilgi için bkz. [genel bakış](shared-image-galleries.md). Sorunlarla karşılaşırsanız bkz. [paylaşılan görüntü galerilerine sorun giderme](../virtual-machines/troubleshooting-shared-images.md).

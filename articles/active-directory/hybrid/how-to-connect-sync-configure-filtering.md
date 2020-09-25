@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319988"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Eşitleme: Filtrelemeyi yapılandırma
 Filtreleme kullanarak, şirket içi dizininizden Azure Active Directory (Azure AD) içinde hangi nesnelerin göründüğünü denetleyebilirsiniz. Varsayılan yapılandırma, yapılandırılan ormanlardaki tüm etki alanlarındaki tüm nesneleri alır. Genel olarak, önerilen yapılandırmadır. Exchange Online ve Skype Kurumsal gibi Microsoft 365 iş yüklerini kullanan kullanıcılar, e-posta gönderebilmeleri ve herkes arayabilmesi için tüm genel adres listesinden faydalanır. Varsayılan yapılandırmayla, Exchange veya Lync 'in şirket içi uygulamasıyla aynı deneyim yaşar.
@@ -113,7 +113,7 @@ Etki alanı filtresini ayarlamak için aşağıdaki adımları uygulayın:
    ![Bağlayıcı Özellikleri](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. **Dizin bölümlerini Yapılandır**öğesine tıklayın.
 5. **Dizin bölümlerini Seç** listesinde, gerektiğinde etki alanlarını seçin ve seçimini kaldırın. Yalnızca eşitlenmesini istediğiniz bölümlerin seçildiğini doğrulayın.  
-   ![Bölümler](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
+   !["Özellikler" penceresindeki dizin bölümlerini gösteren ekran görüntüsü.](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
    Şirket içi Active Directory altyapınızı değiştirdiyseniz ve etki alanlarını ormandan eklediyseniz veya kaldırdıysanız, güncelleştirilmiş bir liste almak için **Yenile** düğmesine tıklayın. Yenileme yaptığınızda kimlik bilgileriniz istenir. Windows Server Active Directory için okuma erişimi olan tüm kimlik bilgilerini sağlayın. İletişim kutusunda önceden doldurulmuş Kullanıcı olması gerekmez.  
    ![Yenileme gerekiyor](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. İşiniz bittiğinde, **Tamam**' a tıklayarak **Özellikler** iletişim kutusunu kapatın. Etki alanlarını ormandan kaldırdıysanız, bir ileti açılır penceresi bir etki alanının kaldırıldığını ve yapılandırmanın temizlendiğini söyler.

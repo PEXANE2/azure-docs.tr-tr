@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277213"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319869"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Önceki bir sürümden en son sürüme yükseltme
 Bu konuda, Azure Active Directory (Azure AD) Connect yüklemenizi en son sürüme yükseltmek için kullanabileceğiniz farklı yöntemler açıklanmaktadır. Azure AD Connect yayınlarıyla kendinizi güncel tutmanız önerilir. Önemli bir yapılandırma değişikliği yaptığınızda, [esnek geçiş](#swing-migration) bölümündeki adımları da kullanabilirsiniz.
@@ -106,7 +106,7 @@ Bu geçersiz kılmaların yükseltmeden hemen sonra gerçekleşmesini istemediğ
 
 1. Yükseltme sırasında, **yapılandırma tamamlandığında eşitleme Işlemini Başlat**seçeneğinin **işaretini kaldırın** . Bu, eşitleme zamanlayıcısını devre dışı bırakır ve geçersiz kılmalar kaldırılmadan önce eşitleme döngüsünün otomatik olarak yapılmasını önler.
 
-   ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
+   ![Yapılandırma tamamlandığında eşitleme işlemini başlat seçeneğini vurgulayan, temizlemeniz gereken ekran görüntüsü.](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
 2. Yükseltme tamamlandıktan sonra, hangi geçersiz kılmaların eklendiğini bulmak için aşağıdaki cmdlet 'i çalıştırın: `Get-ADSyncSchedulerConnectorOverride | fl`
 

@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306574"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory erişim gözden geçirmeleri dağıtımını planlama
 
@@ -37,7 +37,7 @@ ms.locfileid: "89461043"
 
 * Kullanıcıların kaynaklara erişimini kaldırma gibi gözden geçirme sonuçlarını otomatikleştirin
 
-  ![Erişim gözden geçirmeleri planlama](./media/deploy-access-review/1-planning-review.png)
+  ![Erişim gözden geçirmeleri akışını gösteren diyagram.](./media/deploy-access-review/1-planning-review.png)
 
 Erişim gözden geçirmeleri [Azure AD Identity Governance](identity-governance-overview.md) bir yetenektir. Diğer yetenekler, [Yetkilendirme Yönetimi](entitlement-management-overview.md), [Privileged Identity Management](../privileged-identity-management/pim-configure.md) ve [kullanım koşullardır](../conditional-access/terms-of-use.md). Bunlar birlikte, kuruluşların bu dört soruyu ele vermesini sağlarlar:
 
@@ -300,7 +300,7 @@ Gruplar veya uygulamalar için bir erişim Incelemesi oluştururken, gözden ge�
 
 Erişim gözden geçirmeleri için aşağı kaydırmak üzere yaşam döngüsü sekmesini açın.
 
- ![İlkeyi düzenleme](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
+ !["Yaşam döngüsü" sekmesinde "ilkeyi düzenleme" gösteren ekran görüntüsü.](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
 
 ## <a name="plan-access-reviews-for-groups"></a>Gruplar için erişim gözden geçirmeleri planlayın
 
@@ -446,7 +446,7 @@ Yöneticiler, eski erişim riskini azaltmak için bir erişim paketine etkin ata
 
 Eski rol atamalarıyla ilişkili riski azaltmak için, ayrıcalıklı Azure AD rollerinin erişimini düzenli olarak gözden geçirmeniz gerekir.
 
-![Azure AD rollerini gözden geçirme](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
+![Azure A D rollerinin "üyeliği gözden geçirme" listesini gösteren ekran görüntüsü.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
 Aşağıdaki bağlantılardaki yönergeleri izleyin:
 

@@ -1,6 +1,6 @@
 ---
 title: Azure VM 'lerinde SAP NW için yüksek kullanılabilirlik çoklu SID Kılavuzu | Microsoft Docs
-description: Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği
+description: Azure sanal makinelerinde (VM) RHEL çoklu SID 'de SAP NW için yüksek kullanılabilirlik kurun.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 892c45db835457d5f0127d7377d722fc7f0df518
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 612bd019dc7a4bdf481fde4511084245fabd1620
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319971"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>SAP NetWeaver için Red Hat Enterprise Linux Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu
 
@@ -56,7 +56,7 @@ Bu makalede, SAP uygulamaları için Red Hat Enterprise Linux ile Azure VM 'leri
 * **NW2**: ascs örnek numarası **10** ve sanal konak adı **msnw2ascs**; MS örnek numarası **12** ve sanal ana bilgisayar adı **msnw2ers**.  
 * **NW3**: ascs örnek numarası **20** ve sanal konak adı **msnw3ascs**; , **22** örnek numarası ve sanal ana bilgisayar adı **msnw3ers**.  
 
-Makale, veritabanı katmanını ve SAP NFS paylaşımlarının dağıtımını kapsamaz. Bu makaledeki örneklerde, birimin zaten dağıtıldığı varsayılarak, NFS paylaşımları için [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md) Volume **sapmsıd 'si** kullanılmaktadır. Ayrıca, Azure NetApp Files biriminin NFSv3 protokolü ile dağıtıldığını ve SAP Systems NW1, NW2 ve NW3 örneklerinin yoks ve ERS örnekleri için aşağıdaki dosya yollarının mevcut olduğunu de varsayıyoruz.  
+Makale, veritabanı katmanını ve SAP NFS paylaşımlarının dağıtımını kapsamaz. Bu makaledeki örneklerde, birimin zaten dağıtıldığı varsayılarak, NFS paylaşımları için [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)  Volume **sapmsıd 'si** kullanılmaktadır. Ayrıca, Azure NetApp Files biriminin NFSv3 protokolü ile dağıtıldığını ve SAP Systems NW1, NW2 ve NW3 örneklerinin yoks ve ERS örnekleri için aşağıdaki dosya yollarının mevcut olduğunu de varsayıyoruz.  
 
 * Volume Sapmsıd (nfs://10.42.0.4/sapmnt<b>NW1</b>)
 * Volume Sapmsıd (nfs://10.42.0.4/usrsap<b>NW1</b>ascs)
@@ -798,7 +798,7 @@ Sunulan testler, üç adet SAP sistemi yüklü olan çok düzeyli bir küme olan
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl1
    ```
 
-   Hatalı kaynaklar için iletiler varsa, başarısız kaynakların durumunu temizleyin. Örnek:
+   Hatalı kaynaklar için iletiler varsa, başarısız kaynakların durumunu temizleyin. Örneğin:
 
    ```
    pcs resource cleanup rsc_sap_NW1_ERS02

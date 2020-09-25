@@ -2,13 +2,13 @@
 title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 09/24/2020
+ms.openlocfilehash: cd1d0a05fc1039d8e99b0af6fc8019face4516bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605184"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284797"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
@@ -62,7 +62,7 @@ Desteklenen diğer türler şunlardır:
 * [Eventabonelikleri](/azure/templates/microsoft.eventgrid/eventsubscriptions)
 * [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 
-### <a name="schema"></a>Şema
+## <a name="schema"></a>Şema
 
 Abonelik düzeyi dağıtımlar için kullandığınız şema, kaynak grubu dağıtımları için şemadan farklıdır.
 
@@ -77,6 +77,20 @@ Bir parametre dosyasının şeması, tüm dağıtım kapsamları için aynıdır
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>Dağıtım kapsamları
+
+Bir aboneliğe dağıtım yaparken, bir aboneliği ve abonelik içindeki kaynak gruplarını hedefleyebilirsiniz. Hedef abonelikten farklı bir aboneliğe dağıtamazsınız. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
+
+Şablonun kaynaklar bölümünde tanımlanan kaynaklar aboneliğe uygulanır.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
+
+Abonelik içindeki bir kaynak grubunu hedeflemek için, iç içe geçmiş bir dağıtım ekleyin ve `resourceGroup` özelliğini ekleyin. Aşağıdaki örnekte, iç içe dağıtım adlı bir kaynak grubunu hedefler `rg2` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
+
+Bu makalede, farklı kapsamlara kaynakların nasıl dağıtılacağını gösteren şablonlar bulabilirsiniz. Kaynak grubu oluşturan ve buna bir depolama hesabı dağıtan bir şablon için bkz. [kaynak grubu ve kaynaklar oluşturma](#create-resource-group-and-resources). Kaynak grubu oluşturan, buna bir kilit uygulayan ve kaynak grubu için bir rol atayan bir şablon için bkz. [erişim denetimi](#access-control).
 
 ## <a name="deployment-commands"></a>Dağıtım komutları
 
@@ -112,49 +126,6 @@ Abonelik düzeyindeki dağıtımlar için, dağıtım için bir konum sağlaman�
 Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, ** üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
 
 Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
-
-## <a name="deployment-scopes"></a>Dağıtım kapsamları
-
-Bir aboneliğe dağıtım yaparken, bir aboneliği ve abonelik içindeki kaynak gruplarını hedefleyebilirsiniz. Hedef abonelikten farklı bir aboneliğe dağıtamazsınız. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
-
-Şablonun kaynaklar bölümünde tanımlanan kaynaklar aboneliğe uygulanır.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        subscription-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-Abonelik içindeki bir kaynak grubunu hedeflemek için, iç içe geçmiş bir dağıtım ekleyin ve `resourceGroup` özelliğini ekleyin. Aşağıdaki örnekte, iç içe dağıtım adlı bir kaynak grubunu hedefler `rg2` .
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedDeployment",
-            "resourceGroup": "rg2",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resource-group-resources
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-Bu makalede, farklı kapsamlara kaynakların nasıl dağıtılacağını gösteren şablonlar bulabilirsiniz. Kaynak grubu oluşturan ve buna bir depolama hesabı dağıtan bir şablon için bkz. [kaynak grubu ve kaynaklar oluşturma](#create-resource-group-and-resources). Kaynak grubu oluşturan, buna bir kilit uygulayan ve kaynak grubu için bir rol atayan bir şablon için bkz. [erişim denetimi](#access-control).
 
 ## <a name="use-template-functions"></a>Şablon işlevlerini kullanma
 

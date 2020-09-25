@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31c76b78d4ab7a3f305b52526b7e4ce14f3b1ede
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278046"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319937"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>ADSync hizmet hesabı parolasını değiştirme
 ADSync hizmet hesabı parolasını değiştirirseniz, şifreleme anahtarını terk edinceye ve ADSync hizmet hesabı parolasını yeniden başlatana kadar eşitleme hizmeti düzgün şekilde başlayamaz. 
@@ -52,7 +52,7 @@ Bu hataları almadığınızda emin olmak için, parolayı değiştirirken [ADSy
  
 ## <a name="abandoning-the-adsync-service-account-encryption-key"></a>ADSync hizmet hesabı şifreleme anahtarını bırakma
 >[!IMPORTANT]
->Aşağıdaki yordamlar yalnızca Azure AD Connect Build 1.1.443.0 veya üzeri için geçerlidir. Bu, Azure AD Connect daha yeni sürümleri için kullanılamaz.
+>Aşağıdaki yordamlar yalnızca Azure AD Connect Build 1.1.443.0 veya üzeri için geçerlidir. Bu, Azure AD Connect daha yeni sürümleri için kullanılamaz çünkü şifreleme anahtarını bırakma, AD eşitleme hizmeti hesap parolasını değiştirdiğinizde aşağıdaki adımlar daha yeni sürümlerde gerekli değildir.   
 
 Şifreleme anahtarını bırakmak için aşağıdaki yordamları kullanın.
 
@@ -88,7 +88,7 @@ Yeni şifreleme anahtarının oluşturulabilmesi için mevcut şifreleme anahtar
 
 4. Şu komutu çalıştırın: `./miiskmu.exe /a`
 
-![Azure AD Connect eşitleme şifreleme anahtarı yardımcı programı](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
+![Komutu çalıştırdıktan sonra PowerShell 'i gösteren ekran görüntüsü.](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
 
 #### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>AD DS Bağlayıcısı hesabının parolasını girin
 Veritabanında depolanan mevcut parolaların artık şifresi çözülemediğinden, AD DS bağlayıcı hesabının parolasıyla eşitleme hizmetini sağlamanız gerekir. Eşitleme hizmeti, yeni şifreleme anahtarını kullanarak parolaları şifreler:
@@ -101,7 +101,7 @@ Veritabanında depolanan mevcut parolaların artık şifresi çözülemediğinde
 5. Açılır iletişim kutusunda **Active Directory ormana Bağlan**' ı seçin:
 6. **Parola** metin kutusuna AD DS hesabının parolasını girin. Parolasını bilmediğinizde, bu adımı gerçekleştirmeden önce bilinen bir değere ayarlamanız gerekir.
 7. Yeni parolayı kaydetmek ve açılır iletişim kutusunu kapatmak için **Tamam** ' ı tıklatın.
-![Azure AD Connect eşitleme şifreleme anahtarı yardımcı programı](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
+!["Özellikler" penceresindeki "Active Directory ormanına Bağlan" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
 
 #### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>ADSync hizmet hesabının parolasını yeniden başlatın
 Azure AD hizmet hesabının parolasını doğrudan eşitleme hizmetine sağlayamezsiniz. Bunun yerine, Azure AD hizmet hesabını yeniden başlatmak için **Add-ADSyncAADServiceAccount** cmdlet 'ini kullanmanız gerekir. Cmdlet, hesap parolasını sıfırlar ve eşitleme hizmeti tarafından kullanılabilir hale getirir:

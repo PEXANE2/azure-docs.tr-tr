@@ -5,20 +5,42 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 5e293bb98405affd824d4bbc50b6f24c5a0e3c11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de0f58b54f0cb5ad450949bb1a7b8744f081227d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999624"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320345"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Üçüncü kısım: SMB üzerinden dizin ve dosya düzeyi izinleri yapılandırma 
 
 Bu makaleye başlamadan önce, bir önceki makaleyi tamamladığınızdan emin olun, paylaşma düzeyi izinlerinizin yerinde olduğundan emin olmak için [bir kimliğe Share-Level Izinleri atayın](storage-files-identity-ad-ds-assign-permissions.md) .
 
 RBAC ile paylaşma düzeyi izinleri atadıktan sonra, ayrıntılı erişim denetiminden yararlanmak için kök, dizin veya dosya düzeyinde uygun Windows ACL 'Leri yapılandırmanız gerekir. Bir kullanıcının paylaşıma erişip erişemeyeceğini belirleyen üst düzey ağ geçidi olarak RBAC paylaşma düzeyi izinleri düşünün. Windows ACL 'Leri, kullanıcının dizin veya dosya düzeyinde hangi işlemleri yapabileceğini belirlemek için daha ayrıntılı bir düzeyde çalışır. Bir Kullanıcı bir dosya/dizine erişmeyi denediğinde hem paylaşma düzeyi hem de dosya/dizin düzeyi izinleri zorlanır. bu nedenle, aralarında fark varsa yalnızca en kısıtlayıcı bir değer uygulanır. Örneğin, bir kullanıcının dosya düzeyinde okuma/yazma erişimi varsa ancak yalnızca bir paylaşma düzeyinde salt okunurdur, bu dosyayı yalnızca okuyabilir. Aynı değer, geri çevrilirse ve bir kullanıcının Share-Level ' a okuma/yazma erişimi varsa ancak yalnızca dosya düzeyinde salt okuma yaptığı halde yalnızca dosyayı okuyabilecekleri şekilde true olur.
+
+## <a name="rbac-permissions"></a>RBAC izinleri
+
+Aşağıdaki tabloda bu yapılandırmayla ilgili RBAC izinleri yer almaktadır:
+
+
+| Yerleşik rol  | NTFS izni  | Elde edilen erişim  |
+|---------|---------|---------|
+|Depolama Dosyası Verileri SMB Paylaşımı Okuyucusu | Tam denetim, değiştirme, okuma, yazma, yürütme | Oku ve yürüt  |
+|     |   Okuma |     Okuma  |
+|Depolama Dosyası Verileri SMB Paylaşımı Katkıda Bulunanı  |  Tam denetim    |  Değiştirme, okuma, yazma, yürütme |
+|     |  Değiştir         |  Değiştir    |
+|     |  Oku ve yürüt |  Oku ve yürüt |
+|     |  Okuma           |  Okuma    |
+|     |  Yazma          |  Yazma   |
+|Depolama Dosyası Verileri SMB Paylaşımı Yükseltilmiş Katkıda Bulunanı | Tam denetim  |  Değiştirme, okuma, yazma, düzenleme, yürütme |
+|     |  Değiştir          |  Değiştir |
+|     |  Oku ve yürüt  |  Oku ve yürüt |
+|     |  Okuma            |  Okuma   |
+|     |  Yazma           |  Yazma  |
+
+
 
 ## <a name="supported-permissions"></a>Desteklenen izinler
 

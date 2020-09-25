@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2d1a46a35ef38791b6a3b47c300aa1b47f70324
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: e34349f9f52c61d27e57e6ac7f4b3515ee746b22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331854"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Bir kimlik doğrulama kimlik bilgileri kümesi kullanan kaynaklar için gizli dizi döndürmeyi otomatikleştirin
 
@@ -68,6 +68,8 @@ akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/datab
 ```
 
 ## <a name="create-and-deploy-sql-server-password-rotation-function"></a>SQL Server parola döndürme işlevi oluşturma ve dağıtma
+> [!IMPORTANT]
+> Aşağıdaki şablon Key Vault, SQL Server ve Azure Işlevinin aynı kaynak grubunda olmasını gerektirir
 
 Sonra, sistem tarafından yönetilen kimliğe sahip bir işlev uygulaması oluşturun ve diğer gerekli bileşenlere ek olarak SQL Server parola döndürme işlevlerini dağıtın
 

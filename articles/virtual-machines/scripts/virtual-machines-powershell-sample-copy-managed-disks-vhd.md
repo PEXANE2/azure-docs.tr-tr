@@ -1,5 +1,5 @@
 ---
-title: Yönetilen disk VHD 'yi başka bir bölgenin hesabına (Windows)-PowerShell
+title: Yönetilen bir diskin VHD 'sini başka bir bölgenin hesabına (Windows) aktarma/kopyalama-PowerShell
 description: Azure PowerShell betik örneği - Yönetilen diskin VHD dosyasını aynı veya farklı bölgedeki bir depolama hesabına aktarma/kopyalama
 services: virtual-machines-windows
 documentationcenter: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.openlocfilehash: ef760688e2a91da6e2f8ab759dc1858d3e583655
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: d76fda02f94f85126214de27d88079977824098d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323203"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320141"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell-windows"></a>Yönetilen bir diskin VHD 'sini PowerShell ile farklı bölgedeki bir depolama hesabına dışarı aktarma/kopyalama (Windows)
 

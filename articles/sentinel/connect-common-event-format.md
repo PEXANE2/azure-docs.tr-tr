@@ -14,39 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 51e6c74a8b80b94ca552645cfbb76bd4e162a62b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: cd84a4b50ba32ee3f562ace9b2583cf5e561be84
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650069"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320396"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ortak olay biçimini kullanarak dış çözümünüzü bağlama
 
 
 CEF iletileri gönderen bir dış çözümü bağladığınızda, Azure Sentinel ile bağlantı kurmak için üç adım vardır:
 
-1. Adım: [aracıyı dağıtarak CEF 'Yi bağlama](connect-cef-agent.md) adım 2: [çözüme özgü adımları gerçekleştirme](connect-cef-solution-config.md) adım 3: [bağlantıyı doğrulama](connect-cef-verify.md)
+1. Adım: [Syslog/CEF ileticisi dağıtarak CEF 'Yi bağlama](connect-cef-agent.md) adım 2: [çözüme özgü adımları gerçekleştirme](connect-cef-solution-config.md) adım 3: [bağlantıyı doğrulama](connect-cef-verify.md)
 
-Bu makalede bağlantının nasıl çalıştığı açıklanır, ön koşullar sağlanır ve aracıyı, syslog 'nin en üstünde ortak olay biçimi (CEF) iletileri gönderen güvenlik çözümlerinde dağıtmaya yönelik adımlar sağlar. 
+Bu makalede bağlantının nasıl çalıştığı açıklanır, Önkoşullar sağlanır ve Aracı, syslog 'nin en üstünde ortak olay biçimi (CEF) iletileri gönderen güvenlik çözümlerine dağıtmak için gereken adımları sağlar. 
 
 > [!NOTE] 
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 
-Bu bağlantıyı yapmak için, Gereç ve Azure Sentinel arasındaki iletişimi desteklemek üzere adanmış bir Linux makinesine (VM veya şirket içi) bir aracı dağıtmanız gerekir. Aşağıdaki diyagramda, Azure 'daki bir Linux sanal makinesi olayında kurulum açıklanmaktadır.
+Bu bağlantıyı yapmak için, Gereç ve Azure Sentinel arasındaki iletişimi desteklemek üzere bir Syslog Iletici sunucusu dağıtmanız gerekir.  Sunucu, Linux için Log Analytics Aracısı yüklü olan adanmış bir Linux makinesinden (VM veya şirket içi) oluşur. 
+
+Aşağıdaki diyagramda, Azure 'da bir Linux sanal makinesi olayında kurulum açıklanmaktadır:
 
  ![Azure 'da CEF](./media/connect-cef/cef-syslog-azure.png)
 
-Alternatif olarak, başka bir bulutta veya şirket içi bir makinede bir VM kullanıyorsanız bu kurulum mevcut olacaktır. 
+Alternatif olarak, başka bir bulutta veya şirket içi bir makinede bir VM kullanıyorsanız bu kurulum mevcut olacaktır: 
 
  ![Şirket içi CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 Makinenin güvenliğini kuruluşunuzun güvenlik ilkesine göre yapılandırdığınızdan emin olun. Örneğin, ağınızı kurumsal ağ güvenlik ilkenize göre olacak şekilde yapılandırabilir ve gereksinimlerinize göre uyum sağlamak için arka plan programındaki bağlantı noktalarını ve protokolleri değiştirmelisiniz. Aşağıdaki yönergeleri kullanarak makinenizin güvenlik yapılandırmasını geliştirebilirsiniz:  [Azure 'Da GÜVENLI VM](../virtual-machines/security-policy.md), [ağ güvenliği için en iyi uygulamalar](../security/fundamentals/network-best-practices.md).
 
-Güvenlik çözümü ve Syslog makinesi arasındaki TLS iletişimini kullanmak için Syslog Daemon (rsyslog veya Syslog-ng) ' i TLS ile iletişim kurmak üzere yapılandırmanız gerekir: TLS [-rsyslog Ile Syslog trafiğini şifreleme](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [günlük iletilerini TLS – Syslog-NG ile şifreleme](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
+Syslog kaynağı ve Syslog Ileticisi arasındaki TLS iletişimini kullanmak için Syslog Daemon 'u (rsyslog veya Syslog-ng) TLS 'de iletişim kurmak üzere yapılandırmanız gerekir: TLS [-rsyslog Ile Syslog trafiğini şifreleme](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [günlük iletilerini TLS – Syslog-NG ile şifreleme](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
 
  
 ## <a name="prerequisites"></a>Önkoşullar

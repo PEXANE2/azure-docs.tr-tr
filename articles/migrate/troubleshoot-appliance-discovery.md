@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b2a01e816c0f0569c207aa65e5027b935210e3b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296524"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331786"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -234,6 +234,7 @@ Tipik uygulama bulma hataları tabloda özetlenir.
 9033: VM Kullanıcı adı geçersiz karakterler içerdiğinden bulunamıyor.     |   Kullanıcı adında geçersiz karakterler algılandı.   |   Geçersiz karakter olmadığından VM kimlik bilgisini yeniden sağlayın.
 9034: belirtilen Kullanıcı adı UPN biçiminde değil.    |   Kullanıcı adı UPN biçiminde değil.  |   Kullanıcı adının Kullanıcı asıl adı (UPN) biçiminde olduğundan emin olun.
 9035: PowerShell dil modu ' Full Language ' olarak ayarlı olmadığından bulunamıyor.  |   Konuk VM 'de PowerShell için dil modu tam dil olarak ayarlanmadı.   |   PowerShell dil modunun ' Full Language ' olarak ayarlandığından emin olun.
+9037: VM yanıt süresi çok yüksek olduğu için veri toplama işlemi geçici olarak duraklatıldı.    |   Bulunan VM 'nin yanıt vermesi çok uzun sürüyor     |   Eylem gerekmiyor. Uygulama bulma ve bağımlılık Analizi (aracısız) için 3 saat boyunca 24 saat içinde yeniden deneme denenecek.
 10000: işletim sistemi türü desteklenmiyor.   |   Sunucu üzerinde çalışan işletim sistemi Windows veya Linux değildir.    |   Desteklenen işletim sistemi türleri yalnızca Windows ve Linux.
 10001: sunucu bulma betiği gereç üzerinde bulunamadı.    |   Bulma beklendiği gibi çalışmıyor.   |   Bir çözüm için Microsoft Desteği başvurun.
 10002: bulma görevi zamanında tamamlanmadı.     |   Bulma Aracısı beklendiği gibi çalışmıyor.     |   Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse, Microsoft Desteği başvurun.

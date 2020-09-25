@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ca9a796483c52e2e74231dfcbb67a72b913d35d7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f570f13fd39bd25b37c35a2c823e64eaa02fef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073004"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295405"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının nasıl çoğaltıldığını değiştirme
 
@@ -39,8 +39,8 @@ Aşağıdaki tabloda, her bir çoğaltma türünden diğerine nasıl geçkullan�
 
 | Geçiş | ... LRS 'ye | ... GRS/RA-GRS 'ye | ... ZRS 'ye | ... GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... LRS 'den</b> | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarını değiştirme<sup>1</sup> | El ile geçiş gerçekleştirme <br /><br />Dinamik geçiş isteme | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce GRS/RA-GRS ' y e geçin ve ardından dinamik geçiş isteyin<sup>1</sup> |
-| <b>... GRS/RA-GRS 'den</b> | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce LRS 'ye geçin ve ardından dinamik geçiş isteyin | El ile geçiş gerçekleştirme <br /><br /> Dinamik geçiş isteme |
+| <b>... LRS 'den</b> | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarını değiştirme<sup>1</sup> | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce GRS/RA-GRS ' y e geçin ve ardından dinamik geçiş isteyin<sup>1</sup> |
+| <b>... GRS/RA-GRS 'den</b> | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce LRS 'ye geçin ve ardından dinamik geçiş isteyin | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme |
 | <b>... ZRS 'den</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarlarını değiştirme<sup>1, 2</sup> |
 | <b>... GZRS/RA-GZRS öğesinden</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok |
 
@@ -48,11 +48,11 @@ Aşağıdaki tabloda, her bir çoğaltma türünden diğerine nasıl geçkullan�
 <sup>2</sup> ZRS 'den GZRS/ra-GZRS veya tam tersi olarak dönüştürme şu bölgelerde desteklenmez: ABD Doğu 2, ABD Doğu, Avrupa Batı.
 
 > [!CAUTION]
-> (RA-) GRS veya (RA-) GZRS hesabınız için bir [Hesap yük devretmesi](storage-disaster-recovery-guidance.md) gerçekleştirdiyseniz, hesap yük devretmeden sonra yeni birincil bölgede yerel olarak yedekli olur. Yük devretme işleminden kaynaklanan bir LRS hesabı için ZRS veya GZRS 'e dinamik geçiş desteklenmez. ZRS veya GZRS için [el ile geçiş](#perform-a-manual-migration-to-zrs) gerçekleştirmeniz gerekir.
+> (RA-) GRS veya (RA-) GZRS hesabınız için bir [Hesap yük devretmesi](storage-disaster-recovery-guidance.md) gerçekleştirdiyseniz, hesap yük devretmeden sonra yeni birincil bölgede yerel olarak yedekli olur. Yük devretme işleminden kaynaklanan bir LRS hesabı için ZRS veya GZRS 'e dinamik geçiş desteklenmez. Bu, yeniden çalışma işlemleri olarak adlandırılan bu durum da geçerlidir. Örneğin, RA-GZRS ' d e bir hesap yük devretmesini ikincil bölgedeki LRS 'ye devreder ve sonra yeniden RA-GRS olarak yapılandırıp özgün birincil bölgeye başka bir hesap yük devretme işlemi gerçekleştirirseniz, birincil bölgede RA-GZRS için özgün dinamik geçişe yönelik desteğe başvuramıyoruz. Bunun yerine, ZRS veya GZRS için el ile geçiş gerçekleştirmeniz gerekir.
 
 ## <a name="change-the-replication-setting"></a>Çoğaltma ayarını değiştir
 
-Bir depolama hesabının çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya Azure CLı ' yi kullanarak, verilerin birincil bölgede nasıl çoğaltılabileceğini değiştirirsiniz. Birincil bölgedeki LRS 'den birincil bölgedeki ZRS 'ye geçiş yapıyorsanız veya bunun tersini yaparsanız, [el ile geçiş](#perform-a-manual-migration-to-zrs) ya da [dinamik geçiş](#request-a-live-migration-to-zrs)gerçekleştirmeniz gerekir.
+Bir depolama hesabının çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya Azure CLı ' yi kullanarak, verilerin birincil bölgede nasıl çoğaltılabileceğini değiştirirsiniz. Birincil bölgedeki LRS 'den birincil bölgedeki ZRS 'ye geçiş yapıyorsanız veya bunun tersini yaparsanız, el ile geçiş ya da dinamik geçiş gerçekleştirmeniz gerekir.
 
 Depolama hesabınızın nasıl çoğaltılacağı, uygulamalarınız için zaman kaybına neden olmaz.
 
@@ -89,7 +89,7 @@ az storage account update \
 
 ---
 
-## <a name="perform-a-manual-migration-to-zrs"></a>ZRS 'ye el ile geçiş gerçekleştirme
+## <a name="perform-a-manual-migration-to-zrs-gzrs-or-ra-gzrs"></a>ZRS, GZRS veya RA-GZRS için el ile geçiş gerçekleştirin
 
 LRS 'den ZRS 'ye geçerek veya bunun tersini yaparak Depolama hesabınızdaki verilerin birincil bölgede çoğaltılmasını değiştirmek istiyorsanız el ile geçiş yapmayı tercih edebilirsiniz. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçişin zamanlamasını kontrol edersiniz, bu nedenle geçişin belirli bir tarihten sonra tamamlanmasını istiyorsanız bu seçeneği kullanın.
 
@@ -102,9 +102,11 @@ El ile geçişle, mevcut depolama hesabınızdan verileri birincil bölgede ZRS 
 - AzCopy gibi mevcut bir aracı kullanarak, Azure Storage istemci kitaplıklarından biri veya güvenilir bir üçüncü taraf aracından verileri kopyalayın.
 - Hadoop veya HDInsight hakkında bilginiz varsa, hem kaynak depolama hesabı hem de hedef depolama hesabı hesabını kümenize ekleyebilirsiniz. Daha sonra, paralel hale getirmek gibi bir araçla veri kopyalama işlemini yapın.
 
-## <a name="request-a-live-migration-to-zrs"></a>ZRS 'ye dinamik geçiş isteği isteme
+## <a name="request-a-live-migration-to-zrs-gzrs-or-ra-gzrs"></a>ZRS, GZRS veya RA-GZRS için dinamik geçiş isteyin
 
-Depolama hesabınızı LRS veya GRS 'den, uygulama kapalı kalma süresi olmadan birincil bölgedeki ZRS 'ye geçirmeniz gerekiyorsa, Microsoft 'tan Canlı geçiş isteğinde bulunabilir. Dinamik geçiş sırasında depolama hesabınızdaki verilere ve dayanıklılık veya kullanılabilirlik kaybı olmadan erişebilirsiniz. Azure Storage SLA, geçiş işlemi sırasında sürdürülür. Dinamik geçişle ilişkili bir veri kaybı yok. Hizmet uç noktaları, erişim anahtarları, paylaşılan erişim imzaları ve diğer hesap seçenekleri geçişten sonra değişmeden kalır.
+Depolama hesabınızı, birincil bölgede uygulama kesinti olmadan LRS 'den ZRS 'ye geçirmeniz gerekiyorsa, Microsoft 'tan Canlı geçiş isteğinde bulunabilir. LRS 'den GZRS veya RA-GZRS 'e geçiş yapmak için önce GRS veya RA-GRS ' ye geçin ve ardından dinamik geçiş isteyin. Benzer şekilde, GRS veya RA-GRS ' den GZRS veya RA-GZRS ' d e dinamik geçiş isteğinde bulabilirsiniz. GRS veya RA-GRS 'den ZRS 'ye geçiş yapmak için önce LRS 'ye geçin ve ardından dinamik geçiş isteyin.
+
+Dinamik geçiş sırasında, Depolama hesabınızdaki verilere dayanıklılık veya kullanılabilirlik kaybı olmaksızın erişebilirsiniz. Azure Storage SLA, geçiş işlemi sırasında sürdürülür. Dinamik geçişle ilişkili bir veri kaybı yok. Hizmet uç noktaları, erişim anahtarları, paylaşılan erişim imzaları ve diğer hesap seçenekleri geçişten sonra değişmeden kalır.
 
 ZRS yalnızca genel amaçlı v2 hesaplarını destekler, bu nedenle ZRS 'ye dinamik geçiş isteği göndermeden önce depolama hesabınızı yükseltdiğinizden emin olun. Daha fazla bilgi için bkz. [genel amaçlı v2 depolama hesabına yükseltme](storage-account-upgrade.md). Depolama hesabı, dinamik geçiş yoluyla geçirilecek verileri içermelidir.
 

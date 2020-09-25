@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030836"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263785"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Izleyici aracısına genel bakış (Önizleme)
 Azure Izleyici Aracısı (AMA), sanal makinelerin Konuk işletim sisteminden izleme verilerini toplar ve Azure Izleyici 'ye gönderir. Bu makaleler, Azure Izleyici aracısına nasıl yükleneceğine ve veri toplamayı nasıl yapılandıracağınızı içeren bir genel bakış sağlar.
@@ -38,6 +38,14 @@ Mevcut aracılar için veri toplamayı tanımlamaya yönelik yöntemler birbirin
 - Tanılama uzantısının her bir sanal makine için bir yapılandırması vardır. Bu, farklı sanal makineler için bağımsız tanımları tanımlamak ve merkezi olarak yönetmek zor bir işlemdir. Yalnızca Azure Izleyici ölçümleri, Azure Event Hubs veya Azure Storage 'a veri gönderebilir. Linux aracıları için, Azure Izleyici ölçümlerine veri göndermek için açık kaynak telegraf Aracısı gerekir.
 
 Azure Izleyici Aracısı, verileri her aracıdan toplanacak şekilde yapılandırmak için [veri toplama kuralları 'nı (DCR)](data-collection-rule-overview.md) kullanır. Veri toplama kuralları, makinelerin alt kümeleri için benzersiz ve kapsamlı yapılandırmaların etkinleştirilmesinde, koleksiyonda koleksiyon ayarlarının yönetilebilirliğini etkinleştirir. Bunlar, çalışma alanından bağımsızdır ve sanal makineden bağımsızdır. Bu, bir kez tanımlanmalarını ve makineler ve ortamlar arasında yeniden kullanılmasını sağlar. Bkz. [Azure izleyici Aracısı (Önizleme) için veri toplamayı yapılandırma](data-collection-rule-azure-monitor-agent.md).
+
+## <a name="should-i-switch-to-azure-monitor-agent"></a>Azure Izleyici aracısına geçiş yapmam gerekir mi?
+Azure izleyici Aracısı, Azure izleyici [için genel kullanıma sunulan aracılarla](agents-overview.md)birlikte bulunur, ancak Azure izleyici Aracısı genel önizleme dönemi boyunca sanal makinelerinizi geçerli aracılardan geçirmeyi düşünebilirsiniz. Bu belirlenmesi yaparken aşağıdaki faktörleri göz önünde bulundurun.
+
+- **Ortam gereksinimleri.** Azure Izleyici Aracısı, geçerli aracılardan daha sınırlı sayıda desteklenen işletim sistemi, ortam ve ağ gereksinimleri kümesine sahiptir. Yeni işletim sistemi sürümleri ve ağ gereksinimlerinin türleri gibi gelecekteki ortam desteği, büyük olasılıkla yalnızca Azure Izleyici aracısında sağlanacaktır. Ortamınızın Azure Izleyici Aracısı tarafından desteklenip desteklenmediğini değerlendirmelisiniz. Aksi takdirde, geçerli aracıda kalmanıza gerek duyarsınız. Azure Izleyici Aracısı geçerli ortamınızı destekliyorsa, buna geçiş yapmayı göz önünde bulundurmanız gerekir.
+- **Genel Önizleme riski toleransı.** Azure Izleyici Aracısı, şu anda desteklenen senaryolar için kapsamlı olarak test edilirken, aracı hala genel önizlemeye sunuldu. Sürüm güncelleştirmeleri ve işlev geliştirmeleri sıklıkla ortaya çıkar ve hataları ortaya çıkarabilir. Veri toplamayı durdurabilecek sanal makinelerinizdeki aracıdaki bir hata riskini değerlendirmelisiniz. Veri koleksiyonundaki bir boşluk, hizmetlerinize önemli bir etkiye sahip değilse Azure Izleyici aracısına devam edin. Herhangi bir kararsızlığa karşı düşük bir toleransınız varsa, Azure Izleyici Aracısı bu duruma ulaşıncaya kadar genel kullanıma açık aracılarla devam etmelisiniz.
+- **Geçerli ve yeni özellik gereksinimleri.** Azure Izleyici Aracısı, filtreleme, kapsam oluşturma ve çoklu barındırma gibi çeşitli yeni yetenekler sunar, ancak özel günlük toplama ve çözümlerle tümleştirme gibi diğer işlevlere yönelik geçerli aracılarla henüz eşlik etmemiştir. Azure Izleyici 'deki pek çok yeni özellik yalnızca Azure Izleyici aracısında kullanıma sunulacaktır, bu nedenle zamanla daha fazla işlevsellik yalnızca yeni aracıda kullanılabilir olacaktır. Azure Izleyici aracısının ihtiyacınız olan özelliklere sahip olup olmadığını ve yeni aracıdaki diğer önemli özellikleri almak zorunda kalmadan geçici olarak yapabileceğiniz bazı özellikler olduğunu göz önünde bulundurmanız gerekir. Azure Izleyici aracısında ihtiyacınız olan tüm temel yetenekler varsa, bu duruma geçiş yapmayı düşünün. İhtiyacınız olan kritik özellikler varsa, Azure Izleyici Aracısı eşlik edene kadar geçerli aracıya devam edin.
+- **Yeniden çalışma toleransı.** Dağıtım betikleri ve ekleme şablonları gibi kaynaklarla yeni bir ortam ayarlıyorsanız, Azure Izleyici Aracısı genel kullanıma sunulduğunda, bunlara yeniden erişip erişemeyeceğini göz önünde bulundurmanız gerekir. Bu yeniden çalışma çabalarının en az olması durumunda, şimdilik geçerli aracılarla devam edin. Bu işlem önemli miktarda iş alıyorsa yeni ortamınızı yeni aracıyla ayarlamayı düşünün. Azure Izleyici aracısının genel olarak kullanılabilir olması ve 2021 'deki Log Analytics aracıları için yayımlanmış bir kullanım tarihi olması beklenmektedir. Kullanımdan kaldırma başladıktan sonra, geçerli aracılar birkaç yıl içinde desteklenecektir.
 
 
 
@@ -76,24 +84,8 @@ Azure Izleyici Aracısı verileri Azure Izleyici ölçümleri 'ne veya Azure Izl
 
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
-Aşağıdaki işletim sistemleri şu anda Azure Izleyici Aracısı tarafından desteklenmektedir.
+Log Analytics Aracısı tarafından şu anda desteklenen Windows ve Linux işletim sistemi sürümlerinin bir listesi için [desteklenen işletim sistemleri](agents-overview.md#supported-operating-systems) bölümüne bakın.
 
-### <a name="windows"></a>Windows 
-  - Windows Server 2019
-  - Windows Server 2016
-  - Windows Server 2012
-  - Windows Server 2012 R2
-
-### <a name="linux"></a>Linux
-  - CentOS 6<sup>1</sup>, 7
-  - Borçlu 9, 10
-  - Oracle Linux 6<sup>1</sup>, 7
-  - RHEL 6<sup>1</sup>, 7
-  - SLES 11, 12, 15
-  - Ubuntu 14,04 LTS, 16,04 LTS, 18,04 LTS
-
-> [!IMPORTANT]
-> <sup>1</sup> Bu dağıtımların Syslog verileri gönderebilmesi için, aracı yüklendikten sonra rsyslog hizmetini bir kez yeniden başlatmanız gerekir.
 
 
 ## <a name="security"></a>Güvenlik

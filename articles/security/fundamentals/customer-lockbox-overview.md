@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 09/09/2020
-ms.openlocfilehash: 5c24bd80721f626e38dcb886e89231c0b86056df
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 09/15/2020
+ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650964"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331667"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure için Müşteri Kasası
 
@@ -32,22 +32,23 @@ Aşağıdaki hizmetler şu anda Müşteri Kasası için önizleme aşamasındad�
 
 - API Management
 - Azure App Service
-- MySQL için Azure Veritabanı
-- Azure Databricks
-- Azure Synapse Analytics
 - Bilişsel Hizmetler
 - Container Registry
+- MySQL için Azure Veritabanı
+- Azure Databricks
+- Azure Data Box
+- Azure Veri Gezgini
 - Azure Data Factory
 - PostgreSQL için Azure Veritabanı
-- Azure Kubernetes Service
-- Azure Data Box
+- Azure İşlevleri
 - HDInsight
-- İşlevler
+- Azure Kubernetes Service
+- Azure İzleyici
 - Azure Storage
 - Azure SQL DB
-- Azure Veri Gezgini
-- Sanal makineler (artık bellek dökümlerinin ve yönetilen disklerin erişimini de kapsayan)
 - Azure abonelik aktarımları
+- Azure Synapse Analytics
+- Sanal makineler (artık bellek dökümlerinin ve yönetilen disklerin erişimini de kapsayan)
 
 Kuruluşunuzun bu önizleme teklifleri için Müşteri Kasası etkinleştirmek üzere [Azure genel önizlemesi için müşteri kasası](https://aka.ms/customerlockbox/insiderprogram)kaydolun.
 

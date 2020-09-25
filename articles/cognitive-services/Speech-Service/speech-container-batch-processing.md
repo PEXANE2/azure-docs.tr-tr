@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 4d0800ff8a35c5c91b067a85dfcc089f2e343d1f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86091015"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319087"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Konuşma kapsayıcıları için Batch işleme seti
 
@@ -23,7 +23,7 @@ Konuşma kapsayıcılarındaki iş yüklerini tamamlamak ve genişletmek için B
 
 :::image type="content" source="media/containers/general-diagram.png" alt-text="Örnek Batch-Kit kapsayıcı iş akışını gösteren diyagram.":::
 
-Toplu iş seti kapsayıcısı [GitHub](https://github.com/microsoft/batch-processing-kit) ve [Docker Hub](https://hub.docker.com/r/batchkit/speech-batch-kit/tags)'da ücretsiz olarak kullanılabilir. Yalnızca kullandığınız konuşma kapsayıcıları için [faturalandırılırsınız](speech-container-howto.md#billing) .
+Toplu iş seti kapsayıcısı [GitHub](https://github.com/microsoft/batch-processing-kit) ve   [Docker Hub](https://hub.docker.com/r/batchkit/speech-batch-kit/tags)'da ücretsiz olarak kullanılabilir. Yalnızca kullandığınız konuşma kapsayıcıları için [faturalandırılırsınız](speech-container-howto.md#billing) .
 
 | Özellik  | Açıklama  |
 |---------|---------|
@@ -35,7 +35,7 @@ Toplu iş seti kapsayıcısı [GitHub](https://github.com/microsoft/batch-proces
 | Uç nokta etkin değiştirme | Toplu işlem ilerlemesini kesintiye uğramadan çalışma zamanında konuşma kapsayıcısı uç noktaları ekleyin, kaldırın veya değiştirin. Güncelleştirmeler hemen. |
 | Gerçek zamanlı günlüğe kaydetme | Her ses dosyası için konuşma SDK günlük dosyaları ile yapılmaya çalışılan isteklerin, zaman damgalarının ve hata nedenlerinin gerçek zamanlı günlüğü. |
 
-## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al `docker pull`
 
 En son Batch seti kapsayıcısını indirmek için [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) komutunu kullanın.
 
@@ -76,6 +76,8 @@ Batch istemcisi, bir uç noktanın kullanılamaz hale geldiğini (örneğin, bir
 > * Bu örnek `/my_nfs` yapılandırma dosyası ve girişler, çıktılar ve Günlükler dizinleri için aynı dizini () kullanır. Bu klasörler için barındırılan veya NFS bağlı dizinleri kullanabilirsiniz.
 > * İstemcisini ile çalıştırmak, `–h` kullanılabilir komut satırı parametrelerini ve bunların varsayılan değerlerini listeler. 
 
+
+#### <a name="linux"></a>[Linux](#tab/linux)
 `run`Kapsayıcıyı başlatmak Için Docker komutunu kullanın. Bu, kapsayıcı içinde etkileşimli bir kabuk başlatacak.
 
 ```Docker
@@ -94,6 +96,18 @@ Batch istemcisini ve kapsayıcısını tek bir komutta çalıştırmak için:
 docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
+#### <a name="windows"></a>[Windows](#tab/windows)
+
+Batch istemcisini ve kapsayıcısını tek bir komutta çalıştırmak için:
+
+```Docker
+docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
+
+```
+
+---
+
+
 İstemci çalışmaya başlayacak. Bir ses dosyası önceki bir çalıştırmaya zaten eklenmiş ise, istemci dosyayı otomatik olarak atlar. Dosyalar, geçici hatalar oluşursa otomatik yeniden denemeye gönderilir ve istemcisini yeniden denemek istediğiniz hataları ayırt edebilirsiniz. Bir döküm hatası durumunda, istemci, devam etmeden devam eder ve devam etmeden yeniden deneyebilir.  
 
 ## <a name="run-modes"></a>Çalıştırma modları 
@@ -102,7 +116,7 @@ Batch işleme seti, parametresini kullanarak üç mod sunar `--run-mode` .
 
 #### <a name="oneshot"></a>[Oneshot](#tab/oneshot)
 
-`ONESHOT`mod, tek bir ses dosyası toplu işi (bir giriş dizininden ve isteğe bağlı dosya listesinden) çıkış klasörüne dökümünü sağlar.
+`ONESHOT` mod, tek bir ses dosyası toplu işi (bir giriş dizininden ve isteğe bağlı dosya listesinden) çıkış klasörüne dökümünü sağlar.
 
 :::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Oneshot modundaki batch paketi kapsayıcısı işleme dosyalarını gösteren bir diyagram.":::
 
@@ -117,7 +131,7 @@ Batch işleme seti, parametresini kullanarak üç mod sunar `--run-mode` .
 > [!TIP]
 > Giriş dizinine aynı anda birden çok dosya eklenirse, bunları düzenli bir aralığa ekleyerek performansı artırabilirsiniz.
 
-`DAEMON`mod, belirli bir klasöre var olan dosyaları yeniden bes ve yeni ses dosyalarını eklendikçe sürekli olarak yeniden ekledi.          
+`DAEMON` mod, belirli bir klasöre var olan dosyaları yeniden bes ve yeni ses dosyalarını eklendikçe sürekli olarak yeniden ekledi.          
 
 :::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Daemon modundaki batch paketi kapsayıcısı işleme dosyalarını gösteren diyagram.":::
 
@@ -130,7 +144,7 @@ Batch işleme seti, parametresini kullanarak üç mod sunar `--run-mode` .
 
 #### <a name="rest"></a>[REST](#tab/rest)
 
-`REST`mod, ses dosyası toplu işlem gönderimi, durum denetimi ve uzun yoklama için temel bir HTTP uç noktası kümesi sağlayan bir API sunucu modudur. Ayrıca, bir Python modül uzantısı kullanılarak veya bir alt modül olarak içeri aktarırken programlı tüketim sunar.
+`REST` mod, ses dosyası toplu işlem gönderimi, durum denetimi ve uzun yoklama için temel bir HTTP uç noktası kümesi sağlayan bir API sunucu modudur. Ayrıca, bir Python modül uzantısı kullanılarak veya bir alt modül olarak içeri aktarırken programlı tüketim sunar.
 
 :::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Daemon modundaki batch paketi kapsayıcısı işleme dosyalarını gösteren diyagram.":::
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 'da Linux VM 'lerinde depolama kaynak silme hatalarını giderme | Microsoft Docs
-description: Bağlı VHD 'leri içeren depolama kaynaklarını silerken sorun giderme.
+description: Bağlı VHD 'Leri içeren depolama kaynaklarını silerken Linux VM 'lerinde sorunları nasıl giderebileceğinizi öğrenin.
 keywords: ''
 services: virtual-machines
 author: genlin
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8f145dcf8d476009d81056b3f4f970460209a5bc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8209f5b7fc02f59c33ad0a7b58ec6305d6eecf0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320090"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Depolama kaynağı silme hatalarını giderme
 
@@ -76,7 +76,7 @@ Bu adımlar tamamlandıktan sonra depolama hesabını, kapsayıcıyı veya blobu
 ## <a name="step-2-delete-vm-to-detach-os-disk"></a>2. Adım: işletim sistemi diskini ayırmak için VM 'yi silme
 VHD bir işletim sistemi diskiyorsa, eklenen VHD 'nin silinebilmesi için önce VM 'yi silmeniz gerekir. Bu adımlar tamamlandıktan sonra aynı VM 'ye bağlı veri diskleri için başka bir eylem gerekli olmaz:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Hub menüsünde **sanal makineler**' i seçin.
 3. VHD 'nin bağlı olduğu VM 'yi seçin.
 4. Sanal makineyi etkin bir şekilde kullanan hiçbir şeyin olmadığından ve artık sanal makineye ihtiyacınız olmadığından emin olun.
@@ -86,7 +86,7 @@ VHD bir işletim sistemi diskiyorsa, eklenen VHD 'nin silinebilmesi için önce 
 ## <a name="step-3-detach-data-disk-from-the-vm"></a>3. Adım: veri diskini VM 'den ayırma
 VHD bir veri diskise, kirayı kaldırmak için VHD 'yi VM 'den ayırın:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Hub menüsünde **sanal makineler**' i seçin.
 3. VHD 'nin bağlı olduğu VM 'yi seçin.
 4. **Sanal makine ayrıntıları** bölmesinde **diskler** ' i seçin.

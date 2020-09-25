@@ -7,20 +7,20 @@ ms.date: 02/19/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 466a1318dbe0a9299eebb9259ef8e0fe9bbbc0e7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 208e06e9bd8fcf26674a11f79d2bd6878ca4f633
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433095"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331565"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>V12 JavaScript istemci kitaplıklarını kullanan Azure depolama örnekleri
 
 Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara genel bir bakış sağlar. GitHub 'da karşılık gelen örnek kodu görüntülemek için bağlantılara tıklayın.
 
 > [!NOTE]
-> Bu örnekler en son Azure Storage JavaScript V12 kitaplığını kullanır. Eski v11 kodu için bkz. GitHub deposunda [Node.jsAzure Blob hizmetini](https://github.com/Azure-Samples/storage-blob-node-getting-started) kullanmaya başlama.
+> Bu örnekler en son Azure Storage JavaScript V12 kitaplığını kullanır. Eski v11 kodu için bkz. GitHub deposunda [Node.jsAzure Blob hizmetini ](https://github.com/Azure-Samples/storage-blob-node-getting-started) kullanmaya başlama.
 
 ## <a name="blob-samples"></a>Blob örnekleri
 
@@ -68,7 +68,7 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L53)
+      [Bir kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L53)
    :::column-end:::
    :::column span="":::
       [Paylaşılan anahtar kimlik bilgisi kullanarak kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L38)
@@ -350,7 +350,7 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
       [Batch varlıkları](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
    :::column-end:::
    :::column span="":::
-      [Tablo oluşturma](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
+      [Tablo oluştur](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::

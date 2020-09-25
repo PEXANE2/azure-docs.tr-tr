@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a1dd88e9007a878ffdf6e5d836391c30c952c35a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 631f5afbac4337cd0852f46ac4a336107f042397
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923033"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331650"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure Bilişsel Arama Dizin oluşturucuyu kullanarak Azure SQL içeriğine bağlanma ve dizin oluşturma
 
@@ -74,7 +74,9 @@ Verilerinize ilişkin çeşitli faktörlere bağlı olarak, Azure SQL Indexer ku
     }
    ```
 
-   Bağlantı dizesini [Azure Portal](https://portal.azure.com)alabilir; seçeneğini kullanın `ADO.NET connection string` .
+   Bağlantı dizesi aşağıdaki biçimlerden birini izleyebilir:
+    1. Bağlantı dizesini [Azure Portal](https://portal.azure.com)alabilir; seçeneğini kullanın `ADO.NET connection string` .
+    1. Şu biçime sahip bir hesap anahtarı içermeyen bir yönetilen kimlik bağlantı dizesi: `Initial Catalog|Database=<your database name>;ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Sql/servers/<your SQL Server name>/;Connection Timeout=connection timeout length;` . Bu bağlantı dizesini kullanmak için, [yönetilen bir kimlik kullanarak bir Azure SQL veritabanına Dizin Oluşturucu bağlantısı ayarlamaya](search-howto-managed-identities-sql.md)yönelik yönergeleri izleyin.
 
 2. Henüz bir tane yoksa hedef Azure Bilişsel Arama dizinini oluşturun. [Portalı](https://portal.azure.com) veya [create INDEX API 'yi](/rest/api/searchservice/Create-Index)kullanarak bir dizin oluşturabilirsiniz. Hedef dizininizin şemasının kaynak tablonun şemasıyla uyumlu olduğundan emin olun- [SQL ve Azure bilişsel arama veri türleri arasındaki eşlemeyi](#TypeMapping)inceleyin.
 

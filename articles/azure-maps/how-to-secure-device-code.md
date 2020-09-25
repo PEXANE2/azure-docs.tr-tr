@@ -5,16 +5,16 @@ description: Azure AD 'de oturum açmayı destekleyen ve Azure haritalar REST AP
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 91d73ad14cac77e4b00e90ec11791ef141436b7e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7e61a881470b206981b65e175c1f7f40b161ebf8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319767"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Azure AD ve Azure haritalar REST API 'Leri ile giriş kısıtlı bir cihazın güvenliğini sağlama
 

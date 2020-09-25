@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d528ff41d8b7098e313e070dfe734960cdc89eaa
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4dc768b92a9ffbeafc31ef81d065237f47fb645e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331888"
 ---
 # <a name="secure-azure-digital-twins"></a>Güvenli Azure dijital TWINS
 
@@ -26,7 +26,7 @@ RBAC, Azure dijital TWINS 'e [Azure Active Directory](../active-directory/fundam
 
 Bir *güvenlik sorumlusu*için, bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek izinler vermek için RBAC kullanabilirsiniz. Güvenlik sorumlusu Azure AD tarafından doğrulanır ve döndürülen bir OAuth 2,0 belirteci alır. Bu belirteç, bir Azure dijital TWINS örneğine erişim isteği yetkilendirmek için kullanılabilir.
 
-### <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
+### <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
 Azure AD ile, erişim iki adımlı bir işlemdir. Bir güvenlik sorumlusu (bir Kullanıcı, Grup veya uygulama) Azure dijital TWINS 'e erişmeyi denediğinde, isteğin *kimliğinin doğrulanması* ve *yetkilendirilmiş*olması gerekir. 
 
@@ -83,7 +83,7 @@ Azure dijital TWINS, veri merkezlerimizde yazıldığı sırada verilerin geri k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [*Nasıl yapılır: bir örneği ve kimlik doğrulamasını ayarlama*](how-to-set-up-instance-scripted.md)bölümünde bu kavramlara bakın.
+* [*Nasıl yapılır: bir örneği ve kimlik doğrulamasını ayarlama*](how-to-set-up-instance-portal.md)bölümünde bu kavramlara bakın.
 
 * [*Nasıl yapılır: yazma uygulaması kimlik doğrulaması kodunda*](how-to-authenticate-client.md)istemci uygulama kodundan bu kavramlarla nasıl etkileşim kuracağınızı öğrenin.
 

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 16d7965b8d42a6fdd6ebd68307b01b322cfa7cc6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ad64d56899a9a54f4c8aede78ba6b4f2b77b8249
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285246"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331548"
 ---
 # <a name="azcopy-make"></a>azcopy oluşturma
 
@@ -45,7 +45,7 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 |Seçenek|Açıklama|
 |--|--|
 |-h,--yardım|Make komutu için yardım içeriğini göster. |
-|--Kota-GB uint32|Paylaşımın en büyük boyutunu gigabayt (GiB) cinsinden belirtir, sıfır, dosya hizmetinin varsayılan kotasını kabul ettiğiniz anlamına gelir.|
+|--Kota-GB uint32|Paylaşımın en büyük boyutunu gigabayt (GB) cinsinden belirtir, sıfır, dosya hizmetinin varsayılan kotasını kabul ettiğiniz anlamına gelir.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
@@ -57,4 +57,4 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

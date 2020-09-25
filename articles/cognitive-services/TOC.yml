@@ -23,7 +23,7 @@
       href: cognitive-services-apis-create-account-client-library.md
     - name: ARM şablonu kullanarak yeni bir kaynak oluşturma
       displayName: Resource Manager
-      href: resource-manager-template.md
+      href: create-account-resource-manager-template.md
     - name: Tanılama günlüğüne kaydetme
       href: diagnostic-logging.md
 - name: Güvenlik

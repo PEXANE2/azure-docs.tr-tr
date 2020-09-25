@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a11894eb94b73d8d31ca7135be2ba9c05eca5e04
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075913"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319461"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>VCore ve DTU satın alma modelleri arasında seçim yapın-Azure SQL veritabanı ve SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,10 +34,10 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği, tam olarak yönetilen bi
 
 Aşağıdaki tablo ve grafik, sanal çekirdek tabanlı ve DTU tabanlı satın alma modellerini karşılaştırın ve kontrast vardır:
 
-|**Satın alma modeli**|**Açıklama**|**En iyisi**|
+|**Satın alma modeli**|**Açıklama**|**En iyi kullanım alanı:**|
 |---|---|---|
-|DTU tabanlı|Bu model, işlem, depolama ve g/ç kaynaklarının paketlenmiş bir ölçüsünü temel alır. İşlem boyutları, tek veritabanları ve elastik havuzlar için elastik veritabanı işlem birimleri (eDTU 'Lar) için DTU 'lar halinde ifade edilir. DTU 'lar ve eDTU 'lar hakkında daha fazla bilgi için bkz. [DTU ve eDTU nedir?](purchasing-models.md#dtu-based-purchasing-model).|Basit, önceden yapılandırılmış kaynak seçenekleri isteyen müşteriler|
-|Sanal çekirdek tabanlı|Bu model, işlem ve depolama kaynaklarını bağımsız olarak seçmenizi sağlar. Sanal çekirdek tabanlı satın alma modeli, maliyetleri kaydetmek için SQL Server [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) kullanmanıza da olanak tanır.|Esneklik, denetim ve saydamlık değerlerini veren müşteriler|
+|DTU tabanlı|Bu model, işlem, depolama ve g/ç kaynaklarının paketlenmiş bir ölçüsünü temel alır. İşlem boyutları tek veritabanları için DTU cinsinden ve elastik havuzlar için elastik veritabanı işlem birimi (eDTU) cinsinden gösterilir. DTU’lar ve eDTU’lar hakkında daha fazla bilgi için bkz. [DTU’lar ve eDTU’lar nedir?](purchasing-models.md#dtu-based-purchasing-model).|Basit, önceden yapılandırılmış kaynak seçenekleri isteyen müşteriler|
+|Sanal çekirdek tabanlı|Bu model, işlem ve depolama kaynaklarını bağımsız olarak seçmenizi sağlar. Sanal çekirdek tabanlı satın alma modeli maliyetleri azaltmak için SQL Server’ın [Azure Hibrit Avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)’nı kullanmanıza da olanak tanır.|Esneklik, denetim ve saydamlık değerlerini veren müşteriler|
 ||||  
 
 ![Fiyatlandırma modeli karşılaştırması](./media/purchasing-models/pricing-model.png)
@@ -77,7 +77,7 @@ Sanal çekirdek tabanlı satın alma modelinde, SQL veritabanı ve SQL yönetile
 Sanal çekirdek tabanlı satın alma modeli, işlem ve depolama kaynaklarını bağımsız olarak seçmenizi, şirket içi performansı eşleştirmeye ve fiyatı iyileştirmenize olanak tanır. Sanal çekirdek tabanlı satın alma modelinde şunları ödeyin:
 
 - İşlem kaynakları (hizmet katmanı + sanal çekirdek sayısı ve bellek miktarı + donanım oluşturma).
-- Veri ve günlük depolama alanı türü ve miktarı.
+- Veri türü ve miktarı ile günlük depolaması.
 - Yedekleme depolaması (RA-GRS).
 
 > [!IMPORTANT]

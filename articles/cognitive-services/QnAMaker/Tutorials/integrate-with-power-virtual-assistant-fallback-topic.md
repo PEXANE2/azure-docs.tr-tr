@@ -3,12 +3,12 @@ title: 'Öğretici: Power Virtual Agents ile tümleştirme-Soru-Cevap Oluşturma
 description: Bu öğreticide, etkin öğrenme ile bilgi Bankalarınızın kalitesini geliştirebilirsiniz. Mevcut soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin veya ekleyin.
 ms.topic: tutorial
 ms.date: 06/08/2020
-ms.openlocfilehash: f1d51f6ad8892252161238eb71fbb02f463463fd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6d00833a1331ebca9b070d90f32ee30c56bd5f96
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84635396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319223"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Öğretici: bilgi tabanınızı Power Virtual Agents 'e ekleme
 Bilgi tabanınızdan yanıt sağlamak için bir [Power Virtual Agents](https://powervirtualagents.microsoft.com/) bot oluşturun ve genişletin.
@@ -152,7 +152,7 @@ Aşağıdaki yordam şu şekilde bir güç otomatikleştirme akışı oluşturur
 1. **Yanıt oluştur** eylem kutusunu seçin ve [Bilgi Bankası oluşturma ve yayımlama](#create-and-publish-a-knowledge-base)başlıklı önceki bir bölümden soru-cevap oluşturma ayarlarınızı girin. Aşağıdaki görüntüdeki **hizmet ana** Bilgisayarınız, Bilgi Bankası ana bilgisayar **ana** bilgisayarınız ile ilgilidir ve biçiminde olur `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker` .
 
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="Devam düğmesi vurgulanmış Soru-Cevap Oluşturma şablon akışının kısmi ekran görüntüsü.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="Yanıt oluştur (Önizleme) ile Soru-Cevap Oluşturma şablon akışının kısmi ekran görüntüsü vurgulandı.":::
 
 1. Akışı kaydetmek için **Kaydet**’i seçin.
 
@@ -199,10 +199,10 @@ Aracının akışı bulması ve akışa bağlanması için akışın bir güç o
 
 1. Bağlam araç çubuğundan **Kaydet**' i seçerek konunun yazma tuvali ayrıntılarını kaydedin.
 
-Son aracı tuvali aşağıda verilmiştir.
+Son aracı tuvali aşağıdaki gibi görünür.
 
 > [!div class="mx-imgBorder"]
-> ![Son aracı tuvalinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
+> ![Ekran görüntüsü, tetikleyici tümcecikleriyle, eylemde ve Ileti bölümlerinin bulunduğu son aracı tuvali 'ni gösterir.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
 
 ## <a name="test-the-agent"></a>Aracıyı test etme
 
@@ -214,9 +214,9 @@ Son aracı tuvali aşağıda verilmiştir.
     |--|--|--|
     |1|Hello|Konuşmaya başla|
     |2|Depolama saatleri|Örnek konu. Bu, sizin için sizin için herhangi bir ek iş olmadan yapılandırılır.|
-    |3|Evet|Yanıt olarak `Did that answer your question?`|
+    |3|Yes|Yanıt olarak `Did that answer your question?`|
     |4|Mükemmel|Yanıt olarak `Please rate your experience.`|
-    |5|Evet|Yanıt olarak `Can I help with anything else?`|
+    |5|Yes|Yanıt olarak `Can I help with anything else?`|
     |6|Sorgu tahminleri için üretilen iş performansını nasıl geliştirebilirim?|Bu soru, yanıt vermek için metin bilgi tabanınızı gönderen geri dönüş eylemini tetikler. Ardından Yanıt gösterilir. tek tek eylemler için yeşil onay işaretleri her bir eylem için başarıyı gösterir.|
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Başarılı eylemler için yeşil onay işaretlerini gösteren tuval ile sohbet bot ekran görüntüsü.":::

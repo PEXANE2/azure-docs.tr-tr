@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 3c4afc6c0adb8d499e38abf3d709a951774dda4e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974070"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320005"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Azure 'daki bir Docker kapsayıcısında mikro odak kurumsal sunucu 5,0 ' i çalıştırın
 
@@ -121,9 +121,9 @@ Bu noktada, VM çalışır ve RDP aracılığıyla iliştirilir. Oturumunuz aç�
 
 1.  Enterprise Server 5,0 ve acctdemo uygulamasını başlatmak için komut isteminde şunu yazın:
 
-    ~~~
+    ```
     **docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win\_5.0\_x64
-    ~~~
+    ```
 
 1.  [X3270](http://x3270.bgp.nu/) gibi bir 3270 Terminal öykünücüsü yükleyip, bağlantı noktası 9040 üzerinden, çalıştıran görüntüye eklemek için kullanın.
 
@@ -133,15 +133,15 @@ Bu noktada, VM çalışır ve RDP aracılığıyla iliştirilir. Oturumunuz aç�
 
     2.  Acctdemo kapsayıcısının IP adresini almak için önceki adımdaki kapsayıcı KIMLIĞINI aşağıdaki gibi kullanın:
 
-    ~~~
+    ```
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
-    Örnek:
+    Örneğin:
 
-    ~~~
+    ```
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
 4. Acctdemo görüntüsünün IP adresini aklınızda tut. Örneğin, aşağıdaki çıktıda bulunan adres 172.19.202.52 ' dir.
 

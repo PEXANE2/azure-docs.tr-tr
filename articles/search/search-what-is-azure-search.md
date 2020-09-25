@@ -7,27 +7,30 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 09/15/2020
-ms.openlocfilehash: e4cee699bf18b340d0bb1cbe783bdedcca537db6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 09/22/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 26a448ded06b32fef80fee06568655067a727620
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602957"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320429"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
 Azure Bilişsel Arama ([eskiden "Azure Search" olarak bilinirdi](whats-new.md#new-service-name)), geliştiriciler için Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerinde zengin arama deneyimi oluşturmaya yönelik API 'ler ve araçlar sağlayan bir bulut arama hizmetidir.
 
-Bir Bilişsel Arama hizmeti oluşturduğunuzda, bir dizin oluşturma ve sorgu altyapısı, oluşturduğunuz ve yönettiğiniz arama dizinlerinin kalıcı olarak depolanması ve basit ve karmaşık sorgular oluşturmaya yönelik bir sorgu dili elde edersiniz. Bir arama hizmeti, Azure veri kaynaklarından veri alımı/alımı otomatikleştiren *Dizin oluşturucular* ve görüntü ve metin analizi gibi bilişsel hizmetlerden AI *Işleme ekleyen diğer* Azure hizmetleriyle tümleşir.
+Bir Bilişsel Arama hizmeti oluşturduğunuzda, dizin oluşturma ve sorgu yürütme, oluşturduğunuz ve yönettiğiniz dizinlerin kalıcı depolaması ve basit sorguları basit sorgular oluşturmaya yönelik bir sorgu dili elde edersiniz. İsteğe bağlı olarak, bir arama hizmeti, Azure veri kaynaklarından veri alımı/alımı otomatik *hale getiren ve* görüntü ve metin analizi gibi bilişsel hizmetlerden veya *skillsets* Azure işlevleri içinde oluşturduğunuz veya Azure Machine Learning ' de oluşturduğunuz özel AI dahil diğer Azure hizmetleriyle tümleştirilir.
 
 ![Azure Bilişsel Arama mimarisi](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Bilişsel Arama mimarisi")
 
-Mimari türsel olarak, bir arama hizmeti, verilerinizi içeren dış veri depoları arasında ve sorgu istekleri gönderen ve yanıtları işleyen bir istemci uygulaması arasında yer alır. Bir arama hizmetinin iki birincil iş yükü *dizine* alınır ve *sorgulama*yapılır.
+Mimari türsel olarak, bir arama hizmeti, dizini oluşturulmamış verilerinizi içeren dış veri depoları arasında ve bir arama dizinine sorgu istekleri gönderen ve yanıtı işleyen bir istemci uygulaması arasında yer alır.  Bir dizin şeması Aranabilir içeriğin yapısını belirler. 
 
-Dizin oluşturma, arama hizmetinize içerik ekler ve aranabilir hale gelir. Dahili olarak, gelen metinler belirteçlerde işlenir ve hızlı eşleştirme için ters dizinler halinde depolanır. Bir dizin şeması Aranabilir içeriğin yapısını belirler. Dizin oluşturma sırasında Microsoft 'un veya oluşturduğunuz özel becerilerin önceden tanımlanmış olduğu bilişsel *yetenekler*ekleme seçeneğiniz vardır. Elde edilen analiz ve dönüştürmeler, daha önce mevcut olmayan yeni bilgi ve yapılar oluşturabilir ve birçok arama ve bilgi araştırma senaryosu için yüksek yardımcı program sağlar.
+Bir arama hizmetinin iki birincil iş yükü *dizine* alınır ve *sorgulama*yapılır.
 
-Bir dizin aranabilir verilerle doldurulduktan sonra, istemci uygulamanız bir arama hizmetine sorgu istekleri gönderir ve yanıtları işler. Arama deneyimi, Azure Bilişsel Arama API 'Leri kullanarak istemcinizde tanımlanmıştır ve ilgi ayarlama, otomatik tamamlama, eş anlamlı eşleştirme, belirsiz eşleştirme, model eşleştirme, filtre ve sıralama içerebilir.
++ Dizin oluşturma, metni arama hizmetinize getirir ve aranabilir hale getirir. Dahili olarak, gelen metinler belirteçlerde işlenir ve hızlı taramalar için ters dizinler halinde depolanır. Dizin oluşturma sırasında Microsoft 'un veya oluşturduğunuz özel becerilerin önceden tanımlanmış olduğu bilişsel *yetenekler*ekleme seçeneğiniz vardır. Sonraki analizler ve dönüştürmeler, daha önce mevcut olmayan yeni bilgi ve yapılara neden olabilir ve birçok arama ve bilgi araştırma senaryosu için yüksek yardımcı program sağlar.
+
++ Bir dizin aranabilir verilerle doldurulduktan sonra, istemci uygulamanız bir arama hizmetine sorgu istekleri gönderir ve yanıtları işler. Tüm sorgu yürütmesi, hizmetinize oluşturduğunuz, sahip olduğunuz ve depoladığınız bir arama dizininden daha fazla. İstemci uygulamanızda, arama deneyimi Azure Bilişsel Arama API 'Leri kullanılarak tanımlanır ve ilgi ayarlama, otomatik tamamlama, eş anlamlı eşleştirme, belirsiz eşleştirme, model eşleştirme, filtre ve sıralama dahil olabilir.
 
 Bilgi alma sürecinin karmaşıklığını maskeleyen basit bir [REST API’si](/rest/api/searchservice/) veya [.NET SDK’sı](search-howto-dotnet-sdk.md) aracılığıyla bu işlev sunulur. Ayrıca, hizmet yönetimi ve içerik yönetimi için Azure portal kullanarak, prototiplerinizi prototip ve becerileri sorgulama ve dizin oluşturma araçları da kullanabilirsiniz. Hizmet bulutta çalıştığından, altyapı ve kullanılabilirlik Microsoft tarafından yönetilir.
 
@@ -61,6 +64,9 @@ Diğer aboneler ile paylaşılan [ücretsiz bir hizmet](search-create-service-po
 Bir veritabanındaki alanlara benzer şekilde, aramak istediğiniz belgelerin yapısını yansıtacak şekilde eşlenecek bir dizin şeması tanımlayın. Arama dizini, hızlı sorgu yürütme için iyileştirilmiş özel bir veri yapısıdır.
 
 [Dizin şemasını Azure Portal](search-what-is-an-index.md)veya [.net SDK](search-howto-dotnet-sdk.md) veya [REST API](/rest/api/searchservice/)kullanarak programlı bir şekilde oluşturmak yaygındır.
+
+> [!TIP]
+> Dakikada bir dizin oluşturmak, yüklemek ve sorgulamak için [hızlı başlangıç: veri alma Sihirbazı 'nı](search-get-started-portal.md) kullanmaya başlayın.
 
 ### <a name="step-3-load-data"></a>3. Adım: Verileri yükleme
 

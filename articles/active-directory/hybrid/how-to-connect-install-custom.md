@@ -14,12 +14,12 @@ ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb45f4488c0ddc63ab8e7357a122b47777feee
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: aed5dcf98e37b0d075804985355bdabe3b50b712
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662359"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295354"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect özel yüklemesi
 Yükleme için daha fazla seçenek istediğinizde Azure AD Connect **Özel ayarları** kullanılır. Birden fazla ormanınız varsa veya hızlı yükleme kapsamında yer almayan isteğe bağlı özellikleri yapılandırmak istiyorsanız kullanılır. [**Hızlı yükleme**](how-to-connect-install-express.md) seçeneğinin dağıtımınız veya topolojiniz için uygun olmadığı tüm durumlarda kullanılır.
@@ -46,7 +46,7 @@ Eşitleme hizmetlerini yüklerken isteğe bağlı yapılandırma bölümünü i�
 ### <a name="user-sign-in"></a>Kullanıcı oturumu açma
 Gerekli bileşenleri yükledikten sonra kullanıcı çoklu oturumu açma yönteminizi seçmeniz istenir. Aşağıdaki tabloda mevcut seçeneklerle ilgili kısa bir açıklama bulunmaktadır. Oturum açma yöntemleriyle ilgili tam açıklama için bkz. [Kullanıcı oturumu açma](plan-connect-user-signin.md).
 
-![Kullanıcı Oturumu açma](./media/how-to-connect-install-custom/usersignin4.png)
+!["Parola karması eşitleme" seçiliyken "Kullanıcı oturum açma" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-custom/usersignin4.png)
 
 | Çoklu Oturum Açma Seçeneği | Description |
 | --- | --- |
@@ -75,7 +75,7 @@ Bir hatayla karşılaştıysanız ve bağlantı sorunlarınız varsa bkz. [Bağl
 ### <a name="connect-your-directories"></a>Dizinlerinizi bağlama
 Azure AD Connect'in, Active Directory Etki Alanı Hizmetinize bağlanabilmesi için yeterli izinlere sahip bir hesabın orman adı ve kimlik bilgilerine sahip olması gerekir.
 
-![Connect Dizini](./media/how-to-connect-install-custom/connectdir01.png)
+!["Dizinlerinizi bağlama" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-custom/connectdir01.png)
 
 Orman adını girip **Dizin Ekle**’ye tıkladıktan sonra, bir iletişim kutusu açılır ve aşağıdaki seçenekler sunulur:
 
@@ -300,7 +300,7 @@ Grup Tarafından Yönetilen Hizmet Hesabı'nı seçtiyseniz ve bu özellik Activ
 ### <a name="select-the-azure-ad-domain-that-you-wish-to-federate"></a>Birleştirmek istediğiniz Azure AD etki alanını seçin
 Bu yapılandırma, AD FS ile Azure AD arasındaki federasyon ilişkisini ayarlamak için kullanılır. AD FS'yi, Azure AD'ye güvenlik belirteçleri sağlamak üzere yapılandırır. Ayrıca Azure AD'yi bu belirli AD FS örneğinden gelen belirteçlere güvenecek şekilde yapılandırır. Bu sayfa, ilk yüklemede yalnızca bir etki alanını yapılandırmanıza izin verir. Daha sonra Azure AD Connect'i tekrar çalıştırarak daha fazla etki alanını yapılandırabilirsiniz.
 
-![Azure AD Etki Alanı](./media/how-to-connect-install-custom/adfs6.png)
+!["Azure AD etki alanı" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-custom/adfs6.png)
 
 ### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>Federasyon için seçilen Azure AD etki alanını doğrulama
 Birleştirilecek etki alanını seçtiğinizde Azure AD Connect, size doğrulanmamış bir etki alanını doğrulamak için gerekli olan bilgileri sağlar. Bu bilgileri nasıl kullanacağınız hakkında bilgi edinmek için bkz. [Etki alanı ekleme ve doğrulama](../fundamentals/add-custom-domain.md).
@@ -320,7 +320,7 @@ Azure AD Connect ile PingFederate’i yalnızca birkaç tıklama ile kolayca yap
 ### <a name="verify-the-domain"></a>Etki alanını doğrulama
 PingFederate ile Federasyonu seçtikten sonra birleştirmek istediğiniz etki alanını doğrulamanız istenir.  Açılan kutudan etki alanını seçin.
 
-![Etki Alanını Doğrulama](./media/how-to-connect-install-custom/ping1.png)
+!["Contoso.com" örnek etki alanı ile "Azure AD etki alanı" nı gösteren ekran görüntüsü.](./media/how-to-connect-install-custom/ping1.png)
 
 ### <a name="export-the-pingfederate-settings"></a>PingFederate ayarlarını dışarı aktarma
 
@@ -394,7 +394,7 @@ Aşağıdaki bölümde Azure AD Connect yüklemesi sırasında karşılaşabilec
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>“ADSync veritabanı veri içeriyor ve üzerine yazılamaz”
 Özel install Azure AD Connect kullandığınızda ve **gerekli bileşenleri Install** sayfasında **var olan bir SQL Server kullan** seçeneğini belirlediğinizde, **ADSync veritabanının zaten veri içerdiğini ve üzerine yazılamayacağını bildiren bir hatayla karşılaşabilirsiniz. Lütfen var olan veritabanını kaldırın ve yeniden deneyin.**
 
-![Hata](./media/how-to-connect-install-custom/error1.png)
+!["Gerekli bileşenleri yüklensin" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-custom/error1.png)
 
 Bunun nedeni yukarıdaki metin kutularında belirttiğiniz SQL Server örneğinde **ADSync** adlı bir veritabanının mevcut olmasıdır.
 

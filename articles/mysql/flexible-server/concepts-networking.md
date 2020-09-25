@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 550f3367fe2e5283aff788b36203e988361590ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/23/2020
+ms.openlocfilehash: 4eb9ffceada245f7a7f4b2631a79330fb497a452
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941038"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331735"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı 'nın bağlantı ve ağ kavramları-esnek sunucu (Önizleme)
 
@@ -62,6 +62,8 @@ MySQL esnek sunucularıyla sanal ağları kullanırken bilmeniz için bazı kavr
 
    MySQL esnek sunucunuz yalnızca MySQL esnek sunucu kullanımı için **temsilci atanmış** bir alt ağda olmalıdır. Bu temsil ilgili alt ağı yalnızca MySQL için Azure Veritabanı Esnek Sunucularının kullanabileceği anlamına gelir. Temsilci alt ağında diğer türdeki Azure kaynakları bulunamaz. Temsilci özelliğini Microsoft. DBforMySQL/Flexibtaservers olarak atayarak bir alt ağ temsilciliğini alırsınız.
 
+* **Ağ güvenlik grupları (NSG)** Ağ güvenlik gruplarındaki güvenlik kuralları, sanal ağ alt ağları ve ağ arabirimlerini akacak ve dışı bir ağ trafiği türünü filtrelemenizi sağlar. Daha fazla bilgi için [ağ güvenlik grubuna genel bakış](../../virtual-network/network-security-groups-overview.md) konusunu gözden geçirin.
+
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Desteklenmeyen sanal ağ senaryoları
 * Ortak uç nokta (veya genel IP veya DNS)-sanal ağa dağıtılan esnek bir sunucu ortak bir uç noktaya sahip olamaz
@@ -108,11 +110,9 @@ MySQL Server hizmetine yönelik Microsoft Azure veritabanına erişim beklendiğ
 ## <a name="hostname"></a>Konak adı
 Seçtiğiniz ağ seçeneğinden bağımsız olarak, esnek sunucunuza bağlanırken her zaman konak adı olarak tam etki alanı adı (FQDN) kullanmanızı öneririz. Sunucunun IP adresinin statik kalması garanti edilmez. FQDN 'nin kullanılması, bağlantı dizeniz üzerinde değişiklik yapmaktan kaçınmanıza yardımcı olur. 
 
-Bölgesel olarak yedekli HA kullanıyorsanız ve birincil ve ikincil arasında yük devretme gerçekleşdiğinde, IP değişikliklerinin bir senaryosu. FQDN 'nin kullanılması, aynı bağlantı dizesiyle bağlantıları sorunsuz bir şekilde yeniden denemeyeceğiniz anlamına gelir.
-
 Örnek
 * Önerilen `hostname = servername.mysql.database.azure.com`
-* `hostname = 10.0.0.4`(Özel adres) veya `hostname = 40.2.45.67` (genel IP) kullanmaktan kaçının
+* Mümkün olduğunda, kullanmaktan kaçının `hostname = 10.0.0.4` (özel bir adres) veya `hostname = 40.2.45.67` (genel IP)
 
 
 

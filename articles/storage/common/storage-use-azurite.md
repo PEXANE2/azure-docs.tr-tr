@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f18746242ef9f680f44be1fd614c6c769289aadb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001918"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331582"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Yerel Azure depolama geliştirmesi için Azurite öykünücüsünü kullanma
 
@@ -555,6 +555,12 @@ Azurite, Azure depolama hatası işleme mantığı ile hizalanır, ancak farklar
 Azurite, Okuma Erişimli Coğrafi olarak yedekli çoğaltmayı (RA-GRS) destekler. Depolama kaynakları için, hesap adına ekleyerek ikincil konuma erişin `-secondary` . Örneğin, aşağıdaki adres, Azurıite içindeki salt okunurdur ikincil kullanarak bir bloba erişmek için kullanılabilir:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
+
+### <a name="table-support"></a>Tablo desteği
+
+Azurite içindeki tablolar için destek şu anda geliştirme aşamasındadır ve katkı olarak açıktır! En son ilerleme için [Azurite v3 tablo](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) projesini denetleyin.
+
+Dayanıklı işlevlere yönelik destek tabloları gerektirir.
 
 ## <a name="azurite-is-open-source"></a>Azurite açık kaynaklı
 

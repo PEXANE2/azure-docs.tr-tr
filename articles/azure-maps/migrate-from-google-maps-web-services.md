@@ -1,20 +1,20 @@
 ---
-title: "Öğretici: Google Maps 'tan Web hizmetlerini geçirme | Microsoft Azure haritaları"
-description: Google Maps 'tan Microsoft Azure Maps 'a Web Hizmetleri geçirme.
+title: Web hizmetlerini Google Maps 'tan geçirme | Microsoft Azure haritaları
+description: Google Maps 'tan Microsoft Azure Maps 'a Web Hizmetleri geçirme
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 08/19/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8cc16e611002748dad2716a1c8dc914f297da9f1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090559"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319580"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Web hizmetini Google Maps 'tan geçirme
 
@@ -293,9 +293,8 @@ Google Maps 'teki özel simgeler için aşağıdaki stil seçenekleri adlarını
 &markers=color:red|size:mid|45,-110
 ```
 
-<center>
 
-![Google Haritalar işaretçisi](media/migrate-google-maps-web-services/google-maps-marker.png)</center>
+![Google Haritalar işaretçisi](media/migrate-google-maps-web-services/google-maps-marker.png)
 
 **Sonrasında: Azure Maps**
 
@@ -335,9 +334,8 @@ Her PIN konumu için etiket değerlerini belirtin. Bu yaklaşım, konum listesin
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
-<center>
 
-![Azure haritalar işaretleyicisi](media/migrate-google-maps-web-services/azure-maps-marker.png)</center>
+![Azure haritalar işaretleyicisi](media/migrate-google-maps-web-services/azure-maps-marker.png)
 
 ' 1 ', ' 2 ' ve ' 3 ' Etiket değerleriyle üç PIN ekleyin:
 
@@ -345,9 +343,9 @@ Her PIN konumu için etiket değerlerini belirtin. Bu yaklaşım, konum listesin
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
 
-<center>
 
-![Azure birden çok işaretçileri eşler](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)</center>
+
+![Azure birden çok işaretçileri eşler](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)
 
 ### <a name="path-url-parameter-format-comparison"></a>Yol URL parametre biçimi karşılaştırması
 
@@ -376,9 +374,7 @@ URL parametresindeki koordinatlar arasındaki haritaya kırmızı çizgi geçirg
 &path=color:0xFF000088|weight:4|45,-110|50,-100
 ```
 
-<center>
-
-![Google Haritalar çoklu çizgi](media/migrate-google-maps-web-services/google-maps-polyline.png)</center>
+![Google Haritalar çoklu çizgi](media/migrate-google-maps-web-services/google-maps-polyline.png)
 
 **Sonrasında: Azure Maps**
 
@@ -405,9 +401,7 @@ URL parametresinde, koordinatlar arasına kırmızı çizgi geçirgenliği ve pi
 &path=lcFF0000|la.5|lw4||-110 45|-100 50
 ```
 
-<center>
-
-![Azure haritalar çoklu çizgi](media/migrate-google-maps-web-services/azure-maps-polyline.png)</center>
+![Azure haritalar çoklu çizgi](media/migrate-google-maps-web-services/azure-maps-polyline.png)
 
 ## <a name="calculate-a-distance-matrix"></a>Uzaklık matrisini hesaplama
 
@@ -482,22 +476,5 @@ Azure haritalar REST Hizmetleri için ek belgeler ve kaynaklar aşağıda verilm
 - [Adres arama](how-to-search-for-address.md)
 - [Yönlendirme için en iyi uygulamalar](how-to-use-best-practices-for-routing.md)
 - [Azure haritalar REST hizmeti API başvuru belgeleri](https://docs.microsoft.com/rest/api/maps/)
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-Azure haritalar REST hizmetleri hakkında daha fazla bilgi edinin.
-
-> [!div class="nextstepaction"]
-> [Arama hizmetini kullanmaya yönelik en iyi uygulamalar](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Yönlendirme hizmetini kullanmaya yönelik en iyi uygulamalar](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Hizmetler modülünü kullanma (Web SDK)](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Azure haritalar REST hizmeti API başvuru belgeleri](https://docs.microsoft.com/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+- [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+- [Hizmetler modülünü kullanma (Web SDK)](how-to-use-best-practices-for-routing.md)

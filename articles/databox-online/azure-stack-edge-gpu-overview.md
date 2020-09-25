@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/07/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: c17cd17dfc3462d5a55753e6a4a364c14f9e2b62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 34dc0717b13cb38c4477cc93f23d57d0a8023dae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899078"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320753"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>GPU ile Azure Stack Edge Pro nedir?
 
@@ -40,15 +40,14 @@ Azure Stack Edge Pro 'nun, en uçta hızlı Machine Learning (ML) için kullanı
 
 Azure Stack Edge Pro aşağıdaki yeteneklere sahiptir:
 
-|Özellik |Açıklama  |
+|Özellik |Description  |
 |---------|---------|
 |Hızlandırılmış AI ınkrii| Yerleşik GPU (modele bağlı olarak bir veya ikisi) tarafından etkinleştirilir.|
 |Edge bilgi işlem      |Veri çözümleme, işleme ve filtrelemeye olanak tanımak için VM ve Kapsayıcılı iş yüklerini destekler. |
-|Yüksek performans | Yüksek performanslı işlem ve veri aktarımları.|
 |Veri erişimi     | Bulutta ek veri işleme için bulut API'lerini kullanarak Azure Depolama Blobları ve Azure Dosyaları'ndan doğrudan veri erişimi. Cihazdaki yerel önbellek, en son kullanılan dosyalara hızlı erişim için kullanılır.|
 |Bulutta yönetilen     |Cihaz ve hizmet, Azure portal aracılığıyla yönetilir.  |
 |Çevrimdışı karşıya yükleme     | Bağlantısız mod, çevrimdışı karşıya yükleme senaryolarını destekler.|
-|Desteklenen depolama protokolleri     | Veri alımı için standart SMB, NFS ve REST protokolleri desteği. <br> Desteklenen sürümler hakkında daha fazla bilgi için bkz. [Edge Pro sistem gereksinimleri Azure Stack](azure-stack-edge-system-requirements.md).|
+|Desteklenen dosya aktarımı protokolleri      | Veri alımı için standart SMB, NFS ve REST protokolleri desteği. <br> Desteklenen sürümler hakkında daha fazla bilgi için bkz. [Edge Pro sistem gereksinimleri Azure Stack](azure-stack-edge-system-requirements.md).|
 |Veri yenileme     | Yerel dosyaları buluttaki en son sürümle yenileme olanağı.|
 |Şifreleme    | Verileri yerel olarak şifrelemek ve *https*üzerinden buluta veri aktarımını güvenli hale getirmek için BitLocker desteği.|
 |Bant genişliği azaltma| Yoğun saatlerde bant genişliği kullanımını sınırlandırmaya kısıtlama.|
@@ -73,6 +72,8 @@ Azure Stack Edge Pro çözümü, Azure Stack Edge kaynağı, Azure Stack Edge Pr
 Azure Stack Edge Pro fiziksel cihazı, Azure kaynağı ve veri aktarımı yaptığınız hedef depolama hesabı, tümünün aynı bölgede olması gerekmez.
 
 - **Kaynak kullanılabilirliği** -bu önizleme sürümü için kaynak Doğu ABD, Batı AB ve Güney Doğu Asya bölgelerinde kullanılabilir.
+
+- **Cihaz kullanılabilirliği** -Azure Stack Edge Pro cihazının kullanılabildiği tüm ülkelerin listesi için, [Azure Stack Edge pro fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)için **Azure Stack Edge Pro** sekmesinde **kullanılabilirlik** bölümüne gidin.
     
 - **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, tüm Azure bölgelerinde sağlanır. Depolama hesaplarının Azure Stack Edge Pro verilerini depolayan bölgeler, cihazın en iyi performans için bulunduğu yere yakın yerleştirilmelidir. Cihazdan uzağa konumlandırılan depolama hesabı uzun gecikme sürelerine ve daha yavaş bir performansa yol açar.
 

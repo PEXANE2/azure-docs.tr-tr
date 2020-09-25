@@ -1,17 +1,17 @@
 ---
 title: Windows sanal masaüstü (klasik) için uygulama gruplarını yönetme-Azure
-description: Azure Active Directory 'da Windows sanal masaüstü (klasik) kiracılarının nasıl ayarlanacağını açıklar.
+description: Azure Active Directory (AD) içinde Windows sanal masaüstü (klasik) kiracıları ayarlamayı öğrenin.
 author: Heidilohr
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7ad8afc3d842a134ba09281005e35cf8cb04818a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e2a1f38918b2ea6af8a334b6648a463753f5c7b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009078"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295218"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>Öğretici: Windows sanal masaüstü için uygulama gruplarını yönetme (klasik)
 
@@ -52,7 +52,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
 
-4. Uygulamasına göre uygulamayı yüklemek için aşağıdaki cmdlet 'i çalıştırın `AppAlias` . `AppAlias`3. adımdaki çıktıyı çalıştırdığınızda görünür hale gelir.
+4. Uygulamasına göre uygulamayı yüklemek için aşağıdaki cmdlet 'i çalıştırın `AppAlias` . `AppAlias` 3. adımdaki çıktıyı çalıştırdığınızda görünür hale gelir.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>

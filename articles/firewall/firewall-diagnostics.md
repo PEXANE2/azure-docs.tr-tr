@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 09/17/2020
 ms.author: victorh
-ms.openlocfilehash: 92fc4252dd52236e2cc4e8fdfdd2afa32059a721
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376953"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320651"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme
 
@@ -24,7 +24,7 @@ Bu günlüklerden bazılarına portaldan erişebilirsiniz. Günlükler [Azure iz
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce Azure Güvenlik Duvarı için kullanılabilen tanılama günlüklerine ve ölçümlere genel bir bakış için [Azure Güvenlik Duvarı günlüklerini ve ölçümlerini](logs-and-metrics.md) okumalısınız.
 
@@ -35,14 +35,17 @@ Tanılama günlüğüne kaydetme işlemi etkinleştirildikten sonra verilerin g�
 1. Azure portal, güvenlik duvarı kaynak grubunuzu açın ve güvenlik duvarını seçin.
 2. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
 
-   Azure Güvenlik Duvarı için hizmete özgü iki günlük vardır:
+   Azure Güvenlik Duvarı için hizmete özgü dört günlük kullanılabilir:
 
    * AzureFirewallApplicationRule
    * AzureFirewallNetworkRule
+   * AzureFirewallThreatIntelLog
+   * AzureFirewallDnsProxy
+
 
 3. **Tanılama ayarı Ekle**' yi seçin. **Tanılama ayarları** sayfasında tanılama günlükleriyle ilgili ayarlar bulunur.
 5. Bu örnekte, Azure Izleyici günlükleri günlükleri depolar, bu nedenle ad için **güvenlik duvarı Log Analytics** yazın.
-6. **Günlük**altında, uygulama ve ağ kuralları için günlükleri toplamak üzere **AzureFirewallApplicationRule** ve **AzureFirewallNetworkRule** öğesini seçin.
+6. **Günlük**altında, günlükleri toplamak için **AzureFirewallApplicationRule**, **AzureFirewallNetworkRule**, **AzureFirewallThreatIntelLog**ve **AzureFirewallDnsProxy** öğesini seçin.
 7. Çalışma alanınızı yapılandırmak için **Log Analytics gönder** ' i seçin.
 8. Aboneliğinizi seçin.
 9. **Kaydet**’i seçin.
@@ -91,7 +94,7 @@ Dilerseniz depolama hesabınıza bağlanabilir ve JSON erişim günlüklerini ve
 > [!TIP]
 > Visual Studio ve C# ile sabit ve değişken değerlerini değiştirme konusunda temel kavramlara hakimseniz GitHub'daki [günlük dönüştürücü araçlarını](https://github.com/Azure-Samples/networking-dotnet-log-converter) kullanabilirsiniz.
 
-## <a name="view-metrics"></a>Ölçümleri görüntüleme
+## <a name="view-metrics"></a>Ölçümleri görüntüle
 Azure Güvenlik Duvarı ' na giderek **Izleme** **ölçüm**' i seçin. Kullanılabilir değerleri görüntülemek için **ÖLÇÜM** açılan listesini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

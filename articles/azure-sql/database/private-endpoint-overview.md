@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: f8c7e2cfb17ca48a67a009f532a9cbb6894cc05d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442607"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319478"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için Azure özel bağlantısı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -23,28 +23,6 @@ ms.locfileid: "89442607"
 
 > [!IMPORTANT]
 > Bu makale hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için geçerlidir. Basitlik için, ' Database ' terimi, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına başvurur. Benzer şekilde, ' Server ' öğesine yapılan tüm başvurular, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i barındıran [MANTıKSAL SQL Server](logical-servers.md) 'a başvurmaktadır. Bu *Makale,* **Azure SQL yönetilen örneği**için geçerlidir.
-
-## <a name="data-exfiltration-prevention"></a>Veri sızdırmayı önleme
-
-Azure SQL veritabanı 'nda veri ayıklama, veritabanı yöneticisi gibi yetkili bir kullanıcının verileri bir sistemden ayıklamasına ve kuruluşun dışında başka bir konuma veya sisteme taşımasına yönelik bir veritabanıdır. Örneğin, Kullanıcı, verileri üçüncü tarafa ait bir depolama hesabına taşıtır.
-
-SQL veritabanı 'nda bir veritabanına bağlanan bir Azure sanal makinesi içinde SQL Server Management Studio (SSMS) çalıştıran bir kullanıcıya sahip bir senaryo düşünün. Bu veritabanı Batı ABD veri merkezinde. Aşağıdaki örnekte, ağ erişim denetimleri kullanılarak SQL veritabanı 'ndaki genel uç noktalarla erişimin nasıl sınırlandıralınacağını gösterilmektedir.
-
-1. Azure hizmetlerinin **kapalı**çalışmasına izin ver ayarını yaparak, genel uç nokta aracılığıyla SQL veritabanı 'Na tüm Azure hizmet trafiğini devre dışı bırakın. Sunucu ve veritabanı düzeyinde güvenlik duvarı kurallarında IP adresine izin verilmediğinden emin olun. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri](network-access-controls-overview.md).
-1. Yalnızca VM 'nin özel IP adresini kullanarak SQL veritabanı 'ndaki veritabanına giden trafiğe izin verin. Daha fazla bilgi için [hizmet uç noktası](vnet-service-endpoint-rule-overview.md) ve [sanal ağ güvenlik duvarı kuralları](firewall-configure.md)makalesine bakın.
-1. Azure VM 'de, [ağ güvenlik grupları (NSG 'ler)](../../virtual-network/manage-network-security-group.md) ve hizmet etiketleri kullanarak giden bağlantı kapsamını aşağıda gösterildiği gibi daraltın
-    - Hizmet etiketi = SQL için trafiğe izin veren bir NSG kuralı belirtin. WestUs-yalnızca Batı ABD SQL veritabanı 'na bağlantıya izin veriliyor
-    - Hizmet etiketi = SQL-tüm bölgelerde SQL veritabanı bağlantılarını reddetmek için bir NSG kuralı ( **daha yüksek önceliğe**sahip) belirtin
-
-Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki SQL veritabanındaki bir veritabanına bağlanabilir. Ancak, bağlantı SQL veritabanı 'ndaki tek bir veritabanıyla sınırlı değildir. VM, aboneliğin parçası olmayan veritabanları da dahil olmak üzere Batı ABD bölgesindeki herhangi bir veritabanına hala bağlanabilir. Yukarıdaki senaryodaki veri taşalım kapsamını belirli bir bölgeye azalttık, ancak bunu tamamen ortadan kaldırdık.
-
-Özel bağlantıyla, müşteriler artık özel uç noktaya erişimi kısıtlamak için NSG 'ler gibi ağ erişim denetimleri ayarlayabilir. Tek tek Azure PaaS kaynakları, belirli özel uç noktalara eşlenir. Kötü amaçlı bir Insider, eşlenen PaaS kaynağına (örneğin, SQL veritabanı 'ndaki bir veritabanı) ve başka bir kaynağa erişebilir. 
-
-## <a name="on-premises-connectivity-over-private-peering"></a>Özel eşleme üzerinden şirket içi bağlantı
-
-Müşteriler şirket içi makinelerden ortak uç noktaya bağlandıklarında, IP adreslerinin [sunucu düzeyinde bir güvenlik duvarı kuralı](firewall-create-server-level-portal-quickstart.md)kullanılarak IP tabanlı güvenlik duvarına eklenmesi gerekir. Bu model geliştirme veya test iş yükleri için bireysel makinelere erişim sağlamak için iyi bir şekilde çalıştığından, bir üretim ortamında yönetilmesi zordur.
-
-Özel bağlantıyla, müşteriler [ExpressRoute](../../expressroute/expressroute-introduction.md), özel eşleme veya VPN tüneli kullanarak özel uç noktaya şirket içi erişimi etkinleştirebilir. Müşteriler daha sonra genel uç nokta aracılığıyla tüm erişimi devre dışı bırakabilir ve IP adreslerine izin vermek için IP tabanlı güvenlik duvarını kullanmaz.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Azure SQL veritabanı için özel bağlantı ayarlama 
 
@@ -71,6 +49,12 @@ Ağ Yöneticisi özel uç noktayı (PE) oluşturduktan sonra, SQL Yöneticisi ö
 
 1. Onay veya reddetme sonrasında, liste, yanıt metniyle birlikte uygun durumu yansıtır.
 ![Onay sonrasında tüm her türlü bir ekran görüntüsü][5]
+
+## <a name="on-premises-connectivity-over-private-peering"></a>Özel eşleme üzerinden şirket içi bağlantı
+
+Müşteriler şirket içi makinelerden ortak uç noktaya bağlandıklarında, IP adreslerinin [sunucu düzeyinde bir güvenlik duvarı kuralı](firewall-create-server-level-portal-quickstart.md)kullanılarak IP tabanlı güvenlik duvarına eklenmesi gerekir. Bu model geliştirme veya test iş yükleri için bireysel makinelere erişim sağlamak için iyi bir şekilde çalıştığından, bir üretim ortamında yönetilmesi zordur.
+
+Özel bağlantıyla, müşteriler [ExpressRoute](../../expressroute/expressroute-introduction.md), özel eşleme veya VPN tüneli kullanarak özel uç noktaya şirket içi erişimi etkinleştirebilir. Müşteriler daha sonra genel uç nokta aracılığıyla tüm erişimi devre dışı bırakabilir ve IP adreslerine izin vermek için IP tabanlı güvenlik duvarını kullanmaz.
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Azure SQL veritabanı için özel bağlantı durumlarını kullanma 
 
@@ -154,6 +138,22 @@ Sonuç bir IP adresinin yukarı olduğunu gösterir; Özel uç nokta için IP ad
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
+
+## <a name="data-exfiltration-prevention"></a>Veri sızdırmayı önleme
+
+Azure SQL veritabanı 'nda veri ayıklama, veritabanı yöneticisi gibi yetkili bir kullanıcının verileri bir sistemden ayıklamasına ve kuruluşun dışında başka bir konuma veya sisteme taşımasına yönelik bir veritabanıdır. Örneğin, Kullanıcı, verileri üçüncü tarafa ait bir depolama hesabına taşıtır.
+
+SQL veritabanı 'nda bir veritabanına bağlanan bir Azure sanal makinesi içinde SQL Server Management Studio (SSMS) çalıştıran bir kullanıcıya sahip bir senaryo düşünün. Bu veritabanı Batı ABD veri merkezinde. Aşağıdaki örnekte, ağ erişim denetimleri kullanılarak SQL veritabanı 'ndaki genel uç noktalarla erişimin nasıl sınırlandıralınacağını gösterilmektedir.
+
+1. Azure hizmetlerinin **kapalı**çalışmasına izin ver ayarını yaparak, genel uç nokta aracılığıyla SQL veritabanı 'Na tüm Azure hizmet trafiğini devre dışı bırakın. Sunucu ve veritabanı düzeyinde güvenlik duvarı kurallarında IP adresine izin verilmediğinden emin olun. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri](network-access-controls-overview.md).
+1. Yalnızca VM 'nin özel IP adresini kullanarak SQL veritabanı 'ndaki veritabanına giden trafiğe izin verin. Daha fazla bilgi için [hizmet uç noktası](vnet-service-endpoint-rule-overview.md) ve [sanal ağ güvenlik duvarı kuralları](firewall-configure.md)makalesine bakın.
+1. Azure VM 'de, [ağ güvenlik grupları (NSG 'ler)](../../virtual-network/manage-network-security-group.md) ve hizmet etiketleri kullanarak giden bağlantı kapsamını aşağıda gösterildiği gibi daraltın
+    - Hizmet etiketi = SQL için trafiğe izin veren bir NSG kuralı belirtin. WestUs-yalnızca Batı ABD SQL veritabanı 'na bağlantıya izin veriliyor
+    - Hizmet etiketi = SQL-tüm bölgelerde SQL veritabanı bağlantılarını reddetmek için bir NSG kuralı ( **daha yüksek önceliğe**sahip) belirtin
+
+Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki SQL veritabanındaki bir veritabanına bağlanabilir. Ancak, bağlantı SQL veritabanı 'ndaki tek bir veritabanıyla sınırlı değildir. VM, aboneliğin parçası olmayan veritabanları da dahil olmak üzere Batı ABD bölgesindeki herhangi bir veritabanına hala bağlanabilir. Yukarıdaki senaryodaki veri taşalım kapsamını belirli bir bölgeye azalttık, ancak bunu tamamen ortadan kaldırdık.
+
+Özel bağlantıyla, müşteriler artık özel uç noktaya erişimi kısıtlamak için NSG 'ler gibi ağ erişim denetimleri ayarlayabilir. Tek tek Azure PaaS kaynakları, belirli özel uç noktalara eşlenir. Kötü amaçlı bir Insider, eşlenen PaaS kaynağına (örneğin, SQL veritabanı 'ndaki bir veritabanı) ve başka bir kaynağa erişebilir. 
 
 ## <a name="limitations"></a>Sınırlamalar 
 Özel uç nokta bağlantıları yalnızca [bağlantı ilkesi](connectivity-architecture.md#connection-policy) olarak **proxy** 'yi destekler

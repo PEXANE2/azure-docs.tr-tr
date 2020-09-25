@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320056"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Azure AD Connect değiştirilen varsayılan kuralları çözme
 
@@ -73,7 +73,7 @@ Uzantılar sizin için çalışmazsa, aşağıdaki bölümlerde açıklanan iki 
 #### <a name="add-an-inbound-sync-rule"></a>Gelen eşitleme kuralı ekleme
 Bir gelen eşitleme kuralı, özniteliğin kaynağının bir bağlayıcı alanı olduğu ve hedef metadize olduğu anlamına gelir. Örneğin, şirket içi Active Directory yeni bir öznitelik akışına Azure Active Directory için, yeni bir gelen eşitleme kuralı oluşturun. **Eşitleme kuralları düzenleyicisini**başlatın, yön olarak **gelen** ' ı seçin ve **Yeni kural ekle**' yi seçin. 
 
- ![Eşitleme kuralları Düzenleyicisi](media/how-to-connect-fix-default-rules/default3a.png)
+ !["Gelen" ve "yeni kural ekle" seçiliyken "eşitleme kuralları Düzenleyicisi" ni gösteren ekran görüntüsü.](media/how-to-connect-fix-default-rules/default3a.png)
 
 Kuralı adlandırmak için kendi adlandırma kuralınızı izleyin. Burada, **ad-User ' dan özel**' i kullanırız. Bu, kuralın özel bir kural olduğu ve Active Directory bağlayıcı alanından metadize 'ye gelen bir gelen kural olduğu anlamına gelir.   
 
@@ -176,7 +176,7 @@ Meta veri deposu **nesne özellikleri**üzerinde **Bağlayıcılar**' ı seçin,
 
 Önizleme penceresinde, sol bölmedeki **Önizleme Oluştur** ve **öznitelik akışını içeri aktar** ' ı seçin.
 
-![Önizleme](media/how-to-connect-fix-default-rules/default14.png)
+!["Öznitelik akışını Içeri aktar" ve "Önizleme üret" seçiliyken "Önizleme" penceresini gösteren ekran görüntüsü.](media/how-to-connect-fix-default-rules/default14.png)
  
 Burada, yeni eklenen kuralın nesnede çalıştırıldığını ve `cloudFiltered` özniteliği true olarak ayarlandığını unutmayın.
 

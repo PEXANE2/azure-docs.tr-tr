@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 963c9c06409eca2b2f836388b94f8b80484a671a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: e4d3a594011cb57ce6dfd951215d0ae7471ae7c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941015"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331684"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Ağa genel bakış-PostgreSQL için Azure veritabanı-esnek sunucu
 
@@ -62,7 +62,7 @@ PostgreSQL esnek sunucularıyla sanal ağları kullanırken bilmeniz için bazı
 
    PostgreSQL esnek sunucunuzun, PostgreSQL için yalnızca esnek sunucu kullanımı için **temsilci atanmış** bir alt ağda olması gerekir. Bu temsili, yalnızca PostgreSQL için Azure veritabanı 'nın esnek sunucularının bu alt ağı kullanabileceği anlamına gelir. Temsilci alt ağında diğer türdeki Azure kaynakları bulunamaz. Temsilci özelliğini Microsoft. DBforPostgreSQL/Flexibtaservers olarak atayarak bir alt ağ temsilcissiniz.
 
-[Azure Portal](how-to-manage-virtual-network-portal.md) veya [Azure CLI](how-to-manage-virtual-network-cli.md)'de özel erişim (VNET tümleştirmesi) ile esnek bir sunucu oluşturmayı öğrenin.
+* **Ağ güvenlik grupları (NSG)** Ağ güvenlik gruplarındaki güvenlik kuralları, sanal ağ alt ağları ve ağ arabirimlerini akacak ve dışı bir ağ trafiği türünü filtrelemenizi sağlar. Daha fazla bilgi için [ağ güvenlik grubuna genel bakış](../../virtual-network/network-security-groups-overview.md) konusunu gözden geçirin.
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Desteklenmeyen sanal ağ senaryoları
@@ -71,6 +71,7 @@ PostgreSQL esnek sunucularıyla sanal ağları kullanırken bilmeniz için bazı
 * Alt ağda bulunan kaynaklar bir kez alt ağ boyutu (adres alanları) artırılamıyor
 * Bölgeler arasında VNET eşlemesi desteklenmiyor
 
+[Azure Portal](how-to-manage-virtual-network-portal.md) veya [Azure CLI](how-to-manage-virtual-network-cli.md)'de özel erişim (VNET tümleştirmesi) ile esnek bir sunucu oluşturmayı öğrenin.
 
 ## <a name="public-access-allowed-ip-addresses"></a>Genel erişim (izin verilen IP adresleri)
 Ortak erişim yönteminin özellikleri şunlardır:
@@ -107,12 +108,9 @@ PostgreSQL için Microsoft Azure veritabanına erişim beklendiği gibi davranm�
 ## <a name="hostname"></a>Konak adı
 Seçtiğiniz ağ seçeneğinden bağımsız olarak, esnek sunucunuza bağlanırken her zaman konak adı olarak tam etki alanı adı (FQDN) kullanmanızı öneririz. Sunucunun IP adresinin statik kalması garanti edilmez. FQDN 'nin kullanılması, bağlantı dizeniz üzerinde değişiklik yapmaktan kaçınmanıza yardımcı olur. 
 
-Bölgesel olarak yedekli HA kullanıyorsanız ve birincil ve ikincil arasında yük devretme gerçekleşdiğinde, IP değişikliklerinin bir senaryosu. FQDN 'nin kullanılması, aynı bağlantı dizesiyle bağlantıları sorunsuz bir şekilde yeniden denemeyeceğiniz anlamına gelir.
-
 Örnek
 * Önerilen `hostname = servername.postgres.database.azure.com`
-* `hostname = 10.0.0.4`(Özel adres) veya `hostname = 40.2.45.67` (genel adres) kullanmaktan kaçının
-
+* Mümkün olduğunda, kullanmaktan kaçının `hostname = 10.0.0.4` (özel bir adres) veya `hostname = 40.2.45.67` (genel bir adres)
 
 
 ## <a name="tls-and-ssl"></a>TLS ve SSL

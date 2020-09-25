@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: e77379be863f4527081eeec6a0ee1f426d526527
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331820"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Öğretici: 3ds Max ile fiziksel tabanlı işleme malzemeleri ayarlama
 
@@ -22,6 +22,10 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Sahnedeki nesnelere gelişmiş aydınlatma ile malzemeler atayın.
 > * Nesnelerin ve malzemelerin örnek örneğini işleyin.
 > * Bir sahneyi FBX biçimine aktarın ve önemli seçenekleri seçin.
+
+> [!Note]
+> Bu öğreticide açıklanan yordam, 3ds Max 2019 ve 3ds Max 2020 ' de kullanılır.
+> 3ds Max 2021 'in kabartma haritalarını dışarı aktardığı bir değişiklik, bu sürüm kullanılırsa, dönüştürme hizmeti tarafından normal haritaların bulunamaması anlamına gelir.
 
 3ds Max 'ta [fiziksel tabanlı işleme (PBR) malzemeleri](../../overview/features/pbr-materials.md) oluşturmak, basit bir görevdir. Maya gibi diğer içerik oluşturma uygulamalarında PBR 'nin kurulumu için birçok yol benzerdir. Bu öğretici, Azure uzaktan Işleme projelerine yönelik temel bir PBR gölgelendirici kurulumu ve FBX dışa aktarma kılavuzudur.
 

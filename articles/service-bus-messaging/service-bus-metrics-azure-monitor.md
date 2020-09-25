@@ -3,12 +3,12 @@ title: Azure Izleyici 'de ölçümleri Azure Service Bus | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'nin Service Bus varlıkları (kuyruklar, konular ve abonelikler) izlemek için nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 158662a5d0fc3489b2cac638b28a64aa218b888e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065021"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320447"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Service Bus ölçümleri
 
@@ -54,7 +54,7 @@ Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrın
 
 Veri ve yönetim işlemleri isteklerinin sayısını sayar.
 
-| Ölçüm Adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 | Gelen İstekler| Belirli bir süre içinde Service Bus hizmetine yapılan istek sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Başarılı İstekler|Belirli bir süre içinde Service Bus hizmetine yapılan başarılı istek sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
@@ -72,7 +72,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 ## <a name="message-metrics"></a>İleti ölçümleri
 
-| Ölçüm Adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 |Gelen İletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Giden İletiler|Belirli bir süre içinde Service Bus alınan olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
@@ -91,7 +91,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 ## <a name="connection-metrics"></a>Bağlantı ölçümleri
 
-| Ölçüm Adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 |Etkin Bağlantılar|Bir ad alanındaki etkin bağlantıların yanı sıra bir varlık.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Açılan bağlantılar |Açık bağlantı sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
@@ -106,7 +106,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 > 
 > İzleyebilmeniz için kullanabileceğiniz diğer ölçüm: **Kısıtlanmış istekleriniz**. Ad alanı bellek, CPU ve aracılı bağlantı sınırları içinde kaldığında bir sorun olması gerekmez. Daha fazla bilgi için bkz. [Azure Service Bus Premium katmanında daraltma](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier)
 
-| Ölçüm Adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 |Ad alanı başına CPU kullanımı|Ad alanının CPU kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: varlık adı|
 |Ad alanı başına bellek boyutu kullanımı|Ad alanının bellek kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: varlık adı|
@@ -115,7 +115,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler. Ölçümlere boyutlar eklemek isteğe bağlıdır. Boyut eklemeyin, ölçümler ad alanı düzeyinde belirtilir. 
 
-|Boyut adı|Açıklama|
+|Boyut adı|Description|
 | ------------------- | ----------------- |
 |Varlık adı| Service Bus ad alanı altındaki mesajlaşma varlıklarını destekler.|
 
@@ -128,7 +128,7 @@ Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları 
     1. **Kaynak türüne göre filtrele** alanı Için **Service Bus ad alanlarını** seçin. 
     2. **Aboneliğe göre filtrele** alanı için aboneliğinizi seçin.
     3. Listeden **Service Bus ad alanını** seçin. 
-    4. **Bitti**'yi seçin. 
+    4. **Bitti** seçeneğini belirleyin. 
     
         ![Ad alanı seçin](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. **Ölçüt Ekle**' yi seçin ve **sinyal mantığını Yapılandır** sayfasında aşağıdaki işlemleri yapın:
@@ -139,7 +139,7 @@ Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları 
     1. Condition **değerinden büyük** ' **Condition**ı seçin.
     2. **Zaman toplama**için **Toplam** ' u seçin. 
     3. **Eşik**için **5** girin. 
-    4. **Bitti**'yi seçin.    
+    4. **Bitti** seçeneğini belirleyin.    
 
         ![Koşul Belirt](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
 1. **Kural oluştur** sayfasında, **uyarı ayrıntılarını tanımla**' yı genişletin ve aşağıdaki eylemleri yapın:
@@ -147,7 +147,7 @@ Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları 
     2. Uyarı için bir **Açıklama** girin.
     3. Uyarı için **önem derecesi** ' ni seçin. 
 
-        ![Uyarı ayrıntıları](./media/service-bus-metrics-azure-monitor/alert-details.png)
+        ![Kural Oluştur sayfasının ekran görüntüsü. Uyarı ayrıntılarının tanımlanması genişletilir ve uyarı kuralı adı, açıklaması ve önem alanları vurgulanır.](./media/service-bus-metrics-azure-monitor/alert-details.png)
 1. **Kural oluştur** sayfasında, **eylem grubu tanımla**' yı genişletin, **yeni eylem grubu**' nu seçin ve **eylem grubu Ekle sayfasında**aşağıdaki işlemleri yapın. 
     1. Eylem grubu için bir ad girin.
     2. Eylem grubu için kısa bir ad girin. 
@@ -161,7 +161,7 @@ Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları 
         2. **E-posta adresini**yazın. 
         3. **Tamam**’ı seçin.
 
-            ![Uyarı ayrıntıları](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+            ![Eylem grubu Ekle sayfasının ekran görüntüsü. "E-posta gönder" adlı bir eylem, gruba e-posta/SMS/Push/Voice eylem türünde ekleniyor.](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. **Eylem grubu Ekle** sayfasında **Tamam**' ı seçin. 
 1. **Kural oluştur** sayfasında, **Uyarı kuralı oluştur**' u seçin. 
 

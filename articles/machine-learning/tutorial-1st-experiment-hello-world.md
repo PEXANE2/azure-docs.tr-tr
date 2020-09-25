@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 98f4c30d03763e070b1bdc32a5e6e099556916ab
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 52a9932db4fc261b8f3d740a316af3e852559a32
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946754"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320498"
 ---
 # <a name="tutorial-run-hello-world-python-script-part-2-of-4"></a>Öğretici: "Merhaba Dünya" Python betiğini çalıştırın (Bölüm 2/4)
 
@@ -124,7 +124,7 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Betiğinizi gönderir. Bu gönderim bir [çalıştırma](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true)olarak adlandırılır.  Bir çalıştırma, kodunuzun tek bir yürütmesini kapsüller. Betik ilerlemesini izlemek için bir çalıştırma kullanın, çıktıyı yakalayın, sonuçları çözümleyin, ölçümleri ve daha fazlasını görselleştirin.
+       Betiğinizi gönderir. Bu gönderim bir [çalıştırma](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)olarak adlandırılır.  Bir çalıştırma, kodunuzun tek bir yürütmesini kapsüller. Betik ilerlemesini izlemek için bir çalıştırma kullanın, çıktıyı yakalayın, sonuçları çözümleyin, ölçümleri ve daha fazlasını görselleştirin.
    :::column-end:::
 :::row-end:::
 :::row:::

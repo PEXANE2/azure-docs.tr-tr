@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 4caad36d21d3facb97dc358fdfee61e89c420213
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 23b78acb226b0d4de637dc653e6edb3bb4177219
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496347"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263598"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Öğretici: bir Azure SQL veritabanını bir oto yük devretme grubuna ekleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -80,7 +80,7 @@ Yük devretme grubunuzu oluşturun ve Azure portal kullanarak veritabanınızı 
    - **Yük devretme grubu adı**: gibi benzersiz bir yük devretme grubu adı yazın `failovergrouptutorial` .
    - **İkincil sunucu**: *gerekli ayarları yapılandırma* seçeneğini belirleyin ve ardından **Yeni bir sunucu oluşturmayı**seçin. Alternatif olarak, zaten var olan bir sunucuyu ikincil sunucu olarak seçebilirsiniz. Aşağıdaki değerleri girdikten sonra **Seç**' i seçin.
       - **Sunucu adı**: ikincil sunucu için, gibi benzersiz bir ad yazın `mysqlsecondary` .
-      - **Sunucu Yöneticisi oturum açma**: tür`azureuser`
+      - **Sunucu Yöneticisi oturum açma**: tür `azureuser`
       - **Parola**: parola gereksinimlerini karşılayan karmaşık bir parola yazın.
       - **Konum**: açılan listeden, gibi bir konum seçin `East US` . Bu konum, birincil sunucunuz ile aynı konumda olamaz.
 
@@ -336,7 +336,7 @@ Kaynak grubunu silerek kaynakları temizleyin.
 Azure portal kullanarak kaynak grubunu silin.
 
 1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin.
-1. Gruptaki tüm kaynakların yanı sıra kaynak grubunun kendisini silmek için **kaynak grubunu sil** ' i seçin.
+1. Gruptaki tüm kaynakların yanı sıra kaynak grubunun kendisini silmek için  **kaynak grubunu sil** ' i seçin.
 1. Kaynak grubunun adını, `myResourceGroup` metin kutusuna yazın ve ardından **Sil** ' i seçerek kaynak grubunu silin.  
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

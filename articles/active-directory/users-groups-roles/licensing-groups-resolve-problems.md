@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0d7703af48ba33edea81ca45516191266a79fa4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7006ecd760a886fdebe50becb2ab366ff79cf057
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799562"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319818"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory bir grup için lisans atama sorunlarını tanımla ve çözümle
 
@@ -87,7 +87,7 @@ Bu sorunu çözmek için, gerekli planın başka bir yöntem aracılığıyla ku
 
 ## <a name="usage-location-isnt-allowed"></a>Kullanım konumuna izin verilmiyor
 
-**Sorun:** Bazı Microsoft Hizmetleri, yerel yasalar ve yönetmelikler nedeniyle tüm konumlarda kullanılamaz. Bir kullanıcıya lisans atayabilmeniz için önce Kullanıcı için **Kullanım konumu** özelliğini belirtmeniz gerekir. Konumu, Azure Portal **Kullanıcı**  >  **profili**  >  **ayarları** bölümünde belirtebilirsiniz.
+**Sorun:** Bazı Microsoft Hizmetleri, yerel yasalar ve yönetmelikler nedeniyle tüm konumlarda kullanılamaz. Bir kullanıcıya lisans atayabilmeniz için önce Kullanıcı için **Kullanım konumu** özelliğini belirtmeniz gerekir. Azure Portal, konumunu **Kullanıcı**  >  **profili**  >  **düzenleme** bölümünün altında belirtebilirsiniz.
 
 Azure AD, kullanım konumu desteklenmeyen bir kullanıcıya bir grup lisansı atamayı denediğinde, başarısız olur ve kullanıcıya bir hata kaydeder.
 

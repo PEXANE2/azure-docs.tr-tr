@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5908083be4e6ed389b606754ffef41a4a371c3e3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941403"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319742"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Sürüm notları-Azure Arc etkin veri Hizmetleri (Önizleme)
 
@@ -28,6 +28,14 @@ Azure Arc etkin veri Hizmetleri genel önizleme için kullanıma sunuldu. Yay et
 - PostgreSQL hiper ölçek
 
 Yönergeler için bkz. [Azure Arc etkin veri Hizmetleri nedir?](overview.md)
+
+### <a name="known-issues"></a>Bilinen sorunlar
+
+Bu sürüm için aşağıdaki sorunlar geçerlidir:
+
+* **PostgreSQL hiper ölçek sunucu grubu siliniyor**: sunucu grubunuzun veya örneğinizin yapılandırmasını değiştirdiyseniz, bir PostgreSQL hiper ölçek sunucu grubunu silmeden önce düzenleme işleminin tamamlanmasını bekleyin.
+
+* ** `azdata notebook run` başarısız olabilir**: Bu sorunu yuvarlayıp `azdata notebook run` bir Python sanal ortamında çalıştırın. Bu sorun ayrıca, Azure Data Studio Dağıtım Sihirbazı 'nı kullanarak bir SQL yönetilen örneği veya PostgreSQL hiper ölçek sunucu grubu oluşturma girişimi için de bildirim sağlar. Bu durumda, Not defterini açabilir ve Not defterinin en üstündeki **Tümünü Çalıştır** düğmesine tıklayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

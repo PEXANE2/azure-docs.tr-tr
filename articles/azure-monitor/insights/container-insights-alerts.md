@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici için performans uyarıları oluştur
 description: Bu makalede, kapsayıcılar için Azure Izleyici 'den bellek ve CPU kullanımı için günlük sorgularına dayalı özel uyarıların nasıl oluşturulacağı açıklanır.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1041b8bfe299a0daac633e478c906c746759d50f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75730934"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319546"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici'de performans sorunları için uyarı oluşturma
 
@@ -277,13 +277,13 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Uyarı kuralı oluşturma
 
-Daha önce sağlanmış olan günlük arama kurallarından birini kullanarak Azure Izleyici 'de günlük uyarısı oluşturmak için bu adımları izleyin. ARM şablonu kullanarak oluşturmak için bkz. [Azure kaynak şablonu kullanarak örnek günlük uyarısı oluşturma](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
+Daha önce sağlanmış olan günlük arama kurallarından birini kullanarak Azure Izleyici 'de günlük uyarısı oluşturmak için bu adımları izleyin. ARM şablonu kullanarak oluşturmak için bkz. [Azure kaynak şablonu kullanarak günlük uyarısı oluşturma örnekleri](../platform/alerts-log-create-templates.md).
 
 >[!NOTE]
 >Kapsayıcı kaynak kullanımı için bir uyarı kuralı oluşturmak için aşağıdaki yordam, [günlük uyarıları Için anahtar API tercihi](../platform/alerts-log-api-switch.md)bölümünde açıklandığı gibi yeni bir günlük uyarıları API 'sine geçmeniz gerekir.
 >
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Azure portal, **Log Analytics çalışma alanlarını**arayıp seçin.
 3. Log Analytics çalışma alanları listenizde, kapsayıcılar için Azure Izleyicisini destekleyen çalışma alanını seçin. 
 4. Sol taraftaki bölmede **Günlükler** ' i seçerek Azure izleyici günlükleri sayfasını açın. Azure Log Analytics sorgularını yazmak ve yürütmek için bu sayfayı kullanın.

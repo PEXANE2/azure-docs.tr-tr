@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 50d2d974815e0921d99154bce67f604b7314970d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 86a6c1a15d804a6c758e90dbd4bdd7057a7a2716
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892019"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295301"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışı Event Hubs
 
@@ -22,7 +22,7 @@ ms.locfileid: "90892019"
 
 Aşağıdaki tabloda, Olay Hub 'larından çıkış olarak veri akışlarını yapılandırmak için gereken parametreler bulunur.
 
-| Özellik adı | Açıklama |
+| Özellik adı | Description |
 | --- | --- |
 | Çıktı diğer adı | Sorgu çıkışını bu olay hub 'ına yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Olay hub’ı ad alanı | Bir mesajlaşma varlıkları kümesi için kapsayıcı. Yeni bir olay hub 'ı oluşturduğunuzda bir olay hub 'ı ad alanı da oluşturmuş olursunuz. |
@@ -46,7 +46,23 @@ Bölümleme, Bölüm hizalamasına göre farklılık gösterir. Olay Hub 'ı ç�
 
 ## <a name="custom-metadata-properties-for-output"></a>Çıkış için özel meta veri özellikleri
 
-Sorgu sütunlarını, giden iletilerinize Kullanıcı özellikleri olarak ekleyebilirsiniz. Bu sütunlar yük içine gitmez. Özellikler, çıkış iletisindeki bir sözlük biçiminde bulunur. *Anahtar* , sütun adı ve *değer* Özellikler sözlüğündeki sütun değeridir. Tüm Stream Analytics veri türleri, kayıt ve dizi dışında desteklenir.  
+Sorgu sütunlarını, giden iletilerinize Kullanıcı özellikleri olarak ekleyebilirsiniz. Bu sütunlar yük içine gitmez. Özellikler, çıkış iletisindeki bir sözlük biçiminde bulunur. *Anahtar* , sütun adı ve *değer* Özellikler sözlüğündeki sütun değeridir. Tüm Stream Analytics veri türleri, kayıt ve dizi dışında desteklenir.
+
+Aşağıdaki örnekte, alanları `DeviceId` ve `DeviceStatus` meta verilere eklenir.
+
+1. Aşağıdaki sorguyu kullanın:
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. `DeviceId,DeviceStatus`Çıktıda Özellik sütunları olarak yapılandırın.
+
+   :::image type="content" source="media/event-hubs-output/property-columns.png" alt-text="Özellik sütunları":::
+
+Aşağıdaki görüntü, [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)kullanılarak EventHub ' de incelenen beklenen çıkış iletisi özellikleridir.
+
+:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="Olay özel özellikleri":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

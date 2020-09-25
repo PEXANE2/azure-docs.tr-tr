@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: b90d868042e9fb947afdfae9acf35262912eff94
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998170"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320634"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM korumalı anahtarları yönetilen HSM 'ye içeri aktar (BYOK)
 
- Azure Key Vault Managed HSM, şirket içi donanım güvenlik modülünde (HSM) oluşturulan anahtarların içeri aktarılmasını destekler; Anahtarlar hiçbir şekilde HSM koruma sınırını bırakmaz. Bu senaryo genellikle *kendi anahtarını getir* (bYok) olarak adlandırılır. Yönetilen HSM, anahtarlarınızı korumak için HSM 'lerin nCipher nShield ailesini (FIPS 140-2 düzey 3 ' ü doğruladı) kullanır.
+ Azure Key Vault Managed HSM, şirket içi donanım güvenlik modülünde (HSM) oluşturulan anahtarların içeri aktarılmasını destekler; Anahtarlar hiçbir şekilde HSM koruma sınırını bırakmaz. Bu senaryo genellikle *kendi anahtarını getir* (bYok) olarak adlandırılır. Yönetilen HSM, anahtarlarınızı korumak için Marvell LiquidSecurity HSM bağdaştırıcılarını (FIPS 140-2 düzey 3 ' ü doğruladı) kullanır.
 
 Yönetilen HSM ile kullanmak üzere kendi HSM korumalı anahtarlarınızı planlayıp, oluşturmanıza ve aktarmaya yardımcı olması için bu makaledeki bilgileri kullanın.
 
@@ -70,7 +70,7 @@ CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için
 
 ## <a name="supported-key-types"></a>Desteklenen anahtar türleri
 
-|Anahtar adı|Anahtar türü|Anahtar boyutu|Kaynak|Açıklama|
+|Anahtar adı|Anahtar türü|Anahtar boyutu|Kaynak|Description|
 |---|---|---|---|---|
 |Anahtar değişim anahtarı (KEK)|RSA| 2.048 bit<br />3.072 bit<br />4.096 bit|Yönetilen HSM|Yönetilen HSM 'de oluşturulan HSM ile desteklenen bir RSA anahtar çifti|
 |Hedef anahtar|RSA|2.048 bit<br />3.072 bit<br />4.096 bit|Satıcı HSM|Yönetilen HSM 'ye aktarılacak anahtar|
