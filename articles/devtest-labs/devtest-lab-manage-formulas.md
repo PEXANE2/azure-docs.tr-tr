@@ -3,12 +3,12 @@ title: VM 'Ler oluşturmak için Azure DevTest Labs formülleri yönetme | Micro
 description: Bu makalede, bir temel (özel görüntü, Market görüntüsü veya başka bir formülden) veya var olan bir VM 'den nasıl formül oluşturacağınız gösterilmektedir.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0a254d306ad2417c500571df4b8f2d852d21e7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480414"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308903"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs formülleri yönetme
 
@@ -27,7 +27,7 @@ Kullanıcıları ve izinleri ekleme hakkında daha fazla bilgi için, bkz. [Azur
 ### <a name="create-a-formula-from-a-base"></a>Bir tabandan formül oluşturma
 Aşağıdaki adımlar özel görüntüden, Market görüntüsünden veya başka bir formülden formül oluşturma sürecinde size kılavuzluk gösterir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 
@@ -60,7 +60,7 @@ Aşağıdaki adımlar özel görüntüden, Market görüntüsünden veya başka 
     - **Sona erme tarihi ve saati** -bu alanı düzenleyemezsiniz. 
     - **Bu makineyi çakışmadan oluşturun** -makinenin "çakışmaz" olması, oluşturma sırasında sahiplik atanmayacağı anlamına gelir. Bunun yerine, laboratuar kullanıcıları laboratuvar sayfasında makineye sahiplik ("talep") alabilir.  
 
-        ![Gelişmiş ayarlar sayfası](./media/devtest-lab-create-formulas/advanced-settings.png)
+        !["Formül oluştur (yeniden kullanılabilir temel)" sayfasının Gelişmiş ayarlarını gösteren ekran görüntüsü.](./media/devtest-lab-create-formulas/advanced-settings.png)
     - Temel olarak paylaşılan bir görüntü Galerisi görüntüsü seçtiyseniz, temel olarak kullanmak istediğiniz galerideki görüntünün sürümünü seçmenizi sağlayan **görüntü sürümü** alanını da görürsünüz. 
 
         ![Gelişmiş ayarlar sayfası](./media/devtest-lab-create-formulas/advanced-settings-shared-image-gallery.png)
@@ -76,7 +76,7 @@ Aşağıdaki adımlar, var olan bir VM 'yi temel alan bir formül oluşturma sü
 > 
 > 
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 4. Laboratuvarın **genel bakış** sayfasında, formülü oluşturmak istediğiniz VM 'yi seçin.
@@ -93,19 +93,19 @@ Aşağıdaki adımlar, var olan bir VM 'yi temel alan bir formül oluşturma sü
 ## <a name="modify-a-formula"></a>Bir formülü değiştirme
 Bir formülü değiştirmek için şu adımları izleyin:
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 4. Laboratuvarın sayfasında **formüller (yeniden kullanılabilir tabanlar)** öğesini seçin.
    
-    ![Formül menüsü](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
+    ![Laboratuvarın "Formüller (yeniden kullanılabilir tabanlar)" seçilmiş olan sayfasını gösteren ekran görüntüsü.](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. **Laboratuvar formülleri** sayfasında, değiştirmek istediğiniz formülü seçin.
 6. **Formülü Güncelleştir** sayfasında, istenen düzenlemeleri yapın ve **Güncelleştir**' i seçin.
 
 ## <a name="delete-a-formula"></a>Formül silme
 Bir formülü silmek için şu adımları izleyin:
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 4. Laboratuvar **ayarları** sayfasında **formüller**' i seçin.
@@ -113,7 +113,7 @@ Bir formülü silmek için şu adımları izleyin:
     ![Formül menüsü](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. **Laboratuvar formülleri** sayfasında, silmek istediğiniz formülün sağ tarafındaki üç noktayı seçin.
    
-    ![Formül menüsü](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
+    ![Formül seçeneklerinin vurgulandığı "Laboratuvar formülleri" sayfasını gösteren ekran görüntüsü.](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
 6. Formülün bağlam menüsünde **Sil**' i seçin.
    
     ![Formül bağlam menüsü](./media/devtest-lab-manage-formulas/formula-delete-context-menu.png)

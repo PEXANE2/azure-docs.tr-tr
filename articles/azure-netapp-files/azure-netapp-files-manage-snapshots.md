@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459100"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325698"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
 
@@ -41,7 +41,7 @@ Azure NetApp Files, otomatik anlık görüntü oluşturmayı zamanlamak için is
 
     ![Yeni anlık görüntü](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. **Tamam**’a tıklayın. 
+4. **Tamam**'a tıklayın. 
 
 ## <a name="manage-snapshot-policies"></a>Anlık görüntü ilkelerini yönetme
 
@@ -65,7 +65,7 @@ Anlık görüntü ilkeleri kullanarak, birim anlık görüntülerinin otomatik o
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-Ayrıca, Azure CLı komutlarını kullanarak [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+Ayrıca, [Azure CLI komutlarını](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
 
 ### <a name="create-a-snapshot-policy"></a>Anlık görüntü ilkesi oluşturma 
 
@@ -221,6 +221,6 @@ Birimi oluştururken anlık görüntü yolunu gizle onay kutusunu seçtiyseniz, 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure NetApp Files’ın depolama hiyerarşisini anlama](azure-netapp-files-understand-storage-hierarchy.md)
+* [Anlık görüntü ilkelerine sorun giderme](troubleshoot-snapshot-policies.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files Snapshot 101 videosu](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

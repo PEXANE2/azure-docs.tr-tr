@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: b55ba6ab73758ed562aaabeef91cf08acf659758
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278643"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -49,7 +49,9 @@ Bkz. [http/2 desteği](https://docs.microsoft.com/azure/application-gateway/conf
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>Application Gateway hangi bölgelerde kullanılabilir?
 
-Application Gateway tüm küresel Azure bölgelerinde kullanılabilir. [Azure Çin 21Vianet](https://www.azure.cn/) ve [Azure Kamu](https://azure.microsoft.com/overview/clouds/government/)'da da kullanılabilir.
+Application Gateway v1 (Standart ve WAF), tüm genel Azure bölgelerinde kullanılabilir. [Azure Çin 21Vianet](https://www.azure.cn/) ve [Azure Kamu](https://azure.microsoft.com/overview/clouds/government/)'da da kullanılabilir.
+
+Application Gateway v2 (Standard_v2 ve WAF_v2) kullanılabilirliği için bkz. [Application Gateway v2 için desteklenen bölgeler](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#supported-regions)
 
 ### <a name="is-this-deployment-dedicated-for-my-subscription-or-is-it-shared-across-customers"></a>Bu dağıtım Aboneliğim için ayrılmıştır veya müşteriler arasında paylaşılıyor mu?
 
@@ -182,11 +184,15 @@ Hayır. Ancak diğer uygulama ağ geçitlerini alt ağda dağıtabilirsiniz.
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Ağ güvenlik grupları, uygulama ağ geçidi alt ağında destekleniyor mu?
 
-[Application Gateway alt ağındaki ağ güvenlik grupları '](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-on-the-application-gateway-subnet)na bakın.
+[Application Gateway alt ağındaki ağ güvenlik grupları '](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#network-security-groups)na bakın.
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>Application Gateway alt ağı Kullanıcı tanımlı yolları destekliyor mu?
 
 [Application Gateway alt ağında desteklenen Kullanıcı tanımlı yollara](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes)bakın.
+
+### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>Hizmet uç noktası ilkeleri Application Gateway alt ağında destekleniyor mu?
+
+Hayır. Depolama hesapları için [hizmet uç noktası ilkeleri](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview) Application Gateway alt ağda desteklenmez ve yapılandırma, Azure altyapı trafiğini engeller.
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Application Gateway sınırları nelerdir? Bu limitleri artırabilir miyim?
 
@@ -222,7 +228,7 @@ Konak alanı, Application Gateway üzerinde çok siteli yapılandırdığınız 
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Yalnızca birkaç kaynak IP adresine Application Gateway erişimine izin verebilir miyim?
 
-Evet. Bkz. [belirli kaynak IP 'lerine erişimi kısıtlama](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips).
+Evet. Bkz. [belirli kaynak IP 'lerine erişimi kısıtlama](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#allow-access-to-a-few-source-ips).
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Hem genel hem de özel kullanıma yönelik dinleyiciler için aynı bağlantı noktasını kullanabilir miyim?
 

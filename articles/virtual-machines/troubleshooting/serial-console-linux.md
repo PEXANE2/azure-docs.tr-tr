@@ -1,6 +1,6 @@
 ---
 title: Linux için Azure seri konsolu | Microsoft Docs
-description: Azure sanal makineleri ve sanal makine ölçek kümeleri için iki yönlü seri konsol.
+description: Azure sanal makineler ve sanal makine ölçek kümeleri için iki yönlü seri konsol, Linux örneği kullanılarak.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: cacb517c783416994fa95bd0f6a6d15a95a52ab4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306880"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux için Azure Serial Console
 
@@ -33,7 +33,7 @@ Windows için seri konsol belgeleri için bkz. [Windows Için seri konsol](./ser
 > [!NOTE]
 > Seri konsol Şu anda yönetilen bir önyükleme tanılama depolama hesabıyla uyumsuz. Seri Konsolu kullanmak için özel bir depolama hesabı kullandığınızdan emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - VM 'niz veya sanal makine ölçek kümesi örneğinizin kaynak yönetimi dağıtım modelini kullanması gerekir. Klasik dağıtımlar desteklenmez.
 
@@ -133,38 +133,38 @@ SLES BYOS görüntülerinde klavye girişi Erratic. Klavye girişi yalnızca spo
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-**S. nasıl geri bildirim gönderebilirim?**
+**Ç. Nasıl geri bildirim gönderebilirim?**
 
-A. Üzerinde bir GitHub sorunu oluşturarak geri bildirim sağlayın https://aka.ms/serialconsolefeedback . Alternatif olarak (daha az tercih edilen), azserialhelp@microsoft.com uygulamasının sanal makine kategorisinde veya aracılığıyla geri bildirim gönderebilirsiniz https://feedback.azure.com .
+A. Üzerinde bir GitHub sorunu oluşturarak geri bildirim sağlayın  https://aka.ms/serialconsolefeedback . Alternatif olarak (daha az tercih edilen), azserialhelp@microsoft.com uygulamasının sanal makine kategorisinde veya aracılığıyla geri bildirim gönderebilirsiniz https://feedback.azure.com .
 
-**S. seri konsol kopyalamayı/yapıştırmayı destekliyor mu?**
+**Ç. Seri konsol kopyalamayı/yapıştırmayı destekliyor mu?**
 
 A. Evet. **Ctrl** + **Shift** + **C** **Ctrl** + **Shift** + Terminale kopyalayıp yapıştırmak için CTRL SHIFT C ve CTRL SHIFT**V** kullanın.
 
-**Soru-cevap, SSH bağlantısı yerine seri konsol kullanabilir miyim?**
+**Ç. SSH bağlantısı yerine seri konsol kullanabilir miyim?**
 
 A. Bu kullanım Teknik olarak mümkün görünse de, seri konsolun Öncelikle SSH aracılığıyla bağlantının mümkün olmadığı durumlarda bir sorun giderme aracı olarak kullanılması amaçlanmıştır. Aşağıdaki nedenlerden dolayı seri konsolunun SSH değiştirme olarak kullanılması önerilir:
 
 - Seri konsol SSH ile çok bant genişliğine sahip değildir. Yalnızca bir salt metin bağlantısı olduğundan, GUI ağır etkileşimler daha zordur.
 - Seri konsol erişim şu anda yalnızca bir Kullanıcı adı ve parola kullanılarak yapılabilir. SSH anahtarları Kullanıcı adı/parola birleşimlerinden çok daha güvenli olduğundan, oturum açma güvenlik perspektifinden, seri konsol üzerinden SSH önerilir.
 
-**S. Aboneliğimin seri konsolunu kim etkinleştirebilir veya devre dışı bırakabilirim?**
+**Ç. Aboneliğim için seri konsolunu kim etkinleştirebilir veya devre dışı bırakabilirim?**
 
 A. Seri konsolunu abonelik genelinde bir düzeyde etkinleştirmek veya devre dışı bırakmak için abonelik için yazma izinleriniz olmalıdır. Yazma izni olan roller yönetici veya sahip rolleri içerir. Özel rollerin de yazma izinleri olabilir.
 
-**S. VM/sanal makine ölçek kümesi için seri konsoluna kimler erişebilir?**
+**Ç. VM/sanal makine ölçek kümesi için seri konsoluna kimler erişebilir?**
 
 A. Seri konsoluna erişmek için bir VM veya sanal makine ölçek kümesi için sanal makine katılımcısı rolü veya daha yüksek bir sürüme sahip olmanız gerekir.
 
-**S. seri konsolum hiçbir şeyi görüntülüyor, ne yapmam gerekir?**
+**Ç. Seri konsolum hiçbir şeyi görüntülüyor, ne yapmam gerekir?**
 
 A. Resminiz, seri konsol erişimi için hatalı yapılandırılmış olabilir. Görüntünüzü seri konsolunu etkinleştirecek şekilde yapılandırma hakkında daha fazla bilgi için bkz. [seri konsol Linux dağıtım kullanılabilirliği](#serial-console-linux-distribution-availability).
 
-**S. sanal makine ölçek kümeleri için seri konsol kullanılabilir mi?**
+**Ç. Seri konsol, sanal makine ölçek kümeleri için kullanılabilir mi?**
 
 A. Evet öyle! Bkz. [Sanal Makine Ölçek Kümeleri Için seri konsol](serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
-**S. VM 'yi veya sanal makine ölçek kümesini yalnızca SSH anahtarı kimlik doğrulaması kullanarak ayarladım, VM/sanal makine ölçek kümesi örneğine bağlanmak için hala seri konsolunu kullanabilir miyim?**
+**Ç. VM 'yi veya sanal makine ölçek kümesini yalnızca SSH anahtarı kimlik doğrulaması kullanarak ayarladım, VM/sanal makine ölçek kümesi örneğine bağlanmak için hala seri konsolunu kullanabilir miyim?**
 
 A. Evet. Seri konsol SSH anahtarları gerektirmediğinden, yalnızca bir Kullanıcı adı/parola bileşimi ayarlamanız gerekir. Bunu, Azure portal **Parolayı Sıfırla** ' yı seçerek ve seri konsolunda oturum açmak için bu kimlik bilgilerini kullanarak yapabilirsiniz.
 

@@ -1,18 +1,18 @@
 ---
-title: Karma bulut uzantısı 'nı (HCX) yükler
-description: Azure VMware çözümünüz özel bulutunuz için VMware karma bulut uzantısı (HCX) çözümünü ayarlama
+title: VMware HCX 'i yükler
+description: Azure VMware çözümünüz özel bulutunuz için VMware HCX çözümünü ayarlama
 ms.topic: how-to
-ms.date: 07/15/2020
-ms.openlocfilehash: fb8497af33b364c1d2ab475233bd2a83ef1befad
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/24/2020
+ms.openlocfilehash: 76a7432b78ec2141039dcdc5dd1d7572335b18e1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752323"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263211"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMware çözümü için HCX 'i yükler
 
-Bu makalede, Azure VMWare çözüm özel bulutunuz için VMWare hibrit bulut uzantısı (HCX) çözümünü ayarlamaya yönelik yordamları ele aldık. HCX, VMware iş yüklerinizin buluta geçirilmesini ve farklı yerleşik HCX desteklenen geçiş türleri aracılığıyla diğer bağlı siteleri sağlar.
+Bu makalede, Azure VMWare çözümünüz özel bulutunuz için VMWare HCX çözümünü ayarlamaya yönelik yordamlardan ilerliyoruz. HCX, VMware iş yüklerinizin buluta geçirilmesini ve farklı yerleşik HCX desteklenen geçiş türleri aracılığıyla diğer bağlı siteleri sağlar.
 
 Varsayılan yükleme, HCX gelişmiş, en fazla üç site bağlantısını (Şirket içi veya bulutta buluta) destekler. Üçten fazla site bağlantısı gerekliyse, müşteriler şu anda önizleme aşamasında olan HCX kurumsal eklentisini destek aracılığıyla etkinleştirme seçeneğine sahiptir. HCX kurumsal, genel kullanılabilirlik (GA) sonrasında müşterilere ek ücretler taşır, ancak [ek özellikler](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)sağlar.
 
@@ -40,7 +40,7 @@ Kurulumu tamamladıktan sonra, bu makalenin sonunda sunulan önerilen sonraki ad
 
 İş yüklerini işlem ve depolama kaynaklarına karşı boyutlandırma, Azure VMware çözümü özel bulutu HCX çözümünü kullanmaya hazırlanırken önemli bir planlama adımıdır. İlk özel bulut ortamı planlamasının parçası olarak boyutlandırma adımını ele edin. 
 
-Ayrıca, Azure geçişi portalındaki bir Azure VMware Çözüm değerlendirmesi tamamlayarak iş yüklerini de yazdırabilirsiniz ( https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) .
+Ayrıca, Azure geçişi portalında bir [Azure VMware Çözüm değerlendirmesi](https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) tamamlayarak iş yüklerini de kullanabilirsiniz.
 
 ## <a name="software-version-requirements"></a>Yazılım sürümü gereksinimleri
 
@@ -53,7 +53,7 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 | NSX    | Kaynaktaki mantıksal anahtarların HCX ağ uzantısı için: NSXv 6.2 + veya NSX-T 2.4 +   | NSXv 6.2 + veya NSX-T 2,4 +<br/><br/>HCX yakınlık yönlendirmesi için: NSXv 6.4 + (yakınlık yönlendirme NSX-T ile desteklenmez) |
 | vCloud Direktörü   | Gerekli değildir-kaynak sitede vCloud Director ile birlikte çalışabilirlik yok | Hedef ortamı vCloud Director ile tümleştirdiğinizde, en az 9.1.0.2 olur.  |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * ExpressRoute Global Reach, şirket içi ve Azure VMware çözümü SDDC ExpressRoute devreleri arasında yapılandırılmalıdır.
 
@@ -67,15 +67,13 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>VMware HCX OVA 'yı şirket içinde dağıtma
 
+1. `https://x.x.x.9`443 numaralı bağlantı noktasında **cloudadmin** Kullanıcı kimlik bilgileriyle Azure VMware çözümü HCX Yöneticisi ' nde oturum açın ve ardından **destek**bölümüne gidin.
+
+1. VMware HCX OVA dosyası için indirme bağlantısını seçin. 
+
 1. Azure VMware Çözüm SDDC vCenter ' de oturum açın ve **HCX**' i seçin.
-
-   :::image type="content" source="media/hybrid-cloud-extension-installation/avs-vsphere-client.png" alt-text="Azure VMware Çözüm SDDC vCenter ' de oturum açın ve HCX ' i seçin.":::
-
-1. **Yönetim**altında **sistem güncelleştirmeleri** ' ni seçin ve sonra VMware HCX ova dosyasını Indirmek için **indirme bağlantısı iste** ' yi seçin.
-
-   :::image type="content" source="media/hybrid-cloud-extension-installation/administration-updates.png" alt-text="Yönetim altında sistem güncelleştirmeleri ' ni seçin ve sonra VMware HCX OVA dosyasını indirmek için indirme bağlantısı ıste ' yi seçin.":::
-
-1. Sonra şirket içi vCenter ' a gidin ve şirket içi vCenter 'nize dağıtmak için bir OVF şablonu seçin.  
+   
+1. Şirket içi vCenter ' a gidin ve şirket içi vCenter 'nize dağıtmak için bir OVF şablonu seçin.  
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/select-template.png" alt-text="Sonra şirket içi vCenter ' a gidin ve şirket içi vCenter 'nize dağıtmak için bir OVF şablonu seçin.":::
 
@@ -83,7 +81,7 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/configure-template.png" alt-text=" Bir ad ve konum seçin ve ardından HCX 'in dağıtılması gereken bir kaynak/küme seçin. Ardından, ayrıntıları ve gerekli kaynakları gözden geçirin.":::
 
-1. Lisans koşullarını gözden geçirin ve kabul ediyorsanız gereken depolama ve ağ ' ı seçin. Sonra **İleri**’yi seçin.
+1. Lisans koşullarını gözden geçirin ve kabul ediyorsanız gereken depolama ve ağ ' ı seçin. Ardından **İleri**’yi seçin.
 
 1. **Şablonu Özelleştir**' de gerekli tüm bilgileri girin. 
 
@@ -95,7 +93,7 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
 Yükleme sonrasında aşağıdaki adımları gerçekleştirin.
 
-1. Şirket içi HCX yöneticisinde oturum açın `https://HCXManagerIP:9443` ve Kullanıcı adınızla parolanızla oturum açın. 
+1. Şirket içi HCX yöneticisinde oturum açın `https://HCXManagerIP:9443` ve **yönetici** Kullanıcı adı kimlik bilgileriyle oturum açın. 
 
    > [!IMPORTANT]
    > `9443`HCX YÖNETICISI IP adresine sahip bağlantı noktası numarasını eklediğinizden emin olun.

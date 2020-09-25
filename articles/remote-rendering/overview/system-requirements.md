@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798474"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323734"
 ---
 # <a name="system-requirements"></a>Sistem gereksinimleri
 
@@ -63,6 +63,17 @@ Daha yeni sürümlerde gecikme süresi bakımından önemli iyileştirmeler oldu
 Bkz. [ağ gereksinimleri](../reference/network-requirements.md)için adanmış bölüm.
 
 Ağ sorunlarını gidermek için [sorun giderme kılavuzuna](../resources/troubleshoot.md#unstable-holograms)bakın.
+
+### <a name="network-ports"></a>Ağ bağlantı noktaları
+
+Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) aşağıdaki bağlantı noktalarını engellemediğinden emin olun:
+
+| Bağlantı noktası              | Protokol | İzin Ver    | Description |
+|-------------------|----------|----------|-------------|
+| 50051             | TCP      | Tarafına | İlk bağlantı (HTTP el sıkışma) |
+| 8266              | UDP      | Tarafına | Veri aktarımı |
+| 5000, 5433, 8443  | TCP      | Tarafına | [ArrInspector aracı](../resources/tools/arr-inspector.md) için gerekli|
+
 
 ## <a name="software"></a>Yazılım
 

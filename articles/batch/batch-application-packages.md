@@ -2,57 +2,54 @@
 title: İşlem düğümlerine uygulama paketleri dağıtma
 description: Toplu işlem düğümlerinde yüklenmek üzere birden çok uygulamayı ve sürümü kolayca yönetmek için Azure Batch uygulama paketleri özelliğini kullanın.
 ms.topic: how-to
-ms.date: 09/16/2020
-ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 0d705ca731c40563deaeb02c29da120211db7ff4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/24/2020
+ms.custom:
+- H1Hack27Feb2017
+- devx-track-csharp
+- contperfq1
+ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985065"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277708"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
 
-Azure Batch uygulama paketleri özelliği, havuzlarınızdaki düğümlere işlem yapmak için görev uygulamalarını ve bunların dağıtımını yönetmenize yardımcı olur. Uygulama paketleri, Batch çözümünüzdeki kodu basitleştirebilir ve görevlerinizin çalıştırdığı uygulamaları yönetmek için gereken ek yükü düşürebilirler. Uygulama paketleriyle, görevlerinizin çalıştırdığı uygulamaların birden çok sürümünü, destekleyici dosyaları da dahil olmak üzere karşıya yükleyebilir ve yönetebilirsiniz. Daha sonra bu uygulamalardan bir veya daha fazlasını havuzunuzdaki işlem düğümlerine otomatik olarak dağıtabilirsiniz.
-
-Uygulama paketleri, Iş, Batch özellikli hizmetlerinizle işleri işlerken kullanılacak tam sürümü belirterek müşterilerinizin işleri için uygulama seçmesini yardımcı olabilir. Müşterilerinizin hizmetinize kendi uygulamalarını yükleme ve izleme özelliği de sağlayabilirsiniz.
+Uygulama paketleri Azure Batch çözümünüzdeki kodu basitleştirebilir ve görevlerinizin çalıştırdığı uygulamaları yönetmeyi kolaylaştırır. Uygulama paketleriyle, görevlerinizin çalıştırdığı uygulamaların birden çok sürümünü, destekleyici dosyaları da dahil olmak üzere karşıya yükleyebilir ve yönetebilirsiniz. Daha sonra bu uygulamalardan bir veya daha fazlasını havuzunuzdaki işlem düğümlerine otomatik olarak dağıtabilirsiniz.
 
 Uygulama paketleri oluşturmak ve yönetmek için API 'Ler [Batch yönetimi .net](/dotnet/api/overview/azure/batch/management) kitaplığı 'nın bir parçasıdır. Uygulama paketlerini bir işlem düğümüne yüklemek için API 'Ler [Batch .net](/dotnet/api/overview/azure/batch/client) kitaplığı 'nın bir parçasıdır. Benzer özellikler, diğer diller için kullanılabilir Batch API 'Lerinde bulunur.
 
-Bu makalede, Azure portal uygulama paketlerini yükleme ve yönetme ve [Batch .net](/dotnet/api/overview/azure/batch/client) kitaplığı ile havuzun işlem düğümlerine yükleme işlemleri açıklanmaktadır.
+Bu makalede Azure portal uygulama paketlerinin nasıl yükleneceği ve yönetileceği açıklanmaktadır. Ayrıca, [Batch .net](/dotnet/api/overview/azure/batch/client) kitaplığı ile havuzun işlem düğümlerine nasıl yükleneceğini gösterir.
 
 ## <a name="application-package-requirements"></a>Uygulama paketi gereksinimleri
 
 Uygulama paketlerini kullanmak için, Batch hesabınıza [bir Azure depolama hesabı bağlamanız](#link-a-storage-account) gerekir.
 
-Bir Batch hesabı içindeki uygulama ve uygulama paketlerinin sayısı ve en fazla uygulama paketi boyutu için kısıtlamalar vardır. Bu limitlerin ayrıntıları için [Azure Batch hizmetine yönelik kotalar ve sınırlar](batch-quota-limit.md) bölümüne bakın.
+Bir Batch hesabı içindeki uygulama ve uygulama paketlerinin sayısı ve en fazla uygulama paketi boyutu için kısıtlamalar vardır. Daha fazla bilgi için bkz. [Azure Batch hizmet Için kotalar ve sınırlar](batch-quota-limit.md).
 
 > [!NOTE]
-> 5 Temmuz 2017 tarihinden önce oluşturulan toplu iş havuzları uygulama paketlerini desteklemez (Cloud Services yapılandırması kullanılarak 10 Mart 2016 ' den sonra oluşturulmadıkları takdirde).
->
-> Burada açıklanan uygulama paketleri özelliği, hizmetin önceki sürümlerinde bulunan Batch Apps özelliğinin yerini alır.
+> 5 Temmuz 2017 tarihinden önce oluşturulan toplu iş havuzları uygulama paketlerini desteklemez (Cloud Services yapılandırması kullanılarak 10 Mart 2016 ' den sonra oluşturulmadıkları takdirde). Burada açıklanan uygulama paketleri özelliği, hizmetin önceki sürümlerinde bulunan Batch Apps özelliğinin yerini alır.
 
-## <a name="about-applications-and-application-packages"></a>Uygulamalar ve uygulama paketleri hakkında
+## <a name="understand-applications-and-application-packages"></a>Uygulamaları ve uygulama paketlerini anlama
 
-Azure Batch içinde bir *uygulama* , havuzunuzdaki işlem düğümlerine otomatik olarak indirilebilen bir sürümlü ikili dosyalar kümesine başvurur. Bir *uygulama paketi* , uygulamanın belirli bir sürümünü temsil eden belirli bir ikili dosya kümesini ifade eder.
+Azure Batch içinde bir *uygulama* , havuzunuzdaki işlem düğümlerine otomatik olarak indirilebilen bir sürümlü ikili dosyalar kümesine başvurur. Uygulama, uygulamanın farklı sürümlerini temsil eden bir veya daha fazla *uygulama paketi*içerir.
+
+Her *uygulama paketi* , uygulama ikililerini ve destekleyici dosyaları içeren bir. zip dosyasıdır. Yalnızca. zip biçimi desteklenir.
 
 :::image type="content" source="media/batch-application-packages/app_pkg_01.png" alt-text="Uygulamaların ve uygulama paketlerinin üst düzey görünümünü gösteren diyagram.":::
 
-Batch 'deki bir *uygulama* bir veya daha fazla uygulama paketi içerir ve uygulama için yapılandırma seçeneklerini belirtir. Örneğin, bir uygulama, işlem düğümlerine yüklenecek varsayılan uygulama paketi sürümünü ve paketlerin güncelleştirilip güncelleştirimeyeceğini veya silinemeyeceğini belirtebilir.
-
-Uygulama *paketi* , uygulama ikililerini içeren bir. zip dosyasıdır ve görevleriniz uygulamayı çalıştırmak için gerekli dosyaları destekler. Her uygulama paketi, uygulamanın belirli bir sürümünü temsil eder. Yalnızca. zip biçimi desteklenir.
-
-Uygulama paketlerini havuzda veya görev düzeylerinde belirtebilirsiniz. Bir havuz veya görev oluşturduğunuzda, bu paketlerden bir veya daha fazlasını ve (isteğe bağlı olarak) bir sürümü belirtebilirsiniz.
+Uygulama paketlerini havuzda veya görev düzeyinde belirtebilirsiniz.
 
 - **Havuz uygulama paketleri** havuzdaki her düğüme dağıtılır. Uygulamalar, bir düğüm bir havuza katıldığında ve yeniden başlatıldığında veya yeniden görüntülendiğinde dağıtılır.
   
-    Havuz uygulama paketleri, bir havuzdaki tüm düğümler bir işin görevlerini yürütür. Bir havuz oluşturduğunuzda bir veya daha fazla uygulama paketi belirtebilir ve var olan bir havuzun paketlerini ekleyebilir veya güncelleştirebilirsiniz. Mevcut bir havuzun uygulama paketlerini güncelleştirirseniz, yeni paketi yüklemek için düğümlerini yeniden başlatmanız gerekir.
+    Havuz uygulama paketleri, bir havuzdaki tüm düğümler bir işin görevlerini yürütecektir uygun olur. Bir havuz oluşturduğunuzda dağıtılacak bir veya daha fazla uygulama paketi belirtebilirsiniz. Ayrıca, var olan bir havuzun paketlerini ekleyebilir veya güncelleştirebilirsiniz. Mevcut bir havuza yeni bir paket yüklemek için, düğümlerini yeniden başlatmanız gerekir.
 
 - Görev **uygulama paketleri** , görevin komut satırı çalıştırılmadan hemen önce yalnızca bir görevi çalıştırmak üzere zamanlanan bir işlem düğümüne dağıtılır. Belirtilen uygulama paketi ve sürümü zaten düğümde ise, yeniden dağıtılmadı ve mevcut paket kullanılır.
   
-    Görev uygulama paketleri, farklı işlerin tek bir havuzda çalıştırıldığı ve bir iş tamamlandığında havuzun silinmediği paylaşılan havuz ortamlarında yararlıdır. İşinizin havuzdaki görevleri, düğümlerinden azsa uygulamanız yalnızca görevleri çalıştıran düğümlere dağıtıldığı için görev uygulama paketleri veri aktarımını azaltabilir.
+    Görev uygulama paketleri, farklı işlerin tek bir havuzda çalıştığı ve bir iş tamamlandığında havuzun silinmediği paylaşılan havuz ortamlarında yararlıdır. İşiniz havuzdaki düğümlerden daha az görev içeriyorsa, uygulamanız yalnızca görevleri çalıştıran düğümlere dağıtıldığı için görev uygulama paketleri veri aktarımını en aza indirebilir.
   
-    Görev uygulama paketlerinden faydalanabilir diğer senaryolar, büyük bir uygulamayı çalıştıran, ancak yalnızca birkaç görevde çalışan işlerdir. Örneğin, ön işleme veya birleştirme uygulamasının ağır olduğu bir ön işleme aşaması veya birleştirme görevi, görev uygulama paketlerinin kullanılması yararlı olabilir.
+    Görev uygulama paketlerinden faydalanabilir diğer senaryolar, büyük bir uygulamayı çalıştıran, ancak yalnızca birkaç görevde çalışan işlerdir. Örneğin, görev uygulamaları ağır bir ön işleme aşaması veya birleştirme görevi için yararlı olabilir.
 
 Uygulama paketleriyle, havuzunuzun başlangıç görevinin düğümlere yüklenecek tek kaynak dosyalarının uzun bir listesini belirtmek zorunda değildir. Azure depolama 'da veya düğümlerdeki uygulama dosyalarınızın birden çok sürümünü el ile yönetmeniz gerekmez. Ve Depolama hesabınızdaki dosyalara erişim sağlamak için [SAS URL 'leri](../storage/common/storage-sas-overview.md) oluşturma konusunda endişelenmeniz gerekmez. Batch, uygulama paketlerini depolamak ve bunları işlem düğümlerine dağıtmak için Azure depolama ile arka planda çalışmaktadır.
 
@@ -61,7 +58,7 @@ Uygulama paketleriyle, havuzunuzun başlangıç görevinin düğümlere yüklene
 
 ## <a name="upload-and-manage-applications"></a>Uygulamaları karşıya yükleme ve yönetme
 
-Batch hesabınızdaki uygulama paketlerini yönetmek için [Azure Portal](https://portal.azure.com) veya Batch yönetimi API 'lerini kullanabilirsiniz. Sonraki birkaç bölümde, önce bir depolama hesabını bağlamayı, ardından uygulama ve paket ekleme ve bunları portalla yönetme hakkında tartışın.
+Batch hesabınızdaki uygulama paketlerini yönetmek için [Azure Portal](https://portal.azure.com) veya Batch yönetimi API 'lerini kullanabilirsiniz. Aşağıdaki bölümlerde, bir depolama hesabının nasıl bağlantılandırmasının yanı sıra Azure portal uygulama ve uygulama paketlerinin nasıl ekleneceği ve yönetileceği açıklanmaktadır.
 
 ### <a name="link-a-storage-account"></a>Depolama hesabını bağlama
 
@@ -74,7 +71,7 @@ Henüz bir depolama hesabı yapılandırmadıysanız, Batch hesabınızdaki **uy
 > [!IMPORTANT]
 > Uygulama paketlerini [güvenlik duvarı kurallarıyla](../storage/common/storage-network-security.md)yapılandırılmış Azure depolama hesaplarıyla veya **hiyerarşik ad alanı** **etkin**olarak ayarlanmış şekilde kullanamazsınız.
 
-Batch hizmeti, uygulama paketlerinizi blok blob 'ları olarak depolamak için Azure Storage 'ı kullanır. Blok Blobu verileri için [normal olarak ücretlendirilirsiniz](https://azure.microsoft.com/pricing/details/storage/) ve her bir paketin boyutu, Blok Blobu boyutunun üst sınırını aşamaz. Daha fazla bilgi için bkz. [depolama hesapları Için Azure Storage ölçeklenebilirlik ve performans hedefleri](../storage/blobs/scalability-targets.md). Maliyetleri en aza indirmek için uygulama paketlerinizin boyutunu ve sayısını göz önünde bulundurduğunuzdan ve kullanım dışı bırakılan paketleri düzenli olarak kaldırdığınızdan emin olun.
+Batch hizmeti, uygulama paketlerinizi blok blob 'ları olarak depolamak için Azure Storage 'ı kullanır. Blok Blobu verileri için [normal olarak ücretlendirilirsiniz](https://azure.microsoft.com/pricing/details/storage/) ve her bir paketin boyutu, Blok Blobu boyutunun üst sınırını aşamaz. Daha fazla bilgi için bkz. [depolama hesapları Için Azure Storage ölçeklenebilirlik ve performans hedefleri](../storage/blobs/scalability-targets.md). Maliyetleri en aza indirmek için uygulama paketlerinizin boyutunu ve sayısını göz önünde bulundurduğunuzdan emin olun ve kullanım dışı bırakılan paketleri düzenli olarak kaldırın.
 
 ### <a name="view-current-applications"></a>Geçerli uygulamaları görüntüle
 
@@ -88,19 +85,19 @@ Bu menü seçeneği belirlendiğinde **uygulamalar** penceresi açılır. Bu pen
 - **Varsayılan sürüm**: varsa, uygulamayı dağıttığınızda sürüm belirtilmemişse yüklenecek uygulama sürümü.
 - **Güncelleştirmelere Izin ver**: paket güncelleştirmelerine ve silmelerini izin verilip verilmeyeceğini belirtir.
 
-İşlem düğümünüz uygulama paketinin [dosya yapısını](files-and-directories.md) görmek Için Azure Portal Batch hesabınıza gidin. **Havuzlar** ' ı seçin ve ardından ilgilendiğiniz işlem düğümünü içeren havuzu seçin. Ardından uygulama paketinin yüklü olduğu işlem düğümünü seçin ve **uygulamalar** klasörünü açın.
+Uygulama paketinin [dosya yapısını](files-and-directories.md) bir işlem düğümünde görmek Için Azure Portal Batch hesabınıza gidin. **Havuzlar**' ı seçin. ardından işlem düğümünü içeren havuzu seçin. Uygulama paketinin yüklü olduğu işlem düğümünü seçin ve **uygulamalar** klasörünü açın.
 
 ### <a name="view-application-details"></a>Uygulama ayrıntılarını görüntüle
 
 Bir uygulamanın ayrıntılarını görmek için **uygulamalar** penceresinde seçin. Uygulamanız için aşağıdaki ayarları yapılandırabilirsiniz.
 
-- **Güncelleştirmelere Izin ver**: uygulama paketlerinin [güncelleştirilip güncelleştirilmediğini veya silinemeyeceğini](#update-or-delete-an-application-package)gösterir. Varsayılan değer **Evet**’tir. **Hayır**olarak ayarlanırsa, yeni uygulama paketi sürümleri eklenebilse de, uygulama için paket güncelleştirmelerine ve silmelere izin verilmez.
+- **Güncelleştirmelere Izin ver**: uygulama paketlerinin [güncelleştirilip güncelleştirilmediğini veya silinemeyeceğini](#update-or-delete-an-application-package)gösterir. Varsayılan değer **Evet**’tir. **Hayır**olarak ayarlanırsa, mevcut uygulama paketleri güncelleştirilemiyor veya silinemez, ancak yeni uygulama paketi sürümleri yine de eklenebilir.
 - **Varsayılan sürüm**: sürüm belirtilmemişse, uygulama dağıtıldığında kullanılacak varsayılan uygulama paketi.
 - **Görünen ad**: Batch çözümünüzün uygulama hakkında bilgi görüntülediğinde kullanabileceği kolay bir ad. Örneğin, bu ad Batch aracılığıyla müşterilerinize sağladığınız bir hizmetin Kullanıcı arabiriminde kullanılabilir.
 
 ### <a name="add-a-new-application"></a>Yeni uygulama ekle
 
-Yeni bir uygulama oluşturmak için, bir uygulama paketi ekler ve yeni, benzersiz bir uygulama KIMLIĞI belirtirsiniz.
+Yeni bir uygulama oluşturmak için, bir uygulama paketi ekleyin ve benzersiz bir uygulama KIMLIĞI belirtin.
 
 Batch hesabınızda, **uygulamalar** ' ı seçin ve ardından **Ekle**' yi seçin.
 
@@ -143,7 +140,7 @@ Azure portal uygulama paketlerinin nasıl yönetileceğini öğrendiğinize gör
 
 ### <a name="install-pool-application-packages"></a>Havuz uygulama paketlerini yükler
 
-Bir havuzdaki tüm işlem düğümlerine bir uygulama paketi yüklemek için havuz için bir veya daha fazla uygulama paketi başvurusu belirtin. Bir havuz için belirttiğiniz uygulama paketleri, düğüm havuza katıldığında ve düğüm yeniden başlatıldığında veya yeniden görüntülendiğinde her bir işlem düğümüne yüklenir.
+Bir havuzdaki tüm işlem düğümlerine bir uygulama paketi yüklemek için havuz için bir veya daha fazla uygulama paketi başvurusu belirtin. Bir havuz için belirttiğiniz uygulama paketleri, havuzu birleştiren her bir işlem düğümüne ve yeniden başlatılan veya yeniden görünen herhangi bir düğüme yüklenir.
 
 Batch .NET sürümünde, yeni bir havuz oluştururken veya mevcut bir havuz için bir veya daha fazla [Cloudpool. Applicationpackagereferde](/dotnet/api/microsoft.azure.batch.cloudpool.applicationpackagereferences) belirtin. [Applicationpackagereference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) sınıfı, bir havuzun işlem düğümlerine yüklenecek BIR uygulama kimliği ve sürümünü belirtir.
 
@@ -170,7 +167,7 @@ await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Bir uygulama paketi dağıtımı herhangi bir nedenle başarısız olursa, Batch Hizmeti düğümü [kullanılamaz](/dotnet/api/microsoft.azure.batch.computenode.state)olarak işaretler ve bu düğümde yürütülmek üzere hiçbir görev planlanmaz. Bu durumda, paket dağıtımını yeniden başlatmak için düğümü yeniden başlatmanız gerekir. Düğüm yeniden başlatıldığında, düğüm üzerinde görev zamanlamayı yeniden de etkinleştirilir.
+> Bir uygulama paketi dağıtımı başarısız olursa, Batch Hizmeti düğümü [kullanılamaz](/dotnet/api/microsoft.azure.batch.computenode.state)olarak işaretler ve bu düğümde yürütülmek üzere hiçbir görev planlanmaz. Bu durumda, paket dağıtımını yeniden başlatmak için düğümü yeniden başlatın. Düğüm yeniden başlatıldığında, düğüm üzerinde görev zamanlamayı yeniden de etkinleştirilir.
 
 ### <a name="install-task-application-packages"></a>Görev uygulama paketlerini yükler
 
@@ -205,7 +202,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örnek:
+Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örneğin:
 
 ```
 Linux:
@@ -246,7 +243,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 
 ## <a name="update-a-pools-application-packages"></a>Bir havuzun uygulama paketlerini güncelleştirme
 
-Mevcut bir havuz zaten bir uygulama paketiyle yapılandırıldıysa, havuz için yeni bir paket belirtebilirsiniz. Bir havuz için yeni bir paket başvurusu belirtirseniz aşağıdakiler geçerlidir:
+Mevcut bir havuz zaten bir uygulama paketiyle yapılandırıldıysa, havuz için yeni bir paket belirtebilirsiniz. Bunun anlamı:
 
 - Batch hizmeti, yeni belirtilen paketi havuza ve yeniden başlatılan veya yeniden görüntü oluşturulan tüm mevcut düğümlerde birleştirir.
 - Paket başvurularını güncelleştirdiğinizde zaten havuzda olan işlem düğümleri yeni uygulama paketini otomatik olarak yüklemez. Yeni paketi almak için bu işlem düğümlerinin yeniden başlatılması veya yeniden oluşturulması gerekir.

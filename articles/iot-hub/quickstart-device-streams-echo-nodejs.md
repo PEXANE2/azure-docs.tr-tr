@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: d398e450175c9f97c419b397266cda0a52e7e21c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7401bc0661459e1322c9b2f2226d45794f814732
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416137"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302953"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla Node.js bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
 
@@ -22,7 +22,7 @@ ms.locfileid: "87416137"
 
 Bu hızlı başlangıçta, bir hizmet tarafı uygulaması çalıştırır ve cihaz akışlarını kullanarak bir cihaz ve hizmet arasında iletişim kurabilirsiniz. Azure IoT Hub cihaz akışları, hizmet ve cihaz uygulamalarının güvenli ve güvenlik duvarı kullanımı kolay bir şekilde iletişim kurmasına olanak tanır. Genel Önizleme sırasında, Node.js SDK yalnızca hizmet tarafında cihaz akışlarını destekler. Sonuç olarak, bu hızlı başlangıç yalnızca hizmet tarafı uygulamasını çalıştırma yönergelerini ele alır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [IoT Hub cihaz akışları aracılığıyla C 'deki cihaz uygulamalarıyla Iletişim kurmayı](./quickstart-device-streams-echo-c.md) tamamlama veya [IoT Hub cihaz akışları aracılığıyla C# ' deki cihaz uygulamalarıyla iletişim](./quickstart-device-streams-echo-csharp.md)kurma.
 
@@ -43,7 +43,7 @@ Microsoft Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](htt
 > [!IMPORTANT]
 > Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'Lar için desteklenir:
 >
-> * Central US
+> * Orta ABD
 > * EUAP Orta ABD
 > * Kuzey Avrupa
 > * Güneydoğu Asya
@@ -60,7 +60,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 Önceki [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-node.md) öğreticisini tamamladıysanız bu adımı atlayabilirsiniz.
 

@@ -3,12 +3,12 @@ title: Azure Event Grid konuları veya etki alanları için IP güvenlik duvarı
 description: Bu makalede, Event Grid konular veya etki alanları için güvenlik duvarı ayarlarının nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: df6098df4817ee6c47378704c25d07433d6b9480
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509427"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324170"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için IP güvenlik duvarını yapılandırma 
 Varsayılan olarak, konu ve etki alanına, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz. Başka herhangi bir IP adresinden kaynaklanan yayımcılar reddedilir ve 403 (yasak) yanıtı alacaktır. Event Grid tarafından desteklenen ağ güvenliği özellikleri hakkında daha fazla bilgi için bkz. [Event Grid Için ağ güvenliği](network-security.md).
@@ -23,7 +23,7 @@ Bu bölümde, gelen IP güvenlik duvarı kuralları oluşturmak için Azure port
 
     Trafiği IP tabanlı güvenlik duvarı kurallarını kullanarak kısıtlayabilirsiniz. Tek bir IPv4 adresi veya sınıfsız etki alanları arası yönlendirme (CıDR) gösteriminde bir IP adresi aralığı belirtin. 
 
-    ![Ortak ağlar sayfası](./media/configure-firewall/public-networks-page.png)
+    !["Ortak ağlar" seçiliyken "genel ağ erişimi" sayfasını gösteren ekran görüntüsü.](./media/configure-firewall/public-networks-page.png)
 3. Yalnızca özel uç nokta bağlantılarının bu kaynağa erişmesine izin vermek için **Özel uç noktaları** seçin. Bağlantıları yönetmek için bu sayfadaki **Özel uç nokta bağlantıları** sekmesini kullanın. 
 
     ![Ortak ağlar sayfası](./media/configure-firewall/private-endpoints-page.png)
@@ -35,7 +35,7 @@ Bu bölümde, gelen IP güvenlik duvarı kuralları oluşturmak için Azure port
 Bu bölümde, gelen IP kuralları ile konular oluşturmak için Azure CLı komutlarının nasıl kullanılacağı gösterilmektedir. Bu bölümde gösterilen adımlar konular içindir. **Etki alanları**IÇIN gelen IP kuralları oluşturmak üzere benzer adımları kullanabilirsiniz. 
 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Aşağıdaki komutu çalıştırarak CLı için Azure Event Grid uzantısını güncelleştirin: 
 
 ```azurecli-interactive
@@ -162,7 +162,7 @@ az eventgrid topic update \
 ## <a name="use-powershell"></a>PowerShell kullanma
 Bu bölümde, gelen IP güvenlik duvarı kuralları ile Azure Event Grid konu oluşturmak için Azure PowerShell komutlarının nasıl kullanılacağı gösterilmektedir. Bu bölümde gösterilen adımlar konular içindir. **Etki alanları**IÇIN gelen IP kuralları oluşturmak üzere benzer adımları kullanabilirsiniz. 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 [Nasıl yapılır: Azure AD uygulaması ve hizmet sorumlusu oluşturmak için, bir Azure Active Directory uygulaması oluşturmak ve aşağıdaki değerleri izlemek üzere kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için bu](../active-directory/develop/howto-create-service-principal-portal.md) yönergeleri izleyin:
 
 - Dizin (kiracı) kimliği

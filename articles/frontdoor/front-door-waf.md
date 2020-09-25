@@ -1,6 +1,6 @@
 ---
-title: Azure ön kapısı ve Azure Web uygulaması güvenlik duvarı (WAF) kullanarak bir Web uygulamasını hızlıca ölçeklendirin ve koruyun | Microsoft Docs
-description: Bu öğreticide, Azure ön kapılı hizmetinizdeki Web uygulaması güvenlik duvarı 'nı nasıl kullanacağınız anlatılmaktadır
+title: Azure ön kapısı ve WAF kullanarak bir Web uygulamasını ölçeklendirme ve koruma
+description: Bu öğretici, Azure Web uygulaması güvenlik duvarı 'nı Azure ön kapılı hizmeti ile nasıl kullanacağınızı gösterecektir.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -11,58 +11,60 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 1958481193b66c8cec2cb6a1ac6648a6900d70ac
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2d531289a1d6e8c484b0334e570d943acdb82268
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531211"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276291"
 ---
-# <a name="tutorial-quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Öğretici: Azure ön kapısı ve Azure Web uygulaması güvenlik duvarı (WAF) kullanarak bir Web uygulamasını hızla ölçeklendirme ve koruma
+# <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Öğretici: Azure ön kapısı ve Azure Web uygulaması güvenlik duvarı (WAF) kullanarak bir Web uygulamasını hızla ölçeklendirme ve koruma
 
-Birçok Web uygulaması, COVıD-19 ile ilgili son haftalarda hızlı bir şekilde trafik artışı yaşadı. Ayrıca, bu Web uygulamaları, hizmet reddi saldırıları da dahil olmak üzere kötü amaçlı trafikte bir aşırı gerilim gözlemleyerek. Bu ihtiyaçları her ikisi de işlemek için etkili bir yöntem olan trafik dalgalanmaları ve saldırılardan korunmak için, Web uygulamanızın önünde bir hızlandırma, önbelleğe alma ve güvenlik katmanı olarak Azure WAF ile Azure ön kapısı ayarlamaya yöneliktir. Bu makalede, Azure 'da veya Azure dışında çalışan Web uygulamaları için Azure WAF kurulumu ile bu Azure ön kapısının nasıl hızlı bir şekilde alınacağı hakkında rehberlik sunulmaktadır. 
+Birçok Web uygulaması, COVıD-19 nedeniyle son haftalarda trafik hızlı bir şekilde artışını yaşadı. Bu Web uygulamaları, hizmet reddi saldırıları da dahil olmak üzere kötü amaçlı trafikte bir aşırı gerilim yaşıyor. Hem trafik surivlerinin ölçeğini hem de saldırılara karşı korumak için etkili bir yöntem vardır: Web uygulamanızın önünde bir hızlandırma, önbelleğe alma ve güvenlik katmanı olarak Azure WAF ile Azure ön kapısı ayarlama. Bu makalede, Azure 'un içinde veya dışında çalışan herhangi bir Web uygulaması için Azure WAF kurulumu ile Azure ön kapısının hızlı bir şekilde nasıl alınacağı hakkında rehberlik sunulmaktadır. 
 
-Bu öğreticide WAF 'yi ayarlamak için Azure CLı kullanacağız, ancak tüm bu adımlar Azure portal, Azure PowerShell, Azure ARM ve Azure REST API 'Lerinde de tam olarak desteklenmektedir. 
+Bu öğreticide WAF 'yi ayarlamak için Azure CLı kullanacağız. Azure portal, Azure PowerShell, Azure Resource Manager veya Azure REST API 'Lerini kullanarak aynı şeyi gerçekleştirebilirsiniz. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > - Ön kapı oluşturun.
 > - Azure WAF ilkesi oluşturun.
-> - WAF ilkesi için RuleSets 'i yapılandırın.
-> - WAF ilkesini ön kapıya ilişkilendir
-> - Özel etki alanı yapılandırma
+> - Bir WAF ilkesi için kural kümelerini yapılandırın.
+> - Bir WAF ilkesini ön kapıya ilişkilendirin.
+> - Özel bir etki alanı yapılandırın.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu blogdaki yönergeler Azure komut satırı arabirimini (CLı) kullanır. [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)kullanmaya başlamak için bu Kılavuzu görüntüleyin.
+- Bu öğreticideki yönergeler, Azure CLı 'yi kullanır. Azure CLı 'yı kullanmaya başlamak için [Bu Kılavuzu görüntüleyin](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) .
 
-*İpucu: Azure CLı 'yı kullanmaya başlamak için kolay bir & hızlı yolu, [Bash ile Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)*
+  > [!TIP] 
+  > Azure CLı 'yı kullanmaya başlamak için kolay ve hızlı bir yol [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 
-Ön kapı uzantısının Azure CLı 'nize eklendiğinden emin olun
+- `front-door`Uzantının Azure CLI 'ye eklendiğinden emin olun:
 
-```azurecli-interactive 
-az extension add --name front-door
-```
+   ```azurecli-interactive 
+   az extension add --name front-door
+   ```
 
-Note: aşağıda listelenen komutlara ilişkin daha fazla ayrıntı Için, [ön kapıda Azure CLI başvurusuna](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest)bakın.
+> [!NOTE] 
+> Bu öğreticide kullanılan komutlar hakkında daha fazla bilgi için bkz. [ön kapı Için Azure CLI başvurusu](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest).
 
-## <a name="create-an-azure-front-door-afd-resource"></a>Azure ön kapısı (AFD) kaynağı oluşturma
+## <a name="create-an-azure-front-door-resource"></a>Azure ön kapı kaynağı oluşturma
 
 ```azurecli-interactive 
 az network front-door create --backend-address <>  --accepted-protocols <> --name <> --resource-group <>
 ```
 
-**--arka uç-adres**: arka uç adresi, korumak Istediğiniz uygulamanın tam etki alanı adı (FQDN) adıdır. Örneğin, myapplication.contoso.com
+`--backend-address`: Korumak istediğiniz uygulamanın tam etki alanı adı (FQDN). Örneğin, `myapplication.contoso.com`.
 
-**--kabul edilen protokoller**: kabul edilen protokoller, AFD 'ın Web uygulamanız için hangi protokollerin desteklemesini istediğinizi belirtir. Örnek,--kabul edilen protokoller HTTP HTTPS olur.
+`--accepted-protocols`: Azure ön kapısının Web uygulamanız için desteklemesini istediğiniz protokolleri belirtir. Örneğin, `--accepted-protocols Http Https`.
 
-**--Name**: AFD kaynağınız için bir ad belirtin
+`--name`: Azure ön kapısının adı.
 
-**--Resource-Group**: Bu AFD kaynağını yerleştirmek istediğiniz kaynak grubu.  Kaynak grupları hakkında daha fazla bilgi edinmek için bkz. Azure 'da kaynak gruplarını yönetme
+`--resource-group`: Bu Azure ön kapısı kaynağını yerleştirmek istediğiniz kaynak grubu. Kaynak grupları hakkında daha fazla bilgi edinmek için bkz. [Azure 'da kaynak gruplarını yönetme](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
 
-Bu komutu başarılı bir şekilde yürüttükten sonra, "hostName" anahtarını arayın ve daha sonraki bir adımda kullanılacak değerini aklınızda bulun. Ana bilgisayar adı, oluşturduğunuz AFD kaynağının DNS adıdır
+Bu komutu çalıştırdığınızda aldığınız yanıtta, anahtarı bulun `hostName` . Daha sonraki bir adımda bu değere ihtiyacınız olacaktır. , `hostName` Oluşturduğunuz Azure ön kapısının DNS adıdır.
 
 ## <a name="create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>Azure ön kapı kaynakları ile kullanmak için bir Azure WAF profili oluşturma
 
@@ -70,85 +72,92 @@ Bu komutu başarılı bir şekilde yürüttükten sonra, "hostName" anahtarını
 az network front-door waf-policy create --name <>  --resource-group <>  --disabled false --mode Prevention
 ```
 
---AD Azure WAF ilkeniz için bir ad belirtin
+`--name`: Yeni Azure WAF ilkesinin adı.
 
---Bu WAF kaynağını yerleştirmek istediğiniz kaynak grubunu kaynak grubuna gruplayın. 
+`--resource-group`: Bu WAF kaynağını yerleştirmek istediğiniz kaynak grubu. 
 
-Yukarıdaki CLı kodu, etkin olan ve önleme modunda olan bir WAF ilkesi oluşturacak. 
+Önceki CLı kodu, etkin olan ve önleme modundaki bir WAF ilkesi oluşturacak. 
 
-Not: WAF 'yi algılama modunda oluşturmak ve koruma moduna değiştirmeye karar vermeden önce kötü amaçlı istekleri (engellenmeyen) & nasıl algılayacağını gözlemlemek isteyebilirsiniz.
+> [!NOTE] 
+> Algılama modunda WAF ilkesini oluşturmak ve koruma modunu kullanmaya karar vermeden önce kötü amaçlı istekleri nasıl algılayıp günlüğe kaydettiğini (bunları engellemeden) gözlemlemek isteyebilirsiniz.
 
-Bu komutu başarılı bir şekilde yürüttükten sonra, "KIMLIK" anahtarını arayın ve daha sonraki bir adımda kullanılacak değerini aklınızda bulun. KIMLIK alanı şu biçimde olmalıdır
+Bu komutu çalıştırdığınızda aldığınız yanıtta, anahtarı bulun `ID` . Daha sonraki bir adımda bu değere ihtiyacınız olacaktır. 
+
+`ID`Alan şu biçimde olmalıdır:
 
 /Subscriptions/**abonelik kimliği**/ResourceGroups/**kaynak grubu adı**/Providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/**WAF ilke adı**
 
-## <a name="add-managed-rulesets-to-this-waf-policy"></a>Bu WAF ilkesine yönetilen RuleSets ekleme
+## <a name="add-managed-rule-sets-to-the-waf-policy"></a>WAF ilkesine yönetilen kural kümeleri ekleme
 
-Bir WAF ilkesinde, Microsoft tarafından oluşturulan ve yönetilen bir kural kümesi olan yönetilen RuleSets 'ler ekleyebilirsiniz ve tüm tehdit sınıflarının tamamında kullanıma hazır bir koruma sunar. Bu örnekte, yaygın web tehditleri ve (2) botları koruma kuralı kümesi ile korunan ve kötü amaçlı botlara karşı koruyan iki tür RuleSets (1) varsayılan RuleSet kümesi ekliyoruz
+Bir WAF ilkesine yönetilen kural kümeleri ekleyebilirsiniz. Yönetilen bir kural kümesi, Microsoft tarafından oluşturulan ve yönetilen ve bir tehdit sınıfına karşı korunmanıza yardımcı olan kuralların bir kümesidir. Bu örnekte, iki kural kümesi ekliyoruz:
+- Genel Web tehditlerine karşı korunmanıza yardımcı olan varsayılan kural kümesi. 
+- Kötü amaçlı botlara karşı korunmanıza yardımcı olan bot koruma kuralı kümesi.
 
-(1) varsayılan RuleSet 'i ekleme
+Varsayılan kural kümesini ekleyin:
 
-```azurecli-interactive 
-az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type DefaultRuleSet --version 1.0
-```
+   ```azurecli-interactive 
+   az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type DefaultRuleSet --version 1.0
+   ```
 
-(2) bot Manager RuleSet 'i ekleme
+Bot koruma kuralı kümesini ekleyin:
 
-```azurecli-interactive 
-az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type Microsoft_BotManagerRuleSet --version 1.0
-```
+   ```azurecli-interactive 
+   az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type Microsoft_BotManagerRuleSet --version 1.0
+   ```
 
---Policy-Azure WAF kaynağınız için verdiğiniz adı adlandırın
+`--policy-name`: Azure WAF kaynağınız için belirttiğiniz ad.
 
---kaynak grubu bu WAF kaynağını yerleştirdiğiniz kaynak grubunu gruplayın.
+`--resource-group`: WAF kaynağını yerleştirdiğiniz kaynak grubu.
 
-## <a name="associate-the-waf-policy-with-the-afd-resource"></a>WAF ilkesini AFD kaynağıyla ilişkilendir
+## <a name="associate-the-waf-policy-with-the-azure-front-door-resource"></a>WAF ilkesini Azure ön kapı kaynağıyla ilişkilendir
 
-Bu adımda, geliştirdiğimiz WAF ilkesini Web uygulamanızın önünde bulunan AFD kaynağıyla ilişkilendireceğiz.
+Bu adımda, oluşturduğumuz WAF ilkesini, Web uygulamanızın önünde bulunan Azure ön kapı kaynağıyla ilişkilendireceğiz:
 
 ```azurecli-interactive 
 az network front-door update --name <> --resource-group <> --set frontendEndpoints[0].webApplicationFirewallPolicyLink='{"id":"<>"}'
 ```
 
---AFD kaynağınız için belirttiğiniz adı adlandırın
+`--name`: Azure ön kapısının kaynağı için belirttiğiniz addır.
 
---kaynak grubu Azure ön kapısının kaynağını yerleştirdiğiniz kaynak grubunu gruplayın.
+`--resource-group`: Azure ön kapısı kaynağını yerleştirdiğiniz kaynak grubu.
 
---Bunu, yeni oluşturulan WAF ilkesi ile AFD kaynağınız ile ilişkilendirilen ön ek için WebApplicationFirewallPolicyLink özniteliğini güncelleştireceğiniz yerdir. WAF ilkesinin KIMLIĞI, yukarıdaki adım #2 aldığınız yanıttan bulunabilir
+`--set`: Bu, `WebApplicationFirewallPolicyLink` `frontendEndpoint` Yeni WAF Ilkesi Ile Azure ön kapısınla ilişkili için olan özniteliği güncelleştireceğiniz yerdir. Bu öğreticide daha önce WAF profilini oluştururken aldığınız yanıttan WAF ilkesinin KIMLIĞINE sahip olmanız gerekir.
 
-Not: Yukarıdaki örnek, bir özel etki alanı kullanmadığınız durumlar için
+ > [!NOTE] 
+> Önceki örnek, özel bir etki alanı kullanmadığınız durumlarda geçerlidir. Web uygulamalarınıza erişmek için özel etki alanı kullanmıyorsanız, sonraki bölümü atlayabilirsiniz. Bu durumda, müşterilerinize `hostName` Azure ön kapısının kaynağını oluştururken elde edersiniz. `hostName`Web uygulamanıza gitmek için bunu kullanacağız.
 
-Web uygulamalarınıza erişmek için özel etki alanı kullanmıyorsanız, #5 adımı atlayabilirsiniz. Bu durumda, son kullanıcılarınıza Web uygulamanıza gitmek için #1 adımında elde ettiğiniz ana bilgisayar adını sağlayacaksınız.
+## <a name="configure-the-custom-domain-for-your-web-application"></a>Web uygulamanız için özel etki alanını yapılandırma
 
-## <a name="configure-custom-domain-for-your-web-application"></a>Web uygulamanız için özel etki alanı yapılandırma
+Web uygulamanızın özel etki alanı adı, müşterilerin uygulamanıza başvurmak için kullandığı bir addır. Örneğin, www.contoso.com. Başlangıçta, bu özel etki alanı adı, Azure ön kapısına sunulmadan önce çalıştığı konuma işaret ediyor. Uygulamanın önüne Azure ön kapısı ve WAF ekledikten sonra, bu özel etki alanına karşılık gelen DNS girişi, Azure ön kapısına işaret etmelidir. Bu değişikliği, DNS sunucunuzdaki girişi, `hostName` Azure ön kapısının oluşturulduğu sırada not ettiğiniz Azure ön kapısına yeniden tanımlayarak yapabilirsiniz.
 
-Başlangıçta Web uygulamanızın özel etki alanı adı (örneğin, www.contoso.com), AFD tanıtılmadan önce çalıştırmak istediğiniz yere doğru işaret ediyor. Bu mimarinin uygulamanın önüne AFD + WAF ekleme mimarisi değiştirildikten sonra, bu özel etki alanına karşılık gelen DNS girişi artık bu AFD kaynağını işaret etmelidir. Bu işlem, DNS sunucunuzdaki bu girişin #1 adımında not ettiğiniz AFD ana bilgisayar adıyla yeniden eşleştirerek yapılabilir.
+DNS kayıtlarınızı güncelleştirmek için özel adımlar, DNS hizmet sağlayıcınıza göre değişir. DNS adınızı barındırmak için Azure DNS kullanırsanız, [DNS kaydını güncelleştirme](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) ve Azure ön kapısına işaret eden adımlar için belgelere başvurabilirsiniz `hostName` . 
 
-DNS kayıtlarınızı güncelleştirmek için özel adımlar, DNS hizmet sağlayıcınıza bağlı olacaktır, ancak DNS adınızı barındırmak için Azure DNS kullanıyorsanız, [adımlar için BIR DNS kaydını güncelleştirme](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) ve AFD ana bilgisayar adına işaret eden yönergeler için belgelere başvurabilirsiniz. 
+Müşterilerinizin bölge tepesinde kullanarak Web sitenize (örneğin, contoso.com) sahip olup olmadığına dikkat etmeniz önemli bir şeydir. Bu durumda, DNS adınızı barındırmak için Azure DNS ve [diğer ad kayıt türünü](https://docs.microsoft.com/azure/dns/dns-alias) kullanmanız gerekir. 
 
-Burada, kullanıcılarınızın bölge tepesinde kullanarak Web sitenize gitmesini istiyorsanız (örneğin, contoso.com), DNS adınızı barındırmak için Azure DNS ve [diğer ad kayıt türünü](https://docs.microsoft.com/azure/dns/dns-alias) kullanmanız gerekir. 
+Ayrıca, bu eşlemenin farkında olması için [özel etki alanını eklemek](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) üzere Azure ön kapı yapılandırmanızı güncelleştirmeniz gerekir.
 
-Ayrıca, AFD bu eşlemeyi anlaması için [Bu özel etki alanını eklemek](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) üzere AFD yapılandırmanızı de güncelleştirmeniz gerekir.
-
-Son olarak, Web uygulamanıza erişmek için özel bir etki alanı kullanıyorsanız ve HTTPS protokolünü etkinleştirmek istiyorsanız, [AFD içindeki özel etki alanı kurulumunuzu sertifikalara](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https)sahip olmanız gerekir. 
+Son olarak, Web uygulamanıza erişmek için özel bir etki alanı kullanıyorsanız ve HTTPS protokolünü etkinleştirmek istiyorsanız, [Azure ön kapıdaki özel etki alanınız için sertifikaları ayarlamanız](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https)gerekir. 
 
 ## <a name="lock-down-your-web-application"></a>Web uygulamanızı kilitleme
 
-En isteğe bağlı bir en iyi uygulama, Web uygulamanızla yalnızca AFD kenarlarının iletişim kurabildiğinden emin sağlamaktır. Bu eylem, hiçbir birinin AFD korumalarını atlayamayacak ve uygulamalarınıza doğrudan erişemeyeceğini sağlayacaktır. Bu kilidi, [AFD 'ın SSS bölümünü](https://docs.microsoft.com/azure/frontdoor/front-door-faq) ziyaret ederek ve arka uçlarını yalnızca AFD tarafından erişim için kilitleme hakkındaki soruya başvurarak gerçekleştirebilirsiniz.
+Yalnızca Azure ön kapı kenarlarının Web uygulamanızla iletişim kurabilmenizi öneririz. Bunun yapılması, hiçbir birinin Azure ön kapı korumasını atlayamayacağını ve uygulamanıza doğrudan erişmesini sağlamaya devam edebilir. Bu kilidi başarmak için, [arka ucumun erişimini yalnızca Azure ön kapısına nasıl yaparım?](https://docs.microsoft.com/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticideki kaynaklara artık ihtiyacınız kalmadığında, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanarak kaynak grubunu, ön kapıyı ve WAF ilkesini kaldırın.
+Bu öğreticide kullanılan kaynaklara artık ihtiyacınız kalmadığında, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanarak kaynak grubunu, ön kapıyı ve WAF ilkesini kaldırın:
 
 ```azurecli-interactive
   az group delete \
     --name <>
 ```
---Bu öğreticide dağıtılan tüm kaynaklar için kaynak grubu adını adlandırın.
+`--name`: Bu öğreticide kullanılan tüm kaynaklar için kaynak grubunun adı.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
-Ön kapılarınızın sorunlarını nasıl giderebileceğinizi öğrenmek için nasıl yapılır kılavuzlarıyla devam edin.
+Ön kapılarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. sorun giderme kılavuzu:
 
 > [!div class="nextstepaction"]
 > [Yaygın yönlendirme sorunlarını giderme](front-door-troubleshoot-routing.md)
+
+> [!div class="nextstepaction"]
+> [İzin verilen sertifika yetkilileri](https://docs.microsoft.com/azure/frontdoor/front-door-troubleshoot-allowed-ca)

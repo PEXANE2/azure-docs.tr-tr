@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef533b3566ac557b57f1435a2a9b2dbe26896993
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306897"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows komutları-CMD ve PowerShell
 
@@ -30,11 +30,11 @@ SAC, çalışan işletim sistemine seri bağlantı noktası aracılığıyla ba�
 
 SAC geri kaydırma yapmadan bir 80x24 ekran arabelleği ile sınırlı olduğundan, `| more` çıktıyı tek seferde göstermek için komutlara ekleyin. `<spacebar>`Sonraki sayfayı görmek veya `<enter>` sonraki satırı görmek için kullanın.
 
-`SHIFT+INSERT`, seri konsol penceresi için yapıştırma kısayoludur.
+`SHIFT+INSERT` , seri konsol penceresi için yapıştırma kısayoludur.
 
 SAC 'nin sınırlı ekran arabelleği nedeniyle, daha uzun komutlar bir yerel metin düzenleyicisine yazmak ve sonra SAC 'ye yapıştırılabilmesi daha kolay olabilir.
 
-## <a name="view-and-edit-windows-registry-settings"></a>Windows kayıt defteri ayarlarını görüntüleyin ve düzenleyin
+## <a name="view-and-edit-windows-registry-settings-using-cmd"></a>CMD kullanarak Windows kayıt defteri ayarlarını görüntüleme ve düzenleme
 ### <a name="verify-rdp-is-enabled"></a>RDP 'nin etkinleştirildiğini doğrulama
 `reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections`
 
@@ -49,7 +49,7 @@ SAC 'nin sınırlı ekran arabelleği nedeniyle, daha uzun komutlar bir yerel me
 
 İkinci anahtar (\Policies altında) yalnızca ilgili Grup İlkesi ayarı yapılandırıldıysa gereklidir. Değer, Grup İlkesi 'nde yapılandırıldıysa bir sonraki Grup İlkesi yenilemesinde yeniden yazılır.
 
-## <a name="manage-windows-services"></a>Windows hizmetlerini yönetme
+## <a name="manage-windows-services-using-cmd"></a>CMD kullanarak Windows hizmetlerini yönetme
 
 ### <a name="view-service-state"></a>Hizmet durumunu görüntüle
 `sc query termservice`
@@ -79,7 +79,7 @@ veya
 veya
 
 `sc stop termservice`
-## <a name="manage-networking-features"></a>Ağ özelliklerini yönetme
+## <a name="manage-networking-features-using-cmd"></a>CMD kullanarak ağ özelliklerini yönetme
 ### <a name="show-nic-properties"></a>NIC özelliklerini göster
 `netsh interface show interface`
 ### <a name="show-ip-properties"></a>IP özelliklerini göster
@@ -120,7 +120,7 @@ Windows 'da varsayılan olarak kullanılabilen yöntemlerle sınırlı olduğund
 Windows Güvenlik Duvarı 'nı geçici olarak kurala göre sorun giderirken bu komutu kullanabilirsiniz. Bir sonraki yeniden başlatmada veya aşağıdaki komutu kullanarak etkinleştirdiğinizde etkinleştirilecek. Windows Güvenlik Duvarı 'nı nasıl denetleyeceğiyle Windows Güvenlik Duvarı hizmeti (MPSSVC) veya temel filtre altyapısı (BFE) hizmetini durdurmayın. MPSSVC veya BFE 'yi durdurmak, tüm bağlantıların engellenmesidir.
 ### <a name="enable-windows-firewall"></a>Windows Güvenlik Duvarı’nı Etkinleştir
 `netsh advfirewall set allprofiles state on`
-## <a name="manage-users-and-groups"></a>Kullanıcıları ve Grupları Yönetme
+## <a name="manage-users-and-groups-using-cmd"></a>CMD kullanarak kullanıcıları ve grupları yönetme
 ### <a name="create-local-user-account"></a>Yerel Kullanıcı hesabı oluştur
 `net user /add <username> <password>`
 ### <a name="add-local-user-to-local-group"></a>Yerel gruba yerel kullanıcı ekleme
@@ -150,7 +150,7 @@ Yerel yönetici hesabından ilgilendiğiniz örnek satırlar:
 
 ### <a name="view-local-groups"></a>Yerel grupları görüntüle
 `net localgroup`
-## <a name="manage-the-windows-event-log"></a>Windows olay günlüğü 'Nü yönetme
+## <a name="manage-the-windows-event-log-using-cmd"></a>CMD kullanarak Windows olay günlüğü 'Nü yönetme
 ### <a name="query-event-log-errors"></a>Olay günlüğü hatalarını sorgula
 `wevtutil qe system /c:10 /f:text /q:"Event[System[Level=2]]" | more`
 
@@ -165,7 +165,7 @@ Yerel yönetici hesabından ilgilendiğiniz örnek satırlar:
 `604800000`24 saat yerine 7 gün geri bakmak için kullanın.
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Son 7 günde olay KIMLIĞI, sağlayıcı ve EventData 'a göre olay günlüğünü sorgula
 `wevtutil qe security /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>Yüklü uygulamaları görüntüleme veya kaldırma
+## <a name="view-or-remove-installed-applications-using-cmd"></a>CMD kullanarak yüklü uygulamaları görüntüleme veya kaldırma
 ### <a name="list-installed-applications"></a>Yüklü uygulamaları listeleme
 `wmic product get Name,InstallDate | sort /r | more`
 
@@ -175,7 +175,7 @@ Yerel yönetici hesabından ilgilendiğiniz örnek satırlar:
 
 `<name>`Kaldırmak istediğiniz uygulamanın Yukarıdaki komutta döndürülen adla değiştirin.
 
-## <a name="file-system-management"></a>Dosya sistemi yönetimi
+## <a name="file-system-management-using-cmd"></a>CMD kullanarak dosya sistemi yönetimi
 ### <a name="get-file-version"></a>Dosya sürümünü al
 `wmic datafile where "drive='C:' and path='\\windows\\system32\\drivers\\' and filename like 'netvsc%'" get version /format:list`
 
@@ -206,7 +206,7 @@ Kullanmanın, kullanırken `/restore` belirttiğiniz klasörün üst klasörü o
 ## <a name="manage-group-policy"></a>Grup İlkesi'ni yönetme
 ### <a name="force-group-policy-update"></a>Grup ilkesi güncelleştirmesini zorla
 `gpupdate /force /wait:-1`
-## <a name="miscellaneous-tasks"></a>Çeşitli görevler
+## <a name="miscellaneous-tasks-using-cmd"></a>CMD kullanan çeşitli görevler
 ### <a name="show-os-version"></a>İşletim sistemi sürümünü göster
 `ver`
 
@@ -259,7 +259,7 @@ Yukarıdaki komut PSReadLine modülü sürümünü döndürürse, kaldırmak iç
 
 `remove-module psreadline`
 
-## <a name="view-and-edit-windows-registry-settings"></a>Windows kayıt defteri ayarlarını görüntüleyin ve düzenleyin
+## <a name="view-and-edit-windows-registry-settings-using-powershell"></a>PowerShell kullanarak Windows kayıt defteri ayarlarını görüntüleme ve düzenleme
 ### <a name="verify-rdp-is-enabled"></a>RDP 'nin etkinleştirildiğini doğrulama
 `get-itemproperty -path 'hklm:\system\curRentcontrolset\control\terminal server' -name 'fdenytsconNections'`
 
@@ -272,11 +272,11 @@ Yukarıdaki komut PSReadLine modülü sürümünü döndürürse, kaldırmak iç
 `set-itemproperty -path 'hklm:\software\policies\microsoft\windows nt\terminal services' -name 'fdenytsconNections' 0 -type dword`
 
 İkinci anahtar (\Policies altında) yalnızca ilgili Grup İlkesi ayarı yapılandırıldıysa gereklidir. Değer, Grup İlkesi 'nde yapılandırıldıysa bir sonraki Grup İlkesi yenilemesinde yeniden yazılır.
-## <a name="manage-windows-services"></a>Windows hizmetlerini yönetme
+## <a name="manage-windows-services-using-powershell"></a>PowerShell kullanarak Windows hizmetlerini yönetme
 ### <a name="view-service-details"></a>Hizmet ayrıntılarını görüntüle
 `get-wmiobject win32_service -filter "name='termservice'" |  format-list Name,DisplayName,State,StartMode,StartName,PathName,ServiceType,Status,ExitCode,ServiceSpecificExitCode,ProcessId`
 
-`Get-Service`kullanılabilir, ancak hizmet oturum açma hesabını içermez. `Get-WmiObject win32-service`lamaz.
+`Get-Service` kullanılabilir, ancak hizmet oturum açma hesabını içermez. `Get-WmiObject win32-service` lamaz.
 ### <a name="set-service-logon-account"></a>Hizmet oturum açma hesabını ayarla
 `(get-wmiobject win32_service -filter "name='termservice'").Change($null,$null,$null,$null,$null,$false,'NT Authority\NetworkService')`
 
@@ -291,7 +291,7 @@ Yukarıdaki komut PSReadLine modülü sürümünü döndürürse, kaldırmak iç
 `start-service termservice`
 ### <a name="stop-service"></a>Hizmeti durdur
 `stop-service termservice`
-## <a name="manage-networking-features"></a>Ağ özelliklerini yönetme
+## <a name="manage-networking-features-using-powershell"></a>PowerShell kullanarak ağ özelliklerini yönetme
 ### <a name="show-nic-properties"></a>NIC özelliklerini göster
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
@@ -299,7 +299,7 @@ veya
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
-`Get-NetAdapter`2012 + ' de, 2008R2 kullanımı için kullanılabilir `Get-WmiObject` .
+`Get-NetAdapter` 2012 + ' de, 2008R2 kullanımı için kullanılabilir `Get-WmiObject` .
 ### <a name="show-ip-properties"></a>IP özelliklerini göster
 `get-wmiobject Win32_NetworkAdapterConfiguration -filter "ServiceName='netvsc'" |  format-list DNSHostName,IPAddress,DHCPEnabled,IPSubnet,DefaultIPGateway,MACAddress,DHCPServer,DNSServerSearchOrder`
 ### <a name="enable-nic"></a>NIC 'yi etkinleştir
@@ -309,13 +309,13 @@ veya
 
 `(get-wmiobject win32_networkadapter -filter "servicename='netvsc'").enable()`
 
-`Get-NetAdapter`2012 + ' de, 2008R2 kullanımı için kullanılabilir `Get-WmiObject` .
+`Get-NetAdapter` 2012 + ' de, 2008R2 kullanımı için kullanılabilir `Get-WmiObject` .
 ### <a name="set-nic-to-use-dhcp"></a>NIC 'yi DHCP kullanacak şekilde ayarlama
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | Set-NetIPInterface -DHCP Enabled`
 
 `(get-wmiobject Win32_NetworkAdapterConfiguration -filter "ServiceName='netvsc'").EnableDHCP()`
 
-`Get-NetAdapter`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` . Azure VM 'Leri, bir IP adresi almak için DHCP kullanmak üzere Konuk işletim sisteminde her zaman yapılandırılmalıdır. Azure statik IP ayarı hala IP 'yi VM 'ye vermek için DHCP kullanır.
+`Get-NetAdapter` , 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` . Azure VM 'Leri, bir IP adresi almak için DHCP kullanmak üzere Konuk işletim sisteminde her zaman yapılandırılmalıdır. Azure statik IP ayarı hala IP 'yi VM 'ye vermek için DHCP kullanır.
 ### <a name="ping"></a>Ping
 `test-netconnection`
 
@@ -326,7 +326,7 @@ veya
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
 
-`Test-Netconnection`Hiçbir parametre olmadan ping göndermeye çalışır `internetbeacon.msedge.net` . 2012 + ' de kullanılabilir. 2008R2 için `Get-WmiObject` ikinci örnekte olduğu gibi kullanın.
+`Test-Netconnection` Hiçbir parametre olmadan ping göndermeye çalışır `internetbeacon.msedge.net` . 2012 + ' de kullanılabilir. 2008R2 için `Get-WmiObject` ikinci örnekte olduğu gibi kullanın.
 ### <a name="port-ping"></a>Bağlantı noktası ping
 `test-netconnection -ComputerName bing.com -Port 80`
 
@@ -334,7 +334,7 @@ veya
 
 `(new-object Net.Sockets.TcpClient).BeginConnect('bing.com','80',$null,$null).AsyncWaitHandle.WaitOne(300)`
 
-`Test-NetConnection`, 2012 + ' da kullanılabilir. 2008R2 için kullanım için`Net.Sockets.TcpClient`
+`Test-NetConnection` , 2012 + ' da kullanılabilir. 2008R2 için kullanım için `Net.Sockets.TcpClient`
 ### <a name="test-dns-name-resolution"></a>Test DNS ad çözümlemesi
 `resolve-dnsname bing.com`
 
@@ -342,7 +342,7 @@ veya
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
-`Resolve-DnsName`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `System.Net.DNS` .
+`Resolve-DnsName` , 2012 + ' da kullanılabilir. 2008R2 için kullanım `System.Net.DNS` .
 ### <a name="show-windows-firewall-rule-by-name"></a>Windows güvenlik duvarı kuralını ada göre göster
 `get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP`
 ### <a name="show-windows-firewall-rule-by-port"></a>Windows güvenlik duvarı kuralını bağlantı noktasına göre göster
@@ -352,12 +352,12 @@ veya
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
-`Get-NetFirewallPortFilter`, 2012 + ' da kullanılabilir. 2008R2 için `hnetcfg.fwpolicy2` com nesnesini kullanın.
+`Get-NetFirewallPortFilter` , 2012 + ' da kullanılabilir. 2008R2 için `hnetcfg.fwpolicy2` com nesnesini kullanın.
 ### <a name="disable-windows-firewall"></a>Windows güvenlik duvarını devre dışı bırak
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
-`Set-NetFirewallProfile`, 2012 + ' da kullanılabilir. 2008R2 için `netsh advfirewall` YUKARıDAKI cmd bölümünde başvurulan olarak kullanın.
-## <a name="manage-users-and-groups"></a>Kullanıcıları ve Grupları Yönetme
+`Set-NetFirewallProfile` , 2012 + ' da kullanılabilir. 2008R2 için `netsh advfirewall` YUKARıDAKI cmd bölümünde başvurulan olarak kullanın.
+## <a name="manage-users-and-groups-using-powershell"></a>PowerShell kullanarak kullanıcıları ve grupları yönetme
 ### <a name="create-local-user-account"></a>Yerel Kullanıcı hesabı oluştur
 `new-localuser <name>`
 ### <a name="verify-user-account-is-enabled"></a>Kullanıcı hesabının etkin olduğunu doğrulama
@@ -367,7 +367,7 @@ veya
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
-`Get-LocalUser`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` . Bu örnekte, her zaman SID 'SI olan yerleşik yerel yönetici hesabı gösterilmektedir `S-1-5-21-*-500` . Genelleştirilmiş görüntüden oluşturulan Azure VM 'lerinin yerel yönetici hesabı, VM sağlama sırasında belirtilen adla yeniden adlandırılacaktır. Bu nedenle, genellikle olmayacaktır `Administrator` .
+`Get-LocalUser` , 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` . Bu örnekte, her zaman SID 'SI olan yerleşik yerel yönetici hesabı gösterilmektedir `S-1-5-21-*-500` . Genelleştirilmiş görüntüden oluşturulan Azure VM 'lerinin yerel yönetici hesabı, VM sağlama sırasında belirtilen adla yeniden adlandırılacaktır. Bu nedenle, genellikle olmayacaktır `Administrator` .
 ### <a name="add-local-user-to-local-group"></a>Yerel gruba yerel kullanıcı ekleme
 `add-localgroupmember -group Administrators -member <username>`
 ### <a name="enable-local-user-account"></a>Yerel Kullanıcı hesabını etkinleştir
@@ -381,12 +381,12 @@ veya
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
-`Get-LocalUser`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` . Bu örnekte, her zaman SID 'SI olan yerleşik yerel yönetici hesabı gösterilmektedir `S-1-5-21-*-500` .
+`Get-LocalUser` , 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` . Bu örnekte, her zaman SID 'SI olan yerleşik yerel yönetici hesabı gösterilmektedir `S-1-5-21-*-500` .
 ### <a name="view-local-groups"></a>Yerel grupları görüntüle
 `(get-localgroup).name | sort` `(get-wmiobject win32_group).Name | sort`
 
-`Get-LocalUser`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` .
-## <a name="manage-the-windows-event-log"></a>Windows olay günlüğü 'Nü yönetme
+`Get-LocalUser` , 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` .
+## <a name="manage-the-windows-event-log-using-powershell"></a>PowerShell kullanarak Windows olay günlüğü 'Nü yönetme
 ### <a name="query-event-log-errors"></a>Olay günlüğü hatalarını sorgula
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Level=2]]" | more`
 
@@ -401,12 +401,12 @@ veya
 `604800000`24 saat yerine 7 gün geri bakmak için kullanın. |
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Son 7 günde olay KIMLIĞI, sağlayıcı ve EventData 'a göre olay günlüğünü sorgula
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>Yüklü uygulamaları görüntüleme veya kaldırma
+## <a name="view-or-remove-installed-applications-using-powershell"></a>PowerShell kullanarak yüklü uygulamaları görüntüleme veya kaldırma
 ### <a name="list-installed-software"></a>Yüklü yazılımları listeleme
 `get-wmiobject win32_product | select installdate,name | sort installdate -descending | more`
 ### <a name="uninstall-software"></a>Yazılımı Kaldır
 `(get-wmiobject win32_product -filter "Name='<name>'").Uninstall()`
-## <a name="file-system-management"></a>Dosya sistemi yönetimi
+## <a name="file-system-management-using-powershell"></a>PowerShell kullanarak dosya sistemi yönetimi
 ### <a name="get-file-version"></a>Dosya sürümünü al
 `(get-childitem $env:windir\system32\drivers\netvsc*.sys).VersionInfo.FileVersion`
 
@@ -415,7 +415,7 @@ Bu örnek, Windows sürümüne bağlı olarak netvsc.sys, netvsc63.sys veya netv
 `$path='c:\bin';md $path;cd $path;(new-object net.webclient).downloadfile( ('htTp:/'+'/download.sysinternals.com/files/SysinternalsSuite.zip'),"$path\SysinternalsSuite.zip");(new-object -com shelL.apPlication).namespace($path).CopyHere( (new-object -com shelL.apPlication).namespace("$path\SysinternalsSuite.zip").Items(),16)`
 
 Bu örnek, bir `c:\bin` klasör oluşturur, ardından bu araç paketini indirip ayıklar `c:\bin` .
-## <a name="miscellaneous-tasks"></a>Çeşitli görevler
+## <a name="miscellaneous-tasks-using-powershell"></a>PowerShell kullanan çeşitli görevler
 ### <a name="show-os-version"></a>İşletim sistemi sürümünü göster
 `get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
 ### <a name="view-os-install-date"></a>İşletim sistemi yüklemesi tarihini görüntüleme

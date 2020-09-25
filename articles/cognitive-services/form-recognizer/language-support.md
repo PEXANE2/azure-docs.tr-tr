@@ -6,31 +6,29 @@ services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: immersive-reader
+ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 6cf0c73876d6d261ba25f32fd5112abaf253acdf
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: ba89db30e11b35840adada8fdfa6a9d15e0e79d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669683"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324493"
 ---
 # <a name="language-support-for-form-recognizer"></a>Form tanıyıcı için dil desteği
 
-Bu makalede, form tanıyıcı (Önizleme) hizmeti tarafından desteklenen insan dilleri listelenir.
+Bu makalede, form tanıyıcı hizmeti tarafından desteklenen insan dilleri listelenir.
 
 
-|Dil| Dil kodu | Form tanıyıcı v 2.0 | Form tanıyıcı v 2.1 genel önizleme \*|
+|Dil| Dil kodu | Form tanıyıcı v 2.0 | Form tanıyıcı v 2.1 Önizleme|
 |:-----|:----:|:-----:|:---:|
 |Basitleştirilmiş Çince | `zh-Hans`| | ✔ |
 |Felemenkçe | `nl` | | ✔ |
-|İngilizce (& el ile yazdırılmış) | `en` | ✔ | |
+|İngilizce (& el ile yazdırılmış) | `en` | ✔ | ✔|
 |Fransızca | `fr` | | ✔ |
 |Almanca | `de` | | ✔ |
 |İtalyanca | `it` | | ✔ |
 |Portekizce | `pt` | | ✔ |
-|Spanish | `es` | | ✔ |
-
-\* Form tanıyıcı v 2.1 Genel önizlemesi, düzen ve özel için bu dilleri destekler. Önceden oluşturulmuş alındı ve önceden oluşturulmuş Iş kartları yalnızca Ingilizce olarak desteklenir.
+|İspanyolca | `es` | | ✔ |

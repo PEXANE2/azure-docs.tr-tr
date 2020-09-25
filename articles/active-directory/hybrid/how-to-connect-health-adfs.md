@@ -18,12 +18,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa7be140b47d389bea0e7468d1a5ac7e58c3b1b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 26fdf202cb9bcacee94c83578432f7a399f90a0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276295"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306285"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>AD FS'yi Azure AD Connect Health'i kullanarak izleme
 Aşağıdaki belgeler, AD FS altyapınızın Azure AD Connect Health ile izlenmesine ilişkin belgelerdir. Azure AD Connect Health ile Azure AD Connect (eşitleme) izleme hakkında daha fazla bilgi için bkz [Azure AD Connect Health eşitleme Için kullanma](how-to-connect-health-sync.md). Ayrıca, Azure AD Connect Health Active Directory Domain Services izleme hakkında bilgi için, bkz. [Azure AD Connect Health AD DS Ile kullanma](how-to-connect-health-adds.md).
@@ -33,7 +33,7 @@ Azure AD Connect Health Uyarıları bölümünde etkin uyarıların listesi mevc
 
 Ek bilgiler, uyarıyı çözme adımları ve ilgili belgelerin bağlantılarını içeren yeni bir dikey pencere açmak için etkin veya çözümlenmiş bir uyarıya çift tıklayabilirsiniz. Ayrıca, geçmişte çözümlenen uyarılara ilişkin geçmiş verileri de görüntüleyebilirsiniz.
 
-![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/alert2.png)
+![Seçili bir uyarı içeren Azure AD Connect Health "Uyarılar" sayfasını ve görüntülenen "Uyarı ayrıntıları" penceresini gösteren ekran görüntüsü.](./media/how-to-connect-health-adfs/alert2.png)
 
 ## <a name="usage-analytics-for-ad-fs"></a>AD FS için Kullanım Analizi
 Azure AD Connect Health Kullanım Analizi, federasyon sunucularınızın kimlik doğrulama trafiğini analiz eder. Birkaç ölçüm ve gruplandırmayı gösteren kullanım analizi dikey penceresini açmak için kullanım analizi kutusuna çift tıklayabilirsiniz.
@@ -43,7 +43,7 @@ Azure AD Connect Health Kullanım Analizi, federasyon sunucularınızın kimlik 
 >
 >
 
-![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/report1.png)
+![Azure AD Connect Health "Kullanım Analizi" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-health-adfs/report1.png)
 
 Ek ölçümler seçmek, zaman aralığı belirtmek veya gruplandırmayı değiştirmek için kullanım analizi grafiğine sağ tıklayıp Grafiği Düzenle seçeneğini belirleyin. Ardından zaman aralığı belirtebilir, farklı bir ölçüm seçebilir ve gruplandırmayı değiştirebilirsiniz. Kimlik doğrulama trafiğinin dağılımını farklı "ölçümlere" göre görüntüleyebilir ve aşağıdaki bölümde açıklanan ilgili "gruplandırma ölçütü" parametrelerini kullanarak her ölçümü gruplandırabilirsiniz:
 
@@ -78,7 +78,7 @@ Ek ölçümler seçmek, zaman aralığı belirtmek veya gruplandırmayı değiş
 ## <a name="performance-monitoring-for-ad-fs"></a>AD FS için Performans İzleme
 Azure AD Connect Health Performans İzleme, ölçümlere ilişkin izleme bilgileri sağlar. İzleme kutusunu seçtiğinizde, ölçümlere ilişkin ayrıntılı bilgiler içeren yeni bir dikey pencere açılır.
 
-![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/perf1.png)
+![Azure AD Connect Health performansı "Izleme" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-health-adfs/perf1.png)
 
 Dikey pencerenin üst kısmındaki Filtre seçeneğini işaretlediğinizde her bir sunucunun ölçümlerini görmek için sunucuya göre filtreleme yapabilirsiniz. Ölçümü değiştirmek için, izleme dikey penceresinin altındaki izleme grafiğine sağ tıklayıp Grafiği Düzenle’yi seçin (veya Grafiği Düzenle düğmesini seçin). Açılan yeni dikey pencerede, açılan menüden başka ölçümler seçebilir veya performans verilerini görüntülemek istediğiniz zaman aralığını belirleyebilirsiniz.
 
@@ -89,7 +89,7 @@ Ancak, AD FS sunucularınızın beklenmeyen sayıda isteği işlemesiyle sonuçl
 
 ADFS için Azure AD Connect Health, geçersiz kullanıcı adı veya paroladan dolayı oturum açma denemeleri başarısız olan İlk 50 Kullanıcıya ilişkin bir rapor sağlar. Bu rapor, gruplardaki tüm AD FS sunucuları tarafından oluşturulan denetim olaylarının işlenmesiyle sağlanır.
 
-![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/report1a.png)
+![Son 30 güne ait hatalı parola denemelerinin sayısı ile birlikte "Reports" bölümünü gösteren ekran görüntüsü.](./media/how-to-connect-health-adfs/report1a.png)
 
 Bu raporda şu bilgilere kolayca erişebilirsiniz:
 

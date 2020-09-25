@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 1690a844ff700a2975be8e972fd90ba71eeb937c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f83baf7a038ad8cf17421c778deccbc7dc389d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707790"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325564"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files için ölçümler
 
@@ -37,21 +37,24 @@ Azure NetApp Files, ayrılan depolama, gerçek depolama alanı kullanımı, haci
 - *Kullanılan havuz boyutu*  
     Bir kapasite havuzundaki birimlerde kullanılan mantıksal alan toplamı (GiB).  
 
-- *Havuzun toplam anlık görüntü boyutu*    
-    Havuzdaki tüm birimlerin anlık görüntü boyutu toplamı.
+- *Havuz için toplam anlık görüntü boyutu*    
+    Havuzdaki tüm birimlerden anlık görüntü boyutu toplamı.
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>Birimler için kullanım ölçümleri
 
-<!--
-- *Volume Quota Size*    
-    The quota size (GiB) the volume is provisioned with.   
-    This size is the size you selected during capacity pool creation. 
+<!-- ANF-5023: fixed version: 2020.08, 2020.09
+- *Percentage Volume Consumed Size*    
+    The percentage of the volume consumed, including snapshots.  
 -->
+- *Birim ayırma boyutu*   
+    Bir birimin sağlanan boyutu
+- *Birim kotası boyutu*    
+    Birimin birlikte sağlandığı kota boyutu (GiB).   
 - *Tüketilen birim boyutu*   
-    Bir birimde (GiB) kullanılan toplam mantıksal alan.  
+    Birimin mantıksal boyutu (kullanılan baytlar).  
     Bu boyut, etkin dosya sistemleri ve anlık görüntüleri tarafından kullanılan mantıksal alanı içerir.  
 - *Birim anlık görüntü boyutu*   
-   Bir birimdeki anlık görüntüler tarafından kullanılan artımlı mantıksal alan.  
+   Bir birimdeki tüm anlık görüntülerin boyutu.  
 
 ## <a name="performance-metrics-for-volumes"></a>Birimler için performans ölçümleri
 
@@ -63,11 +66,28 @@ Azure NetApp Files, ayrılan depolama, gerçek depolama alanı kullanımı, haci
     Birime saniye başına okuma sayısı.
 - *IOPS yaz*   
     Birime saniye başına yazma sayısı.
+- *MIB/s oku*   
+    Bayt/saniye cinsinden okuma performansı.
+- *MIB/s yaz*   
+    Bayt/saniye cinsinden yazma hızı.
+
+<!-- ANF-4128; 2020.07
+- *Pool Provisioned Throughput*   
+    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
+- *Pool Allocated to Volume Throughput*   
+    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
+-->
+
+<!-- ANF-6443; future
+- *Pool Consumed Throughput*    
+    The total throughput being consumed by volumes in a given capacity pool.
+-->
+
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>Birim çoğaltma ölçümleri
 
 - *Birim çoğaltma durumu sağlıklı*   
-    Çoğaltma ilişkisinin koşulu. 
+    Çoğaltma ilişkisinin koşulu. Sağlıklı bir durum tarafından gösterilir `1` . Sağlıksız bir durum tarafından gösterilir `0` .
 
 - *Birim çoğaltma aktarılıyor*    
     Birim çoğaltmasının durumunun ' aktarma ' olup olmadığı. 

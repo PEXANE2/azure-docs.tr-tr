@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 2d19098ec82fe9361154d798b981341a86decf97
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 751fbbb83f1ccb75cb84453f8c03296f6d1a786c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647816"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275788"
 ---
 # <a name="azure-virtual-machine-image-validation"></a>Azure sanal makine görüntüsü doğrulaması
 
@@ -20,7 +20,7 @@ Bu makalede, en son Azure Marketi yayımlama gereksinimlerini karşıladığınd
 
 VM teklifinizi göndermeden önce şu adımları uygulayın:
 
-- Genelleştirilmiş görüntünüzü kullanarak bir Azure VM dağıtın.
+- Genelleştirilmiş görüntünüzü kullanarak bir Azure VM dağıtın. [Genelleştirilmiş görüntüler](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-vm-technical-asset#generalize-the-image)hakkında daha fazla bilgi için buraya bakın.
 - Doğrulamaları çalıştırın.
 
 ## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Genelleştirilmiş görüntünüzü kullanarak bir Azure VM dağıtma
@@ -31,7 +31,7 @@ Bu bölümde, yeni bir Azure VM kaynağı oluşturmak için genelleştirilmiş b
 
 Bu bölümde, Kullanıcı tarafından belirtilen bir sanal makine (VM) görüntüsünün nasıl oluşturulacağı ve dağıtılacağı açıklanmaktadır. Bunu, Azure tarafından dağıtılan bir sanal sabit diskten işletim sistemi ve veri diski VHD görüntüleri sağlayarak yapabilirsiniz. Bu adımlar, genelleştirilmiş VHD kullanarak VM 'yi dağıtır.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Genelleştirilmiş işletim sistemi VHD 'nizi ve veri diski VHD 'nizi Azure depolama hesabınıza yükleyin.
 3. Giriş sayfasında, **kaynak oluştur**' u seçin, "şablon dağıtımı" ifadesini arayın ve **Oluştur**' u seçin.
 4. **Düzenleyicide kendi şablonunuzu oluşturun**öğesini seçin.
@@ -599,7 +599,9 @@ Otomatik test tamamlandıktan sonra, soru formu ekranının, Genel değerlendirm
 
 Son ekran, bir Linux VM görüntüsü için SSH erişim bilgileri gibi daha fazla bilgi ve özel durumlar arıyorsanız, başarısız olan değerlendirmelerin bir açıklamasını sağlar.
 
-Son olarak, yürütülen test çalışmalarının test sonuçlarını ve günlük dosyalarını, soru formuna yönelik yanıtlarınızla birlikte indirmek için rapor oluştur ' u seçin. Sonuçları VHD 'larınız ile aynı kapsayıcıya kaydedin.
+Son olarak, yürütülen test çalışmalarının test sonuçlarını ve günlük dosyalarını, soru formuna yönelik yanıtlarınızla birlikte indirmek için rapor oluştur ' u seçin. 
+> [!Note]
+> VM 'lerde yüklü olan güvenlik duvarları gibi yazılımlar olduğundan, birkaç Yayımcı, sanal makinelerin kilitlenebileceği senaryolar vardır. Bu durumda, yayımcılar [sertifikalı test aracını](https://aka.ms/AzureCertificationTestTool) buradan indirebilir ve raporu [Market yayımcı desteği](https://aka.ms/marketplacepublishersupport) ' nde sağlayabilir
 
 ## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>Self-Test API 'sini kullanmak için PowerShell 'i kullanma
 

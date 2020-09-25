@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044531"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276535"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure Data Factory Delta biçimi
 
@@ -35,12 +35,13 @@ Aşağıdaki tabloda bir Delta kaynağı tarafından desteklenen özellikler lis
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçimlendir | Biçim olmalıdır`delta` | evet | `delta` | biçim |
+| Biçimlendir | Biçim olmalıdır `delta` | evet | `delta` | biçim |
 | Dosya sistemi | Delta Gölü kapsayıcı/dosya sistemi | evet | Dize | Biçimlendiri |
 | Klasör yolu | Delta Gölü doğrudan | evet | Dize | folderPath |
 | Sıkıştırma türü | Delta tablosunun sıkıştırma türü | hayır | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | Sıkıştırma düzeyi | Sıkıştırmanın olabildiğince çabuk veya elde edilen dosyanın en iyi şekilde sıkıştırılıp tamamlanmayacağını seçin. | belirtilmişse gereklidir `compressedType` . | `Optimal` veya `Fastest` | compressionLevel |
 | Seyahat süresi | Bir Delta tablosunun daha eski bir anlık görüntüsünü sorgulamak isteyip istemediğinizi seçin | hayır | Zaman damgasına göre sorgula: zaman damgası <br> Sürüme göre sorgula: tamsayı | timestampAsOf <br> versionAsOf |
+| Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
 
 #### <a name="import-schema"></a>Şemayı içeri aktar
 
@@ -71,7 +72,7 @@ Aşağıdaki tabloda bir Delta havuzu tarafından desteklenen özellikler listel
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçimlendir | Biçim olmalıdır`delta` | evet | `delta` | biçim |
+| Biçimlendir | Biçim olmalıdır `delta` | evet | `delta` | biçim |
 | Dosya sistemi | Delta Gölü kapsayıcı/dosya sistemi | evet | Dize | Biçimlendiri |
 | Klasör yolu | Delta Gölü doğrudan | evet | Dize | folderPath |
 | Sıkıştırma türü | Delta tablosunun sıkıştırma türü | hayır | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |

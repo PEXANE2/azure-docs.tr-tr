@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: e7d424435c29eb3e7a6779a7036816a7bedd2085
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 4df96f1c508df22e98a9c611ed04fecf6734970a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90709045"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278303"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files birimlerinin çapraz bölge çoğaltması
 
@@ -45,6 +45,7 @@ Azure NetApp Files birim çoğaltması Şu anda aşağıdaki sabit bölge çiftl
 * Japonya Doğu ve Japonya Batı
 * UK Güney ve Almanya Orta Batı
 * Güneydoğu Asya ve Avustralya Doğu
+* Orta Hindistan ve Güney Hindistan
 
 ## <a name="service-level-objectives"></a>Hizmet düzeyi hedefleri
 
@@ -110,10 +111,10 @@ Aylık 2 için düzenli Azure NetApp Files depolama kapasitesi ücreti hedef bir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Bölgeler arası çoğaltmayı kullanma gereksinimleri ve konuları](cross-region-replication-requirements-considerations.md)
-* [Çoğaltma eşlemesi oluştur](cross-region-replication-create-peering.md)
-* [Çoğaltma ilişkisinin sistem durumunu görüntüle](cross-region-replication-display-health-status.md)
+* [Çoğaltma eşlemesi oluşturma](cross-region-replication-create-peering.md)
+* [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
 * [Birim çoğaltma ölçümleri](azure-netapp-files-metrics.md#replication)
-* [Bölgeler arası çoğaltmanın sorunlarını giderme](troubleshoot-cross-region-replication.md)
+* [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)
 
 

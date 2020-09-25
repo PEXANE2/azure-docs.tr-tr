@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d39e66e205c592d58a93c1187a1c77269da9e7ad
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 171fc11c8de9cd53a7abd9602768a117341826ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438237"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306609"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -266,7 +266,7 @@ Aşağıdaki kaynaklar temel yük dengeleyiciler kullanabilir, bu da, genel VNet
 Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Sanal ağlarım farklı Azure Active Directory kiracıların içindeki aboneliklere aitse VNet eşlemesini etkinleştirebilir miyim?
-Evet. Abonelikleriniz farklı Azure Active Directory kiracılara aitse VNet eşlemesi (yerel veya genel) oluşturmak mümkündür. Bunu PowerShell veya CLı aracılığıyla yapabilirsiniz. Portal henüz desteklenmiyor.
+Evet. Abonelikleriniz farklı Azure Active Directory kiracılara aitse VNet eşlemesi (yerel veya genel) oluşturmak mümkündür. Bunu Portal, PowerShell veya CLı aracılığıyla yapabilirsiniz.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>VNet eşleme bağlantısı *başlatılmış* durumda, neden bağlanamıyorum?
 Eşleme bağlantınız *başlatılmış* durumdaysa, bu, yalnızca bir bağlantı oluşturmuş olmanız anlamına gelir. Başarılı bir bağlantı kurmak için çift yönlü bir bağlantı oluşturulmalıdır. Örneğin, A VNet to VNet 'e eşler arası, VNetA 'dan VNetB 'ye ve VNetB 'den VNetA 'ya bir bağlantı oluşturulmalıdır. Her iki bağlantı da oluşturulduğunda durumu *bağlı*olarak değişir.

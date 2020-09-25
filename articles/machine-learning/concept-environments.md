@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: a37a09d971ee80d05f9e028ece1adc7962c0c1a0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e1b92563acd6983b1680cacc06a8f2d0789dddf1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905717"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302511"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning ortamları nelerdir?
 
@@ -85,7 +85,7 @@ Ortam tanımı çalışma alanı ACR 'de zaten mevcut değilse yeni bir görünt
 
 Başka bir çalıştırma için aynı ortam tanımını kullanıyorsanız, Azure Machine Learning hizmeti, önbelleğe alınmış görüntüyü çalışma alanından ACR 'den yeniden kullanır. 
 
-Önbelleğe alınmış bir görüntünün ayrıntılarını görüntülemek için [Environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) yöntemi kullanın.
+Önbelleğe alınmış bir görüntünün ayrıntılarını görüntülemek için [Environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-image-details-workspace-) yöntemi kullanın.
 
 Önbelleğe alınmış bir görüntünün yeniden kullanılıp kullanılmayacağını veya yeni bir tane derlemenizi öğrenmek için, hizmet ortam tanımından [bir karma değer](https://en.wikipedia.org/wiki/Hash_table) hesaplar ve bunu mevcut ortamların karmalarıyla karşılaştırır. Karma şunları temel alır:
  
@@ -108,10 +108,10 @@ Aşağıdaki diyagramda üç ortam tanımı gösterilmektedir. Bunlardan ikisi f
 Paketi güncelleştirmek için, örneğin, görüntü yeniden oluşturmayı zorlamak için bir sürüm numarası belirtin ```numpy==1.18.1``` . İç içe geçmiş olanlar dahil yeni bağımlılıklar yüklenir, daha önce çalışan bir senaryoyu bozabilecek. 
 
 > [!WARNING]
->  [Environment. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) yöntemi, önbelleğe alınmış görüntüyü, bu önbelleğe alınmış görüntüye karşılık gelen tüm ortam tanımları için ayrılmış paketleri güncelleştirmenin ve son reproducibility güncelleştirme olasılığı ile yeniden oluşturur.
+>  [Environment. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=truebuild-workspace--image-build-compute-none-) yöntemi, önbelleğe alınmış görüntüyü, bu önbelleğe alınmış görüntüye karşılık gelen tüm ortam tanımları için ayrılmış paketleri güncelleştirmenin ve son reproducibility güncelleştirme olasılığı ile yeniden oluşturur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Machine Learning [ortamında ortam oluşturma ve kullanma](how-to-use-environments.md) hakkında bilgi edinin.
-* [Ortam sınıfı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true)IÇIN Python SDK başvuru belgelerine bakın.
+* [Ortam sınıfı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true)IÇIN Python SDK başvuru belgelerine bakın.
 * [Ortamlar](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments)IÇIN R SDK başvuru belgelerine bakın.

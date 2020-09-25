@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d52cd57d48a03c5dab8cb8098cd212e76ca76a1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6f6b2ed9357acf4dceeb960b1abdf6813987f657
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929083"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324901"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Yüz verilerinizi farklı bir yüz aboneliğine geçirin
 
@@ -237,4 +237,3 @@ Ardından, ilgili API başvuru belgelerine bakın, anlık görüntü özelliğin
 - [Yüz anlık görüntü örneği](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [Yüz ekleme](how-to-add-faces.md)
 - [Bir görüntüdeki yüzleri algılama](HowtoDetectFacesinImage.md)
-- [Görüntüdeki yüzeyleri tanımla](HowtoIdentifyFacesinImage.md)

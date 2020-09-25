@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399744"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324068"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -100,6 +100,31 @@ Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekil
 
 -    API sürümü veya üzeri ile ön kapıda bir GET işlemi gerçekleştirin `2020-01-01` . API çağrısında `frontdoorID` alan ara. '**X-Azure-FDıD**' gelen başlığına, ön kapıdan arka ucunuza, alanın değerine göre değer ile gönderilen filtre uygulayın `frontdoorID` . Ayrıca, `Front Door ID` ön kapı portalı sayfasından genel bakış bölümünde değeri de bulabilirsiniz. 
 
+- Trafiği, ortaya çıkan ' X-Azure-FDıD ' üst bilgi değerine göre kısıtlamak için arka uç Web sunucunuza kural filtrelemesi uygulayın.
+
+  İşte [Microsoft Internet Information Services (IIS)](https://www.iis.net/)için bir örnek:
+
+    ``` xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <system.webServer>
+            <rewrite>
+                <rules>
+                    <rule name="Filter_X-Azure-FDID" patternSyntax="Wildcard" stopProcessing="true">
+                        <match url="*" />
+                        <conditions>
+                            <add input="{HTTP_X_AZURE_FDID}" pattern="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" negate="true" />
+                        </conditions>
+                        <action type="AbortRequest" />
+                    </rule>
+                </rules>
+            </rewrite>
+        </system.webServer>
+    </configuration>
+    ```
+
+
+
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Her noktaya yayın IP 'nin ön kapımın ömrü boyunca değiştirilmesini mi?
 
 Ön kapılarınızın ön uç noktaya yayın IP 'si genellikle değişmemelidir ve ön kapısının ömrü boyunca statik kalabilir. Ancak, aynı için **garanti yoktur** . Lütfen IP üzerinde hiçbir doğrudan bağımlılık almaz.
@@ -132,6 +157,10 @@ Azure ön kapısı (AFD), trafiği yönlendirmek için genel IP veya genel olara
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure ön kapısının çeşitli zaman aşımları ve limitleri nelerdir?
 
 [Azure ön kapısının tüm belgelenmiş zaman aşımları ve limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)hakkında bilgi edinin.
+
+### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Kural, ön kapı kuralları altyapısına eklendikten sonra etkili olması için ne kadar sürer?
+
+Kural Altyapısı yapılandırması, bir güncelleştirmeyi tamamlamaya yaklaşık 10 ila 15 dakika sürer. Güncelleştirme tamamlandıktan hemen sonra kuralın etkin olmasını sağlayabilirsiniz. 
 
 ## <a name="performance"></a>Performans
 

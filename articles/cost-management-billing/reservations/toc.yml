@@ -54,6 +54,7 @@
     - name: Kurumsal müşterilere yönelik kullanım verileri
       href: understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Nasıl yapılır kılavuzları
+  expanded: true
   items:
     - name: Neyin satın alınacağını saptama
       items:

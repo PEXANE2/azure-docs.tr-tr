@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275141"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Yönetilen kimlik kullanarak bir Azure depolama hesabına bağlantı ayarlama
 
@@ -143,6 +143,10 @@ Bu Dizin Oluşturucu her iki saatte bir çalışır (zamanlama aralığı "PT2H"
 Dizin Oluşturucu oluşturma API 'SI hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu oluştur](/rest/api/searchservice/create-indexer).
 
 Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için bkz. [Azure bilişsel arama için Dizin Oluşturucu zamanlama](search-howto-schedule-indexers.md).
+
+## <a name="accessing-secure-data-in-storage-accounts"></a>Depolama hesaplarında güvenli verilere erişme
+
+Azure depolama hesapları, güvenlik duvarları ve sanal ağlar kullanılarak daha da güvenli hale getirilir. Bir BLOB depolama hesabından veya güvenlik duvarı ya da sanal ağ kullanılarak güvenliği sağlanmış Data Lake Gen2 Storage hesabından içerik dizini eklemek istiyorsanız, [Güvenilen hizmet özel durumu aracılığıyla depolama hesaplarındaki verilere güvenli bir şekilde erişme](search-indexer-howto-access-trusted-service-exception.md)yönergelerini izleyin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

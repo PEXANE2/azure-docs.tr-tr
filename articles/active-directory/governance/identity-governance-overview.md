@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c100c1b65b2af1201dfc3b52a6d90b2ed26d454
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460823"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306472"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance nedir?
 
@@ -46,7 +46,7 @@ Kimlik yönetimi, kuruluşların *üretkenlik* arasında bir denge elde etmesine
 
 ![Kimlik yaşam döngüsü](./media/identity-governance-overview/identity-lifecycle.png)
 
-Birçok kuruluşta, çalışanlar için kimlik yaşam döngüsü, bu kullanıcının bir HCM (insan büyük yönetim) sisteminde temsiline bağlıdır.  Azure AD Premium, Workday [gelen sağlama öğreticisinde](../saas-apps/workday-inbound-tutorial.md)açıklandığı gibi, her iki Active Directory ve Azure Active Directory iş gününde temsil edilen kişiler için Kullanıcı kimliklerini otomatik olarak korur.  Azure AD Premium ayrıca, SAP, Oracle eBusiness ve Oracle PeopleSoft gibi şirket içi HCM sistemlerinden kayıtları içeri aktarabilen [Microsoft Identity Manager](/microsoft-identity-manager/)da içerir.
+Birçok kuruluşta, çalışanlar için kimlik yaşam döngüsü, bu kullanıcının bir HCM (insan büyük yönetim) sisteminde temsiline bağlıdır.  Azure AD Premium, iş günü içinde temsil edilen kişiler için Kullanıcı kimliklerini otomatik olarak korur ve  [Kullanıcı sağlama planlama kılavuzu Azure Active Directory için bulut HR uygulamasında](../app-provisioning/plan-cloud-hr-provision.md)açıklandığı gibi hem Active Directory hem de Azure Active Directory.  Azure AD Premium ayrıca, SAP HCM, Oracle eBusiness ve Oracle PeopleSoft gibi şirket içi HCM sistemlerinden kayıtları içeri aktarabilen [Microsoft Identity Manager](/microsoft-identity-manager/)da içerir.
 
 Giderek, senaryolar, kuruluşunuzun dışındaki kişilerle işbirliği gerektirir. [Azure AD B2B](/azure/active-directory/b2b/) işbirliği, kuruluşunuzun uygulamalarını ve hizmetlerini herhangi bir kuruluştan Konuk kullanıcılar ve dış iş ortakları ile güvenli bir şekilde paylaşmanıza olanak sağlarken kendi şirket verileriniz üzerinde denetim sağlar.  [Azure AD Yetkilendirme Yönetimi](entitlement-management-overview.md) , hangi kuruluşun kullanıcılarının erişim istemesine ve KURULUŞUNUZUN dizinine B2B konukları olarak eklenmesine izin verileceğini seçmenizi sağlar ve artık erişime gerek kalmadığında bu konukların kaldırılmasını sağlar.
 
@@ -70,7 +70,25 @@ Geçmişte, ayrıcalıklı erişim diğer satıcılar tarafından kimlik yöneti
 
 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) , Azure AD, Azure ve diğer Microsoft çevrimiçi hizmetleri arasında kaynaklara yönelik erişim haklarının güvenliğini sağlamaya yönelik ek denetimler sağlar.  Azure AD PıM tarafından sağlanan tam zamanında erişim ve rol değişikliği uyarısı özellikleri, Multi-Factor Authentication ve koşullu erişim 'in yanı sıra, şirketinizin kaynaklarını (Dizin, Microsoft 365 ve Azure Kaynak rolleri) güvenli hale getirmeye yardımcı olmak için kapsamlı bir idare denetimleri kümesi sağlar. Diğer erişim formlarında olduğu gibi, kuruluşlar yönetici rollerindeki tüm kullanıcılar için yinelenen erişim yeniden sertifika yapılandırmak üzere erişim gözden geçirmeleri kullanabilir.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="governance-capabilities-in-other-azure-ad-features"></a>Diğer Azure AD özelliklerinde idare özellikleri
+
+Yukarıda listelenen özelliklere ek olarak, kimlik idare senaryolarını sağlamak için sık kullanılan ek Azure AD özellikleri şunlardır:
+
+| Özellik | Senaryo |Öne çıkan özelliği
+| ------- | --------------------- |-----|
+|Kimlik yaşam döngüsü (çalışanlar)|Yöneticiler, Workday 'den Kullanıcı hesabı sağlamayı veya bulut HR ya da şirket içi HR 'yi başarılı bir şekilde etkinleştirebilir.|[bulut-Azure AD Kullanıcı sağlama](../app-provisioning/plan-cloud-hr-provision.md)|
+|Kimlik yaşam döngüsü (konuklar)|Yöneticiler, başka bir Azure AD kiracısı, doğrudan Federasyon, bir saat geçiş kodu (OTP) veya Google hesaplarından self servis Konuk Kullanıcı ekleme özelliğini etkinleştirebilir.  Konuk kullanıcılar otomatik olarak sağlanır ve yaşam döngüsü ilkelerine tabidir.|[B2B](../external-identities/what-is-b2b.md) kullanarak [Yetkilendirme Yönetimi](entitlement-management-overview.md)|
+|Yetkilendirme yönetimi|Kaynak sahipleri; uygulamalar, takımlar, Azure AD ve Microsoft 365 grupları ve SharePoint Online siteleri içeren erişim paketleri oluşturabilir.|[Yetkilendirme yönetimi](entitlement-management-overview.md)|
+|Erişim istekleri|Son kullanıcılar, Grup üyeliği veya uygulama erişimi isteyebilir. Diğer kuruluşların konukları da dahil olmak üzere son kullanıcılar, erişim paketlerine erişim isteğinde bulunabilir.|[Yetkilendirme yönetimi](entitlement-management-overview.md)|
+|İş akışı|Kaynak sahipleri, rol etkinleştirme istekleri için erişim istekleri ve onaylayanlara yönelik onaylayanları ve yükseltme onaylayanlarını tanımlayabilir.  |[Yetkilendirme Yönetimi](entitlement-management-overview.md) ve [PIM](../privileged-identity-management/pim-configure.md)|
+|İlke ve rol yönetimi|Yönetici, uygulamalara yönelik çalışma zamanı erişimi için koşullu erişim ilkeleri tanımlayabilir.  Kaynak sahipleri, kullanıcıların erişim paketleri aracılığıyla erişim ilkelerini tanımlayabilir.|[Koşullu erişim](../conditional-access/overview.md) ve [Yetkilendirme Yönetimi](entitlement-management-overview.md) ilkeleri|
+|Erişim sertifikası|Yöneticiler: SaaS uygulamaları veya bulut grubu üyelikleri, Azure AD veya Azure Kaynak rolü atamaları için yinelenen erişim yeniden sertifikasyon etkinleştirebilir. Kaynak erişimini otomatik olarak kaldır, konuk erişimini engelle ve konuk hesaplarını Sil.|[Erişim gözden geçirmeleri](access-reviews-overview.md), [PIM](../privileged-identity-management/pim-how-to-start-security-review.md) 'de de ortaya çıkmış|
+|Karşılama ve sağlama|SCıM ve SharePoint Online sitelerine dahil olmak üzere Azure AD bağlı uygulamalarına otomatik sağlama ve sağlamayı kaldırma. |[Kullanıcı hazırlama](../app-provisioning/user-provisioning.md)|
+|Raporlama ve analiz|Yöneticiler, Son Kullanıcı sağlama ve oturum açma etkinliğinin denetim günlüklerini alabilir. Azure Izleyici ve erişim paketleri aracılığıyla ' erişime sahip ' ile tümleştirme.|[Azure AD raporları](../reports-monitoring/overview-reports.md) ve [izleme](../reports-monitoring/overview-monitoring.md)|
+|Ayrıcalıklı erişim|Azure AD rolleri (özel roller dahil) ve Azure Kaynak rolleri için tam zamanında ve zamanlanmış erişim, uyarı, onay iş akışları.|[Azure AD PıM](../privileged-identity-management/pim-configure.md)|
+|Denetim|Yöneticiler, yönetici hesaplarının oluşturulması hakkında uyarı verebilir.|[Azure AD PıM uyarıları](../privileged-identity-management/pim-how-to-configure-security-alerts.md)|
+
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Yetkilendirme Yönetimi, erişim incelemeleri, Privileged Identity Management ve Kullanım koşulları kullanmaya başlamak için Azure portal **kimlik** yönetimi 'nin Başlarken sekmesine göz atın.
 

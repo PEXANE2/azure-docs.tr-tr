@@ -1,6 +1,6 @@
 ---
-title: Azure 'daki kiracılar genelinde Galeri görüntülerini paylaşma
-description: Paylaşılan görüntü galerileri kullanarak Azure kiracılarının tamamında VM görüntülerini paylaşmayı öğrenin.
+title: Kiracılar genelinde Galeri görüntülerini paylaşma
+description: Paylaşılan görüntü galerileri kullanılarak Azure kiracılar genelinde paylaşılan görüntüleri kullanarak ölçek kümeleri oluşturmayı öğrenin.
 author: cynthn
 ms.author: cynthn
 ms.topic: how-to
@@ -9,14 +9,14 @@ ms.subservice: imaging
 ms.date: 04/05/2019
 ms.reviewer: akjosh
 ms.custom: akjosh, devx-track-azurecli
-ms.openlocfilehash: 542dfbc28621e02cd2842fb174e986bfeb91e6ec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ea61b3bd76fc4ada48a8a2fb734a841b8a969272
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323490"
 ---
-# <a name="share-gallery-vm-images-across-tenants-in-azure"></a>Azure 'daki kiracılar genelinde Galeri VM görüntülerini paylaşma
+# <a name="share-images-across-tenants-with-shared-image-gallery"></a>Paylaşılan görüntü galerisiyle kiracılar arasında görüntü paylaşma
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -51,4 +51,4 @@ az vmss create \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Herhangi bir sorunla karşılaşırsanız [paylaşılan görüntü galerilerine sorun giderebilirsiniz](troubleshooting-shared-images.md).
+Herhangi bir sorunla karşılaşırsanız [paylaşılan görüntü galerilerine sorun giderebilirsiniz](../virtual-machines/troubleshooting-shared-images.md).

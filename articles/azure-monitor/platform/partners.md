@@ -3,13 +3,13 @@ title: Azure Izleyici ile tümleştirilen iş ortakları
 description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belgelere nasıl erişebileceğiniz hakkında bilgi edinin.
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/21/2020
+ms.openlocfilehash: a99d391b34ff1ad783ba4cb7b746760835bd3f43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526485"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278813"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -74,11 +74,19 @@ Cloudmonitorx, Microsoft Azure platformu için izleme, otomasyon ve kendi kendin
 
 ![Dataköpek logosu](./media/partners/datadog.png)
 
-Dataköpek, dünyanın bulut ölçekli uygulamalar için önde gelen izleme hizmetidir. Tüm yığınınızın birleştirilmiş bir görünümünü sunmak için sunuculardan, veritabanlarından, araçlardan ve hizmetlerden verileri bir araya getirir. Bu yetenekler, SaaS tabanlı bir veri analizi platformunda sunulmaktadır. Bu hizmet, iş kesintilerini önlemek, performans sorunlarını çözmek ve geliştirme ve dağıtım döngülerinin zamanında bitmesini sağlamak için geliştirme ve Ops takımlarının işbirliği yapmasına olanak sağlar. Veri köklerini ve Azure 'u tümleştirerek, altyapınızın genelinde ölçümleri toplayabilir ve görüntüleyebilirsiniz. VM ölçümlerini uygulama düzeyi ölçümleriyle ilişkilendirin. Özelliklerin ve özel etiketlerin birleşimini kullanarak ölçülerinizi dilimleyin ve zar.
+Azure, müşterilerin uygulamalarını bulutta çalışacak şekilde geçirmesini ve modernleştirin birçok iş ortağı çözümü koordine edilmesini sağlar. Bu tür bir iş ortağı, kullanıcıların karma ve çok bulut ortamlarında uygulamalarının sistem durumunu ve performansını anlamalarına yönelik Observability ve güvenlik araçları sağlayan veri Kösğıdır.  Ancak, gerekli tümleştirmelerin yapılandırılması genellikle Azure portal ve veri köpek arasında gezinme gerektirir.  Bu karmaşıklık kazandırır, zaman alır ve işlemler çalışmıyorsa sorun gidermeyi zorlaştırır.  Microsoft, birden çok portal genelinde yönetim yükünü azaltmak için Azure bulut platformunda tümleşik bir Dataköpek çözümü oluşturmak üzere veri Köpeyla çalıştı.  Azure Marketi aracılığıyla sunulan bu çözüm, Azure 'da Dataköpek 'nın bulut izleme çözümünü kullanmaya yönelik sorunsuz bir deneyim sunar.  
 
-[Belgelere gidin.][datadog-doc]
+Yeni Azure-Dataköpek tümleştirmesiyle, kuruluşlar artık eski ve bulut tabanlı sistemlerini tamamen eşleyebilir, bulut geçişinin her aşamasında gerçek zamanlı verileri izler ve geçirilen uygulamaların performans hedeflerini karşıladığından emin olabilir. Bu tümleştirme, kuruluşların en iyi deneyimini oluşturmak için Azure 'un genel durumunu, esnekliğini, güvenliğini ve veri köklerinin günlüğe kaydetme ve izleme yeteneklerini birleştirir. Bu Birleşik deneyimle, şunları yapabilirsiniz: 
 
-Yeni bir Azure Marketi tümleştirme için veri Köpey, erken 2020 Ekim 'de kullanıma zamanlandı. Yayın sonrasında buraya bir bağlantı eklenecektir. 
+- Yeni bir veri köpek organizasyonu sağlayın ve Azure kaynaklarını, müşteriler için kurulum ve çalışma altyapısı olmayan tam olarak yönetilen bir kurulum olan veri köklerine Günlükler ve ölçümler gönderecek şekilde yapılandırın.  
+- Günlükleri ve ölçümleri sorunsuzca veri Köbir şekilde gönderin. Günlük iletme işlemi tamamen otomatikleştirildi; Tanılama ayarları, Event Hubs ve Işlevleri ile bir günlük iletme işlem hattı oluşturmak yerine, her şeyi yalnızca birkaç tıklamayla yapılandırabilirsiniz.
+-   Dataköpek aracısını VM konaklarına tek tıklamayla kolayca yükler.
+-   Veri Köpede tek oturum açma (SSO) işlemini kolaylaştırma — Dataköpek portalından ayrı bir oturum açma işlemi artık gerekli değildir. 
+-   Azure abonelik faturalaması aracılığıyla veri Köklik hizmeti için Birleşik faturalandırma yapın.
+
+Azure ile yeni Dataköpek tümleştirmesinin [genel önizlemesine](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u) kaydolun.  Genel Önizleme, 2020 Ekim tarihinden itibaren Azure Marketi 'nde kullanıma sunulacaktır.
+
+Daha önce el ile yapılandırılmış bir tümleştirmeyi kullanmaya devam ediyorsanız, [Dataköpek Web sitesindeki belgelere][datadog-doc] bakın
 
 ## <a name="dynatrace"></a>Dynatrace
 

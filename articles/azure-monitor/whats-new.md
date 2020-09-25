@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 0809894964ff99c468f8bf3876bfdb44995656f7
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325666"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
@@ -48,7 +48,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [Azure Application Insights eklenen video Ile Kullanım Analizi](app/usage-overview.md) .
 
 ### <a name="autoscale"></a>Otomatik Ölçeklendirme
-- App Service için Healty örneklerine yönlendirme konusunda [Azure 'da otomatik ölçeklendirme ile çalışmaya](platform/autoscale-get-started.md) başlayın.
+- App Service sağlıklı örneklere yönlendirmeye yönelik [Azure 'da otomatik ölçeklendirme ile çalışmaya](platform/autoscale-get-started.md) başlayın.
 
 ### <a name="data-collection"></a>Veri toplama
 - [Azure izleyici Aracısı (Önizleme) için veri toplamayı yapılandırma](platform/data-collection-rule-azure-monitor-agent.md) -yeni makale.
@@ -192,12 +192,12 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 
 - [Azure Kaynak günlüklerini depolama hesabına arşivleme](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure etkinlik günlüğü olay şeması](platform/activity-log-schema.md)
-- [Azure etkinlik günlüğü](platform/activity-log.md)
+- [Azure Etkinlik Günlüğü](platform/activity-log.md)
 - [Azure Izleyici CLı örnekleri](samples/cli-samples.md)
 - [Azure Izleyici PowerShell örnekleri](samples/powershell-samples.md)
 - [Azure Izleme REST API izlenecek yol](platform/rest-api-walkthrough.md)
 - [Azure kaynak günlüğü desteklenen Hizmetleri ve şemaları](./platform/resource-logs-schema.md)
-- [Azure Kaynak günlükleri](platform/resource-logs.md)
+- [Azure kaynak günlükleri](platform/resource-logs.md)
 - [Azure Izleyici 'de Azure etkinlik günlüğünü toplayın ve çözümleyin](./platform/activity-log.md)
 - [Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Farklı hedeflere platform günlükleri ve ölçümleri göndermek için Tanılama ayarları oluşturma](platform/diagnostic-settings.md)
@@ -558,7 +558,6 @@ Görünüm Tasarımcısı 'na çalışma kitapları dönüştürme kılavuzuna y
 - [Çalışan hizmeti uygulamaları için Application Insights (http olmayan uygulamalar)](app/worker-service.md) -C# koduna varsayılan günlük kaydı düzeyi eklendi. Paket başvurusu sürümü güncelleştirildi.
 - [ApplicationInsights.config başvurusu-Azure](app/configuration-with-applicationinsights-config.md) -güncelleştirilmiş örnek kod.
 - [Azure Application Insights 'Yi PowerShell Ile otomatikleştirin](app/powershell.md) -Kaynak Yöneticisi şablona güncelleştirin.
-- [Azure izleyici Application Insights NuGet paketleri](app/nuget.md) -güncelleştirilmiş paket sürümleri.
 - [Yeni bir Azure Application Insights kaynağı oluşturma](app/create-new-resource.md) -genel benzersiz ada Note eklendi.
 - [Canlı ölçüm akışı Ile tanılama-Azure Application Insights](app/live-stream.md) -GÜNCELLEŞTIRILMIŞ ASP.NET Core SDK sürümü gereksinimi.
 - Application Insights-güncelleştirilmiş kategori ve tablodaki [olay sayaçları](app/eventcounters.md) customölçümler.

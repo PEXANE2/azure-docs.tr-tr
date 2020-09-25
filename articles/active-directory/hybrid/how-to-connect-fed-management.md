@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661257"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274121"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federasyon Hizmetleri (AD FS) Azure AD Connect kullanarak yönetin ve özelleştirin
 Bu makalede Azure Active Directory (Azure AD) Connect kullanılarak Active Directory Federasyon Hizmetleri (AD FS) (AD FS) yönetimi ve özelleştirmeyi açıklanmaktadır. Ayrıca, bir AD FS grubunun tüm yapılandırması için yapmanız gerekebilecek diğer ortak AD FS görevlerini de içerir.
@@ -52,11 +52,11 @@ Azure AD Connect kullanarak, AD FS ve Azure AD güveninin geçerli durumunu dene
    ![AAD ve ADFS güvenini Onar](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. **Azure AD 'ye Bağlan** sayfasında, Azure AD için genel yönetici kimlik bilgilerinizi girin ve **İleri**' ye tıklayın.
-   ![Azure AD'ye Bağlanma](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
+   ![Örnek kimlik bilgileri girilen "Azure AD 'ye Bağlan" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. **Uzaktan erişim kimlik bilgileri** sayfasında, etki alanı yöneticisinin kimlik bilgilerini girin.
 
-   ![Uzaktan erişim kimlik bilgileri](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
+   ![Örnek kimlik bilgileri girilen "uzaktan erişim kimlik bilgileri" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
     **İleri**' ye tıkladıktan sonra, Azure AD Connect sertifika durumunu denetler ve tüm sorunları gösterir.
 
@@ -64,7 +64,7 @@ Azure AD Connect kullanarak, AD FS ve Azure AD güveninin geçerli durumunu dene
 
     **Yapılandırmaya hazırlanma** sayfası, güveni onarmak için gerçekleştirilecek eylemlerin listesini gösterir.
 
-    ![Yapılandırma için hazır](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    !["Yapılandırmaya hazırlanın" sayfasını bir eylem listesi ile gösteren ekran görüntüsü.](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. Güveni onarmak için, **yükler** ' e tıklayın.
 
@@ -98,7 +98,7 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
 
 2. **Azure AD 'ye Bağlan** sayfasında, Azure AD için genel yönetici kimlik bilgilerinizi girin ve **İleri**' ye tıklayın.
 
-   ![Azure AD'ye Bağlanma](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
+   ![Örnek kimlik bilgileri girilen "Azure AD 'ye Bağlan" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
 3. Etki alanı yöneticisi kimlik bilgilerini sağlayın.
 
@@ -106,9 +106,9 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
 
 4. Azure AD Connect, yeni AD FS grubunuzu Azure AD Connect yapılandırırken verdiğiniz PFX dosyasının parolasını ister. PFX dosyasının parolasını sağlamak için **parolayı girin** ' e tıklayın.
 
-   ![Sertifika parolası](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
+   !["Sertifika parolası" penceresi açık olan "SSL sertifikası belirt" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![TLS/SSL sertifikası belirt](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![PFX dosyası parolası girildikten sonra "SSL sertifikası belirt" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. **AD FS sunucuları** sayfasında, AD FS grubuna eklenecek sunucu adını veya IP adresini girin.
 
@@ -116,9 +116,9 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
 
 6. **İleri**' ye tıklayın ve son **yapılandırma** sayfasını ziyaret edin. Azure AD Connect sunucuları AD FS grubuna eklemeyi tamamladıktan sonra, bağlantıyı doğrulama seçeneği verilir.
 
-   ![Yapılandırma için hazır](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   !["Install to Configure" ("Yapılandır") sayfasına tıklandıktan sonra tamamlanacak eylemlerin listesini içeren ekran görüntüsü.](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
-    ![Yükleme Tamam](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
+    !["Intranet yapılandırması başarıyla doğrulandı" iletisinin gösterildiği "yükleme tamamlandı" sayfasını gösteren ekran görüntüsü. ](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
 ## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>AD FS WAP sunucusu ekleme 
 
@@ -131,7 +131,7 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
 
 2. Azure genel yönetici kimlik bilgilerini sağlayın.
 
-   ![Azure AD'ye Bağlanma](./media/how-to-connect-fed-management/wapserver2.PNG)
+   ![Örnek bir Kullanıcı adı ve parola girildiğinde "Azure AD 'ye Bağlan" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-fed-management/wapserver2.PNG)
 
 3. **SSL sertifikası belirtin** sayfasında, Azure AD Connect AD FS grubunu YAPıLANDıRDıĞıNıZDA sağladığınız PFX dosyasının parolasını girin.
    ![Sertifika parolası](./media/how-to-connect-fed-management/WapServer3.PNG)
@@ -148,7 +148,7 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
 
 6. **Yapılandırmaya hazırlanma** sayfasında, sihirbaz gerçekleştirilecek eylemlerin listesini gösterir.
 
-   ![Yapılandırma için hazır](./media/how-to-connect-fed-management/WapServer7.PNG)
+   !["Yapılandırmaya hazırlanma" sayfasını, gerçekleştirilecek eylemlerin bir listesini gösteren ekran görüntüsü.](./media/how-to-connect-fed-management/WapServer7.PNG)
 
 7. Yapılandırmayı sona erdirmesi için, **Kur** ' a tıklayın. Yapılandırma tamamlandıktan sonra sihirbaz, sunucularla olan bağlantıyı doğrulama seçeneği sunar. Bağlantıyı denetlemek için **Doğrula** ' ya tıklayın.
 

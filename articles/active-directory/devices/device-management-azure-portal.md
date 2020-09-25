@@ -5,27 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 09/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9efb3b451f6fc6c70c5d9ec346132bfc763ca28
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705784"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278865"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portalını kullanarak cihaz kimliklerini yönetme
 
 Azure AD, cihaz kimliklerini yönetmek için size merkezi bir yer sağlar.
-
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**  >  **cihazlara**gidin.
-
-[![Azure portal tüm cihazlar görünümü](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
 **Tüm cihazlar** sayfası şunları yapmanızı sağlar:
 
@@ -38,6 +33,13 @@ Azure AD, cihaz kimliklerini yönetmek için size merkezi bir yer sağlar.
 - Cihaz kimliği ayarlarınızı yapılandırın.
 - Enterprise State Roaming etkinleştirin veya devre dışı bırakın.
 - Cihazla ilgili denetim günlüklerini gözden geçirme
+
+[![Azure portal tüm cihazlar görünümü](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
+
+Aşağıdaki adımları kullanarak cihazlar portalına erişebilirsiniz:
+
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Azure Active Directory**  >  **cihazlara**gidin.
 
 ## <a name="manage-devices"></a>Cihazları yönetme
 
@@ -146,6 +148,13 @@ Artık, **tüm cihazlar** görünümlarınıza **filtre ekleme** imkanına sahip
 ## <a name="configure-device-settings"></a>Cihaz ayarlarını yapılandırma
 
 Azure AD portalını kullanarak cihaz kimliklerini yönetmek için, bu cihazların [kayıtlı veya](overview.md) Azure AD 'ye katılmış olmaları gerekir. Yönetici olarak, aşağıdaki cihaz ayarlarını yapılandırarak cihazları kaydetme ve birleştirme sürecini denetleyebilirsiniz.
+
+Azure portal cihaz ayarlarını görüntülemek veya yönetmek için aşağıdaki rollerden birine atanmış olmanız gerekir:
+
+- Genel yönetici
+- Bulut Cihaz Yöneticisi
+- Genel okuyucu
+- Dizin okuyucu
 
 ![Azure AD ile ilgili cihaz ayarları](./media/device-management-azure-portal/device-settings-azure-portal.png)
 

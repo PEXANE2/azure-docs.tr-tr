@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75aac74ae5ccf5b52234f1b554dc2a5edefcf32d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059988"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260419"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark uygulamalarda hata ayıklamak ve tanılamak için genişletilmiş Apache Spark geçmiş sunucusunu kullanma
 
@@ -30,11 +30,11 @@ Apache Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalışt�
 
 1. [Azure SYNAPSE Analytics](https://web.azuresynapse.net/)'i açın.
 
-2. **İzle**' ye tıklayın ve ardından **Apache Spark uygulamalar**' ı seçin.
+2. **İzleme**' yi ve ardından **Apache Spark uygulamalar**' ı seçin.
 
-    ![İzle ' ye tıklayın ve Spark uygulaması ' nı seçin.](./media/apache-spark-history-server/click-monitor-spark-application.png)
+    ![İzleme ' yi ve Spark uygulaması ' nı seçin.](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
-3. Bir uygulama seçin ve ardından **günlük sorgusunu** tıklayarak açın.
+3. Bir uygulama seçin, sonra **günlük sorgusunu** seçerek açın.
 
     ![Günlük sorgusu penceresini açın.](./media/apache-spark-history-server/open-application-window.png)
 
@@ -46,11 +46,11 @@ Apache Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalışt�
 
 1. Azure SYNAPSE Studio Not defterinizden, iş yürütme çıkış hücresinden veya Not defteri belgesinin altındaki durum panelinden **Spark geçmiş sunucusu** ' nu seçin. **Oturum ayrıntıları**’nı seçin.
 
-   ![Spark geçmiş sunucusunu Başlat](./media/apache-spark-history-server/launch-history-server2.png "Spark geçmiş sunucusunu Başlat")
+   ![Spark geçmiş sunucusu 1 ' i Başlat](./media/apache-spark-history-server/launch-history-server2.png "Spark geçmiş sunucusunu Başlat")
 
 2. Slayt çıkış panelinden **Spark geçmiş sunucusu** ' nu seçin.
 
-   ![Spark geçmiş sunucusunu Başlat](./media/apache-spark-history-server/launch-history-server.png "Spark geçmiş sunucusunu Başlat")
+   ![Spark geçmiş sunucusunu Başlat 2](./media/apache-spark-history-server/launch-history-server.png "Spark geçmiş sunucusunu Başlat")
 
 ## <a name="explore-the-data-tab-in-spark-history-server"></a>Spark geçmiş sunucusu 'nda veri sekmesini keşfet
 
@@ -80,7 +80,7 @@ Görüntülemek istediğiniz iş için Iş KIMLIĞINI seçin. Ardından, veri g�
 
     ![Spark uygulaması indirme satırı verileri](./media/apache-spark-history-server/sparkui-data-download-row.png)
 
-* Tam yolu veya göreli yolu kopyalamak için, açılan menüden Genişlet ' i seçerek **tam yolu Kopyala** veya **göreli yolu Kopyala** seçeneklerini belirleyin. Azure Data Lake Storage dosyaları için **Azure Depolama Gezgini açın** Azure Depolama Gezgini başlatılır ve oturum açtığınızda klasörü konumlandırır.
+* Tam yolu veya göreli yolu kopyalamak için, açılan menüden genişlettikten sonra **tam yolu Kopyala** veya **göreli yolu Kopyala** seçeneklerini belirleyin. Azure Data Lake Storage dosyaları için **Azure Depolama Gezgini açın** Azure Depolama Gezgini başlatılır ve oturum açtığınızda klasörü konumlandırır.
 
     ![Spark uygulaması kopyalama yolu verileri](./media/apache-spark-history-server/sparkui-data-copy-path.png)
 
@@ -112,7 +112,7 @@ Varsayılan olarak, **Ilerleme durumu** ekranı seçilidir. **Görüntüleme** a
 
 ![Spark uygulaması ve iş grafiği görüntüsü](./media/apache-spark-history-server/sparkui-graph-display.png)
 
-Grafik düğümü, ısı haritasını göstergesinde gösterilen renkleri görüntüler.
+Graph düğümü, ısı haritasını göstergesinde gösterilen renkleri görüntüler.
 
 ![Spark uygulaması ve iş grafiği ısı haritasını](./media/apache-spark-history-server/sparkui-graph-heatmap.png)
 
@@ -120,7 +120,7 @@ Grafik düğümü, ısı haritasını göstergesinde gösterilen renkleri görü
 
 İşi kayıttan yürütmek için **kayıttan yürütme**' yi seçin. Durdurmak için dilediğiniz zaman **Durdur** seçeneğini belirleyebilirsiniz. Görev renkleri kayıttan yürütülürken farklı durumlar gösterir:
 
-|Color (Renk)|Anlamı|
+|Color|Anlamı|
 |-|-|
 |Yeşil|Başarılı: iş başarıyla tamamlandı.|
 |Orange|Yeniden denendi: başarısız olan ancak işin nihai sonucunu etkilemeyen görev örnekleri. Bu görevler daha sonra başarılı olabilecek örnekleri tekrarlamıştır veya yeniden dener.|
@@ -157,7 +157,7 @@ Başarısız görevler olduğunda araç ipucunu görmek için Graph düğümünd
 
 İş grafiği sekmesinde, aşamaların bir araç ipucu vardır ve aşağıdaki koşullara uyan görevler varsa küçük bir simge gösterilir:
 
-|Koşul|Açıklama|
+|Koşul|Description|
 |-|-|
 |Veri eğriltme|veri okuma boyutu > bu aşama içindeki tüm görevlerin ortalama veri okuma boyutu * 2 ve veri okuma boyutu > 10 MB|
 |Zaman eğriltme|yürütme süresi > bu aşama içindeki tüm görevlerin ortalama yürütme süresi * 2 ve yürütme süresi > 2 dakika|
@@ -182,7 +182,7 @@ Başarısız görevler olduğunda araç ipucunu görmek için Graph düğümünd
     >  
     > Okuma ve yazma veri boyutu 1 MB/1000 KB = 1000 * 1000 bayttır.
 
-### <a name="provide-feedback"></a>Geribildirim gönderme
+### <a name="provide-feedback"></a>Geri bildirimde bulunma
 
 Sorunları **bize geri bildirim**gönderin ' i seçerek geri bildirimde bulunun.
 
@@ -200,7 +200,7 @@ Sırasıyla sekmeleri seçerek **veri eğriltme**, **zaman eğriltme**ve **yür�
 
 **Veri eğriltme** sekmesini seçtiğinizde, ilgili asimetrik görevler belirtilen parametrelere göre görüntülenir.
 
-* **Parametreleri belirtin** -ilk bölüm, veri eğriliğini algılamak için kullanılan parametreleri görüntüler. Varsayılan kural: okunan görev verileri ortalama görev verilerinin üç katından daha büyük ve okunan görev verileri 10 MB 'tan fazla. Çarpıtılmış görevler için kendi kuralınızı tanımlamak istiyorsanız parametrelerinizi seçebilirsiniz, **asimetrik aşama** ve **eğme char** bölümleri buna göre yenilenir.
+* **Parametreleri belirtin** -ilk bölüm, veri eğriliğini algılamak için kullanılan parametreleri görüntüler. Varsayılan kural: okunan görev verileri ortalama görev verilerinin üç katından daha büyük ve okunan görev verileri 10 MB 'tan fazla. Asimetrik görevler için kendi kuralınızı tanımlamak istiyorsanız parametrelerinizi seçebilirsiniz. **Asimetrik aşama** ve **eğriltme char** bölümleri buna göre yenilenir.
 
 * **Çarpıkık aşama** -ikinci bölüm, yukarıda belirtilen ölçütlere uyan, eğimli görevlere sahip aşamaları görüntüler. Bir aşamada birden çok asimetrik görev varsa, asimetrik aşama tablosu yalnızca en çok asimetrik görevi (örneğin, veri eğriliği için en büyük verileri) görüntüler.
 
@@ -224,7 +224,7 @@ Sırasıyla sekmeleri seçerek **veri eğriltme**, **zaman eğriltme**ve **yür�
 
 Yürütücü kullanım grafiği Spark iş yürütücişinin ayırmasını ve çalışma durumunu görselleştirir.  
 
-1. **Yürütücü Kullanım Analizi**' ni seçin, sonra da Yürütücü kullanımı hakkında dört tür eğrileri, **ayrılmış Yürüticileri**, **yürüticileri**, **Boşta**çalışma ve **en fazla yürütücü örneklerini**içeren drafted. Ayrılmış yürüticilere ilgili olarak, her "yürütücü eklendi" veya "yürütücü kaldırıldı" olayı ayrılan yürütmeleri arttırır veya düşürür. Daha fazla karşılaştırma için "Işler" sekmesinde "olay zaman çizelgesini" kontrol edebilirsiniz.
+1. **Yürütücü Kullanım Analizi**' ni seçin, sonra da Yürütücü kullanımı hakkında dört tür eğrileri, **ayrılmış Yürüticileri**, **yürüticileri**, **Boşta**çalışma ve **en fazla yürütücü örneklerini**içeren drafted. Ayrılmış yürüticileri için, her "yürütücü eklendi" veya "yürütücü kaldırıldı" olayı ayrılan yürütmeleri arttırır veya düşürür. Daha fazla karşılaştırma için "Işler" sekmesinde "olay zaman çizelgesini" kontrol edebilirsiniz.
 
    ![Mini UI tanılama yürüticileri sekmesi](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
 
@@ -234,7 +234,7 @@ Yürütücü kullanım grafiği Spark iş yürütücişinin ayırmasını ve ça
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-Esnek dağıtılmış veri kümeleri (RDDs) kullanan giriş/çıkış verileri, veri sekmesinde gösterilmez.
+Esnek dağıtılmış veri kümeleri (RDDs) kullanan giriş/çıkış verileri veri sekmesinde gösterilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

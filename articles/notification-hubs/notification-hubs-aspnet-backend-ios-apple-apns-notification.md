@@ -1,8 +1,8 @@
 ---
 title: Azure Notification Hubs kullanarak belirli kullanıcılara anında iletme bildirimleri gönderin | Microsoft Docs
-description: Azure Notification Hubs kullanarak belirli kullanıcılara anında iletme bildirimleri göndermeyi öğrenin.
+description: Azure Notification Hubs kullanarak belirli iOS kullanıcılarına anında iletme bildirimleri göndermeyi öğrenin.
 documentationcenter: ios
-author: sethm
+author: sethmanheim
 manager: femila
 services: notification-hubs
 ms.service: notification-hubs
@@ -14,12 +14,12 @@ ms.date: 08/07/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 167c666c536ee33531fd069dbd1edb530331a9f3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004179"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302198"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli kullanıcılara anında iletme bildirimleri gönderme
 
@@ -312,7 +312,7 @@ Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalı
     ```
 
     > [!NOTE]
-    > Aşağıdaki kod parçacığı güvenli bir kimlik doğrulama düzeni değildir,, `createAndSetAuthenticationHeaderWithUsername:AndPassword:` kayıt istemci sınıfı (örneğin OAuth, Active Directory) tarafından tüketilen bir kimlik doğrulama belirteci üreten özel kimlik doğrulama mekanizmasıyla birlikte uygulamanızı yerine geçirmeniz gerekir.
+    > Aşağıdaki kod parçacığı güvenli bir kimlik doğrulama düzeni değildir,,    `createAndSetAuthenticationHeaderWithUsername:AndPassword:` kayıt istemci sınıfı (örneğin OAuth, Active Directory) tarafından tüketilen bir kimlik doğrulama belirteci üreten özel kimlik doğrulama mekanizmasıyla birlikte uygulamanızı yerine geçirmeniz gerekir.
 
 10. Ardından bölümüne, `@implementation` `ViewController.m` cihaz belirtecinin ve kimlik doğrulama üst bilgisinin ayarlanmasına yönelik uygulamayı ekleyen aşağıdaki kodu ekleyin.
 
@@ -483,7 +483,7 @@ Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalı
 
     ![iOS test uygulaması][2]
 
-3. Kayıt başarısını bildiren bir açılır pencere görmeniz gerekir. **Tamam** düğmesine tıklayın.
+3. Kayıt başarısını bildiren bir açılır pencere görmeniz gerekir. **Tamam**'a tıklayın.
 
     ![iOS test bildirimi görüntülendi][3]
 

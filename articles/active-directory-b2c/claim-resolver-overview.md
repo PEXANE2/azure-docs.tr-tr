@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201184"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259645"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
 
@@ -44,11 +44,11 @@ Teknik profilde talep çözümleyicisini talep türü ile eşleyin. Azure AD B2C
 
 Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 
-### <a name="culture"></a>Culture (Kültür)
+### <a name="culture"></a>Kültür
 
 | İste | Açıklama | Örnek |
 | ----- | ----------- | --------|
-| {Culture: LanguageName} | Dil için iki harfli ISO kodu. | tr |
+| {Culture: LanguageName} | Dil için iki harfli ISO kodu. | en |
 | {Culture: LCıD}   | Dil kodunun LCıD 'SI. | 1033 |
 | {Culture: RegionName} | Bölgenin iki harfli ISO kodu. | ABD |
 | {Culture: RFC5646} | RFC5646 dil kodu. | tr-TR |
@@ -66,16 +66,16 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 
 | İste | Açıklama | Örnek |
 | ----- | ----------- | --------|
-| {OıDC: AuthenticationContextReferences} |`acr_values`Sorgu dizesi parametresi. | YOK |
+| {OıDC: AuthenticationContextReferences} |`acr_values`Sorgu dizesi parametresi. | Yok |
 | {OıDC: ClientID} |`client_id`Sorgu dizesi parametresi. | 00000000-0000-0000-0000-000000000000 |
 | {OıDC: Domainipucuyla} |`domain_hint`Sorgu dizesi parametresi. | facebook.com |
 | {OıDC: Loginipucu} |  `login_hint`Sorgu dizesi parametresi. | someone@contoso.com |
-| {OıDC: MaxAge} | `max_age`. | YOK |
+| {OıDC: MaxAge} | `max_age`. | Yok |
 | {OıDC: nonce} |`Nonce`Sorgu dizesi parametresi. | defaultNonce |
 | {OıDC: Password}| [Kaynak sahibi parola kimlik bilgileri](ropc-custom.md) kullanıcının parolasını akışa.| Parola1| 
 | {OıDC: Prompt} | `prompt`Sorgu dizesi parametresi. | oturum aç |
 | {OıDC: RedirectUri} |`redirect_uri`Sorgu dizesi parametresi. | https://jwt.ms |
-| {OıDC: kaynak} |`resource`Sorgu dizesi parametresi. | YOK |
+| {OıDC: kaynak} |`resource`Sorgu dizesi parametresi. | Yok |
 | {OıDC: scope} |`scope`Sorgu dizesi parametresi. | OpenID |
 | {OıDC: username}| [Kaynak sahibi parola kimlik bilgileri](ropc-custom.md) kullanıcının Kullanıcı adını Flow.| emily@contoso.com| 
 
@@ -106,13 +106,14 @@ OıDC veya OAuth2 isteğinin bir parçası olarak dahil edilen herhangi bir para
 | {OAUTH-KV: kampanya Nkimliği} | Sorgu dizesi parametresi. | Hawaii |
 | {OAUTH-KV: app_session} | Sorgu dizesi parametresi. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Sorgu dizesi parametresi. | 1234 |
-| {OAUTH-KV: herhangi bir özel sorgu dizesi} | Sorgu dizesi parametresi. | YOK |
+| {OAUTH-KV: herhangi bir özel sorgu dizesi} | Sorgu dizesi parametresi. | Yok |
 
 ### <a name="oauth2"></a>OAuth2
 
 | İste | Açıklama | Örnek |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Erişim belirteci. | YOK |
+| {OAuth2: access_token} | Erişim belirteci. | Yok |
+| {OAuth2: refresh_token} | Yenileme belirteci. | Yok |
 
 
 ### <a name="saml"></a>SAML
@@ -122,8 +123,8 @@ OıDC veya OAuth2 isteğinin bir parçası olarak dahil edilen herhangi bir para
 | {SAML: AuthnContextClassReferences} | `AuthnContextClassRef`SAML isteğinden öğe değeri. | urn: oassıs: adlar: TC: SAML: 2.0: AC: sınıflar: PasswordProtectedTransport |
 | {SAML: Nameıdpolicyformat} | `Format` `NameIDPolicy` SAML isteğinin öğesinden özniteliği. | urn: oassıs: adlar: TC: SAML: 1.1: NameID-Format: Emapostaadı |
 | {SAML: Issuer} |  `Issuer`SAML ISTEĞININ SAML öğesi değeri.| `https://contoso.com` |
-| {SAML: AllowCreate} | `AllowCreate` `NameIDPolicy` SAML isteğinin öğesinden öznitelik değeri. | True |
-| {SAML: ForceAuthn} | `ForceAuthN` `AuthnRequest` SAML isteğinin öğesinden öznitelik değeri. | True |
+| {SAML: AllowCreate} | `AllowCreate` `NameIDPolicy` SAML isteğinin öğesinden öznitelik değeri. | Doğru |
+| {SAML: ForceAuthn} | `ForceAuthN` `AuthnRequest` SAML isteğinin öğesinden öznitelik değeri. | Doğru |
 | {SAML: ProviderName} | `ProviderName` `AuthnRequest` SAML isteğinin öğesinden öznitelik değeri.| Contoso.com |
 | {SAML: RelayState} | `RelayState`Sorgu dizesi parametresi.| 
 
@@ -139,7 +140,7 @@ Talep çözümleyicilerine aşağıdaki öğelerle birlikte kullanabilirsiniz:
 |[OpenID Connect](openid-connect-technical-profile.md) teknik profili| `InputClaim`, `OutputClaim`| 1, 2|
 |[Talep dönüştürme](claims-transformation-technical-profile.md) teknik profili| `InputClaim`, `OutputClaim`| 1, 2|
 |[Restsize sağlayıcı](restful-technical-profile.md) teknik profili| `InputClaim`| 1, 2|
-|[SAML kimlik sağlayıcısı](saml-identity-provider-technical-profile.md) teknik profili| `OutputClaim`| 1, 2|
+|[SAML kimlik sağlayıcısı](saml-identity-provider-technical-profile.md)  teknik profili| `OutputClaim`| 1, 2|
 |[Kendi kendine onaylanan](self-asserted-technical-profile.md) teknik profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |

@@ -3,17 +3,17 @@ title: 'Hızlı başlangıç: Azure Blob depolama kitaplığı V12-JavaScript'
 description: Bu hızlı başlangıçta, blob (nesne) deposunda bir kapsayıcı ve BLOB oluşturmak için JavaScript için Azure Blob depolama istemci kitaplığı sürüm 12 ' yi nasıl kullanacağınızı öğrenirsiniz. Ardından, blob’u yerel bilgisayarınıza indirmeyi ve bir kapsayıcıdaki tüm blobların listesini görüntülemeyi öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 09/17/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c4343012c7d0abb7c8b8a22da687dc5ac668dc19
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.custom: devx-track-js
+ms.openlocfilehash: 54bf6265a5b440e5c450d21b192acc2f7024f938
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307543"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Hızlı başlangıç: Node.js içindeki JavaScript V12 SDK ile Blobları yönetme
 
@@ -136,7 +136,7 @@ Bu örnek kod parçacıkları, JavaScript için Azure Blob depolama istemci kita
 * [Bağlantı dizesini alma](#get-the-connection-string)
 * [Bir kapsayıcı oluşturma](#create-a-container)
 * [Blobları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
-* [Blob’ları bir kapsayıcıda listeleme](#list-the-blobs-in-a-container)
+* [Kapsayıcıdaki blobları listeleme](#list-the-blobs-in-a-container)
 * [Blob’ları indirme](#download-blobs)
 * [Kapsayıcı silme](#delete-a-container)
 
@@ -210,7 +210,7 @@ const uploadBlobResponse = await blockBlobClient.upload(data, data.length);
 console.log("Blob was uploaded successfully. requestId: ", uploadBlobResponse.requestId);
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
+### <a name="list-the-blobs-in-a-container"></a>Kapsayıcıdaki blobları listeleme
 
 [Listblobsflat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) yöntemini çağırarak kapsayıcıdaki Blobları listeleyin. Bu durumda, kapsayıcıya yalnızca bir blob eklenmiş, bu nedenle listeleme işlemi yalnızca bir BLOB döndürüyor.
 
@@ -312,7 +312,8 @@ Bu hızlı başlangıçta, JavaScript kullanarak Blobları karşıya yükleme, i
 Öğreticiler, örnekler, hızlı başlangıçler ve diğer belgeler için şu adresi ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [JavaScript için Azure belgeleri](/azure/developer/javascript/)
+> [JavaScript için Azure Geliştirici Merkezi](/azure/developer/javascript/)
 
-* Daha fazla bilgi edinmek için bkz. [JavaScript Için Azure Blob depolama istemci kitaplığı](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob).
+* Azure Blob depolama kullanan bir Web uygulamasını dağıtmayı öğrenmek için bkz [. Öğretici: Azure Storage ile buluta görüntü verileri yükleme](/azure/storage/blobs/storage-upload-process-images?tabs=javascript&preserve-view=true)
 * BLOB depolama örnek uygulamalarını görmek için [Azure Blob depolama istemci kitaplığı V12 JavaScript örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)' ne geçin.
+* Daha fazla bilgi edinmek için bkz. [JavaScript Için Azure Blob depolama istemci kitaplığı](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob).

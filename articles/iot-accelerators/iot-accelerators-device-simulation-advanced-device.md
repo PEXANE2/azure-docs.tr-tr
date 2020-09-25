@@ -12,13 +12,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-- devx-track-javascript
-ms.openlocfilehash: b424ea01d8283963c49d899a97120c9132d862f8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422547"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261439"
 ---
 # <a name="create-an-advanced-device-model"></a>Gelişmiş bir cihaz modeli oluşturma
 
@@ -26,7 +26,7 @@ Bu nasıl yapılır kılavuzunda, özel bir cihaz modelini tanımlayan JSON ve J
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları izlemek için, Azure aboneliğinizde bir cihaz benzetiminin dağıtılmış örneğine ihtiyacınız vardır.
 

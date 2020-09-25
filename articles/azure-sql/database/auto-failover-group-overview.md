@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7b4a85077c8e0147f926f9a86fc8a003591ec8ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076523"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277742"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -213,11 +213,11 @@ Değişiklik sırasını göstermek için sunucu A 'nın birincil sunucu olduğu
 
 ## <a name="best-practices-for-sql-managed-instance"></a>SQL yönetilen örneği için en iyi uygulamalar
 
-Otomatik yük devretme grubu birincil örnekte yapılandırılmalı ve bunu farklı bir Azure bölgesindeki ikincil örneğe bağlayacaktır.  Örnekteki tüm veritabanları ikincil örneğe çoğaltılır.
+Otomatik yük devretme grubu birincil örnekte yapılandırılmalıdır ve onu farklı bir Azure bölgesinde yer alan ikincil örneğe bağlar.  Örnekteki tüm veritabanları ikincil örneğe çoğaltılır.
 
 Aşağıdaki diyagramda, yönetilen örnek ve otomatik yük devretme grubu kullanılarak coğrafi olarak yedekli bir bulut uygulamasının tipik bir yapılandırması gösterilmektedir.
 
-![otomatik yük devretme](./media/auto-failover-group-overview/auto-failover-group-mi.png)
+![otomatik yük devretme diyagramı](./media/auto-failover-group-overview/auto-failover-group-mi.png)
 
 > [!NOTE]
 > Yük devretme grubu kullanmak için bir SQL yönetilen örneği ekleme hakkında ayrıntılı adım adım öğretici için [Yük devretme grubuna yönetilen örnek ekleme](../managed-instance/failover-group-add-instance-tutorial.md) konusuna bakın.
@@ -242,11 +242,11 @@ Her örnek kendi VNet 'inde yalıtılmış olduğundan, bu VNET 'ler arasındaki
 Abonelikler aynı [Azure Active Directory kiracısıyla](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)ilişkili olduğu sürece, iki farklı abonelikteki SQL yönetilen örnekleri arasında bir yük devretme grubu oluşturabilirsiniz. PowerShell API 'sini kullanırken, `PartnerSubscriptionId` IKINCIL SQL yönetilen örneği için parametresini belirterek bunu yapabilirsiniz. REST API kullanırken, parametreye dahil edilen her örnek KIMLIĞI `properties.managedInstancePairs` kendi SubscriptionID değerine sahip olabilir.
   
 > [!IMPORTANT]
-> Azure portal, farklı aboneliklerde yük devretme gruplarının oluşturulmasını desteklemez. Ayrıca, farklı abonelikler ve/veya kaynak gruplarındaki mevcut yük devretme grupları için yük devretme, birincil SQL yönetilen örneğinden Portal aracılığıyla el ile başlatılamaz. Bunun yerine coğrafi ikincil örnekten başlatın.
+> Azure portal, farklı aboneliklerde yük devretme gruplarının oluşturulmasını desteklemez. Ayrıca, farklı abonelikler ve/veya kaynak gruplarındaki mevcut yük devretme grupları için yük devretme, birincil SQL yönetilen örneğinden Portal aracılığıyla el ile başlatılamaz. Bunun yerine yük devretmeyi coğrafi olarak ikincil örnekten başlatın.
 
 ### <a name="managing-failover-to-secondary-instance"></a>İkincil örneğe yük devretmeyi yönetme
 
-Yük devretme grubu, SQL yönetilen örneğindeki tüm veritabanlarının yük devretmesini yönetecektir. Bir grup oluşturulduğunda, örnekteki her veritabanı, ikincil SQL yönetilen örneğine otomatik olarak coğrafi olarak çoğaltılır. Veritabanlarının bir alt kümesinin kısmi yük devretmesini başlatmak için yük devretme grupları kullanamazsınız.
+Yük devretme grubu SQL Yönetilen Örneği'ndeki tüm veritabanlarının yük devretme işlemini yönetir. Grup oluşturulduğunda, örnekteki her veritabanı ikincil SQL Yönetilen Örneği'ne coğrafi olarak otomatik çoğaltılır. Yük devretme gruplarını kullanarak veritabanlarının bir alt kümesi için kısmi yük devretme başlatamazsınız.
 
 > [!IMPORTANT]
 > Birincil SQL yönetilen örneğinden bir veritabanı kaldırılırsa, coğrafi ikincil SQL yönetilen örneği üzerinde de otomatik olarak bırakılır.
@@ -260,7 +260,7 @@ OLTP işlemlerini gerçekleştirirken `<fog-name>.zone_id.database.windows.net` 
 Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Coğrafi olarak çoğaltılan ikinciye doğrudan bağlanmak için `<fog-name>.secondary.<zone_id>.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı doğrudan coğrafi çoğaltılan ikincil öğesine yapılır.
 
 > [!NOTE]
-> Belirli hizmet katmanlarında SQL veritabanı, salt okunurdur ve salt okuma sorgusu iş yüklerini yalnızca bir salt okunurdur ve bağlantı dizesindeki parametresini kullanarak yük dengelemesi [için destekler](read-scale-out.md) `ApplicationIntent=ReadOnly` . Coğrafi olarak çoğaltılan bir ikincil yapılandırdığınız zaman, birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki salt okunurdur bir kopyaya bağlanmak için bu özelliği kullanabilirsiniz.
+> Belirli hizmet katmanlarında SQL veritabanı, salt okunurdur ve salt okuma sorgusu iş yüklerini yalnızca bir salt okunurdur ve bağlantı dizesindeki parametresini kullanarak yük dengelemesi [için destekler](read-scale-out.md) `ApplicationIntent=ReadOnly` . Coğrafi olarak çoğaltılan ikincil örneği yapılandırdığınızda bu özelliği kullanarak birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki bir salt okuma çoğaltmasına bağlanabilirsiniz.
 >
 > - Birincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.<zone_id>.database.windows.net` .
 > - İkincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.secondary.<zone_id>.database.windows.net` .
@@ -348,16 +348,16 @@ Yukarıdaki yapılandırma, otomatik yük devretmenin ön uç bileşenlerinden g
 > [!IMPORTANT]
 > Bölgesel kesintiler için iş sürekliliği sağlamak üzere hem ön uç bileşenleri hem de veritabanları için coğrafi artıklık sağlamalısınız.
 
-## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Yönetilen örnekler ve bunların sanal ağları arasında Coğrafi çoğaltmayı etkinleştirme
+## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Yönetilen örnekler ve bunların sanal ağları arasında coğrafi çoğaltmayı etkinleştirme
 
 İki farklı bölgede birincil ve ikincil SQL yönetilen örnekleri arasında bir yük devretme grubu ayarlarken, her örnek bağımsız bir sanal ağ kullanılarak yalıtılmıştır. Bu sanal ağlar arasındaki çoğaltma trafiğine izin vermek için bu önkoşulların karşılandığından emin olun:
 
 - SQL yönetilen örneğinin iki örneğinin farklı Azure bölgelerinde olması gerekir.
 - SQL yönetilen örneğinin iki örneğinin aynı hizmet katmanı olması ve aynı depolama boyutuna sahip olması gerekir.
 - SQL yönetilen örneğinin ikincil örneğinizin boş olması gerekir (Kullanıcı veritabanı yok).
-- SQL yönetilen örneği örnekleri tarafından kullanılan sanal ağların bir [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [Express rotası](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)aracılığıyla bağlanması gerekir. İki sanal ağ, şirket içi bir ağla bağlandığında, 5022 ve 11000-11999 bağlantı noktalarını engelleyen bir güvenlik duvarı kuralı bulunmadığından emin olun. Küresel VNet eşlemesi desteklenmiyor.
+- SQL yönetilen örneği örnekleri tarafından kullanılan sanal ağların bir [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [Express rotası](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)aracılığıyla bağlanması gerekir. İki sanal ağ şirket içi ağı üzerinden bağlandığında 5022 ve 11000-11999 numaralı bağlantı noktalarını engelleyen bir güvenlik duvarı kuralı olmadığından emin olun. Küresel VNet Eşlemesi desteklenmez.
 - İki SQL yönetilen örnek sanal ağı, çakışan IP adreslerine sahip olamaz.
-- Ağ güvenlik gruplarınızı (NSG), bağlantı noktaları 5022 ve 11000 ~ 12000 aralığı, diğer yönetilen örneğin alt ağından gelen bağlantılar için açık ve giden olarak ayarlamanız gerekir. Bu, örnekler arasında çoğaltma trafiğine izin vermek için kullanılır.
+- Ağ Güvenlik Gruplarınızı (NSG), 5022 numaralı ve 11000~12000 aralığındaki bağlantı noktalarının diğer yönetilen örneğin alt ağından gelen ve giden bağlantılara açık olmasını sağlayacak şekilde ayarlamalısınız. Bunun amacı örnekler arasında çoğaltma trafiğine olanak tanımaktır.
 
    > [!IMPORTANT]
    > Yanlış yapılandırılmış NSG güvenlik kuralları, veritabanı kopyalama işlemlerinin takılmasına yol açar.
@@ -369,9 +369,9 @@ Yukarıdaki yapılandırma, otomatik yük devretmenin ön uç bileşenlerinden g
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Birincil veritabanını yükseltme veya eski sürüme indirme
 
-İkincil veritabanlarının bağlantısını kesmeden, birincil veritabanını farklı bir işlem boyutuna yükseltebilir veya indirgeyebilmeniz gerekir (Genel Amaçlı ve İş Açısından Kritik arasında değil aynı hizmet katmanında). ' Yi yükseltirken, önce tüm ikincil veritabanlarını yükseltmeniz ve ardından birincili yükseltmeniz önerilir. Düşürme sırasında, sırayı tersine çevirin: önce birincili düşürme ve sonra tüm ikincil veritabanlarının düzeyini düşürme. Veritabanını yükseltirken veya farklı bir hizmet katmanına indirgemeniz durumunda, bu öneri zorlanır.
+İkincil veritabanlarının bağlantısını kesmeden, birincil veritabanını farklı bir işlem boyutuna yükseltebilir veya indirgeyebilmeniz gerekir (Genel Amaçlı ve İş Açısından Kritik arasında değil aynı hizmet katmanında). ' Yi yükseltirken, önce tüm ikincil veritabanlarını yükseltmeniz ve ardından birincili yükseltmeniz önerilir. Düşürme sırasında, sırayı tersine çevirin: önce birincili düşürme ve sonra tüm ikincil veritabanlarının düzeyini düşürme. Veritabanını farklı bir hizmet katmanına yükseltirken veya eski sürüme düşürürken bu öneri zorunlu tutulur.
 
-Bu dizi, daha düşük bir SKU 'daki ikincil öğenin aşırı yüklendiği ve yükseltme veya düşürme işlemi sırasında yeniden hazırlanması gereken sorunlardan kaçınmak için özellikle önerilir. Birincil olarak salt okuma yaparak, tüm okuma/yazma iş yüklerini birincili etkileyen masrafına göre de sorunu önleyebilirsiniz.
+Daha düşük bir SKU'da olan ikincil örnek aşırı yüklendiğinde ve yükseltme veya sürüm düşürme işlemi sırasında yeniden dağıtılması gerektiğinde oluşan sorundan kaçınmak için bu sıralamanın kullanılması önerilir. Ayrıca birincil örneği salt okunur yaparak da bu sorunu önleyebilirsiniz ama bu durumda birincil örnekteki tüm okuma-yazma iş yükleri bundan etkilenecektir.
 
 > [!NOTE]
 > Yük devretme grubu yapılandırmasının parçası olarak ikincil bir veritabanı oluşturduysanız, ikincil veritabanının indirgenmesini öneririz. Bu, veri katmanınızın yük devretme etkinleştirildikten sonra düzenli iş yükünüzü işlemek için yeterli kapasiteye sahip olmasını sağlamaktır.

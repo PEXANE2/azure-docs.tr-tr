@@ -10,25 +10,25 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, carlrab, bonova, jovanpop
+ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 7b9c9fc6259656af77bf1ba1b95ccf190cbd85da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a629d230d63506a163cac0c530a1a8fbfed9627f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708673"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325088"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Hızlı başlangıç: şirket içi Azure SQL yönetilen örneği ile noktadan siteye bağlantı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Bu hızlı başlangıçta, bir şirket içi istemci bilgisayarından Noktadan siteye bağlantı üzerinden [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) kullanarak Azure SQL yönetilen örneği 'ne nasıl bağlanacağı gösterilmektedir. Noktadan siteye bağlantılar hakkında bilgi için bkz. [noktadan sıteye VPN hakkında](../../vpn-gateway/point-to-site-about.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç:
 
-- , [Yönetilen bir örnek oluşturmak](instance-create-quickstart.md) için başlangıç noktası olarak oluşturulan kaynakları kullanır.
+- ,  [Yönetilen bir örnek oluşturmak](instance-create-quickstart.md) için başlangıç noktası olarak oluşturulan kaynakları kullanır.
 - , Şirket içi istemci bilgisayarınızda PowerShell 5,1 ve Azure PowerShell 1.4.0 veya üstünü gerektirir. Gerekirse, [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)yönergelerine bakın.
 - Şirket içi istemci bilgisayarınızda [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) 'nin en yeni sürümünü gerektirir.
 
@@ -65,7 +65,7 @@ Bu hızlı başlangıç:
 
 ## <a name="create-a-vpn-connection"></a>VPN bağlantısı oluşturma
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Sanal ağ geçidini oluşturduğunuz kaynak grubunu açın ve sonra sanal ağ geçidi kaynağını açın.
 3. **Noktadan siteye yapılandırma** ' yı seçin ve ardından **VPN istemcisini indir**' i seçin.
 
@@ -83,7 +83,7 @@ Bu hızlı başlangıç:
 1. Şirket içi istemci bilgisayarınızda **ağ & Internet** 'Te bulunan **VPN** 'ye gidin ve bu VNET Ile bağlantı kurmak için SQL yönetilen örnek Sanal ağınızı seçin. Aşağıdaki görüntüde VNet, **Mynewvnet**olarak adlandırılmıştır.
 
     ![VPN bağlantısı](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. **Bağlan**'ı seçin.
+2. **Bağlan**’ı seçin.
 3. İletişim kutusunda **Bağlan**' ı seçin.
 
     ![VPN bağlantısı](./media/point-to-site-p2s-configure/vpn-connection2.png)  

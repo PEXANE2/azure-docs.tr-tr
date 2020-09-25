@@ -4,23 +4,23 @@ description: SAP iş yükü için Oracle Azure Sanal Makineler DBMS dağıtımı
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: SAP, Azure, Oracle, Data Guard
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/14/2018
+ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d83c4ffe4e60ef2896e16b97e1ec34d71a022b9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690332"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279017"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımı
 
@@ -344,18 +344,20 @@ Oracle Linux ' de Oracle DBMS ve SAP uygulama örneklerinizi çalıştırıyor o
 
 ### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>Windows üzerinde Azure VM 'lerinde SAP yüklemeleri için Oracle yapılandırma yönergeleri
 
-SAP yükleme kılavuzuna uygun olarak, Oracle ile ilgili dosyalar bir VM 'nin işletim sistemi diski (sürücü c:) için sistem sürücüsüne yüklenemez veya yer içermemelidir. Değişen boyutlardaki sanal makineler, değişen sayıda ekli diski destekleyebilir. Daha küçük sanal makine türleri, daha az sayıda ekli diski destekleyebilir. 
+SAP yükleme kılavuzuna uygun olarak, Oracle ile ilgili dosyalar VM 'nin (sürücü c:) işletim sistemi diskine yüklenmemelidir veya yer alır. Değişen boyutlardaki sanal makineler, değişen sayıda ekli diski destekleyebilir. Daha küçük sanal makine türleri, daha az sayıda ekli diski destekleyebilir. 
 
-Küçük VM 'leriniz varsa, işletim sistemi diskine Oracle giriş, aşama, "saptrace", "saparch", "sapbackup", "sapcheck" veya "sapreorg" yükleme/bulma önerilir. Oracle DBMS bileşenlerinin bu bölümleri g/ç ve g/ç verimlilik üzerinde yoğun değildir. Bu, işletim sistemi diskinin g/ç gereksinimlerini işleyebileceği anlamına gelir. İşletim sistemi diskinin varsayılan boyutu 127 GB 'dir. 
+Daha küçük sanal makineleriz varsa ve VM 'ye ekleyebileceğiniz disk sayısı sınırına ulaşırsanız, `saptrace` `saparch` `sapbackup` `sapcheck` `sapreorg` işletim sistemi diskine Oracle Home, Stage,,,,, veya öğesini yükleyebilir/bulabilirsiniz. Oracle DBMS bileşenlerinin bu bölümleri g/ç ve g/ç verimlilik üzerinde çok yoğun değildir. Bu, işletim sistemi diskinin g/ç gereksinimlerini işleyebileceği anlamına gelir. İşletim sistemi diskinin varsayılan boyutu 127 GB olmalıdır. 
 
-Kullanılabilir yeterli boş alan yoksa disk 2048 GB olarak yeniden [boyutlandırılabilir](../../windows/expand-os-disk.md) . Oracle Database ve tekrar eden günlük dosyalarının ayrı veri disklerinde depolanması gerekir. Oracle geçici tablo alanı için bir özel durum vardır. TempFiles, D:/üzerinde oluşturulabilir (kalıcı olmayan sürücü). Kalıcı olmayan D:\ sürücü Ayrıca daha iyi g/ç gecikme süresi ve aktarım hızı (A serisi VM 'Ler hariç) sağlar. 
+Oracle Database ve tekrar eden günlük dosyalarının ayrı veri disklerinde depolanması gerekir. Oracle geçici tablo alanı için bir özel durum vardır. `Tempfiles` D:/üzerinde oluşturulabilir (kalıcı olmayan sürücü). Kalıcı olmayan D:\ sürücü Ayrıca daha iyi g/ç gecikme süresi ve aktarım hızı (A serisi VM 'Ler hariç) sağlar. 
 
-Geçicidosyalar için doğru alan miktarını öğrenmek için, var olan sistemlerdeki geçicidosyalar boyutunu kontrol edebilirsiniz.
+İçin doğru alan miktarını öğrenmek için, `tempfiles` mevcut sistemlerin boyutlarını kontrol edebilirsiniz `tempfiles` .
 
 ### <a name="storage-configuration"></a>Depolama yapılandırması
 Yalnızca NTFS biçimli diskler kullanan tek örnekli Oracle desteklenir. Tüm veritabanı dosyaları, yönetilen disklerde (önerilir) veya VHD 'lerde NTFS dosya sisteminde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve [Azure sayfa BLOB depolama](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) veya [Azure tarafından yönetilen diskleri](../../managed-disks-overview.md)temel alır. 
 
-[Azure yönetilen diskleri](../../managed-disks-overview.md)kullanmanızı kesinlikle öneririz. Ayrıca, Oracle Database dağıtımlarınız için [Premium SSD 'lerin](../../disks-types.md) kullanılması önemle önerilir.
+DBMS iş yükü için uygun olan belirli Azure blok depolama türleri hakkında daha fazla bilgi edinmek için [SAP iş yükü Için Azure Depolama türleri](./planning-guide-storage.md) makalesine göz atın.
+
+[Azure yönetilen diskleri](../../managed-disks-overview.md)kullanmanızı kesinlikle öneririz. Ayrıca, Oracle Database dağıtımlarınız için [Azure Premium Storage veya Azure Ultra disk](../../disks-types.md) kullanılması önemle önerilir.
 
 Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Database dosyaları için desteklenmez. Daha fazla bilgi için bkz.
 
@@ -374,37 +376,37 @@ En düşük yapılandırma aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
-| \oracle \<SID> \origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
-| \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch | Standart | Hiçbiri | Gerekli değil |
-| Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
+| \oracle \<SID> \origlogaA & Irrlogb | Premium veya ultra disk | Yok | Gerekli değil |
+| \oracle \<SID> \origlogaB & Irrloga | Premium veya ultra disk | Yok | Gerekli değil |
+| \ Oracle \<SID> \ sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için kullanılabilir |
+| \ Oracle \<SID> \ oraarch | Standart | Yok | Gerekli değil |
+| Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | | Gerekli değil |
 
 
-Çevrimiçi yineleme günlüklerinin barındırılmasına yönelik disk seçimi, IOPS gereksinimlerine göre yönlendirilmelidir. Tüm sapdata1 depolamak mümkündür... Boyut, ıOPS ve aktarım hızı gereksinimleri karşılamadığı sürece, tek bir bağlı diskte n (tablospaces). 
+Çevrimiçi yineleme günlüklerinin barındırılmasına yönelik disk seçimi, ıOPS gereksinimlerine göre yönlendirilmelidir. Tüm sapdata1 depolamak mümkündür... Boyut, ıOPS ve aktarım hızı gereksinimleri karşılamadığı sürece, tek bir bağlı diskte n (tablospaces). 
 
 Performans yapılandırması aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium | Hiçbiri | Kullanılabilir  |
-| \oracle \<SID> \origlogaB | Premium | Hiçbiri | Kullanılabilir |
-| \ Oracle \<SID> \Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
-| \ Oracle \<SID> \ mrlogba | Premium | Hiçbiri | Kullanılabilir |
-| \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| \Oracle\sıd\sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch * | Premium | Hiçbiri | Gerekli değil |
-| Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
+| \oracle \<SID> \origlogaA | Premium veya ultra disk | Yok | Premium için kullanılabilir  |
+| \oracle \<SID> \origlogaB | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| \ Oracle \<SID> \Mirrlogab | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| \ Oracle \<SID> \ mrlogba | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| \ Oracle \<SID> \ sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için önerilir  |
+| \Oracle\sıd\sapdata (n + 1) * | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| \ Oracle \<SID> \ oraarch * | Premium veya ultra disk | Yok | Gerekli değil |
+| Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | Gerekli değil |
 
 * (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces. Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
 
 * oraarch: depolama havuzu, bir görünüm performans noktasından gerekli değildir. Daha fazla alan almak için kullanılabilir.
 
-Daha fazla ıOPS gerekliyse, birden çok bağlı disk üzerinde bir büyük mantıksal cihaz oluşturmak için Windows Storage havuzlarını (yalnızca Windows Server 2012 ve üzeri sürümlerde kullanılabilir) kullanmanızı öneririz. Bu yaklaşım, disk alanını yönetmek için yönetim yükünü basitleştirir ve dosyaları birden çok bağlı diskte el ile dağıtmanın çabadan kaçınmanıza yardımcı olur.
+Azure Premium Depolama söz konusu olduğunda daha fazla ıOPS gerekliyse, birden çok bağlı disk üzerinde bir büyük mantıksal cihaz oluşturmak için Windows Storage havuzlarını (yalnızca Windows Server 2012 ve üzeri sürümlerde kullanılabilir) kullanmanızı öneririz. Bu yaklaşım, disk alanını yönetmek için yönetim yükünü basitleştirir ve dosyaları birden çok bağlı diskte el ile dağıtmanın çabadan kaçınmanıza yardımcı olur.
 
 
 #### <a name="write-accelerator"></a>Yazma Hızlandırıcısı
-Azure d serisi VM 'Ler için, çevrimiçi yineleme günlüklerine yazma gecikmesi, Azure Premium Depolama ile karşılaştırıldığında faktörlerle azaltılabilir. Çevrimiçi yineleme günlük dosyaları için kullanılan Azure Premium Depolama alanını temel alan diskler (VHD 'ler) için Azure Yazma Hızlandırıcısı 'yi etkinleştirin. Daha fazla bilgi için bkz. [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md).
+Azure d serisi VM 'Ler için, çevrimiçi yineleme günlüklerine yazma gecikmesi, Azure Premium Depolama ile karşılaştırıldığında faktörlerle azaltılabilir. Çevrimiçi yineleme günlük dosyaları için kullanılan Azure Premium Depolama alanını temel alan diskler (VHD 'ler) için Azure Yazma Hızlandırıcısı 'yi etkinleştirin. Daha fazla bilgi için bkz. [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md). Veya çevrimiçi yineleme günlüğü birimi için Azure Ultra disk ' i kullanın.
 
 
 ### <a name="backuprestore"></a>Yedekleme/geri yükleme
@@ -437,7 +439,7 @@ SAP Business Suite 'i Oracle üzerinde çalıştırmaya ilişkin genel bilgiler,
 
 SAP yükleme kılavuzlarına uygun olarak, Oracle ile ilgili dosyalar bir VM 'nin önyükleme diskine yüklenmemelidir veya sistem sürücülerine yerleştirilmelidir. Sanal makinelerin farklı boyutları, değişen sayıda ekli diski destekler. Daha küçük sanal makine türleri, daha az sayıda ekli diski destekleyebilir. 
 
-Bu durumda, Oracle Home, Stage, saptrace, saparch, sapbackup, sapcheck veya sapreorg 'ın önyükleme diskine yüklenmesi/bulunması önerilir. Oracle DBMS bileşenlerinin bu bölümleri g/ç ve g/ç verimlilik üzerinde yoğun değildir. Bu, işletim sistemi diskinin g/ç gereksinimlerini işleyebileceği anlamına gelir. İşletim sistemi diskinin varsayılan boyutu 30 GB 'dir. Azure portal, PowerShell veya CLı kullanarak önyükleme diskini genişletebilirsiniz. Önyükleme diski genişletildiğinde, Oracle ikilileri için ek bir bölüm ekleyebilirsiniz.
+Bu durumda, bir Oracle giriş, aşama,,,,, `saptrace` `saparch` `sapbackup` `sapcheck` veya `sapreorg` önyükleme diski için yükleme/bulma önerilir. Oracle DBMS bileşenlerinin bu bölümleri g/ç ve g/ç verimlilik üzerinde yoğun değildir. Bu, işletim sistemi diskinin g/ç gereksinimlerini işleyebileceği anlamına gelir. İşletim sistemi diskinin varsayılan boyutu 30 GB 'dir. Azure portal, PowerShell veya CLı kullanarak önyükleme diskini genişletebilirsiniz. Önyükleme diski genişletildiğinde, Oracle ikilileri için ek bir bölüm ekleyebilirsiniz.
 
 
 ### <a name="storage-configuration"></a>Depolama yapılandırması
@@ -445,6 +447,8 @@ Bu durumda, Oracle Home, Stage, saptrace, saparch, sapbackup, sapcheck veya sapr
 Ext4, XFS veya Oracle ASM 'nin dosya sistemleri Azure 'daki Oracle Database dosyaları için desteklenir. Tüm veritabanı dosyaları, VHD 'leri veya yönetilen diskleri temel alan bu dosya sistemlerinde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve [Azure sayfa BLOB depolama](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) veya [Azure tarafından yönetilen diskleri](../../managed-disks-overview.md)temel alır.
 
 Oracle Linux UEK kernels için, [Azure Premium SSD](../../premium-storage-performance.md#disk-caching)'leri desteklemek için en az UEK sürüm 4 gerekir.
+
+DBMS iş yükü için uygun olan belirli Azure blok depolama türleri hakkında daha fazla bilgi edinmek için [SAP iş yükü Için Azure Depolama türleri](./planning-guide-storage.md) makalesini kullanıma alın.
 
 [Azure yönetilen diskleri](../../managed-disks-overview.md)kullanmanız önemle önerilir. Ayrıca, Oracle Database dağıtımlarınız için [Azure Premium SSD 'ler](../../disks-types.md) kullanılması önemle önerilir.
 
@@ -456,7 +460,7 @@ Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Dat
 
 Azure sayfa BLOB depolama veya yönetilen diskleri temel alan diskler kullanıyorsanız, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı Için dikkat edilmesi gereken](dbms_guide_general.md) deyimler Oracle Database olan dağıtımlar için de geçerlidir.
 
- Azure diskleri için ıOPS iş akışındaki kotalar mevcuttur. Bu kavram, [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı hakkında önemli noktalar](dbms_guide_general.md)açıklanmaktadır. Tam kotalar kullanılan VM türüne bağlıdır. Kotaları olan VM türlerinin bir listesi için bkz. [Azure 'Da Linux sanal makineleri Için boyutlar][virtual-machines-sizes-linux].
+Azure diskleri için ıOPS iş akışındaki kotalar mevcuttur. Bu kavram, [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı hakkında önemli noktalar](dbms_guide_general.md)açıklanmaktadır. Tam kotalar kullanılan VM türüne bağlıdır. Kotaları olan VM türlerinin bir listesi için bkz. [Azure 'Da Linux sanal makineleri Için boyutlar][virtual-machines-sizes-linux].
 
 Desteklenen Azure VM türlerini belirlemek için bkz. SAP Note [1928533].
 
@@ -464,11 +468,11 @@ En düşük yapılandırma:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
-| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
-| /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch | Standart | Hiçbiri | Gerekli değil |
-| Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium veya ultra disk | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaB & Irrloga | Premium veya ultra disk | Yok | Gerekli değil |
+| /Oracle/ \<SID> /sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için kullanılabilir |
+| /Oracle/ \<SID> /oraarch | Standart | Yok | Gerekli değil |
+| Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
 
@@ -478,14 +482,14 @@ Performans yapılandırması:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium | Hiçbiri | Kullanılabilir  |
-| /Oracle/ \<SID> /origlogaB | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogba | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch * | Premium | Hiçbiri | Gerekli değil |
-| Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA | Premium veya ultra disk | Yok | Premium için kullanılabilir  |
+| /Oracle/ \<SID> /origlogaB | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogab | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogba | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için önerilir  |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /oraarch * | Premium veya ultra disk | Yok | Gerekli değil |
+| Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
 
@@ -494,11 +498,11 @@ Performans yapılandırması:
 * oraarch: depolama havuzu, bir görünüm performans noktasından gerekli değildir.
 
 
-Daha fazla ıOPS gerekliyse, birden fazla bağlı diske göre büyük bir mantıksal birim oluşturmak için LVM (mantıksal birim Yöneticisi) veya MDADDM kullanılması önerilir. Daha fazla bilgi için bkz. LVM veya MDADDM 'nin kullanılmasıyla ilgili yönergeler ve işaretçilerle ilgili [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımına yönelik hususlar](dbms_guide_general.md) . Bu yaklaşım, disk alanını yönetmenin yönetim yükünü basitleştirir ve dosyaları birden çok bağlı diskte el ile dağıtmanın çabadan kaçınmanıza yardımcı olur.
+Azure Premium Depolama kullanılırken daha fazla ıOPS gerekliyse, birden çok bağlı diske göre büyük bir mantıksal birim oluşturmak için LVM (mantıksal birim Yöneticisi) veya MDADDM kullanılması önerilir. Daha fazla bilgi için bkz. LVM veya MDADDM 'nin kullanılmasıyla ilgili yönergeler ve işaretçilerle ilgili [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımına yönelik hususlar](dbms_guide_general.md) . Bu yaklaşım, disk alanını yönetmenin yönetim yükünü basitleştirir ve dosyaları birden çok bağlı diskte el ile dağıtmanın çabadan kaçınmanıza yardımcı olur.
 
 
 #### <a name="write-accelerator"></a>Yazma Hızlandırıcısı
-Azure n serisi VM 'Ler için, Azure Yazma Hızlandırıcısı kullandığınızda, çevrimiçi yineleme günlüklerine yazma gecikmesi, Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Çevrimiçi yineleme günlük dosyaları için kullanılan Azure Premium Depolama alanını temel alan diskler (VHD 'ler) için Azure Yazma Hızlandırıcısı 'yi etkinleştirin. Daha fazla bilgi için bkz. [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md).
+Azure n serisi VM 'Ler için Azure Yazma Hızlandırıcısı kullandığınızda, Azure Premium Depolama kullanılırken, çevrimiçi yineleme günlüklerine yazma gecikmesi faktörlerle azaltılabilir. Çevrimiçi yineleme günlük dosyaları için kullanılan Azure Premium Depolama alanını temel alan diskler (VHD 'ler) için Azure Yazma Hızlandırıcısı 'yi etkinleştirin. Daha fazla bilgi için bkz. [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md). Veya çevrimiçi yineleme günlüğü birimi için Azure Ultra disk ' i kullanın.
 
 
 ### <a name="backuprestore"></a>Yedekleme/geri yükleme
@@ -523,5 +527,9 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 </code></pre>
 
 
-### <a name="other"></a>Diğer
-[SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](dbms_guide_general.md) , Azure kullanılabilirlik KÜMELERI ve SAP izleme dahil olmak üzere Oracle Database sahip VM dağıtımları ile ilgili diğer önemli kavramları açıklamaktadır.
+## <a name="next-steps"></a>Sonraki adımlar
+Makaleyi okuyun 
+
+- [SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular](dbms_guide_general.md)
+ 
+

@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5d1d74f1240f919bb20d8893755a86abc19fa828
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: cf1fdd3feff76454f0e801d7bd53c63702000014
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271996"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile Azure 'da birden çok SQL sanal makinesi kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -215,7 +215,7 @@ Rapor, bir dosya olarak oluşturulur `.txt` `RegisterSqlVMScriptReport<Timestamp
 | Windows üzerinde SQL Server çalıştırmayan için Atlanan VM sayısı | SQL Server çalışmadığı veya bir Windows sanal makinesi olmadığı için Atlanan sanal makine sayısı. Sanal makineler biçiminde listelenir `SubscriptionID, Resource Group, Virtual Machine` . | 
 | &nbsp; | &nbsp; |
 
-### <a name="log"></a>Log 
+### <a name="log"></a>Günlük 
 
 Hatalar `VMsNotRegisteredDueToError<Timestamp>.log` , komut dosyasının başlatıldığı zaman damgasıdır adlı günlük dosyasına kaydedilir. Hata abonelik düzeyindedir, günlük, virgülle ayrılmış abonelik KIMLIĞINI ve hata iletisini içerir. Hata sanal makine kaydıyla çalışıyorsa, günlük abonelik KIMLIĞINI, kaynak grubu adını, sanal makine adını, hata kodunu ve virgülle ayrılmış iletiyi içerir. 
 

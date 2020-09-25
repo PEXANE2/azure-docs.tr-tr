@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 9bd98d69c9a941e8da08fc7ab798c37b1a22f0bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c5ee1f1fbd55bfa44f78f2d1f0129b60be8ea34c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498432"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325190"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL yönetilen örneğini bir örnek havuzuna dağıtma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,11 +30,11 @@ Aşağıdaki tabloda, Azure portal ve PowerShell 'de örnek havuzlarla ilgili ku
 
 |Komut|Azure portal|PowerShell|
 |:---|:---|:---|
-|Örnek havuzu oluşturma|Hayır|Evet|
-|Örnek havuzunu güncelleştirme (sınırlı sayıda özellik)|Hayır |Evet |
-|Örnek havuzu kullanımını ve özelliklerini denetleme|Hayır|Evet |
-|Örnek havuzu silme|Hayır|Evet|
-|Örnek havuzu içinde yönetilen bir örnek oluşturma|Hayır|Evet|
+|Örnek havuzu oluşturma|Hayır|Yes|
+|Örnek havuzunu güncelleştirme (sınırlı sayıda özellik)|Hayır |Yes |
+|Örnek havuzu kullanımını ve özelliklerini denetleme|Hayır|Yes |
+|Örnek havuzu silme|Hayır|Yes|
+|Örnek havuzu içinde yönetilen bir örnek oluşturma|Hayır|Yes|
 |Yönetilen örnek için kaynak kullanımını güncelleştirme|Yes |Yes|
 |Yönetilen örnek için kullanımı ve özellikleri denetleyin|Yes|Yes|
 |Yönetilen bir örneği havuzdan silme|Yes|Yes|
@@ -56,7 +56,7 @@ PowerShell 'i kullanmak için [PowerShell Core 'un en son sürümünü yükleyip
 
 Hem havuzların hem de tek örneklerin içindeki örneklerle ilgili işlemler için, standart [yönetilen örnek komutlarını](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)kullanın, ancak bir havuzdaki bir örnek için bu komutlar kullanılırken *örnek havuzu adı* özelliği doldurulmalıdır.
 
-## <a name="deployment-process"></a>Dağıtım işlemi
+## <a name="deployment-process"></a>Dağıtım süreci
 
 Yönetilen bir örneği bir örnek havuzuna dağıtmak için, ilk olarak, sürenin [boş bir alt ağda oluşturulan tek bir örneği](sql-managed-instance-paas-overview.md#management-operations)dağıtmasıyla aynı olduğu zaman uzun süreli bir işlem olan örnek havuzunu dağıtmanız gerekir. Bundan sonra, tipik olarak beş dakikalık bir işlem yapan görece hızlı bir işlem olan bir yönetilen örneği havuza dağıtabilirsiniz. Örnek havuzu parametresi, bu işlemin bir parçası olarak açıkça belirtilmelidir.
 

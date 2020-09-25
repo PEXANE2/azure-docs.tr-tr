@@ -1,5 +1,5 @@
 ---
-title: Azure Iletişim Hizmetleri nedir?
+title: Azure İletişim Hizmetleri nedir?
 description: Azure Iletişim hizmetlerinin gerçek zamanlı iletişimlerle zengin kullanıcı deneyimleri geliştirmenize nasıl yardımcı olduğunu öğrenin.
 author: mikben
 manager: jken
@@ -8,18 +8,25 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a006ece278e4ec750040bde5bd4b7a6144c9e720
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c79ffb02df4a64b2c506ef0863d9bb2da06db53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948567"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303378"
 ---
-# <a name="what-is-azure-communication-services"></a>Azure Iletişim Hizmetleri nedir?
+# <a name="what-is-azure-communication-services"></a>Azure İletişim Hizmetleri nedir?
 
 [!INCLUDE [Public Preview Notice](./includes/public-preview-include.md)]
 
 Azure Iletişim Hizmetleri, uygulamalarınıza kolay bir şekilde gerçek zamanlı multimedya sesi, video ve telefon üzerinden iletişim özellikleri eklemenizi sağlar. Iletişim Hizmetleri istemci kitaplıkları, iletişim çözümlerinizi sohbet ve SMS işlevselliği eklemenize de olanak tanır.
+
+<br>
+
+> [!VIDEO https://www.youtube.com/embed/49oshhgY6UQ]
+
+<br>
+<br>
 
 Ses, video, metin ve veri iletişimleri için Iletişim hizmetlerini çeşitli senaryolarda kullanabilirsiniz:
 
@@ -29,14 +36,14 @@ Ses, video, metin ve veri iletişimleri için Iletişim hizmetlerini çeşitli s
 
 Karışık senaryolar desteklenir. Örneğin, bir Iletişim Hizmetleri uygulaması kullanıcıların tarayıcılarından ve geleneksel telefon aygıtlarından aynı anda konuşuyor olabilir. İletişim Hizmetleri ayrıca, bot tabanlı etkileşimli sesli yanıt (ıVR) sistemleri oluşturmak için Azure bot hizmeti ile birleştirilebilir.
 
-## <a name="common-scenarios"></a>Yaygın senaryolar
+## <a name="common-scenarios"></a>Genel senaryolar
 
 Azure Iletişim Hizmetleri ile yeni başladıysanız, aşağıdaki kaynaklar başlamak için harika bir yerdir:
 <br>
 
 | Kaynak                               |Açıklama                           |
 |---                                    |---                                   |
-|**[Iletişim Hizmetleri kaynağı oluşturma](./quickstarts/create-communication-resource.md)**|İlk Iletişim Hizmetleri kaynağınızı sağlamak için Azure portal veya Iletişim Hizmetleri Yönetimi istemci kitaplığını kullanarak Azure Iletişim hizmetlerini kullanmaya başlayabilirsiniz. Iletişim Hizmetleri kaynak bağlantı dizeniz olduktan sonra, ilk Kullanıcı erişim belirteçlerinizi sağlayabilirsiniz.|
+|**[İletişim Hizmetleri kaynağı oluşturma](./quickstarts/create-communication-resource.md)**|İlk Iletişim Hizmetleri kaynağınızı sağlamak için Azure portal veya Iletişim Hizmetleri Yönetimi istemci kitaplığını kullanarak Azure Iletişim hizmetlerini kullanmaya başlayabilirsiniz. Iletişim Hizmetleri kaynak bağlantı dizeniz olduktan sonra, ilk Kullanıcı erişim belirteçlerinizi sağlayabilirsiniz.|
 |**[İlk Kullanıcı erişim belirtecinizi oluşturma](./quickstarts/access-tokens.md)**|Kullanıcı erişim belirteçleri, hizmetlerinizin kimlik doğrulaması için Azure Iletişim Hizmetleri kaynağına karşı kullanılır. Bu belirteçler, Iletişim Hizmetleri Yönetimi istemci kitaplığı kullanılarak sağlanır ve yeniden yayımlandı.|
 |**[Telefon numarası alın](./quickstarts/telephony-sms/get-phone-number.md)**|Azure Iletişim hizmetlerini kullanarak telefon numaralarını temin edebilir ve serbest bırakabilirsiniz. Bu telefon numaraları, giden çağrıları başlatmak ve SMS iletişim çözümleri oluşturmak için kullanılabilir.|
 |**[Uygulamanızdan SMS gönderin](./quickstarts/telephony-sms/send.md)**|Azure Iletişim Hizmetleri SMS istemci kitaplığı, .NET ve JavaScript uygulamalarınızdan SMS mesajları göndermenizi ve almanızı sağlar.|
@@ -49,7 +56,7 @@ Azure Iletişim Hizmetleri ile yeni başladıysanız, aşağıdaki kaynaklar ba�
 Aşağıdaki örneklerde, Azure Iletişim Hizmetleri istemci kitaplıklarının uçtan uca kullanımı gösterilmektedir. Bu örnekleri kullanarak kendi Iletişim Hizmetleri çözümlerinizi önyükleyebilirsiniz.
 <br>
 
-| Örnek adı                               | Açıklama                           |
+| Örnek adı                               | Description                           |
 |---                                    |---                                   |
 |**[Hero örneğini çağıran Grup](./samples/calling-hero-sample.md)**|Iletişim Hizmetleri istemci kitaplıklarının bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini öğrenin.|
 |**[Grup sohbeti Hero örneği](./samples/chat-hero-sample.md)**|Bkz. Iletişim Hizmetleri istemci kitaplıklarının grup sohbeti deneyimi oluşturmak için nasıl kullanılabileceğini öğrenin.|
@@ -61,8 +68,8 @@ Aşağıdaki kaynaklar, Azure Communication Services istemci kitaplıkları hakk
 
 | Kaynak                               | Açıklama                           |
 |---                                    |---                                   |
-|**[İstemci kitaplıkları ve REST API 'Leri](./concepts/sdk-options.md)**|Azure Iletişim Hizmetleri Özellikleri, her biri bir istemci kitaplığı tarafından temsil edilen altı alana göre düzenlenmiştir. Gerçek zamanlı iletişim gereksinimlerinize göre hangi istemci kitaplıklarının kullanılacağına karar verebilirsiniz.|
-|**[İstemci kitaplığına genel bakış çağrılıyor](./concepts/voice-video-calling/calling-sdk-features.md)**|İstemci kitaplığına genel bakış ' ı çağıran Iletişim hizmetlerini gözden geçirin.|
+|**[İstemci kitaplıkları ve REST API’leri](./concepts/sdk-options.md)**|Azure Iletişim Hizmetleri Özellikleri, her biri bir istemci kitaplığı tarafından temsil edilen altı alana göre düzenlenmiştir. Gerçek zamanlı iletişim gereksinimlerinize göre hangi istemci kitaplıklarının kullanılacağına karar verebilirsiniz.|
+|**[Arama istemci kitaplığına genel bakış](./concepts/voice-video-calling/calling-sdk-features.md)**|İstemci kitaplığına genel bakış ' ı çağıran Iletişim hizmetlerini gözden geçirin.|
 |**[Sohbet istemci kitaplığına genel bakış](./concepts/chat/sdk-features.md)**|Iletişim Hizmetleri sohbeti istemci kitaplığına genel bakış ' a bakın.|
 |**[SMS istemci kitaplığına genel bakış](./concepts/telephony-sms/sdk-features.md)**|Iletişim Hizmetleri SMS istemci kitaplığına genel bakış ' ı inceleyin.|
 
@@ -77,4 +84,4 @@ Aşağıdaki kaynaklar, Azure Communication Services istemci kitaplıkları hakk
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
- - [Iletişim Hizmetleri kaynağı oluşturma](./quickstarts/create-communication-resource.md)
+ - [İletişim Hizmetleri kaynağı oluşturma](./quickstarts/create-communication-resource.md)

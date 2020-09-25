@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 959837ff540fd95d186497858d7b9de1f8b1124d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292733"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274019"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD erişim incelemeleriyle ilgili grupları veya uygulamaları kendiniz için erişimi gözden geçirin
 
@@ -65,13 +65,13 @@ Erişim gözden geçirmesini açtıktan sonra erişiminizi görebilirsiniz.
 
     İstek başkalarının erişimini gözden geçirmektir, sayfa farklı görünür. Daha fazla bilgi için bkz. [gruplara veya uygulamalara erişimi gözden geçirme](perform-access-review.md).
 
-    ![Hala bir gruba erişmeniz gerekip gerekmediğini soran açık erişim gözden geçirme](./media/review-your-access/perform-access-review.png)
+    ![Hala bir gruba erişmeniz gerekip gerekmediğini soran bir açık erişim incelemesi gösteren ekran görüntüsü.](./media/review-your-access/perform-access-review.png)
 
 1. Erişiminizi korumak için **Evet** ' e tıklayın veya erişiminizi kaldırmak için **Hayır** ' a tıklayın.
 
 1. **Evet**' e tıklarsanız, **neden** kutusunda bir gerekçe belirtmeniz gerekebilir.
 
-    ![Bir gruba erişmeniz gerekip gerekmediğini soran tamamlanmış erişim incelemesi](./media/review-your-access/perform-access-review-submit.png)
+    !["Evet" seçiliyken bir gruba erişmeniz gerekip gerekmediğini soran, tamamlanmış bir erişim incelemesi gösteren ekran görüntüsü.](./media/review-your-access/perform-access-review-submit.png)
 
 1. **Gönder**' e tıklayın.
 

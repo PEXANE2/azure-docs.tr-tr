@@ -1,14 +1,16 @@
 ---
 title: 'Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma'
 description: Bu hızlı başlangıçta, bir uygulamanın, amaçlarınızın ve varlıkların temel parçalarını ve Ayrıca Lua portalındaki örnek utbotlarla test oluşturursunuz.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697288"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303871"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma
 
@@ -28,7 +30,7 @@ Bu hızlı başlangıçta, LUı portalında yeni bir uygulama oluşturacaksını
    |Ayar adı| Değer | Amaç|
    |--|--|--|
    |Name|`myEnglishApp`|Benzersiz LUSıS uygulama adı<br>gerekli|
-   |Culture (Kültür)|**İngilizce**|Kullanıcılardan gelen **söylenme dili, en-US**<br>gerekli|
+   |Kültür|**İngilizce**|Kullanıcılardan gelen **söylenme dili, en-US**<br>gerekli|
    |Açıklama (Isteğe bağlı)|`App made with LUIS Portal`|Uygulamanın açıklaması<br>isteğe bağlı|
    |Tahmin kaynağı (Isteğe bağlı) |-  |' Yi seçmeyin. LUSıS, yazma ve 1.000 tahmin uç noktası istekleri için ücretsiz olarak kullanabileceğiniz bir başlangıç anahtarı sağlar. |
 
@@ -161,7 +163,7 @@ Varlığın, uygulamanın henüz görülmemiş yeni dıklardan ayıklandığın�
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıç ile işiniz bittiğinde ve sonraki hızlı başlangıca geçmeden, üst gezinti menüsünden **uygulamalarım** ' ı seçin. Ardından listedeki uygulamanın sol onay kutusunu seçin ve listenin üzerindeki bağlam araç çubuğundan **Sil** ' i seçin.
+Bu hızlı başlangıç ile işiniz bittiğinde ve sonraki hızlı başlangıca geçmeden, üst gezinti menüsünden **uygulamalarım** ' ı seçin. Ardından listedeki uygulamanın sol onay kutusunu seçin ve listenin üzerindeki bağlam araç çubuğundan  **Sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

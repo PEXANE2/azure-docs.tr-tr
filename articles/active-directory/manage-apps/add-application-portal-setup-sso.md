@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için çoklu oturum açma (SSO) ayarlama'
-description: Bu hızlı başlangıç, Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için çoklu oturum açma (SSO) ayarlama sürecinde size yol gösterir.
+title: 'Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için SAML tabanlı çoklu oturum açma (SSO) ayarlama'
+description: Bu hızlı başlangıç, Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için SAML tabanlı çoklu oturum açma (SSO) ayarlama sürecinde size yol gösterir.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -10,19 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 040cc2dfa48f24fff4c7dda2cb6010efb01e9b86
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d9ef069291f010db510d626ceda959a0342c39e2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300145"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305792"
 ---
-# <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için çoklu oturum açma (SSO) ayarlama
+# <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için SAML tabanlı çoklu oturum açma (SSO) ayarlama
 
 Azure Active Directory (Azure AD) kiracınıza eklediğiniz bir uygulama için çoklu oturum açma (SSO) ayarlayarak Basitleştirilmiş kullanıcı oturum açmaları ile çalışmaya başlayın. SSO 'yu ayarladıktan sonra kullanıcılarınız Azure AD kimlik bilgilerini kullanarak bir uygulamada oturum açabilir. SSO, ücretsiz Azure AD sürümüne dahildir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD kiracınıza eklediğiniz bir uygulamaya yönelik SSO 'yu ayarlamak için şunlar gerekir:
 
@@ -38,7 +37,6 @@ Azure AD kiracınıza eklediğiniz bir uygulamaya yönelik SSO 'yu ayarlamak iç
 >[!IMPORTANT]
 >Bu hızlı başlangıçtaki adımları test etmek için üretim dışı bir ortam kullanın.
 
-
 ## <a name="enable-single-sign-on-for-an-app"></a>Uygulama için çoklu oturum açmayı etkinleştirme
 
 Azure AD kiracınıza bir uygulama eklemeyi bitirdikten sonra genel bakış sayfası görüntülenir. Zaten eklenmiş olan bir uygulamayı yapılandırıyorsanız ilk hızlı başlangıca bakın. Kiracınıza eklenen uygulamaları görüntülemeyi adım adım gösterir. 
@@ -47,6 +45,9 @@ Bir uygulama için çoklu oturum açmayı ayarlamak için:
 
 1. Azure AD portalında **Kurumsal uygulamalar**' ı seçin. Ardından, çoklu oturum açma için ayarlamak istediğiniz uygulamayı bulun ve seçin.
 1. **Yönet** bölümünde, **tek oturum aç ' ı seçerek,** düzenlemenin **Çoklu oturum** açma bölmesini açın.
+
+    > [!IMPORTANT]
+    > Uygulama SSO için OpenID Connect (OıDC) standardını kullanıyorsa, gezintide çoklu oturum açma seçeneği görmezsiniz. Nasıl ayarlanacağını öğrenmek için OıDC tabanlı SSO 'daki hızlı başlangıç bölümüne bakın.
 
     :::image type="content" source="media/add-application-portal-setup-sso/configure-sso.png" alt-text="Ekran görüntüsü, Azure AD portalındaki çoklu oturum açma yapılandırma sayfasını gösterir.":::
 
@@ -60,7 +61,6 @@ Bir uygulama için çoklu oturum açmayı ayarlamak için:
     > SAML yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-saml-single-sign-on.md).
 
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Ekran görüntüsü, GitHub fiyatlandırma sayfasının kurumsal aboneliğindeki çoklu oturum açma seçeneğini gösterir.":::
-
 
 > [!TIP]
 > Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](https://docs.microsoft.com/graph/application-saml-sso-configure-api).

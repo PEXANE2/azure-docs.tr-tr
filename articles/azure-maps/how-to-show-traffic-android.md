@@ -4,16 +4,16 @@ description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak bir
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b07b520dec4e9149c6748777a119b68e56c65e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126406"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272965"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritadaki trafik verilerini gösterme Android SDK
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 Trafik akışı verilerini ayarlamak için aşağıdaki kod parçacığını kullanın. Önceki bölümde bulunan koda benzer şekilde, yöntemin dönüş değerini yöntemine geçiyoruz `flow` `setTraffic` . Öğesine geçirilebilecek dört değer vardır `flow` ve her bir değer `flow` ilgili değeri döndürecek şekilde tetiklenebilir. Dönüş değeri `flow` daha sonra öğesine bağımsız değişken olarak geçirilir `setTraffic` . Şu dört değer için aşağıdaki tabloya bakın:
 
-|Akış değeri | Açıklama|
+|Akış değeri | Description|
 | :-- | :-- |
 | TrafficFlow. NONE | Harita üzerinde trafik verilerini görüntülemiyor |
 | TrafficFlow. GÖRELI | Yolun serbest akış hızına göre trafik verilerini gösterir |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 56a865de8cb1be079f4935ef2a8f840f10589b26
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550019"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305685"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için bandı yapılandırma
 
@@ -27,7 +27,7 @@ Bu makalede, kullanıcıları veya grupları otomatik olarak sağlamak ve sağla
 >
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -126,7 +126,7 @@ Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için aşağıd
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. **Kiracı URL 'si** kutusuna, girin **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** .  
+   a. **Kiracı URL 'si** kutusuna, girin **`https://app.harness.io/gateway/api/scim/account/<your_harness_account_ID>`** . Bir bandı oturum açtığınızda, tarayıcınızdaki URL 'den bir oturum açma hesabı KIMLIĞINIZ elde edebilirsiniz.
    b. **Gizli belirteç** kutusunda, "sağlama Için bandı ayarlama" bölümünün 6. adımında kaydettiğiniz SCIM kimlik doğrulama belirteci değerini girin.  
    c. Azure AD 'nin, bir bandı bağlamak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, bu ortamınızda *yönetici* izinlerine sahip olduğundan emin olun ve sonra yeniden deneyin.
 
@@ -160,7 +160,7 @@ Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için aşağıd
 
 1. **Ayarlar**' ın altında, **kapsam** açılan listesinde, sağlama yaptığınız kullanıcıları veya grupları nasıl eşitlemek istediğinizi seçin.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
 1. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
@@ -177,4 +177,4 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)

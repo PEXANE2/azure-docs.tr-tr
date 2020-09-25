@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: dda911add42568e76160e4233502a1f4f550520d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325632"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırma
 
@@ -54,7 +54,7 @@ Yukarıdaki örnekte gösterildiği gibi, kullanıcısının `file1` olması ger
 
 Aşağıdaki örnek, sonuçta elde edilen Kullanıcı/Grup değişikliğini göstermektedir: 
 
-![NFSv 4.1 için sonuç yapılandırması](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
+![Elde edilen Kullanıcı/Grup değişikliğine bir örnek gösteren ekran görüntüsü.](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
 
 Örnekte gösterildiği gibi Kullanıcı/Grup artık ' dan ' a değiştirilmiştir `nobody` `root` .
 
@@ -64,7 +64,7 @@ Azure NetApp Files, NFSv 4.1 birimlerindeki dosyalarla veya klasörlerle ilişki
 
 Aşağıdaki örnekte, `Host1` üç mevcut test Kullanıcı hesabı ( `testuser01` , `testuser02` , `testuser03` ) vardır: 
 
-![NFSv 4.1 için sonuç yapılandırması](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
+![Konak1 'in üç mevcut test Kullanıcı hesabına sahip olduğunu gösteren ekran görüntüsü.](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
 
 Üzerinde `Host2` , test Kullanıcı hesaplarının oluşturulmadığını, ancak aynı birimin her iki konağa da bağlı olduğunu unutmayın:
 

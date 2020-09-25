@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 2feaf33f7bc31396764bfbaa3ae6291b6752e961
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 0f6f193f531be746d3ef4920b86855ffa49efda2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612800"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260469"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio (Önizleme) Not defterleri oluşturma, geliştirme ve bakımını yapma
 
@@ -34,7 +34,7 @@ Bu makalede, Azure SYNAPSE Studio 'da Not defterlerinin nasıl kullanılacağı 
 
 Bir not defteri oluşturmanın iki yolu vardır. Yeni bir not defteri oluşturabilir veya var olan bir not defterini **Nesne Gezgini**bir Azure SYNAPSE çalışma alanına aktarabilirsiniz. Azure SYNAPSE Studio Not defterleri, standart Jupyter Notebook IPYNB dosyalarını algılayabilir.
 
-![SYNAPSE-oluşturma-içeri aktarma-Not defteri](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
+![İçeri aktarma Not Defteri Oluştur](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
 ## <a name="develop-notebooks"></a>Not defterleri geliştirme
 
@@ -80,7 +80,7 @@ Bir hücrenin başlangıcında doğru dil Magic komutunu belirterek, bir not def
 
 Aşağıdaki görüntü, bir **Spark (Scala)** not defterinde%% **pyspark** Magic komutunu veya **%% SQL** Magic komutuyla bir mini SQL sorgusunu kullanarak pyspark sorgusunun nasıl yazılacağını gösteren bir örnektir. Not defteri için birincil dilin pySpark olarak ayarlandığını unutmayın.
 
-   ![SYNAPSE-Spark-mıknatıcs](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
+   ![SYNAPSE Spark Magic komutları](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
 ### <a name="use-temp-tables-to-reference-data-across-languages"></a>Diller arasında verilere başvurmak için geçici tabloları kullanma
 
@@ -125,12 +125,12 @@ IntelliSense özellikleri farklı diller için farklı ölçü düzeyleridir. De
 
 Ortak markaşağı eylemleri yapmak için metin hücreleri araç çubuğundaki Biçim düğmelerini kullanabilirsiniz. Bu, kalın metin, italicizing metin, kod parçacıkları ekleme, sırasız liste ekleme, sıralı liste ekleme ve URL 'den görüntü ekleme içerir.
 
-  ![SYNAPSE-metin-hücre-araç çubuğu](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
+  ![SYNAPSE metin hücresi araç çubuğu](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
 ### <a name="undo-cell-operations"></a>Hücre işlemlerini geri al
-En son hücre işlemini iptal etmek için **geri al** düğmesine tıklayın veya **CTRL + Z** tuşlarına basın. Artık en son 20 geçmiş hücresi eylemini geri alabilirsiniz. 
+En son hücre işlemini iptal etmek için **geri al** düğmesini seçin veya **CTRL + Z** tuşlarına basın. Artık en son 20 geçmiş hücresi eylemini geri alabilirsiniz. 
 
-   ![SYNAPSE-geri al-hücreler](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+   ![SYNAPSE geri alma hücreleri](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
 
 ### <a name="move-a-cell"></a>Bir hücreyi taşıma
 
@@ -149,13 +149,13 @@ Bir hücreyi silmek için, en sağdaki Ek hücre eylemleri menüsüne erişmek �
    ![hücreyi Sil](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
 ### <a name="collapse-a-cell-input"></a>Hücre girişini daraltma
-Daraltmak için geçerli hücrenin altındaki ok düğmesine tıklayın. Genişletmek için, hücre daraltıldığında ok düğmesine tıklayın.
+Daraltmak için geçerli hücrenin alt kısmındaki ok düğmesini seçin. Genişletmek için, hücre darallarken ok düğmesini seçin.
 
    ![daraltma-hücre girişi](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
 
 ### <a name="collapse-a-cell-output"></a>Hücre çıkışını daraltma
 
-Daraltmak için geçerli hücre çıktısının sol üst kısmındaki **çıktıyı Daralt** düğmesine tıklayın. Genişletmek için hücre çıktısı daraltıldığında **hücre çıktısını göster** ' e tıklayın.
+Daraltmak için geçerli hücre çıktısının sol üst kısmındaki **çıktıyı Daralt** düğmesini seçin. Genişletmek için hücre çıktısı daraltıldığında **hücre çıkışını göster** ' i seçin.
 
    ![daraltma-hücre çıkışı](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
@@ -180,7 +180,7 @@ Bir hücrede kodu çalıştırmanın birkaç yolu vardır.
 
 
 ### <a name="run-all-cells"></a>Tüm hücreleri Çalıştır
-Geçerli not defterindeki tüm hücreleri sırayla çalıştırmak için **Tümünü Çalıştır** düğmesine tıklayın.
+Geçerli not defterindeki tüm hücreleri sırayla çalıştırmak için **Tümünü Çalıştır** düğmesini seçin.
 
    ![tüm hücreleri Çalıştır](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
@@ -192,7 +192,7 @@ En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (**...**) s
 
 
 ### <a name="cancel-all-running-cells"></a>Tüm çalışan hücreleri iptal et
-Çalışan hücreleri veya sırada bekleyen hücreleri iptal etmek için **Tümünü Iptal et** düğmesine tıklayın. 
+Çalışan hücreleri veya sırada bekleyen hücreleri iptal etmek için **Tümünü Iptal et** düğmesini seçin. 
    ![iptal-tümünü-hücreler](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 ### <a name="cell-status-indicator"></a>Hücre durumu göstergesi
@@ -204,7 +204,7 @@ Bir adım adım hücre yürütme durumu, geçerli ilerlemesini görmenizi sağla
 ### <a name="spark-progress-indicator"></a>Spark ilerleme göstergesi
 
 Azure SYNAPSE Studio Not defteri yalnızca Spark tabanlıdır. Kod hücreleri Spark havuzunda uzaktan yürütülür. İş yürütme durumunu anlamanıza yardımcı olmak üzere gerçek zamanlı ilerleme çubuğu içeren bir Spark işi ilerleme göstergesi görünür.
-Her iş veya aşama başına görev sayısı, Spark işinizin paralel düzeyini belirlemenize yardımcı olur. Ayrıca, iş (veya aşama) adındaki bağlantıya tıklayarak belirli bir işin Spark Kullanıcı arabirimine (veya aşamasına) ayrıntılı olarak gidebilirsiniz.
+Her iş veya aşama başına görev sayısı, Spark işinizin paralel düzeyini belirlemenize yardımcı olur. Ayrıca, iş (veya aşama) adındaki bağlantıyı seçerek belirli bir işin Spark Kullanıcı arabirimine (veya aşamasına) ayrıntılı olarak gidebilirsiniz.
 
 
 ![Spark-ilerleme-gösterge](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -215,7 +215,7 @@ Her iş veya aşama başına görev sayısı, Spark işinizin paralel düzeyini 
 
 [![oturum yönetimi](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
 
-Spark oturum öneren artık Spark oturum yapılandırma panelinde kullanılabilir. Bir Spark havuzunu doğrudan oturum yapılandırma panelinden seçebilir ve kaç düğüm kullandığını ve kaç tane kaç yürütme kullanılabilir olduğunu görebilirsiniz. Bu bilgiler, oturum boyutunu geri ve geriye doğru değiştirmek yerine uygun şekilde ayarlamanıza yardımcı olabilir.
+Spark oturum öneren, Spark oturum yapılandırma panelinde artık kullanılabilir. Bir Spark havuzunu doğrudan oturum yapılandırma panelinden seçebilir ve kaç düğüm kullandığını ve kaç tane kaç yürütme kullanılabilir olduğunu görebilirsiniz. Bu bilgiler, geri ve ileri değiştirme yerine uygun oturum boyutunu ayarlamanıza yardımcı olabilir.
 
 ![oturum-öner](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
 
@@ -277,23 +277,24 @@ Birincil depolama hesabındaki verilere doğrudan erişebilirsiniz. Gizli anahta
 
 Bir çubuk grafik, çizgi grafik, pasta grafiği, dağılım grafiği ve alan grafiği oluşturma seçeneğiyle tablolu bir sonuç görünümü sağlanır. Verilerinizi kod yazmak zorunda kalmadan görselleştirebilirsiniz. Grafikler, **grafik seçeneklerinde**özelleştirilebilir. 
 
-**%% SQL** Magic komutlarının çıkışı, işlenen tablo görünümünde varsayılan olarak görünür. <code>display(df)</code>İşlenmiş tablo görünümünü oluşturmak Için Spark Dataframe veya dayanıklı Dağıtılmış veri kümeleri (RDD) işlevini çağırabilirsiniz.
+**%% SQL** Magic komutlarının çıkışı, işlenen tablo görünümünde varsayılan olarak görünür. <code>display(df)</code>İşlenmiş tablo görünümünü oluşturmak Için Spark dataframe, Pandas Dataframe, List veya dayanıklı Dağıtılmış veri kümeleri (RDD) işlevini çağırabilirsiniz.
 
    [![yerleşik-grafikler](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
 ### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>Büyük ölçekli veri kümesinden yerleşik grafikleri görselleştirin 
 
-Varsayılan olarak, <code>display(df)</code> işlev, grafikleri işlemek için verilerin yalnızca ilk 1000 satırını alır. **Tüm sonuçlar üzerinde toplamayı** denetleyin ve **Uygula** düğmesine tıkladıktan sonra grafik oluşturma 'yı tüm veri kümesinden uygulayacaksınız. Grafik ayarı değiştiğinde bir Spark işi tetiklenecek, hesaplamayı tamamlayıp grafiği işlemeye yönelik bir süre sürer. 
+Varsayılan olarak, <code>display(df)</code> işlev, grafikleri işlemek için verilerin yalnızca ilk 1000 satırını alır. **Tüm sonuçlar üzerinde toplamayı** denetleyin ve **Uygula** düğmesini seçin, grafik oluşturmayı tüm veri kümesinden uygulayacaksınız. Grafik ayarı değiştiğinde bir Spark işi tetiklenecek, hesaplamayı tamamlayıp grafiği işlemeye yönelik bir süre sürer. 
     [![yerleşik-grafikler-toplama-tümü](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
 
 
+
 ### <a name="visualize-data-statistic-information"></a>Veri istatistikleri bilgilerini görselleştirin
-Sütun <code>display(df, summary = true)</code> adı, sütun türü, benzersiz değerler ve her sütun için eksik değerleri içeren belirli bir Spark veri çerçevesinin istatistik özetini denetlemek için öğesini kullanabilirsiniz. Ayrıca, en az değer, Maxhayvan değeri, ortalama değer ve standart sapmayı görmek için belirli bir sütun üzerinde seçim yapabilirsiniz.
+Sütun <code>display(df, summary = True)</code> adı, sütun türü, benzersiz değerler ve her sütun için eksik değerleri içeren belirli bir Spark veri çerçevesinin istatistik özetini denetlemek için öğesini kullanabilirsiniz. Ayrıca, en az değer, Maxhayvan değeri, ortalama değer ve standart sapmayı görmek için belirli bir sütun üzerinde seçim yapabilirsiniz.
     [![yerleşik-grafikler-Özet ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
 
 ### <a name="render-html-or-interactive-libraries"></a>HTML veya etkileşimli kitaplıkları işleme
 
-**Displayhtml ()** kullanarak **BOKEH**gibi HTML veya etkileşimli kitaplıkları işleyebilirsiniz.
+HTML kodunu, **displayhtml ()** kullanarak **bokeh**gibi JavaScript, CSS, D3 veya etkileşimli kitaplıklar dahil olmak üzere işleyebilirsiniz.
 
 Aşağıdaki resim **bokeh**kullanarak bir harita üzerinde karakter çizme örneğidir.
 
@@ -349,7 +350,7 @@ Not defteri özelliklerinde, kaydetme sırasında hücre çıkışının eklenip
    ![Not defteri-Özellikler](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>MAGIC komutları
-Tanıdık Jupyıter Magic komutlarınızı Azure SYNAPSE Studio Not defterleri ' nde kullanabilirsiniz. Aşağıdaki listede geçerli olan MAGIC komutları olarak kontrol edin. İhtiyaçlarınızı karşılamak için daha fazla sihirli komut oluşturmaya devam edebilmemiz için [kullanım durumlarınızı GitHub 'da](https://github.com/MicrosoftDocs/azure-docs/issues/new) bize söyleyin.
+Azure SYNAPSE Studio not defterlerinde tanıdık Jupyıter Magic komutlarını kullanabilirsiniz. Geçerli kullanılabilir sihirli komutları olarak aşağıdaki listeyi gözden geçirin. İhtiyaçlarınızı karşılamak için daha fazla sihirli komut oluşturmaya devam edebilmemiz için [kullanım durumlarınızı GitHub 'da](https://github.com/MicrosoftDocs/azure-docs/issues/new) bize söyleyin.
 
 Kullanılabilir satır mıknatıcs: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% Time It](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
@@ -360,23 +361,23 @@ Kullanılabilir hücre mıknatıcs: [%% Time](https://ipython.readthedocs.io/en/
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>İşlem hattına Not defteri ekleme
 
-Mevcut bir işlem hattına bir not defteri eklemek veya yeni bir işlem hattı oluşturmak için sağ üst köşedeki **ardışık düzene Ekle** düğmesine tıklayın.
+Mevcut bir işlem hattına bir not defteri eklemek veya yeni bir işlem hattı oluşturmak için sağ üst köşedeki **ardışık düzene Ekle** düğmesini seçin.
 
-![ekleme-işlem hattı](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
+![İşlem hattına Not defteri ekleme](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
 
 ### <a name="designate-a-parameters-cell"></a>Bir parametre hücresi belirleme
 
-Not defterinizi parametreleştirmek için, en sağdaki Ek hücre eylemleri menüsüne erişmek üzere üç nokta (...) simgesini seçin. Ardından, parametreyi parametre hücresi olarak belirlemek için **parametre hücresini değiştirin** ' i seçin.
+Not defterinizi parametreleştirin, en sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (...) simgesini seçin. Ardından, parametreyi parametre hücresi olarak belirlemek için **parametre hücresini değiştirin** ' i seçin.
 
 ![iki durumlu parametre](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
-Azure Data Factory, parametreler hücresini arar ve yürütme zamanında geçirilen parametreler için bu hücreyi varsayılanlar olarak değerlendirir. Yürütme altyapısı varsayılan değerlerin üzerine yazmak için, Parameters hücresinin altına giriş parametreleriyle yeni bir hücre ekler. Hiçbir parametre hücresi atanmamışsa, eklenen hücre, Not defterinin en üstüne eklenir.
+Azure Data Factory, parametreler hücresini arar ve yürütme zamanında geçirilen parametreler için bu hücreyi varsayılanlar olarak değerlendirir. Yürütme altyapısı, varsayılan değerlerin üzerine yazmak için, Parameters hücresinin altına giriş parametreleriyle yeni bir hücre ekler. Bir parametre hücresi belirlenmediğinde, eklenen hücre, Not defterinin en üstüne eklenir.
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>İşlem hattından parametre değerleri atama
 
 Parametrelere sahip bir not defteri oluşturduktan sonra, Azure SYNAPSE Not defteri etkinliğine sahip bir işlem hattından çalıştırabilirsiniz. Etkinliği işlem hattı Tuvalinize ekledikten sonra, **Ayarlar** sekmesindeki **temel parametreler** bölümünde parametre değerlerini ayarlayabilirsiniz. 
 
-![Assign parametresi](./media/apache-spark-development-using-notebooks/assign-parameter.png)
+![Parametre atama](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
 Parametre değerlerini atarken, işlem [hattı ifade dilini](../../data-factory/control-flow-expression-language-functions.md) veya [Sistem değişkenlerini](../../data-factory/control-flow-system-variables.md)kullanabilirsiniz.
 
@@ -386,11 +387,11 @@ Parametre değerlerini atarken, işlem [hattı ifade dilini](../../data-factory/
 
 Jupyıter not defterlerine benzer şekilde, Azure SYNAPSE Studio Not defterleri de kalıcı bir kullanıcı arabirimine sahiptir. Klavye, Not defteri hücresinin bulunduğu moda bağlı olarak farklı şeyler yapar. SYNAPSE Studio Not defterleri, belirli bir kod hücresi için aşağıdaki iki modu destekler: komut modu ve düzenleme modu.
 
-1. Bir hücre, yazmanızı isteyen bir metin imleci olmadığında komut modundadır. Bir hücre komut modundayken, Not defterini tek tek hücrelere değil, bir bütün olarak düzenleyebilirsiniz. `ESC`Bir hücrenin düzenleyici alanının dışına tıklayarak ya da fareyi kullanarak komut moduna girin.
+1. Bir hücre, yazmanızı isteyen bir metin imleci olmadığında komut modundadır. Bir hücre komut modundayken, Not defterini tek tek hücrelere değil, bir bütün olarak düzenleyebilirsiniz. `ESC`Bir hücrenin düzenleyici alanının dışında seçim yapmak için fare tuşuna basarak veya fareyi kullanarak komut moduna girin.
 
    ![komut modu](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imlece belirtilir. Bir hücre düzenleme modundayken, hücreye yazabilirsiniz. `Enter`Bir hücrenin düzenleyici alanına tıklayarak ya da fareyi kullanarak düzenleme modunu girin.
+2. Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imlece belirtilir. Bir hücre düzenleme modundayken, hücreye yazabilirsiniz. `Enter`Fareyle sürükleyerek veya bir hücrenin düzenleyici alanında seçim yaparak düzenleme modunu girin.
    
    ![düzenleme modu](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 

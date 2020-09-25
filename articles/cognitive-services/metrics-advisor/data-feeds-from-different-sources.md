@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: ''
+ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973384"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324476"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Farklı veri kaynaklarından ölçüm Danışmanı 'na veri akışları ekleme
 
@@ -23,7 +23,7 @@ Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yöne
 
 ## <a name="supported-authentication-types"></a>Desteklenen kimlik doğrulama türleri
 
-| Kimlik doğrulaması türleri | Açıklama |
+| Kimlik doğrulaması türleri | Description |
 | ---------------------|-------------|
 |**Temel** | Veri kaynaklarına erişmek için temel parametreleri sağlayabilmeniz gerekir. Örneğin bir bağlantı dizesi veya anahtar. Veri akışı yöneticileri bu kimlik bilgilerini görüntüleyebiliyor. |
 | **AzureManagedIdentity** | Azure kaynakları için [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) Azure Active Directory özelliğidir. Azure hizmetleri 'ni Azure AD 'de otomatik olarak yönetilen bir kimlikle sağlar. Kimliği, Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz.|
@@ -93,7 +93,7 @@ Bir **kimlik bilgisi varlığı** oluşturun ve veri kaynaklarınızda kimlik do
   
   * v1 (varsayılan değer)
 
-      Yalnızca ölçüm *adı* ve *değeri* kabul edilir. Örnek:
+      Yalnızca ölçüm *adı* ve *değeri* kabul edilir. Örneğin:
     
       ``` JSON
       {"count":11, "revenue":1.23}
@@ -101,7 +101,7 @@ Bir **kimlik bilgisi varlığı** oluşturun ve veri kaynaklarınızda kimlik do
 
   * v2
 
-      Ölçüm *boyutları* ve *zaman damgası* da kabul edilir. Örnek:
+      Ölçüm *boyutları* ve *zaman damgası* da kabul edilir. Örneğin:
       
       ``` JSON
       [
@@ -159,7 +159,7 @@ JSON dosyası başına yalnızca bir zaman damgasına izin verilir.
   * `%h` saat olarak biçimlendirilir `HH`
   * `%M` dakika olarak biçimlendirilir `mm`
 
-Şu anda ölçüm Danışmanı, JSON dosyalarındaki veri şemasını aşağıda gösterildiği gibi destekler. Örnek:
+Şu anda ölçüm Danışmanı, JSON dosyalarındaki veri şemasını aşağıda gösterildiği gibi destekler. Örneğin:
 
 ``` JSON
 [

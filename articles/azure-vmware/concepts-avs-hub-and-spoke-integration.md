@@ -3,12 +3,12 @@ title: Kavram-bir hub ve bağlı bileşen mimarisinde bir Azure VMware çözüm 
 description: Azure 'da var olan veya yeni bir hub ve bağlı bileşen mimarisinde Azure VMware çözüm dağıtımını tümleştirme önerileri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 1862b98b40788b6b71d05eb4be43bdacd39e927f
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a2007e159d23a02ca573fd833590651061c59973
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659211"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271741"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware çözümünü bir hub ve bağlı bileşen mimarisinde tümleştirme
 
@@ -109,7 +109,7 @@ Ayrıntılar ve gereksinimler için [Application Gateway](./protect-avs-web-apps
 
 Hub sanal ağı içindeki paylaşılan hizmet alt ağında dağıtılan bir Windows 10 veya Windows Server VM olan JumpBox ile Azure VMware Çözüm ortamına erişin.
 
-En iyi güvenlik uygulaması olarak, hub sanal ağı içinde [Microsoft Azure](../bastion/index.yml) savunma hizmeti dağıtın. Azure savunma, Azure 'da dağıtılan VM 'lere, bu kaynaklara genel IP adresleri sağlamaya gerek kalmadan sorunsuz RDP ve SSH erişimi sağlar. Azure savunma hizmetini sağladığınızda, seçili VM 'ye Azure portal erişebilirsiniz. Bağlantı kurulduktan sonra, sıçrama kutusu Desktop ' ı gösteren yeni bir sekme açılır ve bu masaüstünden Azure VMware çözümüne özel bulut yönetim düzlemine erişebilirsiniz.
+En iyi güvenlik uygulaması olarak, hub sanal ağı içinde [Microsoft Azure](../bastion/index.yml) savunma hizmeti dağıtın. Azure savunma, Azure 'da dağıtılan VM 'lere, bu kaynaklara genel IP adresleri sağlamaya gerek kalmadan sorunsuz RDP ve SSH erişimi sağlar. Azure savunma hizmetini sağladığınızda, seçili VM 'ye Azure portal erişebilirsiniz. Bağlantı kurulduktan sonra, Azure VMware çözümü özel bulut yönetim düzlemine erişebileceğiniz atlama kutusu masaüstünü gösteren yeni bir sekme açılır.
 
 > [!IMPORTANT]
 > Sıçrama kutusu VM 'sine genel bir IP adresi vermeyin veya 3389/TCP bağlantı noktasını genel İnternet 'e sunmaz. 
@@ -142,7 +142,7 @@ Azure DNS özel bölgeler için göz önünde bulundurmanız gereken bazı nokta
 
 ## <a name="identity-considerations"></a>Kimlik konuları
 
-Kimlik açısından en iyi yaklaşım, paylaşılan hizmet alt ağını kullanarak hub üzerinde en az bir AD etki alanı denetleyicisi dağıtmaktır. Bu, her ikisi de bölge tarafından dağıtılan veya bir VM kullanılabilirlik kümesidir. Şirket içi AD etki alanınızı Azure 'a genişletmek için [Azure mimari merkezi](/azure/architecture/reference-architectures/identity/adds-extend-domain) bakın.
+Kimlik açısından en iyi yaklaşım, paylaşılan hizmet alt ağını kullanarak hub üzerinde en az bir AD etki alanı denetleyicisi dağıtmaktır. Bu, aralarında bölge tarafından dağıtılan veya bir VM kullanılabilirlik kümesindeki en ideal ikisi. Şirket içi AD etki alanınızı Azure 'a genişletmek için [Azure mimari merkezi](/azure/architecture/reference-architectures/identity/adds-extend-domain) bakın.
 
 Ayrıca, vSphere ortamında kimlik ve DNS kaynağı olarak görev yapmak için Azure VMware Çözüm tarafında başka bir etki alanı denetleyicisi dağıtın.
 

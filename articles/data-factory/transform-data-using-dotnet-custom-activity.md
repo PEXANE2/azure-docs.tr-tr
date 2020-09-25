@@ -1,6 +1,6 @@
 ---
 title: İşlem hattında özel etkinlikler kullanma
-description: Özel etkinlikler oluşturmayı ve bunları bir Azure Data Factory işlem hattında kullanmayı öğrenin.
+description: .NET kullanarak özel etkinlikler oluşturmayı öğrenin ve ardından Azure Data Factory işlem hattındaki etkinlikleri kullanın.
 services: data-factory
 ms.service: data-factory
 author: nabhishek
@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b8114a6abf5579ed0750862d59a5d13178339f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84019971"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276515"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 
@@ -102,16 +102,16 @@ Aşağıdaki tabloda, bu etkinliğe özgü özelliklerin adları ve açıklamala
 
 | Özellik              | Açıklama                              | Gerekli |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | İşlem hattındaki etkinliğin adı     | Evet      |
-| açıklama           | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| tür                  | Özel etkinlik için etkinlik türü **Custom**olur. | Evet      |
-| linkedServiceName     | Azure Batch bağlı hizmet. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.  | Evet      |
-| command               | Yürütülecek özel uygulamanın komutu. Uygulama Azure Batch havuzu düğümünde zaten kullanılabiliyorsa, Resourcelınkedservice ve folderPath atlanabilir. Örneğin, `cmd /c dir` Windows Batch havuzu düğümü tarafından yerel olarak desteklenen olan komutu belirtebilirsiniz. | Evet      |
+| name                  | İşlem hattındaki etkinliğin adı     | Yes      |
+| açıklama           | Etkinliğin ne yaptığını açıklayan metin.  | No       |
+| tür                  | Özel etkinlik için etkinlik türü **Custom**olur. | Yes      |
+| linkedServiceName     | Azure Batch bağlı hizmet. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.  | Yes      |
+| command               | Yürütülecek özel uygulamanın komutu. Uygulama Azure Batch havuzu düğümünde zaten kullanılabiliyorsa, Resourcelınkedservice ve folderPath atlanabilir. Örneğin, `cmd /c dir` Windows Batch havuzu düğümü tarafından yerel olarak desteklenen olan komutu belirtebilirsiniz. | Yes      |
 | Resourcelınkedservice | Özel uygulamanın depolandığı depolama hesabına Azure Storage bağlı hizmeti | &#42; yok       |
 | folderPath            | Özel uygulamanın klasörünün yolu ve tüm bağımlılıkları<br/><br/>Alt klasörlerde depolanan bağımlılıklarınız varsa-diğer bir deyişle, *FolderPath* altındaki hiyerarşik bir klasör yapısında, dosyalar Azure Batch kopyalanırken klasör yapısı şu anda düzleştirilir. Diğer bir deyişle, tüm dosyalar alt klasörleri olmayan tek bir klasöre kopyalanır. Bu davranışa geçici bir çözüm bulmak için, dosyaları sıkıştırmayı, sıkıştırılmış dosyayı kopyalamayı ve sonra istenen konumdaki özel kodla bir daha fazla ping işlemi yapmayı göz önünde bulundurun. | &#42; yok       |
-| referenceObjects      | Mevcut bağlı hizmetlerin ve veri kümelerinin dizisi. Başvurulan bağlı hizmetler ve veri kümeleri, JSON biçiminde özel uygulamaya geçirilir, böylece özel kodunuzun Data Factory kaynaklarına başvurabilir. | Hayır       |
-| extendedProperties    | Özel kodunuzun ek özelliklere başvurabilmesi için JSON biçiminde özel uygulamaya geçirilebilecek Kullanıcı tanımlı özellikler | Hayır       |
-| retentionTimeInDays | Özel etkinlik için gönderilen dosyalar için bekletme süresi. Varsayılan değer 30 gündür. | Hayır |
+| referenceObjects      | Mevcut bağlı hizmetlerin ve veri kümelerinin dizisi. Başvurulan bağlı hizmetler ve veri kümeleri, JSON biçiminde özel uygulamaya geçirilir, böylece özel kodunuzun Data Factory kaynaklarına başvurabilir. | No       |
+| extendedProperties    | Özel kodunuzun ek özelliklere başvurabilmesi için JSON biçiminde özel uygulamaya geçirilebilecek Kullanıcı tanımlı özellikler | No       |
+| retentionTimeInDays | Özel etkinlik için gönderilen dosyalar için bekletme süresi. Varsayılan değer 30 gündür. | No |
 
 Özellikleri &#42; `resourceLinkedService` ve her `folderPath` ikisi de belirtilmelidir ya da her ikisi de atlanmalıdır.
 
@@ -306,7 +306,7 @@ Aşağı akış etkinliklerindeki stdout.txt içeriğini kullanmak istiyorsanız
 
 ## <a name="pass-outputs-to-another-activity"></a>Çıkışları başka bir etkinliğe geçirme
 
-Özel bir etkinlikte kodunuzdaki özel değerleri Azure Data Factory geri gönderebilirsiniz. Bunu uygulamanızdan yazarak yapabilirsiniz `outputs.json` . Data Factory içeriğini kopyalar `outputs.json` ve özelliğin değeri olarak etkinlik çıktısına ekler `customOutput` . (Boyut sınırı 2MB 'dir.) `outputs.json`Aşağı akış etkinliklerinin içeriğini kullanmak istiyorsanız, ifadesini kullanarak değeri alabilirsiniz `@activity('<MyCustomActivity>').output.customOutput` .
+Özel bir etkinlikte kodunuzdaki özel değerleri Azure Data Factory geri gönderebilirsiniz. Bunu uygulamanızdan yazarak yapabilirsiniz `outputs.json` . Data Factory içeriğini kopyalar `outputs.json` ve özelliğin değeri olarak etkinlik çıktısına ekler `customOutput` . (Boyut sınırı 2MB 'dir.) `outputs.json` Aşağı akış etkinliklerinin içeriğini kullanmak istiyorsanız, ifadesini kullanarak değeri alabilirsiniz `@activity('<MyCustomActivity>').output.customOutput` .
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString çıkışlarını al
 
@@ -325,7 +325,7 @@ Bu serileştirme gerçekten güvenli değildir ve güvenli hale getirilmesi ama�
 
 Özel etkinlikten *SecureString* türünün özelliklerine erişmek için, `activity.json` ile aynı klasöre yerleştirilmiş olan dosyayı okuyun. EXE, JSON serisini kaldırıp JSON özelliğine (extendedProperties => [propertyName] => value) erişin.
 
-## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>V2 özel etkinliğini ve sürüm 1 (özel) DotNet etkinliğini karşılaştırın
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a> V2 özel etkinliğini ve sürüm 1 (özel) DotNet etkinliğini karşılaştırın
 
 Azure Data Factory sürüm 1 ' de, arabirimin yöntemini uygulayan bir sınıf ile bir .NET sınıf kitaplığı projesi oluşturarak (özel) DotNet etkinliği Uygulıolursunuz `Execute` `IDotNetActivity` . Bir (özel) DotNet etkinliğinin JSON yükünde bağlı hizmetler, veri kümeleri ve genişletilmiş özellikler, yürütme yöntemine türü kesin belirlenmiş nesneler olarak geçirilir. Sürüm 1 davranışı hakkındaki ayrıntılar için bkz. [Sürüm 1 ' de (özel) DotNet](v1/data-factory-use-custom-activities.md). Bu uygulama nedeniyle, sürüm 1 DotNet etkinlik kodunuzun .NET Framework 4.5.2 hedeflemesi gerekir. Sürüm 1 DotNet etkinliğinin de Windows tabanlı Azure Batch havuzu düğümlerinde yürütülmesi gerekir.
 

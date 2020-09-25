@@ -9,36 +9,35 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: da9445b12ce6f35d249fc3af1a4a0ef560ba35de
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 073f1361771ded96b33158d040efd77306acd846
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905100"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276959"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Özel model için eğitim veri kümesi oluşturma
 
-Form tanıyıcı özel modelini kullandığınızda, modelin sektöre özgü formlara eğmesi için kendi eğitim verilerinizi sağlarsınız. 
+Form tanıyıcı özel modelini kullandığınızda, modelin sektöre özgü formlarınıza eğmesi için kendi eğitim verilerinizi [özel modeli eğitme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) işlemine sağlarsınız. Modeli verimli bir şekilde eğitme amacıyla verileri nasıl toplayacağınızı ve hazırlanacağınızı öğrenmek için bu kılavuzu izleyin.
 
 El ile etiketleriniz olmadan eğitim elde ediyorsanız, beş doldurulmuş form veya boş bir form kullanabilirsiniz ("boş" sözcüğünü dosya adı ile birlikte dahil etmeniz gerekir) ve iki doldurulmuş form oluşturabilirsiniz. Yeterli sayıda doldurulmuş formunuz olsa da, eğitim veri kümesine boş bir form eklemek, modelin doğruluğunu iyileştirebilir.
 
 El ile veri etiketli eğitim verileri kullanmak istiyorsanız, aynı türde en az beş doldurulmuş form ile başlamanız gerekir. Etiketli formları ve gerekli veri kümesine ek olarak boş bir formu kullanmaya devam edebilirsiniz.
 
+## <a name="custom-model-input-requirements"></a>Özel model giriş gereksinimleri
+
+İlk olarak, eğitim verileri ayarlamış olduğunuz form tanıyıcı için giriş gereksinimlerini izlediğinden emin olun.
+
+[!INCLUDE [input requirements](./includes/input-requirements.md)]
+
 ## <a name="training-data-tips"></a>Eğitim verileri ipuçları
 
-Eğitim için en iyi duruma getirilmiş bir veri kümesi kullanılması önemlidir. [Özel modeli eğitme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) işlemindeki en iyi sonuçları aldığınızdan emin olmak için aşağıdaki ipuçlarını kullanın:
+Eğitim için veri kümesini daha iyi hale getirmeye yönelik bu ek ipuçlarını izleyin.
 
 * Mümkünse, görüntü tabanlı belgeler yerine metin tabanlı PDF belgelerini kullanın. Taranan PDF 'Ler görüntü olarak işlenir.
 * Doldurulmuş formlarda, tüm alanlarının doldurulduğu örnekleri kullanın.
 * Her alanda farklı değerlere sahip olan formlar kullanın.
 * Form görüntüleriniz daha düşük kaliteden fazlaysa daha büyük bir veri kümesi kullanın (örneğin, 10-15 görüntü).
-* Eğitim veri kümesinin toplam boyutu en fazla 500 sayfa olabilir.
-
-## <a name="general-input-requirements"></a>Genel giriş gereksinimleri
-
-Eğitim verileri ayarlamış olduğunuz tüm form tanıyıcı içeriği için giriş gereksinimlerini de takip ettiğinizden emin olun. 
-
-[!INCLUDE [input requirements](./includes/input-requirements.md)]
 
 ## <a name="upload-your-training-data"></a>Eğitim verilerinizi karşıya yükleyin
 
@@ -73,7 +72,12 @@ Varsayılan olarak, [özel model eğitme](https://westus2.dev.cognitive.microsof
 
 Eğitim veri kümesi oluşturmayı öğrendiğinize göre, özel bir form tanıyıcı modelini eğtirecek ve formlarınızda kullanmaya başlamak için hızlı başlangıç izleyin.
 
+* [İstemci kitaplığını kullanarak bir modeli eğitme ve form verilerini ayıklama](./quickstarts/client-library.md)
 * [Bir modeli eğitme ve kıvrımlı kullanarak form verilerini ayıklama](./quickstarts/curl-train-extract.md)
 * [REST API ve Python kullanarak bir modeli eğitme ve form verilerini ayıklama](./quickstarts/python-train-extract.md)
 * [Örnek etiketleme aracını kullanarak etiketlerle eğitme](./quickstarts/label-tool.md)
 * [REST API ve Python kullanarak etiketlerle eğitme](./quickstarts/python-labeled-data.md)
+
+## <a name="see-also"></a>Ayrıca bkz.
+
+* [Form Tanıma nedir?](./overview.md)

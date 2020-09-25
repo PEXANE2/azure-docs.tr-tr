@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: c0aac897d85cd96d537238bc81cbc89d3626a07c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: 21d0587b951d909f0091eccf9a7f86a484bc5051
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422768"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324051"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Yeni bir sanal cihaz oluşturma ve test etme
 
@@ -33,7 +33,7 @@ Bu nasıl yapılır kılavuzunda, cihaz benzetimi mikro hizmetini nasıl özelle
 
 | Name                     | Değerler                      |
 | ------------------------ | --------------------------- |
-| Color (Renk)                    | Beyaz, kırmızı, mavi            |
+| Color                    | Beyaz, kırmızı, mavi            |
 | Parlaklık               | 0-100                    |
 | Tahmini kalan ömür | 10.000 saatten geri sayım |
 
@@ -59,7 +59,7 @@ Aşağıdaki tabloda yeni cihazın desteklediği eylemler gösterilmektedir:
 | Geçiş yap   |
 | Geçiş kapalı  |
 
-*İlk durum*
+*Başlangıç durumu*
 
 Aşağıdaki tabloda cihazın ilk durumu gösterilmektedir:
 
@@ -77,7 +77,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için şunlar gerekir:
 
@@ -133,7 +133,7 @@ Bu bölümde, var olan **Chiller** cihaz türüne yeni bir **iç sıcaklık** te
     | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
     | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
-1. C:\temp\devicemodels\chiller-01.jsdosya **üzerinde** açın.
+1. C:\temp\devicemodels\chiller-01.jsdosya ** üzerinde** açın.
 
 1. **InitialState** bölümünde aşağıdaki iki tanımı ekleyin:
 

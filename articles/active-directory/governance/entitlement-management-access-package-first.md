@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9df1226d4b61326f8e5aa6f9b71d36eb5a33e81e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306523"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde ilk erişim paketinizi oluşturma
 
@@ -29,7 +29,7 @@ Gruplar, uygulamalar ve siteler gibi çalışanların ihtiyaç duyduğu tüm kay
 
 Bu öğreticide, Woodgrove Bank for It Administrator olarak çalışırsınız. Şirket içi kullanıcıların Self Servis isteğine sahip olduğu bir pazarlama kampanyası için kaynak paketi oluşturmanız istendi. İstekler onay gerektirmez ve kullanıcının erişimi 30 gün sonra dolar. Bu öğreticide, pazarlama kampanyası kaynakları yalnızca tek bir gruba üyedir, ancak gruplar, uygulamalar veya SharePoint Online siteleri koleksiyonu olabilir.
 
-![Senaryoya genel bakış](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
+![Senaryoya genel bakış gösteren diyagram.](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -110,7 +110,7 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
 
      Varsayılan olarak, genel kataloğun içinde gruplar görürsünüz. Genel kataloğun dışında bir grup seçtiğinizde, **Tümünü göster** onay kutusunu işaretlerseniz, bu genel kataloğa eklenir.
 
-    ![Yeni erişim paketi-kaynak rolleri sekmesi](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    !["Yeni erişim paketi-kaynak rolleri" sekmesini ve "Grup Seç" penceresini gösteren ekran görüntüsü.](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
 10. Grubu listeye eklemek için **Seç** ' e tıklayın.
 

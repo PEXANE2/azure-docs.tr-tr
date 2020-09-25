@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 04/19/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb82eb2d8e23daec0ddb8856b713c1aa051f25c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e6460015430850c11fbf70a005d7440ce1b92fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355956"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306013"
 ---
 # <a name="troubleshooting-source-anchor-issues-during-installation"></a>Yükleme sırasında kaynak bağlantısı sorunlarını giderme
 Bu makalede, yükleme sırasında oluşabilecek farklı kaynak bağlantısı ile ilgili sorunlar açıklanmakta ve bu sorunları çözmeye yönelik yollar sunulmaktadır.
@@ -27,16 +27,16 @@ Bu makalede, yükleme sırasında oluşabilecek farklı kaynak bağlantısı ile
 Özel yükleme sırasında, Azure AD Connect kaynak bağlantısı ilkesini Azure Active Directory okur. İlke Azure Active Directory varsa, müşteri tarafından geçersiz kılınmadıkça Azure AD Connect aynı ilkeyi uygular. Sihirbaz size hangi özniteliğin okunduğunu bildirir. Ayrıca, kaynak bağlantısı ilkesini geçersiz kılmayı denerseniz sihirbaz sizi uyarır.
 
 Bu okuma işlemi sırasında, Azure Active Directory ' deki kaynak bağlayıcı ilkesi beklenmeyen bir durumda olabilir. Bu durumda, Azure AD Connect kaynak bağlayıcının ne olduğunu bilmez ve el ile geçersiz kılma ihtiyacı vardır.</br>
-![bek](media/tshoot-connect-source-anchor/source1.png)
+![Kaynak bağlayıcının nerede el ile geçersiz kılınacağını gösteren ekran görüntüsü.](media/tshoot-connect-source-anchor/source1.png)
 
 Bu sorunu çözmek için, belirli bir özniteliği seçerek kaynak bağlantısını el ile geçersiz kılabilirsiniz. Yalnızca hangi özniteliğin seçgeldiğinden eminseniz, bu seçenekle devam edin. Emin değilseniz, rehberlik için [Microsoft desteğine](https://support.microsoft.com/contactus/) başvurun. Kaynak Bağlayıcısı ilkesini değiştirirseniz, şirket içi kullanıcılarınız ve bunlarla ilişkili Azure kaynakları arasındaki ilişkilendirmeyi bozabilir.</br>
-![bek](media/tshoot-connect-source-anchor/source2.png)
+![Kaynak bağlayıcısını geçersiz kılan belirtilen özniteliği gösteren ekran görüntüsü.](media/tshoot-connect-source-anchor/source2.png)
 
 ### <a name="express-installation"></a>Hızlı yükleme
 Hızlı yükleme sırasında Azure AD Connect kaynak bağlantısı ilkesini Azure Active Directory okur. İlke Azure Active Directory varsa, Azure AD Connect aynı ilkeyi uygular. El ile geçersiz kılma yapmak için bir seçenek yoktur.
 
 Bu okuma işlemi sırasında, Azure Active Directory ' deki kaynak bağlayıcı ilkesi beklenmeyen bir durumda olabilir. Bu durumda, Azure AD Connect kaynak bağlayıcının ne olması gerektiğini bilmez.</br>
-![bek](media/tshoot-connect-source-anchor/source3.png)
+![Azure Active Directory içindeki kaynak bağlantısı beklendiğinde ne olacağını gösteren ekran görüntüsü.](media/tshoot-connect-source-anchor/source3.png)
 
 Bu sorunu çözmek için, özel modu kullanarak yeniden yüklemeniz ve belirli bir özniteliği seçerek kaynak bağlantısını el ile geçersiz kılmanız gerekir. Yalnızca hangi özniteliğin seçgeldiğinden eminseniz, bu seçenekle devam edin. Emin değilseniz, rehberlik için [Microsoft desteğine](https://support.microsoft.com/contactus/) başvurun. Kaynak Bağlayıcısı ilkesini değiştirirseniz, şirket içi kullanıcılarınız ve bunlarla ilişkili Azure kaynakları arasındaki ilişkilendirmeyi bozabilir.
 

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/05/2020
-ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440551"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324340"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Etkinlik performansını en iyi duruma getirme özelliklerini Kopyala
 
@@ -124,31 +124,35 @@ Veri mağazalarınızı barındıran makinelerde yükü denetlemek veya kopyalam
 
 ## <a name="staged-copy"></a>Hazırlanmış kopya
 
-Bir kaynak veri deposundan bir havuz veri deposuna veri kopyaladığınızda, blob Storage 'ı geçici bir hazırlama deposu olarak kullanmayı tercih edebilirsiniz. Hazırlama, özellikle aşağıdaki durumlarda yararlı olur:
+Bir kaynak veri deposundan bir havuz veri deposuna veri kopyaladığınızda, Azure Blob depolamayı veya Azure Data Lake Storage 2. geçici bir hazırlama deposu olarak kullanmayı seçebilirsiniz. Hazırlama, özellikle aşağıdaki durumlarda yararlı olur:
 
-- **Çeşitli veri depolarından verileri, PolyBase aracılığıyla Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) almak istiyorsunuz.** Azure SYNAPSE Analytics, Azure SYNAPSE Analytics 'e büyük miktarda veri yüklemek için yüksek performanslı bir mekanizma olarak PolyBase 'i kullanır. Kaynak verilerin blob depolaması veya Azure Data Lake Store olması ve ek ölçütlere uyması gerekir. BLOB depolama veya Azure Data Lake Store dışında bir veri deposundan veri yüklediğinizde, veri kopyalamayı, geçici hazırlama blob depolaması aracılığıyla etkinleştirebilirsiniz. Bu durumda Azure Data Factory, PolyBase 'in gereksinimlerini karşıladığından emin olmak için gerekli veri dönüştürmelerini gerçekleştirir. Daha sonra, Azure SYNAPSE Analytics 'e verileri verimli bir şekilde yüklemek için PolyBase 'i kullanır. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
+- **Çeşitli veri depolarından verileri, PolyBase aracılığıyla Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) almak, verileri kar/ç 'den ya da Amazon Redshift/performans ve veri alımı aracılığıyla verileri içe aktarmak istiyorsunuz.** Hakkında daha fazla bilgi edinin:
+  - [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanın](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
+  - [Kar tanesi Bağlayıcısı](connector-snowflake.md)
+  - [Amazon Redshift Bağlayıcısı](connector-amazon-redshift.md)
+  - [Bağlantı ucu Bağlayıcısı](connector-hdfs.md)
+- **Şirket BT ilkeleri nedeniyle güvenlik duvarınızdaki bağlantı noktası 80 ve bağlantı noktası 443 dışındaki bağlantı noktalarını açmak istemezsiniz.** Örneğin, verileri şirket içi veri deposundan bir Azure SQL veritabanına veya Azure SYNAPSE Analytics 'e kopyaladığınızda, bağlantı noktası 1433 ' de giden TCP iletişimini hem Windows Güvenlik Duvarı hem de kurumsal güvenlik duvarı için etkinleştirmeniz gerekir. Bu senaryoda, hazırlanan kopya, ilk olarak şirket içinde barındırılan tümleştirme çalışma zamanından yararlanarak bağlantı noktası 443 ' de verileri HTTP veya HTTPS üzerinden bir hazırlama deposuna kopyalayabilir, sonra verileri hazırdan SQL veritabanına veya Azure SYNAPSE Analytics 'e yükleyebilir. Bu akışta 1433 numaralı bağlantı noktasını etkinleştirmeniz gerekmez.
 - **Bazen bir karma veri hareketini (yani, şirket içi veri deposundan bir bulut veri deposuna kopyalamak için) yavaş bir ağ bağlantısı üzerinden gerçekleştirme işlemi biraz zaman alır.** Performansı artırmak için, hazırlanan kopyayı, verileri bulutta hazırlama veri deposuna taşımak daha az zaman alması amacıyla Şirket içindeki verileri sıkıştırmak için kullanabilirsiniz. Daha sonra, hedef veri deposuna yüklemeden önce hazırlama deposundaki verileri açabilir.
-- **Şirket BT ilkeleri nedeniyle güvenlik duvarınızdaki bağlantı noktası 80 ve bağlantı noktası 443 dışındaki bağlantı noktalarını açmak istemezsiniz.** Örneğin, şirket içi bir veri deposundan verileri bir Azure SQL veritabanı havuzuna veya bir Azure SYNAPSE Analytics havuzuna kopyaladığınızda, bağlantı noktası 1433 üzerinde giden TCP iletişimini hem Windows Güvenlik Duvarı hem de kurumsal güvenlik duvarı için etkinleştirmeniz gerekir. Bu senaryoda, hazırlanan kopya, ilk olarak şirket içinde barındırılan tümleştirme çalışma zamanından yararlanarak, önce verileri HTTP veya 443 numaralı bağlantı noktasında HTTP veya HTTPS üzerinden BLOB depolama hazırlama örneğine kopyalayabilir. Ardından, BLOB depolama alanı hazırlamadaki verileri SQL veritabanı veya Azure SYNAPSE Analytics 'e yükleyebilirsiniz. Bu akışta 1433 numaralı bağlantı noktasını etkinleştirmeniz gerekmez.
 
 ### <a name="how-staged-copy-works"></a>Aşamalı kopya nasıl çalışacaktır?
 
-Hazırlama özelliğini etkinleştirdiğinizde, önce veriler kaynak veri deposundan hazırlama BLOB depolama alanına kopyalanır (kendinizinkini getirin). Ardından, veriler hazırlama veri deposundan havuz veri deposuna kopyalanır. Azure Data Factory, sizin için iki aşamalı akışı otomatik olarak yönetir. Azure Data Factory, veri taşıma işlemi tamamlandıktan sonra hazırlama depolamadan geçici verileri de temizler.
+Hazırlama özelliğini etkinleştirdiğinizde, önce veriler kaynak veri deposundan hazırlama deposuna kopyalanır (kendi Azure blobunu getirin veya Azure Data Lake Storage 2.). Ardından, veriler hazırdan havuz veri deposuna kopyalanır. Azure Data Factory kopyalama etkinliği sizin için iki aşamalı akışı otomatik olarak yönetir ve veri taşıma işlemi tamamlandıktan sonra hazırlama depolama alanındaki geçici verileri de temizler.
 
 ![Hazırlanmış kopya](media/copy-activity-performance/staged-copy.png)
 
-Veri hareketini bir hazırlama deposu kullanarak etkinleştirdiğinizde, verileri kaynak veri deposundan bir ara veya hazırlama veri deposuna taşımadan önce verilerin sıkıştırılıp sıkıştırılmayacağını belirtebilir ve ardından verileri bir geçici veya hazırlama veri deposundan havuz veri deposuna taşımadan önce sıkıştırması açılır.
+Veri hareketini bir hazırlama deposu kullanarak etkinleştirdiğinizde, verileri kaynak veri deposundan hazırlama deposuna taşımadan önce verilerin sıkıştırılıp sıkıştırılmayacağını ve sonra verileri bir geçici veya hazırlama veri deposundan havuz veri deposuna taşımadan önce ' yi açarak bu verileri belirtebilirsiniz.
 
 Şu anda, otomatik olarak barındırılan farklı IRS 'ler arasında bağlı olan iki veri deposu arasında veri kopyalayamazsınız, ancak hazırlanmamış kopya olmadan, verileri kopyalayamazsınız. Bu tür senaryolar için, kaynaktan hazırlama ve daha sonra hazırlama durumundan havuza kopyalamak üzere iki açık zincirleme kopyalama etkinliği yapılandırabilirsiniz.
 
 ### <a name="configuration"></a>Yapılandırma
 
-Hedef veri deposuna yüklemeden önce, verilerin blob depolamada hazırlanması isteyip istemediğinizi belirtmek için kopyalama etkinliğinde **Enablehazırlama** ayarını yapılandırın. **Enablehazırlama** `TRUE` ' ı ayarladığınızda, aşağıdaki tabloda listelenen ek özellikleri belirtin. Ayrıca, yoksa, hazırlama için bir Azure depolama veya depolama paylaşılan erişim imzası ile bağlantılı hizmet oluşturmanız gerekir.
+Hedef veri deposuna yüklemeden önce verilerin depolamada hazırlanması isteyip istemediğinizi belirtmek için kopyalama etkinliğinde **Enablehazırlama** ayarını yapılandırın. **Enablehazırlama** `TRUE` ' ı ayarladığınızda, aşağıdaki tabloda listelenen ek özellikleri belirtin. 
 
 | Özellik | Açıklama | Varsayılan değer | Gerekli |
 | --- | --- | --- | --- |
 | Enablehazırlama |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |Yanlış |No |
-| linkedServiceName |Geçici hazırlama deposu olarak kullandığınız depolama örneğine başvuran bir [Azurestorage](connector-azure-blob-storage.md#linked-service-properties) Linked hizmetinin adını belirtin. <br/><br/> PolyBase aracılığıyla Azure SYNAPSE Analytics 'e veri yüklemek için paylaşılan erişim imzasıyla depolama kullanamazsınız. Diğer tüm senaryolarda kullanabilirsiniz. |Yok |Evet, **Enablehazırlama** true olarak ayarlandığında |
-| path |Hazırlanan verileri içermesini istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. <br/><br/> Yalnızca bir paylaşılan erişim imzasıyla depolama kullanırsanız veya geçici verilerin belirli bir konumda olmasını istiyorsanız bir yol belirtin. |Yok |No |
+| linkedServiceName |Bir [Azure Blob depolama](connector-azure-blob-storage.md#linked-service-properties) alanının veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) bağlı hizmetin, geçici hazırlama deposu olarak kullandığınız depolama örneğine başvuran bir adını belirtin. |Yok |Evet, **Enablehazırlama** true olarak ayarlandığında |
+| path |Hazırlanan verileri içermesini istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. |Yok |No |
 | enableCompression |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |Yanlış |No |
 
 >[!NOTE]
@@ -159,25 +163,24 @@ Aşağıda, önceki tabloda açıklanan özelliklerle birlikte kopyalama etkinli
 ```json
 "activities":[
     {
-        "name": "Sample copy activity",
+        "name": "CopyActivityWithStaging",
         "type": "Copy",
         "inputs": [...],
         "outputs": [...],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "OracleSource",
             },
             "sink": {
-                "type": "SqlSink"
+                "type": "SqlDWSink"
             },
             "enableStaging": true,
             "stagingSettings": {
                 "linkedServiceName": {
-                    "referenceName": "MyStagingBlob",
+                    "referenceName": "MyStagingStorage",
                     "type": "LinkedServiceReference"
                 },
-                "path": "stagingcontainer/path",
-                "enableCompression": true
+                "path": "stagingcontainer/path"
             }
         }
     }

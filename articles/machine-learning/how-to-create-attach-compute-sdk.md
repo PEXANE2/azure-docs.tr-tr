@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ac440db4c1dbddd317743e2d681a62251624d9bd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cc7ca9d217e405b0b39779cf256edcf0669afd6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898124"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302443"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Python SDK ile model eğitimi ve dağıtımı için işlem hedefleri oluşturma
 
@@ -81,7 +81,7 @@ Bu işlem hedeflerini yapılandırmak için aşağıdaki bölümleri kullanın:
 
 **Eğitim**için yerel bilgisayarınızı kullandığınızda bir işlem hedefi oluşturmanız gerekmez.  Yalnızca yerel makinenizden [eğitim çalıştırmasını göndermeniz](how-to-set-up-training-targets.md) yeterlidir.
 
-Yerel bilgisayarınızı **çıkarım**Için kullandığınızda Docker 'ın yüklü olması gerekir. Dağıtımı gerçekleştirmek için Web hizmetinin kullanacağı bağlantı noktasını tanımlamak üzere [Localwebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) kullanın. Ardından, [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md)bölümünde açıklandığı gibi normal dağıtım sürecini kullanın.
+Yerel bilgisayarınızı **çıkarım**Için kullandığınızda Docker 'ın yüklü olması gerekir. Dağıtımı gerçekleştirmek için Web hizmetinin kullanacağı bağlantı noktasını tanımlamak üzere [Localwebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-port-none-) kullanın. Ardından, [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md)bölümünde açıklandığı gibi normal dağıtım sürecini kullanın.
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning işlem kümesi
 
@@ -105,8 +105,7 @@ Azure Machine Learning Işlem, çalıştırmalar arasında yeniden kullanılabil
     
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-   Ayrıca, Azure Machine Learning Işlem oluştururken birçok gelişmiş özelliği de yapılandırabilirsiniz. Özellikler, sabit boyutlu kalıcı bir küme oluşturmanıza veya mevcut bir Azure Sanal Ağa gelen aboneliğinizden bu.  Ayrıntılar için [Amlcompute sınıfına](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
-    ) bakın.
+   Ayrıca, Azure Machine Learning Işlem oluştururken birçok gelişmiş özelliği de yapılandırabilirsiniz. Özellikler, sabit boyutlu kalıcı bir küme oluşturmanıza veya mevcut bir Azure Sanal Ağa gelen aboneliğinizden bu.  Ayrıntılar için [Amlcompute sınıfına](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) bakın.
 
     Ya da [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#portal-create)'da kalıcı bir Azure Machine Learning işlem kaynağı oluşturup ekleyebilirsiniz.
 
@@ -276,8 +275,25 @@ Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi San
 
 1. **Yapılandır**: dsvm işlem hedefi için bir çalıştırma yapılandırması oluşturun. Docker ve Conda, DSVM 'de Eğitim ortamı oluşturmak ve yapılandırmak için kullanılır.
 
-   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
-
+   ```python
+   from azureml.core import ScriptRunConfig
+   from azureml.core.environment import Environment
+   from azureml.core.conda_dependencies import CondaDependencies
+   
+   # Create environment
+   myenv = Environment(name="myenv")
+   
+   # Specify the conda dependencies
+   myenv.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
+   
+   # If no base image is explicitly specified the default CPU image "azureml.core.runconfig.DEFAULT_CPU_IMAGE" will be used
+   # To use GPU in DSVM, you should specify the default GPU base Docker image or another GPU-enabled image:
+   # myenv.docker.enabled = True
+   # myenv.docker.base_image = azureml.core.runconfig.DEFAULT_GPU_IMAGE
+   
+   # Configure the run configuration with the Linux DSVM as the compute target and the environment defined above
+   src = ScriptRunConfig(source_directory=".", script="train.py", compute_target=compute, environment=myenv) 
+   ```
 
 Bu işlemi yaptıktan sonra, çalışmanızı yapılandırdığınıza göre, sonraki adım [eğitim çalıştırmasını göndermektedir](how-to-set-up-training-targets.md).
 
@@ -494,7 +510,7 @@ Daha ayrıntılı bir örnek için GitHub 'daki [örnek bir not defteri](https:/
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Eğitim çalışması göndermek](how-to-set-up-training-targets.md)için işlem kaynağını kullanın.
+* [Bir eğitim çalıştırması yapılandırmak ve göndermek](how-to-set-up-training-targets.md)için işlem kaynağını kullanın.
 * [Öğretici: bir modeli eğitme](tutorial-train-models-with-aml.md) bir modeli eğmek için yönetilen bir işlem hedefi kullanır.
 * Daha iyi modeller oluşturmak için [hiper parametreleri verimli](how-to-tune-hyperparameters.md) bir şekilde ayarlamayı öğrenin.
 * Eğitilen bir modelden sonra [modellerin nasıl ve nereye dağıtılacağını](how-to-deploy-and-where.md)öğrenin.

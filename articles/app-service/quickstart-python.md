@@ -2,25 +2,24 @@
 title: 'Hızlı başlangıç: Python uygulaması oluşturma'
 description: İlk Python uygulamanızı App Service bir Linux kapsayıcısına dağıtarak Azure App Service kullanmaya başlayın.
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
-ms.openlocfilehash: c64971303a2fefb25a73f0a8e8900c14ef05486c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+zone_pivot_groups: python-frameworks-01
+ms.openlocfilehash: 0ce995bddb89ce6aa1a550971fbcd92c6515d58e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603620"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264566"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
-Bu hızlı başlangıçta, Azure 'un yüksek düzeyde ölçeklenebilir ve kendini yayama Web barındırma hizmeti [olan Linux üzerinde App Service](overview.md#app-service-on-linux)Için bir Python web uygulaması dağıtırsınız. Yerel [Azure komut satırı arabirimi 'ni (CLI)](/cli/azure/install-azure-cli) bir Mac, Linux veya Windows bilgisayarında kullanırsınız. Yapılandırdığınız Web uygulaması ücretsiz bir App Service katmanını kullanır, bu nedenle bu makalenin kursunda hiçbir ücret ödeirsiniz.
+Bu hızlı başlangıçta, Azure 'un yüksek düzeyde ölçeklenebilir ve kendini yayama Web barındırma hizmeti [olan Linux üzerinde App Service](overview.md#app-service-on-linux)Için bir Python web uygulaması dağıtırsınız. Bir Mac, Linux veya Windows bilgisayarında yerel [Azure komut satırı arabirimi 'ni (CLI)](/cli/azure/install-azure-cli) kullanarak Flask veya Docgo çerçeveleri ile bir örnek dağıtabilirsiniz. Yapılandırdığınız Web uygulaması ücretsiz bir App Service katmanını kullanır, bu nedenle bu makalenin kursunda hiçbir ücret ödeirsiniz.
 
 > [!TIP]
 > Uygulamaları bir IDE aracılığıyla dağıtmayı tercih ediyorsanız, bkz. **[Visual Studio Code App Service Için Python uygulamaları dağıtma](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)**.
 
 ## <a name="set-up-your-initial-environment"></a>İlk ortamınızı ayarlama
-
-Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 1. Etkin aboneliği olan bir Azure hesabına sahip olmanız gerekir. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 1. <a href="https://www.python.org/downloads/" target="_blank">Python 3,6 veya üstünü</a>yükler.
@@ -68,77 +67,99 @@ Oturum açtıktan sonra, aboneliğinizdeki kaynaklarla çalışmak için Azure C
 
 ## <a name="clone-the-sample"></a>Örneği
 
-Aşağıdaki komutla örnek depoyu kopyalayın ve klasöre gidin. (Zaten git yoksa[Git 'ı yükleyebilirsiniz](https://git-scm.com/downloads) .)
+Aşağıdaki komutu kullanarak örnek depoyu kopyalayın ve örnek klasöre gidin. (Zaten git yoksa[Git 'ı yükleyebilirsiniz](https://git-scm.com/downloads) .)
 
+::: zone pivot="python-framework-flask"
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
-cd python-docs-hello-world
 ```
 
-Örnek kod, kodun bir Flask uygulaması içerdiğini App Service söyleyen bir *Application.py* dosyası içerir. Daha fazla bilgi için bkz. [kapsayıcı başlatma işlemi](configure-language-python.md#container-startup-process).
+Ardından bu klasöre gidin:
+
+```terminal
+cd python-docs-hello-world
+```
+::: zone-end
+
+::: zone pivot="python-framework-django"
+```terminal
+git clone https://github.com/Azure-Samples/python-docs-hello-django
+```
+
+Ardından bu klasöre gidin:
+
+```terminal
+cd python-docs-hello-django
+```
+::: zone-end
+
+Örnek, uygulamayı başlatırken Azure App Service tanıdığı çerçeveye özgü kod içerir. Daha fazla bilgi için bkz. [kapsayıcı başlatma işlemi](configure-language-python.md#container-startup-process).
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-# <a name="bash"></a>[Bash](#tab/bash)
+::: zone pivot="python-framework-flask"
+1. *Python-docs-Hello-World* klasöründe olduğunuzdan emin olun. 
 
-İlk olarak bir sanal ortam oluşturun ve bağımlılıkları yüklemeniz gerekir:
+1. Sanal ortam oluşturma ve bağımlılıkları yüklemesi:
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
+    [!include [virtual environment setup](../../includes/app-service-quickstart-python-venv.md)]
 
-Ardından, `FLASK_APP` ortam değişkenini uygulamanın giriş modülüne ayarlayın ve Flask geliştirme sunucusunu çalıştırın:
+    "[Errno 2] böyle bir dosya veya dizin bulunamadı: ' requirements.txt '.", *Python-docs-Hello-World* klasöründe olduğunuzdan emin olun.
 
-```
-export FLASK_APP=application.py
-flask run
-```
+1. Geliştirme sunucusunu çalıştırın.
 
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
+    ```terminal  
+    flask run
+    ```
+    
+    Varsayılan olarak sunucu, uygulamanın giriş modülünün örnekte kullanılan *app.py*içinde olduğunu varsayar. (Farklı bir modül adı kullanırsanız, `FLASK_APP` ortam değişkenini bu ad olarak ayarlayın.)
 
-İlk olarak bir sanal ortam oluşturun ve bağımlılıkları yüklemeniz gerekir:
+1. Bir Web tarayıcısı açın ve konumundaki örnek uygulamaya gidin `http://localhost:5000/` . Uygulama **Merhaba, dünya!** iletisini görüntüler.
 
-```powershell
-py -3 -m venv env
-env\scripts\activate
-pip install -r requirements.txt
-```
+    ![Örnek bir Python uygulamasını yerel olarak çalıştırma](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
+    
+1. Terminal pencerenizde, **Ctrl** + geliştirme sunucusundan çıkmak için CTRL**C** tuşuna basın.
+::: zone-end
 
-Ardından, `FLASK_APP` ortam değişkenini uygulamanın giriş modülüne ayarlayın ve Flask geliştirme sunucusunu çalıştırın:
+::: zone pivot="python-framework-django"
+1. *Python-docs-Hello-docgo* klasöründe olduğunuzdan emin olun. 
 
-```powershell
-Set-Item Env:FLASK_APP ".\application.py"
-flask run
-```
+1. Sanal ortam oluşturma ve bağımlılıkları yüklemesi:
 
-# <a name="cmd"></a>[Cmd](#tab/cmd)
+    [!include [virtual environment setup](../../includes/app-service-quickstart-python-venv.md)]
 
-İlk olarak bir sanal ortam oluşturun ve bağımlılıkları yüklemeniz gerekir:
+    "[Errno 2] böyle bir dosya veya dizin bulunamadı: ' requirements.txt '.", *Python-docs-Hello-docgo* klasöründe olduğunuzdan emin olun.
+    
+1. Geliştirme sunucusunu çalıştırın.
 
-```cmd
-py -3 -m venv env
-env\scripts\activate
-pip install -r requirements.txt
-```
+    # <a name="bash"></a>[Bash](#tab/bash)
 
-Ardından, `FLASK_APP` ortam değişkenini uygulamanın giriş modülüne ayarlayın ve Flask geliştirme sunucusunu çalıştırın:
+    ```bash
+    python3 manage.py runserver
+    ```
 
-```cmd
-SET FLASK_APP=application.py
-flask run
-```
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
----
+    ```powershell
+    py -3 manage.py runserver
+    ```
 
-Bir Web tarayıcısı açın ve konumundaki örnek uygulamaya gidin `http://localhost:5000/` . Uygulama **Merhaba Dünya!** iletisini görüntüler.
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
 
-![Örnek bir Python uygulamasını yerel olarak çalıştırma](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
+    ```cmd
+    py -3 manage.py runserver
+    ```
 
-**Ctrl** + Flask geliştirme sunucusundan çıkmak için Terminal pencerenizde CTRL**C** tuşuna basın.
+    ---    
+
+1. Bir Web tarayıcısı açın ve konumundaki örnek uygulamaya gidin `http://localhost:8000/` . Uygulama **Merhaba, dünya!** iletisini görüntüler.
+
+    ![Örnek bir Python uygulamasını yerel olarak çalıştırma](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
+    
+1. Terminal pencerenizde, **Ctrl** + geliştirme sunucusundan çıkmak için CTRL**C** tuşuna basın.
+::: zone-end
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
 
@@ -147,14 +168,15 @@ Bir Web tarayıcısı açın ve konumundaki örnek uygulamaya gidin `http://loca
 Şu komutu kullanarak kodu yerel klasörünüzde (*Python-docs-Hello-World*) dağıtın `az webapp up` :
 
 ```azurecli
-az webapp up --sku F1 -n <app-name>
+az webapp up --sku F1 --name <app-name>
 ```
 
 - `az`Komut tanınmazsa, [Ilk ortamınızı ayarlama](#set-up-your-initial-environment)bölümünde AÇıKLANDıĞı gibi Azure CLI 'nin yüklü olduğundan emin olun.
+- `webapp`Azure CLI sürümünüz 2.0.80 veya üzeri olduğundan, komut tanınmazsa. Aksi takdirde, [en son sürümü yükler](/cli/azure/install-azure-cli).
 - `<app_name>`Tüm Azure genelinde benzersiz olan bir adla değiştirin (*geçerli karakterler `a-z` , `0-9` ve `-` *). İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
 - `--sku F1`Bağımsız değişkeni, ücretsiz fiyatlandırma katmanında Web uygulaması oluşturur. Saatlik maliyet içeren daha hızlı bir Premium katmanı kullanmak için bu bağımsız değişkeni atlayın.
-- İsteğe bağlı olarak, `-l <location-name>` `<location_name>` **westeurope**, **koreagüney**, **brazilsouth**, **merkezileştirme**vb. **eastasia** **gibi**bir Azure bölgesi olan bağımsız değişkeni ekleyebilirsiniz. Komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
-- "Uygulamanızın çalışma zamanı yığınını otomatik olarak algılamamız" hatasını görürseniz, bu komutu *requirements.txt* dosyasını içeren *Python-docs-Hello-World* klasöründe çalıştırdığınızdan emin olun. (Bkz. [az WebApp up (GitHub) ile otomatik algılama sorunlarını giderme](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) .)
+- İsteğe bağlı olarak `--location <location-name>` `<location_name>` , kullanılabilir bir Azure bölgesi olan bağımsız değişkeni ekleyebilirsiniz. Komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
+- "Uygulamanızın çalışma zamanı yığınını otomatik olarak algılamamız" hatasını görürseniz, bu komutu *requirements.txt* dosyasını içeren *Python-docs-Hello-World* klasöründe (Flask) veya *Python-docs-Hello-Docgo* klasöründe (docgo) çalıştırdığınızdan emin olun. (Bkz. [az WebApp up (GitHub) ile otomatik algılama sorunlarını giderme](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) .)
 
 Komutun tamamlanması birkaç dakika sürebilir. Çalıştırılırken, kaynak grubu oluşturma, App Service planı ve barındırma uygulaması, günlüğü yapılandırma ve ardından ZIP dağıtımı gerçekleştirme hakkında iletiler sağlar. Daha sonra, "uygulamayı &lt; &gt; Azure 'da uygulamanın URL 'si olan http://app-name. azurewebsites.net konumunda başlatabilirsiniz.
 
@@ -162,11 +184,11 @@ Komutun tamamlanması birkaç dakika sürebilir. Çalıştırılırken, kaynak g
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
 
-[!INCLUDE [AZ Webapp Up Note](../../includes/app-service-web-az-webapp-up-note.md)]
+[!include [az webapp up command note](../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
-URL 'de Web tarayıcınızda dağıtılan uygulamaya gidin `http://<app-name>.azurewebsites.net` .
+URL 'de Web tarayıcınızda dağıtılan uygulamaya gidin `http://<app-name>.azurewebsites.net` . Başlangıçta uygulamanın başlatılması birkaç dakika sürer.
 
 Python örnek kodu, yerleşik bir görüntü kullanarak App Service bir Linux kapsayıcısı çalıştırıyor.
 
@@ -178,17 +200,28 @@ Python örnek kodu, yerleşik bir görüntü kullanarak App Service bir Linux ka
 
 ## <a name="redeploy-updates"></a>Güncelleştirmeleri yeniden Dağıt
 
-En sevdiğiniz kod düzenleyicisinde *Application.py* ' ı açın ve `hello` işlevi aşağıdaki gibi güncelleştirin. Bu değişiklik, bir `print` sonraki bölümde birlikte çalıştığınız günlük çıkışını oluşturmak için bir ifade ekler. 
+Bu bölümde, küçük bir kod değişikliği yapar ve ardından kodu Azure 'a yeniden dağıtabilirsiniz. Kod değişikliği, `print` sonraki bölümde birlikte çalıştığınız günlüğe kaydetme çıkışı oluşturmak için bir ifade içerir.
+
+::: zone pivot="python-framework-flask"
+*App.py* 'i bir düzenleyicide açın ve `hello` işlevi aşağıdaki kodla eşleşecek şekilde güncelleştirin. 
 
 ```python
 def hello():
     print("Handling request to home page.")
-    return "Hello Azure!"
+    return "Hello, Azure!"
 ```
+::: zone-end
+::: zone pivot="python-framework-django"
+Bir düzenleyicide *Merhaba/views.* düzenleyene açın ve `hello` işlevi aşağıdaki kodla eşleşecek şekilde güncelleştirin.
 
-Değişikliklerinizi kaydedin ve düzenleyiciden çıkın. 
-
-`az webapp up`Komutu tekrar kullanarak uygulamayı yeniden dağıtın:
+```python
+def hello(request):
+    print("Handling request to home page.")
+    return HttpResponse("Hello, Azure!")
+```
+::: zone-end
+    
+Değişikliklerinizi kaydettikten sonra `az webapp up` komutu tekrar kullanarak uygulamayı yeniden dağıtın:
 
 ```azurecli
 az webapp up
@@ -209,17 +242,19 @@ Dağıtım tamamlandıktan sonra tarayıcı penceresine geri dönün `http://<ap
 
 Uygulamanın içinden oluşturulan konsol günlüklerine ve çalıştığı kapsayıcıya erişebilirsiniz. Günlükler, using deyimleri kullanılarak oluşturulan herhangi bir çıktıyı içerir `print` .
 
-Günlükleri akışa almak için aşağıdaki komutu çalıştırın:
+Günlükleri akışa almak için [az WebApp log tail](/cli/azure/webapp/log?view=azure-cli-latest&preserve-view=true#az_webapp_log_tail) komutunu çalıştırın:
 
 ```azurecli
 az webapp log tail
 ```
 
+`--logs` `az webapp up` Günlük akışını otomatik olarak dağıtımda açmak için parametresini then komutuyla da dahil edebilirsiniz.
+
 Uygulamaya HTTP isteklerini açıklayan iletileri içeren konsol günlükleri oluşturmak için uygulamayı tarayıcıda yenileyin. Hiçbir çıkış hemen yoksa, 30 saniye içinde yeniden deneyin.
 
-Ayrıca, konumundaki tarayıcıdan günlük dosyalarını inceleyebilirsiniz `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
+Ayrıca, tarayıcıdan `https://<app-name>.scm.azurewebsites.net/api/logs/docker` adresine giderek günlük dosyalarını inceleyebilirsiniz.
 
-Günlük akışını istediğiniz zaman durdurmak için **CTRL** + **C**yazın.
+Günlük akışını istediğiniz zaman durdurmak için terminalde **CTRL** + **C** tuşuna basın.
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
 
@@ -248,12 +283,12 @@ App Service menüsü, uygulamanızı yapılandırmak için farklı sayfalar sağ
 Gelecekte bu kaynakların gerekli olmasını istemiyorsanız, aşağıdaki komutu çalıştırarak kaynak grubunu silin:
 
 ```azurecli
-az group delete
+az group delete --no-wait
 ```
 
 Komut *. Azure/config* dosyasında önbelleğe alınmış kaynak grubu adını kullanır.
 
-Komutun tamamlanması birkaç dakika sürebilir.
+`--no-wait`Bağımsız değişkeni, işlem tamamlanmadan önce komutun dönmesini sağlar.
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
 
@@ -263,10 +298,10 @@ Komutun tamamlanması birkaç dakika sürebilir.
 > [Öğretici: PostgreSQL ile Python (Docgo) Web uygulaması](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Python web uygulamasına kullanıcı oturumu ekleme](../active-directory/develop/quickstart-v2-python-webapp.md)
+> [Python uygulamasını yapılandırma](configure-language-python.md)
 
 > [!div class="nextstepaction"]
-> [Python uygulamasını yapılandırma](configure-language-python.md)
+> [Python web uygulamasına kullanıcı oturumu ekleme](../active-directory/develop/quickstart-v2-python-webapp.md)
 
 > [!div class="nextstepaction"]
 > [Öğretici: özel kapsayıcıda Python uygulaması çalıştırma](tutorial-custom-container.md)

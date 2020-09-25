@@ -12,17 +12,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
+ms.date: 09/24/2020
 ms.topic: how-to
-ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e6686c69eb6dababb577e9c556a8a13ec42485a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3b2c89086688451b16a8a6e10c25be65ffd4d9dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273867"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Aracısı Yüklemesi
 
@@ -30,9 +30,13 @@ Bu belge, Azure AD Connect Health Aracılarını yüklemenize ve yapılandırman
 
 ## <a name="requirements"></a>Gereksinimler
 
+
+> [!IMPORTANT]
+> Azure AD Connect Health aracısının Windows Server Core 'a yüklenmesi desteklenmez.
+
 Aşağıdaki tabloda Azure AD Connect Health kullanımına ilişkin gereksinimler listelenmiştir.
 
-| Gereksinim | Description |
+| Gereksinim | Açıklama |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health, bir Azure AD Premium özelliği olup Azure AD Premium gerektirir. <br /><br />Daha fazla bilgi için bkz. [Azure AD Premium kullanmaya başlama](../fundamentals/active-directory-get-started-premium.md) <br />30 günlük ücretsiz denemeyi başlatmak için bkz. [Denemeyi başlatma.](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Azure AD Connect Health ile çalışmaya başlamak için Azure AD'nizin genel yöneticisi olmanız gerekir. |Varsayılan olarak yalnızca genel yöneticiler; çalışmaya başlamak üzere durum aracılarını yükleyip yapılandırabilir, portala erişebilir ve Azure AD Connect Health'te işlem gerçekleştirebilir. Daha fazla bilgi için bkz. [Azure AD dizininizi yönetme](../fundamentals/active-directory-administer.md). <br /><br /> Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kuruluşunuzdaki diğer kullanıcılara Azure AD Connect Health erişime izin verebilirsiniz. Daha fazla bilgi için bkz [. Azure AD Connect Health Için Azure rol tabanlı erişim denetimi (Azure RBAC).](how-to-connect-health-operations.md#manage-access-with-azure-rbac) <br /><br />**Önemli:** Aracıları yüklerken kullanılan hesap bir iş veya okul hesabı olmalıdır. Bir Microsoft hesabı olamaz. Daha fazla bilgi için bkz. [Azure 'a kuruluş olarak kaydolma](../fundamentals/sign-up-organization.md) |
@@ -48,7 +52,7 @@ Aşağıdaki tabloda Azure AD Connect Health kullanımına ilişkin gereksinimle
 
 > [!NOTE]
 > Yüksek oranda kilitli ve son derece kısıtlı ortamınız varsa, yukarıdaki hizmet uç noktası listelerinde belirtilen URL 'Leri, yukarıda Izin verilen IE artırılmış güvenlik yapılandırmasında listelenenlere ek olarak eklemeniz gerekir. 
->
+
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Azure hizmet uç noktalarına giden bağlantı
 
@@ -140,7 +144,7 @@ Kullanım Analizi özelliğinin verileri toplaması ve analiz edebilmesi için, 
 7. **Eylemler** bölmesinde **Federasyon Hizmeti Özellikleri Düzenle**' ye tıklayın.
 8. **Federasyon Hizmeti özellikleri** Iletişim kutusunda **Olaylar** sekmesine tıklayın.
 9. **Success audits (Başarı denetimleri)** ve **Failure audits (Hata denetimleri)** onay kutularını seçin.
-10. **Tamam**’a tıklayın.
+10. **Tamam**'a tıklayın.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Windows Server 2012 R2'de AD FS için denetimi etkinleştirme
 

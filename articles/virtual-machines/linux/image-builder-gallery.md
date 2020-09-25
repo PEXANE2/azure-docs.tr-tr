@@ -1,6 +1,6 @@
 ---
 title: Linux VM 'Leri için Azure Image Builder & paylaşılan görüntü Galerisi 'ni kullanma (Önizleme)
-description: Azure Image Builder ve paylaşılan görüntü Galerisi ile Linux VM görüntüleri oluşturun.
+description: Paylaşılan görüntü galerisinde bir görüntü sürümü oluşturmak için Azure Image Builder 'ı ve Azure CLı 'yi kullanmayı ve sonra görüntüyü küresel olarak dağıtmayı öğrenin.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/05/2019
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 1eeb8df2605bbe63fe72c5bd451b43111322a7f6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bab5a86cdf8e3fa6b17866fe4088b28ed3ece6f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307305"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: bir Linux görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın 
 

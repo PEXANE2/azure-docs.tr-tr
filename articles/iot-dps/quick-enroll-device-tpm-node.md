@@ -1,5 +1,5 @@
 ---
-title: Node.js kullanarak TPM cihazını Azure cihaz sağlama hizmeti 'ne kaydetme
+title: Hızlı başlangıç-Node.js kullanarak TPM cihazını Azure cihaz sağlama hizmeti 'ne kaydetme
 description: Hızlı başlangıç-Node.js hizmeti SDK 'sını kullanarak TPM cihazını Azure IoT Hub cihaz sağlama hizmeti 'ne (DPS) kaydedin. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: b0928b81ebf585e51eb9275c81df29918aa5e6a0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 184fb4bbf8845b749459e1963bed3c6d9fa64856
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421952"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323854"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>Hızlı başlangıç: Node.js hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti IoT Hub TPM cihazı kaydetme
 
@@ -22,7 +22,7 @@ ms.locfileid: "87421952"
 
 Bu hızlı başlangıçta, Node.js hizmeti SDK 'sını ve örnek Node.js uygulamasını kullanarak Azure IoT Hub cihaz sağlama hizmeti 'nde bir TPM cihazı için tek bir kayıt oluşturacaksınız. İsteğe bağlı olarak bu bireysel kayıt girişini kullanarak sağlama hizmetine sanal bir TPM cihazını da kaydedebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [IoT Hub cihaz sağlama hizmetini Azure Portal Ile ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
@@ -103,7 +103,7 @@ Node.js hizmeti örneklerini keşfetmeyi planlıyorsanız, bu hızlı başlangı
 
 1. Makinenizdeki Node.js örnek çıktı penceresini kapatın.
 1. Sanal TPM cihazı oluşturduysanız, TPM simülatörü penceresini kapatın.
-2. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı başlangıç Ile oluşturduğunuz kayıt girişinin *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın. 
+2. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. Bu hızlı başlangıcı kullanarak *oluşturduğunuz kayıt girişinin* yanındaki onay kutusunu işaretleyin ve bölmenin üst kısmındaki **Sil** düğmesine basın. 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu hızlı başlangıçta, bir TPM aygıtı için program aracılığıyla tek bir kayıt girişi oluşturdunuz ve isteğe bağlı olarak, makinenizde bir TPM sanal cihazı oluşturdunuz ve Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak IoT Hub 'ınıza sağladınız. Cihaz sağlama hakkında ayrıntılı bilgi edinmek için Azure portalında Cihaz Sağlama Hizmeti ayarları öğreticisine geçin. 

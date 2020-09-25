@@ -1,15 +1,17 @@
 ---
 title: Veri ayıklama-LUSıS
 description: Amaç ve varlıklar ile söylenişi metinlerdeki verileri ayıklayın. Language Understanding (LUSıS) öğesinden ne tür verilerin ayıklanabileceği hakkında bilgi edinin.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c69971b36bf945086d1a8f398043444071acea5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682200"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324833"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Amaç ve varlıklar ile söylenişi metinlerinde veri ayıklama
 LUO, kullanıcının doğal dil dıklarından bilgi almanıza olanak tanır. Bilgiler, bir program, uygulama veya sohbet bot tarafından işlem gerçekleştirmek üzere kullanılabilecek şekilde ayıklanır. Aşağıdaki bölümlerde, veri ve varlıklardan JSON örnekleri ile hangi verilerin döndürüldüğünü öğrenin.
@@ -192,7 +194,7 @@ Amaçlar, en yüksekten en düşük puanla sıralanır.
 
 * * *
 
-|Domain|Veri nesnesi|Veri Türü|Veri Konumu|Değer|
+|Etki alanı|Veri nesnesi|Veri Türü|Veri Konumu|Değer|
 |--|--|--|--|--|
 |Yardımcı Programlar|Amaç|Dize|amaçlar [0]. amaç|"<b>Yardımcı programları</b>. ShowNext "|
 |İletişim|Amaç|Dize|amaçlar [1]. amaç|<b>İletişim</b>. StartOver "|

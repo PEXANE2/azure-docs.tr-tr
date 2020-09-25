@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320979"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261408"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -266,41 +266,9 @@ Bu şablonu dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kayna
 
 \<PARTNER>Yazılım dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kaynaklarıyla yazılım yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
-Karşılaştığınız sorunlara bağlı olarak iki destek kanalı vardır.
-
-Iş Ortağı Merkezi 'nde müşteri kullanımı attributıon raporunu görmek veya oturum açmak gibi herhangi bir sorunla karşılaşırsanız, Iş ortağı merkezi destek ekibi ile bir destek isteği oluşturun: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
-
-![Destek alma sayfasının ekran görüntüsü](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
-
-Müşteri kullanımı attribuini ayarlama gibi Market ekleme ve/veya müşteri kullanım atısyonu için yardıma ihtiyacınız varsa, aşağıdaki adımları izleyin:
-
-1. [Destek sayfasına](https://go.microsoft.com/fwlink/?linkid=844975)gidin.
-
-1. **Sorun türü**altında **Market ekleme**' yi seçin.
-
-1. Sorununuz için **Kategori** seçin:
-
-   - Kullanım ilişkisi sorunları için **diğer**' i seçin.
-   - Azure Marketi ile ilgili erişim sorunları için **erişim sorunu**' nı seçin.
-
-     ![Sorun kategorisini seçin](media/marketplace-publishers-guide/lu-article-incident.png)
-
-1. **Isteği Başlat**' ı seçin.
-
-1. Sonraki sayfada gerekli değerleri girin. **Devam**’ı seçin.
-
-1. Sonraki sayfada gerekli değerleri girin.
-
-   > [!IMPORTANT]
-   > **Olay başlığı** kutusuna **ISV kullanımı izleme**girin. Sorununuzu ayrıntılı olarak tanıtın.
-
-   ![Olay başlığı için ISV kullanımı Izleme girin](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
-
-1. Formu doldurun ve **Gönder**' i seçin.
-
-Ayrıca, teknik satış, dağıtım ve uygulama geliştirme senaryolarına yönelik olarak bir Microsoft Iş ortağı teknik danışmanında, müşteri kullanımı atışının anlaşılması ve dahil olması için teknik kılavuzluk de alabilirsiniz.
+Ticari Market 'teki destek seçenekleri hakkında bilgi edinmek [Için Iş Ortağı Merkezi 'nde ticari Market programı desteği](./partner-center-portal/support.md).
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Teknik bir danışmandaki istek gönderme
 

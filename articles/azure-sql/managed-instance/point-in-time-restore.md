@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, mathoma
+ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 407d56c209f64d350906a17c0746b1c43f969d43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c4a538a0dc5447f95152de87f9a19ed57f08359
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708689"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325122"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Azure SQL yönetilen örneğindeki bir veritabanını önceki bir zaman noktasına geri yükleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,8 +46,8 @@ Aşağıdaki tabloda, SQL yönetilen örneği için zaman içinde geri yükleme 
 
 |           |Mevcut VERITABANıNı SQL yönetilen örneği 'nin aynı örneğine geri yükleme| Var olan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|Bırakılan DB 'yi aynı SQL yönetilen örneğine geri yükleme|Bırakılan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure portalındaki**| Evet|Hayır |Evet|Hayır|
-|**Azure CLI**|Yes |Evet |Hayır|Hayır|
+|**Azure Portal**| Yes|Hayır |Yes|Hayır|
+|**Azure CLI**|Yes |Yes |Hayır|Hayır|
 |**PowerShell**| Yes|Yes |Yes|Yes|
 
 ## <a name="restore-an-existing-database"></a>Var olan bir veritabanını geri yükleme
@@ -56,7 +56,7 @@ Azure portal, PowerShell veya Azure CLı kullanarak mevcut bir veritabanını ay
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 2. SQL yönetilen örneğinize gidin ve geri yüklemek istediğiniz veritabanını seçin.
 3. Veritabanı sayfasında **geri yükle** ' yi seçin:
 

@@ -3,12 +3,12 @@ title: Event Grid kaynak olarak Azure Key Vault
 description: Azure Event Grid Azure Key Vault olaylar için belirtilen özellikleri ve şemayı açıklar
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: f6e2bdfb2000f3a4c4a8f91eee23348d9cc9c766
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090406"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324085"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Event Grid kaynak olarak Azure Key Vault
 
@@ -20,7 +20,7 @@ Bu makalede, [Azure Key Vault](../key-vault/index.yml)olaylar için özellikler 
 
 Bir Azure Key Vault hesabı aşağıdaki olay türlerini üretir:
 
-| Olay tam adı | Olay görünen adı | Açıklama |
+| Olay tam adı | Olay görünen adı | Description |
 | ---------- | ----------- |---|
 | Microsoft. Keykasası. Certificatenewversionoluşturuldu | Sertifika yeni sürümü oluşturuldu | Yeni bir sertifika veya yeni sertifika sürümü oluşturulduğunda tetiklenir. |
 | Microsoft. Keykasası. Certificatenearsüre sonu | Süresi dolmak üzere olan sertifika | Sertifikanın güncel sürümü sona ermek üzereyken tetiklenir. (Olay, sona erme tarihinden itibaren 30 gün önce tetiklenir.) |
@@ -64,7 +64,7 @@ Aşağıdaki örnek, **Microsoft. Keykasası. Secretnewversiontarafından oluşt
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | ---------- | ----------- |---|
 | kimlik | string | Bu olayı tetikleyen nesnenin KIMLIĞI |
 | vaultName | string | Bu olayı tetikleyen nesnenin Anahtar Kasası adı |
@@ -78,17 +78,12 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 |Başlık  |Açıklama  |
 |---------|---------|
 | [Azure Event Grid ile Key Vault olaylarını izleme](../key-vault/general/event-grid-overview.md) | Key Vault Event Grid tümleştirilmesine genel bakış. |
-| [Öğretici: Event Grid ile Key Vault olayları oluşturma ve izleme](../key-vault/general/event-grid-tutorial.md) | Key Vault için Event Grid bildirimleri ayarlamayı öğrenin. |
+| [Öğretici: Event Grid ile Key Vault olayları oluşturma ve izleme](../key-vault/general/event-grid-logicapps.md) | Key Vault için Event Grid bildirimleri ayarlamayı öğrenin. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Event Grid giriş için bkz. Event Grid nedir [?](overview.md).
 * Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).
-* Event Grid ile Key Vault tümleştirme hakkında daha fazla bilgi için bkz. [Azure Event Grid Ile izleme Key Vault](../key-vault/general/event-grid-overview.md).
-* Event Grid Key Vault tümleştirme hakkında bir öğretici için bkz. [Azure Event Grid ile Anahtar Kasası bildirimleri alma ve yanıtlama](../key-vault/general/event-grid-tutorial.md).
-* Key Vault ve Azure Otomasyonu hakkında ek rehberlik almak için, bkz.:
-    - [Azure Key Vault nedir?](../key-vault/general/overview.md)
-    - [Azure Event Grid ile Key Vault izleme](../key-vault/general/event-grid-overview.md)
-    - [Azure Event Grid ile Anahtar Kasası bildirimlerini alın ve yanıtlayın](../key-vault/general/event-grid-tutorial.md)
-    - [Azure Otomasyonu’na genel bakış](../automation/index.yml)
+* Anahtar Kasası hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/general/overview.md)
+

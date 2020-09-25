@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
-ms.openlocfilehash: d369614357bd62dc13073f650fbe5ce358d6dc6e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884333"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275430"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nın güvenlik duvarı kurallarını yönetme-hiper ölçek (Citus)
 Sunucu düzeyinde güvenlik duvarı kuralları, belirtilen IP adreslerinden veya IP adresi aralığından bir Hyperscale (Citus) düzenleyici düğümüne erişimi yönetmek için kullanılabilir.
@@ -49,7 +49,7 @@ Alternatif olarak, **+ 0.0.0.0-255.255.255.255** (B seçeneğinin sağında) ö�
 
 ## <a name="connecting-from-azure"></a>Azure'dan bağlanma
 
-Azure 'da barındırılan uygulamalara (Azure Web Apps uygulaması veya bir Azure VM 'de çalışan) hiper ölçekli veritabanı erişimi sağlamanın kolay bir yolu vardır. **Ağ** bölmesine ve **Kaydet**'e, portalda **Azure hizmetleri ve kaynaklarına bu sunucu grubuna erişim izni ver** seçeneğini **Evet** olarak ayarlayın.
+Azure 'da barındırılan uygulamalara (örneğin, Azure Web Apps uygulaması veya bir Azure VM 'de çalışan) hiper ölçek (Citus) veritabanı erişimi sağlamanın kolay bir yolu vardır. **Ağ** bölmesine ve **Kaydet**'e, portalda **Azure hizmetleri ve kaynaklarına bu sunucu grubuna erişim izni ver** seçeneğini **Evet** olarak ayarlayın.
 
 > [!IMPORTANT]
 > Bu seçenek, diğer müşterilerin aboneliklerinden gelen bağlantılar dahil Azure’dan tüm bağlantılara izin verecek şekilde güvenlik duvarınızı yapılandırır. Bu seçeneği belirlerken, oturum açma ve kullanıcı izinlerinizin erişimi yalnızca yetkili kullanıcılarla sınırladığından emin olun.

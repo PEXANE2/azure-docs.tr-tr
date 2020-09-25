@@ -2,18 +2,18 @@
 title: Azure yönetilen disklerinin sunucu tarafı şifrelemesi-PowerShell
 description: Azure depolama, verilerinizi depolama kümelerine kalıcı yapmadan önce Rest durumunda şifreleyerek korur. Yönetilen disklerinizin şifrelenebilmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarınızla şifrelemeyi yönetmek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz.
 author: roygara
-ms.date: 07/10/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 49898f2215139c4460c639dc8caa3d2764082e34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815598"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274784"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>PowerShell için Azure Disk Depolama sunucu tarafı şifrelemesi
 
@@ -47,6 +47,10 @@ Varsayılan olarak, yönetilen diskler platform tarafından yönetilen şifrelem
 - Diskiniz için bu özellik etkinleştirilirse, devre dışı bırakılamaz.
     Bu sorunu geçici olarak çözmek için, [tüm verileri](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) , müşteri tarafından yönetilen anahtarları kullanmayan tamamen farklı bir yönetilen diske kopyalamanız gerekir.
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
+
+#### <a name="supported-regions"></a>Desteklenen bölgeler
+
+Müşterinin yönettiği anahtarlar, yönetilen disklerin kullanılabildiği tüm bölgelerde kullanılabilir.
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>VM verileriniz için ana bilgisayar uçtan uca şifreleme
 

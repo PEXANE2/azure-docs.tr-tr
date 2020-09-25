@@ -1,5 +1,5 @@
 ---
-title: Python kullanarak TPM cihazını Azure cihaz sağlama hizmeti 'ne kaydetme
+title: Hızlı başlangıç-Python kullanarak TPM cihazını Azure cihaz sağlama hizmeti 'ne kaydetme
 description: Hızlı başlangıç-Python sağlama hizmeti SDK 'sını kullanarak TPM cihazını Azure IoT Hub cihaz sağlama hizmeti 'ne (DPS) kaydetme. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: dd34806cbfeeccadbaac247a9ea4d019cc22fc57
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 96bd1e85de45ac36515580025dfc392e931643f3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876419"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323772"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Hızlı başlangıç: Python sağlama hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti 'ne IoT Hub TPM cihazı kaydetme
 
@@ -117,7 +117,7 @@ Java hizmet örneğini keşfetmeyi planlıyorsanız, bu hızlı başlangıçta o
 
 1. Makinenizdeki Python örnek çıkış penceresini kapatın.
 1. Sanal TPM cihazı oluşturduysanız, TPM simülatörü penceresini kapatın.
-1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı başlangıç Ile oluşturduğunuz kayıt girişinin *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın.
+1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. Bu hızlı başlangıcı kullanarak *oluşturduğunuz kayıt girişinin* yanındaki onay kutusunu işaretleyin ve bölmenin üst kısmındaki **Sil** düğmesine basın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

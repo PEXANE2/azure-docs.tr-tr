@@ -1,14 +1,16 @@
 ---
 title: V3 makine öğrenimi varlığına geçiş
 description: V3 yazma, makine öğrenme varlığına ve uygulamanın diğer varlıklarına ya da özelliklerine ilişki ekleyebilme olanağı sunan yeni bir varlık türü olan makine öğrenimi varlığı sağlar.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: aaa5472f25a5eca5ceadf979c57a83874ce4cb6e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684600"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324697"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>V3 yazma varlığına geçiş
 
@@ -106,7 +108,7 @@ Aşağıdaki tabloda geçiş gösterilmektedir:
 
 |V2 modelleri|V3 modelleri|
 |--|--|
-|Adlı üst bileşen varlık`Order`|Adlı üst makine öğrenimi varlığı`Order`|
+|Adlı üst bileşen varlık `Order`|Adlı üst makine öğrenimi varlığı `Order`|
 |Alt-önceden oluşturulmuş datetimeV2|* Önceden oluşturulmuş varlığı yeni uygulamaya geçirin.<br>* Önceden oluşturulmuş datetimeV2 için üst öğeye gerekli özelliği ekleyin.|
 |Toppings için alt liste varlığı|* Liste varlığını yeni uygulamaya geçirin.<br>* Ardından liste varlığı için üst öğeye gerekli bir özellik ekleyin.|
 
@@ -132,7 +134,7 @@ Aşağıdaki tabloda geçiş gösterilmektedir:
 
 |V2 modelleri|V3 modelleri|
 |--|--|
-|Adlı üst bileşen varlık`Order`|Adlı üst makine öğrenimi varlığı`Order`|
+|Adlı üst bileşen varlık `Order`|Adlı üst makine öğrenimi varlığı `Order`|
 |Orijinal ve son pizza ile alt hiyerarşik varlık|* `Order` Her bir for için rol ekleyin.|
 
 ## <a name="api-change-constraint-replaced-with-required-feature"></a>API değişiklik kısıtlaması, gerekli özellik ile değiştirilmiş

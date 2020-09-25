@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Salesforce yapılandırma | Microsoft Docs'
-description: Azure Active Directory ve Salesforce arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+description: Azure AD 'den Salesforce 'a Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Salesforce ve Azure AD 'de gerçekleştirmek üzere gereken adımları öğrenin.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: db94c868daecdd82bcf7749f17fc6fde86fac963
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a77fa5702b8ab5728f387eae02cc97f997a406a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979772"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273305"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Salesforce yapılandırma
 

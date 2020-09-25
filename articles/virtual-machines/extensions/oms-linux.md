@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 38bbe52e45c348977cdda02a5399f6c89fb91bcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999827"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307458"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux için Log Analytics sanal makine uzantısı
 
@@ -43,7 +43,7 @@ Aşağıdaki tabloda, her sürüm için Log Analytics VM uzantısının ve Log A
 
 | Log Analytics Linux VM Uzantısı sürümü | Log Analytics aracı paketi sürümü | 
 |--------------------------------|--------------------------|
-| 1.13.13 | [1.13.7-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
+| 1.13.15 | [1.13.9-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.9-0) |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -104,7 +104,7 @@ Aşağıdaki JSON Log Analytics aracı uzantısının şemasını gösterir. Uza
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer/örnek |
+| Name | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | yayımcı | Microsoft. EnterpriseCloud. Monitoring |
@@ -211,7 +211,9 @@ Uzantı yürütme çıkışı aşağıdaki dosyaya kaydedilir:
 | 19 | OMı paketi yükleme hatası | 
 | 20 | SCX paket yükleme hatası |
 | 51 | Bu uzantı, sanal makinenin işletim sisteminde desteklenmiyor | |
-| 55 | Azure Izleyici hizmetine bağlanılamıyor veya gerekli paketler eksik veya dpkg Paket Yöneticisi kilitli| Sistemin Internet erişimi olup olmadığını ya da geçerli bir HTTP proxy 'si sağlandığını denetleyin. Ayrıca, çalışma alanı KIMLIĞININ doğruluğunu denetleyin ve kıvrımlı ve bataklık yardımcı programlarının yüklü olduğunu doğrulayın. |
+| 52 | Bu uzantı eksik bir bağımlılık nedeniyle başarısız oldu | Hangi bağımlılığın eksik olduğu hakkında daha fazla bilgi için çıktıyı ve günlükleri kontrol edin. |
+| 53 | Bu uzantı eksik veya yanlış yapılandırma parametreleri nedeniyle başarısız oldu | Sorun hakkında daha fazla bilgi için çıktıyı ve günlükleri kontrol edin. Ayrıca, çalışma alanı KIMLIĞININ doğruluğunu denetleyin ve makinenin internet 'e bağlı olduğunu doğrulayın. |
+| 55 | Azure Izleyici hizmetine bağlanılamıyor veya gerekli paketler eksik veya dpkg Paket Yöneticisi kilitli| Sistemin internet erişimi olup olmadığını ya da geçerli bir HTTP proxy 'si sağlandığını denetleyin. Ayrıca, çalışma alanı KIMLIĞININ doğruluğunu denetleyin ve kıvrımlı ve bataklık yardımcı programlarının yüklü olduğunu doğrulayın. |
 
 Ek sorun giderme bilgileri [için Log Analytics-Agent-for-Linux sorun giderme kılavuzunda](../../azure-monitor/platform/vmext-troubleshoot.md)bulabilirsiniz.
 

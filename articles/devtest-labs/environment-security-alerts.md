@@ -3,18 +3,18 @@ title: Azure DevTest Labs ortamlar için güvenlik uyarıları
 description: Bu makalede, DevTest Labs 'de bir ortam için güvenlik uyarılarını görüntüleme ve uygun bir işlem yapma işlemleri gösterilmektedir.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9eea06066cfca5f67d920456f16e2eb7893dce39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9f7cf9fe7ab0e3f573470228ee1962aa92ccaef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483984"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308699"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Azure DevTest Labs ortamlar için güvenlik uyarıları
 Laboratuvar kullanıcısı olarak artık laboratuvar ortamlarınız için Azure Güvenlik Merkezi uyarılarını görüntüleyebilirsiniz. Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları azaltmak için Azure kaynaklarınızdan, ağınızdan ve güvenlik duvarı ve uç nokta koruma çözümleri gibi bağlı iş ortağı çözümlerinden günlük verilerini otomatik olarak toplar, çözümler ve tümleştirir. Öncelikli güvenlik uyarıları listesi, sorunu hızlıca araştırmanız gereken bilgiler ve saldırıyı düzeltme hakkındaki önerilerle birlikte Güvenlik Merkezi'nde gösterilir. [Azure Güvenlik Merkezi 'nde güvenlik uyarıları hakkında daha fazla bilgi edinin](../security-center//security-center-alerts-overview.md).  
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Şu anda, güvenlik uyarılarını yalnızca laboratuvarınıza dağıtılan bir hizmet olarak platform (PaaS) ortamları için görüntüleyebilirsiniz. Bu özelliği test etmek veya kullanmak için [laboratuvarınızda bir ortam dağıtın](devtest-lab-create-environment-from-arm.md). 
 
 ## <a name="view-security-alerts-for-an-environment"></a>Bir ortam için güvenlik uyarılarını görüntüleme
@@ -24,7 +24,7 @@ Laboratuvar kullanıcısı olarak artık laboratuvar ortamlarınız için Azure 
     ![Güvenlik uyarıları-genel bakış](./media/environment-security-alerts/security-alerts-overview-page.png)
 2. Son sütunda üç noktaya (...) sağ tıklayın ve **güvenlik uyarılarını görüntüle**' yi seçin. 
 
-    ![Güvenlik uyarılarını görüntüleme](./media/environment-security-alerts/view-security-alerts-menu.png)
+    !["Güvenlik uyarılarını görüntüle" seçiliyken güvenlik uyarıları sayfasını gösteren ekran görüntüsü.](./media/environment-security-alerts/view-security-alerts-menu.png)
     
 3. Uyarılar ve danışman önerileri hakkında daha fazla ayrıntı görürsünüz. [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](../security-center/security-center-managing-and-responding-alerts.md)hakkında daha fazla bilgi edinin.
 

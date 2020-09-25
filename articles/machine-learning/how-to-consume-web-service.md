@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 5427d62f93eb6284ecda9a0762e3d8c4e99c06e2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2e1c7c1ca15d7c47ec8973ac8e93f7391916f5e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890093"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302409"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma
 
@@ -39,7 +39,7 @@ Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş ak
 > [!NOTE]
 > Web hizmeti bilgilerini almak için Azure Machine Learning SDK 'sını kullanın. Bu bir Python SDK 'sına sahiptir. Hizmet için bir istemci oluşturmak üzere herhangi bir dili kullanabilirsiniz.
 
-[Azureml. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) sınıfı, istemci oluşturmak için gereken bilgileri sağlar. Aşağıdaki `Webservice` Özellikler bir istemci uygulaması oluşturmak için yararlıdır:
+[Azureml. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) sınıfı, istemci oluşturmak için gereken bilgileri sağlar. Aşağıdaki `Webservice` Özellikler bir istemci uygulaması oluşturmak için yararlıdır:
 
 * `auth_enabled` -Anahtar kimlik doğrulaması etkinse `True` ; Aksi takdirde, `False` .
 * `token_auth_enabled` -Belirteç kimlik doğrulaması etkinse `True` ; Aksi takdirde, `False` .
@@ -113,7 +113,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Bir anahtarı yeniden oluşturmanız gerekiyorsa kullanın [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) .
+> Bir anahtarı yeniden oluşturmanız gerekiyorsa kullanın [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) .
 
 #### <a name="authentication-with-tokens"></a>Belirteçlerle kimlik doğrulama
 
@@ -501,7 +501,7 @@ Döndürülen sonuçlar aşağıdaki JSON belgesine benzer:
 
 ## <a name="web-service-schema-openapi-specification"></a>Web hizmeti şeması (Openapı belirtimi)
 
-Dağıtımınızla otomatik şema oluşturma kullandıysanız, [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri)kullanarak hizmetin openapı belirtiminin adresini alabilirsiniz. (Örneğin, `print(service.swagger_uri)` .) Belirtimi almak için bir GET isteği kullanın veya bir tarayıcıda URI 'yi açın.
+Dağıtımınızla otomatik şema oluşturma kullandıysanız, [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri)kullanarak hizmetin openapı belirtiminin adresini alabilirsiniz. (Örneğin, `print(service.swagger_uri)` .) Belirtimi almak için bir GET isteği kullanın veya bir tarayıcıda URI 'yi açın.
 
 Aşağıdaki JSON belgesi, bir dağıtım için oluşturulan bir şemanın (Openapı belirtimi) bir örneğidir:
 
@@ -643,7 +643,7 @@ Belirtiden istemci kitaplıkları oluşturabileceğiniz bir yardımcı program i
 
 
 > [!TIP]
-> Hizmeti dağıttıktan sonra şema JSON belgesini alabilirsiniz. Yerel Web hizmetinin Swagger dosyasına URI 'yi almak için dağıtılan Web hizmetindeki [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri) kullanın (örneğin, `service.swagger_uri` ).
+> Hizmeti dağıttıktan sonra şema JSON belgesini alabilirsiniz. Yerel Web hizmetinin Swagger dosyasına URI 'yi almak için dağıtılan Web hizmetindeki [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri) kullanın (örneğin, `service.swagger_uri` ).
 
 ## <a name="consume-the-service-from-power-bi"></a>Hizmeti Power BI’dan kullanma
 
