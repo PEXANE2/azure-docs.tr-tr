@@ -3,13 +3,13 @@ title: Azure Event Grid bir HTTP uç noktasına olay alma
 description: Bir HTTP uç noktasının nasıl doğrulanacağını, sonra Azure Event Grid olayların nasıl alınacağını ve seri durumdan kaldırılacağını açıklar
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 119e72b830c538df0cabf68ecea8cf78bae3029a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 42cf237f0c2fbe091307625fde70613ab9173b0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605269"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326482"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP uç noktasına olayları alma
 

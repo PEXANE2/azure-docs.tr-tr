@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web uygulaması, Linux, Windows, Docker, kapsayıcı
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: fdc15ecd79a6672d2a46b4da284533965977d753
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982875"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312065"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Özel bir kapsayıcı kullanarak Azure App Service özel yazılım geçirme
 
@@ -72,7 +72,7 @@ Projeniz Windows kapsayıcısında çalışacak şekilde ayarlanır. **CustomFon
 
 Çözüm Gezgini'nden **Dockerfile** dosyasını açın.
 
-[Desteklenen bir üst görüntü](quickstart-custom-container.md#use-a-different-parent-image) kullanmanız gerekir. `FROM` satırını aşağıdaki kod ile değiştirerek üst görüntüyü değiştirin:
+[Desteklenen bir üst görüntü](configure-custom-container.md#supported-parent-images) kullanmanız gerekir. `FROM` satırını aşağıdaki kod ile değiştirerek üst görüntüyü değiştirin:
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -618,6 +618,8 @@ Bu makalede oluşturduğunuz kaynaklar devam eden maliyetlerine neden olabilir. 
 az group delete --name AppSvc-DockerTutorial-rg
 ```
 
+::: zone-end
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Öğrendikleriniz:
@@ -625,9 +627,13 @@ az group delete --name AppSvc-DockerTutorial-rg
 > [!div class="checklist"]
 > * Özel bir kapsayıcı kayıt defterine özel bir görüntü dağıtma
 > * App Service ve özel görüntüyü dağıtın
+::: zone pivot="container-linux"
 > * Görüntüyü güncelleştirme ve yeniden dağıtma
+::: zone-end
 > * Tanılama günlüklerine erişim
+::: zone pivot="container-linux"
 > * SSH kullanarak kapsayıcıya bağlanma
+::: zone-end
 
 Sonraki öğreticide, uygulamanıza özel bir DNS adı eşlemeyi öğreneceksiniz.
 
@@ -639,7 +645,7 @@ Ya da diğer kaynaklara göz atın:
 > [!div class="nextstepaction"]
 > [Özel kapsayıcı yapılandırma](configure-custom-container.md)
 
+::: zone pivot="container-linux"
 > [!div class="nextstepaction"]
 > [Öğretici: çok Kapsayıcılı WordPress uygulaması](tutorial-multi-container-app.md)
-
 ::: zone-end

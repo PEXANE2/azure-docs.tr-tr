@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 27b745353521a44733c46170a5f5952c194c2343
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2cde352738c1aa545c77cbcf5d974030cd75b1e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293515"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326533"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -24,10 +24,10 @@ Uç noktalar ve rotalar [Eventroutes API 'leri](how-to-use-apis-sdks.md), [.net 
 
 Ayrıca, [Azure Portal](https://portal.azure.com)aracılığıyla da yönetilebilecek. Bunun yerine portalı kullanan Bu makalenin bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (portal)*](how-to-manage-routes-portal.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure hesabınızın** olması gerekir ( [buradan](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)birini ücretsiz olarak ayarlayabilirsiniz)
-* Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-scripted.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
+* Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-portal.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
     - Örnek adı
     - Kaynak grubu
     
@@ -44,7 +44,7 @@ Bir uç noktayı Azure dijital TWINS 'e bağlamak için, uç nokta için kullanm
 
 ### <a name="create-an-event-grid-endpoint"></a>Event Grid uç noktası oluşturma
 
-Aşağıdaki örnek, Azure CLı kullanarak olay Kılavuzu türü uç noktasının nasıl oluşturulacağını göstermektedir. [Azure Cloud Shell](https://shell.azure.com)KULLANABILIR veya [CLI 'yi yerel olarak yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Aşağıdaki örnek, Azure CLı kullanarak olay Kılavuzu türü uç noktasının nasıl oluşturulacağını göstermektedir. [Azure Cloud Shell](https://shell.azure.com)KULLANABILIR veya [CLI 'yi yerel olarak yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 İlk olarak, bir olay Kılavuzu konusu oluşturun. Aşağıdaki komutu kullanabilir veya *özel olay* hızlı başlangıcı Event Grid [ *özel konu oluştur* bölümünü](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) ziyaret ederek adımları daha ayrıntılı şekilde görüntüleyebilirsiniz.
 

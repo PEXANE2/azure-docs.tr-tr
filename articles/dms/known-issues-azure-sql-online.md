@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: da0c00f0b4a8f2c49996fbcb9b34ee4a1ab65273
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6648a20e03facad4b791cacba8513f9f1aa7d2f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856645"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291920"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -40,7 +40,7 @@ Kaynak veritabanınız bir veya daha fazla zamana bağlı tablodan oluşuyorsa, 
 
 **Geçici çözüm**
 
-Aşağıdaki adımları uygulayın.
+Aşağıdaki adımları kullanın.
 
 1. Aşağıdaki sorguyu kullanarak kaynak şemanızda zamana bağlı tabloları bulun.
 
@@ -66,7 +66,7 @@ Daha fazla bilgi için bkz. [geçici tablolar](https://docs.microsoft.com/sql/re
 
 **Geçici çözüm**
 
-Aşağıdaki adımları uygulayın.
+Aşağıdaki adımları kullanın.
 
 1. Aşağıdaki sorguyu kullanarak HierarchyId veri türüne sahip sütunları içeren Kullanıcı tablolarını bulun.
 
@@ -82,7 +82,7 @@ Aşağıdaki adımları uygulayın.
 
 **Geçici çözüm**
 
-Aşağıdaki adımları uygulayın.
+Aşağıdaki adımları kullanın.
 
 1. Aşağıdaki sorguyu kullanarak kaynak veritabanında Şu anda etkin olan Tetikleyicileri bulun:
 

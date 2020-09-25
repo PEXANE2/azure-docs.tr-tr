@@ -10,18 +10,18 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 42a1110b089d5edf9793bf2bb2c699a717a4b1a4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa940b00e9c23ab08244ea55c0cd22a8d5f1897f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004978"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289387"
 ---
 # <a name="connection-strings-for-synapse-sql-preview"></a>SYNAPSE SQL için bağlantı dizeleri (Önizleme)
 
 SYNAPSE SQL 'e (Önizleme), [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)ve [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)gibi birçok farklı uygulama protokolleriyle bağlanabilirsiniz. Her protokol için bazı bağlantı dizesi örnekleri aşağıda verilmiştir. 
 
-Bağlantı dizenizi oluşturmak için Azure portal de kullanabilirsiniz.  Azure portal kullanarak Bağlantı dizenizi derlemek için, veritabanı dikey pencerenize gidin, *temel parçalar* altında *veritabanı bağlantı dizelerini göster*' e tıklayın.
+Bağlantı dizenizi oluşturmak için Azure portal de kullanabilirsiniz.  Bağlantı dizenizi Azure portal kullanarak derlemek için, veritabanı dikey penceresine gidin, *temel parçalar* altında *veritabanı bağlantı dizelerini göster*' i seçin.
 
 ## <a name="sample-adonet-connection-string"></a>Örnek ADO.NET bağlantı dizesi
 

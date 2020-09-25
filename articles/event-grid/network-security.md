@@ -1,16 +1,16 @@
 ---
 title: Azure Event Grid kaynakları için ağ güvenliği
-description: Bu makalede özel uç noktalardan erişimin nasıl yapılandırılacağı açıklanmaktadır
+description: Bu makalede, çıkış için hizmet etiketlerinin, giriş için IP Güvenlik Duvarı kurallarının ve Azure Event Grid giriş için özel uç noktaların nasıl kullanılacağı açıklanır.
 author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119251"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326465"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid kaynakları için ağ güvenliği
 Bu makalede, Azure Event Grid ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
@@ -27,7 +27,7 @@ Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu te
 
 | Hizmet etiketi | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
 | --- | -------- |:---:|:---:|:---:|
-| AzureEventGrid | Azure Event Grid. | Her ikisi de | Hayır | Hayır |
+| AzureEventGrid | Azure Event Grid. | Her ikisi | Hayır | Hayır |
 
 
 ## <a name="ip-firewall"></a>IP güvenlik duvarı 
@@ -57,7 +57,7 @@ VNet 'iniz içindeki bir konu veya etki alanı için özel bir uç nokta oluştu
 
 Konuyu veya etki alanı uç noktası URL 'sini özel uç noktayla VNet dışından çözdüğünde, hizmetin genel uç noktasına dönüşür. Özel uç noktasını barındıran **VNET dışından** çözümlendiğinde ' Topica ' için DNS kaynak kayıtları şu şekilde olur:
 
-| Name                                          | Tür      | Değer                                         |
+| Ad                                          | Tür      | Değer                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
@@ -66,7 +66,7 @@ Konuyu veya etki alanı uç noktası URL 'sini özel uç noktayla VNet dışınd
 
 Özel uç noktasını barındıran VNet 'ten çözümlendiğinde, konu veya etki alanı uç noktası URL 'SI özel uç noktanın IP adresini çözümler. Özel uç noktasını barındıran **VNET 'in içinden** çözümlendiğinde ' Topica ' konusunun DNS kaynak kayıtları şu şekilde olur:
 
-| Name                                          | Tür      | Değer                                         |
+| Ad                                          | Tür      | Değer                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | A         | 10.0.0.5

@@ -1,14 +1,14 @@
 ---
 title: Azure portal kullanarak Azure hizmet bildirimlerinde etkinlik günlüğü uyarıları alma
-description: Azure hizmeti gerçekleştiğinde SMS, e-posta veya Web Kancası aracılığıyla bildirim alın.
+description: Azure portal kullanarak hizmet durumu bildirimlerine yönelik etkinlik günlüğü uyarılarını ayarlamak için Azure portal nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: b90940c4532370e7742f736708625ddec283aab1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88fbdeeb8bdcc239f1591e053aaf4fb1c36b9b19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499303"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289795"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>Azure portal kullanarak hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma
 ## <a name="overview"></a>Genel Bakış
