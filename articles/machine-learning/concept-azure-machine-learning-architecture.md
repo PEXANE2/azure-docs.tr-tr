@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886317"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276093"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -33,7 +33,7 @@ ms.locfileid: "90886317"
 * Azure Machine Learning kullandığınızda oluşturduğunuz varlıkları depolama, aşağıdakiler dahil:
   * [Ortamlar](#environments)
   * [Denemeler](#experiments)
-  * [İşlem hatları](#ml-pipelines)
+  * [Pipelines](#ml-pipelines)
   * [Veri kümeleri](#datasets-and-datastores)
   * [Modeller](#models)
   * [Uç Noktalar](#endpoints)
@@ -102,24 +102,17 @@ Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma
 
 [Çalışma alanı](#workspace)  >  [Denemeleri](#experiments)  >  [Çalıştır](#runs)  >  **Yapılandırmayı Çalıştır**
 
-Çalıştırma yapılandırması, bir betiğin belirli bir işlem hedefinde nasıl çalıştırılacağını tanımlayan bir yönergeler kümesidir. Yapılandırma, mevcut bir Python ortamının kullanılması veya bir belirtimden oluşturulan bir Conda ortamı kullanılması gibi geniş bir davranış tanımları kümesi içerir.
+Çalıştırma yapılandırması, bir betiğin belirtilen işlem hedefinde nasıl çalıştırılacağını tanımlar. Betiği, üzerinde çalıştırılacak işlem hedefini ve Azure ML ortamını, dağıtılmış işe özgü yapılandırmaları ve bazı ek özellikleri belirtmek için yapılandırmayı kullanabilirsiniz. Çalışma için yapılandırılabilir seçeneklerin tam kümesi hakkında daha fazla bilgi için bkz. [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true).
 
 Çalışma yapılandırması, eğitim betiğinizi içeren dizin içindeki bir dosyaya kalıcı yapılabilir.   Ya da bellek içi bir nesne olarak oluşturulabilir ve bir çalıştırma göndermek için kullanılabilir.
 
-Örneğin, çalışma yapılandırması için bkz. [modelinize eğitme için bir işlem hedefi kullanma](how-to-set-up-training-targets.md).
-
-### <a name="estimators"></a>Tahmini
-
-Popüler çerçeveler ile model eğitimi kolaylaştırmak için, tahmin aracı sınıfı kolayca çalışma yapılandırması oluşturmanıza olanak sağlar. Seçtiğiniz herhangi bir öğrenme çerçevesini kullanan eğitim betikleri göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) oluşturabilir ve kullanabilirsiniz (örneğin, scikit-öğren).
-
-Tahmini hakkında daha fazla bilgi için bkz. [tahmini ile ml modellerini eğitme](how-to-train-ml-models.md).
+Örneğin, çalıştırma yapılandırması için bkz. [bir eğitim çalıştırmasını yapılandırma](how-to-set-up-training-targets.md).
 
 ### <a name="snapshots"></a>Anlık Görüntüler
 
 [Çalışma alanı](#workspace)  >  [Denemeleri](#experiments)  >  [Çalıştır](#runs)  >  **Anlık görüntü**
 
 Bir çalıştırma gönderdiğinizde, Azure Machine Learning betiği içeren dizini zip dosyası olarak sıkıştırır ve işlem hedefine gönderir. ZIP dosyası daha sonra ayıklanır ve betik burada çalıştırılır. Azure Machine Learning Ayrıca ZIP dosyasını çalışma kaydının bir parçası olarak bir anlık görüntü olarak depolar. Çalışma alanına erişimi olan herkes bir çalıştırma kaydına gözatabilir, anlık görüntüyü indirebilir.
-
 
 ### <a name="logging"></a>Günlüğe Kaydetme
 
@@ -133,7 +126,7 @@ Günlüklerinizi görüntülemenin birden çok yolu vardır: çalışma durumunu
 
 ### <a name="git-tracking-and-integration"></a>Git izleme ve Tümleştirme
 
-Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Bu, bir Estimator, ML işlem hattı veya betik çalıştırması kullanılarak gönderilen çalışmalarla birlikte çalışır. Ayrıca SDK veya Machine Learning CLı 'dan gönderilen çalıştırmalar için de çalışır.
+Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Bu, komut dosyası çalıştırma yapılandırması veya ML işlem hattı kullanılarak gönderilen çalışmalarla birlikte çalışır. Ayrıca SDK veya Machine Learning CLı 'dan gönderilen çalıştırmalar için de çalışır.
 
 Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](concept-train-model-git-integration.md).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cf9f18701317482284a3f1fa4b69a2c2927f64a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046669"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287721"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>PowerShell betiği ile Azure SYNAPSE Studio (Önizleme) bağlantı sorunlarını tanılama
 
@@ -27,13 +27,13 @@ Azure SYNAPSE Studio (Önizleme), bir Web API uç noktası kümesine düzgün ş
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları
 
-Aşağıdaki bağlantıya sağ tıklayın ve "hedefi farklı kaydet" e tıklayın:
+Aşağıdaki bağlantıya sağ tıklayın ve "hedefi farklı kaydet" i seçin:
 
 - [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 Alternatif olarak, bağlantıyı doğrudan açabilir ve açılan betik dosyasını kaydedebilirsiniz. Daha sonra değiştireolabileceğinden, yukarıdaki bağlantının adresini kaydetmeyin.
 
-Dosya Gezgini 'nde indirilen betik dosyasına sağ tıklayın ve "PowerShell ile Çalıştır" a tıklayın.
+Dosya Gezgini 'nde indirilen betik dosyasına sağ tıklayın ve "PowerShell ile Çalıştır" seçeneğini belirleyin.
 
 ![İndirilen betik dosyasını PowerShell ile Çalıştır](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
 
@@ -58,4 +58,4 @@ Bir ağ yöneticisiyseniz ve Azure SYNAPSE Studio için güvenlik duvarı yapıl
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Önceki adımlar sorununuzu çözmeye yardımcı değilse, [bir destek bileti oluşturun](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).
+Yukarıdaki adımlar sorununuzu çözmeye yardımcı değilse, [bir destek bileti oluşturun](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).

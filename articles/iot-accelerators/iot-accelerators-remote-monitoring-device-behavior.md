@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4840363b2f6645fceca80f6dd57ece64fb2c8163
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 7f887aac91bdb1b8c752806c7c5076708a40bc10
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276178"
 ---
 # <a name="implement-the-device-model-behavior"></a>Cihaz modeli davranışını uygulama
 
@@ -37,8 +37,8 @@ Bu makalede şunları öğreneceksiniz:
 
 Cihaz modeli şemasının [Benzetim](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) bölümü, sanal cihazın iç durumunu tanımlar:
 
-- `InitialState`Cihaz durumu nesnesinin tüm özellikleri için başlangıç değerlerini tanımlar.
-- `Script`cihaz durumunu güncelleştirmek için bir zamanlamaya göre çalışan bir JavaScript dosyasını tanımlar.
+- `InitialState` Cihaz durumu nesnesinin tüm özellikleri için başlangıç değerlerini tanımlar.
+- `Script` cihaz durumunu güncelleştirmek için bir zamanlamaya göre çalışan bir JavaScript dosyasını tanımlar.
 
 Aşağıdaki örnekte, sanal bir chilcihaz için cihaz durumu nesnesinin tanımı gösterilmektedir:
 
@@ -79,9 +79,9 @@ function main(context, previousState, previousProperties) {
 
 `context`Parametresi aşağıdaki özelliklere sahiptir:
 
-- `currentTime`biçim içeren bir dize olarak`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, örneğin`Simulated.Chiller.123`
-- `deviceModel`, örneğin`Chiller`
+- `currentTime` biçim içeren bir dize olarak `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, örneğin `Simulated.Chiller.123`
+- `deviceModel`, örneğin `Chiller`
 
 Parametresi, cihaz `state` benzetimi hizmeti tarafından korunan cihazın durumunu içerir. Bu değer, `state` önceki çağrısının döndürdüğü nesnedir `main` .
 
@@ -200,9 +200,9 @@ function main(context, previousState, previousProperties) {
 
 `context`Parametresi aşağıdaki özelliklere sahiptir:
 
-- `currentTime`biçim içeren bir dize olarak`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, örneğin`Simulated.Chiller.123`
-- `deviceModel`, örneğin`Chiller`
+- `currentTime` biçim içeren bir dize olarak `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, örneğin `Simulated.Chiller.123`
+- `deviceModel`, örneğin `Chiller`
 
 Parametresi, cihaz `state` benzetimi hizmeti tarafından korunan cihazın durumunu içerir.
 
@@ -210,9 +210,9 @@ Parametresi, cihaz `state` benzetimi hizmeti tarafından korunan cihazın durumu
 
 Yöntemi davranışını uygulamaya yardımcı olmak için kullanabileceğiniz üç genel işlev vardır:
 
-- `updateState`Simülasyon hizmeti tarafından tutulan durumu güncelleştirmek için.
-- `updateProperty`tek bir cihaz özelliğini güncelleştirmek için.
-- `sleep`uzun süre çalışan bir görevin benzetimini yapmak için yürütmeyi duraklatmak için.
+- `updateState` Simülasyon hizmeti tarafından tutulan durumu güncelleştirmek için.
+- `updateProperty` tek bir cihaz özelliğini güncelleştirmek için.
+- `sleep` uzun süre çalışan bir görevin benzetimini yapmak için yürütmeyi duraklatmak için.
 
 Aşağıdaki örnek, **IncreasePressure-method.js** betiğinin benzetimli chilcihazları tarafından kullanılan kısaltılmış bir sürümünü göstermektedir:
 

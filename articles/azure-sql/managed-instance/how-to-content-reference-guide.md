@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlr
+ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 332b5198f046d0096e95e79e27cbc49408e6d136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325207"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL yönetilen örnek içerik başvurusu
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ Bu makalede, Azure SQL yönetilen örneğini yönetmenize ve yapılandırmanıza
 
 - [Azure AD kimlik doğrulamasını yapılandırma](../database/authentication-aad-configure.md)
 - [Koşullu erişim yapılandırma](../database/conditional-access-configure.md)
-- [Multi-Factor Azure AD kimlik doğrulaması](../database/authentication-mfa-ssms-overview.md)
+- [Çok faktörlü Azure AD kimlik doğrulaması](../database/authentication-mfa-ssms-overview.md)
 - [Çok faktörlü kimlik doğrulamasını yapılandırma](../database/authentication-mfa-ssms-configure.md)
 - [Zamana bağlı bekletme ilkesi yapılandırma](../database/temporal-tables-retention-policy.md)
 - [KAG ile TDE Yapılandırması](../database/transparent-data-encryption-byok-configure.md)
@@ -77,9 +77,9 @@ Bu makalede, Azure SQL yönetilen örneğini yönetmenize ve yapılandırmanıza
 
 ### <a name="alerting"></a>Uyarı
 
-- [Yönetilen örnek üzerinde uyarı oluştur](alerts-create.md)
+- [Yönetilen örnek üzerinde uyarı oluşturma](alerts-create.md)
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
 
 - [SQL yönetilen örneği üzerinde kullanıcı tarafından başlatılan el ile yük devretme](user-initiated-failover.md)
 

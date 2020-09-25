@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23bcb63b6b499e72cb43089659e513d276bd8306
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8324b82a05d7e78772e0b0b6de3a9bfaa183411
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358982"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265400"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect'i mevcut bir AD Eşitleme veritabanını kullanarak yükleme
 Azure AD Connect, verileri depolamak için SQL Server bir veritabanı gerektirir. Azure AD Connect yüklü olan SQL Server Express LocalDB varsayılan 2012 kullanabilir veya kendi tam SQL sürümünüzü kullanabilirsiniz. Daha önce Azure AD Connect yüklediğinizde, ADSync adlı yeni bir veritabanı her zaman oluşturulmuştur. Azure AD Connect sürüm 1.1.613.0 (veya sonrası) ile, var olan bir ADSync veritabanına işaret ederek Azure AD Connect yükleyebilirsiniz.
@@ -58,7 +58,7 @@ Devam etmeden önce dikkat etmeniz gereken önemli notlar:
 ## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>"Var olan veritabanını kullan" modunu kullanarak Azure AD Connect yüklemek için gereken adımlar
 1.  Azure AD Connect yükleyicisi 'ni (AzureADConnect.MSI) Windows Server 'a indirin. Azure AD Connect yüklemeye başlamak için Azure AD Connect yükleyiciye çift tıklayın.
 2.  MSI yüklemesi tamamlandıktan sonra Azure AD Connect sihirbazı Hızlı mod kurulumu açılır. Çıkış simgesine tıklayarak ekranı kapatın.
-![Hoş geldiniz](./media/how-to-connect-install-existing-database/db1.png)
+![Sol taraftaki menüdeki "Hızlı ayarlar" adlı "Azure A Connect 'e hoş geldiniz" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-existing-database/db1.png)
 3.  Yeni bir komut istemi veya PowerShell oturumu başlatın. "C:\Program Files\Microsoft Azure Active Directory Connect" klasörüne gidin. Azure AD Connect sihirbazını "Var olan veritabanını kullan" modunda başlatmak için .\AzureADConnect.exe /useexistingdatabase komutunu çalıştırın.
 
 > [!NOTE]
@@ -66,9 +66,9 @@ Devam etmeden önce dikkat etmeniz gereken önemli notlar:
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. Azure AD Connect'e Hoş Geldiniz ekranı açılır. Lisans koşullarını ve gizlilik bildirimini kabul ettikten sonra **Devam**'a tıklayın.
-   ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db3.png)
+   !["Azure A Connect 'e hoş geldiniz" sayfasını gösteren ekran görüntüsü](./media/how-to-connect-install-existing-database/db3.png)
 1. **Gerekli bileşenleri yükleme** ekranında **Mevcut bir SQL Server'ı kullanma** seçeneği etkinleştirilir. AD Eşitleme veritabanını barındıran SQL sunucusunun adını belirtin. AD Eşitleme veritabanını barındırmak için kullanılan SQL altyapısı örneği SQL sunucusundaki varsayılan örnek değilse SQL altyapısı örneği adını belirtmeniz gerekir. Ayrıca SQL göz atma özelliği etkin değilse SQL altyapısı örneği bağlantı noktası numarasını da belirtmeniz gerekir. Örneğin:         
-   ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db4.png)           
+   !["Gerekli bileşenleri yüklensin" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. **Azure AD'ye bağlan** ekranında Azure AD dizininizin genel yöneticisinin kimlik bilgilerini girmeniz gerekir. Varsayılan onmicrosoft.com etki alanındaki bir hesabı kullanmanız önerilir. Bu hesap yalnızca Azure AD'de hizmet hesabı oluşturmak için kullanılır ve sihirbaz tamamlandıktan sonra kullanılmaz.
    ![Bağlanma](./media/how-to-connect-install-existing-database/db5.png)
@@ -77,10 +77,10 @@ Devam etmeden önce dikkat etmeniz gereken önemli notlar:
    ![Dizinler](./media/how-to-connect-install-existing-database/db6.png)
  
 1. Açılan iletişim kutusunda (i) Kuruluş Yöneticisi kimlik bilgileri belirtip Azure AD Connect'in sizin için bir AD DS hesabı oluşturmasını sağlayabilir veya (ii) AD DS hesabını kendiniz oluşturarak kimlik bilgilerini Azure AD Connect'e girebilirsiniz. Bir seçeneği belirleyip gerekli kimlik bilgilerini girdikten sonra **Tamam**'a tıklayarak açılan iletişim kutusunu kapatın.
-   ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db7.png)
+   !["Yeni bir D hesabı oluştur" seçiliyken açılan "A D orman hesabı" açılan iletişim kutusunu gösteren ekran görüntüsü.](./media/how-to-connect-install-existing-database/db7.png)
  
 1. Kimlik bilgileri girildikten sonra kırmızı çarpı işaretinin yerine yeşil onay işareti görünür. **İleri**’ye tıklayın.
-   ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db8.png)
+   !["Dizinlerinizi bağlama" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-existing-database/db8.png)
  
 1. **Yapılandırma için hazır** ekranında **Yükle**'ye tıklayın.
    ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db9.png)
@@ -92,7 +92,7 @@ Devam etmeden önce dikkat etmeniz gereken önemli notlar:
 
 Gerekli olan ek adımları doğrulamak için aşağıdaki tabloyu kullanın.
 
-|Özellik|Adımlar|
+|Öne çıkan özelliği|Adımlar|
 |-----|-----|
 |Parola karması eşitleme| Parola karması eşitleme ve parola geri yazma ayarları, 1.2.65.0 ile başlayan Azure AD Connect sürümleri için tamamen geri yüklenir.  Azure AD Connect eski bir sürümünü kullanarak geri yükleme işlemi, etkin eşitleme sunucunuza eşleştiğinden emin olmak için bu özellikler için eşitleme seçeneği ayarlarını gözden geçirin.  Başka yapılandırma adımları gerekli değildir.|
 |AD FS ile Federasyon|Azure kimlik doğrulamaları, etkin eşitleme sunucunuz için yapılandırılmış AD FS ilkesini kullanmaya devam edecektir.  AD FS grubunuzu yönetmek için Azure AD Connect kullanıyorsanız, isteğe bağlı olarak, oturum açma yöntemini, etkin eşitleme örneği haline gelmelerine izin vermek üzere, bekleyen sunucunuzun hazırlanması AD FS Federasyon olarak değiştirebilirsiniz.   Etkin eşitleme sunucusunda cihaz seçenekleri etkinleştirilmişse, "cihaz seçeneklerini yapılandırma" görevini çalıştırarak bu sunucuda bu seçenekleri yapılandırın.|

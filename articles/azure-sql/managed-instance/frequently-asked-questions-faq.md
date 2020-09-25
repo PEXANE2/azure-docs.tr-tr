@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887386"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325224"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Yönetilen Örneği hakkında sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Bu, alt ağ adını Regex ^ [a-za-Z_] [^ \\ \/ \: \* \? \" \<\> \| \` \' \^ ] * 
 
 **Yönetilen örnekten nasıl ölçeklendirebilirim?**
 
-Yönetilen örneğinizi [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [POWERSHELL](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) veya [ARM şablonlarından](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)ölçeklendirebilirsiniz.
+Yönetilen örneğinizi [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [POWERSHELL](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) veya [ARM şablonlarından](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)ölçeklendirebilirsiniz.
 
 **Yönetilen örnekten bir bölgeden diğerine taşıyabilir miyim?**
 
@@ -102,7 +102,7 @@ Evet, yazabilirsiniz. Yönergeler için bkz. [kaynakları bölgeler arasında ta
 
 **Yönetilen örnekten nasıl silebilirim?**
 
-Yönetilen örnekleri Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), [Azure CLı](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) veya [Kaynak Yöneticisi REST API 'leri](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)aracılığıyla silebilirsiniz.
+Yönetilen örnekleri Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0&preserve-view=true), [Azure CLı](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) veya [Kaynak Yöneticisi REST API 'leri](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)aracılığıyla silebilirsiniz.
 
 **Bir örneği oluşturmak veya güncelleştirmek ya da bir veritabanını geri yüklemek için ne kadar süre sürer?**
 
@@ -135,9 +135,9 @@ Yönetilen örnek, Azure SQL veritabanı 'nın diğer dağıtım seçenekleri ol
 
 Bir seçenek, [bir veritabanını BACPAC 'e aktarmak](../database/database-export.md) ve ardından [bacpac dosyasını içeri aktaryıdır](../database/database-import.md). Veritabanınız 100 GB 'den küçükse bu önerilen yaklaşımdır.
 
-Veritabanındaki tüm tablolarda *birincil* anahtarlar varsa ve veritabanında bellek içi OLTP nesneleri yoksa, [İşlemsel çoğaltma](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017) kullanılabilir.
+Veritabanındaki tüm tablolarda *birincil* anahtarlar varsa ve veritabanında bellek içi OLTP nesneleri yoksa, [İşlemsel çoğaltma](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) kullanılabilir.
 
-Yönetilen örnekten alınan yerel COPY_ONLY yedeklemeleri, SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan SQL Server geri yüklenemez. Daha fazla ayrıntı için bkz. [yalnızca kopya yedekleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15).
+Yönetilen örnekten alınan yerel COPY_ONLY yedeklemeleri, SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan SQL Server geri yüklenemez. Daha fazla ayrıntı için bkz. [yalnızca kopya yedekleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true).
 
 **SQL Server örneğinden SQL yönetilen örneği 'ne nasıl geçirebilirim?**
 
@@ -184,11 +184,11 @@ SQL yönetilen örnek kullanımını ve performansını izlemeye ve uyarıya yö
 
 **Performans izleme için SQL Profiler kullanabilir miyim?**
 
-Evet, SQL Profiler desteklenir veya SQL yönetilen örneğidir. Daha ayrıntılı bilgi için bkz. [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15).
+Evet, SQL Profiler desteklenir veya SQL yönetilen örneğidir. Daha ayrıntılı bilgi için bkz. [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true).
 
 **Veritabanı Danışmanı ve yönetilen örnek veritabanları için Sorgu Performansı İçgörüleri destekleniyor mu?**
 
-Hayır, bunlar desteklenmez. Veritabanlarınızı izlemek için, [DMVs](../database/monitoring-with-dmvs.md) ve [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15) 'U [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) ve [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15) ile birlikte kullanabilirsiniz.
+Hayır, bunlar desteklenmez. Veritabanlarınızı izlemek için, [DMVs](../database/monitoring-with-dmvs.md) ve [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15&preserve-view=true) 'U [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true) ve [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15&preserve-view=true) ile birlikte kullanabilirsiniz.
 
 **SQL yönetilen örneği 'nde ölçüm uyarıları oluşturabilir miyim?**
 
@@ -228,7 +228,7 @@ Yönetilen örnekte otomatik yedeklemelerin ne zaman gerçekleştirildiğini izl
 
 **İsteğe bağlı yedekleme destekleniyor mu?**
 
-Evet, Azure Blob depolamada yalnızca bir kopya tam yedekleme oluşturabilirsiniz, ancak yönetilen örnekte yalnızca geri yüklenebilir. Ayrıntılar için bkz. [yalnızca kopya yedekleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15). Ancak, şifreleme için kullanılan sertifikaya erişilemediğinden, veritabanı hizmet tarafından yönetilen TDE tarafından şifrelendiyse, salt kopya yedekleme olanaksızdır. Böyle bir durumda, veritabanını başka bir SQL yönetilen örneğine taşımak veya müşteri tarafından yönetilen anahtara geçiş yapmak için zaman içinde geri yükleme özelliğini kullanın.
+Evet, Azure Blob depolamada yalnızca bir kopya tam yedekleme oluşturabilirsiniz, ancak yönetilen örnekte yalnızca geri yüklenebilir. Ayrıntılar için bkz. [yalnızca kopya yedekleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true). Ancak, şifreleme için kullanılan sertifikaya erişilemediğinden, veritabanı hizmet tarafından yönetilen TDE tarafından şifrelendiyse, salt kopya yedekleme olanaksızdır. Böyle bir durumda, veritabanını başka bir SQL yönetilen örneğine taşımak veya müşteri tarafından yönetilen anahtara geçiş yapmak için zaman içinde geri yükleme özelliğini kullanın.
 
 **Yerel geri yükleme (. bak dosyalarından) yönetilen örneğe destekleniyor mu?**
 
@@ -299,7 +299,7 @@ Bu gerekli değildir. Azure [SQL yönetilen örneği için bir sanal ağ oluştu
 
 Hayır. Şu anda, yönetilen örneği zaten diğer kaynak türlerini içeren bir alt ağda yerleştirmeyi desteklemiyoruz.
 
-## <a name="connectivity"></a>Bağlantı 
+## <a name="connectivity"></a>Bağlanabilirlik 
 
 **Yönetilen örneğime IP adresini kullanarak bağlanabilir miyim?**
 
@@ -390,7 +390,7 @@ Evet, Saydam Veri Şifrelemesi SQL yönetilen örneği için desteklenir. Ayrın
 
 **"Kendi anahtarını getir" modelini TDE kullanabilir miyim?**
 
-Evet, BYOK senaryosu için Azure Key Vault Azure SQL yönetilen örneği için kullanılabilir. Ayrıntılar için bkz. [müşteri tarafından yönetilen anahtarla saydam veri şifrelemesi](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key).
+Evet, BYOK senaryosu için Azure Key Vault Azure SQL yönetilen örneği için kullanılabilir. Ayrıntılar için bkz. [müşteri tarafından yönetilen anahtarla saydam veri şifrelemesi](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key&preserve-view=true).
 
 **Şifrelenmiş bir SQL Server veritabanını geçirebilir miyim?**
 
@@ -509,6 +509,10 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 
 ## <a name="service-updates"></a>Hizmet güncelleştirmeleri
+
+**Azure SQL veritabanı & SQL yönetilen örneği için kök CA değişikliği nedir?**
+
+Bkz. [Azure SQL veritabanı & SQL yönetilen örneği Için sertifika döndürme](https://docs.microsoft.com/azure/azure-sql/updates/ssl-root-certificate-expiring). 
 
 **SQL yönetilen örneği için planlı bakım olayı nedir?**
 

@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 54fe96ecee99f3de37667d255b57b89c34aecc14
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 2701b4cd17a132de07c031166bbe4cb1086227e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406443"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324793"
 ---
 Bu kılavuzda, bir Web sayfasıyla kullanılmak üzere JavaScript için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir.
 
@@ -29,11 +29,11 @@ Yeni, boş bir klasör oluşturun. Örneği bir web sunucusunda barındırmak is
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>JavaScript için Konuşma SDK’sını bu klasöre çıkarın
 
 Konuşma SDK’sını [.zip paketi](https://aka.ms/csspeech/jsbrowserpackage) olarak indirin ve yeni oluşturulan klasöre çıkarın. Bu, beş dosyanın dağıtılmasına neden olur:
-* `microsoft.cognitiveservices.speech.sdk.bundle.js`Konuşma SDK 'sının okunabilir bir sürümü.
-* `microsoft.cognitiveservices.speech.sdk.bundle.js.map`SDK kodunda hata ayıklamak için kullanılan bir eşleme dosyası.
-* `microsoft.cognitiveservices.speech.sdk.bundle.d.ts`TypeScript ile kullanılacak nesne tanımları
-* `microsoft.cognitiveservices.speech.sdk.bundle-min.js`Konuşma SDK 'sının küçültülmüş bir sürümü.
-* `speech-processor.js`Bazı tarayıcılarda performansı artırmak için kod.
+* `microsoft.cognitiveservices.speech.sdk.bundle.js` Konuşma SDK 'sının okunabilir bir sürümü.
+* `microsoft.cognitiveservices.speech.sdk.bundle.js.map` SDK kodunda hata ayıklamak için kullanılan bir eşleme dosyası.
+* `microsoft.cognitiveservices.speech.sdk.bundle.d.ts` TypeScript ile kullanılacak nesne tanımları
+* `microsoft.cognitiveservices.speech.sdk.bundle-min.js` Konuşma SDK 'sının küçültülmüş bir sürümü.
+* `speech-processor.js` Bazı tarayıcılarda performansı artırmak için kod.
 
 ## <a name="create-an-indexhtml-page"></a>Bir index.html sayfası oluşturma
 

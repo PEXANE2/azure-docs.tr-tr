@@ -1,6 +1,6 @@
 ---
 title: Azure SYNAPSE Studio 'da Azure açık veri kümelerini analiz etmek için isteğe bağlı SQL (Önizleme) kullanma (Önizleme)
-description: Bu öğreticide, SQL isteğe bağlı (Önizleme) kullanarak farklı Azure açık veri kümeleri birleştiren araştırmacı veri analizini kolayca gerçekleştirmeyi ve Azure SYNAPSE Studio 'da sonuçları görselleştirmeyi öğreneceksiniz.
+description: SQL isteğe bağlı (Önizleme) kullanarak farklı Azure açık veri kümeleri birleştiren araştırmacı veri analizini kolayca gerçekleştirmeyi ve Azure SYNAPSE Studio 'daki sonuçları görselleştirmeyi öğrenin.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2fc98e927fcf9686f0f39dae600f944b485c5a06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 6325c5c597ce0f85615780f7970a4a3c6c4c451b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288061"
 ---
 # <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Azure açık veri kümelerini analiz etmek ve Azure SYNAPSE Studio 'da sonuçları görselleştirmek için SQL isteğe bağlı olarak kullanın
 
@@ -135,7 +135,7 @@ Daha sonra, **Kategori** sütunu **current_day** olarak ayarlanmış olan **süt
 
 ![2016 için günlük olarak bayıldığı gösteren sütun grafiği](./media/tutorial-data-analyst/7.png)
 
-Çizim grafiğinde, en yoğun gün olarak Cumartesi günleri olan haftalık bir model olduğunu görebilirsiniz. Yaz ayları sırasında tatiller nedeniyle daha az TAXI bayıldığı vardır. Ayrıca, vergilenme sayısında bazı önemli düşmeler, ne zaman ve neden meydana gelen açık bir model olmadan de vardır.
+Çizim grafiğinde, en yoğun gün olarak Cumartesi günleri olan haftalık bir model olduğunu görebilirsiniz. Yaz ayları sırasında tatiller nedeniyle daha az TAXI bayıldığı vardır. Ayrıca, bazı önemli düşmelere ne zaman ve neden gerçekleştiğine ilişkin açık bir model olmadan TAXI bayıldığı sayısında dikkat edin.
 
 Daha sonra, nzc TAXI bayıldığı veri kümesini genel tatiller veri kümesiyle birleştirerek genel tatiller ile ilişkilendirilenme olup olmadığını görelim:
 

@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f859700be32bda5d8245429076c2359d1adf9d5a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988070"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287756"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure SYNAPSE Studio (Önizleme) sorunlarını giderme
 
@@ -31,7 +31,8 @@ Bu sorun giderme kılavuzu, ağ bağlantısı sorunları üzerinde bir destek bi
 
 Sorguyu "SQL isteğe bağlı" ile çalıştırmak "sunucu bağlantısı kurulamadı" hata iletisini verir.
 
-![Ekran görüntüsü, sunucu iletisiyle bağlantı kurmaya başarısız olduğunu gösterir.](media/troubleshooting-synapse-studio/symptom2.png)
+![Belirti 2](media/troubleshooting-synapse-studio/symptom2.png)
+ 
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları
 
@@ -54,7 +55,7 @@ Sorun devam ederse, "Geliştirici Araçları" (DevTools) öğesini açmak için 
 
 Azure SYNAPSE Studio 'da gerçekleştirdiğiniz işlemi yeniden deneyin. "Geliştirici Araçları" içindeki "ağ" listesinde gösterilen yeni öğeler görebilirsiniz. Destek bileti sağlamak için geçerli sisteminizin saatini aklınızda yapın.
 
-![Ekran görüntüsü ağ ile DevTools penceresini gösterir ve önbelleği çevrimiçi olarak devre dışı bırakır.](media/troubleshooting-synapse-studio/network-panel.png)
+![Ağ-Panel 1](media/troubleshooting-synapse-studio/network-panel.png)
 
 URL sütunu aşağıdaki Düzenle eşleşen öğeyi bul:
 
@@ -64,9 +65,9 @@ Burada [*A*] çalışma alanınızın adıdır ve "-OnDemand" "-sqlod" olabilir 
 
 Bunlardan birinin "20X" ve dışında bir şey varsa:
 
-- durum "(başarısız)" ile başlar, "durum" sütununu genişletebilirsiniz ya da tüm metni görmek için işaretçinizi durum metninin üzerine getirin. Destek bileti açılırken metin ve/veya ekran görüntüsü ekleyin.
+- Durum "(başarısız)" ile başlar, "durum" sütununu genişletebilirsiniz ya da tüm metni görmek için işaretçinizi durum metninin üzerine getirin. Destek bileti açılırken metin ve/veya ekran görüntüsü ekleyin.
 
-    ![Ekran görüntüsünde durum sütununda başarısız bir değer de dahil olmak üzere sonuçlar gösterilir.](media/troubleshooting-synapse-studio/status-text.png)
+    ![durum metni](media/troubleshooting-synapse-studio/status-text.png)
 
     - ERR_NAME_NOT_RESOLVED görürseniz ve çalışma alanınızı 10 dakika içinde oluşturduysanız, 10 dakika bekleyin ve sorunun hala mevcut olup olmadığını görmek için yeniden deneyin.
     - ERR_INTERNET_DISCONNECTED veya ERR_NETWORK_CHANGED görürseniz, bılgısayar ağ bağlantınızın sorun olduğunu belirtebilir. Ağ bağlantınızı denetleyip işlemi yeniden deneyin.
@@ -74,7 +75,7 @@ Bunlardan birinin "20X" ve dışında bir şey varsa:
     - ERR_NETWORK_ACCESS_DENIED görürseniz, yerel güvenlik duvarı ilkenizin *. database.windows.net etki alanına veya 1443 uzak bağlantı noktasına erişiminin engellenip engellenmediğini yönetici ile denetlemeniz gerekebilir.
     - İsteğe bağlı olarak, bilgisayarınızda bir ağ yapılandırması sorununu denemek için aynı işlemi, farklı bir makine ve/veya ağ ortamında hemen deneyin.
 
-- durum "40X", "50x" veya diğer numaralardan, ayrıntıları görmek için öğe (ler) i seçin. Öğe ayrıntılarını sağ tarafta görmeniz gerekir. "Yanıt üst bilgisi" bölümünü bulun; ardından "erişim-denetim-izin-Origin" adlı bir öğenin var olup olmadığını denetleyin. Bu durumda, aşağıdaki değerlerden birine sahip olup olmadığını kontrol edin:
+- Durum "40X", "50x" veya diğer numaralardan, ayrıntıları görmek için öğe (ler) i seçin. Öğe ayrıntılarını sağ tarafta görmeniz gerekir. "Yanıt üst bilgisi" bölümünü bulun; ardından "erişim-denetim-izin-Origin" adlı bir öğenin var olup olmadığını denetleyin. Bu durumda, aşağıdaki değerlerden birine sahip olup olmadığını kontrol edin:
 
     - `*` (tek yıldız işareti)
     - https://web.azuresynapse.net/ (veya tarayıcınızın adres çubuğundaki metnin başladığı diğer değer)
@@ -83,21 +84,22 @@ Yanıt üst bilgisi yukarıdaki değerlerden birini içeriyorsa, hata bilgilerin
 
 Üstbilgiyi göremiyorsanız veya üst bilgide yukarıda listelenen değerlerden biri yoksa, bileti açtığınızda öğe ayrıntılarının ekran görüntüsünü ekleyin.
 
-![Ekran görüntüsü, yanıt üst bilgilerinde bir U R L vurgulanmış olan DevTools penceresini gösterir.](media/troubleshooting-synapse-studio/item-details.png)
-
+ 
+![öğe ayrıntıları](media/troubleshooting-synapse-studio/item-details.png)
+ 
 Yukarıdaki adımlar sorununuzu çözmezse, bir destek bileti açmanız gerekebilir. Destek biletinizi gönderirken, bu kılavuzun başlangıcında "oturum KIMLIĞI" veya "tanılama bilgileri" ni ekleyin.
 
 Sorunu bildirirken, isteğe bağlı olarak "Geliştirici Araçları" içindeki "konsolunuzun" sekmesinin ekran görüntüsünü alabilir ve destek biletini iliştirebilirsiniz. Tüm iletiyi yakalamak gerekirse içeriği kaydırın ve birden fazla ekran görüntüsü alın.
 
-![Ekran görüntüsü, olası bir ekran görüntüsü için tüm iletiyi göstermek üzere boyutlandırılmış olan DevTools penceresini gösterir.](media/troubleshooting-synapse-studio/developer-tool-console.png)
+![Geliştirici araç konsolu](media/troubleshooting-synapse-studio/developer-tool-console.png)
 
 Ekran görüntüleri iliştirirken, ekran görüntülerini aldığınız zaman (veya tahmini bir zaman aralığı) belirtin. Sorunu ararken bize yardımcı olacak.
 
 Belirli tarayıcıların "konsol" sekmesinde zaman damgalarını göstermesini destekler. Kmıum Edge/Chrome için, "Geliştirici Araçları" içindeki "Ayarlar" iletişim kutusunu açın ve "Tercihler" sekmesinde "zaman damgalarını göster" seçeneğini işaretleyin.
 
-![Ekran görüntüsü bağlam menüsünde seçili ayarlar içeren DevTools penceresini gösterir.](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
+![Geliştirici Aracı Konsol ayarları](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
 
-![Ekran görüntüsünde, zaman damgasını göster seçiliyken DevTools pencere tercihleri gösterilmektedir.](media/troubleshooting-synapse-studio/show-time-stamp.png)
+![zaman damgasını göster](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Yukarıdaki adımlar sorununuzu çözmeye yardımcı değilse [destek bileti oluşturun](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

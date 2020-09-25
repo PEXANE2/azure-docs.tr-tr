@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa79af1047862e8694fa6342942ffd0793bafcb6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324411"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335016"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>İçerik başvurusunu yapılandırma ve yönetme-Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Bu makalede, Azure SQL veritabanınızı yönetmenize ve yapılandırmanıza yar
 
 - [Azure Active Directory (Azure AD) kimlik doğrulamasını yapılandırma](authentication-aad-configure.md)
 - [Koşullu erişimi yapılandırma](conditional-access-configure.md)
-- [Multi-Factor Azure AD kimlik doğrulaması](authentication-mfa-ssms-overview.md)
+- [Çok faktörlü Azure AD kimlik doğrulaması](authentication-mfa-ssms-overview.md)
 - [Multi-Factor Authentication Yapılandır](authentication-mfa-ssms-configure.md)
 - [Zamana bağlı saklama ilkesini yapılandırma](temporal-tables-retention-policy.md)
 - [KAG ile TDE Yapılandırması](transparent-data-encryption-byok-configure.md)

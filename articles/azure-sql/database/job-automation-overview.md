@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 78758fbfd14810cb7320d95026f8d4af647a3f2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436791"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334965"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -192,7 +192,7 @@ Aşağıdaki resimde farklı türlerdeki hedef gruplarda iş yürüten bir iş a
 |[**Elastik İş aracısı**](#elastic-job-agent) | İşleri çalıştırmak ve yönetmek için oluşturduğunuz Azure kaynağıdır. |
 |[**İş veritabanı**](#job-database) | Azure SQL veritabanı 'nda iş aracısının işle ilgili verileri, iş tanımlarını vb. depolamak için kullandığı bir veritabanı. |
 |[**Hedef grup**](#target-group) | Bir işin çalıştırılacağı sunucu, havuz, veritabanı ve parça eşlemesi kümesidir. |
-|[**İşinden**](#job) | İş, bir veya daha fazla [iş adımından](#job-step)oluşan bir iş birimidir. İş adımları çalıştırılacak T-SQL betiğinin yanı sıra betiğin yürütülmesi için gerekli olan diğer ayrıntıları belirtir. |
+|[**İş**](#job) | İş, bir veya daha fazla [iş adımından](#job-step)oluşan bir iş birimidir. İş adımları çalıştırılacak T-SQL betiğinin yanı sıra betiğin yürütülmesi için gerekli olan diğer ayrıntıları belirtir. |
 
 #### <a name="elastic-job-agent"></a>Elastik İş aracısı
 

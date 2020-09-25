@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7a6b145e9a1efb29bbb6c233f2a09498b4a4ea7f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8bd955e844c9569438c5d35f152ba1bcdfccc306
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213134"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288010"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için kendi kendine yardım (Önizleme)
 
@@ -24,7 +24,7 @@ Bu makale, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) ile ilgil
 
 SYNAPSE Studio isteğe bağlı SQL bağlantısı kuramazsa, isteğe bağlı SQL 'nin gri olduğunu veya "çevrimdışı" durumunu gösterdiğini fark edeceksiniz. Genellikle, bu sorun aşağıdaki durumlardan biri gerçekleştiğinde oluşur:
 
-1) Ağınız Azure SYNAPSE arka ucu iletişimini engelliyor. En sık karşılaşılan durum 1443 numaralı bağlantı noktasıdır. SQL isteğe bağlı olarak, bu bağlantı noktasının engelini kaldırın. Daha fazla bilgi edinmek için, diğer sorunlar hakkında SQL isteğe bağlı olarak [sorun giderme kılavuzunu ziyaret edebilirsiniz](../troubleshoot/troubleshoot-synapse-studio.md).
+1) Ağınız Azure SYNAPSE arka ucu iletişimini engelliyor. En sık karşılaşılan durum 1443 numaralı bağlantı noktasıdır. İsteğe bağlı SQL 'in çalışmasını sağlamak için bu bağlantı noktasının engelini kaldırın. Daha fazla bilgi edinmek için, diğer sorunlar hakkında SQL isteğe bağlı olarak [sorun giderme kılavuzunu ziyaret edebilirsiniz](../troubleshoot/troubleshoot-synapse-studio.md).
 2) İsteğe bağlı SQL 'de oturum açma izniniz yok. Erişim kazanmak için, Azure SYNAPSE çalışma alanı yöneticilerinin sizi çalışma alanı yöneticisine veya SQL yöneticisi rolüne eklemesi gerekir. [Daha fazla bilgi için Access Control 'ta tam kılavuzu ziyaret edin](access-control.md).
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>Dosya açılamadığından sorgu başarısız oluyor
@@ -33,9 +33,9 @@ Sorgunuz mevcut olmadığı veya başka bir işlem tarafından kullanıldığı 
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>Geçerli kaynak kısıtlamaları nedeniyle yürütülemediğinden sorgu başarısız oldu 
 
-Sorgunuz hata iletisiyle başarısız olursa, ' Bu sorgu geçerli kaynak kısıtlamaları nedeniyle yürütülemiyor ', kaynak kısıtlamaları nedeniyle isteğe bağlı SQL 'in Şu anda yürütemeyeceği anlamına gelir: 
+Sorgunuz şu hata iletisiyle başarısız oluyor: ' Bu sorgu, geçerli kaynak kısıtlamaları nedeniyle yürütülemiyor ', kaynak kısıtlamaları nedeniyle isteğe bağlı SQL 'in Şu anda yürütemeyeceği anlamına gelir: 
 
-- Makul boyutlardaki veri türlerinin kullanıldığından emin olun. Ayrıca varsayılan olarak VARCHAR(8000) türünde olacak dize sütunlarının Parquet dosyaları için şemayı belirtin. 
+- Makul boyutlarda veri türlerinin kullanıldığından emin olun. Ayrıca, varsayılan olarak VARCHAR (8000) olacak şekilde dize sütunları için Parquet dosyaları için şema belirtin. 
 
 - Sorgunuz CSV dosyalarını hedefliyorsa, [istatistik oluşturmayı](develop-tables-statistics.md#statistics-in-sql-on-demand-preview)düşünün. 
 

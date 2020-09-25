@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: ebaddbcacbc20097b2ec5606244650ea2916edfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324547"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335080"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL veritabanında veritabanları için dosya alanını yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ Azure portal görüntülendiği en fazla depolama alanı ölçümü ve aşağıd
 
 Ancak aşağıdaki API 'Ler Ayrıca veritabanları ve elastik havuzlar için ayrılan alan boyutunu ölçer:
 
-- T-SQL: [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL:  [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Veri dosyalarını küçültme
@@ -64,7 +64,7 @@ Aşağıdaki depolama alanı miktarlarını anlamak bir veritabanının dosya al
 |**Kullanılan veri alanı**|Veritabanı verilerini 8 KB 'lik sayfalarda depolamak için kullanılan alan miktarı.|Genellikle, kullanılan alanın eklemeleri (azaltır) ekler (siler). Bazı durumlarda, kullanılan alan, işleme ve parçalanmaya dahil edilen verilerin miktarına ve düzenine bağlı olarak ekleme veya silme üzerinde değişiklik yapmaz. Örneğin, her veri sayfasından bir satırı silmek, kullanılan alanı azaltmayabilir.|
 |**Ayrılan veri alanı**|Veritabanı verilerini depolamak için kullanılabilir hale getirilen biçimlendirilen dosya alanı miktarı.|Ayrılan alan miktarı otomatik olarak büyür, ancak silmeleri hiçbir şekilde azalmıştır. Bu davranış, boşluk yeniden biçimlendirilmesi gerekmediğinden gelecekteki eklemelerin daha hızlı olmasını sağlar.|
 |**Ayrılan ancak kullanılmayan veri alanı**|Ayrılan veri alanı miktarı ve kullanılan veri alanı arasındaki fark.|Bu miktar, veritabanı veri dosyalarını küçülterek geri kazanılabileceğini en fazla boş alan miktarını temsil eder.|
-|**Veri boyutu üst sınırı**|Veritabanı verilerini depolamak için kullanılabilecek maksimum alan miktarı.|Ayrılan veri alanı miktarı, veri boyutu üst sınırının ötesinde büyütülemez.|
+|**Maksimum veri boyutu**|Veritabanı verilerini depolamak için kullanılabilecek maksimum alan miktarı.|Ayrılan veri alanı miktarı, veri boyutu üst sınırının ötesinde büyütülemez.|
 
 Aşağıdaki diyagramda bir veritabanı için farklı depolama alanı türleri arasındaki ilişki gösterilmektedir.
 
@@ -120,7 +120,7 @@ Aşağıdaki depolama alanı miktarlarını anlamak, elastik havuzun dosya alan�
 |**Kullanılan veri alanı**|Elastik havuzdaki tüm veritabanları tarafından kullanılan veri alanının toplamı.||
 |**Ayrılan veri alanı**|Elastik havuzdaki tüm veritabanları tarafından ayrılan veri alanı toplamı.||
 |**Ayrılan ancak kullanılmayan veri alanı**|Elastik havuzdaki tüm veritabanları tarafından kullanılan veri alanı miktarı ve veri alanı arasındaki fark.|Bu miktar, veritabanı veri dosyalarını küçülterek geri kazanılabilen elastik havuz için ayrılan en fazla alan miktarını temsil eder.|
-|**Veri boyutu üst sınırı**|Tüm veritabanları için elastik havuz tarafından kullanılabilecek maksimum veri alanı miktarı.|Elastik havuz için ayrılan alan, esnek havuz en büyük boyutunu aşmamalıdır.  Bu durum oluşursa, kullanılmayan alana ayrılan alan, veritabanı veri dosyaları küçültülebileceğinden geri kazanılır.|
+|**Maksimum veri boyutu**|Tüm veritabanları için elastik havuz tarafından kullanılabilecek maksimum veri alanı miktarı.|Elastik havuz için ayrılan alan, esnek havuz en büyük boyutunu aşmamalıdır.  Bu durum oluşursa, kullanılmayan alana ayrılan alan, veritabanı veri dosyaları küçültülebileceğinden geri kazanılır.|
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Depolama alanı bilgileri için elastik havuz sorgulama
 
@@ -236,7 +236,7 @@ Veritabanı veri dosyaları daraltıladıktan sonra, dizinler parçalanabilir ve
 
 - En fazla veritabanı boyutu hakkında daha fazla bilgi için bkz.:
   - [Tek bir veritabanı için Azure SQL veritabanı sanal çekirdek tabanlı satın alma modeli sınırları](resource-limits-vcore-single-databases.md)
-  - [DTU tabanlı satın alma modelini kullanan tek veritabanlarına yönelik kaynak sınırları](resource-limits-dtu-single-databases.md)
+  - [DTU tabanlı satın alma modeli kullanıldığında tek veritabanları için kaynak sınırları](resource-limits-dtu-single-databases.md)
   - [Esnek havuzlar için Azure SQL veritabanı sanal çekirdek tabanlı satın alma modeli sınırları](resource-limits-vcore-elastic-pools.md)
   - [DTU tabanlı satın alma modelini kullanarak elastik havuzlar için kaynak limitleri](resource-limits-dtu-elastic-pools.md)
 - Komutu hakkında daha fazla bilgi için `SHRINKDATABASE` bkz. [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).

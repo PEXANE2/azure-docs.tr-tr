@@ -4,12 +4,12 @@ description: Bu öğreticide, Event Grid hizmeti bir bölgede sağlıksız hale 
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27cc64eee31755bcefc9d0d82b7d06e52efcf183
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004553"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324136"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid özel konular için kendi olağanüstü durum kurtarmayı oluşturun
 Olağanüstü durum kurtarma, uygulama işlevselliğinin önemli bir kaybından kurtarılmasına odaklanır. Bu öğretici, Event Grid hizmeti belirli bir bölgede sağlıksız hale gelirse, olay mimarinizi kurtarmak üzere nasıl ayarlayabileceğinizi size yol gösterecektir.
@@ -43,7 +43,7 @@ Daha sonra ihtiyacınız olacak şekilde bu URL 'YI aklınızda olduğunuzdan em
 
 İlk olarak iki Event Grid konu başlığı oluşturun. Bu konular, birincil ve ikincil gibi davranır. Varsayılan olarak, olaylarınız birincil konusundan akacaktır. Birincil bölgede bir hizmet kesintisi varsa, ikincilinizi alır.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 
 1. Ana Azure menüsünün sol üst köşesinden **tüm hizmetler** > **Event Grid** ara ' yı seçin > **Event Grid konular**' ı seçin.
 
@@ -72,7 +72,7 @@ Daha sonra ihtiyacınız olacak şekilde bu URL 'YI aklınızda olduğunuzdan em
    * Uç nokta türü Web kancası ' nu seçin.
    * Uç noktasını olay alıcıınızın olay URL 'SI olarak ayarlayın, bu, şöyle bir şey görünmelidir: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-     ![Birincil olay aboneliğini Event Grid](./media/custom-disaster-recovery/create-primary-es.png)
+     !["Ad", "uç nokta türü" ve "uç nokta" değerleri vurgulanmış "olay aboneliği oluşturma-temel" sayfasını gösteren ekran görüntüsü.](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. İkinci konuyu ve aboneliğinizi oluşturmak için aynı akışı tekrarlayın. Bu kez, daha kolay izleme için "-PRIMARY" sonekini "-Secondary" ile değiştirin. Son olarak, farklı bir Azure bölgesine yerleştirdiğinizden emin olun. İstediğiniz yere koyabilmeniz mümkün olsa da, [Azure eşlenmiş bölgelerini](../best-practices-availability-paired-regions.md)kullanmanız önerilir. İkincil konu ve aboneliğin farklı bir bölgeye yerleştirilmesi, birincil bölge aşağı gitse bile yeni olaylarınızın akmasını sağlar.
 

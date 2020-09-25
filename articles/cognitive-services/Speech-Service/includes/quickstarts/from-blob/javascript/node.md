@@ -4,15 +4,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5d1d7008151ae61a72368d3d8ecfaf545a2080fa
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: f480419bb25f3fe8d49c6b4af4a5d1873e286b58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324799"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -155,7 +155,7 @@ Hizmet, dökümü zaman uyumsuz olarak işlediğinden, her ne kadar her durumda 
 
 Başarılı bir tamamlama haricinde her şey için durum görüntüleme ile yoklama kodu aşağıda verilmiştir. 
 
-`CheckTranscriptionStatus`döküm isteğinden durum URL 'sini alır ve başarılı ya da hata olduğunu belirten 5 saniyede bir yoklar. Daha sonra `PrintResults` , döküm sonuçlarının yazdırılması için çağırır. Bir `PrintResults` sonraki adımda uygulayacağız.
+`CheckTranscriptionStatus` döküm isteğinden durum URL 'sini alır ve başarılı ya da hata olduğunu belirten 5 saniyede bir yoklar. Daha sonra `PrintResults` , döküm sonuçlarının yazdırılması için çağırır. Bir `PrintResults` sonraki adımda uygulayacağız.
 ```csharp
 function CheckTranscriptionStatus(statusUrl) {
     transcription = null;

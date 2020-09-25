@@ -1,14 +1,16 @@
 ---
 title: 'Öğretici: makine öğrenimi varlığı ile yapılandırılmış verileri ayıklama-LUSıS'
 description: Makine öğrenimi varlığını kullanarak bir noktadan yapılandırılmış verileri ayıklayın. Ayıklama doğruluğunu artırmak için, özelliklerle alt varlıklar ekleyin.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86045612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334744"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Öğretici: Language Understanding (LUSıS) içinde makine öğrenimi varlıkları ile Kullanıcı aradıklarından yapılandırılmış verileri Ayıkla
 
@@ -79,12 +81,12 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
 
 1. **Varlık türü seçin** kutusunda, **Yapı Ekle** ' yi seçin ve ardından **İleri**' yi seçin. Boyut ve miktar gibi alt varlıklar eklemek için yapı gereklidir.
 
-    ![Varlığa yapı Ekle](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
+    ![Ekran görüntüsü, yapı Ekle seçeneği işaretli bir varlık türü Seç penceresini gösterir.](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. **Alt varlıklar Ekle (isteğe bağlı)** kutusunda, satırda ' ı seçin **+** `Order` , ardından `Size` `Quantity` alt varlıklar ekleyin ve ardından **Oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Varlığa yapı Ekle](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
+    > ![Ekran görüntüsü alt varlıkların vurgulandığı alt varlıkları Ekle (isteğe bağlı) penceresini gösterir.](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
 
 ## <a name="edit-subentities-to-improve-extraction"></a>Ayıklamayı geliştirmek için alt varlıkları düzenleme
 
@@ -121,7 +123,7 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
 
 
     > [!div class="mx-imgBorder"]
-    > ![Varlığa yapı Ekle](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
+    > ![Ekran görüntüsü, SizeList penceresini ve seçili XLarge ile liste öğelerini gösterir.](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
 
 ### <a name="add-feature-of-sizelist-entity"></a>SizeList varlığının özelliğini ekleyin
 
@@ -160,7 +162,7 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
 **Düzen** varlığının varlık ayrıntısı sayfasında, `*` hem **@ sizelist** özelliği hem de **@ Number** özelliği için yıldız işaretini seçin. Yıldız işareti, özellik adı ile aynı etikette görüntülenir.
 
 > [!div class="mx-imgBorder"]
-> ![Varlığa yapı Ekle](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
+> ![Ekran görüntüsü, @SizeList yıldız işareti ile özelliği gösterir ve uyarı gerektirir.](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
 
 <a name="label-text-as-entities-in-example-utterances"></a>
 <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>
@@ -200,7 +202,7 @@ Uygulamayı eğiteiçin **eğitme**' yi seçin. Eğitim, etkin modele yeni varl�
 1. Tahmini etiketli bir varlık olarak değiştirmek için, aynı satırdaki onay işaretini seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Varlıkla tahmin edilen yeni örnek ekran görüntüsü](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
+    > ![Ekran görüntüsünde, onay işaretiyle vurgulanan örnek bir değer gösterilir.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
 
     Bu noktada, varlığı yeni bir örnek içinde bulabildiğinden makine öğrenimi varlığı çalışmaktadır. Örnek yazarken, varlık doğru şekilde tahmin edilmezse, varlığı ve alt varlıkları etiketleyin. Varlık doğru bir şekilde tahmin edildiğinde, tahminleri onaylamanız emin olun.
 
