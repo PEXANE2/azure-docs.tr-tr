@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982964"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322198"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -23,11 +23,7 @@ Bazen [bir depolama hesabının bağlanması](../how-tos/create-an-account.md#li
 
 ## <a name="client-cant-connect-to-server"></a>İstemci sunucuya bağlanamıyor
 
-Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) aşağıdaki bağlantı noktalarını engellemediğinden emin olun:
-
-* **50051 (TCP)** -ilk bağlantı için GEREKLIDIR (http el sıkışması)
-* **8266 (TCP + UDP)** -veri aktarımı için gereklidir
-* **5000 (TCP)**, **5433 (tcp)**, **8443 (TCP)** - [ArrInspector](tools/arr-inspector.md) için gereklidir
+Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) [sistem gereksinimlerinde](../overview/system-requirements.md#network-ports)belirtilen bağlantı noktalarını engellemediğinden emin olun.
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>Hata ' `Disconnected: VideoFormatNotAvailable` '
 
@@ -152,7 +148,7 @@ Bu sınırlama kutusuyla ilgili olarak görünmeyen geometriye yol açabilecek i
 
 Azure uzaktan Işleme, video ile çerçeve oluşturmayı ve yeniden projeksiyonu yapmak için Unity işleme ardışık düzenine takılır. Bu kancalarının mevcut olduğunu doğrulamak için menüsünü açın *:::no-loc text="Window > Analysis > Frame debugger":::* . Bunu etkinleştirin ve `HolographicRemotingCallbackPass` ardışık düzende ' ın iki girişi olduğundan emin olun:
 
-![Unity çerçevesi hata ayıklayıcısı](./media/troubleshoot-unity-pipeline.png)
+![Unity işleme işlem hattı](./media/troubleshoot-unity-pipeline.png)
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Dama tahtası stili, model yüklendikten sonra işlenir
 
@@ -184,6 +180,12 @@ HoloLens 2 için Unity örneklerini (hızlı başlangıç, ShowCaseApp,..) derle
 ### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>AudioPluginMsHRTF.dll eksik olduğundan Unity projeleri için Arm64 derlemeleri başarısız oluyor
 
 `AudioPluginMsHRTF.dll`For Arm64, 3.0.1 sürümündeki *Windows Mixed Reality* paketine *(com. Unity. xr. windowsmr. metro)* eklenmiştir. Unity paket Yöneticisi aracılığıyla sürüm 3.0.1 veya daha yeni bir sürümün yüklü olduğundan emin olun. Unity menü çubuğundan *pencere > Paket Yöneticisi* ' ne gidin ve *Windows Mixed Reality* paketini bulun.
+
+## <a name="native-c-based-application-does-not-compile"></a>Yerel C++ tabanlı uygulama derlenmiyor
+
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP uygulaması veya dll için ' kitaplık bulunamadı ' hatası
+
+C++ NuGet paketinin içinde, `microsoft.azure.remoterendering.Cpp.targets` hangi ikilinin kullanılacağını tanımlayan dosya dosyası vardır. Belirlemek için `UWP` Dosya denetimi içindeki koşulları `ApplicationType == 'Windows Store'` . Bu nedenle, bu türün projede ayarlanmış olması gerekir. Bu, Visual Studio 'nun proje Sihirbazı aracılığıyla bir UWP uygulaması veya DLL oluştururken büyük/küçük harf olmalıdır.
 
 ## <a name="unstable-holograms"></a>Dengesiz Hologragram
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein, carlrab
-ms.date: 9/8/2020
-ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.reviewer: sstein
+ms.date: 9/17/2020
+ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565098"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321416"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Sağlanan işlem veritabanlarının aksine, CPU veya etkin önbellek kullanımı
 
 Hem sunucusuz hem de sağlanan işlem veritabanlarında, kullanılabilir tüm bellek kullanılıyorsa önbellek girdileri çıkartılamayabilir.
 
-CPU kullanımı düşük olduğunda, etkin önbellek kullanımının kullanım düzenine bağlı olarak yüksek kalabileceğini ve bellek geri kazanma engel olabileceğini unutmayın.  Ayrıca, düzenli arka plan işlemlerinin önceki Kullanıcı etkinliğine yanıt vermemesi nedeniyle bellek geri kazanma gerçekleşmeden önce, Kullanıcı etkinliği durdurulmadan önce ek gecikme olabilir.  Örneğin, silme işlemleri silinmek üzere işaretlenen hayalet kayıtlar oluşturur, ancak veri sayfalarını önbelleğe okumayı içerebilen hayalet temizleme işlemi çalıştırılıncaya kadar fiziksel olarak silinmez.
+CPU kullanımı düşük olduğunda, etkin önbellek kullanımının kullanım düzenine bağlı olarak yüksek kalabileceğini ve bellek geri kazanma engel olabileceğini unutmayın.  Ayrıca, düzenli arka plan işlemlerinin önceki Kullanıcı etkinliğine yanıt vermemesi nedeniyle bellek geri kazanma gerçekleşmeden önce, Kullanıcı etkinliği durdurulmadan önce ek gecikme olabilir.  Örneğin, silme işlemleri ve QDS temizleme görevleri, silinmek üzere işaretlenmiş hayalet kayıtlar oluşturur, ancak veri sayfalarını önbelleğe okumayı gerektirebilecek hayalet temizleme işlemi çalıştırılıncaya kadar fiziksel olarak silinmez.
 
 #### <a name="cache-hydration"></a>Önbellek hidrasyonu
 
@@ -130,7 +130,7 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 
 |Öne çıkan özelliği|Oto özgeçmişi tetikleyicisi|
 |---|---|
-|Kimlik doğrulama ve yetkilendirme|Oturum aç|
+|Kimlik doğrulaması ve yetkilendirme|Oturum aç|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
 |Veri bulma ve sınıflandırma|Duyarlılık etiketlerini ekleme, değiştirme, silme veya görüntüleme|
 |Denetim|Denetim kayıtlarını görüntüleme.<br>Denetim ilkesini güncelleştirme veya görüntüleme.|
@@ -148,7 +148,7 @@ Yukarıda listelenen işlemlerden herhangi birini gerçekleştirerek izleme, yö
 
 Ayrıca, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında, oto devam etme işlemi tetiklenir.
 
-### <a name="connectivity"></a>Bağlantı
+### <a name="connectivity"></a>Bağlanabilirlik
 
 Sunucusuz bir veritabanı duraklatıldığında, ilk oturum açma işlemi veritabanını sürdürür ve 40613 hata koduyla veritabanının kullanılamadığını belirten bir hata döndürür. Veritabanı devam ettirdikten sonra, bağlantı kurmak için oturum açma yeniden denenmelidir. Bağlantı yeniden deneme mantığının bulunduğu veritabanı istemcilerinin değiştirilmesi gerekmez.
 

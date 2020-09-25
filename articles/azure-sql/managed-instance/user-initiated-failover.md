@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: douglas, carlrab, sstein
+ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 0d5390beff6c3e0045c6b887f0262a54a737a851
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e805de26b7d2e5ec8d29801a05291acfe086bb1a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181774"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323167"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde kullanıcı tarafından başlatılan el ile yük devretme
 
@@ -94,7 +94,7 @@ Yalnızca BC hizmet katmanı için geçerli olan okuma ikincil düğümünü yü
 az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableSecondary
 ```
 
-### <a name="using-rest-api"></a>REST API 'YI kullanma
+### <a name="using-rest-api"></a>Rest API'yi kullanma
 
 Sürekli test işlem hattı veya otomatik performans mitigators uygulama amacıyla SQL tarafından yönetilen örneklerinin yük devretmesini otomatik hale getirmesi gerekebilecek ileri düzey kullanıcılar için, bu işlev bir API çağrısıyla yük devretme başlatılmasına göre gerçekleştirilebilir. Ayrıntılar için bkz. [yönetilen örnekler-yük devretme REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) .
 

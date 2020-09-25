@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 9eee3d5bc53ebe40ba4462f394ffe30cea6b70fa
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e98b21d5afebdbd2654d032493b92eb5e6e7fdc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91001053"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320566"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Azure Key Vault Managed HSM (Önizleme) nedir?
 
@@ -33,7 +33,7 @@ Azure Key Vault yönetilen HSM, **fıps 140-2 düzey 3** tarafından doğrulanan
 
 - **Merkezi anahtar yönetimi**: kuruluşunuzda kritik ve yüksek değerli anahtarları tek bir yerde yönetin. Anahtar izinleri başına ayrıntılı olarak, ' en az ayrıcalıklı erişim ' prensibi her bir anahtara erişimi denetleyin.
 - **Yalıtılmış erişim denetimi**: yönetilen HSM "yerel RBAC" erişim denetimi modeli, belirlenen HSM küme yöneticilerinin, yönetim grubu, abonelik veya kaynak grubu yöneticilerinin geçersiz kılınamamasına karşın, hsms üzerinde tamamen denetime sahip olmasını sağlar.
-- **Fıps 140-2 düzey 3 doğrulanan HSM**'ler: FIPS ((Federal Information Protection standart)) 140-2 düzey 3 tarafından doğrulanan HSM 'lerle verilerinizi koruyun ve uyumluluk gereksinimlerini karşılayın. Yönetilen HSM 'ler, HSMs 'nin Marvell LiquidSecurity ailesini kullanır.
+- **Fıps 140-2 düzey 3 doğrulanan HSM**'ler: FIPS ((Federal Information Protection standart)) 140-2 düzey 3 tarafından doğrulanan HSM 'lerle verilerinizi koruyun ve uyumluluk gereksinimlerini karşılayın. Yönetilen HSM 'ler, Marvell LiquidSecurity HSM bağdaştırıcılarını kullanır.
 - **İzleme ve denetim**: Azure izleyici ile tam olarak tümleşik. Tüm etkinliklerin Azure Izleyici aracılığıyla tüm günlüklerini alın. Analiz ve uyarılar için Azure Log Analytics kullanın.
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Azure ve Microsoft PaaS/SaaS hizmetleriyle tümleşik 

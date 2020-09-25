@@ -1,6 +1,6 @@
 ---
 title: Azure API Management sayfa şablonları | Microsoft Docs
-description: Azure API Management 'de bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmeyi öğrenin.
+description: Azure API Management geliştirici portalı sayfa şablonlarının içeriğini özelleştirmeyi öğrenin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 78866804f10d12beda46f1fab9c8c78509a5a0b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 24d026785025dba4ae45de404edec67c2cf3871a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335594"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API Management sayfa şablonları
 Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. Bu şablonları kullanarak uygun gördüğünüz şekilde, sayfanın içeriğini yapılandırmak için [dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)ile birlikte kullanabilirsiniz.  
@@ -38,7 +38,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="sign-in"></a><a name="SignIn"></a>Oturum Aç  
+##  <a name="sign-in"></a><a name="SignIn"></a> Oturum Aç  
  **Oturum açma** şablonu, geliştirici portalındaki oturum açma sayfasını özelleştirmenize olanak sağlar.  
   
  ![Oturum açma sayfası](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APıM oturum açma sayfası geliştirici portalı şablonları")  
@@ -137,7 +137,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 }
 ```  
   
-##  <a name="sign-up"></a><a name="SignUp"></a>Kaydol  
+##  <a name="sign-up"></a><a name="SignUp"></a> Kaydol  
  **Kaydolma** şablonu, geliştirici portalındaki kaydolma sayfasını özelleştirmenize olanak sağlar.  
   
  ![Kaydolma sayfası](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APıM kaydolma sayfası geliştirici portalı şablonları")  
@@ -185,7 +185,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 }  
 ```  
   
-##  <a name="page-not-found"></a><a name="PageNotFound"></a>Sayfa bulunamadı  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a> Sayfa bulunamadı  
  **Sayfa bulunamadı** şablonu, geliştirici portalındaki sayfa bulunamadı sayfasını özelleştirmenize olanak sağlar.  
   
  ![Bulunamadı sayfası](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APıM bulunamadı sayfası geliştirici portalı şablonları")  
@@ -227,7 +227,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |referenceCode|string|Bu sayfa bir iç hatanın sonucu olarak görüntüleniyorsa kod oluşturulur.|  
 |Raporladı|string|Bu sayfa bir iç hatanın sonucu olarak görüntüleniyorsa kod oluşturulur.|  

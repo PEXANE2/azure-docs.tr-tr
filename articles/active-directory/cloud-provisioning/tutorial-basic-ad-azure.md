@@ -10,23 +10,23 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8a6fc1291615760320deb488511fdd9d964d25d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ceffc928a0cf8313723ff6193d9a6a63f8465f90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227874"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266318"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Öğretici: temel Active Directory ortamı
 
 Bu öğreticide, temel bir Active Directory ortamı oluşturma işlemi adım adım açıklanmaktadır. 
 
-![Oluştur](media/tutorial-single-forest/diagram1.png)
+![Temel bir Azure A D ortamını gösteren diyagram.](media/tutorial-single-forest/diagram1.png)
 
 Hibrit kimlik senaryolarının çeşitli yönlerini test etmek için öğreticide oluşturduğunuz ortamı kullanabilirsiniz ve bazı öğreticiler için bir önkoşul olacaktır.  Zaten mevcut bir Active Directory ortamınız varsa bunu alternatif olarak kullanabilirsiniz.  Bu bilgiler, hiç bir şey başlatmayan bireyler için sağlanır.
 
 Bu öğreticiden oluşur
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
 - Sanal makinenin internet ile iletişim kurmasına izin veren bir [dış ağ bağdaştırıcısı](/virtualization/hyper-v-on-windows/quick-start/connect-to-network) .
@@ -200,7 +200,7 @@ Active Directory ortamımız olduğuna göre, bir sınama hesabı gerekir.  Bu h
 2. **Artı simgesini (+)** seçip **Azure Active Directory** terimini aratın.
 3. Arama sonuçlarında **Azure Active Directory** girişini seçin.
 4. **Oluştur**’u seçin.</br>
-![Oluşturma](media/tutorial-single-forest/create1.png)</br>
+![Azure portal Azure Active Directory sayfasını gösteren ekran görüntüsü.](media/tutorial-single-forest/create1.png)</br>
 5. **Kuruluş için bir ad** ve **ilk etki alanı adı** girin. Ardından **Oluştur**’u seçin. Dizininiz oluşturulur.
 6. Bu tamamlandığında, dizini yönetmek için **buraya** tıklayın bağlantısına tıklayın.
 
@@ -208,7 +208,7 @@ Active Directory ortamımız olduğuna göre, bir sınama hesabı gerekir.  Bu h
 Artık bir Azure AD kiracınız olduğuna göre, bir genel yönetici hesabı oluşturacaksınız.  Genel yönetici hesabını oluşturmak için aşağıdakileri yapın.
 
 1.  **Yönet** bölümünde **Kullanıcılar**'ı seçin.</br>
-![Oluşturma](media/tutorial-single-forest/administrator1.png)</br>
+!["Kullanıcılar" seçiliyken "genel bakış" menüsünü gösteren ekran görüntüsü.](media/tutorial-single-forest/administrator1.png)</br>
 2.  **Tüm kullanıcılar**'ı ve ardından **+ Yeni kullanıcı**'yı seçin.
 3.  Bu kullanıcı için bir ad ve kullanıcı adı girin. Bu kullanıcı kiracınızın Genel Yöneticisi olacak. Ayrıca, **Dizin rolünü** **genel yönetici** olarak değiştirmek isteyeceksiniz. İsterseniz geçici parolayı da gösterebilirsiniz. İşiniz bittiğinde **Oluştur**'u seçin.</br>
 ![Oluşturma](media/tutorial-single-forest/administrator2.png)</br>

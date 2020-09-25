@@ -3,12 +3,12 @@ title: Markaşağı biçimi-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma yanıt metninde kullanabileceğiniz markın biçimlerinin listesi aşağıda verilmiştir.
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: 38532783c38263b3f1364e30125414958eab1394
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d5bf8342b3e595ed4b381ec5104a0c82f0d7ecc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321042"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>Soru-Cevap Oluşturma yanıt metninde markın biçimi destekleniyor
 
@@ -38,7 +38,7 @@ Soru-Cevap Oluşturma yanıt metninde kullanabileceğiniz markın biçimlerinin 
 |Kalın ve italik|`***text***`|`How can I create a ***QnA Maker*** bot?`|![kalın ve italik biçim](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
 |Bağlantı için kalın URL|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![kalın URL için biçim](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |Bağlantı için italik URL|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![italik URL için biçim](./media/qnamaker-concepts-datasources/format-url-italics.png)|
-|Kaçış markın sembolleri|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![italik URL için biçim](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
+|Kaçış markın sembolleri|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Kaçış markın sembolleri için biçim.](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Sıralı liste|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Yukarıdaki örnek, markaşağı içinde yerleşik olarak bulunan otomatik numaralandırmayı kullanır.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Yukarıdaki örnek, açık numaralandırma kullanır.|![sıralı liste için biçim](./media/qnamaker-concepts-datasources/format-ordered-list.png)|
 |Sırasız liste|`\n * item1 \n * item2`<br>veya<br>`\n - item1 \n - item2`|`This is an unordered list: \n * List item 1 \n * List item 2`|![Sırasız liste için biçim](./media/qnamaker-concepts-datasources/format-unordered-list.png)|
 |İç içe listeler|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Sıralı ve sıralanmamış listeleri birlikte iç içe yerleştirebilirsiniz. Sekmesi, `\t` alt öğesinin girintileme düzeyini gösterir.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![iç içe sıralanmamış liste için biçim](./media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![iç içe geçmiş liste için biçim](./media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|

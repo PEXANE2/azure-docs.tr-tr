@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/29/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 137cff47d49be1405f60bc47cd16f7f027ab63a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899203"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320838"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızı izlemek için Kubernetes panosunu kullanma
 
@@ -62,7 +62,7 @@ Kubernetes panosu *salt okunurdur* ve 31000 numaralı bağlantı noktasında Kub
 
 İşlem modülleri, iş mantığı uygulanmış kapsayıcılardır. Azure Stack Edge Pro cihazınızda bir işlem modülünün başarıyla dağıtılıp dağıtılmadığını doğrulamak için panoyu kullanabilirsiniz.
 
-Modül durumunu görüntülemek IÇIN panoda bu adımları izleyin:
+Modül durumunu görüntülemek için panoda bu adımları izleyin:
 
 1. Panonun sol bölmesinde **ad alanı**' na gidin. IoT Edge modüllerinin görüntülendiği ad alanına göre filtreleyin, bu durumda **ıotedge**.
 1. Sol bölmede **Iş yükleri > dağıtımlar**' a gidin.
@@ -114,9 +114,9 @@ Belirli bir ad alanına göre de filtre uygulayabilirsiniz. Aşağıdaki örnekt
 
 ![Azure Arc dağıtımları için CPU ve bellek kullanımını görüntüleme](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
 
-Kubernetes ölçüm sunucusu, [yatay Pod otomatik Scaler ' a](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)benzer şekilde otomatik ölçeklendirme işlem hatları sağlar.
+Kubernetes ölçüm sunucusu, [yatay Pod otomatik gizleme](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)gibi otomatik ölçeklendirme işlem hatları sağlar.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kubernetes sorunlarını giderme hakkında bilgi edinin <!--insert link-->.
+[Cihaz sorunlarını giderme](azure-stack-edge-gpu-troubleshoot.md)hakkında bilgi edinin.

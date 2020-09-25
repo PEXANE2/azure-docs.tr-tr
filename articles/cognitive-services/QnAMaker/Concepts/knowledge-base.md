@@ -1,14 +1,14 @@
 ---
 title: Veri kaynaklarından içeri aktarma-Soru-Cevap Oluşturma
-description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) çiftleri ve isteğe bağlı meta veri kümesi içerir.
+description: Soru-Cevap Oluşturma veri kaynaklarından soru ve yanıt çiftlerini içeri aktarmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: eaa19cb2abf84f31cda9d8894e91ec1540980b27
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: c66f81ccabd77e49ba1c492db25ad9e9edd34e93
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993108"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334642"
 ---
 # <a name="importing-from-data-sources"></a>Veri kaynaklarından içeri aktarma
 

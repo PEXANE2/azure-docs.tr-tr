@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 0818ab782710e6a102d2034790ff8d997cd54f8e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 2946590cbb4c5e8f495a1f6ee4aac65929cd4d0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808448"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305772"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınıza uygulama ekleme
 
@@ -47,13 +47,24 @@ Azure AD kiracınıza bir uygulama eklemek için:
 3. **Kurumsal uygulamalar** bölmesinde **Yeni uygulama**' yı seçin. 
     ![Kiracınıza Galeri uygulaması eklemek için yeni uygulama ' yı seçin](media/add-application-portal/new-application.png)
 4. Yeni Galeri önizleme deneyimine geç: **Uygulama Ekle sayfasının**en üstündeki başlıkta, **yeni ve geliştirilmiş uygulama galerisini denemek için buraya tıklayın**bağlantısını seçin.
-5. **Azure AD galerisine gözatıp (Önizleme)** bölmesi açılır ve bulut platformları, şirket içi uygulamalar ve öne çıkan uygulamalar için kutucukları görüntüler. **Öne çıkan uygulamalar** bölümünde listelenen uygulamalar, federe çoklu oturum açma (SSO) ve sağlamayı destekleyip desteklemediğini gösteren simgelere sahiptir.
+5. **Azure AD galerisine gözatıp (Önizleme)** bölmesi açılır ve bulut platformları, şirket içi uygulamalar ve öne çıkan uygulamalar için kutucukları görüntüler. **Öne çıkan uygulamalar** bölümünde listelenen uygulamalar, federe çoklu oturum açma (SSO) ve sağlamayı destekleyip desteklemediğini gösteren simgelere sahiptir. 
     ![Bir uygulamayı ada veya kategoriye göre ara](media/add-application-portal/browse-gallery.png)
-6. Eklemek istediğiniz uygulamanın galerisine gözatıp, arama kutusuna adını girerek uygulamayı arayabilirsiniz. Sonra sonuçlardan uygulamayı seçin. Formunda, kuruluşunuzun gereksinimlerini karşılayacak şekilde uygulamanın adını düzenleyebilirsiniz. Bu örnekte GitHub ' ı seçtik ve adı **GitHub-test**olarak değiştirdi.
-    ![Galeriden bir uygulamanın nasıl ekleneceğini gösterir](media/add-application-portal/create-application.png)
-    >[!TIP]
-    >Aradığınız uygulama Galeri 'de değilse, **kendi uygulamanızı oluşturma** bağlantısına tıklayabilir ve ardından **uygulamanızla ne yapmak istiyorsunuz?** bölümünde, uygulamanızda **bulamadıysanız diğer tüm uygulamaları tümleştirin**' ı seçin. Microsoft, Azure AD ile çalışacak şekilde önceden yapılandırmak için birçok uygulama geliştiricileriyle zaten çalıştık. Galeri 'de görüntülenen uygulamalar bu uygulamalardır. Ancak eklemek istediğiniz uygulama listede yoksa, yeni, genel bir uygulama oluşturabilir ve bunu kendiniz veya onu oluşturan geliştiricinin kılavuzumuzu ile yapılandırabilirsiniz.
-7. **Oluştur**’u seçin. Uygulamayı kuruluşunuza göre yapılandırmak için kullanabileceğiniz seçeneklerin bulunduğu bir başlangıç sayfası açılır.
+6. Eklemek istediğiniz uygulamanın galerisine gözatıp, arama kutusuna adını girerek uygulamayı arayabilirsiniz. Sonra sonuçlardan uygulamayı seçin. 
+7. Sonraki adım, uygulamanın geliştiricisinin çoklu oturum açma (SSO) ile ilgili olarak değişir. Çoklu oturum açma, uygulama geliştiricileri tarafından dört şekilde uygulanabilir. SAML, OpenID Connect, Password ve Linked dört yolu vardır. Bir uygulama eklediğinizde, ekran görüntüsünde gösterildiği gibi yalnızca belirli bir SSO uygulamasını kullanarak uygulamaları filtreleyip görmeyi seçebilirsiniz. Örneğin, SSO uygulamak için popüler bir standart Security Assertion Markup Language (SAML) olarak adlandırılır. Yaygın olarak kullanılan başka bir standart, OpenID Connect (OıDC) olarak adlandırılır. SSO 'yu bu standartlara göre yapılandırma yönteminiz farklı olduğundan, eklediğiniz uygulama tarafından uygulanan SSO türünü unutmayın.
+
+    :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="Ekran görüntüsü SSO türleri seçicisini gösterir." lightbox="media/add-application-portal/sso-types.png":::
+
+    - Uygulamanın geliştiricisi SSO için **OIDC standardını** kullandıysanız **kaydolun**' ı seçin. Bir kurulum sayfası görüntülenir. Ardından, OıDC tabanlı çoklu oturum açmayı ayarlama hakkında hızlı başlangıç bölümüne gidin.
+    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Ekran görüntüsünde, OıDC tabanlı SSO uygulaması ekleme gösterilmektedir.":::
+
+    - Uygulamanın geliştiricisi SSO için **SAML standardını** kullandıysanız **Oluştur**' u seçin. Uygulamayı kuruluşunuza göre yapılandırmak için kullanabileceğiniz seçeneklerin bulunduğu bir başlangıç sayfası açılır. Formunda, kuruluşunuzun gereksinimlerini karşılayacak şekilde uygulamanın adını düzenleyebilirsiniz. Ardından, SAML tabanlı çoklu oturum açma 'yı ayarlamaya yönelik hızlı başlangıç sayfasına gidin.
+    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Ekran görüntüsü SAML tabanlı SSO uygulaması eklemeyi gösterir.":::
+
+
+> [!IMPORTANT]
+> SAML tabanlı ve OıDC tabanlı SSO uygulamaları arasında bazı önemli farklılıklar vardır. SAML tabanlı uygulamalarla aynı uygulamanın birden fazla örneğini ekleyebilirsiniz. Örneğin, GitHub1, GitHub2 vb. OıDC tabanlı uygulamalar için bir uygulamanın yalnızca bir örneğini ekleyebilirsiniz. Zaten bir OıDC tabanlı uygulama eklediyseniz ve aynı uygulamayı yeniden eklemeyi deneyin ve izin iki kez gerekiyorsa, kiracıya yeniden eklenmeyecektir.
+
+Aradığınız uygulama Galeri 'de değilse, **kendi uygulamanızı oluşturma** bağlantısını seçip **uygulamanızla ne yapmak istiyorsunuz?** bölümünde, uygulamanızda **bulamadıysanız herhangi bir uygulamayı tümleştirin**' ı seçin. Microsoft, Azure AD ile çalışacak şekilde önceden yapılandırmak için birçok uygulama geliştiricileriyle zaten çalıştık. Önceden yapılandırılmış uygulamalar galeride gösterilir. Ancak eklemek istediğiniz uygulama listede yoksa, yeni, genel bir uygulama oluşturabilir ve bunu kendiniz veya onu oluşturan geliştiricinin kılavuzumuzu ile yapılandırabilirsiniz.
 
 Uygulama eklemeyi tamamladınız. Sonraki hızlı başlangıçta, logosunun nasıl değiştirileceği ve uygulamanızın diğer özelliklerinin nasıl düzenleneceği gösterilmektedir.
 

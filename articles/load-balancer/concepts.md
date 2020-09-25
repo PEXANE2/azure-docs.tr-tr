@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 96b91c08e0bf9a176af2ed844cd63a2cfa1e233d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9765f685f2fccc9332a2f07d907aac415aa2c57f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589648"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333928"
 ---
 # <a name="azure-load-balancer-concepts"></a>Azure Load Balancer kavramlar
 
@@ -85,7 +85,7 @@ Kayan IP olmadan Azure, kullanım kolaylığı için geleneksel bir yük dengele
 
 ## <a name="limitations"></a><a name = "limitations"></a>Sınırlamalar
 
-- Kayan IP, Iç Yük Dengeleme senaryoları için ikincil IP yapılandırmalarında Şu anda desteklenmiyor.
+- Kayan IP, Iç Yük Dengeleme senaryoları veya genel Yük Dengeleme senaryoları için ikincil IP yapılandırmalarında Şu anda desteklenmiyor.
 
 - Yük dengeleyici kuralı iki sanal ağı yayılamaz.  Ön uçların ve arka uç örneklerinin aynı sanal ağda bulunması gerekir.  
 

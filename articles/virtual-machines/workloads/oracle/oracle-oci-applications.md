@@ -3,7 +3,7 @@ title: Azure sanal makinelerinde Oracle uygulamaları dağıtmaya yönelik mimar
 description: Azure 'daki veya Oracle bulut altyapısında (OCı) veritabanları ile E-Business Suite, JD Edliks EnterpriseOne ve PeopleSoft üzerinde Microsoft Azure sanal makinelerde Oracle uygulamaları dağıtmak için uygulama mimarileri.
 services: virtual-machines-linux
 documentationcenter: ''
-author: rgardler
+author: dbakevlar
 manager: ''
 tags: ''
 ms.service: virtual-machines
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
-ms.author: rogardle
+ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: 9fe6886f368d053af919b326fabf1ad4c3066717
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 838bd2014f543747a3c3ec7edee7b278f5f4d8df
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224545"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274611"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Azure 'da Oracle uygulamaları dağıtmaya yönelik mimariler
 

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a96b04df56dc7d5ea26463073d673275b8a4a8c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891763"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324306"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Azure Data Factory kopyalama etkinliğini kullanarak meta verileri ve ACL 'Leri koruma
 
@@ -24,18 +24,18 @@ ms.locfileid: "82891763"
 
 Verileri kaynaktan havuza kopyalamak için Azure Data Factory kopyalama etkinliğini kullandığınızda, aşağıdaki senaryolarda meta verileri ve ACL 'Leri de koruyabilirsiniz.
 
-## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a>Lake geçişi için meta verileri koruma
+## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> Lake geçişi için meta verileri koruma
 
-Bir Data Lake 'tan [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md)ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md)dahil olmak üzere başka bir veri geçirdiğinizde, dosya meta verilerini verilerle birlikte korumayı seçebilirsiniz.
+Bir Data Lake 'tan [Amazon S3](connector-amazon-simple-storage-service.md), [azure blob](connector-azure-blob-storage.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md)ve [Azure dosya depolama](connector-azure-file-storage.md)dahil olmak üzere başka bir veri geçirdiğinizde, dosya meta verilerini verilerle birlikte korumayı seçebilirsiniz.
 
 Kopyalama etkinliği, veri kopyalama sırasında aşağıdaki özniteliklerin korunması destekler:
 
 - **Müşterinin belirttiği tüm meta veriler** 
 - Ve aşağıdaki **beş veri deposu yerleşik sistem özellikleri**: `contentType` , `contentLanguage` (Amazon S3 hariç),,, `contentEncoding` `contentDisposition` , `cacheControl` .
 
-**Meta verilerde farkları işle:** Amazon S3 ve Azure Storage, müşteri tarafından belirtilen meta veriler anahtarlarındaki farklı karakter kümelerine izin veriyor. Kopya korumayı kullanarak meta verileri korumayı seçtiğinizde, ADF geçersiz karakterleri ' _ ' ile otomatik olarak değiştirir.
+**Meta verilerde farkları işle:** Amazon S3 ve Azure Storage, müşteri tarafından belirtilen meta veriler anahtarlarındaki farklı karakter kümelerine izin veriyor. Kopyalama etkinliğini kullanarak meta verileri korumayı seçtiğinizde, ADF otomatik olarak geçersiz karakterleri ' _ ' ile değiştirir.
 
-Dosyaları Amazon S3/Azure Data Lake Storage 2./Azure blobundan ikili biçimi ile Azure Data Lake Storage 2./Azure Blob 'a kopyaladığınızda, **koruma** seçeneğini **Copy Activity**  >  etkinlik yazma için etkinlik**ayarlarını** Kopyala sekmesinde veya veri kopyalama aracındaki **Ayarlar** sayfasında bulabilirsiniz.
+Dosyaları Amazon S3/Azure Data Lake Storage 2./Azure Blob/Azure dosya depolama alanından olduğu gibi, ikili biçimdeki Azure Data Lake Storage 2./Azure Blob/Azure dosya depolama alanına kopyaladığınızda, **Preserve** etkinlik yazma veya **Copy Activity**  >  veri kopyalama aracındaki **Ayarlar** sayfası için etkinlik**ayarlarını** Kopyala sekmesinde Koru seçeneğini bulabilirsiniz.
 
 ![Kopyalama etkinliği meta verilerini koru](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 
@@ -80,7 +80,7 @@ Kopyalama etkinliği JSON yapılandırmasına bir örnek (bkz `preserve` .):
 ]
 ```
 
-## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a>Data Lake Storage 1./Gen2 ile Gen2 arasında ACL 'Leri koru
+## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a> Data Lake Storage 1./Gen2 ile Gen2 arasında ACL 'Leri koru
 
 Azure Data Lake Storage 1. 'den Gen2 'e yükselttiğinizde veya ADLS 2. arasında veri kopyaladığınızda, POSIX erişim denetim listelerini (ACL 'Ler) veri dosyalarıyla birlikte korumayı seçebilirsiniz. Access Control hakkında daha fazla bilgi için Azure Data Lake Storage 2. Azure Data Lake Storage 1. ve [erişim denetimi](../storage/blobs/data-lake-storage-access-control.md) [' nde erişim denetimi](../data-lake-store/data-lake-store-access-control.md) ' ne bakın.
 

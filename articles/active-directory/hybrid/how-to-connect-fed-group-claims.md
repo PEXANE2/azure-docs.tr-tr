@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 72ec59d0082071746cb8db2b06412d90b4958914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359968"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265478"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Azure Active Directory olan uygulamalar için grup taleplerini yapılandırma
 
@@ -78,11 +78,11 @@ Galeri veya Galeri dışı bir SAML uygulamasının grup taleplerini yapılandı
 
 **Grup talebi ekle** ' ye tıklayın  
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
+!["Grup talebi ekle" seçiliyken "Kullanıcı öznitelikleri & talepler" sayfasını gösteren ekran görüntüsü.](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
 Simgeye dahil edilecek grupları seçmek için radyo düğmelerini kullanın
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
+!["Güvenlik grupları" seçiliyken "talepleri Gruplandır" penceresini gösteren ekran görüntüsü.](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
 | Seçim | Açıklama |
 |----------|-------------|
@@ -93,15 +93,15 @@ Simgeye dahil edilecek grupları seçmek için radyo düğmelerini kullanın
 
 Örneğin, kullanıcının üyesi olduğu tüm güvenlik gruplarını yayma için güvenlik grupları ' nı seçin.
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+!["Güvenlik grupları" seçiliyken ve "kaynak özniteliği" açılan menüsü açık olan "talepleri Gruplandır" penceresini gösteren ekran görüntüsü.](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
 Azure AD ObjectIDs yerine Active Directory eşitlenen Active Directory öznitelikleri kullanarak grupları yaymak için, açılan listeden gerekli biçimi seçin. Taleplere yalnızca Active Directory eşitlenen gruplar dahil edilir.
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+!["Kaynak özniteliği" açılan menüsünün açık olduğunu gösteren ekran görüntüsü.](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
 Yalnızca uygulamaya atanan grupları yaymak için, **uygulamaya atanan grupları** seçin
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+!["Talepleri uygulamaya atanan gruplar" seçiliyken "talepleri Gruplandır" penceresini gösteren ekran görüntüsü.](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
 
 Uygulamaya atanan gruplar belirtece dahil edilir.  Kullanıcının üyesi olduğu diğer gruplar da atlanır.  Bu seçenekle iç içe gruplar dahil edilmez ve Kullanıcı, uygulamaya atanan grubun doğrudan bir üyesi olmalıdır.
 
@@ -115,11 +115,11 @@ Grup taleplerinin Yayınlanma yöntemi, Gelişmiş Seçenekler altındaki ayarla
 
 Grup talebinin adını özelleştirin: seçilirse, Grup talepleri için farklı bir talep türü belirtilebilir.   Ad alanına talep türünü ve isteğe bağlı ad alanını ad alanı alanında girin.
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
+!["Grup talebinin adını özelleştirin" ve "ad" ve "ad alanı" değerlerini girilen "Gelişmiş Seçenekler" bölümünü gösteren ekran görüntüsü.](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
 Bazı uygulamalar, Grup üyeliği bilgilerinin ' rol ' talebinde görünmesini gerektirir. İsteğe bağlı olarak, ' grupları bir rol taleplerini yay ' kutusunu işaretleyerek kullanıcının gruplarını roller olarak görüntüleyebilirsiniz.
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
+!["Grup talebinin adını özelleştirme" ve "grupları rol talepleri olarak yay" seçiliyken "Gelişmiş Seçenekler" bölümünü gösteren ekran görüntüsü.](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
 > [!NOTE]
 > Grup verilerini roller olarak yayma seçeneği kullanılırsa, rol talebinde yalnızca gruplar görüntülenir.  Kullanıcının atandığı tüm uygulama rolleri rol talebinde görünmez.

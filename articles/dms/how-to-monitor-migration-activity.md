@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77648521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297479"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti 'ni kullanarak geçiş etkinliğini izleme
 Bu makalede, bir geçişin ilerlemesini hem veritabanı düzeyinde hem de tablo düzeyinde nasıl izleyebileceğinizi öğreneceksiniz.
@@ -42,11 +42,11 @@ Aşağıdaki tabloda veritabanı düzeyi dikey penceresindeki alanlar listelenme
   <tbody>
     <tr>
       <td rowspan="3" class="ActivityStatus"><strong>Etkinlik durumu</strong></td>
-      <td>Çalışıyor</td>
+      <td>Çalışma</td>
       <td>Geçiş etkinliği çalışıyor.</td>
     </tr>
     <tr>
-      <td>Başarılı oldu</td>
+      <td>Başarılı</td>
       <td>Geçiş etkinliği sorunlar olmadan başarılı oldu.</td>
     </tr>
     <tr>
@@ -59,7 +59,7 @@ Aşağıdaki tabloda veritabanı düzeyi dikey penceresindeki alanlar listelenme
       <td>DMS, geçiş işlem hattını ayarlıyor.</td>
     </tr>
     <tr>
-      <td>Çalışıyor</td>
+      <td>Çalışma</td>
       <td>DMS işlem hattı çalışıyor ve geçiş gerçekleştiriyor.</td>
     </tr>
     <tr>
@@ -93,7 +93,7 @@ Aşağıdaki tabloda veritabanı düzeyi dikey penceresindeki alanlar listelenme
     </tr>
     <tr>
       <td rowspan="1" class="duration"><strong>Süre</strong></td>
-      <td>YOK</td>
+      <td>Yok</td>
       <td>Geçiş etkinliğinin başlatıldığı veya geçişinin hatalı olarak başlatıldığı toplam süre.</td>
     </tr>
      </tbody>
@@ -108,7 +108,7 @@ Dikey pencerenin alt kısmı tabloları listeler ve geçiş ilerlemesinin hızl�
 
 Aşağıdaki tabloda Tablo düzeyi ayrıntılarında gösterilen alanlar açıklanmaktadır.
 
-| Alan adı        | Açıklama       |
+| Alan adı        | Description       |
 | ------------- | ------------- |
 | **Tam yük tamamlandı**      | Tam veri yükünü tamamlayan tablo sayısı. |
 | **Tam yük sıraya alındı**      | Tam yük için sıraya alınan tablo sayısı.      |
@@ -129,12 +129,12 @@ Geçiş ilerlemesini tam yükleme ve artımlı veri eşitleme içinde gösteren 
 
 Aşağıdaki tabloda tablo düzeyinde geçiş ilerlemede gösterilen alanlar açıklanmaktadır.
 
-| Alan adı        | Açıklama       |
+| Alan adı        | Description       |
 | ------------- | ------------- |
 | **Durum-eşitleniyor**      | Sürekli eşitleme çalışıyor. |
 | **Ekle**      | Hedefe uygulanan CDC ekleme sayısı.      |
-| **Güncelleştir** | Hedefe uygulanan satırlardaki CDC güncelleştirme sayısı.      |
-| **Sil**      | Hedefe uygulanan, satırlardaki CDC silmesi sayısı. |
+| **Güncelleştirme** | Hedefe uygulanan satırlardaki CDC güncelleştirme sayısı.      |
+| **Silme**      | Hedefe uygulanan, satırlardaki CDC silmesi sayısı. |
 | **Toplam uygulandı**      | Hedefe uygulanan satırlarda CDC güncelleştirme, ekleme ve silme toplamı. |
 | **Veri hataları** | Bu tabloda gerçekleşen veri hatalarının sayısı. Hatalara ilişkin bazı örnekler 511 şunlardır *:% d, izin verilen en büyük satır boyutu olan% d, 8114:% ls veri türü% ls öğesine dönüştürülürken hata.*  Müşteri, hata ayrıntılarını görmek için Azure hedefi 'ndeki dms_apply_exceptions tablosundan sorgu sağlamalıdır.    |
 

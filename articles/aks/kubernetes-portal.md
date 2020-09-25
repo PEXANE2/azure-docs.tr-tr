@@ -4,14 +4,14 @@ description: Azure portal Azure Kubernetes hizmeti (AKS) kümesini yönetmek iç
 services: container-service
 author: laurenhughes
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661359"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335611"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Azure portal (Önizleme) ile Kubernetes kaynaklarına erişin
 
@@ -24,7 +24,7 @@ Azure portal Kubernetes kaynak görünümü, kullanımdan kaldırılması için 
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure portal Kubernetes kaynaklarını görüntülemek için bir AKS kümeniz olması gerekir. Herhangi bir küme desteklenir, ancak Azure Active Directory (Azure AD) Tümleştirmesi kullanılıyorsa, kümenizde [aks tarafından yönetilen Azure AD tümleştirmesi][aks-managed-aad]kullanılmalıdır. Kümeniz eski Azure AD kullanıyorsa, kümenizi portalda veya [Azure CLI][cli-aad-upgrade]ile yükseltebilirsiniz.
 
@@ -75,11 +75,25 @@ Bu bölümde, yaygın sorunlar ve sorun giderme adımları ele alınmaktadır.
 
 Kubernetes kaynaklarına erişmek için AKS kümesine, Kubernetes API 'sine ve Kubernetes nesnelerine erişiminizin olması gerekir. AKS kümesine erişmek için uygun izinlere sahip bir Küme Yöneticisi veya Kullanıcı olduğunuzdan emin olun. Küme güvenliği hakkında daha fazla bilgi için bkz. [AKS Için erişim ve kimlik seçenekleri][concepts-identity].
 
+>[!NOTE]
+> Azure portalındaki Kubernetes kaynak görünümü yalnızca [YÖNETILEN AAD etkin kümeler](managed-aad.md) veya AAD olmayan etkin kümeler tarafından desteklenir. Yönetilen-AAD etkin bir küme kullanıyorsanız, AAD Kullanıcı veya kimliğinizin, [kullanıcıyı `kubeconfig` ](control-kubeconfig-access.md)çekme iznine ek olarak Kubernetes API 'sine erişmek için ilgili roller/rol bağlamaları olması gerekir.
+
 ### <a name="enable-resource-view"></a>Kaynak görünümünü etkinleştir
 
 Mevcut kümeler için Kubernetes kaynak görünümünü etkinleştirmeniz gerekebilir. Kaynak görünümünü etkinleştirmek için, kümenizin portalındaki komut istemlerini izleyin.
 
 :::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Kubernetes kaynak görünümünü etkinleştirmek için Azure portal ileti." lightbox="media/kubernetes-portal/enable-resource-view.png":::
+
+> [!TIP]
+> API sunucusu için [**YETKILENDIRILMIŞ IP aralıklarının**](api-server-authorized-ip-ranges.md) aks ÖZELLIĞI, API sunucusu erişimini yalnızca güvenlik duvarının genel uç noktasına sınırlamak için eklenebilir. Bu tür kümeler için başka bir seçenek de `--api-server-authorized-ip-ranges` yerel bir istemci bilgisayara veya IP adresi aralığına (portala gözatılırken) erişim sağlamak üzere güncelleştiriyoruz. Bu erişime izin vermek için bilgisayarın genel IPv4 adresine sahip olmanız gerekir. Bu adresi aşağıdaki komutla veya bir internet tarayıcısında "IP adresim nedir?" arayarak bulabilirsiniz.
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

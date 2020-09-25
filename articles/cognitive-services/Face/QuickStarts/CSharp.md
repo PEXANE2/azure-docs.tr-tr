@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: fe6def8a935fcc6f093c4489409a3bcde829ac10
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8c1e47db4f5f5bb64c31d16c26f6c3860b5bcb29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323066"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Hızlı başlangıç: yüz REST API ve C 'yi kullanarak görüntüdeki yüzeyleri algılama #
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, görüntüde insan yüzlerini saptamak Için Azure y�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
@@ -75,7 +75,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>Görüntü girişi al
 
-**Program** sınıfının **Main** yöntemine aşağıdaki kodu ekleyin. Bu kod, kullanıcıdan bir görüntü URL 'SI girmesini isteyen konsola bir istem yazar. Daha sonra bu konumdaki görüntüyü işlemek için, **Makeanalysisrequest**, başka bir yöntemi çağırır.
+**Program** sınıfının **Main** yöntemine aşağıdaki kodu ekleyin. Bu kod, kullanıcıdan yerel görüntü dosya yolunu girmesini isteyen konsola bir istem yazar. Daha sonra bu konumdaki görüntüyü işlemek için, **Makeanalysisrequest**, başka bir yöntemi çağırır.
 
 ```csharp
         static void Main(string[] args)
@@ -159,7 +159,7 @@ Aşağıdaki adımlarda yardımcı yöntemleri tanımlayacaksınız.
 
 ### <a name="process-the-input-image-data"></a>Giriş resim verilerini işleme
 
-**Program** sınıfına aşağıdaki yöntemi ekleyin. Bu yöntem, belirtilen URL 'deki görüntüyü bir bayt dizisine dönüştürür.
+**Program** sınıfına aşağıdaki yöntemi ekleyin. Bu yöntem, belirtilen dosya yolundaki görüntüyü bir bayt dizisine dönüştürür.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.

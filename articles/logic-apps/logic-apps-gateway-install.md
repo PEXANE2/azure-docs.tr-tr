@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660480"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322521"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidi yükleme
 
@@ -26,7 +26,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliği olan bir Azure hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -114,7 +114,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
    [Yüksek kullanılabilirlik senaryoları](#high-availability)için ek ağ geçitleri yüklerken seçtiğiniz **mevcut bir ağ geçidi kümesine ekleme**seçeneğini göz önünde bulabilirsiniz.
 
-1. Ağ Geçidi Bulut hizmeti için bölgeyi ve ağ geçidi yüklemeniz tarafından kullanılan [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) denetleyin. Bu bölge, varsayılan olarak Azure hesabınız için Azure AD kiracısı ile aynı konumdadır.
+1. Ağ Geçidi Bulut hizmeti ve ağ geçidi yüklemeniz tarafından kullanılan [mesajlaşma örneği Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) için bölgeyi denetleyin. Bu bölge, varsayılan olarak Azure hesabınız için Azure AD kiracısı ile aynı konumdadır.
 
    ![Ağ geçidi hizmeti ve hizmet veri yolu için bölgeyi Onayla](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
@@ -140,7 +140,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 ## <a name="check-or-adjust-communication-settings"></a>İletişim ayarlarını denetle veya ayarla
 
-Şirket içi veri ağ geçidi, bulut bağlantısı için [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) bağımlıdır ve ağ geçidinin ilişkili Azure bölgesine karşılık gelen giden bağlantıları kurar. İş ortamınız internet 'e erişmek için bir ara sunucu veya güvenlik duvarından geçtiğinde, bu kısıtlama şirket içi veri ağ geçidinin ağ geçidi bulut hizmetine bağlanmasını engelleyebilir ve Azure Service Bus. Ağ geçidinde, ayarlayabileceğiniz çeşitli iletişim ayarları vardır. Daha fazla bilgi için şu konulara bakın:
+Şirket içi veri ağ geçidi, bulut bağlantısı için [Azure Service Bus mesajlaşma](../service-bus-messaging/service-bus-messaging-overview.md) 'ya bağlıdır ve ağ geçidinin ilişkili Azure bölgesine karşılık gelen giden bağlantıları kurar. İş ortamınız internet 'e erişmek için bir ara sunucu veya güvenlik duvarından geçtiğinde, bu kısıtlama şirket içi veri ağ geçidinin ağ geçidi bulut hizmetine bağlanmasını ve mesajlaşma Azure Service Bus engelleyebilir. Ağ geçidinde, ayarlayabileceğiniz çeşitli iletişim ayarları vardır. Daha fazla bilgi için şu konulara bakın:
 
 * [Şirket içi veri ağ geçidi için iletişim ayarlarını yapılandırma](/data-integration/gateway/service-gateway-communication)
 * [Şirket içi veri ağ geçidi için ara sunucu ayarlarını yapılandırma](/data-integration/gateway/service-gateway-proxy)
@@ -206,7 +206,7 @@ Kuruluşunuzdaki kullanıcılar, erişim izni olan şirket içi verilere erişeb
 
 Ağ Geçidi, arka planda daha hızlı ve daha güvenli bir iletişim sağlanmasına yardımcı olur. Bu iletişim, buluttaki bir Kullanıcı, ağ geçidi bulut hizmeti ve şirket içi veri kaynağınız arasında akar. Ağ Geçidi bulutu hizmeti, veri kaynağı kimlik bilgilerinizi ve ağ geçidi ayrıntılarını şifreler ve depolar. Hizmet Ayrıca sorguları ve sonuçlarını Kullanıcı, ağ geçidi ve şirket içi veri kaynağınız arasında yönlendirir.
 
-Ağ Geçidi, güvenlik duvarları ile birlikte çalışarak yalnızca giden bağlantıları kullanır. Tüm trafik ağ geçidi aracısından güvenli giden trafik olarak gelir. Ağ Geçidi, şifreli kanallardaki şirket içi kaynaklardaki verileri [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)aracılığıyla geçirir. Bu hizmet veri yolu, ağ geçidi ile çağıran hizmet arasında bir kanal oluşturur, ancak herhangi bir veri depolamaz. Ağ Geçidi üzerinden taşınan tüm veriler şifrelenir.
+Ağ Geçidi, güvenlik duvarları ile birlikte çalışarak yalnızca giden bağlantıları kullanır. Tüm trafik ağ geçidi aracısından güvenli giden trafik olarak gelir. Ağ Geçidi, verileri [Azure Service Bus mesajlaşma](../service-bus-messaging/service-bus-messaging-overview.md)aracılığıyla şifrelenmiş kanallardaki şirket içi kaynaklardan gönderir. Bu hizmet veri yolu, ağ geçidi ile çağıran hizmet arasında bir kanal oluşturur, ancak herhangi bir veri depolamaz. Ağ Geçidi üzerinden taşınan tüm veriler şifrelenir.
 
 ![Şirket içi veri ağ geçidi mimarisi](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -217,9 +217,9 @@ Bu adımlarda, şirket içi veri kaynağına bağlı bir öğeyle etkileşim kur
 
 1. Bulut hizmeti, veri kaynağı için şifrelenmiş kimlik bilgileriyle birlikte bir sorgu oluşturur. Hizmet daha sonra işlem için ağ geçidi kuyruğuna sorgu ve kimlik bilgilerini gönderir.
 
-1. Ağ geçidi bulut hizmeti sorguyu analiz eder ve isteği Azure Service Bus'a gönderir.
+1. Ağ Geçidi Bulut hizmeti sorguyu analiz eder ve isteği Azure Service Bus mesajlaşma 'ya gönderir.
 
-1. Azure Service Bus, bekleyen istekleri ağ geçidine gönderir.
+1. Azure Service Bus mesajlaşma, bekleyen istekleri ağ geçidine gönderir.
 
 1. Ağ geçidi sorguyu alır, kimlik bilgilerinin şifresini çözer ve bu kimlik bilgileriyle bir veya daha fazla veri kaynağına bağlanır.
 

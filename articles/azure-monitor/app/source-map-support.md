@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: de475cbd7cbb0d8dbcda026109b0387da14bedff
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 5b15492a36032a53ac81929eb55bce0bc70e040c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335140"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript uygulamaları için kaynak eşleme desteği
 
@@ -78,7 +78,7 @@ Bu özelliği kullanan portaldaki herhangi bir kullanıcının blob kapsayıcıs
 
 1. Karşılık gelen kaynak eşlemesinin doğru blob kapsayıcısına yüklendiğini doğrulayın
 2. Kaynak eşleme dosyasının eşlendiği JavaScript dosyasından sonra adlandırılmış olduğunu doğrulayın `.map` .
-    - Örneğin, `/static/js/main.4e2ca5fa.chunk.js` adlı blobu arama yapılacak`main.4e2ca5fa.chunk.js.map`
+    - Örneğin, `/static/js/main.4e2ca5fa.chunk.js` adlı blobu arama yapılacak `main.4e2ca5fa.chunk.js.map`
 3. Günlüğe yazılan herhangi bir hata olup olmadığını görmek için tarayıcınızın konsoluna bakın. Bunu herhangi bir destek biletinde ekleyin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar

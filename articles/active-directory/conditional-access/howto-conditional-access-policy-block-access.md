@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e57da384253912a875bacbc5f43aa9f9b99b45b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601597"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265995"
 ---
 # <a name="conditional-access-block-access"></a>Koşullu erişim: erişimi engelle
 
@@ -38,7 +38,7 @@ Koşullu erişim ilkeleri güçlü araçlardır ve ilkenizde aşağıdaki hesapl
 
 ## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
-Aşağıdaki adımlar, kullanıcılar güvenilir bir ağda değilse [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) hariç tüm uygulamalara erişimi engellemek Için koşullu erişim ilkeleri oluşturmanıza yardımcı olur. Bu ilkeler, yöneticilerin mevcut kullanıcılar üzerinde sahip olacağı etkiyi belirleyebilmeleri için, [yalnızca rapor modunda](howto-conditional-access-insights-reporting.md) başlatılır. Yöneticiler ilkelerin sizin için uygun olduğundan emin olduğunda, bunları **Açık**olarak değiştirebilir.
+Aşağıdaki adımlar, kullanıcılar güvenilir bir ağda değilse [Office 365](concept-conditional-access-cloud-apps.md#office-365) hariç tüm uygulamalara erişimi engellemek Için koşullu erişim ilkeleri oluşturmanıza yardımcı olur. Bu ilkeler, yöneticilerin mevcut kullanıcılar üzerinde sahip olacağı etkiyi belirleyebilmeleri için, [yalnızca rapor modunda](howto-conditional-access-insights-reporting.md) başlatılır. Yöneticiler ilkelerin sizin için uygun olduğundan emin olduğunda, bunları **Açık**olarak değiştirebilir.
 
 İlk ilke, güvenilir bir konumda değilse Microsoft 365 uygulamalar haricinde tüm uygulamalara erişimi engeller.
 
@@ -52,7 +52,7 @@ Aşağıdaki adımlar, kullanıcılar güvenilir bir ağda değilse [Office 365]
    1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemler**altında aşağıdaki seçenekleri belirleyin:
    1. **Ekle**' nin altında **tüm bulut uygulamaları**' nı seçin.
-   1. **Dışla**altında **Office 365 (Önizleme)** öğesini seçin, **Seç**' i seçin ve **bitti**' yi seçin.
+   1. **Dışla**altında **Office 365**' i seçin, **Seç**' i seçin ve **bitti**' yi seçin.
 1. **Koşullar**altında:
    1. **Koşulların**bulunduğu  >  **konum**.
       1. **Yapılandır** 'ı **Evet** olarak ayarla
@@ -72,7 +72,7 @@ Microsoft 365 kullanıcılarına çok faktörlü kimlik doğrulaması veya uyuml
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
    1. **Bitti** seçeneğini belirleyin.
-1. **Bulut uygulamaları veya eylemler**  >  **Include**altında, **Uygulama Seç**' i seçin, **Office 365 (Önizleme)** seçeneğini belirleyin ve **Seç**' i ve sonra **Tamam**' ı seçin.
+1. **Bulut uygulamaları veya eylemler**  >  **Include**altında, **Uygulama Seç**' i seçin, **Office 365**' i seçin **Select**ve sonra da **Tamam**' ı seçin.
 1. **Erişim denetimleri**  >  **izni**altında, **erişim ver**' i seçin.
    1. **Multi-Factor Authentication gerektir** ' i seçin ve **cihazın uyumlu olarak işaretlenmesini gerektir** ' **i seçin.**
    1. **Seçili denetimlerin tümünün** seçili olduğundan emin olun.

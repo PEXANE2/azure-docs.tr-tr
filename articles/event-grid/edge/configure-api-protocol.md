@@ -1,24 +1,24 @@
 ---
 title: API protokollerini Yapılandırma-Azure Event Grid IoT Edge | Microsoft Docs
-description: IoT Edge Event Grid tarafından açığa çıkarılan API protokollerini yapılandırın.
+description: Event Grid modülünün olası protokol konfigürasyonları hakkında bilgi edinin.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: 801a320fbd66b4b8a46757ba90881da54b2721de
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a9cf6088201ffeaed76d99a9b211e5bcd1ea139a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322589"
 ---
 # <a name="configure-event-grid-api-protocols"></a>Event Grid API protokollerini yapılandırma
 
 Bu kılavuzda, bir Event Grid modülünün olası protokol yapılandırmalarının örnekleri verilmiştir. Event Grid modülü, yönetim ve çalışma zamanı işlemleri için API 'YI kullanıma sunar. Aşağıdaki tablo, protokolleri ve bağlantı noktalarını yakalar.
 
-| Protokol | Bağlantı noktası | Açıklama |
+| Protokol | Bağlantı noktası | Description |
 | ---------------- | ------------ | ------------ |
 | HTTP | 5888 | Varsayılan olarak kapalıdır. Yalnızca sınama sırasında yararlı olur. Üretim iş yükleri için uygun değildir.
 | HTTPS | 4438 | Varsayılan

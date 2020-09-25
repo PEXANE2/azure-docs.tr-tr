@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: c5e81b07bf43b86543af546ab5453563e7cf4004
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3194198447f024154c369d519d6ff55ee8ee699
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886210"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296697"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -179,8 +179,29 @@ Bazı örnekler:
 
 Otomatik makine öğrenimi, otomasyon ve ayarlama işlemi sırasında farklı modeller ve algoritmalar gerçekleştirmeye çalışır. Bir kullanıcı olarak, algoritmayı belirtmeniz gerekmez. 
 
-Üç farklı `task` parametre değeri (üçüncü görev türü olur `forecasting` ve benzer bir algoritma havuzunu görev olarak kullanır `regression` ), uygulanacak algoritmalar, modeller listesini belirleme. `allowed_models` `blocked_models` Dahil etmek veya hariç tutmak için kullanılabilir modellerle Yinelemeleri değiştirmek için veya parametrelerini kullanın. Desteklenen modellerin listesi, [Sınıflandırma](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [tahmin](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)ve [gerileme](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)için [supportedmodeller sınıfında](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) bulunabilir.
+Üç farklı `task` parametre değeri, uygulanacak algoritmaların veya modellerin listesini belirlenir. `allowed_models` `blocked_models` Dahil etmek veya hariç tutmak için kullanılabilir modellerle Yinelemeleri değiştirmek için veya parametrelerini kullanın. 
 
+Aşağıdaki tabloda görev türüne göre desteklenen modeller özetlenmektedir. 
+
+> [!NOTE]
+> Auto ML tarafından oluşturulan modellerinizi bir [onnx modeline](concept-onnx.md)dışarı aktarmayı planlıyorsanız, yalnızca bir * ile gösterilen algoritmalar onnx biçimine dönüştürülebiliyor. [Modelleri ONNX 'e dönüştürme](concept-automated-ml.md#use-with-onnx)hakkında daha fazla bilgi edinin. <br> <br> Ayrıca, ONNX Şu anda yalnızca sınıflandırma ve gerileme görevlerini destekler. 
+
+Sınıflandırma | Regresyon | Zaman Serileri Tahmini
+|-- |-- |--
+[Lojistik regresyon](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastik ağ](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastik Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Gradyan artırma](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[Gradyan artırma](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[Gradyan artırma](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Karar ağacı](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[Karar ağacı](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Karar ağacı](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K en yakın komşuları](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K en yakın komşuları](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K en yakın komşuları](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Doğrusal SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[SÜTUNLAR kement](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Destek vektör sınıflandırması (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[Stochastic gradyan (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[Stochastic gradyan (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Son derece rastgele ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Son derece rastgele ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Son derece rastgele ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[Ortalama Perceptron sınıflandırıcı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)|[Çevrimiçi gradyan açıklama gerileme](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest&preserve-view=true) |[Otomatik ARıMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Hızlı doğrusal gerileme sor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest&preserve-view=true)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[Stochastic gradyan (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||Forekaletcn
+|[Doğrusal SVM Sınıflandırıcısı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)*||
 
 ### <a name="primary-metric"></a>Birincil ölçüm
 `primary metric`Parametresi, iyileştirme için model eğitimi sırasında kullanılacak ölçümü belirler. Seçebileceğiniz kullanılabilir ölçümler, seçtiğiniz görev türüne göre belirlenir ve aşağıdaki tabloda her bir görev türü için geçerli birincil ölçümler gösterilmektedir.
@@ -201,7 +222,7 @@ Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bu
 
 Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/devre dışı bırakabilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig nesnesinde](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir. 
 
-|Korleştirme yapılandırması | Açıklama |
+|Korleştirme yapılandırması | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-configure-auto-features.md#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**.|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmaması gerektiğini gösterir.|
@@ -329,7 +350,6 @@ Bir Özet Özeti almak ve belirli bir modele hangi özelliklerin eklendiğini an
 ## <a name="register-and-deploy-models"></a>Modelleri kaydetme ve dağıtma
 
 Bir Web hizmetine dağıtım için bir modeli indirme veya kaydetme hakkında daha fazla bilgi için bkz. [bir modelin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
-
 
 <a name="explain"></a>
 

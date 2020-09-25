@@ -3,12 +3,12 @@ title: Azure Geçişi aleti mimarisi
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514585"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322266"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Geçişi aleti mimarisi
 
@@ -21,7 +21,7 @@ Azure geçişi gereci aşağıdaki senaryolarda kullanılır.
 **Senaryo** | **Araç** | **Kullanıldığı yerler** 
 --- | --- | ---
 **VMware VM değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | VMware VM 'lerini bulun.<br/><br/> Makine uygulamalarını ve bağımlılıklarını bulun.<br/><br/> Makine meta verilerini ve performans meta verilerini toplayın ve Azure 'a gönderin.
-**VMware VM geçişi (aracısız)** | Azure geçişi: sunucu geçişi | VMware VM 'lerini bulma<br/><br/>  VMware VM 'lerini [aracısız geçişle](server-migrate-overview.md)çoğaltın.
+**VMware VM geçişi (aracısız)** | Azure geçişi: sunucu geçişi | VMware VM’lerini bulma<br/><br/>  VMware VM 'lerini [aracısız geçişle](server-migrate-overview.md)çoğaltın.
 **Hyper-V VM değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | Hyper-V VM 'lerini bulun.<br/><br/> Makine meta verilerini ve performans meta verilerini toplayın ve Azure 'a gönderin.
 **Fiziksel makine** |  Azure geçişi: Sunucu değerlendirmesi |  Fiziksel sunucuları bulun.<br/><br/> Makine meta verilerini ve performans meta verilerini toplayın ve Azure 'a gönderin.
 
@@ -72,7 +72,7 @@ Gereç, aşağıdaki işlemi kullanarak vCenter sunucularıyla ve Hyper-V konakl
 2. **Meta verileri ve performans verilerini toplayın**:
     - Gereç, bağlantı noktası 5985 ' deki Hyper-V konağı üzerinden Hyper-V VM verilerini toplamak için bir Genel Bilgi Modeli (CıM) oturumu kullanır.
     - Gereç, vCenter Server VMware VM verilerini toplamak için varsayılan olarak bağlantı noktası 443 ile iletişim kurar.
-3. **Veri Gönder**: gereç, toplanan verileri Azure geçişi sunucu değerlendirmesini ve Azure geçişi sunucu geçişini SSL bağlantı noktası 443 üzerinden gönderir. Gereç Internet üzerinden Azure 'a bağlanabilir veya ExpressRoute 'u ortak/Microsoft eşlemesi ile birlikte kullanabilirsiniz.
+3. **Veri Gönder**: gereç, toplanan verileri Azure geçişi sunucu değerlendirmesini ve Azure geçişi sunucu geçişini SSL bağlantı noktası 443 üzerinden gönderir. Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir).
     - Performans verileri için, Gereç gerçek zamanlı kullanım verilerini toplar.
         - Performans verileri her bir performans ölçümü için VMware için 20 saniyede bir ve Hyper-V için her 30 saniyede bir toplanır.
         - Toplanan veriler 10 dakika boyunca tek bir veri noktası oluşturmak için toplanır.

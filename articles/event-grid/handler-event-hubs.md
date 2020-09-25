@@ -3,12 +3,12 @@ title: Azure Event Grid olaylar için olay işleyicisi olarak olay hub 'ı
 description: Olay Hub 'larını Azure Event Grid olayları için olay işleyicileri olarak nasıl kullanabileceğinizi açıklar.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: fa8fdd66eb153f6a972753eb359261100f19cd15
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5e6a84c1737c6b8a575f47576aeb1d3d9efae6eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105838"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322572"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Azure Event Grid olaylar için olay işleyicisi olarak olay hub 'ı
 Olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için bir eylem gerçekleştirir. Çeşitli Azure Hizmetleri, olayları işleyecek şekilde otomatik olarak yapılandırılır ve **azure Event Hubs** bunlardan biridir. 
@@ -24,7 +24,7 @@ Aşağıdaki örneklere bakın:
 | [Kaynak Yöneticisi şablonu: bir Event Grid özel konu oluşturma ve Olay Hub 'ına olay gönderme](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Özel konu için abonelik oluşturan Kaynak Yöneticisi şablonu. Olayları bir Azure Event Hubs gönderir. |
 
 ## <a name="message-properties"></a>İleti özellikleri
-Event Grid olaylar için olay işleyicisi olarak bir **Olay Hub** 'ı kullanıyorsanız, aşağıdaki ileti üst bilgilerini ayarlayın: 
+Event Grid olaylar için olay işleyicisi olarak bir **Olay Hub** 'ı kullanırsanız, bunlar ileti üstbilgilerinde aldığınız özelliklerdir: 
 
 | Özellik adı | Description |
 | ------------- | ----------- | 
@@ -81,6 +81,9 @@ Event Grid olaylar için olay işleyicisi olarak bir **Olay Hub** 'ı kullanıyo
     }
 }
 ```
+
+> [!NOTE]
+> Bir Azure Olay Hub 'ına **başka bir kiracıya** olay sunma desteklenmez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Desteklenen olay işleyicilerinin bir listesi için bkz. [olay işleyicileri](event-handlers.md) makalesi. 

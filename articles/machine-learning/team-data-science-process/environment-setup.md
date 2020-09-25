@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6d1185e13397b3e466bd1e8d609a46f2f68bf390
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b5571f24cc7acfd35cf2979318110ba2eecbb0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320549"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Team Data Science Process içinde kullanım için veri bilimi ortamlarını ayarlama
 Ekip veri bilimi Işlemi, verilerin depolanması, işlenmesi ve çözümlenmesi için çeşitli veri bilimi ortamlarını kullanır. Azure Blob depolama, birkaç tür Azure sanal makinesi, HDInsight (Hadoop) kümesi ve Azure Machine Learning çalışma alanı içerirler. Hangi ortamın kullanılacağına ilişkin karar, modellenecek verilerin türüne ve miktarına ve buluttaki verilerin hedef hedefine bağlıdır. 
@@ -28,7 +28,7 @@ Aşağıdaki makalelerde, ekip veri bilimi Işlemi tarafından kullanılan çeş
 
 * [Azure depolama hesabı](../../storage/common/storage-account-create.md)
 * [HDInsight (Hadoop) kümesi](customize-hadoop-cluster.md)
-* [Azure Machine Learning Studio (klasik) çalışma alanı](../studio/create-workspace.md)
+* [Azure Machine Learning Studio (klasik) çalışma alanı](../classic/create-workspace.md)
 
 **Microsoft veri bilimi sanal makinesi (DSVM)** Ayrıca bir Azure sanal MAKINESI (VM) görüntüsü olarak da kullanılabilir. Bu VM önceden yüklenir ve veri analizi ve makine öğrenimi için yaygın olarak kullanılan çeşitli popüler araçlarla yapılandırılır. DSVM hem Windows hem de Linux 'ta kullanılabilir. Daha fazla bilgi için bkz. [Linux ve Windows için bulut tabanlı veri bilimi sanal makinesi giriş](../data-science-virtual-machine/overview.md).
 

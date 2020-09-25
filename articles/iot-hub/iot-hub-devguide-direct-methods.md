@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Hub doğrudan yöntemlerini anlama | Microsoft Docs
 description: Geliştirici Kılavuzu-cihazlarınızdaki kodu bir hizmet uygulamasından çağırmak için doğrudan yöntemler kullanın.
-author: nberdy
+author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: rezas
+ms.author: philmea
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 516b3bac5da2e078217d5c12f1efdf527b7c83a1
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: f68705309d15548dc9728686e2e0ecd6aaad3fba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029078"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334115"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Doğrudan yöntemleri anlama ve IoT Hub'dan çağırma
 
@@ -55,7 +55,7 @@ Yöntem istekleri ve yanıtları için yük, 128 KB 'ye kadar bir JSON belgesidi
 
 Bir cihazdaki doğrudan yöntem etkinleştirmeleri, aşağıdaki öğelerden oluşan HTTPS çağrılardır:
 
-* [API sürümüyle](https://docs.aws.amazon.com/cli/latest/reference/iot1click-devices/invoke-device-method.html)birlikte cihaza özgü *istek URI 'si* :
+* [API sürümüyle](https://docs.microsoft.com/rest/api/iothub/service/devices/invokemethod)birlikte cihaza özgü *istek URI 'si* :
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30

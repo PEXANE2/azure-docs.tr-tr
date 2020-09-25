@@ -4,19 +4,16 @@ description: Bu makalede, Azure sanal makine yedekleme çözümünü kullanarak 
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506704"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271384"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure sanal makineleri için seçmeli disk yedekleme ve geri yükleme
 
 Azure Backup, sanal makine yedekleme çözümünü kullanarak bir VM 'deki tüm disklerin (işletim sistemi ve veri) yedeklenmesini destekler. Artık, seçmeli diskler Yedekleme ve geri yükleme işlevselliğini kullanarak bir VM 'deki veri disklerinin bir alt kümesini yedekleyebilirsiniz. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve ekonomik bir çözüm sunar. Her kurtarma noktası yalnızca yedekleme işlemine dahil edilen diskleri içerir. Bu, geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesine sahip etmenize olanak tanır. Bu, hem anlık görüntülerle hem de kasadan geri yükleme için geçerlidir.
-
->[!NOTE]
->Azure sanal makineleri için seçmeli disk yedekleme ve geri yükleme, tüm bölgelerde genel önizlemededir.
 
 ## <a name="scenarios"></a>Senaryolar
 
@@ -62,7 +59,7 @@ az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name
 VM, kasala aynı kaynak grubunda değilse, **ResourceGroup** kasanın oluşturulduğu kaynak grubuna başvurur. VM adı yerine, VM KIMLIĞINI aşağıda gösterildiği gibi sağlayın.
 
 ```azurecli
-az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
+az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id --output tsv) --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>Azure CLı ile zaten yedeklenen VM 'Ler için korumayı değiştirme
@@ -86,7 +83,7 @@ az backup protection update-for-vm --resource-group {resourcegroup} --vault-name
 ### <a name="restore-disks-with-azure-cli"></a>Azure CLı ile diskleri geri yükleme
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
 ### <a name="restore-only-os-disk-with-azure-cli"></a>Yalnızca Azure CLı ile işletim sistemi diskini geri yükleme
@@ -289,11 +286,32 @@ Seçmeli diskler Yedekleme işlevselliği, klasik sanal makineler ve şifrelenmi
 
 **Yeni sanal makine oluşturmak** ve **varolanı değiştirmek** için geri yükleme seçenekleri, seçmeli DISKLER yedekleme işlevinin etkinleştirildiği VM için desteklenmez.
 
+Şu anda Azure VM yedeklemesi, Ultra disklere veya bunlara bağlı paylaşılan disklere sahip VM 'Leri desteklemez. Seçmeli disk yedeklemesi bu gibi durumlarda kullanılamaz ve bu durumda diski hariç tutabilir ve VM 'yi yedekler.
+
 ## <a name="billing"></a>Faturalandırma
 
 Azure sanal makine yedeklemesi, [burada](https://azure.microsoft.com/pricing/details/backup/)ayrıntılı olarak açıklanan mevcut fiyatlandırma modelini izler.
 
-**Korumalı örnek (PI) maliyeti** yalnızca **işletim sistemi diski** seçeneğini kullanarak yedeklemeyi seçerseniz işletim sistemi diski için hesaplanır.  Yedeklemeyi yapılandırır ve en az bir veri diski seçerseniz, VM 'ye bağlı tüm diskler için PI maliyeti hesaplanır. **Yedekleme depolama maliyeti** yalnızca dahil edilen disklere göre hesaplanır ve depolama maliyetine tasarruf etmeniz gerekir. **Anlık görüntü maliyeti** her zaman VM 'deki tüm diskler için hesaplanır (hem dahil edilen hem de hariç tutulan diskler).  
+**Korumalı örnek (PI) maliyeti** yalnızca **işletim sistemi diski** seçeneğini kullanarak yedeklemeyi seçerseniz işletim sistemi diski için hesaplanır.  Yedeklemeyi yapılandırır ve en az bir veri diski seçerseniz, VM 'ye bağlı tüm diskler için PI maliyeti hesaplanır. **Yedekleme depolama maliyeti** yalnızca dahil edilen disklere göre hesaplanır ve depolama maliyetine tasarruf etmeniz gerekir. **Anlık görüntü maliyeti** her zaman VM 'deki tüm diskler için hesaplanır (hem dahil edilen hem de hariç tutulan diskler).
+
+Çapraz bölge geri yükleme (CRR) özelliğini seçtiyseniz, [CRR fiyatlandırması](https://azure.microsoft.com/pricing/details/backup/) disk hariç tutularak yedekleme depolama maliyetinde geçerlidir.
+
+## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+
+### <a name="how-is-protected-instance-pi-cost-calculated-for-only-os-disk-backup-in-windows-and-linux"></a>Windows ve Linux 'ta yalnızca işletim sistemi disk yedeklemesi için korumalı örnek (PI) maliyeti nasıl hesaplanır?
+
+PI maliyeti, sanal makinenin gerçek (kullanılan) boyutu temel alınarak hesaplanır.
+
+- Windows için: kullanılan alan hesaplama, işletim sistemini depolayan sürücüyü temel alır (genellikle C:).
+- Linux için: kullanılan alan hesaplama, kök FileSystem (/) ' ın bağlı olduğu cihaza dayanır.
+
+### <a name="i-have-configured-only-os-disk-backup-why-is-the-snapshot-happening-for-all-the-disks"></a>Yalnızca işletim sistemi disk yedeklemesini yapılandırdım, neden tüm diskler için anlık görüntü oluyor?
+
+Seçmeli disk yedekleme özellikleri, yedeklemenin parçası olan dahil edilen diskleri güçlendirerek Yedekleme Kasası depolama maliyetinde tasarruf etmenize olanak tanır. Ancak anlık görüntü, VM 'ye bağlı tüm diskler için alınır. Bu nedenle, anlık görüntü maliyeti her zaman VM 'deki tüm diskler için hesaplanır (hem dahil edilen hem de hariç tutulan diskler). Daha fazla bilgi için bkz. [faturalandırma](#billing).
+
+### <a name="i-cant-configure-backup-for-the-azure-virtual-machine-by-excluding-ultra-disk-or-shared-disks-attached-to-the-vm"></a>VM 'ye bağlı Ultra disk veya Paylaşılan diskleri dışlayarak Azure sanal makinesi için yedeklemeyi yapılandıramıyorum
+
+Seçmeli disk yedekleme özelliği, Azure sanal makine yedekleme çözümünün en üstünde sağlanmış bir özelliktir. Şu anda Azure VM yedeklemesi, Ultra disk veya paylaşılan disk 'e bağlı olan VM 'Leri desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

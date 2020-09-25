@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8f173291448d9da4d8967ff56b0fa027ca73409
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334557"
 ---
 # <a name="business-card-concepts"></a>Kartvizit kavramları
 
@@ -88,8 +88,8 @@ Başarılı bir JSON yanıtı örneğine bakın: "readResults" düğümü, tanı
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-                "lines": 
-                          {
+                   "lines": 
+                             {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,
@@ -389,7 +389,9 @@ Iş kartı API 'SI de [Aibuilder Iş kartı işleme özelliğini](https://docs.m
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kullanmaya başlamak için hızlı başlangıcı izleyin [API Python hızlı başlangıç](./quickstarts/python-business-cards.md)
-- [Form tanıyıcı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) hakkında bilgi edinin REST API
-- [Form tanıyıcı](overview.md) hakkında daha fazla bilgi
+- İş kartlarını tanımayı kullanmaya başlamak için [Iş KARTLARı API Python hızlı](./quickstarts/python-business-cards.md) başlangıcını izleyin.
 
+## <a name="see-also"></a>Ayrıca bkz.
+
+* [Form Tanıma nedir?](./overview.md)
+* [REST API başvuru belgeleri](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)

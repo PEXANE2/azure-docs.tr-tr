@@ -11,21 +11,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: 6fe256660dc73aa411cf06e2b56ce9ef26934e2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9be2205ad0664d58c7a2ef0c07481b1c7aa02402
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548013"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273356"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için MerchLogix yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'yi kullanıcıları ve/veya grupları MerchLogix 'e otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için MerchLogix ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -55,7 +55,7 @@ Azure AD ile otomatik Kullanıcı sağlama için MerchLogix ' i yapılandırmada
 
 5. Sonuçlar panelinde, **Merchlogix**' i seçin ve sonra SaaS uygulamaları listenize MerchLogix eklemek için **Ekle** düğmesine tıklayın.
 
-    ![MerchLogix sağlama][4]
+    ![Bir ad girin metin kutusuyla adlandırılan, Gale 'den ekle bölümündeki ekran görüntüsü.][4]
 
 ## <a name="assigning-users-to-merchlogix"></a>MerchLogix 'e Kullanıcı atama
 
@@ -84,11 +84,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
 2. SaaS uygulamaları listenizden MerchLogix ' i seçin.
 
-3. **Sağlama** sekmesini seçin.
+3. **Hazırlama** sekmesini seçin.
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![MerchLogix sağlama](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
+    ![Sağlama seçeneği olarak adlandırılan, sağlama modu otomatik olarak ayarlanan ve test bağlantısı seçeneği olarak adlandırılan MerchLogix-Prtioning bölümünün ekran görüntüsü.](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde:
 
@@ -112,7 +112,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
 13. MerchLogix için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-14. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+14. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. **Eşitleme ayrıntıları** bölümünü Izleyip, MerchLogix ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama etkinliği raporunu kullanabilirsiniz.
 
@@ -120,12 +120,12 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: common/select-azuread.png

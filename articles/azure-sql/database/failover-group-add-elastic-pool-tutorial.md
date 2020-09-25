@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 80fa5b7264d675317fba3cc12fa5049bdea76906
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0c4a3c97649f168d339f5209cc10a46f56e97381
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042586"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335186"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ Azure SQL veritabanı elastik havuzu için bir yük devretme grubu yapılandır�
 > - İki sunucu arasında iki elastik havuz için bir [Yük devretme grubu](auto-failover-group-overview.md) oluşturun.
 > - Yük devretme testi.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
@@ -147,7 +147,7 @@ Azure portal kullanarak yük devretme grubunuz oluşturun.
     - **Yük devretme grubu adı**: gibi benzersiz bir yük devretme grubu adı yazın `failovergrouptutorial` .
     - **İkincil sunucu**: *gerekli ayarları yapılandırma* seçeneğini belirleyin ve ardından **Yeni bir sunucu oluşturmayı**seçin. Alternatif olarak, zaten var olan bir sunucuyu ikincil sunucu olarak seçebilirsiniz. Yeni ikincil sunucunuz için aşağıdaki değerleri girdikten sonra **Seç**' i seçin.
         - **Sunucu adı**: ikincil sunucu için, gibi benzersiz bir ad yazın `mysqlsecondary` .
-        - **Sunucu Yöneticisi oturum açma**: tür`azureuser`
+        - **Sunucu Yöneticisi oturum açma**: tür `azureuser`
         - **Parola**: parola gereksinimlerini karşılayan karmaşık bir parola yazın.
         - **Konum**: açılan listeden, gibi bir konum seçin `East US` . Bu konum, birincil sunucunuz ile aynı konumda olamaz.
 
@@ -355,7 +355,7 @@ Kaynak grubunu silerek kaynakları temizleyin.
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin.
-1. Gruptaki tüm kaynakların yanı sıra kaynak grubunun kendisini silmek için **kaynak grubunu sil** ' i seçin.
+1. Gruptaki tüm kaynakların yanı sıra kaynak grubunun kendisini silmek için  **kaynak grubunu sil** ' i seçin.
 1. Kaynak grubunun adını, `myResourceGroup` metin kutusuna yazın ve ardından **Sil** ' i seçerek kaynak grubunu silin.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

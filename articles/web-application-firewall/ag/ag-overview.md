@@ -5,15 +5,15 @@ description: Bu makalede, Application Gateway Web uygulaması güvenlik duvarı 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267032"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway Azure Web uygulaması güvenlik duvarı nedir?
 
@@ -32,7 +32,7 @@ Application Gateway, uygulama teslim denetleyicisi (ADC) olarak çalışır. Dah
 
 Application Gateway güvenlik geliştirmeleri TLS ilkesi yönetimi ve uçtan uca TLS desteği içerir. Uygulama güvenliği, Application Gateway ' ye WAF tümleştirmesi tarafından Güçbir hale döndürüldü. Birleşim, Web uygulamalarınızı yaygın güvenlik açıklarına karşı korur. Ve yönetmek için kolay yapılandırma merkezi bir konum sağlar.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Bu bölümde, Application Gateway için WAF 'nin sağladığı temel avantajlar açıklanmaktadır.
 
@@ -75,9 +75,21 @@ Bu bölümde, Application Gateway için WAF 'nin sağladığı temel avantajlar 
 - Belirli ülkelerin/bölgelerin uygulamalarınıza erişim kazanmasıyla izin vermek veya engellemek için coğrafi filtreleme trafiği. (önizleme)
 - Botları hafifletme kural kümesiyle uygulamalarınızı koruyun. (önizleme)
 
-## <a name="waf-policy"></a>WAF Ilkesi
+## <a name="waf-policy-and-rules"></a>WAF ilkesi ve kuralları
 
-Bir Application Gateway Web uygulaması güvenlik duvarını etkinleştirmek için bir WAF Ilkesi oluşturmanız gerekir. Bu Ilke, tüm yönetilen kuralların, özel kuralların, dışlamaların ve dosya karşıya yükleme sınırı gibi diğer özelleştirmelerin bulunduğu yerdir. 
+Application Gateway bir Web uygulaması güvenlik duvarını etkinleştirmek için bir WAF ilkesi oluşturmanız gerekir. Bu ilke, tüm yönetilen kuralların, özel kuralların, dışlamaların ve dosya karşıya yükleme sınırı gibi diğer özelleştirmelerin bulunduğu yerdir.
+
+Bir WAF ilkesi yapılandırabilir ve bu ilkeyi koruma için bir veya daha fazla uygulama ağ geçidi ile ilişkilendirebilirsiniz. Bir WAF ilkesi, iki tür güvenlik kuralından oluşur:
+
+- Oluşturduğunuz özel kurallar
+
+- Azure tarafından yönetilen önceden yapılandırılmış bir kural kümesi koleksiyonu olan yönetilen kural kümeleri
+
+Her ikisi de varsa, yönetilen bir kural kümesindeki kuralları işlemeden önce özel kurallar işlenir. Bir kural eşleştirme koşulu, öncelik ve bir eylemden oluşur. Desteklenen eylem türleri şunlardır: ızın ver, engelle ve günlük. Yönetilen ve özel kuralları birleştirerek, belirli uygulama koruma gereksinimlerinizi karşılayan tam olarak özelleştirilmiş bir ilke oluşturabilirsiniz.
+
+İlke içindeki kurallar öncelik sırasına göre işlenir. Öncelik, işlenecek kuralların sırasını tanımlayan benzersiz bir tamsayıdır. Daha küçük tamsayı değeri daha yüksek bir öncelik gösterir ve bu kurallar daha yüksek bir tamsayı değerine sahip kurallardan önce değerlendirilir. Bir kural eşleştiğinde, kuralda tanımlanan ilgili eylem isteğe uygulanır. Bu tür bir eşleşme işlendiğinde, daha düşük öncelikler olan kurallar daha fazla işlenmez.
+
+Application Gateway tarafından sunulan bir Web uygulaması, genel düzeyde, site başına düzeyde veya URI başına düzeyde bir ile ilişkili bir WAF ilkesine sahip olabilir.
 
 ### <a name="core-rule-sets"></a>Çekirdek kural kümeleri
 
@@ -159,6 +171,11 @@ Yerleşik Azure WAF güvenlik duvarı olayları çalışma kitabı ile WAF 'nizi
 
 
 ![Azure WAF güvenlik duvarı olayları çalışma kitabı](../media/ag-overview/sentinel.png)
+
+
+#### <a name="azure-monitor-workbook-for-waf"></a>WAF için Azure Izleyici çalışma kitabı
+
+Bu çalışma kitabı, birkaç filtrelenebilir panel üzerinde güvenlikle ilgili WAF olaylarının özel görselleştirilmesini mümkün hale getiriyor. Application Gateway, ön kapı ve CDN dahil olmak üzere tüm WAF türleriyle birlikte çalışarak, WAF türüne veya belirli bir WAF örneğine göre filtrelenebilir. ARM şablonu veya Galeri şablonu aracılığıyla içeri aktarın. Bu çalışma kitabını dağıtmak için bkz. [WAF çalışma kitabı](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook).
 
 #### <a name="logging"></a>Günlüğe Kaydetme
 

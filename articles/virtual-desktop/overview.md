@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 08455d3033040d14c85e4c4170ae34a6d05cfac1
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 03566dccbb453aa06a2b5f86bd02b86d85d61b28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527182"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322062"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir?
 
@@ -100,6 +100,8 @@ En iyi performans için, ağınızın aşağıdaki gereksinimleri karşıladığ
 * İstemci ağından, ana bilgisayar havuzlarının dağıtıldığı Azure bölgesine gidiş dönüş (RTT) gecikmesi 150 MS 'den az olmalıdır. Bağlantı durumunu ve önerilen Azure bölgenizi görüntülemek için [deneyim Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment) ' nı kullanın.
 * Masaüstleri ve uygulamalar barındıran VM 'Ler Yönetim hizmetine bağlandığında ağ trafiği ülke/bölge kenarlıklarının dışına akabilir.
 * Ağ performansını iyileştirmek için, oturum ana bilgisayarının VM 'lerinin yönetim hizmeti ile aynı Azure bölgesinde birlikte bulunmasını öneririz.
+
+[Mimari](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)belgelerimizin kurumsal Için Windows sanal masaüstü 'nün tipik bir mimari kurulumunu görebilirsiniz.
 
 ## <a name="supported-remote-desktop-clients"></a>Desteklenen uzak masaüstü istemcileri
 

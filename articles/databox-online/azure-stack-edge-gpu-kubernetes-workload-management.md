@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: f64f9b612ff47fb5c0b6e6202ad87f7660959100
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d9e0da9e24a0bd32047d029879c4f0e110dc0c16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899176"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320804"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızda Kubernetes iş yükü yönetimi
 
@@ -29,7 +29,7 @@ Azure Stack Edge Pro cihazınıza dağıtabileceğiniz iki ortak iş yükü tür
 
     Bir Kubernetes dağıtımı oluşturarak, kümenizde durum bilgisiz bir uygulamayı dağıtabilirsiniz. 
 
-- Durum **bilgisi olan uygulamalar** , durumunun kaydedilmesini gerektirir. Durum bilgisi olan uygulamalar, verileri sunucu veya diğer kullanıcılar tarafından kullanılmak üzere kaydetmek için kalıcı birimler gibi kalıcı depolama alanı kullanır. Durum bilgisi olan uygulamalara örnek olarak MongoDB gibi veritabanları dahildir.
+- Durum **bilgisi olan uygulamalar** , durumunun kaydedilmesini gerektirir. Durum bilgisi olan uygulamalar, verileri sunucu veya diğer kullanıcılar tarafından kullanılmak üzere kaydetmek için kalıcı birimler gibi kalıcı depolama alanı kullanır. Durum bilgisi olan uygulamalara örnek olarak [Azure SQL Edge](../azure-sql-edge/overview.md) ve MongoDB gibi veritabanları verilebilir.
 
     Durum bilgisi olan bir uygulamayı dağıtmak için bir Kubernetes dağıtımı oluşturabilirsiniz. 
 

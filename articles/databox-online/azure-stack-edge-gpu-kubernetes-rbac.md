@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899292"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320821"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes rol tabanlı Access Control Azure Stack Edge Pro GPU cihazınıza
 
@@ -91,25 +91,7 @@ Azure Stack Edge Pro cihazında birden çok sistem ad alanı vardır ve `kubecon
 
 Bu diyagramda, Gamze, Bob ve Chuck yalnızca atanan kullanıcı ad alanlarına erişebilir, bu durumda, `ns1` `ns2` ve `ns3` sırasıyla. Bu ad alanlarında yönetici erişimi vardır. Diğer yandan küme yöneticisinin sistem ad alanları ve küme genelinde kaynaklara yönetici erişimi vardır.
 
-`kubectl`Ad alanları ve kullanıcılar oluşturmak, kullanıcıları ad alanlarına atamak veya dosyaları indirmek için komutları kullanabilirsiniz `kubeconfig` . Yüksek düzey bir iş akışı aşağıda verilmiştir:
-
-1. Bir ad alanı ve kullanıcı oluşturun.  
-
-    `New-HcsKubernetesNamespace -Namespace`  
-
-2. Bir kullanıcı oluşturun.  
-
-    `New-HcsKubernetesUser -UserName`  
-
-3. Ad alanını oluşturduğunuz kullanıcıyla ilişkilendirin.  
-
-    `Grant-HcsKubernetesNamespaceAccess -Namespace -UserName`  
-
-4. Kullanıcı yapılandırmasını ' ye kaydedin `C:\Users\<username>\.kube` .  
-
-5. `kubectl`Uygulamaları ' ye yükleyip dağıtmaya başlayın `kubectl` . 
-
-Ayrıntılı adım adım yönergeler için [Azure Stack Edge Pro 'da kuebctl aracılığıyla Kubernetes kümesine erişim](azure-stack-edge-gpu-create-kubernetes-cluster.md)bölümüne gidin.
+Kullanıcı olarak, ad alanları ve kullanıcılar oluşturabilir, kullanıcıları ad alanlarına atayabilir veya `kubeconfig` dosyaları indirebilirsiniz. Ayrıntılı adım adım yönergeler için [Azure Stack Edge Pro 'da kuebctl aracılığıyla Kubernetes kümesine erişim](azure-stack-edge-gpu-create-kubernetes-cluster.md)bölümüne gidin.
 
 
 Azure Stack Edge Pro cihazlarınızda ad alanları ve kullanıcılarla çalışırken aşağıdaki uyarılar geçerlidir:

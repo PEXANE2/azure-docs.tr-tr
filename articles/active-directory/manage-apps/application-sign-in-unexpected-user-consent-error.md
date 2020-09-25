@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321955"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Bir uygulamaya onay gerçekleştirilirken beklenmeyen hata oluştu
 
@@ -77,6 +77,14 @@ Bu hatalar, bir Kullanıcı, bir kullanıcının, kuruluşun dizininde (kiracı)
     -   Uygulama izinlerini Azure portal aracılığıyla verme
 
     -   Azure AD uygulama galerisinden uygulamayı ekleme
+
+## <a name="risky-app-error-and-warning"></a>Riskli uygulama hatası ve uyarısı
+* Bu uygulama riskli olabilir. Bu uygulamaya güveniyorsanız, lütfen yöneticinizden size erişim vermesini isteyin.
+* Bu uygulama riskli olabilir. Yalnızca bu uygulamaya güveniyorsanız devam edin.
+
+Bu iletilerden her ikisi de, Microsoft izin isteğinin riskli olabileceğini tespit edildiğinde görüntülenir. Bir dizi diğer faktörde, bu durum [doğrulanmış bir yayımcının](../develop/publisher-verification-overview.md) uygulama kaydına eklenmemiş olması durumunda gerçekleşebilir. [Yönetici onayı iş akışı](configure-admin-consent-workflow.md) devre dışı bırakıldığında ilk ileti son kullanıcılara gösterilir. Yönetici onayı iş akışı etkinleştirildiğinde ve yöneticiler için ikinci ileti son kullanıcılara gösterilir. 
+
+Son kullanıcılar riskli olarak algılanan uygulamalara onay veremeyecektir. Yöneticiler erişebilir, ancak uygulamayı çok dikkatli bir şekilde değerlendirmeli ve dikkatli bir şekilde devam edebilir. Uygulama daha fazla inceleme sonrasında şüpheli görünüyorsa, onay ekranından Microsoft 'a bildirilebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

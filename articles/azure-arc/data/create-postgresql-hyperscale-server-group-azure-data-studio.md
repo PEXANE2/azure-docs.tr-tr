@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: af0cdb814433b739b15d79bec9cb399cf0a2fef7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941858"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273016"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Azure Data Studio kullanarak Azure Arc etkin PostgreSQL hiper ölçeği oluşturma
 
@@ -42,6 +42,19 @@ Password:
 Namespace: arc
 Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting active context to `arc`
 ```
+
+## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>Yalnızca OpenShift kullanıcıları için ön ve geçici adım
+
+Sonraki adıma geçmeden önce bu adımı uygulayın. Varsayılan dışında bir projede PostgreSQL hiper ölçek sunucu grubunu Red Hat OpenShift 'e dağıtmak için, güvenlik kısıtlamalarını güncelleştirmek üzere kümenizde aşağıdaki komutları yürütmeniz gerekir. Bu komut, PostgreSQL hiper ölçek sunucu grubunuzu çalıştıracak hizmet hesaplarına gerekli ayrıcalıkları verir. Güvenlik bağlamı kısıtlaması (SCC) **_Arc-Data-SCC_** , Azure Arc veri denetleyicisi 'ni dağıtırken eklediğiniz bir.
+
+```console
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
+```
+
+_**Sunucu-grup adı** , bir sonraki adımda dağıtacaksınız sunucu grubunun adıdır._
+   
+OpenShift 'te SCCs hakkında daha fazla ayrıntı için lütfen [OpenShift belgelerine](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html)bakın.
+Şimdi bir sonraki adımı uygulayabilirsiniz.
 
 ## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grubu oluşturma
 
@@ -80,6 +93,5 @@ Birkaç dakika içinde, oluşturma işleminin başarıyla tamamlanmış olması 
 
 - [PostgreSQL için Azure veritabanı hiper ölçek sunucu grubu ölçeğini genişletme](scale-out-postgresql-hyperscale-server-group.md)
 - [Depolama yapılandırması ve Kubernetes depolama kavramları](storage-configuration.md)
-- [Kalıcı birim taleplerini genişletme](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes kaynak modeli](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 

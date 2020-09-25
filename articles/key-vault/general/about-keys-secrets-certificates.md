@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault REST API genel bakış
+title: Azure Key Vault anahtarlar, gizlilikler ve sertifikalara genel bakış
 description: Anahtarlar, gizli diziler ve sertifikalar için Azure Key Vault REST arabirimine ve geliştirici ayrıntılarına genel bakış.
 services: key-vault
 author: msmbaldwin
@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b2d3753cd31b54c500b2757520f2634eb1b2794a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c02a2658325fdd88ef1052937edc3b84c4545872
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983281"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296846"
 ---
-# <a name="azure-key-vault-rest-api-overview"></a>Azure Key Vault REST API genel bakış
+# <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault anahtarlar, gizlilikler ve sertifikalara genel bakış
 
 Azure Key Vault, Microsoft Azure uygulamaların ve kullanıcıların çeşitli türlerdeki gizli/anahtar verileri depolamasına ve kullanmasına olanak sağlar. Key Vault kaynak sağlayıcısı iki kaynak türünü destekler: kasa ve yönetilen HSM 'ler.
 

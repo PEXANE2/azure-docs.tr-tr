@@ -3,12 +3,12 @@ title: Azure Blueprints’e genel bakış
 description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
 ms.date: 08/27/2020
 ms.topic: overview
-ms.openlocfilehash: e5c08f4211f03ddc6d2f48eee4fc84a824732e43
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a687bcbaff56fa1229794b6977e3565070c56e2a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050786"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302681"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprints nedir?
 
@@ -47,7 +47,7 @@ Bir ilke, şema tanımındaki birçok _yapıtlardan_ biri olarak eklenebilir. Ş
 
 Şemalar, _yapıtlardan_ meydana gelir. Azure şemaları Şu anda yapıt olarak aşağıdaki kaynakları desteklemektedir:
 
-|Kaynak  | Hiyerarşi seçenekleri| Açıklama  |
+|Kaynak  | Hiyerarşi seçenekleri| Description  |
 |---------|---------|---------|
 |Kaynak Grupları | Abonelik | Şema içindeki diğer yapıtlar tarafından kullanılacak yeni bir kaynak grubu oluşturur.  Bu yer tutucu kaynak grupları, kaynakları tam olarak istediğiniz şekilde düzenlemenize olanak tanır ve dahil edilen ilke ve rol atama yapıtları ve ARM şablonları için bir kapsam sınırlayıcısı sağlar. |
 |ARM şablonu | Abonelik, Kaynak Grubu | İç içe ve bağlı şablonlar dahil olmak üzere şablonlar, karmaşık ortamları oluşturmak için kullanılır. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
@@ -78,7 +78,9 @@ Bir şema 'in **yayımlanan** her **sürümü** var olan bir aboneliğe atanabil
 
 ## <a name="permissions-in-azure-blueprints"></a>Azure Blueprints'te izinler
 
-Şemaları kullanmak için [Rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) (RBAC) ile gerekli izinlerin verilmiş olması gerekir. Şema oluşturmak için hesabınız şu izinlere sahip olmalıdır:
+Şemaları kullanmak için [Rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) (RBAC) ile gerekli izinlerin verilmiş olması gerekir. Azure Portal bir şeması okumak veya görüntülemek için, hesabınızın şema tanımının bulunduğu kapsama okuma erişimi olmalıdır.
+
+Şema oluşturmak için hesabınız şu izinlere sahip olmalıdır:
 
 - `Microsoft.Blueprint/blueprints/write` - Şema tanımı oluştur
 - `Microsoft.Blueprint/blueprints/artifacts/write` - Şema tanımında yapıt oluştur
@@ -103,7 +105,7 @@ Bir şemayı atamak veya atamasını kaldırmak için hesabınız şu izinlere s
 
 Aşağıdaki yerleşik roller kullanılabilir:
 
-|Azure rolü | Açıklama |
+|Azure rolü | Description |
 |-|-|
 |[Sahibi](../../role-based-access-control/built-in-roles.md#owner) | Diğer izinlerin yanı sıra, tüm Azure Blueprint ilgili izinleri içerir. |
 |[Katkıda Bulunan](../../role-based-access-control/built-in-roles.md#contributor) | Diğer izinlerin yanı sıra, şema tanımları oluşturup silebilir, ancak şema atama izinlerine sahip değildir. |

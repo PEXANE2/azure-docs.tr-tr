@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 03/19/2020
+ms.date: 09/23/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910146"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274053"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B işbirliği SSS
 
@@ -70,7 +70,7 @@ Evet! Tüm konuk ve dış kullanıcıların Azure portal erişimini engelleyen b
 5. **Yeni** sayfada, **ad** metin kutusuna ilke için bir ad girin (örneğin, "konukların portala erişimini engelle").
 6. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
 7. **Dahil et** sekmesinde **kullanıcıları ve grupları seç**' i seçin ve ardından **tüm konuk ve dış kullanıcılar ' ı (Önizleme)** seçin.
-9. **Bitti**'yi seçin.
+9. **Bitti** seçeneğini belirleyin.
 10. **Yeni** sayfada, **atamalar** bölümünde, **bulut uygulamaları veya eylemler**' i seçin.
 11. **Bulut uygulamaları veya eylemler** sayfasında, **uygulamaları seç**' i seçin ve ardından **Seç**' i seçin.
 12. **Seç** sayfasında **Microsoft Azure Management**’ı ve sonra **Seç** öğesini seçin.
@@ -116,6 +116,9 @@ Ortağın Şirket içi kimlik doğrulama altyapısına federal bir Azure AD kira
 
 ### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Azure AD B2B 'nin gmail.com ve outlook.com e-posta adreslerini kabul etmediğinizi ve bu B2C 'nin bu tür hesaplar için kullanıldığını sanıyordum mi?
 B2B ile işletmeden müşteriye (B2C) işbirliği arasındaki farkları, hangi kimliklerin desteklendiğiyle kaldırıyoruz. Kullanılan kimlik, B2B kullanma veya B2C kullanma arasında seçim yapmak için iyi bir neden değil. İşbirliği seçeneğinizi seçme hakkında daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B işbirliğini ve B2C 'Yi karşılaştırın](compare-with-b2c.md).
+
+### <a name="can-an-azure-ad-b2c-local-account-be-invited-to-an-azure-ad-tenant-for-b2b-collaboration"></a>Azure AD B2C bir yerel hesap B2B işbirliği için bir Azure AD kiracısına davet edilebilir mi?
+Hayır. Azure AD B2C yerel bir hesap, yalnızca Azure AD B2C kiracısında oturum açmak için kullanılabilir. Hesap, Azure AD kiracısında oturum açmak için kullanılamaz. B2B işbirliği için Azure AD B2C yerel bir hesabı Azure AD kiracısına davet etme desteklenmez.
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Azure B2B Konuk kullanıcılarını hangi uygulamalar ve hizmetler destekler?
 Azure AD ile tümleştirilen tüm uygulamalar, Azure B2B Konuk kullanıcılarını destekleyebilir, ancak konuk kullanıcıların kimliğini doğrulamak için kiracı olarak ayarlanmış bir uç nokta kullanmaları gerekir. Ayrıca, bir Konuk kullanıcı uygulamanın kimliğini doğruladığında verilen SAML belirtecindeki [talepleri özelleştirmeniz](claims-mapping.md) gerekebilir. 

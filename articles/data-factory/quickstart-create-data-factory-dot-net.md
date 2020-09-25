@@ -1,6 +1,6 @@
 ---
 title: .NET SDK kullanarak Azure Veri Fabrikası oluşturma
-description: Azure Blob depolamadaki bir konumdan başka bir konuma veri kopyalamak için bir Azure veri fabrikası oluşturun.
+description: Azure Blob depolama alanındaki bir konumdan başka bir konuma veri kopyalamak için .NET SDK kullanarak bir Azure Data Factory ve işlem hattı oluşturun.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: d4652ca62a82d14c7e44466161ae9b463818a71f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e8da3dff39f94d6639471a2d1d96691c9cde614d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433991"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322895"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı Başlangıç: .NET SDK’sını kullanarak veri fabrikası ve işlem hattı oluşturma
 
@@ -49,7 +49,7 @@ Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır. Visual Studio 2013, 2
 
 1. [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)bölümünde, bu öğreticide oluşturmakta olduğunuz .NET uygulamasını temsil eden bir uygulama oluşturun. Oturum açma URL'si için, makalede gösterildiği gibi bir işlevsiz URL sağlayabilirsiniz (`https://contoso.org/exampleapp`).
 2. [Oturum açmak için değerleri Al](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)' da, **uygulama KIMLIĞI** ve **Kiracı kimliği**' ni alın ve bu öğreticide daha sonra kullanacağınız bu değerleri unutmayın. 
-3. [Sertifikalar ve gizlilikler](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)' da, **kimlik doğrulama anahtarını**alın ve bu öğreticide daha sonra kullanacağınız bu değeri unutmayın.
+3. [Sertifikalar ve gizlilikler](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)' da, **kimlik doğrulama anahtarını**alın ve bu öğreticide daha sonra kullanacağınız bu değeri unutmayın.
 4. Uygulamayı [bir role ata](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)bölümünde, uygulamanın abonelikte veri fabrikaları oluşturabilmesi için uygulamayı abonelik düzeyinde **katkıda** bulunan rolüne atayın.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma

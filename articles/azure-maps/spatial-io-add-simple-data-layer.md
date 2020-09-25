@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e79135ccf672fa057d9e88fc91fa72b7826ba71e
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: 75b193017bbfccbae0f299c0a1db2fe0e34f1810
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321807"
 ---
 # <a name="add-a-simple-data-layer"></a>Basit bir veri katmanı ekleme
 
@@ -114,7 +114,7 @@ Bir özellik bir veya ise `Point` `MultiPoint` , ve özelliği bir `image` sembo
 
 Kümeler kabarcık katmanı kullanılarak da işlenir. Varsayılan olarak, bir kümenin yarıçapı olarak ayarlanır `16` . Kümenin rengi, aşağıda tanımlandığı şekilde kümedeki noktaların sayısına bağlı olarak farklılık gösterir:
 
-| noktaların sayısı | Renk    |
+| noktaların sayısı | Color    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |

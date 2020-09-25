@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658745"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295045"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
@@ -125,7 +125,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 1. Grup İlkesi Yönetimi Düzenleyicisi aracını açın.
 2. Kullanıcılarınıza veya tümüne uygulanan Grup ilkesini düzenleyin. Bu örnek **varsayılan etki alanı ilkesi**kullanır.
 3. **User Configuration**  >  **Policy**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası**Yönetim Şablonları Kullanıcı yapılandırma ilkesi ' ne gidin. Ardından **siteden bölgeye atama listesi**' ni seçin.
-    ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso6.png)
+    !["Güvenlik sayfası" nı "Site-bölge atama listesi" seçiliyken gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso6.png)
 4. İlkeyi etkinleştirin ve iletişim kutusuna aşağıdaki değerleri girin:
    - **Değer adı**: Kerberos biletleri Iletileceği Azure AD URL 'si.
    - **Değer** (veri): **1** Intranet bölgesini gösterir.
@@ -142,15 +142,15 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 
 5. **Tamam**’ı ve ardından tekrar **Tamam**’ı seçin.
 
-    ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso7.png)
+    ![Bir bölge atamasının seçili olduğu "Içeriği göster" penceresini gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso7.png)
 
 6. **User Configuration**  >  **Policy**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası**  >  **Intranet bölgesi**Yönetim Şablonları Kullanıcı yapılandırma ilkesi ' ne gidin. Ardından **betik aracılığıyla durum çubuğunda güncelleştirmelere Izin ver**' i seçin.
 
-    ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso11.png)
+    !["Intranet bölgesi" sayfasını, "komut dosyası aracılığıyla durum çubuğuna güncelleştirmeler Izin ver" seçiliyken gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso11.png)
 
 7. İlke ayarını etkinleştirin ve ardından **Tamam**' ı seçin.
 
-    ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso12.png)
+    ![İlke ayarı etkinken "komut dosyası aracılığıyla durum çubuğunda güncelleştirmelere Izin ver" penceresinin gösterildiği ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="group-policy-preference-option---detailed-steps"></a>"Grup İlkesi tercihi" seçeneği-ayrıntılı adımlar
 
@@ -158,7 +158,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 2. Kullanıcılarınıza veya tümüne uygulanan Grup ilkesini düzenleyin. Bu örnek **varsayılan etki alanı ilkesi**kullanır.
 3. **Kullanıcı yapılandırma**  >  **tercihleri**  >  **Windows ayarları**  >  **kayıt defteri**  >  **Yeni**  >  **kayıt defteri öğesine**gidin.
 
-    ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso15.png)
+    !["Kayıt defteri" ve "kayıt defteri öğesi" öğesinin seçili olduğunu gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Uygun alanlara aşağıdaki değerleri girin ve **Tamam**' a tıklayın.
    - **Anahtar yolu**: ***Software\microsoft\windows\currentversion\ınternet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon***
@@ -166,7 +166,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
    - **Değer türü**: ***REG_DWORD***
    - **Değer verisi**: ***00000001***
  
-     ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso16.png)
+     !["Yeni kayıt defteri özellikleri" penceresini gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso16.png)
  
      ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso17.png)
 

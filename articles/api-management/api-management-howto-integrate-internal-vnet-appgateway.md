@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: eb2ce196687b2ca6a762a879570e4f8ebac788df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 778c65b9ec42c27ea0ae1530c1ba7fa9739fbc3c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025124"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321896"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Application Gateway ile iç VNET 'te API Management tümleştirme
 
@@ -91,12 +91,12 @@ Bu kılavuzda, Application Gateway aracılığıyla **Geliştirici Portalını**
 > 
 > Application Gateway WAF kuralları, bu da portalın işlevlerini bozabilir:
 > 
-> - `920330`,,,, `931130` `942100` `942110` `942180` , `942200` , `942260` , `942370` `949110` `980130` ,,,,,,,,,,
+> - `920300`,,,, `920330` `931130` `942100` `942110` , `942180` , `942200` , `942260` `942340` `942370` ,,,,,,,,,,
 > - `942200`, `942260` ,,,,, `942370` ,,, `942430` `942440` ,,,
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Resource Manager için kaynak grubu oluşturun
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 Azure'da oturum açma
 
@@ -131,7 +131,7 @@ Azure Resource Manager, tüm kaynak gruplarının bir konum belirtmesini gerekti
 
 Aşağıdaki örnek, Kaynak Yöneticisi kullanarak nasıl sanal ağ oluşturulacağını gösterir.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 Bir sanal ağ oluştururken Application Gateway için kullanılacak alt ağ değişkenine 10.0.0.0/24 adres aralığını atayın.
 
@@ -168,7 +168,7 @@ $apimsubnetdata = $vnet.Subnets[1]
 
 Aşağıdaki örnek, yalnızca iç erişim için yapılandırılmış bir sanal ağda API Management bir hizmetin nasıl oluşturulacağını gösterir.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 Yukarıda oluşturulan alt ağ $apimsubnetdata kullanarak API Management bir sanal ağ nesnesi oluşturun.
 
@@ -194,7 +194,7 @@ Yukarıdaki komut başarılı olduktan sonra, bu [hizmete erişmek için Iç VNE
 > [!IMPORTANT]
 > [Yeni geliştirici portalı](api-management-howto-developer-portal.md) , aşağıdaki adımlara ek olarak API Management yönetim uç noktasına bağlantıyı etkinleştirmenizi de gerektirir.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 Aşağıdaki değişkenleri, etki alanları için özel anahtarlarla sertifikaların ayrıntılarıyla başlatın. Bu örnekte, `api.contoso.net` ve kullanacağız `portal.contoso.net` .  
 
@@ -241,7 +241,7 @@ Hizmet başlatıldığında uygulama ağ geçidine bir IP adresi atanır.
 
 Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarlanmalıdır. Aşağıdaki adımlar uygulama ağ geçidi kaynağı için gerekli yapılandırma öğelerini oluşturur.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 **Gatewayıp01**adlı bir uygulama ağ geçidi IP yapılandırması oluşturun. Application Gateway başladığında, yapılandırılan alt ağdan bir IP adresi alır ve ağ trafiğini arka uç IP havuzundaki IP adreslerine yönlendirir. Her örneğin bir IP adresi aldığını göz önünde bulundurun.
 
@@ -315,7 +315,7 @@ $apimPoolPortalSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apim
 
 ### <a name="step-9"></a>9. Adım
 
-Yukarıda oluşturulan API Management hizmetinin iç sanal IP adresiyle **apımarka uç** adlı bir arka uç IP adresi havuzu yapılandırın.
+Yukarıda oluşturulan API Management hizmetinin iç sanal IP adresiyle **apımarka uç**  adlı bir arka uç IP adresi havuzu yapılandırın.
 
 ```powershell
 $apimProxyBackendPool = New-AzApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.PrivateIPAddresses[0]

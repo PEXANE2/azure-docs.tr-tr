@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281472"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271197"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak REST uç noktalarını çağırma
 
@@ -42,7 +42,7 @@ ms.locfileid: "87281472"
 
 Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyası için bir URL 'ye HTTP isteği gönderir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
 1. Tasarımcıda arama kutusuna filtreniz olarak "Swagger" yazın. **Tetikleyiciler** listesinden **http + Swagger** tetikleyicisi ' ni seçin.
 
@@ -54,17 +54,17 @@ Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini i
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Swagger uç noktası için URL girin](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   !["H T T P + Swagger" tetikleyicisi ve "Swagger Endpoint U R L" özelliği bir U R L değeri olarak ayarlanan mantıksal uygulama tasarımcısını gösteren ekran görüntüsü.](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. Tasarımcı Swagger dosyası tarafından tanımlanan işlemleri gösterdiğinde, kullanmak istediğiniz işlemi seçin.
 
-   ![Swagger dosyasındaki işlemler](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![Mantıksal uygulama tasarımcısını "H T T P + Swagger" tetikleyicisi ile gösteren ekran görüntüsü ve Swagger işlemlerini görüntüleyen bir liste.](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. Son nokta çağrısına dahil etmek istediğiniz, seçilen işleme göre değişiklik gösteren tetikleyici parametreleri için değerler sağlayın. Tetikleyicinin bitiş noktasını ne sıklıkta çağırmasını istediğinizi belirleyin.
 
    Bu örnek, adımın daha açıklayıcı bir ada sahip olması için tetikleyiciyi "HTTP + Swagger tetikleyicisi: yüz-Algıla" olarak yeniden adlandırır.
 
-   ![İşlem ayrıntıları](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+   !["Yüz algılama" işlemini görüntüleyen "H T T P + Swagger" tetikleyicisiyle Logic App Designer 'ı gösteren ekran görüntüsü.](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
 1. Kullanılabilir başka parametreler eklemek için **yeni parametre Ekle** listesini açın ve istediğiniz parametreleri seçin.
 
@@ -78,7 +78,7 @@ Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini i
 
 Bu yerleşik eylem, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyasının URL 'sine bir HTTP isteği oluşturur.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
 1. HTTP + Swagger eylemini eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
@@ -145,7 +145,7 @@ Bu dosyayı bir Azure depolama hesabındaki blob kapsayıcısına yükleyerek ve
 
 HTTP + Swagger tetikleyicisinden veya eylemden gelen çıktılar hakkında daha fazla bilgi bulabilirsiniz. HTTP + Swagger çağrısı şu bilgileri döndürür:
 
-| Özellik adı | Tür | Açıklama |
+| Özellik adı | Tür | Description |
 |---------------|------|-------------|
 | bilgisinde | object | İstekten gelen üstbilgiler |
 | body | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |

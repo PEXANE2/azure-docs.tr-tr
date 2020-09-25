@@ -1,21 +1,21 @@
 ---
-title: Inkapılı haritalar oluşturmak için Oluşturucu kullanma
-description: Inkapılı haritalar oluşturmak için Azure haritalar Oluşturucu kullanın.
+title: 'Öğretici: iç kapak eşlemeleri oluşturmak için Oluşturucu kullanma'
+description: Azure haritalar Creator 'un ınkapısı haritaları oluşturmak için kullanımı hakkında öğretici
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/29/2020
-ms.topic: conceptual
+ms.date: 09/22/2020
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 01182343fb0c96040ec8e86ddf915050ba68cf9f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469924"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335220"
 ---
-# <a name="use-creator-to-create-indoor-maps"></a>Inkapılı haritalar oluşturmak için Oluşturucu kullanma
+# <a name="tutorial-use-creator-to-create-indoor-maps"></a>Öğretici: iç kapak eşlemeleri oluşturmak için Oluşturucu kullanma
 
 Bu öğreticide, ınkapı haritaları oluşturma gösterilmektedir. Bu öğreticide API 'yi kullanarak şunları yapmayı öğreneceksiniz:
 
@@ -28,7 +28,7 @@ Bu öğreticide, ınkapı haritaları oluşturma gösterilmektedir. Bu öğretic
 > * Harita özelliklerinizi ve veri kümenizdeki verileri kullanarak bir özellik stateset oluşturma
 > * Özellik stateset 'nizi güncelleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Inkapısı haritaları oluşturmak için:
 
@@ -404,43 +404,11 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
 
 [Özellik alma API 'si](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) , özelliğini kullanarak bir özelliğin durumunu almanıza olanak sağlar `ID` . Ayrıca, [durum SILME API](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview)'sini kullanarak stateset ve kaynaklarını silebilirsiniz.
 
+Bu makalede ele alınan farklı Azure Maps Creator hizmetleri hakkında daha fazla bilgi edinmek için bkz. [creator ınkapımaps](creator-indoor-maps.md).
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
-
-> [!div class="checklist"]
-> * Inkapımap çizim paketinizi karşıya yükleyin
-> * Çizim paketinizi eşleme verilerine dönüştürme
-> * Harita verilerinizde veri kümesi oluşturma
-> * Veri kümenizdeki verilerden bir tileset oluşturma
-> * Harita özelliklerinizi öğrenmek için Azure Maps WFS hizmetini sorgulama
-> * Harita özelliklerinizi ve veri kümenizdeki verileri kullanarak bir özellik stateset oluşturma
-> * Özellik stateset 'nizi güncelleştirme
-
-Artık bir sonraki kılavuzlara geçiş yapmak için ihtiyacınız olan becerileri sunuyoruz:
+Inkapısı haritaları modülünü nasıl kullanacağınızı öğrenmek için bkz.
 
 > [!div class="nextstepaction"]
 > [Inkapıharitaları modülünü kullanma](how-to-use-indoor-module.md)
-
-> [!div class="nextstepaction"]
-> [Inkapıeşlemler için dinamik stil uygulama](indoor-map-dynamic-styling.md)
-
-Bu makalede ele alınan farklı Azure haritalar hizmetleri hakkında daha fazla bilgi edinin:
-
-> [!div class="nextstepaction"]
-> [Karşıya veri yükleme](creator-indoor-maps.md#upload-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [Veri dönüştürme](creator-indoor-maps.md#convert-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [Veri kümesi](creator-indoor-maps.md#datasets)
-
-> [!div class="nextstepaction"]
-> [Tileset](creator-indoor-maps.md#tilesets)
-
-> [!div class="nextstepaction"]
-> [Özellik durumu kümesi](creator-indoor-maps.md#feature-statesets)
-
-> [!div class="nextstepaction"]
-> [WFS hizmeti](creator-indoor-maps.md#web-feature-service-api)

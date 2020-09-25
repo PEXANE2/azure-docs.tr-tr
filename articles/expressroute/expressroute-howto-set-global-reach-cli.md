@@ -1,6 +1,6 @@
 ---
 title: 'Azure ExpressRoute: ExpressRoute Global Reach yapılandırma: CLı'
-description: Bu makale, ExpressRoute bağlantı devresine, şirket içi ağlarınızla özel bir ağ oluşturmak ve Global Reach etkinleştirmek için bir araya yönlendirmenize yardımcı olur.
+description: Azure CLı kullanarak, şirket içi ağlarınızla özel bir ağ oluşturmak ve Global Reach etkinleştirmek için ExpressRoute bağlantı hatlarını birbirine bağlamayı öğrenin.
 services: expressroute
 author: duongau
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/12/2018
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20ec5bb565a506d935ef7de6475e5062a21faa22
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 16a86982813b667ed5c761da27c8e9e5a43ab6cc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322504"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Azure CLı kullanarak ExpressRoute Global Reach yapılandırma
 

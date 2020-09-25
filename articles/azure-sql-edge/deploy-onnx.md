@@ -1,5 +1,6 @@
 ---
 title: ONNX ile tahmine dayalı hale getirin ve bu tahminleri yapın
+titleSuffix: SQL machine learning
 description: Bir modeli eğitme, ONNX 'e dönüştürme, Azure SQL Edge veya Azure SQL yönetilen örneği 'ne (Önizleme) dağıtma hakkında bilgi edinin ve ardından karşıya yüklenen ONNX modelini kullanarak verileri yerel olarak tahmın edin.
 keywords: SQL Edge dağıtma
 ms.prod: sql
@@ -8,12 +9,12 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: 1e70b48e4c28cdc74c5079e492b0266ea60900ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5a1e0b12179070dc11e838004c4b27cf04b5396b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886818"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298914"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Bir ONNX modeliyle tahmine dayalı dağıtım ve dağıtım yapma
 

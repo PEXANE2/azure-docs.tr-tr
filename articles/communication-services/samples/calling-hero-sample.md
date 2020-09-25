@@ -1,5 +1,5 @@
 ---
-title: Hero örneği çağıran Grup
+title: Grup araması hero örneği
 titleSuffix: An Azure Communication Services sample overview
 description: Geliştiricilerin, örneğin iç işleyişi hakkında daha fazla bilgi edinmek için Azure Iletişim hizmetlerini kullanarak Hero örneği çağırma konusuna genel bakış.
 author: ddematheu
@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: caee5686695594604f49dcbade54342a9134abc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9bd203586d6a9da974604099d361d2908a39e1d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947996"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298005"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Hero örneği çağıran grup ile çalışmaya başlama
 
@@ -30,7 +30,7 @@ ms.locfileid: "90947996"
 Bu örnek hızlı başlangıçta, örneği yerel makinenizde çalıştırmadan önce örneğin nasıl çalıştığını öğreneceksiniz. Daha sonra Azure Iletişim Hizmetleri kaynaklarınızı kullanarak örneği Azure 'a dağıtırsınız.
 
 > [!IMPORTANT]
-> [GitHub 'dan örneği indirin](https://github.com/Azure/Communication/tree/master/samples)
+> [GitHub 'dan örneği indirin](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -54,7 +54,7 @@ Ana arama ekranının bileşenleri:
 - **Üst bilgi**: Bu, birincil çağrı denetimlerinin ayarları ve katılımcı tarafı çubuğunu açıp, video ve karışımı açma/kapatma, ekran paylaşma ve çağrıyı bırakma olarak bulunduğu yerdir.
 - **Yan çubuk**: Bu, üst bilgi üzerindeki denetimler kullanılarak, katılımcılar ve ayar bilgilerinin gösterildiği yerdir. Bileşen sağ üst köşedeki ' X ' kullanılarak kapatılabilir. Katılımcılar yan çubuğu, katılımcıların bir listesini ve sohbet 'e daha fazla kullanıcı davet etmek için bir bağlantı gösterir. Ayarlar yan çubuğu, mikrofon ve kamera ayarlarını yapılandırmanıza olanak tanır.
 
-Aşağıda, Önkoşullar hakkında daha fazla bilgi, örneği ayarlama adımları ve çeşitli bileşenleri konusunda kendinizi tanımak için adım adım öğreticiler bulacaksınız.
+Aşağıda, önkoşulları ve örneği ayarlama adımlarını hakkında daha fazla bilgi bulacaksınız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -72,23 +72,17 @@ Yerel olarak dağıtmak istiyoruz, her iki uygulamayı da başlatmanız gerekir.
 
 Çoklu Kullanıcı çağrısının benzetimini yapmak için çağrın URL 'siyle birden çok tarayıcı oturumu açarak örneği yerel olarak test edebilirsiniz.
 
-### <a name="before-running-the-sample-for-the-first-time"></a>Örneği ilk kez çalıştırmadan önce
+## <a name="before-running-the-sample-for-the-first-time"></a>Örneği ilk kez çalıştırmadan önce
 
 1. PowerShell, Windows Terminal, komut Istemi veya eşdeğer bir örnek açın ve örneği kopyalamak istediğiniz dizine gidin.
-2. `git clone`
-3. **Çağrı/ClientApp klasörüne** gidin ve Çalıştır`npm run setup`
-   1. Bir hata 1 görürseniz, istemcinizi yetkilendirmek için gitmeniz gereken bir URL için çıktıda yukarıya bakın. (URL şöyle görünür: `app.vssps.visualstudio.com/oauth2/authorize?clientid=...` ) Bir tarayıcıda URL 'YI ziyaret ettiğinizde, tarayıcı penceresinden komutu kopyalayın ve çalıştırın.
-   2. `npm run setup-vsts-auth`Önceki adımı tamamladıktan sonra komutu tekrar çalıştırın.
-4. Azure portal alın `Connection String` . Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [Azure Iletişim kaynakları oluşturma](../quickstarts/create-communication-resource.md)
-5. Bağlantı dizesini aldıktan sonra, bağlantı dizesini hizmet .NET klasörü altında bulunan **çağrı/appsetting.js** dosyasına ekleyin. Bağlantı dizenizi şu değişkende girin: `ResourceConnectionString` .
+2. `git clone https://github.com/Azure/Communication.git`
+3. Azure portal alın `Connection String` . Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [Azure Iletişim kaynakları oluşturma](../quickstarts/create-communication-resource.md)
+4. ' I aldıktan sonra `Connection String` , bağlantı dizesini hizmet .NET klasörü altında bulunan **çağrı/appsetting.js** dosyasına ekleyin. Bağlantı dizenizi şu değişkende girin: `ResourceConnectionString` .
 
 ### <a name="local-run"></a>Yerel çalıştırma
 
-1. Çağıran klasöre git
-2. `Calling.csproj`Visual Studio 'da çözümü açın
-2. Projeyi Çalıştır `Calling` *
-
-* Tarayıcı, `localhost:5000` (düğümün istemci uygulamasını dağıttığı) konumunda açılır. Uygulama Internet Explorer 'da desteklenmiyor.
+1. Visual Studio 'da çağıran klasöre gidin ve `Calling.csproj` çözümü açın
+2. `Calling`Projeyi Çalıştır. Tarayıcı localhost: 5001 olarak açılır.
 
 #### <a name="troubleshooting"></a>Sorun giderme
 
@@ -108,6 +102,9 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+>[!div class="nextstepaction"] 
+>[GitHub 'dan örneği indirin](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
+
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Çağıran istemci kitaplığını kullanma](../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
@@ -116,7 +113,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 ## <a name="additional-reading"></a>Ek okuma
 
-- [Azure Iletişim önizlemesi](https://github.com/Azure/communication-preview) -çağıran Web SDK 'sı hakkında daha fazla bilgi edinmek için
+- [Azure Iletişim GitHub](https://github.com/Azure/communication) -resmi GitHub sayfasında daha fazla örnek ve bilgi bulun
 - [Redux](https://redux.js.org/) -istemci tarafı durum yönetimi
 - [Floentuı](https://developer.microsoft.com/fluentui#/) -MICROSOFT Powered UI kitaplığı
 - Kullanıcı arabirimleri oluşturmak için [tepki](https://reactjs.org/) verme kitaplığı

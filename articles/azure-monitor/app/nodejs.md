@@ -3,13 +3,13 @@ title: Node.js hizmetlerini Azure Application Insights ile izleme | Microsoft Do
 description: Application Insights ile Node.js hizmetlerindeki performansı izleyin ve sorunları tanılayın.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js
+ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371626"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323303"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights ile Node.js hizmetlerinizi ve uygulamalarınızı izleme
 
@@ -21,7 +21,7 @@ Node.js SDK'sı gelen ve giden HTTP isteklerini, özel durumları ve bazı siste
 
 TelemetryClient API'sini kullanarak uygulamanızın ve sisteminizin ek özelliklerini el ile işaretleyebilir ve izleyebilirsiniz. TelemetryClient API'si bu makalenin ilerleyen bölümlerinde ayrıntılı bir şekilde anlatılmıştır.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Bir uygulama veya hizmet için izlemeyi ayarlamak üzere aşağıdaki görevleri tamamlayın.
 
@@ -32,9 +32,9 @@ Başlamadan önce, bir Azure aboneliğine sahip olduğunuzdan emin olun veya [ü
 [azure-free-offer]: https://azure.microsoft.com/free/
 [add-aad-user]: ../../active-directory/fundamentals/add-users-azure-active-directory.md
 
-### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Application Insights kaynağı ayarlama
+### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a> Application Insights kaynağı ayarlama
 
-1. [Azure portalında][portal] oturum açın.
+1. [Azure Portal][portal] oturum açın.
 2. [Application Insights kaynağı oluşturma](create-new-resource.md)
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> Node.js SDK'sını ayarlama
@@ -59,7 +59,7 @@ Veri toplayabilmesi için SDK'yı uygulamanıza ekleyin.
    ```javascript
    let appInsights = require('applicationinsights');
    ```
-4.  Ayrıca `APPINSIGHTS_INSTRUMENTATIONKEY` , veya ' ye el ile geçirmek yerine, ortam değişkeni aracılığıyla bir Ikey sağlayabilirsiniz `setup()` `new appInsights.TelemetryClient()` . Bu uygulama, ikey değerlerini yürütülen kaynak kodunun dışında tutmanıza ve farklı ortamlar için farklı ikey değerleri belirtmenize olanak tanır. El ile aramayı yapılandırmak için `appInsights.setup('[your ikey]');` .
+4.  Ayrıca `APPINSIGHTS_INSTRUMENTATIONKEY` , veya ' ye el ile geçirmek yerine, ortam değişkeni aracılığıyla bir Ikey sağlayabilirsiniz  `setup()` `new appInsights.TelemetryClient()` . Bu uygulama, ikey değerlerini yürütülen kaynak kodunun dışında tutmanıza ve farklı ortamlar için farklı ikey değerleri belirtmenize olanak tanır. El ile aramayı yapılandırmak için `appInsights.setup('[your ikey]');` .
 
     Ek yapılandırma seçenekleri için aşağıdaki bölümlere bakın.
 
@@ -101,7 +101,7 @@ appInsights.setup("[your ikey]").start();
 
 `require("applicationinsights")`Diğer paketleri yüklemeden önce betiklerinizde olabildiğince erken Application Insights kitaplığı yükleyin. Bu, Application Insights kitaplığının sonraki paketleri izlemeye hazırlayabilmesi için gereklidir. Benzer hazırlık yaparak diğer kitaplıklarla çakışmalar yaşarsanız Application Insights kitaplığı yüklemeyi deneyin.
 
-JavaScript 'in geri çağırmaları işleme yöntemi nedeniyle, dış bağımlılıklar ve sonraki geri çağırmalar genelinde bir isteği izlemek için ek çalışma gerekir. Varsayılan olarak, bu ek izleme etkindir; `setAutoDependencyCorrelation(false)`aşağıdaki [yapılandırma](#sdk-configuration) bölümünde açıklandığı gibi çağırarak devre dışı bırakın.
+JavaScript 'in geri çağırmaları işleme yöntemi nedeniyle, dış bağımlılıklar ve sonraki geri çağırmalar genelinde bir isteği izlemek için ek çalışma gerekir. Varsayılan olarak, bu ek izleme etkindir; `setAutoDependencyCorrelation(false)` aşağıdaki [yapılandırma](#sdk-configuration) bölümünde açıklandığı gibi çağırarak devre dışı bırakın.
 
 ## <a name="migrating-from-versions-prior-to-022"></a>0,22 ' den önceki sürümlerden geçiş
 
@@ -374,7 +374,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Birden çok Application Insights kaynağı oluşturabilir ve bunların her birine, ilgili izleme anahtarlarını ("Ikey") kullanarak farklı veriler gönderebilirsiniz.
 
- Örnek:
+ Örneğin:
 
 ```javascript
 let appInsights = require("applicationinsights");

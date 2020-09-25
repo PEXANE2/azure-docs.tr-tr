@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 890bf60ac794740716817094a60f2b4cb4ba5835
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: ab6eb4851b9f2574fc235056f8f512edcb2054bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282798"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321790"
 ---
 # <a name="connect-to-a-wfs-service"></a>WFS hizmetine bağlanma
 
@@ -22,12 +22,12 @@ Web özellik hizmeti (WFS), Open Geospatial Consortium (OGC) tarafından tanıml
 
 Aşağıdaki özellikler sınıfı tarafından desteklenir `WfsClient` :
 
-- Desteklenen sürümler: `1.0.0` , `1.1.0` ve`2.0.0`
+- Desteklenen sürümler: `1.0.0` , `1.1.0` ve `2.0.0`
 - Desteklenen filtre işleçleri: ikili karşılaştırmalar, Logic, Math, değer ve `bbox` .
 - İstekler yalnızca kullanılarak yapılır `HTTP GET` .
 - Desteklenen işlemler:
 
-    | İşlem | Açıklama |
+    | İşlem | Description |
     | :-- | :-- |
     | GetCapabilities | Geçerli WFS işlemlerine ve parametrelerine sahip bir meta veri belgesi oluşturur |
     | GetFeature | Bir veri kaynağından özelliklerin bir seçimini döndürür |

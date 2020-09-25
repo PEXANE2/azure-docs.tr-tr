@@ -1,15 +1,17 @@
 ---
 title: Model sözdizimi başvurusu-LUSıS
 description: Language Understanding (LUSıS) uygulamalarındaki Kullanıcı dıklarından anahtar verileri ayıklamak için varlıklar oluşturun. Ayıklanan veriler, istemci uygulaması tarafından kullanılır.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 533dc87e50abc5a689d1157b294070ece39dab9f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322827"
 ---
 # <a name="pattern-syntax"></a>Desen söz dizimi
 
@@ -22,12 +24,12 @@ Desenlerdeki varlıklar, küme ayraçları ile çevrelenmiş `{}` . Desenler var
 
 Model sözdizimi aşağıdaki sözdizimini destekler:
 
-|İşlev|Söz dizimi|İç içe geçme düzeyi|Örnek|
+|İşlev|Syntax|İç içe geçme düzeyi|Örnek|
 |--|--|--|--|
-|varlık| {}-süslü ayraçlar|2|{Entity-Name} formu nerede?|
+|varlık| {} -süslü ayraçlar|2|{Entity-Name} formu nerede?|
 |isteğe bağlı|[]-köşeli parantezler<BR><BR>Herhangi bir isteğe bağlı ve gruplandırma birleşiminin iç içe geçme düzeylerinde 3 sınırı vardır |2|Soru işareti isteğe bağlıdır [?]|
 |gruplandırma|()-parantez|2|-( \| b)|
-|veya| \|-dikey çubuk (kanal)<br><br>Bir gruptaki dikey çubuklar (veya) üzerinde 2 sınırı vardır |-|Burada form ({form-adı-Short} &#x7c; {form-adı-Long} &#x7c; {form-Number})|
+|veya| \| -dikey çubuk (kanal)<br><br>Bir gruptaki dikey çubuklar (veya) üzerinde 2 sınırı vardır |-|Burada form ({form-adı-Short} &#x7c; {form-adı-Long} &#x7c; {form-Number})|
 |söylenişi başlangıcı ve/veya bitişi|^-şapka işareti|-|^ söylenişi 'a başla<br>söylenişi tamamlandı ^<br>{Number} varlık ^ ile tüm söylenişi ile tam sabit değer eşleşmesi ^|
 
 ## <a name="nesting-syntax-in-patterns"></a>Desenlerdeki iç içe sözdizimi
@@ -57,7 +59,7 @@ Entity1, Origin (Seattle) ve hedef (Cairo) gibi rollere sahip bir konum ise ve v
 |İzin Verildi|Örnek|
 |--|--|
 |Yes|([(test1 &#x7c; test2)] &#x7c; test3)|
-|Hayır|([([test1] &#x7c; test2)] &#x7c; test3)|
+|No|([([test1] &#x7c; test2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Ya da tabanlı sözdizimi olan gruplar için iç içe sınırları
 
@@ -66,7 +68,7 @@ Entity1, Origin (Seattle) ve hedef (Cairo) gibi rollere sahip bir konum ise ve v
 |İzin Verildi|Örnek|
 |--|--|
 |Yes|(test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
-|Hayır|(test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+|No|(test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Bir model şablonuna varlık eklemek için sözdizimi
 Model şablonuna bir varlık eklemek için, varlık adını gibi küme ayraçları ile çevreleyin `Who does {Employee} manage?` .
@@ -126,7 +128,7 @@ Normal ifade köşeli ayraç söz dizimini kullanarak el ile, yazı içinde iste
 
 |İsteğe bağlı metin içeren desenler|Anlamı|
 |--|--|
-|`[find] email about {subject} [from {person}]`|`find`ve `from {person}` isteğe bağlıdır|
+|`[find] email about {subject} [from {person}]`|`find` ve `from {person}` isteğe bağlıdır|
 |' Bana [?] yardımcı olabilir|Noktalama işareti isteğe bağlıdır|
 
 Noktalama işaretleri ( `?` , `!` , `.` ) göz ardı edilmelidir ve desenlerdeki köşeli ayraç söz dizimini kullanarak bunları yok saymanız gerekir.

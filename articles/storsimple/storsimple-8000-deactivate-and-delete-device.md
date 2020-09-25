@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 serisi cihazı devre dışı bırakma ve silme | Microsoft Docs
-description: İlk olarak devre dışı bırakarak StorSimple cihazını hizmetten kaldırmayı ve sonra silmeyi açıklar.
+description: StorSimple Aygıt Yöneticisi hizmetine bağlı bir StorSimple cihazını devre dışı bırakıp silmeyi öğrenin.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 825a10bec7a9d415bdcf76e5b6f28f04060bb411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64163011506380eec87457a2d8a2f699ec56dc68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514023"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249646"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple cihazını devre dışı bırakma ve silme
 
@@ -100,7 +100,7 @@ Cihazı silmek, ancak verileri sürdürmek istiyorsanız aşağıdaki adımları
        ![StorSimple cihazını devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. Silme işlemi başarıyla tamamlandıktan sonra size bildirilir. Cihaz listesi ayrıca silme işlemini yansıtacak şekilde güncelleştirilir.
 
-## <a name="deactivate-and-delete-a-cloud-appliance"></a>Bulut gerecini devre dışı bırakma ve silme
+## <a name="deactivate-and-delete-a-cloud-appliance"></a>Bulut cihazını devre dışı bırakma ve silme
 
 StorSimple Cloud Appliance için portaldan devre dışı bırakma işlemi, sanal makineyi ve sağlandığında oluşturulan kaynakları kaldırır ve siler. Bulut gereci devre dışı bırakıldıktan sonra, önceki durumuna geri yüklenemez.
 

@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 757646a1630443f297d4b7c538721e9facdc130c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897433"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322368"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning model yorumlenebilirliği (Önizleme)
 
@@ -39,20 +39,11 @@ Bir makine öğrenimi modelinin açıklanması özelliğinin etkinleştirilmesi,
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning ile yorumlenebilirlik
 
-Yorumlenebilirlik sınıfları birden çok SDK paketi aracılığıyla kullanılabilir hale getirilir: ( [Azure Machine Learning IÇIN SDK paketlerini yüklemeyi](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)öğrenin)
+Yorumlenebilirlik sınıfları şu SDK paketiyle kullanılabilir hale getirilir: ( [Azure Machine Learning IÇIN SDK paketlerini yüklemeyi](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)öğrenin)
 
-* `azureml.interpret`, Microsoft tarafından desteklenen işlevleri içeren ana paket.
+* `azureml.interpret`, Microsoft tarafından desteklenen işlevleri içerir.
 
-* `azureml.contrib.interpret`, önizleme ve deneyebilecek deneysel işlevleri.
-
-`pip install azureml-interpret` `pip install azureml-contrib-interpret` Genel kullanım için ve kullanın.
-
-
-> [!IMPORTANT]
-> `contrib`Ad alanındaki içerik tam olarak desteklenmez. Deneysel işlevler, diğer bir deyişle, bu, yavaş olarak ana ad alanına taşınır.
-.
-
-
+`pip install azureml-interpret`Genel kullanım için kullanın.
 
 ## <a name="how-to-interpret-your-model"></a>Modelinizi yorumlama
 
@@ -71,7 +62,7 @@ Desteklenen yorumlenebilirlik teknikleri, desteklenen makine öğrenimi modeller
 
  `azureml-interpret` , eğitim yorumlanmış ve kara kutu AI sistemlerinin açıklanmasına yardımcı olmak üzere açık kaynaklı bir Python paketi olan [yorumlama-topluluk](https://github.com/interpretml/interpret-community/)' da geliştirilmiş yorumlanmış teknikleri kullanır. [Yorumlama-topluluk](https://github.com/interpretml/interpret-community/) , bu SDK 'nın desteklenen explainers ana bilgisayarı olarak görev yapar ve şu anda aşağıdaki yorumlamış teknikleri destekler:
 
-|Yorumlenebilirlik tekniği|Açıklama|Tür|
+|Yorumlenebilirlik tekniği|Description|Tür|
 |--|--|--------------------|
 |SHAP ağacı açıklama| Ağaç **ve Kümelemeler**ağaçlarına özgü polinom zaman hızlı Shap değer tahmini algoritmasına odaklanan [Shap](https://github.com/slundberg/shap)'nin Tree açıklama.|Modele özgü|
 |SHAP derin açıklama| SHAP 'nin açıklamasına göre, derin açıklama ", Shap [NıP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)'Lerde açıklanan ayrıntılı bir bağlantı üzerinde bağlantı kurulan derin öğrenme MODELLERINDEKI Shap değerleri için yüksek hızda bir yaklaşık algoritmadır. TensorFlow arka ucunu kullanan **TensorFlow** modelleri ve **keras** modelleri desteklenir (Ayrıca, pytorch için de ön destek vardır) ".|Modele özgü|

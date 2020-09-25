@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 96da89fa8d7e4783afa11807534bbaeba52b79fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800475"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334268"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure dijital TWINS 'in içindeki ve dışındaki olayları yönlendirme
 
@@ -69,15 +69,22 @@ Denetim düzleminde kullanılabilen uç nokta API 'Leri şunlardır:
 
 ## <a name="create-an-event-route"></a>Olay yolu oluşturma
  
-Olay yolları aşağıdaki [.net (C#) SDK](how-to-use-apis-sdks.md) çağrısıyla bir istemci uygulamasında oluşturulur: 
+Olay yolları bir istemci uygulamasında oluşturulur. Bunu yapmanın bir yolu `CreateEventRoute` [.net (C#) SDK](how-to-use-apis-sdks.md) çağrıdır: 
 
 ```csharp
-await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-name>"));
+EventRoute er = new EventRoute("endpointName");
+er.Filter("true"); //Filter allows all messages
+await client.CreateEventRoute("routeName", er);
 ```
 
-* , `endpoint-name` Bir olay hub 'ı, Event Grid veya Service Bus gibi bir uç noktasını tanımlar. Bu uç noktaların aboneliğinizde oluşturulması ve bu kayıt çağrısını yapmadan önce denetim düzlemi API 'Leri kullanılarak Azure Digital TWINS 'e eklenmesi gerekir.
+1. İlk olarak, bir `EventRoute` nesne oluşturulur ve Oluşturucu bir uç noktanın adını alır. Bu `endpointName` alan, bir olay hub 'ı, Event Grid veya Service Bus gibi bir uç noktayı tanımlar. Bu uç noktaların aboneliğinizde oluşturulması ve bu kayıt çağrısını yapmadan önce denetim düzlemi API 'Leri kullanılarak Azure Digital TWINS 'e eklenmesi gerekir.
 
-Aynı zamanda geçirilen olay yolu nesnesi, `EventRoutes.Add` Bu yolu izleyen olay türlerini kısıtlamak için kullanılabilecek bir [ **filtre** parametresi](./how-to-manage-routes-apis-cli.md#filter-events)alır.
+2. Olay Yönlendirme nesnesi Ayrıca, bu yolu izleyen olay türlerini kısıtlamak için kullanılabilecek bir [**filtre**](./how-to-manage-routes-apis-cli.md#filter-events) alanına sahiptir. Bir filtresi `true` , ek filtre olmadan rotayı etkinleştirilir (bir filtre `false` yolu devre dışı bırakır). 
+
+3. Bu olay yolu nesnesi daha sonra `CreateEventRoute` yol için bir adla birlikte öğesine geçirilir.
+
+> [!TIP]
+> Tüm SDK işlevleri, zaman uyumlu ve zaman uyumsuz sürümlerde gelir.
 
 Rotalar [Azure Digital TWINS CLI](how-to-use-cli.md)kullanılarak da oluşturulabilir.
 

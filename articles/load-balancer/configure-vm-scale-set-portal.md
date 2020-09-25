@@ -1,23 +1,23 @@
 ---
 title: Sanal makine ölçek kümesini mevcut bir Azure Load Balancer Yapılandırma Azure portal
-description: Bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer nasıl yapılandıracağınızı öğrenin.
+description: Azure portal kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer nasıl yapılandıracağınızı öğrenin.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 8e55b2a87813da802ec1b00c610b33da4461c008
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e12532107ed554385ccf38531bb95b7b70298934
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809451"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333894"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Azure portal kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırma
 
 Bu makalede, bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer nasıl yapılandıracağınızı öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği.
 - Abonelikte sanal makine ölçek kümesinin dağıtılacağı mevcut bir standart SKU yük dengeleyici.
@@ -38,7 +38,7 @@ Bu bölümde, mevcut bir Azure yük dengeleyicisiyle Azure portal bir sanal maki
 
 1. Ekranın sol üst kısmında, **kaynak**  >  **işlem**  >  **sanal makine ölçek kümesi** oluştur veya Market aramasında **sanal makine ölçek kümesini** ara ' ya tıklayın.
 
-2. **Oluştur**'u seçin.
+2. **Oluştur**’u seçin.
 
 3. **Sanal makine ölçek kümesi oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
 
@@ -49,11 +49,11 @@ Bu bölümde, mevcut bir Azure yük dengeleyicisiyle Azure portal bir sanal maki
     | Kaynak Grubu                 | Yeni Oluştur ' u seçin, **Myresourcegroup**yazın ve ardından Tamam ' ı seçin veya var olan bir kaynak grubunu seçin. |
     | **Ölçek kümesi ayrıntıları**          |                                                                                                       |
     | Sanal makine ölçek kümesi adı | **Myvmss** girin                                                                                      |
-    | Bölge                         | **Doğu ABD 2** seçin                                                                                    |
+    | Region                         | **Doğu ABD 2** seçin                                                                                    |
     | Kullanılabilirlik alanı              | **Hiçbirini** seçme                                                                                       |
     | **Örnek ayrıntıları**           |                                                                                                       |
     | Görüntü                          | **Ubuntu Server 18,04 LTS** 'yi seçin                                                                    |
-    | Azure spot örneği            | **Hayır** seçin                                                                                         |
+    | Azure Spot örneği            | **Hayır** seçin                                                                                         |
     | Boyut                           | Varsayılan konumda bırak                                                                                      |
     | **Yönetici hesabı**      |                                                                                                       |
     | Kimlik doğrulaması türü            | **Parola** seçin                                                                                   |
@@ -70,10 +70,10 @@ Bu bölümde, mevcut bir Azure yük dengeleyicisiyle Azure portal bir sanal maki
 
      Ayar                           | Değer                                                    |
     |-----------------------------------|----------------------------------------------------------|
-    | **Sanal Ağ Yapılandırması** |                                                          |
+    | **Sanal ağ yapılandırması** |                                                          |
     | Sanal ağ                   | **Myvnet** veya var olan sanal ağınızı seçin.      |
-    | **Yük Dengeleme**                |                                                          |
-    | Yük dengeleyici kullanma               | **Evet** ' i seçin                                           |
+    | **Yük dengeleme**                |                                                          |
+    | Yük dengeleyici kullanma               | **Evet**’i seçin                                           |
     | **Yük Dengeleme ayarları**       |                                                          |
     | Yük dengeleme seçenekleri            | **Azure Yük dengeleyiciyi** seçin                           |
     | Yük dengeleyici seçin            | **Myloadbalancer** veya mevcut yük dengeleyicinizi seçin |

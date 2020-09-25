@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB kaynaklarına yönelik idare ve denetimleri uygulamak için Azure Ilkesini kullanma
 description: Azure Cosmos DB kaynaklarına yönelik idare ve denetimleri uygulamak için Azure Ilkesi 'ni nasıl kullanacağınızı öğrenin.
-author: plzm
-ms.author: paelaz
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431998"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320906"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Cosmos DB kaynaklarına yönelik idare ve denetimleri uygulamak için Azure Ilkesini kullanma
 
@@ -19,7 +19,10 @@ ms.locfileid: "84431998"
 
 Azure Ilkesi yerleşik ilke tanımları sağlar. Yerleşik ilke tanımları tarafından açıklanmayan senaryolar için özel ilke tanımları oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure ilkesi belgeleri](../governance/policy/overview.md) .
 
-## <a name="assign-a-built-in-policy-definition"></a>Yerleşik bir ilke tanımı atama
+> [!IMPORTANT]
+> Azure Ilkesi, Azure hizmetleri için kaynak sağlayıcısı düzeyinde zorlanır. Cosmos DB SDK 'lar, Cosmos DB kaynak sağlayıcısını atlayan veritabanı, kapsayıcı ve üretilen iş kaynakları üzerinde birçok yönetim işlemini gerçekleştirebilir ve bu nedenle Azure Ilkesi kullanılarak oluşturulan herhangi bir ilkeyi yok sayar. İlkelerin zorlanmasını sağlamak için [Azure Cosmos DB SDK 'larından değişiklikleri engellemeyi](role-based-access-control.md#prevent-sdk-changes) görün
+
+## <a name="assign-a-built-in-policy-definition"></a>Yerleşik ilke tanımı atama
 
 İlke tanımları, kaynak uyumluluk koşullarını ve bir koşul karşılanırsa gerçekleştirilecek etkiyi tanımlar. İlke _atamaları_ ilke _tanımlarından_oluşturulur. Azure Cosmos DB kaynaklarınız için yerleşik veya özel ilke tanımlarını kullanabilirsiniz. İlke atamaları, bir Azure yönetim grubu, bir Azure aboneliği veya bir kaynak grubu kapsamlandırılır ve seçilen kapsam içindeki kaynaklara uygulanır. İsteğe bağlı olarak, belirli kaynakları kapsamdan dışlayabilirsiniz.
 

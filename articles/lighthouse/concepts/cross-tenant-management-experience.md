@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 70356fd3856e517ca8fb3414a4ae2a8ccf28326e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336641"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -48,7 +48,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 [Azure yay](../../azure-arc/index.yml):
 
-- Karma sunucuları ölçekte yönetme- [Azure Arc etkin sunucular (Önizleme)](../../azure-arc/servers/overview.md):
+- Karma sunucuları ölçekli [Azure yay özellikli sunucularında](../../azure-arc/servers/overview.md)yönetme:
   - Azure [dışındaki Windows Server veya Linux makinelerini](../../azure-arc/servers/onboard-portal.md) , Azure 'daki Temsilcili aboneliklere ve/veya kaynak gruplarına bağlı olarak yönetin
   - Azure Ilkesi ve etiketleme gibi Azure yapılarını kullanarak bağlı makineleri yönetme
   - Müşterilerin karma ortamları arasında aynı ilke kümesinin uygulandığından emin olun

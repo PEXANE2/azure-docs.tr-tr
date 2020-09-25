@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cb144aa7b6c717ada3a51fe3286f349bc3d8b325
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273923"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336522"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Ekip veri bilimi Işlemi sürüyor: Azure HDInsight Hadoop kümelerini kullanma
 Bu kılavuzda, [ekip veri bilimi işlemini (TDSP)](overview.md) uçtan uca bir senaryoda kullanırız. Genel kullanıma açık [NYC Taxi](https://www.andresmh.com/nyctaxitrips/) veri kümesinden verileri depolamak, araştırmak ve özellik mühendislerini ve verileri aşağı [örneklemek için bir Azure HDInsight Hadoop kümesi](https://azure.microsoft.com/services/hdinsight/) kullanırız. İkili ve çok sınıflı sınıflandırmayı ve gerileme tahmine dayalı görevleri işlemek için Azure Machine Learning ile veri modelleri oluşturacağız. 
@@ -89,7 +89,7 @@ Gerekli işlem görevlerinin açıklanmasına yardımcı olmak için veri analiz
    
    * Adım 1 ' de oluşturulan depolama hesabını, oluşturduğunuz zaman HDInsight kümeniz ile bağlamayı unutmayın. Bu depolama hesabı, küme içinde işlenen verilere erişir.
    * Kümeyi oluşturduktan sonra, kümenin baş düğümüne uzaktan erişimi etkinleştirin. **Yapılandırma** sekmesine gidin ve **Uzaktan Etkinleştir**' i seçin. Bu adım, uzaktan oturum açma için kullanılan Kullanıcı kimlik bilgilerini belirtir.
-3. [Azure Machine Learning çalışma alanı oluştur](../studio/create-workspace.md): Machine Learning modelleri oluşturmak için bu çalışma alanını kullanın. Bu görev, HDInsight kümesi kullanılarak ilk veri araştırması ve aşağı örnekleme tamamlandıktan sonra karşılanır.
+3. [Azure Machine Learning çalışma alanı oluştur](../classic/create-workspace.md): Machine Learning modelleri oluşturmak için bu çalışma alanını kullanın. Bu görev, HDInsight kümesi kullanılarak ilk veri araştırması ve aşağı örnekleme tamamlandıktan sonra karşılanır.
 
 ## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>Verileri ortak bir kaynaktan al
 > [!NOTE]
@@ -639,7 +639,7 @@ hdfs dfs -mkdir wasb:///queryoutputdir
 hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 ```
 
-Sorgu sonuçları, Hadoop kümesinin varsayılan kapsayıcısı altında dokuz Azure Blob 'a (**quer0,0,putdir/000000 yazın \_ 0-quer0,0,putdir** **/000008 \_ 0**) yazılır.
+Sorgu sonuçları, Hadoop kümesinin varsayılan kapsayıcısı altında dokuz Azure Blob 'a (**quer0,0,putdir/000000 yazın \_ 0-quer0,0,putdir**  **/000008 \_ 0**) yazılır.
 
 Ayrı Blobların boyutunu görmek için Hive Dizin isteminde aşağıdaki komutu çalıştırın:
 
@@ -654,7 +654,7 @@ hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 ```
 
 > [!WARNING]
-> `copyToLocal`büyük dosyalar için çok yavaş olabilir ve bunlarla birlikte kullanılması önerilmez.  
+> `copyToLocal` büyük dosyalar için çok yavaş olabilir ve bunlarla birlikte kullanılması önerilmez.  
 > 
 > 
 
@@ -915,7 +915,7 @@ Artık [Machine Learning](https://studio.azureml.net)' de model oluşturma ve mo
   Burada, belirleme katsayısı 0,709 ' dir; farkın yüzde 71 ' i, model katsayısının altında açıklanmıştır.
 
 > [!IMPORTANT]
-> Machine Learning hakkında daha fazla bilgi edinmek ve nasıl erişebileceğiniz ve kullanılacağı hakkında daha fazla bilgi için bkz. [Machine Learning](../studio/what-is-machine-learning.md). Ayrıca, [Azure yapay zeka Galerisi](https://gallery.cortanaintelligence.com/) denemeleri bir gamutu kapsamakta ve Machine Learning özellikleri hakkında kapsamlı bir giriş sağlar.
+> Machine Learning hakkında daha fazla bilgi edinmek ve nasıl erişebileceğiniz ve kullanılacağı hakkında daha fazla bilgi için bkz. [Machine Learning](../classic/index.yml). Ayrıca, [Azure yapay zeka Galerisi](https://gallery.cortanaintelligence.com/) denemeleri bir gamutu kapsamakta ve Machine Learning özellikleri hakkında kapsamlı bir giriş sağlar.
 > 
 > 
 
@@ -923,9 +923,9 @@ Artık [Machine Learning](https://studio.azureml.net)' de model oluşturma ve mo
 Bu örnek adım adım ve ilgili betikler, Microsoft tarafından MıT lisansı kapsamında paylaşılır. Daha fazla bilgi için GitHub 'daki örnek kodun dizinindeki **LICENSE.txt** dosyasına bakın.
 
 ## <a name="references"></a>Başvurular
-• [Andr, Monroy NYC Taxi seyahatler Indirme sayfası](https://www.andresmh.com/nyctaxitrips/)  
-• [Cwhong 'e göre NYC 'Nin TAXI veri yolculuğuna çıkılıyor](https://chriswhong.com/open-data/foil_nyc_taxi/)   
-• [NYC Taxi ve Limousine Komisyonu araştırması ve istatistikleri](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+•    [Andr, Monroy NYC Taxi seyahatler Indirme sayfası](https://www.andresmh.com/nyctaxitrips/)  
+•    [Cwhong 'e göre NYC 'Nin TAXI veri yolculuğuna çıkılıyor](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [NYC Taxi ve Limousine Komisyonu araştırması ve istatistikleri](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [2]: ./media/hive-walkthrough/output-hive-results-3.png
 [11]: ./media/hive-walkthrough/hive-reader-properties.png
@@ -937,6 +937,3 @@ Bu örnek adım adım ve ilgili betikler, Microsoft tarafından MıT lisansı ka
 <!-- Module References -->
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-
