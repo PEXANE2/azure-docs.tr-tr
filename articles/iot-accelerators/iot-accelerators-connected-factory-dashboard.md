@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820169"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261881"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>Bağlı fabrika çözümü Hızlandırıcı panosundaki özellikleri kullanma
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 [Sektörel IoT cihazlarımı yönetmek için bulut tabanlı bir çözüm dağıtma](quickstart-connected-factory-deploy.md) hızlı başlangıç, panoda gezinmeniz ve alarmlar için nasıl yanıt verileceğini gösterdi. Bu nasıl yapılır kılavuzunda, endüstriyel IoT cihazlarınızı izlemek ve yönetmek için kullanabileceğiniz bazı ek Pano özellikleri gösterilmektedir.
 

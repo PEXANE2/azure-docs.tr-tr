@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7e0701cc5a9bb14800a48e2281dba1eb6ea0cf72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab0b74ffbcd8167613c6a8470e2f9102566edc60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026467"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257240"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API 'Lerini çağıran bir Web API 'SI: uygulama için belirteç alma
 
@@ -27,7 +27,10 @@ Bir istemci uygulama nesnesi oluşturduktan sonra, bir Web API 'sini çağırmak
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-API denetleyicilerinin eylemlerinde çağrılan Microsoft. Identity. Web kullanan kod örneği aşağıda verilmiştir. *ToDoList*adlı bir aşağı akış API 'si çağırır. Aşağı akış API 'sini çağırmak için bir belirteç almak üzere, `ITokenAcquisition` hizmet programını denetleyicinin yapıcısına (veya Blazor kullanıyorsanız sayfa yapıcısına) ekleyerek, `GetAccessTokenForUserAsync` `GetAccessTokenForAppAsync` bir Daemon senaryosu olması durumunda bu hizmeti, Kullanıcı () veya uygulamanın kendisi () için bir belirteç alarak, denetleyici eylemlerinde kullanabilirsiniz.
+*Microsoft. Identity. Web* , Microsoft Graph veya bir aşağı akış Web API 'sine çağrı yapmak için kullanışlı hizmetler sağlayan uzantı yöntemleri ekler. Bu yöntemler, [Web API 'lerini çağıran bir Web API](scenario-web-api-call-api-call-api.md)'sinde ayrıntılı olarak AÇıKLANMıŞTıR: API çağrısı. Bu yardımcı yöntemlerle el ile belirteç almanız gerekmez.
+
+Ancak, bir belirteci el ile almak istiyorsanız aşağıdaki kod, bir API denetleyicisinde bunu yapmak için *Microsoft. Identity. Web* kullanımına ilişkin bir örnek gösterir. *ToDoList*adlı bir aşağı akış API 'si çağırır.
+Aşağı akış API 'sini çağırmak için bir belirteç almak üzere, `ITokenAcquisition` hizmet programını denetleyicinin yapıcısına (veya Blazor kullanıyorsanız sayfa yapıcısına) ekleyerek, `GetAccessTokenForUserAsync` `GetAccessTokenForAppAsync` bir Daemon senaryosu olması durumunda bu hizmeti, Kullanıcı () veya uygulamanın kendisi () için bir belirteç alarak, denetleyici eylemlerinde kullanabilirsiniz.
 
 ```csharp
 [Authorize]
@@ -58,7 +61,7 @@ public class MyApiController : Controller
 }
 ```
 
-Yöntemi hakkında daha fazla bilgi için `callTodoListService` bkz. [Web API 'Leri çağıran BIR Web API 'SI: API çağırma](scenario-web-api-call-api-call-api.md).
+Yöntemi hakkında daha fazla bilgi için `callTodoListService` bkz.  [Web API 'Leri çağıran BIR Web API 'SI: API çağırma](scenario-web-api-call-api-call-api.md).
 
 # <a name="java"></a>[Java](#tab/java)
 API denetleyicilerinin eylemlerinde çağrılan kod örneği aşağıda verilmiştir. Aşağı akış API 'sini Microsoft Graph çağırır.
@@ -83,7 +86,7 @@ public class ApiController {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Bir Python Web API 'sinin istemciden alınan taşıyıcı belirtecini doğrulamak için bazı ara yazılım kullanması gerekir. Web API 'si daha sonra yöntemi çağırarak MSAL Python kitaplığı kullanarak aşağı akış API 'sine yönelik erişim belirtecini alabilir [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
+Python Web API 'SI, istemciden alınan taşıyıcı belirtecini doğrulamak için ara yazılım kullanılmasını gerektirir. Web API 'si daha sonra yöntemi çağırarak MSAL Python kitaplığını kullanarak bir aşağı akış API 'sine ait erişim belirtecini alabilir [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
 
 ---
 

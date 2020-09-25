@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088332"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256900"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Yayımcı doğrulaması ile ilgili sorunları giderme
 Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verification-overview.md)ile ilgili beklenmeyen davranışlarla karşılaşıyorsanız, hata alıyorsanız veya beklenmeyen davranışı görüyorsanız aşağıdakileri yaparak başlatmanız gerekir: 
@@ -150,31 +150,45 @@ Aşağıda, Microsoft Graph ile sorun giderirken veya uygulama kayıt portalınd
 
 ### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
 
-Verdiğiniz MPN KIMLIĞI <MPNID> yok veya ona erişiminiz yok. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin. 
+Verdiğiniz MPN KIMLIĞI <MPNID> yok veya ona erişiminiz yok. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
+    
+Genellikle, oturum açan kullanıcının Iş Ortağı Merkezi 'nde MPN hesabı için uygun rolün bir üyesi olmaması nedeniyle, uygun rollerin bir listesi için [gereksinimlere](publisher-verification-overview.md#requirements) bakın ve daha fazla bilgi için [sık karşılaşılan sorunları](#common-issues) inceleyin. Ayrıca, uygulamanın MPN hesabına eklenmediği veya geçersiz bir MPN KIMLIĞI olan kiracı tarafından da oluşabilir.
 
 ### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
 
-Verdiğiniz MPN KIMLIĞI <MPNID> geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin. 
+Verdiğiniz MPN KIMLIĞI <MPNID> geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
+    
+En yaygın olarak, bir Iş ortağı konum hesabına (PLA) karşılık gelen bir MPN KIMLIĞI sağlandığında oluşur. Yalnızca Iş ortağı genel hesapları desteklenir. Daha fazla ayrıntı için bkz. [Iş ortağı merkezi hesap yapısı](/partner-center/account-structure) .
 
 ### <a name="mpnaccountinvalid"></a>Mpnaccountgeçersiz    
 
-Verdiğiniz MPN KIMLIĞI <MPNID> geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin. 
+Verdiğiniz MPN KIMLIĞI <MPNID> geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
+    
+En yaygın olarak, yanlış MPN KIMLIĞI sağlanmasından kaynaklanır.
 
 ### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
 
 Verdiğiniz MPN KIMLIĞI ( <MPNID> ), diting işlemini tamamlamamıştır. Iş Ortağı Merkezi 'nde bu işlemi tamamlayıp yeniden deneyin. 
+    
+En yaygın olarak, MPN hesabının [doğrulama](/partner-center/verification-responses) işlemini tamamlamamasından kaynaklanır.
 
 ### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
 
 Verdiğiniz MPN KIMLIĞI <MPNID> geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin. 
+   
+En yaygın olarak, yanlış MPN KIMLIĞI sağlanmasından kaynaklanır.
 
 ### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>Mpnidyok Notmatchilişkili Mpnaccount    
 
-Verdiğiniz MPN KIMLIĞI <MPNID> geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin. 
+Verdiğiniz MPN KIMLIĞI <MPNID> geçerli değil. Geçerli bir MPN KIMLIĞI sağlayın ve yeniden deneyin.
+    
+En yaygın olarak, yanlış MPN KIMLIĞI sağlanmasından kaynaklanır.
 
 ### <a name="applicationnotfound"></a>ApplicationNotFound  
 
-Hedef uygulama ( <AppId> ) bulunamıyor. Geçerli bir uygulama KIMLIĞI sağlayın ve yeniden deneyin. 
+Hedef uygulama ( <AppId> ) bulunamıyor. Geçerli bir uygulama KIMLIĞI sağlayın ve yeniden deneyin.
+    
+En yaygın olarak, doğrulama Graph API aracılığıyla gerçekleştirilmediğinde ve belirtilen uygulamanın kimliği yanlış olduğunda oluşur. Not-uygulamanın kimliği, AppID/ClientID değil belirtilmelidir.
 
 ### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
 
@@ -188,13 +202,19 @@ Bu özellik, e-posta tarafından doğrulanan bir kiracıda desteklenmez.
 
 Hedef uygulamanın ( \<AppId\> ) bir yayımcı etki alanı ayarlanmış olması gerekir. Bir yayımcı etki alanı ayarlayıp yeniden deneyin.
 
+Uygulama üzerinde bir [Yayımcı etki alanı](howto-configure-publisher-domain.md) yapılandırılmadığı zaman gerçekleşir.
+
 ### <a name="publisherdomainmismatch"></a>Publisherdomainuyuşmazlık  
 
 Hedef uygulamanın yayımcı etki alanı ( <publisherDomain> ), Iş Ortağı Merkezi 'nde () e-posta doğrulaması gerçekleştirmek için kullanılan etki alanı ile eşleşmiyor <pcDomain> . Bu etki alanlarının eşleştiğinden emin olun ve yeniden deneyin. 
+    
+Uygulamanın [Yayımcı etki alanı](howto-configure-publisher-domain.md) veya Azure AD kiracısına eklenen [özel etki alanlarından](../fundamentals/add-custom-domain.md) biri, iş ortağı merkezi 'nde e-posta doğrulamasını gerçekleştirmek için kullanılan etki alanıyla aynı olduğunda gerçekleşir.
 
 ### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
 
 Uygulamada () doğrulanmış yayımcı özelliğini ayarlama yetkiniz yok <AppId> 
+  
+Genellikle, oturum açan kullanıcının Azure AD 'de MPN hesabı için uygun rolün bir üyesi olmaması, uygun rollerin bir listesi için [gereksinimlere](publisher-verification-overview.md#requirements) bakın ve daha fazla bilgi için [sık karşılaşılan sorunları](#common-issues) inceleyin.
 
 ### <a name="mpnidwasnotprovided"></a>Mpnıdınotsaðlanan  
 
@@ -202,7 +222,11 @@ MPN KIMLIĞI istek gövdesinde sağlanmadı veya istek içerik türü "Applicati
 
 ### <a name="msanotsupported"></a>MSANotSupported  
 
-Bu özellik Microsoft tüketici hesaplarında desteklenmez. Yalnızca Azure AD kullanıcısı tarafından Azure AD 'de kayıtlı olan uygulamalar desteklenir. 
+Bu özellik Microsoft tüketici hesaplarında desteklenmez. Yalnızca Azure AD kullanıcısı tarafından Azure AD 'de kayıtlı olan uygulamalar desteklenir.
+
+### <a name="interactionrequired"></a>Interactionrequired
+
+Uygulamaya doğrulanmış bir yayımcı eklenmeye çalışmadan önce çok faktörlü kimlik doğrulaması gerçekleştirilmediğinde gerçekleşir. Daha fazla bilgi için bkz. [yaygın sorunlar](#common-issues) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -216,4 +240,4 @@ Bu özellik Microsoft tüketici hesaplarında desteklenmez. Yalnızca Azure AD k
 - Uygulamanın kaydedildiği bir Tenantıd
 - MPN Kimliği
 - REST isteği yapıldı 
-- Döndürülen hata kodu ve ileti 
+- Döndürülen hata kodu ve ileti

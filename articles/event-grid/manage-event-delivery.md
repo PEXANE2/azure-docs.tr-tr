@@ -3,14 +3,14 @@ title: Atılacak mektup ve yeniden deneme ilkeleri-Azure Event Grid
 description: Event Grid için olay teslim seçeneklerini özelleştirmeyi açıklar. Bir atılacak mektup hedefi ayarlayın ve teslimin ne kadar süreyle yeniden deneneceğini belirtin.
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: 2ff1d05899fb74583489649154ffa062e857cb95
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074880"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261813"
 ---
-# <a name="dead-letter-and-retry-policies"></a>Atılacak mektup ve yeniden deneme ilkeleri
+# <a name="set-dead-letter-location-and-retry-policy"></a>Atılacak mektup konumunu ayarla ve ilkeyi yeniden dene
 
 Olay aboneliği oluştururken, olay teslimi ayarlarını özelleştirebilirsiniz. Bu makalede, bir atılacak mektup konumunun nasıl ayarlanacağı ve yeniden deneme ayarlarını nasıl özelleştireceğiniz gösterilmektedir. Bu özellikler hakkında daha fazla bilgi için bkz. [Event Grid ileti teslimi ve yeniden deneme](delivery-and-retry.md).
 
@@ -28,7 +28,7 @@ Atılacak bir harf konumu ayarlamak için bir uç noktaya teslim edilemeyen olay
 > - Event Grid hizmeti bu kapsayıcıda Bloblar oluşturur. Blobların adları, büyük harfli tüm harflerle Event Grid abonelik adına sahip olur. Örneğin, aboneliğin adı-blob-aboneliğim ise, atılacak mektup bloblarının adları-BLOB-ABONELIĞIM (myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111-111111111111.js) olacaktır. Bu davranış, Azure hizmetleri arasında durum işlemede farklılık açısından korunmamıza olanak sağlar.
 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli-interactive
 containername=testcontainer
@@ -74,7 +74,7 @@ Event Grid bir abonelik oluştururken, olayın ne kadar süreyle teslim etmesi g
 
 [Yeniden deneme zamanlamasını](delivery-and-retry.md#retry-schedule-and-duration)yapılandıramazsınız.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Olayı 1440 dakikadan farklı bir değere yaşam süresi olarak ayarlamak için şunu kullanın:
 

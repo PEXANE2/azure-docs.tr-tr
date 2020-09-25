@@ -1,7 +1,7 @@
 ---
 title: Kapsamları ve uygulama rollerini korunan Web API 'sini doğrulama | Mavisi
 titleSuffix: Microsoft identity platform
-description: Korumalı bir Web API 'SI oluşturmayı ve uygulamanızın kodunu yapılandırmayı öğrenin.
+description: API 'nin yalnızca doğru kapsamları olan kullanıcılar adına uygulamalar tarafından ve doğru uygulama rollerinin bulunduğu Daemon uygulamaları tarafından çağrıldığından emin olun.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c3cf8bfd2810e9c26a6f65c50c1a22baeec892af
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 1e5c8b788f1abbfbd46c4dfe6c7bb9d87adcee86
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855471"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257275"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Korumalı Web API 'SI: kapsamları ve uygulama rollerini doğrulama
 

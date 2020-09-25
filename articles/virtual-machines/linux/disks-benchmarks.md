@@ -1,18 +1,18 @@
 ---
 title: Uygulamanızı Azure Disk Depolama üzerinde değerlendirme
-description: Uygulamanızı Azure 'da değerlendirme süreci hakkında bilgi edinin.
+description: Azure Premium Depolama diskleriyle sağlanan standart bir DS14 VM 'yi sınama için bu örnekleri inceleyin.
 author: roygara
 ms.author: rogarana
 ms.date: 01/11/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 293164413c4c8ecec0295152cb6db3d73718e00d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: cc17ce49517a7af22dcc357fa5f050d28a8ed551
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690791"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279697"
 ---
 # <a name="benchmark-your-application-on-azure-disk-storage"></a>Azure Disk Depolama uygulamanızı kıyaslama
 
