@@ -1,6 +1,6 @@
 ---
 title: Azure ön kapı-önbelleğe alma | Microsoft Docs
-description: Bu makale, Azure ön kapısının arka uçlarınızın sistem durumunu nasıl izlediğini anlamanıza yardımcı olur
+description: Bu makale, önbelleğe alma özelliği etkinleştirilmiş yönlendirme kurallarıyla ön kapıya yönelik davranışı anlamanıza yardımcı olur.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: aada5b976721fdfed31131095f7f2b12aefefea9
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 221627a756c69d11ec5385b12970bb835d6a0a0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024290"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318463"
 ---
 # <a name="caching-with-azure-front-door"></a>Azure ön kapılı önbelleğe alma
 Aşağıdaki belge ön kapı için önbelleğe almayı etkinleştirilen yönlendirme kurallarıyla ilgili davranışı belirtir. Ön kapı modern bir Content Delivery Network (CDN) ve bunun yanı sıra dinamik site hızlandırma ve Yük Dengeleme ile aynı zamanda diğer CDN gibi önbelleğe alma davranışlarını da destekler.
@@ -113,7 +113,7 @@ Bir öğenin önbellekte ne kadar süreyle depolanacağını anlamak için aşa�
 2. Cache-Control: Max-Age =\<seconds>
 3. Bitiminden \<http-date>
 
-Yanıtın Cache-Control: Private, Cache-Control: No-Cache ve Cache-Control gibi önbelleğe alınacağını belirten Cache-Control yanıt üstbilgileri: No-Store kabul edilir. Ancak, aynı URL 'ye yönelik bir POP 'ta çok sayıda istek olduğunda, yanıt paylaşabilir. Cache-Control yoksa, varsayılan davranış, AFD 'ın X 'i 1 ila 3 gün arasında rastgele olarak seçtiğiniz X miktarı kadar önbelleğe alacak.
+Yanıtın Cache-Control: Private, Cache-Control: No-Cache ve Cache-Control gibi önbelleğe alınacağını belirten Cache-Control yanıt üstbilgileri: No-Store kabul edilir.  Cache-Control yoksa, varsayılan davranış, AFD 'ın X 'i 1 ila 3 gün arasında rastgele olarak seçtiğiniz X miktarı kadar önbelleğe alacak.
 
 ## <a name="request-headers"></a>İstek üst bilgileri
 

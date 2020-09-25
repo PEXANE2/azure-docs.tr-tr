@@ -1,14 +1,16 @@
 ---
 title: Tahmin puanları-LUO
 description: Tahmin puanı, LUSıS API hizmeti 'nin, Kullanıcı utanına bağlı olarak tahmin sonuçları için sahip olduğunu gösterir.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d836273e61752ff208133466016ce7c6ff9c28fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382372"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316469"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Tahmin puanları, amaç ve varlıklar için tahmin doğruluğunu belirtir
 
@@ -20,7 +22,7 @@ Tahmin puanı sıfır (0) ile bir (1) arasındadır. Son derece iyi bir Lune pua
 |--|--|
 |1|kesin eşleşme|
 |0.99|yüksek güvenirlik|
-|0,01|düşük güvenilirlik|
+|0.01|düşük güvenilirlik|
 |0|eşleşmeyen kesin hata|
 
 ## <a name="top-scoring-intent"></a>En iyi Puanlama hedefi
@@ -46,7 +48,7 @@ Tüm amaçlar için puanı gözden geçirmek, yalnızca doğru bir amaç olduğu
 
 Birden çok amaç, bir utterance içeriğine göre kapalı tahmin puanlarına sahip ise, LUYA amaçları arasında geçiş gösterebilir. Bu durumu onarmak için, her bir amaca göre her bir amaca uygun olarak daha fazla bağlamsal farklılıklar eklemeye devam edin veya bir sohbet bot gibi istemci uygulamasına, 2 üst amaçların nasıl işleneceği hakkında programlama seçenekleri elde edebilirsiniz.
 
-Çok yakın puanlanmış 2 amaç, **belirleyici olmayan eğitim**nedeniyle ters çıkabilir. En üstteki puan ikinci üst ve ikinci en üst puanı ilk en iyi puan haline gelebilir. Bu durumu engellemek için, 2 amaçlarını kapsayan sözcük seçimi ve bağlamı ile bu söylik için en üst iki amaç için her birine örnek ekleyin. İki amaç aynı sayıda örnek ile aynı olmalıdır. Bir parmak izi, eğitim nedeniyle insürüme engel olmak için bir Thumb kuralı, puanlar %15 farkındır.
+Çok yakın puanlara sahip olan ilk iki amaç **belirlenimci olmayan eğitim** nedeniyle ters çevrilebilir. En üstteki puan ikinci üst ve ikinci en üst puanı ilk en iyi puan haline gelebilir. Bu durumu engellemek için, 2 amaçlarını kapsayan sözcük seçimi ve bağlamı ile bu söylik için en üst iki amaç için her birine örnek ekleyin. İki amaç aynı sayıda örnek ile aynı olmalıdır. Bir parmak izi, eğitim nedeniyle insürüme engel olmak için bir Thumb kuralı, puanlar %15 farkındır.
 
 **Belirleyici olmayan eğitimi** [tüm verilerle birlikte eğitime](luis-how-to-train.md#train-with-all-data)dönüştürebilirsiniz.
 
@@ -60,7 +62,7 @@ Sohbet botunuz, bir amaç için güvenilirliği belirtmek üzere belirli bir LUO
 
 ## <a name="e-exponent-notation"></a>E (üs) gösterimi
 
-Tahmin puanları, gibi 0-1 aralığının üstünde _görünen_ üs gösterimini kullanabilir `9.910309E-07`. Bu puan, çok **küçük** bir sayının göstergesidir.
+Tahmin puanları, gibi 0-1 aralığının üstünde _görünen_ üs gösterimini kullanabilir `9.910309E-07` . Bu puan, çok **küçük** bir sayının göstergesidir.
 
 |E Gösterim puanı |Gerçek puan|
 |--|--|

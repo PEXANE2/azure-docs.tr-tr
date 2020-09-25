@@ -47,6 +47,8 @@
       items:
         - name: Aracı bağlantı sorunları
           href: troubleshoot-agent-onboard.md
+        - name: VM Uzantısı sorunları
+          href: troubleshoot-vm-extensions.md
 - name: Başvuru
   items:
     - name: Veri yerleşimi

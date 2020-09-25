@@ -6,17 +6,20 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 2ce10353d1d102667718f368dc55a5821f16e25d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8b413b82ceb148374bd89fd2baec7d4db13f54d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941323"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329557"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda yavaş sorgu günlükleri (Önizleme)
 
 > [!IMPORTANT] 
 > MySQL için Azure veritabanı-esnek sunucu şu anda genel önizlemededir.
+
+> [!NOTE]
+> Günlüklere erişmek için Azure Izleyici tanılama ayarlarıyla tümleştirme, dağıtım sürecinde ve tüm işlevler yakında kullanıma sunulacaktır.
 
 MySQL için Azure veritabanı esnek sunucu 'da, yavaş sorgu günlüğü kullanıcıların yapılandırması ve erişimi için kullanılabilir. Yavaş sorgu günlükleri varsayılan olarak devre dışıdır ve sorun giderme sırasında performans sorunlarını tanımlamaya yardımcı olmak için etkinleştirilebilir.
 
@@ -38,6 +41,9 @@ Yavaş sorgu günlüğü davranışlarını denetlemek için ayarlayabileceğini
 Yavaş sorgu günlüğü parametrelerinin tam açıklamaları için MySQL 'in [yavaş sorgu günlüğü belgelerini](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) inceleyin.
 
 ## <a name="access-slow-query-logs"></a>Yavaş sorgu günlüklerine erişin
+
+> [!NOTE]
+> Günlüklere erişmek için Azure Izleyici tanılama ayarlarıyla tümleştirme, dağıtım sürecinde ve tüm işlevler yakında kullanıma sunulacaktır.
 
 Yavaş sorgu günlükleri Azure Izleyici tanılama ayarlarıyla tümleşiktir. MySQL esnek sunucunuzda denetim günlüklerini etkinleştirdikten sonra Azure Izleyici günlüklerine, Event Hubs veya Azure Storage 'a yayabilirsiniz. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [tanılama günlükleri belgeleri](../../azure-monitor/platform/platform-logs-overview.md). Azure portal tanılama ayarlarının nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için, [yavaş sorgu günlüğü portalı makalesine](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)bakın.
 

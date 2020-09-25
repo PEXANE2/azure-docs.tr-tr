@@ -1,27 +1,29 @@
 ---
 title: Anomali Algılayıcısı API'si nedir?
 titleSuffix: Azure Cognitive Services
-description: Zaman serisi verilerinizde bozukluklar belirlemek için anomali algılayıcı API 'sinin gelişmiş algoritmalarını kullanın.
+description: Zaman serisi verilerinize anomali algılama uygulamak için anomali algılayıcı API 'sinin algoritmalarını kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: aahi
-ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: anomali algılama, makine öğrenimi, algoritmalar
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887504"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319325"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomali Algılayıcısı API'si nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Anomali algılayıcı API 'SI, makine öğrenimi ile zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar. Anomali algılayıcı API 'SI, sektör, senaryo veya veri hacminin ne olursa olsun, verilerinize en uygun modelleri otomatik olarak tanımlayarak ve uygulayarak uyum sağlar. API, zaman serisi verilerinizi kullanarak anomali algılama, beklenen değerler ve hangi veri noktalarının güvenlik sınırlarını belirler.
+Anomali algılayıcı API 'SI, makine öğrenimini bilmeniz gerekmeden zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar. Anomali algılayıcı API 'sinin algoritmaları, sektör, senaryo veya veri hacminin ne olursa olsun verilerinize en uygun modelleri otomatik olarak tanımlayarak ve uygulayarak uyarlar. API, zaman serisi verilerinizi kullanarak anomali algılama, beklenen değerler ve hangi veri noktalarının güvenlik sınırlarını belirler.
 
 ![Hizmet isteklerindeki model değişikliklerini Algıla](./media/anomaly_detection2.png)
 
@@ -33,7 +35,7 @@ Anomali algılayıcısı sayesinde, zaman serisi verileriniz genelinde veya ger�
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|Gerçek zamanlı olarak gerçekleştikleri gibi bozukluklar olup olmadığı tespit edin. | En son birinin bir anomali olup olmadığını belirlemek için daha önce görülmüş veri noktalarını kullanarak akış verilerinizde bozukluklar algılayın. Bu işlem, göndereceğiniz veri noktalarını kullanarak bir model oluşturur ve hedef noktanın bir anomali olup olmadığını belirler. Oluşturduğunuz her yeni veri noktasıyla API çağırarak, verileri oluşturulduğu gibi izleyebilirsiniz. |
+|Gerçek zamanlı anomali algılama. | En son birinin bir anomali olup olmadığını belirlemek için daha önce görülmüş veri noktalarını kullanarak akış verilerinizde bozukluklar algılayın. Bu işlem, göndereceğiniz veri noktalarını kullanarak bir model oluşturur ve hedef noktanın bir anomali olup olmadığını belirler. Oluşturduğunuz her yeni veri noktasıyla API çağırarak, verileri oluşturulduğu gibi izleyebilirsiniz. |
 |Veri kümesinin tamamında bir toplu iş olarak, anormallikleri tespit edin. | Verilerinizin tamamında mevcut olabilecek tüm anormallikleri algılamak için zaman serinizi kullanın. Bu işlem, her bir noktanın aynı modelle çözümlenme işleminde, tüm zaman serisi verilerinizi kullanarak bir model oluşturur.         |
 |Veri kümesi genelinde bir toplu iş olarak değişiklik noktalarını tespit edin. | Verilerinizde bulunan tüm eğilim değişiklik noktalarını algılamak için zaman serinizi kullanın. Bu işlem, her bir noktanın aynı modelle çözümlenme işleminde, tüm zaman serisi verilerinizi kullanarak bir model oluşturur.    |
 | Verileriniz hakkında daha fazla bilgi alın. | Verileriniz ve beklenen değerler, anomali sınırları ve pozisyonları dahil tüm gözlemlenen bozukluklar hakkında yararlı Ayrıntılar alın. |

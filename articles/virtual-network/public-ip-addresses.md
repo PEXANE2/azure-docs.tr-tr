@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 9f3d95d7ae725dba700b0a060ba74552d6b83ad5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84172371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329270"
 ---
 # <a name="public-ip-addresses"></a>Genel IP adresleri
 
@@ -70,7 +70,7 @@ Temel SKU adresleri:
 
 - Statik veya dinamik atama yöntemiyle atanmıştır.
 - 4-30 dakikalık, varsayılan 4 dakikalık, geçersiz giden kaynaklı Flow zaman aşımı süresi 4 dakikadan oluşan, ayarlanabilir bir gelen akış boşta kalma zaman aşımı süresi.
-- Varsayılan olarak açıktır.  Ağ güvenlik grupları önerilir ancak gelen veya giden trafiği kısıtlamak için isteğe bağlıdır.
+- Varsayılan olarak açıktır.  Gelen veya giden trafiği kısıtlamak için ağ güvenlik grupları önerilir ama isteğe bağlıdır.
 - Genel IP adresi atanabilen herhangi bir Azure kaynağına atanır, örneğin:
     * Ağ arabirimleri
     * VPN Ağ Geçitleri
@@ -165,16 +165,24 @@ Genel bir IP adresini bir Azure **Application Gateway**’in [ön uç](../applic
 * Bir Application Gateway v1 ön uç yapılandırmasına **dinamik** temel genel IP atayın. 
 * Bir v2 ön uç yapılandırmasına **statik** standart SKU adresi atayın.
 
+## <a name="azure-firewall"></a>Azure Güvenlik Duvarı
+
+[Azure Güvenlik Duvarı](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , abonelikler ve sanal ağlar arasında uygulama ve ağ bağlantısı ilkeleri oluşturmanıza, zorlamanıza ve günlüğe kaydetmenize olanak tanır.
+
+Yalnızca **statik** standart genel IP adreslerini bir güvenlik duvarıyla ilişkilendirebilirsiniz. Bu, dışarıdaki güvenlik duvarlarının sanal ağınızdan kaynaklanan trafiği belirlemesine izin verir. 
+
+
 ## <a name="at-a-glance"></a>Bir bakışta
 
 Aşağıdaki tabloda, genel bir IP 'nin en üst düzey bir kaynakla ve olası ayırma yöntemleriyle ilişkilendirilebilen özelliği gösterilmektedir.
 
 | En üst düzey kaynak | IP Adresi ilişkilendirme | Dinamik | Statik |
 | --- | --- | --- | --- |
-| Sanal makine |Ağ arabirimi |Yes |Evet |
-| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Yes |Evet |
-| VPN ağ geçidi |Ağ geçidi IP yapılandırması |Evet |Hayır |
+| Sanal makine |Ağ arabirimi |Yes |Yes |
+| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Yes |Yes |
+| VPN ağ geçidi |Ağ geçidi IP yapılandırması |Yes |Hayır |
 | Uygulama ağ geçidi |Ön uç yapılandırması |Evet (yalnızca v1) |Evet (yalnızca v2) |
+| Azure Güvenlik Duvarı | Ön uç yapılandırması | Hayır | Yes|
 
 ## <a name="limits"></a>Sınırlar
 

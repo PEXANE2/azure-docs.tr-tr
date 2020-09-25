@@ -1,6 +1,6 @@
 ---
 title: Azure AD Uygulama Ara Sunucusu bağlayıcıları anlama | Microsoft Docs
-description: Azure AD Uygulama Ara Sunucusu bağlayıcıları hakkında temel bilgileri içerir.
+description: Azure AD Uygulama Ara Sunucusu bağlayıcıları hakkında bilgi edinin.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f14c757df8bcc38bf226cb6346c400087c2d7a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764681"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319835"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama
 
@@ -99,7 +99,7 @@ Genellikle, ne kadar çok kullanıcı varsa, ihtiyacınız olacak bir makine dah
 |8|32|270|1190|
 |16|64|245|1200 *|
 
-\*Bu makine, .NET tarafından önerilen ayarların ötesinde bazı varsayılan bağlantı sınırlarını yükseltmek için özel bir ayar kullandı. Kiracınız için bu sınırın değiştirilmesini sağlamak üzere desteğe başvurmadan önce varsayılan ayarlarla bir test çalıştırmayı öneririz.
+\* Bu makine, .NET tarafından önerilen ayarların ötesinde bazı varsayılan bağlantı sınırlarını yükseltmek için özel bir ayar kullandı. Kiracınız için bu sınırın değiştirilmesini sağlamak üzere desteğe başvurmadan önce varsayılan ayarlarla bir test çalıştırmayı öneririz.
 
 > [!NOTE]
 > 4, 8 ve 16 çekirdek makineler arasındaki en fazla TPS 'de çok fark yoktur. Bunlar arasındaki temel fark beklenen gecikmedir.

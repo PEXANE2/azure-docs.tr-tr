@@ -5,12 +5,12 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 8acd19408c328ef3f534ba7bc41c96e395f768be
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89510984"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318084"
 ---
 # <a name="laying-out-files-for-conversion"></a>Dönüştürme için dosyaları yerleştirme
 
@@ -28,6 +28,10 @@ Yollar göreli yollar olarak depolanırsa ve kaynak varlık ile başvurduğu dos
 
 > [!Note]
 > Dosyaların göreli konumlarının varlık oluşturulduğu sırada oldukları gibi olması için, dosyaları giriş kapsayıcısına yerleştirmeniz önerilir.
+
+> [!Note]
+> Göreli yolları taşıyan varlıklar oluşturmayı tercih edin.
+> [3ds Max için malzeme ayarlama](../../tutorials/modeling/3dsmax-material-setup.md) hakkında öğretici, bir varlığın göreli yollar kullanması Için en fazla 3ds örneği sağlar.
 
 ## <a name="finding-textures"></a>Dokuları bulma
 

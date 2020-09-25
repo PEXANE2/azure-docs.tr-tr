@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 485a054a91bd3db9b116cf80a4e457d013c20ea1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071083"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329355"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows ve Windows Server’da sorunsuz bir şekilde kullanılabilir. Bu makalede Azure dosya paylaşımını Windows ve Windows Server ile kullanma konusunda dikkat edilmesi gerekenler anlatılmaktadır.
@@ -34,8 +34,8 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 | Windows 7<sup>3</sup> | SMB 2.1 | Yes | Hayır |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Hayır |
 
-<sup>1</sup> Windows 10, sürüm 1507, 1607, 1709, 1803, 1809, 1903 ve 1909.  
-<sup>2</sup> Windows Server, sürüm 1809, 1903 ve 1909.  
+<sup>1</sup> Windows 10, sürüm 1507, 1607, 1803, 1809, 1903, 1909 ve 2004.  
+<sup>2</sup> Windows Server, sürüm 1809, 1903, 1909, 2004.  
 <sup>3</sup> Windows 7 ve Windows Server 2008 R2 için düzenli Microsoft desteği sona erdi. Güvenlik güncelleştirmeleri için yalnızca [Genişletilmiş Güvenlik Güncelleştirmesi (ESU) programı](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)aracılığıyla ek destek satın alınabilir. Bu işletim sistemlerinin geçirilmesini kesinlikle öneririz.
 
 > [!Note]  
@@ -58,7 +58,7 @@ Azure portal, dosya paylaşımınızı doğrudan bir konağa bağlamak için kul
 
 Bu betiği almak için:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Bağlamak istediğiniz dosya paylaşımının bulunduğu depolama hesabına gidin.
 1. **Dosya paylaşımları**’nı seçin.
 1. Bağlamak istediğiniz dosya payını seçin.
@@ -139,7 +139,7 @@ Aşağıdaki tabloda tüm Windows sürümlerinde SMB 1 protokolünün durumu hak
 | Windows 8.1                               | Etkin              | Windows özelliği ile kaldırma | 
 | Windows Server 2012                       | Etkin              | Kayıt defteri ile devre dışı bırakma       | 
 | Windows Server 2008 R2                    | Etkin              | Kayıt defteri ile devre dışı bırakma       |
-| Windows 7                                 | Etkin              | Kayıt defteri ile devre dışı bırakma       | 
+| Windows 7                                 | Etkin              | Kayıt defteri ile devre dışı bırakma       | 
 
 ### <a name="auditing-smb-1-usage"></a>SMB 1 kullanımını denetleme
 > Windows Server 2019, Windows Server yarı yıllık kanal (sürüm 1709 ve 1803), Windows Server 2016, Windows 10 (sürümler 1507, 1607, 1703, 1709 ve 1803), Windows Server 2012 R2 ve Windows 8.1 için geçerlidir.

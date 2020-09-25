@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: bbec605f25c2e74178bdb5c28d0a7995e4e265f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9e032b8bb2dd8c82e8b076517f4309baae41c6f9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690400"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320328"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
 
@@ -85,7 +85,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
    1. C# ' de aşağıdaki kod, uygulama adına belirteci alabilir. Gen1 ortamından veri sorgulama hakkında tüm bir örnek için, [C# kullanarak sorgu verilerini](time-series-insights-query-data-csharp.md)okuyun.
 
-        C# koduna erişmek için [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] depoya bakın. 
+        C# koduna erişmek için [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] depoya bakın.
 
    1. Belirteç daha sonra `Authorization` uygulama Azure TIME SERIES INSIGHTS API 'sini çağırdığında üstbilgiye geçirilebilir.
 
@@ -110,19 +110,19 @@ Bu bölümde, Azure Time Series Insights gen1 ve Gen2 API 'Lerinde sorgu yapmak 
 
 Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
-| Gerekli istek üst bilgisi | Açıklama |
+| Gerekli istek üst bilgisi | Description |
 | --- | --- |
 | Yetkilendirme | Azure Time Series Insights kimlik doğrulaması yapmak için, **Yetkilendirme** üst bilgisinde geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir. |
 
 > [!IMPORTANT]
 > Belirtecin tam olarak kaynağa verilmesi gerekir `https://api.timeseries.azure.com/` (belirtecin "hedef kitle" olarak da bilinir).
 
-> * [Postman](https://www.getpostman.com/) **AuthUrl** 'niz şu şekilde olacaktır:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
+> * [Postman](https://www.getpostman.com/) **AuthUrl** 'niz şu şekilde olacaktır:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com//.default`
 > * `https://api.timeseries.azure.com/` geçerli ancak `https://api.timeseries.azure.com` değil.
 
 İsteğe bağlı istek üstbilgileri aşağıda açıklanmıştır.
 
-| İsteğe bağlı istek üst bilgisi | Açıklama |
+| İsteğe bağlı istek üst bilgisi | Description |
 | --- | --- |
 | İçerik türü | yalnızca `application/json` desteklenir. |
 | x-MS-Client-Request-ID | İstemci istek KIMLIĞI. Hizmet bu değeri kaydeder. Hizmetin işlemleri hizmetler arasında izlemesini sağlar. |
@@ -131,7 +131,7 @@ Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
 İsteğe bağlı ancak önerilen yanıt üstbilgileri aşağıda açıklanmıştır.
 
-| Yanıt üst bilgisi | Açıklama |
+| Yanıt üst bilgisi | Description |
 | --- | --- |
 | İçerik türü | Yalnızca `application/json` desteklenir. |
 | x-MS-istek kimliği | Sunucu tarafından oluşturulan istek KIMLIĞI. , Bir isteği araştırmak üzere Microsoft 'a başvurmak için kullanılabilir. |

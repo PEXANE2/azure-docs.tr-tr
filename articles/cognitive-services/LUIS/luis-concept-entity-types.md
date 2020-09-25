@@ -1,14 +1,16 @@
 ---
 title: Varlık türleri-LUSıS
 description: Bir varlık, tahmin çalışma zamanında bir Kullanıcı noktasından verileri ayıklar. _İsteğe bağlı_, ikincil amaç, varlığı bir özellik olarak kullanarak amaç veya diğer varlıkların tahminini de artırır.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 8751bdd52bb1c3738103dc074184a3cf72bfeb09
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316571"
 ---
 # <a name="extract-data-with-entities"></a>Varlıkları olan verileri ayıklama
 

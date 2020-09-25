@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: d4da9a819d7aa96992259112c75154b1651341ac
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604777"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319143"
 ---
 # <a name="inspect-custom-speech-data"></a>Özel Konuşma verilerini inceleme
 
@@ -79,11 +79,13 @@ Veriler başarıyla alındıktan sonra veri kümelerine tıklayıp Düzenle ' ye
 
 ### <a name="edit-transcription-by-listening-to-audio"></a>Sesi dinleyerek dökümü düzenleme
 
-Karşıya veri yükleme başarılı olduktan sonra, verilerin ayrıntılarını görmek için her öğe adına tıklayın. Ayrıntı sayfası, veri kümenizdeki tüm dosyaları listeler ve istediğiniz şekilde tıklayabilirsiniz. Her bir söylük için, her türlü ekleme, silme veya değiştirme hatası bulursanız, sesi kayıttan yürütebilir ve dökümü inceleyebilir ve bu değişiklikleri düzenleyebilirsiniz. Hata türleri hakkında daha ayrıntılı bilgi için bkz. [veri değerlendirmesi nasıl yapılır](how-to-custom-speech-evaluate-data.md) .
+Karşıya veri yükleme başarılı olduktan sonra, verilerin ayrıntılarını görmek için her öğe adına tıklayın. Ayrıca, bir dosya arasında ilerlemek için **önceki** ve **İleri** ' ye de kullanabilirsiniz.
+
+Ayrıntı sayfası, her ses dosyasındaki tüm kesimleri listeler ve istediğiniz şekilde tıklayabilirsiniz. Her bir söylük için, her türlü ekleme, silme veya değiştirme hatası bulursanız, sesi kayıttan yürütebilir ve dökümü inceleyebilir ve bu değişiklikleri düzenleyebilirsiniz. Hata türleri hakkında daha ayrıntılı bilgi için bkz. [veri değerlendirmesi nasıl yapılır](how-to-custom-speech-evaluate-data.md) .
 
 ![Düzenleyici sayfası](media/custom-speech/custom-speech-editor.png)
 
-Ses dosyası uzunsa, otomatik olarak daha küçük parçalara bölünür. Sayfaları arasında ilerlemek için **Öncekini** ve **İleri** 'yi kullanarak tek tek düzenleyebilirsiniz. Düzenleme yaptıktan sonra **Kaydet** düğmesine tıklayın.
+Düzenleme yaptıktan sonra **Kaydet** düğmesine tıklayın.
 
 ### <a name="export-datasets-from-the-editor"></a>Veri kümelerini düzenleyiciden dışarı aktarma
 

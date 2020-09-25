@@ -4,17 +4,17 @@ description: Azure Güvenlik kıyaslaması v2 günlüğe kaydetme ve tehdit alg�
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 24ddca37a729a459382fc96a2f6e0ef1a7832f37
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9ada1956af2dabdb8e5deff33722af7a8691dd19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295473"
 ---
-# <a name="security-control-logging-and-threat-detection"></a>Güvenlik denetimi: günlük ve tehdit algılama
+# <a name="security-control-v2-logging-and-threat-detection"></a>Güvenlik denetimi v2: günlük kaydı ve tehdit algılama
 
 Günlüğe kaydetme ve tehdit algılama, Azure 'da tehditleri algılama ve Azure hizmetleri için Denetim günlüklerini etkinleştirme, toplama ve depolama denetimlerini ele alır. Bu, Azure hizmetlerinde yerel tehdit algılama ile yüksek kaliteli uyarılar oluşturmaya yönelik denetimlerle algılama, araştırma ve düzeltme süreçlerini etkinleştirmeyi içerir; Ayrıca Azure Izleyici ile günlüklerin toplanmasını, Azure Sentinel ile güvenlik analizini, zaman eşitlemesini ve günlük tutmayı de kapsar. 
 
@@ -40,11 +40,11 @@ Ayrıca, ortamınızda belirli ölçütlerle eşleşen tehditleri araya analizi 
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Güvenlik işlemleri (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -77,11 +77,11 @@ Azure Güvenlik Merkezi, çok fazla sayıda başarısız kimlik doğrulama giri�
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Güvenlik işlemleri (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -111,11 +111,11 @@ Olay analizlerini, tehdit arayışınızı ve güvenlik uyarısı oluşturmayı 
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Güvenlik işlemleri (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -129,7 +129,7 @@ Olay analizlerini, tehdit arayışınızı ve güvenlik uyarısı oluşturmayı 
 |--|--|--|--|
 | LT-4 | 6,2, 6,3, 8,8 | AU-3, AU-12 |
 
-Uyumluluk, tehdit algılama ve araştırma ve tehdit arayabilmesi gereksinimlerini karşılamak için Azure kaynakları için günlük kaydını etkinleştirin. 
+Uyumluluk, tehdit algılama, araştırma ve olay araştırması gereksinimlerini karşılamak için Azure kaynakları için günlük kaydını etkinleştirin. 
 
 Azure Güvenlik Merkezi 'ni ve Azure Ilkesini, denetim, güvenlik ve kaynak günlüklerine erişim için Azure kaynaklarında kaynak günlüklerini ve günlük verilerini toplamayı etkinleştirmek üzere kullanabilirsiniz. Otomatik olarak kullanılabilen etkinlik günlükleri Olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerir. 
 
@@ -141,9 +141,9 @@ Azure Güvenlik Merkezi 'ni ve Azure Ilkesini, denetim, güvenlik ve kaynak gün
 
 **Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik işlemleri (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 Altyapı ve uç nokta güvenliği 
 
@@ -171,7 +171,7 @@ Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık ku
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -185,25 +185,25 @@ Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık ku
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3, AU-11 |
 
-Günlük bekletmesini uyumluluğa, yönetmeme ve diğer gereksinimlerinize göre yapılandırın. 
+Günlük saklama alanınızı uyumluluk, düzenleme ve iş gereksinimlerinize göre yapılandırın. 
 
 Azure Izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayabilirsiniz. Uzun süreli ve arşiv depolama için Azure depolama, Data Lake veya Log Analytics çalışma alanı hesapları kullanın.
 
 - [Log Analytics veri saklama süresini değiştirme](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma: ttps://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging
+- [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 - [Azure Güvenlik Merkezi uyarıları ve önerileri dışarı aktarma](../../security-center/continuous-export.md)
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Güvenlik işlemleri (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
 
 - [Güvenlik uyumluluğu yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -225,7 +225,7 @@ Azure içindeki kaynaklar tarafından oluşturulan tüm Günlükler varsayılan 
 
 **Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [İlke ve standartlar](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

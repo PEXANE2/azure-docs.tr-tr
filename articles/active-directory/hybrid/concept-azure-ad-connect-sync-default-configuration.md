@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661860"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295235"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect Eşitleme: Varsayılan yapılandırmayı anlama
 Bu makalede, kullanıma hazır yapılandırma kuralları açıklanmaktadır. Kuralları ve bu kuralların yapılandırmayı nasıl etkilediğini belgelemektedir. Ayrıca, Azure AD Connect eşitleme 'nin varsayılan yapılandırması boyunca size yol gösterir. Amaç, okuyucunun bildirim temelli sağlama adlı yapılandırma modelinin gerçek dünyada bir örnekte nasıl çalıştığını anlamaktır. Bu makalede, Yükleme Sihirbazı 'nı kullanarak Azure AD Connect eşitleme 'yi zaten yüklemiş ve yapılandırdığınız varsayılmaktadır.
@@ -160,7 +160,7 @@ Ayrıca, bu eşitleme kuralının parola eşitleme için kullanıldığını da 
 #### <a name="scoping-filter"></a>Kapsam filtresi
 Kapsam Filtresi bölümü, bir eşitleme kuralının ne zaman uygulanacağını yapılandırmak için kullanılır. Aradığınız eşitleme kuralının adı, yalnızca etkin kullanıcılar için uygulanması gerektiğini gösterdiği için, kapsam yapılandırılır, bu yüzden AD özniteliğinin **UserAccountControl** bit 2 kümesine sahip olmamalıdır. Eşitleme altyapısı AD 'de bir Kullanıcı bulduğunda, **UserAccountControl** ondalık değer 512 (normal Kullanıcı etkin) olarak ayarlandığında bu eşitleme kuralını uygular. Kullanıcı **userAccountControl** 514 olarak ayarlandığında kuralı uygulamaz (normal kullanıcı devre dışı bırakılır).
 
-![Eşitleme kuralı düzenleyicisinde kapsam sekmesi](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+!["Gelen eşitleme kuralını Düzenle" penceresinin "kapsam filtresi" bölümünü gösteren ekran görüntüsü.](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 Kapsam filtresi, iç içe olabilecek gruplara ve yan tümcelerde sahiptir. Bir eşitleme kuralının uygulanması için bir grup içindeki tüm yan tümceleri karşılamalıdır. Birden çok grup tanımlandığında kuralın uygulanabilmesi için en az bir grup karşılanması gerekir. Diğer bir deyişle, bir mantıksal veya gruplar arasında değerlendirilir ve bir grup içinde değerlendirilir. Bu yapılandırmaya bir örnek, **AAD-Group JOIN 'e**giden eşitleme kuralında bulunabilir. Örneğin, güvenlik grupları ( `securityEnabled EQUAL True` ) ve diğeri dağıtım grupları () için bir tane olmak üzere birkaç eşitleme filtresi grubu vardır `securityEnabled EQUAL False` .
 

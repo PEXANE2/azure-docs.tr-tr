@@ -1,6 +1,6 @@
 ---
 title: Azure Tablo depolamaya genel bakış
-description: Bir NoSQL veri deposu olan Azure Table Storage kullanarak bulutta yapılandırılmış veri depolayın.
+description: Web uygulamaları için Kullanıcı verileri, adres defterleri, cihaz bilgileri ve diğer meta veri türleri gibi esnek veri kümelerini depolamak için Azure Tablo depolama 'yı nasıl kullanacağınızı öğrenin.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
@@ -9,12 +9,12 @@ ms.date: 05/20/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 20c799f89394dd8978f120097b054a9adf9f1280
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: abd88c3cdb54747c21ad8772860a3ed6929dbd15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76770732"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318730"
 ---
 # <a name="azure-table-storage-overview"></a>Azure Tablo depolamaya genel bakış
 

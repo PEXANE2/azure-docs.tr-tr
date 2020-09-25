@@ -1,22 +1,22 @@
 ---
-title: PostgreSQL için Azure veritabanı için Azure Güvenlik temeli-hiper ölçek
-description: PostgreSQL için Azure veritabanı-Hyperscale güvenlik temeli, Azure Güvenlik kıyaslaması 'nda belirtilen güvenlik önerilerini uygulamaya yönelik yordamsal kılavuz ve kaynaklar sağlar.
+title: PostgreSQL için Azure veritabanı-hiper ölçek (Citus) için Azure Güvenlik temeli
+description: PostgreSQL için Azure veritabanı-Hyperscale (Citus) güvenlik temeli, Azure Güvenlik kıyaslaması 'nda belirtilen güvenlik önerilerini uygulamaya yönelik yordamsal kılavuz ve kaynaklar sağlar.
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 37ebd1702ed8ef059b38378b89f5a5cb61748568
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c82451ca9f1f974aba7578b0dfc4f6f0eb99ac16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231308"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318135"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>PostgreSQL için Azure veritabanı için Azure Güvenlik temeli-hiper ölçek
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı-hiper ölçek (Citus) için Azure Güvenlik temeli
 
-PostgreSQL için Azure veritabanı için Azure Güvenlik temeli-hiper ölçek, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
+PostgreSQL için Azure veritabanı-Hyperscale (Citus) için Azure Güvenlik temeli, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
 
 Bu hizmetin taban çizgisi, Azure [güvenlik kıyaslama sürümü 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview)' dan çizilir ve bu, en iyi yöntemler kılavuzumuzdan Azure 'da bulut çözümlerinizi nasıl güvence altına almak için öneriler sağlar.
 

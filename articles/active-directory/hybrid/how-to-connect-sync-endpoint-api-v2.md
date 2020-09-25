@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319920"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (Genel Önizleme) 
 Microsoft, Azure Active Directory için eşitleme hizmeti işlemlerinin performansını geliştiren Azure AD Connect için yeni bir uç nokta (API) dağıttı. Yeni v2 uç noktasından yararlanarak, Azure AD 'ye dışarı ve içeri aktarma sırasında dikkat çekici performans kazanımları yaşarsınız. Bu yeni uç nokta şunları destekler:
@@ -116,12 +116,12 @@ Maksimum sınır, Grup başına 250K üyeleridir.
 1. Azure AD eşitleme kuralları düzenleyicisini açın 
 2. Düzenleyicide, yön için **giden** ' ı seçin 
 3. **AAD 'ye tıklayın – gruba JOIN** eşitleme kuralı 
-4. **Düzenle** düğmesine tıklayın ![ eşitleme kuralını Düzenle](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
+4. **Edit** ![ "AAD-Group JOIN" ile "eşitleme kurallarınızı görüntüleme" seçeneğini gösteren Düzenle düğmesi ekran görüntüsüne tıklayın.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. Varsayılan kuralı devre dışı bırakmak ve düzenlenebilir bir kopya oluşturmak için **Evet** düğmesine tıklayın.
- ![Eşitleme kuralını Düzenle](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
+ !["Evet" düğmesinin seçili olduğu "ayrılmış kural onayını Düzenle" penceresini gösteren ekran görüntüsü.](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
 
-7. **Açıklama** sayfasındaki açılır pencerede, önceliği 1 ile 99 arasında bir değer olarak ![ Düzenle eşitleme kuralını ayarlayın](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
+7. **Açıklama** sayfasındaki açılır pencerede, " ![ öncelik" vurgulanmış "giden eşitleme kuralını Düzenle" penceresini gösteren 1 ile 99 arasında bir değeri kullanılabilir bir değer olarak ayarlayın.](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
 
 8. **Dönüşümler** sayfasında, **üye** dönüştürmesi için **kaynak** değerini güncelleştirin, ' 50000 ' değerini 50001 ve 250000 arasında bir değer ile değiştirin. Bu değişiklik, Azure AD ile eşitlenecek grupların en büyük üyelik boyutunu artırır. Büyük grupları eşitlemenin, eşitleme performanızda sahip olacağı etkiyi anlamak için bir dizi 100k ile başlayıp başladık. 
  

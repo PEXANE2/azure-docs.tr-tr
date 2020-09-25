@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 21b90f423a3ba3c7fa38334c79aec9dc65a250cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b79bf5e8ead16bbdf9c69e8d7faae43fa778ab3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316588"
 ---
 # <a name="limits-and-quotas"></a>Limitler ve kotalar
 
@@ -39,7 +39,7 @@ Her proje için bir proje ve etiket için eğitim görüntülerinin sayısının
 |[DIĞER API çağrıları](https://go.microsoft.com/fwlink/?linkid=865446) (saniye başına işlem)|10|10|
 |Kabul edilen görüntü türleri|jpg, PNG, BMP, GIF|jpg, PNG, BMP, GIF|
 |Piksel cinsinden en az görüntü yüksekliği/genişliği|256 (bkz. nota bakın)|256 (bkz. nota bakın)|
-|Piksel cinsinden en fazla görüntü yüksekliği/genişliği|sınırsız|sınırsız|
+|Piksel cinsinden en fazla görüntü yüksekliği/genişliği|10.240|10.240|
 |En fazla görüntü boyutu (eğitim resmi yüklemesi) |6 MB|6 MB|
 |En fazla görüntü boyutu (tahmin)|4 MB|4 MB|
 |Nesne algılama eğitim görüntüsü başına en fazla bölge|300|300|
@@ -47,3 +47,4 @@ Her proje için bir proje ve etiket için eğitim görüntülerinin sayısının
 
 > [!NOTE]
 > 256 pikselden küçük resimler kabul edilir ancak ölçeklendirilir.
+> Görüntü en boy oranı 25 ' ten büyük olmamalıdır

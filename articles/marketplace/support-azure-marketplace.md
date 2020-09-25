@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 62f30d8a0fe1b2f2397fc16161929279a148aaa2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329763"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market desteği
 
@@ -24,24 +24,23 @@ Ekleme ve Başlarken sorunları için Microsoft [Marketplace Publisher desteğiy
 
 ## <a name="partner-center"></a>İş Ortağı Merkezi
 
-| Destek kanalı | Açıklama | Kullanılabilirlik |  
+| Destek kanalı | Description | Kullanılabilirlik |  
 |:--- |:--- |:--- |  
 | Yardım için [Market 'te](https://aka.ms/marketplacepublishersupport) bulunan bir olay oluştur sayfasını ziyaret edin</li> </ul> | Iş Ortağı Merkezi için destek. | Destek, 24x5 ' i sağlamıştır. |  
 
 ## <a name="technical"></a>Teknik  
 
-| Destek kanalı | Açıklama |  
+| Destek kanalı | Description |  
 |:--- |:--- |  
 | MSDN forumları: [Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/products/azure) 'Nda bulunan Market | Microsoft Developer Network Forumu. |  
 | Stack Overflow: Azure [StackOverflow.com/Questions/Tagged/Azure](https://stackoverflow.com/questions/tagged/azure) adresinde bulunur | Azure Market ile ilgili her şey hakkında çözüm almak ve soru sormak için Stack Overflow ortam.<ul> <li>Stack Overflow: [StackOverflow.com/Questions/Tagged/Azure-Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) adresinde bulunan Azure Marketi</li> <li>Stack Overflow: [StackOverflow.com/Questions/Tagged/Azure-Resource-Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager) konumunda bulunan Azure Resource Manager</li> <li>Stack Overflow: Azure 'daki sanal makineler [StackOverflow.com/Questions/Tagged/Azure-Virtual-Machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) adresinde bulunur</li> <li>Stack Overflow: Azure 'daki kapsayıcılar [StackOverflow.com/search?q=Azure+Container](https://stackoverflow.com/search?q=azure+container) adresinde bulunur</li> </ul> |
 
 ## <a name="marketing-resources"></a>Pazarlama Kaynakları  
 
-| Destek kanalı | Açıklama | Kullanılabilirlik |  
-|:--- |:--- |:--- |  
-| E-posta:[cosell@microsoft.com](mailto:cosell@microsoft.com) | Ortak satış programıyla ilgili ekleme işlemlerine ve sorulara yönelik destek. | Pasifik saati dilimine göre. |  
-| E-posta:[gtm@microsoft.com](mailto:gtm@microsoft.com) | GTM avantajları ve program soruları için destek. | İş saatleri Pasifik saati dilimlidir. |  
-| E-posta:[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Azure logoları ve marka kullanımı hakkında soruların yanıtları. |  |  
+| Destek kanalı | Description | Kullanılabilirlik |  
+|:--- |:--- |:--- |
+| E-posta: [gtm@microsoft.com](mailto:gtm@microsoft.com) | GTM avantajları ve program soruları için destek. | İş saatleri Pasifik saati dilimlidir. |  
+| E-posta: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Azure logoları ve marka kullanımı hakkında soruların yanıtları. |  |  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

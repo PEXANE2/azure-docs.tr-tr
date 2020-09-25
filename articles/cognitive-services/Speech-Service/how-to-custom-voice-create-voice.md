@@ -1,7 +1,7 @@
 ---
 title: Özel bir sesli konuşma hizmeti oluşturma
 titleSuffix: Azure Cognitive Services
-description: Verilerinizi karşıya yüklemeye hazırsanız, özel sesli portala gidin. Özel bir ses projesi oluşturun veya seçin. Projenin, doğru dil/yerel ayar ve cinsiyet özelliklerini, ses eğitimine yönelik olarak kullanmayı istediğiniz verilerle paylaşmalıdır.
+description: Verilerinizi karşıya yüklemeye hazırsanız, özel sesli portala gidin. Özel bir ses projesi oluşturun veya seçin. Projenin, doğru dil/yerel ayar ve cinsiyet özelliklerini, ses eğitiminizi için kullanmayı düşündüğünüz verilerle paylaşmalıdır.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319070"
 ---
 # <a name="create-a-custom-voice"></a>Özel bir ses oluşturun
 
@@ -28,7 +28,7 @@ ms.locfileid: "84629005"
 
 ## <a name="upload-your-datasets"></a>Veri kümelerinizi karşıya yükleyin
 
-Verilerinizi karşıya yüklemeye hazırsanız, [özel sesli portala](https://aka.ms/custom-voice-portal)gidin. Özel bir ses projesi oluşturun veya seçin. Projenin, doğru dil/yerel ayar ve cinsiyet özelliklerini, ses eğitimine yönelik olarak kullanmayı istediğiniz verilerle paylaşmalıdır. Örneğin, `en-GB` BIR UK vurgusu Ile İngilizce 'de ses kayıtlarının gerçekleştirilip yapıllamadığını seçin.
+Verilerinizi karşıya yüklemeye hazırsanız, [özel sesli portala](https://aka.ms/custom-voice-portal)gidin. Özel bir ses projesi oluşturun veya seçin. Projenin, doğru dil/yerel ayar ve cinsiyet özelliklerini, ses eğitiminizi için kullanmayı düşündüğünüz verilerle paylaşmalıdır. Örneğin, `en-GB` BIR UK vurgusu Ile İngilizce 'de ses kayıtlarının gerçekleştirilip yapıllamadığını seçin.
 
 **Veri** sekmesine gidin ve **verileri karşıya yükle**' ye tıklayın. Sihirbazda, hazırladığınız verilerle eşleşen doğru veri türünü seçin.
 
@@ -44,10 +44,10 @@ Veri kümeleri, karşıya yükle düğmesine ulaştıktan sonra otomatik olarak 
 
 Aşağıdaki tabloda, içeri aktarılan veri kümeleri için işleme durumları gösterilmektedir:
 
-| Eyalet | Anlamı |
+| Durum | Anlamı |
 | ----- | ------- |
 | İşleniyor | Veri kümeniz alındı ve işleniyor. |
-| Başarılı oldu | Veri kümeniz doğrulandıktan sonra artık bir ses modeli oluşturmak için kullanılabilir. |
+| Başarılı | Veri kümeniz doğrulandıktan sonra artık bir ses modeli oluşturmak için kullanılabilir. |
 | Başarısız | Veri kümeniz, çok sayıda nedenden dolayı işleme sırasında başarısız oldu, örneğin dosya hataları, veri sorunları veya ağ sorunları. |
 
 Doğrulama işlemi tamamlandıktan sonra, **utterslar** sütunundaki veri kümelerinizin her biri için eşleşen Masların toplam sayısını görebilirsiniz. Seçtiğiniz veri türü uzun ses segmentlemesini gerektiriyorsa, bu sütun yalnızca kendi betiklerinizi temel alarak veya konuşma dökümü hizmeti aracılığıyla sizin için segmentettiğimiz göz asyonları yansıtır. Başarılı bir şekilde içeri aktarılan ve bunların eşleme dökümlerinin ayrıntı sonuçlarını görüntülemek için doğrulanan veri kümesini daha fazla indirebilirsiniz. İpucu: uzun ses segmentlenmesi, veri işlemeyi tamamlayacak bir saatten uzun sürebilir.
@@ -86,10 +86,10 @@ Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş g
 
 Gösterilen durum, burada gösterildiği gibi, veri kümenizi bir ses modeline dönüştürme sürecini yansıtır.
 
-| Eyalet | Anlamı |
+| Durum | Anlamı |
 | ----- | ------- |
 | İşleniyor | Ses modeliniz oluşturuluyor. |
-| Başarılı oldu | Ses modeliniz oluşturuldu ve dağıtılabilir. |
+| Başarılı | Ses modeliniz oluşturuldu ve dağıtılabilir. |
 | Başarısız | Ses modeliniz birçok nedenden dolayı eğitiminde başarısız oldu, örneğin görülmeyen veri sorunları veya ağ sorunları. |
 
 Eğitim süresi, işlenen ses verilerinin hacmine bağlı olarak değişir. Tipik saatler, yaklaşık olarak 30 dakika boyunca yaklaşık 40 saat, 20.000 utterlerin saati kadar arasındadır. Model eğitiminizi başarılı olduktan sonra test edebilirsiniz.
@@ -117,7 +117,7 @@ Ses yazı tipi başarıyla derlendikten sonra, kullanım için dağıtılmadan �
     > [!NOTE]
     > Metninizin dili, ses yazı tipinin diliyle aynı olmalıdır. Yalnızca başarılı eğitilen modeller test edilebilir. Bu adımda yalnızca düz metin desteklenir.
 
-5.  **Oluştur**'a tıklayın.
+5.  **Oluştur**’a tıklayın.
 
 Test isteğinizi gönderdikten sonra, sınama sayfasına dönersiniz. Tablo artık yeni isteğinize ve durum sütununa karşılık gelen bir giriş içerir. Konuşmayı senberleştirmek birkaç dakika sürebilir. Durum sütunu **başarılı**olduğunda, sesi yürütebilir veya metin girişi (bir. txt dosyası) ve ses çıkışını (bir. wav dosyası) indirebilir ve daha sonra kalite için daha fazla sesleme yapabilirsiniz.
 

@@ -4,12 +4,12 @@ description: Azure geçişi 'nde fiziksel sunucu geçişi desteği hakkında bil
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: 2e71ab5cd934f2fe931cd901d425061455cc9f0e
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 95456298b3275c83152115d700a4539cab2d2a67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318169"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Fiziksel sunucu geçişi için destek matrisi
 
@@ -43,10 +43,10 @@ Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz fiziksel sunucu
 **Ağ/depolama** | En son bilgiler için, Site Recovery için [ağ](../site-recovery/vmware-physical-azure-support-matrix.md#network) ve [depolama](../site-recovery/vmware-physical-azure-support-matrix.md#storage) önkoşullarını gözden geçirin. Azure geçişi, aynı ağ/depolama gereksinimlerini sağlar.
 **Azure gereksinimleri** | En son bilgiler için Site Recovery [Azure ağ](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [depolama](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)ve [işlem](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) gereksinimlerini gözden geçirin. Azure geçişi, fiziksel sunucu geçişi için aynı gereksinimlere sahiptir.
 **Mobility hizmeti** | Taşımak istediğiniz her makinede Mobility hizmeti aracısının yüklü olması gerekir.
-**UEFı önyüklemesi** | Azure 'daki geçirilmiş makine otomatik olarak bir BIOS önyüklemesi Azure VM 'sine dönüştürülür. Yalnızca Windows Server 2012 ve üzeri sürümleri çalıştıran sunucu desteklenir.<br/><br/> İşletim sistemi diski en fazla dört bölüm içermelidir ve birimler NTFS ile biçimlendirilmelidir.
+**UEFı önyüklemesi** | Destekleniyor. UEFı tabanlı makineler, Azure 2. nesil VM 'lerine geçirilir.  <br/><br/> İşletim sistemi diski en fazla dört bölüm içermelidir ve birimler NTFS ile biçimlendirilmelidir.
 **UEFı-güvenli önyükleme**         | Geçiş için desteklenmez.
 **Hedef disk** | Makineler, yalnızca Azure 'da yönetilen disklere (Standart HDD, standart SSD, Premium SSD) geçirilebilir.
-**Disk boyutu** | 2 TB işletim sistemi diski; veri diskleri için 8 TB.
+**Disk boyutu** | 2 TB işletim sistemi diski (BIOS önyüklemesi); 4 TB işletim sistemi diski (UEFı önyüklemesi); veri diskleri için 8 TB.
 **Disk sınırları** |  Makine başına en fazla 63 disk.
 **Şifrelenmiş diskler/birimler** |  Şifrelenmiş diskleri/birimleri olan makineler geçiş için desteklenmez.
 **Paylaşılan disk kümesi** | Desteklenmez.

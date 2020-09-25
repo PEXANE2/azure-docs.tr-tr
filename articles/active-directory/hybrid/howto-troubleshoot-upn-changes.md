@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf0fdf5fd167987ea0fd7111a05b04bd5bf848f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319852"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory Kullanıcı asıl adı değişikliklerini planlayın ve sorun giderin
 
@@ -94,7 +94,7 @@ Bu belgedeki bilinen sorunları ve geçici çözümleri görüntüleyin.
 
 Kullanıcı hesaplarını Active Directory 'den Azure AD 'ye eşitlerken, Active Directory içindeki UPN 'leri Azure AD 'de doğrulanmış etki alanlarına eşlemekte olduğunuzdan emin olun.
 
-![Doğrulanan etki alanlarının ekran görüntüsü](./media/howto-troubleshoot-upn-changes/verified-domains.png)
+![Azure A etki alanlarını doğrulayan, eşleşen UPN örneklerini gösteren ekran görüntüsü.](./media/howto-troubleshoot-upn-changes/verified-domains.png)
 
 UserPrincipalName özniteliğinin değeri Azure AD 'de doğrulanmış bir etki alanına karşılık gelmiyorsa, eşitleme işlemi soneki varsayılan bir. onmicrosoft.com değeri ile değiştirir.
 
@@ -237,7 +237,7 @@ Kullanıcının telefon oturumu açmak için etkinleştirilen hesapta açılan m
 ## <a name="security-key-fido2-known-issues-and-workarounds"></a>Güvenlik anahtarı (FIDO2) bilinen sorunlar ve geçici çözümler
 
 **Bilinen sorunlar** <br>
-Aynı anahtara birden çok Kullanıcı kaydedildiğinde, oturum açma ekranında eski UPN 'nin görüntülendiği bir hesap seçim sayfası gösterilir. Güvenlik anahtarlarını kullanarak oturum açma, UPN değişikliklerinden etkilenmez.  
+Aynı anahtara birden çok Kullanıcı kaydedildiğinde, oturum açma ekranında eski UPN 'nin görüntülendiği bir hesap seçim sayfası gösterilir. Güvenlik anahtarlarını kullanan oturum açma işlemleri, UPN değişikliklerinden etkilenmez.  
 
 **Geçici çözüm**<br>
 Eski UPN başvurularını kaldırmak için, kullanıcıların [güvenlik anahtarını sıfırlaması ve yeniden kaydedilmesi](../authentication/howto-authentication-passwordless-security-key.md#known-issues)gerekir.

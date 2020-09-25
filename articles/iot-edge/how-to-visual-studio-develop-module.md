@@ -2,18 +2,18 @@
 title: Visual Studio 'da modül geliştirme ve hata ayıklama-Azure IoT Edge
 description: C veya C# IoT Edge modülünü geliştirmek ve IoT Hub bir dağıtım bildirimi tarafından yapılandırıldığı gibi IoT cihazına iletmek için Visual Studio 'Yu Azure IoT araçları ile birlikte kullanın.
 services: iot-edge
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 9722c7dec3a066d8f776424cb599be0d463416d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80384866"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297054"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio 2019 kullanın
 

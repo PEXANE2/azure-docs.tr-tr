@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 20efae411ae4d2fae9bf3b5e69dbfdd98da1603a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985633"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318577"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Azure Stack Edge Mini R nedir?
 
-Azure Stack Edge Mini R, bir hizmet olarak donanım çözümüdür. Microsoft, hızlandırılmış AI-ınrugged ve bir ağ depolama ağ geçidi 'nin tüm özelliklerine sahip olan yerleşik bir görüntü Işleme birimi (VPU) ile birlikte, bulut tarafından yönetilen ve ultra taşınabilir bir cihaz sunar. Bu cihazlar, en zorlu ortamlarda kullanılmak üzere uygundur ve AI, analiz ve sunucusuz bilgi işlem için iyileştirilmiştir.
+Azure Stack Edge Mini, şiddetli ortamlarda kullanılmak üzere tasarlanan ultra taşınabilir, Rugged ve Edge bilgi işlem cihazındır. Azure Stack Edge Mini R, hizmet olarak donanım çözümü olarak sunulur. Microsoft, ağ depolama ağ geçidi olarak davranan ve hızlandırılmış AI-ınklik sağlayan yerleşik bir görüntü Işleme birimi (VPU) sunan, bulut tarafından yönetilen bir cihaz sunar.
 
 Bu makalede, Azure Stack Edge Mini R çözümüne, önemli yeteneklere ve bu cihazı dağıtabileceğiniz senaryolara ilişkin bir genel bakış sunulmaktadır.
 
@@ -26,9 +26,9 @@ Bu makalede, Azure Stack Edge Mini R çözümüne, önemli yeteneklere ve bu cih
 
 Azure Stack Edge Mini R aşağıdaki yeteneklere sahiptir:
 
-|Özellik |Açıklama  |
+|Özellik |Description  |
 |---------|---------|
-|Rugged donanımı| Rugged, en zorlu ortamlar için tasarlanan donanım.|
+|Rugged donanımı| Rugged, Harsh ortamları için tasarlanan donanım.|
 |Ultra taşınabilir| Ultra taşınabilir, pille çalıştırılan form faktörü.|
 |Bulutta yönetilen|Cihaz ve hizmet, Azure portal aracılığıyla yönetilir.|
 |Edge işlem iş yükleri|Verilerin analizine, işlenmesine, filtrelenmesine olanak tanır.<br>VM 'Leri ve Kapsayıcılı iş yüklerini destekler. |
@@ -36,7 +36,7 @@ Azure Stack Edge Mini R aşağıdaki yeteneklere sahiptir:
 |Kablolu ve kablosuz | Kablolu ve kablosuz veri aktarımlarına izin verir.|
 |Veri erişimi     | Bulutta ek veri işleme için bulut API'lerini kullanarak Azure Depolama Blobları ve Azure Dosyaları'ndan doğrudan veri erişimi. Cihazdaki yerel önbellek, en son kullanılan dosyalara hızlı erişim için kullanılır.|
 |Bağlantısı kesik mod|  Cihaz ve hizmet, isteğe bağlı olarak Azure Stack hub 'ı aracılığıyla yönetilebilir. Uygulamaları çevrimdışı modda dağıtın, çalıştırın, yönetin. <br> Bağlantısız mod, çevrimdışı karşıya yükleme senaryolarını destekler.|
-|Desteklenen protokoller     |Veri alımı için standart SMB, NFS ve REST protokollerini destekler. <br> Desteklenen sürümler hakkında daha fazla bilgi için [Azure Stack Edge Mini R sistem gereksinimleri](azure-stack-edge-gpu-system-requirements.md)' ne gidin.|
+|Desteklenen dosya aktarımı protokolleri      |Veri alımı için standart SMB, NFS ve REST protokollerini destekler. <br> Desteklenen sürümler hakkında daha fazla bilgi için [Azure Stack Edge Mini R sistem gereksinimleri](azure-stack-edge-gpu-system-requirements.md)' ne gidin.|
 |Veri yenileme     | Yerel dosyaları buluttaki en son sürümle yenileme olanağı.|
 |Çift şifreleme    | Kendi kendine şifrelenen sürücü kullanımı, ilk şifreleme katmanını sağlar. VPN ikinci şifreleme katmanını sağlar. Verileri yerel olarak şifrelemek ve *https* üzerinden buluta veri aktarımını güvenli hale getirmek için BitLocker desteği.|
 |Bant genişliği azaltma| Yoğun saatlerde bant genişliği kullanımını sınırlandırmaya kısıtlama.|
@@ -60,13 +60,13 @@ Azure Stack Edge Mini R 'nin, en uçta hızlı Machine Learning (ML) için kulla
 
 Azure Stack Edge Mini R çözümü, bir Azure Stack Edge kaynağı, Azure Stack Edge Mini R Rugged, ultra taşınabilir fiziksel cihaz ve yerel bir Web kullanıcı arabiriminden oluşur.
 
-* **Azure Stack Edge Mini R fiziksel cihaz** -yerleşik bir pil ve Microsoft tarafından sağlanan ve Azure 'a veri gönderecek şekilde yapılandırılabilen bir Rugged Me ile ultra taşınabilir bir cihaz. Pili 7 ' den az olan cihaz.
+* **Azure Stack Edge Mini R fiziksel cihazı** -Microsoft tarafından sağlanan bir ultra taşınabilir, Rugged, işlem ve depolama cihazı. Cihazda, yerleşik bir pil bulunur ve en fazla 7 lb.
 
     ![Azure Stack Edge Mini R cihazı](media/azure-stack-edge-k-series-overview/perspective-view-1.png)
 
 * **Azure Stack Edge kaynağı** : bir rugged, Azure Stack Edge Mini R cihazını farklı coğrafi konumlardan erişebileceğiniz bir web arabiriminden yönetmenize olanak tanıyan bir Azure Portal kaynaktır. Kaynak oluşturmak ve yönetmek, cihazları ve uyarıları görüntülemek ve yönetmek ve paylaşımları yönetmek için Azure Stack Edge kaynağını kullanın.  
 
-* **Azure Stack Edge Mini R yerel Web Kullanıcı arabirimi** -ilk cihaz yapılandırması için yerel Web Kullanıcı arabirimini kullanın, tanılamayı çalıştırmak Için Azure Stack Edge Mini R cihazını kapatıp yeniden başlatın, kopyalama günlüklerini görüntüleyin ve hizmet isteği dosyasına Microsoft desteği başvurun.
+* **Azure Stack Edge Mini r Yerel Web Kullanıcı arabirimi** -öncelikle cihazın ilk yapılandırması için tasarlanan Azure Stack Edge Mini r cihazınızda tarayıcı tabanlı bir yerel kullanıcı arabirimi. Yerel Web Kullanıcı arabirimini kullanarak da tanılamayı çalıştırın, Azure Stack Edge Pro cihazını kapatıp yeniden başlatın, kopyalama günlüklerini görüntüleyin ve bir hizmet isteği dosyası için Microsoft Desteği başvurun.
 
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
@@ -74,6 +74,8 @@ Azure Stack Edge Mini R çözümü, bir Azure Stack Edge kaynağı, Azure Stack 
 Azure Stack Edge Mini R fiziksel cihazı, Azure kaynağı ve veri aktarımı yaptığınız hedef depolama hesabı, tümünün aynı bölgede olması gerekmez.
 
 - **Kaynak kullanılabilirliği** -Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için [bölgeye göre kullanılabilir Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)gidin. 
+
+- **Cihaz kullanılabilirliği** -Azure Stack Edge Mini r cihazının kullanılabildiği tüm ülkelerin listesi için, [Azure Stack Edge](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeMiniR)mini r fiyatlandırması Için Azure Stack Edge Mini r sekmesinde kullanılabilirlik bölümüne gidin.
 
 - **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, tüm Azure bölgelerinde sağlanır. Depolama hesaplarının Azure Stack Edge Mini R verileri, cihazın en iyi performans için bulunduğu konuma yakın olması gerekir. Cihazdan uzağa konumlandırılan depolama hesabı uzun gecikme sürelerine ve daha yavaş bir performansa yol açar.
 

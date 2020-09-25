@@ -9,12 +9,12 @@ ms.date: 07/09/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 2743dc0164f604c9c5e033aacc3e58fae42a1fd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f5cf8f8ef004dacc9fe2bbdd1b815f2ae5275311
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948384"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298125"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak telefon numarası alın
 
@@ -117,7 +117,7 @@ Telefon numaralarınızı yönetmek için menüdeki telefon numaraları sekmesin
 
 Yaygın sorular ve sorunlar:
 
-- Şu anda yalnızca ABD ve Kanada, telefon numaralarını satın almayı destekler. Bu, kaynağın ilişkilendirildiği aboneliğin fatura adresini temel alır. Şu anda, kaynağı başka bir aboneliğe taşıyamazsınız.
+- Şu anda telefon numaralarının satın alınması için yalnızca US desteklenir. Bu, kaynağın ilişkilendirildiği aboneliğin fatura adresini temel alır. Şu anda bir kaynağı başka bir aboneliğe taşıyamazsınız.
 
 - Telefon numarası silindiğinde, telefon numarası serbest bırakılır veya faturalandırma döngüsünün sonuna kadar kullanılamaz.
 

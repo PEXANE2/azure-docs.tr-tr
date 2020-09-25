@@ -1,26 +1,26 @@
 ---
 title: Güvenliğe genel bakış
-description: Azure Arc etkin sunucularla ilgili güvenlik bilgileri (Önizleme).
+description: Azure Arc etkin sunucularla ilgili güvenlik bilgileri.
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 17641fab9933d9d6a60c2b21912f755acc01a6dd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/23/2020
+ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89447986"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329049"
 ---
-# <a name="azure-arc-for-servers-preview-security-overview"></a>Sunucular için Azure Arc (Önizleme) güvenliğine genel bakış
+# <a name="azure-arc-for-servers-security-overview"></a>Sunucular için Azure Arc güvenliğine genel bakış
 
 Bu makalede, kuruluşunuzda Azure Arc etkin sunucuları dağıtılmadan önce değerlendirmeniz gereken güvenlik yapılandırması ve önemli noktalar açıklanmaktadır.
 
 ## <a name="identity-and-access-control"></a>Kimlik ve erişim denetimi
 
-Her Azure Arc etkin sunucusu, şirket içinde veya başka bir bulut ortamı çalıştıran sunucuyu temsil eden bir Azure aboneliğinde kaynak grubunun parçası olarak yönetilen bir kimliğe sahiptir. Bu kaynağa erişim, standart [Azure rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)tarafından denetlenir. Azure portal [**Access Control (IAM)**](../../role-based-access-control/role-assignments-portal.md#access-control-iam) sayfasından, Azure Arc etkin sunucunuza kimlerin erişebileceğini doğrulayabilirsiniz.
+Her Azure Arc etkin sunucusunda, bir Azure aboneliğinin içindeki bir kaynak grubunun parçası olarak yönetilen bir kimlik bulunur. bu kimlik, şirket içi veya başka bir bulut ortamı çalıştıran sunucuyu temsil eder. Bu kaynağa erişim, standart [Azure rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)tarafından denetlenir. Azure portal [**Access Control (IAM)**](../../role-based-access-control/role-assignments-portal.md#access-control-iam) sayfasından, Azure Arc etkin sunucunuza kimlerin erişebileceğini doğrulayabilirsiniz.
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Azure Arc etkin sunucu erişim denetimi" border="false" lightbox="./media/security-overview/access-control-page.png":::
 
-Kaynak üzerinde [katılımcı](../../role-based-access-control/built-in-roles.md#contributor) veya yönetici rolü erişimi verilen kullanıcılar ve uygulamalar, makinede [uzantıları](manage-vm-extensions.md) dağıtma veya silme dahil olmak üzere kaynakta değişiklik yapabilir. Uzantılar, ayrıcalıklı bir bağlamda çalışan rastgele betikler içerebilir, bu nedenle Azure Kaynak üzerinde herhangi bir katkıda bulunan ve Azure dışı sunucu 'nun dolaylı Yöneticisi olacak şekilde düşünün.
+Kaynak üzerinde [katılımcı](../../role-based-access-control/built-in-roles.md#contributor) veya yönetici rolü erişimi verilen kullanıcılar ve uygulamalar, makinede [uzantıları](manage-vm-extensions.md) dağıtma veya silme dahil olmak üzere kaynakta değişiklik yapabilir. Uzantılar, ayrıcalıklı bir bağlamda çalışan rastgele betikler içerebilir, bu nedenle Azure kaynağında katkıda bulunan tüm katkıları sunucunun dolaylı Yöneticisi olacak şekilde düşünün.
 
 **Azure bağlı makine ekleme** rolü, ölçekli ekleme için kullanılabilir ve yalnızca Azure 'Da yeni yay özellikli sunucular okuyabilir veya oluşturabilir. Zaten kayıtlı olan sunucuları silmek veya uzantıları yönetmek için kullanılamaz. En iyi uygulama olarak, bu rolü yalnızca, ölçek olarak makine eklemek için kullanılan Azure Active Directory (Azure AD) hizmet sorumlusuna atamayı öneririz.
 
@@ -28,7 +28,7 @@ Kaynak üzerinde [katılımcı](../../role-based-access-control/built-in-roles.m
 
 ## <a name="agent-security-and-permissions"></a>Aracı güvenliği ve izinleri
 
-Azure bağlı makine aracısını (azcmagent) yönetmek için, Windows 'da Kullanıcı hesabınızın yerel Yöneticiler grubunun bir üyesi olması ve Linux üzerinde kök erişim izinlerinizin olması gerekir.
+Windows üzerinde Azure bağlı makine aracısını (azcmagent) yönetmek için Kullanıcı hesabınızın yerel Yöneticiler grubunun bir üyesi olması gerekir. Linux 'ta kök erişim izinleriniz olmalıdır.
 
 Azure bağlı makine Aracısı, makinenizde çalışan üç hizmetten oluşur.
 
@@ -56,4 +56,4 @@ Azure bağlı makine Aracısı, Azure hizmeti ile iletişim kurmak için ortak a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Birden çok karma makinede yay etkin sunucuları (Önizleme) değerlendirmeden veya etkinleştirmeden önce, gereksinimleri anlamak için [bağlı makine aracısına genel bakış](agent-overview.md) ' ı ve aracı hakkındaki teknik ayrıntıları ve dağıtım yöntemlerini gözden geçirin.
+Birden çok karma makinede yay etkin sunucuları değerlendirmeden veya etkinleştirmeden önce, gereksinimleri anlamak için [bağlı makine aracısına genel bakış](agent-overview.md) ' ı ve aracı hakkındaki teknik ayrıntıları ve dağıtım yöntemlerini gözden geçirin.

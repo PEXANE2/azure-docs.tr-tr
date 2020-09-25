@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 287bd02a11c71fbdd29b28b5ec9fc8424a477fea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535102"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320362"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>İkinci kısım: bir kimliğe bir kimlik için paylaşma düzeyi izinleri atama
 
@@ -47,7 +47,7 @@ Azure AD kimliğine [Azure Portal](https://portal.azure.com)kullanarak bir Azure
 1. Azure portal dosya paylaşımınıza gidin veya [bir dosya paylaşma oluşturun](storage-how-to-create-file-share.md).
 1. **Access Control (IAM)** seçeneğini belirleyin.
 1. **Rol ataması Ekle** ' yi seçin
-1. **Rol ataması Ekle** dikey penceresinde, **rol** listesinden uygun yerleşik rolü (depolama dosyası veri SMB paylaşma okuyucusu, depolama dosya veri SMB paylaşma katılımcısı) seçin. Varsayılan ayarda **erişime ata erişimi** bırakın: **Azure AD kullanıcısı, Grup veya hizmet sorumlusu**. Hedef Azure AD kimliğini ada veya e-posta adresine göre seçin. Seçilen Azure AD kimliği bir karma kimlik olmalıdır ve yalnızca bulut kimliği olamaz. Bu, aynı kimliğin AD DS de gösterildiği anlamına gelir.
+1. **Rol ataması Ekle** dikey penceresinde, **rol** listesinden uygun yerleşik rolü (depolama dosyası veri SMB paylaşma okuyucusu, depolama dosya veri SMB paylaşma katılımcısı) seçin. Varsayılan ayarda **erişime ata erişimi** bırakın: **Azure AD kullanıcısı, Grup veya hizmet sorumlusu**. Hedef Azure AD kimliğini ada veya e-posta adresine göre seçin. **Seçilen Azure AD kimliği bir karma kimlik olmalıdır ve yalnızca bulut kimliği olamaz.** Bu, aynı kimliğin AD DS de gösterildiği anlamına gelir.
 1. Rol atama işlemini gerçekleştirmek için **Kaydet** ' i seçin.
 
 ### <a name="powershell"></a>PowerShell

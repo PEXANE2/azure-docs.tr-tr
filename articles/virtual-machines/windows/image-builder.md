@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: f0d8a37f0edc161cbd73bf7438dc1c9486c4251b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62d80426dec6f5d63d8fa5d67d64d6aafb881110
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027946"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320022"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Önizleme: Azure Image Builder ile Windows VM oluşturma
 
@@ -161,7 +161,7 @@ vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> Kaynak görüntüde her zaman [bir sürüm belirtmeniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)gerekir `latest` .
+> Kaynak görüntüde her zaman [bir sürüm belirtmeniz](../linux/image-builder-troubleshoot.md#build--step-failed-for-image-version)gerekir `latest` .
 > Görüntünün dağıtıldığı kaynak grubunu ekler veya değiştirirseniz, izinleri kaynak grubunda [ayarlamanız](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group) gerekir.
  
 ## <a name="create-the-image"></a>Görüntü oluşturma
@@ -179,13 +179,13 @@ az resource create \
 
 Bu işlem tamamlandığında, bir başarı iletisini konsola geri döndürür ve içinde bir oluşturur `Image Builder Configuration Template` `$imageResourceGroup` . ' Gizli türleri göster ' i etkinleştirirseniz, bu kaynağı Azure portal kaynak grubunda görebilirsiniz.
 
-Arka planda, görüntü Oluşturucu aynı zamanda aboneliğinizde bir hazırlama kaynak grubu oluşturur. Bu kaynak grubu, görüntü derlemesi için kullanılır. Bu biçimde olacaktır:`IT_<DestinationResourceGroup>_<TemplateName>`
+Arka planda, görüntü Oluşturucu aynı zamanda aboneliğinizde bir hazırlama kaynak grubu oluşturur. Bu kaynak grubu, görüntü derlemesi için kullanılır. Bu biçimde olacaktır: `IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
 > Hazırlama kaynak grubunu doğrudan silmemelidir. Önce görüntü şablonu yapıtını silin, bu, hazırlama kaynak grubunun silinmesine neden olur.
 
 Hizmet, görüntü yapılandırma şablonu gönderimi sırasında bir hata bildirirse:
--  Bu [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) adımlarını gözden geçirin. 
+-  Bu [sorun giderme](../linux/image-builder-troubleshoot.md#troubleshoot-image-template-submission-errors) adımlarını gözden geçirin. 
 - Gönderimi yeniden denemeden önce aşağıdaki kod parçacığını kullanarak şablonu silmeniz gerekir.
 
 ```azurecli-interactive
@@ -208,7 +208,7 @@ az resource invoke-action \
 
 Yapı tamamlanana kadar bekleyin. Bu, yaklaşık 15 dakika sürebilir.
 
-Herhangi bir hatayla karşılaşırsanız lütfen bu [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) adımlarını gözden geçirin.
+Herhangi bir hatayla karşılaşırsanız lütfen bu [sorun giderme](../linux/image-builder-troubleshoot.md#troubleshoot-common-build-errors) adımlarını gözden geçirin.
 
 
 ## <a name="create-the-vm"></a>Sanal makineyi oluşturma

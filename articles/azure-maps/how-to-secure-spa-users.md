@@ -5,17 +5,17 @@ description: Azure Haritalar Web SDK ile Azure AD çoklu oturum açmayı destekl
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 72fe4d897c9c202e0c4cd5861525093760036d26
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: 0ba2e23e8121a76ec281b5e411819ee7d450cbe0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285671"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319699"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>Kullanıcı oturumu açma ile tek sayfalı bir uygulamanın güvenliğini sağlama
 

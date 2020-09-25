@@ -4,12 +4,12 @@ description: Azure geçişi hizmeti için destek ayarlarının ve sınırlamalar
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: aac7b7d39102a1fe115ddea483aee36af79e7fc4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 6137201f8accb901ffe1892d9876b172411cfe6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329608"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -21,7 +21,7 @@ Tablo, desteklenen bulma, değerlendirme ve geçiş senaryolarını özetler.
 
 **Dağıtım** | **Ayrıntılar** 
 --- | --- 
-**Bulma** | Makine meta verilerini ve dinamik performans verilerini bulabilirsiniz.
+**Keşfini** | Makine meta verilerini ve dinamik performans verilerini bulabilirsiniz.
 **Uygulama bulma** | VMware VM 'lerinde çalışan uygulamaları, rolleri ve özellikleri bulabilirsiniz. Şu anda bu özellik yalnızca bulma ile sınırlıdır. Değerlendirme Şu anda makine düzeyindedir. Henüz uygulama, rol veya özellik tabanlı değerlendirmeler sunmuyoruz. 
 **Değerlendirme** | Şirket içi iş yüklerini ve VMware VM 'leri, Hyper-V VM 'Leri ve fiziksel sunucularda çalışan verileri değerlendirin. Azure geçişi sunucu değerlendirmesi, Microsoft Data Migration Yardımcısı (DMA) ve diğer araçların yanı sıra diğer araçlar ve ISV tekliflerini kullanmayı değerlendirin.
 **Geçiş** | Fiziksel sunucular, VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular ve bulut tabanlı VM 'lerde çalışan iş yüklerini ve verileri Azure 'a geçirin. Azure geçişi sunucu değerlendirmesi ve Azure veritabanı geçiş hizmeti 'ni (DMS) ve diğer araçlar ve ISV tekliflerini kullanarak geçirin.
@@ -69,7 +69,7 @@ Azure geçişi 'nin Azure ile çalışması için, makineleri değerlendirmeye v
 
 **Görev** | **İzinler** | **Ayrıntılar**
 --- | --- | ---
-Azure geçişi projesi oluşturma | Azure hesabınızın bir proje oluşturmak için izinleri olması gerekir. | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)veya [fiziksel sunucular](tutorial-prepare-physical.md#assign-permissions-to-create-project)için ayarlayın.
+Azure Geçişi projesi oluşturma | Azure hesabınızın bir proje oluşturmak için izinleri olması gerekir. | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)veya [fiziksel sunucular](tutorial-prepare-physical.md#assign-permissions-to-create-project)için ayarlayın.
 Azure geçişi gereci kaydetme| Azure geçişi, Azure geçişi sunucu değerlendirmesi ile makineleri değerlendirmek ve Azure geçişi sunucu geçişi ile VMware VM 'lerinin [aracısız geçişini](server-migrate-overview.md) çalıştırmak için basit bir [Azure geçiş](migrate-appliance.md) gereci kullanır. Bu gereç, makineleri bulur ve Azure geçişi 'ne meta veri ve performans verileri gönderir.<br/><br/> Kayıt sırasında, abonelik kaynak sağlayıcısıyla çalışacak şekilde kayıt sağlayıcıları (Microsoft. OffAzure, Microsoft. Migrate ve Microsoft. Keykasası), Gereç içinde seçilen abonelikle kaydedilir. Kaydolmak için abonelik üzerinde katkıda bulunan veya sahip erişiminizin olması gerekir.<br/><br/> **VMware**-ekleme sırasında Azure geçişi iki Azure Active Directory (Azure AD) uygulaması oluşturur. İlk uygulama, Gereç aracıları ve Azure geçişi hizmeti arasında iletişim kurar. Uygulamanın Azure Kaynak Yönetimi çağrısı yapma izni yoktur veya kaynaklar için RBAC erişimi vardır. İkinci uygulama, yalnızca aracısız VMware geçişi için Kullanıcı aboneliğinde oluşturulan bir Azure Key Vault erişir. Aracısız geçişte, Azure geçişi, erişim anahtarlarını aboneliğinizdeki çoğaltma depolama hesabına yönetmek için bir Key Vault oluşturur. Bu, gereçden bulma başlatıldığında Azure Key Vault (müşteri kiracısında)<br/><br/> **Hyper-V**-ekleme sırasında. Azure geçişi bir Azure AD uygulaması oluşturur. Uygulama, Gereç aracıları ve Azure geçişi hizmeti arasında iletişim kurar. Uygulamanın Azure Kaynak Yönetimi çağrısı yapma izni yoktur veya kaynaklar için RBAC erişimi vardır. | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-azure-ad-apps)veya [fiziksel sunucular](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)için ayarlayın.
 VMware aracısız geçişi için bir Anahtar Kasası oluşturma | Azure geçişi, VMware VM 'lerini aracısız Azure geçişi sunucu geçişi ile geçirmek için, erişim anahtarlarını aboneliğinizdeki çoğaltma depolama hesabına yönetmek üzere bir Key Vault oluşturur. Kasayı oluşturmak için Azure geçişi projesinin bulunduğu kaynak grubunda izinleri (sahip veya katkıda bulunan ve Kullanıcı erişimi Yöneticisi) ayarlarsınız. | İzinleri [ayarlayın](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) .
 
@@ -92,9 +92,12 @@ Fransa | Orta Fransa
 Hindistan | Orta Hindistan veya Güney Hindistan
 Japonya |  Japonya Doğu veya Japonya Batı
 Güney Kore | Kore Orta veya Kore Güney
+İsviçre | İsviçre Kuzey
 Birleşik Krallık | UK Güney veya UK Batı
 Birleşik Devletler | Orta ABD veya Batı ABD 2
 
+> [!NOTE]
+> Isviçre coğrafya için İsviçre Batı yalnızca REST API kullanıcılar için kullanılabilir ve beyaz listeye alınan bir aboneliğe gerek duyar.
 
 ## <a name="supported-geographies-azure-government"></a>Desteklenen coğrafyalar (Azure Kamu)
 

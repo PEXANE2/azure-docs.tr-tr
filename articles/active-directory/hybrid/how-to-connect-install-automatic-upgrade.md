@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053295"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317625"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Otomatik yükseltme
 Bu özellik Build 1.1.105.0 ile tanıtılmıştır [(2016 Şubat tarihinde yayımlanmıştır)](reference-connect-version-history.md).  Bu özellik [Build 1.1.561](reference-connect-version-history.md) içinde güncelleştirildi ve artık daha önce desteklenmeyen ek senaryoları destekliyor.
@@ -64,7 +64,7 @@ Ayrıca, bir yükseltilebilir Deresult (' AADHealthEndpointNotDefined ' veya ' D
 Ardından, gerekli URL 'Leri ara sunucunuzda veya güvenlik duvarınızda açtığınızdan emin olun. Otomatik güncelleştirme, [genel bakış](#overview)bölümünde açıklandığı gibi Azure AD Connect Health kullanıyor. Proxy kullanıyorsanız, sistem durumunun bir [proxy sunucu](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)kullanacak şekilde yapılandırıldığından emin olun. Ayrıca, Azure AD ile [sistem durumu bağlantısını](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) test edin.
 
 Azure AD 'nin bağlantısının doğrulanması ile Eventlogs 'a bakmamız zaman alabilir. Olay Görüntüleyicisini başlatın ve **uygulama** olay günlüğüne bakın. Kaynak **Azure AD Connect yükseltmesi** ve olay kimliği aralığı **300-399**için bir EventLog filtresi ekleyin.  
-![Otomatik yükseltme için olay günlüğü filtresi](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+!["Olay kaynakları" ve "dahil etme/hariç tutma" olay kimlikleri kutusu vurgulanmış "geçerli günlüğü filtrele" penceresini gösteren ekran görüntüsü.](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 Artık otomatik yükseltme durumuyla ilişkili Eventlogs ' u görebilirsiniz.  
 ![Otomatik yükseltme için olay günlüğü filtresi](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  

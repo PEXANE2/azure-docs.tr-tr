@@ -3,21 +3,22 @@ title: IBM DB2 Azure sanal makineleri SAP iş yükü için DBMS dağıtımı | M
 description: SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
 services: virtual-machines-linux,virtual-machines-windows
 author: msjuergent
-manager: patfilot
+manager: bburns
 tags: azure-resource-manager
+keywords: Azure, DB2, SAP, IBM
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/18/2020
+ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc881b1b366a152c2d592463c8025ea1087307cf
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: a2be5daf5bcad0f5b4530ba7a76986dae4833aa5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461970"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331276"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
 
@@ -80,58 +81,58 @@ Azure M serisi VM için, işlem günlüklerine yazma gecikmesi, Azure Yazma Hız
 
 SAP NetWeaver uygulamaları için IBM DB2, SAP destek notunun [1928533]' de listelenen herhangi bir sanal makine türünde desteklenir.  IBM DB2 veritabanını çalıştırmaya yönelik önerilen VM aileleri, büyük çok terabaytlık veritabanları için Esd_v4/Eas_v4/Es_v3 ve a/M_v2 serisidir. IBM DB2 işlem günlüğü diski yazma performansı, M serisi Yazma Hızlandırıcısı etkinleştirilerek artırılabilir. 
 
-Aşağıda, küçük ve çok büyük olan DB2 dağıtımları üzerinde SAP 'nin çeşitli boyutları ve kullanımları için temel bir yapılandırma verilmiştir:
+Aşağıda, daha küçük ve çok büyük olan DB2 dağıtımlarında SAP 'nin çeşitli boyutları ve kullanımları için temel bir yapılandırma bulunur. Liste, Azure Premium Depolama alanını temel alır. Ancak, Azure Ultra disk, DB2 ile de tam olarak desteklenir ve de kullanılabilir. Ultra disk yapılandırmasını tanımlamak için kapasite, veri bloğu işleme ve veri bloğu ıOPS değerlerini kullanın. /DB2/ <SID> /LOG_DIR IOPS 'yi 5000 IOPS etrafında sınırlayabilirsiniz. 
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>Çok küçük SAP sistemi: veritabanı boyutu 50-200 GB: örnek çözüm Yöneticisi
 | VM adı/boyutu |DB2 bağlama noktası |Azure Premium Disk |NR disk |IOPS |Üretilen iş [MB/s] |Boyut [GB] |Veri bloğu ıOPS |Patlama THR [GB] | Şerit boyutu | Önbelleğe Alma |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E4ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
-|vCPU: 4 |/DB2/ <SID> /sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 KB |ReadOnly |
-|RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |1 |240  |50  |128  |3,500  |170  | ||
-| |/DB2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 KB ||
-| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
+|E4ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3.500  |170  ||  |
+|vCPU: 4 |/DB2/ <SID> /sapdata |P10 |2 |1.000  |200  |256  |7.000  |340  |256 KB |ReadOnly |
+|RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |1 |240  |50  |128  |3.500  |170  | ||
+| |/DB2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7.000  |340  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  || |
 
 #### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>Küçük SAP sistemi: veritabanı boyutu 200-750 GB: Small Business Suite
 | VM adı/boyutu |DB2 bağlama noktası |Azure Premium Disk |NR disk |IOPS |Üretilen iş [MB/s] |Boyut [GB] |Veri bloğu ıOPS |Patlama THR [GB] | Şerit boyutu | Önbelleğe Alma |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E16ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3,500  |170  || |
-|vCPU: 16 |/DB2/ <SID> /sapdata |P15 |4 |4,400  |500  |1,024  |14,000  |680  |256 KB |ReadOnly |
-|RAM: 128 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
-| |/DB2/ <SID> /log_dir |P15 |2 |2,200  |250  |512  |7,000  |340  |64 KB ||
-| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
+|E16ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3.500  |170  || |
+|vCPU: 16 |/DB2/ <SID> /sapdata |P15 |4 |4.400  |500  |1,024  |14.000  |680  |256 KB |ReadOnly |
+|RAM: 128 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7.000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P15 |2 |2.200  |250  |512  |7.000  |340  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  ||| 
 
 #### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>Orta SAP sistem: veritabanı boyutu 500-1000 GB: Small Business Suite
 | VM adı/boyutu |DB2 bağlama noktası |Azure Premium Disk |NR disk |IOPS |Üretilen iş [MB/s] |Boyut [GB] |Veri bloğu ıOPS |Patlama THR [GB] | Şerit boyutu | Önbelleğe Alma |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E32ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|E32ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3.500  |170  || |
 |vCPU: 32 |/DB2/ <SID> /sapdata |P30 |2 |10,000  |400  |2,048  |10,000  |400  |256 KB |ReadOnly |
-|RAM: 256 GiB |/DB2/ <SID> /saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 KB ||
-| |/DB2/ <SID> /log_dir |P20 |2 |4,600  |300  |1,024  |7,000  |340  |64 KB ||
-| |/DB2/ <SID> /offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
+|RAM: 256 GiB |/DB2/ <SID> /saptmp |P10 |2 |1.000  |200  |256  |7.000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P20 |2 |4.600  |300  |1,024  |7.000  |340  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P15 |1 |1.100  |125  |256  |3.500  |170  ||| 
 
 #### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>Büyük SAP sistemi: veritabanı boyutu 750-2000 GB: Iş paketi
 | VM adı/boyutu |DB2 bağlama noktası |Azure Premium Disk |NR disk |IOPS |Üretilen iş [MB/s] |Boyut [GB] |Veri bloğu ıOPS |Patlama THR [GB] | Şerit boyutu | Önbelleğe Alma |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E64ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3,500  |170  || |
-|vCPU: 64 |/DB2/ <SID> /sapdata |P30 |4 |20,000  |800  |4,096  |20,000  |800  |256 KB |ReadOnly |
-|RAM: 504 GiB |/DB2/ <SID> /saptmp |P15 |2 |2,200  |250  |512  |7,000  |340  |128 KB ||
-| |/DB2/ <SID> /log_dir |P20 |4 |9,200  |600  |2,048  |14,000  |680  |64 KB ||
-| |/DB2/ <SID> /offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
+|E64ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3.500  |170  || |
+|vCPU: 64 |/DB2/ <SID> /sapdata |P30 |4 |20.000  |800  |4,096  |20.000  |800  |256 KB |ReadOnly |
+|RAM: 504 GiB |/DB2/ <SID> /saptmp |P15 |2 |2.200  |250  |512  |7.000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P20 |4 |9.200  |600  |2,048  |14.000  |680  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P20 |1 |2.300  |150  |512  |3.500  |170  || |
 
-#### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>Büyük çok terabaytlık SAP sistemi: veritabanı boyutu 2TB +: küresel Iş paketi sistemi
+#### <a name="large-multi-terabyte-sap-system-database-size-2-tb-global-business-suite-system"></a>Büyük çok terabaytlık SAP sistemi: veritabanı boyutu 2 TB +: küresel Iş paketi sistemi
 | VM adı/boyutu |DB2 bağlama noktası |Azure Premium Disk |NR disk |IOPS |Üretilen iş [MB/s] |Boyut [GB] |Veri bloğu ıOPS |Patlama THR [GB] | Şerit boyutu | Önbelleğe Alma |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|M128s |/DB2 |P10 |1 |500  |100  |128  |3,500  |170  || |
-|vCPU: 128 |/DB2/ <SID> /sapdata |P40 |4 |30,000  |1,000  |8,192  |30,000  |1,000  |256 KB |ReadOnly |
-|RAM: 2048 GiB |/DB2/ <SID> /saptmp |P20 |2 |4,600  |300  |1,024  |7,000  |340  |128 KB ||
-| |/DB2/ <SID> /log_dir |P30 |4 |20,000  |800  |4,096  |20,000  |800  |64 KB |WriteAccelerator |
-| |/DB2/ <SID> /offline_log_dir |P30 |1 |5,000  |200  |1,024  |5,000  |200  || |
+|M128s |/DB2 |P10 |1 |500  |100  |128  |3.500  |170  || |
+|vCPU: 128 |/DB2/ <SID> /sapdata |P40 |4 |30.000  |1,000  |8,192  |30.000  |1,000  |256 KB |ReadOnly |
+|RAM: 2048 GiB |/DB2/ <SID> /saptmp |P20 |2 |4.600  |300  |1,024  |7.000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P30 |4 |20.000  |800  |4,096  |20.000  |800  |64 KB |WriteAccelerator |
+| |/DB2/ <SID> /offline_log_dir |P30 |1 |5.000  |200  |1,024  |5.000  |200  || |
 
 
 ### <a name="backuprestore"></a>Yedekleme/Geri Yükleme
 LUW için IBM DB2 yedekleme/geri yükleme işlevselliği, standart Windows Server Işletim sistemleri ve Hyper-V ile aynı şekilde desteklenir.
 
-Yerinde geçerli bir veritabanı yedekleme stratejiniz olduğundan emin olmanız gerekir. 
+Yerinde geçerli bir veritabanı yedekleme stratejiniz olduğundan emin olun. 
 
 Çıplak dağıtımlarda olduğu gibi, yedekleme/geri yükleme performansı, kaç birimin paralel okuyabileceğini ve bu birimlerin üretilen işinin ne kadar olabileceğini bağlıdır. Ayrıca, yedekleme sıkıştırması tarafından kullanılan CPU tüketimi, en fazla sekiz CPU iş parçacığına sahip VM 'lerde önemli bir rol oynatabilir. Bu nedenle, biri şunları varsayabilir:
 
@@ -161,7 +162,7 @@ Microsoft Cluster Server (MSCS) desteklenmez.
 
 DB2 yüksek kullanılabilirliğe sahip olağanüstü durum kurtarma (HADR) desteklenir. HA yapılandırmasının sanal makinelerinde çalışma adı çözümlemesi varsa, Azure 'daki kurulum, şirket içinde gerçekleştirilen kurulumdan farklı değildir. Yalnızca IP çözümlemesi kullanılması önerilmez.
 
-Veritabanı disklerini depolayan depolama hesapları için coğrafi çoğaltma kullanmayın. Daha fazla bilgi için bkz. [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı belge konuları](dbms_guide_general.md). 
+Veritabanı disklerini depolayan depolama hesapları için coğrafi çoğaltma kullanmayın. Daha fazla bilgi için bkz. [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı hakkında belge konuları](dbms_guide_general.md). 
 
 ### <a name="accelerated-networking"></a>Hızlandırılmış Ağ
 Windows üzerinde DB2 dağıtımları için, [Azure hızlandırılmış ağ iletişimi](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)belgesinde açıklandığı gibi hızlandırılmış ağ hizmeti 'nin Azure işlevselliği kullanılması önemle önerilir. Ayrıca, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı açısından dikkat edilmesi gereken](dbms_guide_general.md)öneriler de göz önünde bulundurun. 
@@ -226,6 +227,12 @@ Azure kullanılabilirlik kümeleri veya SAP izleme gibi diğer tüm genel alanla
 [2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
+
+
+## <a name="next-steps"></a>Sonraki adımlar
+Makaleyi okuyun 
+
+- [SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular](dbms_guide_general.md)
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com

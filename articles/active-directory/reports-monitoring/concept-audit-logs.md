@@ -13,20 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/17/2019
+ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 23cfc2ea17e1801ec4caeea9e8933cfdc72e33d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603529"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331259"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki denetim etkinliği raporları 
 
 Azure Active Directory (Azure AD) raporlarında, ortamınızın nasıl çalıştığını öğrenmek için gereken bilgileri alabilirsiniz.
+
+
 
 Raporlama mimarisi aşağıdaki bileşenlerden oluşur:
 
@@ -45,7 +47,7 @@ Bu makale, denetim raporuna genel bir bakış sağlar.
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
-Azure AD denetim günlükleri, uyumluluk için sistem etkinliklerinin kayıtlarını sağlar. Denetim raporuna erişmek için **Azure Active Directory** **izleme** bölümünde **Denetim günlükleri** ' ni seçin. Denetim günlüklerinin bir saate kadar gecikme sürebileceğini unutmayın. bu nedenle, görevi tamamladıktan sonra Denetim etkinlik verilerinin portalda gösterilmesi uzun sürebilir.
+Azure AD denetim günlükleri, uyumluluk için sistem etkinliklerinin kayıtlarını sağlar. Denetim raporuna erişmek için **Azure Active Directory** **izleme** bölümünde **Denetim günlükleri** ' ni seçin. 
 
 
 
@@ -62,15 +64,15 @@ Denetim günlüklerinin aşağıdakileri gösteren bir varsayılan liste görün
 
 Araç çubuğunda **Sütunlar**’a tıklayarak liste görünümünü özelleştirebilirsiniz.
 
-![Denetim günlükleri](./media/concept-audit-logs/columns.png "Denetim günlükleri")
+![Denetim sütunları](./media/concept-audit-logs/columns.png "Denetim sütunları")
 
 Bu sayede ek alanları görüntüleyebilir ya da zaten görüntülenen alanları kaldırabilirsiniz.
 
-![Denetim günlükleri](./media/concept-audit-logs/columnselect.png "Denetim günlükleri")
+![Alanları kaldır](./media/concept-audit-logs/columnselect.png "Alanları kaldır")
 
 Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
-![Denetim günlükleri](./media/concept-audit-logs/details.png "Denetim günlükleri")
+![öğe seçin](./media/concept-audit-logs/details.png "Öğe seçin")
 
 
 ## <a name="filtering-audit-logs"></a>Denetim günlüklerini filtreleme
@@ -85,7 +87,7 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 - Başlatan (Aktör)
 - Tarih aralığı
 
-![Denetim günlükleri](./media/concept-audit-logs/filter.png "Denetim günlükleri")
+![Filtre nesnesi](./media/concept-audit-logs/filter.png "Filtre nesnesi")
 
 **Hizmet** filtresi, aşağıdaki hizmetlerin açılan listesinden seçim yapmanıza olanak sağlar:
 
@@ -124,7 +126,7 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 - GroupManagement
 - KerberosDomain
 - KeyManagement
-- Etiketle
+- Etiket
 - Diğer
 - PermissionGrantPolicy
 - İlke
@@ -157,7 +159,7 @@ Olası değerler şunlardır:
 
 Filtre uygulanmış verileri, 250.000 kayda kadar, **İndir** düğmesini seçerek de indirmeyi seçebilirsiniz. Günlükleri CSV veya JSON biçiminde indirebilirsiniz. İndirebileceğiniz kayıt sayısı [Azure Active Directory rapor bekletme ilkeleri](reference-reports-data-retention.md)tarafından sınırlandırılır.
 
-![Denetim günlükleri](./media/concept-audit-logs/download.png "Denetim günlükleri")
+![Verileri indirme](./media/concept-audit-logs/download.png "Verileri indirme")
 
 ## <a name="audit-logs-shortcuts"></a>Denetim günlükleri kısayolları
 
@@ -170,7 +172,7 @@ Azure portalı, **Azure Active Directory**’ye ek olarak verileri denetlemeniz 
 
 Kullanıcı ve grup tabanlı denetim raporları ile aşağıdakiler gibi soruların yanıtlarını alabilirsiniz:
 
-- Kullanıcılara hangi tür güncelleştirmeler uygulanmış?
+- Kullanıcılara hangi tür güncelleştirmeler uygulandı?
 
 - Kaç adet kullanıcı değiştirildi?
 
@@ -188,11 +190,11 @@ Kullanıcı ve grup tabanlı denetim raporları ile aşağıdakiler gibi sorular
 
 Yalnızca kullanıcılarla ilgili denetim verilerini gözden geçirmek istiyorsanız, **Kullanıcılar** sekmesinin **izleme** bölümünde **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktasındaki **Kullanıcı yönetimi** , önceden seçilmiş kategori olarak var.
 
-![Denetim günlükleri](./media/concept-audit-logs/users.png "Denetim günlükleri")
+![Kullanıcı](./media/concept-audit-logs/users.png "Kullanıcı")
 
 Yalnızca gruplarla ilgili denetim verilerini gözden geçirmek istiyorsanız, **gruplar** sekmesinin **izleme** bölümünde **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktası, önceden seçilmiş kategori olarak **Groupmanagement** 'a sahiptir.
 
-![Denetim günlükleri](./media/concept-audit-logs/groups.png "Denetim günlükleri")
+![Grupları filtrele](./media/concept-audit-logs/groups.png "Grupları filtrele")
 
 ### <a name="enterprise-applications-audit-logs"></a>Kurumsal uygulamaların denetim günlükleri
 
@@ -206,7 +208,7 @@ Uygulama tabanlı denetim raporları ile aşağıdakiler gibi soruların yanıtl
 
 Uygulamalarınızla ilgili denetim verilerini gözden geçirmek istiyorsanız, **Kurumsal uygulamalar** dikey penceresinin **etkinlik** bölümündeki **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktasında, **uygulama türü**olarak önceden seçilmiş **Kurumsal uygulamalar** vardır.
 
-![Denetim günlükleri](./media/concept-audit-logs/enterpriseapplications.png "Denetim günlükleri")
+![Kurumsal uygulamalar](./media/concept-audit-logs/enterpriseapplications.png "Kurumsal uygulamalar")
 
 ## <a name="microsoft-365-activity-logs"></a>Etkinlik günlüklerini Microsoft 365
 

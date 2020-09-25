@@ -1,26 +1,28 @@
 ---
-title: 'Hızlı başlangıç: form tanıyıcı istemci kitaplığı | Microsoft Docs'
-description: '[Ürün adı] istemci kitaplığını kullanmaya başlayın.'
+title: 'Hızlı başlangıç: form tanıyıcı istemci kitaplığı'
+titleSuffix: Azure Cognitive Services
+description: Özel belgelerinizden anahtar/değer çiftlerini ve tablo verilerini çıkaran bir form işleme uygulaması oluşturmak için, form tanıyıcı istemci Kitaplığı ' nı kullanın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/17/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 0aa72b595bf60184aa840922a3d8a6496bb983a7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: Form işleme, otomatik veri işleme
+ms.openlocfilehash: eb3fc3ebe5c3d9f659758a14ba620018671d95f5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934370"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318950"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>Hızlı başlangıç: form tanıyıcı istemci kitaplığını kullanma
 
-Form tanıyıcı istemci kitaplığı ile çalışmaya başlayın. Form tanıyıcı, form belgelerinden anahtar/değer çiftlerini ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bilişsel bir hizmettir. Ardından, asıl dosyadaki ilişkileri de içeren yapılandırılmış verinin çıktısını verir. SDK paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
+Seçtiğiniz dilde form tanıyıcı istemci kitaplığı ile çalışmaya başlayın. Azure form tanıyıcı, makine öğrenimi teknolojisini kullanarak otomatik veri işleme yazılımı oluşturmanıza imkan tanıyan bir bilişsel hizmettir. Formdan metin, anahtar/değer çiftleri ve tablo verilerini belirleyip ayıklayın &mdash; . hizmet, özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıktı olarak verir. SDK paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 
 Form tanıyıcı istemci kitaplığını kullanarak şunları yapın:
 

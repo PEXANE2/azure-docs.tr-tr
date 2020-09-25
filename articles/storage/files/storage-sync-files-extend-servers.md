@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 80fcebec76788ca9ec754b35c57f9965f38c2c0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037108"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329474"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Öğretici: Windows dosya sunucularını Azure Dosya Eşitleme ile genişletme
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
@@ -242,7 +242,7 @@ Azure Dosya Eşitleme aracısı, Windows Server’ın bir Azure dosya paylaşım
 1. Henüz yapmadıysanız, PowerShell penceresini kapatın.
 1. **Depolama Eşitleme Aracısı Kurulum Sihirbazı**’nda varsayılan ayarları kabul edin.
 1. **Yükle**’yi seçin.
-1. **Son**'u seçin.
+1. **Son**’u seçin.
 
 Azure Eşitleme Hizmeti’ni dağıttınız ve aracıyı Windows Server 2016 Datacenter sanal makinesine yüklediniz. Şimdi VM’yi Depolama Eşitleme Hizmeti’ne kaydetmeniz gerekir.
 
@@ -250,7 +250,7 @@ Azure Eşitleme Hizmeti’ni dağıttınız ve aracıyı Windows Server 2016 Dat
 
 Windows Server 'ı bir depolama eşitleme hizmeti ile kaydettirmek, sunucunuz (veya kümeniz) ile depolama eşitleme hizmeti arasında bir güven ilişkisi kurar. Bir sunucu yalnızca bir depolama Eşitleme hizmetine kaydedilebilir. Bu, bu depolama eşitleme hizmeti ile ilişkili diğer sunucularla ve Azure dosya paylaşımlarıyla eşitlenebilir.
 
-Sunucu kayıt kullanıcı arabirimi, Azure Dosya Eşitleme aracısını yükledikten sonra otomatik olarak açılmalıdır. Değilse, dosya konumundan el ile açabilirsiniz:`C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
+Sunucu kayıt kullanıcı arabirimi, Azure Dosya Eşitleme aracısını yükledikten sonra otomatik olarak açılmalıdır. Değilse, dosya konumundan el ile açabilirsiniz: `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
 
 1. VM 'de sunucu kaydı kullanıcı arabirimi açıldığında **Tamam**' ı seçin.
 1. Başlamak için **oturum aç '** ı seçin.
@@ -261,7 +261,7 @@ Sunucu kayıt kullanıcı arabirimi, Azure Dosya Eşitleme aracısını yükledi
 
    | Değer | Açıklama |
    | ----- | ----- |
-   | **Azure aboneliği** | Bu öğretici için Depolama Eşitleme Hizmetini içeren abonelik. |
+   | **Azure Aboneliği** | Bu öğretici için Depolama Eşitleme Hizmetini içeren abonelik. |
    | **Kaynak Grubu** | Depolama eşitleme hizmetini içeren kaynak grubu. Bu öğretici için _afsresgroup101918_ kullanın. |
    | **Depolama Eşitleme Hizmeti** | Depolama eşitleme hizmeti adı. Bu öğretici için _afssyncservice02_ kullanın. |
 
@@ -314,6 +314,8 @@ Dosyalarınız artık Azure dosya paylaşımında ve Windows Server’da eşitle
 ![Azure Depolama başarıyla eşitlendi](media/storage-sync-files-extend-servers/files-synced-in-azurestorage.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu öğreticide oluşturduğunuz kaynakları temizlemek isterseniz, önce uç noktaları depolama eşitleme hizmetinden kaldırın. Ardından, depolama eşitleme hizmetinize sunucunun kaydını silin, eşitleme gruplarını kaldırın ve eşitleme hizmetini silin.
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 

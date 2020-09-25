@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad2bf071d4aa5b49541c710ef9b0793a1076ea9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 1ec5757b41da630c4cb09ad0c096aee87572615d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319903"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Eşitleme Azure Active Directory Connect: Microsoft 365 kaynaklar için tercih edilen veri konumunu yapılandırın
 Bu konunun amacı, Azure Active Directory (Azure AD) Connect Sync içinde tercih edilen veri konumu için özniteliği yapılandırma konusunda size yol gösterir. Birisi Microsoft 365 çoklu coğrafi bölge özellikleri kullandığında, bu özniteliği kullanıcının Microsoft 365 verilerinin coğrafi konumunu belirlemek için kullanırsınız. (Hüküm *bölgesi* ve *coğrafi* , birbirlerinin yerine kullanılır.)
@@ -118,7 +118,7 @@ Azure AD özniteliklerinin hepsi şirket içi Active Directory bağlayıcı alan
 4. Kullanmak üzere seçtiğiniz kaynak özniteliğin öznitelik listesinde işaretli olduğundan emin olun. Öznitelerinizi görmüyorsanız **Tümünü göster** onay kutusunu işaretleyin.
 5. Kaydetmek için **Tamam**' ı seçin.
 
-![Synchronization Service Manager ve Özellikler iletişim kutusunun ekran görüntüsü](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
+!["Öznitelikler" listesi vurgulanmış Synchronization Service Manager ve Özellikler iletişim kutusunu gösteren ekran görüntüsü.](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
 ## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>4. Adım: Azure AD bağlayıcı şemasına **Preferreddatalocation** ekleme
 **Bu adım yalnızca, Connect 1.3.21 veya daha eski bir sürümü çalıştırırsanız gereklidir. 1.4.18 veya daha yeni bir sürümü kullanıyorsanız, 5. adıma atlayın.**  
@@ -155,7 +155,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | Kaynak özniteliğini seçin | Olmayan | Güncelleştir |
+    |Direct | preferredDataLocation | Kaynak özniteliğini seçin | Olmayan | Güncelleştirme |
 
 7. Gelen kuralı oluşturmak için **Ekle**' yi seçin.
 
@@ -192,7 +192,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | Olmayan | Güncelleştir |
+    | Direct | preferredDataLocation | preferredDataLocation | Olmayan | Güncelleştirme |
 
 7. Giden kuralı oluşturmak için **Ekle** ' ye kapatın.
 

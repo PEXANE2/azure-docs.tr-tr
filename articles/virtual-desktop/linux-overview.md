@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04ea73825d6ffe2282a8d5564bfb6bb965a8190e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 0a53e9ae42031203347784b78e162e8f806eb3c5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320259"
 ---
 # <a name="linux-support"></a>Linux desteği
 
@@ -24,6 +24,7 @@ Aşağıdaki iş ortakları Linux cihazları için Windows sanal masaüstü iste
 |İş Ortağı|İş ortağı belgeleri|İş ortağı desteği|
 |:------|:--------------------|:--------------|
 |![IGEL logosu](./media/partners/igel.png)|[IGEL istemci belgeleri](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[ILEK desteği](https://www.igel.com/support/)|
+|![NComputing logosu](./media/partners/ncomputing.png)|[İstemci belgelerini nİşleme](https://www.ncomputing.com/microsoft)|[NBilgi Işlem desteği](https://www.ncomputing.com/support/support-options)|
 |![Stratodesk logosu](./media/partners/stratodesk.png)|[Stratodesk istemci belgeleri](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk desteği](https://www.stratodesk.com/support-3/)|
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d462f146f3f094602835d88e48815d5537c58665
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: afbc16f0fb30c1ada22b668771525288602cda44
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078791"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296646"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Azure Machine Learning’de gelişmiş analiz senaryoları
 Bu makalede, [ekip veri bilimi işlemi (TDSP)](overview.md)tarafından işlenebilen çeşitli örnek veri kaynakları ve hedef senaryolar özetlenmektedir. TDSP, ekiplerin akıllı uygulamalar oluşturma konusunda işbirliği yapmasına yönelik sistematik bir yaklaşım sağlar. Burada sunulan senaryolar, Azure 'daki veri özelliklerine, kaynak konumlarına ve hedef depolarına bağlı olan veri işleme iş akışında sunulan seçenekleri gösterir.
@@ -31,7 +31,7 @@ Aşağıdaki bölümlerin her biri örnek bir senaryo sunar. Her senaryo için, 
 > 
 > * [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
 >   <br/>
-> * [Azure Machine Learning çalışma alanı oluşturma](../studio/create-workspace.md)
+> * [Azure Machine Learning çalışma alanı oluşturma](../classic/create-workspace.md)
 > 
 > 
 

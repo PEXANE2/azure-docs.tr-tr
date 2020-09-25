@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: ba4b8f1d3aaa9b06f3bc24e9e267f6778734152a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: bad81e8929cd0c5c66c87fd9f6cc11dc746b3e5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903745"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317810"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Azure Stream Analytics Service Bus kuyruk çıktısı
 
@@ -24,7 +24,7 @@ ms.locfileid: "90903745"
 
 Aşağıdaki tabloda, bir kuyruk çıkışı oluşturmaya yönelik özellik adları ve açıklamaları listelenmektedir.
 
-| Özellik adı | Açıklama |
+| Özellik adı | Description |
 | --- | --- |
 | Çıktı diğer adı |Sorgu çıkışını bu Service Bus kuyruğuna yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Service Bus ad alanı |Bir mesajlaşma varlıkları kümesi için kapsayıcı. |
@@ -51,6 +51,22 @@ En büyük ileti boyutu, Standart katman için ileti başına 256 KB ve Premium 
 ## <a name="custom-metadata-properties-for-output"></a>Çıkış için özel meta veri özellikleri
 
 Sorgu sütunlarını, giden iletilerinize Kullanıcı özellikleri olarak ekleyebilirsiniz. Bu sütunlar yük içine gitmez. Özellikler, çıkış iletisindeki bir sözlük biçiminde bulunur. *Anahtar* , sütun adı ve *değer* Özellikler sözlüğündeki sütun değeridir. Tüm Stream Analytics veri türleri, kayıt ve dizi dışında desteklenir.
+
+Aşağıdaki örnekte, alanları `DeviceId` ve `DeviceStatus` meta verilere eklenir.
+
+1. Aşağıdaki sorguyu kullanın:
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. `DeviceId,DeviceStatus`Çıktıda Özellik sütunları olarak yapılandırın.
+
+   :::image type="content" source="media/service-bus-queues-output/property-columns.png" alt-text="Özellik sütunları":::
+
+Aşağıdaki görüntü, [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)kullanılarak EventHub ' de incelenen beklenen çıkış iletisi özellikleridir.
+
+:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Olay özel özellikleri":::
 
 ## <a name="system-properties"></a>Sistem özellikleri
 

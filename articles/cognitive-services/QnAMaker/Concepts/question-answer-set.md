@@ -1,14 +1,14 @@
 ---
 title: Tasarım Bilgi Bankası-Soru-Cevap Oluşturma
-description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) çiftleri ve isteğe bağlı meta veri kümesi içerir.
+description: Bilgi Bankası Soru-Cevap Oluşturma tasarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 86e176a378d02d294e0123aba0d2e08d99b044fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330664"
 ---
 # <a name="question-and-answer-pair-concepts"></a>Soru ve yanıt çifti kavramları
 

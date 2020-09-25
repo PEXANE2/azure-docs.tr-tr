@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 115f01bffc4664798682923cb83a99a23a8ce274
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 3f64086ed97594416b5964cf648c857c2f271480
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331106"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure Application Gateway ile doğrudan web trafiği
 
@@ -53,6 +53,8 @@ Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir san
 1. Kullanarak alt ağ yapılandırması oluşturun `New-AzVirtualNetworkSubnetConfig` .
 2. Kullanarak alt ağ yapılandırmalarına sahip sanal ağ oluşturun `New-AzVirtualNetwork` . 
 3. Kullanarak genel IP adresini oluşturun `New-AzPublicIpAddress` . 
+> [!NOTE]
+> [Sanal ağ hizmeti uç noktası ilkeleri](../virtual-network/virtual-network-service-endpoint-policies-overview.md) şu anda Application Gateway bir alt ağda desteklenmiyor.
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
