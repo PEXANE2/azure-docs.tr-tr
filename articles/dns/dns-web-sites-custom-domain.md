@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: cc36eca0b39db5188be7a63ffb148cc0f4cf30bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079493"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252893"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Öğretici: Bir web uygulaması için özel etki alanında DNS kaydı oluşturma 
 
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Özel etki alanınız için A ve TXT kaydı oluşturma
 > * Özel etki alanınız için CNAME kaydı oluşturma
 > * Yeni kayıtları test etme
-> * Web uygulamanıza özel ana bilgisayar adları ekleme
+> * Web uygulamanıza özel ana bilgisayar adları ekleyin
 > * Özel ana bilgisayar adlarını test etme
 
 
@@ -43,7 +43,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -175,7 +175,7 @@ Bir tarayıcı açıp `http://www.<your domainname>` ve `http://<you domain name
 > [!NOTE]
 > Ön eki eklediğinizden emin olun `http://` , aksi takdirde tarayıcınız sizin için BIR URL öngörme girişiminde bulunabilir!
 
-İki URL'de de aynı sayfayı görmeniz gerekir. Örnek:
+İki URL'de de aynı sayfayı görmeniz gerekir. Örneğin:
 
 ![Contoso uygulama hizmeti](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

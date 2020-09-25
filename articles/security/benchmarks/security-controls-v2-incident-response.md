@@ -4,19 +4,19 @@ description: Azure Güvenlik kıyaslaması v2 olay yanıtı
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2dbdb1af139472d5c7f4537399d434e045bb05cb
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 172607a7f8f036bbfb68e8d15e77b2a3e3fb5377
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059401"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326397"
 ---
-# <a name="security-control-incident-response"></a>Güvenlik denetimi: olay yanıtı
+# <a name="security-control-v2-incident-response"></a>Güvenlik denetimi v2: olay yanıtı
 
-Olay yanıtı, olay yanıtı yaşam döngüsü hazırlama, algılama ve analiz, kapsama ve olay sonrası etkinliklerin denetimlerini içerir. Bu, olay yanıtı sürecini otomatikleştirmek için Azure Güvenlik Merkezi ve Sentinel gibi Azure hizmetlerinin kullanılmasını içerir.
+Olay yanıtı, olay yanıtı yaşam döngüsü hazırlama, algılama ve analiz, kapsama ve olay sonrası etkinliklerdeki denetimleri ele alır. Bu, olay yanıtı sürecini otomatikleştirmek için Azure Güvenlik Merkezi ve Sentinel gibi Azure hizmetlerinin kullanılmasını içerir.
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: hazırlık – Azure için olay yanıtı işlemini güncelleştirme
 
@@ -28,13 +28,13 @@ Kuruluşunuzun güvenlik olaylarına yanıt vermek için işlem yapıldığında
 
 - [Kurumsal ortam genelinde güvenliği uygulama](https://aka.ms/AzSec4)
 
-- [Olay yanıtı başvuru kılavuzu](https://aka.ms/IRRG)
+- [Olay yanıtı başvuru kılavuzu](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik işlemleri (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Olay hazırlama](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -52,9 +52,9 @@ Azure Güvenlik Merkezi 'nde güvenlik olayı iletişim bilgilerini ayarlayın. 
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik işlemleri (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Olay hazırlama](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -78,9 +78,9 @@ Azure kaynakları için riskleri belirlemenize yardımcı olmak üzere dışarı
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik işlemleri (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Olay hazırlama](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -92,17 +92,19 @@ Azure kaynakları için riskleri belirlemenize yardımcı olmak üzere dışarı
 |--|--|--|--|
 | IR-4 | 19 | IR-4 |
 
-Analistlerin, olası olayları araştırarak, ne olduğunu bir tam görünüm oluşturmak için farklı veri kaynaklarını sorgulayabileceği ve kullanabilmesi için analist emin olun. Öngörüler ve dersleri diğer analistler için yakalandığından ve gelecekteki geçmiş başvurusuyla emin olun. 
+Analistlerin, olası olayları araştırarak, ne olduğunu bir tam görünüm oluşturmak için farklı veri kaynaklarını sorgulayabileceği ve kullanabilmesi için analist emin olun. Görünmeyen noktaları önlemek için, bir olası saldırganın sonlandırma zincirindeki etkinliklerini izlemek üzere farklı Günlükler toplanmalıdır.  Ayrıca, Öngörüler ve dersleri diğer analistler için yakalandığından ve gelecekteki geçmiş başvurusuyla emin olmanız gerekir.  
 
 Araştırmaya yönelik veri kaynakları, zaten kapsam içi hizmetlerden ve çalışan sistemlerde toplanmakta olan Merkezi günlük kaynakları içerir, ancak şunları da içerebilir:
 
-Ağ verileri – ağ akışı günlüklerini ve diğer analiz bilgilerini yakalamak için ağ güvenlik grupları ' akış günlükleri, Azure ağ Izleyicisi ve Azure Izleyicisi ' ni kullanın. Çalışan sistemlerin anlık görüntüleri: 
+- Ağ verileri – ağ akışı günlüklerini ve diğer analiz bilgilerini yakalamak için ağ güvenlik grupları ' akış günlükleri, Azure ağ Izleyicisi ve Azure Izleyicisi ' ni kullanın. 
 
--   Çalışan sistemin diskinin anlık görüntüsünü oluşturmak için Azure sanal makinesinin anlık görüntü özelliğini kullanın. 
+- Çalışan sistemlerin anlık görüntüleri: 
 
--   Çalışan sistem belleğinin bir anlık görüntüsünü oluşturmak için işletim sisteminin yerel bellek dökümü özelliğini kullanın.
+    - Çalışan sistemin diskinin anlık görüntüsünü oluşturmak için Azure sanal makinesinin anlık görüntü özelliğini kullanın. 
 
--   Çalışan sistemlerin anlık görüntülerini oluşturmak için Azure hizmetlerinin anlık görüntü özelliğini veya yazılımınızın kendi özelliğini kullanın.
+    - Çalışan sistem belleğinin bir anlık görüntüsünü oluşturmak için işletim sisteminin yerel bellek dökümü özelliğini kullanın.
+
+    - Çalışan sistemlerin anlık görüntülerini oluşturmak için Azure hizmetlerinin anlık görüntü özelliğini veya yazılımınızın kendi özelliğini kullanın.
 
 Azure Sentinel, olayların tam yaşam döngüsünü yönetmek için neredeyse tüm günlük kaynakları ve bir servis talebi yönetim portalı genelinde kapsamlı veri analizi sağlar. İnceleme sırasında zeka bilgileri, izleme ve raporlama amaçları için bir olayla ilişkilendirilebilir. 
 
@@ -116,9 +118,9 @@ Azure Sentinel, olayların tam yaşam döngüsünü yönetmek için neredeyse t�
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik işlemleri (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Olay hazırlama](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -134,7 +136,7 @@ Uyarı önem derecesine ve varlık duyarlığına göre ilk olarak odaklanabilec
 
 Azure Güvenlik Merkezi, ilk olarak hangi uyarıların araştırılması gerektiğini önceliklendirmenize yardımcı olmak için her bir uyarıya önem derecesi atar. Önem derecesi, güvenlik merkezi 'nin uyarıyı vermek için kullanılan bulma veya analitik ile ne kadar önemli olduğunu ve uyarıya yönelik etkinliğin arkasında kötü amaçlı bir amaç olduğunu belirten güven düzeyini temel alır.
 
-Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynaklarını tanımlamak ve kategorilere ayırmak için özellikle de hassas verileri işleyen bir adlandırma sistemi oluşturun.  Olayın gerçekleştiği Azure kaynakları ve ortamının önem derecesine bağlı olarak, uyarıların düzeltilmesine öncelik vermek sizin sorumluluğunuzdadır.
+Ayrıca, etiketleri kullanarak kaynakları işaretleyin ve Azure kaynaklarını tanımlamak ve kategorilere ayırmak için özellikle de hassas verileri işleyen bir adlandırma sistemi oluşturun.  Olayın gerçekleştiği Azure kaynakları ve ortamının önem derecesine bağlı olarak, uyarıların düzeltilmesine öncelik vermek sizin sorumluluğunuzdadır.
 
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../../security-center/security-center-alerts-overview.md)
 
@@ -142,9 +144,9 @@ Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynakların
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik işlemleri (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Olay hazırlama](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -166,9 +168,9 @@ Yanıt süresini hızlandırmak ve analistlerin yükünü azaltmak için el ile 
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik işlemleri (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Olay hazırlama](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 

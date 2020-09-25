@@ -1,6 +1,6 @@
 ---
 title: StorSimple Aygıt Yöneticisi hizmetini Azure 'da dağıtma | Microsoft Docs
-description: Azure portal StorSimple Aygıt Yöneticisi hizmeti oluşturmayı ve silmeyi açıklar ve hizmet kayıt anahtarının nasıl yönetileceğini açıklar.
+description: Oluşturma, silme, hizmetin geçirilmesi ve hizmet kayıt anahtarının yönetimi için gereken adımlar hakkında bilgi edinin.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847106"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249561"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 serisi cihazlar için StorSimple Aygıt Yöneticisi hizmetini dağıtma
 
@@ -177,37 +177,37 @@ Cihazınızda hizmet veri şifrelemesini güncelleştirmek için aşağıdaki ad
 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>Fiziksel cihazlarda hizmet veri şifreleme anahtarını güncelleştirmek için
 1. Konsola bağlanmak için StorSimple için Windows PowerShell kullanın. Tam erişimle oturum açmak için 1 seçeneğini belirleyin.
-2. Komut isteminde şunu yazın:`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+2. Komut isteminde şunu yazın:  `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 3. 2. adımda elde ettiğiniz hizmet veri şifreleme anahtarını sağlayın [: hizmet verileri şifreleme anahtarı değişikliğini başlatmak için StorSimple için Windows PowerShell kullanın](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Tüm 8010/8020 bulut gereçlerinde hizmet veri şifreleme anahtarını güncelleştirmek için
 1. [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell betiğini indirip kurun. 
-2. PowerShell 'i açın ve komut isteminde şunu yazın:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+2. PowerShell 'i açın ve komut isteminde şunu yazın:  `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Bu betik, hizmet veri şifreleme anahtarının, cihaz yöneticisi altındaki tüm 8010/8020 bulut gereçlerinde ayarlanmış olmasını sağlayacaktır.
 
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Güncelleştirme 5,0 ' den önceki sürümleri çalıştıran cihazlarda desteklenen işlemler
 Azure portal, yalnızca güncelleştirme 5,0 ve üstünü çalıştıran StorSimple cihazları desteklenir. Daha eski sürümleri çalıştıran cihazların desteği sınırlıdır. Azure portal geçirdikten sonra, güncelleştirme 5,0 ' den önceki sürümleri çalıştıran cihazlarda hangi işlemlerin desteklendiğini anlamak için aşağıdaki tabloyu kullanın.
 
-| Çalışma                                                                                                                       | Destekleniyor      |
+| İşlem                                                                                                                       | Desteklenir      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Cihaz kaydetme                                                                                                               | Evet            |
-| Genel, ağ ve güvenlik gibi cihaz ayarlarını yapılandırma                                                                | Evet            |
-| Güncelleştirmeleri tarama, indirme ve yükleme                                                                                             | Evet            |
-| Cihazı devre dışı bırak                                                                                                               | Evet            |
-| Cihazı silme                                                                                                                   | Evet            |
-| Birim kapsayıcısı oluşturma, değiştirme ve silme                                                                                   | Hayır             |
-| Birim oluşturma, değiştirme ve silme                                                                                             | Hayır             |
-| Yedekleme ilkesi oluşturma, değiştirme ve silme                                                                                      | Hayır             |
-| El ile yedekleme yapın                                                                                                            | Hayır             |
-| Zamanlanmış bir yedekleme yapın                                                                                                         | Uygulanamaz |
-| Yedek kümesi 'ten geri yükleme                                                                                                        | Hayır             |
-| Güncelleştirme 3,0 ve üstünü çalıştıran bir cihaza Kopyala <br> Kaynak cihaz güncelleştirme 3,0 ' den önceki sürümü çalıştırıyor.                                | Evet            |
-| Güncelleştirme 3,0 ' den önceki sürümleri çalıştıran bir cihaza Kopyala                                                                          | Hayır             |
-| Kaynak cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' den önceki sürümü çalıştıran bir cihazdan güncelleştirme 3,0 ve üzeri sürümlerini çalıştıran bir cihaza)                                                               | Evet            |
-| Hedef cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' dan önce yazılım sürümü çalıştıran bir cihaza)                                                                                   | Hayır             |
-| Bir uyarıyı Temizleme                                                                                                                  | Evet            |
-| Klasik portalda oluşturulan yedekleme ilkelerini, yedekleme kataloğunu, birimleri, birim kapsayıcılarını, izleme grafiklerini, işleri ve uyarıları görüntüleme | Evet            |
+| Cihaz kaydetme                                                                                                               | Yes            |
+| Genel, ağ ve güvenlik gibi cihaz ayarlarını yapılandırma                                                                | Yes            |
+| Güncelleştirmeleri tarama, indirme ve yükleme                                                                                             | Yes            |
+| Cihazı devre dışı bırak                                                                                                               | Yes            |
+| Cihazı silme                                                                                                                   | Yes            |
+| Birim kapsayıcısı oluşturma, değiştirme ve silme                                                                                   | No             |
+| Birim oluşturma, değiştirme ve silme                                                                                             | No             |
+| Yedekleme ilkesi oluşturma, değiştirme ve silme                                                                                      | No             |
+| El ile yedekleme yapın                                                                                                            | No             |
+| Zamanlanmış bir yedekleme yapın                                                                                                         | Geçerli değil |
+| Yedek kümesi 'ten geri yükleme                                                                                                        | No             |
+| Güncelleştirme 3,0 ve üstünü çalıştıran bir cihaza Kopyala <br> Kaynak cihaz güncelleştirme 3,0 ' den önceki sürümü çalıştırıyor.                                | Yes            |
+| Güncelleştirme 3,0 ' den önceki sürümleri çalıştıran bir cihaza Kopyala                                                                          | No             |
+| Kaynak cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' den önceki sürümü çalıştıran bir cihazdan güncelleştirme 3,0 ve üzeri sürümlerini çalıştıran bir cihaza)                                                               | Yes            |
+| Hedef cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' dan önce yazılım sürümü çalıştıran bir cihaza)                                                                                   | No             |
+| Bir uyarıyı Temizleme                                                                                                                  | Yes            |
+| Klasik portalda oluşturulan yedekleme ilkelerini, yedekleme kataloğunu, birimleri, birim kapsayıcılarını, izleme grafiklerini, işleri ve uyarıları görüntüleme | Yes            |
 | Cihaz denetleyicilerini aç ve Kapat                                                                                              | Evet            |
 
 

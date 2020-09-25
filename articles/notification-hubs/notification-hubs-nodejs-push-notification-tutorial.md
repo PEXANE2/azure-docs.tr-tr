@@ -17,13 +17,13 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d9b914c631c829c2e3dc71940a171cdb3dc81960
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 34962686ae36764a6dc16b164e91004be9ef038d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250428"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs ve Node.js anında iletme bildirimleri gönderme
 
@@ -49,7 +49,7 @@ Azure Notification Hubs, mobil cihazlara anında iletme bildirimleri göndermek 
 
 ## <a name="create-a-nodejs-application"></a>Node.js uygulaması oluşturma
 
-Bu öğreticideki ilk adım yeni bir boş Node.js uygulaması oluşturmaktır. Node.js uygulaması oluşturma hakkında yönergeler için bkz. [Azure Web sitesine Node.js uygulama oluşturma ve dağıtma][nodejswebsite], Windows PowerShell kullanarak [bulut hizmetiNode.js][Node.js Cloud Service] veya [WebMatrix ile Web sitesi][webmatrix]kullanma.
+Bu öğreticideki ilk adım yeni bir boş Node.js uygulaması oluşturmaktır. Node.js uygulaması oluşturma hakkında yönergeler için bkz. [Azure Web sitesine Node.js uygulama oluşturma ve dağıtma][nodejswebsite], Windows PowerShell kullanarak [ bulut hizmetiNode.js][Node.js Cloud Service] veya [WebMatrix ile Web sitesi][webmatrix]kullanma.
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>Uygulamanızı kullanmak için yapılandırma Notification Hubs
 
@@ -96,10 +96,10 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 `NotificationHubService`Nesnesi, belirli cihazlara ve uygulamalara anında iletme bildirimleri göndermek için aşağıdaki nesne örneklerini kullanıma sunar:
 
-- **Android** - `GcmService` Şu adreste bulunan nesnesini kullanın:`notificationHubService.gcm`
-- **iOS** - `ApnsService` Şu adresten erişilebilen nesnesini kullanın:`notificationHubService.apns`
-- **Windows Phone** - `MpnsService` Şu adreste bulunan nesnesini kullanın:`notificationHubService.mpns`
-- **Evrensel Windows platformu** - `WnsService` Şu adreste bulunan nesnesini kullanın:`notificationHubService.wns`
+- **Android** - `GcmService` Şu adreste bulunan nesnesini kullanın: `notificationHubService.gcm`
+- **iOS** - `ApnsService` Şu adresten erişilebilen nesnesini kullanın: `notificationHubService.apns`
+- **Windows Phone** - `MpnsService` Şu adreste bulunan nesnesini kullanın: `notificationHubService.mpns`
+- **Evrensel Windows platformu** - `WnsService` Şu adreste bulunan nesnesini kullanın: `notificationHubService.wns`
 
 ### <a name="how-to-send-push-notifications-to-android-applications"></a>Nasıl yapılır: Android uygulamalarına anında iletme bildirimleri gönderme
 
@@ -155,7 +155,7 @@ notificationHubService.apns.send(null, payload, function(error){
 
 - **Etiketler** -etiket tanımlayıcısı. Hiçbir etiket sağlanmazsa, bildirim tüm istemcilere gönderilir.
 - **Yük** -iletinin XML yükü.
-- **TargetName**  -  TargetName `toast` bildirim için. `token`kutucuk bildirimleri için.
+- **TargetName**  -  TargetName `toast` bildirim için. `token` kutucuk bildirimleri için.
 - **Notificationclass** -bildirimin önceliği. Geçerli değerler için [bir sunucu belgesinden anında iletme bildirimlerinin](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) **http üst bilgi öğeleri** bölümüne bakın.
 - **Seçenekler** -isteğe bağlı istek üst bilgileri.
 - **Geri arama** -geri çağırma işlevi.

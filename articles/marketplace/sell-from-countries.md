@@ -9,12 +9,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 09/02/2020
-ms.openlocfilehash: 393b71e78c59d126b24da2f1fd354ccfadf6825a
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fd33ebebf35e0407f7ce39c609ee372a7d1d4a61
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250513"
 ---
 # <a name="supported-publisher-countries-and-regions"></a>Desteklenen yayımcı ülkeleri ve bölgeleri
 
@@ -66,7 +66,6 @@ Microsoft Commercial Market 'e bir teklif yayımlamak için, aşağıdaki ülkel
 - Orta Afrika Cumhuriyeti
 - Çad
 - Şili
-- Çin
 - Christmas Adası
 - Cocos (Keeling) Adaları
 - Kolombiya

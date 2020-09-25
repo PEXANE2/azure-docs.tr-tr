@@ -6,26 +6,30 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+keywords: bilişsel hizmetler, bilişsel zeka, bilişsel çözümler, AI Hizmetleri
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 36e21a131181831c2a87c0c6d2c24c9aa6e0acf7
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 41dc99c206fb66aa87ccca6e40d6e9488f801a22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245018"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262442"
 ---
-# <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure komut satırı arabirimi 'ni (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
+# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Hızlı başlangıç: Azure komut satırı arabirimi 'ni (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
 
-Azure [komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)kullanarak Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı kullanın. Bilişsel hizmetler, Azure aboneliğinizde oluşturduğunuz Azure [kaynakları](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) tarafından temsil edilir. Kaynağı oluşturduktan sonra, uygulamalarınızın kimliğini doğrulamak için oluşturulan anahtarları ve uç noktayı kullanın.
+Azure [komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)kullanarak Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı kullanın.
 
+Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliştiricilerin doğrudan yapay zeka (AI) veya veri bilimi becerileri veya bilgi sahibi olmadan uygulamalara bilişsel zeka bilgileri oluşturmalarına yardımcı olacak istemci kitaplığı SDK 'Ları. Azure bilişsel hizmetler, geliştiricilerin kendi uygulamalarına kolayca bilişsel özellikler eklemesine, duymasına, konuşmasına, anlamasına ve hatta başlayabilmesine olanak tanıyan bilişsel çözümler sunar.
+
+Bilişsel hizmetler, Azure aboneliğinizde oluşturduğunuz Azure [kaynakları](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) tarafından temsil edilir. Kaynağı oluşturduktan sonra, uygulamalarınızın kimliğini doğrulamak için oluşturulan anahtarları ve uç noktayı kullanın.
 
 Bu hızlı başlangıçta, Azure [komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)kullanarak Azure bilişsel hizmetler 'e kaydolmayı ve tek hizmet veya çok hizmet aboneliği olan bir hesabı oluşturmayı öğreneceksiniz. Bu hizmetler Azure [kaynakları](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)tarafından temsil edilir ve Azure bilişsel hizmetler API'si bir veya daha fazlasına bağlanmanızı sağlar.
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Geçerli bir Azure aboneliği-ücretsiz olarak [bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services) .
 * [Azure komut satırı arabirimi (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -50,7 +54,7 @@ Bir kaynak oluşturmak için, aboneliğiniz için kullanılabilen Azure konumlar
 
 > [!IMPORTANT]
 > * Azure bilişsel hizmetler 'i çağırırken ihtiyacınız olacak şekilde Azure konumunuzu unutmayın.
-> * Bilişsel Hizmetlerin kullanılabilirliği bölgeye göre farklılık gösterebilir. Daha fazla bilgi için bkz. [bölgeye göre Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services).  
+> * Bilişsel Hizmetlerin kullanılabilirliği bölgeye göre farklılık gösterebilir. Daha fazla bilgi için bkz. [bölgeye göre Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services).
 
 ```azurecli-interactive
 az account list-locations \
@@ -76,7 +80,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 
 ### <a name="multi-service"></a>Çoklu hizmet
 
-| Hizmet                    | Tip                      |
+| Hizmet                    | Tür                      |
 |----------------------------|---------------------------|
 | Birden çok hizmet. Daha fazla bilgi için [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/) sayfasına bakın.            | `CognitiveServices`     |
 
@@ -84,9 +88,9 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 > [!NOTE]
 > Aşağıdaki bilişsel hizmetler 'in çoğunda hizmeti denemek için kullanabileceğiniz ücretsiz bir katman vardır. Ücretsiz katmanı kullanmak için, `F0` kaynağınız için SKU olarak kullanın.
 
-### <a name="vision"></a>Görsel
+### <a name="vision"></a>Vision
 
-| Hizmet                    | Tip                      |
+| Hizmet                    | Tür                      |
 |----------------------------|---------------------------|
 | Görüntü İşleme            | `ComputerVision`          |
 | Özel Görüntü İşleme tahmin | `CustomVision.Prediction` |
@@ -95,9 +99,9 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 | Form Tanıma            | `FormRecognizer`          |
 | Mürekkep Tanıma             | `InkRecognizer`           |
 
-### <a name="search"></a>Arama
+### <a name="search"></a>Arayın
 
-| Hizmet            | Tip                  |
+| Hizmet            | Tür                  |
 |--------------------|-----------------------|
 | Bing Otomatik Öneri   | `Bing.Autosuggest.v7` |
 | Bing Özel Arama | `Bing.CustomSearch`   |
@@ -107,14 +111,14 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 
 ### <a name="speech"></a>Konuşma
 
-| Hizmet            | Tip                 |
+| Hizmet            | Tür                 |
 |--------------------|----------------------|
 | Konuşma Hizmetleri    | `SpeechServices`     |
 | Konuşma Tanıma | `SpeakerRecognition` |
 
 ### <a name="language"></a>Dil
 
-| Hizmet            | Tip                |
+| Hizmet            | Tür                |
 |--------------------|---------------------|
 | Form anlama | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -124,7 +128,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 
 ### <a name="decision"></a>Karar
 
-| Hizmet           | Tip               |
+| Hizmet           | Tür               |
 |-------------------|--------------------|
 | Anomali Algılayıcısı  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |

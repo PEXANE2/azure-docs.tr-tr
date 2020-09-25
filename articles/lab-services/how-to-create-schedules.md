@@ -3,12 +3,12 @@ title: Azure Lab Services sınıf laboratuvarları için zamanlama oluşturma | 
 description: Laboratuvardaki VM 'Lerin belirli bir zamanda başlamasını ve kapatılmasını sağlamak üzere Azure Lab Services sınıfta derslik Labs için zamanlamalar oluşturmayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d6dcdd8d09c2c71c2d41aebd358639883ccfb33d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445789"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326448"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarları için zamanlamalar oluşturma ve yönetme 
 Zamanlamalar, laboratuvardaki VM 'Lerin otomatik olarak başlamasını ve belirli bir zamanda kapatılmasını sağlamak için bir derslik Laboratuvarı yapılandırmanıza olanak tanır. Tek seferlik bir zamanlama veya yinelenen bir zamanlama tanımlayabilirsiniz. Aşağıdaki yordamlar, bir derslik Laboratuvarı için zamanlama oluşturma ve yönetme adımları sunar: 
@@ -27,7 +27,7 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
 
 1. **Zamanlamalar** sayfasına geçin ve araç çubuğunda **Zamanlanmış olay Ekle** ' yi seçin. 
 
-    ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](./media/how-to-create-schedules/add-schedule-button.png)
+    ![Zamanlamayı Ekle düğmesi seçili olan Azure Lab Services "Schedule" sayfasını gösteren ekran görüntüsü.](./media/how-to-create-schedules/add-schedule-button.png)
 2. **Standart** **olay türünün**seçili olduğunu onaylayın. Yalnızca VM 'Lerin başlangıç saatini belirtmek için **Başlat** ' ı seçin. Yalnızca VM 'Ler için durma saatini belirtmek üzere **Durdur** ' u seçin. 
 7. **Yinele** bölümünde geçerli zamanlamayı seçin. 
 
@@ -39,7 +39,7 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
     5. VM 'Lerin kapatıldığı **bitiş saatini** belirtin. 
     6. Belirttiğiniz başlangıç ve durdurma zamanları için **saat dilimini** belirtin. 
     2. Zamanlamanın etkili olmasını istediğiniz günleri seçin. Aşağıdaki örnekte Pazartesi-Perşembe seçilidir. 
-    8. **Kaydet**'i seçin. 
+    8. **Kaydet**’i seçin. 
 
         ![Yineleme zamanlaması ayarla](./media/how-to-create-schedules/set-repeat-schedule.png)
 

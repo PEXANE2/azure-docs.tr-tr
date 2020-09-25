@@ -2,14 +2,16 @@
 title: Azure VMware çözümünü dağıtma
 description: Azure portal kullanarak Azure VMware çözümünü dağıtma adımları.
 ms.topic: include
-ms.date: 09/07/2020
-ms.openlocfilehash: bd839cf81e6f28f2db973a0dd604ba241caf2128
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.date: 09/21/2020
+ms.openlocfilehash: 4fa2925cf284871c4a168d2b69d4fbd3a81de878
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512392"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254661"
 ---
+<!-- Used in avs-deployment.md and tutorial-create-private-cloud.md -->
+
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **Yeni kaynak oluştur**' u seçin. **Market** metin kutusu yazın `Azure VMware Solution` ve listeden **Azure VMware çözümü** ' nü seçin. **Azure VMware Çözüm** penceresinde **Oluştur** ' u seçin.

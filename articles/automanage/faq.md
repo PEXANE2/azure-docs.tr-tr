@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: ed97f7861f5dd959fd41ac22b4e497f492dbc3a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fa24c0db398c4c799d218ff5e8ec8e3d3e321742
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311555"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>VM 'Ler için Azure oto yönetimi hakkında sık sorulan sorular
 
@@ -36,7 +36,9 @@ Aşağıda, Azure oto yönetimi 'ni etkinleştirme önkoşulları verilmiştir:
 
 **Oto yönetimi etkinleştirmek için hangi RBAC izni gereklidir?**
 
-Kullanıcıların sahip rolü olmalıdır. Alternatif olarak, kullanıcılar, Kullanıcı erişimi yönetici rolü ile birlikte, oto yönetme uygulamak için katkıda bulunan rolüne sahip olabilir.
+Mevcut bir oto Yönet hesabı olan bir VM 'de, oto Yönet 'i etkinleştirirseniz, VM 'nin bulunduğu kaynak grubuna katkıda bulunan rolü gerekir. 
+
+Etkinleştirme sırasında yeni bir bir bir bir bir bir bir bir bir oto Yönet hesabı kullanıyorsanız, kullanıcıların aboneliğe sahip olması veya katkıda bulunan + Kullanıcı erişimi yönetici rolü olması gerekir.
 
 
 **Hangi bölgeler destekleniyor?**
@@ -82,6 +84,11 @@ Evet, otomatik olarak tanımlanan kapsamdaki tüm VM 'lere otomatik Yönet uygul
 **Bir oto Yönet hesabı nedir?**
 
 Otomatikmanage hesabı, güvenlik bağlamını sağlayan bir MSI (Yönetilen Hizmet Kimliği) veya otomatik işlemlerin gerçekleştirileceği kimliği sağlar.
+
+
+**Oto yönetimi etkinleştirilirken, seçili VM 'Lerin yanı sıra ek VM 'Leri etkilerler.**
+
+VM 'niz mevcut bir Log Analytics çalışma alanına bağlıysa, bu çözümleri uygulamak için bu çalışma alanını yeniden kullanacağız: Değişiklik İzleme, envanter ve Güncelleştirme Yönetimi. Bu çalışma alanına bağlı tüm VM 'Ler, bu çözümlerin etkinleştirilmesini sağlar. 
 
 
 **VM 'nin yapılandırma profilini değiştirebilir miyim?**

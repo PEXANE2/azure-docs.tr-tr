@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468717"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282315"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -25,6 +25,15 @@ Bu makalenin geri kalanında, bu işlemlerin nasıl kullanılacağına ilişkin 
 ## <a name="query-syntax"></a>Sorgu söz dizimi
 
 Bu bölüm, sorgu dili yapısını gösteren örnek sorgular içerir ve [dijital TWINS](concepts-twins-graph.md)üzerinde olası sorgu işlemleri gerçekleştirir.
+
+### <a name="show-all-existing-digital-twins"></a>Tüm mevcut dijital tları göster
+
+Örnekteki tüm dijital TWINS listesini döndürecek temel sorgu aşağıda verilmiştir:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+```
 
 ### <a name="select-top-items"></a>En üstteki öğeleri seç
 
@@ -208,8 +217,8 @@ Aşağıdaki dize işlevleri desteklenir:
 
 | İşlev | Açıklama |
 | -------- | ----------- |
-| STARTS_WITH (x, y) | İlk dize ifadesinin ikinciyle başlatılıp başlatılmayacağını gösteren bir Boole değeri döndürür. |
-| ENDS_WITH (x, y) | İlk dize ifadesinin ikinciyle sonlanıp bitmediğini gösteren bir Boole değeri döndürür. |
+| STARTSWITH (x, y) | İlk dize ifadesinin ikinciyle başlatılıp başlatılmayacağını gösteren bir Boole değeri döndürür. |
+| ENDSWITH (x, y) | İlk dize ifadesinin ikinciyle sonlanıp bitmediğini gösteren bir Boole değeri döndürür. |
 
 ## <a name="run-queries-with-an-api-call"></a>Sorguları bir API çağrısıyla çalıştırma
 

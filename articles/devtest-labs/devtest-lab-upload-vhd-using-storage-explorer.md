@@ -3,12 +3,12 @@ title: Depolama Gezgini kullanarak Azure DevTest Labs VHD dosyasını karşıya 
 description: Microsoft Azure Depolama Gezgini kullanarak VHD dosyasını laboratuvar depolama hesabına yükleyin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6ed6ace63a135628b6d306b946c0356091bf1bd2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654523"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282536"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure Depolama Gezgini kullanarak VHD dosyasını laboratuvar depolama hesabına yükleyin
 
@@ -24,7 +24,7 @@ Aşağıdaki adımlar, [Microsoft Azure Depolama Gezgini](../vs-azure-tools-stor
 
 1. Azure portal kullanarak laboratuvarın depolama hesabının adını alın:
 
-    1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+    1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
     
     1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
     
@@ -90,13 +90,13 @@ Aşağıdaki adımlar, [Microsoft Azure Depolama Gezgini](../vs-azure-tools-stor
 
     1. Depolama Gezgini sağ bölmede, laboratuvarın depolama **hesabının blob kapsayıcısındaki blob 'ların** bir listesini görmeniz gerekir. Blob Düzenleyicisi araç çubuğunda **karşıya yükle** ' yi seçin. 
         
-        ![Karşıya yükle düğmesi][6]
+        !["Karşıya yükle" düğmesinin seçili Depolama Gezgini sağ bölmesini gösteren ekran görüntüsü.][6]
     
     1. **Karşıya yükle** açılan menüsünde **dosyaları karşıya yükle...** öğesini seçin.
     
     1. **Dosyaları karşıya yükle** iletişim kutusunda üç nokta simgesini seçin.
         
-        ![Dosya Seç][8]  
+        !["Dosyaları karşıya yükle" iletişim kutusunu seçilen üç nokta ile gösteren ekran görüntüsü.][8]  
 
     1. **Karşıya yüklenecek dosyaları seçin** iletişim kutusunda, istenen VHD dosyasına gidin, seçin ve sonra **Aç**' ı seçin.
     

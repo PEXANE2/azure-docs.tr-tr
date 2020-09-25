@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b88d017110f4d7b9859f2d801c5405ecee1589c5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3f9064c25581523167918b84a2d0027747e32bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297476"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282383"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -383,6 +383,17 @@ Tüm TWINS sürümlerini aynı anda silme hakkında bir örnek için öğreticid
 TWINS, Azure Digital TWINS CLı kullanılarak da yönetilebilir. Komutları [*nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma*](how-to-use-cli.md)bölümünde bulabilirsiniz.
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
+## <a name="view-all-digital-twins"></a>Tüm dijital TWINS 'i görüntüle
+
+Örneğinizdeki dijital TWINS 'in tamamını görüntülemek için bir [sorgu](how-to-query-graph.md)kullanın. Sorgu [API 'leri](how-to-use-apis-sdks.md) veya [CLI komutlarıyla](how-to-use-cli.md)bir sorgu çalıştırabilirsiniz.
+
+Örnekteki tüm dijital TWINS listesini döndürecek temel sorgunun gövdesi aşağıda verilmiştir:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

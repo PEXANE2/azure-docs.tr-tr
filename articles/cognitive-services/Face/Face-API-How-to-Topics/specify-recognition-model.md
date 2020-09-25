@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da34c2aa8a178a99f325bef8beb4a7e7685b3cbc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d250fc005c5760a3eecc2793d02b6f2a9161e663
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931480"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283046"
 ---
 # <a name="specify-a-face-recognition-model"></a>Yüz tanıma modeli belirtme
 
@@ -35,10 +35,11 @@ Model çakışmalarını önleyerek, farklı yüz işlemlerinde seçili bir mode
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-AI yüz tanıma ve tanımlama kavramlarını tanımanız gerekir. Değilseniz, önce bu nasıl yapılır kılavuzlarını inceleyin:
+AI yüz tanıma ve tanımlama kavramlarını tanımanız gerekir. Değilseniz, önce şu kılavuzlara bakın:
 
+* [Yüz algılama kavramları](../concepts/face-detection.md)
+* [Yüz tanıma kavramları](../concepts/face-recognition.md)
 * [Görüntüdeki yüzeyleri algılama](HowtoDetectFacesinImage.md)
-* [Görüntüdeki yüzeyleri belirleme](HowtoIdentifyFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>Belirtilen modelle yüzler Algıla
 

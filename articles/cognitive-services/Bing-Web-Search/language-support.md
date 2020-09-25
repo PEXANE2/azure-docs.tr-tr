@@ -1,7 +1,7 @@
 ---
 title: Dil desteği-Bing Web Araması API'si
 titleSuffix: Azure Cognitive Services
-description: Bing Haber Arama API'si tarafından desteklenen doğal dillerin, ülkelerin ve bölgelerin listesi.
+description: Bing Web Araması API'si tarafından desteklenen doğal dillerin, ülkelerin ve bölgelerin listesi.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e378bc88d28173eaed0308db3034a54236d63098
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68882681"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262833"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web Araması API'si için dil ve bölge desteği
 
 Bing Web Araması API'si, üç düzine ülke veya bölgeyi destekler ve birden çok dili vardır. Bir ülkeyi veya bölgeyi bir sorgu ile belirtmek, bu ülkeye veya bölgelere ilgi alanları temelinde arama sonuçlarının iyileştirmesine yardımcı olur. Sonuçlar Bing bağlantıları içerebilir ve bu bağlantılar, belirtilen ülkeye/bölgeye veya dile göre Bing Kullanıcı deneyimini yerelleştiremeyebilir.
 
-`cc` Sorgu parametresini kullanarak bir ülke veya bölge belirtebilirsiniz. Ülke veya bölge belirtildiğinde, [ `Accept-Language` üst](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)bilgiyle bir veya daha fazla dil kodu belirtmeniz gerekir. Her pazarda desteklenen dillerin bir listesi için [pazarlar tablosunu](#markets) kullanın.
+Sorgu parametresini kullanarak bir ülke veya bölge belirtebilirsiniz `cc` . Ülke veya bölge belirtildiğinde, [ `Accept-Language` üst](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)bilgiyle bir veya daha fazla dil kodu belirtmeniz gerekir. Her pazarda desteklenen dillerin bir listesi için [pazarlar tablosunu](#markets) kullanın.
 
 Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosundan bir kod ile de belirtebilirsiniz. Bir pazar aynı anda belirtildiğinde bir ülke veya bölgeyi ve tercih edilen dili belirtir. Dili `setLang` sorgu parametresiyle açıkça ayarlayabilirsiniz.
 
@@ -42,7 +42,7 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Almanya|DE|
 |Hong Kong ÖİB|HK|
 |Hindistan|IN|
-|Endonezya|Kimlik|
+|Endonezya|ID|
 |İtalya|BT|
 |Japonya|JP|
 |Güney Kore|KR|
@@ -64,7 +64,7 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Tayvan|TW|
 |Türkiye|TR|
 |Birleşik Krallık|GB|
-|Amerika Birleşik Devletleri|ABD|
+|Birleşik Devletler|ABD|
 
 ## <a name="markets"></a>Pazar
 
@@ -108,8 +108,8 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Tayvan|Geleneksel Çince|zh-TW|
 |Türkiye|Türkçe|tr-TR|
 |Birleşik Krallık|İngilizce|en-GB|
-|Amerika Birleşik Devletleri|İngilizce|tr-TR|
-|Amerika Birleşik Devletleri|İspanyolca|es-US|
+|Birleşik Devletler|İngilizce|tr-TR|
+|Birleşik Devletler|İspanyolca|es-US|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

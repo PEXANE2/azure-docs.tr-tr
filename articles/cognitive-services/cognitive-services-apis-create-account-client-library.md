@@ -3,23 +3,28 @@ title: Azure Yönetim istemci kitaplığı 'nı kullanarak bilişsel hizmetler k
 titleSuffix: Azure Cognitive Services
 description: Azure Yönetim istemci kitaplığını kullanarak Azure bilişsel hizmetler kaynaklarını oluşturun ve yönetin.
 services: cognitive-services
+keywords: bilişsel hizmetler, bilişsel zeka, bilişsel çözümler, AI Hizmetleri
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 07/29/2020
+ms.date: 09/14/2020
 ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: e56e9226593884045eb4533bfe3ffddce7aad883
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e8628d051db7f5066a81171567f6f7e54fb0ab97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321588"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262459"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-management-client-library"></a>Hızlı başlangıç: Azure Yönetim istemci kitaplığını kullanarak bilişsel hizmetler kaynağı oluşturma
 
-Azure Yönetim istemci kitaplığını kullanarak Azure bilişsel hizmetler kaynaklarını oluşturmak ve yönetmek için bu hızlı başlangıcı kullanın. Tekil AI Hizmetleri, Azure aboneliğinizde oluşturduğunuz Azure [kaynakları](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) tarafından temsil edilir. Bir kaynak oluşturduktan sonra, uygulamalarınızın kimliğini doğrulamak için oluşturulan anahtarları ve uç noktayı kullanabilirsiniz.
+Azure Yönetim istemci kitaplığını kullanarak Azure bilişsel hizmetler kaynaklarını oluşturmak ve yönetmek için bu hızlı başlangıcı kullanın.
+
+Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliştiricilerin doğrudan yapay zeka (AI) veya veri bilimi becerileri veya bilgi sahibi olmadan uygulamalara bilişsel zeka bilgileri oluşturmalarına yardımcı olacak istemci kitaplığı SDK 'Ları. Azure bilişsel hizmetler, geliştiricilerin kendi uygulamalarına kolayca bilişsel özellikler eklemesine, duymasına, konuşmasına, anlamasına ve hatta başlayabilmesine olanak tanıyan bilişsel çözümler sunar.
+
+Tekil AI Hizmetleri, Azure aboneliğinizde oluşturduğunuz Azure [kaynakları](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) tarafından temsil edilir. Bir kaynak oluşturduktan sonra, uygulamalarınızın kimliğini doğrulamak için oluşturulan anahtarları ve uç noktayı kullanabilirsiniz.
 
 ::: zone pivot="programming-language-csharp"
 

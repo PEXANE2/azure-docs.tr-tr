@@ -9,14 +9,17 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a0c5c601b0d3bc0d862ea4984ee2c6d4b76d13ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ae3e9b4bb69bf0c85054b5d6144633923cac947
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502469"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282077"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Ikizi modülünü ve bağımlılıklarını sıfırdan dağıtma
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 OPC Ikizi modülü IoT Edge üzerinde çalışır ve OPC cihaz ikizi ve kayıt defteri Hizmetleri için birkaç Edge hizmeti sağlar. 
 
@@ -110,7 +113,7 @@ Tüm modüller bir dağıtım bildirimi kullanılarak dağıtılır.  Aşağıda
 
 Azure IoT Edge ağ geçidi cihazına modülleri dağıtmanın en kolay yolu, Azure portal.  
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 1. OPC Ikizi [bağımlılıklarını](howto-opc-twin-deploy-dependencies.md) dağıtın ve elde edilen dosyayı elde edin `.env` . `hub name` `PCS_IOTHUBREACT_HUB_NAME` Değişkenin elde edilen dosyada dağıtıldığını aklınızda edin `.env` .
 
@@ -177,7 +180,7 @@ Azure IoT Edge ağ geçidi cihazına modülleri dağıtmanın en kolay yolu, Azu
 
 ## <a name="deploying-using-azure-cli"></a>Azure CLı kullanarak dağıtma
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure komut satırı arabirimi 'nin (az)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) en son sürümünü [buradan](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)yüklersiniz.
 

@@ -4,19 +4,19 @@ description: Öğretici-Scala 'da yazılmış Spark uygulamaları geliştirmek v
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: cd180996434463959cd6f40a115902db358a3091
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c17addc313954fbca5b81c4594d7317065350c09
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85194970"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249578"
 ---
-# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Öğretici: SYNAPSE çalışma alanı kullanarak IntelliJ ile Apache Spark uygulamaları oluşturma
+# <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Öğretici: SYNAPSE çalışma alanı kullanarak IntelliJ ile Apache Spark uygulaması oluşturma
 
 Bu öğreticide, Azure Toolkit for IntelliJ eklentisinin, [Scala](https://www.scala-lang.org/)'da yazılan Apache Spark uygulamaları geliştirme ve sonra doğrudan IntelliJ tümleşik geliştirme ORTAMıNDAN (IDE) bir Spark havuzuna (Önizleme) göndermesi gösterilmektedir. Eklentiyi birkaç şekilde kullanabilirsiniz:
 
@@ -31,13 +31,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Apache Spark uygulamaları geliştirme
 > - Uygulamayı Spark havuzlarına gönder
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [IntelliJ fikir topluluk sürümü](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC).
 - Azure araç seti eklentisi 3.27.0-2019.2 – [IntelliJ eklenti deposundan](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) Install
 - [JDK (sürüm 1,8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 - Scala eklentisi – [IntelliJ eklenti deposundan](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea)Install.
-- Bu önkoşul yalnızca Windows kullanıcılarına yöneliktir.
+- Aşağıdaki önkoşul yalnızca Windows kullanıcılarına yöneliktir:
 
   Yerel Spark Scala uygulamasını bir Windows bilgisayarında çalıştırırken [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)' de açıklandığı gibi bir özel durum alabilirsiniz. Windows 'da WinUtils.exe eksik olduğu için özel durum oluşur.
   Bu hatayı çözmek için [Winutils yürütülebilirini](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) **C:\Win, \ bin**gibi bir konuma indirin. Ardından **HADOOP_HOME**ortam değişkenini ekleyin ve değişkenin değerini **c:\winutils**olarak ayarlayın.
@@ -100,11 +100,11 @@ Spark havuzlarınız ile bağlantı kurmak için Azure aboneliğinde oturum aç�
 
     ![IntelliJ fıkır Azure oturum açma](./media/intellij-tool-synapse/intellij-view-explorer2.png)
 
-4. **Azure cihaz oturum açma** Iletişim kutusunda **Kopyala&aç**' a tıklayın.
+4. **Azure cihaz oturum açma** Iletişim kutusunda **Kopyala&aç**' ı seçin.
 
    ![IntelliJ fıkır Azure cihaz oturum açma](./media/intellij-tool-synapse/intellij-view-explorer5.png)
 
-5. Tarayıcı arabiriminde, kodu yapıştırın ve ardından **İleri**' ye tıklayın.
+5. Tarayıcı arabiriminde kodu yapıştırın ve sonra **İleri**' yi seçin.
 
    ![Microsoft HDI için kod iletişim kutusu giriyor](./media/intellij-tool-synapse/intellij-view-explorer6.png)
 
@@ -112,7 +112,7 @@ Spark havuzlarınız ile bağlantı kurmak için Azure aboneliğinde oturum aç�
 
    ![Microsoft HDI için e-posta iletişim kutusu giriyor](./media/intellij-tool-synapse/intellij-view-explorer7.png)
 
-7. Oturum açtıktan sonra, **abonelikler Seç** iletişim kutusunda kimlik bilgileriyle Ilişkili tüm Azure abonelikleri listelenir. Aboneliğinizi seçin ve ardından **Seç**' e tıklayın.
+7. Oturum açtıktan sonra, **abonelikler Seç** iletişim kutusunda kimlik bilgileriyle Ilişkili tüm Azure abonelikleri listelenir. Aboneliğinizi seçin ve ardından **Seç**' i seçin.
 
     ![Abonelik Seç iletişim kutusu](./media/intellij-tool-synapse/Select-Subscriptions.png)
 
@@ -128,13 +128,13 @@ Spark havuzlarınız ile bağlantı kurmak için Azure aboneliğinde oturum aç�
 
 Bir Scala uygulaması oluşturduktan sonra, uzaktan çalıştırabilirsiniz.
 
-1. Simgeye tıklayarak **Çalıştır/hata ayıkla yapılandırma** penceresini açın.
+1. Simgeyi seçerek **çalıştırma/hata ayıklama yapılandırması** penceresini açın.
 
-    ![Spark uygulamasını HDInsight 'a Gönder komutu](./media/intellij-tool-synapse/open-configuration-window.png)
+    ![Spark uygulamasını HDInsight 'a Gönder komutu 1](./media/intellij-tool-synapse/open-configuration-window.png)
 
-2. **Çalıştır/hata ayıkla yapılandırma** iletişim penceresinde, **+** ve sonra **SYNAPSE üzerinde Apache Spark**' yi seçin.
+2. **Çalıştır/hata ayıkla yapılandırma** iletişim penceresinde, öğesini seçin **+** ve sonra **SYNAPSE üzerinde Apache Spark**' yi seçin.
 
-    ![Spark uygulamasını HDInsight 'a Gönder komutu](./media/intellij-tool-synapse/create-synapse-configuration02.png)
+    ![Spark uygulamasını HDInsight 'a Gönder komutu 2](./media/intellij-tool-synapse/create-synapse-configuration02.png)
 
 3. **Çalıştır/hata ayıkla yapılandırma** penceresinde, aşağıdaki değerleri girin ve ardından **Tamam**' ı seçin:
 
@@ -152,13 +152,13 @@ Bir Scala uygulaması oluşturduktan sonra, uzaktan çalıştırabilirsiniz.
     |Depolama anahtarı|Depolama anahtarınızı girin.|
     |Depolama kapsayıcısı|**Depolama hesabı** ve **depolama anahtarı** girildikten sonra, açılan listeden depolama kapsayıcınızı seçin.|
 
-    ![Spark gönderimi iletişim kutusu](./media/intellij-tool-synapse/create-synapse-configuration03.png)
+    ![Spark gönderimi iletişim kutusu 1](./media/intellij-tool-synapse/create-synapse-configuration03.png)
 
-4. Projenizi seçili Spark havuzuna göndermek için **parlak Jobrun** simgesine tıklayın. **Küme Içindeki uzak Spark işi** , en altta iş yürütme ilerleme durumunu görüntüler. Kırmızı düğmeye tıklayarak uygulamayı durdurabilirsiniz.
+4. Projenizi seçili Spark havuzuna göndermek için **mini** veri simgesini seçin. **Küme Içindeki uzak Spark işi** , en altta iş yürütme ilerleme durumunu görüntüler. Kırmızı düğmeyi seçerek uygulamayı durdurabilirsiniz.
 
     ![Apache Spark gönderme penceresi](./media/intellij-tool-synapse/remotely-run-synapse.png)
 
-    ![Spark gönderimi iletişim kutusu](./media/intellij-tool-synapse/remotely-run-result.png)
+    ![Spark gönderimi iletişim kutusu 2](./media/intellij-tool-synapse/remotely-run-result.png)
 
 ## <a name="local-rundebug-apache-spark-applications"></a>Yerel çalıştırma/hata ayıklama Apache Spark uygulamaları
 
@@ -168,26 +168,26 @@ Apache Spark işiniz için yerel çalıştırmayı ve yerel hata ayıklamayı ay
 
 1. **Çalıştır/hata ayıkla yapılandırma** iletişim kutusunu açın, artı işaretini ( **+** ) seçin. Ardından **Apache Spark on SYNAPSE** seçeneğini belirleyin. Kaydedilecek **ad**, **ana sınıf adı** bilgilerini girin.
 
-    ![IntelliJ hata ayıklama yapılandırmalarının yerel çalıştırma Çalıştır](./media/intellij-tool-synapse/local-run-synapse.png)
+    ![IntelliJ çalıştırılan hata ayıklama yapılandırması yerel çalıştırma 1](./media/intellij-tool-synapse/local-run-synapse.png)
 
     - Ortam değişkenleri ve WinUtils.exe konumu yalnızca Windows kullanıcılarına yöneliktir.
     - Ortam değişkenleri: sistem ortam değişkeni, daha önce ayarladıysanız ve el ile eklemesi gerekmiyorsa otomatik olarak algılanabilir.
-    - [WinUtils.exe konumu](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): sağdaki klasör simgesine tıklayarak winutils konumunu belirtebilirsiniz.
+    - [WinUtils.exe konumu](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): sağdaki klasör simgesini seçerek winutils konumunu belirtebilirsiniz.
 
-2. Sonra yerel Oynat düğmesine tıklayın.
+2. Sonra yerel Oynat düğmesini seçin.
 
-    ![IntelliJ hata ayıklama yapılandırmalarının yerel çalıştırma Çalıştır](./media/intellij-tool-synapse/local-run-synapse01.png)
+    ![IntelliJ çalıştırma hata ayıklama yapılandırması yerel çalıştırma 2](./media/intellij-tool-synapse/local-run-synapse01.png)
 
 3. Yerel çalıştırma tamamlandığında, komut dosyası çıkış içeriyorsa, çıkış dosyasını **veri**  >  **__varsayılanındaki__** kontrol edebilirsiniz.
 
-    ![IntelliJ projesi yerel çalıştırma sonucu](./media/intellij-tool-synapse/spark-local-run-result.png)
+    ![IntelliJ projesi yerel çalıştırma sonucu 1](./media/intellij-tool-synapse/spark-local-run-result.png)
 
 ### <a name="scenario-2-do-local-debugging"></a>Senaryo 2: yerel hata ayıklamayı do
 
 1. **Logquery** betiğini açın, kesme noktaları ayarlayın.
-2. Yerel hata ayıklamayı yapmak için **yerel hata ayıklama** simgesine tıklayın.
+2. Yerel hata ayıklamayı yapmak için **yerel hata ayıklama** simgesini seçin.
 
-    ![IntelliJ projesi yerel çalıştırma sonucu](./media/intellij-tool-synapse/local-debug-synapse.png)
+    ![IntelliJ projesi yerel çalıştırma sonucu 2](./media/intellij-tool-synapse/local-debug-synapse.png)
 
 ## <a name="access-and-manage-synapse-workspace"></a>SYNAPSE çalışma alanına erişin ve yönetin
 
@@ -201,9 +201,9 @@ Azure Toolkit for IntelliJ içinde Azure Explorer 'da farklı işlemler gerçekl
 
 2. Bir çalışma alanına sağ tıklayın ve sonra **çalışma alanını Başlat**' ı seçin, Web sitesi açılır.
 
-    ![Spark Iş görünümü uygulama ayrıntıları](./media/intellij-tool-synapse/launch-workspace-synapse.png)
+    ![Spark Iş görünümü uygulama ayrıntıları 1](./media/intellij-tool-synapse/launch-workspace-synapse.png)
 
-    ![Spark Iş görünümü uygulama ayrıntıları](./media/intellij-tool-synapse/launch-workspace-result.png)
+    ![Spark Iş görünümü uygulama ayrıntıları 2](./media/intellij-tool-synapse/launch-workspace-result.png)
 
 ## <a name="spark-console"></a>Spark konsolu
 
@@ -233,7 +233,7 @@ WINUTILS.EXE önkoşulu karşılatığınızdan emin olun.
 
     ![IntelliJ fıkır Spark otomatik çözüm dialog2](./media/intellij-tool-synapse/intellij-console-autofix2.png)
 
-8. Konsol aşağıdaki resme benzer görünmelidir. Konsol penceresi yazın `sc.appName` ve ardından CTRL + ENTER tuşlarına basın. Sonuç görüntülenecektir. Yerel konsolu kırmızı düğme ' ye tıklayarak durdurabilirsiniz.
+8. Konsol aşağıdaki resme benzer görünmelidir. Konsol penceresi yazın `sc.appName` ve ardından CTRL + ENTER tuşlarına basın. Sonuç görüntülenecektir. Yerel konsolu kırmızı düğme ' i seçerek durdurabilirsiniz.
 
     ![IntelliJ fıkır yerel konsol sonucu](./media/intellij-tool-synapse/local-console-result.png)
 
@@ -260,13 +260,13 @@ Yalnızca IntelliJ 2018,2 ve 2018,3 ' de desteklenir.
 5. Projeden **MyApp**  >  **src**  >  **Main**  >  **Scala**  >  **MyApp**sayfasına gidin.
 
 6. Menü çubuğundan **Araçlar**  >  **Spark konsolu**,  >  **Spark Livy etkileşimli oturum konsolu 'nu (Scala) çalıştırın**.
-7. Konsol aşağıdaki resme benzer görünmelidir. Konsol penceresi yazın `sc.appName` ve ardından CTRL + ENTER tuşlarına basın. Sonuç görüntülenecektir. Yerel konsolu kırmızı düğme ' ye tıklayarak durdurabilirsiniz.
+7. Konsol aşağıdaki resme benzer görünmelidir. Konsol penceresi yazın `sc.appName` ve ardından CTRL + ENTER tuşlarına basın. Sonuç görüntülenecektir. Yerel konsolu kırmızı düğme ' i seçerek durdurabilirsiniz.
 
     ![IntelliJ fıkır etkileşimli konsol sonucu](./media/intellij-tool-synapse/interactive-console-result.png)
 
 ### <a name="send-selection-to-spark-console"></a>Seçimi Spark konsoluna gönder
 
-Yerel konsola veya Livy etkileşimli oturum konsoluna (Scala) bazı kodlar göndererek betik sonucunu öngörülebilir bir şekilde görmeniz yararlı olur. Scala dosyasındaki bazı kodları vurgulayabilir, ardından **seçme konsolu 'na sağ tıklayarak seçim gönderebilirsiniz**. Seçili kod konsola gönderilir ve bu işlem yapılır. Sonuç, konsolundaki koddan sonra görüntülenecektir. Varsa, konsol hataları kontrol eder.
+Yerel konsola veya Livy etkileşimli oturum konsoluna (Scala) bazı kodlar göndererek betik sonucunu görmek isteyebilirsiniz. Bunu yapmak için, Scala dosyasındaki bazı kodları vurgulayabilir ve sonra **seçimi Spark konsoluna Gönder ' e**sağ tıklayabilirsiniz. Seçili kod konsola gönderilir ve bu işlem yapılır. Sonuç, konsolundaki koddan sonra görüntülenecektir. Konsol var olan hataları kontrol eder.
 
    ![Seçimi Spark konsoluna gönder](./media/intellij-tool-synapse/send-selection-to-console.png)
 

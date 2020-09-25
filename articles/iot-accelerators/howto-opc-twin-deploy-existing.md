@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d005b3a4712cfff0321e7a16f49c0e882cc9e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73824113"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282128"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>OPC Ikizi 'yi mevcut bir projeye dağıtma
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 OPC Ikizi modülü IoT Edge üzerinde çalışır ve OPC Ikizi ve kayıt defteri Hizmetleri için birkaç Edge hizmeti sağlar.
 
@@ -28,7 +31,7 @@ Modülün çekirdeği gözetmen kimliğidir. Gözetmen, ilgili OPC UA kayıt def
 > [!NOTE]
 > Dağıtım ayrıntıları ve yönergeleri hakkında daha fazla bilgi için bkz. GitHub [deposu](https://github.com/Azure/azure-iiot-opc-twin-module).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 PowerShell ve [Azurerd PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) uzantılarının yüklü olduğundan emin olun. Daha önce yapmadıysanız, bu GitHub deposunu kopyalayın. PowerShell 'de aşağıdaki komutları çalıştırın:
 

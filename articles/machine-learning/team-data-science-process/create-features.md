@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: c31cf0e5c655f53e8838c92f5463d3a85c2f6f65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836830"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250666"
 ---
 # <a name="feature-engineering-in-data-science"></a>Veri bilimi 'nde Özellik Mühendisliği
 
-Bu makalede, Machine Learning 'de verileri geliştirmeyle ilgili özellik Mühendisliği ve rolü hakkında bilgi edineceksiniz. [Azure Machine Learning Studio (klasik)](../studio/what-is-ml-studio.md) denemeleri 'den çizilen tanım örneklerden öğrenin. 
+Bu makalede, Machine Learning 'de verileri geliştirmeyle ilgili özellik Mühendisliği ve rolü hakkında bilgi edineceksiniz. [Azure Machine Learning Studio (klasik)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) denemeleri 'den çizilen tanım örneklerden öğrenin. 
 
 * **Özellik Mühendisliği**: öğrenme algoritmasının tahmine dayalı gücünü artırmak için ham verilerden yeni özellikler oluşturma işlemi. Uygulanan özellikler, özgün özellik kümesinde kolayca açık olmayan ek bilgileri yakalemelidir.
 * **Özellik seçimi**: eğitim sorununun boyutlılık düzeyini azaltmak için özelliklerin anahtar alt kümesini seçme işlemi.
@@ -74,7 +74,7 @@ Dört modelin performans sonuçlarının bir karşılaştırması aşağıdaki t
 
 En iyi sonuçlar + B + C özelliklerine göre gösterilir. Eğitim verilerine ek özellik kümesi eklendiğinde hata oranı azalır. Bu özellik B özelliğinin ayarlandığı presumption doğrular, C, regresyon göreviyle ilgili ek bilgileri sağlar. Ancak, D özelliğinin eklenmesi hata ücretine ek bir azalma sağlamıyor gibi görünüyor.
 
-## <a name="example-2-create-features-for-text-mining"></a><a name="example2"></a>Örnek 2: metin madenciliği için özellikler oluşturma
+## <a name="example-2-create-features-for-text-mining"></a><a name="example2"></a> Örnek 2: metin madenciliği için özellikler oluşturma
 
 Özellik Mühendisliği, belge sınıflandırması ve yaklaşım analizi gibi metin madenciliği ile ilgili görevlerde yaygın olarak uygulanır. Ham metnin bağımsız parçaları genellikle giriş verileri olarak kullanıldığından, özellik Mühendisliği işlemi, sözcük/tümcecik sıklıklarını içeren özellikleri oluşturmak için gereklidir.
 

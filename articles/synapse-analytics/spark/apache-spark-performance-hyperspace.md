@@ -10,33 +10,35 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526349"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249374"
 ---
-# <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>Derin-Apache Spark için bir dizin oluşturma alt sistemi
+# <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Derin: Apache Spark için bir dizin oluşturma alt sistemi
 
-Derin boşluğu, kullanıcıların veri kümelerinde Dizin oluşturmalarına Apache Spark (örneğin, CSV, JSON, Parquet vb.) ve potansiyel sorgu ve iş yükü hızlandırma için bunlardan faydalanır.
+Derin boşluğu, kullanıcıların CSV, JSON ve Parquet gibi veri kümelerinde Dizin oluşturmalarına Apache Spark ve bunları potansiyel sorgu ve iş yükü hızlandırma için kullanmasına olanak sağlar.
 
-Bu makalede, derin uzay temellerini vurgulıyoruz, basitliği vurgulayarak ve yalnızca herkes hakkında tarafından nasıl kullanılabileceğini gösterir.
+Bu makalede, uzay boşluğu temellerini vurgularız, basitliği vurgulayacağız ve yalnızca herkes hakkında tarafından nasıl kullanılabileceğini gösterir.
 
-Vazgeçme: derin, iki durumda iş yüklerinizi/sorgularınızı hızlandırmaya yardımcı olur:
+Vazgeçme: derin, iki durumda iş yüklerinizi veya sorgularınızı hızlandırmaya yardımcı olur:
 
-* Sorgular, yüksek seçiciliği ile koşullara filtre içerir (örneğin, milyon aday satırlardan 100 eşleşen satırları seçmek istiyorsanız)
-* Sorgular ağır karışık (örneğin, 10 GB veri kümesiyle 100 GB 'lık bir veri kümesine katmak istiyorsanız) bir JOIN içerir
+* Sorgular, yüksek selectivity ile koşullarda filtre içerir. Örneğin, milyon aday satırlardan 100 eşleşen satırları seçmek isteyebilirsiniz.
+* Sorgular, ağır karışık, gerektiren bir JOIN içerir. Örneğin, 10 GB veri kümesiyle 100 GB veri kümesine katmak isteyebilirsiniz.
 
 İş yüklerinizi dikkatle izlemek ve dizinleme 'nin büyük/küçük harf temelinde size yardımcı olup olmadığını öğrenmek isteyebilirsiniz.
 
-Bu belge, [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)için, [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) ve [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) için Not defteri biçiminde de kullanılabilir
+Bu belge, [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)ve [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) için Not defteri biçiminde de kullanılabilir
 
 ## <a name="setup"></a>Kurulum
 
-İle başlamak için yeni bir Spark oturumu başlatın. Bu belge yalnızca derin uzay teklifinin neler sunabileceğini göstermek için bir öğretici olduğundan, küçük veri kümelerinde ne derin uzay yaptığını vurgulayabileceğimizi sağlayan bir yapılandırma değişikliği yaparsınız. Varsayılan olarak Spark, JOIN 'in bir tarafına ait veri boyutu küçük olduğunda (Bu öğreticide kullandığımız örnek veriler için bu durum söz konusu olduğunda), JOIN sorgularını iyileştirmek için Broadcast JOIN 'i kullanır. Bu nedenle, daha sonra birleştirme sorguları çalıştırdığımızda, Spark 'un sıralama birleştirme birleştirmesini kullanması için yayın birleştirmelerini devre dışı bırakacağız. Bu, temel olarak, ekleme sorguları hızlandırıcı için, uzay boşluğu dizinlerinin ölçeklendirmeye nasıl kullanılacağını gösterir.
+İle başlamak için yeni bir Spark oturumu başlatın. Bu belge yalnızca derin uzay teklifinin neler sunabileceğini göstermek için bir öğretici olduğundan, küçük veri kümelerinde ne derin uzay yaptığını vurgulayabileceğimizi sağlayan bir yapılandırma değişikliği yaparsınız. 
 
-Aşağıdaki hücrede çalışan çıkış, başarıyla oluşturulan Spark oturumunun bir başvurusunu gösterir ve yayın birleştirmenin başarıyla devre dışı bırakıldığını belirten değiştirilmiş JOIN yapılandırmasının değeri olarak '-1 ' yazdırır.
+Varsayılan olarak Spark, JOIN 'in bir tarafına ait veri boyutu küçük olduğunda (Bu öğreticide kullandığımız örnek veriler için bu durum söz konusu olduğunda), JOIN sorgularını iyileştirmek için Broadcast JOIN 'i kullanır. Bu nedenle, daha sonra birleştirme sorguları çalıştırdığımızda, Spark 'un sıralama birleştirme birleştirmesini kullanması için yayın birleştirmelerini devre dışı bırakacağız. Bu, temel olarak, ekleme sorguları hızlandırıcı için, uzay boşluğu dizinlerinin ölçeklendirmeye nasıl kullanılacağını gösterir.
+
+Aşağıdaki hücreyi çalıştırmanın çıktısı başarıyla oluşturulan Spark oturumunun bir başvurusunu gösterir ve '-1 ' öğesini değiştirilmiş JOIN yapılandırmasının değeri olarak yazdırır ve bu da yayın birleştirmenin başarıyla devre dışı bırakıldığını gösterir.
 
 :::zone pivot = "programming-language-scala"
 
@@ -44,7 +46,7 @@ Aşağıdaki hücrede çalışan çıkış, başarıyla oluşturulan Spark oturu
 // Start your Spark session
 spark
 
-// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 // Verify that BroadcastHashJoin is set correctly
@@ -57,10 +59,10 @@ println(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-python"
 
 ```python
-# Start your Spark session
+# Start your Spark session.
 spark
 
-# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently Hyperspace indexes utilize SortMergeJoin to speed up query.
+# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 # Verify that BroadcastHashJoin is set correctly 
@@ -72,10 +74,10 @@ print(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-// Disable BroadcastHashJoin, so Spark™ will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.Conf().Set("spark.sql.autoBroadcastJoinThreshold", -1);
 
-// Verify that BroadcastHashJoin is set correctly 
+// Verify that BroadcastHashJoin is set correctly.
 Console.WriteLine(spark.Conf().Get("spark.sql.autoBroadcastJoinThreshold"));
 ```
 
@@ -88,13 +90,13 @@ res3: org.apache.spark.sql.SparkSession = org.apache.spark.sql.SparkSession@297e
 -1
 ```
 
-## <a name="data-preparation"></a>Veri Hazırlama
+## <a name="data-preparation"></a>Veri hazırlama
 
-Ortamınızı hazırlamak için örnek veri kayıtları oluşturacak ve bunları Parquet veri dosyaları olarak kaydedecaksınız. Şekil için Parquet kullanıldığında CSV gibi diğer biçimleri de kullanabilirsiniz. Sonraki hücrelerde, bu örnek veri kümesinde birkaç derin derin Dizin oluşturmayı ve sorguları çalıştırırken Spark 'ın bunları nasıl kullanmasını istediğinizi göreceksiniz.
+Ortamınızı hazırlamak için örnek veri kayıtları oluşturacak ve bunları Parquet veri dosyaları olarak kaydedeceksiniz. Parquet, çizim için kullanılır, ancak CSV gibi diğer biçimleri de kullanabilirsiniz. Sonraki hücrelerde, bu örnek veri kümesinde birkaç derin uzay dizinini nasıl oluşturabileceğiniz ve sorguları çalıştırırken Spark 'ın bunları nasıl kullandığını görürsünüz.
 
 Örnek kayıtlar iki veri kümesine karşılık gelir: departman ve çalışan. "EmpLocation" ve "deptLocation" yollarını, üretilen veri dosyalarını kaydetmek için istenen konuma işaret ettikleri şekilde yapılandırmanız gerekir.
 
-Aşağıdaki hücrede çalışan çıkış, veri kümelerimizin içeriğini, her bir veri kümesinin içeriğini tercih edilen konumumuza kaydetmek üzere oluşturulan veri çerçevelerine başvuruları olarak gösterir.
+Aşağıdaki hücrede çalıştırmanın çıktısı, veri kümelerimizin içeriğini, her bir veri kümesinin içeriğini tercih edilen konumumuza kaydetmek üzere oluşturulan veri çerçevelerinin başvurularına göre gösterir.
 
 :::zone pivot = "programming-language-scala"
 
@@ -240,9 +242,9 @@ empLocation: String = /your-path/employees.parquet
 deptLocation: String = /your-path/departments.parquet  
 ```
 
-Daha önce oluşturduğumuz Parquet dosyalarının içeriğini doğrulayıp beklenen kayıtları doğru biçimde içerdiğinden emin olun. Daha sonra bu veri dosyalarını, derin, dizinler oluşturmak ve örnek sorguları çalıştırmak için kullanırız.
+Doğru biçimde beklenen kayıtları içerdiğinden emin olmak için oluşturduğumuz Parquet dosyalarının içeriğini doğrulayalım. Daha sonra bu veri dosyalarını, uzay boşluğu dizinleri oluşturmak ve örnek sorguları çalıştırmak için kullanacağız.
 
-Aşağıdaki hücre çalıştırıldığında çıktı, çalışan ve bölüm veri çerçevelerinden satırları tablolu bir biçimde görüntüler. 14 çalışan ve 4 departman olması gerekir, ancak her biri, bir önceki hücrede oluşturmanıza izin verir.
+Aşağıdaki hücreyi çalıştırmak, çalışan ve bölüm veri çerçevelerinden satırları tablolu bir biçimde görüntüleyen bir çıktı üretir. 14 çalışan ve 4 departman olması gerekir, ancak her biri, bir önceki hücrede oluşturmanıza izin verir.
 
 :::zone pivot = "programming-language-scala"
 
@@ -262,7 +264,7 @@ deptDF.show()
 
 ```python
 
-# emp_Location and dept_Location are the user defined locations above to save parquet files
+# emp_Location and dept_Location are the user-defined locations above to save parquet files
 emp_DF = spark.read.parquet(emp_Location)
 dept_DF = spark.read.parquet(dept_Location)
 
@@ -278,7 +280,7 @@ dept_DF.show()
 
 ```csharp
 
-// empLocation and deptLocation are the user defined locations above to save parquet files
+// empLocation and deptLocation are the user-defined locations above to save parquet files
 DataFrame empDF = spark.Read().Parquet(empLocation);
 DataFrame deptDF = spark.Read().Parquet(deptLocation);
 
@@ -333,14 +335,18 @@ Derin uzay, kalıcı veri dosyalarından taranan kayıtlarda dizinler oluşturma
 
 Dizinler oluşturulduktan sonra birkaç eylem gerçekleştirebilirsiniz:
 
+* **Temel alınan veriler değişirse Yenile.** Değişiklikleri yakalamak için var olan bir dizini yenileyebilirsiniz.
+* **Dizin gerekmiyorsa silin.** Geçici bir silme işlemi gerçekleştirebilirsiniz, yani dizin fiziksel olarak silinmez ancak "silindi" olarak işaretlenir, böylece artık iş yüklerinizde kullanılmaz.
+* **Bir dizin artık gerekmiyorsa vakum.** Dizin içeriklerinin ve ilişkili meta verilerin bir fiziksel olarak silinmesini, derin uzay verisinin meta verilerinden tamamen zorlayan bir dizini vakum seçebilirsiniz.
+
 Yenileme temel alınan veriler değişirse, var olan bir dizini yenileyerek onu yakalayabilirsiniz.
 Sil Dizin gerekmiyorsa, dizin fiziksel olarak silinmemiştir, ancak iş yüklerinizde artık kullanılmadığından, bir geçici silme işlemi gerçekleştirebilirsiniz.
-Vakum bir dizin artık gerekmiyorsa, Dizin içeriklerinin ve ilişkili meta verilerin bir fiziksel olarak silinmesini, derin uzay verisinin meta verilerinden tamamen zorleyecek hale getirebilirsiniz.
+
 Aşağıdaki bölümlerde, bu tür dizin yönetimi işlemlerinin derin uzay içinde nasıl yapılabileceği gösterilmektedir.
 
-İlk olarak, gerekli kitaplıkları içeri aktarmanız ve derin bir örneği oluşturmanız gerekir. Daha sonra bu örneği, örnek verilerinizde dizinler oluşturacak ve bu dizinleri değiştirecek farklı derin API 'Leri çağırmak için kullanacaksınız.
+İlk olarak, gerekli kitaplıkları içeri aktarmanız ve derin bir örneği oluşturmanız gerekir. Daha sonra, örnek verilerinizde dizinler oluşturacak ve bu dizinleri değiştirecek farklı derin API 'Leri çağırmak için bu örneği kullanacaksınız.
 
-Aşağıdaki hücrede çalışan çıkış, oluşturulan derin uzay örneğine bir başvuru gösterir.
+Aşağıdaki hücreyi çalıştırmanın çıktısı, oluşturulan derin uzay örneğine bir başvuru gösterir.
 
 :::zone pivot = "programming-language-scala"
 
@@ -388,9 +394,10 @@ hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyper
 
 Derin bir dizin oluşturmak için, iki parça bilgi sağlamanız gerekir:
 
-Dizine eklenecek verilere başvuran bir Spark DataFrame.
-Dizin yapılandırma nesnesi: Dizin adı, dizine alınmış ve dahil edilen sütunları belirten ındexconfig.
-Örnek verilerimizde üç derin uzay dizini oluşturarak başlayın: "deptIndex1" ve "deptIndex2" adlı departman veri kümesinde iki dizin ve ' Empındex ' adlı çalışan veri kümesinde tek bir dizin. Her bir dizin için, adı dizinli ve dahil edilen sütunlar için sütun listeleriyle birlikte yakalamak için karşılık gelen bir ındexconfig 'e ihtiyacınız vardır. Aşağıdaki hücre çalıştırıldığında, bu ındexconfigs ve çıktısı listelenir.
+* Dizine eklenecek verilere başvuran bir Spark DataFrame.
+* Dizin adını ve dizinin dizine alınmış ve dahil edilen sütunlarını belirten Dizin yapılandırma nesnesi olan ındexconfig.
+
+Örnek verilerimizde üç derin uzay dizini oluşturarak başlayın: "deptIndex1" ve "deptIndex2" adlı departman veri kümesinde iki dizin ve "Empındex" adlı çalışan veri kümesinde bir dizin. Her bir dizin için, adı dizinli ve dahil edilen sütunlar için sütun listeleriyle birlikte yakalamak için karşılık gelen bir ındexconfig 'e ihtiyacınız vardır. Aşağıdaki hücreyi çalıştırmak, bu ındexconfigs 'leri oluşturur ve çıktısı bunları listeler.
 
 > [!Note]
 > Dizin sütunu, filtrelerinizin veya JOIN koşullarınızın içinde görüntülenen sütundur. Dahil edilen sütun, select/projenizde görüntülenen bir sütundur.
@@ -454,8 +461,7 @@ empIndexConfig: com.microsoft.hyperspace.index.IndexConfig = [indexName: empInde
 deptIndexConfig1: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex1; indexedColumns: deptid; includedColumns: deptname]  
 deptIndexConfig2: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex2; indexedColumns: location; includedColumns: deptname]  
 ```
-
-Şimdi, Dizin yapılandırmalarınızı kullanarak üç Dizin oluşturursunuz. Bu amaçla, uzay örneğimizde "CreateIndex" komutunu çağıracaktır. Bu komut, dizine eklenecek satırları içeren bir dizin yapılandırması ve veri çerçevesi gerektirir. Aşağıdaki hücreyi çalıştırmak üç dizin oluşturur.
+Şimdi, Dizin yapılandırmalarınızı kullanarak üç Dizin oluşturursunuz. Bu amaçla, uzay örneğimizde "CreateIndex" komutunu çağıracaktır. Bu komut, dizine eklenecek satırları içeren bir dizin yapılandırması ve veri çerçevesi gerektirir. Aşağıdaki hücre çalıştırıldığında üç dizin oluşturulur.
 
 :::zone pivot = "programming-language-scala"
 
@@ -505,14 +511,17 @@ import com.microsoft.hyperspace.index.Index
 
 ## <a name="list-indexes"></a>Dizinleri Listele
 
-Aşağıdaki kod, derin bir örnekteki tüm kullanılabilir dizinleri nasıl listeleykullanabileceğinizi gösterir. Ek işlemleri gerçekleştirebilmeniz için mevcut dizinler hakkındaki bilgileri Spark veri çerçevesi olarak döndüren "dizinler" API 'sini kullanır. Örneğin, bu veri çerçevesinde içeriğini denetlemek veya daha fazla analiz etmek için (örneğin, belirli dizinleri filtreleyerek veya istenen bir özelliğe göre gruplandırarak) geçerli işlemleri çağırabilirsiniz.
+Aşağıdaki kod, derin bir örnekteki tüm kullanılabilir dizinleri nasıl listeleykullanabileceğinizi gösterir. Ek işlemleri gerçekleştirebilmeniz için mevcut dizinler hakkındaki bilgileri Spark veri çerçevesi olarak döndüren "dizinler" API 'sini kullanır. 
 
-Aşağıdaki hücre, satırları tam olarak yazdırmak ve dizinlerimizin ayrıntılarını tablolu bir biçimde göstermek için DataFrame ' Show ' eylemini kullanır. Her bir dizin için, tüm bilgi uzay boşluğu ile ilgili meta verilerde depolanabileceğini görebilirsiniz. Hemen şunları fark edeceksiniz:
+Örneğin, bu veri çerçevesinde içeriğini denetlemek veya daha fazla analiz etmek için (örneğin, belirli dizinleri filtreleyerek veya istenen bir özelliğe göre gruplandırarak) geçerli işlemleri çağırabilirsiniz.
 
-* "config. IndexName", "config. IndexedColumns", "config. IncludedColumns" ve "Status. Status" bir kullanıcının normalde başvurduğu alanlardır.
-* "dfSignature", uzay boşluğu tarafından otomatik olarak oluşturulur ve her bir dizin için benzersizdir. Uzay boşluğu, dizini sürdürmek ve sorgu zamanında yararlanmak için bu imzayı dahili olarak kullanır.
+Aşağıdaki hücrede, satırları tam olarak yazdırmak ve dizinlerimizin ayrıntılarını tablolu bir biçimde göstermek için DataFrame ' Show ' eylemi kullanılmaktadır. Her bir dizin için, tüm bilgi uzay boşluğu ile ilgili meta verilerde depolanabileceğini görebilirsiniz. Hemen şunları fark edeceksiniz:
 
-Aşağıdaki çıktıda, her üç dizinin de durum olarak "ETKIN" olması gerekir ve ad, dizinli sütunları ve dahil edilen sütunlar yukarıdaki Dizin yapılandırmalarında tanımlandığımız verilerle eşleşmelidir.
+* config. IndexName, config. IndexedColumns, config. IncludedColumns ve Status. Status, bir kullanıcının normalde başvurduğu alanlardır.
+* dfSignature, uzay boşluğu tarafından otomatik olarak oluşturulur ve her bir dizin için benzersizdir. Uzay boşluğu, dizini sürdürmek ve sorgu zamanında yararlanmak için bu imzayı dahili olarak kullanır.
+
+
+Aşağıdaki çıktıda, üç dizinin da durum olarak "ETKIN" olması ve adı, dizini oluşturulmuş sütunları ve dahil edilen sütunların yukarıdaki Dizin yapılandırmalarında tanımlandığımız bilgilerle eşleşmesi gerekir.
 
 :::zone pivot = "programming-language-scala"
 
@@ -554,7 +563,9 @@ Sonuç:
 
 ## <a name="delete-indexes"></a>Dizinleri sil
 
-"DeleteIndex" API 'sini kullanarak var olan bir dizini bırakabilir ve dizin adını sağlayabilirsiniz. Dizin silme, geçici bir silme işlemi yapar: genellikle dizin durumunun "ETKIN" dan "DELETED" olarak derin uzay meta verilerindeki durumunu güncelleştirir. Bu, bırakılan dizini gelecekteki sorgu iyileştirmesinden hariç tutar ve derin uzay artık herhangi bir sorgu için bu dizini seçer. Ancak, silinen bir dizin için dizin dosyaları hala kullanılabilir kalır (bir geçici silme işlemi olduğundan), bu sayede Dizin, Kullanıcı istediğinde geri yüklenebilir.
+"DeleteIndex" API 'sini kullanarak var olan bir dizini bırakabilir ve dizin adını sağlayabilirsiniz. Dizin silme, geçici bir silme işlemi yapar: genellikle dizin durumunun "ETKIN" dan "DELETED" olarak derin uzay meta verilerindeki durumunu güncelleştirir. Bu, bırakılan dizini gelecekteki sorgu iyileştirmesinden hariç tutar ve derin uzay artık herhangi bir sorgu için bu dizini seçer. 
+
+Ancak, silinen bir dizin için dizin dosyaları hala kullanılabilir kalır (bir geçici silme işlemi olduğundan), bu sayede Dizin, Kullanıcı istediğinde geri yüklenebilir.
 
 Aşağıdaki hücre, "deptIndex2" adlı dizini siler ve bundan sonra derin boşluğu meta verilerini listeler. "DeptIndex2" dışında "liste dizinleri" için çıktının yukarıdaki hücreye benzer olması gerekir. Bu, şimdi durumunun "DELETED" olarak değiştirilmesi gerekir.
 
@@ -666,7 +677,7 @@ Sonuç:
 
 ## <a name="vacuum-indexes"></a>Vakum dizinleri
 
-"VacuumIndex" komutunu kullanarak silinen bir dizin için dosyaları ve meta veri girişini tamamen kaldırma, bir sabit silme işlemini gerçekleştirebilirsiniz. İşlem tamamlandıktan sonra, tüm dizin dosyalarını (Bu nedenle bir sabit silme işlemi olduğu) fiziksel olarak sildiği için bu eylem geri alınamaz.
+**VacuumIndex** komutunu kullanarak, silinen bir dizin için dosyaları ve meta veri girişini tamamen kaldırabilir, bir sabit silme işlemi gerçekleştirebilirsiniz. Bu eylem geri alınamaz. Bu, büyük bir silme işlemi olan tüm dizin dosyalarını fiziksel olarak siler.
 
 Aşağıdaki hücre, "deptIndex2" dizinini robotunuz ve Vacuuming sonra derin boşluğu meta verilerini gösterir. "DeptIndex1" ve "Empındex" adlı iki dizin için hem "ETKIN" durum hem de "deptIndex2" girdisi olmadan meta veri girişi görmeniz gerekir.
 
@@ -711,13 +722,14 @@ Sonuç:
 |        empIndex|             [deptId]|             [empName]|`deptId` INT,`emp...|com.microsoft.cha...|30768c6c9b2533004...|Relation[empId#32...|       200|abfss://datasets@...|      ACTIVE|              0|
 ```
 
-## <a name="enabledisable-hyperspace"></a>Derin boşluğu etkinleştir/devre dışı bırak
+## <a name="enable-or-disable-hyperspace"></a>Derin boşluğu etkinleştir veya devre dışı bırak
 
 Uzay boşluğu Spark ile dizin kullanımını etkinleştirmek veya devre dışı bırakmak için API 'Ler sağlar.
 
-"Enableuzay boşluğu" komutunu kullanarak, uzay iyileştirme kuralları Spark iyileştiriciye görünür hale gelir ve Kullanıcı sorgularını iyileştirmek için var olan derin dizinlerinden faydalarlar.
-"Disableuzay boşluğu" komutu kullanılarak, artık sorgu iyileştirmesi sırasında, uzay boşluğu kuralları uygulanmaz. Etkin olmayan bir şekilde kaldığı için, derin boşluğu devre dışı bırakmanın oluşturulan dizinler üzerinde hiçbir etkisi olmadığını unutmayın.
-Aşağıdaki hücrede, bu komutları, derin boşluğu etkinleştirmek veya devre dışı bırakmak için nasıl kullanabileceğiniz gösterilmektedir. Çıktı yalnızca yapılandırması güncelleştirilmiş mevcut Spark oturumunun başvurusunu gösterir.
+* Derin, en iyi duruma getirme kuralları, **enablederin** iyileştirme kuralları ile Spark iyileştiriciye görünür hale gelir ve Kullanıcı sorgularını iyileştirmek için var olan derin dizinlerinden yararlanabilir.
+* **Disablederin boşluğu** komutunu kullanarak, artık sorgu iyileştirmesi sırasında, uzay boşluğu kuralları uygulanmaz. Derin boşluğu devre dışı bırakmak, hiçbir durumda kalmadığı için oluşturulan dizinleri etkilemez.
+
+Aşağıdaki hücrede, bu komutları, derin boşluğu etkinleştirmek veya devre dışı bırakmak için nasıl kullanabileceğiniz gösterilmektedir. Çıktı, yapılandırması güncelleştirilmiş mevcut Spark oturumunun başvurusunu gösterir.
 
 :::zone pivot = "programming-language-scala"
 
@@ -770,7 +782,7 @@ res51: org.apache.spark.sql.Spark™Session = org.apache.spark.sql.SparkSession@
 
 Spark 'ın sorgu işleme sırasında derin uzay dizinlerini kullanmasını sağlamak için, uzay boşluğu özelliğinin etkinleştirildiğinden emin olmanız gerekir.
 
-Aşağıdaki hücrede, derin boşluğu etkinleştirilir ve örnek sorgular çalıştırmak için kullandığınız örnek veri kayıtlarınızı içeren iki veri çerçevesi oluşturulur. Her veri çerçevesi için birkaç örnek satır yazdırılır.
+Aşağıdaki hücre, derin boşluğu sunar ve örnek sorgular çalıştırmak için kullandığınız örnek veri kayıtlarınızı içeren iki veri çerçevesi oluşturur. Her veri çerçevesi için birkaç örnek satır yazdırılır.
 
 :::zone pivot = "programming-language-scala"
 
@@ -857,11 +869,11 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 Şu anda, uzay boşluğu iki sorgu grubu için dizinlerden yararlanmaya yönelik kurallara sahiptir:
 
 * Arama veya Aralık seçimi filtreleme koşullarına sahip seçim sorguları.
-* Sorguları eşitlik JOIN koşulu (diğer bir deyişle, Equı-JOIN) ile birleştirin.
+* Sorguları eşitlik JOIN koşulu (diğer bir deyişle, eşbirleştirmeler) ile birleştirin.
 
 ## <a name="indexes-for-accelerating-filters"></a>Hızlandırma filtreleri için dizinler
 
-İlk örnek sorgu, departman kayıtlarında bir arama yapar (hücrenin altına bakın). SQL 'de, bu sorgu aşağıdaki gibi görünür:
+İlk örnek sorgu, aşağıdaki hücrede gösterildiği gibi, departman kayıtlarında bir arama yapar. SQL 'de, bu sorgu aşağıdaki örneğe benzer şekilde görünür:
 
 ```sql
 SELECT deptName
@@ -869,12 +881,12 @@ FROM departments
 WHERE deptId = 20
 ```
 
-Aşağıdaki hücre çalıştırmanın çıktısı şunları gösterir:
+Aşağıdaki hücre çalıştırmanın çıktısı şunu gösterir:
 
 * Tek bir departman adı olan sorgu sonucu.
 * Sorguyu çalıştırmak için kullanılan Spark planı.
 
-Sorgu planında, planın en altındaki "FileScan" işleci, kayıtların okunduğu veri kaynağını gösterir. Bu dosyanın konumu, "deptIndex1" dizininin en son sürümünün yolunu gösterir. Bu, sorguya göre ve derin en iyi duruma getirme kuralları kullanılarak, Spark 'ın çalışma zamanında uygun dizinden yararlanmaya karar verdiği gösterir.
+Sorgu planında, planın en altındaki **Filescan** işleci, kayıtların okunduğu veri kaynağını gösterir. Bu dosyanın konumu, "deptIndex1" dizininin en son sürümünün yolunu gösterir. Bu bilgiler sorguya göre ve derin en iyi duruma getirme kuralları kullanılarak, Spark 'ın çalışma zamanında uygun dizinden yararlanmaya karar verdiği gösterir.
 
 :::zone pivot = "programming-language-scala"
 
@@ -954,7 +966,7 @@ Project [deptName#534]
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), EqualTo(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
 
-İkinci örnek, departman kayıtlarında bir Aralık seçim sorgusudur. SQL 'de, bu sorgu aşağıdaki gibi görünür:
+İkinci örnek, departman kayıtlarında bir Aralık seçim sorgusudur. SQL 'de, bu sorgu aşağıdaki örneğe benzer şekilde görünür:
 
 ```sql
 SELECT deptName
@@ -962,7 +974,7 @@ FROM departments
 WHERE deptId > 20
 ```
 
-İlk örneğe benzer şekilde, aşağıdaki hücrenin çıktısı sorgu sonuçlarını (iki bölümün adları) ve sorgu planını gösterir. Dosya taraması işlecinde veri dosyasının konumu, sorguyu çalıştırmak için ' deptIndex1 ' kullanıldığını gösterir.
+İlk örneğe benzer şekilde, aşağıdaki hücrenin çıktısı sorgu sonuçlarını (iki bölümün adları) ve sorgu planını gösterir. Dosya **tarama** işlecinde veri dosyasının konumu, sorguyu çalıştırmak Için "deptIndex1" kullanıldığını gösterir.
 
 :::zone pivot = "programming-language-scala"
 
@@ -1041,16 +1053,14 @@ Project [deptName#534]
 +- *(1) Filter (isnotnull(deptId#533) && (deptId#533 > 20))
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), GreaterThan(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
-
-Üçüncü örnek, departmanı ve çalışan kayıtlarını departman KIMLIĞINDE birleştirme sorgusudur. Denk SQL deyimleri aşağıda gösterilmiştir:
+Üçüncü örnek, departmanı ve çalışan kayıtlarını departman KIMLIĞINDE birleştirme sorgusudur. Denk SQL deyimleri şu şekilde gösterilir:
 
 ```sql
 SELECT employees.deptId, empName, departments.deptId, deptName
 FROM   employees, departments
 WHERE  employees.deptId = departments.deptId
 ```
-
-Aşağıdaki hücre çalıştırmanın çıktısı, 14 çalışan adları ve her çalışanın çalıştığı departmanın adı olan sorgu sonuçlarını gösterir. Sorgu planı çıkışa da dahildir. İki FileScan işleçlerinin dosya konumlarının, bu Spark 'ın sorguyu çalıştırmak için "Empındex" ve "deptIndex1" dizinlerinin nasıl kullanıldığını gösterir.
+Aşağıdaki hücreyi çalıştırmanın çıktısı, 14 çalışan adları ve her çalışanın çalıştığı departmanın adı olan sorgu sonuçlarını gösterir. Sorgu planı çıkışa da dahildir. İki dosya **tarama** işleçlerinin dosya konumlarının, bu Spark 'ın sorguyu çalıştırmak Için "empındex" ve "deptIndex1" dizinlerini nasıl gösterdiğine dikkat edin.
 
 :::zone pivot = "programming-language-scala"
 
@@ -1286,7 +1296,7 @@ Project [empName#528, deptName#534]
 
 ## <a name="explain-api"></a>API 'YI açıkla
 
-Dizinler harika, ancak kullanıldıklarında nasıl emin olabilirsiniz? Derin uzay, kullanıcıların, sorgu çalıştırmadan önce, güncelleştirilmiş dizine bağımlı plana göre orijinal planlarını karşılaştırmasını sağlar. Komut çıkışını göstermek için HTML/düz metin/konsol modundan seçim yapabilirsiniz.
+Dizinler harika, ancak kullanıldıklarında nasıl emin olabilirsiniz? Derin uzay, kullanıcıların, sorgusunu çalıştırmadan önce, güncelleştirilmiş dizine bağımlı plana göre orijinal planını karşılaştırmalarına olanak sağlar. Komut çıkışını göstermek için HTML, düz metin veya konsol modundan birini seçebilirsiniz.
 
 Aşağıdaki hücrede HTML ile bir örnek gösterilmektedir. Vurgulanan bölüm, kullanılan dizinler ile birlikte orijinal ve güncelleştirilmiş planlar arasındaki farkı gösterir.
 
@@ -1367,12 +1377,12 @@ empIndex:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/<container>/i
 
 ## <a name="refresh-indexes"></a>Dizinleri Yenile
 
-Bir dizinin üzerinde oluşturulduğu orijinal veriler değişirse, Dizin artık verilerin en son durumunu yakalayamaz. "Refreshındex" komutunu kullanarak bu tür bir eski dizini yenileyebilirsiniz. Bu, dizinin tamamen yeniden oluşturulmasına ve en son veri kayıtlarına göre güncellenmesine neden olur (endişelenmeyin, diğer not defterlerinde dizininizi artımlı olarak nasıl yenileyecek?).
+Bir dizinin oluşturulduğu özgün veriler değişiklik olursa, Dizin artık verilerin en son durumunu yakalayamaz. **Refreshındex** komutunu kullanarak, eski bir dizini yenileyebilirsiniz. Bu komut, dizinin tamamen yeniden oluşturulmasına ve en son veri kayıtlarına göre güncelleştirmeye neden olur. Diğer not defterlerinde dizininizin nasıl artımlı olarak yenileneceğini göstereceğiz.
 
 Aşağıdaki iki hücrede bu senaryo için bir örnek gösterilmektedir:
 
-* İlk hücre, özgün departmanlar verilerine iki departman daha ekler. Yeni bölümlerin doğru eklendiğini doğrulamak için departmanlar listesini okur ve yazdırır. Çıktıda toplam altı bölüm gösterilir: dört eski ve iki yeni. "Refreshındex" güncelleştirmeleri "deptIndex1" olarak çağrılıyor, dizin yeni departmanları yakalar.
-* İkinci hücre, Aralık seçim sorgu örneğimizi çalıştırır. Sonuçlar artık dört bölüm içermelidir: Yukarıdaki sorguyu çalıştırdığımızda görülen ve iki, yeni eklediğimiz yeni departmanlardır.
+* İlk hücre, özgün departmanlar verilerine iki departman daha ekler. Yeni bölümlerin doğru şekilde eklendiğini doğrulamak için bir departman listesini okur ve yazdırır. Çıktıda toplam altı bölüm gösterilir: dört eski ve iki yeni. Dizin yeni departmanlar yakaladığı için **refreshındex** Updates "deptIndex1" çağrılıyor.
+* İkinci hücre, Aralık seçim sorgu örneğimizi çalıştırır. Sonuçlar artık dört bölüm içermelidir: Yukarıdaki sorguyu çalıştırdığımızda görülen iki, ve eklediğimiz yeni departmanlardır.
 
 ### <a name="specific-index-refresh"></a>Belirli dizin yenileme
 

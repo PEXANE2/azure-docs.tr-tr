@@ -11,14 +11,17 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c664d4859a306387b4eafa2f19ab5877ccf6eb1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a4b65195488f101d36aaf73956f1422bfccbbf9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81686950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282145"
 ---
 # <a name="run-opc-publisher"></a>OPC Yayımcısını Çalıştırma
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 Bu makalede, ad hata ayıklama OPC yayımcısının nasıl çalıştırılacağı açıklanır. Ayrıca performans ve bellek konularını ele alınmaktadır.
 
@@ -519,7 +522,7 @@ Tüm sertifika depoları için varsayılan depolama türü, komut satırı seçe
 
 - Windows üzerinde yerel olarak çalışan, `Directory` özel anahtara erişim başarısız olduğundan, türünde bir uygulama sertifika deposu kullanamazsınız. Bu durumda, seçeneğini kullanın `--at X509Store` .
 - Linux Docker kapsayıcısı olarak çalışan, Docker Run seçeneğiyle, sertifika depolarını konak dosya sistemiyle eşleyebilirsiniz `-v <hostdirectory>:/appdata` . Bu seçenek, sertifikanın uygulama genelinde kalıcı olmasını sağlar.
-- Linux Docker kapsayıcısı olarak çalışıyor ve uygulama sertifikası için bir x509 deposu kullanmak istiyorsanız Docker Run seçeneğini `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` ve uygulama seçeneğini kullanın.`--at X509Store`
+- Linux Docker kapsayıcısı olarak çalışıyor ve uygulama sertifikası için bir x509 deposu kullanmak istiyorsanız Docker Run seçeneğini `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` ve uygulama seçeneğini kullanın. `--at X509Store`
 
 ## <a name="performance-and-memory-considerations"></a>Performans ve bellek konuları
 
@@ -531,9 +534,9 @@ OPC yayımcısı 'nı çalıştırdığınızda, performans gereksinimlerinizi v
 
 Bellek ve performans birbirine bağımlıdır ve her ikisi de, yayımlanacak düğüm sayısına göre yapılandırmaya bağlıdır. Aşağıdaki parametrelerin gereksinimlerinizi karşıladığından emin olun:
 
-- IoT Hub zaman aralığı gönderir:`--si`
-- IoT Hub ileti boyutu (varsayılan `1` ):`--ms`
-- İzlenen öğeler kuyruk kapasitesi:`--mq`
+- IoT Hub zaman aralığı gönderir: `--si`
+- IoT Hub ileti boyutu (varsayılan `1` ): `--ms`
+- İzlenen öğeler kuyruk kapasitesi: `--mq`
 
 `--mq`Parametresi, tüm OPC düğümü değer değişikliği bildirimlerini arabelleğe alarak iç sıranın kapasitesinin üst sınırını denetler. OPC yayımcısı IoT Hub yeterince hızlı bir şekilde ileti gönderemıyorsa, bu sıra bildirimleri arabelleğe alır. Parametresi, ara belleğe kullanılabilecek bildirimlerin sayısını ayarlar. Bu kuyruktaki öğelerin sayısını test çalıştırmalarınız içinde artırdıysanız, ileti kaybını önlemek için şunları yapmanız gerekir:
 

@@ -5,16 +5,16 @@ description: Güvenilen bir Daemon uygulamasını yapılandırmak üzere kimlik 
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e445f26458d13d28dd4ef50c6c17d434554d9fd5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006647"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311079"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon uygulamasının güvenliğini sağlama
 
@@ -120,14 +120,14 @@ Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azu
     > ![Azure RBAC kullanarak erişim verme](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. **Rol atamaları** sekmesinde bir rol ataması **ekleyin** . 
-    
+
     > [!div class="mx-imgBorder"]
     > ![Rol ataması ekle](./media/how-to-manage-authentication/add-role-assignment.png)
 
 3. **Azure haritalar veri okuyucusu** veya **Azure haritalar veri katılımcısı**gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata**' nın altında, **Kullanıcı tarafından atanan yönetilen kimlik**sistemine atanmış yönetilen kimlik ile **Azure AD Kullanıcı, Grup veya hizmet sorumlusu** veya yönetilen kimlik ' i seçin  /  **System assigned Managed identity**. Sorumluyu seçin. Ardından **Kaydet**’i seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Rol ataması ekle](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
+    > ![Rol ataması ekleme](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
 
 4. Rol atamasının rol atama sekmesinde uygulandığını doğrulayabilirsiniz.
 
@@ -139,7 +139,7 @@ Barındırma kaynağı için yönetilen bir kimlik yapılandırıldıktan sonra 
 
 Uygulamanızı kaydettikten ve Azure Maps ile ilişkilendirdikten sonra, erişim belirteçleri isteyebilirsiniz.
 
-* Azure AD kaynak KIMLIĞI`https://atlas.microsoft.com/`
+* Azure AD kaynak KIMLIĞI `https://atlas.microsoft.com/`
 * Azure AD Uygulaması KIMLIĞI
 * Azure AD Kiracı Kimliği
 * Kayıt istemci parolasını Azure AD Uygulaması

@@ -1,6 +1,6 @@
 ---
 title: .NET SDK ile akış uç noktalarını yönetin. | Microsoft Belgeleri
-description: Bu makalede, Azure portal ile akış uç noktalarının nasıl yönetileceği gösterilmektedir.
+description: Bu makalede, .NET SDK ile akış uç noktalarının nasıl yönetileceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c0eceff6ba371cbdd01805a38c56dcc09f0887f9
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: faf9acc6e91b43e2dd82589127f8697c666d86e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266019"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250564"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>.NET SDK ile akış uç noktalarını yönetme
 
@@ -151,5 +151,5 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

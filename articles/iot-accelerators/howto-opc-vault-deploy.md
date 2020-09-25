@@ -8,21 +8,24 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84307937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282032"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini derleme ve dağıtma
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 Bu makalede, OPC Kasası sertifika yönetimi hizmetinin Azure 'da nasıl dağıtılacağı açıklanır.
 
 > [!NOTE]
 > Daha fazla bilgi için GitHub [OPC Kasası deposuna](https://github.com/Azure/azure-iiot-opc-vault-service)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="install-required-software"></a>Gerekli yazılımları yükler
 
@@ -75,9 +78,9 @@ PowerShell betiği OPC Kasası mikro hizmetini ve uygulamayı dağıtmanın kola
    > [!NOTE]
    > Sorun oluşması durumunda, makalenin devamındaki "dağıtım hataları sorunlarını giderme" bölümüne bakın.
 
-8. En sevdiğiniz tarayıcıyı açın ve uygulama sayfasını açın:`https://myResourceGroup.azurewebsites.net`
+8. En sevdiğiniz tarayıcıyı açın ve uygulama sayfasını açın: `https://myResourceGroup.azurewebsites.net`
 8. Web uygulamasına ve OPC Kasası mikro hizmetine dağıtımdan sonra ısınma için birkaç dakika verin. Web giriş sayfası, ilk yanıtları yapana kadar bir dakika kadar ilk kullanımda yanıt vermeyi durdurabilir.
-11. Swagger API 'sine göz atmak için şunu açın:`https://myResourceGroup-service.azurewebsites.net`
+11. Swagger API 'sine göz atmak için şunu açın: `https://myResourceGroup-service.azurewebsites.net`
 13. DotNet ile yerel bir GDS sunucusunu başlatmak için başlatın `.\myResourceGroup-gds.cmd` . Docker ile başlatın `.\myResourceGroup-dockergds.cmd` .
 
 Bir derlemeyi tamamen aynı ayarlarla yeniden dağıtmak mümkündür. Bu tür bir işlemin tüm uygulama gizli dizilerini yenilediğini ve Azure Active Directory (Azure AD) uygulama kayıtlarında bazı ayarları sıfırlayabileceğini unutmayın.
@@ -88,9 +91,9 @@ Dağıtım başarılı olduktan sonra Hizmetleri kullanmaya başlayabilirsiniz. 
 
 ## <a name="delete-the-services-from-the-subscription"></a>Abonelikten hizmetleri silme
 
-Aşağıdaki adımları uygulayın:
+Bunu yapmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portalda](https://portal.azure.com) oturum açın.
 2. Hizmetin dağıtıldığı kaynak grubuna gidin.
 3. **Kaynak grubunu sil**'i seçip onaylayın.
 4. Kısa bir süre sonra dağıtılan tüm hizmet bileşenleri silinir.

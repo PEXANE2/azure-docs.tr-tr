@@ -3,12 +3,12 @@ title: Bir sanal makinenin Azure Resource Manager şablonunu görüntüleyin ve 
 description: Diğer VM 'Ler oluşturmak için bir sanal makineden Azure Resource Manager şablonunu nasıl kullanacağınızı öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e58b54d61653f1edba3c3893edb902a94fbf9f2b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272700"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282519"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak sanal makineler oluşturma 
 
@@ -23,7 +23,7 @@ Kaynak Yöneticisi şablonu kullanarak DevTest Labs 'de sanal makine oluşturman
 
 - Microsoft. DevTestLab/Labs/virtualmachines kaynak türü kullanan Kaynak Yöneticisi şablonlar (şablondaki "kaynak" özelliğinde bildirildiği gibi), tek tek Laboratuvar VM 'Leri sağlayabilir. Ardından her VM, DevTest Labs sanal makineler listesinde tek bir öğe olarak görünür:
 
-   ![DevTest Labs sanal makineler listesinde tek öğe olarak VM 'lerin listesi](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
+   ![Sanal makinelerin listesini DevTest Labs sanal makineler listesinde tek öğe olarak gösteren ekran görüntüsü.](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
    Bu tür Kaynak Yöneticisi şablonu, **New-AzResourceGroupDeployment** Azure PowerShell komutu ya da **az Group Deployment Create**Azure CLI komutu aracılığıyla sağlanabilir. Yönetici izinleri gerektirir, bu nedenle bir DevTest Labs kullanıcı rolüyle atanan kullanıcılar dağıtımı gerçekleştiremez. 
 
@@ -40,7 +40,7 @@ Bu makalenin geri kalanında, Microsoft. DevTestLab/Labs/virtualmachines kullana
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Bir sanal makinenin Kaynak Yöneticisi şablonunu görüntüleyin ve kaydedin
 1. Sanal makine oluşturmaya başlamak için [laboratuvara Ilk VM 'Nizi oluşturma bölümündeki](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) adımları izleyin.
 1. Sanal makineniz için gerekli bilgileri girin ve bu VM için istediğiniz yapıtları ekleyin.
-1. **Gelişmiş ayarlar** sekmesine gidin. 
+1. **Gelişmiş ayarlar** sekmesine geçin. 
 1. Ayarları Yapılandır penceresinin en altında **ARM şablonunu görüntüle**' yi seçin.
 1. Daha sonra başka bir sanal makine oluşturmak için kullanmak üzere Kaynak Yöneticisi şablonunu kopyalayın ve kaydedin.
 

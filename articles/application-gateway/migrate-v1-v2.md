@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804392"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311606"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway ve Web uygulaması güvenlik duvarını v1 'den v2 'ye geçirme
 
@@ -36,6 +36,8 @@ Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
 * Yeni v2 ağ geçidinde yeni ortak ve özel IP adresleri vardır. Mevcut v1 ağ geçidiyle ilişkili IP adreslerini sorunsuz bir şekilde v2 'ye taşımak mümkün değildir. Ancak, yeni V2 ağ geçidine var olan (ayrılmamış) ortak veya özel IP adresi ayırabilirsiniz.
 * V1 ağ geçidinizin bulunduğu sanal ağınız içindeki başka bir alt ağ için bir IP adresi alanı sağlamanız gerekir. Betik, zaten v1 ağ geçidine sahip olan mevcut alt ağlarda V2 ağ geçidini oluşturamaz. Ancak, var olan alt ağda zaten bir V2 ağ geçidi varsa, bu, yeterli IP adresi alanı sağlanabileceği için hala çalışabilir.
+* V2 ağ geçidi alt ağıyla ilişkili bir ağ güvenlik grubunuz veya Kullanıcı tanımlı yollar varsa, başarılı bir geçiş için [NSG gereksinimlerine](../application-gateway/configuration-infrastructure.md#network-security-groups) ve [UDR gereksinimlerine](../application-gateway/configuration-infrastructure.md#supported-user-defined-routes) uydıklarından emin olun
+* [Sanal ağ hizmeti uç noktası ilkeleri](../virtual-network/virtual-network-service-endpoint-policies-overview.md) şu anda Application Gateway bir alt ağda desteklenmiyor.
 * Bir TLS/SSL yapılandırmasını geçirmek için v1 ağ geçidinizdeki kullanılan tüm TLS/SSL sertifikalarını belirtmeniz gerekir.
 * V1 ağ geçidiniz için FIPS modunu etkinleştirdiyseniz, bu, yeni V2 ağ geçidize geçirilmez. FIPS modu v2 'de desteklenmez.
 * v2 IPv6 desteklemez, bu nedenle IPv6 etkin v1 ağ geçitleri geçirilmez. Betiği çalıştırırsanız, bu tamamlanmamış olabilir.

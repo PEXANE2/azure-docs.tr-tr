@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 539145836849bb66bcf1f12a97ea405fe84c47bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311385"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Veri tabanlı stil Ifadeleri (Web SDK)
 
@@ -41,7 +41,7 @@ Bu videoda, Azure Maps web SDK 'sında veri odaklı stillendirme hakkında genel
 
 Azure Haritalar Web SDK 'Sı birçok tür ifadeyi destekler. İfadeler, kendi içinde veya diğer ifadelerle birlikte kullanılabilir.
 
-| İfade türü | Açıklama |
+| İfade türü | Description |
 |---------------------|-------------|
 | [Toplama ifadesi](#aggregate-expression) | Bir veri kümesi üzerinde işlenen ve ' a ' seçeneği ile kullanılabilen bir hesaplamayı tanımlayan bir ifade `clusterProperties` `DataSource` . |
 | [Mantıksal ifadeler](#boolean-expressions) | Boolean ifadeleri, Boole karşılaştırmaları değerlendirmek için bir dizi Boole işleci sağlar. |
@@ -86,7 +86,7 @@ Bu belgedeki tüm örnekler, farklı ifade türlerinin kullanılabileceği farkl
 
 Veri ifadeleri bir özelliğin özellik verilerine erişim sağlar. 
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `['at', number, array]` | object | Diziden bir öğe alır. |
 | `['geometry-type']` | string | Özelliğin geometri türünü alır: Point, MultiPoint, LineString, MultiLineString, Çokgen, MultiPolygon. |
@@ -98,6 +98,8 @@ Veri ifadeleri bir özelliğin özellik verilerine erişim sağlar.
 | `['length', string | array]` | sayı | Bir dizenin veya dizinin uzunluğunu alır. |
 | `['in', boolean | string | number, array]` | boolean | Dizide bir öğe olup olmadığını belirler |
 | `['in', substring, string]` | boolean | Bir dizedeki alt dizenin mevcut olup olmadığını belirler |
+| `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | sayı | Bir öğenin dizide bulunduğu ilk konumu veya bir dize içinde bir alt dize bulunabilir ya da `-1` giriş bulunamazsa. Aramanın başlatılacağı bir isteğe bağlı dizini kabul eder. |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string`\|dizi | Bir diziden veya belirtilen başlangıç dizininden bir dizeden bir alt dizeden veya ayarlandıysa bir başlangıç dizininden bir bitiş dizininden bir öğe döndürür. Dönüş değeri, Başlangıç dizininin dahil değildir ancak son dizinden değil. |
 
 **Örnekler**
 
@@ -151,8 +153,11 @@ Veri ifadelerinin nasıl kullanılacağına ilişkin bazı ek örnekler aşağı
 //Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
 ['at', 1, ['at', 0, ['get', 'array2d']]]
 
-//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+//Check to see if a value is in an array "properties.abcArray.indexOf('a') !== -1" = true
 ['in', 'a', ['get', 'abcArray']]
+
+//Gets the index of the value 'b' in an array "properties.abcArray.indexOf('b')" = 1
+['index-of', 'b', ['get', 'abcArray']]
 
 //Get the length of an array "properties.abcArray.length" = 3
 ['length', ['get', 'abcArray']]
@@ -162,13 +167,19 @@ Veri ifadelerinin nasıl kullanılacağına ilişkin bazı ek örnekler aşağı
 
 //Check that "fillColor" exists as a subproperty of "_style".
 ['has', 'fillColor', ['get', '_style']]
+
+//Slice an array starting at index 2 "properties.abcArray.slice(2)" = ['c']
+['slice', ['get', 'abcArray'], 2]
+
+//Slice a string from index 0 to index 4 "properties.entityType.slice(0, 4)" = 'rest'
+['slice', ['get', 'entityType'], 0, 4]
 ```
 
 ## <a name="math-expressions"></a>Matematik ifadeleri
 
 Matematik ifadeleri, ifade çerçevesi içinde veri odaklı hesaplamalar gerçekleştirmek için matematik işleçleri sağlar.
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | sayı | Belirtilen sayıların toplamını hesaplar. |
 | `['-', number]` | sayı | Belirtilen sayı ile 0 çıkartır. |
@@ -223,10 +234,10 @@ Boolean ifadeleri, Boole karşılaştırmaları değerlendirmek için bir dizi B
 
 Değerler karşılaştırılırken karşılaştırma kesin olarak yazılır. Farklı türlerin değerleri her zaman eşit kabul edilir. Türlerin ayrıştırma zamanında farklı olduğu bilinen durumlar geçersiz olarak değerlendirilir ve bir ayrıştırma hatası oluşturur. 
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
-| `['! ', boolean]` | boolean | Mantıksal değilleme. `true`Girişin olup olmadığını ve girişin olup olmadığını döndürür `false` `false` `true` . |
-| `['!= ', value, value]` | boolean | `true`Giriş değerleri eşit değilse döndürür, `false` Aksi takdirde. |
+| `['!', boolean]` | boolean | Mantıksal değilleme. `true`Girişin olup olmadığını ve girişin olup olmadığını döndürür `false` `false` `true` . |
+| `['!=', value, value]` | boolean | `true`Giriş değerleri eşit değilse döndürür, `false` Aksi takdirde. |
 | `['<', value, value]` | boolean | `true`İlk giriş ikinciden kesinlikle küçükse döndürür, `false` Aksi takdirde. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
 | `['<=', value, value]` | boolean | `true`İlk girişin ikinciden küçük veya ona eşit olup olmadığını döndürür, `false` Aksi takdirde. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
 | `['==', value, value]` | boolean | `true`Giriş değerlerinin eşitse, `false` Aksi takdirde döndürür. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
@@ -426,7 +437,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türlerini test etmek ve dönüştürmek için araçlar sağlar.
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | dizi \| nesnesi | Sabit bir dizi veya nesne değeri döndürür. Bir dizi ya da nesnenin bir ifade olarak değerlendirilmesini engellemek için bu ifadeyi kullanın. Bir dizi ya da nesnenin bir ifade tarafından döndürülmesi gerektiğinde bu gereklidir. |
 | `['image', string]` | string | Harita görüntüsü Sprite öğesine belirtilen görüntü KIMLIĞININ yüklenip yüklenmediğini denetler. Eğer ise, KIMLIK döndürülür, aksi takdirde null döndürülür. |
@@ -462,7 +473,7 @@ Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türleri
 
 Renk ifadeleri renk değerleri oluşturmayı ve işlemeyi kolaylaştırır.
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | Ve arasında aralığa gereken *kırmızı*, *yeşil*ve *mavi* bileşenlerden bir renk değeri oluşturur `0` `255` ve bir alfa bileşeni `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
 | `['rgba', number, number, number, number]` | color | Ve arasında aralığa gereken *kırmızı*, *yeşil*, *mavi* bileşenlerden `0` `255` ve bir ve aralığı içindeki bir Alfa bileşeninden bir renk değeri oluşturur `0` `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
@@ -888,7 +899,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Değişken bağlama ifadeleri, bir hesaplamanın sonuçlarını bir değişkende depolar. Bu nedenle, hesaplama sonuçlarının bir ifadenin başka bir yerinde birden çok kez başvurulabilmesini sağlayabilirsiniz. Birçok hesaplamayı içeren ifadeler için yararlı bir iyileştirmedir.
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Let ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Değer1: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;AD2: dize,<br/>&nbsp;&nbsp;&nbsp;&nbsp;değer2: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Bir veya daha fazla değeri `var` , sonucu döndüren alt ifadede ifadesi tarafından kullanılmak üzere değişkenler olarak depolar. |
 | `['var', name: string]` | herhangi biri | İfadesi kullanılarak oluşturulan bir değişkene başvurur `let` . |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 8e48a5c896c4927b82f7d77f31b7f1c47fd156c5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 089cf07854f1f29eda7028db614edb1028e5d66a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90942170"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311572"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -43,12 +43,11 @@ Sanal makinelerinizde Azure oto yönetimi 'ni etkinleştirmeyi denemeden önce g
 
 - Yalnızca Windows Server VM 'Leri
 - VM 'Ler çalışıyor olmalıdır
-- Yalnızca ölçek olmayan küme VM 'Leri
 - VM 'Ler desteklenen bir bölgede olmalıdır
 - Kullanıcının doğru izinleri olması gerekir
 - VM 'Ler farklı bir abonelikte bulunan bir Log Analytics çalışma alanına bağlanmalıdır
 
-Aşağıdaki RBAC izni, **Kullanıcı erişimi yönetici** rolleriyle birlikte, oto yönetimi: **Owner** rolü ya da **katkıda bulunan** ' i etkinleştirmek için gereklidir.
+Mevcut bir oto Yönet hesabı kullanarak, oto yönetimini etkinleştirmek için **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
 
 Ayrıca, oto yönetimi 'nin yalnızca şu bölgelerde bulunan Windows VM 'Leri desteklediğini unutmayın: Batı Avrupa, Doğu ABD, Batı ABD 2, Kanada Orta, Orta Batı ABD.
 
@@ -105,7 +104,7 @@ Otomatikmanage hesabı, güvenlik bağlamına veya otomatik işlemlerin oluştu�
 Azure portal deneyiminde, sanal makinelerinizdeki oto yönetimini etkinleştirirken, el ile Yönet hesabı atamanıza veya el ile oluşturmanıza imkan tanıyan, **Azure VM en iyi uygulama** dikey penceresinde gelişmiş bir açılan menü bulunur.
 
 > [!NOTE]
-> Aşağıdaki RBAC izni, **Kullanıcı erişimi yönetici** rolleriyle birlikte, oto yönetimi: **Owner** rolü ya da **katkıda bulunan** ' i etkinleştirmek için gereklidir.
+> Mevcut bir oto Yönet hesabı kullanarak, oto yönetimini etkinleştirmek için **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
 
 
 ## <a name="status-of-vms"></a>VM 'lerin durumu

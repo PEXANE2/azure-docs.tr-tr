@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: 32684ea72df63de5b82941b3ef44e9d579d09eb4
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 717ad8bfaa9ddfcfa5775654408601ca13d3a636
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131897"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282621"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için İş Tarayıcısı’nı ve İş Görünümü’nü kullanma
 Azure Data Lake Analytics hizmeti bir sorgu deposunda gönderilen işleri arşivler. Bu makalede, geçmiş iş bilgilerini bulmak için Visual Studio için Azure Data Lake Araçları ' de Iş tarayıcısını ve Iş görünümünü nasıl kullanacağınızı öğreneceksiniz. 
@@ -38,7 +38,7 @@ Visual Studio 'da>iş **Data Lake Analytics>Azure>Sunucu Gezgini** aracılığı
     
       İş durumu iş aşamalarını özetler:
     
-      ![Azure Data Lake Analytics iş aşamaları durumu](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
+      ![Azure Data Lake Analytics iş aşamalarını gösteren ekran görüntüsü.](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
     * Hazırlama: komut dosyanızı buluta yükleyin, derleme hizmetini kullanarak betiği derleyip en iyi duruma getirme.
     * Kuyruğa Alınan: Işler, yeterli kaynak beklerken sıraya alınır veya işler hesap başına maksimum eşzamanlı iş sayısını aşırlar. Öncelik ayarı sıraya alınan işlerin sırasını belirler. sayı ne kadar düşükse öncelik o kadar yüksektir.
@@ -50,7 +50,7 @@ Visual Studio 'da>iş **Data Lake Analytics>Azure>Sunucu Gezgini** aracılığı
     
       Temel iş bilgileri, Iş Özeti panelinin alt bölümünde gösterilir.
     
-      ![Azure Data Lake Analytics iş aşamaları durumu](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
+      ![Metin kutularındaki açıklamalarla Iş özetini gösteren ekran görüntüsü.](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
     
     * İş sonucu: başarılı veya başarısız oldu. İş her aşamada başarısız olabilir.
     * Toplam süre: gönderme saati ile bitiş saati arasındaki duvar saati zamanı (süre).
@@ -60,10 +60,10 @@ Visual Studio 'da>iş **Data Lake Analytics>Azure>Sunucu Gezgini** aracılığı
     * Hesap: işi çalıştırmak için kullanılan Data Lake Analytics hesabı.
     * Yazar: işi gönderen Kullanıcı, gerçek bir kişinin hesabı veya sistem hesabı olabilir.
     * Öncelik: işin önceliği. Sayı ne kadar düşükse öncelik o kadar yüksektir. Yalnızca kuyruktaki işlerin sırasını etkiler. Daha yüksek bir öncelik ayarlamak işleri çalıştırmayı engellemez.
-    * Paralellik: istenen en fazla eşzamanlı Azure Data Lake Analytics birimi sayısı (adlaus), diğer adıyla köşeleri. Şu anda, bir köşe iki sanal çekirdekli ve altı GB RAM 'e sahip bir VM 'ye eşittir, ancak gelecekte Data Lake Analytics güncelleştirmelerde yükseltilecektir.
+    * Paralellik: istenen en fazla sayıda eş zamanlı Azure Data Lake Analytics birimi (ADLAUs), köşe olarak da bilinir. Şu anda, bir köşe iki sanal çekirdekli ve altı GB RAM 'e sahip bir VM 'ye eşittir, ancak gelecekte Data Lake Analytics güncelleştirmelerde yükseltilecektir.
     * Kalan bayt: iş tamamlanana kadar işlenmesi gereken baytlar.
     * Okunan/yazılan bayt sayısı: iş çalışmaya başladıktan sonra okunan/yazılan baytlar.
-    * Toplam köşeler: iş çok sayıda iş parçasına bölündüğü her iş parçasına köşe denir. Bu değer, işin kaç iş parçasının oluştuğunu açıklar. Bir köşeyi temel işlem birimi, diğer adıyla Azure Data Lake Analytics birimi (adlau) olarak düşünebilirsiniz ve köşeler paralellik halinde çalıştırılabilir. 
+    * Toplam köşeler: iş çok sayıda iş parçasına bölündüğü her iş parçasına köşe denir. Bu değer, işin kaç iş parçasının oluştuğunu açıklar. Bir köşeyi Azure Data Lake Analytics Unit (ADLAU) olarak da bilinen temel bir işlem birimi olarak düşünebilirsiniz ve köşeler paralellik halinde çalıştırılabilir. 
     * Tamamlandı/çalışıyor/başarısız: tamamlanan/çalışan/başarısız köşelerin sayısı. Köşeler her iki Kullanıcı kodu ve sistem hatası nedeniyle başarısız olabilir, ancak sistem yeniden denemeler birkaç kez otomatik olarak başarısız olur. Yeniden denedikten sonra köşe hala başarısız olursa, tüm iş başarısız olur.
 * İş grafiği
   
@@ -71,7 +71,7 @@ Visual Studio 'da>iş **Data Lake Analytics>Azure>Sunucu Gezgini** aracılığı
   
     ![Azure Data Lake Analytics iş aşamaları durumu](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
   
-    Bir iş, çok sayıda iş parçasına bölünmüştür. Her iş parçasına köşe denir. Köşeler süper köşe (aka aşaması) olarak gruplandırılır ve Iş grafiği olarak görselleştirilebilir. İş grafiğindeki yeşil aşama plagrafları, aşamaları gösterir.
+    Bir iş, çok sayıda iş parçasına bölünmüştür. Her iş parçasına köşe denir. Köşeler, üst köşe olarak gruplandırılır (aşama olarak da bilinir) ve Iş grafiği olarak görselleştirilebilir. İş grafiğindeki yeşil aşama plagrafları, aşamaları gösterir.
   
     Bir aşamadaki her köşe, aynı verilerin farklı parçaları ile aynı türde çalışmalardır. Örneğin, bir TB veri içeren bir dosyanız varsa ve bunlardan oluşan yüzlerce köşe varsa, bunların her biri bir öbek okur. Bu köşeler aynı aşamada gruplandırılır ve aynı giriş dosyasının farklı parçaları üzerinde aynı çalışma yapılır.
   

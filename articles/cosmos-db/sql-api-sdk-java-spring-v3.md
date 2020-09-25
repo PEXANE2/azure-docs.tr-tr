@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e5b92918d93109183740be555bb805877862407
-ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
+ms.openlocfilehash: f0cb3d5f9184bacef42a0258add6dd2461a71dd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2020
-ms.locfileid: "90817879"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326669"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Yay verileri Azure Cosmos DB v3 for Core (SQL) API: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Spring Data Azure Cosmos DB, [Azure Spring Cloud](https://azure.microsoft.com/se
 
 ## <a name="start-here"></a>Buradan başlayın
 
-# <a name="explore"></a>[Keşfetme](#tab/explore)
+# <a name="explore"></a>[Explorer](#tab/explore)
 
 <img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
 
@@ -96,17 +96,6 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="document-operations"></a>Belge işlemleri
 
-Oluştur:
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Create":::
-
-Sil:
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Delete":::
-
-# <a name="query"></a>[Sorgu](#tab/queries)
-
-Sorgu:
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Query":::
-
 ---
 
 ## <a name="resources"></a>Kaynaklar
@@ -115,58 +104,7 @@ Sorgu:
 
 * **Öğretici**: [Spring Data Azure Cosmos DB GitHub 'da eğitim](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
 
-## <a name="release-history"></a>Yayın geçmişi
-
-### <a name="300-beta2-september-17-2020"></a>3.0.0-Beta. 2 (17 Eylül 2020)
-
-#### <a name="new-features"></a>Yeni özellikler
-
-* Yapıt kimliği ile güncelleştirildi `azure-spring-data-cosmos` .
-* Azure-Cosmos bağımlılığı güncelleştirildi `4.5.0` .
-* `Query Annotation` Yerel sorgular için destek.
-* Java 11 desteği.
-* `partitionKeyPath`Ek açıklama içindeki alanı açığa çıkararak Iç Içe bölüm anahtarı için destek eklendi `@Container` .
-* `limit` `top` Depo API 'leri tanımlarken kullanılmasına izin veren ve bu sorgu türü için destek eklendi `first` .
-
-#### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
-
-* Ek açıklamayla kullanıldığında, iç içe geçmiş bölüm anahtarı hatası düzeltildi `@GeneratedValue` .
-
-### <a name="300-beta1-august-17-2020"></a>3.0.0-Beta. 1 (17 Ağustos 2020)
-
-#### <a name="new-features"></a>Yeni özellikler
-
-* Grup KIMLIĞINI ile güncelleştirir `com.azure` .
-* Yapıt KIMLIĞINI ile güncelleştirir `azure-spring-data-2-3-cosmos` .
-* Azure-Cosmos SDK bağımlılığını güncelleştirir `4.3.2-beta.2` .
-* Denetim varlıkları için destek ekler:,,, `createdBy` `createdDate` `lastModifiedBy` ve `lastModifiedDate` açıklamalı alanlarının otomatik yönetimi.
-* `@GeneratedValue`TÜRÜNDEKI kimlik alanları için OTOMATIK kimlik oluşturma desteği ekler `String` .
-* Birden çok veritabanına sahip tek Azure Cosmos DB hesapları için çoklu veritabanı yapılandırma desteği ve birden çok veritabanı içeren birden çok Azure Cosmos DB hesabı ekler.
-* `@Version`Herhangi bir dize alanına ek açıklama desteği ekler.
-* Eşitleme API 'SI dönüş türlerini `Iterable` yerine türlerine güncelleştirir `List` .
-* `CosmosClientBuilder`Azure Cosmos DB SDK 'dan, sınıfa Spring çekirdeklere olarak sunar `@Configuration` .
-* `CosmosConfig`Sorgu ölçümleri ve yanıt tanılama işlemcisi uygulamasını içerecek güncelleştirmeler.
-* `Optional`Tek sonuç sorguları için veri türünü döndürmeye yönelik destek ekler.
-
-#### <a name="renames"></a>Onların
-
-* `CosmosDbFactory``CosmosFactory`.
-* `CosmosDBConfig``CosmosConfig`.
-* `CosmosDBAccessException``CosmosAccessException`.
-* `Document` ek açıklamanın ek açıklaması `Container` .
-* `DocumentIndexingPolicy` ek açıklamanın ek açıklaması `CosmosIndexingPolicy` .
-* `DocumentQuery``CosmosQuery`.
-* Application. Properties bayrağı `populateQueryMetrics` `queryMetricsEnabled` .
-
-#### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
-
-* `Parallel`Netty g/ç iş parçacıklarını engellemeyi önlemek için tanılama günlüğü görevinin iş parçacıklarına zamanlaması.
-* Silme işleminde iyimser kilitlemeyi düzeltir.
-* Yan tümce için kaçış sorgularıyla sorunu düzeltir `IN` .
-* `long`İçin veri türüne izin vererek sorunu düzeltir `@Id` .
-* `boolean` `long` `int` `double` Ek açıklama için veri türlerine izin vererek,, ve gibi sorunları düzeltir `@PartitionKey` .
-* `IgnoreCase` `AllIgnoreCase` Durum sorgularını yoksay için düzeltmeler ve anahtar sözcükler.
-* Kapsayıcılar otomatik olarak oluşturulduğunda, varsayılan istek birimi değeri olan 4.000 ' i kaldırır.
+[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 
 ## <a name="faq"></a>SSS
 
