@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: SQL havuzuyla verileri çözümlemeye başlama'
+title: 'Öğretici: adanmış SQL havuzlarıyla verileri çözümlemeye başlama'
 description: Bu öğreticide, SQL havuzunun analitik yeteneklerini araştırmak için NYC TAXI örnek verilerini kullanacaksınız.
 services: synapse-analytics
 author: saveenr
@@ -9,16 +9,16 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 3df0959003923a9a4ff2347330fd5a4f22e52245
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300131"
 ---
-# <a name="analyze-data-with-sql-pools"></a>SQL havuzlarıyla verileri çözümleme
+# <a name="analyze-data-with-sql-dedicated-pools"></a>SQL adanmış havuzlarla verileri çözümleme
 
-Azure SYNAPSE Analytics, SQL havuzu ile verileri çözümleme yeteneği sağlar. Bu öğreticide, SQL havuzunun analitik yeteneklerini araştırmak için NYC TAXI örnek verilerini kullanacaksınız.
+Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği sağlar. Bu öğreticide, ayrılmış bir SQL havuzunun yeteneklerini araştırmak için NYC TAXI verilerini kullanacaksınız.
 
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>NYC TAXI verilerini SQLDB1 'e yükleme
 
@@ -71,7 +71,7 @@ Azure SYNAPSE Analytics, SQL havuzu ile verileri çözümleme yeteneği sağlar.
     ```
 1. Bu betiğin çalıştırılması yaklaşık 1 dakika sürer. NYC TAXI verilerinin 2.000.000 satırlarını dbo adlı bir tabloya yükler **. Seyahat**
 
-## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>SQL havuzundaki NYC TAXI verilerini keşfet
+## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Özel SQL havuzundaki NYC TAXI verilerini keşfet
 
 1. SYNAPSE Studio 'da **veri** merkezine gidin.
 1. **SQLDB1**  >  **Tables**bölümüne gidin. Birkaç tablo yüklendiğini görürsünüz.

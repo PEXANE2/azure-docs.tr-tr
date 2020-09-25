@@ -1,19 +1,19 @@
 ---
 title: Key Vault sertifikalarla TLS sonlandırmasını yapılandırma-PowerShell
 titleSuffix: Azure Application Gateway
-description: HTTPS özellikli dinleyicilerine eklenen sunucu sertifikaları için Azure Application Gateway Key Vault nasıl tümleştirileceğini öğrenin.
+description: Anahtar kasanızı TLS/SSL sonlandırma sertifikaları için uygulama ağ geçidiniz ile bütünleştirmek üzere bir Azure PowerShell betiğini nasıl kullanacağınızı öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 4a872bc63be33ebed0a8ba9d89383cdfc9feef28
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: aaaeed9d8d6a2d84fa13f495f581dc1f5fdc19e2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386291"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323434"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>Azure PowerShell kullanarak TLS sonlandırmasını Key Vault sertifikalarla yapılandırma
 
@@ -27,7 +27,7 @@ Bu makale, Azure PowerShell modülü sürüm 1.0.0 veya üstünü gerektirir. S�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, Managedserviceıdentity modülünün yüklü olması gerekir:
 

@@ -1,14 +1,16 @@
 ---
 title: Yenilikler-Language Understanding (LUSıS)
 description: Bu makale, Azure bilişsel hizmetler Language Understanding API hakkındaki haberlerle düzenli olarak güncelleştirilir.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 06/15/2020
-ms.openlocfilehash: d178ee2f5db74949f4a8ad68df93bf3c4407c58a
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: fffe337a59ff343164a155fcd0f4d5616a32bf41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789217"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334625"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
@@ -21,7 +23,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Vide
 * [Preview 3,0 yazma](luis-migration-authoring-entities.md) 'Sının
     * Sürüm 3.2.0-Önizleme. 3- [.net-NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)
     * Sürüm 4.0.0-Önizleme. 3- [js-NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)
-* LUSıS ile DevOps uygulamalarını uygulama
+* LUIS ile DevOps yöntemlerini uygulama
     * Kavramlar
         * [LUSıS için DevOps uygulamaları](luis-concept-devops-sourcecontrol.md)
         * [LUSıS DevOps için sürekli tümleştirme ve sürekli teslim iş akışları](luis-concept-devops-automation.md)

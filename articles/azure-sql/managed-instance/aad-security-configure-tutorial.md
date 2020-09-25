@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 552b3f55632e817cc4669ce5da41b1e127c7d808
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84706452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283879"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Öğretici: Azure AD Server sorumlularını (oturum açma) kullanarak Azure SQL yönetilen örneği 'nde güvenlik
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Daha fazla bilgi edinmek için bkz. [Azure SQL yönetilen örneğine genel bakış](sql-managed-instance-paas-overview.md). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
@@ -104,7 +104,7 @@ SQL yönetilen örneğine bağlanma örnekleri için aşağıdaki makalelere bak
     GO
     ```
 
-    ![native-login.png](./media/aad-security-configure-tutorial/native-login.png)
+    ![Yeni eklenen oturum açmanın adını, principal_id, SID 'sini, türünü ve type_desc gösteren S S s Nesne Gezgini sonuçları sekmesinin ekran görüntüsü.](./media/aad-security-configure-tutorial/native-login.png)
 
 Daha fazla bilgi için bkz. [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 
@@ -153,13 +153,13 @@ Azure AD Server sorumlusu (oturum açma) oluşturulduktan ve ayrıcalıklarla sa
    - Active Directory-parola
    - Active Directory ile tümleşik </br>
 
-     ![ssms-login-prompt.png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
+     ![Kimlik doğrulaması açılan menüsünde MFA desteğiyle birlikte Active Directory-Universal ile sunucuya Bağlan iletişim kutusunun ekran görüntüsü.](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
 
      Daha fazla bilgi için bkz. [evrensel kimlik doğrulaması (Multi-Factor Authentication IÇIN SSMS desteği)](../database/authentication-mfa-ssms-overview.md).
 
 1. **MFA desteğiyle Active Directory-Universal**' i seçin. Bu, Multi-Factor Authentication bir oturum açma penceresi getirir. Azure AD parolanızla oturum açın.
 
-    ![mfa-login-prompt.png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
+    ![Parola gir alanında imleç ile Multi-Factor Authentication oturum açma penceresinin ekran görüntüsü.](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
 1. SSMS **Nesne Gezgini**, sunucuya sağ tıklayın ve **Yeni sorgu**' yı seçin.
 1. Sorgu penceresinde, başka bir Azure AD hesabı için oturum açma oluşturmak üzere aşağıdaki sözdizimini kullanın:
@@ -222,7 +222,7 @@ Tek tek veritabanlarına yönelik yetkilendirmeler, SQL yönetilen örneğinde S
 
 Artık **Mymitestdb**adlı bir veritabanı oluşturduğumuz ve yalnızca varsayılan izinlere sahip olan bir oturum açma işlemi, sonraki adım bu oturum açma işleminden bir Kullanıcı oluşturmaktır. Şu anda, oturum açma yönetilen örneğe bağlanabilir ve tüm veritabanlarını görebilir, ancak veritabanlarıyla etkileşim kurabilir. Varsayılan izinleri olan Azure AD hesabıyla oturum açarsanız ve yeni oluşturulan veritabanını genişletmeyi denerseniz, aşağıdaki hatayı görürsünüz:
 
-![ssms-db-not-accessible.png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
+![S S M Nesne Gezgini, "MyMITestDB veritabanı erişilebilir değil ' i okuyan bir hata iletisinin ekran görüntüsü. (Objecbir) ".](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
 Veritabanı izinleri verme hakkında daha fazla bilgi için bkz. [veritabanı altyapısı Ile çalışmaya başlama izinleri](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
 
@@ -326,7 +326,7 @@ Kullanıcının veritabanındaki verileri görmesini sağlamak için kullanıcı
 1. Role eklenmiş olan kullanıcıyla yönetilen örneğe yeni bir bağlantı oluşturun `db_datareader` .
 1. Tabloyu görmek için **Nesne Gezgini** veritabanını genişletin.
 
-    ![ssms-test-table.png](./media/aad-security-configure-tutorial/ssms-test-table.png)
+    ![MyMITestDB içindeki tabloların klasör yapısını gösteren, S s M içindeki Nesne Gezgini ekran görüntüsü. Dbo. TestTable klasörü vurgulanır.](./media/aad-security-configure-tutorial/ssms-test-table.png)
 
 1. Yeni bir sorgu penceresi açın ve aşağıdaki SELECT ifadesini yürütün:
 
@@ -337,7 +337,7 @@ Kullanıcının veritabanındaki verileri görmesini sağlamak için kullanıcı
 
     Tablodaki verileri görebiliyor musunuz? Döndürülen sütunları görmeniz gerekir.
 
-    ![ssms-test-table-query.png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
+    ![S S s içindeki sonuçlar sekmesinin ekran görüntüsü, tablo sütunu başlıkları AccountNum, City, Name ve State ' i gösterir Nesne Gezgini.](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
 
 ## <a name="impersonate-azure-ad-server-level-principals-logins"></a>Azure AD sunucu düzeyi sorumlularına (oturum açma) bürün
 

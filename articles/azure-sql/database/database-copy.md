@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f6a3ccbcdb3d29434b196dbf75dc61c4177de271
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284304"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda bir veritabanının işlemsel olarak tutarlı bir kopyasını kopyalama
 
@@ -26,7 +26,7 @@ Azure SQL veritabanı, aynı sunucuda veya farklı bir sunucuda var olan bir [ve
 
 ## <a name="overview"></a>Genel Bakış
 
-Veritabanı kopyası, kopyalama isteği başlatıldıktan sonra zaman içindeki bir noktaya göre kaynak veritabanının işlemsel olarak tutarlı bir anlık görüntüsüdür. Kopya için aynı sunucuyu veya farklı bir sunucuyu seçebilirsiniz. Ayrıca, kaynak veritabanının hizmet katmanını ve işlem boyutunu tutmayı veya aynı veya farklı bir hizmet katmanı içinde farklı bir işlem boyutu kullanmayı seçebilirsiniz. Kopyalama işlemi tamamlandıktan sonra, tamamen işlevsel, bağımsız bir veritabanı haline gelir. Kopyalanmış veritabanındaki oturumlar, kullanıcılar ve izinler, kaynak veritabanından bağımsız olarak yönetilir. Kopya, coğrafi çoğaltma teknolojisi kullanılarak oluşturulur. Çoğaltma dengeli dağıtımı tamamlandıktan sonra, coğrafi çoğaltma bağlantısı otomatik olarak sonlandırılır. Coğrafi çoğaltmanın kullanılmasıyla ilgili tüm gereksinimler veritabanı kopyalama işlemi için geçerlidir. Ayrıntılar için bkz. [etkin coğrafi Çoğaltmaya genel bakış](active-geo-replication-overview.md) .
+Veritabanı kopyası, kopyalama isteği başlatıldıktan sonra zaman içindeki bir noktaya göre kaynak veritabanının işlemsel olarak tutarlı bir anlık görüntüsüdür. Kopya için aynı sunucuyu veya farklı bir sunucuyu seçebilirsiniz. Ayrıca, kaynak veritabanının hizmet katmanını ve işlem boyutunu tutmayı veya aynı veya farklı bir hizmet katmanı içinde farklı bir işlem boyutu kullanmayı seçebilirsiniz. Kopyalama işlemi tamamlandıktan sonra, tamamen işlevsel, bağımsız bir veritabanı haline gelir. Kopyalanmış veritabanındaki oturumlar, kullanıcılar ve izinler, kaynak veritabanından bağımsız olarak yönetilir. Kopya, coğrafi çoğaltma teknolojisi kullanılarak oluşturulur. Çoğaltma dengeli dağıtımı tamamlandıktan sonra, coğrafi çoğaltma bağlantısı otomatik olarak sonlandırılır. Coğrafi çoğaltmayı kullanmayla ilgili tüm gereksinimler veritabanı kopyalama işlemine de uygulanır. Ayrıntılar için bkz. [etkin coğrafi Çoğaltmaya genel bakış](active-geo-replication-overview.md) .
 
 ## <a name="logins-in-the-database-copy"></a>Veritabanı kopyasında oturum açma işlemleri
 
@@ -36,7 +36,7 @@ Bir veritabanını farklı bir sunucuya kopyaladığınızda, hedef sunucuda kop
 
 Hedef sunucudan bağımsız olarak, tüm veritabanı kullanıcıları, izinleri ve güvenlik tanımlayıcıları (SID 'Ler) veritabanı kopyasına kopyalanır. Veri erişimi için [Kapsanan Veritabanı kullanıcılarının](logins-create-manage.md) kullanılması, kopyalanmış veritabanının aynı kullanıcı kimlik bilgilerine sahip olmasını sağlar, böylece kopyalama tamamlandıktan sonra aynı kimlik bilgileriyle hemen erişebilirsiniz.
 
-Veri erişimi için sunucu düzeyinde oturum açma işlemleri kullanırsanız ve veritabanını farklı bir sunucuya kopyalarsanız, oturum açma tabanlı erişim çalışmayabilir. Bu durum, oturum açma işlemleri hedef sunucuda bulunmadığı veya parolaları ve güvenlik tanımlayıcıları (SID 'Ler) farklı olduğu için meydana gelebilir. Farklı bir sunucuya bir veritabanını kopyaladığınızda, oturum açma işlemlerini yönetme hakkında bilgi edinmek için bkz. [Azure SQL veritabanı güvenliğini olağanüstü durum kurtarma sonrasında yönetme](active-geo-replication-security-configure.md). Farklı bir sunucuya kopyalama işlemi başarılı olduktan sonra ve diğer kullanıcılar yeniden eşlenmeden önce, yalnızca veritabanı sahibiyle ilişkili oturum açma veya Sunucu Yöneticisi kopyalanmış veritabanında oturum açabilir. Kopyalama işlemi tamamlandıktan sonra oturum açma işlemlerini çözümlemek ve veri erişimi oluşturmak için bkz. [oturum açma bilgilerini çözümleme](#resolve-logins).
+Veri erişiminde sunucu düzeyi oturum açma bilgilerini kullanır ve veritabanını farklı bir sunucuya kopyalarsanız, oturum açma tabanlı erişim çalışmayabilir. Bu durumun oluşmasının nedeni, oturum açma bilgilerinin hedef sunucuda mevcut olmaması veya parolalarıyla güvenlik tanımlayıcılarının (SID) farklı olması olabilir. Farklı bir sunucuya bir veritabanını kopyaladığınızda, oturum açma işlemlerini yönetme hakkında bilgi edinmek için bkz. [Azure SQL veritabanı güvenliğini olağanüstü durum kurtarma sonrasında yönetme](active-geo-replication-security-configure.md). Farklı bir sunucuya kopyalama işlemi başarılı olduktan sonra ve diğer kullanıcılar yeniden eşlenmeden önce, yalnızca veritabanı sahibiyle ilişkili oturum açma veya Sunucu Yöneticisi kopyalanmış veritabanında oturum açabilir. Kopyalama işlemi tamamlandıktan sonra oturum açma işlemlerini çözümlemek ve veri erişimi oluşturmak için bkz. [oturum açma bilgilerini çözümleme](#resolve-logins).
 
 ## <a name="copy-using-the-azure-portal"></a>Azure portalını kullanarak kopyalama
 

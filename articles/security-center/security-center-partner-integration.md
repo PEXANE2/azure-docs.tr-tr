@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9a781fd48b30ccb32b0a733e5aa1ac054b96dc12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883927"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323665"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki tümleşik güvenlik çözümleri
 Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini yönetmenize ve yenilerini eklemenize yardımcı olur.
@@ -40,7 +40,7 @@ Azure Defender müşterilerinin kullanabildiği yerleşik bir tarayıcı dahil o
 Güvenlik Merkezi, için güvenlik açığı analizini de sunmaktadır:
 
 * SQL veritabanları-bkz [. güvenlik açığı değerlendirme panosundaki güvenlik açığı değerlendirmesi raporlarını inceleyin](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
-* Azure Container Registry görüntüleri-bkz. [Güvenlik Merkezi ile Azure Container Registry tümleştirmesi (Önizleme)](azure-container-registry-integration.md)
+* Görüntüleri Azure Container Registry-bkz. [Azure Defender 'ı kapsayıcı kayıt defterleri Için kullanma güvenlik açıkları için görüntülerinizi tarayın](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Güvenlik çözümlerinin tümleştirilme şekli
 Güvenlik Merkezinden dağıtılan Azure güvenlik çözümleri otomatik olarak bağlanır. Ayrıca, şirket içinde veya diğer bulutlarda çalışan bilgisayarlar da dahil olmak üzere diğer güvenlik veri kaynaklarını da bağlayabilirsiniz.

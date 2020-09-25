@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: 4b2324c480ef81ef241f4d639c22c2ed4dd1545b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c4c19850cda158afdb888188d3f99b7d93195aa5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808856"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334863"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Uzun süreli saklama-Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
@@ -79,7 +79,7 @@ Yukarıdaki ilkeyi değiştirir ve W = 0 (haftalık yedeklemeler yok) seçeneği
 > [!NOTE]
 > Özgün birincil veritabanı, yük devretmeye neden olan bir kesintiden kurtarıldığında yeni bir ikincil olur. Bu nedenle, yedekleme oluşturma SÜRDÜRÜLMEYECEKTİR ve mevcut LTR ilkesi, birincil olana kadar etkili olmayacaktır. 
 
-## <a name="sql-managed-instance-support"></a>SQL yönetilen örnek desteği
+## <a name="sql-managed-instance-support"></a>SQL Yönetilen Örneği desteği
 
 Azure SQL yönetilen örneği ile uzun süreli yedek saklama kullanılması aşağıdaki sınırlamalara sahiptir:
 

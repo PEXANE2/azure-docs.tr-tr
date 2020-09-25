@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25150722e2d42625731cb741be80b86645c857e0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: ee88b980c448bfbf581537aef4653fde5354623a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420099"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302940"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal ve GeoJSON konum verileri
 
@@ -164,12 +164,12 @@ Bir **MultiPolygon** sıfır veya daha fazla poligoluşan bir dizidir. **MultiPo
 
 Dünya şekli düzensiz olduğundan, coğrafi bölge Jeo uzamsal verilerinin koordinatları, her biri kendi başvuru ve ölçü birimleri ile birlikte çok sayıda koordinat başvuru sisteminde (yukarı) temsil edilir. Örneğin, "ABD Ulusal ızgarası", Birleşik Krallık için doğru bir başvuru sistemidir.
 
-Günümüzde kullanımda olan en popüler dünyayı dünya çapındaki sistem [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)' dir. GPS cihazları ve Google Maps ve Bing Haritalar API 'Leri dahil olmak üzere birçok eşleme hizmeti WGS-84 kullanır. Azure Cosmos DB Coğrafya Jeo uzamsal verilerinin dizinlenmesini ve sorgulanmasını destekler ve yalnızca WGS-84 leri kullanılarak.
+Günümüzde kullanımda olan en popüler dünyayı dünya çapındaki sistem  [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)' dir. GPS cihazları ve Google Maps ve Bing Haritalar API 'Leri dahil olmak üzere birçok eşleme hizmeti WGS-84 kullanır. Azure Cosmos DB Coğrafya Jeo uzamsal verilerinin dizinlenmesini ve sorgulanmasını destekler ve yalnızca WGS-84 leri kullanılarak.
 
 ## <a name="creating-documents-with-spatial-data"></a>Uzamsal verilerle belge oluşturma
 GeoJSON değerleri içeren belgeler oluşturduğunuzda, kapsayıcının dizin oluşturma ilkesine uygun olarak bir uzamsal dizin ile otomatik olarak dizinlenir. Python veya Node.js gibi dinamik olarak yazılmış bir dilde Azure Cosmos DB SDK 'Sı ile çalışıyorsanız, geçerli bir GeoJSON oluşturmanız gerekir.
 
-**Node.jsJeo uzamsal verilerle belge oluşturma**
+**Node.jsJeo uzamsal verilerle belge oluşturma **
 
 ```javascript
 var userProfileDocument = {

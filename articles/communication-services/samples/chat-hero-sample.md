@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 295c4bde64ad21a19d21fd48f2556114b26b202d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fe5fe29a66483934ae47f70512a310a4ae6bb1b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947907"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303258"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Grup sohbeti Hero örneği ile çalışmaya başlama
 
@@ -30,7 +30,7 @@ Azure Iletişim Hizmetleri **grubu sohbeti Hero örneği** , Iletişim Hizmetler
 Bu örnek hızlı başlangıçta, örneği yerel makinenizde çalıştırmadan önce örneğin nasıl çalıştığını öğreneceksiniz. Daha sonra Azure Iletişim Hizmetleri kaynaklarınızı kullanarak örneği Azure 'a dağıtırsınız.
 
 > [!IMPORTANT]
-> [GitHub 'dan örneği indirin](https://github.com/Azure/Communication/tree/master/samples)
+> [GitHub 'dan örneği indirin](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -72,29 +72,24 @@ Visual Studio 'Yu sohbet. csproj üzerinde açın ve hata ayıklama modunda çal
 
 Birden çok kullanıcı sohbetini benzetirmek için sohbet URL 'siyle birden fazla tarayıcı oturumu açarak örneği yerel olarak test edebilirsiniz.
 
-### <a name="before-running-the-sample-for-the-first-time"></a>Örneği ilk kez çalıştırmadan önce
+## <a name="before-running-the-sample-for-the-first-time"></a>Örneği ilk kez çalıştırmadan önce
 
 1. PowerShell, Windows Terminal, komut Istemi veya eşdeğer bir örnek açın ve örneği kopyalamak istediğiniz dizine gidin.
-2. `git clone`
-3. **Sohbet/ClientApp** klasörüne git ve Çalıştır`npm run setup`
-   1. Bir hata 1 görürseniz, istemcinizi yetkilendirmek için gitmeniz gereken bir URL için çıktıda yukarıya bakın. (URL şöyle görünür: `app.vssps.visualstudio.com/oauth2/authorize?clientid=...` ) Bir tarayıcıda URL 'YI ziyaret ettiğinizde, tarayıcı penceresinden komutu kopyalayın ve çalıştırın.
-   2. `npm run setup`Önceki adımı tamamladıktan sonra komutu tekrar çalıştırın.
-4. Azure portal alın `Connection String` . Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [Azure Iletişim kaynakları oluşturma](../quickstarts/create-communication-resource.md)
-5. ' I aldıktan sonra `Connection String` , sohbet klasörünün altında bulunan dosyadaki **sohbet/appsettings.js** dosyasına bağlantı dizesini ekleyin. Bağlantı dizenizi şu değişkende girin: `ResourceConnectionString` .
+2. `git clone https://github.com/Azure/Communication.git`
+3. Azure portal alın `Connection String` . Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [Azure Iletişim kaynakları oluşturma](../quickstarts/create-communication-resource.md)
+4. ' I aldıktan sonra `Connection String` , sohbet klasörünün altında bulunan dosyadaki **sohbet/appsettings.js** dosyasına bağlantı dizesini ekleyin. Bağlantı dizenizi şu değişkende girin: `ResourceConnectionString` .
+5. İçindeki ENVIRONMENT_URL, `./Chat/ClientApp/src/constants.tsx` kaynağınızın konumuyla güncelleştirin. (ör. https://<RESOURCE_NAME>. communication.azure.com)
 
 ### <a name="local-run"></a>Yerel çalıştırma
 
-1. Sohbet klasörüne git
-2. `Chat.csproj`Visual Studio 'da çözümü açın
-3. Projeyi çalıştırın `Chat` . *
-
-* Tarayıcı localhost: 5000 (düğümün istemci uygulamasını dağıtmakta olduğu) olarak açılır. Uygulama Internet Explorer 'da desteklenmiyor.
+1. Sohbet klasörüne gidin ve `Chat.csproj` Visual Studio 'da çözümü açın
+2. Projeyi çalıştırın. Tarayıcı localhost: 5000 olarak açılır.
 
 #### <a name="troubleshooting"></a>Sorun giderme
 
 - Çözüm derlenmez, NPM yüklemesi/derlemesi sırasında hata veriyor
 
-C# çözümünü temizleme/yeniden derleme
+   C# çözümünü temizleme/yeniden derleme
 
 ## <a name="publish-the-sample-to-azure"></a>Örneği Azure 'da yayımlayın
 
@@ -108,6 +103,9 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+>[!div class="nextstepaction"] 
+>[GitHub 'dan örneği indirin](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Sohbet kavramları](../concepts/chat/concepts.md) hakkında bilgi edinin
@@ -115,7 +113,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 ## <a name="additional-reading"></a>Ek okuma
 
-- [Azure Iletişim önizlemesi](https://github.com/Azure/communication-preview) -sohbet web SDK 'sı hakkında daha fazla bilgi edinmek için
+- [Azure Iletişim GitHub](https://github.com/Azure/communication) -resmi GitHub sayfasında daha fazla örnek ve bilgi bulun
 - [Redux](https://redux.js.org/) -istemci tarafı durum yönetimi
 - [Floentuı](https://developer.microsoft.com/fluentui#/) -MICROSOFT Powered UI kitaplığı
 - Kullanıcı arabirimleri oluşturmak için [tepki](https://reactjs.org/) verme kitaplığı

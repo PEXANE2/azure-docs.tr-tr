@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: ddc8186e85001a2a3ed2ed9f57b8f025133ef16a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897764"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302392"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Makine öğrenimi işlem hatlarını yayımlama ve izleme
 
@@ -84,6 +84,74 @@ response = requests.post(published_pipeline1.endpoint,
                          json={"ExperimentName": "My_Pipeline",
                                "ParameterAssignments": {"pipeline_arg": 20}})
 ```
+
+`json`POST isteğinin bağımsız değişkeni, anahtar için işlem `ParameterAssignments` hattı parametrelerini ve değerlerini içeren bir sözlüğü içermelidir. Ayrıca `json` bağımsız değişken aşağıdaki anahtarları içerebilir:
+
+| Anahtar | Description |
+| --- | --- | 
+| `ExperimentName` | Bu uç noktayla ilişkili denemenin adı |
+| `Description` | Uç noktayı açıklayan serbest biçimli metin | 
+| `Tags` | İstekleri etiketlemek ve Not eklemek için kullanılabilecek serbest biçimli anahtar-değer çiftleri  |
+| `DataSetDefinitionValueAssignments` | Yeniden eğitim olmadan veri kümelerini değiştirmek için kullanılan sözlük (aşağıdaki tartışmaya bakın) | 
+| `DataPathAssignments` | Yeniden eğitim olmadan veri yollarını değiştirmek için kullanılan sözlük (aşağıdaki tartışmaya bakın) | 
+
+### <a name="changing-datasets-and-datapaths-without-retraining"></a>Veri kümelerini ve veri yollarını yeniden eğitim olmadan değiştirme
+
+Farklı veri kümelerinde ve veri yollarında eğmeniz ve çıkarımını isteyebilirsiniz. Örneğin, daha küçük, sparser veri kümesi üzerinde eğmek, ancak tüm veri kümelerinde çıkarımı yapmak isteyebilirsiniz. Veri kümelerini `DataSetDefinitionValueAssignments` isteğin `json` bağımsız değişkeninde anahtarla değiştirin. Veri yollarını ile değiştirin `DataPathAssignments` . Her ikisinin tekniği benzerdir:
+
+1. İşlem hattı tanım betiğinizdeki `PipelineParameter` veri kümesi için bir oluşturun. `DatasetConsumptionConfig`Veya arasından bir oluşturun `DataPath` `PipelineParameter` :
+
+    ```python
+    tabular_dataset = Dataset.Tabular.from_delimited_files('https://dprepdata.blob.core.windows.net/demo/Titanic.csv')
+    tabular_pipeline_param = PipelineParameter(name="tabular_ds_param", default_value=tabular_dataset)
+    tabular_ds_consumption = DatasetConsumptionConfig("tabular_dataset", tabular_pipeline_param)
+    ```
+
+1. ML betiğinizdeki dinamik olarak belirtilen veri kümesine şunu kullanarak erişin `Run.get_context().input_datasets` :
+
+    ```python
+    from azureml.core import Run
+    
+    input_tabular_ds = Run.get_context().input_datasets['tabular_dataset']
+    dataframe = input_tabular_ds.to_pandas_dataframe()
+    # ... etc ...
+    ```
+
+    ML betiğinin () için belirtilen değere eriştiğini `DatasetConsumptionConfig` `tabular_dataset` ve () değerini değil olduğunu unutmayın `PipelineParameter` `tabular_ds_param` .
+
+1. İşlem hattı tanım betiğinizin `DatasetConsumptionConfig` öğesine parametresi olarak ayarlayın `PipelineScriptStep` :
+
+    ```python
+    train_step = PythonScriptStep(
+        name="train_step",
+        script_name="train_with_dataset.py",
+        arguments=["--param1", tabular_ds_consumption],
+        inputs=[tabular_ds_consumption],
+        compute_target=compute_target,
+        source_directory=source_directory)
+    
+    pipeline = Pipeline(workspace=ws, steps=[train_step])
+    ```
+
+1. Veri kümelerini, ınlekrime REST çağrınızda dinamik olarak değiştirmek için şunu kullanın `DataSetDefinitionValueAssignments` :
+    
+    ```python
+    tabular_ds1 = Dataset.Tabular.from_delimited_files('path_to_training_dataset')
+    tabular_ds2 = Dataset.Tabular.from_delimited_files('path_to_inference_dataset')
+    ds1_id = tabular_ds1.id
+    d22_id = tabular_ds2.id
+    
+    response = requests.post(rest_endpoint, 
+                             headers=aad_token, 
+                             json={
+                                "ExperimentName": "MyRestPipeline",
+                               "DataSetDefinitionValueAssignments": {
+                                    "tabular_ds_param": {
+                                        "SavedDataSetReference": {"Id": ds1_id #or ds2_id
+                                    }}}})
+    ```
+
+[Veri kümesi ve PipelineParameter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb) ve [Gösterim veri yolu ve pipelineparametresinin](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) gösterildiği Not defterleri bu tekniğin tüm örneklerine sahiptir.
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>Sürümlü ardışık düzen uç noktası oluşturma
 

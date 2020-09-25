@@ -1,15 +1,17 @@
 ---
 title: Sık sorulan sorular (SSS)-LUSıS
 description: Bu makale Language Understanding (LUO) hakkında sık sorulan soruların yanıtlarını içerir.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: ff7beff6682d594f9b9fc1901d396d29028ec989
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054874"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334710"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding ile ilgili Sık Sorulan Sorular (SSS)
 
@@ -43,7 +45,7 @@ Evet, diğer amaçlar için daha fazla etiket eklerken, **hiçbiri** amacınız�
 Bkz. [Bing yazım denetimi API'si v7](luis-tutorial-bing-spellcheck.md) öğreticisi. Lua, Bing Yazım Denetimi API'si v7 tarafından uygulanan limitleri zorlar.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>LUMY uygulamamı programlı bir şekilde Düzenle Nasıl yaparım??
-LUSıS uygulamanızı programlı bir şekilde düzenlemek için [yazma API](https://go.microsoft.com/fwlink/?linkid=2092087)'sini kullanın. Yazma API 'sini çağırma örnekleri için bkz. Node.jskullanarak [lusıs yazma API 'Sini çağırma](./get-started-get-model-rest-apis.md) ve [bir Lusıs uygulaması oluşturma](./luis-tutorial-node-import-utterances-csv.md) . Yazma API 'SI, bir uç nokta anahtarı yerine bir [yazma anahtarı](luis-how-to-azure-subscription.md#azure-resources-for-luis) kullanmanızı gerektirir. Programlı yazma, ayda 1.000.000 çağrının ve saniyede beş işlem sağlar. LUO ile kullandığınız anahtarlar hakkında daha fazla bilgi için bkz. [anahtarları yönetme](./luis-how-to-azure-subscription.md).
+LUSıS uygulamanızı programlı bir şekilde düzenlemek için [yazma API](https://go.microsoft.com/fwlink/?linkid=2092087)'sini kullanın. Yazma API 'sini çağırma örnekleri için bkz. Node.jskullanarak [lusıs yazma API 'Sini çağırma](./get-started-get-model-rest-apis.md) ve [bir Lusıs uygulaması oluşturma ](./luis-tutorial-node-import-utterances-csv.md) . Yazma API 'SI, bir uç nokta anahtarı yerine bir [yazma anahtarı](luis-how-to-azure-subscription.md#azure-resources-for-luis) kullanmanızı gerektirir. Programlı yazma, ayda 1.000.000 çağrının ve saniyede beş işlem sağlar. LUO ile kullandığınız anahtarlar hakkında daha fazla bilgi için bkz. [anahtarları yönetme](./luis-how-to-azure-subscription.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Normal ifade eşleşen bir model özelliği nerede?
 Önceki **desen özelliği** Şu anda kullanım dışıdır ve **[desenlerle](luis-concept-patterns.md)** değiştirilmiştir.
@@ -78,11 +80,11 @@ Luu portalında, ayıklama işlemi sırasında ilgilendiğiniz tam varlığın m
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Nasıl yaparım?, Azure Active Directory (Azure AD) veya rol tabanlı erişim denetimi (RBAC) ile BASıS erişimi sağlar mi?
 
-Ortak çalışanlarla erişim verme hakkında bilgi edinmek için bkz. [Azure Active Directory kaynakları](luis-how-to-collaborate.md#azure-active-directory-resources) ve [Azure Active Directory Kiracı Kullanıcı](luis-how-to-collaborate.md#azure-active-directory-tenant-user) .
+Ortak çalışanlarla erişim verme hakkında bilgi edinmek için bkz. [Azure Active Directory kaynakları](luis-how-to-collaborate.md#azure-active-directory-resources)  ve [Azure Active Directory Kiracı Kullanıcı](luis-how-to-collaborate.md#azure-active-directory-tenant-user) .
 
 <a name="luis-endpoint"></a>
 
-## <a name="endpoint"></a>Uç Nokta
+## <a name="endpoint"></a>Uç Noktası
 
 ### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>Bir HTTP 403 hata durum kodu aldım. Nasıl düzeltebilirim?
 
@@ -258,7 +260,7 @@ Günlüğü tahmin analizi için kullanıyorsanız, günlükteki test arasların
 ### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Neredeyse kotanın ne olduğunu belirten bir e-posta aldım?
 Yazma/başlangıç anahtarınız yalnızca bir ay 1000 uç nokta sorgusuna izin verilir. Bir LUSıS uç noktası anahtarı (ücretsiz veya ücretli) oluşturun ve uç nokta sorguları yaparken bu anahtarı kullanın. Bir bot veya başka bir istemci uygulamasından uç nokta sorguları yapıyorsanız, bu uç nokta anahtarını orada değiştirmeniz gerekir.
 
-## <a name="bots"></a>Göz
+## <a name="bots"></a>Botlar
 
 ### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>LUMY bot çalışmıyor. Ne yapmalıyım?
 
@@ -267,7 +269,7 @@ Yazma/başlangıç anahtarınız yalnızca bir ay 1000 uç nokta sorgusuna izin 
 #### <a name="resolve-issue-in-luis"></a>LUSıS 'de sorunu çözme
 [Luo uç noktasındaki](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)Luo 'ya aynı söylenişi geçirin. Bir hata alırsanız, hata artık döndürülünceye kadar lu, sorununu çözün. Yaygın hatalar şunlardır:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`-Bu sorun, yazma anahtarından bir [uç nokta anahtarına](luis-how-to-azure-subscription.md) değiştirmeniz gerektiğini veya [Hizmet katmanlarını](luis-how-to-azure-subscription.md#change-pricing-tier)değiştirmeniz gerektiğini gösterir.
+* `Out of call volume quota. Quota will be replenished in <time>.` -Bu sorun, yazma anahtarından bir [uç nokta anahtarına](luis-how-to-azure-subscription.md) değiştirmeniz gerektiğini veya [Hizmet katmanlarını](luis-how-to-azure-subscription.md#change-pricing-tier)değiştirmeniz gerektiğini gösterir.
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Azure bot hizmetinde sorunu çözme
 

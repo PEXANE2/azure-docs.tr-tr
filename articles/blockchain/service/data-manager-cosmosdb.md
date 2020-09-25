@@ -4,18 +4,18 @@ description: Blok zinciri verilerini Azure Cosmos DB göndermek için Azure blok
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "79533190"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283471"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB 'a veri göndermek için blok zinciri Veri Yöneticisi kullanma
 
 Bu öğreticide, blok zinciri işlem verilerini Azure Cosmos DB kaydetmek üzere Azure blok zinciri hizmeti için blok zinciri Veri Yöneticisi kullanırsınız. Blok Veri Yöneticisi zinciri, blok zinciri defter verilerini Azure Event Grid konularına yakalar, dönüştürür ve sunar. Azure Event Grid, bir Azure Cosmos DB veritabanında belge oluşturmak için Azure Logic App bağlayıcısını kullanırsınız. Öğretici ile işiniz bittiğinde, Azure Cosmos DB Veri Gezgini blok zinciri işlem verilerini keşfedebilirsiniz.
 
-[![Blok zinciri işlem ayrıntısı](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+[![Ekran görüntüsü blok zinciri işlem ayrıntılarını gösterir.](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
 Bu öğreticide şunları yaptınız:
 
@@ -41,7 +41,7 @@ Bu öğreticide şunları yaptınız:
 
 Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işlem düğümünü bağlar ve izler. Örnek, işlem düğümünden tüm ham blok ve ham işlem verilerini yakalar. Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği oluştururken tek bir giden bağlantı yapılandırırsınız.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Önkoşul hızlı başlangıcı ' nda oluşturduğunuz Azure blok zinciri hizmeti üyesine gidin [: Azure Portal kullanarak bir blok zinciri üyesi oluşturma](create-member.md). **Blok zinciri veri Yöneticisi**seçin.
 1. **Ekle**’yi seçin.
 
@@ -271,7 +271,7 @@ Blockzincirinizi Azure Cosmos DB Veri Yöneticisi bağladığınıza göre, blok
 
 1. Öğe KIMLIĞI ' ni seçerek ve eşleşen işlem karması ile iletiyi bularak mesajlara göz atabilirsiniz.
 
-    [![Blok zinciri işlem ayrıntısı](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+    [![Ekran görüntüsü, seçili bir öğenin blok zinciri işlem ayrıntılarını gösterir.](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
     Ham işlem iletisi işlem hakkında ayrıntılı bilgi içerir. Ancak Özellik bilgileri şifrelenir.
 

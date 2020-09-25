@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5edea4b3d3834d8f99159546c0279394ec3986f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886637"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324357"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Eşleme veri akışı 'nda şema kayması
 
@@ -60,7 +60,7 @@ Bir havuz dönüşümünde şema kayması, havuz veri şemasında tanımlananla 
 Veri akışınız düzeltebilecekler sütunlara sahip olduğunda, bu dosyalara dönüşümlerinizi aşağıdaki yöntemlerle erişebilirsiniz:
 
 * `byPosition` `byName` Bir sütuna ada veya konum numarasına göre açıkça başvuruda bulunmak için ve ifadelerini kullanın.
-* Türetilmiş bir sütuna veya toplama dönüşümüne, herhangi bir ad, akış, konum veya tür birleşimiyle eşleşecek bir sütun stili ekleyin
+* Türetilmiş bir sütuna veya toplama dönüşümüne, ad, akış, konum, başlangıç veya tür birleşimlerinde eşleşecek bir sütun stili ekleyin
 * Bir SELECT veya Sink dönüşümünde kural tabanlı eşlemeyi, bir model aracılığıyla düzeltebilecekler sütunları sütunlara göre diğer adlarla eşleşecek şekilde ekleyin
 
 Sütun desenlerinin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. [eşleme veri akışında sütun desenleri](concepts-data-flow-column-pattern.md).

@@ -7,6 +7,10 @@
       items:
         - name: GPU ile Azure Stack Edge Pro nedir?
           href: azure-stack-edge-gpu-overview.md
+    - name: Hızlı Başlangıçlar
+      items:
+        - name: Kullanmaya başlayın
+          href: azure-stack-edge-gpu-quickstart.md
     - name: Öğreticiler
       items:
         - name: 0 - Denetim listesini alma

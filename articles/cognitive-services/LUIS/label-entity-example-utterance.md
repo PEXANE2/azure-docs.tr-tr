@@ -1,14 +1,16 @@
 ---
 title: Etiket varlık örneği söylenişi
 description: LUı portalının amaç ayrıntısı sayfasında örnek bir şekilde bir makine öğrenimi varlığını alt varlıklarla nasıl etiketleyeceğinizi öğrenin.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ffbaa2e40d5924ba61e548398e63295cf7dba2b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610498"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303735"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Örnek bir örnekte makine öğrenimi varlığı etiketleme
 
@@ -53,7 +55,7 @@ Varlık paleti, önceki etiketleme deneyimine bir alternatif sunar. Bir varlıkl
 3. Örnekte, varlığı imlece _boyayın_ .
 
     > [!div class="mx-imgBorder"]
-    > ![Makine öğrenimi varlığı için varlık paleti](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
+    > ![Ekran görüntüsü, imlece boyanmış olan varlığı gösterir.](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
 
 ## <a name="adding-entity-as-a-feature-from-the-entity-palette"></a>Varlık paletindeki varlık özelliği olarak ekleme
 

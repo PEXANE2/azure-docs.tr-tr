@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
-ms.date: 09/17/2020
+ms.date: 09/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16448706b7167f55f31c7603676010e4ad30166f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 07a38e106b765fd28a8c3c1115e5fe84744ade62
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985844"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303098"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsü 'nü yükleyip kullanın
 
@@ -104,11 +104,16 @@ Azure Cosmos öykünücüsü 'nü Windows Docker kapsayıcısında çalıştıra
 
    # <a name="command-line"></a>[Komut satırı](#tab/cli)
 
-   ```cmd
+   ```bash
 
    md %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
 
    docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
+   ```
+   Windows tabanlı Docker görüntüleri, her Windows ana bilgisayar işletim sistemi ile genel olarak uyumlu olmayabilir. Örneğin, varsayılan Azure Cosmos öykünücü görüntüsü yalnızca Windows 10 ve Windows Server 2016 ile uyumludur. Windows Server 2019 ile uyumlu bir görüntüye ihtiyacınız varsa, bunun yerine aşağıdaki komutu çalıştırın:
+
+   ```bash
+   docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%hostDirectory%,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/winsrv2019/azure-cosmos-emulator:latest
    ```
 
    # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -123,7 +128,7 @@ Azure Cosmos öykünücüsü 'nü Windows Docker kapsayıcısında çalıştıra
 
    Yanıt şuna benzer:
 
-   ```cmd
+   ```bash
    Starting emulator
    Emulator Endpoint: https://172.20.229.193:8081/
    Master Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
@@ -143,7 +148,7 @@ Azure Cosmos öykünücüsü 'nü Windows Docker kapsayıcısında çalıştıra
 
    # <a name="command-line"></a>[Komut satırı](#tab/cli)
 
-   ```cmd
+   ```bash
    cd  %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
    powershell .\importcert.ps1
    ```
@@ -223,7 +228,7 @@ Linux veya macOS ortamlarında öykünücüyü kullanmak için aşağıdaki adı
 
 1. Windows sanal makinesinden aşağıdaki komutu çalıştırın ve IPv4 adresini bir yere göz önünde oluşturun:
 
-   ```cmd
+   ```bash
    ipconfig.exe
    ```
 
@@ -231,7 +236,7 @@ Linux veya macOS ortamlarında öykünücüyü kullanmak için aşağıdaki adı
 
 1. Windows VM 'de, aşağıdaki seçenekleri kullanarak komut satırından Azure Cosmos öykünücüsünü başlatın. Komut satırı tarafından desteklenen parametrelerle ilgili ayrıntılar için bkz. [öykünücü komut satırı aracı başvurusu](emulator-command-line-parameters.md):
 
-   ```cmd
+   ```bash
    Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM +4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
    ```
 

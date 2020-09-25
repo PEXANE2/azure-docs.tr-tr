@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: ae139dd65242be9456f3498c494e1a7c5a29402f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48dfc456616fa4876b7053483f7377eda21aabde
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695717"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283828"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Azure SQL yönetilen örneği için Azure portal kullanarak uyarı oluşturma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Bu makalede, Azure SQL yönetilen örnek veritabanındaki veritabanları için Azure portal kullanarak nasıl uyarı ayarlanacağı gösterilmektedir. Uyarılar size bir e-posta gönderebilir, bir Web kancası çağırabilir, Azure Işlevi yükleyebilir, runbook 'u bir dış ıSM uyumlu bilet sistemi çağırabilir, telefonda çağrı yapabilir veya bazı bir ölçüm (örneğin örnek depolama boyutu veya CPU kullanımı gibi) önceden tanımlanmış bir eşiğe ulaştığında bir kısa mesaj gönderebilirsiniz. Bu makale, uyarı dönemlerini ayarlamaya yönelik en iyi yöntemleri de sağlar.
+Bu makalede, Azure SQL yönetilen örnek veritabanındaki veritabanları için Azure portal kullanarak nasıl uyarı ayarlanacağı gösterilmektedir. Uyarılar; örnek depolama boyutu veya CPU kullanımı gibi belirli bir ölçümün önceden tanımlanmış olan eşiğe ulaşması durumunda size e-posta gönderebilir, bir web kancasını çağırabilir, bir Azure İşlevi yürütebilir, runbook çalıştırabilir, ITSM uyumlu bir dış bilet sistemini çağırabilir, sizi arayabilir veya SMS gönderebilir. Bu makale, uyarı dönemlerini ayarlamaya yönelik en iyi yöntemleri de sağlar.
 
 
 ## <a name="overview"></a>Genel Bakış
@@ -50,13 +50,13 @@ Bir uyarıyı, tetiklendiğinde aşağıdakileri yapmak için yapılandırabilir
 
 Aşağıdaki yönetilen örnek ölçümleri uyarı yapılandırması için kullanılabilir:
 
-| Metric | Açıklama | Ölçü birimi \ olası değerler |
+| Ölçüm | Açıklama | Ölçü birimi \ olası değerler |
 | :--------- | --------------------- | ----------- |
 | Ortalama CPU yüzdesi | Seçilen dönemdeki CPU kullanımının ortalama yüzdesi. | 0-100 (yüzde) |
 | Okunan GÇ baytları | Seçilen dönemde GÇ baytları okundu. | Bayt |
 | Yazılan GÇ baytları | Seçilen dönemde yazılan GÇ baytları. | Bayt |
 | GÇ istek sayısı | Seçilen dönemdeki GÇ isteklerinin sayısı. | Sayısal |
-| Ayrılan depolama alanı | Geçerli en büyük değer. Yönetilen örnek için ayrılan depolama alanı. Kaynak ölçeklendirme işlemiyle değişiklikler. | MB (megabayt) |
+| Ayrılan depolama alanı | Yönetilen örnek için ayrılan geçerli en fazla depolama alanı. Kaynak ölçeklendirme işlemiyle değişiklikler. | MB (megabayt) |
 | Kullanılan depolama alanı | Seçili dönemde kullanılan depolama alanı. Veritabanlarına ve örneğe göre depolama tüketimine sahip değişiklikler. | MB (megabayt) |
 | Sanal çekirdek sayısı | Yönetilen örnek için sağlanan sanal çekirdekler. Kaynak ölçeklendirme işlemiyle değişiklikler. | 4-80 (sanal çekirdekler) |
 

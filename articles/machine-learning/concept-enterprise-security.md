@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988077"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302630"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -42,7 +42,7 @@ Daha fazla bilgi için bkz. [Azure Machine Learning kaynakları ve iş akışlar
 
 Azure Machine Learning, Web Hizmetleri için iki kimlik doğrulama biçimini destekler: anahtar ve belirteç. Her Web hizmeti tek seferde yalnızca bir kimlik doğrulama biçimi etkinleştirebilir.
 
-|Kimlik doğrulama yöntemi|Açıklama|Azure Container Instances|AKS|
+|Kimlik doğrulama yöntemi|Description|Azure Container Instances|AKS|
 |---|---|---|---|
 |Anahtar|Anahtarlar statiktir ve yenilenmek zorunda değildir. Anahtarlar el ile yeniden oluşturulabilir.|Varsayılan olarak devre dışı| Varsayılan olarak etkindir|
 |Belirteç|Belirteçlerin süresi belirtilen süre geçtikten sonra ve yenilenmesi gerekiyor.| Kullanılamaz| Varsayılan olarak devre dışı |
@@ -118,7 +118,7 @@ Ayrıca, çalışma alanınız için Azure özel bağlantısını etkinleştireb
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
 > [!IMPORTANT]
-> Çalışma alanınız hassas veriler içeriyorsa, çalışma alanınızı oluştururken [hbi_workspace bayrağını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ayarlamayı öneririz. `hbi_workspace`Bayrak yalnızca bir çalışma alanı oluşturulduğunda ayarlanabilir. Mevcut bir çalışma alanı için değiştirilemez.
+> Çalışma alanınız hassas veriler içeriyorsa, çalışma alanınızı oluştururken [hbi_workspace bayrağını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ayarlamayı öneririz. `hbi_workspace`Bayrak yalnızca bir çalışma alanı oluşturulduğunda ayarlanabilir. Mevcut bir çalışma alanı için değiştirilemez.
 
 `hbi_workspace`Bayrak, [Microsoft 'un tanılama amacıyla topladığı veri](#microsoft-collected-data) miktarını denetler ve [Microsoft tarafından yönetilen ortamlarda ek şifrelemeye](../security/fundamentals/encryption-atrest.md)izin vermez. Ayrıca, aşağıdaki eylemleri sunar:
 
@@ -156,7 +156,7 @@ Abonelikinizde müşteri tarafından yönetilen anahtarlarla Cosmos DB bir örne
     * `cmk_keyvault`: Bu parametre, aboneliğinizdeki anahtar kasasının kaynak KIMLIĞIDIR. Bu anahtar kasasının, Azure Machine Learning çalışma alanı için kullanacağınız bölge ve abonelikte olması gerekir. 
     
         > [!NOTE]
-        > Bu Anahtar Kasası örneği, çalışma alanını sağladığınızda Azure Machine Learning tarafından oluşturulan anahtar kasasından farklı olabilir. Çalışma alanı için aynı Anahtar Kasası örneğini kullanmak istiyorsanız, [key_vault parametresini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)kullanarak çalışma alanını sağlarken aynı anahtar kasasını geçirin. 
+        > Bu Anahtar Kasası örneği, çalışma alanını sağladığınızda Azure Machine Learning tarafından oluşturulan anahtar kasasından farklı olabilir. Çalışma alanı için aynı Anahtar Kasası örneğini kullanmak istiyorsanız, [key_vault parametresini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)kullanarak çalışma alanını sağlarken aynı anahtar kasasını geçirin. 
 
 Bu Cosmos DB örnek, aboneliğinizdeki Microsoft tarafından yönetilen bir kaynak grubunda ve ihtiyaç duyacağı tüm kaynaklarla birlikte oluşturulur. Yönetilen kaynak grubu biçiminde adlandırılır `<AML Workspace Resource Group Name><GUID>` . Azure Machine Learning çalışma alanınız özel bir uç nokta kullanıyorsa, Cosmos DB örneği için bir sanal ağ de oluşturulur. Bu sanal ağ Cosmos DB ve Azure Machine Learning arasındaki iletişimin güvenliğini sağlamak için kullanılır.
 
@@ -197,7 +197,7 @@ Azure Container Instance 'a model dağıttığınızda anahtarı kullanmak için
 
 Dağıtım yapılandırması oluşturma ve kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [Aciwebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) başvurusu
+* [Aciwebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) başvurusu
 * [Dağıtım nereye ve nasıl yapılır?](how-to-deploy-and-where.md)
 * [Modeli Azure Container Instances’a dağıtma](how-to-deploy-azure-container-instance.md)
 
@@ -290,6 +290,10 @@ Puanlama isteği ayrıntıları Application Insights depolanır. Application Ins
 > Azure Machine Learning çalışma alanındaki bazı eylemler etkinlik günlüğüne bilgileri günlüğe vermez. Örneğin, bir eğitimin başlangıcı ve bir modelin kaydı günlüğe kaydedilmez.
 >
 > Bu eylemlerden bazıları, çalışma alanınızın **Etkinlikler** alanında görünür ancak bu bildirimler etkinliği kimin başlattığını göstermez.
+
+### <a name="vulnerability-scanning"></a>Güvenlik açığı taraması
+
+Azure Güvenlik Merkezi, hibrit bulut iş yükleri arasında birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Azure Machine Learning için Azure Container Registry kaynağınızın ve Azure Kubernetes hizmet kaynaklarınızın taranmasını etkinleştirmeniz gerekir. Bkz. Güvenlik Merkezi [Ile Azure Kubernetes hizmet tümleştirmesi ve Güvenlik Merkezi ile](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration) [Azure Container Registry görüntü tarama](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) .
 
 ## <a name="data-flow-diagrams"></a>Veri akışı diyagramları
 

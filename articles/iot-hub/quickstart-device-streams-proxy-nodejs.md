@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 910ea6d333da08e69b6c5e6d6fe86421bda743ee
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c54a112a85ad930dde524ba4293a3ad0b700a22f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422598"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303106"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Hızlı başlangıç: Node.js proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -22,7 +22,7 @@ ms.locfileid: "87422598"
 
 Bu hızlı başlangıçta, cihaza bir cihaz akışı üzerinden gönderilmek üzere Secure Shell (SSH) ve Uzak Masaüstü Protokolü (RDP) trafiğinin etkinleştireceğinizi görürsünüz. Azure IoT Hub cihaz akışları, hizmet ve cihaz uygulamalarının güvenli ve güvenlik duvarı kullanımı kolay bir şekilde iletişim kurmasına olanak tanır. Bu hızlı başlangıçta hizmet tarafında çalışan bir Node.js proxy uygulamasının yürütülmesi açıklanmaktadır. Genel Önizleme sırasında, Node.js SDK yalnızca hizmet tarafında cihaz akışlarını destekler. Sonuç olarak, bu hızlı başlangıçta yalnızca hizmet yerel proxy uygulamasını çalıştırmaya yönelik yönergeler ele alınmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir C# proxy uygulaması kullanarak bir C proxy uygulaması kullanarak veya [IoT Hub cihaz akışları ÜZERINDEN SSH ve RDP 'yi](./quickstart-device-streams-proxy-csharp.md)etkinleştirerek [IoT Hub CIHAZ akışları ÜZERINDEN SSH ve RDP 'yi etkinleştirme](./quickstart-device-streams-proxy-c.md) işleminin tamamlanması.
 
@@ -43,7 +43,7 @@ Microsoft Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](htt
 > [!IMPORTANT]
 > Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'Lar için desteklenir:
 >
-> * Central US
+> * Orta ABD
 > * EUAP Orta ABD
 > * Kuzey Avrupa
 > * Güneydoğu Asya
@@ -60,7 +60,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 Önceki [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-node.md) öğreticisini tamamladıysanız bu adımı atlayabilirsiniz.
 

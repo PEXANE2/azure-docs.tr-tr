@@ -1,14 +1,16 @@
 ---
 title: LUSıS uygulamaları için sürekli iş akışları
 description: Language Understanding (LUSıS) için DevOps için CI/CD iş akışlarını uygulama.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 4cedf0cbe3f9ab675c191f8e4639688bb7916ee0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a74ad7b995f0112346e2212866655107f72c03e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072985"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324816"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>LUSıS DevOps için sürekli tümleştirme ve sürekli teslim iş akışları
 

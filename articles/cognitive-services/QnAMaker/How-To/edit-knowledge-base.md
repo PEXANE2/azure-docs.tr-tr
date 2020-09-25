@@ -3,12 +3,12 @@ title: Bilgi Bankası Soru-Cevap Oluşturma Düzenleme-
 description: Soru-Cevap Oluşturma, kullanımı kolay bir düzen deneyimi sağlayarak bilgi Bankalarınızın içeriğini yönetmenizi sağlar.
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 34eec343defa4614881e23543f2099040b866997
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054012"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324629"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Bilgi bankasındaki QnA çiftlerini düzenleme
 
@@ -57,7 +57,7 @@ Yanıt metninizi zengin metin düzenlemesi, basit bir araç çubuğundan Markin 
     |Zengin metin düzenleyici özellikleri|Klavye kısayolu|
     |--|--|
     |Zengin metin düzenleyici ve markaşağı arasında geçiş yapın. `</>`|CTRL+M|
-    |Kalın. **Kenarı**|MRK + LB|
+    |Kalın. **B**|MRK + LB|
     |İtalik, italik ı ile gösterilir ** _I_**|CTRL + ı|
     |Sırasız liste||
     |Sıralı liste||
@@ -72,7 +72,7 @@ Yanıt metninizi zengin metin düzenlemesi, basit bir araç çubuğundan Markin 
 
 
     > [!div class="mx-imgBorder"]
-    > ![Zengin metin düzenleyici 'yi kullanarak herkese açık bir şekilde erişilebilir bir görüntü ve onun ALTERNATIF metnini ekleyin.](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
+    > ![Ekran görüntüsü, genel olarak erişilebilen görüntü URL 'SI ve girilen görüntünün alternatif metni ile yerinde düzenleyiciyi gösterir.](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
 
 1. Yanıt içindeki metni seçip araç çubuğunda bağlantı simgesini seçerek veya araç çubuğundaki bağlantı simgesini seçerek yeni metin ve URL 'yi girerek URL 'ye bir bağlantı ekleyin.
 

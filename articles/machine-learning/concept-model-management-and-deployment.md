@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6f03a1e44fdb62570b693753f5e01c7ab0f53e78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893572"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302426"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
@@ -158,7 +158,7 @@ Azure ML, meta verileri kullanarak tüm ML varlıklarınızın uçtan uca deneti
 > [!TIP]
 > Modeller ve veri kümeleri hakkında bazı bilgiler otomatik olarak yakalanırken, __etiketleri__kullanarak ek bilgi ekleyebilirsiniz. Çalışma alanınızda kayıtlı modelleri ve veri kümelerini ararken Etiketleri filtre olarak kullanabilirsiniz.
 >
-> Bir veri kümesini kayıtlı bir modelle ilişkilendirme isteğe bağlı bir adımdır. Bir modeli kaydederken bir veri kümesine başvurma hakkında bilgi için bkz. [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py&preserve-view=true) sınıfı başvurusu.
+> Bir veri kümesini kayıtlı bir modelle ilişkilendirme isteğe bağlı bir adımdır. Bir modeli kaydederken bir veri kümesine başvurma hakkında bilgi için bkz. [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true) sınıfı başvurusu.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML yaşam döngüsünde olayları bildirme, otomatikleştirme ve uyarma

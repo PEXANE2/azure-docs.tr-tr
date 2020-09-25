@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Grid konular veya etki alanı için özel 
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa67ba8dbe8106c0311bafec07a1510ca0c25c3f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324153"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için özel uç noktaları yapılandırma
 [Özel uç noktaları](../private-link/private-endpoint-overview.md) kullanarak doğrudan sanal ağınızdan, genel İnternet üzerinden geçmeden [özel bir bağlantı](../private-link/private-link-overview.md) üzerinden konulara ve etki alanlarına olay girişi sağlayabilirsiniz. Özel uç nokta, konu veya etki alanınız için VNet adres alanından bir IP adresi kullanır. Daha fazla kavramsal bilgi için bkz. [ağ güvenliği](network-security.md).
@@ -42,7 +42,7 @@ Bu bölümde, bir konu veya etki alanı için özel bir uç nokta oluşturmak ü
         3. **Hedef alt kaynağın** **Konu** veya **etki alanı** olarak ayarlandığını onaylayın (seçtiğiniz kaynak türüne göre).    
         4. Sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin. 
 
-            ![Özel uç nokta-kaynak sayfası](./media/configure-private-endpoints/resource-page.png)
+            !["Özel uç nokta kaynağı oluşturma" sayfasını gösteren ekran görüntüsü.](./media/configure-private-endpoints/resource-page.png)
     2. Kaynak **kimliği veya diğer ad kullanarak bir kaynağa Bağlan**' ı seçerseniz, aşağıdaki adımları izleyin:
         1. Kaynağın KIMLIĞINI girin. Örneğin: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
         2. **Kaynak**için **konu başlığını** veya **etki alanını**girin. 
@@ -68,7 +68,7 @@ Bu bölümde, bir konu veya etki alanı için özel bir uç nokta oluşturmak ü
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Description |
 |--|--|--|
 | Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
@@ -78,7 +78,7 @@ Dört sağlama durumu vardır:
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını yönetme
 Aşağıdaki bölümlerde, özel bir uç nokta bağlantısını onaylama veya reddetme işlemlerinin nasıl yapılacağı gösterilmektedir. 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Arama çubuğuna **Event Grid konuları** ' nı veya **Event Grid etki alanlarını**yazın.
 1. Yönetmek istediğiniz **konuyu** veya **etki alanını** seçin.
 1. **Ağ** sekmesini seçin.
@@ -108,7 +108,7 @@ Bekleyen durumunda veya onaylanan durumunda olan özel bir uç noktayı reddedeb
 
 1. Reddetmek istediğiniz **Özel uç noktayı** seçin ve araç çubuğunda **Reddet** ' i seçin.
 
-    ![Özel uç nokta-Reddet](./media/configure-private-endpoints/reject-button.png)
+    !["Ağ-özel uç nokta bağlantıları (Önizleme)" öğesini "Reddet" seçiliyken gösteren ekran görüntüsü.](./media/configure-private-endpoints/reject-button.png)
 1. **Bağlantıyı Reddet** iletişim kutusunda bir açıklama girin (isteğe bağlı) ve **Evet**' i seçin. 
 
     ![Özel uç nokta-Reddet](./media/configure-private-endpoints/reject.png)
@@ -151,7 +151,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 
 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Aşağıdaki komutu çalıştırarak CLı için Azure Event Grid uzantısını güncelleştirin: 
 
 ```azurecli-interactive

@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cc00cfa9f44c69a5880d53c0b7ac623f60be16b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6021bb4fa5d30de423ab56bfb5fdea6af2665a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948168"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334489"
 ---
-# <a name="calling-client-library-overview"></a>İstemci kitaplığına genel bakış çağrılıyor
+# <a name="calling-client-library-overview"></a>Arama istemci kitaplığına genel bakış
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
@@ -55,8 +55,7 @@ Aşağıdaki liste, şu anda istemci kitaplıklarını çağıran Azure Iletişi
 |                   | PSTN katılımcıları ile bir grup çağrısı yerleştirme                                                                           | ✔️   | ✔️            | ✔️
 |                   | Bir PSTN katılımcısı ile bire bir çağrıyı bir grup çağrısına yükseltme                                                 | ✔️   | ✔️            | ✔️
 |                   | Bir grup çağrısından PSTN katılımcısı olarak dışarıyı arama                                                                    | ✔️   | ✔️            | ✔️   
-| Genel           | En fazla 350 katılımcı içeren bir grup çağrısına katılın                                                       |  ✔️  | ✔️            | ✔️    
-|                   | Mikrofon, konuşmacı ve kameranızı bir ses sınama hizmeti (8 ' i çağırarak kullanılabilir: echo123) ile test edin                   |  ✔️  | ✔️            | ✔️   
+| Genel           | Mikrofon, konuşmacı ve kameranızı bir ses sınama hizmeti (8 ' i çağırarak kullanılabilir: echo123) ile test edin                   |  ✔️  | ✔️            | ✔️   
 
 ## <a name="calling-client-library-browser-support"></a>İstemci kitaplığı tarayıcı desteğini çağırma
 

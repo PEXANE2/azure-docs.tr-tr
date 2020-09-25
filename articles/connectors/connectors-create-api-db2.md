@@ -7,12 +7,12 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: bd85155f932d57319f5f27081b44b48e5540bfb2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6c9c54450788a89a7b1aadbb0b4682a60619c061
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284056"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334608"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak IBM DB2 kaynaklarına erişin ve yönetin
 
@@ -82,7 +82,7 @@ Bağlantınızı ayarlamak için, istendiğinde bu bağlantı ayrıntılarını 
 
 | Özellik | Gerekli | Açıklama |
 |----------|----------|-------------|
-| **Şirket içi ağ geçidi üzerinden Bağlan** | Hayır | Yalnızca şirket içi bağlantılar için geçerlidir. |
+| **Şirket içi ağ geçidi üzerinden Bağlan** | No | Yalnızca şirket içi bağlantılar için geçerlidir. |
 | **Bağlantı adı** | Yes | Bağlantınızın adı, örneğin "MyLogicApp-DB2-Connection" |
 | **Sunucu** | Yes | DB2 sunucunuzun adresi veya diğer adı iki nokta üst üste bağlantı noktası numarası (örneğin, "myDB2server.cloudapp.net:50000") <p><p>**Note**: Bu değer, bir TCP/IP adresini veya diğer adı IPv4 veya IPv6 biçiminde, ardından iki nokta üst üste ve bir TCP/IP bağlantı noktası numarasına göre temsil eden bir dizedir. |
 | **Veritabanı** | Yes | Veritabanınızın adı <p><p>**Note**: Bu değer, bir DRDA Ilişkisel veritabanı adını (RDBNAM) temsil eden bir dizedir: <p>-DB2 for z/OS, veritabanının "z/ç için IBM DB2" konumu olarak bilinen bir 16 baytlık dizeyi kabul eder. <br>-DB2, veritabanının "ı için IBM DB2" ilişkisel veritabanı olarak bilinen bir 18 baytlık dizeyi kabul eder. <br>-LUW için-DB2 8 baytlık bir dizeyi kabul eder. |
@@ -90,7 +90,7 @@ Bağlantınızı ayarlamak için, istendiğinde bu bağlantı ayrıntılarını 
 | **Parola** | Yes | Veritabanı için parolanız |
 ||||
 
-Örnek:
+Örneğin:
 
 ![Bulut tabanlı veritabanları için bağlantı ayrıntıları](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
 
@@ -112,7 +112,7 @@ Bağlantınızı oluşturmadan önce şirket içi veri ağ geçidiniz zaten yük
 | **Geçidinde** | Yes | Yüklü şirket içi veri ağ geçidinizin adı <p><p>**Note**: Azure aboneliğiniz ve kaynak grubunuz içindeki tüm yüklü veri ağ geçitlerini içeren listeden bu değeri seçin. |
 ||||
 
-Örnek:
+Örneğin:
 
 ![Şirket içi veritabanları için bağlantı ayrıntıları](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
 
@@ -157,7 +157,7 @@ Bir DB2 veritabanı tablosunda bir kayıt getirmek için mantıksal uygulamanız
    | **Alan KIMLIĞI** | Yes | Bu örnekte "99999" gibi istediğiniz kaydın KIMLIĞI |
    ||||
 
-   ![Tablo Seç](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+   ![Açılan "Tablo adı" ve "alan" değeri seçili "satırı al (Önizleme)" eylemini gösteren ekran görüntüsü.](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
 
 1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -192,7 +192,7 @@ Bir DB2 veritabanı tablosundaki tüm kayıtları getirmek için mantıksal uygu
 
 1. **Tablo adı** listesini açın ve istediğiniz tabloyu seçin, bu örnekte "alan" olur:
 
-   ![Tablo Seç](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+   !["Tablo adı" listesinde seçili "alan" değeri ile "satırı al (Önizleme)" eylemini gösteren ekran görüntüsü.](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
 1. Sonuçlar için bir filtre veya sorgu belirtmek üzere **Gelişmiş seçenekleri göster**' i seçin.
 
@@ -239,9 +239,9 @@ Bir DB2 veritabanı tablosuna tek bir kayıt eklemek için mantıksal uygulaman�
    | **Bölge KIMLIĞI** | Yes | Eklenecek bölgenin KIMLIĞI, örneğin "102" |
    |||| 
 
-   Örnek:
+   Örneğin:
 
-   ![Tablo Seç](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+   !["Satır ekle (Önizleme)" eylemi ve örnek özellik değerleri ile Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
 1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -287,9 +287,9 @@ Bir DB2 veritabanı tablosundaki tek bir kaydı güncelleştirmek için mantıks
    | **Bölge KIMLIĞI** | Yes | Yeni bölge KIMLIĞI ("102" gibi) |
    ||||
 
-   Örnek:
+   Örneğin:
 
-   ![Tablo Seç](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+   ![Bir tabloyu seçtiğiniz "satırı güncelleştir (Önizleme)" eylemiyle Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
 1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -332,9 +332,9 @@ Bir DB2 veritabanı tablosundan tek bir kaydı silmek için, mantıksal uygulama
    | **Satır KIMLIĞI** | Yes | Silinecek kaydın KIMLIĞI, örneğin "99999" |
    ||||
 
-   Örnek:
+   Örneğin:
 
-   ![Tablo Seç](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+   ![Silinecek tabloyu seçtiğiniz "satırı sil (Önizleme)" eylemiyle Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
 1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
