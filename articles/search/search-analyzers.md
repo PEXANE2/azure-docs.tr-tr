@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9db8a50e670e3c6af7adce0a8efcf3ce569ac89
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1206d9e4d6eec7b2bf029310360f563849d61d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009636"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268309"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Bilişsel Arama metin işleme için çözümleyiciler
 
@@ -147,7 +147,7 @@ Bu örnekte izlenecek:
 * Bu durumda, özel çözümleyici "my_analyzer" olur ve bu da "my_standard_tokenizer" özelleştirilmiş standart belirteç ayırıcı ve iki belirteç filtresi kullanır: küçük ve özelleştirilmiş asciifolding filtresi "my_asciifolding".
 * Ayrıca, "map_dash" ve "remove_whitespace" 2 özel char filtrelerini de tanımlar. İlki tüm tireleri alt çizgi ile değiştirir, ikinci bir tane tüm boşlukları kaldırır. Eşleme kurallarında boşluklar UTF-8 olarak kodlanmalıdır. Char filtreleri simgeleştirme öncesinde uygulanır ve sonuçta elde edilen belirteçleri etkiler (çizgi ve boşluklar üzerinde standart belirteç ayırıcı işaretleri ve alt çizgi üzerinde değil).
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -206,7 +206,7 @@ Bu örnekte izlenecek:
         }
      ]
   }
-~~~~
+```
 
 <a name="Per-field-analyzer-assignment-example"></a>
 
@@ -216,7 +216,7 @@ Standart çözümleyici varsayılandır. Varsayılan değerini, model Çözümle
 
 "Analyzer" öğesi, alan temelinde standart çözümleyici 'yi geçersiz kılar. Genel geçersiz kılma yok. Bu örnekte, `text1` model Çözümleyicisi 'ni kullanır ve `text2` bir çözümleyici belirtmeyen, Varsayılanı kullanır.
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -239,7 +239,7 @@ Standart çözümleyici varsayılandır. Varsayılan değerini, model Çözümle
         }
      ]
   }
-~~~~
+```
 
 <a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
@@ -248,7 +248,7 @@ Standart çözümleyici varsayılandır. Varsayılan değerini, model Çözümle
 API 'Ler, dizin oluşturma ve arama için farklı çözümleyiciler belirtmeye yönelik ek dizin öznitelikleri içerir. **SearchAnalyzer** ve **ındexanalyzer** öznitelikleri bir çift olarak belirtilmelidir ve tek **çözümleyici** özniteliği değiştiriliyor.
 
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -267,7 +267,7 @@ API 'Ler, dizin oluşturma ve arama için farklı çözümleyiciler belirtmeye y
         },
      ],
   }
-~~~~
+```
 
 <a name="Language-analyzer-example"></a>
 
@@ -275,7 +275,7 @@ API 'Ler, dizin oluşturma ve arama için farklı çözümleyiciler belirtmeye y
 
 Farklı dillerdeki dizeleri içeren alanlar dil Çözümleyicisi kullanabilir, diğer alanlar da varsayılan olarak korunur (veya başka bir önceden tanımlanmış veya özel çözümleyici kullanır). Dil Çözümleyicisi kullanıyorsanız, hem dizin oluşturma hem de arama işlemleri için kullanılması gerekir. Dil Çözümleyicisi kullanan alanlarda dizin oluşturma ve arama için farklı çözümleyiciler bulunamaz.
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -300,7 +300,7 @@ Farklı dillerdeki dizeleri içeren alanlar dil Çözümleyicisi kullanabilir, d
         }
      ],
   }
-~~~~
+```
 
 ## <a name="c-examples"></a>C# örnekleri
 

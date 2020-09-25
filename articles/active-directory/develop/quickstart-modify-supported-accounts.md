@@ -1,6 +1,6 @@
 ---
-title: Microsoft tarafından platform uygulama hesaplarını değiştirme | Mavisi
-description: Kimlerin veya hangi hesapların uygulamaya erişebileceğini değiştirmek için Microsoft kimlik platformuyla kayıtlı bir uygulama yapılandırın.
+title: 'Hızlı başlangıç: Microsoft SDK Platformu uygulama hesaplarını değiştirme | Mavisi'
+description: Bu hızlı başlangıçta, uygulamaya kimlerin erişebileceğini veya hangi hesapların erişebileceğini değiştirmek için Microsoft Identity platformu ile kaydedilen bir uygulamayı yapılandırırsınız.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d143bde9c22bc726f00b5c209d1b7fbc131905b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826868"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258022"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Hızlı başlangıç: bir uygulama tarafından desteklenen hesapları değiştirme
 
@@ -25,13 +25,9 @@ Bir uygulamayı Microsoft kimlik platformunda kaydederken uygulamaya yalnızca k
 
 Bu hızlı başlangıçta, kimlerin veya hangi hesapların uygulamaya erişebileceğini değiştirmek için uygulamanızın yapılandırmasını değiştirmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Başlamak için aşağıdaki önkoşulları tamamladığınızdan emin olun:
-
-* Diğer kullanıcılar veya uygulamalar tarafından kullanılması gereken uygulamaları derleme konusunda önemli olan desteklenen [izinler ve onaylar](v2-permissions-and-consent.md) hakkında bilgi edinin.
-* Kaydedilmiş uygulamaları olan bir kiracısı olma.
-  * Kayıtlı uygulama yoksa, [Microsoft kimlik platformu ile uygulamaları kaydetmeyi öğrenin](quickstart-register-app.md).
+* [Hızlı başlangıç: Microsoft Identity platformu ile bir uygulamayı kaydetme](quickstart-register-app.md)
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portalında oturum açın ve uygulamayı seçin
 
@@ -78,13 +74,5 @@ OAuth 2.0 örtük onay özelliği uygulamalar için varsayılan olarak devre dı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamalar için diğer ilgili uygulama yönetimi hızlı başlangıçları hakkında bilgi edinin:
-
-* [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md)
-* [Bir istemci uygulamasını web API'lerine erişecek şekilde yapılandırma](quickstart-configure-app-access-web-apis.md)
-* [Bir uygulamayı web API'lerini kullanıma sunacak şekilde yapılandırma](quickstart-configure-app-expose-web-apis.md)
-* [Microsoft kimlik platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md)
-
-Kayıtlı uygulamayı temsil eden iki Azure AD nesnesi ve aralarındaki ilişki hakkında daha fazla bilgi edinmek için bkz. [Uygulama nesneleri ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
-
-Azure Active Directory ile uygulama geliştirirken kullanmanız gereken markalama yönergeleri hakkında daha fazla bilgi edinmek için bkz. [Uygulamalar için markalama yönergeleri](howto-add-branding-in-azure-ad-apps.md).
+> [!div class="nextstepaction"]
+> [Uygulamalar için markalama yönergeleri](howto-add-branding-in-azure-ad-apps.md)

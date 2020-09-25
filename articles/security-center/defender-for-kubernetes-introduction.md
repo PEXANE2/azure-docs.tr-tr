@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: e72875135243733a6acf03bb3aa6fb9405392d9d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a7fb97f1036515f82fa3e61c18f95eadf0af704d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941990"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301712"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Kubernetes için Azure Defender 'a giriş
 
@@ -31,7 +31,7 @@ Linux AKS düğümleriniz için ana bilgisayar düzeyinde tehdit algılama, [sun
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|**Kubernetes Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi** , uyarıları kapatabilir.<br>**Güvenlik okuyucusu** bulguları görüntüleyebilir.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Kubernetes için Azure Defender 'ın yararları nelerdir?
@@ -44,14 +44,14 @@ Güvenlik Merkezi, farklı düzeylerde tehdit koruması sağlar:
 
 - **Konak düzeyi (sunucular Için Azure Defender tarafından verilmiştir)** -Güvenlik Merkezi 'Nin diğer VM 'lerde kullandığı aynı Log Analytics aracısını kullanarak, Azure Defender, LINUX aks düğümlerinizi Web kabuğu algılama ve BILINEN şüpheli IP adresleriyle bağlantı gibi şüpheli etkinlikler için izler. Aracı Ayrıca, ayrıcalıklı kapsayıcı oluşturma, API sunucularına şüpheli erişim ve bir Docker kapsayıcısı içinde çalışan Secure Shell (SSH) sunucuları gibi kapsayıcıya özel analizler için de izler.
 
-    AKS konak düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)bakın.
+    AKS konak düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-containerhost)bakın.
 
     >[!IMPORTANT]
     > Aracıları konaklarınıza yüklememeyi seçerseniz, yalnızca tehdit koruması avantajları ve güvenlik uyarılarının bir alt kümesini alırsınız. Hala kötü amaçlı sunucularla ağ analizi ve iletişimlerle ilgili uyarılar alacaksınız.
 
 - **Aks kümesi düzeyi (Kubernetes Için Azure Defender tarafından sağlanır)** -küme düzeyinde tehdit koruması, Kubernetes 'ın denetim günlüklerini çözümlemeye dayanır. Bu **aracısız** izlemeyi etkinleştirmek Için Azure Defender 'ı etkinleştirin. Bu düzeyde uyarı oluşturmak için, güvenlik merkezi AKS tarafından yönetilen Hizmetleri AKS tarafından alınan günlükleri kullanarak izler. Bu düzeydeki olay örnekleri, sunulan Kubernetes panoları, yüksek ayrıcalıklı rollerin oluşturulmasını ve hassas takmaları oluşturmayı içerir.
 
-    AKS küme düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)bakın.
+    AKS küme düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-akscluster)bakın.
 
     >[!NOTE]
     > Güvenlik Merkezi, Azure Kubernetes hizmet eylemleri ve abonelik ayarlarında Kubernetes seçeneği etkinleştirildikten sonra gerçekleşen dağıtımlar için güvenlik uyarıları oluşturur. 

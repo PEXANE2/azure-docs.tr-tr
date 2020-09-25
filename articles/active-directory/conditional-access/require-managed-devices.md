@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb62d3b7ebe3ba6f4551602c7867575e74dca70
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c9cdf01c9dac3c37b3af7b07adb8d202761e7640
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601529"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258651"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için yönetilen cihazlar gerektirme
 
@@ -109,7 +109,7 @@ Kuruluşlar, kayıtlı bir mobil cihazın kullanımını gerektirmek için aşa�
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Bitti** seçeneğini belirleyin.
-1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 (Önizleme)** öğesini seçin.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365**' i seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
    1. **Android** ve **iOS**dahil edin.

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: eaada1981929cec890ce3c8ca89fe47393730b05
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88137024"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250340"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Hyperscale (Citus) SQL API 'sindeki işlevler
 
@@ -20,7 +20,7 @@ Bu bölüm, Hyperscale (Citus) tarafından sunulan Kullanıcı tanımlı işlevl
 
 > [!NOTE]
 >
-> Citus altyapısının eski sürümlerini çalıştıran hiper ölçekli sunucu grupları aşağıda listelenen tüm işlevleri sunmayabilir.
+> Citus altyapısının eski sürümlerini çalıştıran hyperscale (Citus) sunucu grupları aşağıda listelenen tüm işlevleri sunmayabilir.
 
 ## <a name="table-and-shard-ddl"></a>Tablo ve parça DDL
 
@@ -269,7 +269,7 @@ SELECT column_to_column_name(logicalrelid, partkey) AS dist_col_name
  WHERE logicalrelid='products'::regclass;
 ```
 
-Çıktı:
+Çıkış:
 
 ```
 ┌───────────────┐
@@ -713,7 +713,7 @@ Bu işlev, dağıtım sütununda belirli bir tek değere sahip satırları tutma
 
 **kiracı \_ kimliği:** yeni parçaya atanacak olan dağıtım sütununun değeri.
 
-**Cascade \_ seçeneği:** (isteğe bağlı) olarak \" ayarlandığında \"Aynı zamanda, geçerli tablonun birlikte bulundurma [grubundaki](concepts-hyperscale-colocation.md)tüm tablolardan bir parça ayırır.
+**Cascade \_ seçeneği:** (isteğe bağlı) olarak \" ayarlandığında \" Aynı zamanda, geçerli tablonun birlikte bulundurma [grubundaki](concepts-hyperscale-colocation.md)tüm tablolardan bir parça ayırır.
 
 #### <a name="return-value"></a>Dönüş Değeri
 

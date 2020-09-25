@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 75c434b5c1927251940a691a16069425b4cc88a3
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/19/2020
+ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500411"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269174"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -75,6 +75,8 @@ Her URL `sp` , `sv` `sig` Bu tabloda açıklandığı gibi,, ve sorgu parametres
 | `sig` | Tetikleyiciye erişim kimliğini doğrulamak için kullanılacak imzayı belirtir. Bu imza, tüm URL yollarında ve özelliklerde gizli bir erişim anahtarı ile SHA256 algoritması kullanılarak oluşturulur. Hiçbir koşulda veya yayımlanmadıysa, bu anahtar şifrelenir ve mantıksal uygulamayla birlikte depolanır. Mantıksal uygulamanız yalnızca gizli anahtar ile oluşturulmuş geçerli bir imza içeren Tetikleyicileri yetkilendirir. |
 |||
 
+İstek uç noktasına gelen çağrılar, SAS veya [Azure Active Directory açık kimlik doğrulaması](#enable-oauth)yalnızca bir yetkilendirme şeması kullanabilir. Tek bir düzenin kullanılması diğer düzeni devre dışı bırakmakla birlikte, her iki düzeni de aynı anda kullanmak bir hataya neden olur çünkü hizmet hangi düzenin seçeceğini bilmez.
+
 SAS ile erişimin güvenliğini sağlama hakkında daha fazla bilgi için bu konudaki şu bölümlere bakın:
 
 * [Erişim anahtarlarını yeniden oluştur](#access-keys)
@@ -121,62 +123,62 @@ Gövdesinde, `KeyType` ya da olarak özelliğini ekleyin `Primary` `Secondary` .
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Azure Active Directory açma kimlik doğrulamasını etkinleştirme (Azure AD OAuth)
 
-Mantıksal uygulamanız bir [istek tetikleyicisi](../connectors/connectors-native-reqres.md)ile başlıyorsa, istek tetikleyicisine gelen çağrılar için bir yetkilendirme ilkesi tanımlayarak veya ekleyerek [Azure Active Directory açma kimlik DOĞRULAMASıNı (Azure AD OAuth)](../active-directory/develop/index.yml) etkinleştirebilirsiniz.
+İstek tabanlı bir tetikleyici tarafından oluşturulan bir uç noktaya gelen çağrılar için, mantıksal uygulamanıza yönelik bir yetkilendirme ilkesi tanımlayarak veya ekleyerek [Azure Active Directory açma kimlik doğrulamasını (Azure AD OAuth)](../active-directory/develop/index.yml) etkinleştirebilirsiniz. Bu şekilde, gelen çağrılar yetkilendirme için OAuth [erişim belirteçleri](../active-directory/develop/access-tokens.md) kullanır.
 
-Bu kimlik doğrulamasını etkinleştirmeden önce şu hususları gözden geçirin:
+Mantıksal uygulamanız bir OAuth erişim belirteci içeren bir gelen istek aldığında, Azure Logic Apps hizmeti belirtecin taleplerini her yetkilendirme ilkesi tarafından belirtilen taleplerle karşılaştırır. Belirtecin talepleri ve en az bir ilkedeki tüm talepler arasında bir eşleşme varsa, gelen istek için Yetkilendirme başarılı olur. Belirteç, yetkilendirme ilkesi tarafından belirtilen sayıdan daha fazla talebe sahip olabilir.
 
-* Istek tetikleyicisine gelen çağrı yalnızca Istek tetikleyicisi için desteklenen bir kimlik doğrulama belirteci kullanarak ya da bir [paylaşılan erişim imzası (SAS) URL 'si](#sas) kullanarak yalnızca bir yetkilendirme şeması kullanabilir, her iki düzeni de kullanamazsınız.
+Azure AD OAuth 'ı etkinleştirmeden önce şu hususları gözden geçirin:
 
-  Tek bir düzenin kullanılması diğer düzeni devre dışı bırakmasa da, hizmet hangi düzenin seçeceğini bilmediğinden, her ikisi de aynı zamanda kullanılması hataya neden olur. Ayrıca yalnızca, Istek tetikleyicisi için desteklenen OAuth kimlik doğrulama belirteçleri için yalnızca [taşıyıcı türü](../active-directory/develop/active-directory-v2-protocols.md#tokens) yetkilendirme şemaları desteklenir. Kimlik doğrulama belirtecinin `Bearer-type` Yetkilendirme üst bilgisinde belirtmesi gerekir.
+* İstek uç noktasına gelen çağrı yalnızca Azure AD OAuth veya [paylaşılan erişim imzası (SAS)](#sas)olan bir yetkilendirme şemasını kullanabilir. Tek bir düzenin kullanılması diğer düzeni devre dışı bırakmakla birlikte, her iki düzeni de aynı anda kullanmak bir hataya neden olur çünkü Logic Apps hizmeti hangi düzenin seçeceğini bilmez.
+
+* Azure AD OAuth erişim belirteçleri için yalnızca [taşıyıcı türü](../active-directory/develop/active-directory-v2-protocols.md#tokens) yetkilendirme şemaları desteklenir, bu da `Authorization` erişim belirtecinin üst bilgisinin türü belirtmesi gerektiği anlamına gelir `Bearer` .
 
 * Mantıksal uygulamanız en fazla sayıda Yetkilendirme ilkesiyle sınırlıdır. Her yetkilendirme ilkesinin Ayrıca en fazla sayıda [talep](../active-directory/develop/developer-glossary.md#claim)vardır. Daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#authentication-limits).
 
-* Yetkilendirme ilkesi, **Issuer** `https://sts.windows.net/` `https://login.microsoftonline.com/` Azure AD veren kimliği olarak veya (OAuth v2) ile başlayan bir değere sahip en az veren talebini içermelidir. Erişim belirteçleri hakkında daha fazla bilgi için bkz. [Microsoft Identity platform erişim belirteçleri](../active-directory/develop/access-tokens.md).
+* Yetkilendirme ilkesi, **Issuer** `https://sts.windows.net/` `https://login.microsoftonline.com/` Azure AD veren kimliği olarak ya da (OAuth v2) ile başlayan bir değere sahip en az veren talebi içermelidir.
 
-Mantıksal uygulamanız bir OAuth kimlik doğrulama belirteci içeren bir gelen istek aldığında, Azure Logic Apps belirtecin taleplerini her yetkilendirme ilkesindeki taleplerle karşılaştırır. Belirtecin talepleri ve en az bir ilkedeki tüm talepler arasında bir eşleşme varsa, gelen istek için Yetkilendirme başarılı olur. Belirteç, yetkilendirme ilkesi tarafından belirtilen sayıdan daha fazla talebe sahip olabilir.
+  Örneğin, mantıksal uygulamanızın iki talep türü, **hedef kitle** ve **veren**gerektiren bir yetkilendirme ilkesi olduğunu varsayalım. Kodu çözülen erişim belirtecinin Bu örnek [Yük bölümü](../active-directory/develop/access-tokens.md#payload-claims) , hem `aud` **hedef kitle** değeri hem de `iss` **veren** değeri olan talep türlerini içerir:
 
-Örneğin, mantıksal uygulamanızın iki talep türü, **veren** ve **seyirci**gerektiren bir yetkilendirme ilkesi olduğunu varsayalım. Bu örnek kodu çözülen [erişim belirteci](../active-directory/develop/access-tokens.md) , bu talep türlerini içerir:
-
-```json
-{
-   "aud": "https://management.core.windows.net/",
-   "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
-   "iat": 1582056988,
-   "nbf": 1582056988,
-   "exp": 1582060888,
-   "_claim_names": {
-      "groups": "src1"
-   },
-   "_claim_sources": {
-      "src1": {
-         "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
-    }
-   },
-   "acr": "1",
-   "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
-   "amr": [
-      "rsa",
-      "mfa"
-   ],
-   "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
-   "appidacr": "2",
-   "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
-   "family_name": "Sophia Owen",
-   "given_name": "Sophia Owen (Fabrikam)",
-   "ipaddr": "167.220.2.46",
-   "name": "sophiaowen",
-   "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
-   "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
-   "puid": "1003000000098FE48CE",
-   "scp": "user_impersonation",
-   "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
-   "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-   "unique_name": "SophiaOwen@fabrikam.com",
-   "upn": "SophiaOwen@fabrikam.com",
-   "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
-   "ver": "1.0"
-}
-```
+  ```json
+  {
+      "aud": "https://management.core.windows.net/",
+      "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
+      "iat": 1582056988,
+      "nbf": 1582056988,
+      "exp": 1582060888,
+      "_claim_names": {
+         "groups": "src1"
+      },
+      "_claim_sources": {
+         "src1": {
+            "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
+         }
+      },
+      "acr": "1",
+      "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
+      "amr": [
+         "rsa",
+         "mfa"
+      ],
+      "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
+      "appidacr": "2",
+      "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
+      "family_name": "Sophia Owen",
+      "given_name": "Sophia Owen (Fabrikam)",
+      "ipaddr": "167.220.2.46",
+      "name": "sophiaowen",
+      "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
+      "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
+      "puid": "1003000000098FE48CE",
+      "scp": "user_impersonation",
+      "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
+      "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "unique_name": "SophiaOwen@fabrikam.com",
+      "upn": "SophiaOwen@fabrikam.com",
+      "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
+      "ver": "1.0"
+   }
+   ```
 
 <a name="define-authorization-policy-portal"></a>
 
@@ -190,14 +192,14 @@ Azure portal mantıksal uygulamanız için Azure AD OAuth 'ı etkinleştirmek ü
 
    !["İlke Ekle" > "yetkilendirme" yi seçin](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
 
-1. Mantıksal uygulamanızın Istek tetikleyicisine her gelen çağrı tarafından sunulan kimlik doğrulama belirtecinde beklediği [talep türlerini](../active-directory/develop/developer-glossary.md#claim) ve değerlerini belirterek yetkilendirme ilkesi hakkında bilgi sağlayın:
+1. Mantıksal uygulamanızın Istek tetikleyicisine her gelen çağrı tarafından sunulan erişim belirtecinde beklediği [talep türlerini](../active-directory/develop/developer-glossary.md#claim) ve değerlerini belirterek yetkilendirme ilkesi hakkında bilgi sağlayın:
 
    ![Yetkilendirme ilkesi için bilgi sağlama](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
    | **İlke adı** | Yes | Yetkilendirme ilkesi için kullanmak istediğiniz ad |
-   | **Talepler** | Yes | Mantıksal uygulamanızın gelen çağrılardan kabul ettiği talep türleri ve değerleri. Kullanılabilir talep türleri şunlardır: <p><p>- **Enden** <br>- **Grubu** <br>- **Konu** <br>- **JWT kimliği** (JSON Web Token kimliği) <p><p>En azından, **talep** listesi, **Issuer** `https://sts.windows.net/` `https://login.microsoftonline.com/` Azure AD veren kimliğiyle veya ile başlayan bir değere sahip veren talebini içermelidir. Bu talep türleri hakkında daha fazla bilgi için bkz. [Azure AD güvenlik belirteçlerinde talepler](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Kendi talep türünü ve değerini de belirtebilirsiniz. |
+   | **Talepler** | Yes | Mantıksal uygulamanızın gelen çağrılardan kabul ettiği talep türleri ve değerleri. Kullanılabilir talep türleri şunlardır: <p><p>- **Enden** <br>- **Grubu** <br>- **Konu** <br>- **JWT kimliği** (JSON Web Token kimliği) <p><p>**Talep** listesi, en azından, **Issuer** `https://sts.windows.net/` `https://login.microsoftonline.com/` Azure AD veren kimliği ile başlayan bir değere sahip veren talebini içermelidir. Bu talep türleri hakkında daha fazla bilgi için bkz. [Azure AD güvenlik belirteçlerinde talepler](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Kendi talep türünü ve değerini de belirtebilirsiniz. |
    |||
 
 1. Başka bir talep eklemek için şu seçeneklerden birini seçin:
@@ -210,14 +212,27 @@ Azure portal mantıksal uygulamanız için Azure AD OAuth 'ı etkinleştirmek ü
 
 1. İşiniz bittiğinde **Kaydet**'i seçin.
 
+1. `Authorization`İstek tabanlı tetikleyici çıktılarında erişim belirtecinden üstbilgiyi eklemek için, bkz. [istek tetikleme çıktılarına ' Authorization ' üst bilgisini ekleme](#include-auth-header).
+
 <a name="define-authorization-policy-template"></a>
 
 #### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Azure Resource Manager şablonunda yetkilendirme ilkesi tanımlama
 
-Mantıksal uygulamanızı dağıtmaya yönelik ARM şablonunda Azure AD OAuth 'yı etkinleştirmek için, `properties` [mantıksal uygulamanızın kaynak tanımına](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)ait bölümünde, yoksa `accessControl` bir nesne içeren bir nesne ekleyin `triggers` . `triggers`Nesnesinde, `openAuthenticationPolicies` Bu söz dizimini izleyerek bir veya daha fazla yetkilendirme ilkesi tanımladığınız bir nesne ekleyin:
+Mantıksal uygulamanızı dağıtmaya yönelik ARM şablonunda Azure AD OAuth 'yı etkinleştirmek için aşağıdaki adımları ve söz dizimini izleyin:
 
-> [!NOTE]
-> En azından, dizi, `claims` `iss` `https://sts.windows.net/` `https://login.microsoftonline.com/` Azure AD veren kimliğiyle veya ile başlayan bir değere sahip talebi içermelidir. Bu talep türleri hakkında daha fazla bilgi için bkz. [Azure AD güvenlik belirteçlerinde talepler](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Kendi talep türünü ve değerini de belirtebilirsiniz.
+1. `properties` [Mantıksal uygulamanızın kaynak tanımına](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)ait bölümünde, yoksa `accessControl` bir nesne içeren bir nesne ekleyin `triggers` .
+
+   Nesne hakkında daha fazla bilgi için `accessControl` bkz. [Azure Resource Manager ŞABLONUNDA gelen IP aralıklarını kısıtlama](#restrict-inbound-ip-template) ve [Microsoft. Logic iş akışları şablon başvurusu](/azure/templates/microsoft.logic/2019-05-01/workflows).
+
+1. `triggers`Nesnesinde, `openAuthenticationPolicies` `policies` bir veya daha fazla yetkilendirme ilkesi tanımladığınız nesneyi içeren bir nesne ekleyin.
+
+1. Yetkilendirme ilkesi için bir ad belirtin, ilke türünü olarak ayarlayın `AAD` ve `claims` bir veya daha fazla talep türü belirttiğiniz bir dizi ekleyin.
+
+   En azından, dizi, `claims` talebin özelliğini olarak ayarladığınız veren talep türünü içermeli `name` `iss` ve ' ı `value` `https://sts.windows.net/` veya `https://login.microsoftonline.com/` Azure AD veren kimliği ile başlangıç olarak ayarlanır. Bu talep türleri hakkında daha fazla bilgi için bkz. [Azure AD güvenlik belirteçlerinde talepler](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Kendi talep türünü ve değerini de belirtebilirsiniz.
+
+1. `Authorization`İstek tabanlı tetikleyici çıktılarında erişim belirtecinden üstbilgiyi eklemek için, bkz. [istek tetikleme çıktılarına ' Authorization ' üst bilgisini ekleme](#include-auth-header).
+
+İzlenecek sözdizimi aşağıda verilmiştir:
 
 ```json
 "resources": [
@@ -256,7 +271,30 @@ Mantıksal uygulamanızı dağıtmaya yönelik ARM şablonunda Azure AD OAuth 'y
 ],
 ```
 
-Bölüm hakkında daha fazla bilgi için `accessControl` bkz. [Azure Resource Manager ŞABLONUNDA gelen IP aralıklarını kısıtlama](#restrict-inbound-ip-template) ve [Microsoft. Logic iş akışları şablon başvurusu](/azure/templates/microsoft.logic/2019-05-01/workflows).
+<a name="include-auth-header"></a>
+
+#### <a name="include-authorization-header-in-request-trigger-outputs"></a>İstek tetikleyicisi çıktılarına ' Authorization ' üst bilgisini dahil et
+
+İstek tabanlı tetikleyicilere erişim için gelen çağrıları yetkilendirmek üzere [Azure Active Directory açma kimlik doğrulamasını (Azure AD OAuth) etkinleştiren](#enable-oauth) Logic Apps Için, `Authorization` OAuth erişim belirtecinden üstbilgiyi dahil etmek üzere Istek tetikleyicisi veya http Web kancası tetikleyicisi çıkışlarını etkinleştirebilirsiniz. Tetikleyicinin temel alınan JSON tanımında özelliği ekleyin ve öğesini `operationOptions` olarak ayarlayın `IncludeAuthorizationHeadersInOutputs` . Istek tetikleyicisi için bir örnek aşağıda verilmiştir:
+
+```json
+"triggers": {
+   "manual": {
+      "inputs": {
+         "schema": {}
+      },
+      "kind": "Http",
+      "type": "Request",
+      "operationOptions": "IncludeAuthorizationHeadersInOutputs"
+   }
+}
+```
+
+Daha fazla bilgi için şu konulara bakın:
+
+* [Tetikleyici ve eylem türleri için şema başvurusu-Istek tetikleyicisi](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)
+* [Tetikleyici ve eylem türleri için şema başvurusu-HTTP Web kancası tetikleyicisi](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [Tetikleyici ve eylem türleri için şema başvurusu-Işlem seçenekleri](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)
 
 <a name="azure-api-management"></a>
 
@@ -825,7 +863,7 @@ Bu tabloda, bir kimlik doğrulama türünü seçebileceğiniz Tetikleyiciler ve 
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Yes | Temel | Kullanılacak kimlik doğrulaması türü |
+| **Kimlik Doğrulaması** | `type` | Yes | Temel | Kullanılacak kimlik doğrulaması türü |
 | **Kullanıcı adı** | `username` | Yes | <*Kullanıcı adı*>| Hedef hizmet uç noktasına erişim doğrulaması için Kullanıcı adı |
 | **Parola** | `password` | Yes | <*parolayı*> | Hedef hizmet uç noktasına erişim doğrulaması için parola |
 ||||||
@@ -856,7 +894,7 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Yes | **İstemci sertifikası** <br>veya <br>`ClientCertificate` | Kullanılacak kimlik doğrulaması türü. Sertifikaları [Azure API Management](../api-management/api-management-howto-mutual-certificates.md)yönetebilirsiniz. <p></p>**Note**: özel bağlayıcılar hem gelen hem de giden çağrılar için sertifika tabanlı kimlik doğrulamasını desteklemez. |
+| **Kimlik Doğrulaması** | `type` | Yes | **İstemci sertifikası** <br>veya <br>`ClientCertificate` | Kullanılacak kimlik doğrulaması türü. Sertifikaları [Azure API Management](../api-management/api-management-howto-mutual-certificates.md)yönetebilirsiniz. <p></p>**Note**: özel bağlayıcılar hem gelen hem de giden çağrılar için sertifika tabanlı kimlik doğrulamasını desteklemez. |
 | **Türk** | `pfx` | Yes | <*kodlanmış-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik <p><p>PFX dosyasını Base64 kodlamalı biçime dönüştürmek için aşağıdaki adımları izleyerek PowerShell kullanabilirsiniz: <p>1. sertifika içeriğini bir değişkene kaydedin: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. işlevi kullanarak sertifika içeriğini dönüştürün `ToBase64String()` ve bu içeriği bir metin dosyasına kaydedin: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Parola** | `password`| No | <*-pfx dosyası için parola*> | PFX dosyasına erişim parolası |
 |||||
@@ -895,13 +933,13 @@ Istek Tetikleyicileri üzerinde, mantıksal uygulamanız için [Azure AD yetkile
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Yes | **Active Directory OAuth** <br>veya <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
-| **Yetkili** | `authority` | No | <*URL-for-Authority-Token-Issuer*> | Kimlik doğrulama belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net` . |
+| **Kimlik Doğrulaması** | `type` | Yes | **Active Directory OAuth** <br>veya <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
+| **Yetkili** | `authority` | No | <*URL-for-Authority-Token-Issuer*> | Erişim belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net` . |
 | **Kiracı** | `tenant` | Yes | <*Kiracı KIMLIĞI*> | Azure AD kiracısı için kiracı KIMLIĞI |
 | **Hedef kitle** | `audience` | Yes | <*kaynaktan yetkilendirme*> | Yetkilendirme için kullanmak istediğiniz kaynak (örneğin, `https://management.core.windows.net/` |
 | **İstemci KIMLIĞI** | `clientId` | Yes | <*istemci KIMLIĞI*> | Yetkilendirme isteyen uygulamanın istemci KIMLIĞI |
 | **Kimlik bilgisi türü** | `credentialType` | Yes | Sertifika <br>veya <br>Gizli dizi | İstemcinin yetkilendirme istemek için kullandığı kimlik bilgisi türü. Bu özellik ve değer mantıksal uygulamanızın temel tanımında görünmez, ancak seçilen kimlik bilgisi türü için görüntülenen özellikleri belirler. |
-| **Gizlilikle** | `secret` | Evet, ancak yalnızca "gizli" kimlik bilgisi türü için | <*istemci parolası*> | Yetkilendirme isteğinde bulunan istemci parolası |
+| **Gizli dizi** | `secret` | Evet, ancak yalnızca "gizli" kimlik bilgisi türü için | <*istemci parolası*> | Yetkilendirme isteğinde bulunan istemci parolası |
 | **Türk** | `pfx` | Evet, ancak yalnızca "sertifika" kimlik bilgisi türü için | <*kodlanmış-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik |
 | **Parola** | `password` | Evet, ancak yalnızca "sertifika" kimlik bilgisi türü için | <*-pfx dosyası için parola*> | PFX dosyasına erişim parolası |
 |||||
@@ -949,7 +987,7 @@ Ham kimlik doğrulamasını destekleyen tetikleyici veya eylemde, bu özellik de
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Yes | Ham | Kullanılacak kimlik doğrulaması türü |
+| **Kimlik Doğrulaması** | `type` | Yes | Ham | Kullanılacak kimlik doğrulaması türü |
 | **Değer** | `value` | Yes | <*Yetkilendirme-üst bilgi-değer*> | Kimlik doğrulaması için kullanılacak yetkilendirme üst bilgisi değeri |
 ||||||
 
@@ -984,7 +1022,7 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 
    | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
    |---------------------|-----------------|----------|-------|-------------|
-   | **Kimlik doğrulaması** | `type` | Yes | **Yönetilen Kimlik** <br>veya <br>`ManagedServiceIdentity` | Kullanılacak kimlik doğrulaması türü |
+   | **Kimlik Doğrulaması** | `type` | Yes | **Yönetilen Kimlik** <br>veya <br>`ManagedServiceIdentity` | Kullanılacak kimlik doğrulaması türü |
    | **Yönetilen Kimlik** | `identity` | Yes | * **Sistem tarafından atanan yönetilen kimlik** <br>veya <br>`SystemAssigned` <p><p>* <*Kullanıcı tarafından atanan kimlik-adı*> | Kullanılacak yönetilen kimlik |
    | **Hedef kitle** | `audience` | Yes | <*hedef-kaynak KIMLIĞI*> | Erişmek istediğiniz hedef kaynağın kaynak KIMLIĞI. <p>Örneğin, `https://storage.azure.com/` tüm depolama hesapları için kimlik doğrulaması için [erişim belirteçlerini](../active-directory/develop/access-tokens.md) geçerli hale getirir. Bununla birlikte, belirli bir depolama hesabı gibi bir kök hizmeti URL 'SI de belirtebilirsiniz `https://fabrikamstorageaccount.blob.core.windows.net` . <p>**Note**: **hedef kitle** özelliği bazı tetikleyicilere veya eylemlere gizlenmiş olabilir. Bu özelliği görünür hale getirmek için tetikleyici veya eylemde, **yeni parametre Ekle** listesini açın ve **hedef kitle**' i seçin. <p><p>**Önemli**: Bu hedef kaynak kimliğinin, tüm gerekli eğik çizgiler de dahil olmak üzere Azure AD 'nin beklediği değerle *tam olarak eşleştiğinden* emin olun. Bu nedenle, `https://storage.azure.com/` tüm Azure Blob depolama hesapları için kaynak kimliği sonunda eğik çizgi gerekir. Ancak, belirli bir depolama hesabının kaynak KIMLIĞI, sonunda eğik çizgi gerektirmez. Bu kaynak kimliklerini bulmak için bkz. [Azure AD 'yi destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||

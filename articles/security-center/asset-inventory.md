@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: e62973c83db90df2857186fe6a556278a3c41a7d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977467"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302052"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Varlık envanteri ve yönetim araçlarıyla kaynaklarınızı bulun ve yönetin
 
@@ -43,7 +43,7 @@ Bu aracın varlık yönetimi olanakları önemli ölçüde artar ve büyümeye d
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|Tüm kullanıcılar|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -54,7 +54,7 @@ Envanter sayfası aşağıdaki araçları sağlar:
 - **Özetler** -herhangi bir filtre tanımladıktan önce, envanter görünümünün en üstündeki belirgin bir değer şeridi şunları gösterir:
 
     - **Toplam kaynak**: Güvenlik Merkezi 'ne bağlı kaynakların toplam sayısı.
-    - **Sağlıksız kaynaklar**: etkin güvenlik önerilerine sahip kaynaklar. [Güvenlik önerileri hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
+    - **Sağlıksız kaynaklar**: etkin güvenlik önerilerine sahip kaynaklar. [Güvenlik önerileri hakkında daha fazla bilgi edinin](security-center-recommendations.md).
     - **İzlenmeyen kaynaklar**: aracı izleme sorunları olan kaynaklar-Log Analytics Aracısı dağıtılır, ancak aracı veri göndermiyor veya başka sistem durumu sorunlarına sahip değildir.
 
 - **Filtreler** -sayfanın en üstündeki birden çok filtre, yanıtlamaya çalıştığınız soruya göre kaynak listesini hızlı bir şekilde iyileştirmek için bir yol sağlar. Örneğin, *' Production ' etiketiyle makinelerimin Log Analytics Aracısı eksik* olduğu sorusuna yanıt vermek istiyorsanız, aşağıdaki küçük resimde gösterildiği gibi, **Aracı izleme** filtresini **Etiketler** filtresiyle birleştirebilirsiniz:

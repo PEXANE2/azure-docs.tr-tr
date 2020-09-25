@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-javascript
-ms.openlocfilehash: 149ed7aa281e50673c86c0bd7339f304aa63914a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
+ms.openlocfilehash: 8e42d906cce65cf51d6359343bc4f218b94a05fb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257699"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Hızlı başlangıç: Node.js Web uygulamasına OpenID Connect ile oturum açma ekleme
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir 
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
-* Node.js şuradan yüklensinhttp://nodejs.org/
+* Node.js şuradan yüklensin http://nodejs.org/
 
 * Bir [Microsoft hesabı](https://www.outlook.com) ya da [Microsoft 365 Geliştirici Programı](/office/developer-program/office-365-developer-program)
 
@@ -55,7 +55,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
     - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın `https://localhost:3000` .
     - **Gelişmiş ayarlar > örtük verme** bölümünde, **kimlik belirteçlerini** denetleyin, bu örnek, kullanıcının oturum açması için [örtük verme akışının](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) etkinleştirilmesini gerektirir.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin.
     - Bir anahtar açıklaması girin (örneğin, uygulama gizli anahtarı).
@@ -110,7 +110,7 @@ Komut satırınızdan aşağıdaki komutu kullanarak uygulamayı çalıştırın
 $ node app.js
 ```
 
-**Sunucu çıkışının anlaşılması zor mi?:** `bunyan`Bu örnekte günlüğe kaydetmek için kullanıyoruz. Ayrıca, Bunyan ' i yüklemediğiniz ve sunucuyu yukarıdaki gibi çalıştırarak, Bunyan ikilisini kullanarak, konsolu sizin için çok anlamlı hale getirir:
+**Sunucu çıkışının anlaşılması zor mi?:** `bunyan` Bu örnekte günlüğe kaydetmek için kullanıyoruz. Ayrıca, Bunyan ' i yüklemediğiniz ve sunucuyu yukarıdaki gibi çalıştırarak, Bunyan ikilisini kullanarak, konsolu sizin için çok anlamlı hale getirir:
 
 ```
 $ npm install -g bunyan

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 09/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c6592add5e33ba240c0f1d9fdbd23d82adfe5229
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258617"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory hizmet bağımlılıkları nelerdir? 
 
@@ -25,9 +25,9 @@ Koşullu erişim ilkeleriyle, Web siteleri ve hizmetleri için erişim gereksini
 Bir siteye veya hizmete doğrudan eriştiğinizde, ilgili bir ilkenin etkisinden değerlendirmek genellikle kolaydır. Örneğin, SharePoint Online için çok faktörlü kimlik doğrulaması (MFA) gerektiren bir ilkenize sahipseniz, MFA SharePoint Web portalında her oturum açma için zorlanır. Ancak, diğer bulut uygulamalarına yönelik bağımlılıklara sahip bulut uygulamaları olduğundan, bir ilkenin etkisini değerlendirmek her zaman düz bir şekilde ileri doğru kalmaz. Örneğin, Microsoft ekipleri SharePoint Online 'daki kaynaklara erişim sağlayabilir. Bu nedenle, geçerli senaryolarımızda Microsoft ekiplerine eriştiğinizde, SharePoint MFA ilkesine de tabidir. 
 
 > [!TIP]
-> Office [365 (Önizleme)](concept-conditional-access-cloud-apps.md#office-365-preview) uygulamasının kullanılması, Office yığınındaki hizmet bağımlılıklarıyla ilgili sorunları önlemek Için tüm Office uygulamalarını hedefleyecek.
+> Office [365](concept-conditional-access-cloud-apps.md#office-365) uygulamasının kullanılması, Office yığınındaki hizmet bağımlılıklarıyla ilgili sorunları önlemek Için tüm Office uygulamalarını hedefleyecek.
 
-## <a name="policy-enforcement"></a>İlke zorlamaİlke zorlama 
+## <a name="policy-enforcement"></a>İlke zorlama 
 
 Yapılandırılmış bir hizmet bağımlılığı varsa, ilke erken veya geç bağlantılı zorlama kullanılarak uygulanabilir. 
 
@@ -40,7 +40,7 @@ Aşağıdaki diyagramda MS takımlar hizmet bağımlılıklarını gösterilmekt
 
 En iyi uygulama olarak, mümkün olan her durumda ortak ilkeleri ilgili uygulamalar ve hizmetler arasında ayarlamanız gerekir. Tutarlı bir güvenlik duruşunu size en iyi kullanıcı deneyimini sağlar. Örneğin, Exchange Online, SharePoint Online, Microsoft ekipleri ve Skype Kurumsal genelinde ortak bir ilke ayarlamak, akış içi hizmetlere uygulanan farklı ilkelerden kaynaklanan beklenmeyen istekleri önemli ölçüde azaltır. 
 
-Bunu Office yığınındaki uygulamalarla gerçekleştirmenin harika bir yolu, tek uygulamaları hedeflemek yerine [office 365 ' i (Önizleme)](concept-conditional-access-cloud-apps.md#office-365-preview) kullanmaktır.
+Bunu Office yığınındaki uygulamalarla gerçekleştirmenin harika bir yolu, tek uygulamaları hedeflemek yerine [office 365 uygulamasını](concept-conditional-access-cloud-apps.md#office-365) kullanmaktır.
 
 Aşağıdaki tabloda, istemci uygulamalarının karşılaması gereken ek hizmet bağımlılıkları listelenmektedir  
 

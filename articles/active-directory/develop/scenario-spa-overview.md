@@ -11,31 +11,26 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 60e4ca80faa2c8787a13d87ab06cad9243299e50
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc0aee2e6c1b06850ffd0385626955a9798e7aeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291968"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257325"
 ---
 # <a name="scenario-single-page-application"></a>Senaryo: tek sayfalı uygulama
 
 Tek sayfalı uygulama (SPA) oluşturmak için ihtiyacınız olan tüm uygulamaları öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="getting-started"></a>Kullanmaya başlama
 
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+Henüz yapmadıysanız, JavaScript SPA hızlı başlangıcı ' nı tamamlayarak ilk uygulamanızı oluşturun:
 
-## <a name="getting-started"></a>Başlarken
-
-JavaScript SPA hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluşturabilirsiniz:
-
-> [!div class="nextstepaction"]
-> [Hızlı başlangıç: tek sayfalı uygulama](./quickstart-v2-javascript.md)
+[Hızlı başlangıç: tek sayfalı uygulama](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>Genel Bakış
 
-Birçok modern web uygulaması, istemci tarafı tek sayfalı uygulamalar olarak oluşturulmuştur. Geliştiriciler bunları JavaScript veya angular, Vue ve tepki verme gibi bir SPA çerçevesi kullanarak yazar. Bu uygulamalar bir Web tarayıcısında çalışır ve geleneksel sunucu tarafı Web uygulamalarından farklı kimlik doğrulama özelliklerine sahiptir. 
+Birçok modern web uygulaması, istemci tarafı tek sayfalı uygulamalar olarak oluşturulmuştur. Geliştiriciler bunları JavaScript veya angular, Vue ve tepki verme gibi bir SPA çerçevesi kullanarak yazar. Bu uygulamalar bir Web tarayıcısında çalışır ve geleneksel sunucu tarafı Web uygulamalarından farklı kimlik doğrulama özelliklerine sahiptir.
 
 Microsoft Identity platformu, tek sayfalı uygulamaların kullanıcılara oturum açmasını ve arka uç hizmetlerine veya Web API 'Lerine erişim belirteçleri almasını sağlamak için **iki** seçenek sunar:
 
@@ -56,6 +51,10 @@ Uygulamanız için bu senaryoyu etkinleştirmek üzere şunları yapmanız gerek
 * Azure Active Directory (Azure AD) ile uygulama kaydı. Kayıt adımları örtük verme akışı ve yetkilendirme kodu akışı arasında farklılık gösterir.
 * Uygulama KIMLIĞI gibi kayıtlı uygulama özellikleriyle uygulama yapılandırması.
 * Oturum açmak ve belirteçleri almak üzere kimlik doğrulama akışını yapmak için JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı 'nı kullanma.
+
+## <a name="recommended-reading"></a>Önerilen okuma
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

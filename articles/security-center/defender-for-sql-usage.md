@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 76015602cbf949b166c4067ad72bace5d355d70b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ea0df1fb68697ceee55614510cc0295c73fec00e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941238"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301661"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
 
@@ -33,7 +33,7 @@ Bu Azure Defender planı, veritabanlarına erişmek veya veritabanına yararlanm
 |Yayın durumu:|Önizleme|
 |Fiyat|**MAKINELERDEKI SQL Server 'lar Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Korumalı SQL sürümleri:|Azure SQL Server (Microsoft desteği kapsamında tüm sürümler)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Makinelerde SQL Server 'lar için Azure Defender 'ı ayarlama
@@ -79,7 +79,7 @@ Bunların her ikisi de aşağıda açıklanmıştır.
 
 
 1. İsteğe bağlı olarak, güvenlik uyarıları için e-posta bildirimini yapılandırın. 
-    Güvenlik Merkezi uyarıları oluşturulduğunda, bir e-posta bildirimi almak için alıcıların listesini ayarlayabilirsiniz. E-posta, Azure Güvenlik Merkezi 'ndeki tüm ilgili ayrıntıların bulunduğu uyarıya doğrudan bir bağlantı içerir. Daha fazla bilgi için bkz. [güvenlik uyarıları için e-posta bildirimleri ayarlama](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details).
+    Güvenlik Merkezi uyarıları oluşturulduğunda, bir e-posta bildirimi almak için alıcıların listesini ayarlayabilirsiniz. E-posta, Azure Güvenlik Merkezi 'ndeki tüm ilgili ayrıntıların bulunduğu uyarıya doğrudan bir bağlantı içerir. Daha fazla bilgi için bkz. [güvenlik uyarıları için e-posta bildirimleri ayarlama](security-center-provide-security-contact-details.md).
 
 
 
@@ -121,7 +121,7 @@ Azure Defender uyarıları, güvenlik merkezi 'nin Uyarılar sayfasında, kayna�
     * Daha fazla araştırmalar için SQL Server denetim özelliğini etkinleştirin. Azure Sentinel kullanıcısı kullanıyorsanız, Windows Güvenlik günlüğü etkinliklerinden SQL denetim günlüklerini Sentinel 'e yükleyebilir ve zengin araştırma deneyiminden yararlanabilirsiniz. [SQL Server denetimi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15).
     * Güvenlik duruşunuzu geliştirmek için, her uyarıda belirtilen ana makine için Güvenlik Merkezi 'nin önerilerini kullanın. Bu, gelecekteki saldırılardan riskleri azaltır. 
 
-    [Uyarıları yönetme ve uyarıları yanıtlama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts).
+    [Uyarıları yönetme ve uyarıları yanıtlama hakkında daha fazla bilgi edinin](security-center-managing-and-responding-alerts.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

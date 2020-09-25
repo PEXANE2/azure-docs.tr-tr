@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 741e7a13513d571fbaabd17016b2282a860271cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263287"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256594"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform ve OpenID Connect Protokolü
 
@@ -37,9 +37,9 @@ En temel oturum açma akışı, sonraki diyagramda gösterilen adımlara sahipti
 
 OpenID Connect bir uygulamanın oturum açması için gereken bilgilerin çoğunu içeren bir meta veri belgesi [(RFC)](https://openid.net/specs/openid-connect-discovery-1_0.html) tanımlar. Bu, kullanılacak URL 'Ler ve hizmetin ortak imzalama anahtarlarının konumu gibi bilgileri içerir. Bu belgeyi, yetkilendirme URL 'sine bulma belge yolunu ekleyerek bulabilirsiniz:
 
-Keşif belgesi yolu:`/.well-known/openid-configuration`
+Keşif belgesi yolu: `/.well-known/openid-configuration`
 
-İniz`https://login.microsoftonline.com/{tenant}/v2.0`
+İniz `https://login.microsoftonline.com/{tenant}/v2.0`
 
 `{tenant}`Dört değerden birini alabilir:
 
@@ -172,7 +172,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Aşağıdaki tabloda hata yanıtının parametresinde döndürülebilecek hata kodları açıklanmaktadır `error` :
 
-| Hata kodu | Açıklama | İstemci eylemi |
+| Hata kodu | Description | İstemci eylemi |
 | --- | --- | --- |
 | `invalid_request` | Eksik, gerekli bir parametre gibi protokol hatası. |İsteği onarın ve yeniden gönderin. Bu, genellikle ilk sınama sırasında yakalanan bir geliştirme hatasıdır. |
 | `unauthorized_client` | İstemci uygulaması bir yetkilendirme kodu isteğinde bulunamıyor. |Bu durum genellikle istemci uygulaması Azure AD 'de kayıtlı olmadığında veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama kullanıcıya uygulamayı yüklemek ve Azure AD 'ye eklemek için yönergeler isteyebilir. |
@@ -249,7 +249,7 @@ Yanıt parametreleri, bunları elde etmek için kullanılan akıştan bağımsı
 
 | Parametre | Açıklama |
 | --- | --- |
-| `token` | UserInfo uç noktasını çağırmak için kullanılacak belirteç.|
+| `access_token` | UserInfo uç noktasını çağırmak için kullanılacak belirteç.|
 | `token_type` | Her zaman "taşıyıcı" |
 | `expires_in`| Erişim belirtecinin süresi dolana kadar geçen süre (saniye cinsinden). |
 | `scope` | Erişim belirtecinde verilen izinler.  UserInfo uç noktasının MS Graph üzerinde barındırıldığından, daha önce uygulamaya verilmiş olmaları durumunda burada listelenen ek grafik kapsamları (ör. User. Read) olabileceğini unutmayın.  Bunun nedeni, belirli bir kaynağa yönelik belirtecin her zaman istemciye verilen her izni içermesinden kaynaklanır.  |
@@ -292,7 +292,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Parametre | Koşul | Açıklama |
+| Parametre | Koşul | Description |
 | ----------------------- | ------------------------------- | ------------ |
 | `post_logout_redirect_uri` | Önerilen | Başarıyla oturum kapatıldıktan sonra kullanıcının yeniden yönlendirildiği URL. Parametresi dahil edilmemişse, kullanıcıya Microsoft Identity platform uç noktası tarafından oluşturulan genel bir ileti gösterilir. Bu URL, uygulama kayıt portalı 'nda uygulamanız için kayıtlı olan yeniden yönlendirme URI 'lerinden biriyle aynı olmalıdır. |
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/08/2020
+ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ad5c2ad76f9ab98a6ad284a0bb50f3a611dc9a00
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8e065651a5527c0ab425614197ce128325454942
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257682"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
 
@@ -26,7 +26,7 @@ Web API 'Lerini çağıran Daemon uygulamanız için kodu yapılandırmayı öğ
 
 Bu Microsoft kitaplıkları, Daemon uygulamalarını destekler:
 
-  MSAL kitaplığı | Açıklama
+  MSAL kitaplığı | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları, Daemon uygulamalarının oluşturulması için desteklenir. (UWP, Xamarin. iOS ve Xamarin. Android desteklenmez çünkü bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 'da Daemon uygulamaları için destek.
@@ -51,16 +51,13 @@ MSAL kitaplıklarında, istemci kimlik bilgileri (gizli veya sertifika) gizli is
 
 Yapılandırma dosyası şunları tanımlar:
 
-- Yetkili veya bulut örneği ve kiracı KIMLIĞI.
+- Birlikte *yetkiyi*oluşturan bulut örneği ve Kiracı kimliği.
 - Uygulama kaydından aldığınız istemci KIMLIĞI.
 - Bir istemci parolası ya da bir sertifika.
 
-> [!NOTE]
-> Makalenin geri kalanında bulunan .NET kod parçacıkları, [Active-Directory-dotnetcore-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) [örneğinden oluşur](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs) .
-
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[.NET Core konsol Daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) örneğinden [appsettings.js](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) .
+İşte [*appsettings.jsdosya üzerinde*](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) yapılandırma tanımlama örneği. Bu örnek, GitHub 'daki [.NET Core konsol Daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) kod örneğinden alınmıştır.
 
 ```json
 {
@@ -124,9 +121,9 @@ Uygulama kodunuzda MSAL paketine başvurun.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Uygulamanıza [Microsoft. ıdentityclient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet paketini ekleyin.
+Uygulamanıza [Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet paketini ekleyin ve ardından `using` kodunuza başvuracak bir yönerge ekleyin.
+
 MSAL.NET ' de, gizli istemci uygulaması arabirim tarafından temsil edilir `IConfidentialClientApplication` .
-Kaynak kodundaki MSAL.NET ad alanını kullanın.
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -167,6 +164,23 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
            .Build();
+```
+
+, `Authority` Bulut örneği ve KIRACı kimliği için bir birleştirme, örneğin `https://login.microsoftonline.com/contoso.onmicrosoft.com` veya `https://login.microsoftonline.com/eb1ed152-0000-0000-0000-32401f3f9abd` . [Yapılandırma dosyası](#configuration-file) bölümünde gösterilen dosyadaki *appsettings.js* , bunlar `Instance` sırasıyla ve değerleriyle temsil edilir `Tenant` .
+
+Kod örneğinde, önceki kod parçacığı öğesinden alınmıştır, `Authority`  [authenticationconfig](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/ffc4a9f5d9bdba5303e98a1af34232b434075ac7/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs#L61-L70) sınıfındaki bir özelliktir ve şu şekilde tanımlanır:
+
+```csharp
+/// <summary>
+/// URL of the authority
+/// </summary>
+public string Authority
+{
+    get
+    {
+        return String.Format(CultureInfo.InvariantCulture, Instance, Tenant);
+    }
+}
 ```
 
 # <a name="python"></a>[Python](#tab/python)

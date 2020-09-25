@@ -2,19 +2,19 @@
 title: Öğretici-Azure 'da vSphere kümesi dağıtma
 description: Azure VMWare çözümünü kullanarak Azure 'da bir vSphere kümesi dağıtmayı öğrenin
 ms.topic: tutorial
-ms.date: 09/07/2020
-ms.openlocfilehash: 2aa9d64dfa143e77b0edcc0c32a853645803ef67
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/21/2020
+ms.openlocfilehash: 47ad5ca5e9d6b116ea48e1120b5ad3defaec7509
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254659"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Öğretici: Azure 'da Azure VMware çözümü özel bulutu dağıtma
 
 Azure VMware çözümü, Azure 'da bir vSphere kümesi dağıtmanıza olanak tanır. En düşük ilk dağıtım üç ana bilgisayar. Küme başına en fazla 16 ana bilgisayar için, ek konaklar tek seferde eklenebilir. 
 
-Azure VMware çözümü, başlatma sırasında özel bulutunuzu şirket içi vCenter ile yönetmenize izin vermediğinden, yerel bir vCenter örneğine ek yapılandırma ve bağlantı, sanal ağ ve daha fazlası gereklidir. Bu yordamlar ve ilgili Önkoşullar Bu öğreticide ele alınmıştır.
+Azure VMware çözümü, başlatma sırasında özel bulutunuzu şirket içi vCenter 'ünüzle yönetmenize izin vermediğinden ek yapılandırma gerekir. Bu yordamlar ve ilgili Önkoşullar Bu öğreticide ele alınmıştır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -41,13 +41,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-avs-private-cloud-azure-portal-steps.md)]
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
-Azure VMware çözümü özel bulutu oluşturmak için Azure portal yerine Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz. Ortak Azure Araçları önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış olan ücretsiz etkileşimli bir kabuktur. 
+Azure VMware çözümü özel bulutu oluşturmak için Azure portal yerine Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz.  Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
 
 #### <a name="open-azure-cloud-shell"></a>Azure Cloud Shell’i açma
 
-Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve **ENTER** tuşuna basarak çalıştırın.
+Bir kod bloğunun sağ üst köşesinden **deneyin** öğesini seçin. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve **ENTER** tuşuna basarak çalıştırın.
 
 #### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -60,7 +60,7 @@ az group create --name myResourceGroup --location eastus
 
 #### <a name="create-a-private-cloud"></a>Özel bulut oluşturma
 
-Bir kaynak grubu adı, özel bulut için bir ad, bir konum, küme boyutu belirtin.
+Kaynak grubu ve özel bulut, bir konum ve kümenin boyutu için bir ad sağlayın.
 
 | Özellik  | Açıklama  |
 | --------- | ------------ |
@@ -95,6 +95,10 @@ Artık ihtiyacınız olmayan bir Azure VMware çözümü özel bulutunuz varsa, 
  
 3. Özel bulutun adını girip **Evet**' i seçin. Birkaç saat içinde silme işlemi tamamlanır.  
 
+## <a name="azure-vmware-commands"></a>Azure VMware komutları
+
+Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
@@ -104,7 +108,8 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Özel bulutun dağıtıldığını doğrulayın
 > * Azure VMware çözümünün özel bulutunu silme
 
-Özel bulut kümeleriniz için yerel yönetim ayarlamanın bir parçası olarak özel bulutunuz ile kullanmak üzere bir sanal ağ oluşturmayı öğrenmek için bir sonraki öğreticiye geçin.
+Bir sıçrama kutusu oluşturmayı öğrenmek için bir sonraki öğreticiye geçin. Özel bulutunuzu yerel olarak yönetebilmeniz için ortamınıza bağlanmak üzere bağlantı kutusunu kullanın.
+
 
 > [!div class="nextstepaction"]
-> [Sanal ağ oluşturma](tutorial-configure-networking.md)
+> [Azure VMware çözümüne özel buluta erişme](tutorial-access-private-cloud.md)

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 742d230d6ed1535bada9c35219d2ddf68fd64ae1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6254b78ad19e7034f78f7891d57a3474fee0c602
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977161"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301933"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Kapsayıcı kayıt defterleri için Azure Defender 'a giriş
 
@@ -64,14 +64,11 @@ Görüntü kayıt defterinden çekilir. Daha sonra, bilinen güvenlik açıklar�
 
 Güvenlik Merkezi, tarayıcıdan bulguları filtreler ve sınıflandırır. Bir görüntü sağlıklı olduğunda, güvenlik merkezi bunu bu şekilde işaretler. Güvenlik Merkezi yalnızca çözümleme sorunları olan görüntüler için güvenlik önerileri oluşturur. Güvenlik Merkezi, yalnızca sorun olduğunda bilgilendirerek istenmeyen bilgi uyarıları için potansiyelini azaltır.
 
-### <a name="how-often-does-security-center-scan-my-images"></a>Güvenlik Merkezi görüntülerimi ne sıklıkta taraysın?
-Görüntü taramaları her gönderim veya içeri aktarma üzerinde tetiklenir ve görüntü son 30 gün içinde çekiliyorsa. 
-
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Tarama sonuçlarını REST API aracılığıyla alabilir miyim?
 Evet. Sonuçlar [alt değerlendirmeler REST API 'si](/rest/api/securitycenter/subassessments/list/)altındadır. Ayrıca, tüm kaynaklarınız için kusto benzeri API olan Azure Kaynak Grafiği 'ni (ARG) kullanabilirsiniz: bir sorgu belirli bir taramayı getirebilir.
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Hangi kayıt defteri türleri taranır? Hangi türler faturalandırılır?
-Kullanılabilirlik bölümü, Azure Defender tarafından kapsayıcı kayıt defterleri için desteklenen kapsayıcı kayıt defterlerinin türlerini listeler. 
+Azure Defender tarafından kapsayıcı kayıt defterleri için desteklenen kapsayıcı kayıt defterleri türlerinin listesi için bkz. [kullanılabilirlik](defender-for-container-registries-usage.md#availability).
 
 Desteklenmeyen kayıt defterlerini Azure aboneliğinize bağladığınızda bunlar taranmaz ve bunlar için faturalandırılmaz.
 

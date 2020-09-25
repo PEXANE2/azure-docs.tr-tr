@@ -6,22 +6,22 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef8862ebbcdd1ee79178af56b7c6cc81c7a68a43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269293"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps kapsamları kullanarak Grup durumuna göre eylemleri çalıştırma
 
 Eylemleri yalnızca başka bir eylem grubu başarılı veya başarısız olduktan sonra çalıştırmak için, bu eylemleri bir *kapsam*içinde gruplandırın. Bu yapı, eylemleri mantıksal grup olarak düzenlemek, grubun durumunu değerlendirmek ve kapsamın durumunu temel alan eylemler gerçekleştirmek istediğinizde yararlıdır. Bir kapsamdaki tüm eylemler çalışmayı bitirdikten sonra, kapsam de kendi durumunu alır. Örneğin, [özel durum ve hata işlemeyi](../logic-apps/logic-apps-exception-handling.md#scopes)uygulamak istediğinizde kapsamları kullanabilirsiniz. 
 
-Bir kapsamın durumunu denetlemek için, bir Logic Apps 'in çalışma durumunu ("başarılı", "başarısız", "Iptal" vb.) belirlemede kullandığınız ölçütü kullanabilirsiniz. Varsayılan olarak, tüm kapsamın eylemleri başarılı olduğunda, kapsamın durumu "başarılı" olarak işaretlenir. Ancak kapsamdaki herhangi bir eylem başarısız olduğunda veya iptal edildiğinde, kapsamın durumu "başarısız" olarak işaretlenir. Kapsamlar için sınırlar [ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md)konusuna bakın. 
+Bir kapsamın durumunu denetlemek için, bir Logic Apps 'in çalışma durumunu ("başarılı", "başarısız", "Iptal edildi" vb.) belirlemede kullandığınız ölçütü kullanabilirsiniz. Varsayılan olarak, tüm kapsamın eylemleri başarılı olduğunda, kapsamın durumu "başarılı" olarak işaretlenir. Ancak kapsamdaki herhangi bir eylem başarısız olduğunda veya iptal edildiğinde, kapsamın durumu "başarısız" olarak işaretlenir. Kapsamlar için sınırlar [ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md)konusuna bakın. 
 
 Örneğin, aşağıda belirli eylemleri çalıştırmak için bir kapsam ve kapsamın durumunu denetlemek için bir koşul kullanan üst düzey bir mantıksal uygulama verilmiştir. Kapsamdaki herhangi bir eylem başarısız olursa veya beklenmedik şekilde sona bırakılırsa, kapsam sırasıyla "başarısız" veya "durduruldu" olarak işaretlenir ve mantıksal uygulama "kapsam başarısız oldu" iletisi gönderir. Tüm kapsamlı eylemler başarılı olursa, mantıksal uygulama "kapsam başarılı oldu" iletisi gönderir.
 
-!["Zamanlama-yinelenme" tetikleyicisi ayarlama](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![Diyagram mantıksal uygulama kapsamı akışını "scope failed" ve "scope Succeeded" örnekleri ile gösterir.](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -77,12 +77,12 @@ Mantıksal uygulamanızı dilediğiniz zaman kaydedebilirsiniz, bu nedenle işin
       | ------- | ----- | ----------- |
       | **Güzergah noktası 1** | <*başından*> | Yol başlangıcının kaynağını girin. | 
       | **Güzergah noktası 2** | <*erer*> | Yolun hedefini girin. | 
-      | **Önleme** | Hiçbiri | Yollarınızın önüne geçmek için, otoyollar, Tolls gibi öğeleri girin. Olası değerler için bkz. [Rota hesaplama](/bingmaps/rest-services/routes/calculate-a-route). | 
+      | **Önleme** | Yok | Yollarınızın önüne geçmek için, otoyollar, Tolls gibi öğeleri girin. Olası değerler için bkz. [Rota hesaplama](/bingmaps/rest-services/routes/calculate-a-route). | 
       | **İyileştirme** | timeWithTraffic | Rotayı iyileştirmek için bir parametre seçin (uzaklık, geçerli trafik bilgileriyle zaman vb.). Bu örnek şu değeri kullanır: "timeWithTraffic" | 
       | **Mesafe birimi** | <*tercih edin*> | Rotayı hesaplamak için mesafe birimini girin. Bu örnek şu değeri kullanır: "mil" | 
       | **Seyahat modu** | Sürüş | Yönlendirmenize ait seyahat modunu girin. Bu örnekte bu değer "Itici" kullanılmaktadır | 
-      | **Toplu Ulaşım Tarih-Saati** | Hiçbiri | Yalnızca aktarım modu için geçerlidir. | 
-      | **Transit Tarih-tür türü** | Hiçbiri | Yalnızca aktarım modu için geçerlidir. | 
+      | **Toplu Ulaşım Tarih-Saati** | Yok | Yalnızca aktarım modu için geçerlidir. | 
+      | **Transit Tarih-tür türü** | Yok | Yalnızca aktarım modu için geçerlidir. | 
       ||||  
 
 1. Geçerli seyahat zamanının trafik ile belirtilen bir süreyi aşıp aşmadığını denetleyen [bir koşul ekleyin](../logic-apps/logic-apps-control-flow-conditional-statement.md) . 
@@ -143,7 +143,7 @@ Mantıksal uygulamanızı dilediğiniz zaman kaydedebilirsiniz, bu nedenle işin
    1. İşiniz bittiğinde **Tamam**’ı seçin.
 
    <!-- markdownlint-disable MD038 -->
-   1. İfade çözümlendikten sonra, bu metni baştaki bir boşluk ile ekleyin:``` minutes```
+   1. İfade çözümlendikten sonra, bu metni baştaki bir boşluk ile ekleyin: ``` minutes```
   
        **Body** alanınız Şu örneğe benzer şekilde görünür:
 
@@ -192,7 +192,7 @@ Ardından, belirli eylemleri gruplandırabilmeniz ve durumlarını değerlendire
    
       `result('Scope')[0]['status']`
 
-      ![Kapsamın durumunu denetleyen bir ifade ekleyin](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![Sonuç ifadesi vurgulanmış olarak "ifade Ekle" penceresini gösteren ekran görüntüsü.](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. Her iki satır için işleç olarak **eşittir** ' i seçin. 
    

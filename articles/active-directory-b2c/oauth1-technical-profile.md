@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204090"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259450"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir OAuth1 teknik profili tanımlama
 
@@ -70,13 +70,13 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| client_id | Evet | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
-| Adı | Hayır | Kimlik sağlayıcısının adı. |
-| request_token_endpoint | Evet | RFC 5849 başına istek belirteci uç noktasının URL 'SI. |
-| authorization_endpoint | Evet | RFC 5849 başına yetkilendirme uç noktasının URL 'SI. |
-| access_token_endpoint | Evet | RFC 5849 başına belirteç uç noktasının URL 'SI. |
-| ClaimsEndpoint | Hayır | Kullanıcı bilgisi uç noktasının URL 'SI. |
-| ClaimsResponseFormat | Hayır | Talep yanıtı biçimi.|
+| client_id | Yes | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
+| Adı | No | Kimlik sağlayıcısının adı. |
+| request_token_endpoint | Yes | RFC 5849 başına istek belirteci uç noktasının URL 'SI. |
+| authorization_endpoint | Yes | RFC 5849 başına yetkilendirme uç noktasının URL 'SI. |
+| access_token_endpoint | Yes | RFC 5849 başına belirteç uç noktasının URL 'SI. |
+| ClaimsEndpoint | No | Kullanıcı bilgisi uç noktasının URL 'SI. |
+| ClaimsResponseFormat | No | Talep yanıtı biçimi.|
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
@@ -84,27 +84,12 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| client_secret | Evet | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı.   |
+| client_secret | Yes | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı.   |
 
 ## <a name="redirect-uri"></a>Yeniden Yönlendirme URI'si
 
-Kimlik sağlayıcınızın yeniden yönlendirme URL 'sini yapılandırdığınızda, girin `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` . **Kiracınızı** kiracı adınızla (örneğin, contosob2c.onmicrosoft.com) ve **PolicyId** ile ilkenizin (örneğin, b2c_1a_policy) ile değiştirdiğinizden emin olun. Yeniden yönlendirme URI 'sinin tamamen küçük harfle olması gerekir. Kimlik sağlayıcısı oturum açma bilgilerini kullanan tüm ilkeler için yeniden yönlendirme URL 'SI ekleyin.
-
-**Login.microsoftonline.com** yerine **b2clogin.com** etki alanını kullanıyorsanız Login.microsoftonline.com yerine b2clogin.com kullandığınızdan emin olun.
+Kimlik sağlayıcınızın yeniden yönlendirme URI 'sini yapılandırdığınızda, girin `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/{policy-id}/oauth1/authresp` . `{tenant-name}`, Kiracınızın adıyla (örneğin, contosob2c) ve `{policy-id}` ilkenizin tanımlayıcısıyla (örneğin, b2c_1a_policy) değiştirdiğinizden emin olun. Yeniden yönlendirme URI 'sinin tamamen küçük harfle olması gerekir. Kimlik sağlayıcısı oturum açma bilgilerini kullanan tüm ilkeler için yeniden yönlendirme URL 'SI ekleyin.
 
 Örnekler:
 
 - [Özel ilkeler kullanarak Twitter 'ı OAuth1 Identity sağlayıcısı olarak ekleme](identity-provider-twitter-custom.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

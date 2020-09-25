@@ -2,13 +2,13 @@
 title: Azure Event Grid olaylar için olay işleyicisi olarak Azure işlevi
 description: Azure işlevlerini Event Grid olayları için olay işleyicileri olarak nasıl kullanabileceğinizi açıklar.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 8e48949bb5fecdf370fdf23146209ad757ffa062
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/18/2020
+ms.openlocfilehash: 87aeb78729dcc7bec9f193fab389e5c0952e63d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105770"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270345"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Event Grid olaylar için olay işleyicisi olarak Azure işlevi
 
@@ -39,14 +39,40 @@ Daha fazla bilgi için bkz. işlevlerde Event Grid tetikleyicisini kullanmaya ge
             "properties": 
             {
                 "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Web/sites/<FUNCTION APP NAME>/functions/<FUNCTION NAME>",
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64
+                "maxEventsPerBatch": 10,
+                "preferredBatchSizeInKilobytes": 6400
             }
         },
         "eventDeliverySchema": "EventGridSchema"
     }
 }
 ```
+
+## <a name="enable-batching"></a>Toplu işlemeyi etkinleştir
+Daha yüksek bir verimlilik için abonelikte toplu işlemeyi etkinleştirin. Azure portal kullanıyorsanız, toplu iş başına en fazla olay ve cihazının saniyede bayt olarak tercih edilen toplu iş boyutunu bir abonelik oluşturma sırasında veya oluşturma işleminden sonra ayarlayabilirsiniz. 
+
+Batch ayarlarını Azure portal, PowerShell, CLı veya Kaynak Yöneticisi şablonunu kullanarak yapılandırabilirsiniz. 
+
+### <a name="azure-portal"></a>Azure portal
+Kullanıcı arabiriminde abonelik oluşturma sırasında, **olay aboneliği oluştur** sayfasında, **Gelişmiş Özellikler** sekmesine geçin ve **toplu iş başına en fazla olay** ve **tercih edilen toplu iş boyutu için değerleri kilobayt cinsinden**ayarlayın. 
+    
+:::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Abonelik oluşturma sırasında toplu işlemeyi etkinleştir":::
+
+Bu değerleri, **Event Grid konu** sayfasının **Özellikler** sekmesinde varolan bir abonelik için güncelleştirebilirsiniz. 
+
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Oluşturulduktan sonra toplu işlemeyi etkinleştir":::
+
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
+Azure Resource Manager şablonunda **Maxeventsperbatch** ve **Preferredbatchsizeınkilobayt** ayarlayabilirsiniz. Daha fazla bilgi için bkz. [Microsoft. EventGrid Eventabonelikler şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/eventsubscriptions).
+
+### <a name="azure-cli"></a>Azure CLI’si
+Aşağıdaki parametreleri kullanarak Batch ile ilgili ayarları yapılandırmak için [az eventgrid Event-Subscription Create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create&preserve-view=true) veya [az eventgrid Event-Subscription Update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update&preserve-view=true) komutunu kullanabilirsiniz: `--max-events-per-batch` veya `--preferred-batch-size-in-kilobytes` .
+
+### <a name="azure-powershell"></a>Azure PowerShell
+Aşağıdaki parametreleri kullanarak Batch ile ilgili ayarları yapılandırmak için [New-azeventgridsubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) veya [Update-azeventgridsubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/update-azeventgridsubscription) cmdlet 'ini kullanabilirsiniz: `-MaxEventsPerBatch` veya `-PreferredBatchSizeInKiloBytes` .
+
+> [!NOTE]
+> **Başka bir Kiracıdaki** bir Azure işlevine olay sunma desteklenmez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Desteklenen olay işleyicilerinin bir listesi için bkz. [olay işleyicileri](event-handlers.md) makalesi. 

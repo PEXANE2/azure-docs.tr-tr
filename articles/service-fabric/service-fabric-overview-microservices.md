@@ -4,12 +4,12 @@ description: Mikro hizmet yaklaşımına sahip bulut uygulamalarının neden olu
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: b8fbe5096014b116c3d5c5deaa7615874135d001
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4345c919e73e57667fb3b9c90c42224326bc3552
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246029"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300777"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Uygulamaları oluşturmak için neden mikro hizmetler yaklaşımı kullanılmalıdır
 
@@ -139,6 +139,9 @@ Azure Service Fabric, Microsoft, genellikle tek parçalı olarak hizmet sunmaya 
 
 ***Service Fabric amacı, bir hizmet oluşturma ve çalıştırma ve altyapı kaynaklarını verimli bir şekilde kullanma ile ilgili sorunları çözmektir. bu sayede takımlar, mikro hizmetler yaklaşımını kullanarak iş sorunlarını çözebilir.***
 
+Bu kısa videoda Service Fabric ve mikro hizmetler tanıtılır:
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
+
 Service Fabric, mikro hizmetler yaklaşımını kullanan uygulamalar oluşturmanıza yardımcı olur:
 
 * Başarısız hizmetleri dağıtmak, yükseltmek, algılamak ve yeniden başlatmak, hizmetleri bulmak, iletileri yönlendirmek, durumu yönetmek ve sistem durumunu izlemek için sistem hizmetleri sağlayan bir platform.
@@ -163,7 +166,7 @@ Bunu unutmayın, *Bu aşamaların herhangi birini başlatabilir ve durdurabilirs
 
 Bu aşamaların her biri için örneklere bakalım.
 
-**Geçirme**  
+**Geçiş**  
 İki nedenden dolayı birçok şirket, mevcut tek parçalı uygulamaları kapsayıcılara geçirmektedir:
 
 * Mevcut donanımların birleştirilmesi ve kaldırılması nedeniyle ya da daha yüksek yoğunlukta çalışan uygulamalar nedeniyle maliyet indirimi.

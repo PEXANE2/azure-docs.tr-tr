@@ -9,15 +9,19 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 21b571c859ec8ecc66c1c9a222e0648dc7f28f4f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422353"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249425"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>TokenLibrary ile bağlı hizmetler aracılığıyla kimlik bilgilerinizin güvenliğini sağlama
-Dış kaynaklardaki verilere erişmek ortak bir modeldir. Dış veri kaynağı anonim erişime izin veriyorsa, bağlantınızı kimlik bilgileri, gizli anahtar veya bağlantı dizesiyle güvenli hale getirmeniz gerekir.  Azure SYNAPSE Analytics, bağlantı ayrıntılarını bağlı bir hizmette veya Azure Key Vault depolayarak tümleştirme işlemini basitleştirmek için bağlı hizmetler sağlar. Bağlı bir hizmet oluşturduktan sonra Apache Spark, bağlantı bilgilerini kodunuzda uygulamak için bağlantılı hizmete başvurabilir. Daha fazla bilgi için bkz. [bağlı hizmetler](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Dış kaynaklardaki verilere erişmek ortak bir modeldir. Dış veri kaynağı anonim erişime izin veriyorsa, bağlantınızı kimlik bilgileri, gizli anahtar veya bağlantı dizesiyle güvenli hale getirmeniz gerekir.  
+
+Azure SYNAPSE Analytics, bağlantı ayrıntılarını bağlı bir hizmette veya Azure Key Vault depolayarak tümleştirme işlemini basitleştirmek için bağlı hizmetler sağlar. Bağlı bir hizmet oluşturduktan sonra, Apache Spark, bağlantı bilgilerini kodunuzda uygulamak için bağlantılı hizmete başvurabilir. 
+
+Daha fazla bilgi için bkz. [bağlı hizmetler](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 > [!NOTE]
 > Çalışma alanınızdaki Azure Data Lake Storage dosyalara erişmek, kimlik doğrulaması için AAD PASSTHROUGH kullanır, bu nedenle TokenLibrary kullanmanız gerekmez. 
 
@@ -26,7 +30,7 @@ Dış kaynaklardaki verilere erişmek ortak bir modeldir. Dış veri kaynağı a
 * Bağlı hizmet-dış veri kaynağına bağlı bir hizmet oluşturmanız ve belirteç kitaplığından bağlantılı hizmete başvurmanız gerekir. [Bağlı hizmetler](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)hakkında daha fazla bilgi edinin.
 
 
-## <a name="connecting-to-adls-gen2-outside-of-synapse-workspace"></a>SYNAPSE çalışma alanı dışından ADLS 2. bağlanma
+## <a name="connect-to-adls-gen2-outside-of-synapse-workspace"></a>SYNAPSE çalışma alanı dışından ADLS 2. bağlanma
 
 SYNAPSE, Azure Data Lake Storage 2. için tümleşik bir bağlı hizmetler deneyimi sağlar.
 
@@ -52,7 +56,7 @@ df = spark.read.csv("abfss://<CONTAINER>@<ACCOUNT>.dfs.core.windows.net/<DIRECTO
 
 df.show()
 ```
-## <a name="using-the-token-library"></a>Belirteç kitaplığını kullanma
+## <a name="use-the-token-library"></a>Belirteç kitaplığını kullanma
 
 Diğer bağlı hizmetlere bağlanmak için, TokenLibrary 'e doğrudan çağrı yapabilirsiniz.
 

@@ -3,59 +3,18 @@ title: Azure VM 'de SQL Server ve Azure VM iş yükleri SAP HANA için geçici s
 description: Azure VM 'de SQL Server için geçici silmenin ve Azure VM iş yüklerindeki SAP HANA, yedeklemelerin daha güvenli hale gelmesini öğrenin.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 26525ec758b3a27d6e0e1b9754b11041bd1fa0d2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022301"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254304"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM 'de SQL Server ve Azure VM iş yükleri SAP HANA için geçici silme
 
 Azure Backup artık Azure VM 'de SQL Server için geçici silme ve Azure VM iş yükleri SAP HANA. Bu, zaten desteklenen [Azure sanal makinesi geçici silme senaryosuna](soft-delete-virtual-machines.md)ek niteliğindedir.
 
 [Geçici silme](backup-azure-security-feature-cloud.md) , silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olan bir güvenlik özelliğidir. Kötü niyetli bir aktör bir veritabanının yedeğini silse (veya yedekleme verileri yanlışlıkla siliniyorsa), yedekleme verileri 14 ek gün boyunca tutulur. Bu, veri kaybı olmadan bu yedekleme öğesinin kurtarılmasına izin verir. "Geçici silme" durumundaki yedekleme verilerinin 14 günlük ek saklama süresi müşteriye hiçbir ücret vermez.
-
->[!NOTE]
->Bir abonelik için Önizleme etkinleştirildikten sonra, aynı kasadaki sanal makineler için etkin tutulurken yalnızca SQL Server veya SAP HANA DBs için geçici silme devre dışı bırakmak mümkün değildir. Ayrıntılı denetim için ayrı kasa oluşturabilirsiniz.
-
-## <a name="steps-to-enroll-in-preview"></a>Önizlemeye kaydolmak için gereken adımlar
-
-1. Azure hesabınızda oturum açın.
-
-   ```powershell
-   Login-AzureRmAccount
-   ```
-
-2. Önizlemeye kaydetmek istediğiniz aboneliği seçin:
-
-   ```powershell
-   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-   ```
-
-3. Bu aboneliği Önizleme programına Kaydet:
-
-   ```powershell
-   Register-AzureRMProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-4. Aboneliğin önizlemeye kaydolması için 30 dakika bekleyin.
-
-5. Durumu denetlemek için aşağıdaki cmdlet 'leri çalıştırın:
-
-   ```powershell
-   Get-AzureRmProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-6. Abonelik kayıtlı olarak gösterildikten sonra aşağıdaki komutu çalıştırın:
-
-   ```powershell
-   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
->[!NOTE]
->Geçici silme etkin abonelik kapsamında her zaman yeni bir kasa/kasa oluşturulduğunda, yeni oluşturulan kasaların özelliğini etkinleştirmek için aşağıdaki komutun yeniden çalıştırılması gerekir.<BR>
-> `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
 ## <a name="soft-delete-for-sql-server-in-azure-vm-using-azure-portal"></a>Azure portal kullanarak Azure VM 'de SQL Server için geçici silme
 

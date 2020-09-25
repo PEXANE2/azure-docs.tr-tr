@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f550cb4e9069055da6569492b35fc7fe75d70980
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594059"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258068"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>MSAL.NET ile Xamarin iOS kullanma konuları
 
@@ -81,7 +81,7 @@ Daha fazla bilgi için bkz. [iOS yetkilendirmeleri belgeleri](https://developer.
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>İOS uygulamaları arasında belirteç önbelleği paylaşımını etkinleştir
 
-MSAL 2. x ' den başlayarak, belirteç önbelleğini birden çok uygulama arasında kalıcı hale getirmek için bir Anahtarlık erişim grubu belirtebilirsiniz. Bu ayar, belirteç önbelleğini aynı Anahtarlık erişim grubuna sahip çeşitli uygulamalar arasında paylaşmanızı sağlar. [Adal.net](https://aka.ms/adal-net) uygulamaları, msal.net Xamarin. iOS uygulamaları ve [adal. ObjC](https://github.com/AzureAD/azure-activedirectory-library-for-objc) veya [msal. ObjC](https://github.com/AzureAD/microsoft-authentication-library-for-objc)içinde geliştirilen Yerel iOS uygulamaları arasında bir belirteç Cash 'ı paylaşabilirsiniz.
+MSAL 2. x ' den başlayarak, belirteç önbelleğini birden çok uygulama arasında kalıcı hale getirmek için bir Anahtarlık erişim grubu belirtebilirsiniz. Bu ayar, belirteç önbelleğini aynı Anahtarlık erişim grubuna sahip çeşitli uygulamalar arasında paylaşmanızı sağlar. Belirteç önbelleğini [adal.net](https://aka.ms/adal-net) uygulamaları, msal.net Xamarin. iOS uygulamaları ve [adal. ObjC](https://github.com/AzureAD/azure-activedirectory-library-for-objc) veya [msal. ObjC](https://github.com/AzureAD/microsoft-authentication-library-for-objc)içinde geliştirilen Yerel iOS uygulamaları arasında paylaşabilirsiniz.
 
 Belirteç önbelleğini paylaşarak, aynı Anahtarlık erişim grubunu kullanan tüm uygulamalar arasında çoklu oturum açma 'ya (SSO) izin verebilirsiniz.
 

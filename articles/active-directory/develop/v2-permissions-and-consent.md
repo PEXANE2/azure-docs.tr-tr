@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5d1aa4ff87b272911e4e39076f337ea249b962d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256611"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft kimlik platformu uç noktasında izinler ve onay
 
@@ -48,15 +48,15 @@ OAuth 2,0 ' de, bu tür izinler *kapsam*olarak adlandırılır. Bunlar da genell
 * Kullanarak bir kullanıcının takvimine yazma `Calendars.ReadWrite`
 * İle Kullanıcı olarak posta gönder `Mail.Send`
 
-Bu izinleri en yaygın olarak, Microsoft Identity platform yetkilendirme uç noktası isteklerindeki kapsamları belirterek ister. Ancak, belirli yüksek ayrıcalık izinleri yalnızca yönetici onayı üzerinden verilebilir ve [Yönetici onay uç noktası](v2-permissions-and-consent.md#admin-restricted-permissions)kullanılarak istenir/verilir. Daha fazla bilgi edinmek için okumaya devam edin.
+Bu izinleri en yaygın olarak, Microsoft Identity platform yetkilendirme uç noktası isteklerindeki kapsamları belirterek ister. Ancak, belirli yüksek ayrıcalık izinleri yalnızca yönetici onayı üzerinden verilebilir ve [Yönetici onay uç noktası](#admin-restricted-permissions)kullanılarak istenir/verilir. Daha fazla bilgi edinmek için okumaya devam edin.
 
 ## <a name="permission-types"></a>İzin türleri
 
 Microsoft Identity platform iki tür izni destekler: **temsilci izinleri** ve **Uygulama izinleri**.
 
-* **Temsilci izinleri** , oturum açmış bir Kullanıcı bulunan uygulamalar tarafından kullanılır. Bu uygulamalar için, Kullanıcı veya yönetici, uygulamanın istediği izinlere sahiptir ve uygulamanın, hedef kaynağa çağrı yaparken oturum açmış kullanıcı olarak görev yapması için izin verilir. Bazı temsilci izinleri yönetici olmayan kullanıcılar tarafından yapılabilir, ancak daha yüksek ayrıcalıklı izinler [yönetici onayı](v2-permissions-and-consent.md#admin-restricted-permissions)gerektirir. Hangi Yönetici rollerinin temsilci izinleri onaylamasına izin verebileceğini öğrenmek için bkz. [Azure AD 'de yönetici rolü izinleri](../users-groups-roles/directory-assign-admin-roles.md).
+* **Temsilci izinleri** , oturum açmış bir Kullanıcı bulunan uygulamalar tarafından kullanılır. Bu uygulamalar için, Kullanıcı veya yönetici, uygulamanın istediği izinlere sahiptir ve uygulamanın, hedef kaynağa çağrı yaparken oturum açmış kullanıcı olarak görev yapması için izin verilir. Bazı temsilci izinleri yönetici olmayan kullanıcılar tarafından yapılabilir, ancak daha yüksek ayrıcalıklı izinler [yönetici onayı](#admin-restricted-permissions)gerektirir. Hangi Yönetici rollerinin temsilci izinleri onaylamasına izin verebileceğini öğrenmek için bkz. [Azure AD 'de yönetici rolü izinleri](../users-groups-roles/directory-assign-admin-roles.md).
 
-* **Uygulama izinleri** , oturum açmış bir kullanıcı olmadan çalışan uygulamalar tarafından kullanılır; Örneğin, arka plan hizmetleri veya Daemon 'ları olarak çalışan uygulamalar.  Uygulama izinleri yalnızca [bir yönetici tarafından](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)alınabilir.
+* **Uygulama izinleri** , oturum açmış bir kullanıcı olmadan çalışan uygulamalar tarafından kullanılır; Örneğin, arka plan hizmetleri veya Daemon 'ları olarak çalışan uygulamalar.  Uygulama izinleri yalnızca [bir yönetici tarafından](#requesting-consent-for-an-entire-tenant)alınabilir.
 
 _Etkili izinler_ , uygulamanızın hedef kaynağa istek yaparken sahip olacağı izinlerdir. Hedef kaynağa çağrı yaparken uygulamanızın izin verdiği ve geçerli izinlerinin kullanıldığı temsilci ve uygulama izinleri arasındaki farkı anlamak önemlidir.
 
@@ -302,6 +302,16 @@ response_type=token            //code or a hybrid flow is also possible here
 
 Bu, tüm kayıtlı izinler için bir onay ekranı üretir (yukarıdaki izin ve bu açıklamalara göre geçerliyse `/.default` ), erişim belirteci yerine bir id_token döndürür.  Bu davranış, ADAL 'den MSAL 'e taşınan bazı eski istemciler için ve Microsoft Identity platform uç noktasını hedefleyen yeni istemciler **tarafından kullanılmamalıdır.**
 
+### <a name="client-credentials-grant-flow-and-default"></a>İstemci kimlik bilgileri verme akışı ve/.exe varsayılan
+
+Uygulamasının başka bir kullanımı `./default` , bir Web API 'sini çağırmak için [istemci kimlik bilgileri](v2-oauth2-client-creds-grant-flow.md) verme akışını kullanan bir Daemon uygulaması gibi etkileşimli olmayan bir uygulamada uygulama izinleri (veya *rolleri*) isteğinde bulunmasından oluşur.
+
+Bir Web API 'SI için uygulama izinleri (roller) oluşturmak için, bkz. [nasıl yapılır: uygulamanıza uygulama rolleri ekleme](howto-add-app-roles-in-azure-ad-apps.md).
+
+İstemci **uygulamanızdaki istemci** kimlik bilgileri istekleri `scope={resource}/.default` , `{resource}` uygulamanızın ÇAĞıRMAK için gereken Web API 'sidir. Bireysel uygulama izinleri (roller) ile istemci kimlik bilgileri isteği **verme desteklenmez.** Bu Web API 'SI için verilen tüm uygulama izinleri (roller), döndürülen erişim belirtecine dahil edilir.
+
+Uygulama için yönetici onayı verme dahil olmak üzere, tanımladığınız uygulama izinlerine erişim vermek için bkz. [hızlı başlangıç: bir Web API 'sine erişmek için istemci uygulaması yapılandırma](quickstart-configure-app-access-web-apis.md).
+
 ### <a name="trailing-slash-and-default"></a>Sondaki eğik çizgi ve//varsayılan
 
 Bazı kaynak URI 'Lerinin sonunda eğik çizgi vardır ( `https://contoso.com/` aksine `https://contoso.com` ), bu, belirteç doğrulamasında sorun oluşmasına neden olabilir.  Bu `https://management.azure.com/` , öncelikle kaynak URI 'sinde bir eğik çizgiye sahip olan ve belirteç istendiğinde mevcut olmasını gerektiren Azure Kaynak Yönetimi () için bir belirteç istenirken meydana gelebilir.  Bu nedenle, ve kullanarak bir belirteç talep ettiğinizde `https://management.azure.com/` `/.default` , `https://management.azure.com//.default` çift eğik çizgi yazmanız gerekir!
@@ -311,3 +321,8 @@ Genel olarak, belirtecin verildiğini ve belirtecin kabul etmesi gereken API tar
 ## <a name="troubleshooting-permissions-and-consent"></a>İzinler ve onay sorunlarını giderme
 
 Siz veya uygulamanızın kullanıcıları onay işlemi sırasında beklenmeyen hatalar görüyor ise, sorun giderme adımları için şu makaleye bakın: [bir uygulamaya onay uygularken beklenmeyen hata](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [KIMLIK belirteçleri | Microsoft Identity platformu](id-tokens.md)
+* [Erişim belirteçleri | Microsoft Identity platformu](access-tokens.md)

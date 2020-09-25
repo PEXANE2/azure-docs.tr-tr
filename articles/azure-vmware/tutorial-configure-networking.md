@@ -2,17 +2,17 @@
 title: Öğretici-Azure 'da VMware özel bulutunuz için ağı yapılandırma
 description: Özel bulutunuzu Azure 'da dağıtmak için gereken ağı oluşturmayı ve yapılandırmayı öğrenin
 ms.topic: tutorial
-ms.date: 07/22/2020
-ms.openlocfilehash: ff071e0d6eaf1552634433a76e4eade530c603b6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: 503043391b717753ab054197508483827565ef39
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750493"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254796"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Öğretici: Azure 'da VMware özel bulutunuz için ağı yapılandırma
 
-Azure VMware çözümü özel bulutu, bir Azure sanal ağı gerektirir. Azure VMware çözümü, önizleme sırasında şirket içi vCenter ' ı desteklemediğinden, şirket içi ortamınıza tümleştirme için ek adımlar gereklidir. ExpressRoute bağlantı hattı ve bir sanal ağ geçidi kurmak da gereklidir ve bu öğreticide ele alınmıştır.
+Azure VMware çözümü özel bulutu, bir Azure sanal ağı gerektirir. Azure VMware çözümü şirket içi vCenter 'ı desteklemediğinden, şirket içi ortamınıza tümleştirme için ek adımlar gereklidir. ExpressRoute bağlantı hattını ve bir sanal ağ geçidini ayarlama de gereklidir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -22,12 +22,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * ExpressRoute devrenizi ağ geçidine bağlama
 > * VCenter ve NSX Manager için URL 'Leri bulma
 
-## <a name="prerequisites"></a>Ön koşullar 
-Bir sanal ağ oluşturabilmeniz için önce bir [Azure VMware çözümü özel bulutu](tutorial-create-private-cloud.md)oluşturmuş olduğunuzdan emin olun. 
+## <a name="prerequisites"></a>Önkoşullar 
+[Azure VMware çözümü özel bulutu](tutorial-create-private-cloud.md)oluşturduğunuz bir sanal ağ. 
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. [Özel bulut oluşturma öğreticisinde](tutorial-create-private-cloud.md) oluşturduğunuz kaynak grubuna gidin ve yeni bir kaynak tanımlamak Için **+ Ekle** ' yi seçin. 
 
@@ -46,7 +46,7 @@ Bir sanal ağ oluşturabilmeniz için önce bir [Azure VMware çözümü özel b
 
 1. **+ Alt ağ**Ekle ' yi seçin ve **alt ağ ekle** sayfasında, alt ağa bir ad ve uygun adres aralığı verin. Bittiğinde **Ekle**’yi seçin.
 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
    :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="Gözden geçir + oluştur ' u seçin." border="true":::
 
@@ -66,9 +66,9 @@ Artık bir sanal ağ oluşturduğunuza göre, bir sanal ağ geçidi oluşturacak
 
    | Alan | Değer |
    | --- | --- |
-   | **Abonelik** | Bu değer, kaynak grubunun ait olduğu abonelikle zaten doldurulmuştur. |
-   | **Kaynak grubu** | Bu değer, geçerli kaynak grubu için zaten doldurulmuştur. Bu, önceki bir testte oluşturduğunuz kaynak grubu olmalıdır. |
-   | **Name** | Sanal ağ geçidi için benzersiz bir ad girin. |
+   | **Abonelik** | Kaynak grubunun ait olduğu abonelikle önceden doldurulmuş değer. |
+   | **Kaynak grubu** | Geçerli kaynak grubu için önceden doldurulmuş değer. Değer, önceki bir testte oluşturduğunuz kaynak grubu olmalıdır. |
+   | **Ad** | Sanal ağ geçidi için benzersiz bir ad girin. |
    | **Bölge** | Sanal ağ geçidinin coğrafi konumunu seçin. |
    | **Ağ geçidi türü** | **ExpressRoute**' ı seçin. |
    | **SKU** | Varsayılan değeri bırakın: **Standart**. |
@@ -76,7 +76,7 @@ Artık bir sanal ağ oluşturduğunuza göre, bir sanal ağ geçidi oluşturacak
    | **Ağ geçidi alt ağ adres aralığı** | Bu değer, sanal ağı seçtiğinizde doldurulur. Varsayılan değeri değiştirmeyin. |
    | **Genel IP adresi** | **Yeni oluştur**’u seçin. |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Sanal ağ geçidi Oluştur sayfasının temel bilgiler sekmesinde, alanlar için değerler girin ve ardından gözden geçir + oluştur ' u seçin." border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Alanlar için değerler sağlayın ve ardından gözden geçir + oluştur ' u seçin." border="true":::
 
 1. Ayrıntıların doğru olduğundan emin olun ve sanal ağ geçidinizin dağıtımını başlatmak için **Oluştur** ' u seçin. 
 1. Dağıtım tamamlandıktan sonra, ExpressRoute bağlantınızı Azure VMware Çözüm özel bulutunuzu içeren sanal ağ geçidine bağlamak için sonraki bölüme geçin.
@@ -85,29 +85,7 @@ Artık bir sanal ağ oluşturduğunuza göre, bir sanal ağ geçidi oluşturacak
 
 Artık bir sanal ağ geçidi dağıttığınıza göre, Azure VMware çözümünüz özel bulutunuz arasında bir bağlantı ekleyeceksiniz.
 
-1. Önceki öğreticide oluşturduğunuz özel buluta gidin ve **Yönet**' ın altındaki **bağlantı** ' yı seçin, **ExpressRoute** sekmesini seçin.
-
-1. Yetkilendirme anahtarını kopyalayın. Bir yetkilendirme anahtarı yoksa, bunu yapmanız ve bir **Yetkilendirme anahtarı iste**seçeneğini belirlemeniz gerekir.
-
-   :::image type="content" source="./media/tutorial-configure-networking/request-auth-key.png" alt-text="Yetkilendirme anahtarını kopyalayın. Bir yetkilendirme anahtarı yoksa, bunu yapmanız ve bir yetkilendirme anahtarı ıste seçeneğini belirlemeniz gerekir." border="true":::
-
-1. Önceki adımda oluşturduğunuz sanal ağ geçidine gidin ve **Ayarlar**altında **Bağlantılar**' ı seçin. **Bağlantılar** sayfasında **+ Ekle**' yi seçin.
-
-1. **Bağlantı ekle** sayfasında, alanlar için değerler sağlayın ve **Tamam**' ı seçin. 
-
-   | Alan | Değer |
-   | --- | --- |
-   | **Ad**  | Bağlantı için bir ad girin.  |
-   | **Bağlantı türü**  | **ExpressRoute**' ı seçin.  |
-   | **Yetkilendirmeyi kullanma**  | Bu kutunun seçili olduğundan emin olun.  |
-   | **Sanal ağ geçidi** | Daha önce oluşturduğunuz sanal ağ geçidi.  |
-   | **Yetkilendirme anahtarı**  | Yetkilendirme anahtarını kopyalayın ve kaynak grubunuzun ExpressRoute sekmesinden yapıştırın. |
-   | **Eş devre URI 'SI**  | ExpressRoute KIMLIĞINI kopyalayın ve kaynak grubunuzun ExpressRoute sekmesinden yapıştırın.  |
-
-   :::image type="content" source="./media/tutorial-configure-networking/add-connection.png" alt-text="Bağlantı Ekle sayfasında, alanlar için değerler sağlayın ve Tamam ' ı seçin." border="true":::
-
-ExpressRoute bağlantı hattı ve sanal ağınız arasındaki bağlantı oluşturulur.
-
+[!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-to-vnet.md)]
 
 
 ## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>VCenter ve NSX Manager için URL 'Leri bulma
@@ -128,7 +106,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * ExpressRoute devrenizi ağ geçidine bağlama
 > * VCenter ve NSX Manager için URL 'Leri bulma
 
-Özel bulutunuzu yerel olarak yönetebilmeniz için ortamınıza bağlanmak üzere kullanılan bir bağlantı kutusu oluşturmayı öğrenmek için sonraki öğreticiye geçin.
+VCenter 'daki VM 'Ler için kullanılan NSX-T ağ kesimlerini oluşturma hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Özel Buluta Erişme](tutorial-access-private-cloud.md)
+> [NSX-T ağ kesimi oluşturma](tutorial-nsx-t-network-segment.md)

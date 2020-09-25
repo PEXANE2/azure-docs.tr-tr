@@ -3,12 +3,12 @@ title: Yönetilen kimlikle kimlik doğrulaması
 description: Kullanıcı tarafından atanan veya sistem tarafından atanan yönetilen bir Azure kimliği kullanarak özel kapsayıcı kayıt defterinizde görüntülere erişim sağlama.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253471"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure Container Registry 'de kimlik doğrulamak için Azure yönetilen kimliği kullanma 
 
@@ -89,7 +89,7 @@ Yükleme sonrasında, Docker 'ın sanal makinede düzgün çalıştığını do�
 sudo docker run -it hello-world
 ```
 
-Çıktı:
+Çıkış:
 
 ```
 Hello from Docker!
@@ -230,6 +230,8 @@ Bir ileti görmeniz gerekir `Login succeeded` . Ardından, `docker` kimlik bilgi
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
+> [!NOTE]
+> Sistem tarafından atanan yönetilen hizmet kimlikleri, ACRs ile etkileşim kurmak için kullanılabilir ve App Service sistem tarafından atanan yönetilen hizmet kimliklerini kullanabilir. Ancak, App Service bir ACR ile konuşmak için MSI kullanamıyor gibi bunları birleştiremezsiniz. Tek yöntem ACR üzerinde yöneticinin etkinleştirilmesi ve yönetici kullanıcı adını/parolasını kullanmaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

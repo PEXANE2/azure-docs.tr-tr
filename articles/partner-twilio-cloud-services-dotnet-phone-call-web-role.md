@@ -1,6 +1,6 @@
 ---
 title: Twilio adresinden telefon araması yapma (.NET) | Microsoft Docs
-description: Azure 'da bir telefon araması yapmayı ve Twilio API hizmetiyle SMS iletisi göndermenizi öğrenin. .NET dilinde yazılan kod örnekleri.
+description: Azure 'da Twilio API hizmeti ile telefon araması yapmayı öğrenin. .NET dilinde yazılan kod örnekleri.
 services: ''
 documentationcenter: .net
 author: mimckitt
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 90e7bafab3fb9658cd9e11d0417f84269adcfa13
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 536a28801193cdbb4204ca1432892abdc7fb297e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268494"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Azure 'da bir Web rolünde Twilio kullanarak telefon araması yapma
 Bu kılavuzda, Azure 'da barındırılan bir Web sayfasından çağrı yapmak için Twilio nasıl kullanılacağı gösterilmektedir. Elde edilen uygulama, aşağıdaki ekran görüntüsünde gösterildiği gibi kullanıcıdan verilen sayı ve iletiyle bir çağrı yapmasını ister.

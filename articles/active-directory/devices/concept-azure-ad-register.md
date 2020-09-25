@@ -1,6 +1,6 @@
 ---
 title: Azure AD kayıtlı cihazlar nelerdir?
-description: Cihaz kimlik yönetimi 'nin ortamınızdaki kaynaklara erişen cihazları yönetmenize nasıl yardımcı olabileceğini öğrenin.
+description: Azure AD kayıtlı cihazların kullanıcılarınıza kendi cihazını getir (KCG) veya mobil cihaz senaryoları için destek sağlama hakkında bilgi edinin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,25 +11,25 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554874"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256448"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD kayıtlı cihazlar
 
 Azure AD kayıtlı cihazların hedefi, kullanıcılarınıza kendi cihazını getir (KCG) veya mobil cihaz senaryoları için destek sağlar. Bu senaryolarda, bir Kullanıcı kişisel bir cihaz kullanarak kuruluşunuzun Azure Active Directory denetimli kaynaklarına erişebilir.
 
-| Azure AD kayıtlı | Açıklama |
+| Azure AD kayıtlı | Description |
 | --- | --- |
 | **Tanım** | Kurumsal hesabın cihazda oturum açması gerekmeden Azure AD 'ye kayıtlı |
 | **Birincil hedef kitle** | Aşağıdaki ölçütlere sahip tüm kullanıcılar için geçerlidir: |
 |   | Kendi cihazını getir (KCG) |
 |   | Mobil cihazlar |
 | **Cihaz sahipliği** | Kullanıcı veya kuruluş |
-| **İşletim Sistemleri** | Windows 10, iOS, Android ve MacOS |
+| **İşletim sistemleri** | Windows 10, iOS, Android ve MacOS |
 | **Sağlanıyor** | Windows 10 – ayarlar |
 |   | iOS/Android – Şirket Portalı veya Microsoft Authenticator uygulaması |
 |   | MacOS – Şirket Portalı |
@@ -61,5 +61,5 @@ Başka bir Kullanıcı, kendi kişisel Android telefonlarından kökü belirtile
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portal kullanarak cihaz kimliklerini yönetme](device-management-azure-portal.md)
-- [Azure AD 'de eski cihazları yönetme](manage-stale-devices.md)
+- [Azure portalını kullanarak cihaz kimliklerini yönetme](device-management-azure-portal.md)
+- [Azure AD’de eski cihazları yönetme](manage-stale-devices.md)

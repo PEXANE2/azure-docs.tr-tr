@@ -3,12 +3,12 @@ title: SQL Server Azure 'a DPM iş yükü olarak yedekleme
 description: Azure Backup hizmetini kullanarak SQL Server veritabanlarını yedeklemeye giriş
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: e7877d9104fe1263368083eaabd99eae3bdc657b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 85cb84ac376abbf0ead13e64c4dff7c8b916aac5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017320"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254593"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server Azure 'a DPM iş yükü olarak yedekleme
 
@@ -29,10 +29,10 @@ SQL Server bir veritabanını Azure 'a yedeklemek ve Azure 'dan kurtarmak için:
 
 * Uzak bir dosya paylaşımında dosyalar içeren bir veritabanına sahipseniz koruma, Hata Kimliği 104 ile başarısız olur. DPM, uzak bir dosya paylaşımındaki SQL Server verilerine yönelik korumayı desteklemez.
 * DPM, uzak SMB paylaşımlarında depolanan veritabanlarını koruyamaz.
-* [Kullanılabilirlik grubu çoğaltmalarının salt okuma olarak yapılandırıldığından](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)emin olun.
+* [Kullanılabilirlik grubu çoğaltmalarının salt okuma olarak yapılandırıldığından](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server)emin olun.
 * **NTAuthority\System adlı** sistem hesabını SQL Server üzerinde sysadmin grubuna açıkça eklemeniz gerekir.
-* Kısmen kapsanan bir veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [Kapsanan veritabanları](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) özelliğinin etkin olduğundan emin olmanız gerekir.
-* Bir dosya akışı veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [dosya akışı veritabanı](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) özelliğinin etkinleştirildiğinden emin olmanız gerekir.
+* Kısmen kapsanan bir veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [Kapsanan veritabanları](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable) özelliğinin etkin olduğundan emin olmanız gerekir.
+* Bir dosya akışı veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [dosya akışı veritabanı](/sql/relational-databases/blob/enable-and-configure-filestream) özelliğinin etkinleştirildiğinden emin olmanız gerekir.
 * SQL Server AlwaysOn için koruma:
   * DPM koruma grubu oluşturma sırasında sorgu çalıştırırken Kullanılabilirlik Gruplarını algılar.
   * DPM bir yük devretmeyi algılar ve veritabanını korumaya devam eder.
@@ -50,7 +50,7 @@ SQL Server bir veritabanını Azure 'a yedeklemek ve Azure 'dan kurtarmak için:
     * Seçili düğümde yedekleme başarısız olursa, yedekleme işlemi başarısız olur.
     * Özgün konuma kurtarma desteklenmez.
 * SQL Server 2014 veya üzeri yedekleme sorunları:
-  * SQL Server 2014 [, Windows Azure Blob depolama alanında Şirket içi SQL Server için veritabanı](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)oluşturmak üzere yeni bir özellik ekledi. DPM, bu yapılandırmayı korumak için kullanılamaz.
+  * SQL Server 2014 [, Windows Azure Blob depolama alanında Şirket içi SQL Server için veritabanı](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)oluşturmak üzere yeni bir özellik ekledi. DPM, bu yapılandırmayı korumak için kullanılamaz.
   * SQL AlwaysOn seçeneği için "ikincil tercih et" yedekleme tercihiyle ilgili bazı bilinen sorunlar vardır. DPM, her zaman ikincili bir yedekleme alır. İkincil bulunamazsa yedekleme başarısız olur.
 
 ## <a name="before-you-start"></a>Başlamadan önce

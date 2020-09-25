@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed6beec63114f1f157bb24354d77e50ecdaa8255
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9694dd06b67219e0f02c3fe1c7c53d1fc103a0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258634"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Koşullu erişim SSS
 
@@ -31,11 +31,11 @@ Koşullu erişim ilkeleriyle çalışan uygulamalar hakkında daha fazla bilgi i
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>OneDrive Iş için bir SharePoint Online ilkesi de geçerlidir mı?
 
-Evet. Bir SharePoint Online ilkesi, OneDrive Iş için de geçerlidir. Daha fazla bilgi için, [koşullu erişim hizmeti bağımlılıkları](service-dependencies.md) makalesine bakın ve bunun yerine ilkeleri [Office 365 uygulamasına](concept-conditional-access-cloud-apps.md#office-365-preview) hedeflemeyi düşünün.
+Evet. Bir SharePoint Online ilkesi, OneDrive Iş için de geçerlidir. Daha fazla bilgi için, [koşullu erişim hizmeti bağımlılıkları](service-dependencies.md) makalesine bakın ve bunun yerine ilkeleri [Office 365 uygulamasına](concept-conditional-access-cloud-apps.md#office-365) hedeflemeyi düşünün.
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Neden bir ilkeyi Word veya Outlook gibi istemci uygulamalarında doğrudan ayarlayamıyorum?
 
-Koşullu erişim ilkesi, bir hizmete erişmek için gereksinimleri ayarlar. Bu hizmet için kimlik doğrulaması gerçekleştiğinde zorlanır. İlke doğrudan bir istemci uygulamasında ayarlanmadı. Bunun yerine, istemci bir hizmet çağırdığında uygulanır. Örneğin, SharePoint 'te ayarlanan bir ilke, SharePoint 'i çağıran istemciler için geçerlidir. Exchange üzerinde ayarlanan bir ilke Outlook için geçerlidir. Daha fazla bilgi için, [koşullu erişim hizmeti bağımlılıkları](service-dependencies.md) makalesine bakın ve bunun yerine ilkeleri [Office 365 uygulamasına](concept-conditional-access-cloud-apps.md#office-365-preview) hedeflemeyi düşünün.
+Koşullu erişim ilkesi, bir hizmete erişmek için gereksinimleri ayarlar. Bu hizmet için kimlik doğrulaması gerçekleştiğinde zorlanır. İlke doğrudan bir istemci uygulamasında ayarlanmadı. Bunun yerine, istemci bir hizmet çağırdığında uygulanır. Örneğin, SharePoint 'te ayarlanan bir ilke, SharePoint 'i çağıran istemciler için geçerlidir. Exchange üzerinde ayarlanan bir ilke Outlook için geçerlidir. Daha fazla bilgi için, [koşullu erişim hizmeti bağımlılıkları](service-dependencies.md) makalesine bakın ve bunun yerine ilkeleri [Office 365 uygulamasına](concept-conditional-access-cloud-apps.md#office-365) hedeflemeyi düşünün.
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Koşullu erişim ilkesi hizmet hesaplarına uygulanabilir mi?
 
@@ -53,7 +53,7 @@ Microsoft ekipleri Ayrıca koşullu erişim ilkelerinde bir bulut uygulaması ol
 
 Windows ve Mac için Microsoft ekipleri masaüstü istemcileri modern kimlik doğrulamayı destekler. Modern kimlik doğrulaması, platformlar arası istemci uygulamalarını Microsoft Office için Azure Active Directory kimlik doğrulama kitaplığı 'nı (ADAL) temel alan oturum açma olanağı sunar.
 
-Daha fazla bilgi için, [koşullu erişim hizmeti bağımlılıkları](service-dependencies.md) makalesine bakın ve bunun yerine ilkeleri [Office 365 uygulamasına](concept-conditional-access-cloud-apps.md#office-365-preview) hedeflemeyi düşünün.
+Daha fazla bilgi için, [koşullu erişim hizmeti bağımlılıkları](service-dependencies.md) makalesine bakın ve bunun yerine ilkeleri [Office 365 uygulamasına](concept-conditional-access-cloud-apps.md#office-365) hedeflemeyi düşünün.
 
 ## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>Koşullu erişim ilkelerini etkinleştirdikten sonra neden bazı sekmeler Microsoft ekiplerde çalışmıyor?
 

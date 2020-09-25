@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a71c78dcbaa5fb02927e9a2cfdea40cd5b26130
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75666882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269106"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Azure Logic Apps içerik türlerini işleme
 
@@ -61,7 +61,7 @@ Logic Apps, bu özellikleri mantıksal uygulamanızın iş akışında daha kola
   
   2. **Örnek BIR JSON yükü girin veya yapıştırın**, örnek bir yük sağlayın ve **bitti**' yi seçin. Örneğin: 
 
-     ![Örnek JSON yükü sağlama](./media/logic-apps-content-type/request-trigger.png)
+     ![Örnek bir JSON yükünün bulunduğu "HTTP isteği alındığında" penceresini gösteren ekran görüntüsü.](./media/logic-apps-content-type/request-trigger.png)
 
      Oluşturulan şema şimdi Tetikleyiciniz içinde görüntülenir.
 
@@ -136,13 +136,13 @@ Logic Apps, bazı veri türlerini korumak için, `$content` otomatik olarak dön
 
 Bu liste, bu [işlevleri](../logic-apps/workflow-definition-language-functions-reference.md)kullandığınızda Logic Apps içeriği nasıl dönüştüreceğini açıklar:
 
-* `json()`: Verileri uygulamasına yayınlar`application/json`
-* `xml()`: Verileri uygulamasına yayınlar`application/xml`
-* `binary()`: Verileri uygulamasına yayınlar`application/octet-stream`
-* `string()`: Verileri uygulamasına yayınlar`text/plain`
+* `json()`: Verileri uygulamasına yayınlar `application/json`
+* `xml()`: Verileri uygulamasına yayınlar `application/xml`
+* `binary()`: Verileri uygulamasına yayınlar `application/octet-stream`
+* `string()`: Verileri uygulamasına yayınlar `text/plain`
 * `base64()`: İçeriği Base64 kodlamalı bir dizeye dönüştürür
-* `base64toString()`: Base64 kodlamalı bir dizeyi öğesine dönüştürür`text/plain`
-* `base64toBinary()`: Base64 kodlamalı bir dizeyi öğesine dönüştürür`application/octet-stream`
+* `base64toString()`: Base64 kodlamalı bir dizeyi öğesine dönüştürür `text/plain`
+* `base64toBinary()`: Base64 kodlamalı bir dizeyi öğesine dönüştürür `application/octet-stream`
 * `dataUri()`: Bir dizeyi veri URI 'sine dönüştürür
 * `dataUriToBinary()`: Bir veri URI 'sini ikili dizeye dönüştürür
 * `dataUriToString()`: Bir veri URI 'sini dizeye dönüştürür

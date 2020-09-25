@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 87b674a9c6b7f7d591b39f1baf54c4d54082f306
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987316"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252842"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (portal)
 
@@ -27,7 +27,7 @@ Ayrıca, [Eventroutes API 'leri](how-to-use-apis-sdks.md), [.net (C#) SDK](https
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure hesabınızın** olması gerekir ( [buradan](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)birini ücretsiz olarak ayarlayabilirsiniz)
-* Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-scripted.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
+* Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-portal.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
     - Örnek adı
     - Kaynak grubu
 
@@ -58,7 +58,7 @@ Konuyu oluşturduktan sonra, Azure Digital TWINS örneğinizin [Azure Portal](ht
 
 Örnek menüsünde _uç noktalar_' ı seçin. Ardından, izleyen uç *noktalar* sayfasından *+ uç nokta oluştur*' u seçin. 
 
-Açılan *bir uç nokta oluştur* sayfasında, ilgili radyo düğmesini seçerek _Event Grid_ türünde bir uç nokta oluşturabilirsiniz. Diğer ayrıntıları doldurun: _ad_ alanına uç noktanız için bir ad girin, açılan listeden _aboneliğinizi_ seçin ve üçüncü açılan listeden önceden oluşturduğunuz _Event Grid konu başlığını_ seçin.
+Açılan *bir uç nokta oluştur* sayfasında, ilgili radyo düğmesini seçerek _Event Grid_ türünde bir uç nokta oluşturabilirsiniz. Diğer ayrıntıları doldurun: _ad_ alanına uç noktanız için bir ad girin, açılan listeden _aboneliğinizi_ seçin ve üçüncü açılan listeden önceden oluşturduğunuz  _Event Grid konu başlığını_ seçin.
 
 Sonra, _Kaydet_' i vurarak uç noktanızı oluşturun.
 
@@ -133,8 +133,8 @@ Bir olay yolu tanımı şu öğeleri içerir:
 * Kullanmak istediğiniz yol adı
 * Kullanmak istediğiniz uç noktanın adı
 * Uç noktaya hangi olayların gönderileceğini tanımlayan bir filtre
-    - Bir olayın gönderilmemesi için yolu devre dışı bırakmak için bir filtre değeri kullanın`false`
-    - Belirli bir filtreleme özelliği olmayan bir yolu etkinleştirmek için, bir filtre değeri kullanın`true`
+    - Bir olayın gönderilmemesi için yolu devre dışı bırakmak için bir filtre değeri kullanın `false`
+    - Belirli bir filtreleme özelliği olmayan bir yolu etkinleştirmek için, bir filtre değeri kullanın `true`
     - Diğer filtre türleri hakkında daha fazla bilgi için aşağıdaki [*Olayları Filtrele*](#filter-events) bölümüne bakın.
 
 Tek bir yol, birden fazla bildirim ve olay türünün seçili olmasını sağlayabilir.

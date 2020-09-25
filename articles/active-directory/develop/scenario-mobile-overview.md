@@ -13,31 +13,24 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f90f7f23fbdf10b91d8dfc7cd00cca83cd32fbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70ddc2191cc06a1bede87adc5940e0f7dea63384
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882582"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257546"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran mobil uygulama
 
 Web API 'Lerini çağıran bir mobil uygulama oluşturmayı öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="getting-started"></a>Kullanmaya başlama
 
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+Henüz yapmadıysanız, bir hızlı başlangıcı tamamlayarak ilk uygulamanızı oluşturun:
 
-## <a name="getting-started"></a>Başlarken
-
-İlk mobil uygulamanızı oluşturun ve hızlı başlangıç yapın.
-
-> [!div class="nextstepaction"]
-> [Hızlı başlangıç: bir Android uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-android.md)
->
-> [Hızlı başlangıç: bir iOS uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-ios.md)
->
-> [Hızlı başlangıç: bir Xamarin iOS ve Android uygulamasından belirteç alma ve Microsoft Graph API çağrısı](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+- [Hızlı başlangıç: bir Android uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-android.md)
+- [Hızlı başlangıç: bir iOS uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-ios.md)
+- [Hızlı başlangıç: bir Xamarin iOS ve Android uygulamasından belirteç alma ve MICROSOFT Graph API çağrısı](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) (GitHub)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -59,6 +52,10 @@ Microsoft Identity platformunda bir mobil uygulama oluştururken aşağıdaki no
 - Platforma bağlı olarak, kullanıcılar ilk kez oturum açtığında bazı Kullanıcı etkileşimi gerekebilir. Örneğin iOS, Microsoft Authenticator (ve Android üzerinde Intune Şirket Portalı) ile ilk kez SSO kullandıklarında, uygulamaların kullanıcı etkileşimini göstermesini gerektirir.
 - İOS ve Android 'de MSAL, kullanıcıların oturum açması için bir dış tarayıcı kullanabilir. Dış tarayıcı, uygulamanızın üst kısmında görünebilir.
 - Bir mobil uygulamada hiç gizli anahtar kullanmayın. Bu uygulamalarda, gizli dizileri tüm kullanıcılar tarafından erişilebilir.
+
+## <a name="recommended-reading"></a>Önerilen okuma
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

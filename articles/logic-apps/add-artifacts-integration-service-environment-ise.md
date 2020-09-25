@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: d8fe945b028b574e71ae24b1483ad8e7fd67b01d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078715"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269752"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınıza (ıSE) kaynak ekleme
 
@@ -40,7 +40,7 @@ Tümleştirme hizmeti ortamınızda (ıSE) çalışan Logic Apps oluşturmak iç
 
 1. Oluşturmak istediğiniz mantıksal uygulama hakkında bilgi sağlayın, örneğin:
 
-   ![Tümleştirme hizmeti ortamını seçin](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
+   ![Örnek bilgileri girilen "mantıksal uygulama" "Oluştur" penceresini gösteren ekran görüntüsü.](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
@@ -121,7 +121,7 @@ ISE 'de özel bağlayıcılar kullanmak için, bu özel bağlayıcıları doğru
 
 1. **Konum** listesinden, **tümleştirme hizmeti ortamları** bölümünde, mantıksal uygulamalarınızın kullandığı Ise 'yi seçin ve **Oluştur**' u seçin, örneğin:
 
-   ![Tümleştirme hizmeti ortamını seçin](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
+   ![Örnek bilgiler seçiliyken "Logic Apps özel bağlayıcı oluştur" penceresinin gösterildiği ekran görüntüsü.](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
 1. Yeni özel bağlayıcınızı seçin ve ardından **Düzenle**' yi seçin, örneğin:
 

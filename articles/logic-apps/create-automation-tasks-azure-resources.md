@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 93c796fd16dde8c238265d16a96b9cfa4a254ea9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90997981"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269735"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Otomasyon görevleri (Önizleme) oluşturarak Azure kaynaklarını yönetme ve maliyetleri izleme
 
@@ -30,6 +30,7 @@ Bu önizlemede Şu anda kullanılabilir olan görev şablonları aşağıda veri
 | Tüm Azure kaynakları | **Kaynak için aylık maliyet gönder** |
 | Azure sanal makineleri | Ek olarak: <p>- **Sanal makineyi kapat** <br>- **Sanal makineyi Başlat** |
 | Azure Depolama hesapları | Ek olarak: <p>- **Eski Blobları Sil** |
+| Azure Cosmos DB | Ayrıca <p>- **Sorgu sonucunu e-postayla gönder** |
 |||
 
 Bu makalede, aşağıdaki görevlerin nasıl tamamlanacağı gösterilmektedir:
@@ -40,11 +41,13 @@ Bu makalede, aşağıdaki görevlerin nasıl tamamlanacağı gösterilmektedir:
 
 * Görevi güncelleştirebilmeniz için görevi [düzenleyin](#edit-task) veya mantıksal uygulama Tasarımcısı 'nda görevin temel alınan iş akışını özelleştirin.
 
+<a name="differences"></a>
+
 ## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>Otomasyon görevleri Azure Otomasyonu 'ndan farklı midir?
 
-Şu anda yalnızca kaynak düzeyinde bir Otomasyon görevi oluşturabilir, görevin çalışma geçmişini görüntüleyebilir ve görevin temel alınan mantıksal uygulama iş akışını düzenleyerek [Azure Logic Apps](../logic-apps/logic-apps-overview.md) hizmeti tarafından desteklenir.
+Şu anda yalnızca kaynak düzeyinde bir Otomasyon görevi oluşturabilir, görevin çalışma geçmişini görüntüleyebilir ve görevin temel alınan mantıksal uygulama iş akışını düzenleyerek [Azure Logic Apps](../logic-apps/logic-apps-overview.md) hizmeti tarafından desteklenir. Otomasyon görevleri, [Azure Otomasyonu](../automation/automation-intro.md)'ndan daha basit ve hafif.
 
-Azure [Otomasyonu](../automation/automation-intro.md) , Azure ve Azure dışı ortamlarınızda tutarlı Yönetimi destekleyen bulut tabanlı bir Otomasyon ve yapılandırma hizmetidir. Hizmet, [runbook 'lar](../automation/automation-runbook-execution.md), [değişiklik izleme ve stok](../automation/change-tracking.md), güncelleştirme yönetimi, paylaşılan yetenekler ve heterojen özelliklerle [işlemleri yönetmek için işlem otomasyonu](../automation/automation-intro.md#process-automation) 'nu kapsar. Otomasyon, dağıtım, işlemler ve iş yüklerinin ve kaynakların yetkisini alma sırasında komple denetim sağlar.
+Azure Otomasyonu, karşılaştırmaya göre Azure ve Azure dışı ortamlarınızda tutarlı Yönetimi destekleyen bulut tabanlı bir Otomasyon ve yapılandırma hizmetidir. Hizmet, [runbook 'lar](../automation/automation-runbook-execution.md), [değişiklik izleme ve stok](../automation/change-tracking.md), güncelleştirme yönetimi, paylaşılan yetenekler ve heterojen özelliklerle [işlemleri yönetmek için işlem otomasyonu](../automation/automation-intro.md#process-automation) 'nu kapsar. Otomasyon, dağıtım, işlemler ve iş yüklerinin ve kaynakların yetkisini alma sırasında komple denetim sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

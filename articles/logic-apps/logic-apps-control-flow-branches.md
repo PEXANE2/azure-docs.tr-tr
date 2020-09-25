@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 9dafb702117a7e171ff88b3c77d7b8b79503636f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3514ce966e1de9af1741de6b966964aca2599610
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066470"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269242"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps iş akışı eylemleri için paralel dallar oluşturun veya ekleyin
 
@@ -47,7 +47,7 @@ Mantıksal uygulamanız, iş akışına devam etmeden önce tüm dalların bitme
 
 1. Arama kutusunda istediğiniz eylemi bulun ve seçin.
 
-   ![İstediğiniz eylemi bulun ve seçin](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
+   ![Mantıksal uygulama Tasarımcısı 'nda "Eylem Seç" penceresini gösteren ekran görüntüsü.](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
    Seçtiğiniz eylem artık paralel dalda görüntülenir, örneğin:
 
@@ -59,7 +59,7 @@ Mantıksal uygulamanız, iş akışına devam etmeden önce tüm dalların bitme
 
 1. Arama kutusunda istediğiniz eylemi bulun ve seçin.
 
-   ![Sıralı eylem bulma ve seçme](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+   ![Mantıksal uygulama tasarımcısında "Eylem Seç" penceresini ve arama kutusunu gösteren ekran görüntüsü.](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
 
    Seçtiğiniz eylem şu anda geçerli dalı içinde görünür, örneğin:
 

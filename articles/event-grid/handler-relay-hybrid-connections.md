@@ -3,12 +3,12 @@ title: Azure Event Grid olayları için bir olay işleyicisi olarak karma bağla
 description: Azure Event Grid olayları için Azure Relay karma bağlantıları olay işleyicileri olarak nasıl kullanabileceğinizi açıklar.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 38233a2e103600f07837ce9a1ad8d63fe7e4fb99
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3807e2d125d652b8f5ed7c9dec1b972d69f699f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105725"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270211"
 ---
 # <a name="relay-hybrid-connection-as-an-event-handler-for-azure-event-grid-events"></a>Azure Event Grid olayları için bir olay işleyicisi olarak karma bağlantı
 Olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için başka bir eylem gerçekleştirir. Çeşitli Azure Hizmetleri, olayları işleyecek şekilde otomatik olarak yapılandırılır ve bunlardan biridir **Azure Relay** . 
@@ -40,6 +40,9 @@ Olay işleyicisi olarak Azure Relay karma bağlantı kullanmanın bir örneği i
     }
 }
 ```
+
+> [!NOTE]
+> **Başka bir kiracının** Azure Relay karma bağlantısına olay sunma desteklenmez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Desteklenen olay işleyicilerinin bir listesi için bkz. [olay işleyicileri](event-handlers.md) makalesi. 

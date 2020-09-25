@@ -1,14 +1,16 @@
 ---
 title: Etkin ve etkin olmayan olaylar-kişiselleştirici
 description: Bu makalede, kişiselleştirici hizmeti içinde etkin ve etkin olmayan olayların kullanımı ele alınmaktadır.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: a8f27542208965e2b820b9fc45cfcc5353a7f193
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d1044d02ceba1f3d0996b1fe1c8a9a44b31049b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624258"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253658"
 ---
 # <a name="active-and-inactive-events"></a>Etkin olan ve olmayan olaylar
 
@@ -37,9 +39,9 @@ Bu durumlarda, etkinliğin _devre dışı_olmasını isteyen derece çağrısı 
 
 ## <a name="inactive-events"></a>Etkin olmayan olaylar
 
-Bir olaya yönelik eğitimi devre dışı bırakmak için kullanarak `learningEnabled = False`derecesi çağırın.
+Bir olaya yönelik eğitimi devre dışı bırakmak için kullanarak derecesi çağırın `learningEnabled = False` .
 
-Etkin olmayan bir olay için, EventID için bir ödül gönderirseniz veya bu EventID için `activate` API 'yi çağırdığınızda öğrenme, örtülü olarak etkinleştirilir.
+Etkin olmayan bir olay için, EventID için bir ödül gönderirseniz veya `activate` Bu EventID için API 'yi çağırdığınızda öğrenme, örtülü olarak etkinleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

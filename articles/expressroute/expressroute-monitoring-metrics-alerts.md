@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
-ms.openlocfilehash: fc83e5e8d14250ed163a56830311533144bbe344
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395443"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252638"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute izleme, ölçümler ve uyarılar
 
@@ -42,8 +42,8 @@ Bu makale, Azure Izleyici kullanarak ExpressRoute izlemeyi, ölçümleri ve uyar
 |GlobalReachBitsOutPerSecond|Trafik|<ui><li>Eşlenen devre Skey (hizmet anahtarı)</ui></li>|Global Reach|
 |AdminState|Fiziksel bağlantı|Bağlantı|ExpressRoute Direct|
 |LineProtocol|Fiziksel bağlantı|Bağlantı|ExpressRoute Direct|
-|RxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantısının</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantısının</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantı</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantı</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >*GlobalGlobalReachBitsInPerSecond* ve *GlobalGlobalReachBitsOutPerSecond* kullanımı yalnızca en az bir Global Reach bağlantısı kurulduysa görünür olur.
 >
@@ -154,6 +154,19 @@ Ağ geçidine geçiş yaparken paket sayısını görüntüleyebilirsiniz.
 **Uyarı ölçütlerinde**, sinyal türü Için **etkinlik günlüğü** ' nü seçebilir ve sinyali seçebilirsiniz.
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="etkinlik günlükleri":::
+
+## <a name="additional-metrics-in-log-analytics"></a>Log Analytics ek ölçümler
+
+Ayrıca, ExpressRoute bağlantı hattı kaynağına giderek ve *Günlükler* sekmesini seçerek ExpressRoute ölçümlerini görüntüleyebilirsiniz. Sorgulama yaptığınız ölçümler için, çıktı aşağıdaki sütunları içerir.
+
+|**Column**|**Tür**|**Açıklama**|
+| --- | --- | --- |
+|ZamanBirimi|string|PT1M (ölçüm değerleri her dakika gönderilir)|
+|Count|real|Genellikle 2 ' ye eşit (her MSEE her dakikada tek bir ölçüm değeri gönderir)|
+|Minimum|real|İki MSEE tarafından gönderilen iki ölçüm değeri en az|
+|Maksimum|real|İki MSEE tarafından gönderilen iki ölçüm değerinin sayısından 'ı|
+|Ortalama|real|Eşittir (en az + en fazla)/2|
+|Toplam|real|Hem MSEE hem de her iki ölçüm değerinin toplamı (sorgulanan ölçüm için odaklanmak üzere ana değer)|
   
 ## <a name="next-steps"></a>Sonraki adımlar
 

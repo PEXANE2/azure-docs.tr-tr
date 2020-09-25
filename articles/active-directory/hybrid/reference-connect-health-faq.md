@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d15b12b758adbf99ddabc88eb06be9daba1ece3e
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276210"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299774"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health sık sorulan sorular
 Bu makale, Azure Active Directory (Azure AD) Connect Health hakkında sık sorulan soruların (SSS) yanıtlarını içerir. Bu SSS, faturalandırma modeli, yetenekler, sınırlamalar ve destek dahil olmak üzere hizmetin nasıl kullanılacağına ilişkin soruları kapsar.
@@ -129,6 +129,10 @@ Bir sunucuyu yeniden yansıedebilir veya aynı ayrıntılarla (makine adı gibi)
 
 Bu durumda, eski sunucuya ait girişi el ile silin. Bu sunucunun verileri güncel değil.
 
+**S: Windows Server Core 'a Azure AD Connect sistem durumu aracısını yükleyebilir miyim?**
+
+Hayır.  Sunucu Çekirdeği üzerine yükleme desteklenmiyor.
+
 ## <a name="health-agent-registration-and-data-freshness"></a>Sistem Durumu Aracısı kaydı ve veri yeniliği
 
 **S: sistem durumu aracısı kayıt hatalarının genel nedenleri nelerdir ve sorunları nasıl giderebilirim?**
@@ -198,6 +202,7 @@ Denetim günlüklerinin devre dışı durumda olmadığından emin olmak için l
 
 **S: Aracı sertifikası, süresi dolmadan önce otomatik olarak yenilenir mi?**
 Aracı sertifikası, sona erme tarihinden itibaren otomatik olarak **6 ay** yenilenir. Yenilenmezse, lütfen aracının ağ bağlantısının kararlı olduğundan emin olun. Aracı hizmetlerini yeniden başlatın veya en son sürüme güncelleştirme de sorunu çözebilir.
+
 
 
 ## <a name="related-links"></a>İlgili bağlantılar

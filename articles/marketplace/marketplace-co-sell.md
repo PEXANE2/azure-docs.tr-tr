@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/15/2020
-ms.openlocfilehash: 41dd683bb0ff5be4a48cd05f24663dd51c66a15b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268732"
 ---
 # <a name="co-sell-partner-engagement"></a>Ortak satış iş ortağı etkileşimi
 
@@ -36,7 +36,7 @@ Ortak satış programı, **fikri mülkiyet (IP) ile birlikte,** **Microsoft Tech
 * Market hizmeti ücreti %20 ile %10 arasında azaltılır. Bu indirim, ticari Market aracılığıyla satılan IaaS veya SaaS teklifiniz için geçerlidir. Daha fazla ayrıntı için bkz. [azaltılmış hizmet ücreti](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) .
 * Bulut çözümü sağlayıcısı (CSP) iş ortakları, IaaS veya SaaS teklifinizi satmaya yönelik %10 bir teşvik alır. [Bulut çözümü sağlayıcısı PROGRAMıNDA](cloud-solution-providers.md)CSP programı hakkında daha fazla bilgi edinin.
 * Ticari Market aracılığıyla teklifinizin satışları, müşterilerin Azure tüketim taahhütlerine katkıda bulunur. Uygun müşteriler, Azure portalında **"Azure avantajı uygun"** olarak işaretlenen teklifi görür. Daha fazla ayrıntı için bkz. [Azure tüketim taahhüt avantajı](azure-consumption-commitment-benefit.md) .
-* Teklifiniz, storeronts 'de **"tercih edilen çözümler"** rozetini alacaktır. Rozet, belirli bir sektör dikey veya çözüm alanında müşteri ihtiyaçlarını karşılamak için sunulan kaliteyi, performansı ve yeteneği yükseltir. [Microsoft AppSource ve Azure Market 'Te tercih edilen çözümler](preferred-solutions.md)hakkında daha fazla bilgi edinin.
+* **Azure IP ortak satış incentivized** veya **Business Applications ortak satış incentivized** durumu elde eden teklifler, storeronts 'de **"tercih edilen çözümler"** rozetini alacaktır. Rozet, belirli bir sektör dikey veya çözüm alanında müşteri ihtiyaçlarını ele almak için bir teklifin kalitesini, performansını ve özelliklerini yükseltir. [Microsoft AppSource ve Azure Market 'Te tercih edilen çözümler](preferred-solutions.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Ortak satış yayımlama adımları ve gereksinimleri
 

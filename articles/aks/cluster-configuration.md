@@ -3,28 +3,30 @@ title: Azure Kubernetes hizmetlerindeki küme yapılandırması (AKS)
 description: Azure Kubernetes hizmeti 'nde (AKS) bir kümeyi yapılandırmayı öğrenin
 services: container-service
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255307"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
 AKS kümesi oluşturmanın bir parçası olarak, Küme yapılandırmanızı gereksinimlerinize uyacak şekilde özelleştirmeniz gerekebilir. Bu makalede AKS kümenizi özelleştirmek için birkaç seçenek sunulmaktadır.
 
-## <a name="os-configuration-preview"></a>İşletim sistemi yapılandırması (Önizleme)
+## <a name="os-configuration"></a>İşletim sistemi yapılandırması
 
-AKS artık, önizleme aşamasında düğüm işletim sistemi (OS) olarak Ubuntu 18,04 ' i desteklemektedir. Önizleme dönemi boyunca hem Ubuntu 16,04 hem de Ubuntu 18,04 kullanılabilir.
+AKS artık, Kubernetes sürümlerindeki 1.18.8 'den yüksek olan kümeler için genel kullanıma yönelik düğüm işletim sistemi (OS) olarak Ubuntu 18,04 ' i desteklemektedir. 1.18. x altındaki sürümler için AKS Ubuntu 16,04, hala varsayılan temel görüntü olmaya devam etmektedir. Kubernetes v 1.18. x ve Onward 'den, varsayılan temel AKS Ubuntu 18,04 ' dir.
 
 > [!IMPORTANT]
-> Düğüm havuzları, Kubernetes v 1.18 üzerinde veya daha fazla varsayılan olarak gerekli bir `AKS Ubuntu 18.04` düğüm görüntüsüne oluşturulur. Desteklenen bir Kubernetes sürümündeki düğüm havuzları, `AKS Ubuntu 16.04` düğüm görüntüsü olarak 1,18 'den azdır, ancak `AKS Ubuntu 18.04` düğüm havuzu Kubernetes sürümü v 1.18 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilecektir.
+> Düğüm, Kubernetes v 1.18 üzerinde oluşturulan düğüm havuzları veya düğüm görüntüsünde daha fazla varsayılan `AKS Ubuntu 18.04` . Desteklenen bir Kubernetes sürümündeki düğüm havuzları, `AKS Ubuntu 16.04` düğüm görüntüsü olarak 1,18 'den azdır, ancak `AKS Ubuntu 18.04` düğüm havuzu Kubernetes sürümü v 1.18 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilecektir.
 > 
 > 1,18 veya üzeri kümeler kullanılmadan önce AKS Ubuntu 18,04 düğüm havuzlarındaki iş yüklerinizi test etmek önemle önerilir. [Ubuntu 18,04 düğüm havuzlarını test](#use-aks-ubuntu-1804-existing-clusters-preview)etme hakkında bilgi edinin.
+
+Aşağıdaki bölümde, henüz bir Kubernetes sürümü 1.18. x veya üzeri kullanmadığınız ya da bu özelliğin genel kullanıma sunulmadan önce, işletim sistemi yapılandırması önizlemesi kullanılarak oluşturulan kümeler üzerinde AKS Ubuntu 18,04 ' ı nasıl kullandığınız ve test ettiğiniz açıklanmaktadır.
 
 Aşağıdaki kaynakların yüklü olması gerekir:
 
@@ -44,13 +46,13 @@ az extension list
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
+Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -122,14 +124,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
+Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -179,7 +181,7 @@ Azure [2. nesil (Gen2) sanal makineleri (VM)](../virtual-machines/windows/genera
 2. nesil sanal makineler, 1. nesil VM 'Ler tarafından kullanılan BIOS tabanlı mimaride değil, yeni UEFı tabanlı önyükleme mimarisini kullanır.
 Yalnızca belirli SKU 'Lar ve boyutlar Gen2 VM 'Leri destekler. SKU 'nuzun Gen2 destekleyip desteklemediğini veya gerektirip gerektirmediğini görmek için [Desteklenen boyutlar listesini](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes)kontrol edin.
 
-Ayrıca, AKS Gen2 VM 'lerinde Gen2 desteği olan tüm VM görüntüleri, yeni [aks Ubuntu 18,04 görüntüsünü](#os-configuration-preview)kullanır. Bu görüntü tüm Gen2 SKU 'Larını ve boyutlarını destekler.
+Ayrıca, AKS Gen2 VM 'lerinde Gen2 desteği olan tüm VM görüntüleri, yeni [aks Ubuntu 18,04 görüntüsünü](#os-configuration)kullanır. Bu görüntü tüm Gen2 SKU 'Larını ve boyutlarını destekler.
 
 Önizleme sırasında Gen2 VM 'Leri kullanmak için şunları yapmanız gerekir:
 - `aks-preview`CLI uzantısı yüklendi.
@@ -191,13 +193,13 @@ Ayrıca, AKS Gen2 VM 'lerinde Gen2 desteği olan tüm VM görüntüleri, yeni [a
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
+Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -248,17 +250,19 @@ Geçici disk gibi, daha kısa bir işletim sistemi diski sanal makinenin fiyatı
 az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
 ```
 
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
 ```
 
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
+Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
+
+Kısa ömürlü işletim sistemi, aks-Preview CLı uzantısının en az sürüm 0.4.63 gerektirir.
 
 Aks-Preview CLı uzantısını yüklemek için aşağıdaki Azure CLı komutlarını kullanın:
 
@@ -274,25 +278,25 @@ az extension update --name aks-preview
 
 ### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Yeni kümelerde kısa ömürlü işletim sistemi kullan (Önizleme)
 
-Kümeyi, küme oluşturulduğunda kısa ömürlü işletim sistemi disklerini kullanacak şekilde yapılandırın. `--aks-custom-headers`Yeni küme için işletim sistemi disk türü olarak kısa ömürlü işletim sistemi ayarlamak için bayrağını kullanın.
+Kümeyi, küme oluşturulduğunda kısa ömürlü işletim sistemi disklerini kullanacak şekilde yapılandırın. `--node-osdisk-type`Yeni küme için işletim sistemi disk türü olarak kısa ömürlü işletim sistemi ayarlamak için bayrağını kullanın.
 
 ```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-Ağa bağlı işletim sistemi disklerini kullanarak düzenli bir küme oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` . Ayrıca, aşağıdaki şekilde daha kısa ömürlü işletim sistemi düğüm havuzları eklemeyi de seçebilirsiniz.
+Ağa bağlı işletim sistemi disklerini kullanarak düzenli bir küme oluşturmak istiyorsanız, özel `--node-osdisk-type` etiketi atlayarak veya belirterek bunu yapabilirsiniz `--node-osdisk-type=Managed` . Ayrıca, aşağıdaki şekilde daha kısa ömürlü işletim sistemi düğüm havuzları eklemeyi de seçebilirsiniz.
 
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Mevcut kümelerde kısa ömürlü işletim sistemi kullan (Önizleme)
-Kısa ömürlü işletim sistemi disklerini kullanmak için yeni bir düğüm havuzu yapılandırın. `--aks-custom-headers`Bu düğüm havuzu için işletim sistemi disk türü olarak işletim sistemi disk türü olarak ayarlamak için bayrağını kullanın.
+Kısa ömürlü işletim sistemi disklerini kullanmak için yeni bir düğüm havuzu yapılandırın. `--node-osdisk-type`Bu düğüm havuzu için işletim sistemi disk türü olarak işletim sistemi disk türü olarak ayarlamak için bayrağını kullanın.
 
 ```azurecli
-az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
 > [!IMPORTANT]
 > Kısa ömürlü IŞLETIM sistemiyle VM ve örnek görüntülerini VM önbelleğinin boyutuna dağıtabilirsiniz. AKS durumunda, varsayılan işletim sistemi disk yapılandırması 100GiB kullanır, bu da 100 GiB 'den büyük bir önbelleğe sahip bir VM boyutuna ihtiyacınız olduğu anlamına gelir. Varsayılan Standard_DS2_v2, 86 GiB önbellek boyutuna sahiptir ve bu değer yeterince büyük değildir. Standard_DS3_v2, yeterince büyük olan 172 GiB önbellek boyutuna sahiptir. Ayrıca, kullanarak işletim sistemi diskinin varsayılan boyutunu azaltabilirsiniz `--node-osdisk-size` . AKS görüntülerinin en küçük boyutu 30GiB ' dir. 
 
-Ağa bağlı işletim sistemi diskleri ile düğüm havuzları oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
+Ağa bağlı işletim sistemi diskleri ile düğüm havuzları oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--node-osdisk-type` .
 
 ## <a name="custom-resource-group-name"></a>Özel kaynak grubu adı
 

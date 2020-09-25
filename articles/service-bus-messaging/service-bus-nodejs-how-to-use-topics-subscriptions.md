@@ -6,13 +6,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 08/09/2020
 ms.author: spelluru
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8a86a1bd9a312f3b1c6d94914d426422687b25a6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 219132fc8a0e618cdf2561947ae3904a9e2cb310
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077025"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300760"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Hızlı başlangıç: Node.js ve Azure-SB paketiyle Service Bus konuları ve abonelikleri kullanma
 Bu öğreticide, Service Bus bir konuya ileti göndermek ve [Azure-SB](https://www.npmjs.com/package/azure-sb) paketini kullanarak bir Service Bus aboneliğinden ileti almak için Node.js uygulamalar oluşturmayı öğreneceksiniz. Örnekler JavaScript 'te yazılır ve paketi dahili olarak kullanan Node.js [Azure modülünü](https://www.npmjs.com/package/azure) kullanır `azure-sb` .
@@ -40,7 +40,7 @@ Konular ve abonelikler hakkında daha fazla bilgi için, [sonraki adımlar](#nex
     > Bu hızlı başlangıçta **Node.js** kullanarak konu için bir **Konu** ve bir **abonelik** oluşturacaksınız. 
 
 ## <a name="create-a-nodejs-application"></a>Node.js uygulaması oluşturma
-Boş bir Node.js uygulaması oluşturun. Node.js uygulama oluşturma yönergeleri için, bkz. [Azure Web sitesine bir Node.js uygulaması oluşturma ve dağıtma], Windows PowerShell kullanarak [bulut hizmetiNode.js][Node.js Cloud Service] veya WebMatrix Ile web sitesi.
+Boş bir Node.js uygulaması oluşturun. Node.js uygulama oluşturma yönergeleri için, bkz. [Azure Web sitesine bir Node.js uygulaması oluşturma ve dağıtma], Windows PowerShell kullanarak [ bulut hizmetiNode.js][Node.js Cloud Service] veya WebMatrix Ile web sitesi.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
 Service Bus kullanmak için Node.js Azure paketini indirin. Bu paket, Service Bus REST hizmetleriyle iletişim kuran bir kitaplıklar kümesi içerir.

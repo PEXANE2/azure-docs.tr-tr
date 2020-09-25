@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dcf80ffa26ecaeb0f4481b3997146c07bd89be10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d89942ad5209b854b8df486ad3e59a3976edfc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259060"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Azure Active Directory B2C TypingDNA yapılandırma öğreticisi
 
@@ -36,9 +36,9 @@ Bu kılavuzda, Azure Active Directory B2C ' de bir örnek çevrimiçi ödeme uyg
 
 2. Kullanıcı sayfayı gönderdiğinde, TypingDNA kitaplığı kullanıcının yazma özelliğini hesaplacaktır. Bundan sonra, Azure AD B2C işlenen gizli bir metin alanına bilgileri ekleyin. Bu alan CSS ile gizlidir.  
 
-    Örnek, JavaScript ve CSS değişiklikleriyle birlikte HTML dosyaları içerir ve `api.selfasserted.tdnasignin` ve `api.selfasserted.tdnasignup` içerik tanımları tarafından başvurulur. HTML dosyalarınızı barındırmak için [sayfa içeriğini barındırma](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#hosting-the-page-content) bölümüne bakın.
+    Örnek, JavaScript ve CSS değişiklikleriyle birlikte [HTML dosyaları içerir](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) ve `api.selfasserted.tdnasignin` ve `api.selfasserted.tdnasignup` içerik tanımları tarafından başvurulur. HTML dosyalarınızı barındırmak için [sayfa içeriğini barındırma](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#hosting-the-page-content) bölümüne bakın.
 
-3. Azure AD B2C artık Kullanıcı kimlik bilgilerini gönderdiğinde talep paketi içinde yazma düzenine sahiptir. Bu verileri TypingDNA REST API uç noktasına geçirmek için bir API (sizinki) çağrısı yapılmalıdır. Bu API, örneğe dahildir (typingDNA-API-Interface).
+3. Azure AD B2C artık Kullanıcı kimlik bilgilerini gönderdiğinde talep paketi içinde yazma düzenine sahiptir. Bu verileri TypingDNA REST API uç noktasına geçirmek için bir API (sizinki) çağrısı yapılmalıdır. Bu API, [örneğe dahildir (typingDNA-API-Interface)](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface).
 4. Orta katman API 'SI daha sonra, yazma deseninin verilerini TypingDNA REST API 'e geçirir. Kaydolma sırasında kullanıcının mevcut olmadığını onaylamak için [Kullanıcı uç noktası](https://api.typingdna.com/index.html#api-API_Services-GetUser) çağrılır ve sonra kullanıcının ilk yazma modelini kaydetmek için [model kaydet](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) uç noktası çağırılır.
 
 > [!NOTE]
@@ -61,7 +61,7 @@ REST API çağrıları, içinde ile modellenir `validationTechnicalProfiles` `Lo
 
 ### <a name="sign-in"></a>Oturum açma
 
-Sonraki oturum açma sırasında, kullanıcının yazma şekli, özel HTML kullanılarak kaydolma ile aynı şekilde hesaplanır. Yazma profili Azure AD B2C talep paketi dahilinde olduktan sonra, Azure AD B2C TypingDNA REST API uç noktasını çağırmak için API 'nizi çağırır. Kullanıcının var olduğunu onaylamak için [Kullanıcı](https://api.typingdna.com/index.html#api-API_Services-GetUser) uç noktası çağırılır. Sonra, öğesini döndürmek için, model uç noktasının çağrıldığından [emin olun](https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern) `net_score` . Bu, `net_score` kayıt sırasında yazma deseninin orijinaline ne kadar yakın olduğunu gösteren bir göstergesidir.
+Sonraki oturum açma sırasında, kullanıcının yazma şekli, [özel HTML](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignIn.cshtml)kullanılarak kaydolma ile aynı şekilde hesaplanır. Yazma profili Azure AD B2C talep paketi dahilinde olduktan sonra, Azure AD B2C TypingDNA REST API uç noktasını çağırmak için API 'nizi çağırır. Kullanıcının var olduğunu onaylamak için [Kullanıcı](https://api.typingdna.com/index.html#api-API_Services-GetUser) uç noktası çağırılır. Sonra, öğesini döndürmek için, model uç noktasının çağrıldığından [emin olun](https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern) `net_score` . Bu, `net_score` kayıt sırasında yazma deseninin orijinaline ne kadar yakın olduğunu gösteren bir göstergesidir.
 
 Bu yazma modeli, içinde ile modellenir `validationTechnicalProfiles` `SelfAsserted-LocalAccountSignin-Email-TDNA` :
 
@@ -158,14 +158,14 @@ Bu eşikler kullanım durumunda ayarlanmalıdır.
 
 ## <a name="integrate-typingdna-with-azure-ad-b2c"></a>TypingDNA Azure AD B2C ile tümleştirin
 
-1. TypingDNA-API arabirimini tercih ettiğiniz barındırma sağlayıcıınızda barındırın
-2. `apiKey` `apiSecret` TYPINGDNA-API-Interface çözümünde ve içindeki tüm örnekleri typingdna panonuzdaki kimlik bilgileriyle değiştirin
+1. [Typingdna-API arabirimini](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) tercih ettiğiniz barındırma sağlayıcıınızda barındırın
+2. `apiKey` `apiSecret` [TYPINGDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) çözümünde ve Içindeki tüm örnekleri typingdna panonuzdaki kimlik bilgileriyle değiştirin
 3. [Buradakı](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) CORS gereksinimlerini takip eden SAĞLAYıCııNıZDA HTML dosyalarını barındırın.
 4. `api.selfasserted.tdnasignup`Dosyasındaki ve içerik tanımlarının loaduri öğelerini `api.selfasserted.tdnasignin` `TrustFrameworkExtensions.xml` sırasıyla barındırılan HTML dosyalarınızın URI 'siyle değiştirin.
 5. **Azure Portal**Azure AD dikey penceresinde kimlik deneyimi ÇERÇEVESI altında B2C ilke anahtarı oluşturun. Seçeneğini kullanın `Generate` ve bu anahtarı adlandırın `tdnaHashedId` .
 6. İlke dosyalarında Tenantıd 'yi değiştirme
-7. Tüm TypingDNA REST API teknik profillerindeki (REST-TDNA-VerifyUser, REST-TDNA-SaveUser, REST-TDNA-CheckUser) ServiceUrl 'Lerini TypingDNA-API-Interface API 'niz için uç noktayla değiştirin.
-8. İlke dosyalarını kiracınıza yükleyin.
+7. Tüm TypingDNA REST API teknik profillerindeki (REST-TDNA-VerifyUser, REST-TDNA-SaveUser, REST-TDNA-CheckUser) ServiceUrl 'Lerini [Typingdna-api-ıNTERFACE API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface)'niz için uç noktayla değiştirin.
+8. [İlke dosyalarını](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/policy) kiracınıza yükleyin.
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 

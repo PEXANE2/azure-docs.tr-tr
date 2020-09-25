@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c0b6ba4045e1e92d395752f106258d3c0709108
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259552"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı arabirimini özelleştirme
 
@@ -34,7 +34,7 @@ Uygulamanın kullanıcı ARABIRIMINI özelleştirmek için kullanabileceğiniz �
 Kullanıcı akışları için UI özelleştirmesini yapılandırmak üzere [Azure Portal](tutorial-customize-ui.md) kullanırsınız.
 
 > [!TIP]
-> Kullanıcı akış sayfalarınızın yalnızca başlık logosunu, arka plan resmini ve arka plan rengini değiştirmek istiyorsanız, bu makalenin ilerleyen kısımlarında açıklanan [Şirket markası (Önizleme)](#company-branding-preview) özelliğini deneyebilirsiniz.
+> Kullanıcı akış sayfalarınızın yalnızca başlık logosunu, arka plan resmini ve arka plan rengini değiştirmek istiyorsanız, bu makalenin ilerleyen kısımlarında açıklanan [Şirket markası](#company-branding) özelliğini deneyebilirsiniz.
 
 ### <a name="custom-policies"></a>Özel ilkeler
 
@@ -155,16 +155,14 @@ Aşağıdaki tabloda, Azure AD B2C içeriklerde bulunan öğe ile birleştirmekt
 | Yerel hesap kaydı | Bir e-posta adresine veya Kullanıcı adına göre yerel hesap kaydolma için bir form içerir. Form, metin girişi kutusu, parola giriş kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi farklı giriş denetimleri içerebilir. |
 | Sosyal hesap kaydolma | Facebook veya Google gibi bir sosyal kimlik sağlayıcısından mevcut bir hesap kullanılarak kaydolurken görünebilir. Bir kaydolma formu kullanılarak müşteriden ek bilgiler toplandığında kullanılır. |
 | Birleşik kaydolma veya oturum açma | Facebook, Google veya yerel hesaplar gibi sosyal kimlik sağlayıcılarını kullanabilecek müşterilerin hem kaydolma hem de oturum açma sürümlerini işler. |
-| Çok faktörlü kimlik doğrulaması | Müşteriler, kaydolma veya oturum açma sırasında telefon numaralarını (metin veya ses kullanarak) doğrulayabilirler. |
+| Multi-factor authentication | Müşteriler, kaydolma veya oturum açma sırasında telefon numaralarını (metin veya ses kullanarak) doğrulayabilirler. |
 | Hata | Müşteriye hata bilgilerini sağlar. |
 
-## <a name="company-branding-preview"></a>Şirket markası (Önizleme)
+## <a name="company-branding"></a>Şirket markası
 
 Kullanıcı akış sayfalarınızı, Azure Active Directory [Şirket markalaması](../active-directory/fundamentals/customize-branding.md)kullanarak bir başlık logosu, arka plan resmi ve arka plan rengi ile özelleştirebilirsiniz.
 
 Kullanıcı akış sayfalarınızı özelleştirmek için önce Azure Active Directory ' de şirket markasını yapılandırıp, ardından Kullanıcı akışlarınızın sayfa düzenleri Azure AD B2C ' nde etkinleştirin.
-
-[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
 
 ### <a name="configure-company-branding"></a>Şirket markası yapılandırma
 
@@ -191,7 +189,7 @@ Kullanıcı akış sayfalarınızı özelleştirmek için önce Azure Active Dir
 1. Şirket markasını etkinleştirmek istediğiniz kullanıcı akışını seçin. Şirket markası, standart *oturum açma* ve standart *profil düzenlemesi* Kullanıcı akış türleri için **desteklenmez** .
 1. **Özelleştir**altında **sayfa düzenleri**' ni seçin ve ardından marka yapmak istediğiniz düzeni seçin. Örneğin **Birleşik kaydolma veya oturum açma sayfası**' nı seçin.
 1. **Sayfa düzeni sürümü (Önizleme)** için sürüm **1.2.0** veya üzerini seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Kullanıcı akışındaki tüm sayfaları markalaştırmak isterseniz, Kullanıcı akışındaki her sayfa düzeni için sayfa düzeni sürümünü ayarlayın.
 

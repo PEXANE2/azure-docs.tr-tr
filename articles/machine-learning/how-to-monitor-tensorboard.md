@@ -5,17 +5,17 @@ description: Deneme çalıştırma geçmişlerini görselleştirmek ve hiper par
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: maxluk
-ms.author: maxluk
+author: minxia
+ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: da5c128b9e0befd69e1ded6b47644a3c64b8f657
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b6d4ac2727e558ed3d4538b6d325b7304d7928f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250887"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard ve Azure Machine Learning deneme çalıştırmalarını ve ölçümlerini görselleştirin
 
@@ -25,7 +25,7 @@ Bu makalede, deneme çalışmalarınızı ve ölçümlerini, ana Azure Machine L
 [Tensorboard](https://www.tensorflow.org/tensorboard/r1/overview) , deneme yapınızı ve performansınızı incelemek ve anlamak için bir Web uygulamaları paketidir.
 
 Azure Machine Learning denemeleri ile TensorBoard 'ı nasıl başladığınıza, deneme türüne bağlıdır:
-+ Denemeniz, PyTorch, Chainer ve TensorFlow denemeleri gibi TensorBoard tarafından tüketilebilir olan günlük dosyalarını yerel olarak çıktılarsam, [TensorBoard 'ı doğrudan](#direct) deneme 'nin çalıştırma geçmişinden başlatabilirsiniz. 
++ Denemeniz, PyTorch, Chainer ve TensorFlow denemeleri gibi TensorBoard tarafından tüketilebilir olan günlük dosyalarını yerel olarak çıktılarsam, [TensorBoard 'ı doğrudan](#launch-tensorboard) deneme 'nin çalıştırma geçmişinden başlatabilirsiniz. 
 
 + Örneğin, Scikit-öğrenme veya Azure Machine Learning denemeleri gibi TensorBoard tüketilebilir dosyalarını yerel olarak çıkışı olmayan denemeleri için, çalıştırma geçmişlerini TensorBoard günlükleri olarak dışarı aktarmak ve bu uygulamayı buradan çalıştırmak için [ `export_to_tensorboard()` yöntemini](#export) kullanın. 
 
@@ -35,30 +35,22 @@ Azure Machine Learning denemeleri ile TensorBoard 'ı nasıl başladığınıza,
 ## <a name="prerequisites"></a>Önkoşullar
 
 * TensorBoard 'u başlatmak ve deneme çalışma geçmişlerinizi görüntülemek için, denemeleri ' nin, ölçümlerini ve performansını izlemek için daha önce günlüğe kaydetme özelliğinin etkinleştirilmesi gerekir.  
-
 * Bu belgedeki kod aşağıdaki ortamların birinde çalıştırılabilir: 
-
     * Azure Machine Learning işlem örneği-indirme veya yükleme gerekli değil
-
         * Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .
-
         * Not defteri sunucusundaki örnekler klasöründe, bu dizinlere giderek iki tamamlanmış ve genişletilmiş Not defteri bulun:
             * **> > > nasıl yapılır---------------------by-by**
-
             * **nasıl kullanılır-azureml > izleme ve izleme-denemeleri > tensorboard. ipynb**
-
     * Kendi Juptyer Not defteri sunucunuz
        * [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) ek Ile birlikte yükleyip `tensorboard`
         * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).  
         * [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
-  
-<a name="direct"></a>
 
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Seçenek 1: çalışma geçmişini TensorBoard 'da doğrudan görüntüleme
 
 Bu seçenek, PyTorch, Chainer ve TensorFlow denemeleri gibi TensorBoard tarafından tüketilebilir olan günlük dosyalarını yerel olarak veren denemeleri için geçerlidir. Bu, denemenizin durumu değilse, bunun yerine [ `export_to_tensorboard()` yöntemini](#export) kullanın.
 
-Aşağıdaki örnek kod, bir uzak işlem hedefi, Azure Machine Learning Işlem için TensorFlow 'un deposundan [Mnist demo deneme](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py) deneyimini kullanır. Daha sonra, modelimizi SDK 'nın özel [TensorFlow tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)ile eğiyoruz ve ardından tensorboard 'i bu TensorFlow deneyine karşı başlatın, diğer bir deyişle, tensorboard olay dosyalarını yerel olarak veren bir deneyimiz.
+Aşağıdaki örnek kod, bir uzak işlem hedefi, Azure Machine Learning Işlem için TensorFlow 'un deposundan [Mnist demo deneme](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py) deneyimini kullanır. Ardından, TensorFlow modelini eğitmek için bir çalıştırma yapılandırıp başlatacağız ve ardından TensorBoard 'i bu TensorFlow deneyine karşı başlatacak.
 
 ### <a name="set-experiment-name-and-create-project-folder"></a>Deneme adını ayarla ve proje klasörü oluştur
 
@@ -92,9 +84,9 @@ Bu kod dosyası mnist_with_summaries. Kopyala, vb. çağıran satırlar olduğun
 
  ### <a name="configure-experiment"></a>Deneme yapılandırma
 
-Aşağıda, denememiz yapılandırır ve Günlükler ve veriler için Dizin ayarladık. Bu Günlükler, daha sonra, TensorBoard 'ın daha sonra eriştiği yapıt hizmetine yüklenir.
+Aşağıda, denememiz yapılandırır ve Günlükler ve veriler için Dizin ayarladık. Bu Günlükler, çalışma geçmişine yüklenecek ve bu da TensorBoard 'in daha sonra eriştiği anlamına gelir.
 
->[!Note]
+> [!Note]
 > Bu TensorFlow örneği için, yerel makinenize TensorFlow yüklemeniz gerekir. Diğer bir deyişle, yerel makine TensorBoard çalıştırdığı için, TensorBoard modülüne (yani, TensorFlow ile birlikte dahil edilen) Bu not defteri 'nin çekirdeğine erişilebilir olması gerekir.
 
 ```Python
@@ -113,9 +105,9 @@ if not path.exists(data_dir):
 
 os.environ["TEST_TMPDIR"] = data_dir
 
-# Writing logs to ./logs results in their being uploaded to Artifact Service,
+# Writing logs to ./logs results in their being uploaded to the run history,
 # and thus, made accessible to our TensorBoard instance.
-script_params = ["--log_dir", logs_dir]
+args = ["--log_dir", logs_dir]
 
 # Create an experiment
 exp = Experiment(ws, experiment_name)
@@ -127,7 +119,7 @@ Bu deneme için bir AmlCompute kümesi oluşturacağız, ancak denemeleri 'niz h
 ```Python
 from azureml.core.compute import ComputeTarget, AmlCompute
 
-cluster_name = "cpucluster"
+cluster_name = "cpu-cluster"
 
 cts = ws.compute_targets
 found = False
@@ -151,19 +143,23 @@ compute_target.wait_for_completion(show_output=True, min_node_count=None)
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
-### <a name="submit-run-with-tensorflow-estimator"></a>TensorFlow tahmin aracı ile çalıştırma gönder
+### <a name="configure-and-submit-training-run"></a>Eğitim çalıştırmasını yapılandırma ve gönderme
 
-TensorFlow tahmin aracı, bir işlem hedefinde bir TensorFlow eğitim işi başlatmanın basit bir yolunu sağlar. Bu, [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&preserve-view=true) herhangi bir çerçeveyi desteklemek için kullanılabilen genel sınıf aracılığıyla uygulanır. Genel tahmin aracı kullanan eğitim modelleri hakkında daha fazla bilgi için bkz. [tahmin aracı kullanarak Azure Machine Learning modelleri eğitme](how-to-train-ml-models.md)
+Bir ScriptRunConfig nesnesi oluşturarak bir eğitim işi yapılandırın.
 
 ```Python
-from azureml.train.dnn import TensorFlow
+from azureml.core import ScriptRunConfig
+from azureml.core import Environment
 
-tf_estimator = TensorFlow(source_directory=exp_dir,
-                          compute_target=compute_target,
-                          entry_script='mnist_with_summaries.py',
-                          script_params=script_params)
+# Here we will use the TensorFlow 2.2 curated environment
+tf_env = Environment.get(ws, 'AzureML-TensorFlow-2.2-GPU')
 
-run = exp.submit(tf_estimator)
+src = ScriptRunConfig(source_directory=exp_dir,
+                      script='mnist_with_summaries.py',
+                      arguments=args,
+                      compute_target=compute_target,
+                      environment=tf_env)
+run = exp.submit(src)
 ```
 
 ### <a name="launch-tensorboard"></a>TensorBoard Başlat
@@ -184,8 +180,8 @@ tb.start()
 tb.stop()
 ```
 
->[!Note]
- Bu örnek TensorFlow kullanırken, TensorBoard, PyTorch veya Chainer modelleriyle kolayca kullanılabilir. TensorFlow, TensorBoard çalıştıran makinede kullanılabilir olmalıdır, ancak PyTorch veya Chainer hesaplamaları yapan makinede gerekli değildir. 
+> [!Note]
+> Bu örnek TensorFlow kullanırken, TensorBoard, PyTorch veya Chainer ile kolayca kullanılabilir. TensorFlow, TensorBoard çalıştıran makinede kullanılabilir olmalıdır, ancak PyTorch veya Chainer hesaplamaları yapan makinede gerekli değildir. 
 
 
 <a name="export"></a>
@@ -273,11 +269,11 @@ export_to_tensorboard(root_run, logdir)
 root_run.complete()
 ```
 
->[!Note]
- Ayrıca, çalıştırmanın adını belirterek belirli bir çalıştırmayı TensorBoard öğesine dışarı aktarabilirsiniz.  `export_to_tensorboard(run_name, logdir)`
+> [!Note]
+> Ayrıca, çalıştırmanın adını belirterek belirli bir çalıştırmayı TensorBoard öğesine dışarı aktarabilirsiniz.  `export_to_tensorboard(run_name, logdir)`
 
 ### <a name="start-and-stop-tensorboard"></a>TensorBoard başlatma ve durdurma
-Bu deneme için çalıştırma geçmişimiz verildikten sonra, TensorBoard 'ı [Start ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#&preserve-view=truestart-start-browser-false-) yöntemiyle başlatabiliriz. 
+Bu deneme için çalıştırma geçmişimiz verildikten sonra, TensorBoard 'ı [Start ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true#&preserve-view=truestart-start-browser-false-) yöntemiyle başlatabiliriz. 
 
 ```Python
 from azureml.tensorboard import Tensorboard
@@ -289,7 +285,7 @@ tb = Tensorboard([], local_root=logdir, port=6006)
 tb.start()
 ```
 
-İşiniz bittiğinde, TensorBoard nesnesinin [Stop ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#&preserve-view=truestop--) yöntemini çağırdığınızdan emin olun. Aksi halde, ana bilgisayar çekirdeğini kapatıncaya kadar TensorBoard çalışmaya devam edecektir. 
+İşiniz bittiğinde, TensorBoard nesnesinin [Stop ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true#&preserve-view=truestop--) yöntemini çağırdığınızdan emin olun. Aksi halde, ana bilgisayar çekirdeğini kapatıncaya kadar TensorBoard çalışmaya devam edecektir. 
 
 ```python
 tb.stop()

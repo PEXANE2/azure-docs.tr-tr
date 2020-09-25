@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683870"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259229"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Onfido yapılandırma öğreticisi
 
@@ -24,7 +24,7 @@ Bu örnek öğreticide, Azure AD B2C [Onfido](https://onfido.com/)ile tümleşti
 
 Bu örnekte, kimlik doğrulaması yapmak için kaydolma veya oturum açma akışındaki Onfido 'ın hizmetini bağlayacağız. Kullanıcının hangi ürün ve hizmete erişebileceği hakkında bilinçli kararlar, Onfido 'ın sonuçlarına göre yapılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -50,7 +50,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![onfido mimarisi için ekran görüntüsü-diyagram](media/partner-onfido/onfido-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcı, yeni bir hesap oluşturmak için kaydolun ve sayfaya bilgi girer. Azure AD B2C Kullanıcı özniteliklerini toplar. Azure AD B2C barındırılan onfido istemci uygulaması, Kullanıcı bilgilerini kontrol eder.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -94,7 +94,7 @@ Uygulama ayarları [Azure 'Daki App Service](https://docs.microsoft.com/azure/ap
 
 1. [Depolama hesabınızda bir BLOB depolama kapsayıcısı](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) ayarlayın
 
-2. Kullanıcı arabirimi dosyalarını Kullanıcı arabirimi klasöründen blob kapsayıcınıza depolayın.
+2. Kullanıcı arabirimi dosyalarını [Kullanıcı arabirimi klasöründen](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) blob kapsayıcınıza depolayın.
 
 3. Aşağıdaki yönergeleri izleyerek, oluşturduğunuz depolama kapsayıcısına CORS erişimi sağlar:
 
@@ -124,7 +124,7 @@ Uygulama ayarları [Azure 'Daki App Service](https://docs.microsoft.com/azure/ap
 
 #### <a name="replace-the-configuration-values"></a>Yapılandırma değerlerini Değiştir
 
-Belirtilen özel ilkelerde, aşağıdaki yer tutucuları bulun ve örneğinizi karşılık gelen değerlerle değiştirin.
+Belirtilen [özel ilkelerde](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/Policies), aşağıdaki yer tutucuları bulun ve örneğinizi karşılık gelen değerlerle değiştirin.
 
 | Yer tutucu | Değer ile Değiştir | Örnek  |
 |:---------------|:----------------|:-------------------|

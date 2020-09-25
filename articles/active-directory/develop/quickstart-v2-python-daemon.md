@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity platform Python Daemon | Mavisi
-description: Bir Python işleminin bir erişim belirteci alabilir ve uygulamanın kendi kimliğini kullanarak Microsoft Identity platform uç noktası tarafından korunan bir API 'yi nasıl çağırabileceğinizi öğrenin
+title: "Hızlı başlangıç: Python Daemon 'dan Microsoft Graph çağırma | Mavisi"
+titleSuffix: Microsoft identity platform
+description: Bu hızlı başlangıçta, bir Python işleminin bir erişim belirtecini nasıl alabileceğinizi ve uygulamanın kendi kimliğini kullanarak Microsoft Identity platform uç noktası tarafından korunan bir API 'YI nasıl çağırabileceğinizi öğrenirsiniz.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2c280b8241819155f32942a399caa7f916db3827
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683757"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257750"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Hızlı başlangıç: uygulama kimliğini kullanarak bir Python konsol uygulamasından belirteç alma ve Microsoft Graph API çağırma
 
@@ -25,7 +26,7 @@ Bu hızlı başlangıçta, uygulamanın kimliğini kullanarak bir erişim belirt
 > [!div renderon="docs"]
 > ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -189,7 +190,7 @@ app = msal.ConfidentialClientApplication(
     client_credential=config["secret"])
 ```
 
-> | Burada: |Açıklama |
+> | Burada: |Description |
 > |---------|---------|
 > | `config["secret"]` | Azure portalında uygulama için istemci gizli dizisi oluşturulmuştur. |
 > | `config["client_id"]` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
@@ -210,7 +211,7 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 ```
 
-> |Burada:| Açıklama |
+> |Burada:| Description |
 > |---------|---------|
 > | `config["scope"]` | İstenen kapsamları içerir. Gizli istemciler için, `{Application ID URI}/.default` istenen kapsamların Azure portalında ayarlanmış uygulama nesnesi içinde statik olarak tanımlanmış olduğunu göstermek için şuna benzer biçimi kullanmalıdır (Microsoft Graph için, `{Application ID URI}` işaret eder `https://graph.microsoft.com` ). Özel Web API 'Leri için, `{Application ID URI}` Azure portalının uygulama kaydı 'nda (Önizleme) **bir API 'yi kullanıma** sunma bölümünde tanımlanmıştır. |
 
@@ -224,18 +225,3 @@ Daemon uygulamaları hakkında daha fazla bilgi için bkz. senaryo giriş sayfas
 
 > [!div class="nextstepaction"]
 > [Web API 'Lerini çağıran Daemon uygulaması](scenario-daemon-overview.md)
-
-Daemon uygulaması öğreticisi için bkz.:
-
-> [!div class="nextstepaction"]
-> [Daemon Python konsol öğreticisi](https://github.com/Azure-Samples/ms-identity-python-daemon)
-
-İzinler ve onay hakkında daha fazla bilgi edinin:
-
-> [!div class="nextstepaction"]
-> [İzinler ve onay](v2-permissions-and-consent.md)
-
-Bu senaryoya yönelik kimlik doğrulama akışı hakkında daha fazla bilgi edinmek için bkz. OAuth 2,0 istemci kimlik bilgileri akışı:
-
-> [!div class="nextstepaction"]
-> [İstemci kimlik bilgileri OAuth akışı](v2-oauth2-client-creds-grant-flow.md)

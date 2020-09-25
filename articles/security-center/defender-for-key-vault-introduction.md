@@ -3,17 +3,17 @@ title: Key Vault için Azure Defender-avantajlar ve Özellikler
 description: Key Vault için Azure Defender 'ın avantajları ve özellikleri hakkında bilgi edinin.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 06818e443568918e2ee87bbfbec81836ea85648b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 78a522922f8580003e2d2ff588cbf10dbf5fff9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301780"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Key Vault için Azure Defender 'a giriş
 
@@ -27,7 +27,7 @@ Azure yerel için **Key Vault Için Azure Defender** 'ı etkinleştirin ve Azure
 |----|:----|
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|**Key Vault Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-key-vault"></a>Key Vault için Azure Defender 'ın avantajları nelerdir?
@@ -42,6 +42,11 @@ Key Vault için Azure Defender 'dan bir uyarı aldığınızda, [Key Vault Için
 Uyarılar Key Vault **güvenlik** sayfasında, Azure Defender panosunda ve Güvenlik Merkezi 'nin Uyarılar sayfasında görüntülenir.
 
 :::image type="content" source="./media/defender-for-key-vault-intro/key-vault-security-page.png" alt-text="Azure Key Vault güvenlik sayfası":::
+
+
+> [!TIP]
+> [Azure Güvenlik Merkezi 'nde Azure Key Vault tehdit algılamayı doğrulama](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)konusundaki yönergeleri Izleyerek Azure Defender 'ın Key Vault uyarıları benzetimi yapabilirsiniz.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

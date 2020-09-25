@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8f356cb935f1cf63408b6fbc604f139439022a4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 433d519cc71b8bb218569679c94142658f3c9416
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646609"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255271"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağı ile tümleştirme
 
@@ -54,6 +54,10 @@ App Service uygulamalar çalışan rollerinde barındırılır. Temel ve daha y�
 
 Bölgesel VNet tümleştirmesi etkinleştirildiğinde, uygulamanız normal olarak aynı kanallar üzerinden İnternet 'e giden çağrılar yapar. Uygulama özellikleri portalında listelenen giden adresler, uygulamanız tarafından halen kullanılan adreslerdir. Uygulamanız için yapılan değişiklikler hizmet uç noktası güvenliği olan hizmetlere yapılan çağrılardır veya RFC 1918 adresleri sanal ağınıza gider. WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlanırsa, tüm giden trafik sanal ağınıza gönderilebilir.
 
+> [!NOTE]
+> `WEBSITE_VNET_ROUTE_ALL` Şu anda Windows kapsayıcılarında desteklenmiyor.
+> 
+
 Özelliği, çalışan başına yalnızca bir sanal arabirimi destekler. Çalışan başına bir sanal arabirim, App Service plan başına bir bölgesel VNet tümleştirmesi anlamına gelir. Aynı App Service planındaki tüm uygulamalar aynı VNet tümleştirmesini kullanabilir. Ek bir sanal ağa bağlanmak için bir uygulamaya ihtiyacınız varsa, başka bir App Service planı oluşturmanız gerekir. Kullanılan sanal arabirim, müşterilerin doğrudan erişimine sahip olduğu bir kaynak değildir.
 
 Bu teknolojinin nasıl çalıştığı doğası nedeniyle, VNet tümleştirmesiyle kullanılan trafik Azure ağ Izleyicisi veya NSG akış günlüklerinde gösterilmez.
@@ -72,7 +76,8 @@ Ağ Geçidi gerekli VNet tümleştirmesi, başka bir bölgedeki VNet 'e veya kla
 Ağ Geçidi için gerekli VNet tümleştirmesini kullanamazsınız:
 
 * Azure ExpressRoute ile bağlantılı bir VNet ile.
-* Bir Linux uygulamasından
+* Bir Linux uygulamasından.
+* Bir [Windows kapsayıcısından](quickstart-custom-container.md).
 * Hizmet uç noktası güvenliği sağlanmış kaynaklara erişmek için.
 * ExpressRoute ve Noktadan siteye veya siteden siteye VPN 'Leri destekleyen bir birlikte bulunma ağ geçidi ile.
 

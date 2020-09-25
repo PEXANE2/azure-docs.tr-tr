@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: e75921e5ee5b148d81c637800f46403d3d410f42
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.date: 09/23/2020
+ms.openlocfilehash: fd345f0eed5bd7140047b12a3c1a7471872c8bb7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270449"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 'de arama etkinliği
 
@@ -31,7 +31,7 @@ Arama etkinliği, bir yapılandırma dosyasının veya tablosunun içeriğini ok
 
 Aşağıdaki veri kaynakları arama etkinliği için desteklenir. 
 
-Arama etkinliği 5000 satıra kadar sürebilir; Sonuç kümesi daha fazla kayıt içeriyorsa, ilk 5000 satır döndürülür. Arama etkinliği çıkışı, boyutu 2 MB 'a kadar destekler. boyut sınırı aşarsa etkinlik başarısız olur. Şu anda, zaman aşımından önce arama etkinliğinin en uzun süresi bir saattir.
+Arama etkinliği 5000 satıra kadar sürebilir; Sonuç kümesi daha fazla kayıt içeriyorsa, ilk 5000 satır döndürülür. Arama etkinliği çıkışı 4 MB 'lık büyüklüğü destekler, boyut sınırı aşarsa etkinlik başarısız olur. Şu anda, zaman aşımından önce arama etkinliğinin en uzun süresi bir saattir.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 

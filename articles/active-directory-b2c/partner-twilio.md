@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 840d2afa72de290d5534adc766f8634efa6926e8
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259077"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio Verify uygulamasını Azure Active Directory B2C ile tümleştirme
 
@@ -34,8 +34,8 @@ Başlamak için şunlar gerekir:
 
 Aşağıdaki bileşenler Twilio çözümünü yapar:
 
-- .NET PSD2 demo Web uygulaması, oturum açma veya kaydolma ve kukla yüksek riskli bir işlem gerçekleştirme yeteneği sağlar.
-- Azure AD B2C Birleşik oturum açma ve kaydolma ilkesi.
+- .NET [PSD2 demo Web uygulaması](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App), oturum açma veya kaydolma ve kukla yüksek riskli bir işlem gerçekleştirme yeteneği sağlar.
+- Azure AD B2C Birleşik [oturum açma ve kaydolma ilkesi](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy).
 - Twilio Verify API ile tümleşik Azure AD B2C ilkesi `id_token_hint` .
 - `.well-known`Bir openıdconnect uç noktasını bir, doğrulamaya izin verecek şekilde barındıran .NET Web uygulaması `id_token_hint` .
 
@@ -73,7 +73,7 @@ Aşağıdaki bileşenler Twilio çözümünü yapar:
    <add key="ida:RedirectUri" value="https://your hosted psd2 demo app url/" />
    ```
 
-2. Web uygulaması, KIMLIK belirteci ipucu oluşturucuyu ve meta veri uç noktasını da barındırır.
+2. [Web uygulaması](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App) , kimlik belirteci ipucu oluşturucuyu ve meta veri uç noktasını da barındırır.
    - İmza sertifikanızı bu [örnek açıklamasında](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#creating-a-signing-certificate)açıklandığı gibi oluşturun.
    - web.config sertifikanıza göre aşağıdaki satırları güncelleştirin:
    
@@ -86,7 +86,7 @@ Aşağıdaki bileşenler Twilio çözümünü yapar:
 
 4. Uygulamanın barındırıldığı URL 'ye eşdeğer bir yanıt URL 'SI ekleyerek Azure AD B2C uygulamanızın kaydını güncelleştirin.
 
-5. İlke dosyalarını açın ve tüm örneklerini  `contoso` kiracı adınızla değiştirin.
+5. [İlke dosyalarını](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy) açın ve tüm örneklerini  `contoso` kiracı adınızla değiştirin.
 
 6. Teknik profil **özel-SMS-kayıt**Twilio REST API bulun. Öğesini  `ServiceURL`   Twilio AccountSid Ile ve Kimden numarası ile satın aldığınız telefon numaranız ile güncelleştirin.
 

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015815"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256765"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft Identity platform için uygulama türleri
 
@@ -117,6 +117,9 @@ Mobil ve Masaüstü uygulamaları gibi cihaza yüklenmiş uygulamalar, genellikl
 Bu akışta, uygulama, Kullanıcı oturum açtığında Microsoft Identity platform uç noktasından bir yetkilendirme kodu alır. Yetkilendirme kodu, uygulamanın oturum açmış olan kullanıcı adına arka uç hizmetlerini çağırma iznini temsil eder. Uygulama, bir OAuth 2,0 erişim belirteci ve yenileme belirteci için arka planda yetkilendirme kodunu değiş tokuş edebilir. Uygulama, HTTP isteklerindeki Web API 'Lerinde kimlik doğrulaması yapmak için erişim belirtecini kullanabilir ve eski erişim belirteçlerinin süre dolduğunda yeni erişim belirteçleri almak için yenileme belirtecini kullanabilir.
 
 ![Yerel uygulama kimlik doğrulama akışını gösterir](./media/v2-app-types/convergence-scenarios-native.svg)
+
+> [!NOTE]
+> Uygulama varsayılan System WebView 'u kullanıyorsa, [Azure AD kimlik doğrulaması ve yetkilendirme hata kodlarında](reference-aadsts-error-codes.md)"oturum açma sayfamı Onayla" işlevlerinden ve hata kodu AADSTS50199 hakkındaki bilgileri denetleyin.
 
 ## <a name="daemons-and-server-side-apps"></a>Daemon 'ları ve sunucu tarafı uygulamalar
 

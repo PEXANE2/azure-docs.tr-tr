@@ -3,16 +3,16 @@ title: Azure Güvenlik Merkezi güvenlik önerilerini ve güvenli puanı bir kay
 description: Bir kaynağı güvenlik önerilerinden ve güvenli puanın dışında bırakma hakkında bilgi edinin
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b4d043812800bec1070624382755aeb355ea595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3ac2f82882dfd7eb1e15e9a5287cf1d6f5b32d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941970"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301542"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Önerilerden ve güvenli puanın kaynağını muaf tutma
 
@@ -33,7 +33,7 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 |Yayın durumu:|Önizleme|
 |Fiyat|Bu, Azure Defender müşterileri için ek ücret ödemeden sunulan bir Premium Azure ilke özelliğidir. Diğer kullanıcılar için ücretler gelecekte uygulanabilir.|
 |Gerekli roller ve izinler:|Muafiyet oluşturmak için **abonelik sahibi** veya **ilke katılımcısı**<br>Bir kural oluşturmak için Azure Ilkesinde ilkeleri düzenleme izinlerinizin olması gerekir.<br>[Azure Ilkesinde RBAC izinlerinde](../governance/policy/overview.md#rbac-permissions-in-azure-policy)daha fazla bilgi edinin.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -62,7 +62,7 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 
     :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Muafiyeti değiştirme":::
 
-    Her bir istisna için nedeni tabloya dahil edilir. 
+    Her bir istisna için neden tabloya (1) dahildir.
 
     Bir istisnayı değiştirmek veya silmek için (2) gösterildiği gibi üç nokta menüsünü ("...") seçin.
 

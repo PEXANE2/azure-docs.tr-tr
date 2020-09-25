@@ -3,12 +3,12 @@ title: Azure Lab Services 'de Linux için grafik uzak masaüstünü etkinleştir
 description: Azure Lab Services 'deki bir laboratuvarda Linux sanal makineleri için Uzak Masaüstü 'nü etkinleştirmeyi öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4f50510adf978aeb63b2b5337d21e6f9dec76196
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445772"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251618"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Azure Lab Services 'da Linux sanal makineleri için grafik uzak masaüstü 'nü etkinleştirme
 Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
@@ -46,7 +46,7 @@ Bu adım yalnızca RDP kullanarak bağlanmak için gereklidir.  Bunun yerine X2G
 
 1.  Laboratuvar oluşturma sırasında, eğitmenin **Uzak Masaüstü bağlantısı etkinleştirme**seçeneği vardır.  Eğitmen, Linux VM üzerinde bir RDP uzak masaüstü oturumu için gereken bağlantı noktasını açmak için bu seçeneği **etkinleştirmelidir** .  Aksi takdirde, bu seçenek **devre dışı**BıRAKıLıRSA yalnızca SSH bağlantı noktası açılır.
   
-    ![Linux görüntüsü için Uzak Masaüstü bağlantısını etkinleştirme](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+    !["Uzak Masaüstü Bağlantısı etkinleştir" seçeneği ile "yeni laboratuvar" penceresini gösteren ekran görüntüsü.](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
 2. **Uzak Masaüstü bağlantısı etkinleştirme** Iletisi kutusunda **Uzak Masaüstü ile devam et**' i seçin. 
 
@@ -107,4 +107,4 @@ X2Go istemcisi, X2Go yapılandırılmış bir şablon sanal makinesine bağlanma
 Bir eğitmen, şablon sanal makinelerinde ve yayınladığında RDP veya X2Go ayarladıktan sonra, sanal makinelere GUI uzak masaüstü veya SSH aracılığıyla bağlanabilir.
 
 Daha fazla bilgi için bkz.
- - [Linux VM 'ye bağlanma](how-to-use-remote-desktop-linux-student.md)
+ - [Linux VM'ye bağlanma](how-to-use-remote-desktop-linux-student.md)

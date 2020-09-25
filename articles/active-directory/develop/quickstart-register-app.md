@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: d52673f1c66c8e053639b24bb31a3159a75736b9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029061"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258141"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme
 
@@ -25,18 +25,18 @@ Bu hızlı başlangıçta, Microsoft kimlik platformunun uygulamanız ve kullan�
 
 Microsoft Identity platformunun kimlik ve erişim yönetimi (ıAM) gerçekleştirmesini istediğiniz her uygulama için gereklidir. Bir Web veya mobil uygulama gibi bir istemci uygulaması ya da bir istemci uygulamasını yedekleyen bir Web API 'SI olup olmadığı, kaydetme, uygulamanız ile kimlik sağlayıcısı arasında bir güven ilişkisi oluşturur, Microsoft Identity platform.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı- [ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Hızlı başlangıç tamamlama: kiracı ayarlama](quickstart-create-new-tenant.md)
 
-## <a name="register-an-application"></a>Bir uygulamayı kaydetme
+## <a name="register-an-application"></a>Uygulamaları kaydetme
 
-Uygulamanızı kaydetmek, uygulamanız ve Microsoft Identity platform arasında bir güven ilişkisi kurar. Güven tek yönlü: uygulamanız Microsoft Identity platformu ' na güvendiğinden, farklı bir şekilde değildir.
+Uygulamanızı kaydetmek, uygulamanız ve Microsoft Identity platform arasında bir güven ilişkisi kurar. Güven tek yönlü: uygulamanız Microsoft Identity platformu ' na güvendiğinden, bunun diğer bir yolu değildir.
 
 Uygulama kaydını oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet**altında **uygulama kayıtları**ve ardından **Yeni kayıt**' ı seçin.

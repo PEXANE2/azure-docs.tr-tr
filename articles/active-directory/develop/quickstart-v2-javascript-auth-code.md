@@ -1,7 +1,7 @@
 ---
 title: Kullanıcılar, kimlik doğrulama kodu ile JavaScript tek sayfalı uygulamalarda (SPA) oturum açın | Mavisi
 titleSuffix: Microsoft identity platform
-description: JavaScript uygulamasının Microsoft Identity platformunu kullanarak erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenin.
+description: Bir JavaScript tek sayfalı uygulamasının (SPA), yetkilendirme kodu akışını kullanarak kişisel hesap, iş hesabı ve okul hesaplarının kullanıcılarına nasıl oturum açıp sağlayabildiğini öğrenin.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 461f05b90b79852194d657a5dcbc3ba7583cff8d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
+ms.openlocfilehash: 224ce2ea64016db7b632ac36193f39e679c8da4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115195"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257988"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: Kullanıcı oturum açma ve kimlik doğrulama kod akışını kullanarak JavaScript SPA 'da erişim belirteci edinme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz bir Azure aboneliği oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -39,7 +39,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Seçenek 1 (Express): uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. [Azure portalında](https://portal.azure.com) oturum açın.
+> 1. [Azure Portal](https://portal.azure.com) oturum açın.
 > 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure Active Directory (Azure AD) kiracısına ayarlayın.
 > 1. [Uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)’nı seçin.
 > 1. Uygulamanız için bir ad girin.
@@ -51,7 +51,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 >
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 >
-> 1. [Azure portalında](https://portal.azure.com) oturum açın.
+> 1. [Azure Portal](https://portal.azure.com) oturum açın.
 > 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabınızı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısı olarak ayarlayın.
 > 1. [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908)’nı seçin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
@@ -111,9 +111,9 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 >
 > `msalConfig`Bölümündeki değerleri burada açıklandığı gibi değiştirin:
 >
-> - `Enter_the_Application_Id_Here`, kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
-> - `Enter_the_Cloud_Instance_Id_Here`, Azure bulutu örneğidir. Ana veya küresel Azure bulutu için girin `https://login.microsoftonline.com/` . **Ulusal** bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](authentication-national-cloud.md).
-> - `Enter_the_Tenant_info_here`aşağıdakilerden birine ayarlanır:
+> - `Enter_the_Application_Id_Here` , kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
+> - `Enter_the_Cloud_Instance_Id_Here` , Azure bulutu örneğidir. Ana veya küresel Azure bulutu için girin `https://login.microsoftonline.com/` . **Ulusal** bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](authentication-national-cloud.md).
+> - `Enter_the_Tenant_info_here` aşağıdakilerden birine ayarlanır:
 >   - Uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adı**ile değiştirin. Örneğin, `contoso.microsoft.com`.
 >   - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri ile değiştirin `organizations` .
 >   - Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri ile değiştirin `common` . **Bu hızlı başlangıç için**kullanın `common` .
@@ -152,7 +152,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 >
 > [!div renderon="docs"]
 >
-> `Enter_the_Graph_Endpoint_Here`, API çağrılarının üzerinde hale getirilme bitiş noktasıdır. Ana (genel) Microsoft Graph API hizmeti için `https://graph.microsoft.com/` (sondaki eğik çizgiyi dahil et) girin. Ulusal bulutlarda Microsoft Graph hakkında daha fazla bilgi için bkz. [Ulusal bulut dağıtımı](/graph/deployments).
+> `Enter_the_Graph_Endpoint_Here` , API çağrılarının üzerinde hale getirilme bitiş noktasıdır. Ana (genel) Microsoft Graph API hizmeti için `https://graph.microsoft.com/` (sondaki eğik çizgiyi dahil et) girin. Ulusal bulutlarda Microsoft Graph hakkında daha fazla bilgi için bkz. [Ulusal bulut dağıtımı](/graph/deployments).
 >
 > `graphMeEndpoint` `graphMailEndpoint` Ana (global) Microsoft Graph API hizmetini kullanıyorsanız, *graphConfig.js* dosyadaki ve değerleri aşağıdakine benzer olmalıdır:
 >
@@ -202,4 +202,4 @@ npm install @azure/msal-browser
 Bu hızlı başlangıçta kullanılan uygulamayı oluşturmaya yönelik daha ayrıntılı bir adım adım kılavuz için aşağıdaki öğreticiye bakın:
 
 > [!div class="nextstepaction"]
-> [Oturum açma ve MS Graph >çağırma öğreticisi](./tutorial-v2-javascript-auth-code.md)
+> [Oturum açma ve MS Graph >çağırma öğreticisi ](./tutorial-v2-javascript-auth-code.md)

@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 cihazında sorun gidermek için Tanılama Aracı | Microsoft Docs
-description: StorSimple cihaz modlarını açıklar ve cihaz modunu değiştirmek için StorSimple için Windows PowerShell kullanmayı açıklar.
+description: Bu makale, tanılama aracına genel bir bakış sağlar ve aracın bir StorSimple aygıtıyla nasıl kullanılabileceğini açıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d3e9aff1a38bbabc4f878a4d2e2fb96dafe59c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca674f38b5c327123bc1d13dd284f84f614881b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300454"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>8000 serisi cihaz sorunlarını gidermek için StorSimple Tanılama aracını kullanın
 
@@ -414,11 +414,11 @@ Controller0>
 
 Aşağıda, sistem bilgileri 'ndeki çeşitli Windows PowerShell parametrelerinin ne şekilde eşlendiğini açıklayan bir tablo verilmiştir. 
 
-| PowerShell parametresi    | Açıklama  |
+| PowerShell parametresi    | Description  |
 |-------------------------|------------------|
 | Örnek Kimliği             | Her denetleyicinin benzersiz bir tanımlayıcısı veya onunla ilişkili bir GUID 'SI vardır.|
 | Name                    | Cihaz dağıtımı sırasında Azure portal tarafından yapılandırılan cihazın kolay adı. Varsayılan kolay ad, cihaz seri numarasıdır. |
-| Model                   | StorSimple 8000 serisi cihazınızın modeli. Model 8100 veya 8600 olabilir.|
+| Modelleme                   | StorSimple 8000 serisi cihazınızın modeli. Model 8100 veya 8600 olabilir.|
 | SerialNumber            | Cihaz seri numarası fabrikada atanır ve 15 karakter uzunluğundadır. Örneğin, 8600-SHX0991003G44HT şunu gösterir:<br> 8600 – cihaz modelidir.<br>SHX – üretim sitesidir.<br> 0991003-belirli bir üründür. <br> G44HT-son 5 basamak, benzersiz seri numaraları oluşturmak için artırılır. Bu sıralı bir küme olmayabilir.|
 | TimeZone                | Cihaz dağıtımı sırasında Azure portal yapılandırılan cihaz saat dilimi.|
 | CurrentController       | StorSimple cihazınızın Windows PowerShell arabirimi aracılığıyla bağlandığınız denetleyici.|

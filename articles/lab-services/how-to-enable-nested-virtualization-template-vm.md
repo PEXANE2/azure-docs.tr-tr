@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services | bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştirme | Microsoft Docs
-description: İçinde birden çok VM içeren bir şablon VM 'si oluşturmayı öğrenin.  Diğer bir deyişle, Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştirin.
+description: Bu makalede, Azure Lab Services bir şablon makinesinde iç içe sanallaştırmayı ayarlamayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a2f045cbf7c107e7f5dbeff0d78bf5e8d9d8fba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 319695088e967dc3156ecab5c1b9458e77fcc186
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445245"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251483"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştir
 
@@ -25,7 +25,7 @@ ms.locfileid: "85445245"
 - [Azure 'da iç içe sanallaştırma](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
 - [Azure VM 'de iç içe sanallaştırmayı etkinleştirme](../virtual-machines/windows/nested-virtualization.md)
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 İç içe sanallaştırmaya sahip bir laboratuvar ayarlamadan önce göz önünde bulundurmanız gereken birkaç nokta vardır.
 

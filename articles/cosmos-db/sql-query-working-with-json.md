@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB 'de JSON ile çalışma
+title: Azure Cosmos DB'de JSON ile çalışma
 description: İç içe geçmiş JSON özelliklerine sorgu ve erişme ve Azure Cosmos DB özel karakterler kullanma hakkında bilgi edinin
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 355f73d46215aa9e05f4ea6d91bb173c77509b63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83699131"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270871"
 ---
-# <a name="working-with-json-in-azure-cosmos-db"></a>Azure Cosmos DB 'de JSON ile çalışma
+# <a name="working-with-json-in-azure-cosmos-db"></a>Azure Cosmos DB'de JSON ile çalışma
 
-Azure Cosmos DB SQL (Core) API 'sinde, öğeler JSON olarak depolanır. Tür sistemi ve ifadeleri yalnızca JSON türleriyle uğraşmak üzere kısıtlanmıştır. Daha fazla bilgi için bkz. [JSON belirtimi](https://www.json.org/).
+Azure Cosmos DB'nin SQL (Core) API'sinde öğeler JSON olarak depolanır. Tür sistemi ve ifadeleri yalnızca JSON türleriyle çalışacak şekilde kısıtlanmıştır. Daha fazla bilgi için bkz. [JSON belirtimi](https://www.json.org/).
 
 JSON ile çalışmanın bazı önemli yönlerini özetleyeceğiz:
 
@@ -138,6 +138,34 @@ WHERE EXISTS(
     WHERE n.checkingAccount < 0
 )
 ```
+
+## <a name="difference-between-null-and-undefined"></a>Null ve tanımsız arasındaki fark
+
+Bir özellik bir öğede tanımlı değilse, değeri olur `undefined` . Değer içeren bir özellik `null` açıkça tanımlanmalıdır ve bir `null` değer atanmalıdır.
+
+Örneğin, Şu örnek öğeyi göz önünde bulundurun:
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "address": {
+      "state": "WA",
+      "county": "King",
+      "city": "Seattle"
+      },
+  "creationDate": null
+}
+```
+
+Bu örnekte, özelliğin `isRegistered` değeri `undefined` öğesi, öğesinden atlandığından. Özelliğin `creationDate` bir değeri vardır `null` .
+
+Azure Cosmos DB, ve özellikleri için sistem işlevlerini denetlemek için iki yararlı tür destekler `null` `undefined` :
+
+* [IS_NULL](sql-query-is-null.md) -bir özellik değerinin olup olmadığını denetler `null`
+* [IS_DEFINED](sql-query-is-defined.md) -bir özellik değerinin tanımlanıp tanımlanmadığını denetler
+
+[Desteklenen işleçler](sql-query-operators.md) ve bunların davranışlarını ve değerleri hakkında bilgi edinebilirsiniz `null` `undefined` .
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>JSON 'da ayrılmış anahtar sözcükler ve özel karakterler
 
@@ -263,7 +291,7 @@ Sonuçlar:
 
 Bir değeri boşluk, özel karakter veya ayrılmış sözcük olan bir özellik adı olarak proje için diğer adları kullanamazsınız. Bir değerin projeksiyonunu olarak değiştirmek istiyorsanız, örneğin bir boşluk içeren bir özellik adına sahip olmak için bir [JSON ifadesi](#json-expressions)kullanabilirsiniz.
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```sql
     SELECT

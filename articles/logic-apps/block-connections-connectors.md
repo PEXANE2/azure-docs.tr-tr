@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: cccc45f182f3ae826440df8bc163080b82226c9f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: bd6afa8b3776ed48d4b25a36b2902265fa0ab5c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172082"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269769"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Azure Logic Apps içinde bağlayıcılar tarafından oluşturulan bağlantıları engelle
 
@@ -111,7 +111,7 @@ Engellemek istediğiniz bağlantıya sahip bir mantıksal uygulamanız zaten var
 
 Bir mantıksal uygulamada bağlantı oluşturmayı tamamen engellemek için şu adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Portal arama kutusuna `policy` , girin ve **ilke**' yi seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Portal arama kutusuna `policy` , girin ve **ilke**' yi seçin.
 
    ![Azure portal, "ilke" bulup seçin](./media/block-connections-connectors/find-select-azure-policy.png)
 
@@ -121,13 +121,13 @@ Bir mantıksal uygulamada bağlantı oluşturmayı tamamen engellemek için şu 
 
 1. **İlke tanımı**altında, örnek altında açıklanan özelliklere göre ilke tanımınızın bilgilerini sağlayın:
 
-   ![İlke tanımı özellikleri](./media/block-connections-connectors/policy-definition-create-connections-1.png)
+   !["Ilke tanımı" özelliklerini gösteren ekran görüntüsü.](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
    | **Tanım konumu** | Yes | <*Azure-abonelik-adı*> | İlke tanımı için kullanılacak Azure aboneliği <p><p>1. aboneliğinizi bulmak için üç nokta (**...**) düğmesini seçin. <br>2. **abonelik** listesinden aboneliğinizi bulun ve seçin. <br>3. işiniz bittiğinde **Seç**' i seçin. |
    | **Ad** | Yes | <*ilke-tanım-adı*> | İlke tanımı için kullanılacak ad |
-   | **Açıklama** | Hayır | <*ilke-tanım-adı*> | İlke tanımı için bir açıklama |
+   | **Açıklama** | No | <*ilke-tanım-adı*> | İlke tanımı için bir açıklama |
    | **Kategori** | Yes | **Logic Apps** | İlke tanımı için mevcut bir kategorinin veya yeni kategorinin adı |
    | **İlke uygulama** | Yes | **Etkin** | Bu ayar, işinizi kaydettiğinizde ilke tanımının etkinleştirilip etkinleştirilmeyeceğini veya devre dışı bırakılacağını belirtir. |
    ||||
@@ -155,7 +155,7 @@ Bir mantıksal uygulamada bağlantı oluşturmayı tamamen engellemek için şu 
    | `mode` | `All` | İlkenin değerlendirdiği kaynak türlerini belirleyen mod. <p><p>Bu senaryo `mode` `All` , ilkeyi Azure Kaynak grupları, abonelikleri ve tüm kaynak türlerine uygulayan olarak ayarlar. <p><p>Daha fazla bilgi için bkz. [ilke tanımı yapısı-modu](../governance/policy/concepts/definition-structure.md#mode). |
    | `if` | `{condition-to-evaluate}` | İlke kuralının ne zaman zorlanacağını belirleyen koşul <p><p>Bu senaryoda, `{condition-to-evaluate}` `api.id` `Microsoft.Web/connections/api.id` `*managedApis/{connector-name}` bir joker karakter (*) değerini belirten, ' deki değerin eşleşip eşleşmediğini belirler. <p><p>Daha fazla bilgi için bkz. [ilke tanımı yapısı-ilke kuralı](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `field` | `Microsoft.Web/connections/api.id` | `field`Koşula göre karşılaştırılacak değer <p><p>Bu senaryoda,, `field` bağlayıcı özelliğindeki değere erişmek için,, [*diğer adını*](../governance/policy/concepts/definition-structure.md#aliases)kullanır `Microsoft.Web/connections/api.id` `api.id` . |
-   | `like` | `*managedApis/{connector-name}` | Değeri karşılaştırmak için kullanılacak mantıksal işleç ve değer `field` <p><p>Bu senaryoda, `like` işleç ve joker karakter (*) karakterinin her ikisi de kuralın bölgeden bağımsız olarak çalıştığından emin olun ve dize, `*managedApis/{connector-name}` engellemek ISTEDIĞINIZ bağlayıcının kimliği olduğu yerde eşleşir `{connector-name}` . <p><p>Örneğin, sosyal medya platformları veya veritabanlarına bağlantı oluşturulmasını engellemek istediğinizi varsayalım: <p><p>Twitter`twitter` <br>Instagram`instagram` <br>'A`facebook` <br>Pinterest`pinterest` <br>-SQL Server veya Azure SQL:`sql` <p><p>Bu bağlayıcı kimliklerini bulmak için, bu konunun önceki kısımlarında yer alarak [bağlayıcı başvuru Kimliği bulma](#connector-reference-ID) bölümüne bakın. |
+   | `like` | `*managedApis/{connector-name}` | Değeri karşılaştırmak için kullanılacak mantıksal işleç ve değer `field` <p><p>Bu senaryoda, `like` işleç ve joker karakter (*) karakterinin her ikisi de kuralın bölgeden bağımsız olarak çalıştığından emin olun ve dize, `*managedApis/{connector-name}` engellemek ISTEDIĞINIZ bağlayıcının kimliği olduğu yerde eşleşir `{connector-name}` . <p><p>Örneğin, sosyal medya platformları veya veritabanlarına bağlantı oluşturulmasını engellemek istediğinizi varsayalım: <p><p>Twitter `twitter` <br>Instagram `instagram` <br>'A `facebook` <br>Pinterest `pinterest` <br>-SQL Server veya Azure SQL: `sql` <p><p>Bu bağlayıcı kimliklerini bulmak için, bu konunun önceki kısımlarında yer alarak [bağlayıcı başvuru Kimliği bulma](#connector-reference-ID) bölümüne bakın. |
    | `then` | `{effect-to-apply}` | `if`Koşul karşılandığında uygulanacak efekt <p><p>Bu senaryoda, `{effect-to-apply}` ilke ile uyumlu olmayan bir isteği veya işlemi engellenemez ve başarısız olur. <p><p>Daha fazla bilgi için bkz. [ilke tanımı yapısı-ilke kuralı](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `effect` | `deny` | , `effect` Belirtilen bağlantıyı oluşturmak için gereken isteği engellenemez <p><p>Daha fazla bilgi için bkz. [Azure ilke efektlerini anlama-reddetme](../governance/policy/concepts/effects.md#deny). |
    ||||
@@ -180,7 +180,7 @@ Bir mantıksal uygulamada bağlantı oluşturmayı tamamen engellemek için şu 
 
    **Ilke kuralı** kutusunun görünme şekli aşağıda verilmiştir:
 
-   ![İlke tanımı için kural](./media/block-connections-connectors/policy-definition-create-connections-2.png)
+   ![İlke kuralı örneği ile "Ilke KURALı" kutusunu gösteren ekran görüntüsü.](./media/block-connections-connectors/policy-definition-create-connections-2.png)
 
    Birden çok bağlayıcı için daha fazla koşul ekleyebilirsiniz, örneğin:
 
@@ -232,7 +232,7 @@ Azure ilke tanımları hakkında daha fazla bilgi için şu konulara bakın:
 
 Bir mantıksal uygulama içinde bir bağlantı oluşturduğunuzda, bu bağlantı ayrı bir Azure kaynağı olarak bulunur. Yalnızca mantıksal uygulamayı silerseniz, bağlantı otomatik olarak silinmez ve silinene kadar mevcut olmaya devam eder. Bağlantının zaten varolduğu veya bir mantıksal uygulama dışında kullanım için bağlantı oluşturmanız gereken bir senaryoya sahip olabilirsiniz. Kısıtlı veya onaylanmamış bağlantısı olan mantıksal uygulamaların kaydedilmesini önleyen bir ilke oluşturarak bir mantıksal uygulamada mevcut bir bağlantıyı kullanma özelliğini hala engelleyebilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Portal arama kutusuna `policy` , girin ve **ilke**' yi seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Portal arama kutusuna `policy` , girin ve **ilke**' yi seçin.
 
    ![Azure portal, "ilke" bulup seçin](./media/block-connections-connectors/find-select-azure-policy.png)
 
@@ -248,7 +248,7 @@ Bir mantıksal uygulama içinde bir bağlantı oluşturduğunuzda, bu bağlantı
    |----------|----------|-------|-------------|
    | **Tanım konumu** | Yes | <*Azure-abonelik-adı*> | İlke tanımı için kullanılacak Azure aboneliği <p><p>1. aboneliğinizi bulmak için üç nokta (**...**) düğmesini seçin. <br>2. **abonelik** listesinden aboneliğinizi bulun ve seçin. <br>3. işiniz bittiğinde **Seç**' i seçin. |
    | **Ad** | Yes | <*ilke-tanım-adı*> | İlke tanımı için kullanılacak ad |
-   | **Açıklama** | Hayır | <*ilke-tanım-adı*> | İlke tanımı için bir açıklama |
+   | **Açıklama** | No | <*ilke-tanım-adı*> | İlke tanımı için bir açıklama |
    | **Kategori** | Yes | **Logic Apps** | İlke tanımı için mevcut bir kategorinin veya yeni kategorinin adı |
    | **İlke uygulama** | Yes | **Etkin** | Bu ayar, işinizi kaydettiğinizde ilke tanımının etkinleştirilip etkinleştirilmeyeceğini veya devre dışı bırakılacağını belirtir. |
    ||||
@@ -276,7 +276,7 @@ Bir mantıksal uygulama içinde bir bağlantı oluşturduğunuzda, bu bağlantı
    | `mode` | `All` | İlkenin değerlendirdiği kaynak türlerini belirleyen mod. <p><p>Bu senaryo `mode` `All` , ilkeyi Azure Kaynak grupları, abonelikleri ve tüm kaynak türlerine uygulayan olarak ayarlar. <p><p>Daha fazla bilgi için bkz. [ilke tanımı yapısı-modu](../governance/policy/concepts/definition-structure.md#mode). |
    | `if` | `{condition-to-evaluate}` | İlke kuralının ne zaman zorlanacağını belirleyen koşul <p><p>Bu senaryoda, `{condition-to-evaluate}` dize çıkışının öğesinden, dizesini içerip içermediğini belirler `[string(field('Microsoft.Logic/workflows/parameters'))]` `{connector-name}` . <p><p>Daha fazla bilgi için bkz. [ilke tanımı yapısı-ilke kuralı](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `value` | `[string(field('Microsoft.Logic/workflows/parameters'))]` | Koşula göre karşılaştırılacak değer <p><p>Bu senaryoda, nesnesi `value` `[string(field('Microsoft.Logic/workflows/parameters'))]` `$connectors` içindeki nesnesini bir dizeye dönüştüren dize çıkışı `Microsoft.Logic/workflows/parameters` . |
-   | `contains` | `{connector-name}` | Özelliği ile karşılaştırmak için kullanılacak mantıksal işleç ve değer `value` <p><p>Bu senaryoda `contains` operatör, dizenin nerede göründüğüne bakılmaksızın, `{connector-name}` dizenin nerede göründüğünü, `{connector-name}` kısıtlamak veya engellemek istediğiniz bağlayıcının kimliği olduğunu dikkate alır. <p><p>Örneğin, sosyal medya platformları veya veritabanlarına yönelik bağlantıları kullanmayı engellemek istediğinizi varsayalım: <p><p>Twitter`twitter` <br>Instagram`instagram` <br>'A`facebook` <br>Pinterest`pinterest` <br>-SQL Server veya Azure SQL:`sql` <p><p>Bu bağlayıcı kimliklerini bulmak için, bu konunun önceki kısımlarında yer alarak [bağlayıcı başvuru Kimliği bulma](#connector-reference-ID) bölümüne bakın. |
+   | `contains` | `{connector-name}` | Özelliği ile karşılaştırmak için kullanılacak mantıksal işleç ve değer `value` <p><p>Bu senaryoda `contains` operatör, dizenin nerede göründüğüne bakılmaksızın, `{connector-name}` dizenin nerede göründüğünü, `{connector-name}` kısıtlamak veya engellemek istediğiniz bağlayıcının kimliği olduğunu dikkate alır. <p><p>Örneğin, sosyal medya platformları veya veritabanlarına yönelik bağlantıları kullanmayı engellemek istediğinizi varsayalım: <p><p>Twitter `twitter` <br>Instagram `instagram` <br>'A `facebook` <br>Pinterest `pinterest` <br>-SQL Server veya Azure SQL: `sql` <p><p>Bu bağlayıcı kimliklerini bulmak için, bu konunun önceki kısımlarında yer alarak [bağlayıcı başvuru Kimliği bulma](#connector-reference-ID) bölümüne bakın. |
    | `then` | `{effect-to-apply}` | `if`Koşul karşılandığında uygulanacak efekt <p><p>Bu senaryoda, `{effect-to-apply}` ilke ile uyumlu olmayan bir istek ya da işlemi engellenemez ve başarısız olur. <p><p>Daha fazla bilgi için bkz. [ilke tanımı yapısı-ilke kuralı](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `effect` | `deny` | , `effect` `deny` Belirtilen bağlantıyı kullanan bir mantıksal uygulamayı kaydetme isteğini engelliyor veya engelleyecek <p><p>Daha fazla bilgi için bkz. [Azure ilke efektlerini anlama-reddetme](../governance/policy/concepts/effects.md#deny). |
    ||||
@@ -332,13 +332,13 @@ Ardından, ilkeyi zorlamak istediğiniz ilke tanımını atamanız gerekir, örn
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
    | **Kapsam** | Yes | İlke atamasını zorlamak istediğiniz kaynaklar. <p><p>1. **kapsam** kutusunun yanındaki üç nokta (**...**) düğmesini seçin. <br>2. **abonelik** listesinden Azure aboneliğini seçin. <br>3. isteğe bağlı olarak, **kaynak grubu** listesinden kaynak grubunu seçin. <br>4. işiniz bittiğinde **Seç**' i seçin. |
-   | **Dışlamalar** | Hayır | İlke atamasından çıkarılacak tüm Azure kaynakları. <p><p>1. **Dışlamalar** kutusunun yanındaki üç nokta (**...**) düğmesini seçin. <br>2. **kaynak** listesinden, **seçili kapsama eklemek**> kaynak seçin. <br>3. işiniz bittiğinde **Kaydet**' i seçin. |
+   | **Dışlamalar** | No | İlke atamasından çıkarılacak tüm Azure kaynakları. <p><p>1. **Dışlamalar** kutusunun yanındaki üç nokta (**...**) düğmesini seçin. <br>2. **kaynak** listesinden, **seçili kapsama eklemek**> kaynak seçin. <br>3. işiniz bittiğinde **Kaydet**' i seçin. |
    | **İlke tanımı** | Yes | Atamak ve zorlamak istediğiniz ilke tanımının adı. Bu örnek, "Instagram bağlantılarını engelle" adlı örnek bir "%. <p><p>1. **ilke tanımı** kutusunun yanındaki üç nokta (**...**) düğmesini seçin. <br>2. **tür** filtresi veya **arama** kutusunu kullanarak ilke tanımını bulun ve seçin. <br>3. işiniz bittiğinde **Seç**' i seçin. |
    | **Atama adı** | Yes | İlke tanımından farklıysa, ilke ataması için kullanılacak ad |
    | **Atama KIMLIĞI** | Yes | İlke ataması için otomatik olarak oluşturulan KIMLIK |
-   | **Açıklama** | Hayır | İlke ataması için bir açıklama |
+   | **Açıklama** | No | İlke ataması için bir açıklama |
    | **İlke uygulama** | Yes | İlke atamasını sağlayan veya devre dışı bırakan ayar |
-   | **Atayan** | Hayır | İlke atamasını oluşturan ve uygulamış olan kişinin adı |
+   | **Atayan** | No | İlke atamasını oluşturan ve uygulamış olan kişinin adı |
    ||||
 
    Örneğin, bir Azure Kaynak grubuna bir ilkeyi bir Azure Kaynak grubuna atamak için şu örneği kullanın:
@@ -363,7 +363,7 @@ Daha fazla bilgi için bkz. [hızlı başlangıç: uyumlu olmayan kaynakları be
 
 İleti şu bilgileri içerir:
 
-| Açıklama | İçerik |
+| Description | İçerik |
 |-------------|---------|
 | Hatanın nedeni | `"Resource 'instagram' was disallowed by policy."` |
 | Atama adı | `"Block Instagram connections"` |

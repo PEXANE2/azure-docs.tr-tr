@@ -75,7 +75,7 @@
       href: tutorial-troubleshoot-monitor.md
 - name: Örnekler
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: samples-cli.md
     - name: Azure PowerShell
       href: samples-powershell.md
@@ -146,7 +146,7 @@
           href: configure-language-java.md
         - name: Ruby’yi yapılandırma
           href: configure-language-ruby.md
-        - name: Özel Linux kapsayıcısı yapılandırma
+        - name: Özel kapsayıcı yapılandırma
           href: configure-custom-container.md
         - name: Şirket içi kaynaklara bağlanma
           href: web-sites-integrate-with-vnet.md
@@ -276,7 +276,7 @@
           href: webjobs-sdk-how-to.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/appservice
     - name: Azure PowerShell
       href: /powershell/module/az.websites/#app_service

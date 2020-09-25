@@ -11,20 +11,16 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df5755c585d99333bf0c64ca08705309b4d4fc58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c01724340df7e0efffe9847b49e1fe9d444ee01
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253129"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257631"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran Daemon uygulaması
 
 Web API 'Lerini çağıran bir Daemon uygulaması oluşturmak için ihtiyacınız olan her şey hakkında bilgi edinin.
-
-## <a name="prerequisites"></a>Ön koşullar
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -58,6 +54,10 @@ Geliştiriciler için, bu senaryoya yönelik uçtan uca deneyim aşağıdaki yö
 - [Uygulama kaydı](./scenario-daemon-app-registration.md)sırasında, yanıt URI 'si gerekli değildir. Parolaların veya sertifikaların veya imzalı onayların Azure AD ile paylaşılması gerekir. Ayrıca, uygulama izinleri istemeniz ve bu uygulama izinlerini kullanmak için yönetici onayı vermeniz gerekir.
 - Uygulama [yapılandırmasının](./scenario-daemon-app-configuration.md) , uygulama kaydı SıRASıNDA Azure AD ile paylaşılan olarak istemci kimlik bilgilerini sağlaması gerekir.
 - İstemci kimlik bilgileri akışı ile belirteç almak için kullanılan [kapsamın](scenario-daemon-acquire-token.md#scopes-to-request) bir statik kapsam olması gerekir.
+
+## <a name="recommended-reading"></a>Önerilen okuma
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

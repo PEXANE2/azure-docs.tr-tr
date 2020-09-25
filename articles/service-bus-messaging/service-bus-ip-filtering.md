@@ -3,12 +3,12 @@ title: Azure Service Bus için IP güvenlik duvarı kurallarını yapılandırma
 description: Belirli IP adreslerinden Azure Service Bus bağlantılara izin vermek için güvenlik duvarı kuralları kullanma.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 699ece2e78ff0605ff4076b09c023d14e289b1f7
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2ba6b1902213af8d968b220a387e419e56e8aa67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064647"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300964"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Belirli IP adreslerinden veya aralıklardan Azure Service Bus ad alanına erişime izin ver
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Service Bus ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz.
@@ -51,7 +51,7 @@ Bu bölümde, bir Service Bus ad alanı için IP güvenlik duvarı kuralları ol
     
     **Tüm ağlar** seçeneğini belirlerseniz, Service Bus ad alanınız HERHANGI bir IP adresinden gelen bağlantıları kabul eder. Bu varsayılan ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir. 
 
-    ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+    ![Azure portal ağ sayfasının ekran görüntüsü. Tüm ağlardan erişime izin verme seçeneği güvenlik duvarları ve sanal ağlar sekmesinde seçilir.](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
 1. Yalnızca belirtilen IP adresinden erişime izin vermek için, henüz seçili değilse **Seçili ağlar** seçeneğini belirleyin. **Güvenlik duvarı** bölümünde şu adımları izleyin:
     1. Geçerli istemci IP 'nize ad alanına erişim sağlamak için **ISTEMCI IP adresi ekle** seçeneğini belirleyin. 
     2. **Adres aralığı**IÇIN, CIDR gösteriminde belirli bir IPv4 adresi veya bir IPv4 adresi aralığı girin. 
@@ -60,7 +60,7 @@ Bu bölümde, bir Service Bus ad alanı için IP güvenlik duvarı kuralları ol
         > [!WARNING]
         > **Seçili ağlar** seçeneğini BELIRLEYIP bir IP adresi veya adres aralığı belirtmezseniz, hizmet tüm ağlardan gelen trafiğe izin verir. 
 
-        ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+        ![Azure portal ağ sayfasının ekran görüntüsü. Seçili ağlardan erişime izin verme seçeneği seçilidir ve güvenlik duvarı bölümü vurgulanır.](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
 3. Ayarları kaydetmek için araç çubuğunda **Kaydet** ' i seçin. Onayın Portal bildirimlerinde gösterilmesi için birkaç dakika bekleyin.
 
     > [!NOTE]

@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657149"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299919"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect Kullanıcı oturum açma seçenekleri
 Azure Active Directory (Azure AD) Connect, kullanıcılarınızın aynı parolaları kullanarak hem bulutta hem de şirket içi kaynaklarda oturum açmalarına olanak tanır. Bu makalede, Azure AD 'de oturum açmak için kullanmak istediğiniz kimliği seçmenize yardımcı olmak üzere her bir kimlik modeli için temel kavramlar açıklanır.
@@ -179,7 +179,7 @@ Sihirbazla Azure AD Connect ilk yapılandırmasından sonra Azure AD Connect ' d
 
 Sonraki sayfada Azure AD kimlik bilgilerini sağlamanız istenir.
 
-![Azure AD'ye Bağlanma](./media/plan-connect-user-signin/changeusersignin2.png)
+![Azure AD kimlik bilgilerini nereye yazmanız gerektiğini gösteren ekran görüntüsü.](./media/plan-connect-user-signin/changeusersignin2.png)
 
 **Kullanıcı oturum açma** sayfasında, istenen kullanıcı oturumunu seçin.
 

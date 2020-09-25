@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683887"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259382"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Experian yapılandırma öğreticisi
 
@@ -30,13 +30,13 @@ Bu örnekte, Experian 'in tümleşik dijital kimliği ve sahtekarlık risk platf
 - İkinci Ad
 - Soyadı
 - Adres
-- City
+- Şehir
 - Eyalet/İl
 - Posta Kodu
 - Ülke/Bölge
 - Telefon Numarası
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -58,7 +58,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Experian mimarisi için ekran görüntüsü-diyagram](media/partner-experian/experian-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcı, yeni bir hesap oluşturmak için kaydolma seçer ve sayfaya bilgi girer. Azure AD B2C Kullanıcı özniteliklerini toplar.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -77,7 +77,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ### <a name="part-1---deploy-the-api"></a>1. Bölüm-API 'YI dağıtma
 
-Belirtilen API kodunu bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
+Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
 
 >[!NOTE]
 >Azure AD 'yi gerekli ayarlarla yapılandırmak için dağıtılan hizmetin URL 'sine ihtiyacınız vardır.
@@ -117,7 +117,7 @@ Bu [belgeye](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-a
 
 ### <a name="part-5---replace-the-configuration-values"></a>5. bölüm-yapılandırma değerlerini değiştirme
 
-Belirtilen özel ilkelerde, aşağıdaki yer tutucuları bulun ve örneğinizi karşılık gelen değerlerle değiştirin
+Belirtilen [özel ilkelerde](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Experian/policy), aşağıdaki yer tutucuları bulun ve örneğinizi karşılık gelen değerlerle değiştirin
 
 |                      Yer tutucu                       |                                   Değer ile Değiştir                                 |                   Örnek                    |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |

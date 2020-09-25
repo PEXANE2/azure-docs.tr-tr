@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/23/2020
-ms.openlocfilehash: 987537d8497b3d8f2728941334d8328320ec6997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80289608"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254814"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici uyarılar oluşturma
 [Azure izleyici 'Deki uyarılar](../platform/alerts-overview.md) , izleme verilerinizde ilgi çekici veriler ve desenler konusunda size bir bildirim gönderir. VM'ler için Azure İzleyici önceden yapılandırılmış uyarı kuralları içermez, ancak topladığı verilere göre kendi kendinize de oluşturabilirsiniz. Bu makale, örnek sorgu kümesi de dahil olmak üzere uyarı kuralları oluşturma hakkında rehberlik sağlar.
@@ -22,8 +22,8 @@ Azure Izleyici, uyarı oluşturmak için kullanılan verileri temel alan [farkl�
 
 Azure Izleyici 'de iki tür günlük uyarısı vardır:
 
-- Sorgu en az belirtilen sayıda kayıt döndürdüğünde, [sonuç uyarıları sayısı](../platform/alerts-unified-log.md#number-of-results-alert-rules) tek bir uyarı oluşturur. Bunlar, [Log Analytics Aracısı](../platform/log-analytics-agent.md) tarafından toplanan sayısal olmayan veriler ve Windows ve Syslog olayları için veya birden çok bilgisayardaki performans eğilimlerini analiz etmek için idealdir.
-- [Ölçüm ölçüm uyarıları](../platform/alerts-unified-log.md#metric-measurement-alert-rules) , uyarı kuralında tanımlanan bir eşiği aşan bir değer içeren bir sorgudaki her kayıt için ayrı bir uyarı oluşturur. Bu uyarı kuralları, her bilgisayar için ayrı uyarılar oluşturduklarında VM'ler için Azure İzleyici tarafından toplanan performans verileri için idealdir.
+- Sorgu en az belirtilen sayıda kayıt döndürdüğünde, [sonuç uyarıları sayısı](../platform/alerts-unified-log.md#count-of-the-results-table-rows) tek bir uyarı oluşturur. Bunlar, [Log Analytics Aracısı](../platform/log-analytics-agent.md) tarafından toplanan sayısal olmayan veriler ve Windows ve Syslog olayları için veya birden çok bilgisayardaki performans eğilimlerini analiz etmek için idealdir.
+- [Ölçüm ölçüm uyarıları](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) , uyarı kuralında tanımlanan bir eşiği aşan bir değer içeren bir sorgudaki her kayıt için ayrı bir uyarı oluşturur. Bu uyarı kuralları, her bilgisayar için ayrı uyarılar oluşturduklarında VM'ler için Azure İzleyici tarafından toplanan performans verileri için idealdir.
 
 
 ## <a name="alert-rule-walkthrough"></a>Uyarı kuralı Kılavuzu

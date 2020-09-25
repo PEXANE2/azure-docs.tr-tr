@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services (betik) içinde bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştirme | Microsoft Docs
-description: İçinde birden çok VM içeren bir şablon VM 'si oluşturmayı öğrenin.  Diğer bir deyişle, Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştirin.
+description: Bir komut dosyası kullanarak içinde birden çok VM içeren bir şablon VM 'si oluşturmayı öğrenin.  Diğer bir deyişle, Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştirin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a45257dffffc98c3f650c5b1753158edd9bfbede
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ae50bd11ab9a8adb769920f6d473a2ff2ce9342
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251504"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Betik kullanarak Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştirme
 
@@ -29,7 +29,7 @@ Bu makaledeki adımlar, Windows Server 2016, Windows Server 2019 veya Windows 10
 
         ![Güvenilen siteler](./media/how-to-enable-nested-virtualization-template-vm-using-script/trusted-sites-dialog.png)
 1. Git deposu dosyalarını aşağıdaki adımlarda özetlenen şekilde indirin.
-    1. Adresine gidin [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
+    1. Adresine gidin  [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
     1. **Kopyala veya indir** düğmesine tıklayın.
     1. **ZIP 'ı indir**' e tıklayın.
     1. ZIP dosyasını Ayıkla

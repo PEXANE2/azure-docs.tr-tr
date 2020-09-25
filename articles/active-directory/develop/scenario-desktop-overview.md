@@ -12,38 +12,28 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6cbb574245c7b11d2437693d60fd952becedba3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83771868"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257563"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran masaüstü uygulaması
 
 Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmak için ihtiyacınız olan her şey hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="get-started"></a>Kullanmaya başlayın
 
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+Henüz yapmadıysanız, bir hızlı başlangıcı tamamlayarak ilk uygulamanızı oluşturun:
 
-## <a name="get-started"></a>başlarken
-
-Henüz yapmadıysanız, .NET Masaüstü hızlı başlangıcı, Evrensel Windows Platformu (UWP) hızlı başlangıcı veya macOS yerel uygulama hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluşturun:
-
-> [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma](./quickstart-v2-windows-desktop.md)
-
-
-> [!div class="nextstepaction"]
-> [Hızlı başlangıç: UWP uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-uwp.md)
-
-> [!div class="nextstepaction"]
-> [Hızlı başlangıç: bir macOS yerel uygulamasından belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-ios.md)
+- [Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma](./quickstart-v2-windows-desktop.md)
+- [Hızlı başlangıç: UWP uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-uwp.md)
+- [Hızlı başlangıç: bir macOS yerel uygulamasından belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir masaüstü uygulaması yazar ve kullanıcılara oturum açmak ve Microsoft Graph, diğer Microsoft API 'Leri ya da kendi Web API 'niz gibi Web API 'Lerini çağırmak istiyorsunuz. Çeşitli olanaklar vardır:
+Bir masaüstü uygulaması yazar ve kullanıcılara oturum açmak ve Microsoft Graph, diğer Microsoft API 'Leri ya da kendi Web API 'niz gibi Web API 'Lerini çağırmak istiyorsunuz. Birkaç seçeneğiniz vardır:
 
 - Etkileşimli belirteç alımı kullanabilirsiniz:
 
@@ -64,6 +54,10 @@ Bir masaüstü uygulaması yazar ve kullanıcılara oturum açmak ve Microsoft G
 ## <a name="specifics"></a>Özelliklerini
 
 Masaüstü uygulamalarında çok sayıda karmaşıklık vardır. Bunlar, genellikle uygulamanızın etkileşimli kimlik doğrulaması kullanıp kullanmadığına bağlı olarak değişir.
+
+## <a name="recommended-reading"></a>Önerilen okuma
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

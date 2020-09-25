@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 424a05d6a096538aa296bb11863702b816410fb9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0eed3b6d68e8bfe62e9589b2ef4074df92445095
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480654"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258788"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Güven ilişkilerinin Azure Active Directory Domain Services içindeki kaynak ormanları için nasıl çalıştığı
 
@@ -99,12 +99,12 @@ Bu yapılandırma, *Orman 1* ' deki kullanıcıların, *orman 3* ' teki kaynakla
 Bir orman güveni oluşturabilmeniz için önce doğru etki alanı adı sistemi (DNS) altyapısının bulunduğunu doğrulamanız gerekir. Orman güvenleri yalnızca aşağıdaki DNS yapılandırmalarından biri kullanılabilir olduğunda oluşturulabilir:
 
 * Tek bir kök DNS sunucusu, her iki orman DNS ad alanı için de kök DNS sunucusudur. kök bölge, DNS ad alanlarının her biri için temsilciler içerir ve tüm DNS sunucularının kök ipuçları kök DNS sunucusunu içerir.
-* Paylaşılan bir kök DNS sunucusu olmadığı ve her orman DNS ad alanı için kök DNS sunucuları, diğer ad alanındaki adlara yönelik sorguları yönlendirmek üzere her DNS ad alanı için DNS koşullu ileticileri kullanır.
+* Paylaşılan bir kök DNS sunucusu olmadığında ve her orman DNS ad alanındaki kök DNS sunucuları, diğer ad alanındaki adlara yönelik sorguları yönlendirmek üzere her DNS ad alanı için DNS koşullu ileticileri kullanır.
 
     > [!IMPORTANT]
     > Azure AD Domain Services kaynak ormanı bu DNS yapılandırmasını kullanmalıdır. Kaynak ormanı DNS ad alanı dışında bir DNS ad alanı barındırması Azure AD Domain Services bir özellik değildir. Koşullu ileticiler doğru yapılandırmadır.
 
-* Paylaşılan bir kök DNS sunucusu olmadığı ve her orman DNS ad alanı için kök DNS sunucularının DNS ikincil bölgeleri, diğer ad alanındaki adlara yönelik sorguları yönlendirmek üzere her bir DNS ad alanında yapılandırılır.
+* Paylaşılan bir kök DNS sunucusu yoksa ve her orman DNS ad alanındaki kök DNS sunucuları, diğer ad alanındaki adlara yönelik sorguları yönlendirmek için her bir DNS ad alanında yapılandırılmış DNS ikincil bölgeleri yapılandırılır.
 
 Orman güveni oluşturmak için, Active Directory etki alanı yöneticileri grubunun (orman kök etki alanında) veya Enterprise Admins grubunun bir üyesi olmanız gerekir. Her güvene, her iki ormandaki yöneticilerin bilmeleri gereken bir parola atanır. Her iki ormanda da Enterprise Admins üyeleri her iki ormanda da güvenleri oluşturabilir ve bu senaryoda, her iki orman için de şifreli olarak rastgele bir parola oluşturulur ve yazılır.
 

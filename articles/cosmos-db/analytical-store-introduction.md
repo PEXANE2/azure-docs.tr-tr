@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 17dce45e73a5620db2201534126900d8e571ec45
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900267"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253200"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB analitik depo (Önizleme) nedir?
 
@@ -60,7 +60,7 @@ Analitik depo, işlem deposundan ayrı olduğundan, analitik sorgular nedeniyle 
 
 ### <a name="auto-sync"></a>Otomatik eşitleme
 
-Otomatik eşitleme, işlem verileri ekleme, güncelleştirme ve silme işlevinin, 5 dakika içinde neredeyse gerçek zamanlı olarak, işlemsel depodan analitik depoya otomatik olarak eşitlendiği Azure Cosmos DB tam olarak yönetilen özelliğine başvurur.
+Otomatik eşitleme, işletimsel verileri ekleme, güncelleştirme ve silme işlevinin neredeyse gerçek zamanlı olarak analitik depoya otomatik olarak eşitlendiği Azure Cosmos DB tam olarak yönetilen özelliği anlamına gelir. Otomatik eşitleme gecikmesi genellikle 2 dakika içinde olur. Çok sayıda kapsayıcı içeren paylaşılan üretilen iş veritabanı durumlarında, tek tek kapsayıcıların otomatik eşitleme gecikmesi daha yüksek olabilir ve 5 dakikaya kadar sürebilir. Bu gecikme süresinin senaryolarınıza uygun olduğunu öğrenmek istiyoruz. Bunun için lütfen [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com)ulaşın.
 
 Otomatik eşitleme özelliği analitik depolarla birlikte aşağıdaki başlıca avantajları sağlar:
 
@@ -138,7 +138,7 @@ salary: 1000000
 }
 ```
 
-`streetName`İç içe yerleştirilmiş nesne içindeki yaprak özelliği, `address` analitik depo şemasında bir sütun olarak temsil edilir `address.object.streetName.int32` . Veri türü, sütuna bir sonek olarak eklenir. Bu şekilde, yaprak özelliğinin değerinin `streetNo` "123" olduğu (bir dize olduğunu notta), analitik deponun şeması, önceden yazılmış bir sütunun türünü değiştirmeden otomatik olarak gelişir. `address.object.streetName.string`Bu "123" değerinin depolandığı şekilde analitik depoya eklenen yeni bir sütun.
+`streetNo`İç içe yerleştirilmiş nesne içindeki yaprak özelliği, `address` analitik depo şemasında bir sütun olarak temsil edilir `address.object.streetNo.int32` . Veri türü, sütuna bir sonek olarak eklenir. Bu şekilde, yaprak özelliğinin değerinin `streetNo` "123" olduğu (bir dize olduğunu notta), analitik deponun şeması, önceden yazılmış bir sütunun türünü değiştirmeden otomatik olarak gelişir. `address.object.streetNo.string`Bu "123" değerinin depolandığı şekilde analitik depoya eklenen yeni bir sütun.
 
 **Sonek eşlemesine veri türü**
 

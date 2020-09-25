@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b59fb0583911b5b9faee96276d1bb09a8d6679
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978616"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269718"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>FHıR için Azure API 'SI hakkında sık sorulan sorular
 
@@ -65,6 +65,23 @@ Count üzerindeki geçerli sınır 100 ' dir.
 
 Grup dışarı aktarma için, Grup [kaynağının](https://www.hl7.org/fhir/group.html)tüm özelliklerini değil yalnızca dahil edilen başvuruları gruptan dışarı aktardık.
 
+### <a name="can-i-post-a-bundle-to-the-azure-api-for-fhir"></a>FHıR için Azure API 'sine bir paket gönderebilir miyim?
+
+Şu anda [Batch](https://www.hl7.org/fhir/valueset-bundle-type.html) paketlerinin nakledilmesini destekliyoruz ancak fhır IÇIN Azure API 'sinde işlem paketlerinin nakledilmesini desteklemez. İşlem paketleri göndermek için SQL tarafından desteklenen açık kaynaklı FHıR sunucusunu kullanabilirsiniz.
+
+### <a name="how-can-i-get-all-resources-for-a-single-patient-in-the-azure-api-for-fhir"></a>FHıR için Azure API 'sindeki tek bir hasta için tüm kaynakları nasıl alabilirim?
+
+FHıR için Azure API 'sinde [bölme aramasını](https://www.hl7.org/fhir/compartmentdefinition.html) destekliyoruz. Bu, belirli bir hasta ile ilgili tüm kaynakları almanızı sağlar. Şimdi, hasta ile ilgili tüm kaynakları (hasta değil), sonuçlarınızda hasta kaynağına ihtiyacınız varsa hasta elde etmeniz için de arama yapmanız gerektiğini unutmayın.
+
+Bunun bazı örnekleri aşağıda verilmiştir:
+
+* Hasta al/<id>/*
+* Hasta/ <id> /gözlem al
+* Hasta/ <id> /gözlem al? kod = 8302-2
+
+### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>Bir iş akışı içinde FHıR için Azure API 'SI kullanmayla ilgili bazı örnekleri nereden görebilirim?
+
+[Durum mimarisi GitHub sayfasında](https://github.com/microsoft/health-architectures)bulunan bir başvuru mimarileri koleksiyonudur.
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme)
 

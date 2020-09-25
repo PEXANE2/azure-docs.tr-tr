@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: 1a16283f3d04c9ad331a04c3a36b49055635d76e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e43e20ceb5e84d652fee9ca4db6d5dc871ed1e4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268461"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal hiper ölçek (Citus) sunucu grubu oluşturma
 
@@ -25,7 +25,7 @@ PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan Post
 
 Psql kullanarak hiper ölçek düzenleyici düğümüne bağlandıktan sonra bazı temel görevleri tamamlayabilirsiniz.
 
-Hiper ölçek sunucuları içinde üç tür tablo vardır:
+Hiper ölçek (Citus) sunucuları içinde üç tür tablo vardır:
 
 - Dağıtılmış veya parçalı tablolar (performans ve paralelleştirme için ölçeklendirilmesine yardımcı olmak için yayılmış)
 - Başvuru tabloları (birden fazla kopya korunur)
@@ -71,7 +71,7 @@ CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Daha sonra, bu Postgres tablolarını düzenleyici düğümünde ele alacağız ve hiper ölçeğe çalışanlar genelinde onları parçalamayı söyler. Bunu yapmak için, üzerine gelecek anahtarı belirten her tablo için bir sorgu çalıştıracağız. Geçerli örnekte, hem olaylar hem de Kullanıcı tablosu ' nu parçalara parçalarız `user_id` :
+Ardından, düzenleyici düğümünde bu Postgres tablolarını alacak ve şirket genelinde bunları parçalara ayırmaları için hiper ölçeğe (Citus) söyleriz. Bunu yapmak için, üzerine gelecek anahtarı belirten her tablo için bir sorgu çalıştıracağız. Geçerli örnekte, hem olaylar hem de Kullanıcı tablosu ' nu parçalara parçalarız `user_id` :
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -117,7 +117,7 @@ ORDER BY hour;
 
 Şimdiye kadar sorgular GitHub \_ olaylarını özel olarak katıldı, ancak bu bilgileri GitHub kullanıcılarıyla birleştirebiliriz \_ . Aynı tanımlayıcı () üzerinde hem Kullanıcı hem de olay paylaşdığımız için `user_id` , eşleşen Kullanıcı kimliklerine sahip her iki tablonun satırları aynı veritabanı düğümlerine dahil [edilir](concepts-hyperscale-colocation.md) ve kolayca eklenebilir.
 
-Katılırsanız `user_id` hiper ölçek, çalışan düğümlerinde paralel olarak yürütülmesi için JOIN yürütmesini parçalara parçalar halinde gönderebilir. Örneğin, en fazla sayıda depo oluşturan kullanıcıları bulalım:
+Katılıyoruz `user_id` , hiper ölçek (Citus), çalışan düğümlerinde paralel olarak yürütülmesi için birleştirmeyi parçalara ayırır. Örneğin, en fazla sayıda depo oluşturan kullanıcıları bulalım:
 
 ```sql
 SELECT gu.login, count(*)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 6366824b8dc7f63f99ebda2a542d95d3eb1c6146
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064562"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301210"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>Kbbitmq 'i Azure Service Bus ile tümleştirme
 
@@ -112,7 +112,7 @@ Kbbitmq yönetim arabiriminde gideceğiz `Queues` , `azure` kuyruğu seçebilir 
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="İlk iletiyi Yayımla":::
 
-Azure 'a geri dönün ve kuyruğunuzu inceleyin. Sol panelde ' ı tıklatın `Service Bus Explorer` . Hepsi de varsa, kuyruğunuzun şimdi bir ileti olduğunu görürsünüz. Oley, tebrikler!
+Azure 'a geri dönün ve kuyruğunuzu inceleyin. `Service Bus Explorer`Sol panelde ve ardından _göz at_ düğmesine tıklayın. Hepsi de varsa, kuyruğunuzun şimdi bir ileti olduğunu görürsünüz. Oley, tebrikler!
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Azure Service Bus kuyruğu":::
 
@@ -136,3 +136,8 @@ Tebrikler! Çok fazla elde edersiniz! İletilerinizi Kbbitmq 'dan Azure Service 
 Önceki adımları izleyerek, kuruluşunuzun Azure dışından tümleştirilmiş bölgelerini tümleştirmiş olursunuz. Sholevel eklentisi, Kbbitmq 'dan Azure Service Bus iletileri sevk etmeniz için izin verildi. Bu, artık güvenilen üçüncü tarafların uygulamalarını Azure dağıtımınıza bağlamaya izin verbileceğinizden bu yana büyük ölçüde avantaj sağlar.
 
 Son olarak, mesajlaşma bağlantıları etkinleştirmek ve bu teknikle yeni bir tane açıyoruz.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Azure Service Bus](./service-bus-messaging-overview.md) hakkında daha fazla bilgi edinin
+- [Service Bus 'Da AMQP 1,0 desteği](./service-bus-amqp-overview.md) hakkında daha fazla bilgi edinin

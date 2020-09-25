@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 4a98007917e95b1880661fe35bfd3f85f633e9a3
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 5d2ff25762f28c19b6d389a779fb455de3c84f3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321778"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253777"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure bilişsel hizmetler kapsayıcı görüntüsü etiketleri
 
@@ -120,6 +120,8 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 | Resim etiketleri            | Notlar |
 |-----------------------|:------|
 | `latest`              |       |
+| `2.5.0-amd64`         |       |
+| `2.4.0-amd64-preview` |       |
 | `2.3.1-amd64-preview` |       | 
 | `2.3.0-amd64-preview` |       |
 | `2.2.0-amd64-preview` |       |
@@ -137,6 +139,8 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 | Resim etiketleri            | Notlar |
 |-----------------------|:------|
 | `latest`              |       |
+| `1.7.0-amd64`         |       |
+| `1.6.0-amd64-preview` |       |
 | `1.6.0-amd64-preview` |       |
 | `1.5.0-amd64-preview` |       |
 | `1.4.0-amd64-preview` |       |
@@ -145,13 +149,52 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 ## <a name="speech-to-text"></a>Konuşmayı metne dönüştürme
 
 [Konuşmadan metne][sp-stt] kapsayıcı görüntüsü, `containerpreview.azurecr.io` kapsayıcı kayıt defterinde bulunabilir. Depo içinde bulunur `microsoft` ve olarak adlandırılır `cognitive-services-speech-to-text` . Tam kapsayıcı görüntü adı, olur `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` .
-Konuşmadan metne görüntülerinin *ABD devlet Virginia* sürümü v 2.4.0 'te desteklenir ve üzerinde bulunabilir `containerpreview.azurecr.io/microsoft/fairfax/cognitive-services-speech-to-text` .
+Konuşmadan metne v 2.5.0 görüntüleri *ABD devlet Virginia*'te desteklenir. Denemek için lütfen *ABD devlet Virginia* faturalandırma uç noktasını ve API anahtarlarını kullanın.
 
 Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 
 | Resim etiketleri                  | Notlar                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Yerel ayara sahip kapsayıcı görüntüsü `en-US` . |
+| `2.5.0-amd64-ar-ae`         | Yerel ayara sahip kapsayıcı görüntüsü `ar-AE` . |
+| `2.5.0-amd64-ar-eg`         | Yerel ayara sahip kapsayıcı görüntüsü `ar-EG` . |
+| `2.5.0-amd64-ar-kw`         | Yerel ayara sahip kapsayıcı görüntüsü `ar-KW` . |
+| `2.5.0-amd64-ar-qa`         | Yerel ayara sahip kapsayıcı görüntüsü `ar-QA` . |
+| `2.5.0-amd64-ar-sa`         | Yerel ayara sahip kapsayıcı görüntüsü `ar-SA` . |
+| `2.5.0-amd64-ca-es`         | Yerel ayara sahip kapsayıcı görüntüsü `ca-ES` . |
+| `2.5.0-amd64-da-dk`         | Yerel ayara sahip kapsayıcı görüntüsü `da-DK` . |
+| `2.5.0-amd64-de-de`         | Yerel ayara sahip kapsayıcı görüntüsü `de-DE` . |
+| `2.5.0-amd64-en-au`         | Yerel ayara sahip kapsayıcı görüntüsü `en-AU` . |
+| `2.5.0-amd64-en-ca`         | Yerel ayara sahip kapsayıcı görüntüsü `en-CA` . |
+| `2.5.0-amd64-en-gb`         | Yerel ayara sahip kapsayıcı görüntüsü `en-GB` . |
+| `2.5.0-amd64-en-in`         | Yerel ayara sahip kapsayıcı görüntüsü `en-IN` . |
+| `2.5.0-amd64-en-nz`         | Yerel ayara sahip kapsayıcı görüntüsü `en-NZ` . |
+| `2.5.0-amd64-en-us`         | Yerel ayara sahip kapsayıcı görüntüsü `en-US` . |
+| `2.5.0-amd64-es-es`         | Yerel ayara sahip kapsayıcı görüntüsü `es-ES` . |
+| `2.5.0-amd64-es-mx`         | Yerel ayara sahip kapsayıcı görüntüsü `es-MX` . |
+| `2.5.0-amd64-fi-fi`         | Yerel ayara sahip kapsayıcı görüntüsü `fi-FI` . |
+| `2.5.0-amd64-fr-ca`         | Yerel ayara sahip kapsayıcı görüntüsü `fr-CA` . |
+| `2.5.0-amd64-fr-fr`         | Yerel ayara sahip kapsayıcı görüntüsü `fr-FR` . |
+| `2.5.0-amd64-gu-in`         | Yerel ayara sahip kapsayıcı görüntüsü `gu-IN` . |
+| `2.5.0-amd64-hi-in`         | Yerel ayara sahip kapsayıcı görüntüsü `hi-IN` . |
+| `2.5.0-amd64-it-it`         | Yerel ayara sahip kapsayıcı görüntüsü `it-IT` . |
+| `2.5.0-amd64-ja-jp`         | Yerel ayara sahip kapsayıcı görüntüsü `ja-JP` . |
+| `2.5.0-amd64-ko-kr`         | Yerel ayara sahip kapsayıcı görüntüsü `ko-KR` . |
+| `2.5.0-amd64-mr-in`         | Yerel ayara sahip kapsayıcı görüntüsü `mr-IN` . |
+| `2.5.0-amd64-nb-no`         | Yerel ayara sahip kapsayıcı görüntüsü `nb-NO` . |
+| `2.5.0-amd64-nl-nl`         | Yerel ayara sahip kapsayıcı görüntüsü `nl-NL` . |
+| `2.5.0-amd64-pl-pl`         | Yerel ayara sahip kapsayıcı görüntüsü `pl-PL` . |
+| `2.5.0-amd64-pt-br`         | Yerel ayara sahip kapsayıcı görüntüsü `pt-BR` . |
+| `2.5.0-amd64-pt-pt`         | Yerel ayara sahip kapsayıcı görüntüsü `pt-PT` . |
+| `2.5.0-amd64-ru-ru`         | Yerel ayara sahip kapsayıcı görüntüsü `ru-RU` . |
+| `2.5.0-amd64-sv-se`         | Yerel ayara sahip kapsayıcı görüntüsü `sv-SE` . |
+| `2.5.0-amd64-ta-in`         | Yerel ayara sahip kapsayıcı görüntüsü `ta-IN` . |
+| `2.5.0-amd64-te-in`         | Yerel ayara sahip kapsayıcı görüntüsü `te-IN` . |
+| `2.5.0-amd64-th-th`         | Yerel ayara sahip kapsayıcı görüntüsü `th-TH` . |
+| `2.5.0-amd64-tr-tr`         | Yerel ayara sahip kapsayıcı görüntüsü `tr-TR` . |
+| `2.5.0-amd64-zh-cn`         | Yerel ayara sahip kapsayıcı görüntüsü `zh-CN` . |
+| `2.5.0-amd64-zh-hk`         | Yerel ayara sahip kapsayıcı görüntüsü `zh-HK` . |
+| `2.5.0-amd64-zh-tw`         | Yerel ayara sahip kapsayıcı görüntüsü `zh-TW` . |
 | `2.4.0-amd64-ar-ae-preview` | Yerel ayara sahip kapsayıcı görüntüsü `ar-AE` . |
 | `2.4.0-amd64-ar-eg-preview` | Yerel ayara sahip kapsayıcı görüntüsü `ar-EG` . |
 | `2.4.0-amd64-ar-kw-preview` | Yerel ayara sahip kapsayıcı görüntüsü `ar-KW` . |
@@ -591,6 +634,87 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 | Resim etiketleri                                  | Notlar                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | `en-US`Yerel ayar ve `en-US-AriaRUS` sesle kapsayıcı görüntüsü.         |
+| `1.7.0-amd64-ar-eg-hoda`                    | `ar-EG`Yerel ayar ve `ar-EG-Hoda` sesle kapsayıcı görüntüsü.            |
+| `1.7.0-amd64-ar-sa-naayf`                   | `ar-SA`Yerel ayar ve `ar-SA-Naayf` sesle kapsayıcı görüntüsü.           |
+| `1.7.0-amd64-bg-bg-ivan`                    | `bg-BG`Yerel ayar ve `bg-BG-Ivan` sesle kapsayıcı görüntüsü.            |
+| `1.7.0-amd64-ca-es-herenarus`               | `ca-ES`Yerel ayar ve `ca-ES-HerenaRUS` sesle kapsayıcı görüntüsü.       |
+| `1.7.0-amd64-cs-cz-jakub`                   | `cs-CZ`Yerel ayar ve `cs-CZ-Jakub` sesle kapsayıcı görüntüsü.           |
+| `1.7.0-amd64-da-dk-hellerus`                | `da-DK`Yerel ayar ve `da-DK-HelleRUS` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-de-at-michael`                 | `de-AT`Yerel ayar ve `de-AT-Michael` sesle kapsayıcı görüntüsü.         |
+| `1.7.0-amd64-de-ch-karsten`                 | `de-CH`Yerel ayar ve `de-CH-Karsten` sesle kapsayıcı görüntüsü.         |
+| `1.7.0-amd64-de-de-hedda`                   | `de-DE`Yerel ayar ve `de-DE-Hedda` sesle kapsayıcı görüntüsü.           |
+| `1.7.0-amd64-de-de-heddarus`                | `de-DE`Yerel ayar ve `de-DE-Hedda` sesle kapsayıcı görüntüsü.           |
+| `1.7.0-amd64-de-de-stefan-apollo`           | `de-DE`Yerel ayar ve `de-DE-Stefan-Apollo` sesle kapsayıcı görüntüsü.   |
+| `1.7.0-amd64-el-gr-stefanos`                | `el-GR`Yerel ayar ve `el-GR-Stefanos` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-en-au-catherine`               | `en-AU`Yerel ayar ve `en-AU-Catherine` sesle kapsayıcı görüntüsü.       |
+| `1.7.0-amd64-en-au-hayleyrus`               | `en-AU`Yerel ayar ve `en-AU-HayleyRUS` sesle kapsayıcı görüntüsü.       |
+| `1.7.0-amd64-en-ca-heatherrus`              | `en-CA`Yerel ayar ve `en-CA-HeatherRUS` sesle kapsayıcı görüntüsü.      |
+| `1.7.0-amd64-en-ca-linda`                   | `en-CA`Yerel ayar ve `en-CA-Linda` sesle kapsayıcı görüntüsü.           |
+| `1.7.0-amd64-en-gb-george-apollo`           | `en-GB`Yerel ayar ve `en-GB-George-Apollo` sesle kapsayıcı görüntüsü.   |
+| `1.7.0-amd64-en-gb-hazelrus`                | `en-GB`Yerel ayar ve `en-GB-HazelRUS` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-en-gb-susan-apollo`            | `en-GB`Yerel ayar ve `en-GB-Susan-Apollo` sesle kapsayıcı görüntüsü.    |
+| `1.7.0-amd64-en-ie-sean`                    | `en-IE`Yerel ayar ve `en-IE-Sean` sesle kapsayıcı görüntüsü.            |
+| `1.7.0-amd64-en-in-heera-apollo`            | `en-IN`Yerel ayar ve `en-IN-Heera-Apollo` sesle kapsayıcı görüntüsü.    |
+| `1.7.0-amd64-en-in-priyarus`                | `en-IN`Yerel ayar ve `en-IN-PriyaRUS` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-en-in-ravi-apollo`             | `en-IN`Yerel ayar ve `en-IN-Ravi-Apollo` sesle kapsayıcı görüntüsü.     |
+| `1.7.0-amd64-en-us-benjaminrus`             | `en-US`Yerel ayar ve `en-US-BenjaminRUS` sesle kapsayıcı görüntüsü.     |
+| `1.7.0-amd64-en-us-guy24krus`               | `en-US`Yerel ayar ve `en-US-Guy24kRUS` sesle kapsayıcı görüntüsü.       |
+| `1.7.0-amd64-en-us-aria24krus`              | `en-US`Yerel ayar ve `en-US-Aria24kRUS` sesle kapsayıcı görüntüsü.      |
+| `1.7.0-amd64-en-us-ariarus`                 | `en-US`Yerel ayar ve `en-US-AriaRUS` sesle kapsayıcı görüntüsü.         |
+| `1.7.0-amd64-en-us-zirarus`                 | `en-US`Yerel ayar ve `en-US-ZiraRUS` sesle kapsayıcı görüntüsü.         |
+| `1.7.0-amd64-es-es-helenarus`               | `es-ES`Yerel ayar ve `es-ES-HelenaRUS` sesle kapsayıcı görüntüsü.       |
+| `1.7.0-amd64-es-es-laura-apollo`            | `es-ES`Yerel ayar ve `es-ES-Laura-Apollo` sesle kapsayıcı görüntüsü.    |
+| `1.7.0-amd64-es-es-pablo-apollo`            | `es-ES`Yerel ayar ve `es-ES-Pablo-Apollo` sesle kapsayıcı görüntüsü.    |
+| `1.7.0-amd64-es-mx-hildarus`                | `es-MX`Yerel ayar ve `es-MX-HildaRUS` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-es-mx-raul-apollo`             | `es-MX`Yerel ayar ve `es-MX-Raul-Apollo` sesle kapsayıcı görüntüsü.     |
+| `1.7.0-amd64-fi-fi-heidirus`                | `fi-FI`Yerel ayar ve `fi-FI-HeidiRUS` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-fr-ca-caroline`                | `fr-CA`Yerel ayar ve `fr-CA-Caroline` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-fr-ca-harmonierus`             | `fr-CA`Yerel ayar ve `fr-CA-HarmonieRUS` sesle kapsayıcı görüntüsü.     |
+| `1.7.0-amd64-fr-ch-guillaume`               | `fr-CH`Yerel ayar ve `fr-CH-Guillaume` sesle kapsayıcı görüntüsü.       |
+| `1.7.0-amd64-fr-fr-hortenserus`             | `fr-FR`Yerel ayar ve `fr-FR-HortenseRUS` sesle kapsayıcı görüntüsü.     |
+| `1.7.0-amd64-fr-fr-julie-apollo`            | `fr-FR`Yerel ayar ve `fr-FR-Julie-Apollo` sesle kapsayıcı görüntüsü.    |
+| `1.7.0-amd64-fr-fr-paul-apollo`             | `fr-FR`Yerel ayar ve `fr-FR-Paul-Apollo` sesle kapsayıcı görüntüsü.     |
+| `1.7.0-amd64-he-il-asaf`                    | `he-IL`Yerel ayar ve `he-IL-Asaf` sesle kapsayıcı görüntüsü.            |
+| `1.7.0-amd64-hi-in-hemant`                  | `hi-IN`Yerel ayar ve `hi-IN-Hemant` sesle kapsayıcı görüntüsü.          |
+| `1.7.0-amd64-hi-in-kalpana-apollo`          | `hi-IN`Yerel ayar ve `hi-IN-Kalpana-Apollo` sesle kapsayıcı görüntüsü.  |
+| `1.7.0-amd64-hi-in-kalpana`                 | `hi-IN`Yerel ayar ve `hi-IN-Kalpana` sesle kapsayıcı görüntüsü.         |
+| `1.7.0-amd64-hr-hr-matej`                   | `hr-HR`Yerel ayar ve `hr-HR-Matej` sesle kapsayıcı görüntüsü.           |
+| `1.7.0-amd64-hu-hu-szabolcs`                | `hu-HU`Yerel ayar ve `hu-HU-Szabolcs` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-id-id-andika`                  | `id-ID`Yerel ayar ve `id-ID-Andika` sesle kapsayıcı görüntüsü.          |
+| `1.7.0-amd64-it-it-cosimo-apollo`           | `it-IT`Yerel ayar ve `it-IT-Cosimo-Apollo` sesle kapsayıcı görüntüsü.   |
+| `1.7.0-amd64-it-it-luciarus`                | `it-IT`Yerel ayar ve `it-IT-LuciaRUS` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-ja-jp-ayumi-apollo`            | `ja-JP`Yerel ayar ve `ja-JP-Ayumi-Apollo` sesle kapsayıcı görüntüsü.    |
+| `1.7.0-amd64-ja-jp-harukarus`               | `ja-JP`Yerel ayar ve `ja-JP-HarukaRUS` sesle kapsayıcı görüntüsü.       |
+| `1.7.0-amd64-ja-jp-ichiro-apollo`           | `ja-JP`Yerel ayar ve `ja-JP-Ichiro-Apollo` sesle kapsayıcı görüntüsü.   |
+| `1.7.0-amd64-ko-kr-heamirus`                | `ko-KR`Yerel ayar ve `ko-KR-HeamiRUS` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-ms-my-rizwan`                  | `ms-MY`Yerel ayar ve `ms-MY-Rizwan` sesle kapsayıcı görüntüsü.          |
+| `1.7.0-amd64-nb-no-huldarus`                | `nb-NO`Yerel ayar ve `nb-NO-HuldaRUS` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-nl-nl-hannarus`                | `nl-NL`Yerel ayar ve `nl-NL-HannaRUS` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-pl-pl-paulinarus`              | `pl-PL`Yerel ayar ve `pl-PL-PaulinaRUS` sesle kapsayıcı görüntüsü.      |
+| `1.7.0-amd64-pt-br-daniel-apollo`           | `pt-BR`Yerel ayar ve `pt-BR-Daniel-Apollo` sesle kapsayıcı görüntüsü.   |
+| `1.7.0-amd64-pt-br-heloisarus`              | `pt-BR`Yerel ayar ve `pt-BR-HeloisaRUS` sesle kapsayıcı görüntüsü.      |
+| `1.7.0-amd64-pt-pt-heliarus`                | `pt-PT`Yerel ayar ve `pt-PT-HeliaRUS` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-ro-ro-andrei`                  | `ro-RO`Yerel ayar ve `ro-RO-Andrei` sesle kapsayıcı görüntüsü.          |
+| `1.7.0-amd64-ru-ru-ekaterinarus`            | `ru-RU`Yerel ayar ve `ru-RU-EkaterinaRUS` sesle kapsayıcı görüntüsü.    |
+| `1.7.0-amd64-ru-ru-irina-apollo`            | `ru-RU`Yerel ayar ve `ru-RU-Irina-Apollo` sesle kapsayıcı görüntüsü.    |
+| `1.7.0-amd64-ru-ru-pavel-apollo`            | `ru-RU`Yerel ayar ve `ru-RU-Pavel-Apollo` sesle kapsayıcı görüntüsü.    |
+| `1.7.0-amd64-sk-sk-filip`                   | `sk-SK`Yerel ayar ve `sk-SK-Filip` sesle kapsayıcı görüntüsü.           |
+| `1.7.0-amd64-sl-si-lado`                    | `sl-SI`Yerel ayar ve `sl-SI-Lado` sesle kapsayıcı görüntüsü.            |
+| `1.7.0-amd64-sv-se-hedvigrus`               | `sv-SE`Yerel ayar ve `sv-SE-HedvigRUS` sesle kapsayıcı görüntüsü.       |
+| `1.7.0-amd64-ta-in-valluvar`                | `ta-IN`Yerel ayar ve `ta-IN-Valluvar` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-te-in-chitra`                  | `te-IN`Yerel ayar ve `te-IN-Chitra` sesle kapsayıcı görüntüsü.          |
+| `1.7.0-amd64-th-th-pattara`                 | `th-TH`Yerel ayar ve `th-TH-Pattara` sesle kapsayıcı görüntüsü.         |
+| `1.7.0-amd64-tr-tr-sedarus`                 | `tr-TR`Yerel ayar ve `tr-TR-SedaRUS` sesle kapsayıcı görüntüsü.         |
+| `1.7.0-amd64-vi-vn-an`                      | `vi-VN`Yerel ayar ve `vi-VN-An` sesle kapsayıcı görüntüsü.              |
+| `1.7.0-amd64-zh-cn-huihuirus`               | `zh-CN`Yerel ayar ve `zh-CN-HuihuiRUS` sesle kapsayıcı görüntüsü.       |
+| `1.7.0-amd64-zh-cn-kangkang-apollo`         | `zh-CN`Yerel ayar ve `zh-CN-Kangkang-Apollo` sesle kapsayıcı görüntüsü. |
+| `1.7.0-amd64-zh-cn-yaoyao-apollo`           | `zh-CN`Yerel ayar ve `zh-CN-Yaoyao-Apollo` sesle kapsayıcı görüntüsü.   |
+| `1.7.0-amd64-zh-hk-danny-apollo`            | `zh-HK`Yerel ayar ve `zh-HK-Danny-Apollo` sesle kapsayıcı görüntüsü.    |
+| `1.7.0-amd64-zh-hk-tracy-apollo`            | `zh-HK`Yerel ayar ve `zh-HK-Tracy-Apollo` sesle kapsayıcı görüntüsü.    |
+| `1.7.0-amd64-zh-hk-tracyrus`                | `zh-HK`Yerel ayar ve `zh-HK-TracyRUS` sesle kapsayıcı görüntüsü.        |
+| `1.7.0-amd64-zh-tw-hanhanrus`               | `zh-TW`Yerel ayar ve `zh-TW-HanHanRUS` sesle kapsayıcı görüntüsü.       |
+| `1.7.0-amd64-zh-tw-yating-apollo`           | `zh-TW`Yerel ayar ve `zh-TW-Yating-Apollo` sesle kapsayıcı görüntüsü.   |
+| `1.7.0-amd64-zh-tw-zhiwei-apollo`           | `zh-TW`Yerel ayar ve `zh-TW-Zhiwei-Apollo` sesle kapsayıcı görüntüsü.   |
 | `1.6.0-amd64-ar-eg-hoda-preview`            | `ar-EG`Yerel ayar ve `ar-EG-Hoda` sesle kapsayıcı görüntüsü.            |
 | `1.6.0-amd64-ar-sa-naayf-preview`           | `ar-SA`Yerel ayar ve `ar-SA-Naayf` sesle kapsayıcı görüntüsü.           |
 | `1.6.0-amd64-bg-bg-ivan-preview`            | `bg-BG`Yerel ayar ve `bg-BG-Ivan` sesle kapsayıcı görüntüsü.            |
@@ -616,8 +740,8 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 | `1.6.0-amd64-en-in-ravi-apollo-preview`     | `en-IN`Yerel ayar ve `en-IN-Ravi-Apollo` sesle kapsayıcı görüntüsü.     |
 | `1.6.0-amd64-en-us-benjaminrus-preview`     | `en-US`Yerel ayar ve `en-US-BenjaminRUS` sesle kapsayıcı görüntüsü.     |
 | `1.6.0-amd64-en-us-guy24krus-preview`       | `en-US`Yerel ayar ve `en-US-Guy24kRUS` sesle kapsayıcı görüntüsü.       |
-| `1.6.0-amd64-en-us-aria24krus-preview`      | `en-US`Yerel ayar ve `en-US-Aria24kRUS` sesle kapsayıcı görüntüsü.     |
-| `1.6.0-amd64-en-us-ariarus-preview`         | `en-US`Yerel ayar ve `en-US-AriaRUS` sesle kapsayıcı görüntüsü.        |
+| `1.6.0-amd64-en-us-aria24krus-preview`      | `en-US`Yerel ayar ve `en-US-Aria24kRUS` sesle kapsayıcı görüntüsü.      |
+| `1.6.0-amd64-en-us-ariarus-preview`         | `en-US`Yerel ayar ve `en-US-AriaRUS` sesle kapsayıcı görüntüsü.         |
 | `1.6.0-amd64-en-us-zirarus-preview`         | `en-US`Yerel ayar ve `en-US-ZiraRUS` sesle kapsayıcı görüntüsü.         |
 | `1.6.0-amd64-es-es-helenarus-preview`       | `es-ES`Yerel ayar ve `es-ES-HelenaRUS` sesle kapsayıcı görüntüsü.       |
 | `1.6.0-amd64-es-es-laura-apollo-preview`    | `es-ES`Yerel ayar ve `es-ES-Laura-Apollo` sesle kapsayıcı görüntüsü.    |

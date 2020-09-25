@@ -1,14 +1,14 @@
 ---
 title: Uyumlu olmayan kaynakları düzeltme
 description: Bu kılavuzda, Azure Ilkesindeki ilkelerle uyumlu olmayan kaynakların düzeltilme adımları gösterilmektedir.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3b2d145322be8b70e096e49be892018952519cf0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651358"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269854"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Ilkesiyle uyumlu olmayan kaynakları düzelt
 
@@ -17,12 +17,16 @@ Bir **Deployifnotexists** veya **MODIFY** Policy ile uyumlu olmayan kaynaklar, *
 ## <a name="how-remediation-security-works"></a>Düzeltme güvenliğinin nasıl çalıştığı
 
 Azure Ilkesi, şablonu **Deployifnotexists** ilke tanımında çalıştırdığında, bu, [yönetilen bir kimlik](../../../active-directory/managed-identities-azure-resources/overview.md)kullanılarak yapılır.
-Azure Ilkesi, her atama için yönetilen bir kimlik oluşturur, ancak yönetilen kimliğe hangi rollerin verilmek üzere ayrıntıları içermelidir. Yönetilen kimliğin rolleri yoksa, ilke veya girişim ataması sırasında bu hata görüntülenir. Portalı kullanırken, Azure Ilkesi, atama başladıktan sonra listelenen roller için yönetilen kimliğe otomatik olarak izin verir. Yönetilen kimliğin _konumu_ , Azure ilkesiyle birlikte çalışmasını etkilemez.
+Azure Ilkesi, her atama için yönetilen bir kimlik oluşturur, ancak yönetilen kimliğe hangi rollerin verilmek üzere ayrıntıları içermelidir. Yönetilen kimliğin rolleri yoksa, ilke veya girişim ataması sırasında bu hata görüntülenir. Portalı kullanırken, Azure Ilkesi, atama başladıktan sonra listelenen roller için yönetilen kimliğe otomatik olarak izin verir. SDK kullanırken, rollerin yönetilen kimliğe el ile verilmesi gerekir. Yönetilen kimliğin _konumu_ , Azure ilkesiyle birlikte çalışmasını etkilemez.
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Yönetilen kimlik üzerinde tanımlı bir izin eksik olan bir deployIfNotExists ilkesinin ekran görüntüsü." border="false":::
 
 > [!IMPORTANT]
-> **Deployifnotexists** veya **MODIFY** tarafından değiştirilen bir kaynak ilke atamasının kapsamı dışındaysa veya şablon, ilke atamasının kapsamı dışında kaynaklardaki özelliklere erişirse, atamaya ait yönetilen kimliğe [el ile erişim izni](#manually-configure-the-managed-identity) verilmelidir veya düzeltme dağıtımı başarısız olur.
+> Aşağıdaki senaryolarda, atamaya ait yönetilen kimliğin [el ile erişim izni verilmesi](#manually-configure-the-managed-identity) gerekir, aksi durumda düzeltme dağıtımı başarısız olur:
+>
+> - Atama SDK aracılığıyla oluşturulduysa
+> - **Deployifnotexists** veya **MODIFY** tarafından değiştirilen bir kaynak, ilke atamasının kapsamı dışındaysa
+> - Şablon, kaynakların ilke atamasının kapsamı dışındaki özelliklerine eriştiğinde
 
 ## <a name="configure-policy-definition"></a>İlke tanımını Yapılandır
 
