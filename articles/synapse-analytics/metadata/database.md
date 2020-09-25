@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 409311594cc26680217948e2394420fdaea29024
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58c1aea944d89872a79d0672a925b1696791c1a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015382"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260861"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure SYNAPSE Analytics paylaşılan veritabanı
 
@@ -23,7 +23,7 @@ Azure SYNAPSE Analytics, farklı hesaplama çalışma alanı altyapılarının S
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Spark işiyle oluşturulmuş bir veritabanı, çalışma alanındaki tüm geçerli ve gelecekteki Spark havuzlarının (Önizleme) yanı sıra aynı adla ve SQL isteğe bağlı altyapısından görünür hale gelir.
+Spark işiyle oluşturulmuş bir veritabanı, SQL isteğe bağlı altyapısı dahil, çalışma alanındaki tüm geçerli ve gelecekteki Spark havuzlarıyla (Önizleme) aynı ad ile görünür hale gelir.
 
 Adlı Spark varsayılan veritabanı, `default` SQL isteğe bağlı bağlamı içinde adlı veritabanı olarak da görünür `default` .
 

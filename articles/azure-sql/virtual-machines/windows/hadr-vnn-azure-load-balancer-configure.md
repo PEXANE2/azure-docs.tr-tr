@@ -8,18 +8,18 @@ manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 10ff324e85082a4a5911e2c949744e7df1d9ad0b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2f36e568603ded5a89f88cf11627a09a5a240fac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316996"
 ---
 # <a name="configure-vnn-with-azure-load-balancer-sql-server-on-azure-vms"></a>Azure Load Balancer ile VNN yapılandırma (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ Bu makale, Azure Load Balancer hizmetini kullanarak bir yük dengeleyici yapıla
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlamadan önce, zaten şunları yapmalısınız:
 
@@ -45,9 +45,9 @@ Yük dengeleyiciyi oluşturmak için [Azure Portal](https://portal.azure.com) ku
 
 1. Azure portal, sanal makineleri içeren kaynak grubuna gidin.
 
-1. **Ekle**'yi seçin. **Load Balancer**Için Azure Market 'te arama yapın. **Load Balancer**seçin.
+1. **Ekle**’yi seçin. **Load Balancer**Için Azure Market 'te arama yapın. **Load Balancer**seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Aşağıdaki değerleri kullanarak yük dengeleyiciyi ayarlayın:
 
@@ -82,7 +82,7 @@ Yük dengeleyiciyi oluşturmak için [Azure Portal](https://portal.azure.com) ku
 
 1. Yük dengeleyici bölmesinde **sistem durumu araştırmaları**' nı seçin.
 
-1. **Ekle**'yi seçin.
+1. **Ekle**’yi seçin.
 
 1. **Durum araştırma bölmesi Ekle** bölümünde aşağıdaki sistem <span id="probe"> </span> durumu araştırma parametrelerini ayarlayın:
 
@@ -98,7 +98,7 @@ Yük dengeleyiciyi oluşturmak için [Azure Portal](https://portal.azure.com) ku
 
 1. Yük dengeleyici bölmesinde, **Yük Dengeleme kuralları**' nı seçin.
 
-1. **Ekle**'yi seçin.
+1. **Ekle**’yi seçin.
 
 1. Yük Dengeleme kuralı parametrelerini ayarlayın:
 
@@ -157,7 +157,7 @@ Küme işlevselliğini doğrulamak için kümelenmiş kaynağın yük devretmesi
 
 # <a name="failover-cluster-instance"></a>[Yük devretme kümesi örneği](#tab/fci)
 
-Aşağıdaki adımları uygulayın:
+Aşağıdaki adımları izleyin:
 
 1. RDP kullanarak SQL Server küme düğümlerinden birine bağlanın.
 1. **Yük devretme kümesi Yöneticisi**açın. **Rolleri**seçin. Hangi düğümün SQL Server FCı rolüne sahip olduğuna dikkat edin.
@@ -170,7 +170,7 @@ Aşağıdaki adımları uygulayın:
 
 # <a name="ag-listener"></a>[AG dinleyicisi](#tab/ag)
 
-Aşağıdaki adımları uygulayın:
+Aşağıdaki adımları izleyin:
 
 1. [SQL Server Management Studio)](/sql/ssms/download-sql-server-management-studio-ssms) açın ve kullanılabilirlik grubu dinleyicisine bağlanın. 
 

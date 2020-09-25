@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523324"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276682"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Yüksek performans için Azure-SSIS Integration Runtime yapılandırma
 
@@ -122,8 +122,7 @@ Y ekseni, yürütmeyi bir saat içinde tamamlanmış paketlerin sayısıdır. L�
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Paketleri çalıştırmak için zaten güçlü bir çalışan düğümü kullanıyorsanız, **Azuressismaxparallelexecutionspernode** öğesinin artırılması, tümleştirme çalışma zamanının genel verimini artırabilir. Standard_D1_v2 düğümler için, düğüm başına 1-4 paralel yürütmeler desteklenir. Diğer tüm düğüm türleri için 1-en fazla (2 x çekirdek sayısı, 8) düğüm başına paralel yürütmeler desteklenir. **Azuressismaxparallelexecutionspernode** ' u desteklediğimiz maksimum değerin ötesinde isterseniz, bir destek bileti açabilirsiniz ve sizin için en büyük değeri artırabilir ve bu tarihten sonra **Azuressismaxparallelexecutionspernode**öğesini güncelleştirmek için Azure PowerShell kullanmanız gerekir.
-Paketinizin maliyetine ve çalışan düğümlerine yönelik aşağıdaki yapılandırmalara göre uygun değeri tahmin edebilirsiniz. Daha fazla bilgi için bkz. [genel amaçlı sanal makine boyutları](../virtual-machines/windows/sizes-general.md).
+Paketleri çalıştırmak için zaten güçlü bir çalışan düğümü kullanıyorsanız, **Azuressismaxparallelexecutionspernode** öğesinin artırılması, tümleştirme çalışma zamanının genel verimini artırabilir. Maksimum değeri artırmak istiyorsanız, **Azuressismaxparallelexecutionspernode**öğesini güncelleştirmek için Azure PowerShell kullanmanız gerekir. Paketinizin maliyetine ve çalışan düğümlerine yönelik aşağıdaki yapılandırmalara göre uygun değeri tahmin edebilirsiniz. Daha fazla bilgi için bkz. [genel amaçlı sanal makine boyutları](../virtual-machines/windows/sizes-general.md).
 
 | Boyut             | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | Maks NIC / Beklenen ağ performansı (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|

@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi günlüklerini sorgulama
 description: Bu makalede, Log Analytics çalışma alanınızdaki Güncelleştirme Yönetimi günlüklerini sorgulama açıklanmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 290fb0165038eea8740361a12a6d4bfe2c1bf138
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 777d794716c7c17caf8d4c73007b91a625f40043
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450412"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264312"
 ---
 # <a name="query-update-management-logs"></a>Güncelleştirme Yönetimi günlüklerini sorgulama
 
@@ -75,7 +75,7 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | UpdateState | Güncelleştirmenin geçerli durumu. |
 | Ürün | Güncelleştirmenin geçerli olduğu ürünler. |
 | kaynak grubundaki | Azure aboneliğinin benzersiz tanımlayıcısı. |
-| ResourceGroup | Kaynağın ait olduğu kaynak grubunun adı. |
+| adlı yönetilen örnek, | Kaynağın ait olduğu kaynak grubunun adı. |
 | ResourceProvider | Kaynak sağlayıcısı. |
 | Kaynak | Kaynağın adı. |
 | ResourceType | Kaynak türü. |
@@ -110,9 +110,9 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | Bilgisayar | Raporlama makinesinin tam etki alanı adı. |
 | Bilgisayar ortamı | Ortamınızın. Değerler Azure veya Azure dışı bir değer. |
 | CorrelationId | Güncelleştirme için çalışan runbook işinin benzersiz tanıtıcısı. |
-| EndTime | Eşitleme işleminin sona erdiği zaman. |
+| EndTime | Eşitleme işleminin sona erdiği zaman. *Bu özellik şu anda kullanılmıyor. Bkz. TimeGenerated.* |
 | ErrorResult | Bir güncelleştirme yüklenemediğinde Windows Update hata kodu oluşturulur. |
-| Yüklemedurumu | İstemci bilgisayarda bir güncelleştirmenin olası yükleme durumları,<br> `NotStarted`-iş henüz tetiklenemez.<br> `FailedToStart`-makinede iş başlatılamıyor.<br> `Failed`-iş başlatıldı, ancak bir özel durumla başarısız oldu.<br> `InProgress`-iş devam ediyor.<br> `MaintenanceWindowExceeded`-yürütme kalan, ancak bakım penceresi aralığına ulaşıldı.<br> `Succeeded`-iş başarılı oldu.<br> `InstallFailed`-güncelleştirme başarıyla yüklenemedi.<br> `NotIncluded`<br> `Excluded` |
+| Yüklemedurumu | İstemci bilgisayarda bir güncelleştirmenin olası yükleme durumları,<br> `NotStarted` -iş henüz tetiklenemez.<br> `FailedToStart` -makinede iş başlatılamıyor.<br> `Failed` -iş başlatıldı, ancak bir özel durumla başarısız oldu.<br> `InProgress` -iş devam ediyor.<br> `MaintenanceWindowExceeded` -yürütme kalan, ancak bakım penceresi aralığına ulaşıldı.<br> `Succeeded` -iş başarılı oldu.<br> `InstallFailed` -güncelleştirme başarıyla yüklenemedi.<br> `NotIncluded`<br> `Excluded` |
 | KBID | Windows Update Bilgi Bankası makalesi KIMLIĞI. |
 | ManagementGroupName | Operations Manager yönetim grubunun veya Log Analytics çalışma alanının adı. |
 | OSType | İşletim sisteminin türü. Değerler Windows veya Linux. |
@@ -123,12 +123,12 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | ResourceType | Kaynak türü. |
 | SourceComputerId | Kaynak bilgisayarı temsil eden benzersiz tanımlayıcı. |
 | SourceSystem | Kayıt için kaynak sistem. Bu durumda değer `OperationsManager` olur. |
-| StartTime | Güncelleştirmenin yüklenmek üzere zamanlandığı zaman. |
-| kaynak grubundaki | Azure aboneliğinin benzersiz tanımlayıcısı. | 
+| StartTime | Güncelleştirmenin yüklenmek üzere zamanlandığı zaman. *Bu özellik şu anda kullanılmıyor. Bkz. TimeGenerated.* |
+| kaynak grubundaki | Azure aboneliğinin benzersiz tanımlayıcısı. |
 | SucceededOnRetry | Güncelleştirme yürütmenin ilk denemede başarısız olup olmadığını ve geçerli işlemin yeniden deneme girişimi olduğunu gösteren değer. |
 | TimeGenerated | Kayıt oluşturmanın tarih ve saati. |
 | Başlık | Güncelleştirme başlığı. |
-| Tür | Güncelleştirme türü. Bu durumda değer `UpdateRunProgress` olur. |
+| Tür | Güncelleştirmenin türü. Bu durumda değer `UpdateRunProgress` olur. |
 | UpdateID | Yazılım güncelleştirmesinin benzersiz tanıtıcısı. |
 | VMUUID | Sanal makine için benzersiz tanımlayıcı. |
 | ResourceId | Kayıtla ilişkili kaynak için benzersiz tanımlayıcı. |
@@ -149,7 +149,7 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | OsVersion | İşletim sisteminin sürümü. |
 | OtherUpdatesMissing | Algılanan güncelleştirme sayısı eksik. |
 | Kaynak | Kayıt için kaynağın adı. |
-| ResourceGroup | Kaynağı içeren kaynak grubunun adı. |
+| adlı yönetilen örnek, | Kaynağı içeren kaynak grubunun adı. |
 | ResourceId | Kayıtla ilişkili kaynak için benzersiz tanımlayıcı. |
 | ResourceProvider | Kaynak sağlayıcısı. |
 | ResourceType | Kaynak türü. |
@@ -209,7 +209,7 @@ Operations Manager yönetim grubunun Azure Izleyici günlükleriyle iletişim ku
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>Tek Azure VM değerlendirme sorguları (Windows)
 
-VMUUID değerini, sorguladığınız sanal makinenin VM GUID 'SI ile değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+VMUUID değerini, sorguladığınız sanal makinenin VM GUID 'SI ile değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler Özeti
 
@@ -238,7 +238,7 @@ Update
 
 ### <a name="single-azure-vm-assessment-queries-linux"></a>Tek Azure VM değerlendirmesi sorguları (Linux)
 
-Bazı Linux 'lar için, Azure Resource Manager ve Azure Izleyici günlüklerinde depolanan VMUUID değeri ile bir [bitiçlik](https://en.wikipedia.org/wiki/Endianness) uyumsuzluğu vardır. Aşağıdaki sorgu, her iki durumda da bir eşleşme olup olmadığını denetler. Sonuçları doğru bir şekilde döndürmek için VMUUID değerlerini, GUID 'nin büyük endian ve little-endian biçimiyle değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz:`Update | where Computer == "<machine name>"
+Bazı Linux 'lar için, Azure Resource Manager ve Azure Izleyici günlüklerinde depolanan VMUUID değeri ile bir [bitiçlik](https://en.wikipedia.org/wiki/Endianness) uyumsuzluğu vardır. Aşağıdaki sorgu, her iki durumda da bir eşleşme olup olmadığını denetler. Sonuçları doğru bir şekilde döndürmek için VMUUID değerlerini, GUID 'nin büyük endian ve little-endian biçimiyle değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler Özeti

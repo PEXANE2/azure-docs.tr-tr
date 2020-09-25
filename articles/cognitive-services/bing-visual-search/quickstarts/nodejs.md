@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: REST API ve Node.js kullanarak görüntü öngörülerini alın Bing Görsel Arama'
 titleSuffix: Azure Cognitive Services
-description: Bing Görsel Arama API'si bir görüntüyü karşıya yüklemeyi ve ilgili öngörüleri nasıl alabileceğinizi öğrenin.
+description: Bing Görsel Arama API'si ve Node.js kullanarak bir görüntüyü karşıya yüklemeyi ve sonra görüntüyle ilgili öngörüleri almayı öğrenin.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: scottwhi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1e5594fab6e4b1758e8e3cd722c053b9d3d301ce
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: e96ff9173d920208e067988602323626767d9017
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404044"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277101"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Node.js kullanarak görüntü öngörüleri alın
 
 Bing Görsel Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir görüntü yükler ve onunla ilgili olarak döndürülen bilgileri görüntüler. Bu uygulama JavaScript 'e yazılsa da, API çoğu programlama dili ile uyumlu olan yeniden yazılmış bir Web hizmetidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/en/download/)
 * JavaScript için Istek modülü. `npm install request`Modülünü yüklemek için komutunu kullanabilirsiniz.

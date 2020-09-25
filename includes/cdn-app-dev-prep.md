@@ -4,14 +4,14 @@ ms.service: azure-cdn
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
-ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4967991b0edaa854acbf6b308596859d662311fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77608729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316774"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 CDN yönetim kodu yazmadan önce kodun Azure Resource Manager etkileşime geçmesini sağlamak için bazı hazırlıklar yapmanız gerekir. Bu hazırlığı yapmak için şunları yapmanız gerekir:
 
 * Bu öğreticide oluşturulan CDN profilini içeren bir kaynak grubu oluşturun
@@ -26,10 +26,10 @@ CDN yönetim kodu yazmadan önce kodun Azure Resource Manager etkileşime geçme
     ![Yeni bir kaynak grubu oluşturma](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
 3. Kaynak grubunuzu *Cdnconsoleöğreticisi*olarak adlandırın.  Aboneliğinizi seçin ve yakınınızdaki bir konum seçin.  İsterseniz, kaynak grubunu portalda panoya sabitlemek için **panoya sabitle** onay kutusunu tıklayabilirsiniz.  Sabitleme daha sonra bulmayı kolaylaştırır.  Seçimlerinizi yaptıktan sonra **Oluştur**' a tıklayın.
 
-    ![Kaynak grubunu adlandırma](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
+    ![Kaynak grubu iletişim kutusunun ekran görüntüsü.](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
 4. Kaynak Grubu oluşturulduktan sonra, bunu panonuza sabitetmediyseniz, bu dosyayı, **Araştır**' a ve ardından **kaynak grupları**' na tıklayarak bulabilirsiniz.  Açmak için kaynak grubuna tıklayın.  **ABONELIK kimliğinizi**bir yere getirin. Daha sonra ihtiyacımız var.
 
-    ![Kaynak grubunu adlandırma](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
+    ![C D N konsol öğreticisi bölümünün ekran görüntüsü.](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Azure AD uygulaması oluşturma ve izinleri uygulama
 Azure Active Directory ile uygulama kimlik doğrulamasında iki yaklaşım vardır: bireysel kullanıcılar veya hizmet sorumlusu. Hizmet sorumlusu, Windows 'daki hizmet hesabına benzer.  CDN profilleriyle etkileşmek üzere belirli bir Kullanıcı izinleri vermek yerine, izinler hizmet sorumlusu için verilir.  Hizmet sorumluları genellikle otomatik, etkileşimli olmayan süreçler için kullanılır.  Bu öğretici etkileşimli bir konsol uygulaması yazıyor olsa da hizmet sorumlusu yaklaşımına odaklanacağız.
@@ -62,6 +62,6 @@ Bir hizmet sorumlusu yerine, etkileşimli bireysel kullanıcı kimlik doğrulama
     ![Yerel uygulama](./media/cdn-app-dev-prep/cdn-native-application-include.png)
 2. Sonraki sayfada, size **yeniden yönlendirme URI 'si**sorulur.  URI doğrulanmaz, ancak girdiğinizi unutmayın. Daha sonra ihtiyacınız olacak.
 3. **İstemci kimlik doğrulama anahtarı**oluşturmaya gerek yoktur.
-4. **CDN profili katkıda bulunan** rolüne bir hizmet sorumlusu atamak yerine, bireysel kullanıcılar veya gruplar atayacağız.  Bu örnekte, CDN *tanıtım kullanıcısını* **CDN profili katkıda** bulunan rolüne atadım.  
+4. **CDN profili katkıda bulunan** rolüne bir hizmet sorumlusu atamak yerine, bireysel kullanıcılar veya gruplar atayacağız.  Bu örnekte, CDN  *tanıtım kullanıcısını* **CDN profili katkıda** bulunan rolüne atadım.  
 
     ![Bireysel kullanıcı erişimi](./media/cdn-app-dev-prep/cdn-aad-user-include.png)

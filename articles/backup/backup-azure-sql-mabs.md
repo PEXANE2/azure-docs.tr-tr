@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu kullanarak SQL Server yedekleme
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak SQL Server veritabanlarının yedeklenme yapılandırmasını öğrenin.
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: b47cb74c6e5dbb868c03f8f7b79c00b0c4ce7886
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 29813741e88ad5f2bc5109be87939abf7cc11502
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182318"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316928"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Azure Backup Sunucusu kullanarak SQL Server Azure 'a yedekleme
 
@@ -24,10 +24,10 @@ SQL Server veritabanını yedeklemek ve Azure 'dan kurtarmak için:
 
 * Uzak bir dosya paylaşımında dosyalar içeren bir veritabanına sahipseniz koruma, Hata Kimliği 104 ile başarısız olur. MABS, uzak bir dosya paylaşımında SQL Server veri korumasını desteklemez.
 * MABS, uzak SMB paylaşımlarında depolanan veritabanlarını koruyamaz.
-* [Kullanılabilirlik grubu çoğaltmalarının salt okuma olarak yapılandırıldığından](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)emin olun.
+* [Kullanılabilirlik grubu çoğaltmalarının salt okuma olarak yapılandırıldığından](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server)emin olun.
 * **NTAuthority\System adlı** sistem hesabını SQL Server üzerinde sysadmin grubuna açıkça eklemeniz gerekir.
-* Kısmen kapsanan bir veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [Kapsanan veritabanları](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) özelliğinin etkin olduğundan emin olmanız gerekir.
-* Bir dosya akışı veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [dosya akışı veritabanı](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) özelliğinin etkinleştirildiğinden emin olmanız gerekir.
+* Kısmen kapsanan bir veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [Kapsanan veritabanları](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable) özelliğinin etkin olduğundan emin olmanız gerekir.
+* Bir dosya akışı veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [dosya akışı veritabanı](/sql/relational-databases/blob/enable-and-configure-filestream) özelliğinin etkinleştirildiğinden emin olmanız gerekir.
 * SQL Server AlwaysOn için koruma:
   * MABS, koruma grubu oluşturma sırasında sorgu çalıştırırken kullanılabilirlik gruplarını algılar.
   * MABS bir yük devretme algılar ve veritabanını korumaya devam eder.
@@ -45,7 +45,7 @@ SQL Server veritabanını yedeklemek ve Azure 'dan kurtarmak için:
     * Seçili düğümde yedekleme başarısız olursa, yedekleme işlemi başarısız olur.
     * Özgün konuma kurtarma desteklenmez.
 * SQL Server 2014 veya üzeri yedekleme sorunları:
-  * SQL Server 2014 [, Windows Azure Blob depolama alanında Şirket içi SQL Server için veritabanı](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)oluşturmak üzere yeni bir özellik ekledi. MABS bu yapılandırmayı korumak için kullanılamaz.
+  * SQL Server 2014 [, Windows Azure Blob depolama alanında Şirket içi SQL Server için veritabanı](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)oluşturmak üzere yeni bir özellik ekledi. MABS bu yapılandırmayı korumak için kullanılamaz.
   * SQL AlwaysOn seçeneği için "ikincil tercih et" yedekleme tercihiyle ilgili bazı bilinen sorunlar vardır. MABS her zaman ikincili bir yedekleme alır. İkincil bulunamazsa yedekleme başarısız olur.
 
 ## <a name="before-you-start"></a>Başlamadan önce

@@ -4,17 +4,17 @@ description: Azure Güvenlik kıyaslaması V2 ağ güvenliği
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184416794011d259af3568c81e4648d822a2c4a5
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059437"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329440"
 ---
-# <a name="security-control-network-security"></a>Güvenlik denetimi: ağ güvenliği
+# <a name="security-control-v2-network-security"></a>Güvenlik denetimi v2: ağ güvenliği
 
 Ağ güvenliği, Azure ağlarını güvenli hale getirmeye ve korumanıza yönelik denetimleri ele alır. Bu, sanal ağların güvenliğini sağlamayı, özel bağlantılar oluşturmayı, dış saldırıları engellemeyi ve azaltıcı ve DNS güvenliğini içerir.
 
@@ -30,15 +30,19 @@ Uygulamalarınız ve kurumsal segmentasyon stratejinize bağlı olarak, ağ güv
 
 Bağlantı noktalarını ve kaynak IP 'Leri dış ağ trafiği kurallarına göre sınırlayan ağ güvenlik grubu yapılandırmalarının kullanılmasını önermek için Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma kullanın.
 
+SSL/TLSv1, SMBv1, LM/NTLMv1, wDigest, Imzasız LDAP bağlamaları ve zayıf şifrelemeler gibi eski güvenli olmayan protokollerin kullanımını öğrenmek için Azure Sentinel kullanın.
+
 - [Güvenlik kuralları ile ağ güvenlik grubu oluşturma](../../virtual-network/tutorial-filter-network-traffic.md)
 
 - [Azure Güvenlik duvarını dağıtma ve yapılandırma](../../firewall/tutorial-firewall-deploy-portal.md)
 
 - [Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma](../../security-center/security-center-adaptive-network-hardening.md)
 
+- [Azure Sentinel güvenli olmayan protokoller çalışma kitabı](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
+
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -54,7 +58,7 @@ Bağlantı noktalarını ve kaynak IP 'Leri dış ağ trafiği kurallarına gör
 
 Azure veri merkezleri ile şirket içi altyapı arasında özel bağlantılar oluşturmak için Azure ExpressRoute veya Azure sanal özel ağ (VPN) kullanın. ExpressRoute bağlantıları, genel İnternet üzerinden geçmez ve tipik İnternet bağlantılarına göre daha fazla güvenilirlik, daha hızlı hız ve daha düşük gecikme süresi sunar. Noktadan siteye VPN ve siteden siteye VPN için, bu VPN seçeneklerinin ve Azure ExpressRoute 'un herhangi bir birleşimini kullanarak şirket içi cihazları veya ağları bir sanal ağa bağlayabilirsiniz.
 
-İki veya daha fazla sanal ağı Azure 'da birlikte bağlamak için sanal ağ eşlemesi ' ni kullanın. Eşlenen sanal ağlar arasındaki ağ trafiği özeldir ve Azure omurga ağında tutulur. 
+İki veya daha fazla sanal ağı Azure 'da birlikte bağlamak için sanal ağ eşlemesi veya özel bağlantı kullanın. Eşlenen sanal ağlar arasındaki ağ trafiği özeldir ve Azure omurga ağında tutulur. 
 
 - [ExpressRoute bağlantı modelleri nelerdir?](../../expressroute/expressroute-connectivity-models.md) 
 
@@ -62,9 +66,11 @@ Azure veri merkezleri ile şirket içi altyapı arasında özel bağlantılar ol
 
 - [Sanal ağ eşleme](../../virtual-network/virtual-network-peering-overview.md)
 
+- [Azure Özel Bağlantı](../../private-link/private-link-service-overview.md)
+
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -88,7 +94,7 @@ Azure veri merkezleri ile şirket içi altyapı arasında özel bağlantılar ol
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -108,6 +114,7 @@ Dağıtılmış hizmet reddi (DDoS) saldırıları, uygulamaya özgü saldırıl
 -   Uygulamalarınızı, hizmetlerinizi ve API 'lerinizi uygulama katmanı saldırılarına karşı korumak için Azure Application Gateway, Azure ön kapısında ve Azure Content Delivery Network (CDN) Web uygulaması güvenlik duvarı (WAF) yeteneklerini kullanın. 
 
 -   Azure sanal ağlarınızda DDoS standart korumasını etkinleştirerek varlıklarınızı DDoS saldırılarına karşı koruyun. 
+-   Yukarıdaki ile ilgili yanlış yapılandırma risklerini algılamak için Azure Güvenlik Merkezi 'ni kullanın. 
 
 - [Azure Güvenlik Duvarı Belgeleri](/azure/firewall/)
 
@@ -117,7 +124,7 @@ Dağıtılmış hizmet reddi (DDoS) saldırıları, uygulamaya özgü saldırıl
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 Yok
 
@@ -139,7 +146,7 @@ Note: KIMLIKLER/IP 'ler için bir yasal veya diğer gereksinimleriniz varsa, Sı
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -165,7 +172,7 @@ Ayrıca, karmaşık güvenlik yapılandırmasını basitleştirmeye yardımcı o
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -191,7 +198,7 @@ Yetkili DNS hizmetiniz olarak Azure DNS kullanıldığında, DNS bölgelerinin v
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

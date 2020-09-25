@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 48ab83db3dcbcf5c99b640ccab205ed1f0ee7ca1
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604385"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328573"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory için Azure özel bağlantısı
 
@@ -39,7 +39,7 @@ Aşağıdaki tabloda gösterildiği gibi Azure Data Factory ve müşteri sanal a
 
 | Etki alanı | Bağlantı noktası | Description |
 | ---------- | -------- | --------------- |
-| `pe-adf.azure.com` | 443 | Data Factory yazma ve izleme için gereken bir denetim düzlemi. |
+| `adf.azure.com` | 443 | Data Factory yazma ve izleme için gereken bir denetim düzlemi. |
 | `*.{region}.datafactory.azure.net` | 443 | Şirket içinde barındırılan tümleştirme çalışma zamanı tarafından Data Factory hizmetine bağlanmak için gereklidir. |
 | `*.servicebus.windows.net` | 443 | Etkileşimli yazma için şirket içinde barındırılan tümleştirme çalışma zamanı için gereklidir. |
 | `download.microsoft.com` | 443 | Güncelleştirmeleri indirmek için şirket içinde barındırılan tümleştirme çalışma zamanı için gereklidir. |

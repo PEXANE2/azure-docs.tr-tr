@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316741"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -105,7 +105,7 @@ Hata iletisi: VSS yazarları hatalı durumda olduğundan anlık görüntü işle
 
 VSS yazıcılarının hatalı durumda olması nedeniyle bu hata oluşur. Azure Backup uzantıları, disklerin anlık görüntülerini almak için VSS yazıcılarında etkileşim kurar. Bu sorunu çözmek için şu adımları izleyin:
 
-Hatalı durumda olan VSS yazıcılarını yeniden başlatın.
+1. Adım: Hatalı durumda olan VSS yazıcılarını yeniden başlatın.
 - Yükseltilmiş bir komut isteminden komutunu çalıştırın ```vssadmin list writers``` .
 - Çıktı tüm VSS yazıcılarını ve bunların durumlarını içerir. **[1] kararlı**olmayan bir duruma sahıp her VSS Yazıcı IÇIN ilgili VSS yazıcısının hizmetini yeniden başlatın. 
 - Hizmeti yeniden başlatmak için, yükseltilmiş bir komut isteminden aşağıdaki komutları çalıştırın:
@@ -117,12 +117,20 @@ Hatalı durumda olan VSS yazıcılarını yeniden başlatın.
 > Bazı hizmetlerin yeniden başlatılmasına yönelik üretim ortamınız üzerinde bir etkisi olabilir. Onay işleminin izlendiğinden ve hizmetin zamanlanan kesinti sırasında yeniden başlatıldığından emin olun.
  
    
-VSS yazıcılarının yeniden başlatılması sorunu çözmezse ve sorun bir zaman aşımı nedeniyle devam ederse, şunları yapın:
-- İş parçacıklarının blob anlık görüntüleri için oluşturulmasını engellemek üzere yükseltilmiş bir komut isteminden (yönetici olarak) aşağıdaki komutu çalıştırın.
+2. Adım: VSS yazıcılarını yeniden başlatmak sorunu çözmezse, iş parçacıklarının blob anlık görüntüleri için oluşturulmasını engellemek üzere yükseltilmiş bir komut isteminden (yönetici olarak) aşağıdaki komutu çalıştırın.
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+3. Adım: 1 ve 2. adımlar sorunu çözmezse, bu, sınırlı ıOPS nedeniyle VSS yazıcılarının zaman aşımına uğramasından kaynaklanıyor olabilir.<br>
+
+Doğrulamak için, ***sistem ve Olay Görüntüleyicisi uygulama günlükleri*** ' ne gidin ve aşağıdaki hata iletisini kontrol edin:<br>
+*Gölge kopya sağlayıcısı, gölge kopya oluşturulan birime yazma işlemlerini tutarken zaman aşımına uğradı. Bu, büyük olasılıkla bir uygulama veya sistem hizmeti tarafından birimdeki aşırı etkinlikten kaynaklanıyor olabilir. Birimdeki etkinlik azaltıldığında daha sonra yeniden deneyin.*<br>
+
+Çözüm:
+- Yükü VM disklerinde dağıtmak için olanaklar olup olmadığını denetleyin. Bu, tek disklerdeki yükü azaltır. [Depolama düzeyinde tanılama ölçümlerini etkinleştirerek IOPS azaltmasını kontrol](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)edebilirsiniz.
+- VM üzerindeki yük en düşük düzeyde olduğunda, yedekleme ilkesini yoğun saatlerde yedeklemeler gerçekleştirmek üzere değiştirin.
+- Azure disklerini, daha yüksek IOPS 'yi destekleyecek şekilde yükseltin. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>Extensionfailedvssserviceınbadstate-VSS (birim gölge kopyası) hizmeti hatalı durumda olduğundan anlık görüntü işlemi başarısız oldu
 
@@ -306,6 +314,13 @@ Hata kodu: UserErrorRequestDisallowedByPolicy <BR> Hata iletisi: VM 'de anlık g
 | Yedekleme işi iptal edemedi: <br>İş bitene kadar bekleyin. |Yok |
 
 ## <a name="restore"></a>Geri Yükleme
+
+#### <a name="disks-appear-offline-after-file-restore"></a>Dosya geri yüklemeden sonra diskler çevrimdışı görünüyor
+
+Geri yükleme sonrasında, disklerin çevrimdışı olduğunu fark edersiniz: 
+* Betiğin yürütüldüğü makinenin işletim sistemi gereksinimlerini karşıladığını doğrulayın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
+* Aynı kaynağa geri yüklemediğinizden emin olun, [daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine).
+
 
 | Hata ayrıntıları | Geçici çözüm |
 | --- | --- |

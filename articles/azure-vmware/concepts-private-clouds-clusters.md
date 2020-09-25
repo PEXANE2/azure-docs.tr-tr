@@ -3,14 +3,14 @@ title: Kavramlar-özel bulutlar ve kümeler
 description: VMware tarafından Azure 'da VMware çözümünde Azure VMware yazılım tanımlı veri merkezlerinin ve vSphere kümelerinin temel özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 715293d9951876ff0f794f8f6b580093f89571b3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752283"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316877"
 ---
-# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Azure VMware Çözüm önizleme özel bulut ve küme kavramları
+#  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware çözümü özel bulutu ve küme kavramları
 
 Azure VMware çözümü, Azure 'da VMware tabanlı özel bulutlar sunar. Özel bulutlar adanmış çıplak konaklar kümelerinden oluşturulmuştur ve Azure portal aracılığıyla dağıtılır ve yönetilir. Özel bulutlarda kümeler VMware vSphere, vCenter, vSAN ve NSX yazılımıyla birlikte sağlanır. Azure VMware çözümü özel bulut donanımı ve yazılım dağıtımları, Azure 'da tamamen tümleşiktir ve otomatikleştirilir.
 
@@ -61,7 +61,7 @@ Azure VMware çözüm platformu yazılımının genel yükseltme ilkeleri ve iş
 
 Konak bakımı ve yaşam döngüsü yönetimi, özel bulut kümelerinin kapasitesine veya performansına etkilenmeden yapılır. Otomatik ana bilgisayar bakımı örnekleri, bellenim yükseltmeleri ve donanım onarımı ya da değişikliği içerir.
 
-Microsoft, NSX-T Manager ve NSX-T Edge gibi NSX-T gereçlerinin yaşam döngüsü yönetiminden sorumludur. Microsoft, katman-0 ağ geçidini oluşturma ve Kuzey-Güney yönlendirmeyi etkinleştirme gibi önyükleme ağ yapılandırmadan da sorumludur. Azure VMware Çözüm özel bulutunuzun Yöneticisi olarak ağ kesimleri, dağıtılmış güvenlik duvarı kuralları, katman 1 ağ geçitleri ve yük dengeleyiciler gibi NSX-T SDN yapılandırmasından sorumludur.
+Microsoft, NSX-T Manager ve NSX-T Edge gibi NSX-T gereçlerinin yaşam döngüsü yönetiminden sorumludur. Microsoft, katman-0 ağ geçidini oluşturma ve Kuzey-Güney yönlendirmeyi etkinleştirme gibi önyükleme ağ yapılandırmadan da sorumludur. Azure VMware Çözüm özel bulutunuzun Yöneticisi olarak NSX-T SDN yapılandırmasından sorumludur. Örneğin, ağ kesimleri, dağıtılmış güvenlik duvarı kuralları, katman 1 ağ geçitleri ve yük dengeleyiciler.
 
 > [!IMPORTANT]
 > Azure VMware Çözüm Yöneticisi NSX-T Edge veya Katman-0 ağ geçidinin yapılandırmasını değiştirmemelidir. Bu durum hizmet kaybına neden olabilir.

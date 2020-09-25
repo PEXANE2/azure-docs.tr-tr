@@ -1,16 +1,16 @@
 ---
 title: Kavramlar-depolama
-description: Azure VMware Çözüm önizleme özel bulutlarındaki anahtar depolama özellikleri hakkında bilgi edinin.
+description: Azure VMware Çözüm özel bulutlarında anahtar depolama özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 02378040061080d3c9abbfafb26180c9d22e9073
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024324"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316826"
 ---
-# <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware Çözüm önizleme depolama kavramları
+#  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware Çözüm depolama kavramları
 
 Azure VMware çözümü özel bulutları, VMware vSAN ile yerel, küme genelinde depolama sağlar. Bir kümedeki her bir konaktaki tüm yerel depolama birimi bir vSAN veri deposunda kullanılır ve varsayılan olarak, bekleyen veri şifrelemesi kullanılabilir ve etkinleştirilir. Azure depolama kaynaklarını kullanarak özel bulutlarınızın depolama özelliklerini genişletebilirsiniz.
 
@@ -28,7 +28,7 @@ Küme ana bilgisayarlarındaki yerel depolama alanı, küme genelinde vSAN veri 
 
 ## <a name="data-at-rest-encryption"></a>Bekleyen veri şifrelemesi
 
-vSAN veri depoları varsayılan olarak rest şifreleme kullanır. Şifreleme çözümü KMS tabanlıdır ve anahtar yönetimi için vCenter işlemlerini destekler. Anahtar şifreleme anahtarları bir Azure Key Vault depolanır ve bir konak bir nedenle kümeden kaldırıldığında, SSD 'Ler üzerindeki veriler hemen geçersiz kılınır.
+vSAN veri depoları varsayılan olarak rest şifreleme kullanır. Şifreleme çözümü KMS tabanlıdır ve anahtar yönetimi için vCenter işlemlerini destekler. Anahtarlar, HSM tabanlı bir Azure Key Vault ana anahtarı tarafından Sarmalanan şifreli olarak depolanır. Bir konak kümeden herhangi bir nedenden dolayı kaldırıldığında SSD 'Ler üzerindeki veriler hemen geçersiz kılınır.
 
 ## <a name="scaling"></a>Ölçeklendirme
 

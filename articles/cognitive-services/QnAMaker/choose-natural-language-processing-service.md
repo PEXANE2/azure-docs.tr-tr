@@ -1,14 +1,14 @@
 ---
 title: Sohbet botları için LUSıS ile NLP kullanma
-description: Bilişsel hizmetler, Language Understanding ve Soru-Cevap Oluşturma her biri farklı bir amaca sahip iki doğal dil işleme hizmeti sağlar. Her bir hizmetin ne zaman kullanılacağını ve birbirini nasıl zorluk yaptığını anlayın.
+description: Language Understanding ne zaman kullanacağınızı ve ne zaman Soru-Cevap Oluşturma kullanacağınızı ve birbirini nasıl anladığınızı öğrenin.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: beaa8b7033aeff3958632b3703323754e5ad5084
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 78591fa3d74b10c71c4c50ea2662c3f2ad3c5ace
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524480"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328675"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>Bot konuşmalarını zenginleştirmek için bilişsel hizmetler 'i doğal dil işleme (NLP) ile birlikte kullanma
 

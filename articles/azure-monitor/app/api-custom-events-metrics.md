@@ -3,13 +3,13 @@ title: Özel olaylar ve ölçümler için API Application Insights | Microsoft D
 description: Kullanımı izlemek ve sorunları tanılamak için cihazınıza veya masaüstü uygulamanıza, Web sayfasına veya hizmete birkaç satır kod ekleyin.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f60fdf9164d09b10d12ada7481edb503cd57a411
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936580"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264142"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
@@ -437,7 +437,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örnek:
+Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örneğin:
 
 ```kusto
 exceptions
@@ -500,7 +500,7 @@ Yöntemi girme veya bir yönteme ayrılma gibi bir tanılama olayını günlüğ
 Boyut sınırı, `message` özellikleri sınırından çok daha yüksek.
 TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.  
 
-Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örnek:
+Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örneğin:
 
 *C#*
 
@@ -820,7 +820,7 @@ requests
 | summarize sum(itemCount), avg(todouble(customMeasurements.score)) by tostring(customDimensions.game)
 ```
 
-Dikkat edin:
+Şunlara dikkat edin:
 
 * CustomDimensions veya Customölçüler JSON öğesinden bir değeri ayıkladığınızda, dinamik türe sahiptir ve bu nedenle veya ' i atamalısınız `tostring` `todouble` .
 * [Örnekleme](./sampling.md)olasılığa yönelik bir hesap almak için, kullanmanız gerekir `sum(itemCount)` `count()` .
@@ -1063,7 +1063,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örnek:
+TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örneğin:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

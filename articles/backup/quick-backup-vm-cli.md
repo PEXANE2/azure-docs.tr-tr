@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 98eff02dacb5b44839937f826cd676fe16670cbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 92990df3049f7fa1074d55fc34734e13d6673cd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017490"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328842"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>CLI ile Azure'daki bir sanal makineyi yedekleme
 
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-Varsayılan olarak Kurtarma Hizmetleri kasasında Coğrafi Olarak Yedekli depolama özelliği etkindir. Coğrafi olarak yedekli depolama, yedekleme verilerinizin birincil bölgeden yüzlerce mil uzakta olan ikincil bir Azure bölgesine çoğaltılmasını sağlar. Depolama artıklığı ayarının değiştirilmesi gerekiyorsa, [az Backup kasa Backup-Properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) cmdlet 'ini kullanın.
+Varsayılan olarak Kurtarma Hizmetleri kasasında Coğrafi Olarak Yedekli depolama özelliği etkindir. Coğrafi olarak yedekli depolama, yedekleme verilerinizin birincil bölgeden yüzlerce mil uzakta olan ikincil bir Azure bölgesine çoğaltılmasını sağlar. Depolama artıklığı ayarının değiştirilmesi gerekiyorsa, [az Backup kasa Backup-Properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) cmdlet 'ini kullanın.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -118,7 +118,7 @@ Yedekleme işinin *Durum* bilgisi *Tamamlandı* olduğunda sanal makineniz Kurta
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
-Artık gerekli değilse sanal makine korumasını devre dışı bırakabilir, kurtarma noktalarını ve Kurtarma Hizmetleri kasasını kaldırabilir ve ardından sanal makine kaynaklarıyla ilişkilendirilmiş kaynak grubunu silebilirsiniz. Var olan bir sanal makineyi kullandıysanız son [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu atlayarak kaynak grubunu ve sanal makineyi bırakabilirsiniz.
+Artık gerekli değilse sanal makine korumasını devre dışı bırakabilir, kurtarma noktalarını ve Kurtarma Hizmetleri kasasını kaldırabilir ve ardından sanal makine kaynaklarıyla ilişkilendirilmiş kaynak grubunu silebilirsiniz. Var olan bir sanal makineyi kullandıysanız son [az group delete](/cli/azure/group#az-group-delete) komutunu atlayarak kaynak grubunu ve sanal makineyi bırakabilirsiniz.
 
 VM verilerinizi geri yüklemeyi gösteren bir Backup öğreticisini denemek istiyorsanız [Sonraki adımlar](#next-steps) bölümüne gidin.
 

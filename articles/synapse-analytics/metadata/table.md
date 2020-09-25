@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d00232d602ce7b2de0db4e06ef3c7456f552833e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6b9835cf5de28fbd515a214554f723d99e8e8fe4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018748"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260740"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure SYNAPSE Analytics paylaşılan meta veri tabloları
 
@@ -105,7 +105,7 @@ Aşağıdaki komutu çalıştırarak, mini bir SQL ile yönetilen Spark tablosu 
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-Bu, tabloyu `myParquetTable` veritabanında oluşturur `mytestdb` . Kısa bir gecikmeden sonra, tabloyu SQL isteğe bağlı olarak görebilirsiniz. Örneğin, isteğe bağlı SQL 'de aşağıdaki ifadeyi çalıştırın.
+Bu komut, tabloyu `myParquetTable` veritabanında oluşturur `mytestdb` . Kısa bir gecikmeden sonra, tabloyu SQL isteğe bağlı olarak görebilirsiniz. Örneğin, isteğe bağlı SQL 'de aşağıdaki ifadeyi çalıştırın.
 
 ```sql
     USE mytestdb;

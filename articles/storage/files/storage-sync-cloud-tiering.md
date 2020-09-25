@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6678f64802dc497de6cf0a70ba5ff0bbcaf44e1c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9df06a9d81ef3c9fbe3380bab88325a586981db9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033130"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329321"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut katmanlaması genel bakış
 Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak önbelleğe alındığı, diğer tüm dosyaların ilke ayarlarına bağlı olarak Azure dosyaları ile katmanlandıkları Azure Dosya Eşitleme isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (StorageSync.sys) dosyayı bir işaretçi veya yeniden ayrıştırma noktasıyla yerel olarak değiştirir. Yeniden ayrıştırma noktası, Azure dosyalarındaki dosyanın bir URL 'sini temsil eder. Katmanlı bir dosyanın hem "çevrimdışı" özniteliği hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği bulunur. böylece, üçüncü taraf uygulamaların katmanlı dosyaları güvenle belirleyebilmesini sağlayabilirsiniz.
@@ -40,7 +40,7 @@ Bulut katmanlaması, son erişim süresini izlemek için NTFS özelliğine bağl
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Katmana bir dosya için en küçük dosya boyutu nedir?
 
-Aracı sürümleri 9 ve daha yeni sürümlerde, bir dosyanın katmana en küçük dosya boyutu dosya sistemi kümesi boyutunu temel alır. Bulut katmanlaması için uygun olan minimum dosya boyutu, 2x küme boyutu ve en az 8 KB ile hesaplanır. Aşağıdaki tabloda, birim kümesi boyutuna bağlı olarak katmanlanılabilecek minimum dosya boyutları gösterilmektedir:
+2 ve daha yeni Aracı sürümleri için, bir dosyanın katmana yönelik en küçük dosya boyutu dosya sistemi kümesi boyutunu temel alır. Bulut katmanlaması için uygun olan minimum dosya boyutu, 2x küme boyutu ve en az 8 KB ile hesaplanır. Aşağıdaki tabloda, birim kümesi boyutuna bağlı olarak katmanlanılabilecek minimum dosya boyutları gösterilmektedir:
 
 |Birim kümesi boyutu (bayt) |Bu boyut veya daha büyük dosyalar katmanlı olabilir  |
 |----------------------------|---------|
@@ -48,9 +48,9 @@ Aracı sürümleri 9 ve daha yeni sürümlerde, bir dosyanın katmana en küçü
 |8 KB (8192)                 | 16 KB   |
 |16 KB (16384)               | 32 KB   |
 |32 KB (32768)               | 64 KB   |
-|64 KB (65536)               | 128 KB  |
+|64 KB (65536) ve daha büyük    | 128 KB  |
 
-Windows Server 2019 ve Azure Dosya Eşitleme Agent sürümü 12 ve daha yeni sürümlerde, 2 MB 'a kadar olan küme boyutları da desteklenir ve bu büyük küme boyutları üzerinde katmanlama aynı şekilde çalışır. Daha eski işletim sistemi veya Aracı sürümleri, 64 KB 'a kadar küme boyutlarını destekler.
+Windows Server 2019 ve Azure Dosya Eşitleme Agent sürümü 12 ve daha yeni sürümlerde, 2 MB 'a kadar olan küme boyutları da desteklenir ve bu büyük küme boyutları üzerinde katmanlama aynı şekilde çalışır. Daha eski işletim sistemi veya Aracı sürümleri, 64 KB 'a kadar olan küme boyutlarını destekler, ancak bunun ötesinde bulut katmanlaması çalışmaz.
 
 Windows tarafından kullanılan tüm dosya sistemleri, sabit diskinizi küme boyutuna (ayırma birimi boyutu olarak da bilinir) göre düzenleyin. Küme boyutu bir dosyayı tutmak için kullanılabilecek en küçük disk alanı miktarını temsil eder. Dosya boyutları küme boyutunun hatta daha fazla olmadığında, dosyayı küme boyutunun bir sonraki katı olarak tutmak için ek alan kullanılmalıdır.
 
@@ -85,11 +85,23 @@ Bir birimde birden fazla sunucu uç noktası olduğunda, etkin birimde boş alan
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Tarih katmanlama ilkesi birim boş alanı katmanlama ilkesi ile birlikte nasıl çalışır? 
 Sunucu uç noktasında bulut katmanlamayı etkinleştirirken bir birimde boş alan ilkesi ayarlarsınız. Tarih ilkesi de dahil olmak üzere her zaman diğer ilkelere göre önceliklidir. İsteğe bağlı olarak, söz konusu birimdeki her bir sunucu uç noktası için bir tarih ilkesi etkinleştirebilirsiniz. Bu ilke, bu ilkenin açıkladığı gün aralığı içinde yalnızca erişilen (yani, okunan veya yazılan) dosyaların yerel olarak saklanacağını yönetir. Belirtilen gün sayısıyla erişilmeyen dosyalar katmanlı olacaktır. 
 
-Bulut katmanlaması, hangi dosyaların katmanlı olacağını belirleyen son erişim süresini kullanır. Bulut katmanlama filtresi sürücüsü (storagesync.sys) son erişim süresini izler ve bulut katmanlama ısı deposundaki bilgileri günlüğe kaydeder. Yerel bir PowerShell cmdlet 'i kullanarak ısı mağazasını görebilirsiniz.
+Bulut katmanlaması, hangi dosyaların katmanlı olacağını belirleyen son erişim süresini kullanır. Bulut katmanlama filtresi sürücüsü (storagesync.sys) son erişim süresini izler ve bulut katmanlama ısı deposundaki bilgileri günlüğe kaydeder. Bir sunucu yerel PowerShell cmdlet 'i kullanarak ısı mağazasını alabilir ve bir CSV dosyasına kaydedebilirsiniz.
 
 ```powershell
+# There is a single heat store for files on a volume / server endpoint / individual file.
+# The heat store can get very large. If you only need to retrieve the "coolest" number of items, use -Limit and a number
+
+# Import the PS module:
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
-Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+
+# VOLUME FREE SPACE: To get the order in which files will be tiered using the volume free space policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrder
+
+# DATE POLICY: To get the order in which files will be tiered using the date policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrderV2
+
+# Find the heat store information for a particular file:
+Get-StorageSyncHeatStoreInformation -FilePath '<PathToSpecificFile>'
 ```
 
 > [!IMPORTANT]
@@ -158,10 +170,10 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 İsteğe bağlı parametreler:
-* `-Order CloudTieringPolicy`en son değiştirilen veya erişilen dosyaları ilk olarak çağırır ve geçerli katmanlama ilkesi tarafından izin verilir. 
+* `-Order CloudTieringPolicy` en son değiştirilen veya erişilen dosyaları ilk olarak çağırır ve geçerli katmanlama ilkesi tarafından izin verilir. 
     * Birim boş alan ilkesi yapılandırılmışsa, birimde boş alan ilkesi ayarına ulaşılana kadar dosyalar geri alınacaktır. Örneğin, birim ücretsiz ilke ayarı %20 ise, birim boş alanı %20 ' ye ulaştıktan sonra geri çekme durdurulur.  
     * Birim boş alanı ve tarih ilkesi yapılandırılmışsa, birimde boş alan veya tarih ilkesi ayarına ulaşılana kadar dosyalar geri alınacaktır. Örneğin, birim ücretsiz ilke ayarı %20 ise ve tarih ilkesi 7 gün ise, birim boş alanı %20 ' ye ulaşırsa veya 7 gün içinde erişilen veya değiştirilen tüm dosyalar yereldir.
-* `-ThreadCount`paralel olarak kaç dosya geri çağrılabileceğini belirler.
+* `-ThreadCount` paralel olarak kaç dosya geri çağrılabileceğini belirler.
 * `-PerFileRetryCount`Şu anda engellenen bir dosya için bir geri çekmenin ne sıklıkta denenmeyeceğini belirler.
 * `-PerFileRetryDelaySeconds`yeniden çağırma denemeleri arasındaki saniye cinsinden süreyi belirler ve bir önceki parametreyle birlikte her zaman kullanılmalıdır.
 
@@ -196,7 +208,7 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>Katmanlı dosyalar neden Windows Gezgini 'nde küçük resimleri veya önizlemeleri gösterilmiyor?
 Katmanlı dosyalar için, küçük resimler ve önizlemeler sunucu uç noktanıza görünmez. Bu davranış, Windows 'daki küçük resim önbelleği özelliği, çevrimdışı özniteliği olan dosyaların okunmasına göre atlanmasından bu yana beklenmektedir. Bulut katmanlama özelliği etkinken katmanlı dosyalar aracılığıyla okuma, bunların indirilememesine (geri çekilir) neden olur.
 
-Bu davranış Azure Dosya Eşitleme özgü değildir, Windows Gezgini, çevrimdışı özniteliği ayarlanmış herhangi bir dosya için "gri X" görüntüler. SMB üzerinden dosyalara erişirken X simgesini görürsünüz. Bu davranışın ayrıntılı bir açıklaması için bkz.[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+Bu davranış Azure Dosya Eşitleme özgü değildir, Windows Gezgini, çevrimdışı özniteliği ayarlanmış herhangi bir dosya için "gri X" görüntüler. SMB üzerinden dosyalara erişirken X simgesini görürsünüz. Bu davranışın ayrıntılı bir açıklaması için bkz. [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
 <a id="afs-tiering-disabled"></a>
 ### <a name="i-have-cloud-tiering-disabled-why-are-there-tiered-files-in-the-server-endpoint-location"></a>Bulut katmanlama devre dışı, neden sunucu uç noktası konumunda katmanlı dosyalar var?

@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 07/27/2020
 tags: azure-synapse
-ms.openlocfilehash: b2d179121b05d7bf3493937a9ff72e302fd31f3d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15289727c3ee4d498fa50058ef98f0ae5b3d1b12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281149"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277810"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-Factor Azure Active Directory kimlik doğrulamasını kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -29,7 +29,7 @@ Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics,
 
 Bu makalede ele alınan tüm özellikler için en az 2017 Temmuz sürüm 17,2 kullanın. En son bağlantı iletişim kutusu aşağıdaki görüntüye benzer görünmelidir:
 
-  ![1mfa-Universal-Connect](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png "Kullanıcı adı kutusunu tamamlar.")  
+  ![Sunucu türü, sunucu adı ve kimlik doğrulaması ayarlarını gösteren SQL Server Management Studio sunucuya Bağlan iletişim kutusunun ekran görüntüsü.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)  
 
 ## <a name="authentication-options"></a>Kimlik doğrulaması seçenekleri
 
@@ -57,11 +57,11 @@ Evrensel kimlik doğrulaması kullanarak kimlik doğrulaması yapmak isteyen tü
 1. SSMS 'de bir bağlantı açın. Sunucu adınızı girin ve MFA kimlik doğrulamasıyla **Azure Active Directory-Universal** ' ı seçin. Oturum açmak istediğiniz **Kullanıcı adını** ekleyin.
 1. **Seçenekler** kutusunu seçin ve **bağlantı özellikleri** sekmesine gidin. **Veritabanına Bağlan** iletişim kutusunda veritabanınızın iletişim kutusunu doldurun. **Ad etki alanı adı veya KIRACı kimliği** kutusunu işaretleyin ve kimlik doğrulaması yetkilisini (etki alanı adı (**contosotest.onmicrosoft.com**) veya kiracı kimliğinin GUID 'si gibi) belirtin. 
 
-   ![MFA-kiracı-SSMS](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
+   ![Veritabanına bağlanma ve AD etki alanı adına veya kiracı KIMLIĞINE yönelik ayarları vurgulayan bağlantı özellikleri sekmesinin ekran görüntüsü.](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
 
 SSMS 18. x veya üzeri bir sürümü çalıştırıyorsanız, bu AD etki alanı adı veya kiracı KIMLIĞI artık Konuk kullanıcılar için gerekli değildir çünkü 18. x veya daha sonraki bir sürümü otomatik olarak tanır.
 
-   ![MFA-kiracı-SSMS](./media/authentication-mfa-ssms-overview/mfa-no-tenant-ssms.png)
+   ![Veritabanına Bağlan iletişim kutusundaki bağlantı özellikleri sekmesinin ekran görüntüsü. veritabanı bağlantısı alanında "MyDatabase" seçilidir.](./media/authentication-mfa-ssms-overview/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD iş 'e iş desteği
 
@@ -78,7 +78,7 @@ Veritabanı kullanıcısı oluşturulduktan sonra, Kullanıcı `steve@gmail.com`
 ## <a name="universal-authentication-limitations"></a>Evrensel kimlik doğrulaması sınırlamaları
 
 - SSMS ve SqlPackage.exe, şu anda Active Directory evrensel kimlik doğrulaması aracılığıyla MFA için etkinleştirilen tek araçlardır.
-- SSMS sürüm 17,2, MFA ile evrensel kimlik doğrulaması kullanarak çok kullanıcılı eşzamanlı erişimi destekler. SSMS sürüm 17,0 ve 17,1 için, araç, evrensel kimlik doğrulaması kullanan SSMS örnekleri için tek bir Azure Active Directory hesabıyla bir oturum açmayı kısıtlar. Başka bir Azure AD hesabı olarak oturum açmak için SSMS 'nin başka bir örneğini kullanmanız gerekir. Bu kısıtlama Active Directory evrensel kimlik doğrulaması ile sınırlıdır; `Azure Active Directory - Password`kimlik doğrulaması, kimlik doğrulama veya kimlik doğrulama kullanarak farklı bir sunucuda oturum açabilirsiniz `Azure Active Directory - Integrated` `SQL Server Authentication` .
+- SSMS sürüm 17,2, MFA ile evrensel kimlik doğrulaması kullanarak çok kullanıcılı eşzamanlı erişimi destekler. SSMS sürüm 17,0 ve 17,1 için, araç, evrensel kimlik doğrulaması kullanan SSMS örnekleri için tek bir Azure Active Directory hesabıyla bir oturum açmayı kısıtlar. Başka bir Azure AD hesabı olarak oturum açmak için SSMS 'nin başka bir örneğini kullanmanız gerekir. Bu kısıtlama Active Directory evrensel kimlik doğrulaması ile sınırlıdır; `Azure Active Directory - Password` kimlik doğrulaması, kimlik doğrulama veya kimlik doğrulama kullanarak farklı bir sunucuda oturum açabilirsiniz `Azure Active Directory - Integrated` `SQL Server Authentication` .
 - SSMS, Nesne Gezgini, sorgu Düzenleyicisi ve sorgu deposu görselleştirmesi için Active Directory evrensel kimlik doğrulamasını destekler.
 - SSMS sürüm 17,2, veri veritabanını dışa/ayıklamayı/dağıtmayı sağlayan DacFx Sihirbazı desteği sağlar. Belirli bir kullanıcının kimliği, evrensel kimlik doğrulaması kullanılarak ilk kimlik doğrulama iletişim kutusu aracılığıyla doğrulandıktan sonra, DacFx Sihirbazı diğer tüm kimlik doğrulama yöntemleri için aynı şekilde çalışır.
 - SSMS Tablo Tasarımcısı evrensel kimlik doğrulamasını desteklemez.

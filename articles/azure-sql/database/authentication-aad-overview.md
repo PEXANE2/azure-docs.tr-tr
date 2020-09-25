@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8221c77c0e6adeabe869a088089733d289a2f6ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434291"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277958"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory kimlik doğrulaması kullan
 
@@ -168,7 +168,7 @@ Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum 
 - SQL veritabanında oturum açma bilgileri, kullanıcılar, veritabanı rolleri ve izinlere genel bakış için bkz. [oturum açma bilgileri, kullanıcılar, veritabanı rolleri ve izinler](logins-create-manage.md).
 - Veritabanı sorumluları hakkında daha fazla bilgi için bkz. [Sorumlular](https://msdn.microsoft.com/library/ms181127.aspx).
 - Veritabanı rolleri hakkında daha fazla bilgi için bkz. [Veritabanı rolleri](https://msdn.microsoft.com/library/ms189121.aspx).
-- SQL yönetilen örneği için Azure AD Server sorumlularını (oturum açma) oluşturma hakkında sözdizimi için bkz.  [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+- SQL yönetilen örneği için Azure AD Server sorumlularını (oturum açma) oluşturma hakkında sözdizimi için bkz.  [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 - SQL Veritabanındaki güvenlik duvarı kuralları hakkında daha fazla bilgi için bkz. [SQL Veritabanı güvenlik duvarı kuralları](firewall-configure.md).
 
 <!--Image references-->

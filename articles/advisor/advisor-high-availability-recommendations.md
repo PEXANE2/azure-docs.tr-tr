@@ -3,12 +3,12 @@ title: Danışman ile uygulamanızın güvenilirliğini geliştirme
 description: İş açısından kritik Azure dağıtımlarınızda güvenilirliği sağlamak ve geliştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 3e556f8bc672705e6c83daced2c82a884e3ddf46
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258495"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264601"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak uygulamanızın güvenilirliğini geliştirme
 
@@ -76,7 +76,7 @@ Depolama hesaplarını veya depolama ölçek birimlerini paylaşan diskler içer
 
 ## <a name="repair-invalid-log-alert-rules"></a>Geçersiz günlük uyarısı kurallarını Onar
 
-Azure Danışmanı, durumu bölümünde geçersiz sorguları belirtilmiş olan uyarı kurallarını algılar. Azure Izleyici 'de günlük uyarı kuralları oluşturabilir ve bunları belirli aralıklarda analiz sorguları çalıştırmak için kullanabilirsiniz. Bir sorgunun sonuçları, bir uyarının tetiklenmesi gerekip gerekmediğini belirlenir. Başvurulan kaynaklarda, tablolarda veya komutlarda yapılan değişiklikler nedeniyle, analiz sorguları zaman içinde geçersiz hale gelebilir. Danışman, otomatik olarak devre dışı bırakılmasını ve Azure 'da kaynaklarınızın kapsamını izlemeyi güvence altına almak için uyarı kuralındaki sorguyu düzeltmenizi önerir. [Uyarı kuralları sorunlarını giderme hakkında daha fazla bilgi edinin.](https://aka.ms/aa_logalerts_queryrepair)
+Azure Danışmanı, durumu bölümünde geçersiz sorguları belirtilmiş olan günlük uyarısı kurallarını algılar. Azure Izleyici günlük uyarı kuralları belirtilen sıklıkta sorgu çalıştırır ve sonuçlara göre uyarı tetiklersiniz. Başvurulan kaynaklardaki, tablolardaki veya komutlarda değişiklikler nedeniyle sorgular zaman içinde geçersiz hale gelebilir. Danışman, kuralların otomatik olarak devre dışı bırakılmasını ve izleme kapsamının olmasını önlemeye yönelik uyarı sorguları için düzeltmeler önerir. Daha fazla bilgi için bkz. [Uyarı kuralları sorunlarını giderme](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Azure Cosmos DB koleksiyonunuzda tutarlı dizin oluşturma modu yapılandırma
 

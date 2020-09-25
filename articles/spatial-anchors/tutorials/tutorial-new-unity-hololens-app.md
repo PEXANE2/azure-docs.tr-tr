@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 365fe8c330cadcc01fcd24de28b663cd80b55117
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: cd4ec60691344cef4030472b474a82e84c70244f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535896"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261184"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Öğretici: Azure uzamsal bağlayıcıları kullanarak yeni bir HoloLens Unity uygulaması oluşturmaya yönelik adım adım yönergeler
 
@@ -27,7 +27,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 2. Visual Studio için [C++/Wınrt Visual Studio uzantısı (VSIX)](https://aka.ms/cppwinrt/vsix) [Visual Studio Market](https://marketplace.visualstudio.com/)yüklenmelidir.
 3. [Geliştirici modu](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) etkin bir HoloLens cihazı. Bu makalede, [Windows 10 ekim 2018 güncelleştirmesi](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (RS5 olarak da bilinir) Ile bir HoloLens cihazı gerekir. HoloLens 'te en son sürüme güncelleştirmek için **Ayarlar** uygulamasını açın, **güncelleştirme & güvenlik**' e gidin ve **Güncelleştirmeleri denetle** düğmesini seçin.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 İlk olarak proje ve Unity sahümüzü ayarlayacağız:
 1. Unity 'yi başlatın.
@@ -204,11 +204,11 @@ Devam etmeden önce, hesap tanımlayıcı, anahtar ve etki alanını almak için
 
 Azure uzamsal bağlayıcılarınızın hesap tanımlayıcısı, anahtarınız ve etki alanınız olduktan sonra öğesine gidin ve içine, içine `Account Id` `SpatialAnchorsAccountId` ve içine yapıştırın `Account Key` `SpatialAnchorsAccountKey` `Account Domain` `SpatialAnchorsAccountDomain` .
 
-Son olarak her şeyi bir araya alalım. `SpawnNewAnchoredObject()`Yönteminde aşağıdaki kodu ekleyin. `CreateAnchorAsync()`Sphere oluşturulduktan hemen sonra yöntemi çağıracaktır. Yöntem döndüğünde, aşağıdaki kod Sphere dosyanızı son kez güncelleştirir ve rengini mavi olarak değiştirir.
+Son olarak her şeyi bir araya alalım. `CreateAndSaveSphere()`Yönteminde aşağıdaki kodu ekleyin. `CreateAnchorAsync()`Sphere oluşturulduktan hemen sonra yöntemi çağıracaktır. Yöntem döndüğünde, aşağıdaki kod Sphere dosyanızı son kez güncelleştirir ve rengini mavi olarak değiştirir.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Uygulamanızı **Visual Studio** 'dan bir kez daha çalıştırın. Başlarınızın etrafında ilerleyin ve sonra kürenin yerleştirileceği yere dokunarak uçak yapın. Yeterli kare olduktan sonra Sphere, sarı bir şekilde döner ve bulut karşıya yüklemesi başlar. Karşıya yükleme tamamlandıktan sonra Sphere 'niz mavi olarak açılır. İsteğe bağlı olarak, uygulamanızın gönderdiği günlük iletilerini izlemek için **Visual Studio** içinde çıkış penceresini de kullanabilirsiniz. `RecommendedForCreateProgress`' Yi izleyebilir ve karşıya yükleme tamamlandıktan sonra buluttan döndürülen bağlantı tanımlayıcısını görebilirsiniz.
+Uygulamanızı **Visual Studio** 'dan bir kez daha çalıştırın. Başlarınızın etrafında ilerleyin ve sonra kürenin yerleştirileceği yere dokunarak uçak yapın. Yeterli kare olduktan sonra Sphere, sarı bir şekilde döner ve bulut karşıya yüklemesi başlar. Karşıya yükleme tamamlandıktan sonra Sphere 'niz mavi olarak açılır. İsteğe bağlı olarak, uygulamanızın gönderdiği günlük iletilerini izlemek üzere **Visual Studio** içinde hata ayıklarken [Çıkış penceresini](https://docs.microsoft.com/visualstudio/ide/reference/output-window) de kullanabilirsiniz. `RecommendedForCreateProgress`' Yi izleyebilir ve karşıya yükleme tamamlandıktan sonra buluttan döndürülen bağlantı tanımlayıcısını görebilirsiniz.
 
 > [!NOTE]
 > "DllNotFoundException: ' AzureSpatialAnchors ' DLL dosyası yüklenemiyor: belirtilen modül bulunamadı.", çözümünüzü yeniden **temizlemeniz** ve **derlemeniz** gerekir.

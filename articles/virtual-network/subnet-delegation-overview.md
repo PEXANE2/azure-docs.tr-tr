@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2019
 ms.author: kumud
-ms.openlocfilehash: b33ff808b802b6848e2d5debaf515a73bf21a1bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fbb683754aed5b2a2e6e9c022713b7e87ad9ba9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74281343"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329216"
 ---
 # <a name="what-is-subnet-delegation"></a>Alt ağ temsili nedir?
 
@@ -51,6 +51,7 @@ Her bir Azure hizmeti kendi dağıtım modelini tanımlar ve bu özellikler, aş
 - temsilci alt ağdaki en az IP adresi sayısını belirler.
 - temsil edilen alt ağdaki IP adresi alanının özel IP adres alanından (10.0.0.0/8, 192.168.0.0/16, 172.16.0.0/12) olduğunu belirler.
 - özel DNS yapılandırmasının bir Azure DNS girişi olduğunu belirler.
+- alt ağ veya sanal ağın silinebilmesi için önce temsilciyi kaldırma gerekir.
 
 Eklenen hizmetler, aşağıdaki gibi kendi ilkelerini de ekleyebilir:
 - **Güvenlik ilkeleri**: belirli bir hizmetin çalışması için gereken güvenlik kuralları koleksiyonu.

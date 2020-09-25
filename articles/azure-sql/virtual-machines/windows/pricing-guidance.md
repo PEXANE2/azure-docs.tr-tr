@@ -8,19 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b1d07b3ff41c16ff2145311a0b42d8c57a8e7b82
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7d18273d07cda3a6fe3517c47c9be12a2d236438
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316945"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için fiyatlandırma Kılavuzu
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,7 +59,7 @@ Hafif olmayan bir üretim iş yükünüz varsa, aşağıdaki SQL Server sürüml
 |-----|-----|
 | Web | Küçük Web siteleri |
 | Standart | Küçük ve orta ölçekli iş yükleri |
-| Enterprise | Büyük veya görev açısından kritik iş yükleri|
+| Kurumsal | Büyük veya görev açısından kritik iş yükleri|
 
 Bu sürümler için SQL Server Lisanslama için ödeme yapmak üzere iki seçeneğiniz vardır: *kullanım başına ödeme* *yapın veya kendi LISANSıNıZı getirin (KLG)*.
 
@@ -94,7 +94,7 @@ Bu Kullandıkça Öde görüntülerinden biriyle SQL Server 2017 çalıştıran 
 > [!NOTE]
 > Lisans modelini, kendi lisansını getir (KLG) ve geri almak için kullanım başına ödeme durumundan değiştirmek mümkündür. Daha fazla bilgi için bkz. [SQL Server VM için lisans modelini değiştirme](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
-## <a name="bring-your-own-license-byol"></a><a id="byol"></a>Kendi lisansınızı getirin (KLG)
+## <a name="bring-your-own-license-byol"></a><a id="byol"></a> Kendi lisansınızı getirin (KLG)
 
 **Kendi SQL Server lisansınızı** **KLG**olarak da adlandırılan lisans taşınabilirliği üzerinden GETIRME, bir Azure VM 'de yazılım güvencesi Ile mevcut bir SQL Server toplu lisansın kullanılması anlamına gelir. KLG kullanarak yalnızca bir toplu lisanslama programı aracılığıyla lisans ve yazılım güvencesi almış olmanız durumunda, SQL Server Lisanslama için değil, yalnızca VM 'nin çalıştırılmasına yönelik ücret ücretleri SQL Server VM.
 
@@ -112,7 +112,7 @@ Kendi SQL Server lisanslarınızın Lisans Taşınabilirliği üzerinden getiril
 
 Bir SQL Server VM ile KLG kullanmak için, bazı toplu lisanslama programları ve diğer kişilerle isteğe bağlı satın alma işlemleri aracılığıyla gerekli bir seçenek olan SQL Server Standard veya kuruluş ve [yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1)lisansına sahip olmanız gerekir. Toplu Lisanslama programları aracılığıyla belirtilen fiyatlandırma düzeyi, sözleşmenin türüne ve miktarına ve SQL Server taahhütüne göre değişir. Ancak, bir Thumb kuralı olarak, sürekli üretim iş yükleri için kendi lisansınızı getirmek aşağıdaki avantajlara sahiptir:
 
-| KLG avantajı | Açıklama |
+| KLG avantajı | Description |
 |-----|-----|
 | **Maliyet tasarrufları** | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) %55 tasarruf sağlar. Daha fazla bilgi için bkz. [Lisans modelini değiştirme](licensing-model-azure-hybrid-benefit-ahb-change.md) |
 | **Ücretsiz pasif ikincil çoğaltma** | Kendi lisansınızı kullanmanın bir diğer avantajı da, yüksek kullanılabilirlik amaçlarıyla SQL Server başına [bir pasif ikincil çoğaltmanın ücretsiz lisanslaması](https://azure.microsoft.com/pricing/licensing-faq/) olur. Bu, yüksek oranda kullanılabilir SQL Server dağıtımının lisanslama maliyetinin yarısını keser (örneğin, Always on kullanılabilirlik grupları kullanılarak). Pasif ikincil çalıştırma hakları, yük devretme sunucuları yazılım güvencesi avantajı üzerinden sağlanır. |
@@ -134,7 +134,7 @@ Bu SQL Server 2017 çalıştıran bir Azure VM oluşturmak için kendi lisansın
 
 Gereksiz maliyetleri önlemek için, en iyi sanal makine boyutunu seçin ve sürekli olmayan iş yükleri için aralıklı kapatmalar düşünün.
 
-### <a name="correctly-size-your-vm"></a><a id="machinesize"></a>SANAL makinenizin boyutunu doğru yapın
+### <a name="correctly-size-your-vm"></a><a id="machinesize"></a> SANAL makinenizin boyutunu doğru yapın
 
 SQL Server Lisanslama ücreti, vCPU sayısıyla doğrudan ilgilidir. CPU, bellek, depolama ve g/ç bant genişliği için beklenen gereksinimle eşleşen bir VM boyutu seçin. Makine boyutu seçeneklerinin tüm listesi için bkz. [WINDOWS VM boyutları](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) ve [Linux VM boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

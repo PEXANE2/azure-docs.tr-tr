@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: d6222c9275dfe022e897bb6324df5bb30e1a8905
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706805"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276824"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB ile yüksek kullanılabilirlik
 
@@ -129,6 +129,8 @@ Azure Cosmos hesabı oluştururken Azure portal kullanarak Kullanılabilirlik Al
 
 ## <a name="building-highly-available-applications"></a>Yüksek oranda kullanılabilir uygulamalar oluşturma
 
+- Bu olaylar sırasında [Azure Cosmos SDK](troubleshoot-sdk-availability.md) 'larının beklenen davranışını gözden geçirin ve bunu etkileyen yapılandırma vardır.
+
 - Yüksek yazma ve okuma kullanılabilirliği sağlamak için Azure Cosmos hesabınızı, birden çok yazma bölgesi ile en az iki bölgeye yaymak üzere yapılandırın. Bu yapılandırma, SLA 'Lar tarafından desteklenen hem okuma hem de yazma işlemleri için en yüksek kullanılabilirlik, en düşük gecikme süresi ve en iyi ölçeklenebilirlik sağlar. Daha fazla bilgi edinmek için bkz. [Azure Cosmos hesabınızı birden çok yazma bölgesi ile yapılandırma](tutorial-global-distribution-sql-api.md).
 
 - Tek bir yazma bölgesiyle yapılandırılan çok bölgeli Azure Cosmos hesapları için, [Azure CLI veya Azure Portal kullanarak otomatik yük devretmeyi etkinleştirin](how-to-manage-database-account.md#automatic-failover). Otomatik yük devretmeyi etkinleştirdikten sonra, bölgesel bir olağanüstü durum olduğunda Cosmos DB hesabınıza otomatik olarak yük devreder.  
@@ -146,3 +148,4 @@ Daha sonra aşağıdaki makaleleri okuyabilirsiniz:
 - [Genel dağıtım - başlık altında](global-dist-under-the-hood.md)
 - [Azure Cosmos DB'deki tutarlılık düzeyleri](consistency-levels.md)
 - [Cosmos hesabınızı birden çok yazma bölgesi ile yapılandırma](how-to-multi-master.md)
+- [Multiregional ortamlarında SDK davranışı](troubleshoot-sdk-availability.md)

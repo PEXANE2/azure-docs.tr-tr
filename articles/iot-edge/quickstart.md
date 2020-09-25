@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 73d9eed757acb4c58052a34811c490a70d306995
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d56f17f6c60f30a38431ee347c7bdfc5b200b641
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88061498"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328607"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
 
@@ -82,7 +82,7 @@ IoT Edge cihazı:
 >
 > IoT Core çalıştıran cihazlar da dahil olmak üzere kendi Windows cihazınızı IoT Edge yapılandırmaya hazırsanız, [Windows 'a Azure IoT Edge çalışma zamanını yüklemek](how-to-install-iot-edge-windows.md)içindeki adımları izleyin.
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 Azure CLı ile IoT Hub 'ı oluşturarak hızlı başlangıcı başlatın.
 
@@ -118,10 +118,10 @@ IoT Edge cihazlar sıradan IoT cihazlarından farklı şekilde yönetilemediğin
 2. Fiziksel cihazınızı IoT Hub içindeki kimliğiyle bağlayan cihazınız için bağlantı dizesini görüntüleyin. IoT Hub 'ınızın adını, cihazınızın adını ve iki arasındaki bağlantıların kimliğini doğrulayan paylaşılan bir anahtarı içerir.
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
+   az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. `connectionString`JSON çıktısından anahtarın değerini kopyalayın ve kaydedin. Bu değer, cihaz bağlantı dizesidir. Bu bağlantı dizesini bir sonraki bölümde IoT Edge çalışma zamanını yapılandırmak için kullanacaksınız.
+3. JSON çıktısındaki `connectionString` anahtarının değerini kopyalayıp kaydedin. Bu değer, cihaz bağlantı dizesidir. Bu bağlantı dizesini bir sonraki bölümde IoT Edge çalışma zamanını yapılandırmak için kullanacaksınız.
 
    ![CLı çıktısından bağlantı dizesini al](./media/quickstart/retrieve-connection-string.png)
 

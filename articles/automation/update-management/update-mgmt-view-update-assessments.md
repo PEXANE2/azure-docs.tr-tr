@@ -3,46 +3,52 @@ title: Azure Otomasyonu güncelleştirme değerlendirmelerini görüntüleme
 description: Bu makalede Güncelleştirme Yönetimi dağıtımlarının güncelleştirme değerlendirmelerinin nasıl görüntüleneceği açıklanır.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 92861304a946e357b2b265cd825eceb8e22f7d2d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2e32fc7c1872bf18b7f1c995f281a9b09ec45dc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450400"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264489"
 ---
-# <a name="view-update-assessments"></a>Güncelleştirme değerlendirmelerini görüntüleme
+# <a name="view-update-assessments-in-update-management"></a>Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleme
 
-Güncelleştirme Yönetimi, makineleriniz, eksik güncelleştirmeler, güncelleştirme dağıtımları ve zamanlanmış güncelleştirme dağıtımları hakkında bilgi görüntüleyebilirsiniz.
+Güncelleştirme Yönetimi, makineleriniz, eksik güncelleştirmeler, güncelleştirme dağıtımları ve zamanlanmış güncelleştirme dağıtımları hakkında bilgi görüntüleyebilirsiniz. Seçilen Azure sanal makinesi kapsamındaki değerlendirme bilgilerini seçili yay etkin sunucusundan veya Otomasyon hesabından tüm yapılandırılmış makineler ve sunucular arasında görüntüleyebilirsiniz.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın
+[Azure portalda](https://portal.azure.com) oturum açma
 
 ## <a name="view-update-assessment"></a>Güncelleştirme değerlendirmesini görüntüleme
 
-Güncelleştirme Yönetimi, makineleriniz, eksik güncelleştirmeler, güncelleştirme dağıtımları ve zamanlanmış güncelleştirme dağıtımları hakkında bilgi görüntüleyebilirsiniz.
+Azure VM 'den güncelleştirme değerlendirmesini görüntülemek için, **sanal makineler** ' e gidin ve listeden sanal makinenizi seçin. Sol taraftaki menüden **Konuk + ana bilgisayar güncelleştirmeleri**' ni seçin ve ardından **Konuk + ana bilgisayar güncelleştirmeleri** sayfasında **güncelleştirme yönetimi git** ' i seçin.
+
+Güncelleştirme Yönetimi, makineniz, eksik güncelleştirmeler, güncelleştirme dağıtımları ve zamanlanmış güncelleştirme dağıtımları hakkında bilgi görüntüleyebilirsiniz.
+
+[![Azure VM için güncelleştirme yönetimi değerlendirme görünümü](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm.png)](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
+
+Bir yay etkin sunucusundan güncelleştirme değerlendirmesini görüntülemek için, **sunucular-Azure Arc** ' a gidin ve listeden sunucunuzu seçin. Sol menüden **Konuk ve konak güncelleştirmeleri**' ni seçin. **Konuk + ana bilgisayar güncelleştirmeleri** sayfasında **güncelleştirme yönetimi git**' i seçin.
+
+Güncelleştirme Yönetimi, Arc etkin makineniz, eksik güncelleştirmeler, güncelleştirme dağıtımları ve zamanlanmış güncelleştirme dağıtımları hakkında bilgi görüntüleyebilirsiniz.
+
+[![Yay özellikli sunucular için güncelleştirme yönetimi değerlendirmesi görünümü](./media/update-mgmt-view-update-assessments/update-assessment-arc-server.png)](./media/update-mgmt-view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
+
+Otomasyon hesabınızdan yay özellikli sunucular da dahil olmak üzere tüm makinelerde güncelleştirme değerlendirmesini görüntülemek için **Otomasyon hesapları** ' na gidin ve listeden güncelleştirme yönetimi etkinleştirilmiş Otomasyon hesabınızı seçin. Otomasyon hesabınızda, sol menüden **güncelleştirme yönetimi** ' ni seçin.
+
+Ortamınız için güncelleştirmeler **güncelleştirme yönetimi** sayfasında listelenir. Herhangi bir güncelleştirme eksik olarak tanımlanmışsa, bu liste **eksik güncelleştirmeler** sekmesinde gösterilir.
 
 [![Güncelleştirme yönetimi varsayılan görünüm](./media/update-mgmt-overview/update-management-view.png)](./media/update-mgmt-overview/update-management-view-expanded.png#lightbox)
 
-Bir güncelleştirme değerlendirmesini görüntülemek için aşağıdakileri yapın.
+**Uyumluluk** sütununun altında, makinenin en son değerlendirildiğini görebilirsiniz. **GÜNCELLEŞTIRME ARACıSı hazırlığı** sütununda, güncelleştirme aracısının sistem durumunu görebilirsiniz. Bir sorun varsa, sorunu düzeltmenize yardımcı olabilecek sorun giderme belgelerine gitmek için bağlantıyı seçin.
 
-1. Azure portal, **Otomasyon hesapları** ' na gidin ve listeden güncelleştirme yönetimi etkin olan otomasyon hesabınızı seçin.
+**Bilgi bağlantısı**altında güncelleştirme bağlantısını seçerek güncelleştirme hakkında önemli bilgiler sunan destek makalesini açın.
 
-2. Otomasyon hesabınızda, sol taraftaki bölmeden **güncelleştirme yönetimi** ' ni seçin.
+[![Güncelleştirme durumunu görüntüle](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
 
-3. Ortamınız için güncelleştirmeler **güncelleştirme yönetimi** sayfasında listelenir. Herhangi bir güncelleştirme eksik olarak tanımlanmışsa, bu liste **eksik güncelleştirmeler** sekmesinde gösterilir.
+Günlük araması bölmesini açmak için güncelleştirmede başka herhangi bir yere tıklayın. Günlük araması sorgusu ilgili güncelleştirmeye göre önceden tanımlanmıştır. Ayrıntılı bilgileri görüntülemek için bu sorguyu değiştirebilir veya kendi sorgunuzu oluşturabilirsiniz.
 
-   **Uyumluluk** sütununun altında, makinenin en son değerlendirildiğini görebilirsiniz. **GÜNCELLEŞTIRME ARACıSı hazırlığı** sütununda, güncelleştirme aracısının sistem durumunu görebilirsiniz. Bir sorun varsa, sorunu düzeltmenize yardımcı olabilecek sorun giderme belgelerine gitmek için bağlantıyı seçin.
-
-4. **Bilgi bağlantısı**altında güncelleştirme bağlantısını seçerek güncelleştirme hakkında önemli bilgiler sunan destek makalesini açın.
-
-     [![Güncelleştirme durumunu görüntüle](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
-
-5. Günlük araması bölmesini açmak için güncelleştirmede başka herhangi bir yere tıklayın. Günlük araması sorgusu ilgili güncelleştirmeye göre önceden tanımlanmıştır. Ayrıntılı bilgileri görüntülemek için bu sorguyu değiştirebilir veya kendi sorgunuzu oluşturabilirsiniz.
-
-    [![Günlük sorgusu sonuçlarını görüntüle](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
+[![Günlük sorgusu sonuçlarını görüntüle](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
 
 ## <a name="view-missing-updates"></a>Eksik güncelleştirmeleri görüntüle
 

@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes hizmeti (AKS) ile Kubernetes yetkilendirmesi için Azure RBAC kullanmayı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c1222f671c95d4475de93b9c9e085a94f864b2ae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 15bd917a16c250807d6848f7bc0ffbdba06b4019
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003093"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329100"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
 
@@ -28,7 +28,6 @@ Azure 'dan Kubernetes kaynakları için RBAC 'yi yönetme özelliği, Azure veya
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>Önkoşullar 
-- Önizleme için kaydolun <https://aka.ms/aad-rbac-sign-up-form> .
 - Azure CLı sürüm 2.9.0 veya sonraki bir sürüme sahip olduğunuzdan emin olun
 - `EnableAzureRBACPreview`Özellik bayrağının etkinleştirildiğinden emin olun.
 - `aks-preview` [CLI uzantısının][az-extension-add] v 0.4.55 veya üzeri yüklü olduğundan emin olun
@@ -44,7 +43,7 @@ Kubernetes yetkilendirmesi için Azure RBAC kullanan bir AKS kümesi oluşturmak
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
 ```
 
-Bayrak başarıyla kaydedilemediği için önce önizleme formunu gönderdikten sonra onay almanız gerekir. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
+ [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
@@ -188,7 +187,7 @@ Rol tanımınıza sahip olduğunuza göre, şunu çalıştırarak bir kullanıc�
 az role assignment create --role "AKS Deployment Viewer" --assignee <AAD-ENTITY-ID> --scope $AKS_ID
 ```
 
-## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubectl"></a>İle Kubernetes yetkilendirmesi için Azure RBAC kullanma`kubectl`
+## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubectl"></a>İle Kubernetes yetkilendirmesi için Azure RBAC kullanma `kubectl`
 
 > [!NOTE]
 > Aşağıdaki komutu çalıştırarak en son kubectl 'ye sahip olduğunuzdan emin olun:
@@ -222,7 +221,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubelogin"></a>İle Kubernetes yetkilendirmesi için Azure RBAC kullanma`kubelogin`
+## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubelogin"></a>İle Kubernetes yetkilendirmesi için Azure RBAC kullanma `kubelogin`
 
 Etkileşimli olmayan oturum açma işlemleri, eski `kubectl` sürümler veya birden çok küme genelınde SSO 'yu kullanarak, yeni kümede oturum açmaya gerek kalmadan, belirteçlerinizin hala geçerli olduğundan, AKS 'nin adlı bir exec eklentisi oluşturduğuna izin veren ek senaryoların engellemesini kaldırmak için [`kubelogin`](https://github.com/Azure/kubelogin) .
 
@@ -285,4 +284,4 @@ az group delete -n MyResourceGroup
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli&preserve-view=true

@@ -1,5 +1,5 @@
 ---
-title: Azure VMSS 'de yönetilen kimlikleri Yapılandırma-Azure AD
+title: VMSS-Azure AD 'de yönetilen kimlikleri yapılandırma
 description: Azure portal kullanarak bir sanal makine ölçek kümesinde Azure kaynakları için Yönetilen kimlikler yapılandırmaya yönelik adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9ab1adeac5f8c67e06682f49fdded88e6a350e7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 43b986b6bb25dff1227247b1d249ce565553877a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329142"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Azure portal kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -59,7 +59,7 @@ Başlangıçta sağlanan bir sanal makine ölçek kümesinde sistem tarafından 
 
 3. **Sistem atandı**altında **durum**' un altında **, seçin ve** ardından **Kaydet**' e tıklayın:
 
-   ![Yapılandırma sayfası ekran görüntüsü](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
+   ![Ekran görüntüsü "sistem atandı" seçiliyken "kimlik (Önizleme)" sayfasını, "açık" durumunu ve "Kaydet" düğmesinin vurgulanmasını gösterir.](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği kaldır
 
@@ -88,7 +88,7 @@ Bu bölümde, Azure portal kullanarak bir sanal makine ölçek kümesinden Kulla
 1. Sanal makine ölçek kümesini içeren Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 2. İstenen sanal makine ölçek kümesine gidin ve **kimlik**, **Kullanıcı atandı** ve ardından ** \+ Ekle**' ye tıklayın.
 
-   ![VMSS 'ye Kullanıcı tarafından atanan kimlik Ekle](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
+   !["Kullanıcı atandı" seçiliyken ve "Ekle" düğmesinin vurgulandığı "kimlik" sayfasını gösteren ekran görüntüsü.](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 
 3. Sanal makine ölçek kümesine eklemek istediğiniz kullanıcı tarafından atanan kimliğe tıklayın ve ardından **Ekle**' ye tıklayın.
    

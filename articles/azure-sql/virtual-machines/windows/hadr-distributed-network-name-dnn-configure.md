@@ -8,18 +8,18 @@ manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8eb9caf466148e43266c4be9cf1308da15fb67f2
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ce3261eca8697ae1fabc07785353a4e845dadeba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245545"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317013"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>FCı için dağıtılmış ağ adı yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -126,7 +126,7 @@ Olası sahipleri güncelleştirmek için şu adımları izleyin:
 
 ## <a name="restart-sql-server-instance"></a>SQL Server örneğini yeniden Başlat 
 
-SQL Server örneğini yeniden başlatmak için Yük Devretme Kümesi Yöneticisi kullanın. Şu adımları uygulayın:
+SQL Server örneğini yeniden başlatmak için Yük Devretme Kümesi Yöneticisi kullanın. Şu adımları izleyin:
 
 1. Yük Devretme Kümesi Yöneticisi SQL Server kaynağına gidin.
 1. SQL Server kaynağına sağ tıklayın ve çevrimdışına alın. 

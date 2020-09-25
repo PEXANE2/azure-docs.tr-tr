@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 07cfb0048e6027b0bac219b3fe28018db2d10257
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d193438a232cc6bc113efb31ce4276117a366add
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185273"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276905"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı oluşturma
 
@@ -79,7 +79,7 @@ Data Factory ve Azure-SSIS IR kullanılabilen Azure bölgelerinin listesi için 
 
 Aşağıdaki tabloda, Azure-SSıR IR ile bağlantılı olarak bir Azure SQL veritabanı sunucusunun ve SQL yönetilen örneğinin belirli özellikleri karşılaştırılmaktadır:
 
-| Özellik | SQL Veritabanı| SQL yönetilen örneği |
+| Öne çıkan özelliği | SQL Veritabanı| SQL yönetilen örneği |
 |---------|--------------|------------------|
 | **Zamanlama** | SQL Server Agent kullanılamıyor.<br/><br/>Bkz. Data Factory işlem hattında [paket yürütmeyi zamanlama](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Yönetilen örnek Aracısı kullanılabilir. |
 | **Kimlik Doğrulaması** | **Db_owner** rolünde üye olarak, veri fabrikanızın yönetilen kimliği ile herhangi BIR Azure AD grubunu temsil eden bir bulunan veritabanı kullanıcısına sahıp bır SSISDB örneği oluşturabilirsiniz.<br/><br/>Bkz. [Azure SQL veritabanı sunucusunda BIR SSıSDB oluşturmak Için Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Veri fabrikanızın yönetilen kimliğini temsil eden kapsanan bir veritabanı kullanıcısına sahip bir SSıSDB örneği oluşturabilirsiniz. <br/><br/>Bkz. Azure [SQL yönetilen örneği 'NDE SSıSDB oluşturmak Için Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance). |
@@ -114,19 +114,21 @@ Data Factory oluşturulduktan sonra, Azure portal genel bakış sayfasını aç�
 
    1. **Name** (Ad) alanına tümleştirme çalışma zamanınızın adını girin.
 
-   1. **Description** (Açıklama) alanına tümleştirme çalışma zamanınız için bir açıklama girin.
+   2. **Description** (Açıklama) alanına tümleştirme çalışma zamanınız için bir açıklama girin.
 
-   1. **Location** (Konum)alanında tümleştirme çalışma zamanınızın konumunu seçin. Yalnızca desteklenen konumlar görüntülenir. SSISDB'yi barındırmak için veritabanı sunucunuz ile aynı konumu seçmenizi öneririz.
+   3. **Location** (Konum)alanında tümleştirme çalışma zamanınızın konumunu seçin. Yalnızca desteklenen konumlar görüntülenir. SSISDB'yi barındırmak için veritabanı sunucunuz ile aynı konumu seçmenizi öneririz.
 
-   1. **Düğüm boyutu**için, tümleştirme çalışma zamanı kümenizdeki düğüm boyutunu seçin. Yalnızca desteklenen düğüm boyutları görüntülenir. Çok yoğun işlem yoğunluğu veya bellek kullanımı yoğun paketler çalıştırmak istiyorsanız büyük bir düğüm boyutu seçin (ölçeği büyütme).
+   4. **Düğüm boyutu**için, tümleştirme çalışma zamanı kümenizdeki düğüm boyutunu seçin. Yalnızca desteklenen düğüm boyutları görüntülenir. Çok yoğun işlem yoğunluğu veya bellek kullanımı yoğun paketler çalıştırmak istiyorsanız büyük bir düğüm boyutu seçin (ölçeği büyütme).
+   > [!NOTE]
+   > [İşlem yalıtımına](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation)ihtiyacınız varsa lütfen **Standard_E64i_v3** düğüm boyutunu seçin. Bu düğüm boyutu, tüm fiziksel konakları kullanan yalıtılmış sanal makineleri temsil eder ve ABD Savunma Bakanlığı 'nın etki düzeyi 5 (IL5) iş yükleri gibi belirli iş yükleri için gerekli yalıtım düzeyini sağlar.
+   
+   5. **Node Number** (Düğüm Sayısı) alanında tümleştirme çalışma zamanınızdaki düğüm sayısını seçin. Yalnızca desteklenen düğüm sayıları görüntülenir. Birçok paketi paralel olarak çalıştırmak istiyorsanız çok sayıda düğümü olan büyük bir küme seçin (ölçeği genişletme).
 
-   1. **Node Number** (Düğüm Sayısı) alanında tümleştirme çalışma zamanınızdaki düğüm sayısını seçin. Yalnızca desteklenen düğüm sayıları görüntülenir. Birçok paketi paralel olarak çalıştırmak istiyorsanız çok sayıda düğümü olan büyük bir küme seçin (ölçeği genişletme).
+   6. **Sürüm/lisans**için, tümleştirme çalışma zamanı için SQL Server sürümünü seçin: Standart veya kurumsal. Tümleştirme çalışma zamanı ' nda Gelişmiş özellikleri kullanmak istiyorsanız Kurumsal ' i seçin.
 
-   1. **Sürüm/lisans**için, tümleştirme çalışma zamanı için SQL Server sürümünü seçin: Standart veya kurumsal. Tümleştirme çalışma zamanı ' nda Gelişmiş özellikleri kullanmak istiyorsanız Kurumsal ' i seçin.
+   7. Tasarruf **için,** tümleştirme çalışma zamanı için Azure hibrit avantajı seçeneğini belirleyin: **Evet** veya **Hayır**. Karma kullanım ile maliyet tasarruflarından faydalanmak için kendi SQL Server lisansınızı Yazılım Güvencesine getirmek istiyorsanız **Evet** ' i seçin.
 
-   1. Tasarruf **için,** tümleştirme çalışma zamanı için Azure hibrit avantajı seçeneğini belirleyin: **Evet** veya **Hayır**. Karma kullanım ile maliyet tasarruflarından faydalanmak için kendi SQL Server lisansınızı Yazılım Güvencesine getirmek istiyorsanız **Evet** ' i seçin.
-
-   1. **İleri**’yi seçin.
+   8. **İleri**’yi seçin.
 
 #### <a name="deployment-settings-page"></a>Dağıtım ayarları sayfası
 
@@ -944,7 +946,7 @@ Bu bölümde, Azure-SSIS tümleştirme çalışma zamanı oluşturmak için bir 
     }
     ```
 
-2. Azure Resource Manager şablonunu dağıtmak için `New-AzResourceGroupDeployment` Aşağıdaki örnekte gösterildiği gibi komutunu çalıştırın. Örnekte, `ADFTutorialResourceGroup` kaynak grubunuzun adıdır. `ADFTutorialARM.json`, veri fabrikanızın JSON tanımını ve Azure-SSIS IR içeren dosyadır.
+2. Azure Resource Manager şablonunu dağıtmak için `New-AzResourceGroupDeployment` Aşağıdaki örnekte gösterildiği gibi komutunu çalıştırın. Örnekte, `ADFTutorialResourceGroup` kaynak grubunuzun adıdır. `ADFTutorialARM.json` , veri fabrikanızın JSON tanımını ve Azure-SSIS IR içeren dosyadır.
 
     ```powershell
     New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json

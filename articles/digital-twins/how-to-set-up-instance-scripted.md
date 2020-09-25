@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 605df0f26600f962bda7a0a0def800a91d74b022
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563004"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328657"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (komut dosyası) ayarlama
 
@@ -26,15 +26,19 @@ Bu makalenin bu sürümü, işlemi kolaylaştıran [ **otomatikleştirilmiş bir
 
 [!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
+## <a name="prerequisites-download-the-script"></a>Önkoşullar: betiği Indir
+
+Örnek betik, PowerShell 'de yazılmıştır. Bu örnek bağlantıyı inceleyerek makinenize indirebileceğiniz [**Azure dijital TWINS örneklerinin**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)bir parçasıdır. Bu, söz konusu örnek bağlantısına giderek ve başlık altındaki *posta indirme* düğmesini seçmiş olursunuz.
+
+Bu işlem, örnek projeyi _**Azure_Digital_Twins_samples.zip**_ olarak makinenize indirir. Makinenizde bulunan klasöre gidin ve dosyaları ayıklamak için dosyayı ayıklayın.
+
+Sıkıştırılmış klasörde, dağıtım betiği _Azure_Digital_Twins_samples > betiklerinin > **deploy.ps1** _bulunur.
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="run-the-deployment-script"></a>Dağıtım betiğini çalıştırma
 
 Bu makalede bir Azure dijital TWINS örneği ve gerekli kimlik doğrulama yarı otomatik olarak dağıtmak için bir Azure dijital TWINS kod örneği kullanılmaktadır. Ayrıca, kendi komut dosyası etkileşimlerinizi yazmak için bir başlangıç noktası olarak da kullanılabilir.
-
-Örnek betik, PowerShell 'de yazılmıştır. Bu örnek bağlantıyı inceleyerek makinenize indirebileceğiniz [Azure dijital TWINS örneklerinin](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)bir parçasıdır. Bu, söz konusu örnek bağlantısına giderek ve başlık altındaki *posta indirme* düğmesini seçmiş olursunuz.
-
-İndirilen örnek klasörde, dağıtım betiği _Azure_Digital_Twins_samples.zip > betikler > **deploy.ps1** _bulunur.
 
 Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda verilmiştir.
 1. Tarayıcınızda bir [Azure Cloud Shell](https://shell.azure.com/) penceresine gidin. Şu komutu kullanarak oturum açın:
@@ -43,13 +47,23 @@ Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda veril
     ```
     CLı varsayılan tarayıcınızı açabildiğinden, bunu yapılır ve bir Azure oturum açma sayfası yükler. Aksi takdirde, konumunda bir tarayıcı sayfası açın *https://aka.ms/devicelogin* ve terminalinizde görünen yetkilendirme kodunu girin.
  
-2. Oturum açtıktan sonra, Cloud Shell pencere simgesi çubuğuna bakın. "Dosyaları karşıya yükle/Indir" simgesini seçin ve "karşıya yükle" yi seçin.
+2. Cloud Shell simge çubuğunda, Cloud Shell PowerShell sürümünü çalıştıracak şekilde ayarlandığından emin olun.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Karşıya yükleme seçeneğinin seçimini gösteren Cloud Shell pencere":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell":::
 
-    Makinenizde _**deploy.ps1**_ dosyasına gidin ve "Aç" düğmesine basın. Bu işlem, dosyayı Cloud Shell penceresinde çalıştırabilmeniz için Cloud Shell dosyasına yükler.
+1. "Dosyaları karşıya yükle/Indir" simgesini seçin ve "karşıya yükle" yi seçin.
 
-3. Komutu Cloud Shell penceresine göndererek betiği çalıştırın `./deploy.ps1` . Komut dosyası otomatik kurulum adımları üzerinden çalışırken, aşağıdaki değerleri geçirmeniz istenir:
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Karşıya yükleme simgesinin seçimini gösteren Cloud Shell pencere":::
+
+    Makinenizde _**deploy.ps1**_ dosyasına gidin ( _Azure_Digital_Twins_samples > betikler > **deploy.ps1** _) ve "Aç" düğmesine basın. Bu işlem, dosyayı Cloud Shell penceresinde çalıştırabilmeniz için Cloud Shell dosyasına yükler.
+
+4. Komutu Cloud Shell penceresine göndererek betiği çalıştırın `./deploy.ps1` . (Cloud Shell yapıştırılacağını geri çek, Windows ve Linux 'ta **CTRL + SHIFT + v** veya MacOS 'ta **cmd + SHIFT + v** kullanabilirsiniz. Sağ tıklama menüsünü de kullanabilirsiniz.)
+
+    ```azurecli
+    ./deploy.ps1
+    ```
+
+    Komut dosyası otomatik kurulum adımları üzerinden çalışırken, aşağıdaki değerleri geçirmeniz istenir:
     * Örnek için: kullanılacak Azure aboneliğinizin *ABONELIK kimliği*
     * Örnek için: örneği dağıtmak istediğiniz *konum* . Azure dijital TWINS 'i destekleyen bölgeleri görmek için [*bölgeye göre kullanılabilen Azure ürünlerini*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)ziyaret edin.
     * Örnek için: bir *kaynak grubu* adı. Var olan bir kaynak grubunu kullanabilir veya oluşturmak için yeni bir ad girebilirsiniz.
@@ -107,9 +121,15 @@ Bu listede yeni oluşturduğunuz uygulama kaydını görmeniz gerekir. Ayrıntı
 
 Komut dosyası tarafından ayarlanan kaynaklarınızın ve izinlerin oluşturulmasını doğrulamak istiyorsanız, [Azure Portal](https://portal.azure.com)bunlara bakabilirsiniz.
 
+Herhangi bir adımın başarısını doğrulayadıysanız adımı yeniden deneyin. [Azure Portal](how-to-set-up-instance-portal.md) veya [CLI](how-to-set-up-instance-cli.md) yönergelerini kullanarak adımları tek tek gerçekleştirebilirsiniz.
+
 ### <a name="verify-instance"></a>Örneği doğrula
 
-Örneğinizin oluşturulduğunu doğrulamak için Azure portal [Azure dijital TWINS sayfasına](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) gidin. Bu sayfada tüm Azure dijital TWINS örnekleri listelenir. Listede yeni oluşturduğunuz örneğin adını arayın.
+Örneğinizin oluşturulduğunu doğrulamak için Azure portal [Azure dijital TWINS sayfasına](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) gidin. Bu sayfaya, Portal arama çubuğunda *Azure dijital TWINS* araması yaparak kendiniz ulaşabilirsiniz.
+
+Bu sayfada tüm Azure dijital TWINS örnekleri listelenir. Listede yeni oluşturduğunuz örneğin adını arayın.
+
+Doğrulama başarısız olduysa, [Portal](how-to-set-up-instance-portal.md#create-the-azure-digital-twins-instance) veya [CLI](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)kullanarak bir örnek oluşturmayı yeniden deneyebilirsiniz.
 
 ### <a name="verify-user-role-assignment"></a>Kullanıcı rolü atamasını doğrula
 
@@ -117,16 +137,18 @@ Komut dosyası tarafından ayarlanan kaynaklarınızın ve izinlerin oluşturulm
 
 > [!NOTE]
 > Betiğin Şu anda bu gerekli rolü Cloud Shell betiği çalıştıran aynı kullanıcıya atadığını hatırlayın. Bu rolü örneği yöneten başka birine atamanız gerekiyorsa, bunu şimdi Azure portal ([yönergeler](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) veya CLI ([yönergeler](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) yoluyla yapabilirsiniz.
->
-> Komut dosyalı kurulumla ilgili herhangi bir sorun varsa, kendi rol atamasını yinelemek için portalını veya CLı 'yi de kullanabilirsiniz.
+
+Doğrulama başarısız olduysa, [Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) veya [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions)kullanarak kendi rol atamasını de yineleyebilirsiniz.
 
 ### <a name="verify-app-registration"></a>Uygulama kaydını doğrulama
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
 
-İlk olarak, Azure dijital TWINS izinleri ayarlarının kayıt üzerinde doğru şekilde ayarlandığını doğrulayın. Bunu yapmak için, menü çubuğundan *bildirim* ' ı seçerek uygulama kaydının bildirim kodunu görüntüleyin. Kod penceresinin en altına kaydırın ve altındaki bu alanları bulun `requiredResourceAccess` . Değerler aşağıdaki ekran görüntüsünde olanlarla eşleşmelidir:
+Daha sonra, Azure Digital TWINS izinleri ayarlarının kayıt üzerinde doğru şekilde ayarlandığını doğrulayın. Bunu yapmak için, menü çubuğundan *bildirim* ' ı seçerek uygulama kaydının bildirim kodunu görüntüleyin. Kod penceresinin en altına kaydırın ve altındaki bu alanları bulun `requiredResourceAccess` . Değerler aşağıdaki ekran görüntüsünde olanlarla eşleşmelidir:
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
+
+Bu doğrulama adımlarından biri veya her ikisi başarısız olursa, [portalı](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications) veya [CLI](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) yönergelerini kullanarak uygulama kaydını oluşturmayı yeniden deneyin.
 
 ## <a name="other-possible-steps-for-your-organization"></a>Kuruluşunuz için olası diğer adımlar
 
@@ -135,7 +157,7 @@ Komut dosyası tarafından ayarlanan kaynaklarınızın ve izinlerin oluşturulm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Digital TWINS CLı komutlarını kullanarak örneğiniz için tek REST API çağrılarını test edin: 
-* [az DT Reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [az DT Reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [*Nasıl yapılır: Azure dijital TWINS CLı 'sını kullanma*](how-to-use-cli.md)
 
 Ya da bkz. istemci uygulamasının kimlik doğrulama kodunu yazarak istemci uygulamanızı örneğinizle bağlama:

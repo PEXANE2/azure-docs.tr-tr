@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Azure Maps ile etkileşimli harita arama'
-description: Etkileşimli ve aranabilir haritalar oluşturmayı öğrenin. Azure haritalar hesabı oluşturma, birincil anahtar alma ve Web SDK 'sını kullanarak harita uygulamaları ayarlama bölümüne bakın.
+description: "Hızlı başlangıç: etkileşimli ve aranabilir haritalar oluşturmayı öğrenin. Azure haritalar hesabı oluşturma, birincil anahtar alma ve Web SDK 'sını kullanarak harita uygulamaları ayarlama hakkında bilgi alın"
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/10/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fa5cab35416f2629d39ec04803f90fae1a2e5f6d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 99257b7bef83d0acef484118c7d53aea8eda168c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031056"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264295"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Hızlı başlangıç: Azure Maps ile etkileşimli arama haritası oluşturma
 
@@ -92,17 +92,15 @@ Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API 'Lerini 
 2. Azure portal sayfasına gidin. Ana Portal sayfasından **tüm kaynaklar** ' ı seçin. Ya da sol üst köşedeki menü simgesine tıklayın. **Tüm kaynaklar**’ı seçin.
 3. Azure haritalar hesabınıza tıklayın. Sayfanın üst kısmında **Sil**' e tıklayın.
 
+Daha fazla kod örneği ve etkileşimli kodlama deneyimi için aşağıdaki kılavuzlara bakın:
+
+[Azure haritalar arama hizmeti ile adres bulma](how-to-search-for-address.md)
+
+[Azure haritalar 'ı kullanın Harita Denetimi](how-to-use-map-control.md)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu hızlı başlangıçta, Azure Maps hesabınızı oluşturdunuz ve bir demo uygulaması oluşturdunuz. Azure haritalar hakkında daha fazla bilgi edinmek için aşağıdaki öğreticilere göz atın:
 
 > [!div class="nextstepaction"]
 > [Azure haritalar ile yakın ilgi çekici noktaları arayın](tutorial-search-location.md)
-
-Daha fazla kod örneği ve etkileşimli kodlama deneyimi için aşağıdaki kılavuzlara bakın:
-
-> [!div class="nextstepaction"]
-> [Azure haritalar arama hizmeti ile adres bulma](how-to-search-for-address.md)
-
-> [!div class="nextstepaction"]
-> [Azure haritalar 'ı kullanın Harita Denetimi](how-to-use-map-control.md)

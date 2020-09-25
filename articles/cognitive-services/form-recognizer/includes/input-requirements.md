@@ -5,19 +5,22 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 11783f8fac147e6fb2cf371ee1a588cf318a5e9c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5de121a1a905a58f8b5eaf8e60c1f8da71ee8cd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75379459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276960"
 ---
 Form tanıyıcı, bu gereksinimleri karşılayan giriş belgelerinde çalışmaktadır:
 
 * Biçim JPG, PNG, PDF (metin veya taranan) veya TIFF olmalıdır. Metin katıştırılmış PDF 'Ler en iyisidir çünkü karakter ayıklama ve konumunda hata olasılığı yoktur.
+* Dosya boyutu 20 MB 'tan az olmalıdır.
+* Resim boyutları 50 x 50 piksel ve 10000 x 10000 piksel arasında olmalıdır.
+* PDF boyutları, yasal veya A3 kağıt boyutlarına ve daha küçük boyutlara karşılık gelen en fazla 17 x 17 inç olmalıdır.
+* PDF ve TIFF için yalnızca ilk 200 sayfa işlenir (ücretsiz bir katman aboneliğiyle yalnızca ilk iki sayfa işlenir).
+* Eğitim veri kümesinin toplam boyutu 500 sayfa veya daha az olmalıdır.
 * PDF 'niz parola kilitliyse, göndermeden önce kilidi kaldırmanız gerekir.
-* PDF ve TIFF belgelerinin 200 sayfa veya daha az olması ve eğitim veri kümesinin toplam boyutunun 500 sayfa veya daha az olması gerekir.
-* Görüntüler için Boyutlar 600 x 100 piksel ve 4200 x 4200 piksel arasında olmalıdır.
 * Kağıt belgelerinden tarandığında, formlar yüksek kaliteli taramalar olmalıdır.
 * Metin Latin alfabesini (Ingilizce karakterler) kullanmalıdır.
 * Denetimsiz öğrenme için (etiketlenmemiş veriler olmadan), verilerin anahtar ve değer içermesi gerekir.

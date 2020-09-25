@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: b17e2618cd87c0689fa531e893149a1b2fab8d20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987199"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277300"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın
 
@@ -30,7 +30,7 @@ Uzamsal analiz kapsayıcısı, kişiler, taşınanlar ve fiziksel ortamlardaki n
 
 ### <a name="spatial-analysis-container-requirements"></a>Uzamsal analiz kapsayıcısı gereksinimleri
 
-Uzamsal analiz kapsayıcısını çalıştırmak için, [NVIDIA Tesla T4 GPU 'su](https://www.nvidia.com/data-center/tesla-t4/)olan bir işlem cihazına ihtiyacınız vardır. GPU hızlandırmalı [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) kullanmanızı öneririz, ancak kapsayıcı, en düşük gereksinimleri karşılayan diğer masaüstü makineler üzerinde çalışır. Bu cihaza ana bilgisayar olarak başvuracağız.
+Uzamsal analiz kapsayıcısını çalıştırmak için, [NVIDIA Tesla T4 GPU 'su](https://www.nvidia.com/en-us/data-center/tesla-t4/)olan bir işlem cihazına ihtiyacınız vardır. GPU hızlandırmalı [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) kullanmanızı öneririz, ancak kapsayıcı, en düşük gereksinimleri karşılayan diğer masaüstü makineler üzerinde çalışır. Bu cihaza ana bilgisayar olarak başvuracağız.
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge cihazı](#tab/azure-stack-edge)
 
@@ -71,7 +71,7 @@ Bu makalede, aşağıdaki yazılım paketlerini indirip yükleyeceksiniz. Ana bi
 
 ## <a name="request-approval-to-run-the-container"></a>Kapsayıcıyı çalıştırmak için onay isteyin
 
-Kapsayıcıyı çalıştırmak için onay istemek üzere [istek formunu](https://aka.ms/cognitivegate) doldurun ve iletin. 
+Kapsayıcıyı çalıştırmak için onay istemek üzere [istek formunu](https://aka.ms/csgate) doldurun ve iletin.
 
 Form, siz, şirketiniz ve kapsayıcısını kullanacağınız kullanıcı senaryosu hakkında bilgi ister. Formu gönderdikten sonra, Azure bilişsel hizmetler ekibi bunu gözden geçirir ve bir karar vererek size e-posta ile gönderilir.
 
@@ -116,7 +116,8 @@ Uzamsal analiz, bir AI çözümünü çalıştırmak için Azure Stack ucunun i�
 Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Azure IoT Edge çalışma zamanı IoT Edge cihazda zaten çalışıyor.            
 
 > [!NOTE]
-> Şu anda yalnızca Linux platformu IoT Edge cihazlar için kullanılabilir. Azure Stack Edge cihazında sorun giderme konusunda yardım için bkz. [günlük ve sorun giderme](spatial-analysis-logging.md) makalesi.
+> * Şu anda yalnızca Linux platformu IoT Edge cihazlar için desteklenir. Azure Stack Edge cihazında sorun giderme konusunda yardım için bkz. [günlük ve sorun giderme](spatial-analysis-logging.md) makalesi.
+> * Bir proxy sunucusu üzerinden iletişim kurmak üzere bir IoT Edge cihazının nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için bkz. bir [IoT Edge cihazını bir ara sunucu üzerinden iletişim kurmak Için yapılandırma](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal)
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>Azure Stack Edge üzerinde MPS 'yi etkinleştirme 
 
@@ -260,13 +261,14 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Ana bilgisayar Azure Stack Edge aygıtı değilse, [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) sürüm 1.0.8 yüklemeniz gerekir. Doğru sürümü indirmek için şu adımları izleyin: Ubuntu Server 18,04:
+Ana bilgisayar Azure Stack Edge aygıtı değilse, [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) sürüm 1.0.8 yüklemeniz gerekir. Doğru sürümü indirmek için şu adımları izleyin:
+
+Ubuntu Server 18,04:
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
 ```
 
 Oluşturulan listeyi kopyalayın.
-
 ```bash
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
 ```
@@ -324,8 +326,8 @@ Aşağıdaki tabloda IoT Edge modülü tarafından kullanılan çeşitli ortam d
 | ARCHON_NODES_LOG_LEVEL | Bilgisine Seçeneini | Günlüğe kaydetme düzeyi, iki değerden birini seçin|
 | OMP_WAIT_POLICY | ETKIN | Değiştirme|
 | QT_X11_NO_MITSHM | 1 | Değiştirme|
-| API_KEY | API anahtarınız| Bu değeri Görüntü İşleme kaynağınızın Azure portal toplayın. Bu dosyayı, Azure portal kaynağınız için **anahtar ve uç nokta** bölümünde bulabilirsiniz. |
-| BILLING_ENDPOINT | Uç nokta URI 'niz| Bu değeri Görüntü İşleme kaynağınızın Azure portal toplayın. Bu dosyayı, Azure portal kaynağınız için **anahtar ve uç nokta** bölümünde bulabilirsiniz.|
+| API_KEY | API anahtarınız| Bu değeri Görüntü İşleme kaynağınızın Azure portal toplayın. Bunu, kaynağınız için **anahtar ve uç nokta** bölümünde bulabilirsiniz. |
+| BILLING_ENDPOINT | Uç nokta URI 'niz| Bu değeri Görüntü İşleme kaynağınızın Azure portal toplayın. Bunu, kaynağınız için **anahtar ve uç nokta** bölümünde bulabilirsiniz.|
 | SÖZLEŞMESI | ettiğinizde | Kapsayıcının çalışması için bu değerin *kabul edileceği* şekilde ayarlanması gerekir |
 | GÖRÜNTÜLENME | : 1 | Bu değerin, ana bilgisayardaki çıkışıyla aynı olması gerekir `echo $DISPLAY` . Azure Stack Edge cihazlarının bir ekranı yoktur. Bu ayar geçerli değil|
 
@@ -339,7 +341,6 @@ Dosyadaki örnek [DeploymentManifest.js](https://go.microsoft.com/fwlink/?linkid
 az login
 az extension add --name azure-iot
 az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
-
 ```
 
 |Parametre  |Açıklama  |

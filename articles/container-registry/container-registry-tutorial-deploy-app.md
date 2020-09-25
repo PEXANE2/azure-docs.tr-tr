@@ -4,12 +4,12 @@ description: Coğrafi olarak çoğaltılan bir Azure Container Registry 'den bir
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: bcbce3c60aa0b4613b1dd1840c335c800193e549
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74456109"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328699"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Öğretici: coğrafi olarak çoğaltılan bir Azure Container Registry 'den Web uygulaması dağıtma
 
@@ -58,7 +58,7 @@ Bu adımda, *Batı ABD* bölgesinde bir Kapsayıcılar için Web App örneği ol
 
 **Oluştur**’u seçerek, web uygulamasını *Batı ABD* bölgesine sağlayın.
 
-![Azure portalında Linux yapılandırmasındaki web uygulaması][deploy-app-portal-02]
+![Ekran görüntüsü oluştur düğmesinin vurgulandığı Kapsayıcılar için Web App gösterir.][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>Dağıtılan web uygulamasını görüntüleme
 
@@ -68,11 +68,11 @@ Portalda **Uygulama Hizmetleri** seçeneğini belirleyin ve önceki adımda sağ
 
 Çalıştırılan uygulamayı tarayıcınızda görüntülemek için, **App Service** genel bakışının sağ üst kısmında web uygulamasının köprülü URL’sini seçin.
 
-![Azure portalında Linux yapılandırmasındaki web uygulaması][deploy-app-portal-04]
+![Ekran görüntüsünde Web uygulaması URL 'sinin vurgulandığı App Service genel bakış gösterilmektedir.][deploy-app-portal-04]
 
 Coğrafi olarak çoğaltılmış kapsayıcı kayıt defterinizden Docker görüntüsü dağıtıldıktan sonra site, kapsayıcı kayıt defterini barındıran Azure bölgesini temsil eden bir görüntü gösterir.
 
-![Bir tarayıcıda görüntülenen, dağıtılan web uygulaması][deployed-app-westus]
+![Ekran görüntüsünde, dağıtılan Web uygulamasının bir tarayıcıda görüntülendiğini gösterir.][deployed-app-westus]
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>İkinci Kapsayıcılar için Web App örneğini dağıtma
 
@@ -88,9 +88,9 @@ Coğrafi olarak çoğaltılmış kapsayıcı kayıt defterinizden Docker görün
 
 **Oluştur**’u seçerek, web uygulamasını *Doğu ABD* bölgesine sağlayın.
 
-![Azure portalında Linux yapılandırmasındaki web uygulaması][deploy-app-portal-06]
+![Ekran görüntüsü oluştur düğmesinin vurgulandığı Kapsayıcılar için Web App Oluştur penceresini gösterir.][deploy-app-portal-06]
 
-## <a name="view-the-deployed-web-app"></a>Dağıtılan web uygulamasını görüntüleme
+## <a name="view-the-second-deployed-web-app"></a>Dağıtılan ikinci Web uygulamasını görüntüleme
 
 Daha önce olduğu gibi, çalıştırılan uygulamanın URL’sine tarayıcınızda giderek bu uygulamayı görüntüleyebilirsiniz.
 

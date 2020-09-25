@@ -5,34 +5,69 @@ author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 5db756b60330cdac4e43e13bfe29d9397f87af50
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 09/22/2020
+ms.openlocfilehash: 932d138a4b594aa51b73c365cc3e753f49f886f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421663"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329012"
 ---
-# <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure özel bağlantısı ile Redsıs için Azure önbelleği (Önizleme)
+# <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Redin için Azure önbelleği Azure özel bağlantısı (Genel Önizleme)
+Bu makalede, Azure portal kullanarak özel bir uç nokta ile Redsıs örneği için bir sanal ağ ve Azure önbelleği oluşturmayı öğreneceksiniz. Ayrıca, Redsıs örneği için mevcut bir Azure önbelleğine özel bir uç nokta eklemeyi öğreneceksiniz.
+
 Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen, özel olarak ve güvenli bir şekilde Azure önbelleğine bağlayan bir ağ arabirimidir. 
 
-Bu makalede, Azure portal kullanarak bir Azure önbelleği, Azure sanal ağı ve özel bir uç nokta oluşturmayı öğreneceksiniz.  
-
-> [!IMPORTANT]
-> Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz [. Microsoft Azure önizlemeleri Için ek kullanım koşulları.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
-> 
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-> Bu özellik şu anda önizleme aşamasındadır. ilgilendiğiniz durumlarda [bizimle iletişim kurun](mailto:azurecache@microsoft.com) .
+> Bu özellik şu anda sınırlı bölgeler için genel önizlemededir. Özel uç nokta oluşturma seçeneğiniz yoksa [bizimle iletişim kurun](mailto:azurecache@microsoft.com). Özel uç noktaları kullanmak için, Redsıs örneği için Azure önbelleğinizin 28 Temmuz 2020 ' den sonra oluşturulmuş olması gerekir.
+>
+> Genel Önizleme erişimi olan bölgeler Şu anda Orta Batı ABD, Orta Kuzey ABD, Batı ABD, Doğu ABD 2, Norveç Doğu, Avrupa Kuzey, Asya Doğu, Japonya Doğu ve Hindistan Orta.
 >
 
-## <a name="create-a-cache"></a>Bir önbellek oluşturma
-1. Önbellek oluşturmak için [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin. 
+## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>Redsıs örneği için yeni bir Azure önbelleği ile özel bir uç nokta oluşturma 
+
+Bu bölümde, özel bir uç nokta ile Redsıs örneği için yeni bir Azure önbelleği oluşturacaksınız.
+
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma 
+
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin.
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Kaynak oluştur ' u seçin.":::
+
+2. **Yeni** sayfasında **ağ** ' ı seçin ve ardından **sanal ağ**' ı seçin.
+
+3. Sanal ağ oluşturmak için **Ekle** ' yi seçin.
+
+4. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
+
+   | Ayar      | Önerilen değer  | Açıklama |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Abonelik** | Açılır ve aboneliğinizi seçin. | Bu sanal ağın oluşturulacağı abonelik. | 
+   | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Sanal ağınızın ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
+   | **Ad** | Bir sanal ağ adı girin. | Ad bir harf veya sayı ile başlamalı, harf, sayı veya alt çizgi ile bitmelidir ve yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. | 
+   | **Bölge** | Açılır ve bir bölge seçin. | Sanal ağınızı kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
+
+5. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Ileri: IP adresleri** düğmesine tıklayın.
+
+6. **IP adresleri** sekmesinde, **ıPV4 adres alanını** CIDR gösteriminde bir veya daha fazla adres ön eki olarak belirtin (örneğin 192.168.1.0/24).
+
+7. Alt ağ **adı**altında **varsayılan** ' a tıklayarak alt ağın özelliklerini düzenleyin.
+
+8. **Alt ağı Düzenle** bölmesinde alt ağ **adını** ve **alt ağ adres aralığını**belirtin. Alt ağın adres aralığı CıDR gösteriminde (ör. 192.168.1.0/24) olmalıdır. Sanal ağın adres alanı tarafından içerilmelidir.
+
+9. **Kaydet**’i seçin.
+
+10. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesine tıklayın.
+
+11. Tüm bilgilerin doğru olduğundan emin olun ve sanal ağı sağlamak için **Oluştur** ' a tıklayın.
+
+### <a name="create-an-azure-cache-for-redis-instance-with-a-private-endpoint"></a>Özel bir uç nokta ile Redsıs örneği için Azure önbelleği oluşturma
+Bir önbellek örneği oluşturmak için aşağıdaki adımları izleyin.
+
+1. Azure portal giriş sayfasına dönün veya kenar çubuğu menüsünü açın, sonra **kaynak oluştur**' u seçin. 
    
 1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
 
@@ -47,114 +82,114 @@ Bu makalede, Azure portal kullanarak bir Azure önbelleği, Azure sanal ağı ve
    | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
    | **Konum** | Açılır ve bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
    | **Fiyatlandırma katmanı** | Açılır ve bir [fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/cache/)seçin. |  Fiyatlandırma katmanı önbellek için kullanılabilen boyut, performans ve özellikleri belirler. Daha fazla bilgi için bkz. [redsıs Için Azure önbelleği 'Ne genel bakış](cache-overview.md). |
-   
-1. **Oluştur**’u seçin. 
-   
-    :::image type="content" source="media/cache-private-link/3-new-cache.png" alt-text="Redsıs için Azure önbelleği oluşturun.":::
-   
-   Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır.
+
+1. **Ağ** sekmesini seçin veya sayfanın altındaki **ağ** düğmesine tıklayın.
+
+1. **Ağ** sekmesinde, bağlantı yöntemi Için **Özel uç nokta** ' ı seçin.
+
+1. Özel uç noktanızı oluşturmak için **Ekle** düğmesine tıklayın.
+
+    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Ağ ' da özel bir uç nokta ekleyin.":::
+
+1. **Özel uç nokta oluştur** sayfasında, Özel uç noktanızın ayarlarını, son bölümde oluşturduğunuz sanal ağ ve alt ağ ile yapılandırın ve **Tamam**' ı seçin. 
+
+1. **İleri: Gelişmiş** sekmesini seçin veya sayfanın altındaki **İleri: Gelişmiş** düğmesine tıklayın.
+
+1. Bir temel veya standart önbellek örneğinin **Gelişmiş** SEKMESINDE, TLS olmayan bir bağlantı noktasını etkinleştirmek istiyorsanız geçişi etkinleştir ' i seçin.
+
+1. Premium önbellek örneğinin **Gelişmiş** SEKMESINDE, TLS olmayan bağlantı noktası, kümeleme ve veri kalıcılığı için ayarları yapılandırın.
+
+
+1. **Sonraki: Etiketler** sekmesini seçin veya sayfanın altındaki **Sonraki: Etiketler** düğmesine tıklayın.
+
+1. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin. 
+
+1.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
+
+1. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur**' u seçin.
+
+Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış**   sayfasında ilerlemeyi izleyebilirsiniz.  **Durum**    **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır. 
     
-    :::image type="content" source="media/cache-private-link/4-status.png" alt-text="Redfor Redfor için Azure önbelleği oluşturulur.":::
 
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Redsıs örneği için mevcut bir Azure önbelleği ile özel bir uç nokta oluşturma 
 
-Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
+Bu bölümde, Redsıs örneği için mevcut bir Azure önbelleğine özel bir uç nokta ekleyeceksiniz. 
 
-1. **Kaynak oluştur**’u seçin.
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma 
+Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
 
-    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Kaynak oluştur ' u seçin.":::
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin.
 
 2. **Yeni** sayfasında **ağ** ' ı seçin ve ardından **sanal ağ**' ı seçin.
 
-    :::image type="content" source="media/cache-private-link/5-select-vnet.png" alt-text="Sanal bir ağ oluşturun.":::
+3. Sanal ağ oluşturmak için **Ekle** ' yi seçin.
 
-3. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
+4. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
 
-    | **Ayar**          | **Değer**                                                           |
-    |------------------|-----------------------------------------------------------------|
-    | **Proje ayrıntıları**  |                                                                 |
-    | Abonelik     | Açılır ve aboneliğinizi seçin.                                  |
-    | Kaynak Grubu   | Açılır ve bir kaynak grubu seçin. |
-    | **Örnek ayrıntıları** |                                                                 |
-    | Name             | Girmesini**\<virtual-network-name>**                                    |
-    | Bölge           | Seçin**\<region-name>** |
+   | Ayar      | Önerilen değer  | Açıklama |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Abonelik** | Açılır ve aboneliğinizi seçin. | Bu sanal ağın oluşturulacağı abonelik. | 
+   | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Sanal ağınızın ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
+   | **Ad** | Bir sanal ağ adı girin. | Ad bir harf veya sayı ile başlamalı, harf, sayı veya alt çizgi ile bitmelidir ve yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. | 
+   | **Bölge** | Açılır ve bir bölge seçin. | Sanal ağınızı kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
 
-4. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
+5. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Ileri: IP adresleri** düğmesine tıklayın.
 
-5. **IP adresleri** sekmesinde şu bilgileri girin:
+6. **IP adresleri** sekmesinde, **ıPV4 adres alanını** CIDR gösteriminde bir veya daha fazla adres ön eki olarak belirtin (örneğin 192.168.1.0/24).
 
-    | Ayar            | Değer                      |
-    |--------------------|----------------------------|
-    | IPv4 adres alanı | Girmesini**\<IPv4-address-space>** |
+7. Alt ağ **adı**altında **varsayılan** ' a tıklayarak alt ağın özelliklerini düzenleyin.
 
-6. **Alt ağ adı**altında, **varsayılan**sözcük ' ı seçin.
+8. **Alt ağı Düzenle** bölmesinde alt ağ **adını** ve **alt ağ adres aralığını**belirtin. Alt ağın adres aralığı CıDR gösteriminde (ör. 192.168.1.0/24) olmalıdır. Sanal ağın adres alanı tarafından içerilmelidir.
 
-7. **Alt ağı Düzenle**' de şu bilgileri girin:
+9. **Kaydet**’i seçin.
 
-    | Ayar            | Değer                      |
-    |--------------------|----------------------------|
-    | Alt ağ adı | Girmesini**\<subnet-name>** |
-    | Alt ağ adres aralığı | Girmesini**\<subnet-address-range>**
+10. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesine tıklayın.
 
-8. **Kaydet**'i seçin.
+11. Tüm bilgilerin doğru olduğundan emin olun ve sanal ağı sağlamak için **Oluştur** ' a tıklayın.
 
-9. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
+### <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma 
 
-10. **Oluştur**’u seçin.
+Özel bir uç nokta oluşturmak için aşağıdaki adımları izleyin.
 
+1. Azure portal, **Reda Için Azure önbelleği** araması yapın ve ENTER tuşuna basın veya arama önerilerinde seçin.
 
-## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma 
+    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Redsıs için Azure önbelleği araması yapın.":::
 
-Bu bölümde, özel bir uç nokta oluşturacak ve daha önce oluşturduğunuz önbelleğe bağlayacaksınız.
+2. Özel uç nokta eklemek istediğiniz önbellek örneğini seçin.
 
-1. **Özel bağlantı** araması yapın ve ENTER tuşuna basın veya arama önerilerinde bunu seçin.
+3. Ekranın sol tarafında **Özel uç nokta ' ı (Önizleme)** seçin.
 
-    :::image type="content" source="media/cache-private-link/7-create-private-link.png" alt-text="Özel bir bağlantı arayın.":::
+4. Özel uç noktanızı oluşturmak için **Özel uç nokta** düğmesine tıklayın.
 
-2. Ekranın sol tarafında **Özel uç noktalar**' ı seçin.
+    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Özel uç nokta ekleyin.":::
 
-    :::image type="content" source="media/cache-private-link/8-select-private-endpoint.png" alt-text="Özel bağlantıyı seçin.":::
+5. **Özel uç nokta Oluştur sayfasında**, Özel uç noktanız için ayarları yapılandırın.
 
-3. Özel uç noktanızı oluşturmak için **+ Ekle** düğmesini seçin. 
+   | Ayar      | Önerilen değer  | Açıklama |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Abonelik** | Açılır ve aboneliğinizi seçin. | Bu özel bitiş noktasının oluşturulacağı abonelik. | 
+   | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Özel uç noktanızın ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
+   | **Ad** | Özel bir uç nokta adı girin. | Ad bir harf veya sayı ile başlamalı, harf, sayı veya alt çizgi ile bitmelidir ve yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. | 
+   | **Bölge** | Açılır ve bir bölge seçin. | Özel uç noktanızı kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
 
-    :::image type="content" source="media/cache-private-link/9-add-private-endpoint.png" alt-text="Özel bir bağlantı ekleyin.":::
+6. Sayfanın alt kısmındaki **İleri: kaynak** düğmesine tıklayın.
 
-4. **Özel uç nokta Oluştur sayfasında**, Özel uç noktanız için ayarları yapılandırın.
+7. **Kaynak** sekmesinde aboneliğinizi seçin, kaynak türünü olarak seçin `Microsoft.Cache/Redis` ve ardından özel uç noktasını bağlamak istediğiniz önbelleği seçin.
 
-    | Ayar | Değer |
-    | ------- | ----- |
-    | **PROJE AYRıNTıLARı** | |
-    | Abonelik | Açılır ve aboneliğinizi seçin. |
-    | Kaynak grubu | Açılır ve bir kaynak grubu seçin. |
-    | **ÖRNEK AYRıNTıLARı** |  |
-    | Name |Özel uç noktanız için bir ad girin.  |
-    | Bölge |Açılır ve bir konum seçin. |
-    |||
+8. Sayfanın alt kısmındaki **İleri: yapılandırma** düğmesine tıklayın.
 
-5. Sayfanın alt kısmındaki **Sonraki: kaynak** düğmesini seçin.
+9. **Yapılandırma** sekmesinde, önceki bölümde oluşturduğunuz sanal ağı ve alt ağı seçin.
 
-6. **Kaynak** sekmesinde aboneliğinizi seçin, Microsoft. Cache/reddir olarak kaynak türünü seçin ve ardından önceki bölümde yaptığınız önbelleği seçin.
+10. Sayfanın alt kısmındaki **İleri: Etiketler** düğmesine tıklayın.
 
-    :::image type="content" source="media/cache-private-link/10-resource-private-endpoint.png" alt-text="Özel bağlantı için kaynaklar.":::
+11. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin.
 
-7. Sayfanın alt kısmındaki **Sonraki: yapılandırma** düğmesini seçin.
+12.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur**sekmesine götürülürsünüz   .
 
-8. **Yapılandırma** sekmesinde, önceki bölümde oluşturduğunuz sanal ağı ve alt ağı seçin.
-
-    :::image type="content" source="media/cache-private-link/11-configuration-private-endpoint.png" alt-text="Özel bağlantı yapılandırması.":::
-
-9. Sayfanın alt kısmındaki **Sonraki: Etiketler** düğmesini seçin.
-
-10. Kaynağı sınıflandırmak istiyorsanız, **Etiketler** sekmesinde adı ve değeri girin. Bu adım isteğe bağlıdır.
-
-    :::image type="content" source="media/cache-private-link/12-tags-private-endpoint.png" alt-text="Özel bağlantı için Etiketler.":::
-
-11.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur**sekmesine götürülürsünüz   .
-
-12. Yeşil **doğrulama başarılı** Iletisi göründüğünde **Oluştur**' u seçin.
+13. Yeşil **doğrulama başarılı** Iletisi göründüğünde **Oluştur**' u seçin.
 
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
-Özel bağlantı hakkında daha fazla bilgi edinmek için bkz. [Azure özel bağlantı belgeleri](https://docs.microsoft.com/azure/private-link/private-link-overview). 
+Azure özel bağlantısı hakkında daha fazla bilgi edinmek için bkz. [Azure özel bağlantı belgeleri](https://docs.microsoft.com/azure/private-link/private-link-overview). 
 

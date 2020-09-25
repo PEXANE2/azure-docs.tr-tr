@@ -3,12 +3,12 @@ title: Azure DevTest Labs 'da laboratuvarınızda lisanslı bir görüntüyü et
 description: Azure portal kullanarak Azure DevTest Labs lisanslı bir görüntüyü nasıl etkinleştirebileceğinizi öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a043679e27580254c56fe118838dd355be5a58de
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276365"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'da laboratuvarınızda lisanslı bir görüntüyü etkinleştirin
 
@@ -17,7 +17,7 @@ Azure DevTest Labs, lisanslı bir görüntü, hüküm ve koşulları içeren bir
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Lisanslı bir görüntünün kullanıcılar için kullanılabilir olup olmadığını belirleme
 Kullanıcıların lisanslı görüntüden VM oluşturmalarına izin vermenin ilk adımı, lisanslı görüntü için hüküm ve koşulların kabul edildiğinden emin olmanızı sağlar. Aşağıdaki adımlarda, lisanslı bir görüntünün teklif durumunu nasıl görüntüleyebileceğiniz gösterilmektedir ve gerekirse hüküm ve koşullarını kabul edebilirsiniz.
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 
@@ -47,7 +47,7 @@ Aşağıdaki adımları izleyerek, lisanslı bir görüntü için programlı da�
 
 1. Kullanıcıların erişimine sahip olmasını istediğiniz ancak koşulları kabul edilmeyen bir lisanslı görüntü belirler. Örneğin, **kabul edilen koşulların** veya **koşulların gözden geçirdiğine**ilişkin bir durumu gösteren bir veri bilimi sanal makinesi görebilirsiniz.
 
-    ![Programlı dağıtım penceresini yapılandırma](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
+    ![Teklif durumu '/"kabul edildi" ve "hüküm incelemesi gerekiyor" olan Veri Bilimi Sanal Makinesi görüntülerini gösteren ekran görüntüsü](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
    > Veri bilimi sanal makineleri, veri analizi, makine öğrenimi ve AI eğitimi için yaygın olarak kullanılan çeşitli popüler araçlarla Azure sanal makine görüntüleridir, önceden yüklenmiş, yapılandırılmıştır ve test edilmiştir. [Linux ve Windows Için Azure veri bilimi sanal makinesi 'ye giriş](../machine-learning/data-science-virtual-machine/overview.md) , DSVMs hakkında harika bilgiler sağlar.
@@ -66,7 +66,7 @@ Aşağıdaki adımları izleyerek, lisanslı bir görüntü için programlı da�
    >
 
 
-1. **Kaydet**'i seçin. 
+1. **Kaydet**’i seçin. 
 
     Market görüntüleri listesinde, bu görüntüde artık **kabul edilen şartlar** gösteriliyor ve kullanıcıların sanal makineler oluşturması için kullanılabilir.
 

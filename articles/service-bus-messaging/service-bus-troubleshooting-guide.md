@@ -1,14 +1,14 @@
 ---
 title: Azure Service Bus için sorun giderme kılavuzu | Microsoft Docs
-description: Bu makale, Azure Service Bus kullanırken görebileceğiniz birkaç sorun için sorun giderme ipuçları ve öneriler sağlar.
+description: Azure Service Bus kullanırken görebileceğiniz birkaç sorun için sorun giderme ipuçları ve öneriler hakkında bilgi edinin.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 39d2bf14f88e8efabcddda98268a187009cf029e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aab7fa53b4af309c68cd91fdb1d25c5771f89828
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261133"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure Service Bus için sorun giderme kılavuzu
 Bu makale, Azure Service Bus kullanırken görebileceğiniz birkaç sorun için sorun giderme ipuçları ve öneriler sağlar. 

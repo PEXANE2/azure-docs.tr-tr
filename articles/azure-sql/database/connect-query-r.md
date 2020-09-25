@@ -10,16 +10,16 @@ ms.devlang: python
 ms.topic: quickstart
 author: garyericson
 ms.author: garye
-ms.reviewer: davidph, carlrab
+ms.reviewer: davidph, sstein
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: adc3cbd7b98d915a0b598227b459891cb0e0bfff
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 3a939c816cac44ed85802ecfa591564effc1ee73
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042518"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328845"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>Hızlı başlangıç: veritabanını sorgulamak için Azure SQL veritabanı Machine Learning Services (Önizleme) ile R kullanın 
 
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, Azure SQL veritabanı 'ndaki bir veritabanına bağla
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure SQL veritabanı](single-database-create-quickstart.md)
@@ -45,7 +45,7 @@ R ile Machine Learning Services, veritabanı içi R betiklerini yürütmek için
 
 Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 

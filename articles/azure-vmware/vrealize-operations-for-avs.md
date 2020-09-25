@@ -2,13 +2,13 @@
 title: Azure VMware çözümü için sanal Işlemleri ayarlama
 description: Azure VMware çözümünüz özel bulutunuz için sanal Işlemleri ayarlamayı öğrenin.
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 729ee5c64776d7d04f702af62451175f7c53421b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/22/2020
+ms.openlocfilehash: 06b88eb610c4633018889315ab1cfd340d3f4b57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750390"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293178"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware çözümü için sanal Işlemleri ayarlama
 
@@ -28,7 +28,7 @@ Vfarkında Operations Manager, VMware altyapı yöneticilerinin sistem kaynaklar
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * VPN veya Azure ExpressRoute, şirket içi ve Azure VMware çözümü SDDC arasında yapılandırılmalıdır.
 * Azure 'da bir Azure VMware çözümü özel bulutu dağıtıldı.
 
@@ -58,7 +58,23 @@ VNET 'in Azure VMware Çözüm örneğini dağıttıktan sonra, vCenter, ESXi, N
 > Vfarkında Operations Manager yükleme hakkında adım adım kılavuz için [VMware belgelerine](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) bakın.
 
 
+## <a name="known-limitations"></a>Bilinen sınırlamalar
 
+- **cloudadmin@vsphere.local**Azure VMware çözümünde kullanıcının [sınırlı ayrıcalıkları](concepts-rbac.md)vardır. Azure VMware çözümünde sanal makineler (VM) ile VMware araçları kullanılarak Konuk içi bellek koleksiyonu desteklenmez. Etkin ve tüketilen bellek kullanımı belirlemeleri bu durumda çalışmaya devam eder.
+- Azure VMware çözümleri, DRS ayarları dahil olmak üzere küme yapılandırmasını yönettiğinden, ana bilgisayar tabanlı iş amacı için iş yükü iyileştirmesi çalışmaz.
+- Küme tabanlı iş amacını kullanarak SDDC içindeki çapraz küme yerleştirme için iş yükü iyileştirmesi Operations Manager 8,0 ve sonraki sürümlerde tamamen desteklenir. Ancak, iş yükü iyileştirmesi kaynak havuzlarından haberdar değildir ve sanal makineleri küme düzeyine koyar. Bir Kullanıcı bunu Azure VMware Çözüm vCenter Server arabiriminde el ile düzeltebilir.
+- Azure VMware çözümünüzü vCenter Server kimlik bilgilerinizi kullanarak Operations Manager VNET 'te oturum açılamıyor. 
+- Azure VMware çözümü, Vfarkında Operations Manager eklentisini desteklemez.
+
+Azure VMware Çözüm vCenter 'ı vCenter Server bir bulut hesabı kullanarak Operations Manager Vfarkında 'e bağlarken aşağıdaki uyarıyla karşılaşırsınız:
+
+:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="Uyarı bağdaştırıcı örneği oluşturma başarılı oldu":::
+
+**cloudadmin@vsphere.local**Azure VMware çözümündeki Kullanıcı kayıt için gereken tüm vCenter Server eylemlerini yapmak için yeterli ayrıcalıklara sahip olmadığından uyarı oluşur. Ancak, ayrıcalıklar aşağıda görüldüğü gibi, bağdaştırıcı örneğinin veri toplamayı yapması için yeterlidir:
+
+:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="Veri toplamayı gerçekleştirmek için bağdaştırıcı örneği":::
+
+Daha fazla bilgi için bkz. [vCenter bağdaştırıcı örneği yapılandırmak Için gereken ayrıcalıklar](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.core.doc/GUID-3BFFC92A-9902-4CF2-945E-EA453733B426.html).
 
 <!-- LINKS - external -->
 

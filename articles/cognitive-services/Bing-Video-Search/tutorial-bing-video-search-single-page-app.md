@@ -10,13 +10,13 @@ ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c3515d6dc7556995c990180330212bffb1445ad2
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 2bdd51218c098dcd778d9a72a98fe42b96357b4e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406240"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328726"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Öğretici: Tek sayfalı Video Arama uygulaması
 Bing Video Arama API'si Web'de arama yapmanızı ve arama sorgusuna uyan video sonuçları almanızı sağlar. Bu öğreticide, Bing arama API'sini kullanarak sayfada arama sonuçlarını görüntüleyen tek sayfalı bir Web uygulaması oluşturuyoruz. Uygulama HTML, CSS ve JavaScript bileşenlerini içeriyor.
@@ -309,7 +309,7 @@ Arama sonuçları JSON yanıtında en üst düzey `value` nesnesi olarak döndü
 
 Bing Haber Arama API'si, her biri kendi üst düzey nesnesinin içinde olmak üzere en çok dört farklı türde ilgili sonuç döndürür. Bunlar:
 
-|İlişki|Açıklama|
+|İlişki|Description|
 |-|-|
 |`pivotSuggestions`|Özgün aramadaki asıl sözcüğü başka bir sözcükle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir.|
 |`queryExpansions`|Daha fazla terim ekleyerek özgün aramayı daraltan sorgular. Örneğin, "Microsoft Surface" araması yaparsanız genişletilmiş sorgu "Microsoft Surface Pro" olabilir.|

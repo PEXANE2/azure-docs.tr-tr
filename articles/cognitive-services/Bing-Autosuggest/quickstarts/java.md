@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Bing Otomatik Öneri REST API ve Java ile arama sorguları önerme'
 titleSuffix: Azure Cognitive Services
-description: Bing Otomatik Öneri API'si ile gerçek zamanlı olarak arama terimleri önerme hakkında hızlı bir başlangıç yapmayı öğrenin.
+description: Bing Otomatik Öneri API'si ve Java ile gerçek zamanlı olarak arama terimleri önermeyi hızlı bir şekilde nasıl başlacağınızı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 4850daf8544129e29333be6a807c91106cc11f05
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dc20b6abaf04b3743218e35d258bc8beab33c542
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321097"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277453"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Hızlı başlangıç: Bing Otomatik Öneri REST API ve Java ile arama sorguları önerme
 
@@ -71,7 +71,7 @@ public static String prettify(String json_text) {
 
 ## <a name="construct-and-send-the-search-request"></a>Arama isteğini oluşturun ve gönderin
 
-1. Adlı yeni bir yöntem oluşturun `get_suggestions()` ve aşağıdaki adımları gerçekleştirin:
+1. Adlı yeni bir yöntem oluşturun  `get_suggestions()` ve aşağıdaki adımları gerçekleştirin:
 
    1. API konağını, yolunuzu birleştirerek ve arama sorgunuzu kodlayıp kodlayarak isteğiniz için URL 'YI oluşturun. Sorguyu eklemeden önce URL 'yi kodlediğinizden emin olun. Parametreye piyasa kodu ekleyerek ve sorgunuzu parametresine ekleyerek sorgunuz için bir parametre dizesi oluşturun `mkt=` `q=` .
     
@@ -92,7 +92,7 @@ public static String prettify(String json_text) {
        //...
        ```
     
-   3. Bir `HttpsURLConnection` nesne oluşturun ve bir `openConnection()` bağlantı oluşturmak için öğesini kullanın. İstek yöntemini olarak ayarlayın `GET` ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
+   3. Bir `HttpsURLConnection` nesne oluşturun ve bir  `openConnection()` bağlantı oluşturmak için öğesini kullanın. İstek yöntemini olarak ayarlayın `GET` ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
 
       ```java
        //...

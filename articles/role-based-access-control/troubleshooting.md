@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/28/2020
+ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e504a3ed2d9193bdc85fc08b3ea91c4f4f2c160c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382585"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329513"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC sorunlarını giderme
 
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Aboneliği farklı bir dizine aktarma
 
-- Aboneliği farklı bir Azure AD dizinine aktarmaya yönelik adımlara ihtiyacınız varsa, bkz. bir [Azure aboneliğinin sahipliğini başka bir hesaba aktarma](../cost-management-billing/manage/billing-subscription-transfer.md).
+- Aboneliği farklı bir Azure AD dizinine aktarmaya yönelik adımlara ihtiyacınız varsa, bkz. [Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)](transfer-subscription.md).
 - Bir aboneliği farklı bir Azure AD dizinine aktarırsanız, tüm rol atamaları Kaynak Azure AD dizininden **kalıcı olarak** silinir ve hedef Azure AD dizinine geçirilmez. Rol atamalarınızı hedef dizinde yeniden oluşturmanız gerekir. Ayrıca, Azure kaynakları için yönetilen kimlikleri el ile yeniden oluşturmanız gerekir. Daha fazla bilgi için bkz. [SSS ve yönetilen kimliklerle ilgili bilinen sorunlar](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Bir Azure AD Genel yöneticisiyseniz ve dizinler arasında aktarıldıktan sonra bir aboneliğe erişiminiz yoksa, aboneliğe erişim sağlamak için erişiminizi geçici olarak [yükseltmek](elevate-access-global-admin.md) üzere **Azure kaynakları için erişim yönetimi** ' ni kullanın.
 
@@ -99,11 +99,17 @@ $ras.Count
 - "Nesne kimliğine sahip istemcinin kapsam üzerinde işlemi gerçekleştirme yetkisi yok (kod: AuthorizationFailed)" izin hatasını kaynak oluşturmaya çalıştığınızda alıyorsanız, seçilen kapsamda kaynak için yazma iznine sahip bir rolün atanmış olduğu kullanıcı hesabıyla oturum açmış olduğunuzdan emin olun. Örneğin bir kaynak grubundaki sanal makineleri yönetmek için kaynak grubunda (veya üst kapsamda) [Sanal Makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) rolüne sahip olmanız gerekir. Yerleşik her rolün izinlerinin listesi için bkz. [Azure yerleşik rolleri](built-in-roles.md).
 - "Destek talebi oluşturma izniniz yok" hatasını alırsanız bir destek bileti oluşturmayı veya güncelleştirmeyi denediğinizde şu anda oturum açmış olan bir kullanıcı ile oturum açtığınızdan emin olun `Microsoft.Support/supportTickets/write` , örneğin destek [isteği katılımcısı](built-in-roles.md#support-request-contributor)gibi bir rol atanmış olan
 
+## <a name="move-resources-with-role-assignments"></a>Rol atamalarıyla kaynakları taşıma
+
+Doğrudan kaynağa (veya bir alt kaynağa) atanmış bir Azure rolü olan bir kaynağı taşırsanız, rol ataması taşınmaz ve yalnız bırakılmış olur. Taşıma işleminden sonra, rol atamasını yeniden oluşturmanız gerekir. Sonuç olarak, yalnız bırakılmış rol ataması otomatik olarak kaldırılır, ancak kaynak taşınmadan önce rol atamasını kaldırmak en iyi uygulamadır.
+
+Kaynakları taşıma hakkında daha fazla bilgi için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+
 ## <a name="role-assignments-with-identity-not-found"></a>Kimliği olan rol atamaları bulunamadı
 
 Azure portal için rol atamaları listesinde, güvenlik sorumlusu 'nın (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) **Bilinmeyen** bir tür ile **kimlik bulunamadığı** için listelendiğini fark edebilirsiniz.
 
-![Web uygulaması kaynak grubu](./media/troubleshooting/unknown-security-principal.png)
+![Azure rol atamaları 'nda listelenen kimlik bulunamadı](./media/troubleshooting/unknown-security-principal.png)
 
 Kimlik iki nedenden dolayı bulunamamıştır:
 
@@ -221,7 +227,7 @@ Bu öğeler, **sanal makineye** **yazma** erişimi gerektirir:
 * Uç Noktalar  
 * IP adresleri  
 * Diskler  
-* Uzantılar  
+* Uzantıları  
 
 Bunlar, hem **sanal makineye**hem de **kaynak grubuna** (etki alanı adıyla birlikte) **yazma** erişimi gerektirir:  
 
@@ -242,5 +248,5 @@ Bir okuyucu, **platform özellikleri** sekmesine tıklayabilir ve ardından **T�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Konuk kullanıcılar için sorun giderme](role-assignments-external-users.md#troubleshoot)
-- [Azure portal kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-portal.md)
+- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](role-assignments-portal.md)
 - [Azure RBAC değişiklikleri için etkinlik günlüklerini görüntüleme](change-history-report.md)

@@ -6,18 +6,19 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 09/21/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: b3aadab1b4af80f98c57a279b69606a02846e996
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 081d19cc845750f1392e2c1a14229a51d0df4cbc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716852"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276482"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory bağlı hizmetleri Parametreleştir
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Artık bağlı bir hizmeti parametreleştirebilirsiniz ve çalışma zamanında dinamik değerler geçirebilirsiniz. Örneğin, aynı mantıksal SQL Server üzerindeki farklı veritabanlarına bağlanmak istiyorsanız, artık bağlı hizmet tanımındaki veritabanı adını parametreleştirebilirsiniz. Bu, mantıksal SQL Server üzerindeki her bir veritabanı için bağlı bir hizmet oluşturmanızı önler. Bağlı hizmet tanımındaki diğer özellikleri de parametreleştirebilirsiniz; Örneğin, *Kullanıcı adı.*
@@ -33,7 +34,8 @@ Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki vide
 
 ## <a name="supported-data-stores"></a>Desteklenen veri depoları
 
-Şu anda, aşağıdaki veri depoları için Data Factory Kullanıcı arabiriminde bağlı hizmet Parametreleştirme desteklenir. Diğer tüm veri depoları için, **Bağlantılar** sekmesindeki **kod** simgesini seçerek ve JSON düzenleyicisini kullanarak bağlı hizmeti parametreleştirebilirsiniz.
+Herhangi bir bağlı hizmet türünü parametreleştirebilirsiniz.
+Kullanıcı arabiriminde bağlantılı hizmet yazarken, Data Factory aşağıdaki bağlayıcı türleri için yerleşik Parametreleştirme deneyimi sağlar. Bağlı hizmet oluşturma/düzenleme dikey penceresinde, yeni parametrelere seçenekler bulabilir ve dinamik içerik ekleyebilirsiniz.
 
 - Amazon Redshift
 - Azure Cosmos DB (SQL API)
@@ -45,6 +47,13 @@ Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki vide
 - SQL Server
 - Genel HTTP
 - Genel REST
+
+Diğer türler için, Kullanıcı arabirimindeki JSON 'u düzenleyerek bağlı hizmeti parametreleştirebilirsiniz:
+
+- Bağlı hizmet oluşturma/düzenleme dikey penceresinde-> alt kısımdaki "Gelişmiş" öğesini genişletin > "JSON biçiminde dinamik içerik belirt" onay kutusunu işaretleyin > bağlantılı hizmet JSON yükünü belirtin. 
+- Ya da, Parametreleştirme olmadan bağlı bir hizmet oluşturduktan sonra, [Yönetim Merkezi](author-visually.md#management-hub) -> bağlı hizmetler ' de > belirli bağlı hizmeti bulun-> JSON 'u düzenlemek Için "kod" (düğme " {} ") seçeneğine tıklayın. 
+
+[JSON sample](#json) ` parameters` Parametreleri tanımlamak ve kullanarak parametreye başvurmak için bölüm eklemek üzere JSON örneğine bakın ` @{linkedService().paraName} ` .
 
 ## <a name="data-factory-ui"></a>Data Factory Kullanıcı Arabirimi (UI)
 

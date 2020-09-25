@@ -1,6 +1,6 @@
 ---
 title: Azure Dosya Eşitleme ağ uç noktalarını yapılandırma | Microsoft Docs
-description: Azure Dosya Eşitleme için ağ seçeneklerine genel bakış.
+description: Azure Dosya Eşitleme ağ uç noktalarını yapılandırmayı öğrenin.
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7210d414c06f154395b9128be6ed10175ad1e838
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 747d03b228d41066cfc834b4a9c044b16c767622
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077067"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329372"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure Dosya Eşitleme ağının uç noktalarını yapılandırma
 Azure dosyaları ve Azure Dosya Eşitleme, Azure dosya paylaşımlarına erişmek için iki ana uç nokta türü sağlar: 

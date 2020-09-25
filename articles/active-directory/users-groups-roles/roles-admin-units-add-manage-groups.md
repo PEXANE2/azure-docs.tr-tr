@@ -1,5 +1,5 @@
 ---
-title: Yönetim biriminde gruplar ekleme, kaldırma ve listeleme (Önizleme)-Azure Active Directory | Microsoft Docs
+title: Yönetim biriminde gruplar ekleme, kaldırma ve listeleme-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory bir yönetim biriminde grupları ve rol izinlerini yönetme
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 06/23/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76026313eea8c8fbb2f3e55321e2e4ebbe5dcfc7
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 324d0ff0659270c6f2e90c0456ded83344f73936
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265035"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Azure Active Directory içindeki yönetim birimlerindeki grupları ekleme ve yönetme
 
@@ -31,7 +31,7 @@ PowerShell 'i kullanmaya hazırlanma ve yönetim birimi yönetimi için Microsof
 
 ### <a name="azure-portal"></a>Azure portal
 
-Önizlemede, grupları yalnızca bir yönetim birimine tek tek atayabilirsiniz. Yönetim birimine grupların toplu atama seçeneği yoktur. Portal 'da iki farklı şekilde yönetim birimine bir grup atayabilirsiniz:
+Grupları yalnızca bir yönetim birimine tek tek atayabilirsiniz. Grupları bir yönetim birimine toplu olarak atama seçeneği yoktur. Portal 'da iki farklı şekilde yönetim birimine bir grup atayabilirsiniz:
 
 1. **Azure AD > grupları** sayfasından
 

@@ -1,6 +1,6 @@
 ---
 title: Azure VM 'Leri Azure NetApp Files ile RHEL 'de SAP NW için yüksek kullanılabilirlik | Microsoft Docs
-description: Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği
+description: Azure sanal makinelerinde (VM) RHEL Azure NetApp Files ile SAP NW için yüksek kullanılabilirlik sağlayın.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 5ba5ebcb68ed206bab038f0a892e24834ddb0f22
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 51da96ab5c42c0b48f53969139bd8b87690b8319
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653435"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329287"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirlik, SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux
 

@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329491"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de tam metin araması
 
@@ -51,7 +51,7 @@ Arama isteği, bir sonuç kümesinde döndürülmelidir öğesinin tüm bir beli
 
 Aşağıdaki örnek, [REST API](/rest/api/searchservice/search-documents)kullanarak Azure bilişsel arama 'e gönderebilecek bir arama isteğidir.  
 
-~~~~
+```
 POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
@@ -61,7 +61,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
 }
-~~~~
+```
 
 Bu istek için arama motoru şunları yapar:
 
@@ -76,9 +76,9 @@ Bu makalenin çoğu, *arama sorgusunun*işlenmesiyle ilgilidir: `"Spacious, air-
 
 Belirtildiği gibi, sorgu dizesi isteğin ilk satırdır: 
 
-~~~~
+```
  "search": "Spacious, air-condition* +\"Ocean view\"", 
-~~~~
+```
 
 Sorgu ayrıştırıcısı, işleçleri ( `*` `+` Örneğin, ve örneğinde) arama terimlerinden ayırır ve arama sorgusunu desteklenen bir türün alt *sorguları* olarak kaldırır: 
 
@@ -104,9 +104,9 @@ Ayrıştırmayı etkileyen başka bir arama isteği parametresi `searchMode` par
 
 Ne zaman `searchMode=any` , varsayılan olarak, spacemli ve hava durumu arasındaki boşluk SıNıRLAYıCıSı veya ( `||` ) olduğunda, örnek sorgu metnini ile eşdeğer hale getirme: 
 
-~~~~
+```
 Spacious,||air-condition*+"Ocean view" 
-~~~~
+```
 
 İçindeki gibi açık işleçler, `+` `+"Ocean view"` Boole sorgu oluşturma (terimi eşleşmelidir) için net değildir. *must* Daha az belirgin, kalan koşulları yorumlama: spacve Hava durumu gibi. Arama altyapısının okyanus görünümü *ve* spacemli *ve* Hava durumu ile eşleşmeleri bulması gerekir mi? Ya da okyanus görünümü ve kalan terimlerden *birini* bulmalıdır mi? 
 
@@ -114,9 +114,9 @@ Varsayılan olarak ( `searchMode=any` ), arama motoru daha geniş yorumu kabul e
 
 Şimdi belirlediğimiz hakkında düşünün `searchMode=all` . Bu durumda, alan "ve" işlemi olarak yorumlanır. Kalan koşulların her ikisi de eşleşme olarak nitelendirmek için belgede bulunmalıdır. Elde edilen örnek sorgu şu şekilde yorumlanacaktır: 
 
-~~~~
+```
 +Spacious,+air-condition*+"Ocean view"
-~~~~
+```
 
 Bu sorgu için değiştirilen bir sorgu ağacı, eşleşen bir belge üç alt sorgunun kesişimi olan aşağıdaki gibi olacaktır: 
 
@@ -152,16 +152,16 @@ Varsayılan çözümleyici terimi işlediğinde, küçük harfli "okyanus görü
 
 Bir çözümleyicinin davranışı [Çözümle API 'si](/rest/api/searchservice/test-analyzer)kullanılarak test edilebilir. Hangi koşulların hangi koşullara göre oluşturulacağını görmek için çözümlemek istediğiniz metni sağlayın. Örneğin, standart çözümleyici 'nin "AIR-Condition" metnini nasıl işleyeceğini görmek için, aşağıdaki isteği verebilirsiniz:
 
-~~~~
+```json
 {
     "text": "air-condition",
     "analyzer": "standard"
 }
-~~~~
+```
 
 Standart çözümleyici, giriş metnini aşağıdaki iki belirtece ayırır, bunlara başlangıç ve bitiş uzaklıkları (isabet vurgulama için kullanılır) ve konumlarına (tümcecik eşleştirmesi için kullanılır) gibi özniteliklere açıklama ekleyin:
 
-~~~~
+```json
 {
   "tokens": [
     {
@@ -178,7 +178,7 @@ Standart çözümleyici, giriş metnini aşağıdaki iki belirtece ayırır, bun
     }
   ]
 }
-~~~~
+```
 
 <a name="exceptions"></a>
 
@@ -192,7 +192,7 @@ Sözcük temelli analiz yalnızca, bir terim sorgusu veya bir tümcecik sorgusu 
 
 Belge alımı, dizinde eşleşen koşullara sahip belgeleri bulmayı gösterir. Bu aşama bir örnek aracılığıyla en iyi şekilde anlaşıldı. Aşağıdaki basit şemaya sahip bir oteller diziniyle başlayalım: 
 
-~~~~
+```json
 {
     "name": "hotels",
     "fields": [
@@ -201,11 +201,11 @@ Belge alımı, dizinde eşleşen koşullara sahip belgeleri bulmayı gösterir. 
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
-~~~~
+```
 
 Bu dizinin aşağıdaki dört belgeyi içerdiğini varsayalım: 
 
-~~~~
+```json
 {
     "value": [
         {
@@ -230,7 +230,7 @@ Bu dizinin aşağıdaki dört belgeyi içerdiğini varsayalım:
         }
     ]
 }
-~~~~
+```
 
 **Terimlerin dizini oluşturma**
 
@@ -251,7 +251,7 @@ Bu, arama ve dizin oluşturma işlemlerinde aynı Çözümleyicileri kullanmak i
 
 Örneğimize dönerek, **başlık** alanı için ters dizin şöyle görünür:
 
-| Süre | Belge listesi |
+| Terim | Belge listesi |
 |------|---------------|
 | atman | 1 |
 | unun | 2 |
@@ -265,7 +265,7 @@ Başlık alanında, yalnızca *otel* iki belgede görünür: 1, 3.
 
 **Açıklama** alanı için dizin aşağıdaki gibidir:
 
-| Süre | Belge listesi |
+| Terim | Belge listesi |
 |------|---------------|
 | te | 3
 | ve | 4
@@ -321,10 +321,12 @@ Bir arama sonuç kümesindeki her belgeye bir ilgi puanı atanır. İlgi puanın
 ### <a name="scoring-example"></a>Puanlama örneği
 
 Örnek sorgumız ile eşleşen üç belgeyi geri çekin:
-~~~~
+
+```
 search=Spacious, air-condition* +"Ocean view"  
-~~~~
-~~~~
+```
+
+```json
 {
   "value": [
     {
@@ -347,7 +349,7 @@ search=Spacious, air-condition* +"Ocean view"
     }
   ]
 }
-~~~~
+```
 
 Belge 1, sorgu en iyi şekilde eşleştiğinden, hem *terimi hem de gerekli* tümcecik *görünümü* Açıklama alanında gerçekleştiğinden sorgu en iyi şekilde eşleşti. Sonraki iki belge yalnızca tümcecik *okyanus görünümüyle*eşleşir. Belge 2 ve 3 ' ün ilgi puanı, sorguyla aynı şekilde eşleştirildiği halde farklı olduğunu ortaya çıkarmış olabilir. Bunun nedeni, Puanlama formülünün yalnızca TF/ıDF 'den daha fazla bileşene sahip olmasından kaynaklanır. Bu durumda, açıklama daha kısa olduğundan belge 3 ' te biraz daha yüksek bir puan atandı. Alan uzunluğu ve diğer faktörlerin ilgi Puanını nasıl etkileyebileceğini anlamak için [Lucene 'In pratik Puanlama formülü](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) hakkında bilgi edinin.
 

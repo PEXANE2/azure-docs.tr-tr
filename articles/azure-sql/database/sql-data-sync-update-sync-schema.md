@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 11/14/2018
-ms.openlocfilehash: 4d0800d109d17c1233a18966d84a498596e8e834
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b42624506b3fe3a40cd19353c0dc25ecd8a5da02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328811"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -173,7 +173,7 @@ Sütunları veya tabloları yeniden adlandırmak, veri eşitlemenin çalışmay�
 
 Diğer şema değişikliği türleri için (örneğin, saklı yordamlar oluşturma veya bir dizini bırakma), eşitleme şemasının güncelleştirilmesi gerekli değildir.
 
-## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>Otomatik şema değişikliği çoğaltma sorunlarını giderme
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a> Otomatik şema değişikliği çoğaltma sorunlarını giderme
 
 Bu makalede açıklanan çoğaltma mantığı bazı durumlarda çalışmayı durduruyor. Örneğin, Azure SQL veritabanı 'nda desteklenmeyen bir şirket içi veritabanında bir şema değişikliği yaptıysanız. Bu durumda, şema değişiklik izleme tablosunu eşitleme başarısız olur. Bu sorunu el ile çözmeniz gerekir:
 
@@ -201,7 +201,7 @@ Bu makalede açıklanan çoğaltma mantığı bazı durumlarda çalışmayı dur
 
 Şema değişiklik izleme tablosunda kayıtları temizlemek istiyorsanız, kes yerine DELETE kullanın. Şema değişiklik izleme tablosundaki kimlik sütunu DBCC CHECKIDENT kullanarak hiçbir şekilde yeniden sıfırlanıyor. Yeniden dağıtım gerekliyse, yeni şema değişiklik izleme tabloları oluşturabilir ve DDL tetikleyicisinde tablo adını güncelleştirebilirsiniz.
 
-## <a name="other-considerations"></a><a name="other"></a>Diğer konular
+## <a name="other-considerations"></a><a name="other"></a> Diğer konular
 
 -   Hub ve üye veritabanlarını yapılandıran veritabanı kullanıcılarının, şema değiştirme komutlarını yürütmek için yeterli izni olması gerekir.
 
