@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: F5 ile Azure AD çoklu oturum açma tümleştirmesi | Microsoft Docs'
-description: Azure Active Directory ve F5 arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+description: Azure Active Directory ve F5 arasında çoklu oturum açma (SSO) yapılandırma hakkında bilgi edinin.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: b48b8c1282f90788846b9dc3b64a5ea1ee018a3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9db53e36dee318d39d34d26a548d1d32cbbec3b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536011"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266080"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

@@ -1,5 +1,5 @@
 ---
-title: Sunucu parametreleri – Hyperscale (Hiperscale (Citus)-PostgreSQL için Azure veritabanı
+title: Sunucu parametreleri – Hyperscale (Citus)-PostgreSQL için Azure veritabanı
 description: Hyperscale (Citus) SQL API 'sindeki parametreler
 author: jonels-msft
 ms.author: jonels
@@ -7,23 +7,23 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 2b4d3d44cb4e78f52ab03f31e58df5e66118ae25
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 07f966c7b0be542f848f1a0a4eaf2b5549735b4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441519"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336250"
 ---
 # <a name="server-parameters"></a>Sunucu parametreleri
 
 Hem standart PostgreSQL hem de Hyperscale 'e (Citus) özgü Hyperscale (Citus) davranışını etkileyen çeşitli sunucu parametreleri vardır.
 Bu parametreler, bir hiper ölçek (Citus) sunucu grubu için Azure portal ayarlanabilir. **Ayarlar** kategorisi altında **çalışan düğümü parametreleri** veya **Düzenleyici düğüm parametreleri**' ni seçin. Bu sayfalar, tüm çalışan düğümleri için veya yalnızca Düzenleyici düğümü için parametreleri ayarlamanıza olanak sağlar.
 
-## <a name="hyperscale-parameters"></a>Hiper ölçek parametreleri
+## <a name="hyperscale-citus-parameters"></a>Hyperscale (Citus) parametreleri
 
 > [!NOTE]
 >
-> Citus altyapısının eski sürümlerini çalıştıran hiper ölçekli sunucu grupları aşağıda listelenen tüm parametreleri sunmayabilir.
+> Citus altyapısının eski sürümlerini çalıştıran hyperscale (Citus) sunucu grupları aşağıda listelenen tüm parametreleri sunmayabilir.
 
 ### <a name="general-configuration"></a>Genel yapılandırma
 

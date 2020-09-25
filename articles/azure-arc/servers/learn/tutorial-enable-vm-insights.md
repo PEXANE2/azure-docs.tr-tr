@@ -2,17 +2,17 @@
 title: Öğretici-VM'ler için Azure İzleyici bir karma makineyi Izleme
 description: Azure Izleyici 'de karma makineden verileri nasıl toplayacağınızı ve analiz edeceğinizi öğrenin.
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.openlocfilehash: 76df7d403fdce6fc3ac77c0b24849aedffb57ce0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: 97ab390570f434295a5aa836ef994640f6dc14f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335424"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-azure-monitor-for-vms"></a>Öğretici: VM'ler için Azure İzleyici bir karma makineyi Izleme
 
-[Azure izleyici](../overview.md) , ayrıntılı analiz ve bağıntı için doğrudan karma sanal makinelerinizden bir Log Analytics çalışma alanına veri toplayabilir. Genellikle bu durum, yapılandırma yönetimi standartlarınızı takip eden bir betik, el ile veya otomatik yöntemi kullanarak makineye [Log Analytics aracısını](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent) yüklemeyi kuyruğa alır. Yay özellikli sunucular (Önizleme) son zamanlarda Windows ve Linux için Log Analytics ve bağımlılık Aracısı [VM uzantılarını](../manage-vm-extensions.md) yüklemeye yönelik destek sunarak Azure Izleyici 'yi Azure dışı VM 'lerinizin verilerini toplayacak şekilde etkinleştirir.
+[Azure izleyici](../overview.md) , ayrıntılı analiz ve bağıntı için doğrudan karma sanal makinelerinizden bir Log Analytics çalışma alanına veri toplayabilir. Genellikle bu durum, yapılandırma yönetimi standartlarınızı takip eden bir betik, el ile veya otomatik yöntemi kullanarak makineye [Log Analytics aracısını](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent) yüklemeyi kuyruğa alır. Yay özellikli sunucular yakın zamanda Windows ve Linux için Log Analytics ve bağımlılık Aracısı [VM uzantılarını](../manage-vm-extensions.md) yüklemeye yönelik destek sunarak Azure Izleyici 'nin Azure dışı VM 'lerinize veri toplamasını olanaklı bir şekilde sunmuştur.
 
 Bu öğreticide, basit bir adım kümesini izleyerek VM'ler için Azure İzleyici etkinleştirerek Linux veya Windows sanal makinelerinizdeki verileri nasıl yapılandıracağınızı ve toplayacağınızı ve bu deneyim daha kısa bir süre sürer.  
 
@@ -28,7 +28,7 @@ Bu öğreticide, basit bir adım kümesini izleyerek VM'ler için Azure İzleyic
 
 ## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="enable-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici etkinleştir
 
@@ -71,4 +71,4 @@ Sanal makinenizi yeniden seçin ve ardından **günlük olayları**' nı seçin.
 Azure Izleyici hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın:
 
 > [!div class="nextstepaction"]
-> [Azure İzleyici’ye genel bakış](../../../azure-monitor/overview.md)
+> [Azure İzleyici'ye genel bakış](../../../azure-monitor/overview.md)

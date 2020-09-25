@@ -1,6 +1,6 @@
 ---
 title: SQL havuzu için işlemleri iyileştirme
-description: Uzun geri göndermeler riskini en aza indirerek SQL havuzundaki (veri ambarı) işlem kodunuzun performansını nasıl iyileştireceğinizi öğrenin.
+description: SQL havuzunda işlem kodunuzun performansını en uygun hale getirmeyi öğrenin.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 174ae84e66f10db4ad24ed561b228f0031492d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503200"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288656"
 ---
 # <a name="optimize-transactions-in-sql-pool"></a>SQL havuzundaki işlemleri iyileştirme
 
@@ -25,7 +25,7 @@ Uzun geri göndermeler riskini en aza indirerek SQL havuzundaki işlem kodunuzun
 
 İşlemler, ilişkisel bir veritabanı altyapısının önemli bir bileşenidir. SQL havuzu veri değişikliği sırasında işlemleri kullanır. Bu işlemler açık veya kapalı olabilir. Tek INSERT, UPDATE ve DELETE deyimleri örtülü işlemlere örnektir. Açık işlemler, BEGIN TRAN, COMMıT TRAN veya ROLLBACK TRAN kullanır. Açık işlemler genellikle birden çok değişiklik deyimlerinin tek bir atomik birimde birbirine bağlanması gerektiğinde kullanılır.
 
-SQL havuzu, işlem günlüklerini kullanarak veritabanına değişiklikleri kaydeder. Her dağıtımın kendi işlem günlüğü vardır. İşlem günlüğü yazmaları otomatik. Yapılandırma gerekli değildir. Ancak, bu süreci, sistemde bir ek yük ortaya çıkaracak şekilde yazmayı garanti eder. İşlemsel olarak verimli kod yazarak bu etkiyi en aza indirgeyin. İşlem açısından verimli kod, genel olarak iki kategoriye girer.
+SQL havuzu, işlem günlüklerini kullanarak veritabanına değişiklikleri kaydeder. Her dağıtımın kendi işlem günlüğü vardır. İşlem günlüğü yazmaları otomatik. Yapılandırma gerekli değildir. Ancak, bu işlem yazma işlemini garanti ederken sistemde bir ek yük getirir. İşlemsel olarak verimli kod yazarak bu etkiyi en aza indirgeyin. İşlem açısından verimli kod, genel olarak iki kategoriye girer.
 
 * Mümkün olduğunda en az sayıda günlük oluşturma kullanın
 * Çok uzun süre çalışan işlemleri önlemek için kapsamlı toplu işleri kullanarak verileri işleyin
@@ -68,7 +68,7 @@ CTAS ve INSERT... Her iki toplu yükleme işlemi de SEÇIN. Ancak, her ikisi de 
 
 | Birincil dizin | Yükleme senaryosu | Günlüğe kaydetme modu |
 | --- | --- | --- |
-| Yığın |Herhangi bir |**En az** |
+| Yığın |Herhangi biri |**En az** |
 | Kümelenmiş dizin |Boş hedef tablo |**En az** |
 | Kümelenmiş dizin |Yüklenen satırlar, hedefteki mevcut sayfalarla çakışmıyor |**En az** |
 | Kümelenmiş dizin |Yüklü satırlar hedefteki mevcut sayfalarla örtüşüyor |Tam |
@@ -84,7 +84,7 @@ Verilerin kümelenmiş bir dizine sahip boş olmayan bir tabloya yüklenmesi gen
 
 ## <a name="optimize-deletes"></a>Silmeleri iyileştirme
 
-SILME işlemi tam olarak günlüğe kaydedilir.  Tablodaki veya bir bölümdeki büyük miktarda veriyi silmeniz gerekiyorsa, genellikle tutmak istediğiniz verilere daha anlamlı hale gelir ve bu, en `SELECT` düşük düzeyde günlüğe kaydedilmiş bir işlem olarak çalıştırılabilir.  Verileri seçmek için [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)ile yeni bir tablo oluşturun.  Oluşturulduktan sonra, eski tablonuzu yeni oluşturulan tabloyla değiştirmek için [Yeniden Adlandır](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ' ı kullanın.
+SILME işlemi tam olarak günlüğe kaydedilir.  Tablodaki veya bir bölümdeki büyük miktarda veriyi silmeniz gerekiyorsa, genellikle tutmak istediğiniz verilere daha anlamlı hale gelir ve bu, en `SELECT` düşük düzeyde günlüğe kaydedilmiş bir işlem olarak çalıştırılabilir.  Verileri seçmek için [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)ile yeni bir tablo oluşturun.  Oluşturulduktan sonra, eski tablonuzu yeni oluşturulan tabloyla değiştirmek için [Yeniden Adlandır](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ' ı kullanın.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.

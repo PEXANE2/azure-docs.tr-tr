@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500768"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288622"
 ---
 # <a name="use-transactions-in-sql-pool"></a>SQL havuzunda işlemleri kullanma
 
 Çözümleri geliştirmek için SQL havuzunda (veri ambarı) işlem uygulama ipuçları.
 
-## <a name="what-to-expect"></a>Bekleneceğiniz
+## <a name="what-to-expect"></a>Beklentiler
 
 Bekleneceğiniz gibi, SQL havuzu veri ambarı iş yükünün parçası olarak işlemleri destekler. Ancak, SQL havuzunun performansının ölçekte korunduğundan emin olmak için bazı özellikler SQL Server karşılaştırıldığında sınırlı olur. Bu makalede farklılıklar vurgulanmıştır ve diğerleri listelenmiştir.
 
@@ -29,7 +29,7 @@ Bekleneceğiniz gibi, SQL havuzu veri ambarı iş yükünün parçası olarak i�
 
 SQL havuzu ACID işlemlerini uygular. İşlem desteğinin yalıtım düzeyi, KAYDEDILMEYEN okuma için varsayılan değer olarak kullanılır.  Ana veritabanına bağlıyken Kullanıcı veritabanı için READ_COMMITTED_SNAPSHOT veritabanı seçeneğini açarak, KAYDEDILMIŞ anlık görüntü YALıTıMıNı okumak için bunu değiştirebilirsiniz.  
 
-Etkinleştirildikten sonra, bu veritabanındaki tüm işlemler okuma tarafından yürütülen anlık görüntü YALıTıMı altında yürütülür ve oturum düzeyinde READ UNCOMMıTTED ayarı dikkate alınmayacak. Ayrıntılar için [alter database set Options (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) ' i işaretleyin.
+Etkinleştirildikten sonra, bu veritabanındaki tüm işlemler okuma tarafından yürütülen anlık görüntü YALıTıMı altında yürütülür ve oturum düzeyinde READ UNCOMMıTTED ayarı dikkate alınmayacak. Ayrıntılar için [alter database set Options (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true) ' i işaretleyin.
 
 ## <a name="transaction-size"></a>İşlem boyutu
 Tek bir veri değişikliği işleminin boyutu sınırlıdır. Sınır, dağıtım başına uygulanır. Bu nedenle, toplam ayırma, sınırı dağıtım sayısıyla çarpılarak hesaplanabilir. 
@@ -81,7 +81,7 @@ Aşağıdaki varsayımlar aşağıda verilmiştir:
 
 İşlem boyut sınırı işlem veya işlem başına uygulandı. Tüm eşzamanlı işlemler arasında uygulanmaz. Bu nedenle, her bir işlemin günlüğe bu miktarda veri yazmasına izin verilir.
 
-Günlüğe yazılan veri miktarını iyileştirmek ve en aza indirmek için lütfen [En Iyi işlemler uygulamalar](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) makalesine başvurun.
+Günlüğe yazılan veri miktarını iyileştirmek ve en aza indirmek için [işlem en iyi yöntemler](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) makalesine başvurun.
 
 > [!WARNING]
 > En büyük işlem boyutu yalnızca, verilerin yayılmasının eşit olduğu karma veya ROUND_ROBIN dağıtılmış tablolar için elde edilebilir. İşlem, dağıtımlarla çarpıtılmış bir şekilde veri yazıyor, en yüksek işlem boyutundan önce sınıra ulaşılması olasıdır.
@@ -134,7 +134,7 @@ SELECT @xact_state AS TransactionState;
 
 Yukarıdaki kod aşağıdaki hata iletisini verir:
 
-Msg 111233, düzey 16, durum 1, satır 1 111233; Geçerli işlem iptal edildi ve bekleyen tüm değişiklikler geri alındı. Neden: yalnızca geri alma durumundaki bir işlem, bir DDL, DML veya SELECT ifadesiyle önce açıkça geri alınmadı.
+Msg 111233, düzey 16, durum 1, satır 1 111233; Geçerli işlem iptal edildi ve bekleyen tüm değişiklikler geri alındı. Neden: yalnızca geri alma durumundaki bir işlem, bir DDL, DML veya SELECT ifadesiyle önce açık bir şekilde geri alınmadı.
 
 ERROR_ * işlevlerinin çıktısını almazsınız.
 
@@ -181,7 +181,7 @@ Tüm değiştirilen işlem GERI ALMANıN, CATCH bloğundaki hata bilgilerinin ok
 
 ## <a name="error_line-function"></a>Error_Line () işlevi
 
-Ayrıca, SQL havuzunun ERROR_LINE () işlevini uygulamamayı veya desteklemediğini de unutmayın. Kodunuzda bu varsa, SQL havuzuyla uyumlu olacak şekilde kaldırmanız gerekir. Eşdeğer işlevselliği uygulamak için kodunuzda sorgu etiketleri kullanın. Daha fazla ayrıntı için bkz. [etiket](develop-label.md) makalesi.
+Ayrıca, SQL havuzunun ERROR_LINE () işlevini uygulamamayı veya desteklemediğini de unutmayın. Kodunuzda bu işleve sahipseniz, SQL havuzuyla uyumlu olması için onu kaldırmanız gerekir. Eşdeğer işlevselliği uygulamak için kodunuzda sorgu etiketleri kullanın. Daha fazla bilgi için bkz. [etiket](develop-label.md) makalesi.
 
 ## <a name="use-of-throw-and-raiserror"></a>THROW ve RAERROR kullanımı
 
@@ -193,9 +193,7 @@ THROW, SQL havuzunda özel durumları oluşturmak için daha modern bir uygulama
 
 ## <a name="limitations"></a>Sınırlamalar
 
-SQL havuzu, işlemlerle ilgili birkaç farklı kısıtlama sağlar.
-
-Bunlar şu şekildedir:
+SQL havuzu, işlemlerle ilgili birkaç farklı kısıtlama sağlar. Bunlar şu şekildedir:
 
 * Dağıtılmış işlem yok
 * İç içe işlem yapılmasına izin verilmez

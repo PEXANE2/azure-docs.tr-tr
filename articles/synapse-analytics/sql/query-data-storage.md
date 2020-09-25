@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 93e6b373aa125facb3a3eddecc926438c919b335
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0ac54eb5d6350cc234eb7036a3a1dc97a4f1b083
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489750"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288384"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarını sorgulama
 
@@ -52,7 +52,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 
 Kullanım örnekleri için [sorgu Parquet dosyaları](query-parquet-files.md) makalesini gözden geçirin.
 
-## <a name="query-csv-files"></a>CSV dosyalarını sorgula
+## <a name="query-csv-files"></a>CSV dosyalarını sorgulama
 
 CSV kaynak verilerini sorgulamak için FORMAT = ' CSV ' kullanın. CSV dosyalarını Sorgulayabileceğiniz zaman, CSV dosyasının şemasını işlevin parçası olarak belirtebilirsiniz `OPENROWSET` :
 
@@ -248,7 +248,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 - İç içe geçmiş sütunlara sahip örnek Parquet dosyaları
 - JSON biçimindeki kitaplar
 
-| Klasör yolu                                                  | Açıklama                                                  |
+| Klasör yolu                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV biçimindeki veriler için üst klasör                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Farklı CSV biçimlerinde popülasyon veri dosyaları içeren klasörler. |
@@ -264,7 +264,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 
 Farklı dosya türlerini sorgulama ve görünümleri oluşturma ve kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [CSV dosyalarını sorgula](query-single-csv-file.md)
+- [CSV dosyalarını sorgulama](query-single-csv-file.md)
 - [Parquet dosyalarını sorgulama](query-parquet-files.md)
 - [JSON dosyalarını sorgulama](query-json-files.md)
 - [İç içe değerleri sorgulama](query-parquet-nested-types.md)

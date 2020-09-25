@@ -1,5 +1,5 @@
 ---
-title: Bir işlem hedefine eğitim çalıştırması gönderme
+title: Eğitim çalıştırmasını yapılandırma
 titleSuffix: Azure Machine Learning
 description: Çeşitli eğitim ortamlarında (işlem hedefleri) makine öğrenimi modelinizi eğitme. Eğitim ortamları arasında kolayca geçiş yapabilirsiniz. Eğitimi yerel olarak başlatın. Ölçeği ölçeklendirmeniz gerekiyorsa, bulut tabanlı bir işlem hedefine geçiş yapın.
 services: machine-learning
@@ -8,46 +8,43 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 08/28/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 8b07d19ca88a2d680a4f9efbb85fcf60b895a2b3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f93b6ab43e1dbf9230c92d22f8fb22ca48eb720e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907606"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275770"
 ---
-# <a name="submit-a-training-run-to-a-compute-target"></a>Bir işlem hedefine eğitim çalıştırması gönderme
+# <a name="configure-and-submit-training-runs"></a>Eğitim çalıştırmalarını yapılandırma ve gönderme
 
-Bu makalede, makine öğrenimi modelinizi eğitebilmeniz için çeşitli eğitim ortamlarını ([işlem hedefleri](concept-compute-target.md)) nasıl kullanacağınızı öğreneceksiniz.
+Bu makalede, modellerinizi eğitmek için Azure Machine Learning çalıştırmalarını yapılandırmayı ve göndermeyi öğreneceksiniz.
 
-Eğitim sırasında yerel bilgisayarınızda başlamak yaygındır ve daha sonra bu eğitim betiği farklı bir işlem hedefinde çalıştırılır. Azure Machine Learning, komut dosyanızı, eğitim betiğinizi değiştirmek zorunda kalmadan çeşitli işlem hedeflerinde çalıştırabilirsiniz.
+Eğitim sırasında, yerel bilgisayarınızda başlamak ve daha sonra bulut tabanlı bir kümeye genişletmek yaygın bir şekilde yapılır. Azure Machine Learning, komut dosyanızı, eğitim betiğinizi değiştirmek zorunda kalmadan çeşitli işlem hedeflerinde çalıştırabilirsiniz.
 
 Yapmanız gereken tek şey, bir **komut dosyası çalıştırma yapılandırması**içindeki her bir işlem hedefi için ortamı tanımlamaktır.  Daha sonra eğitim denemenizi farklı bir işlem hedefinde çalıştırmak istediğinizde, bu işlem için çalıştırma yapılandırmasını belirtin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
-* [Python için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+* [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (>= 1.13.0)
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md),`ws`
 * İşlem hedefi, `my_compute_target` .  İle bir işlem hedefi oluşturun:
   * [Python SDK'sı](how-to-create-attach-compute-sdk.md) 
   * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>Betik çalıştırma Yapılandırması nedir?
+Bir deneme kapsamında bir eğitim çalışması göndermek için gereken bilgileri yapılandırmak üzere bir [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) kullanılır.
 
-Eğitim denemenizi bir [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) nesnesi ile gönderebilirsiniz.  Bu nesne şunları içerir:
+Eğitim denemenizi bir ScriptRunConfig nesnesi ile gönderebilirsiniz.  Bu nesne şunları içerir:
 
 * **source_directory**: eğitim betiğinizi içeren kaynak dizin
-* **betik**: eğitim betiğini tanımla
-* **run_config**: [çalıştırma yapılandırması](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true), daha sonra eğitimin nerede olacağını tanımlar. İçinde, bilgi `run_config` işlem hedefini ve eğitim betiği çalıştırılırken kullanılacak ortamı belirtirsiniz.  
-
-## <a name="whats-an-environment"></a>Ortam nedir?
-
-Azure Machine Learning [ortamlar](concept-environments.md) , Machine Learning eğitiminin gerçekleştiği ortamın kapsüllenmesi. Bunlar, eğitim ve Puanlama betikleriniz etrafında Python paketlerini, ortam değişkenlerini ve yazılım ayarlarını belirler. Bunlar ayrıca çalışma zamanlarını belirtir (Python, Spark veya Docker).  
-
-Ortamları,  `run_config` içindeki nesnesinde belirtilir `ScriptRunConfig` .
+* **betik**: çalıştırılacak eğitim betiği
+* **compute_target**: üzerinde çalıştırılacak işlem hedefi
+* **ortam**: betiği çalıştırırken kullanılacak ortam
+* ve bazı ek yapılandırılabilir seçenekler (daha fazla bilgi için [başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) bakın)
 
 ## <a name="train-your-model"></a><a id="submit"></a>Modelinizi eğitme
 
@@ -55,13 +52,12 @@ Eğitim çalışması göndermek için kod deseninin her türlü bilgi işlem he
 
 1. Çalıştırmak için bir deneme oluşturun
 1. Betiğin çalışacağı bir ortam oluşturun
-1. İşlem hedefine ve ortamına başvuran bir betik çalıştırma yapılandırması oluşturma
+1. İşlem hedefini ve ortamı belirten bir ScriptRunConfig oluşturun
 1. Çalıştırmayı gönder
 1. Çalıştırmanın tamamlanmasını bekleyin
 
 İsterseniz şunları yapabilirsiniz:
 
-* Denemesi, `Estimator` [ml modellerini tahmini ile eğitme](how-to-train-ml-models.md)bölümünde gösterildiği gibi bir nesneyle birlikte gönder.
 * [Hiper parametre ayarlama](how-to-tune-hyperparameters.md)Için bir Hyperdrive çalıştırması gönderebilirsiniz.
 * [Vs Code uzantısı](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)aracılığıyla bir deneme gönderir.
 
@@ -73,19 +69,27 @@ Eğitim çalışması göndermek için kod deseninin her türlü bilgi işlem he
 from azureml.core import Experiment
 
 experiment_name = 'my_experiment'
-
 experiment = Experiment(workspace=ws, name=experiment_name)
 ```
 
-## <a name="create-an-environment"></a>Ortam oluşturma
+## <a name="select-a-compute-target"></a>Bir işlem hedefi seçin
 
-Seçkin ortamlar, Python paketlerinin koleksiyonlarını içerir ve çalışma alanınızda varsayılan olarak kullanılabilir. Bu ortamlar, çalışma hazırlığı maliyetini azaltan önbelleğe alınmış Docker görüntüleri tarafından desteklenir. Uzaktan işlem hedefi için, aşağıdaki popüler ortamlarından birini kullanarak şunları yapabilirsiniz:
+Eğitim betiğinizin çalışacağı işlem hedefini seçin. ScriptRunConfig içinde herhangi bir işlem hedefi belirtilmemişse veya, `compute_target='local'` Azure ml, betiğinizi yerel olarak yürütecektir. 
+
+Bu makaledeki örnek kod, `my_compute_target` "Önkoşullar" bölümünde zaten bir işlem hedefi oluşturmuş olduğunuzu varsayar.
+
+## <a name="create-an-environment"></a>Ortam oluşturma
+Azure Machine Learning [ortamlar](concept-environments.md) , Machine Learning eğitiminin gerçekleştiği ortamın kapsüllenmesi. Bunlar, eğitim ve Puanlama betikleriniz etrafında Python paketlerini, Docker görüntüsünü, ortam değişkenlerini ve yazılım ayarlarını belirler. Bunlar ayrıca çalışma zamanlarını belirtir (Python, Spark veya Docker).
+
+Kendi ortamınızı tanımlayabilir ya da Azure ML seçkin ortamını kullanabilirsiniz. [Seçkin ortamlar](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#use-a-curated-environment) , varsayılan olarak çalışma alanınızda kullanılabilir olan önceden tanımlanmış ortamlardır. Bu ortamlar, çalışma hazırlığı maliyetini azaltan önbelleğe alınmış Docker görüntüleri tarafından desteklenir. Kullanılabilir tüm ortamların tam listesi için bkz. [Azure Machine Learning seçkin ortamlar](https://docs.microsoft.com/azure/machine-learning/resource-curated-environments) .
+
+Uzaktan işlem hedefi için, aşağıdaki popüler ortamlarından birini kullanarak şunları yapabilirsiniz:
 
 ```python
 from azureml.core import Workspace, Environment
 
 ws = Workspace.from_config()
-my_environment = Environment.get(workspace=ws, name="AzureML-Minimal")
+myenv = Environment.get(workspace=ws, name="AzureML-Minimal")
 ```
 
 Ortamlar hakkında daha fazla bilgi ve Ayrıntılar için bkz. [Azure Machine Learning yazılım ortamları oluşturma & kullanma](how-to-use-environments.md).
@@ -97,47 +101,45 @@ Ortamlar hakkında daha fazla bilgi ve Ayrıntılar için bkz. [Azure Machine Le
 ```python
 from azureml.core import Environment
 
-# Editing a run configuration property on-fly.
-my_environment = Environment("user-managed-env")
-
-my_environment.python.user_managed_dependencies = True
+myenv = Environment("user-managed-env")
+myenv.python.user_managed_dependencies = True
 
 # You can choose a specific Python environment by pointing to a Python path 
-#my_environment.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
+# myenv.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
 ```
 
-## <a name="create-script-run-configuration"></a>Betik çalıştırma yapılandırması oluştur
+## <a name="create-the-script-run-configuration"></a>Betik çalıştırma yapılandırmasını oluşturma
 
-Artık bir işlem hedefine ( `compute_target` ) ve ortamınıza () sahip olduğunuza göre `my_environment` , kendi dizininizde bulunan eğitim betiğinizi () çalıştıran bir betik çalıştırma yapılandırması oluşturun `train.py` `project_folder` :
+Artık bir işlem hedefine ( `my_compute_target` ) ve ortamınıza () sahip olduğunuza göre `myenv` , kendi dizininizde bulunan eğitim betiğinizi () çalıştıran bir betik çalıştırma yapılandırması oluşturun `train.py` `project_folder` :
 
 ```python
 from azureml.core import ScriptRunConfig
 
-script_run_config = ScriptRunConfig(source_directory=project_folder, script='train.py')
-
-# Set compute target
-script_run_config.run_config.target = my_compute_target
-
-# Set environment.   If you don't do this, a default environment will be created.
-script_run_config.run_config.environment = my_environment
+src = ScriptRunConfig(source_directory=project_folder,
+                      script='train.py',
+                      compute_target=my_compute_target,
+                      environment=myenv)
 ```
 
-Ayrıca, çalıştırmak için Framework 'ü ayarlamak isteyebilirsiniz.
+Bir ortam belirtmezseniz, sizin için varsayılan bir ortam oluşturulur.
 
-* Bir HDI kümesi için:
-    ```python
-    src.run_config.framework = "pyspark"
-    ```
+Eğitim betiğe geçirmek istediğiniz komut satırı bağımsız değişkenlerinizin varsa, **`arguments`** ScriptRunConfig oluşturucusunun parametresi aracılığıyla bunları belirtebilirsiniz, örneğin `arguments=['--arg1', arg1_val, '--arg2', arg2_val]` .
 
-* Uzak bir sanal makine için:
-    ```python
-    src.run_config.framework = "python"
-    ```
+Çalıştırma için izin verilen varsayılan en uzun süreyi geçersiz kılmak istiyorsanız, bunu parametresi aracılığıyla yapabilirsiniz **`max_run_duration_seconds`** . Sistem, bu değerden daha uzun sürerse, çalıştırmayı otomatik olarak iptal etmeye çalışacaktır.
+
+### <a name="specify-a-distributed-job-configuration"></a>Dağıtılmış iş yapılandırması belirtme
+Dağıtılmış bir eğitim işi çalıştırmak istiyorsanız, parametreye dağıtılmış işe özgü yapılandırmayı sağlayın **`distributed_job_config`** . Desteklenen yapılandırma türleri, [Mpiconation](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true), [tensorflowconfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true)' ı içerir. 
+
+Dağıtılmış Horovod, TensorFlow ve PyTorch işlerini çalıştırmaya yönelik daha fazla bilgi ve örnek için bkz.:
+
+* [TensorFlow modellerini eğitme](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow#distributed-training)
+* [PyTorch modellerini eğitme](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch#distributed-training)
 
 ## <a name="submit-the-experiment"></a>Denemeyi gönderme
 
 ```python
-run = experiment.submit(config=script_run_config)
+run = experiment.submit(config=src)
+run.wait_for_completion(show_output=True)
 ```
 
 > [!IMPORTANT]
@@ -147,17 +149,24 @@ run = experiment.submit(config=script_run_config)
 > 
 > Anlık görüntüler hakkında daha fazla bilgi için bkz. [anlık görüntüler](concept-azure-machine-learning-architecture.md#snapshots).
 
+> [!IMPORTANT]
+> **Özel klasörler** İki klasör, *Çıkış* ve *günlük*, Azure Machine Learning özel bir işleme alır. Eğitim sırasında, kök dizine (ve sırasıyla) göre olan *çıktılar* ve *Günlükler* adlı klasörlere dosya yazdığınızda `./outputs` `./logs` , çalışma işlemi tamamlandıktan sonra dosyalara erişmeniz için dosyalar otomatik olarak çalıştırma geçmişinize yüklenir.
+>
+> Eğitim sırasında (model dosyaları, kontrol noktaları, veri dosyaları veya çizilmiş görüntüler gibi) yapıt oluşturmak için bunları `./outputs` klasörüne yazın.
+>
+> Benzer şekilde, eğitim çalıştırınızdan klasöre her türlü günlüğü de yazabilirsiniz `./logs` . Azure Machine Learning [tensorboard tümleştirmesini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) kullanmak Için, tensorboard günlüklerinizi bu klasöre yazdığınızdan emin olun. Çalışma işlemi devam ederken, TensorBoard 'ı başlatabilir ve bu günlükleri akıtırabileceksiniz.  Daha sonra, günlükleri önceki çalıştırabileceksiniz herhangi birinden geri yükleyebilirsiniz.
+>
+> Örneğin, uzak eğitime çalıştıktan sonra *çıktılar* klasörüne yazılmış bir dosyayı yerel makinenize indirmek için: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
-<a id="gitintegration"></a>
-
-## <a name="git-tracking-and-integration"></a>Git izleme ve Tümleştirme
+## <a name="git-tracking-and-integration"></a><a id="gitintegration"></a>Git izleme ve Tümleştirme
 
 Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](concept-train-model-git-integration.md).
 
 ## <a name="notebook-examples"></a>Not defteri örnekleri
 
-Çeşitli işlem hedeflerine yönelik eğitim örnekleri için bu not defterlerine bakın:
+Çeşitli eğitim senaryolarında çalıştırmaları yapılandırma örnekleri için bu not defterlerine bakın:
 * [Nasıl yapılır kullanımı-azureml/eğitim](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [nasıl kullanılır-azureml/ml-çerçeveleri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
 * [Öğreticiler/img-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
@@ -165,7 +174,8 @@ Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başla
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Öğretici: bir modeli eğitme](tutorial-train-models-with-aml.md) bir modeli eğmek için yönetilen bir işlem hedefi kullanır.
-* Daha iyi modeller oluşturmak için [hiper parametreleri verimli bir şekilde ayarlamayı](how-to-tune-hyperparameters.md) öğrenin. Görünüm = Azure-ML-Kopyala&Preserve-View = true)
+* Bkz. [Scikit-öğren](how-to-train-scikit-learn.md), [TensorFlow](how-to-train-tensorflow.md)ve [PYTORCH](how-to-train-pytorch.md)gibi belirli ml çerçeveleri ile modelleri eğitme.
+* Daha iyi modeller oluşturmak için [hiper parametreleri verimli](how-to-tune-hyperparameters.md) bir şekilde ayarlamayı öğrenin.
 * Eğitilen bir modelden sonra [modellerin nasıl ve nereye dağıtılacağını](how-to-deploy-and-where.md)öğrenin.
-* [RunConfiguration sınıfı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true) SDK başvurusunu görüntüleyin.
+* [ScriptRunConfig sınıfı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) SDK başvurusunu görüntüleyin.
 * [Azure sanal ağları ile Azure Machine Learning kullanma](how-to-enable-virtual-network.md)

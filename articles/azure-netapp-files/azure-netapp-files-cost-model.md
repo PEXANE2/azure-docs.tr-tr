@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c4eebae6909c9ef0969bc85bcb9a985db2a7c02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84142155"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325615"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Azure NetApp Files için maliyet modeli 
 
-Azure NetApp Files maliyet modelini anlamak, hizmetten harcamalarınızı yönetmenize yardımcı olur.
+Azure NetApp Files maliyet modelini anlamak, hizmetten harcamalarınızı yönetmenize yardımcı olur. 
+
+Bölgeler arası çoğaltmaya özgü maliyet modeli için bkz. [bölgeler arası çoğaltma Için maliyet modeli](cross-region-replication-introduction.md#cost-model-for-cross-region-replication).
 
 ## <a name="calculation-of-capacity-consumption"></a>Kapasite tüketiminin hesaplanması
 
@@ -61,6 +63,7 @@ Havuz boyutunu el ile artırabilir veya azaltabilirsiniz. Ancak, aşağıdaki k�
 * İlk 4-TiB en düşük satın alma işleminden sonra 1-TiB artışı
 * Bir saatlik minimum faturalama artışı
 * Sağlanan havuz boyutu, havuzdaki toplam kullanılan kapasiteye kıyasla daha düşük bir boyuta düşmeyebilir.
+* El ile QoS içeren kapasite havuzları için, havuz boyutu yalnızca boyut ve hizmet düzeyi, tüm birimlerin gerçek atanan iş birimlerinden daha fazla verimlilik sağlar.
 
 ## <a name="behavior-of-maximum-size-pool-overage"></a>Maksimum boyut havuzu fazla kullanım davranışı   
 
@@ -94,3 +97,4 @@ Azure NetApp Files içindeki anlık görüntülerin kapasite tüketimi, üst bir
 * [Azure NetApp Files fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/netapp/)
 * [Azure NetApp Files için hizmet düzeyleri](azure-netapp-files-service-levels.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
+* [Bölgeler arası çoğaltma için maliyet modeli](cross-region-replication-introduction.md#cost-model-for-cross-region-replication)

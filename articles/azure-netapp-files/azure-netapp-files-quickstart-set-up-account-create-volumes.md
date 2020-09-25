@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 06/09/2020
+ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: c8f431a609dafc1064b901cfdda8d170124cf0f9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 1506ab7210f8b98614f51e5168555068cce0afbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089284"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325700"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma 
 
@@ -92,7 +92,7 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
 3. Yeni NetApp hesabı penceresinde, aşağıdaki bilgileri sağlayın: 
    1. Hesap adı için **myaccount1** girin. 
    2. Aboneliğinizi seçin.
-   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam** düğmesine tıklayın. 
+   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam**'a tıklayın. 
    4. Hesap konumunuzu seçin.  
 
       ![Yeni NetApp hesabı penceresi](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
@@ -186,14 +186,15 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](https://docs.
 
 3. **+ Havuz Ekle**' ye tıklayın. 
 
-    ![Havuz Ekle 'ye tıklayın](../media/azure-netapp-files/azure-netapp-files-click-add-pools.png)  
+    ![Havuz Ekle 'ye tıklayın](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)  
 
 4. Kapasite havuzu için bilgi sağlayın: 
-    1. Havuz adı olarak **mypool1** girin.
-    2. Hizmet düzeyi için **Premium** ' u seçin. 
-    3. Havuz boyutu olarak **4 (TiB)** belirtin. 
+    * Havuz adı olarak **mypool1** girin.
+    * Hizmet düzeyi için **Premium** ' u seçin. 
+    * Havuz boyutu olarak **4 (TiB)** belirtin. 
+    * **Otomatik** QoS türünü kullanın.
 
-5. **Tamam** düğmesine tıklayın.
+5. **Oluştur**’a tıklayın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -416,7 +417,7 @@ Aşağıdaki kod parçacıkları, bir sanal ağı ayarlamayı ve bir Azure Resou
 
 3. Kaynak grubu sayfasında, **kaynak grubunu sil**' e tıklayın.
 
-    ![Kaynak grubunu silme](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Kaynak grubunu Sil düğmesini vurgulayan ekran görüntüsü.](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     Bir pencere açılır ve kaynak grubuyla birlikte silinecek kaynaklar hakkında bir uyarı görüntüler.
 

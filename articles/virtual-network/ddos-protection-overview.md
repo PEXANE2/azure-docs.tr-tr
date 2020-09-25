@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 90dbc0b888c6d6eeed97a676024abc9cc0dca6fe
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 726bc34a309ac6a29c189f13037e059f200732ce
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335927"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS koruması standardına genel bakış
 
@@ -81,3 +81,4 @@ Microsoft, simülasyon için DDoS koruması etkinleştirilmiş genel IP adresler
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [DDoS koruma standardını yapılandırma](manage-ddos-protection.md)
+- [Azure DDoS koruması fiyatlandırması](https://azure.microsoft.com/pricing/details/ddos-protection/)

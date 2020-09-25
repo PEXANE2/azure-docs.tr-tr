@@ -7,16 +7,16 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 69ba8d1735d16791d62b6b04e49c0d2fb7484959
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563096"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325802"
 ---
-# <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi 
+# <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi
 
-Bu makalede, Azure Işlevlerinde süreölçer tetikleyicilerle nasıl çalışılacağı açıklanmaktadır. Zamanlayıcı tetikleyicisi bir zamanlamaya göre bir işlevi çalıştırmanızı sağlar. 
+Bu makalede, Azure Işlevlerinde süreölçer tetikleyicilerle nasıl çalışılacağı açıklanmaktadır. Zamanlayıcı tetikleyicisi bir zamanlamaya göre bir işlevi çalıştırmanızı sağlar.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -80,6 +80,21 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Aşağıdaki örnek işlev her beş dakikada bir tetiklenir ve yürütülür. `@TimerTrigger`İşlevindeki ek açıklama [cron ifadeleriyle](https://en.wikipedia.org/wiki/Cron#CRON_expression)aynı dize biçimini kullanarak zamanlamayı tanımlar.
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, bir *function.js* dosyadaki bir Zamanlayıcı tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev, bu işlev çağrısının kaçırılmış bir zamanlama oluşumu olup olmadığını gösteren bir günlük yazar. İşleve bir [Zamanlayıcı nesnesi](#usage) geçirilir.
@@ -111,9 +126,44 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Aşağıdaki örnek, [PowerShell](./functions-reference-powershell.md)'de bir Zamanlayıcı tetikleyicisi için *function.js* ve *run.ps1* dosyasının nasıl yapılandırılacağını gösterir.
+
+```json
+{
+  "bindings": [
+    {
+      "name": "Timer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */5 * * * *"
+    }
+  ]
+}
+```
+
+```powershell
+# Input bindings are passed in via param block.
+param($Timer)
+
+# Get the current universal time in the default string format.
+$currentUTCtime = (Get-Date).ToUniversalTime()
+
+# The 'IsPastDue' property is 'true' when the current function invocation is later than scheduled.
+if ($Timer.IsPastDue) {
+    Write-Host "PowerShell timer is running late!"
+}
+
+# Write an information log with the current time.
+Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
+```
+
+[Timer nesnesinin](#usage) bir örneği, işlevine ilk bağımsız değişken olarak geçirilir.
+
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, yapılandırması *function.jsdosya üzerinde* açıklanan bir Zamanlayıcı tetikleyicisi bağlamayı kullanır. Bağlamayı kullanan gerçek [Python işlevi](functions-reference-python.md) * __init__. Kopyala* dosyasında açıklanmıştır. İşleve geçirilen nesne, [Azure. Functions. TimerRequest nesnesi](/python/api/azure-functions/azure.functions.timerrequest)türündedir. İşlev mantığı, geçerli çağrının kaçırılmış bir zamanlama oluşumunda olup olmadığını gösteren günlüklere yazar. 
+Aşağıdaki örnek, yapılandırması *function.jsdosya üzerinde* açıklanan bir Zamanlayıcı tetikleyicisi bağlamayı kullanır. Bağlamayı kullanan gerçek [Python işlevi](functions-reference-python.md) * __init__. Kopyala* dosyasında açıklanmıştır. İşleve geçirilen nesne, [Azure. Functions. TimerRequest nesnesi](/python/api/azure-functions/azure.functions.timerrequest)türündedir. İşlev mantığı, geçerli çağrının kaçırılmış bir zamanlama oluşumunda olup olmadığını gösteren günlüklere yazar.
 
 Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
@@ -145,21 +195,6 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-Aşağıdaki örnek işlev her beş dakikada bir tetiklenir ve yürütülür. `@TimerTrigger`İşlevindeki ek açıklama [cron ifadeleriyle](https://en.wikipedia.org/wiki/Cron#CRON_expression)aynı dize biçimini kullanarak zamanlamayı tanımlar.
-
-```java
-@FunctionName("keepAlive")
-public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
-      ExecutionContext context
- ) {
-     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
-     context.getLogger().info("Timer is triggered: " + timerInfo);
-}
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
@@ -188,14 +223,6 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 Öznitelikler C# betiği tarafından desteklenmez.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Öznitelikler JavaScript tarafından desteklenmez.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Öznitelikler Python tarafından desteklenmez.
-
 # <a name="java"></a>[Java](#tab/java)
 
 `@TimerTrigger`İşlevindeki ek açıklama [cron ifadeleriyle](https://en.wikipedia.org/wiki/Cron#CRON_expression)aynı dize biçimini kullanarak zamanlamayı tanımlar.
@@ -211,6 +238,18 @@ public void keepAlive(
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Öznitelikler JavaScript tarafından desteklenmez.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Öznitelikler PowerShell tarafından desteklenmez.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Öznitelikler Python tarafından desteklenmez.
+
 ---
 
 ## <a name="configuration"></a>Yapılandırma
@@ -219,7 +258,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 |function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**türüyle** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**tür** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
 |**çizelgesini**|**ScheduleExpression**|Bir [cron ifadesi](#ncrontab-expressions) veya [TimeSpan](#timespan) değeri. `TimeSpan`Yalnızca, App Service planında çalışan bir işlev uygulaması için kullanılabilir. Zamanlama ifadesini bir uygulama ayarına yerleştirebilir ve bu özelliği **%** Şu örnekte gösterildiği gibi, işaretlere kaydırılmış uygulama ayarı adı olarak ayarlayabilirsiniz: "% ScheduleAppSetting%". |
@@ -229,7 +268,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> **RunOnStartup** ' nin üretimde ayarlanmasını öneririz `true` . Bu ayarın kullanılması, kodun son derece öngörülemeyen zamanlarda yürütülmesine neden olur. Bazı üretim ayarlarında, bu ek yürütmeler, tüketim planlarında barındırılan uygulamalar için önemli ölçüde daha yüksek maliyetlere neden olabilir. Örneğin, **runOnStartup** etkin olduğunda tetikleyici, işlev uygulamanız her ölçeklendirildiğinde çağrılır. **RunOnStartup** etkinleştirilmeden önce işlevlerinizin üretim davranışını tam olarak anladığınızdan emin olun.   
+> **RunOnStartup** ' nin üretimde ayarlanmasını öneririz `true` . Bu ayarın kullanılması, kodun son derece öngörülemeyen zamanlarda yürütülmesine neden olur. Bazı üretim ayarlarında, bu ek yürütmeler, tüketim planlarında barındırılan uygulamalar için önemli ölçüde daha yüksek maliyetlere neden olabilir. Örneğin, **runOnStartup** etkin olduğunda tetikleyici, işlev uygulamanız her ölçeklendirildiğinde çağrılır. **RunOnStartup** etkinleştirilmeden önce işlevlerinizin üretim davranışını tam olarak anladığınızdan emin olun.
 
 ## <a name="usage"></a>Kullanım
 
@@ -250,8 +289,7 @@ Bir Zamanlayıcı tetikleyicisi işlevi çağrıldığında, işleve bir Zamanla
 
 `IsPastDue`Özelliği, `true` geçerli işlev çağırma zamanlanmadan daha sonra olduğunda olur. Örneğin, bir işlev uygulamasının yeniden başlatılması, çağrının kaçırılmasını sağlayabilir.
 
-
-## <a name="ncrontab-expressions"></a>NCRONTAB ifadeleri 
+## <a name="ncrontab-expressions"></a>NCRONTAB ifadeleri
 
 Azure Işlevleri, NCRONTAB ifadelerini yorumlamak için [ncrontab](https://github.com/atifaziz/NCrontab) kitaplığını kullanır. Bir NCRONTAB ifadesi, bir CRON ifadesine benzer ve saniyeler içinde zaman duyarlığı için kullanılmak üzere ek bir altıncı alan içerir:
 
@@ -300,12 +338,12 @@ Bir CRON ifadesinin aksine bir `TimeSpan` değer, her bir işlev çağrısı ara
 
 Dize olarak ifade `TimeSpan` edildiğinde, biçim 24 ' `hh:mm:ss` `hh` ten küçüktür. İlk iki basamak 24 veya daha büyükse, biçim olur `dd:hh:mm` . İşte bazı örnekler:
 
-|Örnek |Tetiklendiğinde  |
-|---------|---------|
-|"01:00:00" | her saat        |
-|"00:01:00"|her dakika         |
-|"24:00:00" | 24 günde bir        |
-|"1,00:00:00" | Her gün        |
+| Örnek      | Tetiklendiğinde |
+|--------------|----------------|
+| "01:00:00"   | her saat     |
+| "00:01:00"   | her dakika   |
+| "24:00:00"   | 24 günde bir  |
+| "1,00:00:00" | Her gün      |
 
 ## <a name="scale-out"></a>Ölçeği genişletme
 

@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fd0826ad11a153d72ee47f35930d25f0df498418
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: dd7aed0d23dd657b655e473565611ef36c592562
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90942130"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336335"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda mantıksal çoğaltma ve mantıksal kod çözme-esnek sunucu
 
 > [!IMPORTANT]
 > PostgreSQL için Azure veritabanı-esnek sunucu önizlemededir
 
-PostgreSQL 'in mantıksal çoğaltma ve mantıksal kod çözme özellikleri, PostgreSQL için Azure veritabanı-esnek sunucu 'da desteklenir.
+PostgreSQL 'in mantıksal çoğaltma ve mantıksal kod çözme özellikleri, Postgres sürüm 11 için Azure veritabanı-esnek sunucu ' da desteklenir.
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>Mantıksal çoğaltmayı ve mantıksal kod çözmeyi karşılaştırma
 Mantıksal çoğaltma ve mantıksal kod çözme çeşitli benzerlikler vardır. İkisi de
@@ -43,7 +43,11 @@ Mantıksal kod çözme
 1. Sunucu parametresini olarak ayarlayın `wal_level` `logical` .
 2. Değişikliği uygulamak için sunucuyu yeniden başlatın `wal_level` .
 3. PostgreSQL örneğinizin, bağlanan kaynağınızın ağ trafiğine izin verdiğini doğrulayın.
-4. Çoğaltma komutlarını yürütürken yönetici kullanıcıyı kullanın.
+4. Yönetici Kullanıcı çoğaltma izinlerini verin.
+   ```SQL
+   ALTER ROLE <adminname> WITH REPLICATION;
+   ```
+
 
 ## <a name="using-logical-replication-and-logical-decoding"></a>Mantıksal çoğaltma ve mantıksal kod çözme kullanma
 
@@ -54,7 +58,7 @@ Mantıksal çoğaltma ' Yayımcı ' ve ' abone ' koşullarını kullanır.
 
 Aşağıda, mantıksal çoğaltmayı denemek için kullanabileceğiniz bazı örnek kodlar verilmiştir.
 
-1. Yayımcıya bağlanın. Tablo oluşturun ve veri ekleyin.
+1. Yayımcı veritabanına bağlanın. Tablo oluşturun ve veri ekleyin.
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    INSERT INTO basic(name) VALUES ('apple');
@@ -66,14 +70,14 @@ Aşağıda, mantıksal çoğaltmayı denemek için kullanabileceğiniz bazı ör
    CREATE PUBLICATION pub FOR TABLE basic;
    ```
 
-3. Abone 'e bağlanın. Yayımcıyla aynı şemaya sahip bir tablo oluşturun.
+3. Abone veritabanına bağlanın. Yayımcıyla aynı şemaya sahip bir tablo oluşturun.
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    ```
 
 4. Daha önce oluşturduğunuz yayına bağlanacak bir abonelik oluşturun.
    ```SQL
-   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname>' PUBLICATION pub;
+   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname> password=<password>' PUBLICATION pub;
    ```
 
 5. Artık abone üzerinde tabloyu sorgulayabilirsiniz. Yayımcının veri aldığını görürsünüz.
@@ -101,7 +105,7 @@ Aşağıdaki örnekte, SQL arabirimini wal2json eklentisi ile kullanıyoruz.
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. SQL komutları verin. Örnek:
+2. SQL komutları verin. Örneğin:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,
@@ -170,8 +174,9 @@ SELECT * FROM pg_replication_slots;
 
 **En fazla kullanılan Işlem kimliği** ve **depolama alanı** üzerinde [Uyarı ayarlama](howto-alert-on-metrics.md) değerleri, değerlerin geçmiş normal eşiklerini artırması durumunda size bildirimde bulunan esnek sunucu ölçümlerini kullanır. 
 
-## <a name="read-replicas"></a>Okuma amaçlı çoğaltmalar
-PostgreSQL için Azure veritabanı okuma çoğaltmaları Şu anda esnek sunucular için desteklenmiyor.
+## <a name="limitations"></a>Sınırlamalar
+* **Çoğaltmaları oku** -PostgreSQL Için Azure veritabanı okuma çoğaltmaları Şu anda esnek sunucular için desteklenmiyor.
+* Birincil sunucudaki **yuvalar ve ha yük devretme** -mantıksal çoğaltma yuvaları, ikincil ağınızdaki yedek sunucuda yok. Sunucunuz, bölgesel olarak yedekli yüksek kullanılabilirlik seçeneğini kullanıyorsa, bu sizin için geçerlidir. Bekleme sunucusunda bir yük devretme durumunda, mantıksal çoğaltma yuvaları bekleme durumunda kullanılabilir olmayacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Ağ seçenekleri](concepts-networking.md) hakkında daha fazla bilgi edinin

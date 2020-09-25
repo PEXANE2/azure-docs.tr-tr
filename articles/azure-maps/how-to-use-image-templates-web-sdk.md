@@ -4,17 +4,17 @@ description: Azure Haritalar Web SDK 'sını kullanarak haritalara görüntü si
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: d6c7ba255b0dcec280d05eab36be71b8c9a726ae
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: f43c0086cfd6e51e0fbcd5d30911aa6c8e9a6518
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086564"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335560"
 ---
 # <a name="how-to-use-image-templates"></a>Görüntü şablonlarını kullanma
 
@@ -106,7 +106,7 @@ Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremap
 
 
 > [!TIP]
-> Görüntü şablonları eşleme dışında da kullanılabilir. Getımagetemplate funcıton, yer tutucuları olan bir SVG dizesi döndürüyor; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Geçerli bir SVG dizesi oluşturmak için bu yer tutucu değerlerini değiştirin. Daha sonra SVG dizesini doğrudan HTML DOM 'a ekleyebilir veya bir veri URI 'sine dönüştürebilir ve bunu bir resim etiketine ekleyebilirsiniz. Örnek:
+> Görüntü şablonları eşleme dışında da kullanılabilir. Getımagetemplate funcıton, yer tutucuları olan bir SVG dizesi döndürüyor; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Geçerli bir SVG dizesi oluşturmak için bu yer tutucu değerlerini değiştirin. Daha sonra SVG dizesini doğrudan HTML DOM 'a ekleyebilir veya bir veri URI 'sine dönüştürebilir ve bunu bir resim etiketine ekleyebilirsiniz. Örneğin:
 > ```JavaScript
 > //Retrieve an SVG template and replace the placeholder values.
 > var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
@@ -119,7 +119,7 @@ Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremap
 
 Uygulamanız farklı simgelerle aynı simgeyi kullanıyorsa veya ek görüntü şablonları ekleyen bir modül oluşturuyorsanız, bu simgeleri Azure Maps web SDK 'sına kolayca ekleyebilir ve alabilirsiniz. Ad alanı üzerinde aşağıdaki statik işlevleri kullanın `atlas` .
 
-| Name | Dönüş Türü | Açıklama | 
+| Name | Dönüş Türü | Description | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Atlas ad alanına özel bir SVG resim şablonu ekler. |
 |  `getImageTemplate(templateName: string, scale?: number)`| string | Bir SVG şablonunu ada göre alır. |
@@ -127,7 +127,7 @@ Uygulamanız farklı simgelerle aynı simgeyi kullanıyorsa veya ek görüntü �
 
 SVG resim şablonları aşağıdaki yer tutucu değerlerini destekler:
 
-| Yer tutucu | Açıklama |
+| Yer tutucu | Description |
 |-|-|
 | `{color}` | Birincil renk. | 
 | `{secondaryColor}` | İkincil renk. | 

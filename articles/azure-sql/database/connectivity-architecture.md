@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 10108fdf4f2b7090eaeaa4b378992c2e94d3b04c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 71bd250cbfb2642a291d495273c4cd66ebb2c350
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489587"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325394"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics bağlantı mimarisi
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -83,7 +83,7 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 | Brezilya Güney         | 104.41.11.5, 191.233.200.14 |
 | Orta Kanada       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
 | Doğu Kanada          | 40.86.226.166, 52.242.30.154 |
-| Central US           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
+| Orta ABD           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | Doğu Çin           | 139.219.130.35     |
 | Çin Doğu 2         | 40.73.82.1         |
 | Kuzey Çin          | 139.219.15.17      |

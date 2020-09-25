@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dc47bf73f39d73861c166674a692932d51064e6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288537"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) 
 
@@ -25,9 +25,11 @@ Her Azure SYNAPSE Analytics çalışma alanı (Önizleme), Gölü verileri sorgu
 - Verileri özelleştirilmiş bir depoya kopyalama veya yüklemeye gerek kalmadan verileri sorgulamak için tanıdık bir T-SQL söz dizimi. 
 - En popüler sürücüler dahil olmak üzere çok çeşitli iş zekası ve geçici sorgulama araçları sunan T-SQL arabirimi aracılığıyla tümleşik bağlantı. 
 
-İsteğe bağlı SQL, büyük ölçekli veri ve işlem için oluşturulmuş bir dağıtılmış veri işleme sistemidir. SQL isteğe bağlı olarak, büyük verilerinizi iş yüküne bağlı olarak birkaç dakika içinde analiz etmenizi sağlar. Yerleşik sorgu yürütme hata toleransı sayesinde sistem, büyük veri kümeleri içeren uzun süreli sorgularda bile yüksek güvenilirlik ve başarı oranları sağlar.
+İsteğe bağlı SQL, büyük ölçekli veriler ve hesaplama işlevleri için tasarlanan dağıtılmış bir veri işleme sistemidir. SQL isteğe bağlı olarak, büyük verilerinizi iş yüküne bağlı olarak birkaç dakika içinde analiz etmenizi sağlar. Yerleşik sorgu yürütme hata toleransı sayesinde sistem, büyük veri kümeleri içeren uzun süreli sorgularda bile yüksek güvenilirlik ve başarı oranları sağlar.
 
-İsteğe bağlı SQL Server sunucusuz, bu nedenle, bakım yapmak için kurulum veya kümelerin bir altyapısı yoktur. Bu hizmet için varsayılan bir uç nokta her Azure SYNAPSE çalışma alanı içinde sağlanır, bu sayede çalışma alanı oluşturulduktan hemen sonra verileri sorgulamaya başlayabilirsiniz. Ayrılan kaynaklar için ücret alınmaz, yalnızca çalıştırdığınız sorgular tarafından Taranan veriler için ücretlendirilirsiniz, bu nedenle bu modelin kullanım başına doğru bir ödeme modeli olması gerekir.  
+İsteğe bağlı SQL Server sunucusuz, bu nedenle, bakım yapmak için kurulum veya kümelerin bir altyapısı yok. Bu hizmet için varsayılan bir uç nokta her Azure SYNAPSE çalışma alanı içinde sağlanır, bu sayede çalışma alanı oluşturulduktan hemen sonra verileri sorgulamaya başlayabilirsiniz. 
+
+Ayrılan kaynaklar için ücret alınmaz, yalnızca çalıştırdığınız sorgular tarafından işlenen veriler için ücretlendirilirsiniz, bu nedenle bu modelin kullanım başına doğru bir ödeme modeli olması gerekir.  
 
 Veri işlem hattınızda Azure SYNAPSE için Apache Spark kullanıyorsanız, veri hazırlama, temizleme veya zenginleştirme için, işlem içinde oluşturduğunuz [Harici Spark tablolarını](develop-storage-files-spark-tables.md) doğrudan SQL isteğe bağlı olarak sorgulayabilirsiniz. SQL isteğe bağlı uç noktanızı [yönetilen çalışma alanı sanal](../security/synapse-workspace-managed-vnet.md)ağınıza taşımak Için [özel bağlantıyı](../security/how-to-connect-to-workspace-with-private-links.md) kullanın.  
 
@@ -85,7 +87,7 @@ Desteklenen T-SQL:
 - Görünümler ve güvenlikle ilgili olanlar dışındaki DDL deyimleri
 - DML deyimleri
 
-### <a name="extensions"></a>Uzantılar
+### <a name="extensions"></a>Uzantıları
 
 Data Lake 'teki dosyalarda bulunan verilerin yerinde sorgulanmasında sorunsuz bir deneyim sağlamak için, SQL isteğe bağlı, aşağıdaki özellikleri ekleyerek var olan [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini genişletir:
 

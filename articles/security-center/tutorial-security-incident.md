@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901095"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336284"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Öğretici: Güvenlik olaylarına yanıt verme
 Güvenlik Merkezi, kötü amaçlı etkinlikler konusunda sizi uyarmak için gelişmiş analiz ve tehdit zekasından yararlanarak hibrit bulut iş yüklerinizi sürekli olarak analiz eder. Buna ek olarak, diğer güvenlik ürünleri ve hizmetleri tarafından sağlanan uyarıları Güvenlik Merkezi ile tümleştirebilir ve kendi göstergelerinizi ya da zeka kaynaklarınızı temel alan özel uyarılar oluşturabilirsiniz. Bir uyarı oluşturulduktan sonra sorunun incelenip düzeltilmesi için hemen harekete geçilmesi gerekir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -76,7 +76,7 @@ Güvenlik Merkezi, tüm güvenlik uyarılarının birleşik bir görünümünü 
 
    ![Olaydan Uyarı ayrıntıları](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-   Uyarı türü değişkenlik gösterebilir, uyarı türü ve olası düzeltme adımları hakkında daha ayrıntılı bilgi için bkz. [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını anlama](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Güvenli bir şekilde kapatılabilen uyarılar için uyarıya sağ tıklayıp **Kapat**’ı seçebilirsiniz:
+   Uyarı türü değişkenlik gösterebilir, uyarı türü ve olası düzeltme adımları hakkında daha ayrıntılı bilgi için bkz. [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını anlama](security-center-alerts-type.md). Güvenli bir şekilde kapatılabilen uyarılar için uyarıya sağ tıklayıp **Kapat**’ı seçebilirsiniz:
 
    ![Uyarı](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 

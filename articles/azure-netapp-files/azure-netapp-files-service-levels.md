@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 09/22/2019
 ms.author: b-juche
-ms.openlocfilehash: 639f1e09fdb5603965209e5b5ee6c224ad238b76
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 818b3b59b1113875b6486ffe64bc8d2d30d613d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533130"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325478"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files için hizmet düzeyleri
 Hizmet düzeyleri, bir kapasite havuzunun özniteliğidir. Hizmet düzeyleri, birime atanan kota temelinde kapasite havuzundaki bir birim için izin verilen en yüksek aktarım hızına göre tanımlanır ve farklılaştırılır.
@@ -30,29 +30,47 @@ Azure NetApp Files üç hizmet düzeyini destekler: *Ultra*, *Premium*ve *Standa
 
 * <a name="Ultra"></a>Ultra depolama
 
-    Ultra Storage katmanı, 1 TiB başına birim kotasının atandığı 128 MIB/sn 'ye kadar işleme sağlar. 
+    Ultra Storage katmanı, sağlanan 1 TiB kapasiteye göre 128 ' e kadar MIB/sn işleme sağlar. 
 
 * <a name="Premium"></a>Premium Depolama
 
-    Premium depolama katmanı, atanan birim kotasının 1 TiB 'ye kadar en fazla 64 MIB/sn kapasitesi sağlar. 
+    Premium depolama katmanı, sağlanan 1 TiB kapasiteye göre 64 ' e kadar MIB/sn işleme sağlar. 
 
 * <a name="Standard"></a>Standart depolama
 
-    Standart depolama katmanı, 1 TiB başına birim kotası atanan 16 adede kadar MIB/sn aktarım hızı sağlar.
+    Standart depolama katmanı, sağlanan 1 TiB kapasiteye göre 16 adede kadar MIB/sn performansı sağlar.
 
 ## <a name="throughput-limits"></a>İşleme sınırları
 
 Bir birim için üretilen iş sınırı, aşağıdaki faktörlerin birleşimiyle belirlenir:
 * Birimin ait olduğu kapasite havuzunun hizmet düzeyi
 * Birime atanan kota  
+* Kapasite havuzunun QoS türü (*Otomatik* veya *el ile*)  
 
-Bu kavram aşağıdaki diyagramda gösterilmiştir:
+### <a name="throughput-limit-examples-of-volumes-in-an-auto-qos-capacity-pool"></a>Bir otomatik QoS kapasite havuzundaki birimlerin aktarım hızı sınırı örnekleri
+
+Aşağıdaki diyagramda, bir otomatik QoS kapasite havuzundaki birimlerin verimlilik limiti örnekleri gösterilmektedir:
 
 ![Hizmet düzeyi çizimi](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
 
-Yukarıdaki örnek 1 ' de, 2 GB kota atanmış olan Premium Depolama katmanına sahip bir kapasite havuzundan bir birime 128 MIB/s (2 TiB * 64 MiB/sn) aktarım hızı sınırı atanır. Bu senaryo, kapasite havuzu boyutu veya gerçek birim tüketimi ne olursa olsun geçerlidir.
+* Yukarıdaki örnek 1 ' de, 2 GB kota atanmış Premium Depolama katmanına sahip bir otomatik QoS KAPASİTE havuzundan bir birime, 128 MIB/s (2 TiB * 64 MIB/s) aktarım hızı sınırı atanır. Bu senaryo, kapasite havuzu boyutu veya gerçek birim tüketimi ne olursa olsun geçerlidir.
 
-Yukarıdaki 2. örnekte, 100 GiB kotasının atandığı Premium Depolama katmanına sahip bir kapasite havuzundan bir birime, 6,25 MiB/sn (0,09765625 TiB * 64 MiB/s) aktarım hızı sınırı atanır. Bu senaryo, kapasite havuzu boyutu veya gerçek birim tüketimi ne olursa olsun geçerlidir.
+* Yukarıdaki 2. örnekte, 100 GiB kotasının atandığı Premium Depolama katmanına sahip bir otomatik QoS KAPASİTE havuzundan bir birime, 6,25 MiB/sn (0,09765625 TiB * 64 MiB/s) aktarım hızı sınırı atanır. Bu senaryo, kapasite havuzu boyutu veya gerçek birim tüketimi ne olursa olsun geçerlidir.
+
+### <a name="throughput-limit-examples-of-volumes-in-a-manual-qos-capacity-pool"></a>Bir el ile QoS kapasite havuzundaki birimlerin aktarım hızı sınırı örnekleri 
+
+El ile QoS kapasite havuzu kullanıyorsanız, bir birimin kapasitesini ve iş üretimini bağımsız olarak atayabilirsiniz. El ile QoS kapasite havuzunda bir birim oluşturduğunuzda, üretilen iş (MIB/S) değerini belirtebilirsiniz. Bir el ile QoS kapasite havuzundaki birimlere atanan toplam verimlilik, havuzun boyutuna ve hizmet düzeyine bağlıdır. Bu, (TiB x hizmet düzeyi aktarım hızı/TiB içindeki kapasite havuzu boyutu) tarafından belirlenir. Örneğin, Ultra hizmet düzeyine sahip 10-TiB kapasite havuzunda birimler için kullanılabilir toplam 1280 MIB/sn (10 TiB x 128 MIB/s/TiB) üretilen iş kapasitesi vardır.
+
+SAP HANA sistem için, bu kapasite havuzu aşağıdaki birimleri oluşturmak için kullanılabilir. Her birim, uygulama gereksinimlerinizi karşılamak için bireysel boyut ve aktarım hızı sağlar:
+
+* SAP HANA veri hacmi: Boyut 4 TB, en fazla 704 MIB/sn
+* SAP HANA günlük birimi: en fazla 256 MIB/sn ile 0,5 TB boyutunda
+* SAP HANA paylaşılan birim: Boyut 1 TB, en fazla 64 MIB/sn
+* Yedekleme birimi SAP HANA: Boyut 4,5 TB, en fazla 256 MIB/sn
+
+Aşağıdaki diyagramda SAP HANA birimlerine yönelik senaryolar gösterilmektedir:
+
+![QoS SAP HANA birim senaryoları](../media/azure-netapp-files/qos-sap-hana-volume-scenarios.png) 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -61,3 +79,4 @@ Yukarıdaki 2. örnekte, 100 GiB kotasının atandığı Premium Depolama katman
 - [Kapasite havuzunu ayarlama](azure-netapp-files-set-up-capacity-pool.md)
 - [Azure NetApp Files için Hizmet Düzeyi Sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)
 - [Birimin hizmet düzeyini dinamik olarak değiştirme](dynamic-change-volume-service-level.md) 
+- [Bölgeler arası çoğaltma için hizmet düzeyi hedefleri](cross-region-replication-introduction.md#service-level-objectives)

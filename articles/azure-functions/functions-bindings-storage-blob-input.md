@@ -1,17 +1,17 @@
 ---
 title: Azure Işlevleri için Azure Blob depolama girişi bağlama
-description: Azure Işlevine Azure Blob depolama verilerini nasıl sağlayacağınızı öğrenin.
+description: Azure Işlevine Azure Blob depolama girişi bağlama verileri sağlamayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: de590af49e39832a52bf733319b86300ecab2a34
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f5a01724bfefd50297182f998b46f99eacca5843
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213294"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325785"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama girişi bağlama
 
@@ -302,7 +302,7 @@ public static void Run(
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Blob` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**tür** | yok | Olarak ayarlanmalıdır `blob` . |
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . [Kullanım](#usage) bölümünde özel durumlar belirtilmiştir. |

@@ -4,16 +4,16 @@ description: Toplam istek sayısı, toplam hata ve kullanılabilirlik gibi Azure
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/06/2018
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 766bb2eaf6878a8d7261472ba11ea7acd46de92e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3f5dfcafe1c7b08a2c8320f807bf809107197d40
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335288"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Azure Haritalar API'si kullanım ölçümlerini görüntüleme
 
@@ -42,7 +42,7 @@ Belirli analize yönelik bu grafikleri özelleştirmeniz gerekiyorsa sonraki bö
 
       ![Azure Haritalar kullanım ölçümleri bölmesi](media/how-to-view-api-usage/portal-metrics.png)
 
-5. Ardından, **son 24 saat (otomatik)** öğesine tıklayarak *zaman aralığını* seçebilirsiniz. Varsayılan olarak, zaman aralığı 24 saat olarak ayarlanır. ' İ tıkladıktan sonra, tüm seçilebilir zaman aralıklarını görürsünüz. *Zaman parçalı yapısını* seçebilir ve aynı açılan kutuda saati *Yerel* veya *GMT* olarak göstermeyi seçebilirsiniz. **Uygula**'ya tıklayın.
+5. Ardından, **son 24 saat (otomatik)** öğesine tıklayarak *zaman aralığını* seçebilirsiniz. Varsayılan olarak, zaman aralığı 24 saat olarak ayarlanır. ' İ tıkladıktan sonra, tüm seçilebilir zaman aralıklarını görürsünüz. *Zaman parçalı yapısını* seçebilir ve aynı açılan kutuda saati *Yerel* veya *GMT* olarak göstermeyi seçebilirsiniz. **Uygula**’ya tıklayın.
 
     ![Azure haritalar ölçümleri zaman aralığı](media/how-to-view-api-usage/time-range.png)
 

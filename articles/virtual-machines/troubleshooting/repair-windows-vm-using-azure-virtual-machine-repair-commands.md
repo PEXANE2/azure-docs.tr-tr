@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 7addc87f3096a75a55d0ea3b5804fd0006d5cb8c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66dfd198b543ec49fabe381b50174b182cf070c7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526495"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336046"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure Sanal Makine onarım komutlarını kullanarak Windows VM'sini onarma
 
@@ -77,7 +77,7 @@ Ek belgeler ve yönergeler için bkz. [az VM Repair](/cli/azure/ext/vm-repair/vm
 3. `az vm repair create` öğesini çalıştırın. Bu komut, işlevsel olmayan VM için işletim sistemi diskinin bir kopyasını oluşturacak, yeni bir kaynak grubunda bir onarım VM 'si oluşturacak ve işletim sistemi diski kopyasını ekleyecek.  Onarım sanal makinesi, belirtilen işlev olmayan VM ile aynı boyutta ve bölgeye sahip olacaktır. Tüm adımlarda kullanılan kaynak grubu ve VM adı, işlevsel olmayan VM için olacaktır. VM 'niz Azure disk şifrelemesi kullanıyorsa, komut, onarım VM 'sine eklendiğinde erişilebilir olması için şifrelenmiş diskin kilidini açmayı dener.
 
    ```azurecli-interactive
-   az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
+   az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password 'password!234' --verbose
    ```
 
 4. `az vm repair run` öğesini çalıştırın. Bu komut, belirtilen onarım betiğini, sanal makine onarım aracılığıyla bağlı diskte çalıştırır. Kullanmakta olduğunuz sorun giderme kılavuzu bir çalıştırma kimliği belirtse, lütfen burada kullanın, aksi takdirde `az vm repair list-scripts` kullanılabilir onarım betiklerini görmek için kullanabilirsiniz. Burada kullanılan kaynak grubu ve VM adı, adım 3 ' te kullanılan işlevsel olmayan VM içindir.

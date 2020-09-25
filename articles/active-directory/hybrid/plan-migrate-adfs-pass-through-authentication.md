@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5a5b06bc95d022cfad66118db4b55e9369b5bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a0ee8661ca985e1882cff54d2fc2cdc5e9ad0a22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661894"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335978"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory için Federasyondan geçişli kimlik doğrulamaya geçiş
 
@@ -283,9 +283,9 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
 
 4. Kimlik doğrulama Aracısı yüklemesini çalıştırın. Yükleme sırasında, bir genel yönetici hesabının kimlik bilgilerini girmeniz gerekir.
 
-   ![Microsoft Azure AD bağlantı kimlik doğrulama Aracısı paketi sayfasındaki Install düğmesini gösteren ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![Microsoft Azure AD Connect Authentication Aracısı paketini çalıştırmak için kullandığınız Install düğmesini gösteren ekran görüntüsü.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-   ![Oturum açma sayfasını gösteren ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![Microsoft oturum açma sayfasını gösteren ekran görüntüsü.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. Kimlik doğrulama Aracısı yüklendiğinde, ek aracıların durumunu denetlemek için doğrudan kimlik doğrulama Aracısı sistem durumu sayfasına dönebilirsiniz.
 
@@ -327,7 +327,7 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
    * **Kesintisiz çoklu oturum açma** **özelliği etkin**olarak ayarlanmıştır.
    * **Geçişli kimlik doğrulaması** **etkin**olarak ayarlanır.
    
-   ![Kullanıcı oturum açma bölümündeki ayarları gösteren ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
+   ![Kullanıcı oturum açma bölümünde doğrulanacak ayarları gösteren ekran görüntüsü.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
 8. **Doğrudan kimlik doğrulaması** ' nı seçin ve durumun **etkin**olduğunu doğrulayın.<br />
    
    Kimlik doğrulama Aracısı etkin değilse, bir sonraki adımda etki alanı dönüştürme işlemine devam etmeden önce bazı [sorun giderme adımlarını uygulayın](./tshoot-connect-pass-through-authentication.md) . Geçiş kimlik doğrulama aracılarınızın başarılı bir şekilde yüklendiğini ve Azure portal durumunun **etkin** olduğunu doğrulamadan önce etki alanlarınızı dönüştürürseniz, kimlik doğrulama kesintisine neden olur.
@@ -368,7 +368,7 @@ Azure AD PowerShell modülünü kullanarak dönüştürmeyi doldurun:
    * **Kesintisiz çoklu oturum açma** **özelliği etkin**olarak ayarlanmıştır.
    * **Geçişli kimlik doğrulaması** **etkin**olarak ayarlanır.<br />
 
-   ![Kullanıcı oturum açma bölümündeki ayarları gösteren ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
+   ![Azure AD portalındaki Kullanıcı oturum açma bölümündeki ayarları gösteren ekran görüntüsü.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
 
 ## <a name="testing-and-next-steps"></a>Test ve sonraki adımlar
 

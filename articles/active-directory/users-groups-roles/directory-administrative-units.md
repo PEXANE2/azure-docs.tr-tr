@@ -1,5 +1,5 @@
 ---
-title: Yönetim birimleri yönetimi (Önizleme)-Azure AD | Microsoft Docs
+title: Azure Active Directory 'de yönetim birimleri | Microsoft Docs
 description: Azure Active Directory izinlerin daha ayrıntılı olarak temsili için yönetim birimleri kullanma
 services: active-directory
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: a31c4a5c9d20b5b248f7d722ed3d9289bbb4dded
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376392"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335825"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory 'de yönetim birimleri yönetimi (Önizleme)
+# <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory 'de yönetim birimleri
 
-Bu makalede Azure Active Directory (Azure AD) içindeki yönetim birimleri açıklanmaktadır. Yönetim birimi, diğer Azure AD kaynakları için bir kapsayıcı olabilecek bir Azure AD kaynağıdır. Bu önizleme sürümünde, yönetim birimi yalnızca kullanıcılar ve gruplar içerebilir.
+Bu makalede Azure Active Directory (Azure AD) içindeki yönetim birimleri açıklanmaktadır. Yönetim birimi, diğer Azure AD kaynakları için bir kapsayıcı olabilecek bir Azure AD kaynağıdır. Yönetim birimi yalnızca kullanıcılar ve gruplar içerebilir.
 
 Yönetim birimleri bir departman, bölge veya tanımladığınız kuruluşunuzun diğer kesimiyle kısıtlanan yönetici izinleri vermenizi sağlar. Bölgesel yöneticilerle izinleri devretmek veya ayrıntılı bir düzeyde ilke ayarlamak için yönetim birimlerini kullanabilirsiniz. Örneğin, bir kullanıcı hesabı Yöneticisi profil bilgilerini güncelleştirebilir, parolaları sıfırlayabilir ve yalnızca kendi yönetim biriminde kullanıcılar için lisans atayabilir.
 
@@ -44,11 +44,11 @@ Yönetim birimlerinin kullanılması için her yönetim birimi Yöneticisi için
 
 ## <a name="manage-administrative-units"></a>Yönetim birimlerini yönetme
 
-Bu önizleme sürümünde, yönetim birimlerini Azure portal, PowerShell cmdlet 'lerini ve betikleri veya Microsoft Graph kullanarak yönetebilirsiniz. Ayrıntılar için belgelerimize başvurabilirsiniz:
+Azure portal, PowerShell cmdlet 'leri ve betikleri ya da Microsoft Graph kullanarak yönetim birimlerini yönetebilirsiniz. Ayrıntılar için belgelerimize başvurabilirsiniz:
 
 - [Yönetim birimlerine roller oluşturma, kaldırma, doldurma ve ekleme](roles-admin-units-manage.md): nasıl yapılır yordamlarını doldurun
-- [Yönetici birimleriyle çalışma](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0): PowerShell kullanarak yönetim birimleriyle çalışma
-- [Yönetim birimi grafik desteği](/graph/api/resources/administrativeunit?view=graph-rest-beta): yönetim birimleri için Microsoft Graph ayrıntılı belgeler.
+- [Yönetici birimleriyle çalışma](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true): PowerShell kullanarak yönetim birimleriyle çalışma
+- [Yönetim birimi grafik desteği](/graph/api/resources/administrativeunit?view=graph-rest-beta&preserve-view=true): yönetim birimleri için Microsoft Graph ayrıntılı belgeler.
 
 ### <a name="planning-your-administrative-units"></a>Yönetim birimlerinizi planlama
 

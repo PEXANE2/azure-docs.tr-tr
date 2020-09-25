@@ -12,16 +12,16 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 3b060d7caff425414cc7f4e8bbea5d9a29572094
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178952"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265910"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
-Bu makalede rol tabanlı erişim denetimiyle kullanılabilecek yeni bir Azure Active Directory (Azure AD) uygulaması ve hizmet sorumlusu oluşturma konusu gösterilmektedir. Kaynaklara erişmesi veya kaynakları değiştirmesi gereken uygulamalar, barındırılan hizmetler veya otomatikleştirilmiş araçlar varsa, uygulama için bir kimlik oluşturabilirsiniz. Bu kimlik, hizmet sorumlusu olarak bilinir. Kaynaklara erişim, hizmet sorumlusuna atanan roller tarafından kısıtlanır ve hangi kaynaklara erişilebileceklerini ve hangi düzeyde erişilebilir bir denetim sağlar. Güvenlik nedeniyle, otomatikleştirilmiş araçların kullanıcı kimliği ile oturum açmalarına izin vermek yerine her zaman hizmet sorumlularını kullanmanız önerilir. 
+Bu makalede rol tabanlı erişim denetimiyle kullanılabilecek yeni bir Azure Active Directory (Azure AD) uygulaması ve hizmet sorumlusu oluşturma konusu gösterilmektedir. Kaynaklara erişmesi veya kaynakları değiştirmesi gereken uygulamalar, barındırılan hizmetler veya otomatikleştirilmiş araçlar varsa, uygulama için bir kimlik oluşturabilirsiniz. Bu kimlik, hizmet sorumlusu olarak bilinir. Kaynaklara erişim, hizmet sorumlusuna atanan roller tarafından kısıtlanır ve hangi kaynaklara erişilebileceklerini ve hangi düzeyde erişilebilir bir denetim sağlar. Güvenlik nedeniyle, otomatikleştirilmiş araçların kullanıcı kimliği ile oturum açmalarına izin vermek yerine her zaman hizmet sorumlularını kullanmanız önerilir.
 
 Bu makalede, Azure portal hizmet sorumlusunu oluşturmak için portalın nasıl kullanılacağı gösterilir. Uygulamanın yalnızca bir kuruluş içinde çalıştırılması amaçlanan tek kiracılı bir uygulamaya odaklanır. Genellikle kuruluşunuzda çalışan iş kolu uygulamaları için tek kiracılı uygulamalar kullanırsınız.  [Hizmet sorumlusu oluşturmak için Azure PowerShell de kullanabilirsiniz](howto-authenticate-service-principal-powershell.md).
 
@@ -129,12 +129,13 @@ Program aracılığıyla oturum açarken, kiracı KIMLIĞINI kimlik doğrulama i
 
    ![Uygulama (istemci) KIMLIĞINI Kopyala](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-## <a name="upload-a-certificate-or-create-a-secret-for-signing-in"></a>Oturum açmak için bir sertifika yükleyin veya bir parola oluşturun
-Hizmet sorumluları için kullanılabilen iki kimlik doğrulama türü vardır: parola tabanlı kimlik doğrulaması (uygulama gizli dizisi) ve sertifika tabanlı kimlik doğrulama.  Bir sertifika kullanmanızı öneririz, ancak yeni bir uygulama gizli anahtarı da oluşturabilirsiniz.
+## <a name="authentication-two-options"></a>Kimlik doğrulaması: Iki seçenek
 
-### <a name="upload-a-certificate"></a>Sertifikayı karşıya yükle
+Hizmet sorumluları için kullanılabilen iki kimlik doğrulama türü vardır: parola tabanlı kimlik doğrulaması (uygulama gizli dizisi) ve sertifika tabanlı kimlik doğrulama. *Bir sertifika kullanmanızı öneririz*, ancak bir uygulama gizli anahtarı da oluşturabilirsiniz.
 
-Varsa, var olan bir sertifikayı kullanabilirsiniz.  İsteğe bağlı olarak, *yalnızca sınama amacıyla*otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. Otomatik olarak imzalanan bir sertifika oluşturmak için PowerShell 'i açın ve bilgisayarınızdaki Kullanıcı sertifika deposunda sertifikayı oluşturmak için aşağıdaki parametrelerle [Yeni bir SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) çalıştırın: 
+### <a name="option-1-upload-a-certificate"></a>Seçenek 1: bir sertifikayı karşıya yükle
+
+Varsa, var olan bir sertifikayı kullanabilirsiniz.  İsteğe bağlı olarak, *yalnızca sınama amacıyla*otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. Otomatik olarak imzalanan bir sertifika oluşturmak için PowerShell 'i açın ve bilgisayarınızdaki Kullanıcı sertifika deposunda sertifikayı oluşturmak için aşağıdaki parametrelerle [Yeni bir SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) çalıştırın:
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -159,11 +160,11 @@ Sertifikayı karşıya yüklemek için:
 
     ![Sertifikayı karşıya yükle ' yi seçin ve eklemek istediğiniz birini seçin](./media/howto-create-service-principal-portal/upload-cert.png)
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 Sertifikayı uygulama kayıt portalı 'nda uygulamanıza kaydettikten sonra, sertifikayı kullanmak için istemci uygulama kodunu etkinleştirmeniz gerekir.
 
-### <a name="create-a-new-application-secret"></a>Yeni uygulama gizli dizisi oluşturma
+### <a name="option-2-create-a-new-application-secret"></a>2. seçenek: yeni bir uygulama parolası oluşturma
 
 Bir sertifika kullanmayı tercih ederseniz, yeni bir uygulama parolası oluşturabilirsiniz.
 
@@ -178,14 +179,15 @@ Bir sertifika kullanmayı tercih ederseniz, yeni bir uygulama parolası oluştur
    ![Daha sonra geri alamadığı için gizli değeri kopyalayın](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Kaynaklarda erişim ilkeleri yapılandırma
-Unutmayın, uygulamanızın erişmesi gereken kaynaklarda ek izinler yapılandırmanız gerekebilir. Örneğin, uygulamanıza anahtarlar, gizlilikler veya sertifikalara erişim sağlamak için [bir anahtar kasasının erişim ilkelerini de güncelleştirmeniz](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) gerekir.  
+Unutmayın, uygulamanızın erişmesi gereken kaynaklarda ek izinler yapılandırmanız gerekebilir. Örneğin, uygulamanıza anahtarlar, gizlilikler veya sertifikalara erişim sağlamak için [bir anahtar kasasının erişim ilkelerini de güncelleştirmeniz](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) gerekir.
 
-1. [Azure Portal](https://portal.azure.com), anahtar kasanıza gidin ve **erişim ilkeleri**' ni seçin.  
+1. [Azure Portal](https://portal.azure.com), anahtar kasanıza gidin ve **erişim ilkeleri**' ni seçin.
 1. **Erişim Ilkesi Ekle**' yi seçin, ardından uygulamanıza vermek istediğiniz anahtar, gizli dizi ve sertifika izinlerini seçin.  Daha önce oluşturduğunuz hizmet sorumlusunu seçin.
 1. Erişim ilkesini eklemek için **Ekle** ' yi seçin ve sonra değişikliklerinizi yürütmek için **kaydedin** .
     ![Erişim İlkesi Ekle](./media/howto-create-service-principal-portal/add-access-policy.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Hizmet sorumlusu oluşturmak için Azure PowerShell kullanmayı](howto-authenticate-service-principal-powershell.md)öğrenin.
-* Güvenlik ilkelerini belirtme hakkında bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).  
+* Güvenlik ilkelerini belirtme hakkında bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * Kullanıcılara verilebilecek veya reddedilmiş olabilecek eylemlerin bir listesi için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md).
+* **Microsoft Graph**kullanarak uygulama kayıtlarıyla çalışma hakkında daha fazla bilgi için bkz. [uygulamalar](/graph/api/resources/application) API başvurusu.

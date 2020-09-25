@@ -7,13 +7,13 @@ ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1f3ec5b2b1c46b40c6f99836fc10778c98b59d4c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: eebfa61632bc49d5df35c17ba2d2faca0382001c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432002"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336148"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -28,7 +28,7 @@ Ek kaynaklar:
 * [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-blob)
 * [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Etkin aboneliği olan bir Azure hesabı](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Bir Azure depolama hesabı](../common/storage-account-create.md)
@@ -104,7 +104,7 @@ Blob hizmeti SAS URL 'sini almak için aşağıdaki adımları izleyin:
 
 Yerel bilgisayarınızda, *Azure-Bloblar-js-Browser* adlı yeni bir klasör oluşturun ve Visual Studio Code açın.
 
-Visual Studio Code içinde bir konsol penceresi açmak için **> terminali görüntüle** ' yi seçin. Dosya [üzerinde birpackage.js](https://docs.npmjs.com/files/package.json) oluşturmak için Terminal penceresinde aşağıdaki Node.js Paket Yöneticisi (NPM) komutunu çalıştırın.
+Visual Studio Code içinde bir konsol penceresi açmak için **> terminali görüntüle** ' yi seçin. Dosya [ üzerinde birpackage.js](https://docs.npmjs.com/files/package.json) oluşturmak için Terminal penceresinde aşağıdaki Node.js Paket Yöneticisi (NPM) komutunu çalıştırın.
 
 ```console
 npm init -y
@@ -126,7 +126,7 @@ Terminal penceresinde aşağıdaki komutu çalıştırarak paket ' i yükler `np
 npm install -g parcel-bundler
 ```
 
-Visual Studio Code, dosya *üzerindepackage.js* açın ve `browserlist` ve girdileri arasına bir ekleyin `license` `dependencies` . Bu `browserlist` , popüler üç tarayıcının en son sürümünü hedefler. Dosyadaki tam *package.js* şu şekilde görünmelidir:
+Visual Studio Code, dosya * üzerindepackage.js* açın ve `browserlist` ve girdileri arasına bir ekleyin `license` `dependencies` . Bu `browserlist` , popüler üç tarayıcının en son sürümünü hedefler. Dosyadaki tam *package.js* şu şekilde görünmelidir:
 
 :::code language="json" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/package.json" highlight="12-16":::
 

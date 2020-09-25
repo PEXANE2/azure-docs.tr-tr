@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325581"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -132,6 +132,12 @@ Azure NetApp Files, NFSv3 ve NFSv 4.1 destekler. NFS sürümünü kullanarak [bi
 
 Birimin dışa aktarma ilkesini kullanarak, kök hesabın birime erişip erişemeyeceğini belirtebilirsiniz. Ayrıntılar için bkz. [NFS için dışarı aktarma Ilkesini yapılandırma](azure-netapp-files-configure-export-policy.md) .
 
+### <a name="can-i-use-the-same-file-path-volume-creation-token-for-multiple-volumes"></a>Birden çok birim için aynı dosya yolunu (birim oluşturma belirteci) kullanabilir miyim?
+
+Evet, yazabilirsiniz. Ancak, dosya yolu farklı bir abonelikte ya da farklı bir bölgede kullanılmalıdır.   
+
+Örneğin, adlı bir birim oluşturursunuz `vol1` . Daha sonra `vol1` farklı bir kapasite havuzunda, ancak aynı abonelikte ve bölgede adlı başka bir birim de oluşturabilirsiniz. Bu durumda, aynı birim adının kullanılması `vol1` hataya neden olur. Aynı dosya yolunu kullanmak için, ad farklı bir bölgede veya abonelikte olmalıdır.
+
 ## <a name="smb-faqs"></a>SMB hakkında SSS
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Hangi SMB sürümleri Azure NetApp Files tarafından destekleniyor?
@@ -161,12 +167,6 @@ Azure NetApp Files, Active Directory Domain Services Windows Server 2008r2SP1-20
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>SMB istemcimde kullanılabilir alan, sağlanan boyutu neden göstermiyor?
 
 SMB istemcisi tarafından bildirilen birim boyutu, Azure NetApp Files biriminin büyüyebileceği en büyük boyutum boyutudur. SMB istemcisinde gösterildiği gibi Azure NetApp Files birimin boyutu, birimin kotasının veya boyutunun yansıtımsıdır. Azure NetApp Files birim boyutunu veya kotasını Azure portal veya API aracılığıyla edinebilirsiniz.
-
-<!--
-### Does Azure NetApp Files support Kerberos encryption?
-
-Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption for traffic between the service and the targeted Active Directory domain controllers. See [Create an SMB volume for Azure NetApp Files](azure-netapp-files-create-volumes-smb.md) for requirements. 
--->
 
 <!--
 ### Does Azure NetApp Files support LDAP signing? 

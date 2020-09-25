@@ -1,18 +1,18 @@
 ---
 title: Windows Server için Azure Hibrit Avantajı
-description: Azure 'a şirket içi lisanslar getirmek için Windows yazılım güvencesi avantajlarınızı nasıl en üst düzeye çıkaracağınızı öğrenin
+description: Azure 'a şirket içi lisanslar getirmek için Windows yazılım güvencesi avantajlarınızı nasıl en üst düzeye çıkaracağınızı öğrenin.
 author: xujing-ms
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 1c87c517a0013fa31ba63ef1f78677fe85f5d287
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43784fe2bb94d5abd012f22ed530e4631a304614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074260"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335995"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı
 Yazılım güvencesi olan müşteriler için, Windows Server Azure Hibrit Avantajı, şirket içi Windows Server lisanslarınızı kullanmanıza ve Azure 'da Windows sanal makinelerini daha düşük bir maliyetle çalıştırmanıza olanak sağlar. Windows işletim sistemi ile yeni sanal makineler dağıtmak için Windows Server Azure Hibrit Avantajı kullanabilirsiniz. Bu makalede, Windows Server için Azure Hibrit Avantajı ile yeni VM 'Leri dağıtma ve var olan çalışan VM 'Leri güncelleştirme adımları ele alınarak devam edebilir. Windows Server Lisanslama ve maliyet tasarrufları için Azure Hibrit Avantajı hakkında daha fazla bilgi için, bkz. [Windows Server Lisanslama için Azure hibrit avantajı sayfası](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -121,7 +121,7 @@ Aşağıdaki örnekte, tek bir VM için lisans türü gösterilmektedir
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
 
-Çıktı:
+Çıkış:
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
 Location                 : westus

@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 989399bcc86547b914deb442fa9793f6d79d0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0940521873b8d6746381acbd8e6c4c6d3a273c49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325330"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325768"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı kullanarak Azure’ı ITSM araçlarına bağlama
+# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı'nı kullanarak Azure'ı ITSM araçlarına bağlama
 
 ![BT Hizmet Yönetimi Bağlayıcısı simgesi](media/itsmc-overview/itsmc-symbol.png)
 
@@ -114,8 +114,8 @@ Eylem grupları, Azure uyarılarınız için eylemleri tetiklemenin modüler ve 
 
 Aşağıdaki yordamı kullanın:
 
-1. Azure portal, **İzle**' ye tıklayın.
-2. Sol bölmede **eylem grupları**' na tıklayın. **Eylem grubu Ekle** penceresi görüntülenir.
+1. Azure portal,  **İzle**' ye tıklayın.
+2. Sol bölmede  **eylem grupları**' na tıklayın. **Eylem grubu Ekle** penceresi görüntülenir.
 
     ![Eylem Grupları](media/itsmc-overview/action-groups.png)
 
@@ -130,13 +130,17 @@ Aşağıdaki yordamı kullanın:
 
 6. Açılır menüden **Iş öğesi** türünü seçin.
    Mevcut bir şablonu kullanmayı veya ıTSM ürününüzün gerektirdiği Alanları doldurmayı seçin.
-7. **Tamam** düğmesine tıklayın.
+7. **Tamam**'a tıklayın.
 
 Bir Azure uyarı kuralı oluştururken/düzenlenirken, bir ıTSM eylemi olan bir eylem grubu kullanın. Uyarı tetiklendiğinde, çalışma öğesi ıTSM aracında oluşturulur/güncelleştirilir.
 
 > [!NOTE]
 >
 > ITSM eyleminin fiyatlandırması hakkında bilgi için bkz. eylem grupları için [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/monitor/) .
+
+> [!NOTE]
+>
+> Uyarı kuralı tanımındaki kısa açıklama alanı, ıTSM eylemi kullanılarak gönderildiğinde 40 karakterle sınırlıdır.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Olay ve değişiklik isteği verilerini görselleştirin ve çözümleyin
@@ -228,7 +232,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Planlanan bitiş tarihi
 - Çalışma başlangıç tarihi
 - Çalışma bitiş tarihi
-- Açıklama
+- Description
 - Bilgisayar
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow olayı için çıkış verileri
@@ -275,7 +279,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | PlannedEndDate_t  |   Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
-| Description_s | Açıklama |
+| Description_s | Description |
 | Bilgisayar  | Yapılandırma öğesi |
 
 
@@ -289,7 +293,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 
 2. ServiceNow 'daki veriler Log Analytics ile eşitlenmediği için ServiceNow örneğinin uyku modunda olmadığından emin olun. ServiceNow dev örnekleri bazen uzun bir süre boşta kaldığında uyku moduna geçebilir. Aksi takdirde, sorunu bildirin.
 3. Log Analytics uyarılar harekete geçse ancak ıTSM ürününde iş öğeleri oluşturulmadıysa veya yapılandırma öğeleri, iş öğelerine ya da diğer genel bilgiler için oluşturulmadıysa veya bağlanmadıysa, aşağıdaki yerlere bakın:
-   -  ISMC: çözüm, bağlantıların/iş öğelerinin/bilgisayarların, vb. bir özetini gösterir. **Bağlayıcı durumunu**gösteren kutucuğa tıklayın ve bu, arama ile Ilgili sorgu **günlüğü** için sizi yönlendirir. Daha fazla bilgi için LogType_S hata ile günlük kayıtlarına bakın.
+   -  ISMC: çözüm, bağlantıların/iş öğelerinin/bilgisayarların, vb. bir özetini gösterir. **Bağlayıcı durumunu**gösteren kutucuğa tıklayın ve bu, arama ile Ilgili sorgu **günlüğü**  için sizi yönlendirir. Daha fazla bilgi için LogType_S hata ile günlük kayıtlarına bakın.
    - **Günlük arama** sayfası: sorgu ServiceDeskLog_CL kullanarak doğrudan hataları/ilgili bilgileri görüntüleyin `*` `*` .
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web uygulaması dağıtımı Service Manager sorunlarını giderme

@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Notebooks (Python) kullanarak elektrik taşıtlar yönlendirme | Microsoft Azure haritaları'
-description: Microsoft Azure haritaları yönlendirme API 'Leri ve Azure Notebooks kullanarak elektrik Araçlar yönlendirin.
+description: Microsoft Azure haritaları yönlendirme API 'Leri ve Azure Notebooks kullanarak elektrik taşıtlarının nasıl yönlendirileceği hakkında öğretici
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 28fcdc992f98ff380467718314148984559a7fee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335237"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
@@ -35,7 +35,7 @@ Bu öğreticide şunları yapacaksınız:
 > * Sürücü zamanına göre en yakın elektrik araç doldurma istasyonuna bir yol bulun ve görselleştirin.
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu öğreticiyi tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. 
 
@@ -387,8 +387,6 @@ display(Image(staticMapImage))
 
 ![Yolu gösteren bir harita](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>Sonraki adımlar
-
 Bu öğreticide, Azure haritalar REST API 'Lerinin doğrudan nasıl çağrılacağını ve Python kullanarak Azure Maps verilerini görselleştirmeyi öğrendiniz.
 
 Bu öğreticide kullanılan Azure Maps API 'Lerini araştırmak için, bkz.:
@@ -399,7 +397,11 @@ Bu öğreticide kullanılan Azure Maps API 'Lerini araştırmak için, bkz.:
 * [Render-harita görüntüsünü al](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Rota sonrası matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Rota yönlerini al](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
+* [Azure haritalar REST API 'Leri](https://docs.microsoft.com/azure/azure-maps/consumption-model)
 
-Azure haritalar REST API 'lerinin tüm listesi için bkz. [Azure Maps REST API 'leri](https://docs.microsoft.com/azure/azure-maps/consumption-model).
+## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Notebooks hakkında daha fazla bilgi için bkz. [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).
+Azure Notebooks hakkında daha fazla bilgi edinmek için bkz.
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)

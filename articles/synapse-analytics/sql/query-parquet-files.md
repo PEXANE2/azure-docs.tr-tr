@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496245"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288316"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak Parquet dosyalarını sorgulama
 
@@ -22,7 +22,7 @@ Bu makalede, Parquet dosyalarını okuyacak, isteğe bağlı SQL (Önizleme) kul
 
 ## <a name="quickstart-example"></a>Hızlı başlangıç örneği
 
-`OPENROWSET`işlevi, dosyanızın URL 'sini sağlayarak Parquet dosyasının içeriğini okumanızı sağlar.
+`OPENROWSET` işlevi, dosyanızın URL 'sini sağlayarak Parquet dosyasının içeriğini okumanızı sağlar.
 
 ### <a name="read-parquet-file"></a>Parquet dosyasını okuyun
 
@@ -57,7 +57,7 @@ Bir veri kaynağı SAS anahtarı veya özel kimlikle korunuyorsa, [veri kaynağ�
 
 ### <a name="explicitly-specify-schema"></a>Açıkça şema belirt
 
-`OPENROWSET`dosya kullanarak dosyadan okumak istediğiniz sütunları açıkça belirtmenize olanak sağlar `WITH` :
+`OPENROWSET` dosya kullanarak dosyadan okumak istediğiniz sütunları açıkça belirtmenize olanak sağlar `WITH` :
 
 ```sql
 select top 10 *
@@ -70,7 +70,7 @@ from openrowset(
 
 Aşağıdaki bölümlerde, çeşitli türlerdeki PARQUET dosyalarını sorgulama hakkında bilgi alabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adımınız, bir veri kaynağı ile [NYC sarı TAXI](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) depolama hesabına başvuran **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 
@@ -182,7 +182,7 @@ Parquet dosyaları her sütun için tür açıklamalarını içerir. Aşağıdak
 | INT32 |INT (8, false) |tinyint |
 | INT32 |INT (16, false) |int |
 | INT32 |INT (32, false) |bigint |
-| INT32 |DATE |date |
+| INT32 |DATE |tarih |
 | INT32 |KATEGORI |decimal |
 | INT32 |SAAT (MILIMETRE)|time |
 | INT64 |INT (64, true) |bigint |

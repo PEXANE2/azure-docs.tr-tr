@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0757c867d46144ac9fb9b9eca8b2a588aeeb15d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489733"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288333"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı SQL (Önizleme) kullanarak JSON dosyalarını sorgulama
 
@@ -24,7 +24,7 @@ Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullana
 
 ## <a name="read-json-documents"></a>JSON belgelerini oku
 
-JSON dosyanızın içeriğini görmenin en kolay yolu, çalışmak için dosya URL 'SI sağlamak `OPENROWSET` , CSV belirtmeniz `FORMAT` ve ve değerlerini ayarlamanız sağlamaktır `0x0b` `fieldterminator` `fieldquote` . Satır için ayrılmış JSON dosyalarını okumanız gerekiyorsa, bu yeterli olur. Klasik JSON dosyanız varsa, değerlerini ayarlamanız gerekir `0x0b` `rowterminator` . `OPENROWSET`işlev, JSON 'ı ayrıştırır ve her belgeyi aşağıdaki biçimde döndürür:
+JSON dosyanızın içeriğini görmenin en kolay yolu, işleve dosya URL 'sini sağlamak `OPENROWSET` , CSV `FORMAT` 'yi belirtmek ve ve değerlerini ayarlamak içindir `0x0b` `fieldterminator` `fieldquote` . Satır için ayrılmış JSON dosyalarını okumanız gerekiyorsa, bu yeterli olur. Klasik JSON dosyanız varsa, değerlerini ayarlamanız gerekir `0x0b` `rowterminator` . `OPENROWSET` işlev, JSON 'ı ayrıştırır ve her belgeyi aşağıdaki biçimde döndürür:
 
 | Belg |
 | --- |
@@ -58,11 +58,11 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 ```
 
-Bu sorgu, her JSON belgesini sonuç kümesinin ayrı bir satırı olarak döndürür. Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel kimlikle korunuyorsa [SQL oturum açma için sunucu düzeyi kimlik bilgilerini](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)oluşturmanız gerekir. 
+Bu sorgu, her JSON belgesini sonuç kümesinin ayrı bir satırı olarak döndürür. Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel kimlikle korunuyorsa [SQL oturum açma için sunucu düzeyi kimlik bilgilerini](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)ayarlamanız gerekir. 
 
 ### <a name="data-source-usage"></a>Veri kaynağı kullanımı
 
-Önceki örnek, dosyanın tam yolunu kullanır. Alternatif olarak, depolama alanının kök klasörünü işaret eden konum ile bir dış veri kaynağı oluşturabilir ve bu veri kaynağını ve işlevindeki dosyanın göreli yolunu kullanabilirsiniz `OPENROWSET` :
+Önceki örnek, dosyanın tam yolunu kullanır. Alternatif olarak, depolama alanının kök klasörünü işaret eden konum ile bir dış veri kaynağı oluşturabilir ve bu veri kaynağını ve işlevdeki dosyanın göreli yolunu kullanabilirsiniz `OPENROWSET` :
 
 ```sql
 create external data source covid
