@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 2f4f81f8159e5800da7dfec58c01f474cb1c0d07
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 66f22fa2781fb4c0f4caa07323b3de8cac1ef9fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361119"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Azure SQL veritabanı, Azure SYNAPSE Analytics, Data Factory ve Power BI SaaS analizlerini keşfet
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -66,7 +66,7 @@ Bu öğretici, Wingtip bilet verilerinden glecan temel Öngörüler örnekleri s
 
 ## <a name="setup"></a>Kurulum
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -111,7 +111,7 @@ Nesne Gezgini:
     1. Yıldız şeması tabloları **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**ve **dim_Dates**.
     1. **Sp_transformExtractedData** saklı yordam, verileri dönüştürmek ve yıldız şema tablolarına yüklemek için kullanılır.
 
-![DWtables 'lar](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
+![Ekran görüntüsünde, çeşitli veritabanı nesnelerini göstermek için tablo genişletilmiş Nesne Gezgini gösterilmektedir.](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
 
 #### <a name="blob-storage"></a>Blob depolama
 
@@ -167,7 +167,7 @@ Ayrıca, veri fabrikasını kaynak SQL veritabanlarına, hedef SQL havuzuna ve a
   
 ### <a name="data-warehouse-pattern-overview"></a>Veri ambarı düzenine genel bakış
 
-Azure Synapse (eski adıyla SQL veri ambarı), kiracı verilerinde toplamayı gerçekleştirmek için analiz deposu olarak kullanılır. Bu örnekte, veri ambarına veri yüklemek için PolyBase kullanılır. Ham veriler, yıldız şema tablolarına dönüştürülmüş satırları izlemek için bir kimlik sütunu olan hazırlama tablolarına yüklenir. Aşağıdaki görüntüde yükleme deseninin gösterildiği gösterilmektedir: ![ loadingmodel](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Azure Synapse (eski adıyla SQL veri ambarı), kiracı verilerinde toplamayı gerçekleştirmek için analiz deposu olarak kullanılır. Bu örnekte, veri ambarına veri yüklemek için PolyBase kullanılır. Ham veriler, yıldız şema tablolarına dönüştürülmüş satırları izlemek için bir kimlik sütunu olan hazırlama tablolarına yüklenir. Aşağıdaki görüntüde yükleme deseninin gösterildiği gösterilmektedir: ![ Diyagram, veritabanı tablolarının yükleme modelini gösterir.](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 Yavaş değişen boyut (SCD) tür 1 boyut tabloları bu örnekte kullanılır. Her boyutun bir kimlik sütunu kullanılarak tanımlanmış bir vekil anahtarı vardır. En iyi uygulama olarak, tarih boyut tablosu zaman kazanmak için önceden doldurulur. Diğer boyut tabloları için, SELECT olarak bir CREATE TABLE... (CTAS) deyimleri, yedek anahtarlarla birlikte, varolan değiştirilmiş ve değiştirilmemiş satırları içeren geçici bir tablo oluşturmak için kullanılır. Bu işlem IDENTITY_INSERT = ON ile yapılır. Yeni satırlar daha sonra tabloya IDENTITY_INSERT = OFF ile eklenir. Kolayca geri alma için, mevcut boyut tablosu yeniden adlandırılır ve geçici tablo yeni boyut tablosu olacak şekilde yeniden adlandırılır. Her çalıştırmadan önce eski boyut tablosu silinir.
 
@@ -181,14 +181,14 @@ Tüm kiracı veritabanları için tüm ayıklama, yükleme ve dönüştürme iş
 
 1. ADF Kullanıcı arabiriminin **Yazar** sekmesinde sol bölmeden **Sqldbtodw** işlem hattı ' nı seçin.
 1. **Tetikle** ' e tıklayın ve çekilme menüsünde **Şimdi Tetikle**' ye tıklayın. Bu eylem ardışık düzeni hemen çalıştırır. Bir üretim senaryosunda, bir zamanlamaya göre verileri yenilemek için işlem hattını çalıştırmaya yönelik bir zaman tablosu tanımlarsınız.
-  ![adf_trigger](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
+  ![Ekran görüntüsü, genişletme seçeneği genişletilmiş ve tetikleyici şimdi seçili olan S soru-cevap adlı bir işlem hattının fabrika kaynaklarını gösterir.](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
 1. İşlem **hattı çalıştırma** sayfasında **son**' a tıklayın.
 
 ### <a name="monitor-the-pipeline-run"></a>İşlem hattı çalıştırmasını izleme
 
 1. ADF Kullanıcı arabiriminde, sol taraftaki menüden **izleyici** sekmesine geçin.
 1. SQLDBToDW işlem hattının durumu **başarılı**olana kadar **Yenile** ' ye tıklayın.
-  ![adf_monitoring](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
+  ![Ekran görüntüsünde, durumu başarılı olan S soru-cevap işlem hattını gösterir.](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
 1. SSMS ile veri ambarına bağlanın ve bu tablolarda verilerin yüklendiğini doğrulamak için yıldız şema tablolarını sorgulayın.
 
 İşlem hattı tamamlandığında, olgu tablosu tüm havalandırma noktaları için bilet satış verilerini barındırır ve boyut tabloları ilgili havalandırma noktaları, olaylar ve müşteriler ile doldurulur.

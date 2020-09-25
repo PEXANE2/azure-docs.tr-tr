@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 446517f56d1f5ba6fa32408489f07411ee1a3e02
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356817"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Ayıklanan verileri kullanan çapraz kiracı analizi-çok kiracılı uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > - Analiz veritabanını sorgulayın.
 > - Veri görselleştirme için Power BI kullanarak kiracı verilerindeki eğilimleri vurgulayın ve iyileştirmeler için öneri alın.
 
-![Mimari Tureoverview](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
+![Diyagramda Bu makale için kullanılan mimariye genel bir bakış gösterilmektedir.](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>Çevrimdışı kiracı Analizi kalıbı
 
@@ -53,7 +53,7 @@ Ardından, toplanmış veriler bir [yıldız şeması](https://www.wikipedia.org
 
 Merkezi ve boyut tabloları birlikte verimli analitik işleme sağlar. Bu öğreticide kullanılan yıldız şeması aşağıdaki görüntüde görüntülenir:
  
-![StarSchema](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
+![Veritabanı diyagramı, bir merkezi veritabanı nesnesine bağlı dört veritabanı nesnesini gösterir.](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
 
 Son olarak, yıldız şeması tabloları sorgulanır. Sorgu sonuçları, kiracı davranışı ve uygulamanın kullanımıyla ilgili öngörüleri vurgulamak için görsel olarak görüntülenir. Bu yıldız şeması ile, aşağıdaki gibi öğeleri bulmaya yardımcı olan sorguları çalıştırabilirsiniz:
 
@@ -66,7 +66,7 @@ Her kiracının hizmeti nasıl kullandığını anlamak, ihtiyaçlarını karş�
 
 ## <a name="setup"></a>Kurulum
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -111,7 +111,7 @@ Analiz deposu düğümünü genişleterek SSMS Nesne Gezgini aşağıdaki verita
 - Yıldız şeması tabloları **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**ve **dim_Dates**.
 - **Sp_ShredRawExtractedData** saklı yordamı, yıldız şeması tablolarını ham veri tablolarından doldurmak için kullanılır.
 
-![tenantAnalytics](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
+![Ekran görüntüsü, tablolar, görünümler ve düğümler dahil olmak üzere analiz deposu düğümü için S S Nesne Gezgini gösterir.](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>Veri ayıklama 
 
@@ -139,7 +139,7 @@ Her iş verilerini ayıklar ve analiz deposuna gönderir. Ayıklanan verileri an
 4. Her kiracı veritabanından bilet ve müşteri verilerini çıkaran işi oluşturan ve çalıştıran betiği çalıştırmak için **F5** ' e basın. İş, verileri analiz deposuna kaydeder.
 5. Tablonun tüm kiracılardan bilet bilgileriyle doldurulduğundan emin olmak için tenantanalytics veritabanındaki bilet Srawdata tablosunu sorgulayın.
 
-![ticketExtracts](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
+![Ekran görüntüsü, Nesne Gezgini ' de seçili olan bilet Srawdata d b o ile Extractbilet veritabanını gösterir.](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
 
 Yukarıdaki adımları yineleyin; bu süre dışında, adım 2 ' de **\Extractbilet S.SQL** **dosyasını \Extractvenueyetts.exe SQL** ile değiştirin.
 
@@ -159,7 +159,7 @@ Sonraki adım, ayıklanan ham verilerin analiz sorguları için iyileştirilmiş
 4. İşin başarıyla çalışması için yeterli zaman yok.
     - İş için işler. jobs_execution tablosunun **yaşam döngüsü** sütununu kontrol edin. Devam etmeden önce işin **başarılı** olduğundan emin olun. Başarılı bir çalıştırma aşağıdaki grafiğe benzer verileri görüntüler:
 
-![shreddingJob](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
+![Ekran görüntüsü sp_ShredRawExtractedData yordamını çalıştırmanın başarılı sonucunu gösterir.](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
 ## <a name="data-exploration"></a>Veri araştırması
 
@@ -174,11 +174,11 @@ Power BI bağlanmak ve daha önce oluşturduğunuz görünümleri içeri aktarma
 3. **Veri al** PENCERESINDE Azure SQL veritabanı ' nı seçin.
 4. Veritabanı oturum açma penceresinde sunucunuzun adını (Katalog-MT- \<User\> . Database.Windows.net) girin. **Veri bağlantısı modu**Için **içeri aktar** ' ı seçin ve ardından Tamam ' a tıklayın. 
 
-    ![Powerbııgın](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
+    ![Ekran görüntüsü, sunucuyu ve veritabanını girebileceğiniz SQL Server veritabanı iletişim kutusunu gösterir.](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
 5. Sol bölmedeki **veritabanı** ' nı seçin, ardından Kullanıcı adı = *Geliştirici*yazın ve parola = *P \@ ssword1*girin. **Bağlan**'a tıklayın.  
 
-    ![Databasesignın](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
+    ![Ekran görüntüsü, bir Kullanıcı adı ve parola girebileceğiniz SQL Server veritabanı iletişim kutusunu gösterir.](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
 6. **Gezgin** bölmesinde, analiz veritabanı altında, yıldız şema tablolarını seçin: fact_Tickets, dim_Events, dim_Venues, dim_Customers ve dim_Dates. Sonra **Yükle**' yi seçin. 
 
@@ -186,13 +186,13 @@ Tebrikler! Verileri başarıyla Power BI yüklendi. Artık kiracılarınız hakk
 
 Bilet satış verilerini çözümleyerek, tüm kullanımlar genelinde kullanımdaki çeşitliliği görebilirsiniz. Her bir mekanın sattığı toplam bilet sayısının çubuk grafiğini çizmek için Power BI ' de aşağıdaki seçenekleri seçin. Bilet oluşturucusunun rastgele çeşitlemesi nedeniyle, sonuçlarınız farklı olabilir.
  
-![Totalbilet sbyvenlar](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
+![Ekran görüntüsünde, sağ taraftaki veri görselleştirmesi için bir Power B görselleştirme ve denetimleri gösterilmektedir.](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
 
 Yukarıdaki çizim, her bir mekan tarafından satılan bilet sayısının değiştiğini onaylar. Daha fazla bilet satmaya yönelik havalandırma, hizmetinizi daha az bilet satmaya kıyasla daha fazla şekilde kullanıyor. Burada, farklı kiracı ihtiyaçlarına göre kaynak ayırmayı uyarlamak için bir fırsat olabilir.
 
 Bilet satışlarının zaman içinde nasıl değişeceğini görmek için verileri daha fazla analiz edebilirsiniz. Her gün 60 gün boyunca satılan toplam bilet sayısını çizmek için Power BI ' de aşağıdaki seçenekleri seçin.
  
-![SaleVersusDate](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
+![Ekran görüntüsü bilet satışı dağılımı başlıklı Power B I görselleştirmesini ve satış gününü gösterir.](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
 
 Yukarıdaki grafikte, bazı havalandırma noktaları için bilet satış ani artış görüntülenir. Bu ani artışlar, bazı havalandırma, sistem kaynaklarının orantısız olarak tüketilme fikrini zorlayacaktır. Şimdiye kadar, ani artışlar meydana geldiğinde açık bir düzende yoktur.
 

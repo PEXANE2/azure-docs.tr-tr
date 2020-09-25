@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 45dc137141491938367fb57c6955e8e3145f8ff9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.custom: devx-track-js
+ms.openlocfilehash: e0bb4df611c6a9cfecf0aadbdfc3a577243856ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327627"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Öğretici: Azure İşlevleri ile Azure SignalR Hizmeti kimlik doğrulaması
 
@@ -26,7 +26,7 @@ Azure İşlevleri, App Service Kimlik Doğrulaması ve SignalR Hizmeti ile kimli
 * [Azure SignalR Hizmeti](https://azure.microsoft.com/services/signalr-service/?WT.mc_id=serverlesschatlab-tutorial-antchu): Yeni iletileri bağlı sohbet istemcilerine yayınlar
 * [Azure Depolama](https://azure.microsoft.com/services/storage/?WT.mc_id=serverlesschatlab-tutorial-antchu): Sohbet istemcisi arabirimi için statik web sitesini barındırır
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi oluşturmak için aşağıdaki yazılımlar gereklidir.
 
@@ -336,7 +336,7 @@ Azure depolama hesabı, Azure 'da çalışan bir işlev uygulaması için gerekl
     | Performans | Standart |
     | Hesap türü | StorageV2 (genel amaçlı V2) |
     | Çoğaltma | Yerel olarak yedekli depolama (LRS) |
-    | Erişim katmanı | Sık erişim |
+    | Erişim katmanı | Sık Erişimli |
 
 1. **Gözden geçir + oluştur**ve sonra **Oluştur**' a tıklayın.
 

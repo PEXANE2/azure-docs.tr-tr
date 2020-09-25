@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, özellikler, donanım, DK, yetenekler, derinlik, renk, RGB, IMU, dizi, derinlik, çoklu, eşitleme
-ms.openlocfilehash: e22f42a69e7d9b8283ec2f2da478dde0c27ce4ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277724"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361169"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Birden çok Azure Kinect DK cihazını eşitler
 
@@ -26,7 +26,7 @@ Aşağıdakiler de dahil olmak üzere birden çok Azure Kinect DK aygıtı kulla
 
 - Okları doldur. Azure Kinect DK veri dönüştürmeleri tek bir görüntü oluştursa da, iki kamera (derinlik ve RGB) aslında küçük bir uzaklığa sahiptir. Bu fark, olası sonuçlar sağlar. Bir ön plan nesnesi, bir cihazdaki iki kameradan biri için arka plan nesnesinin bir kısmının görünümünü engellediğinde bir occluson oluşur. Ortaya çıkan renkli görüntüde, ön plan nesnesi bir gölgeyi bir gölge olarak saçmış gibi görünüyor.  
    Örneğin, aşağıdaki diyagramda, sol taraftaki kamera "P2" gri pikselini görür. Ancak, beyaz ön plan nesnesi sağ tarafındaki kameranın IR ışını engeller. Sağ taraftaki kameranın "P2" için hiçbir verisi yok.  
-   ![Kapatma](./media/occlusion.png)  
+   ![Diyagramda, Engellenenler ile aynı noktaya yönlendirilmiş iki kamera gösterilmektedir.](./media/occlusion.png)  
    Daha fazla eşitlenmiş cihaz, occlued verileri sağlayabilir.
 - Nesneleri üç boyutta tarayın.
 - Etkin kare hızını 30 kareden (FPS) büyük bir değere yükseltin.

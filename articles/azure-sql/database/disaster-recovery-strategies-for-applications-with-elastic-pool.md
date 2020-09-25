@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 6887371e50f5b7e8706cac0a0700873c42bdac06
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0463d11466859c0f30901a0afd960bdc7b2599a5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321654"
+ms.locfileid: "91357799"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>Azure SQL veritabanı elastik havuzlarını kullanan uygulamalar için olağanüstü durum kurtarma stratejileri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Katmanlı hizmet teklifleri ve deneme müşterileri için farklı SLA 'Lar ve m�
 
 Bu senaryoyu desteklemek için, deneme kiracıları ayrı elastik havuzlara yerleştirerek ücretli kiracılardan ayırın. Deneme müşterilerinin, kiracı başına daha düşük eDTU veya sanal çekirdek ve daha uzun bir kurtarma süresi ile daha düşük SLA 'Sı vardır. Ödeme müşterileri, kiracı başına daha yüksek eDTU veya sanal çekirdekler ve daha yüksek bir SLA olan havuzlardır. En düşük kurtarma süresini güvence altına almak için, ödeyen müşterilerin kiracı veritabanları coğrafi olarak çoğaltılır. Bu yapılandırma bir sonraki diyagramda gösterilmiştir.
 
-![Şekil 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
+![Diyagram, Yönetim veritabanı ve ücretli müşteriler birincil havuzu ve deneme müşterileri havuzu için çoğaltma olmadan ikincil havuz arasında coğrafi çoğaltma uygulayan bir birincil bölge ve D R bölgesi gösterir.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
 İlk senaryoda olduğu gibi, yönetim veritabanları oldukça etkindir, bu sayede tek bir coğrafi çoğaltılan veritabanı (1) kullanılır. Bu, yeni müşteri abonelikleri, profil güncelleştirmeleri ve diğer yönetim işlemleri için öngörülebilir performansı sağlar. Yönetim veritabanlarının temel aldığı bölge, birincil bölgedir ve yönetim veritabanlarının ikincilerin bulunduğu bölge, DR bölgesidir.
 
@@ -86,7 +86,7 @@ Bu senaryoyu desteklemek için, deneme kiracıları ayrı elastik havuzlara yerl
 
 Birincil bölgede bir kesinti oluşursa, uygulamanızı çevrimiçi duruma getirmek için kurtarma adımları sonraki diyagramda gösterilmektedir:
 
-![Şekil 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![Diyagram, birincil bölge için yönetim veritabanına yük devretme, ücretli müşteri ikincil havuzu ve deneme müşterileri için oluşturma ve geri yükleme ile ilgili bir kesinti gösterir.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
 * Yönetim veritabanlarının yükünü hemen DR bölgesine (3) devreder.
 * Uygulamanın bağlantı dizesini DR bölgesini işaret etmek üzere değiştirin. Artık tüm yeni hesaplar ve kiracı veritabanları DR bölgesinde oluşturulur. Mevcut deneme müşterilerine, verileri geçici olarak kullanım dışı görüntülenir.
@@ -99,7 +99,7 @@ Bu noktada, uygulamanız DR bölgesinde yeniden çevrimiçi olur. Deneme müşte
 
 Uygulamayı DR bölgesindeki geri *yükledikten sonra* birincil bölge Azure tarafından kurtarılırken uygulamayı o bölgede çalıştırmaya devam edebilir veya birincil bölgeye yeniden bağlanma kararı verebilirsiniz. Yük devretme işlemi tamamlanmadan *önce* birincil bölge kurtarılırsa, hemen geri dönme işlemini göz önünde bulundurun. Yeniden çalışma, sonraki diyagramda gösterilen adımları alır:
 
-![Şekil 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![Diyagramda, birincil bölge geri yüklendikten sonra uygulanacak yeniden çalışma adımları gösterilmektedir.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
 * Tüm bekleyen coğrafi geri yükleme isteklerini iptal edin.
 * Yönetim veritabanlarının yükünü devreder (8). Bölgenin kurtarmasından sonra, eski birincil otomatik olarak ikincil haline gelir. Şimdi birincil olur.  
@@ -128,7 +128,7 @@ Bu senaryoyu desteklemek için, üç ayrı elastik havuz kullanın. Ücretli mü
 
 Kesintiler sırasında en düşük kurtarma süresini garantilemek için, ödeyen müşterilerin kiracı veritabanları, iki bölgenin her birinde birincil veritabanlarının %50 ' i ile coğrafi olarak çoğaltılır. Benzer şekilde, her bölge ikincil veritabanlarının %50 ' i içerir. Bu şekilde, bir bölge çevrimdışı ise, yalnızca ücretli müşterilerin veritabanlarının %50 ' inden etkilenmekte ve yük devri yapmanız gerekir. Diğer veritabanları değişmeden kalır. Bu yapılandırma aşağıdaki diyagramda gösterilmiştir:
 
-![Şekil 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
+![Diyagramda, A bölgesi adlı birincil bölge ve Yönetim veritabanı ile ücretli müşteriler birincil havuzu ile ikincil havuz ile deneme müşterileri havuzu için çoğaltma olmadan coğrafi çoğaltma uygulayan bölge B adlı ikincil bölge gösterilmektedir.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
 Önceki senaryolarda olduğu gibi, yönetim veritabanları oldukça etkin olduğundan, bunları tek coğrafi çoğaltılan veritabanları (1) olarak yapılandırın. Bu, yeni müşteri aboneliklerinin, profil güncelleştirmelerinin ve diğer yönetim işlemlerinin öngörülebilir performansını sağlar. A bölgesi yönetim veritabanlarının birincil bölgesidir ve B bölgesi yönetim veritabanlarını kurtarmak için kullanılır.
 
@@ -136,7 +136,7 @@ Kesintiler sırasında en düşük kurtarma süresini garantilemek için, ödeye
 
 Sonraki diyagramda, A bölgesinde bir kesinti oluşursa gerçekleştirilecek kurtarma adımları gösterilmektedir.
 
-![Şekil 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![Diyagramda birincil bölge için bir kesinti, yönetim veritabanına yük devretme, ücretli müşteri ikincil havuzu ve deneme müşterileri için B bölgesi oluşturma ve geri yükleme işlemi gösterilir.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
 * Yönetim veritabanlarının yükünü B bölgesine hemen devreder (3).
 * Uygulamanın bağlantı dizesini B bölgesindeki yönetim veritabanlarına işaret etmek üzere değiştirin. yönetim veritabanlarını değiştirerek yeni hesapların ve kiracı veritabanlarının B bölgesinde oluşturulduğundan ve mevcut kiracı veritabanlarının da burada bulunduğundan emin olun. Mevcut deneme müşterilerine, verileri geçici olarak kullanım dışı görüntülenir.
@@ -152,7 +152,7 @@ Bu noktada, uygulamanız B bölgesinde yeniden çevrimiçi olur. Deneme müşter
 
 A bölgesi kurtarılırken deneme müşterileri için B bölgesini kullanmak mı yoksa A bölgesindeki deneme müşterileri havuzunu kullanarak yeniden çalışma mi istediğinize karar vermeniz gerekir. Kurtarma işleminden sonra değiştirilen deneme kiracı veritabanlarının yüzdesi tek bir ölçütte olabilir. Bu karardan bağımsız olarak, iki havuz arasında ücretli kiracılar yeniden dengelenmesi gerekir. sonraki diyagramda, deneme kiracısı veritabanları A bölgesine geri döndüğünüzde işlem gösterilmektedir.  
 
-![Şekil 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![Diyagram A bölgesini geri yükledikten sonra uygulanacak yeniden çalışma adımlarını gösterir.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
 * Deneme DR havuzuna tüm bekleyen coğrafi geri yükleme isteklerini iptal edin.
 * Yönetim veritabanının yükünü devreder (8). Bölgenin kurtarmasından sonra, eski birincil otomatik olarak ikincil haline gelmiştir. Şimdi birincil olur.  

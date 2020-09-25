@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: cae0ec1daed8277d1e7e4f3c5cbc701965ac00b8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: b272426f865636640e0a2fafde46cbebbe6eb363
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327502"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN için standart kural altyapısı başvurusu
 
@@ -40,7 +40,7 @@ Bu sınıra dahil edilen varsayılan bir *genel kuraldır*. Genel kural eşleşm
 
 Her Azure CDN uç noktası en fazla 25 kurala sahip olabilir. Her kurala en fazla on eşleşme koşulu ve beş eylem olabilir. Kural altyapısı için fiyatlandırma aşağıdaki boyutları izler: 
 - Kurallar: her ay kural başına $1 
-- Işlenen istek sayısı: milyon talep başına $0,60
+- Işlenen istek sayısı: milyon istek başına $0,60
 - İlk 5 kural ücretsiz kalacak
 
 ## <a name="syntax"></a>Syntax

@@ -1,25 +1,25 @@
 ---
 title: JavaScript kullanarak Azure Işlevleri ve SignalR hizmeti ile bir sohbet odası oluşturun
-description: Azure SignalR Hizmetini ve Azure İşlevlerini kullanarak bir sohbet odası oluşturmaya yönelik hızlı başlangıç.
+description: JavaScript kullanarak bir sohbet odası oluşturmak için Azure SignalR hizmetini ve Azure Işlevlerini kullanmaya yönelik hızlı başlangıç.
 author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 74f0a1c163380b88986b6866e346a5f044772a0e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.custom: devx-track-js
+ms.openlocfilehash: c210096c1765015378f12f8c5e01fc9f8f97e10b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327689"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Hızlı başlangıç: Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturmak için JavaScript kullanma
 
 Azure SignalR hizmeti, uygulamanıza kolayca gerçek zamanlı işlevselliği eklemenizi sağlar ve Azure Işlevleri, herhangi bir altyapıyı yönetmeden kodunuzu çalıştırmanıza olanak tanıyan sunucusuz bir platformdur. Bu hızlı başlangıçta, SignalR hizmeti ve Işlevleri 'ni kullanarak sunucusuz, gerçek zamanlı bir sohbet uygulaması oluşturmak için JavaScript 'ı kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio Code](https://code.visualstudio.com/) gibi bir kod Düzenleyicisi
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).

@@ -1,6 +1,6 @@
 ---
 title: Proxy Azure AD Uygulaması bağlantıları ve URL 'Leri çevirme | Microsoft Docs
-description: Azure AD Uygulama Ara Sunucusu bağlayıcıları hakkında temel bilgileri içerir.
+description: Azure AD uygulama proxy 'si ile yayımlanan uygulamalar için sabit kodlanmış bağlantıları yeniden yönlendirmeyi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563e5e811eec907ba286bdfb264fc51d32137e96
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 544aa1a4a859a9c328eb1d36e72d0f9f9ddb55b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282934"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327910"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu yayımlanan uygulamalar için sabit kodlanmış bağlantıları yeniden yönlendirme
 

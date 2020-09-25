@@ -11,12 +11,12 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e46c6d1c14d226522a1d534418b91076efeaaccf
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f1c4fe8268d24026609f55d76a102a5c9a4e8295
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356325"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL Yönetilen Örneği bağlantı türleri
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,14 +27,14 @@ Bu makalede, istemcilerin bağlantı türüne bağlı olarak Azure SQL yönetile
 
 Azure SQL yönetilen örneği aşağıdaki iki bağlantı türünü destekler:
 
-- **Yeniden yönlendir (önerilir):** İstemciler, veritabanını barındıran düğüme doğrudan bağlantı kurar. Yeniden yönlendirme kullanarak bağlantı sağlamak için, 1433 ve 11000-11999 bağlantı noktalarında erişime izin vermek üzere güvenlik duvarları ve ağ güvenlik grupları (NSG) açmanız gerekir. Paketler doğrudan veritabanına gider ve bu nedenle proxy üzerinden yeniden yönlendirme kullanan gecikme süresi ve işleme performans iyileştirmeleri vardır.
-- **Ara sunucu (varsayılan):** Bu modda, tüm bağlantılar proxy ağ geçidi bileşeni kullanıyor. Bağlantıyı etkinleştirmek için, yalnızca özel ağlar için bağlantı noktası 1433 ve genel bağlantı bağlantı noktası 3342 ' nin açılması gerekir. Bu modun seçilmesi, iş yükünün doğasına bağlı olarak daha yüksek gecikme süresine ve düşük aktarım hızına yol açabilir. En düşük gecikme süresi ve en yüksek aktarım hızı için proxy bağlantı İlkesi üzerinden yeniden yönlendirme bağlantı ilkesini öneririz.
+- **Yeniden yönlendir (önerilir):** İstemciler, veritabanını barındıran düğüme doğrudan bağlantı kurar. Yeniden yönlendirmeyi kullanarak bağlantıyı etkinleştirmek için güvenlik duvarlarını ve Ağ Güvenlik Gruplarını (NSG) 1433 ve 11000-11999 numaralı bağlantı noktalarına erişim izni verecek şekilde açmanız gerekir. Paketler doğrudan veritabanına gider ve bu nedenle ara sunucu yerine yeniden yönlendirme kullanıldığında gecikme süresinde ve aktarım hızı performansında gelişmeler görülür.
+- **Ara sunucu (varsayılan):** Bu modda, tüm bağlantılar proxy ağ geçidi bileşeni kullanıyor. Bağlantıyı etkinleştirmek için yalnızca özel ağlarda 1433 numaralı bağlantı noktası ve genel bağlantıda 3342 numaralı bağlantı noktası açılmalıdır. Bu modun seçilmesi, iş yükünün doğasına bağlı olarak gecikme süresini uzatır ve aktarım hızını düşürür. En düşük gecikme süresi ve en yüksek aktarım hızı için ara sunucu bağlantı ilkesi yerine yeniden yönlendirme bağlantı ilkesinin kullanılmasını kesinlikle öneririz.
 
 ## <a name="redirect-connection-type"></a>Yeniden yönlendirme bağlantı türü
 
 Yönlendirme bağlantısı türünde, TCP oturumu SQL altyapısına kurulduktan sonra, istemci oturumu yük dengeleyiciden sanal küme düğümünün hedef sanal IP 'sini edinir. Sonraki paketler, ağ geçidini atlayarak doğrudan sanal küme düğümüne akar. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
 
-![redirect.png](./media/connection-types-overview/redirect.png)
+![Diyagram, bir Azure sanal ağındaki bir ağ geçidine bağlı olan, yeniden yönlendirme-bulma-DB ile şirket içi bir ağı ve sanal ağdaki bir veritabanı birincil düğümüne bağlı bir yeniden yönlendirme sorgusu gösterir.](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
 > Yeniden yönlendirme bağlantı türü şu anda yalnızca özel bir uç nokta için çalışıyor. Bağlantı türü ayarından bağımsız olarak, genel uç nokta üzerinden gelen bağlantılar bir ara sunucu üzerinden olur.
@@ -43,7 +43,7 @@ Yönlendirme bağlantısı türünde, TCP oturumu SQL altyapısına kurulduktan 
 
 Ara sunucu bağlantı türünde TCP oturumu, ağ geçidi kullanılarak oluşturulur ve sonraki tüm paketler üzerinden akar. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
 
-![proxy.png](./media/connection-types-overview/proxy.png)
+![Diyagramda bir Azure sanal ağındaki ağ geçidine bağlı bir ara sunucu içeren bir şirket içi ağ görüntülenir, sanal ağdaki bir veritabanı birincil düğümünün yanına bağlanın.](./media/connection-types-overview/proxy.png)
 
 ## <a name="changing-connection-type"></a>Bağlantı türünü değiştirme
 

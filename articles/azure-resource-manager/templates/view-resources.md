@@ -3,12 +3,12 @@ title: Kaynak özelliklerini bulma
 description: Kaynak özelliklerinin nasıl aranacağını açıklar.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 75c089ac9d0ca08c788fea1ac9011f018ef0195e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327757"
 ---
 # <a name="discover-resource-properties"></a>Kaynak özelliklerini bulma
 
@@ -69,12 +69,12 @@ Azure Resource Manager şablonu başvurusu, şablon şeması için en kapsamlı 
 
 Kaynak Gezgini Azure portal katıştırılır. Bu yöntemi kullanmadan önce bir depolama hesabınız olması gerekir. Yoksa, bir tane oluşturmak için aşağıdaki düğmeyi seçin:
 
-[![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
+[![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Arama kutusuna **Kaynak Gezgini**' ni girip **Kaynak Gezgini**' ı seçin.
 
-    ![Azure portal Kaynak Gezgini](./media/view-resources/azure-portal-resource-explorer.png)
+    ![Ekran görüntüsünde, Azure portal Kaynak Gezgini araması gösterilmektedir.](./media/view-resources/azure-portal-resource-explorer.png)
 
 1. Solda, **abonelikler**' i genişletin ve ardından Azure aboneliğinizi genişletin. Depolama hesabını **sağlayıcılar** ya da **ResourceGroups**altında bulabilirsiniz.
 
@@ -97,7 +97,7 @@ Resources.azure.com, bir Azure aboneliğine sahip herkes tarafından genel bir W
 
 Bu aracı kullanarak şema bilgilerinin nasıl alınacağını göstermek için bir depolama hesabınız olması gerekir. Yoksa, bir tane oluşturmak için aşağıdaki düğmeyi seçin:
 
-[![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
+[![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
 
 1. [Resources.Azure.com](https://resources.azure.com/)konumuna gidin. Aracın sol bölmeyi popüler bir süre sürer.
 1. **Abonelikler**' i seçin.

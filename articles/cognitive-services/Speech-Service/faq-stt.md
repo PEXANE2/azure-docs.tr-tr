@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 50ca6eacc7e75a3ff391401e7ced0e3583f1a285
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661529"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357582"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -29,7 +29,7 @@ Y **: temel bir model**, Microsoft 'a ait veriler kullanılarak eğitilmiştir v
 
 **S: bir temel modeli kullanmak istersem nereden başlayabilirim?**
 
-**A**: ilk olarak bir [abonelik anahtarı](get-started.md)alın. Önceden dağıtılan taban çizgisi modellerine REST çağrıları yapmak isterseniz [REST API 'lerine](rest-apis.md)bakın. WebSockets kullanmak istiyorsanız [SDK 'yı indirin](speech-sdk.md).
+**A**: ilk olarak bir [abonelik anahtarı](overview.md#try-the-speech-service-for-free)alın. Önceden dağıtılan taban çizgisi modellerine REST çağrıları yapmak isterseniz [REST API 'lerine](rest-apis.md)bakın. WebSockets kullanmak istiyorsanız [SDK 'yı indirin](speech-sdk.md).
 
 **S: her zaman özel bir konuşma modeli mi kullanmam gerekir?**
 

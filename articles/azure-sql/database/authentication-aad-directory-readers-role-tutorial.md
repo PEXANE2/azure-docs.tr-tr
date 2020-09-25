@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ca330357e88ff6f4824c74a6048769638542cc29
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278048"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Öğretici: Azure AD grubuna Dizin okuyucuları rolü atama ve rol atamalarını yönetme
 
@@ -29,7 +29,7 @@ Bu öğretici, [Azure Active Directory (Önizleme) içinde rol atamalarını yö
 
 Azure SQL için bir Azure AD grubuna Dizin okuyucuları rolünü atamanın avantajları hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Azure AD örneği. Daha fazla bilgi için bkz. Azure [SQL Ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](authentication-aad-configure.md).
 - Bir SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE.
@@ -55,7 +55,7 @@ Azure SQL için bir Azure AD grubuna Dizin okuyucuları rolünü atamanın avant
 
 Oluşturulan grubu denetlemek ve yönetmek için, Azure portal **gruplar** bölmesine dönün ve grup adınızı arayın. Grubu seçtikten sonra, ayarları **Yönet** ' in **sahipler** ve **Üyeler** menüsünün altına ek sahipler ve Üyeler eklenebilir. Ayrıca grup için **atanan rolleri** gözden geçirebilirsiniz.
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="Azure-AD-grup-oluşturuldu":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="Üyeler, sahipler ve atanan roller (Önizleme) için ayarlar menülerini açan bağlantıları içeren bir grup bölmesinin ekran görüntüsü.":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>Gruba Azure SQL yönetilen kimliği ekleme
 
@@ -68,17 +68,17 @@ Sonraki adımlar için, genel yönetici veya ayrıcalıklı rol yöneticisi kull
 
 1. Azure portal **SQL yönetilen örnek** kaynağınızın adını bulun.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="Azure-ad-yönetilen-örnek":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="SQL yönetilen örnekler ekranının SQL örnek adı ssomtest ve subnet Name ManagedInstance vurgulanmış ekran görüntüsü.":::
 
    SQL yönetilen örneğinizin oluşturulması sırasında örneğiniz için bir Azure kimliği oluşturulmuştur. Oluşturulan kimlik, SQL yönetilen örnek adınızın ön ekiyle aynı ada sahip. Aşağıdaki adımları izleyerek, bir Azure AD uygulaması olarak oluşturulan SQL yönetilen örnek Kimliğiniz için hizmet sorumlusu ' nı bulabilirsiniz:
 
     - **Azure Active Directory** kaynağına gidin. **Yönet** ayarı altında **Kurumsal uygulamalar**' ı seçin. **Nesne kimliği** , örneğin kimliğidir.
     
-    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="Azure-ad-yönetilen-örnek-hizmet-asıl":::
+    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="SQL yönetilen örneğinin nesne KIMLIĞINE sahip bir Azure Active Directory kaynağa yönelik kurumsal uygulamalar sayfasının ekran görüntüsü.":::
 
 1. **Azure Active Directory** kaynağına gidin. **Yönetilen**altında **gruplar**' a gidin. Oluşturduğunuz grubu seçin. Grubunuzun **yönetilen** ayarı altında **Üyeler**' i seçin. Yukarıda bulunan adı arayarak **üye Ekle** ' yi SEÇIN ve SQL yönetilen örnek hizmeti sorumlunuzu grubun bir üyesi olarak ekleyin.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="Azure-AD-Add-Managed-Instance-Service-Principal":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="Yeni üye olarak bir SQL yönetilen örneği eklemek için vurgulanmış seçeneklere sahip bir Azure Active Directory kaynağı için Üyeler sayfasının ekran görüntüsü.":::
 
 > [!NOTE]
 > Hizmet sorumlusu izinlerinin Azure sistemi aracılığıyla yayılması ve Azure AD Graph API erişimine izin vermek birkaç dakika sürebilir. SQL yönetilen örneği için bir Azure AD yöneticisi sağlamadan önce birkaç dakika beklemeniz gerekebilir.

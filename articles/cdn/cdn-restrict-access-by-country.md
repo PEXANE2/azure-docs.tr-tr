@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed82adcc1432bde27042d5775c454bfabcdb96ca
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887028"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358143"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Azure CDN içeriğini ülkeye/bölgeye göre kısıtla
 
@@ -38,7 +38,7 @@ Bu bölümdeki yordamlar, Akamai Azure CDN ve yalnızca **Verizon** profillerind
 ### <a name="define-the-directory-path"></a>Dizin yolunu tanımlama
 Coğrafi filtreleme özelliğine erişmek için Portal içindeki CDN uç noktanızı seçin, ardından sol taraftaki menüde Ayarlar ' ın altında **coğrafi filtreleme** ' yi seçin. 
 
-![Coğrafi filtreleme standardı](./media/cdn-filtering/cdn-geo-filtering-standard.png)
+![Bir uç nokta için menüden seçili coğrafi filtrelemeyi gösteren ekran görüntüsü.](./media/cdn-filtering/cdn-geo-filtering-standard.png)
 
 **Yol** kutusunda, kullanıcıların erişime izin verilecek veya erişimi reddedildiği konumun göreli yolunu belirtin. 
 
@@ -67,7 +67,7 @@ Tüm dosyalarınız için bir eğik çizgi (/) ile coğrafi filtreleme uygulayab
 
 Ülkeleri/bölgeleri seçmeyi tamamladıktan sonra yeni coğrafi Filtreleme kuralını etkinleştirmek için **Kaydet** ' i seçin. 
 
-![Coğrafi filtreleme kuralları](./media/cdn-filtering/cdn-geo-filtering-rules.png)
+![Ekran görüntüsünde, ülkelerin veya bölgelerin engellenmesini veya bunlara izin vermek için kullanılacak ülke KODLARı gösterilmektedir.](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 Bir kuralı silmek için, **coğrafi filtreleme** sayfasındaki listeden seçin ve **Sil**' i seçin.
@@ -79,7 +79,7 @@ Bir kuralı silmek için, **coğrafi filtreleme** sayfasındaki listeden seçin 
 
 2. Verizon portalından, **http büyük**' i seçin ve ardından **ülke filtreleme**' yi seçin.
 
-    ![Coğrafi filtreleme standardı](./media/cdn-filtering/cdn-geo-filtering-premium.png)
+    ![Ekran görüntüsünde, Azure C D N 'de ülke filtrelemeyi seçme Işlemi gösterilmektedir.](./media/cdn-filtering/cdn-geo-filtering-premium.png)
 
 3. **Ülke filtresi ekle**' yi seçin.
 
@@ -93,12 +93,12 @@ Bir kuralı silmek için, **coğrafi filtreleme** sayfasındaki listeden seçin 
     
     Yeni kural, **ülke filtreleme** sayfasındaki tabloda görüntülenir.
 
-    ![Coğrafi filtreleme kuralları](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
+    ![Ekran görüntüsü, kuralın ülke filtrelemesinde nerede göründüğünü gösterir.](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 Ülke/bölge filtreleme kuralları tablosunda, bir kuralın yanındaki Sil simgesini veya değiştirmek için Düzenle simgesini seçin.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 * Coğrafi filtreleme yapılandırmanızda yapılan değişiklikler hemen geçerli olmaz:
    * **Microsoft’tan Azure CDN Standart** profilleri için yayma işlemi genellikle 10 dakikada tamamlanır. 
    * **Akamai’den Azure CDN Standart** profilleri için yayma işlemi genellikle bir dakika içinde tamamlanır. 

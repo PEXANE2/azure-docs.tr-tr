@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 467f7b3525883e16e57a06ff97cf4fd386279d22
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: b38ba59b3efc7e5869eecbc84879a6c0a4ce7369
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958244"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360217"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service zaman aralıklı giden bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -32,7 +32,7 @@ Azure App Service üzerinde barındırılan uygulamalar ve Işlevler aşağıdak
 Aşağıdaki sınırların birine ulaştığından, bu belirtilerin önemli bir nedeni, uygulama örneğinin dış uç noktaya yeni bir bağlantı açabilmesine yol açmalarıdır:
 
 * TCP bağlantıları: yapılabilecek giden bağlantı sayısı için bir sınır vardır. Bu, kullanılan çalışan boyutuyla ilişkilidir.
-* SNAT bağlantı noktaları: Azure ['Daki giden bağlantılarda](../load-balancer/load-balancer-outbound-connections.md)anlatıldığı gibi Azure, genel IP adresi alanında Azure dışındaki uç noktalarıyla iletişim kurmak için kaynak ağ adresi ÇEVIRISI (SNAT) ve bir Load Balancer (müşterilere gösterilmez) kullanır. Azure App Service üzerindeki her örneğe başlangıçta önceden ayrılmış **128** SNAT bağlantı noktası numarası verilir. Bu sınır, aynı konağa ve bağlantı noktası birleşimine yönelik bağlantıların açılmasını etkiler. Uygulamanız adres ve bağlantı noktası birleşimlerinin karışımına bağlantı oluşturursa, SNAT bağlantı noktalarınızı kullanamazsınız. SNAT bağlantı noktaları, aynı adrese ve bağlantı noktası birleşimine yinelenen çağrılar olduğunda kullanılır. Bağlantı noktası yayımlandıktan sonra, bağlantı noktası gerektiğinde yeniden kullanılabilir. Azure ağ yükü dengeleyici geri kazanır, yalnızca 4 dakika bekledikten sonra, kapalı bağlantılardan gelen SNAT bağlantı noktasıdır.
+* SNAT bağlantı noktaları: Azure ['Daki giden bağlantılarda](../load-balancer/load-balancer-outbound-connections.md)anlatıldığı gibi Azure, genel IP adresi alanında Azure dışındaki uç noktaları ile iletişim kurmak için kaynak ağ adresi ÇEVIRISI (SNAT) ve bir Load Balancer (müşterilere gösterilmez) kullanır. Azure App Service üzerindeki her örneğe başlangıçta önceden ayrılmış **128** SNAT bağlantı noktası numarası verilir. Bu sınır, aynı konağa ve bağlantı noktası birleşimine yönelik bağlantıların açılmasını etkiler. Uygulamanız adres ve bağlantı noktası birleşimlerinin karışımına bağlantı oluşturursa, SNAT bağlantı noktalarınızı kullanamazsınız. SNAT bağlantı noktaları, aynı adrese ve bağlantı noktası birleşimine yinelenen çağrılar olduğunda kullanılır. Bağlantı noktası yayımlandıktan sonra, bağlantı noktası gerektiğinde yeniden kullanılabilir. Azure ağ yükü dengeleyici geri kazanır, yalnızca 4 dakika bekledikten sonra, kapalı bağlantılardan gelen SNAT bağlantı noktasıdır.
 
 Uygulamalar veya işlevler hızlı bir şekilde yeni bir bağlantı açtığında, 128 bağlantı noktasının önceden ayrılmış kotasını hızlıca tüketebilirler. Daha sonra, yeni bir SNAT bağlantı noktası kullanılabilir hale gelene kadar, ek SNAT bağlantı noktalarını dinamik olarak ayırarak veya geri kazanılan bir SNAT bağlantı noktasının yeniden kullanılmasını engellenecektir. Yeni bağlantılar oluşturamadığı için engellenen uygulamalar veya işlevler, bu makalenin **Belirtiler** bölümünde anlatılan bir veya daha fazla sorunu yaşamaya başlar.
 
@@ -124,7 +124,7 @@ Diğer ortamlarda, uygulamalarınızda bağlantı havuzu uygulamak için sağlay
 
 Sınırlar, çalışanlarınızın boyutuna göre ayarlandığından, giden TCP sınırlarının çözülmesini daha kolay hale getirir. Sınır, [VM 'Ler arası sayısal sınırlara göre sınırları görebilir-TCP bağlantıları](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Sınır adı|Açıklama|Küçük (a1)|Orta (a2)|Büyük (a3)|Yalıtılmış katman (Ao)|
+|Sınır adı|Description|Küçük (a1)|Orta (a2)|Büyük (a3)|Yalıtılmış katman (Ao)|
 |---|---|---|---|---|---|
 |Bağlantılar|Tüm VM genelinde bağlantı sayısı|1920|3968|8064|16.000|
 
@@ -156,7 +156,7 @@ TCP bağlantıları ve SNAT bağlantı noktaları doğrudan ilgili değildir. TC
 * TCP bağlantı sınırı çalışan örneği düzeyinde gerçekleşir. Azure ağ giden Yük Dengeleme, SNAT bağlantı noktası sınırlaması için TCP bağlantıları ölçümünü kullanmaz.
 * TCP bağlantı sınırları, [korumalı alan çapraz VM 'de, TCP bağlantılarında](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits) açıklanmaktadır
 
-|Sınır adı|Açıklama|Küçük (a1)|Orta (a2)|Büyük (a3)|Yalıtılmış katman (Ao)|
+|Sınır adı|Description|Küçük (a1)|Orta (a2)|Büyük (a3)|Yalıtılmış katman (Ao)|
 |---|---|---|---|---|---|
 |Bağlantılar|Tüm VM genelinde bağlantı sayısı|1920|3968|8064|16.000|
 

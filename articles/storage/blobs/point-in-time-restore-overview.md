@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/18/2020
+ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7fbebf21b79d2a533de0a872dfe6a10bc8f8e7e5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 32d0c44abed2d4ace4c8896922ed7f6ed8b596ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987035"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326108"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Blok Blobları için noktadan noktaya geri yükleme
 
@@ -37,13 +37,6 @@ Tek seferde bir depolama hesabında yalnızca bir geri yükleme işlemi çalış
 
 **BLOB aralıklarını geri yükleme** işlemi, işlemi benzersiz şekilde tanımlayan bir GERI yükleme kimliği döndürüyor. Bir zaman noktası geri yükleme işleminin durumunu denetlemek için, **BLOB aralıklarını geri** yükle işleminden döndürülen GERI yükleme kimliği Ile **geri yükleme durumunu Al** işlemini çağırın.
 
-Geri yükleme işlemlerinde aşağıdaki sınırlamaları aklınızda bulundurun:
-
-- [URL 'den](/rest/api/storageservices/put-block-from-url) [PUT bloğu veya](/rest/api/storageservices/put-block) put bloğu aracılığıyla karşıya yüklenen ancak [PUT blok listesi](/rest/api/storageservices/put-block-list)aracılığıyla kaydedilmemiş bir blok, blob 'un bir parçası değildir ve bu nedenle geri yükleme işleminin bir parçası olarak geri yüklenmez.
-- Etkin kiralamaya sahip bir blob geri yüklenemez. Etkin bir kiralamaya sahip bir blob geri yüklenecek blob aralığına dahil edilmezse geri yükleme işlemi otomatik olarak başarısız olur.
-- Anlık görüntüler, geri yükleme işleminin bir parçası olarak oluşturulmaz veya silinmez. Yalnızca temel blob önceki durumuna geri yüklendi.
-- Bir blob, mevcut bir süre ve geri yükleme noktası arasındaki dönemdeki sık ve seyrek katmanlar arasında taşınırsa, blob önceki katmanına geri yüklenir. Ancak, arşiv katmanına taşınan bir blob geri yüklenmez.
-
 > [!IMPORTANT]
 > Geri yükleme işlemi gerçekleştirdiğinizde, Azure depolama, işlem süresince geri yüklenen aralıklardaki bloblarda veri işlemlerini engeller. Birincil konumda okuma, yazma ve silme işlemleri engellenir. Bu nedenle, Azure portal kapsayıcıları gibi işlemler geri yükleme işlemi devam ederken beklendiği gibi gerçekleştirilemeyebilir.
 >
@@ -57,7 +50,7 @@ Geri yükleme işlemlerinde aşağıdaki sınırlamaları aklınızda bulundurun
 Zaman içinde geri yükleme, zaman içinde nokta geri yüklemeyi etkinleştirebilmeniz için aşağıdaki Azure depolama özelliklerinin etkinleştirilmesini gerektirir:
 
 - [Geçici silme](soft-delete-overview.md)
-- [Akışı Değiştir](storage-blob-change-feed.md)
+- [Akışı değiştirme](storage-blob-change-feed.md)
 - [Blob sürümü oluşturma](versioning-overview.md)
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Zaman içinde bir noktaya geri yükleme için bekletme süresi
@@ -76,9 +69,12 @@ Geri yükleme işlemini başlatmak için, bir istemcinin depolama hesabındaki t
 
 Blok Blobları için bir noktadan noktaya geri yükleme aşağıdaki sınırlamalara ve bilinen sorunlara sahiptir:
 
-- Yalnızca standart bir genel amaçlı v2 depolama hesabındaki blok Bloblar, bir zaman noktası geri yükleme işleminin parçası olarak geri yüklenebilir. Ekleme Blobları, sayfa Blobları ve Premium blok Blobları geri yüklenmez. Saklama döneminde bir kapsayıcıyı sildiyseniz, bu kapsayıcı, zaman içinde geri yükleme işlemi ile geri yüklenmez. Kapsayıcıları silinmeye karşı koruma hakkında bilgi edinmek için bkz. [kapsayıcılar Için geçici silme (Önizleme)](soft-delete-container-overview.md).
-- Yalnızca sık veya seyrek katmanlardaki blok Blobları, bir zaman noktası geri yükleme işleminde geri yüklenebilir. Arşiv katmanındaki blok bloblarının geri yüklenmesi desteklenmiyor. Örneğin, sık erişim katmanındaki bir blob iki gün önce arşiv katmanına taşınmışsa ve geri yükleme işlemi üç gün önceki bir noktaya geri yüklüyorsa blob sık erişim katmanına geri yüklenmez. Arşivlenmiş bir blobu geri yüklemek için önce Arşiv katmanının dışına taşıyın.
-- Geri yüklenecek aralıktaki Blok Blobu etkin bir kira içeriyorsa, zaman içinde geri yükleme işlemi başarısız olur. Geri yükleme işlemini başlatmadan önce tüm etkin kiraları kesin.
+- Yalnızca standart bir genel amaçlı v2 depolama hesabındaki blok Bloblar, bir zaman noktası geri yükleme işleminin parçası olarak geri yüklenebilir. Ekleme Blobları, sayfa Blobları ve Premium blok Blobları geri yüklenmez. 
+- Saklama döneminde bir kapsayıcıyı sildiyseniz, bu kapsayıcı, zaman içinde geri yükleme işlemi ile geri yüklenmez. Silinen bir kapsayıcıda blob 'ları içeren bir dizi blobu geri yüklemeye çalışırsanız, zaman içinde geri yükleme işlemi başarısız olur. Kapsayıcıları silinmeye karşı koruma hakkında bilgi edinmek için bkz. [kapsayıcılar Için geçici silme (Önizleme)](soft-delete-container-overview.md).
+- Bir blob, mevcut bir süre ve geri yükleme noktası arasındaki dönemdeki sık ve seyrek katmanlar arasında taşınırsa, blob önceki katmanına geri yüklenir. Arşiv katmanındaki blok bloblarının geri yüklenmesi desteklenmiyor. Örneğin, sık erişim katmanındaki bir blob iki gün önce arşiv katmanına taşınmışsa ve geri yükleme işlemi üç gün önceki bir noktaya geri yüklüyorsa blob sık erişim katmanına geri yüklenmez. Arşivlenmiş bir blobu geri yüklemek için önce Arşiv katmanının dışına taşıyın. Daha fazla bilgi için bkz. [Arşiv katmanından blob verilerini yeniden doldurma](storage-blob-rehydration.md).
+- [URL 'den](/rest/api/storageservices/put-block-from-url) [PUT bloğu veya](/rest/api/storageservices/put-block) put bloğu aracılığıyla karşıya yüklenen ancak [PUT blok listesi](/rest/api/storageservices/put-block-list)aracılığıyla kaydedilmemiş bir blok, blob 'un bir parçası değildir ve bu nedenle geri yükleme işleminin bir parçası olarak geri yüklenmez.
+- Etkin kiralamaya sahip bir blob geri yüklenemez. Etkin bir kiralamaya sahip bir blob geri yüklenecek blob aralığına dahil edilmezse geri yükleme işlemi otomatik olarak başarısız olur. Geri yükleme işlemini başlatmadan önce tüm etkin kiraları kesin.
+- Anlık görüntüler, geri yükleme işleminin bir parçası olarak oluşturulmaz veya silinmez. Yalnızca temel blob önceki durumuna geri yüklendi.
 - Azure Data Lake Storage 2. düz ve hiyerarşik ad alanlarını geri yükleme desteklenmez.
 
 > [!IMPORTANT]

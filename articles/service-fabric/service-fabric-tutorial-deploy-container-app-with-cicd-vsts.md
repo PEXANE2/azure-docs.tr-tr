@@ -4,12 +4,12 @@ description: Bu öğreticide, Visual Studio Azure DevOps kullanarak bir Azure Se
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
-ms.openlocfilehash: 498513d1e31108d633de8165b2684dffbebdf37d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563956"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326312"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesine CI/CD ile kapsayıcı uygulaması dağıtma
 
@@ -46,11 +46,11 @@ Derleme oluşturabilmeniz için uygulama kaynak dosyalarınızı Azure DevOps 'd
 
 **Takım Gezgini**’ndeki **Gönderim** görünümünde **Azure DevOps’a Gönder**’in altında yer alan **Git Deposunda Yayımla** düğmesini seçin.
 
-![Git deposunu gönderme][push-git-repo]
+![Visual Studio 'da Takım Gezgini eşitleme penceresinin ekran görüntüsü. Azure DevOps 'a gönderim altında git deposunda Yayımla düğmesi vurgulanır.][push-git-repo]
 
 E-postanızı doğrulayın ve **Hesap** açılır penceresinde kuruluşunuzu seçin. Henüz bir kuruluşunuz yoksa, bir kuruluş ayarlamanız gerekebilir. Deponuzun adını girin ve **Depoyu yayımla**’yı seçin.
 
-![Git deposunu gönderme][publish-code]
+![Azure DevOps 'a gönderim penceresi ekran görüntüsü. E-posta, hesap, Depo adı ve depoyu Yayımla düğmesi için ayarlar vurgulanır.][publish-code]
 
 Depoyu yayımlamak, hesabınızda yerel depoyla aynı adda yeni bir takım projesi oluşturur. Mevcut takım projesinde depoyu oluşturmak için, **Depo adının** yanındaki **Gelişmiş**’e tıklayın ve bir takım projesi seçin. **Web üzerinde görüntüleyin**’i seçerek kodunuzu web’de görüntüleyebilirsiniz.
 
@@ -158,7 +158,7 @@ Derlemenizin ilerleme durumunu denetlemek için, Visual Studio'nun **Takım Gezg
 
 Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir web tarayıcısı açın ve `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` sayfasına gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170815.3").
 
-![Service Fabric Explorer][sfx1]
+![Service Fabric Explorer 'daki oylama uygulamasının ekran görüntüsü. Essentials sekmesinde, "1.0.0.20170815.3" uygulama sürümü vurgulanır.][sfx1]
 
 ## <a name="update-the-application"></a>Uygulamayı güncelleştirme
 
@@ -166,11 +166,11 @@ Uygulamada kod değişikliklerini yapın.  Önceki adımları izleyerek değişi
 
 Uygulamanın yükseltmesi başladığında, Service Fabric Explorer'da yükseltmenin ilerleme durumunu izleyebilirsiniz:
 
-![Service Fabric Explorer][sfx2]
+![Service Fabric Explorer 'daki oylama uygulamasının ekran görüntüsü. "Yükseltme sürüyor" iletisi vurgulanır ve uygulama durumu "yükseltiliyor" olur.][sfx2]
 
 Uygulama yükseltmesi birkaç dakika sürebilir. Yükseltme tamamlandığında, uygulama bir sonraki sürümde çalışıyor olacaktır.  Bu örnekte "1.0.0.20170815.4".
 
-![Service Fabric Explorer][sfx3]
+![Service Fabric Explorer 'daki oylama uygulamasının ekran görüntüsü. Essentials sekmesinde, güncelleştirilmiş uygulama sürümü "1.0.0.20170815.4" vurgulanır.][sfx3]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

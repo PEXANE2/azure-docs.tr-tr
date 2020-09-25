@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a9d0fa9efaa07582212344e617d9a42f264b99ee
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337790"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327740"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
@@ -128,8 +128,10 @@ E-postalar aşağıdaki e-posta adreslerinden gönderilir. E-posta filtrelemesin
 
 Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.
 
-### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager Rolüne E-posta Gönder
+### <a name="email-azure-resource-manager-role"></a>E-posta Azure Resource Manager Rolü
 Abonelik rolü üyelerine e-posta gönderin. E-posta yalnızca rolün **Azure AD Kullanıcı** üyelerine gönderilir. Azure AD gruplarına veya hizmet sorumlularına e-posta gönderilmez.
+
+Yalnızca *birincil e-posta* adresine bir bildirim e-postası gönderilir.
 
 Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.
 

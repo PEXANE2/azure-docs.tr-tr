@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: Application Gateway Azure Resource Manager şablonunda Azure WAF v2 oluşturma'
 titleSuffix: Azure Application Gateway
-description: Azure Application Gateway üzerinde Web uygulaması güvenlik duvarı v2 oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanmayı öğrenin.
+description: Azure Application Gateway 'de Web uygulaması güvenlik duvarı v2 oluşturmak için Azure Resource Manager hızlı başlangıç şablonu (ARM şablonu) kullanmayı öğrenin.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
-ms.date: 04/02/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: b0a430ebfb19ca529ae96698173df27d18e6dd10
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 036503f95a7dc1aaa5690bacc01d07034e6d162f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705206"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266964"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Application Gateway Azure WAF v2 oluşturma
 
@@ -56,7 +56,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon, IIS çalıştıran arka uç havuzunda bir uygulama ağ geçidi, ağ altyapısı ve iki sanal makine oluşturur.
 
-   [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
+   [![Azure’a dağıtın](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
 
 2. Kaynak grubunuzu seçin veya oluşturun.
 3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u seçin ve ardından **satın al**' ı seçin. Dağıtımın tamamlanması 10 dakika veya daha uzun sürebilir.

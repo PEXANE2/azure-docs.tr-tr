@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/08/2020
+ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 986e4fd8c7043f5c01868302ffc2b554e2ce76f7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: f778e996eeda0f2b850864c9c90cd522c411b032
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567087"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328029"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -82,6 +82,7 @@ Bu bölümde, SAP SaaS ve PaaS hizmetleri, NetWeaver ve Fiori ' nin birçoğu il
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 09/02/2020: [hLi Için kullanılabilir SKU 'larda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) hLi için yeni sertifikalı SKU 'lar ekleyin 
 - 09/08/2020: stonıth tanımlarını netleştirmek için [SLES 'teki Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability.md) olarak değiştirin
 - 09/03/2020: [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , Ultra disk Ile 1 GB 'lik kapasite başına en az 2 IOPS olacak şekilde değiştirin
 - 09/02/2020: [HLI Için kullanılabilir SKU](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) 'LARDA, Hana sertifikalı SKU 'lar daha fazla saydam olacak şekilde değiştirin

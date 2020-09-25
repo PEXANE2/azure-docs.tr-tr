@@ -2,13 +2,13 @@
 title: Azure Event Grid nedir?
 description: Azure Event Grid olan bir kaynaktan işleyicilere olay verileri gönderin. Olay tabanlı uygulamalar oluşturun ve Azure hizmetleriyle tümleştirin.
 ms.topic: overview
-ms.date: 07/07/2020
-ms.openlocfilehash: 87ac29c2324c63977c57d60b11b3b930c23a4dd9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 73d218058c5f95d8c2d2324f1a0e1e77b24f1364
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436876"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326516"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid nedir?
 
@@ -20,16 +20,17 @@ Azure Event Grid, her bölgedeki birden çok hata etki alanına ve kullanılabil
 
 Bu makalede Azure Event Grid’e genel bir bakış sağlanmıştır. Event Grid kullanmaya başlamak istiyorsanız bkz. [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md). 
 
-![Kaynak ve işleyicilerle Event Grid modeli](./media/overview/functional-model.png)
+:::image type="content" source="./media/overview/functional-model.png" alt-text="Kaynak ve işleyicilerle Event Grid modeli" lightbox="./media/overview/functional-model.png":::
 
 Bu görüntü, Event Grid kaynakları ve işleyicileri nasıl bağladığını gösterir ve desteklenen tümleştirmelerin kapsamlı bir listesi değildir.
 
 ## <a name="event-sources"></a>Olay kaynakları
 
-Şu anda Event Grid’e olay gönderme özelliği aşağıdaki Azure hizmetleri tarafından desteklenmektedir:
+Şu anda aşağıdaki Azure hizmetleri Event Grid ' ye olay göndermeyi destekler. Listedeki bir kaynak hakkında daha fazla bilgi için bağlantıyı seçin.
 
 - [Azure Uygulama Yapılandırması](event-schema-app-configuration.md)
 - [Azure Blob Depolama](event-schema-blob-storage.md)
+- [Azure İletişim Hizmetleri](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)
@@ -53,7 +54,7 @@ Bu görüntü, Event Grid kaynakları ve işleyicileri nasıl bağladığını g
 * [Logic Apps](handler-webhooks.md#logic-apps)
 * [Güç otomatikleştirme (eskiden Microsoft Flow olarak bilinirdi)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Service Bus](handler-service-bus.md)
-* [Kuyruk depolama](handler-storage-queues.md)
+* [Kuyruk Depolama](handler-storage-queues.md)
 * [Web kancaları](handler-webhooks.md)
 
 ## <a name="concepts"></a>Kavramlar

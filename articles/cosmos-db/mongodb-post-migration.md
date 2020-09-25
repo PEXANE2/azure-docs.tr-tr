@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: lbosq
-ms.openlocfilehash: 055604c399aa1641e823f24af499102bfff3ed0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93a9058dec66ffe2e1c7ad4b15d9bf4eba12c647
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263101"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358534"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'SI kullanılırken geçiş sonrası en iyi duruma getirme adımları
 
@@ -35,7 +35,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 2. [Azure Portal](https://www.portal.azure.com/)sol bölmede **tüm kaynaklar** menüsünü açın ve verilerinizi geçirdiğiniz Azure Cosmos DB hesabı bulun.
 3. **Bağlantı dizesi** dikey penceresini açın. Sağ bölme, hesabınıza başarıyla bağlanmak için gereken tüm bilgileri içerir.
 4. Uygulamanızda MongoDB bağlantısı için Azure Cosmos DB API 'sini yansıtmak için uygulamanızın yapılandırmasındaki (veya diğer ilgili yerlerdeki) bağlantı bilgilerini kullanın.
-:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="Bağlantı dizesi":::
+:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="Ekran görüntüsü bir bağlantı dizesinin ayarlarını gösterir.":::
 
 Daha fazla ayrıntı için lütfen [MongoDB uygulamasını Azure Cosmos DB sayfasına bağlama](connect-mongodb-account.md) sayfasına bakın.
 

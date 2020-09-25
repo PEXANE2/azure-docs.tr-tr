@@ -1,6 +1,6 @@
 ---
 title: Öğretici-.NET 'te Azure WebApp ile Azure Key Vault kullanma | Microsoft Docs
-description: Bu öğreticide, anahtar kasaınızdan gizli dizi okumak için bir ASP.NET Core uygulaması yapılandırırsınız.
+description: Bu öğreticide, anahtar kasanızdan bir gizli dizi okumak için bir ASP.NET Core uygulamasındaki Azure WebApp 'yi yapılandıracaksınız.
 services: key-vault
 author: msmbaldwin
 manager: rajvijan
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: be18718513e8624db00d502228a3e5af6076d9d7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e537bb74655bce5c8438e22fb9b990b72eab73d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007086"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336692"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Öğretici: bir Azure Web uygulamasına .NET ile Key Vault bağlamak için yönetilen bir kimlik kullanma
 

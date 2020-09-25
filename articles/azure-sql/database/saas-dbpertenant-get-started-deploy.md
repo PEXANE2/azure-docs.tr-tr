@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: cfe440cb8ac98518547248485201b85dc0d0076d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542255"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356834"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı SaaS uygulamasını dağıtma ve araştırma
 
@@ -128,7 +128,7 @@ Wingtip Application, gelen isteklerin dağıtımını denetlemek için [*Azure 
 
     Önceki biçimin parçaları aşağıdaki tabloda açıklanmıştır.
 
-    | URL bölümü        | Açıklama       |
+    | URL bölümü        | Description       |
     | :-------------- | :---------------- |
     | olaylar. Wingtip-DPT | Wingtip uygulamasının olaylar bölümü.<br /><br /> *-DPT* , Wingtip bilet 'nin *kiracı başına veritabanı* uygulamasını diğer uygulamalardan ayırır. Bu örnek, *tek* kiracılı kiracı (*-sa*) veya *çok kiracılı veritabanı* (*-MT*) uygulamalarından örnektir. |
     | . * &lt; Kullanıcı &gt; * | örnekteki *AF1* . |
@@ -225,7 +225,7 @@ Kiracıların koleksiyonuna karşı bir yük çalıştırmaya başladığınıza
 1.  [Azure Portal](https://portal.azure.com), SQL Server listenize gidin. Ardından **Catalog-DPT- &lt; user &gt; ** sunucusunu açın.
     - Katalog sunucusu, **tenantcatalog** ve **basetenantdb** olmak üzere iki veritabanı içerir (yeni kiracılar oluşturmak için kopyalanmış bir şablon veritabanı).
 
-   ![Veritabanları](./media/saas-dbpertenant-get-started-deploy/databases.png)
+   ![Ekran görüntüsünde, iki veritabanına sahip bir katalog sunucusuna genel bakış sayfası gösterilir.](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. SQL Server listenize geri dönün.
 

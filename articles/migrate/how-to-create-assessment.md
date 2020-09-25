@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549836"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361101"
 ---
 # <a name="create-an-azure-vm-assessment"></a>Azure VM değerlendirmesi oluşturma
 
@@ -40,38 +40,38 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 
 Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
-1. Değerlendirme oluşturmak için [en iyi uygulamaları](best-practices-assessment.md) gözden geçirin.
+1. Değerlendirme oluşturmaya yönelik [en iyi yöntemleri](best-practices-assessment.md) gözden geçirin.
 2. **Sunucular** sekmesinde, **Azure geçişi: Sunucu değerlendirmesi** kutucuğunda **değerlendir**' e tıklayın.
 
-    ![Değerlendirme](./media/how-to-create-assessment/assess.png)
+    ![Ekran görüntüsü değerlendirme araçları altında değerlendirmede Azure geçişi sunucularını gösterir.](./media/how-to-create-assessment/assess.png)
 
 3. **Sunucuları değerlendir**bölümünde, değerlendirme türünü "Azure VM" olarak seçin, bulma kaynağını seçin ve değerlendirme adını belirtin.
 
-    ![Değerlendirme temelleri](./media/how-to-create-assessment/assess-servers-azurevm.png)
+    ![Değerlendirmeyle ilgili temel bilgiler](./media/how-to-create-assessment/assess-servers-azurevm.png)
 
 4. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’ye tıklayın.
 
     ![Değerlendirme özellikleri](./media/how-to-create-assessment//view-all.png)
 
-5. **Değerlendirmek için makineleri seçmek**üzere **İleri** ' ye tıklayın. **Grup Seç veya oluştur**' da, **Yeni oluştur**' u seçin ve bir grup adı belirtin. Bir grup, değerlendirme için bir veya daha fazla VM 'yi toplar.
+5. **Değerlendirilecek makineleri seçin**'in yanındaki **İleri**'yi seçin. **Grup oluşturun veya seçin** alanında **Yeni oluştur**'u seçip bir grup adı belirtin. Grup, değerlendirme için bir veya daha fazla VM'yi bir araya getirir.
 6. **Gruba makine ekleme**' de gruba eklenecek VM 'ler ' i seçin.
-7. Değerlendirme ayrıntılarını gözden geçirmek için **İleri** ' ye ve **değerlendirme oluştur** ' a tıklayın.
+7. Değerlendirme ayrıntılarını gözden geçirmek için **Gözden geçir ve değerlendirmeyi oluştur**'un yanındaki **İleri**'yi seçin.
 8. Grubu oluşturmak için **değerlendirme oluştur** ' a tıklayın ve değerlendirmeyi çalıştırın.
 
     ![Değerlendirme oluşturma](./media/how-to-create-assessment//assessment-create.png)
 
-9. Değerlendirme oluşturulduktan sonra **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**  >  **değerlendirmeleri**' nde görüntüleyin.
+9. Değerlendirme oluşturulduktan sonra **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** > **Değerlendirmeler** sayfasından görüntüleyin.
 10. Excel dosyası olarak indirmek için **Değerlendirmeyi dışarı aktar**’a tıklayın.
 
 
 
 ## <a name="review-an-azure-vm-assessment"></a>Azure VM değerlendirmesini gözden geçirme
 
-Azure VM değerlendirmesi şunları açıklar:
+Azure VM değerlendirmesi şunları ifade eder:
 
 - **Azure hazırlığı**: VM 'lerin Azure 'a geçiş için uygun olup olmadığı.
 - **Aylık maliyet tahmini**: VM 'leri Azure 'da çalıştırmaya yönelik tahmini aylık işlem ve depolama maliyetleri.
-- **Aylık depolama maliyeti tahmini**: geçişten sonra disk depolaması için tahmini maliyetler.
+- **Aylık depolama maliyeti tahmini**: Geçiş sonrasında disk depolaması için tahmini maliyetler.
 
 ### <a name="view-an-azure-vm-assessment"></a>Azure VM değerlendirmesi görüntüleme
 
@@ -80,11 +80,11 @@ Azure VM değerlendirmesi şunları açıklar:
 
     ![Değerlendirme özeti](./media/how-to-create-assessment/assessment-summary.png)
 
-### <a name="review-azure-readiness"></a>Azure hazırlığını gözden geçirme
+### <a name="review-azure-readiness"></a>Azure için hazır olmayı gözden geçirme
 
 1. **Azure 'a hazırlık**bölümünde, VM 'lerin Azure 'a geçiş için hazır olup olmadığını doğrulayın.
 2. VM durumunu gözden geçirin:
-    - **Azure Için hazırlanma**: Azure geçişi, değerlendirmede VM 'ler IÇIN bir VM boyutu ve maliyet tahminleri önerir.
+    - **Azure için hazır**: Azure Geçişi, değerlendirme kapsamındaki VM'ler için VM boyutu önerisi ve maliyet tahmini sunar.
     - **Koşullara hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
     - **Azure için hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
     - **Hazır olma durumu bilinmiyor**: veri kullanılabilirliği sorunları nedeniyle Azure geçişi hazırlığı değerlendiremez kullanılır.
@@ -93,14 +93,14 @@ Azure VM değerlendirmesi şunları açıklar:
 
 
 
-### <a name="review-cost-details"></a>Maliyet ayrıntılarını gözden geçirin
+### <a name="review-cost-details"></a>Maliyet ayrıntılarını gözden geçirme
 
-Bu görünüm Azure 'da çalışan VM 'lerin tahmini işlem ve depolama maliyetini gösterir.
+Bu görünümde, Azure’da çalışan sanal makinelerin tahmini işlem ve depolama maliyeti görüntülenir.
 
-1. Aylık işlem ve depolama maliyetlerini gözden geçirin. Ücretler, değerlendirilen gruptaki tüm VM 'Ler için toplanır.
+1. Aylık işlem ve depolama maliyetlerini gözden geçirebilirsiniz. Ücretler, değerlendirilen gruptaki tüm VM 'Ler için toplanır.
 
-    - Maliyet tahminleri, bir makine için boyut önerilerini ve bunların disklerini ve özelliklerini temel alır.
-    - İşlem ve depolama için tahmini aylık maliyetler gösterilir.
+    - Maliyet tahminleri, tek bir makine için boyut önerileri ile disklerini ve özelliklerini temel alır.
+    - İşlem ve depolama için aylık tahmini maliyetler gösterilir.
     - Maliyet tahmini, şirket içi VM 'Leri IaaS VM 'Leri olarak çalıştırmaya yöneliktir. Azure geçişi sunucu değerlendirmesi PaaS veya SaaS maliyetlerini göz önünde bulundurmaz.
 
 2. Aylık depolama maliyeti tahminlerini gözden geçirebilirsiniz. Bu görünüm, farklı türlerdeki depolama disklerinin üzerine bölünen, değerlendirilen grup için toplanan depolama maliyetlerini gösterir.

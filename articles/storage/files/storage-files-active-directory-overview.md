@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 3f2fd9f2b75faeeb2d40bd71d074a929e86eebdf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561832"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358381"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB erişimi için Azure dosyalarına yönelik kimlik tabanlı kimlik doğrulama seçeneklerine genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -114,7 +114,7 @@ Aşağıdaki diyagram, Azure AD DS kimlik doğrulaması için SMB üzerinden Azu
 
 - İlk olarak, depolama hesabını göstermek için Azure AD DS 'da kimlik oluşturmanız gerekmez. Bu işlem, arka planda etkinleştirme işlemi tarafından gerçekleştirilir.
 
-- İkinci olarak, Azure AD 'de bulunan tüm kullanıcıların kimliği doğrulanabilir ve yetkilendirilenebilir. Kullanıcı yalnızca bulutta veya hibrit olabilir. Azure AD 'den Azure AD DS eşitleme, Kullanıcı yapılandırmasına gerek duymadan platform tarafından yönetilir. Ancak, istemcinin Azure AD DS etki alanına katılmış olması gerekir; Azure AD 'ye katılmış veya kayıtlı olamaz. 
+- İkinci olarak, Azure AD 'de mevcut olan tüm kullanıcıların kimliği doğrulanabilir ve yetkilendirilenebilir. Kullanıcı yalnızca bulutta veya hibrit olabilir. Azure AD 'den Azure AD DS eşitleme, Kullanıcı yapılandırmasına gerek duymadan platform tarafından yönetilir. Ancak, istemcinin Azure AD DS etki alanına katılmış olması gerekir; Azure AD 'ye katılmış veya kayıtlı olamaz. 
 
 :::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diyagram":::
 

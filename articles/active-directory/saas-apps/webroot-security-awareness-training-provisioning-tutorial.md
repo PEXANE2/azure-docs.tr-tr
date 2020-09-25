@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 31c0e9a690bde7a52a32fd9194afda76e1aaba8c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5bdcf197b4e8a619e55895faf7637ebac0ac12ae
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329151"
+ms.locfileid: "91361152"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Webroot güvenlik tanıma eğitimini yapılandırma
 
@@ -106,7 +106,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 5. **Yönetici kimlik bilgileri** bölümünün altında, `https://awarenessapi.webrootanywhere.com/api/v2/scim` **kiracı URL 'sini**girin. Gizli belirteç değerini **gizli belirteçte**daha önce alındı olarak girin. Azure AD 'nin Webroot güvenlik tanıma eğitimine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Webroot güvenlik tanıma eğitim hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![alınıyor](./media/webroot-security-awareness-training-provisioning-tutorial/provisioning.png)
+    ![Ekran görüntüsü, kiracı U R L ve gizli belirteç girebileceğiniz yönetici kimlik bilgileri iletişim kutusunu gösterir.](./media/webroot-security-awareness-training-provisioning-tutorial/provisioning.png)
 
 6. **Bildirim E-postası** alanına hazırlama hatası bildirimlerinin gönderilmesini istediğiniz kişinin veya grubun e-posta adresini yazıp **Hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 

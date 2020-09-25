@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c95e345255b28ba43e474087cdb80fcab493394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961372"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356426"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure 'da özel kapsayıcı çalıştırma
 
@@ -57,7 +57,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 1. _Dockerfile_ dosyası otomatik olarak açılmazsa **Çözüm Gezgini**’nden açın.
 
-1. [Desteklenen bir üst görüntüye](#use-a-different-parent-image)ihtiyacınız vardır. `FROM` satırını aşağıdaki kod ile değiştirerek üst görüntüyü değiştirin ve dosyayı kaydedin:
+1. [Desteklenen bir üst görüntüye](configure-custom-container.md#supported-parent-images)ihtiyacınız vardır. `FROM` satırını aşağıdaki kod ile değiştirerek üst görüntüyü değiştirin ve dosyayı kaydedin:
 
    ```dockerfile
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -87,7 +87,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 ## <a name="create-a-windows-container-app"></a>Windows kapsayıcı uygulaması oluşturma
 
-1. [Azure portalında]( https://portal.azure.com) oturum açın.
+1. [Azure Portal]( https://portal.azure.com) oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 
@@ -169,22 +169,16 @@ Yeniden [Kapsayıcı uygulamasına göz atın](#browse-to-the-container-app). We
 
 ![Azure’da güncelleştirilmiş web uygulaması](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="use-a-different-parent-image"></a>Farklı bir üst görüntü kullanma
-
-Uygulamanızı çalıştırmak için farklı bir özel Docker görüntüsü kullanabilirsiniz. Ancak, istediğiniz çerçevenin sağ [üst görüntüsünü (temel görüntü)](https://docs.docker.com/develop/develop-images/baseimages/) seçmeniz gerekir:
-
-- .NET Framework uygulamaları dağıtmak için Windows Server Core 2019 [uzun süreli bakım kanalı (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) sürümüne göre bir üst görüntü kullanın. 
-- .NET Core uygulamaları dağıtmak için Windows Server nano 1809 [yarı yıllık bakım kanalı (sac)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) sürümüne göre bir üst görüntü kullanın. 
-
-Uygulama başlatılırken üst görüntünün indirilmesi zaman alabilir. Ancak Azure App Service önbelleğinde bulunan aşağıdaki üst görüntülerden birini kullanarak başlangıç süresini kısaltabilirsiniz:
-
-- [MCR.Microsoft.com/DotNet/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
-- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809-bu görüntü, Microsoft [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) Microsoft Windows nano Server görüntüleri genelinde kullanılan temel kapsayıcıdır.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
 > [Azure'da Windows kapsayıcısına geçirme](tutorial-custom-container.md)
+
+Ya da diğer kaynaklara göz atın:
+
+> [!div class="nextstepaction"]
+> [Özel kapsayıcı yapılandırma](configure-custom-container.md)
+
 ::: zone-end  
 
 ::: zone pivot="container-linux"
@@ -225,7 +219,7 @@ docker --version
 
 Son olarak, Azure Container Registry bağlı olduğundan emin olun. Bunu yapmak için etkinlik çubuğunda Docker logosunu seçin ve ardından **kayıt defterleri**' ne gidin.
 
-![Kayıt Defterleri](./media/quickstart-docker/registries.png)
+![Ekran görüntüsünde, Azure genişletilmiş kayıt defterleri değeri ve nokta ı o dosya adı uzantısı olan bir dosya gösterilmektedir.](./media/quickstart-docker/registries.png)
 
 ## <a name="deploy-the-image-to-azure-app-service"></a>Görüntüyü Azure App Service dağıtma
 
@@ -260,5 +254,10 @@ Daha sonra diğer Azure uzantılarına göz atın.
 * [Azure Resource Manager araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 Ya da [Azure Araçları](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) uzantısı paketini yükleyerek tümünü alın.
+
+Diğer kaynaklara göz atın:
+
+> [!div class="nextstepaction"]
+> [Özel kapsayıcı yapılandırma](configure-custom-container.md)
 
 ::: zone-end
