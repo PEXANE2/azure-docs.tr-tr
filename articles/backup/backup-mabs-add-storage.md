@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu ile Modern Yedekleme Alanı kullanma
 description: Azure Backup Sunucusu yeni özellikler hakkında bilgi edinin. Bu makalede, yedekleme sunucusu yüklemenizin nasıl yükseltileceği açıklanır.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378245"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292906"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Sunucusu’na depolama alanı ekleme
 
@@ -18,7 +18,7 @@ Azure Backup Sunucusu v2 ve üzeri, %50 depolama tasarrufu sağlayan Modern Yede
 > Modern Yedekleme Alanı kullanmak için Windows Server 2019 üzerinde Windows Server 2016 veya v3 üzerinde Backup Server v2 veya v3 ' i çalıştırmanız gerekir.
 > Yedekleme sunucusu v2 'yi Windows Server 'ın önceki bir sürümünde çalıştırırsanız, Azure Backup Sunucusu Modern Yedekleme Alanı avantajlarından yararlanabilir. Bunun yerine, yedekleme sunucusu v1 ile çalıştığı için iş yüklerini korur. Daha fazla bilgi için yedekleme sunucusu sürüm [koruması matrisine](backup-mabs-protection-matrix.md)bakın.
 >
-> Gelişmiş yedekleme performanslarını elde etmek için Windows Server 2019 ' de katmanlı depolama ile MABS v3 'i dağıtmanız önerilir. Katmanlı depolamayı yapılandırma adımları için "[katmanlı depolama Ile MB ayarlama" ADLı](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)DPM makalesine başvurun.
+> Gelişmiş yedekleme performanslarını elde etmek için Windows Server 2019 ' de katmanlı depolama ile MABS v3 'i dağıtmanız önerilir. Katmanlı depolamayı yapılandırma adımları için "[katmanlı depolama Ile MB ayarlama" ADLı](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage)DPM makalesine başvurun.
 
 ## <a name="volumes-in-backup-server"></a>Yedekleme sunucusundaki birimler
 

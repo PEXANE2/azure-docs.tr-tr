@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: b26f0bab073ce248ca23bb8a815fa3e293ddba51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b60798ad1fab0ed66f3d4a39b2fd7faf79fd515e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73686481"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268081"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure Güvenlik Merkezi 'nde bulut Akıllı uyarı bağıntısı (olaylar)
 
@@ -38,5 +38,5 @@ Bir olayın araştırılması sırasında Analistler genellikle tehdit doğası 
 
 ![Güvenlik olayı algılanan raporunun ekran görüntüsü](./media/security-center-alerts-cloud-smart/security-incident.png)
 
-Güvenlik olaylarını daha iyi anlamak için bkz. [Azure Güvenlik Merkezi 'nde güvenlik olaylarını işleme](https://docs.microsoft.com/azure/security-center/security-center-incident).
+Güvenlik olaylarını daha iyi anlamak için bkz. [Azure Güvenlik Merkezi 'nde güvenlik olaylarını işleme](security-center-incident.md).
 

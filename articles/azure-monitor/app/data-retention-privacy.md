@@ -3,13 +3,13 @@ title: Azure Application Insights veri saklama ve depolama | Microsoft Docs
 description: Bekletme ve Gizlilik ilkesi bildirimi
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: a2440379c001c0213145c1c5972cfed8799f4966
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 2205ab1115a66092ae6dd6d75ee7004ab281eec7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562800"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263921"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights'da veri toplama, saklama ve depolama
 
@@ -262,7 +262,7 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 | [TrackMetric çağrısı yapın][api] |Sayısal değerler<br/>**Özellikler** |
 | [Çağrıyı Izle *][api] |Olay adı<br/>**Özellikler** |
 | [TrackException çağrısı][api] |**Özel durumlar**<br/>Yığın dökümü<br/>**Özellikler** |
-| SDK veri toplayamıyor. Örnek: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
+| SDK veri toplayamıyor. Örneğin: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
 
 [Diğer platformların SDK 'ları][platforms]için belgelerine bakın.
 

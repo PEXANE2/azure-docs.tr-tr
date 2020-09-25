@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986959"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288996"
 ---
 # <a name="access-external-storage-in-synapse-sql-on-demand"></a>SYNAPSE SQL 'de dış depolamaya erişme (isteğe bağlı)
 
@@ -52,7 +52,7 @@ CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
 ```
 
-URL ile eşleşen sunucu düzeyi KIMLIK BILGISI yoksa veya SQL kullanıcısı bu kimlik bilgisi için başvuru iznine sahip değilse, hata döndürülür. SQL sorumluları, bazı Azure AD kimliklerini kullanarak kimliğine bürünebilir.
+URL ile eşleşen sunucu düzeyi KIMLIK BILGISI yoksa veya SQL kullanıcısının bu kimlik bilgisi için başvuruları yoksa, hata döndürülür. SQL sorumluları, bazı Azure AD kimliklerini kullanarak kimliğine bürünebilir.
 
 ### <a name="direct-access"></a>[Doğrudan erişim](#tab/direct-access)
 
@@ -75,11 +75,11 @@ SELECT * FROM
  FORMAT= 'parquet') as rows
 ```
 
-Bu sorguyu yürüten Kullanıcı dosyalara erişebilmelidir. Kullanıcılar, [Azure AD kimliklerini](develop-storage-files-storage-access-control.md?tabs=user-identity) veya [anonim erişimini](develop-storage-files-storage-access-control.md?tabs=public-access)kullanarak dosyalara doğrudan erişemediğinde, kullanıcıların [SAS belirteci](develop-storage-files-storage-access-control.md?tabs=shared-access-signature) veya [yönetilen kimlik alanı](develop-storage-files-storage-access-control.md?tabs=managed-identity) kullanılarak kimliğine bürünmelidir.
+Bu sorguyu yürüten Kullanıcı dosyalara erişebilmelidir. Kullanıcılar, [Azure AD kimliklerini](develop-storage-files-storage-access-control.md?tabs=user-identity) veya [anonim erişimini](develop-storage-files-storage-access-control.md?tabs=public-access)kullanarak dosyalara doğrudan Erişeistemlerse, [SAS belirtecini](develop-storage-files-storage-access-control.md?tabs=shared-access-signature) veya [yönetilen çalışma alanının yönetilen kimliğini](develop-storage-files-storage-access-control.md?tabs=managed-identity) kullanarak kimliğe bürünmelidir.
 
 ### <a name="impersonation"></a>[Kimliğe bürünme](#tab/impersonation)
 
-`DATABASE SCOPED CREDENTIAL`başvurulan veri kaynağındaki dosyalara nasıl erişekullanacağınızı belirtir (Şu anda SAS ve yönetilen kimlik). İzne sahip olan Power User, `CONTROL DATABASE` `DATABASE SCOPED CREDENTIAL` depolamaya erişmek için kullanılacak ve `EXTERNAL DATA SOURCE` veri kaynağının URL 'sini ve kullanılması gereken kimlik bilgisini belirten oluşturması gerekir:
+`DATABASE SCOPED CREDENTIAL` başvurulan veri kaynağındaki dosyalara nasıl erişekullanacağınızı belirtir (Şu anda SAS ve yönetilen kimlik). İzne sahip olan Power User, `CONTROL DATABASE` `DATABASE SCOPED CREDENTIAL` depolamaya erişmek için kullanılacak ve `EXTERNAL DATA SOURCE` veri kaynağının URL 'sini ve kullanılması gereken kimlik bilgisini belirten oluşturması gerekir:
 
 ```sql
 EXECUTE AS somepoweruser;
@@ -99,9 +99,9 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 Çağıran, OPENROWSET işlevini yürütmek için aşağıdaki izinlerden birine sahip olmalıdır:
 
 - OPENROWSET yürütme izinlerinden biri:
-  - `ADMINISTER BULK OPERATIONS`, OPENROWSET işlevini yürütmek için oturum açma sağlar.
-  - `ADMINISTER DATABASE BULK OPERATIONS`Veritabanı kapsamlı kullanıcının OPENROWSET işlevini yürütmesine olanak sağlar.
-- `REFERENCES DATABASE SCOPED CREDENTIAL`' da başvuruda bulunulan kimlik bilgileri `EXTERNAL DATA SOURCE` .
+  - `ADMINISTER BULK OPERATIONS` , OPENROWSET işlevini yürütmek için oturum açma sağlar.
+  - `ADMINISTER DATABASE BULK OPERATIONS` Veritabanı kapsamlı kullanıcının OPENROWSET işlevini yürütmesine olanak sağlar.
+- `REFERENCES DATABASE SCOPED CREDENTIAL` ' da başvuruda bulunulan kimlik bilgileri `EXTERNAL DATA SOURCE` .
 
 ### <a name="direct-access"></a>[Doğrudan erişim](#tab/direct-access)
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 Tablo okuma izinlerine sahip olan Kullanıcı, Azure depolama klasörleri ve dosyaları kümesinin üzerine oluşturulmuş bir dış tablo kullanarak dış dosyalara erişebilir.
 
-[Dış tablo oluşturma izinlerine](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions) sahip olan Kullanıcı (örneğin Create Table ve HERHANGI BIR KIMLIK bilgisini DEĞIŞTIRME veya VERITABANı KAPSAMLı KIMLIK bilgilerine başvuru), Azure depolama veri kaynağının en üstünde bir tablo oluşturmak için aşağıdaki betiği kullanabilir:
+[Dış tablo oluşturma izinlerine](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions&preserve-view=true) sahip olan Kullanıcı (örneğin Create Table ve HERHANGI BIR KIMLIK bilgisini DEĞIŞTIRME veya VERITABANı KAPSAMLı KIMLIK bilgilerine başvuru), Azure depolama veri kaynağının en üstünde bir tablo oluşturmak için aşağıdaki betiği kullanabilir:
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]
@@ -171,7 +171,7 @@ FROM dbo.DimProductsExternal
 ```
 
 Çağıran, verileri okumak için aşağıdaki izinlere sahip olmalıdır:
-- `SELECT`Dış tablodaki izin
+- `SELECT` Dış tablodaki izin
 - `REFERENCES DATABASE SCOPED CREDENTIAL``DATA SOURCE`varsa izin`CREDENTIAL`
 
 ## <a name="permissions"></a>İzinler
@@ -181,10 +181,10 @@ Aşağıdaki tabloda, yukarıda listelenen işlemler için gerekli izinler liste
 | Sorgu | Gerekli izinler|
 | --- | --- |
 | Veri kaynağı olmadan OPENROWSET (toplu) | `ADMINISTER BULK OPERATIONS`, `ADMINISTER DATABASE BULK OPERATIONS` , veya SQL oturum açma, \<URL> SAS korumalı depolama IÇIN kimlik bilgilerine sahip olmalıdır: |
-| Kimlik bilgisi olmadan veri kaynağıyla OPENROWSET (toplu) | `ADMINISTER BULK OPERATIONS`veya `ADMINISTER DATABASE BULK OPERATIONS` , |
-| Kimlik bilgileriyle veri kaynağıyla OPENROWSET (toplu) | `REFERENCES DATABASE SCOPED CREDENTIAL`ve `ADMINISTER BULK OPERATIONS` bunlardan biri`ADMINISTER DATABASE BULK OPERATIONS` |
+| Kimlik bilgisi olmadan veri kaynağıyla OPENROWSET (toplu) | `ADMINISTER BULK OPERATIONS` veya `ADMINISTER DATABASE BULK OPERATIONS` , |
+| Kimlik bilgileriyle veri kaynağıyla OPENROWSET (toplu) | `REFERENCES DATABASE SCOPED CREDENTIAL` ve `ADMINISTER BULK OPERATIONS` bunlardan biri `ADMINISTER DATABASE BULK OPERATIONS` |
 | DıŞ VERI KAYNAĞı OLUŞTUR | `ALTER ANY EXTERNAL DATA SOURCE` ve `REFERENCES DATABASE SCOPED CREDENTIAL` |
-| DıŞ TABLO OLUŞTUR | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` ve`ALTER ANY EXTERNAL DATA SOURCE` |
+| DıŞ TABLO OLUŞTUR | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` ve `ALTER ANY EXTERNAL DATA SOURCE` |
 | DıŞ TABLODAN SEÇIM YAPıN | `SELECT TABLE` ve `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | CETAS | Tablo oluşturmak için- `CREATE TABLE` , `ALTER ANY SCHEMA` , `ALTER ANY DATA SOURCE` , ve `ALTER ANY EXTERNAL FILE FORMAT` . Verileri okumak için: `ADMINISTER BULK OPERATIONS` `REFERENCES CREDENTIAL` `SELECT TABLE` Depolama üzerindeki her tablo/görünüm/işlev/sorgu + R/W iznine sahip |
 
@@ -204,6 +204,6 @@ Artık şu nasıl yapılır makaleleriyle devam etmeye hazırsınız:
 
 - [Bölümlendirme ve meta veri işlevlerini kullanma](query-specific-files.md)
 
-- [İç içe türler sorgula](query-parquet-nested-types.md)
+- [İç içe geçmiş türleri sorgulama](query-parquet-nested-types.md)
 
 - [Görünümleri oluşturma ve kullanma](create-use-views.md)

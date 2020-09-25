@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 16a5793f9848a6e16856728877727dbefc3e0805
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6b4373efc4979900e676257cc0b2748145165499
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264938"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261422"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Hızlı başlangıç: portala karşıya içerik yükleme, kodlama ve akışla
 
@@ -50,7 +50,7 @@ Bu hızlı başlangıçta, Azure Media Services ile içerik yükleme, kodlama ve
     * [Filtreler](filters-concept.md)
 * İçeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya/ve üç ana DRM sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay) şifreleyerek koruyabilirsiniz. Azure portal hızlı başlangıç [ile Içerik şifreleme](encrypt-content-quickstart.md) içerik korumasının nasıl yapılandırılacağını gösterir.
         
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -66,7 +66,7 @@ Bu hızlı başlangıçta, Azure Media Services ile içerik yükleme, kodlama ve
 
 Varlıklar pencerenize gittiğinizde, listeye yeni bir varlık eklendiğini görürsünüz:
 
-![Karşıya Yükleme](./media/manage-assets-quickstart/upload.png)
+![Varlıklar (yeni) seçilerek açılan varlıklar penceresini gösteren Azure portal ekran görüntüsü ve Karşıya Yükle düğmesi seçilerek eklenen yeni bir varlık.](./media/manage-assets-quickstart/upload.png)
 
 ## <a name="encode"></a>Kodlama
 
@@ -78,7 +78,7 @@ Varlıklar pencerenize gittiğinizde, listeye yeni bir varlık eklendiğini gör
 
 Varlıklar pencerenize gittiğinizde, çıkış varlığının listeye eklendiğini görürsünüz:
 
-![Kodlama](./media/manage-assets-quickstart/encode.png)
+![Varlık listesine eklenen varlık ignite.mp4 medya kodlamalı standart kodlama Azure portal gösteren varlıklar penceresinin ekran görüntüsü.](./media/manage-assets-quickstart/encode.png)
 
 ## <a name="monitor-the-job-progress"></a>İşin ilerlemesini izleme
 

@@ -1,6 +1,6 @@
 ---
 title: Hive etkinliğini kullanarak verileri dönüştürme-Azure
-description: Bir Azure Data Factory 'deki Hive etkinliğini isteğe bağlı/kendi HDInsight kümeniz üzerinde kullanarak Hive sorguları çalıştırmak için nasıl kullanabileceğinizi öğrenin.
+description: Bir Azure Data Factory v1 'de Hive etkinliğini isteğe bağlı bir/kendi HDInsight kümeniz üzerinde çalıştırmak için nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41f570f93e95e9801b08c06cacc0423b1bf3b8e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703347"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252792"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory Hive etkinliğini kullanarak verileri dönüştürme 
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -74,15 +74,15 @@ Bir Data Factory işlem [hattının](data-factory-create-pipelines.md) HDInsight
 ## <a name="syntax-details"></a>Söz dizimi ayrıntıları
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| name |Etkinliğin adı |Evet |
-| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
-| tür |Hdınsighthive |Evet |
-| girişi |Hive etkinliği tarafından tüketilen girişler |Hayır |
-| çıkışı |Hive etkinliği tarafından oluşturulan çıktılar |Evet |
-| linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Evet |
-| betik |Hive betiğini satır içi olarak belirt |Hayır |
-| scriptPath |Hive betiğini bir Azure Blob depolama alanında depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |Hayır |
-| tanımlar |' Hiveconf ' kullanarak Hive betiği içinde başvurmak için bir anahtar/değer çiftleri olarak parametre belirtin |Hayır |
+| name |Etkinliğin adı |Yes |
+| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |No |
+| tür |Hdınsighthive |Yes |
+| girişi |Hive etkinliği tarafından tüketilen girişler |No |
+| çıkışı |Hive etkinliği tarafından oluşturulan çıktılar |Yes |
+| linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Yes |
+| betik |Hive betiğini satır içi olarak belirt |No |
+| scriptPath |Hive betiğini bir Azure Blob depolama alanında depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |No |
+| tanımlar |' Hiveconf ' kullanarak Hive betiği içinde başvurmak için bir anahtar/değer çiftleri olarak parametre belirtin |No |
 
 ## <a name="example"></a>Örnek
 Kullanıcıların, şirketiniz tarafından başlatılan oyunları oynatılması için harcadığı zamanı belirlemek istediğiniz oyun günlüğü analizinin bir örneğini ele alalım. 

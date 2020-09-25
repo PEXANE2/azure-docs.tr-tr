@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6796ac42a10d3b976b23f5af1418b1789011d61b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b71c78f484eef0fc4d9c34a2f218a177dbffa0a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440958"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257528"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API 'Lerini çağıran masaüstü uygulaması: uygulama kaydı
 
@@ -33,7 +33,6 @@ Masaüstü uygulamanız etkileşimli kimlik doğrulaması kullanıyorsa, kullan�
 ### <a name="audience-for-desktop-app-silent-flows"></a>Masaüstü uygulaması için hedef kitle sessiz akışlar
 
 - Tümleşik Windows kimlik doğrulaması veya Kullanıcı adı ve parola kullanmak için uygulamanızın kendi kiracınızda kullanıcılar oturum açması gerekir, örneğin, iş kolu (LOB) geliştiricisiyseniz. Ya da Azure Active Directory kuruluşlarda, uygulamanızın bir ISV senaryosu olması durumunda kendi kiracınızdaki kullanıcılar oturum açması gerekir. Bu kimlik doğrulama akışları, Microsoft kişisel hesapları için desteklenmez.
-- Cihaz kodu akışını kullanmak istiyorsanız, kullanıcıları Microsoft kişisel hesaplarıyla henüz oturum açamazsınız.
 - Kullanıcılara, işletmeden ticari (B2C) yetkilisini ve ilkesini geçiren sosyal kimliklerle oturum açarsanız, yalnızca etkileşimli ve Kullanıcı adı-parola kimlik doğrulamasını kullanabilirsiniz.
 
 ## <a name="redirect-uris"></a>Yeniden yönlendirme URI 'Leri
@@ -45,11 +44,14 @@ Bir masaüstü uygulamasında kullanılacak yeniden yönlendirme URI 'Leri, kull
   > [!IMPORTANT]
   > Günümüzde MSAL.NET, Windows () üzerinde çalışan masaüstü uygulamalarında varsayılan olarak başka bir yeniden yönlendirme URI 'SI kullanır `urn:ietf:wg:oauth:2.0:oob` . Gelecekte bu Varsayılanı değiştirmek istiyoruz. bu nedenle kullanmanızı öneririz `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 
-- MacOS için yerel bir amaç-C veya Swift uygulaması oluşturursanız, yeniden yönlendirme URI 'sini uygulamanızın paket tanımlayıcısına göre aşağıdaki biçimde kaydedin: msauth. <your.app.bundle.id>://<your.app.bundle.id>, uygulamanızın paket tanımlayıcısı ile değiştirin.
+- MacOS için yerel bir amaç-C veya Swift uygulaması oluşturuyorsanız, yeniden yönlendirme URI 'sini uygulamanızın paket tanımlayıcısına göre aşağıdaki biçimde kaydedin: `msauth.<your.app.bundle.id>://auth` . `<your.app.bundle.id>`Uygulamanızın paket tanımlayıcısı ile değiştirin.
 - Uygulamanız yalnızca tümleşik Windows kimlik doğrulaması veya Kullanıcı adı ve parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akışlar Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapılır. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.
-- Cihaz kod akışını, tümleşik Windows kimlik doğrulamasını ve bir Kullanıcı adı ve bir parola ile yeniden yönlendirme URI 'Leri olmayan gizli bir istemci uygulama akışından (daemon uygulamalarında kullanılan istemci kimlik bilgisi akışı) ayırt etmek için, uygulamanızın bir ortak istemci uygulaması olduğunu ifade etmeniz gerekir. Bu yapılandırmayı başarmak için uygulamanızın **kimlik doğrulama** bölümüne gidin. **Gelişmiş ayarlar** alt bölümünde, **varsayılan istemci türü** paragrafında, **uygulamayı ortak istemci olarak değerlendir**için **Evet** ' i seçin.
+- [Cihaz kod akışı](scenario-desktop-acquire-token.md#device-code-flow), [Tümleşik Windows kimlik doğrulaması](scenario-desktop-acquire-token.md#integrated-windows-authentication)ve bir [Kullanıcı adı ile](scenario-desktop-acquire-token.md#username-and-password) gizli bir istemci uygulamasından bir parola ve bir parolayı, bir yeniden yönlendirme URI 'si gerektiren [arka plan uygulamalarında](scenario-daemon-overview.md)kullanılan bir istemci kimlik bilgisi akışı kullanarak ayırt etmek için, bunu bir ortak istemci uygulaması olarak yapılandırmanız gerekir. Bu yapılandırmayı elde etmek için:
 
-  ![Ortak istemciye izin ver](media/scenarios/default-client-type.png)
+    1. [Azure Portal](https://portal.azure.com), **uygulama kayıtları**' de Uygulamanızı seçin ve **kimlik doğrulaması**' nı seçin.
+    1. **Gelişmiş ayarlar**  >  **varsayılan istemci türü**  >  **uygulamayı ortak istemci olarak değerlendir**' de, **Evet**' i seçin.
+
+        :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Azure portal 'de kimlik doğrulama bölmesinde ortak istemci ayarını etkinleştir":::
 
 ## <a name="api-permissions"></a>API izinleri
 

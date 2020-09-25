@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: cf73b3949b0a0dc1e76ebdebb191af0a33ce22ff
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: ac76ce5d4fb788e6c2fb3dc9ec01c8d88bfb55cb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180482"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268086"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde uyarı doğrulama
 Bu belge, sisteminizin Azure Güvenlik Merkezi uyarıları için doğru yapılandırılıp yapılandırılmadığını doğrulamayı öğrenmenize yardımcı olur.
@@ -62,16 +62,16 @@ Güvenlik Merkezi Aracısı bilgisayarınıza yüklendikten sonra, uyarının sa
 
 ## <a name="validate-alerts-on-kubernetes"></a>Kubernetes üzerinde uyarıları doğrulama <a name="validate-kubernetes"></a>
 
-Azure Kubernetes hizmetini tümleştirme güvenlik merkezi önizleme özelliğini kullanıyorsanız, uyarılarınızın çalıştığını sınamak için aşağıdaki kubectl komutunu çalıştırın:
+Azure Kubernetes hizmetini Güvenlik Merkezi ile tümleştirdiyseniz, uyarılarınızın aşağıdaki kubectl komutuyla çalıştığını test edebilirsiniz:
 
 ```kubectl get pods --namespace=asc-alerttest-662jfi039n```
 
-Azure Kubernetes hizmeti ve Azure Güvenlik Merkezi 'nin tümleştirmesi hakkında daha fazla bilgi için [Bu makaleye](azure-kubernetes-service-integration.md)bakın.
+Kubernetes düğümlerini ve kümelerini erteleme hakkında daha fazla bilgi için bkz. [Kubernetes Için Azure Defender 'A giriş](defender-for-kubernetes-introduction.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede uyarıları doğrulama işlemine giriş yaptınız. Artık bu doğrulama hakkında bilgi sahibi olduğunuza göre, aşağıdaki makaleleri deneyebilirsiniz:
 
 * [Azure Güvenlik Merkezi 'nde tehdit algılamayı Azure Key Vault doğrulama](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
-* [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) -Güvenlik Merkezi 'nde uyarıları yönetme ve güvenlik olaylarına yanıt verme hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -Güvenlik Merkezi 'nde uyarıları yönetme ve güvenlik olaylarına yanıt verme hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu izlemeyi öğrenin.
-* [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını anlama](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) -farklı güvenlik uyarısı türleri hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını anlama](security-center-alerts-type.md) -farklı güvenlik uyarısı türleri hakkında bilgi edinin.

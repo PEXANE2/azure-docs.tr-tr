@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 2d19c061ad1e5cf033d2801df64a0ae37736c418
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983026"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254083"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri ve sorun giderme
 
@@ -103,7 +103,7 @@ Telegraf modülü dağıtıldıktan sonra, bildirilen ölçümlere Azure Izleyic
 
 ### <a name="system-health-events"></a>Sistem durumu olayları
 
-| Olay Adı | Açıklama|
+| Olay Adı | Description|
 |------|---------|
 |archon_exit    |Kullanıcı, uzamsal analiz modülü durumunun *çalışmayı* *durduruldu*olarak değiştirdiğinde gönderilir.  |
 |archon_error   |Kapsayıcının içindeki işlemlerden herhangi biri kilitleniyorsa gönderilir. Bu kritik bir hatadır.  |
@@ -121,7 +121,7 @@ Telegraf modülü dağıtıldıktan sonra, bildirilen ölçümlere Azure Izleyic
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>IoT Edge cihaz sorunlarını giderme
 
-`iotedge`Çalışan modüllerin durumunu ve günlüklerini denetlemek için komut satırı aracını kullanabilirsiniz. Örnek:
+`iotedge`Çalışan modüllerin durumunu ve günlüklerini denetlemek için komut satırı aracını kullanabilirsiniz. Örneğin:
 * `iotedge list`: Çalışan modüllerin listesini raporlar. 
   İle ilgili hataları daha fazla kontrol edebilirsiniz `iotedge logs edgeAgent` . `iotedge`Takıldığında, ile yeniden başlatmayı deneyebilirsiniz`iotedge restart edgeAgent`
 * `iotedge logs <module-name>`
@@ -237,18 +237,18 @@ Günlükler, modüldeki IoT Edge yöntemi ile isteğe bağlı olarak karşıya y
 
 Aşağıdaki tabloda, günlükleri sorgularken kullanabileceğiniz parametreler listelenmektedir.
 
-| Sözcükle | Açıklama | Varsayılan değer |
+| Sözcükle | Description | Varsayılan değer |
 |--|--|--|
 | StartTime | İstenen günlük başlangıç zamanı, milisaniye cinsinden UTC. | `-1`, kapsayıcının çalışma zamanının başlangıcı. `[-1.-1]`Zaman aralığı olarak kullanıldığında, API son bir saatten günlükleri döndürür.|
 | EndTime | İstenen günlük bitiş saati (milisaniye olarak UTC). | `-1`, geçerli saat. `[-1.-1]`Zaman aralığı kullanıldığında, API son bir saatten günlükleri döndürür. |
 | Kimliği | Günlükleri getirmeye yönelik hedef kapsayıcı.| `null`bir kapsayıcı KIMLIĞI olmadığında. API, tüm kullanılabilir kapsayıcılar bilgilerini kimlikler ile döndürür.|
 | DoPost | Karşıya yükleme işlemini gerçekleştirin. Bu olarak ayarlandığında `false` , istenen işlemi gerçekleştirir ve karşıya yükleme yapmadan karşıya yükleme boyutunu döndürür. Olarak ayarlandığında `true` , seçilen günlüklerin zaman uyumsuz karşıya yüklemesi başlatılır | `false`, karşıya yüklemeyin.|
 | Kısıtlama | Toplu iş başına karşıya yüklenecek günlük satır sayısını belirtin | `1000`, Post hızını ayarlamak için bu parametreyi kullanın. |
-| Filtreler | Karşıya yüklenecek filtre günlükleri | `null`, bir filtre, uzamsal analiz günlüğü yapısına göre anahtar değer çiftleri olarak belirtilebilir: `[UTC, LocalTime, LOGLEVEL,PID, CLASS, DATA]` . Örnek: `{"TimeFilter":[-1,1573255761112]}, {"TimeFilter":[-1,1573255761112]}, {"CLASS":["myNode"]`|
+| FilTReleri | Karşıya yüklenecek filtre günlükleri | `null`, bir filtre, uzamsal analiz günlüğü yapısına göre anahtar değer çiftleri olarak belirtilebilir: `[UTC, LocalTime, LOGLEVEL,PID, CLASS, DATA]` . Örnek: `{"TimeFilter":[-1,1573255761112]}, {"TimeFilter":[-1,1573255761112]}, {"CLASS":["myNode"]`|
 
 Aşağıdaki tabloda sorgu yanıtında öznitelikler listelenmiştir.
 
-| Sözcükle | Açıklama|
+| Sözcükle | Description|
 |--|--|
 |DoPost| *True* ya da *false*. Günlüklerin karşıya yüklenip yüklenmediğini belirtir. Günlükleri karşıya yüklemeyi tercih ettiğinizde, API bilgileri ***zaman uyumlu***olarak döndürür. Günlükleri karşıya yüklemeyi seçtiğinizde, API, istek geçerliyse 200 döndürür ve günlükleri ***zaman uyumsuz***olarak karşıya yüklemeye başlar.|
 |TimeFilter| Günlüklere uygulanan zaman filtresi.|
@@ -313,8 +313,7 @@ Modül günlüklerinde aşağıdaki iletiyi görürseniz, Azure aboneliğinizin 
 
 "Kapsayıcı geçerli bir durumda değil. Abonelik doğrulaması ' uyuşmazlık ' durumuyla başarısız oldu. API anahtarı, verilen kapsayıcı türü için tasarlanmamıştır. "
 
-Daha fazla bilgi için bkz. [kapsayıcıyı çalıştırmak için onay iste](spatial-analysis-container.md#request-approval-to-run-the-container). 
-
+Daha fazla bilgi için bkz. [kapsayıcıyı çalıştırmak için onay iste](spatial-analysis-container.md#request-approval-to-run-the-container).
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Azure Stack Edge cihazında sorun giderme
 

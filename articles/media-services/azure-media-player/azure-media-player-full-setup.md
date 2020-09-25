@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d7e6d3c1554f70ea14e097ff2fe6df47987b5927
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423057"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296255"
 ---
 # <a name="azure-media-player-full-setup"></a>Eksiksiz Azure Media Player kurulumu #
 
@@ -56,11 +56,11 @@ Azure Media Player, bir video eklemek için HTML5 video etiketini kullanabilirsi
 1. `<data-setup>`' Deki özniteliği, `<video>` sayfa hazırlandığınızda videoyu otomatik olarak ayarlamaya ve öznitelikten herhangi bırını (JSON biçiminde) okumasına Azure Media Player söyler.
 1. `id`Özniteliği: aynı sayfadaki her video için kullanılmalıdır ve benzersiz olmalıdır.
 1. `class`Özniteliği iki sınıf içerir:
-    - `azuremediaplayer`Azure Media Player UI işlevselliği için gerekli olan stilleri uygular
-    - `amp-default-skin`HTML5 denetimlerine varsayılan kaplama uygular
+    - `azuremediaplayer` Azure Media Player UI işlevselliği için gerekli olan stilleri uygular
+    - `amp-default-skin` HTML5 denetimlerine varsayılan kaplama uygular
 1. , `<source>` Gereken iki özniteliği içerir
-    - `src`öznitelik, Azure Media Services eklenen bir **. ISM/manifest* dosyası içerebilir, Azure Media Player OTOMATIK olarak Dash, sorunsuz ve HLS Için URL 'leri yürütücüye ekler
-    - `type`öznitelik, akışın gerekli MIME türüdür. *". ISM/manifest"* Ile ilişkili MIME türü *"application/vnd. MS-SSTR + xml"*
+    - `src` öznitelik, Azure Media Services eklenen bir **. ISM/manifest* dosyası içerebilir, Azure Media Player OTOMATIK olarak Dash, sorunsuz ve HLS Için URL 'leri yürütücüye ekler
+    - `type` öznitelik, akışın gerekli MIME türüdür. *". ISM/manifest"* Ile ilişkili MIME türü *"application/vnd. MS-SSTR + xml"*
 1. ' Deki *isteğe bağlı* `<data-setup>` özniteliği, `<source>` Azure Media Services akışı için, şifreleme türü (AES veya PlayReady, Widevine veya Fairplay) ve Token dahil, ancak bunlarla sınırlı olmamak üzere herhangi bir benzersiz teslim ilkesi varsa Azure Media Player söyler.
 
 HTML5 video için yaptığınız gibi öznitelikleri, ayarları, kaynakları ve parçaları tam olarak dahil edin/dışlayın.

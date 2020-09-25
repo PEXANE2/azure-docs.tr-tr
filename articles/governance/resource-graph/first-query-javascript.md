@@ -3,13 +3,13 @@ title: 'Hızlı başlangıç: ilk JavaScript sorgunuz'
 description: Bu hızlı başlangıçta, JavaScript için kaynak grafik kitaplığını etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
 ms.date: 06/23/2020
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fc9809dbe615950b4f5c9e4dc66cefcd054f5ebf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: cdc0589829f250851212ad990dde99eb6dcc958f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415933"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251975"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Hızlı başlangıç: JavaScript kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 
@@ -17,7 +17,7 @@ Bu hızlı başlangıç, JavaScript yüklemenize kitaplıkları ekleme sürecind
 
 Bu işlemin sonunda, JavaScript yüklemenize kitaplıkları eklemiş ve ilk kaynak Graf sorgunuzu çalıştıracaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure aboneliği**: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 

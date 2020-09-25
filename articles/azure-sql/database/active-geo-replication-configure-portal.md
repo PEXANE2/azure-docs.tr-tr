@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1beb2065f1823135981545e42d499c5429b87c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7e4da2051ab84cebff5aae857c02907f7b58e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045399"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263632"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>Öğretici: Azure portal (Azure SQL veritabanı) etkin Coğrafi çoğaltmayı ve yük devretmeyi yapılandırma
 
@@ -28,7 +28,7 @@ Otomatik yük devretme gruplarını kullanan en iyi uygulamalar için bkz. Azure
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure portal kullanarak etkin Coğrafi çoğaltmayı yapılandırmak için aşağıdaki kaynağa ihtiyacınız vardır:
 
@@ -55,12 +55,12 @@ Aşağıdaki adımlar, coğrafi çoğaltma ortaklığında yeni bir ikincil veri
     ![Coğrafi çoğaltmayı yapılandırma](./media/active-geo-replication-configure-portal/configure-geo-replication.png)
 3. İkincil veritabanı için sunucu ve fiyatlandırma katmanını seçin ya da yapılandırın.
 
-    ![İkincil yapılandırma](./media/active-geo-replication-configure-portal/create-secondary.png)
+    ![ikincil form oluştur](./media/active-geo-replication-configure-portal/create-secondary.png)
 4. İsteğe bağlı olarak, elastik bir havuza ikincil bir veritabanı ekleyebilirsiniz. Bir havuzda ikincil veritabanı oluşturmak için **elastik havuz** ' a tıklayın ve hedef sunucuda bir havuz seçin. Hedef sunucuda bir havuz zaten var olmalıdır. Bu iş akışı havuz oluşturmaz.
 5. İkincili eklemek için **Oluştur** ' a tıklayın.
 6. İkincil veritabanı oluşturulur ve dengeli dağıtım işlemi başlar.
 
-    ![İkincil yapılandırma](./media/active-geo-replication-configure-portal/seeding0.png)
+    ![ikincil eşleme](./media/active-geo-replication-configure-portal/seeding0.png)
 7. Dengeli dağıtım işlemi tamamlandığında, ikincil veritabanı durumunu görüntüler.
 
     ![Dengeli dağıtım Tamam](./media/active-geo-replication-configure-portal/seeding-complete.png)
@@ -73,7 +73,7 @@ Aşağıdaki adımlar, coğrafi çoğaltma ortaklığında yeni bir ikincil veri
 2. SQL veritabanı dikey penceresinde **Tüm ayarlar**  >  **coğrafi çoğaltma**' yı seçin.
 3. **İkincil** öğeler listesinde, yeni birincil olmasını istediğiniz veritabanını seçin ve **zorlamalı yük devretme**' ye tıklayın.
 
-    ![yükünü](./media/active-geo-replication-configure-portal/secondaries.png)
+    ![yük devretme](./media/active-geo-replication-configure-portal/secondaries.png)
 4. Yük devretmeyi başlatmak için **Evet** ' e tıklayın.
 
 Komut, ikincil veritabanını hemen birincil role geçirir. Bu işlem normalde 30 saniye veya daha az bir sürede tamamlanır.

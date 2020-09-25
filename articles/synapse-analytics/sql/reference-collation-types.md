@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ef9d0eb3dd97795f3b6757759679351f857891ab
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5e46cd744be609adff764edfe5a506b710e9d788
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032869"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288078"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>SYNAPSE SQL için veritabanı harmanlama desteği
 
@@ -24,7 +24,7 @@ Yeni bir SQL havuzu veritabanı oluştururken Azure portal varsayılan veritaban
 CREATE DATABASE ifadesini kullanarak oluşturma sırasında varsayılan SYNAPSE SQL isteğe bağlı veritabanı harmanlamasını belirtebilirsiniz.
 
 ## <a name="change-collation"></a>Harmanlamayı değiştir
-SQL havuzu veritabanı için Varsayılan harmanlamayı değiştirmek üzere, sağlama deneyiminde harmanlama alanına basit bir güncelleştirme olursunuz. Örneğin, Varsayılan harmanlamayı büyük/küçük harfe duyarlı olarak değiştirmek isterseniz, harmanlamayı SQL_Latin1_General_CP1_CI_AS SQL_Latin1_General_CP1_CS_AS olarak yeniden adlandırmanız yeterlidir. 
+SQL havuzu veritabanı için Varsayılan harmanlamayı değiştirmek üzere, sağlama deneyiminde harmanlama alanına güncelleştirin. Örneğin, Varsayılan harmanlamayı büyük/küçük harfe duyarlı olarak değiştirmek isterseniz, harmanlamayı SQL_Latin1_General_CP1_CI_AS SQL_Latin1_General_CP1_CS_AS olarak yeniden adlandırmanız gerekir. 
 
 İsteğe bağlı SQL veritabanı için Varsayılan harmanlamayı değiştirmek üzere ALTER DATABASE deyimini kullanabilirsiniz.
 

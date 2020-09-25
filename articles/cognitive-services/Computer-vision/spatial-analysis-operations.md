@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 5955bc35acfaf8f877e68db083871c353a3ce326
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f9df17afe8b6d25df3d9dcc5f4eec0b9a028404f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984920"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254015"
 ---
 # <a name="spatial-analysis-operations"></a>Uzamsal analiz işlemleri
 
@@ -23,7 +23,7 @@ Uzamsal analiz, kamera cihazlarından gerçek zamanlı akış videosunun analizi
 
 Uzamsal analiz kapsayıcısı aşağıdaki işlemleri uygular:
 
-| İşlem tanımlayıcısı| Açıklama|
+| İşlem tanımlayıcısı| Description|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -32,7 +32,7 @@ Uzamsal analiz kapsayıcısı aşağıdaki işlemleri uygular:
 
 Tüm yukarıdaki işlemler, `.debug` işlenmekte oldukları gibi video çerçevelerini görselleştirme özelliğine sahip olan sürümde de mevcuttur. `xhost +`Video çerçevelerinin ve olaylarının görselleştirilmesini sağlamak için ana bilgisayarda çalıştırmanız gerekir.
 
-| İşlem tanımlayıcısı| Açıklama|
+| İşlem tanımlayıcısı| Description|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount. Debug | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline. Debug | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -43,7 +43,7 @@ Uzamsal analiz, video AI modülü olarak [canlı video analizi](https://azure.mi
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| İşlem tanımlayıcısı| Açıklama|
+| İşlem tanımlayıcısı| Description|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount. livevideoanalytics | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline. livevideoanalytics | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -57,7 +57,7 @@ Canlı video analizi işlemleri de `.debug` (örneğin, biliveservices. Vision. 
 
 Bunlar, bu uzamsal analiz işlemlerinin her biri için gereken parametrelerdir.
 
-| İşlem parametreleri| Açıklama|
+| İşlem parametreleri| Description|
 |---------|---------|
 | İşlem KIMLIĞI | Yukarıdaki tablodan Işlem tanımlayıcısı.|
 | enabled | Boolean: true veya false|
@@ -88,7 +88,7 @@ Bunlar, bu uzamsal analiz işlemlerinin her biri için gereken parametrelerdir.
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -121,7 +121,7 @@ Bu, bir satırı yapılandıran SPACEANALYTICS_CONFIG parametresi için bir JSON
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `lines` | list| Satır listesi.|
 | `name` | string| Bu satır için kolay ad.|
@@ -152,7 +152,7 @@ Bu, bir bölgeyi yapılandıran SPACEANALYTICS_CONFIG parametresine yönelik JSO
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -184,7 +184,7 @@ Bu, **biliveservices. Vision. spatialanalysis-persondistance**için bir bölgeyi
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -644,7 +644,7 @@ Uzamsal analiz algılama veya olaylarını uygulamanızla tümleştirmek isteyeb
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>Uzamsal analiz işlemlerini ölçekte dağıtma (birden çok kamera)
 
-GPU 'ların en iyi performansını ve kullanımını sağlamak için, grafik örnekleri kullanarak birden fazla kamera üzerinde herhangi bir uzamsal analiz işlemini dağıtabilirsiniz. Aşağıda, beş (5) kamerada biliveservices. Vision. spatialanalysis-PersonCount işlemini çalıştırmaya yönelik bir örnek verilmiştir.
+GPU 'ların en iyi performansını ve kullanımını sağlamak için, grafik örnekleri kullanarak birden fazla kamera üzerinde herhangi bir uzamsal analiz işlemini dağıtabilirsiniz. Bu işlemi beş kamera üzerinde çalıştırmaya yönelik bir örnek aşağıda verilmiştir `cognitiveservices.vision.spatialanalysis-personcount` .
 
 ```json
  "properties.desired": {
@@ -725,9 +725,9 @@ GPU 'ların en iyi performansını ve kullanımını sağlamak için, grafik ör
       }
   }
   ```
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
-| `batch_size` | int | Bu işlemde kullanılacak kamera sayısını belirtir.|
+| `batch_size` | int | İşlemde kullanılacak kameraları sayısını belirtir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

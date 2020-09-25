@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 21120239c44dbdd812dfb3d3208990db4372ec29
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7c463beb7874e0b66e2a45a1675484f19c4fab34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828022"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249679"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure portal kullanın
 
@@ -59,16 +59,16 @@ Burada gösterilen yordam, bir kapsayıcıya kapsamlı bir rol atar, ancak bir s
 1. Rolü atamak istediğiniz kapsayıcıyı bulun ve kapsayıcının ayarlarını görüntüleyin.
 1. Kapsayıcının erişim denetimi ayarlarını göstermek için **erişim denetimi (IAM)** seçeneğini belirleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
 
-    ![Kapsayıcı erişim denetimi ayarlarını gösteren ekran görüntüsü](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/portal-access-control-container.png" alt-text="Kapsayıcı erişim denetimi ayarlarını gösteren ekran görüntüsü":::
 
 1. Yeni bir rol eklemek için **rol ataması Ekle** düğmesine tıklayın.
 1. **Rol ataması Ekle** penceresinde, atamak Istediğiniz Azure depolama rolünü seçin. Ardından, bu rolü atamak istediğiniz güvenlik sorumlusunu bulmak için arama yapın.
 
-    ![Azure rolü atamayı gösteren ekran görüntüsü](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Azure rolü atamayı gösteren ekran görüntüsü":::
 
 1. **Kaydet**’e tıklayın. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde Kullanıcı tarafından eklenen kullanıcının, *örnek kapsayıcı*adlı kapsayıcıda bulunan veriler için okuma izinleri olduğunu gösterir.
 
-    ![Bir role atanan kullanıcı listesini gösteren ekran görüntüsü](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="Bir role atanan kullanıcı listesini gösteren ekran görüntüsü":::
 
 Depolama hesabı, kaynak grubu veya aboneliğe kapsamlı bir rol atamak için benzer adımları izleyebilirsiniz.
 

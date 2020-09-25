@@ -1,6 +1,6 @@
 ---
 title: Şirket içi kaynaklara yönelik SSO 'nun Azure AD 'ye katılmış cihazlarda nasıl çalıştığı. | Microsoft Docs
-description: Hibrit Azure Active Directory'ye katılmış cihazları elle nasıl yapılandıracağınızı öğrenin.
+description: Karma Azure Active Directory katılmış cihazları yapılandırarak SSO deneyimini genişletmeyi öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 149b01401cd6feb7610510efeb1ad9a3c69f3ecf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: ba802cb86d68298cd4dfff94162069590744833c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024052"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256471"
 ---
-# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Şirket içi kaynaklara yönelik SSO, Azure AD 'ye katılmış cihazlarda nasıl çalışacaktır?
+# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Şirket içi kaynaklarda çoklu oturum açma, Azure AD katılımlı cihazlarda nasıl çalışır?
 
 Azure Active Directory (Azure AD) katılmış bir cihazın, kiracının bulut uygulamalarına çoklu oturum açma (SSO) deneyimi sunabilme olasılığı da vardır. Ortamınızda şirket içi Active Directory (AD) varsa, bu cihazlardaki SSO deneyimini, şirket içi AD 'ye güvenen kaynak ve uygulamalar için genişletebilirsiniz. 
 
 Bu makalede bunun nasıl çalıştığı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
  Azure AD 'ye katılmış makineler kuruluşunuzun ağına bağlı değilse, bir VPN veya başka bir ağ altyapısı gerekir. Şirket içi SSO, şirket içi AD DS etki alanı denetleyicileriniz ile görüş satırı iletişimi gerektirir.
 

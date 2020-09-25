@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d5809d7475759450a513153abf641f7943163d98
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: be8e43585fca77fc891a9142066d406444b674d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422224"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253243"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Gerçek dünyadan bir örnek kullanarak Azure Cosmos DB'de verileri modelleme ve bölümleme
 
@@ -323,7 +323,7 @@ function createComment(postId, comment) {
 Bu saklı yordam, post 'un KIMLIĞINI ve yeni açıklamanın gövdesini parametre olarak alır, ardından:
 
 - Gönderiyi alır
-- Şunu artırır`commentCount`
+- Şunu artırır `commentCount`
 - Gönderi yerini alır
 - yeni açıklamayı ekler
 
@@ -365,7 +365,7 @@ Bu saklı yordam, kullanıcının KIMLIĞINI ve kullanıcının yeni kullanıcı
 
 - ile eşleşen tüm öğeleri getirir `userId` (gönderi, açıklamalar veya beğeni olabilir)
 - Bu öğelerin her biri için
-  - Şunu değiştirir`userUsername`
+  - Şunu değiştirir `userUsername`
   - öğeyi değiştirir
 
 > [!IMPORTANT]
@@ -419,7 +419,7 @@ Bu durumu göz önünde bulundurmanız, aslında basittir:
 
 1. *has* `userId` Belirli bir kullanıcı için tüm gönderileri getirmek istiyoruz, bu isteğin üzerine filtre uygulamak istiyor
 1. `posts`Şu şekilde bölümlenmemiş çünkü kapsayıcıya göre bölümlenmemiş`userId`
-1. Belirgin *bir şekilde,* bu isteği tarafından bölümlenen bir kapsayıcıya karşı yürüterek performans sorunumuzu çözeceğiz.`userId`
+1. Belirgin *bir şekilde,* bu isteği tarafından bölümlenen bir kapsayıcıya karşı yürüterek performans sorunumuzu çözeceğiz. `userId`
 1. Zaten bu tür bir kapsayıcınıza sahip olduğumuz `users` bir kapsayıcıdır.
 
 Bu nedenle, tüm gönderileri kapsayıcıyla çoğaltarak ikinci bir kat düzeyi sunuyoruz `users` . Bunu yaparak, gönderilerimizin bir kopyasını, yalnızca farklı boyutlarda bölümleyerek, bu sayede daha verimli bir şekilde elde eteceğiz `userId` .

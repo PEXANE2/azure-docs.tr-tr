@@ -12,16 +12,16 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: acb4b601118b341d14bc5e7c549d22eef23b2cc2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085714"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258345"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Uygulamanızı yayımcısı doğrulandı olarak işaretleme
 
-Bir uygulama, yayımcı doğrulanmış olarak işaretlendiğinde, yayımcı Microsoft İş Ortağı Ağı (MPN) hesabını kullanarak kimliğini doğrulamıştır ve bu MPN hesabını uygulama kaydıyla ilişkilendirmiştir. Bu makalede, [Yayımcı doğrulama](publisher-verification-overview.md) işleminin nasıl tamamlanacağı açıklanır.
+Bir uygulama kaydının doğrulanmış bir yayımcısı olduğunda, uygulamanın yayımcısının Microsoft İş Ortağı Ağı (MPN) hesabını kullanarak kimliğini [doğruladığını](/partner-center/verification-responses) ve bu MPN hesabını uygulama kaydıyla ilişkilendirdiğini gösterir. Bu makalede, [Yayımcı doğrulama](publisher-verification-overview.md) işleminin nasıl tamamlanacağı açıklanır.
 
 ## <a name="quickstart"></a>Hızlı Başlangıç
 Microsoft İş Ortağı Ağı (MPN) zaten kaydolduysanız ve [önkoşulları](publisher-verification-overview.md#requirements)karşıladıysanız, hemen kullanmaya başlayabilirsiniz: 
@@ -42,9 +42,9 @@ Belirli avantajlar, gereksinimler ve sık sorulan sorular hakkında daha fazla a
 
 1. Yayımcı doğrulanmış olarak işaretlemek istediğiniz uygulamalarda ve Iş Ortağı Merkezi 'nde MPN hesabında değişiklik yapma yetkisi olan bir kuruluş (Azure AD) hesabına [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) 'ı kullanarak oturum açtığınızdan emin olun.
 
-    - Azure AD 'de bu kullanıcı şu rollerden birine üye olmalıdır: uygulama Yöneticisi, bulut uygulaması Yöneticisi, genel yönetici. 
+    - Azure AD 'de bu kullanıcı şu [rollerden](../users-groups-roles/directory-assign-admin-roles.md)birine üye olmalıdır: uygulama Yöneticisi, bulut uygulaması Yöneticisi, genel yönetici. 
 
-    - Iş Ortağı Merkezi 'nde bu kullanıcının şu rollere sahip olması gerekir: MPN Yöneticisi, hesaplar Yöneticisi veya genel yönetici (Bu, Azure AD 'de ana kopyalı bir paylaşılan roldür). 
+    - Iş Ortağı Merkezi 'nde bu kullanıcının şu [rollere](/partner-center/permissions-overview)sahip olması gerekir: MPN Yöneticisi, hesaplar Yöneticisi veya genel yönetici (Bu, Azure AD 'de ana kopyalı bir paylaşılan roldür). 
 
 1. Uygulama kayıt portalına gidin:  
 

@@ -1,19 +1,20 @@
 ---
 title: Gelişmiş senaryolar için yazar girişi betiği
 titleSuffix: Azure Machine Learning entry script authoring
+description: Dağıtım sırasında ön ve son işleme için Azure Machine Learning girişi betikleri yazmayı öğrenin.
 author: gvashishtha
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 09/17/2020
 ms.author: gopalv
-ms.openlocfilehash: c135d649feb42c8fa735e67ad6f3c3e51551d3e9
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0146c6c003e3c22b63b5fde5c8979a9d7c112b69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530293"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261400"
 ---
 # <a name="advanced-entry-script-authoring"></a>Gelişmiş giriş betiği yazma
 
@@ -40,6 +41,49 @@ Bu türler Şu anda destekleniyor:
 * "StandardPythonParameterType" türünde bir sözlük döndürür. Bu, PandasDataFrameParameterTypes içeren iç içe geçmiş olabilir.
 `input_sample` `output_sample` Web hizmetinin istek ve yanıt biçimlerini temsil eden ve değişkenlerinde giriş ve çıkış örnek biçimlerini tanımlayın. Bu örnekleri işlevindeki giriş ve çıkış işlevi Dekoratörleri içinde kullanın `run()` . Aşağıdaki scikit-örnek, şema oluşturmayı kullanır.
 
+
+
+```python
+#Example: scikit-learn and Swagger
+import json
+import numpy as np
+import os
+from sklearn.externals import joblib
+from sklearn.linear_model import Ridge
+
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
+
+
+def init():
+    global model
+    # AZUREML_MODEL_DIR is an environment variable created during deployment. Join this path with the filename of the model file.
+    # It holds the path to the directory that contains the deployed model (./azureml-models/$MODEL_NAME/$VERSION).
+    # If there are multiple models, this value is the path to the directory containing all deployed models (./azureml-models).
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
+
+    # If your model were stored in the same directory as your score.py, you could also use the following:
+    # model_path = os.path.abspath(os.path.join(os.path.dirname(__file_), 'sklearn_mnist_model.pkl')
+
+    # Deserialize the model file back into a sklearn model
+    model = joblib.load(model_path)
+
+
+input_sample = np.array([[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]])
+output_sample = np.array([3726.995])
+
+
+@input_schema('data', NumpyParameterType(input_sample))
+@output_schema(NumpyParameterType(output_sample))
+def run(data):
+    try:
+        result = model.predict(data)
+        # You can return any data type, as long as it is JSON serializable.
+        return result.tolist()
+    except Exception as e:
+        error = str(e)
+        return error
+```
 
 ## <a name="power-bi-compatible-endpoint"></a>Power BI uyumlu uç nokta 
 
@@ -266,9 +310,19 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-Bir modeli kaydettiğinizde, kayıt defterinde modeli yönetmek için kullanılan bir model adı sağlarsınız. Bu adı model dosyasının veya yerel dosya sistemindeki dosyaların yolunu almak için [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) yöntemiyle birlikte kullanırsınız. Bir klasörü veya dosya koleksiyonunu kaydettiğinizde, bu API bu dosyaları içeren dizinin yolunu döndürür.
+Bir modeli kaydettiğinizde, kayıt defterinde modeli yönetmek için kullanılan bir model adı sağlarsınız. Bu adı model dosyasının veya yerel dosya sistemindeki dosyaların yolunu almak için [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) yöntemiyle birlikte kullanırsınız. Bir klasörü veya dosya koleksiyonunu kaydettiğinizde, bu API bu dosyaları içeren dizinin yolunu döndürür.
 
 Bir modeli kaydettiğinizde, buna bir ad verirsiniz. Ad, modelin yerel olarak ya da hizmet dağıtımı sırasında yerleştirildiği yere karşılık gelir.
+
+## <a name="framework-specific-examples"></a>Çerçeveye özgü örnekler
+
+Belirli makine öğrenimi kullanım örnekleri için daha fazla giriş betiği örnekleri aşağıda bulunabilir:
+
+* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
+* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
+* [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
+* [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
+* [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

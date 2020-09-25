@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0930b7cb7b98874e20f070763a7ec50a6b4f3ef0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: ea32126e19c4520a6d5a40f38f60ec44e9a119cd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260878"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak yeni bir Apache Spark havuzu oluşturma
 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın
+[Azure portalda](https://portal.azure.com/) oturum açma
 
 ## <a name="navigate-to-the-synapse-workspace"></a>SYNAPSE çalışma alanına gidin 
 1. Arama çubuğuna hizmet adı (veya doğrudan kaynak adı) yazarak Apache Spark havuzunun oluşturulacağı SYNAPSE çalışma alanına gidin.

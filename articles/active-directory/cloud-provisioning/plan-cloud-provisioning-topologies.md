@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 172e836a212f9ce097c2c4e392a7386a510c2c6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266301"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect bulut sağlama desteklenen topolojiler ve senaryolar
 Bu makalede Azure AD Connect bulut sağlamasını kullanan çeşitli şirket içi ve Azure Active Directory (Azure AD) topolojileri açıklanmaktadır. Bu makalede yalnızca desteklenen yapılandırma ve senaryolar bulunur.
@@ -34,7 +34,7 @@ Aşağıda bir çözüm seçerken aklınızda bulundurmanız gereken bilgilerin 
 - Kaynak Bağlayıcısı için kullanılan özniteliği değiştiremezsiniz.
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Tek orman, tek Azure AD kiracısı
-![Tek bir orman ve tek bir kiracı için topoloji](media/plan-cloud-provisioning-topologies/single-forest.png)
+![Tek bir orman için topolojiyi ve tek bir kiracıyı gösteren diyagram.](media/plan-cloud-provisioning-topologies/single-forest.png)
 
 En basit topoloji, bir veya birden çok etki alanı ve tek bir Azure AD kiracısı içeren tek bir şirket içi ormandır.  Bu senaryonun bir örneği için bkz [. Öğretici: tek bir Azure AD kiracısıyla tek bir orman](tutorial-single-forest.md)
 
@@ -45,7 +45,7 @@ En basit topoloji, bir veya birden çok etki alanı ve tek bir Azure AD kiracıs
 Ortak topoloji, bir veya birden çok etki alanı ve tek bir Azure AD kiracısı olan birden çok AD ormandır.  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Azure AD Connect, bulut sağlaması ile yeni bir ormana sahip olan orman
-![Tek bir orman ve tek bir kiracı için topoloji](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
+![Mevcut bir orman için topolojiyi ve yeni bir ormanı gösteren diyagram.](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
 
 Bu senaryo, çok ormanlı senaryoya benzerdir, ancak bu, mevcut bir Azure AD Connect ortamını içerir ve sonra Azure AD Connect bulut sağlaması kullanılarak yeni bir ormana gönderilir.  Bu senaryonun bir örneği için bkz [. Öğretici: tek bir Azure AD kiracısına sahip mevcut bir orman](tutorial-existing-forest.md)
 

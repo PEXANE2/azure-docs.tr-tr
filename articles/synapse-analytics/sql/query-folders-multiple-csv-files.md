@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: jrasnick
+ms.openlocfilehash: 54ef116878dee2ed1c351fac3dacdf359abbe574
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207640"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288350"
 ---
 # <a name="query-folders-and-multiple-files"></a>Klasörleri ve birden çok dosyayı sorgulama  
 
@@ -22,7 +22,7 @@ Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullana
 
 İsteğe bağlı SQL, Windows işletim sisteminde kullanılan Joker karakterlere benzer bir joker karakter kullanarak birden çok dosya/klasörü okumayı destekler. Ancak, birden çok Joker karakterlere izin verildiğinden daha fazla esneklik mevcuttur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adımınız sorguları yürütebileceğiniz **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 
@@ -232,4 +232,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi, [belirli dosyaları sorgula](query-specific-files.md) makalesinde bulunabilir.
+[Sorgu belirli dosyalar](query-specific-files.md) makalesinde daha fazla bilgi bulabilirsiniz.

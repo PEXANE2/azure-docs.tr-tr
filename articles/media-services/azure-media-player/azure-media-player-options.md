@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2b7acb1ad6fbe0beb4d79ee2a833561f0829664c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 392ecff2ab120e713a07d130493a4a8339dae5ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423040"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296204"
 ---
 # <a name="options"></a>Seçenekler #
 
@@ -51,7 +51,7 @@ Otomatik Kullan doğru ise, sayfa yüklendikten hemen sonra (kullanıcıdan herh
 > [!NOTE]
 > Bu seçenek Windows Phone, Apple iOS ve Android gibi mobil cihazlar tarafından desteklenmez. Mobil cihazlar, tüketicinin aylık veri planlarının kullanımını engellemek için Otomatik Kullan işlevselliğini engeller (genellikle pahalıdır). Bu durumda videoyu başlatmak için bir Kullanıcı dokunması/tıklaması gerekir.
 
-`<video autoplay ...>`veya`{ "autoplay": true }`
+`<video autoplay ...>`veya `{ "autoplay": true }`
 
 ### <a name="poster"></a>AF ###
 Poster özniteliği, video yürütülmeye başlamadan önce görüntülenen görüntüyü ayarlar. Bu genellikle videonun veya özel bir başlık ekranının bir çerçevesidir. Kullanıcı oynat ' a tıkladığı anda görüntü çalışır.
@@ -93,11 +93,11 @@ Bu seçeneği gerçek video öğesine ayarlayarak, Ana kapsayıcının tam geni�
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`seçenek açık `width` ve ayarları geçersiz kılar `height` . Bu seçenek yalnızca Azure Media Player sürümünde `2.0.0` ve sonrasında kullanılabilir.
+`fluid` seçenek açık `width` ve ayarları geçersiz kılar `height` . Bu seçenek yalnızca Azure Media Player sürümünde `2.0.0` ve sonrasında kullanılabilir.
 
 ### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`seçenek, Kullanıcı için kullanılabilir playbackSpeed denetimini ve kayıttan yürütme hızı ayarlarını denetler. `playbackSpeed`bir nesnesi alır. Denetim çubuğunda kayıttan yürütme hızı denetimini etkinleştirmek için `enabled` nesnenin özelliğinin true olarak ayarlanması gerekir. Biçimlendirme sırasında kayıttan yürütme hızını etkinleştirmeye bir örnek:
+`playbackSpeed` seçenek, Kullanıcı için kullanılabilir playbackSpeed denetimini ve kayıttan yürütme hızı ayarlarını denetler. `playbackSpeed` bir nesnesi alır. Denetim çubuğunda kayıttan yürütme hızı denetimini etkinleştirmek için `enabled` nesnenin özelliğinin true olarak ayarlanması gerekir. Biçimlendirme sırasında kayıttan yürütme hızını etkinleştirmeye bir örnek:
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 

@@ -3,12 +3,12 @@ title: Azure Service Fabric küme düğümüne uzaktan bağlanma
 description: Bir ölçek kümesi örneğine (Service Fabric küme düğümü) uzaktan nasıl bağlanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98d573af4fc2026134e75d4caf24a09e57e52c87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458324"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268103"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Sanal makine ölçek kümesi örneğine veya bir küme düğümüne uzaktan Bağlan
 Azure 'da çalışan bir Service Fabric kümesinde, tanımladığınız her küme düğüm türü [bir sanal makine ayrı ölçeğini ayarlar](service-fabric-cluster-nodetypes.md).  Belirli ölçek kümesi örneklerine (küme düğümleri) uzaktan bağlanabilirsiniz.  Tek örnekli VM 'lerden farklı olarak, ölçek kümesi örneklerinin kendi sanal IP adresleri yoktur. Bu, belirli bir örneğe uzaktan bağlanmak için kullanabileceğiniz bir IP adresi ve bağlantı noktası ararken zor olabilir.
@@ -21,11 +21,11 @@ Belirli bir örneğe uzaktan bağlanmak için kullanabileceğiniz bir IP adresi 
     
     Yük dengeleyicinizin Azure Portal sayfasında, **Ayarlar**  >  **gelen NAT kuralları**' nı seçin: 
 
-    ![Yük dengeleyici gelen NAT kuralları](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
+    ![Azure portal yük dengeleyici sayfasının ekran görüntüsü. Sol taraftaki menüde, Ayarlar ' ın altında, gelen NAT kuralları seçilidir.](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
     Aşağıdaki ekran görüntüsünde, ön uç adlı düğüm türü için gelen NAT kuralları gösterilmektedir: 
 
-    ![Yük dengeleyici gelen NAT kuralları](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
+    ![Yük Dengeleyici için gelen NAT kurallarını gösteren ekran görüntüsü. Ad, IP sürümü, hedef, hedef ve hizmet her kural için listelenir.](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
     Her düğüm için, IP adresi **hedef** sütununda görünür, **hedef** sütunu ölçek kümesi örneğine verir ve **hizmet** sütunu bağlantı noktası numarasını sağlar. Uzak bağlantı için bağlantı noktaları, bağlantı noktası 3389 ' den başlayarak her bir düğüme artan düzende ayrılır.
 

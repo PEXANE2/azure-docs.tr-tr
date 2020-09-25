@@ -7,19 +7,22 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: bac476cfbe78ad6fcf73b6a2319581cc60524a57
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432558"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289880"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure depolama 'da statik bir Web sitesi barındırma
 
 Doğrudan bir Azure Storage GPv2 hesabındaki bir kapsayıcıdan statik içerik (HTML, CSS, JavaScript ve resim dosyaları) sunabilir. Daha fazla bilgi için bkz. [Azure Storage 'Da statik Web sitesi barındırma](storage-blob-static-website.md).
 
 Bu makalede Azure portal, Azure CLı veya PowerShell kullanarak statik Web sitesi barındırmayı nasıl etkinleştireceğinizi gösterilmektedir.
+
+> [!NOTE]
+> Genel amaçlı v2 standart depolama hesabı oluşturduğunuzdan emin olun. Statik Web siteleri diğer depolama hesabı türleri için kullanılamaz.
 
 ## <a name="enable-static-website-hosting"></a>Statik Web sitesi barındırmayı etkinleştir
 

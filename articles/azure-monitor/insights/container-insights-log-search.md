@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici günlüklerini sorgulama | Microsoft 
 description: Kapsayıcılar için Azure Izleyici ölçümleri ve günlük verilerini toplar ve bu makalede kayıtları açıklanmakta ve örnek sorgular yer almaktadır.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: f9b30f11ae6a2f64601b9595bfb1d45493209849
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 2f0e9848ffbf7584d75b5e994e49379186a69641
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254899"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici günlüklerini sorgulama
 
@@ -27,7 +27,7 @@ Aşağıdaki tabloda, kapsayıcılar için Azure Izleyici tarafından toplanan k
 | Bir Kubernetes kümesinin bir parçası olan düğümlerin envanteri | Kuin API 'SI | `KubeNodeInventory` | TimeGenerated, Computer, ClusterName, Clusterıd, Lastgeçişli Tiontimeready, Etiketler, durum, KubeletVersion, KubeProxyVersion, CreationTimeStamp, dir | 
 | Kubernetes Olayları | Kuin API 'SI | `KubeEvents` | TimeGenerated, bilgisayar, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, Ileti, dir | 
 | Kubernetes kümesindeki hizmetler | Kuin API 'SI | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, dir | 
-| Kubernetes kümesinin düğümlerin bir parçası için performans ölçümleri | Kullanım ölçümleri, Cadvizörü 'den ve Kuto API 'si sınırlarından alınır | Perf &#124; WHERE ObjectName = = "K8SNode" | Bilgisayar, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, Memorycapacitybyte, memoryRssBytes, Cpuusme Anoçekirdekler, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, dir | 
+| Kubernetes kümesinin düğümlerin bir parçası için performans ölçümleri | Kullanım ölçümleri, Cadvizörü 'den ve Kuto API 'si sınırlarından alınır | Perf &#124; WHERE ObjectName = = "K8SNode" | Bilgisayar, ObjectName, CounterName &#40;Cpuallocatablenanoçekirdekler, memoryAllocatableBytes, cpuCapacityNanoCores, Memorycapacitybyte, memoryRssBytes, Cpuusme Anoçekirdekleri, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, dir | 
 | Kubernetes kümesinin kapsayıcılar bölümü için performans ölçümleri | Kullanım ölçümleri, Cadvizörü 'den ve Kuto API 'si sınırlarından alınır | Perf &#124; WHERE ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, Cpuuslationanoçekirdekler, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, dir | 
 | Özel ölçümler ||`InsightsMetrics` | Bilgisayar, ad, ad alanı, Origin, dir, Etiketler<sup>1</sup>, TimeGenerated, Type, Va, _ResourceId | 
 

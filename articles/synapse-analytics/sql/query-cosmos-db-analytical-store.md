@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c64a42c66a3b1c1810c17347e18979d599b36b6f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8dd6ab5bcb42765c995e8cd767358be5e62aa0b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288402"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-on-demand-in-azure-synapse-link-preview"></a>Azure 'da isteğe bağlı SQL SYNAPSE bağlantısı kullanarak verileri Azure Cosmos DB sorgulama (Önizleme)
 
@@ -44,7 +44,7 @@ Azure Cosmos DB bağlantı dizesi, çalışacak Azure Cosmos DB hesap adı, veri
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
 
-Azure Cosmos DB kapsayıcı adı, sözdiziminde tırnak işareti olmadan belirtilir `OPENROWSET` . Kapsayıcı adının herhangi bir özel karakteri varsa (örn. bir tire '-') varsa, adın `[]` söz dizimi içinde (köşeli ayraç) içinde sarmalanması gerekir `OPENROWSET` .
+Azure Cosmos DB kapsayıcı adı, sözdiziminde tırnak işareti olmadan belirtilir `OPENROWSET` . Kapsayıcı adının herhangi bir özel karakteri varsa (örneğin, bir tire '-') varsa, adın `[]` söz dizimi içinde (köşeli ayraç) içinde sarmalanması gerekir `OPENROWSET` .
 
 > [!NOTE]
 > İsteğe bağlı SQL, Azure Cosmos DB işlem deposunun sorgulanmasını desteklemez.
@@ -71,7 +71,7 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-Yukarıdaki örnekte, SQL isteğe bağlı olarak, `covid` `MyCosmosDbAccount` Azure Cosmos DB anahtarı (Yukarıdaki örnekte kukla) kullanılarak kimlik doğrulaması yapılan Azure Cosmos DB hesabı 'nda veritabanına bağlanacak şekilde bağlanıyorsunuz. Daha sonra `EcdcCases` bölgede bulunan analitik depoya erişeceğiz `West US 2` . Belirli özelliklerin projeksiyonu olmadığından, `OPENROWSET` işlev Azure Cosmos DB öğelerinden tüm özellikleri döndürür.
+Yukarıdaki örnekte, SQL isteğe bağlı olarak, `covid` `MyCosmosDbAccount` Azure Cosmos DB anahtarı (Yukarıdaki örnekte kukla) kullanılarak kimlik doğrulaması yapılan Azure Cosmos DB hesabı 'nda veritabanına bağlanmayı umuyoruz. Daha sonra `EcdcCases` bölgede bulunan analitik depoya erişeceğiz `West US 2` . Belirli özelliklerin projeksiyonu olmadığından, `OPENROWSET` işlev Azure Cosmos DB öğelerinden tüm özellikleri döndürür.
 
 Aynı Azure Cosmos DB veritabanındaki diğer kapsayıcıdan verileri araştırmanıza gerek varsa, aynı bağlantı dizesini kullanabilir ve gereken kapsayıcıya üçüncü parametre olarak başvurabilirsiniz:
 
@@ -87,7 +87,7 @@ FROM OPENROWSET(
 
 ' De otomatik Şema çıkarımı özelliği `OPENROWSET` basit ve kullanımı kolay bir querience sağlarken, iş senaryolarınız Azure Cosmos DB verilerinden yalnızca ilgili özellikleri okumak için şemayı açıkça belirtmenizi gerektirebilir.
 
-`OPENROWSET` kapsayıcıdaki verilerden hangi özellikleri okumak istediğinizi açıkça belirtmenizi ve veri türlerini belirtmenizi sağlar. Aşağıdaki yapıyla [ECDC COVıD veri kümesinden](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) bazı verileri içeri aktardığımızda Azure Cosmos DB:
+`OPENROWSET` kapsayıcıdaki verilerden hangi özellikleri okumak istediğinizi açıkça belirtmenizi ve veri türlerini belirtmenizi sağlar. Aşağıdaki yapıyla, [ECDC COVıD veri kümesindeki](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) bazı verileri Azure Cosmos DB içine aktardığınızı düşünelim:
 
 ```json
 {"date_rep":"2020-08-13","cases":254,"countries_and_territories":"Serbia","geo_id":"RS"}
@@ -118,7 +118,7 @@ Azure Cosmos DB değer için kullanılması gereken SQL türleri hakkında daha 
 
 ## <a name="querying-nested-objects-and-arrays"></a>İç içe nesneleri ve dizileri sorgulama
 
-Azure Cosmos DB, bunları iç içe geçmiş nesneler veya diziler olarak oluşturarak daha karmaşık veri modellerini temsil etmenize olanak tanır. Azure Cosmos DB için SYNAPSE bağlantısının otomatik eşitleme özelliği, şema gösterimini, isteğe bağlı SQL 'de zengin sorgulama yapılmasına izin veren iç içe geçmiş veri türlerini yönetmek de dahil olmak üzere, yerleşik olarak bulunan analitik mağaza 'da yönetir.
+Azure Cosmos DB, bunları iç içe geçmiş nesneler veya diziler olarak oluşturarak daha karmaşık veri modellerini temsil etmenize olanak tanır. Azure Cosmos DB için SYNAPSE bağlantısının oto Sync özelliği, şema gösterimini, isteğe bağlı SQL 'de zengin sorgulama yapılmasına izin veren, iç içe geçmiş veri türlerini işlemeyi içerir.
 
 Örneğin, [kablo-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) veri kümesinin aşağıdaki yapıyı takıp eden JSON belgeleri vardır:
 
@@ -179,7 +179,7 @@ FROM
 
 ## <a name="flattening-nested-arrays"></a>İç içe dizileri düzleştirme
 
-Azure Cosmos DB veriler, [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) veri kümesindeki yazarlar dizisi gibi iç içe geçmiş alt dizilere sahip olabilir:
+Azure Cosmos DB veriler, [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) veri kümesinden yazarın dizisi gibi iç içe geçmiş alt dizilere sahip olabilir:
 
 ```json
 {
@@ -236,7 +236,7 @@ Tamamlayıcı bilgiler ekonomik-epidemi... | `[{"first":"Nicolas","last":"4#","s
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>SQL tür eşlemelerine Azure Cosmos DB
 
-Azure Cosmos DB işlem deposu şemanın belirsiz olduğu sırada analitik deponun analitik sorgu performansı için optimize edilmesi gerektiğini unutmayın. SYNAPSE bağlantısının otomatik eşitleme özelliği sayesinde, Azure Cosmos DB iç içe geçmiş veri türlerini işlemeyi içeren analitik depodaki şema gösterimini yönetir. İsteğe bağlı SQL, analitik depoyu sorguladığı için, Azure Cosmos DB giriş veri türlerini SQL veri türlerine nasıl eşleneceğini anlamak önemlidir.
+Azure Cosmos DB işlem deposu şemanın belirsiz olduğu sırada analitik deponun analitik sorgu performansı için optimize edilmesi gerektiğini unutmayın. SYNAPSE link 'in oto Sync özelliği ile, Azure Cosmos DB iç içe geçmiş veri türlerini işlemeyi içeren analitik depodaki şema gösterimini yönetir. İsteğe bağlı SQL, analitik depoyu sorguladığı için, Azure Cosmos DB giriş veri türlerini SQL veri türlerine nasıl eşleneceğini anlamak önemlidir.
 
 Azure Cosmos DB SQL (Core) API 'SI hesaplarının JSON özelliği türlerini destekler, dize, Boolean, null, iç içe geçmiş nesne veya dizi. İçinde yan tümce kullanıyorsanız, bu JSON türleriyle eşleşen SQL türlerini seçmeniz gerekir `WITH` `OPENROWSET` . Azure Cosmos DB farklı özellik türleri için kullanılması gereken SQL sütun türlerinin altına bakın.
 

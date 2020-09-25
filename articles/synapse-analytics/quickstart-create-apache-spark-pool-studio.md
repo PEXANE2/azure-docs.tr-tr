@@ -2,19 +2,19 @@
 title: "Hızlı başlangıç: SYNAPSE Studio 'Yu kullanarak Apache Spark Havuzu (Önizleme) oluşturma"
 description: Bu kılavuzdaki adımları izleyerek SYNAPSE Studio kullanarak yeni bir Apache Spark havuzu oluşturun.
 services: synapse-analytics
-author: julieMSFT
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: spark
 ms.date: 3/19/2020
-ms.author: jrasnick
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 87fcbef5a3cedab3142fe9ad47c68752515fdd2e
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: cdf9a1f211e889146c9a6986eeea7502d3177057
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274348"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260844"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio 'Yu kullanarak Apache Spark Havuzu (Önizleme) oluşturma
 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın
+[Azure portalda](https://portal.azure.com/) oturum açma
 
 ## <a name="navigate-to-the-synapse-workspace"></a>SYNAPSE çalışma alanına gidin
 

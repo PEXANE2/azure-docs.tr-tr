@@ -4,19 +4,19 @@ description: Azure portal, PowerShell veya Azure CLı kullanarak Azure SQL verit
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: sqldbrb=1
+ms.custom: contperfq1
 ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: 8747e2f898b9810f50a08830728f1fab9a7f0548
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 6a0d81cc9954f934395bc275785bda34c55c35bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263411"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Hızlı başlangıç: Azure SQL veritabanı tek veritabanı oluşturma
 
@@ -53,7 +53,7 @@ Azure portal tek bir veritabanı oluşturmak için bu hızlı başlangıç Azure
    **Tamam**’ı seçin.
 
 1. **SQL elastik havuz** kümesini **Hayır**olarak kullanmak istiyor.
-1. **İşlem + depolama**altında **Veritabanını yapılandır**' ı seçin.
+1. **İşlem + depolama**'nın altında **Veritabanını yapılandır**'ı seçin.
 1. Bu hızlı başlangıç sunucusuz bir veritabanını kullanır, bu nedenle **sunucusuz**' ı seçin ve **Uygula**' yı seçin. 
 
       ![Sunucusuz veritabanını Yapılandır](./media/single-database-create-quickstart/configure-database.png)

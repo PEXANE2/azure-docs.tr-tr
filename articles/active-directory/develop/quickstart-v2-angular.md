@@ -7,23 +7,23 @@ author: jasonnutter
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: bf921ce4ce3ad65f0787ccab2f0a064da8973af1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 23b25340906ddb4501492b048740f590c13654c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115246"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258039"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Hızlı başlangıç: angular tek sayfalı uygulamada Kullanıcı oturumu açma ve erişim belirteci edinme
 
 Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel Microsoft hesapları, iş hesapları veya okul hesapları olan kullanıcıların oturumunu nasıl imzalayabileceğinizi öğrenmek için bir kod örneği kullanırsınız. Angular SPA, Microsoft Graph API 'sini veya herhangi bir Web API 'sini çağırmak için bir erişim belirteci de alabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Node.js](https://nodejs.org/en/download/).
@@ -35,7 +35,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel 
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Seçenek 1 (Express): uygulamayı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğini indirin
 >
-> 1. [Azure portalında](https://portal.azure.com) oturum açın.
+> 1. [Azure Portal](https://portal.azure.com) oturum açın.
 > 1. Hesabınızın birden fazla kiracıya erişimi varsa, sağ üst köşedeki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure Active Directory (Azure AD) kiracısına ayarlayın.
 > 1. Yeni [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) bölmesini Azure Portal açın.
 > 1. Uygulamanız için bir ad girin ve ardından **Kaydet**' i seçin.
@@ -45,7 +45,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel 
 >
 > #### <a name="step-1-register-the-application"></a>1. Adım: uygulamayı kaydetme
 >
-> 1. [Azure portalında](https://portal.azure.com) oturum açın.
+> 1. [Azure Portal](https://portal.azure.com) oturum açın.
 > 1. Hesabınızın birden fazla kiracıya erişimi varsa, sağ üst köşedeki hesabınızı seçin ve Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 > 1. Azure portal [tek sayfalı bir uygulamayı kaydetmek](./scenario-spa-app-registration.md) için yönergeleri izleyin.
 > 1. Uygulama kaydlarınızın **kimlik doğrulama** bölmesine yeni bir platform ekleyin ve yenıden yönlendirme URI 'sini kaydedin: `http://localhost:4200/` .
@@ -96,7 +96,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel 
 >
 > Şu değerleri değiştirin:
 >
->|Değer adı|Açıklama|
+>|Değer adı|Description|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Uygulama kaydlarınızın **genel bakış** sayfasında bu, **uygulamanızın (istemci) kimlik** değeridir. |
 >|Enter_the_Cloud_Instance_Id_Here|Bu, Azure bulutunun örneğidir. Ana veya küresel Azure bulutu için girin **https://login.microsoftonline.com** . Ulusal bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](./authentication-national-cloud.md).|

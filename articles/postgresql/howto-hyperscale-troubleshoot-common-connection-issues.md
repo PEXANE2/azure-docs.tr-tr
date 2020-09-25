@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 10/8/2019
-ms.openlocfilehash: a47a6e1860edcb9b2bf89c25e78f6a66e8a7cf4d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1c6825820ae943d10157279dfe93922a7521b75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117721"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295626"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda bağlantı sorunlarını giderme-hiper ölçek (Citus)
 
@@ -27,7 +27,7 @@ Bağlantı sorunlarına birkaç şey neden olabilir, örneğin:
 * Hizmet bakımı
 * Düzenleyici düğümü, yeni donanıma yük devretiyor
 
-Genellikle, hiper ölçeğe yönelik bağlantı sorunları şu şekilde sınıflandırılabilir:
+Genellikle, hiper ölçekte bağlantı sorunları (Citus) şu şekilde sınıflandırılabilir:
 
 * Geçici hatalar (kısa ömürlü veya aralıklı)
 * Kalıcı veya geçici olmayan hatalar (düzenli olarak yinelenen hatalar)
@@ -36,7 +36,7 @@ Genellikle, hiper ölçeğe yönelik bağlantı sorunları şu şekilde sınıfl
 
 Geçici hatalar, birkaç nedenden dolayı oluşur. En yaygın sistem bakımı, donanım veya yazılımla ilgili hata ve düğüm vCore yükseltmelerini düzenleyici.
 
-Hiper ölçek sunucu grubu düğümleri için yüksek kullanılabilirliği etkinleştirmek, bu tür sorunları otomatik olarak hafifletdirebilir. Bununla birlikte, uygulamanız yine de bağlantısını kaybetmek için hazırlanmalıdır. Ayrıca, büyük bir işlemin uzun süre çalışan bir kurtarmaya neden olduğu gibi diğer olayların hafifletmek daha uzun sürebilir.
+Hiper ölçek (Citus) sunucu grubu düğümleri için yüksek kullanılabilirliği etkinleştirmek, bu tür sorunları otomatik olarak hafifletdirebilir. Bununla birlikte, uygulamanız yine de bağlantısını kaybetmek için hazırlanmalıdır. Ayrıca, büyük bir işlemin uzun süre çalışan bir kurtarmaya neden olduğu gibi diğer olayların hafifletmek daha uzun sürebilir.
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Geçici bağlantı sorunlarını giderme adımları
 
@@ -49,13 +49,13 @@ Hiper ölçek sunucu grubu düğümleri için yüksek kullanılabilirliği etkin
 
 Uygulama, hiper ölçeğe (Citus) bağlanamazsa, en yaygın nedenler güvenlik duvarının yanlış yapılandırılması veya Kullanıcı hatasıdır.
 
-* Düzenleyici düğüm güvenlik duvarı yapılandırması: hiper ölçek sunucusu güvenlik duvarının, proxy sunucuları ve ağ geçitleri dahil olmak üzere istemcinizden gelen bağlantılara izin verecek şekilde yapılandırıldığından emin olun.
+* Düzenleyici düğüm güvenlik duvarı yapılandırması: hiper ölçek (Citus) sunucusu güvenlik duvarının, proxy sunucuları ve ağ geçitleri dahil olmak üzere istemcinizden gelen bağlantılara izin verecek şekilde yapılandırıldığından emin olun.
 * İstemci güvenlik duvarı yapılandırması: istemcinizdeki güvenlik duvarı, veritabanı sunucunuza yönelik bağlantılara izin vermelidir. Bazı güvenlik duvarları yalnızca ada göre uygulama yapılmasına izin vermeyi gerektirir, ancak sunucunun IP adreslerine ve bağlantı noktalarına izin verir.
 * Kullanıcı hatası: bağlantı dizesini çift kontrol edin. Sunucu adı gibi yanlış parametre yazmış olabilirsiniz. Çeşitli dil çerçeveleri ve psql için bağlantı dizelerini Azure portal bulabilirsiniz. Hiper ölçek (Citus) sunucu grubunuzda **bağlantı dizeleri** sayfasına gidin. Ayrıca, hiper ölçek (Citus) kümelerinin yalnızca bir veritabanı olduğunu ve önceden tanımlanmış adının **Citus**olduğunu aklınızda bulundurun.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını giderme adımları
 
-1. İstemci IP adresine izin vermek için [güvenlik duvarı kuralları](howto-hyperscale-manage-firewall-using-portal.md) ayarlayın. Yalnızca geçici test amacıyla, başlangıç IP adresi olarak 0.0.0.0 kullanarak bir güvenlik duvarı kuralı ayarlayın ve bitiş IP adresi olarak 255.255.255.255 kullanın. Bu kural, sunucuyu tüm IP adreslerine açar. Kural, bağlantı sorununuzu giderirse, bunu kaldırın ve uygun şekilde sınırlı bir IP adresi veya adres aralığı için bir güvenlik duvarı kuralı oluşturun.
+1. İstemci IP adresine izin vermek için [güvenlik duvarı kuralları](howto-hyperscale-manage-firewall-using-portal.md) ayarlayın. Yalnızca geçici test amacıyla, başlangıç IP adresi olarak 0.0.0.0 kullanarak bir güvenlik duvarı kuralı ayarlayın ve bitiş IP adresi olarak 255.255.255.255 kullanın. Bu kural sunucuyu tüm IP adreslerine açar. Kural, bağlantı sorununuzu giderirse, bunu kaldırın ve uygun şekilde sınırlı bir IP adresi veya adres aralığı için bir güvenlik duvarı kuralı oluşturun.
 2. İstemci ile İnternet arasındaki tüm güvenlik duvarlarında, bağlantı noktası 5432 ' ın giden bağlantılar için açık olduğundan emin olun.
 3. Bağlantı dizenizi ve diğer bağlantı ayarlarını doğrulayın.
 4. Panodaki hizmet durumunu denetleyin.

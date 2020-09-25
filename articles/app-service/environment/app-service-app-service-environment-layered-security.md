@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 8e1a739c605bc2235567a8d31892771db15572d5
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e9a776aad966bb74e22f6d7fb8d66530e4b4db92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959077"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255206"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>App Service ortamları ile katmanlı güvenlik mimarisi uygulama
 App Service ortamları bir sanal ağa dağıtılan yalıtılmış bir çalışma zamanı ortamı sağladığından, geliştiriciler her fiziksel uygulama katmanı için farklı düzeylerde ağ erişimi sağlayan katmanlı bir güvenlik mimarisi oluşturabilir.
@@ -41,42 +41,61 @@ Giden IP adresleri kümesi bilindiğinde, bir sonraki adım bir ağ güvenlik gr
 Örnek mimaride, ortamlar Orta Güney ABD bulunur, bu nedenle bu bölgede boş bir NSG oluşturulur:
 
 ```azurepowershell-interactive
-New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" -Label "Only allow web frontend and loopback traffic"
+New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" 
+-Label "Only allow web frontend and loopback traffic"
 ```
 
 İlk olarak, App Service ortamları için [gelen trafikle][InboundTraffic] ilgili makalede belirtildiği gibi Azure Yönetim altyapısı için bir açık izin verme kuralı eklenmiştir.
 
 ```azurepowershell-interactive
 #Open ports for access by Azure management infrastructure
-Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" 
+-Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 ```
 
 Sonra, ilk yukarı akış App Service Ortamı HTTP ve HTTPS çağrılarına izin vermek için iki kural eklenmiştir ("fe1ase").
 
 ```azurepowershell-interactive
 #Grant access to requests from the first upstream web front-end
-Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe1ase" -Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe1ase" -Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe1ase" 
+-Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe1ase" 
+-Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 ```
 
 İkinci ve üçüncü yukarı akış App Service ortamları için ("fe2ase" ve "fe3ase") ile yeniden yinelenir.
 
 ```azurepowershell-interactive
 #Grant access to requests from the second upstream web front-end
-Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe2ase" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe2ase" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe2ase" 
+-Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe2ase" 
+-Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
 #Grant access to requests from the third upstream web front-end
-Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe3ase" -Type Inbound -Priority 600 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe3ase" -Type Inbound -Priority 700 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe3ase" 
+-Type Inbound -Priority 600 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe3ase" 
+-Type Inbound -Priority 700 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 ```
 
 Son olarak, arka uç API 'sinin kendisine tekrar arayabilmesi için App Service Ortamı giden IP adresine erişim izni verin.
 
 ```azurepowershell-interactive
 #Allow apps on the apiase environment to call back into itself
-Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP apiase" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS apiase" -Type Inbound -Priority 900 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP apiase" 
+-Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS apiase" 
+-Type Inbound -Priority 900 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' 
+-DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 ```
 
 Her NSG, varsayılan olarak Internet 'ten gelen erişimi engelleyen bir varsayılan kurallar kümesine sahip olduğundan başka bir ağ güvenlik kuralı gerekli değildir.
@@ -89,7 +108,8 @@ Son adım, NSG 'yi "apıai" App Service Ortamı içeren alt ağa uygulamaktır.
 
 ```azurepowershell-interactive
 #Apply the NSG to the backend API subnet
-Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'yourvnetnamehere' -SubnetName 'API-ASE-Subnet'
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityGroupToSubnet 
+-VirtualNetworkName 'yourvnetnamehere' -SubnetName 'API-ASE-Subnet'
 ```
 
 NSG alt ağa uygulandıktan sonra, yalnızca üç yukarı akış App Service ortamı ve API arka ucu içeren App Service Ortamı "apıai" ortamına çağrı yapılmasına izin verilir.

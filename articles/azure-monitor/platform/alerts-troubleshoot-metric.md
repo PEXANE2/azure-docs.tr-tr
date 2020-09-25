@@ -3,15 +3,15 @@ title: Azure ölçüm uyarıları sorunlarını giderme
 description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili yaygın sorunlar.
 author: harelbr
 ms.author: harelbr
-ms.topic: reference
+ms.topic: troubleshooting
 ms.date: 09/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: b0e39982b3d62e0ef722a139024b499efc254f5f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: f9003aa7b9b2c28e443485484ccd4eb50fa6e0dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068771"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294234"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
 
@@ -193,7 +193,7 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 - Ölçüm uyarılarına yönelik PowerShell cmdlet’leri [Az.Monitor modülünde](/powershell/module/az.monitor/?view=azps-3.6.1) de sunulur
 - Yeni (klasik olmayan) ölçüm uyarıları için ' v2 ' ile biten cmdlet 'leri kullandığınızdan emin olun (örneğin, [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1))
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Ölçüm uyarıları için doğru CLı komutlarını kullandığınızdan emin olun:
 
@@ -245,7 +245,7 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 - Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
 - Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
-Örnek:
+Örneğin:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5
         * Ortalama **SuccessE2ELatency** > 250 MS

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82ab9bc0159528446a9de95769f1e433f03acb56
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 03069bc37333cbd26dfe4f40ce4496f3afe768ed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601954"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266051"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için uygulama koruma ilkesi ve onaylanan istemci uygulaması gerektirme
 
@@ -51,7 +51,7 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmas
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Bitti** seçeneğini belirleyin.
-1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 (Önizleme)** öğesini seçin.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365**' i seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
    1. **Android** ve **iOS**dahil edin.
@@ -102,7 +102,7 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmas
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Bitti** seçeneğini belirleyin.
-1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 (Önizleme)** öğesini seçin.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365**' i seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
    1. **Android** ve **iOS**dahil edin.

@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f85430aea183cca977e3cb648cb43779f25c61a0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a5d5528865fc910751b8052dcc78a82131e17290
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657830"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266250"
 ---
 # <a name="what-is-identity-provisioning"></a>Kimlik sağlama nedir?
 
@@ -24,7 +24,7 @@ Bugün, işletmeler ve şirketler, şirket içi ve bulut uygulamalarının daha 
 
 Sağlama, belirli koşullara göre nesne oluşturma, nesneyi güncel tutma ve koşullar artık karşılanmadıklarından nesneyi silme işlemidir. Örneğin, yeni bir Kullanıcı kuruluşunuza katıldığında, bu kullanıcı HR sistemine girilir.  Bu noktada, sağlama bulutta karşılık gelen bir kullanıcı hesabı, Active Directory ve kullanıcının erişmesi gereken farklı uygulamalar oluşturabilir.  Bu, kullanıcının çalışmaya başlamasını ve gün içinde ihtiyaç duydukları uygulamalara ve sistemlere erişmesini sağlar. 
 
-![bulut sağlama](media/what-is-provisioning/cloud1.png)
+![Azure Active Directory ile bulut sağlamayı gösteren diyagram.](media/what-is-provisioning/cloud1.png)
 
 Azure Active Directory açısından, sağlama aşağıdaki temel senaryolara ayrılabilir.  
 
@@ -34,7 +34,7 @@ Azure Active Directory açısından, sağlama aşağıdaki temel senaryolara ayr
 
 ## <a name="hr-driven-provisioning"></a>HR odaklı sağlama
 
-![bulut sağlama](media/what-is-provisioning/cloud2.png)
+![Bulut HR, şirket içi HR ve Azure Active Directory ile ık odaklı sağlamayı gösteren diyagram.](media/what-is-provisioning/cloud2.png)
 
 HR 'dan buluta sağlama, HR sisteminizdeki bilgilere göre nesnelerin (kullanıcılar, roller, gruplar, vb.) oluşturulmasını içerir.  
 
@@ -48,7 +48,7 @@ En yaygın senaryo, yeni bir çalışan şirketinize katıldığında bu durumda
 
 ## <a name="app-provisioning"></a>Uygulama sağlama
 
-![bulut sağlama](media/what-is-provisioning/cloud3.png)
+![Şirket içi uygulamalar, Microsoft dışı bulut uygulamaları ve Azure Active Directory Uygulama sağlamayı gösteren diyagram.](media/what-is-provisioning/cloud3.png)
 
 Azure Active Directory (Azure AD) ' de, **[uygulama sağlama](../app-provisioning/user-provisioning.md)** terimi, kullanıcıların erişmesi gereken bulut uygulamalarında kullanıcı kimliklerinin ve rollerinin otomatik olarak oluşturulmasını ifade eder. Otomatik sağlama, kullanıcı kimliklerinin oluşturulmasına ek olarak, durum veya rol değişikliği olarak Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Yaygın senaryolar, bir Azure AD kullanıcısını [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)gibi uygulamalarda sağlamayı içerir.
 

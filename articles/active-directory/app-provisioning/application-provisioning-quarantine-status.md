@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/28/2020
+ms.date: 09/24/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 54d02b3189825d08716b73b7250efd4e3f334aa0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6a716aef65cc81c5558a214c1ee5f93180810977
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266692"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Karantina durumunda uygulama sağlama
 
@@ -45,10 +45,11 @@ Bir uygulamanın karantinada olup olmadığını denetlemek için üç yol vard�
   - Uygulamanın sağlama yapılandırmasında geçerli bir **bildirim e-postası** belirttiğinizden emin olun.
   - Bildirim e-postası gelen kutusunda istenmeyen posta filtrelemesi olmadığından emin olun.
   - E-postalardan aboneliği kaldırdığınızdan emin olun.
+  - E-postaları denetle azure-noreply@microsoft.com
 
 ## <a name="why-is-my-application-in-quarantine"></a>Uygulamamın neden karantinaya alınsın?
 
-|Açıklama|Önerilen Eylem|
+|Description|Önerilen Eylem|
 |---|---|
 |**SCIM uyumluluk sorunu:** Beklenen HTTP/200 Tamam yanıtı yerine bir HTTP/404 bulunamadı yanıtı döndürüldü. Bu durumda, Azure AD sağlama hizmeti hedef uygulamaya bir istek yaptı ve beklenmeyen bir yanıt aldı.|Uygulamanın kiracı URL 'sini belirtmesini gerektirip gerektirmediğini ve URL 'nin doğru olduğundan emin olmak için yönetici kimlik bilgileri bölümüne bakın. Bir sorun görmüyorsanız, hizmetin SCıM uyumlu olduğundan emin olmak için lütfen uygulama geliştiricisine başvurun. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Geçersiz kimlik bilgileri:** Hedef uygulamaya erişim yetkisi verme girişiminde, belirtilen kimlik bilgilerinin geçersiz olduğunu belirten hedef uygulamadan bir yanıt aldık.|Lütfen sağlama yapılandırma Kullanıcı arabiriminin yönetici kimlik bilgileri bölümüne gidin ve geçerli kimlik bilgileriyle erişime yeniden yetki verin. Uygulama Galeri 'de ise, gereken ek adımlar için uygulama yapılandırma öğreticisini gözden geçirin.|

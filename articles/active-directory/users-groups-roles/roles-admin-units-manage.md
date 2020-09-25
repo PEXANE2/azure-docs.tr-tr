@@ -1,5 +1,5 @@
 ---
-title: Yönetim birimleri ekleme ve kaldırma (Önizleme)-Azure Active Directory | Microsoft Docs
+title: Yönetim birimleri ekleme ve kaldırma-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory içindeki rol izinlerinin kapsamını kısıtlamak için yönetim birimlerini kullanın.
 services: active-directory
 documentationcenter: ''
@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 977a90419c142e576fcf484562875d12c8dad451
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 30b673994e20f01dde504adb438aa1b199c96d88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851767"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264739"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory Yönetim birimlerini yönetme
 
 Azure Active Directory (Azure AD) içinde daha ayrıntılı yönetim denetimi için, bir veya daha fazla yönetim birimiyle (AU) sınırlı bir kapsama sahip bir Azure AD rolüne kullanıcı atayabilirsiniz.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 1. [Grafik Gezgini](https://aka.ms/ge)aracılığıyla aşağıdaki yönergelerden sorguları çalıştırmak için aşağıdakileri yapın:
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) içinde daha ayrıntılı yönetim denetimi i�
 
 1. Azure portal Azure AD ' a gidin ve ardından sol bölmedeki **yönetim birimleri**' ni seçin.
 
-    ![Azure AD 'de yönetim birimleri (Önizleme) bağlantısının ekran görüntüsü](./media/roles-admin-units-manage/nav-to-admin-units.png)
+    ![Azure AD 'de Yönetim unitslink ekran görüntüsü](./media/roles-admin-units-manage/nav-to-admin-units.png)
 
 1. **Ekle** ' yi seçin ve ardından yönetim biriminin adını girin. İsteğe bağlı olarak, yönetim biriminin bir açıklamasını ekleyin.
 

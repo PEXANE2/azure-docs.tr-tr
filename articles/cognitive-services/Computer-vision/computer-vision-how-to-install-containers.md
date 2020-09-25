@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: bc55ab2697d8278bd975f618d17804499ba0128d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 310a7578fe9d3af8c4600968178cb677658feaa6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982095"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254338"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Okuma kapsayıcıları yükleyip çalıştırma (Önizleme)
 
@@ -40,7 +40,7 @@ Kapsayıcıları kullanmadan önce aşağıdaki önkoşulları karşılamanız g
 
 ## <a name="request-approval-to-run-the-container"></a>Kapsayıcıyı çalıştırmak için onay isteyin
 
-Kapsayıcıyı çalıştırmak için onay istemek üzere [istek formunu](https://aka.ms/cognitivegate) doldurun ve iletin. 
+Kapsayıcıyı çalıştırmak için onay istemek üzere [istek formunu](https://aka.ms/csgate) doldurun ve iletin. 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -345,7 +345,7 @@ Bir görüntüyü eşzamanlı olarak okumak için aşağıdaki işlemi kullanabi
 
 # <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
-`POST /vision/v3.0/read/SyncAnalyze`
+`POST /vision/v3.0/read/syncAnalyze`
 
 ---
 

@@ -3,12 +3,12 @@ title: Kasa tanılama ayarlarını ölçekte yapılandırma
 description: Azure Ilkesini kullanarak belirli bir kapsamdaki tüm kasaları için Log Analytics tanılama ayarlarını yapılandırma
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 33956fe7ce2e162d58ef3aa09feaea2882dccb36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378058"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293093"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Kasa tanılama ayarlarını ölçekte yapılandırma
 
@@ -34,7 +34,7 @@ Gerekli kapsamdaki kasaların ilkesini atamak için aşağıdaki adımları izle
 
 1. Azure portal oturum açın ve **ilke** panosuna gidin.
 2. Azure kaynakları genelinde tüm yerleşik ilkelerin listesini almak için sol menüdeki **tanımlar** ' ı seçin.
-3. **Kategori = izleme**için listeyi filtreleyin. **[Önizleme] adlı ilkeyi bulun: kaynağa özgü kategoriler için Log Analytics çalışma alanına kurtarma hizmetleri Kasası Için tanılama ayarlarını dağıtın**.
+3. **Kategori = Yedekleme**listesini filtreleyin. **[Önizleme] adlı ilkeyi bulun: kaynağa özgü kategoriler için Log Analytics çalışma alanına kurtarma hizmetleri Kasası Için tanılama ayarlarını dağıtın**.
 
     ![İlke tanımı bölmesi](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 

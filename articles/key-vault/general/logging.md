@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0ed50b8d128386008a73eb4d1a8b412a42fdb945
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0364495d751465f644686824758992d47f0b8bdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290662"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -38,7 +38,7 @@ Azure Anahtar Kasası günlüğü ile çalışmaya başlamada yardım almak içi
 
 Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](overview.md)). Key Vault nerede kullanılabildiği hakkında daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın. [Key Vault Için Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview)kullanma hakkında bilgi için.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakilere sahip olmanız gerekir:
 
@@ -133,6 +133,7 @@ Günlüğe kaydedilenler:
   * Bu anahtarları veya parolaları oluşturma, değiştirme veya silme.
   * Anahtarları imzalama, doğrulama, şifreleme, şifre çözme, sarmalama ve kaldırma, gizli dizileri alma ve anahtarları ve gizli dizileri (ve bunların sürümlerini) listeleme.
 * Bir 401 yanıtına neden olan kimliği doğrulanmamış istekler. Örnek olarak, hatalı biçimlendirilmiş veya geçerliliği olmayan ya da geçersiz bir belirtece sahip bir taşıyıcı belirteci olmayan isteklerdir.  
+* Süresi dolmak üzere olan, süre sonu ve kasa erişimi ilkesi değişti (yeni sürüm olayı günlüğe kaydedilmez). Event Grid Anahtar kasasında olay aboneliği oluşturulmuş olmasına bakılmaksızın olaylar günlüğe kaydedilir. Daha fazla bilgi için bkz. [Key Vault için olay şeması Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)
 
 ## <a name="enable-logging-using-azure-cli"></a>Azure CLı kullanarak günlüğü etkinleştirme
 
@@ -265,9 +266,9 @@ Tek tek bloblar JSON blobu olarak biçimlendirilip metin olarak depolanır. Bir 
 
 Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
-| **ışınızda** |UTC olarak tarih ve saat. |
+| **time** |UTC olarak tarih ve saat. |
 | **RESOURCEID** |Azure Resource Manager kaynak KIMLIĞI. Key Vault günlükleri için, her zaman Key Vault kaynak KIMLIĞI olur. |
 | **operationName** |Sonraki tabloda belirtildiği gibi işlemin adı. |
 | **operationVersion** |İstemci tarafından istenen sürümü REST API. |
@@ -288,6 +289,8 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 * Tüm gizli işlemler `Secret<action>` , ve gibi biçimdedir `SecretGet` `SecretListVersions` .
 
 Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API komutları listelenmektedir:
+
+### <a name="operation-names-table"></a>İşlem adları tablosu
 
 | operationName | REST API komutu |
 | --- | --- |
@@ -318,6 +321,13 @@ Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API
 | **SecretDelete** |[Gizli anahtarı silme](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
 | **SecretList** |[Bir kasadaki gizli anahtarları listeleme](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Bir gizli anahtarın sürümlerini listeleme](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultAccessPolicyChangedEventGridNotification** | Kasa erişimi ilkesi değiştirilmiş olayı yayınlandı |
+| **Secretyaklaştığında Expiryeventgridnotification** |Süre sonu olayı yayımlanan gizli dizi |
+| **Secretexpio Ventgridnotification** |Gizli zaman aşımına uğradı olayı yayımlandı |
+| **Keyyaklaştığında Expiryeventgridnotification** |Süre sonu olayını yayımlayan anahtar |
+| **KeyExpiredEventGridNotification** |Anahtarın süre dolduğunda etkinlik yayınlandı |
+| **CertificateNearExpiryEventGridNotification** |Süre sonu olayı yayımlanan sertifika |
+| **CertificateExpiredEventGridNotification** |Sertifikanın zaman aşımına uğradığı olay yayımlandı |
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Izleyici günlüklerini kullanma
 

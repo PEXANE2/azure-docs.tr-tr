@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: fd0a782fc0c54cf14db9cac07712dea6d8f2e523
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 00709ca5e842e51edbf5b26c53fe0a18e80bb896
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751984"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262357"
 ---
 # <a name="receipt-concepts"></a>Makbuz kavramları
 
@@ -74,14 +74,11 @@ Makbuz API 'SI aşağıdaki bilgileri de döndürür:
   > Dil girişi 
   >
   > Önceden oluşturulmuş makbuz v 2.1-Preview. 1, ek Ingilizce pazarlardan bir makbuz yerel ayarı belirtmek için isteğe bağlı bir istek parametresine sahiptir. Avustralya (EN-AU), Kanada (EN-CA), Büyük Britanya (EN-GB) ve Hindistan (EN-ın) ile Ingilizce olan satış alındıları için, iyileştirilmiş sonuçları elde etmek üzere yerel ayarı belirtebilirsiniz. V 2.1-Preview. 1 ' de bir yerel ayar belirtilmemişse, model varsayılan olarak EN-US modeline ayarlanır.
-  
- ### <a name="input-requirements"></a>Giriş gereksinimleri 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-receipt-operation"></a>Alındısı Analizi işlemi
 
-[Çözümleme alındısı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) , giriş olarak bir görüntünün görüntüsünü ya da PDF 'sini alır ve intrest ve Text değerlerini ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
+[Analiz alma alındısı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) , giriş olarak bir görüntünün GÖRÜNTÜSÜNÜ veya PDF alır ve ilgilendiğiniz ve metnin değerlerini ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
 
 |Yanıt üst bilgisi| Sonuç URL 'SI |
 |:-----|:----|
@@ -456,7 +453,10 @@ Makbuz API 'SI, [Aibuilder alma işlemi özelliğini](https://docs.microsoft.com
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Başlarken [API 'Si Python hızlı](./quickstarts/python-receipts.md)başlangıcı 'nı kullanmaya başlamak için hızlı başlangıç 'ı izleyin.
-- [REST API form tanıyıcı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)hakkında bilgi edinin.
-- [Form tanıyıcı](overview.md)hakkında daha fazla bilgi edinin.
+- Form tanıyıcı ile seçtiğiniz dilde bir makbuz işleme uygulaması yazmaya başlamak için [form tanıyıcı istemci kitaplığı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
+- Ya da REST API kullanarak alındıları tanımak için [API Python hızlı](./quickstarts/python-receipts.md) başlangıcını izleyin.
 
+## <a name="see-also"></a>Ayrıca bkz.
+
+* [Form Tanıma nedir?](./overview.md)
+* [REST API başvuru belgeleri](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)

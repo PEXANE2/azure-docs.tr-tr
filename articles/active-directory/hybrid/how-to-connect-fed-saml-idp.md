@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c341235a646fff28a16d30d1bf010932b02cf19
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660966"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295048"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Çoklu Oturum Açma için SAML 2.0 Kimlik Sağlayıcısı (IdP) Kullanma
 
@@ -306,7 +306,7 @@ Microsoft, SAML 2,0 tabanlı kimlik sağlayıcınızı test etmek için kullanab
 2.  Aracı indirmeye ve yüklemeye başlamak için şimdi yükleme ' ye tıklayın.
 3.  "Office 365, Azure veya Azure Active Directory kullanan diğer hizmetlerle Federasyonu ayarlayamıyorum" seçeneğini belirleyin.
 4.  Araç indirilip çalışmaya başladıktan sonra bağlantı tanılama penceresini görürsünüz. Araç, Federasyon bağlantınızı test etmek için size adım adım kılavuzluk eder.
-5.  Bağlantı çözümleyici, oturum açmak için SAML 2,0 ıDP 'nizi açar, test ettiğiniz Kullanıcı sorumlusuna ait kimlik bilgilerini girin: ![ SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  Bağlantı çözümleyici, oturum açmak için SAML 2,0 ıDP 'nizi açar, test ettiğiniz Kullanıcı sorumlusunun kimlik bilgilerini girin: ![ SAML 2,0 IDP 'niz için oturum açma penceresini gösteren ekran görüntüsü.](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  Federasyon testi oturum açma penceresinde, SAML 2,0 kimlik sağlayıcınızla federe olarak yapılandırılmış Azure AD kiracısı için bir hesap adı ve parola girmeniz gerekir. Araç bu kimlik bilgilerini kullanarak oturum açmaya çalışır ve oturum açma girişimi sırasında gerçekleştirilen testlerin ayrıntılı sonuçları çıktı olarak sağlanacaktır.
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. Bu pencere testin başarısız sonucunu gösterir. Ayrıntılı sonuçları gözden geçir ' i tıklatmak, gerçekleştirilen her test için sonuçlar hakkındaki bilgileri gösterir. Ayrıca, sonuçları paylaşmak için diske kaydedebilirsiniz.

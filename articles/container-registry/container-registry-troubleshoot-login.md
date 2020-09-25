@@ -3,12 +3,12 @@ title: Kayıt defterinde oturum açma sorunlarını giderme
 description: Azure Container Registry 'de oturum açarken karşılaşılan sorunların belirtileri, nedenleri ve çözümleri
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 8fbb96be8223001ac52db47788c31609e9b86e35
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227541"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253363"
 ---
 # <a name="troubleshoot-registry-login"></a>Kayıt defteri oturum açma sorunlarını giderme
 
@@ -51,7 +51,7 @@ Bkz. komut örnekleri için [Azure Container Registry 'nin sistem durumunu denet
 
 İlgili bağlantılar:
 
-* [Kimlik doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
+* [Kimlik Doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
 * [Kapsayıcı kayıt defteri SSS](container-registry-faq.md)
 
 ### <a name="specify-correct-registry-name"></a>Doğru kayıt defteri adını belirtin
@@ -84,7 +84,7 @@ Senaryonuz için kullandığınız kimlik bilgilerinin geçerliliğini denetleyi
 
 İlgili bağlantılar:
 
-* [Kimlik doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
+* [Kimlik Doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
 * [Azure AD ile bireysel oturum açma](container-registry-authentication.md#individual-login-with-azure-ad)
 * [Hizmet sorumlusu ile oturum açma](container-registry-auth-service-principal.md)
 * [Yönetilen kimlikle oturum açma](container-registry-authentication-managed-identity.md)
@@ -105,9 +105,9 @@ Rol atamaları eklemek veya kaldırmak için, sizin veya bir kayıt defteri sahi
 
 * [RBAC rolleri ve izinleri-Azure Container Registry](container-registry-roles.md)
 * [Depo kapsamlı belirteç ile oturum açma](container-registry-repository-scoped-permissions.md)
-* [Azure portal kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)
+* [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)
 * [Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Yeni bir uygulama parolası oluştur](../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)
+* [Yeni uygulama gizli dizisi oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)
 * [Azure AD kimlik doğrulaması ve yetkilendirme kodları](../active-directory/develop/reference-aadsts-error-codes.md)
 
 ### <a name="check-that-credentials-arent-expired"></a>Kimlik bilgilerinin dolmadığından emin olun
@@ -140,7 +140,7 @@ Sorununuzu burada çözemezseniz, aşağıdaki seçeneklere bakın.
 
 * Diğer kayıt defteri sorunlarını giderme konuları şunları içerir:
   * [Kayıt defteri ile ağ sorunlarını giderme](container-registry-troubleshoot-access.md)
-  * [Kayıt defteri performansının sorunlarını giderme](container-registry-troubleshoot-performance.md)
+  * [Kayıt defteri performansı sorunlarını giderme](container-registry-troubleshoot-performance.md)
 * [Topluluk desteği](https://azure.microsoft.com/support/community/) seçenekleri
 * [Microsoft Soru-Cevap](https://docs.microsoft.com/answers/products/)
 * Sağladığınız bilgilere bağlı olarak [bir destek bileti açın](https://azure.microsoft.com/support/create-ticket/) . kayıt defterinizde kimlik doğrulama hatalarıyla ilgili hızlı bir tanılama çalıştırılabilir

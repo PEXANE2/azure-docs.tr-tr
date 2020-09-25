@@ -6,17 +6,20 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: e630ccec744c4edf0dc80d374ecc93526f960d44
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 00d0808e83a888a39f9268328feb209167c9b644
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941491"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295998"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>MySQL için Azure veritabanı esnek sunucusu 'nda denetim günlükleriyle veritabanı etkinliğini izleme
 
 > [!IMPORTANT] 
 > MySQL için Azure veritabanı esnek sunucu şu anda genel önizlemede
+
+> [!NOTE]
+> Günlüklere erişmek için Azure Izleyici tanılama ayarlarıyla tümleştirme, dağıtım sürecinde ve tüm işlevler yakında kullanıma sunulacaktır.
 
 MySQL için Azure veritabanı esnek sunucu kullanıcılara denetim günlüklerini yapılandırma olanağı sağlar. Denetim günlükleri, bağlantı, yönetici, DDL ve DML olayları dahil olmak üzere veritabanı düzeyi etkinliğini izlemek için kullanılabilir. Bu tür günlükler genellikle uyumluluk amacıyla kullanılır.
 
@@ -49,6 +52,9 @@ Denetim günlüğü davranışlarını denetlemek için ayarlayabileceğiniz di�
 | `TABLE_ACCESS` | -Yalnızca MySQL 5,7 için kullanılabilir <br> -SELECT veya INSERT gibi tablo okuma deyimleri... SEÇIN <br> -DELETE veya TRUNCATE TABLE gibi tablo silme deyimleri <br> -INSERT veya REPLACE gibi tablo ekleme deyimleri <br> -UPDATE gibi tablo güncelleştirme deyimleri |
 
 ## <a name="access-audit-logs"></a>Denetim günlüklerine erişme
+
+> [!NOTE]
+> Günlüklere erişmek için Azure Izleyici tanılama ayarlarıyla tümleştirme, dağıtım sürecinde ve tüm işlevler yakında kullanıma sunulacaktır.
 
 Denetim günlükleri Azure Izleyici tanılama ayarlarıyla tümleşiktir. MySQL esnek sunucunuzda denetim günlüklerini etkinleştirdikten sonra Azure Izleyici günlüklerine, Event Hubs veya Azure Storage 'a yayabilirsiniz. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [tanılama günlükleri belgeleri](../../azure-monitor/platform/platform-logs-overview.md). Azure portal tanılama ayarlarının nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için [Denetim günlüğü portalı makalesine](how-to-configure-audit-logs-portal.md#set-up-diagnostics)bakın.
 

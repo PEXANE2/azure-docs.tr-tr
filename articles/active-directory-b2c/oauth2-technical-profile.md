@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b45f5ae64a7b8fd97d5242c82fb90ee6c57286ac
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 35b1f57a2361c5a4360e2ff1944b93e767168799
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433900"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259399"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir OAuth2 teknik profili tanımlama
 
@@ -75,7 +75,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
@@ -110,23 +110,8 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 ## <a name="redirect-uri"></a>Yeniden Yönlendirme URI'si
 
-Kimlik sağlayıcınızın yeniden yönlendirme URL 'sini yapılandırdığınızda, girin `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp` . **Kiracınızı** kiracınızın adı (örneğin, contosob2c.onmicrosoft.com) ve **PolicyId** ile ilkenizin tanıtıcısı (örneğin, b2c_1a_policy) ile değiştirdiğinizden emin olun. Yeniden yönlendirme URI 'sinin tamamen küçük harfle olması gerekir.
-
-**Login.microsoftonline.com** yerine **b2clogin.com** etki alanını kullanıyorsanız Login.microsoftonline.com yerine b2clogin.com kullandığınızdan emin olun.
+Kimlik sağlayıcınızın yeniden yönlendirme URI 'sini yapılandırdığınızda, girin `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/oauth2/authresp` . `{tenant-name}`' I kiracınızın adıyla değiştirdiğinizden emin olun (örneğin, contosob2c). Yeniden yönlendirme URI 'sinin tamamen küçük harfle olması gerekir.
 
 Örnekler:
 
 - [Özel ilkeleri kullanarak Google + OAuth2 Identity Provider olarak ekleme](identity-provider-google-custom.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

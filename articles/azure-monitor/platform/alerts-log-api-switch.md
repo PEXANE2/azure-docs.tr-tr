@@ -1,64 +1,53 @@
 ---
-title: Yeni Azure uyarıları API 'sine geç
-description: Eski savedSearch tabanlı Log Analytics uyarı API 'sine ve işlem, uyarı kurallarını yeni ScheduledQueryRules API 'sine geçirmek için genel müşteri sorunlarını gidermeye yönelik bilgiler.
+title: Geçerli Azure Izleyici günlüğü uyarıları API 'sine yükselt
+description: Günlük uyarıları ScheduledQueryRules API 'sine nasıl geçiş yapılacağını öğrenin
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
-ms.openlocfilehash: 7e1073817013d45558a9679a4f70db0c002cfaa9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 868a8eb6cf38d471eb9dc1f47c903404d05ffc0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294527"
 ---
-# <a name="switch-api-preference-for-log-alerts"></a>Günlük uyarıları için anahtar API tercihi
+# <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>Eski Log Analytics uyarı API 'sindeki geçerli günlük uyarıları API 'sine yükselt
 
 > [!NOTE]
-> Azure Kamu veya Azure Çin bulutu için **değil** yalnızca Azure genel bulutu kullanıcılarına yönelik içerik.  
+> Bu makale yalnızca Azure Kamu ile ilgilidir (Azure Kamu veya Azure Çin bulutuna**değil** ).
 
 > [!NOTE]
-> Kullanıcı tercihi yeni [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules) 'sine geçirmeyi seçerse, eski [eskı Log Analytics uyarı API](api-alerts.md)'sinin kullanımına dönmek mümkün değildir.
+> Kullanıcı tercihi geçerli [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules) 'sine geçirmeyi seçerse, eski [eskı Log Analytics uyarı API](api-alerts.md)'sine geri dönmek mümkün değildir.
 
-Son olarak, Microsoft Operations Management Suite portalında uyarı kuralları yönetilecektir. Yeni uyarılar deneyimi Log Analytics dahil Microsoft Azure çeşitli hizmetlerle tümleştirildi ve [Uyarı KURALLARıNıZı OMS portalından Azure 'a genişletmemiz](./alerts-unified-log.md)istendi. Ancak, müşteriler için minimum kesintiden emin olmak için, işlem, SavedSearch 'e göre tüketim [Log Analytics uyarı API 'si](api-alerts.md) için programlı arabirimi değiştirmedi.
+Geçmişte, kullanıcılar günlük uyarı kurallarını yönetmek için [eski Log Analytics uyarı API](api-alerts.md) 'sini kullandı. Geçerli çalışma alanları [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules)kullanır. Bu makalede, eski API 'den geçerli API 'ye geçme avantajları ve işlemleri açıklanmaktadır.
 
-Ancak artık, [Azure Faturalandırma-for log uyarılarında](alerts-unified-log.md#pricing-and-billing-of-log-alerts)de yansıtıcı olan doğru bir Azure programlı alternatifi olan [Azure Izleyici-SCHEDULEDQUERYRULES API 'sini](/rest/api/monitor/scheduledqueryrules)Log Analytics uyarma konusunda duyuruyoruz. API kullanarak günlük uyarılarınızı yönetme hakkında daha fazla bilgi edinmek için bkz. [Azure kaynak şablonu kullanarak günlük uyarılarını yönetme](alerts-log.md#managing-log-alerts-using-azure-resource-template) ve [PowerShell kullanarak günlük uyarılarını yönetme](alerts-log.md#managing-log-alerts-using-powershell).
+## <a name="benefits"></a>Yararları
 
-## <a name="benefits-of-switching-to-new-azure-api"></a>Yeni Azure API 'sine geçiş avantajları
+- Uyarı kurallarının oluşturulması için tek şablon (daha önce üç ayrı şablon gereklidir).
+- Log Analytics çalışma alanları veya Application Insights kaynakları için tek API.
+- [PowerShell cmdlet 'leri desteği](alerts-log.md#managing-log-alerts-using-powershell).
+- Diğer tüm uyarı türleriyle birlikte, diğer tüm uyarı türleriyle hizalama.
+- Log Analytics çalışma alanları veya Application Insights kaynakları gibi çeşitli dış kaynakları kapsayan [çapraz çalışma alanı günlüğü uyarısı](../log-query/cross-workspace-query.md) oluşturma yeteneği.
+- Kullanıcılar, ' toplama açık ' parametresini kullanarak uyarıların bölüneceği boyutları belirtebilir.
+- Günlük uyarıları, iki güne kadar veri (daha önce bir güne sınırlı) kadar uzatılmış bir süreye sahiptir.
 
-[Eski Log Analytics uyarı API](api-alerts.md) ['Si üzerinden scheduledqueryrules API 'sini](/rest/api/monitor/scheduledqueryrules) kullanarak uyarı oluşturmanın ve yönetmenin çeşitli avantajları vardır. Aşağıdaki önemli olanlardan bazılarını listeliyoruz:
+## <a name="impact"></a>Etki
 
-- [Çalışma alanı günlük aramasını](../log-query/cross-workspace-query.md) uyarı kurallarında çapraz olarak ve Log Analytics çalışma alanları gibi dış kaynakları veya hatta Application Insights uygulamaları yaymaya yönelik bir özellik
-- Sorguda gruplamak için birden çok alan kullanıldığında, [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules) kullanıcısı kullanmak Azure Portal içinde hangi alanın toplanacağını belirtebilir
-- [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules) kullanılarak oluşturulan günlük uyarıları, 48 saate kadar bir süre tanımlanmış ve verileri daha uzun bir süre önce getirecek şekilde alabilir
-- [Eski Log Analytics uyarı API 'si](api-alerts.md) ile birlikte üç farklı kaynak düzeyi oluşturma gereksinimi olmadan tek bir çekde uyarı kuralları oluşturun
-- Azure 'da sorgu tabanlı günlük uyarılarının tüm türevleri için tek bir programlama arabirimi-yeni [Scheduledqueryrules API 'si](/rest/api/monitor/scheduledqueryrules) , Log Analytics kuralları yönetmek için kullanılabilir Application Insights
-- [PowerShell cmdlet 'lerini](alerts-log.md#managing-log-alerts-using-powershell) kullanarak günlük uyarılarınızı yönetme
-- Tüm yeni günlük uyarı işlevselliği ve gelecekteki geliştirmeler yalnızca yeni [Scheduledqueryrules API 'si](/rest/api/monitor/scheduledqueryrules) aracılığıyla kullanılabilir
+- Tüm yeni kurallar geçerli API ile oluşturulmalıdır/düzenlenmelidir. Bkz. [Azure kaynak şablonu aracılığıyla örnek kullanım](alerts-log-create-templates.md) ve [PowerShell aracılığıyla örnek kullanım](alerts-log.md#managing-log-alerts-using-powershell).
+- Kurallar geçerli API 'de izlenen kaynaklar Azure Resource Manager ve benzersiz olması gerekir, kurallar kaynak KIMLIĞI bu yapıya dönüşür: `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Uyarı kuralının görünen adları değişmeden kalır.
 
-## <a name="process-of-switching-from-legacy-log-alerts-api"></a>Eski günlük uyarıları API 'sinden geçiş işlemi
+## <a name="process"></a>İşleme
 
-Kullanıcılar [eski Log Analytics uyarı API](api-alerts.md) 'sini veya yeni [scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules)'sini kullanabilir. Her iki API tarafından oluşturulan uyarı kuralları, *aynı API ile aynı zamanda ve Azure Portal ile yönetilebilir* . Varsayılan olarak, Azure Izleyici, mevcut Log Analytics çalışma alanları için Azure portal yeni bir uyarı kuralı oluşturmak üzere [eski Log Analytics uyarı API 'sini](api-alerts.md) kullanmaya devam edecektir. [1 haziran 2019 ' de veya sonrasında oluşturulan yeni günlük çalışma alanı,](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/) Azure Portal de dahil olmak üzere varsayılan olarak otomatik olarak yeni [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules) kullanır.
-
-Aşağıdaki bir tercihe yönelik anahtar kümesi, scheduledQueryRules API 'SI ile aşağıda derlenir:
-
-- Programlı arabirimler aracılığıyla günlük uyarılarını yönetmek için yapılan tüm etkileşimler artık bunun yerine [Scheduledqueryrules](/rest/api/monitor/scheduledqueryrules) kullanılarak yapılmalıdır. Daha fazla bilgi için bkz. [Azure kaynak şablonu aracılığıyla örnek kullanım](alerts-log.md#managing-log-alerts-using-azure-resource-template) ve [PowerShell aracılığıyla örnek kullanım](alerts-log.md#managing-log-alerts-using-powershell)
-- Azure portal ' de oluşturulan tüm yeni günlük uyarısı kuralları yalnızca [Scheduledqueryrules](/rest/api/monitor/scheduledqueryrules) kullanılarak oluşturulur ve KULLANıCıLARıN [yeni API 'nin ek işlevlerini](#benefits-of-switching-to-new-azure-api) Azure Portal aracılığıyla kullanmasına izin verir
-- Günlük uyarı kuralları için önem derecesi: *kritik, uyarı & bilgilendirici*, *0, 1 & 2 ' nin önem derecesine*sahip olur. Ayrıca, önem derecesi 3 ve 4 ile uyarı kuralları oluşturma/güncelleştirme seçeneği ile birlikte.
-
-Uyarı kurallarının [eski Log Analytics uyarı API](api-alerts.md) 'sinden taşınması işlemi, uyarı tanımınızın, sorgunuzun veya yapılandırmanızın herhangi bir şekilde değiştirilmesini kapsamaz. Uyarı kurallarınızın ve izlemenin etkilenmemiştir ve uyarılar, anahtar sırasında veya sonrasında durdurulmaz veya durdurulmaz. Tek değişiklikler şunlardır:
-
-- API tercihi değişikliği ve yeni bir API aracılığıyla kurallarınızın erişimi.
-- Bu yapıda uyarı kuralı adı yerine [eski Log Analytics Alert API](api-alerts.md) 'Sinde kullanılan kimlikleri içeren değiştirilmiş bir uyarı kuralı kaynak URI 'si `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Uyarı kuralının görünen adı değişmeden kalacak.
-
-Gönüllü olarak yeni [Scheduledqueryrules](/rest/api/monitor/scheduledqueryrules) 'a geçiş yapan ve [eskı Log Analytics uyarı API](api-alerts.md)'sinden kullanımı engelleyen müşteriler; Bu işlemi, belirli bir Log Analytics çalışma alanıyla ilişkili tüm uyarı kurallarını değiştirmek için aşağıdaki API üzerinde bir PUT çağrısı gerçekleştirerek yapabilirsiniz.
+Geçiş işlemi etkileşimli değildir ve çoğu durumda el ile adımlar gerektirmez. Uyarı kurallarınız, anahtar sırasında veya sonrasında durdurulmaz veya durdurulmaz.
+Bu çağrıyı, belirli bir Log Analytics çalışma alanıyla ilişkili tüm uyarı kurallarını değiştirmek için yapın:
 
 ```
 PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-Aşağıdaki JSON içeren istek gövdesiyle.
+Aşağıdaki JSON içeren istek gövdesiyle:
 
 ```json
 {
@@ -66,14 +55,14 @@ Aşağıdaki JSON içeren istek gövdesiyle.
 }
 ```
 
-API 'ye, Azure Resource Manager API 'sini çağırmayı kolaylaştıran açık kaynaklı bir komut satırı aracı olan [Armclient](https://github.com/projectkudu/ARMClient)kullanarak bir PowerShell komut satırından da erişilebilir. Aşağıda gösterildiği gibi, özel Log Analytics çalışma alanıyla ilişkili tüm uyarı kurallarını değiştirmek için ARMclient aracını kullanan örnek PUT çağrısı bölümünde verilmiştir.
+Aşağıda, yukarıdaki API çağrısını kolaylaştıran açık kaynaklı bir komut satırı aracı olan [Armclient](https://github.com/projectkudu/ARMClient)kullanımına ilişkin bir örnek verilmiştir:
 
 ```powershell
 $switchJSON = '{"scheduledQueryRulesEnabled": "true"}'
 armclient PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $switchJSON
 ```
 
-Yeni [Scheduledqueryrules](/rest/api/monitor/scheduledqueryrules) kullanmak için Log Analytics çalışma alanındaki tüm uyarı kurallarının anahtarı başarılı olursa, aşağıdaki yanıt sağlanacaktır.
+Anahtar başarılı olursa, yanıt şu şekilde olur:
 
 ```json
 {
@@ -82,19 +71,21 @@ Yeni [Scheduledqueryrules](/rest/api/monitor/scheduledqueryrules) kullanmak içi
 }
 ```
 
-Kullanıcılar ayrıca, Log Analytics çalışma alanınızın geçerli durumunu denetleyebilir ve yalnızca [Scheduledqueryrules](/rest/api/monitor/scheduledqueryrules) kullanmak üzere geçiş olup olmadığını görebilir. Kullanıcıların, aşağıdaki API üzerinde bir GET çağrısı gerçekleştirmesini sağlayabilirsiniz.
+## <a name="check-switching-status-of-workspace"></a>Çalışma alanının geçiş durumunu denetle
+
+Bu API çağrısını, anahtar durumunu denetlemek için de kullanabilirsiniz:
 
 ```
 GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-[Armclient](https://github.com/projectkudu/ARMClient) aracını kullanarak PowerShell komut satırını kullanarak yukarıdaki ' u çalıştırmak için aşağıdaki örneğe bakın.
+[Armclient](https://github.com/projectkudu/ARMClient) aracını da kullanabilirsiniz:
 
 ```powershell
 armclient GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-Belirtilen Log Analytics çalışma alanı yalnızca [Scheduledqueryrules](/rest/api/monitor/scheduledqueryrules) 'ı kullanmak üzere geçolduysa; ardından, yanıt JSON 'SI aşağıda listelendiği gibi olacaktır.
+Log Analytics çalışma alanı [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules)'sine geçolduysa, yanıt şu şekilde olur:
 
 ```json
 {
@@ -102,7 +93,7 @@ Belirtilen Log Analytics çalışma alanı yalnızca [Scheduledqueryrules](/rest
     "scheduledQueryRulesEnabled" : true
 }
 ```
-Aksi takdirde, belirtilen log analitik çalışma alanı henüz bir [Scheduledqueryrules](/rest/api/monitor/scheduledqueryrules) kullanmaya geçmediyse; ardından, yanıt JSON 'SI aşağıda listelendiği gibi olacaktır.
+Log Analytics çalışma alanı geçmediyse, yanıt şu şekilde olur:
 
 ```json
 {
@@ -114,6 +105,6 @@ Aksi takdirde, belirtilen log analitik çalışma alanı henüz bir [Scheduledqu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure izleyici-günlük uyarıları](alerts-unified-log.md)hakkında bilgi edinin.
-- [Azure uyarıları 'nda günlük uyarıları](alerts-log.md)oluşturmayı öğrenin.
+- [API kullanarak günlük uyarılarınızı yönetmeyi](alerts-log-create-templates.md)öğrenin.
+- [PowerShell kullanarak günlük uyarılarını yönetmeyi](alerts-log.md#managing-log-alerts-using-powershell)öğrenin.
 - [Azure uyarıları deneyimi](./alerts-overview.md)hakkında daha fazla bilgi edinin.
-

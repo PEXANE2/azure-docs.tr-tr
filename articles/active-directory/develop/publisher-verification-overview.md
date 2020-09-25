@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089760"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258158"
 ---
 # <a name="publisher-verification"></a>Yayımcı doğrulaması
 
@@ -33,9 +33,10 @@ Yayımcı doğrulaması aşağıdaki avantajları sağlar:
 
 - **Geliştirilmiş marka**-Azure AD [onay Istemi](application-consent-experience.md), kurumsal uygulamalar sayfasında ve son kullanıcılar ve YÖNETICILER tarafından kullanılan ek UX yüzeyleri üzerinde "doğrulanan" bir rozet görüntülenir. 
 
-- **Daha yumuşak bir kurumsal benimseme**-Yöneticiler, [Kullanıcı onay ilkelerini](../manage-apps/configure-user-consent.md), birincil ilke ölçütlerinden biri olarak yayımcı doğrulama durumuyla yapılandırabilir. 
+- **Daha yumuşak bir kurumsal benimseme**-Yöneticiler, [Kullanıcı onay ilkelerini](../manage-apps/configure-user-consent.md), birincil ilke ölçütlerinden biri olarak yayımcı doğrulama durumuyla yapılandırabilir.
 
-- **İyileştirilmiş risk değerlendirmesi**-Microsoft 'un "riskli" izin istekleri için algılamaları, yayımcı doğrulamasını bir sinyal olarak içerecektir. 
+> [!NOTE]
+> Son kullanıcılar artık 2020 Kasım 'Dan başlayarak, yeni kayıtlı çok kiracılı uygulamalara daha fazla yayımcı olmadan onay veremeyecektir. Bu, 8 Kasım 2020 ' den sonra kaydedilen uygulamalar için geçerlidir, temel oturum açma ve kullanıcı profilini okuma ötesinde izin istemek ve uygulamanın kaydolduktan farklı kiracılardaki kullanıcılardan izin istemek için OAuth 2.0 'ı kullanın. Onay ekranında, kullanıcılara bu uygulamaların riskli olduğunu ve doğrulanmamış yayımcıların olduğunu bildiren bir uyarı görüntülenir.    
 
 ## <a name="requirements"></a>Gereksinimler
 Yayımcı doğrulaması için birkaç önkoşul vardır; bazıları zaten birçok Microsoft iş ortağı tarafından tamamlanmış olacaktır. Bunlar: 
@@ -69,7 +70,7 @@ Yayımcı doğrulama programıyla ilgili sık sorulan bazı sorular aşağıda v
 
   Microsoft 365 ile Tümleştirdiğiniz geliştiriciler de bu programlardan ek avantajlar alabilir. Daha fazla bilgi için [Yayımcı kanıtlama Microsoft 365](/microsoft-365-app-certification/docs/attestation) ve [uygulama sertifikası Microsoft 365](/microsoft-365-app-certification/docs/certification)' na bakın. 
 
-- **Bu, Azure AD uygulama galerisiyle aynı şeydir mi?** Yayımcı doğrulaması yok, [Azure Active Directory Uygulama galerisinde](../azuread-dev/howto-app-gallery-listing.md)tamamlayıcı ancak ayrı bir programdır. Yukarıdaki ölçütlere uyan geliştiriciler, yayımcı doğrulama sürecini bu programa katılımdan bağımsız olarak tamamlamalıdır. 
+- **Bu, Azure AD uygulama galerisiyle aynı şeydir mi?** Yayımcı doğrulaması yok, [Azure Active Directory Uygulama galerisinde](v2-howto-app-gallery-listing.md)tamamlayıcı ancak ayrı bir programdır. Yukarıdaki ölçütlere uyan geliştiriciler, yayımcı doğrulama sürecini bu programa katılımdan bağımsız olarak tamamlamalıdır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Uygulamayı yayımcı doğrulanmış olarak nasıl işaretleyeceğinizi](mark-app-as-publisher-verified.md)öğrenin.

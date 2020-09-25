@@ -10,21 +10,21 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 33e1ebc2269ef1db6bb0646f845b09be1a01c724
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495310"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289064"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>SYNAPSE SQL 'de T-SQL döngüleri kullanma
 Bu makalede T-SQL döngülerini kullanma, imleçler değiştirme ve SYNAPSE SQL 'de SQL havuzuyla ilgili çözümleri geliştirme konusunda temel ipuçları sunulmaktadır.
 
 ## <a name="purpose-of-while-loops"></a>WHILE döngülerinin amacı
 
-SYNAPSE SQL, sürekli olarak ekstre blokları yürütmeye yönelik [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) döngüsünü destekler. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod BREAK anahtar sözcüğünü kullanarak döngüyü özel olarak sonlandırana kadar devam eder. 
+SYNAPSE SQL, sürekli olarak ekstre blokları yürütmeye yönelik [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) döngüsünü destekler. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod BREAK anahtar sözcüğünü kullanarak döngüyü özel olarak sonlandırana kadar devam eder. 
 
-SQL havuzundaki döngüler, SQL kodunda tanımlanan imleçleri değiştirmek için kullanışlıdır. Neyse ki SQL Code 'da yazılan neredeyse tüm imleçler hızlı ileri, salt okunurdur. Bu nedenle, [WHILE] döngüleri, imleçleri değiştirmek için harika bir alternatiftir.
+SQL havuzundaki döngüler, SQL kodunda tanımlanan imleçleri değiştirmek için kullanışlıdır. Neyse ki SQL Code 'da yazılan neredeyse tüm imleçler hızlı ileri, salt okunurdur. Bu nedenle, döngüler değiştirmek için harika bir alternatiftir.
 
 ## <a name="replace-cursors-in-sql-pool"></a>SQL havuzundaki imleçleri değiştirme
 

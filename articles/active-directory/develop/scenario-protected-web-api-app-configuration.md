@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5953e5d5f6bc50c913c3e92aa92775c34c0fd170
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512343"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257461"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
@@ -111,6 +111,12 @@ Uygulama kayıt portalı tarafından önerilen uygulama KIMLIĞI URI 'sini kabul
 
 Bir uygulama bir **[Yetkilendir]** özniteliği tutan bir denetleyici eyleminde çağrıldığında, ASP.NET ve ASP.NET Core erişim belirtecini yetkilendirme üstbilgisinin taşıyıcı belirtecinden ayıklayın. Daha sonra erişim belirteci, .NET için Microsoft IdentityModel uzantıları 'nı çağıran Jwttaşıyıcı ara yazılıma iletilir.
 
+#### <a name="microsoftidentityweb"></a>Microsoft. Identity. Web
+
+Microsoft, bir Web API 'sini ASP.NET Core geliştirilirken [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet paketini kullanmanızı önerir.
+
+_Microsoft. Identity. Web_ , .net için ASP.NET Core, kimlik doğrulama ara yazılımı ve [Microsoft kimlik doğrulama kitaplığı (msal)](msal-overview.md) arasında Tutkallamayı sağlar. Daha net, daha güçlü bir geliştirici deneyimi sağlar ve Microsoft Identity platform ve Azure AD B2C gücünden yararlanır.
+
 #### <a name="using-microsoftidentityweb-templates"></a>Microsoft. Identity. Web şablonlarını kullanma
 
 Microsoft. Identity. Web proje şablonlarını kullanarak sıfırdan bir Web API 'SI oluşturabilirsiniz. Ayrıntılar için bkz. [Microsoft. Identity. Web-Web API proje şablonu](https://aka.ms/ms-id-web/webapi-project-templates)
@@ -134,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, *Startup.cs*' deki kodu değiştirerek, bir NuGet paketi olarak kullanılabilen [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web)kullanarak şablonları Microsoft Identity platform uç noktasını kullanacak şekilde değiştirebilirsiniz:
+ Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, *Startup.cs*' deki kodu değiştirerek [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) kullanarak şablonları Microsoft Identity platform uç noktasını kullanacak şekilde değiştirebilirsiniz:
 
 ```csharp
 using Microsoft.Identity.Web;

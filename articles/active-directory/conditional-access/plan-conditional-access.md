@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26a7320cab20c769ddf8dd1f24cd6fda0cc7d64
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561542"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258685"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
 
@@ -262,7 +262,7 @@ Adlandırma standardı, ilkeleri bulmanıza ve Azure yönetim portalında açmad
 
 * Ne zaman geçerliyse (varsa)
 
-![Adlandırma standardı](media/plan-conditional-access/11.png)
+![İlkelerin adlandırma standartlarını gösteren ekran görüntüsü.](media/plan-conditional-access/11.png)
 
 **Örnek**; Dış ağlardan Dynamics CRP uygulamasına erişen pazarlama kullanıcıları için MFA gerektiren bir ilke şu olabilir:
 

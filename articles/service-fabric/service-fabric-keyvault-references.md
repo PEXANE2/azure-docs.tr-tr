@@ -3,16 +3,22 @@ title: Azure Service Fabric-Service Fabric uygulama Anahtar Kasası başvurular�
 description: Bu makalede, uygulama gizli dizileri için Service Fabric KeyVaultReference desteğinin nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261150"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric uygulamalar için KeyVaultReference desteği (Önizleme)
+# <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric uygulamalar için KeyVaultReference desteği (Önizleme)
 
 Bulut uygulamaları derlerken, uygulamanız için gereken gizli dizileri güvenli bir şekilde nasıl depolayabileceği yaygın bir zorluk vardır. Örneğin, kapsayıcı deposu kimlik bilgilerini anahtar kasasında depolamak ve uygulama bildiriminde buna başvurmak isteyebilirsiniz. Service Fabric KeyVaultReference, Service Fabric yönetilen kimliği kullanır ve keykasagizli dizileri başvurusunu kolaylaştırır. Bu makalenin geri kalanında, KeyVaultReference Service Fabric kullanımı ve bazı tipik kullanımlar yer almaktadır.
+
+> [!IMPORTANT]
+> Üretim ortamlarında bu önizleme özelliğinin kullanılması önerilmez.
+
+> [!NOTE]
+> Keykasası başvuru önizleme özelliği yalnızca [Sürümlenmiş](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) gizli dizileri destekler. Sürümsuz gizlilikler desteklenmez.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -97,7 +103,7 @@ Uygulamanın, Anahtar Kasası 'nda depolanan arka uç veritabanı parolasını o
         <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
     </Section>
     ```
-- İçindeki ApplicationManifest.xml yeni bölüme başvur`<ConfigPackagePolicies>`
+- İçindeki ApplicationManifest.xml yeni bölüme başvur `<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>

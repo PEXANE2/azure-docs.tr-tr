@@ -1,6 +1,6 @@
 ---
 title: StorSimple Sanal dizisine güncelleştirme 1,0 ' ü yükler | Microsoft Docs
-description: Azure portal ve düzeltme yöntemi kullanılarak güncelleştirmelerin uygulanması için StorSimple Sanal dizisi Web Kullanıcı arabirimi 'nin nasıl kullanılacağını açıklar.
+description: Azure portal ve sık düzeltme yöntemi kullanılarak 1,0 güncelleştirmesini uygulamak için StorSimple Sanal dizisi Web Kullanıcı arabirimi 'nin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 41546a449165951cd7b462d1db2b1b58ae74e407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bb6b61bb7d9392984bf5c308ce7ee039234461e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508104"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295575"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 1,0 güncelleştirmesini yükler
 
@@ -33,7 +33,7 @@ StorSimple Sanal dizinizi güncel tutmak için yazılım güncelleştirmelerini 
 >
 > - Güncelleştirme 1,0, cihazınızdaki **10.0.10296.0** yazılım sürümüne karşılık gelir. Bu güncelleştirmedeki yenilikler hakkında daha fazla bilgi için [güncelleştirme 1,0 sürüm notları](storsimple-virtual-array-update-1-release-notes.md)' na gidin.
 >
-> - Bir güncelleştirme veya Düzeltme yüklemenin cihazınızı yeniden başlatdığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar.
+> - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar.
 >
 > - Güncelleştirme 1, yalnızca sanal dizi güncelleştirme 0,6 çalıştırıyorsa Azure portal kullanılabilir. Güncelleştirme öncesi 0,6 sürümlerini çalıştıran sanal diziler için, önce 0,6 güncelleştirme 'yi yüklemeli ve ardından güncelleştirme 1 ' i yüklemeniz gerekir.
 
@@ -104,7 +104,7 @@ Bu yordamın tamamlandığı 4 dakika sürer. Güncelleştirmeyi veya düzeltmey
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
-2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**'ya tıklayın.
+2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**’ya tıklayın.
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-1/update2m.png)
 

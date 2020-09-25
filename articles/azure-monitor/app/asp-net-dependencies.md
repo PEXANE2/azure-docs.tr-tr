@@ -4,12 +4,12 @@ description: Şirket içi veya Microsoft Azure Web uygulamanızdan gelen bağım
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d98fe91994c992d11fc58e3fec42d1796c0c966
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263938"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
@@ -101,9 +101,10 @@ ASP.NET uygulamalar için, tam SQL sorgu metni, izleme altyapısını kullanmay�
 | Platform | Tam SQL sorgusu almak için gereken adımlar |
 | --- | --- |
 | Azure Web App |Web uygulaması denetim masasında [Application Insights dikey penceresini açın](../../azure-monitor/app/azure-web-apps.md) ve .net altında SQL komutlarını etkinleştirin |
-| IIS sunucusu (Azure VM, şirket içi vb.) | [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanın veya durum İzleyicisi PowerShell modülünü kullanarak [Izleme altyapısını yükleyip](../../azure-monitor/app/status-monitor-v2-api-reference.md) IIS 'yi yeniden başlatın. |
+| IIS sunucusu (Azure VM, şirket içi vb.) | [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanın veya durum İzleyicisi PowerShell modülünü kullanarak [Izleme altyapısını yükleyip](../../azure-monitor/app/status-monitor-v2-api-reference.md#enable-instrumentationengine) IIS 'yi yeniden başlatın. |
 | Azure Cloud Service | [StatusMonitor 'ı yüklemek için başlangıç görevi](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) ekleme <br> [ASP.net](./asp-net.md) veya [ASP.NET Core uygulamalarına](./asp-net-core.md) yönelik NuGet paketlerini yükleyerek uygulamanızın derleme zamanında eklendi to ApplicationInsights SDK 'sı olması gerekir |
 | IIS Express | [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanın.
+| Azure Web Işleri | [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanın.
 
 Yukarıdaki platforma özgü adımlara ek olarak, applicationInsights.config dosyasını aşağıdaki ile değiştirerek **SQL komut toplamayı etkinleştirmek için de açıkça tercih etmeniz gerekir** :
 

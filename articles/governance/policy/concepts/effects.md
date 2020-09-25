@@ -1,14 +1,14 @@
 ---
 title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
-ms.date: 08/27/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425543"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252013"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -24,7 +24,7 @@ Bu efektler Şu anda bir ilke tanımında destekleniyor:
 - [Devre dışı](#disabled)
 - [Değiştir](#modify)
 
-Aşağıdaki etkiler _kullanım dışı bırakılmıştır_:
+Aşağıdaki etkiler _kullanım dışıdır_:
 
 - [EnforceOPAConstraint](#enforceopaconstraint)
 - [EnforceRegoPolicy](#enforceregopolicy)
@@ -374,8 +374,8 @@ Devre dışı bırakılmış etkine bir alternatif, ilke atamasında ayarlanan *
 
 Bu efekt, ilke tanımı _moduyla_ birlikte kullanılır `Microsoft.Kubernetes.Data` . Azure 'da Kubernetes kümelerine [Ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak Için [Opa kısıtlama çerçevesi](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) ile tanımlanan Gatekeeper v3 giriş denetimi kurallarını geçirmek için kullanılır.
 
-> [!NOTE]
-> [Kubernetes Için Azure Ilkesi](./policy-for-kubernetes.md) önizlemededir ve yalnızca Linux düğüm havuzlarını ve yerleşik ilke tanımlarını destekler. Yerleşik ilke tanımları **Kubernetes** kategorisinde bulunur. **Enforceopaconstraint** etkin ve Ilgili **Kubernetes hizmet** kategorisi ile sınırlı önizleme ilkesi tanımları _kullanım dışı_bırakılıyor. Bunun yerine, efekt _denetimi_ ve kaynak sağlayıcısı ile _reddetme_ modunu kullanın `Microsoft.Kubernetes.Data` .
+> [!IMPORTANT]
+> **Enforceopaconstraint** etkin ve Ilgili **Kubernetes hizmet** kategorisi ile sınırlı önizleme ilkesi tanımları _kullanım dışıdır_. Bunun yerine, efekt _denetimi_ ve kaynak sağlayıcısı ile _reddetme_ modunu kullanın `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint değerlendirmesi
 
@@ -430,8 +430,8 @@ EnforceOPAConstraint kısıtlama efektinin **Details** özelliği, Gatekeeper v3
 
 Bu efekt, ilke tanımı _moduyla_ birlikte kullanılır `Microsoft.ContainerService.Data` . [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md) [ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak için [rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) ile tanımlanan Gatekeeper v2 giriş denetimi kurallarını geçirmek için kullanılır.
 
-> [!NOTE]
-> [Kubernetes Için Azure Ilkesi](./policy-for-kubernetes.md) önizlemededir ve yalnızca Linux düğüm havuzlarını ve yerleşik ilke tanımlarını destekler. Yerleşik ilke tanımları **Kubernetes** kategorisinde bulunur. **Enforceregopolicy** efektli sınırlı önizleme ilkesi tanımları ve Ilgili **Kubernetes hizmet** kategorisi _kullanım dışı_bırakılıyor. Bunun yerine, efekt _denetimi_ ve kaynak sağlayıcısı ile _reddetme_ modunu kullanın `Microsoft.Kubernetes.Data` .
+> [!IMPORTANT]
+> **Enforceregopolicy** efektli sınırlı önizleme ilkesi tanımları ve Ilgili **Kubernetes hizmet** kategorisi _kullanım dışıdır_. Bunun yerine, efekt _denetimi_ ve kaynak sağlayıcısı ile _reddetme_ modunu kullanın `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy değerlendirmesi
 

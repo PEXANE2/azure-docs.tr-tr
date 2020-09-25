@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016274"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294827"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory sorunsuz çoklu oturum açma sorunlarını giderme
 
@@ -37,6 +37,7 @@ Bu makale, Azure Active Directory (Azure AD) sorunsuz çoklu oturum açma (sorun
 - 30 veya daha fazla Active Directory ormanı eşitliyorsanız, Azure AD Connect aracılığıyla sorunsuz SSO etkinleştirilemez. Geçici bir çözüm olarak, kiracınızda özelliği [el ile etkinleştirebilirsiniz](#manual-reset-of-the-feature) .
 - Azure AD hizmeti URL 'sini ( `https://autologon.microsoftazuread-sso.com` ) yerel intranet bölgesi yerine güvenilen siteler bölgesine eklemek *, kullanıcıların oturum açmasını engeller*.
 - Sorunsuz SSO, Kerberos için AES256_HMAC_SHA1, AES128_HMAC_SHA1 ve RC4_HMAC_MD5 şifreleme türlerini destekler. AzureADSSOAcc $ hesabı için şifreleme türü AES256_HMAC_SHA1 olarak, ek güvenlik için de AES türlerinden biri de. RC4 olarak ayarlanmalıdır. Şifreleme türü, Active Directory hesabın msDS-SupportedEncryptionTypes özniteliğinde depolanır.  AzureADSSOAcc $ Account ENCRYPTION türü RC4_HMAC_MD5 olarak ayarlandıysa ve bunu AES şifreleme türlerinden biri olarak değiştirmek istiyorsanız, lütfen ilk olarak AzureADSSOAcc $ hesabının Kerberos şifre çözme anahtarını, ilgili sorunun altındaki [SSS belgesinde](how-to-connect-sso-faq.md) açıklandığı gibi aldığınızdan emin olun, aksi takdırde sorunsuz SSO gerçekleşmeyecektir.
+-  Orman güveni olan birden fazla ormanınız varsa, ormanlardan birinde SSO 'yu etkinleştirmek, tüm güvenilen ormanlarda SSO 'yu etkinleştirir. SSO 'nun zaten etkinleştirildiği bir ormanda SSO 'yu etkinleştirirseniz, SSO 'nun ormanda zaten etkinleştirildiğini belirten bir hata alırsınız.
 
 ## <a name="check-status-of-feature"></a>Özelliğin durumunu denetleme
 

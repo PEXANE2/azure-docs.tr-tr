@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 4990862bacbf2afe2d4b5f39c2b9d31a7c48b78e
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 18463c4350895401c9bf73dc249ce93218a44f7c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962902"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264652"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
@@ -37,7 +37,7 @@ Benzer şekilde, diğer dil yığınları, çalışma zamanında ortam değişke
 - [Node.js](configure-language-nodejs.md#access-environment-variables)
 - [PHP](configure-language-php.md#access-environment-variables)
 - [Python](configure-language-python.md#access-environment-variables)
-- [Java](configure-language-java.md#data-sources)
+- [Java](configure-language-java.md#configure-data-sources)
 - [Ruby](configure-language-ruby.md#access-environment-variables)
 - [Özel kapsayıcılar](configure-custom-container.md#configure-environment-variables)
 
@@ -108,7 +108,7 @@ Diğer dil yığınları için bunun yerine [uygulama ayarlarının](#configure-
 - [Node.js](configure-language-nodejs.md#access-environment-variables)
 - [PHP](configure-language-php.md#access-environment-variables)
 - [Python](configure-language-python.md#access-environment-variables)
-- [Java](configure-language-java.md#data-sources)
+- [Java](configure-language-java.md#configure-data-sources)
 - [Ruby](configure-language-ruby.md#access-environment-variables)
 - [Özel kapsayıcılar](configure-custom-container.md#configure-environment-variables)
 
@@ -258,7 +258,7 @@ Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](con
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
-[Azure Portalı]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Azure App Service'te özel etki alanı adını yapılandırma]: ./app-service-web-tutorial-custom-domain.md
 [Azure App Service’ta hazırlık ortamları ayarlama]: ./deploy-staging-slots.md
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906

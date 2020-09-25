@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: bir VM ağı trafik filtresi sorununu tanılama-Azure PowerShell'
 titleSuffix: Azure Network Watcher
-description: Bu hızlı başlangıçta, Azure Ağ İzleyicisi'nin IP akış doğrulama özelliği kullanılarak sanal makine ağ trafiği filtreleme sorununun nasıl tanılanacağını öğrenirsiniz.
+description: Azure ağ Izleyicisi 'nin IP akışı doğrulama özelliğini kullanarak bir sanal makine ağ trafiği Filtreleme sorununu tanılamak için Azure PowerShell kullanmayı öğrenin.
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 6d1c41df638c092daf24938931c3526fb18ea3db
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b74987e225314112c84280e18af523bc5c3804a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074789"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296068"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Hızlı Başlangıç: Sanal makine ağ trafiği filtreleme sorununu tanılama - Azure PowerShell
 

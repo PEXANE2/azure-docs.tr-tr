@@ -3,17 +3,17 @@ title: Azure Lab Services sınıf laboratuvarlarını yönetme | Microsoft Docs
 description: Bir derslik Laboratuvarı oluşturma ve yapılandırma, tüm sınıf laboratuvarlarını görüntüleme, kayıt bağlantısını laboratuar kullanıcısı ile paylaşma veya bir laboratuvarı silme hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251686"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarlarını yönetme 
 Bu makalede bir sınıf Laboratuvarı oluşturma ve silme açıklanmaktadır. Ayrıca, tüm sınıf laboratuvarlarını bir laboratuvar hesabında nasıl görüntüleyekullanacağınızı gösterir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratuvar hesabında **Laboratuvar Oluşturan** rolünün üyesi olmanız gerekir. Laboratuvar hesabını oluşturmak için kullandığınız hesap otomatik olarak bu role eklenir. Laboratuvar sahibi, şu makaledeki adımları kullanarak Laboratuvar Oluşturan rolüne kullanıcı ekleyebilir: [Laboratuvar Oluşturan rolüne kullanıcı ekleme](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 ## <a name="create-a-classroom-lab"></a>Sınıf laboratuvarı oluşturma
@@ -30,9 +30,9 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
 
         Laboratuvar hesabı sahibi kimlik bilgilerini kullanarak oturum açtıysanız, laboratuvar için daha fazla görüntü etkinleştirme seçeneği görüntülenir. Daha fazla bilgi için bkz. [Laboratuvar oluşturma sırasında görüntüleri etkinleştirme](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation).
     1. Sayfada gösterildiği **saat başına toplam fiyatı** gözden geçirin. 
-    1. **Kaydet**'i seçin.
+    1. **Kaydet**’i seçin.
 
-        ![Yeni laboratuvar penceresi](./media/tutorial-setup-classroom-lab/new-lab-window.png)
+        !["Yeni laboratuvar" penceresini gösteren ekran görüntüsü.](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 
         > [!NOTE]
         > Laboratuvar hesabı laboratuvar [Oluşturucu 'nın laboratuvar konumu](allow-lab-creator-pick-lab-location.md) seçeneğini seçmesine izin verecek şekilde yapılandırıldıysa laboratuvarınız için bir konum seçme seçeneği görürsünüz. 
@@ -89,7 +89,7 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
 
 ### <a name="vm-sizes"></a>VM boyutları  
 
-| Boyut | Çekirdekler | RAM | Açıklama | 
+| Boyut | Çekirdekler | RAM | Description | 
 | ---- | ----- | --- | ----------- | 
 | Küçük | 2 | 3,5 GB | Bu boyut, komut satırı, Web tarayıcısı, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları için idealdir. |
 | Orta | 4 | 7 GB | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir | 

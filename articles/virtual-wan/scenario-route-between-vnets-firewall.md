@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7a344b9c1383976cfe1b7507c120e19221f3555f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 301bc64bee291fa25506e7f435e923be7e244cd4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589359"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267525"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Senaryo: Azure Güvenlik Duvarı-özel
 
@@ -45,7 +45,7 @@ Kaç tane yol tablosunun gerekli olacağını anlamak için, her hücrenin bir k
 
 Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
-## <a name="workflow"></a><a name="workflow"></a>Akışıyla
+## <a name="workflow"></a><a name="workflow"></a>İş akışı
 
 Bu senaryoda, VNet 'Ten Internet 'e, VNet 'Ten dala veya şubelerden VNET 'e trafik için Azure Güvenlik Duvarı üzerinden trafiği yönlendirmek, ancak VNet 'ten VNet 'e trafik için doğrudan gitmek istiyor. Azure Güvenlik Duvarı Yöneticisi kullandıysanız, yol ayarları otomatik olarak **varsayılan yol tablosuna**doldurulur. Özel trafik, VNet ve dallar için geçerlidir, Internet trafiği 0.0.0.0/0 için geçerlidir.
 

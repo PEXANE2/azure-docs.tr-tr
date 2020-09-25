@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 674c906a4316ec92101f3f2028a57aa82db3f504
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a2469768c2207210e17035a67d4b05fb0cc6bb6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981995"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254185"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Görüntü İşleme Docker kapsayıcılarını yapılandırma
 
@@ -33,10 +33,10 @@ Kapsayıcı Ayrıca, kapsayıcıya özgü aşağıdaki yapılandırma ayarların
 
 |Gerekli|Ayar|Amaç|
 |--|--|--|
-|Hayır|ReadEngineConfig: ResultExpirationPeriod|Saat cinsinden sonuç süre sonu dönemi. Varsayılan değer 48 saattir. Ayar sistemin tanınma sonuçlarını ne zaman temizlemeli olduğunu belirtir. Örneğin, sistem, `resultExpirationPeriod=1` işlem sonrasında tanınma sonucunu 1 saat sonra temizler. İse `resultExpirationPeriod=0` , sistem, sonuç alındıktan sonra tanınma sonucunu temizler.|
-|Hayır|Önbellek: Redsıs|Sonuçları depolamak için Redsıs depolamayı sunar. Bir yük dengeleyicinin arkasına birden çok okuma kapsayıcısı yerleştirilirse önbellek *gerekir* .|
-|Hayır|Kuyruk: Kbıbitmq|Görevleri dağıtırken Kbıbitmq 'ı sunar. Bu ayar, bir yük dengeleyicinin arkasına birden çok okuma kapsayıcısı yerleştirildiğinde yararlıdır.|
-|Hayır|Depolama::D Okısaentstore:: MongoDB|Kalıcı sonuç depolaması için MongoDB 'yi sunar.|
+|No|ReadEngineConfig: ResultExpirationPeriod|Saat cinsinden sonuç süre sonu dönemi. Varsayılan değer 48 saattir. Ayar sistemin tanınma sonuçlarını ne zaman temizlemeli olduğunu belirtir. Örneğin, sistem, `resultExpirationPeriod=1` işlem sonrasında tanınma sonucunu 1 saat sonra temizler. İse `resultExpirationPeriod=0` , sistem, sonuç alındıktan sonra tanınma sonucunu temizler.|
+|No|Önbellek: Redsıs|Sonuçları depolamak için Redsıs depolamayı sunar. Bir yük dengeleyicinin arkasına birden çok okuma kapsayıcısı yerleştirilirse önbellek *gerekir* .|
+|No|Kuyruk: Kbıbitmq|Görevleri dağıtırken Kbıbitmq 'ı sunar. Bu ayar, bir yük dengeleyicinin arkasına birden çok okuma kapsayıcısı yerleştirildiğinde yararlıdır.|
+|No|Depolama::D Okısaentstore:: MongoDB|Kalıcı sonuç depolaması için MongoDB 'yi sunar.|
 
 ## <a name="apikey-configuration-setting"></a>ApiKey yapılandırma ayarı
 
@@ -60,7 +60,7 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 `vision/v1.0`Aşağıdaki tabloda gösterildiği gibi, yönlendirmeyi, uç nokta URI 'sine eklemeyi unutmayın. 
 
-|Gerekli| Ad | Veri türü | Açıklama |
+|Gerekli| Name | Veri türü | Açıklama |
 |--|------|-----------|-------------|
 |Evet| `Billing` | Dize | Faturalama uç noktası URI 'SI<br><br>Örnek:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -88,7 +88,7 @@ Görüntü İşleme kapsayıcıları, eğitim veya hizmet verilerini depolamak i
 
 Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](computer-vision-how-to-install-containers.md#the-host-computer)bağlama konumu erişilebilir olmayabilir. 
 
-|İsteğe Bağlı| Ad | Veri türü | Açıklama |
+|İsteğe Bağlı| Name | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
 |İzin verilmiyor| `Input` | Dize | Görüntü İşleme kapsayıcılar bunu kullanmaz.|
 |İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -124,7 +124,7 @@ Aşağıdaki Docker örnekleri okuma kapsayıcısı içindir.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -134,7 +134,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

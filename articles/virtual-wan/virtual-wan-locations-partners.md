@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 2f3641bf540b188ce3d2333ccd6bcf4a926ba130
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 928a68cff5dc8043e69c25be3dcfa3510a7d3a2a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565094"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267318"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Sanal WAN iş ortakları ve sanal hub konumları
 
@@ -23,7 +23,7 @@ Azure Sanal WAN, Azure aracılığıyla şubeden şubeye iyileştirilmiş ve oto
 
 Şirket içi cihazdan bağlantı, sanal hub 'a yönelik otomatikleştirilmiş bir şekilde oluşturulur. Bir sanal hub, Microsoft tarafından yönetilen bir sanal ağ. Hub'da, şirket içi ağınızdan (vpnsite) gelen bağlantıyı etkinleştirmek için çeşitli hizmet uç noktaları bulunur. Her bölge için yalnızca bir hub olabilir.
 
-## <a name="automation-from-connectivity-partners"></a><a name="automation"></a>Bağlantı iş ortaklarından Otomasyon
+## <a name="branch-ipsec-connectivity-automation-from-partners"></a><a name="automation"></a>İş ortaklarından şube IPSec bağlantısı Otomasyonu
 
 Azure sanal WAN 'a bağlanan cihazlarda bağlantı kurmak için yerleşik Otomasyon vardır. Bu, genellikle VPN dalı cihazı ile bir Azure sanal hub VPN uç noktası (VPN Gateway) arasında bağlantı ve yapılandırma yönetimini ayarlayan cihaz yönetimi Kullanıcı arabiriminde (veya eşdeğer) ayarlanır.
 
@@ -36,11 +36,31 @@ Aşağıdaki üst düzey Otomasyon cihaz konsolunda/Yönetim merkezinde ayarlan�
 
 Bazı bağlantı ortakları, otomasyonu, Azure sanal hub VNet ve VPN Gateway oluşturmayı içerecek şekilde genişletebilir. Otomasyon hakkında daha fazla bilgi edinmek istiyorsanız bkz. [sanal WAN iş ortakları Için Otomasyon yönergeleri](virtual-wan-configure-automation-providers.md).
 
-## <a name="connectivity-through-partners"></a><a name="partners"></a>İş ortakları üzerinden bağlantı
+## <a name="branch-ipsec-connectivity-partners"></a><a name="partners"></a>Şube IPSec bağlantısı iş ortakları
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-Aşağıdaki iş ortakları, yakın gelecek için yol haritasında alınmıştır: 128 Technologies, Arista, Aruba HPE, Cisco Systems (Viptela), F5 ağları, açık sistemler, Oracle SD-WAN ve keskin bağlantı.
+Aşağıdaki iş ortakları, yakın gelecekte 128 Technologies, Arista, Cisco Systems (vınla), F5 Networks, Oracle SD-WAN ve keskin bağlantı için yol haritasında alınmıştır.
+
+## <a name="partners-with-integrated-virtual-hub-offerings"></a>Tümleşik sanal hub teklifleri olan iş ortakları
+Otomatik şube ofis IPSec bağlantısına sahip olmanın yanı sıra, bazı iş ortakları doğrudan Azure sanal WAN hub 'ına tümleştirilen **ağ sanal gereçlerini (NVA 'lar)** sunar.  Bu, müşterilere şube bağlantılarını sanal hub 'daki uyumlu bir üçüncü taraf gerecine sonlandırma seçeneği sağlar.  
+
+Sanal WAN hub 'ında NVA 'yı sunan iş ortakları şunları içermelidir:
+
+* , Şube cihazlarından IPSec bağlantı Otomasyonu uyguladık ve Azure sanal WAN hub 'ına ait NVA tekliflerini eklenmediyse.
+* Azure Marketi 'nde mevcut bir ağ sanal gereç teklifinin olması gerekir.
+
+Bir iş ortağıysanız ve sanal hub teklifinde yönetilen NVA hakkında sorularınız varsa, lütfen adresine e-posta göndererek bizimle iletişime geçin vwannvaonboarding@microsoft.com
+
+## <a name="integrated-virtual-hub-nva-partners"></a>Tümleşik sanal hub NVA iş ortakları
+Bu iş ortakları, artık sanal WAN hub 'ına dağıtım için kullanılabilen **yönetilen uygulama** tekliflerine sahiptir.
+
+|İş Ortakları|Yapılandırma/nasıl yapılır/dağıtım kılavuzu|
+|---|---|
+|[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barrampada CloudGen WAN dağıtım kılavuzu](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
+|[Cisco bulut hizmeti yönlendiricisi (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| [Cisco bulut hizmeti yönlendiricisi (CSR) VWAN dağıtım kılavuzu]()
+
+Aşağıdaki iş ortakları, sanal hub 'daki NVA 'yı yakın gelecekte sunmakta olacak şekilde hazırlanmıştır: Citrix, tersi ağlar ve VeloCloud.
 
 ## <a name="locations"></a><a name="locations"></a>Konumlar
 

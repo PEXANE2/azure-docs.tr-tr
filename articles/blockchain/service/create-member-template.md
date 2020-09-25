@@ -5,13 +5,13 @@ services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs, references_regions
-ms.date: 07/16/2020
-ms.openlocfilehash: b9d1e3319aaaafded44d25c91720a0d72dcb86f3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.date: 09/16/2020
+ms.openlocfilehash: e9893336f2e6633519853aceecc945ee6bf0bf4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642019"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292770"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure blok zinciri hizmeti üyesi oluşturma
 
@@ -41,7 +41,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 1. Aşağıdaki bağlantıyı seçerek Azure’da oturum açıp bir şablon açın.
 
-    [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
+    [![Azure’a dağıtın](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
 
 1. Azure blok zinciri hizmeti üyesine yönelik ayarları belirtin.
 
@@ -49,14 +49,16 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
     --------|------------
     Abonelik | Hizmetiniz için kullanmak istediğiniz Azure aboneliğini seçin. Birden fazla aboneliğiniz varsa kaynağın faturalandığı aboneliği seçin.
     Kaynak grubu | Yeni bir kaynak grubu adı oluşturun veya aboneliğinizden mevcut bir tane seçin.
-    Konum | Üyenin oluşturulacağı bir konum seçin. Konsorsiyumun tüm üyeleri aynı konumda olmalıdır. Dağıtım için kullanılabilir konumlar şunlardır *westeurope, eastus, Güneydoğu, westeurope, northeurope, westus2*ve *japaneast*. Özellikler, bazı bölgelerde kullanılamayabilir. Azure blok zinciri Veri Yöneticisi şu Azure bölgelerinde kullanılabilir: Doğu ABD ve Batı Avrupa.
-    Üye adı | Azure blok zinciri hizmeti üyesi için benzersiz bir ad seçin. Blok zinciri üye adı yalnızca küçük harf ve sayı içerebilir. İlk karakter harf olmalıdır. Değer 2 ila 20 karakter uzunluğunda olmalıdır.
+    Region | Kaynak grubu oluşturmak için bir bölge seçin. Konsorsiyumun tüm üyeleri aynı konumda olmalıdır. Dağıtım için kullanılabilir konumlar şunlardır *westeurope, eastus, Güneydoğu, westeurope, northeurope, westus2*ve *japaneast*. Özellikler, bazı bölgelerde kullanılamayabilir. Azure blok zinciri Veri Yöneticisi şu Azure bölgelerinde kullanılabilir: Doğu ABD ve Batı Avrupa.
+    BC üye adı | Azure blok zinciri hizmeti üyesi için benzersiz bir ad seçin. Blok zinciri üye adı yalnızca küçük harf ve sayı içerebilir. İlk karakter harf olmalıdır. Değer 2 ila 20 karakter uzunluğunda olmalıdır.
     Konsorsiyum adı | Benzersiz bir ad girin. Consorda hakkında daha fazla bilgi için bkz. [Azure blok zinciri hizmeti Consortium](consortium.md).
-    Üye parolası | Üye hesabı parolası, üyelik için oluşturulan Ethereum hesabının özel anahtarını şifrelemek için kullanılır. Konsorsiyum yönetimi için üye hesabı ve üye hesabı parolasını kullanırsınız.
-    SKU katmanı | Yeni hizmetinizin fiyatlandırma katmanı. **Standart** ve **temel** katmanlar arasında seçim yapın. Geliştirme, test ve kavram kanıtı için *temel* katmanı kullanın. Üretim sınıfı dağıtımları için *Standart* katmanı kullanın. Ayrıca, blok Veri Yöneticisi Zinciri kullanıyorsanız veya yüksek hacimli özel işlemler gönderiyorsanız *Standart* katmanı da kullanmanız gerekir. Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanını değiştirmek desteklenmez.
-    SKU adı | Yeni hizmetinizin düğüm yapılandırması ve maliyeti.
+    Üye parolası | Üyenin varsayılan işlem düğümü için parola. Blok zinciri üyesinin varsayılan işlem düğümü genel uç noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın.
+    Konsorsiyum yönetimi hesabı parolası | Konsorsiyum hesabı parolası, üyelik için oluşturulan Ethereum hesabının özel anahtarını şifrelemek için kullanılır. Bu, konsorsiyum yönetimi için kullanılır.
+    SKU katmanı | Yeni hizmetinizin fiyatlandırma katmanı. **Standart** ve **temel** katmanlar arasında seçim yapın. Geliştirme, test ve kavram kanıtı için *temel* katmanı kullanın. Üretim sınıfı dağıtımları için *Standart* katmanı kullanın. Ayrıca, blok Veri Yöneticisi Zinciri kullanıyorsanız veya yüksek hacimli özel işlemler gönderiyorsanız *Standart* katmanı kullanın. Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanını değiştirmek desteklenmez.
+    SKU adı | Yeni hizmetinizin düğüm yapılandırması ve maliyeti. Standart için, temel ve **S0** için **B0** kullanın.
+    Konum | Üyenin oluşturulacağı bir konum seçin. Varsayılan olarak, kaynak grubu konumu kullanılır `[resourceGroup().location]` . Konsorsiyumun tüm üyeleri aynı konumda olmalıdır. Dağıtım için kullanılabilir konumlar şunlardır *westeurope, eastus, Güneydoğu, westeurope, northeurope, westus2*ve *japaneast*. Özellikler, bazı bölgelerde kullanılamayabilir. Azure blok zinciri Veri Yöneticisi şu Azure bölgelerinde kullanılabilir: Doğu ABD ve Batı Avrupa.
 
-1. Şablonu dağıtmak için **satın al** ' ı seçin.
+1. Şablonu doğrulamak ve dağıtmak için **gözden geçir + oluştur** ' u seçin.
 
   Azure portal, şablonu dağıtmak için burada kullanılır. Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../../azure-resource-manager/templates/deploy-powershell.md).
 

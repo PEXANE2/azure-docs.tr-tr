@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: da0c3284b42be6d9054b7386839004b57d8ca274
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: d7b94da2f922e7dba8c165dcf9d1e906855f6dfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935747"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294283"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR hizmeti kimlik doğrulaması
 
@@ -59,7 +59,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gere
 
 3. Yeni OAuth Uygulaması için aşağıdaki ayarları kullanın ve ardından **Uygulamayı kaydet**'e tıklayın:
 
-    | Ayar Adı | Önerilen Değer | Açıklama |
+    | Ayar Adı | Önerilen Değer | Description |
     | ------------ | --------------- | ----------- |
     | Uygulama adı | *Azure SignalR Sohbeti* | GitHub kullanıcısı, kimlik doğrulama yaptıkları uygulamayı tanıyabilmelidir ve güvenmelidir.   |
     | Giriş sayfası URL'si | `http://localhost:5000/home` | |

@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 663c07795926b17eb42ff185ca248454c5bc459c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881846"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287738"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te Apache Spark kullanarak Azure Cosmos DB ile etkileşim kurma (Önizleme)
 
@@ -120,6 +120,8 @@ df.write.format("cosmos.oltp").
     save()
 ```
 
+## <a name="load-streaming-dataframe-from-container"></a>Kapsayıcıdan akış veri çerçevesini yükleme
+Bu hareket halinde, bir kapsayıcıdan veri çerçevesine veri yüklemek için Spark akış özelliğini kullanacaksınız. Veriler, çalışma alanına bağladığınız birincil Data Lake hesabında (ve dosya sisteminde) depolanır. 
 > [!NOTE]
 > SYNAPSE Apache Spark dış kitaplıklara başvurmak istiyorsanız, [buradan](#external-library-management)daha fazla bilgi edinebilirsiniz. Örneğin, bir Spark veri çerçevesini Mongo DB için Cosmos DB API 'SI kapsayıcısına almak istiyorsanız Spark için Mongo DB bağlayıcısını [buradan](https://docs.mongodb.com/spark-connector/master/)kullanabilirsiniz.
 

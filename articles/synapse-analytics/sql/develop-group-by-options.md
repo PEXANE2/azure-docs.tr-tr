@@ -11,19 +11,19 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: ad2b13fbfbd9871a55efb1826fa1e978d4eeb453
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032308"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289178"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>SYNAPSE SQL 'de gruplandırma ölçütü seçenekleri
 SYNAPSE SQL, farklı gruplandırma seçenekleri uygulayarak çözüm geliştirmeye olanak sağlar. 
 
 ## <a name="what-does-group-by-do"></a>Gruplandırma ölçütü ne yapar
 
-[Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL yan tümcesi, verileri bir Özet satır kümesine toplar.
+[Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL yan tümcesi, verileri bir Özet satır kümesine toplar.
 
 İsteğe bağlı SQL, gruplama ölçütü seçeneklerinin tamamını destekler. SQL havuzu sınırlı sayıda GROUP BY seçeneğini destekler.
 
@@ -124,7 +124,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Aşağıdaki görüntüde [Create Table sonuçları şöyle](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)gösterilmektedir:
+Aşağıdaki görüntüde [Create Table sonuçları şöyle](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)gösterilmektedir:
 
 ![Küpe göre Gruplandır](./media/develop-group-by-options/develop-group-by-cube.png)
 

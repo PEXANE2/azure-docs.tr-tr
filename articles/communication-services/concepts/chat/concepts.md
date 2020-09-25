@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: af07894fcbfae386849d32492be9d2718a3adcc3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1dd3781b18f82a96f388b0e619ce62b45752a870
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948008"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292481"
 ---
 # <a name="chat-concepts"></a>Sohbet kavramları
 
@@ -28,7 +28,7 @@ Belirli istemci kitaplığı dilleri ve özellikleri hakkında daha fazla bilgi 
 
 Sohbet iş parçacıkları içinde sohbet görüşmeleri gerçekleşir. Sohbet iş parçacığı birçok ileti ve çok sayıda kullanıcı içerebilir. Her ileti tek bir iş parçacığına aittir ve bir Kullanıcı bir veya daha fazla iş parçacığının parçası olabilir. 
 
-Sohbet iş parçacığındaki her kullanıcıya üye denir. Bir sohbet iş parçacığında en fazla 250 üye olabilir. Yalnızca iş parçacığı üyeleri bir sohbet iş parçacığına ileti gönderebilir ve alabilir ya da üye ekleyebilir/kaldırabilir. İzin verilen en büyük ileti boyutu yaklaşık 28KB 'dir. İletişim Hizmetleri, sohbet iş parçacığında silme işlemini yürütmeden önce sohbet geçmişini depolar. İşlem kullanarak bir sohbet iş parçacığındaki tüm iletileri alabilirsiniz `List/Get Messages` .
+Sohbet iş parçacığındaki her kullanıcıya üye denir. Bir sohbet iş parçacığında en fazla 250 üye olabilir. Yalnızca iş parçacığı üyeleri bir sohbet iş parçacığına ileti gönderebilir ve alabilir ya da üye ekleyebilir/kaldırabilir. İzin verilen en büyük ileti boyutu yaklaşık 28KB 'dir. İşlem kullanarak bir sohbet iş parçacığındaki tüm iletileri alabilirsiniz `List/Get Messages` . İletişim Hizmetleri, sohbet iş parçacığı veya iletisi üzerinde silme işlemi yürütülene veya sohbet iş parçacığında kalan ve silinmek üzere işlendiği bir üye kalmayana kadar sohbet geçmişini depolar.   
 
 20 ' den fazla üye içeren sohbet iş parçacıkları için okundu bilgisi ve yazma göstergesi özellikleri devre dışı bırakılır. 
 
@@ -47,7 +47,7 @@ Sohbet mimarisinin iki temel bölümü vardır: 1) Güvenilen hizmet ve 2) Istem
 İletişim Hizmetleri sohbeti, Kullanıcı tarafından üretilen iletileri ve **Iş parçacığı etkinlikleri**adlı sistem tarafından oluşturulan iletileri paylaşır. İş parçacığı etkinlikleri, bir sohbet iş parçacığı güncelleştirildiği zaman üretilir. `List Messages` `Get Messages` Bir sohbet iş parçacığı çağırdığınızda, sonuç Kullanıcı tarafından oluşturulan metin iletilerini ve sistem iletilerini kronolojik sırada içerecektir. Bu, bir üyenin ne zaman eklendiğini veya kaldırıldığını veya sohbet iş parçacığı konusunun ne zaman güncelleştirildiğini tanımlamanızı sağlar. Desteklenen ileti türleri şunlardır:  
 
  - `Text`: Sohbet konuşması kapsamında Kullanıcı tarafından oluşturulan ve gönderilen gerçek ileti. 
- - `ThreadActivity/AddMember`: Sohbet iş parçacığına bir veya daha fazla üye eklendiğini belirten sistem iletisi. Örnek:
+ - `ThreadActivity/AddMember`: Sohbet iş parçacığına bir veya daha fazla üye eklendiğini belirten sistem iletisi. Örneğin:
 
 ```xml
 
@@ -72,7 +72,7 @@ Sohbet mimarisinin iki temel bölümü vardır: 1) Güvenilen hizmet ve 2) Istem
 
 ```  
 
-- `ThreadActivity/DeleteMember`: Bir üyenin sohbet iş parçacığından kaldırıldığını belirten sistem iletisi. Örnek:
+- `ThreadActivity/DeleteMember`: Bir üyenin sohbet iş parçacığından kaldırıldığını belirten sistem iletisi. Örneğin:
 
 ```xml
 
@@ -92,7 +92,7 @@ Sohbet mimarisinin iki temel bölümü vardır: 1) Güvenilen hizmet ve 2) Istem
 
 ```
 
-- `ThreadActivity/TopicUpdate`: Konunun güncelleştirildiğini belirten sistem iletisi. Örnek:
+- `ThreadActivity/TopicUpdate`: Konunun güncelleştirildiğini belirten sistem iletisi. Örneğin:
 
 ```xml
 

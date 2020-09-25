@@ -1,6 +1,6 @@
 ---
 title: Bir Azure-SSIS tümleştirme çalışma zamanını bir sanal ağa katmak üzere yapılandırma öğreticisi
-description: Azure-SSIS tümleştirme çalışma zamanını bir Azure sanal ağına nasıl katılacağınızı öğrenin.
+description: Azure sanal ağına katmak için bir Azure-SSIS tümleştirme çalışma zamanına katılmayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2bd2fa9badc7c299099b647e1f67c50e997024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118152"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292312"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Bir sanal ağa katılması için bir Azure-SQL Server Integration Services (SSIS) tümleştirme çalışma zamanı (IR) yapılandırma
 
@@ -29,7 +29,7 @@ Adımlar şunlardır:
 - Bir sanal ağ yapılandırın.
 - Azure-SSIS IR Azure Data Factory portalından bir sanal ağa katın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure-SSIS tümleştirme çalışma zamanı**. Azure-SSIS tümleştirme çalışma zamanı yoksa, başlamadan önce [Azure Data Factory ' de bir Azure-SSIS tümleştirme çalışma zamanı sağlayın](tutorial-deploy-ssis-packages-azure.md) .
 
@@ -72,7 +72,7 @@ Bir Azure-SSIS IR katılmayı denemeden önce bir sanal ağı yapılandırmak i�
 
 1. Microsoft Edge veya Google Chrome 'ı başlatın. Şu anda yalnızca bu Web tarayıcıları Data Factory Kullanıcı arabirimini destekler.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **Diğer hizmetler**' i seçin. **Sanal ağları**filtreleyin ve seçin.
 

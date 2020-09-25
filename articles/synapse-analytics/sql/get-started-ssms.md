@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: dc467eebbd7346777765af7143d13c76627ab648
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 166d598528d8fe38e2bc22b76c659326c5e0ba45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077725"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288792"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile SYNAPSE SQL 'e bağlanma
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Başlamadan önce, aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
 * SQL havuzu için mevcut bir veri ambarına ihtiyacınız vardır. Bir tane oluşturmak için bkz. [SQL havuzu oluşturma](../quickstart-create-sql-pool-portal.md). İsteğe bağlı SQL için, oluşturma sırasında çalışma alanınızda bir tane zaten sağlanmış olur. 
-* Tam nitelikli SQL Server adı. Bunu bulmak için bkz. [SYNAPSE SQL 'e bağlanma](connect-overview.md).
+* Tam nitelikli SQL Server adı. Bu adı bulmak için bkz. [SYNAPSE SQL 'e bağlanma](connect-overview.md).
 
 ## <a name="connect"></a>Bağlan
 
@@ -52,7 +52,7 @@ SQL havuzu kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları izleyin:
 1. SQL Server Management Studio (SSMS) açın. 
 1. **Sunucuya Bağlan** iletişim kutusunda alanları doldurup **Bağlan**' ı seçin. 
   
-    ![Sunucuya bağlanma](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
+    ![Sunucu 1 ' e bağlanma](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
    * **Sunucu adı**: daha önce tanımlanan **sunucu adını** girin.
    * **Kimlik doğrulaması**: **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması**gibi bir kimlik doğrulama türü seçin.
@@ -60,7 +60,7 @@ SQL havuzu kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları izleyin:
 
 1. Azure SQL Server **Nesne Gezgini**' ni genişletin. Sunucu ile ilişkili veritabanlarını (örneğin, örnek AdventureWorksDW veritabanı) görüntüleyebilirsiniz. Tabloları görmek için veritabanını genişletebilirsiniz:
    
-    ![AdventureWorksDW'yi araştırma](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
+    ![AdventureWorksDW 1 ' i keşfet](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
 ### <a name="sql-on-demand-preview"></a>İsteğe bağlı SQL (Önizleme)
@@ -70,16 +70,16 @@ SQL havuzu kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları izleyin:
 1. SQL Server Management Studio (SSMS) açın.
 1. **Sunucuya Bağlan** iletişim kutusunda alanları doldurup **Bağlan**' ı seçin. 
    
-    ![Sunucuya bağlanma](./media/get-started-ssms/connect-object-explorer1.png)
+    ![Sunucu 2 ' ye Bağlan](./media/get-started-ssms/connect-object-explorer1.png)
    
    * **Sunucu adı**: daha önce tanımlanan **sunucu adını** girin.
    * **Kimlik doğrulaması**: **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması**gibi bir kimlik doğrulama türü seçin:
    * **Kullanıcı adı** ve **parola**: yukarıda SQL Server kimlik doğrulaması seçildiyse, Kullanıcı adınızı ve parolanızı girin.
-   * **Bağlan**'a tıklayın.
+   * **Bağlan**’ı seçin.
 
 4. Araştırmak için Azure SQL sunucunuzu genişletin. Sunucuyla ilişkili veritabanlarını görüntüleyebilirsiniz. Örnek veritabanınızdaki içeriği görmek için *demo* ' i genişletin.
    
-    ![AdventureWorksDW'yi araştırma](./media/get-started-ssms/explore-tables.png)
+    ![AdventureWorksDW 2 ' i keşfet](./media/get-started-ssms/explore-tables.png)
 
 
 ## <a name="run-a-sample-query"></a>Örnek sorgu çalıştırma
@@ -91,18 +91,18 @@ Bir veritabanı bağlantısı kuruldığına göre, verileri sorgulayabilirsiniz
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
 2. **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
    
-    ![Yeni sorgu](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
-3. Bu T-SQL sorgusunu sorgu penceresine kopyalayın:
+    ![Yeni sorgu 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
+3. Aşağıdaki T-SQL sorgusunu sorgu penceresine kopyalayın:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Sorguyu çalıştırın. Bunu yapmak için `Execute` aşağıdaki kısayola tıklayın veya kullanın: `F5` .
+4. `Execute`Aşağıdaki kısayolu seçerek veya kullanarak sorguyu çalıştırın: `F5` .
    
-    ![Sorgu çalıştırma](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
-5. Sorgu sonuçlarına bakın. Bu örnekte FactInternetSales tablosunda 60398 satır var.
+    ![Sorgu 1 ' i Çalıştır](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
+5. Sorgu sonuçlarına bakın. Aşağıdaki örnekte, FactInternetSales tablosunda 60398 satır vardır.
    
-    ![Sorgu sonuçları](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
+    ![Sorgu sonuçları 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
 ### <a name="sql-on-demand"></a>İsteğe bağlı SQL
 
@@ -111,18 +111,18 @@ Bir veritabanı bağlantısı kurdığınıza göre, verileri sorgulayabilirsini
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
 2. **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
    
-    ![Yeni sorgu](./media/get-started-ssms/new-query.png)
+    ![Yeni sorgu 2](./media/get-started-ssms/new-query.png)
 3. Aşağıdaki T-SQL sorgusunu sorgu penceresine kopyalayın:
    
     ```sql
     SELECT COUNT(*) FROM demo.dbo.usPopulationView
     ```
-4. Sorguyu çalıştırın. Bunu yapmak için `Execute` aşağıdaki kısayola tıklayın veya kullanın: `F5` .
+4. `Execute`Aşağıdaki kısayolu seçerek veya kullanarak sorguyu çalıştırın: `F5` .
    
-    ![Sorgu çalıştırma](./media/get-started-ssms/execute-query.png)
+    ![Sorgu Çalıştır 2](./media/get-started-ssms/execute-query.png)
 5. Sorgu sonuçlarına bakın. Bu örnekte, usPopulationView görünümü 3664512 satıra sahiptir.
    
-    ![Sorgu sonuçları](./media/get-started-ssms/results.png)
+    ![Sorgu sonuçları 2](./media/get-started-ssms/results.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık bağlanıp sorgulama yaptığınızda, [Power BI verileri görselleştirmeyi](get-started-power-bi-professional.md)deneyin.

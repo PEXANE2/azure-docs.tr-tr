@@ -2,19 +2,19 @@
 title: Birden çok kaynak örneğini dağıtma
 description: Kaynak türünü birçok kez dağıtmak için bir Azure Resource Manager şablonunda kopyalama işlemini ve dizileri kullanın.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/21/2020
+ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583392"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293977"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM şablonlarındaki kaynak yinelemesi
 
 Bu makalede, Azure Resource Manager (ARM) şablonunuzda bir kaynağın birden fazla örneğini nasıl oluşturacağınız gösterilmektedir. Şablonunuzun kaynaklar bölümüne **Copy** öğesini ekleyerek, dağıtılacak kaynak sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca, şablon söz dizimini yinelemek zorunda kalmaktan kaçının.
 
-Ayrıca, [özellikleri](copy-properties.md), [değişkenleri](copy-variables.md) ve [çıkışları](copy-outputs.md)içeren Kopyala özelliğini de kullanabilirsiniz.
+Ayrıca, [özellikleri](copy-properties.md), [değişkenleri](copy-variables.md)ve [çıkışları](copy-outputs.md)içeren Kopyala özelliğini de kullanabilirsiniz.
 
 Bir kaynağın hiç dağıtılıp dağıtılmadığını belirtmeniz gerekiyorsa bkz. [koşul öğesi](conditional-resource-deployment.md).
 
@@ -155,6 +155,8 @@ Dağıtılan kaynaklardan değer döndürmek istiyorsanız, [çıktılar bölüm
 Varsayılan olarak Kaynak Yöneticisi, kaynakları paralel olarak oluşturur. Şablondaki 800 kaynağın toplam sınırının dışında, paralel olarak dağıtılan kaynak sayısına sınır uygulanmaz. Bunların oluşturulma sırası garanti edilmez.
 
 Ancak, kaynakların sırayla dağıtılmasını belirtmek isteyebilirsiniz. Örneğin, bir üretim ortamını güncelleştirirken, yalnızca belirli bir sayının herhangi bir zamanda güncelleştirilmesini sağlamak isteyebilirsiniz. Bir kaynağın birden fazla örneğini seri olarak dağıtmak için, `mode` **seri** olarak ve `batchSize` aynı anda dağıtılacak örnek sayısına ayarlayın. Seri modda Kaynak Yöneticisi, döngüdeki önceki örneklerde bir bağımlılık oluşturur, bu nedenle, önceki toplu işlem tamamlanana kadar bir toplu işlem başlatmaz.
+
+Değeri, `batchSize` `count` Copy öğesindeki değerini aşamaz.
 
 Örneğin, depolama hesaplarını tek seferde bir kez dağıtmak için şunu kullanın:
 

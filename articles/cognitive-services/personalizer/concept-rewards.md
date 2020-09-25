@@ -1,14 +1,16 @@
 ---
 title: Ödül puanı-kişiselleştirici
 description: Ödül puanı, kişiselleştirme seçiminin, rewarterctionıd 'nin Kullanıcı için ne kadar iyi olduğunu gösterir. Ödül puanı değeri, Kullanıcı davranışının gözlemlerini temel alarak iş mantığınızla belirlenir. Kişiselleştirici, remarları değerlendirerek makine öğrenimi modellerini ister.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 58ce4d7593b23807f4b31e3e71cbfdcd873b1fcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219373"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253505"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Reward puanları, kişiselleştirmenin başarısını gösterir
 

@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88962d63519cfeb78be694c4f702b05ed4e7d3df
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658533"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287859"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>Apache Spark kullanarak Azure Cosmos DB bir SQL havuzuna veri kopyalama
 
@@ -29,15 +29,15 @@ Azure Cosmos DB için Azure SYNAPSE bağlantısı, kullanıcıların Azure Cosmo
 * [Spark 'dan bir SQL havuzuna veri aktarmak için doğru kuruluma sahipsiniz](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>Adımlar
-Bu öğreticide, işlem deposu üzerinde hiçbir etkisi olmaması için analitik depoya bağlanırsınız (herhangi bir Istek birimini tüketmez). Şu adımları izleyeceğiz:
+Bu öğreticide, işlem deposuna hiçbir etkilenmemesi için analitik depoya bağlanırsınız (herhangi bir Istek birimini tüketmez). Aşağıdaki adımlara gideceğiz:
 1. Cosmos DB HTAP kapsayıcısını Spark veri çerçevesine okuyun
 2. Sonuçları yeni bir veri çerçevesinde toplama
 3. Verileri bir SQL havuzuna alma
 
-[![Spark to SQL adımları](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
+[![Spark to SQL adımları 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
 ## <a name="data"></a>Veriler
-Bu örnekte, **RetailSales**ADLı BIR htap kapsayıcısı kullanıyoruz. Bağlı bir hizmetin **Connecteddata**adlı bir parçasıdır ve aşağıdaki şemaya sahiptir:
+Bu örnekte, **RetailSales**ADLı BIR htap kapsayıcısı kullanıyoruz. Bu, bağlı bir hizmetin **Connecteddata**adlı bir parçasıdır ve aşağıdaki şemaya sahiptir:
 * _rid: dize (Nullable = true)
 * _ts: Long (Nullable = true)
 * logQuantity: Double (Nullable = true)
@@ -97,7 +97,7 @@ SELECT  [productCode]
  FROM [dbo].[productsales]
 ```
 
-Sorgunuz bir grafik modunda aşağıdaki sonuçları sağlar: [ ![ Spark to SQL Steps](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
+Sorgunuz bir grafik modunda aşağıdaki sonuçları sunar: [ ![ Spark to SQL Steps 2](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Analitik depoyu Apache Spark ile sorgula Azure Cosmos DB](./how-to-query-analytical-store-spark.md)

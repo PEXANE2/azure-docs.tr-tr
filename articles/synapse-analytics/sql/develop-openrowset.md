@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b7b8a0d98db1411a08afdb33fa272bb7e6d6313e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280486"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289030"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET 'yi isteğe bağlı SQL ile kullanma (Önizleme)
 
-`OPENROWSET(BULK...)`İşlevi, Azure Storage 'daki dosyalara erişmenizi sağlar. `OPENROWSET`işlev, uzak bir veri kaynağının (örneğin dosya) içeriğini okur ve içeriği bir dizi satır olarak döndürür. SQL isteğe bağlı (Önizleme) kaynağı içinde, OPENROWSET işlevi çağırarak ve toplu seçeneği belirtilerek OPENROWSET toplu satır kümesi sağlayıcısına erişilir.  
+`OPENROWSET(BULK...)`İşlevi, Azure Storage 'daki dosyalara erişmenizi sağlar. `OPENROWSET` işlev, uzak bir veri kaynağının (örneğin dosya) içeriğini okur ve içeriği bir dizi satır olarak döndürür. SQL isteğe bağlı (Önizleme) kaynağı içinde, OPENROWSET işlevi çağırarak ve toplu seçeneği belirtilerek OPENROWSET toplu satır kümesi sağlayıcısına erişilir.  
 
 İşlevine, bir `OPENROWSET` `FROM` tablo adı gibi bir sorgunun yan tümcesinde başvurulabilir `OPENROWSET` . Bir dosyadaki verilerin bir satır kümesi olarak okunmasını ve döndürülmesini sağlayan yerleşik bir toplu sağlayıcı aracılığıyla toplu işlemleri destekler.
 
@@ -26,7 +26,7 @@ ms.locfileid: "87280486"
 
 SYNAPSE SQL içindeki OPENROWSET işlevi, bir veri kaynağından dosya içeriğini okur. Veri kaynağı bir Azure Storage hesabıdır ve işlevde açıkça başvurulabilir `OPENROWSET` ya da okumak istediğiniz dosyaların URL 'sinden dinamik olarak çıkarsanamıyor.
 `OPENROWSET`İşlevi, isteğe bağlı olarak `DATA_SOURCE` , dosyaları içeren veri kaynağını belirtmek için bir parametre içerebilir.
-- `OPENROWSET`olmadan `DATA_SOURCE` , bu dosya içeriğini seçenek olarak BELIRTILEN URL konumundan doğrudan okumak için kullanılabilir `BULK` :
+- `OPENROWSET` olmadan `DATA_SOURCE` , bu dosya içeriğini seçenek olarak BELIRTILEN URL konumundan doğrudan okumak için kullanılabilir `BULK` :
 
     ```sql
     SELECT *
@@ -49,7 +49,7 @@ Bu, önceden yapılandırma olmadan dosyaların içeriğini okumak için hızlı
     Bu seçenek, veri kaynağındaki depolama hesabının konumunu yapılandırmanıza ve depolamaya erişmek için kullanılması gereken kimlik doğrulama yöntemini belirtmenize olanak sağlar. 
     
     > [!IMPORTANT]
-    > `OPENROWSET`olmadan `DATA_SOURCE` , depolama dosyalarına erişmek için hızlı ve kolay bir yol sağlar, ancak sınırlı kimlik doğrulama seçenekleri sunar. Örnek olarak, Azure AD sorumluları yalnızca [Azure AD kimliklerini](develop-storage-files-storage-access-control.md?tabs=user-identity) veya genel kullanıma açık dosyaları kullanarak dosyalara erişebilir. Daha güçlü kimlik doğrulama seçeneklerine ihtiyacınız varsa, `DATA_SOURCE` seçeneğini kullanın ve depolama alanına erişmek için kullanmak istediğiniz kimlik bilgisini tanımlayın.
+    > `OPENROWSET` olmadan `DATA_SOURCE` , depolama dosyalarına erişmek için hızlı ve kolay bir yol sağlar, ancak sınırlı kimlik doğrulama seçenekleri sunar. Örnek olarak, Azure AD sorumluları yalnızca [Azure AD kimliklerini](develop-storage-files-storage-access-control.md?tabs=user-identity) veya genel kullanıma açık dosyaları kullanarak dosyalara erişebilir. Daha güçlü kimlik doğrulama seçeneklerine ihtiyacınız varsa, `DATA_SOURCE` seçeneğini kullanın ve depolama alanına erişmek için kullanmak istediğiniz kimlik bilgisini tanımlayın.
 
 
 ## <a name="security"></a>Güvenlik
@@ -58,7 +58,7 @@ Bir veritabanı kullanıcısının `ADMINISTER BULK OPERATIONS` işlevini kullan
 
 Depolama Yöneticisi ayrıca, bir kullanıcının geçerli SAS belirteci sağlayarak veya Azure AD sorumlusunu depolama dosyalarına erişmesine olanak tanıyarak dosyalara erişmesini sağlamalıdır. [Bu makaledeki](develop-storage-files-storage-access-control.md)depolama erişimi denetimi hakkında daha fazla bilgi edinin.
 
-`OPENROWSET`depolama alanının kimliğini nasıl doğrulayacağınızı öğrenmek için aşağıdaki kuralları kullanın:
+`OPENROWSET` depolama alanının kimliğini nasıl doğrulayacağınızı öğrenmek için aşağıdaki kuralları kullanın:
 - `OPENROWSET` `DATA_SOURCE` Kimlik doğrulama mekanizması içinde, arayan türüne bağlıdır.
   - Herhangi bir Kullanıcı, `OPENROWSET` `DATA_SOURCE` Azure depolama 'da genel kullanıma açık dosyaları okumak zorunda kalmadan kullanabilir.
   - Azure depolama, Azure AD kullanıcısının temel dosyalara erişmesine izin veriyorsa (örneğin, çağıranın Azure Storage üzerinde izni varsa) Azure AD oturum açmaları, korunan dosyalara kendi [Azure AD kimliklerini](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) kullanarak erişebilirler `Storage Reader` .
@@ -117,9 +117,9 @@ Verilerin yolunu oluşturan unstructured_data_path mutlak veya göreli bir yol o
 | -------------------------- | ------ | ---------------------------------------------------- |
 | Azure Blob Depolama         | http [s]  | \<storage_account>. blob.core.windows.net/path/file   |
 | Azure Blob Depolama         | fazla b [s]  | \<container>@\<storage_account>. blob.core.windows.net/path/file |
-| Azure Data Lake Store Gen1 | http [s]  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | http [s]  | \<storage_account>. dfs.core.windows.net/Path/File   |
-| Azure Data Lake Store Gen2 | ABFS [s]  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Data Lake Storage 1. Nesil | http [s]  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Storage 2. Nesil | http [s]  | \<storage_account>. dfs.core.windows.net/Path/File   |
+| Azure Data Lake Storage 2. Nesil | aufs [s]  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
@@ -184,7 +184,7 @@ ESCAPE_CHAR parametresi, FIELDQUOTE 'un etkin olup olmamasından bağımsız ola
 
 FIRSTROW = ' first_row ' 
 
-Yüklenecek ilk satırın numarasını belirtir. Varsayılan değer 1'dir. Bu, belirtilen veri dosyasındaki ilk satırı belirtir. Satır numaraları, satır sonlandırıcıları sayarak belirlenir. FIRSTROW 1 tabanlıdır.
+Yüklenecek ilk satırın numarasını belirtir. Varsayılan değer 1 ' dir ve belirtilen veri dosyasındaki ilk satırı gösterir. Satır numaraları, satır sonlandırıcıları sayarak belirlenir. FIRSTROW 1 tabanlıdır.
 
 FIELDQUOTE = ' field_quote ' 
 
@@ -203,7 +203,7 @@ Dosyalar okunurken kullanılacak ayrıştırıcı sürümünü belirtir. Şu and
 - PARSER_VERSION = ' 1,0 '
 - PARSER_VERSION = ' 2,0 '
 
-CSV Ayrıştırıcısı sürüm 1,0, varsayılan ve özellik bakımından zengin olmakla, 2,0 performans için oluşturulmuştur ve tüm seçenekleri ve kodlamaları desteklemez. 
+CSV Ayrıştırıcısı sürüm 1,0, varsayılan ve özellik açısından zengin bir özelliktir. Sürüm 2,0, performans için oluşturulmuştur ve tüm seçenekleri ve kodlamaları desteklemez. 
 
 CSV Ayrıştırıcısı sürüm 2,0 özellikleri:
 
@@ -229,7 +229,7 @@ WITH (
 ) AS [r]
 ```
 
-Aşağıdaki örnek, sütun adları ve veri türleri belirtmeden Parquet biçimindeki görselleştirmenizdeki veri kümesindeki ilk satırın tüm sütunlarını döndürür: 
+Aşağıdaki örnek, görselleştirmenizdeki veri kümesindeki ilk satırın tüm sütunlarını, Parquet biçiminde ve sütun adlarını ve veri türlerini belirtmeden döndürür: 
 
 ```sql
 SELECT 

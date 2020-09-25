@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299975"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265690"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplara ve uygulamalara erişimi gözden geçirme
 
@@ -37,7 +37,7 @@ Erişim gözden geçirme işlemini bildirim e-postalarından başlatabilir veya 
 
 1. Microsoft 'un, erişimi incelemenizi isteyen bir e-posta bulun. Bir grubun erişimini gözden geçirmek için örnek bir e-posta aşağıda verilmiştir.
 
-    ![Bir gruba erişimi gözden geçirmek için Microsoft 'tan örnek e-posta](./media/perform-access-review/access-review-email.png)
+    ![Bir gruba erişimi gözden geçirmek için Microsoft 'tan örnek bir e-posta gösteren ekran görüntüsü.](./media/perform-access-review/access-review-email.png)
 
 1. Erişim gözden geçirmesini açmak için **Incelemeye başla** bağlantısına tıklayın.
 
@@ -54,7 +54,7 @@ Erişim gözden geçirme işlemini bildirim e-postalarından başlatabilir veya 
         > [!NOTE]
         > **Erişim gözden geçirmeleri** kutucuğunda görünmüyorsa, bu kuruluş için gerçekleştirilecek bir erişim incelemesi yoktur ve şu anda hiçbir işlem yapmanız gerekmez.
 
-        ![Uygulamalar ve gruplar için bekleyen erişim İncelemeleri listesi](./media/perform-access-review/access-reviews-list.png)
+        ![Uygulamalar ve gruplar için bekleyen erişim İncelemeleri listesini gösteren ekran görüntüsü.](./media/perform-access-review/access-reviews-list.png)
 
     1. Gerçekleştirmek istediğiniz erişim incelemesi için **gözden geçirmeyi Başlat** bağlantısına tıklayın.
 
@@ -99,7 +99,7 @@ Erişim incelemelerini sizin için daha kolay ve hızlı hale getirmek için, te
 
 1. Sayfanın altındaki mavi çubukta **öneriyi kabul et**' e tıklayın.
 
-    ![Önerileri kabul et düğmesini gösteren erişim gözden geçirme listesini aç](./media/perform-access-review/accept-recommendations.png)
+    !["Önerileri kabul et" düğmesinin seçili olduğu açık erişim gözden geçirme listesini gösteren ekran görüntüsü.](./media/perform-access-review/accept-recommendations.png)
 
     Önerilen eylemlerin bir özetini görürsünüz.
 

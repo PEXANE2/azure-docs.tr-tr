@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory kullanarak blob depolamada veri kopyalama
-description: Azure Blob depolamadaki bir konumdan başka bir konuma veri kopyalamak için bir Azure veri fabrikası oluşturun.
+description: Azure Blob depolama alanındaki bir konumdan başka bir konuma veri kopyalamak için PowerShell kullanarak bir Azure Data Factory oluşturun.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,18 +13,18 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ad757e3d65d3094ca6883d747404906a871ed850
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ebcab92c40705bf108d5839a7e67aee345c1bbc7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419349"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292396"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure Veri Fabrikası oluşturma
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Hızlı Başlangıç: PowerShell kullanarak Azure veri fabrikası oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Geçerli sürüm](quickstart-create-data-factory-powershell.md)
+> * [Güncel sürüm](quickstart-create-data-factory-powershell.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -166,7 +166,7 @@ Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için 
 Bu yordamda iki veri kümesi oluşturursunuz: **InputDataset** ve **OutputDataset**. Bu veri kümeleri **binary**türündedir. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur.
 Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş veri kümesi tanımında, kaynak verileri içeren blob kapsayıcısını (**adftutorial**), klasörü (**input**) ve dosyayı (**emp.txt**) belirtirsiniz.
 Çıkış veri kümesi hedefe kopyalanan verileri temsil eder. Çıkış veri kümesi tanımında, verilerin kopyalandığı blob kapsayıcısını (**adftutorial**), klasörü (**output**) ve dosyayı belirtirsiniz. 
-1. **C:\ADFv2QuickStartPSH** klasöründe aşağıdaki Içeriğe sahip **ınputdataset. JSON** adlı bir JSON dosyası oluşturun:
+1. **C:\ADFv2QuickStartPSH** klasöründe aşağıdaki içeriğe sahip **InputDataset.js** adlı bir JSON dosyası oluşturun:
 
     ```json
     {
@@ -208,7 +208,7 @@ Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş v
     Properties        : Microsoft.Azure.Management.DataFactory.Models.BinaryDataset
     ```
 
-3. Çıkış veri kümesini oluşturmak için adımları yineleyin. **C:\ADFv2QuickStartPSH** klasöründe aşağıdaki Içeriğe sahip **outputdataset. JSON** adlı bir JSON dosyası oluşturun:
+3. Çıkış veri kümesini oluşturmak için adımları yineleyin. **C:\ADFv2QuickStartPSH** klasöründe aşağıdaki içeriğe sahip **OutputDataset.js** adlı bir JSON dosyası oluşturun:
 
     ```json
     {

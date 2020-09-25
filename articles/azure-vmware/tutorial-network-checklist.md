@@ -1,32 +1,36 @@
 ---
-title: 'Öğretici: ağ denetim listesi'
-description: Ağ gereksinimi önkoşulları ve ağ bağlantısı ve ağ bağlantı noktalarıyla ilgili ayrıntılar
+title: Öğretici-ağ planlama denetim listesi
+description: Ağ gereksinimi önkoşulları ve Azure VMware çözümü için ağ bağlantısı ve ağ bağlantı noktalarıyla ilgili ayrıntılar hakkında bilgi edinin.
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: aba5d7767e420b3ade6238621487884e44fbb6e2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: c9a3c18d69cb81ed2810c0516820a9ef348402f1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750419"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254406"
 ---
-# <a name="networking-checklist-for-azure-vmware-solution"></a>Azure VMware çözümü için ağ denetim listesi 
+# <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware çözümü için ağ planlama denetim listesi 
 
-Azure VMware çözümü, şirket içi ve Azure tabanlı ortamların veya kaynakların kullanıcıları ve uygulamaları için erişilebilen bir VMware özel bulut ortamı sunar. Bağlantı, Azure ExpressRoute ve VPN bağlantıları gibi ağ hizmetleri aracılığıyla dağıtılır ve hizmetleri etkinleştirmek için bazı belirli ağ adresi aralıkları ve güvenlik duvarı bağlantı noktaları gerektirir. Bu makale, ağınızı Azure VMware çözümüyle çalışacak şekilde doğru şekilde yapılandırmak için bilmeniz gereken bilgileri sağlar.
+Azure VMware çözümü, şirket içi ve Azure tabanlı ortamların veya kaynakların kullanıcıları ve uygulamaları için erişilebilen bir VMware özel bulut ortamı sunar. Bağlantı, Azure ExpressRoute ve VPN bağlantıları gibi ağ hizmetleri aracılığıyla dağıtılır ve hizmetleri etkinleştirmek için bazı belirli ağ adres aralıklarını ve güvenlik duvarı bağlantı noktalarını gerektirir. Bu makalede, ağınızı Azure VMware çözümüyle çalışacak şekilde yapılandırmanız için gereken bilgiler sağlanmaktadır.
 
-Bu öğreticide şunları öğreneceksiniz:
+Bu öğreticide şu konular hakkında bilgi edineceksiniz:
 
 > [!div class="checklist"]
-> * Ağ bağlantısı gereksinimleri
-> * Azure VMware çözümünde DHCP
+> * Sanal ağ ve ExpressRoute devresi konuları
+> * Yönlendirme ve alt ağ gereksinimleri
+> * Hizmetleriyle iletişim kurmak için gerekli ağ bağlantı noktaları
+> * Azure VMware çözümünde DHCP ve DNS konuları
 
-## <a name="virtual--network-and-expressroute-circuit--considerations"></a>Sanal ağ ve ExpressRoute devresi konuları
-Aboneliğinizdeki bir sanal ağdan bağlantı oluşturduğunuzda, ExpressRoute bağlantı hattı eşleme yoluyla oluşturulur, bir yetkilendirme anahtarı ve Azure portal isteğiniz bir eşleme KIMLIĞI kullanır. Eşleme, özel bulutunuz ile sanal ağ arasında özel, bire bir bağlantıdır.
+
+
+## <a name="virtual-network-and-expressroute-circuit-considerations"></a>Sanal ağ ve ExpressRoute devresi konuları
+Aboneliğinizde bir sanal ağ bağlantısı oluşturduğunuzda, ExpressRoute bağlantı hattı eşleme ile oluşturulur, bir yetkilendirme anahtarı ve Azure portal isteğiniz bir eşleme KIMLIĞI kullanır. Eşleme, özel bulutunuz ile sanal ağ arasında özel, bire bir bağlantıdır.
 
 > [!NOTE] 
 > ExpressRoute bağlantı hattı, özel bir bulut dağıtımının bir parçası değildir. Şirket içi ExpressRoute bağlantı hattı, bu belgenin kapsamı dışındadır. Özel bulutunuzun şirket içi bağlantısına ihtiyacınız varsa, mevcut ExpressRoute devrelerinizi kullanabilir veya Azure portal bir tane satın alabilirsiniz.
 
-Özel bir bulut dağıtımında, vCenter ve NSX-T Yöneticisi için IP adresleri alırsınız. Bu yönetim arabirimlerine erişmek için aboneliğinizdeki bir sanal ağda ek kaynaklar oluşturmanız gerekir. Bu kaynakları oluşturma ve öğreticilerde ExpressRoute özel eşlemesi oluşturma yordamlarını bulabilirsiniz.
+Özel bir bulut dağıtımında, vCenter ve NSX-T Yöneticisi için IP adresleri alırsınız. Bu yönetim arabirimlerine erişmek için, aboneliğinizin sanal ağında ek kaynaklar oluşturmanız gerekir. Bu kaynakları oluşturma ve öğreticilerde [ExpressRoute özel eşlemesi](tutorial-expressroute-global-reach-private-cloud.md) oluşturma yordamlarını bulabilirsiniz.
 
 Özel bulut mantıksal ağı, önceden sağlanmış NSX-T ile gelir. Katman 0 ağ geçidi ve Katman 1 ağ geçidi sizin için önceden sağlanmış. Bir segment oluşturabilir ve var olan katman 1 ağ geçidine iliştirebilir veya tanımladığınız yeni bir katman 1 ağ geçidine iliştirebilirsiniz. NSX-T mantıksal ağ bileşenleri, iş yükleri arasında Doğu Batı bağlantısı sağlar ve internet ve Azure hizmetlerine yönelik Kuzey-Güney bağlantısını sağlar.
 
@@ -39,17 +43,17 @@ AVS özel bulutları `/22` , alt ağlar için aşağıda gösterilen en az bir C
 
 Alt ağlar:
 
-| Ağ kullanımı             | Alt ağ | Örnek        |
-| ------------------------- | ------ | -------------- |
-| Özel bulut yönetimi  | `/24`  | `10.10.0.0/24` |
-| vMotion ağı           | `/24`  | `10.10.1.0/24` |
-| VM iş yükleri              | `/24`  | `10.10.2.0/24` |
-| ExpressRoute eşlemesi      | `/24`  | `10.10.3.8/30` |
+| Ağ kullanımı             | Alt ağ | Örnek          |
+| ------------------------- | ------ | ---------------- |
+| Özel bulut yönetimi  | `/26`  | `10.10.0.0/26`   |
+| vMotion ağı           | `/25`  | `10.10.1.128/25` |
+| VM iş yükleri              | `/24`  | `10.10.2.0/24`   |
+| ExpressRoute eşlemesi      | `/29`  | `10.10.3.8/29`   |
 
 
-### <a name="network-ports-required-to-communicate-with-the-service"></a>Hizmetle iletişim kurmak için gereken ağ bağlantı noktaları
+## <a name="required-network-ports"></a>Gerekli ağ bağlantı noktaları
 
-| Kaynak | Hedef | Protokol | Bağlantı noktası | Açıklama  | 
+| Kaynak | Hedef | Protokol | Bağlantı noktası | Description  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
 | Özel bulut DNS sunucusu | Şirket Içi DNS sunucusu | UDP | 53 | Şirket içi DNS sorguları için BILGISAYAR vCenter 'dan DNS Istemcisi-Iletme istekleri (aşağıdaki DNS bölümünü denetle) |  
 | Şirket içi DNS sunucusu   | Özel bulut DNS sunucusu | UDP | 53 | Şirket içi hizmetlerden özel bulut DNS sunucularına DNS Istemcisi-Iletme istekleri (aşağıdaki DNS bölümüne bakın) |  
@@ -67,20 +71,17 @@ Alt ağlar:
 | Şirket içi vCenter ağı | Özel bulut yönetimi ağı | TCP | 8000 |  Şirket içi vCenter 'dan özel bulut vCenter 'a sanal makinelerin sanal hareketi   |     
 
 ## <a name="dhcp-and-dns-resolution-considerations"></a>DHCP ve DNS çözümleme konuları
-Özel bir bulut ortamında çalışan uygulamalar ve iş yükleri, arama ve IP adresi ataması için ad çözümlemesi ve DHCP hizmetleri gerektirir. Bu hizmetleri sağlamak için uygun bir DHCP ve DNS altyapısı gereklidir. Bu hizmetleri özel bulut ortamınızda sağlamak için bir sanal makine yapılandırabilirsiniz.  
+Özel bir bulut ortamında çalışan uygulamalar ve iş yükleri, arama ve IP adresi atamaları için ad çözümlemesi ve DHCP hizmetleri gerektirir. Bu hizmetleri sağlamak için uygun bir DHCP ve DNS altyapısı gereklidir. Bu hizmetleri özel bulut ortamınızda sağlamak için bir sanal makine yapılandırabilirsiniz.  
 
-NSX ' te yerleşik olan DHCP hizmetini veya özel bulutta yerel bir DHCP sunucusunu kullanarak WAN 'dan şirket içine, WAN üzerinden yayın DHCP trafiği yönlendirmeyi kullanmanız önerilir.
+NSX 'te yerleşik olarak bulunan DHCP hizmetini kullanın veya özel bulutta, WAN üzerinden yayın DHCP trafiğini şirket içine geri yönlendirme yerine yerel bir DHCP sunucusu kullanın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide hakkında bilgi edindiniz:
+Bu öğreticide, Azure VMware çözümü özel bulutu dağıtmaya ilişkin önemli noktalar ve gereksinimler hakkında bilgi edindiniz. 
 
-> [!div class="checklist"]
-> * Ağ bağlantısı gereksinimleri
-> * Azure VMware çözümünde DHCP
 
 Uygun ağa sahip olduğunuzda, Azure VMware çözümü özel bulutunuzu oluşturmak için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure VMware çözümü özel bulutu oluşturma](tutorial-create-private-cloud.md)
+> [Azure VMware çözümü özel bulutu oluşturma](tutorial-create-private-cloud.md)

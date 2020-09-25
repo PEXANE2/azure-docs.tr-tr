@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: ed94b44972ffc8c53ce96c0240f11ad44535531b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
+ms.openlocfilehash: b6e3e0c1ecf9ce3a9d86f6b03c3ad3efc5676b5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434614"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257937"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Hızlı başlangıç: bir JavaScript SPA 'da Kullanıcı oturumu açma ve erişim belirteci edinme
 
@@ -204,7 +204,7 @@ Hızlı başlangıç kodu ayrıca MSAL kitaplığının nasıl başlatılacağı
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > |`clientId`     | Azure portal kayıtlı uygulamanın uygulama KIMLIĞI.|
 > |`authority`    | Seçim Daha önce yapılandırma bölümünde açıklandığı gibi, hesap türlerini destekleyen yetkili URL 'SI. Varsayılan yetkili `https://login.microsoftonline.com/common` . |
@@ -232,7 +232,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > | `scopes`   | Seçim Oturum açma sırasında kullanıcı onayı için istenen kapsamları içerir. Örneğin, `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ). |
 
@@ -262,7 +262,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > | `scopes`   | API için erişim belirtecine döndürülmek istenen kapsamları içerir. Örneğin, `[ "mail.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ).|
 

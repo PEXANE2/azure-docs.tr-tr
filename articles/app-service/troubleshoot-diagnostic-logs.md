@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 5eaf107861d20cea395209418c343d25461b3836
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469941"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264380"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -185,16 +185,16 @@ Yeni [Azure izleyici tümleştirmesiyle](https://aka.ms/appsvcblog-azmon), günl
 
 Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilmektedir: 
 
-| Günlük türü | Windows desteği | Linux (Docker) desteği | Description |
-|-|-|-|
-| AppServiceConsoleLogs | TBA dili | Yes | Standart çıkış ve standart hata |
-| AppServiceHTTPLogs | Yes | Yes | Web sunucusu günlükleri |
-| AppServiceEnvironmentPlatformLogs | Yes | Yes | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
-| AppServiceAuditLogs | Yes | Yes | FTP ve kudu aracılığıyla oturum açma etkinliği |
-| AppServiceFileAuditLogs | Yes | TBD | Site içeriğinde yapılan dosya değişiklikleri; yalnızca Premium katmanı ve üzeri için kullanılabilir |
-| AppServiceAppLogs | TBA dili | Java & & Tomcat | Uygulama günlükleri |
-| AppServiceIPSecAuditLogs  | Yes | Yes | IP kurallarından gelen istekler |
-| AppServicePlatformLogs  | TBA dili | Yes | Kapsayıcı günlükleri |
+| Günlük türü | Windows | Windows kapsayıcısı | Linux | Linux kapsayıcısı | Description |
+|-|-|-|-|-|-|
+| AppServiceConsoleLogs | TBA dili | TBA dili | Yes | Yes | Standart çıkış ve standart hata |
+| AppServiceHTTPLogs | Yes | TBA dili | Yes | Yes | Web sunucusu günlükleri |
+| AppServiceEnvironmentPlatformLogs | Yes | Yok | Yes | Yes | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
+| AppServiceAuditLogs | Yes | TBA dili | Yes | Yes | FTP ve kudu aracılığıyla oturum açma etkinliği |
+| AppServiceFileAuditLogs | Yes | TBA dili | TBA dili | TBA dili | Site içeriğinde yapılan dosya değişiklikleri; yalnızca Premium katmanı ve üzeri için kullanılabilir |
+| AppServiceAppLogs | ASP .NET | TBA dili | Java & & Tomcat | Java & & Tomcat | Uygulama günlükleri |
+| AppServiceIPSecAuditLogs  | Yes | TBA dili | Yes | Yes | IP kurallarından gelen istekler |
+| AppServicePlatformLogs  | TBA dili | TBA dili | Yes | Yes | Kapsayıcı işlem günlükleri |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Sonraki adımlar
 * [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)

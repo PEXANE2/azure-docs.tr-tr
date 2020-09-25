@@ -3,12 +3,12 @@ title: Azure Event Grid-konular veya etki alanları için tanılama günlükleri
 description: Bu makalede, Azure Event Grid için tanılama günlüklerini etkinleştirme konusunda adım adım yönergeler sağlanmaktadır.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 7811c2eef4379b7e3d5ed07dbd0df8e2a52dba85
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2d76d3ededd6d241197b26ac357c3b5406f43f02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114712"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297530"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için tanılama günlüklerini etkinleştirme
 Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay Hub 'ında veya bir Log Analytics çalışma alanında **Yayımlama ve teslim hatası** günlüklerini yakalayıp görüntülemesine olanak tanır. Bu makalede, Event Grid konu başlığında bu ayarları etkinleştirmek için adım adım yönergeler sağlanmaktadır.
@@ -26,7 +26,7 @@ Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay H
 > [!NOTE]
 > Aşağıdaki yordam, bir konu için tanılama günlüklerini etkinleştirmeye yönelik adım adım yönergeler sağlar. Bir etki alanı için tanılama günlüklerini etkinleştirme adımları çok benzerdir. 2. adımda, Azure portal olay Kılavuzu **etki alanına** gidin.  
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Tanılama günlük ayarlarını etkinleştirmek istediğiniz olay kılavuzu konusuna gidin. 
     1. Üstteki arama çubuğunda **Event Grid konular**' ı arayın. 
     
@@ -37,25 +37,25 @@ Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay H
     
     ![Tanılama ayarı Ekle düğmesi](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
 5. Tanılama ayarı için bir **ad** belirtin. 
-7. **Günlük** bölümünde **Deliveryhatalarıyla** ve **publisharızaları** seçeneklerini belirleyin. 
+6. **Günlük** bölümünde **Deliveryhatalarıyla** ve **publisharızaları** seçeneklerini belirleyin. 
     ![Arızaları seçin](./media/enable-diagnostic-logs-topic/log-failures.png)
-6. Günlükler için bir veya daha fazla yakalama hedefini etkinleştirin ve ardından önceden oluşturulmuş bir yakalama kaynağını seçerek bunları yapılandırın. 
+7. Günlükler için bir veya daha fazla yakalama hedefini etkinleştirin ve ardından önceden oluşturulmuş bir yakalama kaynağını seçerek bunları yapılandırın. 
     - **Bir depolama hesabına arşiv**' i seçerseniz, **depolama hesabı-Yapılandır**' ı seçin ve ardından Azure aboneliğinizde depolama hesabını seçin. 
 
-        ![Azure depolama hesabına Arşivle](./media/enable-diagnostic-logs-topic/archive-storage.png)
+        !["Azure Storage hesabı Arşivi" işaretlenmiş ve bir depolama hesabı seçilmiş "Tanılama ayarları" sayfasını gösteren ekran görüntüsü.](./media/enable-diagnostic-logs-topic/archive-storage.png)
     - **Bir olay hub 'ına akış**' yı seçerseniz, **Olay Hub**'ı ' nı seçin ve Event Hubs ad alanı, Olay Hub 'ı ve erişim ilkesini seçin. 
-        ![Bir olay hub 'ına akış](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
+        !["Olay Hub 'ına akış" denetimli "Tanılama ayarları" sayfasını gösteren ekran görüntüsü.](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - **Log Analytics gönder**' i seçerseniz Log Analytics çalışma alanını seçin.
-        ![Log Analytics’e gönderme](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
-8. **Kaydet**'i seçin. Sonra sağ köşedeki **X** ' i seçerek sayfayı kapatın. 
+        !["Log Analytics gönder" işaretli "Tanılama ayarları" sayfasını gösteren ekran görüntüsü.](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
+8. **Kaydet**’i seçin. Sonra sağ köşedeki **X** ' i seçerek sayfayı kapatın. 
 9. Şimdi **Tanılama ayarları** sayfasına geri döndüğünüzde, **Tanılama ayarları** tablosunda yeni bir giriş görtığınızdan emin olun. 
-    ![Listedeki tanılama ayarı](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
+    !["Tanılama ayarları" tablosunda vurgulanmış yeni bir girişi olan "Tanılama ayarları" sayfasını gösteren ekran görüntüsü.](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
      Konunun tüm ölçümlerinin toplanmasını de etkinleştirebilirsiniz. 
 
 ## <a name="enable-diagnostic-logs-for-a-system-topic"></a>Bir sistem konusu için tanılama günlüklerini etkinleştirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Tanılama günlük ayarlarını etkinleştirmek istediğiniz olay kılavuzu konusuna gidin. 
     1. Üstteki arama çubuğunda **Event Grid sistem konuları**' nı arayın. 
     
@@ -77,7 +77,7 @@ Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay H
         ![Azure depolama hesabına Arşivle](./media/enable-diagnostic-logs-topic/system-topic-select-storage-account.png)
     - **Bir olay hub 'ına akış**' yı seçerseniz, **Olay Hub**'ı ' nı seçin ve Event Hubs ad alanı, Olay Hub 'ı ve erişim ilkesini seçin. 
         ![Bir olay hub 'ına akış](./media/enable-diagnostic-logs-topic/system-topic-select-event-hub.png)
-8. **Kaydet**'i seçin. Sonra sağ köşedeki **X** ' i seçerek sayfayı kapatın. 
+8. **Kaydet**’i seçin. Sonra sağ köşedeki **X** ' i seçerek sayfayı kapatın. 
 9. Şimdi **Tanılama ayarları** sayfasına geri döndüğünüzde, **Tanılama ayarları** tablosunda yeni bir giriş görtığınızdan emin olun. 
     ![Listedeki tanılama ayarı](./media/enable-diagnostic-logs-topic/system-topic-diagnostic-settings-targets.png)
 

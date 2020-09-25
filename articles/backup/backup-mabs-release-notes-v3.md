@@ -4,12 +4,12 @@ description: Bu makalede, Microsoft Azure Backup Server (MABS) v3 için bilinen 
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 884e850255856b39ccbe52544a47a7453e975960
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 87bc415c125a387d98ac88255d77fb1867564acf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254270"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup sunucusu için sürüm notları
 
@@ -60,7 +60,7 @@ Bu makalede Microsoft Azure Backup Server (MABS) v3 için bilinen sorunlar ve ge
 4. [Yüklemesi](/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
 5. [SQL 2017 Ile SSRS yapılandırmasında](./backup-azure-microsoft-azure-backup.md#upgrade-mabs)belgelenen parametreleri kullanarak raporlamayı yapılandırın.
 6. [Yüklemesi](backup-azure-microsoft-azure-backup.md) MABS V3.
-7. [Geri yükle](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SSMS kullanarak SQL ve [burada](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)AÇıKLANDıĞı gibi DPM-Sync aracını çalıştırın.
+7. [Geri yükle](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SSMS kullanarak SQL ve [burada](/system-center/dpm/back-up-the-dpm-server#using-dpmsync)AÇıKLANDıĞı gibi DPM-Sync aracını çalıştırın.
 8. Aşağıdaki komutu kullanarak dbo. tbl_DLS_GlobalSetting tablosundaki ' DataBaseVersion ' özelliğini güncelleştirin:
 
     ```sql

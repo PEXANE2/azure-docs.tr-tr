@@ -5,18 +5,18 @@ description: LUSıS yazma API 'sini kullanarak CSV biçimindeki daha önceden va
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 3df1ccadb69f02272c44a0ba574805c816151dc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13e18e024c2200459e58474f53bed2431e3375a7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298244"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js kullanarak bir LUSıS uygulaması programlama yoluyla oluşturma
 
@@ -24,7 +24,7 @@ LUSıS, [Luo](luis-reference-regions.md) Web sitesinin yaptığı her şeyi yapa
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Lusıs](luis-reference-regions.md) Web sitesinde oturum açın ve hesap ayarları ' nda [yazma anahtarınızı](luis-how-to-azure-subscription.md#authoring-key) bulun. Yazma API 'Lerini çağırmak için bu anahtarı kullanırsınız.
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.

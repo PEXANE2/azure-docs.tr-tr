@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1788eba0ef9be781fb7cf23f1eb86b48c9c360e1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289889"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287432"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 ortamınızı planlayın
 
@@ -69,10 +69,7 @@ Kaynaklarınızı benzersiz şekilde ayırt etmek için en fazla üç anahtar se
 
 **Timestamp** özelliği de önemlidir. Olay kaynaklarını eklediğinizde bu özelliği belirleyebilirsiniz. Her olay kaynağında, olay kaynaklarını zaman içinde izlemek için kullanılan isteğe bağlı bir zaman damgası özelliği vardır. Zaman damgası değerleri büyük/küçük harfe duyarlıdır ve her bir olay kaynağının tek bir belirtimine biçimlendirilmelidir.
 
-> [!TIP]
-> Olay kaynaklarınız için biçimlendirme ve ayrıştırma gereksinimlerini doğrulayın.
-
-Boş bırakıldığında, olay zaman damgası olarak bir olay kaynağının olay sıraya alma zamanı kullanılır. Geçmiş verileri veya toplu olayları gönderirseniz, zaman damgası özelliğini özelleştirmek varsayılan olay sıraya alma zamanından daha yararlıdır. Daha fazla bilgi için [Azure IoT Hub 'de olay kaynakları ekleme](./time-series-insights-how-to-add-an-event-source-iothub.md)hakkında bilgi edinin.
+Boş bırakıldığında, olayın IoT Hub sırada sıraya alındığı veya Olay Hub 'ı olay zaman damgası olarak kullanıldığı zaman. Genel olarak, kullanıcılar zaman damgası özelliğini özelleştirmeyi ve algılayıcı ya da etiketin Merkez sıraya alma süresi yerine okumayı oluşturduğu zamanı kullanması gerekir. Daha fazla bilgi edinmek ve zaman dilimi uzaklıklarını okuma [olay kaynağı zaman damgasını](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp)okuyun.
 
 ## <a name="understand-the-time-series-model"></a>Zaman serisi modelini anlama
 
@@ -91,7 +88,7 @@ Parmak için iyi bir kural:
 * Meta verileri zaman serisi modelinize depolayın.
 * Zaman serisi modunun, örnek alanlarının ve olayların yalnızca gerekli bilgileri (örneğin, zaman serisi KIMLIĞI veya zaman damgası özelliği) içerdiğinden emin olun.
 
-Daha fazla bilgi için [Şekil olaylarını](./time-series-insights-send-events.md#supported-json-shapes)okuyun.
+Daha fazla bilgi edinmek ve olayların nasıl düzleştirilmesi ve depolanacağını anlamak için, [JSON düzleştirme ve kaçış kurallarını](./concepts-json-flattening-escaping-rules.md)okuyun.
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

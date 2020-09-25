@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6f5b6bfdb523a22fc4dd9593bfec556da7493aa9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c753e9a18f9869e1bf11aa437fb60484f2553e17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371201"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259263"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Lexisnexto yapılandırma öğreticisi Azure Active Directory B2C
 
@@ -49,7 +49,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![LexisNexis-mimari-diyagram ekran görüntüsü](media/partner-lexisnexis/lexisnexis-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:--------------|:-------------|
 |1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcı, yeni bir hesap oluşturmak ve sayfaya bilgi girmek için kaydolma ' yı seçer. Azure AD B2C Kullanıcı özniteliklerini toplar.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -73,7 +73,7 @@ Bir hesap oluşturulduktan sonra, API yapılandırması için gereken bilgileri 
 
 ### <a name="part-1---deploy-the-api"></a>1. Bölüm-API 'YI dağıtma
 
-Belirtilen API kodunu bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
+Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
 
 >[!NOTE]
 >Azure AD 'yi gerekli ayarlarla yapılandırmak için dağıtılan hizmetin URL 'sine ihtiyacınız vardır.
@@ -95,9 +95,9 @@ Uygulama ayarları [Azure 'Daki App Service 'te yapılandırılabilir](https://d
 
 Bu çözüm, Azure AD B2C tarafından yüklenen özel kullanıcı arabirimi şablonlarını kullanır. Bu Kullanıcı arabirimi şablonları doğrudan ThreatMetrix hizmetine gönderilen profil oluşturmayı yapılır.
 
-Dahil edilen kullanıcı arabirimi dosyalarını bir BLOB depolama hesabına dağıtmak için bu [yönergelere](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#custom-page-content-walkthrough) bakın. Yönergeler bir BLOB depolama hesabı ayarlamayı, CORS 'yi yapılandırmayı ve genel erişimi etkinleştirmeyi içerir.
+Dahil edilen [Kullanıcı arabirimi dosyalarını](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) bir BLOB depolama hesabına dağıtmak için bu [yönergelere](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#custom-page-content-walkthrough) bakın. Yönergeler bir BLOB depolama hesabı ayarlamayı, CORS 'yi yapılandırmayı ve genel erişimi etkinleştirmeyi içerir.
 
-Kullanıcı arabirimi, okyanus mavi sayfa şablonunu temel alır. Kullanıcı arabirimindeki tüm bağlantıların dağıtılan konuma başvurması için güncelleştirilmeleri gerekir. Kullanıcı arabirimi klasöründe, dağıtılan konumuyla bulun ve değiştirin https://yourblobstorage/blobcontainer .
+Kullanıcı arabirimi, [okyanus mavi şablonunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue)temel alır. Kullanıcı arabirimindeki tüm bağlantıların dağıtılan konuma başvurması için güncelleştirilmeleri gerekir. Kullanıcı arabirimi klasöründe, dağıtılan konumuyla bulun ve değiştirin https://yourblobstorage/blobcontainer .
 
 ### <a name="part-4---create-api-policy-keys"></a>4. Bölüm-API ilkesi anahtarları oluşturma
 
@@ -111,21 +111,21 @@ Bu [belgeye](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-a
 
 ### <a name="part-5---update-the-api-url"></a>5. kısım-API URL 'sini güncelleştirme
 
-Belirtilen TrustFrameworkExtensions ilkesinde adlı teknik profili bulun `Rest-LexisNexus-SessionQuery` ve `ServiceUrl` meta veri öğesini yukarıda dağıtılan API 'nin konumuyla güncelleştirin.
+Belirtilen [TrustFrameworkExtensions ilkesinde](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/ThreatMetrix/policy/TrustFrameworkExtensions.xml)adlı teknik profili bulun `Rest-LexisNexus-SessionQuery` ve `ServiceUrl` meta VERI öğesini yukarıda dağıtılan API 'nin konumuyla güncelleştirin.
 
 ### <a name="part-6---update-ui-url"></a>Bölüm 6-Kullanıcı arabirimi URL 'sini güncelleştirme
 
-Belirtilen TrustFrameworkExtensions ilkesinde, bir bul ve Değiştir seçeneğini https://yourblobstorage/blobcontainer/ kullanarak, Kullanıcı arabirimi dosyalarının dağıtıldığı konum ile arama yapın.
-
-### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>Bölüm 7-Azure AD B2C ilkesini yapılandırma
-
-[Yerel hesapların başlangıç paketini](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) indirmek ve Azure AD B2C kiracısı için ilkeyi yapılandırmak üzere bu [belgeye](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) başvurun.
-
->[!NOTE]
->Belirli kiracınızla ilgili olarak belirtilen ilkeleri güncelleştirin.
+Belirtilen [TrustFrameworkExtensions ilkesinde](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/ThreatMetrix/policy/TrustFrameworkExtensions.xml), bir bul ve Değiştir seçeneğini https://yourblobstorage/blobcontainer/ kullanarak, Kullanıcı arabirimi dosyalarının dağıtıldığı konum ile arama yapın.
 
 >[!NOTE]
 > En iyi uygulama olarak, müşterilerin öznitelik koleksiyonu sayfasına onay bildirimi eklemesini öneririz. Kimlik doğrulaması için bilgilerin üçüncü taraf hizmetlere gönderileceğini kullanıcılara bildirin.
+
+### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>Bölüm 7-Azure AD B2C ilkesini yapılandırma
+
+[Yerel hesapların başlangıç paketini](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) indirmek ve Azure AD B2C kiracısı için [ilkeyi](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy) yapılandırmak üzere bu [belgeye](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) başvurun.
+
+>[!NOTE]
+>Belirli kiracınızla ilgili olarak belirtilen ilkeleri güncelleştirin.
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 

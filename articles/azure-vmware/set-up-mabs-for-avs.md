@@ -3,16 +3,16 @@ title: Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 description: Azure Backup Sunucusu kullanarak sanal makineleri yedeklemek için Azure VMware Çözüm ortamınızı ayarlayın.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 0dd2b16254e697a08d0ff542a5ddcb3fc7e4103d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 516f4a2fa92740897e186a782e276fc6d40fc925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750625"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255018"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 
-Azure Backup Sunucusu, iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunan sağlam bir kurumsal yedekleme ve kurtarma sistemidir. Azure VMware Çözüm önizlemesi sırasında, Azure Backup Sunucusu kullanarak yalnızca sanal makine (VM) düzeyinde yedekleme yapılandırabilirsiniz. 
+Azure Backup Sunucusu, iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunan sağlam bir kurumsal yedekleme ve kurtarma sistemidir. Azure VMware çözümü sırasında, Azure Backup Sunucusu kullanarak yalnızca sanal makine (VM) düzeyinde yedekleme yapılandırabilirsiniz. 
 
 Azure Backup Sunucusu, yedekleme verilerini şu şekilde saklayabilir:
 
@@ -34,7 +34,7 @@ Bu makalede, Azure Backup Sunucusu kullanarak VM 'Leri yedeklemek için Azure VM
 - **Aracısız yedekleme:** Azure Backup Sunucusu, sanal makineyi yedeklemek için vCenter veya ESXi sunucusuna bir aracının yüklenmesini gerektirmez. Bunun yerine, Azure Backup Sunucusu ile VMware sunucusunun kimliğini doğrulamak için kullanılan IP adresini veya tam etki alanı adını (FQDN) ve oturum açma kimlik bilgilerini sağlamanız yeterlidir.
 - **Bulutta tümleşik yedekleme:** Azure Backup Sunucusu, iş yüklerini disk ve buluta korur. Azure Backup Sunucusu yedekleme ve kurtarma iş akışı, uzun süreli saklama ve şirket dışı yedekleme yönetmenize yardımcı olur.
 - **VCenter tarafından yönetilen VM 'Leri Algıla ve koru:** Azure Backup Sunucusu vCenter veya ESXi sunucusunda dağıtılan VM 'Leri algılar ve korur. Azure Backup Sunucusu, büyük dağıtımları koruyabilmeniz için vCenter tarafından yönetilen VM 'Leri de algılar.
-- **Klasör düzeyinde oto koruma:** vCenter, VM 'lerinizi VM klasörlerinde düzenlemenizi sağlar. Azure Backup Sunucusu, bu klasörleri algılar ve tüm alt klasörleri içeren klasör düzeyinde VM 'Leri korumak için kullanabilirsiniz. Klasörler korunurken, yalnızca söz konusu klasördeki VM 'Leri korumakla kalmaz Azure Backup Sunucusu, daha sonra eklenen VM 'Leri de korur. Azure Backup Sunucusu yeni VM 'Leri her gün algılar ve otomatik olarak korur. Sanal makinelerinizi özyinelemeli klasörlerde düzenlediğinizde, Azure Backup Sunucusu özyinelemeli klasörlerde dağıtılan yeni VM 'Leri otomatik olarak algılar ve korur.
+- **Klasör düzeyinde oto koruma:** vCenter, VM 'lerinizi VM klasörlerinde düzenlemenizi sağlar. Azure Backup Sunucusu bu klasörleri algılar. VM 'Leri, tüm alt klasörleri içeren klasör düzeyinde korumak için kullanabilirsiniz. Klasörler korunurken, yalnızca söz konusu klasördeki VM 'Leri korumakla kalmaz Azure Backup Sunucusu, daha sonra eklenen VM 'Leri de korur. Azure Backup Sunucusu yeni VM 'Leri her gün algılar ve otomatik olarak korur. Sanal makinelerinizi özyinelemeli klasörlerde düzenlediğinizde, Azure Backup Sunucusu özyinelemeli klasörlerde dağıtılan yeni VM 'Leri otomatik olarak algılar ve korur.
 - **Azure Backup sunucusu küme Içindeki sanal makineleri korumaya devam eder:** VM 'Ler küme içinde yük dengeleme için Vmoas olarak Azure Backup Sunucusu, VM korumasını otomatik olarak algılar ve devam ettirir.
 - **Gerekli dosyaları daha hızlı kurtarın:** Azure Backup Sunucusu, tüm VM 'leri kurtarmadan bir Windows sanal makinesi 'nden dosya veya klasör kurtarabilir.
 
@@ -68,7 +68,7 @@ Azure ortamınızda Azure Backup Sunucusu yüklerken bu bölümdeki önerileri g
 
 ### <a name="determine-the-size-of-the-virtual-machine"></a>Sanal makinenin boyutunu belirle
 
-Önceki adımda oluşturduğunuz sanal ağda bir Windows sanal makinesi oluşturmanız gerekir. Azure Backup Sunucusu çalıştırmak için bir sunucu seçtiğinizde, Windows Server 2019 Datacenter 'un bir galeri görüntüsü ile başlayın. [Ilk Windows sanal makinenizi Azure Portal oluşturma](../virtual-machines/windows/quick-create-portal.md) öğreticisinde, Azure 'u hiç kullanmamış olsanız bile, Azure 'DA önerilen VM 'yi kullanmaya başlamanızı sağlayabilirsiniz.
+Önceki adımda oluşturduğunuz sanal ağda bir Windows sanal makinesi oluşturun. Azure Backup Sunucusu çalıştırmak için bir sunucu seçtiğinizde, Windows Server 2019 Datacenter 'un bir galeri görüntüsü ile başlayın. [Ilk Windows sanal makinenizi Azure Portal oluşturma](../virtual-machines/windows/quick-create-portal.md) öğreticisinde, Azure 'u hiç kullanmamış olsanız bile, Azure 'DA önerilen VM 'yi kullanmaya başlamanızı sağlayabilirsiniz.
 
 Aşağıdaki tabloda her bir Azure Backup Sunucusu sanal makine boyutu için en fazla korumalı iş yükü sayısı özetlenmektedir. Bilgiler, iç performansa ve iş yükü boyutu ile karmaşıklık için kurallı değerlere dayanır. Gerçek iş yükü boyutu daha büyük olabilir, ancak Azure Backup Sunucusu sanal makinesine bağlı diskler tarafından konamelidir.
 
@@ -136,38 +136,38 @@ Azure Backup Sunucusu VM bir etki alanına katılmalıdır ve VM üzerinde yöne
 
 Kurtarma Hizmetleri Kasası, zaman içinde oluşturulan kurtarma noktalarını depolayan bir depolama varlıktır. Ayrıca, korunan öğelerle ilişkili yedekleme ilkeleri de içerir.
 
-1. [Azure Portal](https://portal.azure.com/)aboneliğinizde oturum açın.
+1. [Azure portalında](https://portal.azure.com/) aboneliğinizde oturum açın.
 
-1. Sol taraftaki menüden **tüm hizmetler**' i seçin.
+1. Sol taraftaki menüden **Tüm hizmetler**'i seçin.
 
-   ![Sol taraftaki menüden tüm hizmetler ' i seçin.](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![Sol taraftaki menüden Tüm hizmetler'i seçin.](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. **Tüm hizmetler** Iletişim kutusunda **Kurtarma Hizmetleri** ' ni girin ve listeden **Kurtarma Hizmetleri kasaları** ' nı seçin.
 
    ![Kurtarma Hizmetleri kasalarını girin ve seçin.](../backup/media/backup-create-rs-vault/all-services.png)
 
-   Abonelikteki kurtarma hizmetleri kasalarının listesi görüntülenir.
+   Abonelikteki Kurtarma Hizmetleri kasalarının listesi görünür.
 
-1. **Kurtarma Hizmetleri kasaları** panosunda **Ekle**' yi seçin.
+1. **Kurtarma Hizmetleri kasası** panosunda **Ekle**'yi seçin.
 
    ![Kurtarma Hizmetleri Kasası ekleyin.](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
 
-   **Kurtarma Hizmetleri Kasası** iletişim kutusu açılır.
+   **Kurtarma Hizmetleri kasası** iletişim kutusu açılır.
 
 1. **Ad**, **abonelik**, **kaynak grubu**ve **konum**için değerler girin.
 
    ![Kurtarma Hizmetleri kasasını yapılandırın.](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   - **Ad**: kasayı tanımlamak için bir kolay ad girin. Ad, Azure aboneliğine özgü olmalıdır. En az iki tane 50 karakterden oluşan bir ad belirtin. Ad bir harfle başlamalı ve yalnızca harf, rakam ve kısa çizgi içermelidir.
-   - **Abonelik**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğin üyesiyseniz, bu adı görürsünüz. Hangi aboneliğin kullanılacağı konusunda emin değilseniz, varsayılan (önerilen) aboneliği kullanın. Yalnızca iş veya okul hesabınızın birden fazla Azure aboneliğiyle ilişkilendirilmesi durumunda birden çok seçenek vardır.
-   - **Kaynak grubu**: var olan bir kaynak grubunu kullanın veya yeni bir tane oluşturun. Aboneliğinizdeki kullanılabilir kaynak gruplarının listesini görmek için **Varolanı kullan**' ı seçin ve ardından açılır listeden bir kaynak seçin. Yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin ve adı girin.
-   - **Konum**: kasa için coğrafi bölgeyi seçin. Azure VMware Çözüm sanal makinelerini korumaya yönelik bir kasa oluşturmak için kasanın Azure VMware Çözüm özel bulutuyla aynı bölgede olması *gerekir* .
+   - **Ad**: Kasayı tanımlamak için kolay bir ad girin. Adın Azure aboneliği için benzersiz olması gerekir. En az iki tane 50 karakterden oluşan bir ad belirtin. Ad bir harf ile başlamalıdır ve yalnızca harf, rakam ve kısa çizgi içerebilir.
+   - **Abonelik**: Kullanılacak aboneliği seçin. Tek bir aboneliğiniz varsa yalnızca o seçenek görüntülenir. Hangi aboneliğin kullanılacağından emin değilseniz varsayılan (önerilen) aboneliği kullanın. Yalnızca iş veya okul hesabınızın birden çok Azure aboneliği ile ilişkili olması durumunda birden çok seçenek olur.
+   - **Kaynak grubu**: Mevcut kaynak grubunu kullanın ya da yeni bir tane oluşturun. Aboneliğinizdeki kullanılabilir kaynak gruplarının listesini görmek için **Var olanı kullan**'ı seçip açılan listeden bir kaynak grubu seçin. Yeni bir kaynak grubu oluşturmak için **Yeni oluştur**'u seçip bir ad girin.
+   - **Konum**: Kasa için coğrafi bölgeyi seçin. Azure VMware Çözüm sanal makinelerini korumaya yönelik bir kasa oluşturmak için kasanın Azure VMware Çözüm özel bulutuyla aynı bölgede olması *gerekir* .
 
-1. Kurtarma Hizmetleri kasasını oluşturmaya hazırsanız **Oluştur**' u seçin.
+1. Kurtarma Hizmetleri kasasını oluşturmaya hazırsanız **Oluştur**'u seçin.
 
    ![Kurtarma Hizmetleri kasasını oluşturun.](../backup/media/backup-create-rs-vault/click-create-button.png)
 
-   Kurtarma Hizmetleri kasasının oluşturulması biraz zaman alabilir. Portalın sağ üst köşesindeki **Bildirimler** alanında durum bildirimlerini izleyin. Kasanızın oluşturulduktan sonra kurtarma hizmetleri kasaları listesinde görünür. Kasanızı görmüyorsanız **Yenile**' yi seçin.
+   Kurtarma Hizmetleri kasasının oluşturulması biraz zaman alabilir. Portalın sağ üst köşesindeki **Bildirimler** alanında durum bildirimlerini izleyin. Kasanız oluşturulduktan sonra Kurtarma Hizmetleri kasaları listesinde görünür. Kasanızı görmüyorsanız **Yenile**'yi seçin.
 
    ![Backup kasaları listesini yenileyin.](../backup/media/backup-create-rs-vault/refresh-button.png)
 
@@ -184,15 +184,13 @@ Depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama (varsayılan) v
 
 1. Depolama çoğaltma türünü seçin ve **Kaydet**' i seçin.
 
-   ![Yeni kasa için depolama yapılandırmasını ayarlayın.](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
-
 ## <a name="download-and-install-the-software-package"></a>Yazılım paketini indirme ve yükleme
 
 Yazılım paketini indirmek, ayıklamak ve yüklemek için bu bölümdeki adımları izleyin.
 
 ### <a name="download-the-software-package"></a>Yazılım paketini indirin
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Zaten açık bir kurtarma hizmetleri Kasası varsa, bir sonraki adımla devam edin. Bir kurtarma hizmetleri Kasası açık değilse ancak Azure portal, ana menüde, **Araştır**' ı seçin.
 
@@ -309,7 +307,7 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
    * **Veritabanı**: **DatabaseName** **ReportServer $ \<SQLInstanceName> **olmalıdır.
    * **Web portalı URL 'si**: **sanal dizin** **Reports_ \<SQLInstanceName> **olmalıdır.
 
-   SSRS yapılandırması hakkında [daha fazla bilgi edinin](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) .
+   [SSRS yapılandırması](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode)hakkında daha fazla bilgi edinin.
 
    > [!NOTE]
    > [Microsoft Online Services terms](https://www.microsoft.com/licensing/product-licensing/products) (OST), Azure Backup sunucusu veritabanı olarak kullanılan SQL Server lisansını yönetir. Azure Backup Sunucusu ile paketlenmiş SQL Server, OST 'ye göre yalnızca Azure Backup Sunucusu veritabanı olarak kullanılabilir.

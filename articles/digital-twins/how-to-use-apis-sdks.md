@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: aac5c937ab2f80dcbe1567a3817b056a6285cf17
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 9812724b62717440160b9db8604a65ab787f3a9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086683"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252672"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -61,6 +61,8 @@ Veri düzlemi API 'Lerini kullanmak için:
 * **JavaScript** SDK 'sını kullanabilirsiniz. JavaScript SDK 'sını kullanmak için...
    - paketi NPM 'den görüntüleyebilir ve yükleyebilirsiniz: [JavaScript Için Azure Azure Digital TWINS istemci kitaplığı](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
    - [SDK başvuru belgelerini](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true)görüntüleyebilirsiniz.
+* **JavaScript** SDK 'sını kullanabilirsiniz. JavaScript SDK 'sını kullanmak için...
+   - paketi Maven 'ten görüntüleyebilir ve yükleyebilirsiniz: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
 * Diğer bir dil için, oto Rest kullanarak bir SDK oluşturabilirsiniz. [*Nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma*](how-to-create-custom-sdks.md)bölümündeki yönergeleri Izleyerek oto Rest kullanın.
 
 [CLI](how-to-use-cli.md)aracılığıyla Azure dijital TWINS ile etkileşime girerek Tarih düzlemi API 'leri de uygulayabilirsiniz.
@@ -298,7 +300,7 @@ Buradan, örneğiniz için ölçümleri görüntüleyebilir ve özel görünüml
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bkz. bir Azure dijital TWINS örneği ve kimlik doğrulaması kurmak için API 'Leri kullanma:
-* [*Nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-scripted.md)
+* [*Nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-portal.md)
 
 Ya da, bu nasıl yapılır: ile aynı şekilde kullanılan bir istemci uygulaması oluşturma adımlarını gözden geçir:
 * [*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)

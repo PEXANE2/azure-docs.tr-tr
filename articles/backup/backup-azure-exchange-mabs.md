@@ -4,18 +4,18 @@ description: Azure Backup kullanarak bir Exchange sunucusunu nasıl yedekleyece�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: eff702cb50317e6b685e19e7df1ffc99b5fc1736
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377634"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263003"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Sunucusu bir Exchange Server 'ı Azure 'a yedekleme
 
 Bu makalede, Microsoft Exchange Server 'ı Azure 'a yedeklemek için Microsoft Azure Backup sunucusu 'nun (MABS) nasıl yapılandırılacağı açıklanmaktadır.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce Azure Backup Sunucusu [yüklendiğinden ve hazırlandığından](backup-azure-microsoft-azure-backup.md)emin olun.
 
@@ -23,8 +23,8 @@ Devam etmeden önce Azure Backup Sunucusu [yüklendiğinden ve hazırlandığın
 
 MABS koruma aracısını Exchange sunucusuna yüklemek için şu adımları izleyin:
 
-1. Güvenlik duvarlarının doğru yapılandırıldığından emin olun. Bkz. [aracı için güvenlik duvarı özel durumlarını yapılandırma](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. **Yönetim > aracıları ' nı** , mabs Yönetici Konsolu > ' i seçerek aracıyı Exchange sunucusuna yükler. Ayrıntılı adımlar için bkz. [MABS koruma aracısını yüklemeyin](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
+1. Güvenlik duvarlarının doğru yapılandırıldığından emin olun. Bkz. [aracı için güvenlik duvarı özel durumlarını yapılandırma](/system-center/dpm/configure-firewall-settings-for-dpm).
+2. **Yönetim > aracıları ' nı** , mabs Yönetici Konsolu > ' i seçerek aracıyı Exchange sunucusuna yükler. Ayrıntılı adımlar için bkz. [MABS koruma aracısını yüklemeyin](/system-center/dpm/deploy-dpm-protection-agent) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Exchange Server için bir koruma grubu oluşturun
 

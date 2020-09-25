@@ -1,6 +1,6 @@
 ---
 title: İsteğe bağlı SQL 'de dış tablolar oluşturma ve kullanma (Önizleme)
-description: Bu bölümde, SQL isteğe bağlı (Önizleme) içinde dış tabloları oluşturmayı ve kullanmayı öğreneceksiniz. Dış tablolar, SQL isteğe bağlı SQL 'de dış verilere erişimi denetlemek istediğinizde ve Power BI gibi araçlar kullanmak istiyorsanız, isteğe bağlı SQL ile birlikte yararlı olur.
+description: Bu bölümde, SQL isteğe bağlı (Önizleme) içinde dış tabloları oluşturmayı ve kullanmayı öğreneceksiniz.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d830ee28eb1f5befc3ad778a6b82c291d1e49d02
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182deba959144f6a3992bb41243f29023bad5e5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289336"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) içinde dış tablolar oluşturma ve kullanma
 
@@ -22,7 +22,7 @@ Bu bölümde, SQL isteğe bağlı (Önizleme) içinde [dış tabloları](develop
 - Kullanıcıların ortak depolama dosyalarına erişebileceği ortak depolama.
 - Kullanıcıların SAS kimlik bilgilerini, Azure AD kimliğini veya SYNAPSE çalışma alanının yönetilen kimliğini kullanarak depolama dosyalarına erişebileceği korumalı depolama.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adımınız tabloların oluşturulacağı bir veritabanı oluşturmaktır. Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, bu örnekte kullanılan aşağıdaki nesneleri oluşturacaktır:
 - `sqlondemand`SAS korumalı Azure depolama hesabına erişim sağlayan VERITABANı KAPSAMLı KIMLIK bilgileri `https://sqlondemandstorage.blob.core.windows.net` .
@@ -132,4 +132,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sorgunun sonuçlarını depolama alanına nasıl depolayabileceği hakkında bilgi için [depolama sorgusu sonuçlarına](../sql/create-external-table-as-select.md)bakın.
+Bir sorgunun sonuçlarını depolama alanına nasıl depolayabileceği hakkında bilgi edinmek için [depolama hakkında sorgu sonuçları depolama](../sql/create-external-table-as-select.md) makalesine başvurun.

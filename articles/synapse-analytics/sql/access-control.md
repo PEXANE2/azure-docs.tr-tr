@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 52cf3af4b4ab84c12b2e1b5d7f076c43e652157d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031323"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289489"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Çalışma alanları, veriler ve işlem hatları erişimini yönetme
 
@@ -50,7 +50,7 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 1. [Azure portalı](https://portal.azure.com) açın
 2. Azure Data Lake Storage 2. hesabına gidin
 3. Azure SYNAPSE çalışma alanı için seçtiğiniz kapsayıcıya (dosya sistemi) gidin
-4. **Access Control (IAM)** seçeneğine tıklayın
+4. **Access Control seçin (IAM)**
 5. Aşağıdaki rolleri atayın:
    1. **Okuyucu** rolü:  `Synapse_WORKSPACENAME_Users`
    2. **Depolama Blobu veri sahibi** rolü:  `Synapse_WORKSPACENAME_Admins`
@@ -64,17 +64,17 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 
 1. [ **Azure SYNAPSE Web Kullanıcı arabirimine** gidin](https://web.azuresynapse.net)
 2. **Manage**   >  **Güvenlik**  >  **erişimi denetimini** Yönet 'e gidin
-3. **Yönetici Ekle**' ye tıklayın ve`Synapse_WORKSPACENAME_Admins`
+3. **Yönetici Ekle**' yi seçin ve`Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>4. Adım: çalışma alanı için SQL yönetici erişimini yapılandırma
 
 1. [Azure Portal](https://portal.azure.com) git
 2. Çalışma alanınıza gidin
 3. **Ayarlar**  >  **Active Directory yönetici** 'a git
-4. **Yönetici ayarla** öğesine tıklayın
+4. **Yönetici ayarla** ' yı seçin
 5. `Synapse_WORKSPACENAME_Admins` seçeneğini belirleyin
-6. **Seç** 'e tıklayın
-7. **Kaydet** 'e tıklayın
+6. **Seç ' i** seçin
+7. **Kaydet**’i seçin
 
 > [!NOTE]
 > ÇALıŞMAALANıADı-bu bölümü gerçek çalışma alanı adınızla değiştirmelisiniz.

@@ -6,19 +6,19 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 60020667126fe76d33264795ddb2e17e1241a7b2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 06587d80851839188f8d8dcfa870d331e8fa96d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236293"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293365"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM 'de SQL Server Edition yerinde değişiklik
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -77,7 +77,7 @@ SQL Server sürümü indirgendikten sonra, Azure portal SQL Server sanal makines
 
 Yükleme medyasını kullanarak SQL Server sürümünü değiştirmişseniz ve SQL Server VM [SQL VM kaynak sağlayıcısı](sql-vm-resource-provider-register.md)ile kaydolduktan sonra, faturalama amacıyla SQL Server VM sürüm özelliğini değiştirmek için Azure Portal kullanabilirsiniz. Bunu yapmak için şu adımları uygulayın: 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 1. SQL Server sanal makine kaynağına gidin. 
 1. **Ayarlar**altında **Yapılandır**' ı seçin. Ardından, **Sürüm**' ün altındaki açılan listeden istediğiniz SQL Server sürümünüzü seçin. 
 

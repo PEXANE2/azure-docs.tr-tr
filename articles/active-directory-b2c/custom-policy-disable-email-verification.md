@@ -1,7 +1,7 @@
 ---
 title: Özel ilkeyle müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakma
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C ' de müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakmayı öğrenin.
+description: Azure Active Directory B2C bir özel ilkeyle müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakmayı öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29426f8e3797c89deb712e89e0d972dd1ac8028e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9372a9caff5aefb53bfa8adf7eb1c68d2a3b7b2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389318"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259633"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içinde özel bir ilke kullanarak müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakma
 
 [!INCLUDE [disable email verification intro](../../includes/active-directory-b2c-disable-email-verification.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve oturum açma için sosyal ve yerel hesaplarla çalışan bir özel ilkenize sahip olmanız gerekir.
 
@@ -49,7 +49,7 @@ ms.locfileid: "85389318"
 
 ## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6f773f57bea40ba87f35ca2bbefe424d084afb2e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462148"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264618"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kendi IP adresi aralıklarınız ile Kubernetes kullanan ağını kullanma
 
@@ -20,7 +20,7 @@ Varsayılan olarak, aks kümeleri [Kubernetes kullanan][kubenet]kullanır ve siz
 
 Bu makalede, bir aks kümesi için bir sanal ağ alt ağı oluşturmak ve kullanmak için *Kubernetes kullanan* Networking 'in nasıl kullanılacağı gösterilmektedir. Ağ seçenekleri ve konuları hakkında daha fazla bilgi için bkz. [Kubernetes ve AKS Için ağ kavramları][aks-network-concepts].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * AKS kümesinin sanal ağı giden internet bağlantısına izin vermelidir.
 * Aynı alt ağda birden fazla AKS kümesi oluşturmayın.
@@ -162,7 +162,7 @@ Artık bir sanal ağ ve alt ağ oluşturdunuz ve bu ağ kaynaklarını kullanmak
 
 Aşağıdaki IP adresi aralıkları, küme oluşturma işleminin parçası olarak da tanımlanmıştır:
 
-* *--Service-CIDR* , aks kümesinde iç HIZMETLERI bir IP adresi atamak için kullanılır. Bu IP adresi aralığı, ağ ortamınızda başka bir yerde kullanımda olmayan bir adres alanı olmalıdır. Bu Aralık, Express Route veya siteden siteye VPN bağlantısı kullanarak Azure sanal ağlarınızı bağladığınızda veya bağlanmayı planlıyorsanız şirket içi ağ aralıklarını içerir.
+* *--Service-CIDR* , aks kümesinde iç HIZMETLERI bir IP adresi atamak için kullanılır. Bu IP adresi aralığı, ağ ortamınızda başka bir yerde kullanımda olmayan bir adres alanı olmalıdır. Bu, şirket içi ağ aralıkları de dahil olmak üzere, Express Route veya siteden siteye VPN bağlantısı kullanarak Azure sanal ağlarınıza bağlanabilirsiniz.
 
 * *--DNS-Service-ip* adresi, hizmet IP adresi aralığınızı *.10* adresi olmalıdır.
 

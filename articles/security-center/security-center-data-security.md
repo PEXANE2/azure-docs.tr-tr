@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: d08984165f59f15e9feb739a719d80e7dc3902a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 97d3b5030ed0ddb29fc439f4a0f6bcc7ff98b6ce
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268035"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Güvenlik Merkezi Veri Güvenliği
 Azure Güvenlik Merkezi, müşterilerin tehditleri engellemesine, algılamasına ve yanıt vermesine yardımcı olmak için yapılandırma bilgileri, meta veriler, olay günlükleri ve daha fazlası dahil güvenlikle ilgili verileri toplar ve işler. Microsoft kodlamadan hizmet çalıştırma konularına kadar her alanda uyumluluk ve güvenlik yönergelerine kesin olarak bağlı kalmaktadır.
@@ -76,7 +76,7 @@ Azure Defender kullanmıyorsanız, ayrıca güvenlik Ilkesindeki sanal makineler
 
 Müşteriler, farklı veri akışlarındaki Güvenlik Merkezi ile ilişkili verileri aşağıda gösterildiği gibi kullanabilir:
 
-* **Azure etkinliği**: tüm güvenlik uyarıları, onaylanan [Güvenlik Merkezi istekleri](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) ve [Uyarlamalı uygulama denetimleri](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)tarafından oluşturulan tüm uyarılar.
+* **Azure etkinliği**: tüm güvenlik uyarıları, onaylanan [Güvenlik Merkezi istekleri](security-center-just-in-time.md) ve [Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)tarafından oluşturulan tüm uyarılar.
 * **Azure izleyici günlükleri**: tüm güvenlik uyarıları.
 
 

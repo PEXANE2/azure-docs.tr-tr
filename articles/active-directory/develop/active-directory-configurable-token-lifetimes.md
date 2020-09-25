@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: bbe4328d797f740e124d4944aee889d471393200
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2f6ade3a01022bf3bcc4d6b522e45ae98fe29b33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258430"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -89,14 +89,14 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 | Erişim belirteci ömrü |AccessTokenLifetime<sup>2</sup> |Erişim belirteçleri, KIMLIK belirteçleri, SAML2 belirteçleri |1 saat |10 dakika |1 gün |
 | Yenileme belirteci en fazla etkin olmayan süre |Maxınactivetime |Belirteçleri Yenile |90 gün |10 dakika |90 gün |
 | Tek faktörlü yenileme belirtecinin en fazla yaşı |Maxagesinglefaktör |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
-| Multi-Factor Refresh belirtecinin en fazla yaşı |MaxAgeMultiFactor |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
-| Tek faktörlü oturum belirteci maksimum yaşı |Maxagesessionsinglefaktör |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |180 gün<sup>1</sup> |
-| Multi-Factor Session belirtecinin en fazla yaşı |MaxAgeSessionMultiFactor |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |180 gün<sup>1</sup> |
+| Multi-Factor Refresh belirtecinin en fazla yaşı |MaxAgeMultiFactor |Belirteçleri Yenile (tüm kullanıcılar için) | 180 gün |10 dakika |Until-iptal edildi<sup>1</sup> |
+| Tek faktörlü oturum belirteci maksimum yaşı |Maxagesessionsinglefaktör |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
+| Multi-Factor Session belirtecinin en fazla yaşı |MaxAgeSessionMultiFactor |Oturum belirteçleri (kalıcı ve kalıcı olmayan) | 180 gün |10 dakika |Until-iptal edildi<sup>1</sup> |
 
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanoluşturulabilecek maksimum açık uzunluktadır.
 * <sup>2</sup> Microsoft ekipleri web istemcisinin çalıştığından emin olmak için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla tutulması önerilir.
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 | Özellik | Ekranlarını | Varsayılan |
 | --- | --- | --- |
 | Yenileme belirteci maksimum yaşı (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |Belirteçleri Yenile (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |12 saat |

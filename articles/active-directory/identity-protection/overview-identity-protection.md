@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8b19b8e928a220efa8a445ff033582e0f13c6de
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707739"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265291"
 ---
 # <a name="what-is-identity-protection"></a>Kimlik Koruması nedir?
 
@@ -53,8 +53,8 @@ Kimlik koruması, riskleri aşağıdaki sınıflandırmalarla tanımlar:
 | Anonim IP adresi | Anonim bir IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Ler). |
 | Bilinmeyen oturum açma özellikleri | Belirtilen kullanıcı için son gördüğdiğimiz özelliklerle oturum açın. |
 | Kötü amaçlı yazılım bağlı IP adresi | Kötü amaçlı yazılımdan bağlantılı bir IP adresinden oturum açın. |
-| Sızdırılan kimlik bilgileri | Bu risk algılama, kullanıcının geçerli kimlik bilgilerinin sızdırdığını gösterir. |
-| Parola spreyi | Birden çok Kullanıcı adı, Birleşik bir deneme yanılma sırasında ortak parolaları kullanarak saldırıya uğradığını gösterir. |
+| Sızdırılan kimlik bilgileri | Kullanıcının geçerli kimlik bilgilerinin sızdırdığını gösterir. |
+| Parola spreyi | Birden çok Kullanıcı adı Birleşik, deneme yanılma sırasında ortak parolaları kullanarak saldırıya uğradığını gösterir. |
 | Azure AD tehdit bilgileri | Microsoft 'un dahili ve dış tehdit bilgileri kaynakları, bilinen bir saldırı modelini tanımladı. |
 
 Bu riskler hakkında daha fazla ayrıntı ve bunların hesaplanmaları, makalede [risk](concept-identity-protection-risks.md)altında bulunabilir.
@@ -91,12 +91,12 @@ Kimlik koruması, kullanıcıların erişebilmeleri için bir güvenlik okuyucus
 | --- | --- | --- |
 | Genel yönetici | Kimlik korumasına tam erişim |   |
 | Güvenlik yöneticisi | Kimlik korumasına tam erişim | Kullanıcı parolasını sıfırlama |
-| Güvenlik operatörü | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin <br><br> Kullanıcı riskini kapatın, güvenli oturum açma 'yı onaylayın, güvenliği tehlikeye atabilir | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarıları yapılandırma |
-| Güvenlik okuyucusu | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarıları yapılandırma <br><br> Algılamalar hakkında geri bildirimde bulunun |
+| Güvenlik operatörü | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin <br><br> Kullanıcı riskini kapatın, güvenli oturum açma 'yı onaylayın, güvenliği tehlikeye atabilir | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarı yapılandırma |
+| Güvenlik okuyucusu | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarı yapılandırma <br><br> Algılamalar hakkında geri bildirimde bulunun |
 
 Şu anda güvenlik operatörü rolü riskli oturum açma işlemleri raporuna erişemez.
 
-Koşullu erişim yöneticileri Ayrıca, bir koşul olarak oturum açma riskini gösteren ilkeler oluşturabilir, [koşullu erişim: koşullar](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)makalesinde daha fazla bilgi bulabilirsiniz.
+Koşullu erişim yöneticileri, bir koşul olarak oturum açma riskini gösteren ilkeler de oluşturabilir. [Koşullu erişim: koşullar](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)makalesinde daha fazla bilgi bulabilirsiniz.
 
 ## <a name="license-requirements"></a>Lisans gereksinimleri
 
@@ -106,7 +106,7 @@ Koşullu erişim yöneticileri Ayrıca, bir koşul olarak oturum açma riskini g
 | --- | --- | --- | --- | --- |
 | Risk ilkeleri | Kullanıcı risk ilkesi (kimlik koruması aracılığıyla)  | Hayır | Hayır |Yes | 
 | Risk ilkeleri | Oturum açma risk ilkesi (kimlik koruması veya koşullu erişim aracılığıyla)  | Hayır |  Hayır |Yes |
-| Güvenlik raporları | Genel bakış |  Hayır | Hayır |Yes |
+| Güvenlik raporları | Genel Bakış |  Hayır | Hayır |Yes |
 | Güvenlik raporları | Riskli kullanıcılar  | Sınırlı bilgi | Sınırlı bilgi | Tam erişim|
 | Güvenlik raporları | Riskli oturum açma işlemleri  | Sınırlı bilgi | Sınırlı bilgi | Tam erişim|
 | Güvenlik raporları | Risk algılamaları   | No | Sınırlı bilgi| Tam erişim|
