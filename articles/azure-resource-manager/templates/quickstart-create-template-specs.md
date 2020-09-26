@@ -2,21 +2,21 @@
 title: Şablon belirtimini oluşturma ve dağıtma
 description: ARM şablonundan bir şablon belirtimi oluşturmayı öğrenin. Ardından, şablon belirtimini aboneliğinizdeki bir kaynak grubuna dağıtın.
 author: tfitzmac
-ms.date: 08/31/2020
+ms.date: 09/25/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 47791455c63852bfc6f8a7e3152fabe18d303ecb
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a4f24e69f29614de27947573d968d817dce4a57b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227738"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369224"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Hızlı başlangıç: şablon belirtimini oluşturma ve dağıtma (Önizleme)
 
 Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) bir [şablon](template-specs.md) belirtimine paketlemeyi ve ardından bu şablon belirtimini dağıtmayı gösterir. Şablon spec, depolama hesabı dağıtan bir ARM şablonu içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -55,7 +55,7 @@ Bu seçenekler aşağıda gösterilmiştir.
       -Version "1.0" `
       -ResourceGroupName templateSpecRG `
       -Location westus2 `
-      -TemplateJsonFile "c:\Templates\azuredeploy.json"
+      -TemplateFile "c:\Templates\azuredeploy.json"
     ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
@@ -220,7 +220,7 @@ Artık şablon belirtimini dağıtabilirsiniz. Şablon belirtiminin dağıtım, 
 1. Şablon belirtiminin kaynak KIMLIĞINI alın.
 
     ```azurepowershell
-    $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Version.Id
+    $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Versions.Id
     ```
 
 1. Şablon belirtimini dağıtın.

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 120cb86e1bacfefdd9242d8fa766b391983e9c81
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7361f58247019584d7fb3d60cdd7f76b2e62a212
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069551"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355508"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell’i kullanarak Azure DNS bölgesi ve kaydı oluşturma
 
@@ -90,7 +90,7 @@ Test ' A ' kaydıyla bir test DNS bölgesine sahip olduğunuza göre, ad çözü
 
    Aşağıdaki ekrana benzer bir şey görmeniz gerekir:
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![Ekran görüntüsü, bir n s arama komutu ve sunucu, adres, ad ve adres değerlerini içeren bir komut istemi penceresi gösterir.](media/dns-getstarted-portal/nslookup.PNG)
 
 **Www \. contoso. xyz** ana bilgisayar adı, yalnızca yapılandırdığınız gibi **10.10.10.10**olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular.
 

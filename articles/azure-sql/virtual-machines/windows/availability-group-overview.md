@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 705c7dd602d9c908ec9048d131ba66b21c5b2103
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 34d76d7c85a478b5e31a692e653752aa1653884c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006525"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293671"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grupları ile tanışın
 
@@ -41,10 +41,10 @@ Yedeklilik ve yüksek kullanılabilirliği artırmak için SQL Server VM 'Lerin 
 
 |  | Windows Server sürümü | SQL Server sürümü | SQL Server sürümü | WSFC çekirdek yapılandırması | Çok bölgeli DR | Çoklu alt ağ desteği | Mevcut bir AD için destek | Birden çok bölgeye sahip DR aynı bölge | AD etki alanı olmadan Dist-AG desteği | Küme olmadan Dist-AG desteği |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| **[Azure portal](availability-group-azure-portal-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Görünmeyen | Bulut tanığı | Hayır | Evet | Evet | Evet | Hayır | Hayır |
-| **[Azure CLı/PowerShell](availability-group-az-cli-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Görünmeyen | Bulut tanığı | Hayır | Evet | Evet | Evet | Hayır | Hayır |
-| **[Hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016  | Görünmeyen | Bulut tanığı | Hayır | Evet | Evet | Evet | Hayır | Hayır |
-| **[El ile](availability-group-manually-configure-prerequisites-tutorial.md)** | Tümü | Tümü | Tümü | Tümü | Evet | Evet | Evet | Evet | Evet | Evet |
+| **[Azure portal](availability-group-azure-portal-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Görünmeyen | Bulut tanığı | Hayır | Yes | Yes | Yes | Hayır | Hayır |
+| **[Azure CLı/PowerShell](availability-group-az-cli-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Görünmeyen | Bulut tanığı | Hayır | Yes | Yes | Yes | Hayır | Hayır |
+| **[Hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016  | Görünmeyen | Bulut tanığı | Hayır | Yes | Yes | Yes | Hayır | Hayır |
+| **[El ile](availability-group-manually-configure-prerequisites-tutorial.md)** | Tümü | Tümü | Tümü | Tümü | Yes | Yes | Yes | Yes | Yes | Yes |
 
 **SQL Server AlwaysOn kümesi (Önizleme)** şablonu Azure Marketi 'nden kaldırılmıştır ve artık kullanılamaz. 
 

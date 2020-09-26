@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8d1dedfcd4a93446b615d84e86666059fd210c18
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 207ee67c207f028b5f4bd45d99a7ef431429debb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293582"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırmak üzere Azure hızlı başlangıç şablonlarını kullanma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Bu makalede, Azure 'da SQL Server sanal makineler (VM) için her zaman açık ku
 Kullanılabilirlik grubu yapılandırmasının diğer bölümlerinin, kullanılabilirlik grubu oluşturma ve iç yük dengeleyiciyi oluşturma gibi el ile yapılması gerekir. Bu makalede otomatik ve el ile yapılan adımların sırası sağlanmaktadır.
  
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 Hızlı Başlangıç şablonlarını kullanarak her zaman açık kullanılabilirlik grubunun kurulumunu otomatik hale getirmek için aşağıdaki önkoşullara sahip olmanız gerekir: 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
 - Etki alanı denetleyicisi olan bir kaynak grubu. 

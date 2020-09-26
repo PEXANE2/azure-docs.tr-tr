@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0b7e277518337072659bf5ccddd3436c05ff5201
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 0db39884ef54310db849abcef1062adbaeb9f22e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292741"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -85,6 +85,16 @@ Aşağıdaki komutu çalıştırarak oluşturulan TWINS 'i doğrulayabilirsiniz,
 ```cmd/sh
 Query
 ```
+
+>[!TIP]
+> Bu basitleştirilmiş Yöntem _**AdtE2ESample**_ projesinin bir parçası olarak sağlanır. Bu örnek kod bağlamı dışında, [sorgu API 'lerini](how-to-use-apis-sdks.md) veya [CLI komutlarını](how-to-use-cli.md)kullanarak, örneğiniz Içindeki tüm TWINS 'leri istediğiniz zaman sorgulayabilirsiniz.
+>
+> Örneğiniz için tüm dijital TWINS 'i almak için tam sorgu gövdesi aşağıda verilmiştir:
+> 
+> ```sql
+> SELECT *
+> FROM DIGITALTWINS
+> ``` 
 
 Bundan sonra projeyi çalıştırmayı durdurabilirsiniz. Visual Studio 'da çözümü açık tutun, ancak öğreticinin tamamında kullanmaya devam edersiniz.
 
@@ -255,13 +265,13 @@ Daha sonra, cihaz simülatörünü IoT Hub örneğinize veri gönderecek şekild
 Şu komutla *IoT Hub bağlantı dizesini* alarak başlayın:
 
 ```azurecli
-az iot hub show-connection-string -n <your-IoT-hub-name>
+az iot hub connection-string show -n <your-IoT-hub-name>
 ```
 
 Ardından, aşağıdaki komutla *Cihaz bağlantı dizesini* alın:
 
 ```azurecli
-az iot hub device-identity show-connection-string --device-id thermostat67 --hub-name <your-IoT-hub-name>
+az iot hub device-identity connection-string show --device-id thermostat67 --hub-name <your-IoT-hub-name>
 ```
 
 Simülatörü bu IoT Hub 'ına ve IoT Hub cihazına bağlamak için bu değerleri yerel projenizdeki cihaz simülatör koduna bağlayacaksınız.
@@ -436,7 +446,7 @@ Bu öğreticide oluşturduğunuz senaryonun incelenmesi aşağıda verilmiştir.
 
 Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin. 
 
-[Azure Cloud Shell](https://shell.azure.com)kullanarak, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu, kaynak grubunu kaldırır; Azure dijital TWINS örneği; IoT Hub ve Hub cihaz kaydı; olay Kılavuzu konusu ve ilişkili abonelikler; ve depolama gibi ilişkili kaynaklar dahil olmak üzere Azure Işlevleri uygulaması.
+[Azure Cloud Shell](https://shell.azure.com)kullanarak, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu, kaynak grubunu kaldırır; Azure dijital TWINS örneği; IoT Hub ve Hub cihaz kaydı; olay Kılavuzu konusu ve ilişkili abonelikler; ve depolama gibi ilişkili kaynaklar dahil olmak üzere Azure Işlevleri uygulaması.
 
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 

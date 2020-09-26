@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdc8b68206161abdd1782561c904d4e670ecca22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94710e99fa7d04d757f2ad5fd7b2d3f6e01371d1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358965"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306351"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect veritabanını SQL Server Express'ten SQL Server'a taşıma 
 
@@ -41,13 +41,13 @@ Azure AD Connect veritabanını uzak SQL Server'a taşımak için aşağıdaki a
 
 8. Veritabanı eklendikten sonra Azure AD Connect sunucusuna gidip Azure AD Connect'i yükleyin.
 9. MSI yüklemesi tamamlandıktan sonra Azure AD Connect sihirbazı Hızlı mod kurulumu açılır. Çıkış simgesine tıklayarak ekranı kapatın.
-   ![Hoş geldiniz](./media/how-to-connect-install-move-db/db1.png)
+   ![Sol taraftaki menüdeki "Hızlı ayarlar" adlı "Azure A Connect 'e hoş geldiniz" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-move-db/db1.png)
 10. Yeni bir komut istemi veya PowerShell oturumu başlatın. \<drive>\program files\Microsoft Azure AD Connect klasörüne gidin. Azure AD Connect sihirbazını "Var olan veritabanını kullan" modunda başlatmak için .\AzureADConnect.exe /useexistingdatabase komutunu çalıştırın.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Azure AD Connect'e Hoş Geldiniz ekranı açılır. Lisans koşullarını ve gizlilik bildirimini kabul ettikten sonra **Devam**'a tıklayın.
-    ![Hoş geldiniz](./media/how-to-connect-install-move-db/db3.png)
+    !["Azure A Connect 'e hoş geldiniz" sayfasını gösteren ekran görüntüsü](./media/how-to-connect-install-move-db/db3.png)
 12. **Gerekli bileşenleri yükleme** ekranında **Mevcut bir SQL Server'ı kullanma** seçeneği etkinleştirilir. AD Eşitleme veritabanını barındıran SQL sunucusunun adını belirtin. AD Eşitleme veritabanını barındırmak için kullanılan SQL altyapısı örneği SQL sunucusundaki varsayılan örnek değilse SQL altyapısı örneği adını belirtmeniz gerekir. Ayrıca SQL göz atma özelliği etkin değilse SQL altyapısı örneği bağlantı noktası numarasını da belirtmeniz gerekir. Örneğin:         
-    ![Hoş geldiniz](./media/how-to-connect-install-move-db/db4.png)           
+    !["Gerekli bileşenleri yüklensin" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-move-db/db4.png)           
 
 13. **Azure AD'ye bağlan** ekranında Azure AD dizininizin genel yöneticisinin kimlik bilgilerini girmeniz gerekir. Varsayılan onmicrosoft.com etki alanındaki bir hesabı kullanmanız önerilir. Bu hesap yalnızca Azure AD'de hizmet hesabı oluşturmak için kullanılır ve sihirbaz tamamlandıktan sonra kullanılmaz.
     ![Bağlanma](./media/how-to-connect-install-move-db/db5.png)
@@ -57,11 +57,11 @@ Azure AD Connect veritabanını uzak SQL Server'a taşımak için aşağıdaki a
  
 
 15. Açılan iletişim kutusunda (i) Kuruluş Yöneticisi kimlik bilgileri belirtip Azure AD Connect'in sizin için bir AD DS hesabı oluşturmasını sağlayabilir veya (ii) AD DS hesabını kendiniz oluşturarak kimlik bilgilerini Azure AD Connect'e girebilirsiniz. Bir seçeneği belirleyip gerekli kimlik bilgilerini girdikten sonra **Tamam**'a tıklayarak açılan iletişim kutusunu kapatın.
-    ![Hoş geldiniz](./media/how-to-connect-install-move-db/db7.png)
+    !["Yeni bir D hesabı oluştur" seçiliyken "A D orman hesabı" açılır iletişim kutusunun ekran görüntüsü.](./media/how-to-connect-install-move-db/db7.png)
  
 
 16. Kimlik bilgileri girildikten sonra kırmızı çarpı işaretinin yerine yeşil onay işareti görünür. **İleri**’ye tıklayın.
-    ![Hoş geldiniz](./media/how-to-connect-install-move-db/db8.png)
+    ![Hesap kimlik bilgilerini girdikten sonra "dizinlerinizi bağlama" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-move-db/db8.png)
  
 
 17. **Yapılandırma için hazır** ekranında **Yükle**'ye tıklayın.

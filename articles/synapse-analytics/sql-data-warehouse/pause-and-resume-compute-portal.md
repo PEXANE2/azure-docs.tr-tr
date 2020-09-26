@@ -11,12 +11,12 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 25f12d038b2a83688c12d95adefef3d4fb39be43
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: aa86161bce0b52eb1043d792fb2f4770df0992ee
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369425"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Hızlı başlangıç: Azure portal aracılığıyla SYNAPSE SQL havuzunda işlem duraklatma ve devam ettirme
 
@@ -46,10 +46,10 @@ Bir SQL havuzunu duraklatmak için aşağıdaki adımları izleyin:
     ![Çevrimiçi işlem](././media/pause-and-resume-compute-portal/compute-online.png)
 
 4. SQL havuzunu duraklatmak için **Duraklat** düğmesine tıklayın. 
-5. Devam etmek isteyip istemediğinizi soran bir onay sorusu görüntülenir. **Evet**' e tıklayın.
+5. Devam etmek isteyip istemediğinizi soran bir onay sorusu görüntülenir. **Evet**'e tıklayın.
 6. Birkaç dakika bekleyin ve sonra **durumun** **duraklatıldığına**dikkat edin.
 
-    ![Duraklatılıyor](./media/pause-and-resume-compute-portal/pausing.png)
+    ![Ekran görüntüsünde durum değeri duraklatma olan bir örnek veri ambarına yönelik Azure portal gösterilmektedir.](./media/pause-and-resume-compute-portal/pausing.png)
 
 7. Duraklatma işlemi tamamlandığında durum **duraklatılır** ve seçenek düğmesi **devam**edilir.
 8. SQL havuzunun işlem kaynakları artık çevrimdışı. Hizmeti sürdürülene kadar işlem için ücretlendirilmezsiniz.
@@ -68,10 +68,10 @@ SQL havuzunu yeniden başlatmak için aşağıdaki adımları izleyin.
     ![Çevrimdışı işlem](././media/pause-and-resume-compute-portal/compute-offline.png)
 
 4. SQL havuzunu yeniden başlatmak için, geri ' **ye tıklayın.** 
-5. Başlatmak isteyip istemediğinizi soran bir onay sorusu görüntülenir. **Evet**' e tıklayın.
+5. Başlatmak isteyip istemediğinizi soran bir onay sorusu görüntülenir. **Evet**'e tıklayın.
 6. **Durumun** **sürdürüldiğine**dikkat edin.
 
-    ![Sürdürülüyor](./media/pause-and-resume-compute-portal/resuming.png)
+    ![Ekran görüntüsünde, Başlangıç düğmesi seçili olan bir örnek veri ambarı için Azure portal ve devam eden durum değeri gösterilir.](./media/pause-and-resume-compute-portal/resuming.png)
 
 7. SQL havuzu yeniden çevrimiçi olduğunda durum **çevrimiçi** olur ve seçenek düğmesi **duraklatılır**.
 8. SQL havuzu için işlem kaynakları artık çevrimiçi ve hizmeti kullanabilirsiniz. İşlem ücretleri sürdürüldü.

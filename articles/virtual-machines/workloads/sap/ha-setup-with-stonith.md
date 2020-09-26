@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0967c5e354c3b0e433753cf89d830dc2101741af
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77615079"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363129"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH kullanarak SUSE’de yüksek kullanılabilirlik ayarlama
 Bu belgede, SUSE Işletim sisteminde STONITH cihazını kullanarak yüksek kullanılabilirliği ayarlamak için ayrıntılı adım adım yönergeler sağlanmaktadır.
@@ -73,7 +73,7 @@ iqn.1996-04.de.suse:01:<Tenant><Location><SID><NodeNumber>
 
 Microsoft hizmet yönetimi bu dizeyi sağlar. Her **iki** düğümdeki dosyayı da değiştirin, ancak düğüm numarası her düğümde farklı olur.
 
-![initiatorname.png](media/HowToHLI/HASetupWithStonith/initiatorname.png)
+![Ekran görüntüsü bir düğüm için ınitiatorname değerlerini içeren bir ınitiatorname dosyası gösterir.](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
 1,2 düğümünü Değiştir */SCC SID.conf*: *Node. Session. timeo. replacement_timeout = 5* ve *Node. Startup = Automatic*olarak ayarlayın. **Her iki** düğümdeki dosyayı değiştirin.
 
@@ -83,21 +83,21 @@ Microsoft hizmet yönetimi bu dizeyi sağlar. Her **iki** düğümdeki dosyayı 
 iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
 ```
 
-![iSCSIadmDiscovery.png](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
+![Ekran görüntüsü, iscıadm bulma komutunun sonuçlarını içeren bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
 1,4 Iscsı cihazında oturum açmak için komutu yürütün ve dört oturumu gösterir. **Her iki düğümde de** çalıştırın.
 
 ```
 iscsiadm -m node -l
 ```
-![iSCSIadmLogin.png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
+![Ekran görüntüsü, IBir bir konsol penceresini, IBU bir](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
 1,5 rescan betiği Yürüt: *rescan-scsi-Bus.sh*.  Bu betik, sizin için oluşturulan yeni diskleri gösterir.  Her iki düğümde de çalıştırın. Sıfırdan büyük bir LUN numarası görmeniz gerekir (örneğin: 1, 2 vb.)
 
 ```
 rescan-scsi-bus.sh
 ```
-![rescanscsibus.png](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
+![Ekran görüntüsü, komut dosyası sonuçlarının bulunduğu bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
 
 1,6 cihaz adını almak için *fdisk – l*komutunu çalıştırın. Her iki düğümde de çalıştırın. **178 MiB**boyutunda bir cihaz seçin.
 
@@ -105,7 +105,7 @@ rescan-scsi-bus.sh
   fdisk –l
 ```
 
-![fdisk-l.png](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
+![Ekran görüntüsü f disk komutunun sonuçlarını içeren bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
 
 ## <a name="2---initialize-the-sbd-device"></a>2. SBD cihazını başlatın
 
@@ -114,7 +114,7 @@ rescan-scsi-bus.sh
 ```
 sbd -d <SBD Device Name> create
 ```
-![sbdcreate.png](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
+![Ekran görüntüsü s b d oluştur komutunun sonucuna sahip bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
 
 2,2 cihaza yazılan öğeleri denetleyin. **Her iki düğümde de** yap
 
@@ -130,38 +130,40 @@ Bu bölümde, SUSE HA kümesini ayarlama adımları açıklanmaktadır.
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
 ```
-![zypperpatternha_sles.png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
- ![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
+![Ekran görüntüsü, bir konsol penceresini gösterir ve bu da, örüntüsünün sonucunu gösterir. ](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
+ ![ Ekran görüntüsü, SAPHanaSR-doc komutunun sonucuna sahip bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3,2 kümeyi ayarlama
 3.2.1, *ha-Cluster-init* komutunu kullanabilir ya da kümeyi ayarlamak için YaST2 sihirbazını kullanabilirsiniz. Bu durumda, YaST2 Sihirbazı kullanılır. Bu adımı **yalnızca birincil düğümde**gerçekleştirirsiniz.
 
-YaST2> yüksek kullanılabilirlik > kümesini izleyin ![yast-control-center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
- ![yast-hawk-install.png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
+YaST2> yüksek kullanılabilirliği > küme ![ ekran görüntüsü, yüksek kullanılabilirlik ve küme seçiliyken YaST denetim merkezini gösterir. ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
+ ![ Ekran görüntüsünde, Install ve Cancel seçeneklerinin bulunduğu bir iletişim kutusu gösterilir.](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
 Halk2 paketi zaten yüklü olduğundan **iptal** ' e tıklayın.
 
-![yast-hawk-continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
+![Ekran görüntüsü iptal seçeneğiniz hakkında bir ileti gösterir.](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
 **Devam** ' a tıklayın
 
-Beklenen değer = dağıtılan düğümlerin sayısı (Bu durumda 2) ![yast-Cluster-Security.png](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) **İleri** ' ye tıklayın 
- ![yast-cluster-configure-csync2.png](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) düğüm adları Ekle ' ye tıklayın ve ardından "önerilen dosyaları Ekle" ye tıklayın
+Beklenen değer = dağıtılan düğümlerin sayısı (Bu durumda 2) ![ ekran görüntüsünde güvenlik kimlik doğrulamasını etkinleştir onay kutusu Ile küme güvenliği gösterilmektedir.](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)
+**İleri**ekran görüntüsü ' ne tıklayın 
+ ![ , eşitleme konağı ve eşitleme dosya listeleriyle küme yapılandırma penceresini gösterir.](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)
+Düğüm adları ekleyin ve ardından "önerilen dosyaları Ekle" ye tıklayın
 
 "Csync2 aç" düğmesine tıklayın
 
 "Önceden paylaşılan anahtarlar oluştur" düğmesine tıklayın, açılan pencerenin altında görüntülenir
 
-![yast-key-file.png](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
+![Ekran görüntüsünde, anahtarınızın oluşturulduğunu belirten bir ileti gösterilir.](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
 **Tamam 'a** tıklayın
 
 Kimlik doğrulaması, Csync2 ' deki IP adresleri ve önceden paylaşılan anahtarlar kullanılarak gerçekleştirilir. Anahtar dosyası csync2-k/etc/csync2/key_hagroup ile oluşturulur. Dosya key_hagroup oluşturulduktan sonra kümenin tüm üyelerine el ile kopyalanmalıdır. **Dosyayı düğüm 1 ' den Düğüm2 ' e kopyalamanız emin olun**.
 
-![yast-cluster-conntrackd.png](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
+![Ekran görüntüsü, anahtarı kümenin tüm üyelerine kopyalamak için gereken seçenekleri içeren bir küme yapılandırma iletişim kutusunu gösterir.](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-**İleri** ' ye tıklayın 
- ![yast-cluster-service.png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
+**Sonraki** 
+ ![ ekran görüntüsü, küme hizmeti penceresini gösterir.](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 Varsayılan seçenekte önyükleme devre dışı bırakıldı, bu nedenle önyükleme sırasında paceyapıcısı başlatılmalıdır. Kurulum gereksinimlerinize göre seçim yapabilirsiniz.
 **İleri** ' ye tıklayın ve küme yapılandırması tamamlanmıştır.
@@ -173,49 +175,49 @@ Bu bölüm, izleme (softköpek) yapılandırmasını açıklar.
 ```
 modprobe softdog
 ```
-![modprobe-softdog.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
+![Ekran görüntüsü, softköpek hattı eklenen bir önyükleme dosyası gösterir.](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
 
 4,2 **her iki** düğümde da */Etc/sysconfig/SBD* dosyasını aşağıdaki gibi güncelleştirin:
 ```
 SBD_DEVICE="<SBD Device Name>"
 ```
-![sbd-device.png](media/HowToHLI/HASetupWithStonith/sbd-device.png)
+![Ekran görüntüsü S b D_DEVICE değeri eklenen s b dosyasını gösterir.](media/HowToHLI/HASetupWithStonith/sbd-device.png)
 
 4,3 aşağıdaki komutu çalıştırarak **her iki düğümde de** çekirdek modülünü yükleyin
 ```
 modprobe softdog
 ```
-![modprobe-softdog-command.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
+![Ekran görüntüsü, konsol penceresinin bir parçasını modaraştırma softköpek ile gösterir.](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
 4,4 ve **her iki düğümde de** aşağıdaki gibi softköpek 'nın çalıştığından emin olun:
 ```
 lsmod | grep dog
 ```
-![lsmod-grep-dog.png](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
+![Ekran görüntüsü, bir konsol penceresinin bir parçasını, l s mod komutunun çalıştırılması sonucuyla gösterir.](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
 
 4,5 **her iki düğümde de** SBD cihazını Başlat
 ```
 /usr/share/sbd/sbd.sh start
 ```
-![sbd-sh-start.png](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
+![Ekran görüntüsü, başlangıç komutuyla bir konsol penceresinin bir parçasını gösterir.](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
 
 4,6 **her iki düğümde de** SBD arka plan programını test edin. İki girişi **her iki** düğümde yapılandırdıktan sonra görürsünüz
 ```
 sbd -d <SBD Device Name> list
 ```
-![sbd-list.png](media/HowToHLI/HASetupWithStonith/sbd-list.png)
+![Ekran görüntüsü, iki girişi görüntüleyen bir konsol penceresinin bir parçasını gösterir.](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
 4,7 düğümlerinden **birine** bir test iletisi gönderin
 ```
 sbd  -d <SBD Device Name> message <node2> <message>
 ```
-![sbd-list.png](media/HowToHLI/HASetupWithStonith/sbd-list.png)
+![Ekran görüntüsü, iki girişi görüntüleyen bir konsol penceresinin bir parçasını gösterir.](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
 **ikinci** düğüm üzerinde 4,8 (Düğüm2) ileti durumunu kontrol edebilirsiniz
 ```
 sbd  -d <SBD Device Name> list
 ```
-![sbd-list-message.png](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
+![Ekran görüntüsü, diğer üye için bir test değeri görüntüleyen üyelerden birine sahip bir konsol penceresinin bir parçasını gösterir.](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
 
 4,9 SBD yapılandırmasını benimsemek için, */Etc/sysconfig/SBD* dosyasını aşağıdaki gibi güncelleştirin. **Her iki** düğümdeki dosyayı güncelleştirme
 ```
@@ -229,7 +231,7 @@ SBD_OPTS=""
 ```
 systemctl start pacemaker
 ```
-![start-pacemaker.png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
+![Ekran görüntüsü, pacemaker 'ı başlattıktan sonra durumu gösteren bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
 Paceoluşturucu hizmeti *başarısız olursa*, *Senaryo 5: paceoluşturucu hizmeti başarısız oldu* bölümüne başvurun
 
@@ -251,13 +253,14 @@ Kümeye katılırken bir *hata* alırsanız, bkz. *Senaryo 6: düğüm 2 kümeye
 systemctl status pacemaker
 systemctl start pacemaker
 ```
-![systemctl-status-pacemaker.png](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
+![Ekran görüntüsü, pacemaker durumuna sahip bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
 ### <a name="62-monitor-the-status"></a>6,2 durumu izleme
 **Her iki düğümün de** çevrimiçi olduğundan emin olmak için *crm_mon* komutunu çalıştırın. Bunu, kümenin **tüm düğümlerinde** çalıştırabilirsiniz
 ```
 crm_mon
 ```
-![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) küme durumunu denetlemek için de *https:// \<node IP> : 7630*. Varsayılan Kullanıcı hacluster ve parola Linux olur. Gerekirse, *passwd* komutunu kullanarak parolayı değiştirebilirsiniz.
+![Ekran görüntüsünde, c r m_mon sonuçlarının bulunduğu bir konsol penceresi gösterilmektedir.](media/HowToHLI/HASetupWithStonith/crm-mon.png)
+Ayrıca, *https:// \<node IP> : 7630*küme durumunu denetlemek için havk 'da da oturum açabilirsiniz. Varsayılan Kullanıcı hacluster ve parola Linux olur. Gerekirse, *passwd* komutunu kullanarak parolayı değiştirebilirsiniz.
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. küme özelliklerini ve kaynaklarını yapılandırma 
 Bu bölümde, küme kaynaklarını yapılandırma adımları açıklanmaktadır.
@@ -288,7 +291,7 @@ Yapılandırmayı kümeye ekleyin.
 ```
 crm configure load update crm-bs.txt
 ```
-![crm-configure-crmbs.png](media/HowToHLI/HASetupWithStonith/crm-configure-crmbs.png)
+![Ekran görüntüsü, c r m komutunu çalıştıran bir konsol penceresinin bir parçasını gösterir.](media/HowToHLI/HASetupWithStonith/crm-configure-crmbs.png)
 
 ### <a name="72-stonith-device"></a>7,2 STONITH cihazı
 Kaynak STONITH 'yi ekleyin. Dosyayı oluşturun ve metni aşağıdaki şekilde ekleyin.
@@ -320,11 +323,11 @@ crm configure load update crm-vip.txt
 ### <a name="74-validate-the-resources"></a>7,4 kaynakları doğrulama
 
 Komut *crm_mon*çalıştırdığınızda, iki kaynağı orada görebilirsiniz.
-![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
+![Ekran görüntüsü iki kaynakla bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
 Ayrıca, *https:// \<node IP address> : 7630/CIB/Live/State* konumundaki durumu görebilirsiniz.
 
-![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
+![Ekran görüntüsü iki kaynağın durumunu gösterir.](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
 ## <a name="8-testing-the-failover-process"></a>8. yük devretme işlemini test etme
 Yük devretme sürecini test etmek için Düğüm1 üzerindeki paceoluşturucu hizmetini durdurun ve kaynakları Düğüm2 ' ye devreder.
@@ -334,11 +337,11 @@ Service pacemaker stop
 Şimdi, **Düğüm2** üzerindeki paceyapıcısı hizmetini durdurun ve kaynakları **Düğüm1** 'e devredildi.
 
 **Yük devretmeden önce**  
-![Before-failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+![Ekran görüntüsü, yük devretmeden önce iki kaynağın durumunu gösterir.](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
 **Yük devretmeden sonra**  
-![after-failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+![Ekran görüntüsü, yük devretmeden sonra iki kaynağın durumunu gösterir.](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![Ekran görüntüsünde, yük devretmeden sonra kaynakların durumuyla birlikte bir konsol penceresi gösterilir.](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
 ## <a name="9-troubleshooting"></a>9. sorun giderme
@@ -373,11 +376,11 @@ YaST2 grafik ekranı, bu belgede yüksek kullanılabilirlik kümesini ayarlamak 
 
 **Hata**
 
-![yast2-qt-gui-error.png](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
+![Ekran görüntüsü bir konsol penceresinin bir parçasını hata iletisiyle gösterir.](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
 
 **Beklenen çıkış**
 
-![yast-control-center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
+![Ekran görüntüsü, yüksek kullanılabilirlik ve küme vurgulanacak YaST denetim merkezini gösterir.](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 
 YaST2 grafik görünümü ile açılmadığından, aşağıdaki adımları izleyin.
 
@@ -387,19 +390,19 @@ Paketleri yüklemek için, yazılım yönetimi>bağımlılıklarını>yast>yazı
 >[!NOTE]
 >Her iki düğümden YaST2 grafik görünümüne erişebilmeniz için her iki düğümde de adımları gerçekleştirmeniz gerekir.
 
-![yast-sofwaremanagement.png](media/HowToHLI/HASetupWithStonith/yast-sofwaremanagement.png)
+![Ekran görüntüsü YaST denetim merkezini görüntüleyen bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/yast-sofwaremanagement.png)
 
-Bağımlılıklar altında "önerilen paketleri yüklensin" öğesini seçin ![yast-dependencies.png](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
+Bağımlılıklar altında "önerilen paketleri yüklensin" ![ ekran görüntüsünde, önerilen paketleri Install seçili olan bir konsol penceresi gösterilir.](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
 
 Değişiklikleri gözden geçirin ve Tamam 'a basın
 
 ![yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
 
-Paket yükleme devam ![yast-performing-installation.png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
+Paket yükleme devam ![ ediyor ekran görüntüsü, yüklemenin ilerlemesini görüntüleyen bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
 İleri’ye tıklayın
 
-![yast-installation-report.png](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
+![Ekran görüntüsü başarı iletisi içeren bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
 Son ' a tıklayın
 
@@ -407,13 +410,14 @@ Ayrıca libqt4 ve libyuı-QT paketlerini de yüklemeniz gerekir.
 ```
 zypper -n install libqt4
 ```
-![zypper-install-libqt4.png](media/HowToHLI/HASetupWithStonith/zypper-install-libqt4.png)
+![Ekran görüntüsünde, libqt4 paketini yükleyen bir konsol penceresi gösterilmektedir.](media/HowToHLI/HASetupWithStonith/zypper-install-libqt4.png)
 ```
 zypper -n install libyui-qt
 ```
-![zypper-install-ligyui.png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
- ![zypper-install-ligyui_part2.png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) YaST2, şimdi burada gösterildiği gibi grafik görünümünü açabiliyor olmalıdır.
-![yast2-control-center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![Ekran görüntüsü, libyuı-QT paketini yükleyen bir konsol penceresini gösterir. ](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
+ ![ Ekran görüntüsü, devam eden libyuı-QT paketini yükleyen bir konsol penceresini gösterir.](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png)
+YaST2, burada gösterildiği gibi grafik görünümünü hemen açabiliyor olmalıdır.
+![Ekran görüntüsü, yazılım ve çevrimiçi güncelleştirme seçiliyken YaST denetim merkezini gösterir.](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 ### <a name="scenario-3-yast2-does-not-high-availability-option"></a>Senaryo 3: YaST2 yüksek kullanılabilirlik seçeneği değil
 Yüksek kullanılabilirlik seçeneğinin YaST2 denetim merkezinde görünür olması için ek paketleri yüklemeniz gerekir.
@@ -429,33 +433,33 @@ Aşağıdaki ekranda, desenleri yüklemek için gereken adımlar gösterilmekted
 
 Yazılım Yönetimi > YaST2 > yazılım kullanımı
 
-![yast2-control-center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![Ekran görüntüsünde, yükleme işlemini başlatmak için yazılım ve çevrimiçi güncelleştirme seçiliyken YaST Denetim Merkezi görüntülenir.](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 Desenleri seçin
 
-![yast-pattern1.png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
- ![yast-pattern2.png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
+![Ekran görüntüsü, C/C++ derleyicisi ve araçlar öğesindeki ilk kalıbı seçmeyi gösterir. ](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
+ ![ Ekran görüntüsü C/C++ derleyicisi ve araçlar öğesindeki ikinci deseninin seçilmesi gösterilmektedir.](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
 **Kabul et** 'e tıklayın
 
-![yast-changed-packages.png](media/HowToHLI/HASetupWithStonith/yast-changed-packages.png)
+![Ekran görüntüsü, bağımlılıkları çözümlemek için paketlerin değiştiği değiştirilen paketler iletişim kutusunu gösterir.](media/HowToHLI/HASetupWithStonith/yast-changed-packages.png)
 
 **Devam** ' a tıklayın
 
-![yast2-performing-installation.png](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
+![Ekran görüntüsü, yükleme durumunu gerçekleştirme sayfasını gösterir.](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
 Yükleme tamamlandığında **İleri** ' ye tıklayın
 
-![yast2-installation-report.png](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
+![Ekran görüntüsü yükleme raporunu gösterir.](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
 ### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>Senaryo 4: HANA yüklemesi GCC derlemeleri hatasıyla başarısız oluyor
 HANA yüklemesi aşağıdaki hatayla başarısız olur.
 
-![Hana-installation-error.png](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
+![Ekran görüntüsü, işletim sisteminin g c c 5 derlemelerini gerçekleştirmeye hazırlanmadığından bir hata iletisi gösterir.](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
 
 Sorunu onarmak için aşağıdaki şekilde kitaplıklarını (libgcc_sl ve libstdc + + 6) yüklemeniz gerekir.
 
-![zypper-install-lib.png](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
+![Ekran görüntüsü gerekli kitaplıkları yükleyen bir konsol penceresini gösterir.](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
 
 ### <a name="scenario-5-pacemaker-service-fails"></a>Senaryo 5: Paceoluşturucu hizmeti başarısız oluyor
 
@@ -506,7 +510,7 @@ Bunu çözmek için */usr/lib/systemd/System/fstrim.exe* dosyasındaki şu satı
 Persistent=true
 ```
 
-![Persistent.png](media/HowToHLI/HASetupWithStonith/Persistent.png)
+![Ekran görüntüsünde, silinecek kalıcı = true değerine sahip f s kırpma dosyası gösterilir.](media/HowToHLI/HASetupWithStonith/Persistent.png)
 
 ### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>Senaryo 6: düğüm 2 kümeye katılamıyor
 
@@ -516,7 +520,7 @@ Düğüm2, *ha-Cluster-JOIN* komutunu kullanarak var olan kümeye birleştirilir
 ERROR: Can’t retrieve SSH keys from <Primary Node>
 ```
 
-![ha-cluster-join-error.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-error.png)
+![Ekran görüntüsü, bir I P adresinden S S H anahtarlarını alamıyor hata iletisiyle bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/ha-cluster-join-error.png)
 
 Bunları onarmak için her iki düğümde de aşağıdakileri çalıştırın
 
@@ -525,13 +529,13 @@ ssh-keygen -q -f /root/.ssh/id_rsa -C 'Cluster Internal' -N ''
 cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 ```
 
-![ssh-keygen-node1.PNG](media/HowToHLI/HASetupWithStonith/ssh-keygen-node1.PNG)
+![Ekran görüntüsü, ilk düğümde komutunu çalıştıran bir konsol penceresinin bir parçasını gösterir.](media/HowToHLI/HASetupWithStonith/ssh-keygen-node1.PNG)
 
-![ssh-keygen-node2.PNG](media/HowToHLI/HASetupWithStonith/ssh-keygen-node2.PNG)
+![Ekran görüntüsü ikinci düğümde komutunu çalıştıran bir konsol penceresinin parçasını gösterir.](media/HowToHLI/HASetupWithStonith/ssh-keygen-node2.PNG)
 
 Yukarıdaki düzeltmeyle sonra, Düğüm2 kümeye eklenmelidir
 
-![ha-cluster-join-fix.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
+![Ekran görüntüsünde, başarılı bir ha-Cluster-JOIN komutu içeren bir konsol penceresi gösterilmektedir.](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
 ## <a name="10-general-documentation"></a>10. genel belgeler
 Aşağıdaki makalelerde SUSE HA kurulumu hakkında daha fazla bilgi edinebilirsiniz: 

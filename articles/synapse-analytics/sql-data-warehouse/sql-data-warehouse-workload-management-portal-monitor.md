@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f46ed1890bb62acc92eea28c55bf9abd6153e8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13b0dc3af524b16430408f8a920c7477c412414d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362738"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure SYNAPSE Analytics – Iş yükü Yönetim Portalı Izleme
 
@@ -26,7 +26,7 @@ Azure Ölçüm Gezgini yapılandırma hakkında ayrıntılı bilgi için bkz. [A
 
 ## <a name="workload-management-metric-definitions"></a>İş yükü yönetimi Ölçüm tanımları
 
-|Ölçüm Adı                    |Açıklama  |Toplama Türü |
+|Ölçüm Adı                    |Description  |Toplama Türü |
 |-------------------------------|-------------|-----------------|
 |Etkin uç kaynak yüzdesi | *Etkin sınır yüzdesi* , diğer iş yükü grupları için ayrılan *En düşük kaynak yüzdesine* bağlı olarak, iş yükü grubu tarafından erişilebilen kaynakların yüzdesine yönelik sabit bir sınır olur. *Etkin uç kaynak yüzdesi* ölçümü, `CAP_PERCENTAGE_RESOURCE` [iş yükü grubu oluşturma](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdiziminde parametresi kullanılarak yapılandırılır.  Geçerli değer burada açıklanmıştır.<br><br>Örneğin `DataLoads` , = 100 ile bir iş yükü grubu oluşturulduysa `CAP_PERCENTAGE_RESOURCE` ve geçerli bir en düşük kaynak yüzdesi %25 olan başka bir iş yükü grubu oluşturulduysa, iş yükü grubu için *geçerli sınır kaynak* yüzdesi `DataLoads` %75 ' dir.<br><br>*Etkin sınır kaynağı yüzdesi* , iş yükü grubunun elde edilebileceği eşzamanlılık (ve dolayısıyla potansiyel aktarım hızı) üst sınırını belirler.  Geçerli *sınır kaynak yüzdesi* ölçümü tarafından şu anda raporlanan ek aktarım hızı gerekiyorsa, `CAP_PERCENTAGE_RESOURCE` `MIN_PERCENTAGE_RESOURCE` daha fazla kaynak eklemek için, diğer iş yükü gruplarının sayısını azaltın veya örneği ölçeğini artırın.  Azaltmak `REQUEST_MIN_RESOURCE_GRANT_PERCENT` eşzamanlılık artırabilir, ancak genel aktarım hızını artıramayabilir.| Min, AVG, Max |
 |Geçerli Min kaynak yüzdesi |*Geçerli Min kaynak yüzdesi* , hizmet düzeyi en düşük hesaba sahip iş yükü grubu için ayrılan ve yalıtılmış kaynakların en düşük yüzdesidir.  Etkin Min kaynak yüzdesi ölçümü, `MIN_PERCENTAGE_RESOURCE` [Iş yükü grubu oluşturma](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdiziminde parametresi kullanılarak yapılandırılır.  Geçerli değer [burada](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values)açıklanmıştır.<br><br>Bu ölçüm filtrelenmemiş olduğunda Sum toplama türünü kullanın ve sistemde yapılandırılan toplam iş yükü yalıtımını izlemek için bölmeyi kaldırın.<br><br>*Geçerli Min kaynak yüzdesi* , garantili eşzamanlılık (ve bu nedenle garanti edilen aktarım hızı) için bir iş yükü grubunun alabileceği alt sınırı belirler.  Geçerli *En düşük kaynak yüzdesi* ölçümü tarafından şu anda raporlanan ek garantili kaynaklar gerekliyse, `MIN_PERCENTAGE_RESOURCE` iş yükü grubu için yapılandırılmış parametreyi artırın.  Azaltmak `REQUEST_MIN_RESOURCE_GRANT_PERCENT` eşzamanlılık artırabilir, ancak genel aktarım hızını artıramayabilir. |Min, AVG, Max|
@@ -58,8 +58,9 @@ WITH ( WORKLOAD_GROUP = 'wgPriority'
 Aşağıdaki grafik aşağıdaki şekilde yapılandırılır:<br>
 Ölçüm 1: *geçerli en düşük kaynak yüzdesi* (ortalama toplama, `blue line` )<br>
 Ölçüm 2: *sisteme göre Iş yükü grubu ayırma yüzdesi* (ort toplama, `purple line` )<br>
-Filtre: [Iş yükü grubu] =`wgPriority`<br>
-![](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png)Grafikunderutilized-wg.png% 25 iş yükü yalıtımına sahip olduğunu gösteriyorsa, ortalama olarak yalnızca %10 kullanılır.  Bu durumda, `MIN_PERCENTAGE_RESOURCE` parametre değeri 10 veya 15 arasında düşürülemez ve sistemdeki diğer iş yüklerinin kaynakları kullanmasına izin verebilir.
+Filtre: [Iş yükü grubu] = `wgPriority`<br>
+![Ekran görüntüsünde iki ölçüm ve filtreye sahip bir grafik gösterilir.](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png)
+Grafik, %25 iş yükü yalıtımına sahip olduğunu gösterir, ortalama olarak yalnızca %10 kullanılır.  Bu durumda, `MIN_PERCENTAGE_RESOURCE` parametre değeri 10 veya 15 arasında düşürülemez ve sistemdeki diğer iş yüklerinin kaynakları kullanmasına izin verebilir.
 
 ### <a name="workload-group-bottleneck"></a>İş yükü grubu performans sorunu
 
@@ -80,8 +81,9 @@ Aşağıdaki grafik aşağıdaki şekilde yapılandırılır:<br>
 Ölçüm 1: *etkin uç kaynak yüzdesi* (ortalama toplama, `blue line` )<br>
 Ölçüm 2: *en fazla kaynak yüzdesine göre Iş yükü grubu ayırması* (ortalama toplama, `purple line` )<br>
 Ölçüm 3: *Iş yükü grubu sıraya alınmış sorgular* (Toplam toplama, `turquoise line` )<br>
-Filtre: [Iş yükü grubu] =`wgDataAnalyst`<br>
-![şişe-Nelen-WG- ](./media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) grafik, kaynak üzerinde %9 üst sınır olduğunu gösteriyor, iş yükü grubu %90 ' dır ( *iş yükü grubu ayırmayı en fazla kaynak yüzdesi ölçüsüne göre*).  *Sıraya alınmış sorgular ölçümünün Iş yükü grubundan*gösterildiği gibi düzenli bir sorgu sırası vardır.  Bu durumda, ' ı `CAP_PERCENTAGE_RESOURCE` %9 ' dan büyük bir değere yükseltmek daha fazla sorgunun eşzamanlı olarak yürütülmesine izin verir.  Arttırmak için `CAP_PERCENTAGE_RESOURCE` yeterli kaynak olduğunu ve diğer iş yükü grupları tarafından yalıtılmamış olduğunu varsaymaktadır.  *Etkin uç kaynak yüzdesi ölçümünü*denetleyerek, Cap 'in arttığını doğrulayın.  Daha fazla işleme isteniyorsa, öğesini `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 3 ' ten büyük bir değere artırmayı de göz önünde bulundurun.  ' Nin artırılması `REQUEST_MIN_RESOURCE_GRANT_PERCENT` sorguların daha hızlı çalışmasına izin verebilir.
+Filtre: [Iş yükü grubu] = `wgDataAnalyst`<br>
+![Ekran görüntüsünde, üç ölçüm ve filtreye sahip bir grafik gösterilir.](./media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png)
+Grafik, kaynaklar üzerinde %9 üst sınır olduğunu gösterir, iş yükü grubu %90 ' dır ( *Iş yükü grubu ayırmayı en fazla kaynak yüzdesi ölçüsüne göre*).  *Sıraya alınmış sorgular ölçümünün Iş yükü grubundan*gösterildiği gibi düzenli bir sorgu sırası vardır.  Bu durumda, ' ı `CAP_PERCENTAGE_RESOURCE` %9 ' dan büyük bir değere yükseltmek daha fazla sorgunun eşzamanlı olarak yürütülmesine izin verir.  Arttırmak için `CAP_PERCENTAGE_RESOURCE` yeterli kaynak olduğunu ve diğer iş yükü grupları tarafından yalıtılmamış olduğunu varsaymaktadır.  *Etkin uç kaynak yüzdesi ölçümünü*denetleyerek, Cap 'in arttığını doğrulayın.  Daha fazla işleme isteniyorsa, öğesini `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 3 ' ten büyük bir değere artırmayı de göz önünde bulundurun.  ' Nin artırılması `REQUEST_MIN_RESOURCE_GRANT_PERCENT` sorguların daha hızlı çalışmasına izin verebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

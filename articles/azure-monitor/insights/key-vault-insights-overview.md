@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894512"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278627"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Key Vault için Azure Izleyici ile Anahtar Kasası hizmetinizi izleme
 Key Vault için Azure Izleyici, Key Vault isteklerinizin, performanlarınızın, hatalarından ve gecikmelerinden oluşan Birleşik bir görünüm sunarak anahtar kasalarınızın kapsamlı bir şekilde izlenmesini sağlar.
@@ -25,21 +25,6 @@ Deneyimle karşılaşmadan önce, bilgileri nasıl sunduklarını ve görselleş
 -    **Hangi ölçümleri** görmek istediğinizi değiştirmek, sınırlarınız ile hizalı eşikleri değiştirmek veya ayarlamak ve kendi çalışma kitabınızı kaydetmek için özelleştirebilirsiniz. Çalışma kitabındaki grafikler Azure panolarına sabitlenebilir.
 
 Key Vault için Azure Izleyici, genel bir izleme çözümü sağlamak için hem günlükleri hem de ölçümleri birleştirir. Tüm kullanıcılar ölçüm tabanlı izleme verilerine erişebilir, ancak günlük tabanlı görselleştirmelerin eklenmesi kullanıcıların [Azure Key Vault günlüğünü etkinleştirmesini](../../key-vault/general/logging.md)gerektirebilir.
-
-## <a name="configuring-your-key-vaults-for-monitoring"></a>Anahtar kasalarınızı izleme için yapılandırma
-
-> [!NOTE]
-> Günlüklerin etkinleştirilmesi, ek izleme olanakları sağlayan ücretli hizmettir.
-
-1. Işlemler & gecikme süresi sekmesi kaç tane ve hangi anahtar kasalarının etkin olduğunu belirlemenize yardımcı olur. Toplamaya başlamak için Etkinleştir düğmesini seçin, bu, sizi tanılama günlüklerini etkinleştirmek için gereken anahtar kasalarını listeleyen ayrı bir çalışma kitabına getirecek şekilde **etkinleştirir** .
-
-    ![Mavi etkinleştirme düğmesi görüntülenirken işlemler ve gecikme süresi sekmesinin ekran görüntüsü](./media/key-vaults-insights-overview/enable-logging.png)
-
-2. Tanılama günlüklerini etkinleştirmek için, eylemler sütununun altındaki bağlantıyı **Etkinleştir** ' e tıklayın ve bir Log Analytics çalışma alanına Günlükler gönderen yeni bir tanılama ayarı oluşturun. Tüm günlüklerin aynı çalışma alanına gönderilmesi önerilir.
-
-3. Tanılama ayarları kaydedildikten sonra, Key Vault öngörülerinin altındaki tüm günlük tabanlı grafikleri ve görselleştirmeleri görüntüleyebileceksiniz. Günlüklerin doldurulmasının başlaması için birkaç dakika sürebileceğini lütfen unutmayın.
-
-4. Key Vault hizmetiniz için tanılama günlüklerini etkinleştirme hakkında daha fazla yardım için, [tam kılavuzu](../../key-vault/general/logging.md)okuyun.
 
 ## <a name="view-from-azure-monitor"></a>Azure Izleyici 'den görüntüle
 
@@ -165,10 +150,6 @@ Seçilebileceğini ve görüntülenebilecek 200 anahtar kasalarının bir sını
 Yalnızca Azure portal üstbilgisindeki "Dizin + abonelik" bölümünde seçilen abonelik filtresinden seçtiğiniz anahtar kasalarını içeren abonelikler gösteriliyor.
 
 ![Abonelik filtresi ekran görüntüsü](./media/key-vaults-insights-overview/Subscriptions.png)
-
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>"Sorgunun izin verilen en fazla çalışma alanı sayısını/bölgeyi aştığını", şimdi ne yapacakdığına ilişkin bir hata mesajı alıyorum
-
-Şu anda, 25 bölge ve 200 çalışma alanı için bir sınır vardır. verilerinizi görüntülemek için, aboneliklerin ve/veya kaynak gruplarının sayısını azaltmanız gerekir.
 
 ### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Key Vault içgörüler için değişiklik yapmak veya ek görselleştirme eklemek istiyorum, bunu nasıl yapabilirim?
 

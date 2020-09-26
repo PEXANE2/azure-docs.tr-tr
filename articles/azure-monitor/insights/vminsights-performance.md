@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9578fadfbe057b723af63e338bf8bda63cf6f21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684385"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330919"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici ile performansı grafik oluşturma
 
@@ -21,7 +21,7 @@ VM'ler için Azure İzleyici, bir sanal makinenin ne kadar iyi performans göste
 VM'ler için Azure İzleyici ile performans toplama sınırlamaları aşağıda verilmiştir.
 
 - Red Hat Linux (RHEL) 6 çalıştıran sanal makinelerde **kullanılabilir bellek** yok. Bu ölçüm, [çekirdek sürümü 3,14](http://www.man7.org/linux/man-pages/man1/free.1.html)' de tanıtılan **memavailable** öğesinden hesaplanır.
-- Ölçümler yalnızca EXT dosya sistemi ailesi (EXT2, EXT3, EXT4) kullanan Linux sanal makinelerinde veri diskleri için kullanılabilir.
+- Ölçümler yalnızca XFS FileSystem veya EXT dosya sistemi ailesi (EXT2, EXT3, EXT4) kullanan Linux sanal makinelerinde veri diskleri için kullanılabilir.
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Azure Izleyici 'den çoklu VM perspektifi
 

@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Sayfaytoplantısı ile tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Sayfaytoplantısı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+description: Sayfaytoplantısını Azure Active Directory (Azure AD) ile tümleştirmede gerçekleştirmeniz gereken adımları öğrenin.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: b410c4a106f65c8913dc41f5957cdaf10cad3c89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 50ef8cac944304ef51d2caeb0ddfeed3eb457876
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551243"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331169"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gotomeeting"></a>Öğretici: Sayfaymeeting ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Sayfaytoplantısını Azure Active Directory (Azure AD) ile tü
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d794b0a33eabedd3e6e309f291543ba23bc40f79
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362755"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Tehdit zekası sağlayıcılarından veri bağlama
 
@@ -59,13 +59,13 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Azure Sentinel 'i tehdit bilgileri platformunuza bağlama
 
-## <a name="prerequisites"></a>Ön koşullar  
+### <a name="prerequisites"></a>Önkoşullar  
 
 - Tıp ürününüzün veya güvenlik yöneticisi 'nin Microsoft Graph güvenlik Tiındicators API 'SI ile doğrudan tümleştirme kullanan özel uygulamanıza izin vermek için genel yönetici veya güvenlik yöneticisinin Azure AD rolü.
 
 - Tehdit göstergelerini depolamak için Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
 
-## <a name="instructions"></a>Yönergeler
+### <a name="instructions"></a>Yönergeler
 
 1. Uygulama KIMLIĞI, uygulama gizli anahtarı ve Azure Active Directory kiracı KIMLIĞI almak için Azure Active Directory [bir uygulamayı kaydedin](/graph/auth-v2-service#1-register-your-app) . Microsoft Graph Security Tiındicators API 'siyle doğrudan tümleştirme kullanan tümleşik tıp ürününüzü veya uygulamanızı yapılandırırken bu değerlere ihtiyacınız vardır.
 
@@ -89,13 +89,13 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure Sentinel 'i TAXıı sunucularına bağlama
 
-## <a name="prerequisites"></a>Ön koşullar  
+### <a name="prerequisites"></a>Önkoşullar
 
 - Tehdit göstergelerini depolamak için Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
 
 - TAXıı 2,0 sunucu URI 'SI ve koleksiyon KIMLIĞI.
 
-## <a name="instructions"></a>Yönergeler
+### <a name="instructions"></a>Yönergeler
 
 1. Azure Portal **Azure Sentinel**  >  **veri bağlayıcıları** ' na gidin ve **tehdit zekası-taxıı (Önizleme)** bağlayıcısını seçin.
 

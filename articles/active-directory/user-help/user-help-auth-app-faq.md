@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 00771f950271cfbc86994c01b6d866c5983f1b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278677"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -29,6 +29,7 @@ Microsoft Authenticator uygulama Azure Authenticator uygulamasını değiştirdi
 
 | Soru | Yanıt |
 | -------- | ------ |
+| WatchOS 7 ' de Apple Watch neden sorun yaşıyorum? | WatchOS 7 ' de bildirimleri onaylama ile ilgili bir sorun var ve bu sorunu düzeltti ve Apple ile çalışıyoruz. Bu sırada, Microsoft Authenticator watchOS uygulaması gerektiren tüm bildirimlerin, bunun yerine telefonunuzda onaylanması gerekir.  |
 | Cihaza şirket veya hizmet erişimi vermek için bir cihaz kabul etmiş kaydediyor mu? | Bir cihazın kaydedilmesi, cihazınızın kuruluşunuzun hizmetlerine erişmesini sağlar ve kuruluşunuzun cihazınıza erişmesine izin vermez. |
 | Uygulama kilidi nedir ve daha güvenli tutmaya yardımcı olmak için bunu nasıl kullanabilirim? | Uygulama kilidi, tek seferlik geçiş kodlarınızın, uygulama bilgilerinizin ve uygulama ayarlarınızın daha güvenli kalmasına yardımcı olur. Uygulama Kilidi etkinleştirildiğinde, kimlik doğrulayıcı 'yı her açışınızda cihaz PIN 'inizi veya biyometri kullanarak kimlik doğrulaması yapmanız istenir. Uygulama kilidi Ayrıca, PIN 'inizi veya bir oturum açma bildirimini onayladığınızı istediğiniz zaman, bildirimleri onaylayabilecek tek bir tane olduğundan emin olmanıza yardımcı olur. Doğrulayıcı ayarları sayfasında uygulama kilidi 'ni açıp kapatabilirsiniz. Varsayılan olarak, cihazınızda bir PIN veya biyometri ayarlarken uygulama kilidi açıktır.<br><br>Ne yazık ki, uygulama kilidinin kimlik doğrulayıcısına erişimi durdurabileceğini garanti etmez. Bunun nedeni, cihaz kaydının, Android hesap ayarları veya Şirket Portalı uygulamasında olduğu gibi, kimlik doğrulayıcı dışında diğer konumlarda gerçekleşebilmesine yönelik olabilir. |
 | Windows mobil cihazım var ve Windows Mobile Microsoft Authenticator kullanım dışı bırakıldı. Uygulamayı kullanarak kimlik doğrulamaya devam edebilir miyim? | Windows Mobile Microsoft Authenticator kullanan tüm kimlik doğrulamaları 15 Temmuz 2020 ' den sonra kullanımdan kaldırılacaktır. Hesaplarınızı kilitlemeyi önlemek için alternatif bir kimlik doğrulama yöntemi kullanmanızı önemle tavsiye ederiz.<br>Kurumsal kullanıcılar için alternatif seçenekler şunlardır:<br><ul><li>[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) veya [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)için Microsoft Authenticator ayarlama.</li><li>[SMS](multi-factor-authentication-setup-phone-number.md) 'yi doğrulama kodları alacak şekilde ayarlama.</li><li>[Kimlik doğrulama için telefon görüşmesi](multi-factor-authentication-setup-office-phone.md)alacak telefon numarası ayarlama.</li></ul><br>Kişisel Microsoft hesabı kullanıcıları için alternatif seçenekler şunlardır:<br><ul><li>[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) veya [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)için Microsoft Authenticator ayarlama.</li><li>[Microsoft hesabı güvenlik sayfasından](https://account.microsoft.com/security/)güvenlik bilgilerinizi güncelleştirerek alternatif bir oturum açma YÖNTEMI (SMS veya e-posta) ayarlama.</li></ul> |

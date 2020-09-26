@@ -5,12 +5,12 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f1f4320f0bfb924883eb7ae4807dcb714cd89983
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132611"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331939"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics’te tanılama günlüklerine erişim
 
@@ -26,7 +26,7 @@ Tanılama günlüğü, veri erişim denetim izlerini toplamanıza olanak tanır.
 
 2. Data Lake Analytics hesabınızı açın ve __izleme__ bölümünden **tanılama günlükleri** ' ni seçin. Sonra __tanılamayı aç__' ı seçin.
 
-    ![Denetim ve istek günlüklerini toplamak için tanılamayı açın](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    !["Tanılama günlükleri" eyleminin seçili olduğunu ve "aşağıdaki günlükleri toplamak için tanılamayı aç" vurgulandığı ekran görüntüsü.](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
 3. __Tanılama ayarlarından__, bu günlüğe kaydetme yapılandırması Için bir __ad__ girin ve ardından günlük seçeneklerini belirleyin.
 
@@ -126,7 +126,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 
 #### <a name="request-log-schema"></a>İstek günlüğü şeması
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
@@ -140,7 +140,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 
 #### <a name="request-log-properties-schema"></a>İstek günlüğü özellikleri şeması
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | HttpMethod |Dize |İşlem için kullanılan HTTP yöntemi. Örneğin, GET. |
 | Yol |Dize |İşlemin gerçekleştirildiği yol |
@@ -176,7 +176,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 
 #### <a name="audit-log-schema"></a>Denetim günlüğü şeması
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
@@ -194,7 +194,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 
 #### <a name="audit-log-properties-schema"></a>Denetim günlüğü özellikleri şeması
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | JobId |Dize |İşe atanan KIMLIK |
 | JobName |Dize |İş için belirtilen ad |

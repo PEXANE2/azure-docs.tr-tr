@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25e70809becd59ceeb3c45867b9e35119df497a3
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 4b247009669d6008644c9beb54fb687138b81716
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526927"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266420"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Mevcut bir ormanı ve yeni bir ormanı tek bir Azure AD kiracısı ile tümleştirme
 
@@ -60,14 +60,14 @@ Bu senaryoda, bir Azure AD kiracısına Azure AD Connect eşitleme kullanılarak
 4. "Aracıyı Indir" e tıklayın
 5. Azure AD Connect sağlama aracısını çalıştırma
 6. Giriş ekranında, lisans koşullarını **kabul edin** ve **yükler**' e tıklayın.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install1.png)</br>
+!["Microsoft Azure AD Connect sağlama Aracısı paketi" Giriş ekranını gösteren ekran görüntüsü.](media/how-to-install/install1.png)</br>
 
 7. Bu işlem tamamlandıktan sonra Yapılandırma Sihirbazı başlatılır.  Azure AD Genel Yönetici hesabınızla oturum açın.  IE artırılmış güvenlik etkinse, bu, oturum açma 'nın engellenmesini unutmayın.  Bu durumda, yükleme işlemini kapatın, Sunucu Yöneticisi IE artırılmış güvenliği devre dışı bırakın ve **AAD Connect sağlama Aracısı sihirbazına** tıklayarak yüklemeyi yeniden başlatın.
 8. **Bağlan Active Directory** ekranında, **Dizin Ekle** ' ye tıklayın ve ardından Active Directory etki alanı Yönetici hesabınızla oturum açın.  Not: etki alanı yönetici hesabında parola değiştirme gereksinimleri olmamalıdır. Parolanın süresi dolarsa veya değişirse, aracıyı yeni kimlik bilgileriyle yeniden yapılandırmanız gerekecektir. Bu işlem, şirket içi dizininizi ekleyecek.  **İleri**’ye tıklayın.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install3.png)</br>
+!["Connect Active Directory" ekranını gösteren ekran görüntüsü.](media/how-to-install/install3.png)</br>
 
 9. **Yapılandırma Tamam** ekranında **Onayla**' ya tıklayın.  Bu işlem aracıyı kaydedip yeniden başlatacak.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install4.png)</br>
+!["Yapılandırma Tamam" ekranını gösteren ekran görüntüsü.](media/how-to-install/install4.png)</br>
 
 10. Bu işlem tamamlandıktan sonra, bir uyarı görmeniz gerekir: **Aracı yapılandırmanız başarıyla doğrulandı.**  **Çıkış**' a tıklayabilirsiniz.</br>
 ![Hoş Geldiniz ekranı](media/how-to-install/install5.png)</br>
@@ -80,7 +80,7 @@ Aracı doğrulaması Azure portal ve aracıyı çalıştıran yerel sunucu üzer
 ### <a name="azure-portal-agent-verification"></a>Aracı doğrulama Azure portal
 Aracının Azure tarafından görüldüğünü doğrulamak için şu adımları izleyin:
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 2. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect** ' a tıklayın ve ardından **yönetimi sağlama (Önizleme)** seçeneğini belirleyin.</br>
 ![Azure portalda](media/how-to-install/install6.png)</br>
 
@@ -125,7 +125,7 @@ Artık şirket içi dizinimizde bulunan kullanıcıların Azure AD kiracımızda
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Kullanıcılarımızdan biriyle oturum açma testi
 
-1. Buraya gidin [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) adresine gidin
 2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: ( user@domain.onmicrosoft.com ). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.</br>
    ![Doğrulama](media/tutorial-single-forest/verify1.png)</br>
 

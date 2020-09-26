@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526764"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292464"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps'ten HTTP veya HTTPS üzerinden hizmet uç noktalarını çağırma
 
@@ -44,7 +44,7 @@ Mantıksal uygulamanızdan, [Aktarım Katmanı Güvenliği (TLS)](https://en.wik
 
 Bu yerleşik tetikleyici, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapar ve bir yanıt döndürür.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
 1. Tasarımcı 'nın arama kutusunda **yerleşik**' i seçin. Arama kutusuna `http` filtreniz olarak yazın. **Tetikleyiciler** listesinden **http** tetikleyicisi ' ni seçin.
 
@@ -73,7 +73,7 @@ Bu yerleşik tetikleyici, bir uç nokta için belirtilen URL 'ye HTTP çağrıs�
 
 Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapar ve bir yanıt döndürür.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
    Bu örnek, ilk adım olarak HTTP tetikleyicisini kullanır.
 
@@ -104,7 +104,7 @@ Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapa
 
 Bu bilgileri döndüren bir HTTP tetikleyicisinden veya eylemden çıktılar hakkında daha fazla bilgi bulabilirsiniz:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |----------|------|-------------|
 | `headers` | JSON nesnesi | İstekten gelen üstbilgiler |
 | `body` | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
@@ -247,7 +247,7 @@ Bazı uç noktalar, hizmetler, sistemler veya API 'Ler, üst bilgisi olmayan bir
 
 Bir HTTP tetikleyicisi veya eylemi bu üstbilgileri içeriyorsa Logic Apps, bu üst bilgileri herhangi bir uyarı veya hata görüntülenmeden oluşturulan istek iletisinden kaldırır:
 
-* `Accept-*`
+* `Accept-*` dışındaki üstbilgiler `Accept-version`
 * `Allow`
 * `Content-*` Bu özel durumlarla birlikte: `Content-Disposition` , `Content-Encoding` ve `Content-Type`
 * `Cookie`

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 06c353cf5fbd5c2b1058d99e7f91e9fcc3853cb1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3643fad1c9e821a78df6d78edeede2341ec79ea8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929056"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303770"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Bir kişilik grubuna yüz ekleme
 
@@ -61,7 +61,7 @@ static async Task WaitCallLimitPerSecondAsync()
 
 ## <a name="step-2-authorize-the-api-call"></a>2. Adım: API çağrısını yetkilendirme
 
-Bir istemci kitaplığı kullandığınızda, abonelik anahtarınızı **Faceclient** sınıfının oluşturucusuna geçirmeniz gerekir. Örnek:
+Bir istemci kitaplığı kullandığınızda, abonelik anahtarınızı **Faceclient** sınıfının oluşturucusuna geçirmeniz gerekir. Örneğin:
 
 ```csharp
 private readonly IFaceClient faceClient = new FaceClient(
@@ -138,6 +138,5 @@ Aşağıdaki özellikler açıklanmıştı ve gösterilmiştir:
 
 ## <a name="related-topics"></a>İlgili konular
 
-- [Görüntüdeki yüzeyleri tanımla](HowtoIdentifyFacesinImage.md)
 - [Bir görüntüdeki yüzleri algılama](HowtoDetectFacesinImage.md)
 - [Büyük ölçek özelliğini kullanma](how-to-use-large-scale.md)

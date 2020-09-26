@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: f77d17881054440b01e30e738a8c38407c38b4a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a54397fe7cfecef6813105645b7f2b218894875e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306557"
+ms.locfileid: "91367861"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Azure Active Directory kiracıyı Kullanıcı VPN OpenVPN Protokolü bağlantıları için hazırla
 
@@ -76,7 +76,7 @@ Azure AD kiracınız için iki kullanıcı oluşturmak üzere [Bu makaledeki](..
 
 4. İstendiğinde **kabul et** ' i seçin.
 
-    ![Kabul Et](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Ekran görüntüsü, kuruluşunuz için kabul edilen ileti Izinlerine ve ek bilgilere sahip iletişim kutusunu gösterir.](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 5. Azure AD 'nizin altında, **Kurumsal uygulamalarda**, artık LISTELENEN **Azure VPN** 'yi görmeniz gerekir.
 

@@ -1,7 +1,7 @@
 ---
 title: Bing Yazım Denetimi API'si v5 'i v7 'ye yükseltme
 titleSuffix: Azure Cognitive Services
-description: Uygulamanızın 7 sürümünü kullanmak için güncelleştirmeniz gereken parçalarını tanımlar.
+description: Sürüm 7 ' yi kullanmak için güncelleştirmeniz gereken Bing Yazım Denetimi uygulamanızın parçalarını tanımlar.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 545772a28a67310b12eb55cd1fb14e8d12a95a58
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 642aa23bc74f1f3f44deb6e489e6f7aafe7ff237
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68500813"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254134"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>Yazım Denetimi API'si Yükseltme Kılavuzu
 
@@ -29,16 +29,16 @@ Bu yükseltme Kılavuzu, sürüm 5 ve Bing Yazım Denetimi API'si sürüm 7 aras
 
 ### <a name="error-response-objects-and-error-codes"></a>Hata yanıtı nesneleri ve hata kodları
 
-- Tüm başarısız istekler yanıt gövdesine bir `ErrorResponse` nesne içermelidir.
+- Tüm başarısız istekler `ErrorResponse` Yanıt gövdesine bir nesne içermelidir.
 
-- `Error` Nesnesine aşağıdaki alanlar eklendi.  
+- Nesnesine aşağıdaki alanlar eklendi `Error` .  
   - `subCode`&mdash;Mümkünse hata kodunu farklı demetlere göre bölümler
-  - `moreDetails`&mdash;`message` Alanda açıklanan hata hakkında ek bilgiler
+  - `moreDetails`&mdash;Alanda açıklanan hata hakkında ek bilgiler `message`
    
 
 - V5 hata kodları aşağıdaki olası `code` ve `subCode` değerlerle değiştirilmiştir.  
   
-|Kod|Alt|Açıklama
+|Kod|Alt|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Alt kod koşullarından herhangi biri gerçekleştiğinde Bing ServerError hatası döndürüyor. HTTP durum kodu 500 ise yanıt bu hataları içerir.
 |Invalidrequest|ParameterMissing<br/>Parameterınvalidvalue<br/>HttpNotAllowed<br/>Engellendi|, İsteğin herhangi bir bölümü geçerli olmadığı zaman Bing, ınvalidrequest döndürür. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya Parameterınvalidvalue ise, HTTP durum kodu 400 ' dir.<br/><br/>Hataya HttpNotAllowed varsa, HTTP durum kodu 410 ' dir.

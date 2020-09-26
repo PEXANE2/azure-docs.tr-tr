@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a861a038cefec56dfaaed1aca443f494dc82680
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c65d77d2cf50a59f18f0007e809e9913c3a5ae13
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055767"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304229"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -155,8 +155,6 @@ Bu role sahip olan kullanıcılar, Microsoft 365 Uyumluluk Merkezi, Microsoft 36
 ### <a name="conditional-access-administrator"></a>[Koşullu Erişim Yöneticisi](#conditional-access-administrator-permissions)
 
 Bu role sahip olan kullanıcılar Azure Active Directory Koşullu erişim ayarlarını yönetebilir.
-> [!NOTE]
-> Azure 'da Exchange ActiveSync koşullu erişim ilkesini dağıtmak için kullanıcının da genel yönetici olması gerekir.
 
 ### <a name="customer-lockbox-access-approver"></a>[Müşteri Kasası erişimi onaylayan](#customer-lockbox-access-approver-permissions)
 

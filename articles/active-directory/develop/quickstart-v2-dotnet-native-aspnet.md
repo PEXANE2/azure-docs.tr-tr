@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: e3b666ca7418a11bba3091a5ae8191e9c7b33411
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e1b76c9b6a442e3be23ddd54c926b13601287d7f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705818"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354947"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma
 
@@ -162,7 +162,7 @@ Diğer dizinlerden kullanıcıların Web API 'nize erişmesine izin vermenin bir
 1. **Yetkili kapsamlar** bölümünde, `api://<Application ID>/access_as_user` Web API 'sinin kapsamını seçin.
 1. **Uygulama Ekle**' yi seçin.
 
-## <a name="run-your-project"></a>Projenizi çalıştırma
+### <a name="run-your-project"></a>Projenizi çalıştırma
 
 1. Projenizi çalıştırmak için F5 tuşuna basın. TodoListClient uygulamanız açık olmalıdır.
 1. Sağ üst köşedeki **oturum aç**' ı seçin ve ardından live.com veya hotmail.com gibi bir kişisel Microsoft hesabı veya bir iş veya okul hesabı kullanarak oturum açın.

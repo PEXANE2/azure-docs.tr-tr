@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7c144ddac255087ae48ff2f1c5406ad66d670562
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: d700c2f2b4df01da577b67dafab989b655bdb58d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601376"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331089"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure portalı
 
@@ -52,6 +52,9 @@ Uygulama ağ geçidini, **uygulama ağ geçidi oluşturma** sayfasında bulunan 
      ![Yeni uygulama ağ geçidi oluşturma: temel bilgiler](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
 2. Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir sanal ağa ihtiyacı vardır. Yeni bir sanal ağ oluşturabilir veya var olan bir ağı kullanabilirsiniz. Bu örnekte, uygulama ağ geçidini oluşturduğunuz sırada yeni bir sanal ağ oluşturacaksınız. Application Gateway örnekleri ayrı alt ağlarda oluşturulur. Bu örnekte iki alt ağ oluşturursunuz: bir tane uygulama ağ geçidi ve arka uç sunucuları için bir diğeri.
+
+    > [!NOTE]
+    > [Sanal ağ hizmeti uç noktası ilkeleri](../virtual-network/virtual-network-service-endpoint-policies-overview.md) şu anda Application Gateway bir alt ağda desteklenmiyor.
 
     **Sanal ağı Yapılandır**altında **Yeni oluştur**' u seçerek yeni bir sanal ağ oluşturun. Açılan **sanal ağ oluştur** penceresinde, sanal ağ ve iki alt ağ oluşturmak için aşağıdaki değerleri girin:
 

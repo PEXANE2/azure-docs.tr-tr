@@ -11,13 +11,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: 54aac9fda42a867ab66d631279efbca4f812b01a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/23/2020
+ms.openlocfilehash: 942cbda3652692acc8eedf2ec9508bb501a60547
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497633"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332109"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Ve Azure Data Factory kullanarak Dynamics 365 (Common Data Service) veya Dynamics CRM 'den veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -81,7 +81,7 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 |:--- |:--- |:--- |
 | tür | Type özelliği "Dynamics", "DynamicsCrm" veya "CommonDataServiceForApps" olarak ayarlanmalıdır. | Yes |
 | deploymentType | Dynamics örneğinin dağıtım türü. Dynamics Online için değer "çevrimiçi" olmalıdır. | Yes |
-| serviceUri | Dynamics örneğinizin hizmet URL 'SI. https://www.crmdynamics.com bunun bir örneğidir. | Yes |
+| serviceUri | Aynı tarayıcıdan eriş, Dynamics örneğinizin hizmet URL 'SI. Örnek olarak "https:// \<organization-name> . CRM [x]. Dynamics. com" bulunur. | Yes |
 | authenticationType | Bir Dynamics sunucusuna bağlanmak için kimlik doğrulaması türü. Geçerli değerler şunlardır "AADServicePrincipal" ve "Office365". | Yes |
 | Serviceprincipalıd | Azure AD uygulamasının istemci KIMLIĞI. | Kimlik doğrulaması "AADServicePrincipal" olduğunda Evet |
 | servicePrincipalCredentialType | Hizmet sorumlusu kimlik doğrulaması için kullanılacak kimlik bilgisi türü. Geçerli değerler şunlardır "ServicePrincipalKey" ve "ServicePrincipalCert". | Kimlik doğrulaması "AADServicePrincipal" olduğunda Evet |
@@ -102,7 +102,7 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
         "type": "Dynamics",  
         "typeProperties": {  
             "deploymentType": "Online",  
-            "serviceUri": "https://www.crmdynamics.com",  
+            "serviceUri": "https://<organization-name>.crm[x].dynamics.com",  
             "authenticationType": "AADServicePrincipal",  
             "servicePrincipalId": "<service principal id>",  
             "servicePrincipalCredentialType": "ServicePrincipalKey",  
@@ -124,7 +124,7 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
         "type": "Dynamics", 
         "typeProperties": { 
             "deploymentType": "Online", 
-            "serviceUri": "https://www.crmdynamics.com", 
+            "serviceUri": "https://<organization-name>.crm[x].dynamics.com", 
             "authenticationType": "AADServicePrincipal", 
             "servicePrincipalId": "<service principal id>", 
             "servicePrincipalCredentialType": "ServicePrincipalCert", 
@@ -154,7 +154,7 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
         "type": "Dynamics",
         "typeProperties": {
             "deploymentType": "Online",
-            "serviceUri": "https://www.crmdynamics.com",
+            "serviceUri": "https://<organization-name>.crm[x].dynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {

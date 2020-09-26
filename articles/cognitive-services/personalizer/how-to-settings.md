@@ -1,14 +1,16 @@
 ---
 title: Kişiselleştirme’yi yapılandırma
 description: Hizmet yapılandırması, hizmetin yeniden nasıl davrandığını, hizmetin ne sıklıkla incelendiğine, modelin ne sıklıkta geri alınacağını ve ne kadar veri depolandığını içerir.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 4c0cbf35a37f6b3eb134992b34b23fd9d7be47ed
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 9b7347cb98bcbf2e1d92f115d404197083acef4d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344348"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292623"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Kişiselleştirici öğrenme döngüsünü yapılandırma
 

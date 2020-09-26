@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 09/24/2020
 ms.author: iainfou
-ms.openlocfilehash: de27ee713caae0310f185cd717d5db2095feff32
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ef05704ea03316ef0c95510e27ee630ddcfb0b44
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266913"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Klasik sanal ağ modelinden Azure Active Directory Domain Services Kaynak Yöneticisi 'ye geçirin
 
@@ -139,6 +139,14 @@ Yönetilen bir etki alanının geçirilebileceğini sanal ağlarda bazı kısıt
 
 Sanal ağ gereksinimleri hakkında daha fazla bilgi için bkz. [sanal ağ tasarımı konuları ve yapılandırma seçenekleri][network-considerations].
 
+Ayrıca, yönetilen etki alanı için sanal ağdaki trafiği kısıtlamak üzere bir ağ güvenlik grubu oluşturmanız gerekir. Geçiş işlemi sırasında bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir.
+
+Hangi kuralların gerekli olduğu hakkında daha fazla bilgi için bkz. [Azure AD DS ağ güvenlik grupları ve gerekli bağlantı noktaları](network-considerations.md#network-security-groups-and-required-ports).
+
+### <a name="ldaps-and-tlsssl-certificate-expiration"></a>LDAPS ve TLS/SSL sertifikası süre sonu
+
+Yönetilen etki alanınız, LDAPS için yapılandırılmışsa, geçerli TLS/SSL sertifikanızın 30 günden uzun süre geçerli olduğunu doğrulayın. Sonraki 30 gün içinde süresi dolan bir sertifika, geçiş işlemlerinin başarısız olmasına neden olur. Gerekirse, sertifikayı yenileyip yönetilen etki alanına uygulayıp geçiş işlemine başlayın.
+
 ## <a name="migration-steps"></a>Geçiş adımları
 
 Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş, 5 ana adıma bölünür:
@@ -166,7 +174,9 @@ Geçiş işlemine başlamadan önce, aşağıdaki ilk denetimleri ve güncelleş
 
     Ağ ayarlarının Azure AD DS için gerekli olan bağlantı noktalarını engellemediğinden emin olun. Bağlantı noktalarının hem klasik sanal ağda hem de Kaynak Yöneticisi sanal ağda açık olması gerekir. Bu ayarlar yol tablolarını içerir (ancak yol tablolarının kullanılması önerilmese de) ve ağ güvenlik grupları.
 
-    Gerekli olan bağlantı noktalarını görüntülemek için bkz. [ağ güvenlik grupları ve gerekli bağlantı noktaları][network-ports]. Ağ iletişimi sorunlarını en aza indirmek için, geçiş başarıyla tamamlandıktan sonra, Kaynak Yöneticisi sanal ağına bir ağ güvenlik grubu veya yol tablosu beklemeniz ve uygulamanız önerilir.
+    Azure AD DS, yönetilen etki alanı için gereken bağlantı noktalarının güvenliğini sağlamak ve diğer tüm gelen trafiği engellemek için bir ağ güvenlik grubu gerektirir. Bu ağ güvenlik grubu, yönetilen etki alanına erişimi kilitlemek için ek bir koruma katmanı işlevi görür. Gerekli olan bağlantı noktalarını görüntülemek için bkz. [ağ güvenlik grupları ve gerekli bağlantı noktaları][network-ports].
+
+    Güvenli LDAP kullanıyorsanız, *TCP* bağlantı noktası *636*için gelen trafiğe izin vermek üzere ağ güvenlik grubuna bir kural ekleyin. Daha fazla bilgi için bkz [. internet üzerinden GÜVENLI LDAP erişimini kilitleme](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 
     Bu hedef kaynak grubunu, hedef sanal ağı ve hedef sanal ağ alt ağını bir yere getirin. Bu kaynak adları, geçiş işlemi sırasında kullanılır.
 
@@ -265,9 +275,9 @@ En az bir etki alanı denetleyicisi kullanılabilir olduğunda, VM 'lerle ağ ba
 
 Artık sanal ağ bağlantısını ve ad çözümlemesini test edin. Kaynak Yöneticisi sanal ağa bağlı bir VM 'de veya bu ağa eşlendikten sonra aşağıdaki ağ iletişim testlerini deneyin:
 
-1. Etki alanı denetleyicilerinden birinin IP adresine ping atabiliyor olup olmadığını denetleyin, örneğin`ping 10.1.0.4`
+1. Etki alanı denetleyicilerinden birinin IP adresine ping atabiliyor olup olmadığını denetleyin, örneğin `ping 10.1.0.4`
     * Etki alanı denetleyicilerinin IP adresleri, Azure portal yönetilen etki alanının **Özellikler** sayfasında gösterilir.
-1. Yönetilen etki alanının ad çözümlemesini doğrulama, örneğin`nslookup aaddscontoso.com`
+1. Yönetilen etki alanının ad çözümlemesini doğrulama, örneğin `nslookup aaddscontoso.com`
     * DNS ayarlarının doğru ve çözümlendiğini doğrulamak için kendi yönetilen etki alanınız için DNS adını belirtin.
 
 İkinci etki alanı denetleyicisi, geçiş cmdlet 'i bittikten sonra 1-2 saat kullanılabilir olmalıdır. İkinci etki alanı denetleyicisinin kullanılabilir olup olmadığını denetlemek için Azure portal yönetilen etki alanının **Özellikler** sayfasına bakın. İki IP adresi gösteriliyorsa, ikinci etki alanı denetleyicisi hazırlayın.
@@ -295,13 +305,6 @@ Gerekirse, hassas parola ilkesini varsayılan yapılandırmadan daha az kısıtl
 1. Bir sanal makine Internet 'e sunulduğunu, yüksek oturum açma girişimleri ile *yönetici*, *Kullanıcı*veya *Konuk* gibi genel hesap adlarını gözden geçirin. Mümkün olduğunda, bu VM 'Leri daha az genel olarak adlandırılmış hesaplar kullanacak şekilde güncelleştirin.
 1. Saldırıların kaynağını bulmak için sanal makinede bir ağ izlemesi kullanın ve bu IP adreslerinin oturum açma işlemlerini deneyebilmesini engelleyin.
 1. En düşük kilitleme sorunları olduğunda, hassas parola ilkesini gerektiği kadar kısıtlayıcı olacak şekilde güncelleştirin.
-
-### <a name="creating-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
-
-Azure AD DS, yönetilen etki alanı için gereken bağlantı noktalarının güvenliğini sağlamak ve diğer tüm gelen trafiği engellemek için bir ağ güvenlik grubu gerektirir. Bu ağ güvenlik grubu, yönetilen etki alanına erişimi kilitlemek için ek bir koruma katmanı işlevi görür ve otomatik olarak oluşturulmaz. Ağ güvenlik grubu oluşturmak ve gerekli bağlantı noktalarını açmak için aşağıdaki adımları gözden geçirin:
-
-1. Azure portal Azure AD DS kaynağınızı seçin. Genel Bakış sayfasında, Azure AD Domain Services ilişkili hiçbiri varsa ağ güvenlik grubu oluşturmak için bir düğme görüntülenir.
-1. Güvenli LDAP kullanıyorsanız, *TCP* bağlantı noktası *636*için gelen trafiğe izin vermek üzere ağ güvenlik grubuna bir kural ekleyin. Daha fazla bilgi için bkz. [GÜVENLI LDAP yapılandırma][secure-ldap].
 
 ## <a name="roll-back-and-restore-from-migration"></a>Geçişten geri alma ve geri yükleme
 
