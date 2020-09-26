@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83872538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362589"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Verizon Premium kuralları altyapı başvurusundan Azure CDN
 
@@ -41,7 +41,7 @@ Aşağıdakilerden oluşur:
 - CDN 'nin yukarıdaki istekleri nasıl işleyeceğini tanımlayan özellikler kümesi.
 Bu öğeler aşağıdaki çizimde tanımlanmıştır.
 
-![İlke dağıtımı iş akışı](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
+![Etiketli ekran görüntüsü koşullu Ifadeyi, eşleşmeyi ve bir kuralın özelliklerini gösterir.](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
 
 ### <a name="policy"></a>İlke
 Salt okuma kuralları kümesinden oluşan bir ilke, şunları sağlar:
@@ -67,7 +67,7 @@ Bir ilkenin üretim veya hazırlama ortamına uygulanabileceğini içeren iş ak
 
 ![İlke dağıtımı iş akışı](./media/cdn-verizon-premium-rules-engine-reference/policy-deployment-workflow.png)
 
-|Adım |Açıklama |
+|Adım |Description |
 |---------|---------|
 |[Taslak Oluştur](https://docs.vdms.com/cdn/index.html#HRE/AdministeringDraftsandRules.htm#Create)    |    Bir taslak, içeriğinize yönelik isteklerin CDN tarafından nasıl işleneceğini tanımlayan bir kurallar kümesinden oluşur.     |
 |Taslağı kilitle   |     Bir taslak sonlandırıldıktan sonra kilitleme ve salt okunurdur bir ilkeye dönüştürülmesi gerekir.    |
@@ -93,9 +93,9 @@ Bir yüzde sembolü, URL kodlamasını göstermek için kullanılır (örneğin,
 
 Joker karakter değeri olarak yorumlanan metin özel karakterlere ek anlam atar. Aşağıdaki tabloda aşağıdaki karakter kümesinin nasıl yorumlanacağı açıklanmaktadır:
 
-Karakter | Açıklama
+Karakter | Description
 ----------|------------
-\ | Bu tabloda belirtilen karakterlerden herhangi birini atlamak için ters eğik çizgi kullanılır. Bir ters eğik çizgi, önüne kaçılması gereken özel karakterden önce belirtilmelidir.<br/>Örneğin, aşağıdaki sözdizimi bir yıldız işaretine çıkar:`\*`
+\ | Bu tabloda belirtilen karakterlerden herhangi birini atlamak için ters eğik çizgi kullanılır. Bir ters eğik çizgi, önüne kaçılması gereken özel karakterden önce belirtilmelidir.<br/>Örneğin, aşağıdaki sözdizimi bir yıldız işaretine çıkar: `\*`
 % | Bir yüzde sembolü, URL kodlamasını göstermek için kullanılır (örneğin, `%20` ).
 \* | Yıldız işareti bir veya daha fazla karakteri temsil eden bir joker karakterdir.
 Alan | Boşluk karakteri, bir eşleşme koşulunun belirtilen değerlerden veya desenlerden herhangi biri tarafından karşılanamayacağını gösterir.
@@ -105,9 +105,9 @@ deeri | Tek bir teklifin özel anlamı yoktur. Ancak, bir değerin değişmez de
 
 Normal ifadeler, metin değeri içinde aranan bir model tanımlar. Normal ifade gösterimi çeşitli simgelere özgü anlamları tanımlar. Aşağıdaki tabloda, özel karakterlerin, normal ifadeleri destekleyen koşullar ve özellikler ile nasıl işlendiği gösterilmektedir.
 
-Özel karakter | Açıklama
+Özel karakter | Description
 ------------------|------------
-\ | Ters eğik çizgi, bu karakterin normal ifade anlamı yerine değişmez değer olarak işlenmesine neden olan karakteri izler. Örneğin, aşağıdaki sözdizimi bir yıldız işaretine çıkar:`\*`
+\ | Ters eğik çizgi, bu karakterin normal ifade anlamı yerine değişmez değer olarak işlenmesine neden olan karakteri izler. Örneğin, aşağıdaki sözdizimi bir yıldız işaretine çıkar: `\*`
 % | Bir yüzde sembolünün anlamı, kullanımına bağlıdır.<br/><br/> `%{HTTPVariable}`: Bu sözdizimi bir HTTP değişkenini tanımlar.<br/>`%{HTTPVariable%Pattern}`: Bu sözdizimi bir HTTP değişkenini ve sınırlayıcı olarak tanımlamak için bir yüzde simgesi kullanır.<br />`\%`: Bir yüzde sembolünü kaçış, bir sabit değer olarak veya URL kodlamasının (örneğin,) kullanılmasına izin verir `\%20` .
 \* | Bir yıldız işareti, önceki karakterin sıfır veya daha fazla kez eşleştirilmesini sağlar.
 Alan | Boşluk karakteri genellikle sabit karakter olarak değerlendirilir.

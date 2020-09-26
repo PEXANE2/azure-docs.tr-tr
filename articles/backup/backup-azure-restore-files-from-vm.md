@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: fd68c33e4425d717837923b90119d42569a1f003
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178529"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292974"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -268,7 +268,7 @@ Aşağıdaki tabloda sunucu ve bilgisayar işletim sistemleri arasındaki uyumlu
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Linux işletim sistemi için
 
@@ -302,17 +302,17 @@ Betik Ayrıca, Python ve Bash bileşenlerinin kurtarma noktasına güvenli bir �
 Betiği kısıtlı erişimi olan bir bilgisayarda çalıştırırsanız, erişimi olduğundan emin olun:
 
 - `download.microsoft.com`
-- Kurtarma Hizmeti URL 'Leri (coğrafi ad, kurtarma hizmetleri kasasının bulunduğu bölgeyi ifade eder)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Azure ortak bölgeleri için)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Azure Çin 21Vianet için)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure ABD kamu için)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Azure Almanya için)
+- Kurtarma Hizmeti URL 'Leri (COĞRAFI ad, kurtarma hizmetleri kasasının bulunduğu bölgeyi ifade eder)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Azure ortak bölgeleri için)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Azure Çin 21Vianet için)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Azure ABD kamu için)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Azure Almanya için)
 - Giden bağlantı noktaları 53 (DNS), 443, 3260
 
 > [!NOTE]
 >
-> - İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Örneğin: indirilen betik adı \' \' \_ \' \' \' \' , *ContosoVM_wcus_12345678* gibi VMName geoname _ GUID ile başlar
-> - URL şöyle olur <https://pod01-rec2.wcus.backup.windowsazure.com> "
+> [Yukarıdaki](#mount-the-volume-and-copy-files) 5. adımda indirdiğiniz betik dosyası, dosyanın adında **coğrafi adı** olacaktır. URL 'yi doldurmanız için bu **coğrafi adı** kullanın. İndirilen betik adı şu şekilde başlayacak: \' VMName \' \_ \' geoname \' _ \' GUID \' .<br><br>
+> Örneğin, betik dosya adı *ContosoVM_wcus_12345678*ise, **coğrafi adı** *wcus* olur ve URL şöyle olacaktır:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
 Linux için, betik ' Open-iSCSI ' ve ' lshw ' bileşenlerinin kurtarma noktasına bağlanmasını gerektirir. Bileşenler, betiğin çalıştırıldığı bilgisayarda yoksa, komut dosyası bileşenleri yüklemek için izin ister. Gerekli bileşenleri yüklemeye izin verin.

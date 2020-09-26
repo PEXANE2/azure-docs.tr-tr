@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 22240c61b2341999528dcb477308990133042fa0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 30c7d525f821b828dcc4c389c32a27123b79a56b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286852"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360931"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Öğretici: Azure sanal makinelerinde el ile SQL Server kullanılabilirlik grubu yapılandırma
 
@@ -41,13 +41,13 @@ Aşağıdaki tabloda, Bu öğreticiye başlamadan önce gerçekleştirmeniz gere
 
 | Gereksinim |Açıklama |
 |----- |----- |----- |
-|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **iki SQL Server örneği**    | -Bir Azure kullanılabilirlik kümesinde <br/> -Tek bir etki alanında <br/> -Yük Devretme Kümelemesi özelliği yüklü |
-|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **Windows Server**    | Küme tanığı için dosya paylaşma |  
-|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server hizmet hesabı**    | Etki alanı hesabı |
-|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server Agent hizmet hesabı**    | Etki alanı hesabı |  
-|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **güvenlik duvarı bağlantı noktaları açık**    | -SQL Server: varsayılan örnek için **1433** <br/> -Veritabanı yansıtma uç noktası: **5022** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Kullanılabilirlik grubu yük dengeleyici IP adresi durum araştırması: **59999** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Küme çekirdeği yük dengeleyici IP adresi durum araştırması: **58888** veya kullanılabilir herhangi bir bağlantı noktası |
-|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **Yük Devretme Kümelemesi özelliği Ekle**    | SQL Server örneklerin her ikisi de bu özelliği gerektirir |
-|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **yükleme etki alanı hesabı**    | -Her SQL Server yerel yönetici <br/> -SQL Server her bir örneği için SQL Server sysadmin sabit sunucu rolü üyesi  |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **İki SQL Server örneği** | -Bir Azure kullanılabilirlik kümesinde <br/> -Tek bir etki alanında <br/> -Yük Devretme Kümelemesi özelliği yüklü |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Windows Server** | Küme tanığı için dosya paylaşma |  
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server hizmet hesabı** | Etki alanı hesabı |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server Agent hizmet hesabı** | Etki alanı hesabı |  
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Güvenlik Duvarı bağlantı noktaları açık** | -SQL Server: varsayılan örnek için **1433** <br/> -Veritabanı yansıtma uç noktası: **5022** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Kullanılabilirlik grubu yük dengeleyici IP adresi durum araştırması: **59999** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Küme çekirdeği yük dengeleyici IP adresi durum araştırması: **58888** veya kullanılabilir herhangi bir bağlantı noktası |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Yük Devretme Kümelemesi özelliği Ekle** | SQL Server örneklerin her ikisi de bu özelliği gerektirir |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Yükleme etki alanı hesabı** | -Her SQL Server yerel yönetici <br/> -SQL Server her bir örneği için SQL Server sysadmin sabit sunucu rolü üyesi  |
 
 
 Öğreticiye başlamadan önce, [Azure sanal makinelerinde her zaman açık kullanılabilirlik grupları oluşturmak için önkoşulları gerçekleştirmeniz](availability-group-manually-configure-prerequisites-tutorial.md)gerekir. Bu Önkoşullar zaten tamamlanırsa, [küme oluştur](#CreateCluster)' a atlayabilirsiniz.
@@ -234,7 +234,7 @@ Repeat these steps on the second SQL Server.
 7. **Nesne Gezgini**, **veritabanları** ' na sağ tıklayın ve **Yeni veritabanı**' nı seçin.
 8. **Veritabanı adı**alanına **MyDB1**yazın ve ardından **Tamam**' ı seçin.
 
-### <a name="create-a-backup-share"></a><a name="backupshare"></a>Yedek paylaşma oluşturma
+### <a name="create-a-backup-share"></a><a name="backupshare"></a> Yedek paylaşma oluşturma
 
 1. **Sunucu Yöneticisi**Ilk SQL Server **Araçlar**' ı seçin. **Bilgisayar Yönetimi**'ni açın.
 
@@ -301,7 +301,7 @@ Artık aşağıdaki adımları kullanarak bir kullanılabilirlik grubu yapıland
 
    ![Yeni kullanılabilirlik Grubu Sihirbazı, çoğaltmaları belirtin](./media/availability-group-manually-configure-tutorial/62-newagaddreplica.png)
 
-5. **Sunucuya Bağlan** iletişim kutusu açılır. **Sunucu adı**' nda ikinci sunucunun adını yazın. **Bağlan**'ı seçin.
+5. **Sunucuya Bağlan** iletişim kutusu açılır. **Sunucu adı**' nda ikinci sunucunun adını yazın. **Bağlan**’ı seçin.
 
    **Çoğaltmaları belirtin** sayfasında, artık **kullanılabilirlik çoğaltmalarda**listelenen ikinci sunucuyu görmeniz gerekir. Çoğaltmaları aşağıdaki şekilde yapılandırın.
 
@@ -490,7 +490,7 @@ WSFC IP adresinin Ayrıca yük dengeleyicide olması gerekir.
 
 1. Yük Dengeleme kurallarını ayarlamak için **Tamam ' ı** seçin.
 
-## <a name="configure-the-listener"></a><a name="configure-listener"></a>Dinleyiciyi yapılandırma
+## <a name="configure-the-listener"></a><a name="configure-listener"></a> Dinleyiciyi yapılandırma
 
 Sonraki şey, yük devretme kümesinde bir kullanılabilirlik grubu dinleyicisi yapılandırmaktır.
 

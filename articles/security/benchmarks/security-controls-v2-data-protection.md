@@ -4,17 +4,17 @@ description: Azure Güvenlik kıyaslaması v2 veri koruma
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e377c6669b1db96f549958173aded4f29bae6713
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059382"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314326"
 ---
-# <a name="security-control-data-protection"></a>Güvenlik denetimi: veri koruma
+# <a name="security-control-v2-data-protection"></a>Güvenlik denetimi v2: veri koruma
 
 Veri koruma, bekleyen veri koruma denetimini, geçiş sırasında ve yetkili erişim mekanizmaları aracılığıyla ele alır. Bu, erişim denetimi, şifreleme ve Azure 'da oturum açma kullanarak hassas veri varlıklarını bulma, sınıflandırma, koruma ve izleme içerir.
 
@@ -22,7 +22,7 @@ Veri koruma, bekleyen veri koruma denetimini, geçiş sırasında ve yetkili eri
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| DP-1 | 14,5, 14,7 | SI-4, SC-28 |
+| DP-1 | 13,1, 14,5, 14,7 | SC-28 |
 
 Hassas bilgilerin depolanmasını, işlenmesini ve kuruluşun teknoloji sistemleri tarafından güvenli bir şekilde aktarılmasını sağlamak üzere uygun denetimleri tasarlayabilmeniz için hassas verilerinizi bulun, sınıflandırın ve etiketleyin. 
 
@@ -36,7 +36,7 @@ Azure SQL veritabanlarında depolanan bilgilerin sınıflandırmasına ve etiket
 
 **Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -62,7 +62,7 @@ Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri 
 
 **Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -90,9 +90,9 @@ Veri kaybı önleme (DLP) uyumluluğu için gerekliyse, bir ana bilgisayar taban
 
 **Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik işlemleri merkezi (SOC)](/azure/cloud-adoption-framework/organize/cloud-security) 
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security) 
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -118,7 +118,7 @@ Azure, varsayılan olarak Azure veri merkezleri arasında aktarım halindeki ver
 
 **Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -148,7 +148,7 @@ Azure, bekleyen veriler için varsayılan olarak şifreleme sağlar. Son derece 
 
 **Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

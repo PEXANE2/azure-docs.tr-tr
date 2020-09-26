@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 047915874dfd81fdf68dc97ac217274b2439d726
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d7c02e413fdaa54db431cdac7a3cf7af0bddeb98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027486"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331905"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Ekip veri bilimi Işlemi işlem içinde: SQL Server kullanma
 Bu öğreticide, SQL Server ve genel kullanıma açık bir veri kümesi ( [NYC TAXI gezileri](https://www.andresmh.com/nyctaxitrips/) veri kümesi) kullanarak makine öğrenimi modeli oluşturma ve dağıtma sürecini adım adım ilerleyebilirsiniz. Yordam standart bir veri bilimi iş akışını izler: verileri alma ve araştırma, eğitim kolaylaştırmak ve bir model derlemek ve dağıtmak için mühendislik özellikleri.
@@ -83,14 +83,14 @@ Bu öğreticide, SQL Server Management Studio ve IPython Not defteri 'ni kullana
 Azure veri bilimi ortamınızı ayarlamak için:
 
 1. [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
-2. [Azure Machine Learning çalışma alanı oluşturma](../studio/create-workspace.md)
+2. [Azure Machine Learning çalışma alanı oluşturma](../classic/create-workspace.md)
 3. Bir SQL Server ve bir IPython Not defteri sunucusu sağlayan [veri bilimi sanal makinesi sağlayın](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
    
    > [!NOTE]
    > Örnek betikler ve IPython Not defterleri, kurulum işlemi sırasında veri bilimi sanal makinenize indirilir. VM yükleme sonrası betiği tamamlandığında, örnekler sanal makinenizin Belgeler kitaplığında olacaktır:  
    > 
-   > * Örnek betikler:`C:\Users\<user_name>\Documents\Data Science Scripts`  
-   > * Örnek IPython Not defterleri:`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
+   > * Örnek betikler: `C:\Users\<user_name>\Documents\Data Science Scripts`  
+   > * Örnek IPython Not defterleri: `C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
    >   `<user_name>`, sanal makinenizin Windows oturum açma adıdır. Örnek klasörlere örnek **betikler** ve örnek **IPython Not defterleri**olarak başvuracağız.
    > 
    > 
@@ -175,8 +175,8 @@ Bu bölümde, verileri ayıklamak ve örneklemek için son sorguyu kaydedecağı
 
 Daha önce paralel toplu içeri aktarma kullanılarak doldurulmuş tablolardaki satır ve sütun sayısı hakkında hızlı bir doğrulama için
 
-- Tablo taraması yapılmadan tablodaki nyctaxi_trip satır sayısını rapor edin:`SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
-- Tablodaki sütun sayısını rapor nyctaxi_trip:`SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
+- Tablo taraması yapılmadan tablodaki nyctaxi_trip satır sayısını rapor edin: `SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
+- Tablodaki sütun sayısını rapor nyctaxi_trip: `SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
 
 #### <a name="exploration-trip-distribution-by-medallion"></a>Araştırma: medtalon tarafından seyahat dağılımı
 Bu örnek, belirli bir süre içinde 100 ' den fazla dönüşle birlikte medalon (TAXI numaraları) tanımlar. Sorgu, **toplama \_ Tarih/saat değerinin**bölüm şeması tarafından koşullu olduğundan, bölümlenmiş tablo erişiminizden faydalanır. Tam veri kümesini sorgulamak bölümlenmiş tablo ve/veya dizin taramasını de kullanır.
@@ -626,9 +626,9 @@ Artık [Azure Machine Learning](https://studio.azureml.net)' de model oluşturma
 3. Regresyon görevi: seyahat için ödenen ipucu miktarını tahmin etmek Için.  
 
 ## <a name="building-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Azure Machine Learning modeller oluşturma
-Modelleme alıştırmaya başlamak için Azure Machine Learning çalışma alanınızda oturum açın. Henüz bir Machine Learning çalışma alanı oluşturmadıysanız, bkz. [Azure Machine Learning çalışma alanı oluşturma](../studio/create-workspace.md).
+Modelleme alıştırmaya başlamak için Azure Machine Learning çalışma alanınızda oturum açın. Henüz bir Machine Learning çalışma alanı oluşturmadıysanız, bkz. [Azure Machine Learning çalışma alanı oluşturma](../classic/create-workspace.md).
 
-1. Azure Machine Learning kullanmaya başlamak için bkz. [Azure Machine Learning Studio nedir?](../studio/what-is-ml-studio.md)
+1. Azure Machine Learning kullanmaya başlamak için bkz. [Azure Machine Learning Studio nedir?](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 2. [Azure Machine Learning Studio](https://studio.azureml.net)oturum açın.
 3. Studio giriş sayfası, çok çeşitli bilgiler, videolar, Öğreticiler, modüller başvurusu ve diğer kaynaklar için bağlantılar sağlar. Azure Machine Learning hakkında daha fazla bilgi için [Azure Machine Learning belge merkezine](https://azure.microsoft.com/documentation/services/machine-learning/)başvurun.
 
@@ -651,7 +651,7 @@ Bu alıştırmada, SQL Server verileri zaten araştırmış ve sunduk ve örnek 
    
     ![Azure Machine Learning verileri Içeri aktar][17]
 2. **Özellikler** panelinde **veri kaynağı** olarak **Azure SQL veritabanı** ' nı seçin.
-3. Veritabanı **sunucusu adı** ALANıNA veritabanı DNS adını girin. Formatını`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Veritabanı **sunucusu adı** ALANıNA veritabanı DNS adını girin. Formatını `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Karşılık gelen alana **veritabanı adını** girin.
 5. **Sunucu Kullanıcı hesabı adı**' na **SQL Kullanıcı adı** ' nı ve **sunucu Kullanıcı hesabı parolasıyla** **parolayı** girin.
 7. **Veritabanı sorgusu** düzenleme metin alanında, gerekli veritabanı alanlarını (Etiketler gibi hesaplanan alanlar da dahil olmak üzere) çıkaran sorguyu yapıştırın ve verileri istenen örnek boyutuna doğru örnekleyin.
@@ -668,7 +668,7 @@ Doğrudan SQL Server veritabanından veri okumayı denemek için ikili sınıfla
 > 
 
 ## <a name="deploying-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Azure Machine Learning modelleri dağıtma
-Modeliniz hazırlandığınızda, doğrudan denemenizin içinden Web hizmeti olarak kolayca dağıtım yapabilirsiniz. Azure Machine Learning Web hizmetlerini dağıtma hakkında daha fazla bilgi için bkz. [Azure Machine Learning Web hizmeti dağıtma](../studio/deploy-a-machine-learning-web-service.md).
+Modeliniz hazırlandığınızda, doğrudan denemenizin içinden Web hizmeti olarak kolayca dağıtım yapabilirsiniz. Azure Machine Learning Web hizmetlerini dağıtma hakkında daha fazla bilgi için bkz. [Azure Machine Learning Web hizmeti dağıtma](../classic/deploy-a-machine-learning-web-service.md).
 
 Yeni bir Web hizmeti dağıtmak için şunları yapmanız gerekir:
 
@@ -697,9 +697,9 @@ Bu kılavuzda, bu adım adım öğreticide, bir Azure veri bilimi ortamı oluşt
 Bu örnek izlenecek yol ve birlikte gelen betikler ve IPython Not defteri, Microsoft tarafından MıT lisansı kapsamında paylaşılır. Daha fazla ayrıntı için GitHub 'daki örnek kodun dizinindeki LICENSE.txt dosyasını denetleyin.
 
 ### <a name="references"></a>Başvurular
-• [Andr, Monroy NYC Taxi seyahatler Indirme sayfası](https://www.andresmh.com/nyctaxitrips/)  
-• [Cwhong 'e göre NYC 'Nin TAXI veri yolculuğuna çıkılıyor](https://chriswhong.com/open-data/foil_nyc_taxi/)   
-• [NYC Taxi ve Limousine Komisyonu araştırması ve istatistikleri](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+•    [Andr, Monroy NYC Taxi seyahatler Indirme sayfası](https://www.andresmh.com/nyctaxitrips/)  
+•    [Cwhong 'e göre NYC 'Nin TAXI veri yolculuğuna çıkılıyor](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [NYC Taxi ve Limousine Komisyonu araştırması ve istatistikleri](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sql-walkthrough/sql-walkthrough_28_1.png
